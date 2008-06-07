@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
+\lyxformat 335
 \begin_document
 \begin_header
 \textclass scrbook
@@ -19,6 +19,7 @@
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -36,14 +37,17 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
 LyX pertsonalizatzea: 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 erabiltzaile aurreratuentzako ezaugarriak
 \end_layout
 
@@ -52,7 +56,7 @@ egilea: LyX taldea
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Fitxategi honen arduradun nagusia 
 \noun on
 Mike Ressler
@@ -61,10 +65,14 @@ Mike Ressler
  Bidali iradokizunak edo erroreei buruzko zuzenketak LyX dokumentazioko
  posta-zerrendara : <lyx-docs@lists.lyx.org>.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Itzulpena: Iñaki Larrañaga Murgoitio, <dooteo@euskalgnu.org>, 2004.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Zuzenketak: Hizkuntza Politikarako Sailburuordetza, <hizpol@ej-gv.es>, 2004
 \end_layout
 
@@ -74,7 +82,8 @@ Zuzenketak: Hizkuntza Politikarako Sailburuordetza, <hizpol@ej-gv.es>, 2004
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -102,7 +111,8 @@ LyX-en konfigurazioko fitxategiak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "kapi:konfig"
 
 \end_inset
@@ -120,7 +130,10 @@ Ly
 \bar under
 X
 \bar default
--i\InsetSpace ~
+-i
+\begin_inset space ~
+\end_inset
+
 buruz
 \family default
  menua.
@@ -208,7 +221,10 @@ aguntza\SpecialChar \menuseparator
 \bar under
 L
 \bar default
-aTeX\InsetSpace ~
+aTeX
+\begin_inset space ~
+\end_inset
+
 konfigurazioa
 \family default
  eskuliburuan bistaratzeko erabiltzen du.
@@ -258,29 +274,41 @@ bind/
 \family default
  luzapenak dituzten fitxategiak dauzka; horiek LyX-en erabiltzen diren laster-te
 klak definitzen dituzte (ikusi 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:lasterbideak"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 atala).
  Norberaren hizkuntzera (internazionalizatutakoa ere deitzen zaio) moldatutako
  laster-teklen fitxategirik badago, lehenbizi hori erabiliko da.
  Xehetasun gehiagorako, ikusi 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "kapi:i18n"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 kapitulua eta 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:lasterbideak"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 atala .
 \end_layout
 
@@ -313,12 +341,16 @@ $LANG_
 \family default
  edukitzen dute, lehenbizi itzulitako horiek erabiliko dira.
  Xehetasun gehiagorako, ikusi 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "kapi:i18n"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 kapitulua .
 \end_layout
 
@@ -360,12 +392,16 @@ kbd/
 \family default
  Teklatuarentzako mapen fitxategiak ditu.
  Xehetasun gehiagorako, ikusi 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:teklatmapa"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 atala .
 \end_layout
 
@@ -376,12 +412,16 @@ atala .
 layouts/
 \family default
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "kapi:testu-klaseak"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 kapituluan azaltzen diren testu-klaseen fitxategiak ditu.
 \end_layout
 
@@ -411,12 +451,16 @@ scripts/
 templates/
 \family default
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:txantiloiak"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 kapituluan azaltzen diren LyX-eko txantiloi estandarrak ditu.
 \end_layout
 
@@ -443,12 +487,16 @@ ui/
  definitzen dute, hau da, fitxategiok zein menutan eta tresna-barran zein
  elementu agertu behar duten definitzen dute.
  Xehetasun gehiagorako, ikusi 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:ui"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 kapitulua .
 \end_layout
 
@@ -478,7 +526,10 @@ aguntza\SpecialChar \menuseparator
 \bar under
 L
 \bar default
-yX-i\InsetSpace ~
+yX-i
+\begin_inset space ~
+\end_inset
+
 buruz
 \family default
  menuarekin irekitzen den leihoan aurkezten da.
@@ -564,7 +615,10 @@ aguntza\SpecialChar \menuseparator
 \bar under
 L
 \bar default
-yX-i\InsetSpace ~
+yX-i
+\begin_inset space ~
+\end_inset
+
 buruz
 \family default
  menuko leihoa agertzen den "erabiltzailearen direktorioa" da.
@@ -637,12 +691,16 @@ an gordetzen ditu (ekimen honek eragiten duen
 preferences
 \family default
 -eko ezarpenen zerrenda 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:autodetektatuta"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 atalean ikusi ahalko duzu).
  Honek esanahi du 
 \family typewriter
@@ -666,7 +724,7 @@ TEXINPUTS
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX-ek edo zuk 
 \family typewriter
 .layout
@@ -782,12 +840,16 @@ B
 irkonfiguratu
 \family default
  menua konfigurazioa automatikoki eguneratzeko, xehetasun gehiago 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:autodetektatuta"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 atalean) eta sistemaren arabera konfigurazio-fitxategiak bereziki sortzen
  dira.
  Beraz, ez sortu 
@@ -798,9 +860,12 @@ doc/
 \end_layout
 
 \begin_layout Description
-Itzultzailearen\InsetSpace ~
-oharra: esteka sinbolikoak sortzeko komando lerroan (shell
- batean) honako agindu hau lantzen da:
+Itzultzailearen
+\begin_inset space ~
+\end_inset
+
+oharra: esteka sinbolikoak sortzeko komando lerroan (shell batean) honako
+ agindu hau lantzen da:
 \end_layout
 
 \begin_deeper
@@ -1293,10 +1358,22 @@ n tamainaren aldean inprimatzen den letra-tipoa handiagoa izan daiteke,
 \begin_layout Description
 
 \emph on
-Bandera\InsetSpace ~
-honi\InsetSpace ~
-buruzko\InsetSpace ~
-azken\InsetSpace ~
+Bandera
+\begin_inset space ~
+\end_inset
+
+honi
+\begin_inset space ~
+\end_inset
+
+buruzko
+\begin_inset space ~
+\end_inset
+
+azken
+\begin_inset space ~
+\end_inset
+
 oharra
 \emph default
 : jakin beharko zenuke ez dagoela inolako arazorik bitmap eta eskalakorrak
@@ -1393,7 +1470,8 @@ Ikus dezakezun bezala, zure letra-tipoak fintzeko Hainbat aukera dituzu.
 
 \begin_layout Section
 Lasterbideak
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:lasterbideak"
 
 \end_inset
@@ -1410,7 +1488,7 @@ Lasterbideak funtzio bat tekla bati esleitzeko erabiltzen dira.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Argi dago ni hauetariko bat naizela, ez?
 \end_layout
 
@@ -1440,12 +1518,16 @@ ErabDir/bind/
 \begin_layout Standard
 LyX-ek erabiltzailearen interfazerako nazioarteko hizkuntzen euskarria dauka
  (ikusi 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "kapi:i18n"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 kapitulua).
  Zure locale inguruneko 
 \family typewriter
@@ -1489,7 +1571,8 @@ Erreferentzia Gida
 
 \begin_layout Section
 Erabiltzailearen interfazea
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:ui"
 
 \end_inset
@@ -1529,7 +1612,10 @@ default.ui
  fitxategian.
  
 \family typewriter
-The\InsetSpace ~
+The
+\begin_inset space ~
+\end_inset
+
 Menubar
 \family default
 , 
@@ -1602,12 +1688,18 @@ LyX-ek fitxategien formatuetatik edota formatuetara bihurtzeko mekanismo
  ahaltsu bat dauka, eta horretarako kanpoko tresnetan oinarritzen da.
  Formatu bikote bat definitu, adib.
 \family typewriter
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 LaTeX
 \family default
  eta
 \family typewriter
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 PDF
 \family default
 .
@@ -1719,7 +1811,10 @@ ASCII
 
 \family typewriter
 \series medium
-roff\InsetSpace ~
+roff
+\begin_inset space ~
+\end_inset
+
 komandoa
 \family default
 \series default
@@ -1751,8 +1846,14 @@ man
 
 \family typewriter
 \series medium
-Irteerako\InsetSpace ~
-lerro\InsetSpace ~
+Irteerako
+\begin_inset space ~
+\end_inset
+
+lerro
+\begin_inset space ~
+\end_inset
+
 luzera
 \family default
 \series default
@@ -1821,14 +1922,14 @@ Hemen funtzioen eta lehenetsitako koloreen zerrenda-zati bat aurkezten dizugu:
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="3">
 <features>
-<column alignment="left" valignment="top" leftline="true" width="0pt">
-<column alignment="left" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -1853,30 +1954,30 @@ izena
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Xedea
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 (X11) Kolore lehenetsia
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -1894,7 +1995,7 @@ background
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -1921,7 +2022,7 @@ stuaren atzeko planoa
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -1937,11 +2038,11 @@ black
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -1959,7 +2060,7 @@ foreground
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 testuaren kolorea
 \end_layout
 
@@ -1968,7 +2069,7 @@ testuaren kolorea
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -1984,11 +2085,11 @@ linen
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2006,7 +2107,7 @@ latex
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2034,7 +2135,7 @@ kodea
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2050,11 +2151,11 @@ DarkRed
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2072,7 +2173,7 @@ math
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Matematika formulak
 \end_layout
 
@@ -2081,7 +2182,7 @@ Matematika formulak
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2097,11 +2198,11 @@ DarkBlue
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2119,7 +2220,7 @@ mathline
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 zatikien marrak, kortxeteak, e.a.
 \end_layout
 
@@ -2128,7 +2229,7 @@ zatikien marrak, kortxeteak, e.a.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2144,11 +2245,11 @@ Blue
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2166,7 +2267,7 @@ mathbg
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -2175,7 +2276,7 @@ mathbg
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2191,11 +2292,11 @@ AntiqueWhite
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2213,7 +2314,7 @@ mathframe
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -2222,7 +2323,7 @@ mathframe
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2238,11 +2339,11 @@ Magenta
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2260,7 +2361,7 @@ mathcursor
 <cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -2269,7 +2370,7 @@ mathcursor
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2285,11 +2386,11 @@ black
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2304,19 +2405,19 @@ selection
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 hautapenaren atzeko planoa
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2344,7 +2445,8 @@ Autodetektatutako ezarpenak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:autodetektatuta"
 
 \end_inset
@@ -2491,7 +2593,8 @@ LyX-en jokaera pertsonalizatzeko beste konfigurazio aukera asko daude.
 
 \begin_layout Chapter
 LyX internazionalizatzea 
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "kapi:i18n"
 
 \end_inset
@@ -2611,20 +2714,28 @@ gettext
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 Itzultzailearen oharra
 \emph default
 : EuskalGNU-ren gunean (
-\begin_inset LatexCommand url
-target "http://www.euskalgnu.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.euskalgnu.org
+\end_layout
 
 \end_inset
 
 ) honi buruzko dokumentazioa euskaraz ere agertzen da: 
 \emph on
-Nola\InsetSpace ~
+Nola
+\begin_inset space ~
+\end_inset
+
 gettext
 \emph default
  izenekoa.
@@ -2639,9 +2750,9 @@ gettext
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -2686,14 +2797,16 @@ xx.po
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 Egilearen oharra:
 \emph default
  Emacs erabiltzea aholkatzen dizugu, po motako fitxategiak lantzeko euskarri
  dotorea baitauka.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \emph on
 Itzultzailearen oharra
@@ -2773,9 +2886,9 @@ Kopiatu sortu berri den MO fitxategia ondoren agertzen den direktoriopean
 \end_deeper
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -2871,10 +2984,15 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Itemize
-Begiratu dokumentazioaren itzulpenaren web gunean (
-\begin_inset LatexCommand url
-name "LyX garatzaileen gunea"
-target "http://www.devel.lyx.org"
+Begiratu dokumentazioaren itzulpenaren web gunean (LyX garatzaileen gunea
+ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.devel.lyx.org
+\end_layout
 
 \end_inset
 
@@ -2942,8 +3060,13 @@ Laguntza
 \begin_layout Itemize
 Batzuetan jatorrizko dokumentua (LyX taldearen eskutik) eguneratu daiteke.
  Aldatu dena aztertzeko, erabili 
-\begin_inset LatexCommand htmlurl
-target "http://www.lyx.org/viewcvs.cgi/lyxdoc/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/viewcvs.cgi/lyxdoc/
+\end_layout
 
 \end_inset
 
@@ -2955,7 +3078,7 @@ ViewCVS
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Horretaz gain, itzuli duzun dokumentuaren ingelesezko azken bertsioa gordeta
  eduki dezakezu.
  
@@ -2981,7 +3104,10 @@ Teklatu internazionalaren euskarria
 \begin_layout Description
 
 \emph on
-Editorearen\InsetSpace ~
+Editorearen
+\begin_inset space ~
+\end_inset
+
 oharra
 \emph default
 : datorren atal hau 
@@ -3058,42 +3184,54 @@ tekla
 
 \emph on
 Izena
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 Adibidea
 \end_layout
 
 \begin_layout Quotation
 acute (acu)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 áéíóú
 \end_layout
 
 \begin_layout Quotation
 grave (gra)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 àèìòù
 \end_layout
 
 \begin_layout Quotation
 macron (mac)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
  ō
 \end_layout
 
 \begin_layout Quotation
 tilde (til)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 ñÑ
 \end_layout
 
 \begin_layout Quotation
 underbar (underb)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -3107,18 +3245,22 @@ b o
 
 \begin_layout Quotation
 cedilla (ced)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 çÇ
 \end_layout
 
 \begin_layout Quotation
 underdot (underd)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -3132,24 +3274,30 @@ d o
 
 \begin_layout Quotation
 circumflex (circu)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 âêîôû
 \end_layout
 
 \begin_layout Quotation
 circle (circl)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 ÅůŮ
 \end_layout
 
 \begin_layout Quotation
 tie (tie)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -3163,12 +3311,14 @@ t o
 
 \begin_layout Quotation
 breve (bre)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 ă
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -3182,30 +3332,38 @@ u o
 
 \begin_layout Quotation
 caron (car)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 čšž
 \end_layout
 
 \begin_layout Quotation
 hungarian umlaut (hug)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 őű
 \end_layout
 
 \begin_layout Quotation
 umlaut (uml)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 äöü
 \end_layout
 
 \begin_layout Quotation
 dot (dot)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 ż
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -3310,7 +3468,9 @@ kinclude
 fitxaIzena
 \family default
  
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 beste fitxategi bat gehitzen du (
 \family typewriter
 include
@@ -3330,7 +3490,9 @@ kprog
 programa
 \family default
  
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 kanpoko tekla-mapa bihurtzaile bat (
 \family typewriter
 define
@@ -3354,7 +3516,8 @@ kinclude
 
 \begin_layout Section
 Nazioarteko teklatu-mapa
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:teklatmapa"
 
 \end_inset
@@ -3511,7 +3674,7 @@ Honek baimenduta dauden karaktereetan karak karakterea azentua bezala jartzen
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 tekla-hila
@@ -3543,7 +3706,10 @@ baimenduta
 \family sans
 Atzera
 \family default
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 
 \family sans
 tekla
@@ -3556,7 +3722,10 @@ karak
 \family sans
 Atzera
 \family default
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 
 \family sans
 tekla
@@ -3749,7 +3918,10 @@ Horrek
 -ren efektua lortzen.
  Atzera tekla bat sakatuz, azken efektua ezeztatuko luke, beraz 
 \family typewriter
-;:Atzera\InsetSpace ~
+;:Atzera
+\begin_inset space ~
+\end_inset
+
 tekla
 \family default
  sakatzean 
@@ -3860,7 +4032,9 @@ iso-8859-7.cdef
 
 \backslash
 "{i}}" 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 192 "
 \backslash
 
@@ -3991,7 +4165,7 @@ usldead_cedilla
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 \noun on
@@ -4010,7 +4184,10 @@ John Weiss
  fitxategietan egiten dudana.
  Nire 
 \family sans
-Scroll\InsetSpace ~
+Scroll
+\begin_inset space ~
+\end_inset
+
 Lock
 \family default
  tekla 
@@ -4023,7 +4200,10 @@ usldead_*
 \family default
 " tekla sinboliko 
 \family sans
-Scroll\InsetSpace ~
+Scroll
+\begin_inset space ~
+\end_inset
+
 Lock-^
 \family default
  eta 
@@ -4062,7 +4242,8 @@ Hizkuntzaren konfigurazioa gordetzea
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:gordeHizkunt"
 
 \end_inset
@@ -4086,7 +4267,8 @@ obespenak
 
 \begin_layout Chapter
 Dokumentu-klase, diseinu eta txantiloi berriak instalatzea
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "kapi:testu-klaseak"
 
 \end_inset
@@ -4095,7 +4277,7 @@ name "kapi:testu-klaseak"
 \begin_inset OptArg
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Dokumentu-klase berriak instalatzea
 \end_layout
 
@@ -4126,9 +4308,12 @@ Dokumentu-klasea LaTeX motako fitxategia bat izaten da (
 \end_layout
 
 \begin_layout Description
-Diseinu\InsetSpace ~
-fitxategia LyX motako fitxategi bat da, eta LaTeX-eko dokumentu-klase
- bati dagokio.
+Diseinu
+\begin_inset space ~
+\end_inset
+
+fitxategia LyX motako fitxategi bat da, eta LaTeX-eko dokumentu-klase bati
+ dagokio.
  Fitxategi honek LyX-i gauzak pantailan nola bistaratu behar dituen esaten
  dio, azken finean inprimatutako bertsioaren antzeko itxura LyX-eko pantailan
  marrazteko.
@@ -4173,7 +4358,7 @@ CTAN edo beste nonbaitetik paketea eskuratu
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Ikusi 
 \emph on
 Inventory of your LaTeX configuration
@@ -4273,7 +4458,10 @@ texmf
 \family default
  direktorio lokala: adib.
 \family typewriter
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 /usr/local/texmf
 \family default
 .
@@ -4345,7 +4533,10 @@ irkonfiguratu
 \begin_layout Standard
 Orain, instalatu duzun pakete berria (adibidearekin jarraitzeko 
 \family sans
-slides\InsetSpace ~
+slides
+\begin_inset space ~
+\end_inset
+
 (FoilTeX)
 \family default
  izango litzakete) 
@@ -4525,7 +4716,7 @@ DeclareLaTeXClass[report,
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 {}
 \end_layout
@@ -4582,7 +4773,10 @@ Dokumentu-ezarpenak
 
 
 \family sans
-report\InsetSpace ~
+report
+\begin_inset space ~
+\end_inset
+
 (nireklasea)
 \family default
 " dokumentu-klasea aurkitu beharko zenuke.
@@ -4591,7 +4785,7 @@ report\InsetSpace ~
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Adibide honetan: 
 \family sans
 report
@@ -4660,7 +4854,7 @@ Diseinu bateko fitxategian
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 "Ez ezabatu azpiko lerroa; konfigurazioa horren esku baitago"
 \end_layout
 
@@ -4821,9 +5015,9 @@ Hauek parametro orokorrak dira eta dokumentu osoaren formatua deskribatzen
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -4892,8 +5086,14 @@ Dokumentu-ezarpenak
 
 \family typewriter
 \series medium
-PageStyle [plain,\InsetSpace ~
-empty,\InsetSpace ~
+PageStyle [plain,
+\begin_inset space ~
+\end_inset
+
+empty,
+\begin_inset space ~
+\end_inset
+
 headings]
 \family default
 \series default
@@ -4952,12 +5152,16 @@ End
  Atal honek dokumentu-klaseak onartzen dituen aukera global batzuk deskribatzen
  ditu.
  Xehetasun gehiago 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:classoptions"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 atalean aurkituko dituzu.
 \end_layout
 
@@ -5047,12 +5251,16 @@ DefaultFont
 \series default
  Dokumentuko letra-tipo lehenetsia deskribatzeko erabiltzen da.
  Xehetasun gehiago 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:letra-tipoak"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 atalean aurkituko duzu.
 \end_layout
 
@@ -5174,12 +5382,16 @@ End
 \series default
  Sekuentzia honek estilo berri bat definitzen du.
  Xehetasun gehiagorako, ikusi 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:style"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 atala.
 \end_layout
 
@@ -5205,12 +5417,16 @@ End
 \series default
  Sekuentzia honek mugikor berri bat definitzen du.
  Xehetasun gehiagorako, ikusi 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:mugikor"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 atala.
 \end_layout
 
@@ -5236,20 +5452,24 @@ End
 \series default
  Sekuentzia honek zenbatzaile berri bat definitzen du.
  Xehetasun gehiagorako, ikusi 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:zenbatzaile"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 atala.
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -5266,7 +5486,8 @@ ClassOptions atala
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:classoptions"
 
 \end_inset
@@ -5332,7 +5553,8 @@ Paragrafo-ingurune jakin batzuk
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:style"
 
 \end_inset
@@ -5342,7 +5564,7 @@ Paragrafo-ingurune baten deskripzioa honelakoa izan ohi da.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Jakin ezazu honek ingurune berri bat definitu edo dagoena aldatu dezakeela.
 \end_layout
 
@@ -5372,9 +5594,9 @@ Bertan honako komando hauek erabil ditzakezu:
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -5849,17 +6071,22 @@ Labeltype
  
 \family typewriter
 [No_Label, Manual, Static, Top_Environment, 
-\newline
-Centered_Top_Environment, Sensitive,
- Counter_Chapter, 
-\newline
-Counter_Section, Counter_Subsection, Counter_Subsubsection,
- 
-\newline
+\begin_inset Newline newline
+\end_inset
+
+Centered_Top_Environment, Sensitive, Counter_Chapter, 
+\begin_inset Newline newline
+\end_inset
+
+Counter_Section, Counter_Subsection, Counter_Subsubsection, 
+\begin_inset Newline newline
+\end_inset
+
 Counter_Paragraph, Counter_Subparagraph, Counter_EnumI, 
-\newline
-Counter_EnumII,
- Counter_EnumIII, Counter_EnumIV] Manual
+\begin_inset Newline newline
+\end_inset
+
+Counter_EnumII, Counter_EnumIII, Counter_EnumIV] Manual
 \family default
 -ek etiketa lehenbiziko hitza dela esanahi du (aurreneko egitazto zuriuneraino).
  
@@ -6133,7 +6360,7 @@ aragrafoa
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 \noun on
@@ -6329,12 +6556,16 @@ Font
 \series default
  Etiketa eta gorputzeko testuan erabiliko den letra-tipoa da.
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:letra-tipoak"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 atala ikusi.
  Ohartu zaitez letra-tipo hau definitzeak automatikoki 
 \family typewriter
@@ -6352,12 +6583,16 @@ TextFont
 \series default
  Gorputzeko testuan erabiliko den letra-tipoa.
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:letra-tipoak"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 atala ikusi.
 \end_layout
 
@@ -6370,12 +6605,16 @@ LabelFont
 \series default
  Etiketek erabiliko duten letra-tipoa.
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:letra-tipoak"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 atala ikusi.
 \end_layout
 
@@ -6406,7 +6645,7 @@ DependsOn
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Jabetu zaitez, funtzionalitate honetatik kanpo, hitzaurreak ordenatzeko
  biderik ez dagoela.
  LyX-eko bertsio baten ikusten duzun ordena beste azken bertsio batzuetan,
@@ -6420,9 +6659,9 @@ Jabetu zaitez, funtzionalitate honetatik kanpo, hitzaurreak ordenatzeko
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -6439,7 +6678,8 @@ Mugikorrak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:mugikor"
 
 \end_inset
@@ -6453,7 +6693,7 @@ LyX-en 1.3.0 betsiotik honantz, mugikorrak (irudia, taula, \SpecialChar \ldots{}
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Ez ahaztu hurrengo atala, zenbatzaileei buruzkoa, ere irakurtzea.
 \end_layout
 
@@ -6609,7 +6849,7 @@ h
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Jakin ezazu hizki hauen ordenak ez duela inolako garrantzirik, LaTeX-en
  gertatzen den bezala.
 \end_layout
@@ -6676,7 +6916,8 @@ Zenbatzaileak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:zenbatzaile"
 
 \end_inset
@@ -6738,7 +6979,8 @@ Letra-tipo deskripzioa
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:letra-tipoak"
 
 \end_inset
@@ -6830,7 +7072,8 @@ Color
 
 \begin_layout Section
 Txantiloiak sortzea
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:txantiloiak"
 
 \end_inset
@@ -6978,7 +7221,7 @@ Kanpoko materiala arazo hauek ebazteko erraztasunak ematen saiatzen da
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Nahiz eta irudien erraztasunak arazo guztiak ezin konpondu, oraindik baliagarria
  da zeren eta grafikoen aurrebista lerro-barnean erakusteaz gain, interfaze
  eroso batekin bihurketa geometriko aurreratuen euskarria baitu.
@@ -7026,7 +7269,7 @@ raster
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 Itzultzailearen oharra
@@ -7179,7 +7422,10 @@ ez, produktu bakoitzaren aurrebista lantzeko aukera dagoela pentsa dezakezu.
  erabaki genuen.
  Kanpoko materialaren leihoan 
 \family sans
-Ikusi\InsetSpace ~
+Ikusi
+\begin_inset space ~
+\end_inset
+
 emaitza
 \family default
  botoian klikatzen duzuenan bukerako fitxategiaren ikuspegia oinarrizko
@@ -7250,17 +7496,26 @@ Parametroak
  ditzakezu.
  Leiho horretan beste hiru botoi aurkituko dituzu: 
 \family sans
-Editatu\InsetSpace ~
+Editatu
+\begin_inset space ~
+\end_inset
+
 fitxategia
 \family default
 , 
 \family sans
-Ikusi\InsetSpace ~
+Ikusi
+\begin_inset space ~
+\end_inset
+
 emaitza
 \family default
  eta 
 \family sans
-Eguneratu\InsetSpace ~
+Eguneratu
+\begin_inset space ~
+\end_inset
+
 emaitza
 \family default
 .
@@ -7270,7 +7525,10 @@ emaitza
  dira.
  Normalki 
 \family sans
-Eguneratu\InsetSpace ~
+Eguneratu
+\begin_inset space ~
+\end_inset
+
 emaitza
 \family default
  botoia desgaituta egoten da, zeren eta txantiloi gehienek behar denean
@@ -7287,7 +7545,10 @@ eskuzko
  Kasu horietan bihurtutako fitxategia eguneratzeko zeuk (hori egin behar
  duzunean 
 \family sans
-Eguneratu\InsetSpace ~
+Eguneratu
+\begin_inset space ~
+\end_inset
+
 emaitza
 \family default
  botoia erabilita) egunera dezakezu.
@@ -7297,17 +7558,26 @@ emaitza
  Agian, etorkizunean, baliteke LyX-ek zeregin honetan zuri laguntzea.
  Txantiloia, jatorrizko fitxategia edo parametroak aldatzerakoan 
 \family sans
-Editatu\InsetSpace ~
+Editatu
+\begin_inset space ~
+\end_inset
+
 fitxategia
 \family default
 , 
 \family sans
-Ikusi\InsetSpace ~
+Ikusi
+\begin_inset space ~
+\end_inset
+
 emaitza
 \family default
  eta 
 \family sans
-Eguneratu\InsetSpace ~
+Eguneratu
+\begin_inset space ~
+\end_inset
+
 emaitza
 \family default
  botoiak erabili beharko dituzu.
@@ -7608,7 +7878,7 @@ Bezero
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 Itzultzailearen oharra
@@ -7629,7 +7899,7 @@ kin konektatzeko erabiltzen da.
  eta zerbitzariak berriz Qmail, Sendmail.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Ingelesez 
 \begin_inset Quotes eld
 \end_inset
@@ -7761,9 +8031,12 @@ funtzioa
 argumentua
 \emph default
  aukerazko argumentu bat da, eta funtzio batzuetan bakarrik dauka zentzua
- (adib.\InsetSpace ~
-"self-insert", honek argumentua kurtsorearen kokapenean testu gisa
- txertatuko luke).
+ (adib.
+\begin_inset space ~
+\end_inset
+
+"self-insert", honek argumentua kurtsorearen kokapenean testu gisa txertatuko
+ luke).
 \end_layout
 
 \begin_layout Standard
@@ -7987,7 +8260,10 @@ C-S-c
 \begin_layout Description
 
 \emph on
-Azken\InsetSpace ~
+Azken
+\begin_inset space ~
+\end_inset
+
 oharra
 \emph default
 : argi ibili zenbait leiho kudeatzailerekin (FVWM bezalakoa) zenbait funtzio
@@ -8009,7 +8285,10 @@ hitza-aurrera
 \begin_layout Description
 
 \emph on
-Itzultzailearen\InsetSpace ~
+Itzultzailearen
+\begin_inset space ~
+\end_inset
+
 oharra
 \emph default
 : hemen agertzen diren lasterbide asko ingelesari eta, gainera, LyX-eko
@@ -8130,7 +8409,10 @@ Fitxategia
 \labelwidthstring 00.00.0000
 
 \family sans
-M-f\InsetSpace ~
+M-f
+\begin_inset space ~
+\end_inset
+
 a
 \family default
  
@@ -8142,7 +8424,10 @@ buffer-write-as
 \labelwidthstring 00.00.0000
 
 \family sans
-M-f\InsetSpace ~
+M-f
+\begin_inset space ~
+\end_inset
+
 c
 \family default
  
@@ -8154,7 +8439,10 @@ buffer-close
 \labelwidthstring 00.00.0000
 
 \family sans
-M-f\InsetSpace ~
+M-f
+\begin_inset space ~
+\end_inset
+
 d
 \family default
  
@@ -8166,7 +8454,10 @@ buffer-reload
 \labelwidthstring 00.00.0000
 
 \family sans
-M-f\InsetSpace ~
+M-f
+\begin_inset space ~
+\end_inset
+
 e
 \family default
  
@@ -8180,7 +8471,10 @@ file_export
 \labelwidthstring 00.00.0000
 
 \family sans
-M-f\InsetSpace ~
+M-f
+\begin_inset space ~
+\end_inset
+
 f
 \family default
  
@@ -8192,7 +8486,10 @@ buffer-export fax
 \labelwidthstring 00.00.0000
 
 \family sans
-M-f\InsetSpace ~
+M-f
+\begin_inset space ~
+\end_inset
+
 i
 \family default
  
@@ -8206,7 +8503,10 @@ file_import
 \labelwidthstring 00.00.0000
 
 \family sans
-M-f\InsetSpace ~
+M-f
+\begin_inset space ~
+\end_inset
+
 n
 \family default
  
@@ -8218,7 +8518,10 @@ buffer-new
 \labelwidthstring 00.00.0000
 
 \family sans
-M-f\InsetSpace ~
+M-f
+\begin_inset space ~
+\end_inset
+
 o
 \family default
  
@@ -8230,7 +8533,10 @@ buffer-open
 \labelwidthstring 00.00.0000
 
 \family sans
-M-f\InsetSpace ~
+M-f
+\begin_inset space ~
+\end_inset
+
 p
 \family default
  
@@ -8242,7 +8548,10 @@ buffer-print
 \labelwidthstring 00.00.0000
 
 \family sans
-M-f\InsetSpace ~
+M-f
+\begin_inset space ~
+\end_inset
+
 s
 \family default
  
@@ -8254,7 +8563,10 @@ buffer-write
 \labelwidthstring 00.00.0000
 
 \family sans
-M-f\InsetSpace ~
+M-f
+\begin_inset space ~
+\end_inset
+
 t
 \family default
  
@@ -8266,7 +8578,10 @@ buffer-new-template
 \labelwidthstring 00.00.0000
 
 \family sans
-M-f\InsetSpace ~
+M-f
+\begin_inset space ~
+\end_inset
+
 v
 \family default
  
@@ -8348,7 +8663,10 @@ vc-undo-last
 \labelwidthstring 00.00.0000
 
 \family sans
-M-f\InsetSpace ~
+M-f
+\begin_inset space ~
+\end_inset
+
 x
 \family default
  
@@ -8364,7 +8682,10 @@ Editatu
 \labelwidthstring 00.00.0000
 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 a
 \family default
  
@@ -8376,7 +8697,10 @@ paste
 \labelwidthstring 00.00.0000
 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 c
 \family default
  
@@ -8388,7 +8712,10 @@ cut
 \labelwidthstring 00.00.0000
 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 d
 \family default
  
@@ -8400,7 +8727,10 @@ redo
 \labelwidthstring 00.00.0000
 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 e
 \family default
  
@@ -8412,7 +8742,10 @@ error-remove-all
 \labelwidthstring 00.00.0000
 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 f
 \family default
  
@@ -8424,7 +8757,10 @@ find-replace
 \labelwidthstring 00.00.0000
 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 h
 \family default
  
@@ -8436,7 +8772,10 @@ buffer-chktex
 \labelwidthstring 00.00.0000
 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 i
 \family default
  
@@ -8617,7 +8956,10 @@ tabular-feature delete-row
 \labelwidthstring 00.00.0000
 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 l
 \family default
  
@@ -8697,7 +9039,10 @@ floats-operate closefig
 \labelwidthstring 00.00.0000
 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 o
 \family default
  
@@ -8709,7 +9054,10 @@ copy
 \labelwidthstring 00.00.0000
 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 p
 \family default
  
@@ -8723,7 +9071,10 @@ dialog-preferences
 \labelwidthstring 00.00.0000
 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 r
 \family default
  
@@ -8735,7 +9086,10 @@ reconfigure
 \labelwidthstring 00.00.0000
 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 s
 \family default
  
@@ -8747,7 +9101,10 @@ spellchecker
 \labelwidthstring 00.00.0000
 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 t
 \family default
  
@@ -8761,7 +9118,10 @@ edit_tabular
 \labelwidthstring 00.00.0000
 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 u
 \family default
  
@@ -8773,7 +9133,10 @@ undo
 \labelwidthstring 00.00.0000
 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 x
 \family default
  
@@ -8815,7 +9178,10 @@ Txertatu
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 a
 \family default
  
@@ -8886,7 +9252,10 @@ buffer-float-insert wide-fig
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 b
 \family default
  
@@ -8898,7 +9267,10 @@ dialog-tabular-insert
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 c
 \family default
  
@@ -8910,7 +9282,10 @@ citation-insert
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 d
 \family default
  
@@ -8922,7 +9297,10 @@ math-display
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 e
 \family default
  
@@ -8934,7 +9312,10 @@ buffer-child-insert
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 f
 \family default
  
@@ -8946,7 +9327,10 @@ footnote-insert
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 g
 \family default
  
@@ -8958,7 +9342,10 @@ figure-insert
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 h
 \family default
  
@@ -8970,7 +9357,10 @@ math-mode
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 i
 \family default
  
@@ -8982,7 +9372,10 @@ index-insert
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 l
 \family default
  
@@ -8994,7 +9387,10 @@ label-insert
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 m
 \family default
  
@@ -9006,7 +9402,10 @@ marginpar-insert
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 n
 \family default
  
@@ -9018,7 +9417,10 @@ note-insert
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 o
 \family default
  
@@ -9100,7 +9502,10 @@ lot-insert
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 r
 \family default
  
@@ -9112,7 +9517,10 @@ reference-insert
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 s
 \family default
  
@@ -9238,7 +9646,10 @@ command-sequence math-insert _;math-mode;
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 t
 \family default
  
@@ -9287,7 +9698,10 @@ file-insert
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 u
 \family default
  
@@ -9299,7 +9713,10 @@ url-insert
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 w
 \family default
  
@@ -9311,7 +9728,10 @@ index-insert-last
 \labelwidthstring 00.00.0000
 
 \family sans
-M-i\InsetSpace ~
+M-i
+\begin_inset space ~
+\end_inset
+
 x
 \family default
  
@@ -9327,7 +9747,10 @@ Diseinua
 \labelwidthstring 00.00.0000
 
 \family sans
-M-l\InsetSpace ~
+M-l
+\begin_inset space ~
+\end_inset
+
 a
 \family default
  
@@ -9339,7 +9762,10 @@ appendix
 \labelwidthstring 00.00.0000
 
 \family sans
-M-l\InsetSpace ~
+M-l
+\begin_inset space ~
+\end_inset
+
 b
 \family default
  
@@ -9351,7 +9777,10 @@ font-bold
 \labelwidthstring 00.00.0000
 
 \family sans
-M-l\InsetSpace ~
+M-l
+\begin_inset space ~
+\end_inset
+
 c
 \family default
  
@@ -9363,7 +9792,10 @@ layout-character
 \labelwidthstring 00.00.0000
 
 \family sans
-M-l\InsetSpace ~
+M-l
+\begin_inset space ~
+\end_inset
+
 d
 \family default
  
@@ -9375,7 +9807,10 @@ layout-document
 \labelwidthstring 00.00.0000
 
 \family sans
-M-l\InsetSpace ~
+M-l
+\begin_inset space ~
+\end_inset
+
 e
 \family default
  
@@ -9387,7 +9822,10 @@ font-emph
 \labelwidthstring 00.00.0000
 
 \family sans
-M-l\InsetSpace ~
+M-l
+\begin_inset space ~
+\end_inset
+
 l
 \family default
  
@@ -9399,7 +9837,10 @@ layout-preamble
 \labelwidthstring 00.00.0000
 
 \family sans
-M-l\InsetSpace ~
+M-l
+\begin_inset space ~
+\end_inset
+
 n
 \family default
  
@@ -9411,7 +9852,10 @@ font-noun
 \labelwidthstring 00.00.0000
 
 \family sans
-M-l\InsetSpace ~
+M-l
+\begin_inset space ~
+\end_inset
+
 p
 \family default
  
@@ -9423,7 +9867,10 @@ layout-paragraph
 \labelwidthstring 00.00.0000
 
 \family sans
-M-l\InsetSpace ~
+M-l
+\begin_inset space ~
+\end_inset
+
 s
 \family default
  
@@ -9435,7 +9882,10 @@ layout-save-default
 \labelwidthstring 00.00.0000
 
 \family sans
-M-l\InsetSpace ~
+M-l
+\begin_inset space ~
+\end_inset
+
 t
 \family default
  
@@ -9447,7 +9897,10 @@ layout-tabular
 \labelwidthstring 00.00.0000
 
 \family sans
-M-l\InsetSpace ~
+M-l
+\begin_inset space ~
+\end_inset
+
 v
 \family default
  
@@ -9459,7 +9912,10 @@ depth-increment
 \labelwidthstring 00.00.0000
 
 \family sans
-M-l\InsetSpace ~
+M-l
+\begin_inset space ~
+\end_inset
+
 x
 \family default
  
@@ -9480,7 +9936,10 @@ Karakterea
 \labelwidthstring 00.00.0000
 
 \family sans
-M-c\InsetSpace ~
+M-c
+\begin_inset space ~
+\end_inset
+
 b
 \family default
  
@@ -9492,7 +9951,10 @@ font-bold
 \labelwidthstring 00.00.0000
 
 \family sans
-M-c\InsetSpace ~
+M-c
+\begin_inset space ~
+\end_inset
+
 c
 \family default
  
@@ -9504,7 +9966,10 @@ font-noun
 \labelwidthstring 00.00.0000
 
 \family sans
-M-c\InsetSpace ~
+M-c
+\begin_inset space ~
+\end_inset
+
 e
 \family default
  
@@ -9516,7 +9981,10 @@ font-emph
 \labelwidthstring 00.00.0000
 
 \family sans
-M-c\InsetSpace ~
+M-c
+\begin_inset space ~
+\end_inset
+
 m
 \family default
  
@@ -9528,7 +9996,10 @@ math-mode
 \labelwidthstring 00.00.0000
 
 \family sans
-M-c\InsetSpace ~
+M-c
+\begin_inset space ~
+\end_inset
+
 p
 \family default
  
@@ -9540,7 +10011,10 @@ font-code
 \labelwidthstring 00.00.0000
 
 \family sans
-M-c\InsetSpace ~
+M-c
+\begin_inset space ~
+\end_inset
+
 r
 \family default
  
@@ -9552,7 +10026,10 @@ font-roman
 \labelwidthstring 00.00.0000
 
 \family sans
-M-c\InsetSpace ~
+M-c
+\begin_inset space ~
+\end_inset
+
 s
 \family default
  
@@ -9564,7 +10041,10 @@ font-sans
 \labelwidthstring 00.00.0000
 
 \family sans
-M-c\InsetSpace ~
+M-c
+\begin_inset space ~
+\end_inset
+
 t
 \family default
  
@@ -9576,7 +10056,10 @@ tex-mode
 \labelwidthstring 00.00.0000
 
 \family sans
-M-c\InsetSpace ~
+M-c
+\begin_inset space ~
+\end_inset
+
 u
 \family default
  
@@ -9588,7 +10071,10 @@ font-underline
 \labelwidthstring 00.00.0000
 
 \family sans
-M-c\InsetSpace ~
+M-c
+\begin_inset space ~
+\end_inset
+
 space
 \family default
  
@@ -9600,7 +10086,10 @@ font-default
 \labelwidthstring 00.00.0000
 
 \family sans
-M-c\InsetSpace ~
+M-c
+\begin_inset space ~
+\end_inset
+
 Down
 \family default
  
@@ -9612,7 +10101,10 @@ word-lowcase
 \labelwidthstring 00.00.0000
 
 \family sans
-M-c\InsetSpace ~
+M-c
+\begin_inset space ~
+\end_inset
+
 Up
 \family default
  
@@ -9624,7 +10116,10 @@ word-upcase
 \labelwidthstring 00.00.0000
 
 \family sans
-M-c\InsetSpace ~
+M-c
+\begin_inset space ~
+\end_inset
+
 Right
 \family default
  
@@ -9636,7 +10131,10 @@ word-capitalize
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 h
 \family default
  
@@ -9648,7 +10146,10 @@ font-size huge
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 l
 \family default
  
@@ -9660,7 +10161,10 @@ font-size large
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 n
 \family default
  
@@ -9672,7 +10176,10 @@ font-size normal
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 s
 \family default
  
@@ -9684,7 +10191,10 @@ font-size small
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 t
 \family default
  
@@ -9696,7 +10206,10 @@ font-size tiny
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 0
 \family default
  
@@ -9708,7 +10221,10 @@ font-size huger
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 1
 \family default
  
@@ -9720,7 +10236,10 @@ font-size tiny
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 2
 \family default
  
@@ -9732,7 +10251,10 @@ font-size smallest
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 3
 \family default
  
@@ -9744,7 +10266,10 @@ font-size smaller
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 4
 \family default
  
@@ -9756,7 +10281,10 @@ font-size small
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 5
 \family default
  
@@ -9768,7 +10296,10 @@ font-size normal
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 6
 \family default
  
@@ -9780,7 +10311,10 @@ font-size large
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 7
 \family default
  
@@ -9792,7 +10326,10 @@ font-size larger
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 8
 \family default
  
@@ -9804,7 +10341,10 @@ font-size largest
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 9
 \family default
  
@@ -9816,7 +10356,10 @@ font-size huge
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 S-H
 \family default
  
@@ -9828,7 +10371,10 @@ font-size huger
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 S-L
 \family default
  
@@ -9840,7 +10386,10 @@ font-size larger
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 S-S
 \family default
  
@@ -9852,7 +10401,10 @@ font-size smaller
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 plus
 \family default
  
@@ -9864,7 +10416,10 @@ font-size increase
 \labelwidthstring 00.00.0000
 
 \family sans
-M-s\InsetSpace ~
+M-s
+\begin_inset space ~
+\end_inset
+
 minus
 \family default
  
@@ -9892,7 +10447,10 @@ Paragrafo-estiloa
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 a
 \family default
  
@@ -9904,7 +10462,10 @@ layout Abstract
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 b
 \family default
  
@@ -9916,7 +10477,10 @@ layout Itemize
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 c
 \family default
  
@@ -9928,7 +10492,10 @@ layout LyXCode
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 d
 \family default
  
@@ -9940,7 +10507,10 @@ layout Description
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 e
 \family default
  
@@ -9952,7 +10522,10 @@ layout Enumerate
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 f
 \family default
  
@@ -9964,7 +10537,10 @@ layout ShortFoilhead
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 i
 \family default
  
@@ -9976,7 +10552,10 @@ layout Itemize
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 l
 \family default
  
@@ -9988,7 +10567,10 @@ layout List
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 n
 \family default
  
@@ -10000,7 +10582,10 @@ layout Enumerate
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 q
 \family default
  
@@ -10012,7 +10597,10 @@ layout Quote
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 r
 \family default
  
@@ -10024,7 +10612,10 @@ layout ShortRotatefoilhead
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 s
 \family default
  
@@ -10036,7 +10627,10 @@ layout Standard
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 t
 \family default
  
@@ -10048,7 +10642,10 @@ layout Title
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 v
 \family default
  
@@ -10060,7 +10657,10 @@ layout Verse
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 space
 \family default
  
@@ -10074,7 +10674,10 @@ drop-layouts-choice
 \family sans
 M-p
 \noun on
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 0
 \family default
 \noun default
@@ -10089,7 +10692,10 @@ layout Part
 \family sans
 M-p
 \noun on
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 1
 \family default
 \noun default
@@ -10102,7 +10708,10 @@ layout Chapter
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 2
 \family default
  
@@ -10114,7 +10723,10 @@ layout Section
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 3
 \family default
  
@@ -10126,7 +10738,10 @@ layout Subsection
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 4
 \family default
  
@@ -10138,7 +10753,10 @@ layout Subsubsection
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 5
 \family default
  
@@ -10150,7 +10768,10 @@ layout Paragraph
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 6
 \family default
  
@@ -10162,8 +10783,14 @@ layout Subparagraph
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
-asterisk\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
+asterisk
+\begin_inset space ~
+\end_inset
+
 0
 \family default
  
@@ -10175,8 +10802,14 @@ layout Part*
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
-asterisk\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
+asterisk
+\begin_inset space ~
+\end_inset
+
 1
 \family default
  
@@ -10188,8 +10821,14 @@ layout Chapter*
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
-asterisk\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
+asterisk
+\begin_inset space ~
+\end_inset
+
 2
 \family default
  
@@ -10201,8 +10840,14 @@ layout Section*
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
-asterisk\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
+asterisk
+\begin_inset space ~
+\end_inset
+
 3
 \family default
  
@@ -10214,8 +10859,14 @@ layout Subsection*
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
-asterisk\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
+asterisk
+\begin_inset space ~
+\end_inset
+
 4
 \family default
  
@@ -10227,8 +10878,14 @@ layout Subsubsection*
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
-asterisk\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
+asterisk
+\begin_inset space ~
+\end_inset
+
 5
 \family default
  
@@ -10240,8 +10897,14 @@ layout Paragraph*
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
-asterisk\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
+asterisk
+\begin_inset space ~
+\end_inset
+
 6
 \family default
  
@@ -10253,7 +10916,10 @@ layout Subparagraph*
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 S-A
 \family default
  
@@ -10265,7 +10931,10 @@ layout Author
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 S-B
 \family default
  
@@ -10277,7 +10946,10 @@ layout Bibliography
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 S-C
 \family default
  
@@ -10289,7 +10961,10 @@ layout Comment
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 S-D
 \family default
  
@@ -10301,7 +10976,10 @@ layout Date
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 S-F
 \family default
  
@@ -10313,7 +10991,10 @@ layout Foilhead
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 S-L
 \family default
  
@@ -10325,7 +11006,10 @@ layout LaTeX
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 S-Q
 \family default
  
@@ -10337,7 +11021,10 @@ layout Quotation
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 S-R
 \family default
  
@@ -10349,7 +11036,10 @@ layout Rotatefoilhead
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 C-a
 \family default
  
@@ -10361,7 +11051,10 @@ layout RightAddress
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 M-a
 \family default
  
@@ -10373,7 +11066,10 @@ layout Address
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 M-c
 \family default
  
@@ -10385,7 +11081,10 @@ layout Caption
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 Left
 \family default
  
@@ -10397,7 +11096,10 @@ depth-decrement
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 Right
 \family default
  
@@ -10414,7 +11116,10 @@ Hauek guztiak atzerako konpatibilitatea mantentzeko daude, baina qwerty
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 S-at
 \family default
  
@@ -10426,7 +11131,10 @@ layout Section*
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 S-dollar
 \family default
  
@@ -10438,7 +11146,10 @@ layout Subsubsection*
 \labelwidthstring 00.00.0000
 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 S-numbersign
 \family default
  
@@ -10693,7 +11404,10 @@ layout-paste
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 a
 \family default
  
@@ -10705,7 +11419,10 @@ buffer-auto-save
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 b
 \family default
  
@@ -10717,7 +11434,10 @@ buffer-previous
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 c
 \family default
  
@@ -10729,7 +11449,10 @@ lyx-quit
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 d
 \family default
  
@@ -10741,8 +11464,14 @@ buffer-new
 \labelwidthstring 00.00.0000
 
 \family sans
-?\InsetSpace ~
-C-x\InsetSpace ~
+?
+\begin_inset space ~
+\end_inset
+
+C-x
+\begin_inset space ~
+\end_inset
+
 f
 \family default
  
@@ -10754,7 +11483,10 @@ buffer-open
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 g
 \family default
  
@@ -10766,7 +11498,10 @@ buffer-view-ps
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 k
 \family default
  
@@ -10778,7 +11513,10 @@ buffer-close
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 p
 \family default
  
@@ -10790,7 +11528,10 @@ buffer-view
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 r
 \family default
  
@@ -10802,8 +11543,14 @@ buffer-typeset
 \labelwidthstring 00.00.0000
 
 \family sans
-?\InsetSpace ~
-C-x\InsetSpace ~
+?
+\begin_inset space ~
+\end_inset
+
+C-x
+\begin_inset space ~
+\end_inset
+
 s
 \family default
  
@@ -10815,7 +11562,10 @@ buffer-write
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 t
 \family default
  
@@ -10827,7 +11577,10 @@ buffer-typeset
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 u
 \family default
  
@@ -10839,8 +11592,14 @@ undo
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
-v\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
+v
+\begin_inset space ~
+\end_inset
+
 c
 \family default
  
@@ -10852,8 +11611,14 @@ vc-undo-last
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
-v\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
+v
+\begin_inset space ~
+\end_inset
+
 h
 \family default
  
@@ -10865,8 +11630,14 @@ vc-history
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
-v\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
+v
+\begin_inset space ~
+\end_inset
+
 i
 \family default
  
@@ -10878,8 +11649,14 @@ vc-register
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
-v\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
+v
+\begin_inset space ~
+\end_inset
+
 u
 \family default
  
@@ -10891,8 +11668,14 @@ vc-revert
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
-v\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
+v
+\begin_inset space ~
+\end_inset
+
 v
 \family default
  
@@ -10904,8 +11687,14 @@ vc-check-in
 \labelwidthstring 00.00.0000
 
 \family sans
-?\InsetSpace ~
-C-x\InsetSpace ~
+?
+\begin_inset space ~
+\end_inset
+
+C-x
+\begin_inset space ~
+\end_inset
+
 w
 \family default
  
@@ -10917,7 +11706,10 @@ buffer-write-as
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 bracketleft
 \family default
  
@@ -10929,7 +11721,10 @@ screen-up
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 bracketright
 \family default
  
@@ -10941,7 +11736,10 @@ screen-down
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 C-a
 \family default
  
@@ -10953,7 +11751,10 @@ buffer-auto-save
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 C-b
 \family default
  
@@ -10965,7 +11766,10 @@ menu-open Documents
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 C-c
 \family default
  
@@ -10977,7 +11781,10 @@ lyx-quit
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 C-d
 \family default
  
@@ -10989,7 +11796,10 @@ buffer-new
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 C-f
 \family default
  
@@ -11001,7 +11811,10 @@ buffer-open
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 C-g
 \family default
  
@@ -11013,7 +11826,10 @@ buffer-view-ps
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 C-p
 \family default
  
@@ -11025,7 +11841,10 @@ buffer-view
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 C-q
 \family default
  
@@ -11037,7 +11856,10 @@ buffer-toggle-read-only
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 C-s
 \family default
  
@@ -11049,7 +11871,10 @@ buffer-write
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 C-t
 \family default
  
@@ -11061,7 +11886,10 @@ buffer-typeset
 \labelwidthstring 00.00.0000
 
 \family sans
-C-x\InsetSpace ~
+C-x
+\begin_inset space ~
+\end_inset
+
 C-w
 \family default
  
@@ -11559,17 +12387,6 @@ C-f
  
 \family typewriter
 find-replace
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-C-g
-\family default
- 
-\family typewriter
-error-next
 \end_layout
 
 \begin_layout Labeling
@@ -13548,7 +14365,10 @@ atematika
 \labelwidthstring 00.00.0000
 
 \family sans
-C-s\InsetSpace ~
+C-s
+\begin_inset space ~
+\end_inset
+
 S-plus
 \family default
  
@@ -13576,7 +14396,10 @@ Daga
 \labelwidthstring 00.00.0000
 
 \family sans
-C-s\InsetSpace ~
+C-s
+\begin_inset space ~
+\end_inset
+
 equal
 \family default
  
@@ -13719,7 +14542,10 @@ geq
 \labelwidthstring 00.00.0000
 
 \family sans
-C-s\InsetSpace ~
+C-s
+\begin_inset space ~
+\end_inset
+
 S-less
 \family default
  
@@ -13747,7 +14573,10 @@ Askoz ere txikiagoa
 \labelwidthstring 00.00.0000
 
 \family sans
-C-s\InsetSpace ~
+C-s
+\begin_inset space ~
+\end_inset
+
 S-greater
 \family default
  
@@ -13779,7 +14608,10 @@ A.3.4 Matematikako lasterbide estandarrak
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 b
 \family default
  
@@ -13793,7 +14625,10 @@ overline
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 d
 \family default
  
@@ -13805,7 +14640,10 @@ math-display
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 e
 \family default
  
@@ -13817,7 +14655,10 @@ math-insert ^
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 f
 \family default
  
@@ -13831,7 +14672,10 @@ frac
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 g
 \family default
  
@@ -13843,7 +14687,10 @@ math-greek
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 h
 \family default
  
@@ -13855,7 +14702,10 @@ accent-circumflex
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 i
 \family default
  
@@ -13869,7 +14719,10 @@ int
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 l
 \family default
  
@@ -13881,7 +14734,10 @@ math-limits
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 m
 \family default
  
@@ -13893,7 +14749,10 @@ math-mode
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 n
 \family default
  
@@ -13905,7 +14764,10 @@ math-number
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 o
 \family default
  
@@ -13919,7 +14781,10 @@ oint
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 p
 \family default
  
@@ -13933,7 +14798,10 @@ partial
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 r
 \family default
  
@@ -13947,7 +14815,10 @@ sqrt
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 s
 \family default
  
@@ -13961,7 +14832,10 @@ sqrt
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 u
 \family default
  
@@ -13975,7 +14849,10 @@ sum
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 v
 \family default
  
@@ -13989,7 +14866,10 @@ vec
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 x
 \family default
  
@@ -14001,7 +14881,10 @@ math-insert _
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 8
 \family default
  
@@ -14015,7 +14898,10 @@ infty
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 S-G
 \family default
  
@@ -14027,7 +14913,10 @@ math-greek-toggle
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 S-N
 \family default
  
@@ -14039,7 +14928,10 @@ math-nonumber
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 S-period
 \family default
  
@@ -14051,7 +14943,10 @@ accent-dot
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 S-asciitilde
 \family default
  
@@ -14063,7 +14958,10 @@ accent-tilde
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 S-apostrophe
 \family default
  
@@ -14077,7 +14975,10 @@ prime
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 S-parenleft
 \family default
  
@@ -14089,7 +14990,10 @@ math-delim ( )
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 S-bracketleft
 \family default
  
@@ -14101,7 +15005,10 @@ math-delim [ ]
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 S-braceleft
 \family default
  
@@ -14113,7 +15020,10 @@ math-delim { }
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 S-less
 \family default
  
@@ -14125,7 +15035,10 @@ math-delim langle rangle
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 S-greater
 \family default
  
@@ -14137,7 +15050,10 @@ math-delim rangle langle
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 S-bar
 \family default
  
@@ -14149,7 +15065,10 @@ math-delim | |
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 S-plus
 \family default
  
@@ -14163,7 +15082,10 @@ pm
 \labelwidthstring 00.00.0000
 
 \family sans
-M-m\InsetSpace ~
+M-m
+\begin_inset space ~
+\end_inset
+
 S-equal
 \family default
  
@@ -14181,7 +15103,10 @@ Beste azeleratzaileak
 \labelwidthstring 00.00.0000
 
 \family sans
-M-k\InsetSpace ~
+M-k
+\begin_inset space ~
+\end_inset
+
 o
 \family default
  
@@ -14193,7 +15118,10 @@ keymap-off
 \labelwidthstring 00.00.0000
 
 \family sans
-M-k\InsetSpace ~
+M-k
+\begin_inset space ~
+\end_inset
+
 t
 \family default
  
@@ -14205,7 +15133,10 @@ keymap-toggle
 \labelwidthstring 00.00.0000
 
 \family sans
-M-k\InsetSpace ~
+M-k
+\begin_inset space ~
+\end_inset
+
 x
 \family default
  
@@ -14217,7 +15148,10 @@ keymap-off
 \labelwidthstring 00.00.0000
 
 \family sans
-M-k\InsetSpace ~
+M-k
+\begin_inset space ~
+\end_inset
+
 1
 \family default
  
@@ -14229,7 +15163,10 @@ keymap-primary
 \labelwidthstring 00.00.0000
 
 \family sans
-M-k\InsetSpace ~
+M-k
+\begin_inset space ~
+\end_inset
+
 2
 \family default
  
