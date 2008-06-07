@@ -97,7 +97,6 @@
 #\bind "C-x w"                  "buffer-write-as"
 \bind "C-x bracketleft"        "screen-up"
 \bind "C-x bracketright"       "screen-down"
-\bind "C-x quoteleft"		"error-next"
 \bind "C-x C-a"                "buffer-auto-save"
 \bind "C-x C-b"                "menu-open view"	# list all buffers
 \bind "C-x C-c"                "lyx-quit"
@@ -261,7 +260,6 @@
 #  similar here.
 ##
 \bind "C-c C-l"                 "dialog-show latexlog"        # show warning log
-\bind "C-c C-o"                 "error-next"
 \bind "C-c C-v"                 "buffer-chktex"         # validate
 
 \bind "C-z space"		"drop-layouts-choice"
@@ -308,8 +306,6 @@
 \bind "C-c C-f C-t"		"font-typewriter"  #typewriter
 
 \bind "C-c ~S-asciitilde"		"math-mode"
-
-\bind "C-c quoteleft"		"error-next"
 
 \bind "C-c C-s 0"		"layout Standard"
 \bind "C-c C-s 1"		"layout Chapter"
