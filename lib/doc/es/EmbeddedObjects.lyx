@@ -1,5 +1,5 @@
-#LyX 1.6.0beta2 created this file. For more info see http://www.lyx.org/
-\lyxformat 335
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 336
 \begin_document
 \begin_header
 \textclass scrbook
@@ -177,6 +177,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -27056,18 +27057,12 @@ status open
 \series bold
 Nota:
 \series default
- 
-\lang english
-The vertical box aligment can be lost in the output when you have two boxes
- in a line and one has e.
+ La alineación vertical puede desaparecer en la salida si hay dos cuadros
+ en una línea y, p.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
-\begin_inset space ~
-\end_inset
-
-a shadow and the other one not.
+e., uno de ellos tiene sombreado y el otro no.
 \end_layout
 
 \end_inset
