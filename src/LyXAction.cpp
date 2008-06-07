@@ -525,6 +525,12 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_NOTE_INSERT, "note-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_NOTE_NEXT
+ * \li Action: Moves the cursor to the begining of next Note inset.
+ * \li Syntax: note-next
+ * \endvar
+ */
 		{ LFUN_NOTE_NEXT, "note-next", ReadOnly, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_NEWLINE_INSERT
