@@ -516,12 +516,20 @@ void LyXAction::init()
  */
 		{ LFUN_NOMENCL_PRINT, "nomencl-print", Noop, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_NOTE_INSERT
+ * \li Action: Inserts Note on the current cursor postion,
+               move selection inside the inset.
+ * \li Syntax: note-insert [<TYPE>]
+ * \li Params: <TYPE>: <Note|Greyedout|Comment> default: Note
+ * \endvar
+ */
 		{ LFUN_NOTE_INSERT, "note-insert", Noop, Edit },
 		{ LFUN_NOTE_NEXT, "note-next", ReadOnly, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_NEWLINE_INSERT
  * \li Action: Inserts a line break or new line.
- * \li Syntax: newline-insert <ARG>
+ * \li Syntax: newline-insert [<ARG>]
  * \li Params: <ARG>: <newline|linebreak> default: newline
  * \li Origin: JSpitzm, 25 Mar 2008
  * \endvar
