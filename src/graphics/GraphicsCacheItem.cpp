@@ -145,7 +145,10 @@ bool CacheItem::tryDisplayFormat() const
 		pimpl_->reset();
 	FileName filename;
 	string from;
-	return pimpl_->tryDisplayFormat(filename, from);
+	bool const success = pimpl_->tryDisplayFormat(filename, from);
+	if (!success)
+		pimpl_->reset();
+	return success;
 }
 
 
