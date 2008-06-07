@@ -37,6 +37,8 @@ Win32/packaging/installer/include/filelist.nsh \
 Win32/packaging/installer/include/gui.nsh \
 Win32/packaging/installer/include/init.nsh \
 Win32/packaging/installer/include/langlist.nsh \
+Win32/packaging/installer/include/nsis.nsh \
+Win32/packaging/installer/include/variables.nsh \
 Win32/packaging/installer/lang/english.nsh \
 Win32/packaging/installer/lang/french.nsh \
 Win32/packaging/installer/lang/german.nsh \
@@ -128,6 +130,7 @@ Win32/packaging/AltInstaller/specials/preferences \
 Win32/packaging/AltInstaller/specials/session \
 Win32/packaging/build_msvs_debug.bat \
 Win32/packaging/build_msvc.bat \
+Win32/packaging/Microsoft.VC90.CRT.manifest \
 Win32/pdfview/pdfview.nsi \
 Win32/patches/mingw/aspell-0.60.4.patch \
 Win32/patches/mingw/gettext-0.14.5.patch \
