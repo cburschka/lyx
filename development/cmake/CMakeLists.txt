@@ -136,7 +136,7 @@ else()
 endif()
 set(aspell)
 
-if(WIN32)
+if(WIN32 OR APPLE)
 	set(use_external_libintl TRUE)
 endif()
 
