@@ -916,9 +916,35 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_THESAURUS_ENTRY, "thesaurus-entry", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_BEGIN
+ * \li Action: Move the cursor to the beginning of the document.
+ * \li Syntax: buffer-begin
+ * \endvar
+ */
 		{ LFUN_BUFFER_BEGIN, "buffer-begin", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_BEGIN_SELECT
+ * \li Action: Move the cursor to the beginning of the document adding the
+               traversed text to the selection.
+ * \li Syntax: buffer-begin-select
+ * \endvar
+ */
 		{ LFUN_BUFFER_BEGIN_SELECT, "buffer-begin-select", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_END
+ * \li Action: Move the cursor to the end of the document.
+ * \li Syntax: buffer-end
+ * \endvar
+ */
 		{ LFUN_BUFFER_END, "buffer-end", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_END_SELECT
+ * \li Action: Move the cursor to the end of the document adding the
+               traversed text to the selection.
+ * \li Syntax: buffer-end-select
+ * \endvar
+ */
 		{ LFUN_BUFFER_END_SELECT, "buffer-end-select", ReadOnly, Edit },
 
 		{ LFUN_LINE_BEGIN, "line-begin", ReadOnly | NoUpdate, Edit },
