@@ -947,11 +947,37 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_END_SELECT, "buffer-end-select", ReadOnly, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_LINE_BEGIN
+ * \li Action: Move the cursor to the begining of the (screen) line.
+ * \li Syntax: line-begin
+ * \endvar
+ */
 		{ LFUN_LINE_BEGIN, "line-begin", ReadOnly | NoUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_LINE_BEGIN_SELECT
+ * \li Action: Move the cursor to the beginning of the (screen) line adding the
+               traversed text to the selection.
+ * \li Syntax: line-begin-select
+ * \endvar
+ */
 		{ LFUN_LINE_BEGIN_SELECT, "line-begin-select", ReadOnly | SingleParUpdate, Edit },
-		{ LFUN_LINE_DELETE, "line-delete-forward", Noop, Edit }, // there is no line-delete-backward
+/*!
+ * \var lyx::FuncCode lyx::LFUN_LINE_END
+ * \li Action: Move the cursor to the end of the (screen) line.
+ * \li Syntax: line-end
+ * \endvar
+ */
 		{ LFUN_LINE_END, "line-end", ReadOnly | NoUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_LINE_END_SELECT
+ * \li Action: Move the cursor to the end of the (screen) line adding the
+               traversed text to the selection.
+ * \li Syntax: line-end-select
+ * \endvar
+ */
 		{ LFUN_LINE_END_SELECT, "line-end-select", ReadOnly | SingleParUpdate, Edit },
+		{ LFUN_LINE_DELETE, "line-delete-forward", Noop, Edit }, // there is no line-delete-backward
 /*!
  * \var lyx::FuncCode lyx::LFUN_COPY
  * \li Action: Copies to the clipboard the last edit.
