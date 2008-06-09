@@ -58,9 +58,10 @@ void GuiToc::updateView()
 		setWindowFlags(Qt::Widget);
 		setFeatures(DockWidgetClosable);
 		show();
-	} else if (windowFlags() & Qt::Widget && !lyxview().isFullScreen()) {
+	} else if (!(windowFlags() & Qt::Drawer)) {
 		setWindowFlags(Qt::Drawer);
 		setFeatures(NoDockWidgetFeatures);
+		// Setting features hides the dialog, see Qt's doc.
 		show();
 	}
 	widget_->updateView();
