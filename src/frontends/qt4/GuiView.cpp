@@ -372,6 +372,9 @@ void GuiView::restoreLayout()
 	if (!restoreGeometry(settings.value(key + "/geometry").toByteArray()))
 		setGeometry(50, 50, 690, 510);
 #endif
+	// Allow the toc and view-source dock widget to be restored if needed.
+	find_or_build("toc");
+	find_or_build("view-source");
 	if (!restoreState(settings.value(key + "/layout").toByteArray(), 0))
 		initToolbars();
 }
