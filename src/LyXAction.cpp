@@ -977,6 +977,13 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_LINE_END_SELECT, "line-end-select", ReadOnly | SingleParUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_LINE_DELETE
+ * \li Action: Deletes the letters to the end of the (screen) line or
+               deletes the selection.
+ * \li Syntax: line-delete-forward
+ * \endvar
+ */
 		{ LFUN_LINE_DELETE, "line-delete-forward", Noop, Edit }, // there is no line-delete-backward
 /*!
  * \var lyx::FuncCode lyx::LFUN_COPY
