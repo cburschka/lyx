@@ -1135,10 +1135,18 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_FONT_DEFAULT, "font-default", Noop, Layout },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_DEFAULT
+ * \li Action: Sets font size according to lyx format string.
+ * \li Syntax: font-default <SIZE>
+ * \li Params: <SIZE>: tiny|scriptsize|footnotesize|small|normal|large|larger|
+                       largest|huge|giant|increase|decrease|default
+ * \endvar
+ */
+		{ LFUN_FONT_SIZE, "font-size", Noop, Layout },
 		{ LFUN_FONT_FREE_APPLY, "font-free-apply", Noop, Layout },
 		{ LFUN_FONT_FREE_UPDATE, "font-free-update", Noop, Layout },
 		{ LFUN_SCREEN_FONT_UPDATE, "screen-font-update", NoBuffer, Layout },
-		{ LFUN_FONT_SIZE, "font-size", Noop, Layout },
 /*!
  * \var lyx::FuncCode lyx::LFUN_FONT_STATE
  * \li Action: Returns the info about the current font.
