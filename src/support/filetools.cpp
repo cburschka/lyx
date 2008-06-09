@@ -341,8 +341,8 @@ static FileName createTmpDir(FileName const & tempdir, string const & mask)
 
 FileName const createLyXTmpDir(FileName const & deflt)
 {
-	if (deflt.empty() || deflt.absFilename() == "/tmp")
-		return createTmpDir(FileName("/tmp"), "lyx_tmpdir");
+	if (deflt.empty() || deflt == package().system_temp_dir())
+		return createTmpDir(package().system_temp_dir(), "lyx_tmpdir");
 
 	if (deflt.createDirectory(0777)) 
 		return deflt;
@@ -354,7 +354,7 @@ FileName const createLyXTmpDir(FileName const & deflt)
 		return createTmpDir(deflt, "lyx_tmpdir");
 	} else {
 		// some other error occured.
-		return createTmpDir(FileName("/tmp"), "lyx_tmpdir");
+		return createTmpDir(package().system_temp_dir(), "lyx_tmpdir");
 	}
 }
 
