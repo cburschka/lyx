@@ -2,6 +2,7 @@
 #  \DeclareLaTeXClass[aa]{article (A&A)}
 #
 # Author: Peter Sütterlin <pit@uni-sw.gwdg.de>
+# Author: Jürgen Spitzmüller <spitz@lyx.org>
 #
 # 2001-05-17  take out include of stdlayouts; merge aapaper.inc
 #             remove LaTeX style, rename to aa
@@ -9,6 +10,8 @@
 #             take out thesaurus, email -> mail
 #             change layout of title
 #             abstract is command
+# 2008-06-09  Implement \inst and \email as char styles,
+#             implement paragraph style keywords
 
 
 Format 7
@@ -306,9 +309,59 @@ Style Abstract
 End
 
 
+Style Keywords
+	Margin                First_Dynamic
+	LatexType             Command
+	LatexName             keywords
+	InTitle               1
+	NextNoIndent          1
+	LeftMargin            MMM
+	RightMargin           MMM
+	ParIndent             ""
+	ItemSep               0
+	TopSep                1.2
+	BottomSep             0.7
+	ParSep                0
+	Align                 Block
+	LabelType             static
+	LabelString           "Key words."
+	LabelSep              M
+	LabelBottomSep        0
+	Font
+	  Size                Small
+	EndFont
+	LabelFont
+	  Family              Sans
+	  Series              Bold
+	  Size                Small
+	EndFont
+End
+
+
 Style Bibliography
 	Align                 Left
 	LabelFont
 	  Series              Bold
 	EndFont
+End
+
+
+InsetLayout CharStyle:Institute
+  LyXType          charstyle
+  LatexType        command
+  LatexName        inst
+  Font
+    Color          blue
+  EndFont
+End
+
+
+InsetLayout CharStyle:E-Mail
+  LyXType          charstyle
+  LatexType        command
+  LatexName        email
+  Font
+    Family         Typewriter
+    Color          blue
+  EndFont
 End
