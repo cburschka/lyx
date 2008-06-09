@@ -329,9 +329,6 @@
                </property>
                <item>
                 <widget class="QLabel" name="bookmarksopenlevelLA" >
-                 <property name="enabled" >
-                  <bool>false</bool>
-                 </property>
                  <property name="text" >
                   <string>&amp;Level:</string>
                  </property>
@@ -447,22 +444,5 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>bookmarksGB</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>bookmarksopenlevelLA</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>209</x>
-     <y>131</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>71</x>
-     <y>168</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

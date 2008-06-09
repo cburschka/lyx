@@ -120,7 +120,6 @@ private Q_SLOTS:
 	void set_listings_msg();
 	void saveDefaultClicked();
 	void useDefaultsClicked();
-	void useHyperrefClicked();
 	void setLSpacing(int);
 	void setMargins(bool);
 	void setCustomPapersize(int);

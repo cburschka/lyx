@@ -933,7 +933,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	pdfSupportModule = new UiWidget<Ui::PDFSupportUi>;
 
 	connect(pdfSupportModule->use_hyperrefGB, SIGNAL(toggled(bool)),
-		this, SLOT(useHyperrefClicked()));
+		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->titleLE, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->authorLE, SIGNAL(textChanged(const QString &)),
@@ -1010,15 +1010,6 @@ void GuiDocument::saveDefaultClicked()
 void GuiDocument::useDefaultsClicked()
 {
 	useClassDefaults();
-}
-
-
-void GuiDocument::useHyperrefClicked()
-{
-	// strange as it is, Qt seems to be unable to handle this by itself
-	pdfSupportModule->bookmarksopenlevelLA->setEnabled(
-		pdfSupportModule->bookmarksopenlevelSB->isEnabled());
-	change_adaptor();
 }
 
 
