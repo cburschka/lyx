@@ -136,9 +136,7 @@ else()
 endif()
 set(aspell)
 
-if(WIN32 OR APPLE)
-	set(use_external_libintl TRUE)
-endif()
+set(use_external_libintl TRUE)
 
 if(use_external_libintl)
 	find_package(Libintl REQUIRED)
