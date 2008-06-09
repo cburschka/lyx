@@ -38,6 +38,7 @@ public:
 	)
 		: QDockWidget(&parent, flags), Dialog(parent, name, title)
 	{
+		setObjectName(name);
 		if (flags & Qt::Drawer)
 			setFeatures(QDockWidget::NoDockWidgetFeatures);
 		parent.addDockWidget(area, this);
