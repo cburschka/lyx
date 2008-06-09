@@ -162,6 +162,15 @@ Package::Package(string const & command_line_arg0,
 }
 
 
+void Package::set_temp_dir(FileName const & temp_dir) const
+{
+	if (temp_dir.empty())
+		temp_dir_ = system_temp_dir_;
+	else
+		temp_dir_ = temp_dir;
+}
+
+
 namespace {
 
 // These next functions contain the stuff that is substituted at

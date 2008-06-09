@@ -846,7 +846,7 @@ bool LyX::init()
 	if (document_path.exists() && document_path.isDirectory())
 		package().document_dir() = document_path;
 
-	package().temp_dir() = createLyXTmpDir(FileName(lyxrc.tempdir_path));
+	package().set_temp_dir(createLyXTmpDir(FileName(lyxrc.tempdir_path)));
 	if (package().temp_dir().empty()) {
 		Alert::error(_("Could not create temporary directory"),
 			     bformat(_("Could not create a temporary directory in\n"

@@ -116,7 +116,10 @@ public:
 	 *  (Eg /tmp/lyx_tmpdir800nBI1z9 on *nix.)
 	 *  Can be reset by LyXRC.
 	 */
-	FileName & temp_dir() const { return temp_dir_; }
+	//@{
+	FileName const & temp_dir() const { return temp_dir_; }
+	void set_temp_dir(FileName const & temp_dir) const;
+	//@}
 
 	/** Used when setting the user_support directory.
 	 *  Used also when expanding "~/" or contracting to "~/". (filetools.cpp)
