@@ -1096,7 +1096,7 @@ bool Tabular::columnLeftLine(col_type c) const
 				++nrows_left;
 		}
 	}
-	return nrows_left >= total / 2;
+	return 2 * nrows_left >= total;
 }
 
 
@@ -1119,7 +1119,7 @@ bool Tabular::columnRightLine(col_type c) const
 				++nrows_right;
 		}
 	}
-	return nrows_right >= total / 2;
+	return 2 * nrows_right >= total;
 }
 
 
