@@ -1045,7 +1045,21 @@ void LyXAction::init()
  */
 		{ LFUN_CHARS_TRANSPOSE, "chars-transpose", Noop, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_DEPTH_DECREMENT
+ * \li Action: Decrease the nesting depth of the (selected) paragraph(s)
+               inside lists.
+ * \li Syntax: depth-decrement
+ * \endvar
+ */
 		{ LFUN_DEPTH_DECREMENT, "depth-decrement", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_DEPTH_INCREMENT
+ * \li Action: Increase the nesting depth of the (selected) paragraph(s)
+               inside lists.
+ * \li Syntax: depth-increment
+ * \endvar
+ */
 		{ LFUN_DEPTH_INCREMENT, "depth-increment", Noop, Edit },
 		{ LFUN_ENVIRONMENT_INSERT, "environment-insert", Noop, Edit },
 
