@@ -189,8 +189,11 @@ void Dialog::showView()
 
 	if (wantInitialFocus())
 		w->setFocus();
-	else
+	else {
+		lyxview_->raise();
+		lyxview_->activateWindow();
 		lyxview_->setFocus();
+	}
 }
 
 
