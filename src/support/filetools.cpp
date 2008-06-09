@@ -321,8 +321,8 @@ static FileName createTmpDir(FileName const & tempdir, string const & mask)
 	LYXERR(Debug::FILES, "createTmpDir: tempdir=`" << tempdir << "'\n"
 		<< "createTmpDir:    mask=`" << mask << '\'');
 
-	FileName const tmpfl = FileName::tempName(tempdir.absFilename()
-		+ "/" + mask);
+	string const tmp_dir = tempdir.absFilename() + "/" + mask;
+	FileName const tmpfl = FileName::tempName(tmp_dir);
 	// FileName::tempName actually creates a file to make sure that it
 	// stays unique. So we have to delete it before we can create
 	// a dir with the same name. Note also that we are not thread
@@ -330,8 +330,8 @@ static FileName createTmpDir(FileName const & tempdir, string const & mask)
 	tmpfl.removeFile();
 
 	if (tmpfl.empty() || !tmpfl.createDirectory(0700)) {
-		lyxerr << "LyX could not create the temporary directory '"
-		       << tmpfl << "'" << endl;
+		LYXERR0("LyX could not create the temporary directory '" << tmp_dir
+			<< "'");
 		return FileName();
 	}
 

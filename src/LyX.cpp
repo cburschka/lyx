@@ -850,8 +850,8 @@ bool LyX::init()
 	if (package().temp_dir().empty()) {
 		Alert::error(_("Could not create temporary directory"),
 			     bformat(_("Could not create a temporary directory in\n"
-						    "%1$s. Make sure that this\n"
-						    "path exists and is writable and try again."),
+						       "\"%1$s\"\n"
+							   "Make sure that this path exists and is writable and try again."),
 				     from_utf8(lyxrc.tempdir_path)));
 		// createLyXTmpDir() tries sufficiently hard to create a
 		// usable temp dir, so the probability to come here is
