@@ -48,6 +48,21 @@ GuiToc::~GuiToc()
 
 void GuiToc::updateView()
 {
+#ifndef Q_WS_MACX
+		widget_->updateView();
+		return;
+#endif
+
+	// Special code for Mac drawer.
+	if (windowFlags() & Qt::Drawer && lyxview().isFullScreen()) {
+		setWindowFlags(Qt::Widget);
+		setFeatures(DockWidgetClosable);
+		show();
+	} else if (windowFlags() & Qt::Widget && !lyxview().isFullScreen()) {
+		setWindowFlags(Qt::Drawer);
+		setFeatures(NoDockWidgetFeatures);
+		show();
+	}
 	widget_->updateView();
 }
 
