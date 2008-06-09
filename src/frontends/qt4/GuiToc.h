@@ -48,6 +48,7 @@ public:
 	bool initialiseParams(std::string const & data);
 	void updateView();
 	void enableView(bool enable);
+	bool wantInitialFocus() const { return false; }
 
 public:
 	/// clean-up on hide.

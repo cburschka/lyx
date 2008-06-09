@@ -77,6 +77,7 @@ public:
 	void enableView(bool enable);
 	void saveSession() const;
 	void restoreSession();
+	bool wantInitialFocus() const { return false; }
 	///@}
 
 	/// The title displayed by the dialog reflects source type.

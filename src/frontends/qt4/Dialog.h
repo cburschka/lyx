@@ -124,6 +124,11 @@ public:
 	/// Create the dialog if necessary, update it and display it.
 	void showView();
 
+	/// Decide wether the dialog should grab thekeyboard focus when shown.
+	/// This method defaults to true, override if a different behaviour
+	/// is wanted.
+	virtual bool wantInitialFocus() const { return true; }
+
 	/// Update the display of the dialog whilst it is still visible.
 	virtual void updateView() = 0;
 
