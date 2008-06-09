@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -33,40 +33,39 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 This is your Title
 \end_layout
 
 \begin_layout Subtitle
-
 your subtitle
 \end_layout
 
 \begin_layout Author
-
 Me
-\begin_inset ERT
-status collapsed
+\begin_inset CharStyle Institute
+show_label false
+status inlined
 
 \begin_layout Standard
-
-\backslash
-inst{
+1
 \end_layout
 
 \end_inset
 
-1
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-}
+
+
 \backslash
 and 
 \end_layout
@@ -74,23 +73,12 @@ and
 \end_inset
 
 You
-\begin_inset ERT
-status collapsed
+\begin_inset CharStyle Institute
+show_label false
+status inlined
 
 \begin_layout Standard
-
-\backslash
-inst{
-\end_layout
-
-\end_inset
-
 2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-}
 \end_layout
 
 \end_inset
@@ -99,30 +87,25 @@ status collapsed
 \end_layout
 
 \begin_layout Address
-
 Here 
 \newline
 
-\begin_inset ERT
-status collapsed
+\begin_inset CharStyle E-Mail
+show_label false
+status inlined
 
 \begin_layout Standard
-
-\backslash
-email{
+myaddress
 \end_layout
 
 \end_inset
 
-myaddress
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
-}
-\end_layout
 
-\begin_layout Standard
 
 \backslash
 and
@@ -133,23 +116,12 @@ and
  There
 \newline
 
-\begin_inset ERT
-status collapsed
+\begin_inset CharStyle E-Mail
+show_label false
+status inlined
 
 \begin_layout Standard
-
-\backslash
-email{
-\end_layout
-
-\end_inset
-
 youraddress
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-}
 \end_layout
 
 \end_inset
@@ -158,48 +130,115 @@ status collapsed
 \end_layout
 
 \begin_layout Offprint
-
 Me
 \end_layout
 
 \begin_layout Date
+Received ...; Accepted...
+\end_layout
 
-Received ; Accepted
+\begin_layout Date
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+This template uses the new 
+\begin_inset Quotes eld
+\end_inset
+
+Structured Abstract
+\begin_inset Quotes erd
+\end_inset
+
+ approach that is implemented and recommended as of A&A version 6.0.
+ If you want to use the traditional, unstructured abstract, you have to
+ insert the 
+\begin_inset Quotes eld
+\end_inset
+
+traditabstract
+\begin_inset Quotes erd
+\end_inset
+
+ document option into 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document Class\SpecialChar \menuseparator
+ Options
+\family default
+ and remove the red braces (
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Abstract
-
-Short abstract
+context (optional: leave void)
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-\end_layout
-
-\begin_layout Standard
-
-\backslash
-keywords{
+} {
 \end_layout
 
 \end_inset
 
+aims
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+} {
+\end_layout
+
+\end_inset
+
+methods
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+} {
+\end_layout
+
+\end_inset
+
+results
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+} {
+\end_layout
+
+\end_inset
+
+conclusions (optional: leave void)
+\end_layout
+
+\begin_layout Keywords
 keywords
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
-
 Introduction
 \end_layout
 
