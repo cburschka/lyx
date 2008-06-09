@@ -228,7 +228,7 @@ fi
 dnl GNU gettext is written in C
 AC_LANG_PUSH(C)
 AM_GNU_GETTEXT
-AM_GNU_GETTEXT_VERSION([0.14.5])
+AM_GNU_GETTEXT_VERSION([0.16.1])
 AC_LANG_POP(C)
 
 # some standard header files

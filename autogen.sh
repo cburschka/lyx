@@ -50,15 +50,6 @@ esac
 # automake will stop if their contents was created by an earlier version.
 rm -rf autom4te.cache
 
-# Update the gettext files
-echo "Copying gettext code... "
-if ( autopoint --version ) < /dev/null > /dev/null 2>&1; then
-	autopoint --force >/dev/null
-else
-	echo "autopoint not found -- aborting"
-	exit 1
-fi
-
 # Generate the Makefiles and configure files
 echo "Building macros..."
 if ( $ACLOCAL --version ) < /dev/null > /dev/null 2>&1; then
