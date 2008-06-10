@@ -1146,6 +1146,13 @@ void LyXAction::init()
 		{ LFUN_FONT_SIZE, "font-size", Noop, Layout },
 		{ LFUN_FONT_FREE_APPLY, "font-free-apply", Noop, Layout },
 		{ LFUN_FONT_FREE_UPDATE, "font-free-update", Noop, Layout },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_SCREEN_FONT_UPDATE
+ * \li Action: Update fonts and its metrics.
+ * \li Notion: Automatically called after zoom, dpi, font names, or norm change.
+ * \li Syntax: screen-font-update
+ * \endvar
+ */
 		{ LFUN_SCREEN_FONT_UPDATE, "screen-font-update", NoBuffer, Layout },
 /*!
  * \var lyx::FuncCode lyx::LFUN_FONT_STATE
