@@ -1151,6 +1151,7 @@ void LyXAction::init()
  * \li Action: Update fonts and its metrics.
  * \li Notion: Automatically called after zoom, dpi, font names, or norm change.
  * \li Syntax: screen-font-update
+ * \li Origin: ARRae, 13 Aug 2000
  * \endvar
  */
 		{ LFUN_SCREEN_FONT_UPDATE, "screen-font-update", NoBuffer, Layout },
