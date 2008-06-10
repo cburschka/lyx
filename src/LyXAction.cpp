@@ -1144,7 +1144,26 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_FONT_SIZE, "font-size", Noop, Layout },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_FREE_APPLY
+ * \li Action: Toggle user-defined text style.
+ * \li Syntax: font-free-apply
+ * \li Origin: leeming, 12 Mar 2003
+ * \endvar
+ */
 		{ LFUN_FONT_FREE_APPLY, "font-free-apply", Noop, Layout },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_FREE_UPDATE
+ * \li Action: Update and apply user-defined text style.
+ * \li Syntax: font-free-update <FONT_INFO>
+ * \li Params: <FONT_INFO>: specifies font atributes, e.g. family, series, shape,
+                            size, emph, noun, underbar, number, color, language,
+			    toggleall.\n
+			    Use lyx -dbg action for exact syntax of text-style
+			    dialog parameters.
+ * \li Origin: leeming, 12 Mar 2003
+ * \endvar
+ */
 		{ LFUN_FONT_FREE_UPDATE, "font-free-update", Noop, Layout },
 /*!
  * \var lyx::FuncCode lyx::LFUN_SCREEN_FONT_UPDATE
