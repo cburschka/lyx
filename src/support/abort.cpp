@@ -12,17 +12,15 @@
 
 #include "support/lyxlib.h"
 
-
-namespace lyx {
-
 #include <cstdlib>
 
 #ifdef HAVE_STDLIB_H
 # include <stdlib.h>
 #endif
 
+namespace lyx {
 
-void lyx::support::abort()
+void support::abort()
 {
 	::abort();
 }
