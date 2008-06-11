@@ -254,7 +254,7 @@ Menuset
 		OptItem "Move Section down|d" "outline-down"
 		OptItem "Move Section up|u" "outline-up"
 		Separator
-		Item "Apply Last Text Style|A" "font-free-apply"
+		Item "Apply Last Text Style|A" "textstyle-apply"
 		Submenu "Text Style|S" "edit_textstyles"
 		Item "Paragraph Settings...|P" "layout-paragraph"
 		Separator

@@ -665,8 +665,8 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FONT_TYPEWRITER:
 	case LFUN_FONT_DEFAULT:
 	case LFUN_FONT_EMPH:
-	case LFUN_FONT_FREE_APPLY:
-	case LFUN_FONT_FREE_UPDATE:
+	case LFUN_TEXTSTYLE_APPLY:
+	case LFUN_TEXTSTYLE_UPDATE:
 	case LFUN_FONT_NOUN:
 	case LFUN_FONT_ROMAN:
 	case LFUN_FONT_SANS:

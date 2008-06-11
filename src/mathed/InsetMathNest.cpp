@@ -880,8 +880,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	//  Math fonts
-	case LFUN_FONT_FREE_APPLY:
-	case LFUN_FONT_FREE_UPDATE:
+	case LFUN_TEXTSTYLE_APPLY:
+	case LFUN_TEXTSTYLE_UPDATE:
 		handleFont2(cur, cmd.argument());
 		break;
 

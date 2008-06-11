@@ -1583,14 +1583,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_FONT_FREE_APPLY:
+	case LFUN_TEXTSTYLE_APPLY:
 		toggleAndShow(cur, this, freefont, toggleall);
 		cur.message(_("Character set"));
 		break;
 
 	// Set the freefont using the contents of \param data dispatched from
 	// the frontends and apply it at the current cursor location.
-	case LFUN_FONT_FREE_UPDATE: {
+	case LFUN_TEXTSTYLE_UPDATE: {
 		Font font;
 		bool toggle;
 		if (font.fromString(to_utf8(cmd.argument()), toggle)) {
@@ -2207,8 +2207,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FONT_UNDERLINE:
 	case LFUN_FONT_SIZE:
 	case LFUN_LANGUAGE:
-	case LFUN_FONT_FREE_APPLY:
-	case LFUN_FONT_FREE_UPDATE:
+	case LFUN_TEXTSTYLE_APPLY:
+	case LFUN_TEXTSTYLE_UPDATE:
 	case LFUN_LAYOUT_PARAGRAPH:
 	case LFUN_PARAGRAPH_UPDATE:
 	case LFUN_ACCENT_UMLAUT:

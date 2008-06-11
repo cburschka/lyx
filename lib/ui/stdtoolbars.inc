@@ -70,7 +70,7 @@ ToolbarSet
 		Separator
 		Item "Toggle emphasis" "font-emph"
 		Item "Toggle noun" "font-noun"
-		Item "Apply last" "font-free-apply"
+		Item "Apply last" "textstyle-apply"
 		Separator
 		Item "Insert math" "math-mode"
 		Item "Insert graphics" "dialog-show-new-inset graphics"

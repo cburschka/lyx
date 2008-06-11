@@ -3456,8 +3456,8 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_FONT_FRAK:
 	case LFUN_FONT_TYPEWRITER:
 	case LFUN_FONT_SANS:
-	case LFUN_FONT_FREE_APPLY:
-	case LFUN_FONT_FREE_UPDATE:
+	case LFUN_TEXTSTYLE_APPLY:
+	case LFUN_TEXTSTYLE_UPDATE:
 	case LFUN_FONT_SIZE:
 	case LFUN_FONT_UNDERLINE:
 	case LFUN_LANGUAGE:

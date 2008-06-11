@@ -1145,17 +1145,19 @@ void LyXAction::init()
  */
 		{ LFUN_FONT_SIZE, "font-size", Noop, Layout },
 /*!
- * \var lyx::FuncCode lyx::LFUN_FONT_FREE_APPLY
- * \li Action: Toggle user-defined text style.
- * \li Syntax: font-free-apply
+ * \var lyx::FuncCode lyx::LFUN_TEXTSTYLE_APPLY
+ * \li Action: Toggle user-defined (=last-time used) text style.
+ * \li Notion: This style is set via #LFUN_TEXTSTYLE_UPDATE, which is
+               automatically trigerred when using Text Style dialog.
+ * \li Syntax: textstyle-apply
  * \li Origin: leeming, 12 Mar 2003
  * \endvar
  */
-		{ LFUN_FONT_FREE_APPLY, "font-free-apply", Noop, Layout },
+		{ LFUN_TEXTSTYLE_APPLY, "textstyle-apply", Noop, Layout },
 /*!
- * \var lyx::FuncCode lyx::LFUN_FONT_FREE_UPDATE
- * \li Action: Update and apply user-defined text style.
- * \li Syntax: font-free-update <FONT_INFO>
+ * \var lyx::FuncCode lyx::LFUN_TEXTSTYLE_UPDATE
+ * \li Action: Apply text style and update the settings to be used by #LFUN_TEXTSTYLE_APPLY.
+ * \li Syntax: textstyle-update <FONT_INFO>
  * \li Params: <FONT_INFO>: specifies font atributes, e.g. family, series, shape,
                             size, emph, noun, underbar, number, color, language,
 			    toggleall.\n
@@ -1164,7 +1166,7 @@ void LyXAction::init()
  * \li Origin: leeming, 12 Mar 2003
  * \endvar
  */
-		{ LFUN_FONT_FREE_UPDATE, "font-free-update", Noop, Layout },
+		{ LFUN_TEXTSTYLE_UPDATE, "textstyle-update", Noop, Layout },
 /*!
  * \var lyx::FuncCode lyx::LFUN_SCREEN_FONT_UPDATE
  * \li Action: Update fonts and its metrics.
