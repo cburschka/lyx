@@ -83,6 +83,7 @@ void GuiToc::dispatchParams()
 
 void GuiToc::enableView(bool enable)
 {
+	widget_->init(QString());
 	widget_->setEnabled(enable);
 }
 

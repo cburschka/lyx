@@ -21,6 +21,7 @@
 #include "LyXFunc.h"
 
 #include "support/debug.h"
+#include "support/lassert.h"
 
 #include <QHeaderView>
 #include <QTimer>
@@ -132,9 +133,9 @@ void TocWidget::setTreeDepth(int depth)
 }
 
 
-void TocWidget::on_typeCO_currentIndexChanged(int value)
+void TocWidget::on_typeCO_currentIndexChanged(int)
 {
-	setTocModel(value);
+	updateView();
 	gui_view_.setFocus();
 }
 
@@ -209,6 +210,7 @@ void TocWidget::enableControls(bool enable)
 void TocWidget::updateView()
 {
 	LYXERR(Debug::GUI, "In TocWidget::updateView()");
+	setTocModel();
 	setTreeDepth(depth_);
 	select(gui_view_.tocModels().currentIndex(typeCO->currentIndex()));
 }
@@ -219,12 +221,14 @@ void TocWidget::init(QString const & str)
 	QStringList const & type_names = gui_view_.tocModels().typeNames();
 	if (type_names.isEmpty()) {
 		enableControls(false);
-		typeCO->clear();
+		typeCO->setEnabled(false);
 		tocTV->setModel(new QStandardItemModel);
-		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
+		tocTV->setEnabled(false);
 		return;
 	}
 
+	typeCO->setEnabled(true);
+	tocTV->setEnabled(true);
 	int selected_type = gui_view_.tocModels().decodeType(str);
 
 	QString const current_text = typeCO->currentText();
@@ -244,34 +248,30 @@ void TocWidget::init(QString const & str)
 
 	typeCO->blockSignals(false);
 
-	setTocModel(typeCO->currentIndex());
-}
-
-
-void TocWidget::setTocModel(size_t type)
-{
-	bool controls_enabled = false;
-	QStandardItemModel * toc_model = gui_view_.tocModels().model(type);
-	if (toc_model) {
-		controls_enabled = toc_model->rowCount() > 0;
-		tocTV->setModel(toc_model);
-		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
-		LYXERR(Debug::GUI, "tocModel()->rowCount "
-			<< toc_model->rowCount()
-			<< "\nform_->tocModel()->columnCount "
-			<< toc_model->columnCount());
-	}
-
-	enableControls(controls_enabled);
-
-	if (controls_enabled) {
-		depthSL->setMaximum(gui_view_.tocModels().depth(type));
-		depthSL->setValue(depth_);
-	}
-
 	// setTocModel produce QTreeView reset and setting depth again
 	// is needed. That must be done after all Qt updates are processed.
 	QTimer::singleShot(0, this, SLOT(updateView()));
+}
+
+
+void TocWidget::setTocModel()
+{
+	int const toc_type = typeCO->currentIndex();
+	QStandardItemModel * toc_model = gui_view_.tocModels().model(toc_type);
+	LASSERT(toc_model, return);
+	
+	if (tocTV->model() != toc_model) {
+		tocTV->setModel(toc_model);
+		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	}
+
+	bool controls_enabled = toc_model->rowCount() > 0;;
+	enableControls(controls_enabled);
+
+	if (controls_enabled) {
+		depthSL->setMaximum(gui_view_.tocModels().depth(toc_type));
+		depthSL->setValue(depth_);
+	}
 }
 
 } // namespace frontend

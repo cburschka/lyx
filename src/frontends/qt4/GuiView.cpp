@@ -676,7 +676,7 @@ void GuiView::on_lastWorkAreaRemoved()
 		}
 	}
 #else
-	structureChanged();
+	d.toc_models_.reset(0);
 	// The document settings needs to be reinitialised.
 	updateDialog("document", "");
 	updateDialogs();
