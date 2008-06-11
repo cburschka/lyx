@@ -1308,6 +1308,16 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_DELIM, "math-delim", Noop, Math },
 		{ LFUN_MATH_BIGDELIM, "math-bigdelim", Noop, Math },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MATH_DISPLAY
+ * \li Action: Creates a new displayed equation in text mode.
+               Toggles inlined/display formula in math mode.
+ * \li Syntax: math-display [<ARG>]
+ * \li Params: <ARG>: this argument will be passed to #LFUN_MATH_INSERT when creating
+                      new equation from the text mode.
+ * \li Origin: Alejandro, 18 Jun 1996
+ * \endvar
+ */
 		{ LFUN_MATH_DISPLAY, "math-display", Noop, Math },
 		{ LFUN_MATH_INSERT, "math-insert", Noop, Math },
 		{ LFUN_MATH_SUBSCRIPT, "math-subscript", Noop, Math },
