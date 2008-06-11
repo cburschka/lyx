@@ -931,11 +931,6 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		else
 			handleFont(cur, cmd.argument(), "mathbb");
 		break;
-	/*
-	case LFUN_FONT_FREE_APPLY:
-		handleFont(cur, cmd.argument(), "textrm");
-		break;
-	*/
 	case LFUN_FONT_DEFAULT:
 		handleFont(cur, cmd.argument(), "textnormal");
 		break;
