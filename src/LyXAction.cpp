@@ -1295,6 +1295,17 @@ void LyXAction::init()
  */
 		{ LFUN_MARK_TOGGLE, "mark-toggle", ReadOnly, Edit },
 		
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MATH_DELIM
+ * \li Action: Inserts math delimiters (e.g. parentheses, brackets) enclosing expression.
+ * \li Syntax: math-delim [<LEFT>] [<RIGHT>]
+ * \li Params: <LEFT/RIGHT>: Delimiters to be used. Each delimiter can be specified by
+                             either a LaTeX name or a valid character.
+                             ( is the default letter.
+ * \li Sample: math-delim { rangle
+ * \li Origin: Alejandro, 18 Jun 1996
+ * \endvar
+ */
 		{ LFUN_MATH_DELIM, "math-delim", Noop, Math },
 		{ LFUN_MATH_BIGDELIM, "math-bigdelim", Noop, Math },
 		{ LFUN_MATH_DISPLAY, "math-display", Noop, Math },
