@@ -67,6 +67,10 @@ Some of the LyX functions have changed names:
 
 - The functions delete-back/forward has been renamed to char-delete-back/forward.
 
+- The functions LFUN_FONT_FREE_APPLY/UPDATE has been renamed to
+  LFUN_TEXTSTYLE_APPLY/UPDATE.
+
+
 The following new LyX functions have been introduced:
 
 - LFUN_SPECIALCHAR_INSERT, "specialchar-insert" (see above).
