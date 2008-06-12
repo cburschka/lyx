@@ -90,17 +90,18 @@ void TocWidget::on_updateTB_clicked()
 	gui_view_.tocModels().updateBackend();
 }
 
+
 /* FIXME (Ugras 17/11/06):
-I have implemented a getIndexDepth function to get the model indices. In my
+I have implemented a indexDepth function to get the model indices. In my
 opinion, somebody should derive a new qvariant class for tocModelItem
-which saves the string data and depth information. that will save the
-depth calculation.
-*/
-int TocWidget::getIndexDepth(QModelIndex const & index, int depth)
+which saves the string data and depth information. That will save the
+depth calculation.  */
+
+static int indexDepth(QModelIndex const & index, int depth = -1)
 {
 	++depth;
-	return (index.parent() == QModelIndex())
-		? depth : getIndexDepth(index.parent(),depth);
+	return index.parent() == QModelIndex()
+		? depth : indexDepth(index.parent(), depth);
 }
 
 
@@ -128,7 +129,7 @@ void TocWidget::setTreeDepth(int depth)
 	int size = indices.size();
 	for (int i = 0; i < size; i++) {
 		QModelIndex index = indices[i];
-		tocTV->setExpanded(index, getIndexDepth(index) < depth_);
+		tocTV->setExpanded(index, indexDepth(index) < depth_);
 	}
 }
 

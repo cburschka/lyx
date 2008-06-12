@@ -61,8 +61,6 @@ private:
 	///
 	void enableControls(bool enable = true);
 	///
-	int getIndexDepth(QModelIndex const & index, int depth = -1);
-	///
 	void setTreeDepth(int depth);
 	///
 	void outline(int func_code);
