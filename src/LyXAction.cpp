@@ -1319,6 +1319,13 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_MATH_DISPLAY, "math-display", Noop, Math },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MATH_INSERT
+ * \li Action: Inserts math objects and symbols.
+ * \li Syntax: math-insert <ARG>
+ * \li Params: <ARG>: Symbol or LaTeX code to be inserted.
+ * \endvar
+ */
 		{ LFUN_MATH_INSERT, "math-insert", Noop, Math },
 /*!
  * \var lyx::FuncCode lyx::LFUN_MATH_SUBSCRIPT
