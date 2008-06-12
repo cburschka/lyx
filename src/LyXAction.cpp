@@ -1320,7 +1320,21 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_DISPLAY, "math-display", Noop, Math },
 		{ LFUN_MATH_INSERT, "math-insert", Noop, Math },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MATH_SUBSCRIPT
+ * \li Action: Enters subscript expression in math expression.
+ * \li Syntax: math-subscript
+ * \li Origin: vermeer, 12 Dec 2001
+ * \endvar
+ */
 		{ LFUN_MATH_SUBSCRIPT, "math-subscript", Noop, Math },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MATH_SUPERSCRIPT
+ * \li Action: Enters subscript expression in math expression.
+ * \li Syntax: math-superscript
+ * \li Origin: vermeer, 12 Dec 2001
+ * \endvar
+ */
 		{ LFUN_MATH_SUPERSCRIPT, "math-superscript", Noop, Math },
 		{ LFUN_MATH_LIMITS, "math-limits", Noop, Math },
 		{ LFUN_MATH_MACRO, "math-macro", Noop, Math },
