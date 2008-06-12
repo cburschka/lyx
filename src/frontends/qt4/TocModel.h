@@ -12,17 +12,19 @@
 #ifndef TOCMODEL_H
 #define TOCMODEL_H
 
-#include "TocBackend.h"
-
 #include "qt_helpers.h"
 
+#include <QList>
 #include <QStandardItemModel>
-
-#include <map>
+#include <QStringList>
 
 namespace lyx {
 
+class Buffer;
 class BufferView;
+class DocIterator;
+class Toc;
+class TocItem;
 
 namespace frontend {
 
@@ -30,32 +32,23 @@ class TocModel : public QStandardItemModel
 {
 public:
 	///
-	TocModel() {}
-	///
-	TocModel(Toc const & toc) { populate(toc); }
+	TocModel(Toc const & toc);
 	///
 	void clear();
 	///
-	void populate(Toc const & toc);
+	TocItem const & tocItem(QModelIndex const & index) const;
 	///
-	TocIterator tocIterator(QModelIndex const & index) const;
-	///
-	QModelIndex modelIndex(TocIterator const & it) const;
+	QModelIndex modelIndex(DocIterator const & dit) const;
 	///
 	int modelDepth() const;
 
 private:
 	///
-	void populate(TocIterator & it, TocIterator const & end,
-		QModelIndex const & parent);
+	void populate(size_t & index, QModelIndex const & parent);
 	///
-	typedef std::map<QModelIndex, TocIterator> TocMap;
+	QList<QModelIndex> toc_indexes_;
 	///
-	typedef std::map<TocIterator, QModelIndex> ModelMap;
-	///
-	TocMap toc_map_;
-	///
-	ModelMap model_map_;
+	Toc const & toc_;
 	///
 	int maxdepth_;
 	int mindepth_;
@@ -101,7 +94,7 @@ private:
 	///
 	BufferView const * bv_;
 	///
-	std::vector<TocModel *> models_;
+	QList<TocModel *> models_;
 	///
 	QStringList types_;
 	///

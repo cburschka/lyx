@@ -162,10 +162,14 @@ TocIterator TocBackend::item(string const & type,
 	TocList::const_iterator toclist_it = tocs_.find(type);
 	// Is the type supported?
 	LASSERT(toclist_it != tocs_.end(), /**/);
+	return toclist_it->second.item(dit);
+}
 
-	Toc const & toc_vector = toclist_it->second;
-	TocIterator last = toc_vector.begin();
-	TocIterator it = toc_vector.end();
+
+TocIterator Toc::item(DocIterator const & dit) const
+{
+	TocIterator last = begin();
+	TocIterator it = end();
 	if (it == last)
 		return it;
 

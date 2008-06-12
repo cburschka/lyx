@@ -19,6 +19,7 @@
 #include "DocIterator.h"
 #include "FuncRequest.h"
 #include "LyXFunc.h"
+#include "TocBackend.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -31,79 +32,61 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-typedef std::pair<QModelIndex, TocIterator> TocPair;
 
-
-TocIterator TocModel::tocIterator(QModelIndex const & index) const
+TocItem const & TocModel::tocItem(QModelIndex const & index) const
 {
-	TocMap::const_iterator map_it = toc_map_.find(index);
-	LASSERT(map_it != toc_map_.end(), /**/);
-	return map_it->second;
+	return toc_[data(index, Qt::UserRole).toUInt()];
 }
 
 
-QModelIndex TocModel::modelIndex(TocIterator const & it) const
+QModelIndex TocModel::modelIndex(DocIterator const & dit) const
 {
-	ModelMap::const_iterator map_it = model_map_.find(it);
-	//LASSERT(it != model_map_.end(), /**/);
+	size_t const toc_index = toc_.item(dit) - toc_.begin();
 
-	if (map_it == model_map_.end())
-		return QModelIndex();
+	QModelIndexList list = match(index(0, 0), Qt::UserRole,
+		QVariant(toc_index), 1,
+		Qt::MatchFlags(Qt::MatchExactly | Qt::MatchRecursive));
 
-	return map_it->second;
+	LASSERT(!list.isEmpty(), return QModelIndex());
+	return list[0];
 }
 
 
 void TocModel::clear()
 {
 	QStandardItemModel::clear();
-	toc_map_.clear();
-	model_map_.clear();
 	removeRows(0, rowCount());
 	removeColumns(0, columnCount());
 }
 
 
-void TocModel::populate(Toc const & toc)
+TocModel::TocModel(Toc const & toc): toc_(toc)
 {
-	clear();
-
-	if (toc.empty())
+	if (toc_.empty())
 		return;
 	int current_row;
 	QModelIndex top_level_item;
-
-	TocIterator iter = toc.begin();
-	TocIterator end = toc.end();
-
 	insertColumns(0, 1);
 	maxdepth_ = 0;
 	mindepth_ = INT_MAX;
 
-	while (iter != end) {
-		maxdepth_ = max(maxdepth_, iter->depth());
-		mindepth_ = min(mindepth_, iter->depth());
+	size_t end = toc.size();
+	for (size_t index = 0; index != end; ++index) {
+		TocItem const & item = toc_[index];
+		maxdepth_ = max(maxdepth_, item.depth());
+		mindepth_ = min(mindepth_, item.depth());
 		current_row = rowCount();
 		insertRows(current_row, 1);
 		top_level_item = QStandardItemModel::index(current_row, 0);
-		//setData(top_level_item, toqstr(iter->str()));
-		setData(top_level_item, toqstr(iter->str()), Qt::DisplayRole);
+		setData(top_level_item, toqstr(item.str()), Qt::DisplayRole);
+		setData(top_level_item, index, Qt::UserRole);
 
-		// This looks like a gcc bug, in principle this should work:
-		//toc_map_[top_level_item] = iter;
-		// but it crashes with gcc-4.1 and 4.0.2
-		toc_map_.insert( TocPair(top_level_item, iter) );
-		model_map_[iter] = top_level_item;
+		LYXERR(Debug::GUI, "Toc: at depth " << item.depth()
+			<< ", added item " << item.str());
 
-		LYXERR(Debug::GUI, "Toc: at depth " << iter->depth()
-			<< ", added item " << toqstr(iter->str()));
-
-		populate(iter, end, top_level_item);
-
-		if (iter == end)
+		populate(index, top_level_item);
+		if (index >= end)
 			break;
-
-		++iter;
 	}
 
 	setHeaderData(0, Qt::Horizontal, QVariant("title"), Qt::DisplayRole);
@@ -111,40 +94,32 @@ void TocModel::populate(Toc const & toc)
 }
 
 
-void TocModel::populate(TocIterator & iter, TocIterator const & end,
-	QModelIndex const & parent)
+void TocModel::populate(size_t & index, QModelIndex const & parent)
 {
-	int curdepth = iter->depth() + 1;
+	int curdepth = toc_[index].depth() + 1;
 
 	int current_row;
 	QModelIndex child_item;
 	insertColumns(0, 1, parent);
 
-	while (iter != end) {
-		++iter;
-
-		if (iter == end)
-			break;
-
-		if (iter->depth() < curdepth) {
-			--iter;
+	size_t end = toc_.size();
+	++index;
+	for (; index != end; ++index) {
+		TocItem const & item = toc_[index];
+		if (item.depth() < curdepth) {
+			--index;
 			return;
 		}
-
-		maxdepth_ = max(maxdepth_, iter->depth());
-		mindepth_ = min(mindepth_, iter->depth());
+		maxdepth_ = max(maxdepth_, item.depth());
+		mindepth_ = min(mindepth_, item.depth());
 		current_row = rowCount(parent);
 		insertRows(current_row, 1, parent);
 		child_item = QStandardItemModel::index(current_row, 0, parent);
-		//setData(child_item, toqstr(iter->str()));
-		setData(child_item, toqstr(iter->str()), Qt::DisplayRole);
-
-		// This looks like a gcc bug, in principle this should work:
-		//toc_map_[child_item] = iter;
-		// but it crashes with gcc-4.1 and 4.0.2
-		toc_map_.insert( TocPair(child_item, iter) );
-		model_map_[iter] = child_item;
-		populate(iter, end, child_item);
+		setData(child_item, toqstr(item.str()), Qt::DisplayRole);
+		setData(child_item, index, Qt::UserRole);
+		populate(index, child_item);
+		if (index >= end)
+			break;
 	}
 }
 
@@ -200,10 +175,7 @@ QModelIndex TocModels::currentIndex(int type) const
 {
 	if (type < 0 || !bv_)
 		return QModelIndex();
-
-	TocIterator const it = bv_->buffer().masterBuffer()->tocBackend().item(
-		fromqstr(types_[type]), bv_->cursor());
-	return models_[type]->modelIndex(it);
+	return models_[type]->modelIndex(bv_->cursor());
 }
 
 
@@ -216,9 +188,9 @@ void TocModels::goTo(int type, QModelIndex const & index) const
 	}
 
 	LASSERT(type >= 0 && type < int(models_.size()), /**/);
-	TocIterator const it = models_[type]->tocIterator(index);
-	LYXERR(Debug::GUI, "TocModels::goTo " << it->str());
-	dispatch(it->action());
+	TocItem const item = models_[type]->tocItem(index);
+	LYXERR(Debug::GUI, "TocModels::goTo " << item.str());
+	dispatch(item.action());
 }
 
 

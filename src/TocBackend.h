@@ -33,6 +33,7 @@ class FuncRequest;
 */
 class TocItem
 {
+	friend class Toc;
 	friend class TocBackend;
 
 public:
@@ -70,7 +71,11 @@ protected:
 
 
 ///
-class Toc : public std::vector<TocItem> {};
+class Toc : public std::vector<TocItem> {
+public:
+	typedef std::vector<TocItem>::const_iterator const_iterator;
+	const_iterator Toc::item(DocIterator const & dit) const;
+};
 
 typedef Toc::const_iterator TocIterator;
 
