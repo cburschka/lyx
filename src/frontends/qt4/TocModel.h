@@ -42,7 +42,7 @@ public:
 
 private:
 	///
-	void populate(size_t & index, QModelIndex const & parent);
+	void populate(unsigned int & index, QModelIndex const & parent);
 	///
 	QList<QModelIndex> toc_indexes_;
 	///

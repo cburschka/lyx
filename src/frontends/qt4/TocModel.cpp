@@ -44,7 +44,7 @@ QModelIndex TocModel::modelIndex(DocIterator const & dit) const
 	if (toc_.empty())
 		return QModelIndex();
 
-	size_t const toc_index = toc_.item(dit) - toc_.begin();
+	unsigned int const toc_index = toc_.item(dit) - toc_.begin();
 
 	QModelIndexList list = match(index(0, 0), Qt::UserRole,
 		QVariant(toc_index), 1,
@@ -66,7 +66,7 @@ TocModel::TocModel(Toc const & toc): toc_(toc)
 	mindepth_ = INT_MAX;
 
 	size_t end = toc.size();
-	for (size_t index = 0; index != end; ++index) {
+	for (unsigned int index = 0; index != end; ++index) {
 		TocItem const & item = toc_[index];
 		maxdepth_ = max(maxdepth_, item.depth());
 		mindepth_ = min(mindepth_, item.depth());
@@ -89,7 +89,7 @@ TocModel::TocModel(Toc const & toc): toc_(toc)
 }
 
 
-void TocModel::populate(size_t & index, QModelIndex const & parent)
+void TocModel::populate(unsigned int & index, QModelIndex const & parent)
 {
 	int curdepth = toc_[index].depth() + 1;
 
