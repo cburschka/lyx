@@ -34,8 +34,6 @@ public:
 	///
 	TocModel(Toc const & toc);
 	///
-	void clear();
-	///
 	TocItem const & tocItem(QModelIndex const & index) const;
 	///
 	QModelIndex modelIndex(DocIterator const & dit) const;

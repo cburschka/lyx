@@ -52,14 +52,6 @@ QModelIndex TocModel::modelIndex(DocIterator const & dit) const
 }
 
 
-void TocModel::clear()
-{
-	QStandardItemModel::clear();
-	removeRows(0, rowCount());
-	removeColumns(0, columnCount());
-}
-
-
 TocModel::TocModel(Toc const & toc): toc_(toc)
 {
 	if (toc_.empty())
