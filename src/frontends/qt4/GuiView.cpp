@@ -2064,6 +2064,7 @@ void GuiView::restartCursor()
 
 	// Take this occasion to update the other GUI elements.
 	updateDialogs();
+	updateStatusBar();
 }
 
 
@@ -2233,7 +2234,6 @@ void GuiView::updateDialogs()
 	}
 	updateToolbars();
 	updateLayoutList();
-	updateStatusBar();
 }
 
 

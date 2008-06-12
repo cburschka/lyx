@@ -464,6 +464,7 @@ void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 	if (cmd.action != LFUN_MOUSE_MOTION) {
 		completer_->updateVisibility(false, false);
 		lyx_view_->updateDialogs();
+		lyx_view_->updateStatusBar();
 	}
 
 	// GUI tweaks except with mouse motion with no button pressed.
