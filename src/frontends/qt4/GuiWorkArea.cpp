@@ -658,11 +658,6 @@ void GuiWorkArea::focusInEvent(QFocusEvent * e)
 	if (lyx_view_->currentWorkArea() != this)
 		lyx_view_->setCurrentWorkArea(this);
 
-	// Repaint the whole screen.
-	// Note: this is different from redraw() as only the backing pixmap
-	// will be redrawn, which is cheap.
-	viewport()->repaint();
-
 	startBlinkingCursor();
 	QAbstractScrollArea::focusInEvent(e);
 }
