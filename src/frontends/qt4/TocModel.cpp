@@ -41,6 +41,9 @@ TocItem const & TocModel::tocItem(QModelIndex const & index) const
 
 QModelIndex TocModel::modelIndex(DocIterator const & dit) const
 {
+	if (toc_.empty())
+		return QModelIndex();
+
 	size_t const toc_index = toc_.item(dit) - toc_.begin();
 
 	QModelIndexList list = match(index(0, 0), Qt::UserRole,
