@@ -1343,6 +1343,16 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_MATH_SUPERSCRIPT, "math-superscript", Noop, Math },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MATH_LIMITS
+ * \li Action: Toggles the position of the limits from above/below to the right
+               side an vice versa in integral symbol, a limit, a summation, etc.
+ * \li Notion: Put the cursor before the symbol with the limits and then invoke
+               math-limits.
+ * \li Syntax: math-limits [<STATE>]
+ * \li Params: <STATE>: limits|nolimits
+ * \endvar
+ */
 		{ LFUN_MATH_LIMITS, "math-limits", Noop, Math },
 		{ LFUN_MATH_MACRO, "math-macro", Noop, Math },
 		{ LFUN_MATH_MUTATE, "math-mutate", Noop, Math },
