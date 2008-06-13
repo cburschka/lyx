@@ -64,7 +64,7 @@ void InsetGraphicsParams::init()
 {
 	filename.erase();
 	lyxscale = 100;			// lyx scaling in percentage
-	display = graphics::DefaultDisplay; // display mode; see preferences
+	display = true;         // may be overriden by display mode in preferences
 	scale = string("100");			// output scaling in percentage
 	width = Length();
 	height = Length();
@@ -144,8 +144,8 @@ void InsetGraphicsParams::Write(ostream & os, Buffer const & buffer) const
 		os << "\tfilename " << filename.outputFilename(buffer.filePath()) << '\n';
 	if (lyxscale != 100)
 		os << "\tlyxscale " << lyxscale << '\n';
-	if (display != graphics::DefaultDisplay)
-		os << "\tdisplay " << graphics::displayTranslator().find(display) << '\n';
+	if (!display)
+		os << "\tdisplay false\n";
 	if (!scale.empty() && !float_equal(convert<double>(scale), 0.0, 0.05)) {
 		if (!float_equal(convert<double>(scale), 100.0, 0.05))
 			os << "\tscale " << scale << '\n';
@@ -193,7 +193,7 @@ bool InsetGraphicsParams::Read(Lexer & lex, string const & token, string const &
 	} else if (token == "display") {
 		lex.next();
 		string const type = lex.getString();
-		display = graphics::displayTranslator().find(type);
+		display = lex.getString() != "false";
 	} else if (token == "scale") {
 		lex.next();
 		scale = lex.getString();
@@ -303,15 +303,11 @@ graphics::Params InsetGraphicsParams::as_grfxParams() const
 		}
 	}
 
-	if (display == graphics::DefaultDisplay) {
-		pars.display = graphics::DisplayType(lyxrc.display_graphics);
-	} else {
-		pars.display = display;
-	}
+	pars.display = display;
 
 	// Override the above if we're not using a gui
 	if (!use_gui)
-		pars.display = graphics::NoDisplay;
+		pars.display = false;
 
 	return pars;
 }

@@ -121,15 +121,15 @@
       <string/>
      </property>
      <property name="currentIndex" >
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="Graphics" >
       <property name="geometry" >
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>562</width>
-        <height>293</height>
+        <width>593</width>
+        <height>295</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -371,8 +371,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>100</width>
-        <height>30</height>
+        <width>593</width>
+        <height>295</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -541,8 +541,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>595</width>
-        <height>293</height>
+        <width>593</width>
+        <height>295</height>
        </rect>
       </property>
       <attribute name="title" >
@@ -600,6 +600,9 @@
          <property name="focusPolicy" >
           <enum>Qt::StrongFocus</enum>
          </property>
+         <property name="toolTip" >
+          <string>Enable LyX to preview this graphics, only if graphics previewing is not disabled at application level (see Preference dialog).</string>
+         </property>
          <property name="title" >
           <string>Sho&amp;w in LyX</string>
          </property>
@@ -629,75 +632,6 @@
             </property>
            </spacer>
           </item>
-          <item row="0" column="3" >
-           <widget class="QLineEdit" name="displayscale" >
-            <property name="enabled" >
-             <bool>true</bool>
-            </property>
-            <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="toolTip" >
-             <string>Percentage to scale by in LyX</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2" >
-           <widget class="QLabel" name="scaleLA" >
-            <property name="toolTip" >
-             <string>Percentage to scale by in LyX</string>
-            </property>
-            <property name="text" >
-             <string>Sca&amp;le on Screen (%):</string>
-            </property>
-            <property name="buddy" >
-             <cstring>displayscale</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1" >
-           <widget class="QComboBox" name="showCB" >
-            <property name="toolTip" >
-             <string>Screen display</string>
-            </property>
-            <item>
-             <property name="text" >
-              <string>Default</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>Monochrome</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>Grayscale</string>
-             </property>
-            </item>
-            <item>
-             <property name="text" >
-              <string>Color</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item row="0" column="0" >
-           <widget class="QLabel" name="showL" >
-            <property name="toolTip" >
-             <string>Screen display</string>
-            </property>
-            <property name="text" >
-             <string>Scr&amp;een Display:</string>
-            </property>
-            <property name="buddy" >
-             <cstring>showCB</cstring>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="0" >
            <widget class="QLabel" name="label" >
             <property name="sizePolicy" >
@@ -724,6 +658,35 @@
             </property>
             <property name="toolTip" >
              <string>Group Name to be set up from the current parameters</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QLineEdit" name="displayscale" >
+            <property name="enabled" >
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy" >
+             <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip" >
+             <string>Percentage to scale by in LyX</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="scaleLA" >
+            <property name="toolTip" >
+             <string>Percentage to scale by in LyX</string>
+            </property>
+            <property name="text" >
+             <string>Sca&amp;le on Screen (%):</string>
+            </property>
+            <property name="buddy" >
+             <cstring>displayscale</cstring>
             </property>
            </widget>
           </item>
@@ -790,8 +753,6 @@
   <tabstop>draftCB</tabstop>
   <tabstop>unzipCB</tabstop>
   <tabstop>displayGB</tabstop>
-  <tabstop>showCB</tabstop>
-  <tabstop>displayscale</tabstop>
  </tabstops>
  <includes>
   <include location="local" >qt_i18n.h</include>

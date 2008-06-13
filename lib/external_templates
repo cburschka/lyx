@@ -58,6 +58,13 @@ Template RasterImage
 	Transform Resize
 	Transform Clip
 	Transform Extra
+	# LyX preview options:
+	# Off: LyX will not attempt to show this material on screen.
+	# Graphics: LyX will attempt to show this material as-is or via a
+	#           conversion to a showable format.
+	# InstantPreview: LyX will attempt to use the 'instant preview'
+	#                 mechanism in order to show this material.
+	Preview Graphics
 	Format LaTeX
 		TransformOption Rotate RotationLatexOption
 		TransformOption Resize ResizeLatexOption
@@ -109,6 +116,7 @@ Template XFig
 	AutomaticProduction true
 	Transform Rotate
 	Transform Resize
+	Preview InstantPreview
 	Format LaTeX
 		TransformCommand Rotate RotationLatexCommand
 		TransformCommand Resize ResizeLatexCommand
@@ -175,6 +183,7 @@ Template ChessDiagram
 	InputFormat fen
 	FileFilter "*.fen"
 	AutomaticProduction true
+	Preview InstantPreview
 	Format LaTeX
 		Product "\\loadgame{$$AbsOrRelPathMaster$$Basename}\\showboard"
 		Requirement "chess"
@@ -211,6 +220,7 @@ Template LilyPond
 	Transform Resize
 	Transform Clip
 	Transform Extra
+	Preview InstantPreview
 	Format LaTeX
 		TransformOption Rotate RotationLatexOption
 		TransformOption Resize ResizeLatexOption
@@ -293,6 +303,7 @@ Template Date
 	InputFormat date
 	FileFilter "*"
 	AutomaticProduction true
+	Preview Off
 	Format LaTeX
 		Product "$$Contents(\"$$Tempname\")"
 		UpdateFormat dateout

@@ -864,10 +864,8 @@ PrefDisplay::PrefDisplay(GuiPreferences * form)
 	: PrefModule(qt_(catLookAndFeel), qt_("Graphics"), form)
 {
 	setupUi(this);
-	connect(instantPreviewCO, SIGNAL(activated(int)),
-		this, SIGNAL(changed()));
-	connect(displayGraphicsCO, SIGNAL(activated(int)),
-		this, SIGNAL(changed()));
+	connect(displayGraphicsCB, SIGNAL(toggled(int)), this, SIGNAL(changed()));
+	connect(instantPreviewCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
 }
 
 
@@ -879,15 +877,7 @@ void PrefDisplay::apply(LyXRC & rc) const
 		case 2:	rc.preview = LyXRC::PREVIEW_ON;	break;
 	}
 
-	graphics::DisplayType dtype;
-	switch (displayGraphicsCO->currentIndex()) {
-		case 3:	dtype = graphics::NoDisplay; break;
-		case 2:	dtype = graphics::ColorDisplay; break;
-		case 1: dtype = graphics::GrayscaleDisplay;	break;
-		case 0: dtype = graphics::MonochromeDisplay; break;
-		default: dtype = graphics::GrayscaleDisplay;
-	}
-	rc.display_graphics = dtype;
+	rc.display_graphics = displayGraphicsCB->isChecked();
 
 	// FIXME!! The graphics cache no longer has a changeDisplay method.
 #if 0
@@ -913,15 +903,8 @@ void PrefDisplay::update(LyXRC const & rc)
 		break;
 	}
 
-	int item = 2;
-	switch (rc.display_graphics) {
-		case graphics::NoDisplay:		item = 3; break;
-		case graphics::ColorDisplay:	item = 2; break;
-		case graphics::GrayscaleDisplay:	item = 1; break;
-		case graphics::MonochromeDisplay:	item = 0; break;
-		default: break;
-	}
-	displayGraphicsCO->setCurrentIndex(item);
+	displayGraphicsCB->setChecked(rc.display_graphics);
+	instantPreviewCO->setEnabled(rc.display_graphics);
 }
 
 

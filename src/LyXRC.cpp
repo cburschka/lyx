@@ -254,7 +254,7 @@ void LyXRC::setDefaults()
 	load_session = false;
 	make_backup = true;
 	backupdir_path.erase();
-	display_graphics = graphics::ColorDisplay;
+	display_graphics = true;
 	// Spellchecker settings:
 	use_spell_lib = true;
 	isp_command = "ispell";
@@ -420,7 +420,7 @@ int LyXRC::read(Lexer & lexrc)
 
 		case RC_DISPLAY_GRAPHICS:
 			if (lexrc.next())
-				display_graphics = graphics::displayTranslator().find(lexrc.getString());
+				display_graphics = lexrc.getString() == "true";
 			break;
 
 		case RC_TEX_EXPECTS_WINDOWS_PATHS:
@@ -1224,10 +1224,9 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (ignore_system_lyxrc ||
 		    display_graphics != system_lyxrc.display_graphics) {
 			os << "# Display graphics within LyX\n"
-			   << "# monochrome|grayscale|color|none\n"
+			   << "# true|false\n"
 			   << "\\display_graphics "
-			   << graphics::displayTranslator().find(
-			         graphics::DisplayType(display_graphics))
+			   << (display_graphics ? "true" : "false")
 			   << '\n';
 		}
 		if (tag != RC_LAST)

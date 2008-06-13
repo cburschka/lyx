@@ -67,8 +67,7 @@ namespace {
 
 bool displayGraphic(graphics::Params const & params)
 {
-	return params.display != graphics::NoDisplay &&
-		lyxrc.display_graphics != graphics::NoDisplay;
+	return params.display && lyxrc.display_graphics;
 }
 
 

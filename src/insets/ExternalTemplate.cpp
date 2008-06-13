@@ -102,8 +102,19 @@ public:
 		    << "\tHelpTextEnd\n"
 		    << "\tInputFormat " << et.inputFormat << '\n'
 		    << "\tFileFilter " << et.fileRegExp << '\n'
-		    << "\tAutomaticProduction " << et.automaticProduction << '\n';
-
+		    << "\tAutomaticProduction " << et.automaticProduction << '\n'
+		    << "\tPreview ";
+		switch (et.preview_mode) {
+			case PREVIEW_OFF:
+				os_ << "Off\n";
+				break;
+			case PREVIEW_GRAPHICS:
+				os_ << "Graphics\n";
+				break;
+			case PREVIEW_INSTANT:
+				os_ << "InstantPreview\n";
+				break;
+		}
 		typedef vector<TransformID> IDs;
 		IDs::const_iterator it  = et.transformIds.begin();
 		IDs::const_iterator end = et.transformIds.end();
@@ -299,6 +310,7 @@ void Template::readTemplate(Lexer & lex)
 		TO_INPUTFORMAT,
 		TO_FILTER,
 		TO_AUTOMATIC,
+		TO_PREVIEW,
 		TO_TRANSFORM,
 		TO_FORMAT,
 		TO_END
@@ -306,6 +318,7 @@ void Template::readTemplate(Lexer & lex)
 
 	LexerKeyword templateoptiontags[] = {
 		{ "automaticproduction", TO_AUTOMATIC },
+		{ "preview", TO_PREVIEW },
 		{ "filefilter", TO_FILTER },
 		{ "format", TO_FORMAT },
 		{ "guiname", TO_GUINAME },
@@ -343,6 +356,16 @@ void Template::readTemplate(Lexer & lex)
 		case TO_AUTOMATIC:
 			lex.next();
 			automaticProduction = lex.getBool();
+			break;
+
+		case TO_PREVIEW:
+			lex >> token;
+			if (token == "InstantPreview")
+				preview_mode = PREVIEW_INSTANT;
+			else if (token == "Graphics")
+				preview_mode = PREVIEW_GRAPHICS;
+			else
+				preview_mode = PREVIEW_OFF;
 			break;
 
 		case TO_TRANSFORM: {

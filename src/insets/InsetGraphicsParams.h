@@ -37,8 +37,8 @@ public:
 	support::DocFileName filename;
 	/// Scaling the Screen inside Lyx
 	unsigned int lyxscale;
-	/// How to display the image inside LyX
-	graphics::DisplayType display;
+	/// If to display the image inside LyX
+	bool display;
 	/// Scaling for output (LaTeX)
 	std::string scale;
 	/// sizes for output (LaTeX)

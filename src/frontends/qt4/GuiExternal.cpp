@@ -98,12 +98,10 @@ GuiExternal::GuiExternal(GuiView & lv)
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
-	connect(displayGB, SIGNAL(toggled(bool)),
-		showCO, SLOT(setEnabled(bool)));
+	/*
 	connect(displayGB, SIGNAL(toggled(bool)),
 		displayscaleED, SLOT(setEnabled(bool)));
-	connect(showCO, SIGNAL(activated(QString)),
-		this, SLOT(change_adaptor()));
+		*/
 	connect(originCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(aspectratioCB, SIGNAL(stateChanged(int)),
@@ -168,7 +166,6 @@ GuiExternal::GuiExternal(GuiView & lv)
 	bc().addReadOnly(externalCO);
 	bc().addReadOnly(draftCB);
 	bc().addReadOnly(displayscaleED);
-	bc().addReadOnly(showCO);
 	bc().addReadOnly(displayGB);
 	bc().addReadOnly(angleED);
 	bc().addReadOnly(originCO);
@@ -365,62 +362,6 @@ static Length::UNIT defaultUnit()
 }
 
 
-static void setDisplay(
-	QGroupBox & displayGB, QComboBox & showCO, QLineEdit & scaleED,
-	external::DisplayType display, unsigned int scale, bool read_only)
-{
-	int item = 0;
-	switch (display) {
-	case external::DefaultDisplay:
-		item = 0;
-		break;
-	case external::MonochromeDisplay:
-		item = 1;
-		break;
-	case external::GrayscaleDisplay:
-		item = 2;
-		break;
-	case external::ColorDisplay:
-		item = 3;
-		break;
-	case external::PreviewDisplay:
-		item = 4;
-		break;
-	case external::NoDisplay:
-		item = 0;
-		break;
-	}
-
-	showCO.setCurrentIndex(item);
-	bool const no_display = display == external::NoDisplay;
-	showCO.setEnabled(!no_display && !read_only);
-	displayGB.setChecked(!no_display);
-	scaleED.setEnabled(!no_display && !read_only);
-	scaleED.setText(QString::number(scale));
-}
-
-
-static external::DisplayType display(QGroupBox const & displayGB,
-	QComboBox const & showCO)
-{
-	if (!displayGB.isChecked())
-		return external::NoDisplay;
-	switch (showCO.currentIndex()) {
-	default:
-	case 0:
-		return external::DefaultDisplay;
-	case 1:
-		return external::MonochromeDisplay;
-	case 2:
-		return external::GrayscaleDisplay;
-	case 3:
-		return external::ColorDisplay;
-	case 4:
-		return external::PreviewDisplay;
-	}
-}
-
-
 static void setRotation(QLineEdit & angleED, QComboBox & originCO,
 	external::RotationData const & data)
 {
@@ -569,8 +510,10 @@ void GuiExternal::updateContents()
 
 	draftCB->setChecked(params_.draft);
 
-	setDisplay(*displayGB, *showCO, *displayscaleED,
-		   params_.display, params_.lyxscale, isBufferReadonly());
+	displayGB->setChecked(params_.display);
+	displayscaleED->setEnabled(params_.display && !isBufferReadonly());
+	displayscaleED->setText(QString::number(params_.lyxscale));
+	displayGB->setEnabled(lyxrc.display_graphics);
 
 	setRotation(*angleED, *originCO, params_.rotationdata);
 
@@ -654,7 +597,7 @@ void GuiExternal::applyView()
 
 	params_.draft = draftCB->isChecked();
 	params_.lyxscale = displayscaleED->text().toInt();
-	params_.display = display(*displayGB, *showCO);
+	params_.display = displayGB->isChecked();
 
 	if (rotationGB->isEnabled())
 		getRotation(params_.rotationdata, *angleED, *originCO);

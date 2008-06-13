@@ -42,7 +42,7 @@ public:
 	/// Must use the reset methods to make this instance usable.
 	Loader();
 	/// The image is not transformed, just displayed as-is.
-	Loader(support::FileName const & file_with_path, DisplayType = ColorDisplay);
+	Loader(support::FileName const & file_with_path, bool display = true);
 	/// The image is transformed before display.
 	Loader(support::FileName const & file_with_path, Params const &);
 	///
@@ -53,8 +53,7 @@ public:
 	Loader & operator=(Loader const &);
 
 	/// The file can be changed, or the display params, or both.
-	void reset(support::FileName const & file_with_path,
-		   DisplayType = ColorDisplay) const;
+	void reset(support::FileName const & file_with_path, bool display = true) const;
 	///
 	void reset(support::FileName const & file_with_path, Params const &) const;
 	///

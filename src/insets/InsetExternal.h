@@ -13,6 +13,7 @@
 #define INSET_EXTERNAL_H
 
 #include "Inset.h"
+#include "ExternalTemplate.h"
 #include "ExternalTransforms.h"
 
 #include "support/FileName.h"
@@ -44,20 +45,6 @@ private:
 	support::FileName tempname_;
 };
 
-/// How is the image to be displayed on the LyX screen?
-enum DisplayType {
-	DefaultDisplay,
-	MonochromeDisplay,
-	GrayscaleDisplay,
-	ColorDisplay,
-	PreviewDisplay,
-	NoDisplay
-};
-
-
-/// The translator between the Display enum and corresponding lyx string.
-Translator<DisplayType, std::string> const & displayTranslator();
-
 } // namespace external
 
 
@@ -78,8 +65,10 @@ public:
 
 	/// The external file.
 	support::DocFileName filename;
-	/// How the inset is to be displayed by LyX.
-	external::DisplayType display;
+	/// If the inset is to be displayed by LyX.
+	bool display;
+	/// If the inset is to use the preview mechanism.
+	PreviewMode preview_mode;
 	/// The scale of the displayed graphic (if shown).
 	unsigned int lyxscale;
 

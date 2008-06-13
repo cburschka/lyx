@@ -78,57 +78,14 @@ bool GuiImage::load(FileName const & filename)
 }
 
 
-// This code is taken from KImageEffect::toGray
-static QPixmap toGray(QPixmap const & pix)
-{
-	if (pix.width() == 0 || pix.height() == 0)
-		return pix;
-
-	QImage img = pix.toImage();
-	int const pixels = img.depth() > 8 ?
-		img.width() * img.height() : img.numColors();
-
-	unsigned int *data = img.depth() > 8 ?
-		reinterpret_cast<unsigned int *>(img.bits()) :
-		reinterpret_cast<unsigned int *>(&img.colorTable()[0]);
-
-	for(int i = 0; i < pixels; ++i){
-		int const val = qGray(data[i]);
-		data[i] = qRgba(val, val, val, qAlpha(data[i]));
-	}
-	return QPixmap::fromImage(img);
-}
-
-
 bool GuiImage::setPixmap(Params const & params)
 {
-	if (original_.isNull() || params.display == NoDisplay)
+	if (original_.isNull() || !params.display)
 		return false;
 
 	is_transformed_ = clip(params);
 	is_transformed_ |= rotate(params);
 	is_transformed_ |= scale(params);
-
-	switch (params.display) {
-	case GrayscaleDisplay: {
-		transformed_ = is_transformed_
-			? toGray(transformed_) :  toGray(original_);
-		is_transformed_ = true;
-		break;
-	}
-
-	case MonochromeDisplay: {
-		QImage img = is_transformed_
-			? transformed_.toImage() : original_.toImage();
-		img.convertToFormat(img.format(), Qt::MonoOnly);
-		transformed_ = QPixmap::fromImage(img);
-		is_transformed_ = true;
-		break;
-	}
-
-	default:
-		break;
-	}
 
 	if (!is_transformed_)
 		// Clear it out to save some memory.

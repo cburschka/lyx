@@ -207,10 +207,10 @@ Loader::Loader()
 {}
 
 
-Loader::Loader(FileName const & file, DisplayType type)
+Loader::Loader(FileName const & file, bool display)
 	: pimpl_(new Impl)
 {
-	reset(file, type);
+	reset(file, display);
 }
 
 
@@ -245,10 +245,10 @@ Loader & Loader::operator=(Loader const & other)
 }
 
 
-void Loader::reset(FileName const & file, DisplayType type) const
+void Loader::reset(FileName const & file, bool display) const
 {
 	Params params;
-	params.display = type;
+	params.display = display;
 	pimpl_->resetParams(params);
 
 	pimpl_->resetFile(file);
@@ -407,8 +407,7 @@ void Loader::Impl::statusChanged()
 
 void Loader::Impl::createPixmap()
 {
-	if (!cached_item_.get() ||
-	    params_.display == NoDisplay || status_ != Loaded)
+	if (!cached_item_.get() || !params_.display || status_ != Loaded)
 		return;
 
 	image_.reset(cached_item_->image()->clone());

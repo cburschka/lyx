@@ -376,8 +376,7 @@ public:
 	///
 	int label_init_length;
 	///
-	///graphics::DisplayType
-	int display_graphics;
+	bool display_graphics;
 	///
 	bool show_banner;
 	///

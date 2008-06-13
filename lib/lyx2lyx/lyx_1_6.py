@@ -2500,6 +2500,40 @@ def revert_InsetSpace(document):
         document.body[i] = document.body[i].replace('\\begin_inset space', '\\begin_inset Space')
 
 
+def convert_display_enum(document):
+    " Convert 'display foo' to 'display false/true'"
+    i = 0
+    while True:
+        i = find_token(document.body, "display", i)
+        if i == -1:
+            return
+        if check_token(i, "none"):
+            document.body[i] = document.body[i].replace('none', 'false')
+        if check_token(i, "default"):
+            document.body[i] = document.body[i].replace('default', 'true')
+        if check_token(i, "monochrome"):
+            document.body[i] = document.body[i].replace('monochrome', 'true')
+        if check_token(i, "grayscale"):
+            document.body[i] = document.body[i].replace('grayscale', 'true')
+        if check_token(i, "color"):
+            document.body[i] = document.body[i].replace('color', 'true')
+        if check_token(i, "preview"):
+            document.body[i] = document.body[i].replace('preview', 'true')
+
+
+def revert_display_enum(document):
+    " Revert 'display false/true' to 'display none/color'"
+    i = 0
+    while True:
+        i = find_token(document.body, "display", i)
+        if i == -1:
+            return
+        if check_token(i, "false"):
+            document.body[i] = document.body[i].replace('false', 'none')
+        if check_token(i, "true"):
+            document.body[i] = document.body[i].replace('true', 'default')
+
+
 def remove_fontsCJK(document):
     ' Remove font_cjk param '
     i = find_token(document.header, "\\font_cjk", 0)
@@ -2610,9 +2644,11 @@ convert = [[277, [fix_wrong_tables]],
            [334, [convert_paper_sizes]],
            [335, [convert_InsetSpace]],
            [336, []],
+           [337, [convert_display_enum]],
           ]
 
-revert =  [[335, [remove_fontsCJK]],
+revert =  [[336, [revert_display_enum]],
+           [335, [remove_fontsCJK]],
            [334, [revert_InsetSpace]],
            [333, [revert_paper_sizes]],
            [332, []],

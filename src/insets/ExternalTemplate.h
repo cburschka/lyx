@@ -23,6 +23,12 @@ namespace support { class FileName; }
 
 class Lexer;
 
+enum PreviewMode {
+	PREVIEW_OFF = 0,
+	PREVIEW_GRAPHICS,
+	PREVIEW_INSTANT
+};
+
 namespace external {
 
 class Template {
@@ -56,6 +62,8 @@ public:
 	std::string fileRegExp;
 	/// Should we do automatic production of the output?
 	bool automaticProduction;
+	/// How should we preview the data in LyX?
+	PreviewMode preview_mode;
 	/// A collection of transforms that we can use to transform the data.
 	std::vector<TransformID> transformIds;
 

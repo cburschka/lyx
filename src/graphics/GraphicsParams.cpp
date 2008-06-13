@@ -23,7 +23,7 @@ namespace lyx {
 namespace graphics {
 
 Params::Params()
-	: display(ColorDisplay),
+	: display(true),
 	  scale(100),
 	  angle(0)
 {}

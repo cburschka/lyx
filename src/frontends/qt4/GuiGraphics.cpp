@@ -239,10 +239,7 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	// setChecked(). Note, too, that clicked() would get called whenever it
 	// is clicked, even right clicked (I think), not just whenever it is
 	// toggled.
-	connect(displayGB, SIGNAL(toggled(bool)),
-		this, SLOT(change_adaptor()));
-	connect(showCB, SIGNAL(currentIndexChanged(int)),
-		this, SLOT(change_adaptor()));
+	connect(displayGB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(displayscale, SIGNAL(textChanged(const QString&)),
 		this, SLOT(change_adaptor()));
 	connect(groupId, SIGNAL(textChanged(const QString&)),
@@ -518,18 +515,8 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	draftCB->setChecked(igp.draft);
 	clip->setChecked(igp.clip);
 	unzipCB->setChecked(igp.noUnzip);
-
-	int item = 0;
-	switch (igp.display) {
-		case graphics::DefaultDisplay: item = 0; break;
-		case graphics::MonochromeDisplay: item = 1; break;
-		case graphics::GrayscaleDisplay: item = 2; break;
-		case graphics::ColorDisplay: item = 3; break;
-		case graphics::NoDisplay: item = 0; break;
-	}
-	showCB->setCurrentIndex(item);
+	displayGB->setChecked(igp.display);
 	displayscale->setText(toqstr(convert<string>(igp.lyxscale)));
-	displayGB->setChecked(igp.display != graphics::NoDisplay);
 
 	// the output section (width/height)
 
@@ -540,6 +527,7 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	scaleCB->setChecked(scaleChecked);
 	scaleCB->blockSignals(false);
 	Scale->setEnabled(scaleChecked);
+	displayGB->setEnabled(lyxrc.display_graphics);
 
 	groupId->setText(toqstr(igp.groupId));
 
@@ -636,17 +624,7 @@ void GuiGraphics::applyView()
 
 	igp.draft = draftCB->isChecked();
 	igp.clip = clip->isChecked();
-
-	switch (showCB->currentIndex()) {
-		case 0: igp.display = graphics::DefaultDisplay; break;
-		case 1: igp.display = graphics::MonochromeDisplay; break;
-		case 2: igp.display = graphics::GrayscaleDisplay; break;
-		case 3: igp.display = graphics::ColorDisplay; break;
-		default:;
-	}
-
-	if (!displayGB->isChecked())
-		igp.display = graphics::NoDisplay;
+	igp.display = displayGB->isChecked();
 
 	//the graphics section
 	if (scaleCB->isChecked() && !Scale->text().isEmpty()) {
