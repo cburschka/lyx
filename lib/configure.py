@@ -235,7 +235,7 @@ def checkFormatEntries(dtl_tools):
     checkViewer('a Tgif viewer and editor', ['tgif'],
         rc_entry = [r'\Format tgif       obj     Tgif                   "" "%%"	"%%"	"vector"'])
     #
-    checkViewer('a FIG viewer and editor', ['xfig'],
+    checkViewer('a FIG viewer and editor', ['xfig', 'jfig3-itext.jar', 'jfig3.jar'],
         rc_entry = [r'\Format fig        fig     FIG                    "" "%%"	"%%"	"vector"'])
     #
     checkViewer('a Grace viewer and editor', ['xmgrace'],
