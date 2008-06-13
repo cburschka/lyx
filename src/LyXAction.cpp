@@ -1358,6 +1358,16 @@ void LyXAction::init()
 		{ LFUN_MATH_MUTATE, "math-mutate", Noop, Math },
 		{ LFUN_MATH_SPACE, "math-space", Noop, Math },
 		{ LFUN_MATH_IMPORT_SELECTION, "math-import-selection", Noop, Math },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MATH_MATRIX
+ * \li Action: Inserts a matrix.
+ * \li Syntax: math-matrix <COLS> <ROWS> [<ALIGN>]
+ * \li Params: <ALIGN>: Alignment is a word composed of the vertical alignment
+                        (b, c or t) (i.e. 1 char) and the horizontal alignments 
+			(l, c or r) (i.e. <COL> chars).
+ * \li Sample: math-matrix 3 3 bccc
+ * \endvar
+ */
 		{ LFUN_MATH_MATRIX, "math-matrix", Noop, Math },
 		{ LFUN_MATH_MODE, "math-mode", Noop, Math },
 /*!
