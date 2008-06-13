@@ -8,6 +8,10 @@ been applied because of incomplete testing.
 Interface changes
 -----------------
 
+The external template format recognize now a new tag: 'Preview'. This tag is
+used to define how an external material should be previewed in LyX. For more detail,
+see the 'external_templates' file in the resource directory of LyX.
+
 Some of the LyX functions have changed names:
 
 - A new LFUN_SPECIALCHAR_INSERT has been implemented that obsoletes the
