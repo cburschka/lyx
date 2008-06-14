@@ -1389,6 +1389,15 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_NUMBER_TOGGLE, "math-number-toggle", Noop, Math },
 		{ LFUN_MATH_EXTERN, "math-extern", Noop, Math },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MATH_SIZE
+ * \li Action: Changes arbitrarily the size used by math fonts inside a context.
+ * \li Notion: Provides an interface to the LaTeX math mode font size commands.
+ * \li Syntax: math-size <STYLE>
+ *\ li Params: <STYLE>: \displaystyle|\textstyle|\scriptstyle|\scriptscriptstyle
+ * \li Origin: Alejandro, 15 Aug 1996
+ * \endvar
+ */
 		{ LFUN_MATH_SIZE, "math-size", Noop, Math },
 /*!
  * \var lyx::FuncCode lyx::LFUN_MATH_MACRO_UNFOLD
