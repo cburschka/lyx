@@ -285,10 +285,10 @@ ToolbarSet
 	End
 	
 	Toolbar "style" "Styles"
-		Item "Display style	\\displaystyle" "math-insert \displaystyle"
-		Item "Normal text style	\\textstyle" "math-insert \textstyle"
-		Item "Script (small) style	\\scriptstyle" "math-insert \scriptstyle"
-		Item "Scriptscript (smaller) style	\\scriptscriptstyle" "math-insert \scriptscriptstyle"
+		Item "Display style	\\displaystyle" "math-size \displaystyle"
+		Item "Normal text style	\\textstyle" "math-size \textstyle"
+		Item "Script (small) style	\\scriptstyle" "math-size \scriptstyle"
+		Item "Scriptscript (smaller) style	\\scriptscriptstyle" "math-size \scriptscriptstyle"
 	End
 	
 	Toolbar "frac-square" "Fractions"

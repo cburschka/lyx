@@ -960,12 +960,11 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_MATH_SIZE:
-#if 0
-		cur.recordUndoSelection();
-		cur.setSize(arg);
-#endif
+	case LFUN_MATH_SIZE: {
+		FuncRequest fr = FuncRequest(LFUN_MATH_INSERT, cmd.argument());
+		doDispatch(cur, fr);
 		break;
+	}
 
 	case LFUN_MATH_MATRIX: {
 		cur.recordUndo();
