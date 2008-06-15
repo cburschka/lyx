@@ -1028,9 +1028,16 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_SPACE_INSERT:
-	case LFUN_MATH_SPACE:
 		cur.recordUndoSelection();
 		cur.insert(MathAtom(new InsetMathSpace(from_ascii(","))));
+		break;
+
+	case LFUN_MATH_SPACE:
+		cur.recordUndoSelection();
+		if (cmd.argument().empty())
+			cur.insert(MathAtom(new InsetMathSpace(from_ascii(","))));
+		else
+			cur.insert(MathAtom(new InsetMathSpace(cmd.argument())));
 		break;
 
 	case LFUN_ERT_INSERT:
