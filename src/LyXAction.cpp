@@ -1364,6 +1364,16 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_MATH_LIMITS, "math-limits", Noop, Math },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MATH_MACRO
+ * \li Action: Inserts a math macro definition at the cursor position in the text.
+ * \li Syntax: math-macro <name> [<NARGS>] [def]
+ * \li Params: <NAME>: The name of the macro, e.g. "mymacro".
+ * \li Params: <NARGS>: The number of parameters of the macro. Default is 0.
+ * \li Params: def: Has effect anymore, just for compatibility with former LyX versions.
+ * \li Origin: sts, 16 June 2008
+ * \endvar
+ */
 		{ LFUN_MATH_MACRO, "math-macro", Noop, Math },
 /*!
  * \var lyx::FuncCode lyx::LFUN_MATH_MUTATE
