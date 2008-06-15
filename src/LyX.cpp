@@ -453,6 +453,10 @@ int LyX::exec(int & argc, char * argv[])
 
 	initGuiFont();
 
+	// Reestablish our defaults, as Qt overwrites them
+	// after createApplication()
+	locale_init();
+
 	// Parse and remove all known arguments in the LyX singleton
 	// Give an error for all remaining ones.
 	int exit_status = init(argc, argv);
