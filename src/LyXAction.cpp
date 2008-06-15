@@ -1355,6 +1355,15 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_LIMITS, "math-limits", Noop, Math },
 		{ LFUN_MATH_MACRO, "math-macro", Noop, Math },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MATH_MUTATE
+ * \li Action: Mutates the type of math inset to the newly selected one.
+ * \li Syntax: math-mutate <TYPE>
+ * \li Params: <TYPE>: none|simple|equation|eqnarray|align|alignat|xalignat|xxalignat|
+                       multline|gather|flalign
+ * \li Origin: Andre', 23 May 2001
+ * \endvar
+ */
 		{ LFUN_MATH_MUTATE, "math-mutate", Noop, Math },
 		{ LFUN_MATH_SPACE, "math-space", Noop, Math },
 		{ LFUN_MATH_IMPORT_SELECTION, "math-import-selection", Noop, Math },
@@ -1375,7 +1384,7 @@ void LyXAction::init()
  * \li Action: Toggles numbering of the current formula line.
  * \li Notion: Must be in display formula mode.
  * \li Syntax: math-number-line-toggle
- * \li Origin: Alejandro 18 Jun 1996
+ * \li Origin: Alejandro, 18 Jun 1996
  * \endvar
  */
 		{ LFUN_MATH_NUMBER_LINE_TOGGLE, "math-number-line-toggle", Noop, Math },
@@ -1384,7 +1393,7 @@ void LyXAction::init()
  * \li Action: Toggles numbering/labeling of the current formula.
  * \li Notion: Must be in display formula mode.
  * \li Syntax: math-number-toggle
- * \li Origin: Alejandro 4 Jun 1996
+ * \li Origin: Alejandro, 4 Jun 1996
  * \endvar
  */
 		{ LFUN_MATH_NUMBER_TOGGLE, "math-number-toggle", Noop, Math },
