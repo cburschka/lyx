@@ -1307,6 +1307,16 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_MATH_DELIM, "math-delim", Noop, Math },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MATH_BIGDELIM
+ * \li Action: Inserts math fixed size delimiters (e.g. parentheses, brackets) enclosing expression.
+ * \li Syntax: math-bigdelim <LSIZE> <LDELIM> <RSIZE> <RDELIM>
+ * \li Params: <L/RSIZE>: bigl/r|Bigl/r|biggl/r|Biggl/r \n
+               <L/RDELIM>: TeX code for delimiter. See Delimiter dialog for delimiters to be used.
+ * \li Sample: math-bigdelim "Bigl" "\Downarrow" "Bigr" "\}"
+ * \li Origin: Enrico & Georg, 7 May 2006
+ * \endvar
+ */
 		{ LFUN_MATH_BIGDELIM, "math-bigdelim", Noop, Math },
 /*!
  * \var lyx::FuncCode lyx::LFUN_MATH_DISPLAY
