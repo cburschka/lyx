@@ -1378,7 +1378,7 @@ lib_images_files = Split('''
     float-insert_table.png
     font-bold.png
     font-emph.png
-    font-free-apply.png
+    textstyle-apply.png
     font-noun.png
     font-sans.png
     footnote-insert.png
