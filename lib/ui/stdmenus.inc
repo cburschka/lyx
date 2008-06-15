@@ -399,8 +399,8 @@ Menuset
 		Item "Gathered Environment|h" "command-sequence math-mode on; math-insert \gathered"
 		Item "Split Environment|S" "command-sequence math-mode on; math-insert \split; tabular-feature append-column"
 		Separator
-		Item "Delimiters|r" "dialog-show mathdelimiter"
-		Item "Matrix|x" "dialog-show mathmatrix"
+		Item "Delimiters...|r" "dialog-show mathdelimiter"
+		Item "Matrix...|x" "dialog-show mathmatrix"
 		Item "Macro|o" "math-macro newmacroname newcommand"
 	End
 
