@@ -1375,6 +1375,17 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_MATH_MUTATE, "math-mutate", Noop, Math },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MATH_SPACE
+ * \li Action: Inserts space into math expression.
+ * \li Notion: Use spacebar after entering this space to change type of space.
+ * \li Syntax: math-space [<TYPE>]
+ * \li Params: <TYPE>: negative spaces: !|negmedspace|negthickspace \n
+                       positive spaces: ,|:|;|quad|qquad \n
+                       "," used by default.
+ * \li Origin: Andre', 25 Jul 2001; ps, 16 Jun 2008
+ * \endvar
+ */
 		{ LFUN_MATH_SPACE, "math-space", Noop, Math },
 		{ LFUN_MATH_IMPORT_SELECTION, "math-import-selection", Noop, Math },
 /*!
@@ -1414,7 +1425,7 @@ void LyXAction::init()
  * \li Notion: Provides an interface to the LaTeX math mode font size commands.
  * \li Syntax: math-size <STYLE>
  *\ li Params: <STYLE>: \displaystyle|\textstyle|\scriptstyle|\scriptscriptstyle
- * \li Origin: Alejandro, 15 Aug 1996
+ * \li Origin: Alejandro, 15 Aug 1996; ps, 14 Jun 2008
  * \endvar
  */
 		{ LFUN_MATH_SIZE, "math-size", Noop, Math },
