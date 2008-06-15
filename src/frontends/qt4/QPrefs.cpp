@@ -57,6 +57,7 @@ using lyx::support::os::external_path;
 using lyx::support::os::external_path_list;
 using lyx::support::os::internal_path;
 using lyx::support::os::internal_path_list;
+using lyx::support::split;
 
 using std::endl;
 using std::string;
@@ -995,8 +996,8 @@ void PrefConverters::updateGui()
 	Formats::const_iterator cit = form_->formats().begin();
 	Formats::const_iterator end = form_->formats().end();
 	for (; cit != end; ++cit) {
-		converterFromCO->addItem(toqstr(cit->prettyname()));
-		converterToCO->addItem(toqstr(cit->prettyname()));
+		converterFromCO->addItem(qt_(cit->prettyname()));
+		converterToCO->addItem(qt_(cit->prettyname()));
 	}
 
 	// currentRowChanged(int) is also triggered when updating the listwidget
@@ -1007,10 +1008,10 @@ void PrefConverters::updateGui()
 	Converters::const_iterator ccit = form_->converters().begin();
 	Converters::const_iterator cend = form_->converters().end();
 	for (; ccit != cend; ++ccit) {
-		std::string const name =
-			ccit->From->prettyname() + " -> " + ccit->To->prettyname();
+		QString const name =
+			qt_(ccit->From->prettyname()) + " -> " + qt_(ccit->To->prettyname());
 		int type = form_->converters().getNumber(ccit->From->name(), ccit->To->name());
-		new QListWidgetItem(toqstr(name), convertersLW, type);
+		new QListWidgetItem(name, convertersLW, type);
 	}
 	convertersLW->sortItems(Qt::AscendingOrder);
 	convertersLW->blockSignals(false);
@@ -1019,7 +1020,7 @@ void PrefConverters::updateGui()
 	if (!current.isEmpty()) {
 		QList<QListWidgetItem *> const item =
 			convertersLW->findItems(current, Qt::MatchExactly);
-		if (item.size()>0)
+		if (item.size() > 0)
 			convertersLW->setCurrentItem(item.at(0));
 	}
 
@@ -1175,7 +1176,7 @@ void PrefCopiers::update()
 	for (Formats::const_iterator it = form_->formats().begin(),
 		     end = form_->formats().end();
 	     it != end; ++it) {
-		copierFormatCO->addItem(toqstr(it->prettyname()));
+		copierFormatCO->addItem(qt_(it->prettyname()));
 	}
 
 	// The browser widget
@@ -1187,7 +1188,8 @@ void PrefCopiers::update()
 		std::string const & command = it->second.command();
 		if (command.empty())
 			continue;
-		QString const pretty = toqstr(form_->formats().prettyName(it->first));
+		QString const pretty = 
+			toqstr(translateIfPossible(form_->formats().prettyName(it->first)));
 		AllCopiersLW->addItem(pretty);
 	}
 	AllCopiersLW->sortItems(Qt::AscendingOrder);
@@ -1209,18 +1211,18 @@ namespace {
 
 class SamePrettyName {
 public:
-	SamePrettyName(string const & n) : pretty_name_(n) {}
+	SamePrettyName(docstring const & n) : pretty_name_(n) {}
 
 	bool operator()(Format const & fmt) const {
-		return fmt.prettyname() == pretty_name_;
+		return _(fmt.prettyname()) == pretty_name_;
 	}
 
 private:
-	string const pretty_name_;
+	docstring const pretty_name_;
 };
 
 
-Format const * getFormat(std::string const & prettyname)
+Format const * getFormat(docstring const & prettyname)
 {
 	Formats::const_iterator it = formats.begin();
 	Formats::const_iterator const end = formats.end();
@@ -1236,14 +1238,13 @@ void PrefCopiers::switch_copierLB(int row)
 	if (row < 0)
 		return;
 
-	// FIXME UNICODE?
-	std::string const browser_text =
-		fromqstr(AllCopiersLW->currentItem()->text());
+	docstring const browser_text =
+		qstring_to_ucs4(AllCopiersLW->currentItem()->text());
 	Format const * fmt = getFormat(browser_text);
 	if (fmt == 0)
 		return;
 
-	QString const gui_name = toqstr(fmt->prettyname());
+	QString const gui_name = qt_(fmt->prettyname());
 	QString const command = toqstr(form_->movers().command(fmt->name()));
 
 	copierED->clear();
@@ -1265,8 +1266,8 @@ void PrefCopiers::switch_copierCO(int row)
 	if (row<0)
 		return;
 
-	std::string const combo_text =
-		fromqstr(copierFormatCO->currentText());
+	docstring const combo_text =
+		qstring_to_ucs4(copierFormatCO->currentText());
 	Format const * fmt = getFormat(combo_text);
 	if (fmt == 0)
 		return;
@@ -1278,7 +1279,7 @@ void PrefCopiers::switch_copierCO(int row)
 	if (index >= 0)
 		AllCopiersLW->setItemSelected(index, false);
 
-	QString const gui_name = toqstr(fmt->prettyname());
+	QString const gui_name = qt_(fmt->prettyname());
 	int const browser_size = AllCopiersLW->count();
 	for (int i = 0; i < browser_size; ++i) {
 		QString const text = AllCopiersLW->item(i)->text();
@@ -1309,7 +1310,7 @@ void PrefCopiers::updateButtons()
 
 	bool const valid = !copierED->text().isEmpty();
 
-	Format const * fmt = getFormat(fromqstr(selected));
+	Format const * fmt = getFormat(qstring_to_ucs4(selected));
 	string const old_command = form_->movers().command(fmt->name());
 	string const new_command(fromqstr(copierED->text()));
 
@@ -1323,8 +1324,8 @@ void PrefCopiers::updateButtons()
 
 void PrefCopiers::new_copier()
 {
-	std::string const combo_text =
-		fromqstr(copierFormatCO->currentText());
+	docstring const combo_text =
+		qstring_to_ucs4(copierFormatCO->currentText());
 	Format const * fmt = getFormat(combo_text);
 	if (fmt == 0)
 		return;
@@ -1345,8 +1346,8 @@ void PrefCopiers::new_copier()
 
 void PrefCopiers::modify_copier()
 {
-	std::string const combo_text =
-		fromqstr(copierFormatCO->currentText());
+	docstring const combo_text =
+		qstring_to_ucs4(copierFormatCO->currentText());
 	Format const * fmt = getFormat(combo_text);
 	if (fmt == 0)
 		return;
@@ -1361,8 +1362,8 @@ void PrefCopiers::modify_copier()
 
 void PrefCopiers::remove_copier()
 {
-	std::string const combo_text =
-		fromqstr(copierFormatCO->currentText());
+	docstring const combo_text =
+		qstring_to_ucs4(copierFormatCO->currentText());
 	Format const * fmt = getFormat(combo_text);
 	if (fmt == 0)
 		return;
@@ -1420,6 +1421,21 @@ PrefFileformats::PrefFileformats(QPrefs * form, QWidget * parent)
 }
 
 
+namespace {
+
+string const l10n_shortcut(string const prettyname, string const shortcut)
+{
+	if (shortcut.empty())
+		return string();
+
+	string l10n_format =
+		to_utf8(_(prettyname + '|' + shortcut));
+	return split(l10n_format, '|');
+}
+
+}; // namespace anon
+
+
 void PrefFileformats::apply(LyXRC & /*rc*/) const
 {
 }
@@ -1442,9 +1458,9 @@ void PrefFileformats::update()
 	Formats::const_iterator cit = form_->formats().begin();
 	Formats::const_iterator end = form_->formats().end();
 	for (; cit != end; ++cit) {
-		new QListWidgetItem(toqstr(cit->prettyname()),
-							formatsLW,
-							form_->formats().getNumber(cit->name()) );
+		new QListWidgetItem(qt_(cit->prettyname()),
+				   formatsLW,
+				   form_->formats().getNumber(cit->name()) );
 	}
 	formatsLW->sortItems(Qt::AscendingOrder);
 	formatsLW->blockSignals(false);
@@ -1467,13 +1483,15 @@ void PrefFileformats::switch_format(int nr)
 	Format const f = form_->formats().get(ftype);
 
 	formatED->setText(toqstr(f.name()));
-	guiNameED->setText(toqstr(f.prettyname()));
 	extensionED->setText(toqstr(f.extension()));
-	shortcutED->setText(toqstr(f.shortcut()));
 	viewerED->setText(toqstr(f.viewer()));
 	editorED->setText(toqstr(f.editor()));
 	documentCB->setChecked((f.documentFormat()));
 	vectorCB->setChecked((f.vectorFormat()));
+
+	// l10n
+	guiNameED->setText(qt_(f.prettyname()));
+	shortcutED->setText(toqstr(l10n_shortcut(f.prettyname(), f.shortcut())));
 
 	updateButtons();
 }
@@ -1500,7 +1518,16 @@ void PrefFileformats::updateButtons()
 	}
 
 	// assure that a gui name cannot be chosen twice
-	bool const known_otherwise = gui_name_known && (where != sel);
+	bool known_otherwise = gui_name_known && (where != sel);
+
+	// Also check untranslated prettynames
+	Formats::const_iterator cit = form_->formats().begin();
+	Formats::const_iterator end = form_->formats().end();
+	for (; cit != end; ++cit) {
+		if (toqstr(cit->prettyname()) == gui_name
+		    && qt_(cit->prettyname()) != gui_name)
+			known_otherwise = true;
+	}
 
 	bool const known = !(sel < 0);
 	bool const valid = (!formatED->text().isEmpty()
@@ -1508,8 +1535,8 @@ void PrefFileformats::updateButtons()
 
 	int const ftype = formatsLW->currentItem()->type();
 	Format const & f(form_->formats().get(ftype));
-	string const old_pretty(f.prettyname());
-	string const old_shortcut(f.shortcut());
+	string const old_pretty(to_utf8(_(f.prettyname())));
+	string const old_shortcut(l10n_shortcut(f.prettyname(), f.shortcut()));
 	string const old_extension(f.extension());
 	string const old_viewer(f.viewer());
 	string const old_editor(f.editor());
@@ -1538,11 +1565,23 @@ void PrefFileformats::updateButtons()
 void PrefFileformats::new_format()
 {
 	string const name = fromqstr(formatED->text());
-	string const prettyname = fromqstr(guiNameED->text());
+	string prettyname = fromqstr(guiNameED->text());
 	string const extension = fromqstr(extensionED->text());
-	string const shortcut = fromqstr(shortcutED->text());
+	string shortcut = fromqstr(shortcutED->text());
 	string const viewer = fromqstr(viewerED->text());
 	string const editor = fromqstr(editorED->text());
+
+	// handle translations
+	Formats::const_iterator cit = form_->formats().begin();
+	Formats::const_iterator end = form_->formats().end();
+	for (; cit != end; ++cit) {
+		if (_(cit->prettyname()) == from_utf8(prettyname)) {
+			prettyname = cit->prettyname();
+			if (shortcut == l10n_shortcut(prettyname, cit->shortcut()))
+				shortcut == cit->shortcut();
+		}
+	}
+
 	int flags = Format::none;
 	if (documentCB->isChecked())
 		flags |= Format::document;
