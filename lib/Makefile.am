@@ -305,7 +305,7 @@ dist_images_DATA = \
 	images/float-insert_table.png \
 	images/font-bold.png \
 	images/font-emph.png \
-	images/font-free-apply.png \
+	images/textstyle-apply.png \
 	images/font-noun.png \
 	images/font-sans.png \
 	images/footnote-insert.png \
