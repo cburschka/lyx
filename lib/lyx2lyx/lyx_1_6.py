@@ -2504,34 +2504,38 @@ def convert_display_enum(document):
     " Convert 'display foo' to 'display false/true'"
     i = 0
     while True:
-        i = find_token(document.body, "display", i)
+        i = find_token(document.body, "\tdisplay", i)
         if i == -1:
             return
-        if check_token(i, "none"):
+        val = get_value(document.body, 'display', i)
+        if val == "none":
             document.body[i] = document.body[i].replace('none', 'false')
-        if check_token(i, "default"):
+        if val == "default":
             document.body[i] = document.body[i].replace('default', 'true')
-        if check_token(i, "monochrome"):
+        if val == "monochrome":
             document.body[i] = document.body[i].replace('monochrome', 'true')
-        if check_token(i, "grayscale"):
+        if val == "grayscale":
             document.body[i] = document.body[i].replace('grayscale', 'true')
-        if check_token(i, "color"):
+        if val == "color":
             document.body[i] = document.body[i].replace('color', 'true')
-        if check_token(i, "preview"):
+        if val == "preview":
             document.body[i] = document.body[i].replace('preview', 'true')
+        i += 1
 
 
 def revert_display_enum(document):
     " Revert 'display false/true' to 'display none/color'"
     i = 0
     while True:
-        i = find_token(document.body, "display", i)
+        i = find_token(document.body, "\tdisplay", i)
         if i == -1:
             return
-        if check_token(i, "false"):
+        val = get_value(document.body, 'display', i)
+        if val == "false":
             document.body[i] = document.body[i].replace('false', 'none')
-        if check_token(i, "true"):
+        if val == "true":
             document.body[i] = document.body[i].replace('true', 'default')
+        i += 1
 
 
 def remove_fontsCJK(document):
@@ -2542,41 +2546,42 @@ def remove_fontsCJK(document):
 
 
 def convert_plain_layout(document):
-	" Convert 'PlainLayout' to 'Plain Layout'" 
-	i = 0
-	while True:
-		i = find_token(document.body, '\\begin_layout PlainLayout', i)
-		if i == -1:
-			return
-		document.body[i] = document.body[i].replace('\\begin_layout PlainLayout', \
-		                                            '\\begin_layout Plain Layout')
-		i += 1
+    " Convert 'PlainLayout' to 'Plain Layout'" 
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_layout PlainLayout', i)
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace('\\begin_layout PlainLayout', \
+          '\\begin_layout Plain Layout')
+        i += 1
 
 
 def revert_plain_layout(document):
-	" Convert 'PlainLayout' to 'Plain Layout'" 
-	i = 0
-	while True:
-		i = find_token(document.body, '\\begin_layout Plain Layout', i)
-		if i == -1:
-			return
-		document.body[i] = document.body[i].replace('\\begin_layout Plain Layout', \
-		                                            '\\begin_layout PlainLayout')
-		i += 1
+    " Convert 'PlainLayout' to 'Plain Layout'" 
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_layout Plain Layout', i)
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace('\\begin_layout Plain Layout', \
+          '\\begin_layout PlainLayout')
+        i += 1
+
 
 def revert_plainlayout(document):
-	" Convert 'PlainLayout' to 'Plain Layout'" 
-	i = 0
-	while True:
-		i = find_token(document.body, '\\begin_layout PlainLayout', i)
-		if i == -1:
-			return
-		# This will be incorrect for some document classes, since Standard is not always
-		# the default. But (a) it is probably the best we can do and (b) it will actually
-		# work, in fact, since an unknown layout will be converted to default.
-		document.body[i] = document.body[i].replace('\\begin_layout PlainLayout', \
-		                                            '\\begin_layout Standard')
-		i += 1
+    " Convert 'PlainLayout' to 'Plain Layout'" 
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_layout PlainLayout', i)
+        if i == -1:
+            return
+        # This will be incorrect for some document classes, since Standard is not always
+        # the default. But (a) it is probably the best we can do and (b) it will actually
+        # work, in fact, since an unknown layout will be converted to default.
+        document.body[i] = document.body[i].replace('\\begin_layout PlainLayout', \
+          '\\begin_layout Standard')
+        i += 1
 
 
 ##
