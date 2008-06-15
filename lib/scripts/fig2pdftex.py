@@ -78,7 +78,7 @@ else:
     # The generated PostScript commands are extracted from epstopdf, distributed
     # with tetex.
     epsfile = outbase + '.pstex'
-    tmp = open(epsfile + '.??', 'w')
+    tmp = mkstemp()
     boundingboxline = re.compile('%%BoundingBox:\s+(\d*)\s+(\d*)\s+(\d*)\s+(\d*)')
     for line in open(epsfile).xreadlines():
         if line[:13] == '%%BoundingBox':
