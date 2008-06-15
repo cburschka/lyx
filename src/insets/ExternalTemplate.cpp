@@ -318,12 +318,12 @@ void Template::readTemplate(Lexer & lex)
 
 	LexerKeyword templateoptiontags[] = {
 		{ "automaticproduction", TO_AUTOMATIC },
-		{ "preview", TO_PREVIEW },
 		{ "filefilter", TO_FILTER },
 		{ "format", TO_FORMAT },
 		{ "guiname", TO_GUINAME },
 		{ "helptext", TO_HELPTEXT },
 		{ "inputformat", TO_INPUTFORMAT },
+		{ "preview", TO_PREVIEW },
 		{ "templateend", TO_END },
 		{ "transform", TO_TRANSFORM }
 	};
