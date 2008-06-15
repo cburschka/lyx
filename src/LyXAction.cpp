@@ -1367,11 +1367,11 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_MATH_MACRO
  * \li Action: Inserts a math macro definition at the cursor position in the text.
- * \li Syntax: math-macro <name> [<NARGS>] [def]
+ * \li Syntax: math-macro <NAME> [<NARGS>] [def]
  * \li Params: <NAME>: The name of the macro, e.g. "mymacro".
- * \li Params: <NARGS>: The number of parameters of the macro. Default is 0.
- * \li Params: def: Has effect anymore, just for compatibility with former LyX versions.
- * \li Origin: sts, 16 June 2008
+               <NARGS>: The number of parameters of the macro. Default is 0.
+               "def": Has no effect anymore, just for compatibility with former LyX versions.
+ * \li Origin: ale, 10 May 1997;  sts, 21 Dec 2007
  * \endvar
  */
 		{ LFUN_MATH_MACRO, "math-macro", Noop, Math },
