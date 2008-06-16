@@ -73,7 +73,7 @@ using cap::cutSelection;
 using cap::replaceSelection;
 using cap::selClearOrDel;
 
-char const * text_commands[] =
+string const text_commands[] =
 { "text", "textrm", "textsf", "texttt", "textmd", "textbf", "textup", "textit",
   "textsl", "textsc", "textnormal" };
 int const num_text_commands = sizeof(text_commands) / sizeof(*text_commands);
@@ -342,14 +342,14 @@ MathData InsetMathNest::glue() const
 void InsetMathNest::write(WriteStream & os) const
 {
 	bool textmode = os.textMode();
-	docstring const latex_name = name().c_str();
+	string const latex_name = to_ascii(name());
 	for (int i = 0; i < num_text_commands; ++i) {
-		if (latex_name == from_ascii(text_commands[i])) {
+		if (latex_name == text_commands[i]) {
 			os.textMode(true);
 			break;
 		}
 	}
-	os << '\\' << latex_name;
+	os << '\\' << latex_name.c_str();
 	for (size_t i = 0; i < nargs(); ++i)
 		os << '{' << cell(i) << '}';
 	if (nargs() == 0)
