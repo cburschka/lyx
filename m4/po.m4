@@ -112,6 +112,13 @@ changequote([,])dnl
           test -n "$as_me" && echo "$as_me: creating $ac_dir/POTFILES" || echo "creating $ac_dir/POTFILES"
           cat "$ac_given_srcdir/$ac_dir/POTFILES.in" | sed -e "/^#/d" -e "/^[ 	]*\$/d" -e "s,.*,     $top_srcdir/& \\\\," | sed -e "\$s/\(.*\) \\\\/\1/" > "$ac_dir/POTFILES"
           POMAKEFILEDEPS="POTFILES.in"
+	  # Remove POTFILES.in if it is empty, such that it can be
+	  # correctly rebuilt later.
+	  if test -s "$ac_given_srcdir/$ac_dir/POTFILES.in"; then
+	    : ;
+	  else
+	    rm -f "$ac_given_srcdir/$ac_dir/POTFILES.in"
+	  fi
           # ALL_LINGUAS, POFILES, UPDATEPOFILES, DUMMYPOFILES, GMOFILES depend
           # on $ac_dir but don't depend on user-specified configuration
           # parameters.
