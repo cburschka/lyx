@@ -849,8 +849,8 @@ void MenuDefinition::expandFlexInsert(Buffer const * buf, string s)
 		docstring const label = cit->first;
 		if (cit->second.lyxtype() == s)
 			addWithStatusCheck(MenuItem(MenuItem::Command, 
-				toqstr(label), FuncRequest(LFUN_FLEX_INSERT,
-						label)));
+				toqstr(translateIfPossible(label)),
+				FuncRequest(LFUN_FLEX_INSERT, label)));
 	}
 }
 
