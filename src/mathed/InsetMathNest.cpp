@@ -339,7 +339,7 @@ void InsetMathNest::write(WriteStream & os) const
 	bool textmode = os.textMode();
 	os.textMode(currentMode() == TEXT_MODE);
 	docstring const latex_name = name().c_str();
-	os << '\\' << latex_name.c_str();
+	os << '\\' << latex_name;
 	for (size_t i = 0; i < nargs(); ++i)
 		os << '{' << cell(i) << '}';
 	if (nargs() == 0)
