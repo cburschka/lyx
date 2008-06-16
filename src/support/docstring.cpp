@@ -31,9 +31,12 @@ namespace lyx {
 docstring const from_ascii(char const * ascii)
 {
 	docstring s;
-	for (char const * c = ascii; *c; ++c) {
-		LASSERT(static_cast<unsigned char>(*c) < 0x80, /**/);
-		s.push_back(*c);
+	int n = strlen(ascii);
+	s.resize(n);
+	char_type *d = &s[0];
+	while (--n >= 0) {
+		d[n] = ascii[n];
+		LASSERT(static_cast<unsigned char>(ascii[n]) < 0x80, /**/);
 	}
 	return s;
 }
@@ -99,8 +102,7 @@ docstring const from_utf8(string const & utf8)
 
 string const to_utf8(docstring const & ucs4)
 {
-	vector<char> const utf8 =
-		ucs4_to_utf8(ucs4.data(), ucs4.size());
+	vector<char> const utf8 = ucs4_to_utf8(ucs4.data(), ucs4.size());
 	return string(utf8.begin(), utf8.end());
 }
 
