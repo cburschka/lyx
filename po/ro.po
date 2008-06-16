@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-06 21:05+0200\n"
+"POT-Creation-Date: 2008-06-16 16:23+0200\n"
 "PO-Revision-Date: 2008-06-12 19:51+0100\n"
 "Last-Translator: Liviu Andronic <landronimirc@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -37,9 +37,9 @@ msgstr "Drepturi de autor"
 
 #: src/frontends/qt4/ui/AboutUi.ui:131 src/frontends/qt4/ui/BibitemUi.ui:121
 #: src/frontends/qt4/ui/BoxUi.ui:260 src/frontends/qt4/ui/BranchUi.ui:41
-#: src/frontends/qt4/ui/DelimiterUi.ui:107
+#: src/frontends/qt4/ui/DelimiterUi.ui:268
 #: src/frontends/qt4/ui/ErrorListUi.ui:62
-#: src/frontends/qt4/ui/ExternalUi.ui:679 src/frontends/qt4/ui/FloatUi.ui:85
+#: src/frontends/qt4/ui/ExternalUi.ui:625 src/frontends/qt4/ui/FloatUi.ui:85
 #: src/frontends/qt4/ui/HSpaceUi.ui:214
 #: src/frontends/qt4/ui/HyperlinkUi.ui:150
 #: src/frontends/qt4/ui/IncludeUi.ui:247 src/frontends/qt4/ui/InfoUi.ui:71
@@ -67,7 +67,7 @@ msgstr "&Nimic"
 #: src/frontends/qt4/ui/CharacterUi.ui:370
 #: src/frontends/qt4/ui/CitationUi.ui:438
 #: src/frontends/qt4/ui/DocumentUi.ui:135 src/frontends/qt4/ui/ERTUi.ui:90
-#: src/frontends/qt4/ui/ExternalUi.ui:659 src/frontends/qt4/ui/FloatUi.ui:68
+#: src/frontends/qt4/ui/ExternalUi.ui:605 src/frontends/qt4/ui/FloatUi.ui:68
 #: src/frontends/qt4/ui/GraphicsUi.ui:71 src/frontends/qt4/ui/HSpaceUi.ui:191
 #: src/frontends/qt4/ui/HyperlinkUi.ui:140
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/LabelUi.ui:82
@@ -91,9 +91,9 @@ msgstr "&OK"
 #: src/LyXVC.cpp:160 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1298
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1428
-#: src/frontends/qt4/GuiView.cpp:1606 src/frontends/qt4/GuiView.cpp:1651
-#: src/frontends/qt4/GuiView.cpp:1704 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1431
+#: src/frontends/qt4/GuiView.cpp:1609 src/frontends/qt4/GuiView.cpp:1654
+#: src/frontends/qt4/GuiView.cpp:1707 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
 msgstr "&Renunţă"
 
@@ -177,7 +177,7 @@ msgid "Enter BibTeX database name"
 msgstr "Introdu numele noii baze de date BibTeX de utilizat"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:126
-#: src/frontends/qt4/ui/BibtexUi.ui:106 src/frontends/qt4/ui/ExternalUi.ui:67
+#: src/frontends/qt4/ui/BibtexUi.ui:106 src/frontends/qt4/ui/ExternalUi.ui:78
 #: src/frontends/qt4/ui/GraphicsUi.ui:151
 #: src/frontends/qt4/ui/IncludeUi.ui:329 src/frontends/qt4/ui/LaTeXUi.ui:56
 #: src/frontends/qt4/ui/PrintUi.ui:313
@@ -361,7 +361,7 @@ msgstr "&Reface"
 
 #: src/frontends/qt4/ui/BoxUi.ui:247 src/frontends/qt4/ui/CharacterUi.ui:380
 #: src/frontends/qt4/ui/DocumentUi.ui:145
-#: src/frontends/qt4/ui/ExternalUi.ui:669 src/frontends/qt4/ui/FloatUi.ui:78
+#: src/frontends/qt4/ui/ExternalUi.ui:615 src/frontends/qt4/ui/FloatUi.ui:78
 #: src/frontends/qt4/ui/GraphicsUi.ui:90 src/frontends/qt4/ui/HSpaceUi.ui:204
 #: src/frontends/qt4/ui/ListingsUi.ui:619
 #: src/frontends/qt4/ui/ParagraphUi.ui:89 src/frontends/qt4/ui/PrefsUi.ui:83
@@ -372,7 +372,7 @@ msgstr "&Reface"
 msgid "&Apply"
 msgstr "&Aplică"
 
-#: src/frontends/qt4/ui/BoxUi.ui:285 src/frontends/qt4/ui/ExternalUi.ui:517
+#: src/frontends/qt4/ui/BoxUi.ui:285 src/frontends/qt4/ui/ExternalUi.ui:463
 #: src/frontends/qt4/ui/PageLayoutUi.ui:204
 msgid "&Height:"
 msgstr "Î&nălţime:"
@@ -385,7 +385,7 @@ msgstr "Contur &Interior:"
 msgid "&Decoration:"
 msgstr "Decoraţie:"
 
-#: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:491
+#: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:437
 #: src/frontends/qt4/ui/PageLayoutUi.ui:217
 #: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:85
 msgid "&Width:"
@@ -482,8 +482,7 @@ msgstr "Fonturi:|#F"
 msgid "Si&ze:"
 msgstr "&Mărime:"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ExternalUi.ui:228
-#: src/frontends/qt4/ui/GraphicsUi.ui:668
+#: src/frontends/qt4/ui/BulletsUi.ui:66
 #: src/frontends/qt4/ui/ParagraphUi.ui:235
 #: src/frontends/qt4/ui/PrefLatexUi.ui:178
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:927
@@ -555,7 +554,7 @@ msgid "&Custom Bullet:"
 msgstr "Bulini personalizate:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:174
-#: src/frontends/qt4/ui/PDFSupportUi.ui:400
+#: src/frontends/qt4/ui/PDFSupportUi.ui:333
 msgid "&Level:"
 msgstr "Nivel"
 
@@ -614,7 +613,7 @@ msgstr "Serii font"
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:118
 #: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:980
-#: src/frontends/qt4/GuiPrefs.cpp:1681
+#: src/frontends/qt4/GuiPrefs.cpp:1664
 msgid "Language"
 msgstr "Limbaj"
 
@@ -821,30 +820,31 @@ msgstr "Mută citarea selectată mai jos"
 msgid "&Down"
 msgstr "Mai jos"
 
-#: src/frontends/qt4/ui/DelimiterUi.ui:89 src/frontends/qt4/ui/SymbolsUi.ui:56
-msgid "Insert the delimiters"
-msgstr "Inserează delimitatorii"
-
-#: src/frontends/qt4/ui/DelimiterUi.ui:92
-msgid "&Insert"
-msgstr "&Inserează"
-
-#: src/frontends/qt4/ui/DelimiterUi.ui:132
-msgid "&Size:"
-msgstr "&Mărime:"
-
-#: src/frontends/qt4/ui/DelimiterUi.ui:180
+#: src/frontends/qt4/ui/DelimiterUi.ui:135
 #: src/frontends/qt4/GuiDelimiter.cpp:275
 msgid "TeX Code: "
 msgstr "Cod TeX"
 
-#: src/frontends/qt4/ui/DelimiterUi.ui:289
+#: src/frontends/qt4/ui/DelimiterUi.ui:157
 msgid "Match delimiter types"
 msgstr "Tipuri de delimitatori de potrivire"
 
-#: src/frontends/qt4/ui/DelimiterUi.ui:292
+#: src/frontends/qt4/ui/DelimiterUi.ui:160
 msgid "&Keep matched"
 msgstr "&Păstrează potrivirile"
+
+#: src/frontends/qt4/ui/DelimiterUi.ui:184
+msgid "&Size:"
+msgstr "&Mărime:"
+
+#: src/frontends/qt4/ui/DelimiterUi.ui:252
+#: src/frontends/qt4/ui/SymbolsUi.ui:56
+msgid "Insert the delimiters"
+msgstr "Inserează delimitatorii"
+
+#: src/frontends/qt4/ui/DelimiterUi.ui:255
+msgid "&Insert"
+msgstr "&Inserează"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:58
 msgid "Reset to the default settings for the document class"
@@ -882,208 +882,167 @@ msgstr "Afişează conţinutul ERT"
 msgid "O&pen"
 msgstr "&Deschide"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:32
+#: src/frontends/qt4/ui/ExternalUi.ui:43
 #, fuzzy
 msgid "F&ile"
 msgstr "Fişier:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:44 src/frontends/qt4/ui/ExternalUi.ui:51
+#: src/frontends/qt4/ui/ExternalUi.ui:55 src/frontends/qt4/ui/ExternalUi.ui:62
 #: lib/layouts/agu_stdclass.inc:80 lib/layouts/db_stdcharstyles.inc:8
 msgid "Filename"
 msgstr "Nume de fişier"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:54
+#: src/frontends/qt4/ui/ExternalUi.ui:65
 #: src/frontends/qt4/ui/GraphicsUi.ui:353
 #: src/frontends/qt4/ui/IncludeUi.ui:259 src/frontends/qt4/ui/PrintUi.ui:293
 msgid "&File:"
 msgstr "&Fişier:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:64 src/frontends/qt4/ui/IncludeUi.ui:326
+#: src/frontends/qt4/ui/ExternalUi.ui:75 src/frontends/qt4/ui/IncludeUi.ui:326
 msgid "Select a file"
 msgstr "Selectaţi un fişier"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:74
+#: src/frontends/qt4/ui/ExternalUi.ui:85
 msgid "&Draft"
 msgstr "Mod &ciornă"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:81
+#: src/frontends/qt4/ui/ExternalUi.ui:92
 #, fuzzy
 msgid "&Template"
 msgstr "&Model:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:120
+#: src/frontends/qt4/ui/ExternalUi.ui:129
 msgid "Available templates"
 msgstr "Modele disponibile"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:131
+#: src/frontends/qt4/ui/ExternalUi.ui:148
 #: src/frontends/qt4/ui/GraphicsUi.ui:549
 msgid "LaTe&X and LyX options"
 msgstr "&Opţiuni LaTeX şi LyX:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:143
+#: src/frontends/qt4/ui/ExternalUi.ui:154
 #, fuzzy
 msgid "LaTeX Options"
 msgstr "&Opţiuni LaTeX:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:161
+#: src/frontends/qt4/ui/ExternalUi.ui:172
 msgid "O&ption:"
 msgstr "O&pţiune:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:174
+#: src/frontends/qt4/ui/ExternalUi.ui:185
 msgid "Forma&t:"
 msgstr "F&ormat:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:190
-msgid "Display image in LyX"
-msgstr "Afişează imaginea în LyX"
-
-#: src/frontends/qt4/ui/ExternalUi.ui:193
+#: src/frontends/qt4/ui/ExternalUi.ui:209
 msgid "&Show in LyX"
 msgstr "&Afişează în LyX"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:224
-#: src/frontends/qt4/ui/ExternalUi.ui:297
-#: src/frontends/qt4/ui/GraphicsUi.ui:664
-#: src/frontends/qt4/ui/GraphicsUi.ui:691
-msgid "Screen display"
-msgstr "Afişare pe ecran"
-
-#: src/frontends/qt4/ui/ExternalUi.ui:233
-#: src/frontends/qt4/ui/GraphicsUi.ui:673
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:58
-msgid "Monochrome"
-msgstr "Monocrom"
-
-#: src/frontends/qt4/ui/ExternalUi.ui:238
-#: src/frontends/qt4/ui/GraphicsUi.ui:678
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:63
-msgid "Grayscale"
-msgstr "Nuanţe de gri"
-
+#: src/frontends/qt4/ui/ExternalUi.ui:221
 #: src/frontends/qt4/ui/ExternalUi.ui:243
+#: src/frontends/qt4/ui/GraphicsUi.ui:676
 #: src/frontends/qt4/ui/GraphicsUi.ui:683
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:68
-#: src/frontends/qt4/GuiBranches.cpp:44
-msgid "Color"
-msgstr "Color"
-
-#: src/frontends/qt4/ui/ExternalUi.ui:248
-msgid "Preview"
-msgstr "Previzualizează|#P"
-
-#: src/frontends/qt4/ui/ExternalUi.ui:275
-#: src/frontends/qt4/ui/ExternalUi.ui:310
-#: src/frontends/qt4/ui/GraphicsUi.ui:644
-#: src/frontends/qt4/ui/GraphicsUi.ui:651
 msgid "Percentage to scale by in LyX"
 msgstr "Procentul de scalare în LyX"
 
+#: src/frontends/qt4/ui/ExternalUi.ui:224
+#: src/frontends/qt4/ui/GraphicsUi.ui:686
+msgid "Sca&le on Screen (%):"
+msgstr "Procentul de afişare pe &ecran:"
+
 #: src/frontends/qt4/ui/ExternalUi.ui:288
-msgid "%"
-msgstr "%"
-
-#: src/frontends/qt4/ui/ExternalUi.ui:300
-msgid "&Display:"
-msgstr "Afişare:"
-
-#: src/frontends/qt4/ui/ExternalUi.ui:313
-msgid "Sca&le:"
-msgstr "Scalare:"
-
-#: src/frontends/qt4/ui/ExternalUi.ui:340
 #, fuzzy
 msgid "Si&ze and Rotation"
 msgstr "Căutare Citare"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:352
+#: src/frontends/qt4/ui/ExternalUi.ui:300
 msgid "Rotate"
 msgstr "Roteşte"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:399
-#: src/frontends/qt4/ui/ExternalUi.ui:429
+#: src/frontends/qt4/ui/ExternalUi.ui:345
+#: src/frontends/qt4/ui/ExternalUi.ui:375
 #: src/frontends/qt4/ui/GraphicsUi.ui:327
 #: src/frontends/qt4/ui/GraphicsUi.ui:334
 msgid "Angle to rotate image by"
 msgstr "Unghiul de rotire al imaginii"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:409
-#: src/frontends/qt4/ui/ExternalUi.ui:422
+#: src/frontends/qt4/ui/ExternalUi.ui:355
+#: src/frontends/qt4/ui/ExternalUi.ui:368
 #: src/frontends/qt4/ui/GraphicsUi.ui:301
 #: src/frontends/qt4/ui/GraphicsUi.ui:308
 msgid "The origin of the rotation"
 msgstr "Originea punctului de rotaţie"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:412
+#: src/frontends/qt4/ui/ExternalUi.ui:358
 #, fuzzy
 msgid "Ori&gin:"
 msgstr "&Origine:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:432
+#: src/frontends/qt4/ui/ExternalUi.ui:378
 msgid "A&ngle:"
 msgstr "&Unghi:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:447
+#: src/frontends/qt4/ui/ExternalUi.ui:393
 msgid "Scale"
 msgstr "Scalare"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:471
+#: src/frontends/qt4/ui/ExternalUi.ui:417
 #: src/frontends/qt4/ui/GraphicsUi.ui:220
 msgid "Height of image in output"
 msgstr "Înălţimea imaginii la tipărire"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:481
+#: src/frontends/qt4/ui/ExternalUi.ui:427
 #: src/frontends/qt4/ui/GraphicsUi.ui:188
 msgid "Width of image in output"
 msgstr "Lăţimea imaginii la tipărire"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:504
+#: src/frontends/qt4/ui/ExternalUi.ui:450
 msgid "Maintain aspect ratio with largest dimension"
 msgstr "Păstrează raportul de aspect pentru cea mai mare dimensiune"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:507
+#: src/frontends/qt4/ui/ExternalUi.ui:453
 #: src/frontends/qt4/ui/GraphicsUi.ui:266
 msgid "&Maintain aspect ratio"
 msgstr "&Menţine raportul de aspect"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:530
+#: src/frontends/qt4/ui/ExternalUi.ui:476
 msgid "Crop"
 msgstr "Elimină (şterge)"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:545
+#: src/frontends/qt4/ui/ExternalUi.ui:491
 #: src/frontends/qt4/ui/GraphicsUi.ui:404
 msgid "Clip to bounding box values"
 msgstr "Redimensionează în funcţie de valorile marginilor"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:548
+#: src/frontends/qt4/ui/ExternalUi.ui:494
 #: src/frontends/qt4/ui/GraphicsUi.ui:407
 msgid "Clip to &bounding box"
 msgstr "Redimensionează în funcţie de  margini"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:555
+#: src/frontends/qt4/ui/ExternalUi.ui:501
 #: src/frontends/qt4/ui/GraphicsUi.ui:438
 msgid "&Left bottom:"
 msgstr "&Stînga jos:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:568
+#: src/frontends/qt4/ui/ExternalUi.ui:514
 msgid "x"
 msgstr "x"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:575
+#: src/frontends/qt4/ui/ExternalUi.ui:521
 #: src/frontends/qt4/ui/GraphicsUi.ui:476
 msgid "Right &top:"
 msgstr "Dreapta &sus:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:585
+#: src/frontends/qt4/ui/ExternalUi.ui:531
 #: src/frontends/qt4/ui/GraphicsUi.ui:530
 msgid "Get bounding box from the (EPS) file"
 msgstr "Obţine marginile din fişierul EPS"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:588
+#: src/frontends/qt4/ui/ExternalUi.ui:534
 #: src/frontends/qt4/ui/GraphicsUi.ui:533
 msgid "&Get from File"
 msgstr "&Inserează din fişier"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:618
+#: src/frontends/qt4/ui/ExternalUi.ui:564
 msgid "y"
 msgstr "y"
 
@@ -1320,23 +1279,20 @@ msgid "Don't un&zip on export"
 msgstr "Nu &decomprimă la exportare"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:604
+msgid ""
+"Enable LyX to preview this graphics, only if graphics previewing is not "
+"disabled at application level (see Preference dialog)."
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:607
 msgid "Sho&w in LyX"
 msgstr "&Afişează în LyX"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:654
-msgid "Sca&le on Screen (%):"
-msgstr "Procentul de afişare pe &ecran:"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:694
-#, fuzzy
-msgid "Scr&een Display:"
-msgstr "Afişare pe ecran"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:710
+#: src/frontends/qt4/ui/GraphicsUi.ui:644
 msgid "&Initialize Group Name:"
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:726
+#: src/frontends/qt4/ui/GraphicsUi.ui:660
 msgid "Group Name to be set up from the current parameters"
 msgstr ""
 
@@ -2010,6 +1966,129 @@ msgstr "Listează in Cuprins|C"
 msgid "&Numbering"
 msgstr "&Numerotare"
 
+#: src/frontends/qt4/ui/PDFSupportUi.ui:28
+msgid "&Use hyperref support"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:53
+#, fuzzy
+msgid "&General"
+msgstr "General"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:99
+msgid ""
+"If not stated explicitly, fill title and author from appropriate environments"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:102
+#, fuzzy
+msgid "Automatically fi&ll header"
+msgstr "Actualizează automat"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:109
+msgid "Enable fullscreen PDF presentation"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:112
+msgid "Load in &fullscreen mode"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:121
+#, fuzzy
+msgid "Header Information"
+msgstr "Informaţii TeX|X"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:133
+#, fuzzy
+msgid "&Title:"
+msgstr "Titlu"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:146
+#, fuzzy
+msgid "&Author:"
+msgstr "Autor"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:159
+#, fuzzy
+msgid "&Subject:"
+msgstr "Subiect"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:172
+#, fuzzy
+msgid "&Keywords:"
+msgstr "&Cuvînt cheie:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:189
+#, fuzzy
+msgid "H&yperlinks"
+msgstr "&Generează hiperlegătură"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:222
+msgid "Allows link text to break across lines."
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:225
+#, fuzzy
+msgid "B&reak links over lines"
+msgstr "întrerupe liniile lungi"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:232
+msgid "No &frames around links"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:242
+#, fuzzy
+msgid "C&olor links"
+msgstr "Culori"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:249
+#: src/frontends/qt4/ui/PDFSupportUi.ui:259
+msgid "Adds \"backlink\" text to the end of each item in the bibliography"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:252
+msgid "B&ibliographical backreferences"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:262
+#, fuzzy
+msgid "Backreference by pa&ge number"
+msgstr "<referinţă> la pagina <pagină>"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:285
+#, fuzzy
+msgid "&Bookmarks"
+msgstr "Semne de carte|S"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:297
+#, fuzzy
+msgid "G&enerate Bookmarks"
+msgstr "Semne de carte|S"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:318
+#, fuzzy
+msgid "&Numbered bookmarks"
+msgstr "Număr"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:343
+#, fuzzy
+msgid "Number of levels"
+msgstr "Numărul de copii"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:352
+#, fuzzy
+msgid "&Open bookmarks"
+msgstr "Salvează semnul de carte 2"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:392
+#, fuzzy
+msgid "Additional o&ptions"
+msgstr "Opţiuni LaTeX suplimentare"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:421
+msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+msgstr ""
+
 #: src/frontends/qt4/ui/PageLayoutUi.ui:33
 #: src/frontends/qt4/GuiDocument.cpp:978
 #, fuzzy
@@ -2129,129 +2208,6 @@ msgstr "1.5"
 #: src/frontends/qt4/GuiDocument.cpp:583
 msgid "Double"
 msgstr "Dublu"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:41
-msgid "&Use hyperref support"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:62
-#, fuzzy
-msgid "Additional o&ptions"
-msgstr "Opţiuni LaTeX suplimentare"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:91
-msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:105
-#, fuzzy
-msgid "&General"
-msgstr "General"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:151
-msgid ""
-"If not stated explicitly, fill title and author from appropriate environments"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:154
-#, fuzzy
-msgid "Automatically fi&ll header"
-msgstr "Actualizează automat"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:161
-msgid "Enable fullscreen PDF presentation"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:164
-msgid "Load in &fullscreen mode"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:173
-#, fuzzy
-msgid "Header Information"
-msgstr "Informaţii TeX|X"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:185
-#, fuzzy
-msgid "&Title:"
-msgstr "Titlu"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:198
-#, fuzzy
-msgid "&Author:"
-msgstr "Autor"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:211
-#, fuzzy
-msgid "&Subject:"
-msgstr "Subiect"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:224
-#, fuzzy
-msgid "&Keywords:"
-msgstr "&Cuvînt cheie:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:241
-#, fuzzy
-msgid "H&yperlinks"
-msgstr "&Generează hiperlegătură"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:274
-msgid "Allows link text to break across lines."
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:277
-#, fuzzy
-msgid "B&reak links over lines"
-msgstr "întrerupe liniile lungi"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:284
-msgid "No &frames around links"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:294
-#, fuzzy
-msgid "C&olor links"
-msgstr "Culori"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:301
-#: src/frontends/qt4/ui/PDFSupportUi.ui:311
-msgid "Adds \"backlink\" text to the end of each item in the bibliography"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:304
-msgid "B&ibliographical backreferences"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:314
-#, fuzzy
-msgid "Backreference by pa&ge number"
-msgstr "<referinţă> la pagina <pagină>"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:337
-#, fuzzy
-msgid "&Bookmarks"
-msgstr "Semne de carte|S"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:349
-#, fuzzy
-msgid "G&enerate Bookmarks"
-msgstr "Semne de carte|S"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:370
-#, fuzzy
-msgid "&Open bookmarks"
-msgstr "Salvează semnul de carte 2"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:390
-#, fuzzy
-msgid "Number of levels"
-msgstr "Numărul de copii"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:410
-#, fuzzy
-msgid "&Numbered bookmarks"
-msgstr "Număr"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "&Alter..."
@@ -2384,7 +2340,7 @@ msgstr "&Modifică"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2241 src/frontends/qt4/GuiPrefs.cpp:2326
+#: src/frontends/qt4/GuiPrefs.cpp:2224 src/frontends/qt4/GuiPrefs.cpp:2309
 msgid "Remo&ve"
 msgstr "&Elimină"
 
@@ -2412,29 +2368,26 @@ msgstr "&Formatul datei:"
 msgid "Date format for strftime output"
 msgstr "Format dată pentru funcţia \"strftime\""
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:39 src/Font.cpp:66
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:19
+#, fuzzy
+msgid "Display &Graphics"
+msgstr "Afişează &imaginile:"
+
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:39
+msgid "Instant &Preview:"
+msgstr "&Previzualizare instantanee"
+
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:50 src/Font.cpp:66
 msgid "Off"
 msgstr "Dezactivat"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:44
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:55
 msgid "No math"
 msgstr "Nu afişa in modul matematic"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:49 src/Font.cpp:66
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:60 src/Font.cpp:66
 msgid "On"
 msgstr "La"
-
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:73
-msgid "Do not display"
-msgstr "Nu afişează"
-
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:81
-msgid "Display &Graphics:"
-msgstr "Afişează &imaginile:"
-
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:91
-msgid "Instant &Preview:"
-msgstr "&Previzualizare instantanee"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:220
 #, fuzzy
@@ -2590,7 +2543,7 @@ msgstr ""
 msgid "Right-to-left language support"
 msgstr "Suport pentru scrierea de la &dreapta la stînga"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:46 src/LyXRC.cpp:2710
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:46 src/LyXRC.cpp:2709
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
@@ -2831,7 +2784,7 @@ msgstr "&Specifică directorul temporar"
 msgid "&PATH prefix:"
 msgstr "Prefixul variabilei &PATH (cale)"
 
-#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2400
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2399
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -3180,7 +3133,7 @@ msgid "&User interface file:"
 msgstr "&Fişier interfaţă utilizator:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:665
-#: src/frontends/qt4/GuiView.cpp:1704
+#: src/frontends/qt4/GuiView.cpp:1707
 msgid "&Save"
 msgstr "&Salvează"
 
@@ -3317,7 +3270,7 @@ msgstr "Actualizează lista de etichete"
 msgid "Jump to the label"
 msgstr "Sari la etichetă"
 
-#: src/frontends/qt4/ui/RefUi.ui:250 src/frontends/qt4/GuiRef.cpp:265
+#: src/frontends/qt4/ui/RefUi.ui:250 src/frontends/qt4/GuiRef.cpp:272
 msgid "&Go to Label"
 msgstr "&Mergi la etichetă"
 
@@ -3948,7 +3901,7 @@ msgstr ""
 msgid "Allow &floating"
 msgstr ""
 
-#: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:22
+#: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:25
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:49
 #: lib/layouts/amsart.layout:23 lib/layouts/amsbook.layout:24
 #: lib/layouts/apa.layout:24 lib/layouts/beamer.layout:39
@@ -3995,12 +3948,12 @@ msgstr "Demonstraţie"
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:196
 #: lib/layouts/ijmpd.layout:199 lib/layouts/llncs.layout:412
 #: lib/layouts/siamltex.layout:200 lib/layouts/svjour.inc:475
-#: lib/layouts/theorems.inc:24 lib/layouts/theorems.inc:25
-#: lib/layouts/theorems.inc:202 lib/layouts/theorems-ams.inc:24
-#: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
-#: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-proof.inc:14
-#: lib/layouts/theorems-starred.inc:24
+#: lib/layouts/theorems-ams.inc:24 lib/layouts/theorems-ams.inc:25
+#: lib/layouts/theorems-ams.inc:208 lib/layouts/theorems-order.inc:7
+#: lib/layouts/theorems-proof.inc:14
 #: lib/layouts/theorems-starred-equivalents.inc:6
+#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:24
+#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:202
 #: lib/layouts/theorems-chap.module:17 lib/layouts/theorems-sec.module:16
 msgid "Theorem"
 msgstr "Teoremă"
@@ -4013,9 +3966,9 @@ msgstr "Teoremă #"
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:246 lib/layouts/ijmpd.layout:251
 #: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:215
-#: lib/layouts/svjour.inc:412 lib/layouts/theorems.inc:69
-#: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-order.inc:19
-#: lib/layouts/theorems-starred-equivalents.inc:20
+#: lib/layouts/svjour.inc:412 lib/layouts/theorems-ams.inc:71
+#: lib/layouts/theorems-order.inc:19
+#: lib/layouts/theorems-starred-equivalents.inc:20 lib/layouts/theorems.inc:69
 msgid "Lemma"
 msgstr "Lemă"
 
@@ -4028,9 +3981,8 @@ msgstr "Lemă #:"
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:236
 #: lib/layouts/ijmpd.layout:237 lib/layouts/llncs.layout:316
 #: lib/layouts/siamltex.layout:222 lib/layouts/svjour.inc:373
-#: lib/layouts/theorems.inc:58 lib/layouts/theorems-ams.inc:59
-#: lib/layouts/theorems-order.inc:13
-#: lib/layouts/theorems-starred-equivalents.inc:13
+#: lib/layouts/theorems-ams.inc:59 lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-starred-equivalents.inc:13 lib/layouts/theorems.inc:58
 msgid "Corollary"
 msgstr "Corolar"
 
@@ -4042,9 +3994,8 @@ msgstr "Corolar #:"
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:256
 #: lib/layouts/ijmpd.layout:262 lib/layouts/llncs.layout:385
 #: lib/layouts/siamltex.layout:229 lib/layouts/svjour.inc:447
-#: lib/layouts/theorems.inc:80 lib/layouts/theorems-ams.inc:83
-#: lib/layouts/theorems-order.inc:25
-#: lib/layouts/theorems-starred-equivalents.inc:27
+#: lib/layouts/theorems-ams.inc:83 lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems-starred-equivalents.inc:27 lib/layouts/theorems.inc:80
 msgid "Proposition"
 msgstr "Propoziţie"
 
@@ -4055,9 +4006,8 @@ msgstr "Propoziţie #:"
 #: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:363
 #: lib/layouts/ijmpc.layout:296 lib/layouts/ijmpd.layout:306
 #: lib/layouts/llncs.layout:309 lib/layouts/svjour.inc:366
-#: lib/layouts/theorems.inc:91 lib/layouts/theorems-ams.inc:95
-#: lib/layouts/theorems-order.inc:31
-#: lib/layouts/theorems-starred-equivalents.inc:34
+#: lib/layouts/theorems-ams.inc:95 lib/layouts/theorems-order.inc:31
+#: lib/layouts/theorems-starred-equivalents.inc:34 lib/layouts/theorems.inc:91
 msgid "Conjecture"
 msgstr "Conjectură"
 
@@ -4075,7 +4025,7 @@ msgid "Criterion #:"
 msgstr "Criteriu #:"
 
 #: lib/layouts/IEEEtran.layout:133 lib/layouts/beamer.layout:977
-#: lib/layouts/theorems.inc:102 lib/layouts/theorems-ams.inc:107
+#: lib/layouts/theorems-ams.inc:107 lib/layouts/theorems.inc:102
 msgid "Fact"
 msgstr "Fapt"
 
@@ -4096,9 +4046,9 @@ msgstr "Axiomă #:"
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:132
 #: lib/layouts/ijmpd.layout:129 lib/layouts/llncs.layout:330
 #: lib/layouts/siamltex.layout:236 lib/layouts/svjour.inc:387
-#: lib/layouts/theorems.inc:113 lib/layouts/theorems-ams.inc:119
-#: lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems-ams.inc:119 lib/layouts/theorems-order.inc:37
 #: lib/layouts/theorems-starred-equivalents.inc:41
+#: lib/layouts/theorems.inc:113
 msgid "Definition"
 msgstr "Definiţie"
 
@@ -4109,10 +4059,10 @@ msgstr "Definiţie #:"
 #: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:959
 #: lib/layouts/elsart.layout:370 lib/layouts/ijmpc.layout:166
 #: lib/layouts/ijmpd.layout:163 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:132
-#: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-order.inc:43
+#: lib/layouts/svjour.inc:394 lib/layouts/theorems-ams.inc:138
+#: lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:48
-#: src/frontends/qt4/GuiDocument.cpp:825
+#: lib/layouts/theorems.inc:132 src/frontends/qt4/GuiDocument.cpp:825
 msgid "Example"
 msgstr "Exemplu"
 
@@ -4131,9 +4081,9 @@ msgstr "Condiţie #:"
 
 #: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:377
 #: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:426
-#: lib/layouts/theorems.inc:144 lib/layouts/theorems-ams.inc:150
-#: lib/layouts/theorems-order.inc:49
+#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-order.inc:49
 #: lib/layouts/theorems-starred-equivalents.inc:55
+#: lib/layouts/theorems.inc:144
 msgid "Problem"
 msgstr "Problemă"
 
@@ -4142,9 +4092,10 @@ msgid "Problem #:"
 msgstr "Problemă #:"
 
 #: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:401 lib/layouts/theorems.inc:156
-#: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-order.inc:55
+#: lib/layouts/svjour.inc:401 lib/layouts/theorems-ams.inc:162
+#: lib/layouts/theorems-order.inc:55
 #: lib/layouts/theorems-starred-equivalents.inc:62
+#: lib/layouts/theorems.inc:156
 msgid "Exercise"
 msgstr "Exerciţiu"
 
@@ -4155,9 +4106,9 @@ msgstr "Exerciţiu #:"
 #: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:384
 #: lib/layouts/ijmpc.layout:176 lib/layouts/ijmpd.layout:174
 #: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:461
-#: lib/layouts/theorems.inc:168 lib/layouts/theorems-ams.inc:174
-#: lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems-ams.inc:174 lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:69
+#: lib/layouts/theorems.inc:168
 msgid "Remark"
 msgstr "Remarcă"
 
@@ -4168,9 +4119,10 @@ msgstr "Remarcă #:"
 #: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:398
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:286
 #: lib/layouts/ijmpd.layout:295 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:345 lib/layouts/theorems.inc:188
-#: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-order.inc:67
+#: lib/layouts/svjour.inc:345 lib/layouts/theorems-ams.inc:194
+#: lib/layouts/theorems-order.inc:67
 #: lib/layouts/theorems-starred-equivalents.inc:76
+#: lib/layouts/theorems.inc:188
 msgid "Claim"
 msgstr "Declaraţie"
 
@@ -4200,18 +4152,18 @@ msgid "Notation #:"
 msgstr "Notaţie #:"
 
 #: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:413
-#: lib/layouts/llncs.layout:281 lib/layouts/theorems.inc:201
-#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-order.inc:73
+#: lib/layouts/llncs.layout:281 lib/layouts/theorems-ams.inc:207
+#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:201
 msgid "Case"
 msgstr "Caz"
 
-#: lib/layouts/IEEEtran.layout:246 lib/layouts/theorems.inc:207
-#: lib/layouts/theorems-ams.inc:213
+#: lib/layouts/IEEEtran.layout:246 lib/layouts/theorems-ams.inc:213
+#: lib/layouts/theorems.inc:207
 msgid "Case #:"
 msgstr "Caz #:"
 
-#: lib/layouts/IEEEtran.layout:272 lib/layouts/aa.layout:37
-#: lib/layouts/aa.layout:214 lib/layouts/aapaper.layout:64
+#: lib/layouts/IEEEtran.layout:272 lib/layouts/aa.layout:40
+#: lib/layouts/aa.layout:217 lib/layouts/aapaper.layout:64
 #: lib/layouts/aapaper.layout:130 lib/layouts/aastex.layout:64
 #: lib/layouts/aastex.layout:167 lib/layouts/amsart.layout:63
 #: lib/layouts/amsbook.layout:49 lib/layouts/amsbook.layout:89
@@ -4235,8 +4187,8 @@ msgstr "Caz #:"
 msgid "Section"
 msgstr "Secţiune"
 
-#: lib/layouts/IEEEtran.layout:282 lib/layouts/aa.layout:40
-#: lib/layouts/aa.layout:224 lib/layouts/aapaper.layout:67
+#: lib/layouts/IEEEtran.layout:282 lib/layouts/aa.layout:43
+#: lib/layouts/aa.layout:227 lib/layouts/aapaper.layout:67
 #: lib/layouts/aapaper.layout:139 lib/layouts/aastex.layout:67
 #: lib/layouts/aastex.layout:179 lib/layouts/amsart.layout:73
 #: lib/layouts/amsbook.layout:59 lib/layouts/apa.layout:317
@@ -4255,8 +4207,8 @@ msgstr "Secţiune"
 msgid "Subsection"
 msgstr "Subsecţiune"
 
-#: lib/layouts/IEEEtran.layout:290 lib/layouts/aa.layout:43
-#: lib/layouts/aa.layout:236 lib/layouts/aapaper.layout:70
+#: lib/layouts/IEEEtran.layout:290 lib/layouts/aa.layout:46
+#: lib/layouts/aa.layout:239 lib/layouts/aapaper.layout:70
 #: lib/layouts/aapaper.layout:150 lib/layouts/aastex.layout:70
 #: lib/layouts/aastex.layout:191 lib/layouts/amsart.layout:81
 #: lib/layouts/amsbook.layout:67 lib/layouts/apa.layout:326
@@ -4294,8 +4246,8 @@ msgstr "Subsecţiune*"
 msgid "Subsubsection*"
 msgstr "Subsubsecţiune*"
 
-#: lib/layouts/IEEEtran.layout:331 lib/layouts/aa.layout:80
-#: lib/layouts/aa.layout:280 lib/layouts/aa.layout:295
+#: lib/layouts/IEEEtran.layout:331 lib/layouts/aa.layout:83
+#: lib/layouts/aa.layout:283 lib/layouts/aa.layout:298
 #: lib/layouts/aapaper.layout:97 lib/layouts/aapaper.layout:193
 #: lib/layouts/aastex.layout:106 lib/layouts/aastex.layout:239
 #: lib/layouts/apa.layout:69 lib/layouts/cl2emult.layout:80
@@ -4322,14 +4274,15 @@ msgstr "Abstract"
 msgid "Abstract---"
 msgstr "Abstract---"
 
-#: lib/layouts/IEEEtran.layout:351 lib/layouts/aastex.layout:109
-#: lib/layouts/aastex.layout:276 lib/layouts/elsart.layout:64
-#: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
-#: lib/layouts/iopart.layout:193 lib/layouts/isprs.layout:51
-#: lib/layouts/kluwer.layout:274 lib/layouts/paper.layout:171
-#: lib/layouts/revtex4.layout:241 lib/layouts/siamltex.layout:167
-#: lib/layouts/spie.layout:39 lib/layouts/agu_stdtitle.inc:120
-#: lib/layouts/amsdefs.inc:166 lib/layouts/svjour.inc:270
+#: lib/layouts/IEEEtran.layout:351 lib/layouts/aa.layout:312
+#: lib/layouts/aastex.layout:109 lib/layouts/aastex.layout:276
+#: lib/layouts/elsart.layout:64 lib/layouts/ijmpc.layout:73
+#: lib/layouts/ijmpd.layout:76 lib/layouts/iopart.layout:193
+#: lib/layouts/isprs.layout:51 lib/layouts/kluwer.layout:274
+#: lib/layouts/paper.layout:171 lib/layouts/revtex4.layout:241
+#: lib/layouts/siamltex.layout:167 lib/layouts/spie.layout:39
+#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:166
+#: lib/layouts/svjour.inc:270
 msgid "Keywords"
 msgstr "Cuvinte cheie"
 
@@ -4337,8 +4290,8 @@ msgstr "Cuvinte cheie"
 msgid "Index Terms---"
 msgstr "Înregistrare index"
 
-#: lib/layouts/IEEEtran.layout:374 lib/layouts/aa.layout:86
-#: lib/layouts/aa.layout:309 lib/layouts/aapaper.layout:103
+#: lib/layouts/IEEEtran.layout:374 lib/layouts/aa.layout:89
+#: lib/layouts/aa.layout:341 lib/layouts/aapaper.layout:103
 #: lib/layouts/aapaper.layout:210 lib/layouts/beamer.layout:870
 #: lib/layouts/book.layout:21 lib/layouts/book.layout:23
 #: lib/layouts/cl2emult.layout:102 lib/layouts/egs.layout:552
@@ -4387,7 +4340,7 @@ msgstr "Notă de subsol"
 msgid "MarkBoth"
 msgstr "MarkBoth"
 
-#: lib/layouts/aa.layout:46 lib/layouts/aapaper.layout:48
+#: lib/layouts/aa.layout:49 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:76 lib/layouts/apa.layout:354
 #: lib/layouts/beamer.layout:53 lib/layouts/egs.layout:163
 #: lib/layouts/manpage.layout:81 lib/layouts/powerdot.layout:241
@@ -4396,7 +4349,7 @@ msgstr "MarkBoth"
 msgid "Itemize"
 msgstr "Itemize"
 
-#: lib/layouts/aa.layout:49 lib/layouts/aapaper.layout:51
+#: lib/layouts/aa.layout:52 lib/layouts/aapaper.layout:51
 #: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:372
 #: lib/layouts/beamer.layout:72 lib/layouts/egs.layout:145
 #: lib/layouts/manpage.layout:64 lib/layouts/powerdot.layout:266
@@ -4405,7 +4358,7 @@ msgstr "Itemize"
 msgid "Enumerate"
 msgstr "Enumeraţie"
 
-#: lib/layouts/aa.layout:52 lib/layouts/aapaper.layout:54
+#: lib/layouts/aa.layout:55 lib/layouts/aapaper.layout:54
 #: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:91
 #: lib/layouts/egs.layout:181 lib/layouts/hollywood.layout:129
 #: lib/layouts/manpage.layout:99 lib/layouts/paper.layout:103
@@ -4416,7 +4369,7 @@ msgstr "Enumeraţie"
 msgid "Description"
 msgstr "Descriere"
 
-#: lib/layouts/aa.layout:55 lib/layouts/aapaper.layout:57
+#: lib/layouts/aa.layout:58 lib/layouts/aapaper.layout:57
 #: lib/layouts/aastex.layout:85 lib/layouts/beamer.layout:54
 #: lib/layouts/beamer.layout:73 lib/layouts/beamer.layout:92
 #: lib/layouts/egs.layout:128 lib/layouts/scrlettr.layout:32
@@ -4427,7 +4380,7 @@ msgstr "Descriere"
 msgid "List"
 msgstr "Listă"
 
-#: lib/layouts/aa.layout:59 lib/layouts/aa.layout:246
+#: lib/layouts/aa.layout:62 lib/layouts/aa.layout:249
 #: lib/layouts/aapaper.layout:73 lib/layouts/aapaper.layout:160
 #: lib/layouts/aastex.layout:88 lib/layouts/aastex.layout:204
 #: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:746
@@ -4451,7 +4404,7 @@ msgstr "Listă"
 msgid "Title"
 msgstr "Titlu"
 
-#: lib/layouts/aa.layout:62 lib/layouts/aa.layout:107
+#: lib/layouts/aa.layout:65 lib/layouts/aa.layout:110
 #: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:778
 #: lib/layouts/kluwer.layout:121 lib/layouts/llncs.layout:123
 #: lib/layouts/svprobth.layout:44 lib/layouts/aapaper.inc:9
@@ -4459,7 +4412,7 @@ msgstr "Titlu"
 msgid "Subtitle"
 msgstr "Subtitlu"
 
-#: lib/layouts/aa.layout:65 lib/layouts/aa.layout:258
+#: lib/layouts/aa.layout:68 lib/layouts/aa.layout:261
 #: lib/layouts/aapaper.layout:79 lib/layouts/aapaper.layout:171
 #: lib/layouts/aastex.layout:91 lib/layouts/aastex.layout:216
 #: lib/layouts/apa.layout:113 lib/layouts/beamer.layout:803
@@ -4479,7 +4432,7 @@ msgstr "Subtitlu"
 msgid "Author"
 msgstr "Autor"
 
-#: lib/layouts/aa.layout:68 lib/layouts/aa.layout:128
+#: lib/layouts/aa.layout:71 lib/layouts/aa.layout:131
 #: lib/layouts/aapaper.layout:82 lib/layouts/egs.layout:233
 #: lib/layouts/entcs.layout:59 lib/layouts/g-brief-en.layout:180
 #: lib/layouts/g-brief2.layout:716 lib/layouts/ijmpc.layout:48
@@ -4492,17 +4445,17 @@ msgstr "Autor"
 msgid "Address"
 msgstr "Adresă"
 
-#: lib/layouts/aa.layout:71 lib/layouts/aa.layout:145
+#: lib/layouts/aa.layout:74 lib/layouts/aa.layout:148
 #: lib/layouts/aapaper.layout:88 lib/layouts/aapaper.inc:63
 msgid "Offprint"
 msgstr "Offprint"
 
-#: lib/layouts/aa.layout:74 lib/layouts/aa.layout:167
+#: lib/layouts/aa.layout:77 lib/layouts/aa.layout:170
 #: lib/layouts/svjour.inc:233
 msgid "Mail"
 msgstr "Mail"
 
-#: lib/layouts/aa.layout:77 lib/layouts/aa.layout:269
+#: lib/layouts/aa.layout:80 lib/layouts/aa.layout:272
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.layout:182
 #: lib/layouts/aastex.layout:103 lib/layouts/aastex.layout:228
 #: lib/layouts/beamer.layout:847 lib/layouts/egs.layout:466
@@ -4514,30 +4467,34 @@ msgstr "Mail"
 #: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:72
 #: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:162
 #: lib/layouts/stdtitle.inc:50 lib/layouts/svjour.inc:227
-#: lib/ui/stdmenus.inc:347 lib/external_templates:287
-#: lib/external_templates:288 lib/external_templates:292
+#: lib/ui/stdmenus.inc:347 lib/external_templates:297
+#: lib/external_templates:298 lib/external_templates:302
 msgid "Date"
 msgstr "Dată"
 
-#: lib/layouts/aa.layout:83 lib/layouts/aa.layout:189
+#: lib/layouts/aa.layout:86 lib/layouts/aa.layout:192
 #: lib/layouts/aapaper.layout:100 lib/layouts/egs.layout:527
 #: lib/layouts/elsart.layout:423 lib/layouts/aapaper.inc:80
 #: lib/layouts/svjour.inc:316 lib/layouts/theorems-ams-extended.module:189
 msgid "Acknowledgement"
 msgstr "Acknowledgement"
 
-#: lib/layouts/aa.layout:153 lib/layouts/aapaper.inc:71
+#: lib/layouts/aa.layout:156 lib/layouts/aapaper.inc:71
 msgid "Offprint Requests to:"
 msgstr "Rebulicaţii pentru:"
 
-#: lib/layouts/aa.layout:175
+#: lib/layouts/aa.layout:178
 msgid "Correspondence to:"
 msgstr "Corespondenţă către:"
 
-#: lib/layouts/aa.layout:200 lib/layouts/egs.layout:516
+#: lib/layouts/aa.layout:203 lib/layouts/egs.layout:516
 #: lib/layouts/svjour.inc:305
 msgid "Acknowledgements."
 msgstr "Acknowledgements"
+
+#: lib/layouts/aa.layout:327 lib/layouts/siamltex.layout:170
+msgid "Key words."
+msgstr "Cuvinte cheie"
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612
 #: src/frontends/qt4/GuiPrefs.cpp:524
@@ -4850,6 +4807,11 @@ msgstr "Locaţie"
 msgid "Latin off"
 msgstr "Locaţie"
 
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "ÎnceputCadru"
+
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:117
 #: lib/layouts/beamer.layout:132 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:32 lib/layouts/scrartcl.layout:20
@@ -4864,11 +4826,6 @@ msgstr "Part"
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Parte*"
-
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "ÎnceputCadru"
 
 #: lib/layouts/beamer.layout:107 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:114 lib/layouts/stdlists.inc:65
@@ -6557,7 +6514,7 @@ msgid "Notation \\thenotation."
 msgstr "Notaţie \\arabic{notation}"
 
 #: lib/layouts/ijmpc.layout:206 lib/layouts/ijmpd.layout:209
-#: lib/layouts/theorems.inc:42 lib/layouts/theorems-ams.inc:42
+#: lib/layouts/theorems-ams.inc:42 lib/layouts/theorems.inc:42
 #, fuzzy
 msgid "Theorem \\thetheorem."
 msgstr "Teoremă \\arabic{theorem}"
@@ -7221,10 +7178,6 @@ msgstr "."
 #: lib/layouts/db_stdstarsections.inc:72 lib/layouts/stdstarsections.inc:67
 msgid "Paragraph*"
 msgstr "Paragraf*"
-
-#: lib/layouts/siamltex.layout:170
-msgid "Key words."
-msgstr "Cuvinte cheie"
 
 #: lib/layouts/siamltex.layout:174
 msgid "AMS"
@@ -7962,56 +7915,56 @@ msgstr "Offprints"
 msgid "Offprints:"
 msgstr "Offprints"
 
-#: lib/layouts/theorems.inc:62 lib/layouts/theorems-ams.inc:63
+#: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:62
 #, fuzzy
 msgid "Corollary \\thetheorem."
 msgstr "Corolariu \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:73 lib/layouts/theorems-ams.inc:75
+#: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems.inc:73
 #, fuzzy
 msgid "Lemma \\thetheorem."
 msgstr "Lemă \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:84 lib/layouts/theorems-ams.inc:87
+#: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems.inc:84
 #, fuzzy
 msgid "Proposition \\thetheorem."
 msgstr "Propoziţie \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:95 lib/layouts/theorems-ams.inc:99
+#: lib/layouts/theorems-ams.inc:99 lib/layouts/theorems.inc:95
 #, fuzzy
 msgid "Conjecture \\thetheorem."
 msgstr "Conjectură \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:106 lib/layouts/theorems-ams.inc:111
+#: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems.inc:106
 msgid "Fact \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:117 lib/layouts/theorems-ams.inc:123
+#: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:117
 #, fuzzy
 msgid "Definition \\thetheorem."
 msgstr "Definiţie \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:135 lib/layouts/theorems-ams.inc:141
+#: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:135
 #, fuzzy
 msgid "Example \\thetheorem."
 msgstr "Exemple \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:147 lib/layouts/theorems-ams.inc:153
+#: lib/layouts/theorems-ams.inc:153 lib/layouts/theorems.inc:147
 #, fuzzy
 msgid "Problem \\thetheorem."
 msgstr "Problemă \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:159 lib/layouts/theorems-ams.inc:165
+#: lib/layouts/theorems-ams.inc:165 lib/layouts/theorems.inc:159
 #, fuzzy
 msgid "Exercise \\thetheorem."
 msgstr "Exerciţiu @Section@.\\\\arabic{theorem}."
 
-#: lib/layouts/theorems.inc:172 lib/layouts/theorems-ams.inc:178
+#: lib/layouts/theorems-ams.inc:178 lib/layouts/theorems.inc:172
 #, fuzzy
 msgid "Remark \\thetheorem."
 msgstr "Remarcă \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:191 lib/layouts/theorems-ams.inc:197
+#: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems.inc:191
 #, fuzzy
 msgid "Claim \\thetheorem."
 msgstr "Declaraţie \\arabic{theorem}"
@@ -9667,12 +9620,12 @@ msgstr "Mediu \"Gather\""
 
 #: lib/ui/stdcontext.inc:27 lib/ui/stdmenus.inc:402
 #, fuzzy
-msgid "Delimiters|r"
+msgid "Delimiters...|r"
 msgstr "Delimitator"
 
 #: lib/ui/stdcontext.inc:28 lib/ui/stdmenus.inc:403
 #, fuzzy
-msgid "Matrix|x"
+msgid "Matrix...|x"
 msgstr "Matrice"
 
 #: lib/ui/stdcontext.inc:29 lib/ui/stdmenus.inc:404
@@ -10070,7 +10023,7 @@ msgstr "Copiază"
 
 #: lib/ui/stdcontext.inc:244 lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:90
 #: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:928
-#: src/mathed/InsetMathGrid.cpp:1234 src/mathed/InsetMathNest.cpp:531
+#: src/mathed/InsetMathGrid.cpp:1246 src/mathed/InsetMathNest.cpp:531
 msgid "Paste"
 msgstr "Lipeşte"
 
@@ -13589,30 +13542,30 @@ msgstr ""
 msgid "A bitmap file.\n"
 msgstr ""
 
-#: lib/external_templates:102
+#: lib/external_templates:109
 #, fuzzy
 msgid "XFig"
 msgstr "Figură"
 
-#: lib/external_templates:103 lib/external_templates:106
+#: lib/external_templates:110 lib/external_templates:113
 msgid "Xfig: $$AbsOrRelPathParent$$Basename"
 msgstr ""
 
-#: lib/external_templates:105
+#: lib/external_templates:112
 #, fuzzy
 msgid "An Xfig figure.\n"
 msgstr "Reconfigurează|R"
 
-#: lib/external_templates:154
+#: lib/external_templates:162
 #, fuzzy
 msgid "ChessDiagram"
 msgstr "TablăDeŞah"
 
-#: lib/external_templates:155 lib/external_templates:174
+#: lib/external_templates:163 lib/external_templates:182
 msgid "Chess: $$AbsOrRelPathParent$$Basename"
 msgstr ""
 
-#: lib/external_templates:157
+#: lib/external_templates:165
 msgid ""
 "A chess position diagram.\n"
 "This template will use XBoard to edit the position.\n"
@@ -13633,15 +13586,15 @@ msgid ""
 "to install the skak package from CTAN.\n"
 msgstr ""
 
-#: lib/external_templates:199
+#: lib/external_templates:208
 msgid "LilyPond"
 msgstr ""
 
-#: lib/external_templates:200 lib/external_templates:206
+#: lib/external_templates:209 lib/external_templates:215
 msgid "Lilypond typeset music"
 msgstr ""
 
-#: lib/external_templates:202
+#: lib/external_templates:211
 msgid ""
 "Sheet music typeset by GNU LilyPond,\n"
 "converted to .pdf or .eps for inclusion\n"
@@ -13649,16 +13602,16 @@ msgid ""
 "Using .pdf requires at least lilypond 2.9\n"
 msgstr ""
 
-#: lib/external_templates:247
+#: lib/external_templates:257
 #, fuzzy
 msgid "PDFPages"
 msgstr "Pagini"
 
-#: lib/external_templates:248 lib/external_templates:261
+#: lib/external_templates:258 lib/external_templates:271
 msgid "PDF pages: $$AbsOrRelPathParent$$Basename"
 msgstr ""
 
-#: lib/external_templates:250
+#: lib/external_templates:260
 msgid ""
 "Includes PDF documents, using the 'pdfpages' package.\n"
 "To include multiple pages, use the pages-option,\n"
@@ -13671,7 +13624,7 @@ msgid ""
 "for further options and details.\n"
 msgstr ""
 
-#: lib/external_templates:290
+#: lib/external_templates:300
 msgid ""
 "Today's date.\n"
 "Read 'info date' for more information.\n"
@@ -13922,8 +13875,8 @@ msgstr "Comenzi utilizator"
 msgid "Table (CSV)"
 msgstr "Tabel"
 
-#: lib/configure.py:319 src/frontends/qt4/GuiView.cpp:737
-#: src/frontends/qt4/GuiView.cpp:738 src/mathed/MathMacroTemplate.cpp:536
+#: lib/configure.py:319 src/frontends/qt4/GuiView.cpp:740
+#: src/frontends/qt4/GuiView.cpp:741 src/mathed/MathMacroTemplate.cpp:536
 #, fuzzy
 msgid "LyX"
 msgstr "Vizualizează DVI"
@@ -14008,9 +13961,9 @@ msgid "%1$s and %2$s"
 msgstr ""
 
 #: src/BiblioInfo.cpp:122
-#, c-format
+#, fuzzy, c-format
 msgid "%1$s et al."
-msgstr ""
+msgstr "Documentul nu poate fi citit"
 
 #: src/BiblioInfo.cpp:135
 #, fuzzy
@@ -14172,8 +14125,8 @@ msgid "Overwrite modified file?"
 msgstr "Vizualizează fişierul"
 
 #: src/Buffer.cpp:828 src/Exporter.cpp:49 src/LyXFunc.cpp:980
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1428
-#: src/frontends/qt4/GuiView.cpp:1606
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1431
+#: src/frontends/qt4/GuiView.cpp:1609
 #, fuzzy
 msgid "&Overwrite"
 msgstr "&Maşină de scris:"
@@ -14359,8 +14312,9 @@ msgid "&Load backup"
 msgstr "&Global"
 
 #: src/Buffer.cpp:2530
+#, fuzzy
 msgid "Load &original"
-msgstr ""
+msgstr "&Origine:"
 
 #: src/Buffer.cpp:2563
 #, fuzzy, c-format
@@ -14525,8 +14479,9 @@ msgid "Mark set"
 msgstr "Marcaj setat"
 
 #: src/BufferView.cpp:1264
+#, fuzzy
 msgid "Statistics for the selection:"
-msgstr ""
+msgstr "Trece la alt document deschis"
 
 #: src/BufferView.cpp:1266
 #, fuzzy
@@ -14696,8 +14651,9 @@ msgid "inline completion"
 msgstr "În cadrul documentului (inline)"
 
 #: src/Color.cpp:113
+#, fuzzy
 msgid "non-unique inline completion"
-msgstr ""
+msgstr "În cadrul documentului (inline)"
 
 #: src/Color.cpp:115
 msgid "previewed snippet"
@@ -14855,8 +14811,9 @@ msgid "caption frame"
 msgstr "cadru titlu"
 
 #: src/Color.cpp:150
+#, fuzzy
 msgid "collapsable inset text"
-msgstr ""
+msgstr "cadru comandă \"inset\""
 
 #: src/Color.cpp:151
 #, fuzzy
@@ -15132,8 +15089,9 @@ msgid "Medium"
 msgstr "Mediu"
 
 #: src/Font.cpp:54 src/frontends/qt4/GuiCharacter.cpp:108
+#, fuzzy
 msgid "Bold"
-msgstr ""
+msgstr "&Contur:"
 
 #: src/Font.cpp:57 src/frontends/qt4/GuiCharacter.cpp:43
 #, fuzzy
@@ -15326,105 +15284,117 @@ msgstr "&Director de lucru:"
 msgid "Done!"
 msgstr "Nimic"
 
-#: src/LyX.cpp:471
+#: src/LyX.cpp:476
+#, fuzzy, c-format
+msgid "%1$s does not appear like a LyX created temporary directory."
+msgstr "Nu pot şterge director temporar"
+
+#: src/LyX.cpp:478
+#, fuzzy
+msgid "Cannot remove temporary directory"
+msgstr "Nu pot şterge director temporar"
+
+#: src/LyX.cpp:484
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Nu pot şterge director temporar"
 
-#: src/LyX.cpp:473
+#: src/LyX.cpp:486
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "&Utilizează director temporar"
 
-#: src/LyX.cpp:501
+#: src/LyX.cpp:515
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:568
+#: src/LyX.cpp:582
+#, fuzzy
 msgid "No textclass is found"
-msgstr ""
+msgstr "Reconfigurează|R"
 
-#: src/LyX.cpp:569
+#: src/LyX.cpp:583
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
 
-#: src/LyX.cpp:573
+#: src/LyX.cpp:587
 #, fuzzy
 msgid "&Reconfigure"
 msgstr "Reconfigurează|R"
 
-#: src/LyX.cpp:574
+#: src/LyX.cpp:588
 #, fuzzy
 msgid "&Use Default"
 msgstr "Implicit"
 
-#: src/LyX.cpp:575 src/LyX.cpp:935
+#: src/LyX.cpp:589 src/LyX.cpp:949
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "Ieşire"
 
-#: src/LyX.cpp:722 src/frontends/qt4/GuiView.cpp:636
+#: src/LyX.cpp:736 src/frontends/qt4/GuiView.cpp:639
 #, fuzzy
 msgid "LyX: "
 msgstr "Vizualizează DVI"
 
-#: src/LyX.cpp:844
+#: src/LyX.cpp:858
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Nu pot şterge director temporar"
 
-#: src/LyX.cpp:845
+#: src/LyX.cpp:859
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
-"%1$s. Make sure that this\n"
-"path exists and is writable and try again."
+"\"%1$s\"\n"
+"Make sure that this path exists and is writable and try again."
 msgstr ""
 
-#: src/LyX.cpp:928
+#: src/LyX.cpp:942
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "Adaugă cuvîntul la dicţionarul personal"
 
-#: src/LyX.cpp:929
+#: src/LyX.cpp:943
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "Documentul specificat nu este un document LyX."
 
-#: src/LyX.cpp:934
+#: src/LyX.cpp:948
 #, fuzzy
 msgid "&Create directory"
 msgstr "&Director de lucru:"
 
-#: src/LyX.cpp:936
+#: src/LyX.cpp:950
 #, fuzzy
 msgid "No user LyX directory. Exiting."
 msgstr "&Utilizează director temporar"
 
-#: src/LyX.cpp:940
+#: src/LyX.cpp:954
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "&Director de lucru:"
 
-#: src/LyX.cpp:945
+#: src/LyX.cpp:959
+#, fuzzy
 msgid "Failed to create directory. Exiting."
-msgstr ""
+msgstr "&Utilizează director temporar"
 
-#: src/LyX.cpp:1017
+#: src/LyX.cpp:1031
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/LyX.cpp:1021
+#: src/LyX.cpp:1035
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr ""
 
-#: src/LyX.cpp:1032
+#: src/LyX.cpp:1046
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -15448,42 +15418,42 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/LyX.cpp:1072 src/support/Package.cpp:560
+#: src/LyX.cpp:1086
 #, fuzzy
 msgid "No system directory"
 msgstr "&Utilizează director temporar"
 
-#: src/LyX.cpp:1073
+#: src/LyX.cpp:1087
 msgid "Missing directory for -sysdir switch"
 msgstr ""
 
-#: src/LyX.cpp:1084
+#: src/LyX.cpp:1098
 #, fuzzy
 msgid "No user directory"
 msgstr "&Utilizează director temporar"
 
-#: src/LyX.cpp:1085
+#: src/LyX.cpp:1099
 msgid "Missing directory for -userdir switch"
 msgstr ""
 
-#: src/LyX.cpp:1096
+#: src/LyX.cpp:1110
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Comenda de indexare"
 
-#: src/LyX.cpp:1097
+#: src/LyX.cpp:1111
 msgid "Missing command string after --execute switch"
 msgstr ""
 
-#: src/LyX.cpp:1108
+#: src/LyX.cpp:1122
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 
-#: src/LyX.cpp:1121
+#: src/LyX.cpp:1135
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 
-#: src/LyX.cpp:1126
+#: src/LyX.cpp:1140
 msgid "Missing filename for --import"
 msgstr ""
 
@@ -15551,18 +15521,19 @@ msgid "Document is read-only"
 msgstr "Documente"
 
 #: src/LyXFunc.cpp:642
+#, fuzzy
 msgid "This portion of the document is deleted."
-msgstr ""
+msgstr "Verteiler"
 
 #: src/LyXFunc.cpp:661
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
 "\n"
 "Do you want to save the document?"
-msgstr ""
+msgstr "Documentul utilizează o clasă text \"%1$s\" necunoscută."
 
-#: src/LyXFunc.cpp:664 src/frontends/qt4/GuiView.cpp:1703
+#: src/LyXFunc.cpp:664 src/frontends/qt4/GuiView.cpp:1706
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Salvare &documente"
@@ -15640,465 +15611,474 @@ msgstr ""
 msgid "Converting document to new document class..."
 msgstr "Inserez documentul %1$s..."
 
-#: src/LyXRC.cpp:2387
+#: src/LyXRC.cpp:2386
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
 
-#: src/LyXRC.cpp:2392
+#: src/LyXRC.cpp:2391
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr ""
 
-#: src/LyXRC.cpp:2396
+#: src/LyXRC.cpp:2395
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
 "specified, an internal routine is used."
 msgstr ""
 
-#: src/LyXRC.cpp:2404
+#: src/LyXRC.cpp:2403
+#, fuzzy
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
-msgstr ""
+msgstr "La modificarea clasei, setează opţiunile clasei la valorile implicite"
 
-#: src/LyXRC.cpp:2408
+#: src/LyXRC.cpp:2407
 #, fuzzy
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
 msgstr "La modificarea clasei, setează opţiunile clasei la valorile implicite"
 
-#: src/LyXRC.cpp:2412
+#: src/LyXRC.cpp:2411
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 
-#: src/LyXRC.cpp:2419
+#: src/LyXRC.cpp:2418
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
 msgstr ""
 
-#: src/LyXRC.cpp:2423
+#: src/LyXRC.cpp:2422
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
 msgstr ""
 
-#: src/LyXRC.cpp:2427
+#: src/LyXRC.cpp:2426
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:2431
+#: src/LyXRC.cpp:2430
 msgid "Select to check whether the lastfiles still exist."
 msgstr ""
 
-#: src/LyXRC.cpp:2435
+#: src/LyXRC.cpp:2434
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
-#: src/LyXRC.cpp:2445
+#: src/LyXRC.cpp:2444
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
 msgstr ""
 
-#: src/LyXRC.cpp:2449
+#: src/LyXRC.cpp:2448
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
 msgstr ""
 
-#: src/LyXRC.cpp:2460
+#: src/LyXRC.cpp:2459
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2464
+#: src/LyXRC.cpp:2463
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:2468
+#: src/LyXRC.cpp:2467
 msgid "New documents will be assigned this language."
 msgstr ""
 
-#: src/LyXRC.cpp:2472
+#: src/LyXRC.cpp:2471
 #, fuzzy
 msgid "Specify the default paper size."
 msgstr "Mărime implicită f&oaie:"
 
-#: src/LyXRC.cpp:2476
+#: src/LyXRC.cpp:2475
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
 msgstr ""
 
-#: src/LyXRC.cpp:2480
+#: src/LyXRC.cpp:2479
 msgid "Select how LyX will display any graphics."
 msgstr ""
 
-#: src/LyXRC.cpp:2484
+#: src/LyXRC.cpp:2483
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:2489
+#: src/LyXRC.cpp:2488
 msgid "Specify additional chars that can be part of a word."
 msgstr ""
 
-#: src/LyXRC.cpp:2493
+#: src/LyXRC.cpp:2492
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:2497
+#: src/LyXRC.cpp:2496
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
 
-#: src/LyXRC.cpp:2504
+#: src/LyXRC.cpp:2503
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
 "\"makeindex.sh -m $$lang\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2513
+#: src/LyXRC.cpp:2512
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
 msgstr ""
 
-#: src/LyXRC.cpp:2517
+#: src/LyXRC.cpp:2516
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr ""
 
-#: src/LyXRC.cpp:2521
+#: src/LyXRC.cpp:2520
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr ""
 
-#: src/LyXRC.cpp:2525
+#: src/LyXRC.cpp:2524
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:2529
+#: src/LyXRC.cpp:2528
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
 msgstr ""
 
-#: src/LyXRC.cpp:2533
+#: src/LyXRC.cpp:2532
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:2537
+#: src/LyXRC.cpp:2536
 msgid "The LaTeX command for local changing of the language."
 msgstr ""
 
-#: src/LyXRC.cpp:2541
+#: src/LyXRC.cpp:2540
+#, fuzzy
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr ""
+msgstr "La modificarea clasei, setează opţiunile clasei la valorile implicite"
 
-#: src/LyXRC.cpp:2545
+#: src/LyXRC.cpp:2544
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2549
+#: src/LyXRC.cpp:2548
+#, fuzzy
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
-msgstr ""
+msgstr "La modificarea clasei, setează opţiunile clasei la valorile implicite"
 
-#: src/LyXRC.cpp:2553
+#: src/LyXRC.cpp:2552
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 
-#: src/LyXRC.cpp:2557
+#: src/LyXRC.cpp:2556
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 
-#: src/LyXRC.cpp:2561
+#: src/LyXRC.cpp:2560
 msgid "De-select if you don't want LyX to create backup files."
 msgstr ""
 
-#: src/LyXRC.cpp:2565
+#: src/LyXRC.cpp:2564
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:2569
+#: src/LyXRC.cpp:2568
 msgid "The scrolling speed of the mouse wheel."
 msgstr ""
 
-#: src/LyXRC.cpp:2574
+#: src/LyXRC.cpp:2573
+#, fuzzy
 msgid "The completion popup delay."
-msgstr ""
+msgstr "În cadrul documentului (inline)"
 
-#: src/LyXRC.cpp:2578
+#: src/LyXRC.cpp:2577
 msgid "Select to display the completion popup in math mode."
 msgstr ""
 
-#: src/LyXRC.cpp:2582
+#: src/LyXRC.cpp:2581
 msgid "Select to display the completion popup in text mode."
 msgstr ""
 
-#: src/LyXRC.cpp:2586
+#: src/LyXRC.cpp:2585
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 
-#: src/LyXRC.cpp:2590
+#: src/LyXRC.cpp:2589
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
 msgstr ""
 
-#: src/LyXRC.cpp:2594
+#: src/LyXRC.cpp:2593
+#, fuzzy
 msgid "The inline completion delay."
-msgstr ""
+msgstr "În cadrul documentului (inline)"
 
-#: src/LyXRC.cpp:2598
+#: src/LyXRC.cpp:2597
 msgid "Select to display the inline completion in math mode."
 msgstr ""
 
-#: src/LyXRC.cpp:2602
+#: src/LyXRC.cpp:2601
 msgid "Select to display the inline completion in text mode."
 msgstr ""
 
-#: src/LyXRC.cpp:2606
+#: src/LyXRC.cpp:2605
 msgid "Use \"...\" to shorten long completions."
 msgstr ""
 
-#: src/LyXRC.cpp:2610
+#: src/LyXRC.cpp:2609
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 
-#: src/LyXRC.cpp:2615
+#: src/LyXRC.cpp:2614
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr ""
 
-#: src/LyXRC.cpp:2622
+#: src/LyXRC.cpp:2621
 #, fuzzy
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Specifică un dicţionar personal diferit decît cel implicit"
 
-#: src/LyXRC.cpp:2626
+#: src/LyXRC.cpp:2625
 msgid "Shows a typeset preview of things such as math"
 msgstr ""
 
-#: src/LyXRC.cpp:2630
+#: src/LyXRC.cpp:2629
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 
-#: src/LyXRC.cpp:2634
+#: src/LyXRC.cpp:2633
 msgid "Scale the preview size to suit."
 msgstr ""
 
-#: src/LyXRC.cpp:2638
+#: src/LyXRC.cpp:2637
+#, fuzzy
 msgid "The option for specifying whether the copies should be collated."
-msgstr ""
+msgstr "Opţiuni folosite pentru setarea numărului de copii"
 
-#: src/LyXRC.cpp:2642
+#: src/LyXRC.cpp:2641
 #, fuzzy
 msgid "The option for specifying the number of copies to print."
 msgstr "Opţiuni folosite pentru setarea numărului de copii"
 
-#: src/LyXRC.cpp:2646
+#: src/LyXRC.cpp:2645
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
 msgstr ""
 
-#: src/LyXRC.cpp:2650
+#: src/LyXRC.cpp:2649
 #, fuzzy
 msgid "The option to print only even pages."
 msgstr "Opţiuni folosite pentru a tipări un anumit interval de pagini"
 
-#: src/LyXRC.cpp:2654
+#: src/LyXRC.cpp:2653
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
 msgstr ""
 
-#: src/LyXRC.cpp:2658
+#: src/LyXRC.cpp:2657
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2662
+#: src/LyXRC.cpp:2661
 #, fuzzy
 msgid "The option to print out in landscape."
 msgstr "Opţiuni folosite pentru a tipări în fişier"
 
-#: src/LyXRC.cpp:2666
+#: src/LyXRC.cpp:2665
 #, fuzzy
 msgid "The option to print only odd pages."
 msgstr "Opţiuni folosite pentru a tipări un anumit interval de pagini"
 
-#: src/LyXRC.cpp:2670
+#: src/LyXRC.cpp:2669
+#, fuzzy
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr ""
+msgstr "Opţiuni folosite pentru setarea numărului de copii"
 
-#: src/LyXRC.cpp:2674
+#: src/LyXRC.cpp:2673
 #, fuzzy
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Opţiuni foloaite pentru a tipări la imprimanta ne-standard"
 
-#: src/LyXRC.cpp:2678
+#: src/LyXRC.cpp:2677
+#, fuzzy
 msgid "The option to specify paper type."
-msgstr ""
+msgstr "Opţiuni folosite pentru a tipări un anumit interval de pagini"
 
-#: src/LyXRC.cpp:2682
+#: src/LyXRC.cpp:2681
 #, fuzzy
 msgid "The option to reverse the order of the pages printed."
 msgstr "Foloseşte această linie ca subsol pentru prima pagină"
 
-#: src/LyXRC.cpp:2686
+#: src/LyXRC.cpp:2685
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
 "arguments."
 msgstr ""
 
-#: src/LyXRC.cpp:2690
+#: src/LyXRC.cpp:2689
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
 msgstr ""
 
-#: src/LyXRC.cpp:2694
+#: src/LyXRC.cpp:2693
 #, fuzzy
 msgid "Option to pass to the print program to print to a file."
 msgstr "Opţiuni folosite pentru a tipări în fişier"
 
-#: src/LyXRC.cpp:2698
+#: src/LyXRC.cpp:2697
 #, fuzzy
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr "Opţiuni foloaite pentru a tipări la imprimanta ne-standard"
 
-#: src/LyXRC.cpp:2702
+#: src/LyXRC.cpp:2701
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr ""
 
-#: src/LyXRC.cpp:2706
+#: src/LyXRC.cpp:2705
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2714
+#: src/LyXRC.cpp:2713
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 
-#: src/LyXRC.cpp:2718
+#: src/LyXRC.cpp:2717
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
 msgstr ""
 
-#: src/LyXRC.cpp:2724
+#: src/LyXRC.cpp:2723
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 
-#: src/LyXRC.cpp:2733
+#: src/LyXRC.cpp:2732
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 msgstr ""
 
-#: src/LyXRC.cpp:2737
+#: src/LyXRC.cpp:2736
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 
-#: src/LyXRC.cpp:2742
+#: src/LyXRC.cpp:2741
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr ""
 
-#: src/LyXRC.cpp:2746
+#: src/LyXRC.cpp:2745
 msgid "Allow session manager to save and restore windows geometry."
 msgstr ""
 
-#: src/LyXRC.cpp:2750
+#: src/LyXRC.cpp:2749
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
 
-#: src/LyXRC.cpp:2757
+#: src/LyXRC.cpp:2756
+#, fuzzy
 msgid "De-select if you don't want the startup banner."
-msgstr ""
+msgstr "La modificarea clasei, setează opţiunile clasei la valorile implicite"
 
-#: src/LyXRC.cpp:2761
+#: src/LyXRC.cpp:2760
 msgid "What command runs the spellchecker?"
 msgstr ""
 
-#: src/LyXRC.cpp:2765
+#: src/LyXRC.cpp:2764
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
 
-#: src/LyXRC.cpp:2769
+#: src/LyXRC.cpp:2768
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:2779
+#: src/LyXRC.cpp:2778
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:2792
+#: src/LyXRC.cpp:2791
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
 "may not work with all dictionaries."
 msgstr ""
 
-#: src/LyXRC.cpp:2796
+#: src/LyXRC.cpp:2795
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr ""
 
-#: src/LyXRC.cpp:2800
+#: src/LyXRC.cpp:2799
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 
-#: src/LyXRC.cpp:2807
+#: src/LyXRC.cpp:2806
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 
@@ -16157,12 +16137,12 @@ msgid ""
 msgstr ""
 
 #: src/Paragraph.cpp:2044 src/frontends/qt4/LaTeXHighlighter.cpp:108
-#: src/mathed/InsetMathString.cpp:154
+#: src/mathed/InsetMathString.cpp:164
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "Versiune...|V"
 
-#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:155
+#: src/Paragraph.cpp:2045 src/mathed/InsetMathString.cpp:165
 #, fuzzy
 msgid "uncodable character"
 msgstr "caracter special"
@@ -16429,12 +16409,12 @@ msgid "File not readable!"
 msgstr "Listă de slide-uri"
 
 #: src/buffer_funcs.cpp:100
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
 "\n"
 "Do you want to create a new document?"
-msgstr ""
+msgstr "Documentul utilizează o clasă text \"%1$s\" necunoscută."
 
 #: src/buffer_funcs.cpp:103
 #, fuzzy
@@ -16578,7 +16558,7 @@ msgid "About %1"
 msgstr "Despre LyX"
 
 #: src/frontends/qt4/GuiApplication.cpp:385
-#: src/frontends/qt4/GuiPrefs.cpp:2454
+#: src/frontends/qt4/GuiPrefs.cpp:2437
 msgid "Preferences"
 msgstr "Preferinţe"
 
@@ -16632,7 +16612,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiApplication.cpp:1335
 #, fuzzy
-msgid "Could not find UI defintion file"
+msgid "Could not find UI definition file"
 msgstr "Listă de slide-uri"
 
 #: src/frontends/qt4/GuiBibitem.cpp:28
@@ -16647,10 +16627,10 @@ msgstr "Bibliografie"
 
 #: src/frontends/qt4/GuiBibtex.cpp:424 src/frontends/qt4/GuiBibtex.cpp:434
 #: src/frontends/qt4/GuiDocument.cpp:1279
-#: src/frontends/qt4/GuiExternal.cpp:718 src/frontends/qt4/GuiGraphics.cpp:762
-#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1187
-#: src/frontends/qt4/GuiView.cpp:1245 src/frontends/qt4/GuiView.cpp:1378
-#: src/frontends/qt4/GuiView.cpp:1497 src/frontends/qt4/GuiView.cpp:1576
+#: src/frontends/qt4/GuiExternal.cpp:661 src/frontends/qt4/GuiGraphics.cpp:740
+#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1190
+#: src/frontends/qt4/GuiView.cpp:1248 src/frontends/qt4/GuiView.cpp:1381
+#: src/frontends/qt4/GuiView.cpp:1500 src/frontends/qt4/GuiView.cpp:1579
 msgid "Documents|#o#O"
 msgstr "Documente|#o#O"
 
@@ -16680,8 +16660,9 @@ msgid "No frame"
 msgstr "Nume"
 
 #: src/frontends/qt4/GuiBox.cpp:56
+#, fuzzy
 msgid "Simple rectangular frame"
-msgstr ""
+msgstr "cadru \"inset\""
 
 #: src/frontends/qt4/GuiBox.cpp:57
 msgid "Oval frame, thin"
@@ -16701,8 +16682,9 @@ msgid "Shaded background"
 msgstr "fundal notă"
 
 #: src/frontends/qt4/GuiBox.cpp:59
+#, fuzzy
 msgid "Double rectangular frame"
-msgstr ""
+msgstr "dublu"
 
 #: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:331
 #: src/frontends/qt4/GuiBox.cpp:366
@@ -16745,6 +16727,10 @@ msgstr "Cale fişiere de rezervă:|#r"
 #: src/frontends/qt4/GuiBranches.cpp:43
 msgid "Activated"
 msgstr "Activat"
+
+#: src/frontends/qt4/GuiBranches.cpp:44
+msgid "Color"
+msgstr "Color"
 
 #: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiBranches.cpp:146
 #: src/frontends/qt4/GuiDocument.cpp:1436
@@ -16874,19 +16860,19 @@ msgid "pasted"
 msgstr "Lipeşte"
 
 #: src/frontends/qt4/GuiClipboard.cpp:156
-#, c-format
+#, fuzzy, c-format
 msgid "%1$s Files"
-msgstr ""
+msgstr "Închide"
 
 #: src/frontends/qt4/GuiClipboard.cpp:166
 #, fuzzy
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Salvează valorile ca implicite pentru document"
 
-#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1259
-#: src/frontends/qt4/GuiView.cpp:1398 src/frontends/qt4/GuiView.cpp:1414
-#: src/frontends/qt4/GuiView.cpp:1431 src/frontends/qt4/GuiView.cpp:1514
-#: src/frontends/qt4/GuiView.cpp:1552
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1262
+#: src/frontends/qt4/GuiView.cpp:1401 src/frontends/qt4/GuiView.cpp:1417
+#: src/frontends/qt4/GuiView.cpp:1434 src/frontends/qt4/GuiView.cpp:1517
+#: src/frontends/qt4/GuiView.cpp:1555
 msgid "Canceled."
 msgstr "Anulat."
 
@@ -16938,8 +16924,9 @@ msgid "Variable"
 msgstr "linie tabulară"
 
 #: src/frontends/qt4/GuiDocument.cpp:95
+#, fuzzy
 msgid "Computer Modern Roman"
-msgstr ""
+msgstr "Typewriter"
 
 #: src/frontends/qt4/GuiDocument.cpp:95
 #, fuzzy
@@ -16993,8 +16980,9 @@ msgid "Zapf Chancery"
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:111
+#, fuzzy
 msgid "Computer Modern Sans"
-msgstr ""
+msgstr "Typewriter"
 
 #: src/frontends/qt4/GuiDocument.cpp:111
 #, fuzzy
@@ -17035,8 +17023,9 @@ msgid "Courier"
 msgstr "Copii"
 
 #: src/frontends/qt4/GuiDocument.cpp:125
+#, fuzzy
 msgid "Bera Mono"
-msgstr ""
+msgstr "Sans Serif"
 
 #: src/frontends/qt4/GuiDocument.cpp:126
 msgid "LuxiMono"
@@ -17073,8 +17062,9 @@ msgstr "Stînga"
 
 #: src/frontends/qt4/GuiDocument.cpp:622 src/frontends/qt4/GuiDocument.cpp:628
 #: src/frontends/qt4/GuiDocument.cpp:634
+#, fuzzy
 msgid " (not installed)"
-msgstr ""
+msgstr "Spaţiu protejat|S"
 
 #: src/frontends/qt4/GuiDocument.cpp:639
 msgid "10"
@@ -17236,8 +17226,9 @@ msgstr "*.lyx| Documente LyX (*.lyx)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1233
 #: src/frontends/qt4/GuiDocument.cpp:1293
+#, fuzzy
 msgid "Local layout file"
-msgstr ""
+msgstr "Format|F"
 
 #: src/frontends/qt4/GuiDocument.cpp:1251
 #: src/frontends/qt4/GuiDocument.cpp:1310
@@ -17411,12 +17402,12 @@ msgstr "Linie dreapta|d"
 msgid "External Material"
 msgstr "Material extern"
 
-#: src/frontends/qt4/GuiExternal.cpp:210
+#: src/frontends/qt4/GuiExternal.cpp:207
 #, fuzzy
 msgid "Scale%"
 msgstr "Smaller"
 
-#: src/frontends/qt4/GuiExternal.cpp:714
+#: src/frontends/qt4/GuiExternal.cpp:657
 #, fuzzy
 msgid "Select external file"
 msgstr "Selectaţi fişierul de ieşire"
@@ -17431,12 +17422,12 @@ msgstr "opţiuni suplimentare"
 msgid "Graphics"
 msgstr "&Grafică"
 
-#: src/frontends/qt4/GuiGraphics.cpp:749
+#: src/frontends/qt4/GuiGraphics.cpp:727
 #, fuzzy
 msgid "Select graphics file"
 msgstr "Selectaţi fişierul de ieşire"
 
-#: src/frontends/qt4/GuiGraphics.cpp:761
+#: src/frontends/qt4/GuiGraphics.cpp:739
 msgid "Clipart|#C#c"
 msgstr ""
 
@@ -17453,8 +17444,9 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/GuiHyperlink.cpp:29
+#, fuzzy
 msgid "Hyperlink"
-msgstr ""
+msgstr "&Generează hiperlegătură"
 
 #: src/frontends/qt4/GuiInclude.cpp:48
 #, fuzzy
@@ -17672,210 +17664,211 @@ msgstr "Fonturi ecran"
 msgid "Colors"
 msgstr "Culori"
 
-#: src/frontends/qt4/GuiPrefs.cpp:935
+#: src/frontends/qt4/GuiPrefs.cpp:918
 #, fuzzy
 msgid "Paths"
 msgstr "Part"
 
-#: src/frontends/qt4/GuiPrefs.cpp:990
+#: src/frontends/qt4/GuiPrefs.cpp:973
 #, fuzzy
 msgid "Select directory for example files"
 msgstr "Selectaţi fişierul de ieşire"
 
-#: src/frontends/qt4/GuiPrefs.cpp:999
+#: src/frontends/qt4/GuiPrefs.cpp:982
 #, fuzzy
 msgid "Select a document templates directory"
 msgstr "&Utilizează director temporar"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1008
+#: src/frontends/qt4/GuiPrefs.cpp:991
 #, fuzzy
 msgid "Select a temporary directory"
 msgstr "&Utilizează director temporar"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1017
+#: src/frontends/qt4/GuiPrefs.cpp:1000
 #, fuzzy
 msgid "Select a backups directory"
 msgstr "&Director pentru rezerve: "
 
-#: src/frontends/qt4/GuiPrefs.cpp:1026
+#: src/frontends/qt4/GuiPrefs.cpp:1009
 #, fuzzy
 msgid "Select a document directory"
 msgstr "&Director pentru rezerve: "
 
-#: src/frontends/qt4/GuiPrefs.cpp:1035
+#: src/frontends/qt4/GuiPrefs.cpp:1018
 msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:1048
+#: src/frontends/qt4/GuiPrefs.cpp:1031
 #: src/frontends/qt4/GuiSpellchecker.cpp:57
 msgid "Spellchecker"
 msgstr "Verificator ortografic"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1070
+#: src/frontends/qt4/GuiPrefs.cpp:1053
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1071
+#: src/frontends/qt4/GuiPrefs.cpp:1054
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1072
+#: src/frontends/qt4/GuiPrefs.cpp:1055
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1074
+#: src/frontends/qt4/GuiPrefs.cpp:1057
 msgid "pspell (library)"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:1077
+#: src/frontends/qt4/GuiPrefs.cpp:1060
 msgid "aspell (library)"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:1157
+#: src/frontends/qt4/GuiPrefs.cpp:1140
 #, fuzzy
 msgid "Converters"
 msgstr "&Convertoare"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1462
+#: src/frontends/qt4/GuiPrefs.cpp:1445
 #, fuzzy
 msgid "File formats"
 msgstr "Formate de &fişier"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1660
+#: src/frontends/qt4/GuiPrefs.cpp:1643
 #, fuzzy
 msgid "Format in use"
 msgstr "&Format:"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1661
+#: src/frontends/qt4/GuiPrefs.cpp:1644
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:1766
+#: src/frontends/qt4/GuiPrefs.cpp:1749
 #, fuzzy
 msgid "Printer"
 msgstr "Imprimantă"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1864 src/frontends/qt4/GuiPrefs.cpp:2493
+#: src/frontends/qt4/GuiPrefs.cpp:1847 src/frontends/qt4/GuiPrefs.cpp:2476
 #, fuzzy
 msgid "User interface"
 msgstr "&Fişier interfaţă utilizator:"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1943
+#: src/frontends/qt4/GuiPrefs.cpp:1926
 #, fuzzy
 msgid "Control"
 msgstr "Înregistrare"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2015
+#: src/frontends/qt4/GuiPrefs.cpp:1998
 #, fuzzy
 msgid "Shortcuts"
 msgstr "&Accelerator:"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2020
+#: src/frontends/qt4/GuiPrefs.cpp:2003
 #, fuzzy
 msgid "Function"
 msgstr "&Funcţii"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2021
+#: src/frontends/qt4/GuiPrefs.cpp:2004
 #, fuzzy
 msgid "Shortcut"
 msgstr "&Accelerator:"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2097
+#: src/frontends/qt4/GuiPrefs.cpp:2080
 msgid "Cursor, Mouse and Editing functions"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2101
+#: src/frontends/qt4/GuiPrefs.cpp:2084
 #, fuzzy
 msgid "Mathematical Symbols"
 msgstr "Mathematica"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2105
+#: src/frontends/qt4/GuiPrefs.cpp:2088
 #, fuzzy
 msgid "Document and Window"
 msgstr "Document nesalvat"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2109
+#: src/frontends/qt4/GuiPrefs.cpp:2092
 msgid "Font, Layouts and Textclasses"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2113
+#: src/frontends/qt4/GuiPrefs.cpp:2096
 #, fuzzy
 msgid "System and Miscellaneous"
 msgstr "Diverse AMS"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2239 src/frontends/qt4/GuiPrefs.cpp:2306
+#: src/frontends/qt4/GuiPrefs.cpp:2222 src/frontends/qt4/GuiPrefs.cpp:2289
 #, fuzzy
 msgid "Res&tore"
 msgstr "&Reface"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2374 src/frontends/qt4/GuiPrefs.cpp:2381
-#: src/frontends/qt4/GuiPrefs.cpp:2388 src/frontends/qt4/GuiPrefs.cpp:2400
+#: src/frontends/qt4/GuiPrefs.cpp:2357 src/frontends/qt4/GuiPrefs.cpp:2364
+#: src/frontends/qt4/GuiPrefs.cpp:2371 src/frontends/qt4/GuiPrefs.cpp:2383
+#, fuzzy
 msgid "Failed to create shortcut"
-msgstr ""
+msgstr "Selectaţi fişierul de ieşire"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2375
+#: src/frontends/qt4/GuiPrefs.cpp:2358
 #, fuzzy
 msgid "Unknown or invalid LyX function"
 msgstr "necunoscut"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2382
+#: src/frontends/qt4/GuiPrefs.cpp:2365
 msgid "Invalid or empty key sequence"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2389
+#: src/frontends/qt4/GuiPrefs.cpp:2372
 msgid "Shortcut is already defined"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2401
+#: src/frontends/qt4/GuiPrefs.cpp:2384
 #, fuzzy
 msgid "Can not insert shortcut to the list"
 msgstr "Adaugă o noua versiune a documentului la listă"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2421
+#: src/frontends/qt4/GuiPrefs.cpp:2404
 #, fuzzy
 msgid "Identity"
 msgstr "&Indentare"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2616
+#: src/frontends/qt4/GuiPrefs.cpp:2599
 #, fuzzy
 msgid "Choose bind file"
 msgstr "Alegeţi un fişier de stil"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2617
+#: src/frontends/qt4/GuiPrefs.cpp:2600
 #, fuzzy
 msgid "LyX bind files (*.bind)"
 msgstr "Adaugă un fişier bază de date BibTeX"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2623
+#: src/frontends/qt4/GuiPrefs.cpp:2606
 #, fuzzy
 msgid "Choose UI file"
 msgstr "Alegeţi un fişier de stil"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2624
+#: src/frontends/qt4/GuiPrefs.cpp:2607
 #, fuzzy
 msgid "LyX UI files (*.ui)"
 msgstr "Adaugă un fişier bază de date BibTeX"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2630
+#: src/frontends/qt4/GuiPrefs.cpp:2613
 #, fuzzy
 msgid "Choose keyboard map"
 msgstr "Cuvînt cheie"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2631
+#: src/frontends/qt4/GuiPrefs.cpp:2614
 #, fuzzy
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Utilizează mapare de &tastatură"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2637
+#: src/frontends/qt4/GuiPrefs.cpp:2620
 #, fuzzy
 msgid "Choose personal dictionary"
 msgstr "Utilizează dicţionar personal"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2638
+#: src/frontends/qt4/GuiPrefs.cpp:2621
 msgid "*.pws"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2638
+#: src/frontends/qt4/GuiPrefs.cpp:2621
 #, fuzzy
 msgid "*.ispell"
 msgstr "ispell"
@@ -17899,16 +17892,16 @@ msgstr ""
 msgid "Cross-reference"
 msgstr "Referinţă încrucişată...|R"
 
-#: src/frontends/qt4/GuiRef.cpp:257
+#: src/frontends/qt4/GuiRef.cpp:264
 #, fuzzy
 msgid "&Go Back"
 msgstr "&Global"
 
-#: src/frontends/qt4/GuiRef.cpp:259
+#: src/frontends/qt4/GuiRef.cpp:266
 msgid "Jump back"
 msgstr ""
 
-#: src/frontends/qt4/GuiRef.cpp:267
+#: src/frontends/qt4/GuiRef.cpp:274
 #, fuzzy
 msgid "Jump to label"
 msgstr "Cea mai &lungă etichetă"
@@ -18097,8 +18090,9 @@ msgid "Superscripts and Subscripts"
 msgstr "Exponent|E"
 
 #: src/frontends/qt4/GuiSymbols.cpp:83
+#, fuzzy
 msgid "Currency Symbols"
-msgstr ""
+msgstr "Simbol:"
 
 #: src/frontends/qt4/GuiSymbols.cpp:84
 msgid "Combining Diacritical Marks for Symbols"
@@ -18162,8 +18156,9 @@ msgid "Dingbats"
 msgstr "Ding 1|#D"
 
 #: src/frontends/qt4/GuiSymbols.cpp:98
+#, fuzzy
 msgid "Miscellaneous Mathematical Symbols-A"
-msgstr ""
+msgstr "Diverse"
 
 #: src/frontends/qt4/GuiSymbols.cpp:99
 msgid "CJK Symbols and Punctuation"
@@ -18189,8 +18184,9 @@ msgid "Hangul Compatibility Jamo"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:104
+#, fuzzy
 msgid "Kanbun"
-msgstr ""
+msgstr "Canadian"
 
 #: src/frontends/qt4/GuiSymbols.cpp:105
 msgid "Enclosed CJK Letters and Months"
@@ -18233,8 +18229,9 @@ msgid "Alphabetic Presentation Forms"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:115
+#, fuzzy
 msgid "Arabic Presentation Forms-A"
-msgstr ""
+msgstr "Orientare"
 
 #: src/frontends/qt4/GuiSymbols.cpp:116
 msgid "Combining Half Marks"
@@ -18249,8 +18246,9 @@ msgid "Small Form Variants"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:119
+#, fuzzy
 msgid "Arabic Presentation Forms-B"
-msgstr ""
+msgstr "Orientare"
 
 #: src/frontends/qt4/GuiSymbols.cpp:120
 msgid "Halfwidth and Fullwidth Forms"
@@ -18262,8 +18260,9 @@ msgid "Specials"
 msgstr "EmailSpecial"
 
 #: src/frontends/qt4/GuiSymbols.cpp:122
+#, fuzzy
 msgid "Linear B Syllabary"
-msgstr ""
+msgstr "Corolar"
 
 #: src/frontends/qt4/GuiSymbols.cpp:123
 msgid "Linear B Ideograms"
@@ -18275,8 +18274,9 @@ msgid "Aegean Numbers"
 msgstr "Comută sublinierea fontului"
 
 #: src/frontends/qt4/GuiSymbols.cpp:125
+#, fuzzy
 msgid "Ancient Greek Numbers"
-msgstr ""
+msgstr "Comută sublinierea fontului"
 
 #: src/frontends/qt4/GuiSymbols.cpp:126
 #, fuzzy
@@ -18320,12 +18320,14 @@ msgid "Kharoshthi"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:135
+#, fuzzy
 msgid "Byzantine Musical Symbols"
-msgstr ""
+msgstr "Mathematica"
 
 #: src/frontends/qt4/GuiSymbols.cpp:136
+#, fuzzy
 msgid "Musical Symbols"
-msgstr ""
+msgstr "Mathematica"
 
 #: src/frontends/qt4/GuiSymbols.cpp:137
 msgid "Ancient Greek Musical Notation"
@@ -18336,8 +18338,9 @@ msgid "Tai Xuan Jing Symbols"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:139
+#, fuzzy
 msgid "Mathematical Alphanumeric Symbols"
-msgstr ""
+msgstr "Mathematica"
 
 #: src/frontends/qt4/GuiSymbols.cpp:140
 msgid "CJK Unified Ideographs Extension B"
@@ -18353,8 +18356,9 @@ msgid "Tags"
 msgstr "Pagini"
 
 #: src/frontends/qt4/GuiSymbols.cpp:143
+#, fuzzy
 msgid "Variation Selectors Supplement"
-msgstr ""
+msgstr "Suplimentar"
 
 #: src/frontends/qt4/GuiSymbols.cpp:144
 msgid "Supplementary Private Use Area-A"
@@ -18446,119 +18450,119 @@ msgstr ""
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:387
+#: src/frontends/qt4/GuiView.cpp:390
 #, fuzzy, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Caracteristici tabular"
 
-#: src/frontends/qt4/GuiView.cpp:1186
+#: src/frontends/qt4/GuiView.cpp:1189
 #, fuzzy
 msgid "Select template file"
 msgstr "Selectaţi fişierul de ieşire"
 
-#: src/frontends/qt4/GuiView.cpp:1188 src/frontends/qt4/GuiView.cpp:1577
+#: src/frontends/qt4/GuiView.cpp:1191 src/frontends/qt4/GuiView.cpp:1580
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Modele"
 
-#: src/frontends/qt4/GuiView.cpp:1191 src/frontends/qt4/GuiView.cpp:1250
-#: src/frontends/qt4/GuiView.cpp:1503 src/frontends/qt4/GuiView.cpp:1584
+#: src/frontends/qt4/GuiView.cpp:1194 src/frontends/qt4/GuiView.cpp:1253
+#: src/frontends/qt4/GuiView.cpp:1506 src/frontends/qt4/GuiView.cpp:1587
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| Documente LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1208
+#: src/frontends/qt4/GuiView.cpp:1211
 #, fuzzy
 msgid "Document not loaded."
 msgstr "Documentul nu poate fi citit"
 
-#: src/frontends/qt4/GuiView.cpp:1244
+#: src/frontends/qt4/GuiView.cpp:1247
 #, fuzzy
 msgid "Select document to open"
 msgstr "Numele de fişier de inclus"
 
-#: src/frontends/qt4/GuiView.cpp:1246 src/frontends/qt4/GuiView.cpp:1379
-#: src/frontends/qt4/GuiView.cpp:1498
+#: src/frontends/qt4/GuiView.cpp:1249 src/frontends/qt4/GuiView.cpp:1382
+#: src/frontends/qt4/GuiView.cpp:1501
 msgid "Examples|#E#e"
 msgstr "Exemple|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:1282
+#: src/frontends/qt4/GuiView.cpp:1285
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Inserez documentul %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1291
+#: src/frontends/qt4/GuiView.cpp:1294
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "Documente"
 
-#: src/frontends/qt4/GuiView.cpp:1293
+#: src/frontends/qt4/GuiView.cpp:1296
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Nu pot insera documentul %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1322
+#: src/frontends/qt4/GuiView.cpp:1325
 #, fuzzy
 msgid "Couldn't import file"
 msgstr "Înlocuieşte"
 
-#: src/frontends/qt4/GuiView.cpp:1323
+#: src/frontends/qt4/GuiView.cpp:1326
 #, fuzzy, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Nu decomprimă imaginea înainte de exportare în LaTeX"
 
-#: src/frontends/qt4/GuiView.cpp:1374
+#: src/frontends/qt4/GuiView.cpp:1377
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Selectaţi fişierul de ieşire"
 
-#: src/frontends/qt4/GuiView.cpp:1425 src/frontends/qt4/GuiView.cpp:1601
-#, c-format
+#: src/frontends/qt4/GuiView.cpp:1428 src/frontends/qt4/GuiView.cpp:1604
+#, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
 "\n"
 "Do you want to overwrite that document?"
-msgstr ""
+msgstr "Documentul utilizează o clasă text \"%1$s\" necunoscută."
 
-#: src/frontends/qt4/GuiView.cpp:1427 src/frontends/qt4/GuiView.cpp:1605
+#: src/frontends/qt4/GuiView.cpp:1430 src/frontends/qt4/GuiView.cpp:1608
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Salvare &documente"
 
-#: src/frontends/qt4/GuiView.cpp:1436
+#: src/frontends/qt4/GuiView.cpp:1439
 #, fuzzy, c-format
 msgid "Importing %1$s..."
 msgstr "Inserez documentul %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1439
+#: src/frontends/qt4/GuiView.cpp:1442
 msgid "imported."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1441
+#: src/frontends/qt4/GuiView.cpp:1444
 #, fuzzy
 msgid "file not imported!"
 msgstr "Reconfigurează|R"
 
-#: src/frontends/qt4/GuiView.cpp:1496
+#: src/frontends/qt4/GuiView.cpp:1499
 msgid "Select LyX document to insert"
 msgstr "Selectaţi documentul LyX de inserat"
 
-#: src/frontends/qt4/GuiView.cpp:1537
+#: src/frontends/qt4/GuiView.cpp:1540
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Selectează document fiu"
 
-#: src/frontends/qt4/GuiView.cpp:1574
+#: src/frontends/qt4/GuiView.cpp:1577
 #, fuzzy
 msgid "Choose a filename to save document as"
 msgstr "Salvează valorile ca implicite pentru document"
 
-#: src/frontends/qt4/GuiView.cpp:1606 src/frontends/qt4/GuiView.cpp:1651
+#: src/frontends/qt4/GuiView.cpp:1609 src/frontends/qt4/GuiView.cpp:1654
 #, fuzzy
 msgid "&Rename"
 msgstr "&Elimină"
 
-#: src/frontends/qt4/GuiView.cpp:1647
+#: src/frontends/qt4/GuiView.cpp:1650
 #, fuzzy, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -18566,38 +18570,38 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr "Documentul utilizează o clasă text \"%1$s\" necunoscută."
 
-#: src/frontends/qt4/GuiView.cpp:1650
+#: src/frontends/qt4/GuiView.cpp:1653
 msgid "Rename and save?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1651
+#: src/frontends/qt4/GuiView.cpp:1654
 #, fuzzy
 msgid "&Retry"
 msgstr "&Reface"
 
-#: src/frontends/qt4/GuiView.cpp:1701
-#, c-format
+#: src/frontends/qt4/GuiView.cpp:1704
+#, fuzzy, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
 "\n"
 "Do you want to save the document or discard the changes?"
-msgstr ""
+msgstr "Documentul utilizează o clasă text \"%1$s\" necunoscută."
 
-#: src/frontends/qt4/GuiView.cpp:1704
+#: src/frontends/qt4/GuiView.cpp:1707
 msgid "&Discard"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1803
+#: src/frontends/qt4/GuiView.cpp:1806
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "Formatez documentul..."
 
-#: src/frontends/qt4/GuiView.cpp:1813
+#: src/frontends/qt4/GuiView.cpp:1816
 #, fuzzy
 msgid "All documents saved."
 msgstr "Documentul nu poate fi citit"
 
-#: src/frontends/qt4/GuiView.cpp:2007
+#: src/frontends/qt4/GuiView.cpp:2010
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
@@ -18609,34 +18613,35 @@ msgid "LaTeX Source"
 msgstr "Spaţii vizibile|#v"
 
 #: src/frontends/qt4/GuiViewSource.cpp:178
+#, fuzzy
 msgid "DocBook Source"
-msgstr ""
+msgstr "Semne de carte|S"
 
 #: src/frontends/qt4/GuiViewSource.cpp:180
 #, fuzzy
 msgid "Literate Source"
 msgstr "Spaţii vizibile|#v"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1132
+#: src/frontends/qt4/GuiWorkArea.cpp:1128
 #, fuzzy
 msgid " (changed)"
 msgstr "Modificare font|f"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1136
+#: src/frontends/qt4/GuiWorkArea.cpp:1132
 msgid " (read only)"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1223
+#: src/frontends/qt4/GuiWorkArea.cpp:1219
 #, fuzzy
 msgid "Close File"
 msgstr "Închide"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1616
+#: src/frontends/qt4/GuiWorkArea.cpp:1617
 #, fuzzy
 msgid "Hide tab"
 msgstr "implicit"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1618
+#: src/frontends/qt4/GuiWorkArea.cpp:1619
 #, fuzzy
 msgid "Close tab"
 msgstr "Închide"
@@ -18889,8 +18894,9 @@ msgid "frameless"
 msgstr "Parametrii"
 
 #: src/insets/InsetBox.cpp:64
+#, fuzzy
 msgid "simple frame, page breaks"
-msgstr ""
+msgstr "cadru \"inset\""
 
 #: src/insets/InsetBox.cpp:65
 msgid "oval, thin"
@@ -19011,7 +19017,7 @@ msgstr "Deschidere"
 msgid "Opened Environment Inset: "
 msgstr "CenteredCaption"
 
-#: src/insets/InsetExternal.cpp:575
+#: src/insets/InsetExternal.cpp:493
 #, fuzzy, c-format
 msgid "External template %1$s is not installed"
 msgstr "Aplicaţii externe"
@@ -19112,8 +19118,9 @@ msgid ""
 msgstr ""
 
 #: src/insets/InsetInclude.cpp:494
+#, fuzzy
 msgid "Different textclasses"
-msgstr ""
+msgstr "Clasificare în funcţtie de subiect"
 
 #: src/insets/InsetInclude.cpp:509
 #, c-format
@@ -19391,8 +19398,9 @@ msgid "TextPage: "
 msgstr "Text după"
 
 #: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:191
+#, fuzzy
 msgid "Standard+Textual Page"
-msgstr ""
+msgstr "Comută sublinierea fontului"
 
 #: src/insets/InsetRef.cpp:175 src/mathed/InsetMathRef.cpp:191
 #, fuzzy
@@ -19439,8 +19447,9 @@ msgid "Enspace"
 msgstr "În&locuieşte"
 
 #: src/insets/InsetSpace.cpp:88
+#, fuzzy
 msgid "Enskip"
-msgstr ""
+msgstr "În&locuieşte"
 
 #: src/insets/InsetSpace.cpp:91
 #, fuzzy
@@ -19527,53 +19536,54 @@ msgstr "CenteredCaption"
 msgid "wrap"
 msgstr "Scrap"
 
-#: src/insets/RenderGraphic.cpp:81 src/insets/RenderGraphic.cpp:85
+#: src/insets/RenderGraphic.cpp:80 src/insets/RenderGraphic.cpp:84
 #, fuzzy
 msgid "Not shown."
 msgstr "Notaţie"
 
-#: src/insets/RenderGraphic.cpp:88
+#: src/insets/RenderGraphic.cpp:87
 msgid "Loading..."
 msgstr ""
 
-#: src/insets/RenderGraphic.cpp:91
+#: src/insets/RenderGraphic.cpp:90
 #, fuzzy
 msgid "Converting to loadable format..."
 msgstr "Inserează un flotant"
 
-#: src/insets/RenderGraphic.cpp:94
+#: src/insets/RenderGraphic.cpp:93
 msgid "Loaded into memory. Generating pixmap..."
 msgstr ""
 
-#: src/insets/RenderGraphic.cpp:97
+#: src/insets/RenderGraphic.cpp:96
 #, fuzzy
 msgid "Scaling etc..."
 msgstr "Place"
 
-#: src/insets/RenderGraphic.cpp:100
+#: src/insets/RenderGraphic.cpp:99
 #, fuzzy
 msgid "Ready to display"
 msgstr "Afişare inset ERT"
 
-#: src/insets/RenderGraphic.cpp:103
+#: src/insets/RenderGraphic.cpp:102
 #, fuzzy
 msgid "No file found!"
 msgstr "Jurnal LaTeX|J"
 
-#: src/insets/RenderGraphic.cpp:106
+#: src/insets/RenderGraphic.cpp:105
+#, fuzzy
 msgid "Error converting to loadable format"
-msgstr ""
+msgstr "Inserează un flotant"
 
-#: src/insets/RenderGraphic.cpp:109
+#: src/insets/RenderGraphic.cpp:108
 #, fuzzy
 msgid "Error loading file into memory"
 msgstr "Listă de slide-uri"
 
-#: src/insets/RenderGraphic.cpp:112
+#: src/insets/RenderGraphic.cpp:111
 msgid "Error generating the pixmap"
 msgstr ""
 
-#: src/insets/RenderGraphic.cpp:115
+#: src/insets/RenderGraphic.cpp:114
 #, fuzzy
 msgid "No image"
 msgstr "Modificare font|f"
@@ -19688,6 +19698,11 @@ msgstr "Înlocuieşte"
 msgid " strings have been replaced."
 msgstr "Înlocuieşte"
 
+#: src/mathed/InsetFormulaMacro.cpp:118
+#, fuzzy, c-format
+msgid " Macro: %1$s: "
+msgstr " Macro: %s: "
+
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1365
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
@@ -19699,27 +19714,27 @@ msgstr ""
 msgid "No vertical grid lines in 'cases': feature %1$s"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.cpp:1345
+#: src/mathed/InsetMathGrid.cpp:1357
 #, fuzzy
 msgid "Only one row"
 msgstr "Doar pe slideuri"
 
-#: src/mathed/InsetMathGrid.cpp:1351
+#: src/mathed/InsetMathGrid.cpp:1363
 #, fuzzy
 msgid "Only one column"
 msgstr "Şterge coloana|o"
 
-#: src/mathed/InsetMathGrid.cpp:1359
+#: src/mathed/InsetMathGrid.cpp:1371
 #, fuzzy
 msgid "No hline to delete"
 msgstr "Nimic de indexat"
 
-#: src/mathed/InsetMathGrid.cpp:1368
+#: src/mathed/InsetMathGrid.cpp:1380
 #, fuzzy
 msgid "No vline to delete"
 msgstr "Nimic de indexat"
 
-#: src/mathed/InsetMathGrid.cpp:1386
+#: src/mathed/InsetMathGrid.cpp:1398
 #, fuzzy, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Caracteristici tabular"
@@ -19749,11 +19764,11 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:959
+#: src/mathed/InsetMathNest.cpp:954
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:962
+#: src/mathed/InsetMathNest.cpp:957
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -19792,57 +19807,6 @@ msgstr "Abstract "
 #, fuzzy
 msgid "References: "
 msgstr "Referinţe"
-
-#: src/support/Package.cpp:441
-#, fuzzy
-msgid "LyX binary not found"
-msgstr "Reconfigurează|R"
-
-#: src/support/Package.cpp:442
-#, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
-
-#: src/support/Package.cpp:561
-#, c-format
-msgid ""
-"Unable to determine the system directory having searched\n"
-"\t%1$s\n"
-"Use the '-sysdir' command line parameter or set the environment variable "
-"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr ""
-
-#: src/support/Package.cpp:642 src/support/Package.cpp:669
-#, fuzzy
-msgid "File not found"
-msgstr "Reconfigurează|R"
-
-#: src/support/Package.cpp:643
-#, c-format
-msgid ""
-"Invalid %1$s switch.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-
-#: src/support/Package.cpp:670
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-
-#: src/support/Package.cpp:694
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"%2$s is not a directory."
-msgstr ""
-
-#: src/support/Package.cpp:696
-#, fuzzy
-msgid "Directory not found"
-msgstr "Reconfigurează|R"
 
 #: src/support/debug.cpp:38
 #, fuzzy
@@ -19897,8 +19861,9 @@ msgid "Font handling"
 msgstr "Modificare font|f"
 
 #: src/support/debug.cpp:49
+#, fuzzy
 msgid "Textclass files reading"
-msgstr ""
+msgstr "Listă de slide-uri"
 
 #: src/support/debug.cpp:50
 #, fuzzy
@@ -19946,8 +19911,9 @@ msgid "Insettext/tabular messages"
 msgstr ""
 
 #: src/support/debug.cpp:60
+#, fuzzy
 msgid "Graphics conversion and loading"
-msgstr ""
+msgstr "Conversie fişier"
 
 #: src/support/debug.cpp:61
 #, fuzzy
@@ -19981,8 +19947,9 @@ msgid "Developers' general debug messages"
 msgstr ""
 
 #: src/support/debug.cpp:68
+#, fuzzy
 msgid "All debugging messages"
-msgstr ""
+msgstr "(nu există mesaje)"
 
 #: src/support/debug.cpp:113
 #, c-format
@@ -20020,6 +19987,49 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Cuvînt necunoscut:"
 
+#~ msgid "Display image in LyX"
+#~ msgstr "Afişează imaginea în LyX"
+
+#~ msgid "Screen display"
+#~ msgstr "Afişare pe ecran"
+
+#~ msgid "Monochrome"
+#~ msgstr "Monocrom"
+
+#~ msgid "Grayscale"
+#~ msgstr "Nuanţe de gri"
+
+#~ msgid "Preview"
+#~ msgstr "Previzualizează|#P"
+
+#~ msgid "%"
+#~ msgstr "%"
+
+#~ msgid "&Display:"
+#~ msgstr "Afişare:"
+
+#~ msgid "Sca&le:"
+#~ msgstr "Scalare:"
+
+#, fuzzy
+#~ msgid "Scr&een Display:"
+#~ msgstr "Afişare pe ecran"
+
+#~ msgid "Do not display"
+#~ msgstr "Nu afişează"
+
+#, fuzzy
+#~ msgid "LyX binary not found"
+#~ msgstr "Reconfigurează|R"
+
+#, fuzzy
+#~ msgid "File not found"
+#~ msgstr "Reconfigurează|R"
+
+#, fuzzy
+#~ msgid "Directory not found"
+#~ msgstr "Reconfigurează|R"
+
 #, fuzzy
 #~ msgid "Unknown Info: "
 #~ msgstr "Cuvînt necunoscut:"
@@ -20031,10 +20041,6 @@ msgstr "Cuvînt necunoscut:"
 #, fuzzy
 #~ msgid "No menu entry for action %1$s"
 #~ msgstr "Intrare de nomenclatură"
-
-#, fuzzy
-#~ msgid " Macro: %1$s: "
-#~ msgstr " Macro: %s: "
 
 #, fuzzy
 #~ msgid "Clear group"
@@ -20112,10 +20118,6 @@ msgstr "Cuvînt necunoscut:"
 #, fuzzy
 #~ msgid " could not write embedded files!"
 #~ msgstr "Listă de slide-uri"
-
-#, fuzzy
-#~ msgid "Failed to extract file"
-#~ msgstr "Selectaţi fişierul de ieşire"
 
 #, fuzzy
 #~ msgid "Copy file failure"
@@ -20516,10 +20518,6 @@ msgstr "Cuvînt necunoscut:"
 #, fuzzy
 #~ msgid "Copiers"
 #~ msgstr "Copii"
-
-#, fuzzy
-#~ msgid "Boxed"
-#~ msgstr "&Contur:"
 
 #, fuzzy
 #~ msgid "ovalbox"
