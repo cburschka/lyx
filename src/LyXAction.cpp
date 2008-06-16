@@ -1437,6 +1437,20 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_MATH_NUMBER_TOGGLE, "math-number-toggle", Noop, Math },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MATH_EXTERN
+ * \li Action: Calls external program and passes the current expression/equation
+               as an argument for the calculation in the format appropriate to the
+               given language.
+ * \li Notion: Selection can be used to determine the input for the external program.
+ * \li Syntax: math-extern <LANG> [<COMMAND>]
+ * \li Params: <LANG>: octave|maxima|maple|mathematica|script \n
+                       where "script" stands fot the external script (normalized
+                       expression will be passed)
+ * \li Origin: Andre', 24 Apr 2001
+ * \li Sample: math-extern maple simplify
+ * \endvar
+ */
 		{ LFUN_MATH_EXTERN, "math-extern", Noop, Math },
 /*!
  * \var lyx::FuncCode lyx::LFUN_MATH_SIZE
