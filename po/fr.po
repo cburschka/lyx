@@ -208,7 +208,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-16 16:23+0200\n"
+"POT-Creation-Date: 2008-06-16 16:54+0200\n"
 "PO-Revision-Date: 2008-05-28 17:24+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr\n"
@@ -1551,7 +1551,8 @@ msgstr "Ressort horizontal"
 #: src/frontends/qt4/ui/ParagraphUi.ui:255
 #: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
 #: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
-#: src/frontends/qt4/GuiDocument.cpp:585 src/frontends/qt4/GuiDocument.cpp:688
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:585
+#: src/frontends/qt4/GuiDocument.cpp:688
 msgid "Custom"
 msgstr "Réglable"
 
@@ -1609,7 +1610,8 @@ msgstr "&Fichier"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:76
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90 lib/layouts/scrlttr2.layout:205
-#: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:251
+#: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:246
+#: lib/layouts/stdinsets.inc:251 lib/layouts/minimalistic.module:34
 #: lib/layouts/minimalistic.module:39 lib/ui/stdmenus.inc:340
 msgid "URL"
 msgstr "URL"
@@ -4630,6 +4632,16 @@ msgstr "Remerciements."
 msgid "Key words."
 msgstr "Mots-clés."
 
+#: lib/layouts/aa.layout:349
+#, fuzzy
+msgid "CharStyle:Institute"
+msgstr "Style de texte : "
+
+#: lib/layouts/aa.layout:359
+#, fuzzy
+msgid "CharStyle:E-Mail"
+msgstr "Style de texte : "
+
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612
 #: src/frontends/qt4/GuiPrefs.cpp:524
 msgid "LaTeX"
@@ -5236,17 +5248,36 @@ msgstr "ÉlémentNote"
 msgid "Note:"
 msgstr "Note :"
 
+#: lib/layouts/beamer.layout:1087
+#, fuzzy
+msgid "CharStyle:Alert"
+msgstr "Style de texte : "
+
 #: lib/layouts/beamer.layout:1089
 msgid "Alert"
 msgstr "Alerte"
+
+#: lib/layouts/beamer.layout:1098
+#, fuzzy
+msgid "CharStyle:Structure"
+msgstr "Style de texte : "
 
 #: lib/layouts/beamer.layout:1100
 msgid "Structure"
 msgstr "Structure"
 
+#: lib/layouts/beamer.layout:1109
+msgid "Custom:ArticleMode"
+msgstr ""
+
 #: lib/layouts/beamer.layout:1114
 msgid "Article"
 msgstr "Article"
+
+#: lib/layouts/beamer.layout:1119
+#, fuzzy
+msgid "Custom:PresentationMode"
+msgstr "Presentation"
 
 #: lib/layouts/beamer.layout:1124
 msgid "Presentation"
@@ -7373,59 +7404,134 @@ msgstr "E-mail :"
 msgid "Thesaurus not supported in recent A&A:"
 msgstr "Dictionnaire de Synonymes non supporté dans les récents A&A :"
 
+#: lib/layouts/agu_stdclass.inc:34 lib/layouts/db_stdcharstyles.inc:35
+#, fuzzy
+msgid "Element:Firstname"
+msgstr "Prénom"
+
 #: lib/layouts/agu_stdclass.inc:36 lib/layouts/db_stdcharstyles.inc:37
 msgid "Firstname"
 msgstr "Prénom"
 
+#: lib/layouts/agu_stdclass.inc:48
+#, fuzzy
+msgid "Element:Fname"
+msgstr "&Emplacement :"
+
 #: lib/layouts/agu_stdclass.inc:50
 msgid "Fname"
 msgstr "Prénom"
+
+#: lib/layouts/agu_stdclass.inc:63 lib/layouts/db_stdcharstyles.inc:46
+#, fuzzy
+msgid "Element:Surname"
+msgstr "Surnom"
 
 #: lib/layouts/agu_stdclass.inc:65 lib/layouts/db_stdcharstyles.inc:48
 #: lib/layouts/db_stdtitle.inc:98
 msgid "Surname"
 msgstr "Surnom"
 
+#: lib/layouts/agu_stdclass.inc:78 lib/layouts/db_stdcharstyles.inc:6
+#, fuzzy
+msgid "Element:Filename"
+msgstr "Nom du fichier"
+
+#: lib/layouts/agu_stdclass.inc:93 lib/layouts/db_stdcharstyles.inc:57
+#, fuzzy
+msgid "Element:Literal"
+msgstr "Littéral"
+
 #: lib/layouts/agu_stdclass.inc:95 lib/layouts/db_stdcharstyles.inc:59
 #: lib/layouts/db_stdlayouts.inc:11
 msgid "Literal"
 msgstr "Littéral"
 
+#: lib/layouts/agu_stdclass.inc:108
+#, fuzzy
+msgid "Element:Emph"
+msgstr "&Emplacement :"
+
 #: lib/layouts/agu_stdclass.inc:110 src/frontends/qt4/GuiCharacter.cpp:77
 msgid "Emph"
 msgstr "En évidence"
+
+#: lib/layouts/agu_stdclass.inc:124
+#, fuzzy
+msgid "Element:Abbrev"
+msgstr "Abrévié"
 
 #: lib/layouts/agu_stdclass.inc:126
 msgid "Abbrev"
 msgstr "Abrévié"
 
+#: lib/layouts/agu_stdclass.inc:135
+#, fuzzy
+msgid "Element:Citation-number"
+msgstr "Numéro-Citation"
+
 #: lib/layouts/agu_stdclass.inc:137 lib/layouts/agu_stdtitle.inc:56
 msgid "Citation-number"
 msgstr "Numéro-Citation"
+
+#: lib/layouts/agu_stdclass.inc:146
+#, fuzzy
+msgid "Element:Volume"
+msgstr "Volume"
 
 #: lib/layouts/agu_stdclass.inc:148
 msgid "Volume"
 msgstr "Volume"
 
+#: lib/layouts/agu_stdclass.inc:157
+#, fuzzy
+msgid "Element:Day"
+msgstr "Supplémentaire"
+
 #: lib/layouts/agu_stdclass.inc:159
 msgid "Day"
 msgstr "Jour"
+
+#: lib/layouts/agu_stdclass.inc:168
+#, fuzzy
+msgid "Element:Month"
+msgstr "&Emplacement :"
 
 #: lib/layouts/agu_stdclass.inc:170
 msgid "Month"
 msgstr "Mois"
 
+#: lib/layouts/agu_stdclass.inc:179
+#, fuzzy
+msgid "Element:Year"
+msgstr "Supplémentaire"
+
 #: lib/layouts/agu_stdclass.inc:181
 msgid "Year"
 msgstr "Année"
+
+#: lib/layouts/agu_stdclass.inc:190
+#, fuzzy
+msgid "Element:Issue-number"
+msgstr "Numéro d'émission"
 
 #: lib/layouts/agu_stdclass.inc:192
 msgid "Issue-number"
 msgstr "Numéro d'émission"
 
+#: lib/layouts/agu_stdclass.inc:201
+#, fuzzy
+msgid "Element:Issue-day"
+msgstr "Date de publication"
+
 #: lib/layouts/agu_stdclass.inc:203
 msgid "Issue-day"
 msgstr "Date de publication"
+
+#: lib/layouts/agu_stdclass.inc:212
+#, fuzzy
+msgid "Element:Issue-months"
+msgstr "Mois de publication"
 
 #: lib/layouts/agu_stdclass.inc:214
 msgid "Issue-months"
@@ -7615,45 +7721,120 @@ msgstr "Ensembles-Données"
 msgid "Datasets:"
 msgstr "Ensembles-Données :"
 
+#: lib/layouts/agu_stdtitle.inc:321
+#, fuzzy
+msgid "Element:ISSN"
+msgstr "&Emplacement :"
+
 #: lib/layouts/agu_stdtitle.inc:323
 msgid "ISSN"
 msgstr "ISSN"
+
+#: lib/layouts/agu_stdtitle.inc:332
+#, fuzzy
+msgid "Element:CODEN"
+msgstr "&Emplacement :"
 
 #: lib/layouts/agu_stdtitle.inc:334
 msgid "CODEN"
 msgstr "CODEN"
 
+#: lib/layouts/agu_stdtitle.inc:344
+#, fuzzy
+msgid "Element:SS-Code"
+msgstr "Code SS"
+
 #: lib/layouts/agu_stdtitle.inc:346
 msgid "SS-Code"
 msgstr "Code SS"
+
+#: lib/layouts/agu_stdtitle.inc:355
+#, fuzzy
+msgid "Element:SS-Title"
+msgstr "Titre SS"
 
 #: lib/layouts/agu_stdtitle.inc:357
 msgid "SS-Title"
 msgstr "Titre SS"
 
+#: lib/layouts/agu_stdtitle.inc:367
+#, fuzzy
+msgid "Element:CCC-Code"
+msgstr "Code CCC"
+
 #: lib/layouts/agu_stdtitle.inc:369
 msgid "CCC-Code"
 msgstr "Code CCC"
+
+#: lib/layouts/agu_stdtitle.inc:380
+#, fuzzy
+msgid "Element:Code"
+msgstr "&Emplacement :"
+
+#: lib/layouts/agu_stdtitle.inc:391
+#, fuzzy
+msgid "Element:Dscr"
+msgstr "&Emplacement :"
 
 #: lib/layouts/agu_stdtitle.inc:393
 msgid "Dscr"
 msgstr "Dscr"
 
+#: lib/layouts/agu_stdtitle.inc:403
+#, fuzzy
+msgid "Element:Keyword"
+msgstr "Mot-Clé"
+
+#: lib/layouts/agu_stdtitle.inc:415
+#, fuzzy
+msgid "Element:Orgdiv"
+msgstr "Division organisation"
+
 #: lib/layouts/agu_stdtitle.inc:417
 msgid "Orgdiv"
 msgstr "Division organisation"
+
+#: lib/layouts/agu_stdtitle.inc:426
+#, fuzzy
+msgid "Element:Orgname"
+msgstr "Nom organisation"
 
 #: lib/layouts/agu_stdtitle.inc:428
 msgid "Orgname"
 msgstr "Nom organisation"
 
+#: lib/layouts/agu_stdtitle.inc:437
+#, fuzzy
+msgid "Element:Street"
+msgstr "Rue"
+
+#: lib/layouts/agu_stdtitle.inc:448
+#, fuzzy
+msgid "Element:City"
+msgstr "&Emplacement :"
+
 #: lib/layouts/agu_stdtitle.inc:450
 msgid "City"
 msgstr "Cité"
 
+#: lib/layouts/agu_stdtitle.inc:459
+#, fuzzy
+msgid "Element:State"
+msgstr "&Emplacement :"
+
+#: lib/layouts/agu_stdtitle.inc:470
+#, fuzzy
+msgid "Element:Postcode"
+msgstr "Code postal"
+
 #: lib/layouts/agu_stdtitle.inc:472
 msgid "Postcode"
 msgstr "Code postal"
+
+#: lib/layouts/agu_stdtitle.inc:481
+#, fuzzy
+msgid "Element:Country"
+msgstr "Pays"
 
 #: lib/layouts/agu_stdtitle.inc:483
 msgid "Country"
@@ -7747,29 +7928,69 @@ msgstr "ClassificationSujet"
 msgid "2000 Mathematics Subject Classification:"
 msgstr "Classification des sujets mathématiques de 2000 :"
 
+#: lib/layouts/db_stdcharstyles.inc:20
+#, fuzzy
+msgid "Element:Directory"
+msgstr "Répertoire"
+
 #: lib/layouts/db_stdcharstyles.inc:22
 msgid "Directory"
 msgstr "Répertoire"
+
+#: lib/layouts/db_stdcharstyles.inc:71
+#, fuzzy
+msgid "Element:Email"
+msgstr "&Emplacement :"
+
+#: lib/layouts/db_stdcharstyles.inc:85
+#, fuzzy
+msgid "Element:KeyCombo"
+msgstr "Combinaison de touches"
 
 #: lib/layouts/db_stdcharstyles.inc:87
 msgid "KeyCombo"
 msgstr "Combinaison de touches"
 
+#: lib/layouts/db_stdcharstyles.inc:99
+#, fuzzy
+msgid "Element:KeyCap"
+msgstr "Touche Majuscules"
+
 #: lib/layouts/db_stdcharstyles.inc:101
 msgid "KeyCap"
 msgstr "Touche Majuscules"
+
+#: lib/layouts/db_stdcharstyles.inc:113
+#, fuzzy
+msgid "Element:GuiMenu"
+msgstr "Menu d'interface"
 
 #: lib/layouts/db_stdcharstyles.inc:115
 msgid "GuiMenu"
 msgstr "Menu d'interface"
 
+#: lib/layouts/db_stdcharstyles.inc:127
+#, fuzzy
+msgid "Element:GuiMenuItem"
+msgstr "Élement du menu d'interface"
+
 #: lib/layouts/db_stdcharstyles.inc:129
 msgid "GuiMenuItem"
 msgstr "Élement du menu d'interface"
 
+#: lib/layouts/db_stdcharstyles.inc:141
+#, fuzzy
+msgid "Element:GuiButton"
+msgstr "Bouton d'interface"
+
 #: lib/layouts/db_stdcharstyles.inc:143
 msgid "GuiButton"
 msgstr "Bouton d'interface"
+
+#: lib/layouts/db_stdcharstyles.inc:155
+#, fuzzy
+msgid "Element:MenuChoice"
+msgstr "Choix de menu"
 
 #: lib/layouts/db_stdcharstyles.inc:157
 msgid "MenuChoice"
@@ -7911,6 +8132,11 @@ msgstr "LégendeDessous"
 msgid "Dictum"
 msgstr "Dicton"
 
+#: lib/layouts/stdcharstyles.inc:8
+#, fuzzy
+msgid "CharStyle"
+msgstr "Style de texte : "
+
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
 #: src/insets/InsetCollapsable.cpp:151
 msgid "UNDEFINED"
@@ -7920,38 +8146,101 @@ msgstr "INDÉFINI"
 msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
+#: lib/layouts/stdinsets.inc:54
+#, fuzzy
+msgid "Marginal"
+msgstr "marge"
+
 #: lib/layouts/stdinsets.inc:55 src/insets/InsetMarginal.cpp:50
 msgid "margin"
 msgstr "marge"
+
+#: lib/layouts/stdinsets.inc:75
+#, fuzzy
+msgid "Foot"
+msgstr "bas"
 
 #: lib/layouts/stdinsets.inc:76
 msgid "foot"
 msgstr "bas"
 
+#: lib/layouts/stdinsets.inc:96
+#, fuzzy
+msgid "Note:Comment"
+msgstr "Commentaire"
+
 #: lib/layouts/stdinsets.inc:97
 msgid "comment"
 msgstr "commentaire"
+
+#: lib/layouts/stdinsets.inc:109
+#, fuzzy
+msgid "Note:Note"
+msgstr "Note :"
 
 #: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:297
 msgid "note"
 msgstr "note"
 
+#: lib/layouts/stdinsets.inc:121
+#, fuzzy
+msgid "Note:Greyedout"
+msgstr "Grisée"
+
 #: lib/layouts/stdinsets.inc:122
 msgid "greyedout"
 msgstr "grisé"
 
-#: lib/layouts/stdinsets.inc:134 src/insets/InsetERT.cpp:166
-#: src/insets/InsetERT.cpp:168
+#: lib/layouts/stdinsets.inc:133 lib/layouts/stdinsets.inc:134
+#: src/insets/InsetERT.cpp:166 src/insets/InsetERT.cpp:168
 msgid "ERT"
 msgstr "TeX"
 
-#: lib/layouts/stdinsets.inc:153
+#: lib/layouts/stdinsets.inc:152 lib/layouts/stdinsets.inc:153
 msgid "Listings"
 msgstr "Listings"
+
+#: lib/layouts/stdinsets.inc:170 lib/layouts/minimalistic.module:25
+#: src/frontends/qt4/GuiBranches.cpp:42
+msgid "Branch"
+msgstr "Branche"
+
+#: lib/layouts/stdinsets.inc:179 lib/layouts/minimalistic.module:8
+#: src/insets/InsetIndex.cpp:132
+msgid "Index"
+msgstr "Index"
 
 #: lib/layouts/stdinsets.inc:180 lib/layouts/minimalistic.module:10
 msgid "Idx"
 msgstr "Idx"
+
+#: lib/layouts/stdinsets.inc:202 src/insets/InsetBox.cpp:145
+msgid "Box"
+msgstr "Boîte"
+
+#: lib/layouts/stdinsets.inc:210
+#, fuzzy
+msgid "Box:Shaded"
+msgstr "Colorée"
+
+#: lib/layouts/stdinsets.inc:219
+#, fuzzy
+msgid "figure"
+msgstr "Figure"
+
+#: lib/layouts/stdinsets.inc:228
+#, fuzzy
+msgid "table"
+msgstr "Tableau"
+
+#: lib/layouts/stdinsets.inc:237
+#, fuzzy
+msgid "algorithm"
+msgstr "Algorithme"
+
+#: lib/layouts/stdinsets.inc:266
+msgid "OptArg"
+msgstr ""
 
 #: lib/layouts/stdinsets.inc:267
 msgid "opt"
@@ -8151,6 +8440,11 @@ msgstr ""
 "de bas de page. Vous devrez ajouter \"\\theendnotes\" en ERT à l'endroit où "
 "vous souhaitez voir apparaître les notes regroupées."
 
+#: lib/layouts/endnotes.module:9
+#, fuzzy
+msgid "Custom:Endnote"
+msgstr "Notes en fin de document"
+
 #: lib/layouts/endnotes.module:18
 msgid "endnote"
 msgstr "endnote"
@@ -8212,21 +8506,46 @@ msgstr "Sous-exemple"
 msgid "Subexample:"
 msgstr "Sous-exemple :"
 
+#: lib/layouts/linguistics.module:68
+#, fuzzy
+msgid "Custom:Glosse"
+msgstr "Client"
+
 #: lib/layouts/linguistics.module:70
 msgid "Glosse"
 msgstr "Glosse"
+
+#: lib/layouts/linguistics.module:92
+#, fuzzy
+msgid "Custom:Tri-Glosse"
+msgstr "Tri-glosse"
 
 #: lib/layouts/linguistics.module:94
 msgid "Tri-Glosse"
 msgstr "Tri-glosse"
 
+#: lib/layouts/linguistics.module:114
+#, fuzzy
+msgid "CharStyle:Expression"
+msgstr "Style de texte : "
+
 #: lib/layouts/linguistics.module:116
 msgid "expr."
 msgstr "expr."
 
+#: lib/layouts/linguistics.module:128
+#, fuzzy
+msgid "CharStyle:Concepts"
+msgstr "Style de texte : "
+
 #: lib/layouts/linguistics.module:130
 msgid "concept"
 msgstr "concept"
+
+#: lib/layouts/linguistics.module:142
+#, fuzzy
+msgid "CharStyle:Meaning"
+msgstr "Style de texte : "
 
 #: lib/layouts/linguistics.module:144
 msgid "meaning"
@@ -8244,18 +8563,38 @@ msgstr ""
 "Définition que quelques styles de caractères pour le balisage logique: nom, "
 "emphase, force, et code."
 
+#: lib/layouts/logicalmkup.module:10
+#, fuzzy
+msgid "CharStyle:Noun"
+msgstr "Style de texte : "
+
 # à revoir, accord avec les autres mots incertain
 #: lib/layouts/logicalmkup.module:12
 msgid "noun"
 msgstr "nom propre"
 
+#: lib/layouts/logicalmkup.module:22
+#, fuzzy
+msgid "CharStyle:Emph"
+msgstr "Style de texte : "
+
 #: lib/layouts/logicalmkup.module:24
 msgid "emph"
 msgstr "en évidence"
 
+#: lib/layouts/logicalmkup.module:33
+#, fuzzy
+msgid "CharStyle:Strong"
+msgstr "Style de texte : "
+
 #: lib/layouts/logicalmkup.module:35
 msgid "strong"
 msgstr "fort"
+
+#: lib/layouts/logicalmkup.module:47
+#, fuzzy
+msgid "CharStyle:Code"
+msgstr "Style de texte : "
 
 #: lib/layouts/logicalmkup.module:49
 msgid "code"
@@ -16332,10 +16671,6 @@ msgstr "Paramètres de boîte"
 msgid "Branch Settings"
 msgstr "Paramètres de branche"
 
-#: src/frontends/qt4/GuiBranches.cpp:42
-msgid "Branch"
-msgstr "Branche"
-
 #: src/frontends/qt4/GuiBranches.cpp:43
 msgid "Activated"
 msgstr "Activées"
@@ -18303,10 +18638,6 @@ msgstr "double cadre"
 msgid "Opened Box Inset"
 msgstr "Insert de boîte ouvert"
 
-#: src/insets/InsetBox.cpp:145
-msgid "Box"
-msgstr "Boîte"
-
 #: src/insets/InsetBranch.cpp:55
 msgid "Opened Branch Inset"
 msgstr "Insert de branche ouvert"
@@ -18497,10 +18828,6 @@ msgstr ""
 #: src/insets/InsetInclude.cpp:513
 msgid "Module not found"
 msgstr "Module introuvable"
-
-#: src/insets/InsetIndex.cpp:132
-msgid "Index"
-msgstr "Index"
 
 #: src/insets/InsetInfo.cpp:81
 msgid "Information regarding "
@@ -20058,9 +20385,6 @@ msgstr "Utilisateur inconnu"
 #~ msgid "Framed"
 #~ msgstr "Encadrée"
 
-#~ msgid "Shaded"
-#~ msgstr "Colorée"
-
 #~ msgid "theorem"
 #~ msgstr "théorème"
 
@@ -20075,9 +20399,6 @@ msgstr "Utilisateur inconnu"
 # pas d'accord, c'est sans doute "Url (en / de type) Html" -- AR
 #~ msgid "HtmlUrl: "
 #~ msgstr "URL HTML : "
-
-#~ msgid "CharStyle: "
-#~ msgstr "Style de texte : "
 
 #~ msgid "Default (outer)"
 #~ msgstr "Défaut (extérieur)"
@@ -20244,10 +20565,6 @@ msgstr "Utilisateur inconnu"
 #, fuzzy
 #~ msgid "&Extended Chars"
 #~ msgstr "Options avancées|O"
-
-#, fuzzy
-#~ msgid "Placement:"
-#~ msgstr "&Emplacement :"
 
 #~ msgid "default"
 #~ msgstr "défaut"

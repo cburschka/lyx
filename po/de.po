@@ -92,7 +92,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-16 16:23+0200\n"
+"POT-Creation-Date: 2008-06-16 16:54+0200\n"
 "PO-Revision-Date: 2008-06-06 21:10+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -1172,7 +1172,8 @@ msgstr "C&JK:"
 #: src/frontends/qt4/ui/FontUi.ui:51
 msgid "Input the font to be used for Chinese, Japanese or Korean (CJK) script"
 msgstr ""
-"Geben Sie hier den Font an, der für Chinesische, Japanische oder Koreanische\n"
+"Geben Sie hier den Font an, der für Chinesische, Japanische oder "
+"Koreanische\n"
 "Schrift (CJK) verwendet werden soll"
 
 #: src/frontends/qt4/ui/FontUi.ui:71
@@ -1437,7 +1438,8 @@ msgstr "Variabler horiz. Abstand"
 #: src/frontends/qt4/ui/ParagraphUi.ui:255
 #: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
 #: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
-#: src/frontends/qt4/GuiDocument.cpp:585 src/frontends/qt4/GuiDocument.cpp:688
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:585
+#: src/frontends/qt4/GuiDocument.cpp:688
 msgid "Custom"
 msgstr "Benutzerdefiniert"
 
@@ -1496,7 +1498,8 @@ msgstr "&Datei"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:76
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90 lib/layouts/scrlttr2.layout:205
-#: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:251
+#: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:246
+#: lib/layouts/stdinsets.inc:251 lib/layouts/minimalistic.module:34
 #: lib/layouts/minimalistic.module:39 lib/ui/stdmenus.inc:340
 msgid "URL"
 msgstr "URL"
@@ -4510,6 +4513,14 @@ msgstr "Danksagungen."
 msgid "Key words."
 msgstr "Schlagwörter."
 
+#: lib/layouts/aa.layout:349
+msgid "CharStyle:Institute"
+msgstr "Textstil: Institut"
+
+#: lib/layouts/aa.layout:359
+msgid "CharStyle:E-Mail"
+msgstr "Textstil: E-Mail"
+
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612
 #: src/frontends/qt4/GuiPrefs.cpp:524
 msgid "LaTeX"
@@ -5097,17 +5108,34 @@ msgstr "NotizStichpunkt"
 msgid "Note:"
 msgstr "Notiz:"
 
+#: lib/layouts/beamer.layout:1087
+msgid "CharStyle:Alert"
+msgstr "Text-Stil: Alarm"
+
 #: lib/layouts/beamer.layout:1089
 msgid "Alert"
 msgstr "Alarm"
+
+#: lib/layouts/beamer.layout:1098
+msgid "CharStyle:Structure"
+msgstr "Textstil: Struktur"
 
 #: lib/layouts/beamer.layout:1100
 msgid "Structure"
 msgstr "Struktur"
 
+#: lib/layouts/beamer.layout:1109
+msgid "Custom:ArticleMode"
+msgstr ""
+
 #: lib/layouts/beamer.layout:1114
 msgid "Article"
 msgstr "Artikel"
+
+#: lib/layouts/beamer.layout:1119
+#, fuzzy
+msgid "Custom:PresentationMode"
+msgstr "Präsentation"
 
 #: lib/layouts/beamer.layout:1124
 msgid "Presentation"
@@ -7228,59 +7256,123 @@ msgstr "E-Mail:"
 msgid "Thesaurus not supported in recent A&A:"
 msgstr "Thesaurus nicht unterstützt in neuestem A&A:"
 
+#: lib/layouts/agu_stdclass.inc:34 lib/layouts/db_stdcharstyles.inc:35
+msgid "Element:Firstname"
+msgstr "Element: Vorname"
+
 #: lib/layouts/agu_stdclass.inc:36 lib/layouts/db_stdcharstyles.inc:37
 msgid "Firstname"
 msgstr "Vorname"
 
+#: lib/layouts/agu_stdclass.inc:48
+msgid "Element:Fname"
+msgstr "Element: FName"
+
 #: lib/layouts/agu_stdclass.inc:50
 msgid "Fname"
 msgstr "FName"
+
+#: lib/layouts/agu_stdclass.inc:63 lib/layouts/db_stdcharstyles.inc:46
+msgid "Element:Surname"
+msgstr "Element: Nachname"
 
 #: lib/layouts/agu_stdclass.inc:65 lib/layouts/db_stdcharstyles.inc:48
 #: lib/layouts/db_stdtitle.inc:98
 msgid "Surname"
 msgstr "Nachname"
 
+#: lib/layouts/agu_stdclass.inc:78 lib/layouts/db_stdcharstyles.inc:6
+msgid "Element:Filename"
+msgstr "Element: Dateiname"
+
+#: lib/layouts/agu_stdclass.inc:93 lib/layouts/db_stdcharstyles.inc:57
+msgid "Element:Literal"
+msgstr "Element: Literal"
+
 #: lib/layouts/agu_stdclass.inc:95 lib/layouts/db_stdcharstyles.inc:59
 #: lib/layouts/db_stdlayouts.inc:11
 msgid "Literal"
 msgstr "Literal"
 
+#: lib/layouts/agu_stdclass.inc:108
+msgid "Element:Emph"
+msgstr "Element: Hervorgehoben"
+
 #: lib/layouts/agu_stdclass.inc:110 src/frontends/qt4/GuiCharacter.cpp:77
 msgid "Emph"
 msgstr "Hervorgehoben"
+
+#: lib/layouts/agu_stdclass.inc:124
+msgid "Element:Abbrev"
+msgstr "Hervorgehoben: Abkürzung"
 
 #: lib/layouts/agu_stdclass.inc:126
 msgid "Abbrev"
 msgstr "Abkürzung"
 
+#: lib/layouts/agu_stdclass.inc:135
+msgid "Element:Citation-number"
+msgstr "Element: Zitat-Nummer"
+
 #: lib/layouts/agu_stdclass.inc:137 lib/layouts/agu_stdtitle.inc:56
 msgid "Citation-number"
 msgstr "Zitat-Nummer"
+
+#: lib/layouts/agu_stdclass.inc:146
+msgid "Element:Volume"
+msgstr "Element: Volume"
 
 #: lib/layouts/agu_stdclass.inc:148
 msgid "Volume"
 msgstr "Volume"
 
+#: lib/layouts/agu_stdclass.inc:157
+msgid "Element:Day"
+msgstr "Element: Tag"
+
 #: lib/layouts/agu_stdclass.inc:159
 msgid "Day"
 msgstr "Tag"
+
+#: lib/layouts/agu_stdclass.inc:168
+msgid "Element:Month"
+msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:170
 msgid "Month"
 msgstr "Monat"
 
+#: lib/layouts/agu_stdclass.inc:179
+#, fuzzy
+msgid "Element:Year"
+msgstr "Ergänzend"
+
 #: lib/layouts/agu_stdclass.inc:181
 msgid "Year"
 msgstr "Jahr"
+
+#: lib/layouts/agu_stdclass.inc:190
+#, fuzzy
+msgid "Element:Issue-number"
+msgstr "Ausgaben-Nummer"
 
 #: lib/layouts/agu_stdclass.inc:192
 msgid "Issue-number"
 msgstr "Ausgaben-Nummer"
 
+#: lib/layouts/agu_stdclass.inc:201
+#, fuzzy
+msgid "Element:Issue-day"
+msgstr "Ausgabetag"
+
 #: lib/layouts/agu_stdclass.inc:203
 msgid "Issue-day"
 msgstr "Ausgabetag"
+
+#: lib/layouts/agu_stdclass.inc:212
+#, fuzzy
+msgid "Element:Issue-months"
+msgstr "Ausgabemonat"
 
 #: lib/layouts/agu_stdclass.inc:214
 msgid "Issue-months"
@@ -7470,45 +7562,118 @@ msgstr "Datensätze"
 msgid "Datasets:"
 msgstr "Datensätze:"
 
+#: lib/layouts/agu_stdtitle.inc:321
+#, fuzzy
+msgid "Element:ISSN"
+msgstr "&Platzierung:"
+
 #: lib/layouts/agu_stdtitle.inc:323
 msgid "ISSN"
 msgstr "ISSN"
+
+#: lib/layouts/agu_stdtitle.inc:332
+msgid "Element:CODEN"
+msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:334
 msgid "CODEN"
 msgstr "CODEN"
 
+#: lib/layouts/agu_stdtitle.inc:344
+#, fuzzy
+msgid "Element:SS-Code"
+msgstr "SS-Kode"
+
 #: lib/layouts/agu_stdtitle.inc:346
 msgid "SS-Code"
 msgstr "SS-Kode"
+
+#: lib/layouts/agu_stdtitle.inc:355
+#, fuzzy
+msgid "Element:SS-Title"
+msgstr "SS-Titel"
 
 #: lib/layouts/agu_stdtitle.inc:357
 msgid "SS-Title"
 msgstr "SS-Titel"
 
+#: lib/layouts/agu_stdtitle.inc:367
+#, fuzzy
+msgid "Element:CCC-Code"
+msgstr "CCC-Code"
+
 #: lib/layouts/agu_stdtitle.inc:369
 msgid "CCC-Code"
 msgstr "CCC-Code"
+
+#: lib/layouts/agu_stdtitle.inc:380
+#, fuzzy
+msgid "Element:Code"
+msgstr "&Platzierung:"
+
+#: lib/layouts/agu_stdtitle.inc:391
+#, fuzzy
+msgid "Element:Dscr"
+msgstr "Blockelemente"
 
 #: lib/layouts/agu_stdtitle.inc:393
 msgid "Dscr"
 msgstr "Beschr"
 
+#: lib/layouts/agu_stdtitle.inc:403
+#, fuzzy
+msgid "Element:Keyword"
+msgstr "Schlagwort"
+
+#: lib/layouts/agu_stdtitle.inc:415
+#, fuzzy
+msgid "Element:Orgdiv"
+msgstr "Orgdiv"
+
 #: lib/layouts/agu_stdtitle.inc:417
 msgid "Orgdiv"
 msgstr "Orgdiv"
+
+#: lib/layouts/agu_stdtitle.inc:426
+#, fuzzy
+msgid "Element:Orgname"
+msgstr "Orgname"
 
 #: lib/layouts/agu_stdtitle.inc:428
 msgid "Orgname"
 msgstr "Orgname"
 
+#: lib/layouts/agu_stdtitle.inc:437
+#, fuzzy
+msgid "Element:Street"
+msgstr "Straße"
+
+#: lib/layouts/agu_stdtitle.inc:448
+#, fuzzy
+msgid "Element:City"
+msgstr "&Platzierung:"
+
 #: lib/layouts/agu_stdtitle.inc:450
 msgid "City"
 msgstr "Stadt"
 
+#: lib/layouts/agu_stdtitle.inc:459
+msgid "Element:State"
+msgstr ""
+
+#: lib/layouts/agu_stdtitle.inc:470
+#, fuzzy
+msgid "Element:Postcode"
+msgstr "Postleitzahl"
+
 #: lib/layouts/agu_stdtitle.inc:472
 msgid "Postcode"
 msgstr "Postleitzahl"
+
+#: lib/layouts/agu_stdtitle.inc:481
+#, fuzzy
+msgid "Element:Country"
+msgstr "Land"
 
 #: lib/layouts/agu_stdtitle.inc:483
 msgid "Country"
@@ -7602,29 +7767,61 @@ msgstr "Sachgebiet"
 msgid "2000 Mathematics Subject Classification:"
 msgstr "2000-Mathematik-Sachgebiet-Klassifikation:"
 
+#: lib/layouts/db_stdcharstyles.inc:20
+msgid "Element:Directory"
+msgstr "Element: Verzeichnis"
+
 #: lib/layouts/db_stdcharstyles.inc:22
 msgid "Directory"
 msgstr "Verzeichnis"
+
+#: lib/layouts/db_stdcharstyles.inc:71
+msgid "Element:Email"
+msgstr "Element_ E-Mail"
+
+#: lib/layouts/db_stdcharstyles.inc:85
+msgid "Element:KeyCombo"
+msgstr "Element: Tastatur"
 
 #: lib/layouts/db_stdcharstyles.inc:87
 msgid "KeyCombo"
 msgstr "Tastatur"
 
+#: lib/layouts/db_stdcharstyles.inc:99
+msgid "Element:KeyCap"
+msgstr "Element: Cap"
+
 #: lib/layouts/db_stdcharstyles.inc:101
 msgid "KeyCap"
 msgstr "Cap"
+
+#: lib/layouts/db_stdcharstyles.inc:113
+msgid "Element:GuiMenu"
+msgstr "Element: GuiMenu"
 
 #: lib/layouts/db_stdcharstyles.inc:115
 msgid "GuiMenu"
 msgstr "GuiMenu"
 
+#: lib/layouts/db_stdcharstyles.inc:127
+msgid "Element:GuiMenuItem"
+msgstr "Element: GuiMenuItem"
+
 #: lib/layouts/db_stdcharstyles.inc:129
 msgid "GuiMenuItem"
 msgstr "GuiMenuItem"
 
+#: lib/layouts/db_stdcharstyles.inc:141
+msgid "Element:GuiButton"
+msgstr "Element: GuiButton"
+
 #: lib/layouts/db_stdcharstyles.inc:143
 msgid "GuiButton"
 msgstr "GuiButton"
+
+#: lib/layouts/db_stdcharstyles.inc:155
+msgid "Element:MenuChoice"
+msgstr "Element: MenüAuswahl"
 
 #: lib/layouts/db_stdcharstyles.inc:157
 msgid "MenuChoice"
@@ -7766,6 +7963,10 @@ msgstr "Legende unten"
 msgid "Dictum"
 msgstr "Diktum"
 
+#: lib/layouts/stdcharstyles.inc:8
+msgid "CharStyle"
+msgstr "Textstil"
+
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
 #: src/insets/InsetCollapsable.cpp:151
 msgid "UNDEFINED"
@@ -7775,38 +7976,100 @@ msgstr "UNDEFINIERT"
 msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
+#: lib/layouts/stdinsets.inc:54
+#, fuzzy
+msgid "Marginal"
+msgstr "Rand"
+
 #: lib/layouts/stdinsets.inc:55 src/insets/InsetMarginal.cpp:50
 msgid "margin"
 msgstr "Rand"
+
+#: lib/layouts/stdinsets.inc:75
+#, fuzzy
+msgid "Foot"
+msgstr "Fußnote"
 
 #: lib/layouts/stdinsets.inc:76
 msgid "foot"
 msgstr "Fußnote"
 
+#: lib/layouts/stdinsets.inc:96
+#, fuzzy
+msgid "Note:Comment"
+msgstr "Kommentar"
+
 #: lib/layouts/stdinsets.inc:97
 msgid "comment"
 msgstr "Kommentar"
+
+#: lib/layouts/stdinsets.inc:109
+#, fuzzy
+msgid "Note:Note"
+msgstr "Notiz:"
 
 #: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:297
 msgid "note"
 msgstr "Notiz"
 
+#: lib/layouts/stdinsets.inc:121
+#, fuzzy
+msgid "Note:Greyedout"
+msgstr "Grauschrift"
+
 #: lib/layouts/stdinsets.inc:122
 msgid "greyedout"
 msgstr "Grauschrift"
 
-#: lib/layouts/stdinsets.inc:134 src/insets/InsetERT.cpp:166
-#: src/insets/InsetERT.cpp:168
+#: lib/layouts/stdinsets.inc:133 lib/layouts/stdinsets.inc:134
+#: src/insets/InsetERT.cpp:166 src/insets/InsetERT.cpp:168
 msgid "ERT"
 msgstr "ERT"
 
-#: lib/layouts/stdinsets.inc:153
+#: lib/layouts/stdinsets.inc:152 lib/layouts/stdinsets.inc:153
 msgid "Listings"
 msgstr "Listing"
+
+#: lib/layouts/stdinsets.inc:170 lib/layouts/minimalistic.module:25
+#: src/frontends/qt4/GuiBranches.cpp:42
+msgid "Branch"
+msgstr "Zweig"
+
+#: lib/layouts/stdinsets.inc:179 lib/layouts/minimalistic.module:8
+#: src/insets/InsetIndex.cpp:132
+msgid "Index"
+msgstr "Stichwortverzeichnis"
 
 #: lib/layouts/stdinsets.inc:180 lib/layouts/minimalistic.module:10
 msgid "Idx"
 msgstr "Stichwort"
+
+#: lib/layouts/stdinsets.inc:202 src/insets/InsetBox.cpp:145
+msgid "Box"
+msgstr "Box"
+
+#: lib/layouts/stdinsets.inc:210
+msgid "Box:Shaded"
+msgstr ""
+
+#: lib/layouts/stdinsets.inc:219
+#, fuzzy
+msgid "figure"
+msgstr "Abbildung"
+
+#: lib/layouts/stdinsets.inc:228
+#, fuzzy
+msgid "table"
+msgstr "Tabelle"
+
+#: lib/layouts/stdinsets.inc:237
+#, fuzzy
+msgid "algorithm"
+msgstr "Algorithmus"
+
+#: lib/layouts/stdinsets.inc:266
+msgid "OptArg"
+msgstr ""
 
 #: lib/layouts/stdinsets.inc:267
 msgid "opt"
@@ -8005,6 +8268,11 @@ msgstr ""
 "\\theendnotes im TeX-Modus dort einfügen, wo der Endnotenapparat erscheinen "
 "soll."
 
+#: lib/layouts/endnotes.module:9
+#, fuzzy
+msgid "Custom:Endnote"
+msgstr "Endnote"
+
 #: lib/layouts/endnotes.module:18
 msgid "endnote"
 msgstr "Endnote"
@@ -8065,21 +8333,43 @@ msgstr "Unterbeispiel"
 msgid "Subexample:"
 msgstr "Unterbeispiel:"
 
+#: lib/layouts/linguistics.module:68
+#, fuzzy
+msgid "Custom:Glosse"
+msgstr "Kunde"
+
 #: lib/layouts/linguistics.module:70
 msgid "Glosse"
 msgstr "Glosse"
+
+#: lib/layouts/linguistics.module:92
+#, fuzzy
+msgid "Custom:Tri-Glosse"
+msgstr "Tri-Glosse"
 
 #: lib/layouts/linguistics.module:94
 msgid "Tri-Glosse"
 msgstr "Tri-Glosse"
 
+#: lib/layouts/linguistics.module:114
+msgid "CharStyle:Expression"
+msgstr "Textstil: Ausdruck"
+
 #: lib/layouts/linguistics.module:116
 msgid "expr."
 msgstr "Ausdr."
 
+#: lib/layouts/linguistics.module:128
+msgid "CharStyle:Concepts"
+msgstr "Textstil: Konzept"
+
 #: lib/layouts/linguistics.module:130
 msgid "concept"
 msgstr "Konzept"
+
+#: lib/layouts/linguistics.module:142
+msgid "CharStyle:Meaning"
+msgstr "Textstil: Bedeutung"
 
 #: lib/layouts/linguistics.module:144
 msgid "meaning"
@@ -8097,17 +8387,33 @@ msgstr ""
 "Definiert Buchstabenstile für logische Auszeichnungen: Eigennamen, "
 "Hervorgehoben, Stark und Code."
 
+#: lib/layouts/logicalmkup.module:10
+msgid "CharStyle:Noun"
+msgstr "Textstil: Eigenname"
+
 #: lib/layouts/logicalmkup.module:12
 msgid "noun"
 msgstr "Eigenname"
 
+#: lib/layouts/logicalmkup.module:22
+msgid "CharStyle:Emph"
+msgstr "Textstil: Hervorgehoben"
+
 #: lib/layouts/logicalmkup.module:24
 msgid "emph"
-msgstr "Hervorgehoben"
+msgstr "Hervg."
+
+#: lib/layouts/logicalmkup.module:33
+msgid "CharStyle:Strong"
+msgstr "Textstil: Stark"
 
 #: lib/layouts/logicalmkup.module:35
 msgid "strong"
 msgstr "stark"
+
+#: lib/layouts/logicalmkup.module:47
+msgid "CharStyle:Code"
+msgstr "Textstil: Code"
 
 #: lib/layouts/logicalmkup.module:49
 msgid "code"
@@ -16187,10 +16493,6 @@ msgstr "Box-Einstellungen"
 msgid "Branch Settings"
 msgstr "Zweig-Einstellungen"
 
-#: src/frontends/qt4/GuiBranches.cpp:42
-msgid "Branch"
-msgstr "Zweig"
-
 #: src/frontends/qt4/GuiBranches.cpp:43
 msgid "Activated"
 msgstr "Aktiviert"
@@ -18141,10 +18443,6 @@ msgstr "doppelter Rahmen"
 msgid "Opened Box Inset"
 msgstr "Box-Einfügung geöffnet"
 
-#: src/insets/InsetBox.cpp:145
-msgid "Box"
-msgstr "Box"
-
 #: src/insets/InsetBranch.cpp:55
 msgid "Opened Branch Inset"
 msgstr "Zweig-Einfügung geöffnet"
@@ -18334,10 +18632,6 @@ msgstr ""
 #: src/insets/InsetInclude.cpp:513
 msgid "Module not found"
 msgstr "Modul nicht gefunden"
-
-#: src/insets/InsetIndex.cpp:132
-msgid "Index"
-msgstr "Stichwortverzeichnis"
 
 #: src/insets/InsetInfo.cpp:81
 msgid "Information regarding "

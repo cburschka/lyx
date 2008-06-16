@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-16 16:23+0200\n"
+"POT-Creation-Date: 2008-06-16 16:54+0200\n"
 "PO-Revision-Date: 2007-07-14 11:00+0300\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -1423,7 +1423,8 @@ msgstr "Vaakakumi"
 #: src/frontends/qt4/ui/ParagraphUi.ui:255
 #: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
 #: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
-#: src/frontends/qt4/GuiDocument.cpp:585 src/frontends/qt4/GuiDocument.cpp:688
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:585
+#: src/frontends/qt4/GuiDocument.cpp:688
 msgid "Custom"
 msgstr "Määr. oma"
 
@@ -1488,7 +1489,8 @@ msgstr "Tie&dosto:"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:76
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90 lib/layouts/scrlttr2.layout:205
-#: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:251
+#: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:246
+#: lib/layouts/stdinsets.inc:251 lib/layouts/minimalistic.module:34
 #: lib/layouts/minimalistic.module:39 lib/ui/stdmenus.inc:340
 msgid "URL"
 msgstr "URL"
@@ -4537,6 +4539,16 @@ msgstr "Kiitokset"
 msgid "Key words."
 msgstr "Avainsanat."
 
+#: lib/layouts/aa.layout:349
+#, fuzzy
+msgid "CharStyle:Institute"
+msgstr "Muutos: "
+
+#: lib/layouts/aa.layout:359
+#, fuzzy
+msgid "CharStyle:E-Mail"
+msgstr "Muutos: "
+
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612
 #: src/frontends/qt4/GuiPrefs.cpp:524
 msgid "LaTeX"
@@ -5133,19 +5145,38 @@ msgstr "Muistiinpanokohta"
 msgid "Note:"
 msgstr "Muistiinpano:"
 
+#: lib/layouts/beamer.layout:1087
+#, fuzzy
+msgid "CharStyle:Alert"
+msgstr "Muutos: "
+
 #: lib/layouts/beamer.layout:1089
 #, fuzzy
 msgid "Alert"
 msgstr "HuomioLohko"
 
+#: lib/layouts/beamer.layout:1098
+#, fuzzy
+msgid "CharStyle:Structure"
+msgstr "Muutos: "
+
 #: lib/layouts/beamer.layout:1100
 msgid "Structure"
+msgstr ""
+
+#: lib/layouts/beamer.layout:1109
+msgid "Custom:ArticleMode"
 msgstr ""
 
 #: lib/layouts/beamer.layout:1114
 #, fuzzy
 msgid "Article"
 msgstr "&Pysty"
+
+#: lib/layouts/beamer.layout:1119
+#, fuzzy
+msgid "Custom:PresentationMode"
+msgstr "Asento"
 
 #: lib/layouts/beamer.layout:1124
 #, fuzzy
@@ -7284,65 +7315,137 @@ msgstr "Sähköposti:"
 msgid "Thesaurus not supported in recent A&A:"
 msgstr "Thesaurusta ei tueta uusimmassa A&A:ssa:"
 
+#: lib/layouts/agu_stdclass.inc:34 lib/layouts/db_stdcharstyles.inc:35
+#, fuzzy
+msgid "Element:Firstname"
+msgstr "Etunimi"
+
 #: lib/layouts/agu_stdclass.inc:36 lib/layouts/db_stdcharstyles.inc:37
 #, fuzzy
 msgid "Firstname"
 msgstr "Etunimi"
+
+#: lib/layouts/agu_stdclass.inc:48
+#, fuzzy
+msgid "Element:Fname"
+msgstr "Si&joittelu:"
 
 #: lib/layouts/agu_stdclass.inc:50
 #, fuzzy
 msgid "Fname"
 msgstr "Ruutu"
 
+#: lib/layouts/agu_stdclass.inc:63 lib/layouts/db_stdcharstyles.inc:46
+#, fuzzy
+msgid "Element:Surname"
+msgstr "Sukunimi"
+
 #: lib/layouts/agu_stdclass.inc:65 lib/layouts/db_stdcharstyles.inc:48
 #: lib/layouts/db_stdtitle.inc:98
 msgid "Surname"
 msgstr "Sukunimi"
+
+#: lib/layouts/agu_stdclass.inc:78 lib/layouts/db_stdcharstyles.inc:6
+#, fuzzy
+msgid "Element:Filename"
+msgstr "Tiedostonimi"
+
+#: lib/layouts/agu_stdclass.inc:93 lib/layouts/db_stdcharstyles.inc:57
+#, fuzzy
+msgid "Element:Literal"
+msgstr "Sanatarkasti"
 
 #: lib/layouts/agu_stdclass.inc:95 lib/layouts/db_stdcharstyles.inc:59
 #: lib/layouts/db_stdlayouts.inc:11
 msgid "Literal"
 msgstr "Sanatarkasti"
 
+#: lib/layouts/agu_stdclass.inc:108
+#, fuzzy
+msgid "Element:Emph"
+msgstr "Si&joittelu:"
+
 #: lib/layouts/agu_stdclass.inc:110 src/frontends/qt4/GuiCharacter.cpp:77
 msgid "Emph"
 msgstr "Korostus"
+
+#: lib/layouts/agu_stdclass.inc:124
+msgid "Element:Abbrev"
+msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:126
 msgid "Abbrev"
 msgstr ""
 
+#: lib/layouts/agu_stdclass.inc:135
+#, fuzzy
+msgid "Element:Citation-number"
+msgstr "Lähdeviitteen nro"
+
 #: lib/layouts/agu_stdclass.inc:137 lib/layouts/agu_stdtitle.inc:56
 msgid "Citation-number"
 msgstr "Lähdeviitteen nro"
+
+#: lib/layouts/agu_stdclass.inc:146
+#, fuzzy
+msgid "Element:Volume"
+msgstr "Palsta"
 
 #: lib/layouts/agu_stdclass.inc:148
 #, fuzzy
 msgid "Volume"
 msgstr "Palsta"
 
+#: lib/layouts/agu_stdclass.inc:157
+#, fuzzy
+msgid "Element:Day"
+msgstr "Yhteenveto"
+
 #: lib/layouts/agu_stdclass.inc:159
 #, fuzzy
 msgid "Day"
 msgstr "Näyttö"
+
+#: lib/layouts/agu_stdclass.inc:168
+#, fuzzy
+msgid "Element:Month"
+msgstr "Si&joittelu:"
 
 #: lib/layouts/agu_stdclass.inc:170
 #, fuzzy
 msgid "Month"
 msgstr "Matematiikka"
 
+#: lib/layouts/agu_stdclass.inc:179
+#, fuzzy
+msgid "Element:Year"
+msgstr "Yhteenveto"
+
 #: lib/layouts/agu_stdclass.inc:181
 #, fuzzy
 msgid "Year"
 msgstr "&Tyhjennä"
+
+#: lib/layouts/agu_stdclass.inc:190
+#, fuzzy
+msgid "Element:Issue-number"
+msgstr "msnumero"
 
 #: lib/layouts/agu_stdclass.inc:192
 #, fuzzy
 msgid "Issue-number"
 msgstr "msnumero"
 
+#: lib/layouts/agu_stdclass.inc:201
+msgid "Element:Issue-day"
+msgstr ""
+
 #: lib/layouts/agu_stdclass.inc:203
 msgid "Issue-day"
+msgstr ""
+
+#: lib/layouts/agu_stdclass.inc:212
+msgid "Element:Issue-months"
 msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:214
@@ -7542,53 +7645,127 @@ msgstr "Datajoukot"
 msgid "Datasets:"
 msgstr "Datajoukot:"
 
+#: lib/layouts/agu_stdtitle.inc:321
+#, fuzzy
+msgid "Element:ISSN"
+msgstr "Si&joittelu:"
+
 #: lib/layouts/agu_stdtitle.inc:323
 msgid "ISSN"
 msgstr ""
+
+#: lib/layouts/agu_stdtitle.inc:332
+#, fuzzy
+msgid "Element:CODEN"
+msgstr "Si&joittelu:"
 
 #: lib/layouts/agu_stdtitle.inc:334
 #, fuzzy
 msgid "CODEN"
 msgstr "KOHTAUS"
 
+#: lib/layouts/agu_stdtitle.inc:344
+#, fuzzy
+msgid "Element:SS-Code"
+msgstr "Koodi"
+
 #: lib/layouts/agu_stdtitle.inc:346
 #, fuzzy
 msgid "SS-Code"
 msgstr "Koodi"
+
+#: lib/layouts/agu_stdtitle.inc:355
+#, fuzzy
+msgid "Element:SS-Title"
+msgstr "Teoksen nimi"
 
 #: lib/layouts/agu_stdtitle.inc:357
 #, fuzzy
 msgid "SS-Title"
 msgstr "Teoksen nimi"
 
+#: lib/layouts/agu_stdtitle.inc:367
+#, fuzzy
+msgid "Element:CCC-Code"
+msgstr "CCC-koodi:"
+
 #: lib/layouts/agu_stdtitle.inc:369
 #, fuzzy
 msgid "CCC-Code"
 msgstr "CCC-koodi:"
+
+#: lib/layouts/agu_stdtitle.inc:380
+#, fuzzy
+msgid "Element:Code"
+msgstr "Si&joittelu:"
+
+#: lib/layouts/agu_stdtitle.inc:391
+#, fuzzy
+msgid "Element:Dscr"
+msgstr "Si&joittelu:"
 
 #: lib/layouts/agu_stdtitle.inc:393
 #, fuzzy
 msgid "Dscr"
 msgstr "Heitä pois"
 
+#: lib/layouts/agu_stdtitle.inc:403
+#, fuzzy
+msgid "Element:Keyword"
+msgstr "Avainsana"
+
+#: lib/layouts/agu_stdtitle.inc:415
+msgid "Element:Orgdiv"
+msgstr ""
+
 #: lib/layouts/agu_stdtitle.inc:417
 msgid "Orgdiv"
 msgstr ""
+
+#: lib/layouts/agu_stdtitle.inc:426
+#, fuzzy
+msgid "Element:Orgname"
+msgstr "Sukunimi"
 
 #: lib/layouts/agu_stdtitle.inc:428
 #, fuzzy
 msgid "Orgname"
 msgstr "Sukunimi"
 
+#: lib/layouts/agu_stdtitle.inc:437
+#, fuzzy
+msgid "Element:Street"
+msgstr "Katu"
+
+#: lib/layouts/agu_stdtitle.inc:448
+#, fuzzy
+msgid "Element:City"
+msgstr "Si&joittelu:"
+
 #: lib/layouts/agu_stdtitle.inc:450
 #, fuzzy
 msgid "City"
 msgstr "äärettömmyys"
 
+#: lib/layouts/agu_stdtitle.inc:459
+#, fuzzy
+msgid "Element:State"
+msgstr "Si&joittelu:"
+
+#: lib/layouts/agu_stdtitle.inc:470
+#, fuzzy
+msgid "Element:Postcode"
+msgstr "Liitä"
+
 #: lib/layouts/agu_stdtitle.inc:472
 #, fuzzy
 msgid "Postcode"
 msgstr "Liitä"
+
+#: lib/layouts/agu_stdtitle.inc:481
+#, fuzzy
+msgid "Element:Country"
+msgstr "Kohta"
 
 #: lib/layouts/agu_stdtitle.inc:483
 #, fuzzy
@@ -7685,30 +7862,65 @@ msgstr "Aiheluokka"
 msgid "2000 Mathematics Subject Classification:"
 msgstr "1991 Matematiikan aihekategoriat:"
 
+#: lib/layouts/db_stdcharstyles.inc:20
+#, fuzzy
+msgid "Element:Directory"
+msgstr "Hakemistot"
+
 #: lib/layouts/db_stdcharstyles.inc:22
 #, fuzzy
 msgid "Directory"
 msgstr "Hakemistot"
+
+#: lib/layouts/db_stdcharstyles.inc:71
+#, fuzzy
+msgid "Element:Email"
+msgstr "Si&joittelu:"
+
+#: lib/layouts/db_stdcharstyles.inc:85
+#, fuzzy
+msgid "Element:KeyCombo"
+msgstr "Näppäimistö"
 
 #: lib/layouts/db_stdcharstyles.inc:87
 #, fuzzy
 msgid "KeyCombo"
 msgstr "Näppäimistö"
 
+#: lib/layouts/db_stdcharstyles.inc:99
+msgid "Element:KeyCap"
+msgstr ""
+
 #: lib/layouts/db_stdcharstyles.inc:101
 msgid "KeyCap"
+msgstr ""
+
+#: lib/layouts/db_stdcharstyles.inc:113
+msgid "Element:GuiMenu"
 msgstr ""
 
 #: lib/layouts/db_stdcharstyles.inc:115
 msgid "GuiMenu"
 msgstr ""
 
+#: lib/layouts/db_stdcharstyles.inc:127
+msgid "Element:GuiMenuItem"
+msgstr ""
+
 #: lib/layouts/db_stdcharstyles.inc:129
 msgid "GuiMenuItem"
 msgstr ""
 
+#: lib/layouts/db_stdcharstyles.inc:141
+msgid "Element:GuiButton"
+msgstr ""
+
 #: lib/layouts/db_stdcharstyles.inc:143
 msgid "GuiButton"
+msgstr ""
+
+#: lib/layouts/db_stdcharstyles.inc:155
+msgid "Element:MenuChoice"
 msgstr ""
 
 #: lib/layouts/db_stdcharstyles.inc:157
@@ -7852,6 +8064,11 @@ msgstr "Kuvateksti alla"
 msgid "Dictum"
 msgstr "Lausunto"
 
+#: lib/layouts/stdcharstyles.inc:8
+#, fuzzy
+msgid "CharStyle"
+msgstr "Muutos: "
+
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
 #: src/insets/InsetCollapsable.cpp:151
 msgid "UNDEFINED"
@@ -7862,41 +8079,104 @@ msgstr ""
 msgid "\\Roman{part}"
 msgstr "Osa \\Roman{osa}"
 
+#: lib/layouts/stdinsets.inc:54
+#, fuzzy
+msgid "Marginal"
+msgstr "reunahuomautus"
+
 #: lib/layouts/stdinsets.inc:55 src/insets/InsetMarginal.cpp:50
 msgid "margin"
 msgstr "reunahuomautus"
+
+#: lib/layouts/stdinsets.inc:75
+#, fuzzy
+msgid "Foot"
+msgstr "alaviite"
 
 #: lib/layouts/stdinsets.inc:76
 msgid "foot"
 msgstr "alaviite"
 
+#: lib/layouts/stdinsets.inc:96
+#, fuzzy
+msgid "Note:Comment"
+msgstr "Huomautus"
+
 #: lib/layouts/stdinsets.inc:97
 msgid "comment"
 msgstr "Huomautus"
 
+#: lib/layouts/stdinsets.inc:109
+#, fuzzy
+msgid "Note:Note"
+msgstr "Muistiinpano:"
+
 #: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:297
 msgid "note"
 msgstr "muistiinpano"
+
+#: lib/layouts/stdinsets.inc:121
+#, fuzzy
+msgid "Note:Greyedout"
+msgstr "Harmaa teksti"
 
 #: lib/layouts/stdinsets.inc:122
 #, fuzzy
 msgid "greyedout"
 msgstr "Harmaa teksti"
 
-#: lib/layouts/stdinsets.inc:134 src/insets/InsetERT.cpp:166
-#: src/insets/InsetERT.cpp:168
+#: lib/layouts/stdinsets.inc:133 lib/layouts/stdinsets.inc:134
+#: src/insets/InsetERT.cpp:166 src/insets/InsetERT.cpp:168
 msgid "ERT"
 msgstr "ERT"
 
-#: lib/layouts/stdinsets.inc:153
+#: lib/layouts/stdinsets.inc:152 lib/layouts/stdinsets.inc:153
 #, fuzzy
 msgid "Listings"
 msgstr "Lista"
+
+#: lib/layouts/stdinsets.inc:170 lib/layouts/minimalistic.module:25
+#: src/frontends/qt4/GuiBranches.cpp:42
+msgid "Branch"
+msgstr "Haara"
+
+#: lib/layouts/stdinsets.inc:179 lib/layouts/minimalistic.module:8
+#: src/insets/InsetIndex.cpp:132
+msgid "Index"
+msgstr "Hakusana"
 
 #: lib/layouts/stdinsets.inc:180 lib/layouts/minimalistic.module:10
 #, fuzzy
 msgid "Idx"
 msgstr ", Tunnus:"
+
+#: lib/layouts/stdinsets.inc:202 src/insets/InsetBox.cpp:145
+msgid "Box"
+msgstr "Laatikko"
+
+#: lib/layouts/stdinsets.inc:210
+#, fuzzy
+msgid "Box:Shaded"
+msgstr "Varjollinen"
+
+#: lib/layouts/stdinsets.inc:219
+#, fuzzy
+msgid "figure"
+msgstr "Kuva"
+
+#: lib/layouts/stdinsets.inc:228
+#, fuzzy
+msgid "table"
+msgstr "Taulukko"
+
+#: lib/layouts/stdinsets.inc:237
+#, fuzzy
+msgid "algorithm"
+msgstr "Algoritmi"
+
+#: lib/layouts/stdinsets.inc:266
+msgid "OptArg"
+msgstr ""
 
 #: lib/layouts/stdinsets.inc:267
 msgid "opt"
@@ -8107,6 +8387,11 @@ msgid ""
 "\\theendnotes in ERT where you want the endnotes to appear."
 msgstr ""
 
+#: lib/layouts/endnotes.module:9
+#, fuzzy
+msgid "Custom:Endnote"
+msgstr "muistiinpano"
+
 #: lib/layouts/endnotes.module:18
 #, fuzzy
 msgid "endnote"
@@ -8172,23 +8457,48 @@ msgstr "Esimerkki"
 msgid "Subexample:"
 msgstr "Esimerkki"
 
+#: lib/layouts/linguistics.module:68
+#, fuzzy
+msgid "Custom:Glosse"
+msgstr "Asiakas"
+
 #: lib/layouts/linguistics.module:70
 #, fuzzy
 msgid "Glosse"
 msgstr "Sulje"
 
+#: lib/layouts/linguistics.module:92
+#, fuzzy
+msgid "Custom:Tri-Glosse"
+msgstr "Asiakas"
+
 #: lib/layouts/linguistics.module:94
 msgid "Tri-Glosse"
 msgstr ""
+
+#: lib/layouts/linguistics.module:114
+#, fuzzy
+msgid "CharStyle:Expression"
+msgstr "Muutos: "
 
 #: lib/layouts/linguistics.module:116
 msgid "expr."
 msgstr ""
 
+#: lib/layouts/linguistics.module:128
+#, fuzzy
+msgid "CharStyle:Concepts"
+msgstr "Muutos: "
+
 #: lib/layouts/linguistics.module:130
 #, fuzzy
 msgid "concept"
 msgstr "Hyväksy"
+
+#: lib/layouts/linguistics.module:142
+#, fuzzy
+msgid "CharStyle:Meaning"
+msgstr "Muutos: "
 
 #: lib/layouts/linguistics.module:144
 #, fuzzy
@@ -8206,20 +8516,40 @@ msgid ""
 "code."
 msgstr ""
 
+#: lib/layouts/logicalmkup.module:10
+#, fuzzy
+msgid "CharStyle:Noun"
+msgstr "Muutos: "
+
 #: lib/layouts/logicalmkup.module:12
 #, fuzzy
 msgid "noun"
 msgstr "ei mikään"
+
+#: lib/layouts/logicalmkup.module:22
+#, fuzzy
+msgid "CharStyle:Emph"
+msgstr "Muutos: "
 
 #: lib/layouts/logicalmkup.module:24
 #, fuzzy
 msgid "emph"
 msgstr "Korostus"
 
+#: lib/layouts/logicalmkup.module:33
+#, fuzzy
+msgid "CharStyle:Strong"
+msgstr "Muutos: "
+
 #: lib/layouts/logicalmkup.module:35
 #, fuzzy
 msgid "strong"
 msgstr "Listaus"
+
+#: lib/layouts/logicalmkup.module:47
+#, fuzzy
+msgid "CharStyle:Code"
+msgstr "Muutos: "
 
 #: lib/layouts/logicalmkup.module:49
 #, fuzzy
@@ -16373,10 +16703,6 @@ msgstr "Laatikoiden asetukset"
 msgid "Branch Settings"
 msgstr "Haarojen asetukset"
 
-#: src/frontends/qt4/GuiBranches.cpp:42
-msgid "Branch"
-msgstr "Haara"
-
 #: src/frontends/qt4/GuiBranches.cpp:43
 msgid "Activated"
 msgstr "Päällä"
@@ -18454,10 +18780,6 @@ msgstr "kaksinkertainen"
 msgid "Opened Box Inset"
 msgstr "Laatikko-upote avattu"
 
-#: src/insets/InsetBox.cpp:145
-msgid "Box"
-msgstr "Laatikko"
-
 #: src/insets/InsetBranch.cpp:55
 msgid "Opened Branch Inset"
 msgstr "Haara-upote avattu"
@@ -18649,10 +18971,6 @@ msgstr ""
 #, fuzzy
 msgid "Module not found"
 msgstr "Tiedostoa ei löydy"
-
-#: src/insets/InsetIndex.cpp:132
-msgid "Index"
-msgstr "Hakusana"
 
 #: src/insets/InsetInfo.cpp:81
 #, fuzzy
@@ -20052,9 +20370,6 @@ msgstr "Tuntematon käyttäjä"
 #~ msgid "Framed"
 #~ msgstr "Kehyksellinen"
 
-#~ msgid "Shaded"
-#~ msgstr "Varjollinen"
-
 #~ msgid "theorem"
 #~ msgstr "lause"
 
@@ -20066,10 +20381,6 @@ msgstr "Tuntematon käyttäjä"
 
 #~ msgid "HtmlUrl: "
 #~ msgstr "HtmlUrl: "
-
-#, fuzzy
-#~ msgid "CharStyle: "
-#~ msgstr "Muutos: "
 
 #~ msgid "Default (outer)"
 #~ msgstr "Oletus (ulko)"
@@ -20185,10 +20496,6 @@ msgstr "Tuntematon käyttäjä"
 #, fuzzy
 #~ msgid "note: "
 #~ msgstr "muistiinpano"
-
-#, fuzzy
-#~ msgid "Placement:"
-#~ msgstr "Si&joittelu:"
 
 #~ msgid "default"
 #~ msgstr "oletus"

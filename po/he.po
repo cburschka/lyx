@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-16 16:23+0200\n"
+"POT-Creation-Date: 2008-06-16 16:54+0200\n"
 "PO-Revision-Date: 2008-02-20 12:39+0200\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -1368,7 +1368,8 @@ msgstr "מילוי אופקי"
 #: src/frontends/qt4/ui/ParagraphUi.ui:255
 #: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
 #: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
-#: src/frontends/qt4/GuiDocument.cpp:585 src/frontends/qt4/GuiDocument.cpp:688
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:585
+#: src/frontends/qt4/GuiDocument.cpp:688
 msgid "Custom"
 msgstr "מותאם אישית"
 
@@ -1433,7 +1434,8 @@ msgstr "קובץ:"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:76
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90 lib/layouts/scrlttr2.layout:205
-#: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:251
+#: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:246
+#: lib/layouts/stdinsets.inc:251 lib/layouts/minimalistic.module:34
 #: lib/layouts/minimalistic.module:39 lib/ui/stdmenus.inc:340
 msgid "URL"
 msgstr "מען משאבים אוניורסלי"
@@ -4478,6 +4480,16 @@ msgstr "הכרת תודות."
 msgid "Key words."
 msgstr ""
 
+#: lib/layouts/aa.layout:349
+#, fuzzy
+msgid "CharStyle:Institute"
+msgstr "סגנון תו: "
+
+#: lib/layouts/aa.layout:359
+#, fuzzy
+msgid "CharStyle:E-Mail"
+msgstr "סגנון תו: "
+
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612
 #: src/frontends/qt4/GuiPrefs.cpp:524
 msgid "LaTeX"
@@ -5071,19 +5083,38 @@ msgstr ""
 msgid "Note:"
 msgstr ""
 
+#: lib/layouts/beamer.layout:1087
+#, fuzzy
+msgid "CharStyle:Alert"
+msgstr "סגנון תו: "
+
 #: lib/layouts/beamer.layout:1089
 #, fuzzy
 msgid "Alert"
 msgstr "Vert"
 
+#: lib/layouts/beamer.layout:1098
+#, fuzzy
+msgid "CharStyle:Structure"
+msgstr "סגנון תו: "
+
 #: lib/layouts/beamer.layout:1100
 msgid "Structure"
+msgstr ""
+
+#: lib/layouts/beamer.layout:1109
+msgid "Custom:ArticleMode"
 msgstr ""
 
 #: lib/layouts/beamer.layout:1114
 #, fuzzy
 msgid "Article"
 msgstr "אנכי"
+
+#: lib/layouts/beamer.layout:1119
+#, fuzzy
+msgid "Custom:PresentationMode"
+msgstr "כיוון הדף"
 
 #: lib/layouts/beamer.layout:1124
 #, fuzzy
@@ -7214,19 +7245,41 @@ msgstr "דוא\"ל:"
 msgid "Thesaurus not supported in recent A&A:"
 msgstr ""
 
+#: lib/layouts/agu_stdclass.inc:34 lib/layouts/db_stdcharstyles.inc:35
+#, fuzzy
+msgid "Element:Firstname"
+msgstr "שם קובץ"
+
 #: lib/layouts/agu_stdclass.inc:36 lib/layouts/db_stdcharstyles.inc:37
 #, fuzzy
 msgid "Firstname"
 msgstr "שם קובץ"
+
+#: lib/layouts/agu_stdclass.inc:48
+msgid "Element:Fname"
+msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:50
 #, fuzzy
 msgid "Fname"
 msgstr "שם קובץ"
 
+#: lib/layouts/agu_stdclass.inc:63 lib/layouts/db_stdcharstyles.inc:46
+msgid "Element:Surname"
+msgstr ""
+
 #: lib/layouts/agu_stdclass.inc:65 lib/layouts/db_stdcharstyles.inc:48
 #: lib/layouts/db_stdtitle.inc:98
 msgid "Surname"
+msgstr ""
+
+#: lib/layouts/agu_stdclass.inc:78 lib/layouts/db_stdcharstyles.inc:6
+#, fuzzy
+msgid "Element:Filename"
+msgstr "שם קובץ"
+
+#: lib/layouts/agu_stdclass.inc:93 lib/layouts/db_stdcharstyles.inc:57
+msgid "Element:Literal"
 msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:95 lib/layouts/db_stdcharstyles.inc:59
@@ -7234,45 +7287,91 @@ msgstr ""
 msgid "Literal"
 msgstr ""
 
+#: lib/layouts/agu_stdclass.inc:108
+#, fuzzy
+msgid "Element:Emph"
+msgstr "&מיקום:"
+
 #: lib/layouts/agu_stdclass.inc:110 src/frontends/qt4/GuiCharacter.cpp:77
 msgid "Emph"
 msgstr "הדגש"
+
+#: lib/layouts/agu_stdclass.inc:124
+#, fuzzy
+msgid "Element:Abbrev"
+msgstr "breve"
 
 #: lib/layouts/agu_stdclass.inc:126
 #, fuzzy
 msgid "Abbrev"
 msgstr "breve"
 
+#: lib/layouts/agu_stdclass.inc:135
+#, fuzzy
+msgid "Element:Citation-number"
+msgstr "מספר מובאה"
+
 #: lib/layouts/agu_stdclass.inc:137 lib/layouts/agu_stdtitle.inc:56
 msgid "Citation-number"
 msgstr "מספר מובאה"
+
+#: lib/layouts/agu_stdclass.inc:146
+#, fuzzy
+msgid "Element:Volume"
+msgstr "עמודה"
 
 #: lib/layouts/agu_stdclass.inc:148
 #, fuzzy
 msgid "Volume"
 msgstr "עמודה"
 
+#: lib/layouts/agu_stdclass.inc:157
+#, fuzzy
+msgid "Element:Day"
+msgstr "&מיקום:"
+
 #: lib/layouts/agu_stdclass.inc:159
 #, fuzzy
 msgid "Day"
 msgstr "תצוגה"
+
+#: lib/layouts/agu_stdclass.inc:168
+msgid "Element:Month"
+msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:170
 #, fuzzy
 msgid "Month"
 msgstr "מתמטיקה"
 
+#: lib/layouts/agu_stdclass.inc:179
+#, fuzzy
+msgid "Element:Year"
+msgstr "&מיקום:"
+
 #: lib/layouts/agu_stdclass.inc:181
 #, fuzzy
 msgid "Year"
 msgstr "&נקה"
 
+#: lib/layouts/agu_stdclass.inc:190
+msgid "Element:Issue-number"
+msgstr ""
+
 #: lib/layouts/agu_stdclass.inc:192
 msgid "Issue-number"
 msgstr ""
 
+#: lib/layouts/agu_stdclass.inc:201
+msgid "Element:Issue-day"
+msgstr ""
+
 #: lib/layouts/agu_stdclass.inc:203
 msgid "Issue-day"
+msgstr ""
+
+#: lib/layouts/agu_stdclass.inc:212
+msgid "Element:Issue-months"
 msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:214
@@ -7463,53 +7562,126 @@ msgstr ""
 msgid "Datasets:"
 msgstr ""
 
+#: lib/layouts/agu_stdtitle.inc:321
+#, fuzzy
+msgid "Element:ISSN"
+msgstr "&מיקום:"
+
 #: lib/layouts/agu_stdtitle.inc:323
 msgid "ISSN"
+msgstr ""
+
+#: lib/layouts/agu_stdtitle.inc:332
+msgid "Element:CODEN"
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:334
 msgid "CODEN"
 msgstr ""
 
+#: lib/layouts/agu_stdtitle.inc:344
+#, fuzzy
+msgid "Element:SS-Code"
+msgstr "קוד"
+
 #: lib/layouts/agu_stdtitle.inc:346
 #, fuzzy
 msgid "SS-Code"
 msgstr "קוד"
+
+#: lib/layouts/agu_stdtitle.inc:355
+#, fuzzy
+msgid "Element:SS-Title"
+msgstr "כותרת"
 
 #: lib/layouts/agu_stdtitle.inc:357
 #, fuzzy
 msgid "SS-Title"
 msgstr "כותרת"
 
+#: lib/layouts/agu_stdtitle.inc:367
+#, fuzzy
+msgid "Element:CCC-Code"
+msgstr "קוד CCC:"
+
 #: lib/layouts/agu_stdtitle.inc:369
 #, fuzzy
 msgid "CCC-Code"
 msgstr "קוד CCC:"
+
+#: lib/layouts/agu_stdtitle.inc:380
+#, fuzzy
+msgid "Element:Code"
+msgstr "&מיקום:"
+
+#: lib/layouts/agu_stdtitle.inc:391
+#, fuzzy
+msgid "Element:Dscr"
+msgstr "תודות"
 
 #: lib/layouts/agu_stdtitle.inc:393
 #, fuzzy
 msgid "Dscr"
 msgstr "הסר"
 
+#: lib/layouts/agu_stdtitle.inc:403
+#, fuzzy
+msgid "Element:Keyword"
+msgstr "מילות מפתח"
+
+#: lib/layouts/agu_stdtitle.inc:415
+#, fuzzy
+msgid "Element:Orgdiv"
+msgstr "div"
+
 #: lib/layouts/agu_stdtitle.inc:417
 #, fuzzy
 msgid "Orgdiv"
 msgstr "div"
+
+#: lib/layouts/agu_stdtitle.inc:426
+#, fuzzy
+msgid "Element:Orgname"
+msgstr "שמך"
 
 #: lib/layouts/agu_stdtitle.inc:428
 #, fuzzy
 msgid "Orgname"
 msgstr "שמך"
 
+#: lib/layouts/agu_stdtitle.inc:437
+#, fuzzy
+msgid "Element:Street"
+msgstr "רחוב"
+
+#: lib/layouts/agu_stdtitle.inc:448
+#, fuzzy
+msgid "Element:City"
+msgstr "&מיקום:"
+
 #: lib/layouts/agu_stdtitle.inc:450
 #, fuzzy
 msgid "City"
 msgstr "infty"
 
+#: lib/layouts/agu_stdtitle.inc:459
+msgid "Element:State"
+msgstr ""
+
+#: lib/layouts/agu_stdtitle.inc:470
+#, fuzzy
+msgid "Element:Postcode"
+msgstr "הדבק"
+
 #: lib/layouts/agu_stdtitle.inc:472
 #, fuzzy
 msgid "Postcode"
 msgstr "הדבק"
+
+#: lib/layouts/agu_stdtitle.inc:481
+#, fuzzy
+msgid "Element:Country"
+msgstr "ערך"
 
 #: lib/layouts/agu_stdtitle.inc:483
 #, fuzzy
@@ -7604,31 +7776,66 @@ msgstr ""
 msgid "2000 Mathematics Subject Classification:"
 msgstr "מיון נושא מתמטי 2000:"
 
+#: lib/layouts/db_stdcharstyles.inc:20
+#, fuzzy
+msgid "Element:Directory"
+msgstr "תיקיות"
+
 #: lib/layouts/db_stdcharstyles.inc:22
 #, fuzzy
 msgid "Directory"
 msgstr "תיקיות"
+
+#: lib/layouts/db_stdcharstyles.inc:71
+msgid "Element:Email"
+msgstr ""
+
+#: lib/layouts/db_stdcharstyles.inc:85
+#, fuzzy
+msgid "Element:KeyCombo"
+msgstr "מקלדת"
 
 #: lib/layouts/db_stdcharstyles.inc:87
 #, fuzzy
 msgid "KeyCombo"
 msgstr "מקלדת"
 
+#: lib/layouts/db_stdcharstyles.inc:99
+#, fuzzy
+msgid "Element:KeyCap"
+msgstr "Cap"
+
 #: lib/layouts/db_stdcharstyles.inc:101
 #, fuzzy
 msgid "KeyCap"
 msgstr "Cap"
 
+#: lib/layouts/db_stdcharstyles.inc:113
+msgid "Element:GuiMenu"
+msgstr ""
+
 #: lib/layouts/db_stdcharstyles.inc:115
 msgid "GuiMenu"
+msgstr ""
+
+#: lib/layouts/db_stdcharstyles.inc:127
+msgid "Element:GuiMenuItem"
 msgstr ""
 
 #: lib/layouts/db_stdcharstyles.inc:129
 msgid "GuiMenuItem"
 msgstr ""
 
+#: lib/layouts/db_stdcharstyles.inc:141
+msgid "Element:GuiButton"
+msgstr ""
+
 #: lib/layouts/db_stdcharstyles.inc:143
 msgid "GuiButton"
+msgstr ""
+
+#: lib/layouts/db_stdcharstyles.inc:155
+msgid "Element:MenuChoice"
 msgstr ""
 
 #: lib/layouts/db_stdcharstyles.inc:157
@@ -7772,6 +7979,11 @@ msgstr ""
 msgid "Dictum"
 msgstr ""
 
+#: lib/layouts/stdcharstyles.inc:8
+#, fuzzy
+msgid "CharStyle"
+msgstr "סגנון תו: "
+
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
 #: src/insets/InsetCollapsable.cpp:151
 msgid "UNDEFINED"
@@ -7782,41 +7994,104 @@ msgstr ""
 msgid "\\Roman{part}"
 msgstr "רומנית"
 
+#: lib/layouts/stdinsets.inc:54
+#, fuzzy
+msgid "Marginal"
+msgstr "הערת שוליים"
+
 #: lib/layouts/stdinsets.inc:55 src/insets/InsetMarginal.cpp:50
 msgid "margin"
 msgstr "הערת שוליים"
+
+#: lib/layouts/stdinsets.inc:75
+#, fuzzy
+msgid "Foot"
+msgstr "הערת תחתית"
 
 #: lib/layouts/stdinsets.inc:76
 msgid "foot"
 msgstr "הערת תחתית"
 
+#: lib/layouts/stdinsets.inc:96
+#, fuzzy
+msgid "Note:Comment"
+msgstr "הערה"
+
 #: lib/layouts/stdinsets.inc:97
 msgid "comment"
+msgstr "הערה"
+
+#: lib/layouts/stdinsets.inc:109
+#, fuzzy
+msgid "Note:Note"
 msgstr "הערה"
 
 #: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:297
 msgid "note"
 msgstr "הערה"
 
+#: lib/layouts/stdinsets.inc:121
+#, fuzzy
+msgid "Note:Greyedout"
+msgstr "ב&אפור"
+
 #: lib/layouts/stdinsets.inc:122
 #, fuzzy
 msgid "greyedout"
 msgstr "ב&אפור"
 
-#: lib/layouts/stdinsets.inc:134 src/insets/InsetERT.cpp:166
-#: src/insets/InsetERT.cpp:168
+#: lib/layouts/stdinsets.inc:133 lib/layouts/stdinsets.inc:134
+#: src/insets/InsetERT.cpp:166 src/insets/InsetERT.cpp:168
 msgid "ERT"
 msgstr "טא\"ם"
 
-#: lib/layouts/stdinsets.inc:153
+#: lib/layouts/stdinsets.inc:152 lib/layouts/stdinsets.inc:153
 #, fuzzy
 msgid "Listings"
 msgstr "רישום קוד"
+
+#: lib/layouts/stdinsets.inc:170 lib/layouts/minimalistic.module:25
+#: src/frontends/qt4/GuiBranches.cpp:42
+msgid "Branch"
+msgstr "ענף"
+
+#: lib/layouts/stdinsets.inc:179 lib/layouts/minimalistic.module:8
+#: src/insets/InsetIndex.cpp:132
+msgid "Index"
+msgstr "אינדקס"
 
 #: lib/layouts/stdinsets.inc:180 lib/layouts/minimalistic.module:10
 #, fuzzy
 msgid "Idx"
 msgstr "אינדקס:"
+
+#: lib/layouts/stdinsets.inc:202 src/insets/InsetBox.cpp:145
+msgid "Box"
+msgstr "תיבה"
+
+#: lib/layouts/stdinsets.inc:210
+#, fuzzy
+msgid "Box:Shaded"
+msgstr "&צבועה"
+
+#: lib/layouts/stdinsets.inc:219
+#, fuzzy
+msgid "figure"
+msgstr "איור"
+
+#: lib/layouts/stdinsets.inc:228
+#, fuzzy
+msgid "table"
+msgstr "טבלה"
+
+#: lib/layouts/stdinsets.inc:237
+#, fuzzy
+msgid "algorithm"
+msgstr "אלגוריתם"
+
+#: lib/layouts/stdinsets.inc:266
+msgid "OptArg"
+msgstr ""
 
 #: lib/layouts/stdinsets.inc:267
 msgid "opt"
@@ -8024,6 +8299,11 @@ msgid ""
 "\\theendnotes in ERT where you want the endnotes to appear."
 msgstr ""
 
+#: lib/layouts/endnotes.module:9
+#, fuzzy
+msgid "Custom:Endnote"
+msgstr "הערה"
+
 #: lib/layouts/endnotes.module:18
 #, fuzzy
 msgid "endnote"
@@ -8088,24 +8368,49 @@ msgstr "דוגמה"
 msgid "Subexample:"
 msgstr "דוגמה"
 
+#: lib/layouts/linguistics.module:68
+#, fuzzy
+msgid "Custom:Glosse"
+msgstr "לקוח"
+
 #: lib/layouts/linguistics.module:70
 #, fuzzy
 msgid "Glosse"
 msgstr "סגור"
 
+#: lib/layouts/linguistics.module:92
+#, fuzzy
+msgid "Custom:Tri-Glosse"
+msgstr "לקוח"
+
 #: lib/layouts/linguistics.module:94
 msgid "Tri-Glosse"
 msgstr ""
+
+#: lib/layouts/linguistics.module:114
+#, fuzzy
+msgid "CharStyle:Expression"
+msgstr "סגנון תו: "
 
 #: lib/layouts/linguistics.module:116
 #, fuzzy
 msgid "expr."
 msgstr "exp"
 
+#: lib/layouts/linguistics.module:128
+#, fuzzy
+msgid "CharStyle:Concepts"
+msgstr "סגנון תו: "
+
 #: lib/layouts/linguistics.module:130
 #, fuzzy
 msgid "concept"
 msgstr "אשר"
+
+#: lib/layouts/linguistics.module:142
+#, fuzzy
+msgid "CharStyle:Meaning"
+msgstr "סגנון תו: "
 
 #: lib/layouts/linguistics.module:144
 #, fuzzy
@@ -8123,20 +8428,40 @@ msgid ""
 "code."
 msgstr ""
 
+#: lib/layouts/logicalmkup.module:10
+#, fuzzy
+msgid "CharStyle:Noun"
+msgstr "סגנון תו: "
+
 #: lib/layouts/logicalmkup.module:12
 #, fuzzy
 msgid "noun"
 msgstr "פועל"
+
+#: lib/layouts/logicalmkup.module:22
+#, fuzzy
+msgid "CharStyle:Emph"
+msgstr "סגנון תו: "
 
 #: lib/layouts/logicalmkup.module:24
 #, fuzzy
 msgid "emph"
 msgstr "הדגש"
 
+#: lib/layouts/logicalmkup.module:33
+#, fuzzy
+msgid "CharStyle:Strong"
+msgstr "סגנון תו: "
+
 #: lib/layouts/logicalmkup.module:35
 #, fuzzy
 msgid "strong"
 msgstr "רישום קוד"
+
+#: lib/layouts/logicalmkup.module:47
+#, fuzzy
+msgid "CharStyle:Code"
+msgstr "סגנון תו: "
 
 #: lib/layouts/logicalmkup.module:49
 #, fuzzy
@@ -16231,10 +16556,6 @@ msgstr "הגדרות תיבה"
 msgid "Branch Settings"
 msgstr "הגדרות ענף"
 
-#: src/frontends/qt4/GuiBranches.cpp:42
-msgid "Branch"
-msgstr "ענף"
-
 #: src/frontends/qt4/GuiBranches.cpp:43
 msgid "Activated"
 msgstr "מופעל"
@@ -18293,10 +18614,6 @@ msgstr "כפול"
 msgid "Opened Box Inset"
 msgstr "התוסף \"תיבה\" פתוח"
 
-#: src/insets/InsetBox.cpp:145
-msgid "Box"
-msgstr "תיבה"
-
 #: src/insets/InsetBranch.cpp:55
 msgid "Opened Branch Inset"
 msgstr "התוסף \"ענף\" פתוח"
@@ -18495,10 +18812,6 @@ msgstr ""
 #, fuzzy
 msgid "Module not found"
 msgstr "קובץ לא נמצא"
-
-#: src/insets/InsetIndex.cpp:132
-msgid "Index"
-msgstr "אינדקס"
 
 #: src/insets/InsetInfo.cpp:81
 #, fuzzy
@@ -19623,9 +19936,6 @@ msgstr "משתמש לא מוכר"
 #~ msgid "Framed in box"
 #~ msgstr "הערה בתוך מסגרת"
 
-#~ msgid "&Shaded"
-#~ msgstr "&צבועה"
-
 #~ msgid "Paper Size"
 #~ msgstr "גודל דף"
 
@@ -19776,6 +20086,3 @@ msgstr "משתמש לא מוכר"
 
 #~ msgid "Text Wrap Settings"
 #~ msgstr "הגדרות גלישת שורות"
-
-#~ msgid "CharStyle: "
-#~ msgstr "סגנון תו: "

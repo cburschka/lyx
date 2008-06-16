@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-16 16:23+0200\n"
+"POT-Creation-Date: 2008-06-16 16:54+0200\n"
 "PO-Revision-Date: 2008-04-22 23:28+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-devel@lists.lyx.org>\n"
@@ -1357,7 +1357,8 @@ msgstr "水平フィル"
 #: src/frontends/qt4/ui/ParagraphUi.ui:255
 #: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
 #: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
-#: src/frontends/qt4/GuiDocument.cpp:585 src/frontends/qt4/GuiDocument.cpp:688
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:585
+#: src/frontends/qt4/GuiDocument.cpp:688
 msgid "Custom"
 msgstr "任意設定"
 
@@ -1415,7 +1416,8 @@ msgstr "ファイル(&F)"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:76
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90 lib/layouts/scrlttr2.layout:205
-#: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:251
+#: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:246
+#: lib/layouts/stdinsets.inc:251 lib/layouts/minimalistic.module:34
 #: lib/layouts/minimalistic.module:39 lib/ui/stdmenus.inc:340
 msgid "URL"
 msgstr "URL"
@@ -4405,6 +4407,15 @@ msgstr "謝辞."
 msgid "Key words."
 msgstr "キーワード."
 
+#: lib/layouts/aa.layout:349
+#, fuzzy
+msgid "CharStyle:Institute"
+msgstr "所属機関"
+
+#: lib/layouts/aa.layout:359
+msgid "CharStyle:E-Mail"
+msgstr ""
+
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612
 #: src/frontends/qt4/GuiPrefs.cpp:524
 msgid "LaTeX"
@@ -4996,18 +5007,36 @@ msgstr "注釈アイテム"
 msgid "Note:"
 msgstr "注釈:"
 
+#: lib/layouts/beamer.layout:1087
+msgid "CharStyle:Alert"
+msgstr ""
+
 #: lib/layouts/beamer.layout:1089
 msgid "Alert"
 msgstr "強調ブロック"
+
+#: lib/layouts/beamer.layout:1098
+#, fuzzy
+msgid "CharStyle:Structure"
+msgstr "構造"
 
 #: lib/layouts/beamer.layout:1100
 msgid "Structure"
 msgstr "構造"
 
+#: lib/layouts/beamer.layout:1109
+msgid "Custom:ArticleMode"
+msgstr ""
+
 #: lib/layouts/beamer.layout:1114
 #, fuzzy
 msgid "Article"
 msgstr "垂直"
+
+#: lib/layouts/beamer.layout:1119
+#, fuzzy
+msgid "Custom:PresentationMode"
+msgstr "用紙方向(&O)"
 
 #: lib/layouts/beamer.layout:1124
 #, fuzzy
@@ -7129,59 +7158,132 @@ msgstr "電子メール:"
 msgid "Thesaurus not supported in recent A&A:"
 msgstr "同義語辞典は最近のA&Aではサポートされていません:"
 
+#: lib/layouts/agu_stdclass.inc:34 lib/layouts/db_stdcharstyles.inc:35
+#, fuzzy
+msgid "Element:Firstname"
+msgstr "名"
+
 #: lib/layouts/agu_stdclass.inc:36 lib/layouts/db_stdcharstyles.inc:37
 msgid "Firstname"
 msgstr "名"
 
+#: lib/layouts/agu_stdclass.inc:48
+msgid "Element:Fname"
+msgstr ""
+
 #: lib/layouts/agu_stdclass.inc:50
 msgid "Fname"
 msgstr "名"
+
+#: lib/layouts/agu_stdclass.inc:63 lib/layouts/db_stdcharstyles.inc:46
+#, fuzzy
+msgid "Element:Surname"
+msgstr "姓"
 
 #: lib/layouts/agu_stdclass.inc:65 lib/layouts/db_stdcharstyles.inc:48
 #: lib/layouts/db_stdtitle.inc:98
 msgid "Surname"
 msgstr "姓"
 
+#: lib/layouts/agu_stdclass.inc:78 lib/layouts/db_stdcharstyles.inc:6
+#, fuzzy
+msgid "Element:Filename"
+msgstr "ファイル名"
+
+#: lib/layouts/agu_stdclass.inc:93 lib/layouts/db_stdcharstyles.inc:57
+#, fuzzy
+msgid "Element:Literal"
+msgstr "文字通り"
+
 #: lib/layouts/agu_stdclass.inc:95 lib/layouts/db_stdcharstyles.inc:59
 #: lib/layouts/db_stdlayouts.inc:11
 msgid "Literal"
 msgstr "文字通り"
 
+#: lib/layouts/agu_stdclass.inc:108
+#, fuzzy
+msgid "Element:Emph"
+msgstr "配置(&P):"
+
 #: lib/layouts/agu_stdclass.inc:110 src/frontends/qt4/GuiCharacter.cpp:77
 msgid "Emph"
 msgstr "強調"
+
+#: lib/layouts/agu_stdclass.inc:124
+#, fuzzy
+msgid "Element:Abbrev"
+msgstr "略語"
 
 #: lib/layouts/agu_stdclass.inc:126
 msgid "Abbrev"
 msgstr "略語"
 
+#: lib/layouts/agu_stdclass.inc:135
+#, fuzzy
+msgid "Element:Citation-number"
+msgstr "引用番号"
+
 #: lib/layouts/agu_stdclass.inc:137 lib/layouts/agu_stdtitle.inc:56
 msgid "Citation-number"
 msgstr "引用番号"
+
+#: lib/layouts/agu_stdclass.inc:146
+#, fuzzy
+msgid "Element:Volume"
+msgstr "巻"
 
 #: lib/layouts/agu_stdclass.inc:148
 msgid "Volume"
 msgstr "巻"
 
+#: lib/layouts/agu_stdclass.inc:157
+#, fuzzy
+msgid "Element:Day"
+msgstr "配置(&P):"
+
 #: lib/layouts/agu_stdclass.inc:159
 msgid "Day"
 msgstr "日"
+
+#: lib/layouts/agu_stdclass.inc:168
+msgid "Element:Month"
+msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:170
 msgid "Month"
 msgstr "月"
 
+#: lib/layouts/agu_stdclass.inc:179
+#, fuzzy
+msgid "Element:Year"
+msgstr "配置(&P):"
+
 #: lib/layouts/agu_stdclass.inc:181
 msgid "Year"
 msgstr "年"
+
+#: lib/layouts/agu_stdclass.inc:190
+#, fuzzy
+msgid "Element:Issue-number"
+msgstr "発行号"
 
 #: lib/layouts/agu_stdclass.inc:192
 msgid "Issue-number"
 msgstr "発行号"
 
+#: lib/layouts/agu_stdclass.inc:201
+#, fuzzy
+msgid "Element:Issue-day"
+msgstr "発行日"
+
 #: lib/layouts/agu_stdclass.inc:203
 msgid "Issue-day"
 msgstr "発行日"
+
+#: lib/layouts/agu_stdclass.inc:212
+#, fuzzy
+msgid "Element:Issue-months"
+msgstr "発行月"
 
 #: lib/layouts/agu_stdclass.inc:214
 msgid "Issue-months"
@@ -7371,45 +7473,118 @@ msgstr "データセット"
 msgid "Datasets:"
 msgstr "データセット:"
 
+#: lib/layouts/agu_stdtitle.inc:321
+#, fuzzy
+msgid "Element:ISSN"
+msgstr "配置(&P):"
+
 #: lib/layouts/agu_stdtitle.inc:323
 msgid "ISSN"
 msgstr "ISSN"
+
+#: lib/layouts/agu_stdtitle.inc:332
+msgid "Element:CODEN"
+msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:334
 msgid "CODEN"
 msgstr "CODEN"
 
+#: lib/layouts/agu_stdtitle.inc:344
+#, fuzzy
+msgid "Element:SS-Code"
+msgstr "SSコード"
+
 #: lib/layouts/agu_stdtitle.inc:346
 msgid "SS-Code"
 msgstr "SSコード"
+
+#: lib/layouts/agu_stdtitle.inc:355
+#, fuzzy
+msgid "Element:SS-Title"
+msgstr "SSタイトル"
 
 #: lib/layouts/agu_stdtitle.inc:357
 msgid "SS-Title"
 msgstr "SSタイトル"
 
+#: lib/layouts/agu_stdtitle.inc:367
+#, fuzzy
+msgid "Element:CCC-Code"
+msgstr "CCCコード"
+
 #: lib/layouts/agu_stdtitle.inc:369
 msgid "CCC-Code"
 msgstr "CCCコード"
+
+#: lib/layouts/agu_stdtitle.inc:380
+#, fuzzy
+msgid "Element:Code"
+msgstr "配置(&P):"
+
+#: lib/layouts/agu_stdtitle.inc:391
+#, fuzzy
+msgid "Element:Dscr"
+msgstr "ブロック要素"
 
 #: lib/layouts/agu_stdtitle.inc:393
 msgid "Dscr"
 msgstr "Dscr"
 
+#: lib/layouts/agu_stdtitle.inc:403
+#, fuzzy
+msgid "Element:Keyword"
+msgstr "キーワード"
+
+#: lib/layouts/agu_stdtitle.inc:415
+#, fuzzy
+msgid "Element:Orgdiv"
+msgstr "組織部署"
+
 #: lib/layouts/agu_stdtitle.inc:417
 msgid "Orgdiv"
 msgstr "組織部署"
+
+#: lib/layouts/agu_stdtitle.inc:426
+#, fuzzy
+msgid "Element:Orgname"
+msgstr "組織名"
 
 #: lib/layouts/agu_stdtitle.inc:428
 msgid "Orgname"
 msgstr "組織名"
 
+#: lib/layouts/agu_stdtitle.inc:437
+#, fuzzy
+msgid "Element:Street"
+msgstr "通り"
+
+#: lib/layouts/agu_stdtitle.inc:448
+#, fuzzy
+msgid "Element:City"
+msgstr "配置(&P):"
+
 #: lib/layouts/agu_stdtitle.inc:450
 msgid "City"
 msgstr "市"
 
+#: lib/layouts/agu_stdtitle.inc:459
+msgid "Element:State"
+msgstr ""
+
+#: lib/layouts/agu_stdtitle.inc:470
+#, fuzzy
+msgid "Element:Postcode"
+msgstr "郵便番号"
+
 #: lib/layouts/agu_stdtitle.inc:472
 msgid "Postcode"
 msgstr "郵便番号"
+
+#: lib/layouts/agu_stdtitle.inc:481
+#, fuzzy
+msgid "Element:Country"
+msgstr "国"
 
 #: lib/layouts/agu_stdtitle.inc:483
 msgid "Country"
@@ -7503,29 +7678,68 @@ msgstr "分野分類"
 msgid "2000 Mathematics Subject Classification:"
 msgstr "2000年数学分野分類:"
 
+#: lib/layouts/db_stdcharstyles.inc:20
+#, fuzzy
+msgid "Element:Directory"
+msgstr "ディレクトリ"
+
 #: lib/layouts/db_stdcharstyles.inc:22
 msgid "Directory"
 msgstr "ディレクトリ"
+
+#: lib/layouts/db_stdcharstyles.inc:71
+msgid "Element:Email"
+msgstr ""
+
+#: lib/layouts/db_stdcharstyles.inc:85
+#, fuzzy
+msgid "Element:KeyCombo"
+msgstr "キー入力"
 
 #: lib/layouts/db_stdcharstyles.inc:87
 msgid "KeyCombo"
 msgstr "キー入力"
 
+#: lib/layouts/db_stdcharstyles.inc:99
+#, fuzzy
+msgid "Element:KeyCap"
+msgstr "キー名"
+
 #: lib/layouts/db_stdcharstyles.inc:101
 msgid "KeyCap"
 msgstr "キー名"
+
+#: lib/layouts/db_stdcharstyles.inc:113
+#, fuzzy
+msgid "Element:GuiMenu"
+msgstr "GUIメニュー"
 
 #: lib/layouts/db_stdcharstyles.inc:115
 msgid "GuiMenu"
 msgstr "GUIメニュー"
 
+#: lib/layouts/db_stdcharstyles.inc:127
+#, fuzzy
+msgid "Element:GuiMenuItem"
+msgstr "GUIメニューアイテム"
+
 #: lib/layouts/db_stdcharstyles.inc:129
 msgid "GuiMenuItem"
 msgstr "GUIメニューアイテム"
 
+#: lib/layouts/db_stdcharstyles.inc:141
+#, fuzzy
+msgid "Element:GuiButton"
+msgstr "GUIボタン"
+
 #: lib/layouts/db_stdcharstyles.inc:143
 msgid "GuiButton"
 msgstr "GUIボタン"
+
+#: lib/layouts/db_stdcharstyles.inc:155
+#, fuzzy
+msgid "Element:MenuChoice"
+msgstr "メニュー選択"
 
 #: lib/layouts/db_stdcharstyles.inc:157
 msgid "MenuChoice"
@@ -7667,6 +7881,11 @@ msgstr "下部キャプション"
 msgid "Dictum"
 msgstr "格言(dictum)"
 
+#: lib/layouts/stdcharstyles.inc:8
+#, fuzzy
+msgid "CharStyle"
+msgstr "様式"
+
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
 #: src/insets/InsetCollapsable.cpp:151
 msgid "UNDEFINED"
@@ -7676,38 +7895,100 @@ msgstr "無定義"
 msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
+#: lib/layouts/stdinsets.inc:54
+#, fuzzy
+msgid "Marginal"
+msgstr "傍注"
+
 #: lib/layouts/stdinsets.inc:55 src/insets/InsetMarginal.cpp:50
 msgid "margin"
 msgstr "傍注"
+
+#: lib/layouts/stdinsets.inc:75
+#, fuzzy
+msgid "Foot"
+msgstr "脚注"
 
 #: lib/layouts/stdinsets.inc:76
 msgid "foot"
 msgstr "脚注"
 
+#: lib/layouts/stdinsets.inc:96
+#, fuzzy
+msgid "Note:Comment"
+msgstr "コメント"
+
 #: lib/layouts/stdinsets.inc:97
 msgid "comment"
 msgstr "コメント"
+
+#: lib/layouts/stdinsets.inc:109
+#, fuzzy
+msgid "Note:Note"
+msgstr "注釈:"
 
 #: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:297
 msgid "note"
 msgstr "注釈"
 
+#: lib/layouts/stdinsets.inc:121
+#, fuzzy
+msgid "Note:Greyedout"
+msgstr "淡色表示"
+
 #: lib/layouts/stdinsets.inc:122
 msgid "greyedout"
 msgstr "淡色表示"
 
-#: lib/layouts/stdinsets.inc:134 src/insets/InsetERT.cpp:166
-#: src/insets/InsetERT.cpp:168
+#: lib/layouts/stdinsets.inc:133 lib/layouts/stdinsets.inc:134
+#: src/insets/InsetERT.cpp:166 src/insets/InsetERT.cpp:168
 msgid "ERT"
 msgstr "ERT"
 
-#: lib/layouts/stdinsets.inc:153
+#: lib/layouts/stdinsets.inc:152 lib/layouts/stdinsets.inc:153
 msgid "Listings"
 msgstr "リスト"
+
+#: lib/layouts/stdinsets.inc:170 lib/layouts/minimalistic.module:25
+#: src/frontends/qt4/GuiBranches.cpp:42
+msgid "Branch"
+msgstr "派生枝"
+
+#: lib/layouts/stdinsets.inc:179 lib/layouts/minimalistic.module:8
+#: src/insets/InsetIndex.cpp:132
+msgid "Index"
+msgstr "索引"
 
 #: lib/layouts/stdinsets.inc:180 lib/layouts/minimalistic.module:10
 msgid "Idx"
 msgstr "索引"
+
+#: lib/layouts/stdinsets.inc:202 src/insets/InsetBox.cpp:145
+msgid "Box"
+msgstr "ボックス"
+
+#: lib/layouts/stdinsets.inc:210
+msgid "Box:Shaded"
+msgstr ""
+
+#: lib/layouts/stdinsets.inc:219
+#, fuzzy
+msgid "figure"
+msgstr "図"
+
+#: lib/layouts/stdinsets.inc:228
+#, fuzzy
+msgid "table"
+msgstr "表"
+
+#: lib/layouts/stdinsets.inc:237
+#, fuzzy
+msgid "algorithm"
+msgstr "アルゴリズム"
+
+#: lib/layouts/stdinsets.inc:266
+msgid "OptArg"
+msgstr ""
 
 #: lib/layouts/stdinsets.inc:267
 msgid "opt"
@@ -7906,6 +8187,11 @@ msgstr ""
 "footnoteコマンドに加え、endnoteコマンドを追加する。巻末注を表示させたいところ"
 "で\\theendnotesと書いたERTを挿入する必要があります。"
 
+#: lib/layouts/endnotes.module:9
+#, fuzzy
+msgid "Custom:Endnote"
+msgstr "巻末注"
+
 #: lib/layouts/endnotes.module:18
 msgid "endnote"
 msgstr "巻末注"
@@ -7967,21 +8253,44 @@ msgstr "小例"
 msgid "Subexample:"
 msgstr "小例:"
 
+#: lib/layouts/linguistics.module:68
+#, fuzzy
+msgid "Custom:Glosse"
+msgstr "顧客"
+
 #: lib/layouts/linguistics.module:70
 msgid "Glosse"
 msgstr "語句注解"
+
+#: lib/layouts/linguistics.module:92
+#, fuzzy
+msgid "Custom:Tri-Glosse"
+msgstr "三行語句注解"
 
 #: lib/layouts/linguistics.module:94
 msgid "Tri-Glosse"
 msgstr "三行語句注解"
 
+#: lib/layouts/linguistics.module:114
+#, fuzzy
+msgid "CharStyle:Expression"
+msgstr "正規表現(&X)"
+
 #: lib/layouts/linguistics.module:116
 msgid "expr."
 msgstr "表現"
 
+#: lib/layouts/linguistics.module:128
+msgid "CharStyle:Concepts"
+msgstr ""
+
 #: lib/layouts/linguistics.module:130
 msgid "concept"
 msgstr "概念"
+
+#: lib/layouts/linguistics.module:142
+msgid "CharStyle:Meaning"
+msgstr ""
 
 #: lib/layouts/linguistics.module:144
 msgid "meaning"
@@ -7999,17 +8308,33 @@ msgstr ""
 "論理マークアップ用にいくつかの文字様式（名詞・強調・ストロング・コード）を定"
 "義します。"
 
+#: lib/layouts/logicalmkup.module:10
+msgid "CharStyle:Noun"
+msgstr ""
+
 #: lib/layouts/logicalmkup.module:12
 msgid "noun"
 msgstr "名詞"
+
+#: lib/layouts/logicalmkup.module:22
+msgid "CharStyle:Emph"
+msgstr ""
 
 #: lib/layouts/logicalmkup.module:24
 msgid "emph"
 msgstr "強調"
 
+#: lib/layouts/logicalmkup.module:33
+msgid "CharStyle:Strong"
+msgstr ""
+
 #: lib/layouts/logicalmkup.module:35
 msgid "strong"
 msgstr "ストロング"
+
+#: lib/layouts/logicalmkup.module:47
+msgid "CharStyle:Code"
+msgstr ""
 
 #: lib/layouts/logicalmkup.module:49
 msgid "code"
@@ -16064,10 +16389,6 @@ msgstr "ボックスの設定"
 msgid "Branch Settings"
 msgstr "派生枝の設定"
 
-#: src/frontends/qt4/GuiBranches.cpp:42
-msgid "Branch"
-msgstr "派生枝"
-
 #: src/frontends/qt4/GuiBranches.cpp:43
 msgid "Activated"
 msgstr "有効化"
@@ -18032,10 +18353,6 @@ msgstr "二重縁"
 msgid "Opened Box Inset"
 msgstr "展開された縁付き差込枠"
 
-#: src/insets/InsetBox.cpp:145
-msgid "Box"
-msgstr "ボックス"
-
 #: src/insets/InsetBranch.cpp:55
 msgid "Opened Branch Inset"
 msgstr "展開された派生枝差込枠"
@@ -18225,10 +18542,6 @@ msgstr ""
 #: src/insets/InsetInclude.cpp:513
 msgid "Module not found"
 msgstr "モジュールが見つかりません"
-
-#: src/insets/InsetIndex.cpp:132
-msgid "Index"
-msgstr "索引"
 
 #: src/insets/InsetInfo.cpp:81
 msgid "Information regarding "

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-06-16 16:23+0200\n"
+"POT-Creation-Date: 2008-06-16 16:54+0200\n"
 "PO-Revision-Date: 2007-05-15 16:13+0900\n"
 "Last-Translator: cghan <cghan@pusan.ac.kr>\n"
 "Language-Team: hangul <ko@li.org>\n"
@@ -1355,7 +1355,8 @@ msgstr "가로(&Horizontal) 맞추기"
 #: src/frontends/qt4/ui/ParagraphUi.ui:255
 #: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
 #: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
-#: src/frontends/qt4/GuiDocument.cpp:585 src/frontends/qt4/GuiDocument.cpp:688
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:585
+#: src/frontends/qt4/GuiDocument.cpp:688
 msgid "Custom"
 msgstr ""
 
@@ -1417,7 +1418,8 @@ msgstr "파일(&File):"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:76
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90 lib/layouts/scrlttr2.layout:205
-#: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:251
+#: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:246
+#: lib/layouts/stdinsets.inc:251 lib/layouts/minimalistic.module:34
 #: lib/layouts/minimalistic.module:39 lib/ui/stdmenus.inc:340
 msgid "URL"
 msgstr ""
@@ -4434,6 +4436,15 @@ msgstr ""
 msgid "Key words."
 msgstr ""
 
+#: lib/layouts/aa.layout:349
+#, fuzzy
+msgid "CharStyle:Institute"
+msgstr "열려있는 문자스타일 삽입구(CharStyle Inset) "
+
+#: lib/layouts/aa.layout:359
+msgid "CharStyle:E-Mail"
+msgstr ""
+
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612
 #: src/frontends/qt4/GuiPrefs.cpp:524
 msgid "LaTeX"
@@ -5030,18 +5041,35 @@ msgstr ""
 msgid "Note:"
 msgstr "노우트(Note)"
 
+#: lib/layouts/beamer.layout:1087
+msgid "CharStyle:Alert"
+msgstr ""
+
 #: lib/layouts/beamer.layout:1089
 msgid "Alert"
+msgstr ""
+
+#: lib/layouts/beamer.layout:1098
+msgid "CharStyle:Structure"
 msgstr ""
 
 #: lib/layouts/beamer.layout:1100
 msgid "Structure"
 msgstr ""
 
+#: lib/layouts/beamer.layout:1109
+msgid "Custom:ArticleMode"
+msgstr ""
+
 #: lib/layouts/beamer.layout:1114
 #, fuzzy
 msgid "Article"
 msgstr "파일"
+
+#: lib/layouts/beamer.layout:1119
+#, fuzzy
+msgid "Custom:PresentationMode"
+msgstr "인용(Citation):"
 
 #: lib/layouts/beamer.layout:1124
 #, fuzzy
@@ -7181,19 +7209,42 @@ msgstr ""
 msgid "Thesaurus not supported in recent A&A:"
 msgstr ""
 
+#: lib/layouts/agu_stdclass.inc:34 lib/layouts/db_stdcharstyles.inc:35
+#, fuzzy
+msgid "Element:Firstname"
+msgstr "파일이름 "
+
 #: lib/layouts/agu_stdclass.inc:36 lib/layouts/db_stdcharstyles.inc:37
 #, fuzzy
 msgid "Firstname"
 msgstr "파일이름 "
+
+#: lib/layouts/agu_stdclass.inc:48
+#, fuzzy
+msgid "Element:Fname"
+msgstr "배치(&Placement):"
 
 #: lib/layouts/agu_stdclass.inc:50
 #, fuzzy
 msgid "Fname"
 msgstr "파일이름 "
 
+#: lib/layouts/agu_stdclass.inc:63 lib/layouts/db_stdcharstyles.inc:46
+msgid "Element:Surname"
+msgstr ""
+
 #: lib/layouts/agu_stdclass.inc:65 lib/layouts/db_stdcharstyles.inc:48
 #: lib/layouts/db_stdtitle.inc:98
 msgid "Surname"
+msgstr ""
+
+#: lib/layouts/agu_stdclass.inc:78 lib/layouts/db_stdcharstyles.inc:6
+#, fuzzy
+msgid "Element:Filename"
+msgstr "파일이름 "
+
+#: lib/layouts/agu_stdclass.inc:93 lib/layouts/db_stdcharstyles.inc:57
+msgid "Element:Literal"
 msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:95 lib/layouts/db_stdcharstyles.inc:59
@@ -7201,42 +7252,88 @@ msgstr ""
 msgid "Literal"
 msgstr ""
 
+#: lib/layouts/agu_stdclass.inc:108
+#, fuzzy
+msgid "Element:Emph"
+msgstr "배치(&Placement):"
+
 #: lib/layouts/agu_stdclass.inc:110 src/frontends/qt4/GuiCharacter.cpp:77
 msgid "Emph"
+msgstr ""
+
+#: lib/layouts/agu_stdclass.inc:124
+msgid "Element:Abbrev"
 msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:126
 msgid "Abbrev"
 msgstr ""
 
+#: lib/layouts/agu_stdclass.inc:135
+#, fuzzy
+msgid "Element:Citation-number"
+msgstr "인용-넘버(Citation-number)"
+
 #: lib/layouts/agu_stdclass.inc:137 lib/layouts/agu_stdtitle.inc:56
 msgid "Citation-number"
 msgstr "인용-넘버(Citation-number)"
+
+#: lib/layouts/agu_stdclass.inc:146
+#, fuzzy
+msgid "Element:Volume"
+msgstr "값(&Value):"
 
 #: lib/layouts/agu_stdclass.inc:148
 #, fuzzy
 msgid "Volume"
 msgstr "값(&Value):"
 
+#: lib/layouts/agu_stdclass.inc:157
+#, fuzzy
+msgid "Element:Day"
+msgstr "배치(&Placement):"
+
 #: lib/layouts/agu_stdclass.inc:159
 msgid "Day"
 msgstr ""
+
+#: lib/layouts/agu_stdclass.inc:168
+#, fuzzy
+msgid "Element:Month"
+msgstr "배치(&Placement):"
 
 #: lib/layouts/agu_stdclass.inc:170
 #, fuzzy
 msgid "Month"
 msgstr "수식(Math)"
 
+#: lib/layouts/agu_stdclass.inc:179
+#, fuzzy
+msgid "Element:Year"
+msgstr "배치(&Placement):"
+
 #: lib/layouts/agu_stdclass.inc:181
 msgid "Year"
+msgstr ""
+
+#: lib/layouts/agu_stdclass.inc:190
+msgid "Element:Issue-number"
 msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:192
 msgid "Issue-number"
 msgstr ""
 
+#: lib/layouts/agu_stdclass.inc:201
+msgid "Element:Issue-day"
+msgstr ""
+
 #: lib/layouts/agu_stdclass.inc:203
 msgid "Issue-day"
+msgstr ""
+
+#: lib/layouts/agu_stdclass.inc:212
+msgid "Element:Issue-months"
 msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:214
@@ -7427,48 +7524,118 @@ msgstr ""
 msgid "Datasets:"
 msgstr ""
 
+#: lib/layouts/agu_stdtitle.inc:321
+#, fuzzy
+msgid "Element:ISSN"
+msgstr "배치(&Placement):"
+
 #: lib/layouts/agu_stdtitle.inc:323
 msgid "ISSN"
 msgstr ""
 
+#: lib/layouts/agu_stdtitle.inc:332
+#, fuzzy
+msgid "Element:CODEN"
+msgstr "배치(&Placement):"
+
 #: lib/layouts/agu_stdtitle.inc:334
 msgid "CODEN"
+msgstr ""
+
+#: lib/layouts/agu_stdtitle.inc:344
+msgid "Element:SS-Code"
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:346
 msgid "SS-Code"
 msgstr ""
 
+#: lib/layouts/agu_stdtitle.inc:355
+#, fuzzy
+msgid "Element:SS-Title"
+msgstr "제목:"
+
 #: lib/layouts/agu_stdtitle.inc:357
 #, fuzzy
 msgid "SS-Title"
 msgstr "제목:"
 
+#: lib/layouts/agu_stdtitle.inc:367
+msgid "Element:CCC-Code"
+msgstr ""
+
 #: lib/layouts/agu_stdtitle.inc:369
 msgid "CCC-Code"
 msgstr ""
 
+#: lib/layouts/agu_stdtitle.inc:380
+#, fuzzy
+msgid "Element:Code"
+msgstr "배치(&Placement):"
+
+#: lib/layouts/agu_stdtitle.inc:391
+#, fuzzy
+msgid "Element:Dscr"
+msgstr "배치(&Placement):"
+
 #: lib/layouts/agu_stdtitle.inc:393
 msgid "Dscr"
+msgstr ""
+
+#: lib/layouts/agu_stdtitle.inc:403
+msgid "Element:Keyword"
+msgstr ""
+
+#: lib/layouts/agu_stdtitle.inc:415
+msgid "Element:Orgdiv"
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:417
 msgid "Orgdiv"
 msgstr ""
 
+#: lib/layouts/agu_stdtitle.inc:426
+#, fuzzy
+msgid "Element:Orgname"
+msgstr "파일이름 "
+
 #: lib/layouts/agu_stdtitle.inc:428
 #, fuzzy
 msgid "Orgname"
 msgstr "파일이름 "
 
+#: lib/layouts/agu_stdtitle.inc:437
+msgid "Element:Street"
+msgstr ""
+
+#: lib/layouts/agu_stdtitle.inc:448
+#, fuzzy
+msgid "Element:City"
+msgstr "배치(&Placement):"
+
 #: lib/layouts/agu_stdtitle.inc:450
 msgid "City"
 msgstr ""
+
+#: lib/layouts/agu_stdtitle.inc:459
+#, fuzzy
+msgid "Element:State"
+msgstr "배치(&Placement):"
+
+#: lib/layouts/agu_stdtitle.inc:470
+#, fuzzy
+msgid "Element:Postcode"
+msgstr "붙이기"
 
 #: lib/layouts/agu_stdtitle.inc:472
 #, fuzzy
 msgid "Postcode"
 msgstr "붙이기"
+
+#: lib/layouts/agu_stdtitle.inc:481
+#, fuzzy
+msgid "Element:Country"
+msgstr "바깥쪽(Outer)"
 
 #: lib/layouts/agu_stdtitle.inc:483
 #, fuzzy
@@ -7563,30 +7730,65 @@ msgstr ""
 msgid "2000 Mathematics Subject Classification:"
 msgstr ""
 
+#: lib/layouts/db_stdcharstyles.inc:20
+#, fuzzy
+msgid "Element:Directory"
+msgstr "파일을 발견할 수 없음"
+
 #: lib/layouts/db_stdcharstyles.inc:22
 #, fuzzy
 msgid "Directory"
 msgstr "파일을 발견할 수 없음"
 
+#: lib/layouts/db_stdcharstyles.inc:71
+#, fuzzy
+msgid "Element:Email"
+msgstr "배치(&Placement):"
+
+#: lib/layouts/db_stdcharstyles.inc:85
+msgid "Element:KeyCombo"
+msgstr ""
+
 #: lib/layouts/db_stdcharstyles.inc:87
 msgid "KeyCombo"
 msgstr ""
+
+#: lib/layouts/db_stdcharstyles.inc:99
+#, fuzzy
+msgid "Element:KeyCap"
+msgstr "표제(Caption)"
 
 #: lib/layouts/db_stdcharstyles.inc:101
 #, fuzzy
 msgid "KeyCap"
 msgstr "표제(Caption)"
 
+#: lib/layouts/db_stdcharstyles.inc:113
+msgid "Element:GuiMenu"
+msgstr ""
+
 #: lib/layouts/db_stdcharstyles.inc:115
 msgid "GuiMenu"
+msgstr ""
+
+#: lib/layouts/db_stdcharstyles.inc:127
+msgid "Element:GuiMenuItem"
 msgstr ""
 
 #: lib/layouts/db_stdcharstyles.inc:129
 msgid "GuiMenuItem"
 msgstr ""
 
+#: lib/layouts/db_stdcharstyles.inc:141
+msgid "Element:GuiButton"
+msgstr ""
+
 #: lib/layouts/db_stdcharstyles.inc:143
 msgid "GuiButton"
+msgstr ""
+
+#: lib/layouts/db_stdcharstyles.inc:155
+msgid "Element:MenuChoice"
 msgstr ""
 
 #: lib/layouts/db_stdcharstyles.inc:157
@@ -7730,6 +7932,11 @@ msgstr ""
 msgid "Dictum"
 msgstr ""
 
+#: lib/layouts/stdcharstyles.inc:8
+#, fuzzy
+msgid "CharStyle"
+msgstr "형식(Style)"
+
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
 #: src/insets/InsetCollapsable.cpp:151
 msgid "UNDEFINED"
@@ -7739,44 +7946,108 @@ msgstr ""
 msgid "\\Roman{part}"
 msgstr ""
 
+#: lib/layouts/stdinsets.inc:54
+#, fuzzy
+msgid "Marginal"
+msgstr "방주 노우트(Marginal Note)|M"
+
 #: lib/layouts/stdinsets.inc:55 src/insets/InsetMarginal.cpp:50
 msgid "margin"
 msgstr ""
+
+#: lib/layouts/stdinsets.inc:75
+#, fuzzy
+msgid "Foot"
+msgstr "폰트"
 
 #: lib/layouts/stdinsets.inc:76
 #, fuzzy
 msgid "foot"
 msgstr "폰트"
 
+#: lib/layouts/stdinsets.inc:96
+#, fuzzy
+msgid "Note:Comment"
+msgstr "주석(Comment)"
+
 #: lib/layouts/stdinsets.inc:97
 #, fuzzy
 msgid "comment"
 msgstr "주석(Comment)"
+
+#: lib/layouts/stdinsets.inc:109
+#, fuzzy
+msgid "Note:Note"
+msgstr "노우트(Note)"
 
 #: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:297
 #, fuzzy
 msgid "note"
 msgstr "노우트(Note) #:"
 
+#: lib/layouts/stdinsets.inc:121
+#, fuzzy
+msgid "Note:Greyedout"
+msgstr "열려있는 노우트(Note) 삽입구"
+
 #: lib/layouts/stdinsets.inc:122
 #, fuzzy
 msgid "greyedout"
 msgstr "열려있는 노우트(Note) 삽입구"
 
-#: lib/layouts/stdinsets.inc:134 src/insets/InsetERT.cpp:166
-#: src/insets/InsetERT.cpp:168
+#: lib/layouts/stdinsets.inc:133 lib/layouts/stdinsets.inc:134
+#: src/insets/InsetERT.cpp:166 src/insets/InsetERT.cpp:168
 msgid "ERT"
 msgstr ""
 
-#: lib/layouts/stdinsets.inc:153
+#: lib/layouts/stdinsets.inc:152 lib/layouts/stdinsets.inc:153
 #, fuzzy
 msgid "Listings"
 msgstr "나가기"
+
+#: lib/layouts/stdinsets.inc:170 lib/layouts/minimalistic.module:25
+#: src/frontends/qt4/GuiBranches.cpp:42
+msgid "Branch"
+msgstr ""
+
+#: lib/layouts/stdinsets.inc:179 lib/layouts/minimalistic.module:8
+#: src/insets/InsetIndex.cpp:132
+#, fuzzy
+msgid "Index"
+msgstr "색인 기재 사항(Index Entry)"
 
 #: lib/layouts/stdinsets.inc:180 lib/layouts/minimalistic.module:10
 #, fuzzy
 msgid "Idx"
 msgstr "색인 기재 사항(Index Entry)"
+
+#: lib/layouts/stdinsets.inc:202 src/insets/InsetBox.cpp:145
+msgid "Box"
+msgstr "상자(Box)"
+
+#: lib/layouts/stdinsets.inc:210
+#, fuzzy
+msgid "Box:Shaded"
+msgstr "저장|S"
+
+#: lib/layouts/stdinsets.inc:219
+#, fuzzy
+msgid "figure"
+msgstr "그림"
+
+#: lib/layouts/stdinsets.inc:228
+#, fuzzy
+msgid "table"
+msgstr "테이블들"
+
+#: lib/layouts/stdinsets.inc:237
+#, fuzzy
+msgid "algorithm"
+msgstr "알고리듬"
+
+#: lib/layouts/stdinsets.inc:266
+msgid "OptArg"
+msgstr ""
 
 #: lib/layouts/stdinsets.inc:267
 msgid "opt"
@@ -7979,6 +8250,11 @@ msgid ""
 "\\theendnotes in ERT where you want the endnotes to appear."
 msgstr ""
 
+#: lib/layouts/endnotes.module:9
+#, fuzzy
+msgid "Custom:Endnote"
+msgstr "노우트(Note) #:"
+
 #: lib/layouts/endnotes.module:18
 #, fuzzy
 msgid "endnote"
@@ -8040,21 +8316,44 @@ msgstr "예제."
 msgid "Subexample:"
 msgstr "예제 #:"
 
+#: lib/layouts/linguistics.module:68
+#, fuzzy
+msgid "Custom:Glosse"
+msgstr "용어집(Glossary)"
+
 #: lib/layouts/linguistics.module:70
 #, fuzzy
 msgid "Glosse"
 msgstr "용어집(Glossary)"
 
+#: lib/layouts/linguistics.module:92
+#, fuzzy
+msgid "Custom:Tri-Glosse"
+msgstr "고객 번호(Customer no.):"
+
 #: lib/layouts/linguistics.module:94
 msgid "Tri-Glosse"
+msgstr ""
+
+#: lib/layouts/linguistics.module:114
+msgid "CharStyle:Expression"
 msgstr ""
 
 #: lib/layouts/linguistics.module:116
 msgid "expr."
 msgstr ""
 
+#: lib/layouts/linguistics.module:128
+#, fuzzy
+msgid "CharStyle:Concepts"
+msgstr "열려있는 문자스타일 삽입구(CharStyle Inset) "
+
 #: lib/layouts/linguistics.module:130
 msgid "concept"
+msgstr ""
+
+#: lib/layouts/linguistics.module:142
+msgid "CharStyle:Meaning"
 msgstr ""
 
 #: lib/layouts/linguistics.module:144
@@ -8072,20 +8371,36 @@ msgid ""
 "code."
 msgstr ""
 
+#: lib/layouts/logicalmkup.module:10
+msgid "CharStyle:Noun"
+msgstr ""
+
 #: lib/layouts/logicalmkup.module:12
 #, fuzzy
 msgid "noun"
 msgstr "노우트(Note) #:"
+
+#: lib/layouts/logicalmkup.module:22
+msgid "CharStyle:Emph"
+msgstr ""
 
 #: lib/layouts/logicalmkup.module:24
 #, fuzzy
 msgid "emph"
 msgstr "축적(Scale)"
 
+#: lib/layouts/logicalmkup.module:33
+msgid "CharStyle:Strong"
+msgstr ""
+
 #: lib/layouts/logicalmkup.module:35
 #, fuzzy
 msgid "strong"
 msgstr "나가기"
+
+#: lib/layouts/logicalmkup.module:47
+msgid "CharStyle:Code"
+msgstr ""
 
 #: lib/layouts/logicalmkup.module:49
 msgid "code"
@@ -16138,10 +16453,6 @@ msgstr "상자 구성(Box Settings)"
 msgid "Branch Settings"
 msgstr "뜨내기 구성(Float Settings)"
 
-#: src/frontends/qt4/GuiBranches.cpp:42
-msgid "Branch"
-msgstr ""
-
 #: src/frontends/qt4/GuiBranches.cpp:43
 msgid "Activated"
 msgstr ""
@@ -18239,10 +18550,6 @@ msgstr "테이블 삽입"
 msgid "Opened Box Inset"
 msgstr "열려있는 상자 삽입구(Box Inset)"
 
-#: src/insets/InsetBox.cpp:145
-msgid "Box"
-msgstr "상자(Box)"
-
 #: src/insets/InsetBranch.cpp:55
 msgid "Opened Branch Inset"
 msgstr "열려있는 Branch 삽입구(Inset)"
@@ -18437,11 +18744,6 @@ msgstr ""
 #, fuzzy
 msgid "Module not found"
 msgstr "파일을 발견할 수 없음"
-
-#: src/insets/InsetIndex.cpp:132
-#, fuzzy
-msgid "Index"
-msgstr "색인 기재 사항(Index Entry)"
 
 #: src/insets/InsetInfo.cpp:81
 #, fuzzy
@@ -19415,10 +19717,6 @@ msgstr "모르는 사용자(user)"
 #~ msgid "Framed|F"
 #~ msgstr "파일이름 "
 
-#, fuzzy
-#~ msgid "Shaded|S"
-#~ msgstr "저장|S"
-
 #~ msgid "Insert URL"
 #~ msgstr "URL 삽입"
 
@@ -19442,9 +19740,6 @@ msgstr "모르는 사용자(user)"
 
 #~ msgid "LyX: Insert Matrix"
 #~ msgstr "LyX: 행렬 삽입"
-
-#~ msgid "Opened CharStyle Inset"
-#~ msgstr "열려있는 문자스타일 삽입구(CharStyle Inset) "
 
 #, fuzzy
 #~ msgid "Unknown inset name: "
@@ -19486,10 +19781,6 @@ msgstr "모르는 사용자(user)"
 #, fuzzy
 #~ msgid "Example. "
 #~ msgstr "예제."
-
-#, fuzzy
-#~ msgid "Placement:"
-#~ msgstr "배치(&Placement):"
 
 #~ msgid "Alig&nment:"
 #~ msgstr "맞추기(Alig&nment):"
