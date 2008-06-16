@@ -1312,6 +1312,7 @@ bool TabWorkArea::setCurrentWorkArea(GuiWorkArea * work_area)
 
 GuiWorkArea * TabWorkArea::addWorkArea(Buffer & buffer, GuiView & view)
 {
+	blockSignals(true);
 	GuiWorkArea * wa = new GuiWorkArea(buffer, view);
 	wa->setUpdatesEnabled(false);
 	// Hide tabbar if there's no tab (avoid a resize and a flashing tabbar
@@ -1328,7 +1329,7 @@ GuiWorkArea * TabWorkArea::addWorkArea(Buffer & buffer, GuiView & view)
 		showBar(count() > 1);
 
 	updateTabTexts();
-	
+	blockSignals(false);	
 	return wa;
 }
 
@@ -1371,7 +1372,11 @@ void TabWorkArea::on_currentTabChanged(int i)
 	LASSERT(wa, return);
 	BufferView & bv = wa->bufferView();
 	bv.cursor().fixIfBroken();
-	bv.updateMetrics();
+	if (bv.workHeight() != wa->viewport()->height() 
+		|| bv.workWidth() != wa->viewport()->width())
+			wa->resizeBufferView();
+	else
+			bv.updateMetrics();
 	wa->setUpdatesEnabled(true);
 	wa->redraw();
 	wa->setFocus();
