@@ -1409,6 +1409,15 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_MATH_MATRIX, "math-matrix", Noop, Math },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MATH_MODE
+ * \li Action: In text mode enters math mode (i.e. puts math insets on the current
+               cursor position), in math mode enters text mode inside math expression.
+ * \li Notion: If there is some selected text, it puts the text inside created math box.
+ * \li Syntax: math-mode
+ * \li Origin: Alejandro, 4 Jun 1996
+ * \endvar
+ */
 		{ LFUN_MATH_MODE, "math-mode", Noop, Math },
 /*!
  * \var lyx::FuncCode lyx::LFUN_MATH_NUMBER_LINE_TOGGLE
