@@ -525,13 +525,7 @@ bool InsetMathScript::idxUpDown(Cursor & cur, bool up) const
 
 void InsetMathScript::write(WriteStream & os) const
 {
-	bool brace = os.pendingBrace();
-	os.pendingBrace(false);
-	if (os.latex() && os.textMode()) {
-		os << "\\ensuremath{";
-		os.textMode(false);
-		brace = true;
-	}
+	bool brace = ensureMath(os);
 
 	if (nuc().size()) {
 		os << nuc();

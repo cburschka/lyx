@@ -87,13 +87,7 @@ bool InsetMathSplit::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetMathSplit::write(WriteStream & ws) const
 {
-	bool brace = ws.pendingBrace();
-	ws.pendingBrace(false);
-	if (ws.latex() && ws.textMode()) {
-		ws << "\\ensuremath{";
-		ws.textMode(false);
-		brace = true;
-	}
+	bool brace = ensureMath(ws);
 	if (ws.fragile())
 		ws << "\\protect";
 	ws << "\\begin{" << name_ << '}';

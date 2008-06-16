@@ -265,13 +265,7 @@ void InsetMathFrac::drawT(TextPainter & /*pain*/, int /*x*/, int /*y*/) const
 
 void InsetMathFrac::write(WriteStream & os) const
 {
-	bool brace = os.pendingBrace();
-	os.pendingBrace(false);
-	if (os.latex() && os.textMode()) {
-		os << "\\ensuremath{";
-		os.textMode(false);
-		brace = true;
-	}
+	bool brace = ensureMath(os);
 
 	switch (kind_) {
 	case ATOP:
@@ -545,13 +539,7 @@ bool InsetMathBinom::extraBraces() const
 
 void InsetMathBinom::write(WriteStream & os) const
 {
-	bool brace = os.pendingBrace();
-	os.pendingBrace(false);
-	if (os.latex() && os.textMode()) {
-		os << "\\ensuremath{";
-		os.textMode(false);
-		brace = true;
-	}
+	bool brace = ensureMath(os);
 
 	switch (kind_) {
 	case BINOM:

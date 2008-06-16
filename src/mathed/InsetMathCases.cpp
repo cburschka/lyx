@@ -107,12 +107,7 @@ bool InsetMathCases::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetMathCases::write(WriteStream & os) const
 {
-	bool brace = os.pendingBrace();
-	if (os.latex() && os.textMode()) {
-		os << "\\ensuremath{";
-		os.textMode(false);
-		brace = true;
-	}
+	bool brace = ensureMath(os);
 	if (os.fragile())
 		os << "\\protect";
 	os << "\\begin{cases}\n";

@@ -68,12 +68,7 @@ void InsetMath::drawT(TextPainter &, int, int) const
 
 void InsetMath::write(WriteStream & os) const
 {
-	bool brace = os.pendingBrace();
-	os.pendingBrace(false);
-	if (os.latex() && os.textMode()) {
-		os << "\\ensuremath{";
-		os.textMode(false);
-	}
+	bool brace = ensureMath(os);
 	docstring const s = name();
 	os << "\\" << s;
 	// We need an extra ' ' unless this is a single-char-non-ASCII name
@@ -81,6 +76,19 @@ void InsetMath::write(WriteStream & os) const
 	if (s.size() != 1 || isAlphaASCII(s[0]))
 		os.pendingSpace(true);
 	os.pendingBrace(brace);
+}
+
+
+bool InsetMath::ensureMath(WriteStream & os, bool needs_math_mode) const
+{
+	bool brace = os.pendingBrace();
+	os.pendingBrace(false);
+	if (os.latex() && os.textMode() && needs_math_mode) {
+		os << "\\ensuremath{";
+		os.textMode(false);
+		brace = true;
+	}
+	return brace;
 }
 
 

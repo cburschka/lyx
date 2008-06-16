@@ -206,13 +206,7 @@ void InsetMathSymbol::octave(OctaveStream & os) const
 
 void InsetMathSymbol::write(WriteStream & os) const
 {
-	bool brace = os.pendingBrace();
-	os.pendingBrace(false);
-	if (os.latex() && os.textMode()) {
-		os << "\\ensuremath{";
-		os.textMode(false);
-		brace = true;
-	}
+	bool brace = ensureMath(os);
 	os << '\\' << name();
 	os.pendingBrace(brace);
 

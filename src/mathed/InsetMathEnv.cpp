@@ -48,13 +48,7 @@ void InsetMathEnv::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathEnv::write(WriteStream & os) const
 {
-	bool brace = os.pendingBrace();
-	os.pendingBrace(false);
-	if (os.latex() && os.textMode()) {
-		os << "\\ensuremath{";
-		os.textMode(false);
-		brace = true;
-	}
+	bool brace = ensureMath(os);
 	os << "\\begin{" << name_ << '}' << cell(0) << "\\end{" << name_ << '}';
 	os.pendingBrace(brace);
 }

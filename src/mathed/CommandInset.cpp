@@ -65,12 +65,7 @@ void CommandInset::draw(PainterInfo & pi, int x, int y) const
 
 void CommandInset::write(WriteStream & os) const
 {
-	bool brace = os.pendingBrace();
-	os.pendingBrace(false);
-	if (os.latex() && os.textMode() && needs_math_mode_) {
-		os << "\\ensuremath{";
-		os.textMode(false);
-	}
+	bool brace = ensureMath(os, needs_math_mode_);
 	os << '\\' << name_.c_str();
 	if (cell(1).size())
 		os << '[' << cell(1) << ']';
