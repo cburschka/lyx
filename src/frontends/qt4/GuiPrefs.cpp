@@ -864,7 +864,7 @@ PrefDisplay::PrefDisplay(GuiPreferences * form)
 	: PrefModule(qt_(catLookAndFeel), qt_("Graphics"), form)
 {
 	setupUi(this);
-	connect(displayGraphicsCB, SIGNAL(toggled(int)), this, SIGNAL(changed()));
+	connect(displayGraphicsCB, SIGNAL(toggled(bool)), this, SIGNAL(changed()));
 	connect(instantPreviewCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
 }
 
