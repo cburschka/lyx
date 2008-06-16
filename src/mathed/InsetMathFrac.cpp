@@ -265,6 +265,14 @@ void InsetMathFrac::drawT(TextPainter & /*pain*/, int /*x*/, int /*y*/) const
 
 void InsetMathFrac::write(WriteStream & os) const
 {
+	bool brace = os.pendingBrace();
+	os.pendingBrace(false);
+	if (os.latex() && os.textMode()) {
+		os << "\\ensuremath{";
+		os.textMode(false);
+		brace = true;
+	}
+
 	switch (kind_) {
 	case ATOP:
 		os << '{' << cell(0) << "\\atop " << cell(1) << '}';
@@ -288,6 +296,8 @@ void InsetMathFrac::write(WriteStream & os) const
 			os << "\\unit{" << cell(0) << '}';
 		break;
 	}
+
+	os.pendingBrace(brace);
 }
 
 
@@ -535,6 +545,14 @@ bool InsetMathBinom::extraBraces() const
 
 void InsetMathBinom::write(WriteStream & os) const
 {
+	bool brace = os.pendingBrace();
+	os.pendingBrace(false);
+	if (os.latex() && os.textMode()) {
+		os << "\\ensuremath{";
+		os.textMode(false);
+		brace = true;
+	}
+
 	switch (kind_) {
 	case BINOM:
 		os << "\\binom{" << cell(0) << "}{" << cell(1) << '}';
@@ -549,6 +567,8 @@ void InsetMathBinom::write(WriteStream & os) const
 		os << '{' << cell(0) << " \\brack " << cell(1) << '}';
 		break;
 	}
+
+	os.pendingBrace(brace);
 }
 
 
@@ -560,10 +580,9 @@ void InsetMathBinom::normalize(NormalStream & os) const
 
 void InsetMathBinom::validate(LaTeXFeatures & features) const
 {
-	if (kind_ == BINOM) {
+	if (kind_ == BINOM)
 		features.require("binom");
-		InsetMathNest::validate(features);
-	}
+	InsetMathNest::validate(features);
 }
 
 

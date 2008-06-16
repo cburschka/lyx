@@ -73,7 +73,14 @@ bool InsetMathOverset::idxLast(Cursor & cur) const
 
 void InsetMathOverset::write(WriteStream & os) const
 {
+	bool brace = os.pendingBrace();
+	os.pendingBrace(false);
+	if (os.latex() && os.textMode()) {
+		os << "\\ensuremath{";
+		os.textMode(false);
+	}
 	os << "\\overset{" << cell(0) << "}{" << cell(1) << '}';
+	os.pendingBrace(brace);
 }
 
 

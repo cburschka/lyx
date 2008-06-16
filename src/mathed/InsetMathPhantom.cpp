@@ -119,6 +119,13 @@ void InsetMathPhantom::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathPhantom::write(WriteStream & os) const
 {
+	bool brace = os.pendingBrace();
+	os.pendingBrace(false);
+	if (os.latex() && os.textMode()) {
+		os << "\\ensuremath{";
+		os.textMode(false);
+		brace = true;
+	}
 	switch (kind_) {
 	case phantom:
 		os << "\\phantom{";
@@ -131,6 +138,7 @@ void InsetMathPhantom::write(WriteStream & os) const
 		break;
 	}
 	os << cell(0) << '}';
+	os.pendingBrace(brace);
 }
 
 

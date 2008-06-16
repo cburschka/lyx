@@ -54,6 +54,10 @@ public:
 	void pendingSpace(bool how);
 	/// writes space if next thing is isalpha()
 	bool pendingSpace() const { return pendingspace_; }
+	/// tell whether to write the closing brace of \ensuremath
+	void pendingBrace(bool brace);
+	/// tell whether to write the closing brace of \ensuremath
+	bool pendingBrace() const { return pendingbrace_; }
 	/// tell whether we are in text mode or not when producing latex code
 	void textMode(bool textmode);
 	/// tell whether we are in text mode or not when producing latex code
@@ -71,6 +75,8 @@ private:
 	bool dryrun_;
 	/// do we have a space pending?
 	bool pendingspace_;
+	/// do we have a brace pending?
+	bool pendingbrace_;
 	/// are we in text mode when producing latex code?
 	bool textmode_;
 	///

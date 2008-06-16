@@ -39,10 +39,10 @@ InsetMathBox::InsetMathBox(docstring const & name)
 
 void InsetMathBox::write(WriteStream & os) const
 {
-	bool oldmode = os.textMode();
+	bool textmode = os.textMode();
 	os.textMode(true);
 	os << '\\' << name_ << '{' << cell(0) << '}';
-	os.textMode(oldmode);
+	os.textMode(textmode);
 }
 
 
@@ -118,10 +118,10 @@ void InsetMathFBox::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathFBox::write(WriteStream & os) const
 {
-	bool oldmode = os.textMode();
+	bool textmode = os.textMode();
 	os.textMode(true);
 	os << "\\fbox{" << cell(0) << '}';
-	os.textMode(oldmode);
+	os.textMode(textmode);
 }
 
 
@@ -217,7 +217,7 @@ void InsetMathMakebox::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathMakebox::write(WriteStream & os) const
 {
-	bool oldmode = os.textMode();
+	bool textmode = os.textMode();
 	os.textMode(true);
 	os << (framebox_ ? "\\framebox" : "\\makebox");
 	if (cell(0).size() || !os.latex()) {
@@ -226,7 +226,7 @@ void InsetMathMakebox::write(WriteStream & os) const
 			os << '[' << cell(1) << ']';
 	}
 	os << '{' << cell(2) << '}';
-	os.textMode(oldmode);
+	os.textMode(textmode);
 }
 
 
@@ -275,10 +275,10 @@ void InsetMathBoxed::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathBoxed::write(WriteStream & os) const
 {
-	bool oldmode = os.textMode();
-	os.textMode(true);
+	bool textmode = os.textMode();
+	os.textMode(false);
 	os << "\\boxed{" << cell(0) << '}';
-	os.textMode(oldmode);
+	os.textMode(textmode);
 }
 
 

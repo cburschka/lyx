@@ -147,8 +147,16 @@ void InsetMathSpace::normalize(NormalStream & os) const
 void InsetMathSpace::write(WriteStream & os) const
 {
 	if (space_ >= 0 && space_ < nSpace) {
+		bool brace = os.pendingBrace();
+		os.pendingBrace(false);
+		if (os.latex() && os.textMode()) {
+			os << "\\ensuremath{";
+			os.textMode(false);
+			brace = true;
+		}
 		os << '\\' << latex_mathspace[space_];
 		os.pendingSpace(true);
+		os.pendingBrace(brace);
 	}
 }
 

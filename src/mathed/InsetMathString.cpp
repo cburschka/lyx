@@ -111,35 +111,45 @@ void InsetMathString::write(WriteStream & os) const
 	docstring::const_iterator cit = str_.begin();
 	docstring::const_iterator end = str_.end();
 
-	bool in_forced_mode = false;
+	// We may already be inside an \ensuremath command.
+	bool in_forced_mode = os.pendingBrace();
+
+	// We will take care of matching braces.
+	os.pendingBrace(false);
+
 	while (cit != end) {
 		char_type const c = *cit;
 		try {
 			docstring command(1, c);
 			if (c < 0x80 || Encodings::latexMathChar(c, command)) {
 				if (os.textMode()) {
-					if (c < 0x80 && in_forced_mode) {
+					if (in_forced_mode) {
+						// we were inside \lyxmathsym
 						os << '}';
+						os.textMode(false);
 						in_forced_mode = false;
 					}
-					if (c >= 0x80 && !in_forced_mode) {
+					if (c >= 0x80) {
 						os << "\\ensuremath{";
+						os.textMode(false);
 						in_forced_mode = true;
 					}
-				} else if (in_forced_mode) {
+				} else if (c < 0x80 && in_forced_mode) {
+					// we were inside \ensuremath
 					os << '}';
+					os.textMode(true);
 					in_forced_mode = false;
 				}
-			} else {
-				if (os.textMode()) {
+			} else if (!os.textMode()) {
 					if (in_forced_mode) {
+						// we were inside \ensuremath
 						os << '}';
 						in_forced_mode = false;
+					} else {
+						os << "\\lyxmathsym{";
+						in_forced_mode = true;
 					}
-				} else if (!in_forced_mode) {
-					os << "\\lyxmathsym{";
-					in_forced_mode = true;
-				}
+					os.textMode(true);
 			}
 			os << command;
 			// We may need a space if the command contains a macro
@@ -162,8 +172,14 @@ void InsetMathString::write(WriteStream & os) const
 		}
 		++cit;
 	}
-	if (in_forced_mode)
+
+	if (in_forced_mode && os.textMode()) {
+		// We have to care for closing \lyxmathsym
 		os << '}';
+		os.textMode(false);
+	} else {
+		os.pendingBrace(in_forced_mode);
+	}
 }
 
 

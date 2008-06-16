@@ -62,6 +62,7 @@ following hack as starting point to write some macros:
 #include "MathMacroArgument.h"
 #include "MathSupport.h"
 
+#include "Encoding.h"
 #include "Lexer.h"
 
 #include "support/debug.h"
@@ -1525,6 +1526,46 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 #endif
 
+		else if (t.cs() == "lyxmathsym" || t.cs() == "ensuremath") {
+			skipSpaces();
+			if (getToken().cat() != catBegin) {
+				error("'{' expected in \\" + t.cs());
+				return;
+			}
+			int count = 0;
+			docstring cmd;
+			CatCode cat = nextToken().cat();
+			while (good() && (count || cat != catEnd)) {
+				if (cat == catBegin)
+					++count;
+				else if (cat == catEnd)
+					--count;
+				cmd += getToken().asInput();
+				cat = nextToken().cat();
+			}
+			if (getToken().cat() != catEnd) {
+				error("'}' expected in \\" + t.cs());
+				return;
+			}
+			if (t.cs() == "ensuremath") {
+				MathData ar;
+				mathed_parse_cell(ar, cmd);
+				cell->append(ar);
+			} else {
+				docstring rem;
+				cmd = Encodings::fromLaTeXCommand(cmd, rem);
+				for (size_t i = 0; i < cmd.size(); ++i)
+					cell->push_back(MathAtom(new InsetMathChar(cmd[i])));
+				if (rem.size()) {
+					MathAtom at = createInsetMath(t.cs());
+					cell->push_back(at);
+					MathData ar;
+					mathed_parse_cell(ar, '{' + rem + '}');
+					cell->append(ar);
+				}
+			}
+		}
+
 		else if (t.cs().size()) {
 			latexkeys const * l = in_word_set(t.cs());
 			if (l) {
@@ -1576,26 +1617,66 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 
 			else {
-				MathAtom at = createInsetMath(t.cs());
-				InsetMath::mode_type m = mode;
-				//if (m == InsetMath::UNDECIDED_MODE)
-				//lyxerr << "default creation: m1: " << m << endl;
-				if (at->currentMode() != InsetMath::UNDECIDED_MODE)
-					m = at->currentMode();
-				//lyxerr << "default creation: m2: " << m << endl;
-				InsetMath::idx_type start = 0;
-				// this fails on \bigg[...\bigg]
-				//MathData opt;
-				//parse(opt, FLAG_OPTION, InsetMath::VERBATIM_MODE);
-				//if (opt.size()) {
-				//	start = 1;
-				//	at.nucleus()->cell(0) = opt;
-				//}
-				for (InsetMath::idx_type i = start; i < at->nargs(); ++i) {
-					parse(at.nucleus()->cell(i), FLAG_ITEM, m);
+				bool is_unicode_symbol = false;
+				if (mode == InsetMath::TEXT_MODE) {
+					int num_tokens = 0;
+					docstring cmd = prevToken().asInput();
 					skipSpaces();
+					CatCode cat = nextToken().cat();
+					if (cat == catBegin) {
+						int count = 0;
+						while (good() && (count || cat != catEnd)) {
+							cat = nextToken().cat();
+							cmd += getToken().asInput();
+							++num_tokens;
+							if (cat == catBegin)
+								++count;
+							else if (cat == catEnd)
+								--count;
+						}
+					}
+					bool is_combining;
+					char_type c =
+						Encodings::fromLaTeXCommand(cmd, is_combining);
+					if (is_combining) {
+						if (cat == catLetter)
+							cmd += '{';
+						cmd += getToken().asInput();
+						++num_tokens;
+						if (cat == catLetter)
+							cmd += '}';
+						c = Encodings::fromLaTeXCommand(cmd, is_combining);
+					}
+					if (c) {
+						is_unicode_symbol = true;
+						cell->push_back(MathAtom(new InsetMathChar(c)));
+					} else {
+						while (num_tokens--)
+							putback();
+					}
 				}
-				cell->push_back(at);
+				if (!is_unicode_symbol) {
+					MathAtom at = createInsetMath(t.cs());
+					InsetMath::mode_type m = mode;
+					//if (m == InsetMath::UNDECIDED_MODE)
+					//lyxerr << "default creation: m1: " << m << endl;
+					if (at->currentMode() != InsetMath::UNDECIDED_MODE)
+						m = at->currentMode();
+					//lyxerr << "default creation: m2: " << m << endl;
+					InsetMath::idx_type start = 0;
+					// this fails on \bigg[...\bigg]
+					//MathData opt;
+					//parse(opt, FLAG_OPTION, InsetMath::VERBATIM_MODE);
+					//if (opt.size()) {
+					//	start = 1;
+					//	at.nucleus()->cell(0) = opt;
+					//}
+					for (InsetMath::idx_type i = start; i < at->nargs(); ++i) {
+						parse(at.nucleus()->cell(i), FLAG_ITEM, m);
+						skipSpaces();
+					}
+					cell->push_back(at);
+				}
 			}
 		}
 

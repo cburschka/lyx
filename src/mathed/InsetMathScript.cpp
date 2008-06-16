@@ -525,6 +525,14 @@ bool InsetMathScript::idxUpDown(Cursor & cur, bool up) const
 
 void InsetMathScript::write(WriteStream & os) const
 {
+	bool brace = os.pendingBrace();
+	os.pendingBrace(false);
+	if (os.latex() && os.textMode()) {
+		os << "\\ensuremath{";
+		os.textMode(false);
+		brace = true;
+	}
+
 	if (nuc().size()) {
 		os << nuc();
 		//if (nuc().back()->takesLimits()) {
@@ -548,6 +556,8 @@ void InsetMathScript::write(WriteStream & os) const
 
 	if (lock_ && !os.latex())
 		os << "\\lyxlock ";
+
+	os.pendingBrace(brace);
 }
 
 

@@ -140,12 +140,20 @@ void InsetMathXYArrow::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathXYArrow::write(WriteStream & os) const
 {
+	bool brace = os.pendingBrace();
+	os.pendingBrace(false);
+	if (os.latex() && os.textMode()) {
+		os << "\\ensuremath{";
+		os.textMode(false);
+		brace = true;
+	}
 	os << "\\ar";
 	if (cell(0).size())
 		os << '[' << cell(0) << ']';
 	if (cell(1).size())
 		os << (up_ ? '^' : '_') << '{' << cell(1) << '}';
 	os << " ";
+	os.pendingBrace(brace);
 }
 
 

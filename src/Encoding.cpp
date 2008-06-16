@@ -386,6 +386,99 @@ bool Encodings::latexMathChar(char_type c, docstring & command)
 }
 
 
+char_type Encodings::fromLaTeXCommand(docstring const & cmd, bool & combining)
+{
+	CharInfoMap::const_iterator const end = unicodesymbols.end();
+	CharInfoMap::const_iterator it = unicodesymbols.begin();
+	for (; it != end; ++it) {
+		docstring const math = it->second.mathcommand;
+		docstring const text = it->second.textcommand;
+		if (math == cmd || text == cmd) {
+			combining = it->second.combining;
+			return it->first;
+		}
+	}
+	return 0;
+}
+
+
+docstring Encodings::fromLaTeXCommand(docstring const & cmd, docstring & rem)
+{
+	docstring symbols;
+	size_t i = 0;
+	size_t const cmdend = cmd.size();
+	CharInfoMap::const_iterator const uniend = unicodesymbols.end();
+	for (size_t j = 0; j < cmdend; ++j) {
+		// Also get the char after a backslash
+		if (j + 1 < cmdend && cmd[j] == '\\')
+			++j;
+		// If a macro argument follows, get it, too
+		if (j + 1 < cmdend && cmd[j + 1] == '{') {
+			size_t k = j + 1;
+			int count = 1;
+			while (k < cmdend && count && k != docstring::npos) {
+				k = cmd.find_first_of(from_ascii("{}"), k + 1);
+				if (cmd[k] == '{')
+					++count;
+				else
+					--count;
+			}
+			if (k != docstring::npos)
+				j = k;
+		}
+		// Start with this substring and try augmenting it when it is
+		// the prefix of some command in the unicodesymbols file
+		docstring const subcmd = cmd.substr(i, j - i + 1);
+
+		CharInfoMap::const_iterator it = unicodesymbols.begin();
+		size_t unicmd_size = 0;
+		char_type c;
+		for (; it != uniend; ++it) {
+			docstring const math = it->second.mathcommand;
+			docstring const text = it->second.textcommand;
+			size_t cur_size = max(math.size(), text.size());
+			// The current math or text unicode command cannot
+			// match, or we already matched a longer one
+			if (cur_size < subcmd.size() || cur_size <= unicmd_size)
+				continue;
+
+			docstring tmp = subcmd;
+			size_t k = j;
+			while (prefixIs(math, tmp) || prefixIs(text, tmp)) {
+				++k;
+				if (k >= cmdend || cur_size <= tmp.size())
+					break;
+				tmp += cmd[k];
+			}
+			// No match
+			if (k == j)
+				continue;
+
+			// The last added char caused a mismatch, because
+			// we didn't exhaust the chars in cmd and didn't
+			// exceed the maximum size of the current unicmd
+			if (k < cmdend && cur_size > tmp.size())
+				tmp.resize(tmp.size() - 1);
+
+			// If this is an exact match, we found a (longer)
+			// matching command in the unicodesymbols file
+			if (math == tmp || text == tmp) {
+				c = it->first;
+				j = k - 1;
+				i = j + 1;
+				unicmd_size = cur_size;
+			}
+		}
+		if (unicmd_size)
+			symbols += c;
+		else if (j + 1 == cmdend)
+			// No luck. Return what remains
+			rem = cmd.substr(i);
+	}
+	return symbols;
+}
+
+
 void Encodings::validate(char_type c, LaTeXFeatures & features, bool for_mathed)
 {
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);

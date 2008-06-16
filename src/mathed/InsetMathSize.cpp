@@ -52,7 +52,15 @@ void InsetMathSize::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathSize::write(WriteStream & os) const
 {
+	bool brace = os.pendingBrace();
+	os.pendingBrace(false);
+	if (os.latex() && os.textMode()) {
+		os << "\\ensuremath{";
+		os.textMode(false);
+		brace = true;
+	}
 	os << "{\\" << key_->name << ' ' << cell(0) << '}';
+	os.pendingBrace(brace);
 }
 
 

@@ -171,6 +171,19 @@ public:
 	 * \return whether \p command is a math mode command
 	 */
 	static bool latexMathChar(char_type c, docstring & command);
+
+	/**
+	 * Convert the LaTeX command in \p cmd to the corresponding unicode
+	 * point and set \p combining to true if it is a combining symbol
+	 */
+	static char_type fromLaTeXCommand(docstring const & cmd, bool & combining);
+	/**
+	 * Convert the LaTeX commands in \p cmd and \return a docstring
+	 * of corresponding unicode points. The conversion stops at the
+	 * first command which could not be converted, and the remaining
+	 * unconverted commands are returned in \p rem
+	 */
+	static docstring fromLaTeXCommand(docstring const & cmd, docstring & rem);
 	/**
 	 * Add the preamble snippet needed for the output of \p c to
 	 * \p features.

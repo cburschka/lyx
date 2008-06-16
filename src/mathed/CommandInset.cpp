@@ -23,8 +23,9 @@ using namespace std;
 namespace lyx {
 
 
-CommandInset::CommandInset(docstring const & name)
-	: InsetMathNest(2), name_(name), set_label_(false)
+CommandInset::CommandInset(docstring const & name, bool needs_math_mode)
+	: InsetMathNest(2), name_(name), needs_math_mode_(needs_math_mode),
+	  set_label_(false)
 {
 	lock_ = true;
 }
@@ -64,10 +65,17 @@ void CommandInset::draw(PainterInfo & pi, int x, int y) const
 
 void CommandInset::write(WriteStream & os) const
 {
+	bool brace = os.pendingBrace();
+	os.pendingBrace(false);
+	if (os.latex() && os.textMode() && needs_math_mode_) {
+		os << "\\ensuremath{";
+		os.textMode(false);
+	}
 	os << '\\' << name_.c_str();
 	if (cell(1).size())
 		os << '[' << cell(1) << ']';
 	os << '{' << cell(0) << '}';
+	os.pendingBrace(brace);
 }
 
 

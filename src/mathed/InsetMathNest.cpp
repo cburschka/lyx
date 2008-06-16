@@ -75,7 +75,7 @@ using cap::selClearOrDel;
 
 char const * text_commands[] =
 { "text", "textrm", "textsf", "texttt", "textmd", "textbf", "textup", "textit",
-  "textsl", "textsc" };
+  "textsl", "textsc", "textnormal" };
 int const num_text_commands = sizeof(text_commands) / sizeof(*text_commands);
 
 
@@ -341,7 +341,7 @@ MathData InsetMathNest::glue() const
 
 void InsetMathNest::write(WriteStream & os) const
 {
-	bool oldmode = os.textMode();
+	bool textmode = os.textMode();
 	docstring const latex_name = name().c_str();
 	for (int i = 0; i < num_text_commands; ++i) {
 		if (latex_name == from_ascii(text_commands[i])) {
@@ -358,7 +358,7 @@ void InsetMathNest::write(WriteStream & os) const
 		os << "\\lyxlock";
 		os.pendingSpace(true);
 	}
-	os.textMode(oldmode);
+	os.textMode(textmode);
 }
 
 

@@ -95,6 +95,14 @@ void InsetMathArray::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathArray::write(WriteStream & os) const
 {
+	bool brace = os.pendingBrace();
+	os.pendingBrace(false);
+	if (os.latex() && os.textMode()) {
+		os << "\\ensuremath{";
+		os.textMode(false);
+		brace = true;
+	}
+
 	if (os.fragile())
 		os << "\\protect";
 	os << "\\begin{" << name_ << '}';
@@ -111,6 +119,8 @@ void InsetMathArray::write(WriteStream & os) const
 	os << "\\end{" << name_ << '}';
 	// adding a \n here is bad if the array is the last item
 	// in an \eqnarray...
+
+	os.pendingBrace(brace);
 }
 
 

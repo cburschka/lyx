@@ -206,7 +206,15 @@ void InsetMathSymbol::octave(OctaveStream & os) const
 
 void InsetMathSymbol::write(WriteStream & os) const
 {
+	bool brace = os.pendingBrace();
+	os.pendingBrace(false);
+	if (os.latex() && os.textMode()) {
+		os << "\\ensuremath{";
+		os.textMode(false);
+		brace = true;
+	}
 	os << '\\' << name();
+	os.pendingBrace(brace);
 
 	// $,#, etc. In theory the restriction based on catcodes, but then
 	// we do not handle catcodes very well, let alone cat code changes,

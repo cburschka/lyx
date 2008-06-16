@@ -967,6 +967,9 @@ void InsetMathGrid::mathmlize(MathStream & os) const
 
 void InsetMathGrid::write(WriteStream & os) const
 {
+	bool brace = os.pendingBrace();
+	os.pendingBrace(false);
+
 	docstring eol;
 	for (row_type row = 0; row < nrows(); ++row) {
 		os << verboseHLine(rowinfo_[row].lines_);
@@ -978,8 +981,15 @@ void InsetMathGrid::write(WriteStream & os) const
 				lastcol = col + 1;
 				emptyline = false;
 			}
-		for (col_type col = 0; col < lastcol; ++col)
-			os << cell(index(row, col)) << eocString(col, lastcol);
+		for (col_type col = 0; col < lastcol; ++col) {
+			os << cell(index(row, col));
+			if (os.pendingBrace()) {
+				os.pendingBrace(false);
+				os.textMode(true);
+				os << '}';
+			}
+			os << eocString(col, lastcol);
+		}
 		eol = eolString(row, emptyline, os.fragile());
 		os << eol;
 		// append newline only if line wasn't completely empty
@@ -996,6 +1006,8 @@ void InsetMathGrid::write(WriteStream & os) const
 		}
 		os << s;
 	}
+
+	os.pendingBrace(brace);
 }
 
 

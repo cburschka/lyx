@@ -89,9 +89,17 @@ void InsetMathSubstack::infoize(odocstream & os) const
 
 void InsetMathSubstack::write(WriteStream & os) const
 {
+	bool brace = os.pendingBrace();
+	os.pendingBrace(false);
+	if (os.latex() && os.textMode()) {
+		os << "\\ensuremath{";
+		os.textMode(false);
+		brace = true;
+	}
 	os << "\\substack{";
 	InsetMathGrid::write(os);
 	os << "}\n";
+	os.pendingBrace(brace);
 }
 
 

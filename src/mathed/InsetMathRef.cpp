@@ -36,12 +36,12 @@ using namespace std;
 namespace lyx {
 
 InsetMathRef::InsetMathRef()
-	: CommandInset(from_ascii("ref"))
+	: CommandInset(from_ascii("ref"), false)
 {}
 
 
 InsetMathRef::InsetMathRef(docstring const & data)
-	: CommandInset(data)
+	: CommandInset(data, false)
 {}
 
 
