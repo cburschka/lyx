@@ -14,6 +14,7 @@
 
 #include "qt_helpers.h"
 
+#include <QHash>
 #include <QList>
 #include <QStandardItemModel>
 #include <QStringList>
