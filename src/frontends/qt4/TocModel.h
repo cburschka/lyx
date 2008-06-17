@@ -28,11 +28,25 @@ class TocItem;
 
 namespace frontend {
 
+class TocTypeModel : public QStandardItemModel
+{
+public:
+	///
+	TocTypeModel(QObject * parent = 0);
+	///
+	void reset();
+};
+
+
 class TocModel : public QStandardItemModel
 {
 public:
 	///
-	TocModel(Toc const & toc);
+	TocModel(QObject * parent = 0);
+	///
+	void reset(Toc const & toc);
+	///
+	void reset();
 	///
 	TocItem const & tocItem(QModelIndex const & index) const;
 	///
@@ -46,7 +60,7 @@ private:
 	///
 	QList<QModelIndex> toc_indexes_;
 	///
-	Toc const & toc_;
+	Toc const * toc_;
 	///
 	int maxdepth_;
 	int mindepth_;
@@ -58,45 +72,44 @@ class TocModels: public QObject
 	Q_OBJECT
 public:
 	///
-	TocModels(): bv_(0) {}
+	TocModels();
 	///
-	~TocModels() { clear(); }
+	typedef QHash<QString, TocModel *>::const_iterator const_iterator;
+	const_iterator begin() const { return models_.begin(); }
+	const_iterator end() const { return models_.end(); }
 	///
 	void reset(BufferView const * bv);
 	///
-	int depth(int type);
+	int depth(QString const & type);
 	///
-	QStandardItemModel * model(int type);
+	QStandardItemModel * model(QString const & type);
 	///
-	QModelIndex currentIndex(int type) const;
+	QStandardItemModel * nameModel() { return names_; }
 	///
-	void goTo(int type, QModelIndex const & index) const;
+	QModelIndex currentIndex(QString const & type) const;
+	///
+	void goTo(QString const & type, QModelIndex const & index) const;
 	///
 	void init(Buffer const & buffer);
-	/// Test if outlining operation is possible
-	bool canOutline(int type) const;
-	/// Return the list of types available
-	QStringList const & typeNames() const { return type_names_; }
 	///
 	void updateBackend() const;
-	///
-	int decodeType(QString const & str) const;
 
 Q_SIGNALS:
 	/// Signal that the internal toc_models_ has been reset.
 	void modelReset();
 
 private:
+	typedef QHash<QString, TocModel *>::iterator iterator;
 	///
 	void clear();
 	///
+	void deleteAll();
+	///
 	BufferView const * bv_;
 	///
-	QList<TocModel *> models_;
+	QHash<QString, TocModel *> models_;
 	///
-	QStringList types_;
-	///
-	QStringList type_names_;
+	TocTypeModel * names_;
 };
 
 } // namespace frontend

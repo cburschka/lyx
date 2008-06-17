@@ -57,6 +57,9 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 
 	// Only one item selected at a time.
 	tocTV->setSelectionMode(QAbstractItemView::SingleSelection);
+
+	// The toc types combo won't change its model.
+	typeCO->setModel(gui_view_.tocModels().nameModel());
 }
 
 
@@ -78,7 +81,7 @@ void TocWidget::goTo(QModelIndex const & index)
 	LYXERR(Debug::GUI, "goto " << index.row()
 		<< ", " << index.column());
 
-	gui_view_.tocModels().goTo(typeCO->currentIndex(), index);
+	gui_view_.tocModels().goTo(current_type_, index);
 }
 
 
@@ -117,6 +120,8 @@ void TocWidget::on_depthSL_valueChanged(int depth)
 void TocWidget::setTreeDepth(int depth)
 {
 	depth_ = depth;
+	if (!tocTV->model())
+		return;
 
 	// expanding and then collapsing is probably better,
 	// but my qt 4.1.2 doesn't have expandAll()..
@@ -134,8 +139,9 @@ void TocWidget::setTreeDepth(int depth)
 }
 
 
-void TocWidget::on_typeCO_currentIndexChanged(int)
+void TocWidget::on_typeCO_currentIndexChanged(int index)
 {
+	current_type_ = typeCO->itemData(index).toString();
 	updateView();
 	gui_view_.setFocus();
 }
@@ -192,11 +198,18 @@ void TocWidget::select(QModelIndex const & index)
 }
 
 
+/// Test if outlining operation is possible
+static bool canOutline(QString const & type)
+{
+	return type == "tableofcontents";
+}
+
+
 void TocWidget::enableControls(bool enable)
 {
 	updateTB->setEnabled(enable);
 
-	if (!gui_view_.tocModels().canOutline(typeCO->currentIndex()))
+	if (!canOutline(current_type_))
 		enable = false;
 
 	moveUpTB->setEnabled(enable);
@@ -213,64 +226,74 @@ void TocWidget::updateView()
 	LYXERR(Debug::GUI, "In TocWidget::updateView()");
 	setTocModel();
 	setTreeDepth(depth_);
-	select(gui_view_.tocModels().currentIndex(typeCO->currentIndex()));
+	select(gui_view_.tocModels().currentIndex(current_type_));
+}
+
+
+static QString decodeType(QString const & str)
+{
+	QString type = str;
+	if (type.contains("tableofcontents")) {
+		type = "tableofcontents";
+	} else if (type.contains("floatlist")) {
+		if (type.contains("\"figure"))
+			type = "figure";
+		else if (type.contains("\"table"))
+			type = "table";
+		else if (type.contains("\"algorithm"))
+			type = "algorithm";
+	}
+	return type;
 }
 
 
 void TocWidget::init(QString const & str)
 {
-	QStringList const & type_names = gui_view_.tocModels().typeNames();
-	if (type_names.isEmpty()) {
+	if (!gui_view_.view()) {
 		enableControls(false);
 		typeCO->setEnabled(false);
-		tocTV->setModel(new QStandardItemModel);
+		tocTV->setModel(0);
 		tocTV->setEnabled(false);
 		return;
 	}
 
 	typeCO->setEnabled(true);
 	tocTV->setEnabled(true);
-	int selected_type = gui_view_.tocModels().decodeType(str);
 
-	QString const current_text = typeCO->currentText();
 	typeCO->blockSignals(true);
-	typeCO->clear();
-	for (int i = 0; i != type_names.size(); ++i)
-		typeCO->addItem(type_names[i]);
-	if (!str.isEmpty())
-		typeCO->setCurrentIndex(selected_type);
-	else {
-		int const new_index = typeCO->findText(current_text);
-		if (new_index != -1)
-			typeCO->setCurrentIndex(new_index);
-		else
-			typeCO->setCurrentIndex(selected_type);
+
+	int new_index;
+	if (str.isEmpty())
+		new_index = typeCO->findData(current_type_);
+	else
+		new_index = typeCO->findData(decodeType(str));
+
+	// If everything else fails, settle on the table of contents which is
+	// guaranted to exist.
+	if (new_index == -1) {
+		current_type_ = "tableofcontents";
+		new_index = typeCO->findData(current_type_);
 	}
 
+	typeCO->setCurrentIndex(new_index);
 	typeCO->blockSignals(false);
-
-	// setTocModel produce QTreeView reset and setting depth again
-	// is needed. That must be done after all Qt updates are processed.
-	QTimer::singleShot(0, this, SLOT(updateView()));
 }
 
 
 void TocWidget::setTocModel()
 {
-	int const toc_type = typeCO->currentIndex();
-	QStandardItemModel * toc_model = gui_view_.tocModels().model(toc_type);
-	LASSERT(toc_model, return);
+	QStandardItemModel * toc_model = gui_view_.tocModels().model(current_type_);
 	
 	if (tocTV->model() != toc_model) {
 		tocTV->setModel(toc_model);
 		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	}
 
-	bool controls_enabled = toc_model->rowCount() > 0;;
+	bool controls_enabled = toc_model && toc_model->rowCount() > 0;;
 	enableControls(controls_enabled);
 
 	if (controls_enabled) {
-		depthSL->setMaximum(gui_view_.tocModels().depth(toc_type));
+		depthSL->setMaximum(gui_view_.tocModels().depth(current_type_));
 		depthSL->setValue(depth_);
 	}
 }

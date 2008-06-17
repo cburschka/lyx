@@ -64,6 +64,8 @@ private:
 	void setTreeDepth(int depth);
 	///
 	void outline(int func_code);
+	///
+	QString current_type_;
 
 	/// depth of list shown
 	int depth_;
