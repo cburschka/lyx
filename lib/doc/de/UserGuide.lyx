@@ -1,5 +1,5 @@
-#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
-\lyxformat 335
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 336
 \begin_document
 \begin_header
 \textclass scrbook
@@ -27,13 +27,13 @@
 
 % Die Seiten des Inhaltsverzeichnisses werden roemisch numeriert,
 % ein PDF-Lesezeichen fuer das Inhaltsverzeichnis wird hinzugefuegt
-\pagenumbering{roman}
-\let\myTOC\tableofcontents
-\renewcommand{\tableofcontents}{%
- \pdfbookmark[1]{Inhaltsverzeichnis}{}
- \myTOC
- \cleardoublepage
- \pagenumbering{arabic}}
+%\pagenumbering{roman}
+%\let\myTOC\tableofcontents
+%\renewcommand{\tableofcontents}{%
+ %\pdfbookmark[1]{Inhaltsverzeichnis}{}
+ %\myTOC
+ %\cleardoublepage
+ %\pagenumbering{arabic}}
 
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
@@ -54,6 +54,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -164,13 +165,29 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 4.
+letzte Änderung: 18.
  Juni 2008
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
 
 \end_inset
 
@@ -186,7 +203,7 @@ Was ist LyX?
 \end_layout
 
 \begin_layout Standard
-LyX ist ein System zur Vorbereitung von Dokumenten.
+LyX ist ein System zur Druckvorbereitung von Dokumenten.
  Es ist ein Werkzeug, mit dem man schöne Manuskripte, verlegbare Bücher,
  Geschäftsbriefe und -vorschläge und sogar Lyrik schreiben kann.
  Anders als die meisten anderen 
@@ -231,7 +248,7 @@ Einführung
 \emph default
  beschreibt außerdem einige zusätzliche Dinge: das wichtigste ist das Format
  der Handbücher.
- Wenn Sie sie nicht lesen, werden Sie viel Zeit brauchen, um in diesen Handbuch
+ Wenn Sie sie nicht lesen, werden Sie viel Zeit brauchen, um in diesem Handbuch
  zu suchen.
  Ihnen ist vielleicht auch mehr damit gedient, in andere Handbücher als
  dieses zu schauen.
@@ -267,7 +284,7 @@ sen.
 
 \begin_layout Description
 Linux Weil jeder seinen bevorzugten X-Window-Manager benutzt (KDE, Gnome,
- xfce\SpecialChar \ldots{}
+ xfce \SpecialChar \ldots{}
 ), müssen Sie das Paket 
 \family typewriter
 qt4-qtconfig
@@ -330,15 +347,15 @@ Unter dem Editierbereich befindet sich eine Statuszeile, die normalerweise
 \end_layout
 
 \begin_layout Standard
-Außerdem gibt es einen sogenannten 
+Außerdem gibt es ein 
 \emph on
-Befehlspuffer
+Befehlseingabefenster
 \emph default
-, der zwischen Editierbereich und Statuszeile erscheint, wenn Sie 
+, das zwischen Editierbereich und Statuszeile erscheint, wenn Sie 
 \family sans
 Alt+X
 \family default
- eingeben oder ihn über 
+ eingeben oder es über 
 \family sans
 Ansicht
 \family default
@@ -348,8 +365,12 @@ Ansicht
 Werkzeugleisten
 \family default
  auswählen.
- In ihn können Sie LaTeX-Befehle schreiben, wie zum Beispiel eine Makro-Definiti
-on 
+ Dort können Sie LaTeX-Befehle schreiben, wie zum Beispiel eine Makro-Definition
+ in Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vpageref
 reference "Makro-erzeugen"
@@ -724,10 +745,7 @@ büche
 rn, die Sie alle direkt in LyX lesen können.
  Wählen Sie einfach das gewünschte Dokument aus dem Menü 
 \family sans
-\bar under
-H
-\bar default
-ilfe
+Hilfe
 \family default
  aus.
 \end_layout
@@ -762,8 +780,7 @@ Es gibt zwei Möglichkeiten, LyX zu benutzen.
 root
 \emph default
 -Privilegien.
- Wenn das nicht geht.
- 
+ Wenn das nicht geht, 
 \emph on
 installieren
 \emph default
@@ -1059,7 +1076,7 @@ Speichern (Strg+S)
 
  
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1080,36 +1097,6 @@ lyx-devel@lists.lyx.org
 \end_inset
 
 .
- Bei mir können Sie außerdem bearbeitete, druckbare bekommen (
-\family sans
-Hilfe\SpecialChar \menuseparator
-Über
-\begin_inset space \space{}
-\end_inset
-
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X\SpecialChar \menuseparator
-Ruhm
-\begin_inset space \space{}
-\end_inset
-
-und
-\begin_inset space \space{}
-\end_inset
-
-Ehre
-\family default
-).
 \end_layout
 
 \end_inset
@@ -1175,13 +1162,9 @@ Neu
 \end_inset
 
 von
-\bar under
-
 \begin_inset space \space{}
 \end_inset
 
-
-\bar default
 Vorlage\SpecialChar \ldots{}
 
 \family default
@@ -1612,13 +1595,9 @@ ersetzen
  Ist das Feld 
 \family sans
 Ersetzen
-\bar under
-
 \begin_inset space \space{}
 \end_inset
 
-
-\bar default
 durch:
 \family default
  leer, wird der Suchbegriff gelöscht.
@@ -2006,7 +1985,7 @@ Bearbeiten
 \end_layout
 
 \begin_layout Enumerate
-in Tabellen Befehle, mit dem Sie die Tabelle verändern können, enthält.
+in Tabellen Befehle, mit denen Sie die Tabelle verändern können, enthält.
  Der Befehl 
 \family sans
 Einstellungen
@@ -2204,7 +2183,11 @@ Tutorium
 \begin_deeper
 \begin_layout Standard
 Wenn Sie unbedingt etwas Tabulatorähnliches benötigen, können Sie das meistens
- durch eine Tabelle ohne Rahmen simulieren, siehe auch 
+ durch eine Tabelle ohne Rahmen simulieren, siehe auch Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Tabellen"
@@ -2508,105 +2491,6 @@ Anpassung
 .
 \end_layout
 
-\begin_layout Description
-Compose
-\family sans
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Compose
-\end_layout
-
-\end_inset
-
-
-\family default
- Diese Taste ist die Kombination 
-\family sans
-AltGr+Umschalt
-\family default
- und/oder die rechte 
-\family sans
-Windows
-\family default
--Taste (rechts von 
-\family sans
-AltGr
-\family default
-).
- Sie ist besonders dann hilfreich, wenn man Buchstaben mit Akzenten oder
- andere zusammengesetzte Zeichen nur manchmal benutzt.
- Hier sind einige Beispiele dafür, was Sie mit der 
-\family sans
-Compose
-\family default
--Taste machen können:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\family sans
-Compose
-\begin_inset space ~
-\end_inset
-
-e
-\begin_inset space ~
-\end_inset
-
-'
-\family default
- 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- é
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Compose
-\begin_inset space ~
-\end_inset
-
-O
-\begin_inset space ~
-\end_inset
-
-R
-\family default
- 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- ®
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Compose
-\begin_inset space ~
-\end_inset
-
-<
-\begin_inset space ~
-\end_inset
-
-<
-\family default
- 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- «
-\end_layout
-
-\end_deeper
 \begin_layout Section
 Ausschneiden und Kopieren zwischen LyX und anderen Programmen
 \begin_inset OptArg
@@ -2719,6 +2603,19 @@ Das Einfügen von Text in LyX funktioniert fast genauso wie in X.
  ein.
 \end_layout
 
+\begin_layout Section
+Wortvervollständigung
+\end_layout
+
+\begin_layout Standard
+Wenn Sie Text eingeben, werden Sie manchmal sehen, dass rechts vom gerade
+ geschriebenen Wort graue Buchstaben auftauchen.
+ Das sind mögliche Wortvervollständigungen, die LyX Ihnen vorschlägt.
+ Wenn Sie dann die Tab-Taste betätigen, wird der Vorschlag übernommen, wenn
+ LyX nur eine Wortvervollständigung kennt.
+ Sonst öffnet die Tab-Taste eine Auswahl von mehreren Möglichkeiten.
+\end_layout
+
 \begin_layout Chapter
 LyX-Grundlagen
 \end_layout
@@ -2784,10 +2681,10 @@ finden.
 \begin_layout Subsection
 Dokumentklassen
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Dokument!-klassen
+Dokument!klassen@-klassen
 \end_layout
 
 \end_inset
@@ -3022,8 +2919,8 @@ article
 \begin_inset space ~
 \end_inset
 
-Proceedings) Layout für Journale der The International Society for Optical
- Engineering (SPIE)
+Proceedings) Layout für Journale der International Society for Optical Engineeri
+ng (SPIE)
 \end_layout
 
 \begin_layout Description
@@ -3039,7 +2936,7 @@ article
 \begin_inset space ~
 \end_inset
 
-(TUGboat) Layout für TUGboat, das Journal der international TeX user Group
+(TUGboat) Layout für TUGboat, das Journal der International TeX User Group
  (TUG)
 \end_layout
 
@@ -3107,7 +3004,7 @@ vitae für Lebensläufe
 \end_layout
 
 \begin_layout Description
-hollywood für spezielle Filmskripte der US Filmindustrie.
+hollywood für spezielle Filmskripte der US-Filmindustrie.
  Dies ist keine LaTeX
 \begin_inset ERT
 status collapsed
@@ -3164,11 +3061,10 @@ presentation
 \begin_layout Standard
 Wir wollen hier nicht im Einzelnen beschreiben, wie man diese verschiedenen
  Dokumentklassen benutzen kann.
- Einzelheiten über die Nicht-Standard-Klassen finden Sie unter 
-\family sans
-Hilfe\SpecialChar \menuseparator
+ Einzelheiten über die Nicht-Standard-Klassen finden Sie in den 
+\emph on
 Handbuchergänzungen
-\family default
+\emph default
 .
  Hier wollen wir uns mit Eigenschaften befassen, die allen Dokumentklassen
  gemeinsam sind.
@@ -3217,7 +3113,7 @@ reference "Tab:Dokumentklassen"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -3231,10 +3127,10 @@ name "Tab:Dokumentklassen"
 
 Dokumentklassen
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Dokument!-klassen
+Dokument!klassen@-klassen
 \end_layout
 
 \end_inset
@@ -3257,7 +3153,7 @@ Dokument!-klassen
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="22mm">
+<column alignment="left" valignment="top" width="25mm">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -3713,6 +3609,7 @@ Abschnitt
 \end_layout
 
 \begin_layout Standard
+\noindent
 Sie werden sich wahrscheinlich fragen, was 
 \family sans
 höchste
@@ -3867,7 +3764,7 @@ Serifenfrei: Hier legen Sie den Font für den serifenfreien Zeichensatz fest.
 \end_layout
 
 \begin_layout Description
-Schreibmaschine Hier legen Sie den Schreibmaschinen-Font fest.
+Schreibmaschine Hier legen Sie den Schreibmaschinen-Zeichensatz fest.
 \end_layout
 
 \begin_layout Description
@@ -4197,10 +4094,10 @@ fancyhdr
 \family default
 -Paketes
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Zur Zeit unter /usr/share/texmf/doc/latex/fancyhdr/fancyhdr.dvi zu finden
+Suchen Sie in Ihrer Distribution nach fancyhdr.dvi ode fancyhdr.pdf.
 \end_layout
 
 \end_inset
@@ -4406,76 +4303,13 @@ Kopf + Kopfzeilenhöhe
 
 \end_deeper
 \begin_layout Standard
-Siehe auch 
+Siehe auch Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Seitenränder"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Papiergrößen
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Dokument!Papiergrößen
-\end_layout
-
-\end_inset
-
- und Orientierung
-\begin_inset CommandInset label
-LatexCommand label
-name "Papiergrößen-und-Orientierung"
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Dokument!Orientierung
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Siehe Seite 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "Seitenformat"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
-Seitenränder
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Dokument!Seitenränder
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Siehe Seite 
-\begin_inset CommandInset ref
-LatexCommand pageref
 reference "Seitenränder"
 
 \end_inset
@@ -5371,10 +5205,10 @@ Standard
 \begin_layout Subsection
 Dokumenttitel
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Dokument!-titel
+Dokument!titel@-titel
 \end_layout
 
 \end_inset
@@ -5425,10 +5259,10 @@ Titel
 \family default
 -Umgebung
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Titel!-Umgebung
+Titel!Umgebung@-Umgebung
 \end_layout
 
 \end_inset
@@ -5815,8 +5649,7 @@ Also, wenn Sie die
 \family sans
 Unterunterabschn.
 \family default
--Umgebung benutzen, um einen neuen Unter-Unter\SpecialChar \-
-Abschnitt zu markieren, markiert
+-Umgebung benutzen, um einen neuen Unter-Unterabschnitt zu markieren, markiert
  LyX die Überschrift mit der zugehörigen Nummer und den Nummern des Unterabschni
 ttes
 \family sans
@@ -6012,7 +5845,7 @@ Nummerierung
 Inhaltsverzeichnis
 \family default
  können Sie mit den beiden Schiebereglern festlegen, wieviele Hierarchiestufen
- LyX nummerieren soll, und wieviele im Inhaltsverzeichnis erscheinen sollen.
+ LyX nummerieren soll und wieviele im Inhaltsverzeichnis erscheinen sollen.
  In der Tabelle darunter sehen Sie die Auswirkung der Reglerstellungen.
 \end_layout
 
@@ -6054,8 +5887,8 @@ Einfügen
 Kurztitel
 \family default
  eine alternative Überschrift definieren, die dann benutzt wird, wenn die
- lange nicht auf die Seite passt.
- Dieser Kurztitel wird auch im Inhaltsverzeichnis und in Gleitobjekten benutzt,
+ lange nicht in die Zeile passt.
+ Dieser Kurztitel wird im Inhaltsverzeichnis und in Gleitobjekten benutzt,
  wenn es nötig ist.
  Im Dokument selber wird immer die lange Überschrift benutzt und nötigenfalls
  umgebrochen.
@@ -6272,7 +6105,7 @@ Quote
 
 
 \family default
- und 
+ -- und 
 \family sans
 Zitat
 \begin_inset space \space{}
@@ -6294,7 +6127,7 @@ Quotation
 
 
 \family default
- besitzen nur einen Unterschied: 
+ -- besitzen nur einen Unterschied: 
 \family sans
 Zitat
 \begin_inset space \space{}
@@ -6853,21 +6686,10 @@ ff ausführlich beschreiben.
 \family sans
 Aufzählung
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Liste ! Aufz
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-ahlung
+Liste ! Aufzahlung@Aufzählung
 \end_layout
 
 \end_inset
@@ -7048,7 +6870,7 @@ gen
 \family default
 ).
  Wie bereits erwähnt, erscheinen die Anpassungen nur im gedruckten Dokument,
- nicht auf dem LyX-Bildschirm.
+ nicht im LyX-Fenster.
 \end_layout
 
 \begin_layout Standard
@@ -7119,8 +6941,8 @@ Beschreibung
 \end_layout
 
 \begin_layout Standard
-LyX setzt die Marke fett und fügt zusätzlichen Leerraum zwischen die Marke
- und den Rest der Zeile ein.
+LyX setzt die Marke fett und fügt zusätzlichen Leerraum zwischen der Marke
+ und dem Rest der Zeile ein.
 \end_layout
 
 \begin_layout Standard
@@ -7148,13 +6970,9 @@ Normales
 \end_inset
 
 Geschütztes
-\bar under
-
 \begin_inset space \space{}
 \end_inset
 
-
-\bar default
 Leerzeichen
 \family default
 .) Lesen Sie auch Abschnitt 
@@ -7615,7 +7433,7 @@ Z
 \begin_layout Standard
 Machen Sie sich nichts daraus, wenn Sie noch nicht wissen, was variabler
  horizontaler Abstand ist.
- Merken Sie sich nur, dass Sie sie zum Anpassen der 
+ Merken Sie sich nur, dass Sie ihn zum Anpassen der 
 \family sans
 Liste
 \family default
@@ -7835,9 +7653,9 @@ Ort, Datum
 \begin_layout Standard
 Das war eine 
 \family sans
-Adress
+Adresse
 \family default
-e
+
 \begin_inset space ~
 \end_inset
 
@@ -7888,11 +7706,7 @@ Address
 
 ) und 
 \family sans
-Adress
-\family default
-e
-\family sans
-
+Adresse
 \begin_inset space \space{}
 \end_inset
 
@@ -7914,9 +7728,9 @@ Adresse
 \family default
  oder 
 \family sans
-Adress
+Adresse
 \family default
-e
+
 \begin_inset space ~
 \end_inset
 
@@ -8286,7 +8100,7 @@ Legende
 \family sans
 Eingabe
 \family default
- die Paragraph-Umgebung auf 
+ die Absatzumgebung auf 
 \family sans
 Standard
 \family default
@@ -8325,7 +8139,11 @@ reference "Tabellen"
 \family sans
 Legende
 \family default
- wird in der normalen book-Dokumentklasse benutzt, L
+ wird in der normalen 
+\family sans
+book
+\family default
+-Dokumentklasse benutzt, L
 \family sans
 egende oben
 \family default
@@ -8333,7 +8151,11 @@ egende oben
 \family sans
 Legende unten
 \family default
- in der koma-script-Version.
+ in der 
+\family sans
+koma-script
+\family default
+-Version.
 \end_layout
 
 \begin_layout Subsubsection
@@ -8700,7 +8522,7 @@ Ja
 \end_layout
 
 \begin_layout Enumerate
-Eine Umgebung kann überhaupt kein schachteln erlauben.
+Eine Umgebung kann überhaupt kein Schachteln erlauben.
 \end_layout
 
 \begin_layout Enumerate
@@ -8779,7 +8601,7 @@ schachtelbar!nicht
 \family sans
 Teil
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Teil
@@ -8789,14 +8611,14 @@ Teil
 
 
 \family default
- (LaTeX-Bezeichnung: Teil
+ (LaTeX-Bezeichnung: part
 \family sans
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Teil
+part
 \end_layout
 
 \end_inset
@@ -9147,9 +8969,11 @@ Bilder
 
 \begin_layout Standard
 
-\emph on
-Anmerkung: wenn Sie ein Bild oder eine Tabelle in ein Gleitobjekt einfügen,
- gilt dies nicht mehr.
+\series bold
+Anmerkung
+\series default
+: wenn Sie ein Bild oder eine Tabelle in ein Gleitobjekt einfügen, gilt
+ dies nicht mehr.
  Lesen Sie weiter unten oder in den Abschnitten 
 \begin_inset CommandInset ref
 LatexCommand vref
@@ -9478,7 +9302,7 @@ In zweispaltigen Dokumenten können sich Gleitobjekte über zwei Spalten anstatt
 \end_inset
 
  Weil ein Gleitobjekt keinen festen Platz im fertigen Text hat, wirkt sich
- schachteln auf seinen momentanen Platz nicht aus, nachdem Sie es an LaTeX
+ Schachteln auf seinen momentanen Platz nicht aus, nachdem Sie es an LaTeX
  weitergereicht haben.
 \end_layout
 
@@ -10056,6 +9880,7 @@ Standard
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset ERT
 status collapsed
 
@@ -10769,7 +10594,9 @@ Alt+Eingabe
  benutzen, um die Tiefe beizubehalten.
  Denken Sie daran, dass Sie 
 \family sans
-Strg+Eingabe
+Strg+Ein\SpecialChar \-
+ga\SpecialChar \-
+be
 \family default
  benötigen, um innerhalb von 
 \family sans
@@ -10785,10 +10612,18 @@ rechts
 \family default
 -Umgebungen mehrere Zeilen schreiben zu können.
  Hier ist das Ergebnis:
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Right Address
+Franz Meier
+\begin_inset Newline newline
+\end_inset
+
 Nirgendwostr.
  1234
 \begin_inset Newline newline
@@ -10895,6 +10730,232 @@ Leerraum!waagerechter
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Ist ein Leerzeichen ein Leerzeichen? Nicht in guter Typographie.
+ Während Sie in normalen Textverarbeitungen die Leertaste benutzen, um Worte
+ zu trennen, bietet LyX weitere Leerzeichen: Leerzeichen mit unterschiedlicher
+ Breite und Leerzeichen, die beim Zeilenumbruch (nicht) aufgebrochen werden
+ können.
+ Die folgenden Abschnitte enthalten einige nützliche Beispiele.
+\end_layout
+
+\begin_layout Subsubsection
+Normales Leerzeichen
+\begin_inset CommandInset label
+LatexCommand label
+name "Normales-Leerzeichen"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Einige Sprachen fügen nach einem Punkt einen etwas größeren Abstand ein,
+ und LyX befolgt diese Konvention (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Abkürzungen-und-Satzenden"
+
+\end_inset
+
+).
+ Manchmal wollen Sie aber trotzdem einen normalen Abstand setzen.
+ Das erreichen Sie mit 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Formatierung\SpecialChar \menuseparator
+Normales
+\family default
+
+\begin_inset space \space{}
+\end_inset
+
+
+\family sans
+Leerzeichen
+\family default
+ oder 
+\family sans
+Strg+Alt+Leertaste
+\family default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Geschütztes Leerzeichen
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Leerzeichen!geschutztes@geschütztes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es wird hauptsächlich benutzt, um LyX (und LaTeX) mitzuteilen, die Zeile
+ 
+\emph on
+nicht
+\emph default
+ zwischen den beiden Worten umzubrechen.
+ Das ist manchmal nötig, um unschöne Zeilenumbrüche zu vermeiden, wie hier:
+\end_layout
+
+\begin_layout Quote
+Eine gute Dokumentation sollte nicht mehr wiegen als 1
+\begin_inset Newline newline
+\end_inset
+
+kg.
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\family roman
+\series medium
+Offensichtlich
+\family default
+\series default
+ ist zwischen der 
+\begin_inset Quotes pld
+\end_inset
+
+1
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes pld
+\end_inset
+
+kg
+\begin_inset Quotes grd
+\end_inset
+
+ ein geschütztes Leerzeichen angebracht.
+ Ein geschütztes Leerzeichen erhält man mit 
+\family sans
+Einfügen
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Formatierung
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Ge\SpecialChar \-
+schütz\SpecialChar \-
+tes Leer\SpecialChar \-
+zei\SpecialChar \-
+chen
+\family default
+ oder einfach mit 
+\family sans
+Strg+Leertaste.
+\end_layout
+
+\begin_layout Subsubsection
+Halbes Leerzeichen
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Leerzeichen!halbes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ein 
+\family sans
+Halbes
+\begin_inset space \space{}
+\end_inset
+
+Leerzeichen
+\family default
+ ist nur halb so breit wie das normale und 
+\emph on
+geschützt
+\emph default
+.
+ Die typographischen Konventionen vieler Sprachen benutzen es dort, wo ein
+ normales Leerzeichen zu breit sein würde, zum Beispiel in Abkürzungen:
+\end_layout
+
+\begin_layout Quote
+
+\noun on
+D.
+\begin_inset space \thinspace{}
+\end_inset
+
+E
+\noun default
+.
+\begin_inset space \space{}
+\end_inset
+
+
+\noun on
+Knuth
+\noun default
+ hat unser geliebtes Drucksetzprogramm entwickelt, d.
+\begin_inset space \thinspace{}
+\end_inset
+
+h.
+\begin_inset space \space{}
+\end_inset
+
+TeX.
+\end_layout
+
+\begin_layout Standard
+Einen halbes Leerzeichen können Sie mit 
+\family sans
+Einfügen
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Formatierung
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Halbes
+\begin_inset space \space{}
+\end_inset
+
+Leerzeichen
+\family default
+ oder 
+\family sans
+Strg+Umschalt+Leertaste
+\family default
+ einfügen.
+\end_layout
+
+\begin_layout Subsubsection
+Weitere Zwischenräume
 \end_layout
 
 \begin_layout Standard
@@ -11128,31 +11189,32 @@ Mehrfach
 \end_layout
 
 \begin_layout Subsubsection
-Weitere Zwischenräume
+Mathematische Zwischenräume
 \end_layout
 
 \begin_layout Standard
-Der folgende Zwischenraum wird nicht von LyX unterstützt, weil er nicht
- oft benutzt wird, so dass Sie TeX-Code (siehe Abschnitt
+Über 
+\family sans
+Ansicht\SpecialChar \menuseparator
+Werkzeugleisten\SpecialChar \menuseparator
+Andere
 \begin_inset space \space{}
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "TeX-Code-Kästchen"
-
-\end_inset
-
-) benutzen müssen.
-\end_layout
-
-\begin_layout Paragraph
-Phantom-Abstand
+Werkeugleisten\SpecialChar \menuseparator
+Abstände
+\family default
+ finden Sie weitere neun Abstände, aus denen Sie auswählen können.
 \end_layout
 
 \begin_layout Standard
-Manchmal benötigen Sie einen Abstand, der genauso lang ist wie ein Begriff.
+Interessant ist der 
+\family sans
+\series bold
+Phantom-Abstand
+\family default
+\series default
+: Manchmal benötigen Sie einen Abstand, der genauso lang ist wie ein Begriff.
  Hier ist ein Beispiel einer Mehrfach-Auswahl:
 \begin_inset VSpace medskip
 \end_inset
@@ -11170,36 +11232,18 @@ Herr Meier würde springt
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-phantom{Herr Meier }
-\end_layout
-
+\begin_inset Formula $\hphantom{\mbox{Herr Meier}}$
 \end_inset
 
-hat gespringt
+ hat gespringt
 \begin_inset Newline newline
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-phantom{Herr Meier}
-\end_layout
-
+\begin_inset Formula $\hphantom{\mbox{Herr Meier}}$
 \end_inset
 
-springt
+ springt
 \begin_inset VSpace medskip
 \end_inset
 
@@ -11212,64 +11256,34 @@ Die Auswahlmöglichkeiten sind also rechts vom Begriff
 \end_inset
 
 Herr Meier
-\begin_inset space ~
-\end_inset
-
-
 \begin_inset Quotes grd
 \end_inset
 
  ausgerichtet.
- Das erreichen Sie mit dem LaTeX-Befehl 
-\family typewriter
-
-\backslash
-phantom
-\family default
- als TeX-Code, in unserem Fall 
-\family typewriter
-
-\backslash
-phantom{Herr Meier }
-\family default
-.
- Ob das Leerzeichen im TeX-Code oder danach steht, spielt keine Rolle.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Es gibt noch die Befehle 
-\family typewriter
-
-\backslash
-hphantom
-\family default
- und 
-\family typewriter
-
-\backslash
-vphantom
-\family default
-, aber die sind für ein LyX-Benutzerhandbuch zu speziell.
- Näheres darüber können Sie in LaTeX-Büchern wie 
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latexcompanion,latexguide"
-
-\end_inset
-
- nachlesen.
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+Hinweis:
+\series default
+ Bevor Sie den Text 
+\begin_inset Quotes gld
 \end_inset
 
+Herr Meier
+\begin_inset Quotes grd
+\end_inset
 
+ schreiben, sollten Sie mit 
+\family sans
+Alt+M
+\begin_inset space \space{}
+\end_inset
+
+M
+\family default
+ in den mathematischen Textmodus wechseln, damit die Abstände stimmen.
 \end_layout
 
 \begin_layout Subsection
@@ -11480,7 +11494,7 @@ Markenbreite
 \end_layout
 
 \begin_layout Standard
-Siehe
+Siehe Abschnitt
 \begin_inset space \space{}
 \end_inset
 
@@ -11795,7 +11809,7 @@ ausgeben)
 \family default
  die Seite umgebrochen, und alle noch nicht gedruckten Gleitobjekte kommen
  auf die neue Seite oder folgende.
- Bei doppelseitigem Druck mach der Befehl
+ Bei doppelseitigem Druck macht der Befehl
 \family sans
  Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
@@ -12142,7 +12156,7 @@ environment
 \begin_layout Standard
 \noindent
 4.
- Sie können einfach einen mit 
+ Sie können einfach mit 
 \family sans
 Strg+Eingabe
 \family default
@@ -12425,670 +12439,6 @@ Tutorium
  enthält auch viel mehr Beispiele als dieser Abschnitt.
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Subsection
-Leerzeichen und Zwischenräume
-\end_layout
-
-\begin_layout Standard
-Ist ein Leerzeichen ein Leerzeichen? Nicht in guter Typographie.
- Während Sie in normalen Textverarbeitungen die Leertaste benutzen, um Worte
- zu trennen, bietet LyX weitere Leerzeichen: Leerzeichen mit unterschiedlicher
- Breite und Leerzeichen, die beim Zeilenumbruch (nicht) aufgebrochen werden
- können.
- Die folgenden Abschnitte enthalten einige nützliche Beispiele.
-\end_layout
-
-\begin_layout Subsubsection
-Normales Leerzeichen
-\begin_inset CommandInset label
-LatexCommand label
-name "Normales-Leerzeichen"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Einige Sprachen fügen nach einem Punkt einen etwas größeren Abstand ein,
- und LyX befolgt diese Konvention (siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Abkürzungen-und-Satzenden"
-
-\end_inset
-
-).
- Manchmal Wollen Sie aber trotzdem einen normalen Abstand setzen.
- Das erreichen Sie mit 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Formatierung\SpecialChar \menuseparator
-Normales
-\family default
-
-\begin_inset space \space{}
-\end_inset
-
-
-\family sans
-Leerzeichen
-\family default
- oder 
-\family sans
-Strg+Alt
-\begin_inset space \space{}
-\end_inset
-
--Leertaste
-\family default
-.
-\end_layout
-
-\begin_layout Subsubsection
-Geschütztes Leerzeichen
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Leerzeichen!geschutztes@geschütztes
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Es wird hauptsächlich benutzt, um LyX (und LaTeX) mitzuteilen, die Zeile
- 
-\emph on
-nicht
-\emph default
- zwischen den beiden Worten umzubrechen.
- Das ist manchmal nötig, um unschöne Zeilenumbrüche zu vermeiden, wie hier:
-\end_layout
-
-\begin_layout Quote
-Eine gute Dokumentation sollte nicht mehr wiegen als 1
-\begin_inset Newline newline
-\end_inset
-
-kg.
-\end_layout
-
-\begin_layout Standard
-\noindent
-
-\family roman
-\series medium
-Offensichtlich
-\family default
-\series default
- ist zwischen der 
-\begin_inset Quotes pld
-\end_inset
-
-1
-\begin_inset Quotes grd
-\end_inset
-
- und 
-\begin_inset Quotes pld
-\end_inset
-
-kg
-\begin_inset Quotes grd
-\end_inset
-
- ein geschütztes Leerzeichen angebracht.
- Ein geschütztes Leerzeichen erhält man mit 
-\family sans
-Einfügen
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Formatierung
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Ge\SpecialChar \-
-schütz\SpecialChar \-
-tes Leer\SpecialChar \-
-zei\SpecialChar \-
-chen
-\family default
- oder einfach mit 
-\family sans
-Strg+Leertaste.
-\end_layout
-
-\begin_layout Subsubsection
-Halbes Leerzeichen
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Leerzeichen!halbes
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Ein 
-\family sans
-Halbes
-\begin_inset space \space{}
-\end_inset
-
-Leerzeichen
-\family default
- ist nur halb so breit wie das normale und 
-\emph on
-geschützt
-\emph default
-.
- Die typographischen Konventionen vieler Sprachen benutzen es dort, wo ein
- normales Leerzeichen zu breit sein würde, zum Beispiel in Abkürzungen:
-\end_layout
-
-\begin_layout Quote
-
-\noun on
-D.
-\begin_inset space \thinspace{}
-\end_inset
-
-E
-\noun default
-.
-\begin_inset space \space{}
-\end_inset
-
-
-\noun on
-Knuth
-\noun default
- hat unser geliebtes Drucksetzprogramm entwickelt, d.
-\begin_inset space \thinspace{}
-\end_inset
-
-h.
-\begin_inset space \space{}
-\end_inset
-
-TeX.
-\end_layout
-
-\begin_layout Standard
-Einen halbes Leerzeichen können Sie mit 
-\family sans
-Einfügen
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Formatierung
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Halbes
-\begin_inset space \space{}
-\end_inset
-
-Leerzeichen
-\family default
- oder 
-\family sans
-Strg+Umschalt+Leertaste
-\family default
- einfügen.
-\end_layout
-
-\begin_layout Subsubsection
-Weitere Zwischenräume
-\end_layout
-
-\begin_layout Standard
-Außerdem gibt es noch weitere Zwischenräume.
- Obwohl LyX sie unterstützt, müssen Sie sie über den 
-\emph on
-Minipuffer
-\emph default
- mittels 
-\family typewriter
-space-insert Befehl
-\family default
- eingeben, wobei Sie 
-\family typewriter
-Befehl
-\family default
- der Tabelle
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Tab:Zwischenräume"
-
-\end_inset
-
- entnehmen können.
- Sie können das auch über 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Code
-\family default
- (
-\family sans
-Strg+L
-\family default
- oder 
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-) machen, indem Sie dort 
-\family typewriter
-
-\backslash
-Befehl
-\family default
- eingeben.
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float table
-placement h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Zwischenräume
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Tab:Zwischenräume"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="3">
-<features>
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Befehl
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Breite
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Geschützt?
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-normal
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1/3
-\begin_inset space ~
-\end_inset
-
-em
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-nein
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-protected
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1/3
-\begin_inset space ~
-\end_inset
-
-em
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ja
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-thin
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1/6
-\begin_inset space ~
-\end_inset
-
-em
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ja
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-enspace
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.5
-\begin_inset space ~
-\end_inset
-
-em
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ja
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-enskip
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.5
-\begin_inset space ~
-\end_inset
-
-em
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-nein
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-quad
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\begin_inset space ~
-\end_inset
-
-em
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-nein
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-qquad
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2
-\begin_inset space ~
-\end_inset
-
-em
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-nein
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-negthinspace
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--1/6
-\begin_inset space ~
-\end_inset
-
-em
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ja
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Horizontale Linien
 \begin_inset Index
@@ -13293,24 +12643,24 @@ Fonts
 
 \begin_layout Standard
 Viele moderne Drucksetz- und Textauszeichnungs-Programme haben damit begonnen,
- Buchstabenstile anstatt Fonts zu benutzen.
+ Buchstabenstile an Stelle von Fonts zu benutzen.
  Anstatt zum Beispiel die Kursivform eines bestimmten Fonts zu benutzen,
  wird ein 
 \emph on
 Hervorhebungsstil
 \emph default
  benutzt.
- So wird das auch in LyX gemacht, wo kontextabhängig gearbeitet wird anstatt
- sich auf die Einzelheiten der Drucksetzung zu konzentrieren.
+ So wird das auch in LyX gemacht, wo kontextabhängig gearbeitet wird, damit
+ Sie sich nicht auf die Einzelheiten der Drucksetzung konzentrieren müssen.
 \end_layout
 
 \begin_layout Subsection
 Dokumentfont
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Dokument!-font
+Dokument!font@-font
 \end_layout
 
 \end_inset
@@ -13366,22 +12716,10 @@ Standard
 Standard
 \family default
  benutzt die TeX-Fonts 
-\begin_inset Quotes gld
-\end_inset
-
-
 \family typewriter
 Computer Modern (cm)
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
  oder 
-\begin_inset Quotes gld
-\end_inset
-
-
 \family typewriter
 European
 \family default
@@ -13389,10 +12727,6 @@ European
 \family typewriter
 Computer Modern (ec)
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
 .
 \end_layout
 
@@ -13508,11 +12842,11 @@ rève
 \begin_inset Quotes gld
 \end_inset
 
- e +
+e +
 \begin_inset space ~
 \end_inset
 
- ̀ 
+ ̀
 \begin_inset Quotes grd
 \end_inset
 
@@ -13646,7 +12980,11 @@ Standard
 \family default
 .
  LyX richtet alle anderen möglichen Fontgrößen, zum Beispiel für Fußnoten,
- hoch- und tiefgestellt usw.) an dieser Basisgröße aus.
+ hoch- und tiefgestellt usw.
+\begin_inset space \space{}
+\end_inset
+
+an dieser Basisgröße aus.
  
 \end_layout
 
@@ -13666,7 +13004,7 @@ Textstil
 	filename ../../images/dialog-show_character.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
+	BoundingBox 0bp 2bp 20bp 20bp
 
 \end_inset
 
@@ -13695,7 +13033,7 @@ Bemerkung
 \emph on
 nicht
 \emph default
- ändern! Den Unterschied werden Sie nur in Der Druckvorschau oder auf dem
+ ändern! Den Unterschied werden Sie nur in der Druckvorschau oder auf dem
  Papier sehen.
  Das ist Teil des WYSIWYM-Konzeptes.
  Die Bildschirmfonts können Sie über 
@@ -13751,7 +13089,7 @@ Eigenname
 \family sans
 Kapitälchen
 \family default
-.
+).
  Beide kann man mit Tastenkürzeln, über die Menüs oder die Werkzeugleiste
  auswählen.
 \end_layout
@@ -13926,8 +13264,8 @@ John Weiss
 
 \end_inset
 
- Manche Schriftsteller benutzen manchmal einen anderen Font, um die Gedanken
- einer Person von einem gewöhnlichen Dialog abzuheben.
+ Schriftsteller benutzen manchmal einen anderen Font, um die Gedanken einer
+ Person von einem gewöhnlichen Dialog abzuheben.
 \end_layout
 
 \begin_layout Standard
@@ -13959,7 +13297,7 @@ Textstil
 	filename ../../images/dialog-show_character.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
+	BoundingBox 0bp 2bp 20bp 20bp
 
 \end_inset
 
@@ -14608,7 +13946,8 @@ normalsize
 
 \end_inset
 
- oder normal Dies ist auch die Standardgröße (Tastenkürzel: 
+ oder normal.
+ Dies ist auch die Standardgröße (Tastenkürzel: 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -15109,7 +14448,7 @@ Nachdem wir nun einige Grundfunktionen von LyX zur Dokumentbearbeitung erläuter
  können.
  Vorher wollen wir Ihnen jedoch einen kurzen Überblick über das geben, was
  sich im Hintergrund abspielt.
- Wir werden dies ausführlicher in 
+ Wir werden dies ausführlicher in den 
 \emph on
 Handbuchergänzungen
 \emph default
@@ -15166,7 +14505,7 @@ dvi
 
 \begin_deeper
 \begin_layout Description
-ANMERKUNG: Die 
+Bemerkung: Die 
 \family typewriter
 dvi
 \family default
@@ -15285,6 +14624,13 @@ dvi
 \family default
 -Betrachter
 \family typewriter
+
+\begin_inset CommandInset label
+LatexCommand label
+name "DVI-Version-anschauen"
+
+\end_inset
+
 
 \begin_inset Index
 status collapsed
@@ -15434,7 +14780,7 @@ DVI
 	filename ../../images/buffer-update_dvi.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
+	BoundingBox 0bp 2bp 20bp 20bp
 
 \end_inset
 
@@ -15566,7 +14912,7 @@ Strg+Umschalt+T
 	filename ../../images/buffer-update_ps.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
+	BoundingBox 0bp 0bp 20bp 20bp
 
 \end_inset
 
@@ -15636,7 +14982,7 @@ PDF\SpecialChar \ldots{}
 	filename ../../images/buffer-view_pdf2.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
+	BoundingBox 0bp 2bp 20bp 20bp
 
 \end_inset
 
@@ -16229,11 +15575,7 @@ Falls LaTeX ein Wort nicht oder nicht richtig trennen kann, können Sie manuell
 \family sans
 Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
-
-\family default
-T
-\family sans
-renn\SpecialChar \-
+Trenn\SpecialChar \-
 möglichkeit
 \family default
  an der Stelle im Wort, an der Sie trennen möchten, oder einfach 
@@ -16278,7 +15620,7 @@ A-b c
 \end_layout
 
 \begin_layout Description
-Anmerkung: Wenn Sie manuelle Trennhilfen innerhalb einer 
+Bemerkung: Wenn Sie manuelle Trennhilfen innerhalb einer 
 \family sans
 Ly
 \begin_inset ERT
@@ -16486,7 +15828,7 @@ reference "Sloppypar"
 \begin_layout Enumerate
 Sie benutzen den rechtsbündigen Zeilenumbruch (
 \family sans
-Strg + Umschalt + Return
+Strg + Umschalt + Eingabe
 \family default
 ).
 \end_layout
@@ -16805,7 +16147,7 @@ Anfang Ende
 \family default
  (= 
 \family sans
-Umschalt+")
+Umschalt+2)
 \family default
  wird sie automatisch erzeugen.
 \end_layout
@@ -16987,7 +16329,7 @@ Wenn Sie die einfache Form des Anführungszeichens schreiben wollen, müssen
  Sie 
 \family sans
 Alt+Um\SpecialChar \-
-schalt+"
+schalt+2
 \family default
  benutzen.
  Wenn Sie aber ein 
@@ -16998,7 +16340,7 @@ echtes
 \family sans
 Strg+Umschalt+
 \family default
-".
+2.
  Das erzeugt ein ".
 \end_layout
 
@@ -17297,7 +16639,7 @@ name "Notizen"
 \begin_layout Standard
 Es gibt zwei Kategrien von Notizen: die eine ist in LyX nur für den Verfasser
  eines Dokumentes da, um sich, wie der Name sagt, Notizen zu machen, und
- werden nicht gedruckt.
+ wird nicht gedruckt.
  Die andere wird gedruckt.
  Es gibt fünf Arten, die über 
 \family sans
@@ -17542,7 +16884,7 @@ Fußnote
 	filename ../../images/footnote-insert.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
+	BoundingBox 0bp 2bp 20bp 20bp
 
 \end_inset
 
@@ -17565,9 +16907,10 @@ Fußnote
 \emph on
 Fußnote
 \emph default
- und der Zalhl Wenn Sie zu einem späteren Zeitpunkt den Fußnotentext wieder
- ansehen oder verändern wollen, genügt ein Klick auf die Schaltfläche, und
- der Rahmen öffnet sich wieder.
+ und der Zahl.
+ Wenn Sie zu einem späteren Zeitpunkt den Fußnotentext wieder ansehen oder
+ verändern wollen, genügt ein Klick auf die Schaltfläche, und der Rahmen
+ öffnet sich wieder.
 \end_layout
 
 \begin_layout Standard
@@ -17583,7 +16926,7 @@ Fußnote
 	filename ../../images/footnote-insert.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
+	BoundingBox 0bp 2bp 20bp 20bp
 
 \end_inset
 
@@ -17814,7 +17157,7 @@ Durchsuchen
  
 \end_layout
 
-\begin_layout Quote
+\begin_layout Description
 
 \series bold
 Achtung
@@ -18631,7 +17974,7 @@ name "Grafikformate"
 \end_layout
 
 \begin_layout Standard
-Sie können Grafiken in aller bekannten Formate einfügen, aber weil jedes
+Sie können Grafiken in allen bekannten Formaten einfügen, aber weil jedes
  Druckausgabe
 \begin_inset ERT
 status collapsed
@@ -19107,7 +18450,7 @@ Marke
  
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Querverweise"
+reference "Querverweise-1"
 
 \end_inset
 
@@ -19123,7 +18466,7 @@ Querverweis\SpecialChar \ldots{}
 	filename ../../images/dialog-show-new-inset_ref.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
+	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -19363,7 +18706,7 @@ X-Regeln
 \family typewriter
 htbp
 \family default
- vor.
+ (here, top, bottom, page) vor.
  Wenn es LaTeX nicht gelingt, das Gleitojekt nach Ihren Regeln zu platzieren,
  wird es in einem neuen Durchlauf auf die nächste Seite gesetzt.
  Und ein letzter Hinweis: 
@@ -20132,11 +19475,7 @@ Letzte
 \family sans
 Fußzeile
 \family default
- finden Sie in Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
+ finden Sie 
 \begin_inset CommandInset ref
 LatexCommand vpageref
 reference "ErsteKopfzeile"
@@ -20301,13 +19640,13 @@ rechts
  vom Cursor eingefügt.
  Aus diesem Grund ist es ziemlich schwierig, eine Spalte auf der linken
  Seite der Tabelle oder über der ersten Zeile hinzuzufügen -- es ist eine
- Menge Ausschneide/Kopierarbeit notwendig.
+ Menge Ausschneide- und Kopierarbeit notwendig.
  Gelöscht wird immer die Zeile oder Spalte, in der sich der Cursor befindet.
 \end_layout
 
 \begin_layout Standard
-Sie können den Mehrspalten-Modus auch verwenden, um für eine einzelne Zelle
- eine Sonderformatierung im Hinblick auf die Rahmen und die Ausrichtung
+Sie können den Mehrfachspalten-Modus auch verwenden, um für eine einzelne
+ Zelle eine Sonderformatierung im Hinblick auf die Rahmen und die Ausrichtung
  des Textes zu ermöglichen.
  Hier ein Beispiel, bei dem das ausgenutzt wurde:
 \end_layout
@@ -20464,7 +19803,7 @@ Wie Sie sehen, sind die Überschriften der einzelnen Spalten jeweils zentriert
 \end_layout
 
 \begin_layout Standard
-Wenn eine Spaltet eine feste Breite haben soll, können Sie diese im Feld
+Wenn eine Spalte eine feste Breite haben soll, können Sie diese im Feld
  
 \family sans
 Breite
@@ -20501,7 +19840,7 @@ drehen
 	filename ../../images/tabular-feature_set-rotate-tabular.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 2bp 22bp 22bp
 
 \end_inset
 
@@ -20559,7 +19898,7 @@ reference "Tab:Zellen-um-90°-drehen"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -20573,10 +19912,10 @@ name "Tab:Zellen-um-90°-drehen"
 
 Zellen um 90° drehen
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tabellen!-zelle drehen
+Tabellen!zelle drehen@-zelle drehen
 \end_layout
 
 \end_inset
@@ -21384,10 +20723,10 @@ Gesamt
 
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Description
+Hinweis
 \emph on
-Hinweis:
+:
 \emph default
  Diese 90°-Drehung wird weder im LyX-Fenster noch mit 
 \family typewriter
@@ -21426,10 +20765,10 @@ reference "Tab:Zellen-um-90°-drehen"
 \begin_layout Subsection
 Was kann eine Zelle
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tabellen!-zelle
+Tabellen!zelle@-zelle
 \end_layout
 
 \end_inset
@@ -21460,7 +20799,7 @@ Abschnitt*
 \begin_layout Subsection
 Ausschneiden
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Tabellen!ausschneiden
@@ -21470,7 +20809,7 @@ Tabellen!ausschneiden
 
  und Einfügen
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Tabellen!einfugen@einfügen
@@ -22069,7 +21408,7 @@ Sie können auch eine ganze Tabelle auf einmal kopieren.
 \begin_layout Subsection
 Mehrzeiliger Text in Tabellen
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Tabellen!mehrzeiliger Text
@@ -22133,7 +21472,7 @@ Sie können durch
 \backslash
 newline
 \family default
- im LaTeX-Modus (
+ als TeX-Code (
 \family sans
 
 \begin_inset Graphics
@@ -22166,7 +21505,7 @@ reference "Tab:Mehrzeilige-Tabelle"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -22182,10 +21521,10 @@ name "Tab:Mehrzeilige-Tabelle"
 
 Mehrzeilige Tabelle
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tabelle!mehrzeilig
+Tabellen!mehrzeilig
 \end_layout
 
 \end_inset
@@ -22446,7 +21785,7 @@ name "ErsteKopfzeile"
 \end_inset
 
 Die aktuelle Zeile sowie alle darüberliegenden, die keine Sonderoptionen
- aktiviert haben, werden als die Überschrifts-Zeilen der ersten Seite einer
+ aktiviert haben, werden als Überschrifts-Zeilen der ersten Seite einer
  mehrseitigen Tabelle definiert.
 \end_layout
 
@@ -22466,7 +21805,7 @@ Tabellen!Kopfzeile
 \end_inset
 
 : Die aktuelle Zeile sowie alle darüberliegenden, die keine Sonderoptionen
- aktiviert haben, werden als die Überschrifts-Zeilen aller Seiten festgelegt
+ aktiviert haben, werden als Überschrifts-Zeilen aller Seiten festgelegt
  (mit Ausnahme der ersten, wenn 
 \family sans
 Erste
@@ -22604,20 +21943,19 @@ Erste
 
 Kopfzeile
 \family default
- (betrachten Sie die Beispiele in der Datei 
-\family sans
-Datei\SpecialChar \menuseparator
-Öffnen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
-Beispiele\SpecialChar \menuseparator
-de_TableExamples.lyx
-\family default
+ (betrachten Sie das Beispiel in 
+\emph on
+Eingebettete
+\emph default
+ 
+\emph on
+Objekte
+\emph default
 , um einen Eindruck zu bekommen, wie das funktioniert).
 \end_layout
 
 \begin_layout Standard
-Wenn Sie mit dem dem Seitenumbruch nicht zufrieden sind, können Sie mit
- 
+Wenn Sie mit dem Seitenumbruch nicht zufrieden sind, können Sie mit 
 \family sans
 Seitenumbruch
 \begin_inset space \space{}
@@ -22673,10 +22011,10 @@ Tabelle
 \family default
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tabelle!Lange
+Tabellen!lange
 \end_layout
 
 \end_inset
@@ -22708,13 +22046,8 @@ status collapsed
 
 
 \family sans
-X
-\begin_inset space \space{}
-\end_inset
-
-Kon\SpecialChar \-
-f\SpecialChar \textcompwordmark{}
-i\SpecialChar \-
+X-Kon\SpecialChar \-
+fi\SpecialChar \-
 gu\SpecialChar \-
 ra\SpecialChar \-
 tion
@@ -22734,12 +22067,15 @@ Lange
 Tabelle
 \family default
  deren Eigenschaften sehen können.
- Die gesamte Tabelle finden Sie unter 
-\family sans
-Strg+O\SpecialChar \menuseparator
-Beispiele
-\family default
-, TabellenBeispiel.lyx.
+ Die gesamte Tabelle finden Sie in 
+\emph on
+Eigebettete
+\emph default
+ 
+\emph on
+Objekte
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -23143,7 +22479,7 @@ Gleitobjekt
 \family default
 -Umgebungen
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Tabellen!in Legende-Umgebungen
@@ -23190,7 +22526,7 @@ Tabelle
  oder 
 \begin_inset Graphics
 	filename ../../images/float-insert_table.png
-	scale 70
+	scale 60
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -23362,10 +22698,10 @@ c & d\end{array}\right]$
 \begin_layout Subsubsection
 Tabellentitel
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tabellen!-titel
+Tabellen!titel@-titel
 \end_layout
 
 \end_inset
@@ -23434,7 +22770,7 @@ reference "Tab:Gleitende-Tabelle"
 placement htbp
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -23585,7 +22921,7 @@ Tabelle
  (
 \begin_inset Graphics
 	filename ../../images/float-insert_table.png
-	scale 70
+	scale 60
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
 
@@ -23744,19 +23080,8 @@ name "Tab:Tabelle-ohne-Titel"
 
 \begin_layout Standard
 Ohne Titel wird die Tabelle nicht nummeriert, deshalb wird sie, falls Sie
- eine Marke für Querverweise (siehe
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Querverweise"
-
-\end_inset
-
-) einfügen, unter der Nummer des aktuellen (Unter)Kapitels/Abschnittes referenzi
-ert.
+ eine Marke für Querverweise einfügen, unter der Nummer des aktuellen (Unter)Kap
+itels/Abschnittes referenziert.
  Beachten Sie bitte auch, dass nur Tabellen und Abbildungen in Gleitobjekt-Umgeb
 ungen mit einem Titel versehen werden können.
 \end_layout
@@ -23932,8 +23257,9 @@ Mathed
  Sie können einfach auf den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/math-mode.png
-	scale 75
+	scale 70
 	scaleBeforeRotation
+	BoundingBox 0bp 6bp 0bp 0bp
 
 \end_inset
 
@@ -24376,7 +23702,7 @@ Mathed!Text auswählen
 \begin_layout Standard
 Innerhalb von Mathed können Sie Text auf zwei verschiedene Arten auswählen.
  Stellen Sie den Cursor an das eine Ende der Zeichenkette, die Sie auswählen
- wollen und drücken Sie 
+ wollen, und drücken Sie 
 \family sans
 Umschalt+Pfeil
 \family default
@@ -24556,7 +23882,7 @@ Mathe-Werkzeugleiste
 	filename ../../images/math/frac.png
 	scale 50
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 12bp 22bp
+	BoundingBox 0bp 8bp 12bp 22bp
 
 \end_inset
 
@@ -24593,7 +23919,7 @@ Wurzeln erhält man, wenn man auf das
 	filename ../../images/math/sqrt.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 25bp
+	BoundingBox 0bp 2bp 20bp 25bp
 
 \end_inset
 
@@ -24602,11 +23928,11 @@ Wurzeln erhält man, wenn man auf das
 	filename ../../images/math/root.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 25bp
+	BoundingBox 0bp 2bp 20bp 25bp
 
 \end_inset
 
-Symbol in der 
+-Symbol in der 
 \family sans
 Mathe-Werkzeugleiste
 \family default
@@ -24840,7 +24166,7 @@ wasysym
 esint
 \family default
 -Paket, damit Sie die unterschiedlichen Integralzeichen in der dvi-Vorschau
- sehen können, weil das letztere nicht in allen (La)TeX-Distributionen vorhanden
+ sehen können, weil das letztere nicht in allen LaTeX-Distributionen vorhanden
  ist.
 \end_layout
 
@@ -24908,6 +24234,7 @@ Mathe-Modus
 	filename ../../images/math/style.png
 	scale 70
 	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -24945,7 +24272,11 @@ key "latex-einführung"
 
 \end_inset
 
- und 
+ und Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Fontgrößen-Mathe"
@@ -24977,8 +24308,8 @@ erzeugt eine Schablone für Brüche wie
 \end_inset
 
 .
- Auch hier gibt es eine Auswahl an Bruch-Typen, die mehr oder weniger selbsterkl
-ärend ist.
+ Auch hier gibt es eine Auswahl an Bruchtypen, die mehr oder weniger selbsterklä
+rend ist.
 \end_layout
 
 \begin_layout Enumerate
@@ -24998,11 +24329,11 @@ erzeugt eine Schablone für Brüche wie
 	filename ../../images/math/functions.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
+	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
-Funktionen: siehe Abschnitt
+ Funktionen: siehe Abschnitt
 \begin_inset space \space{}
 \end_inset
 
@@ -25259,11 +24590,11 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	filename ../../images/math/sqrt.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 25bp
+	BoundingBox 0bp 2bp 20bp 25bp
 
 \end_inset
 
-: Quadraturzeln
+ : Quadratwurzeln
 \end_layout
 
 \begin_layout Enumerate
@@ -25271,30 +24602,30 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	filename ../../images/math/root.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 25bp
+	BoundingBox 0bp 2bp 20bp 25bp
 
 \end_inset
 
-; allgemeine Wurzeln
+ : allgemeine Wurzeln
 \end_layout
 
 \begin_layout Enumerate
 \begin_inset Graphics
 	filename ../../images/math/frac.png
-	scale 70
+	scale 50
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 12bp 22bp
 
 \end_inset
 
-: Standardbrüche
+ : Standardbrüche
 \end_layout
 
 \begin_layout Enumerate
 \begin_inset Formula $\sum$
 \end_inset
 
-: Summen
+ : Summen
 \end_layout
 
 \begin_layout Enumerate
@@ -25306,7 +24637,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 
 \end_inset
 
-: Integrale
+ : Integrale
 \end_layout
 
 \begin_layout Enumerate
@@ -25318,7 +24649,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 
 \end_inset
 
-: Produkte
+ : Produkte
 \end_layout
 
 \begin_layout Enumerate
@@ -25330,7 +24661,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 
 \end_inset
 
-: runde Klammern
+ : runde Klammern
 \end_layout
 
 \begin_layout Enumerate
@@ -25342,7 +24673,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 
 \end_inset
 
-: eckige Klammern
+ : eckige Klammern
 \end_layout
 
 \begin_layout Enumerate
@@ -25354,7 +24685,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 
 \end_inset
 
-: geschweifte Klammern
+ : geschweifte Klammern
 \end_layout
 
 \begin_layout Enumerate
@@ -25362,10 +24693,11 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	filename ../../images/dialog-show_mathdelimiter.png
 	scale 75
 	scaleBeforeRotation
+	BoundingBox 0bp 4bp 0bp 0bp
 
 \end_inset
 
-: Trennzeichen
+ : Trennzeichen
 \end_layout
 
 \begin_layout Enumerate
@@ -25377,7 +24709,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 
 \end_inset
 
-: Matrizen
+ : Matrizen
 \end_layout
 
 \begin_layout Enumerate
@@ -25389,7 +24721,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 
 \end_inset
 
-: Fallunterscheidungen
+ : Fallunterscheidungen
 \end_layout
 
 \begin_layout Enumerate
@@ -25405,7 +24737,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 
 
 \family default
-: Zeile hinzufügen
+ : Zeile hinzufügen
 \end_layout
 
 \begin_layout Enumerate
@@ -25421,7 +24753,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 
 
 \family default
-: Spalte hinzufügen
+ : Spalte hinzufügen
 \end_layout
 
 \begin_layout Enumerate
@@ -25437,7 +24769,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 
 
 \family default
-: Zeile löschen
+ : Zeile löschen
 \end_layout
 
 \begin_layout Enumerate
@@ -25453,7 +24785,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 
 
 \family default
-: Spalte löschen
+ : Spalte löschen
 \end_layout
 
 \begin_layout Enumerate
@@ -25469,7 +24801,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 
 
 \family default
-: Mathe-Kontrollflächen an/aus
+ : Mathe-Kontrollflächen an/aus
 \end_layout
 
 \begin_layout Subsection
@@ -25674,16 +25006,25 @@ verwenden
 \end_layout
 
 \begin_layout Standard
+Wenn die erste angekreuzt ist, sind alle AMS-LaTeX-Symbole und Umgebungen
+ verfügbar, und LyX versucht, sie so gut wie möglich zu verwenden.
+ Wenn Sie die zweite ankreuzen, wird LyX gezwungen, das Paket zu benutzen.
+ Sie werden Ärger bekommen, wenn Sie diese Pakete in den Vorspann einfügen,
+ weil LyX jetzt ein paar Makros dieser Pakete selber definiert hat.
+ Die AMS-Klassen fügen diese Pakete automatisch hinzu.
+\end_layout
+
+\begin_layout Standard
 Das 
 \family typewriter
 esint
 \family default
 -Paket, das Sie ebenfalls [automatisch] benutzen können, erlaubt für Computer-Mo
-dern-Fonts alternative Integral-Symbole, näheres finden Sie auf 
-\begin_inset Newline newline
+dern-Fonts alternative Integral-Symbole, näheres finden Sie auf
+\begin_inset Newline linebreak
 \end_inset
 
-
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -25695,15 +25036,6 @@ ftp://dante.ctan.org/tex-archive/help/Catalogue/entries/esint.html
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Wenn die erste angekreuzt ist, sind alle AMS-LaTeX-Symbole und Umgebungen
- verfügbar, und LyX versucht, sie so gut wie möglich zu verwenden.
- Wenn Sie die zweite ankreuzen, wird LyX gezwungen, das Paket zu benutzen.
- Sie werden Ärger bekommen, wenn Sie diese Pakete in den Vorspann einfügen,
- weil LyX jetzt ein paar Makros dieser Pakete selber definiert hat.
- Die AMS-Klassen fügen diese Pakete automatisch hinzu.
 \end_layout
 
 \begin_layout Subsection
@@ -25728,12 +25060,12 @@ Strg+Leertaste
 \family sans
 Leertaste
 \family default
- betätigen, wird der Leerraum größer.
- Zuletzt wird der Leerraum rot und bedeutet einen negativen Leerraum: 
+ betätigen, wird der Leerraum größer: 
 \begin_inset Formula $a\quad b$
 \end_inset
 
-, oder 
+.
+ Zuletzt wird der Leerraum rot und bedeutet einen negativen Leerraum: 
 \begin_inset Formula $a\! b$
 \end_inset
 
@@ -25876,7 +25208,7 @@ reference "Tab:Akzente"
 
 \end_inset
 
- enthält die Akzentnamen im Textmodus, in Mathed und Beispiele für die Akzente:
+ enthält die Akzentnamen im Textmodus, in Mathed und Beispiele für die Akzente.
 \end_layout
 
 \begin_layout Standard
@@ -25884,7 +25216,7 @@ reference "Tab:Akzente"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -26397,7 +25729,7 @@ Mathe-Werkzeugleiste
 	filename ../../images/math/delim.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
+	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -26602,7 +25934,11 @@ Mathe-Trenn\SpecialChar \-
 zeichen
 \family default
 -Menü hinzugefügt werden.
- Das können Sie nachträglich machen (siehe 
+ Das können Sie nachträglich machen (siehe Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Klammern-und-Dekos"
@@ -27311,7 +26647,7 @@ name "Makro-erzeugen"
 \end_layout
 
 \begin_layout Standard
-Um ein Makro zu definieren, schreiben Sie in den Befehlspuffer (
+Um ein Makro zu definieren, schreiben Sie in as Befehlseingabefenster (
 \family sans
 Alt+X
 \family default
@@ -27319,7 +26655,7 @@ Alt+X
 \family sans
 Ansicht\SpecialChar \menuseparator
 Werkzeugleisten\SpecialChar \menuseparator
-Befehlspuffer
+Befehlseingabefenster
 \family default
 ) folgendes:
 \begin_inset Foot
@@ -27602,7 +26938,7 @@ reference "Tab:Mathematik-Schriftstile"
 
 \end_inset
 
- zeigt die unterstützten Fonts:
+ zeigt die unterstützten Fonts.
 \end_layout
 
 \begin_layout Standard
@@ -28254,10 +27590,10 @@ alpha}
 \begin_layout Subsection
 Mathematischer Textmodus
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-mathematische!-r Textmodus
+mathematische!r Textmodus
 \end_layout
 
 \end_inset
@@ -28421,6 +27757,7 @@ math-size displaystyle
 	filename ../../images/math/style.png
 	scale 70
 	scaleBeforeRotation
+	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -28686,11 +28023,7 @@ Das
 esint
 \family default
 -Paket, das Sie ebenfalls benutzen können, erlaubt für Computer-Modern-Fonts
- alternative Integral-Symbole, näheres finden Sie auf
-\begin_inset Newline newline
-\end_inset
-
-
+ alternative Integral-Symbole, näheres finden Sie auf 
 \begin_inset Flex URL
 status collapsed
 
@@ -28710,12 +28043,9 @@ Weitergehende Literatur
 
 \begin_layout Standard
 In 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Mathebefehle"
-
-\end_inset
-
+\emph on
+Mathe
+\emph default
  gibt es eine sehr umfangreiche Beschreibung des Mathematik-Editors, die
  auch Hinweise für physikalische und chemische Formeln enthält.
  Außerdem gibt es Hinweise, wie man Formeln, die LyX nicht sehr sauber setzt,
@@ -28731,57 +28061,6 @@ Wer aber viele Formeln zu schreiben hat, wird feststellen, dass man mit
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Die Dokumentation ist hier zu finden:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/pmwiki.php/LyX/LyXMathebefehle
-\end_layout
-
-\end_inset
-
-.
- Die Datei 
-\family typewriter
-Mathebefeh\SpecialChar \-
-le.lyx
-\family default
- können Sie aber nur als DVI, PDF oder PostScript® ansehen oder drucken,
- wenn Sie die dort erwähnten LaTeX-Pakete 
-\family typewriter
-adobestd
-\family default
-, 
-\family typewriter
-adobe\SpecialChar \-
-other
-\family default
-, 
-\family typewriter
-aeguill
-\family default
-, 
-\family typewriter
-bbm
-\family default
-, 
-\family typewriter
-hyperref
-\family default
- und 
-\family typewriter
-tocbibind
-\family default
- installiert haben.
 \end_layout
 
 \begin_layout Standard
@@ -28884,12 +28163,13 @@ Marke
 	filename ../../images/label-insert.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
+	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
 .
- Ein Kästchen erscheint, in das Sie Ihre Marke eingeben können.
+ Ein Kästchen erscheint, in das Sie Ihre Marke eingeben.
+ LyX macht einen Vorschlag, den Sie aber überschreiben können.
  Sie können eine Marke ändern, indem Sie auf die Marke klicken und den Text
  ändern.
 \end_layout
@@ -28906,7 +28186,7 @@ Querverweis
 	filename ../../images/dialog-show-new-inset_ref.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
+	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
@@ -29013,10 +28293,20 @@ Formatierter Querverweis sieht aus wie 1.
 \end_layout
 
 \begin_layout Standard
-Wenn Sie Text aus einem anderen Dokument kopieren, der eine Marke oder einen
- Verweis enthält, oder wenn Sie eine Marke aus Ihrem Dokument, auf die verwiesen
- wird, löschen, werden in der Druckausgabe zwei Fragezeichen an der Stelle
- des Verweises stehen.
+Wenn Sie Text aus einem anderen Dokument kopieren, der einen Verweis enthält,
+ oder wenn Sie eine Marke aus Ihrem Dokument, auf die verwiesen wird, löschen,
+ werden in der Druckausgabe zwei Fragezeichen an der Stelle des Verweises
+ stehen.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie aus Versehen dieselbe Marke noch einmal vergeben wollen, meldet
+ LyX das und macht einen Vorschlag, wie die Marke heißen soll.
+ Wenn Sie ein bereits vorhandenes Dokument mit Mehrfachmarken öffnen, schreibt
+ LyX vor die zweite und folgende Marken DUPLIKAT:.
+ Wenn Sie aus Versehen eine Marke löschen, erscheint auf einem Querverweis
+ auf diese Marke der Text NICHT VORHANDEN: \SpecialChar \ldots{}
+
 \end_layout
 
 \begin_layout Standard
@@ -29156,6 +28446,29 @@ Wenn Sie LaTeX-Benutzer sind, werden Sie sicher wissen, dass LaTeX unter
 dvi
 \family default
 -Vorschau richtig erscheinen.
+\end_layout
+
+\begin_layout Standard
+Wenn Ihnen nicht gefällt, wie die Seiten des Inhalts- und anderer Verzeichnisse
+ gedruckt wird, können Sie in den LaTeX-Vorspann schauen und alles, was
+ zwischen 
+\family typewriter
+%
+\backslash
+pagenumbering{roman}
+\family default
+ und 
+\family sans
+%
+\backslash
+pagenumbering{roman}
+\family default
+ steht durch Löschen des 
+\family typewriter
+%
+\family default
+-Zeichens aktivieren oder in einem LaTeX-Buch nachschlagen, was es sonst
+ so gibt.
 \end_layout
 
 \begin_layout Subsection
@@ -29307,7 +28620,7 @@ reference "Gliederung"
 \begin_layout Subsection
 Abbildungs-
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Abbildungs!-verzeichnis
@@ -29317,17 +28630,17 @@ Abbildungs!-verzeichnis
 
 , Tabellen-
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tabellen!-verzeichnis
+Tabellen!verzeichnis@-verzeichnis
 \end_layout
 
 \end_inset
 
  und Algorithmenverzeichnisse
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Algorithmen!-verzeichnis
@@ -29446,7 +28759,7 @@ http://www.lyx.org
 
 .
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -29586,12 +28899,12 @@ type "mailto:"
 
 \end_inset
 
- oder ein Link zu einer Datei sein.
+ oder einen Link auf eine Datei handelt.
 \end_layout
 
 \begin_layout Standard
 Beim Anklicken eines Hyperlinks in der Druckvorschau startet bei Internet-Adress
-en Ihr Stabdard-Browser, bei Email-Adressen Ihr Stabdard-Email-Programm
+en Ihr Standard-Browser, bei Email-Adressen Ihr Standard-Email-Programm
  und bei Dateien Ihr Standard-Dateibetrachter.
 \end_layout
 
@@ -30097,7 +29410,7 @@ Die Stildatei ist eine Textdatei mit der Endung
 \family typewriter
 .bst
 \family default
-, die das Aussehen der Lietratureinträge definiert.
+, die das Aussehen der Literatureinträge definiert.
  Viele Verleger liefern eigene Stildateien, so dass Sie sich um das Aussehen
  nicht kümmern müssen.
 \end_layout
@@ -30107,7 +29420,7 @@ Ein Querverweis auf einen Datenbankeintrag erfolgt wie oben beschrieben.
 \end_layout
 
 \begin_layout Standard
-LyX verwendet BibTeX, um eine Literaturverzeichnis aus einer Datenbank zu
+LyX verwendet BibTeX, um ein Literaturverzeichnis aus einer Datenbank zu
  erstellen.
  In 
 \family sans
@@ -30357,7 +29670,7 @@ Dies ist notwendig, weil Stichworte auf vielfältige Art und Weise mit LaTeX-Bef
 hlen formatiert werden können.
  In den folgenden Abschnitten finden Sie eine Übersicht über einige Möglichkeite
 n.
- Eine ausführlich Beschreibung des Stichwort-Mechanismus von LaTeX finden
+ Eine ausführliche Beschreibung des Stichwort-Mechanismus von LaTeX finden
  Sie in LaTeX-Büchern wie 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -30413,7 +29726,7 @@ Stichwortverzeichnis
 \family typewriter
 makeindex
 \family default
- auf, welches dann das eigentliche Stichwortverzeichnis erzeugt.
+, welches dann das eigentliche Stichwortverzeichnis erzeugt.
 \end_layout
 
 \begin_layout Standard
@@ -30659,19 +29972,23 @@ status collapsed
 
 \end_inset
 
- verwende und ihn mit einem Stichwort versehen wollen, das auf den Abschnitt
- verweist, in dem er zum ersten Mal gebraucht wurde ( 
+ verwenden und ihn mit einem Stichwort versehen wollen, das auf den Abschnitt
+ verweist, in dem er zum ersten Mal gebraucht wurde (Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Grafikformate"
 
 \end_inset
 
-), so Schreiben Sie in das Stichwort-Eingabefeld 
+), so schreiben Sie in das Stichwort-Eingabefeld 
 \family typewriter
 GIF|see{Grafikformate}
 \family default
- .
+.
  Der Text in den geschweiften Klammern wird dann im Stichwortverzeichnis
  ohne Seitenangabe erscheinen.
 \end_layout
@@ -30832,7 +30149,7 @@ status collapsed
 
 \end_inset
 
- LaTeX Bücher wie (
+ LaTeX-Bücher wie (
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion,latexguide,latexbook"
@@ -30870,13 +30187,14 @@ Sie können auch die Seitenzahlen formatieren wie mit dem Befehl
 
 
 \family typewriter
-Mediävalziffern | oldstylenums
+Mediävalzif\SpecialChar \-
+fern | oldstylenums
 \family default
 
 \begin_inset Quotes grd
 \end_inset
 
-, der Mediävalziffern (siehe
+, der Mediävalziffern (siehe Abschnitt
 \begin_inset space \space{}
 \end_inset
 
@@ -31136,7 +30454,7 @@ name "Nomenklatur/Glossar"
 
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Nomenklatur
@@ -31146,7 +30464,7 @@ Nomenklatur
 
 /Glossar
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Glossar
@@ -31200,7 +30518,11 @@ Nomenklartureintrag\SpecialChar \ldots{}
 \family sans
 Glo
 \family default
- wird eingefügt und das Glossareintrag-Menüfenster geöffnet.
+ wird eingefügt und das 
+\family sans
+Glossareintrag
+\family default
+-Menüfenster geöffnet.
  Ein Glossar-Eintrag besteht aus drei Teilen: das 
 \family sans
 Symbol
@@ -31340,10 +30662,10 @@ nomencl
 \begin_layout Subsection
 Nomenklatur-Optionen
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Glossar!-Optionen
+Glossar!Optionen@-Optionen
 \end_layout
 
 \end_inset
@@ -31550,7 +30872,7 @@ nomnorefpage,
 
 
 \backslash
-nomnorefeqpage Schaltet die entsprechende Option ab.
+nomnorefeqpage schaltet die entsprechende Option ab.
 \end_layout
 
 \begin_layout Subsection
@@ -31715,7 +31037,6 @@ Entfernen
 Einfügen\SpecialChar \menuseparator
 Zweig
 \family default
-\SpecialChar \menuseparator
  aus und geben ihn ein.
  Sie können natürlich auch vorhandenen Text auswählen und ihn dann einem
  Zweig zuweisen.
@@ -31776,7 +31097,7 @@ Um konditionale Ausgaben zu erzeugen, wo keine Zweige angegeben werden können
  werden.
  Man kann zum Beispiel für den Frage-Zweig definieren:
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Eine Einführung in die LaTeX-Syntax ist in Abschnitt
@@ -31929,7 +31250,7 @@ Frage{\SpecialChar \ldots{}
 Antwort{\SpecialChar \ldots{}
 }
 \family default
- zu verwenden um eine konditionale Ausgabe zu erhalten.
+ zu verwenden, um eine konditionale Ausgabe zu erhalten.
  Hier ist eine Beispielformel, in der nur der 
 \family typewriter
 
@@ -32022,7 +31343,16 @@ Deshalb sollten Sie ein wenig über LaTeX-Befehle wissen.
 \backslash
 
 \family default
- an.
+ an, das Argument steht zwischen den geschweiften Klammern 
+\family typewriter
+{}
+\family default
+, und die Optionen in eckigen 
+\family typewriter
+[]
+\family default
+.
+ Nicht alle Befehle haben Optionen und Argumente.
  Es gibt folgende Arten:
 \end_layout
 
@@ -32074,9 +31404,7 @@ Beispiele
 \begin_layout Standard
 Ein Spezialbefehl ist 
 \family typewriter
-
-\backslash
-=
+"=
 \family default
 , der bei der Silbentrennung in Abschnitt
 \begin_inset space \space{}
@@ -32178,25 +31506,6 @@ X-Vorspann
 
 \backslash
 usepackage[Optionen]{Paketname}
-\end_layout
-
-\begin_layout Standard
-Alle LaTeX-Befehle fangen mit 
-\family typewriter
-
-\backslash
-
-\family default
- an, das Argument steht zwischen den geschweiften Klammern 
-\family typewriter
-{}
-\family default
-, und die Optionen in eckigen 
-\family typewriter
-[]
-\family default
-.
- Nicht alle Befehle haben Optionen und Argumente.
 \end_layout
 
 \begin_layout Standard
@@ -32328,6 +31637,10 @@ status collapsed
 \end_inset
 
 X-Code
+\family default
+, 
+\family sans
+Strg+L
 \family default
  oder durch Klicken auf den 
 \begin_inset Graphics
@@ -32520,6 +31833,14 @@ Bemerkung:
  damit LaTeX weiß, dass der Befehl zu Ende ist.
 \end_layout
 
+\begin_layout Standard
+Siehe auch 
+\emph on
+Handbuchergänzungen
+\emph default
+.
+\end_layout
+
 \begin_layout Section
 Dokumentschnipsel ansehen
 \end_layout
@@ -32679,14 +32000,10 @@ ispell.
 \family default
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Die neueste Version können Sie im Internet unter
-\begin_inset Newline newline
-\end_inset
-
-
+Die neueste Version können Sie im Internet unter 
 \begin_inset Flex URL
 status collapsed
 
@@ -32754,7 +32071,11 @@ F7
 
 \end_inset
 
- starten.
+
+\begin_inset space \enskip{}
+\end_inset
+
+starten.
  Die Prüfung beginnt automatisch an der Cursorposition.
  Im Fenster 
 \family sans
@@ -32919,7 +32240,7 @@ Sprach
 Einstellungen
 \family default
 \SpecialChar \menuseparator
- 
+
 \family sans
 Rechtschreibprüfung
 \family default
@@ -33014,7 +32335,7 @@ ispell
 \emph on
 deutsch
 \emph default
-) während 
+), während 
 \family typewriter
 ispell
 \family default
@@ -33087,7 +32408,6 @@ verwenden
 -Option anzukreuzen.
 \end_layout
 
-\begin_deeper
 \begin_layout Enumerate
 Wenn das nicht hilft, könnten Sie im Dialogfenster 
 \family sans
@@ -33163,7 +32483,6 @@ Die vierte Möglichkeit ist, dass der Pfleger des Wörterbuchs das Problem
  löst.
 \end_layout
 
-\end_deeper
 \begin_layout Subsubsection
 Persönliches
 \begin_inset space ~
@@ -33201,9 +32520,9 @@ Sprache
 \emph default
  der Name des von LyX/LaTeX benutzten globalen Wörterbuches ist (zum Beispiel
  
-\emph on
+\family typewriter
 [n]german
-\emph default
+\family default
 ).
  Oft ist der Dateiname für das 
 \family sans
@@ -33724,21 +33043,10 @@ key "TeXCatalogue"
 \begin_layout Section
 Internationale Unterstützung
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Internationale Unterst
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-utzung
+Internationale Unterstutzung@Unterstützung
 \end_layout
 
 \end_inset
@@ -33763,7 +33071,11 @@ Wenn Ihre Tastatur an Ihre Sprache angepasst ist (zum Beispiel eine deutsche
  Tastatur, um in Deutsch zu schreiben), und wenn Sie Ihre graphische Oberfläche
  richtig eingerichtet haben, müssen Sie LyX nur Ihre Sprache mitteilen,
  die Zeichenkodierung und die gewünschte Papiergröße.
- In 
+ In Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Sprachoptionen"
@@ -34049,2997 +33361,13 @@ name "Zeichentabellen"
 \end_layout
 
 \begin_layout Standard
-Tabelle 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Tab:ISO8859-15-Zeichensatz"
-
-\end_inset
-
- zeigt den Zeichensatz, wenn Sie in den 
+Unter 
 \family sans
-Dokument-Einstellungen
+Einfügen\SpecialChar \menuseparator
+Sonderzeichene\SpecialChar \menuseparator
+Symbole
 \family default
- unter 
-\family sans
-Sprache
-\family default
- 
-\family sans
-Standardkodierung
-\begin_inset space \space{}
-\end_inset
-
-der
-\begin_inset space \space{}
-\end_inset
-
-Sprache
-\begin_inset space \space{}
-\end_inset
-
-verwenden
-\family default
- angekreuzt haben, was empfohlen wird.
- Im Moment ist das der ISO8859-15-Zeichensatz.
- Sie sollten die Zeichen in den ersten acht Spalten direkt mit der Tastatur
- eingeben können.
- Beachten Sie, dass Sie über 
-\family sans
-Dokument-Einstellun\SpecialChar \-
-gen\SpecialChar \menuseparator
-Sprache\SpecialChar \menuseparator
-Kodierung
-\family default
- 
-\family sans
-latin1
-\family default
- auswählen müssen, um diesen Zeichensatz benutzen zu können.
-\end_layout
-
-\begin_layout Standard
-Ein paar Dinge müssen Sie über diese Tabelle wissen.
- Sie wurde manuell erzeugt, um alle Zeichen zu drucken.
- Das ist nicht der Normalfall, bei weitem nicht.
- Hier sind einige Einzelheiten, die Sie berücksichtigen müssen, wenn Sie
- Zeichen des ISO8859-15-Zeichensatzes benutzen wollen:
-\end_layout
-
-\begin_layout Itemize
-Auch wenn Sie ISO8859-15 als 
-\family sans
-Kodierung
-\family default
- im Dialogfenster 
-\family sans
-Dokument-Einstellun\SpecialChar \-
-gen
-\family default
- gewählt haben, aber die 
-\family typewriter
-T1
-\family default
--Schriften für LaTeX verwenden, werden Sie noch ein paar Zeichen vermissen:
- D0, F0, DE, FE, AB und BB -- eth und thorn (jeweils groß und klein) und
- die französischen Anführungszeichen.
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Tab:ISO8859-15-Zeichensatz"
-
-\end_inset
-
-Der ISO8859-15-Zeichensatz
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="17" columns="17">
-<features>
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-00
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-10
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-20
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-30
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-40
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-50
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-60
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-70
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-80
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-90
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-A0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-B0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-C0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-D0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-E0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-F0
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-00
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-@
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-P
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-'
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-p
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-°
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-À
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ð
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-à
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ð
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-01
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-!
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-A
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Q
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-a
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-q
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¡
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-±
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Á
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ñ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-á
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ñ
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-02
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-B
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-R
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-b
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-r
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¢
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-²
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Â
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ò
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-â
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ò
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-03
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-#
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-C
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-S
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-c
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-s
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-³
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ã
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ó
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ã
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ó
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-04
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-$
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-D
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-T
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-d
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-t
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¤
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-´
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ä
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ô
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ä
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ô
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-05
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-%
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-E
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-U
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-e
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-u
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¥
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-µ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Å
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Õ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-å
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-õ
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-06
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-&
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-F
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-V
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-f
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-v
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¦
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¶
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Æ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ö
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-æ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ö
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-07
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-`
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-G
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-W
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-g
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-w
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-§
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-·
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ç
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-×
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ç
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-÷
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-08
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-(
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-8
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-H
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-X
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-h
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¨
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¸
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-È
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ø
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-è
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ø
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-09
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-9
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-I
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Y
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-i
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-y
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-©
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¹
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-É
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ù
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-é
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ù
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-0A
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-*
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-:
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-J
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Z
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-j
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-z
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ª
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-º
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ê
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ú
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ê
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ú
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-0B
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-+
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-;
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-K
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-[
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-k
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-«
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-»
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ë
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Û
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ë
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-û
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-0C
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-,
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-<
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-L
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-l
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-|
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¬
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¼
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ì
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ü
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ì
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ü
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-0D
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-=
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-M
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-]
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-m
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-–
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-½
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Í
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ý
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-í
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ý
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-0E
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-.
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
->
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-N
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-^
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-n
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-~
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-®
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¾
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Î
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Þ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-î
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-þ
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size tiny
-0F
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-/
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-?
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-O
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-_
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-o
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¯
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-¿
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ï
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ß
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ï
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ÿ
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Es folgt eine Aufstellung aller akzentuierten Zeichen, die LyX direkt darstellen
- kann.
- Das sind alle akzentuierten Zeichen von 
-\family typewriter
-ISO8859-1
-\family default
- bis 
-\family typewriter
-4
-\family default
-.
- 
-\end_layout
-
-\begin_layout Itemize
-Aus 
-\family typewriter
-ISO8859-1
-\family default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-¨ Ä Ë Ï Ö Ü ä ë ï ö ü ÿ
-\begin_inset space \hfill{}
-\end_inset
-
-diaeresis
-\end_layout
-
-\begin_layout Standard
-^ Â Ê Î Ô Û â ê î ô û
-\begin_inset space \hfill{}
-\end_inset
-
-circumflex
-\end_layout
-
-\begin_layout Standard
-` À È Ì Ò Ù à è ì ò ù
-\begin_inset space \hfill{}
-\end_inset
-
-grave
-\end_layout
-
-\begin_layout Standard
-´ Á É Í Ó Ú Ý á é í ó ú ý
-\begin_inset space \hfill{}
-\end_inset
-
-acute
-\end_layout
-
-\begin_layout Standard
-~ Ã Ñ Õ ã ñ õ
-\begin_inset space \hfill{}
-\end_inset
-
-tilde
-\end_layout
-
-\begin_layout Standard
-¸Çç
-\begin_inset space \hfill{}
-\end_inset
-
-cedilla
-\end_layout
-
-\begin_layout Standard
-¯
-\begin_inset space \hfill{}
-\end_inset
-
-macron
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Aus 
-\family typewriter
-ISO8859-2
-\family default
- bis 
-\family typewriter
-4
-\family default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-ĤĴĥĵĈĜŜĉĝŝ
-\begin_inset space \hfill{}
-\end_inset
-
-circumflex
-\end_layout
-
-\begin_layout Standard
-ŚŹśźŔĹĆŃŕĺćń
-\begin_inset space \hfill{}
-\end_inset
-
-acute
-\end_layout
-
-\begin_layout Standard
-Ĩı̃Ũũ
-\begin_inset space \hfill{}
-\end_inset
-
-tilde
-\end_layout
-
-\begin_layout Standard
-ŞşŢţŖĻĢŗļģŅĶņķ
-\begin_inset space \hfill{}
-\end_inset
-
-cedilla
-\end_layout
-
-\begin_layout Standard
-ĒēĀĪŌŪāı̄ōū
-\begin_inset space \hfill{}
-\end_inset
-
-macron
-\end_layout
-
-\begin_layout Standard
-ŐŰőű
-\begin_inset space \hfill{}
-\end_inset
-
-hungarian umlaut
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-All diese Zeichen werden aktiv von LaTeX-Fonts unterstützt.
- Zusätzlich erlaubt LaTeX diakritische Marken auf fast allen Zeichen.
- Vergewissern Sie sich, dass Sie die 
-\family typewriter
-T1
-\family default
--Fontkodierung benutzen.
+ finden Sie in verschiedenen Tabellen alle Zeichen, die LyX direkt unterstützt.
 \end_layout
 
 \begin_layout Chapter
@@ -37094,7 +33422,6 @@ Ansicht
 \family sans
 Werkzeugleisten
 \family default
-\SpecialChar \menuseparator
  wahlweise an- und abgeschaltet werden können, während die anderen drei
  (
 \family sans
@@ -37158,7 +33485,7 @@ pull-down
 
 \end_inset
 
-: 
+ : 
 \family sans
 Datei\SpecialChar \menuseparator
 Neu
@@ -37173,7 +33500,7 @@ Neu
 
 \end_inset
 
-: 
+ : 
 \family sans
 Datei\SpecialChar \menuseparator
 Öffnen\SpecialChar \ldots{}
@@ -37189,7 +33516,7 @@ Datei\SpecialChar \menuseparator
 
 \end_inset
 
-: 
+ : 
 \family sans
 Datei\SpecialChar \menuseparator
 Speichern
@@ -37204,7 +33531,7 @@ Speichern
 
 \end_inset
 
-: 
+ : 
 \family sans
 Datei\SpecialChar \menuseparator
 Drucken\SpecialChar \ldots{}
@@ -37220,7 +33547,7 @@ Drucken\SpecialChar \ldots{}
 
 \end_inset
 
-: Rechtschreibprüfung
+ : Rechtschreibprüfung
 \end_layout
 
 \begin_layout Enumerate
@@ -37232,7 +33559,7 @@ Drucken\SpecialChar \ldots{}
 
 \end_inset
 
-: 
+ : 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Rückgängig
@@ -37247,7 +33574,7 @@ Rückgängig
 
 \end_inset
 
-: 
+ : 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Wiederholen
@@ -37262,7 +33589,7 @@ Wiederholen
 
 \end_inset
 
-: 
+ : 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Ausschneiden
@@ -37277,7 +33604,7 @@ Ausschneiden
 
 \end_inset
 
-: 
+ : 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Kopieren
@@ -37292,7 +33619,7 @@ Kopieren
 
 \end_inset
 
-: 
+ : 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Einfügen
@@ -37307,7 +33634,7 @@ Einfügen
 
 \end_inset
 
-: 
+ : 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Suchen & Ersetzen
@@ -37329,7 +33656,7 @@ Strg+F
 
 \end_inset
 
-: 
+ : 
 \family sans
 Hervorheben
 \family default
@@ -37353,7 +33680,7 @@ Strg+E
 
 \end_inset
 
-: Formatierung für Eigennamen (meistens 
+ : Formatierung für Eigennamen (meistens 
 \family sans
 Kapitälchen)
 \family default
@@ -37373,7 +33700,7 @@ Alt+Z+K
 
 \end_inset
 
-: wenn Sie über 
+ : wenn Sie über 
 \family sans
 Bearbeiten
 \family default
@@ -37383,6 +33710,15 @@ Bearbeiten
 Textstil
 \family default
 \SpecialChar \ldots{}
+ oder 
+\begin_inset Graphics
+	filename ../../images/dialog-show_character.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 2bp 20bp 20bp
+
+\end_inset
+
  den voreingestellten Font geändert haben, können Sie mit einem Klick auf
  diesen Knopf einzelne Worte oder markierten Text damit formatieren.
 \end_layout
@@ -37392,10 +33728,11 @@ Textstil
 	filename ../../images/math-mode.png
 	scale 75
 	scaleBeforeRotation
+	BoundingBox 0bp 6bp 0bp 0bp
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Mathe\SpecialChar \menuseparator
@@ -37411,7 +33748,7 @@ Eingebettete Formel (Strg+M)
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Grafik\SpecialChar \ldots{}
@@ -37427,7 +33764,7 @@ Grafik\SpecialChar \ldots{}
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Tabelle\SpecialChar \ldots{}
@@ -37443,7 +33780,7 @@ Tabelle\SpecialChar \ldots{}
 
 \end_inset
 
-: 
+ : 
 \begin_inset CommandInset label
 LatexCommand label
 name "Gliederung"
@@ -37469,49 +33806,91 @@ Inhaltsverzeichnis
 
 \begin_deeper
 \begin_layout Enumerate
-Abbildungsverzeichnis enthält die Abbildungen des Dokuments, die einen Titel
- haben
+
+\emph on
+Abbildungsverzeichnis
+\emph default
+ enthält die Abbildungen des Dokuments, die einen Titel haben
 \end_layout
 
 \begin_layout Enumerate
-Fußnoten enthält die Fußnoten des Dokuments
+
+\emph on
+Fußnoten
+\emph default
+ enthält die Fußnoten des Dokuments
 \end_layout
 
 \begin_layout Enumerate
-Gleichung enthält die Gleichungen des Dokuments
+
+\emph on
+Gleichung
+\emph default
+ enthält die Gleichungen des Dokuments
 \end_layout
 
 \begin_layout Enumerate
-Listings enthält die eingebundenen Programmlistings des Dokuments
+
+\emph on
+Listings
+\emph default
+ enthält die eingebundenen Programmlistings des Dokuments
 \end_layout
 
 \begin_layout Enumerate
-Grafiken enthält die im Dokument verwendeten Grafiken
+
+\emph on
+Grafiken
+\emph default
+ enthält die im Dokument verwendeten Grafiken
 \end_layout
 
 \begin_layout Enumerate
-Marken und Querverweise enthält die Marken und Querverweise des Dokuments
+
+\emph on
+Marken und Querverweise
+\emph default
+ enthält die Marken und Querverweise des Dokuments
 \end_layout
 
 \begin_layout Enumerate
-Notizen enthält die Notizen des Dokuments
+
+\emph on
+Notizen
+\emph default
+ enthält die Notizen des Dokuments
 \end_layout
 
 \begin_layout Enumerate
-Randnotizen enthält die Randnotizen des Dokuments
+
+\emph on
+Randnotizen
+\emph default
+ enthält die Randnotizen des Dokuments
 \end_layout
 
 \begin_layout Enumerate
-Stichwörter enthält die Stichwörter des Dokuments
+
+\emph on
+Stichwörter
+\emph default
+ enthält die Stichwörter des Dokuments
 \end_layout
 
 \begin_layout Enumerate
-Tabellenverzeichnis enthält die Tabellen des Dokuments, die einen Titel
- haben
+
+\emph on
+Tabellenverzeichnis
+\emph default
+ enthält die Tabellen des Dokuments, die einen Titel haben
 \end_layout
 
 \begin_layout Enumerate
-Unterdokumente enthält die eingebundenen Unterdokumente des Dokuments
+
+\emph on
+Unterdokumente
+\emph default
+ enthält die eingebundenen Unterdokumente des Dokuments
 \end_layout
 
 \begin_layout Standard
@@ -37535,7 +33914,7 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
 
 \end_inset
 
-: aktualisiert das Verzeichnis
+ : aktualisiert das Verzeichnis
 \end_layout
 
 \begin_layout Enumerate
@@ -37547,7 +33926,7 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
 
 \end_inset
 
-: schiebt das ausgewählte Gliederungs-Element um eine Stufe nach oben (zum
+ : schiebt das ausgewählte Gliederungs-Element um eine Stufe nach oben (zum
  Beispiel von 1.2.3 nach 1.3).
  Alle folgenden Gliederungs-Elemente werden angepasst.
 \end_layout
@@ -37561,8 +33940,8 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
 
 \end_inset
 
-: schiebt das ausgewählte Gliederungs-Element um eine Stufe nach unten (zum
- Beispiel von 1.2 nach 1.2.1).
+ : schiebt das ausgewählte Gliederungs-Element um eine Stufe nach unten
+ (zum Beispiel von 1.2 nach 1.2.1).
  Alle folgenden Gliederungs-Elemente werden angepasst.
 \end_layout
 
@@ -37575,7 +33954,7 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
 
 \end_inset
 
-: schiebt das ausgewählte Gliederungs-Element nach unten.
+ : schiebt das ausgewählte Gliederungs-Element nach unten.
  Die Gliederung wird angepasst.
 \end_layout
 
@@ -37588,7 +33967,7 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
 
 \end_inset
 
-: schiebt das ausgewählte Gliederungs-Element nach oben.
+ : schiebt das ausgewählte Gliederungs-Element nach oben.
  Die Gliederung wird angepasst.
 \end_layout
 
@@ -37607,7 +33986,7 @@ Die letzten vier Knöpfe erleichtern das Verschieben von Textteilen, sofern
 
 \end_inset
 
-: schaltet die Mathe-Werkzeugleiste an und aus.
+ : schaltet die Mathe-Werkzeugleiste an und aus.
 \end_layout
 
 \begin_layout Enumerate
@@ -37619,7 +33998,7 @@ Die letzten vier Knöpfe erleichtern das Verschieben von Textteilen, sofern
 
 \end_inset
 
-: schaltet die Tabellen-Werkzeugleiste an und aus.
+ : schaltet die Tabellen-Werkzeugleiste an und aus.
 \end_layout
 
 \begin_layout Subsection
@@ -37635,7 +34014,7 @@ Extra-Werkzeugleiste
 
 \end_inset
 
-: 
+ : 
 \family sans
 Standard
 \family default
@@ -37651,7 +34030,7 @@ Standard
 
 \end_inset
 
-: 
+ : 
 \family sans
 Aufzählung
 \family default
@@ -37667,7 +34046,7 @@ Aufzählung
 
 \end_inset
 
-: 
+ : 
 \family sans
 Auflistung
 \family default
@@ -37683,7 +34062,7 @@ Auflistung
 
 \end_inset
 
-: 
+ : 
 \family sans
 Liste
 \family default
@@ -37699,7 +34078,7 @@ Liste
 
 \end_inset
 
-: 
+ : 
 \family sans
 Beschreibung
 \family default
@@ -37715,7 +34094,7 @@ Beschreibung
 
 \end_inset
 
-: Schachtelungstiefe erhöhen
+ : Schachtelungstiefe erhöhen
 \end_layout
 
 \begin_layout Enumerate
@@ -37727,7 +34106,7 @@ Beschreibung
 
 \end_inset
 
-: Schachtelungstiefe verringern
+ : Schachtelungstiefe verringern
 \end_layout
 
 \begin_layout Enumerate
@@ -37741,7 +34120,7 @@ Beschreibung
 
 \end_inset
 
-:
+ :
 \family default
  
 \family sans
@@ -37763,7 +34142,7 @@ Abbildung
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Gleitobjekt
@@ -37783,7 +34162,7 @@ Tabelle
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Marke
@@ -37801,7 +34180,7 @@ Marke
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Querverweis
@@ -37819,7 +34198,7 @@ Querverweis
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Zitat
@@ -37837,7 +34216,7 @@ Zitat
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Stichwort
@@ -37856,7 +34235,7 @@ Handbuchergänzungen
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Nomenklatureintrag
@@ -37884,7 +34263,7 @@ reference "Nomenklatur/Glossar"
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Fußnote
@@ -37902,7 +34281,7 @@ Fußnote
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Randnotiz
@@ -37917,7 +34296,7 @@ Randnotiz
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Notiz\SpecialChar \menuseparator
@@ -37948,7 +34327,7 @@ X-Notiz
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Box
@@ -37963,7 +34342,7 @@ Box
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 URL
@@ -37981,7 +34360,7 @@ URL
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Te
@@ -38013,26 +34392,6 @@ name "LaTeX-Code-einfügen"
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
-
-Siehe Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Werkzeugleiste"
-
-\end_inset
-
-, Punkt 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "LaTeX-Code-einfügen"
-
-\end_inset
-
- und 
-\emph on
-Handbuchergänzungen.
 \end_layout
 
 \begin_layout Enumerate
@@ -38044,7 +34403,7 @@ Handbuchergänzungen.
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Mathe\SpecialChar \menuseparator
@@ -38060,7 +34419,7 @@ Makro
 
 \end_inset
 
-: 
+ : 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Datei\SpecialChar \menuseparator
@@ -38090,7 +34449,7 @@ reference "Unterdokument"
 
 \end_inset
 
-: Textstil
+ : Textstil
 \end_layout
 
 \begin_layout Enumerate
@@ -38102,7 +34461,7 @@ reference "Unterdokument"
 
 \end_inset
 
-: Absatz-Einstellungen
+ : Absatz-Einstellungen
 \end_layout
 
 \begin_layout Subsection
@@ -38118,7 +34477,7 @@ Ansicht/Aktualisierung-Werkzeugleiste
 
 \end_inset
 
-: 
+ : 
 \family sans
 Ansicht
 \family default
@@ -38137,7 +34496,7 @@ DVI
 
 \end_inset
 
-: 
+ : 
 \family sans
 Ansicht
 \family default
@@ -38161,7 +34520,7 @@ DVI
 
 \end_inset
 
-: 
+ : 
 \family sans
 Ansicht
 \family default
@@ -38180,7 +34539,7 @@ PDF (pdflatex)
 
 \end_inset
 
-: 
+ : 
 \family sans
 Ansicht
 \family default
@@ -38204,7 +34563,7 @@ PDF (pdflatex)
 
 \end_inset
 
-: 
+ : 
 \family sans
 Ansicht
 \family default
@@ -38223,7 +34582,7 @@ Postscript
 
 \end_inset
 
-: 
+ : 
 \family sans
 Ansicht
 \family default
@@ -38282,8 +34641,6 @@ reference "Mathe-Kontrollflächen"
 Mathe-
 \family sans
 Werkzeugleiste
-\family default
-Werkzeugleiste
 \end_layout
 
 \begin_layout Standard
@@ -38314,7 +34671,7 @@ Mathe-Makros-Werkzeugleiste
 
 \end_inset
 
-: den letzten Parameter entfernen
+ : den letzten Parameter entfernen
 \end_layout
 
 \begin_layout Enumerate
@@ -38326,7 +34683,7 @@ Mathe-Makros-Werkzeugleiste
 
 \end_inset
 
-: einen Parameter hinzufügen
+ : einen Parameter hinzufügen
 \end_layout
 
 \begin_layout Enumerate
@@ -38338,7 +34695,7 @@ Mathe-Makros-Werkzeugleiste
 
 \end_inset
 
-: Den ersten nicht-optionale Parameter in einen optionalen ändern
+ : Den ersten nicht-optionalen Parameter in einen optionalen ändern
 \end_layout
 
 \begin_layout Enumerate
@@ -38350,7 +34707,7 @@ Mathe-Makros-Werkzeugleiste
 
 \end_inset
 
-: Den letzten optionalen Parameter in einen nicht-optionalen ändern
+ : Den letzten optionalen Parameter in einen nicht-optionalen ändern
 \end_layout
 
 \begin_layout Enumerate
@@ -38362,7 +34719,7 @@ Mathe-Makros-Werkzeugleiste
 
 \end_inset
 
-: optionalen Parameter entfernen
+ : optionalen Parameter entfernen
 \end_layout
 
 \begin_layout Enumerate
@@ -38374,7 +34731,7 @@ Mathe-Makros-Werkzeugleiste
 
 \end_inset
 
-: optionalen Parameter einfügen
+ : optionalen Parameter einfügen
 \end_layout
 
 \begin_layout Enumerate
@@ -38386,7 +34743,7 @@ Mathe-Makros-Werkzeugleiste
 
 \end_inset
 
-: letzten Parameter rechts entfernen
+ : letzten Parameter rechts entfernen
 \end_layout
 
 \begin_layout Enumerate
@@ -38398,7 +34755,7 @@ Mathe-Makros-Werkzeugleiste
 
 \end_inset
 
-: Parameter von rechts hinzufügen
+ : Parameter von rechts hinzufügen
 \end_layout
 
 \begin_layout Enumerate
@@ -38410,7 +34767,16 @@ Mathe-Makros-Werkzeugleiste
 
 \end_inset
 
-: optionalen Parameter von rechts hinzufügen
+ : optionalen Parameter von rechts hinzufügen
+\end_layout
+
+\begin_layout Subsection
+Andere Werkzeugleisten
+\end_layout
+
+\begin_layout Standard
+Hier finden Sie weitere Mathe-Werkzeugleisten, deren Namen selbsterklärend
+ sind.
 \end_layout
 
 \begin_layout Subsection
@@ -38431,7 +34797,7 @@ reference "Tabellen-Einstellungen"
 
 \end_inset
 
-.
+ff.
 \end_layout
 
 \begin_layout Section
@@ -38609,7 +34975,7 @@ Strg+C
 \begin_layout Subsection
 
 \family sans
-Einfügen ( speziell)
+Einfügen (speziell)
 \end_layout
 
 \begin_layout Subsubsection
@@ -38639,7 +35005,7 @@ Auswahl, Zeilen verbinden
 \begin_layout Standard
 Siehe 
 \emph on
-Eingebettet Objekte
+Eingebettete Objekte
 \emph default
 .
 \end_layout
@@ -38677,7 +35043,7 @@ Das ist das Gleiche, als wenn Sie auf
 	filename ../../images/dialog-show_character.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 2bp 22bp 22bp
 
 \end_inset
 
@@ -38715,7 +35081,7 @@ Wenn der Cursor am Anfang eines Wortes oder in einem Wort steht, werden
 \end_layout
 
 \begin_layout Subsubsection
-Kleinbuchstaben (Alt+Z Runter 
+Kleinbuchstaben (Alt+Z 
 \begin_inset Formula $\downarrow$
 \end_inset
 
@@ -38820,7 +35186,7 @@ OpenDocument
 \end_layout
 
 \begin_layout Standard
-In Open Office muss 
+In OpenOffice muss 
 \family sans
 Datei\SpecialChar \menuseparator
 Neu
@@ -38830,25 +35196,6 @@ Neu
 laden
 \family default
  angeklickt werden, damit die Änderung sichtbar wird.
-\end_layout
-
-\begin_layout Subsection
-DVI 
-\family sans
-(Strg+D)
-\end_layout
-
-\begin_layout Standard
-Die DVI-Vorschau starten (
-\begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-).
 \end_layout
 
 \begin_layout Subsection
@@ -38980,49 +35327,6 @@ Dateiformate
 OpenDocument
 \family default
  festgelegt ist.
-\end_layout
-
-\begin_layout Subsection
-
-\family sans
-PDF (dvipdf
-\family default
-m
-\family sans
-), PDF (pdf
-\family default
-l
-\family sans
-atex) und PDF (pdf
-\family default
-l
-\family sans
-atex)
-\end_layout
-
-\begin_layout Standard
-Die verschiedenen PDF-Vorschauen starten.
-\end_layout
-
-\begin_layout Subsection
-
-\family sans
-Postscript (Strg+T)
-\end_layout
-
-\begin_layout Standard
-Die Postscript-Vorschau starten (
-\begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-)
-\emph on
-.
 \end_layout
 
 \begin_layout Subsection
@@ -39282,7 +35586,7 @@ Text!-datei
 
 \end_inset
 
-[, als Zeilen/Absätze]e
+[, als Zeilen/Absätze]
 \family default
  (siehe 
 \emph on
@@ -39444,32 +35748,6 @@ Eingebettete Objekte.
 \end_layout
 
 \begin_layout Subsection
-
-\family sans
-Stich
-\family default
-w
-\family sans
-ort
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Stichwort
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Siehe 
-\emph on
-Handbuchergänzungen.
-\end_layout
-
-\begin_layout Subsection
 Nomenklatureintrag
 \begin_inset Index
 status collapsed
@@ -39485,48 +35763,6 @@ Nomenklatur
 
 \begin_layout Standard
 Siehe 
-\emph on
-Handbuchergänzungen.
-\end_layout
-
-\begin_layout Subsection
-
-\family sans
-Te
-\family default
-X
-\family sans
--Code
-\family default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-TeX-Code
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Siehe Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Werkzeugleiste"
-
-\end_inset
-
-, Punkt 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "LaTeX-Code-einfügen"
-
-\end_inset
-
- und 
 \emph on
 Handbuchergänzungen.
 \end_layout
@@ -39570,8 +35806,8 @@ Datum
 \end_layout
 
 \begin_layout Standard
-Das eingefügte Datum wird so erscheinen, wie Sie es festgelegt haben (siehe
- Anhang
+Das eingefügte Datum wird in dem Format erscheinen, das Sie festgelegt haben
+ (siehe Anhang
 \begin_inset space \space{}
 \end_inset
 
@@ -39650,16 +35886,12 @@ gung entsprechend Abschnitt
 \end_inset
 
 
-\family sans
-
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Aenderungsverfolgung"
 
 \end_inset
 
-
-\family default
  aktiviert haben.
 \end_layout
 
@@ -39708,10 +35940,10 @@ nklicken zu einem in den Verzeichnissen genannten Punkt gehen.
 \family sans
 Dokument
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Dokument!-menü@-Menü
+Dokument!menü@-Menü
 \end_layout
 
 \end_inset
@@ -39786,15 +36018,48 @@ Informationen
 \begin_layout Standard
 Zeigt Informationen über die vorhandenen 
 \family sans
-LaTeX-Klassen
+LaTe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Klassen
 \family default
 , 
 \family sans
-LaTeX-Stile
+LaTe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Stile
 \family default
  und 
 \family sans
-BibTeX-Stile
+BibTe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Stile
 \family default
 , zeigt den Inhalt einer ausgewählten Datei an und liest die Informationen
  auf Wunsch neu ein.
@@ -39911,6 +36176,20 @@ gen
 \family default
  geöffnet.
  Der Baum im linken Teilfenster zeigt, was alles eingestellt werden kann.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\noun on
+HHa
+\noun default
+: ??? bedeutet, dass ich nicht weiß, worum es sich handelt.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -40031,8 +36310,11 @@ Sitzung
 \begin_inset space ~
 \end_inset
 
-laden ist selbsterklärend und hilfreich, wenn man längere Zeit mit denselben
- Dateien arbeitet.
+laden ist selbsterklärend und
+\begin_inset Newline linebreak
+\end_inset
+
+hilfreich, wenn man längere Zeit mit denselben Dateien arbeitet.
 \end_layout
 
 \end_deeper
@@ -40056,7 +36338,8 @@ Dokumente,
 
 alle\SpecialChar \ldots{}
 Minuten Hier können Sie die automatische Datensicherung während einer
- Sitzung (de)aktivieren und das Zeitintervall, in dem das passieren soll.
+ Sitzung (de)aktivieren und das Zeitintervall festlegen, in dem das passieren
+ soll.
 \end_layout
 
 \begin_layout Description
@@ -40250,7 +36533,11 @@ reference "Variabler-horiz-Abstand"
 
 \begin_layout Description
 Anhangskennzeichnung ist die Farbe für die Trennlinie zwischen Dokument
- und Anhang, siehe 
+ und Anhang, siehe Kapitel
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Danksagung"
@@ -40313,7 +36600,7 @@ Befehlseinfügung
 \end_inset
 
 (Hintergrund) Wenn Sie zum Beispiel einen URL einfügen, können Sie hiermit
- die Farbe des Hintergrundes ändern, falls das zusehen ist.
+ die Farbe des Hintergrundes ändern, falls das zu sehen ist.
 \end_layout
 
 \begin_layout Description
@@ -40322,7 +36609,7 @@ Befehlseinfügung
 \end_inset
 
 (Rahmen) Wenn Sie zum Beispiel einen URL einfügen, können Sie hiermit die
- Farbe des Rahmens ändern, falls das zusehen ist.
+ Farbe des Rahmens ändern, falls das zu sehen ist.
 \end_layout
 
 \begin_layout Description
@@ -40527,7 +36814,7 @@ Kommentar
 \end_layout
 
 \begin_layout Description
-LaTeX-
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -40538,7 +36825,7 @@ status collapsed
 
 \end_inset
 
-Fehler ???
+X-Fehler ???
 \end_layout
 
 \begin_layout Description
@@ -40573,7 +36860,7 @@ reference "Legende,-Legende-oben-unten"
 
 \end_inset
 
-) umrandet wird.
+) eingerahmt wird.
 \end_layout
 
 \begin_layout Description
@@ -40750,7 +37037,7 @@ reference "Horizontale-Linien"
 
 \end_inset
 
- dargestellt wird
+ dargestellt wird.
 \end_layout
 
 \begin_layout Description
@@ -40857,7 +37144,7 @@ Wortvervollständigung
 \begin_inset space ~
 \end_inset
 
-mehrdeutig) ist die Farbe, mit der die Vervollständigungen angezeigt werden,
+(mehrdeutig) ist die Farbe, mit der die Vervollständigungen angezeigt werden,
  wenn sie mehrdeutig sind.
 \end_layout
 
@@ -41466,13 +37753,21 @@ X-Pipe
 \end_inset
 
 Wollen Sie sich jetzt auf einen Eintrag aus der DB beziehen, wählen Sie
- den in JabRef aus und klicken auf das LyX-Symbol.
- Es wird in aktuellen LyX-Dokument an der Cursor-Position der Literaturverweis
+ den in 
+\family sans
+JabRef
+\family default
+ aus und klicken auf das LyX-Symbol.
+ Es wird im aktuellen LyX-Dokument an der Cursor-Position der Literaturverweis
  eingefügt.
 \begin_inset Newline newline
 \end_inset
 
-JabRef und LyX müssen natürlich beide laufen.
+
+\family sans
+JabRef
+\family default
+ und LyX müssen natürlich beide laufen.
  Unter Linux funktioniert das so, beim Mac sicher auch, bei Windows gibt
  es den Pipe-Mechanismus nicht.
 \end_layout
@@ -41495,7 +37790,7 @@ PATH-Präfix Diese Feld enthält eine Liste mit Pfaden zu externen Programmen.
  wo es zu finden ist.
  Für Windows und Mac wird diese Liste automatisch bei der Konfiguration
  von LyX erstellt, sodass Sie sie normalerweise nicht ändern müssen.
- Auf Linux/Unix-Systemen muss sie nur dann erstellt werden, wenn Sie externe
+ Auf Linux/Unix-Systemen muss sie nur dann erstellt werden, wenn externe
  Programme benutzt werden sollen, die nicht in $PATH stehen.
 \end_layout
 
@@ -41719,7 +38014,7 @@ Beginn
 \family default
 \series default
 .
- Wenn sie nicht gesetzt ist, wird der 
+ Wenn es nicht gesetzt ist, wird der 
 \family sans
 \series bold
 Befehl
@@ -41773,14 +38068,18 @@ Rechtschreibprüfung
 \end_layout
 
 \begin_layout Standard
-Siehe 
+Siehe Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Rechtschreibprüfung-Optionen"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Section
@@ -41929,7 +38228,18 @@ nroff
 \end_layout
 
 \begin_layout Subsection
-LaTeX
+LaTe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \end_layout
 
 \begin_layout Description
@@ -42078,11 +38388,11 @@ Wenn Sie eine
 Konverter-Definition
 \family default
 \series default
- anklicken, sehen in 
+ anklicken, sehen Sie in 
 \family sans
 \series bold
 Von
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 Format
@@ -42092,7 +38402,7 @@ Format
 \family sans
 \series bold
 Nach
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 Format
@@ -42108,7 +38418,7 @@ Konverter Legt das Konvertierungsprogramm mitsamt Parametern fest.
 
 \begin_layout Description
 Zusatz-Flag manche Konvertierungsprogramme erlauben zusätzliche Flags (siehe
- die bezüglichen Handbücher).
+ die diesbezüglichen Handbücher).
 \end_layout
 
 \begin_layout Description
@@ -42316,7 +38626,7 @@ reference "Tipp-für-xdvi"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Description
@@ -42335,7 +38645,7 @@ Damit eine Änderung wirksam wird, müssen Sie auf
 Dokument-Einstellungen
 \begin_inset CommandInset label
 LatexCommand label
-name "Dokument-Einstellungen"
+name "Dokument-Einstellungen-2"
 
 \end_inset
 
@@ -42393,14 +38703,18 @@ Dokument-Standards
 \begin_inset space ~
 \end_inset
 
-speichern siehe 
+speichern siehe Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Dokument-Standard"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -42412,7 +38726,11 @@ Dokumentklasse
 \end_layout
 
 \begin_layout Standard
-Siehe auch 
+Siehe auch Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Eine-Klasse-auswählen"
@@ -42575,7 +38893,7 @@ http://de.wikipedia.org/wiki/Mediävalziffer
 
  und 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -42604,7 +38922,11 @@ Textformat
 \end_layout
 
 \begin_layout Standard
-Siehe auch 
+Siehe auch die Abschnitte
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Globale-Absatztrennung"
@@ -42663,7 +38985,11 @@ Seitenformat
 \end_layout
 
 \begin_layout Standard
-Siehe auch 
+Siehe auch Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Dokument-Einstellungen"
@@ -42788,7 +39114,11 @@ Spaltenabstand ist der Abstand zwischen zwei Spalten bei mehrspaltigen Seiten.
 \end_layout
 
 \begin_layout Standard
-Einzelheiten zu diesen vier Gruppen finden Sie in 
+Einzelheiten zu diesen vier Gruppen finden Sie in Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Seitenränderbeschreibung"
@@ -42803,7 +39133,11 @@ Sprache
 \end_layout
 
 \begin_layout Description
-Sprache siehe 
+Sprache siehe Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Rechtschreibprogramm"
@@ -42822,7 +39156,11 @@ der
 \begin_inset space ~
 \end_inset
 
-Anführungszeichen siehe 
+Anführungszeichen siehe Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Anführungszeichen"
@@ -42833,14 +39171,18 @@ reference "Anführungszeichen"
 \end_layout
 
 \begin_layout Description
-Kodierung siehe auch 
+Kodierung siehe auch Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Zeichentabellen"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_deeper
@@ -42868,17 +39210,6 @@ reference "Zeichentabellen"
 
 \end_inset
 
- und Tabelle
-\begin_inset space \space{}
-\end_inset
-
- 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Tab:ISO8859-15-Zeichensatz"
-
-\end_inset
-
 .
 \end_layout
 
@@ -42900,28 +39231,32 @@ Inhaltsverzeichnis
 \end_layout
 
 \begin_layout Standard
-Siehe 
+Siehe Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Aendern-der-Nummerierung"
 
 \end_inset
 
- und 
+, 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Inhaltsverzeichnis"
 
 \end_inset
 
-, Punkt 
+ und Punkt 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Nummerierung"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Section
@@ -43137,14 +39472,18 @@ Mathe-Optionen
 \end_layout
 
 \begin_layout Standard
-Siehe 
+Siehe Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Weitere-Symbole"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Section
@@ -43152,14 +39491,18 @@ Gleitobjekt-Platzierung
 \end_layout
 
 \begin_layout Standard
-Siehe 
+Siehe Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Platzierung-von-Gleitobjekt-Umgebungen"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Section
@@ -43167,14 +39510,18 @@ Auflistungszeichen
 \end_layout
 
 \begin_layout Standard
-Siehe 
+Siehe Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Zurück-zu-Stufe-1"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Section
@@ -44748,22 +41095,6 @@ captions<Dokumentsprache>
 
 \begin_inset CommandInset index_print
 LatexCommand printindex
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList figure
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList table
 
 \end_inset
 
