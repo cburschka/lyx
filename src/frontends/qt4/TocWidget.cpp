@@ -267,8 +267,6 @@ static QString decodeType(QString const & str)
 
 void TocWidget::init(QString const & str)
 {
-	typeCO->blockSignals(true);
-
 	int new_index;
 	if (str.isEmpty())
 		new_index = typeCO->findData(current_type_);
@@ -282,6 +280,7 @@ void TocWidget::init(QString const & str)
 		new_index = typeCO->findData(current_type_);
 	}
 
+	typeCO->blockSignals(true);
 	typeCO->setCurrentIndex(new_index);
 	typeCO->blockSignals(false);
 }
