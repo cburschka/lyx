@@ -1,5 +1,5 @@
-#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
-\lyxformat 335
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 336
 \begin_document
 \begin_header
 \textclass scrbook
@@ -57,6 +57,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -43122,6 +43123,43 @@ status collapsed
 \begin_layout Plain Layout
 
 http://tug.ctan.org/indexing/makeindex/doc/manpages.dvi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "xindy"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://www.xindy.org/documentation.html"
+
+\end_inset
+
+ del programa 
+\family sans
+xindy
+\family default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.xindy.org/documentation.html
 \end_layout
 
 \end_inset

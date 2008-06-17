@@ -1,5 +1,5 @@
-#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
-\lyxformat 335
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 336
 \begin_document
 \begin_header
 \textclass scrbook
@@ -57,6 +57,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -25992,41 +25993,14 @@ You can change the appearance of insert entries via the textstyle dialog.
 status collapsed
 
 \begin_layout Plain Layout
-Dummy entries ! This@
-\shape italic
-This is an italic entry at the correct position
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
 Dummy entries ! 
 \shape italic
-This is an italic entry at the wrong position
+This is an italic dummy entry
 \end_layout
 
 \end_inset
 
- LyX will then in the background add commands for the layout that destroy
- the sort order.
- To avoid that our index entry appears as the first one, we use the following
- command instead:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-This@
-\emph on
-This is an italic entry
-\end_layout
-
-\begin_layout Standard
-You can also format the page number using the character 
+ You can also format the page number using the character 
 \begin_inset Quotes eld
 \end_inset
 
@@ -26047,7 +26021,7 @@ old-style page number:|oldstylenums
 \begin_layout Standard
 to get the page number in an old-style layout.
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Dummy entries ! old-style page number:|oldstylenums
@@ -26156,17 +26130,14 @@ You can also specify there another program to generate the index, for example
 \family sans
 xindy
 \family default
-.
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Image formats
-\end_layout
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "xindy"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Section
@@ -41378,6 +41349,43 @@ status collapsed
 \begin_layout Plain Layout
 
 http://tug.ctan.org/indexing/makeindex/doc/manpages.dvi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "xindy"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://www.xindy.org/documentation.html"
+
+\end_inset
+
+ of the program 
+\family sans
+xindy
+\family default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.xindy.org/documentation.html
 \end_layout
 
 \end_inset
