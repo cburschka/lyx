@@ -31,12 +31,13 @@ namespace lyx {
 docstring const from_ascii(char const * ascii)
 {
 	docstring s;
-	int n = strlen(ascii);
-	s.resize(n);
-	char_type *d = &s[0];
-	while (--n >= 0) {
-		d[n] = ascii[n];
-		LASSERT(static_cast<unsigned char>(ascii[n]) < 0x80, /**/);
+	if (int n = strlen(ascii)) {
+		s.resize(n);
+		char_type *d = &s[0];
+		while (--n >= 0) {
+			d[n] = ascii[n];
+			LASSERT(static_cast<unsigned char>(ascii[n]) < 0x80, /**/);
+		}
 	}
 	return s;
 }
