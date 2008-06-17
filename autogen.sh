@@ -83,6 +83,9 @@ else
 	exit 1
 fi
 
+echo "Building po/POTFILES.in..."
+make -s -f po/Rules-lyx srcdir=po top_srcdir=.
+
 echo
 echo 'run "./configure ; make"'
 echo

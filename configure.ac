@@ -33,9 +33,6 @@ for file in config/install-sh config/mkinstalldirs ; do
   chmod 755 ${srcdir}/${file}
 done
 
-### Provide a dummy POTFILES.in in po in order to mark it as a PO directory
-test -f ${srcdir}/po/POTFILES.in || touch ${srcdir}/po/POTFILES.in
-
 ### Check for programs
 AC_PROG_MAKE_SET
 AC_PROG_INSTALL
