@@ -189,7 +189,9 @@ The following new LyX functions have been removed:
 
 - LFUN_BREAK_PARAGRAPH_SKIP, LFUN_DELETE_BACKWARD_SKIP, LFUN_DELETE_FORWARD_SKIP.
 
-- LFUN_ERROR_NEXT
+- LFUN_ERROR_NEXT.
+
+- LFUN_MATH_IMPORT_SELECTION. Use LFUN_MATH_MODE instead.
 
 
 For the detailed description of LyX functions look into doxygen documentation.
