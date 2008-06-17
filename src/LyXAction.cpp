@@ -1951,6 +1951,15 @@ void LyXAction::init()
  */
 		{ LFUN_FINISHED_LEFT, "", ReadOnly, Hidden },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_LANGUAGE
+ * \li Action: Set language from the current cursor position.
+ * \li Syntax: language <LANG>
+ * \li Params: <LANG>: Requested language. Look in lib/languages for
+                       the list.
+ * \li Origin: Dekel, 2 Mar 2000
+ * \endvar
+ */
 		{ LFUN_LANGUAGE, "language", Noop, Edit },
 
 /*!
