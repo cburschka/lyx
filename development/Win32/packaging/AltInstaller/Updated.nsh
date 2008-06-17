@@ -35,6 +35,7 @@ Function UpdateModifiedFiles
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\it\Intro.lyx"
  #File /r "${PRODUCT_SOURCEDIR}\Resources\doc\it\clipart"
  SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\aa.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\jss.layout"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  #File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\LyX.py"
@@ -44,12 +45,13 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\scripts"
  File "${PRODUCT_SOURCEDIR}\Resources\scripts\csv2lyx.py"
  SetOutPath "$INSTDIR\Resources\templates"
+ File "${PRODUCT_SOURCEDIR}\Resources\templates\aa.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\JSS-article.lyx"
  SetOutPath "$INSTDIR\Resources\man\man1"
  #File "${PRODUCT_SOURCEDIR}\Resources\man\man1\lyx.1"
  SetOutPath "$INSTDIR\Resources\ui"
  #File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
- # File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
+ #File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
 
 FunctionEnd
 
