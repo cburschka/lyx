@@ -41,8 +41,6 @@ public Q_SLOTS:
 
 protected Q_SLOTS:
 	///
-	void setTocModel();
-	///
 	void select(QModelIndex const & index);
 	///
 	void goTo(QModelIndex const &);

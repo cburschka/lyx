@@ -17,6 +17,7 @@
 #include "qt_helpers.h"
 #include "TocModel.h"
 
+#include "Buffer.h"
 #include "FuncRequest.h"
 #include "LyXFunc.h"
 
@@ -216,15 +217,32 @@ void TocWidget::enableControls(bool enable)
 	moveDownTB->setEnabled(enable);
 	moveInTB->setEnabled(enable);
 	moveOutTB->setEnabled(enable);
-
-	depthSL->setEnabled(enable);
 }
 
 
 void TocWidget::updateView()
 {
-	LYXERR(Debug::GUI, "In TocWidget::updateView()");
-	setTocModel();
+	if (!gui_view_.view()) {
+		enableControls(false);
+		typeCO->setEnabled(false);
+		tocTV->setModel(0);
+		tocTV->setEnabled(false);
+		return;
+	}
+	typeCO->setEnabled(true);
+	tocTV->setEnabled(true);
+
+	QStandardItemModel * toc_model = gui_view_.tocModels().model(current_type_);	
+	if (tocTV->model() != toc_model) {
+		tocTV->setModel(toc_model);
+		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	}
+	bool controls_enabled = toc_model && toc_model->rowCount() > 0
+		&& !gui_view_.buffer()->isReadonly();
+	enableControls(controls_enabled);
+
+	depthSL->setMaximum(gui_view_.tocModels().depth(current_type_));
+	depthSL->setValue(depth_);
 	setTreeDepth(depth_);
 	select(gui_view_.tocModels().currentIndex(current_type_));
 }
@@ -249,17 +267,6 @@ static QString decodeType(QString const & str)
 
 void TocWidget::init(QString const & str)
 {
-	if (!gui_view_.view()) {
-		enableControls(false);
-		typeCO->setEnabled(false);
-		tocTV->setModel(0);
-		tocTV->setEnabled(false);
-		return;
-	}
-
-	typeCO->setEnabled(true);
-	tocTV->setEnabled(true);
-
 	typeCO->blockSignals(true);
 
 	int new_index;
@@ -277,25 +284,6 @@ void TocWidget::init(QString const & str)
 
 	typeCO->setCurrentIndex(new_index);
 	typeCO->blockSignals(false);
-}
-
-
-void TocWidget::setTocModel()
-{
-	QStandardItemModel * toc_model = gui_view_.tocModels().model(current_type_);
-	
-	if (tocTV->model() != toc_model) {
-		tocTV->setModel(toc_model);
-		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
-	}
-
-	bool controls_enabled = toc_model && toc_model->rowCount() > 0;;
-	enableControls(controls_enabled);
-
-	if (controls_enabled) {
-		depthSL->setMaximum(gui_view_.tocModels().depth(current_type_));
-		depthSL->setValue(depth_);
-	}
 }
 
 } // namespace frontend

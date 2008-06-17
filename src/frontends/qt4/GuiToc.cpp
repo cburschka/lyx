@@ -84,7 +84,8 @@ void GuiToc::dispatchParams()
 void GuiToc::enableView(bool enable)
 {
 	if (!enable)
-		widget_->init(QString());
+		// In the opposite case, updateView() will be called anyway.
+		widget_->updateView();
 }
 
 
