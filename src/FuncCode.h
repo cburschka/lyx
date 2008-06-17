@@ -162,7 +162,6 @@ enum FuncCode
 	LFUN_MATH_EXTERN,               // Andre' 20010424
 	LFUN_MATH_MUTATE,               // Andre' 20010523
 	// 110
-	LFUN_MATH_IMPORT_SELECTION,     // Andre' 20010704
 	LFUN_MATH_SPACE,                // Andre' 20010725
 	LFUN_WORD_DELETE_FORWARD,
 	LFUN_WORD_DELETE_BACKWARD,

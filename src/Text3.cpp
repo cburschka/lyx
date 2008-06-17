@@ -1467,7 +1467,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		mathDispatch(cur, cmd, true);
 		break;
 
-	case LFUN_MATH_IMPORT_SELECTION:
 	case LFUN_MATH_MODE:
 		if (cmd.argument() == "on")
 			// don't pass "on" as argument
@@ -2194,7 +2193,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_LINE_INSERT:
 	case LFUN_NEWPAGE_INSERT:
 	case LFUN_MATH_DISPLAY:
-	case LFUN_MATH_IMPORT_SELECTION:
 	case LFUN_MATH_MODE:
 	case LFUN_MATH_MACRO:
 	case LFUN_MATH_MATRIX:

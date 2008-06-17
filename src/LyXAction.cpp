@@ -1397,7 +1397,6 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_MATH_SPACE, "math-space", Noop, Math },
-		{ LFUN_MATH_IMPORT_SELECTION, "math-import-selection", Noop, Math },
 /*!
  * \var lyx::FuncCode lyx::LFUN_MATH_MATRIX
  * \li Action: Inserts a matrix.
@@ -1414,7 +1413,8 @@ void LyXAction::init()
  * \li Action: In text mode enters math mode (i.e. puts math insets on the current
                cursor position), in math mode enters text mode inside math expression.
  * \li Notion: If there is some selected text, it puts the text inside created math box.
- * \li Syntax: math-mode
+ * \li Syntax: math-mode [<ARG>]
+ * \li Params: <ARG>: eventual argument (LaTeX code) is passed to #LFUN_MATH_INSERT .
  * \li Origin: Alejandro, 4 Jun 1996
  * \endvar
  */
