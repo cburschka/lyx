@@ -89,11 +89,10 @@ void InsetMathBig::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathBig::write(WriteStream & os) const
 {
-	bool brace = ensureMath(os);
+	MathEnsurer ensurer(os);
 	os << '\\' << name_ << delim_;
 	if (delim_[0] == '\\')
 		os.pendingSpace(true);
-	os.pendingBrace(brace);
 }
 
 

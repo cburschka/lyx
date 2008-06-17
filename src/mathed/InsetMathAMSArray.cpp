@@ -122,11 +122,10 @@ bool InsetMathAMSArray::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetMathAMSArray::write(WriteStream & os) const
 {
-	bool brace = ensureMath(os);
+	MathEnsurer ensurer(os);
 	os << "\\begin{" << name_ << '}';
 	InsetMathGrid::write(os);
 	os << "\\end{" << name_ << '}';
-	os.pendingBrace(brace);
 }
 
 

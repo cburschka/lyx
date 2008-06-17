@@ -12,7 +12,6 @@
 
 #include "MathStream.h"
 
-#include "InsetMath.h"
 #include "MathData.h"
 #include "MathExtern.h"
 

@@ -76,7 +76,7 @@ void InsetMathBoldSymbol::validate(LaTeXFeatures & features) const
 
 void InsetMathBoldSymbol::write(WriteStream & os) const
 {
-	bool brace = ensureMath(os);
+	MathEnsurer ensurer(os);
 	switch (kind_) {
 	case AMS_BOLD:
 		os << "\\boldsymbol{" << cell(0) << "}";
@@ -88,7 +88,6 @@ void InsetMathBoldSymbol::write(WriteStream & os) const
 		os << "\\hm{" << cell(0) << "}";
 		break;
 	}
-	os.pendingBrace(brace);
 }
 
 

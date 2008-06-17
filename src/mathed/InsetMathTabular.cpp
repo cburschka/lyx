@@ -65,14 +65,7 @@ void InsetMathTabular::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathTabular::write(WriteStream & os) const
 {
-	// This is a text mode tabular, so close any previous \ensuremath
-	// command and set the proper mode.
-	if (os.latex() && os.pendingBrace()) {
-		os.pendingBrace(false);
-		os << '}';
-	}
-	bool textmode = os.textMode();
-	os.textMode(true);
+	ModeSpecifier specifier(os, TEXT_MODE);
 
 	if (os.fragile())
 		os << "\\protect";
@@ -90,8 +83,6 @@ void InsetMathTabular::write(WriteStream & os) const
 	os << "\\end{" << name_ << '}';
 	// adding a \n here is bad if the tabular is the last item
 	// in an \eqnarray...
-
-	os.textMode(textmode);
 }
 
 

@@ -181,9 +181,6 @@ public:
 	/// write content as something readable by Octave
 	virtual void octave(OctaveStream &) const;
 
-	/// ensure math mode when writing LaTeX
-	bool ensureMath(WriteStream & os, bool needs_math_mode = true) const;
-
 	/// plain text output in ucs4 encoding
 	int plaintext(odocstream &, OutputParams const &) const;
 

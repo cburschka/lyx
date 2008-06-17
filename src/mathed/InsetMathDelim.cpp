@@ -59,10 +59,9 @@ Inset * InsetMathDelim::clone() const
 
 void InsetMathDelim::write(WriteStream & os) const
 {
-	bool brace = ensureMath(os);
+	MathEnsurer ensurer(os);
 	os << "\\left" << convertDelimToLatexName(left_) << cell(0)
 	   << "\\right" << convertDelimToLatexName(right_);
-	os.pendingBrace(brace);
 }
 
 

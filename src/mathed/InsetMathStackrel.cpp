@@ -58,9 +58,8 @@ void InsetMathStackrel::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathStackrel::write(WriteStream & os) const
 {
-	bool brace = ensureMath(os);
+	MathEnsurer ensurer(os);
 	os << "\\stackrel{" << cell(0) << "}{" << cell(1) << '}';
-	os.pendingBrace(brace);
 }
 
 

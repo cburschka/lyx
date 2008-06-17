@@ -139,11 +139,10 @@ void InsetMathDecoration::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathDecoration::write(WriteStream & os) const
 {
-	bool brace = ensureMath(os);
+	MathEnsurer ensurer(os);
 	if (os.fragile() && protect())
 		os << "\\protect";
 	os << '\\' << key_->name << '{' << cell(0) << '}';
-	os.pendingBrace(brace);
 }
 
 

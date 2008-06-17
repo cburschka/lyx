@@ -80,9 +80,8 @@ void InsetMathSqrt::drawT(TextPainter & /*pain*/, int /*x*/, int /*y*/) const
 
 void InsetMathSqrt::write(WriteStream & os) const
 {
-	bool brace = ensureMath(os);
+	MathEnsurer ensurer(os);
 	os << "\\sqrt{" << cell(0) << '}';
-	os.pendingBrace(brace);
 }
 
 

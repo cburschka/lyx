@@ -53,7 +53,7 @@ void InsetMathXYMatrix::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathXYMatrix::write(WriteStream & os) const
 {
-	bool brace = ensureMath(os);
+	MathEnsurer ensurer(os);
 	os << "\\xymatrix";
 	switch (spacing_code_) {
 	case 'R':
@@ -72,7 +72,6 @@ void InsetMathXYMatrix::write(WriteStream & os) const
 	os << '{';
 	InsetMathGrid::write(os);
 	os << "}\n";
-	os.pendingBrace(brace);
 }
 
 

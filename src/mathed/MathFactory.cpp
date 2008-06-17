@@ -45,6 +45,7 @@
 #include "MathMacro.h"
 #include "MathMacroArgument.h"
 #include "MathParser.h"
+#include "MathStream.h"
 #include "MathSupport.h"
 
 #include "insets/InsetCommand.h"
@@ -232,6 +233,43 @@ void initMath()
 		initParser();
 		initSymbols();
 	}
+}
+
+
+bool ensureMath(WriteStream & os, bool needs_math_mode, bool macro)
+{
+	bool brace = os.pendingBrace();
+	os.pendingBrace(false);
+	if (!os.latex())
+		return brace;
+	if (os.textMode() && needs_math_mode) {
+		os << "\\ensuremath{";
+		os.textMode(false);
+		brace = true;
+	} else if (macro && brace && !needs_math_mode) {
+		// This is a user defined macro, but not a MathMacro, so we
+		// cannot be sure what mode is needed. As it was entered in
+		// a text box, we restore the text mode.
+		os << '}';
+		os.textMode(true);
+		brace = false;
+	}
+	return brace;
+}
+
+
+bool ensureMode(WriteStream & os, InsetMath::mode_type mode)
+{
+	bool textmode = mode == InsetMath::TEXT_MODE;
+	if (os.latex() && textmode && os.pendingBrace()) {
+		os.os() << '}';
+		os.pendingBrace(false);
+		os.pendingSpace(false);
+		os.textMode(true);
+	}
+	bool oldmode = os.textMode();
+	os.textMode(textmode);
+	return oldmode;
 }
 
 

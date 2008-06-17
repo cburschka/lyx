@@ -87,7 +87,7 @@ bool InsetMathSplit::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetMathSplit::write(WriteStream & ws) const
 {
-	bool brace = ensureMath(ws);
+	MathEnsurer ensurer(ws);
 	if (ws.fragile())
 		ws << "\\protect";
 	ws << "\\begin{" << name_ << '}';
@@ -99,7 +99,6 @@ void InsetMathSplit::write(WriteStream & ws) const
 	if (ws.fragile())
 		ws << "\\protect";
 	ws << "\\end{" << name_ << "}\n";
-	ws.pendingBrace(brace);
 }
 
 

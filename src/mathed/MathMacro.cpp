@@ -655,27 +655,12 @@ bool MathMacro::folded() const
 
 void MathMacro::write(WriteStream & os) const
 {
-	bool brace = os.pendingBrace();
-        os.pendingBrace(false);
-	if (os.latex()) {
-		if (os.textMode() && macro_) {
-			// This is for sure a math macro
-			os << "\\ensuremath{";
-			os.textMode(false);
-			brace = true;
-		} else if (brace && !macro_) {
-			// Cannot tell, so don't mess with the mode
-			os << '}';
-			os.textMode(true);
-			brace = false;
-		}
-        }
+	MathEnsurer ensurer(os, macro_ != 0, true);
 
 	// non-normal mode
 	if (displayMode_ != DISPLAY_NORMAL) {
 		os << "\\" << name();
 		os.pendingSpace(true);
-		os.pendingBrace(brace);
 		return;
 	}
 
@@ -722,8 +707,6 @@ void MathMacro::write(WriteStream & os) const
 	// add space if there was no argument
 	if (first)
 		os.pendingSpace(true);
-
-	os.pendingBrace(brace);
 }
 
 

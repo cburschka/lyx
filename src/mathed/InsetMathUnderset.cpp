@@ -84,9 +84,8 @@ bool InsetMathUnderset::idxUpDown(Cursor & cur, bool up) const
 
 void InsetMathUnderset::write(WriteStream & os) const
 {
-	bool brace = ensureMath(os);
+	MathEnsurer ensurer(os);
 	os << "\\underset{" << cell(0) << "}{" << cell(1) << '}';
-	os.pendingBrace(brace);
 }
 
 

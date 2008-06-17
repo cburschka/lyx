@@ -72,9 +72,8 @@ void InsetMathRoot::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathRoot::write(WriteStream & os) const
 {
-	bool brace = ensureMath(os);
+	MathEnsurer ensurer(os);
 	os << "\\sqrt[" << cell(0) << "]{" << cell(1) << '}';
-	os.pendingBrace(brace);
 }
 
 

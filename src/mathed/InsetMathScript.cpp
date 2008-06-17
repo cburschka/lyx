@@ -525,7 +525,7 @@ bool InsetMathScript::idxUpDown(Cursor & cur, bool up) const
 
 void InsetMathScript::write(WriteStream & os) const
 {
-	bool brace = ensureMath(os);
+	MathEnsurer ensurer(os);
 
 	if (nuc().size()) {
 		os << nuc();
@@ -550,8 +550,6 @@ void InsetMathScript::write(WriteStream & os) const
 
 	if (lock_ && !os.latex())
 		os << "\\lyxlock ";
-
-	os.pendingBrace(brace);
 }
 
 

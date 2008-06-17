@@ -62,12 +62,11 @@ void InsetMathXArrow::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathXArrow::write(WriteStream & os) const
 {
-	bool brace = ensureMath(os);
+	MathEnsurer ensurer(os);
 	os << '\\' << name_;
 	if (cell(1).size())
 		os << '[' << cell(1) << ']';
 	os << '{' << cell(0) << '}';
-	os.pendingBrace(brace);
 }
 
 

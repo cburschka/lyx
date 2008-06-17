@@ -265,8 +265,7 @@ void InsetMathFrac::drawT(TextPainter & /*pain*/, int /*x*/, int /*y*/) const
 
 void InsetMathFrac::write(WriteStream & os) const
 {
-	bool brace = ensureMath(os);
-
+	MathEnsurer ensurer(os);
 	switch (kind_) {
 	case ATOP:
 		os << '{' << cell(0) << "\\atop " << cell(1) << '}';
@@ -290,8 +289,6 @@ void InsetMathFrac::write(WriteStream & os) const
 			os << "\\unit{" << cell(0) << '}';
 		break;
 	}
-
-	os.pendingBrace(brace);
 }
 
 
@@ -539,8 +536,7 @@ bool InsetMathBinom::extraBraces() const
 
 void InsetMathBinom::write(WriteStream & os) const
 {
-	bool brace = ensureMath(os);
-
+	MathEnsurer ensurer(os);
 	switch (kind_) {
 	case BINOM:
 		os << "\\binom{" << cell(0) << "}{" << cell(1) << '}';
@@ -555,8 +551,6 @@ void InsetMathBinom::write(WriteStream & os) const
 		os << '{' << cell(0) << " \\brack " << cell(1) << '}';
 		break;
 	}
-
-	os.pendingBrace(brace);
 }
 
 

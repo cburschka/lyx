@@ -336,8 +336,7 @@ MathData InsetMathNest::glue() const
 
 void InsetMathNest::write(WriteStream & os) const
 {
-	bool textmode = os.textMode();
-	os.textMode(currentMode() == TEXT_MODE);
+	ModeSpecifier specifier(os, currentMode());
 	docstring const latex_name = name().c_str();
 	os << '\\' << latex_name;
 	for (size_t i = 0; i < nargs(); ++i)
@@ -348,7 +347,6 @@ void InsetMathNest::write(WriteStream & os) const
 		os << "\\lyxlock";
 		os.pendingSpace(true);
 	}
-	os.textMode(textmode);
 }
 
 
