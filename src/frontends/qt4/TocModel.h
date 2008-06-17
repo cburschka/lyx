@@ -74,10 +74,6 @@ public:
 	///
 	TocModels();
 	///
-	typedef QHash<QString, TocModel *>::const_iterator const_iterator;
-	const_iterator begin() const { return models_.begin(); }
-	const_iterator end() const { return models_.end(); }
-	///
 	void reset(BufferView const * bv);
 	///
 	int depth(QString const & type);
@@ -99,11 +95,10 @@ Q_SIGNALS:
 	void modelReset();
 
 private:
+	typedef QHash<QString, TocModel *>::const_iterator const_iterator;
 	typedef QHash<QString, TocModel *>::iterator iterator;
 	///
 	void clear();
-	///
-	void deleteAll();
 	///
 	BufferView const * bv_;
 	///
