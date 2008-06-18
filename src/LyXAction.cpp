@@ -541,7 +541,7 @@ void LyXAction::init()
  * \li Origin: ps, 18 Jun 2008
  * \endvar
  */
-		{ LFUN_NOTES_MUTATE, "notes-mutate", ReadOnly, Edit },
+		{ LFUN_NOTES_MUTATE, "notes-mutate", Argument, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_NEWLINE_INSERT
  * \li Action: Inserts a line break or new line.

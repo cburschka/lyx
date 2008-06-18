@@ -1412,7 +1412,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 			//view()->cursor().recordUndoFullDocument(); let inset-apply do that job
 			graphics::unifyGraphicsGroups(*lyx_view_->buffer(), argument);
-			lyx_view_->buffer()->markDirty();
 			updateFlags = Update::Force | Update::FitCursor;
 			break;
 		}
@@ -1428,7 +1427,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			view()->cursor().recordUndoFullDocument();
 
 			if (mutateNotes(view(), cmd.getArg(0), cmd.getArg(1))) {
-				lyx_view_->buffer()->markDirty();
 				updateFlags = Update::Force | Update::FitCursor;
 			}
 			break;
