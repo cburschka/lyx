@@ -1427,7 +1427,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			view()->cursor().recordUndoFullDocument();
 
 			if (mutateNotes(view(), cmd.getArg(0), cmd.getArg(1))) {
-				updateFlags = Update::Force | Update::FitCursor;
+				updateFlags = Update::Force;
 			}
 			break;
 		}
