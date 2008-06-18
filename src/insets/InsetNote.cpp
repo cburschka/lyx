@@ -24,7 +24,7 @@
 #include "Exporter.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
+#include "InsetIterator.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
@@ -35,6 +35,7 @@
 
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/gettext.h"
 #include "support/Translator.h"
 
 #include "frontends/Application.h"
@@ -369,5 +370,34 @@ void InsetNote::string2params(string const & in, InsetNoteParams & params)
 	params.read(lex);
 }
 
+bool mutateNotes(lyx::BufferView * view, string const & source, string const &target)
+{
+	InsetNoteParams::Type typeSrc = notetranslator().find(source);
+	InsetNoteParams::Type typeTrt = notetranslator().find(target);
+	// syntax check of arguments
+	string sSrc = notetranslator().find(typeSrc);
+	string sTrt = notetranslator().find(typeTrt);
+	if ((sSrc != source) || (sTrt != target))
+		return false;
+
+	// did we found some conforming inset?
+	bool ret = false;
+
+	Inset & inset = view->buffer().inset();
+	InsetIterator it  = inset_iterator_begin(inset);
+	InsetIterator const end = inset_iterator_end(inset);
+	for (; it != end; ++it) {
+		if (it->lyxCode() == NOTE_CODE) {
+			InsetNote & ins = static_cast<InsetNote &>(*it);
+			if (ins.params().type == typeSrc) {
+				FuncRequest fr(LFUN_INSET_MODIFY, "note Note " + target);
+				ins.dispatch(view->cursor(), fr);
+				ret = true;
+			}
+		}
+	}
+
+	return ret;
+}
 
 } // namespace lyx

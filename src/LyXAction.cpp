@@ -533,6 +533,16 @@ void LyXAction::init()
  */
 		{ LFUN_NOTE_NEXT, "note-next", ReadOnly, Edit },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_NOTES_MUTATE
+ * \li Action: Changes all Note insets of a particular type (source)
+               to a different type (target) fot the current document.
+ * \li Syntax: notes-mutate <SOURCE> <TARGET>
+ * \li Params: <SOURCE/TARGET>: Note|Comment|Greyedout
+ * \li Origin: ps, 18 Jun 2008
+ * \endvar
+ */
+		{ LFUN_NOTES_MUTATE, "notes-mutate", ReadOnly, Edit },
+/*!
  * \var lyx::FuncCode lyx::LFUN_NEWLINE_INSERT
  * \li Action: Inserts a line break or new line.
  * \li Syntax: newline-insert [<ARG>]

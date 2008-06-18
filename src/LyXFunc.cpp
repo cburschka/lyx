@@ -583,6 +583,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_INSET_EDIT:
 	case LFUN_ALL_INSETS_TOGGLE:
 	case LFUN_GRAPHICS_GROUPS_UNIFY:
+	case LFUN_NOTES_MUTATE:
 	case LFUN_BUFFER_LANGUAGE:
 	case LFUN_TEXTCLASS_APPLY:
 	case LFUN_TEXTCLASS_LOAD:
@@ -1413,6 +1414,23 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			graphics::unifyGraphicsGroups(*lyx_view_->buffer(), argument);
 			lyx_view_->buffer()->markDirty();
 			updateFlags = Update::Force | Update::FitCursor;
+			break;
+		}
+
+		// BOTH GRAPHICS_GROUPS_UNIFY and NOTES_MUTATE should be in Buffer dispatch once
+		// view->cursor() is not needed.
+		// Also they could be rewriten using some command like forall <insetname> <command>
+		// once the insets refactoring is done.
+		case LFUN_NOTES_MUTATE: {
+			LASSERT(lyx_view_ && lyx_view_->view(), /**/);
+			if (argument.empty() || !lyx_view_->buffer())
+				break;
+			view()->cursor().recordUndoFullDocument();
+
+			if (mutateNotes(view(), cmd.getArg(0), cmd.getArg(1))) {
+				lyx_view_->buffer()->markDirty();
+				updateFlags = Update::Force | Update::FitCursor;
+			}
 			break;
 		}
 
