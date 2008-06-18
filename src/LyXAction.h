@@ -66,7 +66,7 @@ public:
 	/// possible "permissions" for an action
 	enum func_attrib {
 		Noop = 0, //< nothing special about this func
-		ReadOnly = 1, //< can be used in RO mode (perhaps this should change)
+		ReadOnly = 1, //< can be used in RO mode (perhaps this should change); no automatic markDirty
 		NoBuffer = 2, //< Can be used when there is no document open
 		Argument = 4, //< Requires argument
 		NoUpdate = 8, //< Does not (usually) require update
