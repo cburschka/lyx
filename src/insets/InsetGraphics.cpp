@@ -951,7 +951,7 @@ string InsetGraphics::params2string(InsetGraphicsParams const & params,
 
 namespace graphics {
 
-void getGraphicsGroups(Buffer const & b, std::set<string> & ids)
+void getGraphicsGroups(Buffer const & b, set<string> & ids)
 {
 	Inset & inset = b.inset();
 	InsetIterator it  = inset_iterator_begin(inset);
@@ -966,7 +966,7 @@ void getGraphicsGroups(Buffer const & b, std::set<string> & ids)
 }
 
 
-string getGroupParams(Buffer const & b, std::string const & groupId)
+string getGroupParams(Buffer const & b, string const & groupId)
 {
 	if (groupId.empty())
 		return string();
@@ -987,7 +987,7 @@ string getGroupParams(Buffer const & b, std::string const & groupId)
 }
 
 
-void unifyGraphicsGroups(Buffer const & b, std::string const & argument)
+void unifyGraphicsGroups(Buffer const & b, string const & argument)
 {
 	InsetGraphicsParams params;
 	InsetGraphics::string2params(argument, b, params);
