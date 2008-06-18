@@ -50,12 +50,12 @@
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
 
-#include "support/lassert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 
 #include <boost/scoped_ptr.hpp>

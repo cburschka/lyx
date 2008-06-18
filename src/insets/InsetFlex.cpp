@@ -16,14 +16,15 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "support/gettext.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
-#include "Text.h"
 #include "MetricsInfo.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "sgml.h"
+#include "Text.h"
+
+#include "support/gettext.h"
 
 #include <ostream>
 

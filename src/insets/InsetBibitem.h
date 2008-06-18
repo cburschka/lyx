@@ -12,8 +12,8 @@
 #ifndef INSET_BIBITEM_H
 #define INSET_BIBITEM_H
 
-#include "InsetCommand.h"
 #include "BiblioInfo.h"
+#include "InsetCommand.h"
 
 
 namespace lyx {

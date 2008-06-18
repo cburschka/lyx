@@ -15,10 +15,10 @@
 
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "Text.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "Text.h"
 #include "TextMetrics.h"
 
 #include "frontends/FontMetrics.h"

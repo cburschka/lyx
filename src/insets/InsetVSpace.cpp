@@ -21,13 +21,13 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "Lexer.h"
-#include "Text.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "Text.h"
 
-#include "support/lassert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 
 #include "frontends/Application.h"
 #include "frontends/FontMetrics.h"

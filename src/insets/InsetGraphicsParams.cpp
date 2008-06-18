@@ -13,10 +13,10 @@
 
 #include "InsetGraphicsParams.h"
 
+#include "Buffer.h"
 #include "LyX.h" // for use_gui
 #include "Lexer.h"
 #include "LyXRC.h"
-#include "Buffer.h"
 
 #include "graphics/GraphicsParams.h"
 #include "graphics/GraphicsTypes.h"

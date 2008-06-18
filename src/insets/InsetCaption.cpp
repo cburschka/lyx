@@ -24,7 +24,6 @@
 #include "FloatList.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
 #include "InsetList.h"
 #include "MetricsInfo.h"
 #include "output_latex.h"
@@ -37,6 +36,7 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include <sstream>

@@ -15,7 +15,6 @@
 
 #include "BufferView.h"
 #include "Dimension.h"
-#include "support/gettext.h"
 #include "LyX.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
@@ -27,8 +26,9 @@
 #include "graphics/PreviewLoader.h"
 #include "graphics/Previews.h"
 
-#include "support/lassert.h"
 #include "support/FileName.h"
+#include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 
 #include <boost/bind.hpp>

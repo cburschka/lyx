@@ -59,6 +59,7 @@ TODO
 #include "Format.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "InsetIterator.h"
 #include "LaTeXFeatures.h"
 #include "Length.h"
 #include "Lexer.h"
@@ -67,7 +68,6 @@ TODO
 #include "OutputParams.h"
 #include "sgml.h"
 #include "TocBackend.h"
-#include "InsetIterator.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"

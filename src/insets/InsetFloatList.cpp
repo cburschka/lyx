@@ -21,8 +21,8 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
-#include "TocBackend.h"
 #include "TextClass.h"
+#include "TocBackend.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"

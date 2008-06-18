@@ -14,8 +14,8 @@
 
 #include "Dimension.h"
 #include "Font.h"
-#include "MetricsInfo.h"
 #include "LaTeXFeatures.h"
+#include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "Text.h"
 

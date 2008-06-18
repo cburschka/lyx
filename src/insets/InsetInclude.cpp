@@ -13,7 +13,6 @@
 
 #include "InsetInclude.h"
 
-#include "LayoutFile.h"
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferList.h"
@@ -27,6 +26,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
+#include "LayoutFile.h"
 #include "LyX.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
@@ -46,15 +46,15 @@
 #include "insets/InsetListingsParams.h"
 #include "insets/RenderPreview.h"
 
-#include "support/lassert.h"
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/FileNameList.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h" // contains
 #include "support/lyxalgo.h"
-#include "support/convert.h"
 
 #include <boost/bind.hpp>
 

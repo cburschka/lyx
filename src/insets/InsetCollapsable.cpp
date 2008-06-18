@@ -21,12 +21,12 @@
 #include "Dimension.h"
 #include "DispatchResult.h"
 #include "FloatList.h"
+#include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetLayout.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
-#include "FuncRequest.h"
 #include "MetricsInfo.h"
 #include "ParagraphParameters.h"
 #include "TextClass.h"
@@ -34,10 +34,10 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-#include "support/lassert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 
 using namespace std;
 

@@ -28,9 +28,9 @@
 #include "frontends/alert.h"
 
 #include "support/convert.h"
-#include "support/lyxalgo.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/lyxalgo.h"
 
 using namespace std;
 using namespace lyx::support;

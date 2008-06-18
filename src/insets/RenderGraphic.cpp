@@ -14,9 +14,6 @@
 
 #include "insets/Inset.h"
 
-#include "support/FileName.h"
-#include "support/filetools.h"
-#include "support/gettext.h"
 #include "LyX.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
@@ -26,7 +23,9 @@
 
 #include "graphics/GraphicsImage.h"
 
+#include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 
 #include <boost/bind.hpp>
 

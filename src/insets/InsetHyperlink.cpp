@@ -16,11 +16,11 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
-#include "support/gettext.h"
 #include "OutputParams.h"
 
-#include "support/lstrings.h"
 #include "support/docstream.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
 
 using namespace std;
 using namespace lyx::support;

@@ -16,13 +16,13 @@
 #include "Buffer.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 #include "InsetIterator.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 #include "sgml.h"
 
 #include "support/docstream.h"
+#include "support/gettext.h"
 
 using namespace std;
 

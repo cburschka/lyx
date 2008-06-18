@@ -15,10 +15,11 @@
 #include "Buffer.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "TocBackend.h"
+
+#include "support/gettext.h"
 
 #include <ostream>
 

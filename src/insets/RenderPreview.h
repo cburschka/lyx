@@ -18,8 +18,8 @@
 
 #include "RenderBase.h"
 
-#include "support/FileMonitor.h"
 #include "support/docstring.h"
+#include "support/FileMonitor.h"
 
 #include <boost/signal.hpp>
 #include <boost/signals/trackable.hpp>

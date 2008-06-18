@@ -11,7 +11,6 @@
 
 #include "InsetInfo.h"
 
-#include "LayoutFile.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
@@ -21,6 +20,7 @@
 #include "InsetSpecialChar.h"
 #include "KeyMap.h"
 #include "LaTeXFeatures.h"
+#include "LayoutFile.h"
 #include "LyXAction.h"
 #include "LyXRC.h"
 #include "Lexer.h"
@@ -32,11 +32,11 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/docstring_list.h"
+#include "support/ExceptionMessage.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
-#include "support/ExceptionMessage.h"
 
 #include <sstream>
 
