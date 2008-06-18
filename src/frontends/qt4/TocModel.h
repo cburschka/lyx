@@ -19,6 +19,9 @@
 #include <QStandardItemModel>
 #include <QStringList>
 
+class QAbstractItemModel;
+class QSortFilterProxyModel;
+
 namespace lyx {
 
 class Buffer;
@@ -81,7 +84,7 @@ public:
 	///
 	QStandardItemModel * model(QString const & type);
 	///
-	QStandardItemModel * nameModel() { return names_; }
+	QAbstractItemModel * nameModel();
 	///
 	QModelIndex currentIndex(QString const & type) const;
 	///
@@ -106,6 +109,8 @@ private:
 	QHash<QString, TocModel *> models_;
 	///
 	TocTypeModel * names_;
+	///
+	QSortFilterProxyModel * names_sorted_;
 };
 
 } // namespace frontend

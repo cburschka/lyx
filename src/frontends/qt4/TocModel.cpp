@@ -25,6 +25,8 @@
 #include "support/debug.h"
 #include "support/lassert.h"
 
+#include <QSortFilterProxyModel>
+
 #include <climits>
 
 using namespace std;
@@ -160,6 +162,12 @@ int TocModel::modelDepth() const
 TocModels::TocModels(): bv_(0)
 {
 	names_ = new TocTypeModel(this);
+	names_sorted_ = new QSortFilterProxyModel(this);
+	names_sorted_->setSourceModel(names_);
+#if QT_VERSION >= 0x040300
+	names_sorted_->setSortLocaleAware(true);
+#endif
+	names_sorted_->sort(0);
 }
 
 
@@ -195,6 +203,12 @@ QStandardItemModel * TocModels::model(QString const & type)
 		return it.value();
 	LYXERR0("type not found: " << type);
 	return 0;
+}
+
+
+QAbstractItemModel * TocModels::nameModel()
+{
+	return names_sorted_;
 }
 
 
