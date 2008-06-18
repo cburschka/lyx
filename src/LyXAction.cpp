@@ -1915,7 +1915,7 @@ void LyXAction::init()
  * \li Origin: sanda, 6 May 2008
  * \endvar
  */
-		{ LFUN_GRAPHICS_GROUPS_UNIFY, "graphics-groups-unify", ReadOnly, Edit },
+		{ LFUN_GRAPHICS_GROUPS_UNIFY, "graphics-groups-unify", Argument, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_SET_GRAPHICS_GROUP
  * \li Action: Set the group for the graphics inset on the cursor position.
@@ -1925,7 +1925,7 @@ void LyXAction::init()
  * \li Origin: sanda, 6 May 2008
  * \endvar
  */
-		{ LFUN_SET_GRAPHICS_GROUP, "set-graphics-group", ReadOnly, Edit },
+		{ LFUN_SET_GRAPHICS_GROUP, "set-graphics-group", Noop, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_FINISHED_FORWARD

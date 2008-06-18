@@ -1408,7 +1408,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_GRAPHICS_GROUPS_UNIFY: {
 			LASSERT(lyx_view_, /**/);
-			if (argument.empty() || !lyx_view_->buffer())
+			if (argument.empty())
 				break;
 			//view()->cursor().recordUndoFullDocument(); let inset-apply do that job
 			graphics::unifyGraphicsGroups(*lyx_view_->buffer(), argument);
@@ -1423,7 +1423,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		// once the insets refactoring is done.
 		case LFUN_NOTES_MUTATE: {
 			LASSERT(lyx_view_ && lyx_view_->view(), /**/);
-			if (argument.empty() || !lyx_view_->buffer())
+			if (argument.empty())
 				break;
 			view()->cursor().recordUndoFullDocument();
 
