@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 336
+\lyxformat 337
 \begin_document
 \begin_header
 \textclass scrbook
@@ -2736,6 +2736,8 @@ Adornado
  si tienes instalado el paquete 
 \series bold
 fancyhdr
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -2745,8 +2747,6 @@ Latex@LaTeX-paquetes ! fancyhdr
 
 \end_inset
 
-
-\series default
 .
  De momento, el soporte en LyX es limitado.
  Para disponer de todo el poderío de este paquete, tienes que recurrir a
@@ -3312,6 +3312,8 @@ status collapsed
 Para que esto funcione el paquete LaTeX 
 \series bold
 setspace
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -3321,8 +3323,6 @@ Latex@LaTeX-paquetes ! setspace
 
 \end_inset
 
-
-\series default
  debe estar instalado.
 \end_layout
 
@@ -10802,6 +10802,8 @@ status collapsed
 Cargando el paquete LaTeX 
 \series bold
 aeguill
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -10811,8 +10813,6 @@ Latex@LaTeX-paquetes ! aeguill
 
 \end_inset
 
-
-\series default
  en el preámbulo, con la línea
 \end_layout
 
@@ -14045,6 +14045,8 @@ En Lyx no se parten las palabras a final de línea; sí se dividen en la salida,
  automáticamente, por medio del paquete LaTeX 
 \series bold
 babel
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -14054,8 +14056,6 @@ Latex@LaTeX-paquetes ! babel
 
 \end_inset
 
-
-\series default
 , siguiendo las normas del idioma del documento.
 \begin_inset Foot
 status collapsed
@@ -16011,7 +16011,6 @@ Gráficos
 \align center
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	display color
 	scale 70
 	rotateOrigin center
 
@@ -19883,7 +19882,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
-	display color
 	width 50col%
 	rotateOrigin center
 
@@ -19944,7 +19942,6 @@ M.C.
 \align center
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
-	display color
 	scale 80
 	rotateOrigin center
 
@@ -20562,7 +20559,6 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	display color
 	width 40col%
 	rotateOrigin center
 
@@ -25680,6 +25676,8 @@ Nota:
  Estilo sólo  disponible si está instalado el paquete LaTeX 
 \series bold
 prettyref
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -25689,8 +25687,6 @@ Latex@LaTeX-paquetes ! prettyref
 
 \end_inset
 
-
-\series default
 .
 \end_layout
 
@@ -27524,6 +27520,8 @@ ra o glosario.
 Para crear nomenclaturas debe estar instalado el paquete LaTeX 
 \series bold
 nomencl
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -27533,8 +27531,6 @@ Latex@LaTeX-paquetes ! nomencl
 
 \end_inset
 
-
-\series default
 .
  Lo puedes encontrar en el Catálogo TeX, 
 \begin_inset CommandInset citation
@@ -28468,7 +28464,7 @@ question
 \series default
  part appears:
 \begin_inset Formula \[
-x^{2}-2x-2\Rightarrow\question {x_{1}}\answer {x_{2}}=1\question {+\sqrt{3}}\answer {-\sqrt{3}}.\]
+x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer{-\sqrt{3}}.\]
 
 \end_inset
 
@@ -28917,6 +28913,8 @@ Si deseas ver, por ejemplo, cómo quedarían tus ecuaciones impresas por LaTeX,
  debes instalar el paquete LaTeX 
 \series bold
 preview-latex
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -28926,8 +28924,6 @@ Latex@LaTeX-paquetes ! preview-latex
 
 \end_inset
 
-
-\series default
  como se explica después, y marcar 
 \family sans
 Vista
@@ -30029,6 +30025,8 @@ Para que los cambios se muestren en la salida debe estar instalado el paquete
  LaTeX 
 \series bold
 dvipost
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -30038,8 +30036,6 @@ Latex@LaTeX-paquetes ! dvipost
 
 \end_inset
 
-
-\series default
 .
  Está disponible en el Catálogo TeX, 
 \begin_inset CommandInset citation
@@ -37626,6 +37622,8 @@ Aquí se elige el estilo de las citas bibliográficas, si están instalados
  los paquetes LaTeX 
 \series bold
 natbib
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -37635,8 +37633,6 @@ Latex@LaTeX-paquetes ! natbib
 
 \end_inset
 
-
-\series default
  o 
 \series bold
 jurabib
@@ -37677,6 +37673,8 @@ Permite escoger si habilitar o no los paquetes de matemáticas de LaTeX
 \family default
 \series bold
 amsmath
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -37686,11 +37684,11 @@ Latex@LaTeX-paquetes ! amsmath
 
 \end_inset
 
-
-\series default
  y 
 \series bold
 esint
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -37702,7 +37700,6 @@ Latex@LaTeX-paquetes ! esint
 
 
 \family sans
-\series default
 ,
 \family default
  o si usarlos automáticamente.

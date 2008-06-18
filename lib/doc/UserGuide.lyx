@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 336
+\lyxformat 337
 \begin_document
 \begin_header
 \textclass scrbook
@@ -2797,6 +2797,8 @@ Fancy
  have the 
 \series bold
 fancyhdr
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -2806,8 +2808,6 @@ Latex@LaTeX-packages ! fancyhdr
 
 \end_inset
 
-
-\series default
  package installed.
  At the moment, support in LyX is limited to this setting.
  To use the full power of this package, you have to add code to your document
@@ -3303,6 +3303,8 @@ status collapsed
 You need to have the LaTeX-package 
 \series bold
 setspace
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -3312,8 +3314,6 @@ Latex@LaTeX-packages ! setspace
 
 \end_inset
 
-
-\series default
  installed to use this feature.
 \end_layout
 
@@ -13290,6 +13290,8 @@ Words aren't hyphenated within LyX but automatically in the output.
  Hyphenation is done by the LaTeX-package 
 \series bold
 babel
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -13299,8 +13301,6 @@ Latex@LaTeX-packages ! babel
 
 \end_inset
 
-
-\series default
  following the rules of the document language
 \begin_inset Foot
 status collapsed
@@ -15212,7 +15212,6 @@ The graphics dialog can be called at any time by right-clicking on an image.
 \align center
 \begin_inset Graphics
 	filename clipart/mobius.eps
-	display color
 	scale 70
 	rotateOrigin center
 
@@ -18979,7 +18978,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename clipart/platypus.eps
-	display color
 	width 50col%
 	rotateOrigin center
 
@@ -19040,7 +19038,6 @@ M.C.
 \align center
 \begin_inset Graphics
 	filename clipart/escher-lsd.eps
-	display color
 	scale 80
 	rotateOrigin center
 
@@ -19684,7 +19681,6 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename clipart/mobius.eps
-	display color
 	width 40col%
 	rotateOrigin center
 
@@ -24450,6 +24446,8 @@ Note:
  This feature is only available when you have the LaTeX-package 
 \series bold
 prettyref
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -24459,8 +24457,6 @@ Latex@LaTeX-packages ! prettyref
 
 \end_inset
 
-
-\series default
  installed.
 \end_layout
 
@@ -26203,6 +26199,8 @@ Sometimes you need to compile a list of symbols that are mentioned in your
 To be able to create nomenclatures, you need the LaTeX package 
 \series bold
 nomencl
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -26212,8 +26210,6 @@ Latex@LaTeX-packages ! nomencl
 
 \end_inset
 
-
-\series default
  installed.
  You find it in the TeX Catalogue, 
 \begin_inset CommandInset citation
@@ -27211,7 +27207,7 @@ question
 \series default
  part appears:
 \begin_inset Formula \[
-x^{2}-2x-2\Rightarrow\question {x_{1}}\answer {x_{2}}=1\question {+\sqrt{3}}\answer {-\sqrt{3}}.\]
+x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer{-\sqrt{3}}.\]
 
 \end_inset
 
@@ -27670,6 +27666,8 @@ If you would for example like to see in LyX your math formulas typeset by
  LaTeX, install the LaTeX-package 
 \series bold
 preview-latex
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -27679,8 +27677,6 @@ Latex@LaTeX-packages ! preview-latex
 
 \end_inset
 
-
-\series default
  as explained below, and turn on 
 \family sans
 Instant
@@ -28710,6 +28706,8 @@ The toolbar has two buttons to handle notes because notes are often important
 To show made changes in the output you need the LaTeX package 
 \series bold
 dvipost
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -28719,8 +28717,6 @@ Latex@LaTeX-packages ! dvipost
 
 \end_inset
 
-
-\series default
  installed.
  You find it in the TeX Catalogue, 
 \begin_inset CommandInset citation
@@ -36191,6 +36187,8 @@ Bibliography
 You can specify here a citation style using the Latex@LaTeX-packages 
 \series bold
 natbib
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -36200,8 +36198,6 @@ Latex@LaTeX-packages ! natbib
 
 \end_inset
 
-
-\series default
  or 
 \series bold
 jurabib
@@ -36239,6 +36235,8 @@ Math Options
 These options will force LyX to use the Latex@LaTeX-packages 
 \series bold
 amsmath
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -36248,11 +36246,11 @@ Latex@LaTeX-packages ! amsmath
 
 \end_inset
 
-
-\series default
  and 
 \series bold
 esint
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -36262,8 +36260,6 @@ Latex@LaTeX-packages ! esint
 
 \end_inset
 
-
-\series default
  or to use them automatically when they are needed.
 \end_layout
 
@@ -36517,8 +36513,7 @@ Reconfiguration of LyX
 
 \begin_layout Standard
 This menu reconfigures LyX.
- That means LyX looks for Latex@LaTeX-packages and needed programs, see
- also section
+ That means LyX looks for LaTeX-packages and needed programs, see also section
 \begin_inset space ~
 \end_inset
 
