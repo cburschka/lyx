@@ -32,8 +32,9 @@
 
 #include "frontends/Painter.h"
 
-#include "support/lassert.h"
 #include "support/debug.h"
+#include "support/lassert.h"
+#include "support/textutils.h"
 
 #include <ostream>
 #include <vector>
@@ -132,10 +133,11 @@ Inset * MathMacro::clone() const
 
 docstring MathMacro::name() const
 {
-	if (displayMode_ == DISPLAY_UNFOLDED)
+	if (displayMode_ == DISPLAY_UNFOLDED
+	    && (name_.size() > 1 || (name_[0] != '_' && name_[0] != '^')))
 		return asString(cell(0));
-	else
-		return name_;
+
+	return name_;
 }
 
 
@@ -660,7 +662,8 @@ void MathMacro::write(WriteStream & os) const
 	// non-normal mode
 	if (displayMode_ != DISPLAY_NORMAL) {
 		os << "\\" << name();
-		os.pendingSpace(true);
+		if (name().size() != 1 || isAlphaASCII(name()[0]))
+			os.pendingSpace(true);
 		return;
 	}
 
