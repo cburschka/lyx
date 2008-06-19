@@ -56,6 +56,8 @@ public:
 	/// framed and shaded notes are displayed
 	virtual DisplayType display() const;
 	///
+	bool metrics(MetricsInfo &, Dimension &) const;
+	///
 	void write(Buffer const &, std::ostream &) const;
 	///
 	void read(Buffer const & buf, Lexer & lex);

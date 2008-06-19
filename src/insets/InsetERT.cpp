@@ -398,7 +398,8 @@ bool InsetERT::insetAllowed(Inset::Code /* code */) const
 bool InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Font tmpfont = mi.base.font;
-	getDrawFont(mi.base.font);
+	getDrawFont(mi.base.font,
+		mi.base.bv->buffer()->params().getFont());
 	mi.base.font.realize(tmpfont);
 	InsetCollapsable::metrics(mi, dim);
 	mi.base.font = tmpfont;
@@ -411,7 +412,8 @@ bool InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetERT::draw(PainterInfo & pi, int x, int y) const
 {
 	Font tmpfont = pi.base.font;
-	getDrawFont(pi.base.font);
+	getDrawFont(pi.base.font,
+		pi.base.bv->buffer()->params().getFont());
 	pi.base.font.realize(tmpfont);
 	InsetCollapsable::draw(pi, x, y);
 	pi.base.font = tmpfont;
@@ -425,11 +427,14 @@ bool InsetERT::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetERT::getDrawFont(Font & font) const
+void InsetERT::getDrawFont(Font & font, Font bfont) const
 {
 	font = Font(Font::ALL_INHERIT, latex_language);
 	font.setFamily(Font::TYPEWRITER_FAMILY);
 	font.setColor(Color::latex);
+	// use sensible size (e.g. in headings)
+	if (status() != InsetCollapsable::Inlined)
+		font.setSize(bfont.size());
 }
 
 

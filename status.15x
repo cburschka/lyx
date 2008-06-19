@@ -78,6 +78,8 @@ What's new
 
 - Fix crash related to the outline pane with some documents (bug 4857).
 
+- Fix input of numeric values in non-english locales (bug 4951).
+
 - Fix display of filters such as "LaTeX (plain)" in the file dialog.
 
 - Fix 7 years-old bug with functions whose state can be toggled.
@@ -86,7 +88,8 @@ What's new
 
 - Allow the use of eqrefs in mathed (bug 4623).
 
-- Fix input of numeric values in non-english locales (bug 4951).
+- Use appropriate font in notes and ERT insets in section headings
+  (bug 2477).
 
 
 * DOCUMENTATION AND LOCALIZATION

@@ -15,6 +15,7 @@
 #include "InsetNote.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
 #include "debug.h"
@@ -157,6 +158,18 @@ Inset::DisplayType InsetNote::display() const
 	default:
 		return Inline;
 	}
+}
+
+
+bool InsetNote::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	Font tmpfont = mi.base.font;
+	mi.base.font = mi.base.bv->buffer()->params().getFont();
+	InsetCollapsable::metrics(mi, dim);
+	mi.base.font = tmpfont;
+	bool const changed = dim_ != dim;
+	dim_ = dim;
+	return changed;
 }
 
 
