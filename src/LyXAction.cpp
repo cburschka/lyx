@@ -1858,6 +1858,14 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_NEXT_INSET_MODIFY, "next-inset-modify", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_INSET_DIALOG_UPDATE
+ * \li Action: Updates the values inside the dialog from the inset.
+ * \li Notion: This is internal LFUN, not to be used by users.
+ * \li Params: <DIALOG-NAME>
+ * \li Origin: leeming, 25 Feb 2003
+ * \endvar
+ */
 		{ LFUN_INSET_DIALOG_UPDATE, "", Noop, Hidden },
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_SETTINGS
