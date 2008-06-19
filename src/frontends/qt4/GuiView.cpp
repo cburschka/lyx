@@ -693,7 +693,7 @@ void GuiView::on_lastWorkAreaRemoved()
 		return; 
 #endif
 	}
-	QTimer::singleShot(0, this, SLOT(close()));
+	close();
 }
 
 
