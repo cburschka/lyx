@@ -668,6 +668,7 @@ GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 	  allowauto_(false), owner_(owner), layout_(0), command_buffer_(0),
 	  tbinfo_(tbinfo), filled_(false)
 {
+	setIconSize(owner.iconSize());
 	connect(&owner, SIGNAL(iconSizeChanged(QSize)), this,
 		SLOT(setIconSize(QSize)));
 

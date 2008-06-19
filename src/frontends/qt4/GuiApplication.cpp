@@ -913,10 +913,6 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow)
 		id++;
 	GuiView * view = new GuiView(id);
 	
-	// copy the icon size from old view
-	if (current_view_)
-		view->setIconSize(current_view_->iconSize());
-
 	// register view
 	d->views_[id] = view;
 
