@@ -457,7 +457,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 
 void BufferView::updateScrollbar()
 {
-	if (height_ == 0)
+	if (height_ == 0 && width_ == 0)
 		return;
 
 	// We prefer fixed size line scrolling.
@@ -1864,6 +1864,9 @@ bool BufferView::singleParUpdate()
 
 void BufferView::updateMetrics()
 {
+	if (height_ == 0 || width_ == 0)
+		return;
+
 	Text & buftext = buffer_.text();
 	pit_type const npit = int(buftext.paragraphs().size());
 
@@ -2089,6 +2092,8 @@ Point BufferView::getPos(DocIterator const & dit, bool boundary) const
 
 void BufferView::draw(frontend::Painter & pain)
 {
+	if (height_ == 0 || width_ == 0)
+		return;
 	LYXERR(Debug::PAINTING, "\t\t*** START DRAWING ***");
 	Text & text = buffer_.text();
 	TextMetrics const & tm = d->text_metrics_[&text];
