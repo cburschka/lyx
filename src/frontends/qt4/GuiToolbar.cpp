@@ -668,12 +668,14 @@ GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 	  allowauto_(false), owner_(owner), layout_(0), command_buffer_(0),
 	  tbinfo_(tbinfo), filled_(false)
 {
+	connect(&owner, SIGNAL(iconSizeChanged(QSize)), this,
+		SLOT(setIconSize(QSize)));
+
 	// Toolbar dragging is allowed.
 	setMovable(true);
 	// This is used by QMainWindow::restoreState for proper main window state
 	// restauration.
 	setObjectName(toqstr(tbinfo.name));
-
 	restoreSession();
 }
 
