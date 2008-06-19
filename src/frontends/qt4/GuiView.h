@@ -285,6 +285,8 @@ private:
 	bool saveBuffer(Buffer & b);
 	///
 	bool closeBuffer(Buffer & buf, bool tolastopened = false);
+	///
+	void releaseBuffer(Buffer & buf);
 
 	///
 	Inset * getOpenInset(std::string const & name) const;
@@ -298,6 +300,9 @@ private:
 
 	/// This view ID.
 	int id_;
+
+	/// flag to avoid two concurrent close events.
+	bool closing_;
 };
 
 } // namespace frontend

@@ -280,7 +280,7 @@ public:
 
 
 GuiView::GuiView(int id)
-	: d(*new GuiViewPrivate), id_(id)
+	: d(*new GuiViewPrivate), id_(id), closing_(false)
 {
 	// GuiToolbars *must* be initialised before the menu bar.
 	constructToolbars();
@@ -496,6 +496,8 @@ void GuiView::showEvent(QShowEvent * e)
 
 void GuiView::closeEvent(QCloseEvent * close_event)
 {
+	closing_ = true;
+
 	// it can happen that this event arrives without selecting the view,
 	// e.g. when clicking the close button on a background window.
 	theLyXFunc().setLyXView(this);
@@ -505,6 +507,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 			// This is a child document, just close the tab after saving
 			// but keep the file loaded.
 			if (!saveBuffer(*b)) {
+				closing_ = false;
 				close_event->ignore();
 				return;
 			}
@@ -523,14 +526,15 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 				//saveBuffer(b);
 
 				// This buffer is also opened in another view, so
-				// but close the associated work area nevertheless.
+				// close the associated work area...
 				removeWorkArea(d.current_work_area_);
-				// but don't close it.
+				// ... but don't close the buffer.
 				b = 0;
 				break;
 			}
 		}
 		if (b && !closeBuffer(*b, true)) {
+			closing_ = false;
 			close_event->ignore();
 			return;
 		}
@@ -665,22 +669,31 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 
 void GuiView::on_lastWorkAreaRemoved()
 {
-#ifdef Q_WS_MACX
-	// On Mac close the view if there is no Tab open anymore,
-	// but only if no splitter is visible
-	if (!lyxrc.open_buffers_in_tabs && d.splitter_->count() == 1) {
-		TabWorkArea * twa = qobject_cast<TabWorkArea *>(d.splitter_->widget(0));
-		if (twa && twa->count() == 0) {
-			// close the view, as no tab is open anymore
-			QTimer::singleShot(0, this, SLOT(close()));
-		}
+	if (closing_)
+		// We already are in a close event. Nothing more to do.
+		return;
+
+	if (d.splitter_->count() > 1)
+		// We have a splitter so don't close anything.
+		return;
+
+	if (lyxrc.open_buffers_in_tabs) {
+		d.toc_models_.reset(0);
+		// The document settings needs to be reinitialised.
+		updateDialog("document", "");
+		updateDialogs();
+		return;
 	}
-#else
-	d.toc_models_.reset(0);
-	// The document settings needs to be reinitialised.
-	updateDialog("document", "");
-	updateDialogs();
+
+	if (guiApp->viewIds().size() == 1) {
+#ifndef Q_WS_MACX
+		// On Mac close the view in any case because the application stay
+		// resident in memory. On other platforms we don't close the last
+		// window because this would quit the application.
+		return; 
 #endif
+	}
+	QTimer::singleShot(0, this, SLOT(close()));
 }
 
 
@@ -1674,6 +1687,24 @@ bool GuiView::closeBuffer()
 }
 
 
+void GuiView::releaseBuffer(Buffer & buf)
+{
+	bool is_current_view = this == guiApp->currentView();
+	theBufferList().release(&buf);
+	if (!is_current_view)
+		return;
+
+	// Make sure this is still the current view because releasing a buffer
+	// can invalidate that in case this buffer was also displayed in
+	// another view.
+	guiApp->setCurrentView(this);
+	theLyXFunc().setLyXView(this);
+	// Bring this window to top.
+	raise();
+	activateWindow();
+}
+
+
 bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 {
 	// goto bookmark to update bookmark pit.
@@ -1684,7 +1715,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 	if (buf.isClean() || buf.paragraphs().empty()) {
 		if (buf.masterBuffer() == &buf && tolastopened)
 			LyX::ref().session().lastOpened().add(buf.fileName());
-		theBufferList().release(&buf);
+		releaseBuffer(buf);
 		return true;
 	}
 	// Switch to this Buffer.
@@ -1731,7 +1762,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 		// Don't close child documents.
 		removeWorkArea(d.current_work_area_);
 	else
-		theBufferList().release(&buf);
+		releaseBuffer(buf);
 
 	return true;
 }
