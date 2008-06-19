@@ -248,7 +248,7 @@ private:
 	///
 	void saveLayout() const;
 	///
-	void restoreLayout();
+	bool restoreLayout();
 	///
 	GuiToolbar * toolbar(std::string const & name);
 	///

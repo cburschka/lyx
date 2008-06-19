@@ -324,8 +324,8 @@ GuiView::GuiView(int id)
 
 	if (lyxrc.allow_geometry_session) {
 		// Now take care of session management.
-		restoreLayout();
-		return;
+		if (restoreLayout())
+			return;
 	}
 
 	// No session handling, default to a sane size.
@@ -358,10 +358,13 @@ void GuiView::saveLayout() const
 }
 
 
-void GuiView::restoreLayout()
+bool GuiView::restoreLayout()
 {
 	QSettings settings;
 	QString const key = "view-" + QString::number(id_);
+	if (!settings.contains(key))
+		return false;
+
 	setIconSize(settings.value(key + "/icon_size").toSize());
 #ifdef Q_WS_X11
 	QPoint pos = settings.value(key + "/pos", QPoint(50, 50)).toPoint();
@@ -377,6 +380,7 @@ void GuiView::restoreLayout()
 	find_or_build("view-source");
 	if (!restoreState(settings.value(key + "/layout").toByteArray(), 0))
 		initToolbars();
+	return true;
 }
 
 
@@ -739,6 +743,7 @@ bool GuiView::event(QEvent * e)
 			return QMainWindow::event(e);
 		}
 		guiApp->setCurrentView(this);
+		theLyXFunc().setLyXView(this);
 		if (d.current_work_area_) {
 			BufferView & bv = d.current_work_area_->bufferView();
 			connectBufferView(bv);
