@@ -339,7 +339,7 @@ QIcon getIcon(FuncRequest const & f, bool unknown)
 	if (icon.isEmpty())
 		return QIcon();
 
-	LYXERR(Debug::GUI, "Found icon: " << icon);
+	//LYXERR(Debug::GUI, "Found icon: " << icon);
 	QPixmap pm;
 	if (!pm.load(icon)) {
 		LYXERR0("Cannot load icon " << icon << " please verify resource system!");
@@ -921,13 +921,13 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
 		d->global_menubar_->releaseKeyboard();
 
 	// create new view
-	int id = view_id > 0 ? view_id : 0;
+	int id = view_id;
 	if (id == 0) {
 		while (d->views_.find(id) != d->views_.end())
 			id++;
 	}
+	LYXERR(Debug::GUI, "About to create new window with ID " << id);
 	GuiView * view = new GuiView(id);
-	
 	// register view
 	d->views_[id] = view;
 
