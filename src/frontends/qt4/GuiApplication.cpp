@@ -104,6 +104,7 @@
 #endif // Q_WS_WIN
 
 #include <boost/bind.hpp>
+#include <boost/crc.hpp>
 
 #include <exception>
 #include <vector>
@@ -840,8 +841,13 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 	case LFUN_FILE_OPEN:
 		if (d->views_.empty()
 		    || (!lyxrc.open_buffers_in_tabs && current_view_->buffer() != 0)) {
-			createView();
-			current_view_->openDocument(to_utf8(cmd.argument()));
+			string const fname = to_utf8(cmd.argument());
+			// We want the ui session to be saved per document and not per
+			// window number. The filename crc is a good enough identifier.
+			boost::crc_32_type crc;
+			crc = for_each(fname.begin(), fname.end(), crc);
+			createView(crc.checksum());
+			current_view_->openDocument(fname);
 			if (!current_view_->buffer())
 				current_view_->close();
 		} else
@@ -900,7 +906,14 @@ void GuiApplication::resetGui()
 }
 
 
-void GuiApplication::createView(QString const & geometry_arg, bool autoShow)
+void GuiApplication::createView(int view_id)
+{
+	createView(QString(), true, view_id);
+}
+
+
+void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
+	int view_id)
 {
 	// release the keyboard which might have been grabed by the global
 	// menubar on Mac to catch shortcuts even without any GuiView.
@@ -908,9 +921,11 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow)
 		d->global_menubar_->releaseKeyboard();
 
 	// create new view
-	int id = 0;
-	while (d->views_.find(id) != d->views_.end())
-		id++;
+	int id = view_id > 0 ? view_id : 0;
+	if (id == 0) {
+		while (d->views_.find(id) != d->views_.end())
+			id++;
+	}
 	GuiView * view = new GuiView(id);
 	
 	// register view

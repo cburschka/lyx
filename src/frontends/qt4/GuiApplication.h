@@ -89,8 +89,11 @@ public:
 
 	/// Create the main window with given geometry settings.
 	/// \param geometry_arg: only for Windows platform.
+	/// \param optional id identifier.
 	void createView(QString const & geometry_arg = QString(),
-		bool autoShow = true);
+		bool autoShow = true, int id = 0);
+	/// FIXME: this method and the one above are quite ugly.
+	void createView(int id);
 	///
 	GuiView const * currentView() const { return current_view_; }
 	///
