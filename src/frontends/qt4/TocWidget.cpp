@@ -220,6 +220,17 @@ void TocWidget::enableControls(bool enable)
 }
 
 
+/// Test if synchronized navigation is possible
+static bool canNavigate(QString const & type)
+{
+	// It is not possible to have synchronous navigation in a correctl
+	// and efficient way with the label type because Toc::item() do a linear
+	// seatch. Even if fixed, it might even not be desirable to do so if we 
+	// want to support drag&drop of labels and references.
+	return type != "label";
+}
+
+
 void TocWidget::updateView()
 {
 	if (!gui_view_.view()) {
@@ -244,7 +255,8 @@ void TocWidget::updateView()
 	depthSL->setMaximum(gui_view_.tocModels().depth(current_type_));
 	depthSL->setValue(depth_);
 	setTreeDepth(depth_);
-	select(gui_view_.tocModels().currentIndex(current_type_));
+	if (canNavigate(current_type_))
+		select(gui_view_.tocModels().currentIndex(current_type_));
 }
 
 
