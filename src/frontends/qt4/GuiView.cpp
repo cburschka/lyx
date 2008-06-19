@@ -362,10 +362,11 @@ bool GuiView::restoreLayout()
 {
 	QSettings settings;
 	QString const key = "view-" + QString::number(id_);
-	if (!settings.contains(key))
+	QString const icon_key = key + "/icon_size";
+	if (!settings.contains(icon_key))
 		return false;
 
-	setIconSize(settings.value(key + "/icon_size").toSize());
+	setIconSize(settings.value(icon_key).toSize());
 #ifdef Q_WS_X11
 	QPoint pos = settings.value(key + "/pos", QPoint(50, 50)).toPoint();
 	QSize size = settings.value(key + "/size", QSize(690, 510)).toSize();
@@ -1692,24 +1693,6 @@ bool GuiView::closeBuffer()
 }
 
 
-void GuiView::releaseBuffer(Buffer & buf)
-{
-	bool is_current_view = this == guiApp->currentView();
-	theBufferList().release(&buf);
-	if (!is_current_view)
-		return;
-
-	// Make sure this is still the current view because releasing a buffer
-	// can invalidate that in case this buffer was also displayed in
-	// another view.
-	guiApp->setCurrentView(this);
-	theLyXFunc().setLyXView(this);
-	// Bring this window to top.
-	raise();
-	activateWindow();
-}
-
-
 bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 {
 	// goto bookmark to update bookmark pit.
@@ -1720,7 +1703,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 	if (buf.isClean() || buf.paragraphs().empty()) {
 		if (buf.masterBuffer() == &buf && tolastopened)
 			LyX::ref().session().lastOpened().add(buf.fileName());
-		releaseBuffer(buf);
+		theBufferList().release(&buf);
 		return true;
 	}
 	// Switch to this Buffer.
@@ -1767,7 +1750,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 		// Don't close child documents.
 		removeWorkArea(d.current_work_area_);
 	else
-		releaseBuffer(buf);
+		theBufferList().release(&buf);
 
 	return true;
 }
