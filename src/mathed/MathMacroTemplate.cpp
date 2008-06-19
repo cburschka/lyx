@@ -1141,7 +1141,7 @@ void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) cons
 			else
 				os << "\\newcommandx";
 
-			os << "\\" << name().c_str()
+			os << "\\" << name()
 			   << "[" << numargs_ << "]"
 			   << "[usedefault, addprefix=\\global";
 			for (int i = 0; i < optionals_; ++i) {
@@ -1158,7 +1158,7 @@ void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) cons
 		} else {
 			// macros without optionals use standard _global_ \def macros:
 			// \global\def\foo#1#2{#1,#2}
-			os << "\\global\\def\\" << name().c_str();
+			os << "\\global\\def\\" << name();
 			docstring param = from_ascii("#0");
 			for (int i = 1; i <= numargs_; ++i) { 
 				param[1] = '0' + i;
@@ -1173,7 +1173,7 @@ void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) cons
 			os << "\\renewcommand";
 		else
 			os << "\\newcommand";
-		os << "{\\" << name().c_str() << '}';
+		os << "{\\" << name() << '}';
 		if (numargs_ > 0)
 			os << '[' << numargs_ << ']';
 

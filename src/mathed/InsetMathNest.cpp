@@ -337,7 +337,7 @@ MathData InsetMathNest::glue() const
 void InsetMathNest::write(WriteStream & os) const
 {
 	ModeSpecifier specifier(os, currentMode());
-	docstring const latex_name = name().c_str();
+	docstring const latex_name = name();
 	os << '\\' << latex_name;
 	for (size_t i = 0; i < nargs(); ++i)
 		os << '{' << cell(i) << '}';
@@ -352,7 +352,7 @@ void InsetMathNest::write(WriteStream & os) const
 
 void InsetMathNest::normalize(NormalStream & os) const
 {
-	os << '[' << name().c_str();
+	os << '[' << name();
 	for (size_t i = 0; i < nargs(); ++i)
 		os << ' ' << cell(i);
 	os << ']';
