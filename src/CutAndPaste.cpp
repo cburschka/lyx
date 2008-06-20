@@ -621,6 +621,9 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 				cur.selectionAsString(true));
 		}
 
+		if (begpit != endpit)
+			cur.updateFlags(Update::Force | Update::FitCursor);
+
 		boost::tie(endpit, endpos) =
 			eraseSelectionHelper(bp,
 				text->paragraphs(),
