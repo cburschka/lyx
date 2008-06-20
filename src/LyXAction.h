@@ -25,7 +25,7 @@ class FuncRequest;
 
 /**
  * This class is a container for LyX actions. It associates a name to
- * most of them and describes some of there properties.
+ * most of them and describes some of their properties.
  */
 class LyXAction {
 public:
