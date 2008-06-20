@@ -427,8 +427,11 @@ void Loader::Impl::startLoading()
 	if (status_ != WaitingToLoad)
 		return;
 
-	if (cached_item_->tryDisplayFormat())
+	if (cached_item_->tryDisplayFormat()) {
+		status_ = Loaded;
+		createPixmap();
 		return;
+	}
 
 	LoaderQueue::get().touch(cached_item_);
 }

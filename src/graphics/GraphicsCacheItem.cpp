@@ -63,7 +63,7 @@ public:
 	/** Load the image into memory. This is called either from
 	 *  convertToDisplayFormat() direct or from imageConverted().
 	 */
-	void loadImage();
+	bool loadImage();
 
 	/** Get a notification when the image conversion is done.
 	 *  Connected to a signal on_finish_ which is passed to
@@ -281,15 +281,14 @@ void CacheItem::Impl::imageConverted(bool success)
 	// Add the converted file to the file cache
 	ConverterCache::get().add(filename_, to_, file_to_load_);
 
-	loadImage();
+	setStatus(loadImage() ? Loaded : ErrorLoading);
 }
 
 
 // This function gets called from the callback after the image has been
 // converted successfully.
-void CacheItem::Impl::loadImage()
+bool CacheItem::Impl::loadImage()
 {
-	setStatus(Loading);
 	LYXERR(Debug::GRAPHICS, "Loading image.");
 
 	image_.reset(Image::newImage());
@@ -305,13 +304,7 @@ void CacheItem::Impl::loadImage()
 	if (remove_loaded_file_ && unzipped_filename_ != file_to_load_)
 		file_to_load_.removeFile();
 
-	if (!success) {
-		setStatus(ErrorLoading);
-		return;
-	}
-
-	// Inform the outside world.
-	setStatus(Loaded);
+	return success;
 }
 
 
@@ -354,12 +347,10 @@ static string const findTargetFormat(string const & from)
 
 bool CacheItem::Impl::tryDisplayFormat(FileName & filename, string & from)
 {
-	setStatus(Converting);
-
 	// First, check that the file exists!
 	if (!filename_.isReadableFile()) {
 		if (status_ != ErrorNoFile) {
-			setStatus(ErrorNoFile);
+			status_ = ErrorNoFile;
 			LYXERR(Debug::GRAPHICS, "\tThe file is not readable");
 		}
 		return true;
@@ -370,7 +361,7 @@ bool CacheItem::Impl::tryDisplayFormat(FileName & filename, string & from)
 		unzipped_filename_ = FileName::tempName(
 			filename_.toFilesystemEncoding());
 		if (unzipped_filename_.empty()) {
-			setStatus(ErrorConverting);
+			status_ = ErrorConverting;
 			LYXERR(Debug::GRAPHICS, "\tCould not create temporary file.");
 			return true;
 		}
@@ -386,7 +377,7 @@ bool CacheItem::Impl::tryDisplayFormat(FileName & filename, string & from)
 
 	from = formats.getFormatFromFile(filename);
 	if (from.empty()) {
-		setStatus(ErrorConverting);
+		status_ = ErrorConverting;
 		LYXERR(Debug::GRAPHICS, "\tCould not determine file format.");
 	}
 	LYXERR(Debug::GRAPHICS, "\n\tThe file contains " << from << " format data.");
@@ -396,14 +387,14 @@ bool CacheItem::Impl::tryDisplayFormat(FileName & filename, string & from)
 		// No conversion needed!
 		LYXERR(Debug::GRAPHICS, "\tNo conversion needed (from == to)!");
 		file_to_load_ = filename;
-		loadImage();
+		status_ = loadImage() ? Loaded : ErrorLoading;
 		return true;
 	}
 
 	if (ConverterCache::get().inCache(filename, to_)) {
 		LYXERR(Debug::GRAPHICS, "\tNo conversion needed (file in file cache)!");
 		file_to_load_ = ConverterCache::get().cacheName(filename, to_);
-		loadImage();
+		status_ = loadImage() ? Loaded : ErrorLoading;
 		return true;
 	}
 	return false;
@@ -417,8 +408,14 @@ void CacheItem::Impl::convertToDisplayFormat()
 	// Make a local copy in case we unzip it
 	FileName filename;
 	string from;
-	if (tryDisplayFormat(filename, from))
+	if (tryDisplayFormat(filename, from)) {
+		// The image status has changed, tell it to the outside world.
+		statusChanged();
 		return;
+	}
+
+	// We will need a conversion, tell it to the outside world.
+	setStatus(Converting);
 
 	// Add some stuff to create a uniquely named temporary file.
 	// This file is deleted in loadImage after it is loaded into memory.
