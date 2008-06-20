@@ -24,11 +24,8 @@ namespace lyx {
 class FuncRequest;
 
 /**
- * This class is a container for LyX actions. It also
- * stores and managers "pseudo-actions". Pseudo-actions
- * are not part of the FuncCode enum, but are created
- * dynamically, for encapsulating a real action and an
- * argument. They are used for things like the menus.
+ * This class is a container for LyX actions. It associates a name to
+ * most of them and describes some of there properties.
  */
 class LyXAction {
 public:
