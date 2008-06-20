@@ -381,6 +381,7 @@ bool GuiView::restoreLayout()
 	find_or_build("view-source");
 	if (!restoreState(settings.value(key + "/layout").toByteArray(), 0))
 		initToolbars();
+	updateDialogs();
 	return true;
 }
 
