@@ -573,6 +573,8 @@ def checkOtherEntries():
         rc_entry = [ r'\chktex_command "%%"' ])
     checkProg('BibTeX', ['jbibtex', 'bibtex'],
         rc_entry = [ r'\bibtex_command "%%"' ])
+    checkProg('an index processor', ['texindy', 'makeindex -c -q'],
+        rc_entry = [ r'\index_command "%%"' ])
     checkProg('a spellchecker', ['ispell'],
         rc_entry = [ r'\spell_command "%%"' ])
     ## FIXME: OCTAVE is not used anywhere
