@@ -1,5 +1,5 @@
-#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
-\lyxformat 335
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 337
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -148,6 +148,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -1544,7 +1545,7 @@ B^V
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}B^{V}$
+\begin_inset Formula $\raisebox{5mm}{}B^{V}$
 \end_inset
 
 
@@ -1580,7 +1581,7 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}B^{A}$
+\begin_inset Formula $\raisebox{5mm}{}B^{A}$
 \end_inset
 
 
@@ -1812,7 +1813,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\frac{A}{B}\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}\frac{A}{B}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -1854,7 +1855,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {7mm}{}\dfrac{A}{B}\raisebox {-4mm}{}$
+\begin_inset Formula $\raisebox{7mm}{}\dfrac{A}{B}\raisebox{-4mm}{}$
 \end_inset
 
 
@@ -1928,7 +1929,7 @@ spce
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {8mm}{}\dfrac{e^{\frac{1}{2}}}{3}\raisebox {-4mm}{}$
+\begin_inset Formula $\raisebox{8mm}{}\dfrac{e^{\frac{1}{2}}}{3}\raisebox{-4mm}{}$
 \end_inset
 
 
@@ -1980,8 +1981,8 @@ cfrac
 
 \begin_layout Standard
 \begin_inset Formula \begin{align*}
-\textrm{créée avec \textbf{\textbackslash  frac}} &  & \textrm{créée avec \textbf{\textbackslash  cfrac}}\\
-\frac{A}{B+\frac{C+\frac{E}{F}}{D}} &  & \cfrac {A}{B+\cfrac {C+\cfrac {E}{F}}{D}}\end{align*}
+\textrm{créée avec \textbf{\textbackslash frac}} &  & \textrm{créée avec \textbf{\textbackslash cfrac}}\\
+\frac{A}{B+\frac{C+\frac{E}{F}}{D}} &  & \cfrac{A}{B+\cfrac{C+\cfrac{E}{F}}{D}}\end{align*}
 
 \end_inset
 
@@ -2081,15 +2082,15 @@ ou rien, le numérateur apparaît centré.
 
 \series bold
 
-\begin_inset Formula $\cfrac [l]{A}{B+C}$
+\begin_inset Formula $\cfrac[l]{A}{B+C}$
 \end_inset
 
 , 
-\begin_inset Formula $\cfrac {A}{B+C}$
+\begin_inset Formula $\cfrac{A}{B+C}$
 \end_inset
 
 , 
-\begin_inset Formula $\cfrac [r]{A}{B+C}$
+\begin_inset Formula $\cfrac[r]{A}{B+C}$
 \end_inset
 
 
@@ -2113,7 +2114,7 @@ frac
 \series default
 :
 \begin_inset Formula \[
-\cfrac {A}{B+\cfrac {C+\frac{E}{F}}{D}}\]
+\cfrac{A}{B+\cfrac{C+\frac{E}{F}}{D}}\]
 
 \end_inset
 
@@ -2298,7 +2299,7 @@ A-B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\sqrt{A-B}$
+\begin_inset Formula $\raisebox{4.5mm}{}\sqrt{A-B}$
 \end_inset
 
 
@@ -2340,7 +2341,7 @@ A-B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\sqrt[3]{A-B}$
+\begin_inset Formula $\raisebox{4.5mm}{}\sqrt[3]{A-B}$
 \end_inset
 
 
@@ -2487,7 +2488,7 @@ B
 
 \series default
 produit une formule correctement mise en forme: 
-\begin_inset Formula $\sqrt[\leftroot {-1}\uproot {2}\beta]{B}$
+\begin_inset Formula $\sqrt[\leftroot{-1}\uproot{2}\beta]{B}$
 \end_inset
 
 
@@ -2700,7 +2701,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\binom{A}{B}\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{5mm}{}\binom{A}{B}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -2742,7 +2743,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\dbinom{A}{B}\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{5mm}{}\dbinom{A}{B}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -2784,7 +2785,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\tbinom{A}{B}\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{5mm}{}\tbinom{A}{B}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -2826,7 +2827,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}{A \brack B}\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{5mm}{}{A \brack B}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -2868,7 +2869,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}{A \brace B}\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{5mm}{}{A \brace B}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -3371,7 +3372,7 @@ Indices avec les indices et exposants:
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $_{9}^{19}\mathrm{F}\raisebox {-3mm}{}$
+\begin_inset Formula $_{9}^{19}\mathrm{F}\raisebox{-3mm}{}$
 \end_inset
 
 
@@ -3580,7 +3581,7 @@ F
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}{}_{\phantom{1}9}^{19}\mathrm{F}\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}{}_{\phantom{1}9}^{19}\mathrm{F}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -3648,7 +3649,7 @@ F
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}{}_{\phantom{23}9}^{235}\mathrm{F}\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}{}_{\phantom{23}9}^{235}\mathrm{F}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -3718,7 +3719,7 @@ _MMt
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\Lambda_{MMt}^{\phantom{ii}t}\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}\Lambda_{MMt}^{\phantom{ii}t}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -3979,7 +3980,7 @@ overline
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\overline{A+B}$
+\begin_inset Formula $\raisebox{5mm}{}\overline{A+B}$
 \end_inset
 
 
@@ -4029,7 +4030,7 @@ underline
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\underline{A+B}\raisebox {-2.5mm}{}$
+\begin_inset Formula $\underline{A+B}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -4082,7 +4083,7 @@ A+B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\overline{\underline{A+B}}\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{5mm}{}\overline{\underline{A+B}}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -4612,7 +4613,7 @@ dots
 \begin_inset Formula \[
 \left(\begin{array}{cccc}
 A & B & C & D\\
-\hdotsfor [2]{4}\\
+\hdotsfor[2]{4}\\
 a & z & e & r\end{array}\right)\]
 
 \end_inset
@@ -4684,7 +4685,7 @@ B
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $A\dotfill  B$
+\begin_inset Formula $A\dotfill B$
 \end_inset
 
 
@@ -4719,7 +4720,7 @@ hrulefill
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $A\hrulefill  B$
+\begin_inset Formula $A\hrulefill B$
 \end_inset
 
 
@@ -5066,9 +5067,9 @@ matrice
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {7.5mm}{}\begin{bmatrix}\begin{array}{cc}
+\begin_inset Formula $\raisebox{7.5mm}{}\begin{bmatrix}\begin{array}{cc}
 0 & \textrm{-}\mathrm{i}\\
-\mathrm{i} & 0\end{array}\end{bmatrix}\raisebox {-5.3mm}{}$
+\mathrm{i} & 0\end{array}\end{bmatrix}\raisebox{-5.3mm}{}$
 \end_inset
 
 
@@ -5110,9 +5111,9 @@ matrice
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {7.5mm}{}\begin{Bmatrix}\begin{array}{cc}
+\begin_inset Formula $\raisebox{7.5mm}{}\begin{Bmatrix}\begin{array}{cc}
 0 & \textrm{-}\mathrm{i}\\
-\mathrm{i} & 0\end{array}\end{Bmatrix}\raisebox {-5.3mm}{}$
+\mathrm{i} & 0\end{array}\end{Bmatrix}\raisebox{-5.3mm}{}$
 \end_inset
 
 
@@ -5154,9 +5155,9 @@ matrice
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {7.5mm}{}\begin{pmatrix}\begin{array}{cc}
+\begin_inset Formula $\raisebox{7.5mm}{}\begin{pmatrix}\begin{array}{cc}
 0 & \textrm{-}\mathrm{i}\\
-\mathrm{i} & 0\end{array}\end{pmatrix}\raisebox {-5.3mm}{}$
+\mathrm{i} & 0\end{array}\end{pmatrix}\raisebox{-5.3mm}{}$
 \end_inset
 
 
@@ -5232,9 +5233,9 @@ matrice
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {7.5mm}{}\begin{vmatrix}\begin{array}{cc}
+\begin_inset Formula $\raisebox{7.5mm}{}\begin{vmatrix}\begin{array}{cc}
 0 & \textrm{-}\mathrm{i}\\
-\mathrm{i} & 0\end{array}\end{vmatrix}\raisebox {-5.3mm}{}$
+\mathrm{i} & 0\end{array}\end{vmatrix}\raisebox{-5.3mm}{}$
 \end_inset
 
 
@@ -5276,9 +5277,9 @@ matrice
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {7.5mm}{}\begin{Vmatrix}\begin{array}{cc}
+\begin_inset Formula $\raisebox{7.5mm}{}\begin{Vmatrix}\begin{array}{cc}
 0 & \textrm{-}\mathrm{i}\\
-\mathrm{i} & 0\end{array}\end{Vmatrix}\raisebox {-5.3mm}{}$
+\mathrm{i} & 0\end{array}\end{Vmatrix}\raisebox{-5.3mm}{}$
 \end_inset
 
 
@@ -5320,9 +5321,9 @@ matrice
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {7.5mm}{}\begin{matrix}\begin{array}{cc}
+\begin_inset Formula $\raisebox{7.5mm}{}\begin{matrix}\begin{array}{cc}
 0 & \textrm{-}\mathrm{i}\\
-\mathrm{i} & 0\end{array}\end{matrix}\raisebox {-5.3mm}{}$
+\mathrm{i} & 0\end{array}\end{matrix}\raisebox{-5.3mm}{}$
 \end_inset
 
 
@@ -6178,7 +6179,7 @@ toutes les parenthèses de la même taille:
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $((A+B)(A-B))^{C}\raisebox {-4mm}{}$
+\begin_inset Formula $((A+B)(A-B))^{C}\raisebox{-4mm}{}$
 \end_inset
 
 
@@ -6201,7 +6202,7 @@ c'est mieux comme cela:
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\Big ((A+B)(A-B)\Big )^{C}$
+\begin_inset Formula $\Big((A+B)(A-B)\Big)^{C}$
 \end_inset
 
 
@@ -6325,7 +6326,7 @@ Bigg)^0,5
 
 \begin_layout Standard
 \align center
-\begin_inset Formula $\Bigg (\exp\bigg <\Big [\big \{\ln(3x)\big \}^{2}\sin(x)\Big ]^{A}\bigg >\Bigg )^{0,5}$
+\begin_inset Formula $\Bigg(\exp\bigg<\Big[\big\{\ln(3x)\big\}^{2}\sin(x)\Big]^{A}\bigg>\Bigg)^{0,5}$
 \end_inset
 
 
@@ -6489,7 +6490,7 @@ Bigm)
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5.5mm}{}\Bigm(\bigm(\ln(3x)\bigm)^{2}\Bigm)\raisebox {-3.25mm}{}$
+\begin_inset Formula $\raisebox{5.5mm}{}\Bigm(\bigm(\ln(3x)\bigm)^{2}\Bigm)\raisebox{-3.25mm}{}$
 \end_inset
 
 
@@ -6535,7 +6536,7 @@ Big)
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5.5mm}{}\Big (\big (\ln(3x)\big )^{2}\Big )\raisebox {-3.25mm}{}$
+\begin_inset Formula $\raisebox{5.5mm}{}\Big(\big(\ln(3x)\big)^{2}\Big)\raisebox{-3.25mm}{}$
 \end_inset
 
 
@@ -6581,7 +6582,7 @@ Bigr)
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5.5mm}{}\Bigl(\bigl(\ln(3x)\bigr)^{2}\Bigr)\raisebox {-3.25mm}{}$
+\begin_inset Formula $\raisebox{5.5mm}{}\Bigl(\bigl(\ln(3x)\bigr)^{2}\Bigr)\raisebox{-3.25mm}{}$
 \end_inset
 
 
@@ -6610,7 +6611,7 @@ bigr(
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\bigl)\ln(3x)\bigr(\raisebox {-2mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}\bigl)\ln(3x)\bigr(\raisebox{-2mm}{}$
 \end_inset
 
 
@@ -6971,7 +6972,7 @@ middle
  des parenthèses voisines, ce qui est nécessaire par exemple, pour les vecteurs
  de la physique quantique:
 \begin_inset Formula \[
-\left\langle \phi\:\middle |\: J=\frac{3}{2}\,,\, M_{J}\right\rangle \]
+\left\langle \phi\:\middle|\: J=\frac{3}{2}\,,\, M_{J}\right\rangle \]
 
 \end_inset
 
@@ -8539,7 +8540,7 @@ F(x)
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}F(a)\xleftarrow[x>0]{x=a}F(x)\raisebox {-4mm}{}$
+\begin_inset Formula $\raisebox{5mm}{}F(a)\xleftarrow[x>0]{x=a}F(x)\raisebox{-4mm}{}$
 \end_inset
 
 
@@ -8585,7 +8586,7 @@ F(a)
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}F(x)\xrightarrow[x>0]{x=a}F(a)\raisebox {-4mm}{}$
+\begin_inset Formula $\raisebox{5mm}{}F(x)\xrightarrow[x>0]{x=a}F(a)\raisebox{-4mm}{}$
 \end_inset
 
 
@@ -9177,7 +9178,7 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\dot{A}$
+\begin_inset Formula $\raisebox{5mm}{}\dot{A}$
 \end_inset
 
 
@@ -9215,7 +9216,7 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\ddot{A}$
+\begin_inset Formula $\raisebox{5mm}{}\ddot{A}$
 \end_inset
 
 
@@ -9253,7 +9254,7 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\dddot{A}$
+\begin_inset Formula $\raisebox{5mm}{}\dddot{A}$
 \end_inset
 
 
@@ -9278,7 +9279,7 @@ ddddot{A
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\ddddot {A}$
+\begin_inset Formula $\raisebox{5mm}{}\ddddot{A}$
 \end_inset
 
 
@@ -9326,7 +9327,7 @@ Vecteurs
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\vec{A}$
+\begin_inset Formula $\raisebox{5mm}{}\vec{A}$
 \end_inset
 
 
@@ -9364,7 +9365,7 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\bar{A}$
+\begin_inset Formula $\raisebox{5mm}{}\bar{A}$
 \end_inset
 
 
@@ -9402,7 +9403,7 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\mathring{A}$
+\begin_inset Formula $\raisebox{5mm}{}\mathring{A}$
 \end_inset
 
 
@@ -9474,7 +9475,7 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\tilde{A}$
+\begin_inset Formula $\raisebox{5mm}{}\tilde{A}$
 \end_inset
 
 
@@ -9512,7 +9513,7 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\hat{A}$
+\begin_inset Formula $\raisebox{5mm}{}\hat{A}$
 \end_inset
 
 
@@ -9550,7 +9551,7 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\check{A}$
+\begin_inset Formula $\raisebox{5mm}{}\check{A}$
 \end_inset
 
 
@@ -9588,7 +9589,7 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\acute{A}$
+\begin_inset Formula $\raisebox{5mm}{}\acute{A}$
 \end_inset
 
 
@@ -9626,7 +9627,7 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\grave{A}$
+\begin_inset Formula $\raisebox{5mm}{}\grave{A}$
 \end_inset
 
 
@@ -9664,7 +9665,7 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\breve{A}$
+\begin_inset Formula $\raisebox{5mm}{}\breve{A}$
 \end_inset
 
 
@@ -9871,7 +9872,7 @@ i
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\ddot{i}$
+\begin_inset Formula $\raisebox{5mm}{}\ddot{i}$
 \end_inset
 
 
@@ -10056,7 +10057,7 @@ n
 \series default
  donne:
 \begin_inset Formula \[
-\sideset {}{'}\sum_{k=1}^{n}\]
+\sideset{}{'}\sum_{k=1}^{n}\]
 
 \end_inset
 
@@ -10227,7 +10228,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {6mm}{}\overleftarrow{A=B}\raisebox {-2mm}{}$
+\begin_inset Formula $\raisebox{6mm}{}\overleftarrow{A=B}\raisebox{-2mm}{}$
 \end_inset
 
 
@@ -10265,7 +10266,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\underleftarrow{A=B}\raisebox {-3mm}{}$
+\begin_inset Formula $\raisebox{5mm}{}\underleftarrow{A=B}\raisebox{-3mm}{}$
 \end_inset
 
 
@@ -10303,7 +10304,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {6mm}{}\overleftrightarrow{A=B}\raisebox {-2mm}{}$
+\begin_inset Formula $\raisebox{6mm}{}\overleftrightarrow{A=B}\raisebox{-2mm}{}$
 \end_inset
 
 
@@ -10341,7 +10342,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\underleftrightarrow{A=B}\raisebox {-3mm}{}$
+\begin_inset Formula $\raisebox{5mm}{}\underleftrightarrow{A=B}\raisebox{-3mm}{}$
 \end_inset
 
 
@@ -10413,7 +10414,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {6mm}{}\overrightarrow{A=B}\raisebox {-2mm}{}$
+\begin_inset Formula $\raisebox{6mm}{}\overrightarrow{A=B}\raisebox{-2mm}{}$
 \end_inset
 
 
@@ -10451,7 +10452,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\underrightarrow{A=B}\raisebox {-3mm}{}$
+\begin_inset Formula $\raisebox{5mm}{}\underrightarrow{A=B}\raisebox{-3mm}{}$
 \end_inset
 
 
@@ -10489,7 +10490,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {6mm}{}\widetilde{A=B}\raisebox {-2mm}{}$
+\begin_inset Formula $\raisebox{6mm}{}\widetilde{A=B}\raisebox{-2mm}{}$
 \end_inset
 
 
@@ -10527,7 +10528,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {6mm}{}\widehat{A=B}\raisebox {-2mm}{}$
+\begin_inset Formula $\raisebox{6mm}{}\widehat{A=B}\raisebox{-2mm}{}$
 \end_inset
 
 
@@ -11202,7 +11203,7 @@ f_kl
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\sum\sum f_{kl}\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}\sum\sum f_{kl}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -11244,7 +11245,7 @@ f_kl
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\sum\negmedspace\sum f_{kl}\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}\sum\negmedspace\sum f_{kl}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -11317,7 +11318,7 @@ raisebox
 \end_inset
 
 
-\begin_inset Formula $\raisebox {5mm}{}$
+\begin_inset Formula $\raisebox{5mm}{}$
 \end_inset
 
 équation sans espace
@@ -11666,7 +11667,7 @@ not=C
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A=B\hspace {3cm}A\not=C$
+\begin_inset Formula $A=B\hspace{3cm}A\not=C$
 \end_inset
 
 
@@ -11697,7 +11698,7 @@ not=A
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\hspace {-1mm}A\not=A$
+\begin_inset Formula $A\hspace{-1mm}A\not=A$
 \end_inset
 
 
@@ -11735,7 +11736,7 @@ B=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A=A\hfill  B=B$
+\begin_inset Formula $A=A\hfill B=B$
 \end_inset
 
 
@@ -12405,7 +12406,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \raisebox {6mm}{}\fbox{$\int A=B$}\raisebox {-4mm}{}
+\begin_inset Formula \raisebox{6mm}{}\fbox{$\int A=B$}\raisebox{-4mm}{}
 
 \end_inset
 
@@ -12459,7 +12460,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {8.5mm}{}\boxed{\int A=B}\raisebox {-6.5mm}{}$
+\begin_inset Formula $\raisebox{8.5mm}{}\boxed{\int A=B}\raisebox{-6.5mm}{}$
 \end_inset
 
 
@@ -12497,7 +12498,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {6mm}{}A+\fbox{B}\raisebox {-3mm}{}$
+\begin_inset Formula $\raisebox{6mm}{}A+\fbox{B}\raisebox{-3mm}{}$
 \end_inset
 
 
@@ -12566,7 +12567,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {6mm}{}$
+\begin_inset Formula $\raisebox{6mm}{}$
 \end_inset
 
 
@@ -12574,7 +12575,7 @@ B
 \end_inset
 
 
-\begin_inset Formula $\raisebox {-4mm}{}$
+\begin_inset Formula $\raisebox{-4mm}{}$
 \end_inset
 
 
@@ -12917,7 +12918,7 @@ raisebox{2mm
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $H\raisebox {2mm}{al}lo$
+\begin_inset Formula $H\raisebox{2mm}{al}lo$
 \end_inset
 
 
@@ -12952,7 +12953,7 @@ lo
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $H\raisebox {-2mm}{al}lo$
+\begin_inset Formula $H\raisebox{-2mm}{al}lo$
 \end_inset
 
 
@@ -13349,7 +13350,7 @@ colorbox{yellow
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {6mm}{}\colorbox {yellow}{A=B}\raisebox {-3mm}{}$
+\begin_inset Formula $\raisebox{6mm}{}\colorbox{yellow}{A=B}\raisebox{-3mm}{}$
 \end_inset
 
 
@@ -13395,7 +13396,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {6mm}{}\colorbox {green}{\fbox{A=B}}\raisebox {-3mm}{}$
+\begin_inset Formula $\raisebox{6mm}{}\colorbox{green}{\fbox{A=B}}\raisebox{-3mm}{}$
 \end_inset
 
 
@@ -13441,7 +13442,7 @@ colorbox{green
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {6mm}{}\fbox{\colorbox {green}{A=B}}\raisebox {-3mm}{}$
+\begin_inset Formula $\raisebox{6mm}{}\fbox{\colorbox{green}{A=B}}\raisebox{-3mm}{}$
 \end_inset
 
 
@@ -13636,7 +13637,7 @@ fboxsep 1mm
 
 
 \begin_inset Formula \[
-\fcolorbox {cyan}{magenta}{A=B}\]
+\fcolorbox{cyan}{magenta}{A=B}\]
 
 \end_inset
 
@@ -13804,7 +13805,7 @@ yellow
 \series default
 ):
 \begin_inset Formula \begin{equation}
-\colorbox {vertfonce}{\color{yellow}\boxed{\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}}\end{equation}
+\colorbox{vertfonce}{\color{yellow}\boxed{\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}}\end{equation}
 
 \end_inset
 
@@ -15341,7 +15342,7 @@ iint
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\iint\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}\iint\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -15366,7 +15367,7 @@ oiint
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\oiint\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}\oiint\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -15391,7 +15392,7 @@ sqiint
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\sqiint\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}\sqiint\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -15450,7 +15451,7 @@ iiint
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\iiint\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}\iiint\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -15475,7 +15476,7 @@ iiiint
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\iiiint\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}\iiiint\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -15500,7 +15501,7 @@ dotsint
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\dotsint\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}\dotsint\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -15625,7 +15626,7 @@ A(x)
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}\prod_{0}^{\infty}A(x)\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{5mm}{}\prod_{0}^{\infty}A(x)\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -16065,7 +16066,7 @@ spce
 pour créer la limite inférieure.
  L'opérande est maintenant juste après l'opérateur de sommation:
 \begin_inset Formula \[
-\sum_{\mathclap {\substack{0<k<1000\\
+\sum_{\mathclap{\substack{0<k<1000\\
 \\k\,\in\,\mathbb{N}}
 }}^{n}k^{-2}\]
 
@@ -17336,7 +17337,7 @@ reference "sub:Symboles-divers"
 
 :
 \begin_inset Formula \[
-\Losange _{n=1}^{\infty}\]
+\Losange_{n=1}^{\infty}\]
 
 \end_inset
 
@@ -17443,7 +17444,7 @@ mathop
 
 \begin_layout Standard
 \begin_inset Formula \[
-\mathop {\sum\negmedspace\sum}_{i,j=1}^{N}\]
+\mathop{\sum\negmedspace\sum}_{i,j=1}^{N}\]
 
 \end_inset
 
@@ -18235,7 +18236,7 @@ mathbf
 
 \begin_layout Standard
 \begin_inset Formula \[
-\mathbf{\int_{n}^{2}f(\theta)=\Gamma}\qquad\textrm{équation avec \textbackslash  mathbf}\]
+\mathbf{\int_{n}^{2}f(\theta)=\Gamma}\qquad\textrm{équation avec \textbackslash mathbf}\]
 
 \end_inset
 
@@ -18251,7 +18252,7 @@ boldsymbol
 \series default
 :
 \begin_inset Formula \[
-\boldsymbol{\int_{n}^{2}f(\theta)=\Gamma\qquad\textrm{équation avec \textbackslash  boldsymbol}}\]
+\boldsymbol{\int_{n}^{2}f(\theta)=\Gamma\qquad\textrm{équation avec \textbackslash boldsymbol}}\]
 
 \end_inset
 
@@ -18521,7 +18522,7 @@ A=\frac{B}{c}\cdot\maltese\]
 
 
 \begin_inset Formula \[
-\maltese A\textrm{\Large \maltese\textit{A}}\textrm{\tiny \maltese\textit{A}}\]
+\maltese A\textrm{\Large\maltese\textit{A}}\textrm{\tiny\maltese\textit{A}}\]
 
 \end_inset
 
@@ -20037,7 +20038,7 @@ var
 varGamma
 \series default
  produit: 
-\begin_inset Formula $\varGamma $
+\begin_inset Formula $\varGamma$
 \end_inset
 
 
@@ -20739,7 +20740,7 @@ dag
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\dag $
+\begin_inset Formula $\dag$
 \end_inset
 
 
@@ -20764,7 +20765,7 @@ ddag
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\ddag $
+\begin_inset Formula $\ddag$
 \end_inset
 
 
@@ -21339,7 +21340,7 @@ pounds
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\pounds $
+\begin_inset Formula $\pounds$
 \end_inset
 
 
@@ -21770,7 +21771,7 @@ P
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\P $
+\begin_inset Formula $\P$
 \end_inset
 
 
@@ -21795,7 +21796,7 @@ copyright
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\copyright $
+\begin_inset Formula $\copyright$
 \end_inset
 
 
@@ -22157,7 +22158,7 @@ euro
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\euro $
+\begin_inset Formula $\euro$
 \end_inset
 
 
@@ -23854,7 +23855,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {5mm}{}A(r)\stackrel{r\to\infty}{\approx}B$
+\begin_inset Formula $\raisebox{5mm}{}A(r)\stackrel{r\to\infty}{\approx}B$
 \end_inset
 
 
@@ -24631,7 +24632,7 @@ sgn(x)+B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\sgn (x)+B$
+\begin_inset Formula $A\sgn(x)+B$
 \end_inset
 
 
@@ -24786,7 +24787,7 @@ varliminf
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\varliminf $
+\begin_inset Formula $\varliminf$
 \end_inset
 
 
@@ -24811,7 +24812,7 @@ varlimsup
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\varlimsup $
+\begin_inset Formula $\varlimsup$
 \end_inset
 
 
@@ -24836,7 +24837,7 @@ varprojlim
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\varprojlim $
+\begin_inset Formula $\varprojlim$
 \end_inset
 
 
@@ -24861,11 +24862,11 @@ varinjlim
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\varinjlim $
+\begin_inset Formula $\varinjlim$
 \end_inset
 
 
-\begin_inset Formula $\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -24988,7 +24989,7 @@ x=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\hspace {1cm}\raisebox {5mm}{}\lim_{x\to A}x=B$
+\begin_inset Formula $\hspace{1cm}\raisebox{5mm}{}\lim_{x\to A}x=B$
 \end_inset
 
 
@@ -25036,11 +25037,11 @@ La fonction modulo est un peu spéciale, vu qu'il en existe quatre variantes.
 \begin_layout Standard
 Les variantes pour une formule hors ligne:
 \begin_inset Formula \begin{align*}
-\underline{\textrm{Commande}\raisebox {-0.9mm}{}} &  & \underline{\textrm{Résultat}}\\
-\mathrm{a\backslash mod\textrm{\spce }b} &  & a\mod  b\\
-\mathrm{a\backslash pmod\textrm{\spce }b} &  & a\pmod  b\\
-\mathrm{a\backslash bmod\textrm{\spce }b} &  & a\bmod b\\
-\mathrm{a\backslash pod\textrm{\spce }b} &  & a\pod  b\end{align*}
+\underline{\textrm{Commande}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Résultat}}\\
+\mathrm{a\backslash mod\textrm{\spce}b} &  & a\mod b\\
+\mathrm{a\backslash pmod\textrm{\spce}b} &  & a\pmod b\\
+\mathrm{a\backslash bmod\textrm{\spce}b} &  & a\bmod b\\
+\mathrm{a\backslash pod\textrm{\spce}b} &  & a\pod b\end{align*}
 
 \end_inset
 
@@ -25125,7 +25126,7 @@ oe
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\textrm{\oe }$
+\begin_inset Formula $\textrm{œ}$
 \end_inset
 
 
@@ -25150,7 +25151,7 @@ OE
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\textrm{\OE }$
+\begin_inset Formula $\textrm{Œ}$
 \end_inset
 
 
@@ -25175,7 +25176,7 @@ ae
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\textrm{\ae }$
+\begin_inset Formula $\textrm{æ}$
 \end_inset
 
 
@@ -25200,7 +25201,7 @@ AE
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\textrm{\AE }$
+\begin_inset Formula $\textrm{Æ}$
 \end_inset
 
 
@@ -25225,7 +25226,7 @@ aa
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\textrm{\aa }$
+\begin_inset Formula $\textrm{\aa}$
 \end_inset
 
 
@@ -25386,7 +25387,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\textrm{\AA}$
+\begin_inset Formula $\textrm{Å}$
 \end_inset
 
 
@@ -25411,7 +25412,7 @@ i
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\textrm{\i }$
+\begin_inset Formula $\textrm{ı}$
 \end_inset
 
 
@@ -25487,7 +25488,7 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\textrm{\o }$
+\begin_inset Formula $\textrm{ø}$
 \end_inset
 
 
@@ -25512,7 +25513,7 @@ O
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\textrm{\O}$
+\begin_inset Formula $\textrm{Ø}$
 \end_inset
 
 
@@ -25537,7 +25538,7 @@ l
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\textrm{\l }$
+\begin_inset Formula $\textrm{ł}$
 \end_inset
 
 
@@ -25562,7 +25563,7 @@ L
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\textrm{\L }$
+\begin_inset Formula $\textrm{Ł}$
 \end_inset
 
 
@@ -25669,7 +25670,7 @@ j
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\textrm{\j }$
+\begin_inset Formula $\textrm{ȷ}$
 \end_inset
 
 
@@ -26709,7 +26710,7 @@ raisebox{-1.5pt}{W}}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}$
 \end_inset
 
 
@@ -26734,7 +26735,7 @@ raisebox{-1.5pt}W}
 \end_inset
 
 
-\begin_inset Formula $\raisebox {-2mm}{}$
+\begin_inset Formula $\raisebox{-2mm}{}$
 \end_inset
 
 
@@ -26856,7 +26857,7 @@ La commande
 oldstylenums{0123456789
 \series default
  donne: 
-\begin_inset Formula $\oldstylenums {0123456789}$
+\begin_inset Formula $\oldstylenums{0123456789}$
 \end_inset
 
 
@@ -26969,7 +26970,7 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\_{} {}{}{}{}{}{}{}{}{}{}{}{}$
+\begin_inset Formula $\_$
 \end_inset
 
 
@@ -27070,8 +27071,7 @@ else
 \backslash
 textdegree
 \backslash
-f\SpecialChar \textcompwordmark{}
-i}
+fi}
 \end_layout
 
 \begin_layout Section
@@ -27710,7 +27710,7 @@ medskip
  
 \begin_inset Formula \begin{eqnarray}
 H & = & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\nonumber \\
- &  & -\hspace {3pt}\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{2}|}+\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{R}_{1}-\mathbf{R}_{2}|}\label{eq:kurzlang}\end{eqnarray}
+ &  & -\hspace{3pt}\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{2}|}+\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{R}_{1}-\mathbf{R}_{2}|}\label{eq:kurzlang}\end{eqnarray}
 
 \end_inset
 
@@ -27818,7 +27818,7 @@ medskip
 
 \begin_inset Formula \begin{eqnarray}
 \lefteqn{4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}}\nonumber \\
- &  & -\hspace {3pt}B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}\nonumber \\
+ &  & -\hspace{3pt}B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}\nonumber \\
  &  & =B^{2}+2\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)+\frac{\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)^{2}}{B^{2}}\label{eq:lefteqn}\end{eqnarray}
 
 \end_inset
@@ -28372,7 +28372,7 @@ Voici l'exemple précédent dans un environnement alignat où on a inséré une
 
 cm au début de la deuxième formule:
 \begin_inset Formula \begin{alignat*}{2}
-A & =\sin(B) & \hspace {1cm}C & =D\\
+A & =\sin(B) & \hspace{1cm}C & =D\\
 C & \ne A & B & \ne D\end{alignat*}
 
 \end_inset
@@ -28435,7 +28435,7 @@ reference "eq:VolInt"
 
  indentée:
 \begin_inset Formula \begin{flalign}
-\hspace {30pt}\iiint\limits _{V}X\,\mathrm{d}V & =U & {}\end{flalign}
+\hspace{30pt}\iiint\limits _{V}X\,\mathrm{d}V & =U & {}\end{flalign}
 
 \end_inset
 
@@ -28693,7 +28693,7 @@ multlinegap}{2cm}
 
 \begin_inset Formula \begin{multline}
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}\\
-\shoveleft {-B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}\\
+\shoveleft{-B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}\\
 =B^{2}+2\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)+\frac{\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)^{2}}{B^{2}}\end{multline}
 
 \end_inset
@@ -28827,7 +28827,7 @@ reference "eq:kurzlang"
  dans l'environnement aligned:
 \begin_inset Formula \begin{equation}
 \begin{aligned}H=\; & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\\
- & -\hspace {3pt}\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{2}|}+\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{R}_{1}-\mathbf{R}_{2}|}\end{aligned}
+ & -\hspace{3pt}\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{2}|}+\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{R}_{1}-\mathbf{R}_{2}|}\end{aligned}
 \end{equation}
 
 \end_inset
@@ -28992,7 +28992,7 @@ intertext
  Un exemple où le texte a été inséré au début de la deuxième ligne:
 \begin_inset Formula \begin{align}
 I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
-\intertext {\text{l'intégrande est symétrique autour de $\phi=\pi$, donc}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\end{align}
+\intertext{\text{l'intégrande est symétrique autour de $\phi=\pi$, donc}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\end{align}
 
 \end_inset
 
@@ -31269,7 +31269,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\gr  B$
+\begin_inset Formula $A\gr B$
 \end_inset
 
 
@@ -31294,7 +31294,7 @@ us{ABcd
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\us {ABcd}\raisebox {-2mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}\us{ABcd}\raisebox{-2mm}{}$
 \end_inset
 
 
@@ -31346,7 +31346,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {6mm}{}\fb {[2cm]}{}{\int A=B}\raisebox {-4mm}{}$
+\begin_inset Formula $\raisebox{6mm}{}\fb{[2cm]}{}{\int A=B}\raisebox{-4mm}{}$
 \end_inset
 
 
@@ -31392,7 +31392,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {6mm}{}\cb {red}{\int A=B}\raisebox {-4mm}{}$
+\begin_inset Formula $\raisebox{6mm}{}\cb{red}{\int A=B}\raisebox{-4mm}{}$
 \end_inset
 
 
@@ -31440,7 +31440,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {6mm}{}\cb [green]{red}{\int A=B}\raisebox {-4mm}{}$
+\begin_inset Formula $\raisebox{6mm}{}\cb[green]{red}{\int A=B}\raisebox{-4mm}{}$
 \end_inset
 
 
@@ -32288,7 +32288,7 @@ psi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\Bra {\psi}$
+\begin_inset Formula $\Bra{\psi}$
 \end_inset
 
 
@@ -32315,7 +32315,7 @@ psi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\Ket {\psi}$
+\begin_inset Formula $\Ket{\psi}$
 \end_inset
 
 
@@ -32344,7 +32344,7 @@ phi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\Braket {\psi|\phi}$
+\begin_inset Formula $\Braket{\psi|\phi}$
 \end_inset
 
 
@@ -32370,7 +32370,7 @@ Braket
  assure que toutes les barres verticales ont la même taille que les crochets
  englobants:
 \begin_inset Formula \[
-\Braket {\phi|J=\frac{3}{2}\,,\, M_{J}}\]
+\Braket{\phi|J=\frac{3}{2}\,,\, M_{J}}\]
 
 \end_inset
 
@@ -32698,7 +32698,7 @@ genfrac{}{}{#1}{}{#2}{#3}}
 Un test:
 \begin_inset Formula \begin{align*}
 \text{Commande} &  & \mathrm{\backslash fracS[1mm]\backslash\{A\to\backslash\{B} &  & \mathrm{\backslash fracS[5mm]\backslash\{A\to\backslash\{B}\\
-\text{Résultat} &  & \fracS [1mm]{A}{B} &  & \fracS [5mm]{A}{B}\end{align*}
+\text{Résultat} &  & \fracS[1mm]{A}{B} &  & \fracS[5mm]{A}{B}\end{align*}
 
 \end_inset
 
@@ -32852,7 +32852,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\cancel {\int A=B}\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}\cancel{\int A=B}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -32892,7 +32892,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\bcancel {\int A=B}\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}\bcancel{\int A=B}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -32932,7 +32932,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {4.5mm}{}\xcancel {\int A=B}\raisebox {-2.5mm}{}$
+\begin_inset Formula $\raisebox{4.5mm}{}\xcancel{\int A=B}\raisebox{-2.5mm}{}$
 \end_inset
 
 
@@ -32978,7 +32978,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox {7mm}{}\cancelto {1}{\int A=B}\raisebox {-2.5mm}{}\hspace {3mm}$
+\begin_inset Formula $\raisebox{7mm}{}\cancelto{1}{\int A=B}\raisebox{-2.5mm}{}\hspace{3mm}$
 \end_inset
 
 
@@ -33004,7 +33004,7 @@ cancelto
  est particulièrement utile pour visualiser des simplifications de fractions
  dans les formules:
 \begin_inset Formula \[
-\frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto {2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel {1+b^{2}}}\]
+\frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}\]
 
 \end_inset
 
@@ -33725,7 +33725,7 @@ reference "eq:within"
  consiste en cinq colonnes dont les deux premières contiennent l'équation,
  la troisième la matrice et la dernière une accolade TeX vide.
 \begin_inset Formula \begin{flalign}
-\hspace {30pt}F_{A} & =\rho·V·g & \footnotesize \begin{array}{ll}
+\hspace{30pt}F_{A} & =\rho·V·g & \footnotesize\begin{array}{ll}
 \rho & \textrm{density}\\
 V & \textrm{volume}\\
 g & \textrm{gravitational acceleration}\end{array} &  & {}\label{eq:within}\end{flalign}
@@ -33867,7 +33867,7 @@ up
 uptau
 \series default
  donne ceci: 
-\begin_inset Formula $\uptau $
+\begin_inset Formula $\uptau$
 \end_inset
 
 
@@ -33877,7 +33877,7 @@ uptau
 Avec ces commandes, on peut typographier des réactions entre particules
  élémentaires:
 \begin_inset Formula \[
-\uppi ^{+}\to\upmu ^{+}+\upnu _{\upmu }\]
+\uppi^{+}\to\upmu^{+}+\upnu_{\upmu}\]
 
 \end_inset
 
