@@ -682,23 +682,26 @@ void GuiView::on_lastWorkAreaRemoved()
 		// We have a splitter so don't close anything.
 		return;
 
-	if (lyxrc.open_buffers_in_tabs) {
-		d.toc_models_.reset(0);
-		// The document settings needs to be reinitialised.
-		updateDialog("document", "");
-		updateDialogs();
+	// Reset and updates the dialogs.
+	d.toc_models_.reset(0);
+	updateDialog("document", "");
+	updateDialogs();
+
+	if (lyxrc.open_buffers_in_tabs)
+		// Nothing more to do, the window should stay open.
+		return;
+
+	if (guiApp->viewIds().size() > 1) {
+		close();
 		return;
 	}
 
-	if (guiApp->viewIds().size() == 1) {
-#ifndef Q_WS_MACX
-		// On Mac close the view in any case because the application stay
-		// resident in memory. On other platforms we don't close the last
-		// window because this would quit the application.
-		return; 
-#endif
-	}
+#ifdef Q_WS_MACX
+	// On Mac we also close the last window because the application stay
+	// resident in memory. On other platforms we don't close the last
+	// window because this would quit the application.
 	close();
+#endif
 }
 
 
