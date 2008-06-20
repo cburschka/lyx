@@ -314,7 +314,7 @@ GuiWorkArea::~GuiWorkArea()
 void GuiWorkArea::fixVerticalScrollBar()
 {
 	if (!isFullScreen())
-		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+		setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 }
 
 
@@ -569,13 +569,13 @@ void GuiWorkArea::toggleCursor()
 void GuiWorkArea::updateScrollbar()
 {
 	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
-
-	// Block the scrollbar signal to prevent recursive signal/slot calling.
-	verticalScrollBar()->blockSignals(true);
+	// WARNING: don't touch at the scrollbar value like this:
+	//   verticalScrollBar()->setValue(scroll_.position);
+	// because this would cause a recursive signal/slot calling with
+	// GuiWorkArea::scrollTo
 	verticalScrollBar()->setRange(scroll_.min, scroll_.max);
 	verticalScrollBar()->setPageStep(scroll_.page_step);
 	verticalScrollBar()->setSingleStep(scroll_.single_step);
-	verticalScrollBar()->setValue(scroll_.position);
 	verticalScrollBar()->setSliderPosition(scroll_.position);
 	verticalScrollBar()->blockSignals(false);
 }
