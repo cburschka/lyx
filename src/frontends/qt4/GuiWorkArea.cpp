@@ -933,8 +933,13 @@ void GuiWorkArea::showCursor(int x, int y, int h,
 	bool l_shape, bool rtl, bool completable)
 {
 	if (schedule_redraw_) {
-		buffer_view_->updateMetrics();
+		// This happens when a graphic conversion is finished. As we don't know
+		// the size of the new graphics, it's better the update everything.
+		// We can't use redraw() here because this would trigger a infinite
+		// recursive loop with showCursor().
+		buffer_view_->resize(viewport()->width(), viewport()->height());
 		updateScreen();
+		updateScrollbar();
 		viewport()->update(QRect(0, 0, viewport()->width(), viewport()->height()));
 		schedule_redraw_ = false;
 		// Show the cursor immediately after the update.
