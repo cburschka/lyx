@@ -577,7 +577,6 @@ void GuiWorkArea::updateScrollbar()
 	verticalScrollBar()->setPageStep(scroll_.page_step);
 	verticalScrollBar()->setSingleStep(scroll_.single_step);
 	verticalScrollBar()->setSliderPosition(scroll_.position);
-	verticalScrollBar()->blockSignals(false);
 }
 
 
