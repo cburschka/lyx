@@ -4,16 +4,22 @@
 \begin_header
 \textclass scrbook
 \begin_preamble
-\usepackage{multicol}
-\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the User's Guide prints
+% out as advertised. If you mess with this preamble,
+% parts of the User's Guide may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
 
 % if pdflatex is used
 \usepackage{ifpdf}
 \ifpdf
 
-% set fonts for nicer pdf view
-\IfFileExists{lmodern.sty}
- {\usepackage{lmodern}}{}
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
 
 \fi % end if pdflatex is used
 
@@ -31,8 +37,14 @@
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
+
+% used for multi-column text
+\usepackage{multicol}
+
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
 \end_preamble
-\options bibtotoc, idxtotoc, BCOR7.5mm, titlepage
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \begin_modules
 logicalmkup
 theorems-ams
@@ -50,7 +62,7 @@ theorems-ams-extended
 \font_tt_scale 100
 
 \graphics default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
 \use_hyperref true
 \pdf_title "LyX's Extended manual"
@@ -59,7 +71,7 @@ theorems-ams-extended
 \pdf_keywords "LyX, Documentation, Extended"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
-\pdf_bookmarksopen true
+\pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
 \pdf_pdfborder false
@@ -11989,7 +12001,7 @@ always
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMM
 
 \family sans
@@ -12002,7 +12014,7 @@ empty
  
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMM
 
 \family sans
@@ -12014,7 +12026,7 @@ plain
  No other headings or footers (other than footnotes).
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMM
 
 \series bold
@@ -12025,7 +12037,7 @@ foilheadings
  This is also the default.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMM
 
 \series bold
@@ -12067,7 +12079,7 @@ ettings
  dialog.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -12078,7 +12090,7 @@ ettings
  this medium.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -12088,7 +12100,7 @@ headrule
  title page.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -12098,7 +12110,7 @@ footrule
  title page.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -12117,7 +12129,7 @@ TeX to use the dvips driver to rotate those pages that are set as landscape
  foils.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -12138,7 +12150,7 @@ Rotatefoilhead
  environments (don't worry these are described in the next section).
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -12147,7 +12159,7 @@ leqno
  Equation numbers on the left.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -13036,7 +13048,7 @@ foilheadskip}{-0.5in}
 The spacings around floats can be adjusted by setting these lengths:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -13047,7 +13059,7 @@ abovefloatskip
  Separation between the text and the top of the float
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -13058,7 +13070,7 @@ abovecaptionskip
  Separation between the float and the caption
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -13069,7 +13081,7 @@ belowcaptionskip
  Separation between the caption and the following text
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -13093,7 +13105,7 @@ There are also several title page related lengths that you may find useful
  if you have a long title or several authors:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -13106,7 +13118,7 @@ abovetitleskip
 Title
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -13125,7 +13137,7 @@ Author
  environments
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -13140,7 +13152,7 @@ Author
  lines
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -13157,7 +13169,7 @@ Author
 Date
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter

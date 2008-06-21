@@ -1,5 +1,5 @@
-#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
-\lyxformat 335
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 337
 \begin_document
 \begin_header
 \textclass scrbook
@@ -16,9 +16,9 @@
 \usepackage{ifpdf}
 \ifpdf
 
-% Schrift für hübschere PDF-Ansichten
-\IfFileExists{lmodern.sty}
- {\usepackage{lmodern}}{}
+ % Schrift für hübschere PDF-Ansichten
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
 
 \fi % Ende von: wenn pdflatex benutzt wird
 
@@ -26,15 +26,14 @@
 % auf den Anfang des Gelitobjekts und nicht aufs Ende
 \usepackage[figure]{hypcap}
 
-% Die Seiten des Inhaltsverzeichnisses werden römisch nummeriert,
+% Die Seiten des Inhaltsverzeichnisses werden römisch numeriert,
 % ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
-\pagenumbering{roman}
 \let\myTOC\tableofcontents
-\renewcommand{\tableofcontents}{%
- \pdfbookmark[1]{Inhaltsverzeichnis}{}
- \myTOC
- \cleardoublepage
- \pagenumbering{arabic}}
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
 
 % Formatierung von Legenden
 \usepackage[labelfont={bf,sf}, tableposition=top]{caption}[2004/07/16]
@@ -50,6 +49,7 @@
 % wird für mehrspaltigen Text benötigt
 \usepackage{multicol}
 \end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -60,6 +60,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -77,7 +78,7 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pagebackref false
-\pdf_pdfusetitle true
+\pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize default
 \use_geometry true
@@ -145,7 +146,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 5.
+letzte Änderung: 21.
 \begin_inset space ~
 \end_inset
 

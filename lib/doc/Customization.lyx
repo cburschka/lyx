@@ -2,7 +2,7 @@
 \lyxformat 337
 \begin_document
 \begin_header
-\textclass book
+\textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
 %
@@ -13,15 +13,23 @@
 % the documentation team
 % email: lyx-docs@lists.lyx.org
 
- % the pages of the TOC are numbered roman
- % and a pdf-bookmark for the TOC is added
- \pagenumbering{roman}
- \let\myTOC\tableofcontents
- \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{\contentsname}{}
-   \myTOC
-   \cleardoublepage
-   \pagenumbering{arabic} }
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
 
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
@@ -32,6 +40,7 @@
 \usepackage{multicol}
 \usepackage{inputenc}
 \end_preamble
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \begin_modules
 logicalmkup
 \end_modules
@@ -51,7 +60,7 @@ EndPreamble
 End
 \end_local_layout
 \language english
-\inputencoding default
+\inputencoding auto
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -62,21 +71,24 @@ End
 \font_tt_scale 100
 
 \graphics none
-\paperfontsize default
+\paperfontsize 12
 \spacing single
 \use_hyperref true
 \pdf_title "LyX Configuration Manual"
-\pdf_author "The LyX Team"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Customization"
+\pdf_keywords "LyX, documentation, customization"
 \pdf_bookmarks true
-\pdf_bookmarksnumbered false
-\pdf_bookmarksopen false
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks true
-\pdf_pdfborder true
+\pdf_breaklinks false
+\pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pagebackref false
-\pdf_pdfusetitle true
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -310,7 +322,7 @@ UserDir
 en at any time.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -324,7 +336,7 @@ lyxrc.defaults
  contains defaults for various commands.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -363,7 +375,7 @@ Configuration
 .
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -388,7 +400,7 @@ layout/
 on.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -412,7 +424,7 @@ layout/
  directories
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -426,7 +438,7 @@ status collapsed
  lists of various sorts of LaTeX-related files found on your system
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -490,7 +502,7 @@ UserDir
  will be used.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -555,7 +567,7 @@ reference "sec:bindings"
 for details.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -570,7 +582,7 @@ clipart/
  
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -619,7 +631,7 @@ reference "chap:i18n"
  for details.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -644,7 +656,7 @@ Examples
  button to get there.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -670,7 +682,7 @@ Document
  and the banners that can be shown when LyX is launched.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -696,7 +708,7 @@ reference "sec:keymap"
  for details.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -721,7 +733,7 @@ reference "chap:textclass"
 .
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -747,7 +759,7 @@ lyx2lyx
  files.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -776,7 +788,7 @@ Template
  Also contains some scripts used by LyX itself.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -801,7 +813,7 @@ reference "sec:templates"
 .
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -844,7 +856,7 @@ These files are used internally by LyX and you generally do not need to
  modify them unless you are a developer.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -878,7 +890,7 @@ LyX
 .
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -893,7 +905,7 @@ chkconfig.ltx
  Do not run directly.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -912,7 +924,7 @@ configure.py
 Other files needing a line or two...
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -927,7 +939,7 @@ encodings
  mapped to unicode
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -955,7 +967,7 @@ Template
  feature.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -2918,7 +2930,7 @@ For example, the file may refer to other files---images, for example---using
 The definitions of the copiers may use four variables:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -2950,7 +2962,7 @@ status collapsed
 ).
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -2964,7 +2976,7 @@ $$i
  The input file
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -2978,7 +2990,7 @@ $$o
  The output file
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -3280,7 +3292,7 @@ Add
  Several variables can be used in the definition of converters:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -3294,7 +3306,7 @@ $$s
  The LyX system directory
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -3308,7 +3320,7 @@ $$i
  The input file
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -3322,7 +3334,7 @@ $$o
  The output file
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -3336,7 +3348,7 @@ $$b
  The base filename of the input file (i.e., without the extension)
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -3368,7 +3380,7 @@ Flag
  field you can enter the following flags, separated by commas:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -3383,7 +3395,7 @@ latex
  This will make LyX's LaTeX error logs available.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -3407,7 +3419,7 @@ status collapsed
  file for the conversion.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -3444,7 +3456,7 @@ value
  format:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -3489,7 +3501,7 @@ $$s
 .
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -3523,7 +3535,7 @@ Note that resultdir and usetempdir make no sense together.
  The latter will be ignored if the former is given.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -5102,7 +5114,7 @@ kcomb
  are described in this section.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -5240,7 +5252,7 @@ status collapsed
 kmap & /
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -5437,7 +5449,7 @@ The following example specifies that the character ' is to be an acute accent,
 kmod ' acute aeiouAEIOU
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -5671,7 +5683,7 @@ kxmod acute i "
 i}"
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex CharStyle:Code
 status collapsed

@@ -16,7 +16,8 @@
 \ifpdf % if pdflatex is used
 
  % set fonts for nicer pdf view
- \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+ \IfFileExists{lmodern.sty}
+  {\usepackage{lmodern}}{}
 
 \fi % end if pdflatex is used
 
@@ -25,15 +26,14 @@
 % not to its caption
 %\usepackage[figure]{hypcap}
 
-% the pages of the TOC are numbered roman
-% and a PDF-bookmark for the TOC is added
-\pagenumbering{roman}
+% Die Seiten des Inhaltsverzeichnisses werden römisch numeriert,
+% ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
 \let\myTOC\tableofcontents
-\renewcommand{\tableofcontents}{%
- \pdfbookmark[1]{\contentsname}{}
- \myTOC
- \cleardoublepage
- \pagenumbering{arabic}}
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
 
 % provides caption formatting
 \usepackage[labelfont={bf,sf}, tableposition=top]{caption}[2004/07/16]
@@ -63,7 +63,7 @@
   \setboolean{picinpar}{true}}
  {\setboolean{picinpar}{false}}
 \end_preamble
-\options bibtotoc, idxtotoc, BCOR7.5mm, titlepage
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -85,7 +85,7 @@
 \pdf_keywords "LyX, Dokumentation"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
-\pdf_bookmarksopen true
+\pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
 \pdf_pdfborder true
@@ -154,7 +154,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 16.
+letzte Änderung: 21.
  Juni 2008
 \end_layout
 
