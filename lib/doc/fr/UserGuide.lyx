@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 336
+\lyxformat 337
 \begin_document
 \begin_header
 \textclass scrbook
@@ -29,7 +29,7 @@
  \pagenumbering{roman}
  \let\myTOC\tableofcontents
  \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{Table des matières}{}
+   \pdfbookmark[1]{\contentsname}{}
    \myTOC
    \cleardoublepage
    \pagenumbering{arabic} } 
@@ -16086,7 +16086,6 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	display color
 	scale 70
 	rotateOrigin center
 
@@ -19903,7 +19902,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
-	display color
 	width 50col%
 	rotateOrigin center
 
@@ -19964,7 +19962,6 @@ M.C.
 \align center
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
-	display color
 	scale 80
 	rotateOrigin center
 
@@ -20520,7 +20517,6 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	display color
 	width 40col%
 	rotateOrigin center
 
@@ -28465,7 +28461,7 @@ reponse}[1]{}
 
 \begin_layout Standard
 \begin_inset Branch Réponses
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset ERT
@@ -28523,7 +28519,7 @@ question
 \series default
  apparaît:
 \begin_inset Formula \[
-x^{2}-2x-2\Rightarrow\question {x_{1}}\reponse {x_{2}}=1\question {+\sqrt{3}}\reponse {-\sqrt{3}}.\]
+x^{2}-2x-2\Rightarrow\question{x_{1}}\reponse{x_{2}}=1\question{+\sqrt{3}}\reponse{-\sqrt{3}}.\]
 
 \end_inset
 
@@ -36541,7 +36537,7 @@ Préférences
 
 \begin_layout Standard
 La fenêtre de dialogue préférence est décrite en détails dans le chapitre
-\begin_inset Formula $\,$
+\begin_inset space \thinspace{}
 \end_inset
 
 

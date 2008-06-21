@@ -1,8 +1,8 @@
-#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
-\lyxformat 335
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 337
 \begin_document
 \begin_header
-\textclass book
+\textclass scrbook
 \begin_preamble
 \usepackage{multicol}
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
@@ -17,11 +17,22 @@
 
 \fi % end if pdflatex is used
 
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+ \cleardoublepage
+ \pagenumbering{arabic}}
+
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
 \end_preamble
+\options bibtotoc, idxtotoc, BCOR7.5mm, titlepage
 \begin_modules
 logicalmkup
 theorems-ams
@@ -37,6 +48,7 @@ theorems-ams-extended
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single

@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 336
+\lyxformat 337
 \begin_document
 \begin_header
 \textclass scrbook
@@ -110,7 +110,7 @@
 \pagenumbering{Roman}
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
- \pdfbookmark[1]{Índice general}{}
+ \pdfbookmark[1]{\contentsname}{}
  \myTOC
  \cleardoublepage
  \pagenumbering{arabic}}
@@ -702,7 +702,6 @@ reference "sec:Formatos-de-imagen"
 \align center
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	display color
 	scale 70
 	clip
 	rotateOrigin center
@@ -720,7 +719,6 @@ Esta es la misma imagen pero en modo borrador:
 \align center
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	display color
 	scale 70
 	draft
 	rotateOrigin center
@@ -846,7 +844,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
-	display color
 	width 50col%
 	rotateOrigin center
 
@@ -907,7 +904,6 @@ M.C.
 \align center
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
-	display color
 	scale 80
 	rotateOrigin center
 
@@ -19552,7 +19548,6 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	display color
 	width 40col%
 	rotateOrigin center
 
@@ -23511,7 +23506,7 @@ LyX Este tipo es para notas internas que no han de aparecer en la salida.
 
 \begin_inset Graphics
 	filename clipart/NotaLyXImagenQt4.png
-	display none
+	display false
 	scale 85
 
 \end_inset
@@ -23549,7 +23544,7 @@ LaTeX (pdflatex) / (plain)
 
 \begin_inset Graphics
 	filename clipart/ComentNotaImagenQt4.png
-	display none
+	display false
 	scale 85
 
 \end_inset
@@ -23588,7 +23583,7 @@ gris Esta nota aparece en la salida como texto resaltado en gris.
 
 \begin_inset Graphics
 	filename clipart/GrisNotaImagenQt4.png
-	display none
+	display false
 	scale 85
 
 \end_inset
@@ -23705,7 +23700,7 @@ Enmarcado Este tipo de notas aparecerá en la salida como un texto enmarcado.
 
 \begin_inset Graphics
 	filename clipart/NotaEnmarcadaImg.png
-	display none
+	display false
 
 \end_inset
 
@@ -23786,7 +23781,7 @@ Sombreado Este tipo de nota se verá en la salida con un fondo de color rojo.
 
 \begin_inset Graphics
 	filename clipart/NotaSombreadaImg.png
-	display none
+	display false
 
 \end_inset
 

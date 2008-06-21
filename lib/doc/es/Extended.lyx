@@ -1,8 +1,8 @@
-#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
-\lyxformat 335
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 337
 \begin_document
 \begin_header
-\textclass book
+\textclass scrbook
 \begin_preamble
 \usepackage{multicol}
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
@@ -17,11 +17,22 @@
 
 \fi % end if pdflatex is used
 
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{\contentsname}{}
+ \myTOC
+ \cleardoublepage
+ \pagenumbering{arabic}}
+
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
 \end_preamble
+\options bibtotoc, idxtotoc, BCOR7.5mm, titlepage
 \language spanish
 \inputencoding latin1
 \font_roman default
@@ -32,6 +43,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -12282,7 +12294,7 @@ pone el logo, (si se define uno), centrado en la parte inferior de la página.
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMM
 
 \family sans
@@ -12295,7 +12307,7 @@ empty
  
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMM
 
 \family sans
@@ -12307,7 +12319,7 @@ plain
  No contiene encabezados ni pies (que no sean notas).
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMM
 
 \family sans
@@ -12320,7 +12332,7 @@ foilheadings
  Esta es la opción por defecto.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMM
 
 \family sans
@@ -12354,7 +12366,7 @@ Configuración
  se pueden poner las siguientes opciones extras:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -12375,7 +12387,7 @@ in, que es aproximadamente el aspecto de una diapositiva de 35
 mm, Haciendo algo más fácil trabajar con este soporte.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -12384,7 +12396,7 @@ headrule
  Dibuja una línea bajo el encabezado en cada página excepto la de título.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -12393,7 +12405,7 @@ footrule
  Dibuja una línea sobre el pie de cada página excepto la de título.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -12412,7 +12424,7 @@ TeX que use el driver dvips para girar las páginas establecidas en modo
  apaisado.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -12434,7 +12446,7 @@ Rotatefoilhead
  (que se describen en la siguiente sección).
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -12443,7 +12455,7 @@ leqno
  Números de ecuación a la izquierda.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMx
 
 \series bold
@@ -13367,7 +13379,7 @@ Los espacios alrededor de los flotantes se ajustan con las siguientes variables
  de longitud:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -13378,7 +13390,7 @@ abovefloatskip
  Separación entre el texto y la parte superior del flotante;
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -13389,7 +13401,7 @@ abovecaptionskip
  Separación entre el flotante y el encabezado;
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -13400,7 +13412,7 @@ belowcaptionskip
  Separación entre el encabezado y el texto siguiente;
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -13423,7 +13435,7 @@ Hay otras longitudes relativas a la página de título que te pueden ser útiles
  en el caso de títulos largos o de varios autores::
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -13436,7 +13448,7 @@ abovetitleskip
 Título;
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -13453,7 +13465,7 @@ Título
 Autor;
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -13466,7 +13478,7 @@ authorauthorskip
 Autor;
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter
@@ -13483,7 +13495,7 @@ Autor
 Fecha;
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMMMM
 
 \family typewriter

@@ -29,7 +29,7 @@
  \pagenumbering{Roman}
  \let\myTOC\tableofcontents
  \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{Índice general}{}
+   \pdfbookmark[1]{\contentsname}{}
    \myTOC
    \cleardoublepage
    \pagenumbering{arabic} }

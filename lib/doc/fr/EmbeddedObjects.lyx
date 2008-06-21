@@ -1,5 +1,5 @@
-#LyX 1.6.0beta2 created this file. For more info see http://www.lyx.org/
-\lyxformat 335
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 337
 \begin_document
 \begin_header
 \textclass scrbook
@@ -24,7 +24,7 @@
 \pagenumbering{roman}
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
- \pdfbookmark[1]{Contents}{}
+ \pdfbookmark[1]{\contentsname}{}
  \myTOC
  \cleardoublepage
  \pagenumbering{arabic}}
@@ -173,6 +173,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -751,7 +752,6 @@ nt:
 \align center
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	display color
 	scale 70
 	scaleBeforeRotation
 	rotateOrigin center
@@ -769,7 +769,6 @@ Et voici la même image mais en mode brouillon:
 \align center
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	display color
 	scale 70
 	draft
 	scaleBeforeRotation
@@ -907,7 +906,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
-	display color
 	width 50col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -969,7 +967,6 @@ M.C.
 \align center
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
-	display color
 	scale 80
 	scaleBeforeRotation
 	rotateOrigin center
@@ -19909,7 +19906,6 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	display color
 	width 40col%
 	scaleBeforeRotation
 	rotateOrigin center

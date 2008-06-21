@@ -58,7 +58,7 @@
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
  \vspace{1cm}
- \pdfbookmark[1]{Índice}{}
+ \pdfbookmark[1]{\contentsname}{}
  \myTOC
  \cleardoublepage
  \pagenumbering{arabic}}

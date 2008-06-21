@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 336
+\lyxformat 337
 \begin_document
 \begin_header
 \textclass scrbook
@@ -30,7 +30,7 @@
 \pagenumbering{roman}
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
- \pdfbookmark[1]{Inhaltsverzeichnis}{}
+ \pdfbookmark[1]{\contentsname}{}
  \myTOC
  \cleardoublepage
  \pagenumbering{arabic}}

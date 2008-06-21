@@ -29,7 +29,7 @@
  \pagenumbering{roman}
  \let\myTOC\tableofcontents
  \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{Contents}{}
+   \pdfbookmark[1]{\contentsname}{}
    \myTOC
    \cleardoublepage
    \pagenumbering{arabic} }
@@ -36533,7 +36533,7 @@ Preferences
 
 \begin_layout Standard
 The preferences dialog is described in detail in chapter
-\begin_inset Formula $\,$
+\begin_inset space \thinspace{}
 \end_inset
 
 

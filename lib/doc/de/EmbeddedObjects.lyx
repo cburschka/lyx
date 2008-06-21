@@ -1,5 +1,5 @@
-#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
-\lyxformat 335
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 337
 \begin_document
 \begin_header
 \textclass scrbook
@@ -23,7 +23,7 @@
 \pagenumbering{roman}
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
- \pdfbookmark[1]{Inhaltsverzeichnis}{}
+ \pdfbookmark[1]{\contentsname}{}
  \myTOC
  \cleardoublepage
  \pagenumbering{arabic}}
@@ -174,6 +174,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -741,7 +742,6 @@ reference "abs:Bildformate"
 \align center
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	display color
 	scale 70
 	scaleBeforeRotation
 	rotateOrigin center
@@ -760,7 +760,6 @@ Hier ist dieselbe Abbildung, aber im Entwurfsmodus gedruckt:
 \align center
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	display color
 	scale 70
 	draft
 	scaleBeforeRotation
@@ -891,7 +890,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
-	display color
 	width 50col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -953,7 +951,6 @@ M.C.
 \align center
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
-	display color
 	scale 80
 	scaleBeforeRotation
 	rotateOrigin center
@@ -20120,7 +20117,6 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	display color
 	width 40col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -23923,7 +23919,7 @@ LyX-Notiz
 
 \begin_inset Graphics
 	filename clipart/LyXNotizQt4.png
-	display none
+	display false
 	scale 60
 	scaleBeforeRotation
 
@@ -23978,7 +23974,7 @@ X (pdflatex) / (plain)
 
 \begin_inset Graphics
 	filename clipart/KommentarQt4.png
-	display none
+	display false
 	scale 60
 	scaleBeforeRotation
 
@@ -24009,7 +24005,7 @@ Grauschrift: Diese Notiz wird grau gedruckt und sieht so aus:
 
 \begin_inset Graphics
 	filename clipart/GrauschriftNotizQt4.png
-	display none
+	display false
 	scale 60
 	scaleBeforeRotation
 
@@ -24124,7 +24120,7 @@ Eingerahmt: Diese Notiz wird gerahmt gedruckt und sieht so aus:
 
 \begin_inset Graphics
 	filename clipart/GerahmteNotizQt4.png
-	display none
+	display false
 	scale 60
 	scaleBeforeRotation
 
@@ -24204,7 +24200,7 @@ Box
 
 \begin_inset Graphics
 	filename clipart/SchattierteNotizQt4.png
-	display none
+	display false
 	scale 60
 	scaleBeforeRotation
 
