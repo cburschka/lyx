@@ -21,15 +21,15 @@
 
  \fi % end if pdflatex is used
 
- % the pages of the TOC are numbered roman
- % and a pdf-bookmark for the TOC is added
- \pagenumbering{roman}
- \let\myTOC\tableofcontents
- \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{\contentsname}{}
-   \myTOC
-   \cleardoublepage
-   \pagenumbering{arabic} }
+% Die Seiten des Inhaltsverzeichnisses werden römisch numeriert,
+% ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \cleardoublepage
+  \pagenumbering{arabic} }
 
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
@@ -114,7 +114,7 @@ Das Einmaleins der LyX-Dokumentation
 \begin_layout Author
 vom LyX Team
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Deutsche Übersetzung: 
@@ -142,7 +142,7 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 5.
+letzte Änderung: 21.
  Juni 2008
 \end_layout
 

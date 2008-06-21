@@ -105,15 +105,14 @@
 \newcolumntype{W}{!{\color{green}\vline}}
 % ---
 
-% the pages of the TOC are numbered roman
-% and a PDF-bookmark for the TOC is added
-\pagenumbering{Roman}
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
 \let\myTOC\tableofcontents
-\renewcommand{\tableofcontents}{%
- \pdfbookmark[1]{\contentsname}{}
- \myTOC
- \cleardoublepage
- \pagenumbering{arabic}}
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
 
 % insert additional vertical space of
 % 1.5 mm between footnotes

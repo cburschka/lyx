@@ -25,12 +25,11 @@
 % auf den Anfang des Gelitobjekts und nicht aufs Ende
 \usepackage[figure]{hypcap}
 
-% Ein PDF-Lesezeichen üer das Inhaltsverzeichnis wird hinzugefügt
+% Ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
  \pdfbookmark[1]{\contentsname}{}
- \myTOC
- \cleardoublepage}
+ \myTOC }
 
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}

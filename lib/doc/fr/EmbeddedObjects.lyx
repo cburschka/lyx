@@ -19,15 +19,14 @@
 % not to its caption
 \usepackage[figure]{hypcap}
 
-% the pages of the TOC are numbered roman
-% and a PDF-bookmark for the TOC is added
-\pagenumbering{roman}
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
 \let\myTOC\tableofcontents
-\renewcommand{\tableofcontents}{%
- \pdfbookmark[1]{\contentsname}{}
- \myTOC
- \cleardoublepage
- \pagenumbering{arabic}}
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
 
 % provides caption formatting
 \usepackage[labelfont={bf,sf}, tableposition=top]{caption}[2004/07/16]

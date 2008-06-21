@@ -52,10 +52,9 @@
 % siehe erste Fußnote in Kap. 9.3
 \@ifundefined{textcolor}{\usepackage{color}}{}
 
-% damit die Seiten des Inhaltsverzeichnisses römisch
-% nummeriert werden und damit das Inhaltsverzeichnis
-% ein eigenes pdf-Lesezeichen erhält
-\pagenumbering{Roman}
+% Die Seiten des Inhaltsverzeichnisses werden römisch numeriert,
+% ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
+\pagenumbering{roman}
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
  \vspace{1cm}

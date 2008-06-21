@@ -21,15 +21,14 @@
 
  \fi % end if pdflatex is used
 
- % the pages of the TOC are numbered roman
- % and a pdf-bookmark for the TOC is added
- \pagenumbering{roman}
- \let\myTOC\tableofcontents
- \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{\contentsname}{}
-   \myTOC
-   \cleardoublepage
-   \pagenumbering{arabic} }
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
 
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%

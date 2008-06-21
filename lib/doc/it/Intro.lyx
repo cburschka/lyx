@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 331
+\lyxformat 337
 \begin_document
 \begin_header
 \textclass article
@@ -19,17 +19,17 @@
  % set fonts for nicer pdf view
  \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
 
- \fi % end if pdflatex is used
+\fi % end if pdflatex is used
 
- % the pages of the TOC are numbered roman
- % and a pdf-bookmark for the TOC is added
- \pagenumbering{roman}
- \let\myTOC\tableofcontents
- \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{Contents}{}
-   \myTOC
-   \cleardoublepage
-   \pagenumbering{arabic} }
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \cleardoublepage
+  \pagenumbering{arabic} }
 
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
@@ -46,6 +46,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -296,11 +297,11 @@ Introduzione
 \end_inset
 
 1.
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 Introduzione
@@ -790,7 +791,7 @@ vero lavoro
 , famiglie, piatti da lavare, spazzatura da vuotare, e così via.
  Se volete rendervi utili alla causa, assicuratevi di aver letto prima la
  Sezione
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -899,7 +900,7 @@ sec:Contrib
  destro del mouse sul box, oppure sul bottone 
 \family sans
 Vai
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 all'etichetta
@@ -1366,7 +1367,7 @@ Unità di misura utilizzate nei Manuali
 
 \begin_layout Standard
 La tabella
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 
@@ -1935,7 +1936,7 @@ LyX per utilizzatori di LaTeX
 
 \begin_layout Description
 Guida
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 utente E' la documentazione principale.
@@ -1950,7 +1951,7 @@ Tutorial
 
 \begin_layout Description
 Oggetti
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 incorporati Si tratta di un'estensione della
@@ -1972,7 +1973,7 @@ guru
 
 \begin_layout Description
 Caratteristiche
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 estese Altra estensione della 
@@ -2001,7 +2002,7 @@ nali, ed i files di configurazione.
 
 \begin_layout Description
 Configurazione
-\begin_inset Space ~
+\begin_inset space ~
 \end_inset
 
 LaTeX Durante l'installazione, LyX controlla il vostro sistema.

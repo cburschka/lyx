@@ -54,7 +54,7 @@
 
 % the pages of the TOC are numbered roman
 % and a PDF-bookmark for the TOC is added
-\pagenumbering{Roman}
+\pagenumbering{roman}
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
  \vspace{1cm}

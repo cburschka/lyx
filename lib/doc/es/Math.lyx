@@ -52,7 +52,7 @@
 % see first footnote in sec. 9.3
 \@ifundefined{textcolor}{\usepackage{color}}{}
 
-% the pages of the TOC are numbered roman
+% the pages of the TOC is numbered roman
 % and a PDF-bookmark for the TOC is added
 \pagenumbering{Roman}
 \let\myTOC\tableofcontents
