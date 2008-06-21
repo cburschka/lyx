@@ -56,6 +56,11 @@ What's new
 - The A&A document class and template has been updated to conform to
   version 6.0 of the A&A specification (bug 4928).
 
+- Make sure that a GREEK SMALL LETTER SIGMA is not automatically turned
+  into a GREEK SMALL LETTER FINAL SIGMA on LaTeX output, unless the
+  document language is Greek or it is specifically marked as Greek
+  language using the Text Style dialog (bug 4966).
+
 
 * WINDOWS INSTALLER
 
