@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 21.
+letzte Änderung: 22.
  Juni 2008
 \end_layout
 
@@ -6456,16 +6456,13 @@ nicht
 Standard
 \family default
  zurückgesetzt, sondern bleibt gleich und erzeugt ein neues Listenelement.
- Die Schachtelungstiefe wird jedoch zurückgesetzt.
- Wenn Sie Schachtelungstiefe 
-\emph on
-und
-\emph default
- Absatzumgebung behalten wollen, müssen Sie 
+ Die Schachtelungstiefe bleibt ebenfalls erhalten.
+ Wenn Sie die Absatzumgebung behalten wollen, aber die Schachtelungstiefe
+ zurücksetzen wollen, können Sie 
 \family sans
 Alt+Eingabe
 \family default
- benutzen, um einen neuen Absatz zu beginnen.
+ benutzen, um einen neuen Listeneintrag zu beginnen.
 \end_layout
 
 \begin_layout Standard
@@ -8637,141 +8634,7 @@ schachtelbar!nicht
 \begin_layout Standard
 
 \family sans
-Teil
-\begin_inset Index
-status open
-
-\begin_layout Plain Layout
-Teil
-\end_layout
-
-\end_inset
-
-
-\family default
- (LaTeX-Bezeichnung: part
-\family sans
-
-\begin_inset Index
-status open
-
-\begin_layout Plain Layout
-part
-\end_layout
-
-\end_inset
-
-), Kapitel,
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Kapitel
-\end_layout
-
-\end_inset
-
- Abschnitt,
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Abschnitt
-\end_layout
-
-\end_inset
-
- Unterabschnitt,
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Unterabschnitt
-\end_layout
-
-\end_inset
-
- Unterunterabschn.,
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Unterunterabschn.
-\end_layout
-
-\end_inset
-
- Paragraph,
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Paragraph
-\end_layout
-
-\end_inset
-
- Unterparagraph,
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Unterparagraph
-\end_layout
-
-\end_inset
-
- Teil*,
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Teil*
-\end_layout
-
-\end_inset
-
- Kapitel*,
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Kapitel*
-\end_layout
-
-\end_inset
-
- Abschnitt*,
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Abschnitt*
-\end_layout
-
-\end_inset
-
- Unterabschnitt*,
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Unterabschnitt*
-\end_layout
-
-\end_inset
-
- Unterunterabschn.*,
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Unterunterabschn.*
-\end_layout
-
-\end_inset
-
- Literaturverzeichnis,
+Literaturverzeichnis,
 \begin_inset Index
 status collapsed
 
@@ -8895,6 +8758,140 @@ Standard
 
 \end_inset
 
+, Teil
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Teil
+\end_layout
+
+\end_inset
+
+
+\family default
+ (LaTeX-Bezeichnung: part
+\family sans
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+part
+\end_layout
+
+\end_inset
+
+), Kapitel,
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Kapitel
+\end_layout
+
+\end_inset
+
+ Abschnitt,
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Abschnitt
+\end_layout
+
+\end_inset
+
+ Unterabschnitt,
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Unterabschnitt
+\end_layout
+
+\end_inset
+
+ Unterunterabschn.,
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Unterunterabschn.
+\end_layout
+
+\end_inset
+
+ Paragraph,
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Paragraph
+\end_layout
+
+\end_inset
+
+ Unterparagraph,
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Unterparagraph
+\end_layout
+
+\end_inset
+
+ Teil*,
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Teil*
+\end_layout
+
+\end_inset
+
+ Kapitel*,
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Kapitel*
+\end_layout
+
+\end_inset
+
+ Abschnitt*,
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Abschnitt*
+\end_layout
+
+\end_inset
+
+ Unterabschnitt*,
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Unterabschnitt*
+\end_layout
+
+\end_inset
+
+ Unterunterabschn.*,
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Unterunterabschn.*
+\end_layout
+
+\end_inset
+
  Adresse
 \begin_inset space ~
 \end_inset
@@ -8924,17 +8921,36 @@ Adresse
 
 \end_deeper
 \begin_layout Standard
-Die 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Anmerkung:
+\series default
+ Obwohl es möglich ist, nummerierte Gliederungen wie 
 \family sans
-Legende
+Kapitel
 \family default
--Umgebung passt nirgendwo richtig hinein, weil sie nur in Gleitobjekt-Ab\SpecialChar \-
-bil\SpecialChar \-
-dun\SpecialChar \-
-ge
-n und Gleit\SpecialChar \-
-ob\SpecialChar \-
-jekt-Tabellen benutzt wird.
+, 
+\family sans
+Abschnitt
+\family default
+, usw.
+ in z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B: Listen zu schachteln, wird dringend davon abgeraten.
+ Denn das Ziel ist es, gut strukturierte Dokumente zu erzeugen, die den
+ gängigen Normen des Schriftsatzes folgen, aber geschachtelte Gliederungen
+ verstoßen dagegen.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -9010,8 +9026,7 @@ Bilder
 \series bold
 Anmerkung
 \series default
-: wenn Sie ein Bild oder eine Tabelle in ein Gleitobjekt einfügen, gilt
- dies nicht mehr.
+: Bilder und Tabellen in Gleitobjekten sind davon nicht betroffen.
  Lesen Sie weiter unten oder in den Abschnitten 
 \begin_inset CommandInset ref
 LatexCommand vref

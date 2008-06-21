@@ -4676,9 +4676,13 @@ pas
 Standard
 \family default
  mais conserve l'environnement actuel et crée un nouvel élément de liste.
- En revanche, la profondeur d'emboîtement est en général remise à zéro.
- Si vous voulez garder à la fois la profondeur d'emboîtement et l'environnement
- de paragraphe en cours, servez-vous de 
+ 
+\lang english
+The nesting depth is not also kept.
+ If you want to keep the paragraph environment but reset the current nesting
+ depth, you can use
+\lang french
+ 
 \family sans
 M-Entrée
 \family default
@@ -6927,82 +6931,6 @@ emboîtable On ne peut pas les emboîter, ni y emboîter quoi que ce soit.
 \begin_layout Itemize
 
 \family sans
-Partie
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Chapitre
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Section
-\family default
- 
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-SousSection
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-SousSousSection
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Paragraphe
-\family default
- 
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-SousParagraphe
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Partie*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Chapitre*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Section*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-SousSection*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-SousSousSection*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
 Bibliographie
 \end_layout
 
@@ -7115,6 +7043,82 @@ Standard
 \begin_layout Itemize
 
 \family sans
+Partie
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Chapitre
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Section
+\family default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+SousSection
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+SousSousSection
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Paragraphe
+\family default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+SousParagraphe
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Partie*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Chapitre*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Section*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+SousSection*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+SousSousSection*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
 Adresse
 \begin_inset space ~
 \end_inset
@@ -7134,27 +7138,48 @@ Adresse
 
 \end_deeper
 \begin_layout Standard
-L'environnement 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ 
+\lang english
+Although it is possible to nest numbered section headings like
+\lang french
+ 
 \family sans
-Légende
+Partie
 \family default
- n'a sa place nulle part, car il ne sert que dans des 
+, 
 \family sans
-Tableaux
+Section
+\family default
+, 
+\lang english
+etc.
 \begin_inset space ~
 \end_inset
 
-Flottants
-\family default
- et des 
-\family sans
-Figures
+to e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space ~
 \end_inset
 
-Flottantes
-\family default
-.
+lists, it is highly recommended not to do this.
+ Because the aim is to create well structured documents following usual
+ guidelines of typesetting, but nested section headings violates them.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7209,11 +7234,15 @@ status open
 \series bold
 Note :
 \series default
- si vous mettez une figure ou un tableau dans un 
+ Figures et tableaus dans 
 \family sans
-Flottant
+Flottantes
 \family default
-, ce n'est plus vrai.
+ 
+\lang english
+are not affected by this.
+\lang french
+.
 \end_layout
 
 \end_inset
@@ -7240,7 +7269,11 @@ reference "sec:Flottant-de-tableau"
 
 \end_inset
 
- pour plus d'info.)
+ pour plus d'info de 
+\family sans
+Flottantes
+\family default
+.)
 \end_layout
 
 \begin_layout Standard

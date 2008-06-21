@@ -4529,9 +4529,9 @@ not
 Standard
 \family default
  but keeps the current environment and creates a new list item.
- The nesting depth is typically reset, however.
- If you want to keep both the current nesting depth and paragraph environment,
- you should use 
+ The nesting depth is not also kept.
+ If you want to keep the paragraph environment but reset the current nesting
+ depth, you can use 
 \family sans
 M-Return
 \family default
@@ -6356,82 +6356,6 @@ Unnestable Can't nest them.
 \begin_layout Itemize
 
 \family sans
-Part
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Chapter
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Section
-\family default
- 
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Subsection
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Subsubsection
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Paragraph
-\family default
- 
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Subparagraph
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Part*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Chapter*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Section*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Subsection*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Subsubsection*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
 Bibliography
 \end_layout
 
@@ -6534,6 +6458,78 @@ Standard
 \begin_layout Itemize
 
 \family sans
+Part
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Chapter
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Section
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Subsection
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Subsubsection
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Paragraph
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Subparagraph
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Part*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Chapter*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Section*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Subsection*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Subsubsection*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
 Right
 \begin_inset space ~
 \end_inset
@@ -6549,28 +6545,42 @@ Address
 
 \end_deeper
 \begin_layout Standard
-The 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ Although it is possible to nest numbered section headings like 
 \family sans
-Caption
+Chapter
 \family default
- environment doesn't really fit anywhere, since it's only used inside of
- 
+, 
 \family sans
-Table
+Section
+\family default
+, etc.
 \begin_inset space ~
 \end_inset
 
-Floats
-\family default
- and 
-\family sans
-Figure
+to e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space ~
 \end_inset
 
-Floats
-\family default
-.
+lists, it is highly recommended not to do this.
+ Because the aim is to create well structured documents following usual
+ guidelines of typesetting, but nested section headings violates them.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -6622,11 +6632,11 @@ status open
 \series bold
 Note:
 \series default
- If you put a figure or a table in a 
+ Figures and tables in 
 \family sans
-Float
+Floats
 \family default
-, this is no longer true.
+ are not affected by this.
 \end_layout
 
 \end_inset

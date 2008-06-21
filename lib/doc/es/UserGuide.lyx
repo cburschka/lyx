@@ -4485,8 +4485,13 @@ no
 Normal
 \family default
 , se mantiene el entorno actual y se genera un nuevo ítem.
- Sin embargo, la profundidad de sangrado se reinicia, normalmente.
- Para mantener tanto la profundidad como el entorno, debes pulsar 
+ 
+\lang english
+The nesting depth is not also kept.
+ If you want to keep the paragraph environment but reset the current nesting
+ depth, you can use
+\lang spanish
+ 
 \family sans
 M-Intro
 \family default
@@ -6790,82 +6795,6 @@ anidación No pueden anidarse.
 \begin_layout Itemize
 
 \family sans
-Parte
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Capítulo
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Sección
-\family default
- 
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Subsección
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Subsubsección
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Párrafo
-\family default
- 
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Subpárrafo
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Parte*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Capítulo*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Sección*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Subsección*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Subsubsección*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
 Bibliografía
 \end_layout
 
@@ -6972,6 +6901,82 @@ Normal
 \begin_layout Itemize
 
 \family sans
+Parte
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Capítulo
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Sección
+\family default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Subsección
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Subsubsección
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Párrafo
+\family default
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Subpárrafo
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Parte*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Capítulo*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Sección*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Subsección*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Subsubsección*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
 Dirección
 \begin_inset space ~
 \end_inset
@@ -6987,27 +6992,48 @@ Dirección
 
 \end_deeper
 \begin_layout Standard
-El entorno 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota:
+\series default
+ 
+\lang english
+Although it is possible to nest numbered section headings like
+\lang spanish
+ 
 \family sans
-Encabezado
+Parte
 \family default
- no encaja en ningún tipo, porque sólo se emplea en 
+, 
 \family sans
-Tablas
+Capítulo
+\family default
+, 
+\lang english
+etc.
 \begin_inset space ~
 \end_inset
 
-Flotantes
-\family default
- y 
-\family sans
-Figuras
+to e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space ~
 \end_inset
 
-Flotantes
-\family default
-.
+lists, it is highly recommended not to do this.
+ Because the aim is to create well structured documents following usual
+ guidelines of typesetting, but nested section headings violates them.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -7059,11 +7085,13 @@ status open
 \series bold
 Nota:
 \series default
- Si pones una figura o una tabla en un 
+ Figuras y tablas en 
 \family sans
 Flotant
 \family default
-e, esto ya no es cierto.
+es 
+\lang english
+are not affected by this.
 \end_layout
 
 \end_inset
