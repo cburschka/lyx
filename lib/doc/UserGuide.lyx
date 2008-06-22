@@ -44,6 +44,11 @@
 % redefine the greyed out note
 \renewenvironment{lyxgreyedout}
  {\textcolor{blue}\bgroup}{\egroup}
+
+% needed for correct index entry sorting as described
+\newcommand*{\OrgIndex}{}
+\let\OrgIndex\index
+\renewcommand*{\index}[1]{\OrgIndex{#1}}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
 \language english
@@ -25978,6 +25983,69 @@ The previous entry needn't to be a real existing entry, you can also use
  an example.
 \end_layout
 
+\begin_layout Standard
+Due to bugs in the index generation program 
+\family sans
+makeindex
+\family default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+See section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Index-Program"
+
+\end_inset
+
+ for index programs.
+\end_layout
+
+\end_inset
+
+, the index entry sorting can fail.
+ For example when you have the same index entry in normal text and in a
+ footnote, makeindex doesn't recognize them as identic entry at different
+ position.
+ To fix this, add this command sequence to your document preamble:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand*{
+\backslash
+OrgIndex}{}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+let
+\backslash
+OrgIndex
+\backslash
+index
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+renewcommand*{
+\backslash
+index}[1]{
+\backslash
+OrgIndex{#1}}
+\end_layout
+
 \begin_layout Subsection
 Index Entry Layout
 \begin_inset Index
@@ -25995,7 +26063,7 @@ Index ! Entry layout
 \begin_layout Standard
 You can change the appearance of insert entries via the textstyle dialog.
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Dummy entries ! 
@@ -26101,13 +26169,18 @@ name "sub:Index-Program"
 \end_layout
 
 \begin_layout Standard
-LyX uses for the index generation by default the program 
+When the index entry program 
+\family sans
+xindy
+\family default
+ is installed, that is only available for Linux, LyX uses it for the index
+ generation, otherwise the program 
 \family sans
 makeindex
 \family default
-.
- It can be controlled by options that can be set in LyX's preferences dialog,
- see section
+ is used, that is part of every LaTeX distribution.
+ Both programs can be controlled by options that can be set in LyX's preferences
+ dialog, see section
 \begin_inset space ~
 \end_inset
 
@@ -26122,7 +26195,7 @@ reference "sub:LaTeX-settings"
  The available options are listed and explained in 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "makeindex"
+key "makeindex,xindy"
 
 \end_inset
 
@@ -26130,19 +26203,7 @@ key "makeindex"
 \end_layout
 
 \begin_layout Standard
-You can also specify there another program to generate the index, for example
- 
-\family sans
-xindy
-\family default
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "xindy"
-
-\end_inset
-
-.
+You can also specify there another program to generate the index.
 \end_layout
 
 \begin_layout Section
