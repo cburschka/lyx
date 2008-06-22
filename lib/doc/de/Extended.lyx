@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 337
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass scrbook
@@ -154,7 +154,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 21.
+letzte Änderung: 23.
  Juni 2008
 \end_layout
 
@@ -4416,7 +4416,7 @@ Programm:
 \end_layout
 
 \begin_layout Subsection
-LaTeX (plain)
+LaTeX (normal)
 \begin_inset Index
 status collapsed
 
@@ -5149,7 +5149,7 @@ htlatex
 \end_layout
 
 \begin_layout Subsection
-LaTeX (pdflatex und plain)
+LaTeX (pdflatex und normal)
 \begin_inset Index
 status collapsed
 
@@ -5944,7 +5944,7 @@ X
 \begin_inset space \space{}
 \end_inset
 
-(plain)
+(normal)
 \family default
  und lassen Sie 
 \family typewriter
@@ -14835,7 +14835,7 @@ X
 status collapsed
 
 \begin_layout Plain Layout
-Actually you have the choice between LaTeX (plain) and pdflatex.
+Actually you have the choice between LaTeX (normal) and pdflatex.
  If you intend to use pdflatex to prepare the paper, you should use the
  pdflatex option so that included graphics are converted to PDF format,
  ready for use by pdflatex.

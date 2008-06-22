@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 326
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -13,6 +13,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -36,7 +37,6 @@
 \output_changes false
 \author "" 
 \author "" 
-\extra_embedded_files ""
 \end_header
 
 \begin_body
@@ -52,8 +52,8 @@ Willkommen bei LyX!
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 14.
- April 2008
+letzte Änderung: 17.
+ Juni 2008
 \end_layout
 
 \begin_layout Section*
@@ -106,16 +106,18 @@ Strg+D,
  oder klicken Sie auf 
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.png
-	embed ""
-	scale 85
-	BoundingBox 0bp 6bp 20bp 20bp
+	scale 70
+	BoundingBox 0bp 4bp 20bp 20bp
 
 \end_inset
 
 , wenn Sie die Werkzeugleiste 
 \family sans
 Ansicht\SpecialChar \menuseparator
-Werkzeugleisten
+Werk\SpecialChar \-
+zeug\SpecialChar \-
+leis\SpecialChar \-
+ten
 \family default
 \SpecialChar \menuseparator
 
@@ -141,7 +143,7 @@ LyX für LaTeX-Benutzer
 \end_inset
 
  lesen.
- Alle anderen brauchen sich keine Gedanken zu machen: Sie müssen (fast kein)
+ Alle anderen brauchen sich keine Gedanken zu machen: Sie müssen (fast)
  kein LaTeX lernen, um mit LyX zu arbeiten.
 \end_layout
 

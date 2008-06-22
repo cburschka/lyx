@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 337
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass scrbook
@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 22.
+letzte Änderung: 23.
  Juni 2008
 \end_layout
 
@@ -16760,7 +16760,7 @@ Kommentar
 
 \end_inset
 
- wird auch beim Exportieren nach LaTeX und plain text mit exportiert.
+ wird auch beim Exportieren nach LaTeX und Einfacher Text mit exportiert.
 \end_layout
 
 \end_deeper
@@ -35226,7 +35226,7 @@ X
 \begin_inset space \space{}
 \end_inset
 
-(plain)->HTML
+(normal)->HTML
 \family default
  festgelegt ist, nach HTML und zeigt es in dem Browser an, der in 
 \family sans
@@ -35291,7 +35291,7 @@ X
 \begin_inset space \space{}
 \end_inset
 
-(plain)->OpenDocument
+(normal)->OpenDocument
 \family default
  festgelegt ist, ins Open-Document-Format und zeigt es mit dem Programm
  an, das in 
