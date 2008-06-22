@@ -30135,67 +30135,12 @@ textit{Hilfe}
 
  das Stichwort Hilfe im Stichwortverzeichnis kursiv geschrieben.
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Dummy ! This@
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-textit
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
+\emph on
 dies ist kursiv
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -30221,9 +30166,10 @@ key "latexcompanion,latexguide,latexbook"
 
 \family typewriter
 This@
-\backslash
-textit{dies ist kursiv}
+\shape italic
+dies ist kursiv
 \family default
+\shape default
 
 \begin_inset Quotes grd
 \end_inset
@@ -30258,7 +30204,7 @@ reference "Mediävalziffern-verwenden"
 
 ) ausgibt.
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Mediävalziffern|oldstylenums
@@ -30505,7 +30451,7 @@ name "Nomenklatur/Glossar"
 
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Nomenklatur
@@ -30515,7 +30461,7 @@ Nomenklatur
 
 /Glossar
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Glossar
@@ -30524,12 +30470,6 @@ Glossar
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-von 
-\noun on
-Özgür Ug̃raş Baran
 \end_layout
 
 \begin_layout Standard
@@ -30606,7 +30546,7 @@ Symbol
 \begin_layout Subsection
 Nomenklatur-Einträge sortieren
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Glossar!sortieren
@@ -30713,7 +30653,7 @@ nomencl
 \begin_layout Subsection
 Nomenklatur-Optionen
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Glossar!Optionen@-Optionen
