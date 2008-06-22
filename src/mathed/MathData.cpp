@@ -382,7 +382,8 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc)
 	// go over the array and look for macros
 	for (size_t i = 0; i < size(); ++i) {
 		MathMacro * macroInset = operator[](i).nucleus()->asMacro();
-		if (!macroInset)
+		if (!macroInset || macroInset->name_[0] == '^'
+				|| macroInset->name_[0] == '_')
 			continue;
 		
 		// get macro
