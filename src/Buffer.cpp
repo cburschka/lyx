@@ -115,7 +115,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 337;
+int const LYX_FORMAT = 338; //Uwe: support for polytonic Greek
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;

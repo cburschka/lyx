@@ -2584,6 +2584,23 @@ def revert_plainlayout(document):
         i += 1
 
 
+def revert_polytonicgreek(document):
+    "Set language polytonic Greek to Greek"
+    i = 0
+    if document.language == "polutonikogreek":
+        document.language = "greek"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language greek"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang polutonikogreek", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang polutonikogreek", "\\lang greek")
+        j = j + 1
+
+
 ##
 # Conversion hub
 #
@@ -2650,9 +2667,11 @@ convert = [[277, [fix_wrong_tables]],
            [335, [convert_InsetSpace]],
            [336, []],
            [337, [convert_display_enum]],
+           [338, []],
           ]
 
-revert =  [[336, [revert_display_enum]],
+revert =  [[337, [revert_polytonicgreek]],
+           [336, [revert_display_enum]],
            [335, [remove_fontsCJK]],
            [334, [revert_InsetSpace]],
            [333, [revert_paper_sizes]],
