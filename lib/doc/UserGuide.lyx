@@ -44,11 +44,6 @@
 % redefine the greyed out note
 \renewenvironment{lyxgreyedout}
  {\textcolor{blue}\bgroup}{\egroup}
-
-% needed for correct index entry sorting as described
-\newcommand*{\OrgIndex}{}
-\let\OrgIndex\index
-\renewcommand*{\index}[1]{\OrgIndex{#1}}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
 \language english
@@ -25981,69 +25976,6 @@ maïs@maison
 The previous entry needn't to be a real existing entry, you can also use
  another word to tell LaTeX the entry order, see the next subsection for
  an example.
-\end_layout
-
-\begin_layout Standard
-Due to bugs in the index generation program 
-\family sans
-makeindex
-\family default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-See section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Index-Program"
-
-\end_inset
-
- for index programs.
-\end_layout
-
-\end_inset
-
-, the index entry sorting can fail.
- For example when you have the same index entry in normal text and in a
- footnote, makeindex doesn't recognize them as identic entry at different
- position.
- To fix this, add this command sequence to your document preamble:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-newcommand*{
-\backslash
-OrgIndex}{}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-let
-\backslash
-OrgIndex
-\backslash
-index
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-renewcommand*{
-\backslash
-index}[1]{
-\backslash
-OrgIndex{#1}}
 \end_layout
 
 \begin_layout Subsection
