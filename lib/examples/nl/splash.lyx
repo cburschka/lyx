@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,28 +35,24 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 Welkom bij LyX!
 \end_layout
 
 \begin_layout Section*
-
 De Belangrijkste Dingen die je moet weten als je LyX gebruikt
 \end_layout
 
 \begin_layout Enumerate
-
 LyX komt met zeer goede documentatie---gebruik die! De documentatie is momenteel
  nog niet volledig in het Nederlands vertaald maar wordt tevens in het Engels
  meegeleverd.
- Begin met
-\family default
- 
+ Begin met 
 \family sans
 \bar under
 H
@@ -67,9 +65,7 @@ I
 ntroduction
 \family default
 , wat je een korte inleiding tot de documentatie zal geven.
- Leer daarna LyX te gebruiken met
-\family default
- 
+ Leer daarna LyX te gebruiken met 
 \family sans
 \bar under
 H
@@ -85,7 +81,6 @@ utorial
 \end_layout
 
 \begin_layout Enumerate
-
 LyX noemen we een 
 \begin_inset Quotes eld
 \end_inset
@@ -101,8 +96,7 @@ document verwerker.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Hebben we al verteld dat je de documentatie moet lezen?
 \end_layout
 
@@ -112,13 +106,9 @@ Hebben we al verteld dat je de documentatie moet lezen?
 \end_layout
 
 \begin_layout Enumerate
-
-Het resultaat van LyX ziet er prachtig uit! Doe
-\family default
- 
+Het resultaat van LyX ziet er prachtig uit! Doe 
 \family sans
 nu
-\bar default
 \family default
  
 \family sans
@@ -136,12 +126,9 @@ VI
 \end_layout
 
 \begin_layout Enumerate
-
 Jazeker, LyX kan (bijna) alle LaTeX functionaliteit nabootsen.
  En ja, LyX kan LaTeX bestanden importeren.
- Ervaren LaTeX gebruikers kunnen de rest van de
-\emph default
- 
+ Ervaren LaTeX gebruikers kunnen de rest van de 
 \emph on
 Tutorial
 \emph default
@@ -159,21 +146,16 @@ LyX for LaTeX Users
 \end_layout
 
 \begin_layout Enumerate
-
 LyX heeft veel extras voor mensen die in een andere taal lezen of schrijven
  dan het Engels.
  Daarnaast zijn de sneltoetsen, de knoppenbalk en veel andere zaken uiterst
  configureerbaar.
- (Meestal door je
-\family default
- 
+ (Meestal door je 
 \family typewriter
 lyxrc
 \family default
  bestand te bewerken).
- Zie
-\family default
- 
+ Zie 
 \family sans
 \bar under
 H
@@ -189,14 +171,17 @@ ustomization
 \end_layout
 
 \begin_layout Enumerate
-
-De LyX home page is
-\family default
- 
+De LyX home page is 
 \family typewriter
 
-\begin_inset LatexCommand url
-target "http://www.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
+
 \end_inset
 
 

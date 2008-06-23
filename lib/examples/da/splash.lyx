@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,25 +35,21 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 Velkommen til LyX!
 \end_layout
 
 \begin_layout Section*
-
 7 ting du bør vide om brugen af LyX
 \end_layout
 
 \begin_layout Enumerate
-
-LyX indeholder grundig dokumentation --- brug den! Start med
-\family default
- 
+LyX indeholder grundig dokumentation --- brug den! Start med 
 \family sans
 \bar under
 H
@@ -65,11 +63,8 @@ ntroduktion
 \family default
 , som vil give dig et meget kort overblik over dokumentationen\SpecialChar \@.
  Lær derefter
- om LyX med
-\family default
- 
+ om LyX med 
 \family sans
-
 \bar under
 H
 \bar default
@@ -83,7 +78,6 @@ ennemgang\SpecialChar \@.
 \end_layout
 
 \begin_layout Enumerate
-
 LyX er, hvad vi kalder en 
 \begin_inset Quotes sld
 \end_inset
@@ -99,10 +93,9 @@ dokumentbehandler
  smule anderledes\SpecialChar \@.
  Dokumentationen vil gøre dette tydeligt for dig
 \begin_inset Foot
-status open
+status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Fik vi nævnt, at du bør læse dokumentationen?
 \end_layout
 
@@ -112,10 +105,7 @@ Fik vi nævnt, at du bør læse dokumentationen?
 \end_layout
 
 \begin_layout Enumerate
-
-Resultaterne fra LyX ser fantastiske ud! Vælg
-\family default
- 
+Resultaterne fra LyX ser fantastiske ud! Vælg 
 \family sans
 \bar under
 V
@@ -131,13 +121,10 @@ VI
 \end_layout
 
 \begin_layout Enumerate
-
 Ja, LyX kan efterligne (næsten) al LaTeX's funktioner\SpecialChar \@.
  Og ja, LyX kan importere
  LaTeX-filer\SpecialChar \@.
- Erfarne LaTeX-brugere kan skimme resten af
-\emph default
- 
+ Erfarne LaTeX-brugere kan skimme resten af 
 \emph on
 Gennemgangen
 \emph default
@@ -156,20 +143,15 @@ LyX for LaTeX-brugere
 \end_layout
 
 \begin_layout Enumerate
-
 LyX har mange funktioner for dem, der læser eller skriver på andre sprog
  end engelsk\SpecialChar \@.
  Derover kan tastebindinger, værktøjslinie og mange andre egenskaber
- kan ændres (de fleste ved at rette i
-\family default
- 
+ kan ændres (de fleste ved at rette i 
 \family typewriter
 lyxrc
 \family default
 -filen).
- Se
-\family default
- 
+ Se 
 \family sans
 \bar under
 H
@@ -186,14 +168,17 @@ ersonliggørelse
 \end_layout
 
 \begin_layout Enumerate
-
-LyX's hjemmeside er på
-\family default
- 
+LyX's hjemmeside er på 
 \family typewriter
 
-\begin_inset LatexCommand url
-target "http://www.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
+
 \end_inset
 
 

@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,7 +35,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "Pavel Sanda"
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -48,37 +51,18 @@ Co byste měli vědět pro používání LyXu
 
 \begin_layout Enumerate
 LyX přichází s
-\family roman
-\series medium
-\shape up
 \size largest
-\emph off
-\bar no
 \noun off
 \color none
-\emph default
-\shape default
-\series default
-\family default
-\bar default
  
-\emph off
-\shape up
-\series medium
-\family roman
-\bar no
-\color none
-
-\family default
-\series default
-\shape default
 \size default
-\emph default
-\bar default
 \noun default
 \color inherit
 výbornou dokumentací---prosíme používejte ji! Český úvod můžete najít v
- menu Nápověda -> Průvodce\InsetSpace ~
+ menu Nápověda -> Průvodce
+\begin_inset space ~
+\end_inset
+
 LyXem.
  
 \end_layout
@@ -99,7 +83,7 @@ editorem dokumentů.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Už jsme se zmínili o tom, že byste si mohli přečíst dokumnetaci?
 \end_layout
 
@@ -116,9 +100,7 @@ Výstup z LyXu vypadá skvěle! Zkuste vybrat v menu Prohlížet -> DVI, ať se
 \begin_layout Enumerate
 LyX umí napodobit (téměř) veškerou funkcionalitu LaTeXu.
  A ano, LyX umí importovat LaTeXové soubory.
- Zkušení uživatelé LaTeXu mohou jen zbežně prolétnout začátek
-\emph default
- 
+ Zkušení uživatelé LaTeXu mohou jen zbežně prolétnout začátek 
 \emph on
 Průvodce
 \emph default
@@ -144,13 +126,16 @@ LyX nabízí mnoho možností lidem, kteří čtou a píší jiným jazykem, ne�
 \end_layout
 
 \begin_layout Enumerate
-Domácí stránka LyXu je na
-\family default
- 
+Domácí stránka LyXu je na 
 \family typewriter
 
-\begin_inset LatexCommand url
-target "http://www.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
 
 \end_inset
 

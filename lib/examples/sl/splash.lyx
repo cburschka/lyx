@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,26 +35,22 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 Dobrodošli v LyXu!
 \end_layout
 
 \begin_layout Section*
-
 Najpomembnejše, kar morate vedeti, ko uporabljate LyX
 \end_layout
 
 \begin_layout Enumerate
-
 LyXu je priložena izvrstna dokumentacija (v angleščini, deloma tudi v slovenščin
-i) -- prosimo, uporabljajte jo! Začnite s
-\family default
- 
+i) -- prosimo, uporabljajte jo! Začnite s 
 \family sans
 \bar under
 P
@@ -65,9 +63,7 @@ U
 vod
 \family default
 , ki vam ponuja zelo kratek uvod v dokumentacijo.
- Potem se učite uporabljati LyX s postavko
-\family default
- 
+ Potem se učite uporabljati LyX s postavko 
 \family sans
 \bar under
 P
@@ -83,7 +79,6 @@ enik
 \end_layout
 
 \begin_layout Enumerate
-
 LyX je tako imenovani 
 \begin_inset Quotes gld
 \end_inset
@@ -100,8 +95,7 @@ stavnik spisov
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Saj smo omenili, da bi morali prebrati dokumentacijo, kajne?
 \end_layout
 
@@ -111,10 +105,7 @@ Saj smo omenili, da bi morali prebrati dokumentacijo, kajne?
 \end_layout
 
 \begin_layout Enumerate
-
-Izhod LyXa je videti čudovit! Izberite
-\family default
- 
+Izhod LyXa je videti čudovit! Izberite 
 \family sans
 \bar under
 O
@@ -130,12 +121,9 @@ VI
 \end_layout
 
 \begin_layout Enumerate
-
 Da, LyX lahko posnema (skoraj) vso uporabnost LaTeXa.
  In da, LyX lahko uvaža datoteke za LaTeX.
- Izkušeni uporabniki LaTeXa naj bi preleteli preostanek
-\emph default
- 
+ Izkušeni uporabniki LaTeXa naj bi preleteli preostanek 
 \emph on
 Učbenika
 \emph default
@@ -153,20 +141,15 @@ LyX za uporabnike LaTeXa
 \end_layout
 
 \begin_layout Enumerate
-
 LyX skriva marsikaj koristnega za tiste, ki berejo ali pišejo v kakem drugem
  jeziku, ne v angleščini.
  Poleg tega so tipkovne povezave, orodna vrstica in številne druge značilnosti
- silno nastavljive (večinoma z urejanjem datoteke
-\family default
- 
+ silno nastavljive (večinoma z urejanjem datoteke 
 \family typewriter
 lyxrc
 \family default
 ).
- Podrobnosti najdete v
-\family default
- 
+ Podrobnosti najdete v 
 \family sans
 \bar under
 P
@@ -182,22 +165,22 @@ rilagoditev
 \end_layout
 
 \begin_layout Enumerate
-
 Domača stran LyXa je
 \family typewriter
-\lang slovene
  
-\lang english
+\begin_inset Flex URL
+status collapsed
 
-\begin_inset LatexCommand url
-target "http://www.lyx.org/"
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
+
 \end_inset
 
 
 \family default
 .
-
-\lang slovene
  Poučite se o LyXu, prijavite se na dopisne sezname o njem, podajte se na
  grafično odpravo po njem in podobno.
 \end_layout

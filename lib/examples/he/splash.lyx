@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass heb-article
@@ -16,9 +16,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -36,26 +38,22 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "usti"
-\author "ran"
-\author "E"
-\author "Ran Rutenberg" ran.rutenberg@gmail.com
+\author "" 
+\author "" 
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-ברוכים הבאים ל-
-\lang hebrew
- 
+ברוכים הבאים ל- 
 \lang english
 LyX
 \end_layout
 
 \begin_layout Section*
-כמה נקודות שחשוב לדעת על שימוש ב-
-\lang hebrew
- 
+כמה נקודות שחשוב לדעת על שימוש ב- 
 \lang english
 LyX
 \end_layout
@@ -64,7 +62,7 @@ LyX
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 עברית
 \end_layout
 
@@ -74,9 +72,7 @@ status collapsed
 \lang english
 LyX
 \lang hebrew
- מגיע עם מסמכי תיעוד ועזרה מצויינים
-\lang hebrew
- 
+ מגיע עם מסמכי תיעוד ועזרה מצויינים 
 \lang english
 ---
 \lang hebrew
@@ -104,12 +100,13 @@ LyX
 \begin_inset Formula $\vartriangleleft$
 \end_inset
 
-השיעור\InsetSpace ~
+השיעור
+\begin_inset space ~
+\end_inset
+
 המודרך
 \family default
- על מנת ללמוד איך להשתמש ב-
-\lang hebrew
- 
+ על מנת ללמוד איך להשתמש ב- 
 \lang english
 LyX
 \lang hebrew
@@ -117,9 +114,7 @@ LyX
 \end_layout
 
 \begin_layout Enumerate
-אנחנו מתייחסים אל
-\lang hebrew
- 
+אנחנו מתייחסים אל 
 \lang english
 LyX
 \lang hebrew
@@ -130,7 +125,7 @@ LyX
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 האם כבר הזכרנו כמה חשוב לקרוא אותם?
 \end_layout
 
@@ -140,15 +135,11 @@ status collapsed
 \end_layout
 
 \begin_layout Enumerate
-הפלט שיוצא מ-
-\lang hebrew
- 
+הפלט שיוצא מ- 
 \lang english
 LyX
 \lang hebrew
- נראה פשוט נהדר
-\lang hebrew
- 
+ נראה פשוט נהדר 
 \lang english
 --
 \lang hebrew
@@ -179,7 +170,7 @@ vi
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 עברית
 \end_layout
 
@@ -189,22 +180,16 @@ status collapsed
 \lang english
 LyX
 \lang hebrew
- מסוגל לחקות )כמעט( את כל האפשרויות של
-\lang hebrew
- 
+ מסוגל לחקות )כמעט( את כל האפשרויות של 
 \lang english
 LaTeX
 \lang hebrew
-, והוא מסוגל לייבא קבצי
-\lang hebrew
- 
+, והוא מסוגל לייבא קבצי 
 \lang english
 LaTeX
 \lang hebrew
 .
- משתמשי
-\lang hebrew
- 
+ משתמשי 
 \lang english
 LaTeX
 \lang hebrew
@@ -216,21 +201,15 @@ LaTeX
 \lang english
 LyX
 \lang hebrew
- למשתמשי
-\lang hebrew
- 
+ למשתמשי 
 \lang english
 LaTeX
 \lang hebrew
-" )כל השאר אל תדאגו! לא צריך לדעת
-\lang hebrew
- 
+" )כל השאר אל תדאגו! לא צריך לדעת 
 \lang english
 LaTeX
 \lang hebrew
- בשביל להשתמש ב-
-\lang hebrew
- 
+ בשביל להשתמש ב- 
 \lang english
 LyX
 \lang hebrew
@@ -241,7 +220,7 @@ LyX
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 עברית
 \end_layout
 
@@ -268,28 +247,32 @@ LyX
 \begin_inset Formula $\vartriangleleft$
 \end_inset
 
-התאמה\InsetSpace ~
+התאמה
+\begin_inset space ~
+\end_inset
+
 אישית.
 \end_layout
 
 \begin_layout Enumerate
-דף הבית של
-\lang hebrew
- 
+דף הבית של 
 \lang english
 LyX
 \lang hebrew
  הוא: 
-\begin_inset LatexCommand htmlurl
-target "http://www.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org
+\end_layout
 
 \end_inset
 
 .
  באתר זה תוכלו לקבל מידע נוסף על התוכנה, להרשם לרשימות הדיוור וללמוד מהסיור
- המודרך של
-\lang hebrew
- 
+ המודרך של 
 \lang english
 LyX
 \lang hebrew

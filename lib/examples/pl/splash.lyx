@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,26 +35,22 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 Witaj w LyXie!
 \end_layout
 
 \begin_layout Section*
-
 Kilka uwag zanim rozpoczniesz pracę z LyXem
 \end_layout
 
 \begin_layout Enumerate
-
 Pakiet LyXa zawiera wspaniałą (angielskojęzyczną) dokumentację---używaj
- jej! Rozpocznij w
-\family default
- 
+ jej! Rozpocznij w 
 \family sans
 \bar under
 P
@@ -64,9 +62,7 @@ W
 prowadzenie
 \family default
 , da Ci to krótkie wprowadzenie do dokumentacji.
- Potem poczytaj o LyXie w
-\family default
- 
+ Potem poczytaj o LyXie w 
 \family sans
 \bar under
 P
@@ -81,7 +77,6 @@ amouczek
 \end_layout
 
 \begin_layout Enumerate
-
 Zwiemy LyXa 
 \begin_inset Quotes eld
 \end_inset
@@ -98,8 +93,7 @@ procesorem tekstu
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Czy wspomnieliśmy już, że powinieneś przeczytać dokumentację?
 \end_layout
 
@@ -109,29 +103,34 @@ Czy wspomnieliśmy już, że powinieneś przeczytać dokumentację?
 \end_layout
 
 \begin_layout Enumerate
-
-Wynik pracy wygląda naprawdę wspaniale! Wybierz teraz
-\family default
- 
+Wynik pracy wygląda naprawdę wspaniale! Wybierz teraz 
 \family sans
 \bar under
 P
 \bar default
-lik->Podgląd\InsetSpace ~
+lik->Podgląd
+\begin_inset space ~
+\end_inset
+
 dvi
 \family default
  by zobaczyć ten dokument w całej okazałości.
 \end_layout
 
 \begin_layout Enumerate
-
 Pakiet zawiera wiele szablonów (
 \family sans
 \bar under
 P
 \bar default
-lik->Nowy\InsetSpace ~
-z\InsetSpace ~
+lik->Nowy
+\begin_inset space ~
+\end_inset
+
+z
+\begin_inset space ~
+\end_inset
+
 szablonu
 \family default
 ) i przykładów (
@@ -149,12 +148,9 @@ rz).
 \end_layout
 
 \begin_layout Enumerate
-
 Tak, LyX potrafi wszystko (prawie) to co LaTeX.
  Potrafi także importować pliki LaTeXa.
- Użytkownicy znający już LaTeXa powinni pominąć resztę
-\emph default
- 
+ Użytkownicy znający już LaTeXa powinni pominąć resztę 
 \emph on
 Samouczka
 \emph default
@@ -170,12 +166,9 @@ LyX for LaTeX Users
 \end_layout
 
 \begin_layout Enumerate
-
 LyX potrafi także pracować dla tych z Was, którzy mówią w innym niż angielski
  języku.
- Zobacz w
-\family default
- 
+ Zobacz w 
 \family sans
 \bar under
 P
@@ -190,12 +183,20 @@ onfiguracja
 \end_layout
 
 \begin_layout Enumerate
-
-Oficjalna strona LyXa to
-\family default
- 
+Oficjalna strona LyXa to 
 \family typewriter
-www.lyx.org
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org
+\end_layout
+
+\end_inset
+
+
 \family default
 .
  Znajdziesz tam informacje o LyXie, możesz zapisać się na LyXowe listy dyskusyjn

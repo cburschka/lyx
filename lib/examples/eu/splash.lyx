@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,25 +35,22 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 Ongietorri LyX-era!
 \end_layout
 
 \begin_layout Section*
-
 LyX erabiltzean lehendabizi jakin beharreko gauzak
 \end_layout
 
 \begin_layout Enumerate
-
 LyX-ek laguntza eskuliburu bikain bat dauka (erabil ezazu).
-
-\family default
  
 \family sans
 \bar under
@@ -65,9 +64,7 @@ S
 arrera
 \family default
  zerrenda aukerarekin hasi (eskuliburuei buruzko sarreratxo bat da).
- Ondoren,
-\family default
- 
+ Ondoren, 
 \family sans
 \bar under
 L
@@ -79,14 +76,12 @@ T
 \bar default
 utoretza-n
 \family default
- 
-laguntzaz LyX erabiltzen ikasi
+ laguntzaz LyX erabiltzen ikasi
 \family sans
 .
 \end_layout
 
 \begin_layout Enumerate
-
 LyX 
 \begin_inset Quotes eld
 \end_inset
@@ -103,8 +98,7 @@ idazki prozesatzailea
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Laguntzako eskuliburuak irakurtzea komeni zaizkizula esan al dizugu?
 \end_layout
 
@@ -114,25 +108,23 @@ Laguntzako eskuliburuak irakurtzea komeni zaizkizula esan al dizugu?
 \end_layout
 
 \begin_layout Enumerate
-
 LyX-en irteera emaitzak (output) itxura hobezina dauka.
- Begiztatzeko
-\family default
- 
+ Begiztatzeko 
 \family sans
 \bar under
 F
 \bar default
 itxategia\SpecialChar \menuseparator
-Dvi\InsetSpace ~
+Dvi
+\begin_inset space ~
+\end_inset
+
 ikusi
 \family default
- 
-lan dezakezu (une honetan adibidez).
+ lan dezakezu (une honetan adibidez).
 \end_layout
 
 \begin_layout Enumerate
-
 Bai,.
  LyX-ek LaTeX-en betebeharreko ia dena errepika (edo landu) dezake.
  Eta bai, LyX-ek LaTeX-eko fitxategiak beregana (
@@ -144,9 +136,7 @@ itxategia\SpecialChar \menuseparator
 Barneratu
 \family default
 ) ditzake.
- LaTeX-eko erabiltzaile adituei
-\emph default
- 
+ LaTeX-eko erabiltzaile adituei 
 \emph on
 Tutoretzako
 \emph default
@@ -165,19 +155,14 @@ LyX LaTeX-eko erabiltzaileentzat
 \end_layout
 
 \begin_layout Enumerate
-
 Inglesez gain beste edozein hizkuntzetan idazten edo irakurtzen duten erabiltzai
 leentzat abantaila ugari daude.
  Gainera tekla elkarte, tresna barra eta beste hainbat ezaugarriek egokitze
- maila handia eskeintzen diote (ia dena
-\family default
- 
+ maila handia eskeintzen diote (ia dena 
 \family typewriter
 lyxrc
 \family default
  fitxategia landuz).
-
-\family default
  
 \family sans
 \bar under
@@ -194,22 +179,23 @@ gokitua
 \end_layout
 
 \begin_layout Enumerate
-
-LyX-en Interneteko orria
-\family default
- 
+LyX-en Interneteko orria 
 \family typewriter
 
-\begin_inset LatexCommand url
-target "http://www.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
+
 \end_inset
 
 
 \family default
  da.
  Bertan programari buruzko informazioa lortu, gutun zerrendetan harpidetu,
-
-\emph default
  
 \emph on
 LyX-eko Marrazkidun Ibilalditxoa (edo Tour)

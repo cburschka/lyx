@@ -1,9 +1,9 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 313
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass article
-\language japanese-plain
+\language japanese
 \inputencoding default
 \font_roman default
 \font_sans default
@@ -13,6 +13,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -82,9 +83,9 @@ T
 LyXは、われわれが「文書プロセッサ」と呼ぶところのものです。デザインとして、通常のワードプロセッサとは違います−−−文書を書くことを簡単にするのです。しかし、
 違いはわずかですので、恐れることはありません。取扱説明書を読めば、すべてあきらかになるでしょう。
 \begin_inset Foot
-status open
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 取扱説明書を読んでくださいともう言いましたっけ。
 \end_layout
 
@@ -139,7 +140,7 @@ LyXのホームページは、
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://www.lyx.org/
 \end_layout

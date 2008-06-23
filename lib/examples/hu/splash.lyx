@@ -1,5 +1,5 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass article
@@ -17,9 +17,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -98,10 +100,9 @@ szövegszerkesztőnek
  De ez csak egy kis különbség, szóval ne ijedjen meg.
  A dokumentációból minden világos lesz.
 \begin_inset Foot
-status open
+status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
 Eléggé kihangsúlyoztuk, hogy el kellene olvasni a dokumentációt?
 \end_layout
 
@@ -169,23 +170,42 @@ streszabás
 
 \begin_layout Enumerate
 A LyX honlapja a következő címen található meg: 
-\begin_inset LatexCommand url
-target "http://www.lyx.org/"
+\family typewriter
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
 
 \end_inset
 
+
+\family default
 .
  Itt további információkat tudhat meg a LyX-ről, feliratkozhat a levelezőlistákr
 a, vagy megnézheti hogyan néz ki a LyX menetközben stb\SpecialChar \ldots{}
 
-\newline
-A LyX magyar honlapja
- a 
-\begin_inset LatexCommand url
-target "http://www.lyx.hu"
+\begin_inset Newline newline
+\end_inset
+
+A LyX magyar honlapja a 
+\family typewriter
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.hu
+\end_layout
 
 \end_inset
 
+
+\family default
  címen található meg.
  Innen letöltheti a legfrissebb magyar dokumentációs fájlokat, amelyeket
  az eredeti csomag még nem tartalmaz.
