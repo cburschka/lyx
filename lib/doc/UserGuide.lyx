@@ -463,7 +463,7 @@ Configuration
 status collapsed
 
 \begin_layout Plain Layout
-The two braces in the ERT box prevent that the term 
+The two braces in the TeX Code box prevent that the term 
 \begin_inset Quotes eld
 \end_inset
 
@@ -472,14 +472,14 @@ LaTeX
 \end_inset
 
  is printed with sub- and superscript letters.
- More on ERT is described in section
+ More about TeX Code is described in section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:ERT"
+reference "sec:TeX-Code"
 
 \end_inset
 
@@ -5360,11 +5360,11 @@ List
 HFills
 \family default
  to change how LyX justifies the item label.
- We'll document 
+ 
 \family sans
-HFills
+Hfills
 \family default
- later in section
+ are documented in section
 \begin_inset space ~
 \end_inset
 
@@ -8605,7 +8605,7 @@ name "tab:Width-of-the"
 
 \end_inset
 
-Width of the different horizotal spaces.
+Width of the different horizontal spaces.
 \end_layout
 
 \end_inset
@@ -8855,11 +8855,11 @@ Spacing ! Fills
 \end_layout
 
 \begin_layout Standard
-Horizontal fills (hfills) are a special LyX feature for adding extra space
+Horizontal fills (HFills) are a special LyX feature for adding extra space
  in a uniform fashion.
- An hfill is actually a variable length space, whose length always equals
+ An HFill is actually a variable length space, whose length always equals
  the remaining space between the left and right margins.
- If there is more than one hfill on a line, they divide the available space
+ If there is more than one HFill on a line, they divide the available space
  equally between themselves.
  
 \end_layout
@@ -8981,11 +8981,11 @@ hidden
 \begin_inset Quotes erd
 \end_inset
 
- hfill inside of the label of the 
+ HFill inside of the label of the 
 \family sans
 List
 \family default
- environment; it's put at the end of the label automatically.) Hfills work
+ environment; it's put at the end of the label automatically.) HFills work
  similarly in other 
 \begin_inset Quotes eld
 \end_inset
@@ -9006,12 +9006,12 @@ status open
 \series bold
 Note:
 \series default
- If an hfill is at the beginning of a line, and 
+ If an HFill is at the beginning of a line, and 
 \emph on
 not
 \emph default
  in the first line in a paragraph, LyX ignores it.
- This prevents hfills from accidentally being wrapped onto a new line.
+ This prevents HFills from accidentally being wrapped onto a new line.
  If you need space in this case anyway, set the 
 \family sans
 Protect
@@ -9127,7 +9127,28 @@ Edge
 \backslash
 phantom
 \series default
- in ERT.
+ in TeX Code
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+See sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:TeX-Code"
+
+\end_inset
+
+ for more information about TeX-Code.
+\end_layout
+
+\end_inset
+
+.
  In our case write the command 
 \series bold
 
@@ -9726,6 +9747,69 @@ Line
  you can insert horizontal lines that spans over the whole document columns
  width.
 \lyxline
+
+\end_layout
+
+\begin_layout Section
+Characters and Symbols
+\end_layout
+
+\begin_layout Standard
+You can directly enter all characters that are available on your keyboard.
+ You can also use special keyboard maps to be able to enter e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+characters needed for French with an English keyboard.
+ See section
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Keyboard-mapping"
+
+\end_inset
+
+ for informations how this is done.
+\end_layout
+
+\begin_layout Standard
+For the case where you need a character that is not on your keyboard, you
+ can use the 
+\family sans
+Symbols
+\family default
+ dialog via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Special Character\SpecialChar \menuseparator
+Symbols
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ Maybe not all symbols inserted with the symbols dialog can be displayed
+ when you are using a special screen font in LyX's preferences.
+ But the inserted symbols will in every case be displayed in the output.
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -10433,7 +10517,7 @@ click on the toolbar button
 \end_layout
 
 \begin_layout Itemize
-use the keybinding 
+use the key binding 
 \family sans
 M-c
 \begin_inset space ~
@@ -10538,7 +10622,7 @@ It's also a warning in addition to an example.
 \end_layout
 
 \begin_layout Standard
-You can always reset to the default font using the keybinding 
+You can always reset to the default font using the key binding 
 \family sans
 M-c
 \begin_inset space ~
@@ -10677,7 +10761,7 @@ Roman
  This is the Roman font family.
  Normally a serif font.
  It's also the default family.
- (keybinding 
+ (key binding 
 \begin_inset ERT
 status collapsed
 
@@ -10749,7 +10833,7 @@ Serif
 This is the Sans Serif font family.
 
 \family default
- (keybinding 
+ (key binding 
 \begin_inset ERT
 status collapsed
 
@@ -10795,7 +10879,7 @@ Typewriter
 This is the Typewriter font family.
 
 \family default
- (keybinding 
+ (key binding 
 \begin_inset ERT
 status collapsed
 
@@ -10865,7 +10949,7 @@ Bold
 This is the Bold font series.
 
 \series default
- (keybinding 
+ (key binding 
 \begin_inset ERT
 status collapsed
 
@@ -11009,7 +11093,7 @@ Tiny
  font size.
 
 \size default
- (keybinding 
+ (key binding 
 \begin_inset ERT
 status collapsed
 
@@ -11095,7 +11179,7 @@ Smallest
  font size
 \size default
 .
- (keybinding 
+ (key binding 
 \begin_inset ERT
 status collapsed
 
@@ -11149,7 +11233,7 @@ Smaller
  font size.
 
 \size default
- (keybinding 
+ (key binding 
 \begin_inset ERT
 status collapsed
 
@@ -11235,7 +11319,7 @@ Small
  font size.
 
 \size default
- (keybinding 
+ (key binding 
 \begin_inset ERT
 status collapsed
 
@@ -11318,7 +11402,7 @@ Normal
 
  font size.
  It's also the default size.
- (keybinding 
+ (key binding 
 \begin_inset ERT
 status collapsed
 
@@ -11404,7 +11488,7 @@ Large
  font size.
 
 \size default
- (keybinding 
+ (key binding 
 \begin_inset ERT
 status collapsed
 
@@ -11490,7 +11574,7 @@ Larger
  font size.
 
 \size default
- (keybinding 
+ (key binding 
 \begin_inset ERT
 status collapsed
 
@@ -11576,7 +11660,7 @@ Largest
  font size.
 
 \size default
- (keybinding 
+ (key binding 
 \begin_inset ERT
 status collapsed
 
@@ -11630,7 +11714,7 @@ Huge
  font size.
 
 \size default
- (keybinding 
+ (key binding 
 \begin_inset ERT
 status collapsed
 
@@ -11716,7 +11800,7 @@ Huger
  font size.
 
 \size default
- (keybinding 
+ (key binding 
 \begin_inset ERT
 status collapsed
 
@@ -11844,7 +11928,7 @@ Underbar
 This is text with Underbar on.
 
 \bar default
- (keybinding 
+ (key binding 
 \begin_inset ERT
 status collapsed
 
@@ -11929,7 +12013,7 @@ Caps
 Color
 \family default
  You can adjust the color of the text with this control.
- Notice that not all dvi-viewers are are able to display colors.
+ Notice that not all DVI-viewers are are able to display colors.
  Besides 
 \family sans
 No
@@ -13412,7 +13496,7 @@ mbox
 \backslash
 mbox
 \series default
-, we have to use ERT.
+, we have to use TeX Code.
  The result looks in LyX like:
 \end_layout
 
@@ -13426,14 +13510,14 @@ mbox
 \end_layout
 
 \begin_layout Standard
-To learn more about ERT, have a look at section
+To learn more about TeX Code, have a look at section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:ERT"
+reference "sec:TeX-Code"
 
 \end_inset
 
@@ -14216,7 +14300,7 @@ eX
 status collapsed
 
 \begin_layout Plain Layout
-The braces in ERT are here to avoid that the 
+The braces in TeX Code are here to avoid that the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -14225,7 +14309,7 @@ command
 \end_inset
 
  appear as proper name in the output, see the last paragraph of this section.
- To create proper names omit the ERT.
+ To create proper names omit the TeX Code.
 \end_layout
 
 \end_inset
@@ -14366,7 +14450,8 @@ TeX-3.14159
 
 \begin_layout Standard
 If you don't want to use proper names, e.g.
- in section headings, you can insert two empty braces in ERT in the word.
+ in section headings, you can insert two empty braces in TeX Code in the
+ word.
  This will look in LyX like: 
 \begin_inset Graphics
 	filename clipart/LaTeX.png
@@ -14377,14 +14462,14 @@ If you don't want to use proper names, e.g.
 \begin_inset Newline newline
 \end_inset
 
-For more about ERT, look at section
+For more about TeX Code, look at section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:ERT"
+reference "sec:TeX-Code"
 
 \end_inset
 
@@ -14537,7 +14622,7 @@ In the early days of word processors, page breaks went wherever the page
  for a new section printed at the very bottom of the page, the first line
  of a new paragraph all alone at the bottom of a page, or the last line
  of a paragraph at the top of a new page.
- These dangly-bits of text became known as 
+ These bits of text became known as 
 \emph on
 widows
 \emph default
@@ -14758,7 +14843,7 @@ This is text in a note box that appears framed in the output.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:ERT-Boxes"
+reference "sub:TeX-Code-Boxes"
 
 \end_inset
 
@@ -15953,7 +16038,7 @@ Settings
  current cell respectively.
  The vertical alignment of a column can only be adjusted when a column width
  is given.
- A given width will allow the cell to have linebreaks and multiple paragraphs
+ A given width will allow the cell to have line breaks and multiple paragraphs
  of text, see section
 \begin_inset space ~
 \end_inset
@@ -16288,7 +16373,7 @@ footer
 \end_layout
 
 \begin_layout Standard
-You can also specify a row where the table is splitted.
+You can also specify a row where the table is split.
  If you set more than one option in the same table row, you should be aware
  of the fact that only the first one is used in the given table row.
  The others will then be defined as 
@@ -24336,7 +24421,7 @@ reference "sub:Protected-Space"
 
 \end_inset
 
- between the cross-reference name and its number to avoid ugly linebreaks
+ between the cross-reference name and its number to avoid ugly line breaks
  between them.
 \end_layout
 
@@ -25106,7 +25191,7 @@ You can refer to the key of a bibliography entry using the menu
 Insert\SpecialChar \menuseparator
 Citation
 \family default
- or the toobar button 
+ or the toolbar button 
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_citation.png
 	BoundingBox 0bp 5bp 20bp 20bp
@@ -25180,7 +25265,7 @@ Bibliography ! Databases
 
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Bibliography ! BibTeX
@@ -25836,7 +25921,7 @@ GIF|see{Image formats}
 \end_layout
 
 \begin_layout Standard
-Where the braces have to be inserted as ERT.
+Where the braces have to be inserted as TeX Code.
  The text within the braces is the referenced entry.
  The reference will appear in the output without a page number.
 \end_layout
@@ -25907,7 +25992,7 @@ maître
 
 .
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Dummy entries ! maïs
@@ -25917,7 +26002,7 @@ Dummy entries ! maïs
 
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Dummy entries ! maître
@@ -25927,7 +26012,7 @@ Dummy entries ! maître
 
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Dummy entries ! maïs@maison
@@ -25993,7 +26078,7 @@ Index ! Entry layout
 \end_layout
 
 \begin_layout Standard
-You can change the appearance of insert entries via the textstyle dialog.
+You can change the appearance of insert entries via the text style dialog.
 \begin_inset Index
 status open
 
@@ -26238,7 +26323,7 @@ omenclature
 
 Entry
 \family default
- or the toobar button 
+ or the toolbar button 
 \begin_inset Graphics
 	filename ../images/nomencl-insert.png
 	BoundingBox 0bp 5bp 20bp 20bp
@@ -27232,10 +27317,10 @@ reference "sec:math-macros"
 \end_layout
 
 \begin_layout Section
-ERT and the LaTeX Syntax
+TeX Code and the LaTeX Syntax
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:ERT"
+name "sec:TeX-Code"
 
 \end_inset
 
@@ -27243,12 +27328,12 @@ name "sec:ERT"
 \end_layout
 
 \begin_layout Subsection
-ERT Boxes
+TeX Code Boxes
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-ERT
+TeX Code
 \end_layout
 
 \end_inset
@@ -27256,7 +27341,7 @@ ERT
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:ERT-Boxes"
+name "sub:TeX-Code-Boxes"
 
 \end_inset
 
@@ -27276,20 +27361,15 @@ As LyX uses LaTeX in the background, it supports many LaTeX commands and
 
 \begin_layout Standard
 But don't worry, you can use any LaTeX-command directly in LyX inside the
- ERT box.
- ERT stands for 
-\begin_inset Quotes eld
-\end_inset
-
-evil red text
-\begin_inset Quotes erd
-\end_inset
-
-, evil because LyX is designed to avoid that you have to use LaTeX-commands.
- An ERT box is created by the menu 
+ TeX Code box.
+ An TeX Code box is created by the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 TeX
+\begin_inset space ~
+\end_inset
+
+Code
 \family default
  or by the toolbar button 
 \begin_inset Graphics
@@ -27324,7 +27404,7 @@ Open
 \end_layout
 
 \begin_layout Standard
-You can insert complete or incomplete commands into ERT.
+You can insert complete or incomplete commands as TeX Code.
  Incomplete means that the command argument can be Standard LyX text.
  For example you want to draw a frame around a word and uses therefore the
  LaTeX-command 
@@ -27339,13 +27419,13 @@ fbox
 \backslash
 fbox{
 \series default
- in an ERT box before the word and the closing brace 
+ in a TeX Code box before the word and the closing brace 
 \series bold
 }
 \series default
- in a second ERT box behind the word.
- The word between the two ERT boxes is then the argument as it is in the
- following example:
+ in a second TeX Code box behind the word.
+ The word between the two TeX Code boxes is then the argument as it is in
+ the following example:
 \end_layout
 
 \begin_layout Standard
@@ -27604,8 +27684,8 @@ setkomafont
 Commands in the preamble affects the whole document, while commands in the
  text affects only the text after the command or only the text used as command
  argument.
- To insert a LaTeX-command in text, use the ERT box as described in the
- previous section.
+ To insert a LaTeX-command in text, use the TeX Code box as described in
+ the previous section.
 \end_layout
 
 \begin_layout Standard
@@ -28843,7 +28923,7 @@ Encoding
 use language's default encoding
 \family default
  is the preferred choice and works well in most cases.
- For details abhout the different encoding options see section
+ For details about the different encoding options see section
 \begin_inset space ~
 \end_inset
 
@@ -28859,6 +28939,13 @@ reference "sub:Settings"
 
 \begin_layout Subsection
 Keyboard mapping configuration
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Keyboard-mapping"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -34000,14 +34087,14 @@ The program
 \family typewriter
 dvipdfm
 \family default
- produces internally a dvi-file which is then converted to a pdf-file.
+ produces internally a DVI-file which is then converted to a PDF-file.
  It is a bit out of date and therefore the output could look different from
  what you want.
  
 \family typewriter
 pdflatex
 \family default
- produces directly pdf-files and supports the latest pdf-file formats.
+ produces directly PDF-files and supports the latest PDF-file formats.
 \end_layout
 
 \begin_layout Standard
@@ -35423,14 +35510,14 @@ TeX Code
 \end_layout
 
 \begin_layout Standard
-Inserts an ERT box, see section
+Inserts a TeX Code box, see section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:ERT-Boxes"
+reference "sub:TeX-Code-Boxes"
 
 \end_inset
 
@@ -36103,7 +36190,7 @@ Latex@LaTeX-packages ! inputenc
 
 \end_inset
 
- (first variant, for latin symbols and some others).
+ (first variant, for Latin symbols and some others).
 \end_layout
 
 \begin_layout Description
@@ -36111,7 +36198,7 @@ utf8x Unicode utf8 with the LaTeX-package
 \series bold
 inputenc
 \series default
- (second variant, for greek and CJK symbols and some others).
+ (second variant, for Greek and CJK symbols and some others).
 \end_layout
 
 \begin_layout Description
@@ -39540,7 +39627,7 @@ For an introduction to the LaTeX-Syntax, have a look at section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:ERT"
+reference "sec:TeX-Code"
 
 \end_inset
 
