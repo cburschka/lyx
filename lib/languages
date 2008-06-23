@@ -42,7 +42,7 @@ galician    galician	"Galician"	false  iso8859-15 gl_ES	 ""
 german      german	"German (old spelling)"	false  iso8859-15 de_DE	 ""
 ngerman     ngerman	"German"	false  iso8859-15 de_DE	 ""
 greek       greek	"Greek"		false  iso8859-7  el_GR	 ""
-polutonikogreek polutonikogreek	"Greek (polytonic)"	false  iso8859-7  el_GR	 "\makeatletter\let\lyx@tildeaccent\~\addto\extrasgreek{\bbl@deactivate{~}\let\~\lyx@tildeaccent}\makeatother"
+polutonikogreek polutonikogreek	"Greek (polytonic)"	false  iso8859-7  el_GR	 "\makeatletter\let\lyx@tildeaccent\~\addto\extraspolutonikogreek{\bbl@deactivate{~}\let\~\lyx@tildeaccent}\makeatother"
 hebrew      hebrew	"Hebrew"	true   cp1255     he_IL	 ""
 # "hungarian" is a synonym for the "magyar" babel language option
 # "hungarian" might be used for special purposes, see http://www.math.bme.hu/latex/magyar_pre_tug2004.pdf
