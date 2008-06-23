@@ -247,6 +247,9 @@ struct CharInfo {
 typedef map<char_type, CharInfo> CharInfoMap;
 CharInfoMap unicodesymbols;
 
+typedef std::set<char_type> CharSet;
+CharSet forced;
+
 
 /// The highest code point in UCS4 encoding (1<<20 + 1<<16)
 char_type const max_ucs4 = 0x110000;
@@ -335,7 +338,9 @@ docstring Encoding::latexChar(char_type c) const
 	// assure the used encoding is properly initialized
 	init();
 
-	if (c < start_encodable_)
+	if (iconvName_ == "UTF-8" && package_ == none)
+		return docstring(1, c);
+	if (c < start_encodable_ && !encodings.isForced(c))
 		return docstring(1, c);
 	if (encodable_.find(c) != encodable_.end())
 		return docstring(1, c);
@@ -573,6 +578,12 @@ bool Encodings::isKnownScriptChar(char_type const c, string & preamble)
 }
 
 
+bool Encodings::isForced(char_type c)
+{
+	return (!forced.empty() && forced.find(c) != forced.end());
+}
+
+
 Encoding const * Encodings::fromLyXName(string const & name) const
 {
 	EncodingList::const_iterator const it = encodinglist.find(name);
@@ -644,9 +655,10 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			flags = split(flags, flag, ',');
 			if (flag == "combining")
 				info.combining = true;
-			else if (flag == "force")
+			else if (flag == "force") {
 				info.force = true;
-			else
+				forced.insert(symbol);
+			} else
 				lyxerr << "Ignoring unknown flag `" << flag
 				       << "' for symbol `0x"
 				       << hex << symbol << dec

@@ -624,102 +624,102 @@
 #
 # Combining diacritical marks
 #
-0x0300 "\\`"                      "" "combining" # COMBINING GRAVE ACCENT
-0x0301 "\\'"                      "" "combining" # COMBINING ACUTE ACCENT
-0x0302 "\\^"                      "" "combining" # COMBINING CIRCUMFLEX ACCENT
-0x0303 "\\~"                      "" "combining" # COMBINING TILDE
-0x0304 "\\="                      "" "combining" # COMBINING MACRON
-#0x0305 ""                         "" "combining" # COMBINING OVERLINE
-0x0306 "\\u"                      "" "combining" # COMBINING BREVE
-0x0307 "\\."                      "" "combining" # COMBINING DOT ABOVE
-0x0308 "\\\""                     "" "combining" # COMBINING DIAERESIS
-#0x0309 ""                         "" "combining" # COMBINING HOOK ABOVE
-0x030a "\\r"                      "" "combining" # COMBINING RING ABOVE
-0x030b "\\H"                      "" "combining" # COMBINING DOUBLE ACUTE ACCENT
-0x030c "\\v"                      "" "combining" # COMBINING CARON
-0x030d "\\textvbaraccent"         "tipa" "combining" # COMBINING VERTICAL LINE ABOVE
-0x030e "\\textdoublevbaraccent"   "tipa" "combining" # COMBINING DOUBLE VERTICAL LINE ABOVE
-0x030f "\\textdoublegrave"        "tipa" "combining" # COMBINING DOUBLE GRAVE ACCENT
-0x0310 "\\textdotbreve"           "tipa" "combining" # COMBINING CANDRABINDU
-0x0311 "\\textroundcap"           "tipa" "combining" # COMBINING INVERTED BREVE
-#0x0312 ""                         "" "combining" # COMBINING TURNED COMMA ABOVE
-#0x0313 ""                         "" "combining" # COMBINING COMMA ABOVE
-#0x0314 ""                         "" "combining" # COMBINING REVERSED COMMA ABOVE
-#0x0315 ""                         "" "combining" # COMBINING COMMA ABOVE RIGHT
-0x0316 "\\textsubgrave"           "tipa" "combining" # COMBINING GRAVE ACCENT BELOW
-0x0317 "\\textsubacute"           "tipa" "combining" # COMBINING ACUTE ACCENT BELOW
-0x0318 "\\textadvancing"          "tipa" "combining" # COMBINING LEFT TACK BELOW
-0x0319 "\\textretracting"         "tipa" "combining" # COMBINING RIGHT TACK BELOW
-#0x031a ""                         "" "combining" # COMBINING LEFT ANGLE ABOVE
-#0x031b ""                         "" "combining" # COMBINING HORN
-0x031c "\\textsublhalfring"       "tipa" "combining" # COMBINING LEFT HALF RING BELOW
-0x031d "\\textraising"            "tipa" "combining" # COMBINING UP TACK BELOW
-0x031e "\\textlowering"           "tipa" "combining" # COMBINING DOWN TACK BELOW
-0x031f "\\textsubplus"            "tipa" "combining" # COMBINING PLUS SIGN BELOW
-0x0320 "\\b"                      "" "combining" # COMBINING MINUS SIGN BELOW
-#0x0321 ""                         "" "combining" # COMBINING PALATALIZED HOOK BELOW
-#0x0322 ""                         "" "combining" # COMBINING RETROFLEX HOOK BELOW
-0x0323 "\\d"                      "" "combining" # COMBINING DOT BELOW
-0x0324 "\\textsubumlaut"          "tipa" "combining" # COMBINING DIAERESIS BELOW
-0x0325 "\\textsubring"            "tipa" "combining" # COMBINING RING BELOW
-#0x0326 ""                         "" "combining" # COMBINING COMMA BELOW
-0x0327 "\\c"                      "" "combining" # COMBINING CEDILLA
-0x0328 "\\k"                      "" "combining" # COMBINING OGONEK
-0x0329 "\\textsyllabic"           "tipa" "combining" # COMBINING VERTICAL LINE BELOW
-0x032a "\\textsubbridge"          "tipa" "combining" # COMBINING BRIDGE BELOW
-0x032b "\\textsubw"               "tipa" "combining" # COMBINING INVERTED DOUBLE ARCH BELOW
-0x032c "\\textsubwedge"           "tipa" "combining" # COMBINING CARON BELOW
-0x032d "\\textsubcircum"          "tipa" "combining" # COMBINING CIRCUMFLEX ACCENT BELOW
-#0x032e ""                         "" "combining" # COMBINING BREVE BELOW
-0x032f "\\textsubarch"            "tipa" "combining" # COMBINING INVERTED BREVE BELOW
-0x0330 "\\textsubtilde"           "tipa" "combining" # COMBINING TILDE BELOW
-#0x0331 ""                         "" "combining" # COMBINING MACRON BELOW
-#0x0332 ""                         "" "combining" # COMBINING LOW LINE
-#0x0333 ""                         "" "combining" # COMBINING DOUBLE LOW LINE
-0x0334 "\\textsuperimposetilde"   "tipa" "combining" # COMBINING TILDE OVERLAY
-#0x0335 ""                         "" "combining" # COMBINING SHORT STROKE OVERLAY
-#0x0336 ""                         "" "combining" # COMBINING LONG STROKE OVERLAY
-#0x0337 ""                         "" "combining" # COMBINING SHORT SOLIDUS OVERLAY
-#0x0338 ""                         "" "combining" # COMBINING LONG SOLIDUS OVERLAY
-0x0339 "\\textsubrhalfring"       "tipa" "combining" # COMBINING RIGHT HALF RING BELOW
-0x033a "\\textinvsubbridge"       "tipa" "combining" # COMBINING INVERTED BRIDGE BELOW
-0x033b "\\textsubsquare"          "tipa" "combining" # COMBINING SQUARE BELOW
-0x033c "\\textseagull"            "tipa" "combining" # COMBINING SEAGULL BELOW
-0x033d "\\textovercross"          "tipa" "combining" # COMBINING X ABOVE
-#0x033e ""                         "" "combining" # COMBINING VERTICAL TILDE
-#0x033f ""                         "" "combining" # COMBINING DOUBLE OVERLINE
-#0x0340 ""                         "" "combining" # COMBINING GRAVE TONE MARK
-#0x0341 ""                         "" "combining" # COMBINING ACUTE TONE MARK
-#0x0342 ""                         "" "combining" # COMBINING GREEK PERISPOMENI
-#0x0343 ""                         "" "combining" # COMBINING GREEK KORONIS
-#0x0344 ""                         "" "combining" # COMBINING GREEK DIALYTIKA TONOS
-#0x0345 ""                         "" "combining" # COMBINING GREEK YPOGEGRAMMENI
-0x0346 "\\overbridge"             "tipa" "combining" # COMBINING BRIDGE ABOVE
-0x0347 "\\subdoublebar"           "tipa" "combining" # COMBINING EQUALS SIGN BELOW
-0x0348 "\\subdoublevert"          "tipa" "combining" # COMBINING DOUBLE VERTICAL LINE BELOW
-0x0349 "\\subcorner"              "tipa" "combining" # COMBINING LEFT ANGLE BELOW
-0x034a "\\crtilde"                "tipa" "combining" # COMBINING NOT TILDE ABOVE
-0x034b "\\dottedtilde"            "tipa" "combining" # COMBINING HOMOTHETIC ABOVE
-0x034c "\\doubletilde"            "tipa" "combining" # COMBINING ALMOST EQUAL TO ABOVE
-0x034d "\\spreadlips"             "tipa" "combining" # COMBINING LEFT RIGHT ARROW BELOW
-0x034e "\\whistle"                "tipa" "combining" # COMBINING UPWARDS ARROW BELOW
+0x0300 "\\`"                      "" "combining,force" # COMBINING GRAVE ACCENT
+0x0301 "\\'"                      "" "combining,force" # COMBINING ACUTE ACCENT
+0x0302 "\\^"                      "" "combining,force" # COMBINING CIRCUMFLEX ACCENT
+0x0303 "\\~"                      "" "combining,force" # COMBINING TILDE
+0x0304 "\\="                      "" "combining,force" # COMBINING MACRON
+#0x0305 ""                         "" "combining,force" # COMBINING OVERLINE
+0x0306 "\\u"                      "" "combining,force" # COMBINING BREVE
+0x0307 "\\."                      "" "combining,force" # COMBINING DOT ABOVE
+0x0308 "\\\""                     "" "combining,force" # COMBINING DIAERESIS
+#0x0309 ""                         "" "combining,force" # COMBINING HOOK ABOVE
+0x030a "\\r"                      "" "combining,force" # COMBINING RING ABOVE
+0x030b "\\H"                      "" "combining,force" # COMBINING DOUBLE ACUTE ACCENT
+0x030c "\\v"                      "" "combining,force" # COMBINING CARON
+0x030d "\\textvbaraccent"         "tipa" "combining,force" # COMBINING VERTICAL LINE ABOVE
+0x030e "\\textdoublevbaraccent"   "tipa" "combining,force" # COMBINING DOUBLE VERTICAL LINE ABOVE
+0x030f "\\textdoublegrave"        "tipa" "combining,force" # COMBINING DOUBLE GRAVE ACCENT
+0x0310 "\\textdotbreve"           "tipa" "combining,force" # COMBINING CANDRABINDU
+0x0311 "\\textroundcap"           "tipa" "combining,force" # COMBINING INVERTED BREVE
+#0x0312 ""                         "" "combining,force" # COMBINING TURNED COMMA ABOVE
+#0x0313 ""                         "" "combining,force" # COMBINING COMMA ABOVE
+#0x0314 ""                         "" "combining,force" # COMBINING REVERSED COMMA ABOVE
+#0x0315 ""                         "" "combining,force" # COMBINING COMMA ABOVE RIGHT
+0x0316 "\\textsubgrave"           "tipa" "combining,force" # COMBINING GRAVE ACCENT BELOW
+0x0317 "\\textsubacute"           "tipa" "combining,force" # COMBINING ACUTE ACCENT BELOW
+0x0318 "\\textadvancing"          "tipa" "combining,force" # COMBINING LEFT TACK BELOW
+0x0319 "\\textretracting"         "tipa" "combining,force" # COMBINING RIGHT TACK BELOW
+#0x031a ""                         "" "combining,force" # COMBINING LEFT ANGLE ABOVE
+#0x031b ""                         "" "combining,force" # COMBINING HORN
+0x031c "\\textsublhalfring"       "tipa" "combining,force" # COMBINING LEFT HALF RING BELOW
+0x031d "\\textraising"            "tipa" "combining,force" # COMBINING UP TACK BELOW
+0x031e "\\textlowering"           "tipa" "combining,force" # COMBINING DOWN TACK BELOW
+0x031f "\\textsubplus"            "tipa" "combining,force" # COMBINING PLUS SIGN BELOW
+0x0320 "\\b"                      "" "combining,force" # COMBINING MINUS SIGN BELOW
+#0x0321 ""                         "" "combining,force" # COMBINING PALATALIZED HOOK BELOW
+#0x0322 ""                         "" "combining,force" # COMBINING RETROFLEX HOOK BELOW
+0x0323 "\\d"                      "" "combining,force" # COMBINING DOT BELOW
+0x0324 "\\textsubumlaut"          "tipa" "combining,force" # COMBINING DIAERESIS BELOW
+0x0325 "\\textsubring"            "tipa" "combining,force" # COMBINING RING BELOW
+#0x0326 ""                         "" "combining,force" # COMBINING COMMA BELOW
+0x0327 "\\c"                      "" "combining,force" # COMBINING CEDILLA
+0x0328 "\\k"                      "" "combining,force" # COMBINING OGONEK
+0x0329 "\\textsyllabic"           "tipa" "combining,force" # COMBINING VERTICAL LINE BELOW
+0x032a "\\textsubbridge"          "tipa" "combining,force" # COMBINING BRIDGE BELOW
+0x032b "\\textsubw"               "tipa" "combining,force" # COMBINING INVERTED DOUBLE ARCH BELOW
+0x032c "\\textsubwedge"           "tipa" "combining,force" # COMBINING CARON BELOW
+0x032d "\\textsubcircum"          "tipa" "combining,force" # COMBINING CIRCUMFLEX ACCENT BELOW
+#0x032e ""                         "" "combining,force" # COMBINING BREVE BELOW
+0x032f "\\textsubarch"            "tipa" "combining,force" # COMBINING INVERTED BREVE BELOW
+0x0330 "\\textsubtilde"           "tipa" "combining,force" # COMBINING TILDE BELOW
+#0x0331 ""                         "" "combining,force" # COMBINING MACRON BELOW
+#0x0332 ""                         "" "combining,force" # COMBINING LOW LINE
+#0x0333 ""                         "" "combining,force" # COMBINING DOUBLE LOW LINE
+0x0334 "\\textsuperimposetilde"   "tipa" "combining,force" # COMBINING TILDE OVERLAY
+#0x0335 ""                         "" "combining,force" # COMBINING SHORT STROKE OVERLAY
+#0x0336 ""                         "" "combining,force" # COMBINING LONG STROKE OVERLAY
+#0x0337 ""                         "" "combining,force" # COMBINING SHORT SOLIDUS OVERLAY
+#0x0338 ""                         "" "combining,force" # COMBINING LONG SOLIDUS OVERLAY
+0x0339 "\\textsubrhalfring"       "tipa" "combining,force" # COMBINING RIGHT HALF RING BELOW
+0x033a "\\textinvsubbridge"       "tipa" "combining,force" # COMBINING INVERTED BRIDGE BELOW
+0x033b "\\textsubsquare"          "tipa" "combining,force" # COMBINING SQUARE BELOW
+0x033c "\\textseagull"            "tipa" "combining,force" # COMBINING SEAGULL BELOW
+0x033d "\\textovercross"          "tipa" "combining,force" # COMBINING X ABOVE
+#0x033e ""                         "" "combining,force" # COMBINING VERTICAL TILDE
+#0x033f ""                         "" "combining,force" # COMBINING DOUBLE OVERLINE
+#0x0340 ""                         "" "combining,force" # COMBINING GRAVE TONE MARK
+#0x0341 ""                         "" "combining,force" # COMBINING ACUTE TONE MARK
+#0x0342 ""                         "" "combining,force" # COMBINING GREEK PERISPOMENI
+#0x0343 ""                         "" "combining,force" # COMBINING GREEK KORONIS
+#0x0344 ""                         "" "combining,force" # COMBINING GREEK DIALYTIKA TONOS
+#0x0345 ""                         "" "combining,force" # COMBINING GREEK YPOGEGRAMMENI
+0x0346 "\\overbridge"             "tipa" "combining,force" # COMBINING BRIDGE ABOVE
+0x0347 "\\subdoublebar"           "tipa" "combining,force" # COMBINING EQUALS SIGN BELOW
+0x0348 "\\subdoublevert"          "tipa" "combining,force" # COMBINING DOUBLE VERTICAL LINE BELOW
+0x0349 "\\subcorner"              "tipa" "combining,force" # COMBINING LEFT ANGLE BELOW
+0x034a "\\crtilde"                "tipa" "combining,force" # COMBINING NOT TILDE ABOVE
+0x034b "\\dottedtilde"            "tipa" "combining,force" # COMBINING HOMOTHETIC ABOVE
+0x034c "\\doubletilde"            "tipa" "combining,force" # COMBINING ALMOST EQUAL TO ABOVE
+0x034d "\\spreadlips"             "tipa" "combining,force" # COMBINING LEFT RIGHT ARROW BELOW
+0x034e "\\whistle"                "tipa" "combining,force" # COMBINING UPWARDS ARROW BELOW
 #0x034f ""                         "" "" # COMBINING GRAPHEME JOINER
-#0x0360 ""                         "" "combining" # COMBINING DOUBLE TILDE
-0x0361 "\\t"                      "" "combining" # COMBINING DOUBLE INVERTED BREVE (ligature tie)
-#0x0362 ""                         "" "combining" # COMBINING DOUBLE RIGHTWARDS ARROW BELOW
-#0x0363 ""                         "" "combining" # COMBINING LATIN SMALL LETTER A
-#0x0364 ""                         "" "combining" # COMBINING LATIN SMALL LETTER E
-#0x0365 ""                         "" "combining" # COMBINING LATIN SMALL LETTER I
-#0x0366 ""                         "" "combining" # COMBINING LATIN SMALL LETTER O
-#0x0367 ""                         "" "combining" # COMBINING LATIN SMALL LETTER U
-#0x0368 ""                         "" "combining" # COMBINING LATIN SMALL LETTER C
-#0x0369 ""                         "" "combining" # COMBINING LATIN SMALL LETTER D
-#0x036a ""                         "" "combining" # COMBINING LATIN SMALL LETTER H
-#0x036b ""                         "" "combining" # COMBINING LATIN SMALL LETTER M
-#0x036c ""                         "" "combining" # COMBINING LATIN SMALL LETTER R
-#0x036d ""                         "" "combining" # COMBINING LATIN SMALL LETTER T
-#0x036e ""                         "" "combining" # COMBINING LATIN SMALL LETTER V
-#0x036f ""                         "" "combining" # COMBINING LATIN SMALL LETTER X
+#0x0360 ""                         "" "combining,force" # COMBINING DOUBLE TILDE
+0x0361 "\\t"                      "" "combining,force" # COMBINING DOUBLE INVERTED BREVE (ligature tie)
+#0x0362 ""                         "" "combining,force" # COMBINING DOUBLE RIGHTWARDS ARROW BELOW
+#0x0363 ""                         "" "combining,force" # COMBINING LATIN SMALL LETTER A
+#0x0364 ""                         "" "combining,force" # COMBINING LATIN SMALL LETTER E
+#0x0365 ""                         "" "combining,force" # COMBINING LATIN SMALL LETTER I
+#0x0366 ""                         "" "combining,force" # COMBINING LATIN SMALL LETTER O
+#0x0367 ""                         "" "combining,force" # COMBINING LATIN SMALL LETTER U
+#0x0368 ""                         "" "combining,force" # COMBINING LATIN SMALL LETTER C
+#0x0369 ""                         "" "combining,force" # COMBINING LATIN SMALL LETTER D
+#0x036a ""                         "" "combining,force" # COMBINING LATIN SMALL LETTER H
+#0x036b ""                         "" "combining,force" # COMBINING LATIN SMALL LETTER M
+#0x036c ""                         "" "combining,force" # COMBINING LATIN SMALL LETTER R
+#0x036d ""                         "" "combining,force" # COMBINING LATIN SMALL LETTER T
+#0x036e ""                         "" "combining,force" # COMBINING LATIN SMALL LETTER V
+#0x036f ""                         "" "combining,force" # COMBINING LATIN SMALL LETTER X
 #
 # Greek
 #

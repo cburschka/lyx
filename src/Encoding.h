@@ -167,6 +167,12 @@ public:
 	 */
 	static bool isKnownScriptChar(char_type const c, std::string & preamble);
 	/**
+	 * Do we have to output this character as LaTeX command in any case?
+	 * This is true if the "forced" flag is set.
+	 * We need this if the inputencoding does not support a certain glyph.
+	 */
+	static bool isForced(char_type c);
+	/**
 	 * Convert \p c to something that LaTeX can understand in math mode.
 	 * \return whether \p command is a math mode command
 	 */
