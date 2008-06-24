@@ -2148,6 +2148,15 @@ void LyXAction::init()
 		{ LFUN_CLOSE_TAB_GROUP, "close-tab-group", ReadOnly, Buffer },
 		{ LFUN_DIALOG_SHOW, "dialog-show", NoBuffer, Edit },
 		{ LFUN_DIALOG_SHOW_NEW_INSET, "dialog-show-new-inset", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_DIALOG_UPDATE
+ * \li Action: Updates the dialog values from the inset/paragraph/document.
+ * \li Syntax: dialog-update <NAME>
+ * \li Params: <NAME>: paragraph|prefs|<INSET> \n
+               <INSET>: inset name
+ * \li Origin: leeming, 25 Feb 2003
+ * \endvar
+ */
 		{ LFUN_DIALOG_UPDATE, "dialog-update", NoBuffer, Edit },
 		{ LFUN_DIALOG_HIDE, "dialog-hide", NoBuffer, Edit },
 		{ LFUN_DIALOG_TOGGLE, "dialog-toggle", NoBuffer, Edit },
