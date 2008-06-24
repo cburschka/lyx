@@ -363,12 +363,6 @@ FileName const get_locale_dir(FileName const & system_support_dir)
 	if (path.exists() && path.isDirectory())
 		return path;
 
-	// 4. Search for source tree "po/" in case LyX was launched with
-	// '-sysdir' argument.
-	path.set(addPath(system_support_dir.absFilename(), "../po"));
-	if (path.exists() && path.isDirectory())
-		return path;
-
 	return FileName();
 }
 
