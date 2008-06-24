@@ -2146,6 +2146,22 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_CLOSE_TAB_GROUP, "close-tab-group", ReadOnly, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_DIALOG_SHOW
+ * \li Action: Show dialog for a given function/inset settings etc.
+ * \li Syntax: dialog-show <NAME> [<DATA>]
+ * \li Params: <NAME>: aboutlyx|bibitem|bibtex|box|branch|changes|character|citation|
+               document|errorlist|ert|external|file|findreplace|float|graphics|
+               include|index|info|nomenclature|label|log|mathdelimiter|mathmatrix|
+               note|paragraph|prefs|print|ref|sendto|space|spellchecker|symbols|
+               tabular|tabularcreate|thesaurus|texinfo|toc|href|view-source|vspace|
+               wrap|listings|<SPECIAL> \n
+               <SPECIAL>: latexlog|vclog \n
+               <DATA>: data, usually settings for the given dialog. Use debug mode for the
+                       details.
+ * \li Origin: leeming, 17 Jun 2003
+ * \endvar
+ */
 		{ LFUN_DIALOG_SHOW, "dialog-show", NoBuffer, Edit },
 		{ LFUN_DIALOG_SHOW_NEW_INSET, "dialog-show-new-inset", Noop, Edit },
 /*!
