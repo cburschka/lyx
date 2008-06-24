@@ -865,6 +865,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_SCREEN_RECENTER:
 	case LFUN_BIBTEX_DATABASE_ADD:
 	case LFUN_BIBTEX_DATABASE_DEL:
+	case LFUN_GRAPHICS_GROUPS_UNIFY:
 	case LFUN_NOTES_MUTATE:
 	case LFUN_STATISTICS:
 		flag.setEnabled(true);
@@ -1403,8 +1404,17 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		processUpdateFlags(Update::Force);
 		break;
 
-	// Could be rewriten using some command like forall <insetname> <command>
+	// These Two could be rewriten using some command like forall <insetname> <command>
 	// once the insets refactoring is done.
+	case LFUN_GRAPHICS_GROUPS_UNIFY: {
+		if (cmd.argument().empty())
+			break;
+		//view()->cursor().recordUndoFullDocument(); let inset-apply do that job
+		graphics::unifyGraphicsGroups(cur.buffer(), to_utf8(cmd.argument()));
+		processUpdateFlags(Update::Force | Update::FitCursor);
+		break;
+	}
+
 	case LFUN_NOTES_MUTATE: {
 		if (cmd.argument().empty())
 			break;
