@@ -59,6 +59,7 @@
 #include "insets/InsetGraphics.h"
 #include "insets/InsetRef.h"
 #include "insets/InsetText.h"
+#include "insets/InsetNote.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
@@ -864,6 +865,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_SCREEN_RECENTER:
 	case LFUN_BIBTEX_DATABASE_ADD:
 	case LFUN_BIBTEX_DATABASE_DEL:
+	case LFUN_NOTES_MUTATE:
 	case LFUN_STATISTICS:
 		flag.setEnabled(true);
 		break;
@@ -1400,6 +1402,19 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		buffer_.dispatch(cmd);
 		processUpdateFlags(Update::Force);
 		break;
+
+	// Could be rewriten using some command like forall <insetname> <command>
+	// once the insets refactoring is done.
+	case LFUN_NOTES_MUTATE: {
+		if (cmd.argument().empty())
+			break;
+		cur.recordUndoFullDocument();
+
+		if (mutateNotes(cur, cmd.getArg(0), cmd.getArg(1))) {
+			processUpdateFlags(Update::Force);
+		}
+		break;
+	}
 
 	default:
 		return false;

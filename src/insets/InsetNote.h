@@ -111,13 +111,11 @@ private:
 	InsetNoteParams params_;
 };
 
-class BufferView;
-
 /**
  * Mutate all NoteInsets of "source" type to the "target" type in the document.
  * Returns true when some inset was changed.
  */
-bool mutateNotes(lyx::BufferView * view, std::string const & source, std::string const &target);
+bool mutateNotes(lyx::Cursor & cur, std::string const & source, std::string const &target);
 
 } // namespace lyx
 

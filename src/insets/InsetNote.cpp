@@ -370,7 +370,7 @@ void InsetNote::string2params(string const & in, InsetNoteParams & params)
 	params.read(lex);
 }
 
-bool mutateNotes(lyx::BufferView * view, string const & source, string const &target)
+bool mutateNotes(Cursor & cur, string const & source, string const &target)
 {
 	InsetNoteParams::Type typeSrc = notetranslator().find(source);
 	InsetNoteParams::Type typeTrt = notetranslator().find(target);
@@ -383,7 +383,7 @@ bool mutateNotes(lyx::BufferView * view, string const & source, string const &ta
 	// did we found some conforming inset?
 	bool ret = false;
 
-	Inset & inset = view->buffer().inset();
+	Inset & inset = cur.buffer().inset();
 	InsetIterator it  = inset_iterator_begin(inset);
 	InsetIterator const end = inset_iterator_end(inset);
 	for (; it != end; ++it) {
@@ -391,7 +391,7 @@ bool mutateNotes(lyx::BufferView * view, string const & source, string const &ta
 			InsetNote & ins = static_cast<InsetNote &>(*it);
 			if (ins.params().type == typeSrc) {
 				FuncRequest fr(LFUN_INSET_MODIFY, "note Note " + target);
-				ins.dispatch(view->cursor(), fr);
+				ins.dispatch(cur, fr);
 				ret = true;
 			}
 		}
