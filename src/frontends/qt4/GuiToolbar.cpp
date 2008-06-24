@@ -493,6 +493,8 @@ void GuiLayoutBox::setIconSize(QSize size)
 	bool small = size.height() < 20;
 	setAttribute(Qt::WA_MacSmallSize, small);
 	setAttribute(Qt::WA_MacNormalSize, !small);
+#else
+	(void)size; // suppress warning
 #endif
 }
 
