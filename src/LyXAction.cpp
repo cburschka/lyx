@@ -1714,6 +1714,14 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_PARAGRAPH_PARAMS_APPLY, "paragraph-params-apply", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_UPDATE
+ * \li Action: Updates the values inside the paragraph dialog from the paragraph.
+ * \li Notion: This is internal LFUN, not to be used by users. Called internally
+               by #LFUN_DIALOG_UPDATE.
+ * \li Origin: leeming, 13 Mar 2003
+ * \endvar
+ */
 		{ LFUN_PARAGRAPH_UPDATE, "", Noop, Hidden },
 
 /*!
@@ -1861,7 +1869,8 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_DIALOG_UPDATE
  * \li Action: Updates the values inside the dialog from the inset.
- * \li Notion: This is internal LFUN, not to be used by users.
+ * \li Notion: This is internal LFUN, not to be used by users. Called internally
+               by #LFUN_DIALOG_UPDATE
  * \li Params: <DIALOG-NAME>
  * \li Origin: leeming, 25 Feb 2003
  * \endvar
