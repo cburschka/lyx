@@ -116,14 +116,18 @@ docstring const Messages::get(string const & m) const
 	if (!lang_.empty()) {
 		// This GNU extension overrides any language locale
 		// wrt gettext.
-		setEnv("LANGUAGE", lang_);
+		bool success = setEnv("LANGUAGE", lang_);
+		if (!success)
+			LYXERR0("WARNING: Cannot set env LANGUAGE variable to " << lang_);
 		// However, setting LANGUAGE does nothing when the
 		// locale is "C". Therefore we set the locale to
 		// something that is believed to exist on most
 		// systems. The idea is that one should be able to
 		// load German documents even without having de_DE
 		// installed.
-		setEnv("LC_ALL", "en_US");
+		success = setEnv("LC_ALL", "en_US");
+		if (!success)
+			LYXERR0("WARNING: Cannot set env LC_ALL variable to en_US");
 #ifdef HAVE_LC_MESSAGES
 		setlocale(LC_MESSAGES, "");
 #endif
