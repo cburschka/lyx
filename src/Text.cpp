@@ -621,7 +621,7 @@ bool Text::cursorBackwardOneWord(Cursor & cur)
 		--pos;
 
 	// Skip over either a non-char inset or a full word
-	if (pos != 0 && !par.isLetter(pos) && !par.isChar(pos - 1))
+	if (pos != 0 && !par.isLetter(pos - 1) && !par.isChar(pos - 1))
 		--pos;
 	else while (pos != 0 && par.isLetter(pos - 1))
 			--pos;
