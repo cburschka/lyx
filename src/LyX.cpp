@@ -345,7 +345,7 @@ Messages & LyX::getGuiMessages()
 
 void LyX::setRcGuiLanguage()
 {
-	if (!lyxrc.env_gui_language)
+	if (lyxrc.gui_language != "auto")
 		pimpl_->messages_["GUI"] = Messages(lyxrc.gui_language);
 }
 

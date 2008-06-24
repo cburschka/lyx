@@ -67,7 +67,6 @@ public:
 		RC_DATE_INSERT_FORMAT,
 		RC_DEFFILE,
 		RC_DEFAULT_LANGUAGE,
-		RC_ENV_GUI_LANGUAGE,
 		RC_GUI_LANGUAGE,
 		RC_DEFAULT_PAPERSIZE,
 		RC_DIALOGS_ICONIFY_WITH_MAIN,
@@ -363,8 +362,6 @@ public:
 	bool mark_foreign_language;
 	///
 	std::string default_language;
-	///
-	bool env_gui_language;
 	///
 	std::string gui_language;
 	///
