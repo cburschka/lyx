@@ -91,7 +91,7 @@ public:
 	///
 	Messages & getGuiMessages();
 	///
-	void setGuiLanguage(std::string const & language);
+	void setRcGuiLanguage();
 
 	///
 	frontend::LyXView * newLyXView();

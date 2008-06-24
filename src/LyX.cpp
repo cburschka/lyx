@@ -343,9 +343,10 @@ Messages & LyX::getGuiMessages()
 }
 
 
-void LyX::setGuiLanguage(string const & language)
+void LyX::setRcGuiLanguage()
 {
-	pimpl_->messages_["GUI"] = Messages(language);
+	if (!lyxrc.env_gui_language)
+		pimpl_->messages_["GUI"] = Messages(lyxrc.gui_language);
 }
 
 
@@ -768,7 +769,7 @@ bool LyX::init()
 		return false;
 
 	// Set the language defined by the distributor.
-	//setGuiLanguage(lyxrc.gui_language);
+	setRcGuiLanguage();
 
 	// Set the PATH correctly.
 #if !defined (USE_POSIX_PACKAGING)
@@ -814,6 +815,9 @@ bool LyX::init()
 	if (!readLanguagesFile("languages"))
 		return false;
 
+	// Set the language defined by the user.
+	setRcGuiLanguage();
+
 	// Load the layouts
 	LYXERR(Debug::INIT, "Reading layouts...");
 	if (!LyXSetStyle())
@@ -824,9 +828,6 @@ bool LyX::init()
 	// read keymap and ui files in batch mode as well
 	// because InsetInfo needs to know these to produce
 	// the correct output
-
-	// Set the language defined by the user.
-	//setGuiLanguage(lyxrc.gui_language);
 
 	// Set up command definitions
 	pimpl_->toplevel_cmddef_.read(lyxrc.def_file);

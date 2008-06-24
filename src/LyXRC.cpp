@@ -85,6 +85,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\dialogs_iconify_with_main", LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN },
 	{ "\\display_graphics", LyXRC::RC_DISPLAY_GRAPHICS },
 	{ "\\document_path", LyXRC::RC_DOCUMENTPATH },
+	{ "\\env_gui_language", LyXRC::RC_ENV_GUI_LANGUAGE },
 	{ "\\escape_chars", LyXRC::RC_ESC_CHARS },
 	{ "\\example_path", LyXRC::RC_EXAMPLEPATH },
 	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
@@ -95,6 +96,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\fullscreen_toolbars", LyXRC::RC_FULL_SCREEN_TOOLBARS },
 	{ "\\fullscreen_width", LyXRC::RC_FULL_SCREEN_WIDTH },
 	{ "\\group_layouts", LyXRC::RC_GROUP_LAYOUTS },
+	{ "\\gui_language", LyXRC::RC_GUI_LANGUAGE },
 	{ "\\index_command", LyXRC::RC_INDEX_COMMAND },
 	{ "\\input", LyXRC::RC_INPUT },
 	{ "\\kbmap", LyXRC::RC_KBMAP },
@@ -278,6 +280,8 @@ void LyXRC::setDefaults()
 	sort_layouts = false;
 	group_layouts = true;
 	default_language = "english";
+	env_gui_language = true;
+	gui_language = string();
 	show_banner = true;
 	windows_style_tex_paths = false;
 	tex_allows_spaces = false;
@@ -990,6 +994,14 @@ int LyXRC::read(Lexer & lexrc)
 		}
 		case RC_DEFAULT_LANGUAGE:
 			lexrc >> default_language;
+			break;
+
+		case RC_ENV_GUI_LANGUAGE:
+			lexrc >> env_gui_language;
+			break;
+
+		case RC_GUI_LANGUAGE:
+			lexrc >> gui_language;
 			break;
 
 		case RC_LABEL_INIT_LENGTH:
@@ -2260,6 +2272,20 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (ignore_system_lyxrc ||
 		    default_language != system_lyxrc.default_language) {
 			os << "\\default_language " << default_language << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_ENV_GUI_LANGUAGE:
+		if (ignore_system_lyxrc ||
+		    env_gui_language != system_lyxrc.env_gui_language) {
+			os << "\\env_gui_language " << env_gui_language << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_GUI_LANGUAGE:
+		if (ignore_system_lyxrc ||
+		    gui_language != system_lyxrc.gui_language) {
+			os << "\\gui_language " << gui_language << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
