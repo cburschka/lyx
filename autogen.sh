@@ -84,7 +84,7 @@ else
 fi
 
 echo "Building po/POTFILES.in..."
-make -s -f po/Rules-lyx srcdir=po top_srcdir=.
+make -s -f po/Rules-lyx srcdir=po top_srcdir=. po/POTFILES.in
 
 echo
 echo 'run "./configure ; make"'
