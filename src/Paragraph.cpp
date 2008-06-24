@@ -2268,6 +2268,15 @@ bool Paragraph::isLetter(pos_type pos) const
 }
 
 
+bool Paragraph::isChar(pos_type pos) const
+{
+	if (Inset const * inset = getInset(pos))
+		return inset->isChar();
+	char_type const c = d->text_[pos];
+	return !isLetterChar(c) && !isDigit(c);
+}
+
+
 Language const *
 Paragraph::getParLanguage(BufferParams const & bparams) const
 {

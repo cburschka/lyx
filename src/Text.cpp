@@ -584,20 +584,27 @@ bool Text::cursorForwardOneWord(Cursor & cur)
 {
 	LASSERT(this == cur.text(), /**/);
 
-	Cursor old = cur;
+	pos_type const lastpos = cur.lastpos();
+	pit_type pit = cur.pit();
+	pos_type pos = cur.pos();
+	Paragraph const & par = cur.paragraph();
 
-	if (old.pos() == old.lastpos() && old.pit() != old.lastpit()) {
-		++old.pit();
-		old.pos() = 0;
-	} else {
-		// Advance through word.
-		while (old.pos() != old.lastpos() && old.paragraph().isLetter(old.pos()))
-			++old.pos();
-		// Skip through trailing nonword stuff.
-		while (old.pos() != old.lastpos() && !old.paragraph().isLetter(old.pos()))
-			++old.pos();
+	// Skip over either a non-char inset or a full word
+	if (pos != lastpos && !par.isLetter(pos) && !par.isChar(pos))
+		++pos;
+	else while (pos != lastpos && par.isLetter(pos))
+			++pos;
+
+	// Skip through trailing punctuation and spaces.
+	while (pos != lastpos && par.isChar(pos))
+		++pos;
+
+	if (pos == lastpos && pit != cur.lastpit()) {
+		++pit;
+		pos = 0;
 	}
-	return setCursor(cur, old.pit(), old.pos());
+
+	return setCursor(cur, pit, pos);
 }
 
 
@@ -605,20 +612,26 @@ bool Text::cursorBackwardOneWord(Cursor & cur)
 {
 	LASSERT(this == cur.text(), /**/);
 
-	Cursor old = cur;
+	pit_type pit = cur.pit();
+	pos_type pos = cur.pos();
+	Paragraph & par = cur.paragraph();
 
-	if (old.pos() == 0 && old.pit() != 0) {
-		--old.pit();
-		old.pos() = old.lastpos();
-	} else {
-		// Skip through initial nonword stuff.
-		while (old.pos() != 0 && !old.paragraph().isLetter(old.pos() - 1))
-			--old.pos();
-		// Advance through word.
-		while (old.pos() != 0 && old.paragraph().isLetter(old.pos() - 1))
-			--old.pos();
+	// Skip through puctuation and spaces.
+	while (pos != 0 && par.isChar(pos - 1))
+		--pos;
+
+	// Skip over either a non-char inset or a full word
+	if (pos != 0 && !par.isLetter(pos) && !par.isChar(pos - 1))
+		--pos;
+	else while (pos != 0 && par.isLetter(pos - 1))
+			--pos;
+
+	if (pos == 0 && pit != 0) {
+		--pit;
+		pos = getPar(cur.pit() - 1).size();
 	}
-	return setCursor(cur, old.pit(), old.pos());
+
+	return setCursor(cur, pit, pos);
 }
 
 
