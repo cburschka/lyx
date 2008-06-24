@@ -581,7 +581,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_PREFERENCES_SAVE:
 	case LFUN_MESSAGE:
 	case LFUN_INSET_EDIT:
-	case LFUN_ALL_INSETS_TOGGLE:
 	case LFUN_BUFFER_LANGUAGE:
 	case LFUN_TEXTCLASS_APPLY:
 	case LFUN_TEXTCLASS_LOAD:
@@ -1377,32 +1376,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			LASSERT(lyx_view_, /**/);
 			lyx_view_->message(from_utf8(argument));
 			break;
-
-
-		case LFUN_ALL_INSETS_TOGGLE: {
-			LASSERT(lyx_view_, /**/);
-			string action;
-			string const name = split(argument, action, ' ');
-			InsetCode const inset_code = insetCode(name);
-
-			Cursor & cur = view()->cursor();
-			FuncRequest fr(LFUN_INSET_TOGGLE, action);
-
-			Inset & inset = lyx_view_->buffer()->inset();
-			InsetIterator it  = inset_iterator_begin(inset);
-			InsetIterator const end = inset_iterator_end(inset);
-			for (; it != end; ++it) {
-				if (!it->asInsetMath()
-				    && (inset_code == NO_CODE
-				    || inset_code == it->lyxCode())) {
-					Cursor tmpcur = cur;
-					tmpcur.pushBackward(*it);
-					it->dispatch(tmpcur, fr);
-				}
-			}
-			updateFlags = Update::Force | Update::FitCursor;
-			break;
-		}
 
 		case LFUN_BUFFER_LANGUAGE: {
 			LASSERT(lyx_view_, /**/);

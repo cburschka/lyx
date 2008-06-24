@@ -867,6 +867,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_BIBTEX_DATABASE_DEL:
 	case LFUN_GRAPHICS_GROUPS_UNIFY:
 	case LFUN_NOTES_MUTATE:
+	case LFUN_ALL_INSETS_TOGGLE:
 	case LFUN_STATISTICS:
 		flag.setEnabled(true);
 		break;
@@ -1404,7 +1405,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		processUpdateFlags(Update::Force);
 		break;
 
-	// These Two could be rewriten using some command like forall <insetname> <command>
+	// These two could be rewriten using some command like forall <insetname> <command>
 	// once the insets refactoring is done.
 	case LFUN_GRAPHICS_GROUPS_UNIFY: {
 		if (cmd.argument().empty())
@@ -1423,6 +1424,29 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		if (mutateNotes(cur, cmd.getArg(0), cmd.getArg(1))) {
 			processUpdateFlags(Update::Force);
 		}
+		break;
+	}
+
+	case LFUN_ALL_INSETS_TOGGLE: {
+		string action;
+		string const name = split(to_utf8(cmd.argument()), action, ' ');
+		InsetCode const inset_code = insetCode(name);
+
+		FuncRequest fr(LFUN_INSET_TOGGLE, action);
+
+		Inset & inset = cur.buffer().inset();
+		InsetIterator it  = inset_iterator_begin(inset);
+		InsetIterator const end = inset_iterator_end(inset);
+		for (; it != end; ++it) {
+			if (!it->asInsetMath()
+			    && (inset_code == NO_CODE
+			    || inset_code == it->lyxCode())) {
+				Cursor tmpcur = cur;
+				tmpcur.pushBackward(*it);
+				it->dispatch(tmpcur, fr);
+			}
+		}
+		processUpdateFlags(Update::Force | Update::FitCursor);
 		break;
 	}
 
