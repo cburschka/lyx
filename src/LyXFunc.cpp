@@ -1529,6 +1529,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			actOnUpdatedPrefs(lyxrc_orig, lyxrc);
 
+			// Set the language defined by the user.
+			LyX::ref().setRcGuiLanguage();
+
 			theApp()->resetGui();
 
 			/// We force the redraw in any case because there might be

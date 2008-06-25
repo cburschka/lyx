@@ -347,8 +347,9 @@ void LyX::setRcGuiLanguage()
 {
 	if (lyxrc.gui_language == "auto")
 		return;
-	LYXERR(Debug::LOCALE, "Setting LANGUAGE to " << lyxrc.gui_language);
-	if (!setEnv("LANGUAGE", lyxrc.gui_language))
+	Language const * language = languages.getLanguage(lyxrc.gui_language);
+	LYXERR(Debug::LOCALE, "Setting LANGUAGE to " << language->code());
+	if (!setEnv("LANGUAGE", language->code()))
 		LYXERR(Debug::LOCALE, "\t... failed!");
 	LYXERR(Debug::LOCALE, "Setting LC_ALL to en_US");
 	if (!setEnv("LC_ALL", "en_US"))

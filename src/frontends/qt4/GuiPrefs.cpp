@@ -1689,13 +1689,35 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(defaultLanguageCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
+	connect(uiLanguageCO, SIGNAL(activated(int)),
+		this, SIGNAL(changed()));
 
 	defaultLanguageCO->clear();
+	uiLanguageCO->clear();
 
 	QAbstractItemModel * language_model = guiApp->languageModel();
 	// FIXME: it would be nice if sorting was enabled/disabled via a checkbox.
 	language_model->sort(0);
 	defaultLanguageCO->setModel(language_model);
+
+	// FIXME: This is wrong, we need filter this list based on the available
+	// translation.
+	uiLanguageCO->blockSignals(true);
+	uiLanguageCO->addItem(qt_("Default"), toqstr("auto"));
+	for (int i = 0; i != language_model->rowCount(); ++i) {
+		QModelIndex index = language_model->index(i, 0);
+		uiLanguageCO->addItem(index.data(Qt::DisplayRole).toString(),
+			index.data(Qt::UserRole).toString());
+	}
+	uiLanguageCO->blockSignals(false);
+}
+
+
+void PrefLanguage::on_uiLanguageCO_currentIndexChanged(int)
+{
+	 QMessageBox::information(this, qt_("LyX needs to be restarted!"),
+		 qt_("The change of user interface language will be fully "
+		 "effective only after a restart."));
 }
 
 
@@ -1714,6 +1736,8 @@ void PrefLanguage::apply(LyXRC & rc) const
 	rc.language_command_end = fromqstr(endCommandED->text());
 	rc.default_language = fromqstr(
 		defaultLanguageCO->itemData(defaultLanguageCO->currentIndex()).toString());
+	rc.gui_language = fromqstr(
+		uiLanguageCO->itemData(uiLanguageCO->currentIndex()).toString());
 }
 
 
@@ -1734,8 +1758,12 @@ void PrefLanguage::update(LyXRC const & rc)
 	startCommandED->setText(toqstr(rc.language_command_begin));
 	endCommandED->setText(toqstr(rc.language_command_end));
 
-	int const pos = defaultLanguageCO->findData(toqstr(rc.default_language));
+	int pos = defaultLanguageCO->findData(toqstr(rc.default_language));
 	defaultLanguageCO->setCurrentIndex(pos);
+	pos = uiLanguageCO->findData(toqstr(rc.gui_language));
+	uiLanguageCO->blockSignals(true);
+	uiLanguageCO->setCurrentIndex(pos);
+	uiLanguageCO->blockSignals(false);
 }
 
 
