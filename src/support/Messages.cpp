@@ -111,9 +111,11 @@ docstring const Messages::get(string const & m) const
 
 	// The string was not found, use gettext to generate it
 
-	string const oldLANGUAGE = getEnv("LANGUAGE");
-	string const oldLC_ALL = getEnv("LC_ALL");
+	static string oldLANGUAGE;
+	static string oldLC_ALL;
 	if (!lang_.empty()) {
+		oldLANGUAGE = getEnv("LANGUAGE");
+		oldLC_ALL = getEnv("LC_ALL");
 		// This GNU extension overrides any language locale
 		// wrt gettext.
 		LYXERR(Debug::LOCALE, "Setting LANGUAGE to " << lang_);
