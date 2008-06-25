@@ -2148,7 +2148,7 @@ void LyXAction::init()
 		{ LFUN_CLOSE_TAB_GROUP, "close-tab-group", ReadOnly, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_DIALOG_SHOW
- * \li Action: Show dialog for a given function/inset settings etc.
+ * \li Action: Shows hidden dialog or create new one for a given function/inset settings etc.
  * \li Syntax: dialog-show <NAME> [<DATA>]
  * \li Params: <NAME>: aboutlyx|bibitem|bibtex|box|branch|changes|character|citation|
                document|errorlist|ert|external|file|findreplace|float|graphics|
@@ -2174,7 +2174,24 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_DIALOG_UPDATE, "dialog-update", NoBuffer, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_DIALOG_HIDE
+ * \li Action: Hides showed dialog. Counterpart to #LFUN_DIALOG_SHOW .
+ * \li Syntax: dialog-hide <NAME>
+ * \li Params: See #LFUN_DIALOG_SHOW .
+ * \li Origin: leeming, 25 Feb 2003
+ * \endvar
+ */
 		{ LFUN_DIALOG_HIDE, "dialog-hide", NoBuffer, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_DIALOG_TOGGLE
+ * \li Action: Toggles dialog between showed/hidden state.
+ * \li Notion: Internally uses #LFUN_DIALOG_SHOW , #LFUN_DIALOG_HIDE .
+ * \li Syntax: dialog-toggle <NAME> [<DATA>]
+ * \li Params: See #LFUN_DIALOG_SHOW .
+ * \li Origin: JSpitzm, 30 Apr 2007
+ * \endvar
+ */
 		{ LFUN_DIALOG_TOGGLE, "dialog-toggle", NoBuffer, Edit },
 		{ LFUN_DIALOG_DISCONNECT_INSET, "dialog-disconnect-inset", Noop, Edit },
 
