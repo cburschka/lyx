@@ -1023,6 +1023,9 @@ void GuiApplication::exit(int status)
 
 void GuiApplication::execBatchCommands()
 {
+	// Set the language defined by the user.
+	LyX::ref().setRcGuiLanguage();
+
 	// Read menus
 	if (!readUIFile(toqstr(lyxrc.ui_file)))
 		// Gives some error box here.
