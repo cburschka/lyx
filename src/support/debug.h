@@ -95,6 +95,8 @@ namespace Debug {
 		MACROS     = (1 << 26),
 		///	rtl-related
 		RTL        = (1 << 27),
+		///	locale related
+		LOCALE        = (1 << 28),
 		///
 		DEBUG      = (1 << 31),
 		///

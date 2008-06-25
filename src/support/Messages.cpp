@@ -74,7 +74,7 @@ Messages::Messages(string const & l)
 	// strip off any encoding suffix, i.e., assume 8-bit po files
 	size_t i = lang_.find(".");
 	lang_ = lang_.substr(0, i);
-	LYXERR(Debug::DEBUG, "language(" << lang_ << ")");
+	LYXERR(Debug::LOCALE, "language(" << lang_ << ")");
 }
 
 
@@ -85,13 +85,13 @@ void Messages::init()
 	char const * c = bindtextdomain(PACKAGE, locale_dir.c_str());
 	int e = errno;
 	if (e) {
-		LYXERR(Debug::DEBUG, "Error code: " << errno << '\n'
+		LYXERR(Debug::LOCALE, "Error code: " << errno << '\n'
 			<< "Directory : " << package().locale_dir().absFilename() << '\n'
 			<< "Rtn value : " << c);
 	}
 
 	if (!bind_textdomain_codeset(PACKAGE, ucs4_codeset)) {
-		LYXERR(Debug::DEBUG, "Error code: " << errno << '\n'
+		LYXERR(Debug::LOCALE, "Error code: " << errno << '\n'
 			<< "Codeset   : " << ucs4_codeset);
 	}
 
@@ -116,18 +116,18 @@ docstring const Messages::get(string const & m) const
 	if (!lang_.empty()) {
 		// This GNU extension overrides any language locale
 		// wrt gettext.
-		bool success = setEnv("LANGUAGE", lang_);
-		if (!success)
-			LYXERR0("WARNING: Cannot set env LANGUAGE variable to " << lang_);
+		LYXERR(Debug::LOCALE, "Setting LANGUAGE to " << lang_);
+		if (!setEnv("LANGUAGE", lang_))
+			LYXERR(Debug::LOCALE, "\t... failed!");
 		// However, setting LANGUAGE does nothing when the
 		// locale is "C". Therefore we set the locale to
 		// something that is believed to exist on most
 		// systems. The idea is that one should be able to
 		// load German documents even without having de_DE
 		// installed.
-		success = setEnv("LC_ALL", "en_US");
-		if (!success)
-			LYXERR0("WARNING: Cannot set env LC_ALL variable to en_US");
+		LYXERR(Debug::LOCALE, "Setting LC_ALL to en_US");
+		if (!setEnv("LC_ALL", "en_US"))
+			LYXERR(Debug::LOCALE, "\t... failed!");
 #ifdef HAVE_LC_MESSAGES
 		setlocale(LC_MESSAGES, "");
 #endif
@@ -137,12 +137,12 @@ docstring const Messages::get(string const & m) const
 	char const * trans_c = gettext(m_c);
 	docstring trans;
 	if (!trans_c)
-		LYXERR0("Undefined result from gettext");
+		LYXERR(Debug::LOCALE, "Undefined result from gettext");
 	else if (trans_c == m_c) {
-		LYXERR(Debug::DEBUG, "Same as entered returned");
+		LYXERR(Debug::LOCALE, "Same as entered returned");
 		trans = from_ascii(m);
 	} else {
-		LYXERR(Debug::DEBUG, "We got a translation");
+		//LYXERR(Debug::LOCALE, "We got a translation");
 		// m is actually not a char const * but ucs4 data
 		trans = reinterpret_cast<char_type const *>(trans_c);
 	}
@@ -152,8 +152,14 @@ docstring const Messages::get(string const & m) const
 	// Reset environment variables as they were.
 	if (!lang_.empty()) {
 		// Reset everything as it was.
-		setEnv("LANGUAGE", oldLANGUAGE);
-		setEnv("LC_ALL", oldLC_ALL);
+		LYXERR(Debug::LOCALE, "restoring LANGUAGE from " << getEnv("LANGUAGE")
+			<< " to " << oldLANGUAGE);
+		if (!setEnv("LANGUAGE", oldLANGUAGE))
+			LYXERR(Debug::LOCALE, "\t... failed!");
+		LYXERR(Debug::LOCALE, "restoring LC_ALL from " << getEnv("LC_ALL")
+			<< " to " << oldLC_ALL);
+		if (!setEnv("LC_ALL", oldLC_ALL))
+			LYXERR(Debug::LOCALE, "\t... failed!");
 #ifdef HAVE_LC_MESSAGES
 		setlocale(LC_MESSAGES, "");
 #endif
