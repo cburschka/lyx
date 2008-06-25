@@ -190,6 +190,12 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 //
 /////////////////////////////////////////////////////////////////////////
 
+void Toolbars::reset()
+{
+	toolbar_info_.clear();
+	toolbar_visibility_.clear();
+}
+
 
 void Toolbars::readToolbars(Lexer & lex)
 {

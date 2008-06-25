@@ -404,6 +404,7 @@ void GuiView::constructToolbars()
 	for (; it != d.toolbars_.end(); ++it)
 		delete it->second;
 	d.toolbars_.clear();
+	d.layout_ = 0;
 
 	// extracts the toolbars from the backend
 	Toolbars::Infos::iterator cit = guiApp->toolbars().begin();
@@ -2150,14 +2151,15 @@ void GuiView::resetDialogs()
 {
 	// Make sure that no LFUN uses any LyXView.
 	theLyXFunc().setLyXView(0);
-	// FIXME: the "math panels" toolbar takes an awful lot of time to
-	// initialise so we don't do that for the time being.
-	//initToolbars();
-	guiApp->menus().fillMenuBar(menuBar(), this);
+	saveLayout();
+	menuBar()->clear();
+	constructToolbars();
+	guiApp->menus().fillMenuBar(menuBar(), this, true);
 	if (d.layout_)
 		d.layout_->updateContents(true);
 	// Now update controls with current buffer.
 	theLyXFunc().setLyXView(this);
+	restoreLayout();
 	restartCursor();
 }
 

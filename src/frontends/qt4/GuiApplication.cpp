@@ -898,6 +898,19 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 
 void GuiApplication::resetGui()
 {
+	// Set the language defined by the user.
+	LyX::ref().setRcGuiLanguage();
+
+	// Read menus
+	if (!readUIFile(toqstr(lyxrc.ui_file)))
+		// Gives some error box here.
+		return;
+
+	// init the global menubar on Mac. This must be done after the session
+	// was recovered to know the "last files".
+	if (d->global_menubar_)
+		d->menus_.fillMenuBar(d->global_menubar_, 0, true);
+
 	QHash<int, GuiView *>::iterator it;
 	for (it = d->views_.begin(); it != d->views_.end(); ++it)
 		(*it)->resetDialogs();
@@ -1328,9 +1341,16 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 	// Ensure that a file is read only once (prevents include loops)
 	static QStringList uifiles;
 	if (uifiles.contains(name)) {
-		LYXERR(Debug::INIT, "UI file '" << name << "' has been read already. "
-				    << "Is this an include loop?");
-		return false;
+		if (!include) {
+			// We are reading again the top uifile so reset the safeguard:
+			uifiles.clear();
+			d->menus_.reset();
+			d->toolbars_.reset();
+		} else {
+			LYXERR(Debug::INIT, "UI file '" << name << "' has been read already. "
+				<< "Is this an include loop?");
+			return false;
+		}
 	}
 
 	LYXERR(Debug::INIT, "About to read " << name << "...");

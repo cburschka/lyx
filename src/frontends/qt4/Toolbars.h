@@ -112,6 +112,9 @@ public:
 
 	Toolbars() {}
 
+	///
+	void reset();
+
 	/// iterator for all toolbars
 	Infos::const_iterator begin() const { return toolbar_info_.begin(); }
 

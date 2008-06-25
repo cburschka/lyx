@@ -59,6 +59,9 @@ class Menus
 public:
 	Menus();
 	~Menus();
+
+	///
+	void reset();
 	
 	///
 	bool searchMenu(FuncRequest const & func,
@@ -78,8 +81,8 @@ public:
 private:
 	/// Use the Pimpl idiom to hide the internals.
 	struct Impl;
-	/// The pointer never changes although *d's contents may.
-	Impl * const d;
+	///
+	Impl * d;
 };
 
 } // namespace frontend

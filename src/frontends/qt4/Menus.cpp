@@ -1453,10 +1453,19 @@ MenuDefinition & Menus::Impl::getMenu(QString const & name)
 
 Menus::Menus() : d(new Impl) {}
 
+
 Menus::~Menus()
 {
   delete d;
 }
+
+
+void Menus::reset()
+{
+	delete d;
+	d = new Impl;
+}
+
 
 void Menus::read(Lexer & lex)
 {
