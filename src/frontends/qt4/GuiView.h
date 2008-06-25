@@ -292,7 +292,7 @@ private:
 	/// Is the dialog currently visible?
 	bool isDialogVisible(std::string const & name) const;
 	///
-	Dialog * find_or_build(std::string const & name);
+	Dialog * findOrBuild(std::string const & name, bool hide_it);
 	///
 	Dialog * build(std::string const & name);
 

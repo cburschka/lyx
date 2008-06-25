@@ -377,8 +377,8 @@ bool GuiView::restoreLayout()
 		setGeometry(50, 50, 690, 510);
 #endif
 	// Allow the toc and view-source dock widget to be restored if needed.
-	find_or_build("toc");
-	find_or_build("view-source");
+	findOrBuild("toc", true);
+	findOrBuild("view-source", true);
 	if (!restoreState(settings.value(key + "/layout").toByteArray(), 0))
 		initToolbars();
 	updateDialogs();
@@ -2162,7 +2162,7 @@ void GuiView::resetDialogs()
 }
 
 
-Dialog * GuiView::find_or_build(string const & name)
+Dialog * GuiView::findOrBuild(string const & name, bool hide_it)
 {
 	if (!isValidName(name))
 		return 0;
@@ -2176,6 +2176,8 @@ Dialog * GuiView::find_or_build(string const & name)
 	d.dialogs_[name].reset(dialog);
 	if (lyxrc.allow_geometry_session)
 		dialog->restoreSession();
+	if (hide_it)
+		dialog->hideView();
 	return dialog;
 }
 
@@ -2187,7 +2189,7 @@ void GuiView::showDialog(string const & name, string const & data,
 		return;
 
 	d.in_show_ = true;
-	Dialog * dialog = find_or_build(name);
+	Dialog * dialog = findOrBuild(name, false);
 	if (dialog) {
 		dialog->showData(data);
 		if (inset)
