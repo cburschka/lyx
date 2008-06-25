@@ -55,6 +55,7 @@
 #include <QFontDatabase>
 #include <QHeaderView>
 #include <QLineEdit>
+#include <QMessageBox>
 #include <QPixmapCache>
 #include <QPushButton>
 #include <QSpinBox>
@@ -541,7 +542,7 @@ PrefLatex::PrefLatex(GuiPreferences * form)
 
 #if defined(__CYGWIN__) || defined(_WIN32)
 	pathCB->setVisible(true);
-	connect(pathCB, SIGNAL(clicked()), 
+	connect(pathCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 #else
 	pathCB->setVisible(false);
@@ -722,7 +723,7 @@ void PrefScreenFonts::update(LyXRC const & rc)
 #if defined(Q_WS_X11)
 	pixmapCacheCB->setEnabled(false);
 #endif
-	
+
 }
 
 
@@ -1350,7 +1351,7 @@ private:
 };
 
 
-FormatValidator::FormatValidator(QWidget * parent, Formats const & f) 
+FormatValidator::FormatValidator(QWidget * parent, Formats const & f)
 	: QValidator(parent), formats_(f)
 {
 }
@@ -1381,7 +1382,7 @@ QValidator::State FormatValidator::validate(QString & input, int & /*pos*/) cons
 			unknown = name != input;
 	}
 
-	if (unknown && !input.isEmpty()) 
+	if (unknown && !input.isEmpty())
 		return QValidator::Acceptable;
 	else
 		return QValidator::Intermediate;
@@ -2038,9 +2039,9 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form)
 		this, SLOT(select_bind()));
 	connect(bindFileED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(removePB, SIGNAL(clicked()), 
+	connect(removePB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	
+
 	shortcut_ = new GuiShortcutDialog(this);
 	shortcut_bc_.setPolicy(ButtonPolicy::OkCancelPolicy);
 	shortcut_bc_.setOK(shortcut_->okPB);
@@ -2048,13 +2049,13 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form)
 
 	connect(shortcut_->okPB, SIGNAL(clicked()),
 		shortcut_, SLOT(accept()));
-	connect(shortcut_->okPB, SIGNAL(clicked()), 
+	connect(shortcut_->okPB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(shortcut_->cancelPB, SIGNAL(clicked()), 
+	connect(shortcut_->cancelPB, SIGNAL(clicked()),
 		shortcut_, SLOT(reject()));
 	connect(shortcut_->clearPB, SIGNAL(clicked()),
 		this, SLOT(shortcut_clearPB_pressed()));
-	connect(shortcut_->okPB, SIGNAL(clicked()), 
+	connect(shortcut_->okPB, SIGNAL(clicked()),
 		this, SLOT(shortcut_okPB_pressed()));
 }
 
@@ -2111,11 +2112,11 @@ void PrefShortcuts::updateShortcutsTW()
 	mathItem_ = new QTreeWidgetItem(shortcutsTW);
 	mathItem_->setText(0, qt_("Mathematical Symbols"));
 	mathItem_->setFlags(mathItem_->flags() & ~Qt::ItemIsSelectable);
-	
+
 	bufferItem_ = new QTreeWidgetItem(shortcutsTW);
 	bufferItem_->setText(0, qt_("Document and Window"));
 	bufferItem_->setFlags(bufferItem_->flags() & ~Qt::ItemIsSelectable);
-	
+
 	layoutItem_ = new QTreeWidgetItem(shortcutsTW);
 	layoutItem_->setText(0, qt_("Font, Layouts and Textclasses"));
 	layoutItem_->setFlags(layoutItem_->flags() & ~Qt::ItemIsSelectable);
@@ -2126,7 +2127,7 @@ void PrefShortcuts::updateShortcutsTW()
 
 	// listBindings(unbound=true) lists all bound and unbound lfuns
 	// Items in this list is tagged by its source.
-	KeyMap::BindingList bindinglist = system_bind_.listBindings(true, 
+	KeyMap::BindingList bindinglist = system_bind_.listBindings(true,
 		static_cast<int>(System));
 	KeyMap::BindingList user_bindinglist = user_bind_.listBindings(false,
 		static_cast<int>(UserBind));
@@ -2180,7 +2181,7 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 {
 	FuncCode action = lfun.action;
 	string const action_name = lyxaction.getActionName(action);
-	QString const lfun_name = toqstr(from_utf8(action_name) 
+	QString const lfun_name = toqstr(from_utf8(action_name)
 			+ ' ' + lfun.argument());
 	QString const shortcut = toqstr(seq.print(KeySequence::ForGui));
 	ItemType item_tag = tag;
@@ -2188,7 +2189,7 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 	QTreeWidgetItem * newItem = 0;
 	// for unbind items, try to find an existing item in the system bind list
 	if (tag == UserUnbind) {
-		QList<QTreeWidgetItem*> const items = shortcutsTW->findItems(lfun_name, 
+		QList<QTreeWidgetItem*> const items = shortcutsTW->findItems(lfun_name,
 			Qt::MatchFlags(Qt::MatchExactly | Qt::MatchRecursive), 0);
 		for (int i = 0; i < items.size(); ++i) {
 			if (items[i]->text(1) == shortcut)
@@ -2196,7 +2197,7 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 				break;
 			}
 		// if not found, this unbind item is UserExtraUnbind
-		// Such an item is not displayed to avoid confusion (what is 
+		// Such an item is not displayed to avoid confusion (what is
 		// unmatched removed?).
 		if (!newItem) {
 			item_tag = UserExtraUnbind;
@@ -2244,7 +2245,7 @@ void PrefShortcuts::on_shortcutsTW_itemSelectionChanged()
 	modifyPB->setEnabled(!items.isEmpty());
 	if (items.isEmpty())
 		return;
-	
+
 	ItemType tag = static_cast<ItemType>(items[0]->data(0, Qt::UserRole).toInt());
 	if (tag == UserUnbind)
 		removePB->setText(qt_("Res&tore"));
@@ -2307,7 +2308,7 @@ void PrefShortcuts::on_removePB_pressed()
 		string lfun = fromqstr(items[i]->text(0));
 		FuncRequest func = lyxaction.lookupFunc(lfun);
 		ItemType tag = static_cast<ItemType>(items[i]->data(0, Qt::UserRole).toInt());
-		
+
 		switch (tag) {
 		case System: {
 			// for system bind, we do not touch the item
@@ -2363,7 +2364,7 @@ void PrefShortcuts::on_searchLE_textEdited()
 		Qt::MatchFlags(Qt::MatchContains | Qt::MatchRecursive), 0);
 	matched += shortcutsTW->findItems(searchLE->text(),
 		Qt::MatchFlags(Qt::MatchContains | Qt::MatchRecursive), 1);
-	
+
 	// hide everyone (to avoid searching in matched QList repeatedly
 	QTreeWidgetItemIterator it(shortcutsTW, QTreeWidgetItemIterator::Selectable);
 	while (*it)
@@ -2400,7 +2401,7 @@ void PrefShortcuts::shortcut_okPB_pressed()
 			_("Shortcut is already defined"));
 		return;
 	}
-		
+
 	QTreeWidgetItem * item = insertShortcutItem(func, k, UserBind);
 	if (item) {
 		user_bind_.bind(&k, func);
@@ -2580,7 +2581,7 @@ void GuiPreferences::dispatchParams()
 {
 	ostringstream ss;
 	rc_.write(ss, true);
-	dispatch(FuncRequest(LFUN_LYXRC_APPLY, ss.str())); 
+	dispatch(FuncRequest(LFUN_LYXRC_APPLY, ss.str()));
 	// FIXME: these need lfuns
 	// FIXME UNICODE
 	theBufferList().setCurrentAuthor(from_utf8(rc_.user_name), from_utf8(rc_.user_email));
