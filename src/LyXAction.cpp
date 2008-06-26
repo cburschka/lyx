@@ -2163,6 +2163,15 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_DIALOG_SHOW, "dialog-show", NoBuffer, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_DIALOG_SHOW_NEW_INSET
+ * \li Action: Shows hidden dialog or create new one for a given inset settings etc.
+ * \li Notion: Internally uses #LFUN_DIALOG_SHOW with processed data for a given inset.
+ * \li Syntax: dialog-show-new-inset <NAME> [<DATA>]
+ * \li Params: See #LFUN_DIALOG_SHOW .
+ * \li Origin: leeming, 25 Feb 2003
+ * \endvar
+ */
 		{ LFUN_DIALOG_SHOW_NEW_INSET, "dialog-show-new-inset", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_DIALOG_UPDATE
@@ -2193,6 +2202,14 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_DIALOG_TOGGLE, "dialog-toggle", NoBuffer, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_DIALOG_DISCONNECT_INSET
+ * \li Action: Closes opened connection to opened inset.
+ * \li Notion: Connection is used for apply functions.
+ * \li Syntax: dialog-disconnect-inset <INSET-NAME>
+ * \li Origin: leeming, 25 Feb 2003
+ * \endvar
+ */
 		{ LFUN_DIALOG_DISCONNECT_INSET, "dialog-disconnect-inset", Noop, Edit },
 
 		{ LFUN_MOUSE_PRESS, "", ReadOnly, Hidden },
