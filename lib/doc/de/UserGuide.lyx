@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 23.
+letzte Änderung: 27.
  Juni 2008
 \end_layout
 
@@ -29619,7 +29619,7 @@ Stichwortverzeichnisse
 status collapsed
 
 \begin_layout Plain Layout
-Stichwortverzeichnis
+Stichwort!verzeichnis@-verzeichnis
 \end_layout
 
 \end_inset
@@ -29635,12 +29635,17 @@ Stichwort erstellen
 Ein gutes Stichwortverzeichnis zu erstellen gehört bei längeren Dokumenten
  mit zu den schwierigsten Aufgaben.
  Aber LyX unterstützt Sie auch hier und vereinfacht die Dinge, indem es
- eine Schnittstelle zu einem Programm zur Erzeugung von Stichwortverzeichnissen,
- das ist standardmäßig 
+ eine Schnittstelle zu einem Programm zur Erzeugung von Stichwortverzeichnissen
+ bereitstellt.
+ Das ist unter Linux standardmäßig 
+\family typewriter
+xindy
+\family default
+, wenn Sie es installiert haben, ansonsten 
 \family typewriter
 makeindex
 \family default
-, das zu den meisten LaTeX-Distributionen gehört, bereitstellt.
+, das zu allen LaTeX-Distributionen gehört.
 \end_layout
 
 \begin_layout Standard
@@ -29650,10 +29655,7 @@ Das Einfügen eines Stichwortverzeichnisses und das Markieren von Worten,
 zeich\SpecialChar \-
 nisses, das im vorigen Abschnitt
  beschrieben wurde.
-\end_layout
-
-\begin_layout Standard
-Setzen Sie den Cursor zunächst ganz ans Ende des Dokuments und wählen Sie
+ Setzen Sie den Cursor zunächst ganz ans Ende des Dokuments und wählen Sie
  dort den Menüpunkt 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -29669,7 +29671,10 @@ Inhaltsverzeichnis\SpecialChar \menuseparator
 Stichwortverzeichnis
 \family default
 .
- Für jedes Wort, das in dieser Liste erscheinen soll, setzen Sie nun den
+\end_layout
+
+\begin_layout Standard
+Für jedes Wort, das in dieser Liste erscheinen soll, setzen Sie nun den
  Cursor direkt hinter dieses Wort und wählen den Menüpunkt 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -29775,7 +29780,7 @@ Stichwortverzeichnis
 \family default
  eingetragen ist, das ist standardmäßig 
 \family typewriter
-makeindex
+xindy
 \family default
 , welches dann das eigentliche Stichwortverzeichnis erzeugt.
 \end_layout
@@ -30138,7 +30143,7 @@ textit{Hilfe}
 status open
 
 \begin_layout Plain Layout
-Dummy ! This@
+Stichwort ! Dies@
 \emph on
 dies ist kursiv
 \end_layout
@@ -30289,50 +30294,9 @@ Stichwortverzeichnis
  am Ende des Dokumentes fett markieren, werden alle Stichworte fett gedruckt.
 \end_layout
 
-\begin_layout Subsection
-Stichwort-Programm
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Stichwort ! Programm
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Stichwort-Programm"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-LyX benutzt standardmäßig das Programm 
-\family typewriter
-makeindex
-\family default
-.
- Damit sind noch weit kompliziertere Dinge als hier beschrieben möglich.
- Ein Blick in die Dokumentation zu 
-\family typewriter
-makeindex
-\family default
- zeigt es Ihnen.
-\end_layout
-
 \begin_layout Standard
 Wenn Sie wollen, dass die Stichworte mit Stichwortverzeichnis statt Index
  beginnen, sollten Sie in den LaTeX-Vorspann folgendes einfügen:
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-usepackage[ngerman]{babel}
 \end_layout
 
 \begin_layout LyX-Code
@@ -30399,12 +30363,51 @@ status collapsed
 nis}}
 \end_layout
 
+\begin_layout Subsection
+Stichwort-Programm
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Stichwort ! Programm
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Stichwort-Programm"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-Sie können aber auch ein anderes Programm wie 
-\family sans
+LyX benutzt standardmäßig das Programm 
+\family typewriter
 xindy
 \family default
- benutzen, wenn Sie es in 
+, das nur für Linux verfügbar ist, ansonsten das Programm 
+\family typewriter
+makeindex
+\family default
+, welches Bestandteil jeder LaTeX-Distribution ist.
+ Die Funktionen und Eigenschaften der Programme können Sie der Dokumentation
+ entnehmen, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "makeindex,xindy"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sie können aber auch ein anderes Stichwort-Programm benutzen, wenn Sie es
+ in 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
@@ -40365,6 +40368,43 @@ status collapsed
 \begin_layout Plain Layout
 
 http://tug.ctan.org/indexing/makeindex/doc/manpages.dvi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "xindy"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Dokumentation"
+target "http://www.xindy.org/documentation.html"
+
+\end_inset
+
+ des Programms 
+\family sans
+xindy
+\family default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.xindy.org/documentation.html
 \end_layout
 
 \end_inset
