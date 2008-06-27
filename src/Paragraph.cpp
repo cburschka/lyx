@@ -583,7 +583,11 @@ int Paragraph::Pimpl::latexSurrogatePair(odocstream & os, value_type c,
 	// Is this correct WRT change tracking?
 	docstring const latex1 = encoding.latexChar(next);
 	docstring const latex2 = encoding.latexChar(c);
-	os << latex1 << '{' << latex2 << '}';
+	if (docstring(1, next) == latex1) {
+		os << latex2 << latex1;
+		return latex1.length() + latex2.length();
+	} else
+		os << latex1 << '{' << latex2 << '}';
 	return latex1.length() + latex2.length() + 2;
 }
 

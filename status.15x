@@ -28,14 +28,7 @@ What's new
   and Japanese.
 
 
-* USER INTERFACE
-
-- Reenable quote display code, which was not working since 1.5.0.
-
-
 * DOCUMENT INPUT/OUTPUT
-
-- Fix a LaTeX error with nested insets in CJK documents (bug 4913).
 
 - New layout and template files for the Journal of Statistical Software (JSS).
 
@@ -56,8 +49,10 @@ What's new
 - The A&A document class and template has been updated to conform to
   version 6.0 of the A&A specification (bug 4928).
 
-- Make sure that a GREEK SMALL LETTER SIGMA is not automatically turned into
-  a GREEK SMALL LETTER FINAL SIGMA (and viceversa) on LaTeX output (bug 4966).
+
+* USER INTERFACE
+
+- Reenable quote display code, which was not working since 1.5.0.
 
 
 * WINDOWS INSTALLER
@@ -74,6 +69,13 @@ What's new
 *************
 
 * DOCUMENT INPUT/OUTPUT
+
+- Fix a LaTeX error with nested insets in CJK documents (bug 4913).
+
+- Make sure that a GREEK SMALL LETTER SIGMA is not automatically turned into
+  a GREEK SMALL LETTER FINAL SIGMA (and vice versa) on LaTeX output (bug 4966).
+
+- Fix LaTeX export of combining characters in utf-8* encodings (bug 4946).
 
 
 
@@ -93,6 +95,8 @@ What's new
 
 - Use appropriate font in notes and ERT insets in section headings
   (bug 2477).
+
+
 
 
 * DOCUMENTATION AND LOCALIZATION

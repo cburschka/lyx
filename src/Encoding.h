@@ -163,6 +163,12 @@ public:
 	 */
 	static bool isKnownScriptChar(char_type const c, std::string & preamble);
 	/**
+	 * Do we have to output this character as LaTeX command in any case?
+	 * This is true if the "forced" flag is set.
+	 * We need this if the inputencoding does not support a certain glyph.
+	 */
+	static bool isForced(char_type c);
+	/**
 	 * Add the preamble snippet needed for the output of \p c to
 	 * \p features.
 	 * This does not depend on the used encoding, since the inputenc
