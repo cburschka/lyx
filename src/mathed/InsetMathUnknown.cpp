@@ -55,9 +55,14 @@ void InsetMathUnknown::normalize(NormalStream & os) const
 
 bool InsetMathUnknown::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Font tmpfont = mi.base.font;
+	mi.base.font = Font(Font::ALL_INHERIT);
+	mi.base.font.setShape(Font::UP_SHAPE);
+	mi.base.font.realize(tmpfont);
 	mathed_string_dim(mi.base.font, name_, dim);
 	docstring::const_reverse_iterator rit = name_.rbegin();
 	kerning_ = mathed_char_kerning(mi.base.font, *rit);
+	mi.base.font = tmpfont;
 	if (dim_ == dim)
 		return false;
 	dim_ = dim;
@@ -67,11 +72,16 @@ bool InsetMathUnknown::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathUnknown::draw(PainterInfo & pi, int x, int y) const
 {
+	Font tmpfont = pi.base.font;
+	pi.base.font = Font(Font::ALL_INHERIT);
+	pi.base.font.setShape(Font::UP_SHAPE);
+	pi.base.font.realize(tmpfont);
 	if (black_)
 		drawStrBlack(pi, x, y, name_);
 	else
 		drawStrRed(pi, x, y, name_);
 	setPosCache(pi, x, y);
+	pi.base.font = tmpfont;
 }
 
 

@@ -54,9 +54,6 @@ What's new
 
 - Reenable quote display code, which was not working since 1.5.0.
 
-- Fix shape of braces, '$', '%', '&', and '#', which where incorrectly shown
-  in italic in mathed (bug 4320).
-
 
 * WINDOWS INSTALLER
 
@@ -99,7 +96,11 @@ What's new
 - Use appropriate font in notes and ERT insets in section headings
   (bug 2477).
 
+- Fix shape of braces, '$', '%', '&', and '#', which where incorrectly 
+  shown in italics in mathed (bug 4320).
 
+- Fix display of unknown math macros, which were incorrectly shown in
+  italics (bug 2594).
 
 
 * DOCUMENTATION AND LOCALIZATION
