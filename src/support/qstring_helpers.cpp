@@ -34,6 +34,8 @@ QString toqstr(docstring const & ucs4)
 {
 	// If possible we let qt do the work, since this version does not
 	// need to be superfast.
+	if (ucs4.empty())
+		return QString();
 	return QString::fromUcs4((uint const *)ucs4.data(), ucs4.length());
 }
 
