@@ -339,12 +339,12 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 
 	if (displayMode_ == DISPLAY_INIT || displayMode_ == DISPLAY_INTERACTIVE_INIT) {		
 		PainterInfo pi2(pi.base.bv, pi.pain);
-		pi2.base.font.setColor(macro_ ? Color_latex : Color_error);
+		pi2.base.font.setColor(Color_latex);
 		//pi2.base.style = LM_ST_TEXT;
 		pi2.pain.text(x, y, from_ascii("\\") + name(), pi2.base.font);
 	} else if (displayMode_ == DISPLAY_UNFOLDED) {
 		PainterInfo pi2(pi.base.bv, pi.pain);
-		pi2.base.font.setColor(macro_ ? Color_latex : Color_error);
+		pi2.base.font.setColor(Color_latex);
 		//pi2.base.style = LM_ST_TEXT;
 		pi2.pain.text(x, y, from_ascii("\\"), pi2.base.font);
 		x += mathed_string_width(pi2.base.font, from_ascii("\\")) + 1;
