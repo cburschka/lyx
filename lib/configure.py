@@ -557,6 +557,8 @@ def checkOtherEntries():
             r'\plaintext_roff_command "groff -t -Tlatin1 $$FName"',
             r'\plaintext_roff_command "tbl $$FName | nroff"',
             r'\plaintext_roff_command ""' ])
+    checkProg('an index processor', ['texindy', 'makeindex -c -q'],
+        rc_entry = [ r'\index_command "%%"' ])
     checkProg('ChkTeX', ['chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38'],
         rc_entry = [ r'\chktex_command "%%"' ])
     checkProg('a spellchecker', ['ispell'],
