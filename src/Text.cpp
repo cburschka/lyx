@@ -589,6 +589,10 @@ bool Text::cursorForwardOneWord(Cursor & cur)
 	pos_type pos = cur.pos();
 	Paragraph const & par = cur.paragraph();
 
+	// Paragraph boundary is a word boundary
+	if (pos == lastpos && pit != cur.lastpit())
+		return setCursor(cur, pit + 1, 0);
+
 	// Skip over either a non-char inset or a full word
 	if (pos != lastpos && !par.isLetter(pos) && !par.isChar(pos))
 		++pos;
@@ -598,11 +602,6 @@ bool Text::cursorForwardOneWord(Cursor & cur)
 	// Skip through trailing punctuation and spaces.
 	while (pos != lastpos && par.isChar(pos))
 		++pos;
-
-	if (pos == lastpos && pit != cur.lastpit()) {
-		++pit;
-		pos = 0;
-	}
 
 	return setCursor(cur, pit, pos);
 }
@@ -616,6 +615,10 @@ bool Text::cursorBackwardOneWord(Cursor & cur)
 	pos_type pos = cur.pos();
 	Paragraph & par = cur.paragraph();
 
+	// Paragraph boundary is a word boundary
+	if (pos == 0 && pit != 0)
+		return setCursor(cur, pit - 1, getPar(pit - 1).size());
+
 	// Skip through puctuation and spaces.
 	while (pos != 0 && par.isChar(pos - 1))
 		--pos;
@@ -625,11 +628,6 @@ bool Text::cursorBackwardOneWord(Cursor & cur)
 		--pos;
 	else while (pos != 0 && par.isLetter(pos - 1))
 			--pos;
-
-	if (pos == 0 && pit != 0) {
-		--pit;
-		pos = getPar(cur.pit() - 1).size();
-	}
 
 	return setCursor(cur, pit, pos);
 }
