@@ -68,6 +68,8 @@
 
 #include <boost/bind.hpp>
 
+#include <cmath>
+
 #ifdef Q_WS_X11
 #include <QX11Info>
 extern "C" int XEventsQueued(Display *display, int mode);
@@ -775,6 +777,9 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 	// documentation of QWheelEvent)
 	int delta = ev->delta() / 120;
 	if (ev->modifiers() & Qt::ControlModifier) {
+		// Sanity check in case the wheel mouse is set to one screen at a time.
+		if (delta > 1000)
+			delta = 20;
 		lyxrc.zoom -= 5 * delta;
 		if (lyxrc.zoom < 10)
 			lyxrc.zoom = 10;
@@ -784,12 +789,20 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 		guiApp->fontLoader().update();
 		lyx::dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
 	} else {
-		double const lines = qApp->wheelScrollLines()
-			* lyxrc.mouse_wheel_speed * delta;
+		double scroll_value = qApp->wheelScrollLines()
+			* delta	* verticalScrollBar()->singleStep();
+		int const page_step = verticalScrollBar()->pageStep();
+		// Test if the wheel mouse is set to one screen at a time.
+		if (fabs(scroll_value) > page_step)
+			scroll_value = scroll_value > 0 ? page_step : - page_step;
+		// Take into account user preference.
+		scroll_value *= lyxrc.mouse_wheel_speed;
 		LYXERR(Debug::SCROLLING, "wheelScrollLines = " << qApp->wheelScrollLines()
-			<< " delta = " << ev->delta() << " lines = " << lines);
-		verticalScrollBar()->setValue(verticalScrollBar()->value() -
-			int(lines *  verticalScrollBar()->singleStep()));
+			<< " delta = " << ev->delta() << " scroll_value = " << scroll_value
+			<< " page_step = " << page_step);
+		// Now scroll.
+		verticalScrollBar()->setValue(verticalScrollBar()->value()
+			- int(scroll_value));
 	}
 	ev->accept();
 }
