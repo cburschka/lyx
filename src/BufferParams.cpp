@@ -1242,17 +1242,19 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// Line spacing
 	lyxpreamble += from_utf8(spacing().writePreamble(tclass.provides("SetSpace")));
 
-	// We try to load babel late, in case it interferes
-	// with other packages.	But some packages also need babel to be loaded
-	// before, e.g. jurabib has to be called after babel.
-	// So load babel after the optional packages but before the user-defined
-	// preamble. This allows the users to redefine babel commands, e.g. to
-	// translate the word "Index" to the German "Stichwortverzeichnis".
-	// For more infos why this place was chosen, see
+	// We try to load babel late, in case it interferes with other
+	// packages. But some packages also need babel to be loaded
+	// before, e.g. jurabib has to be called after babel. So load
+	// babel after the optional packages but before the
+	// user-defined preamble. This allows the users to redefine
+	// babel commands, e.g. to translate the word "Index" to the
+	// German "Stichwortverzeichnis". For more infos why this
+	// place was chosen, see
 	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg128425.html
-	// If you encounter problems, you can shift babel to its old place behind
-	// the user-defined preamble. But in this case you must change the Vietnamese
-	// support from currently "\usepackage[vietnamese]{babel}" to:
+	// If you encounter problems, you can shift babel to its old
+	// place behind the user-defined preamble. But in this case
+	// you must change the Vietnamese support from currently
+	// "\usepackage[vietnamese]{babel}" to:
 	// \usepackage{vietnamese}
 	// \usepackage{babel}
 	// because vietnamese must be loaded before hyperref
@@ -1302,15 +1304,16 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			"User specified LaTeX commands.\n"
 			+ from_utf8(preamble) + '\n';
 
-	// subfig loads internally the LaTeX package "caption". As caption is a very
-	// popular package, users will load it in the preamble. Therefore we must load
-	// subfig behind the user-defined preamble and check if the caption package
-	// was loaded or not.
-	// For the case that caption is loaded before subfig, there is the subfig
-	// option "caption=false". This option also works when a koma-script class is
-	// used and koma's own caption commands are used instead of caption.
-	// We use \PassOptionsToPackage here because the user could have already
-	// loaded subfig in the preamble.
+	// subfig loads internally the LaTeX package "caption". As
+	// caption is a very popular package, users will load it in
+	// the preamble. Therefore we must load subfig behind the
+	// user-defined preamble and check if the caption package was
+	// loaded or not. For the case that caption is loaded before
+	// subfig, there is the subfig option "caption=false". This
+	// option also works when a koma-script class is used and
+	// koma's own caption commands are used instead of caption. We
+	// use \PassOptionsToPackage here because the user could have
+	// already loaded subfig in the preamble.
 	if (features.isRequired("subfig")) {
 		atlyxpreamble += "\\@ifundefined{showcaptionsetup}{}{%\n"
 			" \\PassOptionsToPackage{caption=false}{subfig}}\n"
