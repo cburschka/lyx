@@ -208,6 +208,13 @@ static string const lyxmathsym_def =
 	"  {\\hbox{\\smaller[2]\\rmorbf{#1}}}{\\hbox{\\smaller[3]\\rmorbf{#1}}}%\n"
 	" \\endgroup\\else#1\\fi}\n";
 
+static string const papersizedvi_def =
+	"\\special{papersize=\\the\\paperwidth,\\the\\paperheight}\n";
+
+static string const papersizepdf_def =
+	"\\pdfpageheight\\paperheight\n"
+	"\\pdfpagewidth\\paperwidth\n";
+
 /////////////////////////////////////////////////////////////////////
 //
 // LaTeXFeatures
@@ -635,6 +642,12 @@ string const LaTeXFeatures::getMacros() const
 	SnippetList::const_iterator pend = preamble_snippets_.end();
 	for (; pit != pend; ++pit)
 		macros << *pit << '\n';
+
+	if (mustProvide("papersize"))
+		if (runparams_.flavor == OutputParams::LATEX)
+			macros << papersizedvi_def << '\n';
+		else
+			macros << papersizepdf_def << '\n';
 
 	if (mustProvide("LyX"))
 		macros << lyx_def << '\n';
