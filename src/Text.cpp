@@ -590,11 +590,12 @@ bool Text::cursorForwardOneWord(Cursor & cur)
 	Paragraph const & par = cur.paragraph();
 
 	// Paragraph boundary is a word boundary
-	if (pos == lastpos)
+	if (pos == lastpos) {
 		if (pit != cur.lastpit())
 			return setCursor(cur, pit + 1, 0);
 		else
 			return false;
+	}
 
 	if (lyxrc.mac_like_word_movement) {
 		// Skip through trailing punctuation and spaces.
