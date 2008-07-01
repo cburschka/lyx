@@ -97,6 +97,9 @@ What's new
 
 - Use appropriate font in notes and ERT insets in section headings
   (bug 2477).
+  
+- Fix wheel mouse scrolling when it is set to "One screen at a time
+  (bug 4972).
 
 - Fix shape of braces, '$', '%', '&', and '#', which where incorrectly 
   shown in italics in mathed (bug 4320).

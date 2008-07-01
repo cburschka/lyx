@@ -48,6 +48,8 @@
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
 
+#include <cmath>
+
 #ifdef Q_WS_X11
 #include <QX11Info>
 extern "C" int XEventsQueued(Display *display, int mode);
@@ -420,9 +422,24 @@ void GuiWorkArea::wheelEvent(QWheelEvent * e)
 {
 	// Wheel rotation by one notch results in a delta() of 120 (see
 	// documentation of QWheelEvent)
-	int const lines = qApp->wheelScrollLines() * e->delta() / 120;
-	verticalScrollBar()->setValue(verticalScrollBar()->value() -
-			lines *  verticalScrollBar()->singleStep());
+	int const delta = e->delta() / 120;
+	int const lines = qApp->wheelScrollLines();
+	int scroll_value;
+	// Test if the wheel mouse is set to one screen at a time.
+	int const page_step = verticalScrollBar()->pageStep();
+	if (lines > page_step)
+		scroll_value = page_step * delta;
+	else
+		scroll_value = lines * verticalScrollBar()->singleStep() * delta;
+
+	LYXERR(Debug::GUI) << "Wheel Scroll  "
+		<< " page_step = " << page_step
+		<< " line step = " << verticalScrollBar()->singleStep()
+		<< " delta = " << delta
+		<< " lines = " << lines
+		<< " scroll_value = " << scroll_value << endl;
+	// Now scroll.
+	verticalScrollBar()->setValue(verticalScrollBar()->value() - scroll_value);
 	adjustViewWithScrollBar();
 }
 
