@@ -775,11 +775,8 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 {
 	// Wheel rotation by one notch results in a delta() of 120 (see
 	// documentation of QWheelEvent)
-	int delta = ev->delta() / 120;
+	int const delta = ev->delta() / 120;
 	if (ev->modifiers() & Qt::ControlModifier) {
-		// Sanity check in case the wheel mouse is set to one screen at a time.
-		if (delta > 1000)
-			delta = 20;
 		lyxrc.zoom -= 5 * delta;
 		if (lyxrc.zoom < 10)
 			lyxrc.zoom = 10;
@@ -787,23 +784,29 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 		// painting so we must reset it.
 		QPixmapCache::clear();
 		guiApp->fontLoader().update();
+		ev->accept();
 		lyx::dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
-	} else {
-		double scroll_value = qApp->wheelScrollLines()
-			* delta	* verticalScrollBar()->singleStep();
-		int const page_step = verticalScrollBar()->pageStep();
-		// Test if the wheel mouse is set to one screen at a time.
-		if (fabs(scroll_value) > page_step)
-			scroll_value = scroll_value > 0 ? page_step : - page_step;
-		// Take into account user preference.
-		scroll_value *= lyxrc.mouse_wheel_speed;
-		LYXERR(Debug::SCROLLING, "wheelScrollLines = " << qApp->wheelScrollLines()
-			<< " delta = " << ev->delta() << " scroll_value = " << scroll_value
-			<< " page_step = " << page_step);
-		// Now scroll.
-		verticalScrollBar()->setValue(verticalScrollBar()->value()
-			- int(scroll_value));
+		return;
 	}
+
+	// Take into account the desktop wide settings.
+	int const lines = qApp->wheelScrollLines();
+	int const page_step = verticalScrollBar()->pageStep();
+	// Test if the wheel mouse is set to one screen at a time.
+	int scroll_value = lines > page_step
+		? page_step : lines * verticalScrollBar()->singleStep();
+
+	// Take into account the rotation.
+	scroll_value *= delta;
+
+	// Take into account user preference.
+	scroll_value *= lyxrc.mouse_wheel_speed;
+	LYXERR(Debug::SCROLLING, "wheelScrollLines = " << lines
+			<< " delta = " << delta << " scroll_value = " << scroll_value
+			<< " page_step = " << page_step);
+	// Now scroll.
+	verticalScrollBar()->setValue(verticalScrollBar()->value() - scroll_value);
+
 	ev->accept();
 }
 
