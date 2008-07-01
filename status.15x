@@ -79,6 +79,9 @@ What's new
 
 - Fix LaTeX export of combining characters in utf-8* encodings (bug 4946).
 
+- Output paper size info to produced dvi or pdf documents when using landscape
+  orientation, such that viewers can properly display them (bug 2721).
+
 
 
 * USER INTERFACE

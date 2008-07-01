@@ -1026,6 +1026,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			os << ",footskip=" << from_ascii(Length(footskip).asLatexString());
 		os << "}\n";
 		texrow.newline();
+	} else if (orientation == ORIENTATION_LANDSCAPE) {
+		features.require("papersize");
 	}
 
 	if (tokenPos(tclass.opt_pagestyle(),

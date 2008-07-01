@@ -197,6 +197,13 @@ static string const textcyr_def =
 	"\\DeclareRobustCommand{\\textcyr}[1]{\\leavevmode{\\cyrtext #1}}\n"
 	"\\AtBeginDocument{\\DeclareFontEncoding{T2A}{}{}}\n";
 
+static string const papersizedvi_def =
+	"\\special{papersize=\\the\\paperwidth,\\the\\paperheight}\n";
+
+static string const papersizepdf_def =
+	"\\pdfpageheight\\paperheight\n"
+	"\\pdfpagewidth\\paperwidth\n";
+
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -632,6 +639,12 @@ string const LaTeXFeatures::getMacros() const
 	for (; pit != pend; ++pit) {
 		macros << *pit << '\n';
 	}
+
+	if (mustProvide("papersize"))
+		if (runparams_.flavor == OutputParams::LATEX)
+			macros << papersizedvi_def << '\n';
+		else
+			macros << papersizepdf_def << '\n';
 
 	if (mustProvide("LyX"))
 		macros << lyx_def << '\n';
