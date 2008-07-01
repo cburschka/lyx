@@ -1974,8 +1974,8 @@ bool Paragraph::latex(BufferParams const & bparams,
 
 		// Switch file encoding if necessary (and allowed)
 		if (!runparams.verbatim && 
-		    runparams.encoding->package() == Encoding::none &&
-		    font.language()->encoding()->package() == Encoding::none) {
+		    runparams.encoding->package() != Encoding::none &&
+		    font.language()->encoding()->package() != Encoding::none) {
 			pair<bool, int> const enc_switch = switchEncoding(os, bparams,
 					runparams, *(font.language()->encoding()));
 			if (enc_switch.first) {
