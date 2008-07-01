@@ -590,18 +590,37 @@ bool Text::cursorForwardOneWord(Cursor & cur)
 	Paragraph const & par = cur.paragraph();
 
 	// Paragraph boundary is a word boundary
-	if (pos == lastpos && pit != cur.lastpit())
-		return setCursor(cur, pit + 1, 0);
+	if (pos == lastpos)
+		if (pit != cur.lastpit())
+			return setCursor(cur, pit + 1, 0);
+		else
+			return false;
 
-	// Skip over either a non-char inset or a full word
-	if (pos != lastpos && !par.isLetter(pos) && !par.isChar(pos))
-		++pos;
-	else while (pos != lastpos && par.isLetter(pos))
+	if (lyxrc.mac_like_word_movement) {
+		// Skip through trailing punctuation and spaces.
+		while (pos != lastpos && par.isChar(pos))
+                        ++pos;
+
+		// Skip over either a non-char inset or a full word
+		if (pos != lastpos && !par.isLetter(pos))
+			++pos;
+		else while (pos != lastpos && par.isLetter(pos))
+			     ++pos;
+	} else {
+		LASSERT(pos < lastpos, /**/); // see above
+		if (par.isLetter(pos))
+			while (pos != lastpos && par.isLetter(pos))
+				++pos;
+		else if (par.isChar(pos))
+			while (pos != lastpos && par.isChar(pos))
+				++pos;
+		else if (!par.isSpace(pos)) // non-char inset
 			++pos;
 
-	// Skip through trailing punctuation and spaces.
-	while (pos != lastpos && par.isChar(pos))
-		++pos;
+		// Skip over white space
+		while (pos != lastpos && par.isSpace(pos))
+			     ++pos;		
+	}
 
 	return setCursor(cur, pit, pos);
 }
@@ -619,15 +638,30 @@ bool Text::cursorBackwardOneWord(Cursor & cur)
 	if (pos == 0 && pit != 0)
 		return setCursor(cur, pit - 1, getPar(pit - 1).size());
 
-	// Skip through puctuation and spaces.
-	while (pos != 0 && par.isChar(pos - 1))
-		--pos;
-
-	// Skip over either a non-char inset or a full word
-	if (pos != 0 && !par.isLetter(pos - 1) && !par.isChar(pos - 1))
-		--pos;
-	else while (pos != 0 && par.isLetter(pos - 1))
+	if (lyxrc.mac_like_word_movement) {
+		// Skip through puctuation and spaces.
+		while (pos != 0 && par.isChar(pos - 1))
 			--pos;
+
+		// Skip over either a non-char inset or a full word
+		if (pos != 0 && !par.isLetter(pos - 1) && !par.isChar(pos - 1))
+			--pos;
+		else while (pos != 0 && par.isLetter(pos - 1))
+			     --pos;
+	} else {
+		// Skip over white space
+		while (pos != 0 && par.isSpace(pos - 1))
+			     --pos;
+
+		if (pos != 0 && par.isLetter(pos - 1))
+			while (pos != 0 && par.isLetter(pos - 1))
+				--pos;
+		else if (pos != 0 && par.isChar(pos - 1))
+			while (pos != 0 && par.isChar(pos - 1))
+				--pos;
+		else if (pos != 0 && !par.isSpace(pos - 1)) // non-char inset
+			--pos;
+	}
 
 	return setCursor(cur, pit, pos);
 }

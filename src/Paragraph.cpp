@@ -2273,7 +2273,16 @@ bool Paragraph::isChar(pos_type pos) const
 	if (Inset const * inset = getInset(pos))
 		return inset->isChar();
 	char_type const c = d->text_[pos];
-	return !isLetterChar(c) && !isDigit(c);
+	return !isLetterChar(c) && !isDigit(c) && !lyx::isSpace(c);
+}
+
+
+bool Paragraph::isSpace(pos_type pos) const
+{
+	if (Inset const * inset = getInset(pos))
+		return inset->isSpace();
+	char_type const c = d->text_[pos];
+	return lyx::isSpace(c);
 }
 
 
