@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 337
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass scrbook
@@ -401,7 +401,7 @@ Durchsuchen
 \family default
  eingeben können.
  Die Abbildung wird in der druckfertigen Ausgabe genau dort erscheinen,
- an der Sie es eingefügt haben.
+ an der Sie sie eingefügt haben.
 \end_layout
 
 \begin_layout Standard
@@ -485,7 +485,7 @@ Winkel
 Drehpunktes
 \family default
  drehen.
- Negative Winkel drehen Uhrzeigersinn.
+ Negative Winkel drehen im Uhrzeigersinn.
  Die Abbildung wird auch in LyX gedreht.
 \begin_inset Newline newline
 \end_inset
@@ -534,11 +534,12 @@ Bearbeiten
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
+Datei-Handhabung\SpecialChar \menuseparator
 Dateiformate
 \family default
  im Feld 
 \family sans
-Bearbeiter
+Bearbeitungsprogramm
 \family default
  festgelegt wurde, bearbeitet werden.
 \end_layout
@@ -665,7 +666,7 @@ x.eps.gz
 \begin_inset Newline newline
 \end_inset
 
-Gepackte EPS-Dateien sparen Platz, wenn Sie als Ausgebe-Format PostScript
+Gepackte EPS-Dateien sparen Platz, wenn Sie als Ausgabe-Format PostScript
  wählen, siehe Anhang
 \begin_inset space ~
 \end_inset
@@ -802,6 +803,10 @@ Gleitobjekte ! Abbildungen
 
 \begin_layout Standard
 Allgemeine Erläuterungen zu Gleitobjekten finden Sie in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "abs:Gleitobjekte-Einleitung"
@@ -837,7 +842,7 @@ Abbildung
 
 Nr:
 \emph default
- schreiben Sie den Bildbeschriftung.
+ schreiben Sie die Bildbeschriftung.
  Nach einem Klick oberhalb oder unterhalb von 
 \emph on
 Abbildung
@@ -1353,7 +1358,7 @@ Joint Photographic Experts Group
 \begin_inset Quotes grd
 \end_inset
 
- (JPG, Dateiendung
+ (JPEG, Dateiendung
 \family typewriter
  
 \family default
@@ -1665,7 +1670,8 @@ Tabelle
 In der so erstellten Tabelle ist jede Zelle umrandet.
  Die erste Zeile ist vom Rest durch eine doppelte Linie abgetrennt.
  Das wird dadurch erreicht, dass die erste Zeile eine Linie unterhalb und
- die zweite Zeile eine Linie oberhalb haben.Hier ist ein Beispiel:
+ die zweite Zeile eine Linie oberhalb haben.
+ Hier ist ein Beispiel:
 \end_layout
 
 \begin_layout Standard
@@ -1927,11 +1933,16 @@ Tabellen ! Einstellungen
 \begin_layout Standard
 Sie können das Aussehen einer Tabelle ändern, indem Sie mit der rechten
  Maustaste draufklicken.
- Dadurch wird das Fenster 
+ Dadurch wird ein Kontextmenü angezeigt, an derem Ende 
+\family sans
+Einstellungen
+\family default
+ steht.
+ Ein Klick darauf öffnet das Fenster 
 \family sans
 Tabellen-Einstellungen
 \family default
- geöffnet.
+.
  Hier können die Einstellungen der Zelle, in der der Mauszeiger beim Rechtsklick
  gerade war, geändert werden und auch die der zugehörigen Zeile und Spalte.
  Viele Optionen sind auch für eine Zellenauswahl wirksam.
@@ -2058,7 +2069,8 @@ status collapsed
 X-Argument
 \family default
  für besondere Tabellen-Formatierun\SpecialChar \-
-gen einfügen, wie in Abschnitten 
+gen einfügen, wie in den Abschnitten
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "uab:Mehrfachspalten-Berechnungen"
@@ -2080,7 +2092,7 @@ reference "abs:Farbige-Tabellen"
 \family sans
 Rahmen
 \family default
- Hier können Sie Begrenzungslinien für die momentane Zeile(n) und Spalte(n)
+ Hier können Sie Begrenzungslinien für die momentane(n) Zeile(n) und Spalte(n)
  hinzufügen und löschen.
 \begin_inset Newline newline
 \end_inset
@@ -2429,7 +2441,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 
 \end_inset
 
- Dreht die Tabelle um 90° im gegen den Uhrzeigersinn
+ Dreht die Tabelle um 90° gegen den Uhrzeigersinn
 \end_layout
 
 \begin_layout Labeling
@@ -2452,7 +2464,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Bemerkung:
 \series default
  Für die Ausgabe wird die vertikale Ausrichtung der ersten Zelle in einer
  Reihe für alle Zelle der Reihe verwendet.
@@ -2925,7 +2937,7 @@ reference "abs:Titel-Formatierung"
 
 \end_inset
 
-beschrieben wird, wird zum Einstellen der Legende-Optionen benutzt.
+ beschrieben wird, wird zum Einstellen der Legende-Optionen benutzt.
 \end_layout
 
 \begin_layout Standard
@@ -5653,7 +5665,7 @@ fill}
 \end_layout
 
 \begin_layout Subsection
-Beschriftungen lange Tabellen
+Beschriftungen langer Tabellen
 \begin_inset Index
 status collapsed
 
@@ -5767,7 +5779,7 @@ Ein Kurztitel wird anstatt der richtigen Beschriftung im Tabellenverzeichnis
 
  hinter dem Titel lässt die vertikalen Linien aller Zellen der ersten Zeile
  weg.
- Die erste Tabellenzeile ist damit nur so eine Platzhalter für die Beschriftung,
+ Die erste Tabellenzeile ist damit nur ein Platzhalter für die Beschriftung,
  und die eigentliche Tabelle beginnt mit der zweiten Zeile.
 \end_layout
 
@@ -6730,8 +6742,7 @@ Die beiden folgenden Tabellen zeigen den Unterschied:
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Langer Titel mit Standardbreite, Langer Titel mit Standardbreite, Langer
- Titel 
+Langer Titel mit Standardbreite, Langer Titel mit Standardbreite
 \begin_inset OptArg
 status open
 
@@ -7070,15 +7081,7 @@ cm Breite, Langer Titel mit 5
 \begin_inset space \thinspace{}
 \end_inset
 
-cm Breite, Langer Titel mit 5
-\begin_inset space \thinspace{}
-\end_inset
-
-cm Breite, Langer Titel mit 5
-\begin_inset space \thinspace{}
-\end_inset
-
-cm Breite 
+cm Breite
 \begin_inset OptArg
 status open
 
@@ -7442,7 +7445,7 @@ Zoll für
 LTcapwidth
 \series default
  benutzen.
- Um in diesem Fall eine genau a 4
+ Um in diesem Fall eine genau 4
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -7523,7 +7526,7 @@ Kurztitel
 \family sans
 Kopfzeile
 \family default
- definiert wurde, einfügen.
+ definiert wurde, eingefügt.
  Wenn dieser Titel nicht die Tabellennummer enthalten soll, müssen Sie den
  Befehl
 \end_layout
@@ -9536,7 +9539,7 @@ LaTeX berechnet die Länge von Tabellenseiten und die Seitenumbrüche mit
 \emph on
 chunks
 \emph default
- (chunks).
+ (Brocken).
  Chunks sind Tabellenteile, die LaTeX gleichzeitig im Speicher hält.
  Aus historischen Gründen wurde der Standardwert auf 20 Tabellenzeilen gesetzt.
  Wenn Sie Tabellen benutzen, die über mehrere Seiten gehen, verlangsamt
@@ -9588,15 +9591,23 @@ langen
 \begin_inset space ~
 \end_inset
 
-Tabelle
+Tabellen
 \family default
- den LaTeX-Befehl
-\series bold
- 
-\backslash
-clearpage
-\series default
- als TeX-Code einfügen.
+ einen manuellen Seitenumbruch
+\family sans
+ Einfügen\SpecialChar \menuseparator
+Formatierung\SpecialChar \menuseparator
+[Doppel]Seite
+\begin_inset space \space{}
+\end_inset
+
+leeren
+\family default
+ einfügen, siehe 
+\emph on
+Benutzerhandbuch
+\emph default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -9632,8 +9643,8 @@ Standardmäßig werden Tabellen nur zwischen Zeilen umgebrochen.
 \begin_inset Quotes grd
 \end_inset
 
- für einen neue Zeile als TeX-Code an der Stelle in der Zelle ein, wo umgebroche
-n werden soll.
+ für eine neue Zeile als TeX-Code an der Stelle in der Zelle ein, wo umgebrochen
+ werden soll.
  Vor dem 
 \begin_inset Quotes gld
 \end_inset
@@ -11358,9 +11369,10 @@ reference "tab:Table-with-and"
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -11646,7 +11658,7 @@ Um mehrere Zellen einer Zeile zu einer zu verbinden, markieren Sie diese
 
 \end_inset
 
-in der Werkzeugleiste, das Menü 
+ in der Werkzeugleiste, das Menü 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Tabelle\SpecialChar \menuseparator
@@ -12420,7 +12432,7 @@ status open
 \series bold
 Bemerkung:
 \series default
- Wegen eines Fehlers in LyX, werden die überschriebenen Einstellungen dennoch
+ Wegen eines Fehlers in LyX werden die überschriebenen Einstellungen dennoch
  angezeigt.
 \end_layout
 
@@ -12549,7 +12561,7 @@ Tabellen ! Mehrfachzeilen
 
 \begin_layout Standard
 Im Gegensatz zu Mehrfachspalten werden Mehrfachzeilen noch nicht durch LyX
- unterstützt, sodass etwas TeX-Code notwendig.
+ unterstützt, sodass etwas TeX-Code notwendig ist.
  Damit LaTeX Mehrfachzeilen erzeugen kann, muss das Paket 
 \series bold
 multirow
@@ -13081,7 +13093,8 @@ Kantenwinkel [°]
 \begin_inset Text
 
 \begin_layout Plain Layout
-räumliche Auflösung [µm]
+räumliche Auf\SpecialChar \textcompwordmark{}
+lösung [µm]
 \end_layout
 
 \end_inset
@@ -13173,7 +13186,8 @@ cmidrule(l{10pt}){1-1}
 
 \end_inset
 
-LSF räumliche Auflösung
+LSF räumliche Auf\SpecialChar \textcompwordmark{}
+lösung
 \end_layout
 
 \end_inset
@@ -13531,7 +13545,7 @@ cmidrule(l){3-4}
 \end_layout
 
 \begin_layout Standard
-am Anfange der zweiten Zeile und
+am Anfang der zweiten Zeile und
 \end_layout
 
 \begin_layout Standard
@@ -13889,7 +13903,8 @@ Kantenwinkel [°]
 \begin_inset Text
 
 \begin_layout Plain Layout
-räumliche Auflösung [µm]
+räumliche Auf\SpecialChar \textcompwordmark{}
+lösung [µm]
 \end_layout
 
 \end_inset
@@ -13994,7 +14009,8 @@ cmidrule{3-4}
 
 \end_inset
 
-LSF-räumliche Auflösung
+LSF-räumliche Auf\SpecialChar \textcompwordmark{}
+lösung
 \end_layout
 
 \end_inset
@@ -14820,8 +14836,23 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Wie Sie sehen können, ist der Inhalt der ersten und letzten Zeile bezüglich
- der Textzeile nicht richtig ausgerichtet.
+Wie Sie sehen können, ist der Text der ersten Zeile von Tabelle
+\begin_inset space \space{}
+\end_inset
+
+1 und letzten Zeile von Tabelle
+\begin_inset space \space{}
+\end_inset
+
+4 bezüglich dem Wort 
+\begin_inset Quotes gld
+\end_inset
+
+Test
+\begin_inset Quotes grd
+\end_inset
+
+ nicht richtig ausgerichtet.
  Um das zu erreichen, müssen Sie die Minipage-Box in eine 
 \begin_inset Quotes gld
 \end_inset
@@ -14852,8 +14883,11 @@ reference "uab:Vertikale-Ausrichtung"
 \end_inset
 
  setzen.
- Im obigen Beispiel wurde in der zweiten Tabelle des ersten Zeile mit dem
- Befehl
+ In Tabelle
+\begin_inset space \space{}
+\end_inset
+
+2 wurde der Text mit dem Befehl
 \end_layout
 
 \begin_layout Standard
@@ -14877,7 +14911,11 @@ vor der Box ausgerichtet.
 {
 \series default
  aufhörte.
- Für die zweite Tabelle in der letzten Zeile wurde der Befehl
+ Für Tabelle
+\begin_inset space \space{}
+\end_inset
+
+5 wurde der Befehl
 \end_layout
 
 \begin_layout Standard
@@ -15143,7 +15181,7 @@ Farbe ! für Text
 	filename ../../images/dialog-show_character.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 0bp 20bp 20bp
 
 \end_inset
 
@@ -15311,7 +15349,9 @@ white
 \family default
 und
 \family sans
- weiß)
+ weiß
+\family default
+).
 \end_layout
 
 \begin_layout Standard
@@ -15433,7 +15473,7 @@ cellcolor{Farbname}
 \end_layout
 
 \begin_layout Standard
-Beide Befehle werden am Anfang einer Zelle als TeX-Code eingegeben..
+Beide Befehle werden am Anfang einer Zelle als TeX-Code eingegeben.
 \end_layout
 
 \begin_layout Standard
@@ -15449,7 +15489,7 @@ reference "Wenn-Sie-nur"
 \emph on
 markieren Sie nur den Text
 \emph default
-, sonst werden die ERTs LaTeX-Fehler erzeugen.
+, sonst werden Sie LaTeX-Fehler erzeugen.
 \end_layout
 
 \begin_layout Standard
@@ -15461,7 +15501,7 @@ status open
 \series bold
 Achtung:
 \series default
- Nicht alle DVI-Betrachter können alle selbst definierte Farben anzeigen.
+ Nicht alle DVI-Betrachter können alle selbst definierten Farben anzeigen.
 \end_layout
 
 \end_inset
@@ -15834,7 +15874,7 @@ reference "uab:Liniendicke"
 
 \end_inset
 
- beschrieben, kann Die Dicke aller Tabellenlinien mit der Länge 
+ beschrieben, kann die Dicke aller Tabellenlinien mit der Länge 
 \series bold
 
 \backslash
@@ -15872,7 +15912,7 @@ pann folgendes Spaltenformat entsprechend der Beschreibung in Abschnitt
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "uab:Angepasste-Zellen/Spaltenformat"
+reference "uab:Angepasste-Zellen-/Spaltenformate"
 
 \end_inset
 
@@ -16858,7 +16898,7 @@ Aber das hat den Nachteil, dass die Zelltexte nicht mehr genau vertikal
 \series bold
 array
 \series default
- wird automatisch von LyX geladen, wenn Sie selbst-definierte Tabellenformate
+ wird automatisch von LyX geladen, wenn Sie selbst definierte Tabellenformate
  verwenden.
  Der Befehl 
 \series bold
@@ -16885,7 +16925,7 @@ Tabellen ! Zellenausrichtung
 
 \begin_layout Standard
 Manchmal sieht es besser aus, wenn Spalten nach besonderen Zeichen ausgerichtet
- sind wie zum Beispiel den Dezimalpunkt wie in Tabelle
+ sind wie zum Beispiel dem Dezimalpunkt wie in Tabelle
 \begin_inset space ~
 \end_inset
 
@@ -17118,8 +17158,6 @@ Verschiedene Ausrichtungen
 
 \begin_layout Plain Layout
 \align center
-
-\color black
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="6">
 <features>
@@ -17190,8 +17228,6 @@ Relationen
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 12×
 \end_layout
 
@@ -17201,14 +17237,10 @@ Relationen
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 24
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\color inherit
 Flaschen
 \end_layout
 
@@ -17218,8 +17250,6 @@ Flaschen
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 \begin_inset Formula $10\cdot$
 \end_inset
 
@@ -17232,8 +17262,6 @@ Flaschen
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 \begin_inset Formula $10^{\mbox{-}17}$
 \end_inset
 
@@ -17246,8 +17274,6 @@ Flaschen
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 \begin_inset Formula $\Gamma(t)\propto$
 \end_inset
 
@@ -17260,8 +17286,6 @@ Flaschen
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 \begin_inset Formula $\:\Upsilon(t)$
 \end_inset
 
@@ -17276,8 +17300,6 @@ Flaschen
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 1024×
 \end_layout
 
@@ -17287,8 +17309,6 @@ Flaschen
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 768
 \begin_inset space \thinspace{}
 \end_inset
@@ -17302,8 +17322,6 @@ Pixel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 \begin_inset Formula $5.78\cdot$
 \end_inset
 
@@ -17316,8 +17334,6 @@ Pixel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 \begin_inset Formula $10^{7}$
 \end_inset
 
@@ -17330,8 +17346,6 @@ Pixel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 \begin_inset Formula $A\ne$
 \end_inset
 
@@ -17344,8 +17358,6 @@ Pixel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 \begin_inset Formula $\: B_{\mathrm{red}}$
 \end_inset
 
@@ -17360,8 +17372,6 @@ Pixel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 32×
 \end_layout
 
@@ -17371,8 +17381,6 @@ Pixel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 6
 \begin_inset space \thinspace{}
 \end_inset
@@ -17386,8 +17394,6 @@ cm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 -
 \begin_inset Formula $33.5\cdot$
 \end_inset
@@ -17401,8 +17407,6 @@ cm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 \begin_inset Formula $10^{4}$
 \end_inset
 
@@ -17415,8 +17419,6 @@ cm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 \begin_inset Formula $\sin(\alpha)\ge$
 \end_inset
 
@@ -17429,8 +17431,6 @@ cm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\color black
 \begin_inset Formula $\:\sin(\beta)$
 \end_inset
 
@@ -17460,7 +17460,7 @@ Es gibt auch noch das LaTeX-Paket
 \series bold
 dcolumn
 \series default
-
+,
 \begin_inset Index
 status collapsed
 
@@ -17566,29 +17566,29 @@ dcolumn
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features>
-<column alignment="center" valignment="top" width="0" special="D{x}{\times}{-1}|">
-<column alignment="center" valignment="top" width="0" special="D{x}{\times}{4.9}|">
+<column alignment="center" valignment="top" width="0" special="D{x}{\times}{-1}">
+<column alignment="center" valignment="top" width="0" special="D{x}{\times}{4.9}">
 <column alignment="center" valignment="top" width="0" special="D{~}{\,}{9.7}">
 <row>
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Einheiten
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Einheiten
-\end_layout
-
-\end_inset
-</cell>
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Einheiten
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Einheiten
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17633,7 +17633,7 @@ Einheiten
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17695,7 +17695,7 @@ times
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17757,7 +17757,7 @@ times
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17797,10 +17797,10 @@ times
 \end_layout
 
 \begin_layout Subsection
-Angepasste Zellen/Spaltenformat
+Angepasste Zellen-/Spaltenformate
 \begin_inset CommandInset label
 LatexCommand label
-name "uab:Angepasste-Zellen/Spaltenformat"
+name "uab:Angepasste-Zellen-/Spaltenformate"
 
 \end_inset
 
@@ -17829,10 +17829,10 @@ reference "uab:Mehrfachspalten-Berechnungen"
 
 \end_inset
 
- die gewünschte Breite einer Mehrfachspalte berechnen will, ist bei mehreren
- Tabellen mit Mehrfachspalten sehr lästig.
- Um sich das Leben zu erleichtern, können Sie im LaTeX-Vorspann ein Zellen/Spalt
-en definieren:
+ die gewünschte Breite einer Mehrfachspalte berechnen will, ist das bei
+ mehreren Tabellen mit Mehrfachspalten sehr lästig.
+ Um sich das Leben zu erleichtern, können Sie im LaTeX-Vorspann Zellen/Spalten
+ definieren:
 \end_layout
 
 \begin_layout Standard
@@ -17934,7 +17934,7 @@ LaTeX-Argument
 \family sans
 Tabellen-Einstellungen
 \family default
--Dialog eine Mehrfachspalten definieren.
+-Dialog eine Mehrfachspalte definieren.
 \end_layout
 
 \begin_layout Standard
@@ -17996,7 +17996,7 @@ arrayrulewidth)*(1-#2))/#2}}
 \end_layout
 
 \begin_layout Standard
-Diese Format benutzt Gleichung
+Dieses Format benutzt Gleichung
 \begin_inset space ~
 \end_inset
 
@@ -18149,7 +18149,7 @@ name "tab:Tabelle-mit-benutzerdefinierte"
 
 \end_inset
 
-Tabelle mit benutzerdefinierte Formaten
+Tabelle mit benutzerdefinierten Formaten
 \end_layout
 
 \end_inset
@@ -18325,7 +18325,7 @@ arrayrulewidth
 \begin_inset space \thinspace{}
 \end_inset
 
-pt, wie in Tabelle
+pt wie in Tabelle
 \begin_inset space ~
 \end_inset
 
@@ -18543,7 +18543,7 @@ Um eine Liniendicke von 1.5
 \begin_inset space \thinspace{}
 \end_inset
 
-pt nur für horizontale Linien zu bekommen, wie in Tabelle
+pt nur für horizontale Linien zu bekommen wie in Tabelle
 \begin_inset space ~
 \end_inset
 
@@ -18837,11 +18837,11 @@ pt nur für vertikale Linien zu bekommen, müssen Sie im LaTeX-Vorspann folgende
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "uab:Angepasste-Zellen/Spaltenformat"
+reference "uab:Angepasste-Zellen-/Spaltenformate"
 
 \end_inset
 
-definieren:
+ definieren:
 \end_layout
 
 \begin_layout Standard
@@ -19394,7 +19394,7 @@ LaTeX-Pakete ! arydshln
 
 \end_inset
 
- im LaTeX-Vorspann geladen werden:
+ im LaTeX-Vorspann laden:
 \end_layout
 
 \begin_layout Standard
@@ -19472,7 +19472,7 @@ als TeX-Code als erstes in die erste Zelle einer Zeile eingefügt.
 
 B.
  eine Mehrfachspalte über Spalte 2 bis 4 haben und Sie möchten darüber eine
- gestrichelte Linie haben, fügen Sie diesen Befehl
+ gestrichelte Linie haben, fügen Sie den Befehl
 \end_layout
 
 \begin_layout Standard
@@ -19506,7 +19506,7 @@ reference "tab:Tabelle-mit-gestrichelten"
 
 \end_inset
 
- wurde der dritten Spalte der Befehl
+ wurde in der dritten Spalte der Befehl
 \series bold
  
 \series default
@@ -19705,7 +19705,8 @@ Randnotizen
 Gleitobjekte ermöglichen eine hochwertige Gestaltung.
  Abbildungen und Tabellen können gleichmäßig auf Seiten verteilt werden,
  um weiße Flächen und Seiten ohne Text zu vermeiden.
- Weil das Gleiten oft den Kontext zwischen  Text und Abbildung/Tabelle auflöst,
+ Weil das Gleiten oft den Kontext zwischen  Text und Abbildung/Tabelle auf\SpecialChar \textcompwordmark{}
+löst,
  kann im Text auf ein Gleitobjekt verwiesen werden.
  Gleitobjekte sind deshalb nummeriert.
  Querverweise werden in Abschnitt
@@ -19766,10 +19767,6 @@ Gleitobjekt
  Algorithmus, Abbildung oder Tabelle werden ober- oder unterhalb des Titels
  eingefügt.
  In Abschnitt
-\begin_inset space ~
-\end_inset
-
-
 \begin_inset space ~
 \end_inset
 
@@ -19856,7 +19853,8 @@ reference "abs:Gleitende-Tabellen"
 
 \end_inset
 
- beschrieben wurden, gibt es -Algorithmen und umflossene Gleitobjekte
+ beschrieben wurden, gibt es Gleitobjekt-Algorithmen und textumflossene
+ Gleitobjekte.
 \end_layout
 
 \begin_layout Subsection
@@ -20186,51 +20184,7 @@ status collapsed
 
 
 \backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-vspace
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-4mm
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+vspace{4mm}
 \end_layout
 
 \end_inset
@@ -20242,16 +20196,12 @@ status collapsed
 
  installiert ist.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Wie man ein LaTeX-Paket installiert, wird im Handbuch 
 \emph on
-LaTeX
-\begin_inset space ~
-\end_inset
-
-Konfiguration
+LaTeX-Konfiguration
 \emph default
  beschrieben.
 \end_layout
@@ -20316,28 +20266,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Bemerkung:
-\series default
- Textumflossene Objekte sind fragil.
- Wenn die Abbildung zu nahe am unteren Seitenrand ist, kann es passieren,
- dass sie gar nicht oder über anderen Text gedruckt wird.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Weitere
-\series default
- 
-\series bold
-Bemerkungen
-\series default
-:
+Bemerkungen:
 \end_layout
 
 \begin_layout Itemize
@@ -20345,6 +20274,12 @@ Textumflossene Objekte
 \end_layout
 
 \begin_deeper
+\begin_layout Itemize
+sind fragil.
+ Wenn die Abbildung zu nahe am unteren Seitenrand ist, kann es passieren,
+ dass sie gar nicht oder über anderen Text gedruckt wird.
+\end_layout
+
 \begin_layout Itemize
 sollten nicht in Absätze gepackt werden, die auf der nächsten Seite fortgesetzt
  werden.
@@ -20412,6 +20347,37 @@ end{sloppypar}
  gepackt werden, um unnötige manuelle Zeilenumbrüche zu vermeiden.
 \end_layout
 
+\begin_layout Itemize
+In den 
+\emph on
+Hanbuchergänzungen
+\emph default
+ ist beschrieben, wie man mit dem LaTeX-Paket 
+\series bold
+picinpar
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! picinpar
+\end_layout
+
+\end_inset
+
+
+\series default
+ 
+\emph on
+richtige
+\emph default
+ textumflossene Gleitobjekte erzeugt.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Gleitobjekt-Nummerierung
 \begin_inset CommandInset label
@@ -20434,7 +20400,7 @@ Gleitobjekte ! Nummerierung
 \end_layout
 
 \begin_layout Standard
-Gleitobjekte werden entweder unabhängig vom abschnitt, in dem sie sind,
+Gleitobjekte werden entweder unabhängig vom Abschnitt, in dem sie sind,
  nummeriert oder nach dem Schema 
 \begin_inset Quotes gld
 \end_inset
@@ -20497,7 +20463,7 @@ roman
 \end_layout
 
 \begin_layout Standard
-Um das Numerierungsschema zum Beispiel auf 
+Um das Nummerierungsschema zum Beispiel auf 
 \begin_inset Quotes gld
 \end_inset
 
@@ -20524,7 +20490,7 @@ Um den Befehl
 \backslash
 numberwithin
 \series default
- zu können, müssen Sie in den 
+ benutzen zu können, müssen Sie in den 
 \family sans
 Mathe
 \begin_inset space ~
@@ -20571,7 +20537,7 @@ reference "uab:Fußnoten-Nummerierung"
 
 \end_inset
 
- für Einzelheiten und wichtigen Bemerkungen zu Nummerierung-Befehlen an.
+ für Einzelheiten und wichtige Bemerkungen zu Nummerierung-Befehlen an.
 \end_layout
 
 \begin_layout Section
@@ -20614,7 +20580,7 @@ Marke
  oder einen Klick auf 
 \begin_inset Graphics
 	filename ../../images/label-insert.png
-	scale 85
+	scale 70
 	scaleBeforeRotation
 
 \end_inset
@@ -20630,10 +20596,9 @@ Marke
 \family default
  oder übernehmen den vorgeschlagenen.
  Die Marke sieht in LyX dann so aus:
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Graphics
 	filename clipart/Marke.png
 	lyxscale 80
@@ -20656,7 +20621,7 @@ Querverweis
  oder einen Klick auf 
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.png
-	scale 85
+	scale 70
 	scaleBeforeRotation
 
 \end_inset
@@ -20664,10 +20629,9 @@ Querverweis
  können Sie dann auf die Marke verweisen.
  Als Querverweis wird in LyX ein graues Kästchen wie zum Beispiel dieses
  angezeigt:
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Graphics
 	filename clipart/Querverweis.png
 	lyxscale 80
@@ -20689,7 +20653,7 @@ Benutzerhandbuch
 \end_layout
 
 \begin_layout Standard
-Es empfiehlt sich zwischen dem Querverweis-Namen (zum Beispiele Abschnitt)
+Es empfiehlt sich, zwischen dem Querverweis-Namen (zum Beispiele Abschnitt)
  und dem Querverweis ein geschütztes Leerzeichen einfügen, damit beide nicht
  durch einen Zeilenumbruch getrennt werden können.
 \end_layout
@@ -20817,7 +20781,15 @@ Seite
 \begin_inset space ~
 \end_inset
 
-<Seite>: druckt den Text "auf Seite" und die Seitennummer: 
+<Seite>: druckt den Text 
+\begin_inset Quotes gld
+\end_inset
+
+auf Seite
+\begin_inset Quotes grd
+\end_inset
+
+ und die Seitennummer: 
 \begin_inset CommandInset ref
 LatexCommand vpageref
 reference "abb:Zwei-Teilabbildungen"
@@ -20840,8 +20812,15 @@ Seite
 \begin_inset space ~
 \end_inset
 
-<Seite>: druckt die Nummer der Gleitumgebung, den Text "auf Seite", und
- die Seitennummer: 
+<Seite>: druckt die Nummer der Gleitumgebung, den Text 
+\begin_inset Quotes gld
+\end_inset
+
+auf Seite
+\begin_inset Quotes grd
+\end_inset
+
+, und die Seitennummer: 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "abb:Zwei-Teilabbildungen"
@@ -20883,13 +20862,29 @@ prettyref
 
 \begin_layout Standard
 Beachten Sie, dass der Stil <Seite> nicht die Seitennummer druckt, wenn
- sich die referenzierte Marke auf der vorherigen, der selben oder der nächsten
+ sich die referenzierte Marke auf der vorherigen, derselben oder der nächsten
  Seite befindet.
  Stattdessen wird der Text 
 \begin_inset Quotes gld
 \end_inset
 
+auf der vorigen Seite
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
 auf dieser Seite
+\begin_inset Quotes grd
+\end_inset
+
+ oder 
+\begin_inset Quotes gld
+\end_inset
+
+auf der nächsten Seite
 \begin_inset Quotes grd
 \end_inset
 
@@ -20903,7 +20898,7 @@ Die Nummer und die aktuelle Seite des referenzierten Dokumentteils wird
 \family sans
 Format
 \family default
- des Querverweis Fensters eingestellt werden, das erscheint, wenn Sie auf
+ des Querverweis-Fensters eingestellt werden, das erscheint, wenn Sie auf
  einen Querverweis klicken.
 \end_layout
 
@@ -20977,19 +20972,26 @@ autoref{#1}}}}
 \series bold
 hyperref
 \series default
- wird benutzt, um Marken und Querverweise in der DVI- und PDF-Do\SpecialChar \-
-ku\SpecialChar \-
-men\SpecialChar \-
-ten
- zu verlinken, das heißt der Leser der entsprechenden Datei kann auf solch
- einen Link klicken, und die angeklickte Stelle wird gezeigt.
+ wird benutzt, um Marken und Querverweise in DVI- und PDF
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Dokumenten zu verlinken, das heißt der Leser der entsprechenden Datei kann
+ auf solch einen Link klicken, und die angeklickte Stelle wird gezeigt.
  In DVI-Dateien ist ein Link blau unterstrichen, in der PDF-Datei ändert
  sich der Cursor.
 \end_layout
 
 \begin_layout Standard
-Dies Funktion wird auch in diesem Dokument und nach und nach in allen Handbücher
-n.
+Diese Funktion wird auch in diesem Dokument benutzt und nach und nach in
+ allen Handbüchern.
  Wenn Sie sich den LaTeX-Vorspann ansehen, werden Sie verschiedene Optionen
  für die Benutzung von 
 \series bold
@@ -21241,7 +21243,7 @@ reference "abs:Gedrehte-Gleitobjekte"
 
 \begin_layout Standard
 Sie können eine oder mehrere der folgenden Optionen im Gleitobjekt-Dialog
- verwenden um die Platzierung einzelner Gleitobjekte zu beeinflussen, wenn
+ verwenden, um die Platzierung einzelner Gleitobjekte zu beeinflussen, wenn
  Sie die Option 
 \family sans
 Standard-Platzierung
@@ -21262,7 +21264,7 @@ wenn
 \begin_inset space ~
 \end_inset
 
-möglich versuche das Gleitobjekt dort zu platzieren wo es eingefügt wurde.
+möglich versucht, das Gleitobjekt dort zu platzieren, wo es eingefügt wurde.
 \end_layout
 
 \begin_layout Description
@@ -21278,7 +21280,7 @@ Seite
 \family sans
  
 \family default
-versuche das Gleitobjekt am Anfang der aktuellen Seite zu platzieren.
+versucht, das Gleitobjekt am Anfang der aktuellen Seite zu platzieren.
  Gleitobjekte, die maximal 70
 \begin_inset space \thinspace{}
 \end_inset
@@ -21317,7 +21319,7 @@ der
 \begin_inset space ~
 \end_inset
 
-Seite versuche das Gleitobjekt am Ende der aktuellen Seite zu platzieren.
+Seite versucht, das Gleitobjekt am Ende der aktuellen Seite zu platzieren.
  Gleitobjekte, die maximal 30
 \begin_inset space \thinspace{}
 \end_inset
@@ -21361,7 +21363,7 @@ mit
 \begin_inset space ~
 \end_inset
 
-Gleitobjekten versuche das Gleitobjekt auf einer eigenen Seite zu platzieren.
+Gleitobjekten versucht, das Gleitobjekt auf einer eigenen Seite zu platzieren.
  Nur wenn mehr als 50
 \begin_inset space \thinspace{}
 \end_inset
@@ -21408,12 +21410,12 @@ der
 
 Seite
 \family default
- und dann die anderen Optionen zu anzuwenden.
+ und dann die anderen Optionen anzuwenden.
  Wenn Sie nicht die Standard-Platzierung verwenden, wird LaTeX nur die von
- Ihnen gewählten Optionen versuchen anzuwenden, aber immer in der selben
+ Ihnen gewählten Optionen versuchen anzuwenden, aber immer in derselben
  Reihenfolge.
  Wenn keine der 4 Platzierungen möglich sind, wird die Prozedur intern wiederhol
-t, aber diesmal mit dem Ziel das Gleitobjekt auf die nächste Seite zu setzen.
+t, aber diesmal mit dem Ziel, das Gleitobjekt auf die nächste Seite zu setzen.
 \end_layout
 
 \begin_layout Standard
@@ -21445,7 +21447,7 @@ gleiten
 
 \begin_layout Standard
 Es gibt keine Platzierungsoption für textumflossene [Gleit]Objekte, da diese
- immer von Text eines bestimmten Paragraphen umgeben sind.
+ immer vom Text eines bestimmten Absatzes umgeben sind.
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -21496,7 +21498,7 @@ meinAbschnitt}
 \begin_layout Standard
 Dasselbe können Sie für alle Überschriften von Kapiteln, Abschnitten und
  Unterabschnitten festlegen.
- Für kleinere Teile wie Unterunterabschnitten wird es nicht empfohlen, weil
+ Für kleinere Teile wie Unterunterabschnitte wird es nicht empfohlen, weil
  LaTeX Probleme mit einem geeigneten Ort für das Gleitobjekt haben könnte.
 \end_layout
 
@@ -21533,42 +21535,7 @@ endfloat
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-Pakete ! endf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-/loat
+LaTeX-Pakete ! endfloat
 \end_layout
 
 \end_inset
@@ -21610,7 +21577,7 @@ usepackage[Optionen]{endfloat}
 
 \begin_layout Standard
 Es gibt verschiedene Optionen für die Formatierung der Abbildungen- und
- Tabellen-Abschnitt, die Sie in der 
+ Tabellen-Abschnitte, die Sie in der 
 \series bold
 endfloat
 \series default
@@ -21702,8 +21669,8 @@ ss
 \begin_inset VSpace bigskip
 \end_inset
 
-Weitere Einzelheiten finden über Gleitobjekt-Platzierung finden Sie in LaTeX-Büc
-hern wie 
+Weitere Einzelheiten über Gleitobjekt-Platzierung finden Sie in LaTeX-Büchern
+ wie 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion,latexguide,lamport,latex-praxisbuch"
@@ -21907,7 +21874,7 @@ Gleitobjekte ! nebeneinander
 \end_layout
 
 \begin_layout Standard
-Um Gleitobjekte nebeneinander zu setzen, wie bei Abbildung
+Um Gleitobjekte nebeneinander zu setzen wie bei Abbildung
 \begin_inset space ~
 \end_inset
 
@@ -21925,7 +21892,7 @@ reference "abb:Gleitobjekt-rechts"
 
 \end_inset
 
-, wird nur 
+ wird nur 
 \emph on
 ein
 \emph default
@@ -21964,7 +21931,7 @@ Spalten% und die Box Ausrichtung auf
 Unten
 \family default
  gesetzt.
- Die Minipage Boxen enthalten das Bild und die Beschriftung, so wie in einem
+ Die Minipage-Boxen enthalten das Bild und die Beschriftung wie in einem
  Gleitobjekt.
  Der einzige Unterschied ist, dass die Bildeinheit 
 \family sans
@@ -21974,7 +21941,7 @@ Spaltenbreite
 
 %
 \family default
- nun bezüglich der Breite der Minipage Boxen berechnet wird.
+ nun bezüglich der Breite der Minipage-Boxen berechnet wird.
 \end_layout
 
 \begin_layout Standard
@@ -22278,7 +22245,7 @@ Bemerkung:
 \series bold
 tableposition=top
 \series default
- hat keine Auswirkung wenn eine 
+ hat keine Auswirkung, wenn eine 
 \series bold
 koma-script
 \series default
@@ -22521,7 +22488,7 @@ Dies ist ein Beispiel einer Beschriftung, die länger als eine Zeile lang
 status collapsed
 
 \begin_layout Plain Layout
-Dies ist ein Beispiel einer Beschriftung, der länger als eine Zeile lang
+Dies ist ein Beispiel einer Beschriftung, die länger als eine Zeile lang
  ist.
 \end_layout
 
@@ -22582,7 +22549,7 @@ Dies ist ein Beispiel einer Beschriftung, die länger als eine Zeile lang
 status collapsed
 
 \begin_layout Plain Layout
-Dies ist ein Beispiel einer Beschriftung, der länger als eine Zeile lang
+Dies ist ein Beispiel einer Beschriftung, die länger als eine Zeile lang
  ist.
 \end_layout
 
@@ -22721,7 +22688,7 @@ report
 \series bold
 caption
 \series default
- im LaTeX-Vorspann folgendes:
+ im LaTeX-Vorspann folgendes schreiben:
 \begin_inset Foot
 status collapsed
 
@@ -23334,7 +23301,7 @@ Bemerkung:
 \series bold
 hypcap
 \series default
-
+,
 \begin_inset Index
 status collapsed
 
@@ -23898,11 +23865,11 @@ Einfügen\SpecialChar \menuseparator
 Notiz
 \family default
  eingefügt.
- Es gibt drei Arten:
+ Es gibt fünf Arten:
 \end_layout
 
 \begin_layout Description
-LyX-Notiz: Dieser Typ ist für interne Notizen wird nicht gedruckt.
+LyX-Notiz: Dieser Typ ist für interne Notizen und wird nicht gedruckt.
  Eine 
 \family sans
 LyX-Notiz
@@ -23938,10 +23905,8 @@ Dies ist Text in einem Notiz-Kästchen, der nicht gedruckt wird.
 \end_layout
 
 \begin_layout Description
-Kommentar: Diese Notiz wird auch nicht gedruckt, aber sie als LaTeX-Kom\SpecialChar \-
-men\SpecialChar \-
-tar,
- wenn Sie das Dokument nach LaTeX exportieren (
+Kommentar: Diese Notiz wird auch nicht gedruckt, aber sie erscheint als
+ LaTeX-Kommentar, wenn Sie das Dokument nach LaTeX exportieren (
 \family sans
 Datei\SpecialChar \menuseparator
 Ex\SpecialChar \-
@@ -23959,7 +23924,7 @@ status collapsed
 
 \end_inset
 
-X (pdflatex) / (plain)
+X (pdflatex) / (normal)
 \family default
 .
  Ein Kommentar sieht so aus:
@@ -24087,9 +24052,8 @@ egroup}
 status collapsed
 
 \begin_layout Plain Layout
-Die Grauschrift-Notiz wurde (fast) auf die ursprüngliche LyX-Definition
- zurückgesetzt, weil Grauschriften im LaTeX-Vorspann dieses Dokuments blau
- definiert wurden.
+Die Grauschrift-Notiz wurde auf die ursprüngliche LyX-Definition zurückgesetzt,
+ weil Grauschriften im LaTeX-Vorspann dieses Dokuments blau definiert wurden.
  
 \end_layout
 
@@ -24103,8 +24067,8 @@ Die Grauschrift-Notiz wurde (fast) auf die ursprüngliche LyX-Definition
 \begin_inset Newline newline
 \end_inset
 
-Das Beispiel zeigt,dass die erste Zeile von Grauschrift-Notizen wird eingerückt
- wird und dass Grauschrift-Notizen können Fußnoten enthalten können.
+Das Beispiel zeigt, dass die erste Zeile von Grauschrift-Notizen eingerückt
+ wird und dass Grauschrift-Notizen Fußnoten enthalten können.
 \end_layout
 
 \begin_layout Description
@@ -24271,8 +24235,8 @@ LyX-Notiz
  anderen Möglichkeiten auswählen.
  Wenn Sie einen vorhandenen Text in eine Notiz verwandeln wollen, markieren
  Sie ihn und klicken dann auf den Werzeugleistenknopf.
- Um eine Notiz in Text zu verwandeln, drücken Sie die Backspace Taste, wenn
- der Cursor am Beginn der Notiz ist oder die Entfernen Taste, wenn der Cursor
+ Um eine Notiz in Text zu verwandeln, drücken Sie die Backspace-Taste, wenn
+ der Cursor am Beginn der Notiz ist oder die Entfernen-Taste, wenn der Cursor
  am Ende der Notiz ist.
 \end_layout
 
@@ -24284,7 +24248,7 @@ Die Textfarbe der
 \family sans
 Grauschrift
 \family default
--Notiz können Sie im LaTeX-Vorspann mit folgenden Befehl ändern:
+-Notiz können Sie im LaTeX-Vorspann mit folgendem Befehl ändern:
 \end_layout
 
 \begin_layout Standard
@@ -24319,7 +24283,7 @@ egroup}
 \end_layout
 
 \begin_layout Standard
-Die verfügbaren Farben und wie man eigene definiert wurde bereits in Abschnitt
+Die verfügbaren Farben und wie man eigene definiert, wurde bereits in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -24350,7 +24314,7 @@ Schattiert
 \family sans
 Textstil
 \family default
- Dialog eingestellt werden.
+-Dialog eingestellt werden.
 \end_layout
 
 \begin_layout Standard
@@ -24486,7 +24450,7 @@ Schattierte
 Box
 \family default
  geändert werden.
- Die verfügbaren Farben und wie man eigene definiert wurde bereits in Abschnitt
+ Die verfügbaren Farben und wie man eigene definiert, wurde bereits in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -24508,7 +24472,7 @@ status collapsed
 \backslash
 definecolor
 \series default
- benötigt LaTeX-Paket 
+ benötigt das LaTeX-Paket 
 \series bold
 color
 \series default
@@ -24542,7 +24506,7 @@ reference "abs:Farbige-Boxen"
 \end_layout
 
 \begin_layout Standard
-Für das folgende Beispiel wurden folgende TeX-Code-Befehle verwendet:
+Für das nächste Beispiel wurden folgender TeX-Code verwendet:
 \end_layout
 
 \begin_layout Standard
@@ -24948,8 +24912,8 @@ Dies ist eine Fußnote mit kleinen römischen Zahlen
 \end_layout
 
 \begin_layout Standard
-Um den Nummerierungsstil auf große römische Zahlen zu ändern, ersetzten
- Sie in obigem Befehl 
+Um den Nummerierungsstil auf große römische Zahlen zu ändern, ersetzen Sie
+ in obigem Befehl 
 \series bold
 
 \backslash
@@ -24976,11 +24940,7 @@ nummerieren
 \backslash
 Alph
 \series default
- bzw.
-\begin_inset space ~
-\end_inset
-
-
+ oder 
 \series bold
 
 \backslash
@@ -25412,13 +25372,12 @@ name "abb:Standard-Fußnoten-Platzierung-in"
 
 \end_inset
 
-Standard Fußnoten-Platzierung in einem zweispaltigen Dokument
+Standard-Fußnoten-Platzierung in einem zweispaltigen Dokument
 \begin_inset OptArg
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Standard Fußnoten-Platzierung in einem zweisp.
- Dokument
+Standard-Fußnoten-Platzierung in einem zweispaltigen Dokument
 \end_layout
 
 \end_inset
@@ -25549,7 +25508,7 @@ Endnoten
 
 \end_inset
 
- Um das zu erreichen müssen Sie das LaTeX-Paket 
+ Um das zu erreichen, müssen Sie das LaTeX-Paket 
 \series bold
 endnotes
 \series default
@@ -25585,7 +25544,7 @@ endnote
 \end_layout
 
 \begin_layout Standard
-Um die gesammelten Fußnoten zu drucken fügen Sie den TeX-Code-Befehl
+Um die gesammelten Fußnoten zu drucken, fügen Sie den TeX-Code
 \series bold
  
 \backslash
@@ -25872,7 +25831,6 @@ Randnotizen sehen in LyX wie Fußnoten aus und verhalten sich auch so.
 	filename ../../images/marginalnote-insert.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 0bp 22bp 22bp
 
 \end_inset
 
@@ -26010,6 +25968,9 @@ normalmarginpar
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
@@ -26060,8 +26021,8 @@ reference "uab:Mehrfache-Zeilen-in"
 
 \end_inset
 
- beschrieben, können lange Worte nicht umgebrochen werden, wenn sie das
- erste Wort der Randnotiz sind.
+ beschrieben können lange Worte nicht umgebrochen werden, wenn sie das erste
+ Wort der Randnotiz sind.
  Um das zu vermeiden, fügen sie 0
 \begin_inset space \thinspace{}
 \end_inset
@@ -26165,7 +26126,7 @@ LaTeX-Pakete ! marginnote
 
  verwendet wird.
  Wenn Sie diese zwei Zeilen zum LaTeX-Vorspann hinzufügen, wird der Befehl,
- der von LyX für Randnotizen verwendet wird umdefiniert, so dass der Befehl
+ der von LyX für Randnotizen verwendet wird, umdefiniert, so dass der Befehl
  des Pakets 
 \series bold
 marginnote
@@ -26199,7 +26160,7 @@ marginnote
  hat eine andere nützliche Eigenschaft: Man kann einen vertikalen Versatz
  für Randnotizen angeben.
  Dies wird oft für ein besseres Seitenformat verwendet, wenn zu viele Randnotize
-n sind zu dicht beieinander sind.
+n zu dicht beieinander sind.
  Der Versatz wird in LyX als TeX-Code direkt nach der Randnotiz mit dem
  Schema
 \end_layout
@@ -26224,7 +26185,7 @@ reference "tab:Maßeinheiten"
 \end_inset
 
  aufgelistet sind.
- Eine negativer Wert versetzt die Randnotiz nach oben, ein positiver Wer
+ Ein negativer Wert versetzt die Randnotiz nach oben, ein positiver Wert
  nach unten.
  Zum Beispiel ist die Randnotiz neben diesem Text um 1.5
 \begin_inset space \thinspace{}
@@ -26242,7 +26203,7 @@ cm mit dem TeX-Code-Befehl
 \begin_inset Quotes grd
 \end_inset
 
- nach oben versetzt
+ nach oben versetzt.
 \begin_inset Marginal
 status open
 
@@ -26712,7 +26673,7 @@ reference "abs:Minipage"
 
 \end_inset
 
-, um Text zu umranden, siehe Abschnitt
+, um Text zu umrahmen, siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -26768,7 +26729,7 @@ Box
  oder dem Schalter 
 \begin_inset Graphics
 	filename ../../images/box-insert.png
-	scale 85
+	scale 70
 	scaleBeforeRotation
 
 \end_inset
@@ -27589,7 +27550,7 @@ Box,
 \begin_inset space ~
 \end_inset
 
-dünn Zeichnet einen dünnen Rahmen mit abgerundeten Ecken um die Box.
+dünn zeichnet einen dünnen Rahmen mit abgerundeten Ecken um die Box.
  Die Rahmendicke ist 0.4
 \begin_inset space \thinspace{}
 \end_inset
@@ -27634,7 +27595,7 @@ Box,
 \begin_inset space ~
 \end_inset
 
-dick Zeichnet einen dickeren Rahmen mit abgerundeten Ecken um die Box.
+dick zeichnet einen dickeren Rahmen mit abgerundeten Ecken um die Box.
  Die Rahmendicke ist 0.8
 \begin_inset space \thinspace{}
 \end_inset
@@ -27675,7 +27636,7 @@ Schattierte
 \begin_inset space ~
 \end_inset
 
-Box Zeichnet einen Rahmen mit Schatten um die Box.
+Box zeichnet einen Rahmen mit Schatten um die Box.
  Die Rahmendicke wird durch 
 \series bold
 
@@ -27725,7 +27686,8 @@ gerahmte
 \begin_inset space ~
 \end_inset
 
-Box Zeichnet einen doppelten Rahmen um die Box Der innere Rahmen ist 0.75
+Box zeichnet einen doppelten Rahmen um die Box.
+ Der innere Rahmen ist 0.75
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -27907,13 +27869,13 @@ fboxrule}{0.4pt}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\noindent
 \begin_inset VSpace bigskip
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Der Abstand zwischen dem Rahmen und dem Inhalt ist standardmäßig 3
 \begin_inset space \thinspace{}
 \end_inset
@@ -28148,7 +28110,6 @@ cornersize{0.5}
 \end_layout
 
 \begin_layout Standard
-\noindent
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -28304,6 +28265,12 @@ HFill
 \family sans
 Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
+Horizontaler
+\begin_inset space \space{}
+\end_inset
+
+Abstand\SpecialChar \menuseparator
+Abstand\SpecialChar \menuseparator
 Variabler
 \begin_inset space ~
 \end_inset
@@ -28749,8 +28716,7 @@ Textformat
 \family default
  festgelegt haben.
  Wenn Sie es trotzdem wollen, müssen Sie es manuell machen.
- Eine Standardeinrückung zum Beispiel erreichen Sie mit dem TeX-Code-Befehl
- 
+ Eine Standardeinrückung zum Beispiel erreichen Sie mit dem TeX-Code 
 \series bold
 
 \backslash
@@ -28930,7 +28896,7 @@ einsehrsehrsehrlangeswort
 
 \begin_layout Standard
 Um das zu verhindern, fügen Sie vor dem Wort, das nicht getrennt werden
- soll, den TeX-Code-Befehl
+ soll, den TeX-Code
 \end_layout
 
 \begin_layout Standard
@@ -28942,7 +28908,8 @@ mbox{
 \end_layout
 
 \begin_layout Standard
-ein TeX-Code, Hinter dem Wort fügen Sie 
+ein.
+ Hinter dem Wort fügen Sie 
 \series bold
 
 \begin_inset Quotes gld
@@ -29340,7 +29307,7 @@ cm nach oben verschoben wurde.
 \end_layout
 
 \begin_layout Standard
-Wenn Sie das nicht wollen, können Sie die Boxhöhe auf 0 setzen:
+Wenn Sie die Dehnung nicht wollen, können Sie die Boxhöhe auf 0 setzen:
 \end_layout
 
 \begin_layout Standard
@@ -29500,8 +29467,7 @@ LaTeX-Pakete ! color
 \series bold
 
 \backslash
-@ifundef\SpecialChar \textcompwordmark{}
-ined{textcolor}
+@ifundefined{textcolor}
 \begin_inset Newline newline
 \end_inset
 
@@ -29537,8 +29503,7 @@ Der Befehl
 \series bold
 
 \backslash
-@ifundef\SpecialChar \textcompwordmark{}
-ined
+@ifundefined
 \series default
  vermeidet, dass es in diesem Fall doppelt geladen wird.
 \end_layout
@@ -29575,21 +29540,7 @@ Der Boxinhalt kann auch eine Box sein, und Colorboxen können in anderen
 \end_layout
 
 \begin_layout Standard
-Die folgenden Farben sind vordefiniert (
-\begin_inset Graphics
-	filename ../../images/dialog-show_character.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 0bp 22bp 22bp
-
-\end_inset
-
-\SpecialChar \menuseparator
-
-\family sans
-Farbe
-\family default
-):
+Die folgenden Farben sind vordefiniert:
 \family sans
  schwarz
 \family default
@@ -30205,7 +30156,7 @@ status open
 \series bold
 Bemerkung:
 \series default
- Gleitobjekte dürfen nicht in eine rotiere oder skaliere Box gesetzt werden.
+ Gleitobjekte dürfen nicht in eine rotierte oder skalierte Box gesetzt werden.
 \end_layout
 
 \end_inset
@@ -30444,7 +30395,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-oder ein Bild oder Tabelle:
+Oder ein Bild oder Tabelle:
 \end_layout
 
 \begin_layout Standard
@@ -30802,8 +30753,7 @@ scalebox{-1}[1]{Boxinhalt}
 \series bold
 
 \backslash
-ref\SpecialChar \textcompwordmark{}
-lectbox{Boxinhalt}
+reflectbox{Boxinhalt}
 \series default
 .
 \end_layout
@@ -30818,8 +30768,8 @@ lectbox{Boxinhalt}
 \backslash
 resizebox
 \series default
- verwendet man um den Boxinhalt auf eine bestimmte Höhe bzw.
- Breite zu skalieren.
+ verwendet man, um den Boxinhalt auf eine bestimmte Höhe oder Breite zu
+ skalieren.
  Das Befehlsschema ist folgendes:
 \end_layout
 
@@ -30836,7 +30786,7 @@ Gibt man für eines der beiden Argumente ein Ausrufezeichen
 \series bold
 !
 \series default
- ein, wird die Größe so gewählt, dass das Aspektverhältnis der Box beibehalten
+ ein, wird die Größe so gewählt, dass das Seitenverhältnis der Box beibehalten
  wird.
 \end_layout
 
@@ -31548,7 +31498,7 @@ als Datum
 \begin_inset Text
 
 \begin_layout Plain Layout
-als TeX-Code-Befehl
+als TeX-Code
 \end_layout
 
 \end_inset
@@ -31786,7 +31736,7 @@ Include Sie können LyX- und LaTeX-Dokumente einbinden.
 Öffnen
 \family default
  klicken, wird das eingebundene Dokument in einem eigenen Unterfenster geöffnet,
- und sie können es editieren.
+ und Sie können es editieren.
 \begin_inset Newline newline
 \end_inset
 
@@ -31810,7 +31760,7 @@ filename "DummyDocument1.lyx"
 \end_inset
 
 Die Abschnittsnummerierung enthält alle Abschnitte der eingebundenen Dateien
- in der Reihenfolgen, in der sie ins Hauptdokument eingebunden werden.
+ in der Reihenfolge, in der sie ins Hauptdokument eingebunden werden.
  Das obige Beispiel besitzt einen Unterabschnitt mit der Nummer dieses Abschnitt
 s.
  Auf Marken eingebundener Dokumente kann verwiesen werden: siehe Unterabschnitt
@@ -31856,7 +31806,7 @@ können Sie festlegen, für welche eingebundenen Unterdokumente eine Druckausgab
 includeonly
 \series default
  wird in den LaTeX-Vorspann des Hauptdokuments eingefügt.
- Im folgenden Beispiel:
+ Im folgenden Beispiel
 \end_layout
 
 \begin_layout Standard
@@ -31973,7 +31923,7 @@ Vorschau
 An
 \family default
  gesetzt wurde.
- Allerdings wirken sich Änderung erst bei einem erneuten Laden des Dokuments
+ Allerdings wirken sich Änderungen erst bei einem erneuten Laden des Dokuments
  aus.
 \end_layout
 
@@ -32343,11 +32293,11 @@ htbp
 
 .
  Die Option 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 h
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  hat manchmal keinen Effekt, aber sie muss nicht verwendet werden, da auch
@@ -32420,12 +32370,8 @@ def func(param):
 \end_layout
 
 \begin_layout Standard
-Wenn Sie eine Programmier-
-\family sans
-Sprache
-\family default
- gewählt haben, werden die Schlüsselworte der Sprache erkannt und besonders
- gedruckt, wie 
+Wenn Sie eine Programmiersprache gewählt haben, werden die Schlüsselworte
+ der Sprache erkannt und besonders gedruckt, wie 
 \emph on
 #
 \emph default
@@ -32482,7 +32428,7 @@ Schriften
 \emph on
 LuxiMono, BeraMono
 \emph default
- and 
+ und 
 \emph on
 Courier
 \emph default
@@ -32499,10 +32445,9 @@ Im Abschnitt
 \family sans
 Zeilennummerierung
 \family default
- des Dialog 
+ des 
 \family sans
-Programm\SpecialChar \-
-listing-Einstellungen
+Programmlisting-Einstellungen
 \family default
 -Dialogs können Sie den Stil der Zeilennummerierung festlegen, zum Beispiel,
  ob die Nummerierung links oder rechts gedruckt, jede wievielte Zeile nummeriert
@@ -32655,9 +32600,9 @@ Bemerkung:
 \series bold
 listings
 \series default
- Paket wird die Zeilennummerierung um eine Zeile durch vorhergehende Listen
+-Paket wird die Zeilennummerierung um eine Zeile durch vorhergehende Listen
  verschoben.
- Das ist der Grund warum die Zeilen 2 und 5 und nicht 3 und 6 in obiger
+ Das ist der Grund, warum die Zeilen 2 und 5 und nicht 3 und 6 in obiger
  Liste nummeriert werden.
 \end_layout
 
@@ -32723,7 +32668,7 @@ reference "abs:Unterdokumente"
 \family sans
  Unterdokument
 \family default
- können Sie die Listing-Parameters unter 
+ können Sie die Listing-Parameter unter 
 \family sans
 Weitere
 \begin_inset space ~
@@ -33461,19 +33406,15 @@ Dieser Dateityp hat die Erweiterung
 \begin_inset Quotes gld
 \end_inset
 
-device-independent
+device independent
 \begin_inset Quotes grd
 \end_inset
 
  genannt, weil er vollkommen portierbar ist.
  Ohne Konvertierung kann er auf jedem Rechner benutzt werden, der einen
  dvi-Betrachter installiert hat.
- 
-\family typewriter
-.dvi
-\family default
--Dateien werden für schnelle Vorschauen und Vorstufen für andere Ausgabeformate
- wie PostScript benutzt.
+ DVI-Dateien werden für schnelle Vorschauen und Vorstufen für andere Ausgabeform
+ate wie PostScript benutzt.
 \end_layout
 
 \begin_layout Standard
@@ -33485,11 +33426,7 @@ status open
 \series bold
 Bemerkung:
 \series default
- 
-\family typewriter
-.dvi
-\family default
--Dateien enthalten keine Bilder, denn diese sind nur verlinkt.
+ DVI-Dateien enthalten keine Bilder, denn diese sind nur verlinkt.
 \end_layout
 
 \end_inset
@@ -33498,22 +33435,11 @@ Bemerkung:
 \end_layout
 
 \begin_layout Standard
-Also vergessen Sie nicht, die Bilder mitzunehmen, wenn Sie Ihre 
-\family typewriter
-.dvi
-\family default
--Datei auf einen anderen Computer kopieren.
- Dies Eigenschaft kann Ihren Computer verlangsamen.
- wenn Sie die 
-\family typewriter
-.dvi
-\family default
--Datei betrachten, weil der dvi-Betrachter die Bilder in den Hintergrund
- konvertieren muss, um sie sichtbar zu machen, wenn Sie in der 
-\family typewriter
-.dvi
-\family default
--Datei
+Also vergessen Sie nicht, die Bilder mitzunehmen, wenn Sie Ihre DVI-Datei
+ auf einen anderen Computer kopieren.
+ Diese Eigenschaft kann Ihren Computer verlangsamen, wenn Sie die DVI-Datei
+ betrachten, weil der dvi-Betrachter die Bilder im Hintergrund konvertieren
+ muss, um sie sichtbar zu machen, wenn Sie in der DVI-Datei
 \family typewriter
  
 \family default
@@ -33522,7 +33448,7 @@ blättern.
 \family typewriter
  
 \family default
-Außerdem zeigen manche dvi-Betrachter nicht alles (richtig) an.
+Außerdem zeigen manche DVI-Betrachter nicht alles (richtig) an.
  Bei Dokumenten mit vielen Bildern empfehlen wir daher das PDF-Format.
  
 \end_layout
@@ -33542,8 +33468,9 @@ Ansicht
  oder den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.png
-	scale 85
+	scale 70
 	scaleBeforeRotation
+	BoundingBox 0bp 0bp 20bp 20bp
 
 \end_inset
 
@@ -33640,15 +33567,7 @@ key "latex-praxisbuch"
 \end_inset
 
 .
- Wegen dieser Möglichkeiten sind 
-\family typewriter
-.ps
-\family default
--Dateien oft größer als 
-\family typewriter
-.pdf
-\family default
--Dateien.
+ Wegen dieser Möglichkeiten sind PostScript-Dateien oft größer als PDF-Dateien.
 \end_layout
 
 \begin_layout Standard
@@ -33664,8 +33583,8 @@ EPS
 
  (Encapsulated PostScript, Datei-Er\SpecialChar \-
 wei\SpecialChar \-
-te\SpecialChar \-
-rung 
+ter\SpecialChar \-
+ung 
 \begin_inset Quotes gld
 \end_inset
 
@@ -33679,7 +33598,7 @@ rung
 
 ) enthalten.
  Weil LyX die Verwendung jedes bekannten Bildformats erlaubt, muss es diese
- intern nach EPS konvertiert werden.
+ intern nach EPS konvertieren.
  Dies wird bei vielen Bildern in einem Dokument den Arbeitsfluss drastisch
  verlangsamen.
  Wenn Sie also PostScript benutzen wollen, sollten Sie Ihre Bilder vorher
@@ -33691,7 +33610,8 @@ Sie können Ihr Dokument als PostScript über das Menü
 \family sans
 Datei\SpecialChar \menuseparator
 Exportieren\SpecialChar \menuseparator
-PostScript
+Post\SpecialChar \-
+Script
 \family default
  exportieren.
  Sie können eine Vorschau Ihres Dokument als PostScript über das Menü 
@@ -33701,7 +33621,7 @@ Ansicht
  oder den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.png
-	scale 85
+	scale 70
 	scaleBeforeRotation
 
 \end_inset
@@ -33780,12 +33700,8 @@ portable
 \begin_inset Quotes grd
 \end_inset
 
- (übertragbar) vermuten lässt, kann eine 
-\family typewriter
-.pdf
-\family default
--Datei auf jeden Rechner übertragen werden, und der Ausdruck sieht immer
- gleich aus.
+ (übertragbar) vermuten lässt, kann eine PDF-Datei auf jeden Rechner übertragen
+ werden, und der Ausdruck sieht immer gleich aus.
 \end_layout
 
 \begin_layout Standard
@@ -33886,8 +33802,9 @@ PDF
 \family typewriter
  ps2pdf
 \family default
-, das ein PDF aus einer PostScript-Version Ihres Dokument erstellt.
- Die PostScript-Version wird Programm 
+, das eine PDF-Datei aus einer Post\SpecialChar \-
+Script®-Version Ihres Dokument erstellt.
+ Die PostScript-Version wird mit dem Programm 
 \family typewriter
 dvips
 \family default
@@ -33958,8 +33875,9 @@ Ansicht
  oder den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/buffer-view_pdf2.png
-	scale 85
+	scale 70
 	scaleBeforeRotation
+	BoundingBox 0bp 0bp 20bp 20bp
 
 \end_inset
 
@@ -34271,42 +34189,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/endfloat/endfloa
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-Pakete ! endf
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-/loat
+LaTeX-Pakete ! endfloat
 \end_layout
 
 \end_inset
@@ -34346,51 +34229,7 @@ status collapsed
 
 
 \backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-vspace
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-4mm
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+vspace{4mm}
 \end_layout
 
 \end_inset

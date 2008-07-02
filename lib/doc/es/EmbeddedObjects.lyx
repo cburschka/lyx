@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 337
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass scrbook
@@ -17039,7 +17039,7 @@ name "tab:Alineaciones-con-el"
 
 
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tabla alineada con 
@@ -19620,51 +19620,7 @@ status collapsed
 
 
 \backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-vspace
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-4mm
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+vspace{4mm}
 \end_layout
 
 \end_inset
@@ -29249,8 +29205,7 @@ LaTeX-paquetes ! color
 \series bold
 
 \backslash
-@ifundef\SpecialChar \textcompwordmark{}
-ined{textcolor}
+@ifundefined{textcolor}
 \begin_inset Newline newline
 \end_inset
 
@@ -29286,8 +29241,7 @@ Para evitar cargarlo dos veces se usa el comando
 \series bold
 
 \backslash
-@ifundef\SpecialChar \textcompwordmark{}
-ined
+@ifundefined
 \series default
 .
 \end_layout
@@ -34013,51 +33967,7 @@ status collapsed
 
 
 \backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-vspace
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-4mm
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+vspace{4mm}
 \end_layout
 
 \end_inset

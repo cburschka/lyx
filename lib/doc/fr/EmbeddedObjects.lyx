@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 337
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass scrbook
@@ -17316,9 +17316,9 @@ Alignements quand on utilise le paquetage LaTeX dcolumn.
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features>
-<column alignment="center" valignment="top" width="0" special="D{x}{\times}{-1}">
-<column alignment="center" valignment="top" width="0" special="D{x}{\times}{4.9}">
-<column alignment="center" valignment="top" width="0" special="D{~}{\,}{9.7}">
+<column alignment="center" valignment="top" width="0" special="D{x}{\times}{-1.0}">
+<column alignment="center" valignment="top" width="0" special="D{x}{\times}{4.11}">
+<column alignment="center" valignment="top" width="0" special="D{~}{\,}{9.9}">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -17357,7 +17357,11 @@ unités
 \begin_inset space \thinspace{}
 \end_inset
 
-bouteilles
+
+\begin_inset Formula $\mbox{bouteilles}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17415,7 +17419,11 @@ times
 \begin_inset space \thinspace{}
 \end_inset
 
-Pixels
+
+\begin_inset Formula $\mbox{Pixels}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17473,7 +17481,11 @@ times
 \begin_inset space \thinspace{}
 \end_inset
 
-cm
+
+\begin_inset Formula $\mbox{cm}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -19970,51 +19982,7 @@ status collapsed
 
 
 \backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-vspace
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-4mm
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+vspace{4mm}
 \end_layout
 
 \end_inset
@@ -29589,8 +29557,7 @@ Paquetages LaTeX ! color
 \series bold
 
 \backslash
-@ifundef\SpecialChar \textcompwordmark{}
-ined{textcolor}
+@ifundefined{textcolor}
 \begin_inset Newline newline
 \end_inset
 
@@ -29619,7 +29586,7 @@ color
 \series default
  sera chargé automatiquement par LyX dès que vous colorez du texte
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 C'est pour éviter qu'il soit chargé deux fois que l'on utilise la commande
@@ -29627,8 +29594,7 @@ C'est pour éviter qu'il soit chargé deux fois que l'on utilise la commande
 \series bold
 
 \backslash
-@ifundef\SpecialChar \textcompwordmark{}
-ined
+@ifundefined
 \series default
 .
 \end_layout
@@ -34416,51 +34382,7 @@ status collapsed
 
 
 \backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-vspace
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-4mm
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+vspace{4mm}
 \end_layout
 
 \end_inset
