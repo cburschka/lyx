@@ -47,14 +47,14 @@
 
 import glob, os, re, string, sys
 
-from legacy_lyxpreview2ppm import legacy_conversion
+from legacy_lyxpreview2ppm import legacy_conversion, \
+     legacy_conversion_step2
 
-from lyxpreview_tools import error, find_exe, \
-     find_exe_or_terminate, run_command
+from lyxpreview_tools import copyfileobj, error, find_exe, \
+     find_exe_or_terminate, make_texcolor, mkstemp, run_command, warning
 
 
 # Pre-compiled regular expressions.
-hexcolor_re = re.compile("^[0-9a-fA-F]{6}$")
 latex_file_re = re.compile("\.tex$")
 
 
@@ -62,18 +62,6 @@ def usage(prog_name):
     return "Usage: %s <format> <latex file> <dpi> <fg color> <bg color>\n"\
            "\twhere the colors are hexadecimal strings, eg 'faf0e6'"\
            % prog_name
-
-
-def make_texcolor(hexcolor):
-    # Test that the input string contains 6 hexadecimal chars.
-    if not hexcolor_re.match(hexcolor):
-        error("Cannot convert color '%s'" % hexcolor)
-
-    red   = float(string.atoi(hexcolor[0:2], 16)) / 255.0
-    green = float(string.atoi(hexcolor[2:4], 16)) / 255.0
-    blue  = float(string.atoi(hexcolor[4:6], 16)) / 255.0
-
-    return "rgb %f %f %f" % (red, green, blue)
 
 
 def extract_metrics_info(dvipng_stdout, metrics_file):
@@ -117,6 +105,37 @@ def extract_metrics_info(dvipng_stdout, metrics_file):
     return success
 
 
+def color_pdf(latex_file, bg_color):
+    use_preview_pdf_re = re.compile("(\s*\\\\usepackage\[[^]]+)(pdftex\]{preview})")
+
+    tmp = mkstemp()
+
+    success = 0
+    try:
+        for line in open(latex_file, 'r').readlines():
+            match = use_preview_pdf_re.match(line)
+            if match == None:
+                tmp.write(line)
+                continue
+            success = 1
+            tmp.write("  \\usepackage{color}\n" \
+                  "  \\pagecolor[rgb]{%s}\n" \
+                  "%s\n" \
+                  % (bg_color, match.group()))
+            continue
+
+    except:
+        # Unable to open the file, but do nothing here because
+        # the calling function will act on the value of 'success'.
+        warning('Warning in color_pdf! Unable to open "%s"' % latex_file)
+        warning(`sys.exc_type` + ',' + `sys.exc_value`)
+
+    if success:
+        copyfileobj(tmp, open(latex_file,"wb"), 1)
+
+    return success
+
+
 def convert_to_ppm_format(pngtopnm, basename):
     png_file_re = re.compile("\.png$")
 
@@ -145,29 +164,31 @@ def main(argv):
         os.chdir(dir)
 
     dpi = string.atoi(argv[3])
-    fg_color = make_texcolor(argv[4])
-    bg_color = make_texcolor(argv[5])
+    fg_color = make_texcolor(argv[4], False)
+    bg_color = make_texcolor(argv[5], False)
+
+    bg_color_gr = make_texcolor(argv[5], True)
 
     # External programs used by the script.
     path = string.split(os.environ["PATH"], os.pathsep)
-    latex = find_exe_or_terminate(["pplatex", "platex", "latex2e", "latex"], path)
+    latex = find_exe_or_terminate(["latex", "pplatex", "platex", "latex2e"], path)
 
     # This can go once dvipng becomes widespread.
     dvipng = find_exe(["dvipng"], path)
     if dvipng == None:
-        if output_format == "ppm":
-            # The data is input to legacy_conversion in as similar
-            # as possible a manner to that input to the code used in
-            # LyX 1.3.x.
-            vec = [ argv[0], argv[2], argv[3], argv[1], argv[4], argv[5] ]
-            return legacy_conversion(vec)
-        else:
-            error("The old 'dvi->ps->ppm' conversion requires "
-                  "ppm as the output format")
+        # The data is input to legacy_conversion in as similar
+        # as possible a manner to that input to the code used in
+        # LyX 1.3.x.
+        vec = [ argv[0], argv[2], argv[3], argv[1], argv[4], argv[5] ]
+        return legacy_conversion(vec)
 
     pngtopnm = ""
     if output_format == "ppm":
         pngtopnm = find_exe_or_terminate(["pngtopnm"], path)
+
+    # Move color information for PDF into the latex file.
+    if not color_pdf(latex_file, bg_color_gr):
+        error("Unable to move color info into the latex file")
 
     # Compile the latex file.
     latex_call = '%s "%s"' % (latex, latex_file)
@@ -184,8 +205,9 @@ def main(argv):
 
     dvipng_status, dvipng_stdout = run_command(dvipng_call)
     if dvipng_status != None:
-        error("%s failed to generate images from %s" \
+        warning("%s failed to generate images from %s ... looking for PDF" \
               % (os.path.basename(dvipng), dvi_file))
+        return legacy_conversion_step2(latex_file, dpi, output_format)
 
     # Extract metrics info from dvipng_stdout.
     metrics_file = latex_file_re.sub(".metrics", latex_file)
