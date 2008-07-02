@@ -339,6 +339,10 @@ public:
 	/// True if the character/inset at this point can be part of a word.
 	/// Note that digits in particular are considered as letters
 	bool isLetter(pos_type pos) const;
+	/// True if the element at this point is a character that is not a letter.
+	bool isChar(pos_type pos) const;
+	/// True if the element at this point is a space
+	bool isSpace(pos_type pos) const;
 
 	/// returns -1 if inset not found
 	int getPositionOfInset(Inset const * inset) const;

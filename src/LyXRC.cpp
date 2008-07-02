@@ -108,6 +108,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\language_package", LyXRC::RC_LANGUAGE_PACKAGE },
 	{ "\\language_use_babel", LyXRC::RC_LANGUAGE_USE_BABEL },
 	{ "\\load_session", LyXRC::RC_LOADSESSION },
+	{ "\\mac_like_word_movement", LyXRC::RC_MAC_LIKE_WORD_MOVEMENT },
 	{ "\\make_backup", LyXRC::RC_MAKE_BACKUP },
 	{ "\\mark_foreign_language", LyXRC::RC_MARK_FOREIGN_LANGUAGE },
 	{ "\\num_lastfiles", LyXRC::RC_NUMLASTFILES },
@@ -274,6 +275,7 @@ void LyXRC::setDefaults() {
 	tex_allows_spaces = false;
 	date_insert_format = "%x";
 	cursor_follows_scrollbar = false;
+	mac_like_word_movement = false;
 	dialogs_iconify_with_main = false;
 	label_init_length = 3;
 	preview = PREVIEW_OFF;
@@ -846,6 +848,12 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_CURSOR_FOLLOWS_SCROLLBAR:
 			if (lexrc.next()) {
 				cursor_follows_scrollbar = lexrc.getBool();
+			}
+			break;
+
+		case RC_MAC_LIKE_WORD_MOVEMENT:
+			if (lexrc.next()) {
+				mac_like_word_movement = lexrc.getBool();
 			}
 			break;
 
@@ -1502,6 +1510,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 			os << "\\cursor_follows_scrollbar "
 			   << convert<string>(cursor_follows_scrollbar) << '\n';
 		}
+	case RC_MAC_LIKE_WORD_MOVEMENT:
+		if (ignore_system_lyxrc ||
+		    mac_like_word_movement
+		    != system_lyxrc.mac_like_word_movement) {
+			os << "\\mac_like_word_movement "
+			   << convert<string>(mac_like_word_movement) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_DIALOGS_ICONIFY_WITH_MAIN:
 		if (ignore_system_lyxrc ||
 		    dialogs_iconify_with_main
@@ -2157,6 +2174,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_CURSOR_FOLLOWS_SCROLLBAR:
 		str = _("LyX normally doesn't update the cursor position if you move the scrollbar. Set to true if you'd prefer to always have the cursor on screen.");
+		break;
+
+	case RC_MAC_LIKE_WORD_MOVEMENT:
+		str = _("Use the Mac OS X conventions for the word-level cursor movement");
 		break;
 
 	case RC_CUSTOM_EXPORT_COMMAND:

@@ -2502,6 +2502,28 @@ bool Paragraph::isLetter(pos_type pos) const
 }
 
 
+bool Paragraph::isChar(pos_type pos) const
+{
+	if (isInset(pos))
+		return getInset(pos)->isChar();
+	else {
+		value_type const c = getChar(pos);
+		return !isLetterChar(c) && !isDigit(c) && !lyx::isSpace(c);
+	}
+}
+
+
+bool Paragraph::isSpace(pos_type pos) const
+{
+	if (isInset(pos))
+		return getInset(pos)->isSpace();
+	else {
+		value_type const c = getChar(pos);
+		return lyx::isSpace(c);
+	}
+}
+
+
 Language const *
 Paragraph::getParLanguage(BufferParams const & bparams) const
 {

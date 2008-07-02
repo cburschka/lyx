@@ -814,20 +814,46 @@ bool Text::cursorRightOneWord(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 
-	Cursor old = cur;
+	pos_type const lastpos = cur.lastpos();
+	pit_type pit = cur.pit();
+	pos_type pos = cur.pos();
+	Paragraph const & par = cur.paragraph();
 
-	if (old.pos() == old.lastpos() && old.pit() != old.lastpit()) {
-		++old.pit();
-		old.pos() = 0;
-	} else {
-		// Advance through word.
-		while (old.pos() != old.lastpos() && old.paragraph().isLetter(old.pos()))
-			++old.pos();
-		// Skip through trailing nonword stuff.
-		while (old.pos() != old.lastpos() && !old.paragraph().isLetter(old.pos()))
-			++old.pos();
+	// Paragraph boundary is a word boundary
+	if (pos == lastpos) {
+		if (pit != cur.lastpit())
+			return setCursor(cur, pit + 1, 0);
+		else
+			return false;
 	}
-	return setCursor(cur, old.pit(), old.pos());
+
+	if (lyxrc.mac_like_word_movement) {
+		// Skip through trailing punctuation and spaces.
+		while (pos != lastpos && par.isChar(pos))
+                        ++pos;
+
+		// Skip over either a non-char inset or a full word
+		if (pos != lastpos && !par.isLetter(pos))
+			++pos;
+		else while (pos != lastpos && par.isLetter(pos))
+			     ++pos;
+	} else {
+		BOOST_ASSERT(pos < lastpos); // see above
+		if (par.isLetter(pos))
+			while (pos != lastpos && par.isLetter(pos))
+				++pos;
+		else if (par.isChar(pos))
+			while (pos != lastpos && par.isChar(pos))
+				++pos;
+		else if (!par.isSpace(pos)) // non-char inset
+			++pos;
+
+		// Skip over white space
+		while (pos != lastpos && par.isSpace(pos))
+			     ++pos;		
+	}
+
+	return setCursor(cur, pit, pos);
 }
 
 
@@ -835,20 +861,40 @@ bool Text::cursorLeftOneWord(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 
-	Cursor old = cur;
+	pit_type pit = cur.pit();
+	pos_type pos = cur.pos();
+	Paragraph & par = cur.paragraph();
 
-	if (old.pos() == 0 && old.pit() != 0) {
-		--old.pit();
-		old.pos() = old.lastpos();
+	// Paragraph boundary is a word boundary
+	if (pos == 0 && pit != 0)
+		return setCursor(cur, pit - 1, getPar(pit - 1).size());
+
+	if (lyxrc.mac_like_word_movement) {
+		// Skip through puctuation and spaces.
+		while (pos != 0 && par.isChar(pos - 1))
+			--pos;
+
+		// Skip over either a non-char inset or a full word
+		if (pos != 0 && !par.isLetter(pos - 1) && !par.isChar(pos - 1))
+			--pos;
+		else while (pos != 0 && par.isLetter(pos - 1))
+			     --pos;
 	} else {
-		// Skip through initial nonword stuff.
-		while (old.pos() != 0 && !old.paragraph().isLetter(old.pos() - 1))
-			--old.pos();
-		// Advance through word.
-		while (old.pos() != 0 && old.paragraph().isLetter(old.pos() - 1))
-			--old.pos();
+		// Skip over white space
+		while (pos != 0 && par.isSpace(pos - 1))
+			     --pos;
+
+		if (pos != 0 && par.isLetter(pos - 1))
+			while (pos != 0 && par.isLetter(pos - 1))
+				--pos;
+		else if (pos != 0 && par.isChar(pos - 1))
+			while (pos != 0 && par.isChar(pos - 1))
+				--pos;
+		else if (pos != 0 && !par.isSpace(pos - 1)) // non-char inset
+			--pos;
 	}
-	return setCursor(cur, old.pit(), old.pos());
+
+	return setCursor(cur, pit, pos);
 }
 
 

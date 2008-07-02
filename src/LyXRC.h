@@ -55,6 +55,7 @@ public:
 		RC_CONVERTER_CACHE_MAXAGE,
 		RC_COPIER,
 		RC_CURSOR_FOLLOWS_SCROLLBAR,
+		RC_MAC_LIKE_WORD_MOVEMENT,
 		RC_CUSTOM_EXPORT_COMMAND,
 		RC_CUSTOM_EXPORT_FORMAT,
 		RC_DATE_INSERT_FORMAT,
@@ -334,6 +335,8 @@ public:
 	bool mark_foreign_language;
 	///
 	std::string default_language;
+	///
+	bool mac_like_word_movement;
 	///
 	bool cursor_follows_scrollbar;
 	///
