@@ -56,6 +56,11 @@ What's new
 
 - Reenable quote display code, which was not working since 1.5.0.
 
+- Implement properly word-movement code for both windows and mac
+  conventions (bugs 2815 and 3580). This uses the new lyxrc variable
+  \mac_like_word_movement, which is set to true by default on Mac OS X. 
+  It could be useful to emacs nostalgics too.
+  
 
 * WINDOWS INSTALLER
 
