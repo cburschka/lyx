@@ -36068,7 +36068,9 @@ Latex@LaTeX-packages ! inputenc
 \end_inset
 
  is not used.
- You probably need to load some other packages manually in the preamble.
+ When using this, you probably need to load some other packages manually
+ in the preamble and specify the used encoding for text parts in foreign
+ languages in TeX code.
 \end_layout
 
 \begin_layout Description
@@ -36176,7 +36178,7 @@ pt154 Cyrillic for Kazakh
 \end_layout
 
 \begin_layout Description
-utf8 Unicode utf8 with the LaTeX-package 
+utf8 Unicode utf8 based on the LaTeX-package 
 \series bold
 inputenc
 \series default
@@ -36190,15 +36192,27 @@ Latex@LaTeX-packages ! inputenc
 
 \end_inset
 
- (first variant, for Latin symbols and some others).
+.
+ Currently only a limited range of characters (mainly for Latin scripts)
+ is supported.
 \end_layout
 
 \begin_layout Description
-utf8x Unicode utf8 with the LaTeX-package 
+utf8x Unicode utf8 based on the LaTeX package 
 \series bold
-inputenc
+ucs
 \series default
- (second variant, for Greek and CJK symbols and some others).
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Latex@LaTeX-packages ! ucs
+\end_layout
+
+\end_inset
+
+ (comprehensive, including Latin, Greek, Cyrillic and CJK scripts).
 \end_layout
 
 \begin_layout Description
