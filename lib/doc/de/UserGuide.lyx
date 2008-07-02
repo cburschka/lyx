@@ -161,8 +161,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 27.
- Juni 2008
+letzte Änderung: 3.
+ Juli 2008
 \end_layout
 
 \begin_layout Standard
@@ -11838,19 +11838,11 @@ Enthält eine Seite auch Gleitobjekte, wird mit dem Befehl
 \family sans
  Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
-Neue
-\begin_inset space \space{}
-\end_inset
-
 Seite
 \begin_inset space \space{}
 \end_inset
 
-(Gleitobjekte
-\begin_inset space \space{}
-\end_inset
-
-ausgeben)
+leeren
 \family default
  die Seite umgebrochen, und alle noch nicht gedruckten Gleitobjekte kommen
  auf die neue Seite oder folgende.
@@ -11858,23 +11850,11 @@ ausgeben)
 \family sans
  Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
-Neue
+Doppelseite
 \begin_inset space \space{}
 \end_inset
 
-ungerade
-\begin_inset space \space{}
-\end_inset
-
-Seite
-\begin_inset space \space{}
-\end_inset
-
-(Gleitobjekte
-\begin_inset space \space{}
-\end_inset
-
-ausgeben)
+leeren
 \family default
  dasselbe, aber die neue Seite ist auf jeden Fall eine ungerade, eventuell
  mit einer Leerseite dazwischen.
