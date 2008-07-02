@@ -166,22 +166,6 @@ letzte Änderung: 27.
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-frontmatter
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -200,32 +184,6 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 \begin_inset FloatList table
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mainmatter
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Beginn des Hauptteils
-\end_layout
 
 \end_inset
 
@@ -3698,6 +3656,40 @@ reference "Ueberschriften"
  beschreiben.
 \end_layout
 
+\begin_layout Subsubsection
+Seitenzahlen
+\end_layout
+
+\begin_layout Standard
+Jede Dokumentklasse hat ihre eigenen Vorstellungen, wie die Seitenzahlen
+ gedruckt werden sollen.
+ Wenn Ihnen das nicht gefällt, können Sie das mit den LaTeX-Befehlen 
+\family typewriter
+
+\backslash
+frontmatter
+\family default
+, 
+\family typewriter
+
+\backslash
+mainmatter
+\family default
+ und 
+\family typewriter
+
+\backslash
+frontmatter
+\family default
+ als TeX-Code im Dokument oder im LaTeX-Vorspann ändern.
+ Ein Beispiel finden Sie in den 
+\emph on
+Handbuchergänzungen
+\emph default
+.
+ Ansonsten lesen Sie bitte in LaTex-Büchern nach.
+\end_layout
+
 \begin_layout Subsection
 Dokument-Einstellungen
 \begin_inset CommandInset label
@@ -3825,7 +3817,7 @@ Mediävalziffern
 
 verwenden
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Mediävalziffern
@@ -10768,7 +10760,7 @@ Auflistung
 \end_layout
 
 \begin_layout Section
-Abstände, Seitenzahlen, Seiten- und Zeilenumbrüche
+Abstände, Seiten- und Zeilenumbrüche
 \end_layout
 
 \begin_layout Subsection
@@ -30122,68 +30114,19 @@ Stichwort ! formatieren
 \end_layout
 
 \begin_layout Standard
-Mit Hilfe von LaTeX-Befehlen können Sie die Ausgabe eines Stichwortes formatiere
-n.
- So wird durch 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-
-\backslash
-textit{Hilfe}
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- das Stichwort Hilfe im Stichwortverzeichnis kursiv geschrieben.
+Sie können die Ausgabe eines Stichwortes wie normalen Text formatieren.
 \begin_inset Index
 status open
 
 \begin_layout Plain Layout
-Stichwort ! Dies@
+Stichwort ! 
 \emph on
 dies ist kursiv
 \end_layout
 
 \end_inset
 
- LaTeX-Bücher wie (
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latexcompanion,latexguide,latexbook"
-
-\end_inset
-
-) beschreiben solche Formatierungsbefehle.
- Das einzige Problem ist, dass Formatierungsbefehle die Sortierreihenfolge
- zerstören.
- Um das zu verhindern, benutzt man stattdessen einen Befehl wie diesen:
-\series bold
- 
-\series default
-
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-This@
-\shape italic
-dies ist kursiv
-\family default
-\shape default
-
-\begin_inset Quotes grd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Sie können auch die Seitenzahlen formatieren wie mit dem Befehl 
+ Sie können auch die Seitenzahlen formatieren wie mit dem Befehl 
 \begin_inset Quotes gld
 \end_inset
 
@@ -30212,7 +30155,7 @@ reference "Mediävalziffern-verwenden"
 status open
 
 \begin_layout Plain Layout
-Mediävalziffern|oldstylenums
+Stichwort ! Mediävalziffern| oldstylenums
 \end_layout
 
 \end_inset
@@ -30445,7 +30388,7 @@ eintragen.
 \end_layout
 
 \begin_layout Section
-Nomenklatur
+Nomenklatur/Glossar
 \begin_inset CommandInset label
 LatexCommand label
 name "Nomenklatur/Glossar"
@@ -30462,7 +30405,7 @@ Nomenklatur
 
 \end_inset
 
-/Glossar
+
 \begin_inset Index
 status collapsed
 
