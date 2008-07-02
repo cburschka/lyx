@@ -195,7 +195,7 @@ def main(argv):
 
     latex_status, latex_stdout = run_command(latex_call)
     if latex_status != None:
-        error("%s failed to compile %s" \
+        warning("%s failed to compile %s" \
               % (os.path.basename(latex), latex_file))
 
     # Run the dvi file through dvipng.
