@@ -714,8 +714,12 @@ TeXOnePar(Buffer const & buf,
 	// Note from JMarc: we will re-add a \n explicitely in
 	// TeXEnvironment, because it is needed in this case
 	if (nextpit != paragraphs.end()) {
-		os << '\n';
-		texrow.newline();
+		Layout const & next_layout = nextpit->layout();
+		// no blank lines before environments!
+		if (!next_layout.isEnvironment() || style == next_layout) {
+			os << '\n';
+			texrow.newline();
+		}
 	}
 
 	if (nextpit != paragraphs.end())
