@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 337
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -678,24 +678,13 @@ TeX-Modus
  oder das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
-T
+Te
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
-\end_layout
-
-\end_inset
-
-e
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+{}
 \end_layout
 
 \end_inset
@@ -728,8 +717,8 @@ Eigennamen
 \end_layout
 
 \begin_layout Plain Layout
-Um zu verhindern, dass diese Wörter als Eigennamen erkannt werden, setzt
- man einen der Buchstaben in TeX-Klammern.
+Um zu verhindern, dass diese Wörter als Eigennamen erkannt werden, fügt
+ man ein TeX-Klammerpaar ein.
 \end_layout
 
 \end_inset
@@ -752,24 +741,13 @@ L@LaTeX-Vorspann
 \family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
-La
+LaT
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
-\end_layout
-
-\end_inset
-
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+{}
 \end_layout
 
 \end_inset
@@ -943,42 +921,7 @@ Ein Befehl muss immer mit einem Backslash
 status collapsed
 
 \begin_layout Plain Layout
-T@
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-TeX-Klammern
+T@TeX-Klammern
 \end_layout
 
 \end_inset
@@ -12166,7 +12109,7 @@ Boxen
 status collapsed
 
 \begin_layout Plain Layout
-Rahmen | see 
+Rahmen | see
 \begin_inset ERT
 status collapsed
 

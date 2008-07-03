@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 337
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -670,24 +670,13 @@ TeX ! modo
  de la barra de herramientas o con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Código T
+Código Te
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
-\end_layout
-
-\end_inset
-
-e
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+{}
 \end_layout
 
 \end_inset
@@ -700,7 +689,7 @@ Ctrl-l
 \family default
 ).
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 En LyX hay tres 
@@ -717,7 +706,15 @@ nombres propios
 
 \begin_layout Plain Layout
 Para evitar que estas palabras sean reconocidas como tales nombres propios,
- se pone una de las letras entre llaves TeX.
+ 
+\lang english
+a
+\lang spanish
+ llaves TeX 
+\lang english
+pair is inserted.
+
+\lang spanish
  
 \end_layout
 
@@ -741,24 +738,13 @@ L@LaTeX preámbulo
 \family sans
 Documento\SpecialChar \menuseparator
 Configuración\SpecialChar \menuseparator
-Preámbulo La
+Preámbulo LaT
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
-\end_layout
-
-\end_inset
-
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+{}
 \end_layout
 
 \end_inset
@@ -899,42 +885,7 @@ Un comando empieza siempre por una barra inversa,
 status collapsed
 
 \begin_layout Plain Layout
-T@
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-TeX ! llaves
+T@TeX ! llaves
 \end_layout
 
 \end_inset
@@ -12367,7 +12318,7 @@ Marcos
 status collapsed
 
 \begin_layout Plain Layout
-Marcos | see 
+Marcos | see
 \begin_inset ERT
 status collapsed
 

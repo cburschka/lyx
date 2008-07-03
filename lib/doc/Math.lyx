@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 337
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -677,24 +677,13 @@ TeX-mode
  or by using the menu 
 \family sans
 Insert\SpecialChar \menuseparator
-T
+Te
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
-\end_layout
-
-\end_inset
-
-e
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+{}
 \end_layout
 
 \end_inset
@@ -723,8 +712,8 @@ proper names
 \end_layout
 
 \begin_layout Plain Layout
-To avoid that these names are recognized as proper names, TeX-braces are
- set around one of the letters of the name.
+To avoid that these names are recognized as proper names, a TeX-brace pair
+ is inserted.
 \end_layout
 
 \end_inset
@@ -747,24 +736,13 @@ L@LaTeX-preamble
 \family sans
 Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
-La
+LaT
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
-\end_layout
-
-\end_inset
-
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+{}
 \end_layout
 
 \end_inset
@@ -939,42 +917,7 @@ A command starts always with a backslash
 status collapsed
 
 \begin_layout Plain Layout
-T@
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-TeX-braces
+T@TeX-braces
 \end_layout
 
 \end_inset
@@ -12156,7 +12099,7 @@ Boxes
 status collapsed
 
 \begin_layout Plain Layout
-Frames | see 
+Frames | see
 \begin_inset ERT
 status collapsed
 

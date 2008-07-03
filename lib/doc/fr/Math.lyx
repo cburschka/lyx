@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 337
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -623,24 +623,13 @@ Code
 \begin_inset space ~
 \end_inset
 
-T
+Te
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
-\end_layout
-
-\end_inset
-
-e
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+{}
 \end_layout
 
 \end_inset
@@ -669,8 +658,15 @@ nom propres
 \end_layout
 
 \begin_layout Plain Layout
-Pour éviter que ces noms soient reconnus comme des noms propres, les accolades
- TeX sont placées autour d'une des lettres du nom.
+Pour éviter que ces noms soient reconnus comme des noms propres, 
+\lang english
+a
+\lang french
+ accolade TeX 
+\lang english
+pair is inserted
+\lang french
+.
 \end_layout
 
 \end_inset
@@ -697,24 +693,13 @@ Préambule
 \begin_inset space ~
 \end_inset
 
-La
+LaT
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
-\end_layout
-
-\end_inset
-
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+{}
 \end_layout
 
 \end_inset
@@ -12001,7 +11986,7 @@ Boîtes
 status collapsed
 
 \begin_layout Plain Layout
-Cadres | see 
+Cadres | see
 \begin_inset ERT
 status collapsed
 
