@@ -951,29 +951,26 @@ bool Paragraph::Private::latexSpecialTypewriter(char_type const c, odocstream & 
 			os << '-';
 		return true;
 
-	// I assume this is hack treating typewriter as verbatim
-	// FIXME UNICODE: This can fail if c cannot be encoded
-	// in the current encoding.
+	// FIXME I assume this is hack treating typewriter as verbatim
+	// This should be re-evaluated eventually.
 
 	case '\0':
 		return true;
 
-	// Those characters are not directly supported.
-	case '\\':
-	case '\"':
-	case '$': case '&':
-	case '%': case '#': case '{':
-	case '}': case '_':
-	case '~':
-	case '^':
-	case '*': case '[':
-	case ' ':
-		return false;
+// 	// Those characters are not directly supported.
+// 	case '\\':
+// 	case '\"':
+// 	case '$': case '&':
+// 	case '%': case '#': case '{':
+// 	case '}': case '_':
+// 	case '~':
+// 	case '^':
+// 	case '*': case '[':
+// 	case ' ':
+// 		return false;
 
 	default:
-		// With Typewriter font, these characters exist.
-		os.put(c);
-		return true;
+		return false;
 	}
 }
 
