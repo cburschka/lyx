@@ -30,11 +30,12 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- New layout and template files for the Journal of Statistical Software (JSS).
+- New layout and template files for the Journal of Statistical Software
+  (JSS).
 
 - The importer for comma separated value (*.csv) files has been rewritten.
-  Now the column separator character is automatically detected. Furthermore,
-  the feature has been renamed to "Import->Table (CSV)".
+  Now the column separator character is automatically detected.
+  Furthermore, the feature has been renamed to "Import->Table (CSV)".
 
 - Paragraph line spacing settings are now imported when importing LaTeX
   files (bug 20).
@@ -58,7 +59,7 @@ What's new
 
 - Implement properly word-movement code for both windows and mac
   conventions (bugs 2815 and 3580). This uses the new lyxrc variable
-  \mac_like_word_movement, which is set to true by default on Mac OS X. 
+  \mac_like_word_movement, which is set to true by default on Mac OS X.
   It could be useful to emacs nostalgics too.
   
 
@@ -79,13 +80,15 @@ What's new
 
 - Fix a LaTeX error with nested insets in CJK documents (bug 4913).
 
-- Make sure that a GREEK SMALL LETTER SIGMA is not automatically turned into
-  a GREEK SMALL LETTER FINAL SIGMA (and vice versa) on LaTeX output (bug 4966).
+- Make sure that a GREEK SMALL LETTER SIGMA is not automatically turned 
+  into a GREEK SMALL LETTER FINAL SIGMA (and vice versa) on LaTeX output
+  (bug 4966).
 
 - Fix LaTeX export of combining characters in utf-8* encodings (bug 4946).
 
-- Output paper size info to produced dvi or pdf documents when using landscape
-  orientation, such that viewers can properly display them (bug 2721).
+- Output paper size information to dvi or pdf documents when using
+  landscape orientation, such that viewers can properly display them
+  (bug 2721).
 
 
 
@@ -109,7 +112,7 @@ What's new
 - Fix wheel mouse scrolling when it is set to "One screen at a time
   (bug 4972).
 
-- Fix shape of braces, '$', '%', '&', and '#', which where incorrectly 
+- Fix shape of braces, '$', '%', '&', and '#', which where incorrectly
   shown in italics in mathed (bug 4320).
 
 - Fix display of unknown math macros, which were incorrectly shown in
