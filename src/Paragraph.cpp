@@ -986,7 +986,14 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			break;
 
 		default:
-
+#ifdef WITH_WARNINGS
+#warning Can someone explain this silly method?
+// JSpitzm 2008/07/03
+// This looks like complete nonsense to me. Cf. the comments
+// below. Since this triggers iconv exceptions (see bug 4727),
+// I have commented this out for the time being.
+#endif
+#if 0
 			// I assume this is hack treating typewriter as verbatim
 			// FIXME UNICODE: This can fail if c cannot be encoded
 			// in the current encoding.
@@ -996,6 +1003,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 				}
 				break;
 			}
+#endif
 
 			// LyX, LaTeX etc.
 
