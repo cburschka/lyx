@@ -1787,6 +1787,28 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_TABULAR_INSERT, "tabular-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_TABULAR_FEATURE
+ * \li Action: Sets various features to the table/cell on the current cursor position.
+ * \li Notion: Various math-environment features are handled here as well, e.g.
+               add-vline-left/right for Grid/Cases environment
+ * \li Syntax: tabular-feature <FEATURE> [<ARG>]
+ * \li Params: <FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|copy-column|
+                       toggle-line-top|toggle-line-bottom|toggle-line-left|toggle-line-right|
+                       align-left|align-right|align-center|align-block|valign-top|valign-bottom|
+                       valign-middle|m-align-left|m-align-right|m-align-center|m-valign-top|
+                       m-valign-bottom|m-valign-middle|multicolumn|set-all-lines|unset-all-lines|
+                       set-longtabular|unset-longtabular|set-pwidth|set-mpwidth|
+                       set-rotate-tabular|unset-rotate-tabular|toggle-rotate-tabular|
+                       set-rotate-cell|unset-rotate-cell|toggle-rotate-cell|set-usebox|set-lthead|
+                       unset-lthead|set-ltfirsthead|unset-ltfirsthead|set-ltfoot|unset-ltfoot|
+                       set-ltlastfoot|unset-ltlastfoot|set-ltnewpage|toggle-ltcaption|
+                       set-special-column|set-special-multi|set-booktabs|unset-booktabs|
+                       set-top-space|set-bottom-space|set-interline-space|set-border-lines \n
+		<ARG>: additional argument for some commands, use debug mode to explore its values.
+ * \li Origin: Jug, 28 Jul 2000
+ * \endvar
+ */
 		{ LFUN_TABULAR_FEATURE, "tabular-feature", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_CELL_BACKWARD
