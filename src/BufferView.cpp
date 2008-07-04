@@ -548,6 +548,8 @@ void BufferView::scrollDocView(int value)
 	// If the offset is less than 2 screen height, prefer to scroll instead.
 	if (abs(offset) <= 2 * height_) {
 		scroll(offset);
+		updateMetrics();
+		buffer_.changed();
 		return;
 	}
 
@@ -796,11 +798,16 @@ void BufferView::showCursor(DocIterator const & dit)
 		int ypos = pm.position() + offset;
 		Dimension const & row_dim =
 			pm.getRow(cs.pos(), dit.boundary()).dimension();
+		int scrolled = 0;
 		if (ypos - row_dim.ascent() < 0)
-			scrollUp(- ypos + row_dim.ascent());
+			scrolled = scrollUp(- ypos + row_dim.ascent());
 		else if (ypos + row_dim.descent() > height_)
-			scrollDown(ypos - height_ + row_dim.descent());
+			scrolled = scrollDown(ypos - height_ + row_dim.descent());
 		// else, nothing to do, the cursor is already visible so we just return.
+		if (scrolled != 0) {
+			updateMetrics();
+			buffer_.changed();
+		}
 		return;
 	}
 
@@ -1353,8 +1360,15 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			showCursor();
 			p = getPos(cur, cur.boundary());
 		}
-		scroll(cmd.action == LFUN_SCREEN_UP? - height_ : height_);
+		int const scrolled = scroll(cmd.action == LFUN_SCREEN_UP
+			? - height_ : height_);
+		if (cmd.action == LFUN_SCREEN_UP && scrolled > - height_)
+			p = Point(0, 0);
+		if (cmd.action == LFUN_SCREEN_DOWN && scrolled < height_)
+			p = Point(width_, height_);
 		cur.reset(buffer_.inset());
+		updateMetrics();
+		buffer_.changed();
 		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_);
 		//FIXME: what to do with cur.x_target()?
 		cur.finishUndo();
@@ -1642,19 +1656,22 @@ void BufferView::lfunScroll(FuncRequest const & cmd)
 		if (scroll_value)
 			scroll(scroll_step * scroll_value);
 	}
+	updateMetrics();
+	buffer_.changed();
 }
 
 
-void BufferView::scroll(int y)
+int BufferView::scroll(int y)
 {
 	if (y > 0)
-		scrollDown(y);
-	else if (y < 0)
-		scrollUp(-y);
+		return scrollDown(y);
+	if (y < 0)
+		return scrollUp(-y);
+	return 0;
 }
 
 
-void BufferView::scrollDown(int offset)
+int BufferView::scrollDown(int offset)
 {
 	Text * text = &buffer_.text();
 	TextMetrics & tm = d->text_metrics_[text];
@@ -1664,7 +1681,7 @@ void BufferView::scrollDown(int offset)
 		int bottom_pos = last.second->position() + last.second->descent();
 		if (last.first + 1 == int(text->paragraphs().size())) {
 			if (bottom_pos <= height_)
-				return;
+				return 0;
 			offset = min(offset, bottom_pos - height_);
 			break;
 		}
@@ -1673,12 +1690,11 @@ void BufferView::scrollDown(int offset)
 		tm.newParMetricsDown();
 	}
 	d->anchor_ypos_ -= offset;
-	updateMetrics();
-	buffer_.changed();
+	return -offset;
 }
 
 
-void BufferView::scrollUp(int offset)
+int BufferView::scrollUp(int offset)
 {
 	Text * text = &buffer_.text();
 	TextMetrics & tm = d->text_metrics_[text];
@@ -1688,7 +1704,7 @@ void BufferView::scrollUp(int offset)
 		int top_pos = first.second->position() - first.second->ascent();
 		if (first.first == 0) {
 			if (top_pos >= 0)
-				return;
+				return 0;
 			offset = min(offset, - top_pos);
 			break;
 		}
@@ -1697,8 +1713,7 @@ void BufferView::scrollUp(int offset)
 		tm.newParMetricsUp();
 	}
 	d->anchor_ypos_ += offset;
-	updateMetrics();
-	buffer_.changed();
+	return offset;
 }
 
 

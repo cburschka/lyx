@@ -155,11 +155,11 @@ public:
 	/// LFUN_SCROLL Helper.
 	void lfunScroll(FuncRequest const & cmd);
 	/// scroll down document by the given number of pixels.
-	void scrollDown(int pixels);
+	int scrollDown(int pixels);
 	/// scroll up document by the given number of pixels.
-	void scrollUp(int pixels);
+	int scrollUp(int pixels);
 	/// scroll document by the given number of pixels.
-	void scroll(int pixels);
+	int scroll(int pixels);
 	/// Scroll the view by a number of pixels.
 	void scrollDocView(int pixels);
 	/// Set the cursor position based on the scrollbar one.
