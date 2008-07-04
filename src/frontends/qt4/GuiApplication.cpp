@@ -629,9 +629,7 @@ struct GuiApplication::Private
 
 #ifdef Q_WS_WIN
 	/// WMF Mime handler for Windows clipboard.
-	// FIXME for Windows Vista and Qt4 (see http://bugzilla.lyx.org/show_bug.cgi?id=4846)
-	// But this makes LyX crash on exit when LyX is compiled in release mode and if there
-	// is something in the clipboard.
+	/// \warning: see comment in ~GuiApplication and in bug 4846.
 	QWindowsMimeMetafile wmf_mime_;
 #endif
 };
@@ -644,6 +642,13 @@ GuiApplication::~GuiApplication()
 #ifdef Q_WS_MACX
 	closeAllLinkBackLinks();
 #endif
+	// FIXME: Work around bug 4846 for Windows Vista and Qt4
+	// (see http://bugzilla.lyx.org/show_bug.cgi?id=4846)
+	// If the clipboard is not cleared, LyX crashes on exit when it is
+	// compiled in release mode and if there is something in the clipboard.
+	// This is related to QWindowsMimeMetafile which is apparently not 
+	// properly destroyed.
+	qApp->clipboard()->clear(QClipboard::Clipboard);
 	delete d;
 }
 
