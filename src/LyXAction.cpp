@@ -1778,7 +1778,20 @@ void LyXAction::init()
  */
 		{ LFUN_INSET_EDIT, "inset-edit", Noop, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_CELL_BACKWARD
+ * \li Action: Moves the cursor to the previous cell inside the table.
+ * \li Syntax: cell-backward
+ * \li Origin: Jug, 22 May 2000
+ * \endvar
+ */
 		{ LFUN_CELL_BACKWARD, "cell-backward", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_CELL_FORWARD
+ * \li Action: Moves the cursor to the next cell inside the table.
+ * \li Syntax: cell-forward
+ * \endvar
+ */
 		{ LFUN_CELL_FORWARD, "cell-forward", Noop, Edit },
 		{ LFUN_CELL_SPLIT, "cell-split", Noop, Edit },
 		{ LFUN_TABULAR_INSERT, "tabular-insert", Noop, Edit },
