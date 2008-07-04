@@ -1,12 +1,18 @@
-This file lists interface changes that might affect users in 1.5.5, some 
-known problems in LyX 1.5.5 and some things you have to take into account
+This file lists interface changes that might affect users in 1.5.6, some 
+known problems in LyX 1.5.6 and some things you have to take into account
 when upgrading from earlier versions to a version of the 1.5.x series.
 Note that fixes are available for some of these, but they have not yet
 been applied because of incomplete testing.
 
 
-Known issues in version 1.5.5
+Known issues in version 1.5.6
 ------------------------------------
+
+- If you are using a local layout file (i.e., a *.layout file that resides in
+  the same directory as the document), and if you are saving the document to
+  another directory, the class information of the document get lost unless
+  you also copy the layout file to the new directory manually.
+  Cf. http://bugzilla.lyx.org/show_bug.cgi?id=4812.
 
 - If KDE 4.0 (the kdelibs4 package, for that matter) is installed, LyX might
   crash when previewing an EPS graphic (or any other graphic that is converted
@@ -23,14 +29,14 @@ Known issues in version 1.5.5
   https://bugs.kde.org/show_bug.cgi?id=156957
 
 - Cursor restoration problems with Multiple-View:
-  When using multiple Windows to edit different parts of the
-  same document, the cursor position is sometimes not correctly restored
-  when you switch from one view to the other.
+  When using multiple Windows to edit different parts of the same document,
+  the cursor position is sometimes not correctly restored when you switch 
+  from one view to the other.
 
 - RTL and keymaps:
   Currently there is a bug where you can't use two non-RTL language keymaps if
   the RTL preference is set (which is now the default). If you need to use two
-  non-RTL keymaps, for now you should just turn off the RTL preference (Tools -> 
+  non-RTL keymaps, for now you should just turn off the RTL preference (Tools ->
   Preferences... -> Language settings -> Language, uncheck "Right-to-left
   language support").
   We hope to offer more comprehensive support for multiple keymaps in the future,
