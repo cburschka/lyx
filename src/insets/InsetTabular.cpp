@@ -1865,7 +1865,6 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) 
 		&& leftLine(cellIndex(r, nextcol));
 	bool coldouble = colright && nextcolleft;
 	bool celldouble = rightLine(cell) && nextcellleft;
-	bool prevcellright = c > 0 && rightLine(cellIndex(r, c - 1));
 	ismulticol = isMultiColumn(cell) 
 		|| (c == 0 && colleft != leftLine(cell))
 		|| ((colright || nextcolleft) && !rightLine(cell) && !nextcellleft)
@@ -1873,7 +1872,7 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) 
 		|| (coldouble != celldouble);
 	if (ismulticol) {
 		os << "\\multicolumn{" << columnSpan(cell) << "}{";
-		if (leftLine(cell) || prevcellright)
+		if (c ==0 && leftLine(cell))
 			os << '|';
 		if (!cellInfo(cell).align_special.empty()) {
 			os << cellInfo(cell).align_special;
