@@ -102,8 +102,8 @@
 \bind "M-~S-e t u"		"tabular-feature append-column"
 \bind "M-~S-e t d"		"tabular-feature delete-column"
 
-\bind "M-~S-e m n"		"math-number"
-\bind "M-~S-e m u"		"math-nonumber"
+\bind "M-~S-e m n"		"math-number-toggle"
+\bind "M-~S-e m u"		"math-number-line-toggle"
 \bind "M-~S-e m r"		"tabular-feature append-row"
 \bind "M-~S-e m d"		"tabular-feature delete-row"
 \bind "M-~S-e m c"		"tabular-feature append-column"

@@ -384,7 +384,7 @@ Menuset
 	Menu "insert_math"
 		Item "Inline Formula|I" "math-mode on"
 		Item "Display Formula|D" "math-display"
-		Item "Numbered Formula|N" "command-sequence math-display; math-number;"
+		Item "Numbered Formula|N" "command-sequence math-display; math-number-toggle;"
 		Item "Eqnarray Environment|E" "command-sequence math-mode on; math-mutate eqnarray;"
 		Item "AMS align Environment|a" "command-sequence math-mode on; math-mutate align;"
 		Item "AMS alignat Environment|t" "command-sequence math-mode on; math-mutate alignat;"

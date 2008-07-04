@@ -65,7 +65,7 @@
 
 \bind "C-m"			"math-mode"
 \bind "C-S-M"			"math-display"
-\bind "C-M-n"			"command-sequence math-display; math-number;"
+\bind "C-M-n"			"command-sequence math-display; math-number-toggle;"
 
 \bind "C-f"			"dialog-show findreplace"
 \bind "C-i"			"next-inset-toggle"		# 'i' for Inset

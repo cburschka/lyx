@@ -156,8 +156,8 @@ Menuset
 #	Item "Make alignat 2 columns|2"  "break-line B"
 #	Item "Make alignat 3 columns|3"  "break-line C"
 #	Separator
-		Item "Toggle Numbering|N" "math-number"
-		Item "Toggle Numbering of Line|u" "math-nonumber"
+		Item "Toggle Numbering|N" "math-number-toggle"
+		Item "Toggle Numbering of Line|u" "math-number-line-toggle"
 #	Item "Toggle limits|l" "math-limits"
 		Submenu "Change Limits Type|L" "edit_math_limits"
 		Separator
