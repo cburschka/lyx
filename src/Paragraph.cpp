@@ -923,11 +923,8 @@ bool Paragraph::Private::latexSpecialT1(char_type const c, odocstream & os,
 		// but we should avoid ligatures
 		if (i + 1 >= int(text_.size()) || text_[i + 1] != c)
 			return true;
-		os << "\\,{}";
-		column += 3;
-		// Alternative code:
-		//os << "\\textcompwordmark{}";
-		//column += 19;
+		os << "\\textcompwordmark{}";
+		column += 19;
 		return true;
 	case '|':
 		os.put(c);
