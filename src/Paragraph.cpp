@@ -901,14 +901,8 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 				if ((c == '>' || c == '<')
 				    && i <= size() - 2
 				    && getChar(i + 1) == c) {
-					//os << "\\textcompwordmark{}";
-					//column += 19;
-					// Jean-Marc, have a look at
-					// this. I think this works
-					// equally well:
-					os << "\\,{}";
-					// Lgb
-					column += 3;
+					os << "\\textcompwordmark{}";
+					column += 19;
 				}
 				break;
 			}
