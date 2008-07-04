@@ -802,6 +802,8 @@ void Paragraph::Private::latexSpecialChar(
 	}
 
 	if (runparams.verbatim) {
+		// FIXME UNICODE: This can fail if c cannot
+		// be encoded in the current encoding.
 		os.put(c);
 		return;
 	}
@@ -874,7 +876,6 @@ void Paragraph::Private::latexSpecialChar(
 		break;
 
 	default:
-
 		// LyX, LaTeX etc.
 		if (latexSpecialPhrase(os, i, column, runparams))
 			return;
@@ -940,32 +941,17 @@ bool Paragraph::Private::latexSpecialTypewriter(char_type const c, odocstream & 
 {
 	switch (c) {
 	case '-':
+		// within \ttfamily, "--" is merged to "-" (no endash)
+		// so we avoid this rather irritating ligature
 		if (i + 1 < int(text_.size()) && text_[i + 1] == '-') {
-			// "--" in Typewriter mode -> "-{}-"
 			os << "-{}";
 			column += 2;
 		} else
 			os << '-';
 		return true;
 
-	// FIXME I assume this is hack treating typewriter as verbatim
-	// This should be re-evaluated eventually.
-
-	case '\0':
-		return true;
-
-// 	// Those characters are not directly supported.
-// 	case '\\':
-// 	case '\"':
-// 	case '$': case '&':
-// 	case '%': case '#': case '{':
-// 	case '}': case '_':
-// 	case '~':
-// 	case '^':
-// 	case '*': case '[':
-// 	case ' ':
-// 		return false;
-
+	// everything else has to be checked separately
+	// (depending on the encoding)
 	default:
 		return false;
 	}
