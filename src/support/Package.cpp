@@ -375,11 +375,8 @@ FileName const get_temp_dir()
 	// Typical example: C:/TEMP/.
 	char path[MAX_PATH];
 	GetTempPath(MAX_PATH, path);
-	string tmp = to_utf8(from_local8bit(path));
-	size_t const size = tmp.size();
-	if (size && (tmp[size - 1] == '/' || tmp[size - 1] == '\\'))
-		tmp.erase(size - 1, 1);
-	return FileName(tmp);
+	// Remove trailing backslash if any.
+	return FileName(rtrim(to_utf8(from_local8bit(path)), "\\"));
 #else // Posix-like.
 	return FileName("/tmp");
 #endif
