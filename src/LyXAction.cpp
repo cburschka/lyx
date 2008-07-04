@@ -1778,6 +1778,14 @@ void LyXAction::init()
  */
 		{ LFUN_INSET_EDIT, "inset-edit", Noop, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_TABULAR_INSERT
+ * \li Action: Inserts table into the document.
+ * \li Syntax: tabular-insert [<ROWS> <COLUMNS>]
+ * \li Params: In case no arguments are given show insert dialog.
+ * \li Origin: Jug, 12 Apr 2000
+ * \endvar
+ */
 		{ LFUN_TABULAR_INSERT, "tabular-insert", Noop, Edit },
 		{ LFUN_TABULAR_FEATURE, "tabular-feature", Noop, Edit },
 /*!
