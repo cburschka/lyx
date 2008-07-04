@@ -2039,7 +2039,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 			}
 		}
 
-		// Set the encoding to that returned from simpleTeXSpecialChars (see
+		// Set the encoding to that returned from latexSpecialChar (see
 		// comment for encoding member in OutputParams.h)
 		runparams.encoding = rp.encoding;
 	}
