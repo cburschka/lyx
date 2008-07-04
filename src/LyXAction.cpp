@@ -1778,6 +1778,8 @@ void LyXAction::init()
  */
 		{ LFUN_INSET_EDIT, "inset-edit", Noop, Edit },
 
+		{ LFUN_TABULAR_INSERT, "tabular-insert", Noop, Edit },
+		{ LFUN_TABULAR_FEATURE, "tabular-feature", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_CELL_BACKWARD
  * \li Action: Moves the cursor to the previous cell inside the table.
@@ -1793,9 +1795,14 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_CELL_FORWARD, "cell-forward", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_CELL_SPLIT
+ * \li Action: Splits cell and shifts right part to the next cell (inside the math grid).
+ * \li Syntax: cell-split
+ * \li Origin: Ale, 15 May 1997
+ * \endvar
+ */
 		{ LFUN_CELL_SPLIT, "cell-split", Noop, Edit },
-		{ LFUN_TABULAR_INSERT, "tabular-insert", Noop, Edit },
-		{ LFUN_TABULAR_FEATURE, "tabular-feature", Noop, Edit },
 
 		{ LFUN_VC_CHECK_IN, "vc-check-in", ReadOnly, System },
 		{ LFUN_VC_CHECK_OUT, "vc-check-out", ReadOnly, System },
