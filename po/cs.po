@@ -2434,7 +2434,7 @@ msgstr "Klávesnice"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:43
 msgid "Use &keyboard map"
-msgstr "Pou¾ít mapu &kláves"
+msgstr "Pou¾ít &mapu kláves"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:56
 msgid "&First:"
@@ -2469,9 +2469,8 @@ msgid ""
 msgstr "1.0 je standardní rychlost. Vy¹¹í hodnoty zrychlí, ni¾¹í zpomalí."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:19
-#, fuzzy
 msgid "&User Interface language:"
-msgstr "Soubor s u¾&ivatelským rozhraním:"
+msgstr "&Jazyk u¾ivatelského rozhraní:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:29
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:49
@@ -4399,14 +4398,12 @@ msgid "Key words."
 msgstr "Key words."
 
 #: lib/layouts/aa.layout:349
-#, fuzzy
 msgid "CharStyle:Institute"
-msgstr "Styl znaku: "
+msgstr "CharStyle:Institute"
 
 #: lib/layouts/aa.layout:359
-#, fuzzy
 msgid "CharStyle:E-Mail"
-msgstr "Styl znaku: "
+msgstr "CharStyle:E-Mail"
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612
 #: src/frontends/qt4/GuiPrefs.cpp:525
@@ -4997,18 +4994,16 @@ msgid "Note:"
 msgstr "Note:"
 
 #: lib/layouts/beamer.layout:1087
-#, fuzzy
 msgid "CharStyle:Alert"
-msgstr "Styl znaku: "
+msgstr "CharStyle:Alert"
 
 #: lib/layouts/beamer.layout:1089
 msgid "Alert"
 msgstr "Alert"
 
 #: lib/layouts/beamer.layout:1098
-#, fuzzy
 msgid "CharStyle:Structure"
-msgstr "Styl znaku: "
+msgstr "CharStyle:Structure"
 
 #: lib/layouts/beamer.layout:1100
 msgid "Structure"
@@ -5016,22 +5011,19 @@ msgstr "Structure"
 
 #: lib/layouts/beamer.layout:1109
 msgid "Custom:ArticleMode"
-msgstr ""
+msgstr "Custom:ArticleMode"
 
 #: lib/layouts/beamer.layout:1114
-#, fuzzy
 msgid "Article"
-msgstr "Vertikální"
+msgstr "Article"
 
 #: lib/layouts/beamer.layout:1119
-#, fuzzy
 msgid "Custom:PresentationMode"
-msgstr "&Orientace:"
+msgstr "Custom:PresentationMode"
 
 #: lib/layouts/beamer.layout:1124
-#, fuzzy
 msgid "Presentation"
-msgstr "&Orientace:"
+msgstr "Presentation"
 
 #: lib/layouts/beamer.layout:1131 lib/layouts/powerdot.layout:377
 #: lib/layouts/stdfloats.inc:10 lib/layouts/stdinsets.inc:229
@@ -7149,27 +7141,24 @@ msgid "Thesaurus not supported in recent A&A:"
 msgstr "Thesaurus not supported in recent A&A:"
 
 #: lib/layouts/agu_stdclass.inc:34 lib/layouts/db_stdcharstyles.inc:35
-#, fuzzy
 msgid "Element:Firstname"
-msgstr "Firstname"
+msgstr "Element:Firstname"
 
 #: lib/layouts/agu_stdclass.inc:36 lib/layouts/db_stdcharstyles.inc:37
 msgid "Firstname"
 msgstr "Firstname"
 
 #: lib/layouts/agu_stdclass.inc:48
-#, fuzzy
 msgid "Element:Fname"
-msgstr "Umístìní:"
+msgstr "Element:Fname"
 
 #: lib/layouts/agu_stdclass.inc:50
 msgid "Fname"
 msgstr "Fname"
 
 #: lib/layouts/agu_stdclass.inc:63 lib/layouts/db_stdcharstyles.inc:46
-#, fuzzy
 msgid "Element:Surname"
-msgstr "Surname"
+msgstr "Element:Surname"
 
 #: lib/layouts/agu_stdclass.inc:65 lib/layouts/db_stdcharstyles.inc:48
 #: lib/layouts/db_stdtitle.inc:98
@@ -7177,14 +7166,12 @@ msgid "Surname"
 msgstr "Surname"
 
 #: lib/layouts/agu_stdclass.inc:78 lib/layouts/db_stdcharstyles.inc:6
-#, fuzzy
 msgid "Element:Filename"
-msgstr "Jméno souboru"
+msgstr "Element:Filename"
 
 #: lib/layouts/agu_stdclass.inc:93 lib/layouts/db_stdcharstyles.inc:57
-#, fuzzy
 msgid "Element:Literal"
-msgstr "Literal"
+msgstr "Element:Literal"
 
 #: lib/layouts/agu_stdclass.inc:95 lib/layouts/db_stdcharstyles.inc:59
 #: lib/layouts/db_stdlayouts.inc:11
@@ -7192,90 +7179,80 @@ msgid "Literal"
 msgstr "Literal"
 
 #: lib/layouts/agu_stdclass.inc:108
-#, fuzzy
 msgid "Element:Emph"
-msgstr "Umístìní:"
+msgstr "Element:Emph"
 
 #: lib/layouts/agu_stdclass.inc:110 src/frontends/qt4/GuiCharacter.cpp:77
 msgid "Emph"
 msgstr "Zvýraznìný"
 
 #: lib/layouts/agu_stdclass.inc:124
-#, fuzzy
 msgid "Element:Abbrev"
-msgstr "Abbrev"
+msgstr "Element:Abbrev"
 
 #: lib/layouts/agu_stdclass.inc:126
 msgid "Abbrev"
 msgstr "Abbrev"
 
 #: lib/layouts/agu_stdclass.inc:135
-#, fuzzy
 msgid "Element:Citation-number"
-msgstr "Citation-number"
+msgstr "Element:Citation-number"
 
 #: lib/layouts/agu_stdclass.inc:137 lib/layouts/agu_stdtitle.inc:56
 msgid "Citation-number"
 msgstr "Citation-number"
 
 #: lib/layouts/agu_stdclass.inc:146
-#, fuzzy
 msgid "Element:Volume"
-msgstr "Volume"
+msgstr "Element:Volume"
 
 #: lib/layouts/agu_stdclass.inc:148
 msgid "Volume"
 msgstr "Volume"
 
 #: lib/layouts/agu_stdclass.inc:157
-#, fuzzy
 msgid "Element:Day"
-msgstr "Supplementary"
+msgstr "Element:Day"
 
 #: lib/layouts/agu_stdclass.inc:159
 msgid "Day"
 msgstr "Day"
 
 #: lib/layouts/agu_stdclass.inc:168
-#, fuzzy
 msgid "Element:Month"
-msgstr "Umístìní:"
+msgstr "Element:Month"
 
 #: lib/layouts/agu_stdclass.inc:170
 msgid "Month"
 msgstr "Month"
 
 #: lib/layouts/agu_stdclass.inc:179
-#, fuzzy
 msgid "Element:Year"
-msgstr "Supplementary"
+msgstr "Element:Year"
 
 #: lib/layouts/agu_stdclass.inc:181
 msgid "Year"
 msgstr "Year"
 
 #: lib/layouts/agu_stdclass.inc:190
-#, fuzzy
 msgid "Element:Issue-number"
-msgstr "Issue-number"
+msgstr "Element:Issue-number"
 
 #: lib/layouts/agu_stdclass.inc:192
 msgid "Issue-number"
 msgstr "Issue-number"
 
 #: lib/layouts/agu_stdclass.inc:201
-#, fuzzy
 msgid "Element:Issue-day"
-msgstr "Issue-day"
+msgstr "Element:Issue-day"
 
 #: lib/layouts/agu_stdclass.inc:203
 msgid "Issue-day"
 msgstr "Issue-day"
 
 #: lib/layouts/agu_stdclass.inc:212
-#, fuzzy
 msgid "Element:Issue-months"
-msgstr "Issue-months"
+msgstr "Element:Issue-months"
 
 #: lib/layouts/agu_stdclass.inc:214
 msgid "Issue-months"
@@ -7466,119 +7443,104 @@ msgid "Datasets:"
 msgstr "Datasets:"
 
 #: lib/layouts/agu_stdtitle.inc:321
-#, fuzzy
 msgid "Element:ISSN"
-msgstr "Umístìní:"
+msgstr "Element:ISSN"
 
 #: lib/layouts/agu_stdtitle.inc:323
 msgid "ISSN"
 msgstr "ISSN"
 
 #: lib/layouts/agu_stdtitle.inc:332
-#, fuzzy
 msgid "Element:CODEN"
-msgstr "Umístìní:"
+msgstr "Element:CODEN"
 
 #: lib/layouts/agu_stdtitle.inc:334
 msgid "CODEN"
 msgstr "CODEN"
 
 #: lib/layouts/agu_stdtitle.inc:344
-#, fuzzy
 msgid "Element:SS-Code"
-msgstr "SS-Code"
+msgstr "Element:SS-Code"
 
 #: lib/layouts/agu_stdtitle.inc:346
 msgid "SS-Code"
 msgstr "SS-Code"
 
 #: lib/layouts/agu_stdtitle.inc:355
-#, fuzzy
 msgid "Element:SS-Title"
-msgstr "SS-Title"
+msgstr "Element:SS-Title"
 
 #: lib/layouts/agu_stdtitle.inc:357
 msgid "SS-Title"
 msgstr "SS-Title"
 
 #: lib/layouts/agu_stdtitle.inc:367
-#, fuzzy
 msgid "Element:CCC-Code"
-msgstr "CCC-Code"
+msgstr "Element:CCC-Code"
 
 #: lib/layouts/agu_stdtitle.inc:369
 msgid "CCC-Code"
 msgstr "CCC-Code"
 
 #: lib/layouts/agu_stdtitle.inc:380
-#, fuzzy
 msgid "Element:Code"
-msgstr "Umístìní:"
+msgstr "Element:Code"
 
 #: lib/layouts/agu_stdtitle.inc:391
-#, fuzzy
 msgid "Element:Dscr"
-msgstr "Umístìní:"
+msgstr "Element:Dscr"
 
 #: lib/layouts/agu_stdtitle.inc:393
 msgid "Dscr"
 msgstr "Dscr"
 
 #: lib/layouts/agu_stdtitle.inc:403
-#, fuzzy
 msgid "Element:Keyword"
-msgstr "Keyword"
+msgstr "Element:Keyword"
 
 #: lib/layouts/agu_stdtitle.inc:415
-#, fuzzy
 msgid "Element:Orgdiv"
-msgstr "Orgdiv"
+msgstr "Element:Orgdiv"
 
 #: lib/layouts/agu_stdtitle.inc:417
 msgid "Orgdiv"
 msgstr "Orgdiv"
 
 #: lib/layouts/agu_stdtitle.inc:426
-#, fuzzy
 msgid "Element:Orgname"
-msgstr "Orgname"
+msgstr "Element:Orgname"
 
 #: lib/layouts/agu_stdtitle.inc:428
 msgid "Orgname"
 msgstr "Orgname"
 
 #: lib/layouts/agu_stdtitle.inc:437
-#, fuzzy
 msgid "Element:Street"
-msgstr "Street"
+msgstr "Element:Street"
 
 #: lib/layouts/agu_stdtitle.inc:448
-#, fuzzy
 msgid "Element:City"
-msgstr "Umístìní:"
+msgstr "Element:City"
 
 #: lib/layouts/agu_stdtitle.inc:450
 msgid "City"
 msgstr "City"
 
 #: lib/layouts/agu_stdtitle.inc:459
-#, fuzzy
 msgid "Element:State"
-msgstr "Umístìní:"
+msgstr "Element:State"
 
 #: lib/layouts/agu_stdtitle.inc:470
-#, fuzzy
 msgid "Element:Postcode"
-msgstr "Postcode"
+msgstr "Element:Postcode"
 
 #: lib/layouts/agu_stdtitle.inc:472
 msgid "Postcode"
 msgstr "Postcode"
 
 #: lib/layouts/agu_stdtitle.inc:481
-#, fuzzy
 msgid "Element:Country"
-msgstr "Country"
+msgstr "Element:Country"
 
 #: lib/layouts/agu_stdtitle.inc:483
 msgid "Country"
@@ -7673,68 +7635,60 @@ msgid "2000 Mathematics Subject Classification:"
 msgstr "2000 Mathematics Subject Classification:"
 
 #: lib/layouts/db_stdcharstyles.inc:20
-#, fuzzy
 msgid "Element:Directory"
-msgstr "Directory"
+msgstr "Element:Directory"
 
 #: lib/layouts/db_stdcharstyles.inc:22
 msgid "Directory"
 msgstr "Directory"
 
 #: lib/layouts/db_stdcharstyles.inc:71
-#, fuzzy
 msgid "Element:Email"
-msgstr "Umístìní:"
+msgstr "Element:Email"
 
 #: lib/layouts/db_stdcharstyles.inc:85
-#, fuzzy
 msgid "Element:KeyCombo"
-msgstr "KeyCombo"
+msgstr "Element:KeyCombo"
 
 #: lib/layouts/db_stdcharstyles.inc:87
 msgid "KeyCombo"
 msgstr "KeyCombo"
 
 #: lib/layouts/db_stdcharstyles.inc:99
-#, fuzzy
 msgid "Element:KeyCap"
-msgstr "KeyCap"
+msgstr "Element:KeyCap"
 
 #: lib/layouts/db_stdcharstyles.inc:101
 msgid "KeyCap"
 msgstr "KeyCap"
 
 #: lib/layouts/db_stdcharstyles.inc:113
-#, fuzzy
 msgid "Element:GuiMenu"
-msgstr "GuiMenu"
+msgstr "Element:GuiMenu"
 
 #: lib/layouts/db_stdcharstyles.inc:115
 msgid "GuiMenu"
 msgstr "GuiMenu"
 
 #: lib/layouts/db_stdcharstyles.inc:127
-#, fuzzy
 msgid "Element:GuiMenuItem"
-msgstr "GuiMenuItem"
+msgstr "Element:GuiMenuItem"
 
 #: lib/layouts/db_stdcharstyles.inc:129
 msgid "GuiMenuItem"
 msgstr "GuiMenuItem"
 
 #: lib/layouts/db_stdcharstyles.inc:141
-#, fuzzy
 msgid "Element:GuiButton"
-msgstr "GuiButton"
+msgstr "Element:GuiButton"
 
 #: lib/layouts/db_stdcharstyles.inc:143
 msgid "GuiButton"
 msgstr "GuiButton"
 
 #: lib/layouts/db_stdcharstyles.inc:155
-#, fuzzy
 msgid "Element:MenuChoice"
-msgstr "MenuChoice"
+msgstr "Element:MenuChoice"
 
 #: lib/layouts/db_stdcharstyles.inc:157
 msgid "MenuChoice"
@@ -7877,9 +7831,8 @@ msgid "Dictum"
 msgstr "Dictum"
 
 #: lib/layouts/stdcharstyles.inc:8
-#, fuzzy
 msgid "CharStyle"
-msgstr "Styl znaku: "
+msgstr "Styl znaku"
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
 #: src/insets/InsetCollapsable.cpp:151
@@ -7891,25 +7844,22 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdinsets.inc:54
-#, fuzzy
 msgid "Marginal"
-msgstr "okraj"
+msgstr "Okraj"
 
 #: lib/layouts/stdinsets.inc:55 src/insets/InsetMarginal.cpp:50
 msgid "margin"
 msgstr "okraj"
 
 #: lib/layouts/stdinsets.inc:75
-#, fuzzy
 msgid "Foot"
-msgstr "patièka"
+msgstr "Patièka"
 
 #: lib/layouts/stdinsets.inc:76
 msgid "foot"
 msgstr "patièka"
 
 #: lib/layouts/stdinsets.inc:96
-#, fuzzy
 msgid "Note:Comment"
 msgstr "Komentáø"
 
@@ -7918,16 +7868,14 @@ msgid "comment"
 msgstr "komentáø"
 
 #: lib/layouts/stdinsets.inc:109
-#, fuzzy
 msgid "Note:Note"
-msgstr "Note:"
+msgstr "Poznámka"
 
 #: lib/layouts/stdinsets.inc:110 src/insets/InsetNote.cpp:298
 msgid "note"
 msgstr "poznámka"
 
 #: lib/layouts/stdinsets.inc:121
-#, fuzzy
 msgid "Note:Greyedout"
 msgstr "Za¹edlé"
 
@@ -7963,28 +7911,24 @@ msgid "Box"
 msgstr "Rámeèek"
 
 #: lib/layouts/stdinsets.inc:210
-#, fuzzy
 msgid "Box:Shaded"
 msgstr "Stínovanì"
 
 #: lib/layouts/stdinsets.inc:219
-#, fuzzy
 msgid "figure"
-msgstr "Obrázek"
+msgstr "obrázek"
 
 #: lib/layouts/stdinsets.inc:228
-#, fuzzy
 msgid "table"
-msgstr "Tabulka"
+msgstr "tabulka"
 
 #: lib/layouts/stdinsets.inc:237
-#, fuzzy
 msgid "algorithm"
-msgstr "Algoritmus"
+msgstr "algoritmus"
 
 #: lib/layouts/stdinsets.inc:266
 msgid "OptArg"
-msgstr ""
+msgstr "OptArg"
 
 #: lib/layouts/stdinsets.inc:267
 msgid "opt"
@@ -9924,7 +9868,7 @@ msgstr "Polovina em mezery (Enskip)|e"
 
 #: lib/ui/stdcontext.inc:175
 msgid "Protected Half Quad Space (Enspace)|E"
-msgstr "Chránìná Polovina em mezery (Enspace)|n"
+msgstr "Chránìná Polovina em mezery (Enspace)"
 
 #: lib/ui/stdcontext.inc:176
 msgid "Quad Space|Q"
@@ -9936,7 +9880,7 @@ msgstr "Polovièní em mezera|l"
 
 #: lib/ui/stdcontext.inc:178
 msgid "Horizontal Fill|F"
-msgstr "Horizontální výplò|n"
+msgstr "Horizontální výplò|p"
 
 #: lib/ui/stdcontext.inc:179
 msgid "Protected Horizontal Fill|i"
@@ -9948,27 +9892,23 @@ msgstr "Horizontální výplò (teèky)|y"
 
 #: lib/ui/stdcontext.inc:181
 msgid "Horizontal Fill (Rule)|R"
-msgstr "Horizontální výplò (èára)|t"
+msgstr "Horizontální výplò (èára)"
 
 #: lib/ui/stdcontext.inc:182
-#, fuzzy
 msgid "Horizontal Fill (Left Arrow)|L"
-msgstr "Horizontální výplò (teèky)|y"
+msgstr "Horizontální výplò (levá ¹ipka)"
 
 #: lib/ui/stdcontext.inc:183
-#, fuzzy
 msgid "Horizontal Fill (Right Arrow)|g"
-msgstr "Horizontální výplò (teèky)|y"
+msgstr "Horizontální výplò (pravá ¹ipka)"
 
 #: lib/ui/stdcontext.inc:184
-#, fuzzy
 msgid "Horizontal Fill (Up Brace)|p"
-msgstr "Horizontální výplò (èára)|t"
+msgstr "Horizontální výplò (dolní slo¾ená)"
 
 #: lib/ui/stdcontext.inc:185
-#, fuzzy
 msgid "Horizontal Fill (Down Brace)|B"
-msgstr "Horizontální výplò (teèky)|y"
+msgstr "Horizontální výplò (horní slo¾ená)"
 
 #: lib/ui/stdcontext.inc:186
 msgid "Custom Length|C"
@@ -10076,7 +10016,7 @@ msgstr "Vlo¾it poslední|p"
 
 #: lib/ui/stdcontext.inc:247
 msgid "Jump to Saved Bookmark|B"
-msgstr "Skok na ulo¾enou zálo¾ku|S"
+msgstr "Skok na ulo¾enou zálo¾ku|k"
 
 #: lib/ui/stdcontext.inc:249 lib/ui/stdmenus.inc:98
 msgid "Move Paragraph Up|o"
@@ -10084,27 +10024,23 @@ msgstr "Pøesunout odstavec nahoru|r"
 
 #: lib/ui/stdcontext.inc:250 lib/ui/stdmenus.inc:99
 msgid "Move Paragraph Down|v"
-msgstr "Pøesunout odstavec dolù|d"
+msgstr "Pøesunout odstavec dolù|o"
 
 #: lib/ui/stdcontext.inc:252
-#, fuzzy
 msgid "Promote Section|r"
-msgstr "Empty Section"
+msgstr "Zvý¹it úroveò sekce|Z"
 
 #: lib/ui/stdcontext.inc:253
-#, fuzzy
 msgid "Demote Section|m"
-msgstr "Empty Section"
+msgstr "Sní¾it úroveò sekce|S"
 
 #: lib/ui/stdcontext.inc:254
-#, fuzzy
 msgid "Move Section down|d"
-msgstr "Close Section"
+msgstr "Pøesunout sekci dolù|d"
 
 #: lib/ui/stdcontext.inc:255
-#, fuzzy
 msgid "Move Section up|u"
-msgstr "Close Section"
+msgstr "Pøesunout sekci nahorù|n"
 
 #: lib/ui/stdcontext.inc:257
 msgid "Apply Last Text Style|A"
@@ -10116,7 +10052,7 @@ msgstr "Styl textu|t"
 
 #: lib/ui/stdcontext.inc:259 lib/ui/stdmenus.inc:102
 msgid "Paragraph Settings...|P"
-msgstr "Nastavení odstavce...|o"
+msgstr "Nastavení odstavce...|a"
 
 #: lib/ui/stdcontext.inc:261
 msgid "Fullscreen Mode"
@@ -14868,12 +14804,11 @@ msgid "Done!"
 msgstr "Hotovo!"
 
 #: src/LyX.cpp:482
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
-msgstr "Nelze vytvoøit pomocný adresáø"
+msgstr "%1$s nevypadá jako pomocný adresáø vytvoøený LyXem."
 
 #: src/LyX.cpp:484
-#, fuzzy
 msgid "Cannot remove temporary directory"
 msgstr "Nelze smazat pomocný adresáø"
 
