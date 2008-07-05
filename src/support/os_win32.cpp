@@ -155,7 +155,7 @@ void init(int /* argc */, char * argv[])
 				(LPBYTE) buf, &bufSize);
 		RegCloseKey(regKey);
 		if ((retVal == ERROR_SUCCESS) && (bufSize <= MAX_PATH))
-			cygdrive = buf;
+			cygdrive = rtrim(string(buf), "/");
 	}
 }
 
