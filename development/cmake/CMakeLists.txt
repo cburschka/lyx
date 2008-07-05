@@ -267,7 +267,7 @@ if(MSVC)
 		# add here warnings which should produce an error /weXXXX
 		set(MSVC_W_ERROR   "/we4101 /we4189")
 		# add here warnings which should be disabled /wdXXXX
-		set(MSVC_W_DISABLE "/wd4355 /wd4800 /wd4996 /wd4311 /wd4312 /wd4505 /wd4267 /wd4512 /wd4245 /wd4127 /wd4180")
+		set(MSVC_W_DISABLE "/wd4288 /wd4355 /wd4800 /wd4996 /wd4311 /wd4312 /wd4505 /wd4267 /wd4512 /wd4245 /wd4127 /wd4180")
 		
 		set(CMAKE_CXX_FLAGS_DEBUG
 			"${CMAKE_CXX_FLAGS_DEBUG} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
@@ -285,7 +285,7 @@ if(MSVC)
 		# add here warnings which should produce an error /weXXXX
 		set(MSVC_W_ERROR   "/we4101 /we4189")
 		# add here warnings which should be disabled /wdXXXX
-		set(MSVC_W_DISABLE "/wd4355 /wd4800 /wd4996 /wd4267 /wd4180")
+		set(MSVC_W_DISABLE "/wd4288 /wd4355 /wd4800 /wd4996 /wd4267 /wd4180")
 		
 		set(CMAKE_CXX_FLAGS_DEBUG
 			"${CMAKE_CXX_FLAGS_DEBUG} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
