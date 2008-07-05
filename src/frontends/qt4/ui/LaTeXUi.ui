@@ -160,19 +160,6 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="2" colspan="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>261</width>
-       <height>22</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
    <item row="2" column="1" >
     <widget class="QComboBox" name="psdriverCO" >
      <property name="duplicatesEnabled" >
@@ -203,24 +190,6 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="3" >
-    <widget class="QPushButton" name="layoutPB" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>1</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip" >
-      <string>Click to select a local document class definition file</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Local Layout...</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0" >
     <widget class="QLabel" name="classL" >
      <property name="text" >
@@ -231,7 +200,7 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1" colspan="2" >
+   <item row="0" column="1" colspan="3" >
     <widget class="QComboBox" name="classCO" >
      <property name="maxVisibleItems" >
       <number>20</number>
@@ -250,6 +219,37 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="2" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>31</width>
+       <height>23</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="3" >
+    <widget class="QPushButton" name="layoutPB" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>1</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip" >
+      <string>Click to select a local document class definition file</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Local Layout...</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

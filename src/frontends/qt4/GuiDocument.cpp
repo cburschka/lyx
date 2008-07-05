@@ -899,6 +899,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		latexModule->psdriverCO->addItem(enc);
 	}
 	// latex classes
+	// FIXME hide local layout button due to bug 4812.
+	latexModule->layoutPB->hide();
 	latexModule->classCO->setModel(&classes_model_);
 	LayoutFileList const & bcl = LayoutFileList::get();
 	vector<LayoutFileIndex> classList = bcl.classList();
