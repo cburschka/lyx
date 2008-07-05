@@ -338,18 +338,14 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 	int expy = y;
 
 	if (displayMode_ == DISPLAY_INIT || displayMode_ == DISPLAY_INTERACTIVE_INIT) {		
-		PainterInfo pi2(pi.base.bv, pi.pain);
-		pi2.base.font.setColor(Color_latex);
-		//pi2.base.style = LM_ST_TEXT;
-		pi2.pain.text(x, y, from_ascii("\\") + name(), pi2.base.font);
+		FontSetChanger dummy(pi.base, "lyxtex");
+		pi.pain.text(x, y, from_ascii("\\") + name(), pi.base.font);
 	} else if (displayMode_ == DISPLAY_UNFOLDED) {
-		PainterInfo pi2(pi.base.bv, pi.pain);
-		pi2.base.font.setColor(Color_latex);
-		//pi2.base.style = LM_ST_TEXT;
-		pi2.pain.text(x, y, from_ascii("\\"), pi2.base.font);
-		x += mathed_string_width(pi2.base.font, from_ascii("\\")) + 1;
-		cell(0).draw(pi2, x, y);
-		drawMarkers(pi2, expx, expy);
+		FontSetChanger dummy(pi.base, "lyxtex");
+		pi.pain.text(x, y, from_ascii("\\"), pi.base.font);
+		x += mathed_string_width(pi.base.font, from_ascii("\\")) + 1;
+		cell(0).draw(pi, x, y);
+		drawMarkers(pi, expx, expy);
 	} else if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_LIST
 		   && editing_[pi.base.bv]) {
 		// Macro will be edited in a old-style list mode here:
