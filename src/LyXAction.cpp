@@ -2262,11 +2262,51 @@ void LyXAction::init()
  */
 		{ LFUN_DIALOG_DISCONNECT_INSET, "dialog-disconnect-inset", Noop, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MOUSE_PRESS
+ * \li Action: This function is called when mouse button is pressed (inside workarea).
+               Action depends on the context.
+ * \li Notion: This is internal LFUN, not to be used by users.
+ * \li Origin: André, 9 Aug 2002
+ * \endvar
+ */
 		{ LFUN_MOUSE_PRESS, "", ReadOnly, Hidden },
-		{ LFUN_MOUSE_MOTION, "", ReadOnly | SingleParUpdate, Hidden },
-		{ LFUN_MOUSE_RELEASE, "", ReadOnly, Hidden },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MOUSE_DOUBLE
+ * \li Action: This function is called when double click on mouse button is
+               pressed (inside workarea). Action depends on the context.
+ * \li Notion: This is internal LFUN, not to be used by users.
+ * \li Origin: André, 9 Aug 2002
+ * \endvar
+ */
 		{ LFUN_MOUSE_DOUBLE, "", ReadOnly, Hidden },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MOUSE_TRIPLE
+ * \li Action: This function is called when triple click on mouse button is
+               pressed (inside workarea). Action depends on the context.
+ * \li Notion: This is internal LFUN, not to be used by users.
+ * \li Origin: André, 9 Aug 2002
+ * \endvar
+ */
 		{ LFUN_MOUSE_TRIPLE, "", ReadOnly, Hidden },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MOUSE_MOTION
+ * \li Action: This function is called when mouse cursor is moving over the text.
+               Action depends on the context.
+ * \li Notion: This is internal LFUN, not to be used by users.
+ * \li Origin: André, 9 Aug 2002
+ * \endvar
+ */
+		{ LFUN_MOUSE_MOTION, "", ReadOnly | SingleParUpdate, Hidden },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_MOUSE_RELEASE
+ * \li Action: This function is called when mouse button is released (inside workarea).
+               Action depends on the context.
+ * \li Notion: This is internal LFUN, not to be used by users.
+ * \li Origin: André, 9 Aug 2002
+ * \endvar
+ */
+		{ LFUN_MOUSE_RELEASE, "", ReadOnly, Hidden },
 
 		{ LFUN_KEYMAP_OFF, "keymap-off", ReadOnly, Edit },
 		{ LFUN_KEYMAP_PRIMARY, "keymap-primary", ReadOnly, Edit },
