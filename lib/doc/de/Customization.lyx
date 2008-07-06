@@ -146,11 +146,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 21.
-\begin_inset space ~
-\end_inset
-
-Juni 2008
+letzte Änderung: 6.
+ Juli 2008
 \end_layout
 
 \begin_layout Standard
@@ -215,10 +212,7 @@ Dieses Kapitel soll Ihnen dabei helfen, sich mit den Konfigurationsdateien
 ichnis von LyX auf Ihrem Rechner befindet.
  Sie erfahren dies über den Menüpunkt 
 \family sans
-\bar under
-H
-\bar default
-ilfe\SpecialChar \menuseparator
+Hilfe\SpecialChar \menuseparator
 Über
 \begin_inset space ~
 \end_inset
@@ -234,11 +228,8 @@ status collapsed
 
 \end_inset
 
-
-\bar under
 X
 \family default
-\bar default
 .
  In diesem Verzeichnis speichert LyX alle systemweiten Konfigurationsdateien,
  wir werden es im weiteren 
@@ -374,7 +365,18 @@ doc/LaTeXConfig.lyx
 \family default
  wird bei der Konfiguration aus der Datei 
 \family typewriter
-LaTeXConfig.lyx.in
+LaTeXConfig.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+""
+\end_layout
+
+\end_inset
+
+lyx.in
 \family default
  erzeugt.
  Jeder Eintrag der Form 
@@ -658,7 +660,11 @@ tex/
 \family typewriter
 .cls
 \family default
-) und -Stildateien (.
+) und -Stildateien
+\begin_inset Newline linebreak
+\end_inset
+
+ (.
 \family typewriter
 sty
 \family default
@@ -1024,10 +1030,7 @@ UserDir/doc
 \family default
  kopieren, und sie werden automatisch über das 
 \family sans
-\bar under
-H
-\bar default
-ilfe
+Hilfe
 \family default
 -Menü geöffnet.
 \end_layout
@@ -1138,7 +1141,11 @@ Der erste Aufruf des Dialogs
 \begin_layout Standard
 Bei alten Versionen von LyX bestand die Konfiguration darin, die Datei 
 \family typewriter
-UserDir/lyxrc
+UserDir/
+\begin_inset Newline linebreak
+\end_inset
+
+lyxrc
 \family default
  manuell zu editieren.
  Dies wurde mit LyX
@@ -1182,7 +1189,8 @@ n abweichen.
  Einige dieser Standardwerte sind fest in LyX einkompiliert, andere werden
  in 
 \family typewriter
-LyXDir/lyxrc.defaults
+LyXDir/lyxrc.de\SpecialChar \-
+faults
 \family default
  festgelegt.
  Beachten Sie bitte, dass in beiden Dateien Zeilen, die mit einem 
@@ -1220,10 +1228,7 @@ Wir hoffen dass der Dialog im großen und ganzen selbsterklärend ist.
  Bevor wir nun jedoch ein paar der wichtigeren Optionen vorstelle,n ein
  Wort der Warnung: Einige der Einstellungen, die Sie mit dem Klick auf 
 \family sans
-\bar under
-Ü
-\bar default
-bernehmen
+Übernehmen
 \family default
  aktivieren, werden sofort umgesetzt (zum Beispiel Bildschirmzeichensätze),
  andere (wie etwa das Ändern der 
@@ -2069,6 +2074,19 @@ locale
  richtig gesetzt haben.
 \end_layout
 
+\begin_layout Standard
+Eine einfachere Art, Sonderzeichen einzufügen, gibt es mit 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Son\SpecialChar \-
+der\SpecialChar \-
+zei\SpecialChar \-
+chen\SpecialChar \menuseparator
+Symbole
+\family default
+.
+\end_layout
+
 \begin_layout Subsection
 Hilfreiche Hinweise und Tipps
 \end_layout
@@ -2226,8 +2244,18 @@ name "sec:bindings"
 \end_layout
 
 \begin_layout Standard
-Tastaturkürzel dienen dazu, einer Taste oder Tastenkombination eine LyX-Funktion
- zuzuordnen.
+Tastaturkürzel dienen dazu, einer Taste oder Tastenkombination eine LyX
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Funktion zuzuordnen.
  Die LyX-Distribution umfasst einige Dateien mit unterschiedlichen Tastaturzuord
 nungen: CUA, die typische Belegung auf PC und CDE, eine Emacs-Version sowie
  einige spezialisierte Versionen (broadway, hollywood) und an andere Sprachen
@@ -2340,11 +2368,7 @@ Einstellungen
 \family sans
 Aussehen\SpecialChar \menuseparator
 Benutzerschnittstelle\SpecialChar \menuseparator
-
-\bar under
-G
-\bar default
-UI-Datei:
+GUI-Datei:
 \family default
 .
  Im 
@@ -2539,11 +2563,7 @@ Benutzerverzeichnisses
 \family sans
 Aussehen\SpecialChar \menuseparator
 Benutzerschnittstelle\SpecialChar \menuseparator
-
-\bar under
-G
-\bar default
-UI-Datei:
+GUI-Datei:
 \family default
  mitteilen, welche Datei Sie benutzen wollen.
 \end_layout
@@ -2656,7 +2676,10 @@ E
 \family default
 i
 \family sans
-nstellungen\SpecialChar \ldots{}
+n\SpecialChar \-
+stel\SpecialChar \-
+lun\SpecialChar \-
+gen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Ausgaben\SpecialChar \menuseparator
 Einfacher Text
@@ -2781,7 +2804,7 @@ Farben
 <features>
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="40mm">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -3537,7 +3560,7 @@ Normalerweise werden Sie den passenden Befehl in eine der Startdateien einfügen
 \family default
  oder 
 \family typewriter
-~/.bashfrc
+~/.bashrc
 \family default
 , damit die übersetzte Schnittstelle automatisch benutzt wird.
  
@@ -3588,10 +3611,7 @@ new-file-from-template
 \family default
  ist der LyX-interne Befehl, der das Menü 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
+Datei\SpecialChar \menuseparator
 Neu
 \begin_inset space ~
 \end_inset
@@ -3600,11 +3620,7 @@ von
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-V
-\bar default
-orlage
+Vorlage
 \family default
 \SpecialChar \ldots{}
  auswählt.
@@ -3645,10 +3661,7 @@ Strg+D+V
 \family default
  (für 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
+Datei\SpecialChar \menuseparator
 Neu
 \begin_inset space ~
 \end_inset
@@ -3657,11 +3670,7 @@ von
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-V
-\bar default
-orlage
+Vorlage
 \family default
 \SpecialChar \ldots{}
 ).
@@ -3671,7 +3680,8 @@ LyXDir/bind/
 \series bold
 xx
 \series default
-_menus.bind
+_me\SpecialChar \-
+nus.bind
 \family default
  (
 \family typewriter
@@ -3875,16 +3885,17 @@ Wir empfehlen, für diese Aufgabe Emacs zu benutzen, da die Distribution
 scgen.pl
 \family default
 , das sich im Quellverzeichnis in 
-\begin_inset Flex URL
-status collapsed
+\family typewriter
 
-\begin_layout Plain Layout
-
-LYX-SOURCE-DIR/development/tools/
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "LYX-SOURCE- DIR/development/tools/"
+type "file:"
 
 \end_inset
 
+
+\family default
  befindet.
  Vielleicht hilft es Ihnen bei der Bestimmung der Tastenkürzel.
  Beachten Sie, dass XForms (zumindest die Version 0.86) nur 7-Bit-Zeichen
@@ -3911,7 +3922,8 @@ LYX-SOURCE-DIR/po/lyx.pot
 
  mit dem Befehl 
 \family typewriter
-make update-gmo
+make up\SpecialChar \-
+date-gmo
 \family default
  die Datei 
 \family typewriter
@@ -4119,15 +4131,8 @@ Wenn Sie dann mit der eigentlichen Übersetzungsarbeit beginnen, sind hier
 \begin_layout Itemize
 Machen Sie im Dokumentationsteam mit! Informationen dazu gibt es in 
 \family sans
-\bar under
-H
-\bar default
-ilfe\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-inführung
+Hilfe\SpecialChar \menuseparator
+Einführung
 \family default
 .
  Dies ist übrigens das erste Dokument, das Sie übersetzen sollten.
@@ -5729,7 +5734,11 @@ texmf.cnf
 \family default
  installiert, es bietet sich also 
 \family typewriter
-/usr/local/texmf
+/usr/local/
+\begin_inset Newline linebreak
+\end_inset
+
+texmf
 \family default
  an.
  Im Normalfall müssen Sie nur zwei Dinge verändern:
@@ -6056,7 +6065,7 @@ Neu
 \begin_inset space \space{}
 \end_inset
 
-kinfigurieren
+konfigurieren
 \family default
 ).
  Starten Sie LyX neu und legen Sie ein neues Dokument an.
@@ -6183,7 +6192,8 @@ cp LyXDir/tex/revtex.cls ~/tex/myclass.cls
 (oder wo immer Sie Ihre lokalen TeX-Dateien speichern).
  Editieren Sie nun 
 \family typewriter
-myclass.cls
+my\SpecialChar \-
+class.cls
 \family default
  und ersetzen Sie jedes vorhandene 
 \emph on
@@ -6624,7 +6634,10 @@ Der Standardseitenstil.
  Kann ebenfalls im Popup-Menü 
 \family sans
 Dokument\SpecialChar \menuseparator
-Einstellungen
+Ein\SpecialChar \-
+stel\SpecialChar \-
+lun\SpecialChar \-
+gen
 \family default
 \SpecialChar \ldots{}
  geändert werden.
@@ -7197,7 +7210,8 @@ Command
 \emph on
 
 \backslash
-LatexBefehl
+LatexBe\SpecialChar \-
+fehl
 \emph default
  {\SpecialChar \ldots{}
 }
@@ -7283,13 +7297,15 @@ Item_Environment
 \family default
 , nur dass
 \family typewriter
- LabelWidth\SpecialChar \-
+ Label\SpecialChar \-
+Width\SpecialChar \-
 String
 \family default
  als Argument an die Umgebung übergeben wird.
 
 \family typewriter
- LabelWidthString
+ Label\SpecialChar \-
+WidthString
 \family default
  kann im Menü 
 \family sans
@@ -7510,7 +7526,18 @@ First_Dynamic
 Dynamic
 \family default
 , aber nur die erste Zeile wird dynamisch gesetzt, die anderen statisch.
- Dies wird für die LaTeX-Umgebung 
+ Dies wird für die LaTeX
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Umgebung 
 \family sans
 description
 \family default
@@ -7682,10 +7709,7 @@ durch
 .
  Mögliche Einstellungen sind entweder 
 \family sans
-\bar under
-E
-\bar default
-inrückung
+Einrückung
 \family default
  oder 
 \family sans
@@ -7910,15 +7934,24 @@ LabelType
 \emph on
 No_Label
 \emph default
-, Manual, Static, Top_Environment, Centered_Top_En\SpecialChar \-
+, Manual, Static, Top_Environment, Centered_Top_
+\begin_inset Newline linebreak
+\end_inset
+
+En\SpecialChar \-
 vi\SpecialChar \-
 ron\SpecialChar \-
-ment, Sensitive,
- Counter_Chapter, Counter_Section, Counter_Subsec\SpecialChar \-
-tion, Counter_Subsubsection,
- Counter_Paragraph, Counter_Subparagraph, Coun\SpecialChar \-
-ter_EnumI, Counter_EnumII,
- Counter_EnumIII, Counter_EnumIV
+ment, Sensitive, Counter_Chapter, Counter_Section, Coun\SpecialChar \-
+ter_Subsec\SpecialChar \-
+tion,
+ Counter_Subsubsection, Counter_Paragraph, Coun\SpecialChar \-
+ter_Subparagraph, Coun\SpecialChar \-
+ter_EnumI,
+ Counter_EnumII, Counter_Enum
+\begin_inset Newline linebreak
+\end_inset
+
+III, Counter_EnumIV
 \family default
 ]
 \end_layout
@@ -7976,8 +8009,12 @@ Top
 Environment
 \family default
 \series default
- sind Spezialfälle von 
+ sind Spezialfälle von
 \family typewriter
+
+\begin_inset Newline linebreak
+\end_inset
+
 Static
 \family default
 .
@@ -8072,7 +8109,10 @@ float=0
 Der vertikale Abstand zwischen der Marke und dem folgenden Text.
  Wird nur für Marken benutzt, die über dem folgenden Text stehen (
 \family typewriter
-Top_Environment
+Top_En\SpecialChar \-
+vi\SpecialChar \-
+ron\SpecialChar \-
+ment
 \family default
 , 
 \family typewriter
@@ -8818,7 +8858,12 @@ Pfade
 \SpecialChar \menuseparator
 
 \family sans
-Dokumentvorlagen:
+Do\SpecialChar \-
+ku\SpecialChar \-
+ment\SpecialChar \-
+vor\SpecialChar \-
+la\SpecialChar \-
+gen:
 \family default
  auf das private Verzeichnis setzen.
 \end_layout
@@ -8827,7 +8872,11 @@ Dokumentvorlagen:
 Beachten Sie.
  dass es eine Vorlage mit besonderer Bedeutung gibt: 
 \family typewriter
-defaults.lyx
+defaults.
+\begin_inset Newline linebreak
+\end_inset
+
+lyx
 \family default
 .
  Diese Vorlage wird jedesmal geladen, wenn Sie ein neues Dokument mit 
@@ -8893,7 +8942,8 @@ Anmerkung des Übersetzers: Der erste Satz dieser Einleitung
 \begin_inset Quotes gld
 \end_inset
 
-Lesen Sie die Printing-HOWTO
+Lesen Sie die Print\SpecialChar \-
+ing-HOWTO
 \begin_inset Quotes grd
 \end_inset
 
@@ -12759,26 +12809,17 @@ Externes Material
 \begin_layout Standard
 Eine Externe Einfügung wird vom Menü 
 \family sans
-\bar under
-E
-\bar default
-infügen
+Einfügen
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-D
-\bar default
-atei
+Datei
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-E
-\bar default
-xternes
+Externes
 \family default
 
 \begin_inset space \space{}
@@ -13020,7 +13061,8 @@ Trotzdem sollten Sie unbedingt selbst erstellte Vorlagen an das LyX-Team
 \begin_layout Standard
 Die Vorlagendefinitionen befinden sich in der Datei 
 \family typewriter
-LyXDir/external_templates
+LyXDir/external_tem\SpecialChar \-
+plates
 \family default
 .
  Sie können sich eine Kopie davon in Ihr privates Benutzerverzeichnis 
@@ -13152,7 +13194,8 @@ LyXDir/scripts
 \family default
  finden Sie das Skript 
 \family typewriter
-general_command_wrapper.py
+general_command_wrap\SpecialChar \-
+per.py
 \family default
 , das auf sicherem Weg die Verwendung der Ein/Ausgabeumleitung erlaubt.
  Es ist auch ein gutes Beispiel, wenn Sie selbst eigene, sichere Skripte
