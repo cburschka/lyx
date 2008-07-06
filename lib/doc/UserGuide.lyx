@@ -41,6 +41,9 @@
 % define a short command for \textvisiblespace
 \newcommand{\spce}{\textvisiblespace}
 
+% macro for italic page numbers in the index
+\newcommand{\IndexDef}[1]{\textit{#1}}
+
 % redefine the greyed out note
 \renewenvironment{lyxgreyedout}
  {\textcolor{blue}\bgroup}{\egroup}
@@ -26105,16 +26108,16 @@ This is an italic dummy entry
 \begin_layout Standard
 
 \series bold
-old-style page number:|oldstylenums
+italic page number:|textit
 \end_layout
 
 \begin_layout Standard
-to get the page number in an old-style layout.
+to get the page number in italic.
 \begin_inset Index
 status open
 
 \begin_layout Plain Layout
-Dummy entries ! old-style page number:|oldstylenums
+Dummy entries ! italic page number:|textit
 \end_layout
 
 \end_inset
@@ -26158,10 +26161,132 @@ reference "sub:LaTeX-Syntax"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ Formatting single index entries only works when you use the program 
+\family sans
+makeindex 
+\family default
+to generate the index, see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Index-Program"
+
+\end_inset
+
+.
+ If you use 
+\family sans
+xindy
+\family default
+, however, this won't work for anything else than bold or italic text.
+ This is because xindy requires to define semantic elements before they
+ can be used, see 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "p. 678 ff."
+key "latexcompanion"
+
+\end_inset
+
+ for details.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In general, we encourage you to not format page numbers directly as shown
+ above.
+ Instead of this, you should define a macro in the preamble and use that.
+ Consider why you want some page numbers to be bold.
+ Maybe you want all page references italic that refer to a definition of
+ the indexed term, so that users can easily find definitions.
+ If so, put the following in preamble
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+IndexDef}[1]{
+\backslash
+textit{#1}}
+\end_layout
+
+\begin_layout Standard
+and write
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+my entry|IndexDef
+\end_layout
+
+\begin_layout Standard
+into the index entry.
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Dummy entries ! my entry|IndexDef
+\end_layout
+
+\end_inset
+
+ The advantage is that, if you change your mind later or if your publisher
+ request that definitions must not be italic but bold, you just need to
+ change the macro in the preamble, not every single index entry.
+\end_layout
+
+\begin_layout Standard
 You can also change the layout for the whole index.
- E.g.
- we marked the index list box of this document as bold to get a bold font
+ E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+we marked the index list box of this document as bold to get a bold font
  for all index entries.
+ For more advanced task you have to set up a so-called 
+\emph on
+Index Style File
+\emph default
+, see the 
+\family sans
+makeindex
+\family default
+ or 
+\family sans
+xindy
+\family default
+ documentation for details, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "makeindex,xindy"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -26217,10 +26342,26 @@ key "makeindex,xindy"
 \end_inset
 
 .
+ You can also specify there another program to generate the index.
 \end_layout
 
 \begin_layout Standard
-You can also specify there another program to generate the index.
+
+\family sans
+makeindex
+\family default
+ is very old, not further developed and has many pitfalls.
+ Most notably, it has been defined with nothing more than the English language
+ in mind.
+ So it fails at sorting correctly for anything else than an monolingual
+ English text.
+ We have shown above how to fix this sorting.
+ However, if you are writing in another language and using Linux, consider
+ to use 
+\family sans
+xindy
+\family default
+.
 \end_layout
 
 \begin_layout Section
@@ -26361,8 +26502,7 @@ status open
 \series bold
 Note:
 \series default
- Like for the index entry dialog, you have to enter valid LaTeX-code for
- all fields of the nomenclature dialog.
+ You have to enter valid LaTeX-code for all fields of the nomenclature dialog.
 \end_layout
 
 \end_inset

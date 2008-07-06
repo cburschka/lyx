@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 337
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass scrbook
@@ -40,6 +40,9 @@
 
 % define a short command for \textvisiblespace
 \newcommand{\spce}{\textvisiblespace}
+
+% macro for italic page numbers in the index
+\newcommand{\IndexDef}[1]{\textit{#1}}
 
 % redefine the greyed out note
 \renewenvironment{lyxgreyedout}
@@ -27515,8 +27518,8 @@ status open
 \series bold
 Note:
 \series default
- Comme pour les entrées d'index, on doit taper du code LaTeX valide dans
- tous les champs de la fenêtre de dialogue de glossaire.
+ On doit taper du code LaTeX valide dans tous les champs de la fenêtre de
+ dialogue de glossaire.
 \end_layout
 
 \end_inset
