@@ -46,8 +46,8 @@ private:
 	///
 	void dispatchParams() {}
 
-	/// goto this error in the parent bv
-	void goTo(int item);
+	/// goto this error in the parent bv. Returns success.
+	bool goTo(int item);
 	///
 	ErrorList const & errorList() const;
 private:

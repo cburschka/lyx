@@ -60,8 +60,8 @@ void GuiErrorList::showEvent(QShowEvent * e)
 void GuiErrorList::select()
 {
 	int const item = errorsLW->row(errorsLW->currentItem());
-	goTo(item);
-	descriptionTB->setPlainText(toqstr(errorList()[item].description));
+	if (goTo(item))
+        descriptionTB->setPlainText(toqstr(errorList()[item].description));
 }
 
 
@@ -94,19 +94,21 @@ bool GuiErrorList::initialiseParams(string const & error_type)
 }
 
 
-void GuiErrorList::goTo(int item)
+bool GuiErrorList::goTo(int item)
 {
 	ErrorItem const & err = errorList()[item];
 
 	if (err.par_id == -1)
-		return;
+		return false;
 
 	Buffer & buf = buffer();
 	DocIterator dit = buf.getParFromID(err.par_id);
 
 	if (dit == doc_iterator_end(buf.inset())) {
+        // FIXME: Happens when loading a read-only doc with 
+        // unknown layout. Should this be the case?
 		LYXERR0("par id " << err.par_id << " not found");
-		return;
+		return false;
 	}
 
 	// Now make the selection.
@@ -119,6 +121,7 @@ void GuiErrorList::goTo(int item)
 	bufferview()->putSelectionAt(dit, range, false);
 	// FIXME: If we used an LFUN, we would not need this line:
 	bufferview()->processUpdateFlags(Update::Force | Update::FitCursor);
+    return true;
 }
 
 
