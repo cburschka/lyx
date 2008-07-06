@@ -121,7 +121,7 @@ bool GuiErrorList::goTo(int item)
 	bufferview()->putSelectionAt(dit, range, false);
 	// FIXME: If we used an LFUN, we would not need this line:
 	bufferview()->processUpdateFlags(Update::Force | Update::FitCursor);
-    return true;
+	return true;
 }
 
 
