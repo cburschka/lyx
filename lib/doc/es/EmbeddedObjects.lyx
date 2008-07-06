@@ -105,8 +105,8 @@
 \newcolumntype{W}{!{\color{green}\vline}}
 % ---
 
-% the pages of the TOC is numbered roman
-% and a pdf-bookmark for the TOC is added
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
 \let\myTOC\tableofcontents
 \renewcommand\tableofcontents{%
   \frontmatter
@@ -121,6 +121,9 @@
 
 % number algorithm floats within chapters
 \numberwithin{algorithm}{chapter}
+% en español
+\floatname{algorithm}{Algoritmo}
+
 
 % redefine the greyed out note
 \renewenvironment{lyxgreyedout}
@@ -766,7 +769,7 @@ Para información general sobre flotantes, echa una ojeada a la sección
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:IntroducciónFlotantes"
+reference "sec:Introducción-Flotantes"
 
 \end_inset
 
@@ -787,16 +790,8 @@ Insertar\SpecialChar \menuseparator
 Flotante\SpecialChar \menuseparator
 Figura
 \family default
- insertan un flotante con la etiqueta 
-\begin_inset Quotes eld
-\end_inset
-
-Figura #:
-\begin_inset Quotes erd
-\end_inset
-
- (# es el número actual).
- La imagen se puede insertar sobre el título, como en la figura
+ insertan un flotante con la etiqueta «Figura #:» (# es el número actual).
+ La imagen se puede insertar sobre la leyenda, como en la figura
 \begin_inset space ~
 \end_inset
 
@@ -807,7 +802,7 @@ reference "fig:kill-plat"
 
 \end_inset
 
-, o bajo el título, como en la figura
+, o bajo ella, como en la figura
 \begin_inset space ~
 \end_inset
 
@@ -819,7 +814,7 @@ reference "fig:escher"
 \end_inset
 
 .
- Más información sobre ubicación de títulos en la sección
+ Más información sobre ubicación de leyendas en la sección
 \begin_inset space ~
 \end_inset
 
@@ -978,24 +973,8 @@ cruzada
 
 .
  Es importante emplear referencias a flotantes, mejor que alusiones vagas
- como 
-\begin_inset Quotes eld
-\end_inset
-
-la figura de arriba
-\begin_inset Quotes erd
-\end_inset
-
-, porque como LaTeX recolocará los flotantes en el documento final, podría
- no quedar 
-\begin_inset Quotes eld
-\end_inset
-
-arriba
-\begin_inset Quotes erd
-\end_inset
-
- precisamente.
+ como «la figura de arriba», porque como LaTeX recolocará los flotantes
+ en el documento final, podría no quedar «arriba» precisamente.
 \begin_inset Newline newline
 \end_inset
 
@@ -1015,27 +994,9 @@ reference "sec:Referencias-a-Flotantes"
 
 \begin_layout Standard
 Normalmente sólo se inserta una imagen en un flotante, pero es posible que
- en alguna ocasión queramos poner dos imágenes cada una con su subtítulo.
- Esto es posible mediante la solapa 
-\family sans
-Opciones
-\begin_inset space ~
-\end_inset
-
-extra
-\family default
- del diálogo gráficos.
- Elige la opción 
-\family sans
-Subfigura
-\family default
- e introduce el subtítulo en la casilla 
-\family sans
-Descripción
-\family default
-.
- Ten en cuenta que sólo el título principal  del flotante se añade a la
- Lista de Figuras.
+ en alguna ocasión queramos poner dos imágenes cada una con su leyenda.
+ Esto se puede hacer insertando imágenes flotantes dentro de un flotante
+ existente.
  La figura
 \begin_inset space ~
 \end_inset
@@ -1047,8 +1008,31 @@ reference "fig:Dos-imágenes-distorsionadas"
 
 \end_inset
 
- es un ejemplo de figura flotante con dos imágenes una junto a otra.
+ es un ejemplo de figura flotante con dos imágenes adosadas.
  También se pueden poner una sobre otra.
+ Las subfiguras son
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Estructura-indefinible"
+
+\end_inset
+
+ y
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Platypus"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1071,6 +1055,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Estructura-indefinible"
+
+\end_inset
+
 Estructura indefinible
 \end_layout
 
@@ -1105,7 +1095,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Platypus"
 
+\end_inset
+
+Platypus
 \end_layout
 
 \end_inset
@@ -1247,23 +1243,8 @@ bits
 (Bitmap) formadas por mapas de puntos (píxeles), generalmente comprimidos.
  Por tanto no son totalmente escalables y se ven pixeladas a valores altos
  de zoom.
- Formatos de imágenes en bitmap bien conocidos son 
-\begin_inset Quotes eld
-\end_inset
-
-Graphics Interchange Format
-\begin_inset Quotes erd
-\end_inset
-
- (GIF, extensión 
-\begin_inset Quotes eld
-\end_inset
-
-.gif
-\begin_inset Quotes erd
-\end_inset
-
-)
+ Formatos de imágenes en bitmap bien conocidos son «Graphics Interchange
+ Format» (GIF, extensión «.gif»)
 \begin_inset Index
 status collapsed
 
@@ -1295,23 +1276,7 @@ status collapsed
 
 \end_inset
 
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Portable Network Graphics
-\begin_inset Quotes erd
-\end_inset
-
- (PNG, extensión 
-\begin_inset Quotes eld
-\end_inset
-
-.png
-\begin_inset Quotes erd
-\end_inset
-
-)
+, «Portable Network Graphics» (PNG, extensión «.png»)
 \begin_inset Index
 status collapsed
 
@@ -1343,31 +1308,7 @@ status collapsed
 
 \end_inset
 
-, y 
-\begin_inset Quotes eld
-\end_inset
-
-Joint Photographic Experts Group
-\begin_inset Quotes erd
-\end_inset
-
- (JPG, extensión 
-\begin_inset Quotes eld
-\end_inset
-
-.jpg
-\begin_inset Quotes erd
-\end_inset
-
- o 
-\begin_inset Quotes eld
-\end_inset
-
-.jpeg
-\begin_inset Quotes erd
-\end_inset
-
-)
+, y «Joint Photographic Experts Group» (JPG, extensión «.jpg» o «.jpeg»)
 \begin_inset Index
 status collapsed
 
@@ -1416,23 +1357,8 @@ vectoriales se generan mediante una descripción de una serie de trazos (vectore
 \begin_inset Newline newline
 \end_inset
 
-Formatos de imagen escalables pueden ser 
-\begin_inset Quotes eld
-\end_inset
-
-Scalable Vector Graphics
-\begin_inset Quotes erd
-\end_inset
-
- (SVG, extensión 
-\begin_inset Quotes eld
-\end_inset
-
-.svg
-\begin_inset Quotes erd
-\end_inset
-
-)
+Formatos de imagen escalables pueden ser «Scalable Vector Graphics» (SVG,
+ extensión «.svg»)
 \begin_inset Index
 status collapsed
 
@@ -1464,23 +1390,7 @@ status collapsed
 
 \end_inset
 
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Encapsulated PostScript
-\begin_inset Quotes erd
-\end_inset
-
- (EPS, extensión 
-\begin_inset Quotes eld
-\end_inset
-
-.eps
-\begin_inset Quotes erd
-\end_inset
-
-)
+, «Encapsulated PostScript» (EPS, extensión «.eps»)
 \begin_inset Index
 status collapsed
 
@@ -1512,23 +1422,7 @@ status collapsed
 
 \end_inset
 
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Portable Document Format
-\begin_inset Quotes erd
-\end_inset
-
- (PDF, extensión 
-\begin_inset Quotes eld
-\end_inset
-
-.pdf
-\begin_inset Quotes erd
-\end_inset
-
-)
+, «Portable Document Format» (PDF, extensión «.pdf»)
 \begin_inset Index
 status collapsed
 
@@ -1560,23 +1454,7 @@ status collapsed
 
 \end_inset
 
-, y 
-\begin_inset Quotes eld
-\end_inset
-
-Windows Metafile
-\begin_inset Quotes erd
-\end_inset
-
- (WMF, extensión 
-\begin_inset Quotes eld
-\end_inset
-
-.wmf
-\begin_inset Quotes erd
-\end_inset
-
-)
+, y «Windows Metafile» (WMF, extensión «.wmf»)
 \begin_inset Index
 status collapsed
 
@@ -1609,18 +1487,10 @@ status collapsed
 \end_inset
 
 .
- Escribimos 
-\begin_inset Quotes eld
-\end_inset
-
-pueden ser
-\begin_inset Quotes erd
-\end_inset
-
-, porque se puede convertir cualquier imagen bitmap a PDF o EPS y el resultado
- será todavía una imagen bitmap.
+ Escribimos «pueden ser» porque se puede convertir cualquier imagen bitmap
+ a PDF o EPS y el resultado será todavía una imagen bitmap.
  En estos casos sólo se añade una cabecera con las propiedades de la imagen
- a la imagen original
+ a la imagen original.
 \begin_inset Foot
 status collapsed
 
@@ -1630,7 +1500,6 @@ En el caso de PDF, además se comprime la imagen original.
 
 \end_inset
 
-.
  Por ejemplo, los archivos PDF generados por 
 \family sans
 Adobe Photoshop
@@ -1639,8 +1508,8 @@ Adobe Photoshop
 \end_layout
 
 \begin_layout Standard
-Normalmente no es posible convertir una imagen bitmap a escalable, sólo
- viceversa.
+Normalmente no es posible convertir una imagen bitmap a escalable pero sí
+ al contrario.
  Sólo los formatos de imagen PDF y EPS pueden empotrarse directamente en
  archivos de salida PDF y PostScript, respectivamente.
  Las imágenes SVG y WMF son recalculadas a bitmaps cuando se genera el archivo
@@ -1687,7 +1556,7 @@ Tablas ! Introducción
 \end_layout
 
 \begin_layout Standard
-Puede insertarse una tabla mediante el botón
+Puede insertarse una tabla mediante el botón 
 \begin_inset Graphics
 	filename ../../images/tabular-insert.png
 	scale 85
@@ -1708,7 +1577,7 @@ Tabla
 \begin_inset Newline newline
 \end_inset
 
-Por defecto, la tabla tiene líneas que enmarcan cada celda y la primera
+Por omisión, la tabla tiene líneas que enmarcan cada celda y la primera
  fila aparece separada por una línea doble: la línea inferior de la primera
  fila y la línea superior de la segunda fila.
  Ejemplo de tabla:
@@ -2031,7 +1900,7 @@ Nota:
 \end_inset
 
 También es posible introducir argumentos LaTeX necesarios para formatos
- especiales, ver sección
+ especiales, véanse las secciones
 \begin_inset space ~
 \end_inset
 
@@ -2042,7 +1911,11 @@ reference "sub:Cálculos-en-Multicolumnas"
 
 \end_inset
 
- y 
+ y
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Tablas-Coloreadas"
@@ -2395,7 +2268,7 @@ Para una explicación general sobre flotantes, echa un vistazo a la sección
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:IntroducciónFlotantes"
+reference "sec:Introducción-Flotantes"
 
 \end_inset
 
@@ -2644,22 +2517,18 @@ Tabla
 \end_layout
 
 \begin_layout Standard
-El flotante se muestra como un cuadro desplegable con la etiqueta 
-\begin_inset Quotes eld
-\end_inset
-
-Tabla
+El flotante se muestra como un cuadro desplegable con la etiqueta «Tabla
 \begin_inset space ~
 \end_inset
 
-#:
-\begin_inset Quotes erd
-\end_inset
-
- (# es el número actual).
+#:» (# es el número actual).
  El texto que sigue a dicha etiqueta es la leyenda de la tabla.
  Para insertar una tabla en el flotante se sitúa el cursor al final del
- texto del encabezado y se pulsa Intro.
+ texto del encabezado y se pulsa 
+\family sans
+Retorno
+\family default
+.
  La leyenda se imprime encima de la tabla.
 \end_layout
 
@@ -2713,9 +2582,9 @@ LaTeX-paquetes ! caption
 
 \end_inset
 
-
+:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Para más información ve a la sección
@@ -2734,7 +2603,7 @@ reference "sec:Colocación-de-leyendas"
 
 \end_inset
 
-:
+
 \end_layout
 
 \begin_layout Standard
@@ -5215,7 +5084,7 @@ Tablas largas ! Alineación
 \end_layout
 
 \begin_layout Standard
-Las tablas largas se centran por defecto.
+Las tablas largas se centran por omisión.
  Al contrario de la alineación de filas y columnas, la alineación de una
  tabla no se puede cambiar por ahora en el diálogo de tablas.
  Para cambiar la alineación de tablas largas debes cambiar el valor de las
@@ -5231,8 +5100,8 @@ LTleft
 \backslash
 LTright 
 \series default
-insertando la línea siguiente como ERT antes de la correspondiente tabla
- larga:
+insertando la línea siguiente en código TeX antes de la correspondiente
+ tabla larga:
 \end_layout
 
 \begin_layout Standard
@@ -5632,11 +5501,7 @@ título breve
 \end_layout
 
 \begin_layout Enumerate
-Inserta un 
-\begin_inset Quotes eld
-\end_inset
-
-
+Inserta un «
 \series bold
 
 \backslash
@@ -5644,32 +5509,20 @@ Inserta un
 \backslash
 %
 \series default
-
-\begin_inset Quotes erd
-\end_inset
-
- como ERT detrás de la leyenda.
+» en código TeX detrás de la leyenda.
 \end_layout
 
 \begin_layout Standard
 En la Lista de tablas aparecerá el título breve en vez del título completo.
- El 
+ El «
 \series bold
-
-\begin_inset Quotes eld
-\end_inset
-
 
 \backslash
 
 \backslash
 %
 \series default
-
-\begin_inset Quotes erd
-\end_inset
-
- detrás de la leyenda elimina las líneas verticales entre las siguientes
+» detrás de la leyenda elimina las líneas verticales entre las siguientes
  celdas de la fila.
  Ahora, la primera fila de la tabla es sólo una fila postiza para la leyenda,
  la tabla real comienza en la segunda fila.
@@ -6024,7 +5877,7 @@ e., la tabla
 
 2.1 en la lista de tablas debido a que hay dos tablas largas sin leyenda.
  Para evitarlo, añade detrás de cada tabla larga sin leyenda este comando
- en ERT:
+ en código TeX:
 \end_layout
 
 \begin_layout Plain Layout
@@ -6401,19 +6254,11 @@ asd
 
 \begin_layout Standard
 Para referenciar una tabla larga, inserta una etiqueta en la leyenda.
- Observa que tienes que añadir el prefijo 
-\begin_inset Quotes eld
-\end_inset
-
-
+ Observa que tienes que añadir el prefijo «
 \emph on
 tab
 \emph default
-:
-\begin_inset Quotes erd
-\end_inset
-
- manualmente en el campo de etiqueta.
+:» manualmente en el campo de etiqueta.
  
 \end_layout
 
@@ -6452,7 +6297,7 @@ LaTeX-paquetes ! caption
 \begin_inset space ~
 \end_inset
 
- 
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Formato-de-leyendas"
@@ -6484,7 +6329,7 @@ La anchura máxima se define por la longitud
 LTcapwidth
 \series default
 .
- Por defecto es 4
+ Por omisión es 4
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -6493,8 +6338,8 @@ in (4
 \end_inset
 
 pulgadas).
- Para cambiarla añade el siguiente comando al preámbulo o como ERT en el
- documento antes de la tabla larga a la que afecta
+ Para cambiarla añade el siguiente comando al preámbulo o en código TeX
+ en el documento antes de la tabla larga a la que afecta
 \end_layout
 
 \begin_layout Standard
@@ -7237,7 +7082,7 @@ LaTeX-paquetes ! caption
 \end_inset
 
 , como en este documento, se usa la anchura de toda la página para el pie
- si utilizas el valor por defecto de 4
+ si utilizas el valor por omisión de 4
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -9281,15 +9126,8 @@ Tablas largas ! Cálculos
 
 \begin_layout Standard
 LaTeX calcula la altura de las páginas con tabla y sus saltos de página
- utilizando los denominados 
-\begin_inset Quotes eld
-\end_inset
-
-trozos
-\begin_inset Quotes erd
-\end_inset
-
-, que son partes de la tabla presentes en la memoria de LaTeX.
+ utilizando los denominados «trozos», que son partes de la tabla presentes
+ en la memoria de LaTeX.
  El valor predeterminado está establecido a sólo 20 filas.
  Si estás usando tablas largas con muchas páginas, la generación del documento
  puede hacerse muy lenta.
@@ -9328,7 +9166,7 @@ Podría haber problemas si un flotante aparece en la misma página donde comienz
 \backslash
 clearpage
 \series default
- como ERT antes de la tabla.
+ en código TeX antes de la tabla.
 \end_layout
 
 \begin_layout Subsection
@@ -9346,13 +9184,9 @@ Tablas largas ! Saltos de página forzados
 \end_layout
 
 \begin_layout Standard
-Por defecto, las tablas sólo se cortan entre filas.
+Por omisión, las tablas sólo se cortan entre filas.
  Si tienes una celda con líneas múltiples y necesitas un salto de página
- dentro de la celda, inserta el comando de nueva línea 
-\begin_inset Quotes eld
-\end_inset
-
-
+ dentro de la celda, inserta el comando de nueva línea «
 \series bold
 
 \backslash
@@ -9360,16 +9194,8 @@ Por defecto, las tablas sólo se cortan entre filas.
 \backslash
 
 \series default
-
-\begin_inset Quotes erd
-\end_inset
-
- como ERT en el punto en que quieras cortar.
- Antes del comando 
-\begin_inset Quotes eld
-\end_inset
-
-
+» en código TeX en el punto en que quieras cortar.
+ Antes del comando «
 \series bold
 
 \backslash
@@ -9377,29 +9203,17 @@ Por defecto, las tablas sólo se cortan entre filas.
 \backslash
 
 \series default
-
-\begin_inset Quotes erd
-\end_inset
-
- debes insertar en ERT tantos caracteres 
-\begin_inset Quotes eld
-\end_inset
-
-
+» debes insertar en código TeX tantos caracteres «
 \series bold
 &
 \series default
-
-\begin_inset Quotes erd
-\end_inset
-
- como columnas siguientes de la tabla.
+» como columnas siguientes de la tabla.
  
 \series bold
 &
 \series default
  es el carácter para separar celdas.
- Escribe en ERT después de cada 
+ Escribe en código TeX después de cada 
 \series bold
 &
 \series default
@@ -9434,20 +9248,12 @@ reference "tab:Saltos de Página Forzados"
 
  la celda que debería cortarse está en la segunda columna seguida de otra
  columna.
- Por eso el siguiente comando se inserta en la celda como ERT detrás de
- 
-\begin_inset Quotes eld
-\end_inset
-
-
+ Por eso el siguiente comando se inserta en la celda en código TeX detrás
+ de «
 \emph on
 Castelchiodato,
 \emph default
-
-\begin_inset Quotes erd
-\end_inset
-
-:
+»:
 \end_layout
 
 \begin_layout Standard
@@ -9465,15 +9271,7 @@ Castelchiodato,
 \end_layout
 
 \begin_layout Standard
-El 
-\begin_inset Quotes eld
-\end_inset
-
-111
-\begin_inset Quotes erd
-\end_inset
-
- en la tercera columna de la fila se ha borrado.
+El «111» en la tercera columna de la fila se ha borrado.
  Si la fila más baja de la tabla larga no tiene, por alguna razón, línea
  superior pero quisieras una línea horizontal donde se corta la celda, usa
  este comando alternativo:
@@ -9510,7 +9308,7 @@ parfillskip}{0pt}
 \end_layout
 
 \begin_layout Standard
-debe insertarse como ERT al principio de la celda.
+debe insertarse en código TeX al principio de la celda.
  Esto garantiza que la parte de la celda que será mostrada en la nueva página
  aparecerá con toda su anchura.
 \end_layout
@@ -10848,7 +10646,7 @@ Tablas ! Saltos de línea
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -11008,15 +10806,11 @@ cm y escoge centro en alineación vertical y horizontal.
 \end_inset
 
 cm, sólo aparece una línea.
- Para poner dos añadimos
-\lang english
-, a justified line break (shortcut 
+ Para poner dos añadimos un salto de línea justificado, (atajo 
 \family sans
-Ctrl-Shift-Return
+Ctrl-Mayúsculas-Retorno
 \family default
-) was added.
-
-\lang spanish
+).
  Si el texto es más ancho que la celda será automáticamente dividido en
  líneas.
 \end_layout
@@ -11025,19 +10819,11 @@ Ctrl-Shift-Return
 Si hay una palabra larga en una celda con anchura fija, LaTeX no puede cortarla
  con guión si es la primera entrada.
  Por eso hay que insertar algo para que dicha palabra no sea la primera
- entrada: añade el comando
-\end_layout
+ entrada: añade un espacio horizontal de 0
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-hspace{0pt}
-\end_layout
-
-\begin_layout Standard
-en ERT antes de la palabra.
+pt delante de la palabra.
  Como el espacio es 0 la salida no cambia.
  La tabla
 \begin_inset space ~
@@ -11196,16 +10982,8 @@ i
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace{0pt}
-\end_layout
-
+\begin_inset space \hspace{}
+\length 0pt
 \end_inset
 
 celdaconpalabramuylarga
@@ -11301,6 +11079,10 @@ i
 
 \end_layout
 
+\end_inset
+
+
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -12115,7 +11897,7 @@ LaTeX-paquetes ! multirow
 
 \begin_layout Standard
 A diferencia de multicolumnas, LyX aún no soporta multifilas por lo que
- hace falta un poco de ERT.
+ hace falta un poco de código TeX.
  Hay que cargar el paquete de LaTeX 
 \series bold
 multirow
@@ -12323,19 +12105,19 @@ multirow{2}{2.5cm}{
 \end_layout
 
 \begin_layout Standard
-como ERT.
+en código TeX.
  Según los parámetros del comando la multifila se expande a dos filas y
  tiene de ancho 2.5
 \begin_inset space \thinspace{}
 \end_inset
 
 cm.
- El contenido de la celda multifila sigue fuera del cuadro ERT y el comando
- finaliza con llave derecha 
+ El contenido de la celda multifila sigue fuera del cuadro de código TeX
+ y el comando finaliza con llave derecha 
 \series bold
 }
 \series default
- en otro cuadro ERT tras el texto.
+ en otro cuadro de código TeX tras el texto.
 \end_layout
 
 \begin_layout Standard
@@ -12345,7 +12127,7 @@ cm.
 \backslash
 multirow
 \series default
- alinea su contenido a la izquierda por defecto.
+ alinea su contenido a la izquierda por omisión.
  Para cambiarlo renombra el comando 
 \series bold
 
@@ -12368,10 +12150,10 @@ centering}
 \end_layout
 
 \begin_layout Standard
-en ERT en el preámbulo del documento.
+en el preámbulo del documento.
  Entonces se centran todas las entradas de celdas multifila en el documento.
  Si sólo queremos centrar en algunas tablas, se puede renombrar el comando
- en ERT justo antes de la tabla en lugar de en el preámbulo.
+ en código TeX justo antes de la tabla en lugar de en el preámbulo.
  Si el texto debe estar alineado a la derecha, reemplaza 
 \series bold
 
@@ -13013,15 +12795,15 @@ Por el momento, LyX no soporta las opciones de
 \backslash
 cmidrule
 \series default
-, así que para usarlas hay que emplear ERT.
+, así que para usarlas hay que emplear código TeX.
  Las líneas 
 \series bold
 
 \backslash
 cmidrule
 \series default
- se pueden insertar manualmente con el comando en ERT como primera entrada
- de la primera celda de una fila.
+ se pueden insertar manualmente con el comando en código TeX como primera
+ entrada de la primera celda de una fila.
  En la salida se dibujará la línea sobre dicha fila.
 \end_layout
 
@@ -13072,7 +12854,7 @@ l{2pt}
 \end_inset
 
 pt por su izquierda.
- Si no se especifica el tamaño  las líneas se recortan por defecto en 0.5
+ Si no se especifica el tamaño  las líneas se recortan por omisión en 0.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -13166,7 +12948,7 @@ reference "tab:Tabla-formal-especial"
 \end_inset
 
 .
- Esto se consigue con el comando ERT
+ Esto se consigue con el comando en código TeX
 \end_layout
 
 \begin_layout Standard
@@ -13765,11 +13547,11 @@ reference "sec:Minipáginas"
 
 \end_inset
 
- que tiene una anchura de 15
+ que tiene una anchura del 15
 \begin_inset space \thinspace{}
 \end_inset
 
-col%:
+% de columna:
 \end_layout
 
 \begin_layout Itemize
@@ -14420,15 +14202,7 @@ status collapsed
 Como ves, los contenidos de la primera y última filas no se alinean correctament
 e con la línea de texto donde está la tabla.
  Para conseguir esta alineación, el cuadro (minipágina) debe ponerse en
- un cuadro elevado (
-\begin_inset Quotes eld
-\end_inset
-
-raisebox
-\begin_inset Quotes erd
-\end_inset
-
-)
+ un cuadro elevado («raisebox»
 \begin_inset Foot
 status collapsed
 
@@ -14455,9 +14229,9 @@ reference "sub:Alineación-Vertical"
 
 \end_inset
 
-.
+).
  En el ejemplo anterior, la segunda tabla del primer ítem está alineada
- usando el comando en ERT
+ usando el comando en código TeX
 \end_layout
 
 \begin_layout Standard
@@ -14476,7 +14250,7 @@ antes del cuadro.
 \series bold
 }
 \series default
- también como ERT.
+ también en código TeX.
  Para la segunda tabla en el tercer ítem se usa el comando 
 \end_layout
 
@@ -14934,19 +14708,11 @@ Por ejemplo, puedes definir el color
 \series bold
  
 \series default
-
-\begin_inset Quotes eld
-\end_inset
-
-
+«
 \emph on
 verde oscuro
 \emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- en el preámbulo con
+» en el preámbulo con
 \end_layout
 
 \begin_layout Standard
@@ -14958,19 +14724,11 @@ definecolor{verdeoscuro}{cmyk}{0.5, 0, 1, 0.5}
 \end_layout
 
 \begin_layout Standard
-y el color 
-\begin_inset Quotes eld
-\end_inset
-
-
+y el color «
 \emph on
 gris claro
 \emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- con
+» con
 \end_layout
 
 \begin_layout Standard
@@ -15013,7 +14771,7 @@ cellcolor{nombre del color}
 \end_layout
 
 \begin_layout Standard
-Ambos comandos se insertan al principio de una celda como ERT.
+Ambos comandos se insertan al principio de una celda en código TeX.
 \end_layout
 
 \begin_layout Standard
@@ -15031,8 +14789,8 @@ del
 Texto
 \family default
 .
- Si una celda contiene ERT marca sólo los caracteres, si no el ERT con color
- puede ocasionar errores de LaTeX.
+ Si una celda contiene código TeX marca sólo los caracteres, si no el código
+ TeX en color puede ocasionar errores de LaTeX.
 \end_layout
 
 \begin_layout Standard
@@ -15073,7 +14831,7 @@ centering}c
 
 \begin_layout Standard
 como argumento LaTeX para esta columna.
- La primera fila debe ser azul, por tanto inserta el comando ERT
+ La primera fila debe ser azul, por tanto inserta el comando en código TeX
 \end_layout
 
 \begin_layout Standard
@@ -15088,7 +14846,7 @@ rowcolow{cyan}
 en la primera celda de esta fila.
  Observa que esto sobreescribe el color de la columna para la primera celda.
  La última celda de la última fila se colorea magenta insertando el comando
- ERT
+ en código TeX
 \end_layout
 
 \begin_layout Standard
@@ -15630,7 +15388,7 @@ reference "tab:Tabla-con-horizontales-coloreadas"
 
 \end_inset
 
-, inserta estos comandos en ERT antes de la tabla o del flotante:
+, inserta estos comandos en código TeX antes de la tabla o del flotante:
 \end_layout
 
 \begin_layout Standard
@@ -15847,7 +15605,7 @@ sd
 
 \begin_layout Standard
 Para volver al color de línea negro predeterminado inserta este comando
- en ERT detrás de la tabla o el flotante:
+ en código TeX detrás de la tabla o el flotante:
 \end_layout
 
 \begin_layout Standard
@@ -16149,7 +15907,7 @@ reference "sec:Tablas-Formales"
 \begin_inset space \thinspace{}
 \end_inset
 
-em por defecto.
+em por omisión.
  Si la tabla es de estilo normal el espacio adicional destruirá las líneas
  verticales, como se ve en la tabla siguiente:
 \begin_inset VSpace medskip
@@ -16249,7 +16007,7 @@ la
 \end_inset
 
 fila añade espacio bajo los caracteres de la fila.
- Si la tabla es formal LyX inserta por defecto 0.5
+ Si la tabla es formal LyX inserta por omisión 0.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -16275,7 +16033,7 @@ filas añade espacio entre la fila actual y la siguiente.
 \begin_inset space \thinspace{}
 \end_inset
 
-em por defecto.
+em por omisión.
  En tablas normales, el espacio adicional destruirá las líneas verticales
  de la tabla, como se ve en la siguiente:
 \begin_inset VSpace medskip
@@ -17039,7 +16797,7 @@ name "tab:Alineaciones-con-el"
 
 
 \begin_inset OptArg
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Tabla alineada con 
@@ -17512,15 +17270,7 @@ hspace{0pt}}c}
 \end_layout
 
 \begin_layout Standard
-La 
-\begin_inset Quotes eld
-\end_inset
-
-c
-\begin_inset Quotes erd
-\end_inset
-
- al final crea una columna con anchura flexible cuyo texto está centrado
+La «c» al final crea una columna con anchura flexible cuyo texto está centrado
  horizontalmente.
  Ahora puedes introducir
 \end_layout
@@ -17806,7 +17556,7 @@ arrayrulewidth}{1.5pt}
 \end_layout
 
 \begin_layout Standard
-en ERT antes de la tabla o flotante.
+en código TeX antes de la tabla o flotante.
  Este cambio es válido para todas las siguientes tablas.
  Para volver al valor predeterminado, define 
 \series bold
@@ -17818,7 +17568,7 @@ arrayrulewidth
 \begin_inset space \thinspace{}
 \end_inset
 
-pt en ERT detrás de la tabla o flotante.
+pt en código TeX detrás de la tabla o flotante.
 \end_layout
 
 \begin_layout Standard
@@ -18005,7 +17755,7 @@ reference "tab:Tabla-con-horizontales"
 
 \end_inset
 
-, inserta estos comandos en ERT antes de la tabla o flotante:
+, inserta estos comandos en código TeX antes de la tabla o flotante:
 \end_layout
 
 \begin_layout Standard
@@ -18051,8 +17801,8 @@ arrayrulewidth 0.4pt}}
 \end_layout
 
 \begin_layout Standard
-Para volver al grosor predeterminado, inserta este comando en ERT detrás
- de la tabla o flotante:
+Para volver al grosor predeterminado, inserta este comando en código TeX
+ detrás de la tabla o flotante:
 \end_layout
 
 \begin_layout Standard
@@ -18821,7 +18571,7 @@ x
 \end_layout
 
 \begin_layout Standard
-En principio LyX no soporta líneas de trazos, hay que usar ERT.
+En principio LyX no soporta líneas de trazos, hay que usar código TeX.
  Hay que cargar antes en el preámbulo del documento el paquete LaTeX 
 \series bold
 arydshln
@@ -18848,16 +18598,12 @@ usepackage{arydshln}
 \end_layout
 
 \begin_layout Standard
-Para hacer una línea vertical a trazos, introduce dos puntos 
-\begin_inset Quotes eld
-\end_inset
-
+Para hacer una línea vertical a trazos, introduce dos puntos «
+\series bold
 :
-\begin_inset Quotes erd
-\end_inset
-
- junto con el carácter para alineación horizontal como argumento LaTeX en
- el diálogo de celda de tabla.
+\series default
+» junto con el carácter para alineación horizontal como argumento LaTeX
+ en el diálogo de celda de tabla.
 \end_layout
 
 \begin_layout Standard
@@ -18873,7 +18619,7 @@ hdashline
 \end_layout
 
 \begin_layout Standard
-en ERT como primer elemento de la primera celda en la fila.
+en código TeX como primer elemento de la primera celda en la fila.
 \end_layout
 
 \begin_layout Standard
@@ -18885,13 +18631,11 @@ Para líneas de trazos en multicolumna usa el comando
 \series bold
 
 \backslash
-cdashline{número de líneas
-\series default
-}
+cdashline{número de líneas}
 \end_layout
 
 \begin_layout Standard
-en ERT como primer elemento de la primera celda en la fila.
+en código TeX como primer elemento de la primera celda en la fila.
  Si por ejemplo tienes una multicolumna extendida sobre las columnas 2 a
  4 y quieres una línea de trazos por encima, añade el comando
 \end_layout
@@ -18927,26 +18671,19 @@ reference "tab:Tabla-con-trazos"
 
 \end_inset
 
- se ha hecho usando 
-\begin_inset Quotes eld
-\end_inset
-
-
+ se ha hecho usando «
 \series bold
 :c
 \series default
-
-\begin_inset Quotes erd
-\end_inset
-
- como argumento LaTeX de la tercera columna.
- El comando ERT 
+» como argumento LaTeX de la tercera columna.
+ El comando en código TeX 
 \series bold
 
 \backslash
 hdashline
 \series default
- se ha insertado en la primera celda de la tercera fila y el comando ERT
+ se ha insertado en la primera celda de la tercera fila y el comando en
+ código TeX
 \begin_inset Newline newline
 \end_inset
 
@@ -19086,7 +18823,7 @@ Flotantes
 Introducción
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:IntroducciónFlotantes"
+name "sec:Introducción-Flotantes"
 
 \end_inset
 
@@ -19104,17 +18841,9 @@ Flotantes ! Introducción
 \end_layout
 
 \begin_layout Standard
-Un flotante es un bloque de texto asociado con alguna especie de etiqueta
- que no tiene posición fija.
- Puede 
-\begin_inset Quotes eld
-\end_inset
-
-flotar
-\begin_inset Quotes erd
-\end_inset
-
- adelante o atrás una o dos páginas, donde encaje mejor.
+Un flotante es un bloque de texto asociado con algún tipo de etiqueta que
+ no tiene posición fija.
+ Puede «flotar» adelante o atrás una o dos páginas, donde encaje mejor.
  Las 
 \family sans
 Notas
@@ -19144,10 +18873,10 @@ margen
 \end_layout
 
 \begin_layout Standard
-Los flotantes hacen posible composiciones de alta calidad.
+Los flotantes permiten composiciones de alta calidad.
  Imágenes y tablas se pueden distribuir equitativamente en las páginas para
  impedir espacios en blanco y páginas sin texto.
- Como el flotante destruye a menudo el contexto entre texto e imagen/tabla,
+ Como el flotante destruye a menudo el contexto entre texto e imagen o tabla,
  cada flotante puede ser referenciado en el texto.
  Por lo tanto los flotantes están numerados.
  Las referencias se describen en la sección
@@ -19171,16 +18900,16 @@ Insertar\SpecialChar \menuseparator
 Flotante
 \family default
 .
- Esto inserta un entorno 
+ Esto inserta una 
 \family sans
 Leyenda,
 \family default
- un recuadro con una etiqueta.
- La etiqueta será traducida automáticamente al lenguaje del documento.
- Tras la etiqueta puede insertar el texto de la leyenda.
+ un cuadro con una etiqueta.
+ La etiqueta se traducirá automáticamente al idioma del documento.
+ Tras la etiqueta puedes insertar el texto de la leyenda.
  La imagen o tabla se inserta encima o debajo de la leyenda en un párrafo
  separado dentro del flotante.
- Más sobre colocación de leyendas se describe en la sección
+ La colocación de leyendas se describe en la sección
 \begin_inset space ~
 \end_inset
 
@@ -19192,8 +18921,8 @@ reference "sec:Colocación-de-leyendas"
 \end_inset
 
 .
- Para mantener legible el documento LyX, puedes abrir y cerrar el cuadro
- del flotante haciendo clic-izquierdo sobre él.
+ Para mantener legible el documento LyX, puedes abrir y cerrar el flotante
+ con clic-izquierdo sobre él.
  Un cuadro cerrado se muestra así: 
 \begin_inset Graphics
 	filename clipart/flotanteQt4.png
@@ -19337,7 +19066,7 @@ Algoritmo
 \family sans
 Código-LyX
 \family default
-, descrito en 
+, descrito en la 
 \emph on
 Guía del usuario
 \emph default
@@ -19364,10 +19093,7 @@ mm al final para tener la línea inferior exactamente bajo la última línea
 
 \begin_layout Standard
 La etiqueta de flotante no se traduce automáticamente al lenguaje del documento.
- Si tu documento no es en inglés, tienes que hacerlo manualmente añadiendo
- la siguiente línea al preámbulo del documento
-\series bold
-:
+ Hay que hacerlo manualmente añadiendo al preámbulo del documento la línea:
 \end_layout
 
 \begin_layout Standard
@@ -19379,100 +19105,55 @@ floatname{algorithm}{nombre}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-where
+donde 
 \family sans
-\lang spanish
- nombre
+nombre
 \family default
- es la palabra 
-\begin_inset Quotes eld
-\end_inset
-
-
+ es la palabra «
 \emph on
 algorithm
 \emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- en el lenguaje deseado.
+» en el lenguaje deseado.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To insert the list of algorithms you can in this case not use the menu 
+En estos casos, para insertar la lista de algoritmos no puedes usar el menú
+ 
 \family sans
-Insert\SpecialChar \menuseparator
-List
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-TOC\SpecialChar \menuseparator
-List of Algorithms
+Insertar\SpecialChar \menuseparator
+Lista/IG\SpecialChar \menuseparator
+Lista de algoritmos
 \family default
- when your document is an English one.
- For non-English documents, use this command in TeX-Code instead:
+ como en documentos en inglés.
+ Para documentos en otro idioma usa en su lugar el comando en código TeX:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-listof{algorithm}{your
-\begin_inset space ~
-\end_inset
-
-name}
+listof{algorithm}{nombre}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-where 
+donde 
 \family sans
-your
-\begin_inset space ~
-\end_inset
-
-name
+nombre
 \family default
- is the word 
-\begin_inset Quotes eld
-\end_inset
-
-
+ es «
 \emph on
-List of Algorithm
+List of algorithms
 \emph default
-s
-\begin_inset Quotes erd
-\end_inset
-
- in your language.
+» en tu idioma.
 \end_layout
 
 \begin_layout Standard
-Los algoritmos flotantes no se numeran por defecto según el esquema 
-\begin_inset Quotes eld
-\end_inset
-
-capítulo.algoritmo
-\begin_inset Quotes erd
-\end_inset
-
- como es el caso para tablas e imágenes flotantes en muchas clases de documento.
- Para numerar algoritmos flotantes según ese mismo esquema, añade este comando
- en el preámbulo del documento:
+Los algoritmos flotantes no se numeran por omisión según el esquema habitual
+ para tablas e imágenes flotantes en muchas clases de documento, «capítulo.algori
+tmo».
+ Para numerarlos con ese esquema, añade este comando en el preámbulo del
+ documento:
 \end_layout
 
 \begin_layout Standard
@@ -19516,12 +19197,12 @@ Ecuaciones
 \end_layout
 
 \begin_layout Subsection
-Flotantes ajustados a texto
+Flotantes envueltos en texto
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Flotantes ! Ajustados a texto
+Flotantes ! Envueltos en texto
 \end_layout
 
 \end_inset
@@ -19529,7 +19210,7 @@ Flotantes ! Ajustados a texto
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:floatflt-flotante-ajustado"
+name "sub:Flotante-envuelto"
 
 \end_inset
 
@@ -19540,14 +19221,14 @@ name "sub:floatflt-flotante-ajustado"
 \begin_inset Wrap figure
 lines 0
 placement l
-overhang 0col%
+overhang 0in
 width "40col%"
 status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	width 40col%
+	width 35col%
 	rotateOrigin center
 
 \end_inset
@@ -19561,11 +19242,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Esto-es-una"
+name "fig:Figura-envuelta"
 
 \end_inset
 
-Esto es una figura adosada, y esto la genial cabecera que la describe.
+Figura envuelta en el texto con su genial leyenda.
 \begin_inset VSpace medskip
 \end_inset
 
@@ -19579,9 +19260,9 @@ Esto es una figura adosada, y esto la genial cabecera que la describe.
 
 \end_inset
 
-Este tipo de flotante se usa cuando quieres adosar una figura al texto,
- de manera que ocupe sólo una parte del ancho de columna.
- Puede insertarse usando el menú 
+Este tipo de flotante se usa para adosar una figura o una tabla al texto,
+ de modo que ocupe sólo una parte del ancho de columna.
+ Se inserta con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Flotante\SpecialChar \menuseparator
@@ -19589,15 +19270,11 @@ Flotante
 \begin_inset space ~
 \end_inset
 
-de
+adosado
 \begin_inset space ~
 \end_inset
 
-ajuste
-\begin_inset space ~
-\end_inset
-
-de
+al
 \begin_inset space ~
 \end_inset
 
@@ -19644,8 +19321,8 @@ Configuración de LaTeX
 
 \end_inset
 
- La anchura y posición del flotante se ajusta con clic-derecha sobre el
- cuadro del flotante.
+ La anchura y posición del flotante se ajusta en el diálogo de configuración
+ que se muestra con clic-derecha sobre el cuadro del flotante.
  La figura
 \begin_inset space ~
 \end_inset
@@ -19653,15 +19330,16 @@ Configuración de LaTeX
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Esto-es-una"
+reference "fig:Figura-envuelta"
 
 \end_inset
 
- es un ejemplo de flotante ajustado al texto con una anchura del 40
+ es un ejemplo de flotante envuelto en texto con una anchura de columna
+ del 35
 \begin_inset space \thinspace{}
 \end_inset
 
-col%.
+%.
 \begin_inset Foot
 status collapsed
 
@@ -19704,7 +19382,7 @@ e.
 \end_inset
 
 si una figura está demasiado cerca de la parte inferior de la página se
- pueden perder cosas en el proceso de salida, el flotante puede no aparecer
+ pueden perder cosas en el proceso de salida: el flotante puede no aparecer
  o situarse junto a otro texto.
 \end_layout
 
@@ -19718,24 +19396,24 @@ En general:
 \end_layout
 
 \begin_layout Itemize
-Los flotantes adosados no deberían situarse en párrafos que van sobre un
+Los flotantes envueltos no deberían situarse en párrafos que van sobre un
  salto de página.
  Esto implica que lo mejor es insertarlos en el sitio exacto cuando el documento
  esté casi listo y puedas prever los saltos de página.
 \end_layout
 
 \begin_layout Itemize
-Los flotantes adosados deberían situarse, bien en un párrafo propio antes
+Los flotantes envueltos deberían situarse, bien en un párrafo propio antes
  del párrafo al que deben ajustarse, o bien dentro de un párrafo.
 \end_layout
 
 \begin_layout Itemize
-Los flotantes adosados a párrafos consecutivos pueden dar problemas, así
+Los flotantes envueltos en párrafos consecutivos pueden dar problemas, así
  que asegura que hay un párrafo de texto entre ellos.
 \end_layout
 
 \begin_layout Itemize
-Los flotantes adosados no están permitidos en cabeceras de sección o tablas.
+Los flotantes envueltos no están permitidos en cabeceras de sección o tablas.
 \end_layout
 
 \begin_layout Section
@@ -19761,23 +19439,8 @@ Flotantes ! Numeración
 
 \begin_layout Standard
 En general, los flotantes se numeran independientemente de las secciones
- en las que se encuentran o según el esquema 
-\begin_inset Quotes eld
-\end_inset
-
-capítulo.número
-\begin_inset Quotes erd
-\end_inset
-
- o 
-\begin_inset Quotes eld
-\end_inset
-
-sección.número
-\begin_inset Quotes erd
-\end_inset
-
-, dependiendo de la clase de documento utilizada.
+ en las que se encuentran o según el esquema «capítulo.número» o «sección.número»,
+ dependiendo de la clase de documento utilizada.
 \end_layout
 
 \begin_layout Standard
@@ -19822,15 +19485,8 @@ roman
 \end_layout
 
 \begin_layout Standard
-Para cambiar el esquema de numeración, por ejemplo a 
-\begin_inset Quotes eld
-\end_inset
-
-subsección.número
-\begin_inset Quotes erd
-\end_inset
-
-, usa este comando en el preámbulo:
+Para cambiar el esquema de numeración, por ejemplo a «subsección.número»,
+ usa este comando en el preámbulo:
 \end_layout
 
 \begin_layout Standard
@@ -19951,19 +19607,11 @@ e.
 \begin_inset space ~
 \end_inset
 
-para figuras el prefijo será 
-\begin_inset Quotes eld
-\end_inset
-
-
+para figuras el prefijo será «
 \family sans
 fig:
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
+».
 \end_layout
 
 \begin_layout Standard
@@ -20084,15 +19732,7 @@ reference "fig:Dos-imágenes-distorsionadas"
 \begin_layout Description
 (<referencia>): imprime el número flotante entre paréntesis, es el estilo
  habitual para referirse a fórmulas, especialmente si se omite el nombre
- 
-\begin_inset Quotes eld
-\end_inset
-
-Ecuación
-\begin_inset Quotes erd
-\end_inset
-
-: 
+ «Ecuación»: 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:Wgn"
@@ -20126,15 +19766,7 @@ página
 \begin_inset space ~
 \end_inset
 
-<página>: imprime el texto 
-\begin_inset Quotes eld
-\end_inset
-
-en la página
-\begin_inset Quotes erd
-\end_inset
-
- y el número de página: 
+<página>: imprime el texto «en la página» y el número de página: 
 \begin_inset CommandInset ref
 LatexCommand vpageref
 reference "fig:Dos-imágenes-distorsionadas"
@@ -20157,15 +19789,8 @@ página
 \begin_inset space ~
 \end_inset
 
-<página>: imprime el número flotante, el texto 
-\begin_inset Quotes eld
-\end_inset
-
-en la página
-\begin_inset Quotes erd
-\end_inset
-
- y el número de página: 
+<página>: imprime el número flotante, el texto «en la página» y el número
+ de página: 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "fig:Dos-imágenes-distorsionadas"
@@ -20222,19 +19847,11 @@ e.
 \begin_inset space ~
 \end_inset
 
-el texto 
-\begin_inset Quotes eld
-\end_inset
-
-
+el texto «
 \family sans
 en esta página
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
+».
 \end_layout
 
 \begin_layout Standard
@@ -20277,15 +19894,7 @@ e.
 \begin_inset space ~
 \end_inset
 
-escribir la palabra 
-\begin_inset Quotes eld
-\end_inset
-
-Figura
-\begin_inset Quotes erd
-\end_inset
-
- antes de cada cuadro de referencia.
+escribir la palabra «Figura» antes de cada cuadro de referencia.
  Para conseguirlo debes cargar el paquete LaTeX 
 \series bold
 hyperref
@@ -20911,15 +20520,8 @@ definitivamente
 \family default
 .
  Usa esta opción esporádicamente y sólo cuando el documento esté casi listo,
- porque el flotante ya no podrá 
-\begin_inset Quotes eld
-\end_inset
-
-flotar
-\begin_inset Quotes erd
-\end_inset
-
- y si haces cambios al documento se podría estropear el diseño de la página.
+ porque el flotante ya no podrá «flotar» y si haces cambios al documento
+ se podría estropear el diseño de la página.
 \end_layout
 
 \begin_layout Standard
@@ -21002,11 +20604,7 @@ LaTeX-paquetes ! endfloat
 .
  Pone todas las figuras y tablas flotantes al final del documento en secciones
  propias.
- En la posición original del flotante se inserta una indicación como 
-\begin_inset Quotes eld
-\end_inset
-
-
+ En la posición original del flotante se inserta una indicación como «
 \family sans
 [Figure
 \begin_inset space ~
@@ -21014,11 +20612,7 @@ LaTeX-paquetes ! endfloat
 
 3.2 about here.]
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
+».
  El paquete 
 \series bold
 endfloat
@@ -21090,38 +20684,14 @@ Nota:
 \series bold
 endfloat
 \series default
- cuando la leyenda contiene el carácter alemán 
-\begin_inset Quotes eld
-\end_inset
-
-ß
-\begin_inset Quotes erd
-\end_inset
-
-.
- Usa en ese caso el comando 
-\begin_inset Quotes eld
-\end_inset
-
-
+ cuando la leyenda contiene el carácter alemán «ß».
+ Usa en ese caso el comando «
 \series bold
 
 \backslash
 ss
 \series default
-
-\begin_inset Quotes erd
-\end_inset
-
- en ERT en vez de 
-\begin_inset Quotes eld
-\end_inset
-
-ß
-\begin_inset Quotes erd
-\end_inset
-
-.
+» en código TeX en vez de «ß».
 \end_layout
 
 \end_inset
@@ -21366,7 +20936,7 @@ reference "fig:Flotante-derecha"
 un
 \emph default
  solo flotante.
- En él se insertan dos cuadros tipo minipágina
+ En él se insertan dos cuadros tipo minipágina.
 \begin_inset Foot
 status open
 
@@ -21387,12 +20957,11 @@ reference "sec:Minipáginas"
 
 \end_inset
 
-.
- La anchura se establece en 45-50
+ La anchura de la columna se establece en 45-50
 \begin_inset space \thinspace{}
 \end_inset
 
-% de la columna y la alineación en 
+% y la alineación en 
 \family sans
 Inferior
 \family default
@@ -21588,32 +21157,16 @@ e.
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset Quotes eld
-\end_inset
-
-
+«
 \family sans
 Figura #
 \family default
-:
-\begin_inset Quotes erd
-\end_inset
-
- seguida por el texto.
- 
-\begin_inset Quotes eld
-\end_inset
-
-#
-\begin_inset Quotes erd
-\end_inset
-
- es el número real de referencia.
- Por defecto la etiqueta y el número usan la misma fuente que el texto de
+:» seguida por el texto.
+ «#» es el número real de referencia.
+ Por omisión la etiqueta y el número usan la misma fuente que el texto de
  la leyenda y el signo dos puntos sigue al número para separar la etiqueta
  del texto.
- El formato de la leyenda no es apropiado para todos los formatos de documento.
+ El entorno leyenda no es apropiado para todos los tipos de documento.
  
 \end_layout
 
@@ -21789,7 +21342,7 @@ caption
  acude a su documentación 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "caption,caption-de"
+key "caption"
 
 \end_inset
 
@@ -21797,23 +21350,7 @@ key "caption,caption-de"
 \end_layout
 
 \begin_layout Standard
-Para cambiar el nombre de la etiqueta de 
-\begin_inset Quotes eld
-\end_inset
-
-Figura
-\begin_inset Quotes erd
-\end_inset
-
- a 
-\begin_inset Quotes eld
-\end_inset
-
-Imagen
-\begin_inset Quotes erd
-\end_inset
-
-, p.
+Para cambiar el nombre de la etiqueta de «Figura» a «Imagen», p.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -21839,23 +21376,7 @@ donde
 \backslash
 thefigure
 \series default
- inserta el número de figura y 
-\series bold
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\series default
-~
-\series bold
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\series default
- genera un espacio protegido.
+ inserta el número de figura y «~» genera un espacio protegido.
 
 \series bold
  
@@ -22007,7 +21528,7 @@ name "fig:Esto-es-una-fig"
 
 
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Figura con leyenda muy larga
@@ -22221,7 +21742,7 @@ report
 \series bold
 caption
 \series default
- en el preámbulo del documento
+ en el preámbulo del documento:
 \begin_inset Foot
 status collapsed
 
@@ -22246,7 +21767,7 @@ caption
 
 \end_inset
 
-:
+
 \end_layout
 
 \begin_layout Standard
@@ -22685,7 +22206,7 @@ FigBesBeg
 \end_layout
 
 \begin_layout Standard
-en ERT antes del flotante.
+en código TeX antes del flotante.
  Detrás del flotante inserta
 \end_layout
 
@@ -22698,7 +22219,7 @@ FigBesEnd
 \end_layout
 
 \begin_layout Standard
-en ERT para volver a la definición original de flotantes.
+en código TeX para volver a la definición original de flotantes.
 \end_layout
 
 \begin_layout Standard
@@ -22760,7 +22281,7 @@ sidecaptionvpos{tipo de flotante}{colocación}
 \end_layout
 
 \begin_layout Standard
-en el preámbulo o en ERT antes del flotante.
+en el preámbulo o en código TeX antes del flotante.
  El tipo de flotante es 
 \family sans
 figure
@@ -22769,67 +22290,19 @@ figure
 \family sans
 table
 \family default
-, la colocación puede ser 
-\begin_inset Quotes eld
-\end_inset
-
-
+, la colocación puede ser «
 \family sans
 t
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
- por 
-\begin_inset Quotes eld
-\end_inset
-
-top
-\begin_inset Quotes erd
-\end_inset
-
- (arriba), 
-\begin_inset Quotes eld
-\end_inset
-
-
+» por «top» (arriba), «
 \family sans
 c
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
- por 
-\begin_inset Quotes eld
-\end_inset
-
-center
-\begin_inset Quotes erd
-\end_inset
-
- (centro), o 
-\begin_inset Quotes eld
-\end_inset
-
-
+» por «center» (centro), o «
 \family sans
 b
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
- por 
-\begin_inset Quotes eld
-\end_inset
-
-bottom
-\begin_inset Quotes erd
-\end_inset
-
- (abajo).
+» por «bottom» (abajo).
  Para tener, por ejemplo, el título de figuras flotantes verticalmente centrado,
  usa el comando
 \end_layout
@@ -23407,7 +22880,7 @@ Notas
 \end_layout
 
 \begin_layout Section
-Notas en LyX 
+Notas en LyX
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Notas-en-LyX"
@@ -23695,7 +23168,7 @@ Este texto en un cuadro de nota se verá enmarcado en la salida.
 A 
 \family default
 \series default
-diferencia de los cuadros enmarcados
+diferencia de los cuadros enmarcados,
 \begin_inset Foot
 status collapsed
 
@@ -23716,7 +23189,7 @@ reference "sec:Cuadros-Enmarcados"
 
 \end_inset
 
-, este marco emplea siempre la anchura total de página y la nota va en su
+ este marco emplea siempre la anchura total de página y la nota va en su
  propio párrafo.
 \end_layout
 
@@ -23766,7 +23239,7 @@ Este texto en un cuadro de nota se verá en la salida sobre fondo en rojo.
 \series default
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Los cuadros coloreados se describen en la sección
@@ -23945,7 +23418,7 @@ FrameRule
 
 
 \series default
-pt por defecto; se puede cambiar con 
+pt por omisión; se puede cambiar con 
 \series bold
 
 \backslash
@@ -23956,7 +23429,7 @@ FrameSep
 \family sans
 Enmarcada
 \family default
- está hecho con los comandos ERT
+ está hecho con los comandos en código TeX
 \series bold
  
 \end_layout
@@ -24043,7 +23516,7 @@ Sombreadas
 \begin_inset space \thinspace{}
 \end_inset
 
-pt por defecto; se puede cambiar con 
+pt por omisión; se puede cambiar con 
 \series bold
 
 \backslash
@@ -24079,12 +23552,12 @@ reference "sec:Tablas-Coloreadas"
 
 \end_inset
 
-
+.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Observa que 
+
 \series bold
 
 \backslash
@@ -24118,7 +23591,7 @@ reference "sec:Cuadros-Coloreados"
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -24126,7 +23599,7 @@ Por ejemplo, la siguiente nota
 \family sans
 Sombreada
 \family default
- se ha hecho con los comandos ERT
+ se ha hecho con los comandos en código TeX
 \end_layout
 
 \begin_layout Standard
@@ -24378,7 +23851,7 @@ thefootnote}
 \end_layout
 
 \begin_layout Standard
-En la salida, el pie se muestra como número exponente en el lugar del texto
+En la salida, el pie se muestra como número voladito en el lugar del texto
  donde se coloca el recuadro.
  El texto se coloca al final de la página actual.
  Los números de las notas son calculados por LaTeX, y son consecutivos.
@@ -24387,7 +23860,7 @@ En la salida, el pie se muestra como número exponente en el lugar del texto
 
 \begin_layout Standard
 Las notas al pie pueden referenciarse como flotantes: inserta una etiqueta
- en la nota y pon una referencia cruzada a esta etiqueta en el texto como
+ en la nota y pon una referencia cruzada a esa etiqueta en el texto como
  se describe en la sección
 \begin_inset space ~
 \end_inset
@@ -24436,19 +23909,11 @@ e.
 \begin_inset space ~
 \end_inset
 
-
+«
 \family sans
-
-\begin_inset Quotes eld
-\end_inset
-
 pie:
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
- manualmente cuando quieras usar el estilo 
+» manualmente cuando quieras usar el estilo 
 \family sans
 Referencia
 \begin_inset space ~
@@ -24508,7 +23973,7 @@ Para crear sólo una marca para una nota al pie, puedes usar el comando
 \backslash
 footnotemark[número]
 \series default
- en ERT.
+ en código TeX.
  Esto se emplea si tienes la misma anotación varias veces en el texto pero
  no quieres imprimir el pie cada vez.
 \begin_inset Newline newline
@@ -24517,7 +23982,7 @@ footnotemark[número]
 Como no sabes el número del pie que se repite mientras escribes el texto,
  tienes que guardarlo.
  Para el siguiente ejemplo de marca de pie, se han insertado estos comandos
- en ERT detrás de Nota
+ en código TeX detrás de Nota
 \begin_inset space ~
 \end_inset
 
@@ -24809,15 +24274,8 @@ arabic{footnote}}
 \end_layout
 
 \begin_layout Standard
-Si quieres numerar notas al pie en el esquema 
-\begin_inset Quotes eld
-\end_inset
-
-capítulo.nota
-\begin_inset Quotes erd
-\end_inset
-
-, añade el siguiente comando al preámbulo del documento:
+Si quieres numerar notas al pie en el esquema «capítulo.nota», añade el siguiente
+ comando al preámbulo del documento:
 \end_layout
 
 \begin_layout Standard
@@ -24946,17 +24404,9 @@ siempre imprime el número de nota al pie en números arábigos; las redefinicio
 \end_layout
 
 \begin_layout Standard
-Así, para obtener por ejemplo el esquema 
-\begin_inset Quotes eld
-\end_inset
-
-capítulo.
+Así, para obtener por ejemplo el esquema «capítulo.
 \backslash
-Roman{footnote}
-\begin_inset Quotes erd
-\end_inset
-
-, usa este comando en vez de 
+Roman{footnote}», usa este comando en vez de 
 \series bold
 
 \backslash
@@ -25234,7 +24684,7 @@ En alguna literatura científica es habitual reunir las notas para imprimirlas
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Notas-al-final----notas-al-pie"
+reference "fig:Notas-al-pie-al-final"
 
 \end_inset
 
@@ -25297,7 +24747,7 @@ theendnotes
 \end_layout
 
 \begin_layout Standard
-en ERT al final de una sección o capítulo.
+en código TeX al final de una sección o capítulo.
 \end_layout
 
 \begin_layout Standard
@@ -25346,7 +24796,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Notas-al-final----notas-al-pie"
+name "fig:Notas-al-pie-al-final"
 
 \end_inset
 
@@ -25370,23 +24820,8 @@ Notas al final: notas impresas en párrafo separado al final de la sección
 
 La cabecera de párrafo para las notas finales no se traduce automáticamente
  al lenguaje del documento, hay que hacerlo manualmente.
-  El siguiente comando de preámbulo traduce el nombre en inglés 
-\begin_inset Quotes eld
-\end_inset
-
-Notes
-\begin_inset Quotes erd
-\end_inset
-
- al español 
-\begin_inset Quotes eld
-\end_inset
-
-Notas
-\begin_inset Quotes erd
-\end_inset
-
-:
+  El siguiente comando de preámbulo traduce el nombre en inglés «Notes»
+ al español «Notas»:
 \end_layout
 
 \begin_layout Standard
@@ -25564,15 +24999,8 @@ margen
  Aparece un cuadro gris con la etiqueta 
 \family roman
 \series medium
-
-\begin_inset Quotes eld
-\end_inset
-
-margen
-\begin_inset Quotes erd
-\end_inset
-
- en color rojo y un marco en el que puedes escribir el texto de la nota.
+«margen» en color rojo y un marco en el que puedes escribir el texto de
+ la nota.
 \end_layout
 
 \begin_layout Standard
@@ -25619,7 +25047,7 @@ reversemarginpar
 \end_layout
 
 \begin_layout Standard
-en ERT antes de la nota.
+en código TeX antes de la nota.
  La nueva colocación es válida para todas las siguientes notas al margen.
  
 \begin_inset ERT
@@ -25671,7 +25099,7 @@ Nota:
 \end_layout
 
 \begin_layout Standard
-Para volver a la ubicación predeterminada inserta en ERT el comando
+Para volver a la ubicación predeterminada inserta en código TeX el comando
 \begin_inset ERT
 status collapsed
 
@@ -25752,19 +25180,11 @@ reference "sub:Líneas-Múltiples-en"
 
 , una palabra larga no puede partirse con guión cuando es la primera en
  la nota al margen.
- Para evitar esto, inserta el comando
-\end_layout
+ Para evitar esto, inserta un espacio horizontal de 0
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-hspace{0pt}
-\end_layout
-
-\begin_layout Standard
-en ERT antes de la palabra
+pt antes de la palabra
 \family roman
 \series medium
 .
@@ -25873,8 +25293,8 @@ LaTeX-paquetes ! marginnote
 
 .
  Poniendo estas dos líneas en el preámbulo, el comando usado por LyX para
- notas al margen es redefinido para usar el comando provisto por el paquete
- 
+ notas al margen es redefinido para usar el comando proporcionado por el
+ paquete 
 \series bold
 marginnote
 \series default
@@ -25904,22 +25324,22 @@ Esto se ha utilizado en el presente documento porque
 \series bold
 marginnote
 \series default
- tiene una característica adicional útil: Puedes imponer un offset vertical
- a la nota.
+ tiene una característica adicional útil: Puedes establecer un desplazamiento
+ vertical a la nota.
  A veces esto hace falta si hay demasiadas notas juntas o para mejorar el
  diseño de la página.
- El offset se determina en LyX como ERT directamente tras la nota al margen
- en el esquema
+ En LyX, el desplazamiento se escribe directamente tras la nota al margen,
+ en código TeX
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-[offset]
+[desplazamiento]
 \end_layout
 
 \begin_layout Standard
-donde offset es una longitud en una de las unidades de la tabla
+donde desplazamiento es una longitud en una de las unidades de la tabla
 \begin_inset space ~
 \end_inset
 
@@ -25940,7 +25360,7 @@ Por ejemplo la nota adjunta a esta línea de texto está desplazada 1.5
 \begin_inset space \thinspace{}
 \end_inset
 
-cm arriba con el comando ERT 
+cm arriba con el comando en código TeX 
 \begin_inset Quotes eld
 \end_inset
 
@@ -25973,7 +25393,7 @@ cm por encima de su posición original.
 \series default
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -26430,7 +25850,7 @@ Cuadros ! Introducción
 
 \begin_layout Standard
 Los cuadros se emplean para dar formato a bloques de texto.
- Se pueden usar para escribir documentos con varios lenguajes, ver sección
+ Se pueden usar para escribir documentos con varios lenguajes, véase sección
 \begin_inset space ~
 \end_inset
 
@@ -26441,7 +25861,7 @@ reference "sec:Minipáginas"
 
 \end_inset
 
-, enmarcar textos, ver sección
+, enmarcar textos, véase sección
 \begin_inset space ~
 \end_inset
 
@@ -26452,7 +25872,7 @@ reference "sec:Cuadros-Enmarcados"
 
 \end_inset
 
-, evitar la división de palabras, ver sección
+, evitar la división de palabras, véase sección
 \begin_inset space ~
 \end_inset
 
@@ -26463,7 +25883,7 @@ reference "sec:Evitar-la-Partición"
 
 \end_inset
 
-, alinear texto, ver sección
+, alinear texto, véase sección
 \begin_inset space ~
 \end_inset
 
@@ -26474,7 +25894,7 @@ reference "sub:Alineación-Vertical"
 
 \end_inset
 
-, o para poner color de fondo a un texto, ver sección
+, o para poner color de fondo a un texto, véase sección
 \begin_inset space ~
 \end_inset
 
@@ -26530,23 +25950,7 @@ interior
 \family default
  permite escoger los tipos 
 \family sans
-Parbox (
-\family default
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
 Párrafo
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\family sans
-)
 \family default
  y 
 \family sans
@@ -26570,7 +25974,7 @@ reference "sec:Minipáginas"
 
 ; el tipo 
 \family sans
-Parbox
+Párrafo
 \family default
  se describe en la sección
 \begin_inset space ~
@@ -26602,7 +26006,7 @@ Nota:
 \series default
  Los cuadros no deben ser el ítem en un entorno 
 \family sans
-Enumeración
+Enumeración*
 \family default
  o 
 \family sans
@@ -26710,7 +26114,7 @@ Ancho
 Alto
 \family default
 .
- Las unidades disponibles para la geometría se explican en la tabla
+ Las unidades disponibles para la geometría se describen en la tabla
 \begin_inset space ~
 \end_inset
 
@@ -26730,15 +26134,7 @@ Alto
 \end_layout
 
 \begin_layout Description
-Profundidad Este es el texto plano 
-\begin_inset Quotes eld
-\end_inset
-
-alto
-\begin_inset Quotes erd
-\end_inset
-
-.
+Profundidad Este es el texto plano «alto».
  Ignora la profundidad total cuando hay múltiples líneas de texto en el
  cuadro:
 \begin_inset Newline newline
@@ -27183,7 +26579,7 @@ width "15col%"
 special "none"
 height "1.25in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align left
@@ -27230,7 +26626,7 @@ width "90col%"
 special "none"
 height "1.25in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align left
@@ -27538,7 +26934,7 @@ fboxrule
 \end_inset
 
 pt.
- Puede cambiarse con el siguiente comando en ERT, p.
+ Puede cambiarse con el siguiente comando en código TeX, p.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -27646,7 +27042,7 @@ El espacio entre el marco y el contenido del cuadro es 3
 \begin_inset space \thinspace{}
 \end_inset
 
-pt por defecto para todos los estilos.
+pt por omisión para todos los estilos.
  Se puede cambiar mediante la longitud 
 \series bold
 
@@ -27804,7 +27200,7 @@ mínimo
 (ancho y alto del cuadro)
 \family default
 .
- Por defecto es 
+ Por omisión es 
 \series bold
 
 \backslash
@@ -28023,22 +27419,10 @@ A continuación hay dos ejemplos de minipáginas adosadas.
 \begin_inset space \thinspace{}
 \end_inset
 
-col% y separadas por un relleno horizontal, insertado vía el menú 
+% y separadas por un relleno horizontal, insertado vía el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Formato
-\begin_inset space ~
-\end_inset
-
-
-\family default
-es
-\family sans
-pecial
-\begin_inset space ~
-\end_inset
-
-\SpecialChar \menuseparator
+Formato\SpecialChar \menuseparator
 Relleno
 \begin_inset space ~
 \end_inset
@@ -28626,15 +28010,8 @@ He aquí un ejemplo:
 \end_layout
 
 \begin_layout Standard
-Esta línea es un ejemplo para mostrar cómo evitar la división de 
-\begin_inset Quotes eld
-\end_inset
-
-estalarguísimapalabra
-\begin_inset Quotes erd
-\end_inset
-
-.
+Esta línea es un ejemplo para mostrar cómo evitar la división de «estalarguísima
+palabra».
 \end_layout
 
 \begin_layout Standard
@@ -28650,20 +28027,12 @@ mbox{
 \end_layout
 
 \begin_layout Standard
-en ERT antes de la palabra.
- Tras ella inserta una llave de cierre 
-\begin_inset Quotes eld
-\end_inset
-
-
+en código TeX antes de la palabra.
+ Tras ella inserta una llave de cierre «
 \series bold
 }
 \series default
-
-\begin_inset Quotes erd
-\end_inset
-
- en ERT.
+» en código TeX.
 \end_layout
 
 \begin_layout Standard
@@ -28684,15 +28053,7 @@ mbox{
 
 \end_inset
 
-
-\begin_inset Quotes eld
-\end_inset
-
-estalarguísimapalabra
-\begin_inset Quotes erd
-\end_inset
-
-.
+«estalarguísimapalabra».
 \begin_inset ERT
 status collapsed
 
@@ -28707,29 +28068,17 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Como alternativa puedes poner el comando 
-\begin_inset Quotes eld
-\end_inset
-
-
+Como alternativa puedes poner el comando «
 \series bold
 
 \backslash
 -
 \series default
-
-\begin_inset Quotes grd
-\end_inset
-
- en ERT directamente antes de la palabra:
+» en código TeX directamente antes de la palabra:
 \end_layout
 
 \begin_layout Standard
-Esta línea es un ejemplo para mostrar cómo prevenir la división de 
-\begin_inset Quotes eld
-\end_inset
-
-
+Esta línea es un ejemplo para mostrar cómo prevenir la división de «
 \begin_inset ERT
 status collapsed
 
@@ -28742,11 +28091,7 @@ status collapsed
 
 \end_inset
 
-estalarguísimapalabra
-\begin_inset Quotes erd
-\end_inset
-
-.
+estalarguísimapalabra».
 \end_layout
 
 \begin_layout Standard
@@ -28754,15 +28099,7 @@ Por supuesto, la palabra sobresale del margen.
  Para evitarlo añade, con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Formato
-\begin_inset space ~
-\end_inset
-
-especial
-\begin_inset space ~
-\end_inset
-
-\SpecialChar \menuseparator
+Formato\SpecialChar \menuseparator
 Salto
 \begin_inset space ~
 \end_inset
@@ -28775,7 +28112,7 @@ de
 \family default
 línea (atajo 
 \series bold
-Ctrl-Intro
+Ctrl-Retorno
 \series default
 ), un salto de línea antes de la palabra:
 \end_layout
@@ -28798,15 +28135,7 @@ mbox{
 
 \end_inset
 
-
-\begin_inset Quotes eld
-\end_inset
-
-estalarguísimapalabra
-\begin_inset Quotes erd
-\end_inset
-
-.
+«estalarguísimapalabra».
 \begin_inset ERT
 status collapsed
 
@@ -28880,31 +28209,8 @@ e
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset Quotes eld
-\end_inset
-
-prevención
-\begin_inset Quotes erd
-\end_inset
-
- para que la parte inferior de la letra más 
-\begin_inset Quotes eld
-\end_inset
-
-profunda
-\begin_inset Quotes erd
-\end_inset
-
- 
-\begin_inset Quotes eld
-\end_inset
-
-p
-\begin_inset Quotes erd
-\end_inset
-
- esté en la línea de base, inserta el comando
+«prevención» para que la parte inferior de la letra más «profunda» «p» esté
+ en la línea de base, inserta el comando
 \end_layout
 
 \begin_layout Standard
@@ -28918,20 +28224,12 @@ depth}{
 \end_layout
 
 \begin_layout Standard
-en ERT antes de la palabra.
- Detrás de la palabra inserta una llave de cierre 
-\begin_inset Quotes eld
-\end_inset
-
-
+en código TeX antes de la palabra.
+ Detrás de la palabra inserta una llave de cierre «
 \series bold
 }
 \series default
-
-\begin_inset Quotes erd
-\end_inset
-
- en ERT.
+» en código TeX.
 \begin_inset Newline newline
 \end_inset
 
@@ -28954,15 +28252,7 @@ depth}{
 
 \end_inset
 
-
-\begin_inset Quotes eld
-\end_inset
-
-prevención
-\begin_inset Quotes erd
-\end_inset
-
-
+«prevención»
 \begin_inset ERT
 status collapsed
 
@@ -28999,15 +28289,7 @@ depth}{
 
 \end_inset
 
-
-\begin_inset Quotes eld
-\end_inset
-
-prevención
-\begin_inset Quotes erd
-\end_inset
-
-
+«prevención»
 \begin_inset ERT
 status collapsed
 
@@ -29035,15 +28317,7 @@ raisebox{0.5cm}{
 
 \end_inset
 
-
-\begin_inset Quotes eld
-\end_inset
-
-testigo
-\begin_inset Quotes erd
-\end_inset
-
-
+«testigo»
 \begin_inset ERT
 status collapsed
 
@@ -29088,15 +28362,7 @@ depth}[0pt]{
 
 \end_inset
 
-
-\begin_inset Quotes eld
-\end_inset
-
-prevención
-\begin_inset Quotes erd
-\end_inset
-
-
+«prevención»
 \begin_inset ERT
 status collapsed
 
@@ -29124,15 +28390,7 @@ raisebox{0.5cm}[0pt]{
 
 \end_inset
 
-
-\begin_inset Quotes eld
-\end_inset
-
-testigo
-\begin_inset Quotes erd
-\end_inset
-
-
+«testigo»
 \begin_inset ERT
 status collapsed
 
@@ -29205,7 +28463,8 @@ LaTeX-paquetes ! color
 \series bold
 
 \backslash
-@ifundefined{textcolor}
+@ifundef\SpecialChar \textcompwordmark{}
+ined{textcolor}
 \begin_inset Newline newline
 \end_inset
 
@@ -29232,7 +28491,7 @@ LyX cargará automáticamente el paquete
 \series bold
 color
 \series default
- cuando colorees texto
+ cuando colorees texto.
 \begin_inset Foot
 status collapsed
 
@@ -29241,14 +28500,15 @@ Para evitar cargarlo dos veces se usa el comando
 \series bold
 
 \backslash
-@ifundefined
+@ifundef\SpecialChar \textcompwordmark{}
+ined
 \series default
 .
 \end_layout
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -29340,20 +28600,12 @@ colorbox{red}{
 \end_layout
 
 \begin_layout Standard
-en ERT antes de la palabra.
- Tras la palabra inserta una llave de cierre 
-\begin_inset Quotes eld
-\end_inset
-
-
+en código TeX antes de la palabra.
+ Tras la palabra inserta una llave de cierre «
 \series bold
 }
 \series default
-
-\begin_inset Quotes erd
-\end_inset
-
- en ERT.
+» en código TeX.
 \begin_inset Newline newline
 \end_inset
 
@@ -29374,15 +28626,7 @@ colorbox{red}{
 
 \end_inset
 
-
-\begin_inset Quotes eld
-\end_inset
-
-¡Atención!
-\begin_inset Quotes erd
-\end_inset
-
-
+«¡Atención!»
 \begin_inset ERT
 status collapsed
 
@@ -29642,20 +28886,12 @@ colorbox{color}{
 \end_layout
 
 \begin_layout Standard
-en ERT.
- Detrás de la minipágina inserta una llave de cierre 
-\begin_inset Quotes eld
-\end_inset
-
-
+en código TeX.
+ Detrás de la minipágina inserta una llave de cierre «
 \series bold
 }
 \series default
-
-\begin_inset Quotes erd
-\end_inset
-
- en ERT.
+» en código TeX.
 \end_layout
 
 \begin_layout Standard
@@ -30854,7 +30090,7 @@ Si se usa el estilo global
 \series bold
 fleqn
 \series default
- para las ecuaciones del documento
+ para las ecuaciones del documento,
 \begin_inset Foot
 status collapsed
 
@@ -30864,7 +30100,7 @@ Si «fleqn» se añade a las opciones de clase del documento.
 
 \end_inset
 
-, también pueden escalarse las ecuaciones en estilo presentación.
+ también pueden escalarse las ecuaciones en estilo presentación.
 \end_layout
 
 \begin_layout Chapter
@@ -31026,7 +30262,7 @@ Día-Mes-Año.
  A continuación hay una fecha insertada como material externo: 
 \begin_inset External
 	template Date
-	filename .
+	filename ...
 
 \end_inset
 
@@ -31066,7 +30302,7 @@ Fecha
 \backslash
 today
 \series default
- en ERT.
+ en código TeX.
  Los distintos métodos se comparan en la tabla
 \begin_inset space ~
 \end_inset
@@ -31258,7 +30494,7 @@ como fecha
 \begin_inset Text
 
 \begin_layout Plain Layout
-como cuadro ERT
+como cuadro en código TeX
 \end_layout
 
 \end_inset
@@ -31557,31 +30793,8 @@ includeonly{capítulo1,capítulo5}
 \end_layout
 
 \begin_layout Standard
-hará que sólo se procesen los archivos incluidos cuyos nombres son 
-\begin_inset Quotes eld
-\end_inset
-
-capítulo1.lyx
-\begin_inset Quotes erd
-\end_inset
-
- (o 
-\begin_inset Quotes eld
-\end_inset
-
-capítulo1.tex
-\begin_inset Quotes erd
-\end_inset
-
-) y 
-\begin_inset Quotes eld
-\end_inset
-
-capítulo5.lyx
-\begin_inset Quotes erd
-\end_inset
-
-.
+hará que sólo se procesen los archivos incluidos cuyos nombres son «capítulo1.lyx
+» (o «capítulo1.tex») y «capítulo5.lyx».
 \end_layout
 
 \begin_layout Standard
@@ -31682,11 +30895,7 @@ Literal Con este método se puede incluir todo archivo de texto.
 Marcar espacios en la salida
 \family default
  cada espacio en el código fuente se muestra en la salida con el carácter
- 
-\begin_inset Quotes eld
-\end_inset
-
-
+ «
 \begin_inset ERT
 status collapsed
 
@@ -31699,11 +30908,7 @@ textvisiblespace
 
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
-.
+».
  La diferencia con el método de inserción mediante el menú 
 \family sans
 Insertar
@@ -31914,7 +31119,7 @@ Al hacer clic-derecho sobre un recuadro de listado surge un cuadro de diálogo
 \end_layout
 
 \begin_layout Standard
-Por defecto, al insertar un listado de programa se inicia un párrafo nuevo.
+Por omisión, al insertar un listado de programa se inicia un párrafo nuevo.
  La opción de ubicación 
 \family sans
 Listado
@@ -31950,56 +31155,24 @@ La opción
 Flotante
 \family default
  crea un listado flotante cuya colocación se puede especificar mediante
- las opciones 
-\begin_inset Quotes erd
-\end_inset
-
-
+ las opciones «
 \family sans
 h
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-
+», «
 \family sans
 t
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-
+», «
 \family sans
 b
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
- y 
-\begin_inset Quotes eld
-\end_inset
-
-
+» y «
 \family sans
 p
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-, correspondientes a las opciones de colocación de flotantes descritas en
- la sección
+», correspondientes a las opciones de colocación de flotantes descritas
+ en la sección
 \family sans
 
 \begin_inset space ~
@@ -32028,32 +31201,16 @@ e.
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset Quotes eld
-\end_inset
-
-
+«
 \family sans
 htbp
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- La opción 
-\begin_inset Quotes eld
-\end_inset
-
-
+».
+ La opción «
 \family sans
 h
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
- a veces no tiene efecto, pero no necesitas usar la opción 
+» a veces no tiene efecto, pero no necesitas usar la opción 
 \family sans
 Flotante
 \family default
@@ -32170,15 +31327,8 @@ def func(param):
 Una vez que has escogido un lenguaje de programación en el cuadro de diálogo
  de listado de programa, las palabras clave de ese lenguaje serán reconocidas
  y tipografiadas de manera especial en la salida.
- En el ejemplo, la clave de Python 
-\begin_inset Quotes eld
-\end_inset
-
-def
-\begin_inset Quotes erd
-\end_inset
-
- es reconocida y se imprimirá en negrita.
+ En el ejemplo, la clave de Python «def» es reconocida y se imprimirá en
+ negrita.
 \end_layout
 
 \begin_layout Standard
@@ -32242,15 +31392,7 @@ líneas
 Paso 
 \family default
 puedes insertar un número para determinar qué líneas se numeran.
- Por ejemplo, si pones 
-\begin_inset Quotes eld
-\end_inset
-
-3
-\begin_inset Quotes erd
-\end_inset
-
-, se numera sólo una de cada tres líneas.
+ Por ejemplo, si pones «3», se numera sólo una de cada tres líneas.
  
 \end_layout
 
@@ -32279,39 +31421,8 @@ extendida
 \end_inset
 
 A continuación hay un ejemplo con numeración de líneas a la izquierda, paso
- 
-\begin_inset Quotes eld
-\end_inset
-
-3
-\begin_inset Quotes erd
-\end_inset
-
-, lenguaje 
-\begin_inset Quotes eld
-\end_inset
-
-Python
-\begin_inset Quotes erd
-\end_inset
-
-, opciones de estilo 
-\begin_inset Quotes eld
-\end_inset
-
-Tabla de caracteres extendida
-\begin_inset Quotes erd
-\end_inset
-
- y 
-\begin_inset Quotes eld
-\end_inset
-
-Espacio como símbolo
-\begin_inset Quotes erd
-\end_inset
-
-, rango de líneas 3-8:
+ «3», lenguaje «Python», opciones de estilo «Tabla de caracteres extendida»
+ y «Espacio como símbolo», rango de líneas 3-8:
 \begin_inset listings
 lstparams "extendedchars=true,firstline=3,language=Python,lastline=8,numbers=left,showspaces=true,stepnumber=3"
 inline false
@@ -32446,15 +31557,7 @@ reference "sec:Documento-Hijo"
  En el diálogo de documento hijo puedes especificar los parámetros del listado
  en el cuadro de texto.
  Para ver una lista de los parámetros disponibles teclea una interrogación
- 
-\begin_inset Quotes eld
-\end_inset
-
-?
-\begin_inset Quotes erd
-\end_inset
-
- en el cuadro.
+ «?» en el cuadro.
 \end_layout
 
 \begin_layout Standard
@@ -32522,15 +31625,7 @@ texto.
  
 \family default
 Para ver ahí una lista de las opciones disponibles, escribe una interrogación
- 
-\begin_inset Quotes eld
-\end_inset
-
-?
-\begin_inset Quotes erd
-\end_inset
-
- en el campo de texto.
+ «?» en el campo de texto.
 \end_layout
 
 \begin_layout Standard
@@ -33173,29 +32268,13 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Este tipo de archivo tiene la extensión 
-\begin_inset Quotes eld
-\end_inset
-
-
+Este tipo de archivo tiene la extensión «
 \family typewriter
 .dvi
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- Se denomina 
-\begin_inset Quotes eld
-\end_inset
-
-device-independent
-\begin_inset Quotes erd
-\end_inset
-
- (DVI), porque es completamente portable; se pueden mover de una máquina
- a otra sin necesidad de conversión alguna.
+».
+ Se denomina «device-independent» (DVI), porque es completamente portable;
+ se pueden mover de una máquina a otra sin necesidad de conversión alguna.
  En la época en que se desarrolló este formato, esto no era un asunto baladí.
  Los DVI se usan para vistas preliminares rápidas y como preparación para
  otros formatos de salida como PostScript.
@@ -33307,34 +32386,19 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Este tipo de archivo tiene la extensión 
-\begin_inset Quotes eld
-\end_inset
-
-
+Este tipo de archivo tiene la extensión «
 \family typewriter
 .ps
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
+».
  PostScript fue desarrollado por la compañía 
 \family typewriter
 Adobe
 \family default
  como lenguaje para impresoras.
  Por eso estos archivos contienen comandos que usa la impresora para imprimirlos.
- PostScript puede considerarse como un 
-\begin_inset Quotes eld
-\end_inset
-
-lenguaje de programación
-\begin_inset Quotes erd
-\end_inset
-
-; con él puedes calcular y dibujar imágenes y diagramas
+ PostScript puede considerarse como un «lenguaje de programación»; con él
+ puedes calcular y dibujar imágenes y diagramas.
 \begin_inset Foot
 status collapsed
 
@@ -33355,32 +32419,16 @@ key "pstricks"
 
 \end_inset
 
-.
  Por esto los archivos suelen ser más grandes que los PDF.
 \end_layout
 
 \begin_layout Standard
-Los archivos PostScript sólo pueden contener imágenes en el formato 
-\begin_inset Quotes eld
-\end_inset
-
-Encapsulated PostScript
-\begin_inset Quotes erd
-\end_inset
-
- (EPS, extensión 
-\begin_inset Quotes eld
-\end_inset
-
-
+Los archivos PostScript sólo pueden contener imágenes en el formato «Encapsulate
+d PostScript» (EPS, extensión «
 \family typewriter
 .eps
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-).
+»).
  Como LyX permite usar cualquier formato de imagen conocido, tiene que trabajar
  en segundo plano para convertir las imágenes a EPS.
  Si por ejemplo, el documento tiene 50 imágenes, LyX ha de hacer 50 conversiones
@@ -33447,99 +32495,36 @@ PDF
 \end_layout
 
 \begin_layout Standard
-Este tipo de archivo tiene la extensión 
-\begin_inset Quotes eld
-\end_inset
-
-
+Este tipo de archivo tiene la extensión «
 \family typewriter
 .pdf
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- El formato 
-\begin_inset Quotes eld
-\end_inset
-
-Portable Document Format
-\begin_inset Quotes erd
-\end_inset
-
- (PDF) fue desarrollado por 
+».
+ El formato «Portable Document Format» (PDF) fue desarrollado por 
 \family typewriter
 Adobe
 \family default
  como derivado de PostScript.
  Es más comprimido y utiliza muchos menos comandos que PostScript.
- Como su nombre 
-\begin_inset Quotes eld
-\end_inset
-
-portable
-\begin_inset Quotes erd
-\end_inset
-
- indica, puede ser procesado por cualquier sistema operativo y la salida
- impresa se muestra exactamente igual.
+ Como su nombre «portable» indica, puede ser procesado por cualquier sistema
+ operativo y la salida impresa se muestra exactamente igual.
 \end_layout
 
 \begin_layout Standard
-PDF puede contener imágenes en su propio formato PDF, en el formato 
-\begin_inset Quotes eld
-\end_inset
-
-Joint Photographic Experts Group
-\begin_inset Quotes erd
-\end_inset
-
- (JPG, extensión 
-\begin_inset Quotes eld
-\end_inset
-
-
+PDF puede contener imágenes en su propio formato PDF, en el formato «Joint
+ Photographic Experts Group» (JPG, extensión «
 \family typewriter
 .jpg
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
- o 
-\begin_inset Quotes eld
-\end_inset
-
-
+» o «
 \family typewriter
 .jpeg
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-), y en el formato 
-\begin_inset Quotes eld
-\end_inset
-
-Portable Network Graphics
-\begin_inset Quotes erd
-\end_inset
-
- (PNG, extensión 
-\begin_inset Quotes eld
-\end_inset
-
-
+»), y en el formato «Portable Network Graphics» (PNG, extensión «
 \family typewriter
 .png
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-).
+»).
  Aunque puedes poner cualquier otro formato de imagen, porque LyX los convierte
  en segundo plano a alguno de los anteriores.
  Pero como se ha comentado en la sección sobre PostScript, la conversión
@@ -33708,7 +32693,7 @@ tabcolsep
 \begin_inset space \thinspace{}
 \end_inset
 
-pt por defecto.
+pt por omisión.
  
 \series bold
 
@@ -33719,7 +32704,7 @@ arrayrulewidth
 \begin_inset space \thinspace{}
 \end_inset
 
-pt por defecto.
+pt por omisión.
 \end_layout
 
 \begin_layout Standard
