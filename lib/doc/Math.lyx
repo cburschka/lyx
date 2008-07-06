@@ -30183,7 +30183,7 @@ Counter denotes what kind of numbering is affected, sectioning denotes what
 \end_layout
 
 \begin_layout Standard
-Thus in our case the following LaTeX-preamble or ERT line is used:
+Thus in our case the following LaTeX-preamble or TeX-Code line is used:
 \end_layout
 
 \begin_layout Standard
@@ -30242,7 +30242,7 @@ numberwithin{table}{part}
 \begin_layout Standard
 To go back to the standard numbering or to prevent this kind of numbering
  when it is defined by the document class, the following command is inserted
- as ERT or to the LaTeX-preamble:
+ as TeX-Code or to the LaTeX-preamble:
 \end_layout
 
 \begin_layout Standard
