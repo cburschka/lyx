@@ -114,10 +114,6 @@ enum InsetCode {
 	COLLAPSABLE_CODE,
 	///
 	CELL_CODE,
-#if 0
-	///
-	THEOREM_CODE,
-#endif
 };
 
 } // namespace lyx
