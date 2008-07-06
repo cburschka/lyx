@@ -554,10 +554,6 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			lex.next();
 			string tmptok = lex.getString();
 			inset.reset(new InsetWrap(buf, tmptok));
-#if 0
-		} else if (tmptok == "Theorem") {
-			inset.reset(new InsetList);
-#endif
 		} else if (tmptok == "Caption") {
 			inset.reset(new InsetCaption(buf));
 		} else if (tmptok == "Index") {
