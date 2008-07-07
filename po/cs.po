@@ -1508,17 +1508,14 @@ msgid "&Edit"
 msgstr "&Editace"
 
 #: src/frontends/qt4/ui/InfoUi.ui:24
-#, fuzzy
 msgid "Information Type:"
-msgstr "Informace TeX-u"
+msgstr "Typ informace:"
 
 #: src/frontends/qt4/ui/InfoUi.ui:34
-#, fuzzy
 msgid "Information Name:"
-msgstr "Informace TeX-u"
+msgstr "Jméno informace:"
 
 #: src/frontends/qt4/ui/InfoUi.ui:64
-#, fuzzy
 msgid "&New"
 msgstr "&Nová:"
 
@@ -2308,9 +2305,8 @@ msgid "Date format for strftime output"
 msgstr "Formát data pro výstup fce strftime"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:19
-#, fuzzy
 msgid "Display &Graphics"
-msgstr "&Zobrazit obrázky:"
+msgstr "&Zobrazit obrázky"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:39
 msgid "Instant &Preview:"
@@ -4568,9 +4564,8 @@ msgstr "Dataset:"
 #: lib/layouts/lyxmacros.inc:13 lib/layouts/stdclass.inc:29
 #: lib/layouts/stdlayouts.inc:12 lib/layouts/stdlayouts.inc:31
 #: lib/layouts/stdlayouts.inc:50 lib/layouts/stdlayouts.inc:68
-#, fuzzy
 msgid "MainText"
-msgstr "Jako prostý text"
+msgstr "MainText"
 
 #: lib/layouts/amsbook.layout:90 lib/layouts/amsbook.layout:91
 #: lib/layouts/powerdot.layout:229 lib/layouts/numarticle.inc:10
@@ -14331,9 +14326,8 @@ msgid "math line"
 msgstr "linka (matematika)"
 
 #: src/Color.cpp:143
-#, fuzzy
 msgid "Math macro hovered background"
-msgstr "pozadí makra"
+msgstr "mat. makro - pozadí popisu"
 
 #: src/Color.cpp:144
 msgid "Math macro label"
@@ -14344,9 +14338,8 @@ msgid "Math macro frame"
 msgstr "rám mat. makra"
 
 #: src/Color.cpp:146
-#, fuzzy
 msgid "Math macro blended out"
-msgstr "pozadí makra"
+msgstr "mat. makro - okolí"
 
 #: src/Color.cpp:147
 msgid "Math macro old parameter"
@@ -14536,18 +14529,17 @@ msgid "Changed Layout"
 msgstr "Zmìnìno rozvr¾ení"
 
 #: src/CutAndPaste.cpp:541
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
-"Styl znaku %1$s není definován kvùli konverzi tøídy z\n"
+"Flexibilní vlo¾ka %1$s není definována kvùli konverzi tøídy z\n"
 "%2$s na %3$s"
 
 #: src/CutAndPaste.cpp:548
-#, fuzzy
 msgid "Undefined flex inset"
-msgstr "Text - otevøená vlo¾ka"
+msgstr "Nedefinovaná flexibilní vlo¾ka"
 
 #: src/Exporter.cpp:44 src/LyXFunc.cpp:974
 #, c-format
@@ -14860,15 +14852,15 @@ msgid "Could not create temporary directory"
 msgstr "Nelze vytvoøit pomocný adresáø"
 
 #: src/LyX.cpp:865
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not create a temporary directory in\n"
 "\"%1$s\"\n"
 "Make sure that this path exists and is writable and try again."
 msgstr ""
 "Nelze vytvoøit pomocný adresáø v\n"
-"%1$s. Ujistìte se, ¾e\n"
-"tato cesta existuje a má práva na zápis. Poté zkuste znovu."
+"\"%1$s\"\n"
+"Ujistìte se, ¾e tato cesta existuje a má práva na zápis. Poté zkuste znovu."
 
 #: src/LyX.cpp:948
 msgid "Missing user LyX directory"
@@ -15409,12 +15401,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:2600
 msgid "The scrolling speed of the mouse wheel."
-msgstr ""
+msgstr "Rychlost koleèka my¹i."
 
 #: src/LyXRC.cpp:2605
-#, fuzzy
 msgid "The completion popup delay."
-msgstr "s - prodle&va pro øádkové doplnìní"
+msgstr "Prodleva pro doplnìní vyskakovacím menu"
 
 #: src/LyXRC.cpp:2609
 msgid "Select to display the completion popup in math mode."
@@ -15425,37 +15416,33 @@ msgid "Select to display the completion popup in text mode."
 msgstr ""
 
 #: src/LyXRC.cpp:2617
-#, fuzzy
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
-msgstr "Pøi neje&dnoznaènosti zobrazit vyskakovací menu bez prodlevy"
+msgstr "Pøi nejednoznaènosti zobrazit vyskakovací menu bez prodlevy."
 
 #: src/LyXRC.cpp:2621
-#, fuzzy
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
 msgstr ""
-"Zobrazit v textovém módu malý trojúhelník za kurzorem pokud je doplnìní "
+"Zobrazit malý trojúhelník za kurzorem pokud je doplnìní "
 "mo¾né."
 
 #: src/LyXRC.cpp:2625
-#, fuzzy
 msgid "The inline completion delay."
-msgstr "s - prodle&va pro øádkové doplnìní"
+msgstr "Prodleva pro øádkové doplnìní."
 
 #: src/LyXRC.cpp:2629
 msgid "Select to display the inline completion in math mode."
-msgstr ""
+msgstr "Zvolit pro zobrazení øádkového doplnìní v matematickém módu."
 
 #: src/LyXRC.cpp:2633
 msgid "Select to display the inline completion in text mode."
-msgstr ""
+msgstr "Zvolit pro zobrazení øádkového doplnìní v textovém módu."
 
 #: src/LyXRC.cpp:2637
-#, fuzzy
 msgid "Use \"...\" to shorten long completions."
-msgstr "&Pou¾ít \"...\" pro zkrácení dlouhých doplnìní"
+msgstr "Pou¾ít \"...\" pro zkrácení dlouhých doplnìní."
 
 #: src/LyXRC.cpp:2641
 #, c-format
@@ -16200,9 +16187,8 @@ msgstr ""
 "dokumenty a skonèit."
 
 #: src/frontends/qt4/GuiApplication.cpp:1369
-#, fuzzy
 msgid "Could not find UI definition file"
-msgstr "Nelze pøeèíst konfiguraèní soubor"
+msgstr "Nelze pøeèíst definièní soubor u¾ivatelského rozhraní"
 
 #: src/frontends/qt4/GuiBibitem.cpp:28
 msgid "Bibliography Entry Settings"
@@ -16951,53 +16937,44 @@ msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "LaTeX/LyX dokumenty (*.tex *.lyx)"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
-#, fuzzy
 msgid "unknown"
-msgstr " neznámý"
+msgstr "neznámý"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
-#, fuzzy
 msgid "shortcut"
-msgstr "Zkratka"
+msgstr "klávesová zkratka"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
-#, fuzzy
 msgid "shortcuts"
-msgstr "Klávesové zkratky"
+msgstr "klávesové zkratky"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "lyxrc"
-msgstr ""
+msgstr "lyxrc"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
-#, fuzzy
 msgid "package"
-msgstr "Space"
+msgstr "balíèek"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
-#, fuzzy
 msgid "textclass"
-msgstr "Subjectclass"
+msgstr "tøída dokumentu"
 
 #: src/frontends/qt4/GuiInfo.cpp:47
-#, fuzzy
 msgid "menu"
-msgstr "mu"
+msgstr "menu"
 
 #: src/frontends/qt4/GuiInfo.cpp:47
-#, fuzzy
 msgid "icon"
-msgstr "cong"
+msgstr "ikona"
 
 #: src/frontends/qt4/GuiInfo.cpp:47
-#, fuzzy
 msgid "buffer"
-msgstr "modrá"
+msgstr "dokument"
 
 #: src/frontends/qt4/GuiInfo.cpp:51
-#, fuzzy
 msgid "Info"
-msgstr "ne"
+msgstr "Info"
 
 #: src/frontends/qt4/GuiLabel.cpp:37
 msgid "Label"
@@ -18046,9 +18023,8 @@ msgid "No Table of contents"
 msgstr "Bez obsahu|B"
 
 #: src/frontends/qt4/Menus.cpp:1021
-#, fuzzy
 msgid "Other Toolbars"
-msgstr "Panely nástrojù|n"
+msgstr "Jiné panely nástrojù"
 
 #: src/frontends/qt4/Menus.cpp:1040
 msgid "No Branch in Document!"
@@ -18138,9 +18114,8 @@ msgid "Labels and References"
 msgstr "Znaèky a odkazy"
 
 #: src/frontends/qt4/qt_helpers.cpp:506
-#, fuzzy
 msgid "List of Branches"
-msgstr "Seznam obrázkù"
+msgstr "Seznam vìtví"
 
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:287
 #: src/insets/InsetGraphics.cpp:587 src/insets/InsetInclude.cpp:466
@@ -18341,9 +18316,8 @@ msgid "External template %1$s is not installed"
 msgstr "Externí ¹ablona %1$s není instalovaná"
 
 #: src/insets/InsetFlex.cpp:53
-#, fuzzy
 msgid "Opened Flex Inset"
-msgstr "Text - otevøená vlo¾ka"
+msgstr "Flexibilní otevøená vlo¾ka"
 
 #: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:393
 #: src/insets/InsetFloat.cpp:403 src/insets/InsetFloat.cpp:413
