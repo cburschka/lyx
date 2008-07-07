@@ -39,7 +39,6 @@
 \DeclareInputText{183}{\ifmmode\cdot\else\textperiodcentered\fi}
 
 % increase link area for cross-references and autoname them,
-% see sec. 22.18.1
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
 %\renewcommand{\sectionautorefname}{sec.\negthinspace}
 \renewcommand{\subsectionautorefname}{sec.\negthinspace}
@@ -64,7 +63,6 @@
  \pagenumbering{arabic}}
 
 % insert additional vertical space of 1.5 mm between footnotes,
-% see sec. 22.16
 \let\myFoot\footnote
 \renewcommand{\footnote}[1]{\myFoot{#1\vspace{1.5mm}}}
 
@@ -120,6 +118,10 @@
 % redefine the greyed out note
 \renewenvironment{lyxgreyedout}
  {\textcolor{blue}\bgroup}{\egroup}
+
+% ------------------------------------
+% used to check for needed LaTeX packages
+\usepackage{ifthen}
 
 % check for package eurosym
 % used for the Euro symbol

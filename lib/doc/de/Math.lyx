@@ -39,7 +39,6 @@
 \DeclareInputText{183}{\ifmmode\cdot\else\textperiodcentered\fi}
 
 % Linkfläche für Querverweise vergrößern und automatisch benennen,
-% siehe Kap. 22.18.1
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
 \renewcommand{\sectionautorefname}{Kap.\negthinspace}
 \renewcommand{\subsectionautorefname}{Kap.\negthinspace}
@@ -64,7 +63,6 @@
  \pagenumbering{arabic}}
 
 % Damit die Fußnoten einen zusätzlichen vertikalen Abstand von 1,5 mm haben,
-% siehe Kap. 22.16
 \let\myFoot\footnote
 \renewcommand{\footnote}[1]{\myFoot{#1\vspace{1.5mm}}}
 
@@ -125,6 +123,10 @@
 \addto\captionsngerman
 {\renewcommand{\indexname}
 {Stichwort- und Befehlsverzeichnis}}
+
+% ------------------------------------
+% used to check for needed LaTeX packages
+\usepackage{ifthen}
 
 % testen ob das Paket eurosym installiert ist
 % wird benutzt für das Euro-Symbol
@@ -628,42 +630,7 @@ In den TeX-Modus
 status collapsed
 
 \begin_layout Plain Layout
-T@
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-TeX-Modus
+T@TeX-Modus
 \end_layout
 
 \end_inset
