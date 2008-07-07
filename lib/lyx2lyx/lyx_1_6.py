@@ -1993,8 +1993,7 @@ def revert_subfig(document):
             insertion = insertion.split('\n')
             document.body[k : k + 1] = insertion
             addedLines += len(insertion) - 1
-            add_to_preamble(document,
-                            ['\\usepackage{subfig}\n'])
+            add_to_preamble(document, ['\\usepackage{subfig}\n'])
         i += addedLines + 1
 
 
