@@ -1198,7 +1198,7 @@ def revert_include(document):
   r0 = re.compile('preview.*')
   r1 = re.compile('LatexCommand (.+)')
   r2 = re.compile('filename (.+)')
-  r3 = re.compile('options (.*)')
+  r3 = re.compile('lstparams "(.*)"')
   while True:
     i = find_token(document.body, "\\begin_inset CommandInset include", i)
     if i == -1:
