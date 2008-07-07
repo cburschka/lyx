@@ -41,6 +41,7 @@ static QString credits()
 	} else {
 		file.open(QIODevice::ReadOnly);
 		QTextStream ts(&file);
+		ts.setCodec("UTF-8");
 		QString line;
 		do {
 			line = ts.readLine();
