@@ -409,12 +409,10 @@ void LyXAction::init()
  * \li Action: Inserts CharStyle, Custom inset or XML short element.
  * \li Notion: Look into the Customization manual for more information about
                these elements.\n
-	       To make this command enabled the layout file for the document
-               class you're using has to load the character styles. The example on
-               the Wiki uses db_stdcharstyles.inc, which is loaded by the docbook
-               layout. If you're using some other class, you have to edit the layout
-               file to contain your character styles, or else put them in an include
-               file and Input the include file in the layout file.\n
+               To make this command enabled the layout file for the document
+               class you're using has to load the character styles. There are
+               a few contained in the Logical Markup module. You can also of
+               course create some yourself. \n
 	       For dissolving the element see #LFUN_INSET_DISSOLVE.
  * \li Syntax: flex-insert <TYPE:Name>
  * \li Params: TYPE: CharStyle|Custom|Element|Standard
@@ -423,7 +421,7 @@ void LyXAction::init()
 		     sub-menu this flex inset is in on the LyX menu tree. 
 		     If Standard (currently unused): none of these.
 	       Name: This name must be defined either in your layout file
-		     or imported by some module. The definition is\n
+		     or imported by some module. The definition is \n
 		     InsetLayout <TYPE:Name>
  * \li Sample: flex-insert CharStyle:Code
  * \endvar
