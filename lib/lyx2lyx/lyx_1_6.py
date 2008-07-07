@@ -1864,28 +1864,28 @@ def convert_subfig(document):
             continue
         k = find_token(document.body, '\tsubcaption', i, endInset)
         if k == -1:
-            i += 1
+            i = endInset
             continue
         l = find_token(document.body, '\tsubcaptionText', i, endInset)
+        if l == -1:
+            document.warning("Malformed lyx document: Can't find subcaptionText!")
+            i = endInset
+            continue
         caption = document.body[l][16:].strip('"')
-        savestr = document.body[i]
-        laststr = document.body[endInset]
         del document.body[l]
         del document.body[k]
         addedLines = -2
-        # savestr should no longer be needed here.
         subst = ['\\begin_inset Float figure', 'wide false', 'sideways false', 
                  'status open', '', '\\begin_layout Plain Layout', '\\begin_inset Caption', 
                  '', '\\begin_layout Plain Layout',
                  caption, '\\end_layout', '', '\\end_inset', '', 
-                 '\\end_layout', '', '\\begin_layout Plain Layout', savestr]
-        document.body[i : i+1] = subst
-        addedLines += len(subst) - 1
+                 '\\end_layout', '', '\\begin_layout Plain Layout']
+        document.body[i : i] = subst
+        addedLines += len(subst)
         endInset += addedLines
-        # There should be an easier way to do this.
-        subst = ['', '\\end_inset', '', '\\end_layout', laststr]
-        document.body[endInset : endInset+1] = subst
-        addedLines += len(subst) - 1
+        subst = ['', '\\end_inset', '', '\\end_layout']
+        document.body[endInset : endInset] = subst
+        addedLines += len(subst)
         i += addedLines + 1
 
 
