@@ -125,7 +125,7 @@ def read_unicodesymbols():
     # as: \"u.
     r = re.compile(r'\\\\(\W)\{(\w)\}')
     for line in fp.readlines():
-        if line[0] != '#' and line.strip() != "":
+        if line[0] != '#' and line.strip() != "" and line.find("\\") != -1:
             line=line.replace(' "',' ') # remove all quotation marks with spaces before
             line=line.replace('" ',' ') # remove all quotation marks with spaces after
             line=line.replace(r'\"','"') # replace \" by " (for characters with diaeresis)
@@ -173,20 +173,28 @@ def latex2lyx(data):
         #document.warning(str(i) + ":" + document.body[i])
         #document.warning("LAST: " + document.body[-1])
         g = line
-        while mathre.match(g):
-            m = mathre.match(g)
+        m = mathre.match(g)
+        if m == None:
+            g = wrap_into_ert(g, '\\', '\\backslash')
+            g = wrap_into_ert(g, '{', '{')
+            g = wrap_into_ert(g, '}', '}')
+            subst = g.split('\n')
+            retval += subst
+            continue
+        while m != None:
             s = m.group(1)
             f = m.group(2).replace('\\\\', '\\')
             g = m.group(3)
             if s:
-              # this is non-math!
-              s = wrap_into_ert(s, r'\\', '\\backslash')
-              s = wrap_into_ert(s, '{', '{')
-              s = wrap_into_ert(s, '}', '}')
-              subst = s.split('\n')
-              retval += subst
+                # this is non-math!
+                s = wrap_into_ert(s, '\\', '\\backslash')
+                s = wrap_into_ert(s, '{', '{')
+                s = wrap_into_ert(s, '}', '}')
+                subst = s.split('\n')
+                retval += subst
             retval.append("\\begin_inset Formula " + f)
             retval.append("\\end_inset")
+            m = mathre.match(g)
         # Generic, \\ -> \backslash:
         g = wrap_into_ert(g, r'\\', '\\backslash')
         g = wrap_into_ert(g, '{', '{')
@@ -1918,8 +1926,8 @@ def convert_subfig(document):
         addedLines = -2
         subst = ['\\begin_inset Float figure', 'wide false', 'sideways false', 
                  'status open', '', '\\begin_layout Plain Layout', '\\begin_inset Caption', 
-                 '', '\\begin_layout Plain Layout',
-                 caption, '\\end_layout', '', '\\end_inset', '', 
+                 '', '\\begin_layout Plain Layout'] + latex2lyx(caption) + \
+                 [ '\\end_layout', '', '\\end_inset', '', 
                  '\\end_layout', '', '\\begin_layout Plain Layout']
         document.body[i : i] = subst
         addedLines += len(subst)
