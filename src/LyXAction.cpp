@@ -2323,6 +2323,13 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_SERVER_GOTO_FILE_ROW, "server-goto-file-row", ReadOnly, System },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_SERVER_NOTIFY
+ * \li Action: Sends notify message about the last key-sequence to client.
+ * \li Notion: This can be used to grab last key-sequence used inside the LyX window.
+ * \li Syntax: server-notify
+ * \endvar
+ */
 		{ LFUN_SERVER_NOTIFY, "server-notify", ReadOnly, System },
 /*!
  * \var lyx::FuncCode lyx::LFUN_SERVER_SET_XY

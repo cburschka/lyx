@@ -495,7 +495,7 @@ void Server::callback(string const & msg)
 }
 
 
-// Send a notify messge to a client, called by WorkAreaKeyPress
+// Send a notify message to a client, called by WorkAreaKeyPress
 void Server::notifyClient(string const & s)
 {
 	pipes_.send("NOTIFY:" + s + "\n");
