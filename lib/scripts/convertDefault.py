@@ -29,6 +29,11 @@ if sys.argv[1][:4] == 'pdf:':
     if not 'unrecognized' in output.lower():
         opts = defopt + ' ' + opts
 
+# for ppm target formats, we need to flatten image, as ppm has no support
+# for alpha channel, see bug 4749
+if sys.argv[2][:4] == 'ppm:':
+    opts = opts + ' -flatten'
+
 if os.system(r'convert %s "%s" "%s"' % (opts, sys.argv[1], sys.argv[2])) != 0:
     print >> sys.stderr, sys.argv[0], 'ERROR'
     print >> sys.stderr, 'Execution of "convert" failed.'
