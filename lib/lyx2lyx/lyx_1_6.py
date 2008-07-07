@@ -803,33 +803,33 @@ def convert_latexcommand_index(document):
         r = re.compile('^(.*?)(\$.*?\$)(.*)')
         lines = fullcontent.split('\n')
         for line in lines:
-          #document.warning("LINE: " + line)
-          #document.warning(str(i) + ":" + document.body[i])
-          #document.warning("LAST: " + document.body[-1])
-          g = line
-          while r.match(g):
-            m = r.match(g)
-            s = m.group(1)
-            f = m.group(2).replace('\\\\', '\\')
-            g = m.group(3)
-            if s:
-              # this is non-math!
-              s = wrap_into_ert(s, r'\\', '\\backslash')
-              s = wrap_into_ert(s, '{', '{')
-              s = wrap_into_ert(s, '}', '}')
-              subst = s.split('\n')
-              document.body[i:i] = subst
-              i += len(subst)
-            document.body.insert(i + 1, "\\begin_inset Formula " + f)
-            document.body.insert(i + 2, "\\end_inset")
-            i += 2
-          # Generic, \\ -> \backslash:
-          g = wrap_into_ert(g, r'\\', '\\backslash')
-          g = wrap_into_ert(g, '{', '{')
-          g = wrap_into_ert(g, '}', '}')
-          subst = g.split('\n')
-          document.body[i+1:i+1] = subst
-          i += len(subst)
+            #document.warning("LINE: " + line)
+            #document.warning(str(i) + ":" + document.body[i])
+            #document.warning("LAST: " + document.body[-1])
+            g = line
+            while r.match(g):
+                m = r.match(g)
+                s = m.group(1)
+                f = m.group(2).replace('\\\\', '\\')
+                g = m.group(3)
+                if s:
+                  # this is non-math!
+                  s = wrap_into_ert(s, r'\\', '\\backslash')
+                  s = wrap_into_ert(s, '{', '{')
+                  s = wrap_into_ert(s, '}', '}')
+                  subst = s.split('\n')
+                  document.body[i:i] = subst
+                  i += len(subst)
+                document.body.insert(i + 1, "\\begin_inset Formula " + f)
+                document.body.insert(i + 2, "\\end_inset")
+                i += 2
+            # Generic, \\ -> \backslash:
+            g = wrap_into_ert(g, r'\\', '\\backslash')
+            g = wrap_into_ert(g, '{', '{')
+            g = wrap_into_ert(g, '}', '}')
+            subst = g.split('\n')
+            document.body[i+1:i+1] = subst
+            i += len(subst)
         document.body.insert(i + 1, "\\end_layout")
 
 
