@@ -1849,7 +1849,6 @@ def revert_external_embedding(document):
     revert_inset_embedding(document, 'External')
 
 
-# FIXME This code can still be cleaned up a fair bit.
 def convert_subfig(document):
     " Convert subfigures to subfloats. "
     i = 0
