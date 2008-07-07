@@ -409,6 +409,12 @@ void LyXAction::init()
  * \li Action: Inserts CharStyle, Custom inset or XML short element.
  * \li Notion: Look into the Customization manual for more information about
                these elements.\n
+	       To make this command enabled the layout file for the document
+               class you're using has to load the character styles. The example on
+               the Wiki uses db_stdcharstyles.inc, which is loaded by the docbook
+               layout. If you're using some other class, you have to edit the layout
+               file to contain your character styles, or else put them in an include
+               file and Input the include file in the layout file.\n
 	       For dissolving the element see #LFUN_INSET_DISSOLVE.
  * \li Syntax: flex-insert <TYPE:Name>
  * \li Params: TYPE: CharStyle|Custom|Element|Standard
