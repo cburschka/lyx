@@ -38,8 +38,6 @@ InsetFlex::InsetFlex(Buffer const & buf, string const & layoutName)
 {
 	// again, because now the name is initialized
 	setLayout(buf.params().documentClassPtr());
-	packages_ = getLayout().requires();
-	preamble_ = getLayout().preamble();
 }
 
 
@@ -117,9 +115,10 @@ void InsetFlex::textString(odocstream & os) const
 
 void InsetFlex::validate(LaTeXFeatures & features) const
 {
-	if (!preamble_.empty())
-		features.addPreambleSnippet(preamble_);
-	features.require(packages_);
+	string const preamble = getLayout().preamble();
+	if (!preamble.empty())
+		features.addPreambleSnippet(preamble);
+	features.require(getLayout().requires());
 }
 
 } // namespace lyx
