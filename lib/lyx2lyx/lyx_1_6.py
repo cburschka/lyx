@@ -1117,35 +1117,34 @@ def revert_href(document):
       i = i + 2
 
 def revert_url(document):
-	'Reverts Flex URL insets to old-style URL insets'
-	i = 0
-	while True:
-		i = find_token(document.body, "\\begin_inset Flex URL", i)
-		if i == -1:
-			return
-		j = find_end_of_inset(document.body, i)
-		if j == -1:
-			document.warning("Can't find end of inset in revert_url!")
-			return
-		k = find_default_layout(document, i, j)
-		if k == -1:
-			document.warning("Can't find default layout in revert_url!")
-			i = j
-			continue
-		l = find_end_of(document.body, k, "\\begin_layout", "\\end_layout")
-		if l == -1 or l >= j:
-			document.warning("Can't find end of default layout in revert_url!")
-			i = j
-			continue
-		# OK, so the inset's data is between lines k and l.
-		data =  " ".join(document.body[k+1:l])
-		data = data.strip()
-		newinset = ["\\begin_inset LatexCommand url", "target \"" + data + "\"",\
-		            "", "\\end_inset"]
-		document.body[i:j+1] = newinset
-		i = i + len(newinset)
+    'Reverts Flex URL insets to old-style URL insets'
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Flex URL", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of inset in revert_url!")
+            return
+        k = find_default_layout(document, i, j)
+        if k == -1:
+            document.warning("Can't find default layout in revert_url!")
+            i = j
+            continue
+        l = find_end_of(document.body, k, "\\begin_layout", "\\end_layout")
+        if l == -1 or l >= j:
+            document.warning("Can't find end of default layout in revert_url!")
+            i = j
+            continue
+        # OK, so the inset's data is between lines k and l.
+        data =  " ".join(document.body[k+1:l])
+        data = data.strip()
+        newinset = ["\\begin_inset LatexCommand url", "target \"" + data + "\"",\
+                    "", "\\end_inset"]
+        document.body[i:j+1] = newinset
+        i = i + len(newinset)
 
-		            
 
 def convert_include(document):
   'Converts include insets to new format.'
