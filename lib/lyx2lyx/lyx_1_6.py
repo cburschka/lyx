@@ -147,6 +147,20 @@ def read_unicodesymbols():
     return spec_chars
 
 
+def line2lyx(line):
+    '''Converts LaTeX commands, such as: \"u, to unicode characters, and
+       escapes backslashes, etc, into ERT. line may well be a multi-line
+       string when it is returned.
+       NOTE: If we want to convert \label{} into an InsetLabel, then this
+       is the place to do it.'''
+    if not line:
+        return line
+    line = wrap_into_ert(line, '\\', '\\backslash')
+    line = wrap_into_ert(line, '{', '{')
+    line = wrap_into_ert(line, '}', '}')
+    return line
+
+
 def latex2lyx(data):
     '''Takes a string, possibly multi-line, and returns the result of 
     converting LaTeX constructs into LyX constructs. Returns a list of
@@ -174,31 +188,20 @@ def latex2lyx(data):
         #document.warning("LAST: " + document.body[-1])
         g = line
         m = mathre.match(g)
-        if m == None:
-            g = wrap_into_ert(g, '\\', '\\backslash')
-            g = wrap_into_ert(g, '{', '{')
-            g = wrap_into_ert(g, '}', '}')
-            subst = g.split('\n')
-            retval += subst
-            continue
         while m != None:
             s = m.group(1)
             f = m.group(2).replace('\\\\', '\\')
             g = m.group(3)
             if s:
                 # this is non-math!
-                s = wrap_into_ert(s, '\\', '\\backslash')
-                s = wrap_into_ert(s, '{', '{')
-                s = wrap_into_ert(s, '}', '}')
+                s = line2lyx(s)
                 subst = s.split('\n')
                 retval += subst
             retval.append("\\begin_inset Formula " + f)
             retval.append("\\end_inset")
             m = mathre.match(g)
-        # Generic, \\ -> \backslash:
-        g = wrap_into_ert(g, r'\\', '\\backslash')
-        g = wrap_into_ert(g, '{', '{')
-        g = wrap_into_ert(g, '}', '}')
+        # Handle whatever is left, which is just text
+        g = line2lyx(g)
         subst = g.split('\n')
         retval += subst
     return retval
