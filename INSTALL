@@ -14,6 +14,7 @@ These four steps will compile, test and install LyX:
 	   When compiling for Qt, you may have to set
              --with-qt4-dir=<path-to-your-qt4-installation>
            if the environment variable QTDIR is not set. 
+	   See Note below if ./configure script is not present.
 
 	2) make
 	   compiles the program.
@@ -26,7 +27,7 @@ These four steps will compile, test and install LyX:
            if you want a smaller binary.
 
 
-Note for Subversion checkouts
+Note for Subversion (SVN) checkouts
 -----------------------------
 
 If you have checked this out from Subversion, you need to have:
