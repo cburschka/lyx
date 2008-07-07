@@ -748,17 +748,34 @@ def revert_wrapfig_options(document):
     "Revert optional options for wrap floats (wrapfig)."
     i = 0
     while True:
-        i = find_token(document.body, "lines", i)
+        i = find_token(document.body, "\\begin_inset Wrap figure", i)
         if i == -1:
             return
-        j = find_token(document.body, "overhang", i+1)
-        if j != i + 2 and j != -1:
-            document.warning("Malformed LyX document: Couldn't find overhang parameter of wrap float.")
+        j = find_end_of_inset(document.body, i)
         if j == -1:
-            return
-        del document.body[i]
-        del document.body[j-1]
-        i = i + 1
+            document.warning("Can't find end of Wrap inset at line " + str(i))
+            i += 1
+            continue
+        k = find_default_layout(document, i, j)
+        if k == -1:
+            document.warning("Can't find default layout for Wrap figure!")
+            i = j
+            continue
+        # Options should be between i and k now
+        l = find_token(document.body, "lines", i, k)
+        if l == -1:
+            document.warning("Can't find lines option for Wrap figure!")
+            i = k
+            continue
+        m = find_token(document.body, "overhang", i + 1, k)
+        if m == -1:
+            document.warning("Malformed LyX document: Couldn't find overhang parameter of wrap float!")
+            i = k
+            continue
+        # Do these in reverse order
+        del document.body[m]
+        del document.body[l]
+        i = k
 
 
 # To convert and revert indices, we need to convert between LaTeX 
@@ -1986,18 +2003,21 @@ def revert_wrapplacement(document):
     " Revert placement options wrap floats (wrapfig). "
     i = 0
     while True:
-        i = find_token(document.body, "lines", i)
+        i = find_token(document.body, "\\begin_inset Wrap figure", i)
         if i == -1:
             return
-        j = find_token(document.body, "placement", i+1)
-        if j != i + 1:
+        e = find_end_of_inset(document.body, i)
+        j = find_token(document.body, "placement", i + 1, e)
+        if j == -1:
             document.warning("Malformed LyX document: Couldn't find placement parameter of wrap float.")
-            return
-        document.body[j] = document.body[j].replace("placement O", "placement o")
-        document.body[j] = document.body[j].replace("placement I", "placement i")
-        document.body[j] = document.body[j].replace("placement L", "placement l")
-        document.body[j] = document.body[j].replace("placement R", "placement r")
-        i = i + 1
+            i += 1
+            continue
+        r = re.compile("placement (o|i|l|r)")
+        m = r.match(document.body[j])
+        if m == None:
+            document.warning("Malformed LyX document: Placement option isn't O|I|R|L!")
+        document.body[j] = "placement " + m.group(1).lower()
+        i = j
 
 
 def remove_extra_embedded_files(document):
