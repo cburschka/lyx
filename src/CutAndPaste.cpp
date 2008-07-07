@@ -140,7 +140,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 			if (forceEmptyLayout || parLayout == defaultLayout)
 				par->setLayout(emptyLayout);
 		}
-	} else { // check if we need to reset form empty layout
+	} else { // check if we need to reset from empty layout
 		Layout const & defaultLayout = newDocClass->defaultLayout();
 		Layout const & emptyLayout = newDocClass->emptyLayout();
 		ParagraphList::iterator const end = insertion.end();
