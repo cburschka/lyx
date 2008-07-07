@@ -816,10 +816,7 @@ void latexParagraphs(Buffer const & buf,
 			was_title = false;
 		}
 
-		if (layout.is_environment) {
-			par = TeXOnePar(buf, text, par, os, texrow,
-					runparams, everypar);
-		} else if (layout.isEnvironment() ||
+		if (layout.isEnvironment() ||
 					!par->params().leftIndent().zero()) {
 			par = TeXEnvironment(buf, text, par, os,
 								texrow, runparams);

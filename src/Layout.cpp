@@ -123,7 +123,6 @@ Layout::Layout()
 	newline_allowed = true;
 	free_spacing = false;
 	pass_thru = false;
-	is_environment = false;
 	toclevel = NOT_IN_TOC;
 	commanddepth = 0;
 }

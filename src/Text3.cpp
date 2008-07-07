@@ -1365,7 +1365,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_LISTING_INSERT:
 	case LFUN_MARGINALNOTE_INSERT:
 	case LFUN_OPTIONAL_INSERT:
-	case LFUN_ENVIRONMENT_INSERT:
 	case LFUN_INDEX_INSERT:
 		// Open the inset, and move the current selection
 		// inside it.
@@ -1980,9 +1979,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		code = OPTARG_CODE;
 		enable = cur.paragraph().insetList().count(OPTARG_CODE)
 			< cur.paragraph().layout().optionalargs;
-		break;
-	case LFUN_ENVIRONMENT_INSERT:
-		code = BOX_CODE;
 		break;
 	case LFUN_INDEX_INSERT:
 		code = INDEX_CODE;

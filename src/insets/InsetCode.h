@@ -85,7 +85,7 @@ enum InsetCode {
 	///
 	OPTARG_CODE,
 	///
-	ENVIRONMENT_CODE,
+	CELL_CODE,
 	///
 	NEWLINE_CODE,
 	///
@@ -112,8 +112,6 @@ enum InsetCode {
 	INFO_CODE, // 45
 	///
 	COLLAPSABLE_CODE,
-	///
-	CELL_CODE,
 };
 
 } // namespace lyx

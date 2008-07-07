@@ -966,7 +966,6 @@ src_insets_header_files = Split('''
     InsetCommand.h
     InsetCommandParams.h
     InsetERT.h
-    InsetEnvironment.h
     InsetExternal.h
     InsetFlex.h
     InsetFloat.h
@@ -1021,7 +1020,6 @@ src_insets_files = Split('''
     InsetCommand.cpp
     InsetCommandParams.cpp
     InsetERT.cpp
-    InsetEnvironment.cpp
     InsetExternal.cpp
     InsetFlex.cpp
     InsetFloat.cpp

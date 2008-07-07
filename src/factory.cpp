@@ -25,7 +25,6 @@
 #include "insets/InsetCaption.h"
 #include "insets/InsetCitation.h"
 #include "insets/InsetFlex.h"
-#include "insets/InsetEnvironment.h"
 #include "insets/InsetERT.h"
 #include "insets/InsetListings.h"
 #include "insets/InsetExternal.h"
@@ -206,9 +205,6 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 
 		case LFUN_TOC_INSERT:
 			return new InsetTOC(InsetCommandParams(TOC_CODE));
-
-		case LFUN_ENVIRONMENT_INSERT:
-			return new InsetEnvironment(buf, cmd.argument());
 
 		case LFUN_INFO_INSERT: {
 			InsetInfo * inset = new InsetInfo(buf, to_utf8(cmd.argument()));
@@ -521,9 +517,6 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			inset.reset(new InsetFlex(buf, s));
 		} else if (tmptok == "Branch") {
 			inset.reset(new InsetBranch(buf, InsetBranchParams()));
-		} else if (tmptok == "Environment") {
-			lex.next();
-			inset.reset(new InsetEnvironment(buf, lex.getDocString()));
 		} else if (tmptok == "ERT") {
 			inset.reset(new InsetERT(buf));
 		} else if (tmptok == "listings") {

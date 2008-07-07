@@ -163,7 +163,6 @@ enum TextClassTags {
 	TC_STYLE,
 	TC_DEFAULTSTYLE,
 	TC_INSETLAYOUT,
-	TC_ENVIRONMENT,
 	TC_NOSTYLE,
 	TC_COLUMNS,
 	TC_SIDES,
@@ -196,7 +195,6 @@ namespace {
 		{ "counter",         TC_COUNTER },
 		{ "defaultfont",     TC_DEFAULTFONT },
 		{ "defaultstyle",    TC_DEFAULTSTYLE },
-		{ "environment",     TC_ENVIRONMENT },
 		{ "float",           TC_FLOAT },
 		{ "format",          TC_FORMAT },
 		{ "input",           TC_INPUT },
@@ -386,7 +384,6 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			}
 			break;
 
-		case TC_ENVIRONMENT:
 		case TC_STYLE:
 			if (lexrc.next()) {
 				docstring const name = from_utf8(subst(lexrc.getString(),
@@ -405,8 +402,6 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				} else {
 					Layout layout;
 					layout.setName(name);
-					if (le == TC_ENVIRONMENT)
-						layout.is_environment = true;
 					error = !readStyle(lexrc, layout);
 					if (!error)
 						layoutlist_.push_back(layout);

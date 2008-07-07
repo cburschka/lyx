@@ -94,7 +94,6 @@ static TranslatorMap const build_translator()
 		InsetName("index_print", INDEX_PRINT_CODE),
 		InsetName("nomencl_print", NOMENCL_PRINT_CODE),
 		InsetName("optarg", OPTARG_CODE),
-		InsetName("environment", ENVIRONMENT_CODE),
 		InsetName("newline", NEWLINE_CODE),
 		InsetName("line", LINE_CODE),
 		InsetName("branch", BRANCH_CODE),

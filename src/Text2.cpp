@@ -46,8 +46,6 @@
 #include "TextMetrics.h"
 #include "VSpace.h"
 
-#include "insets/InsetEnvironment.h"
-
 #include "mathed/InsetMathHull.h"
 
 #include "support/lassert.h"
@@ -216,22 +214,6 @@ void Text::setLayout(Buffer const & buffer, pit_type start, pit_type end,
 void Text::setLayout(Cursor & cur, docstring const & layout)
 {
 	LASSERT(this == cur.text(), /**/);
-	// special handling of new environment insets
-	BufferView & bv = cur.bv();
-	BufferParams const & params = bv.buffer().params();
-	Layout const & lyxlayout = params.documentClass()[layout];
-	if (lyxlayout.is_environment) {
-		// move everything in a new environment inset
-		LYXERR(Debug::DEBUG, "setting layout " << to_utf8(layout));
-		lyx::dispatch(FuncRequest(LFUN_LINE_BEGIN));
-		lyx::dispatch(FuncRequest(LFUN_LINE_END_SELECT));
-		lyx::dispatch(FuncRequest(LFUN_CUT));
-		Inset * inset = new InsetEnvironment(bv.buffer(), layout);
-		insertInset(cur, inset);
-		//inset->edit(cur, true);
-		//lyx::dispatch(FuncRequest(LFUN_PASTE));
-		return;
-	}
 
 	pit_type start = cur.selBegin().pit();
 	pit_type end = cur.selEnd().pit() + 1;

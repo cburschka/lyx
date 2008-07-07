@@ -1071,7 +1071,6 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_DEPTH_INCREMENT, "depth-increment", Noop, Edit },
-		{ LFUN_ENVIRONMENT_INSERT, "environment-insert", Noop, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_FONT_BOLD
