@@ -114,32 +114,56 @@ def set_option(document, m, option, value):
     return l
 
 
-# To convert and revert indices, we need to convert between LaTeX 
-# strings and LyXText. Here we do a minimal conversion to prevent 
-# crashes and data loss. Manual patch-up may be needed.
-replacements = [
-  [r'\\\"a', u'ä'], 
-  [r'\\\"o', u'ö'], 
-  [r'\\\"u', u'ü'],
-  [r'\\\'a', u'á'],
-  [r'\\\'e', u'é'],
-  [r'\\\'i', u'í'],
-  [r'\\\'o', u'ó'],
-  [r'\\\'u', u'ú']
-]
+def read_unicodesymbols():
+    " Read the unicodesymbols list of unicode characters and corresponding commands."
+    pathname = os.path.abspath(os.path.dirname(sys.argv[0]))
+    fp = open(os.path.join(pathname.strip('lyx2lyx'), 'unicodesymbols'))
+    spec_chars = []
+    # Two backslashes, followed by some non-word character, and then a character
+    # in brackets. The idea is to check for constructs like: \"{u}, which is how
+    # they are written in the unicodesymbols file; but they can also be written
+    # as: \"u.
+    r = re.compile(r'\\\\(\W)\{(\w)\}')
+    for line in fp.readlines():
+        if line[0] != '#' and line.strip() != "":
+            line=line.replace(' "',' ') # remove all quotation marks with spaces before
+            line=line.replace('" ',' ') # remove all quotation marks with spaces after
+            line=line.replace(r'\"','"') # replace \" by " (for characters with diaeresis)
+            try:
+                [ucs4,command,dead] = line.split(None,2)
+                spec_chars.append([command, unichr(eval(ucs4))])
+            except:
+                continue
+            m = r.match(command)
+            if m != None:
+                command = "\\\\"
+                # If the character is a double-quote, then we need to escape it, too,
+                # since it is done that way in the LyX file.
+                if m.group(1) == "\"":
+                    command += "\\"
+                command += m.group(1) + m.group(2)
+                spec_chars.append([command, unichr(eval(ucs4))])
+    fp.close()
+    return spec_chars
+
 
 def latex2lyx(data):
     '''Takes a string, possibly multi-line, and returns the result of 
     converting LaTeX constructs into LyX constructs. Returns a list of
     lines, suitable for insertion into document.body.'''
-    # Do the LaTeX --> LyX text conversion
-    r2 = re.compile('^(.*?)(\$.*?\$)(.*)')
+
+    mathre = re.compile('^(.*?)(\$.*?\$)(.*)')
     retval = []
 
     # Convert LaTeX to Unicode
-    # FIXME This should probably use the list we have elsewhere
-    for rep in replacements:
-        data = data.replace(rep[0], rep[1])
+    reps = read_unicodesymbols()
+    for rep in reps:
+        try:
+            data = data.replace(rep[0], rep[1])
+        except:
+            # There seems to be a character in the unicodesymbols file
+            # that causes problems, namely, 0x2109.
+            pass
     # Generic, \" -> ":
     data = wrap_into_ert(data, r'\"', '"')
     # Math:
@@ -149,8 +173,8 @@ def latex2lyx(data):
         #document.warning(str(i) + ":" + document.body[i])
         #document.warning("LAST: " + document.body[-1])
         g = line
-        while r2.match(g):
-            m = r2.match(g)
+        while mathre.match(g):
+            m = mathre.match(g)
             s = m.group(1)
             f = m.group(2).replace('\\\\', '\\')
             g = m.group(3)
