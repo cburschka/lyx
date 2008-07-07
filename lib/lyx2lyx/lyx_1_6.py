@@ -795,15 +795,20 @@ replacements = [
 def convert_latexcommand_index(document):
     "Convert from LatexCommand form to collapsable form."
     i = 0
+    r1 = re.compile('name "(.*)"')
+    r2 = re.compile('^(.*?)(\$.*?\$)(.*)')
     while True:
         i = find_token(document.body, "\\begin_inset CommandInset index", i)
         if i == -1:
             return
         if document.body[i + 1] != "LatexCommand index": # Might also be index_print
             return
-        fullcontent = document.body[i + 2][5:]
-        fullcontent.strip()
-        fullcontent = fullcontent[1:-1]
+        m = r1.match(document.body[i + 2])
+        if m == None:
+            document.warning("Unable to match: " + document.body[i+2])
+            i += 1
+            continue
+        fullcontent = m.group(1)
         document.body[i:i + 3] = ["\\begin_inset Index",
           "status collapsed",
           "\\begin_layout Standard"]
@@ -817,15 +822,14 @@ def convert_latexcommand_index(document):
         # Generic, \" -> ":
         fullcontent = wrap_into_ert(fullcontent, r'\"', '"')
         # Math:
-        r = re.compile('^(.*?)(\$.*?\$)(.*)')
         lines = fullcontent.split('\n')
         for line in lines:
             #document.warning("LINE: " + line)
             #document.warning(str(i) + ":" + document.body[i])
             #document.warning("LAST: " + document.body[-1])
             g = line
-            while r.match(g):
-                m = r.match(g)
+            while r2.match(g):
+                m = r2.match(g)
                 s = m.group(1)
                 f = m.group(2).replace('\\\\', '\\')
                 g = m.group(3)
@@ -1197,7 +1201,7 @@ def revert_include(document):
   i = 0
   r0 = re.compile('preview.*')
   r1 = re.compile('LatexCommand (.+)')
-  r2 = re.compile('filename (.+)')
+  r2 = re.compile('filename "(.+)"')
   r3 = re.compile('lstparams "(.*)"')
   while True:
     i = find_token(document.body, "\\begin_inset CommandInset include", i)
