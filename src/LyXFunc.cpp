@@ -564,7 +564,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_HELP_OPEN:
 	case LFUN_DROP_LAYOUTS_CHOICE:
 	case LFUN_MENU_OPEN:
-	case LFUN_SERVER_GET_NAME:
+	case LFUN_SERVER_GET_FILENAME:
 	case LFUN_SERVER_NOTIFY:
 	case LFUN_SERVER_GOTO_FILE_ROW:
 	case LFUN_DIALOG_HIDE:
@@ -1079,7 +1079,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		// --- lyxserver commands ----------------------------
-		case LFUN_SERVER_GET_NAME:
+		case LFUN_SERVER_GET_FILENAME:
 			LASSERT(lyx_view_ && lyx_view_->buffer(), /**/);
 			setMessage(from_utf8(lyx_view_->buffer()->absFileName()));
 			LYXERR(Debug::INFO, "FNAME["

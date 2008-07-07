@@ -74,6 +74,9 @@ Some of the LyX functions have changed names:
 - The functions LFUN_FONT_FREE_APPLY/UPDATE has been renamed to
   LFUN_TEXTSTYLE_APPLY/UPDATE.
 
+- The functions LFUN_SERVER_GET_NAME has been renamed to
+  LFUN_SERVER_GET_FILENAME.
+
 
 The following new LyX functions have been introduced:
 

@@ -2314,7 +2314,13 @@ void LyXAction::init()
 
 		{ LFUN_SERVER_CHAR_AFTER, "server-char-after", ReadOnly, System },
 		{ LFUN_SERVER_GET_LAYOUT, "server-get-layout", ReadOnly, System },
-		{ LFUN_SERVER_GET_NAME, "server-get-name", ReadOnly, System },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_SERVER_GET_FILENAME
+ * \li Action: Returns path and file name of the currently edited document.
+ * \li Syntax: server-get-filename
+ * \endvar
+ */
+		{ LFUN_SERVER_GET_FILENAME, "server-get-filename", ReadOnly, System },
 /*!
  * \var lyx::FuncCode lyx::LFUN_SERVER_GOTO_FILE_ROW
  * \li Action: Sets the cursor position based on the row number of generated TeX file.
