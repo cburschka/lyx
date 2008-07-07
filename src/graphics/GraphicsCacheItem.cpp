@@ -339,7 +339,7 @@ static string const findTargetFormat(string const & from)
 				<< " to " << *it);
 	}
 
-	// Failed! so we have to try to convert it to PPM format
+	// Failed! so we have to try to convert it to PNG format
 	// with the standard converter
 	return string("png");
 }
