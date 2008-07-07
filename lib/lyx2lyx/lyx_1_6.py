@@ -1178,6 +1178,7 @@ def convert_include(document):
 def revert_include(document):
   'Reverts include insets to old format.'
   i = 0
+  r0 = re.compile('preview.*')
   r1 = re.compile('LatexCommand (.+)')
   r2 = re.compile('filename (.+)')
   r3 = re.compile('options (.*)')
@@ -1185,33 +1186,42 @@ def revert_include(document):
     i = find_token(document.body, "\\begin_inset CommandInset include", i)
     if i == -1:
       return
-    previewline = document.body[i + 1]
-    m = r1.match(document.body[i + 2])
+    nextline = i + 1
+    if r0.match(document.body[nextline]):
+      previewline = document.body[nextline]
+      nextline += 1
+    else:
+      previewline = ""
+    m = r1.match(document.body[nextline])
     if m == None:
       document.warning("Malformed LyX document: No LatexCommand line for `" +
         document.body[i] + "' on line " + str(i) + ".")
       i += 1
       continue
     cmd = m.group(1)
-    m = r2.match(document.body[i + 3])
+    nextline += 1
+    m = r2.match(document.body[nextline])
     if m == None:
       document.warning("Malformed LyX document: No filename line for `" + \
         document.body[i] + "' on line " + str(i) + ".")
       i += 2
       continue
     fn = m.group(1)
+    nextline += 1
     options = ""
-    numlines = 4
     if (cmd == "lstinputlisting"):
-      m = r3.match(document.body[i + 4])
+      m = r3.match(document.body[nextline])
       if m != None:
         options = m.group(1)
         numlines = 5
+        nextline += 1
     newline = "\\begin_inset Include \\" + cmd + "{" + fn + "}"
     if options:
       newline += ("[" + options + "]")
-    insertion = [newline, previewline]
-    document.body[i : i + numlines] = insertion
+    insertion = [newline]
+    if previewline != "":
+      insertion.append(previewline)
+    document.body[i : nextline] = insertion
     i += 2
 
 
