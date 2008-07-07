@@ -114,6 +114,64 @@ def set_option(document, m, option, value):
     return l
 
 
+# To convert and revert indices, we need to convert between LaTeX 
+# strings and LyXText. Here we do a minimal conversion to prevent 
+# crashes and data loss. Manual patch-up may be needed.
+replacements = [
+  [r'\\\"a', u'ä'], 
+  [r'\\\"o', u'ö'], 
+  [r'\\\"u', u'ü'],
+  [r'\\\'a', u'á'],
+  [r'\\\'e', u'é'],
+  [r'\\\'i', u'í'],
+  [r'\\\'o', u'ó'],
+  [r'\\\'u', u'ú']
+]
+
+def latex2lyx(data):
+    '''Takes a string, possibly multi-line, and returns the result of 
+    converting LaTeX constructs into LyX constructs. Returns a list of
+    lines, suitable for insertion into document.body.'''
+    # Do the LaTeX --> LyX text conversion
+    r2 = re.compile('^(.*?)(\$.*?\$)(.*)')
+    retval = []
+
+    # Convert LaTeX to Unicode
+    # FIXME This should probably use the list we have elsewhere
+    for rep in replacements:
+        data = data.replace(rep[0], rep[1])
+    # Generic, \" -> ":
+    data = wrap_into_ert(data, r'\"', '"')
+    # Math:
+    lines = data.split('\n')
+    for line in lines:
+        #document.warning("LINE: " + line)
+        #document.warning(str(i) + ":" + document.body[i])
+        #document.warning("LAST: " + document.body[-1])
+        g = line
+        while r2.match(g):
+            m = r2.match(g)
+            s = m.group(1)
+            f = m.group(2).replace('\\\\', '\\')
+            g = m.group(3)
+            if s:
+              # this is non-math!
+              s = wrap_into_ert(s, r'\\', '\\backslash')
+              s = wrap_into_ert(s, '{', '{')
+              s = wrap_into_ert(s, '}', '}')
+              subst = s.split('\n')
+              retval += subst
+            retval.append("\\begin_inset Formula " + f)
+            retval.append("\\end_inset")
+        # Generic, \\ -> \backslash:
+        g = wrap_into_ert(g, r'\\', '\\backslash')
+        g = wrap_into_ert(g, '{', '{')
+        g = wrap_into_ert(g, '}', '}')
+        subst = g.split('\n')
+        retval += subst
+    return retval
+
+
 ####################################################################
 
 def convert_ltcaption(document):
@@ -778,25 +836,10 @@ def revert_wrapfig_options(document):
         i = k
 
 
-# To convert and revert indices, we need to convert between LaTeX 
-# strings and LyXText. Here we do a minimal conversion to prevent 
-# crashes and data loss. Manual patch-up may be needed.
-replacements = [
-  [r'\\\"a', u'ä'], 
-  [r'\\\"o', u'ö'], 
-  [r'\\\"u', u'ü'],
-  [r'\\\'a', u'á'],
-  [r'\\\'e', u'é'],
-  [r'\\\'i', u'í'],
-  [r'\\\'o', u'ó'],
-  [r'\\\'u', u'ú']
-]
-
 def convert_latexcommand_index(document):
     "Convert from LatexCommand form to collapsable form."
     i = 0
     r1 = re.compile('name "(.*)"')
-    r2 = re.compile('^(.*?)(\$.*?\$)(.*)')
     while True:
         i = find_token(document.body, "\\begin_inset CommandInset index", i)
         if i == -1:
@@ -809,6 +852,7 @@ def convert_latexcommand_index(document):
             i += 1
             continue
         fullcontent = m.group(1)
+        #document.warning(fullcontent)
         document.body[i:i + 3] = ["\\begin_inset Index",
           "status collapsed",
           "\\begin_layout Standard"]
@@ -816,42 +860,12 @@ def convert_latexcommand_index(document):
         # We are now on the blank line preceding "\end_inset"
         # We will write the content here, into the inset.
 
-        # Do the LaTeX --> LyX text conversion
-        for rep in replacements:
-            fullcontent = fullcontent.replace(rep[0], rep[1])
-        # Generic, \" -> ":
-        fullcontent = wrap_into_ert(fullcontent, r'\"', '"')
-        # Math:
-        lines = fullcontent.split('\n')
-        for line in lines:
-            #document.warning("LINE: " + line)
-            #document.warning(str(i) + ":" + document.body[i])
-            #document.warning("LAST: " + document.body[-1])
-            g = line
-            while r2.match(g):
-                m = r2.match(g)
-                s = m.group(1)
-                f = m.group(2).replace('\\\\', '\\')
-                g = m.group(3)
-                if s:
-                  # this is non-math!
-                  s = wrap_into_ert(s, r'\\', '\\backslash')
-                  s = wrap_into_ert(s, '{', '{')
-                  s = wrap_into_ert(s, '}', '}')
-                  subst = s.split('\n')
-                  document.body[i:i] = subst
-                  i += len(subst)
-                document.body.insert(i + 1, "\\begin_inset Formula " + f)
-                document.body.insert(i + 2, "\\end_inset")
-                i += 2
-            # Generic, \\ -> \backslash:
-            g = wrap_into_ert(g, r'\\', '\\backslash')
-            g = wrap_into_ert(g, '{', '{')
-            g = wrap_into_ert(g, '}', '}')
-            subst = g.split('\n')
-            document.body[i+1:i+1] = subst
-            i += len(subst)
+        linelist = latex2lyx(fullcontent)
+        document.body[i+1:i+1] = linelist
+        i += len(linelist)
+
         document.body.insert(i + 1, "\\end_layout")
+        i += 1
 
 
 def revert_latexcommand_index(document):
