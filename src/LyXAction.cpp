@@ -2312,7 +2312,6 @@ void LyXAction::init()
 		{ LFUN_KEYMAP_SECONDARY, "keymap-secondary", ReadOnly, Edit },
 		{ LFUN_KEYMAP_TOGGLE, "keymap-toggle", ReadOnly, Edit },
 
-		{ LFUN_SERVER_CHAR_AFTER, "server-char-after", ReadOnly, System },
 		{ LFUN_SERVER_GET_LAYOUT, "server-get-layout", ReadOnly, System },
 /*!
  * \var lyx::FuncCode lyx::LFUN_SERVER_GET_FILENAME
