@@ -45,8 +45,18 @@ private:
 };
 
 /// This class amounts to little more than a `strong typedef'.
+/// 
 /// A LayoutFile represents the layout information that is 
 /// contained in a *.layout file.
+/// 
+/// No document- (that is, Buffer-) specific information should 
+/// be placed in these objects. They are used as the basis for 
+/// constructing DocumentClass objects, which are what represent
+/// the layout information associated with a Buffer. (This is also 
+/// a subclass of TextClass, implemented in TextClass.{h,cpp}.)
+/// Buffer-specific information should therefore be placed in a
+/// DocumentClass object.
+/// 
 class LayoutFile : public TextClass, boost::noncopyable {
 public:
 	/// check whether the TeX class is available

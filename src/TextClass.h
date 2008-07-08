@@ -290,11 +290,17 @@ private:
 
 /// A DocumentClass represents the layout information associated with a
 /// Buffer. It is based upon a LayoutFile, but may be modified by loading
-/// various Modules. It is thus a dynamic object, as opposed to LayoutFile's
-/// which are pretty much static. 
-///
+/// various Modules. 
+/// 
+/// In that regard, DocumentClass objects are "dynamic". But this is really
+/// an illusion, since DocumentClass objects are not (currently) changed
+/// when, say, a new Module is loaded. Rather, the old DocumentClass is
+/// discarded---actually, it's kept around in case something on the cut
+/// stack needs it---and a new one is created from scratch. 
+/// 
 /// In the main LyX code, DocumentClass objects are created only by
 /// DocumentClassBundle, for which see below.
+/// 
 class DocumentClass : public TextClass, boost::noncopyable {
 public:
 	///
