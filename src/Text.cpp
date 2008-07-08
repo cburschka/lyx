@@ -640,7 +640,7 @@ bool Text::cursorBackwardOneWord(Cursor & cur)
 		return setCursor(cur, pit - 1, getPar(pit - 1).size());
 
 	if (lyxrc.mac_like_word_movement) {
-		// Skip through puctuation and spaces.
+		// Skip through punctuation and spaces.
 		while (pos != 0 && (par.isChar(pos - 1) || par.isSpace(pos - 1)))
 			--pos;
 
