@@ -43,9 +43,17 @@ def find_end_of_inset(lines, i):
 # where the last statement resets the counter to accord with the added
 # lines.
 def wrap_into_ert(string, src, dst):
-    " Wrap a something into an ERT"
+    '''Within string, replace occurrences of src with dst, wrapped into ERT
+       E.g.: wrap_into_ert('sch\"on', "\\", "\\backslash") is:
+       sch<ERT>\\backslash</ERT>"on'''
     return string.replace(src, '\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout Standard\n'
       + dst + '\n\\end_layout\n\\end_inset\n')
+
+def put_cmd_in_ert(string):
+    string = string.replace('\\', "\\backslash\n")
+    string = "\\begin_inset ERT\nstatus collapsed\n\\begin_layout Standard\n" \
+      + string + "\n\\end_layout\n\\end_inset"
+    return string
 
 def add_to_preamble(document, text):
     """ Add text to the preamble if it is not already there.
@@ -125,12 +133,14 @@ def read_unicodesymbols():
     # as: \"u.
     r = re.compile(r'\\\\(\W)\{(\w)\}')
     for line in fp.readlines():
-        if line[0] != '#' and line.strip() != "" and line.find("\\") != -1:
+        if line[0] != '#' and line.strip() != "":
             line=line.replace(' "',' ') # remove all quotation marks with spaces before
             line=line.replace('" ',' ') # remove all quotation marks with spaces after
             line=line.replace(r'\"','"') # replace \" by " (for characters with diaeresis)
             try:
                 [ucs4,command,dead] = line.split(None,2)
+                if command[0:1] != "\\":
+                    continue
                 spec_chars.append([command, unichr(eval(ucs4))])
             except:
                 continue
@@ -147,18 +157,76 @@ def read_unicodesymbols():
     return spec_chars
 
 
-def line2lyx(line):
-    '''Converts LaTeX commands, such as: \"u, to unicode characters, and
-       escapes backslashes, etc, into ERT. line may well be a multi-line
-       string when it is returned.
-       NOTE: If we want to convert \label{} into an InsetLabel, then this
-       is the place to do it.'''
+def extract_argument(line):
+    'Extracts a LaTeX argument from the start of line. Returns (arg, rest).'
+
+    if not line:
+        return (None, "")
+
+    bracere = re.compile("(\s*)(.*)")
+    n = bracere.match(line)
+    whitespace = n.group(1)
+    stuff = n.group(2)
+    brace = stuff[:1]
+    if brace != "[" and brace != "{":
+        return (None, line)
+
+    # find closing brace
+    remain = stuff[1:]
+    pos = 0
+    num = 1
+    term = "}"
+    if brace == "[":
+        term = "]"
+    skip = False
+    for c in remain:
+        if skip:
+            skip = False
+        elif c == "\\":
+            skip = True
+        elif c == brace:
+            num += 1
+        elif c == term:
+            num -= 1
+        if c == 0:
+            break
+        pos += 1
+    if num != 0:
+        # We never found the matching brace
+        # So, to be on the safe side, let's just return everything
+        # which will then get wrapped as ERT
+        return (line, "")
+    return (line[:pos + 1], line[pos + 1:])
+
+
+def latex2ert(line):
+    '''Converts LaTeX commands into ERT. line may well be a multi-line
+       string when it is returned.'''
     if not line:
         return line
-    line = wrap_into_ert(line, '\\', '\\backslash')
-    line = wrap_into_ert(line, '{', '{')
-    line = wrap_into_ert(line, '}', '}')
-    return line
+
+    retval = ""
+    ## FIXME Escaped \ ??
+    labelre = re.compile(r'(.*?)\\(\\(?:[a-zA-Z]+|.))(.*)')
+
+    m = labelre.match(line)
+    while m != None:
+        retval += m.group(1)
+        cmd = m.group(2)
+        end = m.group(3)
+
+        while True:
+            (arg, rest) = extract_argument(end)
+            if arg == None:
+                break
+            cmd += arg
+            end = rest
+        cmd = put_cmd_in_ert(cmd)
+        retval += "\n" + cmd + "\n"
+        line = end
+        m = labelre.match(line)
+    retval += line
+    return retval
 
 
 def latex2lyx(data):
@@ -166,21 +234,37 @@ def latex2lyx(data):
     converting LaTeX constructs into LyX constructs. Returns a list of
     lines, suitable for insertion into document.body.'''
 
-    mathre = re.compile('^(.*?)(\$.*?\$)(.*)')
     retval = []
 
     # Convert LaTeX to Unicode
     reps = read_unicodesymbols()
+    # Commands of this sort need to be checked to make sure they are
+    # followed by a non-alpha character, lest we replace too much.
+    hardone = re.compile(r'^\\\\[a-zA-Z]+$')
+    
     for rep in reps:
-        try:
+        if hardone.match(rep[0]):
+            pos = 0
+            while True:
+                pos = data.find(rep[0], pos)
+                if pos == -1:
+                    break
+                nextpos = pos + len(rep[0])
+                nextchar = data[nextpos - 1 : nextpos]
+                if nextchar.isalpha():
+                    # not the end of that command
+                    pos = nextpos
+                    continue
+                data = data[:pos] + rep[1] + data[nextpos:]
+                pos = nextpos
+        else:
             data = data.replace(rep[0], rep[1])
-        except:
-            # There seems to be a character in the unicodesymbols file
-            # that causes problems, namely, 0x2109.
-            pass
+
     # Generic, \" -> ":
     data = wrap_into_ert(data, r'\"', '"')
+
     # Math:
+    mathre = re.compile('^(.*?)(\$.*?\$)(.*)')
     lines = data.split('\n')
     for line in lines:
         #document.warning("LINE: " + line)
@@ -194,14 +278,14 @@ def latex2lyx(data):
             g = m.group(3)
             if s:
                 # this is non-math!
-                s = line2lyx(s)
+                s = latex2ert(s)
                 subst = s.split('\n')
                 retval += subst
             retval.append("\\begin_inset Formula " + f)
             retval.append("\\end_inset")
             m = mathre.match(g)
         # Handle whatever is left, which is just text
-        g = line2lyx(g)
+        g = latex2ert(g)
         subst = g.split('\n')
         retval += subst
     return retval
