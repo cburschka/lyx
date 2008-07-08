@@ -60,6 +60,18 @@ private:
 /// Simple TextClass objects are not directly constructed in the main 
 /// LyX code---the constructor is protected. (That said, in tex2lyx
 /// there are what amount to simple TextClass objects.)
+///
+/// A LayoutFile (see LayoutFile.{h,cpp}) represents a *.layout file.
+/// These are generally static objects---though they can be reloaded 
+/// from disk via LFUN_LAYOUT_RELOAD, so one should not assume that 
+/// they will never change.
+///
+/// A DocumentClass (see below) represents the layout information that
+/// is associated with a given Buffer. These are static, in the sense
+/// that they will not themselves change, but which DocumentClass is
+/// associated with a Buffer can change, as modules are loaded and 
+/// unloaded, for example.
+///
 class TextClass : protected ProtectCopy {
 public:
 	///
