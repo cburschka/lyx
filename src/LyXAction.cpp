@@ -1859,6 +1859,14 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_CHANGES_OUTPUT, "changes-output", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_CHANGE_NEXT
+ * \li Action: Moves the cursor to the position of the next change
+               of the change tracking records.
+ * \li Syntax: changes-next
+ * \li Origin: schmitt, 4 Oct 2006
+ * \endvar
+ */
 		{ LFUN_CHANGE_NEXT, "change-next", ReadOnly, Edit },
 		{ LFUN_CHANGES_MERGE, "changes-merge", Noop, Edit },
 		{ LFUN_CHANGE_ACCEPT, "change-accept", Noop, Edit },
