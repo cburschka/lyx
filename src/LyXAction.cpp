@@ -1843,6 +1843,13 @@ void LyXAction::init()
 		{ LFUN_VC_REVERT, "vc-revert", ReadOnly, System },
 		{ LFUN_VC_UNDO_LAST, "vc-undo-last", ReadOnly, System },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_CHANGES_TRACK
+ * \li Action: Toggles change tracking to on/off.
+ * \li Syntax: changes-track
+ * \li Origin: levon, 1 Oct 2002
+ * \endvar
+ */
 		{ LFUN_CHANGES_TRACK, "changes-track", Noop, Edit },
 		{ LFUN_CHANGES_OUTPUT, "changes-output", Noop, Edit },
 		{ LFUN_CHANGE_NEXT, "change-next", ReadOnly, Edit },
