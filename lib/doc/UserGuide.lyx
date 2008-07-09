@@ -12264,7 +12264,7 @@ Caps
 Color
 \family default
  You can adjust the color of the text with this control.
- Notice that not all DVI-viewers are are able to display colors.
+ Notice that not all DVI-viewers are able to display colors.
  Besides 
 \family sans
 No
@@ -14006,9 +14006,8 @@ Some languages don't use extra spacing between sentences.
 
 \begin_layout Standard
 For those that do need to bother, there is help to catch those sneaky errors:
- check out the 
+ Check out the 
 \family sans
-Tools\SpecialChar \menuseparator
 Check
 \begin_inset space ~
 \end_inset
@@ -26332,7 +26331,7 @@ Index ! Entry layout
 \end_layout
 
 \begin_layout Standard
-You can change the appearance of insert entries via the text style dialog.
+You can change the appearance of index entries via the text style dialog.
 \begin_inset Index
 status open
 
@@ -27743,11 +27742,11 @@ name "sub:TeX-Code-Boxes"
 As LyX uses LaTeX in the background, it supports many LaTeX commands and
  constructs, but not all.
  LaTeX contains of hundreds of packages which provide different commands.
- Every month many packages are updated and new ones added.
- This has the advantage that you can typeset nearly everything, for every
- problem exists a LaTeX-package.
- But LyX can of course not be up to date and support all these packages
- and their commands.
+ Every time packages are updated and new ones added.
+ This has the advantage that you can typeset nearly everything as there
+ is for every problem a LaTeX-package.
+ But LyX can of course not be up to date and support all packages and their
+ commands.
 \end_layout
 
 \begin_layout Standard
@@ -27769,29 +27768,8 @@ Code
 \end_inset
 
 .
- The box itself can be displayed in three different styles: 
-\family sans
-Inline
-\family default
-, 
-\family sans
-Collapsed
-\family default
-, and 
-\family sans
-Open
-\family default
-.
- To change the style, right-click on the box and use the appearing dialog.
- Left-clicking on the box will switch between 
-\family sans
-Collapsed
-\family default
- and 
-\family sans
-Open
-\family default
-.
+ The box can be opened by left-clicking and closed by right-clicking on
+ it.
 \end_layout
 
 \begin_layout Standard
@@ -36244,7 +36222,7 @@ reference "sec:Document-Classes"
 \family sans
 Default
 \family default
-, the default driver for the Latex@LaTeX-packages are used.
+, the default driver for the LaTeX-packages are used.
  It is recommended to use the default unless your know what you are doing.
 \end_layout
 
@@ -37068,8 +37046,8 @@ LaTeX
 
 Configuration
 \family default
- shows a LyX-document with informations about the Latex@LaTeX-packages and
- classes found by LyX (see also section
+ shows a LyX-document with informations about the LaTeX-packages and classes
+ found by LyX (see also section
 \begin_inset space ~
 \end_inset
 
