@@ -1080,6 +1080,24 @@ def revert_vietnamese(document):
         j = j + 1
 
 
+def convert_japanese_cjk(document):
+    "Set language japanese to japanese-cjk"
+    # Set document language from japanese-plain to japanese
+    i = 0
+    if document.language == "japanese":
+        document.language = "japanese-cjk"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language japanese-cjk"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang japanese", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang japanese", "\\lang japanese-cjk")
+        j = j + 1
+
+
 def revert_japanese(document):
     "Set language japanese-plain to japanese"
     # Set document language from japanese-plain to japanese
@@ -1095,6 +1113,24 @@ def revert_japanese(document):
         if j == -1:
             return
         document.body[j] = document.body[j].replace("\\lang japanese-plain", "\\lang japanese")
+        j = j + 1
+
+
+def revert_japanese_cjk(document):
+    "Set language japanese-cjk to japanese"
+    # Set document language from japanese-plain to japanese
+    i = 0
+    if document.language == "japanese-cjk":
+        document.language = "japanese"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language japanese"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang japanese-cjk", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang japanese-cjk", "\\lang japanese")
         j = j + 1
 
 
@@ -2815,7 +2851,7 @@ convert = [[277, [fix_wrong_tables]],
            [289, [convert_latexcommand_index]],
            [290, []],
            [291, []],
-           [292, []],
+           [292, [convert_japanese_cjk]],
            [293, []],
            [294, [convert_pdf_options]],
            [295, [convert_htmlurl, convert_url]],
@@ -2910,7 +2946,7 @@ revert =  [[337, [revert_polytonicgreek]],
            [294, [revert_href, revert_url]],
            [293, [revert_pdf_options_2]],
            [292, [revert_inset_info]],
-           [291, [revert_japanese, revert_japanese_encoding]],
+           [291, [revert_japanese, revert_japanese_encoding, revert_japanese_cjk]],
            [290, [revert_vietnamese]],
            [289, [revert_wraptable]],
            [288, [revert_latexcommand_index]],
