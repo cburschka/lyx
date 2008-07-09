@@ -227,22 +227,25 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 {
 	if (first_pit > last_pit)
 		swap(first_pit, last_pit);
-	// create the position information of the Undo entry
-	UndoElement undo(kind, cur, cell, first_pit, cell.lastpit() - last_pit, 0, 0, 
-	                 buffer_.params(), isFullBuffer);
-	UndoElementStack & stack = isUndoOperation ?  undostack_ : redostack_;
 
 	// Undo::ATOMIC are always recorded (no overlapping there).
 	// As nobody wants all removed character appear one by one when undoing,
 	// we want combine 'similar' non-ATOMIC undo recordings to one.
+	pit_type from = first_pit;
+	pit_type end = cell.lastpit() - last_pit;
+	UndoElementStack & stack = isUndoOperation ?  undostack_ : redostack_;
 	if (!undo_finished_
 	    && kind != ATOMIC_UNDO
 	    && !stack.empty()
-	    && samePar(stack.top().cell, undo.cell)
-	    && stack.top().kind == undo.kind
-	    && stack.top().from == undo.from
-	    && stack.top().end == undo.end)
+	    && samePar(stack.top().cell, cell)
+	    && stack.top().kind == kind
+	    && stack.top().from == from
+	    && stack.top().end == end)
 		return;
+
+	// create the position information of the Undo entry
+	UndoElement undo(kind, cur, cell, from, end, 0, 0, 
+	                 buffer_.params(), isFullBuffer);
 
 	// fill in the real data to be saved
 	if (cell.inMathed()) {
