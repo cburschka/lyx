@@ -700,10 +700,10 @@ TeXOnePar(Buffer const & buf,
 	// the inset, and we're using "auto" or "default" encoding, the encoding
 	// should be set back to that local_font's encoding.
 	if (nextpit == paragraphs.end() && runparams_in.local_font != 0
+	    && runparams_in.encoding != runparams_in.local_font->language()->encoding()
 	    && (bparams.inputenc == "auto" || bparams.inputenc == "default")) {
 		runparams_in.encoding = runparams_in.local_font->language()->encoding();
 		os << setEncoding(runparams_in.encoding->iconvName());
-
 	}
 	// Otherwise, the current encoding should be set for the next paragraph.
 	else

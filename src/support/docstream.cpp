@@ -220,14 +220,14 @@ protected:
 		    encoding_ == "GB" ||
 		    encoding_ == "EUC-TW")
 			return 4;
-		else if (encoding_ == "EUC-JP")
+		else if (encoding_ == "EUC-JP" ||
+			 encoding_ == "ISO-2022-JP")
 			return 3;
 		else if (encoding_ == "BIG5" ||
 			 encoding_ == "EUC-KR" ||
 			 encoding_ == "EUC-CN" ||
 			 encoding_ == "SJIS" ||
-			 encoding_ == "GBK" ||
-			 encoding_ == "JIS" )
+			 encoding_ == "GBK")
 			return 2;
 		else
 			return 1;
