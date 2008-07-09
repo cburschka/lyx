@@ -13514,21 +13514,26 @@ PDF
 \family default
  vous pouvez utiliser le bouton 
 \begin_inset Graphics
-	filename ../../images/buffer-export_pdf2.png
+	filename ../../images/buffer-view_pdf2.png
 
 \end_inset
 
-.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Il y a aussi un bouton pour PostScript (NdT)
-\end_layout
+, et pour 
+\family sans
+View\SpecialChar \menuseparator
+Postscript
+\family default
+ le bouton 
+\begin_inset Graphics
+	filename ../../images/buffer-view_ps.png
 
 \end_inset
 
-
+ (raccourci clavier 
+\family sans
+C-t
+\family default
+).
 \end_layout
 
 \begin_layout Standard
@@ -13625,7 +13630,7 @@ Imprimante
  C'est le nom de l'imprimante sur laquelle vous voulez imprimer votre document
  
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Notez que ce nom est destiné au programme 
@@ -13654,7 +13659,7 @@ reference "cha:Fenêtre-Préférences"
 
 \end_inset
 
-, elle doit accepter le PostScript®
+, elle doit accepter le PostScript
 \end_layout
 
 \begin_layout Labeling
@@ -25020,7 +25025,7 @@ Très très grand
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 La différence ne saute pas aux yeux si vous utilisez l'aperçu.

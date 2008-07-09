@@ -13182,13 +13182,28 @@ PDF
 
 (pdflatex)
 \family default
- you can use the toolbar button 
+ the toolbar button 
 \begin_inset Graphics
-	filename ../images/buffer-export_pdf2.png
+	filename ../images/buffer-view_pdf2.png
 
 \end_inset
 
-.
+, and for 
+\family sans
+View\SpecialChar \menuseparator
+Postscript
+\family default
+ the toolbar button 
+\begin_inset Graphics
+	filename ../images/buffer-view_ps.png
+
+\end_inset
+
+ (shortcut 
+\family sans
+C-t
+\family default
+).
 \end_layout
 
 \begin_layout Standard
