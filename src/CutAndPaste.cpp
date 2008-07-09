@@ -375,7 +375,7 @@ void putClipboard(ParagraphList const & paragraphs,
 	else
 		theClipboard().put(string(), plaintext);
 	// Save that memory
-	buffer.paragraphs() = ParagraphList();
+	buffer.paragraphs().clear();
 }
 
 
