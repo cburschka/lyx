@@ -407,7 +407,12 @@ void Loader::Impl::statusChanged()
 
 void Loader::Impl::createPixmap()
 {
-	if (!cached_item_.get() || !params_.display || status_ != Loaded)
+	if (!cached_item_.get()) {
+		LYXERR(Debug::GRAPHICS, "pixmap not cached yet");
+		return;
+	}
+
+	if (!params_.display || status_ != Loaded)
 		return;
 
 	image_.reset(cached_item_->image()->clone());
