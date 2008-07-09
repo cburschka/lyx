@@ -1863,7 +1863,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_CHANGE_NEXT
  * \li Action: Moves the cursor to the position of the next change
                of the change tracking records.
- * \li Syntax: changes-next
+ * \li Syntax: change-next
  * \li Origin: schmitt, 4 Oct 2006
  * \endvar
  */
