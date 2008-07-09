@@ -360,7 +360,12 @@ void putClipboard(ParagraphList const & paragraphs,
 {
 	// For some strange reason gcc 3.2 and 3.3 do not accept
 	// Buffer buffer(string(), false);
-	Buffer buffer("", false);
+	// This needs to be static to avoid a memory leak. When a Buffer is
+	// constructed, it constructs a BufferParams, which in turn constructs
+	// a DocumentClass, via new, that is never deleted. If we were to go to
+	// some kind of garbage collection there, or a shared_ptr, then this
+	// would not be needed.
+	static Buffer buffer("", false);
 	buffer.setUnnamed(true);
 	buffer.paragraphs() = paragraphs;
 	buffer.params().setDocumentClass(docclass);
@@ -369,6 +374,8 @@ void putClipboard(ParagraphList const & paragraphs,
 		theClipboard().put(lyx.str(), plaintext);
 	else
 		theClipboard().put(string(), plaintext);
+	// Save that memory
+	buffer.paragraphs() = ParagraphList();
 }
 
 
