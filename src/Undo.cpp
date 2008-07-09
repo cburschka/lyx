@@ -66,6 +66,15 @@ where to insert the stored bits when performining undo.
 
 struct UndoElement
 {
+	///
+	UndoElement(UndoKind kin, StableDocIterator const & cur, 
+	            StableDocIterator const & cel,
+	            pit_type fro, pit_type en, ParagraphList * pl, 
+	            MathData * ar, BufferParams const & bp, 
+	            bool ifb) :
+	        kind(kin), cursor(cur), cell(cel), from(fro), end(en),
+	        pars(pl), array(ar), bparams(bp), isFullBuffer(ifb)
+	{}
 	/// Which kind of operation are we recording for?
 	UndoKind kind;
 	/// the position of the cursor
@@ -84,6 +93,9 @@ struct UndoElement
 	BufferParams bparams;
 	/// Only used in case of full backups
 	bool isFullBuffer;
+private:
+	/// Protect construction
+	UndoElement();	
 };
 
 
@@ -216,20 +228,8 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 	if (first_pit > last_pit)
 		swap(first_pit, last_pit);
 	// create the position information of the Undo entry
-	UndoElement undo;
-	undo.array = 0;
-	undo.pars = 0;
-	undo.kind = kind;
-	undo.cell = cell;
-	undo.cursor = cur;
-	undo.bparams = buffer_.params();
-	undo.isFullBuffer = isFullBuffer;
-	//lyxerr << "recordUndo: cur: " << cur << endl;
-	//lyxerr << "recordUndo: pos: " << cur.pos() << endl;
-	//lyxerr << "recordUndo: cell: " << cell << endl;
-	undo.from = first_pit;
-	undo.end = cell.lastpit() - last_pit;
-
+	UndoElement undo(kind, cur, cell, first_pit, cell.lastpit() - last_pit, 0, 0, 
+	                 buffer_.params(), isFullBuffer);
 	UndoElementStack & stack = isUndoOperation ?  undostack_ : redostack_;
 
 	// Undo::ATOMIC are always recorded (no overlapping there).
