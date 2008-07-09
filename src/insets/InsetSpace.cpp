@@ -206,13 +206,9 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.wid = int(0.5 * fm.width(char_type('M')));
 			break;
 		case InsetSpaceParams::CUSTOM:
-		case InsetSpaceParams::CUSTOM_PROTECTED: {
-			int length = params_.length.inBP();
-			if (length < 0)
-				length = -1 * length;
-			dim.wid = length;
+		case InsetSpaceParams::CUSTOM_PROTECTED:
+			dim.wid = abs(params_.length.inBP());
 			break;
-		}
 		case InsetSpaceParams::HFILL:
 		case InsetSpaceParams::HFILL_PROTECTED:
 		case InsetSpaceParams::DOTFILL:
