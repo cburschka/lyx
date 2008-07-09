@@ -1851,6 +1851,13 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_CHANGES_TRACK, "changes-track", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_CHANGES_OUTPUT
+ * \li Action: Toggles showing of change tracking in typesetted output.
+ * \li Syntax: changes-output
+ * \li Origin: jspitzm, 21 Jan 2005
+ * \endvar
+ */
 		{ LFUN_CHANGES_OUTPUT, "changes-output", Noop, Edit },
 		{ LFUN_CHANGE_NEXT, "change-next", ReadOnly, Edit },
 		{ LFUN_CHANGES_MERGE, "changes-merge", Noop, Edit },
