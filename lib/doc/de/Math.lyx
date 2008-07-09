@@ -40,12 +40,13 @@
 
 % Linkfläche für Querverweise vergrößern und automatisch benennen,
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
-\renewcommand{\sectionautorefname}{Kap.\negthinspace}
-\renewcommand{\subsectionautorefname}{Kap.\negthinspace}
-\renewcommand{\subsubsectionautorefname}{Kap.\negthinspace}
 \newlength{\abc}
 \settowidth{\abc}{\space}
-\renewcommand{\equationautorefname}{\hspace{-\abc}}
+\addto\extrasngerman{
+ \renewcommand{\equationautorefname}{\hspace{-\abc}}
+ \renewcommand{\sectionautorefname}{Kap.\negthinspace}
+ \renewcommand{\subsectionautorefname}{Kap.\negthinspace}
+ \renewcommand{\subsubsectionautorefname}{Kap.\negthinspace}}
 
 % Makros damit Pakete nicht doppelt geladen werden.
 % siehe erste Fußnote in Kap. 9.3

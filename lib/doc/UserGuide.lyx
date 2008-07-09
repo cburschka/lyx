@@ -538,14 +538,21 @@ Under the
 \family sans
 File
 \family default
- menu are basic operations for any word processor in addition to some more
- advanced operations:
+ menu and in the standard toolbar are basic operations for any word processor
+ in addition to some more advanced operations:
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-New
+New 
+\begin_inset Graphics
+	filename ../images/buffer-new.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -569,7 +576,16 @@ Template
 \begin_layout Itemize
 
 \family sans
-Open
+Open 
+\family default
+
+\begin_inset Graphics
+	filename ../images/file-open.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -581,7 +597,16 @@ Close
 \begin_layout Itemize
 
 \family sans
-Save
+Save 
+\family default
+
+\begin_inset Graphics
+	filename ../images/buffer-write.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -633,7 +658,16 @@ Export
 \begin_layout Itemize
 
 \family sans
-Print
+Print 
+\family default
+
+\begin_inset Graphics
+	filename ../images/dialog-show_print.png
+	BoundingBox 0bp 5bp 24bp 20bp
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -811,7 +845,8 @@ As you might expect, the
 \family sans
 Edit
 \family default
- menu has the cut and paste commands, along with various other editing features.
+ menu and the standard toolbar has the cut and paste commands, along with
+ various other editing features.
  Some of these are special and covered in later sections.
  The basic ones are:
 \end_layout
@@ -819,19 +854,46 @@ Edit
 \begin_layout Itemize
 
 \family sans
-Cut
+Cut 
+\family default
+
+\begin_inset Graphics
+	filename ../images/cut.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Copy
+Copy 
+\family default
+
+\begin_inset Graphics
+	filename ../images/copy.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Paste
+Paste 
+\family default
+
+\begin_inset Graphics
+	filename ../images/paste.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -865,7 +927,17 @@ Find
 \begin_inset space ~
 \end_inset
 
-Replace
+Replace 
+\family default
+
+\begin_inset Graphics
+	filename ../images/dialog-show_findreplace.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1154,12 +1226,26 @@ If you make a mistake, you can easily recover from it.
 Edit\SpecialChar \menuseparator
 Undo
 \family default
+ or the toolbar button 
+\begin_inset Graphics
+	filename ../images/undo.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
  to undo some mistake.
  If you accidentally undo too much, use 
 \family sans
 Edit\SpecialChar \menuseparator
 Redo
 \family default
+ ot the toolbar button 
+\begin_inset Graphics
+	filename ../images/redo.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
  to 
 \begin_inset Quotes eld
 \end_inset
@@ -1168,9 +1254,11 @@ undo the undo.
 \begin_inset Quotes erd
 \end_inset
 
- The undo mechanism is currently limited to 100 steps to minimize memory
- overhead.
- 
+ The undo mechanism is currently limited to 100
+\begin_inset space \thinspace{}
+\end_inset
+
+steps to minimize memory overhead.
 \end_layout
 
 \begin_layout Standard
@@ -1184,11 +1272,15 @@ changed
 \end_inset
 
  status of the document is unfortunately not reset.
- This is a consequence of the 100 step undo limit, above.
+ This is a consequence of the 100
+\begin_inset space \thinspace{}
+\end_inset
+
+step undo limit, above.
 \end_layout
 
 \begin_layout Standard
-The 
+
 \family sans
 Undo
 \family default
@@ -1197,26 +1289,8 @@ Undo
 Redo
 \family default
  work on almost everything in LyX.
- They have some quirks, too.
- They won't 
-\family sans
-Undo
-\family default
- or 
-\family sans
-Redo
-\family default
- text character by character, but by blocks of text.
- That can take some getting used to; you'll have to play with 
-\family sans
-Undo
-\family default
- and 
-\family sans
-Redo
-\family default
- to get a feel for just how much they'll undo/redo, and after time, you'll
- surely appreciate how it works.
+ But they won't undo or redo text character by character, but by blocks
+ of text.
 \end_layout
 
 \begin_layout Section
@@ -1314,6 +1388,159 @@ Single click
 
 \end_deeper
 \begin_layout Section
+Navigating
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Navigating"
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Navigating
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LyX offers you two ways to navigate in documents:
+\end_layout
+
+\begin_layout Itemize
+The menu 
+\family sans
+Navigate
+\family default
+ lists all sections of the document as submenu entries that you can click
+ to jump to the corresponding document part.
+\end_layout
+
+\begin_layout Itemize
+The menu 
+\family sans
+Document\SpecialChar \menuseparator
+Outline
+\family default
+ or the toolbar button 
+\begin_inset Graphics
+	filename ../images/dialog-toggle_toc.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The outline window shows you the content of the document's table of contents
+ (TOC) that is described in sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Table-of-Contents"
+
+\end_inset
+
+.
+ You can click there on entries to jump to the corresponding document part.
+ In the pull-down box at the top of the outline window, you can choose between
+ different lists of document objects, like the list of footnotes.
+ Some of them, the list of tables, figures, and algorithms can also be added
+ to the document, see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:List-of-Figures"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+With the buttons 
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../images/down.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length -3mm
+\end_inset
+
+ and 
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../images/up.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length -3mm
+\end_inset
+
+ at the bottom of the outline window you can change the position of sections
+ in your document.
+ So you can for example move section
+\begin_inset space ~
+\end_inset
+
+2.5 before section
+\begin_inset space ~
+\end_inset
+
+2.4.
+ LyX will then automatically renumber the sections to the new order.
+ With the buttons 
+\begin_inset Graphics
+	filename ../images/promote.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+ and 
+\begin_inset Graphics
+	filename ../images/demote.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+ you can change the sectioning level of sections.
+ So you can for example make section
+\begin_inset space ~
+\end_inset
+
+2.5 chapter
+\begin_inset space ~
+\end_inset
+
+3 or subsection
+\begin_inset space ~
+\end_inset
+
+2.4.1.
+\end_layout
+
+\begin_layout Section
 Basic Key Bindings
 \begin_inset CommandInset label
 LatexCommand label
@@ -1335,9 +1562,7 @@ Key Bindings
 \end_layout
 
 \begin_layout Standard
-We're not going to cover all of the keybindings.
- Be aware that there are at least two different primary binding maps: CUA
- and Emacs.
+There are at least two different primary binding maps: CUA and Emacs.
  LyX's default is CUA.
 \end_layout
 
@@ -1713,6 +1938,7 @@ You'll learn more and more keybindings and short-cut keys as you use LyX,
  because most actions will prompt a small message in the status bar at the
  bottom of LyX's main window which describe the name of the action, you've
  just triggered, and any existing keybindings for that action.
+ The LyX menus also list the defined keybindings.
  The notation for the keybindings is very similar to the notation used in
  this documentation, so you should not have any problems understanding it.
  However, notice that Shift-modifiers are explicitly mentioned, so 
@@ -1751,6 +1977,21 @@ S-C-s
  means 
 \family sans
 Shift-Control-s
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+You can list or change the keybindings in the LyX preferences under 
+\family sans
+Editing\SpecialChar \menuseparator
+Shortcuts
+\family default
+.
+ The preferences are opened with the menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences
 \family default
 .
 \end_layout
@@ -3360,7 +3601,7 @@ Overview
 \end_layout
 
 \begin_layout Standard
-The paragraph environments correspond to the various
+Paragraph environments correspond to the
 \end_layout
 
 \begin_layout Standard
@@ -3385,7 +3626,7 @@ environment
 \begin_inset Newline newline
 \end_inset
 
-command sequences in an ordinary LaTeX file.
+command sequence in LaTeX files.
  If you don't know LaTeX, or the concept of a paragraph environment is totally
  alien to you, we urge you to read the 
 \emph on
@@ -3430,8 +3671,15 @@ nest
 \end_layout
 
 \begin_layout Standard
-To choose a new paragraph environment, use the pull-down box on the left
- end of the toolbar.
+To choose a new paragraph environment, use the pull-down box 
+\begin_inset Graphics
+	filename clipart/ToolbarEnvBox.png
+	scale 70
+	clip
+
+\end_inset
+
+ at the left end of the toolbar.
  LyX will change the environment of the 
 \emph on
 entire
@@ -19370,7 +19618,7 @@ Figures
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:ListsOf"
+reference "sub:List-of-Figures"
 
 \end_inset
 
@@ -24708,7 +24956,7 @@ name "sec:toc"
 \end_layout
 
 \begin_layout Subsection
-Table of Contents and Outline
+Table of Contents
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Table-of-Contents"
@@ -24735,17 +24983,33 @@ Contents
 \family default
 .
  Is is displayed in LyX as a gray box.
- If you click on it, the TOC window appears, showing you the TOC entries.
- You can jump to a document part by clicking on an entry.
- Thus you can use this window as graphical alternative for the 
+ If you click on it, the 
 \family sans
-Navigate
+Outline
 \family default
- menu.
+ window appears, showing you the TOC entries as outline to move and rearrange
+ sections in your documents.
+ So this operation is an alternative to the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Outline
+\family default
+ that is described in sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Navigating"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-The TOC lists every numbered section automatically.
+The TOC in the document output lists every numbered section automatically.
  If you have declared a short title for a section heading, as described
  in section
 \begin_inset space ~
@@ -24772,27 +25036,14 @@ reference "sub:Numbering-depth"
 
  describes how the level is adjusted that defines which section types are
  listed in the TOC.
- You can also adjust the level for the displayed sections in the TOC window
- using the grey fader at the bottom of the window.
  Unnumbered sections are not listed in the TOC.
 \end_layout
 
-\begin_layout Standard
-You can use the TOC window also as outline to move and rearrange sections
- in your documents.
- The TOC window therefore also appears when you use the menu 
-\family sans
-Document\SpecialChar \menuseparator
-Outline
-\family default
-.
-\end_layout
-
 \begin_layout Subsection
-List of Figures, Tables and Algorithms
+List of Figures, Tables, and Algorithms
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:ListsOf"
+name "sub:List-of-Figures"
 
 \end_inset
 

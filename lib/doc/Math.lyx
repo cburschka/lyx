@@ -40,12 +40,13 @@
 
 % increase link area for cross-references and autoname them,
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
-%\renewcommand{\sectionautorefname}{sec.\negthinspace}
-\renewcommand{\subsectionautorefname}{sec.\negthinspace}
-\renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
 \newlength{\abc}
 \settowidth{\abc}{\space}
-\renewcommand{\equationautorefname}{\hspace{-\abc}}
+\addto\extrasenglish{
+ \renewcommand{\equationautorefname}{\hspace{-\abc}}
+ \renewcommand{\sectionautorefname}{sec.\negthinspace}
+ \renewcommand{\subsectionautorefname}{sec.\negthinspace}
+ \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}}
 
 % don't load packages twice
 % see first footnote in sec. 9.3
