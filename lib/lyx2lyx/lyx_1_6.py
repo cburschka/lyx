@@ -290,6 +290,73 @@ def latex2lyx(data):
     return retval
 
 
+def lyx2latex(lines):
+    'Convert some LyX stuff into corresponding LaTeX stuff, as best we can.'
+    # clean up multiline stuff
+    content = ""
+    ert_end = 0
+    reps = read_unicodesymbols()
+  
+    for curline in range(len(lines)):
+      line = lines[curline]
+      if line.startswith("\\begin_inset ERT"):
+          # We don't want to replace things inside ERT, so figure out
+          # where the end of the inset is.
+          ert_end = find_end_of_inset(lines, curline + 1)
+          continue
+      elif line.startswith("\\begin_inset Formula"):
+          line = line[20:]
+      elif line.startswith("\\begin_inset Quotes"):
+          # For now, we do a very basic reversion. Someone who understands
+          # quotes is welcome to fix it up.
+          qtype = line[20:].strip()
+          # lang = qtype[0]
+          side = qtype[1]
+          dbls = qtype[2]
+          if side == "l":
+              if dbls == "d":
+                  line = "``"
+              else:
+                  line = "`"
+          else:
+              if dbls == "d":
+                  line = "''"
+              else:
+                  line = "'"
+      elif line.isspace() or \
+            line.startswith("\\begin_layout") or \
+            line.startswith("\\end_layout") or \
+            line.startswith("\\begin_inset") or \
+            line.startswith("\\end_inset") or \
+            line.startswith("\\lang") or \
+            line.startswith("status collapsed") or \
+            line.startswith("status open"):
+          #skip all that stuff
+          continue
+  
+      # a lossless reversion is not possible
+      # try at least to handle some common insets and settings
+      # do not replace inside ERTs
+      if ert_end >= curline:
+          line = line.replace(r'\backslash', r'\\')
+      else:
+          # Do the LyX text --> LaTeX conversion
+          for rep in reps:
+            line = line.replace(rep[1], rep[0])
+          line = line.replace(r'\backslash', r'\textbackslash{}')
+          line = line.replace(r'\series bold', r'\bfseries{}').replace(r'\series default', r'\mdseries{}')
+          line = line.replace(r'\shape italic', r'\itshape{}').replace(r'\shape smallcaps', r'\scshape{}')
+          line = line.replace(r'\shape slanted', r'\slshape{}').replace(r'\shape default', r'\upshape{}')
+          line = line.replace(r'\emph on', r'\em{}').replace(r'\emph default', r'\em{}')
+          line = line.replace(r'\noun on', r'\scshape{}').replace(r'\noun default', r'\upshape{}')
+          line = line.replace(r'\bar under', r'\underbar{').replace(r'\bar default', r'}')
+          line = line.replace(r'\family sans', r'\sffamily{}').replace(r'\family default', r'\normalfont{}')
+          line = line.replace(r'\family typewriter', r'\ttfamily{}').replace(r'\family roman', r'\rmfamily{}')
+          line = line.replace(r'\InsetSpace ', r'').replace(r'\SpecialChar ', r'')
+      content += line
+    return content
+
+
 ####################################################################
 
 def convert_ltcaption(document):
@@ -997,70 +1064,7 @@ def revert_latexcommand_index(document):
         if j == -1:
           return
 
-        # clean up multiline stuff
-        content = ""
-        ert_end = 0
-        reps = read_unicodesymbols()
-
-        for curline in range(i + 3, j - 2): # can skip last couple lines
-          line = document.body[curline]
-          if line.startswith("\\begin_inset ERT"):
-              # We don't want to replace things inside ERT, so figure out
-              # where the end of the inset is.
-              ert_end = find_end_of_inset(document.body, curline + 1)
-              continue
-          elif line.startswith("\\begin_inset Formula"):
-              line = line[20:]
-          elif line.startswith("\\begin_inset Quotes"):
-              # For now, we do a very basic reversion. Someone who understands
-              # quotes is welcome to fix it up.
-              qtype = line[20:].strip()
-              # lang = qtype[0]
-              side = qtype[1]
-              dbls = qtype[2]
-              if side == "l":
-                  if dbls == "d":
-                      line = "``"
-                  else:
-                      line = "`"
-              else:
-                  if dbls == "d":
-                      line = "''"
-                  else:
-                      line = "'"
-          elif line.isspace() or \
-               line.startswith("\\begin_layout Standard") or \
-               line.startswith("\\begin_layout Plain Layout") or \
-               line.startswith("\\end_layout") or \
-               line.startswith("\\end_inset") or \
-               line.startswith("\\lang") or \
-               line.startswith("status collapsed") or \
-               line.startswith("status open"):
-              #skip all that stuff
-              continue
-
-          # a lossless reversion is not possible
-          # try at least to handle some common insets and settings
-          # do not replace inside ERTs
-          if ert_end >= curline:
-              line = line.replace(r'\backslash', r'\\')
-          else:
-              # Do the LyX text --> LaTeX conversion
-              for rep in reps:
-                line = line.replace(rep[1], rep[0])
-              line = line.replace(r'\backslash', r'\textbackslash{}')
-              line = line.replace(r'\series bold', r'\bfseries{}').replace(r'\series default', r'\mdseries{}')
-              line = line.replace(r'\shape italic', r'\itshape{}').replace(r'\shape smallcaps', r'\scshape{}')
-              line = line.replace(r'\shape slanted', r'\slshape{}').replace(r'\shape default', r'\upshape{}')
-              line = line.replace(r'\emph on', r'\em{}').replace(r'\emph default', r'\em{}')
-              line = line.replace(r'\noun on', r'\scshape{}').replace(r'\noun default', r'\upshape{}')
-              line = line.replace(r'\bar under', r'\underbar{').replace(r'\bar default', r'}')
-              line = line.replace(r'\family sans', r'\sffamily{}').replace(r'\family default', r'\normalfont{}')
-              line = line.replace(r'\family typewriter', r'\ttfamily{}').replace(r'\family roman', r'\rmfamily{}')
-              line = line.replace(r'\InsetSpace ', r'').replace(r'\SpecialChar ', r'')
-          content += line;
-
-        # end of curline loop
+        content = lyx2latex(document.body[i:j])
         # escape quotes
         content = content.replace('"', r'\"')
         document.body[i:j] = ["\\begin_inset CommandInset index", "LatexCommand index",
