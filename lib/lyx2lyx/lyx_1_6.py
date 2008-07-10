@@ -329,8 +329,8 @@ def lyx2latex(lines):
             line.startswith("\\begin_inset") or \
             line.startswith("\\end_inset") or \
             line.startswith("\\lang") or \
-            line.startswith("status collapsed") or \
-            line.startswith("status open"):
+            line.strip() == "status collapsed" or \
+            line.strip() == "status open":
           #skip all that stuff
           continue
   
