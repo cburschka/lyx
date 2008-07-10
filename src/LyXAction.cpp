@@ -1877,7 +1877,21 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_CHANGES_MERGE, "changes-merge", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_CHANGE_ACCEPT
+ * \li Action: Accepts tracked change inside the selection.
+ * \li Syntax: change-accept
+ * \li Origin: Levon, 16 Oct 2002
+ * \endvar
+ */
 		{ LFUN_CHANGE_ACCEPT, "change-accept", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_CHANGE_REJECT
+ * \li Action: Rejects tracked change inside the selection.
+ * \li Syntax: change-accept
+ * \li Origin: Levon, 16 Oct 2002
+ * \endvar
+ */
 		{ LFUN_CHANGE_REJECT, "change-reject", Noop, Edit },
 		{ LFUN_ALL_CHANGES_ACCEPT, "all-changes-accept", Noop, Edit },
 		{ LFUN_ALL_CHANGES_REJECT, "all-changes-reject", Noop, Edit },
