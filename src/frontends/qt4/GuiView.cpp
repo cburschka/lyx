@@ -1273,8 +1273,12 @@ void GuiView::openDocument(string const & fname)
 		dlg.setButton2(qt_("Examples|#E#e"),
 				toqstr(addPath(package().system_support().absFilename(), "examples")));
 
+		QStringList filter(qt_("LyX Documents (*.lyx)"));
+		filter << qt_("LyX-1.3.x Documents (*.lyx13)")
+			<< qt_("LyX-1.4.x Documents (*.lyx14)")
+			<< qt_("LyX-1.5.x Documents (*.lyx15)");
 		FileDialog::Result result =
-			dlg.open(toqstr(initpath), QStringList(qt_("LyX Documents (*.lyx)")));
+			dlg.open(toqstr(initpath), filter);
 
 		if (result.first == FileDialog::Later)
 			return;
@@ -1960,7 +1964,13 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				delete twa;
 				twa = d.currentTabWorkArea();
 				// Switch to the next GuiWorkArea in the found TabWorkArea.
-				d.current_work_area_ = twa? twa->currentWorkArea() : 0;
+				if (twa) {
+					d.current_work_area_ = twa->currentWorkArea();
+					// Make sure the work area is up to date.
+					twa->setCurrentWorkArea(d.current_work_area_);
+				} else {
+					d.current_work_area_ = 0;
+				}
 				if (d.splitter_->count() == 0)
 					// No more work area, switch to the background widget.
 					d.setBackground();
