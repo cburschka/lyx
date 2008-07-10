@@ -415,7 +415,7 @@ void Loader::Impl::createPixmap()
 		return;
 	}
 
-	if (cached_item_->image()) {
+	if (!cached_item_->image()) {
 		// There must have been a problem reading the file.
 		LYXERR(Debug::GRAPHICS, "Graphics file not loaded.");
 		return;
