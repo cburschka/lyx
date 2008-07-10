@@ -207,7 +207,7 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 			break;
 		case InsetSpaceParams::CUSTOM:
 		case InsetSpaceParams::CUSTOM_PROTECTED:
-			dim.wid = abs(params_.length.inBP());
+			dim.wid = max(4, abs(params_.length.inBP()));
 			break;
 		case InsetSpaceParams::HFILL:
 		case InsetSpaceParams::HFILL_PROTECTED:
@@ -232,7 +232,7 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 	if (isStretchableSpace()) {
 		int const asc = theFontMetrics(pi.base.font).ascent('M');
 		int const desc = theFontMetrics(pi.base.font).descent('M');
-		//Pixel height divisible by 2 for prettier fill graphics:
+		// Pixel height divisible by 2 for prettier fill graphics:
 		int const oddheight = (asc ^ desc) & 1;
 		int const x0 = x + 1;
 		int const x1 = x + dim.wid - 2;
@@ -241,7 +241,7 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 		int const y2 = (y0 + y1) / 2;
 		int xoffset = (y0 - y1) / 2;
 
-		//Two tests for very narrow insets
+		// Two tests for very narrow insets
 		if (xoffset > x1 - x0
 		     && (params_.kind == InsetSpaceParams::LEFTARROWFILL
 			 || params_.kind == InsetSpaceParams::RIGHTARROWFILL))
@@ -319,6 +319,11 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 	xp[3] = x + w;
 	yp[3] = y - max(h / 4, 1);
 
+	if (params_.length.inBP() < 0) {
+		// turn symbol upside down
+		swap(yp[0], yp[1]);
+		swap(yp[2], yp[3]);
+	}
 	if (params_.kind == InsetSpaceParams::PROTECTED ||
 	    params_.kind == InsetSpaceParams::ENSPACE ||
 	    params_.kind == InsetSpaceParams::NEGTHIN ||
