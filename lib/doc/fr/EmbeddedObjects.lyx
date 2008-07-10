@@ -19,8 +19,8 @@
 % not to its caption
 \usepackage[figure]{hypcap}
 
-% the pages of the TOC is numbered roman
-% and a pdf-bookmark for the TOC is added
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
 \let\myTOC\tableofcontents
 \renewcommand\tableofcontents{%
   \frontmatter
@@ -1076,36 +1076,12 @@ reference "sec:Referencer-les-Flottants"
 \end_layout
 
 \begin_layout Standard
-En principe on met une figure dans un flottant, mais parfois vous pouvez
- vouloir deux figures avec chacune sa sous-légende.
- C'est possible en utilisant la fenêtre de dialogue: faites un clic droit
- sur l'image et allez sur l'onglet 
-\family sans
-Options
-\begin_inset space ~
-\end_inset
-
-LaTeX
-\begin_inset space ~
-\end_inset
-
-et
-\begin_inset space ~
-\end_inset
-
-LyX
-\family default
-, cochez l'option 
-\family sans
-Sous
-\begin_inset space ~
-\end_inset
-
-figure
-\family default
- et tapez la légende dans le champ qui vient d'être activé.
+En principe on met une seule figure dans un flottant, mais parfois vous
+ pouvez vouloir deux figures avec chacune sa sous-légende.
+ C'est possible en insérant des flottants d'image dans des flottants d'image
+ existants.
  Notez que seule la légende principale des flottants est reprise dans la
- Liste des Figures.
+ liste des figures.
  La figure
 \begin_inset space ~
 \end_inset
@@ -1120,6 +1096,25 @@ reference "fig:Deux-images-déformées"
  est un exemple de flottant de figure avec deux images mises l'une à côté
  de l'autre.
  Vous pouvez aussi mettre les images les unes sous les autres.
+ Les figures
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Structure-indéfinissable"
+
+\end_inset
+
+ et 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Un-ornithorynque"
+
+\end_inset
+
+ sont des sous-figures.
 \end_layout
 
 \begin_layout Standard
@@ -1142,7 +1137,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Undefinable structure
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Structure-indéfinissable"
+
+\end_inset
+
+Structure indéfinissable
 \end_layout
 
 \end_inset
@@ -1177,7 +1178,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Un-ornithorynque"
 
+\end_inset
+
+Un ornithorynque
 \end_layout
 
 \end_inset
@@ -2415,7 +2422,7 @@ La barre d'outils contient les icônes suivantes :
 
 \end_inset
 
- ajoute une ligne sur le côté gauche de la cellule, de ligne 
+ ajoute une ligne sur le côté gauche de la cellule, de la ligne 
 \begin_inset Note Note
 status collapsed
 
@@ -2436,7 +2443,7 @@ ou colonne ?
 
 \end_inset
 
- ajoute une ligne sur le côté droit de la cellule, de ligne 
+ ajoute une ligne sur le côté droit de la cellule, de la ligne 
 \begin_inset Note Note
 status collapsed
 
@@ -5825,7 +5832,7 @@ Créez
 \family sans
  
 \family default
-un Tableau Long.
+un Tableau long.
 \end_layout
 
 \begin_layout Enumerate
@@ -5882,7 +5889,7 @@ Le
 \end_layout
 
 \begin_layout Standard
-Voici un petit Tableau Long pour voir comment ça marche :
+Voici un petit Tableau long pour voir comment ça marche :
 \end_layout
 
 \begin_layout Standard
@@ -5902,7 +5909,7 @@ Voici un petit Tableau Long pour voir comment ça marche :
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Tableau Long avec une légende
+Tableau long avec une légende
 \begin_inset OptArg
 status open
 
@@ -11055,7 +11062,7 @@ Colonnes et lignes à lignes multiples
 \end_layout
 
 \begin_layout Subsection
-Lignes Multiples dans une cellule de tableau
+Lignes multiples dans une cellule de tableau
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Lignes-multiple-dans-cellule"
@@ -11253,15 +11260,12 @@ cm et choisissez les alignements vertical et horizontal centrés.
 \end_inset
 
 cm, une seule ligne va apparaître.
- Pour avoir deux lignes, 
-\lang english
-a justified line break (shortcut 
+ Pour avoir deux lignes, un saut de ligne justifié a été ajouté (raccourci
+ 
 \family sans
-Ctrl-Shift-Return
+Ctrl-Shift-Entrée
 \family default
-) was added
-\lang french
-.
+).
  Si le texte est plus large que la taille de cellule choisie, il sera automatiqu
 ement découpé en plusieurs lignes.
 \end_layout
@@ -11270,19 +11274,11 @@ ement découpé en plusieurs lignes.
 Si vous avez un mot long dans une cellule de largeur fixée, LaTeX ne peut
  pas effectuer de césure si c'est le premier élément de la cellule.
  Vous devez donc insérer quelque chose avant pour qu'il ne soit plus le
- premier élément : Ajoutez la commande
-\end_layout
+ premier élément : Ajoutez un espace horizontal de 0
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-hspace{0pt}
-\end_layout
-
-\begin_layout Standard
-en code TeX avant votre mot.
+pt juste avant votre mot.
  Comme l'espace est égal à zéro, la sortie ne sera pas modifiée.
  Le tableau 
 \begin_inset space ~
@@ -11441,16 +11437,8 @@ i
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace{0pt}
-\end_layout
-
+\begin_inset space \hspace{}
+\length 0pt
 \end_inset
 
 mottrèslongdansunecellule
@@ -17357,11 +17345,7 @@ unités
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\begin_inset Formula $\mbox{bouteilles}$
-\end_inset
-
-
+bouteilles
 \end_layout
 
 \end_inset
@@ -17419,11 +17403,7 @@ times
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\begin_inset Formula $\mbox{Pixels}$
-\end_inset
-
-
+Pixels
 \end_layout
 
 \end_inset
@@ -17481,11 +17461,7 @@ times
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\begin_inset Formula $\mbox{cm}$
-\end_inset
-
-
+cm
 \end_layout
 
 \end_inset
@@ -19722,11 +19698,8 @@ nom}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-where
+où
 \family sans
-\lang french
  votre
 \begin_inset space ~
 \end_inset
@@ -19749,51 +19722,55 @@ algorithme
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To insert the list of algorithms you can in this case not use the menu 
+Pour insérer la liste des algorithmes, vous pouvez utiliser le menu 
 \family sans
-Insert\SpecialChar \menuseparator
-List
-\begin_inset space \thinspace{}
+Insérer\SpecialChar \menuseparator
+Listes
+\begin_inset space ~
 \end_inset
 
-/
-\begin_inset space \thinspace{}
+&
+\begin_inset space ~
 \end_inset
 
-TOC\SpecialChar \menuseparator
-List of Algorithms
+TdM\SpecialChar \menuseparator
+Liste
+\begin_inset space ~
+\end_inset
+
+des
+\begin_inset space ~
+\end_inset
+
+algorithmes
 \family default
- when your document is an English one.
- For non-English documents, use this command in TeX-Code instead:
+ si votre document est en anglais.
+ Pour les documents qui ne sont pas en anglais, utilisez la commande suivante
+ en code TeX à la place:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-listof{algorithm}{your
+listof{algorithm}{votre
 \begin_inset space ~
 \end_inset
 
-name}
+nom}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-where 
+où 
 \family sans
-your
+votre
 \begin_inset space ~
 \end_inset
 
-name
+nom
 \family default
- is the word 
+ est la traduction de 
 \begin_inset Quotes eld
 \end_inset
 
@@ -19805,7 +19782,7 @@ s
 \begin_inset Quotes erd
 \end_inset
 
- in your language.
+ dans votre langue.
 \end_layout
 
 \begin_layout Standard
@@ -20929,7 +20906,7 @@ hypcap
 \end_layout
 
 \begin_layout Section
-Placement des Flottants
+Placement des flottants
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Placement-flottants"
@@ -25999,6 +25976,10 @@ normalmarginpar
 
 \end_inset
 
+
+\begin_inset Newline newline
+\end_inset
+
  
 \begin_inset Note Greyedout
 status open
@@ -26050,22 +26031,17 @@ reference "sub:Lignes-multiple-dans-cellule"
 
 , les mots trop longs ne peuvent pas subir de césure s'ils sont le premier
  mot d'une note en marge.
- Pour éviter ce problème, insérez la commande suivante sous forme de code
- TeX, avant le mot en question: 
+ Pour éviter ce problème, insérez un espacement horizontal de 0
+\begin_inset space \thinspace{}
+\end_inset
+
+pt avant le mot en question: 
 \begin_inset Marginal
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace{0pt}
-\end_layout
-
+\begin_inset space \hspace{}
+\length 0pt
 \end_inset
 
 UnMotTrèsLongEnMarge avec une césure.
@@ -26074,14 +26050,6 @@ UnMotTrèsLongEnMarge avec une césure.
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-hspace{0pt}
 \end_layout
 
 \begin_layout Standard
@@ -27277,18 +27245,9 @@ status open
 \series bold
 Note:
 \series default
- 
-\lang english
-The vertical box aligment can be lost in the output when you have two boxes
- in a line and one has e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
-\end_inset
-
-a shadow and the other one not.
+ L'alignement vertical peut être perturbé dans la sortie finale quand vous
+ avez par exemple deux boîtes sur une même ligne, une avec une ombre et
+ l'autre non.
 \end_layout
 
 \end_inset
@@ -31337,7 +31296,7 @@ Externe Fichiers de formats variés.
 \end_layout
 
 \begin_layout Description
-Sous-Document Documents LyX ou LaTeX.
+Sous-document Documents LyX ou LaTeX.
 \end_layout
 
 \begin_layout Section
@@ -31821,10 +31780,10 @@ Personnalisation
 \end_layout
 
 \begin_layout Section
-Sous-Documents
+Sous-documents
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Sous-Documents"
+name "sec:Sous-documents"
 
 \end_inset
 
@@ -31833,7 +31792,7 @@ name "sec:Sous-Documents"
 status collapsed
 
 \begin_layout Plain Layout
-Trucs externes ! Sous-Documents
+Trucs externes ! Sous-documents
 \end_layout
 
 \end_inset
@@ -31876,7 +31835,7 @@ Les documents inclus sont visualisés dans LyX sous la forme d'une boîte
 \family sans
 Insérer\SpecialChar \menuseparator
 Fichier\SpecialChar \menuseparator
-Sous-Document
+Sous-document
 \family default
 .
  Une fenêtre de dialogue s'ouvre pour que vous puissiez choisir entre l'une
@@ -31895,7 +31854,7 @@ Charger
 \family default
  dans la fenêtre de dialogue 
 \family sans
-Sous-Document
+Sous-document
 \family default
 , le document inclus est ouvert dans LyX dans un nouvel onglet pour que
  vous puissiez le modifier.
@@ -32799,7 +32758,7 @@ Il est aussi possible d'imprimer les lignes d'un fichier sous la forme d'un
 \family sans
 Insérer\SpecialChar \menuseparator
 Fichier\SpecialChar \menuseparator
-Sous-Document
+Sous-document
 \family default
  et de choisir le type 
 \family sans
@@ -32833,7 +32792,7 @@ Les autres types de sous-documents sont décrits dans la section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Sous-Documents"
+reference "sec:Sous-documents"
 
 \end_inset
 

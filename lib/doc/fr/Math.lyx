@@ -52,7 +52,7 @@
 % see first footnote in sec. 9.3
 \@ifundefined{textcolor}{\usepackage{color}}{}
 
-% the pages of the TOC is numbered roman
+% the pages of the TOC are numbered roman
 % and a PDF-bookmark for the TOC is added
 \pagenumbering{roman}
 \let\myTOC\tableofcontents
@@ -2572,11 +2572,8 @@ tbinom
 \end_inset
 
 .
- 
-\lang english
-For other brackets around binomial coeficients there are the
-\lang french
- commandes 
+ Pour d'autres styles de parenthèses autour des coefficients binomiaux,
+ il y a les commandes 
 \series bold
 
 \backslash
@@ -3403,10 +3400,9 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
-raisebox
+raisebox est là pour faire de la place
 \end_layout
 
 \end_inset
@@ -11556,11 +11552,7 @@ hspace
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Standard
-Pour la longueur toutes les unités qui sont listées dans 
+ Pour la valeur de la longueur toutes les unités qui sont listées dans 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Unités-utilisées"
@@ -11989,7 +11981,7 @@ Boîtes
 status collapsed
 
 \begin_layout Plain Layout
-Cadres | see
+Cadres | see 
 \begin_inset ERT
 status collapsed
 
@@ -25065,13 +25057,9 @@ Les commandes suivantes ne peuvent être utilisées qu'en texte mathématique
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset space \hfill{}
 \end_inset
 
-
-\lang french
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
@@ -25242,121 +25230,11 @@ status collapsed
 
 
 \backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
 @
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
 \backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-textrm
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
+textrm{
 \backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-AA
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+AA}
 \end_layout
 
 \end_inset
@@ -25672,8 +25550,6 @@ j
 \end_inset
 
 
-\lang english
-
 \begin_inset space \hfill{}
 \end_inset
 
@@ -25717,11 +25593,6 @@ Les commandes
 \end_inset
 
 
-\begin_inset space \hspace{}
-\length 0mm
-\end_inset
-
-
 \series default
 ` sont des exceptions puisqu'elles peuvent être insérées directement dans
  le texte dans LyX.
@@ -25754,13 +25625,9 @@ Avec les commandes suivantes, on peut accentuer toutes les lettres.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset space \hfill{}
 \end_inset
 
-
-\lang french
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
@@ -33166,7 +33033,7 @@ Entête de section sans formule dans la table des matières
 
 
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Entête sans formule dans la table des matières
