@@ -25311,121 +25311,11 @@ status collapsed
 
 
 \backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
 @
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
 \backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-textrm
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
+textrm{
 \backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-AA
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+AA}
 \end_layout
 
 \end_inset
@@ -33542,9 +33432,9 @@ texorpdfstring
 Damit die Formeln so wie der Rest der Überschrift formatiert werden, wurde
  die komplette Überschrift in eine 
 \series bold
-boldmath-Umgebung
+boldmath
 \series default
-
+-Umgebung
 \begin_inset Foot
 status collapsed
 
