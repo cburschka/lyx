@@ -1457,7 +1457,10 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			    || inset_code == it->lyxCode())) {
 				Cursor tmpcur = cur;
 				tmpcur.pushBackward(*it);
-				it->dispatch(tmpcur, fr);
+				FuncStatus flag;
+				it->getStatus(tmpcur, fr, flag);
+				if (flag.enabled())
+					it->dispatch(tmpcur, fr);
 			}
 		}
 		processUpdateFlags(Update::Force | Update::FitCursor);
