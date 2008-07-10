@@ -1011,6 +1011,23 @@ def revert_latexcommand_index(document):
               continue
           elif line.startswith("\\begin_inset Formula"):
               line = line[20:]
+          elif line.startswith("\\begin_inset Quotes"):
+              # For now, we do a very basic reversion. Someone who understands
+              # quotes is welcome to fix it up.
+              qtype = line[20:].strip()
+              # lang = qtype[0]
+              side = qtype[1]
+              dbls = qtype[2]
+              if side == "l":
+                  if dbls == "d":
+                      line = "``"
+                  else:
+                      line = "`"
+              else:
+                  if dbls == "d":
+                      line = "''"
+                  else:
+                      line = "'"
           elif line.isspace() or \
                line.startswith("\\begin_layout Standard") or \
                line.startswith("\\begin_layout Plain Layout") or \
