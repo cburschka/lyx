@@ -407,13 +407,19 @@ void Loader::Impl::statusChanged()
 
 void Loader::Impl::createPixmap()
 {
+	if (!params_.display || status_ != Loaded)
+		return;
+
 	if (!cached_item_.get()) {
 		LYXERR(Debug::GRAPHICS, "pixmap not cached yet");
 		return;
 	}
 
-	if (!params_.display || status_ != Loaded)
+	if (cached_item_->image()) {
+		// There must have been a problem reading the file.
+		LYXERR(Debug::GRAPHICS, "Graphics file not loaded.");
 		return;
+	}
 
 	image_.reset(cached_item_->image()->clone());
 
