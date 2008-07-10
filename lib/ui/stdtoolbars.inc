@@ -190,8 +190,8 @@ ToolbarSet
 		Item "Show changes in output" "changes-output"
 		Separator
 		Item "Next change" "change-next"
-		Item "Accept change" "change-accept"
-		Item "Reject change" "change-reject"
+		Item "Accept change inside selection" "change-accept"
+		Item "Reject change inside selection" "change-reject"
 		Separator
 		Item "Merge changes" "changes-merge"
 		Item "Accept all changes" "all-changes-accept"
