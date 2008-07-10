@@ -77,7 +77,7 @@ void breakParagraph(BufferParams const & bparams,
 	tmp->setInsetOwner(par.inInset());
 	// without doing that we get a crash when typing <Return> at the
 	// end of a paragraph
-	tmp->setEmptyOrDefaultLayout(bparams.documentClass());
+	tmp->setPlainOrDefaultLayout(bparams.documentClass());
 
 	// layout stays the same with latex-environments
 	if (keep_layout) {
@@ -142,7 +142,7 @@ void breakParagraph(BufferParams const & bparams,
 		par.params().clear();
 		// do not lose start of appendix marker (bug 4212)
 		par.params().startOfAppendix(soa);
-		par.setEmptyOrDefaultLayout(bparams.documentClass());
+		par.setPlainOrDefaultLayout(bparams.documentClass());
 	}
 
 	// layout stays the same with latex-environments

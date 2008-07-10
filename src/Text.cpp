@@ -102,10 +102,10 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		if (layoutname.empty())
 			layoutname = tclass.defaultLayoutName();
 
-		if (par.forceEmptyLayout()) {
+		if (par.forcePlainLayout()) {
 			// in this case only the empty layout is allowed
 			layoutname = tclass.emptyLayoutName();
-		} else if (par.useEmptyLayout()) {
+		} else if (par.usePlainLayout()) {
 			// in this case, default layout maps to empty layout 
 			if (layoutname == tclass.defaultLayoutName())
 				layoutname = tclass.emptyLayoutName();
@@ -121,7 +121,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 			errorList.push_back(ErrorItem(_("Unknown layout"),
 			bformat(_("Layout '%1$s' does not exist in textclass '%2$s'\nTrying to use the default instead.\n"),
 			layoutname, from_utf8(tclass.name())), par.id(), 0, par.size()));
-			layoutname = par.useEmptyLayout() ? 
+			layoutname = par.usePlainLayout() ? 
 					tclass.emptyLayoutName() :
 					tclass.defaultLayoutName();
 		}
@@ -1030,7 +1030,7 @@ bool Text::handleBibitems(Cursor & cur)
 	} 
 
 	// otherwise reset to default
-	cur.paragraph().setEmptyOrDefaultLayout(bufparams.documentClass());
+	cur.paragraph().setPlainOrDefaultLayout(bufparams.documentClass());
 	return true;
 }
 
@@ -1120,7 +1120,7 @@ bool Text::backspacePos0(Cursor & cur)
 	// or the empty layout.
 	else if (par.layout() == prevpar.layout()
 		 || tclass.isDefaultLayout(par.layout())
-		 || tclass.isEmptyLayout(par.layout())) {
+		 || tclass.isPlainLayout(par.layout())) {
 		cur.recordUndo(ATOMIC_UNDO, prevcur.pit());
 		mergeParagraph(bufparams, plist, prevcur.pit());
 		needsUpdate = true;

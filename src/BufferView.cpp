@@ -938,7 +938,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		break;
 
 	case LFUN_LAYOUT:
-		flag.setEnabled(!cur.inset().forceEmptyLayout(cur.idx()));
+		flag.setEnabled(!cur.inset().forcePlainLayout(cur.idx()));
 		break;
 
 	case LFUN_LAYOUT_PARAGRAPH:

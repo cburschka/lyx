@@ -354,10 +354,10 @@ public:
 	virtual bool insetAllowed(InsetCode) const { return false; }
 	/// should this inset use the empty layout by default rather than 
 	/// the standard layout? (default: only if that is forced.)
-	virtual bool useEmptyLayout() const { return forceEmptyLayout(); }
+	virtual bool usePlainLayout() const { return forcePlainLayout(); }
 	/// if this inset has paragraphs should they be forced to use the
 	/// empty layout?
-	virtual bool forceEmptyLayout(idx_type = 0) const { return false; }
+	virtual bool forcePlainLayout(idx_type = 0) const { return false; }
 	/// if this inset has paragraphs should the user be allowed to
 	/// customize alignment, etc?
 	virtual bool allowParagraphCustomization(idx_type = 0) const { return true; }

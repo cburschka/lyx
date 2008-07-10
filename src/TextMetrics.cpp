@@ -1784,7 +1784,7 @@ int TextMetrics::leftMargin(int max_width,
 				l_margin = leftMargin(max_width, newpar);
 			}
 			if (tclass.isDefaultLayout(par.layout())
-			    || tclass.isEmptyLayout(par.layout())) {
+			    || tclass.isPlainLayout(par.layout())) {
 				if (pars[newpar].params().noindent())
 					parindent.erase();
 				else
@@ -1906,7 +1906,7 @@ int TextMetrics::leftMargin(int max_width,
 		    && par.isInset(pos)
 		    && par.getInset(pos)->display())
 			&& (!(tclass.isDefaultLayout(par.layout())
-	         || tclass.isEmptyLayout(par.layout()))
+	         || tclass.isPlainLayout(par.layout()))
 	        || buffer.params().paragraph_separation == BufferParams::ParagraphIndentSeparation)
 	    )
 	{

@@ -607,7 +607,7 @@ void GuiLayoutBox::updateContents(bool reset)
 
 	for (; lit != len; ++lit) {
 		docstring const & name = lit->name();
-		bool const useEmpty = inset_->forceEmptyLayout() || inset_->useEmptyLayout();
+		bool const useEmpty = inset_->forcePlainLayout() || inset_->usePlainLayout();
 		// if this inset requires the empty layout, we skip the default
 		// layout
 		if (name == text_class_->defaultLayoutName() && inset_ && useEmpty)

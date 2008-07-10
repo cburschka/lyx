@@ -156,11 +156,11 @@ public:
 	///
 	InsetCode ownerCode() const;
 	///
-	bool forceEmptyLayout() const;
+	bool forcePlainLayout() const;
 	///
 	bool allowParagraphCustomization() const;
 	///
-	bool useEmptyLayout() const;
+	bool usePlainLayout() const;
 	///
 	pos_type size() const;
 	///
@@ -171,7 +171,7 @@ public:
 	/// Do not pass a temporary to this!
 	void setLayout(Layout const & layout);
 	///
-	void setEmptyOrDefaultLayout(DocumentClass const & tc);
+	void setPlainOrDefaultLayout(DocumentClass const & tc);
 
 	/// This is the item depth, only used by enumerate and itemize
 	signed char itemdepth;

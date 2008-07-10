@@ -1042,7 +1042,7 @@ bool TextClass::isDefaultLayout(Layout const & layout) const
 }
 
 
-bool TextClass::isEmptyLayout(Layout const & layout) const 
+bool TextClass::isPlainLayout(Layout const & layout) const 
 {
 	return layout.name() == emptyLayoutName();
 }

@@ -96,7 +96,7 @@ BoxTranslatorLoc const & boxtranslator_loc()
 InsetBox::InsetBox(Buffer const & buffer, string const & label)
 	: InsetCollapsable(buffer), params_(label)
 {
-	if (forceEmptyLayout())
+	if (forcePlainLayout())
 		paragraphs().back().setLayout(buffer.params().documentClass().emptyLayout());
 }
 
@@ -176,7 +176,7 @@ void InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 }
 
 
-bool InsetBox::forceEmptyLayout(idx_type) const
+bool InsetBox::forcePlainLayout(idx_type) const
 {
 	return !params_.inner_box && params_.type != "Framed";
 }

@@ -129,15 +129,15 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	}
 
 	// set the paragraphs to empty layout if necessary
-	if (cur.inset().useEmptyLayout()) {
-		bool forceEmptyLayout = cur.inset().forceEmptyLayout();
+	if (cur.inset().usePlainLayout()) {
+		bool forcePlainLayout = cur.inset().forcePlainLayout();
 		Layout const & emptyLayout = newDocClass->emptyLayout();
 		Layout const & defaultLayout = newDocClass->defaultLayout();
 		ParagraphList::iterator const end = insertion.end();
 		ParagraphList::iterator par = insertion.begin();
 		for (; par != end; ++par) {
 			Layout const & parLayout = par->layout();
-			if (forceEmptyLayout || parLayout == defaultLayout)
+			if (forcePlainLayout || parLayout == defaultLayout)
 				par->setLayout(emptyLayout);
 		}
 	} else { // check if we need to reset from empty layout
@@ -511,7 +511,7 @@ void switchBetweenClasses(DocumentClass const * const oldone,
 		docstring const name = it->layout().name();
 		bool hasLayout = newtc.hasLayout(name);
 
-		if (in.useEmptyLayout())
+		if (in.usePlainLayout())
 			it->setLayout(newtc.emptyLayout());
 		else if (hasLayout)
 			it->setLayout(newtc[name]);

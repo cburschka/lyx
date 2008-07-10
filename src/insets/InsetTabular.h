@@ -636,9 +636,9 @@ public:
 	///
 	Inset * clone() { return new InsetTableCell(*this); }
 	///
-	virtual bool useEmptyLayout() const { return true; }
+	virtual bool usePlainLayout() const { return true; }
 	/// 
-	virtual bool forceEmptyLayout(idx_type = 0) const;
+	virtual bool forcePlainLayout(idx_type = 0) const;
 	/// 
 	virtual bool allowParagraphCustomization(idx_type = 0) const;
 	///
@@ -746,9 +746,9 @@ public:
 	/// should all paragraphs be output with "Standard" layout?
 	virtual bool allowParagraphCustomization(idx_type cell = 0) const;
 	///
-	virtual bool forceEmptyLayout(idx_type cell = 0) const;
+	virtual bool forcePlainLayout(idx_type cell = 0) const;
 	///
-	virtual bool useEmptyLayout() { return true; }
+	virtual bool usePlainLayout() { return true; }
 	///
 	void addPreview(graphics::PreviewLoader &) const;
 

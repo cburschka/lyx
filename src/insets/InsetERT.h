@@ -63,7 +63,7 @@ private:
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
-	virtual bool forceEmptyLayout(idx_type = 0) const { return true; }
+	virtual bool forcePlainLayout(idx_type = 0) const { return true; }
 	///
 	virtual bool allowParagraphCustomization(idx_type = 0) const { return false; }
 	/// should paragraph indendation be omitted in any case?

@@ -105,9 +105,9 @@ private:
 	///
 	DisplayType display() const { return Inline; }
 	///
-	bool allowParagraphCustomization(idx_type = 0) { return forceEmptyLayout(); }
+	bool allowParagraphCustomization(idx_type = 0) { return forcePlainLayout(); }
 	///
-	bool forceEmptyLayout(idx_type = 0) const;
+	bool forcePlainLayout(idx_type = 0) const;
 	///
 	bool neverIndent() const { return true; }
 	///

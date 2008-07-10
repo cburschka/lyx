@@ -116,7 +116,7 @@ public:
 	///
 	bool isDefaultLayout(Layout const &) const;
 	/// 
-	bool isEmptyLayout(Layout const &) const;
+	bool isPlainLayout(Layout const &) const;
 	/// returns a special layout for use when we don't really want one,
 	/// e.g., in table cells
 	Layout const & emptyLayout() const 

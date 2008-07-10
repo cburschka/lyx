@@ -224,7 +224,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	if (insetText && !insetText->allowMultiPar() || cur.lastpit() == 0) {
 		// reset first par to default
 		cur.text()->paragraphs().begin()
-			->setEmptyOrDefaultLayout(bparams.documentClass());
+			->setPlainOrDefaultLayout(bparams.documentClass());
 		cur.pos() = 0;
 		cur.pit() = 0;
 		// Merge multiple paragraphs -- hack
@@ -232,7 +232,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 			mergeParagraph(bparams, cur.text()->paragraphs(), 0);
 	} else {
 		// reset surrounding par to default
-		docstring const layoutname = insetText->useEmptyLayout()
+		docstring const layoutname = insetText->usePlainLayout()
 			? bparams.documentClass().emptyLayoutName()
 			: bparams.documentClass().defaultLayoutName();
 		cur.leaveInset(*inset);
@@ -1007,10 +1007,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (layout.empty())
 			layout = tclass.defaultLayoutName();
 
-		if (para.forceEmptyLayout()) 
+		if (para.forcePlainLayout()) 
 			// in this case only the empty layout is allowed
 			layout = tclass.emptyLayoutName();
-		else if (para.useEmptyLayout()) {
+		else if (para.usePlainLayout()) {
 			// in this case, default layout maps to empty layout 
 			if (layout == tclass.defaultLayoutName())
 				layout = tclass.emptyLayoutName();
@@ -1398,7 +1398,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// add a separate paragraph for the caption inset
 		pars.push_back(Paragraph());
 		pars.back().setInsetOwner(pars[0].inInset());
-		pars.back().setEmptyOrDefaultLayout(tclass);
+		pars.back().setPlainOrDefaultLayout(tclass);
 		int cap_pit = pars.size() - 1;
 
 		// if an empty inset was created, we create an additional empty
@@ -1407,7 +1407,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (!content) {
 			pars.push_back(Paragraph());
 			pars.back().setInsetOwner(pars[0].inInset());
-			pars.back().setEmptyOrDefaultLayout(tclass);
+			pars.back().setPlainOrDefaultLayout(tclass);
 		}
 
 		// reposition the cursor to the caption
@@ -1690,7 +1690,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				breakParagraph(cur);
 			}
 
-			docstring const laystr = cur.inset().useEmptyLayout() ?
+			docstring const laystr = cur.inset().usePlainLayout() ?
 				tclass.emptyLayoutName() :
 				tclass.defaultLayoutName();
 			setLayout(cur, laystr);

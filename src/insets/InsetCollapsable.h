@@ -54,7 +54,7 @@ public:
 	/// to name()
 	void setLayout(DocumentClass const * const tc);
 	///
-	virtual bool useEmptyLayout() { return true; }
+	virtual bool usePlainLayout() { return true; }
 	///
 	void read(Lexer &);
 	///
@@ -144,7 +144,7 @@ public:
 	/// Force inset into LTR environment if surroundings are RTL?
 	virtual bool forceLTR() const { return layout_->isForceLtr(); }
 	///
-	virtual bool useEmptyLayout() const { return true; }
+	virtual bool usePlainLayout() const { return true; }
 	/// Is this inset's layout defined in the document's textclass?
 	/// May be wrong after textclass change or paste from another document
 	bool undefined() const;

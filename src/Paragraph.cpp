@@ -1605,12 +1605,12 @@ void Paragraph::setBeginOfBody()
 }
 
 
-bool Paragraph::forceEmptyLayout() const
+bool Paragraph::forcePlainLayout() const
 {
 	Inset const * const inset = inInset();
 	if (!inset)
 		return true;
-	return inset->forceEmptyLayout();
+	return inset->forcePlainLayout();
 }
 
 
@@ -1623,12 +1623,12 @@ bool Paragraph::allowParagraphCustomization() const
 }
 
 
-bool Paragraph::useEmptyLayout() const
+bool Paragraph::usePlainLayout() const
 {
 	Inset const * const inset = inInset();
 	if (!inset)
 		return false;
-	return inset->useEmptyLayout();
+	return inset->usePlainLayout();
 }
 
 
@@ -1822,7 +1822,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 
 	bool return_value = false;
 
-	bool asdefault = forceEmptyLayout();
+	bool asdefault = forcePlainLayout();
 
 	Layout const & style = asdefault ?
 		bparams.documentClass().emptyLayout() :
@@ -2365,9 +2365,9 @@ void Paragraph::setLayout(Layout const & layout)
 }
 
 
-void Paragraph::setEmptyOrDefaultLayout(DocumentClass const & tclass)
+void Paragraph::setPlainOrDefaultLayout(DocumentClass const & tclass)
 {
-	if (useEmptyLayout())
+	if (usePlainLayout())
 		setLayout(tclass.emptyLayout());
 	else
 		setLayout(tclass.defaultLayout());

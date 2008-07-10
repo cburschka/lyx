@@ -84,7 +84,7 @@ private:
 	///
 	void setParams(InsetBranchParams const & params) { params_ = params; }
 	///
-	virtual bool useEmptyLayout() { return false; }
+	virtual bool usePlainLayout() { return false; }
 
 	/** \returns true if params_.branch is listed as 'selected' in
 	    \c buffer. This handles the case of child documents.
@@ -104,7 +104,7 @@ private:
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
-	bool useEmptyLayout() const { return false; }
+	bool usePlainLayout() const { return false; }
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

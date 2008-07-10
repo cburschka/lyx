@@ -2716,7 +2716,7 @@ InsetTableCell::InsetTableCell(Buffer const & buf,
 {}
 
 
-bool InsetTableCell::forceEmptyLayout(idx_type) const
+bool InsetTableCell::forcePlainLayout(idx_type) const
 {
 	LASSERT(table_, /**/);
 	LASSERT(cell_data_, /**/);
@@ -2736,7 +2736,7 @@ bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
 	bool enabled;
 	switch (cmd.action) {
 	case LFUN_LAYOUT:
-		enabled = !forceEmptyLayout();
+		enabled = !forcePlainLayout();
 		break;
 	case LFUN_LAYOUT_PARAGRAPH:
 		enabled = allowParagraphCustomization();
@@ -4697,7 +4697,7 @@ bool InsetTabular::allowParagraphCustomization(idx_type cell) const
 }
 
 
-bool InsetTabular::forceEmptyLayout(idx_type cell) const
+bool InsetTabular::forcePlainLayout(idx_type cell) const
 {
 	return !tabular.getPWidth(cell).zero();
 }
