@@ -319,19 +319,18 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 	xp[3] = x + w;
 	yp[3] = y - max(h / 4, 1);
 
-	if (params_.length.inBP() < 0) {
-		// turn symbol upside down. A prettier solution would use
-		// inverted arrows (like in VSpace).
-		swap(yp[0], yp[1]);
-		swap(yp[2], yp[3]);
-	}
 	if (params_.kind == InsetSpaceParams::PROTECTED ||
 	    params_.kind == InsetSpaceParams::ENSPACE ||
 	    params_.kind == InsetSpaceParams::NEGTHIN ||
 	    params_.kind == InsetSpaceParams::CUSTOM_PROTECTED)
 		pi.pain.lines(xp, yp, 4, Color_latex);
-	else
-		pi.pain.lines(xp, yp, 4, Color_special);
+	else {
+		if (params_.length.inBP() < 0) {
+			// use another color for negative spaces
+			pi.pain.lines(xp, yp, 4, Color_red);
+		} else
+			pi.pain.lines(xp, yp, 4, Color_special);
+	}
 }
 
 
