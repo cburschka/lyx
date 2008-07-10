@@ -250,8 +250,7 @@ def latex2lyx(data):
                 if pos == -1:
                     break
                 nextpos = pos + len(rep[0])
-                nextchar = data[nextpos - 1 : nextpos]
-                if nextchar.isalpha():
+                if nextpos < len(data) and data[nextpos].isalpha():
                     # not the end of that command
                     pos = nextpos
                     continue
@@ -997,38 +996,40 @@ def revert_latexcommand_index(document):
         j = find_end_of_inset(document.body, i + 1)
         if j == -1:
           return
-        del document.body[j - 1]
-        del document.body[j - 2] # \end_layout
-        document.body[i] =  "\\begin_inset CommandInset index"
-        document.body[i + 1] =  "LatexCommand index"
+
         # clean up multiline stuff
         content = ""
         ert_end = 0
-        for k in range(i + 3, j - 2):
-          line = document.body[k]
+        reps = read_unicodesymbols()
+
+        for curline in range(i + 3, j - 2): # can skip last couple lines
+          line = document.body[curline]
           if line.startswith("\\begin_inset ERT"):
-              ert_end = find_end_of_inset(document.body, k + 1)
-              line = line[16:]
-          if line.startswith("\\begin_inset Formula"):
-            line = line[20:]
-          if line.startswith("\\begin_layout Standard"):
-            line = line[22:]
-          if line.startswith("\\begin_layout Plain Layout"):
-            line = line[26:]
-          if line.startswith("\\end_layout"):
-            line = line[11:]
-          if line.startswith("\\end_inset"):
-            line = line[10:]
-          if line.startswith("status collapsed"):
-            line = line[16:]
-          if line.startswith("status open"):
-            line = line[11:]
+              # We don't want to replace things inside ERT, so figure out
+              # where the end of the inset is.
+              ert_end = find_end_of_inset(document.body, curline + 1)
+              continue
+          elif line.startswith("\\begin_inset Formula"):
+              line = line[20:]
+          elif line.isspace() or \
+               line.startswith("\\begin_layout Standard") or \
+               line.startswith("\\begin_layout Plain Layout") or \
+               line.startswith("\\end_layout") or \
+               line.startswith("\\end_inset") or \
+               line.startswith("\\lang") or \
+               line.startswith("status collapsed") or \
+               line.startswith("status open"):
+              #skip all that stuff
+              continue
+
           # a lossless reversion is not possible
           # try at least to handle some common insets and settings
           # do not replace inside ERTs
-          if ert_end < k:
+          if ert_end >= curline:
+              line = line.replace(r'\backslash', r'\\')
+          else:
               # Do the LyX text --> LaTeX conversion
-              for rep in replacements:
+              for rep in reps:
                 line = line.replace(rep[1], rep[0])
               line = line.replace(r'\backslash', r'\textbackslash{}')
               line = line.replace(r'\series bold', r'\bfseries{}').replace(r'\series default', r'\mdseries{}')
@@ -1040,15 +1041,14 @@ def revert_latexcommand_index(document):
               line = line.replace(r'\family sans', r'\sffamily{}').replace(r'\family default', r'\normalfont{}')
               line = line.replace(r'\family typewriter', r'\ttfamily{}').replace(r'\family roman', r'\rmfamily{}')
               line = line.replace(r'\InsetSpace ', r'').replace(r'\SpecialChar ', r'')
-          else:
-              line = line.replace(r'\backslash', r'\\')
-          content = content + line;
-        document.body[i + 3] = "name " + '"' + content + '"'
-        for k in range(i + 4, j - 2):
-          del document.body[i + 4]
-        document.body.insert(i + 4, "")
-        del document.body[i + 2] # \begin_layout standard
-        i = i + 5
+          content += line;
+
+        # end of curline loop
+        # escape quotes
+        content = content.replace('"', r'\"')
+        document.body[i:j] = ["\\begin_inset CommandInset index", "LatexCommand index",
+            "name " + '"' + content + '"', ""]
+        i += 5
 
 
 def revert_wraptable(document):
