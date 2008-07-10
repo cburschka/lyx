@@ -1868,6 +1868,14 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_CHANGE_NEXT, "change-next", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_CHANGES_MERGE
+ * \li Action: Open change tracking dialog for merging and moves the cursor
+               to the position of the next change.
+ * \li Syntax: changes-merge
+ * \li Origin: Levon, 16 Oct 2002
+ * \endvar
+ */
 		{ LFUN_CHANGES_MERGE, "changes-merge", Noop, Edit },
 		{ LFUN_CHANGE_ACCEPT, "change-accept", Noop, Edit },
 		{ LFUN_CHANGE_REJECT, "change-reject", Noop, Edit },
