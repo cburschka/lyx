@@ -320,7 +320,8 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 	yp[3] = y - max(h / 4, 1);
 
 	if (params_.length.inBP() < 0) {
-		// turn symbol upside down
+		// turn symbol upside down. A prettier solution would use
+		// inverted arrows (like in VSpace).
 		swap(yp[0], yp[1]);
 		swap(yp[2], yp[3]);
 	}
