@@ -1165,6 +1165,8 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		buffer_.text().cursorBottom(d->cursor_);
 		// accept everything in a single step to support atomic undo
 		buffer_.text().acceptOrRejectChanges(d->cursor_, Text::ACCEPT);
+		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
+		processUpdateFlags(Update::Force | Update::FitCursor);
 		break;
 
 	case LFUN_ALL_CHANGES_REJECT:
@@ -1175,6 +1177,8 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		// reject everything in a single step to support atomic undo
 		// Note: reject does not work recursively; the user may have to repeat the operation
 		buffer_.text().acceptOrRejectChanges(d->cursor_, Text::REJECT);
+		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
+		processUpdateFlags(Update::Force | Update::FitCursor);
 		break;
 
 	case LFUN_WORD_FIND: {
