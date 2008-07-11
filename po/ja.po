@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-02 23:31+0200\n"
+"POT-Creation-Date: 2008-07-09 16:14+0200\n"
 "PO-Revision-Date: 2008-06-12 22:50+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-devel@lists.lyx.org>\n"
@@ -88,7 +88,7 @@ msgstr "&OK"
 #: src/Buffer.cpp:2507 src/Buffer.cpp:2531 src/Buffer.cpp:2566
 #: src/LyXFunc.cpp:664 src/LyXFunc.cpp:800 src/LyXFunc.cpp:978
 #: src/LyXVC.cpp:160 src/frontends/qt4/GuiClipboard.cpp:208
-#: src/frontends/qt4/GuiDocument.cpp:1298
+#: src/frontends/qt4/GuiDocument.cpp:1302
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1455
 #: src/frontends/qt4/GuiView.cpp:1633 src/frontends/qt4/GuiView.cpp:1678
@@ -362,8 +362,8 @@ msgstr "復元(&R)"
 #: src/frontends/qt4/ui/ParagraphUi.ui:89 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/VSpaceUi.ui:49
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1318
-#: src/frontends/qt4/GuiDocument.cpp:2100
+#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1322
+#: src/frontends/qt4/GuiDocument.cpp:2129
 msgid "&Apply"
 msgstr "適用(&A)"
 
@@ -485,9 +485,9 @@ msgstr "大きさ(&Z):"
 #: src/frontends/qt4/GuiDocument.cpp:95 src/frontends/qt4/GuiDocument.cpp:111
 #: src/frontends/qt4/GuiDocument.cpp:124 src/frontends/qt4/GuiDocument.cpp:638
 #: src/frontends/qt4/GuiDocument.cpp:675 src/frontends/qt4/GuiDocument.cpp:687
-#: src/frontends/qt4/GuiDocument.cpp:1156
-#: src/frontends/qt4/GuiDocument.cpp:1201
-#: src/frontends/qt4/GuiDocument.cpp:2141 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:1160
+#: src/frontends/qt4/GuiDocument.cpp:1205
+#: src/frontends/qt4/GuiDocument.cpp:2170 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:69 src/frontends/qt4/GuiListings.cpp:151
 #: src/frontends/qt4/GuiListings.cpp:158 src/frontends/qt4/GuiPrefs.cpp:1707
 msgid "Default"
@@ -606,7 +606,7 @@ msgstr "フォントの太さ"
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:118
-#: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:980
+#: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:984
 #: src/frontends/qt4/GuiPrefs.cpp:1665
 msgid "Language"
 msgstr "言語"
@@ -1548,25 +1548,25 @@ msgstr "選択済み(&E):"
 msgid "A&vailable:"
 msgstr "選択可能(&V):"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:186
+#: src/frontends/qt4/ui/LaTeXUi.ui:173
 msgid "&Postscript driver:"
 msgstr "PostScriptドライバ(&P):"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:199
+#: src/frontends/qt4/ui/LaTeXUi.ui:186
 msgid "&Options:"
 msgstr "オプション(&O):"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:217
+#: src/frontends/qt4/ui/LaTeXUi.ui:196
+msgid "Document &class:"
+msgstr "文書クラス(&C):"
+
+#: src/frontends/qt4/ui/LaTeXUi.ui:247
 msgid "Click to select a local document class definition file"
 msgstr "ローカルの文書クラス定義ファイルを選択するときはクリックしてください"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:220
+#: src/frontends/qt4/ui/LaTeXUi.ui:250
 msgid "&Local Layout..."
 msgstr "ローカルのレイアウト(&L)"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:227
-msgid "Document &class:"
-msgstr "文書クラス(&C):"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:25
 msgid "Encoding"
@@ -1916,8 +1916,114 @@ msgstr "目次に載せる(&L)"
 msgid "&Numbering"
 msgstr "連番を振る(&N)"
 
+#: src/frontends/qt4/ui/PDFSupportUi.ui:28
+msgid "&Use hyperref support"
+msgstr "hyperrefサポートを使う(&U)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:53
+msgid "&General"
+msgstr "一般(&G)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:99
+msgid ""
+"If not stated explicitly, fill title and author from appropriate environments"
+msgstr "明示的に指定しなければ、タイトルと著者を適当な環境から補完します"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:102
+msgid "Automatically fi&ll header"
+msgstr "自動的にヘッダを補完(&L)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:109
+msgid "Enable fullscreen PDF presentation"
+msgstr "全画面表示のPDFプレゼンテーションを有効にする"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:112
+msgid "Load in &fullscreen mode"
+msgstr "全画面モードで読み込む(&F)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:121
+msgid "Header Information"
+msgstr "ヘッダ情報"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:133
+msgid "&Title:"
+msgstr "タイトル(&T):"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:146
+msgid "&Author:"
+msgstr "著者(&A):"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:159
+msgid "&Subject:"
+msgstr "主題(&S):"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:172
+msgid "&Keywords:"
+msgstr "キーワード(&K):"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:189
+msgid "H&yperlinks"
+msgstr "ハイパーリンク(&Y)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:222
+msgid "Allows link text to break across lines."
+msgstr "リンクを張った文が行を跨いで改行することを許可する。"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:225
+msgid "B&reak links over lines"
+msgstr "リンクを分割して改行(&R)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:232
+msgid "No &frames around links"
+msgstr "リンクの周りに枠を付けない(&F)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:242
+msgid "C&olor links"
+msgstr "色付きリンク(&O)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:249
+#: src/frontends/qt4/ui/PDFSupportUi.ui:259
+msgid "Adds \"backlink\" text to the end of each item in the bibliography"
+msgstr "参考文献の各アイテムの後ろに「バックリンク」テキストを付加する"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:252
+msgid "B&ibliographical backreferences"
+msgstr "参考文献の逆参照(&I)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:262
+msgid "Backreference by pa&ge number"
+msgstr "頁番号による逆参照(&G)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:285
+msgid "&Bookmarks"
+msgstr "しおり(&B)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:297
+msgid "G&enerate Bookmarks"
+msgstr "しおりを生成する(&E)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:318
+msgid "&Numbered bookmarks"
+msgstr "連番のしおり(&N)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:343
+msgid "Number of levels"
+msgstr "階層数"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:352
+msgid "&Open bookmarks"
+msgstr "しおりを開く(&O)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:392
+msgid "Additional o&ptions"
+msgstr "追加オプション(&P)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:421
+msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+msgstr "例: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+
 #: src/frontends/qt4/ui/PageLayoutUi.ui:33
-#: src/frontends/qt4/GuiDocument.cpp:978
+#: src/frontends/qt4/GuiDocument.cpp:982
 msgid "Page Layout"
 msgstr "ページレイアウト"
 
@@ -2025,112 +2131,6 @@ msgstr "半行"
 #: src/frontends/qt4/GuiDocument.cpp:583
 msgid "Double"
 msgstr "一行"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:28
-msgid "&Use hyperref support"
-msgstr "hyperrefサポートを使う(&U)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:53
-msgid "&General"
-msgstr "一般(&G)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:99
-msgid ""
-"If not stated explicitly, fill title and author from appropriate environments"
-msgstr "明示的に指定しなければ、タイトルと著者を適当な環境から補完します"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:102
-msgid "Automatically fi&ll header"
-msgstr "自動的にヘッダを補完(&L)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:109
-msgid "Enable fullscreen PDF presentation"
-msgstr "全画面表示のPDFプレゼンテーションを有効にする"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:112
-msgid "Load in &fullscreen mode"
-msgstr "全画面モードで読み込む(&F)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:121
-msgid "Header Information"
-msgstr "ヘッダ情報"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:133
-msgid "&Title:"
-msgstr "タイトル(&T):"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:146
-msgid "&Author:"
-msgstr "著者(&A):"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:159
-msgid "&Subject:"
-msgstr "主題(&S):"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:172
-msgid "&Keywords:"
-msgstr "キーワード(&K):"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:189
-msgid "H&yperlinks"
-msgstr "ハイパーリンク(&Y)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:222
-msgid "Allows link text to break across lines."
-msgstr "リンクを張った文が行を跨いで改行することを許可する。"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:225
-msgid "B&reak links over lines"
-msgstr "リンクを分割して改行(&R)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:232
-msgid "No &frames around links"
-msgstr "リンクの周りに枠を付けない(&F)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:242
-msgid "C&olor links"
-msgstr "色付きリンク(&O)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:249
-#: src/frontends/qt4/ui/PDFSupportUi.ui:259
-msgid "Adds \"backlink\" text to the end of each item in the bibliography"
-msgstr "参考文献の各アイテムの後ろに「バックリンク」テキストを付加する"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:252
-msgid "B&ibliographical backreferences"
-msgstr "参考文献の逆参照(&I)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:262
-msgid "Backreference by pa&ge number"
-msgstr "頁番号による逆参照(&G)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:285
-msgid "&Bookmarks"
-msgstr "しおり(&B)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:297
-msgid "G&enerate Bookmarks"
-msgstr "しおりを生成する(&E)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:318
-msgid "&Numbered bookmarks"
-msgstr "連番のしおり(&N)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:343
-msgid "Number of levels"
-msgstr "階層数"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:352
-msgid "&Open bookmarks"
-msgstr "しおりを開く(&O)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:392
-msgid "Additional o&ptions"
-msgstr "追加オプション(&P)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:421
-msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
-msgstr "例: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "&Alter..."
@@ -3839,12 +3839,12 @@ msgstr "証明:"
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:196
 #: lib/layouts/ijmpd.layout:199 lib/layouts/llncs.layout:412
 #: lib/layouts/siamltex.layout:200 lib/layouts/svjour.inc:475
-#: lib/layouts/theorems.inc:24 lib/layouts/theorems.inc:25
-#: lib/layouts/theorems.inc:202 lib/layouts/theorems-ams.inc:24
-#: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
-#: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-proof.inc:14
-#: lib/layouts/theorems-starred.inc:24
+#: lib/layouts/theorems-ams.inc:24 lib/layouts/theorems-ams.inc:25
+#: lib/layouts/theorems-ams.inc:208 lib/layouts/theorems-order.inc:7
+#: lib/layouts/theorems-proof.inc:14
 #: lib/layouts/theorems-starred-equivalents.inc:6
+#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:24
+#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:202
 #: lib/layouts/theorems-chap.module:17 lib/layouts/theorems-sec.module:16
 msgid "Theorem"
 msgstr "定理"
@@ -3857,9 +3857,9 @@ msgstr "定理 #:"
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:246 lib/layouts/ijmpd.layout:251
 #: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:215
-#: lib/layouts/svjour.inc:412 lib/layouts/theorems.inc:69
-#: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-order.inc:19
-#: lib/layouts/theorems-starred-equivalents.inc:20
+#: lib/layouts/svjour.inc:412 lib/layouts/theorems-ams.inc:71
+#: lib/layouts/theorems-order.inc:19
+#: lib/layouts/theorems-starred-equivalents.inc:20 lib/layouts/theorems.inc:69
 msgid "Lemma"
 msgstr "補題"
 
@@ -3872,9 +3872,8 @@ msgstr "補題 #:"
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:236
 #: lib/layouts/ijmpd.layout:237 lib/layouts/llncs.layout:316
 #: lib/layouts/siamltex.layout:222 lib/layouts/svjour.inc:373
-#: lib/layouts/theorems.inc:58 lib/layouts/theorems-ams.inc:59
-#: lib/layouts/theorems-order.inc:13
-#: lib/layouts/theorems-starred-equivalents.inc:13
+#: lib/layouts/theorems-ams.inc:59 lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-starred-equivalents.inc:13 lib/layouts/theorems.inc:58
 msgid "Corollary"
 msgstr "系"
 
@@ -3886,9 +3885,8 @@ msgstr "系 #:"
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:256
 #: lib/layouts/ijmpd.layout:262 lib/layouts/llncs.layout:385
 #: lib/layouts/siamltex.layout:229 lib/layouts/svjour.inc:447
-#: lib/layouts/theorems.inc:80 lib/layouts/theorems-ams.inc:83
-#: lib/layouts/theorems-order.inc:25
-#: lib/layouts/theorems-starred-equivalents.inc:27
+#: lib/layouts/theorems-ams.inc:83 lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems-starred-equivalents.inc:27 lib/layouts/theorems.inc:80
 msgid "Proposition"
 msgstr "命題"
 
@@ -3899,9 +3897,8 @@ msgstr "命題 #:"
 #: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:363
 #: lib/layouts/ijmpc.layout:296 lib/layouts/ijmpd.layout:306
 #: lib/layouts/llncs.layout:309 lib/layouts/svjour.inc:366
-#: lib/layouts/theorems.inc:91 lib/layouts/theorems-ams.inc:95
-#: lib/layouts/theorems-order.inc:31
-#: lib/layouts/theorems-starred-equivalents.inc:34
+#: lib/layouts/theorems-ams.inc:95 lib/layouts/theorems-order.inc:31
+#: lib/layouts/theorems-starred-equivalents.inc:34 lib/layouts/theorems.inc:91
 msgid "Conjecture"
 msgstr "推論"
 
@@ -3919,7 +3916,7 @@ msgid "Criterion #:"
 msgstr "基準 #:"
 
 #: lib/layouts/IEEEtran.layout:133 lib/layouts/beamer.layout:977
-#: lib/layouts/theorems.inc:102 lib/layouts/theorems-ams.inc:107
+#: lib/layouts/theorems-ams.inc:107 lib/layouts/theorems.inc:102
 msgid "Fact"
 msgstr "事実"
 
@@ -3940,9 +3937,9 @@ msgstr "公理 #:"
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:132
 #: lib/layouts/ijmpd.layout:129 lib/layouts/llncs.layout:330
 #: lib/layouts/siamltex.layout:236 lib/layouts/svjour.inc:387
-#: lib/layouts/theorems.inc:113 lib/layouts/theorems-ams.inc:119
-#: lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems-ams.inc:119 lib/layouts/theorems-order.inc:37
 #: lib/layouts/theorems-starred-equivalents.inc:41
+#: lib/layouts/theorems.inc:113
 msgid "Definition"
 msgstr "定義"
 
@@ -3953,10 +3950,10 @@ msgstr "定義 #:"
 #: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:959
 #: lib/layouts/elsart.layout:370 lib/layouts/ijmpc.layout:166
 #: lib/layouts/ijmpd.layout:163 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:132
-#: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-order.inc:43
+#: lib/layouts/svjour.inc:394 lib/layouts/theorems-ams.inc:138
+#: lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:48
-#: src/frontends/qt4/GuiDocument.cpp:825
+#: lib/layouts/theorems.inc:132 src/frontends/qt4/GuiDocument.cpp:827
 msgid "Example"
 msgstr "例"
 
@@ -3975,9 +3972,9 @@ msgstr "条件 #:"
 
 #: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:377
 #: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:426
-#: lib/layouts/theorems.inc:144 lib/layouts/theorems-ams.inc:150
-#: lib/layouts/theorems-order.inc:49
+#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-order.inc:49
 #: lib/layouts/theorems-starred-equivalents.inc:55
+#: lib/layouts/theorems.inc:144
 msgid "Problem"
 msgstr "問題"
 
@@ -3986,9 +3983,10 @@ msgid "Problem #:"
 msgstr "問題 #:"
 
 #: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:401 lib/layouts/theorems.inc:156
-#: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-order.inc:55
+#: lib/layouts/svjour.inc:401 lib/layouts/theorems-ams.inc:162
+#: lib/layouts/theorems-order.inc:55
 #: lib/layouts/theorems-starred-equivalents.inc:62
+#: lib/layouts/theorems.inc:156
 msgid "Exercise"
 msgstr "演習"
 
@@ -3999,9 +3997,9 @@ msgstr "演習 #:"
 #: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:384
 #: lib/layouts/ijmpc.layout:176 lib/layouts/ijmpd.layout:174
 #: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:461
-#: lib/layouts/theorems.inc:168 lib/layouts/theorems-ams.inc:174
-#: lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems-ams.inc:174 lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:69
+#: lib/layouts/theorems.inc:168
 msgid "Remark"
 msgstr "注釈"
 
@@ -4012,9 +4010,10 @@ msgstr "注釈 #:"
 #: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:398
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:286
 #: lib/layouts/ijmpd.layout:295 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:345 lib/layouts/theorems.inc:188
-#: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-order.inc:67
+#: lib/layouts/svjour.inc:345 lib/layouts/theorems-ams.inc:194
+#: lib/layouts/theorems-order.inc:67
 #: lib/layouts/theorems-starred-equivalents.inc:76
+#: lib/layouts/theorems.inc:188
 msgid "Claim"
 msgstr "主張"
 
@@ -4044,13 +4043,13 @@ msgid "Notation #:"
 msgstr "記法 #:"
 
 #: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:413
-#: lib/layouts/llncs.layout:281 lib/layouts/theorems.inc:201
-#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-order.inc:73
+#: lib/layouts/llncs.layout:281 lib/layouts/theorems-ams.inc:207
+#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:201
 msgid "Case"
 msgstr "ケース"
 
-#: lib/layouts/IEEEtran.layout:246 lib/layouts/theorems.inc:207
-#: lib/layouts/theorems-ams.inc:213
+#: lib/layouts/IEEEtran.layout:246 lib/layouts/theorems-ams.inc:213
+#: lib/layouts/theorems.inc:207
 msgid "Case #:"
 msgstr "ケース #:"
 
@@ -4200,7 +4199,7 @@ msgstr "索引の見出し---"
 #: lib/layouts/simplecv.layout:139 lib/layouts/aguplus.inc:167
 #: lib/layouts/aguplus.inc:169 lib/layouts/amsdefs.inc:201
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:323 src/frontends/qt4/GuiDocument.cpp:982
+#: lib/layouts/svjour.inc:323 src/frontends/qt4/GuiDocument.cpp:986
 msgid "Bibliography"
 msgstr "参考文献"
 
@@ -4503,10 +4502,10 @@ msgstr "サブジェクト・ヘッディング:"
 msgid "[Acknowledgements]"
 msgstr "[謝辞]"
 
-#: lib/layouts/aastex.layout:350 src/frontends/qt4/GuiDocument.cpp:1341
-#: src/frontends/qt4/GuiDocument.cpp:1351
-#: src/frontends/qt4/GuiDocument.cpp:1391
-#: src/frontends/qt4/GuiDocument.cpp:1410
+#: lib/layouts/aastex.layout:350 src/frontends/qt4/GuiDocument.cpp:1345
+#: src/frontends/qt4/GuiDocument.cpp:1355
+#: src/frontends/qt4/GuiDocument.cpp:1395
+#: src/frontends/qt4/GuiDocument.cpp:1414
 msgid "and"
 msgstr "および"
 
@@ -4701,6 +4700,11 @@ msgstr "ラテン切"
 msgid "Latin off"
 msgstr "ラテン切"
 
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "フレーム開始"
+
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:117
 #: lib/layouts/beamer.layout:132 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:32 lib/layouts/scrartcl.layout:20
@@ -4715,11 +4719,6 @@ msgstr "部"
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "部*"
-
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "フレーム開始"
 
 #: lib/layouts/beamer.layout:107 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:114 lib/layouts/stdlists.inc:65
@@ -6410,7 +6409,7 @@ msgid "Notation \\thenotation."
 msgstr "記法 \\thenotation."
 
 #: lib/layouts/ijmpc.layout:206 lib/layouts/ijmpd.layout:209
-#: lib/layouts/theorems.inc:42 lib/layouts/theorems-ams.inc:42
+#: lib/layouts/theorems-ams.inc:42 lib/layouts/theorems.inc:42
 msgid "Theorem \\thetheorem."
 msgstr "定理 \\thetheorem."
 
@@ -8009,47 +8008,47 @@ msgstr "抜き刷り"
 msgid "Offprints:"
 msgstr "抜き刷り:"
 
-#: lib/layouts/theorems.inc:62 lib/layouts/theorems-ams.inc:63
+#: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:62
 msgid "Corollary \\thetheorem."
 msgstr "系 \\thetheorem."
 
-#: lib/layouts/theorems.inc:73 lib/layouts/theorems-ams.inc:75
+#: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems.inc:73
 msgid "Lemma \\thetheorem."
 msgstr "補題 \\thetheorem."
 
-#: lib/layouts/theorems.inc:84 lib/layouts/theorems-ams.inc:87
+#: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems.inc:84
 msgid "Proposition \\thetheorem."
 msgstr "命題 \\thetheorem."
 
-#: lib/layouts/theorems.inc:95 lib/layouts/theorems-ams.inc:99
+#: lib/layouts/theorems-ams.inc:99 lib/layouts/theorems.inc:95
 msgid "Conjecture \\thetheorem."
 msgstr "予想 \\thetheorem."
 
-#: lib/layouts/theorems.inc:106 lib/layouts/theorems-ams.inc:111
+#: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems.inc:106
 msgid "Fact \\thetheorem."
 msgstr "事実 \\thetheorem."
 
-#: lib/layouts/theorems.inc:117 lib/layouts/theorems-ams.inc:123
+#: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:117
 msgid "Definition \\thetheorem."
 msgstr "定義 \\thetheorem."
 
-#: lib/layouts/theorems.inc:135 lib/layouts/theorems-ams.inc:141
+#: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:135
 msgid "Example \\thetheorem."
 msgstr "例 \\thetheorem."
 
-#: lib/layouts/theorems.inc:147 lib/layouts/theorems-ams.inc:153
+#: lib/layouts/theorems-ams.inc:153 lib/layouts/theorems.inc:147
 msgid "Problem \\thetheorem."
 msgstr "問題 \\thetheorem."
 
-#: lib/layouts/theorems.inc:159 lib/layouts/theorems-ams.inc:165
+#: lib/layouts/theorems-ams.inc:165 lib/layouts/theorems.inc:159
 msgid "Exercise \\thetheorem."
 msgstr "演習 \\thetheorem."
 
-#: lib/layouts/theorems.inc:172 lib/layouts/theorems-ams.inc:178
+#: lib/layouts/theorems-ams.inc:178 lib/layouts/theorems.inc:172
 msgid "Remark \\thetheorem."
 msgstr "注釈 \\thetheorem."
 
-#: lib/layouts/theorems.inc:191 lib/layouts/theorems-ams.inc:197
+#: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems.inc:191
 msgid "Claim \\thetheorem."
 msgstr "主張 \\thetheorem."
 
@@ -8154,8 +8153,9 @@ msgid "Endnote"
 msgstr "巻末注"
 
 #: lib/layouts/endnotes.module:6
+#, fuzzy
 msgid ""
-"Adds an endnote command, in addition to footnotes. You will need to add "
+"Adds an endnote inset, in addition to footnotes. You will need to add "
 "\\theendnotes in ERT where you want the endnotes to appear."
 msgstr ""
 "footnoteコマンドに加え、endnoteコマンドを追加する。巻末注を表示させたいところ"
@@ -8182,13 +8182,16 @@ msgstr ""
 "全ての脚注を巻末注にします。巻末注を表示させたいところで\\theendnotesと書いた"
 "ERTを挿入する必要があります。"
 
-#: lib/layouts/hanging.module:2 lib/layouts/hanging.module:15
+#: lib/layouts/hanging.module:2 lib/layouts/hanging.module:16
 msgid "Hanging"
 msgstr "ぶら下げ"
 
-#: lib/layouts/hanging.module:5
-msgid "Adds an environment for hanging paragraphs."
-msgstr "段落のぶら下げのための環境を追加します。"
+#: lib/layouts/hanging.module:6
+msgid ""
+"Adds an environment for hanging paragraphs. Hanging paragraph is a paragraph "
+"in which the first line is set to the left margin, but all subsequent lines "
+"are indented."
+msgstr ""
 
 #: lib/layouts/linguistics.module:2
 msgid "Linguistics"
@@ -8318,7 +8321,10 @@ msgid "Minimalistic"
 msgstr "簡素版"
 
 #: lib/layouts/minimalistic.module:5
-msgid "Redefines several insets as being Minimalistic, for use by old-timers."
+#, fuzzy
+msgid ""
+"Redefines several insets (Index, Branch, URL) as being Minimalistic, for use "
+"by old-timers."
 msgstr "いくつかの差込枠を、昔使っていた人向けに簡素なものに再定義します。"
 
 #: lib/layouts/theorems-ams-extended.module:2
@@ -8694,116 +8700,332 @@ msgid "Japanese"
 msgstr "日本語"
 
 #: lib/languages:56
+#, fuzzy
+msgid "Japanese (CJK)"
+msgstr "日本語"
+
+#: lib/languages:57
 msgid "Kazakh"
 msgstr "カザフ語"
 
-#: lib/languages:58
+#: lib/languages:59
 msgid "Korean"
 msgstr "韓国語"
 
-#: lib/languages:60
+#: lib/languages:61
 msgid "Latin"
 msgstr "ラテン語 "
 
-#: lib/languages:61
+#: lib/languages:62
 msgid "Latvian"
 msgstr "ラトビア語"
 
-#: lib/languages:62
+#: lib/languages:63
 msgid "Lithuanian"
 msgstr "リトアニア語"
 
-#: lib/languages:63
+#: lib/languages:64
 msgid "Lower Sorbian"
 msgstr "低ソルビア語"
 
-#: lib/languages:64
+#: lib/languages:65
 msgid "Hungarian"
 msgstr "ハンガリー語"
 
-#: lib/languages:65
+#: lib/languages:66
 msgid "Norsk"
 msgstr "ノルウェー語"
 
-#: lib/languages:66
+#: lib/languages:67
 msgid "Nynorsk"
 msgstr "ノルウェー語(ニーノシュク)"
 
-#: lib/languages:67
+#: lib/languages:68
 msgid "Polish"
 msgstr "ポーランド語"
 
-#: lib/languages:68
+#: lib/languages:69
 msgid "Portuguese"
 msgstr "ポルトガル語"
 
-#: lib/languages:69
+#: lib/languages:70
 msgid "Romanian"
 msgstr "ルーマニア語"
 
-#: lib/languages:70
+#: lib/languages:71
 msgid "Russian"
 msgstr "ロシア語"
 
-#: lib/languages:71
+#: lib/languages:72
 msgid "North Sami"
 msgstr "北サーミ語"
 
-#: lib/languages:72
+#: lib/languages:73
 msgid "Scottish"
 msgstr "スコットランド語"
 
-#: lib/languages:73
+#: lib/languages:74
 msgid "Serbian"
 msgstr "セルビア語"
 
-#: lib/languages:74
+#: lib/languages:75
 msgid "Serbian (Latin)"
 msgstr "セルビア語(ラテン文字)"
 
-#: lib/languages:75
+#: lib/languages:76
 msgid "Slovak"
 msgstr "スロバキア語"
 
-#: lib/languages:76
+#: lib/languages:77
 msgid "Slovene"
 msgstr "スロベニア語"
 
-#: lib/languages:77
+#: lib/languages:78
 msgid "Spanish"
 msgstr "スペイン語"
 
-#: lib/languages:78
+#: lib/languages:79
 msgid "Spanish (Mexico)"
 msgstr "スペイン語(メキシコ)"
 
-#: lib/languages:79
+#: lib/languages:80
 msgid "Swedish"
 msgstr "スウェーデン語"
 
-#: lib/languages:80 src/frontends/qt4/GuiSymbols.cpp:73
+#: lib/languages:81 src/frontends/qt4/GuiSymbols.cpp:73
 msgid "Thai"
 msgstr "タイ語"
 
-#: lib/languages:81
+#: lib/languages:82
 msgid "Turkish"
 msgstr "トルコ語"
 
-#: lib/languages:82
+#: lib/languages:83
 msgid "Ukrainian"
 msgstr "ウクライナ語"
 
-#: lib/languages:83
+#: lib/languages:84
 msgid "Upper Sorbian"
 msgstr "上ソルビア語"
 
-#: lib/languages:84
+#: lib/languages:85
 msgid "Vietnamese"
 msgstr "ベトナム語"
 
-#: lib/languages:85
+#: lib/languages:86
 msgid "Welsh"
 msgstr "ウェールズ語"
+
+#: lib/encodings:14
+msgid "Unicode (utf8)"
+msgstr ""
+
+#: lib/encodings:19
+msgid "Unicode (ucs-extended) (utf8x)"
+msgstr ""
+
+#: lib/encodings:23
+msgid "Armenian (ArmSCII8)"
+msgstr ""
+
+#: lib/encodings:26
+msgid "Western European (ISO 8859-1)"
+msgstr ""
+
+#: lib/encodings:29
+msgid "Central European (ISO 8859-2)"
+msgstr ""
+
+#: lib/encodings:32
+msgid "Middle European (ISO 8859-3)"
+msgstr ""
+
+#: lib/encodings:35
+#, fuzzy
+msgid "Baltic (ISO 8859-4)"
+msgstr "アラビア語(Arabi)"
+
+#: lib/encodings:38
+#, fuzzy
+msgid "Cyrillic (ISO 8859-5)"
+msgstr "キリル文字"
+
+#: lib/encodings:42
+#, fuzzy
+msgid "Arabic (ISO 8859-6)"
+msgstr "アラビア語(Arabi)"
+
+#: lib/encodings:45
+msgid "Greek (ISO 8859-7)"
+msgstr ""
+
+#: lib/encodings:48
+msgid "Hebrew (ISO 8859-8)"
+msgstr ""
+
+#: lib/encodings:51
+msgid "Turkish (ISO 8859-9)"
+msgstr ""
+
+#: lib/encodings:55
+#, fuzzy
+msgid "Baltic (ISO 8859-13)"
+msgstr "アラビア語(Arabi)"
+
+#: lib/encodings:58
+msgid "Western European (ISO 8859-15)"
+msgstr ""
+
+#: lib/encodings:61
+msgid "South-Eastern European (ISO 8859-16)"
+msgstr ""
+
+#: lib/encodings:64
+msgid "DOS (CP 437)"
+msgstr ""
+
+#: lib/encodings:68
+msgid "DOS-de (CP 437-de)"
+msgstr ""
+
+#: lib/encodings:71
+msgid "Western European (CP 850)"
+msgstr ""
+
+#: lib/encodings:74
+msgid "Central European (CP 852)"
+msgstr ""
+
+#: lib/encodings:77
+#, fuzzy
+msgid "Cyrillic (CP 855)"
+msgstr "キリル文字"
+
+#: lib/encodings:80
+msgid "Western European (CP 858)"
+msgstr ""
+
+#: lib/encodings:83
+msgid "Hebrew (CP 862)"
+msgstr ""
+
+#: lib/encodings:86
+#, fuzzy
+msgid "Nordic languages (CP 865)"
+msgstr "言語指定なし"
+
+#: lib/encodings:89
+#, fuzzy
+msgid "Cyrillic (CP 866)"
+msgstr "キリル文字"
+
+#: lib/encodings:92
+msgid "Central European (CP 1250)"
+msgstr ""
+
+#: lib/encodings:95
+#, fuzzy
+msgid "Cyrillic (CP 1251)"
+msgstr "キリル文字"
+
+#: lib/encodings:98
+msgid "Western European (CP 1252)"
+msgstr ""
+
+#: lib/encodings:101
+#, fuzzy
+msgid "Hebrew (CP 1255)"
+msgstr "アラビア語(Arabi)"
+
+#: lib/encodings:105
+#, fuzzy
+msgid "Arabic (CP 1256)"
+msgstr "アラビア語(Arabi)"
+
+#: lib/encodings:108
+#, fuzzy
+msgid "Baltic (CP 1257)"
+msgstr "アラビア語(Arabi)"
+
+#: lib/encodings:111
+#, fuzzy
+msgid "Cyrillic (KOI8-R)"
+msgstr "キリル文字"
+
+#: lib/encodings:114
+#, fuzzy
+msgid "Cyrillic (KOI8-U)"
+msgstr "キリル文字"
+
+#: lib/encodings:117
+#, fuzzy
+msgid "Cyrillic (pt 154)"
+msgstr "キリル文字"
+
+#: lib/encodings:120
+#, fuzzy
+msgid "Cyrillic (pt 254)"
+msgstr "キリル文字"
+
+#: lib/encodings:145
+#, fuzzy
+msgid "Chinese (simplified) (EUC-CN)"
+msgstr "中国語(簡体字)"
+
+#: lib/encodings:149
+#, fuzzy
+msgid "Chinese (simplified) (GBK)"
+msgstr "中国語(簡体字)"
+
+#: lib/encodings:153
+#, fuzzy
+msgid "Japanese (CJK) (JIS)"
+msgstr "日本語"
+
+#: lib/encodings:157
+msgid "Korean (EUC-KR)"
+msgstr ""
+
+#: lib/encodings:161
+msgid "Unicode (CJK) (utf8)"
+msgstr ""
+
+#: lib/encodings:165
+#, fuzzy
+msgid "Chinese (traditional) (EUC-TW)"
+msgstr "中国語(繁体字)"
+
+#: lib/encodings:169
+#, fuzzy
+msgid "Japanese (CJK) (EUC-JP)"
+msgstr "日本語"
+
+#: lib/encodings:176
+#, fuzzy
+msgid "Japanese (non-CJK) (EUC-JP)"
+msgstr "日本語"
+
+#: lib/encodings:178
+#, fuzzy
+msgid "Japanese (non-CJK) (JIS)"
+msgstr "日本語"
+
+#: lib/encodings:180
+#, fuzzy
+msgid "Japanese (non-CJK) (SJIS)"
+msgstr "日本語"
+
+#: lib/encodings:187
+msgid "Thai (TIS 620-0)"
+msgstr ""
+
+#: lib/encodings:192
+msgid "Unicode (XeTeX) (utf8)"
+msgstr ""
+
+#: lib/encodings:196
+msgid "ASCII"
+msgstr ""
 
 #: lib/ui/classic.ui:32 lib/ui/stdmenus.inc:20
 msgid "File|F"
@@ -9668,7 +9890,7 @@ msgstr "LaTeXの設定|L"
 msgid "About LyX|X"
 msgstr "LyXについて|X"
 
-#: lib/ui/classic.ui:428 src/frontends/qt4/GuiAbout.cpp:98
+#: lib/ui/classic.ui:428 src/frontends/qt4/GuiAbout.cpp:99
 msgid "About LyX"
 msgstr "LyXについて"
 
@@ -10612,11 +10834,11 @@ msgstr "文書を印刷"
 msgid "Check spelling"
 msgstr "スペルチェック"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1014
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1021
 msgid "Undo"
 msgstr "元に戻す"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1023
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1030
 msgid "Redo"
 msgstr "やり直す"
 
@@ -10981,7 +11203,7 @@ msgid "Fractions"
 msgstr "分数"
 
 #: lib/ui/stdtoolbars.inc:217 lib/ui/stdtoolbars.inc:309
-#: src/frontends/qt4/GuiDocument.cpp:976
+#: src/frontends/qt4/GuiDocument.cpp:980
 msgid "Fonts"
 msgstr "フォント"
 
@@ -13548,7 +13770,7 @@ msgstr "MS Word|W"
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: src/BiblioInfo.cpp:118 src/frontends/qt4/GuiDocument.cpp:1340
+#: src/BiblioInfo.cpp:118 src/frontends/qt4/GuiDocument.cpp:1344
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$sおよび%2$s"
@@ -13617,12 +13839,12 @@ msgstr "\\begin_headerがありません"
 msgid "\\begin_document is missing"
 msgstr "\\begin_documentがありません"
 
-#: src/Buffer.cpp:549 src/Buffer.cpp:555 src/BufferView.cpp:1130
-#: src/BufferView.cpp:1136
+#: src/Buffer.cpp:549 src/Buffer.cpp:555 src/BufferView.cpp:1137
+#: src/BufferView.cpp:1143
 msgid "Changes not shown in LaTeX output"
 msgstr "変更箇所はLaTeXの出力に表示されません。"
 
-#: src/Buffer.cpp:550 src/BufferView.cpp:1131
+#: src/Buffer.cpp:550 src/BufferView.cpp:1138
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -13634,7 +13856,7 @@ msgstr ""
 "これらのパッケージをインストールするか，LaTeXプリアンブルの中で\\lyxaddedと"
 "\\lyxdeletedを再定義してください"
 
-#: src/Buffer.cpp:556 src/BufferView.cpp:1137
+#: src/Buffer.cpp:556 src/BufferView.cpp:1144
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -14042,93 +14264,93 @@ msgstr "内部レイアウト情報の読み込みエラーです"
 msgid "No more insets"
 msgstr "差込枠はもうありません"
 
-#: src/BufferView.cpp:670
+#: src/BufferView.cpp:672
 msgid "Save bookmark"
 msgstr "しおりを保存"
 
-#: src/BufferView.cpp:1017
+#: src/BufferView.cpp:1024
 msgid "No further undo information"
 msgstr "これ以上元に戻すことはできません"
 
-#: src/BufferView.cpp:1026
+#: src/BufferView.cpp:1033
 msgid "No further redo information"
 msgstr "これ以上やり直すことはできません"
 
-#: src/BufferView.cpp:1180 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1187 src/lyxfind.cpp:295 src/lyxfind.cpp:313
 msgid "String not found!"
 msgstr "文字列が見つかりません！"
 
-#: src/BufferView.cpp:1204
+#: src/BufferView.cpp:1211
 msgid "Mark off"
 msgstr "マーク切"
 
-#: src/BufferView.cpp:1211
+#: src/BufferView.cpp:1218
 msgid "Mark on"
 msgstr "マーク入"
 
-#: src/BufferView.cpp:1218
+#: src/BufferView.cpp:1225
 msgid "Mark removed"
 msgstr "マーク削除"
 
-#: src/BufferView.cpp:1221
+#: src/BufferView.cpp:1228
 msgid "Mark set"
 msgstr "マーク設定"
 
-#: src/BufferView.cpp:1268
+#: src/BufferView.cpp:1275
 msgid "Statistics for the selection:"
 msgstr "選択範囲の統計:"
 
-#: src/BufferView.cpp:1270
+#: src/BufferView.cpp:1277
 msgid "Statistics for the document:"
 msgstr "文書の統計:"
 
-#: src/BufferView.cpp:1273
+#: src/BufferView.cpp:1280
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d語"
 
-#: src/BufferView.cpp:1275
+#: src/BufferView.cpp:1282
 msgid "One word"
 msgstr "1語"
 
-#: src/BufferView.cpp:1278
+#: src/BufferView.cpp:1285
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d字(空白含む)"
 
-#: src/BufferView.cpp:1281
+#: src/BufferView.cpp:1288
 msgid "One character (including blanks)"
 msgstr "1字(空白含む)"
 
-#: src/BufferView.cpp:1284
+#: src/BufferView.cpp:1291
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d字(空白除く)"
 
-#: src/BufferView.cpp:1287
+#: src/BufferView.cpp:1294
 msgid "One character (excluding blanks)"
 msgstr "1字(空白除く)"
 
-#: src/BufferView.cpp:1289
+#: src/BufferView.cpp:1296
 msgid "Statistics"
 msgstr "統計"
 
-#: src/BufferView.cpp:2015
+#: src/BufferView.cpp:2030
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "文書「%1$s」を挿入しています..."
 
-#: src/BufferView.cpp:2026
+#: src/BufferView.cpp:2041
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文書「%1$s」が挿入されました。"
 
-#: src/BufferView.cpp:2028
+#: src/BufferView.cpp:2043
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "文書「%1$s」を挿入することができませんでした"
 
-#: src/BufferView.cpp:2256
+#: src/BufferView.cpp:2271
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14139,11 +14361,11 @@ msgstr ""
 "%1$s\n"
 "を読むことができませんでした。"
 
-#: src/BufferView.cpp:2258
+#: src/BufferView.cpp:2273
 msgid "Could not read file"
 msgstr "ファイルを読むことができませんでした"
 
-#: src/BufferView.cpp:2265
+#: src/BufferView.cpp:2280
 #, c-format
 msgid ""
 "%1$s\n"
@@ -14152,15 +14374,15 @@ msgstr ""
 "%1$s\n"
 "は読み込み不能です。"
 
-#: src/BufferView.cpp:2266 src/output.cpp:39
+#: src/BufferView.cpp:2281 src/output.cpp:39
 msgid "Could not open file"
 msgstr "ファイルを開くことができませんでした"
 
-#: src/BufferView.cpp:2273
+#: src/BufferView.cpp:2288
 msgid "Reading not UTF-8 encoded file"
 msgstr "UTF-8でエンコードされていないファイルを読んでいます"
 
-#: src/BufferView.cpp:2274
+#: src/BufferView.cpp:2289
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -14607,19 +14829,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "%1$s を %2$s にコピーするのに失敗しました。"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:118
-#: src/frontends/qt4/GuiDocument.cpp:2141
+#: src/frontends/qt4/GuiDocument.cpp:2170
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Roman"
 msgstr "ローマン体"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:119
-#: src/frontends/qt4/GuiDocument.cpp:2141
+#: src/frontends/qt4/GuiDocument.cpp:2170
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Sans Serif"
 msgstr "サンセリフ体"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:120
-#: src/frontends/qt4/GuiDocument.cpp:2141
+#: src/frontends/qt4/GuiDocument.cpp:2170
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Typewriter"
 msgstr "タイプライタ体"
@@ -14812,7 +15034,7 @@ msgstr "nomencl用にMakeIndexを実行しています。"
 msgid "Could not read configuration file"
 msgstr "設定ファイルを読み込むことができませんでした"
 
-#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1370
+#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1375
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -14831,34 +15053,34 @@ msgstr "LyX: ユーザーディレクトリを再初期化しています。"
 msgid "Done!"
 msgstr "終わりました！"
 
-#: src/LyX.cpp:482
+#: src/LyX.cpp:485
 #, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
 msgstr "%1$sはLyXが生成した作業ディレクトリではないようです。"
 
-#: src/LyX.cpp:484
+#: src/LyX.cpp:487
 msgid "Cannot remove temporary directory"
 msgstr "作業ディレクトリを削除することができません"
 
-#: src/LyX.cpp:490
+#: src/LyX.cpp:493
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "作業ディレクトリ%1$sを削除することができませんでした"
 
-#: src/LyX.cpp:492
+#: src/LyX.cpp:495
 msgid "Unable to remove temporary directory"
 msgstr "作業用ディレクトリを削除することができませんでした"
 
-#: src/LyX.cpp:521
+#: src/LyX.cpp:524
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "コマンドラインオプション`%1$s'は誤りです。終了します。"
 
-#: src/LyX.cpp:588
+#: src/LyX.cpp:591
 msgid "No textclass is found"
 msgstr "テキストクラスが見つかりません。"
 
-#: src/LyX.cpp:589
+#: src/LyX.cpp:592
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
@@ -14867,27 +15089,27 @@ msgstr ""
 "ム再走査を行うか，既定のテキストクラスを使ってシステム再走査を行うか，あるい"
 "はLyXを終了するなどしてください。"
 
-#: src/LyX.cpp:593
+#: src/LyX.cpp:596
 msgid "&Reconfigure"
 msgstr "システム再走査(&R)"
 
-#: src/LyX.cpp:594
+#: src/LyX.cpp:597
 msgid "&Use Default"
 msgstr "既定値を使用する(&U)"
 
-#: src/LyX.cpp:595 src/LyX.cpp:955
+#: src/LyX.cpp:598 src/LyX.cpp:958
 msgid "&Exit LyX"
 msgstr "LyX を終了(&E)"
 
-#: src/LyX.cpp:742 src/frontends/qt4/GuiView.cpp:650
+#: src/LyX.cpp:745 src/frontends/qt4/GuiView.cpp:650
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:864
+#: src/LyX.cpp:867
 msgid "Could not create temporary directory"
 msgstr "作業ディレクトリを作成することができませんでした"
 
-#: src/LyX.cpp:865
+#: src/LyX.cpp:868
 #, fuzzy, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -14898,11 +15120,11 @@ msgstr ""
 "ませんでした。このパスが存在し書き込み可能\n"
 "であることを確認して，再度実行してください。"
 
-#: src/LyX.cpp:948
+#: src/LyX.cpp:951
 msgid "Missing user LyX directory"
 msgstr "個人用 LyX ディレクトリがありません"
 
-#: src/LyX.cpp:949
+#: src/LyX.cpp:952
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -14911,33 +15133,33 @@ msgstr ""
 "実在しない個人用 LyX ディレクトリ「%1$s」を指定しました。\n"
 "このディレクトリは自分用の設定を保存しておくのに必要です。"
 
-#: src/LyX.cpp:954
+#: src/LyX.cpp:957
 msgid "&Create directory"
 msgstr "ディレクトリを作成(&C)"
 
-#: src/LyX.cpp:956
+#: src/LyX.cpp:959
 msgid "No user LyX directory. Exiting."
 msgstr "個人用 LyX ディレクトリがありません。終了します。"
 
-#: src/LyX.cpp:960
+#: src/LyX.cpp:963
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: ディレクトリ「%1$s」を作成しています"
 
-#: src/LyX.cpp:965
+#: src/LyX.cpp:968
 msgid "Failed to create directory. Exiting."
 msgstr "ディレクトリを作成するのに失敗しました。終了します。"
 
-#: src/LyX.cpp:1037
+#: src/LyX.cpp:1040
 msgid "List of supported debug flags:"
 msgstr "サポートされているデバッグフラグの一覧:"
 
-#: src/LyX.cpp:1041
+#: src/LyX.cpp:1044
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "デバッグレベルを%1$sに設定します"
 
-#: src/LyX.cpp:1052
+#: src/LyX.cpp:1055
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -14981,39 +15203,39 @@ msgstr ""
 "\t-version        バージョンとビルド情報を表示\n"
 "詳細は LyX man ページを見て下さい。"
 
-#: src/LyX.cpp:1092 src/support/Package.cpp:569
+#: src/LyX.cpp:1095
 msgid "No system directory"
 msgstr "システムディレクトリがありません"
 
-#: src/LyX.cpp:1093
+#: src/LyX.cpp:1096
 msgid "Missing directory for -sysdir switch"
 msgstr "-sysdirスイッチにディレクトリが指定されていません"
 
-#: src/LyX.cpp:1104
+#: src/LyX.cpp:1107
 msgid "No user directory"
 msgstr "ユーザーディレクトリがありません"
 
-#: src/LyX.cpp:1105
+#: src/LyX.cpp:1108
 msgid "Missing directory for -userdir switch"
 msgstr "-usedirスイッチにディレクトリが指定されていません"
 
-#: src/LyX.cpp:1116
+#: src/LyX.cpp:1119
 msgid "Incomplete command"
 msgstr "不完全なコマンド"
 
-#: src/LyX.cpp:1117
+#: src/LyX.cpp:1120
 msgid "Missing command string after --execute switch"
 msgstr "--executeスイッチの後にコマンド文字列が必要です"
 
-#: src/LyX.cpp:1128
+#: src/LyX.cpp:1131
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "--exportスイッチの後にファイル形式[latex, psなど]が必要です"
 
-#: src/LyX.cpp:1141
+#: src/LyX.cpp:1144
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "--importスイッチの後にファイル形式[latex, psなど]が必要です"
 
-#: src/LyX.cpp:1146
+#: src/LyX.cpp:1149
 msgid "Missing filename for --import"
 msgstr "--importのファイル名が指定されていません"
 
@@ -15126,7 +15348,7 @@ msgstr "保存されている文書に復帰しますか？"
 msgid "&Revert"
 msgstr "元に戻す(&R)"
 
-#: src/LyXFunc.cpp:1014 src/Text3.cpp:1480
+#: src/LyXFunc.cpp:1014 src/Text3.cpp:1479
 msgid "Missing argument"
 msgstr "引数がありません"
 
@@ -15760,15 +15982,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "文書を保管されている版に戻しますか？"
 
-#: src/Paragraph.cpp:1514 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1494 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "このレイアウトでは意味を持ちません！"
 
-#: src/Paragraph.cpp:1580
+#: src/Paragraph.cpp:1560
 msgid "Alignment not permitted"
 msgstr "配置が使えません"
 
-#: src/Paragraph.cpp:1581
+#: src/Paragraph.cpp:1561
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -15776,12 +15998,12 @@ msgstr ""
 "新しいレイアウトでは，これまで使っていた配置を使うことが出来ません。\n"
 "既定値に設定します。"
 
-#: src/Paragraph.cpp:2049 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2029 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/mathed/InsetMathString.cpp:164
 msgid "LyX Warning: "
 msgstr "LyX警告: "
 
-#: src/Paragraph.cpp:2050 src/mathed/InsetMathString.cpp:165
+#: src/Paragraph.cpp:2030 src/mathed/InsetMathString.cpp:165
 msgid "uncodable character"
 msgstr "コード化できない文字"
 
@@ -15895,15 +16117,15 @@ msgstr ", 文字: 0x"
 msgid ", Boundary: "
 msgstr ", 境界: "
 
-#: src/Text2.cpp:391
+#: src/Text2.cpp:373
 msgid "No font change defined."
 msgstr "フォントの変更が定義されていません。"
 
-#: src/Text2.cpp:431
+#: src/Text2.cpp:413
 msgid "Nothing to index!"
 msgstr "索引にするものがありません！"
 
-#: src/Text2.cpp:433
+#: src/Text2.cpp:415
 msgid "Cannot index more than one paragraph!"
 msgstr "一段落以上は索引にすることができません！"
 
@@ -15923,11 +16145,11 @@ msgstr "割り付け"
 msgid " not known"
 msgstr "解釈不能"
 
-#: src/Text3.cpp:1587 src/Text3.cpp:1599
+#: src/Text3.cpp:1586 src/Text3.cpp:1598
 msgid "Character set"
 msgstr "文字が調整されました"
 
-#: src/Text3.cpp:1745 src/Text3.cpp:1756
+#: src/Text3.cpp:1744 src/Text3.cpp:1755
 msgid "Paragraph layout set"
 msgstr "段落を割り付けました。"
 
@@ -15935,19 +16157,19 @@ msgstr "段落を割り付けました。"
 msgid "Plain Layout"
 msgstr "無地レイアウト"
 
-#: src/TextClass.cpp:594
+#: src/TextClass.cpp:589
 msgid "Missing File"
 msgstr "ファイルがありません"
 
-#: src/TextClass.cpp:595
+#: src/TextClass.cpp:590
 msgid "Could not find stdinsets.inc! This may lead to data loss!"
 msgstr "stdinsets.incが見つかりません！データ喪失につながる可能性があります！"
 
-#: src/TextClass.cpp:598
+#: src/TextClass.cpp:593
 msgid "Corrupt File"
 msgstr "破損ファイル"
 
-#: src/TextClass.cpp:599
+#: src/TextClass.cpp:594
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr ""
 "stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
@@ -16110,7 +16332,7 @@ msgstr "正しくインストールして、如何にたくさんの労力を他
 msgid "amount of work other people have done for the LyX project."
 msgstr "LyXプロジェクトに投入したかがわかるようにして下さいませ。"
 
-#: src/frontends/qt4/GuiAbout.cpp:63
+#: src/frontends/qt4/GuiAbout.cpp:64
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995-2008 LyX Team"
@@ -16118,7 +16340,7 @@ msgstr ""
 "LyXの著作権はCopyright (C) 1995 by Matthias Ettrich,\n"
 "1995-2008 LyX Teamです。"
 
-#: src/frontends/qt4/GuiAbout.cpp:69
+#: src/frontends/qt4/GuiAbout.cpp:70
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -16129,7 +16351,7 @@ msgstr ""
 "GNU General Public Licenseの第2版もしくは選択的にそれ以後の版の条項にしたがっ"
 "て、これを再頒布したり修正したりすることができます。"
 
-#: src/frontends/qt4/GuiAbout.cpp:75
+#: src/frontends/qt4/GuiAbout.cpp:76
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -16147,15 +16369,15 @@ msgstr ""
 "ずです。もしそうでなければ、Free Software Foundation, Inc., 675 Mass Ave, "
 "Cambridge, MA 02139, USA に連絡してください。"
 
-#: src/frontends/qt4/GuiAbout.cpp:83
+#: src/frontends/qt4/GuiAbout.cpp:84
 msgid "LyX Version "
 msgstr "LyXバージョン "
 
-#: src/frontends/qt4/GuiAbout.cpp:88
+#: src/frontends/qt4/GuiAbout.cpp:89
 msgid "Library directory: "
 msgstr "ライブラリディレクトリ: "
 
-#: src/frontends/qt4/GuiAbout.cpp:91
+#: src/frontends/qt4/GuiAbout.cpp:92
 msgid "User directory: "
 msgstr "ユーザーディレクトリ: "
 
@@ -16183,26 +16405,26 @@ msgstr "システム再走査"
 msgid "Quit %1"
 msgstr "%1を終了"
 
-#: src/frontends/qt4/GuiApplication.cpp:795
+#: src/frontends/qt4/GuiApplication.cpp:800
 msgid "Exiting."
 msgstr "終了します。"
 
-#: src/frontends/qt4/GuiApplication.cpp:862
+#: src/frontends/qt4/GuiApplication.cpp:867
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "文法: set-color <lyx名> <x11名>"
 
-#: src/frontends/qt4/GuiApplication.cpp:878
+#: src/frontends/qt4/GuiApplication.cpp:883
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\"は失敗しました。───色が未定義か、再定義されていない可能性が"
 "あります。"
 
-#: src/frontends/qt4/GuiApplication.cpp:1179
+#: src/frontends/qt4/GuiApplication.cpp:1184
 msgid "The current document was closed."
 msgstr "現在の文書は閉じられました。"
 
-#: src/frontends/qt4/GuiApplication.cpp:1189
+#: src/frontends/qt4/GuiApplication.cpp:1194
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -16214,12 +16436,12 @@ msgstr ""
 "\n"
 "例外エラー: "
 
-#: src/frontends/qt4/GuiApplication.cpp:1193
-#: src/frontends/qt4/GuiApplication.cpp:1199
+#: src/frontends/qt4/GuiApplication.cpp:1198
+#: src/frontends/qt4/GuiApplication.cpp:1204
 msgid "Software exception Detected"
 msgstr "ソフトウェア例外エラーが検出されました"
 
-#: src/frontends/qt4/GuiApplication.cpp:1197
+#: src/frontends/qt4/GuiApplication.cpp:1202
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -16227,7 +16449,7 @@ msgstr ""
 "LyXは何か非常におかしな例外エラーを検出したので、保存されていない全ての文書の"
 "保存を試み、終了します。"
 
-#: src/frontends/qt4/GuiApplication.cpp:1369
+#: src/frontends/qt4/GuiApplication.cpp:1374
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "UI定義ファイルを見つけることができませんでした"
@@ -16241,7 +16463,7 @@ msgid "BibTeX Bibliography"
 msgstr "BibTeX 参考文献"
 
 #: src/frontends/qt4/GuiBibtex.cpp:424 src/frontends/qt4/GuiBibtex.cpp:434
-#: src/frontends/qt4/GuiDocument.cpp:1279
+#: src/frontends/qt4/GuiDocument.cpp:1283
 #: src/frontends/qt4/GuiExternal.cpp:661 src/frontends/qt4/GuiGraphics.cpp:740
 #: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1214
 #: src/frontends/qt4/GuiView.cpp:1272 src/frontends/qt4/GuiView.cpp:1405
@@ -16331,11 +16553,11 @@ msgid "Color"
 msgstr "色彩"
 
 #: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiBranches.cpp:146
-#: src/frontends/qt4/GuiDocument.cpp:1436
+#: src/frontends/qt4/GuiDocument.cpp:1440
 msgid "Yes"
 msgstr "はい"
 
-#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1435
+#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1439
 msgid "No"
 msgstr "いいえ"
 
@@ -16604,7 +16826,7 @@ msgid "Document Settings"
 msgstr "文書の設定"
 
 #: src/frontends/qt4/GuiDocument.cpp:566
-#: src/frontends/qt4/GuiDocument.cpp:1051
+#: src/frontends/qt4/GuiDocument.cpp:1055
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
@@ -16656,128 +16878,128 @@ msgstr "B3"
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/GuiDocument.cpp:800
+#: src/frontends/qt4/GuiDocument.cpp:799
 msgid "LaTeX default"
 msgstr "LaTeX既定値"
 
-#: src/frontends/qt4/GuiDocument.cpp:806
+#: src/frontends/qt4/GuiDocument.cpp:808
 msgid "``text''"
 msgstr "``テキスト''"
 
-#: src/frontends/qt4/GuiDocument.cpp:807
+#: src/frontends/qt4/GuiDocument.cpp:809
 msgid "''text''"
 msgstr "''テキスト''"
 
-#: src/frontends/qt4/GuiDocument.cpp:808
+#: src/frontends/qt4/GuiDocument.cpp:810
 msgid ",,text``"
 msgstr ",,テキスト``"
 
-#: src/frontends/qt4/GuiDocument.cpp:809
+#: src/frontends/qt4/GuiDocument.cpp:811
 msgid ",,text''"
 msgstr ",,テキスト''"
 
-#: src/frontends/qt4/GuiDocument.cpp:810
+#: src/frontends/qt4/GuiDocument.cpp:812
 msgid "<<text>>"
 msgstr "<<テキスト>>"
 
-#: src/frontends/qt4/GuiDocument.cpp:811
+#: src/frontends/qt4/GuiDocument.cpp:813
 msgid ">>text<<"
 msgstr ">>テキスト<<"
 
-#: src/frontends/qt4/GuiDocument.cpp:826
+#: src/frontends/qt4/GuiDocument.cpp:828
 msgid "Numbered"
 msgstr "連番を振る"
 
-#: src/frontends/qt4/GuiDocument.cpp:827
+#: src/frontends/qt4/GuiDocument.cpp:829
 msgid "Appears in TOC"
 msgstr "目次に載せる"
 
-#: src/frontends/qt4/GuiDocument.cpp:847
+#: src/frontends/qt4/GuiDocument.cpp:849
 msgid "Author-year"
 msgstr "著者‐年"
 
-#: src/frontends/qt4/GuiDocument.cpp:848
+#: src/frontends/qt4/GuiDocument.cpp:850
 msgid "Numerical"
 msgstr "連番"
 
-#: src/frontends/qt4/GuiDocument.cpp:913
+#: src/frontends/qt4/GuiDocument.cpp:917
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "利用不能: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:975 src/frontends/qt4/GuiDocument.cpp:989
+#: src/frontends/qt4/GuiDocument.cpp:979 src/frontends/qt4/GuiDocument.cpp:993
 msgid "Document Class"
 msgstr "文書クラス"
 
-#: src/frontends/qt4/GuiDocument.cpp:977
+#: src/frontends/qt4/GuiDocument.cpp:981
 msgid "Text Layout"
 msgstr "本文レイアウト"
 
-#: src/frontends/qt4/GuiDocument.cpp:979
+#: src/frontends/qt4/GuiDocument.cpp:983
 msgid "Page Margins"
 msgstr "ページ余白"
 
-#: src/frontends/qt4/GuiDocument.cpp:981
+#: src/frontends/qt4/GuiDocument.cpp:985
 msgid "Numbering & TOC"
 msgstr "連番と目次"
 
-#: src/frontends/qt4/GuiDocument.cpp:983
+#: src/frontends/qt4/GuiDocument.cpp:987
 msgid "PDF Properties"
 msgstr "PDF特性"
 
-#: src/frontends/qt4/GuiDocument.cpp:984
+#: src/frontends/qt4/GuiDocument.cpp:988
 msgid "Math Options"
 msgstr "数学オプション"
 
-#: src/frontends/qt4/GuiDocument.cpp:985
+#: src/frontends/qt4/GuiDocument.cpp:989
 msgid "Float Placement"
 msgstr "フロートの配置"
 
-#: src/frontends/qt4/GuiDocument.cpp:986
+#: src/frontends/qt4/GuiDocument.cpp:990
 msgid "Bullets"
 msgstr "ブリット"
 
-#: src/frontends/qt4/GuiDocument.cpp:987
+#: src/frontends/qt4/GuiDocument.cpp:991
 msgid "Branches"
 msgstr "派生枝"
 
-#: src/frontends/qt4/GuiDocument.cpp:988
-#: src/frontends/qt4/GuiDocument.cpp:1000
+#: src/frontends/qt4/GuiDocument.cpp:992
+#: src/frontends/qt4/GuiDocument.cpp:1004
 msgid "LaTeX Preamble"
 msgstr "LaTeXプリアンブル"
 
-#: src/frontends/qt4/GuiDocument.cpp:1229
+#: src/frontends/qt4/GuiDocument.cpp:1233
 msgid "Layouts|#o#O"
 msgstr "レイアウト(O)|#o#O"
 
-#: src/frontends/qt4/GuiDocument.cpp:1231
+#: src/frontends/qt4/GuiDocument.cpp:1235
 msgid "LyX Layout (*.layout)"
 msgstr "LyXレイアウト(*.layout)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1233
-#: src/frontends/qt4/GuiDocument.cpp:1293
+#: src/frontends/qt4/GuiDocument.cpp:1237
+#: src/frontends/qt4/GuiDocument.cpp:1297
 msgid "Local layout file"
 msgstr "ローカルのレイアウトファイル"
 
-#: src/frontends/qt4/GuiDocument.cpp:1251
-#: src/frontends/qt4/GuiDocument.cpp:1310
-#: src/frontends/qt4/GuiDocument.cpp:2108
+#: src/frontends/qt4/GuiDocument.cpp:1255
+#: src/frontends/qt4/GuiDocument.cpp:1314
+#: src/frontends/qt4/GuiDocument.cpp:2137
 msgid "Error"
 msgstr "エラー"
 
-#: src/frontends/qt4/GuiDocument.cpp:1252
+#: src/frontends/qt4/GuiDocument.cpp:1256
 msgid "Unable to read local layout file."
 msgstr "ローカルのレイアウトファイルを読むことができませんでした。"
 
-#: src/frontends/qt4/GuiDocument.cpp:1273
+#: src/frontends/qt4/GuiDocument.cpp:1277
 msgid "Select master document"
 msgstr "マスター文書を選んでください"
 
-#: src/frontends/qt4/GuiDocument.cpp:1277
+#: src/frontends/qt4/GuiDocument.cpp:1281
 msgid "LyX Files (*.lyx)"
 msgstr "LyX文書 (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1294
+#: src/frontends/qt4/GuiDocument.cpp:1298
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory. Your\n"
@@ -16789,22 +17011,22 @@ msgstr ""
 "このレイアウトファイルはずっと同じディレクトリに置いておかないと、\n"
 "お使いの文書でこのレイアウトがうまく動かなくなる可能性があります。"
 
-#: src/frontends/qt4/GuiDocument.cpp:1298
+#: src/frontends/qt4/GuiDocument.cpp:1302
 msgid "&Set Layout"
 msgstr "レイアウトを設定(&S)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1310
-#: src/frontends/qt4/GuiDocument.cpp:2108
+#: src/frontends/qt4/GuiDocument.cpp:1314
+#: src/frontends/qt4/GuiDocument.cpp:2137
 msgid "Unable to set document class."
 msgstr "文書クラスを設定することができません。"
 
-#: src/frontends/qt4/GuiDocument.cpp:1315
-#: src/frontends/qt4/GuiDocument.cpp:2097
+#: src/frontends/qt4/GuiDocument.cpp:1319
+#: src/frontends/qt4/GuiDocument.cpp:2126
 msgid "Unapplied changes"
 msgstr "適用されていない変更"
 
-#: src/frontends/qt4/GuiDocument.cpp:1316
-#: src/frontends/qt4/GuiDocument.cpp:2098
+#: src/frontends/qt4/GuiDocument.cpp:1320
+#: src/frontends/qt4/GuiDocument.cpp:2127
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -16812,54 +17034,54 @@ msgstr ""
 "このダイアログで加えられた変更は、まだ適用されていません。\n"
 "いま適用しなければ、この動作以降、変更が失われます。"
 
-#: src/frontends/qt4/GuiDocument.cpp:1318
-#: src/frontends/qt4/GuiDocument.cpp:2100
+#: src/frontends/qt4/GuiDocument.cpp:1322
+#: src/frontends/qt4/GuiDocument.cpp:2129
 msgid "&Dismiss"
 msgstr "解除(&D)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1345
+#: src/frontends/qt4/GuiDocument.cpp:1349
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s、%2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1350
+#: src/frontends/qt4/GuiDocument.cpp:1354
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s、%2$sおよび%3$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1395
+#: src/frontends/qt4/GuiDocument.cpp:1399
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr "必要なパッケージ: %1$s。"
 
-#: src/frontends/qt4/GuiDocument.cpp:1401
+#: src/frontends/qt4/GuiDocument.cpp:1405
 msgid "or"
 msgstr "あるいは"
 
-#: src/frontends/qt4/GuiDocument.cpp:1404
+#: src/frontends/qt4/GuiDocument.cpp:1408
 #, c-format
 msgid "Module required: %1$s."
 msgstr "必要なモジュール: %1$s。"
 
-#: src/frontends/qt4/GuiDocument.cpp:1413
+#: src/frontends/qt4/GuiDocument.cpp:1417
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr "排除されるモジュール: %1$s。"
 
-#: src/frontends/qt4/GuiDocument.cpp:1419
+#: src/frontends/qt4/GuiDocument.cpp:1423
 msgid "WARNING: Some packages are unavailable!"
 msgstr "警告: 利用可能でないパッケージがあります！"
 
-#: src/frontends/qt4/GuiDocument.cpp:2120
+#: src/frontends/qt4/GuiDocument.cpp:2149
 msgid "Can't set layout!"
 msgstr "レイアウトを設定することができません！"
 
-#: src/frontends/qt4/GuiDocument.cpp:2121
+#: src/frontends/qt4/GuiDocument.cpp:2150
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "以下のIDのレイアウトを設定することができません: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2198
+#: src/frontends/qt4/GuiDocument.cpp:2227
 msgid "Not Found"
 msgstr "見つかりません"
 
@@ -18005,23 +18227,23 @@ msgstr "DocBookソース"
 msgid "Literate Source"
 msgstr "Literateソース"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1148
+#: src/frontends/qt4/GuiWorkArea.cpp:1149
 msgid " (changed)"
 msgstr " (変更されました)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1152
+#: src/frontends/qt4/GuiWorkArea.cpp:1153
 msgid " (read only)"
 msgstr " (読み込み専用)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1239
+#: src/frontends/qt4/GuiWorkArea.cpp:1240
 msgid "Close File"
 msgstr "ファイルを閉じる"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1632
+#: src/frontends/qt4/GuiWorkArea.cpp:1633
 msgid "Hide tab"
 msgstr "タブを隠す"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1634
+#: src/frontends/qt4/GuiWorkArea.cpp:1635
 msgid "Close tab"
 msgstr "タブを閉じる"
 
@@ -18168,7 +18390,7 @@ msgstr ""
 "以下のファイル名はエクスポートしたフィルをLaTeXにかけるときに問題を引き起こす"
 "可能性が高いです: "
 
-#: src/insets/Inset.cpp:334
+#: src/insets/Inset.cpp:333
 msgid "Opened inset"
 msgstr "展開された差込枠です"
 
@@ -18347,16 +18569,12 @@ msgstr "ここに\\end_insetがありません"
 msgid "Opened ERT Inset"
 msgstr "展開されたERT差込枠です"
 
-#: src/insets/InsetEnvironment.cpp:53
-msgid "Opened Environment Inset: "
-msgstr "展開された環境差込枠: "
-
 #: src/insets/InsetExternal.cpp:493
 #, c-format
 msgid "External template %1$s is not installed"
 msgstr "外部ひな型%1$sはインストールされていません"
 
-#: src/insets/InsetFlex.cpp:53
+#: src/insets/InsetFlex.cpp:51
 msgid "Opened Flex Inset"
 msgstr "展開された自由差込枠"
 
@@ -18807,7 +19025,7 @@ msgstr "保護された水平スペース（%1$s）"
 msgid "Unknown TOC type"
 msgstr "未知の目次型"
 
-#: src/insets/InsetTabular.cpp:3055
+#: src/insets/InsetTabular.cpp:3054
 msgid "Opened table"
 msgstr "展開された表"
 
@@ -18967,6 +19185,11 @@ msgstr "文字列が置換されました。"
 msgid " strings have been replaced."
 msgstr "個の文字列が置換されました。"
 
+#: src/mathed/InsetFormulaMacro.cpp:118
+#, c-format
+msgid " Macro: %1$s: "
+msgstr " マクロ: %1$s: "
+
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1365
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
@@ -19062,57 +19285,6 @@ msgstr "要約: "
 #: src/output_plaintext.cpp:148
 msgid "References: "
 msgstr "引用: "
-
-#: src/support/Package.cpp:450
-#, fuzzy
-msgid "LyX binary not found"
-msgstr "文字列が見つかりません！"
-
-#: src/support/Package.cpp:451
-#, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
-
-#: src/support/Package.cpp:570
-#, c-format
-msgid ""
-"Unable to determine the system directory having searched\n"
-"\t%1$s\n"
-"Use the '-sysdir' command line parameter or set the environment variable "
-"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr ""
-
-#: src/support/Package.cpp:651 src/support/Package.cpp:678
-#, fuzzy
-msgid "File not found"
-msgstr "モジュールが見つかりません"
-
-#: src/support/Package.cpp:652
-#, c-format
-msgid ""
-"Invalid %1$s switch.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-
-#: src/support/Package.cpp:679
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-
-#: src/support/Package.cpp:703
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"%2$s is not a directory."
-msgstr ""
-
-#: src/support/Package.cpp:705
-#, fuzzy
-msgid "Directory not found"
-msgstr "文字列が見つかりません！"
 
 #: src/support/debug.cpp:38
 msgid "No debugging message"
@@ -19279,8 +19451,23 @@ msgstr ""
 msgid "Unknown user"
 msgstr "未知のユーザー"
 
-#~ msgid " Macro: %1$s: "
-#~ msgstr " マクロ: %1$s: "
+#~ msgid "Adds an environment for hanging paragraphs."
+#~ msgstr "段落のぶら下げのための環境を追加します。"
+
+#~ msgid "Opened Environment Inset: "
+#~ msgstr "展開された環境差込枠: "
+
+#, fuzzy
+#~ msgid "LyX binary not found"
+#~ msgstr "文字列が見つかりません！"
+
+#, fuzzy
+#~ msgid "File not found"
+#~ msgstr "モジュールが見つかりません"
+
+#, fuzzy
+#~ msgid "Directory not found"
+#~ msgstr "文字列が見つかりません！"
 
 #~ msgid "Display image in LyX"
 #~ msgstr "LyX内に画像を表示"
