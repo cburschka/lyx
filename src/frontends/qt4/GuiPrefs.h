@@ -75,8 +75,6 @@ public Q_SLOTS:
 public:
 	/// Apply changes
 	void applyView();
-	/// update (do we need this?)
-	void updateContents();
 
 	std::vector<PrefModule *> modules_;
 

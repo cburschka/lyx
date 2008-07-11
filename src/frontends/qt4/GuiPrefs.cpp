@@ -2556,13 +2556,6 @@ void GuiPreferences::applyView()
 	apply(rc());
 }
 
-
-void GuiPreferences::updateContents()
-{
-	updateRc(rc());
-}
-
-
 bool GuiPreferences::initialiseParams(string const &)
 {
 	rc_ = lyxrc;
@@ -2572,6 +2565,7 @@ bool GuiPreferences::initialiseParams(string const &)
 	movers_ = theMovers();
 	colors_.clear();
 	update_screen_font_ = false;
+	updateRc(rc_);
 
 	return true;
 }
