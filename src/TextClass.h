@@ -131,7 +131,7 @@ public:
 	/** \param unknown Set to true if this layout is a default layout used to
 	 * represent an unknown layout
 	 */
-	Layout createDefaultLayout(docstring const & name, bool unknown = false) const;
+	Layout createEmptyLayout(docstring const & name, bool unknown = false) const;
 	/// returns a special layout for use when we don't really want one,
 	/// e.g., in table cells
 	Layout const & emptyLayout() const 

@@ -245,7 +245,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 	// we do this before loading any layout file, so that classes can 
 	// override features of this layout if they should choose to do so.
 	if (rt == BASECLASS && !hasLayout(emptylayout_))
-		layoutlist_.push_back(createDefaultLayout(emptylayout_));
+		layoutlist_.push_back(createEmptyLayout(emptylayout_));
 
 	Lexer lexrc(textClassTags);
 	lexrc.setFile(filename);
@@ -906,7 +906,7 @@ bool TextClass::hasLayout(docstring const & n) const
 void TextClass::addLayoutIfNeeded(docstring const & n) const
 {
 	if (!hasLayout(n))
-		layoutlist_.push_back(createDefaultLayout(n, true));
+		layoutlist_.push_back(createEmptyLayout(n, true));
 }
 
 
@@ -1037,7 +1037,7 @@ bool TextClass::isPlainLayout(Layout const & layout) const
 }
 
 
-Layout TextClass::createDefaultLayout(docstring const & name, bool unknown) const
+Layout TextClass::createEmptyLayout(docstring const & name, bool unknown) const
 {
 	static Layout * defaultLayout = NULL;
 

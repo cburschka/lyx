@@ -194,7 +194,7 @@ void LayoutFileList::reset(LayoutFileIndex const & classname) {
 }
 
 
-LayoutFileIndex LayoutFileList::addDefaultClass(string const & textclass)
+LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 {
 	if (haveClass(textclass))
 		return textclass;

@@ -99,7 +99,7 @@ public:
 	void reset(LayoutFileIndex const & tc);
 
 	/// add a default textclass with all standard layouts.
-	LayoutFileIndex addDefaultClass(std::string const & textclass);
+	LayoutFileIndex addEmptyClass(std::string const & textclass);
 
 	/// add a textclass from user local directory.
 	/// \return the identifier for the loaded file, or else an

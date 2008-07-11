@@ -1425,7 +1425,7 @@ bool BufferParams::setBaseClass(string const & classname)
 				"textclass is selected from the document settings dialog."),
 			from_utf8(classname));
 		frontend::Alert::error(_("Document class not found"), s);
-		bcl.addDefaultClass(classname);
+		bcl.addEmptyClass(classname);
 	}
 
 	if (bcl[classname].load()) {
