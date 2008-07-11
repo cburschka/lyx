@@ -173,6 +173,11 @@ void InsetSpace::edit(Cursor & cur, bool, EntryDirection)
 }
 
 
+namespace {
+int const arrow_size = 8;
+}
+
+
 void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (isStretchableSpace()) {
@@ -206,9 +211,14 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.wid = int(0.5 * fm.width(char_type('M')));
 			break;
 		case InsetSpaceParams::CUSTOM:
-		case InsetSpaceParams::CUSTOM_PROTECTED:
-			dim.wid = max(4, abs(params_.length.inBP()));
+		case InsetSpaceParams::CUSTOM_PROTECTED: {
+			int width = params_.length.inBP();
+			int minwidth = 4;
+			if (params_.length.inBP() < 0)
+				minwidth = 3 * arrow_size;
+			dim.wid = max(minwidth, abs(params_.length.inBP()));
 			break;
+		}
 		case InsetSpaceParams::HFILL:
 		case InsetSpaceParams::HFILL_PROTECTED:
 		case InsetSpaceParams::DOTFILL:
@@ -229,7 +239,7 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
 
-	if (isStretchableSpace()) {
+	if (isStretchableSpace() || params_.length.inBP() < 0) {
 		int const asc = theFontMetrics(pi.base.font).ascent('M');
 		int const desc = theFontMetrics(pi.base.font).descent('M');
 		// Pixel height divisible by 2 for prettier fill graphics:
@@ -298,6 +308,18 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 			pi.pain.line(xm + 1, y1 + 1 , xmr, y2, Color_special);
 			pi.pain.line(xmr, y2 , x3, y2, Color_special);
 			pi.pain.line(x3 + 1, y2 + 1 , x1, y0, Color_special);
+		} else if (params_.kind == InsetSpaceParams::CUSTOM) {
+			pi.pain.line(x0, y1 + 1 , x2 + 1, y2, Color_special);
+			pi.pain.line(x2 + 1, y2 + 1 , x0, y0, Color_special);
+			pi.pain.line(x1 + 1, y1 + 1 , x3, y2, Color_special);
+			pi.pain.line(x3, y2 + 1 , x1 + 1, y0, Color_special);
+			pi.pain.line(x2, y2 , x3, y2, Color_special);
+		} else if (params_.kind == InsetSpaceParams::CUSTOM_PROTECTED) {
+			pi.pain.line(x0, y1 + 1 , x2 + 1, y2, Color_latex);
+			pi.pain.line(x2 + 1, y2 + 1 , x0, y0, Color_latex);
+			pi.pain.line(x1 + 1, y1 + 1 , x3, y2, Color_latex);
+			pi.pain.line(x3, y2 + 1 , x1 + 1, y0, Color_latex);
+			pi.pain.line(x2, y2 , x3, y2, Color_latex);
 		}
 		return;
 	}
@@ -324,13 +346,8 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 	    params_.kind == InsetSpaceParams::NEGTHIN ||
 	    params_.kind == InsetSpaceParams::CUSTOM_PROTECTED)
 		pi.pain.lines(xp, yp, 4, Color_latex);
-	else {
-		if (params_.length.inBP() < 0) {
-			// use another color for negative spaces
-			pi.pain.lines(xp, yp, 4, Color_red);
-		} else
-			pi.pain.lines(xp, yp, 4, Color_special);
-	}
+	else
+		pi.pain.lines(xp, yp, 4, Color_special);
 }
 
 
