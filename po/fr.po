@@ -208,7 +208,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-11 11:00+0200\n"
+"POT-Creation-Date: 2008-07-11 11:59+0100\n"
 "PO-Revision-Date: 2008-07-11 08:32+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr\n"
@@ -14522,81 +14522,81 @@ msgstr "Pas d'information pour Annuler"
 msgid "No further redo information"
 msgstr "Pas d'information pour Refaire"
 
-#: src/BufferView.cpp:1187 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1191 src/lyxfind.cpp:295 src/lyxfind.cpp:313
 msgid "String not found!"
 msgstr "Chaîne de caractères introuvable !"
 
-#: src/BufferView.cpp:1211
+#: src/BufferView.cpp:1215
 msgid "Mark off"
 msgstr "Marque désactivée"
 
-#: src/BufferView.cpp:1218
+#: src/BufferView.cpp:1222
 msgid "Mark on"
 msgstr "Marque activée"
 
-#: src/BufferView.cpp:1225
+#: src/BufferView.cpp:1229
 msgid "Mark removed"
 msgstr "Marque enlevée"
 
-#: src/BufferView.cpp:1228
+#: src/BufferView.cpp:1232
 msgid "Mark set"
 msgstr "Marque posée"
 
-#: src/BufferView.cpp:1275
+#: src/BufferView.cpp:1279
 msgid "Statistics for the selection:"
 msgstr "Statistiques pour la sélection :"
 
-#: src/BufferView.cpp:1277
+#: src/BufferView.cpp:1281
 msgid "Statistics for the document:"
 msgstr "Statistiques pour le document :"
 
-#: src/BufferView.cpp:1280
+#: src/BufferView.cpp:1284
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d mots"
 
-#: src/BufferView.cpp:1282
+#: src/BufferView.cpp:1286
 msgid "One word"
 msgstr "Un mot"
 
-#: src/BufferView.cpp:1285
+#: src/BufferView.cpp:1289
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d caractères (espaces inclus)"
 
-#: src/BufferView.cpp:1288
+#: src/BufferView.cpp:1292
 msgid "One character (including blanks)"
 msgstr "Un caractère (espaces inclus)"
 
-#: src/BufferView.cpp:1291
+#: src/BufferView.cpp:1295
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d caractères (espaces exclus)"
 
-#: src/BufferView.cpp:1294
+#: src/BufferView.cpp:1298
 msgid "One character (excluding blanks)"
 msgstr "Un caractère (espaces exclus)"
 
-#: src/BufferView.cpp:1296
+#: src/BufferView.cpp:1300
 msgid "Statistics"
 msgstr "Statistiques"
 
-#: src/BufferView.cpp:2033
+#: src/BufferView.cpp:2037
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Insertion du document %1$s..."
 
-#: src/BufferView.cpp:2044
+#: src/BufferView.cpp:2048
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Document %1$s inséré."
 
-#: src/BufferView.cpp:2046
+#: src/BufferView.cpp:2050
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Impossible d'insérer le document %1$s"
 
-#: src/BufferView.cpp:2274
+#: src/BufferView.cpp:2278
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14607,11 +14607,11 @@ msgstr ""
 "%1$s\n"
 "à cause de l'erreur : %2$s"
 
-#: src/BufferView.cpp:2276
+#: src/BufferView.cpp:2280
 msgid "Could not read file"
 msgstr "Impossible de lire le fichier"
 
-#: src/BufferView.cpp:2283
+#: src/BufferView.cpp:2287
 #, c-format
 msgid ""
 "%1$s\n"
@@ -14620,15 +14620,15 @@ msgstr ""
 "%1$s\n"
 "est illisible."
 
-#: src/BufferView.cpp:2284 src/output.cpp:39
+#: src/BufferView.cpp:2288 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Impossible d'ouvrir le fichier"
 
-#: src/BufferView.cpp:2291
+#: src/BufferView.cpp:2295
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lecture d'un fichier non encodé en UTF-8"
 
-#: src/BufferView.cpp:2292
+#: src/BufferView.cpp:2296
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -15289,35 +15289,35 @@ msgstr "LyX : reconfigure le répertoire utilisateur"
 msgid "Done!"
 msgstr "Terminé !"
 
-#: src/LyX.cpp:485
+#: src/LyX.cpp:482
 #, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
 msgstr "%1$s ne semble pas être un répertoire temporaire créé par LyX"
 
-#: src/LyX.cpp:487
+#: src/LyX.cpp:484
 msgid "Cannot remove temporary directory"
 msgstr "Impossible d'enlever le répertoire temporaire"
 
-#: src/LyX.cpp:493
+#: src/LyX.cpp:490
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Impossible d'enlever le répertoire temporaire %1$s"
 
-#: src/LyX.cpp:495
+#: src/LyX.cpp:492
 msgid "Unable to remove temporary directory"
 msgstr "Impossible d'enlever le répertoire temporaire"
 
-#: src/LyX.cpp:524
+#: src/LyX.cpp:521
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Mauvaise option de ligne de commande « %1$s ». Sortie du programme."
 
-#: src/LyX.cpp:591
+#: src/LyX.cpp:588
 msgid "No textclass is found"
 msgstr "Classe (textclass) introuvable"
 
 # Je n'ai pas tout compris... en plus faut-il traduire textclass ?
-#: src/LyX.cpp:592
+#: src/LyX.cpp:589
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
@@ -15326,27 +15326,27 @@ msgstr ""
 "soit reconfigurer normalement, soit reconfigurer en utilisant les textclass "
 "par défaut, ou quitter LyX."
 
-#: src/LyX.cpp:596
+#: src/LyX.cpp:593
 msgid "&Reconfigure"
 msgstr "&Reconfigurer"
 
-#: src/LyX.cpp:597
+#: src/LyX.cpp:594
 msgid "&Use Default"
 msgstr "&Utiliser défaut"
 
-#: src/LyX.cpp:598 src/LyX.cpp:958
+#: src/LyX.cpp:595 src/LyX.cpp:955
 msgid "&Exit LyX"
 msgstr "&Quitter LyX"
 
-#: src/LyX.cpp:745 src/frontends/qt4/GuiView.cpp:650
+#: src/LyX.cpp:742 src/frontends/qt4/GuiView.cpp:650
 msgid "LyX: "
 msgstr "LyX : "
 
-#: src/LyX.cpp:867
+#: src/LyX.cpp:864
 msgid "Could not create temporary directory"
 msgstr "Impossible de créer un répertoire temporaire"
 
-#: src/LyX.cpp:868
+#: src/LyX.cpp:865
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -15358,11 +15358,11 @@ msgstr ""
 "Vérifier que ce chemin\n"
 "existe et qu'il est ouvert en écriture, puis réessayer."
 
-#: src/LyX.cpp:951
+#: src/LyX.cpp:948
 msgid "Missing user LyX directory"
 msgstr "Répertoire utilisateur LyX manquant"
 
-#: src/LyX.cpp:952
+#: src/LyX.cpp:949
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -15371,33 +15371,33 @@ msgstr ""
 "Vous avez spécifié un répertoire utilisateur LyX inexistant, %1$s.\n"
 "Ce répertoire est nécessaire pour conserver votre configuration."
 
-#: src/LyX.cpp:957
+#: src/LyX.cpp:954
 msgid "&Create directory"
 msgstr "&Créer un répertoire"
 
-#: src/LyX.cpp:959
+#: src/LyX.cpp:956
 msgid "No user LyX directory. Exiting."
 msgstr "Pas de répertoire utilisateur LyX. Sortie du programme."
 
-#: src/LyX.cpp:963
+#: src/LyX.cpp:960
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX : création du répertoire %1$s"
 
-#: src/LyX.cpp:968
+#: src/LyX.cpp:965
 msgid "Failed to create directory. Exiting."
 msgstr "Échec dans la création du répertoire. Sortie du programme."
 
-#: src/LyX.cpp:1040
+#: src/LyX.cpp:1037
 msgid "List of supported debug flags:"
 msgstr "Liste des options de débogage acceptées :"
 
-#: src/LyX.cpp:1044
+#: src/LyX.cpp:1041
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Niveau de débogage %1$s"
 
-#: src/LyX.cpp:1055
+#: src/LyX.cpp:1052
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -15441,41 +15441,41 @@ msgstr ""
 "\t-version           résumé de la version et de la compilation\n"
 "Voir la page man de LyX pour les détails."
 
-#: src/LyX.cpp:1095
+#: src/LyX.cpp:1092
 msgid "No system directory"
 msgstr "Pas de répertoire système"
 
-#: src/LyX.cpp:1096
+#: src/LyX.cpp:1093
 msgid "Missing directory for -sysdir switch"
 msgstr "Il manque un répertoire pour l'option -sysdir"
 
-#: src/LyX.cpp:1107
+#: src/LyX.cpp:1104
 msgid "No user directory"
 msgstr "Pas de répertoire utilisateur"
 
-#: src/LyX.cpp:1108
+#: src/LyX.cpp:1105
 msgid "Missing directory for -userdir switch"
 msgstr "Il manque un répertoire pour l'option -userdir"
 
-#: src/LyX.cpp:1119
+#: src/LyX.cpp:1116
 msgid "Incomplete command"
 msgstr "Commande incomplète"
 
-#: src/LyX.cpp:1120
+#: src/LyX.cpp:1117
 msgid "Missing command string after --execute switch"
 msgstr "Il manque une commande après l'option --execute"
 
-#: src/LyX.cpp:1131
+#: src/LyX.cpp:1128
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Il manque un type de fichier [par ex. latex, ps...] après l'option --export"
 
-#: src/LyX.cpp:1144
+#: src/LyX.cpp:1141
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Il manque un type de fichier [par ex. latex, ps...] après l'option --import"
 
-#: src/LyX.cpp:1149
+#: src/LyX.cpp:1146
 msgid "Missing filename for --import"
 msgstr "Il manque le nom du fichier à importer pour --import"
 
@@ -17790,39 +17790,39 @@ msgstr "Échec de l'insertion du raccourci à la liste"
 msgid "Identity"
 msgstr "Identité"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2628
+#: src/frontends/qt4/GuiPrefs.cpp:2622
 msgid "Choose bind file"
 msgstr "Choisir un fichier de raccourcis"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2629
+#: src/frontends/qt4/GuiPrefs.cpp:2623
 msgid "LyX bind files (*.bind)"
 msgstr "Fichiers de raccourcis LyX (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2635
+#: src/frontends/qt4/GuiPrefs.cpp:2629
 msgid "Choose UI file"
 msgstr "Choisir un fichier d'interface"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2636
+#: src/frontends/qt4/GuiPrefs.cpp:2630
 msgid "LyX UI files (*.ui)"
 msgstr "Fichiers d'interface LyX (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2642
+#: src/frontends/qt4/GuiPrefs.cpp:2636
 msgid "Choose keyboard map"
 msgstr "Choisir une réaffectation clavier"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2643
+#: src/frontends/qt4/GuiPrefs.cpp:2637
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Réaffectations clavier LyX (*.kmap)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2649
+#: src/frontends/qt4/GuiPrefs.cpp:2643
 msgid "Choose personal dictionary"
 msgstr "Choisir un dictionnaire personnel"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2650
+#: src/frontends/qt4/GuiPrefs.cpp:2644
 msgid "*.pws"
 msgstr "*.pws"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2650
+#: src/frontends/qt4/GuiPrefs.cpp:2644
 msgid "*.ispell"
 msgstr "*.ispell"
 
