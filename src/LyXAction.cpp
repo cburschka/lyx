@@ -1893,7 +1893,22 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_CHANGE_REJECT, "change-reject", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_ALL_CHANGES_ACCEPT
+ * \li Action: Accepts all tracked changes in the document.
+ * \li Syntax: all-changes-accept
+ * \li Origin: Levon, 16 Oct 2002
+ * \endvar
+ */
 		{ LFUN_ALL_CHANGES_ACCEPT, "all-changes-accept", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_ALL_CHANGES_REJECT
+ * \li Action: Rejects all tracked changes in the document.
+ * \li Notion: Reject does not work recursively; the user may have to repeat the operation.
+ * \li Syntax: all-changes-reject
+ * \li Origin: Levon, 16 Oct 2002
+ * \endvar
+ */
 		{ LFUN_ALL_CHANGES_REJECT, "all-changes-reject", Noop, Edit },
 
 /*!
