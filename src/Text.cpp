@@ -115,16 +115,11 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 				layoutname = tclass.defaultLayoutName();
 		}
 
-		bool hasLayout = tclass.hasLayout(layoutname);
-
-		if (!hasLayout) {
-			errorList.push_back(ErrorItem(_("Unknown layout"),
-			bformat(_("Layout '%1$s' does not exist in textclass '%2$s'\nTrying to use the default instead.\n"),
-			layoutname, from_utf8(tclass.name())), par.id(), 0, par.size()));
-			layoutname = par.usePlainLayout() ? 
-					tclass.emptyLayoutName() :
-					tclass.defaultLayoutName();
-		}
+		// When we apply an unknown layout to a document, we add this layout to the textclass
+		// of this document. For example, when you apply class article to a beamer document,
+		// all unknown layouts such as frame will be added to document class article so that
+		// these layouts can keep their original names.
+		tclass.addLayoutIfNeeded(layoutname);
 
 		par.setLayout(bp.documentClass()[layoutname]);
 

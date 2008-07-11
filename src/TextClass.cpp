@@ -141,7 +141,7 @@ TextClass::TextClass()
 }
 
 
-bool TextClass::readStyle(Lexer & lexrc, Layout & lay)
+bool TextClass::readStyle(Lexer & lexrc, Layout & lay) const
 {
 	LYXERR(Debug::TCLASS, "Reading style " << to_utf8(lay.name()));
 	if (!lay.read(lexrc, *this)) {
@@ -244,26 +244,8 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 	// Define the `empty' layout used in table cells, ert, etc. Note that 
 	// we do this before loading any layout file, so that classes can 
 	// override features of this layout if they should choose to do so.
-	if (rt == BASECLASS && !hasLayout(emptylayout_)) {
-		static char const * s = "Margin Static\n"
-			"LatexType Paragraph\n"
-			"LatexName dummy\n"
-			"Align Block\n"
-			"AlignPossible Left, Right, Center\n"
-			"LabelType No_Label\n"
-			"End";
-		istringstream ss(s);
-		Lexer lex(textClassTags);
-		lex.setStream(ss);
-		Layout lay;
-		lay.setName(emptylayout_);
-		if (!readStyle(lex, lay)) {
-			// The only way this happens is because the hardcoded layout above
-			// is wrong.
-			LASSERT(false, /**/);
-		};
-		layoutlist_.push_back(lay);
-	}
+	if (rt == BASECLASS && !hasLayout(emptylayout_))
+		layoutlist_.push_back(createDefaultLayout(emptylayout_));
 
 	Lexer lexrc(textClassTags);
 	lexrc.setFile(filename);
@@ -921,6 +903,12 @@ bool TextClass::hasLayout(docstring const & n) const
 }
 
 
+void TextClass::addLayoutIfNeeded(docstring const & n) const
+{
+	if (!hasLayout(n))
+		layoutlist_.push_back(createDefaultLayout(n, true));
+}
+
 
 Layout const & TextClass::operator[](docstring const & name) const
 {
@@ -987,8 +975,9 @@ bool TextClass::load(string const & path) const
 		return true;
 
 	// Read style-file, provided path is searched before the system ones
-	FileName layout_file;
-	if (!path.empty())
+	// If path is a file, it is loaded directly.
+	FileName layout_file(path);
+	if (!path.empty() && !layout_file.isReadableFile())
 		layout_file = FileName(addName(path, name_ + ".layout"));
 	if (layout_file.empty() || !layout_file.exists())
 		layout_file = libFileSearch("layouts", name_, "layout");
@@ -1047,6 +1036,37 @@ bool TextClass::isPlainLayout(Layout const & layout) const
 	return layout.name() == emptyLayoutName();
 }
 
+
+Layout TextClass::createDefaultLayout(docstring const & name, bool unknown) const
+{
+	static Layout * defaultLayout = NULL;
+
+	if (defaultLayout) {
+		defaultLayout->setUnknown(unknown);
+		defaultLayout->setName(name);
+		return *defaultLayout;
+	}
+
+	static char const * s = "Margin Static\n"
+			"LatexType Paragraph\n"
+			"LatexName dummy\n"
+			"Align Block\n"
+			"AlignPossible Left, Right, Center\n"
+			"LabelType No_Label\n"
+			"End";
+	istringstream ss(s);
+	Lexer lex(textClassTags);
+	lex.setStream(ss);
+	defaultLayout = new Layout;
+	defaultLayout->setUnknown(unknown);
+	defaultLayout->setName(name);
+	if (!readStyle(lex, *defaultLayout)) {
+		// The only way this happens is because the hardcoded layout above
+		// is wrong.
+		LASSERT(false, /**/);
+	};
+	return *defaultLayout;
+}
 
 /////////////////////////////////////////////////////////////////////////
 //

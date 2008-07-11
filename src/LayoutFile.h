@@ -98,21 +98,16 @@ public:
 	/// Clears the textclass so as to force it to be reloaded
 	void reset(LayoutFileIndex const & tc);
 
-	enum Layout_Type {
-		System,
-		Local
-	};
-	
+	/// add a default textclass with all standard layouts.
+	LayoutFileIndex addDefaultClass(std::string const & textclass);
+
 	/// add a textclass from user local directory.
 	/// \return the identifier for the loaded file, or else an
 	/// empty string if no file was loaded.
 	LayoutFileIndex
-		addLayoutFile(std::string const & textclass, std::string const & path,
-			Layout_Type type);
+		addLocalLayout(std::string const & textclass, std::string const & path);
 	/// a list of the available classes
 	std::vector<LayoutFileIndex> classList() const;
-	/// 
-	static std::string const localPrefix;
 private:
 	///
 	typedef std::map<std::string, LayoutFile *> ClassMap;

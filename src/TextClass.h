@@ -27,6 +27,7 @@
 #include <map>
 #include <set>
 #include <vector>
+#include <list>
 
 namespace lyx {
 
@@ -91,7 +92,16 @@ public:
 	// that was based upon the same DocumentClass. (Of course, if you 
 	// really, REALLY want to make LayoutList a vector<Layout *>, then
 	// you can implement custom assignment and copy constructors.)
-	typedef std::vector<Layout> LayoutList;
+	//
+	// NOTE: Layout pointers are directly assigned to paragraphs so a
+	// container that does not invalidate these pointers after insertion
+	// is needed.
+	//
+	// NOTE: It makes sense to add unknown layouts to DocumentClass
+	// and make them buffer-dependent. However, this requires
+	// reimplementation of a lot of functions such as hasLayout
+	// and operator[], with little benefit.
+	typedef std::list<Layout> LayoutList;
 	/// The inset layouts available to this class
 	typedef std::map<docstring, InsetLayout> InsetLayouts;
 	///
@@ -117,6 +127,11 @@ public:
 	bool isDefaultLayout(Layout const &) const;
 	/// 
 	bool isPlainLayout(Layout const &) const;
+	/// Create a default layout for this textclass.
+	/** \param unknown Set to true if this layout is a default layout used to
+	 * represent an unknown layout
+	 */
+	Layout createDefaultLayout(docstring const & name, bool unknown = false) const;
 	/// returns a special layout for use when we don't really want one,
 	/// e.g., in table cells
 	Layout const & emptyLayout() const 
@@ -128,6 +143,8 @@ public:
 	size_t layoutCount() const { return layoutlist_.size(); }
 	///
 	bool hasLayout(docstring const & name) const;
+	/// add a default layout \c name if it does not exist in layoutlist_
+	void addLayoutIfNeeded(docstring const & name) const;
 	///
 	Layout const & operator[](docstring const & vname) const;
 
@@ -162,6 +179,9 @@ public:
 	// loading
 	///////////////////////////////////////////////////////////////////
 	/// Sees to it the textclass structure has been loaded
+	/// This function will search for $classname.layout in default directories
+	/// and an optional path, but if path points to a file, it will be loaded
+	/// directly.
 	bool load(std::string const & path = std::string()) const;
 	/// Has this layout file been loaded yet?
 	/// Overridden by DocumentClass
@@ -196,7 +216,9 @@ protected:
 	// members
 	///////////////////////////////////////////////////////////////////
 	/// Paragraph styles used in this layout
-	LayoutList layoutlist_;
+	/// This variable is mutable because unknown layouts can be added
+	/// to const textclass.
+	mutable LayoutList layoutlist_;
 	/// Layout file name
 	std::string name_;
 	/// document class name
@@ -270,7 +292,7 @@ private:
 	///
 	bool convertLayoutFormat(support::FileName const &, ReadType);
 	/// \return true for success.
-	bool readStyle(Lexer &, Layout &);
+	bool readStyle(Lexer &, Layout &) const;
 	///
 	void readOutputType(Lexer &);
 	///

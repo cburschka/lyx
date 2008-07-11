@@ -876,6 +876,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(latexModule->layoutPB, SIGNAL(clicked()),
 		this, SLOT(browseLayout()));
+	connect(latexModule->layoutPB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 	connect(latexModule->childDocGB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(latexModule->childDocLE, SIGNAL(textChanged(const QString &)),
@@ -899,8 +901,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 		latexModule->psdriverCO->addItem(enc);
 	}
 	// latex classes
-	// FIXME hide local layout button due to bug 4812.
-	latexModule->layoutPB->hide();
 	latexModule->classCO->setModel(&classes_model_);
 	LayoutFileList const & bcl = LayoutFileList::get();
 	vector<LayoutFileIndex> classList = bcl.classList();
@@ -1241,13 +1241,22 @@ void GuiDocument::browseLayout()
 	FileName layoutFile = support::makeAbsPath(fromqstr(file),
 		fromqstr(bufferFilepath()));
 	
+	int const ret = Alert::prompt(_("Local layout file"),
+		_("The layout file you have selected is a local layout\n"
+		  "file, not one in the system or user directory. Your\n"
+		  "document may not work with this layout if you do not\n"
+		  "keep the layout file in the document directory."),
+		  1, 1, _("&Set Layout"), _("&Cancel"));
+	if (ret == 1)
+		return;
+
 	// load the layout file
 	LayoutFileList & bcl = LayoutFileList::get();
 	string classname = layoutFile.onlyFileName();
-	LayoutFileIndex name = bcl.addLayoutFile(
+	// this will update an existing layout if that layout has been loaded before.
+	LayoutFileIndex name = bcl.addLocalLayout(
 		classname.substr(0, classname.size() - 7),
-		layoutFile.onlyPath().absFilename(),
-		LayoutFileList::Local);
+		layoutFile.onlyPath().absFilename());
 
 	if (name.empty()) {
 		Alert::error(_("Error"),
@@ -1266,6 +1275,7 @@ void GuiDocument::browseLayout()
 		latexModule->classCO->setCurrentIndex(0);
 	} else
 		latexModule->classCO->setCurrentIndex(idx);
+	
 	classChanged();
 }
 
@@ -1290,20 +1300,7 @@ void GuiDocument::classChanged()
 	if (idx < 0) 
 		return;
 	string const classname = classes_model_.getIDString(idx);
-	// check if this is a local layout file
-	if (prefixIs(classname, LayoutFileList::localPrefix)) {
-		int const ret = Alert::prompt(_("Local layout file"),
-				_("The layout file you have selected is a local layout\n"
-				  "file, not one in the system or user directory. Your\n"
-				  "document may not work with this layout if you do not\n"
-				  "keep the layout file in the same directory."),
-				  1, 1, _("&Set Layout"), _("&Cancel"));
-		if (ret == 1) {
-			// try to reset the layout combo
-			setLayoutComboByIDString(bp_.baseClassID());
-			return;
-		}
-	}
+
 	// FIXME Note that by doing things this way, we load the TextClass
 	// as soon as it is selected. So, if you use the scroll wheel when
 	// sitting on the combo box, we'll load a lot of TextClass objects

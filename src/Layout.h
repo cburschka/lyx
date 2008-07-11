@@ -51,6 +51,9 @@ class Layout {
 public:
 	///
 	Layout();
+	/// is this layout a default layout created for an unknown layout
+	bool isUnknown() const { return unknown_; }
+	void setUnknown(bool unknown) { unknown_ = unknown; }
 	/// Reads a layout definition from file
 	/// \return true on success.
 	bool read(Lexer &, TextClass const &);
@@ -121,6 +124,11 @@ public:
 	////////////////////////////////////////////////////////////////
 	// members
 	////////////////////////////////////////////////////////////////
+	/** Is this layout the default layout for an unknown layout? If
+	 * so, its name will be displayed as xxx (unknown).
+	 */
+	bool unknown_;
+
 	/** Default font for this layout/environment.
 	    The main font for this kind of environment. If an attribute has
 	    INHERITED_*, it means that the value is specified by

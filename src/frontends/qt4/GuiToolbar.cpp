@@ -506,7 +506,8 @@ void GuiLayoutBox::set(docstring const & layout)
 	if (!text_class_)
 		return;
 
-	QString const & name = toqstr((*text_class_)[layout].name());
+	Layout const & lay = (*text_class_)[layout];
+	QString const & name = toqstr(lay.name() + (lay.isUnknown() ? " (unknown)" : ""));
 	if (name == currentText())
 		return;
 
@@ -615,7 +616,8 @@ void GuiLayoutBox::updateContents(bool reset)
 		// if it doesn't require the empty layout, we skip it
 		if (name == text_class_->emptyLayoutName() && inset_ && !useEmpty)
 			continue;
-		addItemSort(name, lit->category(), lyxrc.sort_layouts, lyxrc.group_layouts);
+		addItemSort(name + (lit->isUnknown() ? " (unknown)" : ""),
+			lit->category(), lyxrc.sort_layouts, lyxrc.group_layouts);
 	}
 
 	set(owner_.view()->cursor().innerParagraph().layout().name());
@@ -633,8 +635,8 @@ void GuiLayoutBox::selected(int index)
 {
 	// get selection
 	QModelIndex mindex = filterModel_->mapToSource(filterModel_->index(index, 1));
-	docstring const layoutName = 
-		qstring_to_ucs4(model_->itemFromIndex(mindex)->text());
+	docstring const layoutName = rtrim(
+		qstring_to_ucs4(model_->itemFromIndex(mindex)->text()), " (unknown)");
 
 	owner_.setFocus();
 

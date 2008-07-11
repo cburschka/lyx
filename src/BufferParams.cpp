@@ -463,19 +463,13 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		string tcp;
 		LayoutFileList & bcl = LayoutFileList::get();
 		if (tcp.empty() && !filepath.empty())
-			tcp = bcl.addLayoutFile(classname, filepath.absFilename(), LayoutFileList::Local);
+			tcp = bcl.addLocalLayout(classname, filepath.absFilename());
 		if (!tcp.empty())
 			setBaseClass(tcp);
-		else if (bcl.haveClass(classname)) {
+		else
 			setBaseClass(classname);
-		} else {
-			// a warning will be given for unknown class
-			setBaseClass(defaultBaseclass());
-			return classname;
-		}
-		// FIXME: this warning will be given even if there exists a local .cls
-		// file. Even worse, the .lyx file can not be compiled or exported
-		// because the textclass is marked as unavilable.
+		// We assume that a tex class exists for local or unknown layouts so this warning
+		// will only be given for system layouts.
 		if (!baseClass()->isTeXClassAvailable()) {
 			docstring const msg =
 				bformat(_("The layout file requested by this document,\n"
@@ -487,7 +481,6 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 			frontend::Alert::warning(_("Document class not available"),
 				       msg + _("LyX will not be able to produce output."));
 		} 
-		
 	} else if (token == "\\begin_preamble") {
 		readPreamble(lex);
 	} else if (token == "\\begin_local_layout") {
@@ -1423,13 +1416,16 @@ void BufferParams::setDocumentClass(DocumentClass const * const tc) {
 bool BufferParams::setBaseClass(string const & classname)
 {
 	LYXERR(Debug::TCLASS, "setBaseClass: " << classname);
-	LayoutFileList const & bcl = LayoutFileList::get();
+	LayoutFileList & bcl = LayoutFileList::get();
 	if (!bcl.haveClass(classname)) {
 		docstring s = 
-			bformat(_("The document class %1$s could not be found."),
+			bformat(_("The document class %1$s could not be found. "
+				"A default textclass with default layouts will be used. "
+				"LyX might not be able to produce output unless a correct "
+				"textclass is selected from the document settings dialog."),
 			from_utf8(classname));
-		frontend::Alert::error(_("Class not found"), s);
-		return false;
+		frontend::Alert::error(_("Document class not found"), s);
+		bcl.addDefaultClass(classname);
 	}
 
 	if (bcl[classname].load()) {

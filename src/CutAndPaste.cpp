@@ -509,26 +509,15 @@ void switchBetweenClasses(DocumentClass const * const oldone,
 	ParIterator end = par_iterator_end(in);
 	for (ParIterator it = par_iterator_begin(in); it != end; ++it) {
 		docstring const name = it->layout().name();
-		bool hasLayout = newtc.hasLayout(name);
+
+		// the pasted text will keep their own layout name. If this layout does
+		// not exist in the new document, it will behave like a standard layout.
+		newtc.addLayoutIfNeeded(name);
 
 		if (in.usePlainLayout())
 			it->setLayout(newtc.emptyLayout());
-		else if (hasLayout)
-			it->setLayout(newtc[name]);
 		else
-			it->setLayout(newtc.defaultLayout());
-
-		if (!hasLayout && name != oldtc.defaultLayoutName()) {
-			docstring const s = bformat(
-						 _("Layout had to be changed from\n%1$s to %2$s\n"
-						"because of class conversion from\n%3$s to %4$s"),
-			 name, it->layout().name(),
-			 from_utf8(oldtc.name()), from_utf8(newtc.name()));
-			// To warn the user that something had to be done.
-			errorlist.push_back(ErrorItem(_("Changed Layout"), s,
-						      it->id(), 0,
-						      it->size()));
-		}
+			it->setLayout(newtc[name]);
 	}
 
 	// character styles

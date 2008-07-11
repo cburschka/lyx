@@ -95,6 +95,7 @@ enum LayoutTags {
 
 Layout::Layout()
 {
+	unknown_ = false;
 	margintype = MARGIN_STATIC;
 	latextype = LATEX_PARAGRAPH;
 	intitle = false;

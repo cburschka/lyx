@@ -194,11 +194,50 @@ void LayoutFileList::reset(LayoutFileIndex const & classname) {
 }
 
 
-string const LayoutFileList::localPrefix = "LOCAL:";
+LayoutFileIndex LayoutFileList::addDefaultClass(string const & textclass)
+{
+	if (haveClass(textclass))
+		return textclass;
+
+	FileName const tempLayout = FileName::tempName();
+	ofstream ofs(tempLayout.toFilesystemEncoding().c_str());
+	ofs << "# This layout is automatically generated\n"
+		"# \\DeclareLaTeXClass{" << textclass << "}\n\n"
+		"Format		7\n"
+		"Input stdclass.inc\n\n"
+		"Columns		1\n"
+		"Sides			1\n"
+		"SecNumDepth	2\n"
+		"TocDepth		2\n"
+		"DefaultStyle	Standard\n\n"
+		"Style Standard\n"
+		"	Category              MainText\n"
+		"	Margin                Static\n"
+		"	LatexType             Paragraph\n"
+		"	LatexName             dummy\n"
+		"	ParIndent             MM\n"
+		"	ParSkip               0.4\n"
+		"	Align                 Block\n"
+		"	AlignPossible         Block, Left, Right, Center\n"
+		"	LabelType             No_Label\n"
+		"End\n";
+	ofs.close();
+
+	// We do not know if a LaTeX class is available for this document, but setting
+	// the last parameter to true will suppress a warning message about missing
+	// tex class.
+	LayoutFile * tc = new LayoutFile(textclass, textclass, "Unknown text class " + textclass, true);
+	if (!tc->load(tempLayout.absFilename()))
+		// The only way this happens is because the hardcoded layout file above
+		// is wrong.
+		LASSERT(false, /**/);
+	classmap_[textclass] = tc;
+	return textclass;
+}
+
 
 LayoutFileIndex 
-	LayoutFileList::addLayoutFile(string const & textclass, string const & path,
-		Layout_Type type)
+	LayoutFileList::addLocalLayout(string const & textclass, string const & path)
 {
 	// FIXME  There is a bug here: 4593
 	//
@@ -206,15 +245,7 @@ LayoutFileIndex
 	// NOTE: latex class name is defined in textclass.layout, which can be 
 	// different from textclass
 	string fullName = addName(path, textclass + ".layout");
-	string localIndex;
 	
-	if (type == Local)
-		localIndex = localPrefix + fullName;
-	
-	// if the local file has already been loaded, return it
-	if (haveClass(localIndex))
-		return localIndex;
-
 	FileName const layout_file(fullName);
 	if (layout_file.exists()) {
 		LYXERR(Debug::TCLASS, "Adding class " << textclass << " from directory " << path);
@@ -236,13 +267,19 @@ LayoutFileIndex
 				// now, create a TextClass with description containing path information
 				string className(sub.str(2) == "" ? textclass : sub.str(2));
 				LayoutFile * tmpl = 
-					new LayoutFile(textclass, className, localIndex, true);
+					new LayoutFile(textclass, className, textclass, true);
 				// This textclass is added on request so it will definitely be
 				// used. Load it now because other load() calls may fail if they
 				// are called in a context without buffer path information.
 				tmpl->load(path);
-				classmap_[localIndex] = tmpl;
-				return localIndex;
+				// There will be only one textclass with this name, even if different
+				// layout files are loaded from different directories.
+				if (haveClass(textclass)) {
+					LYXERR0("Exisint textclass " << textclass << " is redefined by " << fullName);
+					delete classmap_[textclass];
+				}
+				classmap_[textclass] = tmpl;
+				return textclass;
 			}
 		}
 	}
