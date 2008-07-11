@@ -319,7 +319,7 @@ static string const findTargetFormat(string const & from)
 	// Use the standard converter if we don't know the format to load
 	// from.
 	if (from.empty())
-		return string("png");
+		return string("ppm");
 
 	// First ascertain if we can load directly with no conversion
 	FormatList::const_iterator it  = formats.begin();
@@ -339,9 +339,9 @@ static string const findTargetFormat(string const & from)
 				<< " to " << *it);
 	}
 
-	// Failed! so we have to try to convert it to PNG format
+	// Failed! so we have to try to convert it to PPM format
 	// with the standard converter
-	return string("png");
+	return string("ppm");
 }
 
 
