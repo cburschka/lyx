@@ -1762,7 +1762,7 @@ if 'update_po' in BUILD_TARGETS:
         ['$TOP_SRCDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_header_files + src_tex2lyx_files ]
     )
     Alias('update_po', POTFILES_in)
-    # build language_l10n.pot, ui_l10n.pot, layouts_l10n.pot, qt4_l10n.pot, external_l10n, formats_l10n
+    # build language_l10n.pot, encodings_10n.pot, ui_l10n.pot, layouts_l10n.pot, qt4_l10n.pot, external_l10n, formats_l10n
     # and combine them to lyx.po
     env['LYX_POT'] = 'python $TOP_SRCDIR/po/lyx_pot.py'
     lyx_po = env.Command('$BUILDDIR/po/lyx.po',
@@ -1775,6 +1775,8 @@ if 'update_po' in BUILD_TARGETS:
                 '$LYX_POT -b $TOP_SRCDIR -t layouts -o $TARGET $SOURCES'),
              env.Command('$BUILDDIR/po/languages_l10n.pot', '$TOP_SRCDIR/lib/languages',
                 '$LYX_POT -b $TOP_SRCDIR -t languages -o $TARGET $SOURCES'),
+             env.Command('$BUILDDIR/po/encodings_l10n.pot', '$TOP_SRCDIR/lib/encodings',
+                '$LYX_POT -b $TOP_SRCDIR -t encodings -o $TARGET $SOURCES'),
              env.Command('$BUILDDIR/po/ui_l10n.pot', 
                 ['$TOP_SRCDIR/lib/ui/%s' % x for x in lib_ui_files],
                 '$LYX_POT -b $TOP_SRCDIR -t ui -o $TARGET $SOURCES'),

@@ -269,9 +269,9 @@ const char * EncodingException::what() const throw()
 }
 
 
-Encoding::Encoding(string const & n, string const & l, string const & i,
-		   bool f, Encoding::Package p)
-	: name_(n), latexName_(l), iconvName_(i), fixedwidth_(f), package_(p)
+Encoding::Encoding(string const & n, string const & l, string const & g,
+		   string const & i, bool f, Encoding::Package p)
+	: name_(n), latexName_(l), guiName_(g), iconvName_(i), fixedwidth_(f), package_(p)
 {
 	if (n == "ascii") {
 		// ASCII can encode 128 code points and nothing else
@@ -731,6 +731,8 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			lex.next();
 			string const latexname = lex.getString();
 			lex.next();
+			string const guiname = lex.getString();
+			lex.next();
 			string const iconvname = lex.getString();
 			lex.next();
 			string const width = lex.getString();
@@ -756,7 +758,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 
 			LYXERR(Debug::INFO, "Reading encoding " << name);
 			encodinglist[name] = Encoding(name, latexname,
-				iconvname, fixedwidth, package);
+				guiname, iconvname, fixedwidth, package);
 
 			if (lex.lex() != et_end)
 				lex.printError("Missing end");

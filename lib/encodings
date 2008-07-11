@@ -7,117 +7,117 @@
 # These are marked with the "variable" keyword.
 # Fixed width encodings are marked with the "fixed" keyword.
 
-# Syntax: Encoding <LyX name> <LaTeX name> <iconv name> fixed|variable <package> End
+# Syntax: Encoding <LyX name> <LaTeX name> <GUI name> <iconv name> fixed|variable <package> End
 
 # encodings used by inputenc.sty
 
-Encoding utf8 utf8 UTF-8 variable inputenc
+Encoding utf8 utf8 "Unicode (utf8)" UTF-8 variable inputenc
 End
 
 # This one is used by many CJK packages. utf8 is supposed to be the successor,
 # but does not have all features of utf8x yet.
-Encoding utf8x utf8x UTF-8 variable inputenc
+Encoding utf8x utf8x "Unicode (ucs-extended) (utf8x)" UTF-8 variable inputenc
 End
 
 # This encoding is used to typeset Armenian using the armTeX package
-Encoding armscii8 armscii8 ARMSCII-8 fixed inputenc
+Encoding armscii8 armscii8 "Armenian (ArmSCII8)" ARMSCII-8 fixed inputenc
 End
 
-Encoding iso8859-1 latin1 ISO-8859-1 fixed inputenc
+Encoding iso8859-1 latin1 "Western European (ISO 8859-1)" ISO-8859-1 fixed inputenc
 End
 
-Encoding iso8859-2 latin2 ISO-8859-2 fixed inputenc
+Encoding iso8859-2 latin2 "Central European (ISO 8859-2)" ISO-8859-2 fixed inputenc
 End
 
-Encoding iso8859-3 latin3 ISO-8859-3 fixed inputenc
+Encoding iso8859-3 latin3 "Middle European (ISO 8859-3)" ISO-8859-3 fixed inputenc
 End
 
-Encoding iso8859-4 latin4 ISO-8859-4 fixed inputenc
+Encoding iso8859-4 latin4 "Baltic (ISO 8859-4)" ISO-8859-4 fixed inputenc
 End
 
-Encoding iso8859-5 iso88595 ISO-8859-5 fixed inputenc
+Encoding iso8859-5 iso88595 "Cyrillic (ISO 8859-5)" ISO-8859-5 fixed inputenc
 End
 
 # Not standard, see http://tug.ctan.org/tex-archive/language/arabic/arabi/arabi/texmf/latex/arabi/
-Encoding iso8859-6 8859-6 ISO-8859-6 fixed inputenc
+Encoding iso8859-6 8859-6 "Arabic (ISO 8859-6)" ISO-8859-6 fixed inputenc
 End
 
-Encoding iso8859-7 iso-8859-7 ISO-8859-7 fixed inputenc
+Encoding iso8859-7 iso-8859-7 "Greek (ISO 8859-7)" ISO-8859-7 fixed inputenc
 End
 
-Encoding iso8859-8 8859-8 ISO-8859-8 fixed inputenc
+Encoding iso8859-8 8859-8 "Hebrew (ISO 8859-8)" ISO-8859-8 fixed inputenc
 End
 
-Encoding iso8859-9 latin5 ISO-8859-9 fixed inputenc
+Encoding iso8859-9 latin5 "Turkish (ISO 8859-9)" ISO-8859-9 fixed inputenc
 End
 
 # Not standard, see http://www.vtex.lt/tex/littex/index.html
-Encoding iso8859-13 l7xenc ISO-8859-13 fixed inputenc
+Encoding iso8859-13 l7xenc "Baltic (ISO 8859-13)" ISO-8859-13 fixed inputenc
 End
 
-Encoding iso8859-15 latin9 ISO-8859-15 fixed inputenc
+Encoding iso8859-15 latin9 "Western European (ISO 8859-15)" ISO-8859-15 fixed inputenc
 End
 
-Encoding iso8859-16 latin10 ISO-8859-16 fixed inputenc
+Encoding iso8859-16 latin10 "South-Eastern European (ISO 8859-16)" ISO-8859-16 fixed inputenc
 End
 
-Encoding cp437 cp437 CP437 fixed inputenc
+Encoding cp437 cp437 "DOS (CP 437)" CP437 fixed inputenc
 End
 
 # cp437, but on position 225 is sz instead of beta
-Encoding cp437de cp437de CP437 fixed inputenc
+Encoding cp437de cp437de "DOS-de (CP 437-de)" CP437 fixed inputenc
 End
 
-Encoding cp850 cp850 CP850 fixed inputenc
+Encoding cp850 cp850 "Western European (CP 850)" CP850 fixed inputenc
 End
 
-Encoding cp852 cp852 CP852 fixed inputenc
+Encoding cp852 cp852 "Central European (CP 852)" CP852 fixed inputenc
 End
 
-Encoding cp855 cp855 CP855 fixed inputenc
+Encoding cp855 cp855 "Cyrillic (CP 855)" CP855 fixed inputenc
 End
 
-Encoding cp858 cp858 CP858 fixed inputenc
+Encoding cp858 cp858 "Western European (CP 858)" CP858 fixed inputenc
 End
 
-Encoding cp862 cp862 CP862 fixed inputenc
+Encoding cp862 cp862 "Hebrew (CP 862)" CP862 fixed inputenc
 End
 
-Encoding cp865 cp865 CP865 fixed inputenc
+Encoding cp865 cp865 "Nordic languages (CP 865)" CP865 fixed inputenc
 End
 
-Encoding cp866 cp866 CP866 fixed inputenc
+Encoding cp866 cp866 "Cyrillic (CP 866)" CP866 fixed inputenc
 End
 
-Encoding cp1250 cp1250 CP1250 fixed inputenc
+Encoding cp1250 cp1250 "Central European (CP 1250)" CP1250 fixed inputenc
 End
 
-Encoding cp1251 cp1251 CP1251 fixed inputenc
+Encoding cp1251 cp1251 "Cyrillic (CP 1251)" CP1251 fixed inputenc
 End
 
-Encoding cp1252 cp1252 CP1252 fixed inputenc
+Encoding cp1252 cp1252 "Western European (CP 1252)" CP1252 fixed inputenc
 End
 
-Encoding cp1255 cp1255 CP1255 fixed inputenc
+Encoding cp1255 cp1255 "Hebrew (CP 1255)" CP1255 fixed inputenc
 End
 
 # Not standard, see http://tug.ctan.org/tex-archive/language/arabic/arabi/arabi/texmf/latex/arabi/
-Encoding cp1256 cp1256 CP1256 fixed inputenc
+Encoding cp1256 cp1256 "Arabic (CP 1256)" CP1256 fixed inputenc
 End
 
-Encoding cp1257 cp1257 CP1257 fixed inputenc
+Encoding cp1257 cp1257 "Baltic (CP 1257)" CP1257 fixed inputenc
 End
 
-Encoding koi8 koi8-r KOI8-R fixed inputenc
+Encoding koi8 koi8-r "Cyrillic (KOI8-R)" KOI8-R fixed inputenc
 End
 
-Encoding koi8-u koi8-u KOI8-U fixed inputenc
+Encoding koi8-u koi8-u "Cyrillic (KOI8-U)" KOI8-U fixed inputenc
 End
 
-Encoding pt154 pt154 PT154 fixed inputenc
+Encoding pt154 pt154 "Cyrillic (pt 154)" PT154 fixed inputenc
 End
 
-Encoding pt254 pt254 PT254 fixed inputenc
+Encoding pt254 pt254 "Cyrillic (pt 254)" PT254 fixed inputenc
 End
 
 # encodings used by CJK.sty
@@ -131,68 +131,68 @@ End
 # of TeX control characters like {, } and \ can occur in the second byte:
 
 # For traditional chinese
-#Encoding big5 Bg5 BIG5 variable CJK
+#Encoding big5 Bg5 "Chinese (traditional) (Big5)" BIG5 variable CJK
 #End
 
 # For japanese
-#Encoding shift-jis SJIS SJIS variable CJK
+#Encoding shift-jis SJIS "Japanese (CJK) (SJIS)" SJIS variable CJK
 #End
 
 # The following encodings need hardcoded support of the encodable unicode
 # range, but are known by iconv:
 
 # For simplified chinese
-Encoding euc-cn GB EUC-CN variable CJK
+Encoding euc-cn GB "Chinese (simplified) (EUC-CN)" EUC-CN variable CJK
 End
 
 # For simplified chinese
-Encoding gbk GBK GBK variable CJK
+Encoding gbk GBK "Chinese (simplified) (GBK)" GBK variable CJK
 End
 
 # For japanese
-Encoding jis JIS ISO-2022-JP variable CJK
+Encoding jis JIS "Japanese (CJK) (JIS)" ISO-2022-JP variable CJK
 End
 
 # For korean
-Encoding euc-kr KS EUC-KR variable CJK
+Encoding euc-kr KS "Korean (EUC-KR)" EUC-KR variable CJK
 End
 
 # The CJK package has yet another name for utf8...
-Encoding utf8-cjk UTF8 UTF-8 variable CJK
+Encoding utf8-cjk UTF8 "Unicode (CJK) (utf8)" UTF-8 variable CJK
 End
 
 # For traditional chinese
-Encoding euc-tw EUC-TW EUC-TW variable CJK
+Encoding euc-tw EUC-TW "Chinese (traditional) (EUC-TW)" EUC-TW variable CJK
 End
 
 # For japanese
-Encoding euc-jp EUC-JP EUC-JP variable CJK
+Encoding euc-jp EUC-JP "Japanese (CJK) (EUC-JP)" EUC-JP variable CJK
 End
 
 # encodings that do not use a package
 
 # Traditional Japanese TeX programs require neither CJK nor inputenc
 # package.
-Encoding euc-jp-plain EUC-JP-pLaTeX EUC-JP variable none
+Encoding euc-jp-plain EUC-JP-pLaTeX "Japanese (non-CJK) (EUC-JP)" EUC-JP variable none
 End
-Encoding jis-plain JIS-pLaTeX ISO-2022-JP variable none
+Encoding jis-plain JIS-pLaTeX "Japanese (non-CJK) (JIS)" ISO-2022-JP variable none
 End
-Encoding shift-jis-plain SJIS-pLaTeX CP932 variable none
+Encoding shift-jis-plain SJIS-pLaTeX "Japanese (non-CJK) (SJIS)" CP932 variable none
 End
 
 # This one needs hardcoded support, since the inputenc package does not know
 # tis620-0, and thailatex sets up babel directly to use tis620-0, so the
 # LaTeX name is never output to .tex files (but needed for the hardcoded
 # tis620-0 support).
-Encoding tis620-0 tis620-0 TIS620-0 fixed none
+Encoding tis620-0 tis620-0 "Thai (TIS 620-0)" TIS620-0 fixed none
 End
 
 # A plain utf8 encoding that does not use the inputenc package.
 # Such an encoding is required for XeTeX.
-Encoding utf8-plain utf8-plain UTF-8 variable none
+Encoding utf8-plain utf8-plain "Unicode (XeTeX) (utf8)" UTF-8 variable none
 End
 
 # Pure 7bit ASCII encoding (partially hardcoded in LyX)
-Encoding ascii ascii ascii fixed none
+Encoding ascii ascii "ASCII" ascii fixed none
 End
 

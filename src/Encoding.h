@@ -51,13 +51,16 @@ public:
 	Encoding() {}
 	///
 	Encoding(std::string const & n, std::string const & l,
-		 std::string const & i, bool f, Package p);
+		 std::string const & g, std::string const & i,
+		 bool f, Package p);
 	///
 	void init() const;
 	///
 	std::string const & name() const { return name_; }
 	///
 	std::string const & latexName() const { return latexName_; }
+	///
+	std::string const & guiName() const { return guiName_; }
 	///
 	std::string const & iconvName() const { return iconvName_; }
 	/**
@@ -78,6 +81,8 @@ private:
 	std::string name_;
 	///
 	std::string latexName_;
+	///
+	std::string guiName_;
 	///
 	std::string iconvName_;
 	/// Is this a fixed width encoding?

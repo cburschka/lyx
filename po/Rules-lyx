@@ -16,7 +16,7 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	     sort | uniq ) > $@-t \
 	&& mv $@-t $@
 
-l10n_pots: qt4_l10n.pot layouts_l10n.pot languages_l10n.pot ui_l10n.pot external_l10n.pot formats_l10n.pot
+l10n_pots: qt4_l10n.pot layouts_l10n.pot languages_l10n.pot encodings_l10n.pot ui_l10n.pot external_l10n.pot formats_l10n.pot
 	cat $^ | \
 	msguniq -o $(DOMAIN).po && rm -f  $^
 
@@ -32,6 +32,9 @@ layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*
 
 languages_l10n.pot: $(top_srcdir)/lib/languages
 	python $(srcdir)/lyx_pot.py -b $(top_srcdir) -o $@ -t languages ${top_srcdir}/lib/languages
+
+encodings_l10n.pot: $(top_srcdir)/lib/encodings
+	python $(srcdir)/lyx_pot.py -b $(top_srcdir) -o $@ -t encodings ${top_srcdir}/lib/encodings
 
 ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui $(top_srcdir)/lib/ui/*.inc
 	LC_ALL=C ; export LC_ALL ; \

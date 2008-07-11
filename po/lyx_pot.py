@@ -282,6 +282,29 @@ def formats_l10n(input_files, output, base):
     output.close()
 
 
+def encodings_l10n(input_files, output, base):
+    '''Generate pot file from lib/encodings'''
+    output = open(output, 'w')
+    # assuming only one encodings file
+    #                 Encoding utf8      utf8    "Unicode (utf8)" UTF-8    variable inputenc
+    reg = re.compile('Encoding [\w-]+\s+[\w-]+\s+"([\w \-\(\)]+)"\s+[\w-]+\s+(fixed|variable)\s+\w+.*')
+    input = open(input_files[0])
+    for lineno, line in enumerate(input.readlines()):
+        if not line.startswith('Encoding'):
+            continue
+        if reg.match(line):
+            print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
+                (relativePath(input_files[0], base), lineno+1, reg.match(line).groups()[0])
+        else:
+            print "Error: Unable to handle line:"
+            print line
+            # No need to abort if the parsing fails
+            # sys.exit(1)
+    input.close()
+    output.close()
+
+
+
 Usage = '''
 lyx_pot.py [-b|--base top_src_dir] [-o|--output output_file] [-h|--help] -t|--type input_type input_files
 
@@ -295,6 +318,7 @@ where
         layouts: lib/layouts/*
         qt4: qt4 ui files
         languages: file lib/languages
+        encodings: file lib/encodings
         external: external templates file
         formats: formats predefined in lib/configure.py
 '''
@@ -316,7 +340,7 @@ if __name__ == '__main__':
             base = value
         elif opt in ['-t', '--type']:
             input_type = value
-    if input_type not in ['ui', 'layouts', 'modules', 'qt4', 'languages', 'external', 'formats'] or output is None:
+    if input_type not in ['ui', 'layouts', 'modules', 'qt4', 'languages', 'encodings', 'external', 'formats'] or output is None:
         print 'Wrong input type or output filename.'
         sys.exit(1)
     if input_type == 'ui':
@@ -329,6 +353,8 @@ if __name__ == '__main__':
         external_l10n(args, output, base)
     elif input_type == 'formats':
         formats_l10n(args, output, base)
+    elif input_type == 'encodings':
+        encodings_l10n(args, output, base)
     else:
         languages_l10n(args, output, base)
 

@@ -796,12 +796,14 @@ GuiDocument::GuiDocument(GuiView & lv)
 	langModule->languageCO->setModel(language_model);
 
 	// Always put the default encoding in the first position.
-	// It is special because the displayed text is translated.
 	langModule->encodingCO->addItem(qt_("LaTeX default"));
+	QStringList encodinglist;
 	Encodings::const_iterator it = encodings.begin();
 	Encodings::const_iterator const end = encodings.end();
 	for (; it != end; ++it)
-		langModule->encodingCO->addItem(toqstr(it->latexName()));
+		encodinglist.append(qt_(it->guiName()));
+	encodinglist.sort();
+	langModule->encodingCO->addItems(encodinglist);
 
 	langModule->quoteStyleCO->addItem(qt_("``text''"));
 	langModule->quoteStyleCO->addItem(qt_("''text''"));
@@ -1481,9 +1483,25 @@ void GuiDocument::apply(BufferParams & params)
 		int i = langModule->encodingCO->currentIndex();
 		if (i == 0)
 			params.inputenc = "default";
-		else
-			params.inputenc =
-				fromqstr(langModule->encodingCO->currentText());
+		else {
+			QString const enc_gui =
+				langModule->encodingCO->currentText();
+			Encodings::const_iterator it = encodings.begin();
+			Encodings::const_iterator const end = encodings.end();
+			bool found = false;
+			for (; it != end; ++it) {
+				if (qt_(it->guiName()) == enc_gui) {
+					params.inputenc = it->latexName();
+					found = true;
+					break;
+				}
+			}
+			if (!found) {
+				// should not happen
+				lyxerr << "GuiDocument::apply: Unknown encoding! Resetting to default" << endl;
+				params.inputenc = "default";
+			}
+		}
 	}
 
 	InsetQuotes::QuoteLanguage lga = InsetQuotes::EnglishQuotes;
@@ -1796,8 +1814,17 @@ void GuiDocument::paramsToDialog(BufferParams const & params)
 		if (params.inputenc == "default") {
 			langModule->encodingCO->setCurrentIndex(0);
 		} else {
+			string enc_gui;
+			Encodings::const_iterator it = encodings.begin();
+			Encodings::const_iterator const end = encodings.end();
+			for (; it != end; ++it) {
+				if (it->latexName() == params.inputenc) {
+					enc_gui = it->guiName();
+					break;
+				}
+			}
 			int const i = langModule->encodingCO->findText(
-					toqstr(params.inputenc));
+					qt_(enc_gui));
 			if (i >= 0)
 				langModule->encodingCO->setCurrentIndex(i);
 			else
