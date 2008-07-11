@@ -2,10 +2,10 @@ include $(top_srcdir)/config/common.am
 
 ACLOCAL_AMFLAGS = -I m4 -I config
 
-DISTCLEANFILES += lyx.1 config.status config.cache config.log
+DISTCLEANFILES += lyx.1
 
-MAINTAINERCLEANFILES += $(srcdir)/aclocal.m4 \
-	$(srcdir)/configure
+MAINTAINERCLEANFILES += $(srcdir)/aclocal.m4 $(srcdir)/configure \
+	$(srcdir)/config.h.in
 
 DIST_SUBDIRS = m4 config development intl po boost src sourcedoc lib
 

@@ -4,8 +4,6 @@ include $(top_srcdir)/config/common.am
 
 DISTCLEANFILES += config.h libintl.h
 
-MAINTAINERCLEANFILES += $(srcdir)/config.h.in
-
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES)
 
 if BUILD_CLIENT_SUBDIR
@@ -14,8 +12,7 @@ endif
 
 SUBDIRS = support frontends . $(CLIENT) tex2lyx
 
-EXTRA_DIST = config.h.in \
-	Section.h \
+EXTRA_DIST = Section.h \
 	Section.cpp \
 	Variables.cpp \
 	Variables.h \
@@ -188,7 +185,6 @@ HEADERFILESCORE = \
 	ColorCode.h \
 	Color.h \
 	CompletionList.h \
-	config.h.in \
 	ConverterCache.h \
 	Converter.h \
 	CoordCache.h \
