@@ -204,12 +204,14 @@
 # ### « traduction » des chaînes dans configure.py
 #    + transcription des suppressions de majuscules de 1.5.5
 # ------------------------------------------------------------------
+# # hanging -> avec renfoncement ?
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-07-11 11:59+0100\n"
-"PO-Revision-Date: 2008-07-11 08:32+0200\n"
+"PO-Revision-Date: 2008-07-11 15:29+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -8384,14 +8386,10 @@ msgid "Endnote"
 msgstr "Notes en fin de document"
 
 #: lib/layouts/endnotes.module:6
-#, fuzzy
 msgid ""
 "Adds an endnote inset, in addition to footnotes. You will need to add "
 "\\theendnotes in ERT where you want the endnotes to appear."
-msgstr ""
-"Ajoute une commande de groupement de notes (« endnote »), en plus des notes "
-"de bas de page. Vous devrez ajouter \"\\theendnotes\" en ERT à l'endroit où "
-"vous souhaitez voir apparaître les notes regroupées."
+msgstr "Ajoute un insert de groupement de notes (« endnote »), en plus des notes de bas de page. Vous devrez ajouter \"\\theendnotes\" en ERT à l'endroit où vous souhaitez voir apparaître les notes regroupées."
 
 #: lib/layouts/endnotes.module:9
 msgid "Custom:Endnote"
@@ -8416,14 +8414,14 @@ msgstr ""
 
 #: lib/layouts/hanging.module:2 lib/layouts/hanging.module:16
 msgid "Hanging"
-msgstr "Marge"
+msgstr "Renfoncement"
 
 #: lib/layouts/hanging.module:6
 msgid ""
 "Adds an environment for hanging paragraphs. Hanging paragraph is a paragraph "
 "in which the first line is set to the left margin, but all subsequent lines "
 "are indented."
-msgstr ""
+msgstr "Ajoute un environnement pour les paragraphes avec renfoncement. Un paragraphe avec renfoncement est un paragraphe dans lequel la première ligne est au fer à gauche, alors que les autres lignes sont indentées."
 
 #: lib/layouts/linguistics.module:2
 msgid "Linguistics"
@@ -8551,12 +8549,10 @@ msgid "Minimalistic"
 msgstr "Minimaliste"
 
 #: lib/layouts/minimalistic.module:5
-#, fuzzy
 msgid ""
 "Redefines several insets (Index, Branch, URL) as being Minimalistic, for use "
 "by old-timers."
-msgstr ""
-"Redéfinit plusieurs inserts comme Minimalistes, pour l'usage des anciens."
+msgstr "Redéfinit plusieurs inserts (index, branche, URL) comme Minimalistes, pour l'usage des anciens."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
@@ -8937,9 +8933,8 @@ msgid "Japanese"
 msgstr "Japonnais"
 
 #: lib/languages:56
-#, fuzzy
 msgid "Japanese (CJK)"
-msgstr "Japonnais (non-CJK)"
+msgstr "Japonnais (CJK)"
 
 #: lib/languages:57
 msgid "Kazakh"
@@ -9057,208 +9052,191 @@ msgstr "Gallois"
 
 #: lib/encodings:14
 msgid "Unicode (utf8)"
-msgstr ""
+msgstr "Unicode (utf8)"
 
 #: lib/encodings:19
 msgid "Unicode (ucs-extended) (utf8x)"
-msgstr ""
+msgstr "Unicode (extension ucs) (utf8x)"
 
 #: lib/encodings:23
 msgid "Armenian (ArmSCII8)"
-msgstr ""
+msgstr "Arménien (ArmSCII8)"
 
 #: lib/encodings:26
 msgid "Western European (ISO 8859-1)"
-msgstr ""
+msgstr "Europe occidentale (ISO 8859-1)"
 
 #: lib/encodings:29
 msgid "Central European (ISO 8859-2)"
-msgstr ""
+msgstr "Europe centrale (ISO 8859-2)"
 
 #: lib/encodings:32
 msgid "Middle European (ISO 8859-3)"
-msgstr ""
+msgstr "Europe intermédiaire (ISO 8859-3)"
 
 #: lib/encodings:35
 msgid "Baltic (ISO 8859-4)"
-msgstr ""
+msgstr "Baltique (ISO 8859-4)"
 
 #: lib/encodings:38
 msgid "Cyrillic (ISO 8859-5)"
-msgstr ""
+msgstr "Cyrillique (ISO 8859-5)"
 
 #: lib/encodings:42
 msgid "Arabic (ISO 8859-6)"
-msgstr ""
+msgstr "Arabe (ISO 8859-6)"
 
 #: lib/encodings:45
 msgid "Greek (ISO 8859-7)"
-msgstr ""
+msgstr "Grec (ISO 8859-7)"
 
 #: lib/encodings:48
 msgid "Hebrew (ISO 8859-8)"
-msgstr ""
+msgstr "Hébreu (ISO 8859-8)"
 
 #: lib/encodings:51
 msgid "Turkish (ISO 8859-9)"
-msgstr ""
+msgstr "Turc (ISO 8859-9)"
 
 #: lib/encodings:55
 msgid "Baltic (ISO 8859-13)"
-msgstr ""
+msgstr "Baltique (ISO 8859-13)"
 
 #: lib/encodings:58
 msgid "Western European (ISO 8859-15)"
-msgstr ""
+msgstr "Europe occidentale (ISO 8859-15)"
 
 #: lib/encodings:61
 msgid "South-Eastern European (ISO 8859-16)"
-msgstr ""
+msgstr "Europe du sud-ouest (ISO 8859-16)"
 
 #: lib/encodings:64
 msgid "DOS (CP 437)"
-msgstr ""
+msgstr "DOS (CP 437)"
 
 #: lib/encodings:68
 msgid "DOS-de (CP 437-de)"
-msgstr ""
+msgstr "DOS-de (CP 437-de)"
 
 #: lib/encodings:71
 msgid "Western European (CP 850)"
-msgstr ""
+msgstr "Europe occidentale (CP 850)"
 
 #: lib/encodings:74
 msgid "Central European (CP 852)"
-msgstr ""
+msgstr "Europe centrale (CP 852)"
 
 #: lib/encodings:77
-#, fuzzy
 msgid "Cyrillic (CP 855)"
-msgstr "Cyrillique"
+msgstr "Cyrillique (CP 855)"
 
 #: lib/encodings:80
 msgid "Western European (CP 858)"
-msgstr ""
+msgstr "Europe occidentale (CP 858)"
 
 #: lib/encodings:83
 msgid "Hebrew (CP 862)"
-msgstr ""
+msgstr "Hébreu (CP 862)"
 
 #: lib/encodings:86
-#, fuzzy
 msgid "Nordic languages (CP 865)"
-msgstr "Pas de language"
+msgstr "Langues nordiques (CP 865)"
 
 #: lib/encodings:89
-#, fuzzy
 msgid "Cyrillic (CP 866)"
-msgstr "Cyrillique"
+msgstr "Cyrillique (CP 866)"
 
 #: lib/encodings:92
 msgid "Central European (CP 1250)"
-msgstr ""
+msgstr "Europe centrale (CP 1250)"
 
 #: lib/encodings:95
-#, fuzzy
 msgid "Cyrillic (CP 1251)"
-msgstr "Cyrillique"
+msgstr "Cyrillique (CP 1251)"
 
 #: lib/encodings:98
 msgid "Western European (CP 1252)"
-msgstr ""
+msgstr "Europe occidentale (CP 1252)"
 
 #: lib/encodings:101
 msgid "Hebrew (CP 1255)"
-msgstr ""
+msgstr "Hébreu (CP 1255)"
 
 #: lib/encodings:105
-#, fuzzy
 msgid "Arabic (CP 1256)"
-msgstr "Arabe"
+msgstr "Arabe (CP 1256)"
 
 #: lib/encodings:108
 msgid "Baltic (CP 1257)"
-msgstr ""
+msgstr "Baltique (CP 1257)"
 
 #: lib/encodings:111
-#, fuzzy
 msgid "Cyrillic (KOI8-R)"
-msgstr "Cyrillique"
+msgstr "Cyrillique (KOI8-R)"
 
 #: lib/encodings:114
-#, fuzzy
 msgid "Cyrillic (KOI8-U)"
-msgstr "Cyrillique"
+msgstr "Cyrillique (KOI8-U)"
 
 #: lib/encodings:117
-#, fuzzy
 msgid "Cyrillic (pt 154)"
-msgstr "Cyrillique"
+msgstr "Cyrillique (pt 154)"
 
 #: lib/encodings:120
-#, fuzzy
 msgid "Cyrillic (pt 254)"
-msgstr "Cyrillique"
+msgstr "Cyrillique (pt 254)"
 
 #: lib/encodings:145
-#, fuzzy
 msgid "Chinese (simplified) (EUC-CN)"
-msgstr "Chinois (simplifié)"
+msgstr "Chinois (simplifié) (EUC-CN)"
 
 #: lib/encodings:149
-#, fuzzy
 msgid "Chinese (simplified) (GBK)"
-msgstr "Chinois (simplifié)"
+msgstr "Chinois (simplifié) (GBK)"
 
 #: lib/encodings:153
-#, fuzzy
 msgid "Japanese (CJK) (JIS)"
-msgstr "Japonnais (non-CJK)"
+msgstr "Japonais (CJK) (JIS)"
 
 #: lib/encodings:157
 msgid "Korean (EUC-KR)"
-msgstr ""
+msgstr "Coréen (EUC-KR)"
 
 #: lib/encodings:161
 msgid "Unicode (CJK) (utf8)"
-msgstr ""
+msgstr "Unicode (CJK) (utf8)"
 
 #: lib/encodings:165
-#, fuzzy
 msgid "Chinese (traditional) (EUC-TW)"
-msgstr "Chinois (traditionnel)"
+msgstr "Chinois (traditionnel) (EUC-TW)"
 
 #: lib/encodings:169
-#, fuzzy
 msgid "Japanese (CJK) (EUC-JP)"
-msgstr "Japonnais (non-CJK)"
+msgstr "Japonais (CJK) (EUC-JP)"
 
 #: lib/encodings:176
-#, fuzzy
 msgid "Japanese (non-CJK) (EUC-JP)"
-msgstr "Japonnais (non-CJK)"
+msgstr "Japonais (non-CJK) (EUC-JP)"
 
 #: lib/encodings:178
-#, fuzzy
 msgid "Japanese (non-CJK) (JIS)"
-msgstr "Japonnais (non-CJK)"
+msgstr "Japonais (non-CJK) (JIS)"
 
 #: lib/encodings:180
-#, fuzzy
 msgid "Japanese (non-CJK) (SJIS)"
-msgstr "Japonnais (non-CJK)"
+msgstr "Japonais (non-CJK) (SJIS)"
 
 #: lib/encodings:187
 msgid "Thai (TIS 620-0)"
-msgstr ""
+msgstr "Thai (TIS 620-0)"
 
 #: lib/encodings:192
 msgid "Unicode (XeTeX) (utf8)"
-msgstr ""
+msgstr "Unicode (XeTeX) (utf8)"
 
 #: lib/encodings:196
 msgid "ASCII"
-msgstr ""
+msgstr "ASCII"
 
 #: lib/ui/classic.ui:32 lib/ui/stdmenus.inc:20
 msgid "File|F"
@@ -11376,14 +11354,12 @@ msgid "Next change"
 msgstr "Modification suivante"
 
 #: lib/ui/stdtoolbars.inc:193
-#, fuzzy
 msgid "Accept change inside selection"
-msgstr "Accepter la modification"
+msgstr "Accepter la modification dans la sélection"
 
 #: lib/ui/stdtoolbars.inc:194
-#, fuzzy
 msgid "Reject change inside selection"
-msgstr "Remplace l'entrée par la sélection"
+msgstr "Rejeter la modification dans la sélection"
 
 #: lib/ui/stdtoolbars.inc:196
 msgid "Merge changes"
@@ -14442,12 +14418,11 @@ msgid ""
 "The document class %1$s could not be found. A default textclass with default "
 "layouts will be used. LyX might not be able to produce output unless a "
 "correct textclass is selected from the document settings dialog."
-msgstr ""
+msgstr "La classe de document %1$s est untrouvable. Une classe implicite avec un format par défaut va être utilisée. LyX pourrait ne pas pouvoir produire de fichiers de sortie tant qu'une classe correcte n'est pas sélectionnée dans le memau de paramètres du document."
 
 #: src/BufferParams.cpp:1427
-#, fuzzy
 msgid "Document class not found"
-msgstr "Classe de document non disponible"
+msgstr "Classe de document introuvable"
 
 #: src/BufferParams.cpp:1437 src/LyXFunc.cpp:695
 #, c-format
@@ -17249,7 +17224,6 @@ msgid "Local layout file"
 msgstr "Fichier de format local"
 
 #: src/frontends/qt4/GuiDocument.cpp:1247
-#, fuzzy
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory. Your\n"
@@ -17258,9 +17232,9 @@ msgid ""
 msgstr ""
 "Le fichier de format sélectionné est un fichier\n"
 "local, il n'est pas dans le répertoire système\n"
-"ou dans le répertoire utilisateur.\n"
-"Votre document peut ne plus fonctionner si vous ne\n"
-"conservez pas le fichier de format dans le même répertoire que lui."
+"ni dans le répertoire utilisateur.\n"
+"Votre document peut ne plus fonctionner avec ce format si vous ne\n"
+"conservez pas le fichier de format dans le répertoire du document."
 
 #: src/frontends/qt4/GuiDocument.cpp:1251
 msgid "&Set Layout"
@@ -18369,19 +18343,16 @@ msgid "Examples|#E#e"
 msgstr "Exemples|#E#e"
 
 #: src/frontends/qt4/GuiView.cpp:1277
-#, fuzzy
 msgid "LyX-1.3.x Documents (*.lyx13)"
-msgstr "Documents LyX (*.lyx)"
+msgstr "Documents LyX-1.3.x (*.lyx)"
 
 #: src/frontends/qt4/GuiView.cpp:1278
-#, fuzzy
 msgid "LyX-1.4.x Documents (*.lyx14)"
-msgstr "Documents LyX (*.lyx)"
+msgstr "Documents LyX-1.4.x (*.lyx)"
 
 #: src/frontends/qt4/GuiView.cpp:1279
-#, fuzzy
 msgid "LyX-1.5.x Documents (*.lyx15)"
-msgstr "Documents LyX (*.lyx)"
+msgstr "Documents LyX-1.5.x (*.lyx)"
 
 #: src/frontends/qt4/GuiView.cpp:1313
 #, c-format
