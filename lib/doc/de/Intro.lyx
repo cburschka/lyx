@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0beta4 created this file. For more info see http://www.lyx.org/
 \lyxformat 338
 \begin_document
 \begin_header
@@ -142,8 +142,8 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 23.
- Juni 2008
+letzte Änderung: 12.
+ Juli 2008
 \end_layout
 
 \begin_layout Standard
@@ -1063,21 +1063,29 @@ Fußnote
 
  aus.
  Um sie zu öffnen, klicken Sie mit dem linken Mausknopf darauf.
- Um das Inhaltsverzeichnis zu betrachten, klicken Sie auf 
+ Um das Inhaltsverzeichnis zu betrachten, wählen Sie das Menü 
+\family sans
+Navigieren
+\family default
+, dort wird der Inhalt ebenfalls automatisch angezeigt -- Versuchen Sie
+ es einmal! Wenn Sie auf den Werkzezugleistenknopf
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../../images/dialog-toggle_toc.png
-	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
 
 \end_inset
 
- oder wählen Sie das Menü 
-\family sans
-Navigieren
-\family default
-, dort wird der Inhalt ebenfalls automatisch angezeigt -- Versuchen Sie
- es einmal!
+
+\end_layout
+
+\end_inset
+
+ klicken, wird das Inhaltsverzeichnis im LyX-Fenster gezeigt.
 \end_layout
 
 \begin_layout Standard

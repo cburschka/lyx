@@ -1,5 +1,5 @@
-#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
-\lyxformat 335
+#LyX 1.6.0beta4 created this file. For more info see http://www.lyx.org/
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass article
@@ -25,6 +25,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -106,8 +107,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 5.
- Juni 2008
+letzte Änderung: 12.
+ Juli 2008
 \end_layout
 
 \begin_layout Standard
@@ -847,6 +848,6112 @@ arg   "math-delim [ ]"
 
 \begin_layout Section*
 Aussehen
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+Tastaturkürzel
+\end_layout
+
+\begin_layout Standard
+Dieser Anhang ist eine große Zusammenstellung aller Tastaturkürzel der deutschen
+ Version.
+ Ursprünglich sollte es nur eine Liste der Kürzel, gefolgt von der zugeordneten
+ Funktion werden, damit ein Benutzer schnell herausfinden kann, was ein
+ Kürzel macht.
+ Später haben wir uns dann entschlossen, auch die Menüs und die Definition
+ der Werkzeugleiste hier aufzunehmen.
+ 
+\end_layout
+
+\begin_layout Standard
+Die Form ist eigentlich selbsterklärend, dennoch ein paar Tipps: Alle Einträge
+ für eine Basis (
+\family sans
+Strg+A
+\family default
+, 
+\family sans
+Strg+
+\family default
+ usw.) sind alphabetisch geordnet.
+ Einfachere Kombinationen stehen weiter oben als komplexere (
+\family sans
+Strg+S
+\family default
+ vor 
+\family sans
+Strg+S
+\family default
++C).
+ Alle Einträge hier wurden aus der Menüstruktur und den Definitionsdateien
+ in 
+\family typewriter
+Ly
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+XDir/ui
+\family default
+ und 
+\family typewriter
+Ly
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+XDir/bind
+\family default
+ zusammengesucht.
+ Diese Dateien stellen im Zweifelsfall 
+\emph on
+die letzte Instanz
+\emph default
+ dar.
+ Bedenken Sie auch, dass Sie die Tastaturkürzel auch in Ihrer privaten Datei
+ 
+\family typewriter
+UserDir/preferences
+\family default
+ umdefinieren können.
+ Wenn also etwas nicht übereinstimmt, schauen Sie bitte zuerst dort nach,
+ und stellen Sie sicher, dass es dort nicht umdefiniert wurde.
+\end_layout
+
+\begin_layout Standard
+Und als letztes sei der Hinweis angebracht, dass einige Windowmanager (wie
+ zum Beispiel FVWM) einige der Funktionstasten abfangen und für die eigene
+ Steuerung verwenden.
+ So schaltet etwa bei einigen Installationen 
+\family sans
+Strg+rechts
+\family default
+ zwischen den virtuellen Bildschirmen um und springt nicht -- wie in LyX
+ vorgesehen -- ein Wort vorwärts.
+ Aber auch der Windowmanager ist zum Glück konfigurierbar, und Sie können
+ derartige 
+\emph on
+Kollisionen
+\emph default
+ beheben.
+\end_layout
+
+\begin_layout Section
+Werkzeugleiste
+\end_layout
+
+\begin_layout LyX-Code
+Toolbar
+\end_layout
+
+\begin_layout LyX-Code
+    Layouts
+\end_layout
+
+\begin_layout LyX-Code
+    Icon "buffer-open"
+\end_layout
+
+\begin_layout LyX-Code
+    Icon "buffer-write"
+\end_layout
+
+\begin_layout LyX-Code
+    Icon "buffer-print"
+\end_layout
+
+\begin_layout LyX-Code
+    Separator
+\end_layout
+
+\begin_layout LyX-Code
+    Icon "cut"
+\end_layout
+
+\begin_layout LyX-Code
+    Icon "copy"
+\end_layout
+
+\begin_layout LyX-Code
+    Icon "paste"
+\end_layout
+
+\begin_layout LyX-Code
+    Separator
+\end_layout
+
+\begin_layout LyX-Code
+    Icon "font-emph"
+\end_layout
+
+\begin_layout LyX-Code
+    Icon "font-noun"
+\end_layout
+
+\begin_layout LyX-Code
+    Icon "font-free"
+\end_layout
+
+\begin_layout LyX-Code
+    Separator
+\end_layout
+
+\begin_layout LyX-Code
+    Icon "tex-mode"
+\end_layout
+
+\begin_layout LyX-Code
+    Icon "math-mode"
+\end_layout
+
+\begin_layout LyX-Code
+    Separator
+\end_layout
+
+\begin_layout LyX-Code
+    Icon "footnote-insert"
+\end_layout
+
+\begin_layout LyX-Code
+    Icon "marginpar-insert"
+\end_layout
+
+\begin_layout LyX-Code
+    Icon "depth-next"
+\end_layout
+
+\begin_layout LyX-Code
+    Separator
+\end_layout
+
+\begin_layout LyX-Code
+    Icon "figure-insert"
+\end_layout
+
+\begin_layout LyX-Code
+    Icon "dialog-tabular-insert"
+\end_layout
+
+\begin_layout LyX-Code
+End
+\end_layout
+
+\begin_layout Section
+Menüs
+\end_layout
+
+\begin_layout Subsection
+Datei
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+D
+\begin_inset space ~
+\end_inset
+
+B
+\family default
+ 
+\family typewriter
+lyx-quit
+\family default
+ LyX beenden
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+D
+\begin_inset space ~
+\end_inset
+
+C
+\family default
+ 
+\family typewriter
+buffer-close
+\family default
+ Datei schließen (
+\family sans
+Strg+W
+\family default
+)
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+D
+\begin_inset space ~
+\end_inset
+
+D
+\family default
+ 
+\family typewriter
+buffer-print
+\family default
+ Datei drucken (
+\family sans
+Strg+P
+\family default
+)
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+D
+\begin_inset space ~
+\end_inset
+
+E
+\family default
+ 
+\family typewriter
+file_export
+\family default
+ Untermenü Exportieren
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+D
+\begin_inset space ~
+\end_inset
+
+F
+\family default
+ 
+\family typewriter
+buffer-open
+\family default
+ Datei öffnen
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+D
+\begin_inset space ~
+\end_inset
+
+V
+\family default
+ 
+\family typewriter
+file_vc
+\family default
+ Untermenü Versionskontrolle
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+E
+\family default
+ 
+\family typewriter
+vc-history 
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+V
+\family default
+ 
+\family typewriter
+vc-check-in
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+L
+\family default
+ 
+\family typewriter
+vc-revert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\begin_inset space ~
+\end_inset
+
+
+\family default
+ 
+\family typewriter
+vc-check-out
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\begin_inset space ~
+\end_inset
+
+
+\family default
+ 
+\family typewriter
+vc-register
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+W
+\family default
+ 
+\family typewriter
+vc-undo-last
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+D
+\begin_inset space ~
+\end_inset
+
+I
+\family default
+ 
+\family typewriter
+file_import
+\family default
+ Untermenü Importieren
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+D
+\begin_inset space ~
+\end_inset
+
+N
+\family default
+ 
+\family typewriter
+buffer-new
+\family default
+ neues Dokument
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+D
+\begin_inset space ~
+\end_inset
+
+S
+\family default
+ 
+\family typewriter
+buffer-write
+\family default
+ Datei speichern
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+D
+\begin_inset space ~
+\end_inset
+
+U
+\family default
+ 
+\family typewriter
+buffer-write-as
+\family default
+ Datei speichern unter
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+D
+\begin_inset space ~
+\end_inset
+
+V
+\family default
+ 
+\family typewriter
+buffer-new-template
+\family default
+ neues Dokument von Vorlage
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+D
+\begin_inset space ~
+\end_inset
+
+W
+\family default
+ 
+\family typewriter
+buffer-reload
+\family default
+ Datei wiederherstellen
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+D
+\begin_inset space ~
+\end_inset
+
+X
+\family default
+ 
+\family typewriter
+buffer-export
+\family default
+ Datei faxen
+\end_layout
+
+\begin_layout Subsection
+Werkzeuge
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+B
+\begin_inset space ~
+\end_inset
+
+M
+\family default
+ 
+\family typewriter
+math-panel
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+B
+\begin_inset space ~
+\end_inset
+
+O
+\family default
+ 
+\family typewriter
+reconfigure
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+B
+\begin_inset space ~
+\end_inset
+
+P
+\family default
+ 
+\family typewriter
+spellchecker
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+B
+\begin_inset space ~
+\end_inset
+
+R
+\family default
+ 
+\family typewriter
+undo
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+B
+\begin_inset space ~
+\end_inset
+
+S
+\family default
+ 
+\family typewriter
+find-replace
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+B
+\begin_inset space ~
+\end_inset
+
+T
+\family default
+ 
+\family typewriter
+edit_tabular
+\family default
+ Untermenü
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+B
+\family default
+ 
+\family typewriter
+tabular-feature align-left
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+C
+\family default
+ 
+\family typewriter
+tabular-feature delete-column
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+F
+\family default
+ 
+\family typewriter
+tabular-feature append-row
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+G
+\family default
+ 
+\family typewriter
+tabular-feature align-right
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+H
+\family default
+ 
+\family typewriter
+tabular-feature delete-row
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+L
+\family default
+ 
+\family typewriter
+tabular-feature toggle-line-left
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+N
+\family default
+ 
+\family typewriter
+tabular-feature valign-bottom
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+O
+\family default
+ 
+\family typewriter
+tabular-feature toggle-line-top
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+P
+\family default
+ 
+\family typewriter
+tabular-feature multicolumn
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+R
+\family default
+ 
+\family typewriter
+tabular-feature toggle-line-right
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+S
+\family default
+ 
+\family typewriter
+tabular-feature append-column
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+T
+\family default
+ 
+\family typewriter
+tabular-feature valign-center
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+U
+\family default
+ 
+\family typewriter
+tabular-feature toggle-line-bottom
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+V
+\family default
+ 
+\family typewriter
+tabular-feature valign-top
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Z
+\family default
+ 
+\family typewriter
+tabular-feature align-center
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+B
+\begin_inset space ~
+\end_inset
+
+U
+\family default
+ 
+\family typewriter
+edit_paste
+\family default
+ Untermenü
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+A
+\family default
+ 
+\family typewriter
+primary-selection-paste paragraph
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Z
+\family default
+ 
+\family typewriter
+primary-selection-paste
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+B
+\begin_inset space ~
+\end_inset
+
+W
+\family default
+ 
+\family typewriter
+redo
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+B
+\begin_inset space ~
+\end_inset
+
+X
+\family default
+ 
+\family typewriter
+buffer-chktex
+\end_layout
+
+\begin_layout Subsection
+Einfügen
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+A
+\family default
+ 
+\family typewriter
+graphics-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+B
+\family default
+ 
+\family typewriter
+dialog-tabular-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+D
+\family default
+ 
+\family typewriter
+buffer-child-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+E
+\family default
+ 
+\family typewriter
+insert_file
+\family default
+ Untermenü
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+A
+\family default
+ 
+\family typewriter
+file-insert-plaintext paragraphs
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+L
+\family default
+ 
+\family typewriter
+file-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Z
+\family default
+ 
+\family typewriter
+file-insert-plaintext lines
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+F
+\family default
+ 
+\family typewriter
+footnote-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+H
+\family default
+ 
+\family typewriter
+insert-math
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+J
+\family default
+ 
+\family typewriter
+insert_toc
+\family default
+ Untermenü
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+A
+\family default
+ 
+\family typewriter
+lof-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+B
+\family default
+ 
+\family typewriter
+bibtex-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+G
+\family default
+ 
+\family typewriter
+loa-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+I
+\family default
+ 
+\family typewriter
+toc-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+L
+\family default
+ 
+\family typewriter
+index-print
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+T
+\family default
+ 
+\family typewriter
+lot-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+L
+\family default
+ 
+\family typewriter
+insert_floats
+\family default
+ Untermenü
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+A
+\family default
+ 
+\family typewriter
+buffer-float-insert algorithm
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+D
+\family default
+ 
+\family typewriter
+buffer-float-insert wide-tab
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+F
+\family default
+ 
+\family typewriter
+buffer-float-insert figure
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+T
+\family default
+ 
+\family typewriter
+buffer-float-insert table
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+W
+\family default
+ 
+\family typewriter
+buffer-float-insert wide-fig
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+M
+\family default
+ 
+\family typewriter
+label-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+N
+\family default
+ 
+\family typewriter
+note-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+R
+\family default
+ 
+\family typewriter
+marginalnote-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+Q
+\family default
+ 
+\family typewriter
+reference-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+S
+\family default
+ 
+\family typewriter
+insert_special
+\family default
+ Untermenü
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+A
+\family default
+ 
+\family typewriter
+quote-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+F
+\family default
+ 
+\family typewriter
+dots-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+G
+\family default
+ 
+\family typewriter
+ligature-break-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+H
+\family default
+ 
+\family typewriter
+hfill-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+L
+\family default
+ 
+\family typewriter
+protected-space-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+M
+\family default
+ 
+\family typewriter
+menu-separator-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+P
+\family default
+ 
+\family typewriter
+end-of-sentence-period-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+S
+\family default
+ 
+\family typewriter
+command-sequence math-insert ^;math-mode;
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+T
+\family default
+ 
+\family typewriter
+hyphenation-point-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+U
+\family default
+ 
+\family typewriter
+command-sequence math-insert _;math-mode;
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Z
+\family default
+ 
+\family typewriter
+break-line
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+U
+\family default
+ 
+\family typewriter
+url-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+W
+\family default
+ 
+\family typewriter
+index-insert-last
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+X
+\family default
+ 
+\family typewriter
+index-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+E
+\begin_inset space ~
+\end_inset
+
+Z
+\family default
+ 
+\family typewriter
+citation-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\begin_inset space ~
+\end_inset
+
+
+\family default
+ 
+\family typewriter
+external-insert
+\end_layout
+
+\begin_layout Subsection
+
+\family sans
+Format
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+L
+\begin_inset space ~
+\end_inset
+
+B
+\family default
+ 
+\family typewriter
+appendix
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+L
+\begin_inset space ~
+\end_inset
+
+F
+\family default
+ 
+\family typewriter
+font-bold
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+L
+\begin_inset space ~
+\end_inset
+
+Z
+\family default
+ 
+\family typewriter
+layout-character
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+L
+\begin_inset space ~
+\end_inset
+
+D
+\family default
+ 
+\family typewriter
+layout-document
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+L
+\begin_inset space ~
+\end_inset
+
+H
+\family default
+ 
+\family typewriter
+font-emph
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+L
+\begin_inset space ~
+\end_inset
+
+V
+\family default
+ 
+\family typewriter
+layout-preamble
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+L
+\begin_inset space ~
+\end_inset
+
+K
+\family default
+ 
+\family typewriter
+font-noun
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+L
+\begin_inset space ~
+\end_inset
+
+A
+\family default
+ 
+\family typewriter
+layout-paragraph
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+L
+\begin_inset space ~
+\end_inset
+
+U
+\family default
+ 
+\family typewriter
+depth-increment
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Format\SpecialChar \menuseparator
+Zeichen\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Z
+\begin_inset space ~
+\end_inset
+
+C
+\family default
+ 
+\family typewriter
+font-code
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Z
+\begin_inset space ~
+\end_inset
+
+F
+\family default
+ 
+\family typewriter
+font-bold
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Z
+\begin_inset space ~
+\end_inset
+
+H
+\family default
+ 
+\family typewriter
+font-emph
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Z
+\begin_inset space ~
+\end_inset
+
+K
+\family default
+ 
+\family typewriter
+font-noun
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Z
+\begin_inset space ~
+\end_inset
+
+M
+\family default
+ 
+\family typewriter
+math-mode
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Z
+\begin_inset space ~
+\end_inset
+
+R
+\family default
+ 
+\family typewriter
+font-roman
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Z
+\begin_inset space ~
+\end_inset
+
+S
+\family default
+ 
+\family typewriter
+font-sans
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Z
+\begin_inset space ~
+\end_inset
+
+T
+\family default
+ 
+\family typewriter
+ert-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Z
+\begin_inset space ~
+\end_inset
+
+U
+\family default
+ 
+\family typewriter
+font-underline
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Z
+\begin_inset space ~
+\end_inset
+
+Leertaste
+\family default
+ 
+\family typewriter
+font-default
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Z
+\begin_inset space ~
+\end_inset
+
+nach
+\begin_inset space ~
+\end_inset
+
+unten
+\family default
+ 
+\family typewriter
+word-lowcase
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Z
+\begin_inset space ~
+\end_inset
+
+nach
+\begin_inset space ~
+\end_inset
+
+oben
+\family default
+ 
+\family typewriter
+word-upcase
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Z
+\begin_inset space ~
+\end_inset
+
+Rechts
+\family default
+ 
+\family typewriter
+word-capitalize
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+H
+\family default
+ 
+\family typewriter
+font-size huge
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+L
+\family default
+ 
+\family typewriter
+font-size large
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+N
+\family default
+ 
+\family typewriter
+font-size normal
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+S
+\family default
+ 
+\family typewriter
+font-size small
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+T
+\family default
+ 
+\family typewriter
+font-size tiny
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+0
+\family default
+ 
+\family typewriter
+font-size huger
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+1
+\family default
+ 
+\family typewriter
+font-size tiny
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+2
+\family default
+ 
+\family typewriter
+font-size smallest
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+3
+\family default
+ 
+\family typewriter
+font-size smaller
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+4
+\family default
+ 
+\family typewriter
+font-size small
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+5
+\family default
+ 
+\family typewriter
+font-size normal
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+6
+\family default
+ 
+\family typewriter
+font-size large
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+7
+\family default
+ 
+\family typewriter
+font-size larger
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+8
+\family default
+ 
+\family typewriter
+font-size largest
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+9
+\family default
+ 
+\family typewriter
+font-size huge
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+S+H
+\family default
+ 
+\family typewriter
+font-size huger
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+S+L
+\family default
+ 
+\family typewriter
+font-size larger
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+S+S
+\family default
+ 
+\family typewriter
+font-size smaller
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
++
+\family default
+ 
+\family typewriter
+font-size increase
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+S
+\begin_inset space ~
+\end_inset
+
+-
+\family default
+ 
+\family typewriter
+font-size decrease
+\end_layout
+
+\begin_layout Subsection
+View
+\end_layout
+
+\begin_layout Subsection
+Navigate
+\end_layout
+
+\begin_layout Subsection
+Help
+\end_layout
+
+\begin_layout Subsection
+Absatzformat
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+A
+\family default
+ 
+\family typewriter
+layout Abstract
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+B
+\family default
+ 
+\family typewriter
+layout Itemize
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+C
+\family default
+ 
+\family typewriter
+layout Ly
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Code
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+D
+\family default
+ 
+\family typewriter
+layout Description
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+E
+\family default
+ 
+\family typewriter
+layout Enumerate
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+F
+\family default
+ 
+\family typewriter
+layout ShortFoilhead
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+I
+\family default
+ 
+\family typewriter
+layout Itemize
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+L
+\family default
+ 
+\family typewriter
+layout List
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+N
+\family default
+ 
+\family typewriter
+layout Enumerate
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+Q
+\family default
+ 
+\family typewriter
+layout Quote
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+R
+\family default
+ 
+\family typewriter
+layout ShortRotatefoilhead
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+S
+\family default
+ 
+\family typewriter
+layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+T
+\family default
+ 
+\family typewriter
+layout Title
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+V
+\family default
+ 
+\family typewriter
+layout Verse
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+Leertaste
+\family default
+ 
+\family typewriter
+drop-layouts-choice
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\noun on
+
+\begin_inset space ~
+\end_inset
+
+0
+\family default
+\noun default
+ 
+\family typewriter
+layout Part
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\noun on
+
+\begin_inset space ~
+\end_inset
+
+1
+\family default
+\noun default
+ 
+\family typewriter
+layout Chapter
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+2
+\family default
+ 
+\family typewriter
+layout Section
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+3
+\family default
+ 
+\family typewriter
+layout Subsection
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+4
+\family default
+ 
+\family typewriter
+layout Subsubsection
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+5
+\family default
+ 
+\family typewriter
+layout Paragraph
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+6
+\family default
+ 
+\family typewriter
+layout Subparagraph
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+Stern
+\begin_inset space ~
+\end_inset
+
+0
+\family default
+ 
+\family typewriter
+layout Part*
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+Stern
+\begin_inset space ~
+\end_inset
+
+1
+\family default
+ 
+\family typewriter
+layout Chapter*
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+Stern
+\begin_inset space ~
+\end_inset
+
+2
+\family default
+ 
+\family typewriter
+layout Section*
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+Stern
+\begin_inset space ~
+\end_inset
+
+3
+\family default
+ 
+\family typewriter
+layout Subsection*
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+Stern
+\begin_inset space ~
+\end_inset
+
+4
+\family default
+ 
+\family typewriter
+layout Subsubsection*
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+Stern
+\begin_inset space ~
+\end_inset
+
+5
+\family default
+ 
+\family typewriter
+layout Paragraph*
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+Stern
+\begin_inset space ~
+\end_inset
+
+6
+\family default
+ 
+\family typewriter
+layout Subparagraph*
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+S+A
+\family default
+ 
+\family typewriter
+layout Author
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+S+B
+\family default
+ 
+\family typewriter
+layout Bibliography
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+S+C
+\family default
+ 
+\family typewriter
+layout Comment
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+S+D
+\family default
+ 
+\family typewriter
+layout Date
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+S+F
+\family default
+ 
+\family typewriter
+layout Foilhead
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+S+L
+\family default
+ 
+\family typewriter
+layout LaTeX
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+S+Q
+\family default
+ 
+\family typewriter
+layout Quotation
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+S+R
+\family default
+ 
+\family typewriter
+layout Rotatefoilhead
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+Strg+A
+\family default
+ 
+\family typewriter
+layout RightAddress
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+Alt+A
+\family default
+ 
+\family typewriter
+layout Address
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+Alt+C
+\family default
+ 
+\family typewriter
+layout Caption
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+Links
+\family default
+ 
+\family typewriter
+depth-decrement
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+Rechts
+\family default
+ 
+\family typewriter
+depth-increment
+\end_layout
+
+\begin_layout Standard
+Die folgenden Definitionen dienen der Kompatibilität zu älteren Versionen.
+ Sie sind aber nur auf qwerty-Tastaturen sinnvoll.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+S+@
+\family default
+ 
+\family typewriter
+layout Section*
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+S+$
+\family default
+ 
+\family typewriter
+layout Subsubsection*
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+A
+\begin_inset space ~
+\end_inset
+
+S+#
+\family default
+ 
+\family typewriter
+layout Subsection*
+\end_layout
+
+\begin_layout Section
+Tastatur
+\end_layout
+
+\begin_layout Subsection
+Spezifische Definitionen aus 
+\family typewriter
+emacs.bind
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+A
+\family default
+ 
+\family typewriter
+line-begin
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+B
+\family default
+ 
+\family typewriter
+char-backward
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+D
+\family default
+ 
+\family typewriter
+char-delete-forward
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+E
+\family default
+ 
+\family typewriter
+line-end
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+F
+\family default
+ 
+\family typewriter
+char-forward
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+G
+\family default
+ 
+\family typewriter
+cancel
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+H
+\family default
+ 
+\family typewriter
+hyphenation-point-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+I
+\family default
+ 
+\family typewriter
+hfill-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+K
+\family default
+ 
+\family typewriter
+line-delete-forward
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+L
+\family default
+ 
+\family typewriter
+screen-recenter
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+M
+\family default
+ 
+\family typewriter
+mark-toggle
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+N
+\family default
+ 
+\family typewriter
+down
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+O
+\family default
+ 
+\family typewriter
+open-stuff
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+P
+\family default
+ 
+\family typewriter
+up
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Q
+\family default
+ 
+\family typewriter
+quote-insert 
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+S
+\family default
+ 
+\family typewriter
+find-replace
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+U
+\family default
+ 
+\family typewriter
+font-underline 
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+V
+\family default
+ 
+\family typewriter
+screen-down 
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+W
+\family default
+ 
+\family typewriter
+cut
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Y
+\family default
+ 
+\family typewriter
+paste
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+S+Y
+\family default
+ 
+\family typewriter
+layout-paste
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+A
+\family default
+ 
+\family typewriter
+buffer-auto-save
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+B
+\family default
+ 
+\family typewriter
+buffer-previous
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+C
+\family default
+ 
+\family typewriter
+lyx-quit
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+D
+\family default
+ 
+\family typewriter
+buffer-new
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+?
+\begin_inset space ~
+\end_inset
+
+Strg+X
+\begin_inset space ~
+\end_inset
+
+F
+\family default
+ 
+\family typewriter
+buffer-open
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+G
+\family default
+ 
+\family typewriter
+buffer-view-ps
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+K
+\family default
+ 
+\family typewriter
+buffer-close
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+P
+\family default
+ 
+\family typewriter
+buffer-view
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+R
+\family default
+ 
+\family typewriter
+buffer-typeset
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+?
+\begin_inset space ~
+\end_inset
+
+Strg+X
+\begin_inset space ~
+\end_inset
+
+S
+\family default
+ 
+\family typewriter
+buffer-write
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+T
+\family default
+ 
+\family typewriter
+buffer-typeset
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+U
+\family default
+ 
+\family typewriter
+undo
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+V
+\begin_inset space ~
+\end_inset
+
+C
+\family default
+ 
+\family typewriter
+vc-undo-last
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+V
+\begin_inset space ~
+\end_inset
+
+H
+\family default
+ 
+\family typewriter
+vc-history
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+V
+\begin_inset space ~
+\end_inset
+
+I
+\family default
+ 
+\family typewriter
+vc-register
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+V
+\begin_inset space ~
+\end_inset
+
+U
+\family default
+ 
+\family typewriter
+vc-revert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+V
+\begin_inset space ~
+\end_inset
+
+V
+\family default
+ 
+\family typewriter
+vc-check-in
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+?
+\begin_inset space ~
+\end_inset
+
+Strg+X
+\begin_inset space ~
+\end_inset
+
+W
+\family default
+ 
+\family typewriter
+buffer-write-as
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+(
+\family default
+ 
+\family typewriter
+screen-up
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+)
+\family default
+ 
+\family typewriter
+screen-down
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+Strg+A
+\family default
+ 
+\family typewriter
+buffer-auto-save
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+Strg+B
+\family default
+ 
+\family typewriter
+menu-open Documents
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+Strg+C
+\family default
+ 
+\family typewriter
+lyx-quit
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+Strg+D
+\family default
+ 
+\family typewriter
+buffer-new
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+Strg+F
+\family default
+ 
+\family typewriter
+buffer-open
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+Strg+G
+\family default
+ 
+\family typewriter
+buffer-view-ps
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+Strg+P
+\family default
+ 
+\family typewriter
+buffer-view
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+Strg+Q
+\family default
+ 
+\family typewriter
+buffer-toggle-read-only
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+Strg+S
+\family default
+ 
+\family typewriter
+buffer-write
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+Strg+T
+\family default
+ 
+\family typewriter
+buffer-typeset
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\begin_inset space ~
+\end_inset
+
+Strg+W
+\family default
+ 
+\family typewriter
+buffer-write-as
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Pos1
+\family default
+ 
+\family typewriter
+buffer-begin
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Ende
+\family default
+ 
+\family typewriter
+buffer-end
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Pos1
+\family default
+ 
+\family typewriter
+line-begin-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Ende
+\family default
+ 
+\family typewriter
+line-end-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+
+\family default
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+ 
+\family typewriter
+up-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+
+\family default
+
+\begin_inset Formula $\downarrow$
+\end_inset
+
+ 
+\family typewriter
+down-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Bild
+\family default
+
+\begin_inset Formula $\downarrow$
+\end_inset
+
+ 
+\family typewriter
+screen-down-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Bild
+\family default
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+ 
+\family typewriter
+screen-up-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+
+\family default
+ 
+\family typewriter
+backward-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+
+\family default
+ 
+\family typewriter
+forward-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+
+\family default
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+ 
+\family typewriter
+paragraph-up
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+
+\family default
+
+\begin_inset Formula $\downarrow$
+\end_inset
+
+ 
+\family typewriter
+paragraph-down
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+
+\family default
+ 
+\family typewriter
+word-backward
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+
+\family default
+ 
+\family typewriter
+word-forward
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Entf
+\family default
+ 
+\family typewriter
+word-delete-forward
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Rückschritt
+\family default
+ 
+\family typewriter
+word-delete-backward
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Eingabe
+\family default
+ 
+\family typewriter
+break-line
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+.
+
+\family default
+ 
+\family typewriter
+end-of-sentence-period-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Leertaste
+\family default
+ 
+\family typewriter
+protected-space-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+@
+\family default
+ 
+\family typewriter
+mark-on
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+>
+\family default
+ 
+\family typewriter
+label-goto
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+<
+\family default
+ 
+\family typewriter
+reference-back
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+/
+\family default
+ 
+\family typewriter
+undo
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+_
+\family default
+ 
+\family typewriter
+undo
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+"
+\family default
+ 
+\family typewriter
+quote-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+Pos1
+\family default
+ 
+\family typewriter
+buffer-begin-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+Ende
+\family default
+ 
+\family typewriter
+buffer-end-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+
+\family default
+ 
+\family typewriter
+paragraph-up-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+
+\begin_inset Formula $\downarrow$
+\end_inset
+
+
+\family default
+ 
+\family typewriter
+paragraph-down-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+
+\family default
+
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+ 
+\family typewriter
+word-backward-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+
+\family default
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\family typewriter
+word-forward-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Escape
+\family default
+ 
+\family typewriter
+meta-prefix
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+D
+\family default
+ 
+\family typewriter
+word-delete-forward
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+W
+\family default
+ 
+\family typewriter
+copy
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+X
+\family default
+ 
+\family typewriter
+command-execute
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Umschalt+W
+\family default
+ 
+\family typewriter
+layout-copy
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+.
+
+\family default
+ 
+\family typewriter
+dots-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Eingabe
+\family default
+ 
+\family typewriter
+break-paragraph-keep-layout
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Umschalt+%
+\family default
+ 
+\family typewriter
+find-replace
+\end_layout
+
+\begin_layout Subsection
+Spezifische Definitionen aus 
+\family typewriter
+cua.bind
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+B
+\family default
+ 
+\family typewriter
+font-bold
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+C
+\family default
+ 
+\family typewriter
+copy
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+D
+\family default
+ 
+\family typewriter
+buffer-view 
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+E
+\family default
+ 
+\family typewriter
+font-emph
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+F
+\family default
+ 
+\family typewriter
+find-replace
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+I
+\family default
+ 
+\family typewriter
+open-stuff 
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+K
+\family default
+ 
+\family typewriter
+font-noun 
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+L
+\family default
+ 
+\family typewriter
+tex-mode 
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+M
+\family default
+ 
+\family typewriter
+math-mode
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+N
+\family default
+ 
+\family typewriter
+buffer-new
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+O
+\family default
+ 
+\family typewriter
+buffer-open
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+P
+\family default
+ 
+\family typewriter
+buffer-print
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Q
+\family default
+ 
+\family typewriter
+lyx-quit
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+R
+\family default
+ 
+\family typewriter
+buffer-reload
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+S
+\family default
+ 
+\family typewriter
+buffer-write
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+T
+\family default
+ 
+\family typewriter
+buffer-view-ps
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+U
+\family default
+ 
+\family typewriter
+font-underline
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+V
+\family default
+ 
+\family typewriter
+paste
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+W
+\family default
+ 
+\family typewriter
+buffer-close
+\family default
+ Datei schließen (
+\family sans
+Alt+D C
+\family default
+)
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\family default
+ 
+\family typewriter
+cut
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Z
+\family default
+ 
+\family typewriter
+undo
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Leertaste
+\family default
+ 
+\family typewriter
+protected-space-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+C
+\family default
+ 
+\family typewriter
+layout-copy
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+D
+\family default
+ 
+\family typewriter
+buffer-typeset
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+M
+\family default
+ 
+\family typewriter
+math-display
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+N
+\family default
+ 
+\family typewriter
+buffer-new-template
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+P
+\family default
+ 
+\family typewriter
+font-code 
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+S
+\family default
+ 
+\family typewriter
+buffer-write-as
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+T
+\family default
+ 
+\family typewriter
+buffer-typeset-ps
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+V
+\family default
+ 
+\family typewriter
+layout-paste
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+Z
+\family default
+ 
+\family typewriter
+redo
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Einfg
+\family default
+ 
+\family typewriter
+paste
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Entf
+\family default
+ 
+\family typewriter
+cut
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+.
+
+\family default
+ 
+\family typewriter
+end-of-sentence-period-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+>
+\family default
+ 
+\family typewriter
+label-goto
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+<
+\family default
+ 
+\family typewriter
+reference-back
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+-
+\family default
+ 
+\family typewriter
+hyphenation-point-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+"
+\family default
+ 
+\family typewriter
+quote-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+Leertaste
+\family default
+ 
+\family typewriter
+protected-space-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+X
+\family default
+ 
+\family typewriter
+command-execute
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Pos1
+\family default
+ 
+\family typewriter
+line-begin-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Ende
+\family default
+ 
+\family typewriter
+line-end-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+
+\family default
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+ 
+\family typewriter
+up-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+
+\family default
+
+\begin_inset Formula $\downarrow$
+\end_inset
+
+ 
+\family typewriter
+down-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Entf
+\family default
+ 
+\family typewriter
+cut
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Einfg
+\family default
+ 
+\family typewriter
+paste
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Bild
+\family default
+
+\begin_inset Formula $\downarrow$
+\end_inset
+
+ 
+\family typewriter
+screen-down-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Bild
+\family default
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+ 
+\family typewriter
+screen-up-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+
+\family default
+
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+ 
+\family typewriter
+backward-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+
+\family default
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\family typewriter
+forward-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Pos1
+\family default
+ 
+\family typewriter
+buffer-begin
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Ende
+\family default
+ 
+\family typewriter
+buffer-end
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+
+\family default
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+ 
+\family typewriter
+paragraph-up
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+
+\family default
+
+\begin_inset Formula $\downarrow$
+\end_inset
+
+ 
+\family typewriter
+paragraph-down
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Entf
+\family default
+ 
+\family typewriter
+word-delete-forward
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Rückschritt
+\family default
+ 
+\family typewriter
+word-delete-backward
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Einfg
+\family default
+ 
+\family typewriter
+copy
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Eingabe
+\family default
+ 
+\family typewriter
+break-line
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+
+\family default
+
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+ 
+\family typewriter
+word-backward
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+
+\family default
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\family typewriter
+word-forward
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+
+\family default
+
+\begin_inset Formula $\downarrow$
+\end_inset
+
+ 
+\family typewriter
+paragraph-down-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+Ende
+\family default
+ 
+\family typewriter
+buffer-end-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+Pos1
+\family default
+ 
+\family typewriter
+buffer-begin-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+
+\family default
+
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+ 
+\family typewriter
+word-backward-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+
+\family default
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\family typewriter
+word-forward-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+
+\family default
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+ 
+\family typewriter
+paragraph-up-select
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+"
+\family default
+ 
+\family typewriter
+quote-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Eingabe
+\family default
+ 
+\family typewriter
+break-paragraph-keep-layout
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+.
+
+\family default
+ 
+\family typewriter
+dots-insert
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Umschalt+
+\family default
+
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\family typewriter
+depth-increment
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+Umschalt+
+\family default
+
+\begin_inset Formula $\leftarrow$
+\end_inset
+
+ 
+\family typewriter
+depth-decrement
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Esc
+\family default
+ 
+\family typewriter
+cancel
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+F2
+\family default
+ 
+\family typewriter
+buffer-write
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+F3
+\family default
+ 
+\family typewriter
+buffer-open
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+F5
+\family default
+ 
+\family typewriter
+screen-recenter
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+F7
+\family default
+ 
+\family typewriter
+spellchecker
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+F9
+\family default
+ 
+\family typewriter
+meta-prefix
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+F4
+\family default
+ 
+\family typewriter
+buffer-close
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+F4
+\family default
+ 
+\family typewriter
+lyx-quit
+\end_layout
+
+\begin_layout Subsection
+Spezifische Definitionen aus 
+\family typewriter
+sciword.bind
+\end_layout
+
+\begin_layout Standard
+Definitionen die denen aus dem Programm Scientific Word ähnlich sind.
+\end_layout
+
+\begin_layout Standard
+Zusammengestellt von 
+\shape smallcaps
+Serge Winitzki
+\shape default
+.
+ Version 1.2
+\end_layout
+
+\begin_layout Standard
+Diese Definitionen erleichtern das Schreiben von Gleichungen, ohne die Maus
+ zu verwenden.
+\end_layout
+
+\begin_layout Standard
+Hinweis: Um den LyX-Namen herauszufinden, der einer Sequenz zugeordnet ist,
+ sehen Sie auf die Statuszeile am untersten Rand des LyX-Fensters.
+ Wenn Sie beispielsweise wissen wollen, wie 
+\family sans
+Strg+&
+\family default
+ korrekt bezeichnet wird, drücken Sie 
+\family sans
+Strg+S
+\family default
+ gefolgt von dieser Kombination, und in der Statuszeile sehen Sie dann 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family sans
+Strg+S Umschalt+Strg+Ampersand
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+C
+\family default
+ 
+\family typewriter
+copy
+\end_layout
+
+\begin_layout Standard
+Wechsel normal/hervorgehobener Modus für Gleichungen.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+D
+\family default
+ 
+\family typewriter
+math-display
+\end_layout
+
+\begin_layout Standard
+Bruch-Taste: Wenn Sie einen Ausdruck markieren und dann diese Taste drücken,
+ wird der Ausdruck als Zähler eines Bruches verwendet.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+F
+\family default
+ 
+\family typewriter
+math-insert frac
+\end_layout
+
+\begin_layout Standard
+Griechisch-Taste: Um einen einzelnen griechischen Buchstaben einzugeben.
+ Das normalerweise verwendete 
+\family typewriter
+math\SpecialChar \-
+greek-toggle
+\family default
+, das dauerhaft auf griechische Zeichen wechselt, ist meist fehl am Platze.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+G
+\family default
+ 
+\family typewriter
+math-greek
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+I
+\family default
+ 
+\family typewriter
+math-insert int
+\family default
+ Integralzeichen 
+\begin_inset Formula $\int$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+K
+\family default
+ 
+\family typewriter
+line-delete-forward
+\family default
+ Emacs-like binding
+\end_layout
+
+\begin_layout Standard
+Umschalten Text/Mathematik-Modus: In Mathematikmodus wechseln oder Text
+ im Mathemodus schreiben
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+M
+\family default
+ 
+\family typewriter
+math-mode
+\end_layout
+
+\begin_layout Standard
+Befehle, um die Numerierung von Gleichungen zu kontrollieren.
+ Die in Sciword verwendete Sequenz 
+\family typewriter
+Ctrl-Tab
+\family default
+ bereitet leider meist Probleme, da sie schon anderweitig benutzt wird.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+N
+\family default
+ 
+\family typewriter
+math-number-toggle
+\family default
+ Add/remove a number to single equation.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Strg+N
+\family default
+ 
+\family typewriter
+math-number-line-toggle
+\family default
+ Add/remove a number to a line in equation array.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+O
+\family default
+ 
+\family typewriter
+open-stuff
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Q
+\family default
+ 
+\family typewriter
+quote-insert
+\family default
+ ' EINSETZEN
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+R
+\family default
+ 
+\family typewriter
+math-insert sqrt
+\family default
+ Wurzelzeichen 
+\begin_inset Formula $\sqrt{}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+T
+\family default
+ 
+\family typewriter
+math-mode
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+U
+\family default
+ 
+\family typewriter
+font-underline
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+U
+\family default
+ 
+\family typewriter
+paste
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+W
+\family default
+ 
+\family typewriter
+buffer-close
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+X
+\family default
+ 
+\family typewriter
+cut
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Z
+\family default
+ 
+\family typewriter
+undo
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Strg+Z
+\family default
+ 
+\family typewriter
+redo
+\end_layout
+
+\begin_layout Standard
+Klammern.
+ In Sciword erhält man durch Eingabe von 
+\family typewriter
+Ctrl-<
+\emph on
+Klammer
+\emph default
+>
+\family default
+ ein Paar zusammengehöriger Klammern.
+ Um ungleiche Klammerpaare zu erhalten, müssen Sie den Dialog 
+\family sans
+Mathe-Kontrollfläche
+\family default
+ verwenden.
+ Wenn Sie mit der Rück-Taste (backspace) die 
+\emph on
+linke
+\emph default
+ Klammer eines solchen Paares löschen ,wird nur die Klammer und nicht der
+ Inhalt gelöscht.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+9
+\family default
+ 
+\family typewriter
+math-delim ( )
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Strg+parenleft
+\family default
+ 
+\family typewriter
+math-delim ( )
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+0
+\family default
+ 
+\family typewriter
+math-delim ( )
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Strg+parenright
+\family default
+ 
+\family typewriter
+math-delim ( )
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+(
+\family default
+ 
+\family typewriter
+math-delim [ ]
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+)
+\family default
+ 
+\family typewriter
+math-delim [ ]
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+<
+\family default
+ 
+\family typewriter
+math-delim langle rangle
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+>
+\family default
+ 
+\family typewriter
+math-delim langle rangle
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+|
+\family default
+ 
+\family typewriter
+math-delim | |
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Umschalt+
+\family default
+¦ 
+\family typewriter
+math-delim 
+\family default
+¦
+\family typewriter
+ 
+\family default
+¦
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Alt+|
+\family default
+ 
+\family typewriter
+math-delim | |
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Strg+(
+\family default
+ 
+\family typewriter
+math-delim { }
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Strg+)
+\family default
+ 
+\family typewriter
+math-delim { }
+\end_layout
+
+\begin_layout Standard
+In Sciword erhält man Akzente vorrangig, indem man die entsprechende Akzenttaste
+ zusammen mit Strg drückt, also 
+\family sans
+Strg+
+\family typewriter
+.
+
+\family default
+ für einen Punkt, 
+\family sans
+Ctrl-
+\family typewriter
+'
+\family default
+ für den Acute-Akzent, 
+\family sans
+Ctrl-~
+\family default
+ für die Tilde usw\SpecialChar \@.
+ Einige davon funktionieren nur im Mathematikmodus.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+.
+
+\family default
+ 
+\family typewriter
+accent-dot
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Strg+;
+\family default
+ 
+\family typewriter
+math-insert ddot
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+
+\family default
+` 
+\family typewriter
+accent-grave
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Strg+~
+\family default
+ 
+\family typewriter
+accent-tilde
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Strg+"
+\family default
+ 
+\family typewriter
+accent-umlaut
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+Apostrophe
+\family default
+ 
+\family typewriter
+accent-acute
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Strg+^
+\family default
+ 
+\family typewriter
+accent-circumflex
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+=
+\family default
+ 
+\family typewriter
+accent-vector
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+-
+\family default
+ 
+\family typewriter
+math-insert bar
+\family default
+ Why is it not "accent-bar"?
+\end_layout
+
+\begin_layout Standard
+Funktionstasten -- größtenteils kompatibel zu Sciword.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+F2
+\family default
+ 
+\family typewriter
+buffer-write
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+F3
+\family default
+ 
+\family typewriter
+find-replace
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+F4
+\family default
+ 
+\family typewriter
+buffer-close
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+F4
+\family default
+ 
+\family typewriter
+lyx-quit
+\end_layout
+
+\begin_layout Standard
+In Sciword werden F4 bis F8 benutzt, um die Zeichensätze zu wechseln, F4
+ geht dabei zum Standardzeichensatz.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+F4
+\family default
+ 
+\family typewriter
+font-default
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+F5
+\family default
+ 
+\family typewriter
+font-bold
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+F6
+\family default
+ 
+\family typewriter
+font-emph
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+F7
+\family default
+ 
+\family typewriter
+font-code
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+F8
+\family default
+ 
+\family typewriter
+font-noun
+\end_layout
+
+\begin_layout Standard
+Sciword-Abkürzungen für mathematische Symbole.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+'
+\family default
+ 
+\family typewriter
+math-insert prime
+\family default
+ Prime 
+\begin_inset Formula $\prime$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+
+\family default
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+ 
+\family typewriter
+math-insert ^
+\family default
+ Superscript
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+
+\family default
+
+\begin_inset Formula $\downarrow$
+\end_inset
+
+ 
+\family typewriter
+math-insert _
+\family default
+ Subscript
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+S
+\begin_inset space ~
+\end_inset
+
+D
+\family default
+ 
+\family typewriter
+math-insert partial
+\family default
+ Partielle Ableitung 
+\begin_inset Formula $\partial$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+S
+\begin_inset space ~
+\end_inset
+
+E
+\family default
+ 
+\family typewriter
+math-insert sum
+\family default
+ Summenzeichen 
+\begin_inset Formula $\sum$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+S
+\begin_inset space ~
+\end_inset
+
+P
+\family default
+ 
+\family typewriter
+math-insert prod
+\family default
+ Produktzeichen 
+\begin_inset Formula $\prod$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+S
+\begin_inset space ~
+\end_inset
+
+I
+\family default
+ 
+\family typewriter
+math-insert infty
+\family default
+ Infinity 
+\begin_inset Formula $\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+S
+\begin_inset space ~
+\end_inset
+
+X
+\family default
+ 
+\family typewriter
+symbol-insert times
+\end_layout
+
+\begin_layout Standard
+Meine eigenen Kürzel für Dinge, die ich oft verwende.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+S
+\begin_inset space ~
+\end_inset
+
+'
+\family default
+ 
+\family typewriter
+math-insert prime
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+S
+\begin_inset space ~
+\end_inset
+
+Umschalt++
+\family default
+ 
+\family typewriter
+math-insert dagger
+\family default
+ Das 
+\begin_inset Quotes gld
+\end_inset
+
+dagger
+\begin_inset Quotes grd
+\end_inset
+
+ Symbol 
+\begin_inset Formula $\dagger$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+S
+\begin_inset space ~
+\end_inset
+
+=
+\family default
+ 
+\family typewriter
+math-insert equiv
+\family default
+ Die Identität 
+\begin_inset Formula $\equiv$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+=
+\family default
+ 
+\family typewriter
+math-insert approx
+\family default
+ 
+\begin_inset Quotes gld
+\end_inset
+
+ungefähr gleich
+\begin_inset Quotes grd
+\end_inset
+
+ sign 
+\begin_inset Formula $\approx$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+-
+\family default
+ 
+\family typewriter
+math-insert sim
+\family default
+ Ungefähr 
+\begin_inset Formula $\sim$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+-
+\family default
+ 
+\family typewriter
+math-insert rightarrow
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Alt+<
+\family default
+ 
+\family typewriter
+math-insert leq
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Umschalt+Alt+>
+\family default
+ 
+\family typewriter
+math-insert geq
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+S
+\begin_inset space ~
+\end_inset
+
+Umschalt+<
+\family default
+ 
+\family typewriter
+math-insert ll
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Strg+S
+\begin_inset space ~
+\end_inset
+
+Umschalt+>
+\family default
+ 
+\family typewriter
+math-insert gg
+\end_layout
+
+\begin_layout Subsection
+Standard-Definitionen im Mathematikmodus
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+B
+\family default
+ 
+\family typewriter
+math-insert overline
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+D
+\family default
+ 
+\family typewriter
+math-display
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+E
+\family default
+ 
+\family typewriter
+math-insert ^
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+F
+\family default
+ 
+\family typewriter
+math-insert frac
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+G
+\family default
+ 
+\family typewriter
+math-greek
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+H
+\family default
+ 
+\family typewriter
+accent-circumflex
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+I
+\family default
+ 
+\family typewriter
+math-insert int
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+L
+\family default
+ 
+\family typewriter
+math-limits
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+M
+\family default
+ 
+\family typewriter
+math-mode
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+N
+\family default
+ 
+\family typewriter
+math-number-toggle
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+O
+\family default
+ 
+\family typewriter
+math-insert oint
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+P
+\family default
+ 
+\family typewriter
+math-insert partial
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+R
+\family default
+ 
+\family typewriter
+math-insert sqrt
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+S
+\family default
+ 
+\family typewriter
+math-insert sqrt
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+U
+\family default
+ 
+\family typewriter
+math-insert sum
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+V
+\family default
+ 
+\family typewriter
+accent-vector
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+X
+\family default
+ 
+\family typewriter
+math-insert _
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+8
+\family default
+ 
+\family typewriter
+math-insert infty
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+Umschalt+G
+\family default
+ 
+\family typewriter
+math-greek-toggle
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+Umschalt+N
+\family default
+ 
+\family typewriter
+math-number-line-toggle
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+Umschalt+'
+\family default
+ 
+\family typewriter
+accent-dot
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+Umschalt+~
+\family default
+ 
+\family typewriter
+accent-tilde
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+Umschalt+´
+\family default
+ 
+\family typewriter
+math-insert prime
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+Umschalt+parenleft
+\family default
+ 
+\family typewriter
+math-delim ( )
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+Umschalt+(
+\family default
+ 
+\family typewriter
+math-delim [ ]
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+Umschalt+)
+\family default
+ 
+\family typewriter
+math-delim { }
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+Umschalt+<
+\family default
+ 
+\family typewriter
+math-delim langle rangle
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+Umschalt+>
+\family default
+ 
+\family typewriter
+math-delim rangle langle
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+Umschalt+|
+\family default
+ 
+\family typewriter
+math-delim | |
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+Umschalt++
+\family default
+ 
+\family typewriter
+math-insert pm
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+M
+\begin_inset space ~
+\end_inset
+
+Umschalt+=
+\family default
+ 
+\family typewriter
+math-insert neq
+\end_layout
+
+\begin_layout Subsection
+Sonstige Tastaturkürzel
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+K
+\begin_inset space ~
+\end_inset
+
+O
+\family default
+ 
+\family typewriter
+keymap-off
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+K
+\begin_inset space ~
+\end_inset
+
+T
+\family default
+ 
+\family typewriter
+keymap-toggle
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+K
+\begin_inset space ~
+\end_inset
+
+X
+\family default
+ 
+\family typewriter
+keymap-off
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+K
+\begin_inset space ~
+\end_inset
+
+1
+\family default
+ 
+\family typewriter
+keymap-primary
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Alt+K
+\begin_inset space ~
+\end_inset
+
+2
+\family default
+ 
+\family typewriter
+keymap-secondary
 \end_layout
 
 \end_body
