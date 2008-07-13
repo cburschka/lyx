@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-02 23:31+0200\n"
+"POT-Creation-Date: 2008-07-13 13:54+0200\n"
 "PO-Revision-Date: 2005-12-18 15:13+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -89,11 +89,11 @@ msgstr "&O.k."
 #: src/Buffer.cpp:2507 src/Buffer.cpp:2531 src/Buffer.cpp:2566
 #: src/LyXFunc.cpp:664 src/LyXFunc.cpp:800 src/LyXFunc.cpp:978
 #: src/LyXVC.cpp:160 src/frontends/qt4/GuiClipboard.cpp:208
-#: src/frontends/qt4/GuiDocument.cpp:1298
+#: src/frontends/qt4/GuiDocument.cpp:1251
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1455
-#: src/frontends/qt4/GuiView.cpp:1633 src/frontends/qt4/GuiView.cpp:1678
-#: src/frontends/qt4/GuiView.cpp:1731 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1459
+#: src/frontends/qt4/GuiView.cpp:1637 src/frontends/qt4/GuiView.cpp:1682
+#: src/frontends/qt4/GuiView.cpp:1735 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
 msgstr "&Anullér"
 
@@ -383,8 +383,8 @@ msgstr "&Gendan"
 #: src/frontends/qt4/ui/ParagraphUi.ui:89 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/VSpaceUi.ui:49
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1318
-#: src/frontends/qt4/GuiDocument.cpp:2100
+#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1319
+#: src/frontends/qt4/GuiDocument.cpp:2126
 msgid "&Apply"
 msgstr "&Anvend"
 
@@ -508,9 +508,9 @@ msgstr "S&tørrelse:"
 #: src/frontends/qt4/GuiDocument.cpp:95 src/frontends/qt4/GuiDocument.cpp:111
 #: src/frontends/qt4/GuiDocument.cpp:124 src/frontends/qt4/GuiDocument.cpp:638
 #: src/frontends/qt4/GuiDocument.cpp:675 src/frontends/qt4/GuiDocument.cpp:687
-#: src/frontends/qt4/GuiDocument.cpp:1156
-#: src/frontends/qt4/GuiDocument.cpp:1201
-#: src/frontends/qt4/GuiDocument.cpp:2141 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:1160
+#: src/frontends/qt4/GuiDocument.cpp:1205
+#: src/frontends/qt4/GuiDocument.cpp:2167 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:69 src/frontends/qt4/GuiListings.cpp:151
 #: src/frontends/qt4/GuiListings.cpp:158 src/frontends/qt4/GuiPrefs.cpp:1707
 msgid "Default"
@@ -632,7 +632,7 @@ msgstr "Skrifttype"
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:118
-#: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:980
+#: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:984
 #: src/frontends/qt4/GuiPrefs.cpp:1665
 msgid "Language"
 msgstr "Sprog"
@@ -2054,7 +2054,7 @@ msgid "&Numbering"
 msgstr "&Nummerering"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:33
-#: src/frontends/qt4/GuiDocument.cpp:978
+#: src/frontends/qt4/GuiDocument.cpp:982
 msgid "Page Layout"
 msgstr "Sidelayout"
 
@@ -2160,7 +2160,7 @@ msgstr "Læ&ngste mærkat"
 msgid "Line &spacing"
 msgstr "Linje&afstand:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:240 src/Text.cpp:1382
+#: src/frontends/qt4/ui/ParagraphUi.ui:240 src/Text.cpp:1377
 #: src/frontends/qt4/GuiDocument.cpp:579
 msgid "Single"
 msgstr "Enkelt"
@@ -2169,7 +2169,7 @@ msgstr "Enkelt"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:250 src/Text.cpp:1388
+#: src/frontends/qt4/ui/ParagraphUi.ui:250 src/Text.cpp:1383
 #: src/frontends/qt4/GuiDocument.cpp:583
 msgid "Double"
 msgstr "Dobbelt"
@@ -3253,7 +3253,7 @@ msgid "&User interface file:"
 msgstr "&Brugerflade-fil"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:663
-#: src/frontends/qt4/GuiView.cpp:1731
+#: src/frontends/qt4/GuiView.cpp:1735
 msgid "&Save"
 msgstr "&Gem"
 
@@ -3712,8 +3712,8 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:1125
 #: src/frontends/qt4/ui/TabularUi.ui:1166
 #: src/frontends/qt4/ui/TabularUi.ui:1197
-#: src/frontends/qt4/ui/TabularUi.ui:1235 src/frontends/qt4/GuiToolbar.cpp:940
-#: src/frontends/qt4/GuiToolbar.cpp:949
+#: src/frontends/qt4/ui/TabularUi.ui:1235 src/frontends/qt4/GuiToolbar.cpp:942
+#: src/frontends/qt4/GuiToolbar.cpp:951
 msgid "on"
 msgstr "på"
 
@@ -4220,7 +4220,7 @@ msgstr "Definition"
 #: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:132
 #: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:48
-#: src/frontends/qt4/GuiDocument.cpp:825
+#: src/frontends/qt4/GuiDocument.cpp:827
 msgid "Example"
 msgstr "Eksempel"
 
@@ -4475,7 +4475,7 @@ msgstr "Indekstermer"
 #: lib/layouts/simplecv.layout:139 lib/layouts/aguplus.inc:167
 #: lib/layouts/aguplus.inc:169 lib/layouts/amsdefs.inc:201
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:323 src/frontends/qt4/GuiDocument.cpp:982
+#: lib/layouts/svjour.inc:323 src/frontends/qt4/GuiDocument.cpp:986
 msgid "Bibliography"
 msgstr "Litteraturliste"
 
@@ -4787,10 +4787,10 @@ msgstr "hoveder"
 msgid "[Acknowledgements]"
 msgstr "Taksigelser"
 
-#: lib/layouts/aastex.layout:350 src/frontends/qt4/GuiDocument.cpp:1341
-#: src/frontends/qt4/GuiDocument.cpp:1351
-#: src/frontends/qt4/GuiDocument.cpp:1391
-#: src/frontends/qt4/GuiDocument.cpp:1410
+#: lib/layouts/aastex.layout:350 src/frontends/qt4/GuiDocument.cpp:1342
+#: src/frontends/qt4/GuiDocument.cpp:1352
+#: src/frontends/qt4/GuiDocument.cpp:1392
+#: src/frontends/qt4/GuiDocument.cpp:1411
 #, fuzzy
 msgid "and"
 msgstr "Land"
@@ -8852,7 +8852,7 @@ msgstr "notat"
 
 #: lib/layouts/endnotes.module:6
 msgid ""
-"Adds an endnote command, in addition to footnotes. You will need to add "
+"Adds an endnote inset, in addition to footnotes. You will need to add "
 "\\theendnotes in ERT where you want the endnotes to appear."
 msgstr ""
 
@@ -8877,15 +8877,17 @@ msgid ""
 "where you want the endnotes to appear."
 msgstr ""
 
-#: lib/layouts/hanging.module:2 lib/layouts/hanging.module:15
+#: lib/layouts/hanging.module:2 lib/layouts/hanging.module:16
 #, fuzzy
 msgid "Hanging"
 msgstr "margin"
 
-#: lib/layouts/hanging.module:5
-#, fuzzy
-msgid "Adds an environment for hanging paragraphs."
-msgstr "Kan ikke indeksere flere end ét afsnit!"
+#: lib/layouts/hanging.module:6
+msgid ""
+"Adds an environment for hanging paragraphs. Hanging paragraph is a paragraph "
+"in which the first line is set to the left margin, but all subsequent lines "
+"are indented."
+msgstr ""
 
 #: lib/layouts/linguistics.module:2
 #, fuzzy
@@ -9026,7 +9028,7 @@ msgid "Minimalistic"
 msgstr "Minisec"
 
 #: lib/layouts/minimalistic.module:5
-msgid "Redefines several insets as being Minimalistic, for use by old-timers."
+msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr ""
 
 #: lib/layouts/theorems-ams-extended.module:2
@@ -9420,127 +9422,321 @@ msgid "Japanese"
 msgstr ""
 
 #: lib/languages:56
+msgid "Japanese (CJK)"
+msgstr ""
+
+#: lib/languages:57
 msgid "Kazakh"
 msgstr "Kazaksk"
 
-#: lib/languages:58
+#: lib/languages:59
 msgid "Korean"
 msgstr ""
 
-#: lib/languages:60
+#: lib/languages:61
 #, fuzzy
 msgid "Latin"
 msgstr "Kroatisk"
 
-#: lib/languages:61
+#: lib/languages:62
 #, fuzzy
 msgid "Latvian"
 msgstr "Kroatisk"
 
-#: lib/languages:62
+#: lib/languages:63
 #, fuzzy
 msgid "Lithuanian"
 msgstr "Breddeenhed"
 
-#: lib/languages:63
+#: lib/languages:64
 #, fuzzy
 msgid "Lower Sorbian"
 msgstr "Serbisk"
 
-#: lib/languages:64
+#: lib/languages:65
 #, fuzzy
 msgid "Hungarian"
 msgstr "Bulgarsk"
 
-#: lib/languages:65
+#: lib/languages:66
 msgid "Norsk"
 msgstr "Norsk"
 
-#: lib/languages:66
+#: lib/languages:67
 #, fuzzy
 msgid "Nynorsk"
 msgstr "Norsk"
 
-#: lib/languages:67
+#: lib/languages:68
 msgid "Polish"
 msgstr "Polsk"
 
-#: lib/languages:68
+#: lib/languages:69
 #, fuzzy
 msgid "Portuguese"
 msgstr "Portugisisk"
 
-#: lib/languages:69
+#: lib/languages:70
 msgid "Romanian"
 msgstr "Ordinær"
 
-#: lib/languages:70
+#: lib/languages:71
 msgid "Russian"
 msgstr "Russisk"
 
-#: lib/languages:71
+#: lib/languages:72
 msgid "North Sami"
 msgstr ""
 
-#: lib/languages:72
+#: lib/languages:73
 msgid "Scottish"
 msgstr "Skotsk"
 
-#: lib/languages:73
+#: lib/languages:74
 msgid "Serbian"
 msgstr "Serbisk"
 
-#: lib/languages:74
+#: lib/languages:75
 #, fuzzy
 msgid "Serbian (Latin)"
 msgstr "Serbisk"
 
-#: lib/languages:75
+#: lib/languages:76
 msgid "Slovak"
 msgstr "Slovakisk"
 
-#: lib/languages:76
+#: lib/languages:77
 msgid "Slovene"
 msgstr "Slovensk"
 
-#: lib/languages:77
+#: lib/languages:78
 msgid "Spanish"
 msgstr "Spansk"
 
-#: lib/languages:78
+#: lib/languages:79
 #, fuzzy
 msgid "Spanish (Mexico)"
 msgstr "Spansk"
 
-#: lib/languages:79
+#: lib/languages:80
 msgid "Swedish"
 msgstr "Svensk"
 
-#: lib/languages:80 src/frontends/qt4/GuiSymbols.cpp:73
+#: lib/languages:81 src/frontends/qt4/GuiSymbols.cpp:73
 msgid "Thai"
 msgstr "Thai"
 
-#: lib/languages:81
+#: lib/languages:82
 msgid "Turkish"
 msgstr "Tyrkisk"
 
-#: lib/languages:82
+#: lib/languages:83
 msgid "Ukrainian"
 msgstr "Ukrainsk"
 
-#: lib/languages:83
+#: lib/languages:84
 #, fuzzy
 msgid "Upper Sorbian"
 msgstr "Serbisk"
 
-#: lib/languages:84
+#: lib/languages:85
 #, fuzzy
 msgid "Vietnamese"
 msgstr "Filnavn"
 
-#: lib/languages:85
+#: lib/languages:86
 msgid "Welsh"
 msgstr "Walisisk"
+
+#: lib/encodings:14
+msgid "Unicode (utf8)"
+msgstr ""
+
+#: lib/encodings:19
+msgid "Unicode (ucs-extended) (utf8x)"
+msgstr ""
+
+#: lib/encodings:23
+msgid "Armenian (ArmSCII8)"
+msgstr ""
+
+#: lib/encodings:26
+msgid "Western European (ISO 8859-1)"
+msgstr ""
+
+#: lib/encodings:29
+msgid "Central European (ISO 8859-2)"
+msgstr ""
+
+#: lib/encodings:32
+msgid "Middle European (ISO 8859-3)"
+msgstr ""
+
+#: lib/encodings:35
+msgid "Baltic (ISO 8859-4)"
+msgstr ""
+
+#: lib/encodings:38
+msgid "Cyrillic (ISO 8859-5)"
+msgstr ""
+
+#: lib/encodings:42
+msgid "Arabic (ISO 8859-6)"
+msgstr ""
+
+#: lib/encodings:45
+msgid "Greek (ISO 8859-7)"
+msgstr ""
+
+#: lib/encodings:48
+msgid "Hebrew (ISO 8859-8)"
+msgstr ""
+
+#: lib/encodings:51
+msgid "Turkish (ISO 8859-9)"
+msgstr ""
+
+#: lib/encodings:55
+msgid "Baltic (ISO 8859-13)"
+msgstr ""
+
+#: lib/encodings:58
+msgid "Western European (ISO 8859-15)"
+msgstr ""
+
+#: lib/encodings:61
+msgid "South-Eastern European (ISO 8859-16)"
+msgstr ""
+
+#: lib/encodings:64
+msgid "DOS (CP 437)"
+msgstr ""
+
+#: lib/encodings:68
+msgid "DOS-de (CP 437-de)"
+msgstr ""
+
+#: lib/encodings:71
+msgid "Western European (CP 850)"
+msgstr ""
+
+#: lib/encodings:74
+msgid "Central European (CP 852)"
+msgstr ""
+
+#: lib/encodings:77
+msgid "Cyrillic (CP 855)"
+msgstr ""
+
+#: lib/encodings:80
+msgid "Western European (CP 858)"
+msgstr ""
+
+#: lib/encodings:83
+msgid "Hebrew (CP 862)"
+msgstr ""
+
+#: lib/encodings:86
+#, fuzzy
+msgid "Nordic languages (CP 865)"
+msgstr "sprog"
+
+#: lib/encodings:89
+msgid "Cyrillic (CP 866)"
+msgstr ""
+
+#: lib/encodings:92
+msgid "Central European (CP 1250)"
+msgstr ""
+
+#: lib/encodings:95
+msgid "Cyrillic (CP 1251)"
+msgstr ""
+
+#: lib/encodings:98
+msgid "Western European (CP 1252)"
+msgstr ""
+
+#: lib/encodings:101
+msgid "Hebrew (CP 1255)"
+msgstr ""
+
+#: lib/encodings:105
+#, fuzzy
+msgid "Arabic (CP 1256)"
+msgstr "Arabisk"
+
+#: lib/encodings:108
+msgid "Baltic (CP 1257)"
+msgstr ""
+
+#: lib/encodings:111
+msgid "Cyrillic (KOI8-R)"
+msgstr ""
+
+#: lib/encodings:114
+msgid "Cyrillic (KOI8-U)"
+msgstr ""
+
+#: lib/encodings:117
+msgid "Cyrillic (pt 154)"
+msgstr ""
+
+#: lib/encodings:120
+msgid "Cyrillic (pt 254)"
+msgstr ""
+
+#: lib/encodings:145
+msgid "Chinese (simplified) (EUC-CN)"
+msgstr ""
+
+#: lib/encodings:149
+msgid "Chinese (simplified) (GBK)"
+msgstr ""
+
+#: lib/encodings:153
+msgid "Japanese (CJK) (JIS)"
+msgstr ""
+
+#: lib/encodings:157
+msgid "Korean (EUC-KR)"
+msgstr ""
+
+#: lib/encodings:161
+msgid "Unicode (CJK) (utf8)"
+msgstr ""
+
+#: lib/encodings:165
+msgid "Chinese (traditional) (EUC-TW)"
+msgstr ""
+
+#: lib/encodings:169
+msgid "Japanese (CJK) (EUC-JP)"
+msgstr ""
+
+#: lib/encodings:176
+msgid "Japanese (non-CJK) (EUC-JP)"
+msgstr ""
+
+#: lib/encodings:178
+msgid "Japanese (non-CJK) (JIS)"
+msgstr ""
+
+#: lib/encodings:180
+msgid "Japanese (non-CJK) (SJIS)"
+msgstr ""
+
+#: lib/encodings:187
+msgid "Thai (TIS 620-0)"
+msgstr ""
+
+#: lib/encodings:192
+msgid "Unicode (XeTeX) (utf8)"
+msgstr ""
+
+#: lib/encodings:196
+msgid "ASCII"
+msgstr ""
 
 #: lib/ui/classic.ui:32 lib/ui/stdmenus.inc:20
 msgid "File|F"
@@ -10440,7 +10636,7 @@ msgstr "Konfigurering af LaTeX|L"
 msgid "About LyX|X"
 msgstr "Om LyX|X"
 
-#: lib/ui/classic.ui:428 src/frontends/qt4/GuiAbout.cpp:98
+#: lib/ui/classic.ui:428 src/frontends/qt4/GuiAbout.cpp:99
 msgid "About LyX"
 msgstr "Om LyX"
 
@@ -11534,11 +11730,11 @@ msgstr "Udskriv dokument"
 msgid "Check spelling"
 msgstr "Tjek stavning"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1014
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1021
 msgid "Undo"
 msgstr "Fortryd"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1023
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1030
 msgid "Redo"
 msgstr "Gendan"
 
@@ -11858,13 +12054,13 @@ msgstr "&Næste ændring"
 
 #: lib/ui/stdtoolbars.inc:193
 #, fuzzy
-msgid "Accept change"
+msgid "Accept change inside selection"
 msgstr "Acceptér ændring|#A"
 
 #: lib/ui/stdtoolbars.inc:194
 #, fuzzy
-msgid "Reject change"
-msgstr "Afvis ændring|#A"
+msgid "Reject change inside selection"
+msgstr "Erstat indgangen med det markerede"
 
 #: lib/ui/stdtoolbars.inc:196
 #, fuzzy
@@ -11940,7 +12136,7 @@ msgid "Fractions"
 msgstr "LyX: Matematikpanel"
 
 #: lib/ui/stdtoolbars.inc:217 lib/ui/stdtoolbars.inc:309
-#: src/frontends/qt4/GuiDocument.cpp:976
+#: src/frontends/qt4/GuiDocument.cpp:980
 #, fuzzy
 msgid "Fonts"
 msgstr "&Skrift: "
@@ -14749,7 +14945,7 @@ msgstr "Nuværende ord"
 msgid "HTML (MS Word)"
 msgstr ""
 
-#: src/BiblioInfo.cpp:118 src/frontends/qt4/GuiDocument.cpp:1340
+#: src/BiblioInfo.cpp:118 src/frontends/qt4/GuiDocument.cpp:1341
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s og %2$s"
@@ -14800,7 +14996,7 @@ msgstr "Ukendt dokumentklasse"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Bruger standard-dokumentklassen, da %1$s-klassen er ukendt."
 
-#: src/Buffer.cpp:503 src/Text.cpp:246
+#: src/Buffer.cpp:503 src/Text.cpp:241
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Ukendt symbol: %1$s %2$s\n"
@@ -14818,12 +15014,12 @@ msgstr ""
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/Buffer.cpp:549 src/Buffer.cpp:555 src/BufferView.cpp:1130
-#: src/BufferView.cpp:1136
+#: src/Buffer.cpp:549 src/Buffer.cpp:555 src/BufferView.cpp:1137
+#: src/BufferView.cpp:1143
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:550 src/BufferView.cpp:1131
+#: src/Buffer.cpp:550 src/BufferView.cpp:1138
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -14831,7 +15027,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:556 src/BufferView.cpp:1137
+#: src/Buffer.cpp:556 src/BufferView.cpp:1144
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -14920,8 +15116,8 @@ msgid "Overwrite modified file?"
 msgstr "&Overskriv"
 
 #: src/Buffer.cpp:828 src/Exporter.cpp:49 src/LyXFunc.cpp:978
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1455
-#: src/frontends/qt4/GuiView.cpp:1633
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1459
+#: src/frontends/qt4/GuiView.cpp:1637
 #, fuzzy
 msgid "&Overwrite"
 msgstr "&Overskriv"
@@ -15143,7 +15339,7 @@ msgstr "  Lagring virkede ikke! Forsøger..."
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Lagring virkede ikke! Beklager, dokumentet er tabt."
 
-#: src/BufferParams.cpp:481
+#: src/BufferParams.cpp:475
 #, c-format
 msgid ""
 "The layout file requested by this document,\n"
@@ -15154,28 +15350,28 @@ msgid ""
 "for more information.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:487
+#: src/BufferParams.cpp:481
 msgid "Document class not available"
 msgstr "Dokumentklasse ikke tilgængelig"
 
-#: src/BufferParams.cpp:488
+#: src/BufferParams.cpp:482
 msgid "LyX will not be able to produce output."
 msgstr "LyX vil ikke kunne producere et korrekt resultat."
 
-#: src/BufferParams.cpp:1429
-#, fuzzy, c-format
-msgid "The document class %1$s could not be found."
+#: src/BufferParams.cpp:1422
+#, c-format
+msgid ""
+"The document class %1$s could not be found. A default textclass with default "
+"layouts will be used. LyX might not be able to produce output unless a "
+"correct textclass is selected from the document settings dialog."
 msgstr ""
-"Det angivne dokument\n"
-"%1$s\n"
-"kunne ikke læses."
 
-#: src/BufferParams.cpp:1431
+#: src/BufferParams.cpp:1427
 #, fuzzy
-msgid "Class not found"
-msgstr "Streng ikke fundet!"
+msgid "Document class not found"
+msgstr "Dokumentklasse ikke tilgængelig"
 
-#: src/BufferParams.cpp:1441 src/LyXFunc.cpp:695
+#: src/BufferParams.cpp:1437 src/LyXFunc.cpp:695
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr ""
@@ -15183,12 +15379,12 @@ msgstr ""
 "%1$s\n"
 "kunne ikke læses."
 
-#: src/BufferParams.cpp:1443 src/LyXFunc.cpp:697
+#: src/BufferParams.cpp:1439 src/LyXFunc.cpp:697
 #, fuzzy
 msgid "Could not load class"
 msgstr "Kunne ikke skifte klasse"
 
-#: src/BufferParams.cpp:1479
+#: src/BufferParams.cpp:1475
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -15197,17 +15393,17 @@ msgid ""
 "probably need to reconfigure LyX.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1483
+#: src/BufferParams.cpp:1479
 #, fuzzy
 msgid "Module not available"
 msgstr "Dokumentklasse ikke tilgængelig"
 
-#: src/BufferParams.cpp:1484
+#: src/BufferParams.cpp:1480
 #, fuzzy
 msgid "Some layouts may not be available."
 msgstr "Dokumentklasse ikke tilgængelig"
 
-#: src/BufferParams.cpp:1491
+#: src/BufferParams.cpp:1487
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -15215,22 +15411,22 @@ msgid ""
 "may not be possible.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1494
+#: src/BufferParams.cpp:1490
 #, fuzzy
 msgid "Package not available"
 msgstr "Dokumentklasse ikke tilgængelig"
 
-#: src/BufferParams.cpp:1499
+#: src/BufferParams.cpp:1495
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1500 src/BufferParams.cpp:1506
+#: src/BufferParams.cpp:1496 src/BufferParams.cpp:1502
 #, fuzzy
 msgid "Read Error"
 msgstr "Søgefejl"
 
-#: src/BufferParams.cpp:1505
+#: src/BufferParams.cpp:1501
 #, fuzzy
 msgid "Error reading internal layout information"
 msgstr "Generel information"
@@ -15239,97 +15435,97 @@ msgstr "Generel information"
 msgid "No more insets"
 msgstr "Ikke flere indstik"
 
-#: src/BufferView.cpp:670
+#: src/BufferView.cpp:672
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Gem bogmærke 2"
 
-#: src/BufferView.cpp:1017
+#: src/BufferView.cpp:1024
 msgid "No further undo information"
 msgstr "Ikke flere fortrydelsesoplysninger"
 
-#: src/BufferView.cpp:1026
+#: src/BufferView.cpp:1033
 msgid "No further redo information"
 msgstr "Kan ikke gendanne mere"
 
-#: src/BufferView.cpp:1180 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1191 src/lyxfind.cpp:295 src/lyxfind.cpp:313
 msgid "String not found!"
 msgstr "Streng ikke fundet!"
 
-#: src/BufferView.cpp:1204
+#: src/BufferView.cpp:1215
 msgid "Mark off"
 msgstr "Mærke slået fra"
 
-#: src/BufferView.cpp:1211
+#: src/BufferView.cpp:1222
 msgid "Mark on"
 msgstr "Mærke slået til"
 
-#: src/BufferView.cpp:1218
+#: src/BufferView.cpp:1229
 msgid "Mark removed"
 msgstr "Mærke fjernet"
 
-#: src/BufferView.cpp:1221
+#: src/BufferView.cpp:1232
 msgid "Mark set"
 msgstr "Mærke sat"
 
-#: src/BufferView.cpp:1268
+#: src/BufferView.cpp:1279
 msgid "Statistics for the selection:"
 msgstr ""
 
-#: src/BufferView.cpp:1270
+#: src/BufferView.cpp:1281
 #, fuzzy
 msgid "Statistics for the document:"
 msgstr "&Skift til dokument"
 
-#: src/BufferView.cpp:1273
+#: src/BufferView.cpp:1284
 #, fuzzy, c-format
 msgid "%1$d words"
 msgstr "%1$s ord tjekket."
 
-#: src/BufferView.cpp:1275
+#: src/BufferView.cpp:1286
 #, fuzzy
 msgid "One word"
 msgstr "Nøgleord"
 
-#: src/BufferView.cpp:1278
+#: src/BufferView.cpp:1289
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1281
+#: src/BufferView.cpp:1292
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1284
+#: src/BufferView.cpp:1295
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1287
+#: src/BufferView.cpp:1298
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1289
+#: src/BufferView.cpp:1300
 #, fuzzy
 msgid "Statistics"
 msgstr "Status"
 
-#: src/BufferView.cpp:2015
+#: src/BufferView.cpp:2037
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Indsætter dokumentet %1$s..."
 
-#: src/BufferView.cpp:2026
+#: src/BufferView.cpp:2048
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentet %1$s blev indsat."
 
-#: src/BufferView.cpp:2028
+#: src/BufferView.cpp:2050
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikke indsætte dokumentet %1$s"
 
-#: src/BufferView.cpp:2256
+#: src/BufferView.cpp:2278
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15340,26 +15536,26 @@ msgstr ""
 "%1$s\n"
 "på grund af fejl: %2$s"
 
-#: src/BufferView.cpp:2258
+#: src/BufferView.cpp:2280
 msgid "Could not read file"
 msgstr "Kunne ikke læse fil"
 
-#: src/BufferView.cpp:2265
+#: src/BufferView.cpp:2287
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s kunne ikke læses."
 
-#: src/BufferView.cpp:2266 src/output.cpp:39
+#: src/BufferView.cpp:2288 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Kunne ikke åbne fil"
 
-#: src/BufferView.cpp:2273
+#: src/BufferView.cpp:2295
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2274
+#: src/BufferView.cpp:2296
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -15764,25 +15960,7 @@ msgstr "Uddata er tomt"
 msgid "An empty output file was generated."
 msgstr "Der blev oprettet en tom uddatafil."
 
-#: src/CutAndPaste.cpp:516
-#, c-format
-msgid ""
-"Layout had to be changed from\n"
-"%1$s to %2$s\n"
-"because of class conversion from\n"
-"%3$s to %4$s"
-msgstr ""
-"Layoutet er ændret fra\n"
-"%1$s til %2$s\n"
-"p.g.a. klassekonvertering fra \n"
-"%3$s til %4$s"
-
-#: src/CutAndPaste.cpp:521
-#, fuzzy
-msgid "Changed Layout"
-msgstr "Sidelayout"
-
-#: src/CutAndPaste.cpp:541
+#: src/CutAndPaste.cpp:537
 #, fuzzy, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -15793,7 +15971,7 @@ msgstr ""
 "p.g.a. klassekonvertering fra \n"
 "%3$s til %4$s"
 
-#: src/CutAndPaste.cpp:548
+#: src/CutAndPaste.cpp:544
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "Tekst-indstik åbnet"
@@ -15835,19 +16013,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr ""
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:118
-#: src/frontends/qt4/GuiDocument.cpp:2141
+#: src/frontends/qt4/GuiDocument.cpp:2167
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Roman"
 msgstr "Ordinær"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:119
-#: src/frontends/qt4/GuiDocument.cpp:2141
+#: src/frontends/qt4/GuiDocument.cpp:2167
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Sans Serif"
 msgstr "Grotesk"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:120
-#: src/frontends/qt4/GuiDocument.cpp:2141
+#: src/frontends/qt4/GuiDocument.cpp:2167
 #: src/frontends/qt4/GuiListings.cpp:158
 msgid "Typewriter"
 msgstr "Skrivemaskine"
@@ -16038,7 +16216,7 @@ msgstr "Kører MakeIndex."
 msgid "Could not read configuration file"
 msgstr "Kunne ikke læse opsætningsfilen"
 
-#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1370
+#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1375
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16206,7 +16384,7 @@ msgstr ""
 "\t-version        opsummér versions- og oversættelsesoplysninger\n"
 "Se LyX's manualside for flere detaljer."
 
-#: src/LyX.cpp:1092 src/support/Package.cpp:569
+#: src/LyX.cpp:1092 src/support/Package.cpp:570
 #, fuzzy
 msgid "No system directory"
 msgstr "Brugermappe: "
@@ -16319,7 +16497,7 @@ msgstr ""
 "\n"
 "Vil du gemme dokumentet?"
 
-#: src/LyXFunc.cpp:662 src/frontends/qt4/GuiView.cpp:1730
+#: src/LyXFunc.cpp:662 src/frontends/qt4/GuiView.cpp:1734
 msgid "Save changed document?"
 msgstr "Gem ændret dokument?"
 
@@ -16354,7 +16532,7 @@ msgstr "Gendan gemte dokument?"
 msgid "&Revert"
 msgstr "&Gendan"
 
-#: src/LyXFunc.cpp:1014 src/Text3.cpp:1480
+#: src/LyXFunc.cpp:1014 src/Text3.cpp:1479
 msgid "Missing argument"
 msgstr "Mangler parameter"
 
@@ -16970,27 +17148,27 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Gendan den gemte udgave af dokumentet?"
 
-#: src/Paragraph.cpp:1514 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1494 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Giver ingen mening med dette layout"
 
-#: src/Paragraph.cpp:1580
+#: src/Paragraph.cpp:1560
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1581
+#: src/Paragraph.cpp:1561
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2049 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2029 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/mathed/InsetMathString.cpp:164
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX-version "
 
-#: src/Paragraph.cpp:2050 src/mathed/InsetMathString.cpp:165
+#: src/Paragraph.cpp:2030 src/mathed/InsetMathString.cpp:165
 #, fuzzy
 msgid "uncodable character"
 msgstr "specialtegn"
@@ -16999,42 +17177,30 @@ msgstr "specialtegn"
 msgid "Native OS API not yet supported."
 msgstr ""
 
-#: src/Text.cpp:121
-#, fuzzy
-msgid "Unknown layout"
-msgstr "Ukendt funktion"
-
-#: src/Text.cpp:122
-#, c-format
-msgid ""
-"Layout '%1$s' does not exist in textclass '%2$s'\n"
-"Trying to use the default instead.\n"
-msgstr ""
-
-#: src/Text.cpp:151
+#: src/Text.cpp:146
 msgid "Unknown Inset"
 msgstr "Ukendt indstik"
 
-#: src/Text.cpp:224 src/Text.cpp:237
+#: src/Text.cpp:219 src/Text.cpp:232
 #, fuzzy
 msgid "Change tracking error"
 msgstr "Skift sporing"
 
-#: src/Text.cpp:225
+#: src/Text.cpp:220
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/Text.cpp:238
+#: src/Text.cpp:233
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/Text.cpp:245
+#: src/Text.cpp:240
 msgid "Unknown token"
 msgstr "Ukendt symbol"
 
-#: src/Text.cpp:527
+#: src/Text.cpp:522
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -17042,81 +17208,81 @@ msgstr ""
 "Du kan ikke indsætte et mellemrum i begyndelsen af et afsnit. Læs venligst "
 "Selvstudium."
 
-#: src/Text.cpp:538
+#: src/Text.cpp:533
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
 
-#: src/Text.cpp:1348
+#: src/Text.cpp:1343
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Skift sporing|k"
 
-#: src/Text.cpp:1354
+#: src/Text.cpp:1349
 msgid "Change: "
 msgstr "Ændring: "
 
-#: src/Text.cpp:1358
+#: src/Text.cpp:1353
 msgid " at "
 msgstr " på "
 
-#: src/Text.cpp:1368
+#: src/Text.cpp:1363
 #, c-format
 msgid "Font: %1$s"
 msgstr "Skrift: %1$s"
 
-#: src/Text.cpp:1373
+#: src/Text.cpp:1368
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Dybde: %1$s"
 
-#: src/Text.cpp:1379
+#: src/Text.cpp:1374
 msgid ", Spacing: "
 msgstr ", mellemrum: "
 
-#: src/Text.cpp:1385 src/frontends/qt4/GuiDocument.cpp:581
+#: src/Text.cpp:1380 src/frontends/qt4/GuiDocument.cpp:581
 msgid "OneHalf"
 msgstr "Halvanden"
 
-#: src/Text.cpp:1391
+#: src/Text.cpp:1386
 msgid "Other ("
 msgstr "Andet ("
 
-#: src/Text.cpp:1400
+#: src/Text.cpp:1395
 msgid ", Inset: "
 msgstr ", Indstik: "
 
-#: src/Text.cpp:1401
+#: src/Text.cpp:1396
 msgid ", Paragraph: "
 msgstr ", Afsnit: "
 
-#: src/Text.cpp:1402
+#: src/Text.cpp:1397
 #, fuzzy
 msgid ", Id: "
 msgstr ", Indstik: "
 
-#: src/Text.cpp:1403
+#: src/Text.cpp:1398
 msgid ", Position: "
 msgstr ", Placering: "
 
-#: src/Text.cpp:1409
+#: src/Text.cpp:1404
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1411
+#: src/Text.cpp:1406
 msgid ", Boundary: "
 msgstr ""
 
-#: src/Text2.cpp:391
+#: src/Text2.cpp:373
 #, fuzzy
 msgid "No font change defined."
 msgstr "Gå til næste ændring"
 
-#: src/Text2.cpp:431
+#: src/Text2.cpp:413
 msgid "Nothing to index!"
 msgstr "Intet at indeksere!"
 
-#: src/Text2.cpp:433
+#: src/Text2.cpp:415
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan ikke indeksere flere end ét afsnit!"
 
@@ -17136,11 +17302,11 @@ msgstr "Layout "
 msgid " not known"
 msgstr " ukendt"
 
-#: src/Text3.cpp:1587 src/Text3.cpp:1599
+#: src/Text3.cpp:1586 src/Text3.cpp:1598
 msgid "Character set"
 msgstr "Tegnsæt"
 
-#: src/Text3.cpp:1745 src/Text3.cpp:1756
+#: src/Text3.cpp:1744 src/Text3.cpp:1755
 msgid "Paragraph layout set"
 msgstr "Afsnitslayout ændret"
 
@@ -17149,21 +17315,21 @@ msgstr "Afsnitslayout ændret"
 msgid "Plain Layout"
 msgstr "Sidelayout"
 
-#: src/TextClass.cpp:594
+#: src/TextClass.cpp:571
 #, fuzzy
 msgid "Missing File"
 msgstr "Mangler parameter"
 
-#: src/TextClass.cpp:595
+#: src/TextClass.cpp:572
 msgid "Could not find stdinsets.inc! This may lead to data loss!"
 msgstr ""
 
-#: src/TextClass.cpp:598
+#: src/TextClass.cpp:575
 #, fuzzy
 msgid "Corrupt File"
 msgstr "Kort titel"
 
-#: src/TextClass.cpp:599
+#: src/TextClass.cpp:576
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr ""
 
@@ -17343,7 +17509,7 @@ msgstr "Vær venlig at installere filen korrekt for at værdsætte\n"
 msgid "amount of work other people have done for the LyX project."
 msgstr "det store stykke arbejde, frivillige har lagt i LyX-projektet."
 
-#: src/frontends/qt4/GuiAbout.cpp:63
+#: src/frontends/qt4/GuiAbout.cpp:64
 #, fuzzy
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
@@ -17352,7 +17518,7 @@ msgstr ""
 "LyX er Copyright (C) 1995 ved Matthias Ettrich, \n"
 "1995-2001 LyX-holdet"
 
-#: src/frontends/qt4/GuiAbout.cpp:69
+#: src/frontends/qt4/GuiAbout.cpp:70
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -17360,7 +17526,7 @@ msgid ""
 "any later version."
 msgstr ""
 
-#: src/frontends/qt4/GuiAbout.cpp:75
+#: src/frontends/qt4/GuiAbout.cpp:76
 #, fuzzy
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
@@ -17378,15 +17544,15 @@ msgstr ""
 "dette program. Hvis ikke du har, kan den erhverves ved: the Free Software "
 "Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
 
-#: src/frontends/qt4/GuiAbout.cpp:83
+#: src/frontends/qt4/GuiAbout.cpp:84
 msgid "LyX Version "
 msgstr "LyX-version "
 
-#: src/frontends/qt4/GuiAbout.cpp:88
+#: src/frontends/qt4/GuiAbout.cpp:89
 msgid "Library directory: "
 msgstr "Brugermappe: "
 
-#: src/frontends/qt4/GuiAbout.cpp:91
+#: src/frontends/qt4/GuiAbout.cpp:92
 msgid "User directory: "
 msgstr "Brugermappe: "
 
@@ -17417,28 +17583,28 @@ msgstr "Genkonfigurér|G"
 msgid "Quit %1"
 msgstr "Om LyX"
 
-#: src/frontends/qt4/GuiApplication.cpp:795
+#: src/frontends/qt4/GuiApplication.cpp:800
 #, fuzzy
 msgid "Exiting."
 msgstr "Afslut|A"
 
-#: src/frontends/qt4/GuiApplication.cpp:862
+#: src/frontends/qt4/GuiApplication.cpp:867
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaks: set-color <lyx_navn> <x11_navn>"
 
-#: src/frontends/qt4/GuiApplication.cpp:878
+#: src/frontends/qt4/GuiApplication.cpp:883
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Angivelse af farven \"%1$s\" mislykkedes - farven er udefineret eller måske "
 "ikke gendefineret"
 
-#: src/frontends/qt4/GuiApplication.cpp:1179
+#: src/frontends/qt4/GuiApplication.cpp:1184
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Dokumentudskrift mislykkedes"
 
-#: src/frontends/qt4/GuiApplication.cpp:1189
+#: src/frontends/qt4/GuiApplication.cpp:1194
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -17446,18 +17612,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1193
-#: src/frontends/qt4/GuiApplication.cpp:1199
+#: src/frontends/qt4/GuiApplication.cpp:1198
+#: src/frontends/qt4/GuiApplication.cpp:1204
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1197
+#: src/frontends/qt4/GuiApplication.cpp:1202
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1369
+#: src/frontends/qt4/GuiApplication.cpp:1374
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Kunne ikke læse opsætningsfilen"
@@ -17473,11 +17639,11 @@ msgid "BibTeX Bibliography"
 msgstr "Litteraturliste"
 
 #: src/frontends/qt4/GuiBibtex.cpp:424 src/frontends/qt4/GuiBibtex.cpp:434
-#: src/frontends/qt4/GuiDocument.cpp:1279
+#: src/frontends/qt4/GuiDocument.cpp:1293
 #: src/frontends/qt4/GuiExternal.cpp:661 src/frontends/qt4/GuiGraphics.cpp:740
 #: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1214
-#: src/frontends/qt4/GuiView.cpp:1272 src/frontends/qt4/GuiView.cpp:1405
-#: src/frontends/qt4/GuiView.cpp:1524 src/frontends/qt4/GuiView.cpp:1603
+#: src/frontends/qt4/GuiView.cpp:1272 src/frontends/qt4/GuiView.cpp:1409
+#: src/frontends/qt4/GuiView.cpp:1528 src/frontends/qt4/GuiView.cpp:1607
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#d#D"
 
@@ -17570,11 +17736,11 @@ msgid "Color"
 msgstr "Farver"
 
 #: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiBranches.cpp:146
-#: src/frontends/qt4/GuiDocument.cpp:1436
+#: src/frontends/qt4/GuiDocument.cpp:1437
 msgid "Yes"
 msgstr "Ja"
 
-#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1435
+#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1436
 msgid "No"
 msgstr "Nej"
 
@@ -17690,10 +17856,10 @@ msgstr ""
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Vælg filnavnet, som dokumentet skal gemmes under"
 
-#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1286
-#: src/frontends/qt4/GuiView.cpp:1425 src/frontends/qt4/GuiView.cpp:1441
-#: src/frontends/qt4/GuiView.cpp:1458 src/frontends/qt4/GuiView.cpp:1541
-#: src/frontends/qt4/GuiView.cpp:1579
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1290
+#: src/frontends/qt4/GuiView.cpp:1429 src/frontends/qt4/GuiView.cpp:1445
+#: src/frontends/qt4/GuiView.cpp:1462 src/frontends/qt4/GuiView.cpp:1545
+#: src/frontends/qt4/GuiView.cpp:1583
 msgid "Canceled."
 msgstr "Annulleret."
 
@@ -17860,7 +18026,7 @@ msgid "Document Settings"
 msgstr "Dokumentindstillinger"
 
 #: src/frontends/qt4/GuiDocument.cpp:566
-#: src/frontends/qt4/GuiDocument.cpp:1051
+#: src/frontends/qt4/GuiDocument.cpp:1055
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
@@ -17910,219 +18076,219 @@ msgstr "B3"
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/GuiDocument.cpp:800
+#: src/frontends/qt4/GuiDocument.cpp:799
 #, fuzzy
 msgid "LaTeX default"
 msgstr "LaTeX fejlede"
 
-#: src/frontends/qt4/GuiDocument.cpp:806
+#: src/frontends/qt4/GuiDocument.cpp:808
 msgid "``text''"
 msgstr "``tekst''"
 
-#: src/frontends/qt4/GuiDocument.cpp:807
+#: src/frontends/qt4/GuiDocument.cpp:809
 msgid "''text''"
 msgstr "''tekst''"
 
-#: src/frontends/qt4/GuiDocument.cpp:808
+#: src/frontends/qt4/GuiDocument.cpp:810
 msgid ",,text``"
 msgstr ",,tekst``"
 
-#: src/frontends/qt4/GuiDocument.cpp:809
+#: src/frontends/qt4/GuiDocument.cpp:811
 msgid ",,text''"
 msgstr ",,tekst''"
 
-#: src/frontends/qt4/GuiDocument.cpp:810
+#: src/frontends/qt4/GuiDocument.cpp:812
 msgid "<<text>>"
 msgstr "<<text>>"
 
-#: src/frontends/qt4/GuiDocument.cpp:811
+#: src/frontends/qt4/GuiDocument.cpp:813
 msgid ">>text<<"
 msgstr ">>text<<"
 
-#: src/frontends/qt4/GuiDocument.cpp:826
+#: src/frontends/qt4/GuiDocument.cpp:828
 msgid "Numbered"
 msgstr "Nummereret"
 
-#: src/frontends/qt4/GuiDocument.cpp:827
+#: src/frontends/qt4/GuiDocument.cpp:829
 msgid "Appears in TOC"
 msgstr "Optræder i indhold"
 
-#: src/frontends/qt4/GuiDocument.cpp:847
+#: src/frontends/qt4/GuiDocument.cpp:849
 msgid "Author-year"
 msgstr "Forfatter-år"
 
-#: src/frontends/qt4/GuiDocument.cpp:848
+#: src/frontends/qt4/GuiDocument.cpp:850
 msgid "Numerical"
 msgstr "Numerisk"
 
-#: src/frontends/qt4/GuiDocument.cpp:913
+#: src/frontends/qt4/GuiDocument.cpp:917
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "Tilgængelig: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:975 src/frontends/qt4/GuiDocument.cpp:989
+#: src/frontends/qt4/GuiDocument.cpp:979 src/frontends/qt4/GuiDocument.cpp:993
 msgid "Document Class"
 msgstr "Dokument&klasse"
 
-#: src/frontends/qt4/GuiDocument.cpp:977
+#: src/frontends/qt4/GuiDocument.cpp:981
 msgid "Text Layout"
 msgstr "Tekstlayout"
 
-#: src/frontends/qt4/GuiDocument.cpp:979
+#: src/frontends/qt4/GuiDocument.cpp:983
 msgid "Page Margins"
 msgstr "Sidemarginer"
 
-#: src/frontends/qt4/GuiDocument.cpp:981
+#: src/frontends/qt4/GuiDocument.cpp:985
 msgid "Numbering & TOC"
 msgstr "Nummerering & indholdsfortegnelse"
 
-#: src/frontends/qt4/GuiDocument.cpp:983
+#: src/frontends/qt4/GuiDocument.cpp:987
 #, fuzzy
 msgid "PDF Properties"
 msgstr "Property"
 
-#: src/frontends/qt4/GuiDocument.cpp:984
+#: src/frontends/qt4/GuiDocument.cpp:988
 #, fuzzy
 msgid "Math Options"
 msgstr "Matematikindstillinger"
 
-#: src/frontends/qt4/GuiDocument.cpp:985
+#: src/frontends/qt4/GuiDocument.cpp:989
 msgid "Float Placement"
 msgstr "Placering af flydere"
 
-#: src/frontends/qt4/GuiDocument.cpp:986
+#: src/frontends/qt4/GuiDocument.cpp:990
 msgid "Bullets"
 msgstr "Punkttegn"
 
-#: src/frontends/qt4/GuiDocument.cpp:987
+#: src/frontends/qt4/GuiDocument.cpp:991
 msgid "Branches"
 msgstr "Grene"
 
-#: src/frontends/qt4/GuiDocument.cpp:988
-#: src/frontends/qt4/GuiDocument.cpp:1000
+#: src/frontends/qt4/GuiDocument.cpp:992
+#: src/frontends/qt4/GuiDocument.cpp:1004
 msgid "LaTeX Preamble"
 msgstr "LaTeX-hoved"
 
-#: src/frontends/qt4/GuiDocument.cpp:1229
+#: src/frontends/qt4/GuiDocument.cpp:1233
 #, fuzzy
 msgid "Layouts|#o#O"
 msgstr "Layout|L"
 
-#: src/frontends/qt4/GuiDocument.cpp:1231
+#: src/frontends/qt4/GuiDocument.cpp:1235
 #, fuzzy
 msgid "LyX Layout (*.layout)"
 msgstr "LyX-dokumenter (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1233
-#: src/frontends/qt4/GuiDocument.cpp:1293
+#: src/frontends/qt4/GuiDocument.cpp:1237
+#: src/frontends/qt4/GuiDocument.cpp:1246
 msgid "Local layout file"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1251
-#: src/frontends/qt4/GuiDocument.cpp:1310
-#: src/frontends/qt4/GuiDocument.cpp:2108
-#, fuzzy
-msgid "Error"
-msgstr "Pil"
-
-#: src/frontends/qt4/GuiDocument.cpp:1252
-#, fuzzy
-msgid "Unable to read local layout file."
-msgstr "Gem som dokumentstandarder"
-
-#: src/frontends/qt4/GuiDocument.cpp:1273
-#, fuzzy
-msgid "Select master document"
-msgstr "Gem dokument"
-
-#: src/frontends/qt4/GuiDocument.cpp:1277
-#, fuzzy
-msgid "LyX Files (*.lyx)"
-msgstr "LyX-dokumenter (*.lyx)"
-
-#: src/frontends/qt4/GuiDocument.cpp:1294
+#: src/frontends/qt4/GuiDocument.cpp:1247
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory. Your\n"
 "document may not work with this layout if you do not\n"
-"keep the layout file in the same directory."
+"keep the layout file in the document directory."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1298
+#: src/frontends/qt4/GuiDocument.cpp:1251
 #, fuzzy
 msgid "&Set Layout"
 msgstr "Tekstlayout"
 
-#: src/frontends/qt4/GuiDocument.cpp:1310
-#: src/frontends/qt4/GuiDocument.cpp:2108
+#: src/frontends/qt4/GuiDocument.cpp:1264
+#: src/frontends/qt4/GuiDocument.cpp:1311
+#: src/frontends/qt4/GuiDocument.cpp:2134
+#, fuzzy
+msgid "Error"
+msgstr "Pil"
+
+#: src/frontends/qt4/GuiDocument.cpp:1265
+#, fuzzy
+msgid "Unable to read local layout file."
+msgstr "Gem som dokumentstandarder"
+
+#: src/frontends/qt4/GuiDocument.cpp:1287
+#, fuzzy
+msgid "Select master document"
+msgstr "Gem dokument"
+
+#: src/frontends/qt4/GuiDocument.cpp:1291
+#, fuzzy
+msgid "LyX Files (*.lyx)"
+msgstr "LyX-dokumenter (*.lyx)"
+
+#: src/frontends/qt4/GuiDocument.cpp:1311
+#: src/frontends/qt4/GuiDocument.cpp:2134
 #, fuzzy
 msgid "Unable to set document class."
 msgstr "Gem som dokumentstandarder"
 
 # , c-format
-#: src/frontends/qt4/GuiDocument.cpp:1315
-#: src/frontends/qt4/GuiDocument.cpp:2097
+#: src/frontends/qt4/GuiDocument.cpp:1316
+#: src/frontends/qt4/GuiDocument.cpp:2123
 #, fuzzy
 msgid "Unapplied changes"
 msgstr "Spor ændringer...|I"
 
-#: src/frontends/qt4/GuiDocument.cpp:1316
-#: src/frontends/qt4/GuiDocument.cpp:2098
+#: src/frontends/qt4/GuiDocument.cpp:1317
+#: src/frontends/qt4/GuiDocument.cpp:2124
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1318
-#: src/frontends/qt4/GuiDocument.cpp:2100
+#: src/frontends/qt4/GuiDocument.cpp:1319
+#: src/frontends/qt4/GuiDocument.cpp:2126
 msgid "&Dismiss"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1345
+#: src/frontends/qt4/GuiDocument.cpp:1346
 #, fuzzy, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s og %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1350
+#: src/frontends/qt4/GuiDocument.cpp:1351
 #, fuzzy, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s og %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1395
+#: src/frontends/qt4/GuiDocument.cpp:1396
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1401
+#: src/frontends/qt4/GuiDocument.cpp:1402
 #, fuzzy
 msgid "or"
 msgstr "Formater"
 
-#: src/frontends/qt4/GuiDocument.cpp:1404
+#: src/frontends/qt4/GuiDocument.cpp:1405
 #, c-format
 msgid "Module required: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1413
+#: src/frontends/qt4/GuiDocument.cpp:1414
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1419
+#: src/frontends/qt4/GuiDocument.cpp:1420
 msgid "WARNING: Some packages are unavailable!"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2120
+#: src/frontends/qt4/GuiDocument.cpp:2146
 #, fuzzy
 msgid "Can't set layout!"
 msgstr "Sidelayout"
 
-#: src/frontends/qt4/GuiDocument.cpp:2121
+#: src/frontends/qt4/GuiDocument.cpp:2147
 #, fuzzy, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Gem som dokumentstandarder"
 
-#: src/frontends/qt4/GuiDocument.cpp:2198
+#: src/frontends/qt4/GuiDocument.cpp:2224
 #, fuzzy
 msgid "Not Found"
 msgstr "Ikke vist."
@@ -18587,42 +18753,42 @@ msgstr "Føj en ny gren til listen"
 msgid "Identity"
 msgstr "Identitet"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2628
+#: src/frontends/qt4/GuiPrefs.cpp:2622
 msgid "Choose bind file"
 msgstr "Vælg bind-fil"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2629
+#: src/frontends/qt4/GuiPrefs.cpp:2623
 #, fuzzy
 msgid "LyX bind files (*.bind)"
 msgstr "BibTeX-databasefiler (*.bib)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2635
+#: src/frontends/qt4/GuiPrefs.cpp:2629
 msgid "Choose UI file"
 msgstr "Vælg brugerfladefil"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2636
+#: src/frontends/qt4/GuiPrefs.cpp:2630
 #, fuzzy
 msgid "LyX UI files (*.ui)"
 msgstr "Alle filer (*)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2642
+#: src/frontends/qt4/GuiPrefs.cpp:2636
 msgid "Choose keyboard map"
 msgstr "Vælg tastaturudlægning"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2643
+#: src/frontends/qt4/GuiPrefs.cpp:2637
 #, fuzzy
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Brug &tastaturudlægning"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2649
+#: src/frontends/qt4/GuiPrefs.cpp:2643
 msgid "Choose personal dictionary"
 msgstr "Vælg personlig ordliste"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2650
+#: src/frontends/qt4/GuiPrefs.cpp:2644
 msgid "*.pws"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2650
+#: src/frontends/qt4/GuiPrefs.cpp:2644
 #, fuzzy
 msgid "*.ispell"
 msgstr "ispell"
@@ -19147,17 +19313,17 @@ msgstr ""
 msgid "Enter characters to filter the layout list."
 msgstr ""
 
-#: src/frontends/qt4/GuiToolbar.cpp:932
+#: src/frontends/qt4/GuiToolbar.cpp:934
 #, fuzzy
 msgid "auto"
 msgstr "Dato"
 
-#: src/frontends/qt4/GuiToolbar.cpp:937 src/frontends/qt4/GuiToolbar.cpp:946
+#: src/frontends/qt4/GuiToolbar.cpp:939 src/frontends/qt4/GuiToolbar.cpp:948
 #, fuzzy
 msgid "off"
 msgstr "Fra"
 
-#: src/frontends/qt4/GuiToolbar.cpp:953
+#: src/frontends/qt4/GuiToolbar.cpp:955
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr ""
@@ -19198,12 +19364,12 @@ msgstr "Ukendt symbol: %1$s %2$s\n"
 msgid "Select template file"
 msgstr "Vælg skabelonfil"
 
-#: src/frontends/qt4/GuiView.cpp:1215 src/frontends/qt4/GuiView.cpp:1604
+#: src/frontends/qt4/GuiView.cpp:1215 src/frontends/qt4/GuiView.cpp:1608
 msgid "Templates|#T#t"
 msgstr "Skabeloner|#S#s"
 
-#: src/frontends/qt4/GuiView.cpp:1218 src/frontends/qt4/GuiView.cpp:1277
-#: src/frontends/qt4/GuiView.cpp:1530 src/frontends/qt4/GuiView.cpp:1611
+#: src/frontends/qt4/GuiView.cpp:1218 src/frontends/qt4/GuiView.cpp:1276
+#: src/frontends/qt4/GuiView.cpp:1534 src/frontends/qt4/GuiView.cpp:1615
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-dokumenter (*.lyx)"
 
@@ -19216,41 +19382,56 @@ msgstr "Dokument ikke gemt"
 msgid "Select document to open"
 msgstr "Vælg dokument, som skal åbnes"
 
-#: src/frontends/qt4/GuiView.cpp:1273 src/frontends/qt4/GuiView.cpp:1406
-#: src/frontends/qt4/GuiView.cpp:1525
+#: src/frontends/qt4/GuiView.cpp:1273 src/frontends/qt4/GuiView.cpp:1410
+#: src/frontends/qt4/GuiView.cpp:1529
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:1309
+#: src/frontends/qt4/GuiView.cpp:1277
+#, fuzzy
+msgid "LyX-1.3.x Documents (*.lyx13)"
+msgstr "LyX-dokumenter (*.lyx)"
+
+#: src/frontends/qt4/GuiView.cpp:1278
+#, fuzzy
+msgid "LyX-1.4.x Documents (*.lyx14)"
+msgstr "LyX-dokumenter (*.lyx)"
+
+#: src/frontends/qt4/GuiView.cpp:1279
+#, fuzzy
+msgid "LyX-1.5.x Documents (*.lyx15)"
+msgstr "LyX-dokumenter (*.lyx)"
+
+#: src/frontends/qt4/GuiView.cpp:1313
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Åbner dokument %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1318
+#: src/frontends/qt4/GuiView.cpp:1322
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokumentet %1$s blev åbnet."
 
-#: src/frontends/qt4/GuiView.cpp:1320
+#: src/frontends/qt4/GuiView.cpp:1324
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikke åbne dokumentet %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1349
+#: src/frontends/qt4/GuiView.cpp:1353
 msgid "Couldn't import file"
 msgstr "Kunne ikke importere fil"
 
-#: src/frontends/qt4/GuiView.cpp:1350
+#: src/frontends/qt4/GuiView.cpp:1354
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Ingen oplysninger om import af formatet %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:1401
+#: src/frontends/qt4/GuiView.cpp:1405
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vælg %1$s-fil at importere"
 
-#: src/frontends/qt4/GuiView.cpp:1452 src/frontends/qt4/GuiView.cpp:1628
+#: src/frontends/qt4/GuiView.cpp:1456 src/frontends/qt4/GuiView.cpp:1632
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -19261,43 +19442,43 @@ msgstr ""
 "\n"
 "Vil du overskrive dette dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:1454 src/frontends/qt4/GuiView.cpp:1632
+#: src/frontends/qt4/GuiView.cpp:1458 src/frontends/qt4/GuiView.cpp:1636
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Overskriv dokument?"
 
 # , c-format
-#: src/frontends/qt4/GuiView.cpp:1463
+#: src/frontends/qt4/GuiView.cpp:1467
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Importerer %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1466
+#: src/frontends/qt4/GuiView.cpp:1470
 msgid "imported."
 msgstr "importeret."
 
-#: src/frontends/qt4/GuiView.cpp:1468
+#: src/frontends/qt4/GuiView.cpp:1472
 #, fuzzy
 msgid "file not imported!"
 msgstr "Streng ikke fundet!"
 
-#: src/frontends/qt4/GuiView.cpp:1523
+#: src/frontends/qt4/GuiView.cpp:1527
 msgid "Select LyX document to insert"
 msgstr "Vælg LyX-dokument at indsætte"
 
-#: src/frontends/qt4/GuiView.cpp:1564
+#: src/frontends/qt4/GuiView.cpp:1568
 msgid "Select file to insert"
 msgstr "Vælg fil som skal indsættes"
 
-#: src/frontends/qt4/GuiView.cpp:1601
+#: src/frontends/qt4/GuiView.cpp:1605
 msgid "Choose a filename to save document as"
 msgstr "Vælg filnavnet, som dokumentet skal gemmes under"
 
-#: src/frontends/qt4/GuiView.cpp:1633 src/frontends/qt4/GuiView.cpp:1678
+#: src/frontends/qt4/GuiView.cpp:1637 src/frontends/qt4/GuiView.cpp:1682
 msgid "&Rename"
 msgstr "&Omdøb"
 
-#: src/frontends/qt4/GuiView.cpp:1674
+#: src/frontends/qt4/GuiView.cpp:1678
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -19308,16 +19489,16 @@ msgstr ""
 "\n"
 "Vil du omdøbe dokumentet og prøve igen?"
 
-#: src/frontends/qt4/GuiView.cpp:1677
+#: src/frontends/qt4/GuiView.cpp:1681
 msgid "Rename and save?"
 msgstr "Omdøb og gem?"
 
-#: src/frontends/qt4/GuiView.cpp:1678
+#: src/frontends/qt4/GuiView.cpp:1682
 #, fuzzy
 msgid "&Retry"
 msgstr "&Gendan"
 
-#: src/frontends/qt4/GuiView.cpp:1728
+#: src/frontends/qt4/GuiView.cpp:1732
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -19328,21 +19509,21 @@ msgstr ""
 "\n"
 "Ønsker du at gemme dokumentet eller at skrotte ændringerne?"
 
-#: src/frontends/qt4/GuiView.cpp:1731
+#: src/frontends/qt4/GuiView.cpp:1735
 msgid "&Discard"
 msgstr "&Skrot"
 
-#: src/frontends/qt4/GuiView.cpp:1835
+#: src/frontends/qt4/GuiView.cpp:1839
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "Gemmer dokumentet %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1845
+#: src/frontends/qt4/GuiView.cpp:1849
 #, fuzzy
 msgid "All documents saved."
 msgstr "Dokument ikke gemt"
 
-#: src/frontends/qt4/GuiView.cpp:2039
+#: src/frontends/qt4/GuiView.cpp:2049
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
@@ -19362,25 +19543,25 @@ msgstr ""
 msgid "Literate Source"
 msgstr "Synlige mellemrum|#S"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1148
+#: src/frontends/qt4/GuiWorkArea.cpp:1150
 msgid " (changed)"
 msgstr " (ændret)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1152
+#: src/frontends/qt4/GuiWorkArea.cpp:1154
 msgid " (read only)"
 msgstr " (skrivebeskyttet)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1239
+#: src/frontends/qt4/GuiWorkArea.cpp:1241
 #, fuzzy
 msgid "Close File"
 msgstr "Luk"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1632
+#: src/frontends/qt4/GuiWorkArea.cpp:1634
 #, fuzzy
 msgid "Hide tab"
 msgstr "standard"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1634
+#: src/frontends/qt4/GuiWorkArea.cpp:1636
 #, fuzzy
 msgid "Close tab"
 msgstr "Luk"
@@ -19547,7 +19728,7 @@ msgid ""
 "file through LaTeX: "
 msgstr ""
 
-#: src/insets/Inset.cpp:334
+#: src/insets/Inset.cpp:333
 msgid "Opened inset"
 msgstr "Indstik åbnet"
 
@@ -19739,16 +19920,12 @@ msgstr ""
 msgid "Opened ERT Inset"
 msgstr "ERT-indstik åbnet"
 
-#: src/insets/InsetEnvironment.cpp:53
-msgid "Opened Environment Inset: "
-msgstr "Åbnede miljø-indstik: "
-
 #: src/insets/InsetExternal.cpp:493
 #, c-format
 msgid "External template %1$s is not installed"
 msgstr "Ekstern skabelon %1$s er ikke installeret"
 
-#: src/insets/InsetFlex.cpp:53
+#: src/insets/InsetFlex.cpp:51
 #, fuzzy
 msgid "Opened Flex Inset"
 msgstr "Tekst-indstik åbnet"
@@ -20215,7 +20392,7 @@ msgstr "Beskyttet mellemrum|B"
 msgid "Unknown TOC type"
 msgstr "Ukendt symbol"
 
-#: src/insets/InsetTabular.cpp:3055
+#: src/insets/InsetTabular.cpp:3054
 msgid "Opened table"
 msgstr "Åbnede tabel"
 
@@ -20485,18 +20662,18 @@ msgstr "Sammendrag: "
 msgid "References: "
 msgstr "Referencer: "
 
-#: src/support/Package.cpp:450
+#: src/support/Package.cpp:451
 #, fuzzy
 msgid "LyX binary not found"
 msgstr "Streng ikke fundet!"
 
-#: src/support/Package.cpp:451
+#: src/support/Package.cpp:452
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 
-#: src/support/Package.cpp:570
+#: src/support/Package.cpp:571
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -20505,33 +20682,33 @@ msgid ""
 "LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 
-#: src/support/Package.cpp:651 src/support/Package.cpp:678
+#: src/support/Package.cpp:652 src/support/Package.cpp:679
 #, fuzzy
 msgid "File not found"
 msgstr "Streng ikke fundet!"
 
-#: src/support/Package.cpp:652
+#: src/support/Package.cpp:653
 #, c-format
 msgid ""
 "Invalid %1$s switch.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
 
-#: src/support/Package.cpp:679
+#: src/support/Package.cpp:680
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
 
-#: src/support/Package.cpp:703
+#: src/support/Package.cpp:704
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
 "%2$s is not a directory."
 msgstr ""
 
-#: src/support/Package.cpp:705
+#: src/support/Package.cpp:706
 #, fuzzy
 msgid "Directory not found"
 msgstr "Streng ikke fundet!"
@@ -20701,6 +20878,47 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Ukendt indstik"
+
+#, fuzzy
+#~ msgid "Adds an environment for hanging paragraphs."
+#~ msgstr "Kan ikke indeksere flere end ét afsnit!"
+
+#, fuzzy
+#~ msgid "Reject change"
+#~ msgstr "Afvis ændring|#A"
+
+#, fuzzy
+#~ msgid "The document class %1$s could not be found."
+#~ msgstr ""
+#~ "Det angivne dokument\n"
+#~ "%1$s\n"
+#~ "kunne ikke læses."
+
+#, fuzzy
+#~ msgid "Class not found"
+#~ msgstr "Streng ikke fundet!"
+
+#~ msgid ""
+#~ "Layout had to be changed from\n"
+#~ "%1$s to %2$s\n"
+#~ "because of class conversion from\n"
+#~ "%3$s to %4$s"
+#~ msgstr ""
+#~ "Layoutet er ændret fra\n"
+#~ "%1$s til %2$s\n"
+#~ "p.g.a. klassekonvertering fra \n"
+#~ "%3$s til %4$s"
+
+#, fuzzy
+#~ msgid "Changed Layout"
+#~ msgstr "Sidelayout"
+
+#, fuzzy
+#~ msgid "Unknown layout"
+#~ msgstr "Ukendt funktion"
+
+#~ msgid "Opened Environment Inset: "
+#~ msgstr "Åbnede miljø-indstik: "
 
 #~ msgid "Display image in LyX"
 #~ msgstr "Vis  billede i LyX"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-13 10:40+0100\n"
+"POT-Creation-Date: 2008-07-13 13:54+0200\n"
 "PO-Revision-Date: 2008-07-05 18:59+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@tlc.unipr.it>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -1923,114 +1923,6 @@ msgstr "&Elenca nell'indice generale"
 msgid "&Numbering"
 msgstr "&Numerazione"
 
-#: src/frontends/qt4/ui/PDFSupportUi.ui:28
-msgid "&Use hyperref support"
-msgstr "&Usa supporto hyperref"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:53
-msgid "&General"
-msgstr "&Generale"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:99
-msgid ""
-"If not stated explicitly, fill title and author from appropriate environments"
-msgstr ""
-"Se non specificato esplicitamente, usa titolo e autore dagli ambienti "
-"appropriati"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:102
-msgid "Automatically fi&ll header"
-msgstr "&Componi automaticamente l'intestazione"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:109
-msgid "Enable fullscreen PDF presentation"
-msgstr "Abilita presentazione PDF a schermo intero"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:112
-msgid "Load in &fullscreen mode"
-msgstr "Apri in modalità a sc&hermo intero"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:121
-msgid "Header Information"
-msgstr "Informazioni per l'intestazione"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:133
-msgid "&Title:"
-msgstr "&Titolo:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:146
-msgid "&Author:"
-msgstr "&Autore:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:159
-msgid "&Subject:"
-msgstr "&Soggetto:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:172
-msgid "&Keywords:"
-msgstr "&Parole chiave:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:189
-msgid "H&yperlinks"
-msgstr "&Ipercollegamenti"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:222
-msgid "Allows link text to break across lines."
-msgstr "Consente di spezzare il testo del collegamento su più righe."
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:225
-msgid "B&reak links over lines"
-msgstr "Spezza collegamenti su più rig&he"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:232
-msgid "No &frames around links"
-msgstr "Collegamenti &senza cornice"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:242
-msgid "C&olor links"
-msgstr "Collegamenti a co&lori"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:249
-#: src/frontends/qt4/ui/PDFSupportUi.ui:259
-msgid "Adds \"backlink\" text to the end of each item in the bibliography"
-msgstr "Aggiunge testo \"backlink\" alla fine di ciascuna voce bibliografica"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:252
-msgid "B&ibliographical backreferences"
-msgstr "Riferimenti bibliografici in&versi"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:262
-msgid "Backreference by pa&ge number"
-msgstr "Riferimento inverso per numero di &pagina"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:285
-msgid "&Bookmarks"
-msgstr "Segnali&bri"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:297
-msgid "G&enerate Bookmarks"
-msgstr "G&enera segnalibri"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:318
-msgid "&Numbered bookmarks"
-msgstr "Segnalibri &numerati"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:343
-msgid "Number of levels"
-msgstr "Numero di livelli"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:352
-msgid "&Open bookmarks"
-msgstr "Apri &segnalibri"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:392
-msgid "Additional o&ptions"
-msgstr "Op&zioni addizionali"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:421
-msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
-msgstr "per es.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
-
 #: src/frontends/qt4/ui/PageLayoutUi.ui:33
 #: src/frontends/qt4/GuiDocument.cpp:982
 msgid "Page Layout"
@@ -2143,6 +2035,114 @@ msgstr "1.5"
 #: src/frontends/qt4/GuiDocument.cpp:583
 msgid "Double"
 msgstr "Doppia"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:28
+msgid "&Use hyperref support"
+msgstr "&Usa supporto hyperref"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:53
+msgid "&General"
+msgstr "&Generale"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:99
+msgid ""
+"If not stated explicitly, fill title and author from appropriate environments"
+msgstr ""
+"Se non specificato esplicitamente, usa titolo e autore dagli ambienti "
+"appropriati"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:102
+msgid "Automatically fi&ll header"
+msgstr "&Componi automaticamente l'intestazione"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:109
+msgid "Enable fullscreen PDF presentation"
+msgstr "Abilita presentazione PDF a schermo intero"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:112
+msgid "Load in &fullscreen mode"
+msgstr "Apri in modalità a sc&hermo intero"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:121
+msgid "Header Information"
+msgstr "Informazioni per l'intestazione"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:133
+msgid "&Title:"
+msgstr "&Titolo:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:146
+msgid "&Author:"
+msgstr "&Autore:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:159
+msgid "&Subject:"
+msgstr "&Soggetto:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:172
+msgid "&Keywords:"
+msgstr "&Parole chiave:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:189
+msgid "H&yperlinks"
+msgstr "&Ipercollegamenti"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:222
+msgid "Allows link text to break across lines."
+msgstr "Consente di spezzare il testo del collegamento su più righe."
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:225
+msgid "B&reak links over lines"
+msgstr "Spezza collegamenti su più rig&he"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:232
+msgid "No &frames around links"
+msgstr "Collegamenti &senza cornice"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:242
+msgid "C&olor links"
+msgstr "Collegamenti a co&lori"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:249
+#: src/frontends/qt4/ui/PDFSupportUi.ui:259
+msgid "Adds \"backlink\" text to the end of each item in the bibliography"
+msgstr "Aggiunge testo \"backlink\" alla fine di ciascuna voce bibliografica"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:252
+msgid "B&ibliographical backreferences"
+msgstr "Riferimenti bibliografici in&versi"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:262
+msgid "Backreference by pa&ge number"
+msgstr "Riferimento inverso per numero di &pagina"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:285
+msgid "&Bookmarks"
+msgstr "Segnali&bri"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:297
+msgid "G&enerate Bookmarks"
+msgstr "G&enera segnalibri"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:318
+msgid "&Numbered bookmarks"
+msgstr "Segnalibri &numerati"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:343
+msgid "Number of levels"
+msgstr "Numero di livelli"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:352
+msgid "&Open bookmarks"
+msgstr "Apri &segnalibri"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:392
+msgid "Additional o&ptions"
+msgstr "Op&zioni addizionali"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:421
+msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+msgstr "per es.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "&Alter..."
@@ -3879,12 +3879,12 @@ msgstr "Dimostrazione:"
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:196
 #: lib/layouts/ijmpd.layout:199 lib/layouts/llncs.layout:412
 #: lib/layouts/siamltex.layout:200 lib/layouts/svjour.inc:475
-#: lib/layouts/theorems-ams.inc:24 lib/layouts/theorems-ams.inc:25
-#: lib/layouts/theorems-ams.inc:208 lib/layouts/theorems-order.inc:7
-#: lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems.inc:24 lib/layouts/theorems.inc:25
+#: lib/layouts/theorems.inc:202 lib/layouts/theorems-ams.inc:24
+#: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
+#: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems-starred.inc:24
 #: lib/layouts/theorems-starred-equivalents.inc:6
-#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:24
-#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:202
 #: lib/layouts/theorems-chap.module:17 lib/layouts/theorems-sec.module:16
 msgid "Theorem"
 msgstr "Teorema"
@@ -3897,9 +3897,9 @@ msgstr "Teorema #:"
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:246 lib/layouts/ijmpd.layout:251
 #: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:215
-#: lib/layouts/svjour.inc:412 lib/layouts/theorems-ams.inc:71
-#: lib/layouts/theorems-order.inc:19
-#: lib/layouts/theorems-starred-equivalents.inc:20 lib/layouts/theorems.inc:69
+#: lib/layouts/svjour.inc:412 lib/layouts/theorems.inc:69
+#: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-order.inc:19
+#: lib/layouts/theorems-starred-equivalents.inc:20
 msgid "Lemma"
 msgstr "Lemma"
 
@@ -3912,8 +3912,9 @@ msgstr "Lemma #:"
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:236
 #: lib/layouts/ijmpd.layout:237 lib/layouts/llncs.layout:316
 #: lib/layouts/siamltex.layout:222 lib/layouts/svjour.inc:373
-#: lib/layouts/theorems-ams.inc:59 lib/layouts/theorems-order.inc:13
-#: lib/layouts/theorems-starred-equivalents.inc:13 lib/layouts/theorems.inc:58
+#: lib/layouts/theorems.inc:58 lib/layouts/theorems-ams.inc:59
+#: lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-starred-equivalents.inc:13
 msgid "Corollary"
 msgstr "Corollario"
 
@@ -3925,8 +3926,9 @@ msgstr "Corollario #:"
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:256
 #: lib/layouts/ijmpd.layout:262 lib/layouts/llncs.layout:385
 #: lib/layouts/siamltex.layout:229 lib/layouts/svjour.inc:447
-#: lib/layouts/theorems-ams.inc:83 lib/layouts/theorems-order.inc:25
-#: lib/layouts/theorems-starred-equivalents.inc:27 lib/layouts/theorems.inc:80
+#: lib/layouts/theorems.inc:80 lib/layouts/theorems-ams.inc:83
+#: lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems-starred-equivalents.inc:27
 msgid "Proposition"
 msgstr "Proposizione"
 
@@ -3937,8 +3939,9 @@ msgstr "Proposizione #:"
 #: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:363
 #: lib/layouts/ijmpc.layout:296 lib/layouts/ijmpd.layout:306
 #: lib/layouts/llncs.layout:309 lib/layouts/svjour.inc:366
-#: lib/layouts/theorems-ams.inc:95 lib/layouts/theorems-order.inc:31
-#: lib/layouts/theorems-starred-equivalents.inc:34 lib/layouts/theorems.inc:91
+#: lib/layouts/theorems.inc:91 lib/layouts/theorems-ams.inc:95
+#: lib/layouts/theorems-order.inc:31
+#: lib/layouts/theorems-starred-equivalents.inc:34
 msgid "Conjecture"
 msgstr "Congettura"
 
@@ -3956,7 +3959,7 @@ msgid "Criterion #:"
 msgstr "Criterio #:"
 
 #: lib/layouts/IEEEtran.layout:133 lib/layouts/beamer.layout:977
-#: lib/layouts/theorems-ams.inc:107 lib/layouts/theorems.inc:102
+#: lib/layouts/theorems.inc:102 lib/layouts/theorems-ams.inc:107
 msgid "Fact"
 msgstr "Fatto"
 
@@ -3977,9 +3980,9 @@ msgstr "Assioma #:"
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:132
 #: lib/layouts/ijmpd.layout:129 lib/layouts/llncs.layout:330
 #: lib/layouts/siamltex.layout:236 lib/layouts/svjour.inc:387
-#: lib/layouts/theorems-ams.inc:119 lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems.inc:113 lib/layouts/theorems-ams.inc:119
+#: lib/layouts/theorems-order.inc:37
 #: lib/layouts/theorems-starred-equivalents.inc:41
-#: lib/layouts/theorems.inc:113
 msgid "Definition"
 msgstr "Definizione"
 
@@ -3990,10 +3993,10 @@ msgstr "Definizione #:"
 #: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:959
 #: lib/layouts/elsart.layout:370 lib/layouts/ijmpc.layout:166
 #: lib/layouts/ijmpd.layout:163 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:394 lib/layouts/theorems-ams.inc:138
-#: lib/layouts/theorems-order.inc:43
+#: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:132
+#: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:48
-#: lib/layouts/theorems.inc:132 src/frontends/qt4/GuiDocument.cpp:827
+#: src/frontends/qt4/GuiDocument.cpp:827
 msgid "Example"
 msgstr "Esempio"
 
@@ -4012,9 +4015,9 @@ msgstr "Condizione #:"
 
 #: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:377
 #: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:426
-#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-order.inc:49
+#: lib/layouts/theorems.inc:144 lib/layouts/theorems-ams.inc:150
+#: lib/layouts/theorems-order.inc:49
 #: lib/layouts/theorems-starred-equivalents.inc:55
-#: lib/layouts/theorems.inc:144
 msgid "Problem"
 msgstr "Problema"
 
@@ -4023,10 +4026,9 @@ msgid "Problem #:"
 msgstr "Problema #:"
 
 #: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:401 lib/layouts/theorems-ams.inc:162
-#: lib/layouts/theorems-order.inc:55
+#: lib/layouts/svjour.inc:401 lib/layouts/theorems.inc:156
+#: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-order.inc:55
 #: lib/layouts/theorems-starred-equivalents.inc:62
-#: lib/layouts/theorems.inc:156
 msgid "Exercise"
 msgstr "Esercizio"
 
@@ -4037,9 +4039,9 @@ msgstr "Esercizio #:"
 #: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:384
 #: lib/layouts/ijmpc.layout:176 lib/layouts/ijmpd.layout:174
 #: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:461
-#: lib/layouts/theorems-ams.inc:174 lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems.inc:168 lib/layouts/theorems-ams.inc:174
+#: lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:69
-#: lib/layouts/theorems.inc:168
 msgid "Remark"
 msgstr "Osservazione"
 
@@ -4050,10 +4052,9 @@ msgstr "Osservazione #:"
 #: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:398
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:286
 #: lib/layouts/ijmpd.layout:295 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:345 lib/layouts/theorems-ams.inc:194
-#: lib/layouts/theorems-order.inc:67
+#: lib/layouts/svjour.inc:345 lib/layouts/theorems.inc:188
+#: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-order.inc:67
 #: lib/layouts/theorems-starred-equivalents.inc:76
-#: lib/layouts/theorems.inc:188
 msgid "Claim"
 msgstr "Asserzione"
 
@@ -4083,13 +4084,13 @@ msgid "Notation #:"
 msgstr "Notazione #:"
 
 #: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:413
-#: lib/layouts/llncs.layout:281 lib/layouts/theorems-ams.inc:207
-#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:201
+#: lib/layouts/llncs.layout:281 lib/layouts/theorems.inc:201
+#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-order.inc:73
 msgid "Case"
 msgstr "Caso"
 
-#: lib/layouts/IEEEtran.layout:246 lib/layouts/theorems-ams.inc:213
-#: lib/layouts/theorems.inc:207
+#: lib/layouts/IEEEtran.layout:246 lib/layouts/theorems.inc:207
+#: lib/layouts/theorems-ams.inc:213
 msgid "Case #:"
 msgstr "Caso #:"
 
@@ -4739,11 +4740,6 @@ msgstr "LatinOff"
 msgid "Latin off"
 msgstr "Latin off"
 
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "Fotogramma"
-
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:117
 #: lib/layouts/beamer.layout:132 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:32 lib/layouts/scrartcl.layout:20
@@ -4758,6 +4754,11 @@ msgstr "Parte"
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Parte*"
+
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "Fotogramma"
 
 #: lib/layouts/beamer.layout:107 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:114 lib/layouts/stdlists.inc:65
@@ -6446,7 +6447,7 @@ msgid "Notation \\thenotation."
 msgstr "Notazione \\thenotation."
 
 #: lib/layouts/ijmpc.layout:206 lib/layouts/ijmpd.layout:209
-#: lib/layouts/theorems-ams.inc:42 lib/layouts/theorems.inc:42
+#: lib/layouts/theorems.inc:42 lib/layouts/theorems-ams.inc:42
 msgid "Theorem \\thetheorem."
 msgstr "Teorema \\thetheorem."
 
@@ -8003,47 +8004,47 @@ msgstr "Estratti"
 msgid "Offprints:"
 msgstr "Estratti:"
 
-#: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:62
+#: lib/layouts/theorems.inc:62 lib/layouts/theorems-ams.inc:63
 msgid "Corollary \\thetheorem."
 msgstr "Corollario \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems.inc:73
+#: lib/layouts/theorems.inc:73 lib/layouts/theorems-ams.inc:75
 msgid "Lemma \\thetheorem."
 msgstr "Lemma \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems.inc:84
+#: lib/layouts/theorems.inc:84 lib/layouts/theorems-ams.inc:87
 msgid "Proposition \\thetheorem."
 msgstr "Proposizione \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:99 lib/layouts/theorems.inc:95
+#: lib/layouts/theorems.inc:95 lib/layouts/theorems-ams.inc:99
 msgid "Conjecture \\thetheorem."
 msgstr "Congettura \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems.inc:106
+#: lib/layouts/theorems.inc:106 lib/layouts/theorems-ams.inc:111
 msgid "Fact \\thetheorem."
 msgstr "Fatto \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:117
+#: lib/layouts/theorems.inc:117 lib/layouts/theorems-ams.inc:123
 msgid "Definition \\thetheorem."
 msgstr "Definizione \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:135
+#: lib/layouts/theorems.inc:135 lib/layouts/theorems-ams.inc:141
 msgid "Example \\thetheorem."
 msgstr "Esempio \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:153 lib/layouts/theorems.inc:147
+#: lib/layouts/theorems.inc:147 lib/layouts/theorems-ams.inc:153
 msgid "Problem \\thetheorem."
 msgstr "Problema \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:165 lib/layouts/theorems.inc:159
+#: lib/layouts/theorems.inc:159 lib/layouts/theorems-ams.inc:165
 msgid "Exercise \\thetheorem."
 msgstr "Esercizio \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:178 lib/layouts/theorems.inc:172
+#: lib/layouts/theorems.inc:172 lib/layouts/theorems-ams.inc:178
 msgid "Remark \\thetheorem."
 msgstr "Osservazione \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems.inc:191
+#: lib/layouts/theorems.inc:191 lib/layouts/theorems-ams.inc:197
 msgid "Claim \\thetheorem."
 msgstr "Asserzione \\thetheorem."
 
@@ -8313,9 +8314,7 @@ msgstr "Minimalistico"
 
 #: lib/layouts/minimalistic.module:5
 #, fuzzy
-msgid ""
-"Redefines several insets (Index, Branch, URL) as being Minimalistic, for use "
-"by old-timers."
+msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr ""
 "Ridefinisce diversi inserti in stile minimalistico, a beneficio dei veterani."
 
@@ -15199,7 +15198,7 @@ msgstr ""
 "\t-version       riassume la versione e le informazioni di compilazione.\n"
 "Vedere anche le pagine del manuale di LyX per maggiori dettagli."
 
-#: src/LyX.cpp:1092
+#: src/LyX.cpp:1092 src/support/Package.cpp:570
 msgid "No system directory"
 msgstr "Nessuna cartella di sistema"
 
@@ -19223,11 +19222,6 @@ msgstr "La stringa è stata sostituita."
 msgid " strings have been replaced."
 msgstr " le stringhe sono state sostituite."
 
-#: src/mathed/InsetFormulaMacro.cpp:118
-#, c-format
-msgid " Macro: %1$s: "
-msgstr "Macro: %1$s: "
-
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1365
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
@@ -19323,6 +19317,67 @@ msgstr "Sommario: "
 #: src/output_plaintext.cpp:148
 msgid "References: "
 msgstr "Referimenti: "
+
+#: src/support/Package.cpp:451
+msgid "LyX binary not found"
+msgstr "Eseguibile di LyX non trovato"
+
+#: src/support/Package.cpp:452
+#, c-format
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
+msgstr ""
+"Impossibile determinare la locazione dell'eseguibile di LyX dalla linea di "
+"comando %1$s"
+
+#: src/support/Package.cpp:571
+#, c-format
+msgid ""
+"Unable to determine the system directory having searched\n"
+"\t%1$s\n"
+"Use the '-sysdir' command line parameter or set the environment variable "
+"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
+msgstr ""
+"Impossibile individuare la cartella di sistema avendo cercato in\n"
+"\t%1$s\n"
+"Usate il parametro '-sysdir' da linea di comando o impostate la variabile "
+"d'ambiente LYX_DIR_15x alla cartella di sistema di LyX contenente il file "
+"`chkconfig.ltx'."
+
+#: src/support/Package.cpp:652 src/support/Package.cpp:679
+msgid "File not found"
+msgstr "File non trovato"
+
+#: src/support/Package.cpp:653
+#, c-format
+msgid ""
+"Invalid %1$s switch.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"Il parametro %1$s non è valido.\n"
+"La cartella %2$s non contiene %3$s."
+
+#: src/support/Package.cpp:680
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"La variabile d'ambiente %1$s non è valida.\n"
+"La cartella %2$s non contiene %3$s."
+
+#: src/support/Package.cpp:704
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"%2$s is not a directory."
+msgstr ""
+"La variabile d'ambiente %1$s non è valida.\n"
+"%2$s non è una cartella."
+
+#: src/support/Package.cpp:706
+msgid "Directory not found"
+msgstr "Cartella non trovata"
 
 #: src/support/debug.cpp:38
 msgid "No debugging message"
@@ -19489,6 +19544,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Utente sconosciuto"
 
+#~ msgid " Macro: %1$s: "
+#~ msgstr "Macro: %1$s: "
+
 #~ msgid "Reject change"
 #~ msgstr "Rifiuta modifica"
 
@@ -19527,55 +19585,6 @@ msgstr "Utente sconosciuto"
 
 #~ msgid "Opened Environment Inset: "
 #~ msgstr "È stato aperto l'inserto Ambiente:"
-
-#~ msgid "LyX binary not found"
-#~ msgstr "Eseguibile di LyX non trovato"
-
-#~ msgid ""
-#~ "Unable to determine the path to the LyX binary from the command line %1$s"
-#~ msgstr ""
-#~ "Impossibile determinare la locazione dell'eseguibile di LyX dalla linea "
-#~ "di comando %1$s"
-
-#~ msgid ""
-#~ "Unable to determine the system directory having searched\n"
-#~ "\t%1$s\n"
-#~ "Use the '-sysdir' command line parameter or set the environment variable "
-#~ "LYX_DIR_15x to the LyX system directory containing the file `chkconfig."
-#~ "ltx'."
-#~ msgstr ""
-#~ "Impossibile individuare la cartella di sistema avendo cercato in\n"
-#~ "\t%1$s\n"
-#~ "Usate il parametro '-sysdir' da linea di comando o impostate la variabile "
-#~ "d'ambiente LYX_DIR_15x alla cartella di sistema di LyX contenente il file "
-#~ "`chkconfig.ltx'."
-
-#~ msgid "File not found"
-#~ msgstr "File non trovato"
-
-#~ msgid ""
-#~ "Invalid %1$s switch.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "Il parametro %1$s non è valido.\n"
-#~ "La cartella %2$s non contiene %3$s."
-
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "La variabile d'ambiente %1$s non è valida.\n"
-#~ "La cartella %2$s non contiene %3$s."
-
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "%2$s is not a directory."
-#~ msgstr ""
-#~ "La variabile d'ambiente %1$s non è valida.\n"
-#~ "%2$s non è una cartella."
-
-#~ msgid "Directory not found"
-#~ msgstr "Cartella non trovata"
 
 #~ msgid "Display image in LyX"
 #~ msgstr "Visualizza l'immagine in LyX"
