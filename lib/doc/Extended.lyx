@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 337
+#LyX 1.6.0beta4 created this file. For more info see http://www.lyx.org/
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass scrbook
@@ -15000,38 +15000,31 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-Under the 
-\family sans
-\bar under
-T
-\bar default
-ools
+When you to have the 
+\family typewriter
+chktex
 \family default
- menu, you'll find a 
+ program installed, you'll find in the 
 \family sans
-\bar under
-C
-\bar default
-heck
+Tools
+\family default
+ menu the entry 
+\family sans
+Check
 \begin_inset space ~
 \end_inset
 
 TeX
 \family default
  command.
- This feature requires you to have the 
+ You can get 
 \family typewriter
 chktex
 \family default
- program installed, and is grayed out if you don't have it.
- You can get it from your nearest CTAN mirror, or over the Web from 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.ifi.uio.no/~jensthi/chktex/
-\end_layout
+ it from CTAN, 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.ctan.org/tex-archive/help/Catalogue/entries/chktex.html"
 
 \end_inset
 

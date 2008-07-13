@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0beta4 created this file. For more info see http://www.lyx.org/
 \lyxformat 338
 \begin_document
 \begin_header
@@ -154,8 +154,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 23.
- Juni 2008
+letzte Änderung: 13.
+ Juli 2008
 \end_layout
 
 \begin_layout Standard
@@ -5567,7 +5567,7 @@ Im
 \family sans
 Werkzeuge
 \family default
--Menü finden Sie den 
+-Menü finden Sie den Eintrag 
 \family sans
 Te
 \begin_inset ERT
@@ -5586,24 +5586,20 @@ X
 
 prüfen
 \family default
--Befehl.
- Er ist nur aktiviert, wenn das 
+.
+ Er ist nur vorhanden, wenn das Program 
 \family typewriter
 chktex
 \family default
--Programm installiert ist.
- Sie können es bei CTAN oder von der Seite 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.ifi.uio.no/~jensthi/chktex/
-\end_layout
+ installiert ist.
+ Sie können es von CTAN beziehen, 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.ctan.org/tex-archive/help/Catalogue/entries/chktex.html"
 
 \end_inset
 
- beziehen.
+.
 \end_layout
 
 \begin_layout Standard
