@@ -602,7 +602,7 @@ case $lyx_use_packaging in
 	   default_prefix="/Applications/${PACKAGE}.app"
 	   bindir='${prefix}/Contents/MacOS'
 	   libdir='${prefix}/Contents/Resources'
-	   datadir='${prefix}/Contents/Resources'
+	   datarootdir='${prefix}/Contents/Resources'
 	   pkgdatadir='${datadir}'
 	   mandir='${datadir}/man'
 	   lyx_install_macosx=true ;;
@@ -611,7 +611,7 @@ case $lyx_use_packaging in
 	   default_prefix="C:/Program Files/${PACKAGE}"
 	   bindir='${prefix}/bin'
 	   libdir='${prefix}/Resources'
-	   datadir='${prefix}/Resources'
+	   datarootdir='${prefix}/Resources'
 	   pkgdatadir='${datadir}'
 	   mandir='${prefix}/Resources/man' ;;
     posix) AC_DEFINE(USE_POSIX_PACKAGING, 1, [Define to 1 if LyX should use a POSIX-style file layout])
@@ -622,6 +622,9 @@ case $lyx_use_packaging in
     *) LYX_ERROR([Unknown packaging type $lyx_use_packaging]) ;;
 esac
 AM_CONDITIONAL(INSTALL_MACOSX, $lyx_install_macosx)
+dnl Next two lines are only for autoconf <= 2.59
+datadir='${datarootdir}'
+AC_SUBST(datarootdir)
 AC_SUBST(pkgdatadir)
 AC_SUBST(program_suffix)
 ])
