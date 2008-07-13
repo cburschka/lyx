@@ -73,8 +73,13 @@ struct UndoElement
 	            MathData * ar, BufferParams const & bp, 
 	            bool ifb) :
 	        kind(kin), cursor(cur), cell(cel), from(fro), end(en),
-	        pars(pl), array(ar), bparams(bp), isFullBuffer(ifb)
-	{}
+	        pars(pl), array(ar), bparams(0), isFullBuffer(ifb)
+	{
+		if (isFullBuffer)
+			bparams = new BufferParams(bp);
+	}
+	///
+	~UndoElement() { delete bparams; }
 	/// Which kind of operation are we recording for?
 	UndoKind kind;
 	/// the position of the cursor
@@ -90,7 +95,7 @@ struct UndoElement
 	/// the contents of the saved MathData (for mathed)
 	MathData * array;
 	/// Only used in case of full backups
-	BufferParams bparams;
+	BufferParams const * bparams;
 	/// Only used in case of full backups
 	bool isFullBuffer;
 private:
@@ -322,8 +327,9 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 	if (undo.isFullBuffer) {
 		LASSERT(undo.pars, /**/);
 		// This is a full document
-		otherstack.top().bparams = buffer_.params();
-		buffer_.params() = undo.bparams;
+		delete otherstack.top().bparams;
+		otherstack.top().bparams = new BufferParams(buffer_.params());
+		buffer_.params() = *undo.bparams;
 		swap(buffer_.paragraphs(), *undo.pars);
 		delete undo.pars;
 		undo.pars = 0;
