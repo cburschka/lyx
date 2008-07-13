@@ -1198,6 +1198,15 @@ void LyXAction::init()
 		{ LFUN_FONT_STATE, "font-state", ReadOnly, Layout },
 
 		{ LFUN_BIBITEM_INSERT, "bibitem-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_CITATION_INSERT
+ * \li Action: Inserts citation from loaded citation database.
+ * \li Syntax: citation-insert [<KEY>[|<TEXT_BEFORE>]]
+ * \li Params: <KEY>: Citation (shortcut listed in available citations). \n
+               <TEXT_BEFORE>: text which should appear before citation.
+ * \li Origin: AAS, 97-02-23
+ * \endvar
+ */
 		{ LFUN_CITATION_INSERT, "citation-insert", Noop, Edit },
 		{ LFUN_BIBTEX_DATABASE_ADD, "bibtex-database-add", Noop, Edit },
 		{ LFUN_BIBTEX_DATABASE_DEL, "bibtex-database-del", Noop, Edit },
