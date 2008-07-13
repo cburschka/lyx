@@ -28,17 +28,6 @@ Function ConfigureLyX
    StrCpy $PathPrefix "$PathPrefix;$SVGPath"
   ${endif}
   
-  # Set a path prefix in lyxrc.dist
-  ClearErrors
-  ${if} "$PathPrefix" != ""
-   Delete "$INSTDIR\Resources\lyxrc.dist"
-   FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" w
-   FileWrite $R1 '\path_prefix "$PathPrefix"$\r$\n'
-   FileClose $R1
-   IfErrors 0 +2
-    MessageBox MB_OK|MB_ICONEXCLAMATION "$(ModifyingConfigureFailed)"
-  ${endif}
-
   # Create a batch file to start LyX with the environment variables set
   ClearErrors
   Delete "${PRODUCT_BAT}"
@@ -50,29 +39,33 @@ Function ConfigureLyX
   FileClose $R1
   IfErrors 0 +2
    MessageBox MB_OK|MB_ICONEXCLAMATION "$(CreateCmdFilesFailed)"
-
-  # set up the preferences file
+   
+  # Set the path prefix in lyxrc.dist
+  ClearErrors
+  Delete "$INSTDIR\Resources\lyxrc.dist"
+  FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" w
+  # set some general things
+  FileWrite $R1 '\preview_scale_factor "1.0"$\r$\n\
+  		 \screen_zoom "120"$\r$\n'
+  ${if} "$PathPrefix" != ""
+   FileWrite $R1 '\path_prefix "$PathPrefix"$\r$\n'
+  ${endif}
   # if Acrobat or Adobe Reader is used
   ${if} $Acrobat == "Yes" # used for Acrobat / Adobe Reader
-    # writes settings to the preferences file
-    ${LineFind} "$INSTDIR\Resources\preferences" "$INSTDIR\Resources\preferences" "75" "AcroPref"
-    # ${LineFind} is a macro from TextFunc.nsh # calls Function AcroPref
+   FileWrite $R1 '\format "pdf3" "pdf" "PDF (dvipdfm)" "m" "pdfview" "" "document,vector"$\r$\n\
+   		  \format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document,vector"$\r$\n\
+		  \format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document,vector"$\r$\n'
   ${endif}
-  
-  # if a SVG to PDF converter ws found (e.g. Inkscape) define it in the preferences
+  # if a SVG to PDF converter ws found (e.g. Inkscape)
   ${if} $SVGPath != ""
-   ${if} $Acrobat == "Yes"
-    # writes settings to the preferences file
-    ${LineFind} "$INSTDIR\Resources\preferences" "$INSTDIR\Resources\preferences" "78" "SVGPref1"
-    # deletes lines from the preferences file
-    ${LineFind} "$INSTDIR\Resources\preferences" "$INSTDIR\Resources\preferences" "87:90" "SVGPref2"
-   ${else}
-    # writes settings to the preferences file but 3 lines earlier because the
-    #3 PDF lines are in this case not here
-    ${LineFind} "$INSTDIR\Resources\preferences" "$INSTDIR\Resources\preferences" "75" "SVGPref1"
-    ${LineFind} "$INSTDIR\Resources\preferences" "$INSTDIR\Resources\preferences" "84:87" "SVGPref2"
-   ${endif}
-  ${endif} 
+   FileWrite $R1 '\format "svg" "svg" "SVG" "" "inkscape --file=$$$$i" "inkscape --file=$$$$i" "vector"$\r$\n\
+   		  \converter "svg" "png" "inkscape --without-gui --file=$$$$i --export-png=$$$$o" ""$\r$\n\
+		  \converter "svg" "pdf" "inkscape --file=$$$$i --export-area-drawing --without-gui --export-pdf=$$$$o" ""$\r$\n\
+		  \converter "svg" "pdf2" "inkscape --file=$$$$i --export-area-drawing --without-gui --export-pdf=$$$$o" ""'
+  ${endif}
+  FileClose $R1
+  IfErrors 0 +2
+  MessageBox MB_OK|MB_ICONEXCLAMATION "$(ModifyingConfigureFailed)"
   
   # register LyX
   ${if} $CreateFileAssociations == "true"
@@ -153,43 +146,5 @@ Function ConfigureLyX
   		 "$PythonPath\python.exe" configure.py'
   FileClose $R1
 
-FunctionEnd
-
-# --------------------------------
-
-Function AcroPref
- # writes PDF settings to the preferences file
-
-  FileWrite $R4 '\format "pdf3" "pdf" "PDF (dvipdfm)" "m" "pdfview" "" "document,vector"$\r$\n\
-		 \format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document,vector"$\r$\n\
-		 \format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document,vector"$\r$\n'
-  Push $0
-  
-FunctionEnd
-
-# --------------------------------
-
-Function SVGPref1
- # writes SVG settings to the preferences file
-  
-  FileWrite $R4 '\format "svg" "svg" "SVG" "" "inkscape --file=$$$$i" "inkscape --file=$$$$i" "vector"$\r$\n\
-		 $\r$\n\
-		 #$\r$\n\
-		 # CONVERTERS SECTION ##########################$\r$\n\
-		 #$\r$\n\
-		 $\r$\n\
-		 \converter "svg" "png" "inkscape --without-gui --file=$$$$i --export-png=$$$$o" ""$\r$\n\
-                 \converter "svg" "pdf" "inkscape --file=$$$$i --export-area-drawing --without-gui --export-pdf=$$$$o" ""$\r$\n\
-		 \converter "svg" "pdf2" "inkscape --file=$$$$i --export-area-drawing --without-gui --export-pdf=$$$$o" ""'
-  Push $0
-  
-FunctionEnd
-
-Function SVGPref2
- # deletes lines from the preferences file
-  
-  StrCpy $0 SkipWrite
-  Push $0
-  
 FunctionEnd
 
