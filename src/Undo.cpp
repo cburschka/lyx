@@ -304,8 +304,9 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 	UndoElementStack & otherstack = isUndoOperation ?  redostack_ : undostack_;
 
 	// Adjust undo stack and get hold of current undo data.
-	UndoElement undo = stack.top();
-	stack.pop();
+	UndoElement & undo = stack.top();
+	// We'll pop the stack only when we're done with this element. So do NOT
+	// try to return early.
 
 	// We will store in otherstack the part of the document under 'undo'
 	DocIterator cell_dit = undo.cell.asDocIterator(&buffer_.inset());
@@ -368,7 +369,9 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 	LASSERT(undo.array == 0, /**/);
 
 	cur = undo.cursor.asDocIterator(&buffer_.inset());
-	
+	// Now that we're done with undo, we pop it off the stack.
+	stack.pop();
+
 	if (labelsUpdateNeeded)
 		updateLabels(buffer_);
 	undo_finished_ = true;
