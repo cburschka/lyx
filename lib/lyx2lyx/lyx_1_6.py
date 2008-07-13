@@ -207,7 +207,11 @@ def latex2ert(line):
 
     retval = ""
     ## FIXME Escaped \ ??
-    labelre = re.compile(r'(.*?)\\(\\(?:[a-zA-Z]+|.))(.*)')
+    # This regex looks for a LaTeX command---i.e., something of the form
+    # "\alPhaStuFF", or "\X", where X is any character---where the command
+    # may also be preceded by an additional backslash, which is how it would
+    # appear (e.g.) in an InsetIndex.
+    labelre = re.compile(r'(.*?)\\?(\\(?:[a-zA-Z]+|.))(.*)')
 
     m = labelre.match(line)
     while m != None:
@@ -221,6 +225,10 @@ def latex2ert(line):
                 break
             cmd += arg
             end = rest
+        # If we wanted to put labels into an InsetLabel, for example, then we
+        # would just need to test here for cmd == "label" and then take some
+        # appropriate action, i.e., to use arg to get the content and then 
+        # wrap it appropriately.
         cmd = put_cmd_in_ert(cmd)
         retval += "\n" + cmd + "\n"
         line = end
@@ -241,7 +249,7 @@ def latex2lyx(data):
     # Commands of this sort need to be checked to make sure they are
     # followed by a non-alpha character, lest we replace too much.
     hardone = re.compile(r'^\\\\[a-zA-Z]+$')
-    
+
     for rep in reps:
         if hardone.match(rep[0]):
             pos = 0
