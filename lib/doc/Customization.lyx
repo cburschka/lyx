@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 337
+#LyX 1.6.0beta4 created this file. For more info see http://www.lyx.org/
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass scrbook
@@ -128,7 +128,15 @@ status collapsed
 \begin_layout Plain Layout
 \noindent
 If you have comments or error corrections, please send them to the LyX Documenta
-tion mailing list, <lyx-docs@lists.lyx.org>.
+tion mailing list, 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -3910,31 +3918,7 @@ target "http://www.lyx.org/devel/cvs.php"
 \end_layout
 
 \begin_layout Itemize
-Copy 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-po/lyx.pot
-\end_layout
-
-\end_inset
-
- to
-\series bold
- 
-\series default
-
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-xx.po
-\end_layout
-
-\end_inset
-
- (if 
+Copy the file 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -3944,7 +3928,39 @@ lyx.pot
 
 \end_inset
 
- doesn't exist, it can be remade with 
+ to the folder of the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+**.po
+\end_layout
+
+\end_inset
+
+ files.
+ Then rename it to 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+xx.po
+\end_layout
+
+\end_inset
+
+.
+ (If 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyx.pot
+\end_layout
+
+\end_inset
+
+ doesn't exist anywhere, it can be remade with the console command 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -3976,8 +3992,20 @@ status collapsed
 \begin_layout Plain Layout
 This is just a text file, so it can be edited in any text editor.
  But there are also specialized programs that support such editing, such
- as KBabel (for KDE).
- Emacs contains a `mode' for editing 
+ as 
+\family typewriter
+Poedit
+\family default
+ (for all platforms) or 
+\family typewriter
+KBabel
+\family default
+ (for KDE).
+ 
+\family typewriter
+Emacs
+\family default
+ contains a `mode' for editing 
 \begin_inset Flex CharStyle:Code
 status collapsed
 

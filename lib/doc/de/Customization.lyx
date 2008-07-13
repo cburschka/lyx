@@ -146,7 +146,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 12.
+letzte Änderung: 13.
  Juli 2008
 \end_layout
 
@@ -3967,7 +3967,7 @@ mo
  Eine umfassende Anleitung dazu finden Sie in der Dokumentation für GNU
  gettext
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Natürlich nur auf englisch.
@@ -3991,29 +3991,19 @@ xx
 \end_layout
 
 \begin_layout Itemize
-Kopieren Sie im Verzeichnis des LyX-Quellcodes die Datei
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-LYX-SOURCE-DIR/po/lyx.pot
-\end_layout
-
-\end_inset
-
- nach 
+Kopieren Sie die Datei 
+\family typewriter
+lyx.pot
+\family default
+ in das Verzeichnis der .po-Dateien.
+ Benennen Sie anschließend die Datei in 
 \family typewriter
 \series bold
 xx
 \series default
 .po
 \family default
-.
+ um.
  (Falls 
 \family typewriter
 lyx.pot
@@ -4034,12 +4024,23 @@ Editieren Sie
 \family typewriter
 xx.po
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Wir empfehlen, für diese Aufgabe Emacs zu benutzen, da die Distribution
- der gettext-Library auch einen hübschen Emacs-Modus enthält, der Sie bei
- dieser Arbeit unterstützt.
+Für diese Aufgabe gibt es spezielle Programme, wie 
+\family typewriter
+Poedit
+\family default
+ (für alle Plattformen) oder 
+\family typewriter
+KBabel
+\family default
+ (für KDE).
+ 
+\family typewriter
+Emacs
+\family default
+ hat ebenfalls einen Modus, der Sie bei dieser Arbeit unterstützt.
 \end_layout
 
 \end_inset
