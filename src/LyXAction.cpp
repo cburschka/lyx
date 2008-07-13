@@ -1208,7 +1208,25 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_CITATION_INSERT, "citation-insert", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BIBTEX_DATABASE_ADD
+ * \li Action: Adds database, which will be used for bibtex citations.
+ * \li Notion: Databases are added to the first BibTeX inset
+               (Inset->List/TOC->BibTeX bibliography) found from the cursor postion.
+ * \li Syntax: bibtex-database-add <DATABASE-NAME>
+ * \li Origin: Ale, 30 May 1997
+ * \endvar
+ */
 		{ LFUN_BIBTEX_DATABASE_ADD, "bibtex-database-add", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BIBTEX_DATABASE_DEL
+ * \li Action: Adds database, which will be used for bibtex citations.
+ * \li Notion: Databases are deleted from the first BibTeX inset
+               (Inset->List/TOC->BibTeX bibliography) found from the cursor postion.
+ * \li Syntax: bibtex-database-del <DATABASE-NAME>
+ * \li Origin: Ale, 30 May 1997
+ * \endvar
+ */
 		{ LFUN_BIBTEX_DATABASE_DEL, "bibtex-database-del", Noop, Edit },
 
 /*!
