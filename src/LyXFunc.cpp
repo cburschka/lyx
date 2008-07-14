@@ -1838,6 +1838,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_LANGUAGE_GLOBAL_OPTIONS:
 	case LyXRC::RC_LANGUAGE_PACKAGE:
 	case LyXRC::RC_LANGUAGE_USE_BABEL:
+	case LyXRC::RC_MAC_LIKE_WORD_MOVEMENT:
 	case LyXRC::RC_MACRO_EDIT_STYLE:
 	case LyXRC::RC_MAKE_BACKUP:
 	case LyXRC::RC_MARK_FOREIGN_LANGUAGE:
