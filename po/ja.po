@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-14 12:04+0900\n"
+"POT-Creation-Date: 2008-07-14 11:54+0200\n"
 "PO-Revision-Date: 2008-07-14 14:46+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-devel@lists.lyx.org>\n"
@@ -85,7 +85,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:828
-#: src/Buffer.cpp:2509 src/Buffer.cpp:2533 src/Buffer.cpp:2568
+#: src/Buffer.cpp:2508 src/Buffer.cpp:2532 src/Buffer.cpp:2567
 #: src/LyXFunc.cpp:664 src/LyXFunc.cpp:800 src/LyXFunc.cpp:978
 #: src/LyXVC.cpp:160 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1251
@@ -1927,7 +1927,8 @@ msgid "&General"
 msgstr "一般(&G)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:99
-msgid "If not stated explicitly, fill title and author from appropriate environments"
+msgid ""
+"If not stated explicitly, fill title and author from appropriate environments"
 msgstr "明示的に指定しなければ、タイトルと著者を適当な環境から補完します"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:102
@@ -2200,7 +2201,8 @@ msgstr "一般"
 msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
-msgstr "これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
+msgstr ""
+"これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:147
 msgid "s inline completion dela&y"
@@ -2222,7 +2224,8 @@ msgstr "秒のポップアップ遅延(&E)"
 msgid ""
 "When the TAB completion is not unique, there won't be a delay of the popup. "
 "It will be shown right away."
-msgstr "タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
+msgstr ""
+"タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:221
 msgid "Sho&w popup without delay for non-unique completions"
@@ -2543,7 +2546,8 @@ msgid "Right-to-left language support"
 msgstr "右から左書きの言語をサポート"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:197 src/LyXRC.cpp:2741
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "右から左へ書く言語（ヘブライ語，アラビア語など）をサポートするときに選択して"
 "ください。"
@@ -3479,7 +3483,8 @@ msgstr "ヘッダ:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1085
 msgid "Repeat this row as header on every (except the first) page"
-msgstr "この行を，全てのページ（最初のページをのぞく）にヘッダとして現れるようにする"
+msgstr ""
+"この行を，全てのページ（最初のページをのぞく）にヘッダとして現れるようにする"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1088
 #: src/frontends/qt4/ui/TabularUi.ui:1125
@@ -3524,7 +3529,8 @@ msgstr "フッタ:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1163
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr "この行を，全てのページ（最初のページをのぞく）にフッタとして現れるようにする"
+msgstr ""
+"この行を，全てのページ（最初のページをのぞく）にフッタとして現れるようにする"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1187
 msgid "Last footer:"
@@ -3575,7 +3581,8 @@ msgid "&Rescan"
 msgstr "再走査(&R)"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid "Show contents of marked file. Only possible when files are shown with path"
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "選択したフィルの中身を表示する。ファイルのパスが表示されている時のみ有効であ"
 "る。"
@@ -7880,7 +7887,7 @@ msgid "Branch"
 msgstr "派生枝"
 
 #: lib/layouts/stdinsets.inc:179 lib/layouts/minimalistic.module:8
-#: src/insets/InsetIndex.cpp:132
+#: src/insets/InsetIndex.cpp:145
 msgid "Index"
 msgstr "索引"
 
@@ -8104,7 +8111,9 @@ msgstr "巻末注"
 msgid ""
 "Adds an endnote inset, in addition to footnotes. You will need to add "
 "\\theendnotes in ERT where you want the endnotes to appear."
-msgstr "footnoteコマンドに加え、endnoteコマンドを追加する。巻末注を表示させたいところに\\theendnotesと書いたERTを挿入する必要があります。"
+msgstr ""
+"footnoteコマンドに加え、endnoteコマンドを追加する。巻末注を表示させたいところ"
+"に\\theendnotesと書いたERTを挿入する必要があります。"
 
 #: lib/layouts/endnotes.module:9
 msgid "Custom:Endnote"
@@ -8135,7 +8144,9 @@ msgid ""
 "Adds an environment for hanging paragraphs. Hanging paragraph is a paragraph "
 "in which the first line is set to the left margin, but all subsequent lines "
 "are indented."
-msgstr "ぶら下げ段落用の環境を設定します。ぶら下げ段落とは、第一行だけが左余白と等しい余白を持ち、以後の行はインデントされる段落のことです。"
+msgstr ""
+"ぶら下げ段落用の環境を設定します。ぶら下げ段落とは、第一行だけが左余白と等し"
+"い余白を持ち、以後の行はインデントされる段落のことです。"
 
 #: lib/layouts/linguistics.module:2
 msgid "Linguistics"
@@ -10531,12 +10542,12 @@ msgid "View Source|S"
 msgstr "ソースを閲覧(S)|S"
 
 #: lib/ui/stdmenus.inc:297
-msgid "Split View Horizontally|i"
-msgstr "画面を水平に分割(I)|I"
+msgid "Split View Into Left And Right Half|i"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:298
-msgid "Split View Vertically|V"
-msgstr "画面を垂直に分割(V)|V"
+msgid "Split View Into Upper And Lower Half|V"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:299
 msgid "Close Tab Group|G"
@@ -13710,7 +13721,8 @@ msgstr "ディスクエラー: "
 
 #: src/Buffer.cpp:237
 #, c-format
-msgid "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
+msgid ""
+"LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr ""
 "LyXは作業ディレクトリ'%1$s'を作ることができませんでした(ひょっとしてディスク"
 "がいっぱいですか？)。"
@@ -13915,77 +13927,77 @@ msgstr "iconvが変換に失敗しました"
 msgid "conversion failed"
 msgstr "変換に失敗しました"
 
-#: src/Buffer.cpp:1262
+#: src/Buffer.cpp:1260
 msgid "Running chktex..."
 msgstr "chktexを実行しています..."
 
-#: src/Buffer.cpp:1275
+#: src/Buffer.cpp:1273
 msgid "chktex failure"
 msgstr "chktexに失敗"
 
-#: src/Buffer.cpp:1276
+#: src/Buffer.cpp:1274
 msgid "Could not run chktex successfully."
 msgstr "Chktexをうまく実行することができませんでした。"
 
-#: src/Buffer.cpp:2100
+#: src/Buffer.cpp:2098
 msgid "Preview source code"
 msgstr "ソースコードをプレビューする"
 
-#: src/Buffer.cpp:2112
+#: src/Buffer.cpp:2110
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "段落%1$dのソースコードをプレビューする"
 
-#: src/Buffer.cpp:2116
+#: src/Buffer.cpp:2114
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "段落%1$sから%2$sまでのソースコードをプレビューする"
 
-#: src/Buffer.cpp:2215
+#: src/Buffer.cpp:2213
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$sを自動保存しています"
 
-#: src/Buffer.cpp:2259
+#: src/Buffer.cpp:2257
 msgid "Autosave failed!"
 msgstr "自動保存に失敗しました！"
 
-#: src/Buffer.cpp:2282
+#: src/Buffer.cpp:2280
 msgid "Autosaving current document..."
 msgstr "現在の文書を自動保存しています..."
 
-#: src/Buffer.cpp:2330
+#: src/Buffer.cpp:2328
 msgid "Couldn't export file"
 msgstr "ファイルをエクスポートすることができませんでした"
 
-#: src/Buffer.cpp:2331
+#: src/Buffer.cpp:2329
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "%1$sというフォーマットをエクスポートするのに必要な情報がありません"
 
-#: src/Buffer.cpp:2368
+#: src/Buffer.cpp:2366
 msgid "File name error"
 msgstr "ファイル名エラー"
 
-#: src/Buffer.cpp:2369
+#: src/Buffer.cpp:2367
 msgid "The directory path to the document cannot contain spaces."
 msgstr "文書のパスには空白が含まれていてはなりません。"
 
-#: src/Buffer.cpp:2410
+#: src/Buffer.cpp:2409
 msgid "Document export cancelled."
 msgstr "文書のエクスポートは取り消されました。"
 
-#: src/Buffer.cpp:2416
+#: src/Buffer.cpp:2415
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "文書は%1$sとしてファイル「%2$s」にエクスポートされました。"
 
-#: src/Buffer.cpp:2422
+#: src/Buffer.cpp:2421
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "文書は%1$sとしてエクスポートされました。"
 
-#: src/Buffer.cpp:2492
+#: src/Buffer.cpp:2491
 #, c-format
 msgid ""
 "The specified document\n"
@@ -13996,11 +14008,11 @@ msgstr ""
 "%1$s\n"
 "は，読むことができませんでした。"
 
-#: src/Buffer.cpp:2494
+#: src/Buffer.cpp:2493
 msgid "Could not read document"
 msgstr "文書を読むことができませんでした"
 
-#: src/Buffer.cpp:2504
+#: src/Buffer.cpp:2503
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -14011,19 +14023,19 @@ msgstr ""
 "\n"
 "緊急保存ファイルから復旧しますか？"
 
-#: src/Buffer.cpp:2507
+#: src/Buffer.cpp:2506
 msgid "Load emergency save?"
 msgstr "緊急保存ファイルを読みこみますか？"
 
-#: src/Buffer.cpp:2508
+#: src/Buffer.cpp:2507
 msgid "&Recover"
 msgstr "復旧(&R)"
 
-#: src/Buffer.cpp:2508
+#: src/Buffer.cpp:2507
 msgid "&Load Original"
 msgstr "オリジナルを読み込む(&L):"
 
-#: src/Buffer.cpp:2528
+#: src/Buffer.cpp:2527
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -14034,28 +14046,28 @@ msgstr ""
 "\n"
 "代わりにバックアップファイルを読み込みますか？"
 
-#: src/Buffer.cpp:2531
+#: src/Buffer.cpp:2530
 msgid "Load backup?"
 msgstr "バックアップを読み込みますか？"
 
-#: src/Buffer.cpp:2532
+#: src/Buffer.cpp:2531
 msgid "&Load backup"
 msgstr "バックアップを読み込む(&L)"
 
-#: src/Buffer.cpp:2532
+#: src/Buffer.cpp:2531
 msgid "Load &original"
 msgstr "オリジナルを読み込む(&O)"
 
-#: src/Buffer.cpp:2565
+#: src/Buffer.cpp:2564
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "バージョン管理から文書%1$sを復元しますか？"
 
-#: src/Buffer.cpp:2567
+#: src/Buffer.cpp:2566
 msgid "Retrieve from version control?"
 msgstr "バージョン管理から復元しますか？"
 
-#: src/Buffer.cpp:2568
+#: src/Buffer.cpp:2567
 msgid "&Retrieve"
 msgstr "復元(&R)"
 
@@ -14104,28 +14116,31 @@ msgstr "文書クラスが利用不能です"
 msgid "LyX will not be able to produce output."
 msgstr "LyXは出力を生成することができません。"
 
-#: src/BufferParams.cpp:1424
+#: src/BufferParams.cpp:1422
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
 "layouts will be used. LyX might not be able to produce output unless a "
 "correct textclass is selected from the document settings dialog."
-msgstr "文書クラス%1$sが見つかりませんでした。既定レイアウトの既定テキストクラスを使用します。文書設定ダイアログから正しいテキストクラスが選択されないかぎりは、出力することができないかもしれません。"
+msgstr ""
+"文書クラス%1$sが見つかりませんでした。既定レイアウトの既定テキストクラスを使"
+"用します。文書設定ダイアログから正しいテキストクラスが選択されないかぎりは、"
+"出力することができないかもしれません。"
 
-#: src/BufferParams.cpp:1429
+#: src/BufferParams.cpp:1427
 msgid "Document class not found"
 msgstr "文書クラスが見つかりません"
 
-#: src/BufferParams.cpp:1439 src/LyXFunc.cpp:695
+#: src/BufferParams.cpp:1437 src/LyXFunc.cpp:695
 #, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "指定された文書クラス「%1$s」を読み込むことができませんでした。"
 
-#: src/BufferParams.cpp:1441 src/LyXFunc.cpp:697
+#: src/BufferParams.cpp:1439 src/LyXFunc.cpp:697
 msgid "Could not load class"
 msgstr "クラスを読み込むことができませんでした"
 
-#: src/BufferParams.cpp:1477
+#: src/BufferParams.cpp:1475
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -14138,15 +14153,15 @@ msgstr ""
 "もしモジュールを最近インストールしたのであれば、\n"
 "おそらくLyXにシステム再検出をさせる必要があります。\n"
 
-#: src/BufferParams.cpp:1481
+#: src/BufferParams.cpp:1479
 msgid "Module not available"
 msgstr "モジュールが利用不能です"
 
-#: src/BufferParams.cpp:1482
+#: src/BufferParams.cpp:1480
 msgid "Some layouts may not be available."
 msgstr "レイアウトの一部が利用不能です"
 
-#: src/BufferParams.cpp:1489
+#: src/BufferParams.cpp:1487
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -14157,20 +14172,20 @@ msgstr ""
 "ないパッケージを必要としています。LaTeXの出力は\n"
 "できない可能性があります。\n"
 
-#: src/BufferParams.cpp:1492
+#: src/BufferParams.cpp:1490
 msgid "Package not available"
 msgstr "パッケージが利用不能です"
 
-#: src/BufferParams.cpp:1497
+#: src/BufferParams.cpp:1495
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "モジュール「%1$s」を読むのに失敗しました\n"
 
-#: src/BufferParams.cpp:1498 src/BufferParams.cpp:1504
+#: src/BufferParams.cpp:1496 src/BufferParams.cpp:1502
 msgid "Read Error"
 msgstr "読み込みエラー"
 
-#: src/BufferParams.cpp:1503
+#: src/BufferParams.cpp:1501
 msgid "Error reading internal layout information"
 msgstr "内部レイアウト情報の読み込みエラーです"
 
@@ -14682,7 +14697,7 @@ msgstr "出力が空です"
 msgid "An empty output file was generated."
 msgstr "空の出力ファイルが生成されました。"
 
-#: src/CutAndPaste.cpp:537
+#: src/CutAndPaste.cpp:539
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -14691,7 +14706,7 @@ msgstr ""
 "クラスを%2$sから%3$sに変えたため\n"
 "自由差込枠%1$sは未定義になりました"
 
-#: src/CutAndPaste.cpp:544
+#: src/CutAndPaste.cpp:546
 msgid "Undefined flex inset"
 msgstr "未定義の自由差込枠"
 
@@ -14929,11 +14944,11 @@ msgstr "BibTeXを実行しています。"
 msgid "Running MakeIndex for nomencl."
 msgstr "nomencl用にMakeIndexを実行しています。"
 
-#: src/LyX.cpp:99
+#: src/LyX.cpp:101
 msgid "Could not read configuration file"
 msgstr "設定ファイルを読み込むことができませんでした"
 
-#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1375
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1375
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -14944,42 +14959,42 @@ msgstr ""
 "を読む際にエラーが発生しました。\n"
 "インストールが正しかったかチェックしてください。"
 
-#: src/LyX.cpp:109
+#: src/LyX.cpp:111
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: ユーザーディレクトリを再初期化しています。"
 
-#: src/LyX.cpp:113
+#: src/LyX.cpp:115
 msgid "Done!"
 msgstr "終わりました！"
 
-#: src/LyX.cpp:482
+#: src/LyX.cpp:371
 #, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
 msgstr "%1$sはLyXが生成した作業ディレクトリではないようです。"
 
-#: src/LyX.cpp:484
+#: src/LyX.cpp:373
 msgid "Cannot remove temporary directory"
 msgstr "作業ディレクトリを削除することができません"
 
-#: src/LyX.cpp:490
+#: src/LyX.cpp:379
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "作業ディレクトリ%1$sを削除することができませんでした"
 
-#: src/LyX.cpp:492
+#: src/LyX.cpp:381
 msgid "Unable to remove temporary directory"
 msgstr "作業用ディレクトリを削除することができませんでした"
 
-#: src/LyX.cpp:521
+#: src/LyX.cpp:410
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "コマンドラインオプション`%1$s'は誤りです。終了します。"
 
-#: src/LyX.cpp:588
+#: src/LyX.cpp:484
 msgid "No textclass is found"
 msgstr "テキストクラスが見つかりません。"
 
-#: src/LyX.cpp:589
+#: src/LyX.cpp:485
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
@@ -14988,27 +15003,27 @@ msgstr ""
 "ム再走査を行うか，既定のテキストクラスを使ってシステム再走査を行うか，あるい"
 "はLyXを終了するなどしてください。"
 
-#: src/LyX.cpp:593
+#: src/LyX.cpp:489
 msgid "&Reconfigure"
 msgstr "システム再走査(&R)"
 
-#: src/LyX.cpp:594
+#: src/LyX.cpp:490
 msgid "&Use Default"
 msgstr "既定値を使用する(&U)"
 
-#: src/LyX.cpp:595 src/LyX.cpp:955
+#: src/LyX.cpp:491 src/LyX.cpp:851
 msgid "&Exit LyX"
 msgstr "LyX を終了(&E)"
 
-#: src/LyX.cpp:742 src/frontends/qt4/GuiView.cpp:650
+#: src/LyX.cpp:638 src/frontends/qt4/GuiView.cpp:650
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:864
+#: src/LyX.cpp:760
 msgid "Could not create temporary directory"
 msgstr "作業ディレクトリを作成することができませんでした"
 
-#: src/LyX.cpp:865
+#: src/LyX.cpp:761
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -15019,11 +15034,11 @@ msgstr ""
 "ませんでした。このパスが存在し書き込み可能\n"
 "であることを確認して，再度実行してください。"
 
-#: src/LyX.cpp:948
+#: src/LyX.cpp:844
 msgid "Missing user LyX directory"
 msgstr "個人用 LyX ディレクトリがありません"
 
-#: src/LyX.cpp:949
+#: src/LyX.cpp:845
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -15032,33 +15047,33 @@ msgstr ""
 "実在しない個人用 LyX ディレクトリ「%1$s」を指定しました。\n"
 "このディレクトリは自分用の設定を保存しておくのに必要です。"
 
-#: src/LyX.cpp:954
+#: src/LyX.cpp:850
 msgid "&Create directory"
 msgstr "ディレクトリを作成(&C)"
 
-#: src/LyX.cpp:956
+#: src/LyX.cpp:852
 msgid "No user LyX directory. Exiting."
 msgstr "個人用 LyX ディレクトリがありません。終了します。"
 
-#: src/LyX.cpp:960
+#: src/LyX.cpp:856
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: ディレクトリ「%1$s」を作成しています"
 
-#: src/LyX.cpp:965
+#: src/LyX.cpp:861
 msgid "Failed to create directory. Exiting."
 msgstr "ディレクトリを作成するのに失敗しました。終了します。"
 
-#: src/LyX.cpp:1037
+#: src/LyX.cpp:933
 msgid "List of supported debug flags:"
 msgstr "サポートされているデバッグフラグの一覧:"
 
-#: src/LyX.cpp:1041
+#: src/LyX.cpp:937
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "デバッグレベルを%1$sに設定します"
 
-#: src/LyX.cpp:1052
+#: src/LyX.cpp:948
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -15102,39 +15117,39 @@ msgstr ""
 "\t-version        バージョンとビルド情報を表示\n"
 "詳細は LyX man ページを見て下さい。"
 
-#: src/LyX.cpp:1092
+#: src/LyX.cpp:988
 msgid "No system directory"
 msgstr "システムディレクトリがありません"
 
-#: src/LyX.cpp:1093
+#: src/LyX.cpp:989
 msgid "Missing directory for -sysdir switch"
 msgstr "-sysdirスイッチにディレクトリが指定されていません"
 
-#: src/LyX.cpp:1104
+#: src/LyX.cpp:1000
 msgid "No user directory"
 msgstr "ユーザーディレクトリがありません"
 
-#: src/LyX.cpp:1105
+#: src/LyX.cpp:1001
 msgid "Missing directory for -userdir switch"
 msgstr "-usedirスイッチにディレクトリが指定されていません"
 
-#: src/LyX.cpp:1116
+#: src/LyX.cpp:1012
 msgid "Incomplete command"
 msgstr "不完全なコマンド"
 
-#: src/LyX.cpp:1117
+#: src/LyX.cpp:1013
 msgid "Missing command string after --execute switch"
 msgstr "--executeスイッチの後にコマンド文字列が必要です"
 
-#: src/LyX.cpp:1128
+#: src/LyX.cpp:1024
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "--exportスイッチの後にファイル形式[latex, psなど]が必要です"
 
-#: src/LyX.cpp:1141
+#: src/LyX.cpp:1037
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "--importスイッチの後にファイル形式[latex, psなど]が必要です"
 
-#: src/LyX.cpp:1146
+#: src/LyX.cpp:1042
 msgid "Missing filename for --import"
 msgstr "--importのファイル名が指定されていません"
 
@@ -15247,7 +15262,7 @@ msgstr "保存されている文書に復帰しますか？"
 msgid "&Revert"
 msgstr "元に戻す(&R)"
 
-#: src/LyXFunc.cpp:1014 src/Text3.cpp:1479
+#: src/LyXFunc.cpp:1014 src/Text3.cpp:1478
 msgid "Missing argument"
 msgstr "引数がありません"
 
@@ -15270,21 +15285,21 @@ msgstr "文書既定値を%1$sに保存しました"
 msgid "Unable to save document defaults"
 msgstr "文書既定値を保存することができませんでした"
 
-#: src/LyXFunc.cpp:1696
+#: src/LyXFunc.cpp:1693
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "文書%1$sを再読み込みしました。"
 
-#: src/LyXFunc.cpp:1698
+#: src/LyXFunc.cpp:1695
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "文書%1$sを読み込むことができませんでした"
 
-#: src/LyXFunc.cpp:1735
+#: src/LyXFunc.cpp:1732
 msgid "Welcome to LyX!"
 msgstr "LyXへようこそ！"
 
-#: src/LyXFunc.cpp:1756
+#: src/LyXFunc.cpp:1753
 msgid "Converting document to new document class..."
 msgstr "文書を新しい文書クラスに変換しています..."
 
@@ -15329,7 +15344,8 @@ msgstr ""
 "は，チェックを外してください。"
 
 #: src/LyXRC.cpp:2439
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr "自動保存の間の間隔（秒単位)。0 は自動保存しないことを示します。"
 
 #: src/LyXRC.cpp:2446
@@ -15358,7 +15374,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2458
 msgid "Select to check whether the lastfiles still exist."
-msgstr "最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
+msgstr ""
+"最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
 
 #: src/LyXRC.cpp:2462
 msgid ""
@@ -15384,7 +15401,8 @@ msgstr "単語間のカーソル移動にMac OS X式の方法を使う。"
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
-msgstr "カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
+msgstr ""
+"カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
 
 #: src/LyXRC.cpp:2491
 #, no-c-format
@@ -15427,7 +15445,8 @@ msgstr "LyX が画像をどのように表示するかを選びます。"
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
-msgstr "文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
+msgstr ""
+"文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
 
 #: src/LyXRC.cpp:2520
 msgid "Specify additional chars that can be part of a word."
@@ -15479,7 +15498,8 @@ msgid ""
 msgstr "文書の最初に言語切換コマンドが必要なときに選んでください。"
 
 #: src/LyXRC.cpp:2556
-msgid "Select if a language switching command is needed at the end of the document."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
 msgstr "文書の最後に言語切換コマンドが必要なときに選んでください。"
 
 #: src/LyXRC.cpp:2560
@@ -15525,7 +15545,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2584
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr "LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
+msgstr ""
+"LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
 
 #: src/LyXRC.cpp:2588
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -15564,14 +15585,16 @@ msgid "Select to display the completion popup in text mode."
 msgstr "選択すると、テキストモードで補完ポップアップを表示します。"
 
 #: src/LyXRC.cpp:2617
-msgid "Show the completion popup without delay after non-unique completion attempt."
+msgid ""
+"Show the completion popup without delay after non-unique completion attempt."
 msgstr "複数の補完候補がある際、遅延なしに補完ポップアップを表示する。"
 
 #: src/LyXRC.cpp:2621
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
-msgstr "補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
+msgstr ""
+"補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
 
 #: src/LyXRC.cpp:2625
 msgid "The inline completion delay."
@@ -15592,7 +15615,8 @@ msgstr "長い補完を短縮するのに\"...\"を使用する。"
 #: src/LyXRC.cpp:2641
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr "最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
+msgstr ""
+"最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
 
 #: src/LyXRC.cpp:2646
 msgid ""
@@ -15603,7 +15627,8 @@ msgstr ""
 "マットを使ってください。"
 
 #: src/LyXRC.cpp:2653
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "代替の個人用辞書を指定してください。例：\".ispell_english\"。"
 
 #: src/LyXRC.cpp:2657
@@ -15715,7 +15740,8 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "お好みの印刷プログラム。例：\"dvips\", \"dvilj4\"。"
 
 #: src/LyXRC.cpp:2745
-msgid "Select to have visual bidi cursor movement, unselect for logical movement."
+msgid ""
+"Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 "選択すると、視覚的な上下カーソル動作をします。選択を外すと、論理的な動作にな"
 "ります。"
@@ -15817,7 +15843,8 @@ msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "作業領域でのツールチップスの自動表示を有効にする。"
 
 #: src/LyXRC.cpp:2831
-msgid "Enable the pixmap cache that might improve performance on Mac and Windows."
+msgid ""
+"Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "pixmapのキャッシュを有効にします。MacやWindowsでのパフォーマンスが向上する可"
 "能性があります。"
@@ -15924,7 +15951,8 @@ msgstr "未知のトークン"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr "空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
+msgstr ""
+"空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
 
 #: src/Text.cpp:533
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -16018,11 +16046,11 @@ msgstr "割り付け"
 msgid " not known"
 msgstr "解釈不能"
 
-#: src/Text3.cpp:1586 src/Text3.cpp:1598
+#: src/Text3.cpp:1585 src/Text3.cpp:1597
 msgid "Character set"
 msgstr "文字が調整されました"
 
-#: src/Text3.cpp:1744 src/Text3.cpp:1755
+#: src/Text3.cpp:1743 src/Text3.cpp:1754
 msgid "Paragraph layout set"
 msgstr "段落を割り付けました。"
 
@@ -16044,7 +16072,8 @@ msgstr "破損ファイル"
 
 #: src/TextClass.cpp:576
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
-msgstr "stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
+msgstr ""
+"stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
 
 #: src/Thesaurus.cpp:60
 msgid "Thesaurus failure"
@@ -16698,7 +16727,8 @@ msgstr "文書の設定"
 
 #: src/frontends/qt4/GuiDocument.cpp:566
 #: src/frontends/qt4/GuiDocument.cpp:1055
-msgid "Input listings parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
 "は？を入力してください。"
@@ -17057,7 +17087,8 @@ msgstr "子文書"
 #: src/frontends/qt4/GuiInclude.cpp:120 src/frontends/qt4/GuiInclude.cpp:182
 #: src/frontends/qt4/GuiListings.cpp:235 src/frontends/qt4/GuiListings.cpp:368
 #: src/frontends/qt4/GuiListings.cpp:443
-msgid "Input listing parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
 "は？を入力してください。"
@@ -18667,7 +18698,8 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "%1$sのうちの1つ以上で構成されなくてはなりません。"
 
 #: src/insets/InsetListingsParams.cpp:278
-msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid ""
+"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr "\\footnotesize, \\small, \\itshape, \\ttfamily 等を使ってください"
 
 #: src/insets/InsetListingsParams.cpp:280
@@ -18973,15 +19005,15 @@ msgstr "pixmapを生成するのに失敗しました"
 msgid "No image"
 msgstr "図表がありません"
 
-#: src/insets/RenderPreview.cpp:96
+#: src/insets/RenderPreview.cpp:95
 msgid "Preview loading"
 msgstr "プレビューを読み込んでいます"
 
-#: src/insets/RenderPreview.cpp:99
+#: src/insets/RenderPreview.cpp:98
 msgid "Preview ready"
 msgstr "プレビューの準備ができました"
 
-#: src/insets/RenderPreview.cpp:102
+#: src/insets/RenderPreview.cpp:101
 msgid "Preview failed"
 msgstr "プレビューに失敗しました"
 
@@ -19331,3 +19363,8 @@ msgstr ""
 msgid "Unknown user"
 msgstr "未知のユーザー"
 
+#~ msgid "Split View Horizontally|i"
+#~ msgstr "画面を水平に分割(I)|I"
+
+#~ msgid "Split View Vertically|V"
+#~ msgstr "画面を垂直に分割(V)|V"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-13 13:54+0200\n"
+"POT-Creation-Date: 2008-07-14 11:54+0200\n"
 "PO-Revision-Date: 2007-05-15 16:13+0900\n"
 "Last-Translator: cghan <cghan@pusan.ac.kr>\n"
 "Language-Team: hangul <ko@li.org>\n"
@@ -82,7 +82,7 @@ msgstr ""
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:828
-#: src/Buffer.cpp:2507 src/Buffer.cpp:2531 src/Buffer.cpp:2566
+#: src/Buffer.cpp:2508 src/Buffer.cpp:2532 src/Buffer.cpp:2567
 #: src/LyXFunc.cpp:664 src/LyXFunc.cpp:800 src/LyXFunc.cpp:978
 #: src/LyXVC.cpp:160 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1251
@@ -1958,6 +1958,123 @@ msgstr "목차 내의 목록(&List in Table of Contents)"
 msgid "&Numbering"
 msgstr ""
 
+#: src/frontends/qt4/ui/PDFSupportUi.ui:28
+msgid "&Use hyperref support"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:53
+#, fuzzy
+msgid "&General"
+msgstr "중심(Center)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:99
+msgid ""
+"If not stated explicitly, fill title and author from appropriate environments"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:102
+msgid "Automatically fi&ll header"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:109
+msgid "Enable fullscreen PDF presentation"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:112
+msgid "Load in &fullscreen mode"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:121
+#, fuzzy
+msgid "Header Information"
+msgstr "TeX 정보"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:133
+#, fuzzy
+msgid "&Title:"
+msgstr "제목:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:146
+#, fuzzy
+msgid "&Author:"
+msgstr "편집기(Ed&itor):"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:159
+#, fuzzy
+msgid "&Subject:"
+msgstr "하부 글자(Subscript)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:172
+msgid "&Keywords:"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:189
+#, fuzzy
+msgid "H&yperlinks"
+msgstr "공간을 넣으시오"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:222
+msgid "Allows link text to break across lines."
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:225
+msgid "B&reak links over lines"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:232
+msgid "No &frames around links"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:242
+#, fuzzy
+msgid "C&olor links"
+msgstr "색깔(&Colors)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:249
+#: src/frontends/qt4/ui/PDFSupportUi.ui:259
+msgid "Adds \"backlink\" text to the end of each item in the bibliography"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:252
+msgid "B&ibliographical backreferences"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:262
+msgid "Backreference by pa&ge number"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:285
+#, fuzzy
+msgid "&Bookmarks"
+msgstr "책갈피(Bookmarks)|B"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:297
+#, fuzzy
+msgid "G&enerate Bookmarks"
+msgstr "책갈피 지우기(Clear Bookmarks)|C"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:318
+#, fuzzy
+msgid "&Numbered bookmarks"
+msgstr "번호 달린 수식(Numbered Formula)|N"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:343
+msgid "Number of levels"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:352
+#, fuzzy
+msgid "&Open bookmarks"
+msgstr "책갈피 2 저장"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:392
+msgid "Additional o&ptions"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:421
+msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+msgstr ""
+
 #: src/frontends/qt4/ui/PageLayoutUi.ui:33
 #: src/frontends/qt4/GuiDocument.cpp:982
 msgid "Page Layout"
@@ -2076,123 +2193,6 @@ msgstr ""
 #: src/frontends/qt4/ui/ParagraphUi.ui:250 src/Text.cpp:1383
 #: src/frontends/qt4/GuiDocument.cpp:583
 msgid "Double"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:28
-msgid "&Use hyperref support"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:53
-#, fuzzy
-msgid "&General"
-msgstr "중심(Center)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:99
-msgid ""
-"If not stated explicitly, fill title and author from appropriate environments"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:102
-msgid "Automatically fi&ll header"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:109
-msgid "Enable fullscreen PDF presentation"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:112
-msgid "Load in &fullscreen mode"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:121
-#, fuzzy
-msgid "Header Information"
-msgstr "TeX 정보"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:133
-#, fuzzy
-msgid "&Title:"
-msgstr "제목:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:146
-#, fuzzy
-msgid "&Author:"
-msgstr "편집기(Ed&itor):"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:159
-#, fuzzy
-msgid "&Subject:"
-msgstr "하부 글자(Subscript)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:172
-msgid "&Keywords:"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:189
-#, fuzzy
-msgid "H&yperlinks"
-msgstr "공간을 넣으시오"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:222
-msgid "Allows link text to break across lines."
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:225
-msgid "B&reak links over lines"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:232
-msgid "No &frames around links"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:242
-#, fuzzy
-msgid "C&olor links"
-msgstr "색깔(&Colors)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:249
-#: src/frontends/qt4/ui/PDFSupportUi.ui:259
-msgid "Adds \"backlink\" text to the end of each item in the bibliography"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:252
-msgid "B&ibliographical backreferences"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:262
-msgid "Backreference by pa&ge number"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:285
-#, fuzzy
-msgid "&Bookmarks"
-msgstr "책갈피(Bookmarks)|B"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:297
-#, fuzzy
-msgid "G&enerate Bookmarks"
-msgstr "책갈피 지우기(Clear Bookmarks)|C"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:318
-#, fuzzy
-msgid "&Numbered bookmarks"
-msgstr "번호 달린 수식(Numbered Formula)|N"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:343
-msgid "Number of levels"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:352
-#, fuzzy
-msgid "&Open bookmarks"
-msgstr "책갈피 2 저장"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:392
-msgid "Additional o&ptions"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:421
-msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
@@ -3894,12 +3894,12 @@ msgstr ""
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:196
 #: lib/layouts/ijmpd.layout:199 lib/layouts/llncs.layout:412
 #: lib/layouts/siamltex.layout:200 lib/layouts/svjour.inc:475
-#: lib/layouts/theorems.inc:24 lib/layouts/theorems.inc:25
-#: lib/layouts/theorems.inc:202 lib/layouts/theorems-ams.inc:24
-#: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
-#: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-proof.inc:14
-#: lib/layouts/theorems-starred.inc:24
+#: lib/layouts/theorems-ams.inc:24 lib/layouts/theorems-ams.inc:25
+#: lib/layouts/theorems-ams.inc:208 lib/layouts/theorems-order.inc:7
+#: lib/layouts/theorems-proof.inc:14
 #: lib/layouts/theorems-starred-equivalents.inc:6
+#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:24
+#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:202
 #: lib/layouts/theorems-chap.module:17 lib/layouts/theorems-sec.module:16
 msgid "Theorem"
 msgstr ""
@@ -3912,9 +3912,9 @@ msgstr ""
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:246 lib/layouts/ijmpd.layout:251
 #: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:215
-#: lib/layouts/svjour.inc:412 lib/layouts/theorems.inc:69
-#: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-order.inc:19
-#: lib/layouts/theorems-starred-equivalents.inc:20
+#: lib/layouts/svjour.inc:412 lib/layouts/theorems-ams.inc:71
+#: lib/layouts/theorems-order.inc:19
+#: lib/layouts/theorems-starred-equivalents.inc:20 lib/layouts/theorems.inc:69
 msgid "Lemma"
 msgstr ""
 
@@ -3927,9 +3927,8 @@ msgstr ""
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:236
 #: lib/layouts/ijmpd.layout:237 lib/layouts/llncs.layout:316
 #: lib/layouts/siamltex.layout:222 lib/layouts/svjour.inc:373
-#: lib/layouts/theorems.inc:58 lib/layouts/theorems-ams.inc:59
-#: lib/layouts/theorems-order.inc:13
-#: lib/layouts/theorems-starred-equivalents.inc:13
+#: lib/layouts/theorems-ams.inc:59 lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-starred-equivalents.inc:13 lib/layouts/theorems.inc:58
 msgid "Corollary"
 msgstr ""
 
@@ -3941,9 +3940,8 @@ msgstr ""
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:256
 #: lib/layouts/ijmpd.layout:262 lib/layouts/llncs.layout:385
 #: lib/layouts/siamltex.layout:229 lib/layouts/svjour.inc:447
-#: lib/layouts/theorems.inc:80 lib/layouts/theorems-ams.inc:83
-#: lib/layouts/theorems-order.inc:25
-#: lib/layouts/theorems-starred-equivalents.inc:27
+#: lib/layouts/theorems-ams.inc:83 lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems-starred-equivalents.inc:27 lib/layouts/theorems.inc:80
 msgid "Proposition"
 msgstr ""
 
@@ -3954,9 +3952,8 @@ msgstr ""
 #: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:363
 #: lib/layouts/ijmpc.layout:296 lib/layouts/ijmpd.layout:306
 #: lib/layouts/llncs.layout:309 lib/layouts/svjour.inc:366
-#: lib/layouts/theorems.inc:91 lib/layouts/theorems-ams.inc:95
-#: lib/layouts/theorems-order.inc:31
-#: lib/layouts/theorems-starred-equivalents.inc:34
+#: lib/layouts/theorems-ams.inc:95 lib/layouts/theorems-order.inc:31
+#: lib/layouts/theorems-starred-equivalents.inc:34 lib/layouts/theorems.inc:91
 msgid "Conjecture"
 msgstr ""
 
@@ -3974,7 +3971,7 @@ msgid "Criterion #:"
 msgstr ""
 
 #: lib/layouts/IEEEtran.layout:133 lib/layouts/beamer.layout:977
-#: lib/layouts/theorems.inc:102 lib/layouts/theorems-ams.inc:107
+#: lib/layouts/theorems-ams.inc:107 lib/layouts/theorems.inc:102
 msgid "Fact"
 msgstr ""
 
@@ -3995,9 +3992,9 @@ msgstr ""
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:132
 #: lib/layouts/ijmpd.layout:129 lib/layouts/llncs.layout:330
 #: lib/layouts/siamltex.layout:236 lib/layouts/svjour.inc:387
-#: lib/layouts/theorems.inc:113 lib/layouts/theorems-ams.inc:119
-#: lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems-ams.inc:119 lib/layouts/theorems-order.inc:37
 #: lib/layouts/theorems-starred-equivalents.inc:41
+#: lib/layouts/theorems.inc:113
 msgid "Definition"
 msgstr ""
 
@@ -4008,10 +4005,10 @@ msgstr ""
 #: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:959
 #: lib/layouts/elsart.layout:370 lib/layouts/ijmpc.layout:166
 #: lib/layouts/ijmpd.layout:163 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:132
-#: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-order.inc:43
+#: lib/layouts/svjour.inc:394 lib/layouts/theorems-ams.inc:138
+#: lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:48
-#: src/frontends/qt4/GuiDocument.cpp:827
+#: lib/layouts/theorems.inc:132 src/frontends/qt4/GuiDocument.cpp:827
 msgid "Example"
 msgstr ""
 
@@ -4030,9 +4027,9 @@ msgstr ""
 
 #: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:377
 #: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:426
-#: lib/layouts/theorems.inc:144 lib/layouts/theorems-ams.inc:150
-#: lib/layouts/theorems-order.inc:49
+#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-order.inc:49
 #: lib/layouts/theorems-starred-equivalents.inc:55
+#: lib/layouts/theorems.inc:144
 msgid "Problem"
 msgstr ""
 
@@ -4041,9 +4038,10 @@ msgid "Problem #:"
 msgstr ""
 
 #: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:401 lib/layouts/theorems.inc:156
-#: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-order.inc:55
+#: lib/layouts/svjour.inc:401 lib/layouts/theorems-ams.inc:162
+#: lib/layouts/theorems-order.inc:55
 #: lib/layouts/theorems-starred-equivalents.inc:62
+#: lib/layouts/theorems.inc:156
 msgid "Exercise"
 msgstr ""
 
@@ -4054,9 +4052,9 @@ msgstr ""
 #: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:384
 #: lib/layouts/ijmpc.layout:176 lib/layouts/ijmpd.layout:174
 #: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:461
-#: lib/layouts/theorems.inc:168 lib/layouts/theorems-ams.inc:174
-#: lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems-ams.inc:174 lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:69
+#: lib/layouts/theorems.inc:168
 msgid "Remark"
 msgstr ""
 
@@ -4067,9 +4065,10 @@ msgstr ""
 #: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:398
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:286
 #: lib/layouts/ijmpd.layout:295 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:345 lib/layouts/theorems.inc:188
-#: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-order.inc:67
+#: lib/layouts/svjour.inc:345 lib/layouts/theorems-ams.inc:194
+#: lib/layouts/theorems-order.inc:67
 #: lib/layouts/theorems-starred-equivalents.inc:76
+#: lib/layouts/theorems.inc:188
 msgid "Claim"
 msgstr ""
 
@@ -4099,13 +4098,13 @@ msgid "Notation #:"
 msgstr ""
 
 #: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:413
-#: lib/layouts/llncs.layout:281 lib/layouts/theorems.inc:201
-#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-order.inc:73
+#: lib/layouts/llncs.layout:281 lib/layouts/theorems-ams.inc:207
+#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:201
 msgid "Case"
 msgstr ""
 
-#: lib/layouts/IEEEtran.layout:246 lib/layouts/theorems.inc:207
-#: lib/layouts/theorems-ams.inc:213
+#: lib/layouts/IEEEtran.layout:246 lib/layouts/theorems-ams.inc:213
+#: lib/layouts/theorems.inc:207
 msgid "Case #:"
 msgstr ""
 
@@ -4758,6 +4757,11 @@ msgstr ""
 msgid "Latin off"
 msgstr ""
 
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr ""
+
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:117
 #: lib/layouts/beamer.layout:132 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:32 lib/layouts/scrartcl.layout:20
@@ -4771,11 +4775,6 @@ msgstr ""
 #: lib/layouts/scrartcl.layout:29 lib/layouts/seminar.layout:34
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
-msgstr ""
-
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
 msgstr ""
 
 #: lib/layouts/beamer.layout:107 lib/layouts/egs.layout:196
@@ -6484,7 +6483,7 @@ msgid "Notation \\thenotation."
 msgstr ""
 
 #: lib/layouts/ijmpc.layout:206 lib/layouts/ijmpd.layout:209
-#: lib/layouts/theorems.inc:42 lib/layouts/theorems-ams.inc:42
+#: lib/layouts/theorems-ams.inc:42 lib/layouts/theorems.inc:42
 msgid "Theorem \\thetheorem."
 msgstr ""
 
@@ -8018,7 +8017,7 @@ msgid "Branch"
 msgstr ""
 
 #: lib/layouts/stdinsets.inc:179 lib/layouts/minimalistic.module:8
-#: src/insets/InsetIndex.cpp:132
+#: src/insets/InsetIndex.cpp:145
 #, fuzzy
 msgid "Index"
 msgstr "색인 기재 사항(Index Entry)"
@@ -8104,48 +8103,48 @@ msgstr ""
 msgid "Offprints:"
 msgstr ""
 
-#: lib/layouts/theorems.inc:62 lib/layouts/theorems-ams.inc:63
+#: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:62
 msgid "Corollary \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:73 lib/layouts/theorems-ams.inc:75
+#: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems.inc:73
 msgid "Lemma \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:84 lib/layouts/theorems-ams.inc:87
+#: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems.inc:84
 msgid "Proposition \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:95 lib/layouts/theorems-ams.inc:99
+#: lib/layouts/theorems-ams.inc:99 lib/layouts/theorems.inc:95
 msgid "Conjecture \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:106 lib/layouts/theorems-ams.inc:111
+#: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems.inc:106
 msgid "Fact \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:117 lib/layouts/theorems-ams.inc:123
+#: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:117
 msgid "Definition \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:135 lib/layouts/theorems-ams.inc:141
+#: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:135
 #, fuzzy
 msgid "Example \\thetheorem."
 msgstr "예제 #."
 
-#: lib/layouts/theorems.inc:147 lib/layouts/theorems-ams.inc:153
+#: lib/layouts/theorems-ams.inc:153 lib/layouts/theorems.inc:147
 msgid "Problem \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:159 lib/layouts/theorems-ams.inc:165
+#: lib/layouts/theorems-ams.inc:165 lib/layouts/theorems.inc:159
 msgid "Exercise \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:172 lib/layouts/theorems-ams.inc:178
+#: lib/layouts/theorems-ams.inc:178 lib/layouts/theorems.inc:172
 msgid "Remark \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:191 lib/layouts/theorems-ams.inc:197
+#: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems.inc:191
 msgid "Claim \\thetheorem."
 msgstr ""
 
@@ -10749,11 +10748,11 @@ msgid "View Source|S"
 msgstr "소스 코드 보기(View Source)|S"
 
 #: lib/ui/stdmenus.inc:297
-msgid "Split View Horizontally|i"
+msgid "Split View Into Left And Right Half|i"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:298
-msgid "Split View Vertically|V"
+msgid "Split View Into Upper And Lower Half|V"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:299
@@ -14257,22 +14256,22 @@ msgstr "파일 이름 에러"
 msgid "The directory path to the document cannot contain spaces."
 msgstr ""
 
-#: src/Buffer.cpp:2408
+#: src/Buffer.cpp:2409
 #, fuzzy
 msgid "Document export cancelled."
 msgstr "문서 형식(Document Class)"
 
-#: src/Buffer.cpp:2414
+#: src/Buffer.cpp:2415
 #, fuzzy, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "문서 형식(Document Class)"
 
-#: src/Buffer.cpp:2420
+#: src/Buffer.cpp:2421
 #, fuzzy, c-format
 msgid "Document exported as %1$s"
 msgstr "문서 형식(Document Class)"
 
-#: src/Buffer.cpp:2490
+#: src/Buffer.cpp:2491
 #, fuzzy, c-format
 msgid ""
 "The specified document\n"
@@ -14280,11 +14279,11 @@ msgid ""
 "could not be read."
 msgstr "문서 형식(Document Class)"
 
-#: src/Buffer.cpp:2492
+#: src/Buffer.cpp:2493
 msgid "Could not read document"
 msgstr "문서를 읽을 수가 없습니다."
 
-#: src/Buffer.cpp:2502
+#: src/Buffer.cpp:2503
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -14292,19 +14291,19 @@ msgid ""
 "Recover emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:2505
+#: src/Buffer.cpp:2506
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:2506
+#: src/Buffer.cpp:2507
 msgid "&Recover"
 msgstr "회복시키기(&Recover)"
 
-#: src/Buffer.cpp:2506
+#: src/Buffer.cpp:2507
 msgid "&Load Original"
 msgstr ""
 
-#: src/Buffer.cpp:2526
+#: src/Buffer.cpp:2527
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -14312,28 +14311,28 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/Buffer.cpp:2529
+#: src/Buffer.cpp:2530
 msgid "Load backup?"
 msgstr ""
 
-#: src/Buffer.cpp:2530
+#: src/Buffer.cpp:2531
 msgid "&Load backup"
 msgstr ""
 
-#: src/Buffer.cpp:2530
+#: src/Buffer.cpp:2531
 msgid "Load &original"
 msgstr ""
 
-#: src/Buffer.cpp:2563
+#: src/Buffer.cpp:2564
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr ""
 
-#: src/Buffer.cpp:2565
+#: src/Buffer.cpp:2566
 msgid "Retrieve from version control?"
 msgstr ""
 
-#: src/Buffer.cpp:2566
+#: src/Buffer.cpp:2567
 #, fuzzy
 msgid "&Retrieve"
 msgstr "중심(Center)"
@@ -15010,14 +15009,14 @@ msgstr ""
 msgid "An empty output file was generated."
 msgstr ""
 
-#: src/CutAndPaste.cpp:537
+#: src/CutAndPaste.cpp:539
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.cpp:544
+#: src/CutAndPaste.cpp:546
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "열려있는 상자 삽입구(Box Inset)"
@@ -15259,11 +15258,11 @@ msgstr "재구성(Reconfigure)|R"
 msgid "Running MakeIndex for nomencl."
 msgstr ""
 
-#: src/LyX.cpp:99
+#: src/LyX.cpp:101
 msgid "Could not read configuration file"
 msgstr "설정(configuration) 파일을 읽을 수 없습니다."
 
-#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1375
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1375
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -15271,75 +15270,75 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/LyX.cpp:109
+#: src/LyX.cpp:111
 msgid "LyX: reconfiguring user directory"
 msgstr ""
 
-#: src/LyX.cpp:113
+#: src/LyX.cpp:115
 #, fuzzy
 msgid "Done!"
 msgstr "노우트(Note) #:"
 
-#: src/LyX.cpp:482
+#: src/LyX.cpp:371
 #, fuzzy, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
 msgstr "본보기 파일(template)을 읽을 수가 없습니다."
 
-#: src/LyX.cpp:484
+#: src/LyX.cpp:373
 #, fuzzy
 msgid "Cannot remove temporary directory"
 msgstr "본보기 파일(template)을 읽을 수가 없습니다."
 
-#: src/LyX.cpp:490
+#: src/LyX.cpp:379
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "본보기 문서(document templates) directory를 선택하시오"
 
-#: src/LyX.cpp:492
+#: src/LyX.cpp:381
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "본보기 문서(document templates) directory를 선택하시오"
 
-#: src/LyX.cpp:521
+#: src/LyX.cpp:410
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:588
+#: src/LyX.cpp:484
 #, fuzzy
 msgid "No textclass is found"
 msgstr "파일을 발견할 수 없음"
 
-#: src/LyX.cpp:589
+#: src/LyX.cpp:485
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
 
-#: src/LyX.cpp:593
+#: src/LyX.cpp:489
 #, fuzzy
 msgid "&Reconfigure"
 msgstr "재구성(Reconfigure)|R"
 
-#: src/LyX.cpp:594
+#: src/LyX.cpp:490
 #, fuzzy
 msgid "&Use Default"
 msgstr "기본 설정(Default)"
 
-#: src/LyX.cpp:595 src/LyX.cpp:955
+#: src/LyX.cpp:491 src/LyX.cpp:851
 msgid "&Exit LyX"
 msgstr ""
 
-#: src/LyX.cpp:742 src/frontends/qt4/GuiView.cpp:650
+#: src/LyX.cpp:638 src/frontends/qt4/GuiView.cpp:650
 msgid "LyX: "
 msgstr ""
 
-#: src/LyX.cpp:864
+#: src/LyX.cpp:760
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "본보기 파일(template)을 읽을 수가 없습니다."
 
-#: src/LyX.cpp:865
+#: src/LyX.cpp:761
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -15347,45 +15346,45 @@ msgid ""
 "Make sure that this path exists and is writable and try again."
 msgstr ""
 
-#: src/LyX.cpp:948
+#: src/LyX.cpp:844
 msgid "Missing user LyX directory"
 msgstr ""
 
-#: src/LyX.cpp:949
+#: src/LyX.cpp:845
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/LyX.cpp:954
+#: src/LyX.cpp:850
 #, fuzzy
 msgid "&Create directory"
 msgstr "본보기 문서(document templates) directory를 선택하시오"
 
-#: src/LyX.cpp:956
+#: src/LyX.cpp:852
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:960
+#: src/LyX.cpp:856
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr ""
 
-#: src/LyX.cpp:965
+#: src/LyX.cpp:861
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:1037
+#: src/LyX.cpp:933
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/LyX.cpp:1041
+#: src/LyX.cpp:937
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr ""
 
-#: src/LyX.cpp:1052
+#: src/LyX.cpp:948
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -15409,41 +15408,41 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/LyX.cpp:1092 src/support/Package.cpp:570
+#: src/LyX.cpp:988
 msgid "No system directory"
 msgstr ""
 
-#: src/LyX.cpp:1093
+#: src/LyX.cpp:989
 msgid "Missing directory for -sysdir switch"
 msgstr ""
 
-#: src/LyX.cpp:1104
+#: src/LyX.cpp:1000
 #, fuzzy
 msgid "No user directory"
 msgstr "파일을 발견할 수 없음"
 
-#: src/LyX.cpp:1105
+#: src/LyX.cpp:1001
 msgid "Missing directory for -userdir switch"
 msgstr ""
 
-#: src/LyX.cpp:1116
+#: src/LyX.cpp:1012
 #, fuzzy
 msgid "Incomplete command"
 msgstr "수식 삽입"
 
-#: src/LyX.cpp:1117
+#: src/LyX.cpp:1013
 msgid "Missing command string after --execute switch"
 msgstr ""
 
-#: src/LyX.cpp:1128
+#: src/LyX.cpp:1024
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 
-#: src/LyX.cpp:1141
+#: src/LyX.cpp:1037
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 
-#: src/LyX.cpp:1146
+#: src/LyX.cpp:1042
 msgid "Missing filename for --import"
 msgstr ""
 
@@ -15551,7 +15550,7 @@ msgstr "저장된 문서로 되돌릴까요?"
 msgid "&Revert"
 msgstr "되돌리기(Revert)|R"
 
-#: src/LyXFunc.cpp:1014 src/Text3.cpp:1479
+#: src/LyXFunc.cpp:1014 src/Text3.cpp:1478
 #, fuzzy
 msgid "Missing argument"
 msgstr "모르는 인용구(Inset)"
@@ -15576,21 +15575,21 @@ msgstr "문서 형식(Document Class)"
 msgid "Unable to save document defaults"
 msgstr "문서의 기본 설정(Document Defaults)으로 저장하시오 "
 
-#: src/LyXFunc.cpp:1696
+#: src/LyXFunc.cpp:1693
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "문서 형식(Document Class)"
 
-#: src/LyXFunc.cpp:1698
+#: src/LyXFunc.cpp:1695
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "문서를 읽을 수가 없습니다."
 
-#: src/LyXFunc.cpp:1735
+#: src/LyXFunc.cpp:1732
 msgid "Welcome to LyX!"
 msgstr ""
 
-#: src/LyXFunc.cpp:1756
+#: src/LyXFunc.cpp:1753
 #, fuzzy
 msgid "Converting document to new document class..."
 msgstr "문서를 삽입합니다 %1$s..."
@@ -16243,11 +16242,11 @@ msgstr "모양새(Layout)"
 msgid " not known"
 msgstr "모르는 판(version)"
 
-#: src/Text3.cpp:1586 src/Text3.cpp:1598
+#: src/Text3.cpp:1585 src/Text3.cpp:1597
 msgid "Character set"
 msgstr "문자 세트(Character set)"
 
-#: src/Text3.cpp:1744 src/Text3.cpp:1755
+#: src/Text3.cpp:1743 src/Text3.cpp:1754
 msgid "Paragraph layout set"
 msgstr "단락 모양새(Paragraph layout)"
 
@@ -19392,17 +19391,17 @@ msgstr ""
 msgid "No image"
 msgstr "언어"
 
-#: src/insets/RenderPreview.cpp:96
+#: src/insets/RenderPreview.cpp:95
 #, fuzzy
 msgid "Preview loading"
 msgstr "문서 인쇄 실패"
 
-#: src/insets/RenderPreview.cpp:99
+#: src/insets/RenderPreview.cpp:98
 #, fuzzy
 msgid "Preview ready"
 msgstr "문서 인쇄 실패"
 
-#: src/insets/RenderPreview.cpp:102
+#: src/insets/RenderPreview.cpp:101
 #, fuzzy
 msgid "Preview failed"
 msgstr "문서 인쇄 실패"
@@ -19495,6 +19494,11 @@ msgstr "찾아서 교체하기"
 #, fuzzy
 msgid " strings have been replaced."
 msgstr "찾아서 교체하기"
+
+#: src/mathed/InsetFormulaMacro.cpp:118
+#, c-format
+msgid " Macro: %1$s: "
+msgstr ""
 
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1365
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
@@ -19596,56 +19600,6 @@ msgstr ""
 #: src/output_plaintext.cpp:148
 msgid "References: "
 msgstr "참고 문헌(References):"
-
-#: src/support/Package.cpp:451
-#, fuzzy
-msgid "LyX binary not found"
-msgstr "파일을 발견할 수 없음"
-
-#: src/support/Package.cpp:452
-#, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
-
-#: src/support/Package.cpp:571
-#, c-format
-msgid ""
-"Unable to determine the system directory having searched\n"
-"\t%1$s\n"
-"Use the '-sysdir' command line parameter or set the environment variable "
-"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr ""
-
-#: src/support/Package.cpp:652 src/support/Package.cpp:679
-msgid "File not found"
-msgstr "파일을 발견할 수 없음"
-
-#: src/support/Package.cpp:653
-#, c-format
-msgid ""
-"Invalid %1$s switch.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-
-#: src/support/Package.cpp:680
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-
-#: src/support/Package.cpp:704
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"%2$s is not a directory."
-msgstr ""
-
-#: src/support/Package.cpp:706
-#, fuzzy
-msgid "Directory not found"
-msgstr "파일을 발견할 수 없음"
 
 #: src/support/debug.cpp:38
 msgid "No debugging message"
@@ -19824,6 +19778,17 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "모르는 사용자(user)"
+
+#, fuzzy
+#~ msgid "LyX binary not found"
+#~ msgstr "파일을 발견할 수 없음"
+
+#~ msgid "File not found"
+#~ msgstr "파일을 발견할 수 없음"
+
+#, fuzzy
+#~ msgid "Directory not found"
+#~ msgstr "파일을 발견할 수 없음"
 
 #, fuzzy
 #~ msgid "The document class %1$s could not be found."
