@@ -282,7 +282,7 @@ BufferView::BufferView(Buffer & buf)
 	d->cursor_.setCurrentFont();
 
 	if (graphics::Previews::status() != LyXRC::PREVIEW_OFF)
-		graphics::Previews::get().generateBufferPreviews(buffer_);
+		thePreviews()->generateBufferPreviews(buffer_);
 }
 
 

@@ -38,6 +38,10 @@ class Application;
 class LyXView;
 }
 
+namespace graphics {
+class Previews;
+}
+
 /// initial startup
 class LyX {
 public:
@@ -160,6 +164,7 @@ private:
 	friend Movers & theSystemMovers();
 	friend frontend::Application * theApp();
 	friend KeyMap & theTopLevelKeymap();
+	friend graphics::Previews * thePreviews();
 };
 
 } // namespace lyx

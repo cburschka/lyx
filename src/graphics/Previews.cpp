@@ -31,42 +31,26 @@ LyXRC_PreviewStatus Previews::status()
 }
 
 
-Previews & Previews::get()
-{
-	static Previews singleton;
-	return singleton;
+namespace {
+typedef boost::shared_ptr<PreviewLoader> PreviewLoaderPtr;
+///
+typedef map<Buffer const *, PreviewLoaderPtr> CacheType;
+///
+static CacheType preview_cache_;
 }
-
-
-class Previews::Impl {
-public:
-	///
-	typedef boost::shared_ptr<PreviewLoader> PreviewLoaderPtr;
-	///
-	typedef map<Buffer const *, PreviewLoaderPtr> CacheType;
-	///
-	CacheType cache;
-};
 
 
 Previews::Previews()
-	: pimpl_(new Impl)
 {}
-
-
-Previews::~Previews()
-{
-	delete pimpl_;
-}
 
 
 PreviewLoader & Previews::loader(Buffer const & buffer) const
 {
-	Impl::CacheType::iterator it = pimpl_->cache.find(&buffer);
+	CacheType::iterator it = preview_cache_.find(&buffer);
 
-	if (it == pimpl_->cache.end()) {
-		Impl::PreviewLoaderPtr ptr(new PreviewLoader(buffer));
-		pimpl_->cache[&buffer] = ptr;
+	if (it == preview_cache_.end()) {
+		PreviewLoaderPtr ptr(new PreviewLoader(buffer));
+		preview_cache_[&buffer] = ptr;
 		return *ptr.get();
 	}
 
@@ -76,10 +60,10 @@ PreviewLoader & Previews::loader(Buffer const & buffer) const
 
 void Previews::removeLoader(Buffer const & buffer) const
 {
-	Impl::CacheType::iterator it = pimpl_->cache.find(&buffer);
+	CacheType::iterator it = preview_cache_.find(&buffer);
 
-	if (it != pimpl_->cache.end())
-		pimpl_->cache.erase(it);
+	if (it != preview_cache_.end())
+		preview_cache_.erase(it);
 }
 
 

@@ -44,6 +44,8 @@
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 
+#include "graphics/Previews.h"
+
 #include "support/lassert.h"
 #include "support/debug.h"
 #include "support/environment.h"
@@ -164,6 +166,9 @@ struct LyX::Impl
 	bool first_start;
 	/// the parsed command line batch command if any
 	vector<string> batch_commands;
+
+	///
+	graphics::Previews preview_;
 };
 
 ///
@@ -178,6 +183,7 @@ frontend::Application * theApp()
 
 LyX::~LyX()
 {
+	singleton_ = 0;
 	delete pimpl_;
 }
 
@@ -1308,6 +1314,12 @@ Messages & getMessages(string const & language)
 Messages & getGuiMessages()
 {
 	return LyX::ref().getGuiMessages();
+}
+
+
+graphics::Previews * thePreviews()
+{
+	return singleton_ ? 0 : &singleton_->pimpl_->preview_;
 }
 
 } // namespace lyx

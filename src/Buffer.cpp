@@ -286,7 +286,7 @@ Buffer::~Buffer()
 	}
 
 	// Remove any previewed LaTeX snippets associated with this buffer.
-	graphics::Previews::get().removeLoader(*this);
+	thePreviews()->removeLoader(*this);
 
 	delete d;
 }
@@ -2374,11 +2374,12 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 
 	string const error_type = (format == "program")
 		? "Build" : bufferFormat();
+	ErrorList & error_list = d->errorLists[error_type];
 	string const ext = formats.extension(format);
 	FileName const tmp_result_file(changeExtension(filename, ext));
 	bool const success = theConverters().convert(this, FileName(filename),
 		tmp_result_file, FileName(absFileName()), backend_format, format,
-		errorList(error_type));
+		error_list);
 	// Emit the signal to show the error list.
 	if (format != backend_format)
 		errors(error_type);
