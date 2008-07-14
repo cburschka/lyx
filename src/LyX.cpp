@@ -233,7 +233,7 @@ Messages & LyX::messages(string const & language)
 
 void setRcGuiLanguage()
 {
-	LASSERT(singleton_, "");
+	LASSERT(singleton_, /**/);
 	if (lyxrc.gui_language == "auto")
 		return;
 	Language const * language = languages.getLanguage(lyxrc.gui_language);
