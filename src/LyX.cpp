@@ -237,12 +237,11 @@ void setRcGuiLanguage()
 	if (lyxrc.gui_language == "auto")
 		return;
 	Language const * language = languages.getLanguage(lyxrc.gui_language);
-	if (!language)
-		// Not possible at this point.
-		return;
-	LYXERR(Debug::LOCALE, "Setting LANGUAGE to " << language->code());
-	if (!setEnv("LANGUAGE", language->code()))
-		LYXERR(Debug::LOCALE, "\t... failed!");
+	if (language) {
+		LYXERR(Debug::LOCALE, "Setting LANGUAGE to " << language->code());
+		if (!setEnv("LANGUAGE", language->code()))
+			LYXERR(Debug::LOCALE, "\t... failed!");
+	}
 	LYXERR(Debug::LOCALE, "Setting LC_ALL to en_US");
 	if (!setEnv("LC_ALL", "en_US"))
 		LYXERR(Debug::LOCALE, "\t... failed!");
