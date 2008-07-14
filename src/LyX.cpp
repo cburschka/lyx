@@ -322,7 +322,7 @@ int LyX::exec(int & argc, char * argv[])
 		prepareExit();
 		return exit_status;
 	}
-
+ 
 	// FIXME
 	/* Create a CoreApplication class that will provide the main event loop
 	* and the socket callback registering. With Qt4, only QtCore
@@ -703,6 +703,9 @@ bool LyX::init()
 
 	// Read lyxrc.dist again to be able to override viewer auto-detection.
 	readRcFile("lyxrc.dist");
+
+	// Set again the language defined by the distributor.
+	setRcGuiLanguage();
 
 	system_lyxrc = lyxrc;
 	system_formats = formats;
