@@ -40,10 +40,6 @@ static CacheType preview_cache_;
 }
 
 
-Previews::Previews()
-{}
-
-
 PreviewLoader & Previews::loader(Buffer const & buffer) const
 {
 	CacheType::iterator it = preview_cache_.find(&buffer);

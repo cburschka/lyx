@@ -26,6 +26,9 @@ class PreviewLoader;
 
 class Previews {
 public:
+	/// This should be a singleton class only instanciated in LyX.cpp.
+	Previews() {}
+
 	/// a wrapper for lyxrc.preview
 	static LyXRC_PreviewStatus status();
 
@@ -44,15 +47,9 @@ public:
 	void generateBufferPreviews(Buffer const & buffer) const;
 
 private:
-	friend class LyX;
 	/// noncopyable
 	Previews(Previews const &);
 	void operator=(Previews const &);
-
-	/** Make the c-tor, d-tor private so we can control how many objects
-	 *  are instantiated.
-	 */
-	Previews();
 };
 
 } // namespace graphics
