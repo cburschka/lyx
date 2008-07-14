@@ -208,7 +208,8 @@ static bool doInsertInset(Cursor & cur, Text * text,
 
 	bool gotsel = false;
 	if (cur.selection()) {
-		lyx::dispatch(FuncRequest(LFUN_CUT));
+		cutSelection(cur, false, pastesel);
+		cur.clearSelection();
 		gotsel = true;
 	}
 	text->insertInset(cur, inset);
@@ -219,7 +220,10 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	if (!gotsel || !pastesel)
 		return true;
 
-	lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
+	pasteFromStack(cur, cur.buffer().errorList("Paste"), 0);
+	cur.buffer().errors("Paste");
+	cur.clearSelection(); // bug 393
+	cur.finishUndo();
 	InsetText * insetText = dynamic_cast<InsetText *>(inset);
 	if (insetText && !insetText->allowMultiPar() || cur.lastpit() == 0) {
 		// reset first par to default
@@ -230,12 +234,13 @@ static bool doInsertInset(Cursor & cur, Text * text,
 		// Merge multiple paragraphs -- hack
 		while (cur.lastpit() > 0)
 			mergeParagraph(bparams, cur.text()->paragraphs(), 0);
+		cur.leaveInset(*inset);
 	} else {
+		cur.leaveInset(*inset);
 		// reset surrounding par to default
 		docstring const layoutname = insetText->usePlainLayout()
 			? bparams.documentClass().emptyLayoutName()
 			: bparams.documentClass().defaultLayoutName();
-		cur.leaveInset(*inset);
 		text->setLayout(cur, layoutname);
 	}
 
