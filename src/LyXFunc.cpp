@@ -1177,7 +1177,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 			} 
 			case ERT_CODE: {
-				data = InsetERT::params2string(InsetCollapsable::Open, docstring());
+				data = InsetERT::params2string(InsetCollapsable::Open);
 				break;
 			} 
 			case EXTERNAL_CODE: {
