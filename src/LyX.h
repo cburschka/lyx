@@ -137,17 +137,23 @@ private:
 	friend graphics::Previews & thePreviews();
 	friend Session & theSession();
 	friend CmdDef & theTopLevelCmdDef();
-	/// Set the language defined by the user.
 	friend void setRcGuiLanguage();
-	/// in the case of failure
 	friend void emergencyCleanup();
-	/// Execute batch commands if available.
 	friend void execBatchCommands();
-	/// Try to exit LyX properly.
-	/// \p exit_code is 0 by default, if a non zero value is passed,
-	/// emergencyCleanup() will be called before exiting.
 	friend void lyx_exit(int exit_code = 0);
 };
+
+
+/// in the case of failure
+void emergencyCleanup();
+/// Try to exit LyX properly.
+/// \p exit_code is 0 by default, if a non zero value is passed,
+/// emergencyCleanup() will be called before exiting.
+void lyx_exit(int exit_code = 0);
+/// Set the language defined by the user.
+void setRcGuiLanguage();
+/// Execute batch commands if available.
+void execBatchCommands();
 
 } // namespace lyx
 
