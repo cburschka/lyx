@@ -212,9 +212,8 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 			break;
 		case InsetSpaceParams::CUSTOM:
 		case InsetSpaceParams::CUSTOM_PROTECTED: {
-			int minwidth = 4;
-			if (params_.length.inBP() < 0)
-				minwidth = 3 * arrow_size;
+			int const minwidth = (params_.length.inBP() < 0)
+				? 3 * arrow_size : 4;
 			dim.wid = max(minwidth, abs(params_.length.inBP()));
 			break;
 		}
