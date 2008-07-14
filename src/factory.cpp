@@ -141,9 +141,6 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 		case LFUN_OPTIONAL_INSERT:
 			return new InsetOptArg(buf);
 
-		case LFUN_BIBITEM_INSERT:
-			return new InsetBibitem(buf, InsetCommandParams(BIBITEM_CODE));
-
 		case LFUN_FLOAT_INSERT: {
 			// check if the float type exists
 			string const argument = to_utf8(cmd.argument());

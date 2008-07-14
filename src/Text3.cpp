@@ -1360,7 +1360,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_FLEX_INSERT:
 	case LFUN_BOX_INSERT:
 	case LFUN_BRANCH_INSERT:
-	case LFUN_BIBITEM_INSERT:
 	case LFUN_ERT_INSERT:
 	case LFUN_LISTING_INSERT:
 	case LFUN_MARGINALNOTE_INSERT:
@@ -1863,11 +1862,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_APPENDIX:
 		flag.setOnOff(cur.paragraph().params().startOfAppendix());
-		break;
-
-	case LFUN_BIBITEM_INSERT:
-		enable = (cur.paragraph().layout().labeltype == LABEL_BIBLIO
-			  && cur.pos() == 0);
 		break;
 
 	case LFUN_DIALOG_SHOW_NEW_INSET:

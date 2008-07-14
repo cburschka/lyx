@@ -1197,7 +1197,6 @@ void LyXAction::init()
  */
 		{ LFUN_FONT_STATE, "font-state", ReadOnly, Layout },
 
-		{ LFUN_BIBITEM_INSERT, "bibitem-insert", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_CITATION_INSERT
  * \li Action: Inserts citation from loaded citation database.
