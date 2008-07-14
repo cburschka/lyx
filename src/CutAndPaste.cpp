@@ -366,7 +366,8 @@ void putClipboard(ParagraphList const & paragraphs,
 	// a DocumentClass, via new, that is never deleted. If we were to go to
 	// some kind of garbage collection there, or a shared_ptr, then this
 	// would not be needed.
-	static Buffer * buffer = theBufferList().newBuffer("");
+	static Buffer * buffer = theBufferList().newBuffer(
+		FileName::tempName().absFilename());
 	buffer->setUnnamed(true);
 	buffer->paragraphs() = paragraphs;
 	buffer->params().setDocumentClass(docclass);
