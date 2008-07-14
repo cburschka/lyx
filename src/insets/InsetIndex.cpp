@@ -44,35 +44,48 @@ InsetIndex::InsetIndex(Buffer const & buf)
 
 
 int InsetIndex::latex(odocstream & os,
-			  OutputParams const & runparams) const
+		      OutputParams const & runparams) const
 {
 	os << "\\index";
 	os << '{';
+	int i = 7;
 	odocstringstream ods;
-	int i = InsetText::latex(ods, runparams);
-	bool sorted = false;
-	// correctly sort macros and formatted strings
-	// if we do find a command, prepend a plain text
-	// version of the content to get sorting right,
-	// e.g. \index{LyX@\LyX}, \index{text@\textbf{text}}
-	// Don't do that if the user entered '@' himself, though.
-	if (contains(ods.str(), '\\') && !contains(ods.str(), '@')) {
-		odocstringstream odss;
-		if (InsetText::plaintext(odss, runparams) > 0) {
-			// remove remaining \'s for the sorting part
-			os << subst(odss.str(), from_ascii("\\"), docstring());
-			os << '@';
-			sorted = true;
+	InsetText::latex(ods, runparams);
+	odocstringstream ods2;
+	InsetText::plaintext(ods2, runparams);
+	std::vector<docstring> const levels =
+		getVectorFromString(ods.str(), from_ascii("!"));
+	std::vector<docstring> const levels_plain =
+		getVectorFromString(ods2.str(), from_ascii("!"));
+	vector<docstring>::const_iterator it = levels.begin();
+	vector<docstring>::const_iterator end = levels.end();
+	vector<docstring>::const_iterator it2 = levels_plain.begin();
+	for (; it != end; ++it) {
+		if (it > levels.begin()) {
+			os << '!';
+			i += 1;
 		}
+		// correctly sort macros and formatted strings
+		// if we do find a command, prepend a plain text
+		// version of the content to get sorting right,
+		// e.g. \index{LyX@\LyX}, \index{text@\textbf{text}}
+		// Don't do that if the user entered '@' himself, though.
+		if (contains(*it, '\\') && !contains(*it, '@')) {
+			// remove remaining \'s for the sorting part
+			docstring const ppart =
+				subst(*it2, from_ascii("\\"), docstring());
+			os << ppart;
+			os << '@';
+			i += ppart.size() + 1;
+		}
+		docstring const tpart = *it;
+		os << tpart;
+		i += tpart.size();
+		if (it2 < levels_plain.end())
+			++it2;
 	}
-	// if a hierarchy tag '!' is used, ommit this in the post-@ part.
-	if (sorted && contains(ods.str(), '!')) {
-		string dummy;
-		// FIXME unicode
-		os << from_utf8(rsplit(to_utf8(ods.str()), dummy, '!'));
-	} else
-		i = InsetText::latex(os, runparams);
 	os << '}';
+	i += 1;
 	return i;
 }
 
