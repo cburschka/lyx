@@ -54,9 +54,9 @@ int InsetIndex::latex(odocstream & os,
 	odocstringstream ods2;
 	InsetText::plaintext(ods2, runparams);
 	std::vector<docstring> const levels =
-		getVectorFromString(ods.str(), from_ascii("!"));
+		getVectorFromString(ods.str(), from_ascii("!"), true);
 	std::vector<docstring> const levels_plain =
-		getVectorFromString(ods2.str(), from_ascii("!"));
+		getVectorFromString(ods2.str(), from_ascii("!"), true);
 	vector<docstring>::const_iterator it = levels.begin();
 	vector<docstring>::const_iterator end = levels.end();
 	vector<docstring>::const_iterator it2 = levels_plain.begin();
@@ -71,9 +71,13 @@ int InsetIndex::latex(odocstream & os,
 		// e.g. \index{LyX@\LyX}, \index{text@\textbf{text}}
 		// Don't do that if the user entered '@' himself, though.
 		if (contains(*it, '\\') && !contains(*it, '@')) {
+			// Plaintext might return nothing (e.g. for ERTs)
+			docstring spart =
+				(it2 < levels_plain.end()
+				 && !(*it2).empty()) ? *it2 : *it;
 			// remove remaining \'s for the sorting part
 			docstring const ppart =
-				subst(*it2, from_ascii("\\"), docstring());
+				subst(spart, from_ascii("\\"), docstring());
 			os << ppart;
 			os << '@';
 			i += ppart.size() + 1;

@@ -913,7 +913,7 @@ docstring const escape(docstring const & lab)
 namespace {
 
 template<typename String> vector<String> const
-getVectorFromStringT(String const & str, String const & delim)
+getVectorFromStringT(String const & str, String const & delim, bool keepempty)
 {
 // Lars would like this code to go, but for now his replacement (below)
 // doesn't fullfil the same function. I have, therefore, reactivated the
@@ -930,7 +930,7 @@ getVectorFromStringT(String const & str, String const & delim)
 			break;
 		}
 		String const key = trim(keys.substr(0, idx));
-		if (!key.empty())
+		if (!key.empty() || keepempty)
 			vec.push_back(key);
 		size_t const start = idx + delim.size();
 		keys = keys.substr(start);
@@ -949,16 +949,18 @@ getVectorFromStringT(String const & str, String const & delim)
 
 
 vector<string> const getVectorFromString(string const & str,
-					 string const & delim)
+					 string const & delim,
+					 bool keepempty)
 {
-	return getVectorFromStringT<string>(str, delim);
+	return getVectorFromStringT<string>(str, delim, keepempty);
 }
 
 
 vector<docstring> const getVectorFromString(docstring const & str,
-					    docstring const & delim)
+					    docstring const & delim,
+					    bool keepempty)
 {
-	return getVectorFromStringT<docstring>(str, delim);
+	return getVectorFromStringT<docstring>(str, delim, keepempty);
 }
 
 

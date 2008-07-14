@@ -225,10 +225,12 @@ std::string const rsplit(std::string const & a, std::string & piece, char delim)
 docstring const escape(docstring const & lab);
 
 /// gives a vector of stringparts which have the delimiter delim
+/// If \p keepempty is true, empty strings will be pushed to the vector as well
 std::vector<std::string> const getVectorFromString(std::string const & str,
-					      std::string const & delim = std::string(","));
+					      std::string const & delim = std::string(","),
+					      bool keepempty = false);
 std::vector<docstring> const getVectorFromString(docstring const & str,
-		docstring const & delim = from_ascii(","));
+		docstring const & delim = from_ascii(","), bool keepempty = false);
 
 // the same vice versa
 std::string const getStringFromVector(std::vector<std::string> const & vec,
