@@ -1242,12 +1242,12 @@ Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
 	// scroll to the position when the file was last closed
 	if (lyxrc.use_lastfilepos) {
 		LastFilePosSection::FilePos filepos =
-			LyX::ref().session().lastFilePos().load(filename);
+			theSession().lastFilePos().load(filename);
 		view()->moveToPosition(filepos.pit, filepos.pos, 0, 0);
 	}
 
 	if (tolastfiles)
-		LyX::ref().session().lastFiles().add(filename);
+		theSession().lastFiles().add(filename);
 
 	setBusy(false);
 	return newBuffer;
@@ -1666,7 +1666,7 @@ bool GuiView::saveBuffer(Buffer & b)
 		return renameBuffer(b, docstring());
 
 	if (b.save()) {
-		LyX::ref().session().lastFiles().add(b.fileName());
+		theSession().lastFiles().add(b.fileName());
 		return true;
 	}
 
@@ -1706,12 +1706,12 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 {
 	// goto bookmark to update bookmark pit.
 	//FIXME: we should update only the bookmarks related to this buffer!
-	for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i)
+	for (size_t i = 0; i < theSession().bookmarks().size(); ++i)
 		theLyXFunc().gotoBookmark(i+1, false, false);
 
 	if (buf.isClean() || buf.paragraphs().empty()) {
 		if (buf.masterBuffer() == &buf && tolastopened)
-			LyX::ref().session().lastOpened().add(buf.fileName());
+			theSession().lastOpened().add(buf.fileName());
 		theBufferList().release(&buf);
 		return true;
 	}
@@ -1753,7 +1753,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 	// if master/slave are both open, do not save slave since it
 	// will be automatically loaded when the master is loaded
 	if (buf.masterBuffer() == &buf && tolastopened)
-		LyX::ref().session().lastOpened().add(buf.fileName());
+		theSession().lastOpened().add(buf.fileName());
 
 	if (buf.parent())
 		// Don't close child documents.

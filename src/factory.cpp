@@ -388,7 +388,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 		if (message.type_ == ErrorException) {
 			// This should never happen!
 			Alert::error(message.title_, message.details_);
-			LyX::cref().exit(1);
+			lyx_exit(1);
 		} else if (message.type_ == WarningException) {
 			Alert::warning(message.title_, message.details_);
 			return 0;

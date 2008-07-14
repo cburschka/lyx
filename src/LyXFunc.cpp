@@ -240,9 +240,9 @@ void LyXFunc::handleKeyFunc(FuncCode action)
 void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 {
 	LASSERT(lyx_view_, /**/);
-	if (!LyX::ref().session().bookmarks().isValid(idx))
+	if (!theSession().bookmarks().isValid(idx))
 		return;
-	BookmarksSection::Bookmark const & bm = LyX::ref().session().bookmarks().bookmark(idx);
+	BookmarksSection::Bookmark const & bm = theSession().bookmarks().bookmark(idx);
 	LASSERT(!bm.filename.empty(), /**/);
 	string const file = bm.filename.absFilename();
 	// if the file is not opened, open it.
@@ -512,12 +512,12 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	case LFUN_BOOKMARK_GOTO: {
 		const unsigned int num = convert<unsigned int>(to_utf8(cmd.argument()));
-		enable = LyX::ref().session().bookmarks().isValid(num);
+		enable = theSession().bookmarks().isValid(num);
 		break;
 	}
 
 	case LFUN_BOOKMARK_CLEAR:
-		enable = LyX::ref().session().bookmarks().size() > 0;
+		enable = theSession().bookmarks().size() > 0;
 		break;
 
 	// this one is difficult to get right. As a half-baked
@@ -534,10 +534,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_CALL: {
 		FuncRequest func;
 		string name = to_utf8(cmd.argument());
-		if (LyX::ref().topLevelCmdDef().lock(name, func)) {
+		if (theTopLevelCmdDef().lock(name, func)) {
 			func.origin = cmd.origin;
 			flag = getStatus(func);
-			LyX::ref().topLevelCmdDef().release(name);
+			theTopLevelCmdDef().release(name);
 		} else {
 			// catch recursion or unknown command definiton
 			// all operations until the recursion or unknown command 
@@ -1177,7 +1177,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 			} 
 			case ERT_CODE: {
-				data = InsetERT::params2string(InsetCollapsable::Open);
+				data = InsetERT::params2string(InsetCollapsable::Open, docstring());
 				break;
 			} 
 			case EXTERNAL_CODE: {
@@ -1345,10 +1345,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_CALL: {
 			FuncRequest func;
-			if (LyX::ref().topLevelCmdDef().lock(argument, func)) {
+			if (theTopLevelCmdDef().lock(argument, func)) {
 				func.origin = cmd.origin;
 				dispatch(func);
-				LyX::ref().topLevelCmdDef().release(argument);
+				theTopLevelCmdDef().release(argument);
 			} else {
 				if (func.action == LFUN_UNKNOWN_ACTION) {
 					// unknown command definition
@@ -1529,9 +1529,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			actOnUpdatedPrefs(lyxrc_orig, lyxrc);
 
-			// Set the language defined by the user.
-			LyX::ref().setRcGuiLanguage();
-
 			theApp()->resetGui();
 
 			/// We force the redraw in any case because there might be
@@ -1549,7 +1546,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_BOOKMARK_CLEAR:
-			LyX::ref().session().bookmarks().clear();
+			theSession().bookmarks().clear();
 			break;
 
 		default:

@@ -656,7 +656,7 @@ void MenuDefinition::expandGraphicsGroups(BufferView const * bv)
 
 void MenuDefinition::expandLastfiles()
 {
-	LastFilesSection::LastFiles const & lf = LyX::cref().session().lastFiles().lastFiles();
+	LastFilesSection::LastFiles const & lf = theSession().lastFiles().lastFiles();
 	LastFilesSection::LastFiles::const_iterator lfit = lf.begin();
 
 	int ii = 1;
@@ -699,7 +699,7 @@ void MenuDefinition::expandDocuments()
 
 void MenuDefinition::expandBookmarks()
 {
-	lyx::BookmarksSection const & bm = LyX::cref().session().bookmarks();
+	lyx::BookmarksSection const & bm = theSession().bookmarks();
 
 	for (size_t i = 1; i <= bm.size(); ++i) {
 		if (bm.isValid(i)) {

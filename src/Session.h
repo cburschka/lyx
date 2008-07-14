@@ -324,6 +324,7 @@ public:
 	SessionInfoSection const & sessionInfo() const { return session_info; }
 
 private:
+	friend class LyX;
 	/// uncopiable
 	Session(Session const &);
 	void operator=(Session const &);
@@ -350,6 +351,10 @@ private:
 	SessionInfoSection session_info;
 };
 
-}
+/// This is a singleton class. Get the instance.
+/// Implemented in LyX.cpp.
+Session & theSession();
+
+} // lyx
 
 #endif

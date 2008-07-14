@@ -76,8 +76,7 @@ namespace {
 
 graphics::PreviewLoader & getPreviewLoader(Buffer const & buffer)
 {
-	graphics::Previews const & previews = graphics::Previews::get();
-	return previews.loader(buffer);
+	return thePreviews().loader(buffer);
 }
 
 

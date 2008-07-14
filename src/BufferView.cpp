@@ -282,7 +282,7 @@ BufferView::BufferView(Buffer & buf)
 	d->cursor_.setCurrentFont();
 
 	if (graphics::Previews::status() != LyXRC::PREVIEW_OFF)
-		thePreviews()->generateBufferPreviews(buffer_);
+		thePreviews().generateBufferPreviews(buffer_);
 }
 
 
@@ -296,7 +296,7 @@ BufferView::~BufferView()
 	LastFilePosSection::FilePos fp;
 	fp.pit = d->cursor_.bottom().pit();
 	fp.pos = d->cursor_.bottom().pos();
-	LyX::ref().session().lastFilePos().save(buffer_.fileName(), fp);
+	theSession().lastFilePos().save(buffer_.fileName(), fp);
 
 	delete d;
 }
@@ -659,7 +659,7 @@ void BufferView::saveBookmark(unsigned int idx)
 	// acturately locate a bookmark in a 'live' lyx session.
 	// pit and pos will be updated with bottom level pit/pos
 	// when lyx exits.
-	LyX::ref().session().bookmarks().save(
+	theSession().bookmarks().save(
 		buffer_.fileName(),
 		d->cursor_.bottom().pit(),
 		d->cursor_.bottom().pos(),

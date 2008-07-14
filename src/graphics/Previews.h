@@ -59,7 +59,7 @@ private:
 
 /// This is a singleton class. Get the instance.
 /// Implemented in LyX.cpp.
-graphics::Previews * thePreviews();
+graphics::Previews & thePreviews();
 
 } // namespace lyx
 

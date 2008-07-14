@@ -788,7 +788,7 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 
 	case LFUN_WINDOW_CLOSE:
 		// update bookmark pit of the current buffer before window close
-		for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i)
+		for (size_t i = 0; i < theSession().bookmarks().size(); ++i)
 			theLyXFunc().gotoBookmark(i+1, false, false);
 		current_view_->close();
 		break;
@@ -904,7 +904,7 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 void GuiApplication::resetGui()
 {
 	// Set the language defined by the user.
-	LyX::ref().setRcGuiLanguage();
+	setRcGuiLanguage();
 
 	// Read menus
 	if (!readUIFile(toqstr(lyxrc.ui_file)))
@@ -1042,7 +1042,7 @@ void GuiApplication::exit(int status)
 void GuiApplication::execBatchCommands()
 {
 	// Set the language defined by the user.
-	LyX::ref().setRcGuiLanguage();
+	setRcGuiLanguage();
 
 	// Read menus
 	if (!readUIFile(toqstr(lyxrc.ui_file)))
@@ -1054,7 +1054,7 @@ void GuiApplication::execBatchCommands()
 	if (d->global_menubar_)
 		d->menus_.fillMenuBar(d->global_menubar_, 0, true);
 
-	LyX::ref().execBatchCommands();
+	lyx::execBatchCommands();
 }
 
 QAbstractItemModel * GuiApplication::languageModel()
@@ -1088,7 +1088,7 @@ void GuiApplication::restoreGuiSession()
 	if (!lyxrc.load_session)
 		return;
 
-	Session & session = LyX::ref().session();
+	Session & session = theSession();
 	vector<FileName> const & lastopened = session.lastOpened().getfiles();
 	// do not add to the lastfile list since these files are restored from
 	// last session, and should be already there (regular files), or should
@@ -1165,7 +1165,7 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 	catch (ExceptionMessage const & e) {
 		switch(e.type_) { 
 		case ErrorException:
-			LyX::cref().emergencyCleanup();
+			emergencyCleanup();
 			setQuitOnLastWindowClosed(false);
 			closeAllViews();
 			Alert::error(e.title_, e.details_);
@@ -1196,13 +1196,13 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 			"\n\nException: ");
 		s += from_ascii(e.what());
 		Alert::error(_("Software exception Detected"), s);
-		LyX::cref().exit(1);
+		lyx_exit(1);
 	}
 	catch (...) {
 		docstring s = _("LyX has caught some really weird exception, it will "
 			"now attempt to save all unsaved documents and exit.");
 		Alert::error(_("Software exception Detected"), s);
-		LyX::cref().exit(1);
+		lyx_exit(1);
 	}
 
 	return false;

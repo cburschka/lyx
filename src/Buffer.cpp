@@ -286,7 +286,7 @@ Buffer::~Buffer()
 	}
 
 	// Remove any previewed LaTeX snippets associated with this buffer.
-	thePreviews()->removeLoader(*this);
+	thePreviews().removeLoader(*this);
 
 	delete d;
 }
@@ -991,7 +991,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 	}
 	catch (...) {
 		lyxerr << "Caught some really weird exception..." << endl;
-		LyX::cref().exit(1);
+		lyx_exit(1);
 	}
 
 	ofs.close();

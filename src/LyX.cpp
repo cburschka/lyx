@@ -188,7 +188,7 @@ LyX::~LyX()
 }
 
 
-void LyX::exit(int exit_code) const
+void lyx_exit(int exit_code)
 {
 	if (exit_code)
 		// Something wrong happened so better save everything, just in
@@ -208,20 +208,6 @@ void LyX::exit(int exit_code) const
 }
 
 
-LyX & LyX::ref()
-{
-	LASSERT(singleton_, /**/);
-	return *singleton_;
-}
-
-
-LyX const & LyX::cref()
-{
-	LASSERT(singleton_, /**/);
-	return *singleton_;
-}
-
-
 LyX::LyX()
 	: first_start(false)
 {
@@ -230,105 +216,7 @@ LyX::LyX()
 }
 
 
-BufferList & LyX::bufferList()
-{
-	return pimpl_->buffer_list_;
-}
-
-
-BufferList const & LyX::bufferList() const
-{
-	return pimpl_->buffer_list_;
-}
-
-
-Session & LyX::session()
-{
-	LASSERT(pimpl_->session_.get(), /**/);
-	return *pimpl_->session_.get();
-}
-
-
-Session const & LyX::session() const
-{
-	LASSERT(pimpl_->session_.get(), /**/);
-	return *pimpl_->session_.get();
-}
-
-
-LyXFunc & LyX::lyxFunc()
-{
-	return pimpl_->lyxfunc_;
-}
-
-
-LyXFunc const & LyX::lyxFunc() const
-{
-	return pimpl_->lyxfunc_;
-}
-
-
-Server & LyX::server()
-{
-	LASSERT(pimpl_->lyx_server_.get(), /**/);
-	return *pimpl_->lyx_server_.get();
-}
-
-
-Server const & LyX::server() const
-{
-	LASSERT(pimpl_->lyx_server_.get(), /**/);
-	return *pimpl_->lyx_server_.get();
-}
-
-
-ServerSocket & LyX::socket()
-{
-	LASSERT(pimpl_->lyx_socket_.get(), /**/);
-	return *pimpl_->lyx_socket_.get();
-}
-
-
-ServerSocket const & LyX::socket() const
-{
-	LASSERT(pimpl_->lyx_socket_.get(), /**/);
-	return *pimpl_->lyx_socket_.get();
-}
-
-
-frontend::Application & LyX::application()
-{
-	LASSERT(pimpl_->application_.get(), /**/);
-	return *pimpl_->application_.get();
-}
-
-
-frontend::Application const & LyX::application() const
-{
-	LASSERT(pimpl_->application_.get(), /**/);
-	return *pimpl_->application_.get();
-}
-
-
-CmdDef & LyX::topLevelCmdDef()
-{
-	return pimpl_->toplevel_cmddef_;
-}
-
-
-Converters & LyX::converters()
-{
-	return pimpl_->converters_;
-}
-
-
-Converters & LyX::systemConverters()
-{
-	return pimpl_->system_converters_;
-}
-
-
-Messages & LyX::getMessages(string const & language)
+Messages & LyX::messages(string const & language)
 {
 	map<string, Messages>::iterator it = pimpl_->messages_.find(language);
 
@@ -343,14 +231,9 @@ Messages & LyX::getMessages(string const & language)
 }
 
 
-Messages & LyX::getGuiMessages()
+void setRcGuiLanguage()
 {
-	return pimpl_->messages_["GUI"];
-}
-
-
-void LyX::setRcGuiLanguage()
-{
+	LASSERT(singleton_, "");
 	if (lyxrc.gui_language == "auto")
 		return;
 	Language const * language = languages.getLanguage(lyxrc.gui_language);
@@ -360,7 +243,7 @@ void LyX::setRcGuiLanguage()
 	LYXERR(Debug::LOCALE, "Setting LC_ALL to en_US");
 	if (!setEnv("LC_ALL", "en_US"))
 		LYXERR(Debug::LOCALE, "\t... failed!");
-	pimpl_->messages_["GUI"] = Messages();
+	singleton_->pimpl_->messages_["GUI"] = Messages();
 }
 
 
@@ -377,7 +260,7 @@ int LyX::exec(int & argc, char * argv[])
 	} catch (ExceptionMessage const & message) {
 		if (message.type_ == ErrorException) {
 			Alert::error(message.title_, message.details_);
-			exit(1);
+			lyx_exit(1);
 		} else if (message.type_ == WarningException) {
 			Alert::warning(message.title_, message.details_);
 		}
@@ -582,7 +465,14 @@ bool LyX::loadFiles()
 }
 
 
-void LyX::execBatchCommands()
+void execBatchCommands()
+{
+	LASSERT(singleton_, /**/);
+	singleton_->execCommands();
+}
+
+
+void LyX::execCommands()
 {
 	// The advantage of doing this here is that the event loop
 	// is already started. So any need for interaction will be
@@ -686,7 +576,7 @@ static void error_handler(int err_sig)
 
 	// We have received a signal indicating a fatal error, so
 	// try and save the data ASAP.
-	LyX::cref().emergencyCleanup();
+	emergencyCleanup();
 
 	// These lyxerr calls may or may not work:
 
@@ -894,19 +784,19 @@ bool LyX::init()
 }
 
 
-void LyX::emergencyCleanup() const
+void emergencyCleanup()
 {
 	// what to do about tmpfiles is non-obvious. we would
 	// like to delete any we find, but our lyxdir might
 	// contain documents etc. which might be helpful on
 	// a crash
 
-	pimpl_->buffer_list_.emergencyWriteAll();
+	singleton_->pimpl_->buffer_list_.emergencyWriteAll();
 	if (use_gui) {
-		if (pimpl_->lyx_server_)
-			pimpl_->lyx_server_->emergencyCleanup();
-		pimpl_->lyx_server_.reset();
-		pimpl_->lyx_socket_.reset();
+		if (singleton_->pimpl_->lyx_server_)
+			singleton_->pimpl_->lyx_server_->emergencyCleanup();
+		singleton_->pimpl_->lyx_server_.reset();
+		singleton_->pimpl_->lyx_socket_.reset();
 	}
 }
 
@@ -1225,25 +1115,29 @@ void LyX::easyParse(int & argc, char * argv[])
 
 FuncStatus getStatus(FuncRequest const & action)
 {
-	return LyX::ref().lyxFunc().getStatus(action);
+	LASSERT(singleton_, /**/);
+	return singleton_->pimpl_->lyxfunc_.getStatus(action);
 }
 
 
 void dispatch(FuncRequest const & action)
 {
-	LyX::ref().lyxFunc().dispatch(action);
+	LASSERT(singleton_, /**/);
+	singleton_->pimpl_->lyxfunc_.dispatch(action);
 }
 
 
 BufferList & theBufferList()
 {
-	return LyX::ref().bufferList();
+	LASSERT(singleton_, /**/);
+	return singleton_->pimpl_->buffer_list_;
 }
 
 
 LyXFunc & theLyXFunc()
 {
-	return LyX::ref().lyxFunc();
+	LASSERT(singleton_, /**/);
+	return singleton_->pimpl_->lyxfunc_;
 }
 
 
@@ -1251,7 +1145,8 @@ Server & theServer()
 {
 	// FIXME: this should not be use_gui dependent
 	LASSERT(use_gui, /**/);
-	return LyX::ref().server();
+	LASSERT(singleton_, /**/);
+	return *singleton_->pimpl_->lyx_server_.get();
 }
 
 
@@ -1259,67 +1154,92 @@ ServerSocket & theServerSocket()
 {
 	// FIXME: this should not be use_gui dependent
 	LASSERT(use_gui, /**/);
-	return LyX::ref().socket();
+	LASSERT(singleton_, /**/);
+	return *singleton_->pimpl_->lyx_socket_.get();
 }
 
 
 KeyMap & theTopLevelKeymap()
 {
-	return LyX::ref().pimpl_->toplevel_keymap_;
+	LASSERT(singleton_, /**/);
+	return singleton_->pimpl_->toplevel_keymap_;
 }
 
 
 Converters & theConverters()
 {
-	return  LyX::ref().converters();
+	LASSERT(singleton_, /**/);
+	return  singleton_->pimpl_->converters_;
 }
 
 
 Converters & theSystemConverters()
 {
-	return  LyX::ref().systemConverters();
+	LASSERT(singleton_, /**/);
+	return  singleton_->pimpl_->system_converters_;
 }
 
 
 Movers & theMovers()
 {
-	return  LyX::ref().pimpl_->movers_;
+	LASSERT(singleton_, /**/);
+	return singleton_->pimpl_->movers_;
 }
 
 
 Mover const & getMover(string  const & fmt)
 {
-	return  LyX::ref().pimpl_->movers_(fmt);
+	LASSERT(singleton_, /**/);
+	return singleton_->pimpl_->movers_(fmt);
 }
 
 
 void setMover(string const & fmt, string const & command)
 {
-	LyX::ref().pimpl_->movers_.set(fmt, command);
+	LASSERT(singleton_, /**/);
+	singleton_->pimpl_->movers_.set(fmt, command);
 }
 
 
 Movers & theSystemMovers()
 {
-	return  LyX::ref().pimpl_->system_movers_;
+	LASSERT(singleton_, /**/);
+	return singleton_->pimpl_->system_movers_;
 }
 
 
 Messages & getMessages(string const & language)
 {
-	return LyX::ref().getMessages(language);
+	LASSERT(singleton_, /**/);
+	return singleton_->messages(language);
 }
 
 
 Messages & getGuiMessages()
 {
-	return LyX::ref().getGuiMessages();
+	LASSERT(singleton_, /**/);
+	return singleton_->pimpl_->messages_["GUI"];
 }
 
 
-graphics::Previews * thePreviews()
+graphics::Previews & thePreviews()
 {
-	return singleton_ ? 0 : &singleton_->pimpl_->preview_;
+	LASSERT(singleton_, /**/);
+	return singleton_->pimpl_->preview_;
+}
+
+
+Session & theSession()
+{
+	LASSERT(singleton_, /**/);
+	return *singleton_->pimpl_->session_.get();
+}
+
+
+CmdDef & theTopLevelCmdDef()
+{
+	LASSERT(singleton_, /**/);
+	return singleton_->pimpl_->toplevel_cmddef_;
 }
 
 } // namespace lyx
