@@ -2807,6 +2807,14 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_COMMAND_EXECUTE, "command-execute", NoBuffer, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_COMMAND_PREFIX
+ * \li Action: Return the current sequence and available options as a string.
+ * \li Notion: No options are added if no curmap kb map exists. \n
+               This is probably usable only with connection to lyxserver.
+  * \li Syntax: command-prefix
+ * \endvar
+ */
 		{ LFUN_COMMAND_PREFIX, "command-prefix", NoBuffer, Hidden },
 /*!
  * \var lyx::FuncCode lyx::LFUN_COMMAND_SEQUENCE
