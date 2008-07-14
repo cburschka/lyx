@@ -17,6 +17,7 @@
 
 #include "Buffer.h"
 #include "buffer_funcs.h"
+#include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Changes.h"
@@ -365,20 +366,17 @@ void putClipboard(ParagraphList const & paragraphs,
 	// a DocumentClass, via new, that is never deleted. If we were to go to
 	// some kind of garbage collection there, or a shared_ptr, then this
 	// would not be needed.
-	// FIXME: this cannot be static because it gets destructed after the main
-	// LyX singleton is destroyed and the code is just not ready for that yet!
-	//static Buffer buffer("", false);
-	Buffer buffer("", false);
-	buffer.setUnnamed(true);
-	buffer.paragraphs() = paragraphs;
-	buffer.params().setDocumentClass(docclass);
+	static Buffer * buffer = theBufferList().newBuffer("");
+	buffer->setUnnamed(true);
+	buffer->paragraphs() = paragraphs;
+	buffer->params().setDocumentClass(docclass);
 	ostringstream lyx;
-	if (buffer.write(lyx))
+	if (buffer->write(lyx))
 		theClipboard().put(lyx.str(), plaintext);
 	else
 		theClipboard().put(string(), plaintext);
 	// Save that memory
-	buffer.paragraphs().clear();
+	buffer->paragraphs().clear();
 }
 
 
