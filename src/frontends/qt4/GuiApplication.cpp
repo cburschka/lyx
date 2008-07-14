@@ -695,10 +695,10 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 		installTranslator(&d->qt_trans_);
 		// even if the language calls for RtL, don't do that
 		setLayoutDirection(Qt::LeftToRight);
-		LYXERR(Debug::GUI, "Successfully installed Qt translations for locale "
+		LYXERR(Debug::LOCALE, "Successfully installed Qt translations for locale "
 			<< language_name);
 	} else
-		LYXERR(Debug::GUI, "Could not find  Qt translations for locale "
+		LYXERR(Debug::LOCALE, "Could not find  Qt translations for locale "
 			<< language_name);
 
 #ifdef Q_WS_MACX
