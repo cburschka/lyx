@@ -365,7 +365,10 @@ void putClipboard(ParagraphList const & paragraphs,
 	// a DocumentClass, via new, that is never deleted. If we were to go to
 	// some kind of garbage collection there, or a shared_ptr, then this
 	// would not be needed.
-	static Buffer buffer("", false);
+	// FIXME: this cannot be static because it gets destructed after the main
+	// LyX singleton is destroyed and the code is just not ready for that yet!
+	//static Buffer buffer("", false);
+	Buffer buffer("", false);
 	buffer.setUnnamed(true);
 	buffer.paragraphs() = paragraphs;
 	buffer.params().setDocumentClass(docclass);
