@@ -1016,7 +1016,8 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_PASTE
  * \li Action: Pastes from the active clipboard.
- * \li Syntax: paste
+ * \li Syntax: paste [<TYPE>]
+ * \li Params: <TYPE>: pdf|png|jpeg|linkback \n
  * \endvar
  */
 		{ LFUN_PASTE, "paste", Noop, Edit },
@@ -2812,7 +2813,7 @@ void LyXAction::init()
  * \li Action: Return the current key sequence and available options as a string.
  * \li Notion: No options are added if no curmap kb map exists. \n
                This is probably usable only with connection to lyxserver.
-  * \li Syntax: command-prefix
+ * \li Syntax: command-prefix
  * \endvar
  */
 		{ LFUN_COMMAND_PREFIX, "command-prefix", NoBuffer, Hidden },
