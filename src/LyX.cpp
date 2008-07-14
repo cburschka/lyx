@@ -179,6 +179,7 @@ frontend::Application * theApp()
 LyX::~LyX()
 {
 	delete pimpl_;
+	singleton_ = 0;
 }
 
 
