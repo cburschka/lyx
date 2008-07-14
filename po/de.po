@@ -1357,6 +1357,8 @@ msgid ""
 "Enable LyX to preview this graphics, only if graphics previewing is not "
 "disabled at application level (see Preference dialog)."
 msgstr ""
+"Vorschau für diese Grafik aktivieren (hierzu muss die Grafikvorschau "
+"in den Systemeinstellungen von LyX global aktiviert sein)."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:607
 msgid "Sho&w in LyX"
@@ -5131,16 +5133,15 @@ msgstr "Struktur"
 
 #: lib/layouts/beamer.layout:1109
 msgid "Custom:ArticleMode"
-msgstr ""
+msgstr "Artikelmodus"
 
 #: lib/layouts/beamer.layout:1114
 msgid "Article"
 msgstr "Artikel"
 
 #: lib/layouts/beamer.layout:1119
-#, fuzzy
 msgid "Custom:PresentationMode"
-msgstr "Präsentation"
+msgstr "Präsentationsmodus"
 
 #: lib/layouts/beamer.layout:1124
 msgid "Presentation"
@@ -8240,7 +8241,6 @@ msgid "Endnote"
 msgstr "Endnote"
 
 #: lib/layouts/endnotes.module:6
-#, fuzzy
 msgid ""
 "Adds an endnote inset, in addition to footnotes. You will need to add "
 "\\theendnotes in ERT where you want the endnotes to appear."
@@ -8250,7 +8250,6 @@ msgstr ""
 "soll."
 
 #: lib/layouts/endnotes.module:9
-#, fuzzy
 msgid "Custom:Endnote"
 msgstr "Endnote"
 
@@ -8280,6 +8279,8 @@ msgid ""
 "in which the first line is set to the left margin, but all subsequent lines "
 "are indented."
 msgstr ""
+"Stellt einen Absatzstil für hängende Absätze zur Verfügung (alle Zeilen außer "
+"der ersten werden eingerückt)."
 
 #: lib/layouts/linguistics.module:2
 msgid "Linguistics"
@@ -8318,16 +8319,14 @@ msgid "Subexample:"
 msgstr "Unterbeispiel:"
 
 #: lib/layouts/linguistics.module:68
-#, fuzzy
 msgid "Custom:Glosse"
-msgstr "Kunde"
+msgstr "Glosse"
 
 #: lib/layouts/linguistics.module:70
 msgid "Glosse"
 msgstr "Glosse"
 
 #: lib/layouts/linguistics.module:92
-#, fuzzy
 msgid "Custom:Tri-Glosse"
 msgstr "Tri-Glosse"
 
@@ -8408,11 +8407,10 @@ msgid "Minimalistic"
 msgstr "Minimalistisch"
 
 #: lib/layouts/minimalistic.module:5
-#, fuzzy
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr ""
-"Definiert verschiedene Einfügungen (Index, Zweige, URL) als minimalistisch "
-"um."
+"Stellt verschiedene Einfügungen (Index, Zweige, URL) im 'minimalistischen' "
+"Stil dar."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
@@ -10687,11 +10685,11 @@ msgstr "Quelle ansehen|Q"
 
 #: lib/ui/stdmenus.inc:297
 msgid "Split View Into Left And Right Half|i"
-msgstr ""
+msgstr "Ansicht in linke und rechte Hälfte teilen|l"
 
 #: lib/ui/stdmenus.inc:298
 msgid "Split View Into Upper And Lower Half|V"
-msgstr ""
+msgstr "Ansicht in obere und untere Hälfte teilen|o"
 
 #: lib/ui/stdmenus.inc:299
 msgid "Close Tab Group|G"
@@ -15567,7 +15565,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2476
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
-msgstr ""
+msgstr "Mac-OS-X-Konventionen für Cursorbewegungen auf Wortebene benutzen"
 
 #: src/LyXRC.cpp:2480
 msgid ""
@@ -19533,7 +19531,7 @@ msgstr "RTL/Bidi"
 
 #: src/support/debug.cpp:67
 msgid "Locale/Internationalisation"
-msgstr ""
+msgstr "Spracheinstellungen/Internationalisierung"
 
 #: src/support/debug.cpp:68
 msgid "Developers' general debug messages"
