@@ -757,7 +757,7 @@ void saveSelection(Cursor & cur)
 	if (cur.selection() 
 	    && cur.selBegin() == cur.bv().cursor().selBegin()
 	    && cur.selEnd() == cur.bv().cursor().selEnd()) {
-		LYXERR(Debug::ACTION, "'" << cur.selectionAsString(true) << "'");
+		LYXERR(Debug::SELECTION, "saveSelection: '" << cur.selectionAsString(true) << "'");
 		copySelectionToStack(cur, selectionBuffer);
 	}
 }

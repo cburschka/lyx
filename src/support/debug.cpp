@@ -65,6 +65,7 @@ ErrorItem errorTags[] = {
 	{ Debug::MACROS,    "macros",    N_("Math macros")},
 	{ Debug::RTL,       "rtl",       N_("RTL/Bidi")},
 	{ Debug::LOCALE,    "locale",    N_("Locale/Internationalisation")},
+	{ Debug::SELECTION, "selection", N_("Selection copy/paste mechanism")},
 	{ Debug::DEBUG,     "debug",     N_("Developers' general debug messages")},
 	{ Debug::ANY,       "any",       N_("All debugging messages")}
 };

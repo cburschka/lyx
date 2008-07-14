@@ -1443,7 +1443,7 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 	case SelectionRequest: {
 		if (xev->xselectionrequest.selection != XA_PRIMARY)
 			break;
-		LYXERR(Debug::GUI, "X requested selection.");
+		LYXERR(Debug::SELECTION, "X requested selection.");
 		BufferView * bv = current_view_->view();
 		if (bv) {
 			docstring const sel = bv->requestSelection();
@@ -1455,7 +1455,7 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 	case SelectionClear: {
 		if (xev->xselectionclear.selection != XA_PRIMARY)
 			break;
-		LYXERR(Debug::GUI, "Lost selection.");
+		LYXERR(Debug::SELECTION, "Lost selection.");
 		BufferView * bv = current_view_->view();
 		if (bv)
 			bv->clearSelection();

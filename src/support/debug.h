@@ -96,7 +96,9 @@ namespace Debug {
 		///	rtl-related
 		RTL        = (1 << 27),
 		///	locale related
-		LOCALE        = (1 << 28),
+		LOCALE     = (1 << 28),
+		///	selection
+		SELECTION  = (1 << 29),
 		///
 		DEBUG      = (1 << 31),
 		///
