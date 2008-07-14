@@ -1015,17 +1015,27 @@ void LyXAction::init()
 		{ LFUN_CUT, "cut", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_PASTE
- * \li Action: Pastes from the active clipboard.
+ * \li Action: Pastes material from the active clipboard.
  * \li Syntax: paste [<TYPE>]
- * \li Params: <TYPE>: pdf|png|jpeg|linkback \n
+ * \li Params: <TYPE>: pdf|png|jpeg|linkback
  * \endvar
  */
 		{ LFUN_PASTE, "paste", Noop, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_CLIPBOARD_PASTE
+ * \li Action: Pastes text from the active clipboard.
+ * \li Syntax: clipboard-paste [<ARG>]
+ * \li Params: <ARG>: "paragraph" will cause pasting as one paragraph, i.e. "Join lines".
+ * \li Origin: baum, 10 Jul 2006
+ * \endvar
+ */
 		{ LFUN_CLIPBOARD_PASTE, "clipboard-paste", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_PRIMARY_SELECTION_PASTE
- * \li Action: Pastes the material currently selected.
- * \li Syntax: primary-selection-paste
+ * \li Action: Pastes the currently text selected text.
+ * \li Notion: Primary selection mechanism is linux-only thing.
+ * \li Syntax: primary-selection-paste [<ARG>]
+ * \li Params: <ARG>: "paragraph" will cause pasting as one paragraph, i.e. "Join lines".
  * \endvar
  */
 		{ LFUN_PRIMARY_SELECTION_PASTE, "primary-selection-paste", Noop, Edit },
