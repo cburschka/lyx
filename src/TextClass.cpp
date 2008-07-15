@@ -997,6 +997,8 @@ void DocumentClass::addLayoutIfNeeded(docstring const & n) const
 
 InsetLayout const & DocumentClass::insetLayout(docstring const & name) const 
 {
+	// FIXME The fix for the InsetLayout part of 4812 would be here:
+	// Add the InsetLayout to the document class if it is not found.
 	docstring n = name;
 	InsetLayouts::const_iterator cen = insetlayoutlist_.end();
 	while (!n.empty()) {
