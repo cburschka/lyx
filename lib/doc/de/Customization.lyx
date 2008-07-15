@@ -1,4 +1,4 @@
-#LyX 1.6.0beta4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 338
 \begin_document
 \begin_header
@@ -146,7 +146,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 13.
+letzte Änderung: 15.
  Juli 2008
 \end_layout
 
@@ -6533,7 +6533,11 @@ verwendet; diese werden in der
 \begin_layout Standard
 Weiterhin müssen Sie sicherstellen, dass alle Umgebungstypen, die in 
 \family typewriter
-myclass.cls
+myclass.
+\begin_inset Newline linebreak
+\end_inset
+
+cls
 \family default
  definiert werden, auch in 
 \begin_inset Flex URL
@@ -6733,9 +6737,18 @@ Auf diese Weise deklarieren Sie eine Textklasse
 \family typewriter
 myarticle
 \family default
-, die die LaTeX-Dokumenten\SpecialChar \-
-klas\SpecialChar \-
-se 
+, die die LaTeX
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Dokumentklasse 
 \family typewriter
 article.cls
 \family default
@@ -6776,7 +6789,18 @@ status open
 
 \family default
 \size small
-XClass[article,foo.sty]{article (with my own headings)}
+XClass[article,foo.sty]{article (with my own head
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+"-
+\end_layout
+
+\end_inset
+
+ings)}
 \end_layout
 
 \begin_layout Standard
