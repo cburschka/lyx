@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-13 13:54+0200\n"
+"POT-Creation-Date: 2008-07-15 23:38+0200\n"
 "PO-Revision-Date: 2006-06-29 20:19+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -83,7 +83,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:828
-#: src/Buffer.cpp:2507 src/Buffer.cpp:2531 src/Buffer.cpp:2566
+#: src/Buffer.cpp:2508 src/Buffer.cpp:2532 src/Buffer.cpp:2567
 #: src/LyXFunc.cpp:664 src/LyXFunc.cpp:800 src/LyXFunc.cpp:978
 #: src/LyXVC.cpp:160 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1251
@@ -8503,7 +8503,7 @@ msgid "Branch"
 msgstr "Francúzsky"
 
 #: lib/layouts/stdinsets.inc:179 lib/layouts/minimalistic.module:8
-#: src/insets/InsetIndex.cpp:132
+#: src/insets/InsetIndex.cpp:149
 msgid "Index"
 msgstr "Index"
 
@@ -10943,19 +10943,19 @@ msgid "Justified Line Break|J"
 msgstr "Zlom riadku|Z"
 
 #: lib/ui/stdcontext.inc:242 lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:88
-#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:968
+#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:973
 #: src/mathed/InsetMathNest.cpp:539
 msgid "Cut"
 msgstr "Vystrihnú»"
 
 #: lib/ui/stdcontext.inc:243 lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:89
-#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:973
+#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:978
 #: src/mathed/InsetMathNest.cpp:547
 msgid "Copy"
 msgstr "Kopírova»"
 
 #: lib/ui/stdcontext.inc:244 lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:90
-#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:928
+#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:933
 #: src/mathed/InsetMathGrid.cpp:1239 src/mathed/InsetMathNest.cpp:519
 msgid "Paste"
 msgstr "Vlo¾i»"
@@ -11377,11 +11377,11 @@ msgid "View Source|S"
 msgstr "Viditeµná medzera|#m"
 
 #: lib/ui/stdmenus.inc:297
-msgid "Split View Horizontally|i"
+msgid "Split View Into Left And Right Half|i"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:298
-msgid "Split View Vertically|V"
+msgid "Split View Into Upper And Lower Half|V"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:299
@@ -15118,22 +15118,22 @@ msgstr "Názov súboru"
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Cesta k súboru lyx nemô¾e obsahova» medzery."
 
-#: src/Buffer.cpp:2408
+#: src/Buffer.cpp:2409
 #, fuzzy
 msgid "Document export cancelled."
 msgstr "Dokument exportovaný ako "
 
-#: src/Buffer.cpp:2414
+#: src/Buffer.cpp:2415
 #, fuzzy, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exportovaný ako "
 
-#: src/Buffer.cpp:2420
+#: src/Buffer.cpp:2421
 #, fuzzy, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exportovaný ako "
 
-#: src/Buffer.cpp:2490
+#: src/Buffer.cpp:2491
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15141,12 +15141,12 @@ msgid ""
 "could not be read."
 msgstr ""
 
-#: src/Buffer.cpp:2492
+#: src/Buffer.cpp:2493
 #, fuzzy
 msgid "Could not read document"
 msgstr "Nedá sa otvori» dokument "
 
-#: src/Buffer.cpp:2502
+#: src/Buffer.cpp:2503
 #, fuzzy, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15154,20 +15154,20 @@ msgid ""
 "Recover emergency save?"
 msgstr "Existuje bezpeènostná kópia tohoto dokumentu!"
 
-#: src/Buffer.cpp:2505
+#: src/Buffer.cpp:2506
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:2506
+#: src/Buffer.cpp:2507
 #, fuzzy
 msgid "&Recover"
 msgstr "&Odstráni»"
 
-#: src/Buffer.cpp:2506
+#: src/Buffer.cpp:2507
 msgid "&Load Original"
 msgstr ""
 
-#: src/Buffer.cpp:2526
+#: src/Buffer.cpp:2527
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15175,31 +15175,31 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/Buffer.cpp:2529
+#: src/Buffer.cpp:2530
 #, fuzzy
 msgid "Load backup?"
 msgstr "Prejs» dozadu"
 
-#: src/Buffer.cpp:2530
+#: src/Buffer.cpp:2531
 #, fuzzy
 msgid "&Load backup"
 msgstr "&Ís» spä»"
 
-#: src/Buffer.cpp:2530
+#: src/Buffer.cpp:2531
 msgid "Load &original"
 msgstr ""
 
-#: src/Buffer.cpp:2563
+#: src/Buffer.cpp:2564
 #, fuzzy, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Chcete otvori»súbor s kontrolovaním verzií?"
 
-#: src/Buffer.cpp:2565
+#: src/Buffer.cpp:2566
 #, fuzzy
 msgid "Retrieve from version control?"
 msgstr "Chcete otvori»súbor s kontrolovaním verzií?"
 
-#: src/Buffer.cpp:2566
+#: src/Buffer.cpp:2567
 #, fuzzy
 msgid "&Retrieve"
 msgstr "O&bnovi»"
@@ -15249,7 +15249,7 @@ msgstr "Dokument nie je mo¾né ulo¾i»!"
 msgid "LyX will not be able to produce output."
 msgstr "LyX nebude schopný vyprodukova» správne výstup."
 
-#: src/BufferParams.cpp:1422
+#: src/BufferParams.cpp:1426
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
@@ -15257,22 +15257,22 @@ msgid ""
 "correct textclass is selected from the document settings dialog."
 msgstr ""
 
-#: src/BufferParams.cpp:1427
+#: src/BufferParams.cpp:1431
 #, fuzzy
 msgid "Document class not found"
 msgstr "Dokument nie je mo¾né ulo¾i»!"
 
-#: src/BufferParams.cpp:1437 src/LyXFunc.cpp:695
+#: src/BufferParams.cpp:1441 src/LyXFunc.cpp:695
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "Dokument nie je mo¾né ulo¾i»!"
 
-#: src/BufferParams.cpp:1439 src/LyXFunc.cpp:697
+#: src/BufferParams.cpp:1443 src/LyXFunc.cpp:697
 #, fuzzy
 msgid "Could not load class"
 msgstr "Nemô¾em pracova» so súborom:"
 
-#: src/BufferParams.cpp:1475
+#: src/BufferParams.cpp:1479
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -15281,17 +15281,17 @@ msgid ""
 "probably need to reconfigure LyX.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1479
+#: src/BufferParams.cpp:1483
 #, fuzzy
 msgid "Module not available"
 msgstr "Dokument nie je mo¾né ulo¾i»!"
 
-#: src/BufferParams.cpp:1480
+#: src/BufferParams.cpp:1484
 #, fuzzy
 msgid "Some layouts may not be available."
 msgstr "Dokument nie je mo¾né ulo¾i»!"
 
-#: src/BufferParams.cpp:1487
+#: src/BufferParams.cpp:1491
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -15299,22 +15299,22 @@ msgid ""
 "may not be possible.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1490
+#: src/BufferParams.cpp:1494
 #, fuzzy
 msgid "Package not available"
 msgstr "Dokument nie je mo¾né ulo¾i»!"
 
-#: src/BufferParams.cpp:1495
+#: src/BufferParams.cpp:1499
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1496 src/BufferParams.cpp:1502
+#: src/BufferParams.cpp:1500 src/BufferParams.cpp:1506
 #, fuzzy
 msgid "Read Error"
 msgstr "Hµada»"
 
-#: src/BufferParams.cpp:1501
+#: src/BufferParams.cpp:1505
 #, fuzzy
 msgid "Error reading internal layout information"
 msgstr "V¹eobecné informácie"
@@ -15398,22 +15398,22 @@ msgstr ""
 msgid "Statistics"
 msgstr "Stav"
 
-#: src/BufferView.cpp:2037
+#: src/BufferView.cpp:2038
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vkladám dokument %1$s..."
 
-#: src/BufferView.cpp:2048
+#: src/BufferView.cpp:2049
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s bol vlo¾ený."
 
-#: src/BufferView.cpp:2050
+#: src/BufferView.cpp:2051
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nie je mo¾né vlo¾i» dokument %1$s"
 
-#: src/BufferView.cpp:2278
+#: src/BufferView.cpp:2279
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15421,28 +15421,28 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/BufferView.cpp:2280
+#: src/BufferView.cpp:2281
 #, fuzzy
 msgid "Could not read file"
 msgstr "Nemô¾em pracova» so súborom:"
 
-#: src/BufferView.cpp:2287
+#: src/BufferView.cpp:2288
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s odstavce nie je mo¾né skonvertova»"
 
-#: src/BufferView.cpp:2288 src/output.cpp:39
+#: src/BufferView.cpp:2289 src/output.cpp:39
 #, fuzzy
 msgid "Could not open file"
 msgstr "Nie je mo¾né otvori» súbor"
 
-#: src/BufferView.cpp:2295
+#: src/BufferView.cpp:2296
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2296
+#: src/BufferView.cpp:2297
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -15854,14 +15854,14 @@ msgstr "je prázdny"
 msgid "An empty output file was generated."
 msgstr ""
 
-#: src/CutAndPaste.cpp:537
+#: src/CutAndPaste.cpp:539
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.cpp:544
+#: src/CutAndPaste.cpp:546
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "Otvorený text prílohy"
@@ -16095,12 +16095,12 @@ msgstr "BibTeX spustený."
 msgid "Running MakeIndex for nomencl."
 msgstr "MakeIndex spustený."
 
-#: src/LyX.cpp:99
+#: src/LyX.cpp:101
 #, fuzzy
 msgid "Could not read configuration file"
 msgstr "Nemô¾em pracova» so súborom:"
 
-#: src/LyX.cpp:100 src/frontends/qt4/GuiApplication.cpp:1375
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1375
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16108,74 +16108,74 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/LyX.cpp:109
+#: src/LyX.cpp:111
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: rekonfigurujem pou¾ívateµov prieèinok"
 
-#: src/LyX.cpp:113
+#: src/LyX.cpp:115
 msgid "Done!"
 msgstr "Hotovo!"
 
-#: src/LyX.cpp:482
+#: src/LyX.cpp:373
 #, fuzzy, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
 msgstr "Chyba! Nemô¾em vytvori» doèasný prieèinok:"
 
-#: src/LyX.cpp:484
+#: src/LyX.cpp:375
 #, fuzzy
 msgid "Cannot remove temporary directory"
 msgstr "Chyba! Nemô¾em vytvori» doèasný prieèinok:"
 
-#: src/LyX.cpp:490
+#: src/LyX.cpp:381
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Zvoli» doèasný prieèinok"
 
-#: src/LyX.cpp:492
+#: src/LyX.cpp:383
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "Zvoli» doèasný prieèinok"
 
-#: src/LyX.cpp:521
+#: src/LyX.cpp:412
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Zlá mo¾nos» príkazového riadku `%1$s'. Ukonèujem."
 
-#: src/LyX.cpp:588
+#: src/LyX.cpp:486
 msgid "No textclass is found"
 msgstr ""
 
-#: src/LyX.cpp:589
+#: src/LyX.cpp:487
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
 
-#: src/LyX.cpp:593
+#: src/LyX.cpp:491
 #, fuzzy
 msgid "&Reconfigure"
 msgstr "Rekonfigurácia|R"
 
-#: src/LyX.cpp:594
+#: src/LyX.cpp:492
 #, fuzzy
 msgid "&Use Default"
 msgstr "©tandardný"
 
-#: src/LyX.cpp:595 src/LyX.cpp:955
+#: src/LyX.cpp:493 src/LyX.cpp:856
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "Koniec"
 
-#: src/LyX.cpp:742 src/frontends/qt4/GuiView.cpp:650
+#: src/LyX.cpp:640 src/frontends/qt4/GuiView.cpp:650
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:864
+#: src/LyX.cpp:765
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Chyba! Nemô¾em vytvori» doèasný prieèinok:"
 
-#: src/LyX.cpp:865
+#: src/LyX.cpp:766
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -16183,47 +16183,47 @@ msgid ""
 "Make sure that this path exists and is writable and try again."
 msgstr ""
 
-#: src/LyX.cpp:948
+#: src/LyX.cpp:849
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "Spú¹»am bez osobného prieèinku LyXu."
 
-#: src/LyX.cpp:949
+#: src/LyX.cpp:850
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/LyX.cpp:954
+#: src/LyX.cpp:855
 #, fuzzy
 msgid "&Create directory"
 msgstr "LyX: Vytváram prieèinok "
 
-#: src/LyX.cpp:956
+#: src/LyX.cpp:857
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:960
+#: src/LyX.cpp:861
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Vytváram prieèinok "
 
-#: src/LyX.cpp:965
+#: src/LyX.cpp:866
 #, fuzzy
 msgid "Failed to create directory. Exiting."
 msgstr "Volanie na vytvorenie prieèinku s neplatným názvom"
 
-#: src/LyX.cpp:1037
+#: src/LyX.cpp:938
 msgid "List of supported debug flags:"
 msgstr "Zoznam podporovaných ladiacich parametrov: "
 
-#: src/LyX.cpp:1041
+#: src/LyX.cpp:942
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Nastavenie úrovne ladenia na %1$s"
 
-#: src/LyX.cpp:1052
+#: src/LyX.cpp:953
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -16265,42 +16265,42 @@ msgstr ""
 "                  and file.xxx is the file to be imported.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu"
 
-#: src/LyX.cpp:1092 src/support/Package.cpp:570
+#: src/LyX.cpp:993 src/support/Package.cpp:570
 #, fuzzy
 msgid "No system directory"
 msgstr "Prieèinok pou¾ívateµa: "
 
-#: src/LyX.cpp:1093
+#: src/LyX.cpp:994
 msgid "Missing directory for -sysdir switch"
 msgstr "Chýba prieèinok pre prepínaè -sysdir!"
 
-#: src/LyX.cpp:1104
+#: src/LyX.cpp:1005
 #, fuzzy
 msgid "No user directory"
 msgstr "Prieèinok pou¾ívateµa: "
 
-#: src/LyX.cpp:1105
+#: src/LyX.cpp:1006
 msgid "Missing directory for -userdir switch"
 msgstr "Chýba prieèinok pre prepínaè -userdir!"
 
-#: src/LyX.cpp:1116
+#: src/LyX.cpp:1017
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Nasledujúci príkaz"
 
-#: src/LyX.cpp:1117
+#: src/LyX.cpp:1018
 msgid "Missing command string after --execute switch"
 msgstr "Chýba príkazový re»azec po prepínaèi -x!"
 
-#: src/LyX.cpp:1128
+#: src/LyX.cpp:1029
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínaèi  --export"
 
-#: src/LyX.cpp:1141
+#: src/LyX.cpp:1042
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínaèi --import"
 
-#: src/LyX.cpp:1146
+#: src/LyX.cpp:1047
 msgid "Missing filename for --import"
 msgstr "Chýba názov súboru pre --import"
 
@@ -16406,7 +16406,7 @@ msgstr "Obnovenie ulo¾enej verzie"
 msgid "&Revert"
 msgstr "Vráti»|r"
 
-#: src/LyXFunc.cpp:1014 src/Text3.cpp:1479
+#: src/LyXFunc.cpp:1014 src/Text3.cpp:1483
 msgid "Missing argument"
 msgstr "Chýbajúci parameter"
 
@@ -16430,21 +16430,21 @@ msgstr "©tandardy dokumentu|#D"
 msgid "Unable to save document defaults"
 msgstr "Ulo¾i» rozlo¾enie ako ¹tandardné"
 
-#: src/LyXFunc.cpp:1696
+#: src/LyXFunc.cpp:1693
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s je otvorený."
 
-#: src/LyXFunc.cpp:1698
+#: src/LyXFunc.cpp:1695
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "Nedá sa otvori» dokument "
 
-#: src/LyXFunc.cpp:1735
+#: src/LyXFunc.cpp:1732
 msgid "Welcome to LyX!"
 msgstr "Vitajte v LyXe!"
 
-#: src/LyXFunc.cpp:1756
+#: src/LyXFunc.cpp:1753
 msgid "Converting document to new document class..."
 msgstr "Prevod dokumentu do novej triedy dokumentov..."
 
@@ -17168,23 +17168,23 @@ msgstr "Nie je mo¾né indexova» viac ako jeden odstavec!"
 msgid "Math editor mode"
 msgstr "Re¾im matematického editoru"
 
-#: src/Text3.cpp:792
+#: src/Text3.cpp:797
 msgid "Unknown spacing argument: "
 msgstr "Neznámy parameter riadkovania: "
 
-#: src/Text3.cpp:1033
+#: src/Text3.cpp:1038
 msgid "Layout "
 msgstr "Formát "
 
-#: src/Text3.cpp:1034
+#: src/Text3.cpp:1039
 msgid " not known"
 msgstr " neznámy"
 
-#: src/Text3.cpp:1586 src/Text3.cpp:1598
+#: src/Text3.cpp:1590 src/Text3.cpp:1602
 msgid "Character set"
 msgstr "Znaková sada"
 
-#: src/Text3.cpp:1744 src/Text3.cpp:1755
+#: src/Text3.cpp:1748 src/Text3.cpp:1759
 msgid "Paragraph layout set"
 msgstr "Formát odstavca je nastavený."
 
@@ -20321,16 +20321,16 @@ msgstr "Chyba pri generovaní pixmapy"
 msgid "No image"
 msgstr "Bez obrázku"
 
-#: src/insets/RenderPreview.cpp:96
+#: src/insets/RenderPreview.cpp:95
 msgid "Preview loading"
 msgstr ""
 
-#: src/insets/RenderPreview.cpp:99
+#: src/insets/RenderPreview.cpp:98
 #, fuzzy
 msgid "Preview ready"
 msgstr "Náhµad|#N"
 
-#: src/insets/RenderPreview.cpp:102
+#: src/insets/RenderPreview.cpp:101
 #, fuzzy
 msgid "Preview failed"
 msgstr "Automatické ukladanie sa nepodarilo!"
@@ -20700,14 +20700,19 @@ msgstr ""
 
 #: src/support/debug.cpp:68
 #, fuzzy
+msgid "Selection copy/paste mechanism"
+msgstr "Ako riadky|r"
+
+#: src/support/debug.cpp:69
+#, fuzzy
 msgid "Developers' general debug messages"
 msgstr "V¹etky ladiace informácie"
 
-#: src/support/debug.cpp:69
+#: src/support/debug.cpp:70
 msgid "All debugging messages"
 msgstr "V¹etky ladiace informácie"
 
-#: src/support/debug.cpp:114
+#: src/support/debug.cpp:115
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Ladenie `%1$s' (%2$s)"

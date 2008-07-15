@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.4svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-14 11:54+0200\n"
+"POT-Creation-Date: 2008-07-15 23:38+0200\n"
 "PO-Revision-Date: 2008-02-16 21:50+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -1959,6 +1959,122 @@ msgstr "Mutassa a &tartalomjegyzékben"
 msgid "&Numbering"
 msgstr "&Számozás"
 
+#: src/frontends/qt4/ui/PageLayoutUi.ui:33
+#: src/frontends/qt4/GuiDocument.cpp:982
+msgid "Page Layout"
+msgstr "Oldal formátum"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:68
+#, fuzzy
+msgid "Paper Format"
+msgstr "Dátumforma"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:103
+msgid "Choose a particular paper size, or set your own with \"Custom\""
+msgstr "Válasszon papírméretet vagy adja megy az \"Egyedi\" méretét"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:121
+msgid "Style used for the page header and footer"
+msgstr "Az oldal fejlécéhez és láblécéhez használt stílus"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:128
+#, fuzzy
+msgid "Headings &style:"
+msgstr "Ol&dalstílus:"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:138
+msgid "&Landscape"
+msgstr "&Fekvõ"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:145
+msgid "&Portrait"
+msgstr "Á&lló"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:191
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:92
+#: src/frontends/qt4/ui/RefUi.ui:129
+msgid "&Format:"
+msgstr "Formá&tum:"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:227
+#, fuzzy
+msgid "&Orientation:"
+msgstr "Elrendezés"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:253
+msgid "Lay out the page for double-sided printing"
+msgstr "Az oldal kinézete kétoldalas nyomtatáshoz"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:256
+msgid "&Two-sided document"
+msgstr "&Kétoldalas dokumentum"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:44
+msgid "I&mmediate Apply"
+msgstr ""
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:123
+msgid "Use the default alignment for this paragraph, whatever it is."
+msgstr "Használja az igazítás alapértékét ehhez a bekezdéshez, bármi is az."
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:126
+#, fuzzy
+msgid "Paragraph's &Default"
+msgstr "&Használja a bekezdés igazításának alapértékét"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:133
+msgid "Ri&ght"
+msgstr "&Jobbra"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:140
+msgid "C&enter"
+msgstr "&Középre"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:147
+msgid "&Left"
+msgstr "Bal&ra"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:154
+msgid "&Justified"
+msgstr "&Sorkizárt"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:164
+#, fuzzy
+msgid "&Indent Paragraph"
+msgstr "&Bekezdés behúzása"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:174
+msgid "Label Width"
+msgstr "Címke szélesség"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:189
+#: src/frontends/qt4/ui/ParagraphUi.ui:196
+msgid "This text defines the width of the paragraph label"
+msgstr "Ez a szöveg adja meg a bekezdés címke szélességét"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:199
+msgid "Lo&ngest label"
+msgstr "Leghosszabb cí&mke"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:212
+#, fuzzy
+msgid "Line &spacing"
+msgstr "Sor&köz:"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:240 src/Text.cpp:1377
+#: src/frontends/qt4/GuiDocument.cpp:579
+msgid "Single"
+msgstr "Egyszeres"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:245
+msgid "1.5"
+msgstr "Másfélszeres"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:250 src/Text.cpp:1383
+#: src/frontends/qt4/GuiDocument.cpp:583
+msgid "Double"
+msgstr "Kétszeres"
+
 #: src/frontends/qt4/ui/PDFSupportUi.ui:28
 msgid "&Use hyperref support"
 msgstr ""
@@ -2082,122 +2198,6 @@ msgstr "További LaTeX opciók"
 #: src/frontends/qt4/ui/PDFSupportUi.ui:421
 msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 msgstr ""
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:33
-#: src/frontends/qt4/GuiDocument.cpp:982
-msgid "Page Layout"
-msgstr "Oldal formátum"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:68
-#, fuzzy
-msgid "Paper Format"
-msgstr "Dátumforma"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:103
-msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr "Válasszon papírméretet vagy adja megy az \"Egyedi\" méretét"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:121
-msgid "Style used for the page header and footer"
-msgstr "Az oldal fejlécéhez és láblécéhez használt stílus"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:128
-#, fuzzy
-msgid "Headings &style:"
-msgstr "Ol&dalstílus:"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:138
-msgid "&Landscape"
-msgstr "&Fekvõ"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:145
-msgid "&Portrait"
-msgstr "Á&lló"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:191
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:92
-#: src/frontends/qt4/ui/RefUi.ui:129
-msgid "&Format:"
-msgstr "Formá&tum:"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:227
-#, fuzzy
-msgid "&Orientation:"
-msgstr "Elrendezés"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:253
-msgid "Lay out the page for double-sided printing"
-msgstr "Az oldal kinézete kétoldalas nyomtatáshoz"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:256
-msgid "&Two-sided document"
-msgstr "&Kétoldalas dokumentum"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:44
-msgid "I&mmediate Apply"
-msgstr ""
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:123
-msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr "Használja az igazítás alapértékét ehhez a bekezdéshez, bármi is az."
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:126
-#, fuzzy
-msgid "Paragraph's &Default"
-msgstr "&Használja a bekezdés igazításának alapértékét"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:133
-msgid "Ri&ght"
-msgstr "&Jobbra"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:140
-msgid "C&enter"
-msgstr "&Középre"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:147
-msgid "&Left"
-msgstr "Bal&ra"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:154
-msgid "&Justified"
-msgstr "&Sorkizárt"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:164
-#, fuzzy
-msgid "&Indent Paragraph"
-msgstr "&Bekezdés behúzása"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:174
-msgid "Label Width"
-msgstr "Címke szélesség"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:189
-#: src/frontends/qt4/ui/ParagraphUi.ui:196
-msgid "This text defines the width of the paragraph label"
-msgstr "Ez a szöveg adja meg a bekezdés címke szélességét"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:199
-msgid "Lo&ngest label"
-msgstr "Leghosszabb cí&mke"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:212
-#, fuzzy
-msgid "Line &spacing"
-msgstr "Sor&köz:"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:240 src/Text.cpp:1377
-#: src/frontends/qt4/GuiDocument.cpp:579
-msgid "Single"
-msgstr "Egyszeres"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:245
-msgid "1.5"
-msgstr "Másfélszeres"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:250 src/Text.cpp:1383
-#: src/frontends/qt4/GuiDocument.cpp:583
-msgid "Double"
-msgstr "Kétszeres"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "&Alter..."
@@ -3940,12 +3940,12 @@ msgstr "Bizonyítás:"
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:196
 #: lib/layouts/ijmpd.layout:199 lib/layouts/llncs.layout:412
 #: lib/layouts/siamltex.layout:200 lib/layouts/svjour.inc:475
-#: lib/layouts/theorems-ams.inc:24 lib/layouts/theorems-ams.inc:25
-#: lib/layouts/theorems-ams.inc:208 lib/layouts/theorems-order.inc:7
-#: lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems.inc:24 lib/layouts/theorems.inc:25
+#: lib/layouts/theorems.inc:202 lib/layouts/theorems-ams.inc:24
+#: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
+#: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems-starred.inc:24
 #: lib/layouts/theorems-starred-equivalents.inc:6
-#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:24
-#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:202
 #: lib/layouts/theorems-chap.module:17 lib/layouts/theorems-sec.module:16
 msgid "Theorem"
 msgstr "Tétel"
@@ -3958,9 +3958,9 @@ msgstr "Tétel #:"
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:246 lib/layouts/ijmpd.layout:251
 #: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:215
-#: lib/layouts/svjour.inc:412 lib/layouts/theorems-ams.inc:71
-#: lib/layouts/theorems-order.inc:19
-#: lib/layouts/theorems-starred-equivalents.inc:20 lib/layouts/theorems.inc:69
+#: lib/layouts/svjour.inc:412 lib/layouts/theorems.inc:69
+#: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-order.inc:19
+#: lib/layouts/theorems-starred-equivalents.inc:20
 msgid "Lemma"
 msgstr "Segédtétel"
 
@@ -3973,8 +3973,9 @@ msgstr "Segédtétel #:"
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:236
 #: lib/layouts/ijmpd.layout:237 lib/layouts/llncs.layout:316
 #: lib/layouts/siamltex.layout:222 lib/layouts/svjour.inc:373
-#: lib/layouts/theorems-ams.inc:59 lib/layouts/theorems-order.inc:13
-#: lib/layouts/theorems-starred-equivalents.inc:13 lib/layouts/theorems.inc:58
+#: lib/layouts/theorems.inc:58 lib/layouts/theorems-ams.inc:59
+#: lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-starred-equivalents.inc:13
 msgid "Corollary"
 msgstr "Következmény"
 
@@ -3986,8 +3987,9 @@ msgstr "Következmény #:"
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:256
 #: lib/layouts/ijmpd.layout:262 lib/layouts/llncs.layout:385
 #: lib/layouts/siamltex.layout:229 lib/layouts/svjour.inc:447
-#: lib/layouts/theorems-ams.inc:83 lib/layouts/theorems-order.inc:25
-#: lib/layouts/theorems-starred-equivalents.inc:27 lib/layouts/theorems.inc:80
+#: lib/layouts/theorems.inc:80 lib/layouts/theorems-ams.inc:83
+#: lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems-starred-equivalents.inc:27
 msgid "Proposition"
 msgstr "Javaslat"
 
@@ -3998,8 +4000,9 @@ msgstr "Javaslat #:"
 #: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:363
 #: lib/layouts/ijmpc.layout:296 lib/layouts/ijmpd.layout:306
 #: lib/layouts/llncs.layout:309 lib/layouts/svjour.inc:366
-#: lib/layouts/theorems-ams.inc:95 lib/layouts/theorems-order.inc:31
-#: lib/layouts/theorems-starred-equivalents.inc:34 lib/layouts/theorems.inc:91
+#: lib/layouts/theorems.inc:91 lib/layouts/theorems-ams.inc:95
+#: lib/layouts/theorems-order.inc:31
+#: lib/layouts/theorems-starred-equivalents.inc:34
 msgid "Conjecture"
 msgstr "Feltevés"
 
@@ -4017,7 +4020,7 @@ msgid "Criterion #:"
 msgstr "Kritérium #:"
 
 #: lib/layouts/IEEEtran.layout:133 lib/layouts/beamer.layout:977
-#: lib/layouts/theorems-ams.inc:107 lib/layouts/theorems.inc:102
+#: lib/layouts/theorems.inc:102 lib/layouts/theorems-ams.inc:107
 msgid "Fact"
 msgstr "Tény"
 
@@ -4038,9 +4041,9 @@ msgstr "Axióma #:"
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:132
 #: lib/layouts/ijmpd.layout:129 lib/layouts/llncs.layout:330
 #: lib/layouts/siamltex.layout:236 lib/layouts/svjour.inc:387
-#: lib/layouts/theorems-ams.inc:119 lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems.inc:113 lib/layouts/theorems-ams.inc:119
+#: lib/layouts/theorems-order.inc:37
 #: lib/layouts/theorems-starred-equivalents.inc:41
-#: lib/layouts/theorems.inc:113
 msgid "Definition"
 msgstr "Definíció"
 
@@ -4051,10 +4054,10 @@ msgstr "Definíció #:"
 #: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:959
 #: lib/layouts/elsart.layout:370 lib/layouts/ijmpc.layout:166
 #: lib/layouts/ijmpd.layout:163 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:394 lib/layouts/theorems-ams.inc:138
-#: lib/layouts/theorems-order.inc:43
+#: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:132
+#: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:48
-#: lib/layouts/theorems.inc:132 src/frontends/qt4/GuiDocument.cpp:827
+#: src/frontends/qt4/GuiDocument.cpp:827
 msgid "Example"
 msgstr "Példa"
 
@@ -4073,9 +4076,9 @@ msgstr "Feltétel #:"
 
 #: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:377
 #: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:426
-#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-order.inc:49
+#: lib/layouts/theorems.inc:144 lib/layouts/theorems-ams.inc:150
+#: lib/layouts/theorems-order.inc:49
 #: lib/layouts/theorems-starred-equivalents.inc:55
-#: lib/layouts/theorems.inc:144
 msgid "Problem"
 msgstr "Probléma"
 
@@ -4084,10 +4087,9 @@ msgid "Problem #:"
 msgstr "Probléma #:"
 
 #: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:401 lib/layouts/theorems-ams.inc:162
-#: lib/layouts/theorems-order.inc:55
+#: lib/layouts/svjour.inc:401 lib/layouts/theorems.inc:156
+#: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-order.inc:55
 #: lib/layouts/theorems-starred-equivalents.inc:62
-#: lib/layouts/theorems.inc:156
 msgid "Exercise"
 msgstr "Feladat"
 
@@ -4098,9 +4100,9 @@ msgstr "Feladat #:"
 #: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:384
 #: lib/layouts/ijmpc.layout:176 lib/layouts/ijmpd.layout:174
 #: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:461
-#: lib/layouts/theorems-ams.inc:174 lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems.inc:168 lib/layouts/theorems-ams.inc:174
+#: lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:69
-#: lib/layouts/theorems.inc:168
 msgid "Remark"
 msgstr "Észrevétel"
 
@@ -4111,10 +4113,9 @@ msgstr "Észrevétel #:"
 #: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:398
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:286
 #: lib/layouts/ijmpd.layout:295 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:345 lib/layouts/theorems-ams.inc:194
-#: lib/layouts/theorems-order.inc:67
+#: lib/layouts/svjour.inc:345 lib/layouts/theorems.inc:188
+#: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-order.inc:67
 #: lib/layouts/theorems-starred-equivalents.inc:76
-#: lib/layouts/theorems.inc:188
 msgid "Claim"
 msgstr "Követelés"
 
@@ -4144,13 +4145,13 @@ msgid "Notation #:"
 msgstr "Jelölés #:"
 
 #: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:413
-#: lib/layouts/llncs.layout:281 lib/layouts/theorems-ams.inc:207
-#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:201
+#: lib/layouts/llncs.layout:281 lib/layouts/theorems.inc:201
+#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-order.inc:73
 msgid "Case"
 msgstr "Eset"
 
-#: lib/layouts/IEEEtran.layout:246 lib/layouts/theorems-ams.inc:213
-#: lib/layouts/theorems.inc:207
+#: lib/layouts/IEEEtran.layout:246 lib/layouts/theorems.inc:207
+#: lib/layouts/theorems-ams.inc:213
 msgid "Case #:"
 msgstr "Eset #:"
 
@@ -4803,11 +4804,6 @@ msgstr "LatinOff"
 msgid "Latin off"
 msgstr "Latin off"
 
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "Fólia kezdés"
-
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:117
 #: lib/layouts/beamer.layout:132 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:32 lib/layouts/scrartcl.layout:20
@@ -4822,6 +4818,11 @@ msgstr "Rész"
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Rész*"
+
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "Fólia kezdés"
 
 #: lib/layouts/beamer.layout:107 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:114 lib/layouts/stdlists.inc:65
@@ -6527,7 +6528,7 @@ msgid "Notation \\thenotation."
 msgstr "\\arabic{notation}. jelölés"
 
 #: lib/layouts/ijmpc.layout:206 lib/layouts/ijmpd.layout:209
-#: lib/layouts/theorems-ams.inc:42 lib/layouts/theorems.inc:42
+#: lib/layouts/theorems.inc:42 lib/layouts/theorems-ams.inc:42
 #, fuzzy
 msgid "Theorem \\thetheorem."
 msgstr "\\arabic{theorem}. tétel"
@@ -8080,7 +8081,7 @@ msgid "Branch"
 msgstr "Változat"
 
 #: lib/layouts/stdinsets.inc:179 lib/layouts/minimalistic.module:8
-#: src/insets/InsetIndex.cpp:145
+#: src/insets/InsetIndex.cpp:149
 msgid "Index"
 msgstr "Tárgymutató"
 
@@ -8164,56 +8165,56 @@ msgstr "Offprints"
 msgid "Offprints:"
 msgstr "Offprints:"
 
-#: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:62
+#: lib/layouts/theorems.inc:62 lib/layouts/theorems-ams.inc:63
 #, fuzzy
 msgid "Corollary \\thetheorem."
 msgstr "\\arabic{theorem}. következmény"
 
-#: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems.inc:73
+#: lib/layouts/theorems.inc:73 lib/layouts/theorems-ams.inc:75
 #, fuzzy
 msgid "Lemma \\thetheorem."
 msgstr "\\arabic{theorem}. segédtétel"
 
-#: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems.inc:84
+#: lib/layouts/theorems.inc:84 lib/layouts/theorems-ams.inc:87
 #, fuzzy
 msgid "Proposition \\thetheorem."
 msgstr "\\arabic{theorem}. javaslat"
 
-#: lib/layouts/theorems-ams.inc:99 lib/layouts/theorems.inc:95
+#: lib/layouts/theorems.inc:95 lib/layouts/theorems-ams.inc:99
 #, fuzzy
 msgid "Conjecture \\thetheorem."
 msgstr "\\arabic{theorem}. feltevés"
 
-#: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems.inc:106
+#: lib/layouts/theorems.inc:106 lib/layouts/theorems-ams.inc:111
 msgid "Fact \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:117
+#: lib/layouts/theorems.inc:117 lib/layouts/theorems-ams.inc:123
 #, fuzzy
 msgid "Definition \\thetheorem."
 msgstr "\\arabic{theorem}. definíció"
 
-#: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:135
+#: lib/layouts/theorems.inc:135 lib/layouts/theorems-ams.inc:141
 #, fuzzy
 msgid "Example \\thetheorem."
 msgstr "\\arabic{theorem}. példa"
 
-#: lib/layouts/theorems-ams.inc:153 lib/layouts/theorems.inc:147
+#: lib/layouts/theorems.inc:147 lib/layouts/theorems-ams.inc:153
 #, fuzzy
 msgid "Problem \\thetheorem."
 msgstr "\\arabic{theorem}. probléma"
 
-#: lib/layouts/theorems-ams.inc:165 lib/layouts/theorems.inc:159
+#: lib/layouts/theorems.inc:159 lib/layouts/theorems-ams.inc:165
 #, fuzzy
 msgid "Exercise \\thetheorem."
 msgstr "@Section@.\\arabic{theorem}. észrevétel"
 
-#: lib/layouts/theorems-ams.inc:178 lib/layouts/theorems.inc:172
+#: lib/layouts/theorems.inc:172 lib/layouts/theorems-ams.inc:178
 #, fuzzy
 msgid "Remark \\thetheorem."
 msgstr "\\arabic{theorem}. észrevétel"
 
-#: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems.inc:191
+#: lib/layouts/theorems.inc:191 lib/layouts/theorems-ams.inc:197
 #, fuzzy
 msgid "Claim \\thetheorem."
 msgstr "\\arabic{theorem}. követelés"
@@ -10485,19 +10486,19 @@ msgid "Justified Line Break|J"
 msgstr "Sortörés|r"
 
 #: lib/ui/stdcontext.inc:242 lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:88
-#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:968
+#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:973
 #: src/mathed/InsetMathNest.cpp:539
 msgid "Cut"
 msgstr "Kivágás"
 
 #: lib/ui/stdcontext.inc:243 lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:89
-#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:973
+#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:978
 #: src/mathed/InsetMathNest.cpp:547
 msgid "Copy"
 msgstr "Másolás"
 
 #: lib/ui/stdcontext.inc:244 lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:90
-#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:928
+#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:933
 #: src/mathed/InsetMathGrid.cpp:1239 src/mathed/InsetMathNest.cpp:519
 msgid "Paste"
 msgstr "Beillesztés"
@@ -14496,7 +14497,7 @@ msgstr "A dokumentum-osztály nem érhetõ el"
 msgid "LyX will not be able to produce output."
 msgstr "LyX nem tudja  elkészíteni a kimenetet."
 
-#: src/BufferParams.cpp:1422
+#: src/BufferParams.cpp:1426
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
@@ -14504,12 +14505,12 @@ msgid ""
 "correct textclass is selected from the document settings dialog."
 msgstr ""
 
-#: src/BufferParams.cpp:1427
+#: src/BufferParams.cpp:1431
 #, fuzzy
 msgid "Document class not found"
 msgstr "A dokumentum-osztály nem érhetõ el"
 
-#: src/BufferParams.cpp:1437 src/LyXFunc.cpp:695
+#: src/BufferParams.cpp:1441 src/LyXFunc.cpp:695
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr ""
@@ -14517,12 +14518,12 @@ msgstr ""
 "%1$s\n"
 "nem lehet olvasni."
 
-#: src/BufferParams.cpp:1439 src/LyXFunc.cpp:697
+#: src/BufferParams.cpp:1443 src/LyXFunc.cpp:697
 #, fuzzy
 msgid "Could not load class"
 msgstr "Osztály nem változtatható meg"
 
-#: src/BufferParams.cpp:1475
+#: src/BufferParams.cpp:1479
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -14531,17 +14532,17 @@ msgid ""
 "probably need to reconfigure LyX.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1479
+#: src/BufferParams.cpp:1483
 #, fuzzy
 msgid "Module not available"
 msgstr "A dokumentum-osztály nem érhetõ el"
 
-#: src/BufferParams.cpp:1480
+#: src/BufferParams.cpp:1484
 #, fuzzy
 msgid "Some layouts may not be available."
 msgstr "A dokumentum-osztály nem érhetõ el"
 
-#: src/BufferParams.cpp:1487
+#: src/BufferParams.cpp:1491
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -14549,22 +14550,22 @@ msgid ""
 "may not be possible.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1490
+#: src/BufferParams.cpp:1494
 #, fuzzy
 msgid "Package not available"
 msgstr "A dokumentum-osztály nem érhetõ el"
 
-#: src/BufferParams.cpp:1495
+#: src/BufferParams.cpp:1499
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1496 src/BufferParams.cpp:1502
+#: src/BufferParams.cpp:1500 src/BufferParams.cpp:1506
 #, fuzzy
 msgid "Read Error"
 msgstr "Keresési hiba"
 
-#: src/BufferParams.cpp:1501
+#: src/BufferParams.cpp:1505
 #, fuzzy
 msgid "Error reading internal layout information"
 msgstr "Általános információ"
@@ -14644,22 +14645,22 @@ msgstr "Egy karakter (szóközök nélkül)"
 msgid "Statistics"
 msgstr "Statisztika"
 
-#: src/BufferView.cpp:2037
+#: src/BufferView.cpp:2038
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dokumentum beszúrása %1$s..."
 
-#: src/BufferView.cpp:2048
+#: src/BufferView.cpp:2049
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentum: %1$s beszúrása megtörtént."
 
-#: src/BufferView.cpp:2050
+#: src/BufferView.cpp:2051
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nem tudom beszúrni a dokumentumot %1$s"
 
-#: src/BufferView.cpp:2278
+#: src/BufferView.cpp:2279
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14670,26 +14671,26 @@ msgstr ""
 "nem olvasható,\n"
 "%2$s hiba miatt"
 
-#: src/BufferView.cpp:2280
+#: src/BufferView.cpp:2281
 msgid "Could not read file"
 msgstr "A fájl nem olvasható"
 
-#: src/BufferView.cpp:2287
+#: src/BufferView.cpp:2288
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s nem olvasható."
 
-#: src/BufferView.cpp:2288 src/output.cpp:39
+#: src/BufferView.cpp:2289 src/output.cpp:39
 msgid "Could not open file"
 msgstr "A fájl nem nyitható meg"
 
-#: src/BufferView.cpp:2295
+#: src/BufferView.cpp:2296
 msgid "Reading not UTF-8 encoded file"
 msgstr "Nem UTF-8 kódolású fájl olvasása"
 
-#: src/BufferView.cpp:2296
+#: src/BufferView.cpp:2297
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -15364,35 +15365,35 @@ msgstr "LyX: felhasználói könyvtár újra beállítása"
 msgid "Done!"
 msgstr "Kész!"
 
-#: src/LyX.cpp:371
+#: src/LyX.cpp:373
 #, fuzzy, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
 msgstr "Ideiglenes könyvtár nem hozható létre"
 
-#: src/LyX.cpp:373
+#: src/LyX.cpp:375
 #, fuzzy
 msgid "Cannot remove temporary directory"
 msgstr "Ideiglenes könyvtár nem törölhetõ"
 
-#: src/LyX.cpp:379
+#: src/LyX.cpp:381
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Az %1$s ideiglenes könyvtár nem törölhetõ"
 
-#: src/LyX.cpp:381
+#: src/LyX.cpp:383
 msgid "Unable to remove temporary directory"
 msgstr "Ideiglenes könyvtár nem törölhetõ"
 
-#: src/LyX.cpp:410
+#: src/LyX.cpp:412
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Hibás parancssori kapcsoló `%1$s'. Kilépek."
 
-#: src/LyX.cpp:484
+#: src/LyX.cpp:486
 msgid "No textclass is found"
 msgstr "Nem találtam szövegosztályt"
 
-#: src/LyX.cpp:485
+#: src/LyX.cpp:487
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
@@ -15401,27 +15402,27 @@ msgstr ""
 "manuálisan újra vagy beállíthatja az alapértelmezett szövegosztályokat, vagy "
 "kilép a LyX-bõl."
 
-#: src/LyX.cpp:489
+#: src/LyX.cpp:491
 msgid "&Reconfigure"
 msgstr "Új&rakonfigurálás"
 
-#: src/LyX.cpp:490
+#: src/LyX.cpp:492
 msgid "&Use Default"
 msgstr "A&lapérték"
 
-#: src/LyX.cpp:491 src/LyX.cpp:851
+#: src/LyX.cpp:493 src/LyX.cpp:856
 msgid "&Exit LyX"
 msgstr "&Kilépés LyX-bõl"
 
-#: src/LyX.cpp:638 src/frontends/qt4/GuiView.cpp:650
+#: src/LyX.cpp:640 src/frontends/qt4/GuiView.cpp:650
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:760
+#: src/LyX.cpp:765
 msgid "Could not create temporary directory"
 msgstr "Ideiglenes könyvtár nem hozható létre"
 
-#: src/LyX.cpp:761
+#: src/LyX.cpp:766
 #, fuzzy, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -15432,11 +15433,11 @@ msgstr ""
 "%1$s. Ellenõrizze, hogy az elérési út létezik és\n"
 "írható, majd próbálja újra!"
 
-#: src/LyX.cpp:844
+#: src/LyX.cpp:849
 msgid "Missing user LyX directory"
 msgstr "Nincs felhasználói LyX könyvtár"
 
-#: src/LyX.cpp:845
+#: src/LyX.cpp:850
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -15445,33 +15446,33 @@ msgstr ""
 "Nem létezõ LyX felhasználói könyvtárat adott meg, %1$s.\n"
 "Valahol tárolnia kell a saját beállításait."
 
-#: src/LyX.cpp:850
+#: src/LyX.cpp:855
 msgid "&Create directory"
 msgstr "&Könyvtár létrehozása"
 
-#: src/LyX.cpp:852
+#: src/LyX.cpp:857
 msgid "No user LyX directory. Exiting."
 msgstr "Nincs felhasználói LyX könyvtár. Kilépek."
 
-#: src/LyX.cpp:856
+#: src/LyX.cpp:861
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Könyvtár létrehozása %1$s"
 
-#: src/LyX.cpp:861
+#: src/LyX.cpp:866
 msgid "Failed to create directory. Exiting."
 msgstr "Nem sikerült létrehozni a könyvtárat. Kilépek."
 
-#: src/LyX.cpp:933
+#: src/LyX.cpp:938
 msgid "List of supported debug flags:"
 msgstr "Támogatott nyomkövetési jelzõk listája:"
 
-#: src/LyX.cpp:937
+#: src/LyX.cpp:942
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Nyomkövetési szint beállítása: %1$s"
 
-#: src/LyX.cpp:948
+#: src/LyX.cpp:953
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -15514,39 +15515,39 @@ msgstr ""
 "\t-version        megadja a verziószámot és a fordítási információkat\n"
 "Olvassa el a LyX kézikönyvet a további részletekért!"
 
-#: src/LyX.cpp:988
+#: src/LyX.cpp:993 src/support/Package.cpp:570
 msgid "No system directory"
 msgstr "Nincs rendszer könyvtár"
 
-#: src/LyX.cpp:989
+#: src/LyX.cpp:994
 msgid "Missing directory for -sysdir switch"
 msgstr "Hiányzó könyvtár a -sysdir kapcsolóhoz"
 
-#: src/LyX.cpp:1000
+#: src/LyX.cpp:1005
 msgid "No user directory"
 msgstr "Nincs felhasználói könyvtár"
 
-#: src/LyX.cpp:1001
+#: src/LyX.cpp:1006
 msgid "Missing directory for -userdir switch"
 msgstr "Hiányzó könyvtár a -userdir kapcsolóhoz"
 
-#: src/LyX.cpp:1012
+#: src/LyX.cpp:1017
 msgid "Incomplete command"
 msgstr "Befejezetlen parancs"
 
-#: src/LyX.cpp:1013
+#: src/LyX.cpp:1018
 msgid "Missing command string after --execute switch"
 msgstr "Hiányzó parancs az --execute kapcsoló után"
 
-#: src/LyX.cpp:1024
+#: src/LyX.cpp:1029
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Hiányzó fájltípus [pl. latex, ps...] az --export kapcsoló után"
 
-#: src/LyX.cpp:1037
+#: src/LyX.cpp:1042
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Hiányzó fájltípus [pl. latex, ps...] az --import kapcsoló után"
 
-#: src/LyX.cpp:1042
+#: src/LyX.cpp:1047
 msgid "Missing filename for --import"
 msgstr "Hiányzó fájlnév --import-hoz"
 
@@ -15660,7 +15661,7 @@ msgstr "Mentett dokumentum visszaállítása?"
 msgid "&Revert"
 msgstr "&Visszatér"
 
-#: src/LyXFunc.cpp:1014 src/Text3.cpp:1478
+#: src/LyXFunc.cpp:1014 src/Text3.cpp:1483
 msgid "Missing argument"
 msgstr "Hiányzó paraméter"
 
@@ -16433,23 +16434,23 @@ msgstr "Nem tudok szójegyzékbe rakni többet, mint egy bekezdés!"
 msgid "Math editor mode"
 msgstr "Képletszerkesztõ mód"
 
-#: src/Text3.cpp:792
+#: src/Text3.cpp:797
 msgid "Unknown spacing argument: "
 msgstr "Ismeretlen térköz paraméter: "
 
-#: src/Text3.cpp:1033
+#: src/Text3.cpp:1038
 msgid "Layout "
 msgstr "Elrendezés "
 
-#: src/Text3.cpp:1034
+#: src/Text3.cpp:1039
 msgid " not known"
 msgstr " ismeretlen"
 
-#: src/Text3.cpp:1585 src/Text3.cpp:1597
+#: src/Text3.cpp:1590 src/Text3.cpp:1602
 msgid "Character set"
 msgstr "Betûkészlet"
 
-#: src/Text3.cpp:1743 src/Text3.cpp:1754
+#: src/Text3.cpp:1748 src/Text3.cpp:1759
 msgid "Paragraph layout set"
 msgstr "Bekezdés kinézetének beállítása"
 
@@ -19672,11 +19673,6 @@ msgstr "Szöveget kicseréltem."
 msgid " strings have been replaced."
 msgstr " szöveget cseréltem ki."
 
-#: src/mathed/InsetFormulaMacro.cpp:118
-#, c-format
-msgid " Macro: %1$s: "
-msgstr " Makró: %1$s: "
-
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1365
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
@@ -19774,6 +19770,66 @@ msgstr "Kivonat: "
 #: src/output_plaintext.cpp:148
 msgid "References: "
 msgstr "Hivatkozások: "
+
+#: src/support/Package.cpp:451
+msgid "LyX binary not found"
+msgstr "Nem találom a LyX futattható-állományát"
+
+#: src/support/Package.cpp:452
+#, c-format
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
+msgstr ""
+"Nem tudom meghatározni az elérési útvonalat a LyX programhoz a "
+"parancssorból: %1$s"
+
+#: src/support/Package.cpp:571
+#, c-format
+msgid ""
+"Unable to determine the system directory having searched\n"
+"\t%1$s\n"
+"Use the '-sysdir' command line parameter or set the environment variable "
+"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
+msgstr ""
+"Nem tudom meghatározni a rendszerkönyvtárat, kerestem a \t%1$s-ban\n"
+"Próbálja a '-sysdir' parancssori paramétert vagy készítsen egy környezeti "
+"változót LYX_DIR_15x néven a LyX rendszerkönyvtárhoz, ahol a  `chkconfig."
+"ltx' fájl van."
+
+#: src/support/Package.cpp:652 src/support/Package.cpp:679
+msgid "File not found"
+msgstr "Nincs meg a fájl"
+
+#: src/support/Package.cpp:653
+#, c-format
+msgid ""
+"Invalid %1$s switch.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"Érvénytelen %1$s kapcsoló.\n"
+"A %2$s nem tartalmazza %3$s-at."
+
+#: src/support/Package.cpp:680
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"Érvénytelen %1$s környezeti változó.\n"
+"%2$s könyvtár nem tartalmazza %3$s-at."
+
+#: src/support/Package.cpp:704
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"%2$s is not a directory."
+msgstr ""
+"Érvénytelen %1$s környezeti változó.\n"
+"%2$s nem könyvtár."
+
+#: src/support/Package.cpp:706
+msgid "Directory not found"
+msgstr "Nincs meg a könyvtár"
 
 #: src/support/debug.cpp:38
 msgid "No debugging message"
@@ -19897,14 +19953,19 @@ msgid "Locale/Internationalisation"
 msgstr ""
 
 #: src/support/debug.cpp:68
+#, fuzzy
+msgid "Selection copy/paste mechanism"
+msgstr "Kijelölés sorokként|K"
+
+#: src/support/debug.cpp:69
 msgid "Developers' general debug messages"
 msgstr "Developers' general debug messages"
 
-#: src/support/debug.cpp:69
+#: src/support/debug.cpp:70
 msgid "All debugging messages"
 msgstr "Minden nyomkövetési üzenet"
 
-#: src/support/debug.cpp:114
+#: src/support/debug.cpp:115
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Nyomkövetés `%1$s' (%2$s)"
@@ -19941,53 +20002,8 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Ismeretlen felhasználó"
 
-#~ msgid "LyX binary not found"
-#~ msgstr "Nem találom a LyX futattható-állományát"
-
-#~ msgid ""
-#~ "Unable to determine the path to the LyX binary from the command line %1$s"
-#~ msgstr ""
-#~ "Nem tudom meghatározni az elérési útvonalat a LyX programhoz a "
-#~ "parancssorból: %1$s"
-
-#~ msgid ""
-#~ "Unable to determine the system directory having searched\n"
-#~ "\t%1$s\n"
-#~ "Use the '-sysdir' command line parameter or set the environment variable "
-#~ "LYX_DIR_15x to the LyX system directory containing the file `chkconfig."
-#~ "ltx'."
-#~ msgstr ""
-#~ "Nem tudom meghatározni a rendszerkönyvtárat, kerestem a \t%1$s-ban\n"
-#~ "Próbálja a '-sysdir' parancssori paramétert vagy készítsen egy környezeti "
-#~ "változót LYX_DIR_15x néven a LyX rendszerkönyvtárhoz, ahol a  `chkconfig."
-#~ "ltx' fájl van."
-
-#~ msgid "File not found"
-#~ msgstr "Nincs meg a fájl"
-
-#~ msgid ""
-#~ "Invalid %1$s switch.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "Érvénytelen %1$s kapcsoló.\n"
-#~ "A %2$s nem tartalmazza %3$s-at."
-
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "Érvénytelen %1$s környezeti változó.\n"
-#~ "%2$s könyvtár nem tartalmazza %3$s-at."
-
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "%2$s is not a directory."
-#~ msgstr ""
-#~ "Érvénytelen %1$s környezeti változó.\n"
-#~ "%2$s nem könyvtár."
-
-#~ msgid "Directory not found"
-#~ msgstr "Nincs meg a könyvtár"
+#~ msgid " Macro: %1$s: "
+#~ msgstr " Makró: %1$s: "
 
 #~ msgid "Reject change"
 #~ msgstr "Visszautasítás"
