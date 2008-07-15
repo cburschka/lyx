@@ -99,6 +99,10 @@ What's new
 
 - Fix crash related to the outline pane with some documents (bug 4857).
 
+- Fix crash when an outlining function was used for a section inside an
+  inset (bug 5004). These functions are now disabled for section that
+  are not in the main text area.
+
 - Fix input of numeric values in non-english locales (bug 4951).
 
 - Fix display of filters such as "LaTeX (plain)" in the file dialog.
