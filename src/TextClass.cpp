@@ -903,13 +903,6 @@ bool TextClass::hasLayout(docstring const & n) const
 }
 
 
-void TextClass::addLayoutIfNeeded(docstring const & n) const
-{
-	if (!hasLayout(n))
-		layoutlist_.push_back(createEmptyLayout(n, true));
-}
-
-
 Layout const & TextClass::operator[](docstring const & name) const
 {
 	LASSERT(!name.empty(), /**/);
@@ -992,6 +985,13 @@ bool TextClass::load(string const & path) const
 	}
 
 	return loaded_;
+}
+
+
+void DocumentClass::addLayoutIfNeeded(docstring const & n) const
+{
+	if (!hasLayout(n))
+		layoutlist_.push_back(createEmptyLayout(n, true));
 }
 
 

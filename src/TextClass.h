@@ -96,11 +96,6 @@ public:
 	// NOTE: Layout pointers are directly assigned to paragraphs so a
 	// container that does not invalidate these pointers after insertion
 	// is needed.
-	//
-	// NOTE: It makes sense to add unknown layouts to DocumentClass
-	// and make them buffer-dependent. However, this requires
-	// reimplementation of a lot of functions such as hasLayout
-	// and operator[], with little benefit.
 	typedef std::list<Layout> LayoutList;
 	/// The inset layouts available to this class
 	typedef std::map<docstring, InsetLayout> InsetLayouts;
@@ -127,11 +122,6 @@ public:
 	bool isDefaultLayout(Layout const &) const;
 	/// 
 	bool isPlainLayout(Layout const &) const;
-	/// Create a default layout for this textclass.
-	/** \param unknown Set to true if this layout is a default layout used to
-	 * represent an unknown layout
-	 */
-	Layout createEmptyLayout(docstring const & name, bool unknown = false) const;
 	/// returns a special layout for use when we don't really want one,
 	/// e.g., in table cells
 	Layout const & emptyLayout() const 
@@ -143,8 +133,6 @@ public:
 	size_t layoutCount() const { return layoutlist_.size(); }
 	///
 	bool hasLayout(docstring const & name) const;
-	/// add a default layout \c name if it does not exist in layoutlist_
-	void addLayoutIfNeeded(docstring const & name) const;
 	///
 	Layout const & operator[](docstring const & vname) const;
 
@@ -201,7 +189,12 @@ protected:
 	TextClass();
 	///
 	Layout & operator[](docstring const & vname);
-
+	/// Create an empty layout for this textclass.
+	/** \param unknown Set to true if this layout is a default layout used to
+	 * represent an unknown layout
+	 */
+	Layout createEmptyLayout(docstring const & name, bool unknown = false) const;
+	
 	///////////////////////////////////////////////////////////////////
 	// non-const iterators
 	///////////////////////////////////////////////////////////////////
@@ -347,6 +340,8 @@ public:
 	InsetLayout const & insetLayout(docstring const & name) const;
 	/// an empty inset layout for use as a default
 	static InsetLayout const & emptyInsetLayout() { return empty_insetlayout_; }
+	/// add an empty layout \c name if it does not exist in layoutlist_
+	void addLayoutIfNeeded(docstring const & name) const;
 
 	///////////////////////////////////////////////////////////////////
 	// accessors
