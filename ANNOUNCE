@@ -1,15 +1,18 @@
-Public release of LyX version 1.6.0 (beta 4)
+Public release of LyX version 1.6.0 (release candidate 1)
 =============================================
 
-We are pleased to announce the fourth beta release of LyX 1.6.0.
+We are pleased to announce the first release candidate of LyX 1.6.0.
 
-LyX 1.6.0 will be the culmination of 9 months of hard work since the
+LyX 1.6.0 will be the culmination of 12 months of hard work since the
 release of the LyX 1.5 series. We sincerely hope you will enjoy the
 result.
 
 As usual with a major release, a lot of work that is not directly
 visible has taken place. The core of LyX has seen more cleanups and
 some of the new features are the direct results of this work.
+
+The new features in LyX 1.6 are detailed in 
+http://wiki.lyx.org/LyX/NewInLyX16
 
 The file RELEASE-NOTES lists some known issues with this release
 compared to the current stable release (LyX 1.5.5). An updated list of
@@ -40,20 +43,20 @@ http://www.lyx.org/ has to say on the subject:
    internationalized application running natively on Unix/Linux and the
    Macintosh and modern Windows platforms.
 
-You can download LyX 1.6.0alpha2 here (the .bz2 are compressed with bzip2,
+You can download LyX 1.6.0rc1 here (the .bz2 are compressed with bzip2,
 which yields smaller files):
 
-	ftp://ftp.devel.lyx.org/pub/lyx/devel/lyx-1.6.0alpha2.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/devel/lyx-1.6.0alpha2.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/devel/lyx-1.6.0rc1.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/devel/lyx-1.6.0rc1.tar.bz2
 
 Note that due to the amount of change, no patch is provided to upgrade
 from version 1.5.5.
 
 Prebuilt binaries (rpms for linux distributions, Mac OS X and Windows
 installers) should soon be available at
-	ftp://ftp.devel.lyx.org/pub/bin/1.6.0alpha2/
+	ftp://ftp.devel.lyx.org/pub/devel/
 
-If you find what you think is a bug in LyX 1.6.0alpha2, you may either
+If you find what you think is a bug in LyX 1.6.0rc1, you may either
 e-mail the LyX developers' mailing list (lyx-devel at lists.lyx.org), or open
 a bug report at http://bugzilla.lyx.org
 
@@ -64,10 +67,3 @@ e-mail the LyX users' list (lyx-users at lists.lyx.org).
 Enjoy!
 
 The LyX team.
-
-
-What's new in version 1.6.0beta4?
-----------------------------
-
-The new features in LyX 1.6 are detailed in
-http://wiki.lyx.org/LyX/NewInLyX16
