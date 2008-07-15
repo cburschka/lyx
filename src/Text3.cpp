@@ -269,7 +269,8 @@ bool doInsertInset(Cursor & cur, Text * text,
 	recordUndo(cur);
 	bool gotsel = false;
 	if (cur.selection()) {
-		lyx::dispatch(FuncRequest(LFUN_CUT));
+		cutSelection(cur, false, pastesel);
+		cur.clearSelection();
 		gotsel = true;
 	}
 	bool const emptypar = cur.lastpos() == 0;
@@ -282,7 +283,10 @@ bool doInsertInset(Cursor & cur, Text * text,
 	if (gotsel && pastesel) {
 		// metrics might be invalid at this point (bug 4502)
 		cur.bv().updateMetrics();
-		lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
+		pasteFromStack(cur, cur.buffer().errorList("Paste"), 0);
+		cur.buffer().errors("Paste");
+		cur.clearSelection(); // bug 393
+		finishUndo();
 
 		if ((cur.lastpit() == 0 || ins_pos != 0) && !emptypar) {
 			// reset first par to default

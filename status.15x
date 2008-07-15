@@ -103,11 +103,21 @@ What's new
 
 - Fix display of filters such as "LaTeX (plain)" in the file dialog.
 
-- Fix 7 years-old bug with functions whose state can be toggled.
-
 - Fix error navigation with the keyboard (bug 4895).
 
+- When inserting an inset over a selection, do not copy the selection
+  to clipboard if we do not intend to paste it later (bug 4977).
+
+- When inserting an inset over a selection, do not remove space at
+  start of paragraph (bug 2018).
+
 - Allow the use of eqrefs in mathed (bug 4623).
+
+- Fix shape of braces, '$', '%', '&', and '#', which where incorrectly
+  shown in italics in mathed (bug 4320).
+
+- Fix display of unknown math macros, which were incorrectly shown in
+  italics (bug 2594).
 
 - Use appropriate font in notes and ERT insets in section headings
   (bug 2477).
@@ -115,11 +125,7 @@ What's new
 - Fix wheel mouse scrolling when it is set to "One screen at a time
   (bug 4972).
 
-- Fix shape of braces, '$', '%', '&', and '#', which where incorrectly
-  shown in italics in mathed (bug 4320).
-
-- Fix display of unknown math macros, which were incorrectly shown in
-  italics (bug 2594).
+- Fix obscure 7 years-old bug with functions whose state can be toggled.
 
 
 * DOCUMENTATION AND LOCALIZATION
