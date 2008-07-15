@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-04-19 16:25+0200\n"
+"POT-Creation-Date: 2008-07-15 23:12+0200\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -648,7 +648,7 @@ msgstr "Vrste pisav"
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:117
 #: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:587
-#: src/frontends/qt4/QPrefs.cpp:1600
+#: src/frontends/qt4/QPrefs.cpp:1639
 msgid "Language"
 msgstr "Jezik"
 
@@ -1456,7 +1456,7 @@ msgstr "&Kodiranje:"
 msgid "&Quote Style:"
 msgstr "Slog narekovajev"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetListings.cpp:259
+#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetListings.cpp:260
 #, fuzzy
 msgid "Listing"
 msgstr "Seznam"
@@ -1916,7 +1916,7 @@ msgstr "Poravnano"
 msgid "L&ine spacing:"
 msgstr "Presledki med &vrsticami:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1868
+#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1914
 #: src/frontends/qt4/QDocument.cpp:247
 msgid "Single"
 msgstr "Enojni"
@@ -1925,7 +1925,7 @@ msgstr "Enojni"
 msgid "1.5"
 msgstr "1,5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1874
+#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1920
 #: src/frontends/qt4/QDocument.cpp:251
 msgid "Double"
 msgstr "Dvojni"
@@ -2305,7 +2305,7 @@ msgstr "Vzorci za &spise:"
 msgid "&roff command:"
 msgstr "Ukaz &roff:"
 
-#: src/frontends/qt4/ui/PrefPlaintextUi.ui:54 src/LyXRC.cpp:2111
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:54 src/LyXRC.cpp:2131
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -3427,7 +3427,7 @@ msgstr "Enote vrednosti ¹irine"
 msgid "&Units:"
 msgstr "&Enote:"
 
-#: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:22
+#: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:25
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:49
 #: lib/layouts/amsart.layout:22 lib/layouts/amsbook.layout:23
 #: lib/layouts/apa.layout:24 lib/layouts/beamer.layout:37
@@ -3488,7 +3488,7 @@ msgstr "Izrek"
 #: lib/layouts/foils.layout:249 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:257 lib/layouts/ijmpd.layout:262
 #: lib/layouts/llncs.layout:354 lib/layouts/siamltex.layout:217
-#: lib/layouts/amsmaths-plain.inc:50 lib/layouts/amsmaths-seq.inc:171
+#: lib/layouts/amsmaths-plain.inc:58 lib/layouts/amsmaths-seq.inc:171
 #: lib/layouts/amsmaths.inc:115 lib/layouts/svjour.inc:415
 msgid "Lemma"
 msgstr "Lema"
@@ -3502,7 +3502,7 @@ msgstr "Lema"
 #: lib/layouts/elsart.layout:325 lib/layouts/foils.layout:256
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:247
 #: lib/layouts/ijmpd.layout:248 lib/layouts/llncs.layout:319
-#: lib/layouts/siamltex.layout:224 lib/layouts/amsmaths-plain.inc:44
+#: lib/layouts/siamltex.layout:224 lib/layouts/amsmaths-plain.inc:49
 #: lib/layouts/amsmaths-seq.inc:160 lib/layouts/amsmaths.inc:91
 #: lib/layouts/svjour.inc:376
 msgid "Corollary"
@@ -3516,7 +3516,7 @@ msgstr "Korolar"
 #: lib/layouts/IEEEtran.layout:102 lib/layouts/elsart.layout:332
 #: lib/layouts/foils.layout:263 lib/layouts/ijmpc.layout:267
 #: lib/layouts/ijmpd.layout:273 lib/layouts/llncs.layout:388
-#: lib/layouts/siamltex.layout:231 lib/layouts/amsmaths-plain.inc:56
+#: lib/layouts/siamltex.layout:231 lib/layouts/amsmaths-plain.inc:67
 #: lib/layouts/amsmaths-seq.inc:182 lib/layouts/amsmaths.inc:139
 #: lib/layouts/svjour.inc:450
 msgid "Proposition"
@@ -3529,7 +3529,7 @@ msgstr "Podmena"
 
 #: lib/layouts/IEEEtran.layout:112 lib/layouts/elsart.layout:367
 #: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
-#: lib/layouts/llncs.layout:312 lib/layouts/amsmaths-plain.inc:62
+#: lib/layouts/llncs.layout:312 lib/layouts/amsmaths-plain.inc:76
 #: lib/layouts/amsmaths-seq.inc:193 lib/layouts/amsmaths.inc:163
 #: lib/layouts/svjour.inc:369
 msgid "Conjecture"
@@ -3541,7 +3541,7 @@ msgid "Conjecture #:"
 msgstr "Domneva"
 
 #: lib/layouts/IEEEtran.layout:122 lib/layouts/elsart.layout:339
-#: lib/layouts/amsmaths-plain.inc:68 lib/layouts/amsmaths-seq.inc:204
+#: lib/layouts/amsmaths-plain.inc:85 lib/layouts/amsmaths-seq.inc:204
 #: lib/layouts/amsmaths.inc:188
 msgid "Criterion"
 msgstr "Kriterij"
@@ -3552,7 +3552,7 @@ msgid "Criterion #:"
 msgstr "Kriterij"
 
 #: lib/layouts/IEEEtran.layout:132 lib/layouts/beamer.layout:959
-#: lib/layouts/amsmaths-plain.inc:80 lib/layouts/amsmaths-seq.inc:226
+#: lib/layouts/amsmaths-plain.inc:103 lib/layouts/amsmaths-seq.inc:226
 #: lib/layouts/amsmaths.inc:235
 msgid "Fact"
 msgstr "Dejstvo"
@@ -3562,7 +3562,7 @@ msgstr "Dejstvo"
 msgid "Fact #:"
 msgstr "Dejstvo"
 
-#: lib/layouts/IEEEtran.layout:142 lib/layouts/amsmaths-plain.inc:86
+#: lib/layouts/IEEEtran.layout:142 lib/layouts/amsmaths-plain.inc:112
 #: lib/layouts/amsmaths-seq.inc:237 lib/layouts/amsmaths.inc:259
 msgid "Axiom"
 msgstr "Aksiom"
@@ -3576,7 +3576,7 @@ msgstr "Aksiom"
 #: lib/layouts/elsart.layout:353 lib/layouts/foils.layout:270
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:140
 #: lib/layouts/ijmpd.layout:137 lib/layouts/llncs.layout:333
-#: lib/layouts/siamltex.layout:238 lib/layouts/amsmaths-plain.inc:92
+#: lib/layouts/siamltex.layout:238 lib/layouts/amsmaths-plain.inc:121
 #: lib/layouts/amsmaths-seq.inc:248 lib/layouts/amsmaths.inc:283
 #: lib/layouts/svjour.inc:390
 msgid "Definition"
@@ -3590,7 +3590,7 @@ msgstr "Definicija"
 #: lib/layouts/IEEEtran.layout:162 lib/layouts/beamer.layout:941
 #: lib/layouts/elsart.layout:374 lib/layouts/ijmpc.layout:175
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
-#: lib/layouts/amsmaths-plain.inc:98 lib/layouts/amsmaths-seq.inc:259
+#: lib/layouts/amsmaths-plain.inc:130 lib/layouts/amsmaths-seq.inc:259
 #: lib/layouts/amsmaths.inc:315 lib/layouts/svjour.inc:397
 #: src/frontends/qt4/QDocument.cpp:491
 msgid "Example"
@@ -3601,7 +3601,7 @@ msgstr "Zgled"
 msgid "Example #:"
 msgstr "Zgled"
 
-#: lib/layouts/IEEEtran.layout:172 lib/layouts/amsmaths-plain.inc:104
+#: lib/layouts/IEEEtran.layout:172 lib/layouts/amsmaths-plain.inc:139
 #: lib/layouts/amsmaths-seq.inc:270 lib/layouts/amsmaths.inc:339
 msgid "Condition"
 msgstr "Pogoj"
@@ -3612,7 +3612,7 @@ msgid "Condition #:"
 msgstr "Pogoj"
 
 #: lib/layouts/IEEEtran.layout:182 lib/layouts/elsart.layout:381
-#: lib/layouts/llncs.layout:367 lib/layouts/amsmaths-plain.inc:110
+#: lib/layouts/llncs.layout:367 lib/layouts/amsmaths-plain.inc:148
 #: lib/layouts/amsmaths-seq.inc:281 lib/layouts/amsmaths.inc:363
 #: lib/layouts/svjour.inc:429
 msgid "Problem"
@@ -3624,7 +3624,7 @@ msgid "Problem #:"
 msgstr "Problem"
 
 #: lib/layouts/IEEEtran.layout:192 lib/layouts/llncs.layout:347
-#: lib/layouts/amsmaths-plain.inc:116 lib/layouts/amsmaths-seq.inc:292
+#: lib/layouts/amsmaths-plain.inc:157 lib/layouts/amsmaths-seq.inc:292
 #: lib/layouts/amsmaths.inc:387 lib/layouts/svjour.inc:404
 msgid "Exercise"
 msgstr "Vaja"
@@ -3636,7 +3636,7 @@ msgstr "Vaja"
 
 #: lib/layouts/IEEEtran.layout:202 lib/layouts/elsart.layout:388
 #: lib/layouts/ijmpc.layout:185 lib/layouts/ijmpd.layout:183
-#: lib/layouts/llncs.layout:401 lib/layouts/amsmaths-plain.inc:122
+#: lib/layouts/llncs.layout:401 lib/layouts/amsmaths-plain.inc:166
 #: lib/layouts/amsmaths-seq.inc:303 lib/layouts/amsmaths.inc:411
 #: lib/layouts/svjour.inc:464
 msgid "Remark"
@@ -3650,7 +3650,7 @@ msgstr "Pripomba"
 #: lib/layouts/IEEEtran.layout:212 lib/layouts/elsart.layout:402
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:297
 #: lib/layouts/ijmpd.layout:306 lib/layouts/llncs.layout:305
-#: lib/layouts/amsmaths-plain.inc:128 lib/layouts/amsmaths-seq.inc:314
+#: lib/layouts/amsmaths-plain.inc:175 lib/layouts/amsmaths-seq.inc:314
 #: lib/layouts/amsmaths.inc:444 lib/layouts/svjour.inc:348
 msgid "Claim"
 msgstr "Trditev"
@@ -3663,7 +3663,7 @@ msgstr "Trditev"
 #: lib/layouts/IEEEtran.layout:222 lib/layouts/apa.layout:213
 #: lib/layouts/elsart.layout:395 lib/layouts/iopart.layout:91
 #: lib/layouts/llncs.layout:360 lib/layouts/powerdot.layout:198
-#: lib/layouts/slides.layout:168 lib/layouts/amsmaths-plain.inc:134
+#: lib/layouts/slides.layout:168 lib/layouts/amsmaths-plain.inc:184
 #: lib/layouts/amsmaths-seq.inc:325 lib/layouts/amsmaths.inc:468
 #: lib/layouts/svjour.inc:422
 msgid "Note"
@@ -3675,7 +3675,7 @@ msgid "Note #:"
 msgstr "Opomba"
 
 #: lib/layouts/IEEEtran.layout:232 lib/layouts/ijmpc.layout:195
-#: lib/layouts/ijmpd.layout:194 lib/layouts/amsmaths-plain.inc:140
+#: lib/layouts/ijmpd.layout:194 lib/layouts/amsmaths-plain.inc:193
 #: lib/layouts/amsmaths-seq.inc:336 lib/layouts/amsmaths.inc:492
 msgid "Notation"
 msgstr "Zapis"
@@ -3695,90 +3695,91 @@ msgstr "Primer"
 msgid "Case #:"
 msgstr "Primer"
 
-#: lib/layouts/IEEEtran.layout:270 lib/layouts/aa.layout:37
-#: lib/layouts/aa.layout:216 lib/layouts/aapaper.layout:64
+#: lib/layouts/IEEEtran.layout:270 lib/layouts/aa.layout:40
+#: lib/layouts/aa.layout:219 lib/layouts/aapaper.layout:64
 #: lib/layouts/aapaper.layout:129 lib/layouts/aastex.layout:64
 #: lib/layouts/aastex.layout:166 lib/layouts/amsart.layout:60
 #: lib/layouts/amsbook.layout:46 lib/layouts/amsbook.layout:86
-#: lib/layouts/beamer.layout:144 lib/layouts/egs.layout:30
-#: lib/layouts/europecv.layout:28 lib/layouts/ijmpc.layout:99
-#: lib/layouts/ijmpd.layout:95 lib/layouts/isprs.layout:157
-#: lib/layouts/kluwer.layout:57 lib/layouts/latex8.layout:41
-#: lib/layouts/llncs.layout:44 lib/layouts/ltugboat.layout:45
-#: lib/layouts/manpage.layout:41 lib/layouts/memoir.layout:54
-#: lib/layouts/moderncv.layout:29 lib/layouts/paper.layout:44
-#: lib/layouts/powerdot.layout:224 lib/layouts/revtex.layout:38
-#: lib/layouts/revtex4.layout:44 lib/layouts/siamltex.layout:41
-#: lib/layouts/simplecv.layout:27 lib/layouts/spie.layout:19
-#: lib/layouts/agu_stdsections.inc:30 lib/layouts/aguplus.inc:27
-#: lib/layouts/db_stdsections.inc:28 lib/layouts/numarticle.inc:21
-#: lib/layouts/numreport.inc:18 lib/layouts/numrevtex.inc:6
-#: lib/layouts/scrclass.inc:61 lib/layouts/stdsections.inc:51
-#: lib/layouts/svjour.inc:52
+#: lib/layouts/apa.layout:324 lib/layouts/beamer.layout:144
+#: lib/layouts/egs.layout:30 lib/layouts/europecv.layout:28
+#: lib/layouts/ijmpc.layout:99 lib/layouts/ijmpd.layout:95
+#: lib/layouts/isprs.layout:157 lib/layouts/kluwer.layout:57
+#: lib/layouts/latex8.layout:41 lib/layouts/llncs.layout:44
+#: lib/layouts/ltugboat.layout:45 lib/layouts/manpage.layout:41
+#: lib/layouts/memoir.layout:54 lib/layouts/moderncv.layout:29
+#: lib/layouts/paper.layout:44 lib/layouts/powerdot.layout:224
+#: lib/layouts/revtex.layout:38 lib/layouts/revtex4.layout:44
+#: lib/layouts/siamltex.layout:41 lib/layouts/simplecv.layout:27
+#: lib/layouts/spie.layout:19 lib/layouts/agu_stdsections.inc:30
+#: lib/layouts/aguplus.inc:27 lib/layouts/db_stdsections.inc:28
+#: lib/layouts/numarticle.inc:21 lib/layouts/numreport.inc:18
+#: lib/layouts/numrevtex.inc:6 lib/layouts/scrclass.inc:61
+#: lib/layouts/stdsections.inc:51 lib/layouts/svjour.inc:52
 msgid "Section"
 msgstr "Razdelek"
 
-#: lib/layouts/IEEEtran.layout:280 lib/layouts/aa.layout:40
-#: lib/layouts/aa.layout:226 lib/layouts/aapaper.layout:67
+#: lib/layouts/IEEEtran.layout:280 lib/layouts/aa.layout:43
+#: lib/layouts/aa.layout:229 lib/layouts/aapaper.layout:67
 #: lib/layouts/aapaper.layout:138 lib/layouts/aastex.layout:67
 #: lib/layouts/aastex.layout:179 lib/layouts/amsart.layout:70
-#: lib/layouts/amsbook.layout:56 lib/layouts/beamer.layout:185
-#: lib/layouts/egs.layout:51 lib/layouts/ijmpc.layout:115
-#: lib/layouts/ijmpd.layout:111 lib/layouts/isprs.layout:168
-#: lib/layouts/kluwer.layout:66 lib/layouts/latex8.layout:49
-#: lib/layouts/llncs.layout:52 lib/layouts/ltugboat.layout:65
-#: lib/layouts/memoir.layout:59 lib/layouts/moderncv.layout:49
-#: lib/layouts/paper.layout:53 lib/layouts/revtex.layout:49
-#: lib/layouts/revtex4.layout:55 lib/layouts/siamltex.layout:59
-#: lib/layouts/simplecv.layout:48 lib/layouts/agu_stdsections.inc:40
-#: lib/layouts/aguplus.inc:41 lib/layouts/db_stdsections.inc:36
-#: lib/layouts/numarticle.inc:30 lib/layouts/numrevtex.inc:15
-#: lib/layouts/scrclass.inc:68 lib/layouts/stdsections.inc:72
-#: lib/layouts/svjour.inc:61
+#: lib/layouts/amsbook.layout:56 lib/layouts/apa.layout:334
+#: lib/layouts/beamer.layout:185 lib/layouts/egs.layout:51
+#: lib/layouts/ijmpc.layout:115 lib/layouts/ijmpd.layout:111
+#: lib/layouts/isprs.layout:168 lib/layouts/kluwer.layout:66
+#: lib/layouts/latex8.layout:49 lib/layouts/llncs.layout:52
+#: lib/layouts/ltugboat.layout:65 lib/layouts/memoir.layout:59
+#: lib/layouts/moderncv.layout:49 lib/layouts/paper.layout:53
+#: lib/layouts/revtex.layout:49 lib/layouts/revtex4.layout:55
+#: lib/layouts/siamltex.layout:59 lib/layouts/simplecv.layout:48
+#: lib/layouts/agu_stdsections.inc:40 lib/layouts/aguplus.inc:41
+#: lib/layouts/db_stdsections.inc:36 lib/layouts/numarticle.inc:30
+#: lib/layouts/numrevtex.inc:15 lib/layouts/scrclass.inc:68
+#: lib/layouts/stdsections.inc:72 lib/layouts/svjour.inc:61
 msgid "Subsection"
 msgstr "Podrazdelek"
 
-#: lib/layouts/IEEEtran.layout:288 lib/layouts/aa.layout:43
-#: lib/layouts/aa.layout:238 lib/layouts/aapaper.layout:70
+#: lib/layouts/IEEEtran.layout:288 lib/layouts/aa.layout:46
+#: lib/layouts/aa.layout:241 lib/layouts/aapaper.layout:70
 #: lib/layouts/aapaper.layout:149 lib/layouts/aastex.layout:70
 #: lib/layouts/aastex.layout:192 lib/layouts/amsart.layout:78
-#: lib/layouts/amsbook.layout:64 lib/layouts/ijmpc.layout:124
-#: lib/layouts/ijmpd.layout:120 lib/layouts/isprs.layout:177
-#: lib/layouts/kluwer.layout:75 lib/layouts/llncs.layout:60
-#: lib/layouts/ltugboat.layout:85 lib/layouts/memoir.layout:64
-#: lib/layouts/paper.layout:62 lib/layouts/revtex.layout:57
-#: lib/layouts/revtex4.layout:63 lib/layouts/siamltex.layout:65
-#: lib/layouts/agu_stdsections.inc:50 lib/layouts/db_stdsections.inc:44
-#: lib/layouts/numarticle.inc:39 lib/layouts/numrevtex.inc:24
-#: lib/layouts/scrclass.inc:75 lib/layouts/stdsections.inc:85
-#: lib/layouts/svjour.inc:70
+#: lib/layouts/amsbook.layout:64 lib/layouts/apa.layout:343
+#: lib/layouts/ijmpc.layout:124 lib/layouts/ijmpd.layout:120
+#: lib/layouts/isprs.layout:177 lib/layouts/kluwer.layout:75
+#: lib/layouts/llncs.layout:60 lib/layouts/ltugboat.layout:85
+#: lib/layouts/memoir.layout:64 lib/layouts/paper.layout:62
+#: lib/layouts/revtex.layout:57 lib/layouts/revtex4.layout:63
+#: lib/layouts/siamltex.layout:65 lib/layouts/agu_stdsections.inc:50
+#: lib/layouts/db_stdsections.inc:44 lib/layouts/numarticle.inc:39
+#: lib/layouts/numrevtex.inc:24 lib/layouts/scrclass.inc:75
+#: lib/layouts/stdsections.inc:85 lib/layouts/svjour.inc:70
 msgid "Subsubsection"
 msgstr "Podpodrazdelek"
 
-#: lib/layouts/IEEEtran.layout:296 lib/layouts/beamer.layout:176
-#: lib/layouts/egs.layout:587 lib/layouts/ijmpc.layout:107
-#: lib/layouts/ijmpd.layout:103 lib/layouts/isprs.layout:186
-#: lib/layouts/siamltex.layout:81 lib/layouts/spie.layout:29
-#: lib/layouts/aguplus.inc:34 lib/layouts/db_stdstarsections.inc:36
-#: lib/layouts/stdstarsections.inc:30
+#: lib/layouts/IEEEtran.layout:296 lib/layouts/apa.layout:303
+#: lib/layouts/beamer.layout:176 lib/layouts/egs.layout:587
+#: lib/layouts/ijmpc.layout:107 lib/layouts/ijmpd.layout:103
+#: lib/layouts/isprs.layout:186 lib/layouts/siamltex.layout:81
+#: lib/layouts/spie.layout:29 lib/layouts/aguplus.inc:34
+#: lib/layouts/db_stdstarsections.inc:36 lib/layouts/stdstarsections.inc:30
 msgid "Section*"
 msgstr "Razdelek*"
 
-#: lib/layouts/IEEEtran.layout:306 lib/layouts/beamer.layout:218
-#: lib/layouts/egs.layout:607 lib/layouts/isprs.layout:197
-#: lib/layouts/siamltex.layout:88 lib/layouts/aguplus.inc:48
-#: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:39
+#: lib/layouts/IEEEtran.layout:306 lib/layouts/apa.layout:307
+#: lib/layouts/beamer.layout:218 lib/layouts/egs.layout:607
+#: lib/layouts/isprs.layout:197 lib/layouts/siamltex.layout:88
+#: lib/layouts/aguplus.inc:48 lib/layouts/db_stdstarsections.inc:48
+#: lib/layouts/stdstarsections.inc:39
 msgid "Subsection*"
 msgstr "Podrazdelek*"
 
-#: lib/layouts/IEEEtran.layout:314 lib/layouts/isprs.layout:206
-#: lib/layouts/siamltex.layout:95 lib/layouts/db_stdstarsections.inc:60
-#: lib/layouts/stdstarsections.inc:48
+#: lib/layouts/IEEEtran.layout:314 lib/layouts/apa.layout:311
+#: lib/layouts/isprs.layout:206 lib/layouts/siamltex.layout:95
+#: lib/layouts/db_stdstarsections.inc:60 lib/layouts/stdstarsections.inc:48
 msgid "Subsubsection*"
 msgstr "Podpodrazdelek*"
 
-#: lib/layouts/IEEEtran.layout:329 lib/layouts/aa.layout:80
-#: lib/layouts/aa.layout:284 lib/layouts/aa.layout:300
+#: lib/layouts/IEEEtran.layout:329 lib/layouts/aa.layout:83
+#: lib/layouts/aa.layout:287 lib/layouts/aa.layout:303
 #: lib/layouts/aapaper.layout:97 lib/layouts/aapaper.layout:192
 #: lib/layouts/aastex.layout:106 lib/layouts/aastex.layout:244
 #: lib/layouts/apa.layout:70 lib/layouts/cl2emult.layout:79
@@ -3806,14 +3807,15 @@ msgstr "Povzetek"
 msgid "Abstract---"
 msgstr "Povzetek"
 
-#: lib/layouts/IEEEtran.layout:349 lib/layouts/aastex.layout:109
-#: lib/layouts/aastex.layout:281 lib/layouts/elsart.layout:64
-#: lib/layouts/ijmpc.layout:77 lib/layouts/ijmpd.layout:80
-#: lib/layouts/iopart.layout:194 lib/layouts/isprs.layout:52
-#: lib/layouts/kluwer.layout:282 lib/layouts/paper.layout:174
-#: lib/layouts/revtex4.layout:241 lib/layouts/siamltex.layout:169
-#: lib/layouts/spie.layout:39 lib/layouts/agu_stdtitle.inc:120
-#: lib/layouts/amsdefs.inc:193 lib/layouts/svjour.inc:273
+#: lib/layouts/IEEEtran.layout:349 lib/layouts/aa.layout:317
+#: lib/layouts/aastex.layout:109 lib/layouts/aastex.layout:281
+#: lib/layouts/elsart.layout:64 lib/layouts/ijmpc.layout:77
+#: lib/layouts/ijmpd.layout:80 lib/layouts/iopart.layout:194
+#: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
+#: lib/layouts/paper.layout:174 lib/layouts/revtex4.layout:241
+#: lib/layouts/siamltex.layout:169 lib/layouts/spie.layout:39
+#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:193
+#: lib/layouts/svjour.inc:273
 msgid "Keywords"
 msgstr "Kljuène besede"
 
@@ -3822,8 +3824,8 @@ msgstr "Kljuène besede"
 msgid "Index Terms---"
 msgstr "Vnos v stvarno kazalo"
 
-#: lib/layouts/IEEEtran.layout:372 lib/layouts/aa.layout:86
-#: lib/layouts/aa.layout:314 lib/layouts/aapaper.layout:103
+#: lib/layouts/IEEEtran.layout:372 lib/layouts/aa.layout:89
+#: lib/layouts/aa.layout:347 lib/layouts/aapaper.layout:103
 #: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:853
 #: lib/layouts/book.layout:21 lib/layouts/book.layout:23
 #: lib/layouts/cl2emult.layout:102 lib/layouts/egs.layout:563
@@ -3873,8 +3875,8 @@ msgstr "OpombaPodÈrto"
 msgid "MarkBoth"
 msgstr "OznaèiOboje"
 
-#: lib/layouts/aa.layout:46 lib/layouts/aapaper.layout:48
-#: lib/layouts/aastex.layout:76 lib/layouts/apa.layout:308
+#: lib/layouts/aa.layout:49 lib/layouts/aapaper.layout:48
+#: lib/layouts/aastex.layout:76 lib/layouts/apa.layout:371
 #: lib/layouts/beamer.layout:50 lib/layouts/egs.layout:163
 #: lib/layouts/manpage.layout:82 lib/layouts/powerdot.layout:242
 #: lib/layouts/simplecv.layout:77 lib/layouts/agu_stdlists.inc:13
@@ -3882,8 +3884,8 @@ msgstr "OznaèiOboje"
 msgid "Itemize"
 msgstr "Alineje"
 
-#: lib/layouts/aa.layout:49 lib/layouts/aapaper.layout:51
-#: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:326
+#: lib/layouts/aa.layout:52 lib/layouts/aapaper.layout:51
+#: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:389
 #: lib/layouts/beamer.layout:69 lib/layouts/egs.layout:145
 #: lib/layouts/manpage.layout:65 lib/layouts/powerdot.layout:267
 #: lib/layouts/agu_stdlists.inc:21 lib/layouts/db_stdlists.inc:19
@@ -3891,7 +3893,7 @@ msgstr "Alineje"
 msgid "Enumerate"
 msgstr "O¹tevilèi"
 
-#: lib/layouts/aa.layout:52 lib/layouts/aapaper.layout:54
+#: lib/layouts/aa.layout:55 lib/layouts/aapaper.layout:54
 #: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:88
 #: lib/layouts/egs.layout:181 lib/layouts/hollywood.layout:134
 #: lib/layouts/manpage.layout:100 lib/layouts/paper.layout:103
@@ -3902,7 +3904,7 @@ msgstr "O¹tevilèi"
 msgid "Description"
 msgstr "Opis"
 
-#: lib/layouts/aa.layout:55 lib/layouts/aapaper.layout:57
+#: lib/layouts/aa.layout:58 lib/layouts/aapaper.layout:57
 #: lib/layouts/aastex.layout:85 lib/layouts/egs.layout:128
 #: lib/layouts/scrlettr.layout:32 lib/layouts/scrlttr2.layout:34
 #: lib/layouts/scrclass.inc:40 lib/layouts/stdlists.inc:69
@@ -3910,7 +3912,7 @@ msgstr "Opis"
 msgid "List"
 msgstr "Seznam"
 
-#: lib/layouts/aa.layout:59 lib/layouts/aa.layout:248
+#: lib/layouts/aa.layout:62 lib/layouts/aa.layout:251
 #: lib/layouts/aapaper.layout:73 lib/layouts/aapaper.layout:159
 #: lib/layouts/aastex.layout:88 lib/layouts/aastex.layout:206
 #: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:730
@@ -3934,7 +3936,7 @@ msgstr "Seznam"
 msgid "Title"
 msgstr "Naslov"
 
-#: lib/layouts/aa.layout:62 lib/layouts/aa.layout:106
+#: lib/layouts/aa.layout:65 lib/layouts/aa.layout:109
 #: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:761
 #: lib/layouts/kluwer.layout:122 lib/layouts/llncs.layout:122
 #: lib/layouts/svprobth.layout:44 lib/layouts/aapaper.inc:9
@@ -3942,7 +3944,7 @@ msgstr "Naslov"
 msgid "Subtitle"
 msgstr "Podnaslov"
 
-#: lib/layouts/aa.layout:65 lib/layouts/aa.layout:260
+#: lib/layouts/aa.layout:68 lib/layouts/aa.layout:263
 #: lib/layouts/aapaper.layout:79 lib/layouts/aapaper.layout:170
 #: lib/layouts/aastex.layout:91 lib/layouts/aastex.layout:219
 #: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:786
@@ -3962,7 +3964,7 @@ msgstr "Podnaslov"
 msgid "Author"
 msgstr "Avtor"
 
-#: lib/layouts/aa.layout:68 lib/layouts/aa.layout:127
+#: lib/layouts/aa.layout:71 lib/layouts/aa.layout:130
 #: lib/layouts/aapaper.layout:82 lib/layouts/egs.layout:234
 #: lib/layouts/entcs.layout:57 lib/layouts/g-brief-en.layout:179
 #: lib/layouts/g-brief2.layout:715 lib/layouts/ijmpc.layout:50
@@ -3975,17 +3977,17 @@ msgstr "Avtor"
 msgid "Address"
 msgstr "Naslov"
 
-#: lib/layouts/aa.layout:71 lib/layouts/aa.layout:144
+#: lib/layouts/aa.layout:74 lib/layouts/aa.layout:147
 #: lib/layouts/aapaper.layout:88 lib/layouts/aapaper.inc:65
 msgid "Offprint"
 msgstr "Posebni odtis"
 
-#: lib/layouts/aa.layout:74 lib/layouts/aa.layout:167
+#: lib/layouts/aa.layout:77 lib/layouts/aa.layout:170
 #: lib/layouts/svjour.inc:236
 msgid "Mail"
 msgstr "Po¹ta"
 
-#: lib/layouts/aa.layout:77 lib/layouts/aa.layout:272
+#: lib/layouts/aa.layout:80 lib/layouts/aa.layout:275
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.layout:181
 #: lib/layouts/aastex.layout:103 lib/layouts/aastex.layout:232
 #: lib/layouts/beamer.layout:830 lib/layouts/egs.layout:476
@@ -4002,31 +4004,36 @@ msgstr "Po¹ta"
 msgid "Date"
 msgstr "Datum"
 
-#: lib/layouts/aa.layout:83 lib/layouts/aa.layout:190
+#: lib/layouts/aa.layout:86 lib/layouts/aa.layout:193
 #: lib/layouts/aapaper.layout:100 lib/layouts/egs.layout:538
 #: lib/layouts/elsart.layout:427 lib/layouts/aapaper.inc:83
-#: lib/layouts/amsmaths-plain.inc:152 lib/layouts/amsmaths-seq.inc:358
+#: lib/layouts/amsmaths-plain.inc:211 lib/layouts/amsmaths-seq.inc:358
 #: lib/layouts/amsmaths.inc:540 lib/layouts/svjour.inc:319
 msgid "Acknowledgement"
 msgstr "Priznanje"
 
-#: lib/layouts/aa.layout:153 lib/layouts/aapaper.inc:74
+#: lib/layouts/aa.layout:156 lib/layouts/aapaper.inc:74
 #, fuzzy
 msgid "Offprint Requests to:"
 msgstr "PosebniOdtis"
 
-#: lib/layouts/aa.layout:176
+#: lib/layouts/aa.layout:179
 msgid "Correspondence to:"
 msgstr ""
 
-#: lib/layouts/aa.layout:202 lib/layouts/egs.layout:527
+#: lib/layouts/aa.layout:205 lib/layouts/egs.layout:527
 #: lib/layouts/svjour.inc:308
 #, fuzzy
 msgid "Acknowledgements."
 msgstr "Priznanja"
 
+#: lib/layouts/aa.layout:333 lib/layouts/siamltex.layout:172
+#, fuzzy
+msgid "Key words."
+msgstr "Kljuène besede"
+
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:623
-#: src/frontends/qt4/QPrefs.cpp:305
+#: src/frontends/qt4/QPrefs.cpp:306
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -4043,15 +4050,15 @@ msgid "Thesaurus"
 msgstr "Tezaver"
 
 #: lib/layouts/aastex.layout:73 lib/layouts/amsbook.layout:92
-#: lib/layouts/egs.layout:69 lib/layouts/kluwer.layout:84
-#: lib/layouts/llncs.layout:68 lib/layouts/ltugboat.layout:105
-#: lib/layouts/memoir.layout:69 lib/layouts/paper.layout:71
-#: lib/layouts/revtex.layout:65 lib/layouts/revtex4.layout:71
-#: lib/layouts/siamltex.layout:71 lib/layouts/agu_stdsections.inc:60
-#: lib/layouts/aguplus.inc:55 lib/layouts/db_stdsections.inc:52
-#: lib/layouts/numarticle.inc:48 lib/layouts/numrevtex.inc:33
-#: lib/layouts/scrclass.inc:82 lib/layouts/stdsections.inc:97
-#: lib/layouts/svjour.inc:79
+#: lib/layouts/apa.layout:352 lib/layouts/egs.layout:69
+#: lib/layouts/kluwer.layout:84 lib/layouts/llncs.layout:68
+#: lib/layouts/ltugboat.layout:105 lib/layouts/memoir.layout:69
+#: lib/layouts/paper.layout:71 lib/layouts/revtex.layout:65
+#: lib/layouts/revtex4.layout:71 lib/layouts/siamltex.layout:71
+#: lib/layouts/agu_stdsections.inc:60 lib/layouts/aguplus.inc:55
+#: lib/layouts/db_stdsections.inc:52 lib/layouts/numarticle.inc:48
+#: lib/layouts/numrevtex.inc:33 lib/layouts/scrclass.inc:82
+#: lib/layouts/stdsections.inc:97 lib/layouts/svjour.inc:79
 msgid "Paragraph"
 msgstr "Odstavek"
 
@@ -4296,18 +4303,38 @@ msgstr "PrilagodiSliko"
 msgid "FitBitmap"
 msgstr "PrilagodiBitnoSliko"
 
-#: lib/layouts/apa.layout:322 lib/layouts/beamer.layout:65
+#: lib/layouts/apa.layout:315 lib/layouts/siamltex.layout:102
+#: lib/layouts/aguplus.inc:66 lib/layouts/db_stdstarsections.inc:72
+#: lib/layouts/stdstarsections.inc:57
+msgid "Paragraph*"
+msgstr "Odstavek*"
+
+#: lib/layouts/apa.layout:319 lib/layouts/db_stdstarsections.inc:84
+#: lib/layouts/stdstarsections.inc:66
+msgid "Subparagraph*"
+msgstr "Pododstavek*"
+
+#: lib/layouts/apa.layout:361 lib/layouts/egs.layout:86
+#: lib/layouts/kluwer.layout:93 lib/layouts/llncs.layout:77
+#: lib/layouts/memoir.layout:74 lib/layouts/paper.layout:80
+#: lib/layouts/agu_stdsections.inc:70 lib/layouts/db_stdsections.inc:60
+#: lib/layouts/numarticle.inc:57 lib/layouts/scrclass.inc:89
+#: lib/layouts/stdsections.inc:105 lib/layouts/svjour.inc:88
+msgid "Subparagraph"
+msgstr "Pododstavek"
+
+#: lib/layouts/apa.layout:385 lib/layouts/beamer.layout:65
 #: lib/layouts/egs.layout:177 lib/layouts/manpage.layout:96
 #: lib/layouts/powerdot.layout:256 lib/layouts/simplecv.layout:91
 #: lib/layouts/stdlists.inc:25
 msgid "*"
 msgstr "*"
 
-#: lib/layouts/apa.layout:344
+#: lib/layouts/apa.layout:407
 msgid "Seriate"
 msgstr "Uredi v zaporedja"
 
-#: lib/layouts/apa.layout:360 lib/layouts/apa.layout:361
+#: lib/layouts/apa.layout:423 lib/layouts/apa.layout:424
 #: src/buffer_funcs.cpp:596
 msgid "(\\alph{enumii})"
 msgstr ""
@@ -4527,14 +4554,14 @@ msgid "TitleGraphic"
 msgstr "Grafika"
 
 #: lib/layouts/beamer.layout:912 lib/layouts/foils.layout:315
-#: lib/layouts/siamltex.layout:284 lib/layouts/amsmaths-plain.inc:46
+#: lib/layouts/siamltex.layout:284 lib/layouts/amsmaths-plain.inc:51
 #: lib/layouts/amsmaths.inc:107
 #, fuzzy
 msgid "Corollary."
 msgstr "Korolar"
 
 #: lib/layouts/beamer.layout:932 lib/layouts/foils.layout:329
-#: lib/layouts/siamltex.layout:297 lib/layouts/amsmaths-plain.inc:94
+#: lib/layouts/siamltex.layout:297 lib/layouts/amsmaths-plain.inc:123
 #: lib/layouts/amsmaths.inc:307
 #, fuzzy
 msgid "Definition."
@@ -4550,7 +4577,7 @@ msgstr "Definicija"
 msgid "Definitions."
 msgstr "Definicija"
 
-#: lib/layouts/beamer.layout:944 lib/layouts/amsmaths-plain.inc:100
+#: lib/layouts/beamer.layout:944 lib/layouts/amsmaths-plain.inc:132
 #: lib/layouts/amsmaths.inc:331
 #, fuzzy
 msgid "Example."
@@ -4566,7 +4593,7 @@ msgstr "Zgled"
 msgid "Examples."
 msgstr "Zgled"
 
-#: lib/layouts/beamer.layout:962 lib/layouts/amsmaths-plain.inc:82
+#: lib/layouts/beamer.layout:962 lib/layouts/amsmaths-plain.inc:105
 #: lib/layouts/amsmaths.inc:251
 #, fuzzy
 msgid "Fact."
@@ -4913,15 +4940,6 @@ msgstr "Datum"
 msgid "Datum:"
 msgstr "Datum"
 
-#: lib/layouts/egs.layout:86 lib/layouts/kluwer.layout:93
-#: lib/layouts/llncs.layout:77 lib/layouts/memoir.layout:74
-#: lib/layouts/paper.layout:80 lib/layouts/agu_stdsections.inc:70
-#: lib/layouts/db_stdsections.inc:60 lib/layouts/numarticle.inc:57
-#: lib/layouts/scrclass.inc:89 lib/layouts/stdsections.inc:105
-#: lib/layouts/svjour.inc:88
-msgid "Subparagraph"
-msgstr "Pododstavek"
-
 #: lib/layouts/egs.layout:94 lib/layouts/powerdot.layout:313
 #: lib/layouts/db_stdlayouts.inc:18 lib/layouts/stdlayouts.inc:11
 msgid "Quotation"
@@ -5019,7 +5037,7 @@ msgstr ""
 msgid "Abstract."
 msgstr "Povzetek"
 
-#: lib/layouts/egs.layout:552 lib/layouts/amsmaths-plain.inc:154
+#: lib/layouts/egs.layout:552 lib/layouts/amsmaths-plain.inc:213
 #: lib/layouts/amsmaths.inc:556 lib/layouts/svjour.inc:322
 #, fuzzy
 msgid "Acknowledgement."
@@ -5086,7 +5104,7 @@ msgid "Criterion \\arabic{theorem}"
 msgstr ""
 
 #: lib/layouts/elsart.layout:346 lib/layouts/powerdot.layout:398
-#: lib/layouts/amsmaths-plain.inc:74 lib/layouts/amsmaths-seq.inc:215
+#: lib/layouts/amsmaths-plain.inc:94 lib/layouts/amsmaths-seq.inc:215
 #: lib/layouts/amsmaths.inc:211 lib/layouts/stdfloats.inc:34
 msgid "Algorithm"
 msgstr "Algoritem"
@@ -5123,7 +5141,7 @@ msgstr ""
 msgid "Claim \\arabic{theorem}"
 msgstr ""
 
-#: lib/layouts/elsart.layout:409 lib/layouts/amsmaths-plain.inc:146
+#: lib/layouts/elsart.layout:409 lib/layouts/amsmaths-plain.inc:202
 #: lib/layouts/amsmaths-seq.inc:347 lib/layouts/amsmaths.inc:516
 msgid "Summary"
 msgstr "Povzetek"
@@ -5363,7 +5381,7 @@ msgid "Lemma*"
 msgstr "Lema*"
 
 #: lib/layouts/foils.layout:308 lib/layouts/siamltex.layout:277
-#: lib/layouts/amsmaths-plain.inc:52 lib/layouts/amsmaths.inc:131
+#: lib/layouts/amsmaths-plain.inc:60 lib/layouts/amsmaths.inc:131
 #, fuzzy
 msgid "Lemma."
 msgstr "Lema"
@@ -5379,7 +5397,7 @@ msgid "Proposition*"
 msgstr "Podmena*"
 
 #: lib/layouts/foils.layout:322 lib/layouts/siamltex.layout:291
-#: lib/layouts/amsmaths-plain.inc:58 lib/layouts/amsmaths.inc:155
+#: lib/layouts/amsmaths-plain.inc:69 lib/layouts/amsmaths.inc:155
 #, fuzzy
 msgid "Proposition."
 msgstr "Podmena"
@@ -6283,7 +6301,7 @@ msgstr "Predogled|#P"
 msgid "Topical"
 msgstr "Tema"
 
-#: lib/layouts/iopart.layout:85 src/insets/InsetNote.cpp:65
+#: lib/layouts/iopart.layout:85 src/insets/InsetNote.cpp:66
 msgid "Comment"
 msgstr "Komentar"
 
@@ -6431,7 +6449,7 @@ msgstr "Avtor_za_kazalo"
 msgid "Case #."
 msgstr "Primer"
 
-#: lib/layouts/llncs.layout:308 lib/layouts/amsmaths-plain.inc:130
+#: lib/layouts/llncs.layout:308 lib/layouts/amsmaths-plain.inc:177
 #: lib/layouts/amsmaths.inc:460 lib/layouts/svjour.inc:362
 #, fuzzy
 msgid "Claim."
@@ -6848,7 +6866,7 @@ msgstr "NaslovPo¹iljatelja"
 msgid "Sender Phone:"
 msgstr ""
 
-#: lib/layouts/scrlttr2.layout:195
+#: lib/layouts/scrlttr2.layout:195 lib/configure.py:311
 msgid "Fax"
 msgstr "Faks"
 
@@ -6949,16 +6967,6 @@ msgstr "VsebinaNapredka"
 #: lib/layouts/siamltex.layout:52
 msgid "."
 msgstr ""
-
-#: lib/layouts/siamltex.layout:102 lib/layouts/aguplus.inc:66
-#: lib/layouts/db_stdstarsections.inc:72 lib/layouts/stdstarsections.inc:57
-msgid "Paragraph*"
-msgstr "Odstavek*"
-
-#: lib/layouts/siamltex.layout:172
-#, fuzzy
-msgid "Key words."
-msgstr "Kljuène besede"
 
 #: lib/layouts/siamltex.layout:176
 msgid "AMS"
@@ -7367,77 +7375,77 @@ msgstr "Razredpredmeta"
 msgid "2000 Mathematics Subject Classification:"
 msgstr "osve¾ene doloèitve razreda spisa."
 
-#: lib/layouts/amsmaths-plain.inc:64 lib/layouts/amsmaths.inc:180
+#: lib/layouts/amsmaths-plain.inc:78 lib/layouts/amsmaths.inc:180
 #, fuzzy
 msgid "Conjecture."
 msgstr "Domneva"
 
-#: lib/layouts/amsmaths-plain.inc:70 lib/layouts/amsmaths.inc:203
+#: lib/layouts/amsmaths-plain.inc:87 lib/layouts/amsmaths.inc:203
 #, fuzzy
 msgid "Criterion."
 msgstr "Kriterij"
 
-#: lib/layouts/amsmaths-plain.inc:76 lib/layouts/amsmaths.inc:227
+#: lib/layouts/amsmaths-plain.inc:96 lib/layouts/amsmaths.inc:227
 #, fuzzy
 msgid "Algorithm."
 msgstr "Algoritem"
 
-#: lib/layouts/amsmaths-plain.inc:88 lib/layouts/amsmaths.inc:275
+#: lib/layouts/amsmaths-plain.inc:114 lib/layouts/amsmaths.inc:275
 #, fuzzy
 msgid "Axiom."
 msgstr "Aksiom"
 
-#: lib/layouts/amsmaths-plain.inc:106 lib/layouts/amsmaths.inc:355
+#: lib/layouts/amsmaths-plain.inc:141 lib/layouts/amsmaths.inc:355
 #, fuzzy
 msgid "Condition."
 msgstr "Pogoj"
 
-#: lib/layouts/amsmaths-plain.inc:112 lib/layouts/amsmaths.inc:379
+#: lib/layouts/amsmaths-plain.inc:150 lib/layouts/amsmaths.inc:379
 #, fuzzy
 msgid "Problem."
 msgstr "Problem"
 
-#: lib/layouts/amsmaths-plain.inc:118 lib/layouts/amsmaths.inc:403
+#: lib/layouts/amsmaths-plain.inc:159 lib/layouts/amsmaths.inc:403
 #, fuzzy
 msgid "Exercise."
 msgstr "Vaja"
 
-#: lib/layouts/amsmaths-plain.inc:124 lib/layouts/amsmaths.inc:436
+#: lib/layouts/amsmaths-plain.inc:168 lib/layouts/amsmaths.inc:436
 #, fuzzy
 msgid "Remark."
 msgstr "Pripomba"
 
-#: lib/layouts/amsmaths-plain.inc:136 lib/layouts/amsmaths.inc:484
+#: lib/layouts/amsmaths-plain.inc:186 lib/layouts/amsmaths.inc:484
 #, fuzzy
 msgid "Note."
 msgstr "Opomba"
 
-#: lib/layouts/amsmaths-plain.inc:142 lib/layouts/amsmaths.inc:508
+#: lib/layouts/amsmaths-plain.inc:195 lib/layouts/amsmaths.inc:508
 #, fuzzy
 msgid "Notation."
 msgstr "Zapis"
 
-#: lib/layouts/amsmaths-plain.inc:148 lib/layouts/amsmaths.inc:532
+#: lib/layouts/amsmaths-plain.inc:204 lib/layouts/amsmaths.inc:532
 #, fuzzy
 msgid "Summary."
 msgstr "Povzetek"
 
-#: lib/layouts/amsmaths-plain.inc:158 lib/layouts/amsmaths-seq.inc:369
+#: lib/layouts/amsmaths-plain.inc:220 lib/layouts/amsmaths-seq.inc:369
 #: lib/layouts/amsmaths.inc:564
 msgid "Conclusion"
 msgstr "Sklep"
 
-#: lib/layouts/amsmaths-plain.inc:160 lib/layouts/amsmaths.inc:580
+#: lib/layouts/amsmaths-plain.inc:222 lib/layouts/amsmaths.inc:580
 #, fuzzy
 msgid "Conclusion."
 msgstr "Sklep"
 
-#: lib/layouts/amsmaths-plain.inc:164 lib/layouts/amsmaths-seq.inc:380
+#: lib/layouts/amsmaths-plain.inc:229 lib/layouts/amsmaths-seq.inc:380
 #: lib/layouts/amsmaths.inc:588
 msgid "Assumption"
 msgstr ""
 
-#: lib/layouts/amsmaths-plain.inc:166 lib/layouts/amsmaths.inc:604
+#: lib/layouts/amsmaths-plain.inc:231 lib/layouts/amsmaths.inc:604
 #, fuzzy
 msgid "Assumption."
 msgstr "Pojasnilo"
@@ -7663,10 +7671,6 @@ msgstr "Dobesedno"
 #: lib/layouts/db_stdstarsections.inc:24 lib/layouts/stdstarsections.inc:21
 msgid "Chapter*"
 msgstr "Poglavje*"
-
-#: lib/layouts/db_stdstarsections.inc:84 lib/layouts/stdstarsections.inc:66
-msgid "Subparagraph*"
-msgstr "Pododstavek*"
 
 #: lib/layouts/db_stdtitle.inc:27
 msgid "Authorgroup"
@@ -8263,7 +8267,7 @@ msgstr "Tabela|T"
 msgid "Math|M"
 msgstr "Matematika|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:461
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:459
 msgid "Spellchecker...|S"
 msgstr "Èrkovalnik...|r"
 
@@ -8271,12 +8275,12 @@ msgstr "Èrkovalnik...|r"
 msgid "Thesaurus..."
 msgstr "Tezaver..."
 
-#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:463
+#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:461
 #, fuzzy
 msgid "Count Words|W"
 msgstr "Trenutna beseda"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:464
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:462
 msgid "Check TeX|h"
 msgstr "Preveri TeX|T"
 
@@ -8285,11 +8289,11 @@ msgstr "Preveri TeX|T"
 msgid "Change Tracking|g"
 msgstr "Jezik"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:471
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:469
 msgid "Preferences...|P"
 msgstr "Izbire...|I"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:470
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:468
 msgid "Reconfigure|R"
 msgstr "Vnovièno ukroji|V"
 
@@ -8510,7 +8514,7 @@ msgstr "Okolje Gather"
 msgid "Multline Environment"
 msgstr "Okolje Multline"
 
-#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:291 lib/ui/stdmenus.inc:483
+#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:291 lib/ui/stdmenus.inc:481
 msgid "Math|h"
 msgstr "Matematika|M"
 
@@ -8805,44 +8809,44 @@ msgstr ""
 msgid "Floatflt Figure"
 msgstr "PrilagodiSliko"
 
-#: lib/ui/classic.ui:310 lib/ui/stdmenus.inc:379
+#: lib/ui/classic.ui:310 lib/ui/stdmenus.inc:377
 msgid "Table of Contents|C"
 msgstr "Vsebinsko kazalo|V"
 
-#: lib/ui/classic.ui:312 lib/ui/stdmenus.inc:381
+#: lib/ui/classic.ui:312 lib/ui/stdmenus.inc:379
 msgid "Index List|I"
 msgstr "Stvarno kazalo|v"
 
-#: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:382
+#: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:380
 #, fuzzy
 msgid "Nomenclature|N"
 msgstr "Opomba|O"
 
-#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:383
+#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:381
 #, fuzzy
 msgid "BibTeX Bibliography...|B"
 msgstr "Literatura"
 
-#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:387
+#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:385
 msgid "LyX Document...|X"
 msgstr "Dokument v LyXu...|X"
 
-#: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:388
+#: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:386
 #, fuzzy
 msgid "Plain Text...|T"
 msgstr "Umesti"
 
-#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:389
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:387
 #, fuzzy
 msgid "Plain Text, Join Lines...|J"
 msgstr "Ascii kot vrstice...|v"
 
-#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:423
+#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:421
 #, fuzzy
 msgid "Track Changes|T"
 msgstr "Zapi¹i spremembe...|Z"
 
-#: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:424
+#: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:422
 #, fuzzy
 msgid "Merge Changes...|M"
 msgstr "Zapi¹i spremembe...|Z"
@@ -8855,7 +8859,7 @@ msgstr ""
 msgid "Reject All Changes|R"
 msgstr ""
 
-#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:429
+#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:427
 #, fuzzy
 msgid "Show Changes in Output|S"
 msgstr "©irina slike na izhodu"
@@ -8900,7 +8904,7 @@ msgstr "Poveèaj globino okolja|v"
 msgid "Start Appendix Here|S"
 msgstr "Tu zaèni dodatek|d"
 
-#: lib/ui/classic.ui:356 lib/ui/stdmenus.inc:413
+#: lib/ui/classic.ui:356 lib/ui/stdmenus.inc:411
 msgid "Build Program|B"
 msgstr "Zgradi program|Z"
 
@@ -8908,12 +8912,12 @@ msgstr "Zgradi program|Z"
 msgid "Update|U"
 msgstr "Osve¾i|O"
 
-#: lib/ui/classic.ui:359 lib/ui/stdmenus.inc:414
+#: lib/ui/classic.ui:359 lib/ui/stdmenus.inc:412
 #, fuzzy
 msgid "LaTeX Log|L"
 msgstr "Dnevnik LaTeXa"
 
-#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:415
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:413
 msgid "Outline|O"
 msgstr ""
 
@@ -8921,38 +8925,38 @@ msgstr ""
 msgid "TeX Information|X"
 msgstr "Podatki za TeX|X"
 
-#: lib/ui/classic.ui:374 lib/ui/stdmenus.inc:437
+#: lib/ui/classic.ui:374 lib/ui/stdmenus.inc:435
 #, fuzzy
 msgid "Next Note|N"
 msgstr "Opomba|O"
 
-#: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:440
+#: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:438
 #, fuzzy
 msgid "Go to Label|L"
 msgstr "Naj&dalj¹a oznaka"
 
-#: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:436
+#: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:434
 msgid "Bookmarks|B"
 msgstr "Zaznamki|Z"
 
-#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:446
+#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:444
 msgid "Save Bookmark 1|S"
 msgstr "Shrani zaznamek 1|S"
 
-#: lib/ui/classic.ui:381 lib/ui/stdmenus.inc:447
+#: lib/ui/classic.ui:381 lib/ui/stdmenus.inc:445
 msgid "Save Bookmark 2"
 msgstr "Shrani zaznamek 2"
 
-#: lib/ui/classic.ui:382 lib/ui/stdmenus.inc:448
+#: lib/ui/classic.ui:382 lib/ui/stdmenus.inc:446
 msgid "Save Bookmark 3"
 msgstr "Shrani zaznamek 3"
 
-#: lib/ui/classic.ui:383 lib/ui/stdmenus.inc:449
+#: lib/ui/classic.ui:383 lib/ui/stdmenus.inc:447
 #, fuzzy
 msgid "Save Bookmark 4"
 msgstr "Shrani zaznamek 2"
 
-#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:450
+#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:448
 #, fuzzy
 msgid "Save Bookmark 5"
 msgstr "Shrani zaznamek 2"
@@ -8982,43 +8986,43 @@ msgstr "Pojdi na zaznamek 3|3"
 msgid "Go to Bookmark 5|5"
 msgstr "Pojdi na zaznamek 3|3"
 
-#: lib/ui/classic.ui:405 lib/ui/stdmenus.inc:478
+#: lib/ui/classic.ui:405 lib/ui/stdmenus.inc:476
 msgid "Introduction|I"
 msgstr "Uvod|U"
 
-#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:479
+#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:477
 msgid "Tutorial|T"
 msgstr "Uèbenik|b"
 
-#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:480
+#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:478
 msgid "User's Guide|U"
 msgstr "Uporabni¹ki vodnik|v"
 
-#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:481
+#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:479
 msgid "Extended Features|E"
 msgstr "Dodatne lastnosti|l"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:482
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:480
 msgid "Embedded Objects|m"
 msgstr ""
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:484
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:482
 msgid "Customization|C"
 msgstr "Prilagoditev|P"
 
-#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:485
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:483
 msgid "FAQ|F"
 msgstr "Pogosta vpra¹anja|v"
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:486
+#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:484
 msgid "Table of Contents|a"
 msgstr "Vsebinsko kazalo|k"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:487
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:485
 msgid "LaTeX Configuration|L"
 msgstr "Prikrojitev LaTeXa|L"
 
-#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:489
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:487
 msgid "About LyX|X"
 msgstr "O LyXu|X"
 
@@ -9079,17 +9083,17 @@ msgstr ""
 msgid "Redo|R"
 msgstr "Ponovi|o"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:869
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:873
 #: src/mathed/InsetMathNest.cpp:533
 msgid "Cut"
 msgstr "Izre¾i"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:874
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:878
 #: src/mathed/InsetMathNest.cpp:541
 msgid "Copy"
 msgstr "Prepi¹i"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:851
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:855
 #: src/mathed/InsetMathGrid.cpp:1259 src/mathed/InsetMathNest.cpp:513
 msgid "Paste"
 msgstr "Prilepi"
@@ -9563,109 +9567,104 @@ msgstr "Matematièna loèila"
 msgid "Matrix|x"
 msgstr "Matematièna matrika"
 
-#: lib/ui/stdmenus.inc:369 lib/ui/stdtoolbars.inc:164
-#, fuzzy
-msgid "Toggle Math Panels"
-msgstr "Matematièna plo¹èa"
-
-#: lib/ui/stdmenus.inc:375
+#: lib/ui/stdmenus.inc:373
 #, fuzzy
 msgid "Text Wrap Float|W"
 msgstr "Vstavi tabelo"
 
-#: lib/ui/stdmenus.inc:391
+#: lib/ui/stdmenus.inc:389
 #, fuzzy
 msgid "External Material...|M"
 msgstr "Zunanji material...|Z"
 
-#: lib/ui/stdmenus.inc:392
+#: lib/ui/stdmenus.inc:390
 #, fuzzy
 msgid "Child Document...|d"
 msgstr "Spis...|S"
 
-#: lib/ui/stdmenus.inc:396
+#: lib/ui/stdmenus.inc:394
 #, fuzzy
 msgid "LyX Note|N"
 msgstr "Opomba|O"
 
-#: lib/ui/stdmenus.inc:397
+#: lib/ui/stdmenus.inc:395
 #, fuzzy
 msgid "Comment|C"
 msgstr "Komentar"
 
-#: lib/ui/stdmenus.inc:398
+#: lib/ui/stdmenus.inc:396
 #, fuzzy
 msgid "Framed|F"
 msgstr "Parametri"
 
-#: lib/ui/stdmenus.inc:399
+#: lib/ui/stdmenus.inc:397
 msgid "Greyed Out|G"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:400
+#: lib/ui/stdmenus.inc:398
 #, fuzzy
 msgid "Shaded|S"
 msgstr "&Oblika:"
 
-#: lib/ui/stdmenus.inc:412
+#: lib/ui/stdmenus.inc:410
 #, fuzzy
 msgid "Change Tracking|C"
 msgstr "Jezik"
 
-#: lib/ui/stdmenus.inc:416
+#: lib/ui/stdmenus.inc:414
 #, fuzzy
 msgid "Start Appendix Here|A"
 msgstr "Tu zaèni dodatek|d"
 
-#: lib/ui/stdmenus.inc:418
+#: lib/ui/stdmenus.inc:416
 msgid "Compressed|m"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:419
+#: lib/ui/stdmenus.inc:417
 #, fuzzy
 msgid "Settings...|S"
 msgstr "Nastavitve"
 
-#: lib/ui/stdmenus.inc:425
+#: lib/ui/stdmenus.inc:423
 #, fuzzy
 msgid "Accept Change|A"
 msgstr "Sprememba pisave|p"
 
-#: lib/ui/stdmenus.inc:426
+#: lib/ui/stdmenus.inc:424
 #, fuzzy
 msgid "Reject Change|R"
 msgstr "Prebrskaj|#r"
 
-#: lib/ui/stdmenus.inc:427
+#: lib/ui/stdmenus.inc:425
 msgid "Accept All Changes|c"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:428
+#: lib/ui/stdmenus.inc:426
 #, fuzzy
 msgid "Reject All Changes|e"
 msgstr "Prebrskaj|#r"
 
-#: lib/ui/stdmenus.inc:438
+#: lib/ui/stdmenus.inc:436
 #, fuzzy
 msgid "Next Change|C"
 msgstr " (Spremenjeno)"
 
-#: lib/ui/stdmenus.inc:439
+#: lib/ui/stdmenus.inc:437
 #, fuzzy
 msgid "Next Cross-Reference|R"
 msgstr "Sklic"
 
-#: lib/ui/stdmenus.inc:451
+#: lib/ui/stdmenus.inc:449
 #, fuzzy
 msgid "Clear Bookmarks|C"
 msgstr "Zaznamki|Z"
 
-#: lib/ui/stdmenus.inc:462
+#: lib/ui/stdmenus.inc:460
 #, fuzzy
 msgid "Thesaurus...|T"
 msgstr "Tezaver..."
 
-#: lib/ui/stdmenus.inc:465
+#: lib/ui/stdmenus.inc:463
 #, fuzzy
 msgid "TeX Information|I"
 msgstr "Podatki za TeX|X"
@@ -10023,6 +10022,11 @@ msgstr "Vstavi matriko"
 #, fuzzy
 msgid "Insert cases environment"
 msgstr "Okolje Cases|C"
+
+#: lib/ui/stdtoolbars.inc:164
+#, fuzzy
+msgid "Toggle Math Panels"
+msgstr "Matematièna plo¹èa"
 
 #: lib/ui/stdtoolbars.inc:167
 #, fuzzy
@@ -12559,6 +12563,319 @@ msgid ""
 "Read 'info date' for more information.\n"
 msgstr ""
 
+#: lib/configure.py:236
+msgid "Tgif"
+msgstr ""
+
+#: lib/configure.py:239
+msgid "FIG"
+msgstr ""
+
+#: lib/configure.py:242
+#, fuzzy
+msgid "Grace"
+msgstr "v sivini"
+
+#: lib/configure.py:245
+msgid "FEN"
+msgstr ""
+
+#: lib/configure.py:249
+msgid "BMP"
+msgstr ""
+
+#: lib/configure.py:250
+msgid "GIF"
+msgstr ""
+
+#: lib/configure.py:251
+msgid "JPEG"
+msgstr ""
+
+#: lib/configure.py:252
+msgid "PBM"
+msgstr ""
+
+#: lib/configure.py:253
+msgid "PGM"
+msgstr ""
+
+#: lib/configure.py:254
+msgid "PNG"
+msgstr ""
+
+#: lib/configure.py:255
+msgid "PPM"
+msgstr ""
+
+#: lib/configure.py:256
+msgid "TIFF"
+msgstr ""
+
+#: lib/configure.py:257
+msgid "XBM"
+msgstr ""
+
+#: lib/configure.py:258
+msgid "XPM"
+msgstr ""
+
+#: lib/configure.py:263
+msgid "Plain text (chess output)"
+msgstr ""
+
+#: lib/configure.py:264
+#, fuzzy
+msgid "Plain text (image)"
+msgstr "Umesti"
+
+#: lib/configure.py:265
+msgid "Plain text (Xfig output)"
+msgstr ""
+
+#: lib/configure.py:266
+#, fuzzy
+msgid "date (output)"
+msgstr "pri&lagodi izhod"
+
+#: lib/configure.py:267
+msgid "DocBook"
+msgstr ""
+
+#: lib/configure.py:267
+#, fuzzy
+msgid "DocBook|B"
+msgstr "Zaznamki|Z"
+
+#: lib/configure.py:268
+msgid "Docbook (XML)"
+msgstr ""
+
+#: lib/configure.py:269
+#, fuzzy
+msgid "Graphviz Dot"
+msgstr "Grafika"
+
+#: lib/configure.py:270
+#, fuzzy
+msgid "NoWeb"
+msgstr "Niè"
+
+#: lib/configure.py:270
+#, fuzzy
+msgid "NoWeb|N"
+msgstr "Opomba|O"
+
+#: lib/configure.py:271
+msgid "LilyPond music"
+msgstr ""
+
+#: lib/configure.py:272
+#, fuzzy
+msgid "LaTeX (plain)"
+msgstr "&Izbire za LaTeX"
+
+#: lib/configure.py:272
+#, fuzzy
+msgid "LaTeX (plain)|L"
+msgstr "Dnevnik LaTeXa"
+
+#: lib/configure.py:273
+msgid "LinuxDoc"
+msgstr ""
+
+#: lib/configure.py:273
+msgid "LinuxDoc|x"
+msgstr ""
+
+#: lib/configure.py:274
+#, fuzzy
+msgid "LaTeX (pdflatex)"
+msgstr "Besedilo za LaTeX"
+
+#: lib/configure.py:275 src/frontends/qt4/QPrefs.cpp:177
+#, fuzzy
+msgid "Plain text"
+msgstr "Umesti"
+
+#: lib/configure.py:275
+#, fuzzy
+msgid "Plain text|a"
+msgstr "Umesti"
+
+#: lib/configure.py:276
+#, fuzzy
+msgid "Plain text (pstotext)"
+msgstr "Umesti"
+
+#: lib/configure.py:277
+#, fuzzy
+msgid "Plain text (ps2ascii)"
+msgstr "Umesti"
+
+#: lib/configure.py:278
+#, fuzzy
+msgid "Plain text (catdvi)"
+msgstr "Umesti"
+
+#: lib/configure.py:279
+#, fuzzy
+msgid "Plain Text, Join Lines"
+msgstr "Besedilo ASCII kot vrstice"
+
+#: lib/configure.py:284
+#, fuzzy
+msgid "EPS"
+msgstr "PS"
+
+#: lib/configure.py:285
+#, fuzzy
+msgid "Postscript"
+msgstr "&Gonilnik za postscript:"
+
+#: lib/configure.py:285
+#, fuzzy
+msgid "Postscript|t"
+msgstr "&Gonilnik za postscript:"
+
+#: lib/configure.py:289
+msgid "PDF (ps2pdf)"
+msgstr ""
+
+#: lib/configure.py:289
+msgid "PDF (ps2pdf)|P"
+msgstr ""
+
+#: lib/configure.py:290
+msgid "PDF (pdflatex)"
+msgstr ""
+
+#: lib/configure.py:290
+msgid "PDF (pdflatex)|F"
+msgstr ""
+
+#: lib/configure.py:291
+msgid "PDF (dvipdfm)"
+msgstr ""
+
+#: lib/configure.py:291
+msgid "PDF (dvipdfm)|m"
+msgstr ""
+
+#: lib/configure.py:294
+msgid "DVI"
+msgstr ""
+
+#: lib/configure.py:294
+msgid "DVI|D"
+msgstr ""
+
+#: lib/configure.py:297
+#, fuzzy
+msgid "DraftDVI"
+msgstr "Naèin &osnutka"
+
+#: lib/configure.py:300
+msgid "HTML"
+msgstr ""
+
+#: lib/configure.py:300
+msgid "HTML|H"
+msgstr ""
+
+#: lib/configure.py:303
+#, fuzzy
+msgid "Noteedit"
+msgstr "OpombaUredniku"
+
+#: lib/configure.py:306
+#, fuzzy
+msgid "OpenDocument"
+msgstr "Odpira se spis "
+
+#: lib/configure.py:309
+#, fuzzy
+msgid "date command"
+msgstr "Naslednji ukaz"
+
+#: lib/configure.py:310
+#, fuzzy
+msgid "Table (CSV)"
+msgstr "Tabela"
+
+#: lib/configure.py:312 src/frontends/qt4/GuiView.cpp:733
+msgid "LyX"
+msgstr "LyX"
+
+#: lib/configure.py:313
+msgid "LyX 1.3.x"
+msgstr ""
+
+#: lib/configure.py:314
+msgid "LyX 1.4.x"
+msgstr ""
+
+#: lib/configure.py:315
+msgid "CJK LyX 1.4.x (big5)"
+msgstr ""
+
+#: lib/configure.py:316
+msgid "CJK LyX 1.4.x (euc-jp)"
+msgstr ""
+
+#: lib/configure.py:317
+msgid "CJK LyX 1.4.x (euc-kr)"
+msgstr ""
+
+#: lib/configure.py:318
+#, fuzzy
+msgid "LyX Preview"
+msgstr "Predogled|#P"
+
+#: lib/configure.py:319
+msgid "PDFTEX"
+msgstr ""
+
+#: lib/configure.py:320
+#, fuzzy
+msgid "Program"
+msgstr "Inicializacija programa"
+
+#: lib/configure.py:321
+msgid "PSTEX"
+msgstr ""
+
+#: lib/configure.py:322
+#, fuzzy
+msgid "Rich Text Format"
+msgstr "Besedilo po"
+
+#: lib/configure.py:323
+msgid "OpenOffice.Org (sxw)"
+msgstr ""
+
+#: lib/configure.py:324
+msgid "Windows Metafile"
+msgstr ""
+
+#: lib/configure.py:325
+msgid "Enhanced Metafile"
+msgstr ""
+
+#: lib/configure.py:326
+#, fuzzy
+msgid "MS Word"
+msgstr "Meje"
+
+#: lib/configure.py:326
+#, fuzzy
+msgid "MS Word|W"
+msgstr "Trenutna beseda"
+
+#: lib/configure.py:327
+msgid "HTML (MS Word)"
+msgstr ""
+
 #: src/Buffer.cpp:238
 #, fuzzy
 msgid "Could not remove temporary directory"
@@ -13020,7 +13337,7 @@ msgstr "Besedilo za LaTeX"
 msgid "previewed snippet"
 msgstr ""
 
-#: src/Color.cpp:283 src/insets/InsetNote.cpp:342
+#: src/Color.cpp:283 src/insets/InsetNote.cpp:355
 msgid "note"
 msgstr "opomba"
 
@@ -13621,57 +13938,57 @@ msgstr "LyX: Ustvarjamo imenik "
 msgid "Done!"
 msgstr "Opravljeno!"
 
-#: src/LyX.cpp:509
+#: src/LyX.cpp:513
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Napaka! Zaèasnega imenika ni moè ustvariti:"
 
-#: src/LyX.cpp:511
+#: src/LyX.cpp:515
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "Napaka! Zaèasnega imenika ni moè ustvariti:"
 
-#: src/LyX.cpp:547
+#: src/LyX.cpp:551
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:618
+#: src/LyX.cpp:622
 msgid "No textclass is found"
 msgstr ""
 
-#: src/LyX.cpp:619
+#: src/LyX.cpp:623
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
 
-#: src/LyX.cpp:623
+#: src/LyX.cpp:627
 #, fuzzy
 msgid "&Reconfigure"
 msgstr "Vnovièno ukroji|V"
 
-#: src/LyX.cpp:624
+#: src/LyX.cpp:628
 #, fuzzy
 msgid "&Use Default"
 msgstr "privzeta"
 
-#: src/LyX.cpp:625 src/LyX.cpp:1150
+#: src/LyX.cpp:629 src/LyX.cpp:1154
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "Izhod"
 
-#: src/LyX.cpp:845
+#: src/LyX.cpp:849
 #, fuzzy
 msgid "LyX: "
 msgstr "LyX: Url"
 
-#: src/LyX.cpp:974
+#: src/LyX.cpp:978
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Napaka! Zaèasnega imenika ni moè ustvariti:"
 
-#: src/LyX.cpp:975
+#: src/LyX.cpp:979
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -13679,47 +13996,47 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/LyX.cpp:1143
+#: src/LyX.cpp:1147
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "Izvajamo brez osebnega imenika za LyX."
 
-#: src/LyX.cpp:1144
+#: src/LyX.cpp:1148
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "Nimate osebnega imenika za LyX."
 
-#: src/LyX.cpp:1149
+#: src/LyX.cpp:1153
 #, fuzzy
 msgid "&Create directory"
 msgstr "LyX: Ustvarja se imenik "
 
-#: src/LyX.cpp:1151
+#: src/LyX.cpp:1155
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:1155
+#: src/LyX.cpp:1159
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Ustvarja se imenik "
 
-#: src/LyX.cpp:1161
+#: src/LyX.cpp:1165
 #, fuzzy
 msgid "Failed to create directory. Exiting."
 msgstr "Klic funkcije ,createDirectory` z napaènim imenom"
 
-#: src/LyX.cpp:1334
+#: src/LyX.cpp:1338
 msgid "List of supported debug flags:"
 msgstr "Seznam podprtih zastavic za razhro¹èevanje:"
 
-#: src/LyX.cpp:1338
+#: src/LyX.cpp:1342
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Nastavljamo stopnjo razhro¹èevanja na "
 
-#: src/LyX.cpp:1349
+#: src/LyX.cpp:1353
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -13758,47 +14075,47 @@ msgstr ""
 "\n"
 "Veè izbir najdete  v referenènem priroèniku za LyX (man lyx)."
 
-#: src/LyX.cpp:1385 src/support/Package.cpp.in:568
+#: src/LyX.cpp:1389 src/support/Package.cpp.in:568
 #, fuzzy
 msgid "No system directory"
 msgstr "Uporabni¹ki imenik: "
 
-#: src/LyX.cpp:1386
+#: src/LyX.cpp:1390
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "Manjka imenik za stikalo -sysdir!"
 
-#: src/LyX.cpp:1396
+#: src/LyX.cpp:1400
 #, fuzzy
 msgid "No user directory"
 msgstr "Uporabni¹ki imenik: "
 
-#: src/LyX.cpp:1397
+#: src/LyX.cpp:1401
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "Manjka imenik za stikalo -sysdir!"
 
-#: src/LyX.cpp:1407
+#: src/LyX.cpp:1411
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Naslednji ukaz"
 
-#: src/LyX.cpp:1408
+#: src/LyX.cpp:1412
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "Manjka ukazni niz za stikalom -x!"
 
-#: src/LyX.cpp:1418
+#: src/LyX.cpp:1422
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Manjkajoèa vrsta datoteke [npr. latex, ps...] po "
 
-#: src/LyX.cpp:1430
+#: src/LyX.cpp:1434
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Manjkajoèa vrsta datoteke [npr. latex, ps...] po "
 
-#: src/LyX.cpp:1435
+#: src/LyX.cpp:1439
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "Izberite datoteko LaTeX za uvoz"
@@ -13906,7 +14223,7 @@ msgstr "Obnovi|O"
 msgid "Exiting."
 msgstr "Izhod|I"
 
-#: src/LyXFunc.cpp:1190 src/Text3.cpp:1372
+#: src/LyXFunc.cpp:1190 src/Text3.cpp:1376
 msgid "Missing argument"
 msgstr "Manjkajoèi argument"
 
@@ -14007,396 +14324,400 @@ msgstr "®elite shraniti spis?"
 msgid "Welcome to LyX!"
 msgstr "Dobrodo¹li v LyXu!"
 
-#: src/LyXRC.cpp:2098
+#: src/LyXRC.cpp:2118
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
 
-#: src/LyXRC.cpp:2103
+#: src/LyXRC.cpp:2123
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr ""
 
-#: src/LyXRC.cpp:2107
+#: src/LyXRC.cpp:2127
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
 "specified, an internal routine is used."
 msgstr ""
 
-#: src/LyXRC.cpp:2115
+#: src/LyXRC.cpp:2135
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr ""
 
-#: src/LyXRC.cpp:2119
+#: src/LyXRC.cpp:2139
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
 msgstr ""
 
-#: src/LyXRC.cpp:2123
+#: src/LyXRC.cpp:2143
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 
-#: src/LyXRC.cpp:2130
+#: src/LyXRC.cpp:2150
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
 msgstr ""
 
-#: src/LyXRC.cpp:2134
+#: src/LyXRC.cpp:2154
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
 msgstr ""
 
-#: src/LyXRC.cpp:2138
+#: src/LyXRC.cpp:2158
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:2142
+#: src/LyXRC.cpp:2162
 msgid "Select to check whether the lastfiles still exist."
 msgstr ""
 
-#: src/LyXRC.cpp:2146
+#: src/LyXRC.cpp:2166
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
-#: src/LyXRC.cpp:2156
+#: src/LyXRC.cpp:2176
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
 msgstr ""
 
-#: src/LyXRC.cpp:2167
+#: src/LyXRC.cpp:2180
+msgid "Use the Mac OS X conventions for the word-level cursor movement"
+msgstr ""
+
+#: src/LyXRC.cpp:2191
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2171
+#: src/LyXRC.cpp:2195
 msgid "New documents will be assigned this language."
 msgstr ""
 
-#: src/LyXRC.cpp:2175
+#: src/LyXRC.cpp:2199
 #, fuzzy
 msgid "Specify the default paper size."
 msgstr "Velikost papirja:|#P"
 
-#: src/LyXRC.cpp:2179
+#: src/LyXRC.cpp:2203
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
 msgstr ""
 
-#: src/LyXRC.cpp:2183
+#: src/LyXRC.cpp:2207
 msgid "Select how LyX will display any graphics."
 msgstr ""
 
-#: src/LyXRC.cpp:2187
+#: src/LyXRC.cpp:2211
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:2192
+#: src/LyXRC.cpp:2216
 msgid "Specify additional chars that can be part of a word."
 msgstr ""
 
-#: src/LyXRC.cpp:2196
+#: src/LyXRC.cpp:2220
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
 
-#: src/LyXRC.cpp:2203
+#: src/LyXRC.cpp:2227
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
 "\"makeindex.sh -m $$lang\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2212
+#: src/LyXRC.cpp:2236
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
 msgstr ""
 
-#: src/LyXRC.cpp:2216
+#: src/LyXRC.cpp:2240
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr ""
 
-#: src/LyXRC.cpp:2220
+#: src/LyXRC.cpp:2244
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr ""
 
-#: src/LyXRC.cpp:2224
+#: src/LyXRC.cpp:2248
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:2228
+#: src/LyXRC.cpp:2252
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
 msgstr ""
 
-#: src/LyXRC.cpp:2232
+#: src/LyXRC.cpp:2256
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:2236
+#: src/LyXRC.cpp:2260
 msgid "The LaTeX command for local changing of the language."
 msgstr ""
 
-#: src/LyXRC.cpp:2240
+#: src/LyXRC.cpp:2264
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr ""
 
-#: src/LyXRC.cpp:2244
+#: src/LyXRC.cpp:2268
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2248
+#: src/LyXRC.cpp:2272
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
 msgstr ""
 
-#: src/LyXRC.cpp:2252
+#: src/LyXRC.cpp:2276
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 
-#: src/LyXRC.cpp:2256
+#: src/LyXRC.cpp:2280
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 
-#: src/LyXRC.cpp:2260
+#: src/LyXRC.cpp:2284
 msgid "De-select if you don't want LyX to create backup files."
 msgstr ""
 
-#: src/LyXRC.cpp:2264
+#: src/LyXRC.cpp:2288
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:2268
+#: src/LyXRC.cpp:2292
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 
-#: src/LyXRC.cpp:2273
+#: src/LyXRC.cpp:2297
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr ""
 
-#: src/LyXRC.cpp:2280
+#: src/LyXRC.cpp:2304
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2284
+#: src/LyXRC.cpp:2308
 msgid "Shows a typeset preview of things such as math"
 msgstr ""
 
-#: src/LyXRC.cpp:2288
+#: src/LyXRC.cpp:2312
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 
-#: src/LyXRC.cpp:2292
+#: src/LyXRC.cpp:2316
 msgid "Scale the preview size to suit."
 msgstr ""
 
-#: src/LyXRC.cpp:2296
+#: src/LyXRC.cpp:2320
 msgid "The option for specifying whether the copies should be collated."
 msgstr ""
 
-#: src/LyXRC.cpp:2300
+#: src/LyXRC.cpp:2324
 msgid "The option for specifying the number of copies to print."
 msgstr ""
 
-#: src/LyXRC.cpp:2304
+#: src/LyXRC.cpp:2328
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
 msgstr ""
 
-#: src/LyXRC.cpp:2308
+#: src/LyXRC.cpp:2332
 msgid "The option to print only even pages."
 msgstr ""
 
-#: src/LyXRC.cpp:2312
+#: src/LyXRC.cpp:2336
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
 msgstr ""
 
-#: src/LyXRC.cpp:2316
+#: src/LyXRC.cpp:2340
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2320
+#: src/LyXRC.cpp:2344
 msgid "The option to print out in landscape."
 msgstr ""
 
-#: src/LyXRC.cpp:2324
+#: src/LyXRC.cpp:2348
 msgid "The option to print only odd pages."
 msgstr ""
 
-#: src/LyXRC.cpp:2328
+#: src/LyXRC.cpp:2352
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 
-#: src/LyXRC.cpp:2332
+#: src/LyXRC.cpp:2356
 msgid "Option to specify the dimensions of the print paper."
 msgstr ""
 
-#: src/LyXRC.cpp:2336
+#: src/LyXRC.cpp:2360
 msgid "The option to specify paper type."
 msgstr ""
 
-#: src/LyXRC.cpp:2340
+#: src/LyXRC.cpp:2364
 msgid "The option to reverse the order of the pages printed."
 msgstr ""
 
-#: src/LyXRC.cpp:2344
+#: src/LyXRC.cpp:2368
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
 "arguments."
 msgstr ""
 
-#: src/LyXRC.cpp:2348
+#: src/LyXRC.cpp:2372
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
 msgstr ""
 
-#: src/LyXRC.cpp:2352
+#: src/LyXRC.cpp:2376
 msgid "Option to pass to the print program to print to a file."
 msgstr ""
 
-#: src/LyXRC.cpp:2356
+#: src/LyXRC.cpp:2380
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 
-#: src/LyXRC.cpp:2360
+#: src/LyXRC.cpp:2384
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr ""
 
-#: src/LyXRC.cpp:2364
+#: src/LyXRC.cpp:2388
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2368
+#: src/LyXRC.cpp:2392
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 
-#: src/LyXRC.cpp:2372
+#: src/LyXRC.cpp:2396
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
 msgstr ""
 
-#: src/LyXRC.cpp:2378
+#: src/LyXRC.cpp:2402
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 
-#: src/LyXRC.cpp:2387
+#: src/LyXRC.cpp:2411
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 msgstr ""
 
-#: src/LyXRC.cpp:2391
+#: src/LyXRC.cpp:2415
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 
-#: src/LyXRC.cpp:2396
+#: src/LyXRC.cpp:2420
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr ""
 
-#: src/LyXRC.cpp:2401
+#: src/LyXRC.cpp:2425
 msgid ""
 "Specify geometry of the main view in width x height (values from last "
 "session will not be used if non-zero values are specified)."
 msgstr ""
 
-#: src/LyXRC.cpp:2405
+#: src/LyXRC.cpp:2429
 msgid "Allow session manager to save and restore windows position."
 msgstr ""
 
-#: src/LyXRC.cpp:2409
+#: src/LyXRC.cpp:2433
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
 
-#: src/LyXRC.cpp:2416
+#: src/LyXRC.cpp:2440
 msgid "De-select if you don't want the startup banner."
 msgstr ""
 
-#: src/LyXRC.cpp:2420
+#: src/LyXRC.cpp:2444
 msgid "What command runs the spellchecker?"
 msgstr ""
 
-#: src/LyXRC.cpp:2424
+#: src/LyXRC.cpp:2448
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
 
-#: src/LyXRC.cpp:2428
+#: src/LyXRC.cpp:2452
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:2438
+#: src/LyXRC.cpp:2462
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:2451
+#: src/LyXRC.cpp:2475
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
 "may not work with all dictionaries."
 msgstr ""
 
-#: src/LyXRC.cpp:2455
+#: src/LyXRC.cpp:2479
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 
-#: src/LyXRC.cpp:2462
+#: src/LyXRC.cpp:2486
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 
@@ -14440,26 +14761,16 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Izberi do konca spisa"
 
-#: src/MenuBackend.cpp:476
+#: src/MenuBackend.cpp:477
 #, fuzzy
 msgid "No Documents Open!"
 msgstr "Ni odprtih spisov!"
 
-#: src/MenuBackend.cpp:503 src/MenuBackend.cpp:581 src/MenuBackend.cpp:603
+#: src/MenuBackend.cpp:504 src/MenuBackend.cpp:581 src/MenuBackend.cpp:603
 #: src/MenuBackend.cpp:626 src/MenuBackend.cpp:712 src/MenuBackend.cpp:827
 #, fuzzy
 msgid "No Document Open!"
 msgstr "Ni odprtih spisov!"
-
-#: src/MenuBackend.cpp:544
-#, fuzzy
-msgid "Plain Text"
-msgstr "Umesti"
-
-#: src/MenuBackend.cpp:546
-#, fuzzy
-msgid "Plain Text, Join Lines"
-msgstr "Besedilo ASCII kot vrstice"
 
 #: src/MenuBackend.cpp:727
 #, fuzzy
@@ -14489,26 +14800,26 @@ msgstr ""
 msgid "No Branch in Document!"
 msgstr "Spis"
 
-#: src/Paragraph.cpp:1705 src/frontends/qt4/QParagraph.cpp:233
+#: src/Paragraph.cpp:1711 src/frontends/qt4/QParagraph.cpp:233
 msgid "Senseless with this layout!"
 msgstr "Brez pomena s tem videzom!"
 
-#: src/Paragraph.cpp:1765
+#: src/Paragraph.cpp:1771
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1766
+#: src/Paragraph.cpp:1772
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2240 src/frontends/qt4/QViewSource.cpp:161
+#: src/Paragraph.cpp:2246 src/frontends/qt4/QViewSource.cpp:161
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "Razlièica LyXa "
 
-#: src/Paragraph.cpp:2241
+#: src/Paragraph.cpp:2247
 #, fuzzy
 msgid "uncodable character"
 msgstr "Posebni znak|z"
@@ -14568,68 +14879,68 @@ msgstr ""
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Tako ni mogoèe vstaviti dveh presledkov.  Prosimo, preberite Uèbenik."
 
-#: src/Text.cpp:1834
+#: src/Text.cpp:1880
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Jezik"
 
-#: src/Text.cpp:1840
+#: src/Text.cpp:1886
 #, fuzzy
 msgid "Change: "
 msgstr "Strani:"
 
-#: src/Text.cpp:1844
+#: src/Text.cpp:1890
 #, fuzzy
 msgid " at "
 msgstr " za "
 
-#: src/Text.cpp:1854
+#: src/Text.cpp:1900
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Pisava: "
 
-#: src/Text.cpp:1859
+#: src/Text.cpp:1905
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", globina: "
 
-#: src/Text.cpp:1865
+#: src/Text.cpp:1911
 msgid ", Spacing: "
 msgstr ", Presledki: "
 
-#: src/Text.cpp:1871 src/frontends/qt4/QDocument.cpp:249
+#: src/Text.cpp:1917 src/frontends/qt4/QDocument.cpp:249
 #, fuzzy
 msgid "OneHalf"
 msgstr "Polovièni"
 
-#: src/Text.cpp:1877
+#: src/Text.cpp:1923
 msgid "Other ("
 msgstr "Drugi ("
 
-#: src/Text.cpp:1886
+#: src/Text.cpp:1932
 #, fuzzy
 msgid ", Inset: "
 msgstr ", globina: "
 
-#: src/Text.cpp:1887
+#: src/Text.cpp:1933
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Odstavek"
 
-#: src/Text.cpp:1888
+#: src/Text.cpp:1934
 msgid ", Id: "
 msgstr ""
 
-#: src/Text.cpp:1889
+#: src/Text.cpp:1935
 #, fuzzy
 msgid ", Position: "
 msgstr "Podmena"
 
-#: src/Text.cpp:1895
+#: src/Text.cpp:1941
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1897
+#: src/Text.cpp:1943
 msgid ", Boundary: "
 msgstr ""
 
@@ -14648,29 +14959,29 @@ msgstr "Nièesar ni moè storiti"
 msgid "Cannot index more than one paragraph!"
 msgstr "Celica tabele ne more obsegati veè kot enega odstavka!"
 
-#: src/Text3.cpp:183 src/mathed/InsetMathHull.cpp:1373
+#: src/Text3.cpp:183 src/mathed/InsetMathHull.cpp:1392
 msgid "Math editor mode"
 msgstr "Naèin matematiènega urejanja"
 
-#: src/Text3.cpp:754
+#: src/Text3.cpp:758
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Manjkajoèi argument"
 
-#: src/Text3.cpp:928
+#: src/Text3.cpp:932
 msgid "Layout "
 msgstr "Videz "
 
-#: src/Text3.cpp:929
+#: src/Text3.cpp:933
 msgid " not known"
 msgstr " ni znan"
 
-#: src/Text3.cpp:1479 src/Text3.cpp:1491
+#: src/Text3.cpp:1483 src/Text3.cpp:1495
 #, fuzzy
 msgid "Character set"
 msgstr "Znakovni nabor:|#Z"
 
-#: src/Text3.cpp:1608 src/Text3.cpp:1619
+#: src/Text3.cpp:1612 src/Text3.cpp:1623
 msgid "Paragraph layout set"
 msgstr "Nastavljen videz odstavka"
 
@@ -15116,7 +15427,7 @@ msgstr "kolièino dela, ki so ga drugi vlo¾ili v projekt LyX."
 #, fuzzy
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
-"1995-2006 LyX Team"
+"1995-2008 LyX Team"
 msgstr ""
 "LyX je za¹èitil (C) 1995 Matthias Ettrich, \n"
 "1995-2001 LyX Team"
@@ -15645,7 +15956,7 @@ msgstr ""
 msgid "About %1"
 msgstr "O programu LyX"
 
-#: src/frontends/qt4/GuiApplication.cpp:408 src/frontends/qt4/QPrefs.cpp:2045
+#: src/frontends/qt4/GuiApplication.cpp:408 src/frontends/qt4/QPrefs.cpp:2084
 msgid "Preferences"
 msgstr "Izbire"
 
@@ -15671,11 +15982,7 @@ msgstr ""
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:733
-msgid "LyX"
-msgstr "LyX"
-
-#: src/frontends/qt4/GuiWorkArea.cpp:515
+#: src/frontends/qt4/GuiWorkArea.cpp:532
 #, fuzzy
 msgid "unknown version"
 msgstr "Neznana akcija"
@@ -16082,7 +16389,7 @@ msgstr "Razteg%"
 msgid "Float Settings"
 msgstr "Nastavitve plovke"
 
-#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:648
+#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:649
 msgid "Graphics"
 msgstr "Grafika"
 
@@ -16142,123 +16449,118 @@ msgstr ""
 msgid "Paragraph Settings"
 msgstr "Postavka literature"
 
-#: src/frontends/qt4/QPrefs.cpp:76
+#: src/frontends/qt4/QPrefs.cpp:77
 msgid "Look and feel"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:77
+#: src/frontends/qt4/QPrefs.cpp:78
 #, fuzzy
 msgid "Language settings"
 msgstr "Nastavitve tiskalnika"
 
-#: src/frontends/qt4/QPrefs.cpp:78
+#: src/frontends/qt4/QPrefs.cpp:79
 #, fuzzy
 msgid "Outputs"
 msgstr "Izhod"
 
-#: src/frontends/qt4/QPrefs.cpp:176
-#, fuzzy
-msgid "Plain text"
-msgstr "Umesti"
-
-#: src/frontends/qt4/QPrefs.cpp:207
+#: src/frontends/qt4/QPrefs.cpp:208
 msgid "Date format"
 msgstr "Format datuma"
 
-#: src/frontends/qt4/QPrefs.cpp:234
+#: src/frontends/qt4/QPrefs.cpp:235
 msgid "Keyboard"
 msgstr "Tipkovnica"
 
-#: src/frontends/qt4/QPrefs.cpp:358
+#: src/frontends/qt4/QPrefs.cpp:359
 msgid "Screen fonts"
 msgstr "Zaslonske pisave"
 
-#: src/frontends/qt4/QPrefs.cpp:521
+#: src/frontends/qt4/QPrefs.cpp:522
 msgid "Colors"
 msgstr "Barve"
 
-#: src/frontends/qt4/QPrefs.cpp:622 src/frontends/qt4/QPrefs.cpp:721
+#: src/frontends/qt4/QPrefs.cpp:623 src/frontends/qt4/QPrefs.cpp:722
 msgid "Paths"
 msgstr "Poti"
 
-#: src/frontends/qt4/QPrefs.cpp:772
+#: src/frontends/qt4/QPrefs.cpp:773
 #, fuzzy
 msgid "Select a document templates directory"
 msgstr "Izberite spis za vstavitev"
 
-#: src/frontends/qt4/QPrefs.cpp:782
+#: src/frontends/qt4/QPrefs.cpp:783
 #, fuzzy
 msgid "Select a temporary directory"
 msgstr "Napaka! Zaèasnega imenika ni moè ustvariti:"
 
-#: src/frontends/qt4/QPrefs.cpp:792
+#: src/frontends/qt4/QPrefs.cpp:793
 msgid "Select a backups directory"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:802
+#: src/frontends/qt4/QPrefs.cpp:803
 #, fuzzy
 msgid "Select a document directory"
 msgstr "Izberite spis za vstavitev"
 
-#: src/frontends/qt4/QPrefs.cpp:812
+#: src/frontends/qt4/QPrefs.cpp:813
 msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:825 src/frontends/qt4/QSpellchecker.cpp:135
+#: src/frontends/qt4/QPrefs.cpp:826 src/frontends/qt4/QSpellchecker.cpp:135
 msgid "Spellchecker"
 msgstr "Èrkovalnik"
 
-#: src/frontends/qt4/QPrefs.cpp:847
+#: src/frontends/qt4/QPrefs.cpp:848
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/QPrefs.cpp:848
+#: src/frontends/qt4/QPrefs.cpp:849
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/QPrefs.cpp:849
+#: src/frontends/qt4/QPrefs.cpp:850
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/QPrefs.cpp:851
+#: src/frontends/qt4/QPrefs.cpp:852
 msgid "pspell (library)"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:854
+#: src/frontends/qt4/QPrefs.cpp:855
 msgid "aspell (library)"
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:935
+#: src/frontends/qt4/QPrefs.cpp:936
 msgid "Converters"
 msgstr "Pretvorniki"
 
-#: src/frontends/qt4/QPrefs.cpp:1133
+#: src/frontends/qt4/QPrefs.cpp:1134
 #, fuzzy
 msgid "Copiers"
 msgstr "Izvodi"
 
-#: src/frontends/qt4/QPrefs.cpp:1386
+#: src/frontends/qt4/QPrefs.cpp:1387
 msgid "File formats"
 msgstr "Datoteèni formati"
 
-#: src/frontends/qt4/QPrefs.cpp:1578
+#: src/frontends/qt4/QPrefs.cpp:1617
 #, fuzzy
 msgid "Format in use"
 msgstr "Formati"
 
-#: src/frontends/qt4/QPrefs.cpp:1579
+#: src/frontends/qt4/QPrefs.cpp:1618
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 
-#: src/frontends/qt4/QPrefs.cpp:1680
+#: src/frontends/qt4/QPrefs.cpp:1719
 msgid "Printer"
 msgstr "Tiskalnik"
 
-#: src/frontends/qt4/QPrefs.cpp:1778 src/frontends/qt4/QPrefs.cpp:1979
+#: src/frontends/qt4/QPrefs.cpp:1817 src/frontends/qt4/QPrefs.cpp:2018
 msgid "User interface"
 msgstr "Uporabni¹ki vmesnik"
 
-#: src/frontends/qt4/QPrefs.cpp:1903
+#: src/frontends/qt4/QPrefs.cpp:1942
 #, fuzzy
 msgid "Identity"
 msgstr "&Zamik"
@@ -16441,12 +16743,12 @@ msgstr "Ref: "
 msgid "branch"
 msgstr "Pot za varnostne kopije:|#P"
 
-#: src/insets/InsetCaption.cpp:95
+#: src/insets/InsetCaption.cpp:96
 #, fuzzy
 msgid "Opened Caption Inset"
 msgstr "Odprta zabele¾ka"
 
-#: src/insets/InsetCaption.cpp:304
+#: src/insets/InsetCaption.cpp:307
 #, fuzzy
 msgid "Senseless!!! "
 msgstr "NaslovPo¹iljatelja"
@@ -16770,25 +17072,25 @@ msgstr "velike èrke "
 msgid "Nomenclature"
 msgstr "Domneva"
 
-#: src/insets/InsetNote.cpp:64
+#: src/insets/InsetNote.cpp:65
 msgid "Note[[InsetNote]]"
 msgstr ""
 
-#: src/insets/InsetNote.cpp:66
+#: src/insets/InsetNote.cpp:67
 msgid "Greyed out"
 msgstr ""
 
-#: src/insets/InsetNote.cpp:67
+#: src/insets/InsetNote.cpp:68
 #, fuzzy
 msgid "Framed"
 msgstr "Parametri"
 
-#: src/insets/InsetNote.cpp:68
+#: src/insets/InsetNote.cpp:69
 #, fuzzy
 msgid "Shaded"
 msgstr "&Oblika:"
 
-#: src/insets/InsetNote.cpp:147
+#: src/insets/InsetNote.cpp:148
 #, fuzzy
 msgid "Opened Note Inset"
 msgstr "Odprta zabele¾ka"
@@ -16812,54 +17114,54 @@ msgstr "Zbri¹i"
 msgid "Clear Double Page"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:146 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:146 src/mathed/InsetMathRef.cpp:189
 #, fuzzy
 msgid "Ref: "
 msgstr "Ref: "
 
-#: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:190
 #, fuzzy
 msgid "Equation"
 msgstr "Navedek"
 
-#: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:190
 #, fuzzy
 msgid "EqRef: "
 msgstr "Ref: "
 
-#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:191
 #, fuzzy
 msgid "Page Number"
 msgstr "©tevilka strani"
 
-#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:191
 #, fuzzy
 msgid "Page: "
 msgstr "Strani:"
 
-#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:192
 #, fuzzy
 msgid "Textual Page Number"
 msgstr "Vstavi ¹tevilko strani|#P"
 
-#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:192
 #, fuzzy
 msgid "TextPage: "
 msgstr "StranZBesedilom"
 
-#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:191
+#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:193
 msgid "Standard+Textual Page"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:191
+#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:193
 msgid "Ref+Text: "
 msgstr ""
 
-#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:192
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:194
 msgid "PrettyRef"
 msgstr "LepSkl"
 
-#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:192
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:194
 #, fuzzy
 msgid "FormatRef: "
 msgstr "F&ormat:"
@@ -17075,7 +17377,7 @@ msgstr "Zamenjan je bil en niz."
 msgid " strings have been replaced."
 msgstr " zamenjanih nizov."
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1284
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1303
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -17108,27 +17410,27 @@ msgstr ""
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Naèrt tabele"
 
-#: src/mathed/InsetMathHull.cpp:1090 src/mathed/InsetMathHull.cpp:1098
+#: src/mathed/InsetMathHull.cpp:1107 src/mathed/InsetMathHull.cpp:1115
 #, fuzzy
 msgid "No number"
 msgstr "msnumber"
 
-#: src/mathed/InsetMathHull.cpp:1090 src/mathed/InsetMathHull.cpp:1098
+#: src/mathed/InsetMathHull.cpp:1107 src/mathed/InsetMathHull.cpp:1115
 #, fuzzy
 msgid "Number"
 msgstr "©tevilèenje"
 
-#: src/mathed/InsetMathHull.cpp:1257
+#: src/mathed/InsetMathHull.cpp:1276
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1267
+#: src/mathed/InsetMathHull.cpp:1286
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1277
+#: src/mathed/InsetMathHull.cpp:1296
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
@@ -17141,7 +17443,7 @@ msgstr ""
 msgid "entered math text mode (textrm)"
 msgstr ""
 
-#: src/mathed/InsetMathRef.cpp:187
+#: src/mathed/InsetMathRef.cpp:189
 msgid "Standard[[mathref]]"
 msgstr ""
 
@@ -17259,6 +17561,10 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznana beseda:"
 
+#, fuzzy
+#~ msgid "Plain Text"
+#~ msgstr "Umesti"
+
 #~ msgid "Default (outer)"
 #~ msgstr "Privzeto (zunanji)"
 
@@ -17369,9 +17675,6 @@ msgstr "Neznana beseda:"
 
 #~ msgid "Use printer name explicitely"
 #~ msgstr "Uporabi eksplicitno ime tiskalnika"
-
-#~ msgid "Adapt outp&ut"
-#~ msgstr "pri&lagodi izhod"
 
 #~ msgid "&Type:"
 #~ msgstr "&Vrsta:"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-05-20 08:18+0200\n"
+"POT-Creation-Date: 2008-07-15 23:12+0200\n"
 "PO-Revision-Date: 2008-05-05 21:00-0400\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -1770,7 +1770,7 @@ msgstr "Aliniat"
 msgid "L&ine spacing:"
 msgstr "Spaþiere &linie:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1868
+#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1914
 #: src/frontends/qt4/QDocument.cpp:247
 msgid "Single"
 msgstr "Simplu"
@@ -1779,7 +1779,7 @@ msgstr "Simplu"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1874
+#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1920
 #: src/frontends/qt4/QDocument.cpp:251
 msgid "Double"
 msgstr "Dublu"
@@ -2140,7 +2140,7 @@ msgstr "&Modele de documente:"
 msgid "&roff command:"
 msgstr "Comandã &roff:"
 
-#: src/frontends/qt4/ui/PrefPlaintextUi.ui:54 src/LyXRC.cpp:2114
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:54 src/LyXRC.cpp:2131
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -3202,7 +3202,7 @@ msgstr "Unitãþi din valoarea lãþimii"
 msgid "&Units:"
 msgstr "&Unitãþi:"
 
-#: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:22
+#: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:25
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:49
 #: lib/layouts/amsart.layout:22 lib/layouts/amsbook.layout:23
 #: lib/layouts/apa.layout:24 lib/layouts/beamer.layout:37
@@ -3451,8 +3451,8 @@ msgstr "Caz"
 msgid "Case #:"
 msgstr "Caz #:"
 
-#: lib/layouts/IEEEtran.layout:270 lib/layouts/aa.layout:37
-#: lib/layouts/aa.layout:216 lib/layouts/aapaper.layout:64
+#: lib/layouts/IEEEtran.layout:270 lib/layouts/aa.layout:40
+#: lib/layouts/aa.layout:219 lib/layouts/aapaper.layout:64
 #: lib/layouts/aapaper.layout:129 lib/layouts/aastex.layout:64
 #: lib/layouts/aastex.layout:166 lib/layouts/amsart.layout:60
 #: lib/layouts/amsbook.layout:46 lib/layouts/amsbook.layout:86
@@ -3474,8 +3474,8 @@ msgstr "Caz #:"
 msgid "Section"
 msgstr "Secþiune"
 
-#: lib/layouts/IEEEtran.layout:280 lib/layouts/aa.layout:40
-#: lib/layouts/aa.layout:226 lib/layouts/aapaper.layout:67
+#: lib/layouts/IEEEtran.layout:280 lib/layouts/aa.layout:43
+#: lib/layouts/aa.layout:229 lib/layouts/aapaper.layout:67
 #: lib/layouts/aapaper.layout:138 lib/layouts/aastex.layout:67
 #: lib/layouts/aastex.layout:179 lib/layouts/amsart.layout:70
 #: lib/layouts/amsbook.layout:56 lib/layouts/apa.layout:334
@@ -3494,8 +3494,8 @@ msgstr "Secþiune"
 msgid "Subsection"
 msgstr "Subsecþiune"
 
-#: lib/layouts/IEEEtran.layout:288 lib/layouts/aa.layout:43
-#: lib/layouts/aa.layout:238 lib/layouts/aapaper.layout:70
+#: lib/layouts/IEEEtran.layout:288 lib/layouts/aa.layout:46
+#: lib/layouts/aa.layout:241 lib/layouts/aapaper.layout:70
 #: lib/layouts/aapaper.layout:149 lib/layouts/aastex.layout:70
 #: lib/layouts/aastex.layout:192 lib/layouts/amsart.layout:78
 #: lib/layouts/amsbook.layout:64 lib/layouts/apa.layout:343
@@ -3534,8 +3534,8 @@ msgstr "Subsecþiune*"
 msgid "Subsubsection*"
 msgstr "Subsubsecþiune*"
 
-#: lib/layouts/IEEEtran.layout:329 lib/layouts/aa.layout:80
-#: lib/layouts/aa.layout:284 lib/layouts/aa.layout:300
+#: lib/layouts/IEEEtran.layout:329 lib/layouts/aa.layout:83
+#: lib/layouts/aa.layout:287 lib/layouts/aa.layout:303
 #: lib/layouts/aapaper.layout:97 lib/layouts/aapaper.layout:192
 #: lib/layouts/aastex.layout:106 lib/layouts/aastex.layout:244
 #: lib/layouts/apa.layout:70 lib/layouts/cl2emult.layout:79
@@ -3562,14 +3562,15 @@ msgstr "Abstract"
 msgid "Abstract---"
 msgstr "Abstract---"
 
-#: lib/layouts/IEEEtran.layout:349 lib/layouts/aastex.layout:109
-#: lib/layouts/aastex.layout:281 lib/layouts/elsart.layout:64
-#: lib/layouts/ijmpc.layout:77 lib/layouts/ijmpd.layout:80
-#: lib/layouts/iopart.layout:194 lib/layouts/isprs.layout:52
-#: lib/layouts/kluwer.layout:282 lib/layouts/paper.layout:174
-#: lib/layouts/revtex4.layout:241 lib/layouts/siamltex.layout:169
-#: lib/layouts/spie.layout:39 lib/layouts/agu_stdtitle.inc:120
-#: lib/layouts/amsdefs.inc:193 lib/layouts/svjour.inc:273
+#: lib/layouts/IEEEtran.layout:349 lib/layouts/aa.layout:317
+#: lib/layouts/aastex.layout:109 lib/layouts/aastex.layout:281
+#: lib/layouts/elsart.layout:64 lib/layouts/ijmpc.layout:77
+#: lib/layouts/ijmpd.layout:80 lib/layouts/iopart.layout:194
+#: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
+#: lib/layouts/paper.layout:174 lib/layouts/revtex4.layout:241
+#: lib/layouts/siamltex.layout:169 lib/layouts/spie.layout:39
+#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:193
+#: lib/layouts/svjour.inc:273
 msgid "Keywords"
 msgstr "Cuvinte cheie"
 
@@ -3577,8 +3578,8 @@ msgstr "Cuvinte cheie"
 msgid "Index Terms---"
 msgstr "Înregistrare index"
 
-#: lib/layouts/IEEEtran.layout:372 lib/layouts/aa.layout:86
-#: lib/layouts/aa.layout:314 lib/layouts/aapaper.layout:103
+#: lib/layouts/IEEEtran.layout:372 lib/layouts/aa.layout:89
+#: lib/layouts/aa.layout:347 lib/layouts/aapaper.layout:103
 #: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:853
 #: lib/layouts/book.layout:21 lib/layouts/book.layout:23
 #: lib/layouts/cl2emult.layout:102 lib/layouts/egs.layout:563
@@ -3627,7 +3628,7 @@ msgstr "Notã de subsol"
 msgid "MarkBoth"
 msgstr "MarkBoth"
 
-#: lib/layouts/aa.layout:46 lib/layouts/aapaper.layout:48
+#: lib/layouts/aa.layout:49 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:76 lib/layouts/apa.layout:371
 #: lib/layouts/beamer.layout:50 lib/layouts/egs.layout:163
 #: lib/layouts/manpage.layout:82 lib/layouts/powerdot.layout:242
@@ -3636,7 +3637,7 @@ msgstr "MarkBoth"
 msgid "Itemize"
 msgstr "Itemize"
 
-#: lib/layouts/aa.layout:49 lib/layouts/aapaper.layout:51
+#: lib/layouts/aa.layout:52 lib/layouts/aapaper.layout:51
 #: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:389
 #: lib/layouts/beamer.layout:69 lib/layouts/egs.layout:145
 #: lib/layouts/manpage.layout:65 lib/layouts/powerdot.layout:267
@@ -3645,7 +3646,7 @@ msgstr "Itemize"
 msgid "Enumerate"
 msgstr "Enumeraþie"
 
-#: lib/layouts/aa.layout:52 lib/layouts/aapaper.layout:54
+#: lib/layouts/aa.layout:55 lib/layouts/aapaper.layout:54
 #: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:88
 #: lib/layouts/egs.layout:181 lib/layouts/hollywood.layout:134
 #: lib/layouts/manpage.layout:100 lib/layouts/paper.layout:103
@@ -3656,7 +3657,7 @@ msgstr "Enumeraþie"
 msgid "Description"
 msgstr "Descriere"
 
-#: lib/layouts/aa.layout:55 lib/layouts/aapaper.layout:57
+#: lib/layouts/aa.layout:58 lib/layouts/aapaper.layout:57
 #: lib/layouts/aastex.layout:85 lib/layouts/egs.layout:128
 #: lib/layouts/scrlettr.layout:32 lib/layouts/scrlttr2.layout:34
 #: lib/layouts/scrclass.inc:40 lib/layouts/stdlists.inc:69
@@ -3664,7 +3665,7 @@ msgstr "Descriere"
 msgid "List"
 msgstr "Listã"
 
-#: lib/layouts/aa.layout:59 lib/layouts/aa.layout:248
+#: lib/layouts/aa.layout:62 lib/layouts/aa.layout:251
 #: lib/layouts/aapaper.layout:73 lib/layouts/aapaper.layout:159
 #: lib/layouts/aastex.layout:88 lib/layouts/aastex.layout:206
 #: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:730
@@ -3688,7 +3689,7 @@ msgstr "Listã"
 msgid "Title"
 msgstr "Titlu"
 
-#: lib/layouts/aa.layout:62 lib/layouts/aa.layout:106
+#: lib/layouts/aa.layout:65 lib/layouts/aa.layout:109
 #: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:761
 #: lib/layouts/kluwer.layout:122 lib/layouts/llncs.layout:122
 #: lib/layouts/svprobth.layout:44 lib/layouts/aapaper.inc:9
@@ -3696,7 +3697,7 @@ msgstr "Titlu"
 msgid "Subtitle"
 msgstr "Subtitlu"
 
-#: lib/layouts/aa.layout:65 lib/layouts/aa.layout:260
+#: lib/layouts/aa.layout:68 lib/layouts/aa.layout:263
 #: lib/layouts/aapaper.layout:79 lib/layouts/aapaper.layout:170
 #: lib/layouts/aastex.layout:91 lib/layouts/aastex.layout:219
 #: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:786
@@ -3716,7 +3717,7 @@ msgstr "Subtitlu"
 msgid "Author"
 msgstr "Autor"
 
-#: lib/layouts/aa.layout:68 lib/layouts/aa.layout:127
+#: lib/layouts/aa.layout:71 lib/layouts/aa.layout:130
 #: lib/layouts/aapaper.layout:82 lib/layouts/egs.layout:234
 #: lib/layouts/entcs.layout:57 lib/layouts/g-brief-en.layout:179
 #: lib/layouts/g-brief2.layout:715 lib/layouts/ijmpc.layout:50
@@ -3729,17 +3730,17 @@ msgstr "Autor"
 msgid "Address"
 msgstr "Adresã"
 
-#: lib/layouts/aa.layout:71 lib/layouts/aa.layout:144
+#: lib/layouts/aa.layout:74 lib/layouts/aa.layout:147
 #: lib/layouts/aapaper.layout:88 lib/layouts/aapaper.inc:65
 msgid "Offprint"
 msgstr "Offprint"
 
-#: lib/layouts/aa.layout:74 lib/layouts/aa.layout:167
+#: lib/layouts/aa.layout:77 lib/layouts/aa.layout:170
 #: lib/layouts/svjour.inc:236
 msgid "Mail"
 msgstr "Mail"
 
-#: lib/layouts/aa.layout:77 lib/layouts/aa.layout:272
+#: lib/layouts/aa.layout:80 lib/layouts/aa.layout:275
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.layout:181
 #: lib/layouts/aastex.layout:103 lib/layouts/aastex.layout:232
 #: lib/layouts/beamer.layout:830 lib/layouts/egs.layout:476
@@ -3756,7 +3757,7 @@ msgstr "Mail"
 msgid "Date"
 msgstr "Datã"
 
-#: lib/layouts/aa.layout:83 lib/layouts/aa.layout:190
+#: lib/layouts/aa.layout:86 lib/layouts/aa.layout:193
 #: lib/layouts/aapaper.layout:100 lib/layouts/egs.layout:538
 #: lib/layouts/elsart.layout:427 lib/layouts/aapaper.inc:83
 #: lib/layouts/amsmaths-plain.inc:211 lib/layouts/amsmaths-seq.inc:358
@@ -3764,18 +3765,22 @@ msgstr "Datã"
 msgid "Acknowledgement"
 msgstr "Acknowledgement"
 
-#: lib/layouts/aa.layout:153 lib/layouts/aapaper.inc:74
+#: lib/layouts/aa.layout:156 lib/layouts/aapaper.inc:74
 msgid "Offprint Requests to:"
 msgstr "Rebulicaþii pentru:"
 
-#: lib/layouts/aa.layout:176
+#: lib/layouts/aa.layout:179
 msgid "Correspondence to:"
 msgstr "Corespondenþã cãtre:"
 
-#: lib/layouts/aa.layout:202 lib/layouts/egs.layout:527
+#: lib/layouts/aa.layout:205 lib/layouts/egs.layout:527
 #: lib/layouts/svjour.inc:308
 msgid "Acknowledgements."
 msgstr "Acknowledgements"
+
+#: lib/layouts/aa.layout:333 lib/layouts/siamltex.layout:172
+msgid "Key words."
+msgstr "Cuvinte cheie"
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:623
 #: src/frontends/qt4/QPrefs.cpp:306
@@ -4085,11 +4090,6 @@ msgstr "Locaþie"
 msgid "Latin off"
 msgstr "Locaþie"
 
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "ÎnceputCadru"
-
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:114
 #: lib/layouts/beamer.layout:129 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:31 lib/layouts/scrartcl.layout:20
@@ -4105,6 +4105,11 @@ msgstr "Part"
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Parte*"
+
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "ÎnceputCadru"
 
 #: lib/layouts/beamer.layout:104 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62
@@ -5834,7 +5839,7 @@ msgstr "Revizuieºte"
 msgid "Topical"
 msgstr "Topicã"
 
-#: lib/layouts/iopart.layout:85 src/insets/InsetNote.cpp:65
+#: lib/layouts/iopart.layout:85 src/insets/InsetNote.cpp:66
 msgid "Comment"
 msgstr "Comentariu"
 
@@ -6334,7 +6339,7 @@ msgstr "Adresã Expeditor"
 msgid "Sender Phone:"
 msgstr "Telefon Expeditor"
 
-#: lib/layouts/scrlttr2.layout:195 lib/configure.py:310
+#: lib/layouts/scrlttr2.layout:195 lib/configure.py:311
 msgid "Fax"
 msgstr "Fax"
 
@@ -6427,10 +6432,6 @@ msgstr "Progresul Sumarului"
 #: lib/layouts/siamltex.layout:52
 msgid "."
 msgstr "."
-
-#: lib/layouts/siamltex.layout:172
-msgid "Key words."
-msgstr "Cuvinte cheie"
 
 #: lib/layouts/siamltex.layout:176
 msgid "AMS"
@@ -8390,17 +8391,17 @@ msgstr "Închide fereastra|i"
 msgid "Redo|R"
 msgstr "Re-face|R"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:869
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:873
 #: src/mathed/InsetMathNest.cpp:533
 msgid "Cut"
 msgstr "Taie"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:874
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:878
 #: src/mathed/InsetMathNest.cpp:541
 msgid "Copy"
 msgstr "Copiazã"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:851
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:855
 #: src/mathed/InsetMathGrid.cpp:1259 src/mathed/InsetMathNest.cpp:513
 msgid "Paste"
 msgstr "Lipeºte"
@@ -11884,226 +11885,231 @@ msgstr ""
 
 #: lib/configure.py:269
 #, fuzzy
+msgid "Graphviz Dot"
+msgstr "&Graficã"
+
+#: lib/configure.py:270
+#, fuzzy
 msgid "NoWeb"
 msgstr "Nimic"
 
-#: lib/configure.py:269
+#: lib/configure.py:270
 #, fuzzy
 msgid "NoWeb|N"
 msgstr "Nimic"
 
-#: lib/configure.py:270
+#: lib/configure.py:271
 msgid "LilyPond music"
 msgstr ""
 
-#: lib/configure.py:271
+#: lib/configure.py:272
 #, fuzzy
 msgid "LaTeX (plain)"
 msgstr "&Opþiuni LaTeX:"
 
-#: lib/configure.py:271
+#: lib/configure.py:272
 #, fuzzy
 msgid "LaTeX (plain)|L"
 msgstr "&Opþiuni LaTeX:"
 
-#: lib/configure.py:272
+#: lib/configure.py:273
 msgid "LinuxDoc"
 msgstr ""
 
-#: lib/configure.py:272
+#: lib/configure.py:273
 msgid "LinuxDoc|x"
 msgstr ""
 
-#: lib/configure.py:273
+#: lib/configure.py:274
 #, fuzzy
 msgid "LaTeX (pdflatex)"
 msgstr "text LaTeX"
 
-#: lib/configure.py:274 src/frontends/qt4/QPrefs.cpp:177
+#: lib/configure.py:275 src/frontends/qt4/QPrefs.cpp:177
 #, fuzzy
 msgid "Plain text"
 msgstr "Place"
 
-#: lib/configure.py:274
+#: lib/configure.py:275
 #, fuzzy
 msgid "Plain text|a"
 msgstr "Place"
 
-#: lib/configure.py:275
+#: lib/configure.py:276
 #, fuzzy
 msgid "Plain text (pstotext)"
 msgstr "Place"
 
-#: lib/configure.py:276
+#: lib/configure.py:277
 #, fuzzy
 msgid "Plain text (ps2ascii)"
 msgstr "Place"
 
-#: lib/configure.py:277
+#: lib/configure.py:278
 #, fuzzy
 msgid "Plain text (catdvi)"
 msgstr "Place"
 
-#: lib/configure.py:278
+#: lib/configure.py:279
 #, fuzzy
 msgid "Plain Text, Join Lines"
 msgstr "Text ASCII ca linii"
 
-#: lib/configure.py:283
+#: lib/configure.py:284
 #, fuzzy
 msgid "EPS"
 msgstr "PS"
 
-#: lib/configure.py:284
+#: lib/configure.py:285
 #, fuzzy
 msgid "Postscript"
 msgstr "&Driver PostScript:"
 
-#: lib/configure.py:284
+#: lib/configure.py:285
 #, fuzzy
 msgid "Postscript|t"
 msgstr "&Driver PostScript:"
 
-#: lib/configure.py:288
+#: lib/configure.py:289
 #, fuzzy
 msgid "PDF (ps2pdf)"
 msgstr "text LaTeX"
 
-#: lib/configure.py:288
+#: lib/configure.py:289
 msgid "PDF (ps2pdf)|P"
 msgstr ""
 
-#: lib/configure.py:289
+#: lib/configure.py:290
 #, fuzzy
 msgid "PDF (pdflatex)"
 msgstr "text LaTeX"
 
-#: lib/configure.py:289
+#: lib/configure.py:290
 #, fuzzy
 msgid "PDF (pdflatex)|F"
 msgstr "text LaTeX"
 
-#: lib/configure.py:290
+#: lib/configure.py:291
 #, fuzzy
 msgid "PDF (dvipdfm)"
 msgstr "text LaTeX"
 
-#: lib/configure.py:290
+#: lib/configure.py:291
 msgid "PDF (dvipdfm)|m"
 msgstr ""
 
-#: lib/configure.py:293
+#: lib/configure.py:294
 msgid "DVI"
 msgstr ""
 
-#: lib/configure.py:293
+#: lib/configure.py:294
 msgid "DVI|D"
 msgstr ""
 
-#: lib/configure.py:296
+#: lib/configure.py:297
 #, fuzzy
 msgid "DraftDVI"
 msgstr "Mod &ciornã"
 
-#: lib/configure.py:299
+#: lib/configure.py:300
 msgid "HTML"
 msgstr ""
 
-#: lib/configure.py:299
+#: lib/configure.py:300
 msgid "HTML|H"
 msgstr ""
 
-#: lib/configure.py:302
+#: lib/configure.py:303
 #, fuzzy
 msgid "Noteedit"
 msgstr "NotãCãtreEditor"
 
-#: lib/configure.py:305
+#: lib/configure.py:306
 #, fuzzy
 msgid "OpenDocument"
 msgstr "Salvare &documente"
 
-#: lib/configure.py:308
+#: lib/configure.py:309
 #, fuzzy
 msgid "date command"
 msgstr "Comenda de indexare"
 
-#: lib/configure.py:309
+#: lib/configure.py:310
 #, fuzzy
 msgid "Table (CSV)"
 msgstr "Tabel"
 
-#: lib/configure.py:311 src/frontends/qt4/GuiView.cpp:733
+#: lib/configure.py:312 src/frontends/qt4/GuiView.cpp:733
 #, fuzzy
 msgid "LyX"
 msgstr "Vizualizeazã DVI"
 
-#: lib/configure.py:312
+#: lib/configure.py:313
 msgid "LyX 1.3.x"
 msgstr ""
 
-#: lib/configure.py:313
+#: lib/configure.py:314
 msgid "LyX 1.4.x"
 msgstr ""
 
-#: lib/configure.py:314
+#: lib/configure.py:315
 msgid "CJK LyX 1.4.x (big5)"
 msgstr ""
 
-#: lib/configure.py:315
+#: lib/configure.py:316
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr ""
 
-#: lib/configure.py:316
+#: lib/configure.py:317
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr ""
 
-#: lib/configure.py:317
+#: lib/configure.py:318
 #, fuzzy
 msgid "LyX Preview"
 msgstr "Previzualizeazã|#P"
 
-#: lib/configure.py:318
+#: lib/configure.py:319
 msgid "PDFTEX"
 msgstr ""
 
-#: lib/configure.py:319
+#: lib/configure.py:320
 #, fuzzy
 msgid "Program"
 msgstr "Listare program"
 
-#: lib/configure.py:320
+#: lib/configure.py:321
 msgid "PSTEX"
 msgstr ""
 
-#: lib/configure.py:321
+#: lib/configure.py:322
 #, fuzzy
 msgid "Rich Text Format"
 msgstr "Font normal text"
 
-#: lib/configure.py:322
+#: lib/configure.py:323
 msgid "OpenOffice.Org (sxw)"
 msgstr ""
 
-#: lib/configure.py:323
+#: lib/configure.py:324
 msgid "Windows Metafile"
 msgstr ""
 
-#: lib/configure.py:324
+#: lib/configure.py:325
 msgid "Enhanced Metafile"
 msgstr ""
 
-#: lib/configure.py:325
+#: lib/configure.py:326
 #, fuzzy
 msgid "MS Word"
 msgstr "Cuvinte"
 
-#: lib/configure.py:325
+#: lib/configure.py:326
 #, fuzzy
 msgid "MS Word|W"
 msgstr "Cuvinte"
 
-#: lib/configure.py:326
+#: lib/configure.py:327
 #, fuzzy
 msgid "HTML (MS Word)"
 msgstr "Cuvinte"
@@ -12570,7 +12576,7 @@ msgstr "text LaTeX"
 msgid "previewed snippet"
 msgstr ""
 
-#: src/Color.cpp:283 src/insets/InsetNote.cpp:342
+#: src/Color.cpp:283 src/insets/InsetNote.cpp:355
 msgid "note"
 msgstr "notã"
 
@@ -13180,57 +13186,57 @@ msgstr "&Director de lucru:"
 msgid "Done!"
 msgstr "Nimic"
 
-#: src/LyX.cpp:509
+#: src/LyX.cpp:513
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Nu pot ºterge director temporar"
 
-#: src/LyX.cpp:511
+#: src/LyX.cpp:515
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "&Utilizeazã director temporar"
 
-#: src/LyX.cpp:547
+#: src/LyX.cpp:551
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:618
+#: src/LyX.cpp:622
 msgid "No textclass is found"
 msgstr ""
 
-#: src/LyX.cpp:619
+#: src/LyX.cpp:623
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
 
-#: src/LyX.cpp:623
+#: src/LyX.cpp:627
 #, fuzzy
 msgid "&Reconfigure"
 msgstr "Reconfigureazã|R"
 
-#: src/LyX.cpp:624
+#: src/LyX.cpp:628
 #, fuzzy
 msgid "&Use Default"
 msgstr "Implicit"
 
-#: src/LyX.cpp:625 src/LyX.cpp:1150
+#: src/LyX.cpp:629 src/LyX.cpp:1154
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "Ieºire"
 
-#: src/LyX.cpp:845
+#: src/LyX.cpp:849
 #, fuzzy
 msgid "LyX: "
 msgstr "Vizualizeazã DVI"
 
-#: src/LyX.cpp:974
+#: src/LyX.cpp:978
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Nu pot ºterge director temporar"
 
-#: src/LyX.cpp:975
+#: src/LyX.cpp:979
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -13238,47 +13244,47 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/LyX.cpp:1143
+#: src/LyX.cpp:1147
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "Adaugã cuvîntul la dicþionarul personal"
 
-#: src/LyX.cpp:1144
+#: src/LyX.cpp:1148
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "Documentul specificat nu este un document LyX."
 
-#: src/LyX.cpp:1149
+#: src/LyX.cpp:1153
 #, fuzzy
 msgid "&Create directory"
 msgstr "&Director de lucru:"
 
-#: src/LyX.cpp:1151
+#: src/LyX.cpp:1155
 #, fuzzy
 msgid "No user LyX directory. Exiting."
 msgstr "&Utilizeazã director temporar"
 
-#: src/LyX.cpp:1155
+#: src/LyX.cpp:1159
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "&Director de lucru:"
 
-#: src/LyX.cpp:1161
+#: src/LyX.cpp:1165
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:1334
+#: src/LyX.cpp:1338
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/LyX.cpp:1338
+#: src/LyX.cpp:1342
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr ""
 
-#: src/LyX.cpp:1349
+#: src/LyX.cpp:1353
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -13300,42 +13306,42 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/LyX.cpp:1385 src/support/Package.cpp.in:568
+#: src/LyX.cpp:1389 src/support/Package.cpp.in:568
 #, fuzzy
 msgid "No system directory"
 msgstr "&Utilizeazã director temporar"
 
-#: src/LyX.cpp:1386
+#: src/LyX.cpp:1390
 msgid "Missing directory for -sysdir switch"
 msgstr ""
 
-#: src/LyX.cpp:1396
+#: src/LyX.cpp:1400
 #, fuzzy
 msgid "No user directory"
 msgstr "&Utilizeazã director temporar"
 
-#: src/LyX.cpp:1397
+#: src/LyX.cpp:1401
 msgid "Missing directory for -userdir switch"
 msgstr ""
 
-#: src/LyX.cpp:1407
+#: src/LyX.cpp:1411
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Comenda de indexare"
 
-#: src/LyX.cpp:1408
+#: src/LyX.cpp:1412
 msgid "Missing command string after --execute switch"
 msgstr ""
 
-#: src/LyX.cpp:1418
+#: src/LyX.cpp:1422
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 
-#: src/LyX.cpp:1430
+#: src/LyX.cpp:1434
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 
-#: src/LyX.cpp:1435
+#: src/LyX.cpp:1439
 msgid "Missing filename for --import"
 msgstr ""
 
@@ -13446,7 +13452,7 @@ msgstr "Reface documentul original|r"
 msgid "Exiting."
 msgstr "Ieºire|I"
 
-#: src/LyXFunc.cpp:1190 src/Text3.cpp:1372
+#: src/LyXFunc.cpp:1190 src/Text3.cpp:1376
 #, fuzzy
 msgid "Missing argument"
 msgstr "Parametrii listã"
@@ -13552,406 +13558,410 @@ msgstr "Salvare &documente"
 msgid "Welcome to LyX!"
 msgstr ""
 
-#: src/LyXRC.cpp:2101
+#: src/LyXRC.cpp:2118
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
 
-#: src/LyXRC.cpp:2106
+#: src/LyXRC.cpp:2123
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr ""
 
-#: src/LyXRC.cpp:2110
+#: src/LyXRC.cpp:2127
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
 "specified, an internal routine is used."
 msgstr ""
 
-#: src/LyXRC.cpp:2118
+#: src/LyXRC.cpp:2135
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr ""
 
-#: src/LyXRC.cpp:2122
+#: src/LyXRC.cpp:2139
 #, fuzzy
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
 msgstr "La modificarea clasei, seteazã opþiunile clasei la valorile implicite"
 
-#: src/LyXRC.cpp:2126
+#: src/LyXRC.cpp:2143
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 
-#: src/LyXRC.cpp:2133
+#: src/LyXRC.cpp:2150
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
 msgstr ""
 
-#: src/LyXRC.cpp:2137
+#: src/LyXRC.cpp:2154
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
 msgstr ""
 
-#: src/LyXRC.cpp:2141
+#: src/LyXRC.cpp:2158
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:2145
+#: src/LyXRC.cpp:2162
 msgid "Select to check whether the lastfiles still exist."
 msgstr ""
 
-#: src/LyXRC.cpp:2149
+#: src/LyXRC.cpp:2166
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
-#: src/LyXRC.cpp:2159
+#: src/LyXRC.cpp:2176
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
 msgstr ""
 
-#: src/LyXRC.cpp:2170
+#: src/LyXRC.cpp:2180
+msgid "Use the Mac OS X conventions for the word-level cursor movement"
+msgstr ""
+
+#: src/LyXRC.cpp:2191
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2174
+#: src/LyXRC.cpp:2195
 msgid "New documents will be assigned this language."
 msgstr ""
 
-#: src/LyXRC.cpp:2178
+#: src/LyXRC.cpp:2199
 #, fuzzy
 msgid "Specify the default paper size."
 msgstr "Mãrime implicitã f&oaie:"
 
-#: src/LyXRC.cpp:2182
+#: src/LyXRC.cpp:2203
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
 msgstr ""
 
-#: src/LyXRC.cpp:2186
+#: src/LyXRC.cpp:2207
 msgid "Select how LyX will display any graphics."
 msgstr ""
 
-#: src/LyXRC.cpp:2190
+#: src/LyXRC.cpp:2211
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:2195
+#: src/LyXRC.cpp:2216
 msgid "Specify additional chars that can be part of a word."
 msgstr ""
 
-#: src/LyXRC.cpp:2199
+#: src/LyXRC.cpp:2220
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
 
-#: src/LyXRC.cpp:2206
+#: src/LyXRC.cpp:2227
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
 "\"makeindex.sh -m $$lang\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2215
+#: src/LyXRC.cpp:2236
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
 msgstr ""
 
-#: src/LyXRC.cpp:2219
+#: src/LyXRC.cpp:2240
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr ""
 
-#: src/LyXRC.cpp:2223
+#: src/LyXRC.cpp:2244
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr ""
 
-#: src/LyXRC.cpp:2227
+#: src/LyXRC.cpp:2248
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:2231
+#: src/LyXRC.cpp:2252
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
 msgstr ""
 
-#: src/LyXRC.cpp:2235
+#: src/LyXRC.cpp:2256
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:2239
+#: src/LyXRC.cpp:2260
 msgid "The LaTeX command for local changing of the language."
 msgstr ""
 
-#: src/LyXRC.cpp:2243
+#: src/LyXRC.cpp:2264
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr ""
 
-#: src/LyXRC.cpp:2247
+#: src/LyXRC.cpp:2268
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2251
+#: src/LyXRC.cpp:2272
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
 msgstr ""
 
-#: src/LyXRC.cpp:2255
+#: src/LyXRC.cpp:2276
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 
-#: src/LyXRC.cpp:2259
+#: src/LyXRC.cpp:2280
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 
-#: src/LyXRC.cpp:2263
+#: src/LyXRC.cpp:2284
 msgid "De-select if you don't want LyX to create backup files."
 msgstr ""
 
-#: src/LyXRC.cpp:2267
+#: src/LyXRC.cpp:2288
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:2271
+#: src/LyXRC.cpp:2292
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 
-#: src/LyXRC.cpp:2276
+#: src/LyXRC.cpp:2297
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr ""
 
-#: src/LyXRC.cpp:2283
+#: src/LyXRC.cpp:2304
 #, fuzzy
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Specificã un dicþionar personal diferit decît cel implicit"
 
-#: src/LyXRC.cpp:2287
+#: src/LyXRC.cpp:2308
 msgid "Shows a typeset preview of things such as math"
 msgstr ""
 
-#: src/LyXRC.cpp:2291
+#: src/LyXRC.cpp:2312
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 
-#: src/LyXRC.cpp:2295
+#: src/LyXRC.cpp:2316
 msgid "Scale the preview size to suit."
 msgstr ""
 
-#: src/LyXRC.cpp:2299
+#: src/LyXRC.cpp:2320
 msgid "The option for specifying whether the copies should be collated."
 msgstr ""
 
-#: src/LyXRC.cpp:2303
+#: src/LyXRC.cpp:2324
 #, fuzzy
 msgid "The option for specifying the number of copies to print."
 msgstr "Opþiuni folosite pentru setarea numãrului de copii"
 
-#: src/LyXRC.cpp:2307
+#: src/LyXRC.cpp:2328
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
 msgstr ""
 
-#: src/LyXRC.cpp:2311
+#: src/LyXRC.cpp:2332
 #, fuzzy
 msgid "The option to print only even pages."
 msgstr "Opþiuni folosite pentru a tipãri un anumit interval de pagini"
 
-#: src/LyXRC.cpp:2315
+#: src/LyXRC.cpp:2336
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
 msgstr ""
 
-#: src/LyXRC.cpp:2319
+#: src/LyXRC.cpp:2340
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2323
+#: src/LyXRC.cpp:2344
 #, fuzzy
 msgid "The option to print out in landscape."
 msgstr "Opþiuni folosite pentru a tipãri în fiºier"
 
-#: src/LyXRC.cpp:2327
+#: src/LyXRC.cpp:2348
 #, fuzzy
 msgid "The option to print only odd pages."
 msgstr "Opþiuni folosite pentru a tipãri un anumit interval de pagini"
 
-#: src/LyXRC.cpp:2331
+#: src/LyXRC.cpp:2352
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 
-#: src/LyXRC.cpp:2335
+#: src/LyXRC.cpp:2356
 #, fuzzy
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Opþiuni foloaite pentru a tipãri la imprimanta ne-standard"
 
-#: src/LyXRC.cpp:2339
+#: src/LyXRC.cpp:2360
 msgid "The option to specify paper type."
 msgstr ""
 
-#: src/LyXRC.cpp:2343
+#: src/LyXRC.cpp:2364
 #, fuzzy
 msgid "The option to reverse the order of the pages printed."
 msgstr "Foloseºte aceastã linie ca subsol pentru prima paginã"
 
-#: src/LyXRC.cpp:2347
+#: src/LyXRC.cpp:2368
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
 "arguments."
 msgstr ""
 
-#: src/LyXRC.cpp:2351
+#: src/LyXRC.cpp:2372
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
 msgstr ""
 
-#: src/LyXRC.cpp:2355
+#: src/LyXRC.cpp:2376
 #, fuzzy
 msgid "Option to pass to the print program to print to a file."
 msgstr "Opþiuni folosite pentru a tipãri în fiºier"
 
-#: src/LyXRC.cpp:2359
+#: src/LyXRC.cpp:2380
 #, fuzzy
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr "Opþiuni foloaite pentru a tipãri la imprimanta ne-standard"
 
-#: src/LyXRC.cpp:2363
+#: src/LyXRC.cpp:2384
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr ""
 
-#: src/LyXRC.cpp:2367
+#: src/LyXRC.cpp:2388
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2371
+#: src/LyXRC.cpp:2392
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 
-#: src/LyXRC.cpp:2375
+#: src/LyXRC.cpp:2396
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
 msgstr ""
 
-#: src/LyXRC.cpp:2381
+#: src/LyXRC.cpp:2402
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 
-#: src/LyXRC.cpp:2390
+#: src/LyXRC.cpp:2411
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 msgstr ""
 
-#: src/LyXRC.cpp:2394
+#: src/LyXRC.cpp:2415
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 
-#: src/LyXRC.cpp:2399
+#: src/LyXRC.cpp:2420
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr ""
 
-#: src/LyXRC.cpp:2404
+#: src/LyXRC.cpp:2425
 msgid ""
 "Specify geometry of the main view in width x height (values from last "
 "session will not be used if non-zero values are specified)."
 msgstr ""
 
-#: src/LyXRC.cpp:2408
+#: src/LyXRC.cpp:2429
 msgid "Allow session manager to save and restore windows position."
 msgstr ""
 
-#: src/LyXRC.cpp:2412
+#: src/LyXRC.cpp:2433
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
 
-#: src/LyXRC.cpp:2419
+#: src/LyXRC.cpp:2440
 msgid "De-select if you don't want the startup banner."
 msgstr ""
 
-#: src/LyXRC.cpp:2423
+#: src/LyXRC.cpp:2444
 msgid "What command runs the spellchecker?"
 msgstr ""
 
-#: src/LyXRC.cpp:2427
+#: src/LyXRC.cpp:2448
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
 
-#: src/LyXRC.cpp:2431
+#: src/LyXRC.cpp:2452
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:2441
+#: src/LyXRC.cpp:2462
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:2454
+#: src/LyXRC.cpp:2475
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
 "may not work with all dictionaries."
 msgstr ""
 
-#: src/LyXRC.cpp:2458
+#: src/LyXRC.cpp:2479
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 
-#: src/LyXRC.cpp:2465
+#: src/LyXRC.cpp:2486
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 
@@ -14035,26 +14045,26 @@ msgstr "Datã"
 msgid "No Branch in Document!"
 msgstr "Documente"
 
-#: src/Paragraph.cpp:1705 src/frontends/qt4/QParagraph.cpp:233
+#: src/Paragraph.cpp:1711 src/frontends/qt4/QParagraph.cpp:233
 msgid "Senseless with this layout!"
 msgstr ""
 
-#: src/Paragraph.cpp:1765
+#: src/Paragraph.cpp:1771
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1766
+#: src/Paragraph.cpp:1772
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2240 src/frontends/qt4/QViewSource.cpp:161
+#: src/Paragraph.cpp:2246 src/frontends/qt4/QViewSource.cpp:161
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "Versiune...|V"
 
-#: src/Paragraph.cpp:2241
+#: src/Paragraph.cpp:2247
 #, fuzzy
 msgid "uncodable character"
 msgstr "caracter special"
@@ -14112,70 +14122,70 @@ msgstr ""
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Nu puteþi introduce douã spaþii în acest fel. Citiþi tutorialul."
 
-#: src/Text.cpp:1834
+#: src/Text.cpp:1880
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Modificã limbajul"
 
-#: src/Text.cpp:1840
+#: src/Text.cpp:1886
 #, fuzzy
 msgid "Change: "
 msgstr "Pagini"
 
-#: src/Text.cpp:1844
+#: src/Text.cpp:1890
 #, fuzzy
 msgid " at "
 msgstr " la "
 
-#: src/Text.cpp:1854
+#: src/Text.cpp:1900
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Mãrime font"
 
-#: src/Text.cpp:1859
+#: src/Text.cpp:1905
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ""
 
-#: src/Text.cpp:1865
+#: src/Text.cpp:1911
 #, fuzzy
 msgid ", Spacing: "
 msgstr ", Spaþiere: "
 
-#: src/Text.cpp:1871 src/frontends/qt4/QDocument.cpp:249
+#: src/Text.cpp:1917 src/frontends/qt4/QDocument.cpp:249
 msgid "OneHalf"
 msgstr ""
 
-#: src/Text.cpp:1877
+#: src/Text.cpp:1923
 #, fuzzy
 msgid "Other ("
 msgstr "Altul ("
 
-#: src/Text.cpp:1886
+#: src/Text.cpp:1932
 #, fuzzy
 msgid ", Inset: "
 msgstr "Insereazã URL"
 
-#: src/Text.cpp:1887
+#: src/Text.cpp:1933
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Paragraf"
 
-#: src/Text.cpp:1888
+#: src/Text.cpp:1934
 #, fuzzy
 msgid ", Id: "
 msgstr "Index"
 
-#: src/Text.cpp:1889
+#: src/Text.cpp:1935
 #, fuzzy
 msgid ", Position: "
 msgstr "Afirmaþie"
 
-#: src/Text.cpp:1895
+#: src/Text.cpp:1941
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1897
+#: src/Text.cpp:1943
 msgid ", Boundary: "
 msgstr ""
 
@@ -14197,27 +14207,27 @@ msgstr "Nu pot indexa mai mult de un paragraf!"
 msgid "Math editor mode"
 msgstr "MathLetters"
 
-#: src/Text3.cpp:754
+#: src/Text3.cpp:758
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "necunoscut"
 
-#: src/Text3.cpp:928
+#: src/Text3.cpp:932
 #, fuzzy
 msgid "Layout "
 msgstr "Format|F"
 
-#: src/Text3.cpp:929
+#: src/Text3.cpp:933
 #, fuzzy
 msgid " not known"
 msgstr "necunoscut"
 
-#: src/Text3.cpp:1479 src/Text3.cpp:1491
+#: src/Text3.cpp:1483 src/Text3.cpp:1495
 #, fuzzy
 msgid "Character set"
 msgstr "Caracter"
 
-#: src/Text3.cpp:1608 src/Text3.cpp:1619
+#: src/Text3.cpp:1612 src/Text3.cpp:1623
 #, fuzzy
 msgid "Paragraph layout set"
 msgstr "Paragraf"
@@ -15227,7 +15237,7 @@ msgstr ""
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:515
+#: src/frontends/qt4/GuiWorkArea.cpp:532
 #, fuzzy
 msgid "unknown version"
 msgstr "necunoscut"
@@ -16360,26 +16370,26 @@ msgstr "Notã"
 msgid "Nomenclature"
 msgstr "Conjecturã"
 
-#: src/insets/InsetNote.cpp:64
+#: src/insets/InsetNote.cpp:65
 msgid "Note[[InsetNote]]"
 msgstr ""
 
-#: src/insets/InsetNote.cpp:66
+#: src/insets/InsetNote.cpp:67
 #, fuzzy
 msgid "Greyed out"
 msgstr "Deschidere"
 
-#: src/insets/InsetNote.cpp:67
+#: src/insets/InsetNote.cpp:68
 #, fuzzy
 msgid "Framed"
 msgstr "Parametrii"
 
-#: src/insets/InsetNote.cpp:68
+#: src/insets/InsetNote.cpp:69
 #, fuzzy
 msgid "Shaded"
 msgstr "F&ormã:"
 
-#: src/insets/InsetNote.cpp:147
+#: src/insets/InsetNote.cpp:148
 #, fuzzy
 msgid "Opened Note Inset"
 msgstr "Deschidere"
@@ -16404,55 +16414,55 @@ msgstr "ª&terge"
 msgid "Clear Double Page"
 msgstr "ª&terge"
 
-#: src/insets/InsetRef.cpp:146 src/mathed/InsetMathRef.cpp:187
+#: src/insets/InsetRef.cpp:146 src/mathed/InsetMathRef.cpp:189
 #, fuzzy
 msgid "Ref: "
 msgstr "MyRef"
 
-#: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:190
 #, fuzzy
 msgid "Equation"
 msgstr "Citat"
 
-#: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:188
+#: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:190
 #, fuzzy
 msgid "EqRef: "
 msgstr "MyRef"
 
-#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:191
 #, fuzzy
 msgid "Page Number"
 msgstr "Comutã sublinierea fontului"
 
-#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:189
+#: src/insets/InsetRef.cpp:148 src/mathed/InsetMathRef.cpp:191
 #, fuzzy
 msgid "Page: "
 msgstr "Pagini"
 
-#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:192
 #, fuzzy
 msgid "Textual Page Number"
 msgstr "Comutã sublinierea fontului"
 
-#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:190
+#: src/insets/InsetRef.cpp:149 src/mathed/InsetMathRef.cpp:192
 #, fuzzy
 msgid "TextPage: "
 msgstr "Text dupã"
 
-#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:191
+#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:193
 msgid "Standard+Textual Page"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:191
+#: src/insets/InsetRef.cpp:150 src/mathed/InsetMathRef.cpp:193
 #, fuzzy
 msgid "Ref+Text: "
 msgstr "Text"
 
-#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:192
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:194
 msgid "PrettyRef"
 msgstr ""
 
-#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:192
+#: src/insets/InsetRef.cpp:151 src/mathed/InsetMathRef.cpp:194
 #, fuzzy
 msgid "FormatRef: "
 msgstr "F&ormat:"
@@ -16744,7 +16754,7 @@ msgstr ""
 msgid "entered math text mode (textrm)"
 msgstr ""
 
-#: src/mathed/InsetMathRef.cpp:187
+#: src/mathed/InsetMathRef.cpp:189
 msgid "Standard[[mathref]]"
 msgstr ""
 
