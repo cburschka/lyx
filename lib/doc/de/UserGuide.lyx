@@ -1,4 +1,4 @@
-#LyX 1.6.0beta4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 338
 \begin_document
 \begin_header
@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 13.
+letzte Änderung: 16.
  Juli 2008
 \end_layout
 
@@ -35094,8 +35094,8 @@ Große Anfangsbuchstaben (Alt+Z
 \begin_layout Standard
 Wenn der Cursor am Anfang eines Wortes oder in einem Wort steht, wird der
  Buchstabe rechts davon groß geschrieben.
- Wenn Sie mehrere Worte markiert haben.
- werden alle Anfangsbuchstaben groß geschrieben.
+ Wenn Sie mehrere Worte markiert haben, werden alle Anfangsbuchstaben groß
+ geschrieben.
 \end_layout
 
 \begin_layout Subsubsection
@@ -35109,8 +35109,7 @@ Großbuchstaben (Alt+Z
 \begin_layout Standard
 Wenn der Cursor am Anfang eines Wortes oder in einem Wort steht, werden
  alle Buchstaben rechts davon groß geschrieben.
- Wenn Sie mehrere Worte markiert haben.
- wird alles Markierte groß geschrieben.
+ Wenn Sie mehrere Worte markiert haben, wird alles Markierte groß geschrieben.
 \end_layout
 
 \begin_layout Subsubsection
@@ -35124,8 +35123,7 @@ Kleinbuchstaben (Alt+Z
 \begin_layout Standard
 Wenn der Cursor am Anfang eines Wortes oder in einem Wort steht, werden
  alle Buchstaben rechts davon klein geschrieben.
- Wenn Sie mehrere Worte markiert haben.
- wird alles Markierte klein geschrieben.
+ Wenn Sie mehrere Worte markiert haben, wird alles Markierte klein geschrieben.
 \end_layout
 
 \begin_layout Subsection
@@ -35814,17 +35812,17 @@ font dargestellt und ohne Zeilenumbrüche gesperrt gedruckt, sofern Sie in
 \begin_layout Standard
 \begin_inset listings
 inline false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
-\lang english
+\lang french
 Der Text, den Sie im Feld Listing eingeben, 
 \end_layout
 
 \begin_layout Plain Layout
 
-\lang english
+\lang french
 wird in LyX mit dem Schreibmaschinenfont dargestellt und ohne Zeilenumbrüche
  gedruckt, sofern Sie in der Eingabe selber keine machen.
 \end_layout
@@ -37479,7 +37477,7 @@ Folgendes
 \begin_inset space ~
 \end_inset
 
-enthalten: der hier eingegebene Text wird in Tabelle darunter angezeigt,
+enthalten: der hier eingegebene Text wird in der Tabelle darunter angezeigt,
  wenn er dort zu finden ist.
 \end_layout
 
