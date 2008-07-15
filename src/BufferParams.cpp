@@ -906,6 +906,11 @@ void BufferParams::validate(LaTeXFeatures & features) const
 
 	if (pdfoptions().use_hyperref)
 		features.require("hyperref");
+
+	if (language->lang() == "vietnamese")
+		features.require("vietnamese");
+	else if (language->lang() == "japanese")
+		features.require("japanese");
 }
 
 
@@ -998,12 +1003,12 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 				language_options << ',';
 			language_options << language->babel();
 		}
-		// when Vietnamese is used, babel must directly be loaded with the
+		// if Vietnamese is used, babel must directly be loaded with the
 		// language options, not in the class options, see
 		// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
 		size_t viet = language_options.str().find("vietnam");
 		// viet = string::npos when not found
-		// when Japanese is used, babel must directly be loaded with the
+		// if Japanese is used, babel must directly be loaded with the
 		// language options, not in the class options, see
 		// http://bugzilla.lyx.org/show_bug.cgi?id=4597#c4
 		size_t japan = language_options.str().find("japanese");
@@ -1237,23 +1242,10 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// Line spacing
 	lyxpreamble += from_utf8(spacing().writePreamble(tclass.provides("SetSpace")));
 
-	// We try to load babel late, in case it interferes with other
-	// packages. But some packages also need babel to be loaded
-	// before, e.g. jurabib has to be called after babel. So load
-	// babel after the optional packages but before the
-	// user-defined preamble. This allows the users to redefine
-	// babel commands, e.g. to translate the word "Index" to the
-	// German "Stichwortverzeichnis". For more infos why this
-	// place was chosen, see
-	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg128425.html
-	// If you encounter problems, you can shift babel to its old
-	// place behind the user-defined preamble. But in this case
-	// you must change the Vietnamese support from currently
-	// "\usepackage[vietnamese]{babel}" to:
-	// \usepackage{vietnamese}
-	// \usepackage{babel}
-	// because vietnamese must be loaded before hyperref
-	if (use_babel && !features.isRequired("jurabib")) {
+	// If we use hyperref or japanese or vietnamese, we have to call babel here.
+	if (use_babel && !features.isRequired("jurabib")
+	    && (features.isRequired("hyperref") || features.isRequired("vietnamese")
+		|| features.isRequired("japanese"))) {
 		// FIXME UNICODE
 		lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
 		lyxpreamble += from_utf8(features.getBabelOptions());
@@ -1355,6 +1347,18 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			+ atlyxpreamble + "\\makeatother\n\n";
 	else
 		lyxpreamble += '\n' + atlyxpreamble;
+
+	// We try to load babel late, in case it interferes
+	// with other packages.
+	// Jurabib and Hyperref have to be called after babel, though.
+	if (use_babel && !features.isRequired("jurabib")
+	    && !features.isRequired("hyperref")
+	    && !features.isRequired("vietnamese")
+	    && !features.isRequired("japanese")) {
+		// FIXME UNICODE
+		lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
+		lyxpreamble += from_utf8(features.getBabelOptions()) + '\n';
+	}
 
 	int const nlines =
 		int(count(lyxpreamble.begin(), lyxpreamble.end(), '\n'));
@@ -1759,12 +1763,12 @@ string BufferParams::babelCall(string const & lang_opts) const
 	// other languages are used (lang_opts is then empty)
 	if (lang_opts.empty())
 		return string();
-	// when Vietnamese is used, babel must directly be loaded with the
+	// If Vietnamese is used, babel must directly be loaded with the
 	// language options, see
 	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
 	size_t viet = lang_opts.find("vietnam");
 	// viet = string::npos when not found
-	// when Japanese is used, babel must directly be loaded with the
+	// If Japanese is used, babel must directly be loaded with the
 	// language options, see
 	// http://bugzilla.lyx.org/show_bug.cgi?id=4597#c4
 	size_t japan = lang_opts.find("japanese");
@@ -1789,7 +1793,7 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 		set<string> encodings =
 			features.getEncodingSet(doc_encoding);
 
-		// When the encodings EUC-JP-plain, JIS-plain, or SJIS-plainare used, the
+		// If the encodings EUC-JP-plain, JIS-plain, or SJIS-plain are used, the
 		// package inputenc must be omitted. Therefore set the encoding to empty.
 		// see http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
 		if (doc_encoding == "EUC-JP-plain" || doc_encoding == "JIS-plain" ||

@@ -371,6 +371,10 @@ void LaTeXFeatures::useLanguage(Language const * lang)
 {
 	if (!lang->babel().empty())
 		UsedLanguages_.insert(lang);
+	if (lang->lang() == "vietnamese")
+		require("vietnamese");
+	else if (lang->lang() == "japanese")
+		require("japanese");
 	// CJK languages do not have a babel name.
 	// They use the CJK package
 	if (lang->encoding()->package() == Encoding::CJK)
