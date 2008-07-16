@@ -437,7 +437,7 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, docstring & rem)
 
 		CharInfoMap::const_iterator it = unicodesymbols.begin();
 		size_t unicmd_size = 0;
-		char_type c;
+		char_type c = 0;
 		for (; it != uniend; ++it) {
 			docstring const math = it->second.mathcommand;
 			docstring const text = it->second.textcommand;

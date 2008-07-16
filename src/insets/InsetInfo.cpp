@@ -147,7 +147,7 @@ void InsetInfo::write(ostream & os) const
 }
 
 
-bool  InsetInfo::validate(docstring const & argument) const
+bool InsetInfo::validate(docstring const & /* argument */) const
 {
 	// FIXME!
 	return true;
