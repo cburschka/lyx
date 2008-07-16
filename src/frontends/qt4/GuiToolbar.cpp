@@ -635,7 +635,8 @@ void GuiLayoutBox::updateContents(bool reset)
 	// needed to recalculate size hint
 	hide();
 	setMinimumWidth(sizeHint().width());
-	setEnabled(!buffer->isReadonly());
+	setEnabled(!buffer->isReadonly() &&
+		lyx::getStatus(FuncRequest(LFUN_LAYOUT)).enabled());
 	show();
 }
 
