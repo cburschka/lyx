@@ -127,27 +127,20 @@ void FontList::set(pos_type pos, Font const & font)
 	// in a new kernel. (Asger)
 	// Next search font table
 
-	iterator beg = list_.begin();
-	iterator it = beg;
-	iterator endit = list_.end();
-	bool found = false;
-	for (; it != endit; ++it) {
-		if (it->pos() >= pos) {
-			found = true;
-			break;
-		}
-	}
+	List::iterator it = fontIterator(pos);
+	bool const found = it != list_.end();
 	if (found && it->font() == font)
+		// Font is already set.
 		return;
 
-	size_t const i = distance(beg, it);
+	size_t const i = distance(list_.begin(), it);
 
-	// Is position pos is a beginning of a font block?
-	bool begin = pos == 0 || !found 
+	// Is position pos a beginning of a font block?
+	bool const begin = pos == 0 || !found 
 		|| (i > 0 && list_[i - 1].pos() == pos - 1);
 
-	// Is position pos is the end of a font block?
-	bool end = found && list_[i].pos() == pos;
+	// Is position pos at the end of a font block?
+	bool const end = found && list_[i].pos() == pos;
 
 	if (!begin && !end) {
 		// The general case: The block is splitted into 3 blocks
@@ -188,27 +181,18 @@ void FontList::set(pos_type pos, Font const & font)
 }
 
 
-FontSize FontList::highestInRange
-	(pos_type startpos, pos_type endpos, FontSize def_size) const
+FontSize FontList::highestInRange(pos_type startpos, pos_type endpos,
+	FontSize def_size) const
 {
 	if (list_.empty())
 		return def_size;
 
-	const_iterator end_it = list_.begin();
+	List::const_iterator end_it = fontIterator(endpos);
 	const_iterator const end = list_.end();
-	for (; end_it != end; ++end_it) {
-		if (end_it->pos() >= endpos)
-			break;
-	}
-
 	if (end_it != end)
 		++end_it;
 
-	FontList::const_iterator cit = list_.begin();
-	for (; cit != end; ++cit) {
-		if (cit->pos() >= startpos)
-			break;
-	}
+	List::const_iterator cit = fontIterator(startpos);
 
 	FontSize maxsize = FONT_SIZE_TINY;
 	for (; cit != end_it; ++cit) {
@@ -224,17 +208,8 @@ FontSize FontList::highestInRange
 
 bool FontList::hasChangeInRange(pos_type pos, int len) const
 {
-	// FIXME: can't we use fontIterator(pos) instead?
-	const_iterator cit = list_.begin();
-	const_iterator end = list_.end();
-	for (; cit != end; ++cit) {
-		if (cit->pos() >= pos)
-			break;
-	}
-	if (cit != end && pos + len - 1 > cit->pos())
-		return false;
-
-	return true;
+	List::const_iterator cit = fontIterator(pos);
+	return cit == list_.end() || pos + len - 1 <= cit->pos();
 }
 
 
