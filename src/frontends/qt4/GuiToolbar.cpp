@@ -507,17 +507,20 @@ void GuiLayoutBox::set(docstring const & layout)
 		return;
 
 	Layout const & lay = (*text_class_)[layout];
-	QString const & name = toqstr(lay.name());
-	// FIXME
-	// Commenting this out for now. Not sure exactly how to do this test,
-	// with all the different models that are flying around. As it is, it
-	// won't work with translated or unknown layouts.
-	// if (name == currentText())
-	//	return;
+	QString const newLayout = toqstr(lay.name());
 
-	QList<QStandardItem *> r = model_->findItems(name, Qt::MatchExactly, 1);
+	int const curItem = currentIndex();
+	QModelIndex const mindex = 
+		filterModel_->mapToSource(filterModel_->index(curItem, 1));
+	QString const & currentLayout = model_->itemFromIndex(mindex)->text();
+	if (newLayout == currentLayout) {
+		LYXERR(Debug::GUI, "Already had " << newLayout << " selected.");
+		return;
+	}
+
+	QList<QStandardItem *> r = model_->findItems(newLayout, Qt::MatchExactly, 1);
 	if (r.empty()) {
-		LYXERR0("Trying to select non existent layout type " << name);
+		LYXERR0("Trying to select non existent layout type " << newLayout);
 		return;
 	}
 
