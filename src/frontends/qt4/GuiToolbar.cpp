@@ -507,9 +507,13 @@ void GuiLayoutBox::set(docstring const & layout)
 		return;
 
 	Layout const & lay = (*text_class_)[layout];
-	QString const & name = toqstr(lay.name() + (lay.isUnknown() ? " (unknown)" : ""));
-	if (name == currentText())
-		return;
+	QString const & name = toqstr(lay.name());
+	// FIXME
+	// Commenting this out for now. Not sure exactly how to do this test,
+	// with all the different models that are flying around. As it is, it
+	// won't work with translated or unknown layouts.
+	// if (name == currentText())
+	//	return;
 
 	QList<QStandardItem *> r = model_->findItems(name, Qt::MatchExactly, 1);
 	if (r.empty()) {
@@ -522,10 +526,12 @@ void GuiLayoutBox::set(docstring const & layout)
 
 
 void GuiLayoutBox::addItemSort(docstring const & item, docstring const & category,
-	bool sorted, bool sortedByCat)
+	bool sorted, bool sortedByCat, bool unknown)
 {
 	QString qitem = toqstr(item);
-	QString titem = toqstr(translateIfPossible(item));
+	// FIXME This is wrong for RTL, I'd suppose.
+	QString titem = toqstr(translateIfPossible(item) +
+	                       (unknown ? _(" (unknown)") : from_ascii("")));
 	QString qcat = toqstr(translateIfPossible(category));
 
 	QList<QStandardItem *> row;
@@ -616,8 +622,8 @@ void GuiLayoutBox::updateContents(bool reset)
 		// if it doesn't require the empty layout, we skip it
 		if (name == text_class_->emptyLayoutName() && inset_ && !useEmpty)
 			continue;
-		addItemSort(name + (lit->isUnknown() ? " (unknown)" : ""),
-			lit->category(), lyxrc.sort_layouts, lyxrc.group_layouts);
+		addItemSort(name, lit->category(), lyxrc.sort_layouts, 
+				lyxrc.group_layouts, lit->isUnknown());
 	}
 
 	set(owner_.view()->cursor().innerParagraph().layout().name());
@@ -636,8 +642,6 @@ void GuiLayoutBox::selected(int index)
 	// get selection
 	QModelIndex mindex = filterModel_->mapToSource(filterModel_->index(index, 1));
 	docstring layoutName = qstring_to_ucs4(model_->itemFromIndex(mindex)->text());
-	if (suffixIs(layoutName, from_ascii(" (unknown)")))
-		layoutName = layoutName.substr(0, layoutName.size() - 10); // = len(" (unknown)")
 	owner_.setFocus();
 
 	if (!text_class_) {

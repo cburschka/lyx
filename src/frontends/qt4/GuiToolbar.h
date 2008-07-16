@@ -54,7 +54,7 @@ public:
 	void updateContents(bool reset);
 	/// Add Item to Layout box according to sorting settings from preferences
 	void addItemSort(docstring const & item, docstring const & category,
-		bool sorted, bool sortedByCat);
+		bool sorted, bool sortedByCat, bool unknown);
 
 	///
 	void showPopup();
