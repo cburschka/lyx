@@ -432,8 +432,12 @@ public:
 	/// Search for \param inset in the tabular, with the
 	///
 	void validate(LaTeXFeatures &) const;
-	///
 //private:
+  // FIXME Now that cells have an InsetTableCell as their insets, rather
+  // than an InsetText, it'd be possible to reverse the relationship here,
+  // so that cell_vector was a vector<InsetTableCell> rather than a 
+  // vector<CellData>, and an InsetTableCell had a CellData as a member,
+  // or perhaps just had its members as members.
 	///
 	class CellData {
 	public:
