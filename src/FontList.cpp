@@ -28,34 +28,28 @@ using namespace std;
 
 namespace lyx {
 
-namespace {
-
-class matchFT
-{
-public:
-	/// used by lower_bound and upper_bound
-	int operator()(FontTable const & a, FontTable const & b) const {
-		return a.pos() < b.pos();
-	}
-};
-
-} // anon namespace
 
 FontList::iterator FontList::fontIterator(pos_type pos)
 {
-	static Font dummy;
-	FontTable search_elem(pos, dummy);
-	return lower_bound(list_.begin(), list_.end(), search_elem,
-		matchFT());
+	FontList::iterator it = list_.begin();
+	FontList::iterator end = list_.end();
+	for (; it != end; ++it) {
+		if (it->pos() >= pos)
+			break;
+	}
+	return it;
 }
 
 
 FontList::const_iterator FontList::fontIterator(pos_type pos) const
 {
-	static Font dummy;
-	FontTable search_elem(pos, dummy);
-	return lower_bound(list_.begin(), list_.end(), search_elem,
-		matchFT());
+	FontList::const_iterator it = list_.begin();
+	FontList::const_iterator end = list_.end();
+	for (; it != end; ++it) {
+		if (it->pos() >= pos)
+			break;
+	}
+	return it;
 }
 
 
