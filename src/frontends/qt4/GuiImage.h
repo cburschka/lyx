@@ -16,6 +16,7 @@
 #include "graphics/GraphicsImage.h"
 
 #include <QPixmap>
+#include <QString>
 
 namespace lyx {
 namespace graphics {
@@ -69,6 +70,8 @@ private:
 	QPixmap transformed_;
 	/// Buffer the pixmap itself
 	bool is_transformed_;
+	///
+	QString fname_;
 };
 
 } // namespace graphics

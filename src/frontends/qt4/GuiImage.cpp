@@ -70,7 +70,9 @@ bool GuiImage::load(FileName const & filename)
 		return false;
 	}
 
-	if (!original_.load(toqstr(filename.absFilename()))) {
+	fname_ = toqstr(filename.absFilename());
+
+	if (!original_.load(fname_)) {
 		LYXERR(Debug::GRAPHICS, "Unable to open image");
 		return false;
 	}
@@ -80,15 +82,22 @@ bool GuiImage::load(FileName const & filename)
 
 bool GuiImage::setPixmap(Params const & params)
 {
-	if (original_.isNull() || !params.display)
+	if (!params.display)
 		return false;
 
+	if (original_.isNull()) {
+		if (original_.load(fname_))
+			return false;
+	}
+		
 	is_transformed_ = clip(params);
 	is_transformed_ |= rotate(params);
 	is_transformed_ |= scale(params);
 
-	if (!is_transformed_)
-		// Clear it out to save some memory.
+	// Clear the pixmap to save some memory.
+	if (is_transformed_)
+		original_ = QPixmap();
+	else
 		transformed_ = QPixmap();
 
 	return true;
