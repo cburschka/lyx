@@ -165,6 +165,7 @@ InsetLayout Listings
 	PassThru              true
 	KeepEmpty             true
 	FreeSpacing           true
+	ForceLTR              true
 End
 
 InsetLayout Branch
