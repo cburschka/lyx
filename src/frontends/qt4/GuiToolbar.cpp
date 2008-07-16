@@ -635,9 +635,9 @@ void GuiLayoutBox::selected(int index)
 {
 	// get selection
 	QModelIndex mindex = filterModel_->mapToSource(filterModel_->index(index, 1));
-	docstring const layoutName = rtrim(
-		qstring_to_ucs4(model_->itemFromIndex(mindex)->text()), " (unknown)");
-
+	docstring layoutName = qstring_to_ucs4(model_->itemFromIndex(mindex)->text());
+	if (suffixIs(layoutName, from_ascii(" (unknown)")))
+		layoutName = layoutName.substr(0, layoutName.size() - 10); // = len(" (unknown)")
 	owner_.setFocus();
 
 	if (!text_class_) {
@@ -655,7 +655,7 @@ void GuiLayoutBox::selected(int index)
 		resetFilter();
 		return;
 	}
-	LYXERR0("ERROR (layoutSelected): layout not found!");
+	LYXERR0("ERROR (layoutSelected): layout " << layoutName << " not found!");
 }
 
 

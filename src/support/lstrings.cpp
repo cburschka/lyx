@@ -495,7 +495,8 @@ bool prefixIs(docstring const & a, docstring const & pre)
 
 bool suffixIs(string const & a, char c)
 {
-	if (a.empty()) return false;
+	if (a.empty()) 
+		return false;
 	return a[a.length() - 1] == c;
 }
 
@@ -509,6 +510,14 @@ bool suffixIs(docstring const & a, char_type c)
 
 
 bool suffixIs(string const & a, string const & suf)
+{
+	size_t const suflen = suf.length();
+	size_t const alen = a.length();
+	return suflen <= alen && a.compare(alen - suflen, suflen, suf) == 0;
+}
+
+
+bool suffixIs(docstring const & a, docstring const & suf)
 {
 	size_t const suflen = suf.length();
 	size_t const alen = a.length();

@@ -103,8 +103,9 @@ bool prefixIs(docstring const & str, docstring const & pre);
 bool suffixIs(std::string const &, char);
 bool suffixIs(docstring const &, char_type);
 
-/// Does the std::string end with this suffix?
+/// Does the string end with this suffix?
 bool suffixIs(std::string const &, std::string const &);
+bool suffixIs(docstring const &, docstring const &);
 
 ///
 inline bool contains(std::string const & a, std::string const & b)
