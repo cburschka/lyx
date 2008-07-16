@@ -431,8 +431,6 @@ public:
 			  boost::shared_ptr<InsetTableCell>) const;
 	/// Search for \param inset in the tabular, with the
 	///
-	idx_type cellFromInset(Inset const * inset) const;
-	///
 	void validate(LaTeXFeatures &) const;
 	///
 //private:
@@ -440,7 +438,7 @@ public:
 	class CellData {
 	public:
 		///
-		CellData(Buffer const &, Tabular const &);
+		CellData(Buffer const &);
 		///
 		CellData(CellData const &);
 		///
@@ -629,8 +627,7 @@ class InsetTableCell : public InsetText
 {
 public:
 	///
-	InsetTableCell(Buffer const & buf,
-		Tabular::CellData const * cd, Tabular const * t);
+	InsetTableCell(Buffer const & buf);
 	///
 	InsetCode lyxCode() const { return CELL_CODE; }
 	///
@@ -647,19 +644,14 @@ public:
 	///
 	virtual bool neverIndent() { return true; }
 	///
-	void setCellData(Tabular::CellData const * cd) { cell_data_ = cd; }
-	///
-	void setTabular(Tabular const * t) { table_ = t; }
+	void toggleFixedWidth(bool fw) { isFixedWidth = fw; }
 private:
 	/// unimplemented
 	InsetTableCell();
 	/// unimplemented
 	void operator=(InsetTableCell const &);
-
-	/// 
-	Tabular::CellData const * cell_data_;
-	/// 
-	Tabular const * table_;
+	///
+	bool isFixedWidth;
 };
 
 
