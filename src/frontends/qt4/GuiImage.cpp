@@ -86,7 +86,7 @@ bool GuiImage::setPixmap(Params const & params)
 		return false;
 
 	if (original_.isNull()) {
-		if (original_.load(fname_))
+		if (!original_.load(fname_))
 			return false;
 	}
 		
