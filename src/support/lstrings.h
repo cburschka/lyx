@@ -183,9 +183,10 @@ docstring const trim(docstring const & a, char const * p = " ");
 */
 std::string const trim(std::string const & a, char const * p = " ");
 
-/** Trims characters off the end of a string.
+/** Trims characters off the end of a string, removing any character
+    in p.
     \code
-    rtrim("abccc", "c") == "ab".
+    rtrim("abcde", "dec") == "ab".
     \endcode
 */
 std::string const rtrim(std::string const & a, char const * p = " ");
@@ -193,7 +194,7 @@ docstring const rtrim(docstring const & a, char const * p = " ");
 
 /** Trims characters off the beginning of a string.
     \code
-   ("ababcdef", "ab") = "cdef"
+   ("abbabcdef", "ab") = "cdef"
     \endcode
 */
 std::string const ltrim(std::string const & a, char const * p = " ");
