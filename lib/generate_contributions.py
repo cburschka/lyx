@@ -513,6 +513,14 @@ contributers = [
                  "31 May 2007",
                  u"RTL/BiDi-related fixes"),
 
+     contributer(u"Michał Fita",
+                 "michal ! fita () gmail ! com",
+                 "GPL",
+                 "Statement for Polish translation",
+                 "m=121615623122376",
+                 "15 July 2008",
+                 u"Polish translation"),
+
      contributer(u"Ronald Florence",
                  "ron () 18james ! com",
                  "GPL",
@@ -551,7 +559,7 @@ contributers = [
                  "Re: lyxpreview2ppm.py",
                  "m=111894292115287",
                  "16 June 2005",
-                 u"Italian translation of the Windows installer"),
+                 u"Italian translation of the Windows installer, many bug fixes and features"),
 
      contributer(u"Eitan Frachtenberg",
                  "sky8an () gmail ! com",
