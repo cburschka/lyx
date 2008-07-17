@@ -779,7 +779,7 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 	// documentation of QWheelEvent)
 	int const delta = ev->delta() / 120;
 	if (ev->modifiers() & Qt::ControlModifier) {
-		lyxrc.zoom -= 5 * delta;
+		lyxrc.zoom += 5 * delta;
 		if (lyxrc.zoom < 10)
 			lyxrc.zoom = 10;
 		// The global QPixmapCache is used in GuiPainter to cache text
