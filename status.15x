@@ -102,6 +102,9 @@ What's new
 
 - Fix crash related to the outline pane with some documents (bug 4857).
 
+- Fix crash when clicking with middle button on a collapsable inset
+  (bug 4662).
+
 - Fix crash when an outlining function was used for a section inside an
   inset (bug 5004). These functions are now disabled for section that
   are not in the main text area.

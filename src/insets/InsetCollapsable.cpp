@@ -369,6 +369,12 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 
+		if (cmd.button() != mouse_button::button1 && hitButton(cmd)) {
+			// Nothing to do.
+			cur.noUpdate();
+			break;
+		}
+
 		// The mouse click is within the opened inset.
 		if (status() == Open)
 			InsetText::doDispatch(cur, cmd);
