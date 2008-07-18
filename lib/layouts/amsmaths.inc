@@ -615,11 +615,22 @@ Style Case
 	LatexName             caseenv
 	LabelType             Static
 	LeftMargin            "MMMMMMN"
-	LabelString           "Case #:"
+	LabelString           "Case #."
+	LabelFont
+	  Series              Medium
+	  Shape               Italic
+	EndFont
 	Preamble
 	  \newcounter{casectr}
 	  \newenvironment{caseenv}
-	  {\begin{list}{\bfseries\upshape Case \arabic{casectr}:}{}\setcounter{casectr}{0}\usecounter{casectr}}
+	  {\begin{list}{{\itshape\ Case} \arabic{casectr}.}{%
+	   \setlength{\leftmargin}{\labelwidth}
+	   \addtolength{\leftmargin}{\parskip}
+	   \setlength{\itemindent}{\listparindent}
+	   \setlength{\itemsep}{\medskipamount}
+	   \setlength{\topsep}{\itemsep}}
+	   \setcounter{casectr}{0}
+	   \usecounter{casectr}}
 	  {\end{list}}
 	EndPreamble
 End
