@@ -3,9 +3,6 @@
 \begin_document
 \begin_header
 \textclass article
-\begin_preamble
-\providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-\end_preamble
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -20,7 +17,17 @@
 \graphics default
 \paperfontsize 12
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pagebackref false
+\pdf_pdfusetitle true
 \papersize a4paper
 \use_geometry false
 \use_amsmath 2
@@ -35,7 +42,7 @@
 \quotes_language german
 \papercolumns 1
 \papersides 1
-\paperpagestyle headings
+\paperpagestyle default
 \tracking_changes false
 \output_changes false
 \author "" 
@@ -98,7 +105,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 16.
+letzte Änderung: 19.
  Juli 2008
 \end_layout
 
@@ -127,7 +134,7 @@ Einstellungen\SpecialChar \ldots{}
 \begin_layout Standard
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="264" columns="2">
+<lyxtabular version="3" rows="258" columns="2">
 <features islongtable="true">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="100mm">
@@ -311,7 +318,7 @@ Alt+A 6
 \begin_inset Text
 
 \begin_layout Plain Layout
-Absatz in Unterpubparagraph umwandeln
+Absatz in Unterparagraph umwandeln
 \end_layout
 
 \end_inset
@@ -986,86 +993,6 @@ Alt+A Umschalt+R
 
 \begin_layout Plain Layout
 Absatz in gedrehten Folienkopf umwandeln
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Alt+A Umschalt+
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -2437,7 +2364,7 @@ Alt+H I
 \begin_inset Text
 
 \begin_layout Plain Layout
-IHandbuch nhaltsverzeichnis
+Handbuch Inhaltsverzeichnis
 \end_layout
 
 \end_inset
@@ -3049,7 +2976,7 @@ Alt+M H
 \begin_inset Text
 
 \begin_layout Plain Layout
-Mathe: Circumflex 
+Mathe: Zirkumflex 
 \begin_inset Formula $\hat{x}$
 \end_inset
 
@@ -4219,7 +4146,7 @@ Alt+W R
 \begin_inset Text
 
 \begin_layout Plain Layout
-Rechschreibprüfung starten, 
+Rechtschreibprüfung starten, 
 \family sans
 F7
 \end_layout
@@ -4281,7 +4208,7 @@ Alt+Z C
 \begin_inset Text
 
 \begin_layout Plain Layout
-Schreimaschinenfont
+Schreibmaschinenfont
 \end_layout
 
 \end_inset
@@ -4523,7 +4450,7 @@ Alt+Z S
 \begin_layout Plain Layout
 
 \family sans
-Sans Serif
+serifenlos
 \end_layout
 
 \end_inset
@@ -4645,7 +4572,7 @@ F5
 \begin_inset Text
 
 \begin_layout Plain Layout
-in die mitte des Dokuments springen oder zurück
+in die Mitte des Dokuments springen oder zurück
 \end_layout
 
 \end_inset
@@ -4665,27 +4592,7 @@ F7
 \begin_inset Text
 
 \begin_layout Plain Layout
-font-code
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-F7 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Rechschreibprüfung
+Rechtschreibprüfung
 \end_layout
 
 \end_inset
@@ -4898,27 +4805,7 @@ Strg+A
 \begin_inset Text
 
 \begin_layout Plain Layout
-lalles auswählen
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Strg+Alt+| 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-math-delim | |
+alles auswählen
 \end_layout
 
 \end_inset
@@ -5430,7 +5317,7 @@ Strg+Umschalt+M
 \begin_inset Text
 
 \begin_layout Plain Layout
-abgesetze Formel
+abgesetzte Formel
 \end_layout
 
 \end_inset
