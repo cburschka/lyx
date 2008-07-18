@@ -209,13 +209,23 @@ Style Case
 	CopyStyle             Enumerate
 	LatexName             caseenv
 	LabelType             Static
-	LeftMargin            "Case ###:"
-	LabelString           "Case #:"
+	LeftMargin            "Case ###."
+	LabelString           "Case #."
+	LabelFont
+	  Series              Medium
+	  Shape               Italic
+	EndFont
 	Preamble
 	  \newcounter{casectr}
 	  \newenvironment{caseenv}
-			{\begin{list}{\bfseries\upshape Case \arabic{casectr}:}%
-			{}\setcounter{casectr}{0}\usecounter{casectr}}%
-		{\end{list}}
+	  {\begin{list}{{\itshape\ Case} \arabic{casectr}.}{%
+	   \setlength{\leftmargin}{\labelwidth}
+	   \addtolength{\leftmargin}{\parskip}
+	   \setlength{\itemindent}{\listparindent}
+	   \setlength{\itemsep}{\medskipamount}
+	   \setlength{\topsep}{\itemsep}}
+	   \setcounter{casectr}{0}
+	   \usecounter{casectr}}
+	  {\end{list}}
 	EndPreamble
 End
