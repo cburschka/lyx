@@ -1226,11 +1226,16 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 
-	// If we use jurabib, we have to call babel here.
-	if (use_babel && features.isRequired("jurabib")) {
-		os << from_ascii(babelCall(language_options.str()))
+	// If we use hyperref, jurabib, japanese, or vietnamese, we have to call babel here.
+	if (use_babel
+		&& (features.isRequired("jurabib")
+			|| features.isRequired("hyperref")
+			|| features.isRequired("vietnamese")
+			|| features.isRequired("japanese") ) ) {
+		// FIXME UNICODE
+		os << from_utf8(babelCall(language_options.str()))
 		   << '\n'
-		   << from_ascii(features.getBabelOptions());
+		   << from_utf8(features.getBabelOptions());
 		texrow.newline();
 	}
 
@@ -1241,15 +1246,6 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	// Line spacing
 	lyxpreamble += from_utf8(spacing().writePreamble(tclass.provides("SetSpace")));
-
-	// If we use hyperref or japanese or vietnamese, we have to call babel here.
-	if (use_babel && !features.isRequired("jurabib")
-	    && (features.isRequired("hyperref") || features.isRequired("vietnamese")
-		|| features.isRequired("japanese"))) {
-		// FIXME UNICODE
-		lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
-		lyxpreamble += from_utf8(features.getBabelOptions());
-	}
 
 	// PDF support.
 	// * Hyperref manual: "Make sure it comes last of your loaded
