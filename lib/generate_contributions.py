@@ -559,7 +559,7 @@ contributers = [
                  "Re: lyxpreview2ppm.py",
                  "m=111894292115287",
                  "16 June 2005",
-                 u"Italian translation of the Windows installer, many bug fixes and features"),
+                 u"Italian translations, many bug fixes and features"),
 
      contributer(u"Eitan Frachtenberg",
                  "sky8an () gmail ! com",
