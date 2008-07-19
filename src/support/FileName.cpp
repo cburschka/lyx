@@ -166,11 +166,12 @@ void FileName::erase()
 
 bool FileName::copyTo(FileName const & name) const
 {
+	LYXERR(Debug::FILES, "Copying " << name);
 	QFile::remove(name.d->fi.absoluteFilePath());
 	bool success = QFile::copy(d->fi.absoluteFilePath(), name.d->fi.absoluteFilePath());
 	if (!success)
-		lyxerr << "FileName::copyTo(): Could not copy file "
-			<< *this << " to " << name << endl;
+		LYXERR0("FileName::copyTo(): Could not copy file "
+			<< *this << " to " << name);
 	return success;
 }
 
