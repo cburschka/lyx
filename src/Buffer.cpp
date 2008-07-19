@@ -1394,7 +1394,6 @@ BiblioInfo const & Buffer::localBibInfo() const
 		support::FileNameList::const_iterator en = bibfilesCache.end();
 		for (; ei != en; ++ ei) {
 			time_t lastw = ei->lastModified();
-			LYXERR0(*ei << ", " << lastw << ", " << d->bibfileStatus_[*ei]); 
 			if (lastw != d->bibfileStatus_[*ei]) {
 				d->bibinfoCacheValid_ = false;
 				d->bibfileStatus_[*ei] = lastw;
