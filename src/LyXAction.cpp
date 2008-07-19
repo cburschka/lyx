@@ -2410,6 +2410,13 @@ void LyXAction::init()
 		{ LFUN_KEYMAP_OFF, "keymap-off", ReadOnly, Edit },
 		{ LFUN_KEYMAP_PRIMARY, "keymap-primary", ReadOnly, Edit },
 		{ LFUN_KEYMAP_SECONDARY, "keymap-secondary", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_KEYMAP_TOGGLE
+ * \li Action: Toggles keyboard maps (first/second/off).
+ * \li Syntax: keymap-toggle
+ * \li Origin: leeming, 30 Mar 2004
+ * \endvar
+ */
 		{ LFUN_KEYMAP_TOGGLE, "keymap-toggle", ReadOnly, Edit },
 
 /*!
