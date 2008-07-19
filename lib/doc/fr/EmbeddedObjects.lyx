@@ -19507,7 +19507,7 @@ Les Types de Flottants
 
 \begin_layout Standard
 En plus des flottants de figures et de tableau qui sont décrits respectivement
- dans les sections 
+ dans les sections
 \begin_inset space ~
 \end_inset
 
@@ -19531,38 +19531,13 @@ Algorithme
 \series default
  et 
 \series bold
-Flottant
-\begin_inset space ~
-\end_inset
-
-d'enrobage
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-\lang english
-je préfèrerai 
-\begin_inset Quotes eld
-\end_inset
-
-d'habillage
-\begin_inset Quotes erd
-\end_inset
-
- (NdT)
-\end_layout
-
-\end_inset
-
-
+Enrobage
 \series default
 .
 \end_layout
 
 \begin_layout Subsection
-Flottant d'algorithme 
+Flottant d'algorithme
 \begin_inset Index
 status collapsed
 
@@ -19887,7 +19862,7 @@ name "sub:flottants-d'enrobage"
 \begin_inset Wrap figure
 lines 0
 placement l
-overhang 0col%
+overhang 1cm
 width "40col%"
 status open
 
@@ -19913,11 +19888,7 @@ name "fig:Figure-enrobée"
 
 \end_inset
 
-Ceci est une figure habillée et vous lisez la superbe légende qui la décrit.
-\begin_inset VSpace medskip
-\end_inset
-
-
+Ceci est une figure habillée.
 \end_layout
 
 \end_inset
@@ -19927,7 +19898,7 @@ Ceci est une figure habillée et vous lisez la superbe légende qui la décrit.
 
 \end_inset
 
-Ce type de flottant est utilisé quand on veut que le texte habille la figure
+ Ce type de flottant est utilisé quand on veut que le texte habille la figure
  de sorte qu'elle n'occupe plus qu'une partie de la largeur de la colonne.
  Vous pouvez en insérer un en utilisant le menu 
 \family sans
@@ -20025,8 +19996,7 @@ reference "cha:Unités-de-longueur"
 
 \end_inset
 
- Un peu d'espace a été ajouté sous la légende pour mieux la séparer du texte
- qui l'entoure.
+
 \end_layout
 
 \begin_layout Standard

@@ -18973,16 +18973,10 @@ Algoritmo
 \series default
  y 
 \series bold
-Ajustado
-\begin_inset space ~
-\end_inset
-
-al
-\begin_inset space ~
-\end_inset
-
-texto
+\lang english
+Wrap
 \series default
+\lang spanish
 .
 \end_layout
 
@@ -19221,7 +19215,7 @@ name "sub:Flotante-envuelto"
 \begin_inset Wrap figure
 lines 0
 placement l
-overhang 0in
+overhang 1cm
 width "40col%"
 status open
 
@@ -19246,11 +19240,7 @@ name "fig:Figura-envuelta"
 
 \end_inset
 
-Figura envuelta en el texto con su genial leyenda.
-\begin_inset VSpace medskip
-\end_inset
-
-
+Figura envuelta en el texto.
 \end_layout
 
 \end_inset
@@ -19260,7 +19250,7 @@ Figura envuelta en el texto con su genial leyenda.
 
 \end_inset
 
-Este tipo de flotante se usa para adosar una figura o una tabla al texto,
+ Este tipo de flotante se usa para adosar una figura o una tabla al texto,
  de modo que ocupe sólo una parte del ancho de columna.
  Se inserta con el menú 
 \family sans
@@ -19335,7 +19325,7 @@ reference "fig:Figura-envuelta"
 \end_inset
 
  es un ejemplo de flotante envuelto en texto con una anchura de columna
- del 35
+ del 40
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -19360,8 +19350,7 @@ reference "cha:Unidades-disponibles-en"
 
 \end_inset
 
- Se ha añadido un espacio vertical bajo la leyenda para separarla mejor
- del texto envolvente.
+
 \end_layout
 
 \begin_layout Standard

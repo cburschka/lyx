@@ -19084,15 +19084,7 @@ Algorithm
 \series default
  and 
 \series bold
-Text
-\begin_inset space ~
-\end_inset
-
 Wrap
-\begin_inset space ~
-\end_inset
-
-Float
 \series default
 .
 \end_layout
@@ -19357,12 +19349,12 @@ package
 \end_layout
 
 \begin_layout Subsection
-Text Wrap Floats
+Wrap Floats
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Text Wrap Floats
+Floats ! Wrap Floats
 \end_layout
 
 \end_inset
@@ -19370,7 +19362,7 @@ Floats ! Text Wrap Floats
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:floatflt-wrap-float"
+name "sub:wrap-floats"
 
 \end_inset
 
@@ -19381,7 +19373,7 @@ name "sub:floatflt-wrap-float"
 \begin_inset Wrap figure
 lines 0
 placement l
-overhang 0col%
+overhang 1cm
 width "40col%"
 status open
 
@@ -19407,12 +19399,7 @@ name "fig:This-is-a"
 
 \end_inset
 
-This is a wrapped figure, and this is the brilliant caption that describes
- it.
-\begin_inset VSpace medskip
-\end_inset
-
-
+This is a figure wrap float.
 \end_layout
 
 \end_inset
@@ -19422,21 +19409,25 @@ This is a wrapped figure, and this is the brilliant caption that describes
 
 \end_inset
 
-This float type is used if you want to 
-\begin_inset Quotes eld
-\end_inset
-
-wrap
-\begin_inset Quotes erd
-\end_inset
-
- text around a figure so that it only occupies some fraction of the column
- width.
+ This float type is used if you want to wrap text around a figure or table
+ so that it only occupies some fraction of the column width.
  It can be inserted using the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Floats\SpecialChar \menuseparator
-Text
+Figure
+\begin_inset space ~
+\end_inset
+
+Wrap
+\begin_inset space ~
+\end_inset
+
+Float
+\family default
+ or 
+\family sans
+Table
 \begin_inset space ~
 \end_inset
 
@@ -19491,8 +19482,42 @@ Configuration
 
 \end_inset
 
- The width and placement of the float is adjusted by right-clicking on the
- float box.
+ The settings of the float can be modified by right-clicking on the float
+ box.
+ The mandatory settings are the float 
+\family sans
+Placement
+\family default
+ and its 
+\family sans
+Width
+\family default
+.
+ Optional are the 
+\family sans
+Overhang
+\family default
+ that specifies how much the float is set into the paragraph
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+page margin, and the 
+\family sans
+Line
+\begin_inset space ~
+\end_inset
+
+span
+\family default
+ that specifies how many text lines the float will approximately need.
+ The line span is often hard to be approximated, so better only use it when
+ you encounter float placement problems.
+ You can furthermore decide if LaTeX is allowed to let the float float within
+ the paragraph or to surrounding paragraphs.
  Figure
 \begin_inset space ~
 \end_inset
@@ -19508,7 +19533,11 @@ reference "fig:This-is-a"
 \begin_inset space \thinspace{}
 \end_inset
 
-col%.
+col%, 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm overhang, set to the left.
 \begin_inset Foot
 status collapsed
 
@@ -19529,28 +19558,7 @@ reference "cha:Units-available-in"
 
 \end_inset
 
- Some space was added under the caption to separate it better from the surroundi
-ng text.
-\end_layout
 
-\begin_layout Standard
-The LaTeX-package 
-\series bold
-wrapfig
-\series default
- also supports table wrap floats, but they are not yet supported by LyX.
- If you need this, read the documentation of 
-\series bold
-wrapfig
-\series default
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "wrapfig"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard

@@ -19853,8 +19853,7 @@ reference "abs:Gleitende-Tabellen"
 
 \end_inset
 
- beschrieben wurden, gibt es Gleitobjekt-Algorithmen und textumflossene
- Gleitobjekte.
+ beschrieben wurden, gibt es Gleitobjekt-Algorithmen und umflossene Gleitobjekte.
 \end_layout
 
 \begin_layout Subsection
@@ -20083,10 +20082,10 @@ verwenden
 \end_layout
 
 \begin_layout Subsection
-Textumflossenes [Gleit]Objekt
+Umflossene Gleitobjekte
 \begin_inset CommandInset label
 LatexCommand label
-name "uab:Textumflossenes-[Gleit]Objekt"
+name "uab:Umflossene-Gleitobjekte"
 
 \end_inset
 
@@ -20095,7 +20094,7 @@ name "uab:Textumflossenes-[Gleit]Objekt"
 status collapsed
 
 \begin_layout Plain Layout
-Gleitobjekte ! textumflossene
+Gleitobjekte ! umflossene
 \end_layout
 
 \end_inset
@@ -20104,70 +20103,21 @@ Gleitobjekte ! textumflossene
 \end_layout
 
 \begin_layout Standard
-\begin_inset Wrap figure
-lines 0
-placement l
-overhang 0col%
-width "40col%"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../clipart/mobius.eps
-	width 40col%
-	scaleBeforeRotation
-	rotateOrigin center
-
+Umflossene Gleitobjekte werden benutzt, um Text um eine Abbildung oder Tabelle
+ herum fließen zu lassen, wobei der Text nur den Teil der Zeile benutzt,
+ den die Abbildung bzw.
+\begin_inset space ~
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "abb:This-is-a"
-
-\end_inset
-
-Dies ist eine umflossene Gleitobjekt-Abbildung
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-Textumflossene [Gleit]Objekte sind eigentlich keine, weil sie dort gedruckt
- werden, wo sie definiert wurden.
- Dieser Typ wird benutzt, um Text um eine Abbildung herum 
-\emph on
-fließen
-\emph default
- zu lassen, wobei der Text nur den Teil der Zeile benutzt, den die Abbildung
- übrig lässt.
- Er wird mit dem Befehl
+Tabelle übrig lässt.
+ Sie werden über das Menü
 \family sans
  Einfügen\SpecialChar \menuseparator
 Gleitobjekt\SpecialChar \menuseparator
-Umflossenes
-\begin_inset space \space{}
-\end_inset
-
-Gleit\SpecialChar \-
-ob\SpecialChar \-
-jekt
+Umflossenes Bild-Gleitobjekt oder Umflossenes Tabellen-Gleit
+objekt
 \family default
-  eingefügt, wenn das LaTeX-Paket 
+ eingefügt, wenn das LaTeX-Paket 
 \series bold
 wrapfig
 \series default
@@ -20196,7 +20146,7 @@ vspace{4mm}
 
  installiert ist.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Wie man ein LaTeX-Paket installiert, wird im Handbuch 
@@ -20208,17 +20158,79 @@ LaTeX-Konfiguration
 
 \end_inset
 
- Breite und Platzierung des Objekts können Sie mit einem Rechts\SpecialChar \-
-klick auf
- das 
-\family sans
-Umflossenes
-\begin_inset space ~
+ Die Einstellungen des Gleitobjekts können mit einem Rechtsklick auf die
+ Box des Gleitobjekts geändert werden.
+ 
+\begin_inset Wrap figure
+lines 0
+placement l
+overhang 1cm
+width "40col%"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../clipart/mobius.eps
+	width 40col%
+	scaleBeforeRotation
+	rotateOrigin center
+
 \end_inset
 
-Gleitobjekt
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "abb:Dies-ist-eine"
+
+\end_inset
+
+Dies ist eine umflossene Gleitobjekt-Abbildung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Obligatorische Einstellungen sind die 
+\family sans
+Breite
 \family default
--Kästchen ändern.
+ und 
+\family sans
+Platzierung
+\family default
+ des Gleitobjekts.
+ Optional sind der 
+\family sans
+Überhang 
+\family default
+der festlegt, wie weit das Gleitobjekt in den Rand des Absatzes
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+der Seite ragt und die 
+\family sans
+benötigten Zeilen
+\family default
+, die festlegen wie viele Textzeilen das Gleitobjekt in etwa benötigt.
+ Die benötigten Zeilen sind oft schwer abzuschätzen, daher sollte man sie
+ nur nutzen, wenn Probleme mit der Platzierung des Gleitobjekts auftreten.
+ Des weiteren können Sie entscheiden, ob es LaTeX erlaubt sein soll, das
+ Gleitobjekt innerhalb des Absatzes oder zu umgebenden Absätzen gleiten
+ zu lassen.
  Abbildung
 \begin_inset space ~
 \end_inset
@@ -20226,15 +20238,19 @@ Gleitobjekt
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abb:This-is-a"
+reference "abb:Dies-ist-eine"
 
 \end_inset
 
- ist zum Beispiel ein textumflossenes Objekt, das 40
+ ist zum Beispiel ein umflossenes Bild, das 40
 \begin_inset space \thinspace{}
 \end_inset
 
-% der Spaltenbreite einnimmt.
+% der Spaltenbreite einnimmt, 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm in den Rand ragt und links gesetzt wurde.
 \begin_inset Foot
 status collapsed
 
@@ -20255,8 +20271,7 @@ reference "kap:In-LyX-verfügbare"
 
 \end_inset
 
- Unter dem Titel wurde ein vertikaler Abstand eingefügt, um es besser vom
- umgebenden Test zu trennen.
+
 \end_layout
 
 \begin_layout Standard
@@ -20266,116 +20281,47 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Bemerkungen:
-\end_layout
-
-\begin_layout Itemize
-Textumflossene Objekte
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-sind fragil.
- Wenn die Abbildung zu nahe am unteren Seitenrand ist, kann es passieren,
- dass sie gar nicht oder über anderen Text gedruckt wird.
-\end_layout
-
-\begin_layout Itemize
-sollten nicht in Absätze gepackt werden, die auf der nächsten Seite fortgesetzt
- werden.
- Das bedeutet, dass man umflossene Gleitobjekte erst dann einfügen sollte,
- wenn das Dokument fast fertig ist und man sehen kann, wo ein Seitenumbruch
- erfolgen wird.
-\end_layout
-
-\begin_layout Itemize
-sollten entweder vor dem Absatz, dessen Text um sie fließen soll, eingefügt
- werden oder darin.
-\end_layout
-
-\begin_layout Itemize
-in aufeinanderfolgenden Absätzen können Probleme bereiten, also achten Sie
- darauf, dass mindestens ein Textabsatz zwischen ihnen ist.
-\end_layout
-
-\begin_layout Itemize
-sind weder in Abschnitts-Überschriften noch in Tabellen erlaubt.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Wenn Sie als Absatztrennung Einrückung benutzen, wird auch der Text, der
- unmittelbar auf die Abbildung folgt, eingerückt.
- Das können Sie mit dem TeX-Code-Befehl 
-\series bold
-
-\backslash
-hspace*{-1em}
+Bemerkung:
 \series default
- direkt vor dem Text korrigieren.
- 
-\family typewriter
-1
+ Umflossene Objekte sind fragil! Wenn die Abbildung z.
 \begin_inset space \thinspace{}
 \end_inset
 
-em
-\family default
- entspricht der Standardeinrückung.
-\end_layout
-
-\begin_layout Itemize
-Der Text vor und hinter dem textumflossenen Objekt wird als eigener Absatz
- behandelt.
-\end_layout
-
-\begin_layout Itemize
-Der Text, der um die Abbildung herumfließt, sollte zwischen 
-\series bold
-
-\backslash
-begin{slop\SpecialChar \-
-py\SpecialChar \-
-par}
-\series default
- und 
-\series bold
-
-\backslash
-end{sloppypar}
-\series default
- gepackt werden, um unnötige manuelle Zeilenumbrüche zu vermeiden.
-\end_layout
-
-\begin_layout Itemize
-In den 
-\emph on
-Hanbuchergänzungen
-\emph default
- ist beschrieben, wie man mit dem LaTeX-Paket 
-\series bold
-picinpar
-\begin_inset Index
-status open
-
-\begin_layout Plain Layout
-LaTeX-Pakete ! picinpar
+B.
+ zu nahe am unteren Seitenrand ist, kann es passieren, dass sie gar nicht
+ oder über anderen Text gedruckt wird.
 \end_layout
 
 \end_inset
 
 
-\series default
- 
-\emph on
-richtige
-\emph default
- textumflossene Gleitobjekte erzeugt.
 \end_layout
 
-\end_inset
+\begin_layout Standard
+Allgemein gilt:
+\end_layout
 
+\begin_layout Itemize
+Umflossene Gleitobjekte sollten nicht in Absätze gepackt werden, die auf
+ der nächsten Seite fortgesetzt werden.
+ Das bedeutet, dass man sie erst dann einfügen sollte, wenn das Dokument
+ fast fertig ist und man sehen kann, wo ein Seitenumbruch erfolgen wird.
+\end_layout
 
+\begin_layout Itemize
+Umflossene Gleitobjekte sollten entweder vor dem Absatz, dessen Text um
+ sie fließen soll, eingefügt werden oder darin.
+\end_layout
+
+\begin_layout Itemize
+Umflossene Gleitobjekte in aufeinander folgenden Absätzen können Probleme
+ bereiten, also achten Sie darauf, dass mindestens ein Textabsatz zwischen
+ ihnen ist.
+\end_layout
+
+\begin_layout Itemize
+Umflossene Gleitobjekte sind weder in Abschnitts-Überschriften noch in Tabellen
+ erlaubt.
 \end_layout
 
 \begin_layout Section
