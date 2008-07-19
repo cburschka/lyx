@@ -1072,9 +1072,12 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		if (!inset || !cur.result().dispatched())
 			cur.dispatch(cmd);
 
+		// FIXME I'm adding the last break to solve a crash,
+		// but that is obviously not right.
 		if (!cur.result().dispatched())
 			// It did not work too; no action needed.
 			break;
+		break;
 	}
 
 	case LFUN_PARAGRAPH_GOTO: {
