@@ -170,13 +170,6 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_DIALOG_UPDATE:
 		status.setEnabled(true);
 		return true;
-	// We can't suppress entire LFUN_INSET_TOGGLE as long as
-	// LFUN_NEXT_INSET_TOGGLE is used for editation purposes.
-	case LFUN_INSET_TOGGLE:
-		status.setEnabled(cmd.argument() != "open" &&
-				  cmd.argument() != "close" &&
-				  cmd.argument() != "toggle");
-		return true;
 	default:
 		return Inset::getStatus(cur, cmd, status);
 	}

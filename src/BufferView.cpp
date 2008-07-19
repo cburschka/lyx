@@ -1459,15 +1459,12 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		InsetIterator it  = inset_iterator_begin(inset);
 		InsetIterator const end = inset_iterator_end(inset);
 		for (; it != end; ++it) {
-			if (!it->asInsetMath()
+			if (it->asInsetCollapsable()
 			    && (inset_code == NO_CODE
 			    || inset_code == it->lyxCode())) {
 				Cursor tmpcur = cur;
 				tmpcur.pushBackward(*it);
-				FuncStatus flag;
-				it->getStatus(tmpcur, fr, flag);
-				if (flag.enabled())
-					it->dispatch(tmpcur, fr);
+				it->dispatch(tmpcur, fr);
 			}
 		}
 		processUpdateFlags(Update::Force | Update::FitCursor);
