@@ -355,7 +355,7 @@ void GuiCitation::setButtons()
 
 void GuiCitation::updateInfo(QModelIndex const & idx)
 {
-	if (!idx.isValid() || bibInfo().empty()) {
+	if (!idx.isValid()) {
 		infoML->document()->clear();
 		return;
 	}
