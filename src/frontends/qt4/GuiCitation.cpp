@@ -1,3 +1,4 @@
+
 /**
  * \file GuiCitation.cpp
  * This file is part of LyX, the document processor.
@@ -189,30 +190,37 @@ void GuiCitation::on_restorePB_clicked()
 }
 
 
+void GuiCitation::updateControls()
+{
+	BiblioInfo const & bi = bibInfo();
+	updateControls(bi);
+}
+
+
 // The main point of separating this out is that the fill*() methods
 // called in update() do not need to be called for INTERNAL updates,
 // such as when addPB is pressed, as the list of fields, entries, etc,
 // will not have changed. At the moment, however, the division between
 // fillStyles() and updateStyle() doesn't lend itself to dividing the
 // two methods, though they should be divisible.
-void GuiCitation::updateControls()
+void GuiCitation::updateControls(BiblioInfo const & bi)
 {
 	if (selectionManager->selectedFocused()) { 
 		if (selectedLV->selectionModel()->selectedIndexes().isEmpty())
-			updateInfo(availableLV->currentIndex());
+			updateInfo(bi, availableLV->currentIndex());
 		else
-			updateInfo(selectedLV->currentIndex());
+			updateInfo(bi, selectedLV->currentIndex());
 	} else {
 		if (availableLV->selectionModel()->selectedIndexes().isEmpty())
-			updateInfo(QModelIndex());
+			updateInfo(bi, QModelIndex());
 		else
-			updateInfo(availableLV->currentIndex());
+			updateInfo(bi, availableLV->currentIndex());
 	}
 	setButtons();
 
 	textBeforeED->setText(toqstr(params_["before"]));
 	textAfterED->setText(toqstr(params_["after"]));
-	fillStyles();
+	fillStyles(bi);
 	updateStyle();
 }
 
@@ -273,7 +281,7 @@ void GuiCitation::updateStyle()
 // This one needs to be called whenever citationStyleCO needs
 // to be updated---and this would be on anything that changes the
 // selection in selectedLV, or on a general update.
-void GuiCitation::fillStyles()
+void GuiCitation::fillStyles(BiblioInfo const & bi)
 {
 	int const oldIndex = citationStyleCO->currentIndex();
 
@@ -293,7 +301,7 @@ void GuiCitation::fillStyles()
 	if (!selectedLV->selectionModel()->selectedIndexes().empty())
 		curr = selectedLV->selectionModel()->selectedIndexes()[0].row();
 
-	QStringList sty = citationStyles(curr);
+	QStringList sty = citationStyles(bi, curr);
 
 	citationStyleCO->setEnabled(!sty.isEmpty());
 	citationStyleLA->setEnabled(!sty.isEmpty());
@@ -308,12 +316,12 @@ void GuiCitation::fillStyles()
 }
 
 
-void GuiCitation::fillFields()
+void GuiCitation::fillFields(BiblioInfo const & bi)
 {
 	fieldsCO->blockSignals(true);
 	int const oldIndex = fieldsCO->currentIndex();
 	fieldsCO->clear();
-	QStringList const fields = to_qstring_list(bibInfo().getFields());
+	QStringList const fields = to_qstring_list(bi.getFields());
 	fieldsCO->insertItem(0, qt_("All Fields"));
 	fieldsCO->insertItem(1, qt_("Keys"));
 	fieldsCO->insertItems(2, fields);
@@ -323,12 +331,12 @@ void GuiCitation::fillFields()
 }
 
 
-void GuiCitation::fillEntries()
+void GuiCitation::fillEntries(BiblioInfo const & bi)
 {
 	entriesCO->blockSignals(true);
 	int const oldIndex = entriesCO->currentIndex();
 	entriesCO->clear();
-	QStringList const entries = to_qstring_list(bibInfo().getEntries());
+	QStringList const entries = to_qstring_list(bi.getEntries());
 	entriesCO->insertItem(0, qt_("All Entry Types"));
 	entriesCO->insertItems(1, entries);
 	if (oldIndex != -1 && oldIndex < entriesCO->count())
@@ -353,15 +361,15 @@ void GuiCitation::setButtons()
 }
 
 
-void GuiCitation::updateInfo(QModelIndex const & idx)
+void GuiCitation::updateInfo(BiblioInfo const & bi, QModelIndex const & idx)
 {
-	if (!idx.isValid()) {
+	if (!idx.isValid() || bi.empty()) {
 		infoML->document()->clear();
 		return;
 	}
 
 	QString const keytxt = toqstr(
-		bibInfo().getInfo(qstring_to_ucs4(idx.data().toString())));
+		bi.getInfo(qstring_to_ucs4(idx.data().toString())));
 	infoML->document()->setPlainText(keytxt);
 }
 
@@ -370,7 +378,8 @@ void GuiCitation::findText(QString const & text, bool reset)
 {
 	//"All Fields" and "Keys" are the first two
 	int index = fieldsCO->currentIndex() - 2; 
-	vector<docstring> const & fields = bibInfo().getFields();
+	BiblioInfo const & bi = bibInfo();
+	vector<docstring> const & fields = bi.getFields();
 	docstring field;
 	
 	if (index <= -1 || index >= int(fields.size()))
@@ -384,7 +393,7 @@ void GuiCitation::findText(QString const & text, bool reset)
 	
 	//"All Entry Types" is first.
 	index = entriesCO->currentIndex() - 1; 
-	vector<docstring> const & entries = bibInfo().getEntries();
+	vector<docstring> const & entries = bi.getEntries();
 	docstring entry_type;
 	if (index < 0 || index >= int(entries.size()))
 		entry_type = from_ascii("");
@@ -393,14 +402,14 @@ void GuiCitation::findText(QString const & text, bool reset)
 	
 	bool const case_sentitive = caseCB->checkState();
 	bool const reg_exp = regexCB->checkState();
-	findKey(text, onlyKeys, field, entry_type, 
+	findKey(bi, text, onlyKeys, field, entry_type, 
 	               case_sentitive, reg_exp, reset);
 	//FIXME
 	//It'd be nice to save and restore the current selection in 
 	//availableLV. Currently, we get an automatic reset, since the
 	//model is reset.
 	
-	updateControls();
+	updateControls(bi);
 }
 
 
@@ -509,7 +518,8 @@ void GuiCitation::clearSelection()
 void GuiCitation::init()
 {
 	// Make the list of all available bibliography keys
-	all_keys_ = to_qstring_list(bibInfo().getKeys());
+	BiblioInfo const & bi = bibInfo();
+	all_keys_ = to_qstring_list(bi.getKeys());
 	available_model_.setStringList(all_keys_);
 
 	// Ditto for the keys cited in this inset
@@ -519,14 +529,14 @@ void GuiCitation::init()
 	else
 		cited_keys_ = str.split(",");
 	selected_model_.setStringList(cited_keys_);
-
-	fillFields();
-	fillEntries();
-	updateControls();
+	fillFields(bi);
+	fillEntries(bi);
+	updateControls(bi);
 }
 
 
-void GuiCitation::findKey(QString const & str, bool only_keys,
+void GuiCitation::findKey(BiblioInfo const & bi,
+	QString const & str, bool only_keys,
 	docstring field, docstring entry_type,
 	bool case_sensitive, bool reg_exp, bool reset)
 {
@@ -566,22 +576,22 @@ void GuiCitation::findKey(QString const & str, bool only_keys,
 	// First, filter by entry_type, which will be faster than 
 	// what follows, so we may get to do that on less.
 	vector<docstring> keyVector = to_docstring_vector(keys);
-	filterByEntryType(keyVector, entry_type);
+	filterByEntryType(bi, keyVector, entry_type);
 	
 	if (str.isEmpty())
 		result = to_qstring_list(keyVector);
 	else
-		result = to_qstring_list(searchKeys(keyVector, only_keys, 
+		result = to_qstring_list(searchKeys(bi, keyVector, only_keys, 
 			qstring_to_ucs4(str), field, case_sensitive, reg_exp));
 	
 	available_model_.setStringList(result);
 }
 
 
-QStringList GuiCitation::citationStyles(int sel)
+QStringList GuiCitation::citationStyles(BiblioInfo const & bi, int sel)
 {
 	docstring const key = qstring_to_ucs4(cited_keys_[sel]);
-	return to_qstring_list(bibInfo().getCiteStrings(key, buffer()));
+	return to_qstring_list(bi.getCiteStrings(key, buffer()));
 }
 
 
@@ -607,7 +617,7 @@ void GuiCitation::clearParams()
 }
 
 
-void GuiCitation::filterByEntryType(
+void GuiCitation::filterByEntryType(BiblioInfo const & bi,
 	vector<docstring> & keyVector, docstring entry_type) 
 {
 	if (entry_type.empty())
@@ -615,12 +625,12 @@ void GuiCitation::filterByEntryType(
 	
 	vector<docstring>::iterator it = keyVector.begin();
 	vector<docstring>::iterator end = keyVector.end();
-	
+
 	vector<docstring> result;
 	for (; it != end; ++it) {
 		docstring const key = *it;
-		BiblioInfo::const_iterator cit = bibInfo().find(key);
-		if (cit == bibInfo().end())
+		BiblioInfo::const_iterator cit = bi.find(key);
+		if (cit == bi.end())
 			continue;
 		if (cit->second.entryType() == entry_type)
 			result.push_back(key);
@@ -658,7 +668,7 @@ static docstring escape_special_chars(docstring const & expr)
 }
 
 
-vector<docstring> GuiCitation::searchKeys(
+vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,	
 	vector<docstring> const & keys_to_search, bool only_keys,
  	docstring const & search_expression, docstring field,
 	bool case_sensitive, bool regex)
@@ -688,8 +698,8 @@ vector<docstring> GuiCitation::searchKeys(
 	vector<docstring>::const_iterator it = keys_to_search.begin();
 	vector<docstring>::const_iterator end = keys_to_search.end();
 	for (; it != end; ++it ) {
-		BiblioInfo::const_iterator info = bibInfo().find(*it);
-		if (info == bibInfo().end())
+		BiblioInfo::const_iterator info = bi.find(*it);
+		if (info == bi.end())
 			continue;
 		
 		BibTeXInfo const & kvm = info->second;

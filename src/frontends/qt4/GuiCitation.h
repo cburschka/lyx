@@ -91,19 +91,21 @@ private:
 	/// check whether key is already selected
 	bool isSelected(const QModelIndex &);
 	/// update the display of BibTeX information
-	void updateInfo(QModelIndex const &);
+	void updateInfo(BiblioInfo const & bi, QModelIndex const &);
 	/// enable/disable buttons
 	void setButtons();
 	/// fill the styles combo
-	void fillStyles();
+	void fillStyles(BiblioInfo const & bi);
 	/// fill the fields combo
-	void fillFields();
+	void fillFields(BiblioInfo const & bi);
 	/// fill the entries combo
-	void fillEntries();
+	void fillEntries(BiblioInfo const & bi);
 	/// set the styles combo
 	void updateStyle();
 	/// set the formatting widgets
 	void updateFormatting(CiteStyle currentStyle);
+	///
+	void updateControls(BiblioInfo const & bi);
 	///
 	void init();
 	/// Clear selected keys
@@ -111,6 +113,7 @@ private:
 	
 	/// Find keys containing a string.
 	void findKey(
+		BiblioInfo const & bi, //< optimize by passing this
 		QString const & str, //< string expression
 		bool only_keys, //< set to true if only keys shall be searched.
 		docstring field, //<field to search, empty for all fields
@@ -121,14 +124,14 @@ private:
 		);
 
 	/// List of example cite strings
-	QStringList citationStyles(int);
+	QStringList citationStyles(BiblioInfo const & bi, int);
 
 	/// Set the Params variable for the Controller.
 	void apply(int const choice, bool const full, bool const force,
 					  QString before, QString after);
 
 	///
-	void filterByEntryType(
+	void filterByEntryType(BiblioInfo const & bi,
 		std::vector<docstring> & keyVector, docstring entryType);
 	///
 	CiteEngine citeEngine() const;
@@ -136,6 +139,7 @@ private:
 	/// Search a given string within the passed keys.
 	/// \return the vector of matched keys.
 	std::vector<docstring> searchKeys(
+		BiblioInfo const & bi, //< optimize by passing this
 		std::vector<docstring> const & keys_to_search, //< Keys to search.
 		bool only_keys, //< whether to search only the keys
 		docstring const & search_expression, //< Search expression (regex possible)
@@ -145,6 +149,8 @@ private:
 		); //
 
 	/// The BibTeX information available to the dialog
+	/// Calls to this method will lead to checks of modification times and 
+	/// the like, so it should be avoided.
 	BiblioInfo const & bibInfo() const;
 
 	/// last used citation style
