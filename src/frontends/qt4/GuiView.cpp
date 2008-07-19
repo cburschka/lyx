@@ -1095,7 +1095,12 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_SPLIT_VIEW:
-		enable = buf;
+		if (cmd.getArg(0) == "vertical")
+			enable = buf && (d.splitter_->count() == 1 ||
+					 d.splitter_->orientation() == Qt::Vertical);
+		else
+			enable = buf && (d.splitter_->count() == 1 ||
+					 d.splitter_->orientation() == Qt::Horizontal);
 		break;
 
 	case LFUN_CLOSE_TAB_GROUP:
