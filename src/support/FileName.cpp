@@ -415,6 +415,10 @@ FileName FileName::getcwd()
 
 time_t FileName::lastModified() const
 {
+	// QFileInfo caches information about the file. So, in case this file has
+	// been touched between the object creation and now, we refresh the file
+	// information.
+	d->fi.refresh();
 	return d->fi.lastModified().toTime_t();
 }
 
