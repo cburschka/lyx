@@ -2419,7 +2419,8 @@ void LyXAction::init()
  * \li Action: Turn on the primary keyboard map.
  * \li Notion: Maps were widely used in past, when X-windows didn't have nowadays
                keyboard support. They can be still used to maintain uniform keyboard
-               layout across the various plaforms.
+               layout across the various plaforms.\n
+               The language is to be set in the Preferences dialog.
  * \li Syntax: keymap-primary
  * \endvar
  */
