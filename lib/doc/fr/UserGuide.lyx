@@ -9576,64 +9576,6 @@ on en a un en plein milieu d'un paragraphe standard.
 \end_layout
 
 \begin_layout Standard
-Il peut y avoir plus d'un groupe de marges sur une ligne.
- Voici un exemple en environnement 
-\family sans
-Liste
-\family default
-.
- 
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-un
-\begin_inset space \hfill{}
-\end_inset
-
-deux :trois
-\begin_inset space \hfill{}
-\end_inset
-
-quatre
-\begin_inset space \hfill{}
-\end_inset
-
-cinq
-\begin_inset space \hfill{}
-\end_inset
-
-six
-\end_layout
-
-\begin_layout Standard
-Le 
-\begin_inset Quotes eld
-\end_inset
-
-:
-\begin_inset Quotes erd
-\end_inset
-
- marque le début de l'élément de liste lui-même ( Il y a en fait un ressort
- 
-\begin_inset Quotes eld
-\end_inset
-
-caché
-\begin_inset Quotes erd
-\end_inset
-
- à l'intérieur du marqueur de l'environnement 
-\family sans
-liste
-\family default
- ; il est mis automatiquement à la fin du marqueur ).
- Les ressorts fonctionnent de façon similaire dans d'autres situations à
- marges multiples, comme le mode deux colonnes.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
