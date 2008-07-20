@@ -15080,66 +15080,6 @@ As you can see in the example, the first line of greyed out notes is a bit
  indented and greyed out notes can have footnotes.
 \end_layout
 
-\begin_layout Description
-Framed This note will appear in the output as framed text.
- 
-\begin_inset Box Framed
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-This is text in a note box that appears framed in the output.
-\end_layout
-
-\end_inset
-
- In contrary to framed boxes like the one in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:TeX-Code-Boxes"
-
-\end_inset
-
-, the frame uses always the whole text width and the note is set into its
- own paragraph.
-\end_layout
-
-\begin_layout Description
-Shaded This note will appear in the output with red background color.
-\begin_inset Box Shaded
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-This text in a note box appears in the output with red background.
-\end_layout
-
-\end_inset
-
-In contrary to colored boxes, the note uses always the whole text width
- and the note is set into its own paragraph.
-\end_layout
-
 \begin_layout Standard
 Notes are inserted with the toolbar button 
 \begin_inset Graphics

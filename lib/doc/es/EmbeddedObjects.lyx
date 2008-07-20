@@ -23519,16 +23519,14 @@ El color rojo predeterminado se puede cambiar con el comando
 \series bold
 
 \backslash
-def\SpecialChar \textcompwordmark{}
-inecolor{shadebox}
+definecolor{shadebox}
 \series default
 .
  El esquema del comando 
 \series bold
 
 \backslash
-def\SpecialChar \textcompwordmark{}
-inecolor
+definecolor
 \series default
  se explica en la sección
 \begin_inset space ~
@@ -23543,15 +23541,14 @@ reference "sec:Tablas-Coloreadas"
 
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
 \series bold
 
 \backslash
-def\SpecialChar \textcompwordmark{}
-inecolor 
+definecolor 
 \series default
 requiere el paquete LaTeX 
 \series bold
@@ -23602,8 +23599,7 @@ fboxsep 0.5cm
 
 
 \backslash
-def\SpecialChar \textcompwordmark{}
-inecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
+definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
 \end_layout
 
 \begin_layout Standard
@@ -26627,7 +26623,7 @@ Texto estirado horizontalmente.
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Cuadros enmarcados
 \begin_inset CommandInset label
 LatexCommand label
@@ -26908,10 +26904,25 @@ LaTeX-paquetes ! fancybox
 .
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
+\begin_layout Section
+
+\lang english
+Box customization
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Cuadros ! 
+\lang english
+Customization
+\end_layout
+
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 El valor predeterminado por 
 \series bold
 

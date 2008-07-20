@@ -23811,7 +23811,7 @@ Einfügen\SpecialChar \menuseparator
 Notiz
 \family default
  eingefügt.
- Es gibt fünf Arten:
+ Es gibt drei Arten:
 \end_layout
 
 \begin_layout Description
@@ -24017,148 +24017,6 @@ Das Beispiel zeigt, dass die erste Zeile von Grauschrift-Notizen eingerückt
  wird und dass Grauschrift-Notizen Fußnoten enthalten können.
 \end_layout
 
-\begin_layout Description
-Eingerahmt: Diese Notiz wird gerahmt gedruckt und sieht so aus:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename clipart/GerahmteNotizQt4.png
-	display false
-	scale 60
-	scaleBeforeRotation
-
-\end_inset
-
-
-\begin_inset Box Framed
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Dies ist eine Notiz, die gerahmt gedruckt wird.
-\end_layout
-
-\end_inset
-
-Im Gegensatz zu gerahmten Boxen
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Gerahmte Boxen werden in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "abs:Gerahmte-Boxen"
-
-\end_inset
-
- beschrieben.
-\end_layout
-
-\end_inset
-
- wird der Rahmen immer über die gesamte Zeilenbreite gezeichnet, und die
- Notiz ist ein Absatz für sich.
- 
-\end_layout
-
-\begin_layout Description
-Schattiert: Diese Notiz müsste eigentlich 
-\family sans
-farbig
-\family default
- heißen und wird auf dem Hintergrund dargestellt und gedruckt, der in 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Farben\SpecialChar \menuseparator
-Schat\SpecialChar \-
-tier\SpecialChar \-
-te
-\begin_inset space \space{}
-\end_inset
-
-Box
-\family default
- definiert ist, und sieht so aus:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename clipart/SchattierteNotizQt4.png
-	display false
-	scale 60
-	scaleBeforeRotation
-
-\end_inset
-
-
-\begin_inset Box Shaded
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Diese Notiz wird auf einem farbigen Hintergrund gedruckt.
-\end_layout
-
-\end_inset
-
-Im Gegensatz zu farbigen Boxen
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Farbige Boxen werden in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "abs:Farbige-Boxen"
-
-\end_inset
-
- beschrieben.
-\end_layout
-
-\end_inset
-
- wird der Hintergrund immer über die gesamte Zeilenbreite gedruckt, und
- die Notiz ist ein Absatz für sich.
-\end_layout
-
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
@@ -24242,310 +24100,6 @@ reference "abs:Farbige-Tabellen"
 
  beschrieben.
  In diesem Dokument werden die Grauschrift-Notizen blau gedruckt.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-Der Textstil von 
-\family sans
-Eingerahmt
-\family default
- und 
-\family sans
-Schattiert
-\family default
- kann im 
-\family sans
-Textstil
-\family default
--Dialog eingestellt werden.
-\end_layout
-
-\begin_layout Standard
-Die Standard-Rahmenbreite für 
-\family sans
-Eingerahmt
-\family default
- ist 0.4
-\begin_inset space \thinspace{}
-\end_inset
-
-pt; sie kann mit 
-\series bold
-
-\backslash
-FrameRule
-\series default
- geändert werden.
- Der Standard-Abstand zwischen Rahmen und Text ist 9
-\begin_inset space \thinspace{}
-\end_inset
-
-pt; er kann mit 
-\series bold
-
-\backslash
-FrameSep
-\series default
- geändert werden.
- Im folgenden Beispiel wurden die die Standardwerte mit folgenden Befehlen
- als TeX-Code geändert:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-FrameRule 5pt 
-\backslash
-FrameSep 0.5cm
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-FrameRule 5pt 
-\backslash
-FrameSep 0.5cm
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Framed
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Dies ist Text in einem anderen Rahmen.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-FrameRule 0.4pt 
-\backslash
-FrameSep 9pt
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-Für 
-\family sans
-Schattiert
-\family default
- beträgt der Abstand zwischen Rand und Text 3
-\begin_inset space \thinspace{}
-\end_inset
-
-pt; er kann mit 
-\series bold
-
-\backslash
-fboxsep
-\series default
- geändert werden.
- Die Standard-Hintergrundfarbe ist rot und kann mit 
-\series bold
-
-\backslash
-definecolor{shadebox}
-\series default
- oder 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Farben\SpecialChar \menuseparator
-Schattierte
-\begin_inset space ~
-\end_inset
-
-Box
-\family default
- geändert werden.
- Die verfügbaren Farben und wie man eigene definiert, wurde bereits in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "abs:Farbige-Tabellen"
-
-\end_inset
-
- beschrieben
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-
-\backslash
-definecolor
-\series default
- benötigt das LaTeX-Paket 
-\series bold
-color
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-Pakete ! color
-\end_layout
-
-\end_inset
-
- im LaTeX-Vorspann, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "abs:Farbige-Boxen"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Für das nächste Beispiel wurden folgender TeX-Code verwendet:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-fboxsep 0.5cm
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fboxsep 0.5cm
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Shaded
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-
-\color yellow
-Dies ist gelber Text auf dunkelgrünem Hintergrund.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fboxsep 3pt
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-definecolor{shadecolor}{rgb}{1,0,0}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -26626,7 +26180,7 @@ reference "abs:Minipage"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abs:Gerahmte-Boxen"
+reference "uab:Verzierung"
 
 \end_inset
 
@@ -27413,11 +26967,11 @@ Dieser Boxinhalt wurde horizontal gedehnt.
 
 \end_layout
 
-\begin_layout Section
-Gerahmte Boxen
+\begin_layout Subsection
+Verzierung
 \begin_inset CommandInset label
 LatexCommand label
-name "abs:Gerahmte-Boxen"
+name "uab:Verzierung"
 
 \end_inset
 
@@ -27426,7 +26980,7 @@ name "abs:Gerahmte-Boxen"
 status collapsed
 
 \begin_layout Plain Layout
-Boxen ! gerahmte
+Boxen ! Verzierung
 \end_layout
 
 \end_inset
@@ -27435,23 +26989,27 @@ Boxen ! gerahmte
 \end_layout
 
 \begin_layout Standard
-Mit dem 
+Im 
 \family sans
 Box-Einstellungen-
 \family default
-Dialog können Sie bei 
+Dialog können Sie mit der 
 \family sans
 Verzierung
 \family default
- die Art des Rahmens auswählen:
+ den Typ der Box auswählen:
 \end_layout
 
 \begin_layout Description
-Rechteckige
+Einfacher
 \begin_inset space ~
 \end_inset
 
-Box Um die Box wird ein rechteckiger Rahmen gezogen.
+rechteckiger
+\begin_inset space ~
+\end_inset
+
+Rahmen Um die Box wird ein rechteckiger Rahmen gezogen.
  Die Rahmendicke wird durch 
 \series bold
 
@@ -27488,11 +27046,65 @@ Box
 \end_layout
 
 \begin_layout Description
-Ovale
+Seitenumbruch
 \begin_inset space ~
 \end_inset
 
-Box,
+erlaubt Wenn Sie die Verzierung 
+\family sans
+Einfacher rechteckiger Rahmen
+\family default
+ und keine innere Box verwenden, können Sie Seitenumbrüche in der Box erlauben.
+ Beachten Sie, dass im Gegensatz zu anderen gerahmten Boxen, der Rahmen
+ immer über die gesamte Zeilenbreite gezeichnet wird, die Box ein Absatz
+ für sich ist und 
+\series bold
+
+\backslash
+fboxrule
+\series default
+ und 
+\series bold
+
+\backslash
+fboxsep
+\series default
+ haben keinen Einfluss auf diesen Box Typ haben.
+ Die Rahmendicke wird durch 
+\series bold
+
+\backslash
+FrameRule
+\series default
+ festgelegt.
+ 
+\begin_inset Box Framed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+Seitenumbruch erlaubt Box
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Ovaler
+\begin_inset space ~
+\end_inset
+
+Rahmen,
 \begin_inset space ~
 \end_inset
 
@@ -27533,11 +27145,11 @@ dünn
 \end_layout
 
 \begin_layout Description
-Ovale
+Ovaler
 \begin_inset space ~
 \end_inset
 
-Box,
+Rahmen,
 \begin_inset space ~
 \end_inset
 
@@ -27578,11 +27190,7 @@ dick
 \end_layout
 
 \begin_layout Description
-Schattierte
-\begin_inset space ~
-\end_inset
-
-Box zeichnet einen Rahmen mit Schatten um die Box.
+Schlagschatten zeichnet einen Rahmen mit Schatten um die Box.
  Die Rahmendicke wird durch 
 \series bold
 
@@ -27624,15 +27232,66 @@ Box
 \end_layout
 
 \begin_layout Description
-Doppelt
+Schattierter
 \begin_inset space ~
 \end_inset
 
-gerahmte
+Hintergrund zeichnet eine Box mit roter Hintergrundfarbe.
+ Im Gegensatz zu farbigen Boxen
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
-Box zeichnet einen doppelten Rahmen um die Box.
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abs:Farbige-Boxen"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ wird der Hintergrund immer über die gesamte Zeilenbreite gedruckt, und
+ die Box ist ein Absatz für sich.
+ 
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+Schattierter Hintergrund Box
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Doppelter
+\begin_inset space ~
+\end_inset
+
+rechteckiger
+\begin_inset space ~
+\end_inset
+
+Rahmen zeichnet einen doppelten Rahmen um die Box.
  Der innere Rahmen ist 0.75
 \begin_inset space \thinspace{}
 \end_inset
@@ -27710,8 +27369,8 @@ Box
 \begin_inset VSpace bigskip
 \end_inset
 
-Die Aufschrift der Box in LyX ändert sich mit dem gewählten Rahmen.
- Um verschiedene Rahmenstile zu verwenden, muss das LaTeX-Paket 
+Die Aufschrift der Box in LyX ändert sich mit der gewählten Verzierung.
+ Um alle Verzierungen verwenden zu können, muss das LaTeX-Paket 
 \series bold
 fancybox
 \series default
@@ -27728,10 +27387,21 @@ LaTeX-Pakete ! fancybox
  installiert sein.
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
+\begin_layout Section
+Box Anpassung
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Boxen ! Anpassung
+\end_layout
+
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Der Standardwert für 
 \series bold
 
@@ -27786,7 +27456,7 @@ width "30col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -27880,7 +27550,7 @@ width "25col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -28012,7 +27682,7 @@ width "30col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -28113,7 +27783,7 @@ width "25col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -28165,6 +27835,313 @@ shadowsize}{4pt}
 
 Die geänderten Werte gelten für alle Boxen, die auf den entsprechenden Befehl
  folgen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Der Standardwert für 
+\series bold
+
+\backslash
+FrameRule
+\series default
+ ist 0.4
+\begin_inset space \thinspace{}
+\end_inset
+
+pt.
+ Der Standard-Abstand zwischen Rahmen und Text ist 9
+\begin_inset space \thinspace{}
+\end_inset
+
+pt und kann mit dem Wert für 
+\series bold
+
+\backslash
+FrameSep
+\series default
+ geändert werden.
+ Als Beispiel wurden die die Rahmeneinstellungen der folgenden Box mit diesen
+ TeX-Code Befehlen geändert:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+setlength{
+\backslash
+FrameRule}{5pt}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+setlength{
+\backslash
+FrameSep}{0.5cm}
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+FrameRule}{5pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+FrameSep}{0.5cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Framed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Dies ist Text in einer 
+\family sans
+Seitenumbruch erlaubt
+\family default
+ Box.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+FrameRule}{0.4pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+FrameSep}{9pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Für Boxen mit 
+\family sans
+schattiertem Hintergrund
+\family default
+ beträgt der Abstand zwischen Rand und Text 3
+\begin_inset space \thinspace{}
+\end_inset
+
+pt und kann mit 
+\series bold
+
+\backslash
+fboxsep
+\series default
+ geändert werden.
+ Die Standard-Hintergrundfarbe ist rot und kann entweder lokal mit dem Befehl
+ 
+\series bold
+
+\backslash
+definecolor{shadebox}
+\series default
+ oder global über das Menü 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Farben\SpecialChar \menuseparator
+Schattierte
+\begin_inset space ~
+\end_inset
+
+Box
+\family default
+ geändert werden.
+ Das Schema des 
+\series bold
+
+\backslash
+definecolor
+\series default
+ Befehls ist  in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abs:Farbige-Boxen"
+
+\end_inset
+
+ erklärt.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Beachten Sie, dass 
+\series bold
+
+\backslash
+definecolor
+\series default
+ das LaTeX-Paket 
+\series bold
+color
+\series default
+ in der Präambel benötigt, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abs:Farbige-Boxen"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für das nächste Beispiel wurden folgender TeX-Code verwendet:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+setlength{
+\backslash
+fboxsep}{0.5cm}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+fboxsep}{0.5cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\color yellow
+Dies ist gelber Text in einer 
+\family sans
+schattierten Hintergrund
+\begin_inset space ~
+\end_inset
+
+
+\family default
+Box auf dunkelgrünem Hintergrund.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+fboxsep}{3pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+definecolor{shadecolor}{rgb}{1,0,0}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -28228,6 +28205,10 @@ horiz.
 Abstand
 \family default
 ).
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -29654,7 +29635,7 @@ fboxsep
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abs:Gerahmte-Boxen"
+reference "uab:Verzierung"
 
 \end_inset
 

@@ -23178,7 +23178,7 @@ Insert\SpecialChar \menuseparator
 Note
 \family default
 .
- There are five types of notes:
+ There are three types of notes:
 \end_layout
 
 \begin_layout Description
@@ -23375,132 +23375,6 @@ As you can see in the example, the first line of greyed out notes is a bit
  indented and greyed out notes can have footnotes.
 \end_layout
 
-\begin_layout Description
-Framed This note will appear in the output as framed text.
- Its note-box looks like this:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename clipart/FramedNoteImageQt4.png
-	display false
-	scale 85
-	scaleBeforeRotation
-
-\end_inset
-
- 
-\begin_inset Box Framed
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-This is text in a note box that appears framed in the output.
-\end_layout
-
-\end_inset
-
- In contrary to framed boxes
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Framed boxes are described in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Framed-Boxes"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- the frame uses always the whole text width and the note is set into its
- own paragraph.
-\end_layout
-
-\begin_layout Description
-Shaded This note will appear in the output with red background color.
- Its note box looks like this:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename clipart/ShadedNoteImageQt4.png
-	display false
-	scale 85
-	scaleBeforeRotation
-
-\end_inset
-
-
-\begin_inset Box Shaded
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-This text in a note box appears in the output with red background.
-\end_layout
-
-\end_inset
-
-In contrary to colored boxes
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Colored boxes are described in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Colored-Boxes"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- the note uses always the whole text width and the note is set into its
- own paragraph.
-\end_layout
-
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
@@ -23604,331 +23478,6 @@ reference "sec:Colored-Tables"
 \begin_layout Standard
 Notes that appear in blue in this document are set using greyed out notes
  with blue text.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The text style of 
-\family sans
-Framed
-\family default
- and 
-\family sans
-Shaded
-\family default
- notes can be set in the 
-\family sans
-Text Style
-\family default
- dialog.
-\end_layout
-
-\begin_layout Standard
-The default frame width for 
-\family sans
-Framed
-\family default
- notes is 0.4
-\begin_inset space \thinspace{}
-\end_inset
-
-pt; it can be changed by changing the size 
-\series bold
-
-\backslash
-FrameRule
-\series default
-.
- The default space between the note content and the frame is 9
-\begin_inset space \thinspace{}
-\end_inset
-
-pt; it can be changed by changing the size 
-\series bold
-
-\backslash
-FrameSep
-\series default
-.
- For example the frame appearance of the following 
-\family sans
-Framed
-\family default
- note is set with the TeX-Code commands
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-FrameRule 5pt 
-\backslash
-FrameSep 0.5cm
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-FrameRule 5pt 
-\backslash
-FrameSep 0.5cm
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Framed
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-This is text in a 
-\family sans
-Framed
-\family default
- note.
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-FrameRule 0.4pt 
-\backslash
-FrameSep 9pt
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-For 
-\family sans
-Shaded
-\family default
- notes the default space between the note content and the note border is
- 3
-\begin_inset space \thinspace{}
-\end_inset
-
-pt; it can be changed by changing the size 
-\series bold
-
-\backslash
-fboxsep
-\series default
-.
-\begin_inset Newline newline
-\end_inset
-
-The default background color red can be changed with the command 
-\series bold
-
-\backslash
-definecolor{shadebox}
-\series default
-.
- The scheme of the 
-\series bold
-
-\backslash
-definecolor
-\series default
- command is explained in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Colored-Tables"
-
-\end_inset
-
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Note that 
-\series bold
-
-\backslash
-def
-\series default
-\SpecialChar \textcompwordmark{}
-
-\series bold
-inecolor
-\series default
- requires the LaTeX-package 
-\series bold
-color
-\series default
- in the preamble, see section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Colored-Boxes"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-For example the appearance of the following 
-\family sans
-Shaded
-\family default
- note is set with the TeX-Code commands
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-fboxsep 0.5cm
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-
-\backslash
-definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fboxsep 0.5cm
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Shaded
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-
-\color yellow
-This is yellow text in a
-\color none
- 
-\family sans
-\color yellow
-Shaded
-\family default
-\color none
- 
-\color yellow
-note with darkgreen background.
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fboxsep 3pt
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-definecolor{shadecolor}{rgb}{1,0,0}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -26089,7 +25638,7 @@ reference "sec:Minipages"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Framed-Boxes"
+reference "sec:Decoration"
 
 \end_inset
 
@@ -26865,11 +26414,11 @@ This box text is horizontally stretched.
 
 \end_layout
 
-\begin_layout Section
-Framed Boxes
+\begin_layout Subsection
+Decoration
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Framed-Boxes"
+name "sec:Decoration"
 
 \end_inset
 
@@ -26878,7 +26427,7 @@ name "sec:Framed-Boxes"
 status collapsed
 
 \begin_layout Plain Layout
-Boxes ! Frames
+Boxes ! Decoration
 \end_layout
 
 \end_inset
@@ -26887,21 +26436,25 @@ Boxes ! Frames
 \end_layout
 
 \begin_layout Standard
-The frame style of the box can be specified in the box-dialog in the drop-down
+The style of the box can be specified in the box-dialog in the drop-down
  list 
 \family sans
-Type
+Decoration
 \family default
 .
- The following frame types are possible:
+ The following types are possible:
 \end_layout
 
 \begin_layout Description
-Rectangular
+Simple
 \begin_inset space ~
 \end_inset
 
-box This draws a rectangle frame around the box.
+rectangular
+\begin_inset space ~
+\end_inset
+
+frame This draws a rectangle frame around the box.
  The frame line thickness has the size of 
 \series bold
 
@@ -26925,6 +26478,63 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 Rectangular box
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Allow
+\begin_inset space ~
+\end_inset
+
+page
+\begin_inset space ~
+\end_inset
+
+break When you use the decoration 
+\family sans
+simple rectangular frame
+\family default
+ and no inner box, you can allow page breaks within a box.
+ Note that then, in contrary to other framed boxes, the frame uses always
+ the whole column width, the box is set as its own paragraph, and 
+\series bold
+
+\backslash
+fboxrule
+\series default
+ and 
+\series bold
+
+\backslash
+fboxsep
+\series default
+ has no effect on this box type.
+ The frame line thickness has the size of 
+\series bold
+
+\backslash
+FrameRule
+\series default
+.
+ 
+\begin_inset Box Framed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+Allow page break box
 \end_layout
 
 \end_inset
@@ -27009,11 +26619,11 @@ Oval box, thick
 \end_layout
 
 \begin_layout Description
-Shadow
+Drop
 \begin_inset space ~
 \end_inset
 
-box This draws a rectangle frame with a shadow around the box.
+shadow This draws a rectangle frame with a shadow around the box.
  The frame line thickness has the size of 
 \series bold
 
@@ -27049,11 +26659,65 @@ Shadow box
 \end_layout
 
 \begin_layout Description
+Shaded
+\begin_inset space ~
+\end_inset
+
+background This draws a box with red background color.
+ In contrary to colored boxes
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Colored-Boxes"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, it uses always the whole column width and the box is set as its own paragraph.
+ 
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+Shaded background box
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
 Double
 \begin_inset space ~
 \end_inset
 
-box This draws a double-line rectangle frame around the box.
+rectangular
+\begin_inset space ~
+\end_inset
+
+frame This draws a double-line rectangle frame around the box.
  The line thickness of the inner frame is 0.75
 \begin_inset space \thinspace{}
 \end_inset
@@ -27113,7 +26777,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
-Double box
+Double rectangular box
 \end_layout
 
 \end_inset
@@ -27125,8 +26789,8 @@ Double box
 \begin_inset VSpace bigskip
 \end_inset
 
-LyX's box label will change to the used frame style when you set a frame.
- To be able to use the different frame styles, the LaTeX-package 
+LyX's box label will reflect the different frame styles.
+ To be able to use all styles, the LaTeX-package 
 \series bold
 fancybox
 \series default
@@ -27143,10 +26807,21 @@ LaTeX-packages ! fancybox
  must be installed.
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
+\begin_layout Section
+Box customization
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Boxes ! Customization
+\end_layout
+
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 The default value for the size 
 \series bold
 
@@ -27209,7 +26884,7 @@ width "25col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -27318,7 +26993,7 @@ width "25col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -27450,7 +27125,7 @@ width "25col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -27547,7 +27222,7 @@ width "25col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -27598,6 +27273,334 @@ shadowsize}{4pt}
 
 Changed lengths and widths are valid for all boxes following the commands
  that change them.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The default value for the size 
+\series bold
+
+\backslash
+FrameRule
+\series default
+ is 0.4
+\begin_inset space \thinspace{}
+\end_inset
+
+pt.
+ The default space between the note content and the frame is 9
+\begin_inset space \thinspace{}
+\end_inset
+
+pt and can be changed by changing the size 
+\series bold
+
+\backslash
+FrameSep
+\series default
+.
+ For example the frame appearance of the following 
+\family sans
+box
+\family default
+ is set with the TeX-Code commands
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+setlength{
+\backslash
+FrameRule}{5pt}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+setlength{
+\backslash
+FrameSep}{0.5cm}
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+FrameRule}{5pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+FrameSep}{0.5cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Framed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+This is text in an 
+\family sans
+allow page break
+\family default
+ box.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+FrameRule}{0.4pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+FrameSep}{9pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\family sans
+shaded background
+\family default
+ boxes the default space between the box content and the box border is 3
+\begin_inset space \thinspace{}
+\end_inset
+
+pt and can be changed by changing the size 
+\series bold
+
+\backslash
+fboxsep
+\series default
+.
+\begin_inset Newline newline
+\end_inset
+
+The default background color red can either be changed locally with the
+ command 
+\series bold
+
+\backslash
+definecolor{shadebox}
+\series default
+ or globally with the menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Colors\SpecialChar \menuseparator
+shaded
+\begin_inset space ~
+\end_inset
+
+box
+\family default
+.
+ The scheme of the 
+\series bold
+
+\backslash
+definecolor
+\series default
+ command is explained in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Colored-Tables"
+
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Note that 
+\series bold
+
+\backslash
+definecolor
+\series default
+ requires the LaTeX-package 
+\series bold
+color
+\series default
+ in the preamble, see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Colored-Boxes"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For example the appearance of the following shaded background note is set
+ with the TeX-Code commands
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+setlength{
+\backslash
+fboxsep}{0.5cm}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+fboxsep}{0.5cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\color yellow
+This is yellow text in a
+\color none
+ 
+\family sans
+\color yellow
+shaded background
+\family default
+\color none
+ 
+\color yellow
+box with dark green background.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+fboxsep}{3pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+definecolor{shadecolor}{rgb}{1,0,0}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -27652,6 +27655,10 @@ Horizontal
 Fill
 \family default
 .
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -29086,7 +29093,7 @@ fboxsep
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Framed-Boxes"
+reference "sec:Decoration"
 
 \end_inset
 

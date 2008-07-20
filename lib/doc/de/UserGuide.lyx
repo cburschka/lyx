@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 19.
+letzte Änderung: 20.
  Juli 2008
 \end_layout
 
@@ -16685,11 +16685,6 @@ Notiz
 \end_layout
 
 \begin_layout Itemize
-Kategorie 1:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
 
 \family sans
 LyX-Notiz:
@@ -16735,12 +16730,6 @@ Kommentar
  wird auch beim Exportieren nach LaTeX und Einfacher Text mit exportiert.
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-Kategorie 2:
-\end_layout
-
-\begin_deeper
 \begin_layout Itemize
 
 \family sans
@@ -16783,81 +16772,6 @@ Eingebettete Objekte
  beschrieben.
 \end_layout
 
-\begin_layout Itemize
-
-\family sans
-Eingerahmt:
-\family default
- wird, wie der Name sagt, als 
-\begin_inset Box Framed
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status collapsed
-
-\begin_layout Plain Layout
-eingerahmter
-\end_layout
-
-\end_inset
-
-Text gedruckt.
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Notiz!eingerahmt
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Schattiert:
-\family default
- wird, anders als der Name sagt, als 
-\begin_inset Box Shaded
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status collapsed
-
-\begin_layout Plain Layout
-Text mit farbigem Hintergrund
-\end_layout
-
-\end_inset
-
- gedruckt.
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Notiz ! schattiert
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \begin_layout Standard
 Weitere Einzelheiten finden Sie im Handbuch 
 \emph on
