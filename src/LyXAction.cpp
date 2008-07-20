@@ -2407,8 +2407,29 @@ void LyXAction::init()
  */
 		{ LFUN_MOUSE_RELEASE, "", ReadOnly, Hidden },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_KEYMAP_OFF
+ * \li Action: Turn off the loaded keyboard map.
+ * \li Syntax: keymap-off
+ * \endvar
+ */
 		{ LFUN_KEYMAP_OFF, "keymap-off", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_KEYMAP_PRIMARY
+ * \li Action: Turn on the primary keyboard map.
+ * \li Notion: Maps were widely used in past, when X-windows didn't have nowadays
+               keyboard support. They can be still used to maintain uniform keyboard
+               layout across the various plaforms.
+ * \li Syntax: keymap-primary
+ * \endvar
+ */
 		{ LFUN_KEYMAP_PRIMARY, "keymap-primary", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_KEYMAP_SECONDARY
+ * \li Action: Turn on the secondary keyboard map.
+ * \li Syntax: keymap-secondary
+ * \endvar
+ */
 		{ LFUN_KEYMAP_SECONDARY, "keymap-secondary", ReadOnly, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_KEYMAP_TOGGLE
