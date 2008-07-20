@@ -60,8 +60,11 @@ void GuiErrorList::showEvent(QShowEvent * e)
 void GuiErrorList::select()
 {
 	int const item = errorsLW->row(errorsLW->currentItem());
-	if (goTo(item))
-        descriptionTB->setPlainText(toqstr(errorList()[item].description));
+	if (item == -1)
+		return;
+	goTo(item);
+	descriptionTB->setPlainText(
+		toqstr(errorList()[item].description));
 }
 
 
