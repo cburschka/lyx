@@ -19,12 +19,14 @@
 #include "Counters.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
+#include "Encoding.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetCaption.h"
 #include "InsetList.h"
 #include "Language.h"
 #include "MetricsInfo.h"
+#include "output_latex.h"
 #include "TextClass.h"
 
 #include "support/debug.h"
@@ -32,6 +34,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
+#include "frontends/alert.h"
 #include "frontends/Application.h"
 
 #include <boost/regex.hpp>
@@ -134,8 +137,31 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 	// get the paragraphs. We can not output them directly to given odocstream
 	// because we can not yet determine the delimiter character of \lstinline
 	docstring code;
+	docstring uncodable;
 	ParagraphList::const_iterator par = paragraphs().begin();
 	ParagraphList::const_iterator end = paragraphs().end();
+
+	bool encoding_switched = false;
+	Encoding const * const save_enc = runparams.encoding;
+
+	if (!runparams.encoding->hasFixedWidth()) {
+		// We need to switch to a singlebyte encoding, since the listings
+		// package cannot deal with multiple-byte-encoded glyphs
+		Language const * const outer_language =
+			(runparams.local_font != 0) ?
+				runparams.local_font->language()
+				: buffer().params().language;
+		// We try if there's a singlebyte encoding for the current
+		// language; if not, fall back to latin1.
+		Encoding const * const lstenc =
+			(outer_language->encoding()->hasFixedWidth()) ?
+				outer_language->encoding() 
+				: encodings.fromLyXName("iso8859-1");
+		pair<bool, int> const c = switchEncoding(os, buffer().params(),
+				runparams, *lstenc, true);
+		runparams.encoding = lstenc;
+		encoding_switched = true;
+	}
 
 	while (par != end) {
 		pos_type siz = par->size();
@@ -146,7 +172,28 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 			// ignore all struck out text and (caption) insets
 			if (par->isDeleted(i) || par->isInset(i))
 				continue;
-			code += par->getChar(i);
+			char_type c = par->getChar(i);
+			// we can only output characters covered by the current
+			// encoding!
+			try {
+				if (runparams.encoding->latexChar(c) == docstring(1, c))
+					code += c;
+				else if (runparams.dryrun) {
+					code += "<" + _("LyX Warning: ")
+					   + _("uncodable character") + " '";
+					code += docstring(1, c);
+					code += "'>";
+ 				} else
+					uncodable += c;
+			} catch (EncodingException & e) {
+ 				if (runparams.dryrun) {
+					code += "<" + _("LyX Warning: ")
+					   + _("uncodable character") + " '";
+					code += docstring(1, c);
+					code += "'>";
+ 				} else
+					uncodable += c;
+			}
 		}
 		++par;
 		// for the inline case, if there are multiple paragraphs
@@ -164,8 +211,19 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 		// This code piece contains all possible special character? !!!
 		// Replace ! with a warning message and use ! as delimiter.
 		if (*delimiter == '\0') {
-			code = subst(code, from_ascii("!"), from_ascii(" WARNING: no lstline delimiter can be used "));
+			docstring delim_error = "<" + _("LyX Warning: ")
+				+ _("no more lstline delimiters available") + ">";
+			code = subst(code, from_ascii("!"), delim_error);
 			delimiter = lstinline_delimiters;
+			if (!runparams.dryrun) {
+				// FIXME: warning should be passed to the error dialog
+				frontend::Alert::warning(_("Running out of delimiters"),
+				_("For inline program listings, one character must be reserved\n"
+				  "as a delimiter. One of the listings, however, uses all available\n"
+				  "characters, so none is left for delimiting purposes.\n"
+				  "For the time being, I have replaced '!' by a warning, but you\n"
+				  "must investigate!"));
+			}
 		}
 		if (param_string.empty())
 			os << "\\lstinline" << *delimiter;
@@ -175,16 +233,13 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
                    << *delimiter;
 	} else {
 		OutputParams rp = runparams;
-		// FIXME: the line below would fix bug 4182,
-		// but real_current_font moved to cursor.
-		//rp.local_font = &text_.real_current_font;
 		rp.moving_arg = true;
 		docstring const caption = getCaption(rp);
 		runparams.encoding = rp.encoding;
 		if (param_string.empty() && caption.empty())
-			os << "\n\\begingroup\n\\inputencoding{latin1}\n\\begin{lstlisting}\n";
+			os << "\n\\begin{lstlisting}\n";
 		else {
-			os << "\n\\begingroup\n\\inputencoding{latin1}\n\\begin{lstlisting}[";
+			os << "\n\\begin{lstlisting}[";
 			if (!caption.empty()) {
 				os << "caption={" << caption << '}';
 				if (!param_string.empty())
@@ -192,9 +247,25 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 			}
 			os << from_utf8(param_string) << "]\n";
 		}
-		lines += 4;
-		os << code << "\n\\end{lstlisting}\n\\endgroup\n";
-		lines += 3;
+		lines += 2;
+		os << code << "\n\\end{lstlisting}\n";
+		lines += 2;
+	}
+
+	if (encoding_switched){
+		// Switch back
+		pair<bool, int> const c = switchEncoding(os, buffer().params(),
+				runparams, *save_enc, true);
+		runparams.encoding = save_enc;
+	}
+
+	if (!uncodable.empty()) {
+		// issue a warning about omitted characters
+		// FIXME: should be passed to the error dialog
+		frontend::Alert::warning(_("Uncodable characters in listings inset"),
+			bformat(_("The following characters in one of the program listings are\n"
+				  "not representable in the current encoding and have been omitted:\n%1$s."),
+			uncodable));
 	}
 
 	return lines;

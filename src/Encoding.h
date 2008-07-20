@@ -63,6 +63,8 @@ public:
 	std::string const & guiName() const { return guiName_; }
 	///
 	std::string const & iconvName() const { return iconvName_; }
+	///
+	bool const & hasFixedWidth() const { return fixedwidth_; }
 	/**
 	 * Convert \p c to something that LaTeX can understand.
 	 * This is either the character itself (if it is representable
