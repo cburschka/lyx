@@ -80,7 +80,7 @@ public:
 	bool isReadOnly() const;
 	/// return true when it names a directory
 	bool isDirectory() const;
-	/// return true when file/directory is readable
+	/// return true when directory is readable
 	bool isReadableDirectory() const;
 	/// return true when it is a file and readable
 	virtual bool isReadableFile() const;
