@@ -217,20 +217,20 @@ FileName const CVS::findFile(FileName const & file)
 {
 	// First we look for the CVS/Entries in the same dir
 	// where we have file.
-	FileName const dir(onlyPath(file.absFilename()) + "/CVS/Entries");
+	FileName const entries(onlyPath(file.absFilename()) + "/CVS/Entries");
 	string const tmpf = '/' + onlyFilename(file.absFilename()) + '/';
-	LYXERR(Debug::LYXVC, "LyXVC: Checking in `" << dir
+	LYXERR(Debug::LYXVC, "LyXVC: Checking in `" << entries
 			     << "' for `" << tmpf << '\'');
-	if (dir.isReadableFile()) {
+	if (entries.isReadableFile()) {
 		// Ok we are at least in a CVS dir. Parse the CVS/Entries
 		// and see if we can find this file. We do a fast and
 		// dirty parse here.
-		ifstream ifs(dir.toFilesystemEncoding().c_str());
+		ifstream ifs(entries.toFilesystemEncoding().c_str());
 		string line;
 		while (getline(ifs, line)) {
 			LYXERR(Debug::LYXVC, "\tEntries: " << line);
 			if (contains(line, tmpf))
-				return dir;
+				return entries;
 		}
 	}
 	return FileName();
