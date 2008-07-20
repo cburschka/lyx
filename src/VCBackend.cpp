@@ -221,7 +221,7 @@ FileName const CVS::findFile(FileName const & file)
 	string const tmpf = '/' + onlyFilename(file.absFilename()) + '/';
 	LYXERR(Debug::LYXVC, "LyXVC: Checking in `" << dir
 			     << "' for `" << tmpf << '\'');
-	if (dir.isReadableDirectory()) {
+	if (dir.isReadableFile()) {
 		// Ok we are at least in a CVS dir. Parse the CVS/Entries
 		// and see if we can find this file. We do a fast and
 		// dirty parse here.
