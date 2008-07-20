@@ -279,6 +279,9 @@ public:
 	 */
 	Buffer const * masterBuffer() const;
 
+	/// \return true if \p child is a child of this \c Buffer.
+	bool isChild(Buffer * child) const;
+
 	/// Is buffer read-only?
 	bool isReadonly() const;
 

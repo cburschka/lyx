@@ -335,4 +335,28 @@ int BufferList::bufferNum(string const & name) const
 }
 
 
+bool BufferList::releaseChild(Buffer * parent, Buffer * child)
+{
+	LASSERT(parent, return false);
+	LASSERT(child, return false);
+	LASSERT(parent->isChild(child), return false);
+
+	// Child document has a different parent, don't close it.
+	if (child->parent() != parent)
+		return false;
+
+	BufferStorage::iterator it = bstore.begin();
+	BufferStorage::iterator end = bstore.end();
+	for (; it != end; ++it) {
+		Buffer * buf = *it;
+		if (buf != parent && buf->isChild(child)) {
+			child->setParent(0);
+			return false;
+		}
+	}
+	release(child);
+	return true;
+}
+
+
 } // namespace lyx

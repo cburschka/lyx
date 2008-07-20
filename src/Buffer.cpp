@@ -275,6 +275,13 @@ Buffer::~Buffer()
 	// GuiView already destroyed
 	gui_ = 0;
 
+
+	// loop over children
+	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
+	Impl::BufferPositionMap::iterator end = d->children_positions.end();
+	for (; it != end; ++it)
+		theBufferList().releaseChild(this, const_cast<Buffer *>(it->first));
+
 	// clear references to children in macro tables
 	d->children_positions.clear();
 	d->position_to_children.clear();
@@ -1671,6 +1678,12 @@ Buffer const * Buffer::masterBuffer() const
 		return this;
 	
 	return d->parent_buffer->masterBuffer();
+}
+
+
+bool Buffer::isChild(Buffer * child) const
+{
+	return d->children_positions.find(child) != d->children_positions.end();
 }
 
 

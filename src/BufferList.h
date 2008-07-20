@@ -47,6 +47,10 @@ public:
 	/// delete a buffer
 	void release(Buffer * b);
 
+	/// Release \p child if it really is a child and is not used elsewhere.
+	/// \return true is the file was closed.
+	bool releaseChild(Buffer * parent, Buffer * child);
+
 	/// Close all open buffers.
 	void closeAll();
 

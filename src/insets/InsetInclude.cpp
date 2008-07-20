@@ -185,28 +185,6 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 InsetInclude::~InsetInclude()
 {
 	delete label_;
-	if (isVerbatim(params()) || isListings(params()))
-		return;
-
-
-	string const parent_filename = buffer().absFileName();
-	FileName const included_file = makeAbsPath(to_utf8(params()["filename"]),
-			   onlyPath(parent_filename));
-
-	if (!isLyXFilename(included_file.absFilename()))
-		return;
-
-	Buffer * child = theBufferList().getBuffer(included_file.absFilename());
-	// File not opened, nothing to close.
-	if (!child)
-		return;
-
-	// Child document has a different parent, don't close it.
-	if (child->parent() != &buffer())
-		return;
-
-	//close the buffer.
-	theBufferList().release(child);
 }
 
 
