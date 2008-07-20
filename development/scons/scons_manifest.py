@@ -2036,11 +2036,9 @@ lib_doc_clipart_files = Split('''
     ERT.png
     ExternalMaterialQt4.png
     ExtraToolbar.png
-    FramedNoteImageQt4.png
     GreyedOutNoteImageQt4.png
     LaTeX.png
     LyXNoteImageQt4.png
-    ShadedNoteImageQt4.png
     SpaceMarker.png
     StandardToolbar.png
     ToolbarEnvBox.png
@@ -2096,14 +2094,12 @@ lib_doc_de_clipart_files = Split('''
     ERT.png
     ExternesMaterialQt4.png
     FussnoteQt4.png
-    GerahmteNotizQt4.png
     GleitobjektQt4.png
     GrauschriftNotizQt4.png
     KommentarQt4.png
     LyXNotizQt4.png
     Marke.png
     Querverweis.png
-    SchattierteNotizQt4.png
     StandardBoxQt4.png
     UnterdokumentQt4.png
 ''')
@@ -2135,9 +2131,7 @@ lib_doc_es_clipart_files = Split('''
     DocumentoHijoQt4.png
     GrisNotaImagenQt4.png
     MaterialExternoQt4.png
-    NotaEnmarcadaImg.png
     NotaLyXImagenQt4.png
-    NotaSombreadaImg.png
     Resumen.pdf
     es_ERT.png
     etiquetaQt4.png
@@ -2177,10 +2171,8 @@ lib_doc_fr_clipart_files = Split('''
     BoxInsetDefaultQt4.png
     ChildDocumentQt4.png
     CommentNoteImageQt4.png
-    FramedNoteImageQt4.png
     GreyedOutNoteImageQt4.png
     LyXNoteImageQt4.png
-    ShadedNoteImageQt4.png
     floatQt4.png
     footnoteQt4.png
     labelQt4.png

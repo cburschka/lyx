@@ -26436,7 +26436,7 @@ Boxes ! Decoration
 \end_layout
 
 \begin_layout Standard
-The style of the box can be specified in the box-dialog in the drop-down
+The type of the box can be specified in the box-dialog in the drop-down
  list 
 \family sans
 Decoration
@@ -26499,7 +26499,7 @@ break When you use the decoration
 simple rectangular frame
 \family default
  and no inner box, you can allow page breaks within a box.
- Note that then, in contrary to other framed boxes, the frame uses always
+ Note that then, in contrary to other framed boxes, the frame always uses
  the whole column width, the box is set as its own paragraph, and 
 \series bold
 
@@ -26685,7 +26685,7 @@ reference "sec:Colored-Boxes"
 
 \end_inset
 
-, it uses always the whole column width and the box is set as its own paragraph.
+, it always uses the whole column width and the box is set as its own paragraph.
  
 \begin_inset Box Shaded
 position "t"
@@ -26789,8 +26789,8 @@ Double rectangular box
 \begin_inset VSpace bigskip
 \end_inset
 
-LyX's box label will reflect the different frame styles.
- To be able to use all styles, the LaTeX-package 
+LyX's box label will reflect the different frame types.
+ To be able to use all types, the LaTeX-package 
 \series bold
 fancybox
 \series default
@@ -27271,14 +27271,6 @@ shadowsize}{4pt}
 \begin_inset VSpace bigskip
 \end_inset
 
-Changed lengths and widths are valid for all boxes following the commands
- that change them.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
 
 \end_layout
 
@@ -27298,7 +27290,7 @@ pt.
 \begin_inset space \thinspace{}
 \end_inset
 
-pt and can be changed by changing the size 
+pt and can be changed with the value of 
 \series bold
 
 \backslash
@@ -27420,17 +27412,14 @@ shaded background
 \begin_inset space \thinspace{}
 \end_inset
 
-pt and can be changed by changing the size 
+pt and can be changed with the value of 
 \series bold
 
 \backslash
 fboxsep
 \series default
 .
-\begin_inset Newline newline
-\end_inset
-
-The default background color red can either be changed locally with the
+ The default background color red can either be changed locally with the
  command 
 \series bold
 
@@ -27497,11 +27486,7 @@ reference "sec:Colored-Boxes"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-For example the appearance of the following shaded background note is set
+ For example the appearance of the following shaded background note is set
  with the TeX-Code commands
 \end_layout
 
@@ -27601,6 +27586,14 @@ definecolor{shadecolor}{rgb}{1,0,0}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Changed lengths and widths are valid for all boxes following the commands
+ that change them.
 \end_layout
 
 \begin_layout Section

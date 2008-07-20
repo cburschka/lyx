@@ -25,7 +25,6 @@ dist_clipartdoc_DATA = \
 	clipart/ExtraToolbar.png \
 	clipart/floatQt4.png \
 	clipart/footnoteQt4.png \
-	clipart/FramedNoteImageQt4.png \
 	clipart/GreyedOutNoteImageQt4.png \
 	clipart/labelQt4.png \
 	clipart/LaTeX.png \
@@ -34,7 +33,6 @@ dist_clipartdoc_DATA = \
 	clipart/macrouse.png \
 	clipart/mbox.png \
 	clipart/referenceQt4.png \
-	clipart/ShadedNoteImageQt4.png \
 	clipart/SpaceMarker.png \
 	clipart/StandardToolbar.png \
 	clipart/ToolbarEnvBox.png \
@@ -71,14 +69,12 @@ dist_declipartdoc_DATA = \
 	de/clipart/ERT.png \
 	de/clipart/ExternesMaterialQt4.png \
 	de/clipart/FussnoteQt4.png \
-	de/clipart/GerahmteNotizQt4.png \
 	de/clipart/GleitobjektQt4.png \
 	de/clipart/GrauschriftNotizQt4.png \
 	de/clipart/KommentarQt4.png \
 	de/clipart/LyXNotizQt4.png \
 	de/clipart/Marke.png \
 	de/clipart/Querverweis.png \
-	de/clipart/SchattierteNotizQt4.png \
 	de/clipart/StandardBoxQt4.png \
 	de/clipart/UnterdokumentQt4.png
 
@@ -106,10 +102,8 @@ dist_esclipartdoc_DATA = \
 	es/clipart/flotanteQt4.png \
 	es/clipart/GrisNotaImagenQt4.png \
 	es/clipart/MaterialExternoQt4.png \
-	es/clipart/NotaEnmarcadaImg.png \
 	es/clipart/NotaLyXImagenQt4.png \
 	es/clipart/notapieQt4.png \
-	es/clipart/NotaSombreadaImg.png \
 	es/clipart/referenciaQt4.png \
 	es/clipart/Resumen.pdf
 
@@ -142,10 +136,8 @@ dist_frclipartdoc_DATA = \
 	fr/clipart/BoxInsetDefaultQt4.png \
 	fr/clipart/ChildDocumentQt4.png \
 	fr/clipart/CommentNoteImageQt4.png \
-	fr/clipart/FramedNoteImageQt4.png \
 	fr/clipart/GreyedOutNoteImageQt4.png \
 	fr/clipart/LyXNoteImageQt4.png \
-	fr/clipart/ShadedNoteImageQt4.png \
 	fr/clipart/floatQt4.png \
 	fr/clipart/footnoteQt4.png \
 	fr/clipart/labelQt4.png

@@ -24646,7 +24646,11 @@ status collapsed
 
 
 \backslash
-numberwithin{footnote}{part}
+renewcommand{
+\backslash
+thefootnote}{
+\backslash
+arabic{footnote}}
 \end_layout
 
 \end_inset
@@ -24825,7 +24829,7 @@ usepackage{ftnright}
 placement !h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -24900,7 +24904,7 @@ Standard-Fußnoten-Platzierung in einem zweispaltigen Dokument
 placement !h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -25057,7 +25061,7 @@ theendnotes
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -27069,7 +27073,7 @@ fboxrule
 \backslash
 fboxsep
 \series default
- haben keinen Einfluss auf diesen Box Typ haben.
+ keinen Einfluss auf diesen Box Typ haben.
  Die Rahmendicke wird durch 
 \series bold
 
@@ -27829,15 +27833,6 @@ shadowsize}{4pt}
 \end_layout
 
 \begin_layout Standard
-\noindent
-\begin_inset VSpace bigskip
-\end_inset
-
-Die geänderten Werte gelten für alle Boxen, die auf den entsprechenden Befehl
- folgen.
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -28010,7 +28005,7 @@ definecolor
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abs:Farbige-Boxen"
+reference "abs:Farbige-Tabellen"
 
 \end_inset
 
@@ -28045,11 +28040,7 @@ reference "abs:Farbige-Boxen"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Für das nächste Beispiel wurden folgender TeX-Code verwendet:
+ Für das nächste Beispiel wurden folgender TeX-Code verwendet:
 \end_layout
 
 \begin_layout Standard
@@ -28142,6 +28133,14 @@ definecolor{shadecolor}{rgb}{1,0,0}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Geänderte Längen und Breiten gelten für alle Boxen, die auf den Befehl folgen,
+ der sie ändert.
 \end_layout
 
 \begin_layout Section
