@@ -160,6 +160,9 @@ bool GuiLog::initialiseParams(string const & data)
 		return false;
 
 	logfile_ = FileName(logfile);
+
+	updateContents();
+
 	return true;
 }
 
