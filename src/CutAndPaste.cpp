@@ -367,7 +367,7 @@ void putClipboard(ParagraphList const & paragraphs,
 	// some kind of garbage collection there, or a shared_ptr, then this
 	// would not be needed.
 	static Buffer * buffer = theBufferList().newBuffer(
-		FileName::tempName().absFilename());
+		FileName::tempName().absFilename() + "_clipboard.internal");
 	buffer->setUnnamed(true);
 	buffer->paragraphs() = paragraphs;
 	buffer->params().setDocumentClass(docclass);

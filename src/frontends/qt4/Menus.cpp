@@ -680,6 +680,11 @@ void MenuDefinition::expandDocuments()
 		// We cannot use a for loop as the buffer list cycles.
 		do {
 			QString label = toqstr(b->fileName().displayName(20));
+			if (b->isUnnamed() && label.endsWith(".internal")) {
+				// This is an internal Buffer (eg. for clipboard operations)
+				b = theBufferList().next(b);
+				continue;
+			}
 			if (!b->isClean())
 				label += "*";
 			if (ii < 10)
