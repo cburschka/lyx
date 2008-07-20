@@ -11085,38 +11085,10 @@ HFill
  Gibt es in einer Zeile mehrere variable horizontale Abstände, teilen sie
  sich den freien Leerraum gleichmäßig.
  
-\family sans
-Variable
-\begin_inset space \space{}
-\end_inset
-
-horiz.
-\begin_inset space \space{}
-\end_inset
-
-Abstände
-\family default
- können mit einem 
-\family sans
-Füllmuster
-\family default
- versehen werden.
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-Bemerkung
-\series default
-: wenn Sie einen variablen horizontalen Abstand am Anfang einer Zeile, die
- 
-\emph on
-nicht
-\emph default
- die erste Zeile eines Absatzes ist, einfügen, ignoriert LyX das.
- Damit wird verhindert, dass variable horizontale Abstände zufällig auf
- eine neue Zeile gelangen.
- Hier sind ein paar Beispiele:
+Hier sind ein paar Beispiele:
 \end_layout
 
 \begin_layout Quote
@@ -11168,69 +11140,123 @@ Zitat
 (kurz)
 \family default
 -Umgebung.
- Hier :
+ Hier 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ ist ein variabler horizontaler Abstand in einem 
+\family sans
+Standard
+\family default
+ Absatz.
+ Egal ob er im Ausdruck erscheint oder nicht, er befindet sich zwischen
+ den Pfeilen.
+\end_layout
+
+\begin_layout Standard
+HFills können sichtbar gemacht werden, wenn Sie ein 
+\family sans
+Füllmuster
+\family default
+ in den Abstand Einstellungen wählen.
+ Folgende Füllmuster sind verfügbar:
+\end_layout
+
+\begin_layout Standard
+Punkte: 
 \begin_inset space \dotfill{}
 \end_inset
 
-: ist ein variabler horizontaler Abstand in einem Standardabsatz.
- Damit er im gedruckten Text besser zu erkennen ist, wurde er mit einem
- Füllmuster versehen.
+
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Erinnern Sie sich, dass ein variabler horizontaler Abstand immer den restlichen
- Leerraum zwischen den Rändern füllt? Es kann mehrere Ränder in einer Zeile
- geben.
- Hier ist ein Beispiel mit der 
-\family sans
-Liste
-\family default
--Umgebung:
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-eins
-\begin_inset space \hfill{}
+Linie: 
+\begin_inset space \hrulefill{}
 \end_inset
 
-zwei :drei
-\begin_inset space \hfill{}
+
+\begin_inset space ~
 \end_inset
 
-vier
-\begin_inset space \hfill{}
-\end_inset
 
-fünf
-\begin_inset space \hfill{}
-\end_inset
-
-sechs
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-eins :zwei drei vier fünf sechs
 \end_layout
 
 \begin_layout Standard
-Der Doppelpunkt markiert den Beginn des Listenelementes.
- (Innerhalb der Marke in der 
+Linkspfeil: 
+\begin_inset space \leftarrowfill{}
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Rechtspfeil: 
+\begin_inset space \rightarrowfill{}
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Klammer oben: 
+\begin_inset space \downbracefill{}
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Klammer unten: 
+\begin_inset space \upbracefill{}
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Bemerkung:
+\series default
+ Wenn ein HFill am Beginn einer Zeile aber nicht in der ersten Zeile eines
+ Absatzes ist, wird er von LyX ignoriert.
+ Das verhindert, dass HFills aus Versehen auf die nächste Zeile gesetzt
+ werden.
+ Wenn Sie in diesem Fall trotzdem den Abstand brauchen, setzen Sie die Option
+ 
 \family sans
-Liste
+Schützen
 \family default
--Umgebung gibt es einen 
-\emph on
-verborgenen
-\emph default
- variablen horizontalen Abstand; er wird automatisch am Ende der Marke eingefügt.
-) Die zweite Zeile ist ein ganz normales Listenelement zum Vergleich.
- Variable horizontale Abstände wirken in anderen Situationen mit 
-\emph on
-Mehrfach
-\emph default
--Rändern ähnlich, wie zum Beispiel im Zwei-Spalten-Modus.
+ in den Abstand Einstellungen.
 \end_layout
 
 \begin_layout Subsubsection

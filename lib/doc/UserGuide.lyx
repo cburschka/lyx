@@ -9185,67 +9185,87 @@ is
 \end_layout
 
 \begin_layout Standard
-There may be more than one set of margins on a line.
- Here's an example with the 
+HFills can be made visible when you choose one of the 
 \family sans
-List
+Fill
+\begin_inset space ~
+\end_inset
+
+Pattern
 \family default
- environment.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-one
-\begin_inset space \hfill{}
-\end_inset
-
-two :three
-\begin_inset space \hfill{}
-\end_inset
-
-four
-\begin_inset space \hfill{}
-\end_inset
-
-five
-\begin_inset space \hfill{}
-\end_inset
-
-six
+ in the space dialog: The following patterns are available:
 \end_layout
 
 \begin_layout Standard
-The 
-\begin_inset Quotes eld
+Dots: 
+\begin_inset space \dotfill{}
 \end_inset
 
-:
-\begin_inset Quotes erd
+
+\begin_inset space ~
 \end_inset
 
- marks the beginning of the item.
- (There is actually a 
-\begin_inset Quotes eld
+
+\end_layout
+
+\begin_layout Standard
+Rule: 
+\begin_inset space \hrulefill{}
 \end_inset
 
-hidden
-\begin_inset Quotes erd
+
+\begin_inset space ~
 \end_inset
 
- HFill inside of the label of the 
-\family sans
-List
-\family default
- environment; it's put at the end of the label automatically.) HFills work
- similarly in other 
-\begin_inset Quotes eld
+
+\end_layout
+
+\begin_layout Standard
+Left arrow: 
+\begin_inset space \leftarrowfill{}
 \end_inset
 
-multi-margin
-\begin_inset Quotes erd
+
+\begin_inset space ~
 \end_inset
 
- situations, like two-column mode.
+
+\end_layout
+
+\begin_layout Standard
+Right arrow: 
+\begin_inset space \rightarrowfill{}
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Up brace: 
+\begin_inset space \downbracefill{}
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Down brace: 
+\begin_inset space \upbracefill{}
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
