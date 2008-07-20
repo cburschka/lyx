@@ -21663,8 +21663,17 @@ drehen
 \end_layout
 
 \begin_layout Standard
-Gedrehte Gleitobjekte werden immer auf einer neuen Seite (oder Spalte bei
- zweispaltigen Dokumenten) gedruckt.
+Gedrehte Gleitobjekte werden immer auf einer neuen Seite (oder Spalte, wenn
+ sie ein mehrspaltiges Dokument haben) gedruckt.
+ Sie können mehrere Spalten überspannen, wenn die Option 
+\family sans
+Spalten
+\begin_inset space ~
+\end_inset
+
+überspannen
+\family default
+ in den Gleitobjekt Einstellungen gewählt ist.
  Gleitobjekte werden immer so gedreht, dass sie vom äußeren Rand her gelesen
  werden können.
  Um eine Drehrichtung für alle Seiten zu erzwingen, fügen Sie entweder die

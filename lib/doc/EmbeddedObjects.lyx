@@ -20961,9 +20961,18 @@ sideways
 \end_layout
 
 \begin_layout Standard
-Rotated floats are always placed on its own page (or column, when you have
- a two-column document).
- They are rotated so that you can read them from the outside margin.
+Rotated floats are always placed on its own page (or column, in case you
+ have a multi-column document).
+ You can let them span several columns using the float settings option 
+\family sans
+Span
+\begin_inset space ~
+\end_inset
+
+columns
+\family default
+.
+ Floats are rotated so that you can read them from the outside margin.
  To force a certain rotation direction for all pages, you can add either
  the option 
 \series bold
