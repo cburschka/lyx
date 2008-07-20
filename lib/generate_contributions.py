@@ -398,7 +398,7 @@ contributers = [
                  "Re: Licensing of tex2lyx (and perhaps LyX itself?)",
                  "m=110907078027047",
                  "22 February 2005",
-                 u"Improvements to user interface (menus and keyhandling) including a configurable toolbar and a few other (not so) minor things, like rewriting most of the LyX kernel. Also current source maintainer"),
+                 u"Improvements to user interface (menus and keyhandling) including a configurable toolbar and a few other (not so) minor things, like rewriting most of the LyX kernel. Also previous source maintainer."),
 
      contributer(u"Alfredo Braunstein",
                  "abraunst () lyx ! org",
@@ -822,7 +822,7 @@ contributers = [
                  "Re: Licensing of tex2lyx (and perhaps LyX itself?)",
                  "m=110899928510452",
                  "21 February 2005",
-                 u"configure and Makefile-stuff and more"),
+                 u"configure and Makefile-stuff, many bugfixes and more. Previous stable branch maintainer."),
 
      contributer(u"Victor Lavrenko",
                  "lyx () lavrenko ! pp ! ru",
@@ -886,7 +886,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=110907762926766",
                  "22 February 2005",
-                 u"linuxdoc sgml support"),
+                 u"linuxdoc sgml support. Current release manager."),
 
      contributer(u"Roman Maurer",
                  "roman.maurer () amis ! net",
@@ -1230,7 +1230,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=110907530127164",
                  "22 February 2005",
-                 u"Qt frontend, bugfixes"),
+                 u"Qt frontend, bugfixes. Current stable branch maintainer."),
 
      contributer(u"John Spray",
                  "jcs116 () york ! ac ! uk",
