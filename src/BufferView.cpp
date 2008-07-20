@@ -1483,6 +1483,7 @@ docstring const BufferView::requestSelection()
 {
 	Cursor & cur = d->cursor_;
 
+	LYXERR(Debug::SELECTION, "requestSelection: cur.selection: " << cur.selection());
 	if (!cur.selection()) {
 		d->xsel_cache_.set = false;
 		return docstring();

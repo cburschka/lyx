@@ -55,6 +55,7 @@ void GuiSelection::haveSelection(bool own)
 	// an application actually requests it.
 	// This way calling Selection::have() is cheap and we can do it as
 	// often as we want.
+	LYXERR(Debug::SELECTION, "GuiSelection: setting dummy selection");
 	if (own)
 		qApp->clipboard()->setText(QString(), QClipboard::Selection);
 	// We don't need to do anything if own = false, as this case is
@@ -90,6 +91,7 @@ void GuiSelection::put(docstring const & str)
 
 void GuiSelection::on_dataChanged()
 {
+	LYXERR(Debug::SELECTION, "GuiSelection::on_dataChanged::empty: " << text_selection_empty_);
 	text_selection_empty_ = qApp->clipboard()->
 		text(QClipboard::Selection).isEmpty();
 }
