@@ -186,6 +186,8 @@ void GuiBox::typeChanged(int index)
 		pagebreakCB->setChecked(false);
 	int itype = innerBoxCO->currentIndex();
 	pagebreakCB->setEnabled(index == 1 && itype == 0);
+	widthED->setEnabled(index != 5);
+	widthUnitsLC->setEnabled(index != 5);
 	setInnerType(frameless, itype);
 }
 
@@ -208,6 +210,8 @@ void GuiBox::pagebreakClicked()
 {
 	bool pbreak = (pagebreakCB->checkState() == Qt::Checked);
 	innerBoxCO->setEnabled(!pbreak);
+	widthED->setEnabled(!pbreak);
+	widthUnitsLC->setEnabled(!pbreak);
 	if (pbreak) {
 		valignCO->setEnabled(false);
 		ialignCO->setEnabled(false);
