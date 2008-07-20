@@ -60,7 +60,7 @@ FileName const RCS::findFile(FileName const & file)
 {
 	// Check if *,v exists.
 	FileName tmp(file.absFilename() + ",v");
-	LYXERR(Debug::LYXVC, "Checking if file is under rcs: " << tmp);
+	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under rcs: " << tmp);
 	if (tmp.isReadableFile()) {
 		LYXERR(Debug::LYXVC, "Yes " << file << " is under rcs.");
 		return tmp;
@@ -68,7 +68,7 @@ FileName const RCS::findFile(FileName const & file)
 
 	// Check if RCS/*,v exists.
 	tmp = FileName(addName(addPath(onlyPath(file.absFilename()), "RCS"), file.absFilename()) + ",v");
-	LYXERR(Debug::LYXVC, "Checking if file is under rcs: " << tmp);
+	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under rcs: " << tmp);
 	if (tmp.isReadableFile()) {
 		LYXERR(Debug::LYXVC, "Yes " << file << " it is under rcs.");
 		return tmp;
@@ -219,7 +219,7 @@ FileName const CVS::findFile(FileName const & file)
 	// where we have file.
 	FileName const dir(onlyPath(file.absFilename()) + "/CVS/Entries");
 	string const tmpf = '/' + onlyFilename(file.absFilename()) + '/';
-	LYXERR(Debug::LYXVC, "LyXVC: checking in `" << dir
+	LYXERR(Debug::LYXVC, "LyXVC: Checking in `" << dir
 			     << "' for `" << tmpf << '\'');
 	if (dir.isReadableDirectory()) {
 		// Ok we are at least in a CVS dir. Parse the CVS/Entries
