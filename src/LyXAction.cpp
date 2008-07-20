@@ -1876,6 +1876,15 @@ void LyXAction::init()
 
 		{ LFUN_VC_CHECK_IN, "vc-check-in", ReadOnly, System },
 		{ LFUN_VC_CHECK_OUT, "vc-check-out", ReadOnly, System },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_VC_REGISTER
+ * \li Action: Register the document as an file inside version control system (RCS).
+ * \li Notion: See LyX Extended Manual (Version Control Chapter) for additional information. \n
+               Note that Version Control support is currently broken feature.
+ * \li Syntax: vc-register
+ * \li Origin: Lgb, 1 Jul 1997
+ * \endvar
+ */
 		{ LFUN_VC_REGISTER, "vc-register", ReadOnly, System },
 		{ LFUN_VC_REVERT, "vc-revert", ReadOnly, System },
 		{ LFUN_VC_UNDO_LAST, "vc-undo-last", ReadOnly, System },
