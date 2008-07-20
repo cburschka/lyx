@@ -107,17 +107,18 @@ WriteStream & operator<<(WriteStream & ws, docstring const & s)
 }
 
 
-WriteStream::WriteStream(odocstream & os, bool fragile, bool latex, bool dryrun)
+WriteStream::WriteStream(odocstream & os, bool fragile, bool latex, bool dryrun,
+			Encoding const * encoding)
 	: os_(os), fragile_(fragile), firstitem_(false), latex_(latex),
 	  dryrun_(dryrun), pendingspace_(false), pendingbrace_(false),
-	  textmode_(false), line_(0)
+	  textmode_(false), line_(0), encoding_(encoding)
 {}
 
 
 WriteStream::WriteStream(odocstream & os)
 	: os_(os), fragile_(false), firstitem_(false), latex_(false),
 	  dryrun_(false), pendingspace_(false), pendingbrace_(false),
-	  textmode_(false), line_(0)
+	  textmode_(false), line_(0), encoding_(0)
 {}
 
 

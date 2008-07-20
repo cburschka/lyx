@@ -74,16 +74,17 @@ int InsetFormulaMacro::latex(odocstream & os,
 			     OutputParams const & runparams) const
 {
 	//lyxerr << "InsetFormulaMacro::latex" << endl;
-	WriteStream wi(os, runparams.moving_arg, true, runparams.dryrun);
+	WriteStream wi(os, runparams.moving_arg, true, runparams.dryrun,
+			runparams.encoding);
 	tmpl()->write(wi);
 	return 2;
 }
 
 
-int InsetFormulaMacro::plaintext(odocstream & os, OutputParams const &) const
+int InsetFormulaMacro::plaintext(odocstream & os, OutputParams const & runparams) const
 {
 	odocstringstream oss;
-	WriteStream wi(oss, false, true, false);
+	WriteStream wi(oss, false, true, false, runparams.encoding);
 	tmpl()->write(wi);
 
 	docstring const str = oss.str();

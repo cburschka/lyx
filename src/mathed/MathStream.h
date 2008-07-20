@@ -21,9 +21,10 @@
 
 namespace lyx {
 
-class MathData;
+class Encoding;
 class InsetMath;
 class MathAtom;
+class MathData;
 
 //
 // LaTeX/LyX
@@ -32,7 +33,8 @@ class MathAtom;
 class WriteStream {
 public:
 	///
-	WriteStream(odocstream & os, bool fragile, bool latex, bool dryrun);
+	WriteStream(odocstream & os, bool fragile, bool latex, bool dryrun,
+		Encoding const * encoding = 0);
 	///
 	explicit WriteStream(odocstream & os);
 	///
@@ -63,6 +65,8 @@ public:
 	void textMode(bool textmode);
 	/// tell whether we are in text mode or not when producing latex code
 	bool textMode() const { return textmode_; }
+	/// LaTeX encoding
+	Encoding const * encoding() const { return encoding_; }
 private:
 	///
 	odocstream & os_;
@@ -82,6 +86,8 @@ private:
 	bool textmode_;
 	///
 	int line_;
+	///
+	Encoding const * encoding_;
 };
 
 ///

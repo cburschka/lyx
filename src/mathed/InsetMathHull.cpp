@@ -1561,7 +1561,7 @@ void InsetMathHull::read(Lexer & lex)
 }
 
 
-int InsetMathHull::plaintext(odocstream & os, OutputParams const &) const
+int InsetMathHull::plaintext(odocstream & os, OutputParams const & runparams) const
 {
 	if (0 && display()) {
 		Dimension dim;
@@ -1575,7 +1575,7 @@ int InsetMathHull::plaintext(odocstream & os, OutputParams const &) const
 		return tpain.textheight();
 	} else {
 		odocstringstream oss;
-		WriteStream wi(oss, false, true, false);
+		WriteStream wi(oss, false, true, false, runparams.encoding);
 		wi << cell(0);
 
 		docstring const str = oss.str();
@@ -1607,7 +1607,7 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 		// Workaround for db2latex: db2latex always includes equations with
 		// \ensuremath{} or \begin{display}\end{display}
 		// so we strip LyX' math environment
-		WriteStream wi(ls, false, false, false);
+		WriteStream wi(ls, false, false, false, runparams.encoding);
 		InsetMathGrid::write(wi);
 		ms << from_utf8(subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;"));
 		ms << ETag("alt");

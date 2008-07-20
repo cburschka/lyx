@@ -71,7 +71,7 @@ public:
 	 * LaTeX macro is known, a warning is given of lyxerr, and the
 	 * character is returned.
 	 */
-	docstring latexChar(char_type c) const;
+	docstring latexChar(char_type c, bool for_mathed = false) const;
 	/// Which LaTeX package handles this encoding?
 	Package package() const { return package_; }
 	/// A list of all characters usable in this encoding
@@ -178,10 +178,11 @@ public:
 	 */
 	static bool isForced(char_type c);
 	/**
-	 * Convert \p c to something that LaTeX can understand in math mode.
+	 * If \p c cannot be encoded in the given \p encoding, convert
+	 * it to something that LaTeX can understand in math mode.
 	 * \return whether \p command is a math mode command
 	 */
-	static bool latexMathChar(char_type c, docstring & command);
+	static bool latexMathChar(char_type c, Encoding const * encoding, docstring & command);
 
 	/**
 	 * Convert the LaTeX command in \p cmd to the corresponding unicode

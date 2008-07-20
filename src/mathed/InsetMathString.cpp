@@ -121,7 +121,7 @@ void InsetMathString::write(WriteStream & os) const
 		char_type const c = *cit;
 		try {
 			docstring command(1, c);
-			if (c < 0x80 || Encodings::latexMathChar(c, command)) {
+			if (c < 0x80 || Encodings::latexMathChar(c, os.encoding(), command)) {
 				if (os.textMode()) {
 					if (in_forced_mode) {
 						// we were inside \lyxmathsym

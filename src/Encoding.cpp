@@ -333,7 +333,7 @@ void Encoding::init() const
 }
 
 
-docstring Encoding::latexChar(char_type c) const
+docstring Encoding::latexChar(char_type c, bool for_mathed) const
 {
 	// assure the used encoding is properly initialized
 	init();
@@ -344,6 +344,8 @@ docstring Encoding::latexChar(char_type c) const
 		return docstring(1, c);
 	if (encodable_.find(c) != encodable_.end())
 		return docstring(1, c);
+	if (for_mathed)
+		return docstring();
 
 	// c cannot (or should not) be encoded in this encoding
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
@@ -375,8 +377,14 @@ vector<char_type> Encoding::symbolsList() const
 }
 
 
-bool Encodings::latexMathChar(char_type c, docstring & command)
+bool Encodings::latexMathChar(char_type c, Encoding const * encoding,
+				docstring & command)
 {
+	if (encoding) {
+		command = encoding->latexChar(c, true);
+		if (!command.empty())
+			return false;
+	}
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
 	if (it == unicodesymbols.end())
 		throw EncodingException(c);
