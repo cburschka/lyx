@@ -94,7 +94,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-07-20 20:48+0200\n"
-"PO-Revision-Date: 2008-07-20 21:04+0100\n"
+"PO-Revision-Date: 2008-07-21 01:21+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -11054,7 +11054,7 @@ msgstr "Grauschrift|G"
 
 #: lib/ui/stdcontext.inc:170
 msgid "Interword Space|w"
-msgstr "Zwischenwort Abstand|n"
+msgstr "Zwischenwort Abstand|w"
 
 #: lib/ui/stdcontext.inc:171
 msgid "Protected Space|o"
@@ -11062,7 +11062,7 @@ msgstr "Geschütztes Leerzeichen|G"
 
 #: lib/ui/stdcontext.inc:173
 msgid "Negative Thin Space|N"
-msgstr "Negatives Halbes Leerzeichen|N"
+msgstr "Negatives Halbes Leerzeichen|H"
 
 #: lib/ui/stdcontext.inc:174
 msgid "Half Quad Space (Enskip)|k"
@@ -11074,7 +11074,7 @@ msgstr "Geschützter Halbgeviert-Abstand (Enpace)|E"
 
 #: lib/ui/stdcontext.inc:176
 msgid "Quad Space|Q"
-msgstr "Geviert-Abstand|G"
+msgstr "Geviert-Abstand|v"
 
 #: lib/ui/stdcontext.inc:177
 msgid "Double Quad Space|u"
@@ -11082,7 +11082,7 @@ msgstr "Doppelgeviert-Abstand|D"
 
 #: lib/ui/stdcontext.inc:178
 msgid "Horizontal Fill|F"
-msgstr "Variabler horiz. Abstand|A"
+msgstr "Variabler horiz. Abstand|z"
 
 #: lib/ui/stdcontext.inc:179
 msgid "Protected Horizontal Fill|i"
@@ -11098,7 +11098,7 @@ msgstr "Variabler horiz. Abstand (Linie)|L"
 
 #: lib/ui/stdcontext.inc:182
 msgid "Horizontal Fill (Left Arrow)|L"
-msgstr "Variabler horiz. Abstand (Linkspfeil)|L"
+msgstr "Variabler horiz. Abstand (Linkspfeil)|f"
 
 #: lib/ui/stdcontext.inc:183
 msgid "Horizontal Fill (Right Arrow)|g"
@@ -11110,7 +11110,7 @@ msgstr "Variabler horiz. Abstand (Klammer oben)|r"
 
 #: lib/ui/stdcontext.inc:185
 msgid "Horizontal Fill (Down Brace)|B"
-msgstr "Variabler horiz. Abstand (Klammer unten)|K"
+msgstr "Variabler horiz. Abstand (Klammer unten)|m"
 
 #: lib/ui/stdcontext.inc:186
 msgid "Custom Length|C"
