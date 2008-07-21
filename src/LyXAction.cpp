@@ -1879,8 +1879,9 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_VC_REGISTER
  * \li Action: Register the document as an file inside version control system (RCS).
- * \li Notion: See LyX Extended Manual (Version Control Chapter) for additional information. \n
-               Note that Version Control support is currently broken feature.
+ * \li Notion: File is registered inside cvs or rcs repository acording to the existence 
+               of cvs entries in the document's directory. 
+	       See LyX Extended Manual (Version Control Chapter) for additional information. \n
  * \li Syntax: vc-register
  * \li Origin: Lgb, 1 Jul 1997
  * \endvar
