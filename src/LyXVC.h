@@ -45,11 +45,11 @@ public:
 	///
 	~LyXVC();
 	/** Not a good name perhaps. This function should be called whenever
-	  LyX loads a file. This function then checks for a master VC file
-	  (for RCS this is *,v or RCS/ *,v) if this file is found, the loaded
-	  file is assumed to be under controll by VC (only RCS so far), and
-	  the appropiate actions is taken. Returns true if the file is under
-	  control by a VCS.
+	  LyX loads a file. This function then checks for a master VC file (for
+	  RCS this is *,v or RCS/ *,v ; for CVS this is CVS/Entries) if this
+	  file is found, the loaded file is assumed to be under controll by VC
+	  (only RCS and CVS so far), and the appropiate actions is taken.
+	  Returns true if the file is under control by a VCS.
 	  */
 	bool file_found_hook(support::FileName const & fn);
 
