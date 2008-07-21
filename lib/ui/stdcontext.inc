@@ -289,6 +289,10 @@ Menuset
 		Item "Paste" "paste"
 		Submenu "Paste Recent|e" "edit_pasterecent"
 		Separator
+		OptItem "Open Inset|O" "next-inset-toggle open"
+		OptItem "Close Inset|C" "next-inset-toggle close"
+		Separator
+		Item "Dissolve Inset|D" "inset-dissolve"
 		Item "Settings...|S" "inset-settings listings"
 	End
 
