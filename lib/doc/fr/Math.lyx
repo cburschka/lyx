@@ -139,6 +139,9 @@
  {\usepackage{upgreek}
   \setboolean{upgreek}{true}}
  {\setboolean{upgreek}{false}}
+
+% use normal list environments also in French documents
+\StandardLayout
 \end_preamble
 \options bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \language french
@@ -661,15 +664,8 @@ nom propres
 \end_layout
 
 \begin_layout Plain Layout
-Pour éviter que ces noms soient reconnus comme des noms propres, 
-\lang english
-a
-\lang french
- accolade TeX 
-\lang english
-pair is inserted
-\lang french
-.
+Pour éviter que ces noms soient reconnus comme des noms propres, on insère
+ une paire d'accolades TeX .
 \end_layout
 
 \end_inset

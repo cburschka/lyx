@@ -16,8 +16,8 @@
 \usepackage{ifpdf} % part of the hyperref bundle
 \ifpdf % if pdflatex is used
 
-  % set fonts for nicer pdf view
-  \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
 
 \fi % end if pdflatex is used
 
@@ -47,6 +47,9 @@
 % redefine the greyed out note
 \renewenvironment{lyxgreyedout}
  {\textcolor{blue}\bgroup}{\egroup}
+
+% use normal list environments also in French documents
+\StandardLayout
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
 \language french
@@ -550,14 +553,22 @@ Dans le menu
 \family sans
 Fichier
 \family default
- il y a les opérations de base pour tout traitement de texte, et en plus
- quelques opérations plus avancées :
+ et dans la barre d'outils standard, on retrouve les opérations de base
+ pour tout traitement de texte, et en plus quelques opérations plus avancées
+ :
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Nouveau
+Nouveau 
+\begin_inset Graphics
+	filename ../../images/buffer-new.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -577,7 +588,16 @@ Modèle
 \begin_layout Itemize
 
 \family sans
-Ouvrir
+Ouvrir 
+\family default
+
+\begin_inset Graphics
+	filename ../../images/file-open.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -599,7 +619,16 @@ Fermer
 \begin_layout Itemize
 
 \family sans
-Enregistrer
+Enregistrer 
+\family default
+
+\begin_inset Graphics
+	filename ../../images/buffer-write.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -669,7 +698,16 @@ Exporter
 \begin_layout Itemize
 
 \family sans
-Imprimer
+Imprimer 
+\family default
+
+\begin_inset Graphics
+	filename ../../images/dialog-show_print.png
+	BoundingBox 0bp 5bp 24bp 20bp
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -695,7 +733,7 @@ Quitter
 \end_layout
 
 \begin_layout Standard
-Ils font tous en gros la même chose que dans d'autres traitements de texte,
+Ils font tous en gros la même chose que dans les autres traitements de texte,
  avec quelques différences mineures.
  La commande 
 \family sans
@@ -712,9 +750,8 @@ Modèle
 \family default
  ne vous demande pas seulement le nom du nouveau fichier, mais aussi un
  modèle à utiliser.
- Sélectionner un modèle fixera automatiquement certaines options de mise
- en forme du document, options que vous auriez autrement dû changer à la
- main.
+ Choisir un modèle fixera automatiquement certaines options de mise en forme
+ du document, options que vous auriez autrement dû changer à la main.
  Elles peuvent servir pour certaines classes, spécialement celles utilisées
  pour l'écriture de lettres (voir Section
 \begin_inset space ~
@@ -894,8 +931,8 @@ Comme vous pouvez vous y attendre, le menu
 \family sans
 Éditer
 \family default
- contient les commandes de copier-coller, ainsi que diverses autres fonctions
- d'édition.
+ et la barre d'outils standard contiennent les commandes de copier-coller,
+ ainsi que diverses autres fonctions d'édition.
  Quelques-unes sont spéciales et seront couvertes dans de prochaines sections.
  Les commandes de base sont :
 \end_layout
@@ -903,19 +940,46 @@ Comme vous pouvez vous y attendre, le menu
 \begin_layout Itemize
 
 \family sans
-Couper
+Couper 
+\family default
+
+\begin_inset Graphics
+	filename ../../images/cut.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Copier
+Copier 
+\family default
+
+\begin_inset Graphics
+	filename ../../images/copy.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Coller
+Coller 
+\family default
+
+\begin_inset Graphics
+	filename ../../images/paste.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -957,7 +1021,17 @@ et
 \begin_inset space ~
 \end_inset
 
-Remplacer
+Remplacer 
+\family default
+
+\begin_inset Graphics
+	filename ../../images/dialog-show_findreplace.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1261,12 +1335,26 @@ Si vous faites une erreur, vous pouvez facilement la réparer.
 Éditer\SpecialChar \menuseparator
 Annuler
 \family default
- pour corriger une erreur.
+ ou utilisez le bouton 
+\begin_inset Graphics
+	filename ../../images/undo.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+de la barre d'outils pour corriger une erreur.
  Si vous avez accidentellement annulé trop d'opérations, faites 
 \family sans
 Éditer\SpecialChar \menuseparator
 Refaire
 \family default
+ ou utilisez le bouton 
+\begin_inset Graphics
+	filename ../../images/redo.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
  pour 
 \begin_inset Quotes fld
 \end_inset
@@ -1276,8 +1364,11 @@ annuler l'annulation
 \end_inset
 
 .
- Le mécanisme d'annulation est actuellement limité à 100 étapes pour minimiser
- l'occupation de la mémoire.
+ Le mécanisme d'annulation est actuellement limité à 100
+\begin_inset space \thinspace{}
+\end_inset
+
+étapes pour minimiser l'occupation de la mémoire.
 \end_layout
 
 \begin_layout Standard
@@ -1292,7 +1383,11 @@ modifié
 \end_inset
 
 .
- C'est une conséquence de la limite de 100 étapes vue plus haut.
+ C'est une conséquence de la limite de 100
+\begin_inset space \thinspace{}
+\end_inset
+
+étapes vue plus haut.
 \end_layout
 
 \begin_layout Standard
@@ -1305,19 +1400,8 @@ Annuler
 Refaire
 \family default
  marchent avec presque tout dans LyX.
- Il y a quelques subtilités toutefois.
- Ces deux fonctions ne procèdent pas caractère par caractère pour du texte,
- mais par blocs.
- Cela peut nécessiter un peu d'habitude ; vous devrez jouer avec 
-\family sans
-Annuler
-\family default
- et 
-\family sans
-Refaire
-\family default
- pour sentir précisément comment ils agissent, et après cela, on peut espérer
- que vous saurez comment ça marche.
+ Mais elles ne procèdent pas caractère par caractère pour du texte, mais
+ par blocs.
 \end_layout
 
 \begin_layout Section
@@ -1420,6 +1504,168 @@ Cliquez une fois
 
 \end_deeper
 \begin_layout Section
+Naviguer
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Naviguer"
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Naviguer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LyX propose deux manières de naviguer dans un document:
+\end_layout
+
+\begin_layout Itemize
+Le menu 
+\family sans
+Naviguer
+\family default
+ liste toutes les sections du document sous la forme d'entrées de sous-menus
+ sur lesquelles vous pouvez cliquer pour sauter à la partie correspondante
+ du document.
+\end_layout
+
+\begin_layout Itemize
+Le menu 
+\family sans
+Document\SpecialChar \menuseparator
+Plan
+\family default
+ ou le bouton 
+\begin_inset Graphics
+	filename ../../images/dialog-toggle_toc.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+ de la barre d'outils.
+\end_layout
+
+\begin_layout Standard
+La fenêtre de plan vous montre la table des matières du document (TdM),
+ cette dernière est décrite dans la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Table-des-Matières"
+
+\end_inset
+
+.
+ Dans cette fenêtre, vous pouvez cliquer sur une ligne pour sauter à la
+ partie du document correspondante.
+ Dans la liste déroulante qui se trouve en haut de la fenêtre de plan, vous
+ pouvez choisir entre plusieurs listes d'objets du document, comme par exemple
+ la liste des notes de bas de page.
+ Certaines d'entre elles comme la liste des tableaux, celle des figures
+ ou celle des algorithmes, peuvent être insérée à l'intérieur du document,
+ voyez la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Liste-des-Figures"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Avec les boutons
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../images/down.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length -3mm
+\end_inset
+
+ and 
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../images/up.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length -3mm
+\end_inset
+
+ situés en bas de la fenêtre de plan, vous pouvez déplacer des sections
+ à l'intérieur de votre document.
+ Vous pouvez par exemple déplacer la section
+\begin_inset space ~
+\end_inset
+
+2.5 pour qu'elle se trouve avant la section
+\begin_inset space ~
+\end_inset
+
+2.4.
+ LyX va alors renuméroter automatiquement les sections pour refléter le
+ nouvel ordre.
+ Avec les boutons 
+\begin_inset Graphics
+	filename ../../images/promote.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+ et 
+\begin_inset Graphics
+	filename ../../images/demote.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+ vous pouvez modifier le niveau hierarchique d'une section.
+ Vous pouvez par exemple transformer la section
+\begin_inset space ~
+\end_inset
+
+2.5 en chapitre
+\begin_inset space ~
+\end_inset
+
+3 ou en sous-section
+\begin_inset space ~
+\end_inset
+
+2.4.1.
+\end_layout
+
+\begin_layout Section
 Raccourcis clavier de base
 \begin_inset CommandInset label
 LatexCommand label
@@ -1441,9 +1687,8 @@ Raccourcis clavier
 \end_layout
 
 \begin_layout Standard
-Encore une fois, nous n'allons pas couvrir tous les raccourcis clavier.
- Sachez qu'il y a au moins deux familles différentes de raccourcis clavier
- : CUA et Emacs.
+Il y a au moins deux familles différentes de raccourcis clavier : CUA et
+ Emacs.
  Je suis sûr que vous allez protester si vous tapez 
 \family sans
 Contrôle-d
@@ -1495,6 +1740,14 @@ Bas
 
 \family sans
 Tab
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Tab"
+description "Touche tabulation"
+
+\end_inset
+
+
 \family default
  Il n'y a rien qui ressemble à une tabulation dans LyX.
  Si vous ne comprenez pas cela, allez lire tout de suite les Sections
@@ -1548,6 +1801,14 @@ d'Apprentissage
 
 \family sans
 Esc
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Esc"
+description "Touche échappement"
+
+\end_inset
+
+
 \family default
  C'est la touche d'annulation.
  Elle est utilisée de manière générique pour annuler des opérations.
@@ -1837,6 +2098,7 @@ Heureusement, vous apprendrez de plus en plus de raccourcis clavier au fur
  la souris afficheront un petit message dans le minibuffer qui décrit le
  nom de l'action que vous venez d'effectuer, et les raccourcis existants
  pour cette action.
+ Les menus de LyX listent aussi les raccourcis existants.
  La notation pour les raccourcis est très similaire à celle adoptée dans
  cette documentation, ainsi vous ne devrez pas avoir de problèmes pour la
  comprendre.
@@ -1882,6 +2144,26 @@ S-C-S
 Shift-Control-s
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+Vous pouvez voir la liste des raccourcis et les modifiers dans le préférences
+ de LyX dans la rubrique 
+\family sans
+Édition\SpecialChar \menuseparator
+Raccourcis
+\family default
+.
+ On accède à la fenêtre de dialogue des préférences par le menu 
+\family sans
+Outils\SpecialChar \menuseparator
+Préférences
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
@@ -3480,28 +3762,32 @@ En résumé
 
 \begin_layout Standard
 Les environnements de paragraphe correspondent aux différentes séquences
- de commandes 
-\family typewriter
+ de commandes
+\begin_inset Newline newline
+\end_inset
+
+ 
+\series bold
 
 \backslash
 begin{
-\family default
 \emph on
 environnement
-\family typewriter
 \emph default
 } ...
  
 \backslash
 end{
-\family default
 \emph on
 environnement
-\family typewriter
 \emph default
 }
-\family default
-dans un fichier LaTeX ordinaire.
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+que l'on trouve dans un fichier LaTeX.
  Si vous ne connaissez pas LaTeX, ou si le concept d'environnement de paragraphe
  vous est complètement étranger, nous vous conseillons vivement de lire
  le 
@@ -3539,7 +3825,15 @@ récipient
 
 \begin_layout Standard
 Pour choisir un nouvel environnement de paragraphe, utilisez la boîte déroulante
- située à gauche de la barre d'outils.
+ 
+\begin_inset Graphics
+	filename ../clipart/ToolbarEnvBox.png
+	scale 70
+	clip
+
+\end_inset
+
+ à la gauche de la barre d'outils.
  LyX change l'environnement pour 
 \emph on
 tout
@@ -7059,7 +7353,7 @@ Note:
 \series default
  Bien qu'il soit possible d'emboîter des entêtes de sections comme 
 \family sans
-Partie
+Chapitre
 \family default
 , 
 \family sans
@@ -7069,7 +7363,7 @@ Section
 \begin_inset space ~
 \end_inset
 
-dans des listes, par exemple, il est fortement recommendé de ne pas le faire.
+dans des listes, par exemple, il est fortement recommandé de ne pas le faire.
  La raison est que l'objectif est de créer des documents bien structurés
  qui suivent les règles classiques de typographie, et emboîter les entêtes
  de section viole ces règles.
@@ -9573,6 +9867,88 @@ Ici
 on en a un en plein milieu d'un paragraphe standard.
  C'est peut-être visible ou pas dans la version imprimée, mais il est bien
  juste entre les deux flèches.
+\end_layout
+
+\begin_layout Standard
+Les ressorts horizontaux peuvent être rendus visibles en choisissant un
+ des 
+\family sans
+Modèles de remplissage
+\family default
+ dans la fenêtre de dialogue Paramètres d'espacement horizontal.
+ Les modèles suivants sont dispnibles:
+\end_layout
+
+\begin_layout Standard
+Points: 
+\begin_inset space \dotfill{}
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Filet: 
+\begin_inset space \hrulefill{}
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Flêche gauche: 
+\begin_inset space \leftarrowfill{}
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Flêche droite: 
+\begin_inset space \rightarrowfill{}
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Accolade vers le haut: 
+\begin_inset space \downbracefill{}
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Accolade vers le bas: 
+\begin_inset space \upbracefill{}
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -13454,7 +13830,7 @@ PDF
 
 (pdflatex)
 \family default
- vous pouvez utiliser le bouton 
+ le bouton 
 \begin_inset Graphics
 	filename ../../images/buffer-view_pdf2.png
 
@@ -14298,8 +14674,11 @@ Je monte dans ma DS\SpecialChar \@.
 Certaines langues ne mettent pas plus d'espace entre les phrases qu'entre
  les mots.
  Si vous voulez écrire dans ces langues, vous n'avez pas à vous occuper
- de tout ceci.
- Pour les autres, on peut s'aider de la fonction 
+ de tout ceci, puisque LaTeX va s'en occuper.
+\end_layout
+
+\begin_layout Standard
+Pour les autres, on peut s'aider de la fonction 
 \family sans
 Éditer\SpecialChar \menuseparator
 Vérification
@@ -15325,7 +15704,7 @@ LyX Ce type de note est à usage interne et n'apparaîtra pas sur la sortie
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Le texte de cette note n'apparaîtra pas à l'impression.
@@ -15351,7 +15730,7 @@ LaTeX (pdflatex) / (plain)
 
 
 \begin_inset Note Comment
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Le texte de cette note n'apparaîtra que comme commentaire dans un fichier
@@ -15374,12 +15753,12 @@ Grisée Ce type de note apparaît à l'impression sous forme de texte grisé
 
 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Le texte
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ceci est un exemple de note de bas de page à l'intérieur d'une note en texte
@@ -15400,10 +15779,6 @@ Objets insérés
  de ce commentaire apparaîtra à l'impression sous forme de texte grisé.
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newline newline
 \end_inset
 
 
@@ -15496,29 +15871,28 @@ Page
 \end_inset
 
  de la palette, vous voyez d'abord apparaître dans votre texte une boîte
- grise avec une étiquette rouge 
+ grise avec une étiquette bleue 
 \begin_inset Quotes fld
 \end_inset
 
-bas
+pied
 \begin_inset Quotes frd
 \end_inset
 
- qui ressemble à ceci :
+ qui ressemble à ceci : 
 \begin_inset Graphics
-	filename ../clipart/footnoteQt4.png
+	filename clipart/footnoteQt4.png
 	scale 80
 
 \end_inset
 
-.
  Cette boîte est la représentation de votre note dans LyX.
  Vous pouvez y entrer votre texte.
  Si vous cliquez sur le mot 
 \begin_inset Quotes fld
 \end_inset
 
-bas
+pied
 \begin_inset Quotes frd
 \end_inset
 
@@ -15533,20 +15907,16 @@ ouvrira
 
  la note en bas de page
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Dans LyX, pour fermer cette note en bas de page, cliquez sur la boîte rouge
- en haut à gauche.
+Dans LyX, pour fermer cette note en bas de page, cliquez sur la boîte grise
+ à gauche.
 \end_layout
 
 \end_inset
 
 .
- Vous ne verrez aucun numéro dans LyX.
- Vous n'avez pas à vous en inquiéter, puisque LyX, quand il traitera votre
- fichier, s'occupera à votre place de numéroter la note, et de la placer
- au bas de la bonne page.
  Si vous voulez transformer du texte déjà existant en note en bas de page,
  sélectionnez-le et cliquez sur le bouton 
 \family sans
@@ -15572,28 +15942,21 @@ Page
 \end_layout
 
 \begin_layout Standard
-LyX ne peut pas encore s'occuper de certains besoins spéciaux comme remettre
- à zéro la numérotation à chaque section dans la classe 
-\family typewriter
-
-\begin_inset Quotes fld
-\end_inset
-
-article
-\begin_inset Quotes frd
-\end_inset
-
-
-\family default
- ou changer le style de compteur.
- Vous devrez insérer des commandes LaTeX comme celles décrites dans le manuel
- d'
+Dans la sortie finale, la note de bas de page apparaîtra comme un numéro
+ en exposant placé dans le texte à la position où la boîte de note a été
+ insérée.
+ Le texte de la note est placé en bas de la page courante.
+ Le numéro de la note est calculé par LyX, les numéros sont consécutifs,
+ sans tenir compte du chapitre dans lequel la note se trouve.
+ Pour l'instant, LyX ne gère pas d'autre système de numérotation, mais vous
+ pouvez utiliser d'autres méthodes en utilisant des commandes LaTeX spéciales
+ comme celles décrites dans le manuel 
 \emph on
-Options
+Objets
 \begin_inset space ~
 \end_inset
 
-Avancées
+insérés
 \emph default
 .
 \end_layout
@@ -15620,8 +15983,8 @@ name "sec:Notes_en_Marge"
 \end_layout
 
 \begin_layout Standard
-Les notes en marge dans LyX ressemblent aux notes en bas de page et se comporten
-t de la même façon.
+Dans LyX, les notes en marge ressemblent aux notes en bas de page et se
+ comportent de la même façon.
  Quand vous insérez une note en marge avec 
 \family sans
 Insérer\SpecialChar \menuseparator
@@ -15685,16 +16048,12 @@ ouvrant
 \end_layout
 
 \begin_layout Standard
-Par défaut, LyX utilise une marge assez large pour laisser la place pour
- des notes.
- Ce n'est peut-être pas ce que vous souhaitez mais, comme pour les notes
- en bas de page, LyX ne sait pas encore faire tout ce que LaTeX peut offrir.
- Vous pouvez consulter un manuel LaTeX pour mettre des commandes supplémentaires.
+
 \end_layout
 
 \begin_layout Standard
 Les notes en marge apparaissent dans la marge de droite dans les documents
- imprimées sur une seule face.
+ imprimés sur une seule face.
  Dans les documents imprimés recto-verso, elles apparaissent dans la marge
  
 \begin_inset Quotes eld
@@ -15751,10 +16110,7 @@ Insérer\SpecialChar \menuseparator
 Graphique
 \family default
 .
-\end_layout
-
-\begin_layout Standard
-Un insert graphique est ajouté à votre document et une fenêtre s'ouvre,
+ Un insert graphique est ajouté à votre document et une fenêtre s'ouvre,
  qui vous permet de choisir le fichier à charger.
  
 \end_layout
@@ -20577,6 +20933,16 @@ Rotation
 \begin_layout Standard
 Les flottants renversés sont toujours placés sur une page à part (ou une
  colonne à part quand vous avez un document sur deux colonnes).
+ Vous pouvez leur permettre de couvrir plusieurs colonnes avec l'option
+ 
+\family sans
+Plusieurs
+\begin_inset space ~
+\end_inset
+
+colonnes.
+
+\family default
  Il sont en principe tournés de façon à être lisible du côté de la marge
  externe (Ils sont donc tournés vers la gauche dans un document recto-verso
  quand ils se trouvent sur une page paire).
@@ -25579,7 +25945,7 @@ name "sec:Tdm"
 \end_layout
 
 \begin_layout Subsection
-Table des matières et Plan
+Table des matières
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Table-des-Matières"
@@ -25620,17 +25986,30 @@ Plan
 \family default
  s'ouvre et affiche toutes les entrées de la Table des matières.
  Vous pouvez sauter à un endroit quelconque de votre document en cliquant
- sur la ligne correspondante de la Table des matières.
+ sur la ligne correspondante de la Table des matières et vous pouvez déplacer
+ et réarranger les sections de votre document.
  C'est une alternative à l'utilisation du menu 
 \family sans
-Naviguer
+Document\SpecialChar \menuseparator
+Plan
 \family default
+ qui est décrit dans la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Naviguer"
+
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Standard
-La table des matière reprend automatiquement toutes sections numérotées
- de votre document.
+La table des matière reprend automatiquement dans la sortie imprimée toutes
+ les sections numérotées de votre document.
  Si vous avez donné un titre court à une section, comme c'est décrit dans
  la section
 \begin_inset space ~
@@ -25660,17 +26039,6 @@ reference "sub:Profondeur-section"
  Vous pouvez aussi ajuster la profondeur affichée dans la fenêtre plan en
  utilisant la glissière qui se trouve en bas de la fenêtre.
  Les sections qui ne sont pas numérotées n'apparaissent pas dans la TdM.
-\end_layout
-
-\begin_layout Standard
-Vous pouvez aussi utiliser la fenêtre de la TdM comme un plan pour déplacer
- et réarranger les sections de votre document.
- Cette fenêtre peut être ouverte grâce au menu 
-\family sans
-Document\SpecialChar \menuseparator
-Plan
-\family default
-.
 \end_layout
 
 \begin_layout Subsection
@@ -27338,7 +27706,7 @@ reference "sub:LaTeX-settings"
  Les options disponibles sont listées et expliquées dans 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "NewInLyX16"
+key "makeindex,xindy"
 
 \end_inset
 
@@ -28483,7 +28851,7 @@ reponse}[1]{}
 
 \begin_layout Standard
 \begin_inset Branch Réponses
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset ERT
@@ -28576,7 +28944,7 @@ name "sec:Code-TeX"
 \end_layout
 
 \begin_layout Subsection
-Les Boîtes ERT 
+Les Boîtes de code TeX 
 \begin_inset Index
 status collapsed
 
@@ -28601,9 +28969,9 @@ Comme LyX utilise LaTeX en interne, il accepte de nombreuses commandes ou
  constructions LaTeX, mais pas toutes.
  LaTeX est constitué de centaines de paquetages qui fournissent une grande
  quantité de commandes.
- Chaque mois plusieurs paquetages sont mis à jour et des nouveaux sont ajoutés.
+ Les paquetages sont souvent mis à jour et des nouveaux sont ajoutés.
  Cela a comme conséquence que vous pouvez typographier un peu n'importe
- quoi, puisque à chaque problème son paquetage LaTeX.
+ quoi, puisque chaque problème a son paquetage LaTeX.
  Mais LyX, de son côté, ne peut suivre et être constamment à jour pour accepter
  tous les paquetages avec toutes leurs commandes.
  
@@ -28633,35 +29001,8 @@ TeX
 C-l
 \family default
  (L minuscule).
- La boîte de code TeX, elle-même peut être affichée de trois façon différente
- : 
-\family sans
-En
-\begin_inset space ~
-\end_inset
-
-ligne
-\family default
-, 
-\family sans
-Fermé
-\family default
- et 
-\family sans
-Ouvert
-\family default
-.
- Pour changer le style d'affichage, faites un clic droit sur la boîte et
- utilisez la fenêtre de dialogue qui apparaît.
- En cliquant avec le bouton gauche on alterne entre 
-\family sans
-Fermé
-\family default
- et 
-\family sans
-Ouvert
-\family default
-.
+ La boîte de code TeX, peut être ouverte en faisant un clic gauche dessus
+ et refermée avec un clic droit.
 \end_layout
 
 \begin_layout Standard
@@ -33664,8 +34005,13 @@ Importer
 
 \begin_layout Standard
 Vous pouvez importer à partir de ce sous-menu des fichiers créés avec des
- versions anciennes de LyX, des fichiers LaTeX et des fichiers de texte
- simple (fichiers ASCII).
+ versions anciennes de LyX, des fichiers LaTeX, des fichiers NoWeb, des
+ fichiers de texte brut (fichiers ASCII) et des fichiers textes de données
+ séparées par des virgules, comme des tableaux (CSV pour 
+\emph on
+comma separated values
+\emph default
+).
  Le fichier est importé comme un nouveau document LyX.
 \end_layout
 
