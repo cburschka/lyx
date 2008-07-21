@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-20 20:48+0200\n"
+"POT-Creation-Date: 2008-07-21 23:07+0200\n"
 "PO-Revision-Date: 2007-07-14 11:00+0300\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -134,7 +134,7 @@ msgstr "&Testi"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:38
 #: src/frontends/qt4/ui/ParagraphUi.ui:82 src/frontends/qt4/ui/RefUi.ui:77
-#: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:102
+#: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:105
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/VSpaceUi.ui:36 src/frontends/qt4/ui/WrapUi.ui:150
@@ -146,8 +146,8 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:835
 #: src/Buffer.cpp:2521 src/Buffer.cpp:2545 src/Buffer.cpp:2580
-#: src/LyXFunc.cpp:664 src/LyXFunc.cpp:800 src/LyXFunc.cpp:978
-#: src/LyXVC.cpp:160 src/frontends/qt4/GuiClipboard.cpp:208
+#: src/LyXFunc.cpp:666 src/LyXFunc.cpp:802 src/LyXFunc.cpp:980
+#: src/LyXVC.cpp:161 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1251
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1464
@@ -226,7 +226,7 @@ msgstr "&Lisää"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/LabelUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:92
-#: src/frontends/qt4/ui/ShortcutUi.ui:115 src/LyXFunc.cpp:770
+#: src/frontends/qt4/ui/ShortcutUi.ui:118 src/LyXFunc.cpp:772
 #: src/buffer_funcs.cpp:104 src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
 msgstr "Peru"
@@ -2390,7 +2390,7 @@ msgstr "Muu&ta"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2253 src/frontends/qt4/GuiPrefs.cpp:2338
+#: src/frontends/qt4/GuiPrefs.cpp:2255 src/frontends/qt4/GuiPrefs.cpp:2340
 msgid "Remo&ve"
 msgstr "&Poista"
 
@@ -3186,7 +3186,7 @@ msgstr "Se&laa..."
 msgid "&User interface file:"
 msgstr "&Käyttöliittymätiedosto:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:663
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:665
 #: src/frontends/qt4/GuiView.cpp:1740
 msgid "&Save"
 msgstr "Ta&llenna"
@@ -3382,23 +3382,30 @@ msgid "Edit shortcut"
 msgstr "P&ikanäppäin:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:31
-msgid "Type shortcut while the cursor is in this field"
+msgid ""
+"Type shortcut after clicking on this field. You can reset the content with "
+"the 'Clear' button"
 msgstr ""
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:41
 msgid "Enter LyX function or command sequence"
 msgstr ""
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:51 src/frontends/qt4/ui/TabularUi.ui:272
+#: src/frontends/qt4/ui/ShortcutUi.ui:51
+#, fuzzy
+msgid "Clear current shortcut"
+msgstr "Hakemiston luominen epäonnistui. Sulkeutuu."
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:54 src/frontends/qt4/ui/TabularUi.ui:272
 msgid "C&lear"
 msgstr "&Tyhjennä"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:58
+#: src/frontends/qt4/ui/ShortcutUi.ui:61
 #, fuzzy
 msgid "&Function:"
 msgstr "&Funktiot"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:68
+#: src/frontends/qt4/ui/ShortcutUi.ui:71
 #, fuzzy
 msgid "&Shortcut:"
 msgstr "P&ikanäppäin:"
@@ -9380,7 +9387,8 @@ msgid "Check Out for Edit|O"
 msgstr "Kirjaa ulos muokattavaksi|u"
 
 #: lib/ui/classic.ui:71 lib/ui/stdmenus.inc:66
-msgid "Revert to Last Version|L"
+#, fuzzy
+msgid "Revert to Repository Version|R"
 msgstr "Palauta viimeisin versio|v"
 
 #: lib/ui/classic.ui:72 lib/ui/stdmenus.inc:67
@@ -9468,7 +9476,7 @@ msgstr "Riveinä|R"
 msgid "Selection as Paragraphs|P"
 msgstr "Kappaleina|K"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:322 lib/ui/stdmenus.inc:161
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:161
 msgid "Multicolumn|M"
 msgstr "Yhdistetyt sarakkeet|Y"
 
@@ -9492,7 +9500,7 @@ msgstr "Viiva oikealla|o"
 msgid "Alignment|i"
 msgstr "Tasaus|T"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:337 lib/ui/stdmenus.inc:179
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:179
 msgid "Add Row|A"
 msgstr "Lisää rivi|L"
 
@@ -9508,7 +9516,7 @@ msgstr "Kopioi rivi"
 msgid "Swap Rows"
 msgstr "Vaihda rivit"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:184
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:346 lib/ui/stdmenus.inc:184
 msgid "Add Column|u"
 msgstr "Lisää sarake|ä"
 
@@ -9524,27 +9532,27 @@ msgstr "Kopioi sarake"
 msgid "Swap Columns"
 msgstr "Vaihda sarakkeet"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:171
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:333 lib/ui/stdmenus.inc:171
 msgid "Left|L"
 msgstr "Vasen|#V"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:330 lib/ui/stdmenus.inc:172
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:334 lib/ui/stdmenus.inc:172
 msgid "Center|C"
 msgstr "Keskellä"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:331 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:173
 msgid "Right|R"
 msgstr "Oikea|#O"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:333 lib/ui/stdmenus.inc:175
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:337 lib/ui/stdmenus.inc:175
 msgid "Top|T"
 msgstr "Yläreuna|#ä"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:334 lib/ui/stdmenus.inc:176
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:338 lib/ui/stdmenus.inc:176
 msgid "Middle|M"
 msgstr "Keski"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:177
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:339 lib/ui/stdmenus.inc:177
 msgid "Bottom|B"
 msgstr "Alareuna|#A"
 
@@ -9576,7 +9584,7 @@ msgstr "Tasaus|T"
 msgid "Add Row|R"
 msgstr "Lisää rivi|L"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:338 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:180
 msgid "Delete Row|D"
 msgstr "Poista rivi|r"
 
@@ -9584,7 +9592,7 @@ msgstr "Poista rivi|r"
 msgid "Add Column|C"
 msgstr "Lisää sarake|ä"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:185
 msgid "Delete Column|e"
 msgstr "Poista sarake|e"
 
@@ -10298,9 +10306,9 @@ msgstr "Muotoiltu viittaus"
 #: lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:125
 #: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:150
 #: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:215
-#: lib/ui/stdcontext.inc:292 lib/ui/stdcontext.inc:300
-#: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:347
-#: lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:458
+#: lib/ui/stdcontext.inc:296 lib/ui/stdcontext.inc:304
+#: lib/ui/stdcontext.inc:316 lib/ui/stdcontext.inc:351
+#: lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:458
 msgid "Settings...|S"
 msgstr "Asetukset..."
 
@@ -10313,18 +10321,19 @@ msgstr ""
 msgid "Edit Database(s) externally...|x"
 msgstr "Muokkaa tiedostoa ulkoisesti"
 
-#: lib/ui/stdcontext.inc:121
+#: lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:292
 #, fuzzy
 msgid "Open Inset|O"
 msgstr "Avaa kaikki upotteet"
 
-#: lib/ui/stdcontext.inc:122
+#: lib/ui/stdcontext.inc:122 lib/ui/stdcontext.inc:293
 #, fuzzy
 msgid "Close Inset|C"
 msgstr "Sulje kaikki upotteet"
 
 #: lib/ui/stdcontext.inc:124 lib/ui/stdcontext.inc:130
 #: lib/ui/stdcontext.inc:149 lib/ui/stdcontext.inc:162
+#: lib/ui/stdcontext.inc:295
 #, fuzzy
 msgid "Dissolve Inset|D"
 msgstr "Sulaa upote"
@@ -10674,32 +10683,32 @@ msgstr ""
 msgid "Remove Last Parameter Spitting Out To The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:302 lib/ui/stdcontext.inc:314
+#: lib/ui/stdcontext.inc:306 lib/ui/stdcontext.inc:318
 #, fuzzy
 msgid "Edit externally...|x"
 msgstr "Muokkaa tiedostoa ulkoisesti"
 
-#: lib/ui/stdcontext.inc:324 lib/ui/stdmenus.inc:163
+#: lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:163
 msgid "Top Line|T"
 msgstr "Yläreuna|#ä"
 
-#: lib/ui/stdcontext.inc:325 lib/ui/stdmenus.inc:164
+#: lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:164
 msgid "Bottom Line|B"
 msgstr "Alareuna|#A"
 
-#: lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:165
+#: lib/ui/stdcontext.inc:330 lib/ui/stdmenus.inc:165
 msgid "Left Line|L"
 msgstr "Vasen reuna"
 
-#: lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:166
+#: lib/ui/stdcontext.inc:331 lib/ui/stdmenus.inc:166
 msgid "Right Line|R"
 msgstr "Oikea reuna|#O"
 
-#: lib/ui/stdcontext.inc:339 lib/ui/stdmenus.inc:181
+#: lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:181
 msgid "Copy Row|o"
 msgstr "Kopioi rivi"
 
-#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:186
+#: lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:186
 msgid "Copy Column|p"
 msgstr "Kopioi sarake"
 
@@ -14317,7 +14326,7 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Kirjoitetaanko muutetun tiedoston päälle?"
 
-#: src/Buffer.cpp:835 src/Exporter.cpp:49 src/LyXFunc.cpp:978
+#: src/Buffer.cpp:835 src/Exporter.cpp:49 src/LyXFunc.cpp:980
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1464
 #: src/frontends/qt4/GuiView.cpp:1642
 msgid "&Overwrite"
@@ -14576,14 +14585,14 @@ msgstr ""
 msgid "Document class not found"
 msgstr "Asiakirjaluokka puuttuu"
 
-#: src/BufferParams.cpp:1437 src/LyXFunc.cpp:695
+#: src/BufferParams.cpp:1437 src/LyXFunc.cpp:697
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr ""
 "Asiakirjan %1$s\n"
 "lukeminen epäonnistui"
 
-#: src/BufferParams.cpp:1439 src/LyXFunc.cpp:697
+#: src/BufferParams.cpp:1439 src/LyXFunc.cpp:699
 #, fuzzy
 msgid "Could not load class"
 msgstr "En voinut muuntaa tekstiluokka"
@@ -14714,22 +14723,22 @@ msgstr ""
 msgid "Statistics"
 msgstr "Tila"
 
-#: src/BufferView.cpp:2038
+#: src/BufferView.cpp:2039
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Lisätään asiakirja %1$s..."
 
-#: src/BufferView.cpp:2049
+#: src/BufferView.cpp:2050
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Asiakirja %1$s lisätty."
 
-#: src/BufferView.cpp:2051
+#: src/BufferView.cpp:2052
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Asiakirjaa %1$s ei voi lisätä"
 
-#: src/BufferView.cpp:2279
+#: src/BufferView.cpp:2280
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14737,26 +14746,26 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Asiakirjan %1$s avaaminen epäonnistui."
 
-#: src/BufferView.cpp:2281
+#: src/BufferView.cpp:2282
 msgid "Could not read file"
 msgstr "Ei voitu lukea tiedostoa"
 
-#: src/BufferView.cpp:2288
+#: src/BufferView.cpp:2289
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s ei voitu lukea"
 
-#: src/BufferView.cpp:2289 src/output.cpp:39
+#: src/BufferView.cpp:2290 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Ei voitu avata tiedostoa"
 
-#: src/BufferView.cpp:2296
+#: src/BufferView.cpp:2297
 msgid "Reading not UTF-8 encoded file"
 msgstr "Luen ei-UTF-8-koodattua tiedostoa"
 
-#: src/BufferView.cpp:2297
+#: src/BufferView.cpp:2298
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -15164,7 +15173,7 @@ msgstr "tulostiedosto on tyhjä"
 msgid "An empty output file was generated."
 msgstr "Saatiin tyhjä tulostiedosto."
 
-#: src/CutAndPaste.cpp:539
+#: src/CutAndPaste.cpp:540
 #, fuzzy, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -15173,12 +15182,12 @@ msgstr ""
 "Merkkityyli %1$s on määrittämätön luokkamuunnoksen johdosta \n"
 "luokasta %3$s luokaksi %4$s"
 
-#: src/CutAndPaste.cpp:546
+#: src/CutAndPaste.cpp:547
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "Tekstiupote avattiin"
 
-#: src/Exporter.cpp:44 src/LyXFunc.cpp:974
+#: src/Exporter.cpp:44 src/LyXFunc.cpp:976
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -15188,7 +15197,7 @@ msgstr ""
 "Tiedosto %1$s on jo olemassa.\n"
 "Haluatko kirjoittaa sen päälle?"
 
-#: src/Exporter.cpp:47 src/LyXFunc.cpp:977
+#: src/Exporter.cpp:47 src/LyXFunc.cpp:979
 msgid "Overwrite file?"
 msgstr "Kirjoitetaanko tiedoston päälle?"
 
@@ -15666,7 +15675,7 @@ msgstr "Ei mitään tehtävää"
 msgid "Unknown action"
 msgstr "Tuntematon toiminto"
 
-#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:646
+#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:648
 msgid "Command disabled"
 msgstr "Komento ei käytössä"
 
@@ -15674,16 +15683,16 @@ msgstr "Komento ei käytössä"
 msgid "Command not allowed without any document open"
 msgstr "Komento ei toimi ilman avoinna olevaa asiakirjaa"
 
-#: src/LyXFunc.cpp:631
+#: src/LyXFunc.cpp:633
 msgid "Document is read-only"
 msgstr "Asiakirja on kirjoitussuojattu"
 
-#: src/LyXFunc.cpp:640
+#: src/LyXFunc.cpp:642
 #, fuzzy
 msgid "This portion of the document is deleted."
 msgstr "Asiakirjan tulostus epäonnistui"
 
-#: src/LyXFunc.cpp:659
+#: src/LyXFunc.cpp:661
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -15694,74 +15703,74 @@ msgstr ""
 "\n"
 "Haluatko tallentaa asiakirja?"
 
-#: src/LyXFunc.cpp:662 src/frontends/qt4/GuiView.cpp:1739
+#: src/LyXFunc.cpp:664 src/frontends/qt4/GuiView.cpp:1739
 msgid "Save changed document?"
 msgstr "Tallennetaanko muutunut asiakirja?"
 
-#: src/LyXFunc.cpp:677
+#: src/LyXFunc.cpp:679
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/LyXFunc.cpp:680
+#: src/LyXFunc.cpp:682
 msgid "Print document failed"
 msgstr "Asiakirjan tulostus epäonnistui"
 
-#: src/LyXFunc.cpp:797
+#: src/LyXFunc.cpp:799
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/LyXFunc.cpp:799
+#: src/LyXFunc.cpp:801
 msgid "Revert to saved document?"
 msgstr "Perutaanko kaikki muokkaukset?"
 
-#: src/LyXFunc.cpp:800 src/LyXVC.cpp:160
+#: src/LyXFunc.cpp:802 src/LyXVC.cpp:161
 msgid "&Revert"
 msgstr "Hylkää muutokset"
 
-#: src/LyXFunc.cpp:1014 src/Text3.cpp:1483
+#: src/LyXFunc.cpp:1016 src/Text3.cpp:1483
 msgid "Missing argument"
 msgstr "Argumentti puuttuu"
 
-#: src/LyXFunc.cpp:1023
+#: src/LyXFunc.cpp:1025
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Ohjetiedosto %1$s avautuu..."
 
-#: src/LyXFunc.cpp:1271
+#: src/LyXFunc.cpp:1273
 #, fuzzy, c-format
 msgid "Opening child document %1$s..."
 msgstr "Asiakirja %1$s avautuu..."
 
-#: src/LyXFunc.cpp:1413
+#: src/LyXFunc.cpp:1415
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Asiakirjan oletusasetukset tallennettiin tiedostoon %1$s"
 
-#: src/LyXFunc.cpp:1416
+#: src/LyXFunc.cpp:1418
 msgid "Unable to save document defaults"
 msgstr "En voinut tallentaa asiakirjan oletukset"
 
-#: src/LyXFunc.cpp:1693
+#: src/LyXFunc.cpp:1695
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "Asiakirja %1$s avautui."
 
-#: src/LyXFunc.cpp:1695
+#: src/LyXFunc.cpp:1697
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "Asiakirjan lukeminen epäonnistui"
 
-#: src/LyXFunc.cpp:1732
+#: src/LyXFunc.cpp:1734
 msgid "Welcome to LyX!"
 msgstr "Tervetuloa LyXiin!"
 
-#: src/LyXFunc.cpp:1753
+#: src/LyXFunc.cpp:1755
 msgid "Converting document to new document class..."
 msgstr "Asiakirja muuntuu toiseen asiakirjaluokkaan sopivaksi..."
 
@@ -16318,23 +16327,23 @@ msgstr "Asiakirjan tallentaminen epäonnistui"
 msgid "You must save the document before it can be registered."
 msgstr "Asiakirja on tallennettava ennen kuin sen voi rekisteröidä."
 
-#: src/LyXVC.cpp:117
+#: src/LyXVC.cpp:118
 msgid "LyX VC: Initial description"
 msgstr "LyX VC: Alkuperäinen kuvaus"
 
-#: src/LyXVC.cpp:118
+#: src/LyXVC.cpp:119
 msgid "(no initial description)"
 msgstr "(ei alkuperäistä kuvausta)"
 
-#: src/LyXVC.cpp:133
+#: src/LyXVC.cpp:134
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: Lokiviesti"
 
-#: src/LyXVC.cpp:136
+#: src/LyXVC.cpp:137
 msgid "(no log message)"
 msgstr "(ei lokiviestejä)"
 
-#: src/LyXVC.cpp:156
+#: src/LyXVC.cpp:157
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -16343,7 +16352,7 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr ""
 
-#: src/LyXVC.cpp:159
+#: src/LyXVC.cpp:160
 msgid "Revert to stored version of document?"
 msgstr "Ladataanko levyllä oleva versio muistissa olevan asiakirjan päälle?"
 
@@ -16480,7 +16489,7 @@ msgstr "Ei mitään hakemistossa!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Hakemistoon voi lisätä vain yhden kappaleen!"
 
-#: src/Text3.cpp:173 src/mathed/InsetMathHull.cpp:1456
+#: src/Text3.cpp:173 src/mathed/InsetMathHull.cpp:1462
 msgid "Math editor mode"
 msgstr "Matematiikkaeditoritila"
 
@@ -16537,6 +16546,18 @@ msgid ""
 "Aiksaurus returned the following error:\n"
 "\n"
 "%1$s."
+msgstr ""
+
+#: src/VCBackend.cpp:46
+#, fuzzy
+msgid "Revision control error."
+msgstr "Versiohallinta"
+
+#: src/VCBackend.cpp:47
+#, c-format
+msgid ""
+"Please check you have installed the program called in\n"
+"'%1$s'."
 msgstr ""
 
 #: src/VSpace.cpp:472
@@ -16750,7 +16771,7 @@ msgid "About %1"
 msgstr "LyXistä %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:386
-#: src/frontends/qt4/GuiPrefs.cpp:2466
+#: src/frontends/qt4/GuiPrefs.cpp:2473
 msgid "Preferences"
 msgstr "Asetukset"
 
@@ -17659,38 +17680,38 @@ msgstr "Ohjelmalistausasetukset"
 msgid "No dialect"
 msgstr "Ei murretta"
 
-#: src/frontends/qt4/GuiLog.cpp:103 src/frontends/qt4/GuiLog.cpp:177
+#: src/frontends/qt4/GuiLog.cpp:103 src/frontends/qt4/GuiLog.cpp:180
 msgid "LaTeX Log"
 msgstr "LaTeX-lokitiedosto"
 
-#: src/frontends/qt4/GuiLog.cpp:179
+#: src/frontends/qt4/GuiLog.cpp:182
 #, fuzzy
 msgid "Literate Programming Build Log"
 msgstr "LyX: Literate-ohjelmoinnin käännösloki"
 
-#: src/frontends/qt4/GuiLog.cpp:181
+#: src/frontends/qt4/GuiLog.cpp:184
 #, fuzzy
 msgid "lyx2lyx Error Log"
 msgstr "lyx2lyx -käännöslokitiedostoa ei ole."
 
-#: src/frontends/qt4/GuiLog.cpp:183
+#: src/frontends/qt4/GuiLog.cpp:186
 msgid "Version Control Log"
 msgstr "Versiohallintaloki"
 
-#: src/frontends/qt4/GuiLog.cpp:209
+#: src/frontends/qt4/GuiLog.cpp:212
 msgid "No LaTeX log file found."
 msgstr "LaTeXin lokitiedostoa ei ole."
 
-#: src/frontends/qt4/GuiLog.cpp:212
+#: src/frontends/qt4/GuiLog.cpp:215
 #, fuzzy
 msgid "No literate programming build log file found."
 msgstr "Literate-ohjelmoinnin käännöslokitiedostoa ei löydy."
 
-#: src/frontends/qt4/GuiLog.cpp:215
+#: src/frontends/qt4/GuiLog.cpp:218
 msgid "No lyx2lyx error log file found."
 msgstr "lyx2lyx -käännöslokitiedostoa ei ole."
 
-#: src/frontends/qt4/GuiLog.cpp:218
+#: src/frontends/qt4/GuiLog.cpp:221
 msgid "No version control log file found."
 msgstr "Versionhallintalokitiedostoa ei löytynyt"
 
@@ -17856,7 +17877,7 @@ msgstr ""
 msgid "Printer"
 msgstr "Tulostin"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1876 src/frontends/qt4/GuiPrefs.cpp:2505
+#: src/frontends/qt4/GuiPrefs.cpp:1876 src/frontends/qt4/GuiPrefs.cpp:2512
 msgid "User interface"
 msgstr "Käyttöliittymä"
 
@@ -17880,96 +17901,96 @@ msgstr "&Funktiot"
 msgid "Shortcut"
 msgstr "P&ikanäppäin:"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2109
+#: src/frontends/qt4/GuiPrefs.cpp:2111
 msgid "Cursor, Mouse and Editing functions"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2113
+#: src/frontends/qt4/GuiPrefs.cpp:2115
 #, fuzzy
 msgid "Mathematical Symbols"
 msgstr "Foneettiset merkit"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2117
+#: src/frontends/qt4/GuiPrefs.cpp:2119
 #, fuzzy
 msgid "Document and Window"
 msgstr "Asiakirjan alkuosa virheellinen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2121
+#: src/frontends/qt4/GuiPrefs.cpp:2123
 msgid "Font, Layouts and Textclasses"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2125
+#: src/frontends/qt4/GuiPrefs.cpp:2127
 #, fuzzy
 msgid "System and Miscellaneous"
 msgstr "AMS-sekalaista"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2251 src/frontends/qt4/GuiPrefs.cpp:2318
+#: src/frontends/qt4/GuiPrefs.cpp:2253 src/frontends/qt4/GuiPrefs.cpp:2320
 #, fuzzy
 msgid "Res&tore"
 msgstr "Pala&uta"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2386 src/frontends/qt4/GuiPrefs.cpp:2393
-#: src/frontends/qt4/GuiPrefs.cpp:2400 src/frontends/qt4/GuiPrefs.cpp:2412
+#: src/frontends/qt4/GuiPrefs.cpp:2388 src/frontends/qt4/GuiPrefs.cpp:2395
+#: src/frontends/qt4/GuiPrefs.cpp:2402 src/frontends/qt4/GuiPrefs.cpp:2414
 #, fuzzy
 msgid "Failed to create shortcut"
 msgstr "Hakemiston luominen epäonnistui. Sulkeutuu."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2387
+#: src/frontends/qt4/GuiPrefs.cpp:2389
 #, fuzzy
 msgid "Unknown or invalid LyX function"
 msgstr "Tuntematon funktio."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2394
+#: src/frontends/qt4/GuiPrefs.cpp:2396
 msgid "Invalid or empty key sequence"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2401
+#: src/frontends/qt4/GuiPrefs.cpp:2403
 msgid "Shortcut is already defined"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2413
+#: src/frontends/qt4/GuiPrefs.cpp:2415
 #, fuzzy
 msgid "Can not insert shortcut to the list"
 msgstr "Lisää uusi haara listaan"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2433
+#: src/frontends/qt4/GuiPrefs.cpp:2440
 msgid "Identity"
 msgstr "Kuka olen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2622
+#: src/frontends/qt4/GuiPrefs.cpp:2629
 msgid "Choose bind file"
 msgstr "Valitse pikanäppäintiedosto"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2623
+#: src/frontends/qt4/GuiPrefs.cpp:2630
 msgid "LyX bind files (*.bind)"
 msgstr "LyXin pikanäppäintiedostot (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2629
+#: src/frontends/qt4/GuiPrefs.cpp:2636
 msgid "Choose UI file"
 msgstr "Valitse käyttöliittymätiedosto"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2630
+#: src/frontends/qt4/GuiPrefs.cpp:2637
 #, fuzzy
 msgid "LyX UI files (*.ui)"
 msgstr "*| Kaikki tiedostot (*)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2636
+#: src/frontends/qt4/GuiPrefs.cpp:2643
 msgid "Choose keyboard map"
 msgstr "Valitse näppäinkartta"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2637
+#: src/frontends/qt4/GuiPrefs.cpp:2644
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX-näppäinkarttoja (*.kmap)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2643
+#: src/frontends/qt4/GuiPrefs.cpp:2650
 msgid "Choose personal dictionary"
 msgstr "Valitse oma sanasto"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2644
+#: src/frontends/qt4/GuiPrefs.cpp:2651
 msgid "*.pws"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2644
+#: src/frontends/qt4/GuiPrefs.cpp:2651
 #, fuzzy
 msgid "*.ispell"
 msgstr "ispell"
@@ -19586,7 +19607,7 @@ msgstr "Kova välilyönti|K"
 msgid "Unknown TOC type"
 msgstr "Tuntematon sisällysluettelotyyppi"
 
-#: src/insets/InsetTabular.cpp:3019
+#: src/insets/InsetTabular.cpp:3033
 msgid "Opened table"
 msgstr "Avaa taulukko"
 
@@ -19746,7 +19767,7 @@ msgstr "Merkkijono korvattu."
 msgid " strings have been replaced."
 msgstr " merkkijonoa korvattu."
 
-#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1365
+#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1371
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -19778,25 +19799,25 @@ msgstr "Ei ole vline poistettavana"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Tuntematon taulukon ominaisuus '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1161 src/mathed/InsetMathHull.cpp:1169
+#: src/mathed/InsetMathHull.cpp:1167 src/mathed/InsetMathHull.cpp:1175
 msgid "No number"
 msgstr "Ei numeroa"
 
-#: src/mathed/InsetMathHull.cpp:1161 src/mathed/InsetMathHull.cpp:1169
+#: src/mathed/InsetMathHull.cpp:1167 src/mathed/InsetMathHull.cpp:1175
 msgid "Number"
 msgstr "Numero"
 
-#: src/mathed/InsetMathHull.cpp:1338
+#: src/mathed/InsetMathHull.cpp:1344
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "En voi muuttaa rivien määrä kohteessa '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1348
+#: src/mathed/InsetMathHull.cpp:1354
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "En voi muuttaa sarakkeiden määrä kohteessa '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1358
+#: src/mathed/InsetMathHull.cpp:1364
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "En voi lisätä vaakaviivat kohteeseen '%1$s'"

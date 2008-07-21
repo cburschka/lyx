@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-20 20:48+0200\n"
+"POT-Creation-Date: 2008-07-21 23:07+0200\n"
 "PO-Revision-Date: 2007-07-18 12:08Central Daylight Time\n"
 "Last-Translator: Bo Peng <ben.bob@gmail.com>\n"
 "Language-Team: English <en@translate.freefriends.org>\n"
@@ -73,7 +73,7 @@ msgstr "虚构(&D)"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:38
 #: src/frontends/qt4/ui/ParagraphUi.ui:82 src/frontends/qt4/ui/RefUi.ui:77
-#: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:102
+#: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:105
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/VSpaceUi.ui:36 src/frontends/qt4/ui/WrapUi.ui:150
@@ -85,8 +85,8 @@ msgstr "确认(&O)"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:835
 #: src/Buffer.cpp:2521 src/Buffer.cpp:2545 src/Buffer.cpp:2580
-#: src/LyXFunc.cpp:664 src/LyXFunc.cpp:800 src/LyXFunc.cpp:978
-#: src/LyXVC.cpp:160 src/frontends/qt4/GuiClipboard.cpp:208
+#: src/LyXFunc.cpp:666 src/LyXFunc.cpp:802 src/LyXFunc.cpp:980
+#: src/LyXVC.cpp:161 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1251
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1464
@@ -165,7 +165,7 @@ msgstr "添加(&A)"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/LabelUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:92
-#: src/frontends/qt4/ui/ShortcutUi.ui:115 src/LyXFunc.cpp:770
+#: src/frontends/qt4/ui/ShortcutUi.ui:118 src/LyXFunc.cpp:772
 #: src/buffer_funcs.cpp:104 src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
 msgstr "取消"
@@ -2331,7 +2331,7 @@ msgstr "修改(&M)"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2253 src/frontends/qt4/GuiPrefs.cpp:2338
+#: src/frontends/qt4/GuiPrefs.cpp:2255 src/frontends/qt4/GuiPrefs.cpp:2340
 msgid "Remo&ve"
 msgstr "删除(&V)"
 
@@ -3125,7 +3125,7 @@ msgstr "浏览(&W)..."
 msgid "&User interface file:"
 msgstr "用户界面文件(&U):"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:663
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:665
 #: src/frontends/qt4/GuiView.cpp:1740
 msgid "&Save"
 msgstr "保存(&S)"
@@ -3319,23 +3319,30 @@ msgid "Edit shortcut"
 msgstr "快捷键(&h)"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:31
-msgid "Type shortcut while the cursor is in this field"
+msgid ""
+"Type shortcut after clicking on this field. You can reset the content with "
+"the 'Clear' button"
 msgstr ""
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:41
 msgid "Enter LyX function or command sequence"
 msgstr ""
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:51 src/frontends/qt4/ui/TabularUi.ui:272
+#: src/frontends/qt4/ui/ShortcutUi.ui:51
+#, fuzzy
+msgid "Clear current shortcut"
+msgstr "未能创建目录。退出。"
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:54 src/frontends/qt4/ui/TabularUi.ui:272
 msgid "C&lear"
 msgstr "清除(&l)"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:58
+#: src/frontends/qt4/ui/ShortcutUi.ui:61
 #, fuzzy
 msgid "&Function:"
 msgstr "函数"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:68
+#: src/frontends/qt4/ui/ShortcutUi.ui:71
 #, fuzzy
 msgid "&Shortcut:"
 msgstr "快捷键(&h)"
@@ -9305,7 +9312,8 @@ msgid "Check Out for Edit|O"
 msgstr "调出编辑(O)|O"
 
 #: lib/ui/classic.ui:71 lib/ui/stdmenus.inc:66
-msgid "Revert to Last Version|L"
+#, fuzzy
+msgid "Revert to Repository Version|R"
 msgstr "恢复到以前版本(L)|L"
 
 #: lib/ui/classic.ui:72 lib/ui/stdmenus.inc:67
@@ -9393,7 +9401,7 @@ msgstr "粘贴选择(L)|L"
 msgid "Selection as Paragraphs|P"
 msgstr "粘贴选择为段落(P)|P"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:322 lib/ui/stdmenus.inc:161
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:161
 msgid "Multicolumn|M"
 msgstr "多列(M)|M"
 
@@ -9417,7 +9425,7 @@ msgstr "行右(R)|R"
 msgid "Alignment|i"
 msgstr "对齐(i)|i"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:337 lib/ui/stdmenus.inc:179
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:179
 msgid "Add Row|A"
 msgstr "添加行(A)|A"
 
@@ -9433,7 +9441,7 @@ msgstr "复制行"
 msgid "Swap Rows"
 msgstr "交换行"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:184
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:346 lib/ui/stdmenus.inc:184
 msgid "Add Column|u"
 msgstr "添加列(u)|u"
 
@@ -9449,27 +9457,27 @@ msgstr "复制列"
 msgid "Swap Columns"
 msgstr "交换列"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:171
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:333 lib/ui/stdmenus.inc:171
 msgid "Left|L"
 msgstr "左(L)|L"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:330 lib/ui/stdmenus.inc:172
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:334 lib/ui/stdmenus.inc:172
 msgid "Center|C"
 msgstr "中(C)|C"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:331 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:173
 msgid "Right|R"
 msgstr "右(R)|R"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:333 lib/ui/stdmenus.inc:175
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:337 lib/ui/stdmenus.inc:175
 msgid "Top|T"
 msgstr "上(T)|T"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:334 lib/ui/stdmenus.inc:176
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:338 lib/ui/stdmenus.inc:176
 msgid "Middle|M"
 msgstr "中(N)|N"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:177
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:339 lib/ui/stdmenus.inc:177
 msgid "Bottom|B"
 msgstr "下(B)|B"
 
@@ -9501,7 +9509,7 @@ msgstr "对齐(A)|A"
 msgid "Add Row|R"
 msgstr "添加行(R)|R"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:338 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:180
 msgid "Delete Row|D"
 msgstr "删除"
 
@@ -9509,7 +9517,7 @@ msgstr "删除"
 msgid "Add Column|C"
 msgstr "添加列(C)|C"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:185
 msgid "Delete Column|e"
 msgstr "删除列(e)|e"
 
@@ -10223,9 +10231,9 @@ msgstr "格式化的引用"
 #: lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:125
 #: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:150
 #: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:215
-#: lib/ui/stdcontext.inc:292 lib/ui/stdcontext.inc:300
-#: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:347
-#: lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:458
+#: lib/ui/stdcontext.inc:296 lib/ui/stdcontext.inc:304
+#: lib/ui/stdcontext.inc:316 lib/ui/stdcontext.inc:351
+#: lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:458
 msgid "Settings...|S"
 msgstr "首选项(S)...|S"
 
@@ -10238,18 +10246,19 @@ msgstr ""
 msgid "Edit Database(s) externally...|x"
 msgstr "外部编辑文件"
 
-#: lib/ui/stdcontext.inc:121
+#: lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:292
 #, fuzzy
 msgid "Open Inset|O"
 msgstr "打开所有嵌入项(O)|O"
 
-#: lib/ui/stdcontext.inc:122
+#: lib/ui/stdcontext.inc:122 lib/ui/stdcontext.inc:293
 #, fuzzy
 msgid "Close Inset|C"
 msgstr "关闭使有嵌入项(C)|C"
 
 #: lib/ui/stdcontext.inc:124 lib/ui/stdcontext.inc:130
 #: lib/ui/stdcontext.inc:149 lib/ui/stdcontext.inc:162
+#: lib/ui/stdcontext.inc:295
 #, fuzzy
 msgid "Dissolve Inset|D"
 msgstr "分解嵌入项"
@@ -10599,32 +10608,32 @@ msgstr ""
 msgid "Remove Last Parameter Spitting Out To The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:302 lib/ui/stdcontext.inc:314
+#: lib/ui/stdcontext.inc:306 lib/ui/stdcontext.inc:318
 #, fuzzy
 msgid "Edit externally...|x"
 msgstr "外部编辑文件"
 
-#: lib/ui/stdcontext.inc:324 lib/ui/stdmenus.inc:163
+#: lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:163
 msgid "Top Line|T"
 msgstr "顶部线(T)|T"
 
-#: lib/ui/stdcontext.inc:325 lib/ui/stdmenus.inc:164
+#: lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:164
 msgid "Bottom Line|B"
 msgstr "底部线(B)|B"
 
-#: lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:165
+#: lib/ui/stdcontext.inc:330 lib/ui/stdmenus.inc:165
 msgid "Left Line|L"
 msgstr "左方线(L)|L"
 
-#: lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:166
+#: lib/ui/stdcontext.inc:331 lib/ui/stdmenus.inc:166
 msgid "Right Line|R"
 msgstr "右方线(R)|R"
 
-#: lib/ui/stdcontext.inc:339 lib/ui/stdmenus.inc:181
+#: lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:181
 msgid "Copy Row|o"
 msgstr "复制行(o)|o"
 
-#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:186
+#: lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:186
 msgid "Copy Column|p"
 msgstr "复制列(p)|p"
 
@@ -14252,7 +14261,7 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "覆盖文件吗？"
 
-#: src/Buffer.cpp:835 src/Exporter.cpp:49 src/LyXFunc.cpp:978
+#: src/Buffer.cpp:835 src/Exporter.cpp:49 src/LyXFunc.cpp:980
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1464
 #: src/frontends/qt4/GuiView.cpp:1642
 msgid "&Overwrite"
@@ -14514,7 +14523,7 @@ msgstr ""
 msgid "Document class not found"
 msgstr "未知文档类"
 
-#: src/BufferParams.cpp:1437 src/LyXFunc.cpp:695
+#: src/BufferParams.cpp:1437 src/LyXFunc.cpp:697
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr ""
@@ -14522,7 +14531,7 @@ msgstr ""
 "%1$s\n"
 "could not be read."
 
-#: src/BufferParams.cpp:1439 src/LyXFunc.cpp:697
+#: src/BufferParams.cpp:1439 src/LyXFunc.cpp:699
 #, fuzzy
 msgid "Could not load class"
 msgstr "无法改变文档类"
@@ -14653,22 +14662,22 @@ msgstr ""
 msgid "Statistics"
 msgstr "状态"
 
-#: src/BufferView.cpp:2038
+#: src/BufferView.cpp:2039
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "插入文档 %1$s..."
 
-#: src/BufferView.cpp:2049
+#: src/BufferView.cpp:2050
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文档 %1$s 已插入"
 
-#: src/BufferView.cpp:2051
+#: src/BufferView.cpp:2052
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "无法插入文档 %1$s"
 
-#: src/BufferView.cpp:2279
+#: src/BufferView.cpp:2280
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14679,26 +14688,26 @@ msgstr ""
 "%1$s\n"
 "错误信息: %2$s"
 
-#: src/BufferView.cpp:2281
+#: src/BufferView.cpp:2282
 msgid "Could not read file"
 msgstr "无法读取文件"
 
-#: src/BufferView.cpp:2288
+#: src/BufferView.cpp:2289
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "无法读取 %1$s"
 
-#: src/BufferView.cpp:2289 src/output.cpp:39
+#: src/BufferView.cpp:2290 src/output.cpp:39
 msgid "Could not open file"
 msgstr "无法打开文件"
 
-#: src/BufferView.cpp:2296
+#: src/BufferView.cpp:2297
 msgid "Reading not UTF-8 encoded file"
 msgstr "读入非UTF-8编码的文件"
 
-#: src/BufferView.cpp:2297
+#: src/BufferView.cpp:2298
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -15105,7 +15114,7 @@ msgstr "空白输出"
 msgid "An empty output file was generated."
 msgstr "产生了空白输出"
 
-#: src/CutAndPaste.cpp:539
+#: src/CutAndPaste.cpp:540
 #, fuzzy, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -15114,12 +15123,12 @@ msgstr ""
 "Character style %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 
-#: src/CutAndPaste.cpp:546
+#: src/CutAndPaste.cpp:547
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "打开的文本嵌入项"
 
-#: src/Exporter.cpp:44 src/LyXFunc.cpp:974
+#: src/Exporter.cpp:44 src/LyXFunc.cpp:976
 #, fuzzy, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -15129,7 +15138,7 @@ msgstr ""
 "文件 %1 已经存在\n"
 "您要覆盖它吗？"
 
-#: src/Exporter.cpp:47 src/LyXFunc.cpp:977
+#: src/Exporter.cpp:47 src/LyXFunc.cpp:979
 msgid "Overwrite file?"
 msgstr "覆盖文件吗？"
 
@@ -15601,7 +15610,7 @@ msgstr "无操作"
 msgid "Unknown action"
 msgstr "未知操作"
 
-#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:646
+#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:648
 msgid "Command disabled"
 msgstr "被禁止命令"
 
@@ -15609,15 +15618,15 @@ msgstr "被禁止命令"
 msgid "Command not allowed without any document open"
 msgstr "此命令在没有任何打开文档下不能执行"
 
-#: src/LyXFunc.cpp:631
+#: src/LyXFunc.cpp:633
 msgid "Document is read-only"
 msgstr "文档只读"
 
-#: src/LyXFunc.cpp:640
+#: src/LyXFunc.cpp:642
 msgid "This portion of the document is deleted."
 msgstr "此段文档已被删除"
 
-#: src/LyXFunc.cpp:659
+#: src/LyXFunc.cpp:661
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -15628,11 +15637,11 @@ msgstr ""
 "\n"
 "您希望保存文档吗?"
 
-#: src/LyXFunc.cpp:662 src/frontends/qt4/GuiView.cpp:1739
+#: src/LyXFunc.cpp:664 src/frontends/qt4/GuiView.cpp:1739
 msgid "Save changed document?"
 msgstr "保存改变的文档?"
 
-#: src/LyXFunc.cpp:677
+#: src/LyXFunc.cpp:679
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -15641,63 +15650,63 @@ msgstr ""
 "无法打印文档 %1$s.\n"
 "请检查打印机是否设置正确."
 
-#: src/LyXFunc.cpp:680
+#: src/LyXFunc.cpp:682
 msgid "Print document failed"
 msgstr "打印文件失败"
 
-#: src/LyXFunc.cpp:797
+#: src/LyXFunc.cpp:799
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr "任何改变将被遗失. 您确定希望恢复 文件 %1$s 到磁盘上保存的版本吗?"
 
-#: src/LyXFunc.cpp:799
+#: src/LyXFunc.cpp:801
 msgid "Revert to saved document?"
 msgstr "使用磁盘上文档?"
 
-#: src/LyXFunc.cpp:800 src/LyXVC.cpp:160
+#: src/LyXFunc.cpp:802 src/LyXVC.cpp:161
 msgid "&Revert"
 msgstr "还原(&R)"
 
-#: src/LyXFunc.cpp:1014 src/Text3.cpp:1483
+#: src/LyXFunc.cpp:1016 src/Text3.cpp:1483
 msgid "Missing argument"
 msgstr "缺失参数"
 
-#: src/LyXFunc.cpp:1023
+#: src/LyXFunc.cpp:1025
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "打开帮助文件 %1$s..."
 
-#: src/LyXFunc.cpp:1271
+#: src/LyXFunc.cpp:1273
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "打开子文档 %1$s..."
 
-#: src/LyXFunc.cpp:1413
+#: src/LyXFunc.cpp:1415
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "文档缺省设置保存至 %1$s"
 
-#: src/LyXFunc.cpp:1416
+#: src/LyXFunc.cpp:1418
 msgid "Unable to save document defaults"
 msgstr "无法保存文档缺省设置"
 
-#: src/LyXFunc.cpp:1693
+#: src/LyXFunc.cpp:1695
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "文档 %1$s 已打开"
 
-#: src/LyXFunc.cpp:1695
+#: src/LyXFunc.cpp:1697
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "无法读取文档"
 
-#: src/LyXFunc.cpp:1732
+#: src/LyXFunc.cpp:1734
 msgid "Welcome to LyX!"
 msgstr "欢迎使用LyX!"
 
-#: src/LyXFunc.cpp:1753
+#: src/LyXFunc.cpp:1755
 msgid "Converting document to new document class..."
 msgstr "转换文档至新文档类..."
 
@@ -16254,23 +16263,23 @@ msgstr "未保存文档"
 msgid "You must save the document before it can be registered."
 msgstr "在登记前您必须保存文件"
 
-#: src/LyXVC.cpp:117
+#: src/LyXVC.cpp:118
 msgid "LyX VC: Initial description"
 msgstr "LyX VC: 初始描述"
 
-#: src/LyXVC.cpp:118
+#: src/LyXVC.cpp:119
 msgid "(no initial description)"
 msgstr "(无初始描述)"
 
-#: src/LyXVC.cpp:133
+#: src/LyXVC.cpp:134
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: 记录消息"
 
-#: src/LyXVC.cpp:136
+#: src/LyXVC.cpp:137
 msgid "(no log message)"
 msgstr "(无log消息)"
 
-#: src/LyXVC.cpp:156
+#: src/LyXVC.cpp:157
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -16282,7 +16291,7 @@ msgstr ""
 "\n"
 "您确信使用保存的版本吗?"
 
-#: src/LyXVC.cpp:159
+#: src/LyXVC.cpp:160
 msgid "Revert to stored version of document?"
 msgstr "使用保存的版本吗?"
 
@@ -16421,7 +16430,7 @@ msgstr "无索引项!"
 msgid "Cannot index more than one paragraph!"
 msgstr "无法索引多于一段落"
 
-#: src/Text3.cpp:173 src/mathed/InsetMathHull.cpp:1456
+#: src/Text3.cpp:173 src/mathed/InsetMathHull.cpp:1462
 msgid "Math editor mode"
 msgstr "Math editor mode"
 
@@ -16482,6 +16491,18 @@ msgstr ""
 "Aiksaurus返回如下错误:\n"
 "\n"
 "%1$s."
+
+#: src/VCBackend.cpp:46
+#, fuzzy
+msgid "Revision control error."
+msgstr "版本控制"
+
+#: src/VCBackend.cpp:47
+#, c-format
+msgid ""
+"Please check you have installed the program called in\n"
+"'%1$s'."
+msgstr ""
 
 #: src/VSpace.cpp:472
 msgid "Default skip"
@@ -16696,7 +16717,7 @@ msgid "About %1"
 msgstr "关于LyX"
 
 #: src/frontends/qt4/GuiApplication.cpp:386
-#: src/frontends/qt4/GuiPrefs.cpp:2466
+#: src/frontends/qt4/GuiPrefs.cpp:2473
 msgid "Preferences"
 msgstr "首选项"
 
@@ -17581,35 +17602,35 @@ msgstr "程序列表设置"
 msgid "No dialect"
 msgstr "无方言"
 
-#: src/frontends/qt4/GuiLog.cpp:103 src/frontends/qt4/GuiLog.cpp:177
+#: src/frontends/qt4/GuiLog.cpp:103 src/frontends/qt4/GuiLog.cpp:180
 msgid "LaTeX Log"
 msgstr "LaTeX 记录"
 
-#: src/frontends/qt4/GuiLog.cpp:179
+#: src/frontends/qt4/GuiLog.cpp:182
 msgid "Literate Programming Build Log"
 msgstr "Literate Programming Build Log"
 
-#: src/frontends/qt4/GuiLog.cpp:181
+#: src/frontends/qt4/GuiLog.cpp:184
 msgid "lyx2lyx Error Log"
 msgstr "lyx2lyx出错信息"
 
-#: src/frontends/qt4/GuiLog.cpp:183
+#: src/frontends/qt4/GuiLog.cpp:186
 msgid "Version Control Log"
 msgstr "版本控制记录"
 
-#: src/frontends/qt4/GuiLog.cpp:209
+#: src/frontends/qt4/GuiLog.cpp:212
 msgid "No LaTeX log file found."
 msgstr "无法找到LaTeX记录文件"
 
-#: src/frontends/qt4/GuiLog.cpp:212
+#: src/frontends/qt4/GuiLog.cpp:215
 msgid "No literate programming build log file found."
 msgstr "No literate programming build log file found."
 
-#: src/frontends/qt4/GuiLog.cpp:215
+#: src/frontends/qt4/GuiLog.cpp:218
 msgid "No lyx2lyx error log file found."
 msgstr "无法找到lyx2lyx出错信息文件"
 
-#: src/frontends/qt4/GuiLog.cpp:218
+#: src/frontends/qt4/GuiLog.cpp:221
 msgid "No version control log file found."
 msgstr "无法找到版本控制记录"
 
@@ -17777,7 +17798,7 @@ msgstr ""
 msgid "Printer"
 msgstr "打印机"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1876 src/frontends/qt4/GuiPrefs.cpp:2505
+#: src/frontends/qt4/GuiPrefs.cpp:1876 src/frontends/qt4/GuiPrefs.cpp:2512
 msgid "User interface"
 msgstr "用户界面"
 
@@ -17801,95 +17822,95 @@ msgstr "函数"
 msgid "Shortcut"
 msgstr "快捷键(&h)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2109
+#: src/frontends/qt4/GuiPrefs.cpp:2111
 msgid "Cursor, Mouse and Editing functions"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2113
+#: src/frontends/qt4/GuiPrefs.cpp:2115
 #, fuzzy
 msgid "Mathematical Symbols"
 msgstr "音标(y)|y"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2117
+#: src/frontends/qt4/GuiPrefs.cpp:2119
 #, fuzzy
 msgid "Document and Window"
 msgstr "文档头出错"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2121
+#: src/frontends/qt4/GuiPrefs.cpp:2123
 msgid "Font, Layouts and Textclasses"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2125
+#: src/frontends/qt4/GuiPrefs.cpp:2127
 #, fuzzy
 msgid "System and Miscellaneous"
 msgstr "AMS Miscellaneous"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2251 src/frontends/qt4/GuiPrefs.cpp:2318
+#: src/frontends/qt4/GuiPrefs.cpp:2253 src/frontends/qt4/GuiPrefs.cpp:2320
 #, fuzzy
 msgid "Res&tore"
 msgstr "恢复(&R)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2386 src/frontends/qt4/GuiPrefs.cpp:2393
-#: src/frontends/qt4/GuiPrefs.cpp:2400 src/frontends/qt4/GuiPrefs.cpp:2412
+#: src/frontends/qt4/GuiPrefs.cpp:2388 src/frontends/qt4/GuiPrefs.cpp:2395
+#: src/frontends/qt4/GuiPrefs.cpp:2402 src/frontends/qt4/GuiPrefs.cpp:2414
 #, fuzzy
 msgid "Failed to create shortcut"
 msgstr "未能创建目录。退出。"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2387
+#: src/frontends/qt4/GuiPrefs.cpp:2389
 #, fuzzy
 msgid "Unknown or invalid LyX function"
 msgstr "未知函数"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2394
+#: src/frontends/qt4/GuiPrefs.cpp:2396
 msgid "Invalid or empty key sequence"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2401
+#: src/frontends/qt4/GuiPrefs.cpp:2403
 msgid "Shortcut is already defined"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2413
+#: src/frontends/qt4/GuiPrefs.cpp:2415
 #, fuzzy
 msgid "Can not insert shortcut to the list"
 msgstr "添加分支"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2433
+#: src/frontends/qt4/GuiPrefs.cpp:2440
 msgid "Identity"
 msgstr "身份"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2622
+#: src/frontends/qt4/GuiPrefs.cpp:2629
 msgid "Choose bind file"
 msgstr "选择快捷键文件"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2623
+#: src/frontends/qt4/GuiPrefs.cpp:2630
 msgid "LyX bind files (*.bind)"
 msgstr "LyX快捷键文件 (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2629
+#: src/frontends/qt4/GuiPrefs.cpp:2636
 msgid "Choose UI file"
 msgstr "选择用户界面文件"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2630
+#: src/frontends/qt4/GuiPrefs.cpp:2637
 msgid "LyX UI files (*.ui)"
 msgstr "LyX用户界面文件 (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2636
+#: src/frontends/qt4/GuiPrefs.cpp:2643
 msgid "Choose keyboard map"
 msgstr "选择键盘映射"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2637
+#: src/frontends/qt4/GuiPrefs.cpp:2644
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX键盘映射 (*.kmap)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2643
+#: src/frontends/qt4/GuiPrefs.cpp:2650
 msgid "Choose personal dictionary"
 msgstr "选择用户目录"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2644
+#: src/frontends/qt4/GuiPrefs.cpp:2651
 msgid "*.pws"
 msgstr "*.pws"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2644
+#: src/frontends/qt4/GuiPrefs.cpp:2651
 msgid "*.ispell"
 msgstr "*.ispell"
 
@@ -19515,7 +19536,7 @@ msgstr "Protected Space|r"
 msgid "Unknown TOC type"
 msgstr "未知目录项"
 
-#: src/insets/InsetTabular.cpp:3019
+#: src/insets/InsetTabular.cpp:3033
 msgid "Opened table"
 msgstr "打开的表格"
 
@@ -19675,7 +19696,7 @@ msgstr "词语已被更新。"
 msgid " strings have been replaced."
 msgstr "词语已被更新。"
 
-#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1365
+#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1371
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -19707,25 +19728,25 @@ msgstr "没有vline"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "未知表格功能 '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1161 src/mathed/InsetMathHull.cpp:1169
+#: src/mathed/InsetMathHull.cpp:1167 src/mathed/InsetMathHull.cpp:1175
 msgid "No number"
 msgstr "无编号"
 
-#: src/mathed/InsetMathHull.cpp:1161 src/mathed/InsetMathHull.cpp:1169
+#: src/mathed/InsetMathHull.cpp:1167 src/mathed/InsetMathHull.cpp:1175
 msgid "Number"
 msgstr "编号"
 
-#: src/mathed/InsetMathHull.cpp:1338
+#: src/mathed/InsetMathHull.cpp:1344
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "无法改变行数至 '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1348
+#: src/mathed/InsetMathHull.cpp:1354
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "无法改变列数至 '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1358
+#: src/mathed/InsetMathHull.cpp:1364
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "无法向 '%1$s'添加水平网格线"

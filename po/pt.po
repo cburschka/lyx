@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-20 20:48+0200\n"
+"POT-Creation-Date: 2008-07-21 23:07+0200\n"
 "PO-Revision-Date: 2008-02-15 12:10+0000\n"
 "Last-Translator: Susana Barbosa <susana.barbosa@fc.up.pt>\n"
 "Language-Team:  <en@li.org>\n"
@@ -76,7 +76,7 @@ msgstr "Teste"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:38
 #: src/frontends/qt4/ui/ParagraphUi.ui:82 src/frontends/qt4/ui/RefUi.ui:77
-#: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:102
+#: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:105
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/VSpaceUi.ui:36 src/frontends/qt4/ui/WrapUi.ui:150
@@ -88,8 +88,8 @@ msgstr "OK"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:835
 #: src/Buffer.cpp:2521 src/Buffer.cpp:2545 src/Buffer.cpp:2580
-#: src/LyXFunc.cpp:664 src/LyXFunc.cpp:800 src/LyXFunc.cpp:978
-#: src/LyXVC.cpp:160 src/frontends/qt4/GuiClipboard.cpp:208
+#: src/LyXFunc.cpp:666 src/LyXFunc.cpp:802 src/LyXFunc.cpp:980
+#: src/LyXVC.cpp:161 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1251
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1464
@@ -168,7 +168,7 @@ msgstr "Adicionar"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/LabelUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:92
-#: src/frontends/qt4/ui/ShortcutUi.ui:115 src/LyXFunc.cpp:770
+#: src/frontends/qt4/ui/ShortcutUi.ui:118 src/LyXFunc.cpp:772
 #: src/buffer_funcs.cpp:104 src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
 msgstr "Cancelar"
@@ -2343,7 +2343,7 @@ msgstr "Modificar"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2253 src/frontends/qt4/GuiPrefs.cpp:2338
+#: src/frontends/qt4/GuiPrefs.cpp:2255 src/frontends/qt4/GuiPrefs.cpp:2340
 msgid "Remo&ve"
 msgstr "Remover"
 
@@ -3143,7 +3143,7 @@ msgstr "Navegar...|#B"
 msgid "&User interface file:"
 msgstr "Ficheiro de interface com o utilizador:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:663
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:665
 #: src/frontends/qt4/GuiView.cpp:1740
 msgid "&Save"
 msgstr "Guardar"
@@ -3338,23 +3338,30 @@ msgid "Edit shortcut"
 msgstr "Atalho:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:31
-msgid "Type shortcut while the cursor is in this field"
+msgid ""
+"Type shortcut after clicking on this field. You can reset the content with "
+"the 'Clear' button"
 msgstr ""
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:41
 msgid "Enter LyX function or command sequence"
 msgstr ""
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:51 src/frontends/qt4/ui/TabularUi.ui:272
+#: src/frontends/qt4/ui/ShortcutUi.ui:51
+#, fuzzy
+msgid "Clear current shortcut"
+msgstr "A criação de pasta falhou. A sair."
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:54 src/frontends/qt4/ui/TabularUi.ui:272
 msgid "C&lear"
 msgstr "Limpar"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:58
+#: src/frontends/qt4/ui/ShortcutUi.ui:61
 #, fuzzy
 msgid "&Function:"
 msgstr "Funções"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:68
+#: src/frontends/qt4/ui/ShortcutUi.ui:71
 #, fuzzy
 msgid "&Shortcut:"
 msgstr "Atalho:"
@@ -9342,7 +9349,8 @@ msgid "Check Out for Edit|O"
 msgstr ""
 
 #: lib/ui/classic.ui:71 lib/ui/stdmenus.inc:66
-msgid "Revert to Last Version|L"
+#, fuzzy
+msgid "Revert to Repository Version|R"
 msgstr "Reverter para Última Versão"
 
 #: lib/ui/classic.ui:72 lib/ui/stdmenus.inc:67
@@ -9430,7 +9438,7 @@ msgstr "Selecção como Linhas"
 msgid "Selection as Paragraphs|P"
 msgstr "Selecção como Parágrafos"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:322 lib/ui/stdmenus.inc:161
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:161
 msgid "Multicolumn|M"
 msgstr "Multicoluna"
 
@@ -9454,7 +9462,7 @@ msgstr "Linha Direita"
 msgid "Alignment|i"
 msgstr "Alinhamento"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:337 lib/ui/stdmenus.inc:179
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:179
 msgid "Add Row|A"
 msgstr "Adicionar Linha"
 
@@ -9470,7 +9478,7 @@ msgstr "Copiar Linha"
 msgid "Swap Rows"
 msgstr "Trocar Linhas"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:184
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:346 lib/ui/stdmenus.inc:184
 msgid "Add Column|u"
 msgstr "Adicionar Coluna"
 
@@ -9486,27 +9494,27 @@ msgstr "Copiar Coluna"
 msgid "Swap Columns"
 msgstr "Trocar Colunas"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:171
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:333 lib/ui/stdmenus.inc:171
 msgid "Left|L"
 msgstr "Esquerda"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:330 lib/ui/stdmenus.inc:172
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:334 lib/ui/stdmenus.inc:172
 msgid "Center|C"
 msgstr "Centro"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:331 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:173
 msgid "Right|R"
 msgstr "Direita"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:333 lib/ui/stdmenus.inc:175
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:337 lib/ui/stdmenus.inc:175
 msgid "Top|T"
 msgstr "Topo"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:334 lib/ui/stdmenus.inc:176
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:338 lib/ui/stdmenus.inc:176
 msgid "Middle|M"
 msgstr "Meio"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:177
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:339 lib/ui/stdmenus.inc:177
 msgid "Bottom|B"
 msgstr "Fundo"
 
@@ -9538,7 +9546,7 @@ msgstr "Alinhamento"
 msgid "Add Row|R"
 msgstr "Adicionar Linha"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:338 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:180
 msgid "Delete Row|D"
 msgstr "Remover Linha"
 
@@ -9546,7 +9554,7 @@ msgstr "Remover Linha"
 msgid "Add Column|C"
 msgstr "Adicionar Coluna"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:185
 msgid "Delete Column|e"
 msgstr "Remover Coluna"
 
@@ -10264,9 +10272,9 @@ msgstr "Referência formatada"
 #: lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:125
 #: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:150
 #: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:215
-#: lib/ui/stdcontext.inc:292 lib/ui/stdcontext.inc:300
-#: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:347
-#: lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:458
+#: lib/ui/stdcontext.inc:296 lib/ui/stdcontext.inc:304
+#: lib/ui/stdcontext.inc:316 lib/ui/stdcontext.inc:351
+#: lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:458
 msgid "Settings...|S"
 msgstr "Configurações..."
 
@@ -10279,18 +10287,19 @@ msgstr ""
 msgid "Edit Database(s) externally...|x"
 msgstr "Editar o ficheiro externamente"
 
-#: lib/ui/stdcontext.inc:121
+#: lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:292
 #, fuzzy
 msgid "Open Inset|O"
 msgstr "Abrir Todos os Insertos"
 
-#: lib/ui/stdcontext.inc:122
+#: lib/ui/stdcontext.inc:122 lib/ui/stdcontext.inc:293
 #, fuzzy
 msgid "Close Inset|C"
 msgstr "Fechar Todos os Insertos"
 
 #: lib/ui/stdcontext.inc:124 lib/ui/stdcontext.inc:130
 #: lib/ui/stdcontext.inc:149 lib/ui/stdcontext.inc:162
+#: lib/ui/stdcontext.inc:295
 #, fuzzy
 msgid "Dissolve Inset|D"
 msgstr "Desintegrar Inserto"
@@ -10640,32 +10649,32 @@ msgstr ""
 msgid "Remove Last Parameter Spitting Out To The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:302 lib/ui/stdcontext.inc:314
+#: lib/ui/stdcontext.inc:306 lib/ui/stdcontext.inc:318
 #, fuzzy
 msgid "Edit externally...|x"
 msgstr "Editar o ficheiro externamente"
 
-#: lib/ui/stdcontext.inc:324 lib/ui/stdmenus.inc:163
+#: lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:163
 msgid "Top Line|T"
 msgstr "Linha de Topo"
 
-#: lib/ui/stdcontext.inc:325 lib/ui/stdmenus.inc:164
+#: lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:164
 msgid "Bottom Line|B"
 msgstr "Linha de Fundo"
 
-#: lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:165
+#: lib/ui/stdcontext.inc:330 lib/ui/stdmenus.inc:165
 msgid "Left Line|L"
 msgstr "Linha Esquerda"
 
-#: lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:166
+#: lib/ui/stdcontext.inc:331 lib/ui/stdmenus.inc:166
 msgid "Right Line|R"
 msgstr "Linha Direita"
 
-#: lib/ui/stdcontext.inc:339 lib/ui/stdmenus.inc:181
+#: lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:181
 msgid "Copy Row|o"
 msgstr "Copiar Linha"
 
-#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:186
+#: lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:186
 msgid "Copy Column|p"
 msgstr "Copiar Coluna"
 
@@ -14659,7 +14668,7 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Escrever por cima do ficheiro?"
 
-#: src/Buffer.cpp:835 src/Exporter.cpp:49 src/LyXFunc.cpp:978
+#: src/Buffer.cpp:835 src/Exporter.cpp:49 src/LyXFunc.cpp:980
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1464
 #: src/frontends/qt4/GuiView.cpp:1642
 msgid "&Overwrite"
@@ -14922,7 +14931,7 @@ msgstr ""
 msgid "Document class not found"
 msgstr "Classe de documento inválida"
 
-#: src/BufferParams.cpp:1437 src/LyXFunc.cpp:695
+#: src/BufferParams.cpp:1437 src/LyXFunc.cpp:697
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr ""
@@ -14930,7 +14939,7 @@ msgstr ""
 "%1$s\n"
 "não pôde ser lido."
 
-#: src/BufferParams.cpp:1439 src/LyXFunc.cpp:697
+#: src/BufferParams.cpp:1439 src/LyXFunc.cpp:699
 #, fuzzy
 msgid "Could not load class"
 msgstr "Não é possível alterar classe"
@@ -15061,22 +15070,22 @@ msgstr ""
 msgid "Statistics"
 msgstr "Estado"
 
-#: src/BufferView.cpp:2038
+#: src/BufferView.cpp:2039
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "A inserir documento %1$s..."
 
-#: src/BufferView.cpp:2049
+#: src/BufferView.cpp:2050
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Documento %1$s inserido."
 
-#: src/BufferView.cpp:2051
+#: src/BufferView.cpp:2052
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Não é possível inserir documento %1$s"
 
-#: src/BufferView.cpp:2279
+#: src/BufferView.cpp:2280
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15087,26 +15096,26 @@ msgstr ""
 "%1$s\n"
 "devido ao erro: %2$s"
 
-#: src/BufferView.cpp:2281
+#: src/BufferView.cpp:2282
 msgid "Could not read file"
 msgstr "Não foi possível ler ficheiro"
 
-#: src/BufferView.cpp:2288
+#: src/BufferView.cpp:2289
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s não pôde ser lido."
 
-#: src/BufferView.cpp:2289 src/output.cpp:39
+#: src/BufferView.cpp:2290 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Não foi possível abrir ficheiro"
 
-#: src/BufferView.cpp:2296
+#: src/BufferView.cpp:2297
 msgid "Reading not UTF-8 encoded file"
 msgstr "A ler ficheiro sem codificação UTF-8"
 
-#: src/BufferView.cpp:2297
+#: src/BufferView.cpp:2298
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -15515,7 +15524,7 @@ msgstr "Resultado é vazio"
 msgid "An empty output file was generated."
 msgstr "Foi gerado um ficheiro de sáida vazio."
 
-#: src/CutAndPaste.cpp:539
+#: src/CutAndPaste.cpp:540
 #, fuzzy, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -15524,12 +15533,12 @@ msgstr ""
 "Estilo de caracter %1$s é indefinido por causa da conversão de classe de\n"
 "%2$s para %3$s"
 
-#: src/CutAndPaste.cpp:546
+#: src/CutAndPaste.cpp:547
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "Inserto Texto Aberto"
 
-#: src/Exporter.cpp:44 src/LyXFunc.cpp:974
+#: src/Exporter.cpp:44 src/LyXFunc.cpp:976
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -15540,7 +15549,7 @@ msgstr ""
 "\n"
 "Quer escrever por cima desse ficheiro?"
 
-#: src/Exporter.cpp:47 src/LyXFunc.cpp:977
+#: src/Exporter.cpp:47 src/LyXFunc.cpp:979
 msgid "Overwrite file?"
 msgstr "Escrever por cima do ficheiro?"
 
@@ -16019,7 +16028,7 @@ msgstr "Nada a fazer"
 msgid "Unknown action"
 msgstr "Aï¿½ï¿½o desconhecida"
 
-#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:646
+#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:648
 msgid "Command disabled"
 msgstr "Comando desactivado"
 
@@ -16027,15 +16036,15 @@ msgstr "Comando desactivado"
 msgid "Command not allowed without any document open"
 msgstr "Comando nï¿½o permitido sem nenhum documento aberto"
 
-#: src/LyXFunc.cpp:631
+#: src/LyXFunc.cpp:633
 msgid "Document is read-only"
 msgstr "O documento ï¿½ apenas para leitura"
 
-#: src/LyXFunc.cpp:640
+#: src/LyXFunc.cpp:642
 msgid "This portion of the document is deleted."
 msgstr "Esta parte do documento é apagada."
 
-#: src/LyXFunc.cpp:659
+#: src/LyXFunc.cpp:661
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -16046,11 +16055,11 @@ msgstr ""
 "\n"
 "Quer guardar o documento?"
 
-#: src/LyXFunc.cpp:662 src/frontends/qt4/GuiView.cpp:1739
+#: src/LyXFunc.cpp:664 src/frontends/qt4/GuiView.cpp:1739
 msgid "Save changed document?"
 msgstr "Guardar documento alterado?"
 
-#: src/LyXFunc.cpp:677
+#: src/LyXFunc.cpp:679
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -16059,11 +16068,11 @@ msgstr ""
 "Não é possível imprimir o documento %1$s.\n"
 "Verifique se a sua impressora está configurada correctamente."
 
-#: src/LyXFunc.cpp:680
+#: src/LyXFunc.cpp:682
 msgid "Print document failed"
 msgstr "A impressão do documento falhou"
 
-#: src/LyXFunc.cpp:797
+#: src/LyXFunc.cpp:799
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -16072,52 +16081,52 @@ msgstr ""
 "Quaisquer alterações serão perdidas. Tem a certeza de que quer voltar à "
 "versão guardada do documento %1$s?"
 
-#: src/LyXFunc.cpp:799
+#: src/LyXFunc.cpp:801
 msgid "Revert to saved document?"
 msgstr "Voltar para o documento guardado?"
 
-#: src/LyXFunc.cpp:800 src/LyXVC.cpp:160
+#: src/LyXFunc.cpp:802 src/LyXVC.cpp:161
 msgid "&Revert"
 msgstr "Reverter"
 
-#: src/LyXFunc.cpp:1014 src/Text3.cpp:1483
+#: src/LyXFunc.cpp:1016 src/Text3.cpp:1483
 msgid "Missing argument"
 msgstr "Falta argumento"
 
-#: src/LyXFunc.cpp:1023
+#: src/LyXFunc.cpp:1025
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "A abrir ficheiro de ajuda %1$s..."
 
-#: src/LyXFunc.cpp:1271
+#: src/LyXFunc.cpp:1273
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "A abrir documento filho %1$s..."
 
-#: src/LyXFunc.cpp:1413
+#: src/LyXFunc.cpp:1415
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Pré-definições do documento guardadas em %1$s"
 
-#: src/LyXFunc.cpp:1416
+#: src/LyXFunc.cpp:1418
 msgid "Unable to save document defaults"
 msgstr "Não é possível guardar pré-definições do documento"
 
-#: src/LyXFunc.cpp:1693
+#: src/LyXFunc.cpp:1695
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "Documento %1$s aberto."
 
-#: src/LyXFunc.cpp:1695
+#: src/LyXFunc.cpp:1697
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "Não é possível ler documento"
 
-#: src/LyXFunc.cpp:1732
+#: src/LyXFunc.cpp:1734
 msgid "Welcome to LyX!"
 msgstr "Bem-Vindo ao LyX!"
 
-#: src/LyXFunc.cpp:1753
+#: src/LyXFunc.cpp:1755
 msgid "Converting document to new document class..."
 msgstr "Convertendo o documento para a nova classe de documento..."
 
@@ -16700,23 +16709,23 @@ msgstr "Documento não guardado"
 msgid "You must save the document before it can be registered."
 msgstr "Deve guardar o documento antes que este possa ser registado."
 
-#: src/LyXVC.cpp:117
+#: src/LyXVC.cpp:118
 msgid "LyX VC: Initial description"
 msgstr "LyX VC: Descrição inicial"
 
-#: src/LyXVC.cpp:118
+#: src/LyXVC.cpp:119
 msgid "(no initial description)"
 msgstr "(sem descripção inicial)"
 
-#: src/LyXVC.cpp:133
+#: src/LyXVC.cpp:134
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: Mensagem de registro"
 
-#: src/LyXVC.cpp:136
+#: src/LyXVC.cpp:137
 msgid "(no log message)"
 msgstr "(sem mensagem de registo)"
 
-#: src/LyXVC.cpp:156
+#: src/LyXVC.cpp:157
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -16729,7 +16738,7 @@ msgstr ""
 "\n"
 "Quer voltar à versão guardada?"
 
-#: src/LyXVC.cpp:159
+#: src/LyXVC.cpp:160
 msgid "Revert to stored version of document?"
 msgstr "Voltar à versão armazenada do documento?"
 
@@ -16873,7 +16882,7 @@ msgstr "Nada para o índice remissivo!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Não é possível indexar mais do que um parágrafo!"
 
-#: src/Text3.cpp:173 src/mathed/InsetMathHull.cpp:1456
+#: src/Text3.cpp:173 src/mathed/InsetMathHull.cpp:1462
 msgid "Math editor mode"
 msgstr "Modo editor matemï¿½tico"
 
@@ -16934,6 +16943,18 @@ msgstr ""
 "Aiksaurus indicou o seguinte erro:\n"
 "\n"
 "%1$s."
+
+#: src/VCBackend.cpp:46
+#, fuzzy
+msgid "Revision control error."
+msgstr "Controle de Versão"
+
+#: src/VCBackend.cpp:47
+#, c-format
+msgid ""
+"Please check you have installed the program called in\n"
+"'%1$s'."
+msgstr ""
 
 #: src/VSpace.cpp:472
 msgid "Default skip"
@@ -17152,7 +17173,7 @@ msgid "About %1"
 msgstr "Acerca do LyX"
 
 #: src/frontends/qt4/GuiApplication.cpp:386
-#: src/frontends/qt4/GuiPrefs.cpp:2466
+#: src/frontends/qt4/GuiPrefs.cpp:2473
 msgid "Preferences"
 msgstr "Preferências"
 
@@ -18051,37 +18072,37 @@ msgstr "Configurações de Listagem de Programa"
 msgid "No dialect"
 msgstr "Dialecto inexistente"
 
-#: src/frontends/qt4/GuiLog.cpp:103 src/frontends/qt4/GuiLog.cpp:177
+#: src/frontends/qt4/GuiLog.cpp:103 src/frontends/qt4/GuiLog.cpp:180
 msgid "LaTeX Log"
 msgstr "Registo LaTex"
 
-#: src/frontends/qt4/GuiLog.cpp:179
+#: src/frontends/qt4/GuiLog.cpp:182
 #, fuzzy
 msgid "Literate Programming Build Log"
 msgstr "Registo de Compilação de Programação Literal"
 
-#: src/frontends/qt4/GuiLog.cpp:181
+#: src/frontends/qt4/GuiLog.cpp:184
 msgid "lyx2lyx Error Log"
 msgstr "Registo de erros lyx2lyx"
 
-#: src/frontends/qt4/GuiLog.cpp:183
+#: src/frontends/qt4/GuiLog.cpp:186
 msgid "Version Control Log"
 msgstr "Registo do Controlo de Versão"
 
-#: src/frontends/qt4/GuiLog.cpp:209
+#: src/frontends/qt4/GuiLog.cpp:212
 msgid "No LaTeX log file found."
 msgstr "Ficheiro de registo LaTeX não encontrado."
 
-#: src/frontends/qt4/GuiLog.cpp:212
+#: src/frontends/qt4/GuiLog.cpp:215
 msgid "No literate programming build log file found."
 msgstr ""
 "Ficheiro de registo de Compilação de Programação Literal não encontrado."
 
-#: src/frontends/qt4/GuiLog.cpp:215
+#: src/frontends/qt4/GuiLog.cpp:218
 msgid "No lyx2lyx error log file found."
 msgstr "Ficheiro de registo de erros lyx2lyx não encontrado."
 
-#: src/frontends/qt4/GuiLog.cpp:218
+#: src/frontends/qt4/GuiLog.cpp:221
 msgid "No version control log file found."
 msgstr "Ficheiro de registo do Controlo de Versão não encontrado."
 
@@ -18255,7 +18276,7 @@ msgstr ""
 msgid "Printer"
 msgstr "Impressora"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1876 src/frontends/qt4/GuiPrefs.cpp:2505
+#: src/frontends/qt4/GuiPrefs.cpp:1876 src/frontends/qt4/GuiPrefs.cpp:2512
 msgid "User interface"
 msgstr "Interface do utilizador"
 
@@ -18279,95 +18300,95 @@ msgstr "Funções"
 msgid "Shortcut"
 msgstr "Atalho:"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2109
+#: src/frontends/qt4/GuiPrefs.cpp:2111
 msgid "Cursor, Mouse and Editing functions"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2113
+#: src/frontends/qt4/GuiPrefs.cpp:2115
 #, fuzzy
 msgid "Mathematical Symbols"
 msgstr "Símbolos Fonéticos"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2117
+#: src/frontends/qt4/GuiPrefs.cpp:2119
 #, fuzzy
 msgid "Document and Window"
 msgstr "Erro no cabeçalho do documento"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2121
+#: src/frontends/qt4/GuiPrefs.cpp:2123
 msgid "Font, Layouts and Textclasses"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2125
+#: src/frontends/qt4/GuiPrefs.cpp:2127
 #, fuzzy
 msgid "System and Miscellaneous"
 msgstr "Misc AMS"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2251 src/frontends/qt4/GuiPrefs.cpp:2318
+#: src/frontends/qt4/GuiPrefs.cpp:2253 src/frontends/qt4/GuiPrefs.cpp:2320
 #, fuzzy
 msgid "Res&tore"
 msgstr "Restaurar"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2386 src/frontends/qt4/GuiPrefs.cpp:2393
-#: src/frontends/qt4/GuiPrefs.cpp:2400 src/frontends/qt4/GuiPrefs.cpp:2412
+#: src/frontends/qt4/GuiPrefs.cpp:2388 src/frontends/qt4/GuiPrefs.cpp:2395
+#: src/frontends/qt4/GuiPrefs.cpp:2402 src/frontends/qt4/GuiPrefs.cpp:2414
 #, fuzzy
 msgid "Failed to create shortcut"
 msgstr "A criação de pasta falhou. A sair."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2387
+#: src/frontends/qt4/GuiPrefs.cpp:2389
 #, fuzzy
 msgid "Unknown or invalid LyX function"
 msgstr "Função desconhecida."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2394
+#: src/frontends/qt4/GuiPrefs.cpp:2396
 msgid "Invalid or empty key sequence"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2401
+#: src/frontends/qt4/GuiPrefs.cpp:2403
 msgid "Shortcut is already defined"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2413
+#: src/frontends/qt4/GuiPrefs.cpp:2415
 #, fuzzy
 msgid "Can not insert shortcut to the list"
 msgstr "Adicionar um ramo novo à lista"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2433
+#: src/frontends/qt4/GuiPrefs.cpp:2440
 msgid "Identity"
 msgstr "Identidade"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2622
+#: src/frontends/qt4/GuiPrefs.cpp:2629
 msgid "Choose bind file"
 msgstr "Escolher ficheiro de associação"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2623
+#: src/frontends/qt4/GuiPrefs.cpp:2630
 msgid "LyX bind files (*.bind)"
 msgstr "Ficheiros de associação LyX (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2629
+#: src/frontends/qt4/GuiPrefs.cpp:2636
 msgid "Choose UI file"
 msgstr "Escolher ficheiro UI"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2630
+#: src/frontends/qt4/GuiPrefs.cpp:2637
 msgid "LyX UI files (*.ui)"
 msgstr "Ficheiros LyX UI (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2636
+#: src/frontends/qt4/GuiPrefs.cpp:2643
 msgid "Choose keyboard map"
 msgstr "Escolher mapa de teclado"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2637
+#: src/frontends/qt4/GuiPrefs.cpp:2644
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Mapas de teclado do LyX (*.kmap)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2643
+#: src/frontends/qt4/GuiPrefs.cpp:2650
 msgid "Choose personal dictionary"
 msgstr "Escolher dicionário pessoal"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2644
+#: src/frontends/qt4/GuiPrefs.cpp:2651
 msgid "*.pws"
 msgstr "*.pws"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2644
+#: src/frontends/qt4/GuiPrefs.cpp:2651
 msgid "*.ispell"
 msgstr "*.ispell"
 
@@ -20009,7 +20030,7 @@ msgstr "Espaço Protegido"
 msgid "Unknown TOC type"
 msgstr "Tipo de Índice desconhecido"
 
-#: src/insets/InsetTabular.cpp:3019
+#: src/insets/InsetTabular.cpp:3033
 msgid "Opened table"
 msgstr "Tabela aberta"
 
@@ -20178,7 +20199,7 @@ msgstr "Cadeia alfanumérica foi substituida."
 msgid " strings have been replaced."
 msgstr "Cadeias alfanuméricas foram substituidas."
 
-#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1365
+#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1371
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -20210,25 +20231,25 @@ msgstr "Não há vline para apagar"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Característica tabular desconhecida '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1161 src/mathed/InsetMathHull.cpp:1169
+#: src/mathed/InsetMathHull.cpp:1167 src/mathed/InsetMathHull.cpp:1175
 msgid "No number"
 msgstr "Sem número"
 
-#: src/mathed/InsetMathHull.cpp:1161 src/mathed/InsetMathHull.cpp:1169
+#: src/mathed/InsetMathHull.cpp:1167 src/mathed/InsetMathHull.cpp:1175
 msgid "Number"
 msgstr "Número"
 
-#: src/mathed/InsetMathHull.cpp:1338
+#: src/mathed/InsetMathHull.cpp:1344
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Não é possível alterar o número de linhas em %1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1348
+#: src/mathed/InsetMathHull.cpp:1354
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Não é possível alterar o número de colunas em %1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1358
+#: src/mathed/InsetMathHull.cpp:1364
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Não é possível adicionar linhas de grelha horizontal em '%1$s'"
