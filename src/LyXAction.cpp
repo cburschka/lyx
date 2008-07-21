@@ -1904,6 +1904,14 @@ void LyXAction::init()
  */
 		{ LFUN_VC_CHECK_OUT, "vc-check-out", ReadOnly, System },
 		{ LFUN_VC_REVERT, "vc-revert", ReadOnly, System },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_VC_UNDO_LAST
+ * \li Action: Undo last check-in.
+ * \li Notion: This is currently implemented only for RCS.
+ * \li Syntax: vc-check-out
+ * \li Origin: Lgb, 1 Jul 1997
+ * \endvar
+ */
 		{ LFUN_VC_UNDO_LAST, "vc-undo-last", ReadOnly, System },
 
 /*!
