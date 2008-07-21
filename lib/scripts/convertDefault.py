@@ -32,7 +32,7 @@ patch = int(version.group(3))
 opts = "-depth 8"
 
 # If supported, add the -define option for pdf source formats 
-if sys.argv[1][:4] == 'pdf:' and major >= 6 and minor >= 0 and patch >= 0:
+if sys.argv[1][:4] == 'pdf:' and major >= 6 and minor >= 2 and patch >= 6:
     opts = '-define pdf:use-cropbox=true ' + opts
 
 # If supported, add the -flatten option for ppm target formats (see bug 4749)
