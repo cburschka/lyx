@@ -332,6 +332,8 @@ bool CVS::checkInEnabled()
 void CVS::checkOut()
 {
 	// cvs update or perhaps for cvs this should be a noop
+	// we need to detect conflict (eg "C" in output)
+	// before we can do this.
 	lyxerr << "Sorry not implemented." << endl;
 }
 
