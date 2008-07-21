@@ -13,8 +13,11 @@
 #include "VCBackend.h"
 #include "Buffer.h"
 
+#include "frontends/alert.h"
+
 #include "support/debug.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/Path.h"
 #include "support/Systemcall.h"
@@ -39,6 +42,10 @@ int VCS::doVCCommand(string const & cmd, FileName const & path)
 	Systemcall one;
 	support::PathChanger p(path);
 	int const ret = one.startscript(Systemcall::Wait, cmd);
+	if (ret)
+		frontend::Alert::error(_("Revision control error."),
+			_("Please check you have installed revision control program.") + "\n"
+			+ from_ascii(cmd));
 	return ret;
 }
 
@@ -336,6 +343,9 @@ bool CVS::checkOutEnabled()
 
 void CVS::revert()
 {
+	// This is sensitive operation, so at lest some check before
+	if (doVCCommand("cvs --help", FileName(owner_->filePath())))
+		return;
 	// Reverts to the version in CVS repository and
 	// gets the updated version from the repository.
 	string const fil = quoteName(onlyFilename(owner_->absFileName()));
