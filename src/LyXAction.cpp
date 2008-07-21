@@ -2651,6 +2651,9 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_TOGGLE_READ_ONLY
  * \li Action: Toggle editing mode of the current document between read/write and read-only.
+ * \li Notion: In the ->Readonly mode checks-in/commits the data if the file is under version control.
+               In the Readonly-> mode checkouts the data from repository. \n
+	       If these operations fail, buffer won't be toggled.
  * \li Syntax: buffer-toggle-read-only
  * \li Origin: Lgb, 27 May 1997
  * \endvar
