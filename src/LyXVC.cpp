@@ -96,7 +96,8 @@ void LyXVC::registrer()
 
 	// it is very likely here that the vcs is not created yet...
 	if (!vcs) {
-		FileName const cvs_entries(makeAbsPath("CVS/Entries"));
+		//check in the root directory of the document
+		FileName const cvs_entries(onlyPath(filename.absFilename()) + "/CVS/Entries");
 
 		if (cvs_entries.isReadableFile()) {
 			LYXERR(Debug::LYXVC, "LyXVC: registering "
