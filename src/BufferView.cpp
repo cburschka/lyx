@@ -938,10 +938,12 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		break;
 
 	case LFUN_LAYOUT:
+		LYXERR0("BufferView::getStatus(LFUN_LAYOUT)");
 		flag.setEnabled(!cur.inset().forcePlainLayout(cur.idx()));
 		break;
 
 	case LFUN_LAYOUT_PARAGRAPH:
+		LYXERR0("BufferView::getStatus(LFUN_LAYOUT_PARAGRAPH)");
 		flag.setEnabled(cur.inset().allowParagraphCustomization(cur.idx()));
 		break;
 

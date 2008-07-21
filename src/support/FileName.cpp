@@ -94,6 +94,17 @@ struct FileName::Private
 		fi.setCaching(fi.exists() ? true : false);
 	}
 	///
+	inline void refresh() 
+	{
+// There seems to be a bug in Qt 4.3.5, at least, that causes problems with
+// QFileInfo::refresh() on Linux. So we recreate the object in that case. 
+#if defined(__linux__) && (QT_VERSION >= 0x040300)
+		fi = QFileInfo(fi.absoluteFilePath()); 
+#else
+		fi.refresh();
+#endif
+	}
+	///
 	QFileInfo fi;
 };
 
@@ -418,7 +429,7 @@ time_t FileName::lastModified() const
 	// QFileInfo caches information about the file. So, in case this file has
 	// been touched between the object creation and now, we refresh the file
 	// information.
-	d->fi.refresh();
+	d->refresh();
 	return d->fi.lastModified().toTime_t();
 }
 
