@@ -282,6 +282,8 @@ void CVS::scanMaster()
 			string mod_date = rtrim(asctime(gmtime(&mod)), "\n");
 			LYXERR(Debug::LYXVC, "Date in Entries: `" << file_date
 				<< "'\nModification date of file: `" << mod_date << '\'');
+			//FIXME this whole locking bussiness is not working under cvs and the machinery
+			// conforms to the ci usage, not cvs.
 			if (file_date == mod_date) {
 				locker_ = "Unlocked";
 				vcstatus = UNLOCKED;
