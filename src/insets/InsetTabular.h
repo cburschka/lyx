@@ -575,6 +575,8 @@ public:
 		  col_type columns_arg);
 	///
 	void updateIndexes();
+	///
+	bool setFixedWidth(row_type r, col_type c);
 	/// return true of update is needed
 	bool updateColumnWidths();
 	///
@@ -654,6 +656,29 @@ private:
 	InsetTableCell();
 	/// unimplemented
 	void operator=(InsetTableCell const &);
+	// FIXME
+	// This boolean is supposed to track whether the cell has had its
+	// width explicitly set. We need to know this to determine whether
+	// layout changes and paragraph customization are allowed---that is,
+	// we need it in forcePlainLayout() and allowParagraphCustomization(). 
+	// Unfortunately, that information is not readily available in 
+	// InsetTableCell. In the case of multicolumn cells, it is present
+	// in CellData, and so would be available here if CellData were to
+	// become a member of InsetTableCell. But in the other case, it isn't
+	// even available there, but is held in Tabular::ColumnData.
+	// So, the present solution uses this boolean to track the information
+	// we need to track, and tries to keep it updated. This is not ideal,
+	// but the other solutions are no better. These are:
+	// (i)  Keep a pointer in InsetTableCell to the table;
+	// (ii) Find the table by iterating over the Buffer's insets.
+	// Solution (i) raises the problem of updating the pointer when an 
+	// InsetTableCell is copied, and we'd therefore need a copy constructor
+	// in InsetTabular and then in Tabular, which seems messy, given how 
+	// complicated those classes are. Solution (ii) involves a lot of 
+	// iterating, since this information is needed quite often, and so may
+	// be quite slow.
+	// So, well, if someone can do better, please do!
+	// --rgh
 	///
 	bool isFixedWidth;
 };

@@ -760,6 +760,7 @@ void Tabular::updateIndexes()
 				continue;
 			rowofcell[i] = row;
 			columnofcell[i] = column;
+			setFixedWidth(row, column);
 			++i;
 		}
 }
@@ -991,6 +992,18 @@ void Tabular::setColumnPWidth(Cursor & cur, idx_type cell,
 	// cur position can become invalid after newlines were removed
 	if (cur.pos() > cur.lastpos())
 		cur.pos() = cur.lastpos();
+}
+
+
+bool Tabular::setFixedWidth(row_type r, col_type c)
+{
+	if (!column_info[c].p_width.zero() ||
+				(cell_info[r][c].multicolumn != CELL_NORMAL && 
+				!cell_info[r][c].p_width.zero())) {
+		cell_info[r][c].inset->toggleFixedWidth(true);
+		return true;
+	}
+	return false;
 }
 
 
@@ -1404,6 +1417,7 @@ void Tabular::read(Lexer & lex)
 			getTokenValue(line, "rotate", cell_info[i][j].rotate);
 			getTokenValue(line, "usebox", cell_info[i][j].usebox);
 			getTokenValue(line, "width", cell_info[i][j].p_width);
+			setFixedWidth(i,j);
 			getTokenValue(line, "special", cell_info[i][j].align_special);
 			l_getline(is, line);
 			if (prefixIs(line, "\\begin_inset")) {
