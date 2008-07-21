@@ -15420,7 +15420,6 @@ This dialog has numerous mostly self-explanatory parameters.
 Graphics
 \family default
  tab allows you to choose your image file.
- The appearance of the image inside LyX and in the output is adjusted separately.
  The image can be transformed by setting a rotation angle and a scaling
  factor.
  The scaling units are explained in Appendix
@@ -15484,28 +15483,12 @@ Clipping
 \end_layout
 
 \begin_layout Standard
-LaTeX experts can specify additional LaTeX options in the 
+In the 
 \family sans
-Extras
+LaTeX and LyX options
 \family default
- tab.
- You can also set the 
-\family sans
-Subfigure
-\family default
- option here if the image is inside a figure float.
- This option is explained in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Figure-Floats"
-
-\end_inset
-
-.
+ tab LaTeX experts can specify additional LaTeX options.
+ You can also specify here the appearance of the image inside LyX.
  The option 
 \family sans
 Draft
@@ -15514,16 +15497,16 @@ Draft
 
 mode
 \family default
- effects that the image don't appear in the output, only a frame with the
- image size is printed.
+ has the effect that the image doesn't appear in the output, only a frame
+ with the image size is printed.
 \end_layout
 
 \begin_layout Standard
-The graphics dialog can be called at any time by right-clicking on an image.
+The graphics dialog can be called at any time by clicking on an image.
  The image will appear in the output exactly at the position where it is
  in the text.
- This is an example image in the PDF format within a separate, horizontally
- centered paragraph: 
+ This is an example image within a separate, horizontally centered paragraph:
+ 
 \end_layout
 
 \begin_layout Standard
