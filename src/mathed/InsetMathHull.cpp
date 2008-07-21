@@ -489,6 +489,9 @@ void InsetMathHull::label(row_type row, docstring const & label)
 		if (label.empty()) {
 			delete label_[row];
 			label_[row] = dummy_pointer;
+			// We need an update of the Buffer reference cache.
+			// This is achieved by updateLabels().
+			lyx::updateLabels(buffer());
 		} else
 			label_[row]->updateCommand(label);
 		return;
@@ -507,6 +510,9 @@ void InsetMathHull::numbered(row_type row, bool num)
 	if (nonum_[row] && label_[row]) {
 		delete label_[row];
 		label_[row] = 0;
+		// We need an update of the Buffer reference cache.
+		// This is achieved by updateLabels().
+		lyx::updateLabels(buffer());
 	}
 }
 
