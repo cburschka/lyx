@@ -219,7 +219,7 @@ FileName const CVS::findFile(FileName const & file)
 	// where we have file.
 	FileName const entries(onlyPath(file.absFilename()) + "/CVS/Entries");
 	string const tmpf = '/' + onlyFilename(file.absFilename()) + '/';
-	LYXERR(Debug::LYXVC, "LyXVC: Checking in `" << entries
+	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under cvs in `" << entries
 			     << "' for `" << tmpf << '\'');
 	if (entries.isReadableFile()) {
 		// Ok we are at least in a CVS dir. Parse the CVS/Entries
