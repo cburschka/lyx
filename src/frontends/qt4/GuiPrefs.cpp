@@ -2057,6 +2057,8 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form)
 		this, SLOT(shortcut_clearPB_pressed()));
 	connect(shortcut_->okPB, SIGNAL(clicked()),
 		this, SLOT(shortcut_okPB_pressed()));
+	connect(shortcut_->cancelPB, SIGNAL(clicked()),
+		this, SLOT(shortcut_cancelPB_pressed()));
 }
 
 
@@ -2265,8 +2267,8 @@ void PrefShortcuts::modifyShortcut()
 	QTreeWidgetItem * item = shortcutsTW->currentItem();
 	if (item->flags() & Qt::ItemIsSelectable) {
 		shortcut_->lfunLE->setText(item->text(0));
-		shortcut_->shortcutLE->setText(item->text(1));
-		shortcut_->shortcutLE->setFocus();
+		shortcut_->shortcutWG->setText(item->text(1));
+		shortcut_->shortcutWG->setFocus();
 		shortcut_->exec();
 	}
 }
@@ -2293,7 +2295,7 @@ void PrefShortcuts::on_modifyPB_pressed()
 void PrefShortcuts::on_newPB_pressed()
 {
 	shortcut_->lfunLE->clear();
-	shortcut_->shortcutLE->reset();
+	shortcut_->shortcutWG->reset();
 	shortcut_->exec();
 }
 
@@ -2388,7 +2390,7 @@ void PrefShortcuts::shortcut_okPB_pressed()
 		return;
 	}
 
-	KeySequence k = shortcut_->shortcutLE->getKeySequence();
+	KeySequence k = shortcut_->shortcutWG->getKeySequence();
 	if (k.length() == 0) {
 		Alert::error(_("Failed to create shortcut"),
 			_("Invalid or empty key sequence"));
@@ -2416,10 +2418,15 @@ void PrefShortcuts::shortcut_okPB_pressed()
 }
 
 
+void PrefShortcuts::shortcut_cancelPB_pressed()
+{
+	shortcut_->shortcutWG->reset();
+}
+
+
 void PrefShortcuts::shortcut_clearPB_pressed()
 {
-	shortcut_->shortcutLE->reset();
-	shortcut_->shortcutLE->setFocus();
+	shortcut_->shortcutWG->reset();
 }
 
 

@@ -10,7 +10,7 @@
  */
 
 /*
-	The code for the ShortcutLineEdit class was adapted from
+	The code for the ShortcutWidget class was adapted from
 	kkeysequencewidget.cpp, which is part of the KDE libraries.
 	Copyright (C) 1998 Mark Donohoe <donohoe@kde.org>
 	Copyright (C) 2001 Ellis Whitehead <ellis@kde.org>
@@ -27,6 +27,7 @@
 
 #include <QApplication>
 #include <QKeyEvent>
+#include <QMouseEvent>
 #include <QShowEvent>
 
 #include "support/qstring_helpers.h"
@@ -40,22 +41,26 @@ using lyx::toqstr;
 namespace lyx {
 namespace frontend {
 
-ShortcutLineEdit::ShortcutLineEdit(QWidget * parent)
-	: QLineEdit(parent), keysequence_()
+ShortcutWidget::ShortcutWidget(QWidget * parent)
+	: QLabel(parent), keysequence_()
 {
 	QApplication::instance()->installEventFilter(this);
 	has_cursor_ = false;
+	setFrameShape(QFrame::StyledPanel);
+	setFrameShadow(QFrame::Raised);
+	setFocusPolicy(Qt::StrongFocus);
+	setAlignment(Qt::AlignCenter);
 }
 
 
-void ShortcutLineEdit::reset()
+void ShortcutWidget::reset()
 {
 	clear();
 	keysequence_ = KeySequence();
 }
 
 
-bool ShortcutLineEdit::eventFilter(QObject * obj, QEvent * e)
+bool ShortcutWidget::eventFilter(QObject * obj, QEvent * e)
 {
 	if (!has_cursor_)
 		return false;
@@ -68,18 +73,18 @@ bool ShortcutLineEdit::eventFilter(QObject * obj, QEvent * e)
 				return true;
 		default: 
 			break;
-	}        
+	}
 	return false;
 }
 
 
-KeySequence const ShortcutLineEdit::getKeySequence() const
+KeySequence const ShortcutWidget::getKeySequence() const
 {
 	return keysequence_;
 }
 
 
-void ShortcutLineEdit::keyPressEvent(QKeyEvent * e)
+void ShortcutWidget::keyPressEvent(QKeyEvent * e)
 {
 	int const keyQt = e->key();
 	if (!keyQt)
@@ -99,14 +104,16 @@ void ShortcutLineEdit::keyPressEvent(QKeyEvent * e)
 }
 
 
-bool ShortcutLineEdit::event(QEvent * e)
+bool ShortcutWidget::event(QEvent * e)
 {
 	switch (e->type()) {
 		case QEvent::FocusOut:
 			has_cursor_ = false;
+			setFrameShadow(QFrame::Raised);
 			break;
 		case QEvent::FocusIn:
 			has_cursor_ = true;
+			setFrameShadow(QFrame::Sunken);
 			break;
 		case QEvent::ShortcutOverride:
 			keyPressEvent(static_cast<QKeyEvent *>(e));
@@ -118,11 +125,11 @@ bool ShortcutLineEdit::event(QEvent * e)
 		default: 
 			break;
 	}
-	return QLineEdit::event(e);
+	return QLabel::event(e);
 }
 
 
-void ShortcutLineEdit::appendToSequence(QKeyEvent * e)
+void ShortcutWidget::appendToSequence(QKeyEvent * e)
 {
 	KeySymbol sym;
 	setKeySymbol(&sym, e);

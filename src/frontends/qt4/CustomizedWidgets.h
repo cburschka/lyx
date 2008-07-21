@@ -13,7 +13,7 @@
 #ifndef CUSTOMIZEDWIDGETS_H
 #define CUSTOMIZEDWIDGETS_H
 
-#include <QLineEdit>
+#include <QLabel>
 #include "KeySequence.h"
 
 class QEvent;
@@ -23,12 +23,12 @@ namespace lyx {
 namespace frontend {
 
 /**
- * A lineedit for inputting shortcuts
+ * A widget for inputting shortcuts
  */
-class ShortcutLineEdit : public QLineEdit {
+class ShortcutWidget : public QLabel {
 	Q_OBJECT
 public:
-	ShortcutLineEdit(QWidget * parent);
+	ShortcutWidget(QWidget * parent);
 	void reset();
 	bool eventFilter(QObject*, QEvent* e );
 	lyx::KeySequence const getKeySequence() const;

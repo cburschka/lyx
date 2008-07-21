@@ -23,12 +23,12 @@
     <number>6</number>
    </property>
    <item row="1" column="1" >
-    <widget class="lyx::frontend::ShortcutLineEdit" name="shortcutLE" >
+    <widget class="lyx::frontend::ShortcutWidget" name="shortcutWG" >
      <property name="enabled" >
       <bool>true</bool>
      </property>
      <property name="toolTip" >
-      <string>Type shortcut while the cursor is in this field</string>
+      <string>Type shortcut after clicking on this field. You can reset the content with the 'Clear' button</string>
      </property>
      <property name="text" >
       <string/>
@@ -47,6 +47,9 @@
    </item>
    <item row="1" column="2" >
     <widget class="QPushButton" name="clearPB" >
+     <property name="toolTip" >
+      <string>Clear current shortcut</string>
+     </property>
      <property name="text" >
       <string>C&amp;lear</string>
      </property>
@@ -68,7 +71,7 @@
       <string>&amp;Shortcut:</string>
      </property>
      <property name="buddy" >
-      <cstring>shortcutLE</cstring>
+      <cstring>shortcutWG</cstring>
      </property>
     </widget>
    </item>
@@ -125,7 +128,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>lyx::frontend::ShortcutLineEdit</class>
+   <class>lyx::frontend::ShortcutWidget</class>
    <extends>QLineEdit</extends>
    <header>CustomizedWidgets.h</header>
   </customwidget>
