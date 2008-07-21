@@ -70,15 +70,21 @@ public:
 
 	/// Unlock and commit changes.
 	void checkIn();
+	/// Does the current VC supports this operation?
+	bool checkInEnabled();
 
 	/// Lock and prepare to edit document.
 	void checkOut();
+	/// Does the current VC supports this operation?
+	bool checkOutEnabled();
 
 	/// Revert to last version
 	void revert();
 
 	/// Undo last check-in.
 	void undoLast();
+	/// Does the current VC supports this operation?
+	bool undoLastEnabled();
 
 	/**
 	 * Generate a log file and return the filename.

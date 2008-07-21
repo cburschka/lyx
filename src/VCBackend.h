@@ -36,12 +36,18 @@ public:
 	virtual void registrer(std::string const & msg) = 0;
 	/// check in the current revision
 	virtual void checkIn(std::string const & msg) = 0;
+	// can be this operation processed in the current RCS?
+	virtual bool checkInEnabled() = 0;
 	/// check out for editing
 	virtual void checkOut() = 0;
+	// can be this operation processed in the current RCS?
+	virtual bool checkOutEnabled() = 0;
 	/// revert current edits
 	virtual void revert() = 0;
 	/// FIXME
 	virtual void undoLast() = 0;
+	// can be this operation processed in the current RCS?
+	virtual bool undoLastEnabled() = 0;
 	/**
 	 * getLog - read the revision log into the given file
 	 * @param fname file name to read into
@@ -109,11 +115,17 @@ public:
 
 	virtual void checkIn(std::string const & msg);
 
+	virtual bool checkInEnabled();
+
 	virtual void checkOut();
+
+	virtual bool checkOutEnabled();
 
 	virtual void revert();
 
 	virtual void undoLast();
+
+	virtual bool undoLastEnabled();
 
 	virtual void getLog(support::FileName const &);
 
@@ -140,11 +152,17 @@ public:
 
 	virtual void checkIn(std::string const & msg);
 
+	virtual bool checkInEnabled();
+
 	virtual void checkOut();
+
+	virtual bool checkOutEnabled();
 
 	virtual void revert();
 
 	virtual void undoLast();
+
+	virtual bool undoLastEnabled();
 
 	virtual void getLog(support::FileName const &);
 

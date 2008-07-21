@@ -228,4 +228,22 @@ string const LyXVC::getLogFile() const
 }
 
 
+bool LyXVC::checkOutEnabled()
+{
+	return vcs && vcs->checkOutEnabled();
+}
+
+
+bool LyXVC::checkInEnabled()
+{
+	return vcs && vcs->checkInEnabled();
+}
+
+
+bool LyXVC::undoLastEnabled()
+{
+	return vcs && vcs->undoLastEnabled();
+}
+
+
 } // namespace lyx

@@ -461,14 +461,16 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		enable = !buf->lyxvc().inUse();
 		break;
 	case LFUN_VC_CHECK_IN:
-		enable = buf->lyxvc().inUse() && !buf->isReadonly();
+		enable = buf->lyxvc().checkInEnabled();
 		break;
 	case LFUN_VC_CHECK_OUT:
-		enable = buf->lyxvc().inUse() && buf->isReadonly();
+		enable = buf->lyxvc().checkOutEnabled();
 		break;
 	case LFUN_VC_REVERT:
-	case LFUN_VC_UNDO_LAST:
 		enable = buf->lyxvc().inUse();
+		break;
+	case LFUN_VC_UNDO_LAST:
+		enable = buf->lyxvc().undoLastEnabled();
 		break;
 	case LFUN_BUFFER_RELOAD:
 		enable = !buf->isUnnamed() && buf->fileName().exists()

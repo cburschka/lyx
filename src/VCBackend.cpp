@@ -163,12 +163,22 @@ void RCS::checkIn(string const & msg)
 		    FileName(owner_->filePath()));
 }
 
+bool RCS::checkInEnabled()
+{
+	return owner_ && !owner_->isReadonly();
+}
 
 void RCS::checkOut()
 {
 	owner_->markClean();
 	doVCCommand("co -q -l " + quoteName(onlyFilename(owner_->absFileName())),
 		    FileName(owner_->filePath()));
+}
+
+
+bool RCS::checkOutEnabled()
+{
+	return owner_ && owner_->isReadonly();
 }
 
 
@@ -188,6 +198,12 @@ void RCS::undoLast()
 	doVCCommand("rcs -o" + version() + " "
 		    + quoteName(onlyFilename(owner_->absFileName())),
 		    FileName(owner_->filePath()));
+}
+
+
+bool RCS::undoLastEnabled()
+{
+	return true;
 }
 
 
@@ -297,10 +313,22 @@ void CVS::checkIn(string const & msg)
 }
 
 
+bool CVS::checkInEnabled()
+{
+	return true;
+}
+
+
 void CVS::checkOut()
 {
 	// cvs update or perhaps for cvs this should be a noop
 	lyxerr << "Sorry not implemented." << endl;
+}
+
+
+bool CVS::checkOutEnabled()
+{
+	return false;
 }
 
 
@@ -322,6 +350,12 @@ void CVS::undoLast()
 	// in a reverse patch kind of way, so that the
 	// result is to revert the last changes.
 	lyxerr << "Sorry not implemented." << endl;
+}
+
+
+bool CVS::undoLastEnabled()
+{
+	return false;
 }
 
 
