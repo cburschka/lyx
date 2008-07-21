@@ -17,21 +17,26 @@
 # replacement in ~/.lyx/scripts
 
 # converts an image from $1 to $2 format
-import os, sys
+import os, re, sys
+
+# We may need some extra options only supported by recent convert versions
+re_version = re.compile(r'^Version:.*ImageMagick\s*(\d*)\.(\d*)\.(\d*).*$')
+fout = os.popen('convert -version 2>&1')
+output = fout.readline()
+fout.close()
+version = re_version.match(output)
+major = int(version.group(1))
+minor = int(version.group(2))
+patch = int(version.group(3))
 
 opts = "-depth 8"
-# for pdf source formats, check whether convert supports the -define option
-if sys.argv[1][:4] == 'pdf:':
-    defopt = "-define pdf:use-cropbox=true"
-    fout = os.popen('convert ' + defopt + ' 2>&1')
-    output = fout.read()
-    fout.close()
-    if not 'unrecognized' in output.lower():
-        opts = defopt + ' ' + opts
 
-# for ppm target formats, we need to flatten image, as ppm has no support
-# for alpha channel, see bug 4749
-if sys.argv[2][:4] == 'ppm:':
+# If supported, add the -define option for pdf source formats 
+if sys.argv[1][:4] == 'pdf:' and major >= 6 and minor >= 0 and patch >= 0:
+    opts = '-define pdf:use-cropbox=true ' + opts
+
+# If supported, add the -flatten option for ppm target formats (see bug 4749)
+if sys.argv[2][:4] == 'ppm:' and major >= 6 and minor >= 0 and patch >= 0:
     opts = opts + ' -flatten'
 
 if os.system(r'convert %s "%s" "%s"' % (opts, sys.argv[1], sys.argv[2])) != 0:
