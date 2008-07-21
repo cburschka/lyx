@@ -37,7 +37,7 @@ if sys.argv[1][:4] == 'pdf:' and version >= 0x060206:
     opts = '-define pdf:use-cropbox=true ' + opts
 
 # If supported, add the -flatten option for ppm target formats (see bug 4749)
-if sys.argv[2][:4] == 'ppm:' and version >= 0x060000:
+if sys.argv[2][:4] == 'ppm:' and version >= 0x060305:
     opts = opts + ' -flatten'
 
 if os.system(r'convert %s "%s" "%s"' % (opts, sys.argv[1], sys.argv[2])) != 0:
