@@ -25,18 +25,16 @@ fout = os.popen('convert -version 2>&1')
 output = fout.readline()
 fout.close()
 version = re_version.match(output)
-major = int(version.group(1))
-minor = int(version.group(2))
-patch = int(version.group(3))
+version = int(version.group(1) + version.group(2) + version.group(3))
 
 opts = "-depth 8"
 
 # If supported, add the -define option for pdf source formats 
-if sys.argv[1][:4] == 'pdf:' and major >= 6 and minor >= 2 and patch >= 6:
+if sys.argv[1][:4] == 'pdf:' and version >= 626:
     opts = '-define pdf:use-cropbox=true ' + opts
 
 # If supported, add the -flatten option for ppm target formats (see bug 4749)
-if sys.argv[2][:4] == 'ppm:' and major >= 6 and minor >= 0 and patch >= 0:
+if sys.argv[2][:4] == 'ppm:' and version >= 600:
     opts = opts + ' -flatten'
 
 if os.system(r'convert %s "%s" "%s"' % (opts, sys.argv[1], sys.argv[2])) != 0:
