@@ -1876,7 +1876,7 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_VC_REGISTER
- * \li Action: Register the document as an file inside version control system (RCS).
+ * \li Action: Register the document as an file inside version control system (RCS, CVS).
  * \li Notion: File is registered inside cvs or rcs repository acording to the existence
                of cvs entries in the document's directory.
 	       See LyX Extended Manual (Version Control Chapter) for additional information. \n
@@ -1888,11 +1888,20 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_VC_CHECK_IN
  * \li Action: Checks-in/commits the changes of the registered file to the repository.
+ * \li Notion: In RCS case this also unlocks the file.
  * \li Syntax: vc-check-in
  * \li Origin: Lgb, 1 Jul 1997
  * \endvar
  */
 		{ LFUN_VC_CHECK_IN, "vc-check-in", ReadOnly, System },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_VC_CHECK_OUT
+ * \li Action: Checks-out the document for edit and locks it.
+ * \li Notion: This is implemented only for RCS, not CVS.
+ * \li Syntax: vc-check-out
+ * \li Origin: Lgb, 1 Jul 1997
+ * \endvar
+ */
 		{ LFUN_VC_CHECK_OUT, "vc-check-out", ReadOnly, System },
 		{ LFUN_VC_REVERT, "vc-revert", ReadOnly, System },
 		{ LFUN_VC_UNDO_LAST, "vc-undo-last", ReadOnly, System },
