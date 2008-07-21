@@ -124,6 +124,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 					breakParagraphConservative(
 							buffer.params(),
 							insertion, i, j);
+					break;
 				}
 			}
 		}
