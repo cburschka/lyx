@@ -1061,8 +1061,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			LASSERT(lyx_view_ && lyx_view_->buffer(), /**/);
 			if (!ensureBufferClean(view()))
 				break;
-			if (lyx_view_->buffer()->lyxvc().inUse()
-					&& lyx_view_->buffer()->isReadonly()) {
+			if (lyx_view_->buffer()->lyxvc().inUse()) {
 				lyx_view_->buffer()->lyxvc().checkOut();
 				reloadBuffer();
 			}

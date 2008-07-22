@@ -464,13 +464,14 @@ bool SVN::checkInEnabled()
 
 void SVN::checkOut()
 {
-	lyxerr << "Sorry not implemented." << endl;
+	doVCCommand("svn update " + quoteName(onlyFilename(owner_->absFileName())),
+		    FileName(owner_->filePath()));
 }
 
 
 bool SVN::checkOutEnabled()
 {
-	return false;
+	return true;
 }
 
 

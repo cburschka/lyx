@@ -66,6 +66,7 @@ public:
 	/// return the lock status of this file
 	VCStatus status() const { return vcstatus; }
 	/// do we need special handling for read-only toggling?
+	/// (also used for check-out operation)
 	virtual bool toggleReadOnlyEnabled() = 0;
 protected:
 	/// parse information from the version file
