@@ -458,7 +458,7 @@ void SVN::checkIn(string const & msg)
 		return;
 	}
 
-	doVCCommand("svn commit -q -m \"" + msg + "\" "
+	doVCCommand("svn commit -m \"" + msg + "\" "
 		    + quoteName(onlyFilename(owner_->absFileName()))
 		    + " 2> " + tmpf.toFilesystemEncoding(),
 		    FileName(owner_->filePath()));
@@ -468,7 +468,7 @@ void SVN::checkIn(string const & msg)
 		frontend::Alert::error(_("Revision control error."),
 				_("Error when commiting to repository.\n"
 				"You have to manually resolve the problem.\n"
-				"After pressing OK, LyX will reopen resolved document."));
+				"After pressing OK, LyX will reopen the document."));
 	tmpf.erase();
 }
 
