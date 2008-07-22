@@ -188,6 +188,9 @@ void LyXVC::undoLast()
 
 void LyXVC::toggleReadOnly()
 {
+	if (!vcs->toggleReadOnlyEnabled())
+		return;
+
 	switch (vcs->status()) {
 	case VCS::UNLOCKED:
 		LYXERR(Debug::LYXVC, "LyXVC: toggle to locked");

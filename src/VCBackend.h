@@ -65,6 +65,8 @@ public:
 	Buffer * owner() const { return owner_; }
 	/// return the lock status of this file
 	VCStatus status() const { return vcstatus; }
+	/// do we need special handling for read-only toggling?
+	virtual bool toggleReadOnlyEnabled() = 0;
 protected:
 	/// parse information from the version file
 	virtual void scanMaster() = 0;
@@ -133,6 +135,8 @@ public:
 		return "RCS: " + version_;
 	}
 
+	virtual bool toggleReadOnlyEnabled();
+
 protected:
 	virtual void scanMaster();
 };
@@ -169,6 +173,8 @@ public:
 	virtual std::string const versionString() const {
 		return "CVS: " + version_;
 	}
+
+	virtual bool toggleReadOnlyEnabled();
 
 protected:
 	virtual void scanMaster();
@@ -209,6 +215,8 @@ public:
 	virtual std::string const versionString() const {
 		return "SVN: " + version_;
 	}
+
+	virtual bool toggleReadOnlyEnabled();
 
 protected:
 	virtual void scanMaster();

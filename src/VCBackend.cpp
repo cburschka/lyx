@@ -223,6 +223,12 @@ void RCS::getLog(FileName const & tmpf)
 }
 
 
+bool RCS::toggleReadOnlyEnabled()
+{
+	return true;
+}
+
+
 /////////////////////////////////////////////////////////////////////
 //
 // CVS
@@ -381,6 +387,10 @@ void CVS::getLog(FileName const & tmpf)
 		    FileName(owner_->filePath()));
 }
 
+bool CVS::toggleReadOnlyEnabled()
+{
+	return false;
+}
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -454,9 +464,6 @@ bool SVN::checkInEnabled()
 
 void SVN::checkOut()
 {
-	// svn update or perhaps for svn this should be a noop
-	// we need to detect conflict (eg "C" in output)
-	// before we can do this.
 	lyxerr << "Sorry not implemented." << endl;
 }
 
@@ -501,6 +508,11 @@ void SVN::getLog(FileName const & tmpf)
 		    FileName(owner_->filePath()));
 }
 
+
+bool SVN::toggleReadOnlyEnabled()
+{
+	return false;
+}
 
 
 } // namespace lyx
