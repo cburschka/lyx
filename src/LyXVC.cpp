@@ -74,12 +74,12 @@ bool LyXVC::file_found_hook(FileName const & fn)
 
 bool LyXVC::file_not_found_hook(FileName const & fn)
 {
-	// Check if file is under RCS
+	// Check if file is under RCS.
+	// This happens if we are trying to load non existent
+	// file on disk, but existent in ,v version.
+	// Seems there is no reasonable scenario for adding implementation
+	// of retrieve for cvs or svn.
 	if (!RCS::findFile(fn).empty())
-		return true;
-	if (!CVS::findFile(fn).empty())
-		return true;
-	if (!SVN::findFile(fn).empty())
 		return true;
 	return false;
 }
