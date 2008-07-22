@@ -27200,7 +27200,22 @@ Strg-Enter
 \family default
 \series default
  drückt.
- Dies erzeugt eine 
+ Dies erzeugt entweder eine 
+\series bold
+eqnarray-Umgebung
+\series default
+, die in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Eqnarray-Umgebung"
+
+\end_inset
+
+ beschrieben ist oder, wenn die Option 
+\family sans
+AMS-Mathe-Paket verwenden
+\family default
+ in den Dokumenteinstellungen gewählt ist, eine 
 \series bold
 align-Umgebung
 \series default
@@ -28456,6 +28471,13 @@ pt Leerraum eingefügt.
 
 \begin_layout Subsection
 Eqnarray-Umgebung
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Eqnarray-Umgebung"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 

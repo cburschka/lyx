@@ -27113,7 +27113,22 @@ Ctrl-Return
 \family default
 \series default
  inside a formula.
- This creates an 
+ This creates either an 
+\series bold
+eqnarray environment
+\series default
+ that is described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Eqnarray-Environment"
+
+\end_inset
+
+ or, when the option 
+\family sans
+Use AMS math package
+\family default
+ in the document settings is selected, an 
 \series bold
 align environment
 \series default
@@ -28355,6 +28370,13 @@ pt space was inserted at the beginning of the first column.
 
 \begin_layout Subsection
 Eqnarray Environment
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Eqnarray-Environment"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
