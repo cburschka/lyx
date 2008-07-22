@@ -16479,7 +16479,7 @@ Revert To Repository Version
 This will discard all changes made to the document since the last check
  in.
  You get a warning before changes are discarded.
- Firstly the file is deleted, secondly CVS command is run.
+ Firstly the file is deleted, secondly CVS update command is run.
 \end_layout
 
 \begin_layout Standard
@@ -16542,6 +16542,8 @@ ersion
 Control
 \family default
  submenu.
+ Please note that if you use password protected access to repository via
+ ssh, you will be asked on termial window.
 \end_layout
 
 \begin_layout Subsubsection
