@@ -185,7 +185,7 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 					code += "'>";
  				} else
 					uncodable += c;
-			} catch (EncodingException & e) {
+			} catch (EncodingException & /* e */) {
  				if (runparams.dryrun) {
 					code += "<" + _("LyX Warning: ")
 					   + _("uncodable character") + " '";
