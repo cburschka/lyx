@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-21 23:07+0200\n"
+"POT-Creation-Date: 2008-07-23 00:12+0200\n"
 "PO-Revision-Date: 2007-10-07 21:30+0800\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -73,7 +73,7 @@ msgstr "虛設(&D)"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:38
 #: src/frontends/qt4/ui/ParagraphUi.ui:82 src/frontends/qt4/ui/RefUi.ui:77
-#: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:105
+#: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:52
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/VSpaceUi.ui:36 src/frontends/qt4/ui/WrapUi.ui:150
@@ -86,7 +86,7 @@ msgstr "確定(&O)"
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:835
 #: src/Buffer.cpp:2521 src/Buffer.cpp:2545 src/Buffer.cpp:2580
 #: src/LyXFunc.cpp:666 src/LyXFunc.cpp:802 src/LyXFunc.cpp:980
-#: src/LyXVC.cpp:161 src/frontends/qt4/GuiClipboard.cpp:208
+#: src/LyXVC.cpp:179 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1251
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1464
@@ -165,7 +165,7 @@ msgstr "加入(&A)"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/LabelUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:92
-#: src/frontends/qt4/ui/ShortcutUi.ui:118 src/LyXFunc.cpp:772
+#: src/frontends/qt4/ui/ShortcutUi.ui:65 src/LyXFunc.cpp:772
 #: src/buffer_funcs.cpp:104 src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
 msgstr "取消"
@@ -2330,7 +2330,7 @@ msgstr "修改(&M)"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2255 src/frontends/qt4/GuiPrefs.cpp:2340
+#: src/frontends/qt4/GuiPrefs.cpp:2257 src/frontends/qt4/GuiPrefs.cpp:2320
 msgid "Remo&ve"
 msgstr "移除(&V)"
 
@@ -3312,34 +3312,44 @@ msgstr "命令(&C)："
 msgid "Edit shortcut"
 msgstr "捷徑(&H)："
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:31
-msgid ""
-"Type shortcut after clicking on this field. You can reset the content with "
-"the 'Clear' button"
-msgstr ""
-
-#: src/frontends/qt4/ui/ShortcutUi.ui:41
+#: src/frontends/qt4/ui/ShortcutUi.ui:77
 msgid "Enter LyX function or command sequence"
 msgstr ""
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:51
+#: src/frontends/qt4/ui/ShortcutUi.ui:87
+msgid "Remove last key from the shortcut sequence"
+msgstr ""
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:90
+#, fuzzy
+msgid "&Delete Key"
+msgstr "刪除(&D)"
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:97
 #, fuzzy
 msgid "Clear current shortcut"
 msgstr "建立目錄時失敗。離開中。"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:54 src/frontends/qt4/ui/TabularUi.ui:272
+#: src/frontends/qt4/ui/ShortcutUi.ui:100
+#: src/frontends/qt4/ui/TabularUi.ui:272
 msgid "C&lear"
 msgstr "清空(&L)"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:61
+#: src/frontends/qt4/ui/ShortcutUi.ui:107
+#, fuzzy
+msgid "&Shortcut:"
+msgstr "捷徑(&H)："
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:117
 #, fuzzy
 msgid "&Function:"
 msgstr "函數"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:71
-#, fuzzy
-msgid "&Shortcut:"
-msgstr "捷徑(&H)："
+#: src/frontends/qt4/ui/ShortcutUi.ui:130
+msgid ""
+"Type shortcut after clicking on this field. You can reset the content with "
+"the 'Clear' button"
+msgstr ""
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:35
 msgid "Suggestions:"
@@ -9308,7 +9318,8 @@ msgid "Undo Last Check In|U"
 msgstr "復原最後一筆簽入|U"
 
 #: lib/ui/classic.ui:73 lib/ui/stdmenus.inc:68
-msgid "Show History|H"
+#, fuzzy
+msgid "Show History...|H"
 msgstr "顯示歷史|H"
 
 #: lib/ui/classic.ui:82 lib/ui/stdmenus.inc:77
@@ -15498,7 +15509,7 @@ msgstr ""
 "\t-version        概述版本和組建資訊\n"
 "查看 LyX 線上手冊以獲得更多細節。"
 
-#: src/LyX.cpp:993 src/support/Package.cpp:570
+#: src/LyX.cpp:993 src/support/Package.cpp:554
 msgid "No system directory"
 msgstr "無系統目錄"
 
@@ -15635,7 +15646,7 @@ msgstr "任何變更將會失去。確定要還原成儲存的文件版本 %1$s�
 msgid "Revert to saved document?"
 msgstr "恢復原儲存文件？"
 
-#: src/LyXFunc.cpp:802 src/LyXVC.cpp:161
+#: src/LyXFunc.cpp:802 src/LyXVC.cpp:179
 msgid "&Revert"
 msgstr "回復(&R)"
 
@@ -15648,35 +15659,35 @@ msgstr "缺少引數"
 msgid "Opening help file %1$s..."
 msgstr "開啟說明檔案 %1$s…"
 
-#: src/LyXFunc.cpp:1273
+#: src/LyXFunc.cpp:1272
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "開啟子文件 %1$s…"
 
-#: src/LyXFunc.cpp:1415
+#: src/LyXFunc.cpp:1414
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "文件預設儲存在 %1$s 中"
 
-#: src/LyXFunc.cpp:1418
+#: src/LyXFunc.cpp:1417
 msgid "Unable to save document defaults"
 msgstr "無法儲存文件預設值"
 
-#: src/LyXFunc.cpp:1695
+#: src/LyXFunc.cpp:1694
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "文件 %1$s 已開啟。"
 
-#: src/LyXFunc.cpp:1697
+#: src/LyXFunc.cpp:1696
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "無法讀取文件"
 
-#: src/LyXFunc.cpp:1734
+#: src/LyXFunc.cpp:1733
 msgid "Welcome to LyX!"
 msgstr "歡迎使用 LyX！"
 
-#: src/LyXFunc.cpp:1755
+#: src/LyXFunc.cpp:1754
 msgid "Converting document to new document class..."
 msgstr "轉換文件到新文件類別…"
 
@@ -16179,55 +16190,55 @@ msgstr ""
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr "指定紙張命令給 DVI 檢視器 (保留為空或使用「-paper」)"
 
-#: src/LyXVC.cpp:91
+#: src/LyXVC.cpp:100
 msgid "Document not saved"
 msgstr "文件尚未儲存"
 
-#: src/LyXVC.cpp:92
+#: src/LyXVC.cpp:101
 msgid "You must save the document before it can be registered."
 msgstr "您必須在文件可被註冊之前儲存它。"
 
-#: src/LyXVC.cpp:118
+#: src/LyXVC.cpp:133
 msgid "LyX VC: Initial description"
 msgstr "LyX VC：初始描述"
 
-#: src/LyXVC.cpp:119
+#: src/LyXVC.cpp:134
 msgid "(no initial description)"
 msgstr "(無初始描述)"
 
-#: src/LyXVC.cpp:134
+#: src/LyXVC.cpp:149
 msgid "LyX VC: Log Message"
 msgstr "LyX VC：記錄檔訊息"
 
-#: src/LyXVC.cpp:137
+#: src/LyXVC.cpp:152
 msgid "(no log message)"
 msgstr "(無記錄檔訊息)"
 
-#: src/LyXVC.cpp:157
-#, c-format
+#: src/LyXVC.cpp:175
+#, fuzzy, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
 "changes.\n"
 "\n"
-"Do you want to revert to the saved version?"
+"Do you want to revert to the older version?"
 msgstr ""
 "還原成文件 %1$s 的儲存版本，將會遺失所有目前的變更。\n"
 "\n"
 "您要還原成儲存的版本嗎？"
 
-#: src/LyXVC.cpp:160
+#: src/LyXVC.cpp:178
 msgid "Revert to stored version of document?"
 msgstr "還原成文件的已儲存版本？"
 
-#: src/Paragraph.cpp:1494 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1505 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "此版面配置沒有意義！"
 
-#: src/Paragraph.cpp:1560
+#: src/Paragraph.cpp:1571
 msgid "Alignment not permitted"
 msgstr "對齊方式不被允許"
 
-#: src/Paragraph.cpp:1561
+#: src/Paragraph.cpp:1572
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -16235,14 +16246,14 @@ msgstr ""
 "新的版面配置不允許之前使用的對齊方式。\n"
 "設定為預設值。"
 
-#: src/Paragraph.cpp:2029 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2040 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:182 src/insets/InsetListings.cpp:190
 #: src/insets/InsetListings.cpp:214 src/mathed/InsetMathString.cpp:164
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX 版本 "
 
-#: src/Paragraph.cpp:2030 src/insets/InsetListings.cpp:183
+#: src/Paragraph.cpp:2041 src/insets/InsetListings.cpp:183
 #: src/insets/InsetListings.cpp:191 src/mathed/InsetMathString.cpp:165
 #, fuzzy
 msgid "uncodable character"
@@ -16416,16 +16427,33 @@ msgstr ""
 "\n"
 "%1$s。"
 
-#: src/VCBackend.cpp:46
+#: src/VCBackend.cpp:46 src/VCBackend.cpp:468 src/VCBackend.cpp:515
 #, fuzzy
 msgid "Revision control error."
 msgstr "版本控制"
 
 #: src/VCBackend.cpp:47
+#, fuzzy, c-format
+msgid ""
+"Some problem occured while running the command:\n"
+"'%1$s'."
+msgstr "執行 %1$s 時發生錯誤"
+
+#: src/VCBackend.cpp:469
+msgid ""
+"Error when commiting to repository.\n"
+"You have to manually resolve the problem.\n"
+"After pressing OK, LyX will reopen the document."
+msgstr ""
+
+#: src/VCBackend.cpp:516
 #, c-format
 msgid ""
-"Please check you have installed the program called in\n"
-"'%1$s'."
+"Error when updating from repository.\n"
+"You have to manually resolve the conflicts NOW!\n"
+"'%1$s'.\n"
+"\n"
+"After pressing OK, LyX will try to reopen resolved document."
 msgstr ""
 
 #: src/VSpace.cpp:472
@@ -16637,7 +16665,7 @@ msgid "About %1"
 msgstr "關於 %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:386
-#: src/frontends/qt4/GuiPrefs.cpp:2473
+#: src/frontends/qt4/GuiPrefs.cpp:2497
 msgid "Preferences"
 msgstr "偏好設定"
 
@@ -17716,7 +17744,7 @@ msgstr ""
 msgid "Printer"
 msgstr "印表機"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1876 src/frontends/qt4/GuiPrefs.cpp:2512
+#: src/frontends/qt4/GuiPrefs.cpp:1876 src/frontends/qt4/GuiPrefs.cpp:2536
 msgid "User interface"
 msgstr "使用者介面"
 
@@ -17740,95 +17768,95 @@ msgstr "函數"
 msgid "Shortcut"
 msgstr "捷徑(&H)："
 
-#: src/frontends/qt4/GuiPrefs.cpp:2111
+#: src/frontends/qt4/GuiPrefs.cpp:2113
 msgid "Cursor, Mouse and Editing functions"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2115
+#: src/frontends/qt4/GuiPrefs.cpp:2117
 #, fuzzy
 msgid "Mathematical Symbols"
 msgstr "音標符號|y"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2119
+#: src/frontends/qt4/GuiPrefs.cpp:2121
 #, fuzzy
 msgid "Document and Window"
 msgstr "文件頁首錯誤"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2123
+#: src/frontends/qt4/GuiPrefs.cpp:2125
 msgid "Font, Layouts and Textclasses"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2127
+#: src/frontends/qt4/GuiPrefs.cpp:2129
 #, fuzzy
 msgid "System and Miscellaneous"
 msgstr "AMS 雜項"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2253 src/frontends/qt4/GuiPrefs.cpp:2320
+#: src/frontends/qt4/GuiPrefs.cpp:2255 src/frontends/qt4/GuiPrefs.cpp:2300
 #, fuzzy
 msgid "Res&tore"
 msgstr "還原(&R)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2388 src/frontends/qt4/GuiPrefs.cpp:2395
-#: src/frontends/qt4/GuiPrefs.cpp:2402 src/frontends/qt4/GuiPrefs.cpp:2414
+#: src/frontends/qt4/GuiPrefs.cpp:2401 src/frontends/qt4/GuiPrefs.cpp:2408
+#: src/frontends/qt4/GuiPrefs.cpp:2415 src/frontends/qt4/GuiPrefs.cpp:2432
 #, fuzzy
 msgid "Failed to create shortcut"
 msgstr "建立目錄時失敗。離開中。"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2389
+#: src/frontends/qt4/GuiPrefs.cpp:2402
 #, fuzzy
 msgid "Unknown or invalid LyX function"
 msgstr "不明的函數。"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2396
+#: src/frontends/qt4/GuiPrefs.cpp:2409
 msgid "Invalid or empty key sequence"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2403
+#: src/frontends/qt4/GuiPrefs.cpp:2416
 msgid "Shortcut is already defined"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2415
+#: src/frontends/qt4/GuiPrefs.cpp:2433
 #, fuzzy
 msgid "Can not insert shortcut to the list"
 msgstr "加入新的分支到清單"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2440
+#: src/frontends/qt4/GuiPrefs.cpp:2464
 msgid "Identity"
 msgstr "身分"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2629
+#: src/frontends/qt4/GuiPrefs.cpp:2653
 msgid "Choose bind file"
 msgstr "選擇連結檔案"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2630
+#: src/frontends/qt4/GuiPrefs.cpp:2654
 msgid "LyX bind files (*.bind)"
 msgstr "LyX 連結檔案 (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2636
+#: src/frontends/qt4/GuiPrefs.cpp:2660
 msgid "Choose UI file"
 msgstr "選擇 UI 檔案"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2637
+#: src/frontends/qt4/GuiPrefs.cpp:2661
 msgid "LyX UI files (*.ui)"
 msgstr "LyX UI 檔案 (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2643
+#: src/frontends/qt4/GuiPrefs.cpp:2667
 msgid "Choose keyboard map"
 msgstr "選擇鍵盤對映"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2644
+#: src/frontends/qt4/GuiPrefs.cpp:2668
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX 鍵盤對映 (*.kmap)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2650
+#: src/frontends/qt4/GuiPrefs.cpp:2674
 msgid "Choose personal dictionary"
 msgstr "選擇個人字典"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2651
+#: src/frontends/qt4/GuiPrefs.cpp:2675
 msgid "*.pws"
 msgstr "*.pws"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2651
+#: src/frontends/qt4/GuiPrefs.cpp:2675
 msgid "*.ispell"
 msgstr "*.ispell"
 
@@ -19710,34 +19738,34 @@ msgstr "摘要："
 msgid "References: "
 msgstr "參考："
 
-#: src/support/Package.cpp:451
+#: src/support/Package.cpp:435
 msgid "LyX binary not found"
 msgstr "找不到 LyX 執行程式"
 
-#: src/support/Package.cpp:452
+#: src/support/Package.cpp:436
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr "無法從命令列 %1$s 決定 LyX 程式的路徑"
 
-#: src/support/Package.cpp:571
-#, c-format
+#: src/support/Package.cpp:555
+#, fuzzy, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
 "\t%1$s\n"
 "Use the '-sysdir' command line parameter or set the environment variable "
-"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
+"LYX_DIR_16x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 "無法決定要搜尋的系統目錄\n"
 "\t%1$s\n"
 "使用「-sysdir」命令列參數或設定環境變數 LYX_DIR_15x 為 LyX 系統目錄，其中包含"
 "檔案「chkconfig.ltx」。"
 
-#: src/support/Package.cpp:652 src/support/Package.cpp:679
+#: src/support/Package.cpp:638 src/support/Package.cpp:665
 msgid "File not found"
 msgstr "找不到檔案"
 
-#: src/support/Package.cpp:653
+#: src/support/Package.cpp:639
 #, c-format
 msgid ""
 "Invalid %1$s switch.\n"
@@ -19746,7 +19774,7 @@ msgstr ""
 "無效的 %1$s 切換。\n"
 "目錄 %2$s 不包含 %3$s。"
 
-#: src/support/Package.cpp:680
+#: src/support/Package.cpp:666
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
@@ -19755,7 +19783,7 @@ msgstr ""
 "無效的 %1$s 環境變數。\n"
 "目錄 %2$s 不包含 %3$s。"
 
-#: src/support/Package.cpp:704
+#: src/support/Package.cpp:690
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
@@ -19764,7 +19792,7 @@ msgstr ""
 "無效的 %1$s 環境變數。\n"
 "%2$s 並非目錄。"
 
-#: src/support/Package.cpp:706
+#: src/support/Package.cpp:692
 msgid "Directory not found"
 msgstr "找不到目錄"
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-21 23:07+0200\n"
+"POT-Creation-Date: 2008-07-23 00:12+0200\n"
 "PO-Revision-Date: 2008-04-22 22:01-0500\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -72,7 +72,7 @@ msgstr "&Dummy"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:38
 #: src/frontends/qt4/ui/ParagraphUi.ui:82 src/frontends/qt4/ui/RefUi.ui:77
-#: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:105
+#: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:52
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
 #: src/frontends/qt4/ui/VSpaceUi.ui:36 src/frontends/qt4/ui/WrapUi.ui:150
@@ -85,7 +85,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:835
 #: src/Buffer.cpp:2521 src/Buffer.cpp:2545 src/Buffer.cpp:2580
 #: src/LyXFunc.cpp:666 src/LyXFunc.cpp:802 src/LyXFunc.cpp:980
-#: src/LyXVC.cpp:161 src/frontends/qt4/GuiClipboard.cpp:208
+#: src/LyXVC.cpp:179 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1251
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1464
@@ -164,7 +164,7 @@ msgstr "&Pøidat"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/LabelUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:92
-#: src/frontends/qt4/ui/ShortcutUi.ui:118 src/LyXFunc.cpp:772
+#: src/frontends/qt4/ui/ShortcutUi.ui:65 src/LyXFunc.cpp:772
 #: src/buffer_funcs.cpp:104 src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
 msgstr "Zru¹it"
@@ -2276,7 +2276,7 @@ msgstr "Z&mìnit"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2255 src/frontends/qt4/GuiPrefs.cpp:2340
+#: src/frontends/qt4/GuiPrefs.cpp:2257 src/frontends/qt4/GuiPrefs.cpp:2320
 msgid "Remo&ve"
 msgstr "&Smazat"
 
@@ -3242,32 +3242,42 @@ msgstr "&Pøíkaz:"
 msgid "Edit shortcut"
 msgstr "Editovat &zkratku"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:31
-msgid ""
-"Type shortcut after clicking on this field. You can reset the content with "
-"the 'Clear' button"
-msgstr ""
-
-#: src/frontends/qt4/ui/ShortcutUi.ui:41
+#: src/frontends/qt4/ui/ShortcutUi.ui:77
 msgid "Enter LyX function or command sequence"
 msgstr "Vlo¾te funkci LyX-u nebo sekvenci pøíkazù"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:51
+#: src/frontends/qt4/ui/ShortcutUi.ui:87
+msgid "Remove last key from the shortcut sequence"
+msgstr ""
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:90
+#, fuzzy
+msgid "&Delete Key"
+msgstr "&Smazat"
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:97
 #, fuzzy
 msgid "Clear current shortcut"
 msgstr "Selhalo vytvoøení klávesové zkratky"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:54 src/frontends/qt4/ui/TabularUi.ui:272
+#: src/frontends/qt4/ui/ShortcutUi.ui:100
+#: src/frontends/qt4/ui/TabularUi.ui:272
 msgid "C&lear"
 msgstr "S&mazat"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:61
+#: src/frontends/qt4/ui/ShortcutUi.ui:107
+msgid "&Shortcut:"
+msgstr "&Zkratka:"
+
+#: src/frontends/qt4/ui/ShortcutUi.ui:117
 msgid "&Function:"
 msgstr "&Funkce:"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:71
-msgid "&Shortcut:"
-msgstr "&Zkratka:"
+#: src/frontends/qt4/ui/ShortcutUi.ui:130
+msgid ""
+"Type shortcut after clicking on this field. You can reset the content with "
+"the 'Clear' button"
+msgstr ""
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:35
 msgid "Suggestions:"
@@ -9099,7 +9109,8 @@ msgid "Undo Last Check In|U"
 msgstr "Zru¹it poslední zápis zmìn|p"
 
 #: lib/ui/classic.ui:73 lib/ui/stdmenus.inc:68
-msgid "Show History|H"
+#, fuzzy
+msgid "Show History...|H"
 msgstr "Zobrazit historii|h"
 
 #: lib/ui/classic.ui:82 lib/ui/stdmenus.inc:77
@@ -15154,7 +15165,7 @@ msgstr ""
 "\t-version        shrnout verzi a informace o sestavení\n"
 "Prohlédnìte manuálovou stránku LyX-u pro detailnìj¹í informace."
 
-#: src/LyX.cpp:993 src/support/Package.cpp:570
+#: src/LyX.cpp:993 src/support/Package.cpp:554
 msgid "No system directory"
 msgstr "®ádný systémový adresáø"
 
@@ -15296,7 +15307,7 @@ msgstr ""
 msgid "Revert to saved document?"
 msgstr "Vrátit se k pùvodnímu dokumentu ?"
 
-#: src/LyXFunc.cpp:802 src/LyXVC.cpp:161
+#: src/LyXFunc.cpp:802 src/LyXVC.cpp:179
 msgid "&Revert"
 msgstr "&Pùvodní verze"
 
@@ -15309,35 +15320,35 @@ msgstr "Chybí argument"
 msgid "Opening help file %1$s..."
 msgstr "Otvírání nápovìdy %1$s..."
 
-#: src/LyXFunc.cpp:1273
+#: src/LyXFunc.cpp:1272
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Otvírání dokumentu potomka %1$s..."
 
-#: src/LyXFunc.cpp:1415
+#: src/LyXFunc.cpp:1414
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Standardní nastavení dokumentu ulo¾eno v %1$s"
 
-#: src/LyXFunc.cpp:1418
+#: src/LyXFunc.cpp:1417
 msgid "Unable to save document defaults"
 msgstr "Nelze ulo¾it standardní nastavení dokumentu"
 
-#: src/LyXFunc.cpp:1695
+#: src/LyXFunc.cpp:1694
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovunaèten."
 
-#: src/LyXFunc.cpp:1697
+#: src/LyXFunc.cpp:1696
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "Nelze znovunaèíst dokument %1$s"
 
-#: src/LyXFunc.cpp:1734
+#: src/LyXFunc.cpp:1733
 msgid "Welcome to LyX!"
 msgstr "Vítejte v LyXu!"
 
-#: src/LyXFunc.cpp:1755
+#: src/LyXFunc.cpp:1754
 msgid "Converting document to new document class..."
 msgstr "Konverze dokumentu do nové tøídy dokumentu..."
 
@@ -15885,55 +15896,55 @@ msgstr ""
 "Urèete volbu nastavující papír v prohlí¾eèi DVI(nechte prázdné nebo pou¾ijte "
 "\"-paper\")."
 
-#: src/LyXVC.cpp:91
+#: src/LyXVC.cpp:100
 msgid "Document not saved"
 msgstr "Dokument neulo¾en"
 
-#: src/LyXVC.cpp:92
+#: src/LyXVC.cpp:101
 msgid "You must save the document before it can be registered."
 msgstr "Dokument musí být ulo¾en pøed registrací."
 
-#: src/LyXVC.cpp:118
+#: src/LyXVC.cpp:133
 msgid "LyX VC: Initial description"
 msgstr "LyX SV: Poèáteèní popisek"
 
-#: src/LyXVC.cpp:119
+#: src/LyXVC.cpp:134
 msgid "(no initial description)"
 msgstr "(bez poèáteèního popisku)"
 
-#: src/LyXVC.cpp:134
+#: src/LyXVC.cpp:149
 msgid "LyX VC: Log Message"
 msgstr "LyX SV: Zpráva Log-u"
 
-#: src/LyXVC.cpp:137
+#: src/LyXVC.cpp:152
 msgid "(no log message)"
 msgstr "(¾ádná zpráva logu)"
 
-#: src/LyXVC.cpp:157
-#, c-format
+#: src/LyXVC.cpp:175
+#, fuzzy, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
 "changes.\n"
 "\n"
-"Do you want to revert to the saved version?"
+"Do you want to revert to the older version?"
 msgstr ""
 "Návrat k ulo¾ené verzi dokumentu %1$s znamená ztrátu v¹ech souèasných zmìn.\n"
 "\n"
 "Chcete pøejít zpìt k ulo¾ené verzi ?"
 
-#: src/LyXVC.cpp:160
+#: src/LyXVC.cpp:178
 msgid "Revert to stored version of document?"
 msgstr "Návrat k ulo¾ené verzi dokumentu ?"
 
-#: src/Paragraph.cpp:1494 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1505 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Nesmyslné v tomto rozvr¾ení !"
 
-#: src/Paragraph.cpp:1560
+#: src/Paragraph.cpp:1571
 msgid "Alignment not permitted"
 msgstr "Zarovnání nepovoleno"
 
-#: src/Paragraph.cpp:1561
+#: src/Paragraph.cpp:1572
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -15941,13 +15952,13 @@ msgstr ""
 "Nové rozvr¾ení nepovoluje pou¾ívané zarovnání.\n"
 "Pøepnuto na standardní."
 
-#: src/Paragraph.cpp:2029 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2040 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:182 src/insets/InsetListings.cpp:190
 #: src/insets/InsetListings.cpp:214 src/mathed/InsetMathString.cpp:164
 msgid "LyX Warning: "
 msgstr "Výstraha LyX-u: "
 
-#: src/Paragraph.cpp:2030 src/insets/InsetListings.cpp:183
+#: src/Paragraph.cpp:2041 src/insets/InsetListings.cpp:183
 #: src/insets/InsetListings.cpp:191 src/mathed/InsetMathString.cpp:165
 msgid "uncodable character"
 msgstr "nekódovatelný znak"
@@ -16122,16 +16133,33 @@ msgstr ""
 "\n"
 "%1$s."
 
-#: src/VCBackend.cpp:46
+#: src/VCBackend.cpp:46 src/VCBackend.cpp:468 src/VCBackend.cpp:515
 #, fuzzy
 msgid "Revision control error."
 msgstr "Správa verzí"
 
 #: src/VCBackend.cpp:47
+#, fuzzy, c-format
+msgid ""
+"Some problem occured while running the command:\n"
+"'%1$s'."
+msgstr "Chyba pøi bìhu %1$s"
+
+#: src/VCBackend.cpp:469
+msgid ""
+"Error when commiting to repository.\n"
+"You have to manually resolve the problem.\n"
+"After pressing OK, LyX will reopen the document."
+msgstr ""
+
+#: src/VCBackend.cpp:516
 #, c-format
 msgid ""
-"Please check you have installed the program called in\n"
-"'%1$s'."
+"Error when updating from repository.\n"
+"You have to manually resolve the conflicts NOW!\n"
+"'%1$s'.\n"
+"\n"
+"After pressing OK, LyX will try to reopen resolved document."
 msgstr ""
 
 #: src/VSpace.cpp:472
@@ -16339,7 +16367,7 @@ msgid "About %1"
 msgstr "O programu %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:386
-#: src/frontends/qt4/GuiPrefs.cpp:2473
+#: src/frontends/qt4/GuiPrefs.cpp:2497
 msgid "Preferences"
 msgstr "Nastavení"
 
@@ -17390,7 +17418,7 @@ msgstr ""
 msgid "Printer"
 msgstr "Tiskárna"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1876 src/frontends/qt4/GuiPrefs.cpp:2512
+#: src/frontends/qt4/GuiPrefs.cpp:1876 src/frontends/qt4/GuiPrefs.cpp:2536
 msgid "User interface"
 msgstr "U¾ivatelské rozhraní"
 
@@ -17410,88 +17438,88 @@ msgstr "Funkce"
 msgid "Shortcut"
 msgstr "Zkratka"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2111
+#: src/frontends/qt4/GuiPrefs.cpp:2113
 msgid "Cursor, Mouse and Editing functions"
 msgstr "Kurzor, my¹, editaèní funkce"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2115
+#: src/frontends/qt4/GuiPrefs.cpp:2117
 msgid "Mathematical Symbols"
 msgstr "Matematické symboly"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2119
+#: src/frontends/qt4/GuiPrefs.cpp:2121
 msgid "Document and Window"
 msgstr "Dokument a okno"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2123
+#: src/frontends/qt4/GuiPrefs.cpp:2125
 msgid "Font, Layouts and Textclasses"
 msgstr "Font, Rozvr¾ení, "
 
-#: src/frontends/qt4/GuiPrefs.cpp:2127
+#: src/frontends/qt4/GuiPrefs.cpp:2129
 msgid "System and Miscellaneous"
 msgstr "Systém, Rùzné"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2253 src/frontends/qt4/GuiPrefs.cpp:2320
+#: src/frontends/qt4/GuiPrefs.cpp:2255 src/frontends/qt4/GuiPrefs.cpp:2300
 msgid "Res&tore"
 msgstr "&Obnovit"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2388 src/frontends/qt4/GuiPrefs.cpp:2395
-#: src/frontends/qt4/GuiPrefs.cpp:2402 src/frontends/qt4/GuiPrefs.cpp:2414
+#: src/frontends/qt4/GuiPrefs.cpp:2401 src/frontends/qt4/GuiPrefs.cpp:2408
+#: src/frontends/qt4/GuiPrefs.cpp:2415 src/frontends/qt4/GuiPrefs.cpp:2432
 msgid "Failed to create shortcut"
 msgstr "Selhalo vytvoøení klávesové zkratky"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2389
+#: src/frontends/qt4/GuiPrefs.cpp:2402
 msgid "Unknown or invalid LyX function"
 msgstr "Neznámá nebo chybná LyX-funkce"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2396
+#: src/frontends/qt4/GuiPrefs.cpp:2409
 msgid "Invalid or empty key sequence"
 msgstr "Chybná nebo prázdná sekvence kláves"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2403
+#: src/frontends/qt4/GuiPrefs.cpp:2416
 msgid "Shortcut is already defined"
 msgstr "Zkratka je u¾ definována"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2415
+#: src/frontends/qt4/GuiPrefs.cpp:2433
 msgid "Can not insert shortcut to the list"
 msgstr "Nelze pøidat zkratku do seznamu"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2440
+#: src/frontends/qt4/GuiPrefs.cpp:2464
 msgid "Identity"
 msgstr "Va¹e identita"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2629
+#: src/frontends/qt4/GuiPrefs.cpp:2653
 msgid "Choose bind file"
 msgstr "Vybrat soubor klávesových zkratek"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2630
+#: src/frontends/qt4/GuiPrefs.cpp:2654
 msgid "LyX bind files (*.bind)"
 msgstr "Klávesové zkratky LyX-u (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2636
+#: src/frontends/qt4/GuiPrefs.cpp:2660
 msgid "Choose UI file"
 msgstr "Vybrat soubor u¾ivatelského rozhraní"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2637
+#: src/frontends/qt4/GuiPrefs.cpp:2661
 msgid "LyX UI files (*.ui)"
 msgstr "UI soubory LyX-u (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2643
+#: src/frontends/qt4/GuiPrefs.cpp:2667
 msgid "Choose keyboard map"
 msgstr "Vybrat mapu kláves"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2644
+#: src/frontends/qt4/GuiPrefs.cpp:2668
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Mapa kláves pro LyX (*.kmap)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2650
+#: src/frontends/qt4/GuiPrefs.cpp:2674
 msgid "Choose personal dictionary"
 msgstr "Vybrat vlastní slovník"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2651
+#: src/frontends/qt4/GuiPrefs.cpp:2675
 msgid "*.pws"
 msgstr "*.pws"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2651
+#: src/frontends/qt4/GuiPrefs.cpp:2675
 msgid "*.ispell"
 msgstr "*.ispell"
 
@@ -19280,11 +19308,11 @@ msgstr "Abstrakt: "
 msgid "References: "
 msgstr "Reference: "
 
-#: src/support/Package.cpp:451
+#: src/support/Package.cpp:435
 msgid "LyX binary not found"
 msgstr "Nenalezen spustitelný soubor LyX-u"
 
-#: src/support/Package.cpp:452
+#: src/support/Package.cpp:436
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1$s"
@@ -19292,13 +19320,13 @@ msgstr ""
 "Nepodaøilo se urèit cestu ke spustitelnému souboru LyX-u z pøíkazové øádky %1"
 "$s"
 
-#: src/support/Package.cpp:571
-#, c-format
+#: src/support/Package.cpp:555
+#, fuzzy, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
 "\t%1$s\n"
 "Use the '-sysdir' command line parameter or set the environment variable "
-"LYX_DIR_15x to the LyX system directory containing the file `chkconfig.ltx'."
+"LYX_DIR_16x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 "Nepodaøilo se zjitit systémový adresáø, pøi prohledávání\n"
 "\t%1$s\n"
@@ -19306,11 +19334,11 @@ msgstr ""
 "prostøedí LYX_DIR_15x do systémového adresáøe LyX-u obsahujícího soubor "
 "`chkconfig.ltx'."
 
-#: src/support/Package.cpp:652 src/support/Package.cpp:679
+#: src/support/Package.cpp:638 src/support/Package.cpp:665
 msgid "File not found"
 msgstr "Soubor nenalezen"
 
-#: src/support/Package.cpp:653
+#: src/support/Package.cpp:639
 #, c-format
 msgid ""
 "Invalid %1$s switch.\n"
@@ -19319,7 +19347,7 @@ msgstr ""
 "Neplatný pøepínaè %1$s.\n"
 "Adresáø %2$s neobsahuje %3$s."
 
-#: src/support/Package.cpp:680
+#: src/support/Package.cpp:666
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
@@ -19328,7 +19356,7 @@ msgstr ""
 "Neplatná promìnná prostøedí %1$s.\n"
 "Adresáø %2$s neobsahuje %3$s."
 
-#: src/support/Package.cpp:704
+#: src/support/Package.cpp:690
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
@@ -19337,7 +19365,7 @@ msgstr ""
 "Neplatná promìnná prostøedí %1$s.\n"
 "%2$s není adresáø."
 
-#: src/support/Package.cpp:706
+#: src/support/Package.cpp:692
 msgid "Directory not found"
 msgstr "Adresáø nenalezen"
 
