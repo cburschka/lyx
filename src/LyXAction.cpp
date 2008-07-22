@@ -7,6 +7,7 @@
  * \author Jean-Marc Lasgouttes
  * \author John Levon
  * \author André Pönitz
+ * \author Pavel Sanda
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -44,15 +45,16 @@ namespace lyx {
      (May 19 1996, 12:04, RvdK)
 */
 
-/* LFUN documentation (a start at least, Chr 2007-08-12)
+/* LFUN documentation
  *
- * The documentation below is primarily notes about restrictions and
- * oddities relating to the different LFUNs.
+ * The documentation below is primarily description of purpose and syntax
+ * relating to the different LFUNs.
  *
- * Try to find an appropriate (thematical) place when adding the new LFUN.
+ * Try to find an appropriate (thematical) place when adding the new LFUN
+ * and don't forget to add doxygen commentary.
  *
  * Doxygen template below. Some notes: Parameters should be set in uppercase
- * and put in <BRACKETS>, as so.
+ * and put in <BRACKETS>, [<PARAM>] means optional one.
  */
 
 /*!
