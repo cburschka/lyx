@@ -159,6 +159,9 @@ void LyXVC::checkIn()
 
 void LyXVC::checkOut()
 {
+	//RCS allows checkOut only in ReadOnly mode
+	if (vcs->toggleReadOnlyEnabled() && !owner_->isReadonly()) return;
+
 	LYXERR(Debug::LYXVC, "LyXVC: checkOut");
 	vcs->checkOut();
 }
