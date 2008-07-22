@@ -462,6 +462,8 @@ get_system_support_dir(FileName const & abs_binary,
 	}
 
 	// 2. Use the "LYX_DIR_16x" environment variable.
+	// FIXME We need to iherit the actual version number from elsewhere
+	// otherwise we will forget to update this for new major releases
 	path = extract_env_var_dir("LYX_DIR_16x");
 	if (!path.empty()) {
 		searched_dirs.push_back(path);
@@ -578,8 +580,6 @@ bool userSupportDir(FileName const & default_user_support_dir,
 		return true;
 
 	// 2. Use the LYX_USERDIR_16x environment variable.
-	// FIXME We need to iherit the atual version number from elsewhere other-
-	// wise we will forget to update this for new major releases
 	result = extract_env_var_dir("LYX_USERDIR_16x");
 	if (!result.empty())
 		return true;
