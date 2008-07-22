@@ -648,7 +648,8 @@ int Paragraph::Pimpl::writeScriptChars(odocstream & os,
 {
 	// We only arrive here when a proper language for character c has not
 	// been specified (i.e., it could not be translated in the current
-	// latex encoding) and it belongs to a known script.
+	// latex encoding) or its latex translation has been forced, and it
+	// belongs to a known script.
 	// Parameter ltx contains the latex translation of c as specified in
 	// the unicodesymbols file and is something like "\textXXX{<spec>}".
 	// The latex macro name "textXXX" specifies the script to which c
@@ -659,8 +660,16 @@ int Paragraph::Pimpl::writeScriptChars(odocstream & os,
 	docstring::size_type const brace1 = ltx.find_first_of(from_ascii("{"));
 	docstring::size_type const brace2 = ltx.find_last_of(from_ascii("}"));
 	string script = to_ascii(ltx.substr(1, brace1 - 1));
-	int length = ltx.substr(0, brace2).length();
-	os << ltx.substr(0, brace2);
+	int pos = 0;
+	int length = brace2;
+	bool closing_brace = true;
+	if (script == "textgreek" && encoding.latexName() == "iso-8859-7") {
+		// Correct encoding is being used, so we can avoid \textgreek.
+		pos = brace1 + 1;
+		length -= pos;
+		closing_brace = false;
+	}
+	os << ltx.substr(pos, length);
 	while (i + 1 < size()) {
 		char_type const next = getChar(i + 1);
 		// Stop here if next character belongs to another script
@@ -693,8 +702,10 @@ int Paragraph::Pimpl::writeScriptChars(odocstream & os,
 		length += len;
 		++i;
 	}
-	os << '}';
-	++length;
+	if (closing_brace) {
+		os << '}';
+		++length;
+	}
 	return length;
 }
 
