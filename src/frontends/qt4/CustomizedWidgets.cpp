@@ -5,6 +5,7 @@
  *
  * \author Bo Peng
  * \author Edwin Leuven
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -84,6 +85,12 @@ KeySequence const ShortcutWidget::getKeySequence() const
 }
 
 
+void ShortcutWidget::setKeySequence(lyx::KeySequence const s)
+{
+	keysequence_ = s;
+}
+
+
 void ShortcutWidget::keyPressEvent(QKeyEvent * e)
 {
 	int const keyQt = e->key();
@@ -137,6 +144,13 @@ void ShortcutWidget::appendToSequence(QKeyEvent * e)
 	KeyModifier mod = lyx::q_key_state(e->modifiers());
 	
 	keysequence_.addkey(sym, mod, lyx::NoModifier);
+}
+
+
+void ShortcutWidget::removeFromSequence()
+{
+	keysequence_.removeKey();
+	setText(toqstr(keysequence_.print(KeySequence::ForGui)));
 }
 
 } // namespace frontend

@@ -91,6 +91,9 @@ public:
 	/// clear in full
 	void clear();
 
+	/// remove last key in sequence
+	void removeKey();
+
 	bool deleted() const { return deleted_; }
 
 	/// length of sequence

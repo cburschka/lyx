@@ -190,4 +190,13 @@ void KeySequence::clear()
 }
 
 
+void KeySequence::removeKey()
+{
+	if (deleted_)
+		return;
+	sequence.pop_back();
+	modifiers.pop_back();
+}
+
+
 } // namespace lyx

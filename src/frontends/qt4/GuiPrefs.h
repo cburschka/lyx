@@ -452,6 +452,7 @@ public Q_SLOTS:
 	void shortcut_okPB_pressed();
 	void shortcut_cancelPB_pressed();
 	void shortcut_clearPB_pressed();
+	void shortcut_removePB_pressed();
 	void on_shortcutsTW_itemDoubleClicked();
 
 private:

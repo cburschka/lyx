@@ -6,6 +6,7 @@
  *
  * \author Bo Peng
  * \author Edwin Leuven
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -32,6 +33,8 @@ public:
 	void reset();
 	bool eventFilter(QObject*, QEvent* e );
 	lyx::KeySequence const getKeySequence() const;
+	void setKeySequence(lyx::KeySequence const s);
+	void removeFromSequence();
 protected Q_SLOTS:
 	bool event(QEvent* e);
 	void keyPressEvent(QKeyEvent * e);

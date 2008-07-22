@@ -2055,6 +2055,8 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form)
 		shortcut_, SLOT(reject()));
 	connect(shortcut_->clearPB, SIGNAL(clicked()),
 		this, SLOT(shortcut_clearPB_pressed()));
+	connect(shortcut_->removePB, SIGNAL(clicked()),
+		this, SLOT(shortcut_removePB_pressed()));
 	connect(shortcut_->okPB, SIGNAL(clicked()),
 		this, SLOT(shortcut_okPB_pressed()));
 	connect(shortcut_->cancelPB, SIGNAL(clicked()),
@@ -2268,6 +2270,9 @@ void PrefShortcuts::modifyShortcut()
 	if (item->flags() & Qt::ItemIsSelectable) {
 		shortcut_->lfunLE->setText(item->text(0));
 		shortcut_->shortcutWG->setText(item->text(1));
+		KeySequence seq;
+		seq.parse(fromqstr(item->data(1, Qt::UserRole).toString()));
+		shortcut_->shortcutWG->setKeySequence(seq);
 		shortcut_->shortcutWG->setFocus();
 		shortcut_->exec();
 	}
@@ -2427,6 +2432,12 @@ void PrefShortcuts::shortcut_cancelPB_pressed()
 void PrefShortcuts::shortcut_clearPB_pressed()
 {
 	shortcut_->shortcutWG->reset();
+}
+
+
+void PrefShortcuts::shortcut_removePB_pressed()
+{
+	shortcut_->shortcutWG->removeFromSequence();
 }
 
 
