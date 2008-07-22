@@ -461,11 +461,11 @@ get_system_support_dir(FileName const & abs_binary,
 			return path;
 	}
 
-	// 2. Use the "LYX_DIR_15x" environment variable.
-	path = extract_env_var_dir("LYX_DIR_15x");
+	// 2. Use the "LYX_DIR_16x" environment variable.
+	path = extract_env_var_dir("LYX_DIR_16x");
 	if (!path.empty()) {
 		searched_dirs.push_back(path);
-		if (check_env_var_dir(path, chkconfig_ltx, "LYX_DIR_15x"))
+		if (check_env_var_dir(path, chkconfig_ltx, "LYX_DIR_16x"))
 			return path;
 	}
 
@@ -556,7 +556,7 @@ get_system_support_dir(FileName const & abs_binary,
 					 "having searched\n"
 					 "\t%1$s\n"
 					 "Use the '-sysdir' command line parameter or "
-					 "set the environment variable LYX_DIR_15x to "
+					 "set the environment variable LYX_DIR_16x to "
 					 "the LyX system directory containing the file "
 					 "`chkconfig.ltx'."),
 			  from_utf8(searched_dirs_str)));
@@ -577,8 +577,10 @@ bool userSupportDir(FileName const & default_user_support_dir,
 	if (!result.empty())
 		return true;
 
-	// 2. Use the LYX_USERDIR_15x environment variable.
-	result = extract_env_var_dir("LYX_USERDIR_15x");
+	// 2. Use the LYX_USERDIR_16x environment variable.
+	// FIXME We need to iherit the atual version number from elsewhere other-
+	// wise we will forget to update this for new major releases
+	result = extract_env_var_dir("LYX_USERDIR_16x");
 	if (!result.empty())
 		return true;
 
