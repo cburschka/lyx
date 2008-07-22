@@ -352,14 +352,16 @@ bool CVS::checkOutEnabled()
 
 void CVS::revert()
 {
-	// This is sensitive operation, so at lest some check before
-	if (doVCCommand("cvs --help", FileName(owner_->filePath())))
-		return;
 	// Reverts to the version in CVS repository and
 	// gets the updated version from the repository.
 	string const fil = quoteName(onlyFilename(owner_->absFileName()));
-
-	doVCCommand("rm -f " + fil + "; cvs update " + fil,
+	// This is sensitive operation, so at lest some check about
+	// existence of cvs program and its file
+	if (doVCCommand("cvs log "+ fil, FileName(owner_->filePath())))
+		return;
+	FileName f(owner_->absFileName());
+	f.removeFile();
+	doVCCommand("cvs update " + fil,
 		    FileName(owner_->filePath()));
 	owner_->markClean();
 }
