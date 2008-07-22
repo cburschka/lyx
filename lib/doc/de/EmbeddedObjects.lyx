@@ -24148,14 +24148,25 @@ Zu dem, was bereits im
 Benutzerhandbuch
 \emph default
  über Fußnoten geschrieben wurde, folgen hier noch ein paar Anmerkungen.
+ Eine Fußnotenbox sieht folgendermaßen aus: 
+\begin_inset Graphics
+	filename clipart/FussnoteQt4.png
+	scale 80
+	scaleBeforeRotation
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hier ist eine Beispielfußnote:
 \color black
 
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-\color black
 \begin_inset CommandInset label
 LatexCommand label
 name "fuss:Fußnoten-Beispiel"
