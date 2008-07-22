@@ -2269,6 +2269,7 @@ void PrefShortcuts::modifyShortcut()
 	QTreeWidgetItem * item = shortcutsTW->currentItem();
 	if (item->flags() & Qt::ItemIsSelectable) {
 		shortcut_->lfunLE->setText(item->text(0));
+		save_lfun_ = item->text(0);
 		shortcut_->shortcutWG->setText(item->text(1));
 		KeySequence seq;
 		seq.parse(fromqstr(item->data(1, Qt::UserRole).toString()));
@@ -2279,33 +2280,7 @@ void PrefShortcuts::modifyShortcut()
 }
 
 
-void PrefShortcuts::select_bind()
-{
-	QString file = form_->browsebind(internalPath(bindFileED->text()));
-	if (!file.isEmpty()) {
-		bindFileED->setText(file);
-		system_bind_ = KeyMap();
-		system_bind_.read(fromqstr(file));
-		updateShortcutsTW();
-	}
-}
-
-
-void PrefShortcuts::on_modifyPB_pressed()
-{
-	modifyShortcut();
-}
-
-
-void PrefShortcuts::on_newPB_pressed()
-{
-	shortcut_->lfunLE->clear();
-	shortcut_->shortcutWG->reset();
-	shortcut_->exec();
-}
-
-
-void PrefShortcuts::on_removePB_pressed()
+void PrefShortcuts::removeShortcut()
 {
 	// it seems that only one item can be selected, but I am
 	// removing all selected items anyway.
@@ -2357,6 +2332,39 @@ void PrefShortcuts::on_removePB_pressed()
 }
 
 
+void PrefShortcuts::select_bind()
+{
+	QString file = form_->browsebind(internalPath(bindFileED->text()));
+	if (!file.isEmpty()) {
+		bindFileED->setText(file);
+		system_bind_ = KeyMap();
+		system_bind_.read(fromqstr(file));
+		updateShortcutsTW();
+	}
+}
+
+
+void PrefShortcuts::on_modifyPB_pressed()
+{
+	modifyShortcut();
+}
+
+
+void PrefShortcuts::on_newPB_pressed()
+{
+	shortcut_->lfunLE->clear();
+	shortcut_->shortcutWG->reset();
+	save_lfun_ = QString();
+	shortcut_->exec();
+}
+
+
+void PrefShortcuts::on_removePB_pressed()
+{
+	removeShortcut();
+}
+
+
 void PrefShortcuts::on_searchLE_textEdited()
 {
 	if (searchLE->text().isEmpty()) {
@@ -2386,8 +2394,8 @@ void PrefShortcuts::on_searchLE_textEdited()
 
 void PrefShortcuts::shortcut_okPB_pressed()
 {
-	string lfun = fromqstr(shortcut_->lfunLE->text());
-	FuncRequest func = lyxaction.lookupFunc(lfun);
+	QString const new_lfun = shortcut_->lfunLE->text();
+	FuncRequest func = lyxaction.lookupFunc(fromqstr(new_lfun));
 
 	if (func.action == LFUN_UNKNOWN_ACTION) {
 		Alert::error(_("Failed to create shortcut"),
@@ -2408,6 +2416,11 @@ void PrefShortcuts::shortcut_okPB_pressed()
 			_("Shortcut is already defined"));
 		return;
 	}
+
+	if (!save_lfun_.isEmpty() && new_lfun == save_lfun_)
+		// real modification of the lfun's shortcut,
+		// so remove the previous one
+		removeShortcut();
 
 	QTreeWidgetItem * item = insertShortcutItem(func, k, UserBind);
 	if (item) {

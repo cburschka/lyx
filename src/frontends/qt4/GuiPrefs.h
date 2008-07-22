@@ -436,6 +436,7 @@ public:
 	void update(LyXRC const & rc);
 	void updateShortcutsTW();
 	void modifyShortcut();
+	void removeShortcut();
 	///
 	void setItemType(QTreeWidgetItem * item, ItemType tag);
 	QTreeWidgetItem * insertShortcutItem(FuncRequest const & lfun, 
@@ -476,6 +477,8 @@ private:
 	KeyMap system_bind_;
 	KeyMap user_bind_;
 	KeyMap user_unbind_;
+	///
+	QString save_lfun_;
 };
 
 
