@@ -177,6 +177,46 @@ private:
 	support::FileName file_;
 };
 
+
+///
+class SVN : public VCS {
+public:
+	///
+	explicit
+	SVN(support::FileName const & m, support::FileName const & f);
+
+	/// return the revision file for the given file, if found
+	static support::FileName const findFile(support::FileName const & file);
+
+	virtual void registrer(std::string const & msg);
+
+	virtual void checkIn(std::string const & msg);
+
+	virtual bool checkInEnabled();
+
+	virtual void checkOut();
+
+	virtual bool checkOutEnabled();
+
+	virtual void revert();
+
+	virtual void undoLast();
+
+	virtual bool undoLastEnabled();
+
+	virtual void getLog(support::FileName const &);
+
+	virtual std::string const versionString() const {
+		return "SVN: " + version_;
+	}
+
+protected:
+	virtual void scanMaster();
+
+private:
+	support::FileName file_;
+};
+
 } // namespace lyx
 
 #endif // VCBACKEND_H

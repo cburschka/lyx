@@ -382,4 +382,125 @@ void CVS::getLog(FileName const & tmpf)
 }
 
 
+/////////////////////////////////////////////////////////////////////
+//
+// SVN
+//
+/////////////////////////////////////////////////////////////////////
+
+SVN::SVN(FileName const & m, FileName const & f)
+{
+	master_ = m;
+	file_ = f;
+	scanMaster();
+}
+
+
+FileName const SVN::findFile(FileName const & file)
+{
+	// First we look for the CVS/Entries in the same dir
+	// where we have file.
+	FileName const entries(onlyPath(file.absFilename()) + "/.svn/entries");
+	string const tmpf = onlyFilename(file.absFilename());
+	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under svn in `" << entries
+			     << "' for `" << tmpf << '\'');
+	if (entries.isReadableFile()) {
+		// Ok we are at least in a CVS dir. Parse the CVS/Entries
+		// and see if we can find this file. We do a fast and
+		// dirty parse here.
+		ifstream ifs(entries.toFilesystemEncoding().c_str());
+		string line, oldline;
+		while (getline(ifs, line)) {
+			if (line == "dir" || line == "file")
+				LYXERR(Debug::LYXVC, "\tEntries: " << oldline);
+			if (oldline == tmpf && line == "file")
+				return entries;
+			oldline = line;
+		}
+	}
+	return FileName();
+}
+
+
+void SVN::scanMaster()
+{
+	// if we want some locking under svn
+	// we need different infrastructure around
+	locker_ = "Unlocked";
+	vcstatus = UNLOCKED;
+}
+
+
+void SVN::registrer(string const & msg)
+{
+	doVCCommand("svn -q add " + quoteName(onlyFilename(owner_->absFileName())),
+		    FileName(owner_->filePath()));
+}
+
+
+void SVN::checkIn(string const & msg)
+{
+	doVCCommand("svn -q commit -m \"" + msg + "\" "
+		    + quoteName(onlyFilename(owner_->absFileName())),
+		    FileName(owner_->filePath()));
+}
+
+
+bool SVN::checkInEnabled()
+{
+	return true;
+}
+
+
+void SVN::checkOut()
+{
+	// svn update or perhaps for svn this should be a noop
+	// we need to detect conflict (eg "C" in output)
+	// before we can do this.
+	lyxerr << "Sorry not implemented." << endl;
+}
+
+
+bool SVN::checkOutEnabled()
+{
+	return false;
+}
+
+
+void SVN::revert()
+{
+	// Reverts to the version in CVS repository and
+	// gets the updated version from the repository.
+	string const fil = quoteName(onlyFilename(owner_->absFileName()));
+
+	doVCCommand("svn revert -q " + fil,
+		    FileName(owner_->filePath()));
+	owner_->markClean();
+}
+
+
+void SVN::undoLast()
+{
+	// merge the current with the previous version
+	// in a reverse patch kind of way, so that the
+	// result is to revert the last changes.
+	lyxerr << "Sorry not implemented." << endl;
+}
+
+
+bool SVN::undoLastEnabled()
+{
+	return false;
+}
+
+
+void SVN::getLog(FileName const & tmpf)
+{
+	doVCCommand("svn log " + quoteName(onlyFilename(owner_->absFileName()))
+		    + " > " + tmpf.toFilesystemEncoding(),
+		    FileName(owner_->filePath()));
+}
+
+
+
 } // namespace lyx

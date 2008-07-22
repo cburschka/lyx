@@ -60,6 +60,13 @@ bool LyXVC::file_found_hook(FileName const & fn)
 		vcs->owner(owner_);
 		return true;
 	}
+	// Check if file is under SVN
+	if (!(found_file = SVN::findFile(fn)).empty()) {
+		vcs.reset(new SVN(found_file, fn));
+		vcs->owner(owner_);
+		return true;
+	}
+
 	// file is not under any VCS.
 	return false;
 }
@@ -71,6 +78,8 @@ bool LyXVC::file_not_found_hook(FileName const & fn)
 	if (!RCS::findFile(fn).empty())
 		return true;
 	if (!CVS::findFile(fn).empty())
+		return true;
+	if (!SVN::findFile(fn).empty())
 		return true;
 	return false;
 }
@@ -98,8 +107,14 @@ void LyXVC::registrer()
 	if (!vcs) {
 		//check in the root directory of the document
 		FileName const cvs_entries(onlyPath(filename.absFilename()) + "/CVS/Entries");
+		FileName const svn_entries(onlyPath(filename.absFilename()) + "/.svn/entries");
 
-		if (cvs_entries.isReadableFile()) {
+		if (svn_entries.isReadableFile()) {
+			LYXERR(Debug::LYXVC, "LyXVC: registering "
+				<< to_utf8(filename.displayName()) << " with SVN");
+			vcs.reset(new SVN(cvs_entries, filename));
+
+		} else if (cvs_entries.isReadableFile()) {
 			LYXERR(Debug::LYXVC, "LyXVC: registering "
 				<< to_utf8(filename.displayName()) << " with CVS");
 			vcs.reset(new CVS(cvs_entries, filename));
