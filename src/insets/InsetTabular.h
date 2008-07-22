@@ -639,16 +639,8 @@ public:
 	///
 	Inset * clone() { return new InsetTableCell(*this); }
 	///
-	virtual bool usePlainLayout() const { return true; }
-	/// 
-	virtual bool forcePlainLayout(idx_type = 0) const;
-	/// 
-	virtual bool allowParagraphCustomization(idx_type = 0) const;
-	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const;
-	///
-	virtual bool neverIndent() { return true; }
 	///
 	void toggleFixedWidth(bool fw) { isFixedWidth = fw; }
 private:
@@ -681,6 +673,14 @@ private:
 	// --rgh
 	///
 	bool isFixedWidth;
+	/// should paragraph indendation be omitted in any case?
+	bool neverIndent() const { return true; }
+	///
+	virtual bool usePlainLayout() const { return true; }
+	/// 
+	virtual bool forcePlainLayout(idx_type = 0) const;
+	/// 
+	virtual bool allowParagraphCustomization(idx_type = 0) const;
 };
 
 
