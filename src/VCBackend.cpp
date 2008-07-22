@@ -443,16 +443,31 @@ void SVN::scanMaster()
 
 void SVN::registrer(string const & msg)
 {
-	doVCCommand("svn -q add " + quoteName(onlyFilename(owner_->absFileName())),
+	doVCCommand("svn add -q " + quoteName(onlyFilename(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 }
 
 
 void SVN::checkIn(string const & msg)
 {
-	doVCCommand("svn -q commit -m \"" + msg + "\" "
-		    + quoteName(onlyFilename(owner_->absFileName())),
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()){
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return;
+	}
+
+	doVCCommand("svn commit -q -m \"" + msg + "\" "
+		    + quoteName(onlyFilename(owner_->absFileName()))
+		    + " 2> " + tmpf.toFilesystemEncoding(),
 		    FileName(owner_->filePath()));
+
+	string res = scanLogFile(tmpf);
+	if (!res.empty())
+		frontend::Alert::error(_("Revision control error."),
+				_("Error when commiting to repository.\n"
+				"You have to manually resolve the problem.\n"
+				"After pressing OK, LyX will reopen resolved document."));
+	tmpf.erase();
 }
 
 
