@@ -2210,6 +2210,8 @@ For inline fractions with a sloped fraction stroke you can use the command
 
 \backslash
 nicefrac
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -2221,13 +2223,63 @@ nicefrac
 
 \end_inset
 
-
-\series default
 : 
 \begin_inset Formula $\nicefrac{5}{31}$
 \end_inset
 
+ or 
+\series bold
 
+\backslash
+unitfrac
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Commands ! U ! 
+\backslash
+unitfrac
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula $\unitfrac{5}{31}$
+\end_inset
+
+ There is furthermore the command 
+\series bold
+
+\backslash
+unitfracthree
+\series default
+ that offers to write a fraction in combination with a number: 
+\begin_inset Formula $\unitfrac[2]{1}{3}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Note that 
+\series bold
+
+\backslash
+unitfracthree
+\series default
+ is not a real LaTeX command but the command
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+unitfrac[number]{numerator}{denominator}
+\series default
+, therefore you cannot use it in TeX code.
 \end_layout
 
 \begin_layout Standard
@@ -4210,6 +4262,13 @@ It is possible to place up to 6 lines above or below characters.
 
 \begin_layout Subsection
 Ellipses
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Ellipses"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
@@ -11861,6 +11920,35 @@ reference "sec:Formula-Styles"
 \end_inset
 
 .)
+\end_layout
+
+\begin_layout Standard
+Besides 
+\series bold
+
+\backslash
+hfill
+\series default
+, there are the commands 
+\series bold
+
+\backslash
+dotfill
+\series default
+ and 
+\series bold
+
+\backslash
+hrulefill
+\series default
+ that fill the space with a pattern, see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Ellipses"
+
+\end_inset
+
+ for an example.
 \end_layout
 
 \begin_layout Standard
@@ -34176,6 +34264,40 @@ reference "sub:Predefined-Space"
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+This convention is automatically fulfilled when the command 
+\series bold
+
+\backslash
+unittwo
+\series default
+ is used.
+ When it is entered to a formula, two boxes appear.
+ In the first one the value is inserted, in the second one the unit, and
+ one gets as above: 
+\begin_inset Formula $\unit[30]{km/h}$
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+.
+ Note that 
+\series bold
+
+\backslash
+unittwo
+\series default
+ is not a real LaTeX command but the command 
+\series bold
+
+\backslash
+unit[value]{unit}
+\series default
+, therefore you cannot use it in TeX code.
 \end_layout
 
 \begin_layout Itemize
@@ -34222,7 +34344,7 @@ In numbers with more than four digits the smallest space is inserted before
 \end_layout
 
 \begin_layout Itemize
-For dimensionings like 120×90×40
+For dimensions like 120×90×40
 \begin_inset space \thinspace{}
 \end_inset
 

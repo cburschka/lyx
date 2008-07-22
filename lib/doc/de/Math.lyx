@@ -2205,11 +2205,64 @@ nicefrac
 
 
 \series default
- benutzt werden: 
+: 
 \begin_inset Formula $\nicefrac{5}{31}$
 \end_inset
 
+ oder 
+\series bold
 
+\backslash
+unitfrac
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Befehle! U ! 
+\backslash
+unitfrac
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula $\unitfrac{5}{31}$
+\end_inset
+
+ benutzt werden.
+ Des Weiteren gibt es den Befehl 
+\series bold
+
+\backslash
+unitfracthree
+\series default
+ mit dem man einen Bruch in Kombination mit einer Zahl setzen kann: 
+\begin_inset Formula $\unitfrac[2]{1}{3}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Zu beachten ist, dass 
+\series bold
+
+\backslash
+unitfracthree
+\series default
+ kein echter LaTeX-Befehl, sondern der Befehl
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+unitfrac[Zahl]{Zähler}{Nenner}
+\series default
+ ist, daher kann man ihn nicht im TeX-Code benutzen.
 \end_layout
 
 \begin_layout Standard
@@ -4213,6 +4266,13 @@ Man kann bis zu 6 Striche über oder unter Zeichen setzen.
 
 \begin_layout Subsection
 Fortsetzungspunkte
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Fortsetzungspunkte"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
@@ -11870,6 +11930,35 @@ reference "sec:Formelstile"
 \end_inset
 
  erklärt.)
+\end_layout
+
+\begin_layout Standard
+Neben 
+\series bold
+
+\backslash
+hfill
+\series default
+ gibt es noch die Befehle 
+\series bold
+
+\backslash
+dotfill
+\series default
+ und 
+\series bold
+
+\backslash
+hrulefill
+\series default
+, die den Leerraum mit einem Muster füllen, siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Fortsetzungspunkte"
+
+\end_inset
+
+ für ein Beispiel.
 \end_layout
 
 \begin_layout Standard
@@ -34380,6 +34469,40 @@ reference "sub:Vordefinierter-Leerraum"
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+Diese Richtlinie wird automatisch eingehalten, wenn man den Befehl 
+\series bold
+
+\backslash
+unittwo
+\series default
+ verwendet.
+ Gibt man ihn in eine Formel ein, erscheinen zwei Kästchen.
+ In das Erste wird der Wert, in das Zweite die Einheit eingegeben und man
+ erhält wie oben: 
+\begin_inset Formula $\unit[30]{km/h}$
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+.
+ Zu beachten ist, dass 
+\series bold
+
+\backslash
+unittwo
+\series default
+ kein echter LaTeX-Befehl, sondern der Befehl 
+\series bold
+
+\backslash
+unit[Wert]{Einheit}
+\series default
+ ist, daher kann man ihn nicht im TeX-Code benutzen.
 \end_layout
 
 \begin_layout Itemize
