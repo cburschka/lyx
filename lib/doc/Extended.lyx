@@ -16161,12 +16161,12 @@ man rcsintro
 \end_layout
 
 \begin_layout Standard
-Also, as there is only basic CVS implementation you should be familiar with
- CVS usage before start using it under LyX.
+Also, as there is only basic CVS/SVN implementation you should be familiar
+ with CVS/SVN usage before start using it under LyX.
 \end_layout
 
 \begin_layout Standard
-The implementation in LyX assumes a recent version of the GNU RCS or CVS
+The implementation in LyX assumes a recent version of the GNU RCS or CVS/SVN
  package---no guarantees are made for older versions.
 \end_layout
 
@@ -16507,6 +16507,185 @@ This show the complete history of the CVS document.
  The output of 
 \family typewriter
 cvs log 
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+ is shown in a browser.
+\end_layout
+
+\begin_layout Subsection
+SVN commands in LyX
+\end_layout
+
+\begin_layout Standard
+SVN is now partially supported by LyX.
+ You can find the commands in the 
+\family sans
+\bar under
+F
+\bar default
+ile\SpecialChar \menuseparator
+
+\bar under
+V
+\bar default
+ersion
+\begin_inset space ~
+\end_inset
+
+Control
+\family default
+ submenu.
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Register
+\end_layout
+
+\begin_layout Standard
+If your document is not under revision control, this is the only item shown
+ in the menu.
+ And if it is under revision control, the 
+\family sans
+\bar under
+R
+\bar default
+egister
+\family default
+ item is not visible.
+ 
+\end_layout
+
+\begin_layout Standard
+This command registers in SVN your document ONLY in case you have already
+ the documents directory under SVN control (in particular 
+\family typewriter
+.svn/entries
+\family default
+ file exists).
+ This means you have to checkout the archive by yourself.
+ 
+\end_layout
+
+\begin_layout Standard
+Then you are asked interactively to supply an initial description of the
+ document.
+ Don't forget that registered file is not yet commited.
+\end_layout
+
+\begin_layout Standard
+SVN command that is run: 
+\family typewriter
+snv add -q 
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Read 
+\family typewriter
+man svn
+\family default
+ to understand the switches.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Check In Changes
+\end_layout
+
+\begin_layout Standard
+When you are finished editing a file, you commit your changes.
+ When you do this, you are asked for a description of the changes.
+ After that changes are commited.
+\end_layout
+
+\begin_layout Standard
+SVN command: 
+\family typewriter
+svn commit -q -m"<description>" <file-name>
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Check Out For Edit
+\end_layout
+
+\begin_layout Standard
+Updates the changes of this file from the repository.
+ Be sure you understand SVN merging and conflicts resolving before using
+ this function, because all conflicts has to be done manually by you!
+\end_layout
+
+\begin_layout Standard
+RCS command: 
+\family typewriter
+svn update 
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Revert To Repository Version
+\end_layout
+
+\begin_layout Standard
+This will discard all changes made to the document since the last check
+ in.
+ You get a warning before changes are discarded.
+ 
+\end_layout
+
+\begin_layout Standard
+CVS command: 
+\family typewriter
+svn revert -q 
+\begin_inset Quotes eld
+\end_inset
+
+<file-name>
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+Show History
+\end_layout
+
+\begin_layout Standard
+This show the complete history of the SVN document.
+ The output of 
+\family typewriter
+svn log 
 \begin_inset Quotes eld
 \end_inset
 
