@@ -44,7 +44,7 @@ int VCS::doVCCommand(string const & cmd, FileName const & path)
 	int const ret = one.startscript(Systemcall::Wait, cmd);
 	if (ret)
 		frontend::Alert::error(_("Revision control error."),
-			bformat(_("Please check you have installed the program called in\n"
+			bformat(_("Some problem occured while running the command:\n"
 				  "'%1$s'."),
 			from_ascii(cmd)));
 	return ret;

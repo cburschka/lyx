@@ -173,8 +173,8 @@ void LyXVC::revert()
 
 	docstring const file = owner_->fileName().displayName(20);
 	docstring text = bformat(_("Reverting to the stored version of the "
-		"document %1$s will lose all current changes.\n\n"
-					     "Do you want to revert to the saved version?"), file);
+				"document %1$s will lose all current changes.\n\n"
+				"Do you want to revert to the older version?"), file);
 	int const ret = Alert::prompt(_("Revert to stored version of document?"),
 		text, 0, 1, _("&Revert"), _("&Cancel"));
 
