@@ -1903,6 +1903,13 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_VC_CHECK_OUT, "vc-check-out", ReadOnly, System },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_VC_REVERT
+ * \li Action: Reverts the document to the last check-in/commit in VCS.
+ * \li Syntax: vc-revert
+ * \li Origin: Lgb, 1 Jul 1997
+ * \endvar
+ */
 		{ LFUN_VC_REVERT, "vc-revert", ReadOnly, System },
 /*!
  * \var lyx::FuncCode lyx::LFUN_VC_UNDO_LAST
