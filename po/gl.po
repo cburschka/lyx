@@ -2,6 +2,7 @@
 # Ramom Flores <fa2ramon at usc dot es>, 2006.
 # José Ramom Flores d'as Seixas <fa2ramon@usc.es>, 2006, 2008.
 # Ramon Flores <fa2ramon@usc.es>, 2007, 2008.
+# Ramon Flores <joseramon.flores@usc.es>, 2008.
 # translation of gl.po to
 # Mensaxes en galego para LyX.
 # Copyright (C) 2006 LyX Team.
@@ -10,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-15 23:12+0200\n"
-"PO-Revision-Date: 2008-05-07 09:30+0200\n"
-"Last-Translator: Ramon Flores <fa2ramon@usc.es>\n"
+"POT-Creation-Date: 2008-07-18 15:54+0200\n"
+"PO-Revision-Date: 2008-07-22 17:13+0200\n"
+"Last-Translator: Ramon Flores <joseramon.flores@usc.es>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
@@ -1141,8 +1142,7 @@ msgstr "Tamaño de saída"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Sets height of graphic. Leave unchecked to set automatically."
-msgstr ""
-"Escolla a altura da imaxe. Deixe sen marcar para que o Lyx decida o tamaño."
+msgstr "Escolla a altura da imaxe. Deixe sen marcar para que o Lyx decida o tamaño."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:177
 msgid "Set &height:"
@@ -1154,8 +1154,7 @@ msgstr "E&scala  graficos (%):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:194
 msgid "Sets width of graphic. Leave unchecked to set automatically."
-msgstr ""
-"Escolla a largura da imaxe. Deixe sen marcar para que o Lyx decida o tamaño."
+msgstr "Escolla a largura da imaxe. Deixe sen marcar para que o Lyx decida o tamaño."
 
 #
 #: src/frontends/qt4/ui/GraphicsUi.ui:197
@@ -2412,8 +2411,7 @@ msgstr "Restaurar a posición do cursor"
 
 #: src/frontends/qt4/ui/PrefUi.ui:133
 msgid "Restore to cursor position when the file was last closed"
-msgstr ""
-"Situa o cursor na mesma posición na que estaba ao ser fechado o documento"
+msgstr "Situa o cursor na mesma posición na que estaba ao ser fechado o documento"
 
 #: src/frontends/qt4/ui/PrefUi.ui:136
 msgid "Save/restore window position"
@@ -2959,8 +2957,7 @@ msgid "&Rescan"
 msgstr "&Reler"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Mostra o contido do ficheiro marcado. Só funciona cando se mostra a rota dos "
 "ficheiros"
@@ -3084,8 +3081,7 @@ msgstr "Sobe o item seleccionado um paso"
 msgid ""
 "Switch between table of contents, list of figures or list of tables, if "
 "available"
-msgstr ""
-"Troca entre índice xeral, lista de figuras ou lista de táboas, se existen"
+msgstr "Troca entre índice xeral, lista de figuras ou lista de táboas, se existen"
 
 #: src/frontends/qt4/ui/TocUi.ui:181
 msgid "Adjust the depth of the navigation tree"
@@ -3426,7 +3422,7 @@ msgstr "Notación #:"
 msgid "Case"
 msgstr "Caso"
 
-#: lib/layouts/IEEEtran.layout:245 lib/layouts/amsmaths.inc:618
+#: lib/layouts/IEEEtran.layout:245
 msgid "Case #:"
 msgstr "Caso #:"
 
@@ -4063,6 +4059,11 @@ msgstr "LatinOff"
 msgid "Latin off"
 msgstr "Latin off"
 
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "InicioDiapositivo"
+
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:114
 #: lib/layouts/beamer.layout:129 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:31 lib/layouts/scrartcl.layout:20
@@ -4078,11 +4079,6 @@ msgstr "Parte"
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Parte*"
-
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "InicioDiapositivo"
 
 #: lib/layouts/beamer.layout:104 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62
@@ -5939,7 +5935,7 @@ msgstr "Autor Indice xeral"
 msgid "TOC Author:"
 msgstr "Autor Índice xeral:"
 
-#: lib/layouts/llncs.layout:298
+#: lib/layouts/llncs.layout:298 lib/layouts/amsmaths.inc:618
 msgid "Case #."
 msgstr "Caso #."
 
@@ -8264,7 +8260,7 @@ msgstr "Guia do usuário|G"
 
 #: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:479
 msgid "Extended Features|E"
-msgstr "Funcións avanzadas|F"
+msgstr "Funcións avanzadas|u"
 
 #: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:480
 msgid "Embedded Objects|m"
@@ -11431,251 +11427,219 @@ msgstr ""
 
 #: lib/configure.py:236
 msgid "Tgif"
-msgstr ""
+msgstr "Tgif"
 
 #: lib/configure.py:239
 msgid "FIG"
-msgstr ""
+msgstr "FIG"
 
 #: lib/configure.py:242
-#, fuzzy
 msgid "Grace"
-msgstr "Escala de cincentos"
+msgstr "Grace"
 
 #: lib/configure.py:245
 msgid "FEN"
-msgstr ""
+msgstr "FEN"
 
 #: lib/configure.py:249
 msgid "BMP"
-msgstr ""
+msgstr "BMP"
 
 #: lib/configure.py:250
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: lib/configure.py:251
 msgid "JPEG"
-msgstr ""
+msgstr "JPEG"
 
 #: lib/configure.py:252
 msgid "PBM"
-msgstr ""
+msgstr "PBM"
 
 #: lib/configure.py:253
 msgid "PGM"
-msgstr ""
+msgstr "PGM"
 
 #: lib/configure.py:254
 msgid "PNG"
-msgstr ""
+msgstr "PNG"
 
 #: lib/configure.py:255
 msgid "PPM"
-msgstr ""
+msgstr "PPM"
 
 #: lib/configure.py:256
 msgid "TIFF"
-msgstr ""
+msgstr "TIFF"
 
 #: lib/configure.py:257
 msgid "XBM"
-msgstr ""
+msgstr "XBM"
 
 #: lib/configure.py:258
 msgid "XPM"
-msgstr ""
+msgstr "XPM"
 
 #: lib/configure.py:263
-#, fuzzy
 msgid "Plain text (chess output)"
-msgstr "Texto simples"
+msgstr "Texto simples (saída xadrez)"
 
 #: lib/configure.py:264
-#, fuzzy
 msgid "Plain text (image)"
-msgstr "Texto simples"
+msgstr "Texto simples (imaxe)"
 
 #: lib/configure.py:265
-#, fuzzy
 msgid "Plain text (Xfig output)"
-msgstr "Texto simples"
+msgstr "Texto simples (Saída Xfig)"
 
 #: lib/configure.py:266
-#, fuzzy
 msgid "date (output)"
-msgstr "Actualiza PostScript"
+msgstr "data (saida)"
 
 #: lib/configure.py:267
-#, fuzzy
 msgid "DocBook"
-msgstr "Marcadores|M"
+msgstr "DocBook"
 
 #: lib/configure.py:267
-#, fuzzy
 msgid "DocBook|B"
-msgstr "Marcadores|M"
+msgstr "DocBook|B"
 
 #: lib/configure.py:268
 msgid "Docbook (XML)"
-msgstr ""
+msgstr "Docbook (XML)"
 
 #: lib/configure.py:269
-#, fuzzy
 msgid "Graphviz Dot"
-msgstr "Gráficos"
+msgstr "Graphviz Dot"
 
 #: lib/configure.py:270
-#, fuzzy
 msgid "NoWeb"
-msgstr "Nengun"
+msgstr "NoWeb"
 
 #: lib/configure.py:270
-#, fuzzy
 msgid "NoWeb|N"
-msgstr "Nengun"
+msgstr "NoWeb|N"
 
 #: lib/configure.py:271
-#, fuzzy
 msgid "LilyPond music"
-msgstr "LilyPond"
+msgstr "Música LilyPond"
 
 #: lib/configure.py:272
-#, fuzzy
 msgid "LaTeX (plain)"
-msgstr "O&pcións LaTeX:"
+msgstr "LaTeX (simples)"
 
 #: lib/configure.py:272
-#, fuzzy
 msgid "LaTeX (plain)|L"
-msgstr "O&pcións LaTeX:"
+msgstr "LaTeX (simples)|L"
 
 #: lib/configure.py:273
 msgid "LinuxDoc"
-msgstr ""
+msgstr "LinuxDoc"
 
 #: lib/configure.py:273
 msgid "LinuxDoc|x"
-msgstr ""
+msgstr "LinuxDoc|x"
 
 #: lib/configure.py:274
-#, fuzzy
 msgid "LaTeX (pdflatex)"
-msgstr "Actualiza PDF (pdflatex)"
+msgstr "LaTeX (pdflatex)"
 
 #: lib/configure.py:275 src/frontends/qt4/QPrefs.cpp:177
 msgid "Plain text"
 msgstr "Texto simples"
 
 #: lib/configure.py:275
-#, fuzzy
 msgid "Plain text|a"
-msgstr "Texto simples"
+msgstr "Texto simples|s"
 
 #: lib/configure.py:276
-#, fuzzy
 msgid "Plain text (pstotext)"
-msgstr "Texto simples"
+msgstr "Texto simples (pstotext)"
 
 #: lib/configure.py:277
-#, fuzzy
 msgid "Plain text (ps2ascii)"
-msgstr "Texto simples"
+msgstr "Texto simples (ps2ascii)"
 
 #: lib/configure.py:278
-#, fuzzy
 msgid "Plain text (catdvi)"
-msgstr "Texto simples"
+msgstr "Texto simples (catdvi)"
 
 #: lib/configure.py:279
 msgid "Plain Text, Join Lines"
 msgstr "Texto simples, une as liñas"
 
 #: lib/configure.py:284
-#, fuzzy
 msgid "EPS"
-msgstr "PS"
+msgstr "EPS"
 
 #: lib/configure.py:285
-#, fuzzy
 msgid "Postscript"
-msgstr "Post Scriptum:"
+msgstr "Postscript"
 
 #: lib/configure.py:285
-#, fuzzy
 msgid "Postscript|t"
-msgstr "Post Scriptum:"
+msgstr "Postscript|t"
 
 #: lib/configure.py:289
-#, fuzzy
 msgid "PDF (ps2pdf)"
-msgstr "Mostra PDF (pdflatex)"
+msgstr "PDF (ps2pdf)"
 
 #: lib/configure.py:289
-#, fuzzy
 msgid "PDF (ps2pdf)|P"
-msgstr "Mostra PDF (pdflatex)"
+msgstr "PDF (ps2pdf)|P"
 
 #: lib/configure.py:290
-#, fuzzy
 msgid "PDF (pdflatex)"
-msgstr "Mostra PDF (pdflatex)"
+msgstr "PDF (pdflatex)"
 
 #: lib/configure.py:290
-#, fuzzy
 msgid "PDF (pdflatex)|F"
-msgstr "Mostra PDF (pdflatex)"
+msgstr "PDF (pdflatex)|F"
 
 #: lib/configure.py:291
-#, fuzzy
 msgid "PDF (dvipdfm)"
-msgstr "Mostra PDF (pdflatex)"
+msgstr "PDF (dvipdfm)"
 
 #: lib/configure.py:291
-#, fuzzy
 msgid "PDF (dvipdfm)|m"
-msgstr "Mostra PDF (pdflatex)"
+msgstr "PDF (dvipdfm)|m"
 
 #: lib/configure.py:294
 msgid "DVI"
-msgstr ""
+msgstr "DVI"
 
 #: lib/configure.py:294
 msgid "DVI|D"
-msgstr ""
+msgstr "DVI|D"
 
 #: lib/configure.py:297
-#, fuzzy
 msgid "DraftDVI"
-msgstr "&Rascuño"
+msgstr "RascuñoDVI"
 
 #: lib/configure.py:300
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: lib/configure.py:300
 msgid "HTML|H"
-msgstr ""
+msgstr "HTML|H"
 
 #: lib/configure.py:303
-#, fuzzy
 msgid "Noteedit"
-msgstr "NotaAoEditor"
+msgstr "Noteedit"
 
 #: lib/configure.py:306
-#, fuzzy
 msgid "OpenDocument"
-msgstr "Abre documento"
+msgstr "OpenDocument"
 
 #: lib/configure.py:309
-#, fuzzy
 msgid "date command"
-msgstr "Comando índice:"
+msgstr "comando data"
 
 #: lib/configure.py:310
-#, fuzzy
 msgid "Table (CSV)"
-msgstr "Táboa"
+msgstr "Táboa (CSV)"
 
 #: lib/configure.py:312 src/frontends/qt4/GuiView.cpp:733
 msgid "LyX"
@@ -11683,73 +11647,67 @@ msgstr "LyX"
 
 #: lib/configure.py:313
 msgid "LyX 1.3.x"
-msgstr ""
+msgstr "LyX 1.3.x"
 
 #: lib/configure.py:314
 msgid "LyX 1.4.x"
-msgstr ""
+msgstr "LyX 1.4.x"
 
 #: lib/configure.py:315
 msgid "CJK LyX 1.4.x (big5)"
-msgstr ""
+msgstr "CJK LyX 1.4.x (big5)"
 
 #: lib/configure.py:316
 msgid "CJK LyX 1.4.x (euc-jp)"
-msgstr ""
+msgstr "CJK LyX 1.4.x (euc-jp)"
 
 #: lib/configure.py:317
 msgid "CJK LyX 1.4.x (euc-kr)"
-msgstr ""
+msgstr "CJK LyX 1.4.x (euc-kr)"
 
 #: lib/configure.py:318
-#, fuzzy
 msgid "LyX Preview"
-msgstr "Vista preliminar"
+msgstr "Vista preliminar LyX"
 
 #: lib/configure.py:319
 msgid "PDFTEX"
-msgstr ""
+msgstr "PDFTEX"
 
 #: lib/configure.py:320
-#, fuzzy
 msgid "Program"
-msgstr "Código programación"
+msgstr "Programa"
 
 #: lib/configure.py:321
 msgid "PSTEX"
-msgstr ""
+msgstr "PSTEX"
 
 #: lib/configure.py:322
-#, fuzzy
 msgid "Rich Text Format"
-msgstr "Fonte texto normal"
+msgstr "Rich Text Format"
 
 #: lib/configure.py:323
 msgid "OpenOffice.Org (sxw)"
-msgstr ""
+msgstr "OpenOffice.Org (sxw)"
 
 #: lib/configure.py:324
 msgid "Windows Metafile"
-msgstr ""
+msgstr "Windows Metafile"
 
 #: lib/configure.py:325
 msgid "Enhanced Metafile"
-msgstr ""
+msgstr "Enhanced Metafile"
 
 #: lib/configure.py:326
-#, fuzzy
 msgid "MS Word"
-msgstr "Palabras"
+msgstr "MS Word"
 
 #: lib/configure.py:326
-#, fuzzy
 msgid "MS Word|W"
-msgstr "Palabras"
+msgstr "MS Word|W"
 
 #: lib/configure.py:327
-#, fuzzy
 msgid "HTML (MS Word)"
-msgstr "Palabras"
+msgstr "HTML (MS Word)"
 
 #: src/Buffer.cpp:238
 msgid "Could not remove temporary directory"
@@ -11767,8 +11725,7 @@ msgstr "Clase de documento descoñecida"
 #: src/Buffer.cpp:411
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
-msgstr ""
-"Usando a clase de documento predefinida, xa que a clase %1$s é descoñecida."
+msgstr "Usando a clase de documento predefinida, xa que a clase %1$s é descoñecida."
 
 #: src/Buffer.cpp:471 src/Text.cpp:296
 #, c-format
@@ -11793,8 +11750,7 @@ msgstr "Non é posíbel carregar a clase de documento"
 
 #: src/Buffer.cpp:513
 #, c-format
-msgid ""
-"Using the default document class, because the class %1$s could not be loaded."
+msgid "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 "Usando a clase de documento predefinida, xa que non se pode carregar a clase "
 "%1$s ."
@@ -12962,8 +12918,7 @@ msgstr "Falta comando despois da opción --execute"
 
 #: src/LyX.cpp:1422
 msgid "Missing file type [eg latex, ps...] after --export switch"
-msgstr ""
-"Falta tipo de ficheiro [p. ej. latex, ps...] despois da opción --export"
+msgstr "Falta tipo de ficheiro [p. ej. latex, ps...] despois da opción --export"
 
 #: src/LyX.cpp:1434
 msgid "Missing file type [eg latex, ps...] after --import switch"
@@ -13221,8 +13176,7 @@ msgstr ""
 "predefinidos despois dun troco de clase."
 
 #: src/LyXRC.cpp:2143
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Intervalo temporário entre autogravados (en segundos). 0 significa sen "
 "autogravado."
@@ -13273,7 +13227,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2180
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
-msgstr ""
+msgstr "Usa as convencións de Mac OS X para o movimento do cursor a nível de palabra"
 
 #: src/LyXRC.cpp:2191
 #, no-c-format
@@ -13345,8 +13299,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2240
 msgid "Maximum number of words in the initialization string for a new label"
-msgstr ""
-"Número máximo de palabras na cadea de inicialización de unha nova etiqueta"
+msgstr "Número máximo de palabras na cadea de inicialización de unha nova etiqueta"
 
 #: src/LyXRC.cpp:2244
 msgid ""
@@ -13357,8 +13310,7 @@ msgstr ""
 "documento."
 
 #: src/LyXRC.cpp:2248
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Seleccionar se for preciso un comando de troco de língua ao final do "
 "documento."
@@ -13443,8 +13395,7 @@ msgstr ""
 "entorno PATH. Use o formato nativo do SO."
 
 #: src/LyXRC.cpp:2304
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Especificar dicionário personal alternativo. Ex. \".ispell_english\"."
 
 #: src/LyXRC.cpp:2308
@@ -13491,8 +13442,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2340
 msgid "Extension of printer program output file. Usually \".ps\"."
-msgstr ""
-"Extensión do ficheiro de saída do programa de impresión. Normalmente \".ps\"."
+msgstr "Extensión do ficheiro de saída do programa de impresión. Normalmente \".ps\"."
 
 #: src/LyXRC.cpp:2344
 msgid "The option to print out in landscape."
@@ -13540,8 +13490,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2376
 msgid "Option to pass to the print program to print to a file."
-msgstr ""
-"Opción para pasar ao programa de impresión para que imprima nun ficheiro."
+msgstr "Opción para pasar ao programa de impresión para que imprima nun ficheiro."
 
 #: src/LyXRC.cpp:2380
 msgid "Option to pass to the print program to print on a specific printer."
@@ -13562,10 +13511,8 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Programa favorito de impresión, ex. \"dvips\", \"dvilj4\"."
 
 #: src/LyXRC.cpp:2392
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
-"Seleccionar para permitir escritas de direita-a-esquerda (ex. hebreu, árabe)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr "Seleccionar para permitir escritas de direita-a-esquerda (ex. hebreu, árabe)."
 
 #: src/LyXRC.cpp:2396
 msgid ""
@@ -13592,8 +13539,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2415
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr ""
-"Tamaños de fontes usados para calcular a escala das fontes de pantalla."
+msgstr "Tamaños de fontes usados para calcular a escala das fontes de pantalla."
 
 #: src/LyXRC.cpp:2420
 #, no-c-format
@@ -13614,8 +13560,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2429
 msgid "Allow session manager to save and restore windows position."
-msgstr ""
-"Permite que o xestor de sesións grave e restaure a posición das xanelas."
+msgstr "Permite que o xestor de sesións grave e restaure a posición das xanelas."
 
 #: src/LyXRC.cpp:2433
 msgid ""
@@ -13668,8 +13613,7 @@ msgstr ""
 "pode ser que no funcione con todos os dicionários."
 
 #: src/LyXRC.cpp:2479
-msgid ""
-"Enable the pixmap cache that might improve performance on Mac and Windows."
+msgid "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "Activa a cache de mapa de pixeis que pode mellorar o rendimento en Mac e "
 "Windows."
@@ -13827,8 +13771,7 @@ msgstr ""
 
 #: src/Text.cpp:779
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Non é posíbel inserir dous espazos deste xeito. Recomenda-se ler o Tutorial."
+msgstr "Non é posíbel inserir dous espazos deste xeito. Recomenda-se ler o Tutorial."
 
 #: src/Text.cpp:1880
 msgid "[Change Tracking] "
@@ -14373,14 +14316,13 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "cantidade de traballo que outra xente realizou no proxecto LyX."
 
 #: src/frontends/controllers/ControlAboutlyx.cpp:67
-#, fuzzy
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995-2008 LyX Team"
 msgstr ""
 "Os direitos autorais sobre LyX son de\n"
 "Matthias Ettrich (1995) e da\n"
-"Equipa LyX (1995-2006)"
+"Equipa LyX (1995-2008)"
 
 #: src/frontends/controllers/ControlAboutlyx.cpp:73
 msgid ""
@@ -15069,8 +15011,7 @@ msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/QDocument.cpp:234 src/frontends/qt4/QDocument.cpp:657
-msgid ""
-"Input listings parameters on the right. Enter ? for a list of parameters."
+msgid "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Introduza parámetros de listas na direita. Dixite ? para obter unha lista de "
 "parámetros."
@@ -15252,8 +15193,7 @@ msgstr "Gráficos"
 #: src/frontends/qt4/QInclude.cpp:115 src/frontends/qt4/QInclude.cpp:229
 #: src/frontends/qt4/QListings.cpp:350 src/frontends/qt4/QListings.cpp:427
 #: src/frontends/qt4/QListings.cpp:459
-msgid ""
-"Input listing parameters on the right. Enter ? for a list of parameters."
+msgid "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Introduza parámetros de listas na direita. Dixite ? para obter unha lista de "
 "parámetros."
@@ -15801,8 +15741,7 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "Debe compor-se de un ou máis de %1$s."
 
 #: src/insets/InsetListingsParams.cpp:292
-msgid ""
-"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr "Use \\footnotesize, \\small, \\itshape, \\ttfamily ou algo como"
 
 #: src/insets/InsetListingsParams.cpp:294
@@ -16266,8 +16205,7 @@ msgstr "Non se achou o binario de LyX"
 
 #: src/support/Package.cpp.in:449
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
+msgid "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 "Non foi posíbel determinar a rota ao binario LyX desde a liña de comandos %1"
 "$s"
@@ -16353,5 +16291,3 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Usuário descoñecido"
 
-#~ msgid "Plain Text"
-#~ msgstr "Texto simples"
