@@ -95,8 +95,6 @@ FileName const get_locale_dir(FileName const & system_support_dir);
 FileName const get_system_support_dir(FileName const & abs_binary,
 				    string const & command_line_system_support_dir);
 
-FileName const get_temp_dir();
-
 FileName const get_default_user_support_dir(FileName const & home_dir);
 
 bool userSupportDir(FileName const & default_user_support_dir,
@@ -115,7 +113,9 @@ Package::Package(string const & command_line_arg0,
 	: explicit_user_support_dir_(false)
 {
 	home_dir_ = get_home_dir();
-	system_temp_dir_ = get_temp_dir();
+	// Specification of temp_dir_ may be reset by LyXRC,
+	// but the default is fixed for a given OS.
+	system_temp_dir_ = FileName::tempPath();
 	temp_dir_ = system_temp_dir_;
 	document_dir_ = get_document_dir(home_dir_);
 
@@ -364,22 +364,6 @@ FileName const get_locale_dir(FileName const & system_support_dir)
 		return path;
 
 	return FileName();
-}
-
-
-// Specification of temp_dir_ may be reset by LyXRC,
-// but the default is fixed for a given OS.
-FileName const get_temp_dir()
-{
-#if defined (USE_WINDOWS_PACKAGING)
-	// Typical example: C:/TEMP/.
-	char path[MAX_PATH];
-	GetTempPath(MAX_PATH, path);
-	// Remove trailing backslash if any.
-	return FileName(rtrim(to_utf8(from_local8bit(path)), "\\"));
-#else // Posix-like.
-	return FileName("/tmp");
-#endif
 }
 
 

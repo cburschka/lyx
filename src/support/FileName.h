@@ -160,6 +160,8 @@ public:
 	/// get the current working directory
 	static FileName getcwd();
 
+	static FileName tempPath();
+
 	/// filename without path
 	std::string onlyFileName() const;
         /// filename without path and without extension

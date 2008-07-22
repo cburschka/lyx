@@ -426,6 +426,12 @@ FileName FileName::getcwd()
 }
 
 
+FileName FileName::tempPath()
+{
+	return FileName(fromqstr(QDir::tempPath()));
+}
+
+
 time_t FileName::lastModified() const
 {
 	// QFileInfo caches information about the file. So, in case this file has
