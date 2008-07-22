@@ -480,14 +480,15 @@ bool SVN::checkInEnabled()
 
 // FIXME Correctly return code should be checked instead of this.
 // This would need another solution than just plain startscript.
+// Hint from Andre': QProcess::readAllStandardError()...
 string SVN::scanLogFile(FileName const & f)
 {
 	ifstream ifs(f.toFilesystemEncoding().c_str());
 	string line;
 
-	while (ifs){
-		getline(ifs,line);
-		lyxerr<<line<<"\n";
+	while (ifs) {
+		getline(ifs, line);
+		lyxerr << line << "\n";
 		if (prefixIs(line, "C "))
 			return line;
 		if (contains(line, "Commit failed"))
@@ -500,7 +501,7 @@ string SVN::scanLogFile(FileName const & f)
 void SVN::checkOut()
 {
 	FileName tmpf = FileName::tempName("lyxvcout");
-	if (tmpf.empty()){
+	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return;
 	}
