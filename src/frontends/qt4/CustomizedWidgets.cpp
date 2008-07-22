@@ -47,8 +47,9 @@ ShortcutWidget::ShortcutWidget(QWidget * parent)
 {
 	QApplication::instance()->installEventFilter(this);
 	has_cursor_ = false;
-	setFrameShape(QFrame::StyledPanel);
+	setFrameShape(QFrame::Panel);
 	setFrameShadow(QFrame::Raised);
+	setLineWidth(3);
 	setFocusPolicy(Qt::StrongFocus);
 	setAlignment(Qt::AlignCenter);
 }
