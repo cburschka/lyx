@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 21.
+letzte Änderung: 23.
  Juli 2008
 \end_layout
 
@@ -17844,50 +17844,27 @@ drehen
 Ausschnitt
 \family default
  kann die Lage festgelegt werden.
- Auf der Karteikarte 
+ In der Karteikarte 
 \family sans
-Zusatz-Optionen
+LaTeX- und LyX-Optionen
 \family default
- können Sie die 
-\family sans
-Teilabbildung
-\family default
-s-Option setzen, die 
+ können Sie das Aussehen der Grafik in LyX einstellen und LaTeX-Experten
+ weitere LaTeX-Optionen eingeben.
+ Die weiteren Optionen sind im 
 \emph on
-nur
-\emph default
- bei Gleitobjekt-Abbildungen benutzt werden kann (siehe Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Beschriftung-von-Abbildungen"
-
-\end_inset
-
-) und dort einen Untertitel erzeugt, dessen Text im Feld 
-\family sans
-Legende
-\family default
- eingegeben wird.
- Weitere Einzelheiten finden Sie in 
-\emph on
-Eigebettete
+Eingebettete
 \emph default
  
 \emph on
 Objekte
 \emph default
-.
- Schließlich können LaTeX-Zauberer über die Karteikarte 
-\family sans
-Zusatz-Optionen
-\family default
- weitere LaTeX-Optionen eingeben.
+ Handbuch beschrieben.
 \end_layout
 
 \begin_layout Subsection
 Abbildungen aus der Zwischenablage
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Zwischenablage!Abbildung einfügen

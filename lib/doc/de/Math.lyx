@@ -2192,6 +2192,8 @@ Um Brüche mit schrägem Bruchstrich zu erzeugen, kann der Befehl
 
 \backslash
 nicefrac
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -2203,8 +2205,6 @@ nicefrac
 
 \end_inset
 
-
-\series default
 : 
 \begin_inset Formula $\nicefrac{5}{31}$
 \end_inset

@@ -405,32 +405,6 @@ Durchsuchen
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Quote
-
-\series bold
-Bemerkung
-\series default
-: Wenn Sie einen Dateinamen über 
-\family sans
-Durchsuchen
-\family default
- eingeben, wird LyX den gesamten Pfad in das Feld 
-\family sans
-Datei
-\family default
- eintragen.
- Das ist etwas lästig, wenn Sie relative Pfade benötigen.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Der Grafik-Dialog wird immer dann geöffnet, wenn Sie auf eine Abbildung
  klicken.
  Der Dialog hat drei Karteikarten:
@@ -549,18 +523,8 @@ Bearbeitungsprogramm
 \family sans
 Ausschnitt
 \family default
- Alternativ zur Festlegung der 
-\family sans
-Ausgabegröße
-\family default
- unter 
-\family sans
-\series bold
-Grafik
-\family default
-\series default
- kann man hier Koordinaten angeben, um Höhe und Breite der Abbildung für
- die Ausgabe festzulegen.
+ Alternativ zur Verwendung von Skalierungen, kann man hier Koordinaten angeben,
+ um Höhe und Breite der Abbildung für die Ausgabe festzulegen.
  Wenn Sie auf 
 \family sans
 Lese
@@ -588,13 +552,8 @@ zuschneiden
 \family default
  wird nur den Teil der Abbildung drucken, der innerhalb der vorgegebenen
  Koordinaten liegt.
- Normalerweise können Sie die Karteikarte 
-\family sans
-\series bold
-Ausschnitt
-\family default
-\series default
- ignorieren, weil Sie sich um die Koordinaten nicht kümmern müssen.
+ Normalerweise müssen Sie sich um Bildkoordinaten nicht kümmern und können
+ diese Karteikarte ignorieren.
 \end_layout
 
 \begin_layout Description
@@ -611,24 +570,7 @@ und
 LyX-Optionen
 \family default
  Hier können Sie das Aussehen einer Abbildung innerhalb von LyX ändern und
- festlegen, ob die Abbildung ein Teil einer gleitenden Abbildung mit eigener
- Beschriftung sein soll.
- Teilabbildungen werden in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "abs:Gleitende-Abbildungen"
-
-\end_inset
-
- beschrieben.
-\begin_inset Newline newline
-\end_inset
-
- LaTeX-Experten können hier weitere LaTeX-Optionen definieren.
+ LaTeX-Experten können weitere LaTeX-Optionen definieren.
 \begin_inset Newline newline
 \end_inset
 
