@@ -1,4 +1,4 @@
-#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -273,7 +273,7 @@ Verfasser: Uwe Stöhr
 \newline
 
 \family sans
-Version 1.5.5
+Version 1.5.6
 \end_layout
 
 \begin_layout Standard
@@ -26149,7 +26149,21 @@ Strg-Enter
 \family default
 \series default
  drückt.
- Dies erzeugt eine 
+ Dies erzeugt entweder eine 
+\series bold
+eqnarray-Umgebung
+\series default
+, die in 
+\begin_inset LatexCommand ref
+reference "sub:Eqnarray-Umgebung"
+
+\end_inset
+
+ beschrieben ist oder, wenn die Option 
+\family sans
+AMS-Mathe-Paket verwenden
+\family default
+ in den Dokumenteinstellungen gewählt ist, eine 
 \series bold
 align-Umgebung
 \series default
@@ -27297,6 +27311,12 @@ pt Leerraum
 
 \begin_layout Subsection
 Eqnarray-Umgebung
+\begin_inset LatexCommand label
+name "sub:Eqnarray-Umgebung"
+
+\end_inset
+
+
 \begin_inset LatexCommand index
 name "Formel ! mehrzeilige ! Eqnarray-Umgebung"
 

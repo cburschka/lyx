@@ -1,4 +1,4 @@
-#LyX 1.5.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -262,7 +262,7 @@ author: Uwe Stöhr
 \newline
 
 \family sans
-Version 1.5.5
+Version 1.5.6
 \end_layout
 
 \begin_layout Standard
@@ -26016,7 +26016,21 @@ Ctrl-Return
 \family default
 \series default
  inside a formula.
- This creates an 
+ This creates either an 
+\series bold
+eqnarray environment
+\series default
+ that is described in 
+\begin_inset LatexCommand ref
+reference "sub:Eqnarray-Environment"
+
+\end_inset
+
+ or, when the option 
+\family sans
+Use AMS math package
+\family default
+ in the document settings is selected, an 
 \series bold
 align environment
 \series default
@@ -27156,6 +27170,12 @@ pt space was inserted at the beginning of the first column.
 
 \begin_layout Subsection
 Eqnarray Environment
+\begin_inset LatexCommand label
+name "sub:Eqnarray-Environment"
+
+\end_inset
+
+
 \begin_inset LatexCommand index
 name "Formula ! multiline ! eqnarray environment"
 
