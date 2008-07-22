@@ -221,6 +221,8 @@ public:
 
 protected:
 	virtual void scanMaster();
+	/// Check for error messages in svn output.
+	std::string scanLogFile(support::FileName const & f);
 
 private:
 	support::FileName file_;

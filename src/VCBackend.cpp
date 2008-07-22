@@ -461,11 +461,45 @@ bool SVN::checkInEnabled()
 	return true;
 }
 
+// FIXME Correctly return code should be checked instead of this.
+// This would need another solution than just plain startscript.
+string SVN::scanLogFile(FileName const & f)
+{
+	ifstream ifs(f.toFilesystemEncoding().c_str());
+	string line;
+
+	while (ifs){
+		getline(ifs,line);
+		lyxerr<<line<<"\n";
+		if (prefixIs(line, "C "))
+			return line;
+		if (contains(line, "Commit failed"))
+			return line;
+	}
+	return string();
+}
+
 
 void SVN::checkOut()
 {
-	doVCCommand("svn update " + quoteName(onlyFilename(owner_->absFileName())),
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()){
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return;
+	}
+
+	doVCCommand("svn update " + quoteName(onlyFilename(owner_->absFileName()))
+		    + " > " + tmpf.toFilesystemEncoding(),
 		    FileName(owner_->filePath()));
+
+	string res = scanLogFile(tmpf);
+	if (!res.empty())
+		frontend::Alert::error(_("Revision control error."),
+			bformat(_("Error when updating from repository.\n"
+				"You have to manually resolve the conflicts NOW!\n'%1$s'.\n\n"
+				"After pressing OK, LyX will try to reopen resolved document."),
+			from_ascii(res)));
+	tmpf.erase();
 }
 
 
