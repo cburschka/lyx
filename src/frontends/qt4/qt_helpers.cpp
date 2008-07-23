@@ -57,12 +57,6 @@ using namespace lyx::support;
 
 namespace lyx {
 
-LyXErr & operator<<(LyXErr & err, QString const & str)
-{
-	return err << fromqstr(str);
-}
-
-
 FileName libFileSearch(QString const & dir, QString const & name,
 				QString const & ext)
 {

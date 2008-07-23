@@ -33,9 +33,6 @@ namespace lyx {
 namespace support { class FileName; }
 
 class BufferParams;
-class LyXErr;
-
-LyXErr & operator<<(LyXErr &, QString const &);
 
 namespace frontend {
 

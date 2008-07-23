@@ -12,12 +12,21 @@
 
 #include <config.h>
 
+#include "support/qstring_helpers.h"
+
+#include "support/debug.h"
 #include "support/docstring.h"
 
 #include <QString>
 #include <QVector>
 
 namespace lyx {
+
+LyXErr & operator<<(LyXErr & err, QString const & str)
+{
+	return err << fromqstr(str);
+}
+
 
 QString toqstr(char const * str)
 {

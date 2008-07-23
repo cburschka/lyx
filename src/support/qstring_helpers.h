@@ -18,6 +18,10 @@ class QString;
 
 namespace lyx {
 
+class LyXErr;
+
+LyXErr & operator<<(LyXErr &, QString const &);
+
 /**
  * toqstr - convert a UTF8 encoded char * into a QString
  *
