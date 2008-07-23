@@ -31,6 +31,8 @@ public:
 	InsetList() {}
 	///
 	InsetList(InsetList const &);
+	///
+	void setBuffer(Buffer &);
 
 	///
 	class InsetTable {

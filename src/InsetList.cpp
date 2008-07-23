@@ -61,6 +61,15 @@ InsetList::~InsetList()
 }
 
 
+void InsetList::setBuffer(Buffer & b)
+{
+	List::iterator it = list_.begin();
+	List::iterator end = list_.end();
+	for (; it != end; ++it)
+		it->inset->setBuffer(b);
+}
+
+
 InsetList::iterator InsetList::insetIterator(pos_type pos)
 {
 	InsetTable search_elem(pos, 0);

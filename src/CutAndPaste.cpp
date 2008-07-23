@@ -371,6 +371,7 @@ void putClipboard(ParagraphList const & paragraphs,
 		FileName::tempName().absFilename() + "_clipboard.internal");
 	buffer->setUnnamed(true);
 	buffer->paragraphs() = paragraphs;
+	buffer->inset().setBuffer(*buffer);
 	buffer->params().setDocumentClass(docclass);
 	ostringstream lyx;
 	if (buffer->write(lyx))

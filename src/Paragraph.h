@@ -319,6 +319,8 @@ public:
 
 	///
 	InsetList const & insetList() const;
+	///
+	void setBuffer(Buffer &);
 
 	///
 	bool isHfill(pos_type pos) const;
