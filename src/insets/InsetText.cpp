@@ -97,6 +97,7 @@ void InsetText::setBuffer(Buffer & buf)
 	ParagraphList::iterator end = paragraphs().end();
 	for (ParagraphList::iterator it = paragraphs().begin(); it != end; ++it)
 		it->setBuffer(buf);
+	Inset::setBuffer(buf);
 }
 
 
