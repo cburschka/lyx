@@ -929,10 +929,6 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		return;
 	}
 
-	Buffer* cbuf = const_cast<Buffer*>(buf);
-	cbuf->tocBackend().update();
-	cbuf->structureChanged();
-
 	// Add an entry for the master doc if this is a child doc
 	Buffer const * const master = buf->masterBuffer();
 	if (buf != master) {
