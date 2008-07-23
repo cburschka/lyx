@@ -695,6 +695,9 @@ public:
 	///
 	~InsetTabular();
 	///
+	void setBuffer(Buffer & buffer);
+
+	///
 	static void string2params(std::string const &, InsetTabular &);
 	///
 	static std::string params2string(InsetTabular const &);

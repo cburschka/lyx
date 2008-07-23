@@ -2769,6 +2769,13 @@ InsetTabular::~InsetTabular()
 }
 
 
+void InsetTabular::setBuffer(Buffer & buf)
+{
+	tabular.setBuffer(buf);
+	Inset::setBuffer(buf);
+}
+
+
 bool InsetTabular::insetAllowed(InsetCode code) const
 {
 	if (code == MATHMACRO_CODE)
