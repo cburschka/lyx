@@ -202,7 +202,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 	} else if (token == "\\backslash") {
 		par.appendChar('\\', font, change);
 	} else if (token == "\\LyXTable") {
-		auto_ptr<Inset> inset(new InsetTabular(buf));
+		auto_ptr<Inset> inset(new InsetTabular(const_cast<Buffer &>(buf)));
 		inset->read(lex);
 		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\lyxline") {

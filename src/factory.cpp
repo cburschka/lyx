@@ -521,7 +521,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		} else if (tmptok == "space") {
 			inset.reset(new InsetSpace);
 		} else if (tmptok == "Tabular") {
-			inset.reset(new InsetTabular(buf));
+			inset.reset(new InsetTabular(const_cast<Buffer &>(buf)));
 		} else if (tmptok == "Text") {
 			inset.reset(new InsetText(buf));
 		} else if (tmptok == "VSpace") {

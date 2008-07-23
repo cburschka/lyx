@@ -492,8 +492,9 @@ public:
 	enum { TEXT_TO_INSET_OFFSET = 4 };
 
 protected:
-	/// Constructor
-	explicit Inset() : buffer_(0) {}
+	/// Constructors
+	Inset() : buffer_(0) {}
+	Inset(Inset const &) : buffer_(0) {}
 
 	/// replicate ourselves
 	friend class InsetList;

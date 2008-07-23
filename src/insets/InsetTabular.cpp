@@ -472,7 +472,7 @@ string const featureAsString(Tabular::Feature feature)
 /////////////////////////////////////////////////////////////////////
 
 
-Tabular::CellData::CellData(Buffer const & buf)
+Tabular::CellData::CellData(Buffer & buf)
 	: cellno(0),
 	  width(0),
 	  multicolumn(Tabular::CELL_NORMAL),
@@ -506,7 +506,8 @@ Tabular::CellData::CellData(CellData const & cs)
 	  align_special(cs.align_special),
 	  p_width(cs.p_width),
 	  inset(dynamic_cast<InsetTableCell *>(cs.inset->clone()))
-{}
+{
+}
 
 Tabular::CellData & Tabular::CellData::operator=(CellData cs)
 {
@@ -563,14 +564,26 @@ Tabular::ltType::ltType()
 {}
 
 
-Tabular::Tabular(Buffer const & buffer, row_type rows_arg, col_type columns_arg)
+Tabular::Tabular(Buffer & buffer, row_type rows_arg, col_type columns_arg)
 {
 	init(buffer, rows_arg, columns_arg);
 }
 
 
+void Tabular::setBuffer(Buffer & buffer)
+{
+	buffer_ = &buffer;
+	size_t row_count = row_info.size();
+	size_t column_count = column_info.size();
+	// set silly default lines
+	for (row_type i = 0; i < row_count; ++i)
+		for (col_type j = 0; j < column_count; ++j)
+			cell_info[i][j].inset->setBuffer(*buffer_);
+}
+
+
 // activates all lines and sets all widths to 0
-void Tabular::init(Buffer const & buf, row_type rows_arg,
+void Tabular::init(Buffer & buf, row_type rows_arg,
 		      col_type columns_arg)
 {
 	buffer_ = &buf;
@@ -589,6 +602,7 @@ void Tabular::init(Buffer const & buf, row_type rows_arg,
 	// set silly default lines
 	for (row_type i = 0; i < row_count; ++i)
 		for (col_type j = 0; j < column_count; ++j) {
+			cell_info[i][j].inset->setBuffer(*buffer_);
 			cell_info[i][j].top_line = true;
 			cell_info[i][j].left_line = true;
 			cell_info[i][j].bottom_line = i == 0 || i == row_count - 1;
@@ -1421,6 +1435,7 @@ void Tabular::read(Lexer & lex)
 			getTokenValue(line, "special", cell_info[i][j].align_special);
 			l_getline(is, line);
 			if (prefixIs(line, "\\begin_inset")) {
+				cell_info[i][j].inset->setBuffer(*buffer_);
 				cell_info[i][j].inset->read(lex);
 				l_getline(is, line);
 			}
@@ -2694,7 +2709,7 @@ Tabular::BoxType Tabular::useParbox(idx_type cell) const
 //
 /////////////////////////////////////////////////////////////////////
 
-InsetTableCell::InsetTableCell(Buffer const & buf)
+InsetTableCell::InsetTableCell(Buffer & buf)
 	: InsetText(buf), isFixedWidth(false)
 {}
 
@@ -2733,19 +2748,18 @@ bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
 //
 /////////////////////////////////////////////////////////////////////
 
-InsetTabular::InsetTabular(Buffer const & buf, row_type rows,
+InsetTabular::InsetTabular(Buffer & buf, row_type rows,
 			   col_type columns)
 	: tabular(buf, max(rows, row_type(1)), max(columns, col_type(1))), scx_(0), 
 	rowselect_(false), colselect_(false)
 {
-	setBuffer(const_cast<Buffer &>(buf)); // FIXME: remove later
+	setBuffer(buf); // FIXME: remove later
 }
 
 
 InsetTabular::InsetTabular(InsetTabular const & tab)
 	: Inset(tab), tabular(tab.tabular),  scx_(0)
 {
-	setBuffer(const_cast<Buffer &>(tab.buffer())); // FIXME: remove later
 }
 
 
@@ -4519,6 +4533,8 @@ bool InsetTabular::copySelection(Cursor & cur)
 	col_type const columns = ce - cs + 1;
 	while (paste_tabular->column_info.size() > columns)
 		paste_tabular->deleteColumn(columns);
+
+	paste_tabular->setBuffer(tabular.buffer());
 
 	odocstringstream os;
 	OutputParams const runparams(0);

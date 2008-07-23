@@ -235,7 +235,7 @@ public:
 	static const idx_type npos = static_cast<idx_type>(-1);
 
 	/// constructor
-	Tabular(Buffer const &, col_type columns_arg, row_type rows_arg);
+	Tabular(Buffer &, col_type columns_arg, row_type rows_arg);
 
 	/// Returns true if there is a topline, returns false if not
 	bool topLine(idx_type cell) const;
@@ -442,7 +442,7 @@ public:
 	class CellData {
 	public:
 		///
-		CellData(Buffer const &);
+		CellData(Buffer &);
 		///
 		CellData(CellData const &);
 		///
@@ -571,7 +571,7 @@ public:
 	ltType endlastfoot;
 
 	///
-	void init(Buffer const &, row_type rows_arg,
+	void init(Buffer &, row_type rows_arg,
 		  col_type columns_arg);
 	///
 	void updateIndexes();
@@ -618,12 +618,12 @@ public:
 	int docbookRow(odocstream & os, row_type, OutputParams const &) const;
 
 	/// change associated Buffer
-	void setBuffer(Buffer const & buffer) { buffer_ = &buffer; }
+	void setBuffer(Buffer & buffer);
 	/// retrieve associated Buffer
-	Buffer const & buffer() const { return *buffer_; }
+	Buffer & buffer() const { return *buffer_; }
 
 private:
-	Buffer const * buffer_;
+	Buffer * buffer_;
 
 }; // Tabular
 
@@ -633,7 +633,7 @@ class InsetTableCell : public InsetText
 {
 public:
 	///
-	InsetTableCell(Buffer const & buf);
+	InsetTableCell(Buffer & buf);
 	///
 	InsetCode lyxCode() const { return CELL_CODE; }
 	///
@@ -690,7 +690,7 @@ class InsetTabular : public Inset
 {
 public:
 	///
-	InsetTabular(Buffer const &, row_type rows = 1,
+	InsetTabular(Buffer &, row_type rows = 1,
 		     col_type columns = 1);
 	///
 	~InsetTabular();
