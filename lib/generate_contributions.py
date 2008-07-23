@@ -472,6 +472,14 @@ contributers = [
                  "17 January 2006",
                  u"Italian translation"),
 
+     contributer(u"Yuri Chornoivan",
+                 "yurchor () ukr ! net",
+                 "GPL",
+                 "Permission grant",
+                 "m=121681339315810",
+                 "23 July 2008",
+                 u"Ukranian translation"),
+
      contributer(u"Matthias Kalle Dalheimer",
                  "kalle () kdab ! net",
                  "GPL",
