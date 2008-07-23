@@ -1,4 +1,4 @@
-#LyX 1.6svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 338
 \begin_document
 \begin_header
@@ -366,7 +366,8 @@ LyX is known to run on the following platforms (and probably a zillion others):
 \end_layout
 
 \begin_layout Itemize
-Linux distributions: Debian, RedHat, SUSE, Mandrake, Fedora, Ubuntu, etc
+Linux distributions: Debian, RedHat, SUSE, Mandrake, Fedora, Ubuntu, Gentoo,
+ etc
 \end_layout
 
 \begin_layout Itemize
@@ -432,7 +433,7 @@ Where should I look on the World Wide Web for LyX stuff?
 
 \begin_layout Itemize
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -446,7 +447,7 @@ www.lyx.org
 
 \begin_layout Itemize
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -458,68 +459,6 @@ bugzilla.lyx.org
 , if you want to report a bug in LyX.
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-www.devel.lyx.org
-\end_layout
-
-\end_inset
-
-, if you are interested in the real blood and guts.
-\end_layout
-
-\begin_layout Itemize
-Known mirror sites include:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-www.mx.lyx.org
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-www.no.lyx.org
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-www.it.lyx.org
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \begin_layout Subsection
 Where can I get LyX material by FTP? 
 \end_layout
@@ -595,11 +534,11 @@ docs
 
 ; definitely see 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
-http://www.lyx.org/internet/mailing.php3
+http://www.lyx.org/MailingLists
 \end_layout
 
 \end_inset
@@ -623,7 +562,7 @@ Okay, wise guy! Where are they archived?
 \begin_layout Itemize
 Announce: 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -638,7 +577,7 @@ http://www.mail-archive.com/lyx-announce@lists.lyx.org/
 \begin_layout Itemize
 Users: 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -653,7 +592,7 @@ http://www.mail-archive.com/lyx-users@lists.lyx.org/
 \begin_layout Itemize
 Devel: 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -692,52 +631,30 @@ Can I read/write Word files?
 
 \begin_layout Standard
 Not trivially.
- People have had some level of success with the following sequence: LyX
-\begin_inset Formula $\rightarrow$
+ See these page: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/LyX/ConvertingFromWord
+\end_layout
+
 \end_inset
 
-LaTeX
-\begin_inset Formula $\rightarrow$
+ and also the converters section which will give another possibilities of
+ conversion routes: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/AdditionalSoftware#toc9
+\end_layout
+
 \end_inset
 
-RTF
-\begin_inset Formula $\rightarrow$
-\end_inset
-
-Word, and vice versa.
- However, Word is inherently not a markup language like LyX and LaTeX are,
- so conversions are usually difficult and almost meaningless.
-\end_layout
-
-\begin_layout Standard
-However, here are a few suggestions which were sent in:
-\end_layout
-
-\begin_layout Description
-word2x produces LaTeX, HTML and plain text output.
- The LaTeX is importable in principle (and is rather clean) but I often
- prefer plain text and add the formatting back in.
- (This requires that you have knowledge on the original formatting).
- On last writing did not yet handle Office 2000 Word.
-\end_layout
-
-\begin_layout Description
-wvware (found at www.wvware.com, or the abisource CVS repository for the latest).
- This was previously called msWordView.
- Very good, only tends to produce visually formatted LaTeX/HTML.
- Is however highly configurable: a config file 
-\family typewriter
-wvLaTeX.xml
-\family default
- guides the translation process.
- Handles also the newest Office formats.
-\end_layout
-
-\begin_layout Description
-Ted This is the editor to use when someone sends you an RTF file created
- by Word.
- Fine product.
- Mail yourself the converted version (plain text or HTML).
+.
 \end_layout
 
 \begin_layout Standard
@@ -746,12 +663,6 @@ enOffice, ...) which understands Word.
  Then export as the file as plain text and add the formatting by hand in
  LyX.
  
-\end_layout
-
-\begin_layout Standard
-For me personally, at least, it's faster doing this than cleaning up attempts
- at a conversion, though it is certainly unsatisfactory if you need to go
- back and forth a lot.
 \end_layout
 
 \begin_layout Subsection
@@ -768,11 +679,12 @@ tth
 \end_inset
 
  converter program, amongst others.
- There may be a HTML
+ There is a HTML
 \begin_inset Formula $\rightarrow$
 \end_inset
 
-LaTeX program available which allows you to convert the other direction.
+LaTeX program available (html2latex) which allows you to convert the other
+ direction.
 \end_layout
 
 \begin_layout Section
@@ -792,8 +704,8 @@ Qt library: Qt-4.2.0 or higher (using the latest version available is recommende
 \end_layout
 
 \begin_layout Itemize
-A LaTeX installation: we strongly recommend teTeX-1.0 or higher on Linux,
- MikTeX on Window
+A LaTeX installation: we strongly recommend teTeX/TeXLive on Linux, MikTeX
+ on Window
 \end_layout
 
 \begin_layout Itemize
@@ -832,7 +744,7 @@ I hate compiling.
 \end_layout
 
 \begin_layout Standard
-Most of the above packages are available as precompiled binaries for a variety
+Most of the above packages are available as precompiled binaries in a variety
  of Linux systems, perhaps others as well.
  The LyX binaries are available as RPMS, Windows and Mac installers, plus
  a few other formats and may be obtained from 
@@ -1233,16 +1145,6 @@ enumerate
 , enter the brackets in ERT, change the environment depth, and add the three
  elements.
  LyX will auto-label the entries.
-\end_layout
-
-\begin_layout Subsubsection
-How do I count words in LyX?
-\end_layout
-
-\begin_layout Standard
-Run a spellcheck; it will display the total number of words checked.
- Make sure the cursor is at the top of the document when you start the spellchec
-ker so that everything is counted.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1668,18 +1570,6 @@ This should work anywhere, whether or not X is actually running.
 \end_layout
 
 \begin_layout Subsection
-How do I create PDF files from my LyX document?
-\end_layout
-
-\begin_layout Standard
-Read Section 5.3.6 of the 
-\emph on
-Extended Features
-\emph default
- manual.
-\end_layout
-
-\begin_layout Subsection
 Why do the fonts in my document look so bad in 
 \family typewriter
 acroread
@@ -1693,43 +1583,6 @@ The problem and the solution are also discussed in Section 5.3.6 of the
 Extended Features
 \emph default
  manual.
-\end_layout
-
-\begin_layout Subsection
-Why doesn't my latest and greatest version of Ghostscript render EPS inline
- figures properly?
-\end_layout
-
-\begin_layout Standard
-[Note: this only applies to versions of LyX older than 1.2.0, since the graphics
- rendering code has been rewritten in this version]
-\end_layout
-
-\begin_layout Standard
-A couple of users reported that they couldn't get recent Ghostscript versions
- to display inline figures in LyX.
- It transpires that this is a Ghostscript bug:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://sourceforge.net/bugs/?func=detailbug&bug_id=124957&group_id=1897
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-This bug appears to affect Ghostscript 6.22 and upwards.
- After applying the above mentioned patch, rendering in Lyx works fine again.
- GNU Ghostscript 6.53 and above include this fix.
 \end_layout
 
 \begin_layout Section
@@ -1780,6 +1633,7 @@ Open\SpecialChar \menuseparator
 Examples
 \family default
 .
+ Don't forget we have Tips and Tricks database in LyX wiki.
 \end_layout
 
 \begin_layout Subsection
