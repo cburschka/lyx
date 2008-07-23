@@ -672,15 +672,7 @@ nombres propios
 
 \begin_layout Plain Layout
 Para evitar que estas palabras sean reconocidas como tales nombres propios,
- 
-\lang english
-a
-\lang spanish
- llaves TeX 
-\lang english
-pair is inserted.
-
-\lang spanish
+ se inserta un par de llaves TeX.
  
 \end_layout
 
@@ -30536,8 +30528,8 @@ sectioning
 \end_layout
 
 \begin_layout Standard
-Así pues, en nuestro caso se ha usado la siguiente línea ERT o de preámbulo
- LaTeX:
+Así pues, en nuestro caso se ha usado la siguiente línea en código TeX o
+ en el preámbulo LaTeX:
 \end_layout
 
 \begin_layout Standard
@@ -30602,7 +30594,7 @@ numberwithin{table}{part}
 \begin_layout Standard
 Para volver a la numeración estándar o evitar esta clase numeración cuando
  es definida por la clase de documento, se inserta el siguiente comando
- como ERT o en el preámbulo LaTeX:
+ en código TeX o en el preámbulo LaTeX:
 \end_layout
 
 \begin_layout Standard

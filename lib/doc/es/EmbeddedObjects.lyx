@@ -624,7 +624,7 @@ x.eps.gz
 \end_inset
 
 Los gráficos EPS comprimidos sirven para ahorrar espacio de disco si se
- utiliza PostScript como formato de salida, ver apéndice
+ utiliza PostScript como formato de salida, véase apéndice
 \begin_inset space ~
 \end_inset
 
@@ -1842,7 +1842,7 @@ tabla
  actual.
  Una vez puesta la anchura puedes ajustar también el alineamiento vertical.
  Una anchura determinada permite tener saltos de línea y distintos párrafos
- de texto, ver sección 
+ de texto, véase sección 
 \begin_inset space ~
 \end_inset
 
@@ -1860,7 +1860,7 @@ reference "sub:Líneas-Múltiples-en"
 \end_inset
 
 Además, puedes marcar una o más celdas de una fila como una celda multicolumna,
- ver sección
+ véase sección
 \begin_inset space ~
 \end_inset
 
@@ -18973,10 +18973,8 @@ Algoritmo
 \series default
  y 
 \series bold
-\lang english
-Wrap
+Envoltorio
 \series default
-\lang spanish
 .
 \end_layout
 
@@ -19191,12 +19189,12 @@ Ecuaciones
 \end_layout
 
 \begin_layout Subsection
-Flotantes envueltos en texto
+Envoltorios flotantes
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Flotantes ! Envueltos en texto
+Flotantes ! Envoltorio
 \end_layout
 
 \end_inset
@@ -19204,7 +19202,7 @@ Flotantes ! Envueltos en texto
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Flotante-envuelto"
+name "sub:Envoltorio-flotante"
 
 \end_inset
 
@@ -19222,7 +19220,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	width 35col%
+	width 40col%
 	rotateOrigin center
 
 \end_inset
@@ -19236,11 +19234,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Figura-envuelta"
+name "fig:Envoltorio-de-figura"
 
 \end_inset
 
-Figura envuelta en el texto.
+Figura envuelta en el texto
 \end_layout
 
 \end_inset
@@ -19256,19 +19254,27 @@ Figura envuelta en el texto.
 \family sans
 Insertar\SpecialChar \menuseparator
 Flotante\SpecialChar \menuseparator
-Flotante
+Envoltorio
 \begin_inset space ~
 \end_inset
 
-adosado
+de
 \begin_inset space ~
 \end_inset
 
-al
+figura
+\family default
+ o 
+\family sans
+Envoltorio
 \begin_inset space ~
 \end_inset
 
-texto
+de
+\begin_inset space ~
+\end_inset
+
+tabla
 \family default
  si está instalado el paquete LaTeX 
 \series bold
@@ -19311,8 +19317,34 @@ Configuración de LaTeX
 
 \end_inset
 
- La anchura y posición del flotante se ajusta en el diálogo de configuración
- que se muestra con clic-derecha sobre el cuadro del flotante.
+ Los parámetros del flotante se pueden modificar en el diálogo que se muestra
+ con clic-derecha sobre el cuadro del flotante.
+ Son obligatorios la 
+\family sans
+Ubicación
+\family default
+ y la 
+\family sans
+Anchura
+\family default
+.
+ Son opcionales 
+\family sans
+Overhang
+\family default
+, que especifica la anchura de invasión del margen, y 
+\family sans
+Extender
+\begin_inset space ~
+\end_inset
+
+líneas
+\family default
+, que indica cuántas líneas de texto necesitará aproximadamente el flotante.
+ Como suele ser difícil estimar el número de líneas, lo mejor es usar esta
+ opción sólo si encuentras problemas en la colocación del flotante.
+ Además puedes decidir si permitir que LaTeX deje flotar el flotante dentro
+ del párrafo o en los párrafos adyacentes.
  La figura
 \begin_inset space ~
 \end_inset
@@ -19320,21 +19352,24 @@ Configuración de LaTeX
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Figura-envuelta"
+reference "fig:Envoltorio-de-figura"
 
 \end_inset
 
- es un ejemplo de flotante envuelto en texto con una anchura de columna
- del 40
+ es un ejemplo de envoltorio con una anchura de columna del 40
 \begin_inset space \thinspace{}
 \end_inset
 
-%.
+%, ubicado a la izquierda y 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm de invasión de margen.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Ver unidades disponibles en el apéndice
+Consulta las unidades disponibles en el apéndice
 \begin_inset space ~
 \end_inset
 
@@ -19362,7 +19397,7 @@ status open
 \series bold
 Nota:
 \series default
- ¡Los flotantes adosados a texto son frágiles! P.
+ ¡Los envoltorios flotantes son frágiles! P.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -20196,7 +20231,7 @@ un
 
 lado
 \family default
- sirve para girar flotantes, ver sección
+ sirve para girar flotantes, véase sección
 \begin_inset space ~
 \end_inset
 
@@ -20514,8 +20549,8 @@ definitivamente
 \end_layout
 
 \begin_layout Standard
-No hay opciones de ubicación para flotantes ajustados a texto porque siempre
- están rodeados por texto de un párrafo determinado.
+No hay opciones de ubicación para envoltorios flotantes porque siempre están
+ rodeados por texto de un párrafo determinado.
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -20619,7 +20654,7 @@ usepackage[options]{endfloat}
 
 \begin_layout Standard
 Hay varias opciones para diseñar las secciones figura/tabla creadas.
- Para más información ver la documentación de 
+ Para más información véase la documentación de 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "endfloat"
@@ -20640,7 +20675,7 @@ status open
 Nota: endfloat
 \series default
  no traduce automáticamente la indicación, hay que hacerlo manualmente,
- ver sección
+ véase sección
 \begin_inset space ~
 \end_inset
 
@@ -20748,6 +20783,16 @@ lado
 \begin_layout Standard
 Los flotantes girados son puestos siempre en su propia página (o columna
  si el documento es de dos columnas).
+ Se les puede permitir abarcar varias columnas con la opción de configuración
+ 
+\family sans
+Extender
+\begin_inset space ~
+\end_inset
+
+columnas
+\family default
+.
  Se rotan de forma que puedes leerlos desde el margen externo.
  Para forzar determinada dirección de rotación para todas las páginas, puedes
  añadir una de las opciones 
@@ -21736,7 +21781,7 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-Ver la sección
+Véase la sección
 \begin_inset space ~
 \end_inset
 
@@ -23448,7 +23493,7 @@ formato
 \begin_inset VSpace defskip
 \end_inset
 
-Para poner notas al pie en tablas, tienes que usar minipáginas, ver sección
+Para poner notas al pie en tablas, tienes que usar minipáginas, véase sección
 \begin_inset space ~
 \end_inset
 
@@ -24001,7 +24046,7 @@ vspace{1.5mm}}}
 \end_inset
 
 En documentos a dos columnas la nota al pie aparece al final de cada columna,
- ver la figura
+ véase la figura
 \begin_inset space ~
 \end_inset
 
@@ -26185,7 +26230,7 @@ Marco
 \begin_inset space ~
 \end_inset
 
-rectangular Dibuja un marco rectangular alrededor del cuadro.
+sencillo Dibuja un marco rectangular alrededor del cuadro.
  El grosor del marco depende de 
 \series bold
 
@@ -26209,6 +26254,75 @@ status open
 \begin_layout Plain Layout
 \align center
 Cuadro rectangular
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Marco
+\begin_inset space ~
+\end_inset
+
+sencillo
+\begin_inset space ~
+\end_inset
+
+con
+\begin_inset space ~
+\end_inset
+
+salto
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+página Si usas la decoración 
+\family sans
+marco sencillo rectangular
+\family default
+ sin cuadro interior, puedes permitir saltos de página dentro del cuadro.
+ Ten en cuenta que en ese caso, al contrario que otros cuadros enmarcados,
+ el marco usa siempre todo el ancho de columna, el cuadro va en un párrafo
+ propio y 
+\series bold
+
+\backslash
+fboxrule
+\series default
+ y 
+\series bold
+
+\backslash
+fboxsep
+\series default
+ no funcionan.
+ El grosor del marco tiene el tamaño de 
+\series bold
+
+\backslash
+FrameRule
+\series default
+.
+\begin_inset Box Framed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+Cuadro que permite saltos de página
 \end_layout
 
 \end_inset
@@ -26295,11 +26409,7 @@ Marco
 \begin_inset space ~
 \end_inset
 
-con
-\begin_inset space ~
-\end_inset
-
-sombra Dibuja un cuadro rectangular con sombra alrededor del cuadro.
+sombreado Dibuja un cuadro rectangular con sombra alrededor del cuadro.
  El grosor de la línea tiene el tamaño dado por 
 \series bold
 
@@ -26327,6 +26437,52 @@ status open
 \begin_layout Plain Layout
 \align center
 Marco sombrado
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Fondo
+\begin_inset space ~
+\end_inset
+
+sombreado Dibuja un cuadro con fondo de color rojo.
+ A diferencia de los cuadros coloreados,
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+véase sec.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Cuadros-Coloreados"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ siempre usa el ancho total de columna y el cuadro va en su propio párrafo.
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Cuadro con fondo sombreado
 \end_layout
 
 \end_inset
@@ -26411,7 +26567,7 @@ Marco doble
 \begin_inset VSpace bigskip
 \end_inset
 
-La etiqueta del recuadro en LyX cambiará según el estilo de marco elegido.
+La etiqueta del cuadro en LyX reflejará el estilo de marco elegido.
  Para poder utilizar los distintos marcos, debe estar instalado el paquete
  LaTeX 
 \series bold
@@ -26431,16 +26587,12 @@ LaTeX-paquetes ! fancybox
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Box customization
+Personalización de cuadros
 \begin_inset Index
 status open
 
 \begin_layout Plain Layout
-Cuadros ! 
-\lang english
-Customization
+Cuadros ! Personalizar
 \end_layout
 
 \end_inset
@@ -26905,6 +27057,353 @@ shadowsize}{4pt}
 \begin_inset VSpace bigskip
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+Por omisión, el tamaño 
+\series bold
+
+\backslash
+FrameRule
+\series default
+ es 0,4
+\begin_inset space \thinspace{}
+\end_inset
+
+pt.
+ El espacio por omisión entre el contenido de la nota y el marco es 9
+\begin_inset space \thinspace{}
+\end_inset
+
+pt; puede cambiarse con el valor de 
+\series bold
+
+\backslash
+FrameSep
+\series default
+.
+ Por ejemplo, el marco del cuadro siguiente se establece con los comandos
+ en código TeX
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+setlength{
+\backslash
+FrameRule}{5pt}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+setlength{
+\backslash
+FrameSep}{0.5cm}
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+FrameRule}{5pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+FrameSep}{0.5cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Framed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Texto en un 
+\family sans
+marco
+\begin_inset space ~
+\end_inset
+
+sencillo
+\begin_inset space ~
+\end_inset
+
+con
+\begin_inset space ~
+\end_inset
+
+salto
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+página
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+FrameRule}{0.4pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+FrameSep}{9pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para los cuadros con 
+\family sans
+fondo
+\begin_inset space ~
+\end_inset
+
+sombreado
+\family default
+ el espacio por omisión entre el contenido y el marco es 3
+\begin_inset space \thinspace{}
+\end_inset
+
+pt; se puede cambiar con el valor de 
+\series bold
+
+\backslash
+fboxsep
+\series default
+.
+ El color rojo predeterminado se puede cambiar en el sitio con el comando
+ 
+\series bold
+
+\backslash
+definecolor{shadebox}
+\series default
+ o globalmente con el menú 
+\family sans
+Herramientas
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Preferencias
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Colores
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+cuadro
+\begin_inset space ~
+\end_inset
+
+sombreado
+\family default
+.
+ El esquema del comando 
+\series bold
+
+\backslash
+definecolor
+\series default
+ se explica en la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Tablas-Coloreadas"
+
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+El comando 
+\series bold
+
+\backslash
+definecolor
+\series default
+ requiere el paquete LaTeX 
+\series bold
+color
+\series default
+ en el preámbulo, véase la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Cuadros-Coloreados"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ Por ejemplo, la nota siguiente se define con los comandos en código TeX
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+setlength{
+\backslash
+fboxsep}{0.5cm}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+fboxsep}{0.5cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\color yellow
+Texto amarillo en un cuadro con 
+\family sans
+fondo sombreado 
+\family default
+ en color verde oscuro.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+fboxsep}{3pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+definecolor{shadecolor}{rgb}{1,0,0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 Los cambios en las dimensiones son válidos para todos los cuadros que siguen
  a los comandos.
 \end_layout
@@ -26956,6 +27455,13 @@ Relleno
 horizontal
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -27396,7 +27902,7 @@ medio
 
 \begin_layout Standard
 Las minipáginas también sirven para poner un color de fondo para partes
- de texto, ver sección
+ de texto, véase sección
 \begin_inset space ~
 \end_inset
 
@@ -30585,9 +31091,7 @@ Listado de programa
 status collapsed
 
 \begin_layout Plain Layout
-Listado de programa ! list@
-\emph on
-listings
+Código de programa
 \end_layout
 
 \end_inset

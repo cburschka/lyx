@@ -2135,6 +2135,7 @@ lib_doc_es_clipart_files = Split('''
     NotaLyXImagenQt4.png
     Resumen.pdf
     es_ERT.png
+    es_ToolbarEnvBox.png
     etiquetaQt4.png
     flotanteQt4.png
     notapieQt4.png
