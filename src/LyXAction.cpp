@@ -6,7 +6,7 @@
  * \author Lars Gullik Bjønnes
  * \author Jean-Marc Lasgouttes
  * \author John Levon
- * \author Andre Pönitz
+ * \author André Pönitz
  * \author Pavel Sanda
  *
  * Full author contact details are available in file CREDITS.
