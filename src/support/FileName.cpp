@@ -355,16 +355,13 @@ FileNameList FileName::dirList(string const & ext) const
 
 FileName FileName::tempName(string const & mask)
 {
-	FileName tmp_name(mask);
-	string tmpfl;
-	if (tmp_name.d->fi.isAbsolute())
-		tmpfl = mask;
-	else
-		tmpfl = package().temp_dir().absFilename() + "/" + mask;
+	QFileInfo tmp_fi(toqstr(mask));
+	if (!tmp_fi.isAbsolute())
+		tmp_fi.setFile(package().temp_dir().d->fi.absoluteDir(), toqstr(mask));
 
-	QTemporaryFile qt_tmp(toqstr(tmpfl));
+	QTemporaryFile qt_tmp(tmp_fi.absoluteFilePath());
 	if (qt_tmp.open()) {
-		tmp_name.d->fi.setFile(qt_tmp.fileName());
+		FileName tmp_name(fromqstr(qt_tmp.fileName()));
 		LYXERR(Debug::FILES, "Temporary file `" << tmp_name << "' created.");
 		return tmp_name;
 	}
