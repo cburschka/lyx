@@ -1193,6 +1193,7 @@ po_extra_files = Split('''
     sl.po
     sv.po
     tr.po
+    uk.po
     wa.po
     zh_CN.po
     zh_TW.po
