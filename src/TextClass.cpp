@@ -222,7 +222,7 @@ namespace {
 bool TextClass::convertLayoutFormat(support::FileName const & filename, ReadType rt)
 {
 	LYXERR(Debug::TCLASS, "Converting layout file to " << FORMAT);
-		FileName const tempfile = FileName::tempName();
+		FileName const tempfile = FileName::tempName("convert_layout");
 		bool success = layout2layout(filename, tempfile);
 		if (success)
 			success = read(tempfile, rt);
@@ -285,10 +285,10 @@ bool TextClass::read(std::string const & str, ReadType rt)
 		return retval == OK;
 
 	// write the layout string to a temporary file
-	FileName const tempfile = FileName::tempName();
+	FileName const tempfile = FileName::tempName("TextClass_read");
 	ofstream os(tempfile.toFilesystemEncoding().c_str());
 	if (!os) {
-		LYXERR0("Unable to create tempoary file");
+		LYXERR0("Unable to create temporary file");
 		return false;
 	}
 	os << str;

@@ -648,7 +648,7 @@ bool Buffer::readString(string const & s)
 	Lexer lex;
 	istringstream is(s);
 	lex.setStream(is);
-	FileName const name = FileName::tempName();
+	FileName const name = FileName::tempName("Buffer_readString");
 	switch (readFile(lex, name, true)) {
 	case failure:
 		return false;
@@ -737,7 +737,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 			// lyx2lyx would fail
 			return wrongversion;
 
-		FileName const tmpfile = FileName::tempName();
+		FileName const tmpfile = FileName::tempName("Buffer_readFile");
 		if (tmpfile.empty()) {
 			Alert::error(_("Conversion failed"),
 				     bformat(_("%1$s is from a different"
