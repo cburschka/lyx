@@ -309,7 +309,7 @@ bool FileName::isWritable() const
 bool FileName::isDirWritable() const
 {
 	LYXERR(Debug::FILES, "isDirWriteable: " << *this);
-	FileName const tmpfl = FileName::tempName(absFilename() + "/lyxwritetest");
+	FileName const tmpfl = FileName::tempName(absFilename() + "lyxwritetest");
 	return !tmpfl.empty();
 }
 
