@@ -17,6 +17,7 @@
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/qstring_helpers.h"
 #include "support/os.h"
 #include "support/Package.h"
 #include "support/qstring_helpers.h"
@@ -138,6 +139,15 @@ FileName::~FileName()
 FileName::FileName(FileName const & rhs) : d(new Private)
 {
 	d->fi = rhs.d->fi;
+}
+
+
+FileName::FileName(FileName const & rhs, string const & suffix) : d(new Private)
+{
+	if (!rhs.d->fi.isDir())
+		d->fi.setFile(rhs.d->fi.filePath() + toqstr(suffix));
+	else
+		d->fi.setFile(rhs.d->fi.absoluteDir(), toqstr(suffix));
 }
 
 
@@ -353,20 +363,33 @@ FileNameList FileName::dirList(string const & ext) const
 }
 
 
+static string createTempFile(QString const & mask)
+{
+	QTemporaryFile qt_tmp(mask);
+	if (qt_tmp.open()) {
+		string const temp_file = fromqstr(qt_tmp.fileName());
+		LYXERR(Debug::FILES, "Temporary file `" << temp_file << "' created.");
+		return temp_file;
+	}
+	LYXERR(Debug::FILES, "Unable to create temporary file with following template: "
+		<< qt_tmp.fileTemplate());
+	return string();
+}
+
+
+FileName FileName::tempName(FileName const & temp_dir, string const & mask)
+{
+	QFileInfo tmp_fi(temp_dir.d->fi.absoluteDir(), toqstr(mask));
+	return FileName(createTempFile(tmp_fi.absoluteFilePath()));
+}
+
+
 FileName FileName::tempName(string const & mask)
 {
 	QFileInfo tmp_fi(toqstr(mask));
 	if (!tmp_fi.isAbsolute())
 		tmp_fi.setFile(package().temp_dir().d->fi.absoluteDir(), toqstr(mask));
-
-	QTemporaryFile qt_tmp(tmp_fi.absoluteFilePath());
-	if (qt_tmp.open()) {
-		FileName tmp_name(fromqstr(qt_tmp.fileName()));
-		LYXERR(Debug::FILES, "Temporary file `" << tmp_name << "' created.");
-		return tmp_name;
-	}
-	LYXERR(Debug::FILES, "LyX Error: Unable to create temporary file.");
-	return FileName();
+	return FileName(createTempFile(tmp_fi.absoluteFilePath()));
 }
 
 

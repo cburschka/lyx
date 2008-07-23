@@ -43,6 +43,9 @@ public:
 	/// copy constructor.
 	FileName(FileName const &);
 
+	/// constructor with base name and suffix.
+	FileName(FileName const & fn, std::string const & suffix);
+
 	///
 	FileName & operator=(FileName const &);
 
@@ -156,6 +159,8 @@ public:
 	/// relative path, the template file will be created in the global
 	/// temporary directory as given by 'package().temp_dir()'.
 	static FileName tempName(std::string const & mask = empty_string());
+	static FileName tempName(FileName const & temp_dir,
+		std::string const & mask);
 
 	/// get the current working directory
 	static FileName getcwd();
