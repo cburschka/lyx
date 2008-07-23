@@ -1158,6 +1158,7 @@ po_extra_files = Split('''
     POTFILES.in
     README
     Rules-quot
+    ar.po
     bg.po
     boldquot.sed
     ca.po
