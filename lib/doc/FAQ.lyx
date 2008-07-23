@@ -1,5 +1,5 @@
-#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
-\lyxformat 335
+#LyX 1.6svn created this file. For more info see http://www.lyx.org/
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass article
@@ -13,6 +13,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -361,15 +362,20 @@ Does LyX run on my computer?
 \end_layout
 
 \begin_layout Standard
-At this time, you need to have the X Window system to run LyX.
- OS/2 and Win32 ports exist, but you need to have an Xserver installed and
- running on these systems.
- LyX is known to run on the following platforms (and probably a zillion
- others):
+LyX is known to run on the following platforms (and probably a zillion others):
 \end_layout
 
 \begin_layout Itemize
-Linux: RedHat 4.2, 5.0, 5.1, 6.0, 6.1, SUSE 5.x, Mandrake 7.0, 7.2
+Linux distributions: Debian, RedHat, SUSE, Mandrake, Fedora, Ubuntu, etc
+\end_layout
+
+\begin_layout Itemize
+Microsoft Window NT, 2000, XP, Vista (Windows 95/98/Me editions are not
+ supported)
+\end_layout
+
+\begin_layout Itemize
+MacOSX (starting from 10.1)
 \end_layout
 
 \begin_layout Itemize
@@ -397,9 +403,10 @@ How much hard disk space does LyX need?
 \end_layout
 
 \begin_layout Standard
-On my system, the LyX binary consumes 2.0 MB of disk space, while the supporting
- files occupy another 12.6 MB (9.1 MB of which is consumed by the docs! You
- can delete the languages you don't care about to save some space).
+Binary size depends on the system, the LyX binary consumes 13 MB of disk
+ space on Windows, while the supporting files occupy another 25 MB (17 MB
+ of which is consumed by the docs! You can delete the languages you don't
+ care about to save some space).
  Of course, you do need to have something like teTeX installed which consumes
  a mere 115 MB, as well as ghostscript, which is another 10 MB!
 \end_layout
@@ -410,29 +417,9 @@ Is LyX really Open Source?
 
 \begin_layout Standard
 Yes.
- The freely available X toolkit that LyX uses, xforms, was until recently
- closed source.
- Also the other toolkit that LyX uses, Qt, although a proprietary product
- of Troll Tech, is used in its open source variant.
- The LyX source itself is available under the GPL, so it qualifies.
- 
-\end_layout
-
-\begin_layout Standard
-Version 1.0 of xforms is available under the LGPL and its sources (and binaries)
- can be found from 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://savannah.nongnu.org/download/xforms/xforms-1.0.tar.gz
-\end_layout
-
-\end_inset
-
-, which however requires some tinkering to get running.
- Qt tends to come with your distribution.
+ The freely available GUI toolkit that LyX uses, Qt, although a proprietary
+ product of Troll Tech, is used in its open source GPL variant.
+ The LyX source itself is also available under the GPL, so it qualifies.
 \end_layout
 
 \begin_layout Section
@@ -801,12 +788,12 @@ LyX source code: lyx-1.x.x.tar.gz
 \end_layout
 
 \begin_layout Itemize
-XForms library: xforms-0.88 or higher (using the latest version available
- is recommended)
+Qt library: Qt-4.2.0 or higher (using the latest version available is recommended)
 \end_layout
 
 \begin_layout Itemize
-A LaTeX installation: we strongly recommend teTeX-1.0 or higher
+A LaTeX installation: we strongly recommend teTeX-1.0 or higher on Linux,
+ MikTeX on Window
 \end_layout
 
 \begin_layout Itemize
@@ -815,7 +802,7 @@ A PostScript® interpreter: ghostscript 7.0 or higher
 
 \begin_layout Itemize
 A modern C++ compiler.
- If you are using gcc, LyX requires at least version 2.95.2.
+ If you are using gcc, LyX requires at least version 3.2.0.
 \end_layout
 
 \begin_layout Subsection
@@ -847,8 +834,8 @@ I hate compiling.
 \begin_layout Standard
 Most of the above packages are available as precompiled binaries for a variety
  of Linux systems, perhaps others as well.
- The LyX binaries are available as RPMS and a few other formats and may
- be obtained from 
+ The LyX binaries are available as RPMS, Windows and Mac installers, plus
+ a few other formats and may be obtained from 
 \begin_inset Flex URL
 status collapsed
 
