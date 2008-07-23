@@ -92,6 +92,14 @@ InsetText::InsetText()
 {}
 
 
+void InsetText::setBuffer(Buffer & buf)
+{
+	ParagraphList::iterator end = paragraphs().end();
+	for (ParagraphList::iterator it = paragraphs().begin(); it != end; ++it)
+		it->setBuffer(buf);
+}
+
+
 void InsetText::initParagraphs(Buffer const & buf)
 {
 	LASSERT(paragraphs().empty(), /**/);

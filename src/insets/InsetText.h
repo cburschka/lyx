@@ -42,6 +42,8 @@ public:
 	InsetText(InsetText const &);
 	///
 	void initParagraphs(Buffer const & buffer);
+	///
+	void setBuffer(Buffer &);
 
 	///
 	Dimension const dimension(BufferView const &) const;
