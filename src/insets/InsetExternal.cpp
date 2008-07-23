@@ -69,8 +69,6 @@ namespace external {
 TempName::TempName()
 {
 	FileName const tempname = FileName::tempName("lyxext");
-	// FIXME: This is unsafe
-	tempname.removeFile();
 	// must have an extension for the converter code to work correctly.
 	tempname_ = FileName(tempname.absFilename() + ".tmp");
 }

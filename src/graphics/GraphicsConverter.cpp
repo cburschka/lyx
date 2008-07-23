@@ -295,7 +295,6 @@ static void build_script(FileName const & from_file,
 	static int counter = 0;
 	string const tmp = "gconvert" + convert<string>(counter++);
 	FileName const to_base = FileName::tempName(tmp);
-	to_base.removeFile();
 
 	// Create a copy of the file in case the original name contains
 	// problematic characters like ' or ". We can work around that problem

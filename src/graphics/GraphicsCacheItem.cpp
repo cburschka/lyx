@@ -422,10 +422,6 @@ void CacheItem::Impl::convertToDisplayFormat()
 	FileName const to_file_base = FileName::tempName("CacheItem");
 	remove_loaded_file_ = true;
 
-	// Remove the temp file, we only want the name...
-	// FIXME: This is unsafe!
-	to_file_base.removeFile();
-
 	// Connect a signal to this->imageConverted and pass this signal to
 	// the graphics converter so that we can load the modified file
 	// on completion of the conversion process.

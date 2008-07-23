@@ -26,6 +26,7 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QList>
+#include <QTemporaryFile>
 #include <QTime>
 
 #include "support/lassert.h"
@@ -308,14 +309,8 @@ bool FileName::isWritable() const
 bool FileName::isDirWritable() const
 {
 	LYXERR(Debug::FILES, "isDirWriteable: " << *this);
-
 	FileName const tmpfl = FileName::tempName(absFilename() + "/lyxwritetest");
-
-	if (tmpfl.empty())
-		return false;
-
-	tmpfl.removeFile();
-	return true;
+	return !tmpfl.empty();
 }
 
 
@@ -352,32 +347,6 @@ FileNameList FileName::dirList(string const & ext) const
 }
 
 
-static int make_tempfile(char * templ)
-{
-#if defined(HAVE_MKSTEMP)
-	return ::mkstemp(templ);
-#elif defined(HAVE_MKTEMP)
-	// This probably just barely works...
-	::mktemp(templ);
-# if defined (HAVE_OPEN)
-# if (!defined S_IRUSR)
-#   define S_IRUSR S_IREAD
-#   define S_IWUSR S_IWRITE
-# endif
-	return ::open(templ, O_RDWR | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
-# elif defined (HAVE__OPEN)
-	return ::_open(templ,
-		       _O_RDWR | _O_CREAT | _O_EXCL,
-		       _S_IREAD | _S_IWRITE);
-# else
-#  error No open() function.
-# endif
-#else
-#error FIX FIX FIX
-#endif
-}
-
-
 FileName FileName::tempName(string const & mask)
 {
 	FileName tmp_name(mask);
@@ -387,33 +356,11 @@ FileName FileName::tempName(string const & mask)
 	else
 		tmpfl = package().temp_dir().absFilename() + "/" + mask;
 
-#if defined (HAVE_GETPID)
-	tmpfl += convert<string>(getpid());
-#elif defined (HAVE__GETPID)
-	tmpfl += convert<string>(_getpid());
-#else
-# error No getpid() function
-#endif
-	tmpfl += "XXXXXX";
-
-	// The supposedly safe mkstemp version
-	// FIXME: why not using std::string directly?
-	boost::scoped_array<char> tmpl(new char[tmpfl.length() + 1]); // + 1 for '\0'
-	tmpfl.copy(tmpl.get(), string::npos);
-	tmpl[tmpfl.length()] = '\0'; // terminator
-
-	int const tmpf = make_tempfile(tmpl.get());
-	if (tmpf != -1) {
-		string const t(to_utf8(from_filesystem8bit(tmpl.get())));
-#if defined (HAVE_CLOSE)
-		::close(tmpf);
-#elif defined (HAVE__CLOSE)
-		::_close(tmpf);
-#else
-# error No x() function.
-#endif
-		LYXERR(Debug::FILES, "Temporary file `" << t << "' created.");
-		return FileName(t);
+	QTemporaryFile qt_tmp(toqstr(tmpfl));
+	if (qt_tmp.open()) {
+		tmp_name.d->fi.setFile(qt_tmp.fileName());
+		LYXERR(Debug::FILES, "Temporary file `" << tmp_name << "' created.");
+		return tmp_name;
 	}
 	LYXERR(Debug::FILES, "LyX Error: Unable to create temporary file.");
 	return FileName();
