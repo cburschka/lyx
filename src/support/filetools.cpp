@@ -321,11 +321,10 @@ static FileName createTmpDir(FileName const & tempdir, string const & mask)
 	LYXERR(Debug::FILES, "createTmpDir: tempdir=`" << tempdir << "'\n"
 		<< "createTmpDir:    mask=`" << mask << '\'');
 
-	string const tmp_dir = tempdir.absFilename() + "/" + mask;
-	FileName const tmpfl = FileName::tempName(tmp_dir);
+	FileName const tmpfl = FileName::tempName(tempdir, mask);
 
 	if (tmpfl.empty() || !tmpfl.createDirectory(0700)) {
-		LYXERR0("LyX could not create the temporary directory '" << tmp_dir
+		LYXERR0("LyX could not create temporary directory in " << tempdir
 			<< "'");
 		return FileName();
 	}
