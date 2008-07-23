@@ -369,7 +369,7 @@ void LyXAction::init()
  * \li Action: Currently  English, Swedish, German, Polish, French, Danish quotes
                are distinguished.
  * \li Syntax: quote-insert [<TYPE>]
- * \li Params: TYPE: 'single' for single quotes, otherwise double quotes will be used.
+ * \li Params: <TYPE>: 'single' for single quotes, otherwise double quotes will be used.
  * \endvar
  */
 		{ LFUN_QUOTE_INSERT, "quote-insert", Noop, Edit },
@@ -2898,7 +2898,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_COMMAND_PREFIX
  * \li Action: Return the current key sequence and available options as a string.
- * \li Notion: No options are added if no curmap kb map exists. \n
+ * \li Notion: No options are added if no current map map exists. \n
                This is probably usable only with connection to lyxserver.
  * \li Syntax: command-prefix
  * \endvar
