@@ -2898,7 +2898,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_COMMAND_PREFIX
  * \li Action: Return the current key sequence and available options as a string.
- * \li Notion: No options are added if no current map map exists. \n
+ * \li Notion: No options are added if no current map exists. \n
                This is probably usable only with connection to lyxserver.
  * \li Syntax: command-prefix
  * \endvar
