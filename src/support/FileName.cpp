@@ -308,9 +308,15 @@ bool FileName::isWritable() const
 
 bool FileName::isDirWritable() const
 {
-	LYXERR(Debug::FILES, "isDirWriteable: " << *this);
-	FileName const tmpfl = FileName::tempName(absFilename() + "lyxwritetest");
-	return !tmpfl.empty();
+	LASSERT(d->fi.isDir(), return false);
+	QFileInfo tmp(d->fi.absoluteDir(), "lyxwritetest");
+	QTemporaryFile qt_tmp(tmp.absoluteFilePath());
+	if (qt_tmp.open()) {
+		LYXERR(Debug::FILES, "Directory " << *this << " is writable");
+		return true;
+	}
+	LYXERR(Debug::FILES, "Directory " << *this << " is not writable");
+	return false;
 }
 
 
