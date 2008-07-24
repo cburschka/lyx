@@ -625,6 +625,9 @@ void GuiLayoutBox::updateContents(bool reset)
 		// if it doesn't require the empty layout, we skip it
 		if (name == text_class_->emptyLayoutName() && inset_ && !useEmpty)
 			continue;
+		// obsoleted layouts are skipped as well
+		if (!lit->obsoleted_by().empty())
+			continue;
 		addItemSort(name, lit->category(), lyxrc.sort_layouts, 
 				lyxrc.group_layouts, lit->isUnknown());
 	}
