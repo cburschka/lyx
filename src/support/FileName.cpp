@@ -379,7 +379,8 @@ static string createTempFile(QString const & mask)
 
 FileName FileName::tempName(FileName const & temp_dir, string const & mask)
 {
-	QFileInfo tmp_fi(temp_dir.d->fi.absoluteDir(), toqstr(mask));
+	QFileInfo tmp_fi(QDir(temp_dir.d->fi.absoluteFilePath()), toqstr(mask));
+	LYXERR(Debug::FILES, "Temporary file in " << tmp_fi.absoluteFilePath());
 	return FileName(createTempFile(tmp_fi.absoluteFilePath()));
 }
 
