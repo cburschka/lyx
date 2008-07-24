@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 23.
+letzte Änderung: 24.
  Juli 2008
 \end_layout
 
@@ -2041,6 +2041,256 @@ auf mathematischen Formeln und Makros Befehle zur Bearbeitung enthält.
 \end_layout
 
 \begin_layout Section
+Navigieren
+\begin_inset CommandInset label
+LatexCommand label
+name "Navigieren"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Navigieren
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LyX bietet Ihnen zwei Möglichkeiten, in Dokumenten zu navigieren:
+\end_layout
+
+\begin_layout Itemize
+Das Menü 
+\family sans
+Navigieren
+\family default
+ enthält alle Überschriften des Dokuments als Untermenüs, deren Anklicken
+ Sie zu dem entsprechenden Dokumentteil führt.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset label
+LatexCommand label
+name "Gliederung"
+
+\end_inset
+
+
+\family sans
+Dokument\SpecialChar \menuseparator
+Gliederung
+\family default
+ (
+\begin_inset Graphics
+	filename ../../images/dialog-toggle_toc.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+).
+ Hiermit schalten Sie die Gliederung an, die dann im linken Teil des LyX-Fenster
+s erscheint.
+ Ein weiterer Klick auf den Knopf lässt die Gliederung wieder verschwinden.
+ Das Navigieren selber erfolgt wie im Menü 
+\family sans
+Navigieren
+\family default
+.
+ Die Gliederung zeigt zunächst das Inhaltsverzeichnis, aber Sie können durch
+ einen Klick auf 
+\family sans
+Inhaltsverzeichnis
+\family default
+ auch andere auswählen:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\emph on
+Abbildungsverzeichnis
+\emph default
+ enthält die Abbildungen des Dokuments, die einen Titel haben
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Fußnoten
+\emph default
+ enthält die Fußnoten des Dokuments
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Gleichung
+\emph default
+ enthält die Gleichungen des Dokuments
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Listings
+\emph default
+ enthält die eingebundenen Programmlistings des Dokuments
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Grafiken
+\emph default
+ enthält die im Dokument verwendeten Grafiken
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Marken und Querverweise
+\emph default
+ enthält die Marken und Querverweise des Dokuments
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Notizen
+\emph default
+ enthält die Notizen des Dokuments
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Randnotizen
+\emph default
+ enthält die Randnotizen des Dokuments
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Stichwörter
+\emph default
+ enthält die Stichwörter des Dokuments
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Tabellenverzeichnis
+\emph default
+ enthält die Tabellen des Dokuments, die einen Titel haben
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Unterdokumente
+\emph default
+ enthält die eingebundenen Unterdokumente des Dokuments
+\end_layout
+
+\begin_layout Standard
+Deren Elemente erscheinen in der Reihenfolge, in der sie im Dokument definiert
+ werden.
+ Es hängt vom Dokumenttyp ab, welche Listen vorhanden sind.
+\end_layout
+
+\begin_layout Standard
+Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
+ ändern können.
+ Außerdem sind dort fünf Knöpfe mit folgender Bedeutung:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/reload.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+ : aktualisiert das Verzeichnis
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/promote.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+ : schiebt das ausgewählte Gliederungs-Element um eine Stufe nach oben (zum
+ Beispiel von 1.2.3 nach 1.3).
+ Alle folgenden Gliederungs-Elemente werden angepasst.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/demote.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+ : schiebt das ausgewählte Gliederungs-Element um eine Stufe nach unten
+ (zum Beispiel von 1.2 nach 1.2.1).
+ Alle folgenden Gliederungs-Elemente werden angepasst.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/down.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp -2bp 10bp 10bp
+
+\end_inset
+
+ : schiebt das ausgewählte Gliederungs-Element nach unten.
+ Die Gliederung wird angepasst.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Graphics
+	filename ../../images/up.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp -2bp 10bp 10bp
+
+\end_inset
+
+ : schiebt das ausgewählte Gliederungs-Element nach oben.
+ Die Gliederung wird angepasst.
+\end_layout
+
+\begin_layout Standard
+Die letzten vier Knöpfe erleichtern das Verschieben von Textteilen, sofern
+ es sich um ganze Abschnitte und ähnliches handelt.
+\end_layout
+
+\begin_layout Standard
+Die Gliederung erhalten Sie auch, wenn Sie am Anfang des Dokuments ein Inhalts-,
+ Tabellen- oder Abbildungsverzeichnis angelegt haben und darauf klicken.
+\end_layout
+
+\end_deeper
+\begin_layout Section
 Grundlegende Tastaturfunktionen
 \begin_inset Index
 status open
@@ -2335,7 +2585,7 @@ Strg
 
 (
 \family default
-Control
+Ctrl
 \family sans
 )
 \family default
@@ -2480,11 +2730,11 @@ Es gibt noch weitere Funktionen, die über die
 Alt
 \family default
 -Taste angesprochen werden können.
- Weitere Informationen entnehmen Sie bitte der 
+ Weitere Informationen entnehmen Sie bitte den 
 \emph on
-Anpassung
+Tastenkürzel
 \emph default
-.
+n.
 \end_layout
 
 \begin_layout Section
@@ -5811,7 +6061,7 @@ en Überschrift fortgesetzt.
 Ändern der Nummerierung
 \begin_inset CommandInset label
 LatexCommand label
-name "Aendern-der-Nummerierung"
+name "Nummerierung-aendern"
 
 \end_inset
 
@@ -5897,6 +6147,13 @@ status collapsed
 \begin_layout Plain Layout
 Kurztitel
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Kurze-Titel"
 
 \end_inset
 
@@ -6547,7 +6804,6 @@ Auflistung
 -Umgebungen schachteln, bekommt jede Stufe ein neues Symbol als Markierung.
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 Es gibt vier verschiedene Symbole, um maximal vierfach schachteln zu können.
 \end_layout
@@ -6563,7 +6819,6 @@ reference "Umgebungen-schachteln"
  beschreibt die Schachtelung vollständig.
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 Natürlich war diese Erklärung auch ein Beispiel für eine 
 \family sans
@@ -8913,10 +9168,6 @@ Adresse
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
 
 \series bold
 Anmerkung:
@@ -8930,19 +9181,13 @@ Kapitel
 Abschnitt
 \family default
 , usw.
- in z.
-\begin_inset space \thinspace{}
+\begin_inset space \space{}
 \end_inset
 
-B: Listen zu schachteln, wird dringend davon abgeraten.
+in zum Beispiel Listen zu schachteln, wird dringend davon abgeraten.
  Denn das Ziel ist es, gut strukturierte Dokumente zu erzeugen, die den
  gängigen Normen des Schriftsatzes folgen, aber geschachtelte Gliederungen
  verstoßen dagegen.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -11331,6 +11576,31 @@ Herr Meier
 \end_inset
 
  ausgerichtet.
+ Das Phantom-Zeichen 
+\begin_inset Graphics
+	filename ../../images/math/hphantom.png
+	scale 85
+	BoundingBox 0bp 4bp 20bp 20bp
+
+\end_inset
+
+ finden Sie unter 
+\family sans
+Ansicht\SpecialChar \menuseparator
+Werkzeugleisten\SpecialChar \menuseparator
+Andere
+\begin_inset space \space{}
+\end_inset
+
+Werkzeug\SpecialChar \-
+leisten\SpecialChar \menuseparator
+Abstände
+\family default
+ und weitere Erklärungen im Hnadbuch 
+\emph on
+Mathe
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -12535,6 +12805,55 @@ Horizontale Linie
 \begin_layout Standard
 \noindent
 ist eine solche Linie.
+\end_layout
+
+\begin_layout Section
+Zeichen und Symbole
+\end_layout
+
+\begin_layout Standard
+Alle Zeichen Ihrer Tastatur können Sie direkt eingeben.
+ Sie können auch besondere Tastaturtabellen benutzen, wenn Sie zum Beispiel
+ französische Zeichen mit einer deutschen Tastatur eingeben wollen.
+ In Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Tastaturtabellen"
+
+\end_inset
+
+ finden Sie weitere Informationen.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie Zeichen benutzen wollen, die nicht auf Ihrer Tastatur sind, gibt
+ es das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Sonderzeichen\SpecialChar \menuseparator
+Symbole
+\family default
+.
+ Hiermit öffnen Sie ein Fenster mit Symbolen, von denen Sie eins oder mehrere
+ auswählen können.
+ Außerdem können Sie auch aus anderen Kategorien als der angezeigten auswählen.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Anmerkung:
+\series default
+ Eventuell werden nicht alle eingefügten Symbole von LyX angezeigt.
+ Das hängt von Ihrem Bildschirmfont ab, aber 
+\emph on
+alle
+\emph default
+ Symbole werden gedruckt.
 \end_layout
 
 \begin_layout Section
@@ -17844,13 +18163,35 @@ drehen
 Ausschnitt
 \family default
  kann die Lage festgelegt werden.
- In der Karteikarte 
+ Auf der Karteikarte 
 \family sans
-LaTeX- und LyX-Optionen
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X- und Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Optionen
 \family default
  können Sie das Aussehen der Grafik in LyX einstellen und LaTeX-Experten
  weitere LaTeX-Optionen eingeben.
- Die weiteren Optionen sind im 
+ Die weiteren Optionen sind im Handbuch 
 \emph on
 Eingebettete
 \emph default
@@ -17858,7 +18199,7 @@ Eingebettete
 \emph on
 Objekte
 \emph default
- Handbuch beschrieben.
+ beschrieben.
 \end_layout
 
 \begin_layout Subsection
@@ -18004,7 +18345,7 @@ GIF
 \begin_layout Itemize
 JP[E]G
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 JPEG
@@ -18048,7 +18389,7 @@ PSD
 \begin_layout Itemize
 TIF[F]
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 TIFF
@@ -18104,7 +18445,7 @@ EPS
 
 \end_inset
 
- (Encapsulated PostScript®)
+ (Encapsulated PostScript)
 \end_layout
 
 \begin_layout Itemize
@@ -28416,7 +28757,77 @@ Inhaltsverzeichnis und Gliederung
 \end_layout
 
 \begin_layout Standard
-Um ein Inhaltsverzeichnis zu erstellen, sind vier Dinge notwendig:
+Das Inhaltsverzeichnis wird über 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Liste
+\begin_inset space \space{}
+\end_inset
+
+/
+\begin_inset space \space{}
+\end_inset
+
+Inhaltsverzeichnis\SpecialChar \menuseparator
+Inhaltsverzeichnis
+\family default
+ eingefügt.
+ An der Einfügestelle erscheint ein graues Kästchen mit der Aufschrift Inhaltsve
+rzeichnis.
+ Wenn Sie draufklicken, erscheint das Glederungsfenster, siehe auch Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Navigieren"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Das gedruckte Inhaltsverzeichnis enthält alle nummerierten Überschriften.
+ Wenn Sie für eine Überschrift einen Kurztitel (
+\family sans
+Einfügen\SpecialChar \menuseparator
+Kurztitel
+\family default
+) definiert haben, wie in Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Kurze-Titel"
+
+\end_inset
+
+ beschrieben, wird dieser gedruckt, wenn die Überschrift zu lang ist.
+\end_layout
+
+\begin_layout Standard
+In Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Nummerierung-aendern"
+
+\end_inset
+
+ ist beschrieben, wie die Nummerierungstiefe geändert werden kann.
+ Nichtnummerierte Überschriften tauchen unter Navigieren und in der Gliederung
+ auf, werden aber nicht im Inhaltsverzeichnis gedruckt.
+\end_layout
+
+\begin_layout Standard
+Folgendes ist noch zu beachten:
 \end_layout
 
 \begin_layout Enumerate
@@ -28429,7 +28840,7 @@ letter
 \end_layout
 
 \begin_layout Enumerate
-Verwenden Sie Umgebungstypen, die automatisch von der Inhalts-Funktion erkannt
+Verwenden Sie Überschriften, die automatisch von der Inhalts-Funktion erkannt
  werden: 
 \family sans
 Kapitel
@@ -28443,7 +28854,7 @@ Kapitel
 [Unter]Paragraph
 \family default
 .
- Beachten Sie auch, dass Umgebungstypen mit einem Stern, wie etwa 
+ Beachten Sie auch, dass Überschriften mit einem Stern, wie etwa 
 \family sans
 Abschnitt*
 \family default
@@ -28500,26 +28911,6 @@ aufführen
 Ja
 \emph default
  enthalten.
-\end_layout
-
-\begin_layout Enumerate
-Fügen Sie den Befehl zum Erstellen des Inhaltsverzeichnisses an der gewünschten
- Stelle ein.
- Verwenden Sie dazu den Menüpunkt 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Liste
-\begin_inset space \space{}
-\end_inset
-
-/
-\begin_inset space \space{}
-\end_inset
-
-Inhaltsverzeichnis\SpecialChar \menuseparator
-Inhaltsverzeichnis
-\family default
-.
 \end_layout
 
 \begin_layout Standard
@@ -31233,7 +31624,7 @@ reference "Makro-erzeugen"
 \end_layout
 
 \begin_layout Section
-LaTeX-Syntax und TeX-Code
+TeX-Code und LaTeX-Syntax 
 \begin_inset CommandInset label
 LatexCommand label
 name "LaTeX-Syntax-und-TeX-Code"
@@ -31261,6 +31652,249 @@ TeX-Code
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+TeX-Code-Kästchen
+\begin_inset CommandInset label
+LatexCommand label
+name "TeX-Code-Kästchen"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+TeX-Code
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wenn Sie gezwungen sind oder es wollen, LaTeX-Befehle in LyX zu benutzen,
+ geben Sie diese in TeX-Code-Kästchen ein.
+ Ein TeX-Code-Kästchen erhalten Sie mit 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Code
+\family default
+, 
+\family sans
+Strg+L
+\family default
+ oder durch Klicken auf den 
+\begin_inset Graphics
+	filename ../../images/ert-insert.png
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+-Knopf.
+ Es erscheint ein rotes Rechteck, in das Sie Ihren LaTeX-Text schreiben.
+ LyX wird alles, was im TeX-Code-Kästchen steht, unverändert an LaTeX übergeben.
+\end_layout
+
+\begin_layout Standard
+Das Kästchen selber kann auf zwei Arten angezeigt werden: 
+\family sans
+Geschlossen
+\family default
+ und 
+\family sans
+Geöffnet
+\family default
+.
+ Im geschlossenen Zustand wird ein Teil des Textes auf grauem Hintergrund
+ dargestellt.
+ Um die Darstellung zu ändern, machen Sie einen Rechtsklick auf das Kästchen
+ und wählen in dem Dialogfenster aus, was Sie wollen.
+ Außerdem können Sie im geöffneten Zustand die Einfügung auflösen, das heisst,
+ der enthaltenen Text wird normal dargestellt.
+ Wenn das Kästchen geschlossen ist, öffnet ein Linksklick es.
+\end_layout
+
+\begin_layout Standard
+In das TeX-Code-Kästchen können Sie vollständige oder unvollständige LaTeX-Befeh
+le schreiben.
+ Ein vollständiger LaTeX-Befehl ist zum Beispiel die Verwendung von 
+\family typewriter
+slop\SpecialChar \-
+py\SpecialChar \-
+par
+\family default
+ in Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Sloppypar"
+
+\end_inset
+
+.
+ Unvollständig bedeutet, dass Sie in ein TeX-Code-Kästchen 
+\family typewriter
+
+\backslash
+Befehlsname[Optionen]{
+\family default
+ schreiben, dann das Argument mit allen gewünschten Formatierungen als LyX-Text
+ und schließlich 
+\family typewriter
+}
+\family default
+ in ein zweites TeX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Code
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Kästchen: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename clipart/ERT.png
+	display false
+	scale 240
+	BoundingBox 0bp 0bp 484bp 9bp
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ergibt
+\end_layout
+
+\begin_layout Standard
+Dies ist eine Zeile mit einem 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fbox{
+\end_layout
+
+\end_inset
+
+eingerahmten
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ Wort.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das hat den Vorteil, dass Formatierungen einfach mit LyX-Mitteln durchgeführt
+ werden können.
+ Hier ist ein Beispiel, in dem formatierter 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fbox{
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Text
+\series default
+ und ein Bild 
+\begin_inset Graphics
+	filename ../../images/ert-insert.png
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ eingerahmt werden.
+\end_layout
+
+\begin_layout Description
+
+\series bold
+Bemerkung:
+\series default
+ Am Ende von LaTeX-Befehlen ohne Argument müssen Sie ein Leerzeichen eingeben,
+ damit LaTeX weiß, dass der Befehl zu Ende ist.
+\end_layout
+
+\begin_layout Standard
+Siehe auch 
+\emph on
+Handbuchergänzungen
+\emph default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -31546,249 +32180,6 @@ key "latex-einführung,latex-praxisbuch,latexcompanion,latexguide"
 
 .
  
-\end_layout
-
-\begin_layout Subsection
-TeX-Code-Kästchen
-\begin_inset CommandInset label
-LatexCommand label
-name "TeX-Code-Kästchen"
-
-\end_inset
-
-
-\begin_inset Index
-status open
-
-\begin_layout Plain Layout
-TeX-Code
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Wenn Sie gezwungen sind oder es wollen, LaTeX-Befehle in LyX zu benutzen,
- geben Sie diese in TeX-Code-Kästchen ein.
- Ein TeX-Code-Kästchen erhalten Sie mit 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Code
-\family default
-, 
-\family sans
-Strg+L
-\family default
- oder durch Klicken auf den 
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
--Knopf.
- Es erscheint ein rotes Rechteck, in das Sie Ihren LaTeX-Text schreiben.
- LyX wird alles, was im TeX-Code-Kästchen steht, unverändert an LaTeX übergeben.
-\end_layout
-
-\begin_layout Standard
-Das Kästchen selber kann auf zwei Arten angezeigt werden: 
-\family sans
-Geschlossen
-\family default
- und 
-\family sans
-Geöffnet
-\family default
-.
- Im geschlossenen Zustand wird ein Teil des Textes auf grauem Hintergrund
- dargestellt.
- Um die Darstellung zu ändern, machen Sie einen Rechtsklick auf das Kästchen
- und wählen in dem Dialogfenster aus, was Sie wollen.
- Außerdem können Sie im geöffneten Zustand die Einfügung auflösen, das heisst,
- der enthaltenen Text wird normal dargestellt.
- Wenn das Kästchen geschlossen ist, öffnet ein Linksklick es.
-\end_layout
-
-\begin_layout Standard
-In das TeX-Code-Kästchen können Sie vollständige oder unvollständige LaTeX-Befeh
-le schreiben.
- Ein vollständiger LaTeX-Befehl ist zum Beispiel die Verwendung von 
-\family typewriter
-slop\SpecialChar \-
-py\SpecialChar \-
-par
-\family default
- in Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Sloppypar"
-
-\end_inset
-
-.
- Unvollständig bedeutet, dass Sie in ein TeX-Code-Kästchen 
-\family typewriter
-
-\backslash
-Befehlsname[Optionen]{
-\family default
- schreiben, dann das Argument mit allen gewünschten Formatierungen als LyX-Text
- und schließlich 
-\family typewriter
-}
-\family default
- in ein zweites TeX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"=
-\end_layout
-
-\end_inset
-
-Code
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"=
-\end_layout
-
-\end_inset
-
-Kästchen: 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename clipart/ERT.png
-	display false
-	scale 240
-	BoundingBox 0bp 0bp 484bp 9bp
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-ergibt
-\end_layout
-
-\begin_layout Standard
-Dies ist eine Zeile mit einem 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fbox{
-\end_layout
-
-\end_inset
-
-eingerahmten
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- Wort.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Das hat den Vorteil, dass Formatierungen einfach mit LyX-Mitteln durchgeführt
- werden können.
- Hier ist ein Beispiel, in dem formatierter 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fbox{
-\end_layout
-
-\end_inset
-
- 
-\series bold
-Text
-\series default
- und ein Bild 
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- eingerahmt werden.
-\end_layout
-
-\begin_layout Description
-
-\series bold
-Bemerkung:
-\series default
- Am Ende von LaTeX-Befehlen ohne Argument müssen Sie ein Leerzeichen eingeben,
- damit LaTeX weiß, dass der Befehl zu Ende ist.
-\end_layout
-
-\begin_layout Standard
-Siehe auch 
-\emph on
-Handbuchergänzungen
-\emph default
-.
 \end_layout
 
 \begin_layout Section
@@ -33173,7 +33564,7 @@ Unicode
  dass Ihre LaTeX-Installation Unicode unterstützt), wählen Sie die Zeichenkodier
 ung 
 \family typewriter
-utf-8
+utf8
 \family default
 .
  Die anderen Unicode-Kodierungen im Menü werden für spezifische Zwecke bereitges
@@ -33185,7 +33576,17 @@ UTF
 \family typewriter
 utf8x
 \family default
- für CJK-Sprachen, 
+ für CJK-Sprachen
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+CJK
+\end_layout
+
+\end_inset
+
+ (chinesich, japanisch, koreanisch), 
 \family typewriter
 utf8-plain
 \family default
@@ -33730,203 +34131,16 @@ Tabelle\SpecialChar \ldots{}
 
 \end_inset
 
- : 
-\begin_inset CommandInset label
-LatexCommand label
-name "Gliederung"
+ : Gliederung an/aus, siehe Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Gliederung"
 
 \end_inset
 
- 
-\family sans
-Dokument\SpecialChar \menuseparator
-Gliederung
-\family default
 .
- Hiermit schalten Sie die Gliederung an, die dann im linken Teil des LyX-Fenster
-s erscheint.
- Ein weiterer Klick auf den Knopf läßt die Gliederung wieder verschwinden.
- Die Gliederung zeigt zunächst das Inhaltsverzeichnis, aber Sie können durch
- einen Klick auf 
-\family sans
-Inhaltsverzeichnis
-\family default
- auch andere auswählen:
 \end_layout
 
-\begin_deeper
-\begin_layout Enumerate
-
-\emph on
-Abbildungsverzeichnis
-\emph default
- enthält die Abbildungen des Dokuments, die einen Titel haben
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Fußnoten
-\emph default
- enthält die Fußnoten des Dokuments
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Gleichung
-\emph default
- enthält die Gleichungen des Dokuments
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Listings
-\emph default
- enthält die eingebundenen Programmlistings des Dokuments
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Grafiken
-\emph default
- enthält die im Dokument verwendeten Grafiken
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Marken und Querverweise
-\emph default
- enthält die Marken und Querverweise des Dokuments
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Notizen
-\emph default
- enthält die Notizen des Dokuments
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Randnotizen
-\emph default
- enthält die Randnotizen des Dokuments
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Stichwörter
-\emph default
- enthält die Stichwörter des Dokuments
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Tabellenverzeichnis
-\emph default
- enthält die Tabellen des Dokuments, die einen Titel haben
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Unterdokumente
-\emph default
- enthält die eingebundenen Unterdokumente des Dokuments
-\end_layout
-
-\begin_layout Standard
-Deren Elemente erscheinen in der Reihenfolge, in der sie im Dokument definiert
- werden.
- Es hängt vom Dokument ab, welche Listen vorhanden sind.
-\end_layout
-
-\begin_layout Standard
-Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
- ändern können.
- Außerdem sind dort fünf Knöpfe mit folgender Bedeutung:
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/reload.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
-
-\end_inset
-
- : aktualisiert das Verzeichnis
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/promote.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
-
-\end_inset
-
- : schiebt das ausgewählte Gliederungs-Element um eine Stufe nach oben (zum
- Beispiel von 1.2.3 nach 1.3).
- Alle folgenden Gliederungs-Elemente werden angepasst.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/demote.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
-
-\end_inset
-
- : schiebt das ausgewählte Gliederungs-Element um eine Stufe nach unten
- (zum Beispiel von 1.2 nach 1.2.1).
- Alle folgenden Gliederungs-Elemente werden angepasst.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/down.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 0bp 22bp 22bp
-
-\end_inset
-
- : schiebt das ausgewählte Gliederungs-Element nach unten.
- Die Gliederung wird angepasst.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Graphics
-	filename ../../images/up.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 0bp 22bp 22bp
-
-\end_inset
-
- : schiebt das ausgewählte Gliederungs-Element nach oben.
- Die Gliederung wird angepasst.
-\end_layout
-
-\begin_layout Standard
-Die letzten vier Knöpfe erleichtern das Verschieben von Textteilen, sofern
- es sich um ganze Abschnitte und ähnliches handelt.
-\end_layout
-
-\end_deeper
 \begin_layout Enumerate
 \begin_inset Graphics
 	filename ../../images/toolbar-toggle_math.png
@@ -35401,16 +35615,6 @@ Sonderzeichen
 \family default
  \SpecialChar \ldots{}
 
-\end_layout
-
-\begin_layout Subsubsection
-Symbole
-\end_layout
-
-\begin_layout Standard
-Hiermit öffnen Sie ein Fenster mit Symbolen, von denen Sie eins oder mehrere
- auswählen können.
- Außerdem können Sie auch aus anderen Kategorien als der angezeigten auswählen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -39211,6 +39415,161 @@ reference "Zeichentabellen"
 
 \begin_layout Description
 Andere liefert eine Auswahl an Kodierungsmöglichkeiten.
+ Interessant sind wahrscheinlich
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+LaTe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
+\begin_inset space ~
+\end_inset
+
+default ist dasselbe wie 
+\family sans
+\series bold
+Voreinstellungung
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+der
+\begin_inset space \space{}
+\end_inset
+
+gewählten
+\begin_inset space \space{}
+\end_inset
+
+Sprache
+\family default
+\series default
+, aber das LaTeX-Paket 
+\family typewriter
+inputenc
+\family default
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+LaTeX! -Paket ! inputenc
+\end_layout
+
+\end_inset
+
+ wird nicht verwendet.
+ Wenn Sie diese Kodierung benutzen wollen, müssen Sie wahrscheinlich einige
+ andere LaTeX-Pakete im LaTeX-Vorspann von Hand eintragen und sie für Textteile
+ in fremden Sprachen als TeX-Code spezifizieren.
+\end_layout
+
+\begin_layout Description
+uft8 Diese Unicode-Variante basiert auf dem LaTeX-Paket 
+\family typewriter
+inputenc
+\family default
+.
+ Zur Zeit wird nur ein eingeschränkter Zeichensatz für lateinische Sprachen
+ unterstützt.
+\end_layout
+
+\begin_layout Description
+utf8x Diese Unicode-Variante basiert auf dem LaTeX-Paket 
+\family typewriter
+ucs
+\family default
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+LaTeX! -Paket ! ucs
+\end_layout
+
+\end_inset
+
+ und umfasst lateinische, griechische, kyrillische und CJK-Sprachen.
+\end_layout
+
+\begin_layout Description
+UTF8 Diese Unicode-Variante basiert auf dem LaTeX-Paket 
+\family typewriter
+CJK
+\family default
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+LaTeX! -Paket ! CJK
+\end_layout
+
+\end_inset
+
+ und unterstützt die CJK-Sprachen.
+\end_layout
+
+\begin_layout Description
+utf8-plain Diese Unicode-Variante wird von 
+\family typewriter
+XeTe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
+\family default
+ benutzt, das Unicode ohne das LaTeX-Paket 
+\family typewriter
+inputenc
+\family default
+ direkt benutzt.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "XeTeX"
+
+\end_inset
+
+ finden mehr über XeTeX.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Weitere Kodierungen sind im 
+\emph on
+englischen Benutzerhandbuch
+\emph default
+ beschrieben.
 \end_layout
 
 \end_deeper
@@ -39234,7 +39593,7 @@ Siehe Abschnitt
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Aendern-der-Nummerierung"
+reference "Nummerierung-aendern"
 
 \end_inset
 
