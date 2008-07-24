@@ -4951,7 +4951,7 @@ pas
 Standard
 \family default
  mais conserve l'environnement actuel et crée un nouvel élément de liste.
- La profondeur d'emboîtement n'est pas non plus conservée.
+ La profondeur d'emboîtement est de ce fait conservée.
  Si vous voulez conserver l'environnement de paragraphe mais réinitialiser
  la profondeur d'emboîtement courante, vous pouvez utiliser 
 \family sans
@@ -15907,11 +15907,11 @@ ouvrira
 
  la note en bas de page
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Dans LyX, pour fermer cette note en bas de page, cliquez sur la boîte grise
- à gauche.
+Dans LyX, pour fermer cette note en bas de page, cliquez sur la boîte contenant
+ l'étiquette de la note.
 \end_layout
 
 \end_inset
@@ -16110,8 +16110,7 @@ Insérer\SpecialChar \menuseparator
 Graphique
 \family default
 .
- Un insert graphique est ajouté à votre document et une fenêtre s'ouvre,
- qui vous permet de choisir le fichier à charger.
+ Une fenêtre s'ouvre, qui vous permet de choisir le fichier à charger.
  
 \end_layout
 
@@ -16123,8 +16122,6 @@ Cette fenêtre de dialogue contient de nombreux paramètres dont les noms
 Graphique
 \family default
  vous permet de choisir le fichier contenant votre image.
- L'apparence de l'image à l'intérieur de la fenêtre de LyX et celle qu'elle
- aura sur la sortie imprimée sont ajustés séparément.
  L'image peut être transformée en donnant un angle de rotation et un facteur
  d'échelle.
  On peut aussi définir directement la taille de l'image en fixant une de
@@ -16215,23 +16212,8 @@ et
 LyX
 \family default
 .
- Vous pouvez aussi valider l'option 
-\family sans
-Subfigure
-\family default
- si l'image est incorporée dans un flottant.
- Cette option est expliquée dans la section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Figures-Flottantes"
-
-\end_inset
-
-.
+ Vous pouvez en particulier préciser l'apparence que devra avoir l'image
+ dans LyX.
  L'option 
 \family sans
 Mode
@@ -16242,19 +16224,19 @@ brouillon
 \family default
  fait que les images ne seront pas représentées sur la sortie, seuls des
  cadres de la même taille apparaîtront.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Il y a aussi une option pour contrôler l'affichage des images dans LyX et
- une autre concernant la décompression des images à l'export.
- Il y a aussi un bouton Restaurer ...
- (NdT)
-\end_layout
-
-\end_inset
-
-
+ L'option 
+\family sans
+Ne pas décompresser à l'exportation
+\family default
+ est expliquée dans le manuel 
+\emph on
+Objets insérés
+\emph default
+, dans la section 
+\emph on
+La fenêtre de dialogue graphique
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -16262,8 +16244,8 @@ La fenêtre de dialogue Graphique peut être rappelée à tout moment en cliquan
  sur une image.
  L'image apparaîtra dans la sortie finale à la position exacte qu'elle a
  dans le texte.
- Voici un exemple d'image au format PDF qui se trouve dans son propre paragraphe
-, ce dernier étant centré horizontalement:
+ Voici un exemple d'image qui se trouve dans son propre paragraphe, ce dernier
+ étant centré horizontalement:
 \end_layout
 
 \begin_layout Standard
