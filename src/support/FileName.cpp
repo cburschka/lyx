@@ -147,7 +147,7 @@ FileName::FileName(FileName const & rhs, string const & suffix) : d(new Private)
 	if (!rhs.d->fi.isDir())
 		d->fi.setFile(rhs.d->fi.filePath() + toqstr(suffix));
 	else
-		d->fi.setFile(rhs.d->fi.absoluteDir(), toqstr(suffix));
+		d->fi.setFile(QDir(rhs.d->fi.absoluteFilePath()), toqstr(suffix));
 }
 
 
