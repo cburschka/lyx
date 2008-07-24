@@ -434,7 +434,7 @@ Graphique
 
 \begin_layout Standard
 La fenêtre de dialogue Graphique peut être rappelée à tout moment en cliquant
- avec le bouton droit sur une image
+ sur une image
 \begin_inset Note Note
 status collapsed
 
@@ -610,36 +610,23 @@ et
 LyX
 \family default
  Avec cet onglet, vous pouvez modifier l'apparence de l'image dans LyX et
- en faire une sous-figure avec sa propre légende si elle incorporée dans
- un flottant de figure.
- Les sous-figures sont décrites dans la section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Figure-Floats"
-
-\end_inset
-
-.
-\begin_inset Newline newline
-\end_inset
-
-Les experts ès-LaTeX pourront fournir dans cet onglet des options supplémentaire
-s pour LaTeX
-\begin_inset Newline newline
-\end_inset
-
-L'option Mode brouillon fait que l'image apparaîtra sur la sortie sous la
- forme d'un cadre vide avec la taille de l'image.
+ les experts ès-LaTeX pourront fournir des options supplémentaires pour
+ LaTeX
 \begin_inset Newline newline
 \end_inset
 
 L'option 
 \family sans
-ne
+Mode brouillon
+\family default
+ fait que l'image apparaîtra sur la sortie sous la forme d'un cadre vide
+ avec la taille de l'image.
+\begin_inset Newline newline
+\end_inset
+
+L'option 
+\family sans
+Ne
 \begin_inset space ~
 \end_inset
 
@@ -19838,6 +19825,10 @@ du
 Document
 \family default
 .
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -19913,10 +19904,7 @@ Flottant
 
 d'enrobage
 \family default
-\lang english
- 
-\lang french
-à la condition que le paquetage LaTeX 
+ à la condition que le paquetage LaTeX 
 \series bold
 wrapfig
 \series default
@@ -19961,8 +19949,32 @@ comment installer des paquetages LaTeX.
 
 \end_inset
 
- La largeur et la position du flottant peut être modifiée en faisant un
- clic droit sur la boîte du flottant.
+ Les paramètres du flottant peuvent être modifiés en faisant un clic droit
+ sur la boîte du flottant.
+ Les paramètres obligatoires sont l'
+\family sans
+Emplacement
+\family default
+ et la 
+\family sans
+Largeur
+\family default
+.
+ Les paramètres facultatifs sont le 
+\family sans
+Débordement
+\family default
+ qui précise de combien le flottant déborde sur la marge du paragraphe ou
+ de la page et la 
+\family sans
+Porté de la ligne
+\family default
+ qui précise le nombre approximatif de lignes dont le flottant va avoir
+ besoin.
+ Cette dernière valeur est parfois difficile à évaluer, il vaut mieux ne
+ l'utiliser que si on rencontre des problème avec le positionnement du flottant.
+ Vous pouvez aussi décider si vous autorisez LaTeX à faire flotter le flottant
+ à l'intérieur du paragraphe ou vers les autres paragraphes.
  La figure
 \begin_inset space ~
 \end_inset
@@ -19978,7 +19990,11 @@ reference "fig:Figure-enrobée"
 \begin_inset space \thinspace{}
 \end_inset
 
-col%.
+col%, un débordement de 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm et placé à gauche.
 \begin_inset Foot
 status collapsed
 
@@ -21513,8 +21529,18 @@ Rotation
 \begin_layout Standard
 Les flottants renversés sont systématiquement placés sur leur propre page
  ( ou colonne, si vous avez un document sur deux colonnes ).
- Il sont pivotés de sorte que vous puissiez les lire en vous plaçant du
- côté de la marge externe.
+ Vous pouvez les laisser couvrir plusieurs colonnes en utilisant l'option
+ 
+\family sans
+Plusieurs
+\begin_inset space ~
+\end_inset
+
+colonnes
+\family default
+ dans les paramètres du flottant.
+ Le flottants sont pivotés de sorte que vous puissiez les lire en vous plaçant
+ du côté de la marge externe.
  Pour forcer un sens de rotation donné pour toutes les pages, vous pouvez
  ajouter soit l'option 
 \series bold
@@ -23737,7 +23763,7 @@ Insérer\SpecialChar \menuseparator
 Note
 \family default
 .
- Il y a cinq types de notes :
+ Il y a trois types de notes :
 \end_layout
 
 \begin_layout Description
@@ -23758,6 +23784,7 @@ LyX Ce type de note est à usage interne et n'apparaîtra pas sur la sortie
 
 \begin_inset Graphics
 	filename clipart/LyXNoteImageQt4.png
+	display false
 	scale 65
 	scaleBeforeRotation
 
@@ -23797,6 +23824,7 @@ LaTeX (pdflatex) / (plain)
 
 \begin_inset Graphics
 	filename clipart/CommentNoteImageQt4.png
+	display false
 	scale 55
 	scaleBeforeRotation
 
@@ -23837,6 +23865,8 @@ Grisée Ce type de note apparaît à l'impression sous forme de texte grisé.
 
 \begin_inset Graphics
 	filename clipart/GreyedOutNoteImageQt4.png
+	lyxscale 80
+	display false
 	scale 55
 	scaleBeforeRotation
 
@@ -23877,7 +23907,7 @@ status open
 \begin_layout Plain Layout
 Le texte
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ceci est un exemple de note de bas de page à l'intérieur d'une note en texte
@@ -26205,7 +26235,7 @@ reference "sec:Minipages"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Boîtes-encadrées"
+reference "sec:Décorations"
 
 \end_inset
 
@@ -27028,19 +27058,19 @@ Le texte de cette boîte est allongé horizontalement.
 \end_layout
 
 \begin_layout Subsection
-Les Boîtes Encadrées
+Décorations
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Boîtes-encadrées"
+name "sec:Décorations"
 
 \end_inset
 
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Boîtes ! Cadres
+Boîtes ! Décorations
 \end_layout
 
 \end_inset
@@ -27049,33 +27079,21 @@ Boîtes ! Cadres
 \end_layout
 
 \begin_layout Standard
-On peut spécifier le style du cadre de la boîte en utilisant la liste déroulante
+On peut spécifier le style de la boîte en utilisant la liste déroulante
  
 \family sans
 Décoration
-\family default
- dans la boîte de dialogue 
-\family sans
-Paramètres
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-Boîte
 \family default
 .
  Les possibilités sont les suivantes :
 \end_layout
 
 \begin_layout Description
-Boîte
+Cadre
 \begin_inset space ~
 \end_inset
 
-rectangulaire Ceci dessine un cadre rectangulaire autour de la boîte.
+simple Ceci dessine un cadre rectangulaire autour de la boîte.
  L'épaisseur du trait de ce cadre est donnée par la variable  
 \series bold
 
@@ -27107,15 +27125,84 @@ Boîte rectangulaire
 \end_layout
 
 \begin_layout Description
-Boîte
+Cadre
 \begin_inset space ~
 \end_inset
 
-ovale,
+simple,
 \begin_inset space ~
 \end_inset
 
-fine Ceci dessine un cadre ovalisée autour de la boîte.
+sauts
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+page Quand vous utilisez le style de décoration 
+\family sans
+cadre simple
+\family default
+ sans boîte intérieure, vous pouvez autoriser les sauts de page à l'intérieur
+ de la boîte.
+ Notez que dans ce cas, contrairement aux autres boîtes avec cadre, le cadre
+ predra toute la largeur de la colonne, la boîte sera considérée comme son
+ propre paragraphe et 
+\series bold
+
+\backslash
+fboxrule
+\series default
+ et 
+\series bold
+
+\backslash
+fboxsep
+\series default
+ n'ont aucun effet sur ce type de boîte.
+ L'épaisseur de la ligne du cadre a la valeur de 
+\series bold
+
+\backslash
+FrameRule
+\series default
+.
+ 
+\lang english
+
+\begin_inset Box Framed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+Boîte avec cadre simple et sauts de page
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Cadre
+\begin_inset space ~
+\end_inset
+
+oval,
+\begin_inset space ~
+\end_inset
+
+fin Ceci dessine un cadre ovalisée autour de la boîte.
  L'épaisseur du trait de ce cadre est de  0.4
 \begin_inset space \thinspace{}
 \end_inset
@@ -27145,15 +27232,15 @@ Boîte ovalisée, fine
 \end_layout
 
 \begin_layout Description
-Boîte
+Cadre
 \begin_inset space ~
 \end_inset
 
-ovale,
+oval,
 \begin_inset space ~
 \end_inset
 
-épaisse Ceci dessine un cadre ovalisée autour de la boîte.
+épais Ceci dessine un cadre ovalisée autour de la boîte.
  L'épaisseur du trait de ce cadre est de   0.8
 \begin_inset space \thinspace{}
 \end_inset
@@ -27183,11 +27270,15 @@ Boîte ovalisée, épaisse
 \end_layout
 
 \begin_layout Description
-Boîte
+Ombre
 \begin_inset space ~
 \end_inset
 
-ombrée Ceci dessine un cadre rectangulaire avec une ombre autour de la boîte.
+en
+\begin_inset space ~
+\end_inset
+
+relief Ceci dessine un cadre rectangulaire avec une ombre autour de la boîte.
  L'épaisseur du trait de ce cadre est donnée par la variable  
 \series bold
 
@@ -27223,11 +27314,63 @@ Boîte ombrée
 \end_layout
 
 \begin_layout Description
-Boîte
+Fond
 \begin_inset space ~
 \end_inset
 
-double Ceci dessine un cadre rectangulaire à deux traits autour de la boîte.
+ombré Ceci dessine une boîte avec un arrière plan rouge.
+ Contrairement aux boîtes coloriées
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Voir la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Boîtes-colorées"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+, elle utilise toujours toute la largeur de la colonne et la boîte constitue
+ son propre paragraphe.
+\lang english
+
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+Boîte avec fond ombré
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Double
+\begin_inset space ~
+\end_inset
+
+cadre Ceci dessine un cadre rectangulaire à deux traits autour de la boîte.
  L'épaisseur du trait du cadre interne est de 0.75
 \begin_inset space \thinspace{}
 \end_inset
@@ -27306,20 +27449,26 @@ L'étiquette qui se trouve sur la boîte dans LyX s'adapte pour montrer le
 \series bold
 fancybox
 \series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! fancybox
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Box customization
+Personnalisation des boîtes
 \begin_inset Index
 status open
 
 \begin_layout Plain Layout
-Boîtes! 
-\lang english
-Customization
+Boîtes! Personnalisation
 \end_layout
 
 \end_inset
@@ -27771,6 +27920,352 @@ shadowsize}{4pt}
 \begin_inset VSpace bigskip
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+La valeur par défaut pour la longueur 
+\series bold
+
+\backslash
+FrameRule
+\series default
+ est 0,4
+\begin_inset space \thinspace{}
+\end_inset
+
+pt.
+ L'espacement par défaut entre le contenu de la note et le cadre est de
+ 9
+\begin_inset space \thinspace{}
+\end_inset
+
+pt et il peut être modifié en utilisant la valeur de 
+\series bold
+
+\backslash
+FrameSep
+\series default
+.
+ Par exemple, l'apparence de la boîte suivante a été modifiée avec les commandes
+ suivantes en code TeX
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+setlength{
+\backslash
+FrameRule}{5pt}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+setlength{
+\backslash
+FrameSep}{0.5cm}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+FrameRule}{5pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+FrameSep}{0.5cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Framed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Ceci est un texte dans une boîte autorisant les 
+\family sans
+sauts de page
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+FrameRule}{0.4pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+FrameSep}{9pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pour les bôites à 
+\family sans
+Fond
+\begin_inset space ~
+\end_inset
+
+ombré
+\family default
+, l'espacement par défaut entre le contenu de la boîte et son cadre est
+ de 3
+\begin_inset space \thinspace{}
+\end_inset
+
+pt et il peut être modifié avec la valeur de 
+\series bold
+
+\backslash
+fboxsep
+\series default
+.
+ La couleur rouge utilisée par défaut pour le fond peut soit être modifiée
+ localement avec la commande 
+\series bold
+
+\backslash
+definecolor{shadebox}
+\series default
+, soit globalement avec le menu 
+\family sans
+Outils\SpecialChar \menuseparator
+Préférences
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Couleurs\SpecialChar \menuseparator
+boîte
+\begin_inset space ~
+\end_inset
+
+ombrée
+\family default
+.
+ La syntaxe de la commande 
+\series bold
+
+\backslash
+definecolor
+\series default
+ est expliquée dans la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Tableaux-Colorés"
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Notez que l'utilisation de 
+\series bold
+
+\backslash
+definecolor
+\series default
+ ne peut se faire sans le paquetage LaTeX 
+\series bold
+color
+\series default
+ dans le préambule, voir la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Boîtes-colorées"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Par exemple l'apparence de la note à fond ombré suivante a été modifié avec
+ les commandes en code TeX suivantes
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+setlength{
+\backslash
+fboxsep}{0.5cm}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+fboxsep}{0.5cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+
+\color yellow
+Ceci est un texte jaune dans une boîte à 
+\family sans
+Fond
+\begin_inset space ~
+\end_inset
+
+ombré
+\family default
+\color inherit
+ 
+\color yellow
+avec un fond vert foncé.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+fboxsep}{3pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+definecolor{shadecolor}{rgb}{1,0,0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Les longueurs et les largeurs ainsi modifiées restent valables pour toutes
  les boîtes qui suivent la commandes qui les a changées.
 \end_layout
@@ -27819,7 +28314,11 @@ col% et elles sont séparées par un ressort horizontal, qui a été inséré
  via le menu 
 \family sans
 Insérer\SpecialChar \menuseparator
-Formats\SpecialChar \menuseparator
+Typographie
+\begin_inset space ~
+\end_inset
+
+spéciale\SpecialChar \menuseparator
 Ressort
 \begin_inset space ~
 \end_inset
@@ -27827,6 +28326,10 @@ Ressort
 Horizontal
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
@@ -29306,7 +29809,7 @@ fboxsep
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Boîtes-encadrées"
+reference "sec:Décorations"
 
 \end_inset
 
