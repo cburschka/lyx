@@ -154,7 +154,7 @@
    StrCpy ${LangSysEnc} "1250"
   ${endif}
 
-  ${if} ${LangISOCode} = 1046  # for portuguese (brasilian)
+  ${if} ${LangISOCode} = 1046  # for Portuguese (brasilian)
    StrCpy ${LangNme} "Português"
    StrCpy ${LangCdeSys} "pt"
    StrCpy ${LangNmeSys} "Português"
@@ -385,7 +385,7 @@
    StrCpy ${LangSysEnc} "1252"
   ${endif}
 
-  ${if} ${LangISOCode} = 2070  # for portuguese
+  ${if} ${LangISOCode} = 2070  # for Portuguese
    StrCpy ${LangNme} "Português"
    StrCpy ${LangCdeSys} "pt"
    StrCpy ${LangNmeSys} "Português"
@@ -651,6 +651,11 @@
   ${if} ${Name} == "Türkçe"
    StrCpy ${LangCde} "tr_TR"
    StrCpy ${LangEnc} "cp-1254"
+  ${endif}
+
+  ${if} ${Name} == "Ukrainian"
+   StrCpy ${LangCde} "uk_UA"
+   StrCpy ${LangEnc} "cp-1251"
   ${endif}
 
 !macroend
