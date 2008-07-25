@@ -1462,10 +1462,45 @@ void BufferParams::makeDocumentClass()
 		return;
 
 	doc_class_ = &(DocumentClassBundle::get().newClass(*baseClass()));
+
+	// add any required modules not already in use
+	set<string> const & mods = baseClass()->defaultModules();
+	set<string>::const_iterator mit = mods.begin();
+	set<string>::const_iterator men = mods.end();
+	for (; mit != men; mit++) {
+		string const & modName = *mit;
+		LayoutModuleList::const_iterator const fit = 
+				find(layoutModules_.begin(), layoutModules_.end(), modName);
+		if (fit == layoutModules_.end()) {
+			// We need to make sure there's no module chosen that excludes this one
+			LayoutModuleList::const_iterator lit = layoutModules_.begin();
+			LayoutModuleList::const_iterator len = layoutModules_.end();
+			bool foundit = false;
+			// so iterate over the selected modules...
+			for (; lit != len; lit++) {
+				LyXModule * lm = moduleList[*lit];
+				if (!lm)
+					continue;
+				vector<string> const & exc = lm->getExcludedModules();
+				// ...and see if one of them excludes us.
+				if (find(exc.begin(), exc.end(), modName) != exc.end()) {
+					foundit = true;
+					LYXERR(Debug::TCLASS, "Default module `" << modName << 
+							"' not added because excluded by loaded module `" << 
+							*lit << "'.");
+					break;
+				}
+			}
+			if (!foundit) {
+				LYXERR(Debug::TCLASS, "Default module `" << modName << "' added.");
+				layoutModules_.push_back(modName);
+			}
+		}
+	}
 	
-	//FIXME It might be worth loading the children's modules here,
-	//just as we load their bibliographies and such, instead of just 
-	//doing a check in InsetInclude.
+	// FIXME It might be worth loading the children's modules here,
+	// just as we load their bibliographies and such, instead of just 
+	// doing a check in InsetInclude.
 	LayoutModuleList::const_iterator it = layoutModules_.begin();
 	for (; it != layoutModules_.end(); it++) {
 		string const modName = *it;

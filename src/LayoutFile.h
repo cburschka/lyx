@@ -18,6 +18,8 @@
 
 #include <boost/noncopyable.hpp>
 
+#include <set>
+#include <string>
 #include <vector>
 
 
@@ -61,6 +63,8 @@ class LayoutFile : public TextClass, boost::noncopyable {
 public:
 	/// check whether the TeX class is available
 	bool isTeXClassAvailable() const { return texClassAvail_; }
+	///
+	std::set<std::string> const & defaultModules() const { return usemod_; }
 private:
 	/// Construct a layout with default values. Actual values loaded later.
 	explicit LayoutFile(std::string const & filename,

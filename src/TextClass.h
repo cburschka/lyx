@@ -246,6 +246,8 @@ protected:
 	std::set<std::string> provides_;
 	/// latex packages requested by document class.
 	std::set<std::string> requires_;
+	/// modules wanted by document class
+	std::set<std::string> usemod_;
 	///
 	unsigned int columns_;
 	///

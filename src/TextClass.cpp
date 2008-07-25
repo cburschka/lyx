@@ -61,7 +61,7 @@ private:
 };
 
 
-int const FORMAT = 7;
+int const FORMAT = 8;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)
@@ -182,7 +182,8 @@ enum TextClassTags {
 	TC_TITLELATEXNAME,
 	TC_TITLELATEXTYPE,
 	TC_FORMAT,
-	TC_ADDTOPREAMBLE
+	TC_ADDTOPREAMBLE,
+	TC_USEMODULE
 };
 
 
@@ -213,7 +214,8 @@ namespace {
 		{ "style",           TC_STYLE },
 		{ "titlelatexname",  TC_TITLELATEXNAME },
 		{ "titlelatextype",  TC_TITLELATEXTYPE },
-		{ "tocdepth",        TC_TOCDEPTH }
+		{ "tocdepth",        TC_TOCDEPTH },
+		{ "usemodule",       TC_USEMODULE }
 	};
 	
 } //namespace anon
@@ -488,6 +490,13 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			vector<string> const req 
 				= getVectorFromString(lexrc.getString());
 			requires_.insert(req.begin(), req.end());
+			break;
+		}
+
+		case TC_USEMODULE: {
+			lexrc.next();
+			string const module = lexrc.getString();
+			usemod_.insert(module);
 			break;
 		}
 

@@ -25,7 +25,10 @@ import os, re, string, sys
 
 # Incremented to format 7, 24 March 2008 by rgh
 # AddToPreamble tag added to layout files
-currentFormat = 7
+
+# Incremented to format 8, 25 July 2008 by rgh
+# UseModule tag added to layout files
+currentFormat = 8
 
 
 def usage(prog_name):
