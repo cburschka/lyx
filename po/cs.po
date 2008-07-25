@@ -8305,17 +8305,16 @@ msgid "code"
 msgstr "kód"
 
 #: lib/layouts/minimalistic.module:2
-#, fuzzy
 msgid "Minimalistic"
-msgstr "Minisec"
+msgstr "Minimalistický"
 
 #: lib/layouts/minimalistic.module:5
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
-msgstr ""
+msgstr "Pøedefinovat nìkteré z vlo¾ek jako minimalistické (Index, Vìtev, URL)."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
-msgstr ""
+msgstr "Teorémy (roz¹íøení AMS)"
 
 #: lib/layouts/theorems-ams-extended.module:8
 msgid ""
@@ -8324,6 +8323,10 @@ msgid ""
 "Summary, Acknowledgement, Conclusion, Fact, Assumption, and Case, in both "
 "starred and non-starred forms."
 msgstr ""
+"Definuje nìkterá pøídavná matematická prostøedí pro pou¾ití s balíèky AMS. "
+"Zahrnuje Criterion, Algorithm, Axiom, Condition, Note, Notation, "
+"Summary, Acknowledgement, Conclusion, Fact, Assumption, and Case v obou "
+"formách (èíslované/neèísované)."
 
 #: lib/layouts/theorems-ams-extended.module:37
 msgid "Criterion \\thetheorem."
@@ -8793,202 +8796,179 @@ msgstr "Wel¹tina"
 
 #: lib/encodings:14
 msgid "Unicode (utf8)"
-msgstr ""
+msgstr "Unicode (utf8)"
 
 #: lib/encodings:19
 msgid "Unicode (ucs-extended) (utf8x)"
-msgstr ""
+msgstr "Unicode (ucs-roz¹íøení) (utf8x)"
 
 #: lib/encodings:23
 msgid "Armenian (ArmSCII8)"
-msgstr ""
+msgstr "Armén¹tina (ArmSCII8)"
 
 #: lib/encodings:26
 msgid "Western European (ISO 8859-1)"
-msgstr ""
+msgstr "Západoevropské j. (ISO 8859-1)"
 
 #: lib/encodings:29
 msgid "Central European (ISO 8859-2)"
-msgstr ""
+msgstr "Støedoevropské j. (ISO 8859-2)"
 
 #: lib/encodings:32
-msgid "Middle European (ISO 8859-3)"
-msgstr ""
+msgid "South European (ISO 8859-3)"
+msgstr "Jihoevropské j. (ISO 8859-3)"
 
 #: lib/encodings:35
-#, fuzzy
 msgid "Baltic (ISO 8859-4)"
-msgstr "Arab¹tina (Arabi)"
+msgstr "Baltské j. (ISO 8859-4)"
 
 #: lib/encodings:38
-#, fuzzy
 msgid "Cyrillic (ISO 8859-5)"
-msgstr "Cyrilika"
+msgstr "Cyrilika (ISO 8859-5)"
 
 #: lib/encodings:42
-#, fuzzy
 msgid "Arabic (ISO 8859-6)"
-msgstr "Arab¹tina (Arabi)"
+msgstr "Arab¹tina (ISO 8859-6)"
 
 #: lib/encodings:45
 msgid "Greek (ISO 8859-7)"
-msgstr ""
+msgstr "Øeètina (ISO 8859-7)"
 
 #: lib/encodings:48
 msgid "Hebrew (ISO 8859-8)"
-msgstr ""
+msgstr "Hebrej¹tina (ISO 8859-8)"
 
 #: lib/encodings:51
 msgid "Turkish (ISO 8859-9)"
-msgstr ""
+msgstr "Tureètina (ISO 8859-9)"
 
 #: lib/encodings:55
-#, fuzzy
 msgid "Baltic (ISO 8859-13)"
-msgstr "Arab¹tina (Arabi)"
+msgstr "Baltské j. (ISO 8859-13)"
 
 #: lib/encodings:58
 msgid "Western European (ISO 8859-15)"
-msgstr ""
+msgstr "Západoevropské j. (ISO 8859-15)"
 
 #: lib/encodings:61
 msgid "South-Eastern European (ISO 8859-16)"
-msgstr ""
+msgstr "Jiho-východoevropské j. (ISO 8859-16)"
 
 #: lib/encodings:64
 msgid "DOS (CP 437)"
-msgstr ""
+msgstr "DOS (CP 437)"
 
 #: lib/encodings:68
 msgid "DOS-de (CP 437-de)"
-msgstr ""
+msgstr "DOS (CP 437)"
 
 #: lib/encodings:71
 msgid "Western European (CP 850)"
-msgstr ""
+msgstr "Západoevropské j. (CP 850)"
 
 #: lib/encodings:74
 msgid "Central European (CP 852)"
-msgstr ""
+msgstr "Støedoevropské j. (CP 852)"
 
 #: lib/encodings:77
-#, fuzzy
 msgid "Cyrillic (CP 855)"
-msgstr "Cyrilika"
+msgstr "Cyrilika (CP 855)"
 
 #: lib/encodings:80
 msgid "Western European (CP 858)"
-msgstr ""
+msgstr "Západoevropské j. (CP 858)"
 
 #: lib/encodings:83
 msgid "Hebrew (CP 862)"
-msgstr ""
+msgstr "Hebrej¹tina (CP 862)"
 
 #: lib/encodings:86
-#, fuzzy
 msgid "Nordic languages (CP 865)"
-msgstr "®ádný jazyk"
+msgstr "Severské jazyky (CP 865)"
 
 #: lib/encodings:89
-#, fuzzy
 msgid "Cyrillic (CP 866)"
-msgstr "Cyrilika"
+msgstr "Cyrilika (CP 866)"
 
 #: lib/encodings:92
 msgid "Central European (CP 1250)"
-msgstr ""
+msgstr "Søedoevropské j. (CP 1250)"
 
 #: lib/encodings:95
-#, fuzzy
 msgid "Cyrillic (CP 1251)"
-msgstr "Cyrilika"
+msgstr "Cyrilika (CP 1251)"
 
 #: lib/encodings:98
 msgid "Western European (CP 1252)"
-msgstr ""
+msgstr "Západoevropské j. (CP 1252)"
 
 #: lib/encodings:101
-#, fuzzy
 msgid "Hebrew (CP 1255)"
-msgstr "Arab¹tina (Arabi)"
+msgstr "Hebrej¹tina (CP 1255)"
 
 #: lib/encodings:105
-#, fuzzy
 msgid "Arabic (CP 1256)"
-msgstr "Arab¹tina (Arabi)"
+msgstr "Arab¹tina (CP 1256)"
 
 #: lib/encodings:108
-#, fuzzy
 msgid "Baltic (CP 1257)"
-msgstr "Arab¹tina (Arabi)"
+msgstr "Baltské j. (CP 1257)"
 
 #: lib/encodings:111
-#, fuzzy
 msgid "Cyrillic (KOI8-R)"
-msgstr "Cyrilika"
+msgstr "Cyrilika (KOI8-R)"
 
 #: lib/encodings:114
-#, fuzzy
 msgid "Cyrillic (KOI8-U)"
-msgstr "Cyrilika"
+msgstr "Cyrilika (KOI8-U)"
 
 #: lib/encodings:117
-#, fuzzy
 msgid "Cyrillic (pt 154)"
-msgstr "Cyrilika"
+msgstr "Cyrilika (pt 154)"
 
 #: lib/encodings:120
-#, fuzzy
 msgid "Cyrillic (pt 254)"
-msgstr "Cyrilika"
+msgstr "Cyrilika (pt 254)"
 
 #: lib/encodings:145
-#, fuzzy
 msgid "Chinese (simplified) (EUC-CN)"
-msgstr "Èín¹tina (zjednodu¹ená)"
+msgstr "Èín¹tina (zjednodu¹ená) (EUC-CN)"
 
 #: lib/encodings:149
-#, fuzzy
 msgid "Chinese (simplified) (GBK)"
-msgstr "Èín¹tina (zjednodu¹ená)"
+msgstr "Èín¹tina (zjednodu¹ená) (GBK)"
 
 #: lib/encodings:153
-#, fuzzy
 msgid "Japanese (CJK) (JIS)"
-msgstr "Japon¹tina (non-CJK)"
+msgstr "Japon¹tina (CJK) (JIS)"
 
 #: lib/encodings:157
 msgid "Korean (EUC-KR)"
-msgstr ""
+msgstr "Korej¹tina (EUC-KR)"
 
 #: lib/encodings:161
 msgid "Unicode (CJK) (utf8)"
-msgstr ""
+msgstr "Unicode (CJK) (utf8)"
 
 #: lib/encodings:165
-#, fuzzy
 msgid "Chinese (traditional) (EUC-TW)"
-msgstr "Èín¹tina (tradièní)"
+msgstr "Èín¹tina (tradièní) (EUC-TW)"
 
 #: lib/encodings:169
-#, fuzzy
 msgid "Japanese (CJK) (EUC-JP)"
-msgstr "Japon¹tina (non-CJK)"
+msgstr "Japon¹tina (non-CJK) (EUC-JP)"
 
 #: lib/encodings:176
-#, fuzzy
 msgid "Japanese (non-CJK) (EUC-JP)"
-msgstr "Japon¹tina (non-CJK)"
+msgstr "Japon¹tina (non-CJK) (EUC-JP)"
 
 #: lib/encodings:178
-#, fuzzy
 msgid "Japanese (non-CJK) (JIS)"
-msgstr "Japon¹tina (non-CJK)"
+msgstr "Japon¹tina (non-CJK) (JIS)"
 
 #: lib/encodings:180
-#, fuzzy
 msgid "Japanese (non-CJK) (SJIS)"
-msgstr "Japon¹tina (non-CJK)"
+msgstr "Japon¹tina (non-CJK) (SJIS)"
 
 #: lib/encodings:187
 msgid "Thai (TIS 620-0)"
@@ -9088,29 +9068,27 @@ msgstr "Konec|K"
 
 #: lib/ui/classic.ui:68 lib/ui/stdmenus.inc:63
 msgid "Register...|R"
-msgstr "Registrovat se...|R"
+msgstr "Zaregistrovat soubor...|Z"
 
 #: lib/ui/classic.ui:69 lib/ui/stdmenus.inc:64
 msgid "Check In Changes...|I"
-msgstr "Zapsat zmìny...|Z"
+msgstr "Ulo¾it zmìny do repositáøe...|Z"
 
 #: lib/ui/classic.ui:70 lib/ui/stdmenus.inc:65
 msgid "Check Out for Edit|O"
-msgstr "Zablokovat pro editaci|b"
+msgstr "Naèíst nejnovìj¹í verzi z repositáøe|r"
 
 #: lib/ui/classic.ui:71 lib/ui/stdmenus.inc:66
-#, fuzzy
 msgid "Revert to Repository Version|R"
-msgstr "Návrat k poslední verzi|N"
+msgstr "Návrat k poslední verzi v repozitáøi|N"
 
 #: lib/ui/classic.ui:72 lib/ui/stdmenus.inc:67
 msgid "Undo Last Check In|U"
 msgstr "Zru¹it poslední zápis zmìn|p"
 
 #: lib/ui/classic.ui:73 lib/ui/stdmenus.inc:68
-#, fuzzy
 msgid "Show History...|H"
-msgstr "Zobrazit historii|h"
+msgstr "Zobrazit historii...|h"
 
 #: lib/ui/classic.ui:82 lib/ui/stdmenus.inc:77
 msgid "Custom...|C"
@@ -11114,14 +11092,12 @@ msgid "Next change"
 msgstr "Dal¹í zmìna"
 
 #: lib/ui/stdtoolbars.inc:193
-#, fuzzy
 msgid "Accept change inside selection"
-msgstr "Pøijmout zmìnu"
+msgstr "Pøijmout zmìnu uvnitø výbìru"
 
 #: lib/ui/stdtoolbars.inc:194
-#, fuzzy
 msgid "Reject change inside selection"
-msgstr "Zamìò heslo s vybraným"
+msgstr "Zamítnout zmìnu uvnitø výbìru"
 
 #: lib/ui/stdtoolbars.inc:196
 msgid "Merge changes"
@@ -14178,9 +14154,8 @@ msgid ""
 msgstr ""
 
 #: src/BufferParams.cpp:1427
-#, fuzzy
 msgid "Document class not found"
-msgstr "Tøída dokumentu není dostupná"
+msgstr "Tøída dokumentu nenalezena"
 
 #: src/BufferParams.cpp:1437 src/LyXFunc.cpp:697
 #, c-format
@@ -15920,7 +15895,7 @@ msgid "(no log message)"
 msgstr "(¾ádná zpráva logu)"
 
 #: src/LyXVC.cpp:175
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
 "changes.\n"
@@ -15929,7 +15904,7 @@ msgid ""
 msgstr ""
 "Návrat k ulo¾ené verzi dokumentu %1$s znamená ztrátu v¹ech souèasných zmìn.\n"
 "\n"
-"Chcete pøejít zpìt k ulo¾ené verzi ?"
+"Chcete pøejít zpìt k star¹í ulo¾ené verzi ?"
 
 #: src/LyXVC.cpp:178
 msgid "Revert to stored version of document?"
@@ -16133,16 +16108,16 @@ msgstr ""
 "%1$s."
 
 #: src/VCBackend.cpp:46 src/VCBackend.cpp:468 src/VCBackend.cpp:515
-#, fuzzy
 msgid "Revision control error."
-msgstr "Správa verzí"
+msgstr "Chyba správy verzí."
 
 #: src/VCBackend.cpp:47
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Some problem occured while running the command:\n"
 "'%1$s'."
-msgstr "Chyba pøi bìhu %1$s"
+msgstr "Nastala chyba pøi spu¹tìní pøíkazu:\n"
+"'%1$s'."
 
 #: src/VCBackend.cpp:469
 msgid ""
@@ -16952,7 +16927,6 @@ msgid "Local layout file"
 msgstr "Lokální soubor s rozvr¾ením"
 
 #: src/frontends/qt4/GuiDocument.cpp:1247
-#, fuzzy
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory. Your\n"
@@ -16960,7 +16934,7 @@ msgid ""
 "keep the layout file in the document directory."
 msgstr ""
 "Soubor s rozvr¾ením dokumentu, který jste zvolili je lokálním\n"
-"souborem, nikoliv systémovým nebo u¾ivatelským.\n"
+"souborem, a není v systémovém nebo u¾ivatelském adresáøi.\n"
 "Vá¹ dokument mù¾e mít problémy pokud soubor s rozvr¾ením\n"
 "neponecháte ve stejném adresáøi."
 
@@ -17999,9 +17973,8 @@ msgid "Enter characters to filter the layout list."
 msgstr "Zadejte znaky pro zmen¹ení seznamu."
 
 #: src/frontends/qt4/GuiToolbar.cpp:537
-#, fuzzy
 msgid " (unknown)"
-msgstr "neznámý"
+msgstr "(neznámý)"
 
 #: src/frontends/qt4/GuiToolbar.cpp:942
 msgid "auto"
@@ -18072,19 +18045,16 @@ msgid "Examples|#E#e"
 msgstr "Pøíklady|#a#A"
 
 #: src/frontends/qt4/GuiView.cpp:1282
-#, fuzzy
 msgid "LyX-1.3.x Documents (*.lyx13)"
-msgstr "Dokumenty LyX-u (*.lyx)"
+msgstr "Dokumenty LyX-u 1.3 (*.lyx13)"
 
 #: src/frontends/qt4/GuiView.cpp:1283
-#, fuzzy
 msgid "LyX-1.4.x Documents (*.lyx14)"
-msgstr "Dokumenty LyX-u (*.lyx)"
+msgstr "Dokumenty LyX-u 1.4 (*.lyx14)"
 
 #: src/frontends/qt4/GuiView.cpp:1284
-#, fuzzy
 msgid "LyX-1.5.x Documents (*.lyx15)"
-msgstr "Dokumenty LyX-u (*.lyx)"
+msgstr "Dokumenty LyX-u 1.5 (*.lyx15)"
 
 #: src/frontends/qt4/GuiView.cpp:1318
 #, c-format
@@ -18734,9 +18704,8 @@ msgid ""
 msgstr ""
 
 #: src/insets/InsetListings.cpp:265
-#, fuzzy
 msgid "Uncodable characters in listings inset"
-msgstr "nekódovatelný znak"
+msgstr "Nekódovatelné znaky ve výpisu zdrojového kódu"
 
 #: src/insets/InsetListings.cpp:266
 #, c-format
@@ -19320,7 +19289,7 @@ msgstr ""
 "$s"
 
 #: src/support/Package.cpp:555
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
 "\t%1$s\n"
@@ -19330,7 +19299,7 @@ msgstr ""
 "Nepodaøilo se zjitit systémový adresáø, pøi prohledávání\n"
 "\t%1$s\n"
 "Pou¾ijte parametr pøíkazové øádky '-sysdir' nebo nastavte promìnnou "
-"prostøedí LYX_DIR_15x do systémového adresáøe LyX-u obsahujícího soubor "
+"prostøedí LYX_DIR_16x do systémového adresáøe LyX-u obsahujícího soubor "
 "`chkconfig.ltx'."
 
 #: src/support/Package.cpp:638 src/support/Package.cpp:665
