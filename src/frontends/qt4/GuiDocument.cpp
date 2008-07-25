@@ -1323,6 +1323,11 @@ void GuiDocument::classChanged()
 		bp_.useClassDefaults();
 		paramsToDialog(bp_);
 	}
+	// FIXME There's a little bug here connected with auto_reset, namely,
+	// that, if the preceding is skipped and the user has changed the
+	// modules before changing the class, those changes will be lost on
+	// update. But maybe that's what we want?
+	updateSelectedModules();
 }
 
 

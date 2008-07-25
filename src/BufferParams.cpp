@@ -1428,40 +1428,16 @@ bool BufferParams::setBaseClass(string const & classname)
 		bcl.addEmptyClass(classname);
 	}
 
-	if (bcl[classname].load()) {
-		pimpl_->baseClass_ = classname;
-		return true;
+	bool const success = bcl[classname].load();
+	if (!success) {	
+		docstring s = 
+			bformat(_("The document class %1$s could not be loaded."),
+			from_utf8(classname));
+		frontend::Alert::error(_("Could not load class"), s);
+		return false;
 	}
-	
-	docstring s = 
-		bformat(_("The document class %1$s could not be loaded."),
-		from_utf8(classname));
-	frontend::Alert::error(_("Could not load class"), s);
-	return false;
-}
 
-
-LayoutFile const * BufferParams::baseClass() const
-{
-	if (LayoutFileList::get().haveClass(pimpl_->baseClass_))
-		return &(LayoutFileList::get()[pimpl_->baseClass_]);
-	else 
-		return 0;
-}
-
-
-LayoutFileIndex const & BufferParams::baseClassID() const
-{
-	return pimpl_->baseClass_;
-}
-
-
-void BufferParams::makeDocumentClass()
-{
-	if (!baseClass())
-		return;
-
-	doc_class_ = &(DocumentClassBundle::get().newClass(*baseClass()));
+	pimpl_->baseClass_ = classname;
 
 	// add any required modules not already in use
 	set<string> const & mods = baseClass()->defaultModules();
@@ -1497,7 +1473,32 @@ void BufferParams::makeDocumentClass()
 			}
 		}
 	}
-	
+	return true;
+}
+
+
+LayoutFile const * BufferParams::baseClass() const
+{
+	if (LayoutFileList::get().haveClass(pimpl_->baseClass_))
+		return &(LayoutFileList::get()[pimpl_->baseClass_]);
+	else 
+		return 0;
+}
+
+
+LayoutFileIndex const & BufferParams::baseClassID() const
+{
+	return pimpl_->baseClass_;
+}
+
+
+void BufferParams::makeDocumentClass()
+{
+	if (!baseClass())
+		return;
+
+	doc_class_ = &(DocumentClassBundle::get().newClass(*baseClass()));
+
 	// FIXME It might be worth loading the children's modules here,
 	// just as we load their bibliographies and such, instead of just 
 	// doing a check in InsetInclude.
