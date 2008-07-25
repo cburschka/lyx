@@ -8075,27 +8075,24 @@ msgid "Remark."
 msgstr "Remark."
 
 #: lib/layouts/braille.module:2
-#, fuzzy
 msgid "Braille"
-msgstr "parallel"
+msgstr "Braillovo písmo"
 
 #: lib/layouts/braille.module:5
 msgid "Defines an environment to typeset Braille."
-msgstr ""
+msgstr "Definuje prostøedí pro sazbu Braillova slepeckého písma."
 
 #: lib/layouts/braille.module:20
-#, fuzzy
 msgid "Braille (default)"
-msgstr "Vnìj¹í (standardní)"
+msgstr "Braillovo písmo (standardní)"
 
 #: lib/layouts/braille.module:34 lib/layouts/braille.module:56
-#, fuzzy
 msgid "Braille:"
-msgstr "Men¹í:"
+msgstr "Braillovo písmo:"
 
 #: lib/layouts/braille.module:42
 msgid "Braille (textsize)"
-msgstr ""
+msgstr "Braillovo písmo (velikost)"
 
 #: lib/layouts/braille.module:64
 msgid "Braille (dots on)"
@@ -8130,36 +8127,38 @@ msgid "Braille mirror off"
 msgstr ""
 
 #: lib/layouts/endnotes.module:2
-#, fuzzy
 msgid "Endnote"
-msgstr "poznámka"
+msgstr "Koncová poznámka"
 
 #: lib/layouts/endnotes.module:6
 msgid ""
 "Adds an endnote inset, in addition to footnotes. You will need to add "
 "\\theendnotes in ERT where you want the endnotes to appear."
 msgstr ""
+"Pøidává vlo¾ku pro koncové poznámky (Endnote) (krom ji¾ existujících poznámek pod èarou)."
+"Budete muset pøidat \\theendnotes do vlo¾ky TeX-ového kódu, a to v místì kde se mají"
+"koncové poznámky objevit."
 
 #: lib/layouts/endnotes.module:9
-#, fuzzy
 msgid "Custom:Endnote"
-msgstr "poznámka"
+msgstr "Vlastní:Koncová poznámka"
 
 #: lib/layouts/endnotes.module:18
-#, fuzzy
 msgid "endnote"
-msgstr "Headnote"
+msgstr "koncová poznámka"
 
 #: lib/layouts/foottoend.module:2
-#, fuzzy
 msgid "Foot to End"
-msgstr "Note to Editor:"
+msgstr "Patièky na Koncové"
 
 #: lib/layouts/foottoend.module:6
 msgid ""
 "Sets all footnotes as endnotes. You will need to add \\theendnotes in ERT "
 "where you want the endnotes to appear."
 msgstr ""
+"Nastavit v¹echny poznámky pod èarou jako koncové poznámky."
+"Budete muset pøidat \\theendnotes do vlo¾ky TeX-ového kódu, a to v místì kde se mají"
+"koncové poznámky objevit."
 
 #: lib/layouts/hanging.module:2 lib/layouts/hanging.module:16
 #, fuzzy
