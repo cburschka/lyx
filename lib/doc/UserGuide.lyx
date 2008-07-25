@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0beta4 created this file. For more info see http://www.lyx.org/
 \lyxformat 338
 \begin_document
 \begin_header
@@ -15966,6 +15966,47 @@ In the case of PDF, the original image is additionally compressed.
 \begin_layout Standard
 Normally one can't convert a bitmap image into a scalable one, only vice
  versa.
+\end_layout
+
+\begin_layout Subsection
+Grouping of Image Settings
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Images grouping
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Each image can define a new group of the settings or join the exiting group.
+ The images within such a group share their settings and adjusting one of
+ the images automatically propagate into all other images in the group.
+ This way you can for example adjust the size for a bunch of images in the
+ same way without the need to manually change each of them.
+ 
+\end_layout
+
+\begin_layout Standard
+The new group can be set in 
+\family sans
+Initialize
+\begin_inset space ~
+\end_inset
+
+Group
+\begin_inset space ~
+\end_inset
+
+Name
+\family default
+ field inside Graphics dialog.
+ Joining the exiting group can be set using the context menu of the image
+ - just check the name of the desired group.
 \end_layout
 
 \begin_layout Section
