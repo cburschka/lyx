@@ -2860,6 +2860,19 @@ def revert_polytonicgreek(document):
         j = j + 1
 
 
+def revert_removed_modules(document):
+    i = 0
+    while True:
+        i = find_token(document.header, "\\begin_remove_modules", i)
+        if i == -1:
+            return
+        j = find_end_of(document.header, i, "\\begin_remove_modules", "\\end_remove_modules")
+        if j == -1:
+            # this should not happen
+            break
+        document.header[i : j + 1] = []
+
+
 ##
 # Conversion hub
 #
@@ -2927,9 +2940,11 @@ convert = [[277, [fix_wrong_tables]],
            [336, []],
            [337, [convert_display_enum]],
            [338, []],
+           [339, []],
           ]
 
-revert =  [[337, [revert_polytonicgreek]],
+revert =  [[338, [revert_removed_modules]],
+           [337, [revert_polytonicgreek]],
            [336, [revert_display_enum]],
            [335, [remove_fontsCJK]],
            [334, [revert_InsetSpace]],
