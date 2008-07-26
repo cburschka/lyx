@@ -55,6 +55,7 @@ Var MiKTeXPath
 Var InstallGSview
 Var InstallJabRef
 Var SVGPath
+Var AppFiles
 # Variables used by all installer versions
 !include "Variables.nsh"
 

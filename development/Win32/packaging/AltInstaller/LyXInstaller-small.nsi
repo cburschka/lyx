@@ -53,6 +53,7 @@ Var MiKTeXVersion
 Var MiKTeXUser
 Var State
 Var SVGPath
+Var AppFiles
 # Variables used by all installer versions
 !include "Variables.nsh"
 

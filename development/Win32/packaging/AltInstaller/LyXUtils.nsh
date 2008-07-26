@@ -408,7 +408,7 @@ FunctionEnd
    StrCpy $UserList $UserList "" $Pointer # cut off the first username in the list
    # generate the string for the current user
    # AppPre and AppSuff are generated in the macro "AppPreSuff"
-   StrCpy $AppPath "$AppPre\$0\$AppSuff\${PRODUCT_SUBFOLDER}"
+   StrCpy $AppPath "$AppPre\$0\$AppSuff\$AppSubfolder"
    # read the preferences file to test if it exists
    FileOpen $R1 "$AppPath\$FileName" r
    IfErrors doneA
@@ -420,7 +420,7 @@ FunctionEnd
   ready:
   # now do the same for the last user name
   StrCpy $0 $UserList
-  StrCpy $AppPath "$AppPre\$0\$AppSuff\${PRODUCT_SUBFOLDER}"
+  StrCpy $AppPath "$AppPre\$0\$AppSuff\$AppSubfolder"
   FileOpen $R1 "$AppPath\$FileName" r
   IfErrors doneB
   FileClose $R1

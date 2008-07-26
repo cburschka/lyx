@@ -4,8 +4,8 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\bin" # always here
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
- SetOutPath "$INSTDIR\Resources\bin\Lib"
- File "${PRODUCT_SOURCEDIR}\Resources\bin\Lib\copy.py"
+ SetOutPath "$INSTDIR\bin\Lib"
+ File "${PRODUCT_SOURCEDIR}\bin\Lib\copy.py"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
@@ -39,9 +39,6 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\templates"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\aa.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\JSS-article.lyx"
- SetOutPath "$INSTDIR\Resources\man\man1"
- #File "${PRODUCT_SOURCEDIR}\Resources\man\man1\lyx.1"
- SetOutPath "$INSTDIR\Resources\ui"
 
 FunctionEnd
 

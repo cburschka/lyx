@@ -37,6 +37,7 @@ SetCompressor lzma
 
 Var INSTDIR_NEW
 Var INSTDIR_OLD
+Var AppPath
 # Variables used by all installer versions
 !include "Variables.nsh"
 
