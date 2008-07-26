@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-15 23:12+0200\n"
+"POT-Creation-Date: 2008-07-26 08:04+0200\n"
 "PO-Revision-Date: 2007-05-15 16:13+0900\n"
 "Last-Translator: cghan <cghan@pusan.ac.kr>\n"
 "Language-Team: hangul <ko@li.org>\n"
@@ -3439,7 +3439,7 @@ msgstr ""
 msgid "Case"
 msgstr ""
 
-#: lib/layouts/IEEEtran.layout:245 lib/layouts/amsmaths.inc:618
+#: lib/layouts/IEEEtran.layout:245
 msgid "Case #:"
 msgstr ""
 
@@ -4077,6 +4077,11 @@ msgstr ""
 msgid "Latin off"
 msgstr ""
 
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr ""
+
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:114
 #: lib/layouts/beamer.layout:129 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:31 lib/layouts/scrartcl.layout:20
@@ -4091,11 +4096,6 @@ msgstr ""
 #: lib/layouts/scrartcl.layout:30 lib/layouts/seminar.layout:35
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
-msgstr ""
-
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
 msgstr ""
 
 #: lib/layouts/beamer.layout:104 lib/layouts/egs.layout:196
@@ -5967,7 +5967,7 @@ msgstr ""
 msgid "TOC Author:"
 msgstr ""
 
-#: lib/layouts/llncs.layout:298
+#: lib/layouts/llncs.layout:298 lib/layouts/amsmaths.inc:618
 msgid "Case #."
 msgstr ""
 
@@ -13709,25 +13709,25 @@ msgstr "날짜"
 msgid "No Branch in Document!"
 msgstr "문서 인쇄"
 
-#: src/Paragraph.cpp:1711 src/frontends/qt4/QParagraph.cpp:233
+#: src/Paragraph.cpp:1722 src/frontends/qt4/QParagraph.cpp:233
 msgid "Senseless with this layout!"
 msgstr ""
 
-#: src/Paragraph.cpp:1771
+#: src/Paragraph.cpp:1782
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1772
+#: src/Paragraph.cpp:1783
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2246 src/frontends/qt4/QViewSource.cpp:161
+#: src/Paragraph.cpp:2257 src/frontends/qt4/QViewSource.cpp:161
 msgid "LyX Warning: "
 msgstr ""
 
-#: src/Paragraph.cpp:2247
+#: src/Paragraph.cpp:2258
 #, fuzzy
 msgid "uncodable character"
 msgstr "특수 문자"

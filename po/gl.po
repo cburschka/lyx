@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-18 15:54+0200\n"
+"POT-Creation-Date: 2008-07-26 08:04+0200\n"
 "PO-Revision-Date: 2008-07-22 17:13+0200\n"
 "Last-Translator: Ramon Flores <joseramon.flores@usc.es>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -1142,7 +1142,8 @@ msgstr "Tamaño de saída"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Sets height of graphic. Leave unchecked to set automatically."
-msgstr "Escolla a altura da imaxe. Deixe sen marcar para que o Lyx decida o tamaño."
+msgstr ""
+"Escolla a altura da imaxe. Deixe sen marcar para que o Lyx decida o tamaño."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:177
 msgid "Set &height:"
@@ -1154,7 +1155,8 @@ msgstr "E&scala  graficos (%):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:194
 msgid "Sets width of graphic. Leave unchecked to set automatically."
-msgstr "Escolla a largura da imaxe. Deixe sen marcar para que o Lyx decida o tamaño."
+msgstr ""
+"Escolla a largura da imaxe. Deixe sen marcar para que o Lyx decida o tamaño."
 
 #
 #: src/frontends/qt4/ui/GraphicsUi.ui:197
@@ -2411,7 +2413,8 @@ msgstr "Restaurar a posición do cursor"
 
 #: src/frontends/qt4/ui/PrefUi.ui:133
 msgid "Restore to cursor position when the file was last closed"
-msgstr "Situa o cursor na mesma posición na que estaba ao ser fechado o documento"
+msgstr ""
+"Situa o cursor na mesma posición na que estaba ao ser fechado o documento"
 
 #: src/frontends/qt4/ui/PrefUi.ui:136
 msgid "Save/restore window position"
@@ -2957,7 +2960,8 @@ msgid "&Rescan"
 msgstr "&Reler"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid "Show contents of marked file. Only possible when files are shown with path"
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Mostra o contido do ficheiro marcado. Só funciona cando se mostra a rota dos "
 "ficheiros"
@@ -3081,7 +3085,8 @@ msgstr "Sobe o item seleccionado um paso"
 msgid ""
 "Switch between table of contents, list of figures or list of tables, if "
 "available"
-msgstr "Troca entre índice xeral, lista de figuras ou lista de táboas, se existen"
+msgstr ""
+"Troca entre índice xeral, lista de figuras ou lista de táboas, se existen"
 
 #: src/frontends/qt4/ui/TocUi.ui:181
 msgid "Adjust the depth of the navigation tree"
@@ -11725,7 +11730,8 @@ msgstr "Clase de documento descoñecida"
 #: src/Buffer.cpp:411
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
-msgstr "Usando a clase de documento predefinida, xa que a clase %1$s é descoñecida."
+msgstr ""
+"Usando a clase de documento predefinida, xa que a clase %1$s é descoñecida."
 
 #: src/Buffer.cpp:471 src/Text.cpp:296
 #, c-format
@@ -11750,7 +11756,8 @@ msgstr "Non é posíbel carregar a clase de documento"
 
 #: src/Buffer.cpp:513
 #, c-format
-msgid "Using the default document class, because the class %1$s could not be loaded."
+msgid ""
+"Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 "Usando a clase de documento predefinida, xa que non se pode carregar a clase "
 "%1$s ."
@@ -12918,7 +12925,8 @@ msgstr "Falta comando despois da opción --execute"
 
 #: src/LyX.cpp:1422
 msgid "Missing file type [eg latex, ps...] after --export switch"
-msgstr "Falta tipo de ficheiro [p. ej. latex, ps...] despois da opción --export"
+msgstr ""
+"Falta tipo de ficheiro [p. ej. latex, ps...] despois da opción --export"
 
 #: src/LyX.cpp:1434
 msgid "Missing file type [eg latex, ps...] after --import switch"
@@ -13176,7 +13184,8 @@ msgstr ""
 "predefinidos despois dun troco de clase."
 
 #: src/LyXRC.cpp:2143
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Intervalo temporário entre autogravados (en segundos). 0 significa sen "
 "autogravado."
@@ -13227,7 +13236,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2180
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
-msgstr "Usa as convencións de Mac OS X para o movimento do cursor a nível de palabra"
+msgstr ""
+"Usa as convencións de Mac OS X para o movimento do cursor a nível de palabra"
 
 #: src/LyXRC.cpp:2191
 #, no-c-format
@@ -13299,7 +13309,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2240
 msgid "Maximum number of words in the initialization string for a new label"
-msgstr "Número máximo de palabras na cadea de inicialización de unha nova etiqueta"
+msgstr ""
+"Número máximo de palabras na cadea de inicialización de unha nova etiqueta"
 
 #: src/LyXRC.cpp:2244
 msgid ""
@@ -13310,7 +13321,8 @@ msgstr ""
 "documento."
 
 #: src/LyXRC.cpp:2248
-msgid "Select if a language switching command is needed at the end of the document."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Seleccionar se for preciso un comando de troco de língua ao final do "
 "documento."
@@ -13395,7 +13407,8 @@ msgstr ""
 "entorno PATH. Use o formato nativo do SO."
 
 #: src/LyXRC.cpp:2304
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Especificar dicionário personal alternativo. Ex. \".ispell_english\"."
 
 #: src/LyXRC.cpp:2308
@@ -13442,7 +13455,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2340
 msgid "Extension of printer program output file. Usually \".ps\"."
-msgstr "Extensión do ficheiro de saída do programa de impresión. Normalmente \".ps\"."
+msgstr ""
+"Extensión do ficheiro de saída do programa de impresión. Normalmente \".ps\"."
 
 #: src/LyXRC.cpp:2344
 msgid "The option to print out in landscape."
@@ -13490,7 +13504,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2376
 msgid "Option to pass to the print program to print to a file."
-msgstr "Opción para pasar ao programa de impresión para que imprima nun ficheiro."
+msgstr ""
+"Opción para pasar ao programa de impresión para que imprima nun ficheiro."
 
 #: src/LyXRC.cpp:2380
 msgid "Option to pass to the print program to print on a specific printer."
@@ -13511,8 +13526,10 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Programa favorito de impresión, ex. \"dvips\", \"dvilj4\"."
 
 #: src/LyXRC.cpp:2392
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr "Seleccionar para permitir escritas de direita-a-esquerda (ex. hebreu, árabe)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr ""
+"Seleccionar para permitir escritas de direita-a-esquerda (ex. hebreu, árabe)."
 
 #: src/LyXRC.cpp:2396
 msgid ""
@@ -13539,7 +13556,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2415
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr "Tamaños de fontes usados para calcular a escala das fontes de pantalla."
+msgstr ""
+"Tamaños de fontes usados para calcular a escala das fontes de pantalla."
 
 #: src/LyXRC.cpp:2420
 #, no-c-format
@@ -13560,7 +13578,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2429
 msgid "Allow session manager to save and restore windows position."
-msgstr "Permite que o xestor de sesións grave e restaure a posición das xanelas."
+msgstr ""
+"Permite que o xestor de sesións grave e restaure a posición das xanelas."
 
 #: src/LyXRC.cpp:2433
 msgid ""
@@ -13613,7 +13632,8 @@ msgstr ""
 "pode ser que no funcione con todos os dicionários."
 
 #: src/LyXRC.cpp:2479
-msgid "Enable the pixmap cache that might improve performance on Mac and Windows."
+msgid ""
+"Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "Activa a cache de mapa de pixeis que pode mellorar o rendimento en Mac e "
 "Windows."
@@ -13698,15 +13718,15 @@ msgstr "(auto)"
 msgid "No Branch in Document!"
 msgstr "Nengunha pola no documento!"
 
-#: src/Paragraph.cpp:1711 src/frontends/qt4/QParagraph.cpp:233
+#: src/Paragraph.cpp:1722 src/frontends/qt4/QParagraph.cpp:233
 msgid "Senseless with this layout!"
 msgstr "Sen senso neste estilo!"
 
-#: src/Paragraph.cpp:1771
+#: src/Paragraph.cpp:1782
 msgid "Alignment not permitted"
 msgstr "Aliñamento non permitido"
 
-#: src/Paragraph.cpp:1772
+#: src/Paragraph.cpp:1783
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -13714,11 +13734,11 @@ msgstr ""
 "O novo estilo non aceita o aliñamento usado anteriormente.\\ Troca-o polo "
 "predefinido."
 
-#: src/Paragraph.cpp:2246 src/frontends/qt4/QViewSource.cpp:161
+#: src/Paragraph.cpp:2257 src/frontends/qt4/QViewSource.cpp:161
 msgid "LyX Warning: "
 msgstr "Adverténcia de LyX:"
 
-#: src/Paragraph.cpp:2247
+#: src/Paragraph.cpp:2258
 msgid "uncodable character"
 msgstr "carácter incodificábel"
 
@@ -13771,7 +13791,8 @@ msgstr ""
 
 #: src/Text.cpp:779
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr "Non é posíbel inserir dous espazos deste xeito. Recomenda-se ler o Tutorial."
+msgstr ""
+"Non é posíbel inserir dous espazos deste xeito. Recomenda-se ler o Tutorial."
 
 #: src/Text.cpp:1880
 msgid "[Change Tracking] "
@@ -15011,7 +15032,8 @@ msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/QDocument.cpp:234 src/frontends/qt4/QDocument.cpp:657
-msgid "Input listings parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Introduza parámetros de listas na direita. Dixite ? para obter unha lista de "
 "parámetros."
@@ -15193,7 +15215,8 @@ msgstr "Gráficos"
 #: src/frontends/qt4/QInclude.cpp:115 src/frontends/qt4/QInclude.cpp:229
 #: src/frontends/qt4/QListings.cpp:350 src/frontends/qt4/QListings.cpp:427
 #: src/frontends/qt4/QListings.cpp:459
-msgid "Input listing parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Introduza parámetros de listas na direita. Dixite ? para obter unha lista de "
 "parámetros."
@@ -15741,7 +15764,8 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "Debe compor-se de un ou máis de %1$s."
 
 #: src/insets/InsetListingsParams.cpp:292
-msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid ""
+"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr "Use \\footnotesize, \\small, \\itshape, \\ttfamily ou algo como"
 
 #: src/insets/InsetListingsParams.cpp:294
@@ -16205,7 +16229,8 @@ msgstr "Non se achou o binario de LyX"
 
 #: src/support/Package.cpp.in:449
 #, c-format
-msgid "Unable to determine the path to the LyX binary from the command line %1$s"
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 "Non foi posíbel determinar a rota ao binario LyX desde a liña de comandos %1"
 "$s"
@@ -16290,4 +16315,3 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Usuário descoñecido"
-
