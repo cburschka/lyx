@@ -55,6 +55,7 @@ Var MiKTeXPath
 Var InstallGSview
 Var InstallJabRef
 Var SVGPath
+Var AppFiles
 # Variables used by all installer versions
 !include "Variables.nsh"
 
@@ -65,7 +66,6 @@ Var SVGPath
 !include "FileFunc.nsh"
 !include "StrFunc.nsh"
 !include "TextFunc.nsh"
-!insertmacro LineFind
 
 # Set of various macros and functions
 !include "LyXUtils.nsh"

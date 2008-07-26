@@ -8,7 +8,6 @@ Var LatexPath
 Var MiKTeXInstalled
 Var PythonPath
 Var Answer
-Var AppFiles
 Var AppPre
 Var AppSubfolder
 Var AppSuff
