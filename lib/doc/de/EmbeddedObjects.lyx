@@ -646,6 +646,39 @@ x.eps.bb
 \end_inset
 
 , die LaTeX für gepackte Abbildungen benötigt.
+\begin_inset Newline newline
+\end_inset
+
+Das Feld 
+\family sans
+Gruppenname
+\begin_inset space ~
+\end_inset
+
+initialisieren
+\family default
+ ermöglicht es eine Einstellungsgruppe zu definieren oder dem Bild eine
+ solche zuzuordnen.
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Abbildungen ! Einstellungsgruppen
+\end_layout
+
+\end_inset
+
+ Bilder innerhalb einer solchen Gruppe teilen ihre Einstellungen, so dass
+ alle Bilder der Gruppe geändert werden, wenn die Einstellungen eines Bildes
+ der Gruppe geändert werden.
+ Damit kann man z.B.
+\begin_inset space ~
+\end_inset
+
+die Bildgröße für eine Reihe von Bildern ändern, ohne dies bei jedem einzelnen
+ Bild tun zu müssen.
+ Eine Einstellungsgruppe zuzuordnen kann auch über das Kontextmenü des Bildes
+ geschehen, indem man den Namen der gewünschten Gruppe anklickt.
 \end_layout
 
 \begin_layout Standard
@@ -656,9 +689,9 @@ x.eps.bb
 \end_layout
 
 \begin_layout Standard
-Hier ist eine zentrierte .eps-Abbildung
+Hier ist eine zentrierte EPS-Abbildung
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Abbildungsformate sind in Abschnitt
@@ -1053,7 +1086,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -1078,6 +1111,7 @@ Undefinierbar
 	filename ../clipart/escher-lsd.eps
 	width 35col%
 	scaleBeforeRotation
+	groupId Teilabbildung
 
 \end_inset
 
@@ -1094,7 +1128,7 @@ Undefinierbar
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -1117,9 +1151,9 @@ Ein Schnabeltier
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
-	lyxscale 60
-	width 45col%
+	width 35col%
 	scaleBeforeRotation
+	groupId Teilabbildung
 
 \end_inset
 
@@ -1146,6 +1180,15 @@ name "abb:Zwei-Teilabbildungen"
 \end_inset
 
 Zwei Teilabbildungen nebeneinander.
+ Beide Bilder gehören der Einstellungsgruppe mit dem Namen 
+\begin_inset Quotes gld
+\end_inset
+
+Teilabbildung
+\begin_inset Quotes grd
+\end_inset
+
+ an.
 \end_layout
 
 \end_inset

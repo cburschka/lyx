@@ -555,7 +555,7 @@ options
 \begin_inset Newline newline
 \end_inset
 
- The option 
+The option 
 \family sans
 Draft
 \begin_inset space ~
@@ -645,6 +645,38 @@ x.eps.bb
 \end_inset
 
  that is needed by LaTeX for zipped graphics.
+\begin_inset Newline newline
+\end_inset
+
+The field 
+\family sans
+Initialize
+\begin_inset space ~
+\end_inset
+
+Group
+\begin_inset space ~
+\end_inset
+
+Name
+\family default
+ allows you define or join an image settings group.
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Figures ! Settings grouping
+\end_layout
+
+\end_inset
+
+ Images within such a group share their settings, so adjusting one image
+ of the group automatically also adjusts all other images of the group in
+ the same way.
+ So you can for example change the size for a bunch of images without the
+ need to manually change each of them.
+ Joining an existing group can also be done using the context menu of the
+ image by checking the name of the desired group.
 \end_layout
 
 \begin_layout Standard
@@ -705,6 +737,13 @@ This is the same image like the one above but in draft mode:
 	scaleBeforeRotation
 	rotateOrigin center
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -1057,7 +1096,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -1082,6 +1121,7 @@ Undefinable structure.
 	filename clipart/escher-lsd.eps
 	width 45col%
 	scaleBeforeRotation
+	groupId distorted
 
 \end_inset
 
@@ -1098,7 +1138,7 @@ Undefinable structure.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -1121,9 +1161,9 @@ A Platypus.
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename clipart/platypus.eps
-	lyxscale 60
 	width 45col%
 	scaleBeforeRotation
+	groupId distorted
 
 \end_inset
 
@@ -1150,6 +1190,15 @@ name "fig:Two-distorted-images"
 \end_inset
 
 Two distorted images.
+ Both images are in the image settings group named 
+\begin_inset Quotes eld
+\end_inset
+
+distorted
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -1157,6 +1206,13 @@ Two distorted images.
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 

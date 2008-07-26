@@ -15985,11 +15985,11 @@ Images ! Settings grouping
 \begin_layout Standard
 Each image can define a new group of image settings or join an existing
  group.
- The images within such a group share their settings, so adjusting one of
- the images in the group automatically also adjusts all other images in
- the group in the same way.
- So you can for example adjust the size for a bunch of images in the same
- way without the need to manually change each of them.
+ Images within such a group share their settings, so adjusting one image
+ of the group automatically also adjusts all other images of the group in
+ the same way.
+ So you can for example change the size for a bunch of images without the
+ need to manually change each of them.
  
 \end_layout
 
@@ -16007,7 +16007,7 @@ Group
 Name
 \family default
  field in the Graphics dialog.
- Joining an existing group can be set using the context menu of the image
+ Joining an existing group can be done using the context menu of the image
  by checking the name of the desired group.
 \end_layout
 
