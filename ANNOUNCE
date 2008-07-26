@@ -2,8 +2,10 @@ Public release of LyX version 1.5.6
 ====================================
 
 We are pleased to announce the release of LyX 1.5.6. This is the fifth
-maintenance release in the 1.5.x cycle. The aim of this release was to
-make LyX even more robust and to solve some long-standing annoyances.
+maintenance release in the 1.5.x cycle that has been started exactly
+one year ago. The aim of this release was to make LyX even more robust 
+and to solve some long-standing annoyances. Also, further translation
+efforts have been made, and LyX now ships in 23 languages.
 
 All users are encouraged to upgrade to this version.
 
@@ -82,5 +84,126 @@ The LyX team.
 What's new in version 1.5.6?
 ----------------------------
 
+** Updates:
+***********
+
+* DOCUMENTATION AND LOCALIZATION
+
+- New (and complete!) Ukrainian localization of the user interface.
+
+- Updated localization of the user interface for Czech, French, Galician,
+  German, Italian, Polish, Portuguese and Japanese.
 
 
+* DOCUMENT INPUT/OUTPUT
+
+- New layout and template files for the Journal of Statistical Software
+  (JSS).
+
+- The importer for comma separated value (*.csv) files has been rewritten.
+  Now the column separator character is automatically detected.
+  Furthermore, the feature has been renamed to "Import->Table (CSV)".
+
+- Paragraph line spacing settings are now imported when importing LaTeX
+  files (bug 20).
+
+- The paper orientation is now imported when importing LaTeX files.
+
+- The paper layout and the number of text columns are now imported when
+  importing LaTeX files (bug 4867).
+
+- Add support for the xindy index processor (bug 4732).
+
+- Add support for Graphviz Dot files (bug 4882).
+
+- The A&A document class and template has been updated to conform to
+  version 6.0 of the A&A specification (bug 4928).
+
+- The 'Case' environment in the AMS classes has been rewritten to produce
+  better output.
+
+
+* USER INTERFACE
+
+- Reenable quote display code, which was not working since 1.5.0.
+
+- Implement properly word-movement code for both windows and mac
+  conventions (bugs 2815 and 3580). This uses the new lyxrc variable
+  \mac_like_word_movement, which is set to true by default on Mac OS X.
+  It could be useful to emacs nostalgics too.
+
+
+** Bug fixes:
+*************
+
+* DOCUMENT INPUT/OUTPUT
+
+- Fix a LaTeX error with nested insets in CJK documents (bug 4913).
+
+- Make sure that a GREEK SMALL LETTER SIGMA is not automatically turned 
+  into a GREEK SMALL LETTER FINAL SIGMA (and vice versa) on LaTeX output
+  (bug 4966).
+
+- Fix LaTeX export of combining characters in utf-8* encodings (bug 4946).
+
+- Output paper size information to dvi or pdf documents when using
+  landscape orientation, such that viewers can properly display them
+  (bug 2721).
+
+- Fix encoding errors when typewriter font is used (bug 4727).
+
+- Correct the kerning between two subsequent '<' or '>' characters.
+
+
+* USER INTERFACE
+
+- Fix crash related to the outline pane with some documents (bug 4857).
+
+- Fix crash when clicking with middle button on a collapsable inset
+  (bug 4662).
+
+- Fix crash when an outlining function was used for a section inside an
+  inset (bug 5004). These functions are now disabled for section that
+  are not in the main text area.
+
+- Fix input of numeric values in non-english locales (bug 4951).
+
+- Fix display of filters such as "LaTeX (plain)" in the file dialog.
+
+- Fix error navigation with the keyboard (bug 4895).
+
+- When inserting an inset over a selection, do not copy the selection
+  to clipboard if we do not intend to paste it later (bug 4977).
+
+- When inserting an inset over a selection, do not remove space at
+  start of paragraph (bug 2018).
+
+- Allow the use of eqrefs in mathed (bug 4623).
+
+- Fix shape of braces, '$', '%', '&', and '#', which where incorrectly
+  shown in italics in mathed (bug 4320).
+
+- Fix display of unknown math macros, which were incorrectly shown in
+  italics (bug 2594).
+
+- Use appropriate font in notes and ERT insets in section headings
+  (bug 2477).
+
+- Fix wheel mouse scrolling when it is set to "One screen at a time
+  (bug 4972).
+
+- Fix obscure 7 years-old bug with functions whose state can be toggled.
+
+
+* DOCUMENTATION AND LOCALIZATION
+
+- The dynamically generated file formats in the menus, in the Document
+  Settings and in the Custom Export dialogs are now translatable
+  (bug 2488).
+
+
+* BUILD/INSTALLATION
+
+- Fix compilation error with gcc 4.3.0.
+
+- Fix installation of Mac OSX specific files when using the -jX option of make.
