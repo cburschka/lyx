@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-15 23:12+0200\n"
-"PO-Revision-Date: 2008-05-07 01:02+0900\n"
+"POT-Creation-Date: 2008-07-19 23:00+0900\n"
+"PO-Revision-Date: 2008-07-26 09:19+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-devel@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -2522,7 +2522,6 @@ msgid "Re&verse order"
 msgstr "印刷順序を逆転(&V)"
 
 #: src/frontends/qt4/ui/PrintUi.ui:152
-#, fuzzy
 msgid "Copie&s"
 msgstr "部数(&S)"
 
@@ -2883,8 +2882,7 @@ msgstr "下の境界線"
 
 #: src/frontends/qt4/ui/TabularUi.ui:905
 msgid "Repeat this row as header on every (except the first) page"
-msgstr ""
-"この行を，全てのページ（最初のページをのぞく）にヘッダとして現れるようにする"
+msgstr "この行を，全てのページ（最初のページをのぞく）にヘッダとして現れるようにする"
 
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
@@ -2898,8 +2896,7 @@ msgstr "この行が最初のページのヘッダとなる"
 
 #: src/frontends/qt4/ui/TabularUi.ui:928
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr ""
-"この行を，全てのページ（最初のページをのぞく）にフッタとして現れるようにする"
+msgstr "この行を，全てのページ（最初のページをのぞく）にフッタとして現れるようにする"
 
 #: src/frontends/qt4/ui/TabularUi.ui:938
 msgid "This row is the footer of the last page"
@@ -2959,8 +2956,7 @@ msgid "&Rescan"
 msgstr "再走査(&R)"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "選択したフィルの中身を表示する。ファイルのパスが表示されている時のみ有効であ"
 "る。"
@@ -3425,7 +3421,7 @@ msgstr "記法 #:"
 msgid "Case"
 msgstr "ケース"
 
-#: lib/layouts/IEEEtran.layout:245 lib/layouts/amsmaths.inc:618
+#: lib/layouts/IEEEtran.layout:245
 msgid "Case #:"
 msgstr "ケース #:"
 
@@ -3867,7 +3863,7 @@ msgstr "[謝辞]"
 
 #: lib/layouts/aastex.layout:357
 msgid "and"
-msgstr ""
+msgstr "および"
 
 #: lib/layouts/aastex.layout:378
 msgid "Place Figure here:"
@@ -3903,7 +3899,7 @@ msgstr "図 ---"
 
 #: lib/layouts/aastex.layout:557
 msgid "Facility:"
-msgstr ""
+msgstr "施設"
 
 #: lib/layouts/aastex.layout:583
 msgid "Obj:"
@@ -3977,7 +3973,7 @@ msgstr "ジャーナル"
 
 #: lib/layouts/apa.layout:206
 msgid "CopNum"
-msgstr ""
+msgstr "CopNum"
 
 #: lib/layouts/apa.layout:234
 msgid "Acknowledgements:"
@@ -4039,7 +4035,7 @@ msgstr "*"
 
 #: lib/layouts/apa.layout:407
 msgid "Seriate"
-msgstr ""
+msgstr "行内列挙(Seriate)"
 
 #: lib/layouts/apa.layout:423 lib/layouts/apa.layout:424
 #: src/buffer_funcs.cpp:596
@@ -4062,6 +4058,11 @@ msgstr "ラテン切"
 msgid "Latin off"
 msgstr "ラテン切"
 
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "フレーム開始"
+
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:114
 #: lib/layouts/beamer.layout:129 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:31 lib/layouts/scrartcl.layout:20
@@ -4077,11 +4078,6 @@ msgstr "部"
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "部*"
-
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "フレーム開始"
 
 #: lib/layouts/beamer.layout:104 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62
@@ -4445,11 +4441,11 @@ msgstr "サブバリエーション(5):"
 
 #: lib/layouts/chess.layout:114
 msgid "HideMoves"
-msgstr ""
+msgstr "指手非表示"
 
 #: lib/layouts/chess.layout:119
 msgid "HideMoves:"
-msgstr ""
+msgstr "指手非表示:"
 
 #: lib/layouts/chess.layout:124
 msgid "ChessBoard"
@@ -4669,7 +4665,7 @@ msgstr "オフセット"
 
 #: lib/layouts/egs.layout:467
 msgid "reprint_reqs_to:"
-msgstr ""
+msgstr "リプリント版送り先"
 
 #: lib/layouts/egs.layout:506 lib/layouts/kluwer.layout:271
 #: lib/layouts/llncs.layout:254 lib/layouts/siamltex.layout:156
@@ -4857,11 +4853,11 @@ msgstr "言語"
 
 #: lib/layouts/europecv.layout:123
 msgid "LastLanguage"
-msgstr ""
+msgstr "言語(最終行)"
 
 #: lib/layouts/europecv.layout:126
 msgid "Last Language:"
-msgstr ""
+msgstr "言語(最終行):"
 
 #: lib/layouts/europecv.layout:129
 msgid "LangFooter"
@@ -4881,23 +4877,23 @@ msgstr "CVの終了"
 
 #: lib/layouts/foils.layout:42
 msgid "Foilhead"
-msgstr ""
+msgstr "スライドタイトル(Foilhead)"
 
 #: lib/layouts/foils.layout:62
 msgid "ShortFoilhead"
-msgstr ""
+msgstr "スライドタイトル(小)(ShortFoilhead)"
 
 #: lib/layouts/foils.layout:68
 msgid "Rotatefoilhead"
-msgstr ""
+msgstr "横置きスライドタイトル(Rotatefoilhead)"
 
 #: lib/layouts/foils.layout:74
 msgid "ShortRotatefoilhead"
-msgstr ""
+msgstr "横置きスライドタイトル(小)(ShortRotatefoilhead)"
 
 #: lib/layouts/foils.layout:83
 msgid "TickList"
-msgstr ""
+msgstr "箇条書き(チック)"
 
 #: lib/layouts/foils.layout:98
 msgid "_/"
@@ -4905,7 +4901,7 @@ msgstr "_/"
 
 #: lib/layouts/foils.layout:104
 msgid "CrossList"
-msgstr ""
+msgstr "箇条書き(クロス)"
 
 #: lib/layouts/foils.layout:119
 msgid "><"
@@ -4913,19 +4909,19 @@ msgstr "><"
 
 #: lib/layouts/foils.layout:165
 msgid "My Logo"
-msgstr ""
+msgstr "グラフィックロゴ"
 
 #: lib/layouts/foils.layout:174
 msgid "My Logo:"
-msgstr ""
+msgstr "グラフィックロゴ:"
 
 #: lib/layouts/foils.layout:183
 msgid "Restriction"
-msgstr ""
+msgstr "配布制限"
 
 #: lib/layouts/foils.layout:187
 msgid "Restriction:"
-msgstr ""
+msgstr "配布制限:"
 
 #: lib/layouts/foils.layout:191 lib/layouts/simplecv.layout:95
 #: lib/layouts/aguplus.inc:75
@@ -5639,19 +5635,19 @@ msgstr "（引き続き）"
 
 #: lib/layouts/hollywood.layout:232
 msgid "Transition"
-msgstr ""
+msgstr "画面遷移"
 
 #: lib/layouts/hollywood.layout:245 lib/layouts/hollywood.layout:257
 msgid "TITLE OVER:"
-msgstr ""
+msgstr "タイトルオーバー"
 
 #: lib/layouts/hollywood.layout:261
 msgid "INTERCUT"
-msgstr ""
+msgstr "インターカット"
 
 #: lib/layouts/hollywood.layout:273
 msgid "INTERCUT WITH:"
-msgstr ""
+msgstr "インターカット場面:"
 
 #: lib/layouts/hollywood.layout:277 lib/layouts/hollywood.layout:289
 msgid "FADE OUT"
@@ -5803,27 +5799,27 @@ msgstr "予想@Section@.\\arabic{conjecture}."
 
 #: lib/layouts/iopart.layout:73
 msgid "Review"
-msgstr "仕上げチェック"
+msgstr "Review"
 
 #: lib/layouts/iopart.layout:79
 msgid "Topical"
-msgstr ""
+msgstr "Topical"
 
 #: lib/layouts/iopart.layout:85 src/insets/InsetNote.cpp:66
 msgid "Comment"
-msgstr "コメント"
+msgstr "Comment"
 
 #: lib/layouts/iopart.layout:97
 msgid "Paper"
-msgstr ""
+msgstr "Paper"
 
 #: lib/layouts/iopart.layout:103
 msgid "Prelim"
-msgstr ""
+msgstr "Prelim"
 
 #: lib/layouts/iopart.layout:109
 msgid "Rapid"
-msgstr ""
+msgstr "Rapid"
 
 #: lib/layouts/iopart.layout:212 lib/layouts/revtex4.layout:230
 msgid "PACS"
@@ -5843,11 +5839,11 @@ msgstr "数学分野分類番号:"
 
 #: lib/layouts/iopart.layout:226
 msgid "submitto"
-msgstr ""
+msgstr "投稿先"
 
 #: lib/layouts/iopart.layout:229
 msgid "submit to paper:"
-msgstr ""
+msgstr "投稿先学術誌:"
 
 #: lib/layouts/iopart.layout:255
 msgid "Bibliography (plain)"
@@ -5867,7 +5863,7 @@ msgstr "キーワード:"
 
 #: lib/layouts/isprs.layout:135
 msgid "Commission"
-msgstr ""
+msgstr "委員会"
 
 #: lib/layouts/isprs.layout:225
 msgid "ACKNOWLEDGEMENTS"
@@ -5883,20 +5879,20 @@ msgstr "抜刷用住所:"
 
 #: lib/layouts/kluwer.layout:213
 msgid "RunningTitle"
-msgstr ""
+msgstr "ヘッダ用タイトル"
 
 #: lib/layouts/kluwer.layout:222 lib/layouts/llncs.layout:159
 #: lib/layouts/svjour.inc:178
 msgid "Running title:"
-msgstr ""
+msgstr "ヘッダ用タイトル:"
 
 #: lib/layouts/kluwer.layout:236
 msgid "RunningAuthor"
-msgstr ""
+msgstr "ヘッダ用著者名"
 
 #: lib/layouts/kluwer.layout:244
 msgid "Running author:"
-msgstr ""
+msgstr "ヘッダ用著者名:"
 
 #: lib/layouts/latex8.layout:70
 msgid "E-mail:"
@@ -5912,7 +5908,7 @@ msgstr "章"
 
 #: lib/layouts/llncs.layout:144 lib/layouts/svjour.inc:174
 msgid "Running LaTeX Title"
-msgstr ""
+msgstr "ヘッダ用LaTeXタイトル"
 
 #: lib/layouts/llncs.layout:168
 msgid "TOC Title"
@@ -5924,11 +5920,11 @@ msgstr "目次タイトル:"
 
 #: lib/layouts/llncs.layout:197 lib/layouts/svjour.inc:203
 msgid "Author Running"
-msgstr ""
+msgstr "ヘッダ用著者名"
 
 #: lib/layouts/llncs.layout:201 lib/layouts/svjour.inc:207
 msgid "Author Running:"
-msgstr ""
+msgstr "ヘッダ用著者名:"
 
 #: lib/layouts/llncs.layout:205
 msgid "TOC Author"
@@ -5938,7 +5934,7 @@ msgstr "目次著者"
 msgid "TOC Author:"
 msgstr "目次著者:"
 
-#: lib/layouts/llncs.layout:298
+#: lib/layouts/llncs.layout:298 lib/layouts/amsmaths.inc:618
 msgid "Case #."
 msgstr "ケース #."
 
@@ -6021,23 +6017,23 @@ msgstr "凡例"
 
 #: lib/layouts/moderncv.layout:70
 msgid "Entry:"
-msgstr ""
+msgstr "CV項目:"
 
 #: lib/layouts/moderncv.layout:93
 msgid "ListItem"
-msgstr ""
+msgstr "箇条書き項目"
 
 #: lib/layouts/moderncv.layout:96
 msgid "List Item:"
-msgstr ""
+msgstr "箇条書き項目:"
 
 #: lib/layouts/moderncv.layout:99
 msgid "DoubleItem"
-msgstr ""
+msgstr "2段書き項目"
 
 #: lib/layouts/moderncv.layout:102
 msgid "Double Item:"
-msgstr ""
+msgstr "2段書き項目:"
 
 #: lib/layouts/moderncv.layout:105
 msgid "Space"
@@ -6065,11 +6061,11 @@ msgstr "空の節"
 
 #: lib/layouts/moderncv.layout:139
 msgid "CloseSection"
-msgstr ""
+msgstr "節終了"
 
 #: lib/layouts/moderncv.layout:142
 msgid "Close Section"
-msgstr ""
+msgstr "節終了"
 
 #: lib/layouts/paper.layout:152
 msgid "SubTitle"
@@ -6193,27 +6189,27 @@ msgstr "電話:"
 
 #: lib/layouts/scrlettr.layout:158 lib/layouts/scrlttr2.layout:235
 msgid "Place"
-msgstr ""
+msgstr "場所(Place)"
 
 #: lib/layouts/scrlettr.layout:161 lib/layouts/scrlttr2.layout:239
 msgid "Place:"
-msgstr ""
+msgstr "場所(Place):"
 
 #: lib/layouts/scrlettr.layout:172 lib/layouts/scrlttr2.layout:251
 msgid "Backaddress"
-msgstr ""
+msgstr "返送先住所(Backaddress)"
 
 #: lib/layouts/scrlettr.layout:175 lib/layouts/scrlttr2.layout:255
 msgid "Backaddress:"
-msgstr ""
+msgstr "返送先住所(Backaddress):"
 
 #: lib/layouts/scrlettr.layout:179 lib/layouts/scrlttr2.layout:259
 msgid "Specialmail"
-msgstr ""
+msgstr "配送手段(Specialmail)"
 
 #: lib/layouts/scrlettr.layout:182 lib/layouts/scrlttr2.layout:263
 msgid "Specialmail:"
-msgstr ""
+msgstr "配送手段(Specialmail):"
 
 #: lib/layouts/scrlettr.layout:186 lib/layouts/scrlttr2.layout:267
 #: lib/layouts/stdletter.inc:127
@@ -6280,11 +6276,11 @@ msgstr "インボイス番号:"
 
 #: lib/layouts/scrlttr2.layout:72
 msgid "NextAddress"
-msgstr ""
+msgstr "次の住所"
 
 #: lib/layouts/scrlttr2.layout:84
 msgid "Next Address:"
-msgstr ""
+msgstr "次の住所:"
 
 #: lib/layouts/scrlttr2.layout:129
 msgid "Post Scriptum:"
@@ -6388,11 +6384,11 @@ msgstr "スライド中身"
 
 #: lib/layouts/seminar.layout:109
 msgid "ProgressContents"
-msgstr ""
+msgstr "スライド一覧"
 
 #: lib/layouts/seminar.layout:115
 msgid "Progress Contents"
-msgstr ""
+msgstr "スライド一覧"
 
 #: lib/layouts/siamltex.layout:52
 msgid "."
@@ -6544,63 +6540,63 @@ msgstr "索引見出し:"
 
 #: lib/layouts/agu_stdtitle.inc:111
 msgid "Cross-term"
-msgstr ""
+msgstr "Cross-term"
 
 #: lib/layouts/agu_stdtitle.inc:115
 msgid "Cross-term:"
-msgstr ""
+msgstr "Cross-term:"
 
 #: lib/layouts/agu_stdtitle.inc:136
 msgid "Supplementary"
-msgstr ""
+msgstr "補足"
 
 #: lib/layouts/agu_stdtitle.inc:140
 msgid "Supplementary..."
-msgstr ""
+msgstr "補足..."
 
 #: lib/layouts/agu_stdtitle.inc:149
 msgid "Supp-note"
-msgstr ""
+msgstr "Supp-note"
 
 #: lib/layouts/agu_stdtitle.inc:153
 msgid "Sup-mat-note:"
-msgstr ""
+msgstr "Sup-mat-note:"
 
 #: lib/layouts/agu_stdtitle.inc:158
 msgid "Cite-other"
-msgstr ""
+msgstr "Cite-other"
 
 #: lib/layouts/agu_stdtitle.inc:162
 msgid "Cite-other:"
-msgstr ""
+msgstr "Cite-other:"
 
 #: lib/layouts/agu_stdtitle.inc:206 lib/layouts/aguplus.inc:115
 msgid "Revised"
-msgstr ""
+msgstr "改訂"
 
 #: lib/layouts/agu_stdtitle.inc:209 lib/layouts/aguplus.inc:119
 msgid "Revised:"
-msgstr ""
+msgstr "改訂:"
 
 #: lib/layouts/agu_stdtitle.inc:222
 msgid "Ident-line"
-msgstr ""
+msgstr "字下げ行"
 
 #: lib/layouts/agu_stdtitle.inc:225
 msgid "Ident-line:"
-msgstr ""
+msgstr "字下げ行:"
 
 #: lib/layouts/agu_stdtitle.inc:230
 msgid "Runhead"
-msgstr ""
+msgstr "ヘッダ"
 
 #: lib/layouts/agu_stdtitle.inc:233
 msgid "Runhead:"
-msgstr ""
+msgstr "ヘッダ:"
 
 #: lib/layouts/agu_stdtitle.inc:241
 msgid "Published-online:"
-msgstr ""
+msgstr "オンライン出版:"
 
 #: lib/layouts/agu_stdtitle.inc:263 src/frontends/qt4/QCitationDialog.cpp:41
 msgid "Citation"
@@ -9418,24 +9414,20 @@ msgid "Standard\t\\frac"
 msgstr "標準\t\\frac"
 
 #: lib/ui/stdtoolbars.inc:279
-#, fuzzy
 msgid "No horizontal line\t\\atop"
 msgstr "横線なし\t\\atop"
 
 #: lib/ui/stdtoolbars.inc:280
-#, fuzzy
 msgid "Nice fraction (3/4)\t\\nicefrac"
 msgstr "斜め分数(3/4)\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:281
-#, fuzzy
 msgid "Text fraction (amsmath)\t\\tfrac"
 msgstr "行中用分数(amsmath)\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:282
-#, fuzzy
 msgid "Display fraction (amsmath)\t\\dfrac"
-msgstr "提示用分数(amsmath)\t\\dfrac"
+msgstr "別行建て用分数(amsmath)\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:283
 msgid "Binomial\t\\choose"
@@ -11431,244 +11423,219 @@ msgstr ""
 
 #: lib/configure.py:236
 msgid "Tgif"
-msgstr ""
+msgstr "Tgif"
 
 #: lib/configure.py:239
 msgid "FIG"
-msgstr ""
+msgstr "FIG"
 
 #: lib/configure.py:242
-#, fuzzy
 msgid "Grace"
-msgstr "グレイスケール"
+msgstr "Grace"
 
 #: lib/configure.py:245
 msgid "FEN"
-msgstr ""
+msgstr "FEN"
 
 #: lib/configure.py:249
 msgid "BMP"
-msgstr ""
+msgstr "BMP"
 
 #: lib/configure.py:250
 msgid "GIF"
-msgstr ""
+msgstr "GIF"
 
 #: lib/configure.py:251
 msgid "JPEG"
-msgstr ""
+msgstr "JPEG"
 
 #: lib/configure.py:252
 msgid "PBM"
-msgstr ""
+msgstr "PBM"
 
 #: lib/configure.py:253
 msgid "PGM"
-msgstr ""
+msgstr "PGM"
 
 #: lib/configure.py:254
 msgid "PNG"
-msgstr ""
+msgstr "PNG"
 
 #: lib/configure.py:255
 msgid "PPM"
-msgstr ""
+msgstr "PPM"
 
 #: lib/configure.py:256
 msgid "TIFF"
-msgstr ""
+msgstr "TIFF"
 
 #: lib/configure.py:257
 msgid "XBM"
-msgstr ""
+msgstr "XBM"
 
 #: lib/configure.py:258
 msgid "XPM"
-msgstr ""
+msgstr "XPM"
 
 #: lib/configure.py:263
 msgid "Plain text (chess output)"
-msgstr ""
+msgstr "平文（チェス出力）"
 
 #: lib/configure.py:264
-#, fuzzy
 msgid "Plain text (image)"
-msgstr "平文"
+msgstr "平文（イメージ）"
 
 #: lib/configure.py:265
 msgid "Plain text (Xfig output)"
-msgstr ""
+msgstr "平文（Xfig出力）"
 
 #: lib/configure.py:266
-#, fuzzy
 msgid "date (output)"
-msgstr "PostScriptを更新"
+msgstr "日付（出力）"
 
 #: lib/configure.py:267
 msgid "DocBook"
-msgstr ""
+msgstr "DocBook"
 
 #: lib/configure.py:267
-#, fuzzy
 msgid "DocBook|B"
-msgstr "しおり(B)|B"
+msgstr "DocBook|B"
 
 #: lib/configure.py:268
 msgid "Docbook (XML)"
-msgstr ""
+msgstr "Docbook (XML)"
 
 #: lib/configure.py:269
-#, fuzzy
 msgid "Graphviz Dot"
-msgstr "図"
+msgstr "Graphviz Dot"
 
 #: lib/configure.py:270
-#, fuzzy
 msgid "NoWeb"
-msgstr "なし"
+msgstr "NoWeb"
 
 #: lib/configure.py:270
-#, fuzzy
 msgid "NoWeb|N"
-msgstr "注釈(N)|N"
+msgstr "NoWeb|N"
 
 #: lib/configure.py:271
-#, fuzzy
 msgid "LilyPond music"
-msgstr "LilyPond"
+msgstr "LilyPond音楽"
 
 #: lib/configure.py:272
-#, fuzzy
 msgid "LaTeX (plain)"
-msgstr "LaTeXオプション(&O):"
+msgstr "LaTeX (plain)"
 
 #: lib/configure.py:272
-#, fuzzy
 msgid "LaTeX (plain)|L"
-msgstr "LaTeXログ|L"
+msgstr "LaTeX (plain)|L"
 
 #: lib/configure.py:273
 msgid "LinuxDoc"
-msgstr ""
+msgstr "LinuxDoc"
 
 #: lib/configure.py:273
 msgid "LinuxDoc|x"
-msgstr ""
+msgstr "LinuxDoc|x"
 
 #: lib/configure.py:274
-#, fuzzy
 msgid "LaTeX (pdflatex)"
-msgstr "PDF(pdflatex)を更新"
+msgstr "LaTeX (pdflatex)"
 
 #: lib/configure.py:275 src/frontends/qt4/QPrefs.cpp:177
 msgid "Plain text"
 msgstr "平文"
 
 #: lib/configure.py:275
-#, fuzzy
 msgid "Plain text|a"
-msgstr "平文"
+msgstr "平文(A)|A"
 
 #: lib/configure.py:276
-#, fuzzy
 msgid "Plain text (pstotext)"
-msgstr "平文"
+msgstr "平文（pstotext）"
 
 #: lib/configure.py:277
-#, fuzzy
 msgid "Plain text (ps2ascii)"
-msgstr "平文"
+msgstr "平文（ps2ascii）"
 
 #: lib/configure.py:278
-#, fuzzy
 msgid "Plain text (catdvi)"
-msgstr "平文"
+msgstr "平文（catdvi）"
 
 #: lib/configure.py:279
 msgid "Plain Text, Join Lines"
 msgstr "平文(行を連結して)"
 
 #: lib/configure.py:284
-#, fuzzy
 msgid "EPS"
-msgstr "PS"
+msgstr "EPS"
 
 #: lib/configure.py:285
-#, fuzzy
 msgid "Postscript"
-msgstr "追伸:"
+msgstr "Postscript"
 
 #: lib/configure.py:285
-#, fuzzy
 msgid "Postscript|t"
-msgstr "追伸:"
+msgstr "Postscript|t"
 
 #: lib/configure.py:289
 msgid "PDF (ps2pdf)"
-msgstr ""
+msgstr "PDF (ps2pdf)"
 
 #: lib/configure.py:289
 msgid "PDF (ps2pdf)|P"
-msgstr ""
+msgstr "PDF (ps2pdf)|P"
 
 #: lib/configure.py:290
-#, fuzzy
 msgid "PDF (pdflatex)"
-msgstr "PDF(pdflatex)を表示"
+msgstr "PDF (pdflatex)"
 
 #: lib/configure.py:290
-#, fuzzy
 msgid "PDF (pdflatex)|F"
-msgstr "PDF(pdflatex)を表示"
+msgstr "PDF (pdflatex)|F"
 
 #: lib/configure.py:291
 msgid "PDF (dvipdfm)"
-msgstr ""
+msgstr "PDF (dvipdfm)"
 
 #: lib/configure.py:291
 msgid "PDF (dvipdfm)|m"
-msgstr ""
+msgstr "PDF (dvipdfm)|m"
 
 #: lib/configure.py:294
 msgid "DVI"
-msgstr ""
+msgstr "DVI"
 
 #: lib/configure.py:294
 msgid "DVI|D"
-msgstr ""
+msgstr "DVI|D"
 
 #: lib/configure.py:297
-#, fuzzy
 msgid "DraftDVI"
-msgstr "下書き(&D)"
+msgstr "DraftDVI"
 
 #: lib/configure.py:300
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: lib/configure.py:300
 msgid "HTML|H"
-msgstr ""
+msgstr "HTML|H"
 
 #: lib/configure.py:303
-#, fuzzy
 msgid "Noteedit"
-msgstr "編集者への注釈"
+msgstr "Noteedit"
 
 #: lib/configure.py:306
-#, fuzzy
 msgid "OpenDocument"
-msgstr "文書を開く"
+msgstr "OpenDocument"
 
 #: lib/configure.py:309
-#, fuzzy
 msgid "date command"
-msgstr "索引コマンド:"
+msgstr "date command"
 
 #: lib/configure.py:310
-#, fuzzy
 msgid "Table (CSV)"
-msgstr "表"
+msgstr "表（CSV）"
 
 #: lib/configure.py:312 src/frontends/qt4/GuiView.cpp:733
 msgid "LyX"
@@ -11676,72 +11643,67 @@ msgstr "LyX"
 
 #: lib/configure.py:313
 msgid "LyX 1.3.x"
-msgstr ""
+msgstr "LyX 1.3.x"
 
 #: lib/configure.py:314
 msgid "LyX 1.4.x"
-msgstr ""
+msgstr "LyX 1.4.x"
 
 #: lib/configure.py:315
 msgid "CJK LyX 1.4.x (big5)"
-msgstr ""
+msgstr "CJK LyX 1.4.x (big5)"
 
 #: lib/configure.py:316
 msgid "CJK LyX 1.4.x (euc-jp)"
-msgstr ""
+msgstr "CJK LyX 1.4.x (euc-jp)"
 
 #: lib/configure.py:317
 msgid "CJK LyX 1.4.x (euc-kr)"
-msgstr ""
+msgstr "CJK LyX 1.4.x (euc-kr)"
 
 #: lib/configure.py:318
-#, fuzzy
 msgid "LyX Preview"
-msgstr "プレビュー"
+msgstr "LyXプレビュー"
 
 #: lib/configure.py:319
 msgid "PDFTEX"
-msgstr ""
+msgstr "PDFTEX"
 
 #: lib/configure.py:320
-#, fuzzy
 msgid "Program"
-msgstr "プログラムリスト"
+msgstr "プログラム"
 
 #: lib/configure.py:321
 msgid "PSTEX"
-msgstr ""
+msgstr "PSTEX"
 
 #: lib/configure.py:322
-#, fuzzy
 msgid "Rich Text Format"
-msgstr "標準テキストフォント"
+msgstr "リッチテキスト形式"
 
 #: lib/configure.py:323
 msgid "OpenOffice.Org (sxw)"
-msgstr ""
+msgstr "OpenOffice.Org (sxw)"
 
 #: lib/configure.py:324
 msgid "Windows Metafile"
-msgstr ""
+msgstr "Windowsメタファイル"
 
 #: lib/configure.py:325
 msgid "Enhanced Metafile"
-msgstr ""
+msgstr "拡張メタファイル"
 
 #: lib/configure.py:326
-#, fuzzy
 msgid "MS Word"
-msgstr "単語"
+msgstr "MS Word"
 
 #: lib/configure.py:326
-#, fuzzy
 msgid "MS Word|W"
-msgstr "単語数(W)|W"
+msgstr "MS Word|W"
 
 #: lib/configure.py:327
 msgid "HTML (MS Word)"
-msgstr ""
+msgstr "HTML (MS Word)"
 
 #: src/Buffer.cpp:238
 msgid "Could not remove temporary directory"
@@ -11784,8 +11746,7 @@ msgstr "文書クラスを読み込むことができません"
 
 #: src/Buffer.cpp:513
 #, c-format
-msgid ""
-"Using the default document class, because the class %1$s could not be loaded."
+msgid "Using the default document class, because the class %1$s could not be loaded."
 msgstr "%1$s というクラスを読み込めなかったので，既定の文書クラスを使います。"
 
 #: src/Buffer.cpp:524 src/Buffer.cpp:530 src/BufferView.cpp:841
@@ -13205,8 +13166,7 @@ msgstr ""
 "は，チェックを外してください。"
 
 #: src/LyXRC.cpp:2143
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr "自動保存の間の間隔（秒単位)。0 は自動保存しないことを示します。"
 
 #: src/LyXRC.cpp:2150
@@ -13235,8 +13195,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2162
 msgid "Select to check whether the lastfiles still exist."
-msgstr ""
-"最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
+msgstr "最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
 
 #: src/LyXRC.cpp:2166
 msgid ""
@@ -13256,7 +13215,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2180
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
-msgstr ""
+msgstr "単語間のカーソル移動にMac OS X式の方法を使う。"
 
 #: src/LyXRC.cpp:2191
 #, no-c-format
@@ -13291,8 +13250,7 @@ msgstr "LyX が画像をどのように表示するかを選びます。"
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
-msgstr ""
-"文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
+msgstr "文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
 
 #: src/LyXRC.cpp:2216
 msgid "Specify additional chars that can be part of a word."
@@ -13336,8 +13294,7 @@ msgid ""
 msgstr "文書の最初に言語切換コマンドが必要なときに選んでください。"
 
 #: src/LyXRC.cpp:2248
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "文書の最後に言語切換コマンドが必要なときに選んでください。"
 
 #: src/LyXRC.cpp:2252
@@ -13383,8 +13340,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2276
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr ""
-"LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
+msgstr "LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
 
 #: src/LyXRC.cpp:2280
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -13409,8 +13365,7 @@ msgstr ""
 #: src/LyXRC.cpp:2292
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr ""
-"最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
+msgstr "最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
 
 #: src/LyXRC.cpp:2297
 msgid ""
@@ -13421,8 +13376,7 @@ msgstr ""
 "マットを使ってください。"
 
 #: src/LyXRC.cpp:2304
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "代替の個人用辞書を指定してください。例：\".ispell_english\"。"
 
 #: src/LyXRC.cpp:2308
@@ -13534,8 +13488,7 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "お好みの印刷プログラム。例：\"dvips\", \"dvilj4\"。"
 
 #: src/LyXRC.cpp:2392
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "右から左へ書く言語（ヘブライ語，アラビア語など）をサポートするときに選択して"
 "ください。"
@@ -13641,8 +13594,7 @@ msgstr ""
 "辞書で動くとは限りません。"
 
 #: src/LyXRC.cpp:2479
-msgid ""
-"Enable the pixmap cache that might improve performance on Mac and Windows."
+msgid "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "pixmapのキャッシュを有効にします。MacやWindowsでのパフォーマンスが向上する可"
 "能性があります。"
@@ -13794,8 +13746,7 @@ msgstr "未知のトークン"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr ""
-"空白を段落の先頭に挿入することはできません。チュートリアルを読んでください。"
+msgstr "空白を段落の先頭に挿入することはできません。チュートリアルを読んでください。"
 
 #: src/Text.cpp:779
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -14344,13 +14295,12 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "LyXプロジェクトに投入したかがわかるようにして下さいませ。"
 
 #: src/frontends/controllers/ControlAboutlyx.cpp:67
-#, fuzzy
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995-2008 LyX Team"
 msgstr ""
-"LyXの著作権は Copyright (C) 1995 by Matthias Ettrich,\n"
-"1995-2006 LyX Team です。"
+"LyXの著作権はCopyright (C) 1995 by Matthias Ettrich,\n"
+"1995-2008 LyX Teamです。"
 
 #: src/frontends/controllers/ControlAboutlyx.cpp:73
 msgid ""
@@ -15037,8 +14987,7 @@ msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/QDocument.cpp:234 src/frontends/qt4/QDocument.cpp:657
-msgid ""
-"Input listings parameters on the right. Enter ? for a list of parameters."
+msgid "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
 "は？を入力してください。"
@@ -15220,8 +15169,7 @@ msgstr "図"
 #: src/frontends/qt4/QInclude.cpp:115 src/frontends/qt4/QInclude.cpp:229
 #: src/frontends/qt4/QListings.cpp:350 src/frontends/qt4/QListings.cpp:427
 #: src/frontends/qt4/QListings.cpp:459
-msgid ""
-"Input listing parameters on the right. Enter ? for a list of parameters."
+msgid "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
 "は？を入力してください。"
@@ -15770,8 +15718,7 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "%1$sのうちの1つ以上で構成されなくてはなりません。"
 
 #: src/insets/InsetListingsParams.cpp:292
-msgid ""
-"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr "\\footnotesize, \\small, \\itshape, \\ttfamily 等を使ってください"
 
 #: src/insets/InsetListingsParams.cpp:294
@@ -16226,7 +16173,6 @@ msgid "References: "
 msgstr "引用: "
 
 #: src/support/FileFilterList.cpp:109
-#, fuzzy
 msgid "All Files "
 msgstr "全てのファイル "
 
@@ -16236,8 +16182,7 @@ msgstr "LyXバイナリが見つかりません"
 
 #: src/support/Package.cpp.in:449
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
+msgid "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 "コマンドライン %1$s からは，LyX バイナリへのパスを決定することができませんで"
 "した。"
@@ -16322,61 +16267,3 @@ msgstr ""
 msgid "Unknown user"
 msgstr "未知のユーザー"
 
-#, fuzzy
-#~ msgid "Default (outer)"
-#~ msgstr "既定値（連番）(&D)"
-
-#, fuzzy
-#~ msgid "Outer"
-#~ msgstr "外側(&U):"
-
-#, fuzzy
-#~ msgid "Swap Rows|S"
-#~ msgstr "行を交換"
-
-#, fuzzy
-#~ msgid "Swap Columns|w"
-#~ msgstr "列を交換"
-
-#, fuzzy
-#~ msgid "phantom"
-#~ msgstr "エスペラント語"
-
-#, fuzzy
-#~ msgid "Encoding error"
-#~ msgstr "文字コード(&E):"
-
-#, fuzzy
-#~ msgid "%1$d words in selection."
-#~ msgstr "%1$d個の単語がチェックされました。"
-
-#, fuzzy
-#~ msgid "%1$d words in document."
-#~ msgstr "%1$s はLyX文書ではありません。"
-
-#, fuzzy
-#~ msgid "One word in selection."
-#~ msgstr "一つの単語がチェックされました。"
-
-#, fuzzy
-#~ msgid "One word in document."
-#~ msgstr "文書を開く"
-
-#, fuzzy
-#~ msgid "Count words"
-#~ msgstr "単語数(W)|W"
-
-#~ msgid "Plain Text"
-#~ msgstr "平文(a)"
-
-#, fuzzy
-#~ msgid "Formatting document..."
-#~ msgstr "文書を保存中です: %1$s..."
-
-#, fuzzy
-#~ msgid "Text Wrap Settings"
-#~ msgstr "折返しの設定(W)...|W"
-
-#, fuzzy
-#~ msgid "CharStyle: "
-#~ msgstr "変更: "
