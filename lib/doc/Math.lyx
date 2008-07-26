@@ -992,7 +992,7 @@ An arrow like
 \end_layout
 
 \begin_layout Subsection*
-Used units
+Available units
 \end_layout
 
 \begin_layout Standard
@@ -1010,11 +1010,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Used-units"
+name "tab:Available-units"
 
 \end_inset
 
-Used units
+Available units
 \end_layout
 
 \end_inset
@@ -4260,6 +4260,75 @@ underline
 It is possible to place up to 6 lines above or below characters.
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Custom lines can be created using the command 
+\series bold
+
+\backslash
+rule
+\series default
+ which has the following scheme:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+rule[vertical offset]{length}{thickness}
+\end_layout
+
+\begin_layout Standard
+The optional vertical offset shifts the line upwards (or downwards, when
+ the value is negative).
+ The units listed in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Available-units"
+
+\end_inset
+
+ can be used for the values.
+ Here are two example lines created with the commands
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+rule[-2ex]{3cm}{2pt}
+\series default
+ and 
+\series bold
+
+\backslash
+rule{2cm}{1pt}
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+This is a sentence 
+\begin_inset Formula $\rule[-2ex]{3cm}{2pt}\rule{2cm}{1pt}$
+\end_inset
+
+ with two lines.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+rule
+\series default
+ can also be used for text when it is inserted in TeX-mode.
+\end_layout
+
 \begin_layout Subsection
 Ellipses
 \begin_inset CommandInset label
@@ -6476,9 +6545,6 @@ Bigg)^0,5
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
 Besides the 
 \series bold
 
@@ -7791,6 +7857,13 @@ Arrows can be inserted via the math toolbar button
 \end_inset
 
  or the commands listed in the following subsections.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -11712,7 +11785,7 @@ hspace
  For the length all units listed in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Used-units"
+reference "tab:Available-units"
 
 \end_inset
 
@@ -16210,6 +16283,13 @@ reference "sub:Self-defined-Operators"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection

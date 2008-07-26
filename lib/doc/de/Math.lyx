@@ -1001,7 +1001,7 @@ B.
 \end_layout
 
 \begin_layout Subsection*
-Verwendete Einheiten
+Verfügbare Einheiten
 \end_layout
 
 \begin_layout Standard
@@ -1019,11 +1019,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Verwendete-Einheiten"
+name "tab:Verfügbare-Einheiten"
 
 \end_inset
 
-Verwendete Einheiten
+Verfügbare Einheiten
 \end_layout
 
 \end_inset
@@ -4264,6 +4264,75 @@ underline
 Man kann bis zu 6 Striche über oder unter Zeichen setzen.
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Benutzerdefinierte Linien können mit dem Befehl 
+\series bold
+
+\backslash
+rule
+\series default
+ erstellt werden, der folgendes Schema besitzt:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+rule[vertikaler Versatz]{Länge}{Dicke}
+\end_layout
+
+\begin_layout Standard
+Der optionale vertikale Versatz verschiebt die Linie nach oben (oder nach
+ unten, wenn der Wert negativ ist).
+ Die Einheiten, die in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Verfügbare-Einheiten"
+
+\end_inset
+
+ aufgelistet sind, können für die Werte benutzt werden.
+ Hier sind zwei Beispiele, die mit den Befehlen
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+rule[-2ex]{3cm}{2pt}
+\series default
+ und 
+\series bold
+
+\backslash
+rule{2cm}{1pt}
+\series default
+ erzeugt wurden:
+\end_layout
+
+\begin_layout Standard
+Dies ist ein Satz 
+\begin_inset Formula $\rule[-2ex]{3cm}{2pt}\rule{2cm}{1pt}$
+\end_inset
+
+ mit zwei Linien.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+rule
+\series default
+ kann auch für Text verwendet werden, wenn er als TeX-Code eingegeben wird.
+\end_layout
+
 \begin_layout Subsection
 Fortsetzungspunkte
 \begin_inset CommandInset label
@@ -4361,10 +4430,6 @@ dots
 
 , entscheidet LaTeX anhand des nachfolgenden Zeichens, welche Punktart verwendet
  wird.
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5670,6 +5735,13 @@ C & D\end{smallmatrix}\right)$
 \end_inset
 
  in einer Textzeile.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -11722,7 +11794,7 @@ hspace
  Dabei können alle Längeneinheiten verwendet werden, die in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Verwendete-Einheiten"
+reference "tab:Verfügbare-Einheiten"
 
 \end_inset
 
@@ -15713,10 +15785,6 @@ dotsint
 \end_inset
 
 
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -18836,6 +18904,13 @@ Kann ein Symbol nicht in verschiedenen Größen dargestellt werden, wird es
  immer in der Standardgröße dargestellt.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Griechische Buchstaben
 \begin_inset Index
@@ -20410,13 +20485,6 @@ leistenknöpfe
 \end_inset
 
  eingefügt werden.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -24011,13 +24079,6 @@ B
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Funktionen
 \end_layout
@@ -25178,10 +25239,6 @@ Funktionen ! Modulo-
 \begin_layout Standard
 Eine Besonderheit stellt die Modulo-Funktion dar, denn es gibt sie in vier
  Varianten.
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -31358,10 +31415,6 @@ cb
 white
 \series default
  verwendet.
-\begin_inset Newpage pagebreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
