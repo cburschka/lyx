@@ -31470,11 +31470,27 @@ A=B
 
 \begin_layout Section
 Diagrams
+\end_layout
+
+\begin_layout Standard
+LyX supports two types of commutative diagrams: 
+\series bold
+amscd
+\series default
+ and 
+\series bold
+xymatrix
+\series default
+ that are explained in the following.
+\end_layout
+
+\begin_layout Subsection
+amscd diagrams
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Diagrams
+Diagrams ! amscd
 \end_layout
 
 \end_inset
@@ -31483,7 +31499,7 @@ Diagrams
 \end_layout
 
 \begin_layout Standard
-To create diagrams, the LaTeX-package 
+To create this type of diagrams, the LaTeX-package 
 \series bold
 amscd
 \begin_inset Foot
@@ -31763,6 +31779,56 @@ status collapsed
 \end_inset
 
 D@<<j<E@>k>>F@=C
+\end_layout
+
+\begin_layout Subsection
+xymatrix diagrams
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Diagrams ! xymatrix
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To be able to use xymatrices, the LaTeX-package 
+\series bold
+xypic
+\series default
+ must be installed.
+ A xymatrix is created by inserting the command 
+\series bold
+
+\backslash
+xymatrix
+\series default
+ in a formula.
+ Then you are able to add new matrix columns and rows like for normal matrices,
+ see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Matrices"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+xymatrix offers many possibilities to create commutative diagrams and decoration
+s that are explained in detail in this manual: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://wiki.lyx.org/LyX/XY-pic#xy-manual"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
