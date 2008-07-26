@@ -451,6 +451,8 @@ AC_DEFINE_UNQUOTED([PROGRAM_SUFFIX],
 
 AC_DEFINE_UNQUOTED([LYX_DATE],"$LYX_DATE",[Date of release])
 AC_DEFINE_UNQUOTED([VERSION_INFO],"$VERSION_INFO",[Full version info])
+AC_DEFINE_UNQUOTED([LYX_DIR_VER],"$lyx_dir_ver",[Versioned env var for system dir])
+AC_DEFINE_UNQUOTED([LYX_USERDIR_VER],"$lyx_userdir_ver",[Versioned env var for user dir])
 AC_DEFINE_UNQUOTED([LYX_MAJOR_VERSION],$lyx_major,[Major version number])
 AC_DEFINE_UNQUOTED([LYX_MINOR_VERSION],$lyx_minor,[Minor version number])
 AC_DEFINE_UNQUOTED([LYX_RELEASE_LEVEL],$lyx_release,[Release version number])

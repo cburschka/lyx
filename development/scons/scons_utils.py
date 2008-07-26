@@ -18,6 +18,7 @@ from SCons.Util import *
 
 def getVerFromConfigure(path):
     ''' get lyx version from the AC_INIT line of configure.ac,
+        packed major and minor version numbers from the lyx version,
         and LYX_DATE from an AC_SUBST line.
     '''
     try:
@@ -29,16 +30,20 @@ def getVerFromConfigure(path):
     # AC_INIT(LyX,1.4.4svn,[lyx-devel@lists.lyx.org],[lyx])
     ver_pat = re.compile('AC_INIT\([^,]+,([^,]+),')
     date_pat = re.compile('AC_SUBST\(LYX_DATE, \["(.*)"\]\)')
+    majmin_pat = re.compile('(\d+)\.(\d+)\..*')
     version = 'x.x.x'
+    majmin = 'xx'
     date = 'Not released'
     for line in config.readlines():
         if ver_pat.match(line):
             (version,) = ver_pat.match(line).groups()
+            majmin_match = majmin_pat.match(version)
+            majmin = majmin_match.group(1) + majmin_match.group(2)
         if date_pat.match(line):
             (date,) = date_pat.match(line).groups()
         if version != 'x.x.x' and date != 'Not released':
             break
-    return version.strip(), date.strip()
+    return version.strip(), majmin.strip(), date.strip()
 
 
 def relativePath(path, base):

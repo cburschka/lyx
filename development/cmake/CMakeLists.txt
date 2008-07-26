@@ -28,6 +28,8 @@ set(PACKAGE_VERSION 1.6svn)
 set(LYX_DATE "2007/2008")
 #TODO
 set(VERSION_INFO "CMake Build")
+set(LYX_DIR_VER "LYX_DIR_16x")
+set(LYX_USERDIR_VER "LYX_USERDIR_16x")
 
 set(PROGRAM_SUFFIX "")
 set(LYX_ABS_INSTALLED_DATADIR "/usr/local/share/lyx")

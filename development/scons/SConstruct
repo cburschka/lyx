@@ -58,7 +58,7 @@ if version[0] == 0 and version[1] == 96 and version[2] < 92:
 #
 # get version number from configure.ac so that JMarc does
 # not have to change SConstruct during lyx release
-package_version, lyx_date = utils.getVerFromConfigure(top_src_dir)
+package_version, majmin_ver, lyx_date = utils.getVerFromConfigure(top_src_dir)
 package_cygwin_version = '%s-1' % package_version
 boost_version = ['1_34']
 
@@ -1038,6 +1038,10 @@ result = utils.createConfigFile(conf,
             'Define to the version of this package.'),
         ('#define VERSION_INFO "%s"' % env['VERSION_INFO'].replace('\n', '\\n'),
             'Full version info'),
+        ('#define LYX_DIR_VER "LYX_DIR_%sx"' % majmin_ver,
+            'Versioned env var for system dir'),
+        ('#define LYX_USERDIR_VER "LYX_USERDIR_%sx"' % majmin_ver,
+            'Versioned env var for user dir'),
         ('#define LYX_DATE "%s"' % lyx_date,
             'Date of release'),
         ('#define PROGRAM_SUFFIX "%s"' % program_suffix,
