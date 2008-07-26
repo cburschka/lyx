@@ -3,7 +3,7 @@
 .\"
 .\"  tbl lyx.1 | nroff -man | less
 .\"
-.TH LYX 1 "Feb 2007" "Version 1.5" "LyX 1.5"
+.TH LYX 1 "Sept 2008" "Version 1.6" "LyX 1.6"
 .SH NAME
 lyx \- A Document Processor
 .\"
@@ -75,7 +75,7 @@ where fmt is the import format of choice and file.xxx is the file to be imported
 
 .SH ENVIRONMENT
 .TP
-.B LYX_DIR_15x
+.B LYX_DIR_16x
 can be used to specify which system directory to use.
 .PP
 The system directory is determined by searching for the file
@@ -83,7 +83,7 @@ The system directory is determined by searching for the file
 .br
 1) \-sysdir command line parameter
 .br
-2) LYX_DIR_15x environment variable
+2) LYX_DIR_16x environment variable
 .br
 3) Maybe <path of binary>/TOP_SRCDIR/lib
 .br
@@ -91,14 +91,14 @@ The system directory is determined by searching for the file
 .br
 5) hardcoded lyx_dir (usually /usr/local/share/lyx on UNIX)
 .TP
-.B LYX_USERDIR_15x
+.B LYX_USERDIR_16x
 can be used to specify which user directory to use.
 .PP
 The user directory is, in order of precedence:
 .br
 1) \-userdir command line parameter
 .br
-2) LYX_USERDIR_15x environment variable
+2) LYX_USERDIR_16x environment variable
 .br
 3) $HOME/.<name of binary> if no explicit setting is made
 
