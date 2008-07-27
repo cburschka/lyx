@@ -562,7 +562,6 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 	if (ams())
 		features.require("amsmath");
 
-
 	// Validation is necessary only if not using AMS math.
 	// To be safe, we will always run mathedvalidate.
 	//if (features.amsstyle)
