@@ -27,6 +27,8 @@ Function UpdateModifiedFiles
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Math.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Userguide.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\he"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\he\Intro.lyx"
  SetOutPath "$INSTDIR\Resources\layouts"
  #File "${PRODUCT_SOURCEDIR}\Resources\layouts\aa.layout"
  #File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsmaths.inc"

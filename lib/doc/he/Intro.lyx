@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.7svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -48,16 +48,14 @@
 \paperpagestyle fancy
 \tracking_changes false
 \output_changes false
-\author "usti"
-\author "ran"
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-מבוא ל-
-\lang hebrew
- 
+מבוא ל- 
 \lang english
 LyX
 \lang hebrew
@@ -75,9 +73,30 @@ status collapsed
 \end_layout
 
 \begin_layout Author
-מאת צוות ליקס
+מאת צוות
+\family roman
+\series medium
+\shape up
+\size large
+\emph off
+\bar no
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+LyX
+\lang hebrew
+
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 תורגם ע"י רן רוטנברג, 
@@ -85,6 +104,31 @@ status collapsed
 2006
 \numeric off
 .
+ הערות לגבי התרגום ניתן לשלוח לכתובת:
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ 
+\family typewriter
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset LatexCommand htmlurl
+target "hebrew.lyx@gmail.com"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -101,9 +145,7 @@ status collapsed
 \end_layout
 
 \begin_layout Chapter
-הפילוסופיה של
-\lang hebrew
- 
+הפילוסופיה של 
 \lang english
 LyX
 \end_layout
@@ -131,15 +173,15 @@ Shoe
 \lang english
 In case you can read only this paragraph, probably you did not set the Hebrew
  language correctly.
- Please refer to the instructions on: 
+ Please refer to the instructions on (for Windows machines): 
 \begin_inset LatexCommand htmlurl
 target "http://wiki.lyx.org/Windows/Hebrew"
 
 \end_inset
 
- or to the Ivritex Project: 
+ or on (for Linux): 
 \begin_inset LatexCommand htmlurl
-target "http://ivritex.sourceforge.net/index.html.he"
+target "http://wiki.lyx.org/LyX/HebrewOnLinux"
 
 \end_inset
 
@@ -147,9 +189,7 @@ target "http://ivritex.sourceforge.net/index.html.he"
 \end_layout
 
 \begin_layout Section
-מה זה
-\lang hebrew
- 
+מה זה 
 \lang english
 LyX
 \lang hebrew
@@ -173,8 +213,6 @@ LyX
  )ליקס( הוא מערכת להכנת מסמכים.
  הוא מצטיין בכתיבת מאמרים טכניים ומדעיים מורכבים המכילים נוסחאות מתמטיות,
  הפניות, ביבליוגרפיות, אינדקסים וכו'.
-
-\lang hebrew
  
 \lang english
 LyX
@@ -183,9 +221,7 @@ LyX
  עימוד וחלוקה לקטעים אוטומטיים, בדיקת איות וכדומה.
  אמנם תוכל לכתוב באמצעותו מכתב לאמא, אך סביר להניח שניתן למצוא תוכנות פשוטות
  יותר לביצוע מטלה זו.
- אף על פי כן,
-\lang hebrew
- 
+ אף על פי כן, 
 \lang english
 LyX
 \lang hebrew
@@ -193,9 +229,7 @@ LyX
  למרות שעם מאמץ מסויים ניתן להכין גם את כל אלה.
  דוגמאות אחדות למה שניתן לעשות עם ליקס הן: תזכירים, עבודות גמר, דיסרטציות,
  תקצירי הרצאות, מחברות סמינריוניות, פרוטוקולים מישיבות, תיעוד תוכנות, ספרים
- )על
-\lang hebrew
- 
+ )על 
 \lang english
 PostgreSQL
 \lang hebrew
@@ -219,24 +253,18 @@ status collapsed
 LyX
 \lang hebrew
  מספק גישה מודרנית לכתיבת מסמכים בעזרת מחשב על ידי שימוש במערכת של שפת סימני
- עריכה
-\lang hebrew
- 
+ עריכה 
 \lang english
 (markup language)
 \lang hebrew
 , גישה שאינה תואמת למסורת המיושנת של "עקרון מכונת הכתיבה".
-
-\lang hebrew
  
 \lang english
 LyX
 \lang hebrew
  מיועד למחברים שרוצים לקבל תוצר מקצועי במהירות, תוך השקעת מאמץ מינימלי,
  ומבלי להתמחות בסידור-דפוס.
- עבודת סידור-הדפוס נעשית ברובה על ידי המחשב, לא ע"י הכותב; עם
-\lang hebrew
- 
+ עבודת סידור-הדפוס נעשית ברובה על ידי המחשב, לא ע"י הכותב; עם 
 \lang english
 LyX
 \lang hebrew
@@ -244,9 +272,7 @@ LyX
 \end_layout
 
 \begin_layout Standard
-חלק מהאתגר הראשוני בשימוש ב-
-\lang hebrew
- 
+חלק מהאתגר הראשוני בשימוש ב- 
 \lang english
 LyX
 \lang hebrew
@@ -256,9 +282,7 @@ LyX
  מתיחת קו תחתי, שהיא למעשה לא יותר מאשר לחיצה מרובה על תו ה- "_", הפכה לדרך
  להדגיש טקסט.
  לפני יצירת טבלה המשתמש נדרש לתכנן מראש ולקבוע את גודל העמודות ואת עצירות
- הטאבים
-\lang hebrew
- 
+ הטאבים 
 \lang english
 (tab stops)
 \lang hebrew
@@ -267,18 +291,10 @@ LyX
 \emph on
 הערת המתרגם: הדבר נכון בלועזית.
  בעברית הבעיה ארעה כאשר הכותב רצה ליישר את הטקסט משמאל לימין במקום מימין
- לשמאל
-\lang hebrew
- 
-\lang english
---
-\lang hebrew
- ר.ר
+ לשמאל -- ר.ר
 \emph default
 [.
- מיקוף
-\lang hebrew
- 
+ מיקוף 
 \lang english
 (hyphenation)
 \lang hebrew
@@ -287,42 +303,81 @@ LyX
 \end_layout
 
 \begin_layout Standard
-במילים אחרות, כולנו דואגים לפרטים הקטנים כמו היכן ימוקם כל תו.
+במילים אחרות, כולנו דואגים לפרטים הקטנים כמו מיקומוכל תו ותו.
  כתוצאה מכך, כמעט כל מעבדי התמלילים בנויים לפי שיטה זו.
  בכל אלה עדיין משתמשים בלחצן ה"טאב" כדי להוסיף מרווח.
  המשתמש עדיין צריך להקדיש תשומת לב למיקום של קטע מסויים בדף.
  דברים אלה מאפיינים את הפילוסופיה המונחת ביסוד של מעבד תמלילים מסוג הדפסתו-כראית
-ו 
+ו
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
-זהו תרגום שקבעה האקדמיה ללשון לקיצור
-\lang hebrew
- 
+זהו תרגום שקבעה האקדמיה ללשון לקיצור 
 \lang english
 WYSIWYG
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
 \lang hebrew
- שפירושו: 
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+שפירושו
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+
+\begin_inset Quotes eld
+\end_inset
+
+What you see is what you ge
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
-: לרוע המזל, שיטה זו מתבטאת בדרך כלל כ"הדפסתו-רק-כראיתו".
+: לרוע המזל, שיטה זו מתבטאת לעיתים קרובות בכך שמה שרואים על המסך הוא כל
+ מה שנוכל לקבל בתוצר המודפס.
 \end_layout
 
 \begin_layout Standard
-בנקודה זו
-\lang hebrew
- 
+בנקודה זו 
 \lang english
 LyX
 \lang hebrew
  שונה ממעבד תמלילים רגיל.
  המשתמש אינו צריך להעסיק את עצמו בזוטות כגון איפה כל תו מופיע.
- אתה, המשתמש, מציין ל-
-\lang hebrew
- 
+ אתה, המשתמש, מציין ל- 
 \lang english
 LyX
 \lang hebrew
@@ -330,9 +385,7 @@ LyX
 \emph on
 מה אתה עושה
 \emph default
- ו-
-\lang hebrew
- 
+ ו- 
 \lang english
 LyX
 \lang hebrew
@@ -354,7 +407,25 @@ status collapsed
 
 \begin_layout Standard
 נניח שאתה כותב דו"ח.
- כדי להתחילו אתה רוצה חלק שייקרא "מבוא".
+ כדי להתחילו אתה רוצה חלק שייקרא
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+"מבוא".
  לכן, אתה פותח תפריט כלשהו במעבד התמלילים ומגיע למקום בו ניתן לשנות את גודל
  הגופן ובוחר גודל חדש.
  לאחר מכן אתה לוחץ על לחצן ההדגשה וכותב "
@@ -369,9 +440,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ב-
-\lang hebrew
- 
+ב- 
 \lang english
 LyX
 \lang hebrew
@@ -384,16 +453,8 @@ LyX
 
 \begin_layout Standard
 כן, זה הכל.
- אם תגזור ותדביק את החלק, הוא ימוספר אוטומטית
-\lang hebrew
- 
-\lang english
---
-\lang hebrew
- בכל מקום.
- אם תכניס במסמך הפניות לחלק זה בצורה נכונה )ע"י הכנסת תגיות הפנייה(,
-\lang hebrew
- 
+ אם תגזור ותדביק את החלק, הוא ימוספר אוטומטית -- בכל מקום.
+ אם תכניס במסמך הפניות לחלק זה בצורה נכונה )ע"י הכנסת תגיות הפנייה(, 
 \lang english
 LyX
 \lang hebrew
@@ -425,9 +486,7 @@ LyX
 1
 \numeric off
 .
- בעייה זו אינה קיימת ב-
-\lang hebrew
- 
+ בעייה זו אינה קיימת ב- 
 \lang english
 LyX
 \lang hebrew
@@ -437,26 +496,21 @@ LyX
 \end_layout
 
 \begin_layout Standard
-הנה דוגמא נוספת.
- נניח שאתה מכין רשימה.
+דוגמה נוספת היא הכנת רשימה.
  במעבדי תמלילים אחרים, רשימה הינה בסך הכל אוסף של שורות וטאבים.
  אתה צריך להבין היכן למקם את התווית לכל איבר ברשימה, מה התווית צריכה להיות,
  וכמה שורות ריקות יש להשאיר בין כל איבר ואיבר וכך הלאה.
- כשאתה משתמש ב-
-\lang hebrew
- 
+ כשאתה משתמש ב- 
 \lang english
 LyX
 \lang hebrew
- יש לך רק שני דברים להתייחס אליהם: איזה סוג רשימה זה, ומה אתה רוצה להכניס
- אליה.
+ יש לך רק שני דברים להתייחס אליהם: איזה סוג רשימה אתה צריך, ומה אתה רוצה
+ להכניס אליה.
  זהו זה.
 \end_layout
 
 \begin_layout Standard
-אז זהו הרעיון הבסיסי המונח ביסוד של
-\lang hebrew
- 
+אז זהו הרעיון הבסיסי המונח ביסוד של 
 \lang english
 LyX
 \lang hebrew
@@ -469,9 +523,7 @@ LyX
 איך
 \emph default
  לעשות זאת.
- במקום הדפסתו-כראיתו, המודל של
-\lang hebrew
- 
+ במקום הדפסתו-כראיתו, המודל של 
 \lang english
 LyX
 \lang hebrew
@@ -480,9 +532,7 @@ LyX
 status collapsed
 
 \begin_layout Standard
-במקור מופיע הקיצור
-\lang hebrew
- 
+במקור מופיע הקיצור 
 \lang english
 WYSIWYM
 \lang hebrew
@@ -500,68 +550,57 @@ What You See Is What You Mean
 \end_inset
 
 .
- זהו רעיון בעל עוצמה, שמפשט במידה רבה את כתיבת המסמכים.
- זאת גם הסיבה מדוע
-\lang hebrew
- 
+ זהו רעיון רב עוצמה, שמפשט במידה רבה את כתיבת המסמכים.
+ זאת גם הסיבה מדוע 
 \lang english
 LyX
 \lang hebrew
- אינו כל-כך טוב ליצירת עלונים ופוסטרים
-\lang hebrew
- 
-\lang english
---
-\lang hebrew
- במקרה זה אתה 
+ אינו כל-כך טוב ליצירת עלונים ופוסטרים -- במקרה זה אתה 
 \emph on
 כן
 \emph default
  רוצה לציין היכן כל דבר יימצא בדיוק, בגלל שאין יחידות תחביריות כגון פיסקאות
  וחלקים.
- זה לא אומר ש-
-\lang hebrew
- 
+ זה לא אומר ש- 
 \lang english
 LyX
 \lang hebrew
  חסר תכונה מגניבה כלשהי.
- זה פשוט אומר שליקס אינו הכלי הנכון לעבודה
-\lang hebrew
+ זה פשוט אומר ש-
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
  
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
 \lang english
---
+LyX
 \lang hebrew
- אינך משתמש במברג כדי לדפוק מסמרים )אלא אם כן המברג בא עם אחריות לכל החיים(.
+ אינו הכלי הנכון לעבודה -- אינך משתמש במברג כדי לדפוק מסמרים )אלא אם כן
+ המברג בא עם אחריות לכל החיים(.
 \end_layout
 
 \begin_layout Section
-ההבדלים בין
-\lang hebrew
- 
+ההבדלים בין 
 \lang english
 LyX
 \lang hebrew
  ומעבדי תמלילים אחרים
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-לא, אין בכוונתינו לפתוח )או לנצח( במלחמה פה, אבל אנחנו חושבים שחשוב לציין
- את תכונותיו של ליקס.
- בתור אחת מתכונותיו העיקריות של ליקס, הדפסתו-ככוונתו, היא תפיסה השונה באופן
- יסודי ממה שיש לרוב האנשים בנוגע למעבדי תמלילים.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-הנה רשימה של כמה דברים שלא תמצאו ב-
-\lang hebrew
- 
+הנה כמה דברים שלא תמצאו ב- 
 \lang english
 LyX
 \lang hebrew
@@ -588,17 +627,13 @@ Enter
 
 \begin_layout Standard
 טאבים, ביחד עם שורת הסרגל, המראה את מיקומם של עצמים בעמוד, הם חסרי שימוש
- ב-
-\lang hebrew
- 
+ ב- 
 \lang english
 LyX
 \lang hebrew
 .
  התוכנה דואגת למיקום של עצמים בעמוד ולא המשתמש.
- מרווחים כפולים הם דבר דומה;
-\lang hebrew
- 
+ מרווחים כפולים הם דבר דומה; 
 \lang english
 LyX
 \lang hebrew
@@ -608,9 +643,7 @@ LyX
 \end_layout
 
 \begin_layout Standard
-הנה כמה דברים שישנם ב-
-\lang hebrew
- 
+הנה כמה דברים שישנם ב- 
 \lang english
 LyX
 \lang hebrew
@@ -642,15 +675,11 @@ LyX
 \end_layout
 
 \begin_layout Standard
-אף על פי שהם קיימים ב-
-\lang hebrew
- 
+אף על פי שדברים אלה קיימים ב- 
 \lang english
 LyX
 \lang hebrew
 , על פי רוב אין המשתמש נזקק להם.
-
-\lang hebrew
  
 \lang english
 LyX
@@ -659,20 +688,16 @@ LyX
  חלקים שונים של המסמך מוגדרים אוטומטית בסגנון דפוס וגודל גופן שונים.
  הזחת פיסקאות היא תלויית הקשר; פיסקאות שונות מוזחות בצורה שונה.
  מעברי עמוד נעשים גם הם אוטומטית.
- באופן כללי, המרווח בין שורות, מילים ופיסקאות הוא משתנה אך נקבע על ידי
-\lang hebrew
- 
+ באופן כללי, המרווח בין שורות, מילים ופיסקאות הוא משתנה אך נקבע על ידי 
 \lang english
 LyX
 \lang hebrew
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
-המשתמש יכול לשנות את כל אלה )חלק מהשינויים דורש ידע ב-
-\lang hebrew
- 
+המשתמש יכול לשנות את כל אלה )חלק מהשינויים דורש ידע ב- 
 \lang english
 (LaTeX
 \lang hebrew
@@ -685,19 +710,15 @@ status open
 \end_layout
 
 \begin_layout Standard
-לבסוף, ישנם מספר תחומים בהם אנו מאמינים ש-
-\lang hebrew
- 
+לבסוף, ישנם מספר תחומים בהם אנו מאמינים ש- 
 \lang english
 LyX
 \lang hebrew
- )ו-
-\lang hebrew
- 
+ )ו- 
 \lang english
 LaTeX
 \lang hebrew
-( מתעלים מעל למעבדי תמלילים רבים:
+( מתעלה מעל למעבדי תמלילים רבים:
 \end_layout
 
 \begin_layout Itemize
@@ -723,21 +744,15 @@ LaTeX
 \begin_layout Standard
 אמנם למעבדי תמלילים מודרניים רבים ניתן להכניס ביטויים מתמטיים, טבלאות ומיקוף,
  ורבים נעו לכיוון הגדרות סגנון ורעיון ההדפסתו-ככוונתו, אבל הם יכולים לעשות
- זאת מזה זמן לא רב, בעוד ש-
-\lang hebrew
- 
+ זאת מזה זמן לא רב, בעוד ש- 
 \lang english
 LyX
 \lang hebrew
- בנוי על מערכת הכנת המסמכים
-\lang hebrew
- 
+ בנוי על מערכת הכנת המסמכים 
 \lang english
 LaTeX
 \lang hebrew
 .
-
-\lang hebrew
  
 \lang english
 LaTeX
@@ -750,9 +765,7 @@ LaTeX
 \end_layout
 
 \begin_layout Section
-מה זה לעזאזל
-\lang hebrew
- 
+מה זה לעזאזל 
 \lang english
 LaTeX
 \lang hebrew
@@ -788,9 +801,7 @@ Leslie Lamport
 status collapsed
 
 \begin_layout Standard
-המקור למידע בחלק זה הוא
-\lang hebrew
- 
+המקור למידע בחלק זה הוא 
 \lang english
 "
 \emph on
@@ -818,15 +829,11 @@ Patrick Daly
 \end_inset
 
 .
-
-\lang hebrew
  
 \lang english
 LaTeX
 \lang hebrew
- הייתה בנוייה על בסיס שפת הדפוס הנקראת
-\lang hebrew
- 
+ הייתה בנוייה על בסיס שפת הדפוס הנקראת 
 \lang english
 TeX
 \lang hebrew
@@ -841,15 +848,11 @@ Donald Knuth
 1984
 \numeric off
 .
-
-\lang hebrew
  
 \lang english
 TeX
 \lang hebrew
- לוקחת רצף של פקודות דפוס, הרשומות בתור קוד בקובץ
-\lang hebrew
- 
+ לוקחת רצף של פקודות דפוס, הרשומות בתור קוד בקובץ 
 \lang english
 ASCII
 \lang hebrew
@@ -861,20 +864,16 @@ ASCII
 Knuth
 \noun default
 \lang hebrew
- כאלגוריטמי מחשב ל-
-\lang hebrew
- 
+ כאלגוריטמי מחשב ל- 
 \lang english
 TeX
 \lang hebrew
 , ומכאן המראה המודפס המצויין.
- בכל מקרה, הפלט של
-\lang hebrew
- 
+ בכל מקרה, הפלט של 
 \lang english
 TeX
 \lang hebrew
- הוא קובץ תסדיר )פורמט( מסוג "
+ הוא קובץ מסוג "
 \lang english
 device independent
 \lang hebrew
@@ -890,15 +889,11 @@ dvi
 \lang hebrew
 .
  ניתן להזין קובץ זה לכל מכשיר שמסוגל לפענחו או לחלופין להמירו לפורמטים אחרים
- כגון
-\lang hebrew
- 
+ כגון 
 \lang english
 PostScript®
 \lang hebrew
-,
-\lang hebrew
- 
+, 
 \lang english
 PDF
 \lang hebrew
@@ -906,15 +901,11 @@ PDF
 \end_layout
 
 \begin_layout Standard
-אלמלא תכונה אחת,
-\lang hebrew
- 
+אלמלא תכונה אחת, 
 \lang english
 TeX
 \lang hebrew
- לא היה שונה מכל תוכנת דפוס אחרת, אבל
-\lang hebrew
- 
+ לא היה שונה מכל תוכנת דפוס אחרת, אבל 
 \lang english
 TeX
 \lang hebrew
@@ -927,9 +918,7 @@ macro
 \end_layout
 
 \begin_layout Standard
-רוב האנשים שמשתמשים ב-
-\lang hebrew
- 
+רוב האנשים שמשתמשים ב- 
 \lang english
 TeX
 \lang hebrew
@@ -940,16 +929,12 @@ Knuth
 \noun default
 \lang hebrew
  במטרה להסתיר רבים מפרטי הדפוס.
- זה מה שרוב האנשים חושבים עליו כאשר הם חושבים על
-\lang hebrew
- 
+ זה מה שרוב האנשים חושבים עליו כאשר הם חושבים על 
 \lang english
 TeX
 \lang hebrew
 .
- משתמשים מן השורה לא משתמשים ב-
-\lang hebrew
- 
+ משתמשים מן השורה לא משתמשים ב- 
 \lang english
 TeX
 \lang hebrew
@@ -969,9 +954,7 @@ Lamport
  הוא רצה חבילת מאקרו שתהיה מותאמת יותר למשתמשים ולא לסדרי דפוס.
  אוסף של פקודות שידפיסו דברים כמו פרקים, טבלאות, ונוסחאות מתמטיות באופן
  אחיד ועקבי, בלי שיהיה צורך להתעסק בהן יותר מידי.
- כך נולדה
-\lang hebrew
- 
+ כך נולדה 
 \lang english
 LaTeX
 \lang hebrew
@@ -979,62 +962,44 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-באותה עת, במקביל להתפתחות של
-\lang hebrew
- 
+באותה עת, במקביל להתפתחות של 
 \lang english
 LaTeX
 \lang hebrew
-, אנשים אחרים החלו ליצור חבילות מאקרו משל עצמם ל-
-\lang hebrew
- 
+, אנשים אחרים החלו ליצור חבילות מאקרו משל עצמם ל- 
 \lang english
 TeX
 \lang hebrew
 , כדי ליצור מצגות או מאמרים לכתבי עט מתמטיים וכו'.
- חלק השתמשו ב-
-\lang hebrew
- 
+ חלק השתמשו ב- 
 \lang english
 TeX
 \lang hebrew
- גולמי כדי לעשות זאת ואחרים החלו לשנות את
-\lang hebrew
- 
+ גולמי כדי לעשות זאת ואחרים החלו לשנות את 
 \lang english
 LaTeX
 \lang hebrew
 .
- כדי לנסות ולעשות סדר בבלגן, קבוצה של אנשי
-\lang hebrew
- 
+ כדי לנסות ולעשות סדר בבלגן, קבוצה של אנשי 
 \lang english
 LaTeX
 \lang hebrew
- )וביניהם למפורט( החלו לעבוד בשלהי שנות השמונים על
-\lang hebrew
- 
+ )וביניהם למפורט( החלו לעבוד בשלהי שנות השמונים על 
 \lang english
 LaTeX2e
 \lang hebrew
- שהיא הגרסה העכשווית של
-\lang hebrew
- 
+ שהיא הגרסה העכשווית של 
 \lang english
 LaTeX
 \lang hebrew
 .
  גרסה חדשה זו מכילה פקודות שמספקות ממשק משתמש קל יותר לשימוש לפקודות יצירת
- המאקרו של טך , ומספקות סיוע בשימוש בגופנים חדשים וכו'.
- למעשה,
-\lang hebrew
- 
+ המאקרו של טך, ומספקות סיוע בשימוש בגופנים חדשים וכו'.
+ למעשה, 
 \lang english
 LaTeX
 \lang hebrew
  היא שפה נרחבת בזכות עצמה! משתמשים מרחבי העולם יוצרים את התוספים שלהם ל-
-
-\lang hebrew
  
 \lang english
 LaTeX
@@ -1043,9 +1008,7 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-ישנן שתי דרכים להרחיב את
-\lang hebrew
- 
+ישנן שתי דרכים להרחיב את 
 \lang english
 LaTeX
 \lang hebrew
@@ -1054,20 +1017,16 @@ LaTeX
 \emph on
 מחלקה
 \emph default
- היא מערכת של מאקרו-ים של
-\lang hebrew
- 
+ היא מערכת של מאקרו-ים של 
 \lang english
 LaTeX
 \lang hebrew
- )ושל
-\lang hebrew
- 
+ )ושל 
 \lang english
 TeX
 \lang hebrew
 (, המתארים סוג מסמך חדש, כמו ספר או מאמר.
- ישנן מחלקות עבור מצגות, כתבי עט פיסיקליים ומתמטיים\SpecialChar \ldots{}
+ ישנן מחלקות עבור מצגות, כתבי עת פיסיקליים ומתמטיים\SpecialChar \ldots{}
  לאוניברסיטאות רבות יש
  אפילו מחלקה מיוחדת לעבודות תזה! 
 \emph on
@@ -1078,16 +1037,12 @@ TeX
 התנהגות
 \emph default
  שכל מסמך יכול להשתמש בה.
- לדוגמא,
-\lang hebrew
- 
+ לדוגמא, 
 \lang english
 LyX
 \lang hebrew
  שולט בגודל שולי הדף והמרווח בין השורות על ידי שימוש בשני קבצי סגנון שונים
- של
-\lang hebrew
- 
+ של 
 \lang english
 LaTeX
 \lang hebrew
@@ -1136,9 +1091,7 @@ status collapsed
 \lang english
 LaTeX
 \lang hebrew
- חבילת מאקרו הבנויה על
-\lang hebrew
- 
+ חבילת מאקרו הבנויה על 
 \lang english
 TeX
 \lang hebrew
@@ -1147,9 +1100,7 @@ TeX
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-מחלקה תיאור של סוג מסמך חדש תוך שימוש ב-
-\lang hebrew
- 
+מחלקה תיאור של סוג מסמך חדש תוך שימוש ב- 
 \lang english
 LaTeX
 \lang hebrew
@@ -1158,9 +1109,7 @@ LaTeX
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-סגנון שינוי ההתנהגות הרגילה של
-\lang hebrew
- 
+סגנון שינוי ההתנהגות הרגילה של 
 \lang english
 LaTeX
 \lang hebrew
@@ -1182,10 +1131,7 @@ status collapsed
 \lang english
 LyX
 \lang hebrew
- 
-מעבד תמלילים גרפי מסוג הדפסתו-ככוונתו שמשתמש ב-
-\lang hebrew
- 
+ מעבד תמלילים גרפי מסוג הדפסתו-ככוונתו שמשתמש ב- 
 \lang english
 LaTeX
 \lang hebrew
@@ -1197,41 +1143,29 @@ LaTeX
 \emph on
 מדוע
 \emph default
-
-\lang hebrew
  
 \lang english
 LyX
 \lang hebrew
  עובד בצורה שונה ממעבדי תמלילים אחרים.
- הסיבה לכך פשוטה:
-\lang hebrew
- 
+ הסיבה לכך פשוטה: 
 \lang english
 LyX
 \lang hebrew
- משתמש ב-
-\lang hebrew
- 
+ משתמש ב- 
 \lang english
 LaTeX
 \lang hebrew
  כמנוע ההדפסה.
- בדיוק כמו
-\lang hebrew
- 
+ בדיוק כמו 
 \lang english
 LaTeX
 \lang hebrew
-,
-\lang hebrew
- 
+, 
 \lang english
 LyX
 \lang hebrew
- מתמקד על ההקשר של כתביך
-\lang hebrew
- 
+ מתמקד על ההקשר של כתביך 
 \lang english
 --
 \lang hebrew
@@ -1244,23 +1178,16 @@ LyX
 \end_layout
 
 \begin_layout Standard
-דבר אחד אחרון,
-\lang hebrew
- 
+דבר אחד אחרון, 
 \lang english
 TeX
 \lang hebrew
- מבוטא כ"טך" )האות טי"ת מנוקדת בסגול(, ולכן
-\lang hebrew
- 
+ מבוטא כ"טך" )האות טי"ת מנוקדת בסגול(, ולכן 
 \lang english
 LaTeX
 \lang hebrew
- 
-מבוטאת כ"לאטך" )האות למ"ד בקמץ, טי"ת בסגול(.
- אבל
-\lang hebrew
- 
+ מבוטאת כ"לאטך" )האות למ"ד בקמץ, טי"ת בסגול(.
+ אבל 
 \lang english
 LyX
 \lang hebrew
@@ -1272,22 +1199,18 @@ LyX
 \end_layout
 
 \begin_layout Standard
-כדי להקל על המשתמש למצוא תשובות לשאלותיו ולתאר את כל תכונותיו של
-\lang hebrew
- 
+כדי להקל על המשתמש למצוא תשובות לשאלותיו ולתאר את כל תכונותיו של 
 \lang english
 LyX
 \lang hebrew
 , התיעוד חולק למספר קבצים שונים.
- לכל אחד מהם מטרתה משלו, כפי שיתואר בהמשך.
+ לכל אחד מהם מטרה משלו, כפי שיתואר בהמשך.
  לפני שאתה הולך ו"חורש" אחד ממסמכי התיעוד רצוי שתקרא פרק זה היטב, כיוון
  שהוא מכיל מידע והערות רבות שיכולים לחסוך לך זמן בהמשך.
 \end_layout
 
 \begin_layout Standard
-אף על פי ש-
-\lang hebrew
- 
+אף על פי ש- 
 \lang english
 LyX
 \lang hebrew
@@ -1296,18 +1219,16 @@ LyX
 1.0
 \numeric off
  חלק מהתיעוד אינו שלם או קצת מיושן למרות שאנחנו מנסים לשמור על הקצב.
- כמו שאר חלקיו של
-\lang hebrew
- 
+ כמו שאר חלקיו של 
 \lang english
 LyX
 \lang hebrew
 , גם המדריכים הם פרי עבודתם של מתנדבים בעלי "עבודות אמיתיות", בעלי משפחות,
- כלים לשטוף אחרי הארוחה, כלבים שצריך להוציא לטיול וכו'.
+ כלים שצריך לשטוף אחרי הארוחה, כלבים שצריך להוציא לטיול וכו'.
  אם אתה מעוניין לעזור, קרא את פרק\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "cha:Contrib"
+reference "פרק:תרומה"
 
 \end_inset
 
@@ -1315,26 +1236,16 @@ reference "cha:Contrib"
 \end_layout
 
 \begin_layout Standard
-כמו כן, עשה לנו טובה
-\lang hebrew
- 
-\lang english
----
-\lang hebrew
- אם משהו בקבצי הדרכה מבלבל, לא ברור, או שגוי, אל תהסס ליידע אותנו על כך!
- ניתן להשיג את מתחזקי התיעוד הנוכחיים ע"י שליחת דוא"ל ל- 
+כמו כן, עשה לנו טובה -- אם משהו בקבצי הדרכה מבלבל, לא ברור, או שגוי, אל
+ תהסס ליידע אותנו על כך! ניתן להשיג את מתחזקי התיעוד הנוכחיים ע"י שליחת
+ דוא"ל ל- 
 \family typewriter
 \lang english
 lyx-docs@lists.lyx.org
 \family default
 \lang hebrew
 .
-
-\lang english
-
-\lang hebrew
- 
-אם יש לך שאלה שלא נמצאה לה תשובה ברורה בתיעוד ואתה צריך עזרה במהירות, ישנה
+ אם יש לך שאלה שלא נמצאה לה תשובה ברורה בתיעוד ואתה צריך עזרה במהירות, ישנה
  קבוצת דיוור פעילה של משתמשים בכתובת:
 \newline
  
@@ -1351,10 +1262,8 @@ lyx-users@lists.lyx.org
 \end_layout
 
 \begin_layout Standard
-ייתכן וחלקכם הדפיס את קובץ/י ההדרכה,ואילו אחרים יכולים לקרוא באופן מקוון,
- דרך ה-
-\lang hebrew
- 
+ייתכן וחלקכם הדפיס את קובץ/י ההדרכה, ואילו אחרים יכולים לקרוא באופן מקוון,
+ דרך ה- 
 \lang english
 LyX
 \lang hebrew
@@ -1388,44 +1297,42 @@ status collapsed
 במדריכים המודפסים, כל ההפניות מופיעות כמספרים אמיתיים השייכים לפרק, חלק,
  תת חלק וכו', אך על המחשב כל ההפניות מופיעות ככמלבן אפור כמו זה: 
 \begin_inset LatexCommand ref
-reference "cha:Contrib"
+reference "פרק:תרומה"
 
 \end_inset
 
  )בגרסא המודפסת מופיע במקום המלבן מספר(.
  אם תלחץ על המלבן עם הלחצן השמאלי של העכבר, תופיע תיבת דיאלוג המכילה רשימה
  של כל ההפניות במסמך.
- במבוא זה ישנה הפניה אחת בלבד ששמה "
-\lang english
-cha:Contirb
-\lang hebrew
-
-\begin_inset Quotes erd
-\end_inset
-
-.
+ במבוא זה ישנה הפניה אחת בלבד ששמה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+"פרק:תרומה".
  אתה יכול להגיע לחלק אליו מתייחסת ההפניה על ידי לחיצה על הלחצן "
 \family sans
-\lang english
-Go to Label
+לך לתווית
 \family default
-\lang hebrew
-
-\begin_inset Quotes erd
-\end_inset
-
- )"לך לתווית"(.
+".
  כדי לחזור למקום ממנו הגעת יש ללחוץ על "
 \family sans
-\lang english
-Go Back
+חזור"
 \family default
-\lang hebrew
-
-\begin_inset Quotes erd
-\end_inset
-
- )"חזור"( או לחלופין להקיש 
+ או לחלופין להקיש 
 \family sans
 \lang english
 C-<
@@ -1456,20 +1363,25 @@ C-<
 סגנון מודגש
 \emph default
  משמש להדגשה כללית, משתנים גנריים, שמות של ספרים, שמות של חלקים משאר המדריכים
- )שמות של ספרים ושל מדריכים בעברית יכתבו בטקסט רגיל המוקף מרכאות(, והערות
- מהמחברים והמתרגמים.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Itemize
+
+\emph on
+הערת המתרגם: 
+\emph default
+שמות של ספרים ושל מדריכים בעברית יכתבו כמקובל בטקסט רגיל המוקף מרכאות --
+ ר.ר.
+\end_layout
+
+\end_inset
+
+, והערות מהמחברים והמתרגמים.
 \end_layout
 
 \begin_layout Itemize
-שמות של תוכניות וקבצים, קוד
-\lang hebrew
- 
-\lang english
-LaTeX
-\lang hebrew
-, קוד
-\lang hebrew
- 
+שמות של תוכניות וקבצים, קוד 
 \lang english
 LyX
 \lang hebrew
@@ -1483,11 +1395,7 @@ LyX
 \begin_layout Itemize
 גופן
 \family sans
-\lang english
-
-\lang hebrew
- 
-נטול תגים
+ נטול תגים
 \family default
  משמש לציון תפריטים, לחצנים, תיבות דיאלוג ושמות לחצני מקלדת.
 \end_layout
@@ -1501,6 +1409,35 @@ Noun Style
  משמש לשמו
 \noun default
 ת של אנשים באנגלית.
+\end_layout
+
+\begin_layout Itemize
+גופן 
+\series bold
+מובלט
+\series default
+ משמש לציון קוד
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+LaTeX
+\lang hebrew
+.
 \end_layout
 
 \begin_layout Standard
@@ -1629,10 +1566,26 @@ Esc
 \begin_inset Quotes erd
 \end_inset
 
- מציין את מקש 
+ מציין את מקש
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ 
 \family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
 \lang english
-escape
+Escape
 \family default
 \lang hebrew
 .
@@ -1679,8 +1632,6 @@ Down
 \begin_inset Quotes erd
 \end_inset
 
-
-\lang hebrew
  
 \lang english
 --
@@ -1815,9 +1766,7 @@ Enter
 \end_inset
 
  מתייחסים לאותו מקש.
- בחלק מהמקלדות מופיע אחד מהם, או שניהם גם יחד, אך
-\lang hebrew
- 
+ בחלק מהמקלדות מופיע אחד מהם, או שניהם גם יחד, אך 
 \lang english
 LyX
 \lang hebrew
@@ -1825,30 +1774,18 @@ LyX
 \end_layout
 
 \begin_layout Standard
-מידי פעם בפעם תראה משהו בסגנון של ")ראה 'נוספות'(".
+מידי פעם תראה משהו בסגנון ")ראה 'נוספות'(".
  כל ברירות המחדל של מקשי הקיצור לאפשרות מסויימת נרשמו ב"מדריך התכונות הנוספות"
-
-\lang hebrew
- 
-\lang english
---
-\lang hebrew
- אז בדוק גם שם.
- שים לב שישנן שתי מערכות של מקשי קיצור בשימוש קהילת
-\lang hebrew
- 
+ -- אז בדוק גם שם.
+ שים לב שישנן שתי מערכות של מקשי קיצור בשימוש קהילת 
 \lang english
 LyX
 \lang hebrew
-: סגנון ה-
-\lang hebrew
- 
+: סגנון ה- 
 \lang english
 CUA
 \lang hebrew
- המוכר למשתמשי
-\lang hebrew
- 
+ המוכר למשתמשי 
 \lang english
 PC
 \lang hebrew
@@ -1861,20 +1798,717 @@ emacs
 \end_inset
 
  הנפוץ אצל משתמשי יוניקס.
- בכל מקרה ללא הודעה אחרת, מקשי הקיצור מתייחסים למערכת ה-
-\lang hebrew
- 
+ בכל מקרה ללא הודעה אחרת, מקשי הקיצור מתייחסים למערכת ה- 
 \lang english
 CUA
 \lang hebrew
 .
- אם אתה אוהב את
-\lang hebrew
- 
+ אם אתה אוהב את 
 \lang english
 emacs
 \lang hebrew
- אתה אמור להיות מספיק חכם כדי לקרוא את קבצי ההדרכה ולהבין לבד את מקשי הקיצור.
+ אתה אמור להיות מנוסה מספיק כדי לקרוא את קבצי ההדרכה ולהבין לבד את מקשי
+ הקיצור.
+\end_layout
+
+\begin_layout Section
+יחידות מדידה המופיעות במדריכים
+\end_layout
+
+\begin_layout Standard
+על מנת שתכירו את יחידות המדידה בהן משתמש
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+נעשה שימוש בתיעוד, טבלה\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "tab:יחידות-מדידה"
+
+\end_inset
+
+ מכילה את כל היחידות הזמינות ב-
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+LyX
+\lang hebrew
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement t
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+יחידות מדידה
+\begin_inset LatexCommand label
+name "tab:יחידות-מדידה"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang english
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+שם או תיאור
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+יחידה
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+מילימטר
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+mm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+סנטימטר
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+cm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+אינטש
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+in
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+נקודה/
+\lang english
+point
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+)
+\lang english
+28.45\InsetSpace ~
+pt=1\InsetSpace ~
+cm
+\lang hebrew
+(
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+pt
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+פיקה/
+\lang english
+pica
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+)
+\lang english
+1\InsetSpace ~
+pc = 12\InsetSpace ~
+pt
+\lang hebrew
+(
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+pc
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+נקודה קטנה/
+\lang english
+scaled point
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang hebrew
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+)
+\lang english
+65536\InsetSpace ~
+sp = 1\InsetSpace ~
+pt
+\lang hebrew
+(
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+sp
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+bp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+big point (72
+\begin_inset Formula $\,$
+\end_inset
+
+bp = 1
+\begin_inset Formula $\,$
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+dd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+didot (72
+\begin_inset Formula $\,$
+\end_inset
+
+dd 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 37.6
+\begin_inset Formula $\,$
+\end_inset
+
+mm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+cc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+cicero (1
+\begin_inset Formula $\,$
+\end_inset
+
+cc = 12
+\begin_inset Formula $\,$
+\end_inset
+
+dd)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+Scale%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+% of original image width
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+text%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+% of text width
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+col%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+% of column width
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+page%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+% of paper width
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+line%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+% of line width
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+theight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+% of text height
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+pheight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+% of paper height
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+ex
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+height of letter 
+\emph on
+x
+\emph default
+ in current font
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+width of letter 
+\emph on
+M
+\emph default
+ in current font
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+mu
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+math unit (1
+\begin_inset Formula $\,$
+\end_inset
+
+mu = 1/18
+\begin_inset Formula $\,$
+\end_inset
+
+em)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1887,20 +2521,8 @@ emacs
 status collapsed
 
 \begin_layout Standard
-חלק מן הקבצים תורגם כבר לעברית.
- הם מופיעים בתיקייה 
-\family typewriter
-\lang english
-LyX14/Resources/doc/
-\family default
-\lang hebrew
- כאשר לכל קובץ בעברית יש קידומת
-\lang hebrew
- 
-\lang english
-he
-\lang hebrew
- לשם.
+עדיין לא כל הקבצים תורגמו, סבלנות\SpecialChar \ldots{}
+
 \end_layout
 
 \end_inset
@@ -1934,22 +2556,16 @@ Tutorial
 ( \InsetSpace ~
 
 \newline
-אם אתה חדש ל-
-\lang hebrew
- 
+אם אתה חדש ל- 
 \lang english
 LyX
 \lang hebrew
-, ואף פעם לא השתמשת ב-
-\lang hebrew
- 
+, ואף פעם לא השתמשת ב- 
 \lang english
 LaTeX
 \lang hebrew
 , אתה צריך להתחיל כאן.
- אם עדיין אין לך שמץ של מושג מה זה
-\lang hebrew
- 
+ אם עדיין אין לך שמץ של מושג מה זה 
 \lang english
 LaTeX
 \lang hebrew
@@ -1958,15 +2574,11 @@ LaTeX
 1
 \numeric off
 , ואז קרא את "השיעור המודרך".
- שים לב שאחרי שתקרא את "השיעור המודרך", ייתכן שעדיין תחשוב ש-
-\lang hebrew
- 
+ שים לב שאחרי שתקרא את "השיעור המודרך", ייתכן שעדיין תחשוב ש- 
 \lang english
 LaTeX
 \lang hebrew
- זה חומר גמיש, אבל לפחות תדע להשתמש ב-
-\lang hebrew
- 
+ זה חומר גמיש, אבל לפחות תדע להשתמש ב- 
 \lang english
 LyX
 \lang hebrew
@@ -1976,9 +2588,7 @@ LyX
 \emph on
 כבר
 \emph default
- השתמשת בעבר ב-
-\lang hebrew
- 
+ השתמשת בעבר ב- 
 \lang english
 LaTeX
 \lang hebrew
@@ -1986,18 +2596,14 @@ LaTeX
 \lang english
 LyX
 \lang hebrew
- למשתמשי
-\lang hebrew
- 
+ למשתמשי 
 \lang english
 LaTeX
 \lang hebrew
 " )לקרוא ברפרוף את שאר המסמך בוודאי לא יזיק(.
 \newline
 אם באיזשהו שלב תרגיש קצת "אבוד"
- בנוגע ל-
-\lang hebrew
- 
+ בנוגע ל- 
 \lang english
 LyX
 \lang hebrew
@@ -2029,9 +2635,7 @@ User's
 \emph on
 רוב
 \emph default
- הפעולות הבסיסיות והתכונות המוצעות ב-
-\lang hebrew
- 
+ הפעולות הבסיסיות והתכונות המוצעות ב- 
 \lang english
 LyX
 \lang hebrew
@@ -2051,16 +2655,12 @@ Features
 
 \newline
 הרחבה של "המדריך למשתמש".
- פה יש תיעוד של פקודות
-\lang hebrew
- 
+ פה יש תיעוד של פקודות 
 \lang english
 LaTeX
 \lang hebrew
  גולמיות, מחלקות נוספות, ואפשרויות עריכה מיוחדות.
- כמו כן, הוא מכיל חלק מה"טריקים" )קצת מוזרים, אבל מגניבים(, של אמני ה-
-\lang hebrew
- 
+ כמו כן, הוא מכיל חלק מה"טריקים" )קצת מוזרים, אבל מגניבים(, של אמני ה- 
 \lang english
 LaTeX
 \lang hebrew
@@ -2086,15 +2686,11 @@ Customization
 \newline
 
 \series default
- תיאור של תכונות מתקדמות ב-
-\lang hebrew
- 
+ תיאור של תכונות מתקדמות ב- 
 \lang english
 LyX
 \lang hebrew
-, כולל התאמה אישית של ההתנהגות של
-\lang hebrew
- 
+, כולל התאמה אישית של ההתנהגות של 
 \lang english
 LyX
 \lang hebrew
@@ -2141,9 +2737,7 @@ status collapsed
 LyX
 \lang hebrew
  בוחן את המחשב שלך בזמן ההתקנה.
- קובץ זה מכיל את מה ש-
-\lang hebrew
- 
+ קובץ זה מכיל את מה ש- 
 \lang english
 LyX
 \lang hebrew
@@ -2153,9 +2747,7 @@ LyX
 
 \begin_layout Standard
 מסמכים אלו יפנו אחד אל השני במידת הצורך.
- לדוגמא, "המדריך למשתמש" מכיל קצת מידע על ההתקנה והתאמה של
-\lang hebrew
- 
+ לדוגמא, "המדריך למשתמש" מכיל קצת מידע על ההתקנה והתאמה של 
 \lang english
 LyX
 \lang hebrew
@@ -2176,9 +2768,7 @@ LyX
 \begin_layout Standard
 
 \hfill
-אם אתה חדש ל-
-\lang hebrew
- 
+אם אתה חדש ל- 
 \lang english
 LyX
 \lang hebrew
@@ -2196,8 +2786,6 @@ LyX
 
 \begin_layout Standard
 אחרת, סתם תייגע את עצמך.
-
-\lang hebrew
  
 \lang english
 LyX
@@ -2207,21 +2795,17 @@ LyX
 
 \begin_layout Chapter
 \begin_inset LatexCommand label
-name "cha:Contrib"
+name "פרק:תרומה"
 
 \end_inset
 
-תרומה לפרוייקט
-\lang hebrew
- 
+תרומה לפרוייקט 
 \lang english
 LyX
 \end_layout
 
 \begin_layout Section
-תרומה ל-
-\lang hebrew
- 
+תרומה ל- 
 \lang english
 LyX
 \end_layout
@@ -2240,9 +2824,7 @@ status collapsed
 \lang english
 LyX
 \lang hebrew
- כתוב ברובו ב-
-\lang hebrew
- 
+ כתוב ברובו ב- 
 \lang english
 C++
 \lang hebrew
@@ -2256,9 +2838,7 @@ C++
 \end_layout
 
 \begin_layout Standard
-תוך כדי השימוש ב-
-\lang hebrew
- 
+תוך כדי השימוש ב- 
 \lang english
 LyX
 \lang hebrew
@@ -2269,9 +2849,7 @@ LyX
 \end_layout
 
 \begin_layout Standard
-ל-
-\lang hebrew
- 
+ל- 
 \lang english
 LyX
 \lang hebrew
@@ -2292,9 +2870,7 @@ target "lyx-devel@lists.lyx.org"
 \end_inset
 
 .
- קישור לארכיון ההודעות נמצא באתר הראשי של
-\lang hebrew
- 
+ קישור לארכיון ההודעות נמצא באתר הראשי של 
 \lang english
 LyX
 \lang hebrew
@@ -2309,9 +2885,7 @@ target "http://www.lyx.org"
 
 \begin_layout Standard
 דיווח טוב )שימושי( על תקלה יכיל לכל הפחות את הגרסה של ליקס בה נתגלתה הבעיה.
- תיאורים מדוייקים ומפורטים עדיפים
-\lang hebrew
- 
+ תיאורים מדוייקים ומפורטים עדיפים 
 \lang english
 --
 \lang hebrew
@@ -2319,9 +2893,7 @@ target "http://www.lyx.org"
  זמן לשיפורים אחרים.
  ציין את מערכת ההפעלה ואת גרסתה.
  מסור את הגרסאות של הספריות השונות המותקנות על המחשב ובמידת הצורך את הגרסאות
- של תוכנות חיצוניות בשימושו של
-\lang hebrew
- 
+ של תוכנות חיצוניות בשימושו של 
 \lang english
 LyX
 \lang hebrew
@@ -2336,59 +2908,41 @@ config.log
 \end_layout
 
 \begin_layout Standard
-אם הצלחת לגרום ל-
-\lang hebrew
- 
+אם הצלחת לגרום ל- 
 \lang english
 LyX
 \lang hebrew
- לקרוס, אנא טרח ליצר
-\lang hebrew
- 
+ לקרוס, אנא טרח ליצר 
 \lang english
 backtrace
 \lang hebrew
- בעזרת גרסת
-\lang hebrew
- 
+ בעזרת גרסת 
 \lang english
 LyX
 \lang hebrew
- שאינה
-\lang hebrew
- 
+ שאינה 
 \lang english
 stripped
 \lang hebrew
 .
- כברירת מחדל, קובץ ה-
-\lang hebrew
- 
+ כברירת מחדל, קובץ ה- 
 \lang english
 LyX
 \lang hebrew
- בתיקיית המקור מכיל מידע ל-
-\lang hebrew
- 
+ בתיקיית המקור מכיל מידע ל- 
 \lang english
 debugging
 \lang hebrew
-, בעוד הגרסה המותקנת היא
-\lang hebrew
- 
+, בעוד הגרסה המותקנת היא 
 \lang english
 stripped
 \lang hebrew
 , כלומר אינה כוללת מידע זה.
- לפיכך, הרץ את
-\lang hebrew
- 
+ לפיכך, הרץ את 
 \lang english
 LyX
 \lang hebrew
- מתוך
-\lang hebrew
- 
+ מתוך 
 \lang english
 gdb
 \lang hebrew
@@ -2406,9 +2960,7 @@ run
 \family default
 \lang hebrew
 .
- גרום ל-
-\lang hebrew
- 
+ גרום ל- 
 \lang english
 LyX
 \lang hebrew
@@ -2425,9 +2977,7 @@ gdb
 bt
 \family default
 \lang hebrew
- תייצר
-\lang hebrew
- 
+ תייצר 
 \lang english
 backtrace
 \lang hebrew
@@ -2455,22 +3005,16 @@ up
 \end_inset
 
 .
- במידת האפשר, תיאור של איך ניתן לגרום לתקלה עדיף על פני
-\lang hebrew
- 
+ במידת האפשר, תיאור של איך ניתן לגרום לתקלה עדיף על פני 
 \lang english
 backtrace
 \lang hebrew
- מפני שהוא יאפשר לנו ליצור את ה-
-\lang hebrew
- 
+ מפני שהוא יאפשר לנו ליצור את ה- 
 \lang english
 backtrace
 \lang hebrew
  בעצמנו.
- אם קשה לשחזר את התקלה, ה-
-\lang hebrew
- 
+ אם קשה לשחזר את התקלה, ה- 
 \lang english
 backtrace
 \lang hebrew
@@ -2482,21 +3026,15 @@ backtrace
 \end_layout
 
 \begin_layout Standard
-אם ביצעת שינויים לקוד המקור של
-\lang hebrew
- 
+אם ביצעת שינויים לקוד המקור של 
 \lang english
 LyX
 \lang hebrew
- ואתה חושב שהם צריכים להפוך לחלק בלתי נפרד מ-
-\lang hebrew
- 
+ ואתה חושב שהם צריכים להפוך לחלק בלתי נפרד מ- 
 \lang english
 LyX
 \lang hebrew
-, שלח את שינוייך בתור קובץ
-\lang hebrew
- 
+, שלח את שינוייך בתור קובץ 
 \lang english
 diff
 \lang hebrew
@@ -2517,15 +3055,11 @@ patch
 \end_layout
 
 \begin_layout Standard
-התיעוד של
-\lang hebrew
- 
+התיעוד של 
 \lang english
 LyX
 \lang hebrew
- הוא נרחב; אף על פי כן,
-\lang hebrew
- 
+ הוא נרחב; אף על פי כן, 
 \lang english
 LyX
 \lang hebrew
@@ -2555,15 +3089,11 @@ target "lyx-docs@lists.lyx.org"
 \end_layout
 
 \begin_layout Standard
-פרוייקט התיעוד של
-\lang hebrew
- 
+פרוייקט התיעוד של 
 \lang english
 LyX
 \lang hebrew
-, כמו כל דבר אחר בפרוייקט
-\lang hebrew
- 
+, כמו כל דבר אחר בפרוייקט 
 \lang english
 LyX
 \lang hebrew
@@ -2578,20 +3108,15 @@ LyX
 status collapsed
 
 \begin_layout Standard
-ניתן להשיג את התיעוד הכי עדכני ממאגר ה-
-\lang hebrew
- 
+ניתן להשיג את התיעוד הכי עדכני ממאגר ה- 
 \lang english
 CVS
 \lang hebrew
- של ליקס באופן אנונימי
-\lang hebrew
- 
+ של ליקס באופן אנונימי 
 \lang english
 --
 \lang hebrew
- 
-התיעוד נמצא במודול ה- 
+ התיעוד נמצא במודול ה- 
 \family typewriter
 \lang english
 lyxdoc
