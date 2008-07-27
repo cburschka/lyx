@@ -83,9 +83,6 @@
 \usepackage{multirow}
 \usepackage{multicol}
 
-% needed for diagrams
-\usepackage{amscd}
-
 % needed in sec. 19.4
 \usepackage{remreset}
 
@@ -31579,48 +31576,8 @@ Diagrams ! amscd
 \end_layout
 
 \begin_layout Standard
-To create this type of diagrams, the LaTeX-package 
-\series bold
-amscd
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-amscd
-\series default
- is part of every LaTeX standard installation.
-\end_layout
-
-\end_inset
-
-
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Packages ! amscd
-\end_layout
-
-\end_inset
-
- is needed.
- It is loaded in the LaTeX-preamble with the line
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-usepackage{amscd}
-\end_layout
-
-\begin_layout Standard
-Diagrams visualize relations and look like this:
+Diagrams of this type visualize relations by vertical and horizontal lines
+ or arrows:
 \begin_inset Formula \[
 \begin{CD}A@>>>B@>>>C\\
 @AAA@.@VVV\\
@@ -31900,8 +31857,10 @@ reference "sec:Matrices"
 \end_layout
 
 \begin_layout Standard
-xymatrix offers many possibilities to create commutative diagrams and decoration
-s that are explained in detail in this manual: 
+In contrary to amscd diagrams, xymatrices supports diagonal and curved arrows,
+ and much more.
+ All possibilities to create commutative diagrams and decorations are explained
+ in detail in this manual: 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://wiki.lyx.org/LyX/XY-pic#xy-manual"
