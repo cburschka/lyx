@@ -115,7 +115,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 338; //Uwe: support for polytonic Greek
+int const LYX_FORMAT = 339; //rgh: removed modules
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
@@ -471,6 +471,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().fontsCJK.erase();
 	params().listings_params.clear();
 	params().clearLayoutModules();
+	params().clearRemovedModules();
 	params().pdfoptions().clear();
 	
 	for (int i = 0; i < 4; ++i) {

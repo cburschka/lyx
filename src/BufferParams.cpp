@@ -487,6 +487,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		readLocalLayout(lex);
 	} else if (token == "\\begin_modules") {
 		readModules(lex);
+	} else if (token == "\\begin_removed_modules") {
+		readRemovedModules(lex);
 	} else if (token == "\\options") {
 		lex.eatLine();
 		options = lex.getString();
@@ -692,15 +694,26 @@ void BufferParams::writeFile(ostream & os) const
 		os << "\\master " << master << '\n';
 	}
 	
-	//the modules
+	// removed modules
+	if (!removedModules_.empty()) {
+		os << "\\begin_removed_modules" << '\n';
+		set<string>::const_iterator it = removedModules_.begin();
+		set<string>::const_iterator en = removedModules_.end();
+		for (; it != en; it++)
+			os << *it << '\n';
+		os << "\\end_removed_modules" << '\n';
+	}
+
+	// the modules
 	if (!layoutModules_.empty()) {
 		os << "\\begin_modules" << '\n';
 		LayoutModuleList::const_iterator it = layoutModules_.begin();
-		for (; it != layoutModules_.end(); it++)
+		LayoutModuleList::const_iterator en = layoutModules_.end();
+		for (; it != en; it++)
 			os << *it << '\n';
 		os << "\\end_modules" << '\n';
 	}
-
+	
 	// local layout information
 	if (!local_layout.empty()) {
 		// remove '\n' from the end 
@@ -1445,32 +1458,43 @@ bool BufferParams::setBaseClass(string const & classname)
 	set<string>::const_iterator men = mods.end();
 	for (; mit != men; mit++) {
 		string const & modName = *mit;
-		LayoutModuleList::const_iterator const fit = 
-				find(layoutModules_.begin(), layoutModules_.end(), modName);
-		if (fit == layoutModules_.end()) {
-			// We need to make sure there's no module chosen that excludes this one
-			LayoutModuleList::const_iterator lit = layoutModules_.begin();
-			LayoutModuleList::const_iterator len = layoutModules_.end();
-			bool foundit = false;
-			// so iterate over the selected modules...
-			for (; lit != len; lit++) {
-				LyXModule * lm = moduleList[*lit];
-				if (!lm)
-					continue;
-				vector<string> const & exc = lm->getExcludedModules();
-				// ...and see if one of them excludes us.
-				if (find(exc.begin(), exc.end(), modName) != exc.end()) {
-					foundit = true;
-					LYXERR(Debug::TCLASS, "Default module `" << modName << 
-							"' not added because excluded by loaded module `" << 
-							*lit << "'.");
-					break;
-				}
+		// see if we're already in use
+		if (find(layoutModules_.begin(), layoutModules_.end(), modName) != 
+		    layoutModules_.end()) {
+			LYXERR(Debug::TCLASS, "Default module `" << modName << 
+					"' not added because already used.");
+			continue;
+		}
+		// make sure the user hasn't removed it
+		if (find(removedModules_.begin(), removedModules_.end(), modName) != 
+		    removedModules_.end()) {
+			LYXERR(Debug::TCLASS, "Default module `" << modName << 
+					"' not added because removed by user.");
+			continue;
+		}
+		// Now we want to check the list of selected modules to see if any of them
+		// exclude this one.
+		bool foundit = false;
+		// so iterate over the selected modules...
+		LayoutModuleList::const_iterator lit = layoutModules_.begin();
+		LayoutModuleList::const_iterator len = layoutModules_.end();
+		for (; lit != len; lit++) {
+			LyXModule * lm = moduleList[*lit];
+			if (!lm)
+				continue;
+			vector<string> const & exc = lm->getExcludedModules();
+			// ...and see if this one excludes us.
+			if (find(exc.begin(), exc.end(), modName) != exc.end()) {
+				foundit = true;
+				LYXERR(Debug::TCLASS, "Default module `" << modName << 
+						"' not added because excluded by loaded module `" << 
+						*lit << "'.");
+				break;
 			}
-			if (!foundit) {
-				LYXERR(Debug::TCLASS, "Default module `" << modName << "' added.");
-				layoutModules_.push_back(modName);
-			}
+		}
+		if (!foundit) {
+			LYXERR(Debug::TCLASS, "Default module `" << modName << "' added.");
+			layoutModules_.push_back(modName);
 		}
 	}
 	return true;
@@ -1541,13 +1565,6 @@ void BufferParams::makeDocumentClass()
 }
 
 
-vector<string> const & BufferParams::getModules() const 
-{
-	return layoutModules_;
-}
-
-
-
 bool BufferParams::addLayoutModule(string const & modName) 
 {
 	LayoutModuleList::const_iterator it = layoutModules_.begin();
@@ -1557,12 +1574,6 @@ bool BufferParams::addLayoutModule(string const & modName)
 			return false;
 	layoutModules_.push_back(modName);
 	return true;
-}
-
-
-void BufferParams::clearLayoutModules() 
-{
-	layoutModules_.clear();
 }
 
 
@@ -1689,6 +1700,37 @@ void BufferParams::readModules(Lexer & lex)
 			break;
 		addLayoutModule(mod);
 		lex.eatLine();
+	}
+}
+
+
+void BufferParams::readRemovedModules(Lexer & lex)
+{
+	if (!lex.eatLine()) {
+		lyxerr << "Error (BufferParams::readRemovedModules):"
+				"Unexpected end of input." << endl;
+		return;
+	}
+	while (true) {
+		string mod = lex.getString();
+		if (mod == "\\end_removed_modules")
+			break;
+		removedModules_.insert(mod);
+		lex.eatLine();
+	}
+	// now we want to remove any removed modules that were previously 
+	// added. normally, that will be because default modules were added in 
+	// setBaseClass(), which gets called when \textclass is read at the 
+	// start of the read.
+	set<string>::const_iterator rit = removedModules_.begin();
+	set<string>::const_iterator const ren = removedModules_.end();
+	for (; rit != ren; rit++) {
+		LayoutModuleList::iterator const mit = layoutModules_.begin();
+		LayoutModuleList::iterator const men = layoutModules_.end();
+		LayoutModuleList::iterator found = find(mit, men, *rit);
+		if (found == men)
+			continue;
+		layoutModules_.erase(found);
 	}
 }
 

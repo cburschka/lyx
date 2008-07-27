@@ -1565,6 +1565,27 @@ void GuiDocument::apply(BufferParams & params)
 	vector<string> selModList;
 	for (int i = 0; i < srows; ++i)
 		params.addLayoutModule(modules_sel_model_.getIDString(i));
+	// update the list of removed modules
+	params.clearRemovedModules();
+	set<string> const & reqmods = params.baseClass()->defaultModules();
+	set<string>::const_iterator rit = reqmods.begin();
+	set<string>::const_iterator ren = reqmods.end();
+	// check each of the required modules
+	for (; rit != ren; rit++) {
+		vector<string>::const_iterator mit = params.getModules().begin();
+		vector<string>::const_iterator men = params.getModules().end();
+		bool found = false;
+		for (; mit != men; mit++) {
+			if (*rit == *mit) {
+				found = true;
+				break;
+			}
+		}
+		if (!found) {
+			// the module isn't present so must have been removed by the user
+			params.addRemovedModule(*rit);
+		}
+	}
 
 	if (mathsModule->amsautoCB->isChecked()) {
 		params.use_amsmath = BufferParams::package_auto;

@@ -23,6 +23,7 @@
 
 #include "support/copied_ptr.h"
 
+#include <set>
 #include <vector>
 
 namespace lyx {
@@ -51,6 +52,8 @@ class VSpace;
  */
 class BufferParams {
 public:
+	///
+	typedef std::vector<std::string> LayoutModuleList;
 	///
 	enum ParagraphSeparation {
 		///
@@ -124,7 +127,11 @@ public:
 	/// but it seems to be needed by CutAndPaste::putClipboard().
 	void setDocumentClass(DocumentClass const * const);
 	/// List of modules in use
-	std::vector<std::string> const & getModules() const;
+	LayoutModuleList const & getModules() const { return layoutModules_; }
+	/// List of default modules the user has removed
+	std::set<std::string> const & getRemovedModules() const 
+			{ return removedModules_; }
+	///
 	/// Add a module to the list of modules in use.
 	/// Returns true if module was successfully added.
 	/// The makeClass variable signals whether to call makeDocumentClass. This
@@ -132,8 +139,13 @@ public:
 	/// the BufferParams do not represent the parameters for an actual buffer
 	/// (as in GuiDocument).
 	bool addLayoutModule(std::string const & modName);
+	///
+	void addRemovedModule(std::string const & modName) 
+			{ removedModules_.insert(modName); }
 	/// Clear the list
-	void clearLayoutModules();
+	void clearLayoutModules() { layoutModules_.clear(); }
+	/// Clear the removed module list
+	void clearRemovedModules() { removedModules_.clear(); }
 
 	/// returns the main font for the buffer (document)
 	Font const getFont() const;
@@ -327,15 +339,18 @@ private:
 	void readBulletsLaTeX(Lexer &);
 	///
 	void readModules(Lexer &);
+	///
+	void readRemovedModules(Lexer &);
 
 	/// for use with natbib
 	CiteEngine cite_engine_;
 	///
 	DocumentClass * doc_class_;
-	///
-	typedef std::vector<std::string> LayoutModuleList;
 	/// 
 	LayoutModuleList layoutModules_;
+	/// this is for modules that are required by the document class but that
+	/// the user has chosen not to use
+	std::set<std::string> removedModules_;
 
 	/** Use the Pimpl idiom to hide those member variables that would otherwise
 	 *  drag in other header files.
