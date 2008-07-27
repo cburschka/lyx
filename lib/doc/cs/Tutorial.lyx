@@ -1,5 +1,5 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 338
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -35,8 +37,6 @@
 \output_changes false
 \author "" 
 \author "" 
-\author "" 
-\author "" 
 \end_header
 
 \begin_body
@@ -50,7 +50,8 @@ napsal Amir Karger a LyX Team
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -69,7 +70,7 @@ Vítejte v LyXu!
 Tento soubor je určen všem, kteří dopusud neslyšeli o LaTeXu či jej dobře
  neznají.
  Ale teď není třeba panikařit - pro používání LyXu se nemusíte učit LaTeX.
- To je, konec konců, celý vtip LyXu: vytvořit WYSIWYG rozhraní pro LaTeX.
+ To je, konec konců, celý vtip LyXu: vytvořit WYSIWYM rozhraní pro LaTeX.
  Na druhé straně je třeba říci, že se něco naučit musíte, abyste mohli používat
  LyX efektivně.
 \end_layout
@@ -164,7 +165,7 @@ Průvodce
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 nebo optimističtěji 
 \begin_inset Quotes eld
 \end_inset
@@ -184,7 +185,8 @@ schopnosti
 Průvodce
 \emph default
 , určitě si prohlédněte sekci 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:latexusers"
 
 \end_inset
@@ -194,7 +196,8 @@ reference "sec:latexusers"
 
 \begin_layout Standard
 Sekce 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:what-is-lyx"
 
 \end_inset
@@ -287,7 +290,8 @@ Není nutný.
 No a teď je čas trochu pokročit.
  Můžete si projít malou exkurzí v následující sekci nebo použít odkaz na
  sekci 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:first-doc-ex"
 
 \end_inset
@@ -297,7 +301,8 @@ reference "sec:first-doc-ex"
 
 \begin_layout Section
 Co je LyX?
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:what-is-lyx"
 
 \end_inset
@@ -342,7 +347,7 @@ A právě tady se LyX liší od běžných textových procesorů.
 \emph on
 co píšete
 \emph default
- a LyX se stará o zbytek, poslušen souboru pravidel, zvaným 
+ a LyX se stará o zbytek, poslušen souboru pravidel, zvaných 
 \emph on
 styl
 \emph default
@@ -371,7 +376,7 @@ Předpokládejme, že píšete zprávu.
 \end_layout
 
 \begin_layout Standard
-V LyXu, otevřete nabídku vlevo, vyberete 
+V LyXu, otevřete nabídku vlevo nahoře, vyberete 
 \family sans
 Sekci
 \family default
@@ -432,7 +437,7 @@ what you see is what you get,
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 co vidíš to dostaneš
 \end_layout
 
@@ -454,7 +459,7 @@ mean
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 vidíš to, co jsi myslel
 \end_layout
 
@@ -468,7 +473,7 @@ Rozdíly mezi LyXem a jinými textovými procesory
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Ne, my nechceme začít (nebo vyhrát) svatou válku o textové procesory.
  Ale domníváme se, že je důležité popsat možnosti a vlastnosti LyXu.
  A jedna z jeho vlastností, WYSIWYM, je od základů jiný koncept než zná
@@ -558,7 +563,7 @@ Ačkoli tyto parametry lze v LyXu nastavit, ve skutečnosti je nepotřebujete.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Jsou zde cesty jak tyto hodnoty nastavit (zde je třeba mít menší znalost
  LaTeXu), a to jak pro celý dokument, tak i pro jeho specifickou část.
  Viz 
@@ -602,7 +607,7 @@ Je pravda, že mnoho moderních textových procesorů umožňuje pracovat s mate
  WYSIWYM.
  Na druhé straně tyto výhody jsou zde zapracovány poměrně nedávno, zatímco
  LyX je postaven nad systémem pro přípravu dokumentů LaTeX.
- LaTeX již existuje více než deset let a 
+ LaTeX již existuje více než dvacet let a 
 \emph on
 funguje
 \emph default
@@ -611,7 +616,7 @@ funguje
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 OK, víme, že vše není perfektní, ale LaTeX má jen tak málo chyb, kolik jen
  počítačový program může mít.
 \end_layout
@@ -635,7 +640,7 @@ LaTeX je systém pro přípravu dokumentů navržený Leslie Lamportem v roce
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Zdroj této informace pochází ze sekce 
 \begin_inset Quotes eld
 \end_inset
@@ -824,7 +829,7 @@ lej tech.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 nebo 
 \begin_inset Quotes gld
 \end_inset
@@ -851,7 +856,8 @@ Váš první dokument v LyXu
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:first-doc-ex"
 
 \end_inset
@@ -896,7 +902,7 @@ N
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Toto také dává pěknou ukázku jak používat LyX.
 \end_layout
 
@@ -983,9 +989,27 @@ Jedno varování: Protože je tento průvodce z pochopitelných důvod otevřen
 \end_layout
 
 \begin_layout Standard
-Pokud bude většina vašich textů psaná česky, nastavte si Nástroje -> Nastavení
- -> Jazyk -> Standardní\InsetSpace ~
-jazyk na 
+Pokud bude většina vašich textů psaná česky, nastavte si 
+\family typewriter
+Nástroje
+\family default
+ -> 
+\family typewriter
+Nastavení
+\family default
+ -> 
+\family typewriter
+Jazyk
+\family default
+ -> 
+\family typewriter
+Standardní
+\begin_inset space ~
+\end_inset
+
+jazyk
+\family default
+ na 
 \begin_inset Quotes gld
 \end_inset
 
@@ -997,7 +1021,19 @@ jazyk na
 \end_layout
 
 \begin_layout Standard
-Jazyk aktuálního dokumentu pak změníte pomocí Dokument -> Nastavení -> Jazyk.
+Jazyk aktuálního dokumentu pak změníte pomocí 
+\family typewriter
+Dokument
+\family default
+ -> 
+\family typewriter
+Nastavení
+\family default
+ -> 
+\family typewriter
+Jazyk
+\family default
+.
  Pro češtinu pak zaškrtněte standardní kódování (nechcete-li jinak, samozřejmě).
 \end_layout
 
@@ -1007,7 +1043,7 @@ Pokud se vám nezobrazují správně české háčky a čárky nebo je dokonce n
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Pokud toto není příčina, zkuste nastavit jiné fonty na obrazovce, viz Nástroje
  -> Nastavení.
 \end_layout
@@ -1015,6 +1051,171 @@ Pokud toto není příčina, zkuste nastavit jiné fonty na obrazovce, viz Nást
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Nezapomeňte hned zpočátku také nastavit typ používaných uvozovek.
+\end_layout
+
+\begin_layout Subsubsection
+Vlna
+\end_layout
+
+\begin_layout Standard
+Program vlna automaticky přidává chráněné mezery za neslabičné předložky
+ v souborech pro (La)TeX, což zabraňuje zlomu řádku v nežádoucích místech.
+ Pokud chcete tento program využívat, lze tuto konverzi automatizovat pomocí
+ vestavěného mechanismu konvertorů.
+ Samotný program je součástí nových distribucí TeX Live, nebo ho lze samostatně
+ stáhnout na internetu.
+\end_layout
+
+\begin_layout Standard
+Následující příklad upravte podle vlastních potřeb:
+\end_layout
+
+\begin_layout Enumerate
+Zadefinujte nový formát: 
+\family typewriter
+Nástroje
+\family default
+ -> 
+\family typewriter
+Nastavení
+\family default
+ -> 
+\family typewriter
+Formáty
+\begin_inset space ~
+\end_inset
+
+souborů
+\family default
+: 
+\family typewriter
+Formát
+\family default
+: 
+\begin_inset Quotes gld
+\end_inset
+
+PDF (vlna,pdflatex)
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\family typewriter
+Zkratka
+\family default
+: 
+\begin_inset Quotes gld
+\end_inset
+
+vlnapdf
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\family typewriter
+Přípona
+\family default
+: 
+\begin_inset Quotes gld
+\end_inset
+
+pdf
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\family typewriter
+Prohlížeč
+\family default
+: 
+\begin_inset Quotes gld
+\end_inset
+
+acroread
+\begin_inset Quotes grd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Zadefinujte nový konvertor: 
+\family typewriter
+Konvertory
+\family default
+: 
+\family typewriter
+Z
+\begin_inset space ~
+\end_inset
+
+formátu
+\family default
+: 
+\begin_inset Quotes gld
+\end_inset
+
+LaTeX (pdflatex)
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\family typewriter
+Do
+\begin_inset space ~
+\end_inset
+
+formátu
+\family default
+: 
+\begin_inset Quotes gld
+\end_inset
+
+PDF (vlna,pdflatex)
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\family typewriter
+Konvertor
+\family default
+: 
+\begin_inset Quotes gld
+\end_inset
+
+vlna -s -l $$i; pdflatex $$i
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\family typewriter
+Příznak navíc
+\family default
+: 
+\begin_inset Quotes gld
+\end_inset
+
+latex
+\begin_inset Quotes grd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Proběhlo-li vše bez chyb, v menu 
+\family typewriter
+Prohlížet
+\family default
+ by se měla objevit nová položka 
+\family typewriter
+PDF (vlna,pdflatex)
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -1041,7 +1242,7 @@ Toto je můj první dokument v LyXu!
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Dobře.
  V skutečnosti můžete napsat cokoli chcete.
  Na tom opravdu nezáleží.
@@ -1061,7 +1262,10 @@ Uložte váš dokument příkazem
 \bar under
 S
 \bar default
-oubor->Uložit\InsetSpace ~
+oubor->Uložit
+\begin_inset space ~
+\end_inset
+
 jako\SpecialChar \@.
 
 \end_layout
@@ -1093,7 +1297,7 @@ dvi
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Můžete ušetřit čas spuštěním příkazu 
 \family typewriter
 xdvi
@@ -1158,7 +1362,7 @@ LyX samozřejmě zvládá většinu věcí, které jste zvyklí dělat s textov�
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Jestli jste jako většina uživatelů 
 \noun on
 unixu
@@ -1198,7 +1402,10 @@ isk)
 \end_layout
 
 \begin_layout Description
-Zpět\InsetSpace ~
+Zpět
+\begin_inset space ~
+\end_inset
+
 změnu LyX má 
 \emph on
 schopnost
@@ -1220,7 +1427,10 @@ Z
 \bar default
 pět
 \family default
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 změnu znovu a znovu.
  Jestli jste přeskočili příliš daleko, zvolte pouze 
 \family sans
@@ -1228,7 +1438,10 @@ změnu znovu a znovu.
 \bar under
 Z
 \bar default
-novu\InsetSpace ~
+novu
+\begin_inset space ~
+\end_inset
+
 měnu
 \family default
  pro krok zpátky.
@@ -1257,8 +1470,14 @@ prostředního tlačítka myši.
 \begin_layout Description
 Najít/Zaměnit Použijte 
 \family sans
-Úpravy->Najít\InsetSpace ~
-&\InsetSpace ~
+Úpravy->Najít
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
 zaměnit
 \family default
  pro hledání s rozlišením malých a velkých písmen.
@@ -1274,7 +1493,7 @@ ahraď
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Zavřete dialog po ukončení hledání.
  Nebo jej nechte otevřený, vyhovuje-li vám to více.
  Většina dialogů v LyXu --- včetně 
@@ -1303,7 +1522,10 @@ tevřít
 \end_layout
 
 \begin_layout Description
-Styl\InsetSpace ~
+Styl
+\begin_inset space ~
+\end_inset
+
 textu Znaky můžete 
 \emph on
 zvýraznit
@@ -1317,7 +1539,10 @@ ztučnit
 Styl pro jména
 \noun default
  (obvykle kapitálky, používají se pro jména lidí) pomocí přepínačů v nabídce
- Styl\InsetSpace ~
+ Styl
+\begin_inset space ~
+\end_inset
+
 textu.
 \end_layout
 
@@ -1347,7 +1572,8 @@ WYSIWYM: Mezery v LyXu
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:whitespace"
 
 \end_inset
@@ -1424,7 +1650,8 @@ formát.
 
 \emph default
  Viz sekce 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:what-is-lyx"
 
 \end_inset
@@ -1538,7 +1765,7 @@ Styl
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Není třeba 
 \emph on
 zvýrazňovat
@@ -1578,7 +1805,7 @@ Enter
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 Uživatelská příručka
@@ -1757,7 +1984,8 @@ Uživatelské příručce
 .
  Kapitoly jsou vyšší úrovní, ale je možno je použít jen v určitých dokumentech
  LyXu.(viz 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:textclasses"
 
 \end_inset
@@ -1824,7 +2052,10 @@ Příklady
 \bar under
 S
 \bar default
-oubor->Uložit\InsetSpace ~
+oubor->Uložit
+\begin_inset space ~
+\end_inset
+
 jako
 \family default
  pro uložení kopie tohoto dokumentu do vašeho adresáře.
@@ -1845,7 +2076,7 @@ Tab
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Ano zdůrazňujeme to v celém 
 \emph on
 Průvodci
@@ -1965,7 +2196,10 @@ Enter
  cest je použít tzv.
  
 \family sans
-Chráněný\InsetSpace ~
+Chráněný
+\begin_inset space ~
+\end_inset
+
 Enter
 \family default
 , který získáte stiskem 
@@ -1979,10 +2213,16 @@ Standard
 \family default
  (buď z nabídky nebo stiskem klávesové kombinace 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 s
 \family default
- (=ALT+p\InsetSpace ~
+ (=ALT+p
+\begin_inset space ~
+\end_inset
+
 s)).
 \end_layout
 
@@ -1993,7 +2233,7 @@ Získali jste pěkně vysázený seznam.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX vám nedovolí označit první kuličku pokud současně neoznačíte odstavec
  
 \emph on
@@ -2040,7 +2280,7 @@ Popis
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Tohle je sázecí zarážka, která mění svou velikost podle nejdelšího termínu,
  nikoli neměnná a pevně předdefinovaná jako na psacím stroji.
 \end_layout
@@ -2055,7 +2295,10 @@ Seznam
  Jestliže se termín skládá z několika slov, oddělte je pomocí pevných mezer
  
 \family sans
-(Protected\InsetSpace ~
+(Protected
+\begin_inset space ~
+\end_inset
+
 Space
 \family default
 s), které získáte stiskem 
@@ -2121,7 +2364,7 @@ psacího stroje
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \SpecialChar \ldots{}
 předpokládáme, že jste tak dobrý básník, že píšete poezii zpatra.
 \end_layout
@@ -2188,7 +2431,8 @@ Textové třídy a šablony: psaní dopisů
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:textclasses"
 
 \end_inset
@@ -2205,7 +2449,7 @@ Třídy dokumentu
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Pro uživatele LaTeXu: toto je totéž jako v LaTeXu documentclass.
 \end_layout
 
@@ -2230,7 +2474,7 @@ Article
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Toto je obvykle implicitní textová třída, lze ji přednastavit ve vašem souboru
  
 \family typewriter
@@ -2248,7 +2492,10 @@ T
 \bar default
 řída
 \family default
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 
 \family sans
 dokumentu
@@ -2292,7 +2539,10 @@ Velikost písma, jedno či dvousloupcový tisk a hlavičky stránek jsou právě
  Například LyX podporuje sazbu (a speciální styly) pro časopisy American
  Mathematics Society pomocí textové třídy 
 \family sans
-Article\InsetSpace ~
+Article
+\begin_inset space ~
+\end_inset
+
 (AMS)
 \family default
 .
@@ -2317,33 +2567,33 @@ Uživatelské příručce.
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Jméno
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Poznámka
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 article
 \end_layout
 
@@ -2352,18 +2602,18 @@ article
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 článek; jednostranně, nemá kapitoly
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 article (AMS)
 \end_layout
 
@@ -2372,18 +2622,18 @@ article (AMS)
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 vzhled & styly pro American Math Society
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 report
 \end_layout
 
@@ -2392,67 +2642,67 @@ report
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 delší než článek, oboustranný
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 book
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 kniha; zpráva + přední a zadní obálka
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 slides
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 slidy; průhlednost (včetně FoilTeX)
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 letter
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 dopis; mnoho speciálních stylů pro adresu, podpis\SpecialChar \ldots{}
 
 \end_layout
@@ -2502,7 +2752,10 @@ T
 \bar default
 řída
 \family default
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 
 \family sans
 dokumentu
@@ -2536,8 +2789,14 @@ Otevřete nový soubor z nabídky
 \bar under
 S
 \bar default
-oubor->Nový\InsetSpace ~
-ze\InsetSpace ~
+oubor->Nový
+\begin_inset space ~
+\end_inset
+
+ze
+\begin_inset space ~
+\end_inset
+
 šablony
 \family default
 .
@@ -2560,7 +2819,10 @@ prostředí
 \family default
 , uvidíte několik různých stylů, jako například 
 \family sans
-My\InsetSpace ~
+My
+\begin_inset space ~
+\end_inset
+
 Address
 \family default
 , který neexistuje ve většině jiných textových tříd.
@@ -2604,12 +2866,15 @@ Signature:
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Jedno varování, pokud měníte šablonu.
  Jestliže smažete celý text dokumentu --- například, smažete-li celé pole
  
 \family sans
-My\InsetSpace ~
+My
+\begin_inset space ~
+\end_inset
+
 Address
 \family default
 , abyste jej mohli nahradit svým --- a pak posunete kurzor bez psaní textu,
@@ -2649,7 +2914,7 @@ Article
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Zde byste již neměli používat třídu 
 \family sans
 Letter
@@ -2698,7 +2963,8 @@ Značky a odkazy
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:labels"
 
 \end_inset
@@ -2742,7 +3008,7 @@ sec:aboutdocument
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Píšeme 
 \begin_inset Quotes gld
 \end_inset
@@ -2816,13 +3082,19 @@ ložit->
 \bar under
 K
 \bar default
-řížový\InsetSpace ~
+řížový
+\begin_inset space ~
+\end_inset
+
 odkaz
 \family default
 .
  Objeví se dialog 
 \family sans
-Vložte\InsetSpace ~
+Vložte
+\begin_inset space ~
+\end_inset
+
 odkaz
 \family default
 .
@@ -2906,12 +3178,13 @@ ložte
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Mimochodem, kopírování nadpisu kapitoly může způsobit chybu v LyXu, protože
  názvy kapitol nejsou povoleny pro články.
  Jestliže se to stalo, pak prostě onen nadpis vymažte.
  Jestli chcete znát důvod, podívejte se na kapitolu 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:textclasses"
 
 \end_inset
@@ -2950,8 +3223,14 @@ ložit->
 \bar under
 P
 \bar default
-oznámka\InsetSpace ~
-pod\InsetSpace ~
+oznámka
+\begin_inset space ~
+\end_inset
+
+pod
+\begin_inset space ~
+\end_inset
+
 čarou
 \family default
 \SpecialChar \@.
@@ -2993,7 +3272,7 @@ Poznámku lze vystřihnout a vložit tak, jako normální text.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Možná je jednodušší označit ji pomocí klávesnice.
  Můžete totiž poznámku rozbalit místo jejího označení jestliže se nestrefíte
  přesně.
@@ -3019,27 +3298,54 @@ ložit
  Navíc, můžete změnit normální text na poznámku označením textu a stiskem
  tlačítka 
 \family sans
-Vložit\InsetSpace ~
+Vložit
+\begin_inset space ~
+\end_inset
+
 poznámku
 \family default
-\InsetSpace ~
-pod\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
+pod
+\begin_inset space ~
+\end_inset
+
 čarou; změňte poznámku na normální text opětovným stiskem tlačítka 
 \family sans
-Vložit\InsetSpace ~
+Vložit
+\begin_inset space ~
+\end_inset
+
 poznámku
 \family default
-\InsetSpace ~
-pod\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
+pod
+\begin_inset space ~
+\end_inset
+
 čarou, když máte kurzor na poznámce.
 \end_layout
 
 \begin_layout Standard
 Poznámky po straně okraje lze vkládat pomocí tlačítka 
 \family sans
-Vložit\InsetSpace ~
-poznámku\InsetSpace ~
-na\InsetSpace ~
+Vložit
+\begin_inset space ~
+\end_inset
+
+poznámku
+\begin_inset space ~
+\end_inset
+
+na
+\begin_inset space ~
+\end_inset
+
 okraj nebo z nabídky
 \family default
  
@@ -3047,8 +3353,14 @@ okraj nebo z nabídky
 \bar under
 V
 \bar default
-ložit->Poznámka\InsetSpace ~
-na\InsetSpace ~
+ložit->Poznámka
+\begin_inset space ~
+\end_inset
+
+na
+\begin_inset space ~
+\end_inset
+
 okraj
 \family default
 \SpecialChar \@.
@@ -3103,7 +3415,8 @@ Citace
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:bibliographies"
 
 \end_inset
@@ -3130,7 +3443,10 @@ The Lyx Tutorial, by the LyX DocTeam
  Povšimněte si, že LyX automaticky očísluje každou citaci.
  Klikněte na obdélník s číslem a objeví se dialog 
 \family sans
-Položka\InsetSpace ~
+Položka
+\begin_inset space ~
+\end_inset
+
 bibliografie
 \family default
 .
@@ -3156,7 +3472,7 @@ Vložit->Citace\SpecialChar \@.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Zde je vidět, proč je vhodné pojmenovávat citace namísto jejich automatického
  číslování.
 \end_layout
@@ -3205,7 +3521,7 @@ Enter
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Nezkoušejte mazat číslo sekce.
  Nepůjde to.
  LyX totiž čísluje za vás.
@@ -3282,14 +3598,17 @@ LaTeX je používán mnoha vědci, protože umí tisknout velmi dobře vypadají
  příkazy, ale uvidíte je jako WYSIWYM.
  Jestliže naopak, jste nikdy v LaTeXu nepsali, tak potom vám 
 \family sans
-Math\InsetSpace ~
+Math
+\begin_inset space ~
+\end_inset
+
 Panel
 \family default
  umožní psát profesionálně vypadající text jednoduše a rychle
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX pochopitelně neumí kontrolovat, zda to, co jste napsali, je 
 \emph on
 dobře
@@ -3454,7 +3773,10 @@ p
 \bar default
 ravy->Zpět
 \family default
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 
 \family sans
 změnu
@@ -3471,7 +3793,10 @@ Backspace
 ) smaže celý tento výraz.
  Naštěstí můžete použít 
 \family sans
-Zpět\InsetSpace ~
+Zpět
+\begin_inset space ~
+\end_inset
+
 změnu
 \family default
 .
@@ -3539,7 +3864,7 @@ Mezera
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Mezera a 
 \family sans
 Tab
@@ -3551,7 +3876,8 @@ nelze
  použít pro přidávání mezer dovnitř výrazu.
  Mezery jsou věcí sázení, takže jsou plně v kompetenci LyXu (LaTeXu) (viz
  sekce 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:whitespace"
 
 \end_inset
@@ -3678,7 +4004,10 @@ Matematický panel
 \begin_layout Standard
 
 \family sans
-Matematický\InsetSpace ~
+Matematický
+\begin_inset space ~
+\end_inset
+
 panel
 \family default
  je jednoduchá cesta pro vkládání symbolů a využívání komplikovaných funkcí
@@ -3754,7 +4083,10 @@ Akcentování znaku (
 
 ) se dosáhne stejně.
  Stiskněte tlačítko s akcentací, které je označeno modrým obdélníčkem nahoře
- s černou vlnovkou\InsetSpace ~
+ s černou vlnovkou
+\begin_inset space ~
+\end_inset
+
 (~).
  Po kliknutí LyX otevře akcentaci s bodem pro vkládání pod (nebo nad) akcentem.
  Jen klikněte na typ akcentu, vložte obsah a poté stiskněte 
@@ -4108,7 +4440,8 @@ Matice
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:matrices"
 
 \end_inset
@@ -4185,7 +4518,8 @@ Všechny výrazy, které jsme doposud napsali se nacházeli na jedné řádce sp
 Uživatelská příručka
 \emph default
 ), je to navíc jediný způsob jak psát víceřádkové rovnice (viz 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:multiline"
 
 \end_inset
@@ -4293,7 +4627,8 @@ Víceřádkové rovnice
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:multiline"
 
 \end_inset
@@ -4380,7 +4715,8 @@ LyX zarovná druhé (střední) pole na každé řádce, takže obvykle toto pol
  výraz.
  Nepoužívejte víceřádkové rovnice pro vysázení polí, pro tento účel použijte
  matice (viz 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:matrices"
 
 \end_inset
@@ -4429,7 +4765,10 @@ E & = & mc^{2}\\
 Jestliže jste napsali příliš mnoho řádek, posuňte kurzor na konec řádky
  a použijte 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 k
 \family default
  pro smazání následující řádky.
@@ -4438,7 +4777,10 @@ k
  Byli-li tyto body prázdné, pak je pouze vymaže.
  Varování: stisk 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 k
 \family default
  když nejste na konci řádku nemusí vždy dopadnout šťastně.
@@ -4535,7 +4877,10 @@ pravým
 \emph default
  tlačítkem a otevře se dialog 
 \family sans
-Vzhled\InsetSpace ~
+Vzhled
+\begin_inset space ~
+\end_inset
+
 tabulky,
 \family default
  který má široké možnosti změny vzhledu a chování tabulky.
@@ -4580,7 +4925,8 @@ LyX je vyvíjen týmem programátorů na pěti kontinentech.
 \begin_layout Itemize
 LyX umí číst dokumenty v LaTeXu.
  Viz kapitola 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:relyx"
 
 \end_inset
@@ -4589,7 +4935,10 @@ reference "sec:relyx"
 \end_layout
 
 \begin_layout Itemize
-LyX umí pracovat s revizemi daného dokumentu (Dokument->Změnit\InsetSpace ~
+LyX umí pracovat s revizemi daného dokumentu (Dokument->Změnit
+\begin_inset space ~
+\end_inset
+
 revize)
 \end_layout
 
@@ -4605,7 +4954,10 @@ Lyx umí dokument rozdělit na části, které se na požádání tisknou nebo z
 \begin_layout Itemize
 Pravopis lze kontrolovat pomocí 
 \family sans
-Nástroje->Kontrola\InsetSpace ~
+Nástroje->Kontrola
+\begin_inset space ~
+\end_inset
+
 pravopisu
 \family default
 \SpecialChar \@.
@@ -4613,7 +4965,7 @@ pravopisu
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Kontrola se děje vždy od pozice kurzoru do konce dokumentu.
 \end_layout
 
@@ -4624,8 +4976,13 @@ Kontrola se děje vždy od pozice kurzoru do konce dokumentu.
 
 \begin_layout Itemize
 LyX má wiki stránky se spoustou rad a triků (
-\begin_inset LatexCommand url
-target "wiki.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+wiki.lyx.org
+\end_layout
 
 \end_inset
 
@@ -4637,7 +4994,8 @@ LyX pro uživatele LaTeXu
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:latexusers"
 
 \end_inset
@@ -4681,9 +5039,11 @@ Režim TeX
 \begin_layout Standard
 Cokoli napíšete v režimu TeX, bude zasláno přímo do LaTeXu, a bude zobrazeno
  na obrazovce červeně.
- Do režimu TeX se dostanete pomocí nabídky Vložit->TeX-ový\InsetSpace ~
-kód nebo kliknutím
- na tlačítko na liště.
+ Do režimu TeX se dostanete pomocí nabídky Vložit->TeX-ový
+\begin_inset space ~
+\end_inset
+
+kód nebo kliknutím na tlačítko na liště.
 \end_layout
 
 \begin_layout Standard
@@ -4722,7 +5082,10 @@ sin
  zůstanou červené, protože již jsou WYSIWYM).
  Toto může být rychlejší než použití 
 \family sans
-Math\InsetSpace ~
+Math
+\begin_inset space ~
+\end_inset
+
 Panelu
 \family default
 , zvláště pro zkušené uživatele LaTeXu.
@@ -4752,7 +5115,8 @@ LyX neumí absolutně všechno, co LaTeX (zatím?).
 usepackage{foo}
 \family default
  v preambuli (viz 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:preamble"
 
 \end_inset
@@ -4769,7 +5133,8 @@ tex2lyx
 \begin_layout Standard
 
 \lang english
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:tex2lyx"
 
 \end_inset
@@ -4900,7 +5265,10 @@ documentclass
 \family default
  vložte do políčka 
 \family sans
-Další\InsetSpace ~
+Další
+\begin_inset space ~
+\end_inset
+
 volby
 \family default
 .
@@ -4911,7 +5279,8 @@ Více o preambuli
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:preamble"
 
 \end_inset
@@ -4923,7 +5292,10 @@ Jestliže chcete umístit speciální příkazy do preambule LaTeXu, můžete je
 \bar under
 D
 \bar default
-okument->Nastavení->Preambule\InsetSpace ~
+okument->Nastavení->Preambule
+\begin_inset space ~
+\end_inset
+
 LaTeXu
 \family default
  a pište do dialogu.
@@ -4942,7 +5314,10 @@ LyX má dobrou, i když ne úplnou podporu, pro BibTeX, který umožňuje budova
 \bar under
 V
 \bar default
-ložit->Seznamy/Obsah->Bibliografie\InsetSpace ~
+ložit->Seznamy/Obsah->Bibliografie
+\begin_inset space ~
+\end_inset
+
 BibTeXu
 \family default
  pro vložení souboru 
@@ -4971,7 +5346,7 @@ bibliography{}
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Jako v obyčejném LaTeX, vícenásobné odkazy budou odděleny čárkami bez mezer.
 \end_layout
 
@@ -4999,7 +5374,8 @@ Poté můžete používat citace z jakékoli bibliografie pomocí
 Vložit->Citace
 \family default
  (viz kapitola 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:bibliographies"
 
 \end_inset
@@ -5043,7 +5419,10 @@ ložit->
 \bar under
 S
 \bar default
-peciální\InsetSpace ~
+peciální
+\begin_inset space ~
+\end_inset
+
 znak
 \family default
  najdete další speciální znaky, jako jsou tři tečky, pevné ukončení řádku
