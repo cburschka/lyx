@@ -281,6 +281,7 @@ dist_images_DATA = \
 	images/changes-output.png \
 	images/changes-track.png \
 	images/closetab.png \
+	images/close-tab-group.png \
 	images/copy.png \
 	images/cut.png \
 	images/demote.png \
@@ -352,6 +353,8 @@ dist_images_DATA = \
 	images/psnfss4.png \
 	images/redo.png \
 	images/reload.png \
+	images/split-view_horizontal.png \
+	images/split-view_vertical.png \
 	images/standard.png \
 	images/tabular-feature_align-center.png \
 	images/tabular-feature_align-left.png \

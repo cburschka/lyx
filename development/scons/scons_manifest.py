@@ -1353,6 +1353,7 @@ lib_images_files = Split('''
     changes-output.png
     changes-track.png
     closetab.png
+    close-tab-group.png
     copy.png
     cut.png
     demote.png
@@ -1424,6 +1425,8 @@ lib_images_files = Split('''
     psnfss4.png
     redo.png
     reload.png
+    split-view_horizontal.png
+    split-view_vertical.png
     standard.png
     tabular-feature_align-center.png
     tabular-feature_align-left.png
