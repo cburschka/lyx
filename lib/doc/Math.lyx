@@ -1,4 +1,4 @@
-#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.7svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -101,9 +101,6 @@
 % for multiple table row and column cells
 \usepackage{multirow}
 \usepackage{multicol}
-
-% needed for diagrams
-\usepackage{amscd}
 
 % needed in sec. 19.4
 \usepackage{remreset}
@@ -262,7 +259,7 @@ author: Uwe Stöhr
 \newline
 
 \family sans
-Version 1.5.6
+Version 1.5.7
 \end_layout
 
 \begin_layout Standard
@@ -29792,44 +29789,8 @@ name "Diagrams"
 \end_layout
 
 \begin_layout Standard
-To create diagrams, the LaTeX-package 
-\series bold
-amscd
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-
-\series bold
-amscd
-\series default
- is part of every LaTeX standard installation.
-\end_layout
-
-\end_inset
-
-
-\series default
-
-\begin_inset LatexCommand index
-name "Packages ! amscd"
-
-\end_inset
-
- is needed.
- It is loaded in the LaTeX-preamble with the line
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-usepackage{amscd}
-\end_layout
-
-\begin_layout Standard
-Diagrams visualize relations and look like this:
+Diagrams of this type visualize relations by vertical and horizontal lines
+ or arrows:
 \begin_inset Formula \[
 \begin{CD}A@>>>B@>>>C\\
 @AAA@.@VVV\\

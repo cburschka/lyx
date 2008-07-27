@@ -444,7 +444,8 @@ char const * simplefeatures[] = {
 	"mathrsfs",
 	"ascii",
 	"url",
-	"bm"
+	"bm",
+	"amscd"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);

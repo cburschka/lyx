@@ -147,7 +147,12 @@ void InsetMathAMSArray::normalize(NormalStream & os) const
 
 void InsetMathAMSArray::validate(LaTeXFeatures & features) const
 {
-	features.require("amsmath");
+	if (name_ == "CD")
+		// amscd is independent of amsmath although it is part of
+		// the amsmath bundle
+		features.require("amscd");
+	else
+		features.require("amsmath");
 	InsetMathGrid::validate(features);
 }
 
