@@ -83,9 +83,6 @@
 \usepackage{multirow}
 \usepackage{multicol}
 
-% needed for diagrams
-\usepackage{amscd}
-
 % needed in sec. 19.4
 \usepackage{remreset}
 
@@ -31322,49 +31319,11 @@ Diagrammes
 \end_layout
 
 \begin_layout Standard
-Pour créer des diagrammes, on utilise le paquetage LaTeX 
-\series bold
-amscd
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-amscd
-\series default
- fait partie de toutes les installations LateX standard.
-\end_layout
-
-\end_inset
-
-
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Paquetages ! amscd
-\end_layout
-
-\end_inset
-
-.
- On le charge dans le préambule LaTeX avec la ligne suivante:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-usepackage{amscd}
-\end_layout
-
-\begin_layout Standard
-Les diagrammes permettent la visualisation de relations et ressemblent à
- ceci:
+Des diagrammes de cette type 
+\lang english
+visualize relations by vertical and horizontal lines or arrows:
+\lang french
+:
 \begin_inset Formula \[
 \begin{CD}A@>>>B@>>>C\\
 @AAA@.@VVV\\
