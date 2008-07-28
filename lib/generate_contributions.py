@@ -1464,6 +1464,14 @@ contributers = [
                  "12 January 2008",
                  u"small fixes"),
 
+     contributer(u"Hatim Alahmadi",
+                 "dr.hatim () hotmail.com",
+                 "GPL",
+                 "license",
+                 "m=121727402624142",
+                 "28 Jul 2008",
+                 u"Arabic translation"),
+
      contributer(u"Xiaokun Zhu",
                  "xiaokun () aero ! gla ! ac ! uk",
                  "",
