@@ -313,11 +313,11 @@ contributers = [
                  u"Dutch translation team member"),
 
      contributer(u"Hatim Alahmadi",
-                 "dr.hatim () hotmail.com",
+                 "dr.hatim () hotmail ! com",
                  "GPL",
-                 "license",
+                 "license issue",
                  "m=121727417724431",
-                 "28 Jul 2008",
+                 "28 July 2008",
                  u"Arabic translation"),
 
      contributer(u"Asger Alstrup",
