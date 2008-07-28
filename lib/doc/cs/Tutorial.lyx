@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 338
+\lyxformat 339
 \begin_document
 \begin_header
 \textclass article
@@ -105,34 +105,6 @@ Než začneme, rádi bychom řekli něco o tomto dokumentu.
  Předpokládáme také, že nevíte absolutně nic o LaTeXu.
 \end_layout
 
-\begin_layout Standard
-
-\emph on
-Průvodce
-\emph default
- používá značení popsané v sekci 
-\emph on
-Úvod
-\emph default
- (zatím pouze v angličtině)\SpecialChar \@.
- Jestliže jste se sem dostali dříve, přečtěte
- si nejprve 
-\emph on
-Úvod
-\emph default
-\SpecialChar \@.
- Tím myslíme skutečně teď.
-\end_layout
-
-\begin_layout Standard
-Teď, když víte, co znamená který font, rádi bychom vám řekli něco o účelu
- 
-\emph on
-Průvodce
-\emph default
-.
-\end_layout
-
 \begin_layout Section
 O čem průvodce 
 \emph on
@@ -161,7 +133,7 @@ Jestliže ovládáte LaTeX, pravděpodobně budete schopen přečíst
 Průvodce
 \emph default
  o něco rychleji, protože mnoho postupů v LyXu je vlastně převzato z LaTeXu.
- Ačkoli, LyX má idosynkracie,
+ Ačkoli, LyX má idosynkrasie
 \begin_inset Foot
 status collapsed
 
@@ -179,7 +151,7 @@ schopnosti
 
 \end_inset
 
- které se budete chtít naučit.
+, které se budete chtít naučit.
  I když byste nechtěli číst zbytek 
 \emph on
 Průvodce
@@ -678,7 +650,7 @@ TeX
 \begin_inset Quotes eld
 \end_inset
 
-tech!
+tech
 \begin_inset Quotes erd
 \end_inset
 
@@ -911,10 +883,7 @@ Toto také dává pěknou ukázku jak používat LyX.
 .
  Povšimněte si, že můžete používat nabídku 
 \family sans
-\bar under
-D
-\bar default
-okumenty
+Prohlížet
 \family default
  pro přepínání mezi nimi.
  
@@ -974,7 +943,8 @@ example_raw.lyx
 \family typewriter
 example_lyxified.lyx
 \family default
-, který obsahuje tentýž text napsaný zkušeným uživatelem LyXu.
+, který obsahuje tentýž text napsaný zkušeným uživatelem LyXu (oba soubory
+ naleznete v příkladech).
 \end_layout
 
 \begin_layout Standard
@@ -1225,14 +1195,7 @@ Psaní, prohlížení a tisk
 \begin_layout Itemize
 Otevřete nový soubor pomocí 
 \family sans
-\bar under
-S
-\bar default
-oubor->
-\bar under
-N
-\bar default
-ový
+Soubor->Nový
 \end_layout
 
 \begin_layout Itemize
@@ -1259,10 +1222,7 @@ Dobře.
 \begin_layout Itemize
 Uložte váš dokument příkazem 
 \family sans
-\bar under
-S
-\bar default
-oubor->Uložit
+Soubor->Uložit
 \begin_inset space ~
 \end_inset
 
@@ -1277,10 +1237,7 @@ dvi
 \family default
 , příkazem 
 \family sans
-\bar under
-P
-\bar default
-rohlížet->Dvi
+Prohlížet->Dvi
 \family default
 \SpecialChar \@.
  V okně, z něhož jste LyX spustili, můžete vidět nějaké výstupy.
@@ -1326,14 +1283,7 @@ xdvi
 \begin_layout Itemize
 Soubor vytisknete příkazem 
 \family sans
-\bar under
-S
-\bar default
-oubor->
-\bar under
-T
-\bar default
-isk\SpecialChar \@.
+Soubor->Tisk\SpecialChar \@.
 
 \end_layout
 
@@ -1378,24 +1328,15 @@ Průvodce
 
  a uvidíte většinu jednoduchých příkazů (např., 
 \family sans
-\bar under
-K
-\bar default
-onec,
+Konec,
 \family default
  
 \family sans
-\bar under
-V
-\bar default
-ložit,
+Vložit,
 \family default
  
 \family sans
-\bar under
-T
-\bar default
-isk)
+Tisk)
 \family default
 , jejichž jména již asi znáte, a které dělají to, co od nich očekáváte.
  Zde je stručný návod, jak některé jednoduché akce použít.
@@ -1421,11 +1362,7 @@ nekonečného návratu
 , což znamená, že se můžete vrátit ke kterémukoli stavu od začátku editování
  souboru volbou 
 \family sans
-Úpravy->
-\bar under
-Z
-\bar default
-pět
+Úpravy->Zpět
 \family default
 
 \begin_inset space ~
@@ -1434,11 +1371,7 @@ pět
 změnu znovu a znovu.
  Jestli jste přeskočili příliš daleko, zvolte pouze 
 \family sans
-Úpravy->
-\bar under
-Z
-\bar default
-novu
+Úpravy->Znovu
 \begin_inset space ~
 \end_inset
 
@@ -1449,7 +1382,7 @@ měnu
 \end_layout
 
 \begin_layout Description
-Vystřihnout/Vložit/Zkopírovat Použijte 
+Vyjmout/Vložit/Zkopírovat Použijte 
 \family sans
 Úpravy->Vyjmout
 \family default
@@ -1478,16 +1411,13 @@ Najít/Zaměnit Použijte
 \begin_inset space ~
 \end_inset
 
-zaměnit
+Zaměnit
 \family default
  pro hledání s rozlišením malých a velkých písmen.
  V nově otevřeném dialogu pokračujte v hledání pomocí šipek dopředu a zpět,
  či použijte tlačítko 
 \family sans
-\bar under
-N
-\bar default
-ahraď
+Nahraď
 \family default
  pro výměnu slova, jež bylo nalezeno.
 \begin_inset Foot
@@ -1504,14 +1434,7 @@ Najít/Zaměnit
  zavřeny.
  Některé dialogy jako 
 \family sans
-\bar under
-S
-\bar default
-oubor->
-\bar under
-O
-\bar default
-tevřít
+Soubor->Otevřít
 \family default
 , vám nedovolí napsat nic v hlavním okně LyXu dokud neuzavřete dialog.
 \end_layout
@@ -1559,12 +1482,6 @@ Tiskni
 .
  Jestliže podržíte ukazovátko myši chvilku nad tlačítkem, objeví se žlutá
  vysvětlivka jeho funkce.
-\end_layout
-
-\begin_layout Standard
-Samozřejmě jste zatím nenapsali dost, abyste docenili význam těchto funkcí.
- Až napíšete více, vyzkoušejte si funkce zpět, vkládání atd.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -1732,10 +1649,7 @@ Stylu
 \family default
  je umístěn na liště vlevo (přímo pod nabídkou 
 \family sans
-\bar under
-S
-\bar default
-oubor
+Soubor
 \family default
 ).
  Když píšete svůj první dokument, je nastaven na hodnotu Standardní, což
@@ -2033,14 +1947,7 @@ examples/
 \family default
 , který zvolíte pomocí nabídky 
 \family sans
-\bar under
-S
-\bar default
-oubor->
-\bar under
-O
-\bar default
-tevřít
+Soubor->Otevřít
 \family default
  a pak stisknutím tlačítka 
 \family sans
@@ -2049,10 +1956,7 @@ Příklady
 .
  Otevřete dokument, a použijte 
 \family sans
-\bar under
-S
-\bar default
-oubor->Uložit
+Soubor->Uložit
 \begin_inset space ~
 \end_inset
 
@@ -2486,11 +2390,11 @@ lyxrc
 \end_inset
 
 .
+
+\family default
  Zkuste ji změnit na jinou (použijte nabídku 
-\bar under
-T
-\bar default
-řída
+\family sans
+Třída
 \family default
 
 \begin_inset space ~
@@ -2502,32 +2406,27 @@ dokumentu
 \family default
  v dialogu 
 \family sans
-\bar under
-D
-\bar default
-okument
+Dokument
 \family default
-->Nastavení) a povšimněte si, jak se liší.
+ ->
+\family typewriter
+ Nastavení
+\family default
+) a povšimněte si, jak se liší.
  Změníte-li třídu vašeho dokumentu na 
 \family sans
 Book
 \family default
- a podíváte se na nabídku 
-\family sans
-Environment
-\family default
-, zjistíte, že většina stylů se neliší.
+ a podíváte se na nabídku prostředí (box vlevo nahoře), zjistíte, že většina
+ stylů se neliší.
  Ačkoli, přibyl vám styl 
 \family sans
 Kapitola
 \family default
 .
  Jestli si nejste jistí, které styly můžete v dané třídě použít, prostě
- se podívejte do její nabídky 
-\family sans
-Environment
-\family default
-.
+ se podívejte do její nabídky prostředí.
+ Nová prostředí mohou být do dokumentu přidána pomocí modulů.
 \end_layout
 
 \begin_layout Standard
@@ -2736,10 +2635,7 @@ Letter
 \SpecialChar \@.
  Jednou z cest jak napsat dopis je vytvořit 
 \family sans
-\bar under
-N
-\bar default
-ový
+Nový
 \family default
  soubor, zvolit 
 \family sans
@@ -2747,10 +2643,7 @@ Letter
 \family default
  z nabídky 
 \family sans
-\bar under
-T
-\bar default
-řída
+Třída
 \family default
 
 \begin_inset space ~
@@ -2762,34 +2655,21 @@ dokumentu
 \family default
  v dialogu 
 \family sans
-\bar under
-D
-\bar default
-okument->
-\bar under
-N
-\bar default
-astavení
+Dokument->Nastavení
 \family default
 .
  Oproti obvyklé cestě jak psát dopis to vypadá jako práce navíc.
  Kdykoli píšete obchodní dopis, chcete tam mít svoji adresu, adresáta, text,
  podpis a podobně.
- Proto má LyX 
-\emph on
-šablonu
-\emph default
- pro dopisy, která obsahuje jednoduchý dopis; když máte jednou šablonu,
- můžete jen nahrazovat text v šabloně textem, který chcete napsat.
+ Proto má LyX šablonu pro dopisy, která obsahuje jednoduchý dopis; když
+ máte jednou šablonu, můžete jen nahrazovat text v šabloně textem, který
+ chcete napsat.
 \end_layout
 
 \begin_layout Standard
 Otevřete nový soubor z nabídky 
 \family sans
-\bar under
-S
-\bar default
-oubor->Nový
+Soubor->Nový
 \begin_inset space ~
 \end_inset
 
@@ -2988,14 +2868,7 @@ Vaše první značka
 Označme si druhou sekci tohoto dokumentu (jmenuje se O tomto dokumentu).
  Klikněte na konec řádky s titulkem a zvolte 
 \family sans
-\bar under
-V
-\bar default
-ložit->
-\bar under
-Z
-\bar default
-načka
+Vložit->Značka
 \family default
 .
  Objeví se dotaz na jméno nové značky.
@@ -3075,14 +2948,7 @@ sekce
 
  --- zvolte 
 \family sans
-\bar under
-V
-\bar default
-ložit->
-\bar under
-K
-\bar default
-řížový
+Vložit->Křížový
 \begin_inset space ~
 \end_inset
 
@@ -3102,10 +2968,7 @@ odkaz
  V tuto chvíli je zde jen jeden --- sec:aboutdocument.
  Označte jej (není-li již označen) a klikněte na 
 \family sans
-\bar under
-F
-\bar default
-ormát
+Formát
 \family default
  - vyberte <<strana>> a klikněte na 
 \family sans
@@ -3120,14 +2983,7 @@ LyX umístí odkazovací obdélníček na místo, kde byl kurzor.
  přesune na odkazované místo.
  Zvolte 
 \family sans
-\bar under
-P
-\bar default
-rohlížet->
-\bar under
-A
-\bar default
-ktualizovat->DVI
+Prohlížet->Aktualizovat->DVI
 \family default
 , a uvidíte odkaz na sekci 2 a stranu 1 (nebo na tu, kde sekce 2 momentálně
  je).
@@ -3158,21 +3014,11 @@ l na místo, kde byl váš odkaz, a odkažte se na něj odjinud z dokumentu.
 Jestliže si chcete být jist, že čísla stránek v odkazech budou správně i
  ve velkém dokumentu, 
 \family sans
-\bar under
-K
-\bar default
-opírujte
+Kopírujte
 \family default
- několik stránek z 
-\emph on
-Uživatelské Příručky
-\emph default
- a 
+ několik stránek z Uživatelské Příručky a 
 \family sans
-\bar under
-V
-\bar default
-ložte
+Vložte
 \family default
  jej do vašeho dokumentu
 \begin_inset Foot
@@ -3216,14 +3062,7 @@ Poznámky pod čarou a poznámky na okraji
 Poznámky pod čarou můžete vkládat pomocí tlačítka vložte poznámku pod čarou
  na liště nebo 
 \family sans
-\bar under
-V
-\bar default
-ložit->
-\bar under
-P
-\bar default
-oznámka
+Vložit->Poznámka
 \begin_inset space ~
 \end_inset
 
@@ -3282,17 +3121,11 @@ Možná je jednodušší označit ji pomocí klávesnice.
 
  a 
 \family sans
-\bar under
-V
-\bar default
-yjmout
+Vyjmout
 \family default
  a 
 \family sans
-\bar under
-V
-\bar default
-ložit
+Vložit
 \family default
  ji.
  Navíc, můžete změnit normální text na poznámku označením textu a stiskem
@@ -3350,10 +3183,7 @@ okraj nebo z nabídky
 \family default
  
 \family sans
-\bar under
-V
-\bar default
-ložit->Poznámka
+Vložit->Poznámka
 \begin_inset space ~
 \end_inset
 
@@ -3429,9 +3259,9 @@ Citace jsou podobné odkazům.
 \end_layout
 
 \begin_layout Standard
-Jděte na konec dokumentu a přepněte se 
+Jděte na konec dokumentu a přepněte na prostředí 
 \family sans
-na styl Literatura
+Bibliografie
 \family default
 .
  Nyní je každý odstavec jednou citací.
@@ -3494,6 +3324,10 @@ Značka pod polem Klíč
  Jako obvykle, detaily najdete v 
 \emph on
 Uživatelské příručce.
+ 
+\emph default
+Dokumenty s větší bibliografií budou pravděpodobně používat spíše vestavěnou
+ podporu BibTeXu.
 \end_layout
 
 \begin_layout Standard
@@ -3531,10 +3365,7 @@ Nezkoušejte mazat číslo sekce.
 
  a zvolte 
 \family sans
-\bar under
-V
-\bar default
-ložit->Seznamy/Obsah
+Vložit->Seznamy/Obsah
 \family default
 .
  Slovo obsah se objeví na první řádce dokumentu.
@@ -3767,11 +3598,7 @@ Backspace
  Označujte pomocí šipek nebo myši.
  
 \family sans
-Ú
-\bar under
-p
-\bar default
-ravy->Zpět
+Úpravy->Zpět
 \family default
 
 \begin_inset space ~
@@ -4504,7 +4331,7 @@ Uživatelská příručka
 \end_layout
 
 \begin_layout Subsection
-Režim zobrazení
+Celořádkový režim zobrazení
 \end_layout
 
 \begin_layout Standard
@@ -4529,8 +4356,8 @@ reference "sec:multiline"
 
 \begin_layout Standard
 Klikněte na tlačítko 
-\family sans
-zobrazení
+\family typewriter
+Celořádkový režim
 \family default
  na 
 \family sans
@@ -4539,12 +4366,8 @@ Panelu
 , který je zobrazen jako několik řádek nad a pod modrým obdélníčkem.
  LyX vytvoří vkládací bod, který se nachází na nové řádce a je na ní vystředěn.
  Nyní napište výraz a spusťte LaTeX, abyste se podívali, jak to bude vypadat.
- Tlačítko 
-\family sans
-zobrazení
-\family default
- je ve skutečnosti přepínač; zkuste ho použít na přepnutí několika výrazů
- do a z režimu zobrazení.
+ Toto tlačítko je ve skutečnosti přepínač; zkuste ho použít na přepnutí
+ několika výrazů do a z režimu zobrazení.
 \end_layout
 
 \begin_layout Standard
@@ -4861,21 +4684,10 @@ Referenční příručce.
 LyX má WYSIWYG podporu pro tabulky.
  Použijte 
 \family sans
-\bar under
-V
-\bar default
-ložit->Ta
-\bar under
-b
-\bar default
-ulka
+Vložit->Tabulka
 \family default
 .
- Klikněte na tuto tabulku 
-\emph on
-pravým
-\emph default
- tlačítkem a otevře se dialog 
+ Klikněte na tuto tabulku pravým tlačítkem a otevře se dialog 
 \family sans
 Vzhled
 \begin_inset space ~
@@ -4890,10 +4702,7 @@ tabulky,
 LyX také podporuje vkládání (nejen) PostScriptových obrázků.
  (Jak jste asi odhadli: 
 \family sans
-\bar under
-V
-\bar default
-ložit->Obrázek.
+Vložit->Obrázek.
 
 \family default
  Pak klikněte na obrázek, který chcete vložit, můžete jej otočit, zmenšit
@@ -4906,7 +4715,7 @@ LyX podporuje program pro správu verzí RCS (
 \family typewriter
 man rcsintro
 \family default
- pro další informace).
+ pro další informace), CVS, SVN.
 \end_layout
 
 \begin_layout Itemize
@@ -4947,14 +4756,18 @@ Lyx umí dokument rozdělit na části, které se na požádání tisknou nebo z
  netištěné.
  Díky tomu můžete v jednom dokumentu uchovávat např.
  jak test, tak správné odpovědi na jeho otázky.
- Dokument->Nastavení->Větve.
+ 
+\family typewriter
+Dokument -> Nastavení -> Větve
+\family default
+.
  
 \end_layout
 
 \begin_layout Itemize
 Pravopis lze kontrolovat pomocí 
 \family sans
-Nástroje->Kontrola
+Nástroje -> Kontrola
 \begin_inset space ~
 \end_inset
 
@@ -5039,11 +4852,15 @@ Režim TeX
 \begin_layout Standard
 Cokoli napíšete v režimu TeX, bude zasláno přímo do LaTeXu, a bude zobrazeno
  na obrazovce červeně.
- Do režimu TeX se dostanete pomocí nabídky Vložit->TeX-ový
+ Do režimu TeX se dostanete pomocí nabídky 
+\family typewriter
+Vložit -> TeX-ový
 \begin_inset space ~
 \end_inset
 
-kód nebo kliknutím na tlačítko na liště.
+kód
+\family default
+ nebo kliknutím na tlačítko na liště.
 \end_layout
 
 \begin_layout Standard
@@ -5125,86 +4942,6 @@ reference "sec:preamble"
 \end_layout
 
 \begin_layout Subsection
-Import dokumentů v LaTeXu--- 
-\family typewriter
-tex2lyx
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:tex2lyx"
-
-\end_inset
-
-You can import a LaTeX file into LyX by using the 
-\family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-mport\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTeX
-\family default
- command in LyX.
- This will call 
-\family typewriter
-tex2lyx
-\family default
- which will create a file 
-\family typewriter
-foo.lyx
-\family default
- from the file 
-\family typewriter
-foo.tex
-\family default
- --- and then open that file.
- If the translation doesn't work, you can try calling 
-\family typewriter
-tex2lyx
-\family default
- from the command line, possibly using fancier options.
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-\lang english
-tex2lyx
-\family default
- will translate most legal LaTeX, but not everything.
- It will leave things it doesn't understand in TeX mode, so after translating
- a file with 
-\family typewriter
-tex2lyx
-\family default
-, you can look for red text and hand-edit it to look right.
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-\lang english
-tex2lyx
-\family default
- has its own manpage.
- Read it to find out about which LaTeX commands and environments aren't
- supported, bugs (and how to get around them), and how to use the various
- options.
-\end_layout
-
-\begin_layout Subsection
 Konverze dokumentů v LyXu do LaTeXu
 \end_layout
 
@@ -5217,7 +4954,7 @@ Můžete také požadovat konverzi z LyXu do LaTeXu.
 \bar under
 S
 \bar default
-oubor->Export->LaTeX
+oubor -> Export -> LaTeX
 \family default
 .
  Toto vytvoří soubor 
@@ -5243,10 +4980,9 @@ Třída Document
 
 \begin_layout Standard
 Dialog 
-\family sans
-\bar under
+\family typewriter
 D
-\bar default
+\family sans
 okument->Nastavení
 \family default
  obsahuje mnoho voleb, které jsou parametry příkazu 
@@ -5289,10 +5025,7 @@ Jestliže chcete umístit speciální příkazy do preambule LaTeXu, můžete je
  použít i v LyXu.
  Zvolte 
 \family sans
-\bar under
-D
-\bar default
-okument->Nastavení->Preambule
+Dokument->Nastavení->Preambule
 \begin_inset space ~
 \end_inset
 
@@ -5311,10 +5044,7 @@ LyX má dobrou, i když ne úplnou podporu, pro BibTeX, který umožňuje budova
  databázi bibliografických odkazů pro použití v mnoha dokumentech.
  Zvolte 
 \family sans
-\bar under
-V
-\bar default
-ložit->Seznamy/Obsah->Bibliografie
+Vložit->Seznamy/Obsah->Bibliografie
 \begin_inset space ~
 \end_inset
 
@@ -5353,7 +5083,12 @@ Jako v obyčejném LaTeX, vícenásobné odkazy budou odděleny čárkami bez me
 \end_inset
 
 .
- Obsah pole
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Obsah pole
 \family default
  
 \family sans
@@ -5412,14 +5147,7 @@ Průvodci
  jich najdete mnoho.
  V nabídce 
 \family sans
-\bar under
-V
-\bar default
-ložit->
-\bar under
-S
-\bar default
-peciální
+Vložit->Speciální
 \begin_inset space ~
 \end_inset
 
