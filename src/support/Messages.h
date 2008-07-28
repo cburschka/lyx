@@ -28,7 +28,14 @@ public:
 	docstring const get(std::string const & msg) const;
 	///
 	static void init();
+	///
+	static std::string const & defaultLanguage() { return main_lang_; }
+
 private:
+	///
+	static void setDefaultLanguage();
+	///
+	static std::string main_lang_;
 	///
 	std::string lang_;
 	/// Did we warn about unavailable locale already?

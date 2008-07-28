@@ -54,6 +54,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h" // sorted
+#include "support/Messages.h"
 #include "support/os.h"
 #include "support/Package.h"
 
@@ -661,6 +662,9 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	QCoreApplication::setOrganizationDomain("lyx.org");
 	QCoreApplication::setApplicationName(app_name + "-" + lyx_version);
 
+	// Install translator for GUI elements.
+	installTranslator(&d->qt_trans_);
+
 	// FIXME: quitOnLastWindowClosed is true by default. We should have a
 	// lyxrc setting for this in order to let the application stay resident.
 	// But then we need some kind of dock icon, at least on Windows.
@@ -672,6 +676,11 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	// FIXME: Do we need a lyxrc setting for this on Mac? This behaviour
 	// seems to be the default case for applications like LyX.
 	setQuitOnLastWindowClosed(false);
+
+	// This allows to translate the strings that appear in the LyX menu.
+	/// A translator suitable for the entries in the LyX menu.
+	/// Only needed with Qt/Mac.
+	installTranslator(new MenuTranslator(this));
 #endif
 	
 #ifdef Q_WS_X11
@@ -682,31 +691,6 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	QApplication::setDoubleClickInterval(300);
 #endif
 
-	// install translation file for Qt built-in dialogs
-	QString language_name = QString("qt_") + QLocale::system().name();
-	
-	// language_name can be short (e.g. qt_zh) or long (e.g. qt_zh_CN). 
-	// Short-named translator can be loaded from a long name, but not the
-	// opposite. Therefore, long name should be used without truncation.
-	// c.f. http://doc.trolltech.com/4.1/qtranslator.html#load
-	if (d->qt_trans_.load(language_name,
-		QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
-	{
-		installTranslator(&d->qt_trans_);
-		// even if the language calls for RtL, don't do that
-		setLayoutDirection(Qt::LeftToRight);
-		LYXERR(Debug::LOCALE, "Successfully installed Qt translations for locale "
-			<< language_name);
-	} else
-		LYXERR(Debug::LOCALE, "Could not find  Qt translations for locale "
-			<< language_name);
-
-#ifdef Q_WS_MACX
-	// This allows to translate the strings that appear in the LyX menu.
-	/// A translator suitable for the entries in the LyX menu.
-	/// Only needed with Qt/Mac.
-	installTranslator(new MenuTranslator(this));
-#endif
 	connect(this, SIGNAL(lastWindowClosed()), this, SLOT(onLastWindowClosed()));
 
 	using namespace lyx::graphics;
@@ -904,7 +888,7 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 void GuiApplication::resetGui()
 {
 	// Set the language defined by the user.
-	setRcGuiLanguage();
+	setGuiLanguage();
 
 	// Read menus
 	if (!readUIFile(toqstr(lyxrc.ui_file)))
@@ -1039,10 +1023,49 @@ void GuiApplication::exit(int status)
 }
 
 
-void GuiApplication::execBatchCommands()
+void GuiApplication::setGuiLanguage()
 {
 	// Set the language defined by the user.
 	setRcGuiLanguage();
+
+	QString const default_language = toqstr(Messages::defaultLanguage());
+	LYXERR(Debug::LOCALE, "Tring to set default locale to: " << default_language);
+	QLocale const default_locale(default_language);
+	QLocale::setDefault(default_locale);
+
+	// install translation file for Qt built-in dialogs
+	QString const language_name = QString("qt_") + default_locale.name();
+
+	// language_name can be short (e.g. qt_zh) or long (e.g. qt_zh_CN). 
+	// Short-named translator can be loaded from a long name, but not the
+	// opposite. Therefore, long name should be used without truncation.
+	// c.f. http://doc.trolltech.com/4.1/qtranslator.html#load
+	if (!d->qt_trans_.load(language_name,
+			QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
+		LYXERR(Debug::LOCALE, "Could not find  Qt translations for locale "
+			<< language_name);
+		return;
+	}
+
+	LYXERR(Debug::LOCALE, "Successfully installed Qt translations for locale "
+		<< language_name);
+
+	switch (default_locale.language()) {
+	case QLocale::Arabic :
+	case QLocale::Hebrew :
+	case QLocale::Persian :
+	case QLocale::Urdu :
+        setLayoutDirection(Qt::RightToLeft);
+		break;
+	default:
+        setLayoutDirection(Qt::LeftToRight);
+	}
+}
+
+
+void GuiApplication::execBatchCommands()
+{
+	setGuiLanguage();
 
 	// Read menus
 	if (!readUIFile(toqstr(lyxrc.ui_file)))

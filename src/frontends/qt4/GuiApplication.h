@@ -136,6 +136,8 @@ private:
 	bool closeAllViews();
 	/// read the given ui (menu/toolbar) file
 	bool readUIFile(QString const & name, bool include = false);
+	///
+	void setGuiLanguage();
 
 	/// This LyXView is the one receiving Clipboard and Selection
 	/// events

@@ -245,6 +245,7 @@ void setRcGuiLanguage()
 	LYXERR(Debug::LOCALE, "Setting LC_ALL to en_US");
 	if (!setEnv("LC_ALL", "en_US"))
 		LYXERR(Debug::LOCALE, "\t... failed!");
+	Messages::init();
 	singleton_->pimpl_->messages_["GUI"] = Messages();
 }
 

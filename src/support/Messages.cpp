@@ -67,6 +67,26 @@ using namespace lyx::support;
 
 namespace lyx {
 
+void Messages::setDefaultLanguage()
+{
+	char * env_lang[5] = {"LANGUAGE", "LC_ALL", "LC_MESSAGES", "LC_MESSAGE",
+		"LANG"};
+	for (size_t i = 0; i != 5; ++i) {
+		string const lang = getEnv(env_lang[i]);
+		if (lang.empty())
+			continue;
+		Messages::main_lang_ = lang;
+		return;
+	}
+	// Not found!
+	LYXERR(Debug::LOCALE, "Default language not found!");
+}
+
+
+// Instanciate static member.
+string Messages::main_lang_;
+
+
 // This version use the traditional gettext.
 Messages::Messages(string const & l)
 	: lang_(l), warned_(false)
@@ -96,6 +116,9 @@ void Messages::init()
 	}
 
 	textdomain(PACKAGE);
+
+	// Reset default language;
+	setDefaultLanguage();
 }
 
 
@@ -110,11 +133,8 @@ docstring const Messages::get(string const & m) const
 		return it->second;
 
 	// The string was not found, use gettext to generate it
-
-	static string oldLANGUAGE;
 	static string oldLC_ALL;
 	if (!lang_.empty()) {
-		oldLANGUAGE = getEnv("LANGUAGE");
 		oldLC_ALL = getEnv("LC_ALL");
 		// This GNU extension overrides any language locale
 		// wrt gettext.
@@ -141,7 +161,7 @@ docstring const Messages::get(string const & m) const
 	if (!trans_c)
 		LYXERR(Debug::LOCALE, "Undefined result from gettext");
 	else if (trans_c == m_c) {
-		LYXERR(Debug::LOCALE, "Same as entered returned");
+		//LYXERR(Debug::LOCALE, "Same as entered returned");
 		trans = from_ascii(m);
 	} else {
 		//LYXERR(Debug::LOCALE, "We got a translation");
@@ -155,8 +175,8 @@ docstring const Messages::get(string const & m) const
 	if (!lang_.empty()) {
 		// Reset everything as it was.
 		LYXERR(Debug::LOCALE, "restoring LANGUAGE from " << getEnv("LANGUAGE")
-			<< " to " << oldLANGUAGE);
-		if (!setEnv("LANGUAGE", oldLANGUAGE))
+			<< " to " << main_lang_);
+		if (!setEnv("LANGUAGE", main_lang_))
 			LYXERR(Debug::LOCALE, "\t... failed!");
 		LYXERR(Debug::LOCALE, "restoring LC_ALL from " << getEnv("LC_ALL")
 			<< " to " << oldLC_ALL);
