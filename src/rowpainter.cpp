@@ -312,12 +312,12 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	}
 	
 	FontInfo copy = font;
-	if (selection)
-		copy.setColor(Color_selectiontext);
-	else if (change_type == Change::DELETED)
+	if (change_type == Change::DELETED)
 		copy.setColor(Color_deletedtext);
 	else if (change_type == Change::INSERTED)
 		copy.setColor(Color_addedtext);
+	else if (selection)
+		copy.setColor(Color_selectiontext);
 
 	x_ += pi_.pain.text(int(x_), yo_, s, copy);
 }
@@ -335,6 +335,13 @@ void RowPainter::paintForeignMark(double orig_x, Language const * lang,
 
 	int const y = yo_ + 1 + desc;
 	pi_.pain.line(int(orig_x), y, int(x_), y, Color_language);
+}
+
+
+void RowPainter::paintMisspelledMark(double orig_x, int desc)
+{
+	int const y = yo_ + desc;
+	pi_.pain.wavyHorizontalLine(int(orig_x), y, int(x_) - int(orig_x), Color_red);
 }
 
 
@@ -365,6 +372,8 @@ void RowPainter::paintFromPos(pos_type & vpos)
 	}
 
 	paintForeignMark(orig_x, orig_font.language());
+	if (orig_font.isMisspelled())
+		paintMisspelledMark(orig_x, 3);
 }
 
 
