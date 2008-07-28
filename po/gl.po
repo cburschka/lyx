@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-26 08:04+0200\n"
+"POT-Creation-Date: 2008-07-29 00:28+0200\n"
 "PO-Revision-Date: 2008-07-22 17:13+0200\n"
 "Last-Translator: Ramon Flores <joseramon.flores@usc.es>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -4064,11 +4064,6 @@ msgstr "LatinOff"
 msgid "Latin off"
 msgstr "Latin off"
 
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "InicioDiapositivo"
-
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:114
 #: lib/layouts/beamer.layout:129 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:31 lib/layouts/scrartcl.layout:20
@@ -4084,6 +4079,11 @@ msgstr "Parte"
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Parte*"
+
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "InicioDiapositivo"
 
 #: lib/layouts/beamer.layout:104 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-15 23:12+0200\n"
+"POT-Creation-Date: 2008-07-29 00:28+0200\n"
 "PO-Revision-Date: 2006-06-29 20:19+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -3554,7 +3554,7 @@ msgstr "Notácia"
 msgid "Case"
 msgstr ""
 
-#: lib/layouts/IEEEtran.layout:245 lib/layouts/amsmaths.inc:618
+#: lib/layouts/IEEEtran.layout:245
 msgid "Case #:"
 msgstr ""
 
@@ -6269,7 +6269,7 @@ msgstr "Obsah_Autor"
 msgid "TOC Author:"
 msgstr "Obsah_Autor"
 
-#: lib/layouts/llncs.layout:298
+#: lib/layouts/llncs.layout:298 lib/layouts/amsmaths.inc:618
 msgid "Case #."
 msgstr ""
 
@@ -14551,26 +14551,26 @@ msgstr ""
 msgid "No Branch in Document!"
 msgstr "Dokument"
 
-#: src/Paragraph.cpp:1711 src/frontends/qt4/QParagraph.cpp:233
+#: src/Paragraph.cpp:1722 src/frontends/qt4/QParagraph.cpp:233
 msgid "Senseless with this layout!"
 msgstr "V tomto formáte nemá zmysel!"
 
-#: src/Paragraph.cpp:1771
+#: src/Paragraph.cpp:1782
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1772
+#: src/Paragraph.cpp:1783
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2246 src/frontends/qt4/QViewSource.cpp:161
+#: src/Paragraph.cpp:2257 src/frontends/qt4/QViewSource.cpp:161
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX verzia "
 
-#: src/Paragraph.cpp:2247
+#: src/Paragraph.cpp:2258
 #, fuzzy
 msgid "uncodable character"
 msgstr "©peciálny znak"

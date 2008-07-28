@@ -186,7 +186,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-26 08:04+0200\n"
+"POT-Creation-Date: 2008-07-29 00:28+0200\n"
 "PO-Revision-Date: 2008-07-23 08:27+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr\n"
@@ -3329,7 +3329,8 @@ msgstr "Conserve l'espacement même après un saut de page"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:74
 msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr "Valeur personnalisée. Nécessite un espacement de type « Personnalisé »."
+msgstr ""
+"Valeur personnalisée. Nécessite un espacement de type « Personnalisé »."
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:81
 msgid "Supported spacing types"
@@ -4261,12 +4262,6 @@ msgstr "LatinOff"
 msgid "Latin off"
 msgstr "Latin inactif"
 
-# Cadre = Frame ?
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "DébutCadre"
-
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:114
 #: lib/layouts/beamer.layout:129 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:31 lib/layouts/scrartcl.layout:20
@@ -4282,6 +4277,12 @@ msgstr "Partie"
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Partie*"
+
+# Cadre = Frame ?
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "DébutCadre"
 
 #: lib/layouts/beamer.layout:104 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62

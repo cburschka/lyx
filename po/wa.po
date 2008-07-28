@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-15 23:12+0200\n"
+"POT-Creation-Date: 2008-07-29 00:28+0200\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -3922,7 +3922,7 @@ msgstr "Toûrnaedje"
 msgid "Case"
 msgstr "Aclaper"
 
-#: lib/layouts/IEEEtran.layout:245 lib/layouts/amsmaths.inc:618
+#: lib/layouts/IEEEtran.layout:245
 #, fuzzy
 msgid "Case #:"
 msgstr "Aclaper"
@@ -6740,7 +6740,7 @@ msgstr "Matematike"
 msgid "TOC Author:"
 msgstr "Matematike"
 
-#: lib/layouts/llncs.layout:298
+#: lib/layouts/llncs.layout:298 lib/layouts/amsmaths.inc:618
 #, fuzzy
 msgid "Case #."
 msgstr "Aclaper"
@@ -15212,26 +15212,26 @@ msgstr "Prémetu"
 msgid "No Branch in Document!"
 msgstr "Documint"
 
-#: src/Paragraph.cpp:1711 src/frontends/qt4/QParagraph.cpp:233
+#: src/Paragraph.cpp:1722 src/frontends/qt4/QParagraph.cpp:233
 msgid "Senseless with this layout!"
 msgstr "Pont d' avance avou ene pådje adjinçneye come çouci"
 
-#: src/Paragraph.cpp:1771
+#: src/Paragraph.cpp:1782
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1772
+#: src/Paragraph.cpp:1783
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2246 src/frontends/qt4/QViewSource.cpp:161
+#: src/Paragraph.cpp:2257 src/frontends/qt4/QViewSource.cpp:161
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "Modeye di LyX"
 
-#: src/Paragraph.cpp:2247
+#: src/Paragraph.cpp:2258
 #, fuzzy
 msgid "uncodable character"
 msgstr "Speciå:|#S"

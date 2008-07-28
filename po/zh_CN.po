@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-26 08:04+0200\n"
+"POT-Creation-Date: 2008-07-29 00:28+0200\n"
 "PO-Revision-Date: 2007-07-18 12:08Central Daylight Time\n"
 "Last-Translator: Bo Peng <ben.bob@gmail.com>\n"
 "Language-Team: English <en@translate.freefriends.org>\n"
@@ -4058,11 +4058,6 @@ msgstr "LatinOff"
 msgid "Latin off"
 msgstr "Latin off"
 
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "BeginFrame"
-
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:114
 #: lib/layouts/beamer.layout:129 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:31 lib/layouts/scrartcl.layout:20
@@ -4078,6 +4073,11 @@ msgstr "部分"
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Part*"
+
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "BeginFrame"
 
 #: lib/layouts/beamer.layout:104 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62

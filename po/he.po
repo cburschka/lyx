@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-24 19:33+0300\n"
+"POT-Creation-Date: 2008-07-29 00:28+0200\n"
 "PO-Revision-Date: 2008-07-24 19:34+0300\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -2468,7 +2468,8 @@ msgstr "מטמון מפת פיקסלים"
 msgid ""
 "Checking this improves the performance, but might reduce the on-screen "
 "display of fonts"
-msgstr "אפשרות זו משפרת את הביצועים, אך עלולה להפחית את ההצגה של גופנים על המסך"
+msgstr ""
+"אפשרות זו משפרת את הביצועים, אך עלולה להפחית את ההצגה של גופנים על המסך"
 
 #: src/frontends/qt4/ui/PrefUi.ui:395
 msgid "Enable Pi&xmap Cache"
@@ -2959,7 +2960,8 @@ msgid "&Rescan"
 msgstr "&סרוק מחדש"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid "Show contents of marked file. Only possible when files are shown with path"
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
 msgstr "הצג את תוכן הקובץ המסומן. אפשרי רק כאשר הקבצים מוצגים עם כתובת"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:107
@@ -4061,11 +4063,6 @@ msgstr ""
 msgid "Latin off"
 msgstr ""
 
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr ""
-
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:114
 #: lib/layouts/beamer.layout:129 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:31 lib/layouts/scrartcl.layout:20
@@ -4081,6 +4078,11 @@ msgstr "חלק"
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "חלק*"
+
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:227
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr ""
 
 #: lib/layouts/beamer.layout:104 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62
@@ -11751,8 +11753,10 @@ msgstr "לא יכול לטעון את מחלקת המסמך"
 
 #: src/Buffer.cpp:513
 #, c-format
-msgid "Using the default document class, because the class %1$s could not be loaded."
-msgstr "משתמש בברירת המחדל עבור מחלקת מסמך, מכיוון שלא ניתן לטעון את המחלקה %1$s."
+msgid ""
+"Using the default document class, because the class %1$s could not be loaded."
+msgstr ""
+"משתמש בברירת המחדל עבור מחלקת מסמך, מכיוון שלא ניתן לטעון את המחלקה %1$s."
 
 #: src/Buffer.cpp:524 src/Buffer.cpp:530 src/BufferView.cpp:841
 #: src/BufferView.cpp:847
@@ -13108,7 +13112,8 @@ msgstr "ly"
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
-msgstr "בטל בחירתך אם אתה לא מעוניין שהבחירה הנוכחית תוחלף אוטומטית במה שתקליד."
+msgstr ""
+"בטל בחירתך אם אתה לא מעוניין שהבחירה הנוכחית תוחלף אוטומטית במה שתקליד."
 
 #: src/LyXRC.cpp:2139
 msgid ""
@@ -13119,7 +13124,8 @@ msgstr ""
 "מחלקה."
 
 #: src/LyXRC.cpp:2143
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr "מרווח הזמן בין שמירות אוטומטיות (בשניות) 0 משמעותו ללא שמירה אוטומטית."
 
 #: src/LyXRC.cpp:2150
@@ -13229,7 +13235,8 @@ msgid ""
 msgstr ""
 
 #: src/LyXRC.cpp:2248
-msgid "Select if a language switching command is needed at the end of the document."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
 msgstr ""
 
 #: src/LyXRC.cpp:2252
@@ -13295,7 +13302,8 @@ msgid ""
 msgstr ""
 
 #: src/LyXRC.cpp:2304
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 
 #: src/LyXRC.cpp:2308
@@ -13332,7 +13340,8 @@ msgstr "האפשרות להדפיס עמודים זוגיים בלבד."
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
-msgstr "אפשרות נוספות להעביר לתוכנת ההדפסה אחרי הכל, אבל לפני שם קובץ ה- DVI שיודפס."
+msgstr ""
+"אפשרות נוספות להעביר לתוכנת ההדפסה אחרי הכל, אבל לפני שם קובץ ה- DVI שיודפס."
 
 #: src/LyXRC.cpp:2340
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -13396,7 +13405,8 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 
 #: src/LyXRC.cpp:2392
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr "בחר כדי לאפשר תמיכה בשפות הנכתבות מימין לשמאל."
 
 #: src/LyXRC.cpp:2396
@@ -13479,7 +13489,8 @@ msgid ""
 msgstr ""
 
 #: src/LyXRC.cpp:2479
-msgid "Enable the pixmap cache that might improve performance on Mac and Windows."
+msgid ""
+"Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 
 #: src/LyXRC.cpp:2486
@@ -14864,7 +14875,8 @@ msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/QDocument.cpp:234 src/frontends/qt4/QDocument.cpp:657
-msgid "Input listings parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr "הקלד מימין פרמטרים לרישום קוד. הקלד ? כדי לקבל רשימה של פרמטרים."
 
 #: src/frontends/qt4/QDocument.cpp:243
@@ -15042,7 +15054,8 @@ msgstr "תמונות"
 #: src/frontends/qt4/QInclude.cpp:115 src/frontends/qt4/QInclude.cpp:229
 #: src/frontends/qt4/QListings.cpp:350 src/frontends/qt4/QListings.cpp:427
 #: src/frontends/qt4/QListings.cpp:459
-msgid "Input listing parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr "הכנס מימין פרמטרים לרישום. הכנס ? בשביל לקבל רשימה של כל הפרמטרים."
 
 #: src/frontends/qt4/QInclude.cpp:194
@@ -15279,7 +15292,8 @@ msgstr "LyX: %1$s"
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
-msgstr "שם הקובץ הבא עלול לגרום לבעיות כאשר מריצים את הקובץ המיוצא באמצעות LaTeX: "
+msgstr ""
+"שם הקובץ הבא עלול לגרום לבעיות כאשר מריצים את הקובץ המיוצא באמצעות LaTeX: "
 
 #: src/insets/Inset.cpp:255
 msgid "Opened inset"
@@ -15297,7 +15311,8 @@ msgstr "אזהרת יצוא!"
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
-msgstr "ישנם רווחים בכתובת של מסדי הנתונים של BibTex.<br>Bibtex לא יוכל לאתר אותם."
+msgstr ""
+"ישנם רווחים בכתובת של מסדי הנתונים של BibTex.<br>Bibtex לא יוכל לאתר אותם."
 
 #: src/insets/InsetBibtex.cpp:268
 msgid ""
@@ -15579,7 +15594,8 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "צריך להיות מורכב מאחד או יותר מ- %1$s."
 
 #: src/insets/InsetListingsParams.cpp:292
-msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid ""
+"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:294
@@ -16039,7 +16055,8 @@ msgstr "הבינארי של LyX לא נמצא"
 
 #: src/support/Package.cpp.in:449
 #, c-format
-msgid "Unable to determine the path to the LyX binary from the command line %1$s"
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr "לא מצליח לקבוע את הכתובת של הבינארי של LyX משורת הפקודה %1$s"
 
 #: src/support/Package.cpp.in:569
@@ -16121,4 +16138,3 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "משתמש לא מוכר"
-
