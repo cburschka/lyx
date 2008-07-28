@@ -312,6 +312,14 @@ contributers = [
                  "27 February 2005",
                  u"Dutch translation team member"),
 
+     contributer(u"Hatim Alahmadi",
+                 "dr.hatim () hotmail.com",
+                 "GPL",
+                 "license",
+                 "m=121727417724431",
+                 "28 Jul 2008",
+                 u"Arabic translation"),
+
      contributer(u"Asger Alstrup",
                  "aalstrup () laerdal ! dk",
                  "GPL",
@@ -462,7 +470,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=111842518713710",
                  "10 June 2005",
-                 u"French translation of the Windows installer"),
+                 u"French translations"),
 
      contributer(u"Claudio Coco",
                  "lacocio () libero ! it",
@@ -1262,7 +1270,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=111833345825278",
                  "9 June 2005",
-                 u"documentation updates, Windows installer, small fixes"),
+                 u"Current documentation maintainer, Windows installer, bug fixes"),
 
      contributer(u"David Suárez de Lis",
                  "excalibor () iname ! com",
@@ -1463,14 +1471,6 @@ contributers = [
                  "m=120009631506298",
                  "12 January 2008",
                  u"small fixes"),
-
-     contributer(u"Hatim Alahmadi",
-                 "dr.hatim () hotmail.com",
-                 "GPL",
-                 "license",
-                 "m=121727402624142",
-                 "28 Jul 2008",
-                 u"Arabic translation"),
 
      contributer(u"Xiaokun Zhu",
                  "xiaokun () aero ! gla ! ac ! uk",
