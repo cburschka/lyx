@@ -193,7 +193,7 @@
 .SH "NAME"
 \fBtex2lyx\fR \- translate well-behaved LaTeX into LyX
 .SH "SYNOPSIS"
-The simplest way to use \fBtex2lyx\fR is via the File->Import command
+The simplest way to use \fBtex2lyx\fR is via the File->Import->LaTeX (plain) menu item
 in LyX. That runs \fBtex2lyx\fR on the given file and loads the
 resulting file into LyX. You should try that first, and call it from
 the command line only if you need to use more complicated options.
@@ -263,7 +263,7 @@ your LaTeX file doesn't compile---or if you do weird things, like redefining
 standard LaTeX commands---it may choke. LaTeX209 will often be translated
 correctly, but it's not guaranteed.
 .PP
-\fBtex2lyx\fR has some bugs and lacks a few features. However, its main goals are:
+\fBtex2lyx\fR lacks a few features. However, its main goals are:
 .Ip "\(bu" 4
 Get through a well-behaved LaTeX2e file without crashing
 .Ip "\(bu" 4
@@ -272,10 +272,6 @@ Translate a lot of that file.
 Localize the parts that can't be translated and copy them in TeX mode
 .PP
 It achieves these main goals pretty well on most files.
-.PP
-There are many improvements that can and will be made to \fBtex2lyx\fR in the
-future. However, we wanted to get \fBtex2lyx\fR out there early on, to make
-it easier for new LyX users to read in their existing LaTeX files.
 .Sh "Usage"
 Here's a more lengthy description of what you should do to translate a LaTeX
 document into LyX.
@@ -289,27 +285,27 @@ You should \s-1NOT\s0 redirect standard output to \fIfoo.lyx\fR.
 Run LyX (version 1.4 or later) on the resulting .lyx file.
 .Sp
 In theory, most of the file will have been translated, and anything that's
-untranslatable will be transferred to TeX mode (ERT in LyX-speak). In theory, LyX will be
+untranslatable will be transferred to TeX code (ERT in LyX-speak). In theory, LyX will be
 able to read in the file, and to create printed documents from it, because all
 that untranslated ERT stuff will be passed directly back to LaTeX, which LyX
 uses as a backend. Unfortunately, reality doesn't always reflect theory. If
-\fBtex2lyx\fR crashes, or LyX cannot read the generated LyX file, see the \f(CWBUGS\fR entry elsewhere in this document or the \fI\s-1BUGS\s0\fR file.
+\fBtex2lyx\fR crashes, or LyX cannot read the generated LyX file, see the \f(CWBUGS\fR section below.
 .Ip "\(bu" 4
-Change things that are highlighted in ERT (TeX mode) by hand in LyX.
+Transform things have been inserted as TeX code manually to LyX features, if possible.
 .Sp
 As mentioned above, you should be able to print out the LyX file even without
-doing this. However, changing a command in TeX mode to the corresponding LyX
+doing this. However, changing a command in TeX code to the corresponding LyX
 object will allow you to take advantage of LyX's \s-1WYSIWYM\s0 editing.
 .Sp
 \fBtex2lyx\fR is not guaranteed to create a LyX file which generates exactly the same
-output as the LaTeX file, but it should come close. \fBtex2lyx\fR will generally err
-on the side of translating less to ensure that dvi or ps files are accurate,
-even though this leads to more \*(L"evil red text\*(R" and less \s-1WYSIWYM\s0.
+output as the LaTeX file, although its goal is to achieve this. \fBtex2lyx\fR will generally err
+on the side of translating less to ensure that the resulting output files are accurate,
+even though this leads to more TeX code and less \s-1WYSIWYM\s0.
 .Ip "\(bu" 4
 \s-1PROOFREAD\s0 \s-1THE\s0 \s-1DOCUMENT\s0!!
 .Sp
 I'm sure you were planning on doing this anyway, but it's particularly
-important after translating a LaTeX document. \fBtex2lyx\fR is, at least now, better
+important after translating a LaTeX document. \fBtex2lyx\fR is better
 at \*(L"macro-translating\*(R" (translating the whole document) than
 \*(L"micro-translating\*(R" (translating every little detail). For example, you may see
 extra spaces or deleted spaces. Space handling has improved, but it's
@@ -349,8 +345,6 @@ them
 float environments figure and figure*, as well as graphics inclusion commands
 \eepsf, \eepsffile, \eepsfbox, \eepsfxsize, \eepsfig, \epsfig, and \eincludegraphics.
 Both the graphics and graphicx forms of \eincludegraphics are supported.
-Note, however, that many figures will not be translatable into LyX. See
-the section on \*(L"What LyX Can't Handle\*(R" below.
 .Ip "\(bu" 4
 thebibliography environment and \f(CW\ebibitem\fR command, as well as BibTeX's
 \f(CW\ebibliography\fR and \f(CW\ebibliographystyle\fR commands
@@ -366,31 +360,29 @@ Some of this support may not be 100% yet. See below for details
 .PP
 \fBtex2lyx\fR copies math (almost) verbatim from your LaTeX file. Luckily, LyX reads
 in LaTeX math, so (almost) any math which is supported by LyX should work just
-fine. A few math commands which are not supported by LyX will be replaced with
-their equivalents, e.g., \f(CW\eto\fR is converted to \f(CW\erightarrow\fR. See
-the section on \fISyntax Files\fR for more details.
+fine.
 .PP
-\fBtex2lyx\fR will also copy any preamble commands (i.e., anything before
-\f(CW\ebegin{document}\fR) verbatim, so fancy stuff you've got in your preamble
-should be conserved in dvi and printed documents, although it will not of
-course show up in the LyX window. Check Layout->LaTeX Preamble to make sure.
+\fBtex2lyx\fR will copy any preamble commands (i.e., anything before
+\f(CW\ebegin{document}\fR) verbatim. Fancy stuff you've got in your preamble
+should thus be conserved in printed documents, although it will not of
+course show up in the LyX window. Check Document->Settings->LaTeX Preamble to see the result.
 .Sh "What tex2lyx Can't Handle --- But it's \s-1OK\s0"
 .Ip "\(bu" 4
 tabular* tables
 .Ip "\(bu" 4
-spacing commands (\f(CW\evspace\fR, \f(CW\epagebreak\fR, \f(CW\epar\fR, ...)
+some spacing commands (\f(CW\ehspace\fR, \f(CW\epagebreak\fR and \f(CW\elinebreak\fR)
 .Ip "\(bu" 4
 \f(CW\ecentering\fR, \f(CW\eraggedleft\fR, \f(CW\eraggedright\fR
 .Ip "\(bu" 4
 \f(CW\everb\fR and verbatim environment. \fBtex2lyx\fR is careful to copy \fIexactly\fR in
 this case, including comments and whitespace.
 .Ip "\(bu" 4
-some unknown (e.g., user-defined) environments and commands
+unknown (e.g., user-defined) environments and commands
 .PP
 \fBtex2lyx\fR copies unknown commands, along with their arguments, verbatim into the
 LyX file. Also, if it sees a \f(CW\ebegin{foo}\fR where it doesn't recognize the
 \*(L"foo\*(R" environment, it will copy verbatim until it sees \f(CW\eend{foo}\fR (unless
-you use the \fB\-r\fR option). Hopefully, then, most of these unknown commands
+you use the \fB\-r\fR option). Most of these unknown commands
 won't cause \fBtex2lyx\fR to break; they'll merely require you to do some editing
 once you've loaded the file up in LyX.  That should be less painful than
 editing either the .tex or the .lyx file using a text editor.
@@ -400,41 +392,40 @@ matures, these bugs will be squished.
 .PP
 .Ip "\(bu" 4
 \*(L"Exact\*(R" copying of unknown environments and commands isn't quite exact.
-Specifically, newlines and comments may be lost. This will yield ugly LyX, but
-in almost all cases the output will be the same. However, certain parts of the
-file will be copied perfectly, including whitespace and comments. This
-includes: the LaTeX preamble, verbatim environments and \f(CW\everb\fR commands, and
-skip blocks.
+This will yield ugly LyX, but in almost all cases the output will be the same. 
+However, most parts of the file will be copied perfectly, including whitespace 
+and comments. This includes: the LaTeX preamble, verbatim environments as well as
+\f(CW\everb\fR commands, and skip blocks.
 .Ip "\(bu" 4
-\fBtex2lyx\fR translates only a few options to the \f(CW\edocumentclass\fR command.
-(Specifically 1[012]pt, [letter|legal|executive|a4|a5|b5]paper,
-[one|two]side, landscape, and [one|two]column.) Other options are placed in
-the \*(L"options\*(R" field in the Layout->Document popup.
+\fBtex2lyx\fR translates only a subset of the document class options to native features.
+Other options are placed in the \*(L"options\*(R" field in the Document->Settings popup.
 .Sp
-More importantly, \fBtex2lyx\fR doesn't translate \f(CW\eusepackage\fR commands, margin
-commands, \f(CW\enewcommands\fR, or, in fact, anything else from the preamble. It
-simply copies them into the LaTeX preamble. If you have margin commands in
-your preamble, then the LyX file will generate the right margins. However,
-these margins will override any margins you set in the LyX Layout->Paper
-popup. So you should remove the options from the preamble
-(Layout->Latex Preamble) to be safe. The same goes for \f(CW\einputencoding\fR,
-\f(CW\epagestyle\fR, etc.
+More importantly, \fBtex2lyx\fR doesn't translate \f(CW\enewcommands\fR, unknown
+\f(CW\eusepackage\fR commands and other unknown code in the preamble. It
+simply copies that into the LaTeX preamble. If you use special commands, e.g. to
+specify the text layout in a way that that is not understood by LyX, tex2lyx won't
+recognize it. Note that these settings will be overwritten if you modify the text 
+layout in LyX's document settings. Better remove these special options from the LaTeX 
+preamble (Document->Settings->LaTeX Preamble) and use the corresponding LyX document 
+settings, if possible.
 .Ip "\(bu" 4
 \fBtex2lyx\fR doesn't handle unicode yet. So if you have an utf8-encoded tex file, some
 characters might not be (well) supported. Also, the output format of \fBtex2lyx\fR
-is that of LyX 1.4 until unicode support is implemented. Thus, newer features cannot be
-supported natively.
+remains that of LyX 1.4 until unicode support is implemented. This disallows us from
+supporting newer features natively, which is in fact the most severe issue in current 
+\fBtex2lyx\fR.
 .Ip "\(bu" 4
-The foil class has a couple of bugs. \fBtex2lyx\fR may do weird things with optional
+The foil document class has a couple of bugs. \fBtex2lyx\fR may do weird things with optional
 arguments to \f(CW\efoilhead\fR commands. Also, it may handle \f(CW\ebegin{dinglist}\fR
 incorrectly (although the stuff in the environment should translate normally).
 .PP
-Less significant bugs can be found on \fI\s-1http://bugzilla.lyx.org\s0\fR.
+All known bugs of \fBtex2lyx\fR can be found on \fI\s-1http://bugzilla.lyx.org\s0\fR.
 .PP
-\fBtex2lyx\fR is hopefully rather robust. As mentioned above, it may not translate
-your file perfectly, but it shouldn't crash. If it does crash---and the
-problem is not one of those mentioned above or on \fI\s-1http://bugzilla.lyx.org\s0\fR---see
-the section on \fIBug Reports\fR.
+\fBtex2lyx\fR is rather robust. As mentioned above, it may not translate
+your file perfectly, but the result should be usable and it shouldn't crash. If you encounter
+problems---and the problem is not one of those mentioned above or on 
+\fI\s-1http://bugzilla.lyx.org\s0\fR---please report the issue as described in the section 
+on \fIBug Reports\fR.
 .Sh "What LyX Can't Handle"
 LyX itself is missing a couple of features, such that even if \fBtex2lyx\fR translates
 things perfectly, LyX may still have trouble reading it. If you really need
@@ -446,40 +437,26 @@ For a number of commands (such as \f(CW\e\e\fR), LyX does not support the option
 stdout.  LyX also ignores the width argument for the thebibliography
 environment.
 .Ip "\(bu" 4
-Centering (or right or left justifying) works on full paragraphs.
-.Ip "\(bu" 4
 LyX support for tables isn't perfect. For complicated tables, use a \*(L"skip\*(R"
 block, so that they will be copied in TeX mode.
 .Ip "\(bu" 4
-The LyX math editor can't handle the \s-1AMS\s0\-LaTeX math environments align, split,
-etc. So those environments will be copied in TeX mode. You can change
-equation* environments to the exactly equivalent displaymath, and then they
-will be translated correctly.
-.Ip "\(bu" 4
-Lyx does not support clipping or bounding boxes for included graphics files.
-Therefore, many graphics inclusion commands will be untranslatable, and
-copied in TeX mode. In certain cases, you might be able to translate the
-command by hand within LyX---for example, if you included a bounding box but
-the bounding box is already in the .eps file.
+LyX allows figures to have sizes in the units known to TeX, such as in, cm, etc. It also 
+translates percentages of \etextwidth, \etextheight, \ecolumnwidth, but no other lengths 
+(e.g. if you wanted to scale a figure to size \etopmargin for some reason). \fBtex2lyx\fR 
+will copy figures with untranslatable sizes in TeX mode. Again, you might be able to fix 
+that within LyX.
 .Sp
-LyX only allows figures to have sizes in in,cm, or percentages of \etextwidth
-or \etextheight (or \ecolumnwidth). \fBtex2lyx\fR will translate from other units, like
-pt or mm, but it cannot translate other lengths (e.g. if you wanted to scale a
-figure to size \etopmargin for some reason). \fBtex2lyx\fR will copy figures with
-untranslatable sizes in TeX mode. Again, you might be able to fix that within
-LyX.
 .Sh "The Future of tex2lyx"
-In the future, more commands and environments will be supported by \fBtex2lyx\fR.
-Bugs will be eradicated.
-.PP
-See the \s-1TODO\s0 file for details.
+\fBtex2lyx\fR is actively maintained. Commands and environments will be added in the future.
+Bugs will be eradicated. The most important task will be to make \fBtex2lyx\fR unicode
+compliant.
 .SH "EXAMPLES"
 tex2lyx \fB\-df\fR \fB\-r\fR \*(L"myenv\*(R" foo.tex > foo.debug
 .PP
 The above will create a file foo.lyx from foo.tex, overwriting if
 necessary.  When it finds a \f(CW\ebegin{myenv} ... \eend{myenv}\fR block, it will
 translate the stuff within the block, but copy the \f(CW\ebegin\fR and \f(CW\eend\fR
-commands in TeX mode.  Finally, I'm going to keep the temporary files around
+commands in TeX mode.  Finally, it's going to keep the temporary files around
 and output lots of debugging information into the file foo.debug.
 .PP
 tex2lyx \fB\-n\fR \fB\-c\fR \*(L"literate-article\*(R" foo.tex
@@ -496,10 +473,10 @@ other than those described in the section on \fI\s-1BUGS\s0\fR or on
 it crashed. That, in turn, will allow you to write a better bug report, which
 will allow the developers to fix it more quickly and easily.
 .PP
-Bug reports should either be posted to http://bugzilla.lyx.org or sent to the 
-LyX developers\*(R' mailing list. Its address is currently lyx-devel@lists.lyx.org, 
-but you can check the LyX home page, http://www.lyx.org if that bounces. If you 
-are running \fBtex2lyx\fR on a huge file, please do not send all of the output in 
+Bugs should be reported to the LyX bug tracker at http://bugzilla.lyx.org. Additionally,
+you can post a message to the LyX developers\*(R' mailing list. Its address is currently
+lyx-devel@lists.lyx.org. If your message bounces, you can check the LyX home page, 
+http://www.lyx.org. If you are running \fBtex2lyx\fR on a huge file, please do not send all of the output in 
 your bug report. Just include the last ten or twenty lines of output, along with 
 the piece of the LaTeX file it crashed on.  Or, even better, attach a small but 
 complete file which causes the same problem as your original file.
@@ -630,10 +607,11 @@ If you import foo.tex to create foo.lyx, then edit foo.lyx and want to
 re-export it, note that it will overwrite the original foo.tex. (LyX will ask
 you if you want to overwrite it.)
 .PP
-If you have the \euse_tempdir variable set to false in your lyxrc, then LyX
-will create its temporary files in your current directory, which means your
-LaTeX original may be overwritten (without a warning from LyX) when you \*(L"view
-dvi\*(R" or print the LyX document.
+If you have the \euse_tempdir variable set to false in your lyxrc (or did not
+have defined a temporary directory path in LyX's preferences, respectively),
+LyX will create its temporary files in your current directory, which means your
+LaTeX original may be overwritten (without a warning from LyX) when you view
+or export the LyX document.
 .SH "FILES"
 .Ip "\fI\s-1MY_LYXDIR\s0\fR/layouts/*.layout" 4
 User's personal layout files for document classes
