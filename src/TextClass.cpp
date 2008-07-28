@@ -513,7 +513,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		case TC_INSETLAYOUT:
 			if (lexrc.next()) {
 				InsetLayout il;
-				if (il.read(lexrc))
+				if (il.read(lexrc, *this))
 					insetlayoutlist_[il.name()] = il;
 				// else there was an error, so forget it
 			}

@@ -28,6 +28,7 @@ import os, re, string, sys
 
 # Incremented to format 8, 25 July 2008 by rgh
 # UseModule tag added to layout files
+# CopyStyle added to InsetLayout
 currentFormat = 8
 
 
@@ -170,6 +171,10 @@ def convert(lines):
             while i < len(lines) and not re_EndPreamble.match(lines[i]):
                 i += 1
             continue
+
+        if format == 7:
+          i += 1
+          continue
 
         if format == 6:
           i += 1

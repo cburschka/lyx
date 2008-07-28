@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 338
+\lyxformat 339
 \begin_document
 \begin_header
 \textclass scrbook
@@ -9518,6 +9518,13 @@ CopyStyle
 \end_inset
 
  
+\begin_inset CommandInset label
+LatexCommand label
+name "des:CopyStyle"
+
+\end_inset
+
+
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -12916,6 +12923,26 @@ src/ColorCode.h
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+CopyStyle
+\end_layout
+
+\end_inset
+
+ As with paragraph styles (see page 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "des:CopyStyle"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Description

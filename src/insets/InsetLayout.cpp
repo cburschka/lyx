@@ -17,7 +17,9 @@
 #include "Color.h"
 #include "Font.h"
 #include "Lexer.h"
+#include "TextClass.h"
 
+#include "support/debug.h"
 #include "support/lstrings.h"
 
 #include <vector>
@@ -55,16 +57,17 @@ InsetLayout::InsetDecoration translateDecoration(std::string const & str)
 }
 
 
-bool InsetLayout::read(Lexer & lex)
+bool InsetLayout::read(Lexer & lex, TextClass & tclass)
 {
 	name_ = support::subst(lex.getDocString(), '_', ' ');
 
 	enum {
-		IL_FONT,
 		IL_BGCOLOR,
+		IL_COPYSTYLE,
 		IL_DECORATION,
-		IL_FREESPACING,
+		IL_FONT,
 		IL_FORCELTR,
+		IL_FREESPACING,
 		IL_LABELFONT,
 		IL_LABELSTRING,
 		IL_LATEXNAME,
@@ -83,6 +86,7 @@ bool InsetLayout::read(Lexer & lex)
 
 	LexerKeyword elementTags[] = {
 		{ "bgcolor", IL_BGCOLOR },
+		{ "copystyle", IL_COPYSTYLE}, 
 		{ "decoration", IL_DECORATION },
 		{ "end", IL_END },
 		{ "font", IL_FONT },
@@ -161,6 +165,33 @@ bool InsetLayout::read(Lexer & lex)
 		case IL_NEEDPROTECT:
 			lex >> needprotect_;
 			break;
+		case IL_COPYSTYLE: {     // initialize with a known style
+			docstring style;
+			lex >> style;
+			style = support::subst(style, '_', ' ');
+
+			// We don't want to apply the algorithm in DocumentClass::insetLayout()
+			// here. So we do it the long way.
+			TextClass::InsetLayouts::const_iterator it = 
+					tclass.insetLayouts().find(style);
+			if (it != tclass.insetLayouts().end()) {
+				docstring const tmpname = name_;
+				this->operator=(it->second);
+				name_ = tmpname;
+			} else {
+				LYXERR0("Cannot copy unknown InsetLayout `"
+					<< style << "'\n"
+					<< "All InsetLayouts so far:");
+				TextClass::InsetLayouts::const_iterator lit = 
+						tclass.insetLayouts().begin();
+				TextClass::InsetLayouts::const_iterator len = 
+						tclass.insetLayouts().end();
+				for (; lit != len; ++lit)
+					lyxerr << lit->second.name() << "\n";
+			}
+			break;
+		}
+
 		case IL_FONT: {
 			font_ = lyxRead(lex, inherit_font);
 			// If you want to define labelfont, you need to do so after

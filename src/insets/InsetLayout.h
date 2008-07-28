@@ -24,6 +24,7 @@
 namespace lyx {
 
 class Lexer;
+class TextClass;
 
 ///
 class InsetLayout {
@@ -38,7 +39,7 @@ public:
 		Default
 	};
 	///
-	bool read(Lexer & lexrc);
+	bool read(Lexer & lexrc, TextClass & tclass);
 	///
 	docstring name() const { return name_; };
 	///
