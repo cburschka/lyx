@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-07-13 13:54+0200\n"
-"PO-Revision-Date: 2008-07-27 23:42+0300\n"
+"PO-Revision-Date: 2008-07-29 00:29+0300\n"
 "Last-Translator: a <a@a.com>\n"
 "Language-Team: LyX team <Dr.Hatim@hotmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -153,7 +153,7 @@ msgstr "اسلوب الاستشهاد"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:37
 msgid "Use the jurabib styles for law and humanities"
-msgstr ""
+msgstr "استخدام اساليب jurabib للقانون والعلوم الانسانيه"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:40
 msgid "&Jurabib"
@@ -161,7 +161,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:47
 msgid "Use the natbib styles for natural sciences and arts"
-msgstr ""
+msgstr "استخدام اساليب natbib للعلوم الطبيعيه والفنون"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:50
 msgid "&Natbib"
@@ -169,7 +169,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:57
 msgid "Use BibTeX's default numerical styles"
-msgstr ""
+msgstr "استخدام BibTeX's كاسلوب رقمي افتراضي"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:60
 msgid "&Default (numerical)"
@@ -177,7 +177,7 @@ msgstr "افتراضي (عددي)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:78
 msgid "Natbib &style:"
-msgstr ""
+msgstr "اسلوب Natbib:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:121
 msgid "Select this if you want to split your bibliography into sections"
@@ -189,7 +189,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:24
 msgid "LyX: Add BibTeX Database"
-msgstr ""
+msgstr "ليك: اضافة قاعدة بيانات BibTeX"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:70
 #: src/frontends/qt4/ui/BranchesUi.ui:50
@@ -212,7 +212,7 @@ msgstr "الغاء"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:119
 msgid "Enter BibTeX database name"
-msgstr ""
+msgstr "ادخل اسم قاعدة بيانات BibTeX"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:126
 #: src/frontends/qt4/ui/BibtexUi.ui:106
@@ -235,7 +235,7 @@ msgstr ""
 #: src/frontends/qt4/ui/BibtexUi.ui:52
 #: src/frontends/qt4/ui/BibtexUi.ui:65
 msgid "This bibliography section contains..."
-msgstr ""
+msgstr "قسم البابلوغرافيا ويحتوي..."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:55
 msgid "&Content:"
@@ -272,7 +272,7 @@ msgstr "حذف"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:158
 msgid "Add a BibTeX database file"
-msgstr ""
+msgstr "اضافة ملف قاعدة بيانات BibTeX"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:161
 msgid "&Add..."
@@ -288,7 +288,7 @@ msgstr "قواعد البيانات"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:249
 msgid "The BibTeX style"
-msgstr ""
+msgstr "اسلوب BibTeX"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:252
 msgid "St&yle"
@@ -296,7 +296,7 @@ msgstr "الاسلوب"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:262
 msgid "Move the selected database upwards in the list"
-msgstr ""
+msgstr "تحريك قاعدة البيانات المحددة للأعلى في القائمة"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:265
 #: src/frontends/qt4/ui/CitationUi.ui:597
@@ -306,7 +306,7 @@ msgstr "اعلى"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:272
 msgid "Move the selected database downwards in the list"
-msgstr ""
+msgstr "تحريك قاعدة البيانات المحددة للأسفل في القائمة"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:275
 #: src/frontends/qt4/ui/LaTeXUi.ui:101
@@ -393,7 +393,7 @@ msgstr "اسفل"
 #: src/frontends/qt4/ui/BoxUi.ui:123
 #: src/frontends/qt4/ui/BoxUi.ui:145
 msgid "Vertical alignment of the box (with regard to baseline)"
-msgstr ""
+msgstr "محاذاة رأسية للصندوق (فيما يتعلق بالخط القاعدي)"
 
 #: src/frontends/qt4/ui/BoxUi.ui:148
 msgid "&Box:"
@@ -508,7 +508,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BoxUi.ui:379
 msgid "Supported box types"
-msgstr ""
+msgstr "دعم انواع الصندوق"
 
 #: src/frontends/qt4/ui/BranchUi.ui:59
 msgid "&Available branches:"
@@ -541,19 +541,19 @@ msgstr "ازالة"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:90
 msgid "Toggle the selected branch"
-msgstr ""
+msgstr "الفرع المحدد"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:93
 msgid "(&De)activate"
-msgstr ""
+msgstr "تعطيل"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:100
 msgid "Define or change background color"
-msgstr ""
+msgstr "تحديد او تغيير لون الخلفية"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:103
 msgid "Alter Co&lor..."
-msgstr ""
+msgstr "تغيير لون..."
 
 #: src/frontends/qt4/ui/BulletsUi.ui:34
 msgid "&Font:"
@@ -659,7 +659,7 @@ msgstr "عملاق"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:144
 msgid "&Custom Bullet:"
-msgstr ""
+msgstr "اختيار نقطة:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:174
 #: src/frontends/qt4/ui/PDFSupportUi.ui:333
@@ -688,11 +688,11 @@ msgstr "اعتماد"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:108
 msgid "Reject this change"
-msgstr ""
+msgstr "رفض هذا التغيير"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:111
 msgid "&Reject"
-msgstr ""
+msgstr "رفض"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:44
 #: src/frontends/qt4/ui/CharacterUi.ui:132
@@ -715,7 +715,7 @@ msgstr "الشكل:"
 #: src/frontends/qt4/ui/CharacterUi.ui:96
 #: src/frontends/qt4/ui/CharacterUi.ui:173
 msgid "Font series"
-msgstr ""
+msgstr "سلسلة الخط"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
@@ -739,7 +739,7 @@ msgstr "اللغة:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:176
 msgid "&Series:"
-msgstr ""
+msgstr "السلسلة:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:192
 msgid "&Color:"
@@ -765,15 +765,15 @@ msgstr ""
 
 #: src/frontends/qt4/ui/CharacterUi.ui:273
 msgid "&Misc:"
-msgstr ""
+msgstr "متفرقات :"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:308
 msgid "toggle font on all of the above"
-msgstr ""
+msgstr "الخط على كل ما ورد اعلاه"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:311
 msgid "&Toggle all"
-msgstr ""
+msgstr "كل"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:318
 msgid "Apply each change automatically"
@@ -781,7 +781,7 @@ msgstr "تطبيق كل التغييرات آلياً"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:321
 msgid "Apply changes immediately"
-msgstr ""
+msgstr "تطبيق التغييرات على الفور"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:390
 #: src/frontends/qt4/ui/ERTUi.ui:100
@@ -797,7 +797,7 @@ msgstr "اغلاق"
 
 #: src/frontends/qt4/ui/CitationUi.ui:51
 msgid "Search Citation"
-msgstr ""
+msgstr "البحث الاقتباس"
 
 #: src/frontends/qt4/ui/CitationUi.ui:66
 msgid "F&ind:"
@@ -809,7 +809,7 @@ msgstr "انقر انتر للبحث, أوانقر اذهب!"
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "You can also hit Enter in the search box"
-msgstr ""
+msgstr "يمكنك ايضاً نقر زر انتر في صندوق البحث"
 
 #: src/frontends/qt4/ui/CitationUi.ui:95
 msgid "&Go!"
@@ -826,7 +826,7 @@ msgstr "كل الحقول"
 
 #: src/frontends/qt4/ui/CitationUi.ui:146
 msgid "Regular E&xpression"
-msgstr ""
+msgstr "التعبير العاديه"
 
 #: src/frontends/qt4/ui/CitationUi.ui:153
 msgid "Entry Types:"
@@ -839,11 +839,11 @@ msgstr "كل انواع المدخلات"
 
 #: src/frontends/qt4/ui/CitationUi.ui:191
 msgid "Case Se&nsitive"
-msgstr ""
+msgstr "قضية حساسه"
 
 #: src/frontends/qt4/ui/CitationUi.ui:211
 msgid "Search As You &Type"
-msgstr ""
+msgstr "بحث حسب النوع"
 
 #: src/frontends/qt4/ui/CitationUi.ui:221
 msgid "Formatting"
@@ -859,7 +859,7 @@ msgstr "قائمة المؤلف الكاملة"
 
 #: src/frontends/qt4/ui/CitationUi.ui:254
 msgid "Force upper case in citation"
-msgstr ""
+msgstr "استخدام الحروف الكبيرة في الاقتباس"
 
 #: src/frontends/qt4/ui/CitationUi.ui:257
 msgid "Force u&pper case"
@@ -867,7 +867,7 @@ msgstr "احرف كبيرة اجباري"
 
 #: src/frontends/qt4/ui/CitationUi.ui:295
 msgid "Citation st&yle:"
-msgstr ""
+msgstr "اسلوب الاقتباس:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:305
 msgid "Text &before:"
@@ -879,7 +879,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:366
 msgid "Text to place before citation"
-msgstr ""
+msgstr "النص قبل الاقتباس"
 
 #: src/frontends/qt4/ui/CitationUi.ui:373
 msgid "Text a&fter:"
@@ -887,7 +887,7 @@ msgstr "نص بعد:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:391
 msgid "Text to place after citation"
-msgstr ""
+msgstr "النص بعد الاقتباس"
 
 #: src/frontends/qt4/ui/CitationUi.ui:451
 msgid "App&ly"
@@ -895,11 +895,11 @@ msgstr "تطبيق"
 
 #: src/frontends/qt4/ui/CitationUi.ui:489
 msgid "A&vailable Citations:"
-msgstr ""
+msgstr "مقتبسات متاحة:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:512
 msgid "&Selected Citations:"
-msgstr ""
+msgstr "مقتبسات محددة:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:547
 msgid "The Enter key works, too"
@@ -915,11 +915,11 @@ msgstr "حذف"
 
 #: src/frontends/qt4/ui/CitationUi.ui:594
 msgid "Move the selected citation up (try Ctrl-Up)"
-msgstr ""
+msgstr "نقل الاقتباس المحدد للأعلى"
 
 #: src/frontends/qt4/ui/CitationUi.ui:618
 msgid "Move the selected citation down (try Ctrl-Down)"
-msgstr ""
+msgstr "نقل الاقتباس المحدد للأسفل"
 
 #: src/frontends/qt4/ui/CitationUi.ui:621
 msgid "&Down"
@@ -945,7 +945,7 @@ msgstr "الحجم:"
 #: src/frontends/qt4/ui/DelimiterUi.ui:252
 #: src/frontends/qt4/ui/SymbolsUi.ui:56
 msgid "Insert the delimiters"
-msgstr ""
+msgstr "ادراج علامات التنصيص"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:255
 msgid "&Insert"
@@ -953,11 +953,11 @@ msgstr "ادراج"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:58
 msgid "Reset to the default settings for the document class"
-msgstr ""
+msgstr "لاعادة ضبط الاعدادات الافتراضيه لطبقة الوثيقة"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:61
 msgid "Use Class Defaults"
-msgstr ""
+msgstr "استخدام الطبقة الافتراضية"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:76
 msgid "Save settings as LyX's default document settings"
@@ -977,7 +977,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ERTUi.ui:46
 msgid "&Collapsed"
-msgstr ""
+msgstr "انهار"
 
 #: src/frontends/qt4/ui/ERTUi.ui:53
 msgid "Show ERT contents"
@@ -1012,7 +1012,7 @@ msgstr "تحديد ملف:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:85
 msgid "&Draft"
-msgstr ""
+msgstr "مسودة"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:92
 msgid "&Template"
@@ -1048,7 +1048,7 @@ msgstr "اظهار في ليك"
 #: src/frontends/qt4/ui/GraphicsUi.ui:676
 #: src/frontends/qt4/ui/GraphicsUi.ui:683
 msgid "Percentage to scale by in LyX"
-msgstr ""
+msgstr "النسبة المئوية للمقياس في ليك"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:224
 #: src/frontends/qt4/ui/GraphicsUi.ui:686
@@ -1106,7 +1106,7 @@ msgstr ""
 #: src/frontends/qt4/ui/ExternalUi.ui:453
 #: src/frontends/qt4/ui/GraphicsUi.ui:266
 msgid "&Maintain aspect ratio"
-msgstr ""
+msgstr "المحافظة على نسبة الارتفاع"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:476
 msgid "Crop"
@@ -1157,11 +1157,11 @@ msgstr "من"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:25
 msgid "Use &default placement"
-msgstr ""
+msgstr "استخدام النسب الافتراضية"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:32
 msgid "Advanced Placement Options"
-msgstr ""
+msgstr "الخيارات المتقدمة للنسب"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:44
 msgid "&Top of page"
@@ -1169,7 +1169,7 @@ msgstr "اعلى الصفحة"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:51
 msgid "&Ignore LaTeX rules"
-msgstr ""
+msgstr "تجاهل قوانين لتيك"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:58
 msgid "Here de&finitely"
@@ -1181,7 +1181,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:72
 msgid "&Page of floats"
-msgstr ""
+msgstr "صفحة تعويم"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:79
 msgid "&Bottom of page"
@@ -1189,11 +1189,11 @@ msgstr "اسفل الصفحة"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:102
 msgid "&Span columns"
-msgstr ""
+msgstr "	مدى الاعمده"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:109
 msgid "&Rotate sideways"
-msgstr ""
+msgstr "تدوير جانبي"
 
 #: src/frontends/qt4/ui/FontUi.ui:13
 msgid "FontUi"
@@ -1362,11 +1362,11 @@ msgstr "خيارات لتيك:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:581
 msgid "Draft mode"
-msgstr ""
+msgstr "نظام مسودة"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:584
 msgid "&Draft mode"
-msgstr ""
+msgstr "نظام مسودة"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:591
 msgid "Don't uncompress image before exporting to LaTeX"
@@ -1390,7 +1390,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:660
 msgid "Group Name to be set up from the current parameters"
-msgstr ""
+msgstr "اسم المجموعة التي ستنشأ من المعطيات الحالية"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"
@@ -1699,7 +1699,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:220
 msgid "&Local Layout..."
-msgstr ""
+msgstr "نسق محلي..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:227
 msgid "Document &class:"
@@ -2060,7 +2060,7 @@ msgstr "ترقيم"
 #: src/frontends/qt4/ui/PageLayoutUi.ui:33
 #: src/frontends/qt4/GuiDocument.cpp:982
 msgid "Page Layout"
-msgstr ""
+msgstr "نسق الصفحة"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:68
 msgid "Paper Format"
@@ -2668,15 +2668,15 @@ msgstr "تفعيل دعم الكتابة من اليمين لليسار"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:228
 msgid "Cursor movement:"
-msgstr ""
+msgstr "تحريك المؤشر:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:238
 msgid "&Logical"
-msgstr ""
+msgstr "منطقي"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:248
 msgid "&Visual"
-msgstr ""
+msgstr "بصري"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:25
 msgid "Set class options to default on class change"
@@ -9725,7 +9725,7 @@ msgstr "ادراج"
 
 #: lib/ui/classic.ui:35
 msgid "Layout|L"
-msgstr ""
+msgstr "النسق"
 
 #: lib/ui/classic.ui:36
 #: lib/ui/stdmenus.inc:22
@@ -11812,7 +11812,7 @@ msgstr "ادراج اسناد ترافقي"
 
 #: lib/ui/stdtoolbars.inc:97
 msgid "Insert citation"
-msgstr ""
+msgstr "ادراج اقباس"
 
 #: lib/ui/stdtoolbars.inc:98
 msgid "Insert index entry"
@@ -14566,7 +14566,7 @@ msgstr ""
 
 #: lib/configure.py:304
 msgid "DraftDVI"
-msgstr ""
+msgstr "مسودةDVI"
 
 #: lib/configure.py:307
 msgid "HTML"
@@ -15058,7 +15058,7 @@ msgstr ""
 
 #: src/BufferParams.cpp:1427
 msgid "Document class not found"
-msgstr ""
+msgstr "طبقة المستند غير موجودة"
 
 #: src/BufferParams.cpp:1437
 #: src/LyXFunc.cpp:695
@@ -15069,7 +15069,7 @@ msgstr ""
 #: src/BufferParams.cpp:1439
 #: src/LyXFunc.cpp:697
 msgid "Could not load class"
-msgstr ""
+msgstr "لم تحمل الطبقة"
 
 #: src/BufferParams.cpp:1475
 #, c-format
@@ -15086,7 +15086,7 @@ msgstr "نموذج غير متاح"
 
 #: src/BufferParams.cpp:1480
 msgid "Some layouts may not be available."
-msgstr ""
+msgstr "بعض الانساق غير متاحة"
 
 #: src/BufferParams.cpp:1487
 #, c-format
@@ -15098,7 +15098,7 @@ msgstr ""
 
 #: src/BufferParams.cpp:1490
 msgid "Package not available"
-msgstr ""
+msgstr "مجموعة غير متاحة"
 
 #: src/BufferParams.cpp:1495
 #, c-format
@@ -15124,11 +15124,11 @@ msgstr "حفظ علامة"
 
 #: src/BufferView.cpp:1024
 msgid "No further undo information"
-msgstr ""
+msgstr "لا تراجع عن مزيد من المعلومات"
 
 #: src/BufferView.cpp:1033
 msgid "No further redo information"
-msgstr ""
+msgstr "لا تكرار لمزيد من المعلومات"
 
 #: src/BufferView.cpp:1191
 #: src/lyxfind.cpp:295
@@ -15292,7 +15292,7 @@ msgstr "اصفر"
 
 #: src/Color.cpp:104
 msgid "cursor"
-msgstr ""
+msgstr "المؤشر"
 
 #: src/Color.cpp:105
 msgid "background"
@@ -15340,7 +15340,7 @@ msgstr "ملصق امر"
 
 #: src/Color.cpp:119
 msgid "comment background"
-msgstr ""
+msgstr "خلفية التعليق"
 
 #: src/Color.cpp:120
 msgid "greyedout inset label"
@@ -15612,7 +15612,7 @@ msgstr "فشل لتيك"
 
 #: src/Converter.cpp:596
 msgid "Output is empty"
-msgstr ""
+msgstr "مخرج فارغ"
 
 #: src/Converter.cpp:597
 msgid "An empty output file was generated."
@@ -15641,11 +15641,11 @@ msgstr ""
 #: src/Exporter.cpp:47
 #: src/LyXFunc.cpp:977
 msgid "Overwrite file?"
-msgstr ""
+msgstr "استبدال الملف؟"
 
 #: src/Exporter.cpp:49
 msgid "Overwrite &all"
-msgstr ""
+msgstr "استبدال الكل"
 
 #: src/Exporter.cpp:50
 msgid "&Cancel export"
@@ -15653,7 +15653,7 @@ msgstr "الغاء التصدير"
 
 #: src/Exporter.cpp:90
 msgid "Couldn't copy file"
-msgstr ""
+msgstr "عدم نسخ الملف"
 
 #: src/Exporter.cpp:91
 #, c-format
@@ -16732,11 +16732,11 @@ msgstr ""
 
 #: src/Text3.cpp:1033
 msgid "Layout "
-msgstr ""
+msgstr "نسق"
 
 #: src/Text3.cpp:1034
 msgid " not known"
-msgstr ""
+msgstr "مجهول"
 
 #: src/Text3.cpp:1586
 #: src/Text3.cpp:1598
@@ -17504,7 +17504,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:981
 msgid "Text Layout"
-msgstr ""
+msgstr "	نص النسق"
 
 #: src/frontends/qt4/GuiDocument.cpp:983
 msgid "Page Margins"
@@ -17528,7 +17528,7 @@ msgstr "مكان عائم"
 
 #: src/frontends/qt4/GuiDocument.cpp:990
 msgid "Bullets"
-msgstr ""
+msgstr "نقاط"
 
 #: src/frontends/qt4/GuiDocument.cpp:991
 msgid "Branches"
@@ -17550,7 +17550,7 @@ msgstr ""
 #: src/frontends/qt4/GuiDocument.cpp:1237
 #: src/frontends/qt4/GuiDocument.cpp:1246
 msgid "Local layout file"
-msgstr ""
+msgstr "ملف النسق المحلي"
 
 #: src/frontends/qt4/GuiDocument.cpp:1247
 msgid ""
@@ -18456,7 +18456,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:121
 msgid "Specials"
-msgstr ""
+msgstr "خاص"
 
 #: src/frontends/qt4/GuiSymbols.cpp:122
 msgid "Linear B Syllabary"
@@ -18468,11 +18468,11 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:124
 msgid "Aegean Numbers"
-msgstr ""
+msgstr "ارقام بحر ايجه"
 
 #: src/frontends/qt4/GuiSymbols.cpp:125
 msgid "Ancient Greek Numbers"
-msgstr ""
+msgstr "الارقام اليونانيه القديمة"
 
 #: src/frontends/qt4/GuiSymbols.cpp:126
 msgid "Old Italic"
@@ -18652,7 +18652,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:1235
 msgid "Document not loaded."
-msgstr ""
+msgstr "لم يحمل المستند."
 
 #: src/frontends/qt4/GuiView.cpp:1271
 msgid "Select document to open"
@@ -18698,7 +18698,7 @@ msgstr "لم يتم استيراد ملف"
 #: src/frontends/qt4/GuiView.cpp:1354
 #, c-format
 msgid "No information for importing the format %1$s."
-msgstr ""
+msgstr "لا معلومات لاستيراد الهيئة  %1$s."
 
 #: src/frontends/qt4/GuiView.cpp:1405
 #, c-format
@@ -18817,11 +18817,11 @@ msgstr "اغلاق الملف"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1634
 msgid "Hide tab"
-msgstr ""
+msgstr "اخفاء علامة التبويب"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1636
 msgid "Close tab"
-msgstr ""
+msgstr "اغلاق علامة التبويب"
 
 #: src/frontends/qt4/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
@@ -18829,7 +18829,7 @@ msgstr ""
 
 #: src/frontends/qt4/IconPalette.cpp:39
 msgid "Click to detach"
-msgstr ""
+msgstr "انقر للفصل"
 
 #: src/frontends/qt4/Menus.cpp:649
 msgid "No Group"
@@ -18863,7 +18863,7 @@ msgstr "قوائم أخرى"
 
 #: src/frontends/qt4/Menus.cpp:984
 msgid "No Table of contents"
-msgstr ""
+msgstr "لا جدول في المحتوى"
 
 #: src/frontends/qt4/Menus.cpp:1021
 msgid "Other Toolbars"
@@ -18871,7 +18871,7 @@ msgstr "اشرطة ادوات أخرى"
 
 #: src/frontends/qt4/Menus.cpp:1040
 msgid "No Branch in Document!"
-msgstr ""
+msgstr "لا فرع في المستند!"
 
 #: src/frontends/qt4/Menus.cpp:1071
 msgid "No Citation in Scope!"
@@ -18879,11 +18879,11 @@ msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:1599
 msgid "No action defined!"
-msgstr ""
+msgstr "لا اجراء محدد"
 
 #: src/frontends/qt4/Validator.cpp:148
 msgid "space"
-msgstr ""
+msgstr "مسافة"
 
 #: src/frontends/qt4/Validator.cpp:175
 #: src/insets/ExternalSupport.cpp:365
@@ -18891,7 +18891,7 @@ msgstr ""
 #: src/insets/InsetGraphics.cpp:586
 #: src/insets/InsetInclude.cpp:465
 msgid "Invalid filename"
-msgstr ""
+msgstr "اسم ملف غير صالح"
 
 #: src/frontends/qt4/Validator.cpp:176
 msgid "LyX does not provide LaTeX support for file names containing any of these characters:\n"
@@ -18899,7 +18899,7 @@ msgstr ""
 
 #: src/frontends/qt4/qt_helpers.cpp:179
 msgid "Could not update TeX information"
-msgstr ""
+msgstr "عدم تحديث معلومات تيك"
 
 #: src/frontends/qt4/qt_helpers.cpp:180
 #, c-format
@@ -18949,7 +18949,7 @@ msgstr "قائمة المدونات"
 
 #: src/frontends/qt4/qt_helpers.cpp:502
 msgid "List of Citations"
-msgstr ""
+msgstr "قائمة الاقتباسات"
 
 #: src/frontends/qt4/qt_helpers.cpp:504
 msgid "Labels and References"
@@ -19157,7 +19157,7 @@ msgstr ""
 #: src/insets/InsetFloat.cpp:403
 #: src/insets/InsetFloat.cpp:413
 msgid "float: "
-msgstr ""
+msgstr "تعويم:"
 
 #: src/insets/InsetFloat.cpp:281
 msgid "Opened Float Inset"
@@ -19165,7 +19165,7 @@ msgstr ""
 
 #: src/insets/InsetFloat.cpp:352
 msgid "float"
-msgstr ""
+msgstr "تعويم"
 
 #: src/insets/InsetFloat.cpp:405
 msgid " (sideways)"
@@ -19209,7 +19209,7 @@ msgstr ""
 #: src/insets/InsetGraphics.cpp:791
 #, c-format
 msgid "Graphics file: %1$s"
-msgstr ""
+msgstr "ملف الصورة : %1$s"
 
 #: src/insets/InsetInclude.cpp:340
 msgid "Verbatim Input"
