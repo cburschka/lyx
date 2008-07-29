@@ -1044,7 +1044,6 @@ void GuiApplication::setGuiLanguage()
 			QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
 		LYXERR(Debug::LOCALE, "Could not find  Qt translations for locale "
 			<< language_name);
-		return;
 	}
 
 	LYXERR(Debug::LOCALE, "Successfully installed Qt translations for locale "
