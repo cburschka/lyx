@@ -36,12 +36,18 @@ using boost::smatch;
 namespace lyx {
 
 
-int VCS::doVCCommand(string const & cmd, FileName const & path)
-{
-	LYXERR(Debug::LYXVC, "doVCCommand: " << cmd);
+int VCS::doVCCommandCall(string const & cmd, FileName const & path){
+	LYXERR(Debug::LYXVC, "doVCCommandCall: " << cmd);
 	Systemcall one;
 	support::PathChanger p(path);
-	int const ret = one.startscript(Systemcall::Wait, cmd);
+	return one.startscript(Systemcall::Wait, cmd);
+}
+
+int VCS::doVCCommand(string const & cmd, FileName const & path)
+{
+	owner_->setBusy(true);
+	int const ret = doVCCommandCall(cmd, path);
+	owner_->setBusy(false);
 	if (ret)
 		frontend::Alert::error(_("Revision control error."),
 			bformat(_("Some problem occured while running the command:\n"
@@ -89,7 +95,7 @@ FileName const RCS::findFile(FileName const & file)
 void RCS::retrieve(FileName const & file)
 {
 	LYXERR(Debug::LYXVC, "LyXVC::RCS: retrieve.\n\t" << file);
-	VCS::doVCCommand("co -q -r " + quoteName(file.toFilesystemEncoding()),
+	doVCCommandCall("co -q -r " + quoteName(file.toFilesystemEncoding()),
 			 FileName());
 }
 

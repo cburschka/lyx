@@ -72,13 +72,15 @@ protected:
 	/// parse information from the version file
 	virtual void scanMaster() = 0;
 
+	// GUI container for doVCCommandCall
+	int doVCCommand(std::string const & cmd, support::FileName const & path);
 	/**
-	 * doVCCommand - call out to the version control utility
+	 * doVCCommandCall - call out to the version control utility
 	 * @param cmd the command to execute
 	 * @param path the path from which to execute
 	 * @return exit status
 	 */
-	static int doVCCommand(std::string const & cmd, support::FileName const & path);
+	static int doVCCommandCall(std::string const & cmd, support::FileName const & path);
 
 	/**
 	 * The master VC file. For RCS this is *,v or RCS/ *,v. master should
