@@ -102,7 +102,7 @@ bool GuiSelection::empty() const
 	if (!selection_supported_)
 		return true;
 
-	LYXERR(Debug::SELECTION, "GuiSelection::filled: " << text_selection_empty_);
+	LYXERR(Debug::SELECTION, "GuiSelection::filled: " << !text_selection_empty_);
 
 	return text_selection_empty_;
 }
