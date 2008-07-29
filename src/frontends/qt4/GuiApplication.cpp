@@ -1044,10 +1044,10 @@ void GuiApplication::setGuiLanguage()
 			QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
 		LYXERR(Debug::LOCALE, "Could not find  Qt translations for locale "
 			<< language_name);
+	} else {
+		LYXERR(Debug::LOCALE, "Successfully installed Qt translations for locale "
+			<< language_name);
 	}
-
-	LYXERR(Debug::LOCALE, "Successfully installed Qt translations for locale "
-		<< language_name);
 
 	switch (default_locale.language()) {
 	case QLocale::Arabic :
