@@ -977,7 +977,8 @@ string DocFileName::unzippedFilename() const
 
 bool operator==(DocFileName const & lhs, DocFileName const & rhs)
 {
-	return lhs.absFilename() == rhs.absFilename()
+	return static_cast<FileName const &>(lhs)
+		== static_cast<FileName const &>(rhs)
 		&& lhs.saveAbsPath() == rhs.saveAbsPath();
 }
 
