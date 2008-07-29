@@ -2269,7 +2269,7 @@ void LyXAction::init()
  * \li Notion: Skiping "auto" when allowauto is false.
  * \li Syntax: toolbar-toggle <NAME> [allowauto]
  * \li Params: <NAME>: standard|extra|table|math|mathmacrotemplate|
-                       minibuffer|review|view/update|math_panels
+                       minibuffer|review|view/update|math_panels|vcs
  * \li Origin: Edwin, 21 May 2007
  * \endvar
  */
