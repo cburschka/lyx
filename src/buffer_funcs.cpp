@@ -496,14 +496,7 @@ void updateLabels(Buffer const & buf, bool childonly)
 
 	Buffer & cbuf = const_cast<Buffer &>(buf);
 
-	if (buf.text().empty()) {
-		// FIXME: we don't call continue with updateLabels()
-		// here because it crashes on newly created documents.
-		// But the TocBackend needs to be initialised
-		// nonetheless so we update the tocBackend manually.
-		cbuf.tocBackend().update();
-		return;
-	}
+	BOOST_ASSERT(!buf.text().paragraphs().empty());
 
 	// do the real work
 	ParIterator parit = par_iterator_begin(buf.inset());
