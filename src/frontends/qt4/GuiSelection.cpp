@@ -101,7 +101,7 @@ bool GuiSelection::empty() const
 		return true;
 
 	// Cache which is to speed up selection-status read
-	// (4 calls when openi Edit menu).
+	// (4 calls when open Edit menu).
 	static bool text_selection_empty;
 	if (schedule_check_) {
 		text_selection_empty = qApp->clipboard()->
