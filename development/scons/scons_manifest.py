@@ -1400,7 +1400,7 @@ lib_images_files = Split('''
     lyx.png
     vc-check-in.png
     vc-check-out.png
-    dialog-show_vc-log.png
+    dialog-show_vclog.png
     vc-register.png
     vc-revert.png
     marginalnote-insert.png

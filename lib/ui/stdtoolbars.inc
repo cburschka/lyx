@@ -214,7 +214,7 @@ ToolbarSet
 		Item "Register" "vc-register"
 		Item "Check-out for edit" "vc-check-out"
 		Item "Check-in changes" "vc-check-in"
-		Item "View revision log" "dialog-show vc-log"
+		Item "View revision log" "dialog-show vclog"
 		Item "Revert changes" "vc-revert"
 	End
 

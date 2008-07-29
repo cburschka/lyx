@@ -328,7 +328,7 @@ dist_images_DATA = \
 	images/lyx.png \
 	images/vc-check-in.png \
 	images/vc-check-out.png \
-	images/dialog-show_vc-log.png \
+	images/dialog-show_vclog.png \
 	images/vc-register.png \
 	images/vc-revert.png \
 	images/marginalnote-insert.png \
