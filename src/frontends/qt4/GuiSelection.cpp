@@ -101,15 +101,14 @@ bool GuiSelection::empty() const
 	if (!selection_supported_)
 		return true;
 
-	bool text_selection_empty;
 	if (schedule_check_) {
-		text_selection_empty = qApp->clipboard()->
+		text_selection_empty_ = qApp->clipboard()->
 			text(QClipboard::Selection).isEmpty();
 		schedule_check_ = false;
 	}
 
-	LYXERR(Debug::SELECTION, "GuiSelection::filled: " << !text_selection_empty);
-	return text_selection_empty;
+	LYXERR(Debug::SELECTION, "GuiSelection::filled: " << !text_selection_empty_);
+	return text_selection_empty_;
 }
 
 } // namespace frontend
