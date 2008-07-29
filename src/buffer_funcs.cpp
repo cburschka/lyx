@@ -466,7 +466,6 @@ void updateLabels(Buffer const & buf, ParIterator & parit)
 		InsetList::const_iterator end = parit->insetList().end();
 		for (; iit != end; ++iit) {
 			parit.pos() = iit->pos;
-			iit->inset->setBuffer(const_cast<Buffer &>(buf));
 			iit->inset->updateLabels(parit);
 		}
 	}
