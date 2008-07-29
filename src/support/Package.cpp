@@ -556,10 +556,10 @@ get_system_support_dir(FileName const & abs_binary,
 				"having searched\n"
 				"\t%1$s\n"
 				"Use the '-sysdir' command line parameter or "
-				"set the environment variable " LYX_DIR_VER " "
+				"set the environment variable\n%2$s "
 				"to the LyX system directory containing the "
 				"file `chkconfig.ltx'."),
-			  from_utf8(searched_dirs_str)));
+			  from_utf8(searched_dirs_str), from_ascii(LYX_DIR_VER)));
 
 	// Keep the compiler happy.
 	return FileName();
