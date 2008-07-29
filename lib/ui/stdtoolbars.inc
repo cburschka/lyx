@@ -210,6 +210,14 @@ ToolbarSet
 		Item "Update PostScript" "buffer-update ps"
 	End
 
+	Toolbar "vcs" "Version Control"
+		Item "Register" "vc-register"
+		Item "Check-out for edit" "vc-check-out"
+		Item "Check-in changes" "vc-check-in"
+		Item "View revision log" "dialog-show vc-log"
+		Item "Revert changes" "vc-revert"
+	End
+
 	Toolbar "math_panels" "Math Panels"
 		PopupMenu "space" "Math Spacings"
 		PopupMenu "style" "Styles"
