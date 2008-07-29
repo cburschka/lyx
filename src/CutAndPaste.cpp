@@ -286,6 +286,9 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 		// merge the first par of the insertion with the current par
 		mergeParagraph(buffer.params(), pars, pit);
 	}
+	//FIXME: We should call setBuffer() on each inserted paragraph.
+	// instead, we call setBuffer() for the main inset at the beginning
+	// of updateLabels()
 
 	pit_type last_paste = pit + insertion.size() - 1;
 
