@@ -91,9 +91,9 @@ void GuiSelection::put(docstring const & str)
 
 void GuiSelection::on_dataChanged()
 {
-	LYXERR(Debug::SELECTION, "GuiSelection::on_dataChanged::empty: " << text_selection_empty_);
 	text_selection_empty_ = qApp->clipboard()->
 		text(QClipboard::Selection).isEmpty();
+	LYXERR(Debug::SELECTION, "GuiSelection::on_dataChanged::filled: " << !text_selection_empty_);
 }
 
 
@@ -102,7 +102,7 @@ bool GuiSelection::empty() const
 	if (!selection_supported_)
 		return true;
 
-	LYXERR(Debug::SELECTION, "GuiSelection::empty: " << text_selection_empty_);
+	LYXERR(Debug::SELECTION, "GuiSelection::filled: " << text_selection_empty_);
 
 	return text_selection_empty_;
 }
