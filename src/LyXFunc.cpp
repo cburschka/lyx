@@ -257,7 +257,7 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 		return;
 
 	// if the current buffer is not that one, switch to it.
-	if (lyx_view_->buffer()->absFileName() != file) {
+	if (lyx_view_->buffer()->fileName() != bm.filename) {
 		if (!switchToBuffer)
 			return;
 		dispatch(FuncRequest(LFUN_BUFFER_SWITCH, file));
