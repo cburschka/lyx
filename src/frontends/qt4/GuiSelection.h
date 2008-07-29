@@ -37,7 +37,7 @@ public:
 	void haveSelection(bool own);
 	docstring const get() const;
 	void put(docstring const & str);
-	bool empty();
+	bool empty() const;
 	//@}
 
 private Q_SLOTS:
@@ -46,7 +46,7 @@ private Q_SLOTS:
 private:
 	// Cache which is to speed up selection-status read
 	// (4 calls when openi Edit menu).
-	bool text_selection_empty_;
+	mutable bool text_selection_empty_;
 	// Direct call clipboard()->text(QClipboard::Selection) inside onDataChanged causes
 	// selection to be obtained. Now imagine the some LyX instance A, when making selection -
 	// each change triggers onDataChange in all others instances for each mouse
@@ -54,7 +54,7 @@ private:
 	// which interferes with the selecting itself. As a result middle button pasting
 	// for more instances don't work and debugging is a hell. So we just schedule
 	// obtaining of selection on the time empty() is actually called.
-	bool schedule_check_;
+	mutable bool schedule_check_;
 	bool const selection_supported_;
 };
 

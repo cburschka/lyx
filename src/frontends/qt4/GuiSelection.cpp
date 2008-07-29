@@ -96,7 +96,7 @@ void GuiSelection::on_dataChanged()
 }
 
 
-bool GuiSelection::empty()
+bool GuiSelection::empty() const
 {
 	if (!selection_supported_)
 		return true;
