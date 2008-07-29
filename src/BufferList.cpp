@@ -25,6 +25,7 @@
 #include "support/ExceptionMessage.h"
 #include "support/debug.h"
 #include "support/filetools.h"
+#include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/Package.h"
@@ -273,8 +274,10 @@ docstring BufferList::emergencyWrite(Buffer * buf)
 }
 
 
-bool BufferList::exists(string const & s) const
+bool BufferList::exists(FileName const & fname) const
 {
+	//FIXME: use Buffer::fileName()!
+	string const s = fname.absFilename();
 	return find_if(bstore.begin(), bstore.end(),
 		       bind(equal_to<string>(),
 			    bind(&Buffer::absFileName, _1),

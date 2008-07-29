@@ -153,16 +153,15 @@ Buffer * newUnnamedFile(string const & templatename, FileName const & path)
 {
 	static int newfile_number;
 
-	string document_path = path.absFilename();
-	string filename = addName(document_path,
+	FileName filename(path, 
 		"newfile" + convert<string>(++newfile_number) + ".lyx");
 	while (theBufferList().exists(filename)
-		|| FileName(filename).isReadableFile()) {
+		|| filename.isReadableFile()) {
 		++newfile_number;
-		filename = addName(document_path,
+		filename.set(path,
 			"newfile" +	convert<string>(newfile_number) + ".lyx");
 	}
-	return newFile(filename, templatename, false);
+	return newFile(filename.absFilename(), templatename, false);
 }
 
 

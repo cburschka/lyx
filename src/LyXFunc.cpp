@@ -246,14 +246,14 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 	LASSERT(!bm.filename.empty(), /**/);
 	string const file = bm.filename.absFilename();
 	// if the file is not opened, open it.
-	if (!theBufferList().exists(file)) {
+	if (!theBufferList().exists(bm.filename)) {
 		if (openFile)
 			dispatch(FuncRequest(LFUN_FILE_OPEN, file));
 		else
 			return;
 	}
 	// open may fail, so we need to test it again
-	if (!theBufferList().exists(file))
+	if (!theBufferList().exists(bm.filename))
 		return;
 
 	// if the current buffer is not that one, switch to it.
@@ -1109,7 +1109,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				// and get full path
 				FileName const s = fileSearch(string(), changeExtension(file_name, ".lyx"), "lyx");
 				// Either change buffer or load the file
-				if (theBufferList().exists(s.absFilename()))
+				if (theBufferList().exists(s))
 					buf = theBufferList().getBuffer(s.absFilename());
 				else {
 					buf = lyx_view_->loadDocument(s);
@@ -1266,7 +1266,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			view()->saveBookmark(false);
 			Buffer * child = 0;
 			bool parsed = false;
-			if (theBufferList().exists(filename.absFilename())) {
+			if (theBufferList().exists(filename)) {
 				child = theBufferList().getBuffer(filename.absFilename());
 			} else {
 				setMessage(bformat(_("Opening child document %1$s..."),

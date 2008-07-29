@@ -22,6 +22,10 @@ namespace lyx {
 class Buffer;
 class OutputParams;
 
+namespace support {
+class FileName;
+}
+
 /**
  * The class holds all all open buffers, and handles construction
  * and deletions of new ones.
@@ -79,7 +83,7 @@ public:
 	Buffer * last();
 
 	/// returns true if the buffer exists already
-	bool exists(std::string const &) const;
+	bool exists(support::FileName const &) const;
 
 	/// returns true if the buffer is loaded
 	bool isLoaded(Buffer const * b) const;
