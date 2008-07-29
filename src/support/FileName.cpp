@@ -814,6 +814,9 @@ bool operator==(FileName const & lhs, FileName const & rhs)
 	// FIXME: We need to solve this warning from Qt documentation:
 	// * Long and short file names that refer to the same file on Windows are
 	//   treated as if they referred to different files.
+	lhs.d->refresh();
+	rhs.d->refresh();
+	
 	if (!lhs.d->fi.isSymLink() && !rhs.d->fi.isSymLink())
 		return lhs.d->fi == rhs.d->fi;
 

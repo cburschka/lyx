@@ -352,7 +352,7 @@ bool Converters::convert(Buffer const * buffer,
 		// if input and output files are equal, we use a
 		// temporary file as intermediary (JMarc)
 		FileName real_outfile;
-		if (outfile.absFilename() == infile.absFilename()) {
+		if (outfile == infile) {
 			real_outfile = infile;
 			// when importing, a buffer does not necessarily exist
 			if (buffer)
