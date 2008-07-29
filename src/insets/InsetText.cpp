@@ -73,7 +73,8 @@ using graphics::PreviewLoader;
 InsetText::InsetText(Buffer const & buf)
 	: drawFrame_(false), frame_color_(Color_insetframe)
 {
-	initParagraphs(buf);
+	initParagraphs(buf.params());
+	setBuffer(const_cast<Buffer &>(buf));
 }
 
 
@@ -88,10 +89,6 @@ InsetText::InsetText(InsetText const & in)
 }
 
 
-InsetText::InsetText()
-{}
-
-
 void InsetText::setBuffer(Buffer & buf)
 {
 	ParagraphList::iterator end = paragraphs().end();
@@ -101,15 +98,15 @@ void InsetText::setBuffer(Buffer & buf)
 }
 
 
-void InsetText::initParagraphs(Buffer const & buf)
+void InsetText::initParagraphs(BufferParams const & bparams)
 {
 	LASSERT(paragraphs().empty(), /**/);
-	buffer_ = const_cast<Buffer *>(&buf);
 	paragraphs().push_back(Paragraph());
 	Paragraph & ourpar = paragraphs().back();
-	ourpar.setPlainOrDefaultLayout(buf.params().documentClass());
+	ourpar.setPlainOrDefaultLayout(bparams.documentClass());
 	ourpar.setInsetOwner(this);
 }
+
 
 void InsetText::setParagraphOwner()
 {

@@ -315,7 +315,7 @@ frontend::WorkAreaManager & Buffer::workAreaManager() const
 
 Text & Buffer::text() const
 {
-	return d->inset->text_;
+	return d->inset->text();
 }
 
 

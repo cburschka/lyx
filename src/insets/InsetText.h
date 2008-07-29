@@ -37,11 +37,7 @@ public:
 	///
 	explicit InsetText(Buffer const & buffer);
 	///
-	InsetText();
-	///
 	InsetText(InsetText const &);
-	///
-	void initParagraphs(Buffer const & buffer);
 	///
 	void setBuffer(Buffer &);
 
@@ -68,6 +64,9 @@ public:
 	InsetText * asInsetText() { return this; }
 	///
 	InsetText const * asInsetText() const { return this; }
+	///
+	Text & text() { return text_; }
+	Text const & text() const { return text_; }
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
@@ -170,6 +169,8 @@ public:
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	///
+	void initParagraphs(BufferParams const &);
+	///
 	void setParagraphOwner();
 	///
 	bool drawFrame_;
@@ -177,8 +178,6 @@ private:
 	ColorCode frame_color_;
 	///
 	mutable pit_type old_pit;
-
-public:
 	///
 	mutable Text text_;
 };

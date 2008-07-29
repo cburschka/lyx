@@ -167,7 +167,7 @@ void InsetCollapsable::write(ostream & os) const
 		break;
 	}
 	os << "\n";
-	text_.write(buffer(), os);
+	text().write(buffer(), os);
 }
 
 

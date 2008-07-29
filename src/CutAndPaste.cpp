@@ -154,8 +154,9 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 		}
 	}
 
+	InsetText in(buffer);
 	// Make sure there is no class difference.
-	InsetText in;
+	in.paragraphs().clear();
 	// This works without copying any paragraph data because we have
 	// a specialized swap method for ParagraphList. This is important
 	// since we store pointers to insets at some places and we don't

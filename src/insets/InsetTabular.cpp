@@ -3903,14 +3903,14 @@ Inset * InsetTabular::editXY(Cursor & cur, int x, int y)
 	cur.push(*this);
 	cur.idx() = getNearestCell(cur.bv(), x, y);
 	resetPos(cur);
-	return cur.bv().textMetrics(&cell(cur.idx())->text_).editXY(cur, x, y);
+	return cur.bv().textMetrics(&cell(cur.idx())->text()).editXY(cur, x, y);
 }
 
 
 void InsetTabular::setCursorFromCoordinates(Cursor & cur, int x, int y) const
 {
 	cur.idx() = getNearestCell(cur.bv(), x, y);
-	cur.bv().textMetrics(&cell(cur.idx())->text_).setCursorFromCoordinates(cur, x, y);
+	cur.bv().textMetrics(&cell(cur.idx())->text()).setCursorFromCoordinates(cur, x, y);
 }
 
 
@@ -4755,7 +4755,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 			// we can only set this if we are not too far right
 			if (cols < columns) {
 				shared_ptr<InsetTableCell> inset = loctab->cellInset(cell);
-				Font const font = bv.textMetrics(&inset->text_).
+				Font const font = bv.textMetrics(&inset->text()).
 					displayFont(0, 0);
 				inset->setText(buf.substr(op, p - op), font,
 					       buffer().params().trackChanges);
@@ -4767,7 +4767,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 			// we can only set this if we are not too far right
 			if (cols < columns) {
 				shared_ptr<InsetTableCell> inset = tabular.cellInset(cell);
-				Font const font = bv.textMetrics(&inset->text_).
+				Font const font = bv.textMetrics(&inset->text()).
 					displayFont(0, 0);
 				inset->setText(buf.substr(op, p - op), font,
 					       buffer().params().trackChanges);
@@ -4784,7 +4784,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 	// check for the last cell if there is no trailing '\n'
 	if (cell < cells && op < len) {
 		shared_ptr<InsetTableCell> inset = loctab->cellInset(cell);
-		Font const font = bv.textMetrics(&inset->text_).displayFont(0, 0);
+		Font const font = bv.textMetrics(&inset->text()).displayFont(0, 0);
 		inset->setText(buf.substr(op, len - op), font,
 			buffer().params().trackChanges);
 	}
