@@ -37,8 +37,6 @@ GuiSelection::GuiSelection()
 {
 	connect(qApp->clipboard(), SIGNAL(selectionChanged()),
 		this, SLOT(on_dataChanged()));
-	// initialize clipboard status.
-	on_dataChanged();
 }
 
 
