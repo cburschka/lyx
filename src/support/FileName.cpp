@@ -811,12 +811,19 @@ docstring const FileName::relPath(string const & path) const
 
 bool operator==(FileName const & lhs, FileName const & rhs)
 {
-	// FIXME: We need to solve these warnings from documentations:
-	// * This will not compare two different symbolic links pointing to the same
-	//   file.
+	// FIXME: We need to solve this warning from Qt documentation:
 	// * Long and short file names that refer to the same file on Windows are
 	//   treated as if they referred to different files.
-	return lhs.d->fi == rhs.d->fi;
+	if (!lhs.d->fi.isSymLink() && !rhs.d->fi.isSymLink())
+		return lhs.d->fi == rhs.d->fi;
+
+	QFileInfo fi1(lhs.d->fi);
+	if (fi1.isSymLink())
+		fi1 = QFileInfo(fi1.symLinkTarget());
+	QFileInfo fi2(rhs.d->fi);
+	if (fi2.isSymLink())
+		fi2 = QFileInfo(fi2.symLinkTarget());
+	return fi1 == fi2;
 }
 
 
