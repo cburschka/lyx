@@ -133,6 +133,7 @@ public:
 			wa_->closeAll();
 			delete wa_;
 		}
+		delete inset;
 	}
 	
 	BufferParams params;
@@ -218,7 +219,7 @@ public:
 	mutable RefCache ref_cache_;
 
 	/// our Text that should be wrapped in an InsetText
-	InsetText inset;
+	InsetText * inset;
 };
 
 
@@ -259,10 +260,9 @@ Buffer::Buffer(string const & file, bool readonly)
 {
 	LYXERR(Debug::INFO, "Buffer::Buffer()");
 
-	d->inset.setBuffer(*this);
-	d->inset.initParagraphs(*this);
-	d->inset.setAutoBreakRows(true);
-	d->inset.getText(0)->setMacrocontextPosition(par_iterator_begin());
+	d->inset = new InsetText(*this);
+	d->inset->setAutoBreakRows(true);
+	d->inset->getText(0)->setMacrocontextPosition(par_iterator_begin());
 }
 
 
@@ -315,13 +315,13 @@ frontend::WorkAreaManager & Buffer::workAreaManager() const
 
 Text & Buffer::text() const
 {
-	return const_cast<Text &>(d->inset.text_);
+	return d->inset->text_;
 }
 
 
 Inset & Buffer::inset() const
 {
-	return const_cast<InsetText &>(d->inset);
+	return *d->inset;
 }
 
 
@@ -578,7 +578,7 @@ bool Buffer::readDocument(Lexer & lex)
 	}
 
 	// read main text
-	bool const res = text().read(*this, lex, errorList, &(d->inset));
+	bool const res = text().read(*this, lex, errorList, d->inset);
 
 	updateMacros();
 	updateMacroInstances();
