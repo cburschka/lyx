@@ -186,6 +186,7 @@ public:
 	docstring const absoluteFilePath() const;
 
 private:
+	friend bool operator==(FileName const &, FileName const &);
 	///
 	struct Private;
 	Private * const d;

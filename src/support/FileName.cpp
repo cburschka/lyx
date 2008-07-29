@@ -811,13 +811,18 @@ docstring const FileName::relPath(string const & path) const
 
 bool operator==(FileName const & lhs, FileName const & rhs)
 {
-	return lhs.absFilename() == rhs.absFilename();
+	// FIXME: We need to solve these warnings from documentations:
+	// * This will not compare two different symbolic links pointing to the same
+	//   file.
+	// * Long and short file names that refer to the same file on Windows are
+	//   treated as if they referred to different files.
+	return lhs.d->fi == rhs.d->fi;
 }
 
 
 bool operator!=(FileName const & lhs, FileName const & rhs)
 {
-	return lhs.absFilename() != rhs.absFilename();
+	return !(operator==(lhs, rhs));
 }
 
 
