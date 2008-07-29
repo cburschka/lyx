@@ -371,7 +371,7 @@ Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params)
 	if (!isLyXFilename(included_file.absFilename()))
 		return 0;
 
-	Buffer * child = theBufferList().getBuffer(included_file.absFilename());
+	Buffer * child = theBufferList().getBuffer(included_file);
 	if (!child) {
 		// the readonly flag can/will be wrong, not anymore I think.
 		if (!included_file.exists())
@@ -459,7 +459,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		if (!loadIfNeeded(buffer(), params()))
 			return false;
 
-		Buffer * tmp = theBufferList().getBuffer(included_file.absFilename());
+		Buffer * tmp = theBufferList().getBuffer(included_file);
 
 		if (tmp->params().baseClass() != masterBuffer->params().baseClass()) {
 			// FIXME UNICODE
@@ -617,7 +617,7 @@ int InsetInclude::docbook(odocstream & os, OutputParams const & runparams) const
 	DocFileName writefile(changeExtension(included_file, ".sgml"));
 
 	if (loadIfNeeded(buffer(), params())) {
-		Buffer * tmp = theBufferList().getBuffer(included_file);
+		Buffer * tmp = theBufferList().getBuffer(FileName(included_file));
 
 		string const mangled = writefile.mangledFilename();
 		writefile = makeAbsPath(mangled,
@@ -681,7 +681,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	// to be loaded:
 	if (loadIfNeeded(buffer(), params())) {
 		// a file got loaded
-		Buffer * const tmp = theBufferList().getBuffer(included_file);
+		Buffer * const tmp = theBufferList().getBuffer(FileName(included_file));
 		// make sure the buffer isn't us
 		// FIXME RECURSIVE INCLUDES
 		// This is not sufficient, as recursive includes could be
@@ -703,7 +703,7 @@ void InsetInclude::fillWithBibKeys(BiblioInfo & keys,
 {
 	if (loadIfNeeded(buffer(), params())) {
 		string const included_file = includedFilename(buffer(), params()).absFilename();
-		Buffer * tmp = theBufferList().getBuffer(included_file);
+		Buffer * tmp = theBufferList().getBuffer(FileName(included_file));
 		BiblioInfo const & newkeys = tmp->localBibInfo();
 		keys.mergeBiblioInfo(newkeys);
 	}

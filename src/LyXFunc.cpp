@@ -488,7 +488,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	/*
 	case LFUN_BUFFER_WRITE:
 	case LFUN_BUFFER_WRITE_AS: {
-		Buffer * b = theBufferList().getBuffer(cmd.getArg(0));
+		Buffer * b = theBufferList().getBuffer(FileName(cmd.getArg(0)));
 		enable = b && (b->isUnnamed() || !b->isClean());
 		break;
 	}
@@ -1110,7 +1110,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				FileName const s = fileSearch(string(), changeExtension(file_name, ".lyx"), "lyx");
 				// Either change buffer or load the file
 				if (theBufferList().exists(s))
-					buf = theBufferList().getBuffer(s.absFilename());
+					buf = theBufferList().getBuffer(s);
 				else {
 					buf = lyx_view_->loadDocument(s);
 					loaded = true;
@@ -1267,7 +1267,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			Buffer * child = 0;
 			bool parsed = false;
 			if (theBufferList().exists(filename)) {
-				child = theBufferList().getBuffer(filename.absFilename());
+				child = theBufferList().getBuffer(filename);
 			} else {
 				setMessage(bformat(_("Opening child document %1$s..."),
 					makeDisplayPath(filename.absFilename())));

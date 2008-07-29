@@ -1443,7 +1443,7 @@ void GuiView::importDocument(string const & argument)
 	FileName const lyxfile(support::changeExtension(fullname.absFilename(), ".lyx"));
 
 	// Check if the document already is open
-	Buffer * buf = theBufferList().getBuffer(lyxfile.absFilename());
+	Buffer * buf = theBufferList().getBuffer(lyxfile);
 	if (buf) {
 		setBuffer(buf);
 		if (!closeBuffer()) {
@@ -1784,7 +1784,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_BUFFER_SWITCH:
-			setBuffer(theBufferList().getBuffer(to_utf8(cmd.argument())));
+			setBuffer(theBufferList().getBuffer(FileName(to_utf8(cmd.argument()))));
 			break;
 
 		case LFUN_BUFFER_NEXT:

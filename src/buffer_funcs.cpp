@@ -60,7 +60,7 @@ namespace Alert = frontend::Alert;
 Buffer * checkAndLoadLyXFile(FileName const & filename)
 {
 	// File already open?
-	Buffer * checkBuffer = theBufferList().getBuffer(filename.absFilename());
+	Buffer * checkBuffer = theBufferList().getBuffer(filename);
 	if (checkBuffer) {
 		if (checkBuffer->isClean())
 			return checkBuffer;

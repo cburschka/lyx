@@ -276,11 +276,7 @@ docstring BufferList::emergencyWrite(Buffer * buf)
 
 bool BufferList::exists(FileName const & fname) const
 {
-	return find_if(bstore.begin(), bstore.end(),
-		       bind(equal_to<FileName>(),
-			    bind(&Buffer::fileName, _1),
-			    fname))
-		!= bstore.end();
+	return getBuffer(fname) != 0;
 }
 
 
@@ -293,14 +289,10 @@ bool BufferList::isLoaded(Buffer const * b) const
 }
 
 
-Buffer * BufferList::getBuffer(string const & s)
+Buffer * BufferList::getBuffer(support::FileName const & fname) const
 {
-	BufferStorage::iterator it =
-		find_if(bstore.begin(), bstore.end(),
-			bind(equal_to<string>(),
-			     bind(&Buffer::absFileName, _1),
-			     s));
-
+	BufferStorage::const_iterator it = find_if(bstore.begin(), bstore.end(),
+		bind(equal_to<FileName>(), bind(&Buffer::fileName, _1), fname));
 	return it != bstore.end() ? (*it) : 0;
 }
 

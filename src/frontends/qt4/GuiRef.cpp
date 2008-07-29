@@ -347,8 +347,7 @@ void GuiRef::updateRefs()
 {
 	refs_.clear();
 	string const name = theBufferList().getFileNames()[bufferCO->currentIndex()];
-	Buffer const * buf = theBufferList().getBuffer(
-		support::makeAbsPath(name).absFilename());
+	Buffer const * buf = theBufferList().getBuffer(support::makeAbsPath(name));
 	buf->getLabelList(refs_);
 	sortCB->setEnabled(!refs_.empty());
 	refsLW->setEnabled(!refs_.empty());

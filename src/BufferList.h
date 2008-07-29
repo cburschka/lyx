@@ -91,7 +91,7 @@ public:
 	/// return index of named buffer in buffer list
 	int bufferNum(std::string const & name) const;
 	/// returns a pointer to the buffer with the given name.
-	Buffer * getBuffer(std::string const &);
+	Buffer * getBuffer(support::FileName const &) const;
 	/// returns a pointer to the buffer with the given number.
 	Buffer * getBuffer(unsigned int);
 	/// returns a pointer to the buffer whose temppath matches the string
