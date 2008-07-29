@@ -34,12 +34,12 @@ public:
 
 	/// register a file for version control
 	virtual void registrer(std::string const & msg) = 0;
-	/// check in the current revision
-	virtual void checkIn(std::string const & msg) = 0;
+	/// check in the current revision, returns log
+	virtual std::string checkIn(std::string const & msg) = 0;
 	// can be this operation processed in the current RCS?
 	virtual bool checkInEnabled() = 0;
-	/// check out for editing
-	virtual void checkOut() = 0;
+	/// check out for editing, returns log
+	virtual std::string checkOut() = 0;
 	// can be this operation processed in the current RCS?
 	virtual bool checkOutEnabled() = 0;
 	/// revert current edits
@@ -118,11 +118,11 @@ public:
 
 	virtual void registrer(std::string const & msg);
 
-	virtual void checkIn(std::string const & msg);
+	virtual std::string checkIn(std::string const & msg);
 
 	virtual bool checkInEnabled();
 
-	virtual void checkOut();
+	virtual std::string checkOut();
 
 	virtual bool checkOutEnabled();
 
@@ -157,11 +157,11 @@ public:
 
 	virtual void registrer(std::string const & msg);
 
-	virtual void checkIn(std::string const & msg);
+	virtual std::string checkIn(std::string const & msg);
 
 	virtual bool checkInEnabled();
 
-	virtual void checkOut();
+	virtual std::string checkOut();
 
 	virtual bool checkOutEnabled();
 
@@ -199,11 +199,11 @@ public:
 
 	virtual void registrer(std::string const & msg);
 
-	virtual void checkIn(std::string const & msg);
+	virtual std::string checkIn(std::string const & msg);
 
 	virtual bool checkInEnabled();
 
-	virtual void checkOut();
+	virtual std::string checkOut();
 
 	virtual bool checkOutEnabled();
 
@@ -223,8 +223,8 @@ public:
 
 protected:
 	virtual void scanMaster();
-	/// Check for error messages in svn output.
-	std::string scanLogFile(support::FileName const & f);
+	/// Check for messages in svn output. Returns error.
+	std::string scanLogFile(support::FileName const & f, std::string & status);
 
 private:
 	support::FileName file_;

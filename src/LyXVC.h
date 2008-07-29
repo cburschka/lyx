@@ -67,13 +67,13 @@ public:
 	/// Register the document as an VC file.
 	void registrer();
 
-	/// Unlock and commit changes.
-	void checkIn();
+	/// Unlock and commit changes. Returns log.
+	std::string checkIn();
 	/// Does the current VC supports this operation?
 	bool checkInEnabled();
 
-	/// Lock and prepare to edit document.
-	void checkOut();
+	/// Lock/update and prepare to edit document. Returns log.
+	std::string checkOut();
 	/// Does the current VC supports this operation?
 	bool checkOutEnabled();
 

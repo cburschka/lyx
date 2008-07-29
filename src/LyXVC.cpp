@@ -142,28 +142,30 @@ void LyXVC::registrer()
 }
 
 
-void LyXVC::checkIn()
+string LyXVC::checkIn()
 {
 	LYXERR(Debug::LYXVC, "LyXVC: checkIn");
 	docstring response;
+	string log;
 	bool ok = Alert::askForText(response, _("LyX VC: Log Message"));
 	if (ok) {
 		if (response.empty())
 			response = _("(no log message)");
-		vcs->checkIn(to_utf8(response));
+		log = vcs->checkIn(to_utf8(response));
 	} else {
 		LYXERR(Debug::LYXVC, "LyXVC: user cancelled");
 	}
+	return log;
 }
 
 
-void LyXVC::checkOut()
+string LyXVC::checkOut()
 {
 	//RCS allows checkOut only in ReadOnly mode
-	if (vcs->toggleReadOnlyEnabled() && !owner_->isReadonly()) return;
+	if (vcs->toggleReadOnlyEnabled() && !owner_->isReadonly()) return string();
 
 	LYXERR(Debug::LYXVC, "LyXVC: checkOut");
-	vcs->checkOut();
+	return vcs->checkOut();
 }
 
 

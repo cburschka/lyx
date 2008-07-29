@@ -1052,7 +1052,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 			if (lyx_view_->buffer()->lyxvc().inUse()
 					&& !lyx_view_->buffer()->isReadonly()) {
-				lyx_view_->buffer()->lyxvc().checkIn();
+				setMessage(from_utf8(lyx_view_->buffer()->lyxvc().checkIn()));
 				reloadBuffer();
 			}
 			break;
@@ -1062,7 +1062,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (!ensureBufferClean(view()))
 				break;
 			if (lyx_view_->buffer()->lyxvc().inUse()) {
-				lyx_view_->buffer()->lyxvc().checkOut();
+				setMessage(from_utf8(lyx_view_->buffer()->lyxvc().checkOut()));
 				reloadBuffer();
 			}
 			break;

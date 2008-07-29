@@ -170,11 +170,12 @@ void RCS::registrer(string const & msg)
 }
 
 
-void RCS::checkIn(string const & msg)
+string RCS::checkIn(string const & msg)
 {
-	doVCCommand("ci -q -u -m\"" + msg + "\" "
+	int ret = doVCCommand("ci -q -u -m\"" + msg + "\" "
 		    + quoteName(onlyFilename(owner_->absFileName())),
 		    FileName(owner_->filePath()));
+	return ret ? string() : "RCS: Proceeded";
 }
 
 bool RCS::checkInEnabled()
@@ -182,11 +183,12 @@ bool RCS::checkInEnabled()
 	return owner_ && !owner_->isReadonly();
 }
 
-void RCS::checkOut()
+string RCS::checkOut()
 {
 	owner_->markClean();
-	doVCCommand("co -q -l " + quoteName(onlyFilename(owner_->absFileName())),
+	int ret = doVCCommand("co -q -l " + quoteName(onlyFilename(owner_->absFileName())),
 		    FileName(owner_->filePath()));
+	return ret ? string() : "RCS: Proceeded";
 }
 
 
@@ -327,11 +329,12 @@ void CVS::registrer(string const & msg)
 }
 
 
-void CVS::checkIn(string const & msg)
+string CVS::checkIn(string const & msg)
 {
-	doVCCommand("cvs -q commit -m \"" + msg + "\" "
+	int ret = doVCCommand("cvs -q commit -m \"" + msg + "\" "
 		    + quoteName(onlyFilename(owner_->absFileName())),
 		    FileName(owner_->filePath()));
+	return ret ? string() : "CVS: Proceeded";
 }
 
 
@@ -341,12 +344,13 @@ bool CVS::checkInEnabled()
 }
 
 
-void CVS::checkOut()
+string CVS::checkOut()
 {
 	// cvs update or perhaps for cvs this should be a noop
 	// we need to detect conflict (eg "C" in output)
 	// before we can do this.
 	lyxerr << "Sorry not implemented." << endl;
+	return string();
 }
 
 
@@ -456,12 +460,12 @@ void SVN::registrer(string const & msg)
 }
 
 
-void SVN::checkIn(string const & msg)
+string SVN::checkIn(string const & msg)
 {
 	FileName tmpf = FileName::tempName("lyxvcout");
 	if (tmpf.empty()){
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
-		return;
+		return N_("Error: Could not generate logfile.");
 	}
 
 	doVCCommand("svn commit -m \"" + msg + "\" "
@@ -469,13 +473,15 @@ void SVN::checkIn(string const & msg)
 		    + " 2> " + tmpf.toFilesystemEncoding(),
 		    FileName(owner_->filePath()));
 
-	string res = scanLogFile(tmpf);
+	string log;
+	string res = scanLogFile(tmpf, log);
 	if (!res.empty())
 		frontend::Alert::error(_("Revision control error."),
 				_("Error when commiting to repository.\n"
 				"You have to manually resolve the problem.\n"
 				"After pressing OK, LyX will reopen the document."));
 	tmpf.erase();
+	return "SVN: " + log;
 }
 
 
@@ -487,7 +493,7 @@ bool SVN::checkInEnabled()
 // FIXME Correctly return code should be checked instead of this.
 // This would need another solution than just plain startscript.
 // Hint from Andre': QProcess::readAllStandardError()...
-string SVN::scanLogFile(FileName const & f)
+string SVN::scanLogFile(FileName const & f, string & status)
 {
 	ifstream ifs(f.toFilesystemEncoding().c_str());
 	string line;
@@ -495,28 +501,31 @@ string SVN::scanLogFile(FileName const & f)
 	while (ifs) {
 		getline(ifs, line);
 		lyxerr << line << "\n";
-		if (prefixIs(line, "C "))
+		if (!line.empty()) status += line + "; ";
+		if (prefixIs(line, "C ") || contains(line, "Commit failed")) {
+			ifs.close();
 			return line;
-		if (contains(line, "Commit failed"))
-			return line;
+		}
 	}
+	ifs.close();
 	return string();
 }
 
 
-void SVN::checkOut()
+string SVN::checkOut()
 {
 	FileName tmpf = FileName::tempName("lyxvcout");
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
-		return;
+		return N_("Error: Could not generate logfile.");
 	}
 
 	doVCCommand("svn update " + quoteName(onlyFilename(owner_->absFileName()))
 		    + " > " + tmpf.toFilesystemEncoding(),
 		    FileName(owner_->filePath()));
 
-	string res = scanLogFile(tmpf);
+	string log;
+	string res = scanLogFile(tmpf, log);
 	if (!res.empty())
 		frontend::Alert::error(_("Revision control error."),
 			bformat(_("Error when updating from repository.\n"
@@ -524,6 +533,7 @@ void SVN::checkOut()
 				"After pressing OK, LyX will try to reopen resolved document."),
 			from_ascii(res)));
 	tmpf.erase();
+	return "SVN: " + log;
 }
 
 
