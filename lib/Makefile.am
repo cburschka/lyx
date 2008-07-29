@@ -326,6 +326,11 @@ dist_images_DATA = \
 	images/layout_Section.png \
 	images/lyx-quit.png \
 	images/lyx.png \
+	images/vc-check-in.png \
+	images/vc-check-out.png \
+	images/dialog-show_vc-log.png \
+	images/vc-register.png \
+	images/vc-revert.png \
 	images/marginalnote-insert.png \
 	images/math-display.png \
 	images/math-macro-add-greedy-optional-param.png \

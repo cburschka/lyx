@@ -1398,6 +1398,11 @@ lib_images_files = Split('''
     layout_Section.png
     lyx-quit.png
     lyx.png
+    vc-check-in.png
+    vc-check-out.png
+    dialog-show_vc-log.png
+    vc-register.png
+    vc-revert.png
     marginalnote-insert.png
     math-display.png
     math-macro-add-greedy-optional-param.png
