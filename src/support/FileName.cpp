@@ -144,10 +144,7 @@ FileName::FileName(FileName const & rhs) : d(new Private)
 
 FileName::FileName(FileName const & rhs, string const & suffix) : d(new Private)
 {
-	if (!rhs.d->fi.isDir())
-		d->fi.setFile(rhs.d->fi.filePath() + toqstr(suffix));
-	else
-		d->fi.setFile(QDir(rhs.d->fi.absoluteFilePath()), toqstr(suffix));
+	set(rhs, suffix);
 }
 
 
@@ -179,6 +176,15 @@ string FileName::absFilename() const
 void FileName::set(string const & name)
 {
 	d->fi.setFile(toqstr(name));
+}
+
+
+void FileName::set(FileName const & rhs, string const & suffix)
+{
+	if (!rhs.d->fi.isDir())
+		d->fi.setFile(rhs.d->fi.filePath() + toqstr(suffix));
+	else
+		d->fi.setFile(QDir(rhs.d->fi.absoluteFilePath()), toqstr(suffix));
 }
 
 

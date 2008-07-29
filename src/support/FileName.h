@@ -55,6 +55,7 @@ public:
 	 * Encoding is always UTF-8.
 	 */
 	virtual void set(std::string const & filename);
+	virtual void set(FileName const & fn, std::string const & suffix);
 	virtual void erase();
 	/// Is this filename empty?
 	bool empty() const;
