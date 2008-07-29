@@ -458,7 +458,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	case LFUN_VC_REGISTER:
-		enable = !buf->lyxvc().inUse();
+		enable = !buf->lyxvc().inUse() && !buf->isUnnamed();
 		break;
 	case LFUN_VC_CHECK_IN:
 		enable = buf->lyxvc().checkInEnabled();
@@ -1037,7 +1037,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		// --- version control -------------------------------
 		case LFUN_VC_REGISTER:
 			LASSERT(lyx_view_ && lyx_view_->buffer(), /**/);
-			if (!ensureBufferClean(view()))
+			if (!ensureBufferClean(view()) || lyx_view_->buffer()->isUnnamed())
 				break;
 			if (!lyx_view_->buffer()->lyxvc().inUse()) {
 				lyx_view_->buffer()->lyxvc().registrer();
