@@ -24,6 +24,7 @@ class OutputParams;
 
 namespace support {
 class FileName;
+class FileNameList;
 }
 
 /**
@@ -59,7 +60,7 @@ public:
 	void closeAll();
 
 	/// returns a vector with all the buffers filenames
-	std::vector<std::string> const getFileNames() const;
+	support::FileNameList const & fileNames() const;
 
 	/// FIXME
 	void updateIncludedTeXfiles(std::string const &, OutputParams const &);
@@ -89,7 +90,7 @@ public:
 	bool isLoaded(Buffer const * b) const;
 
 	/// return index of named buffer in buffer list
-	int bufferNum(std::string const & name) const;
+	int bufferNum(support::FileName const & name) const;
 	/// returns a pointer to the buffer with the given name.
 	Buffer * getBuffer(support::FileName const &) const;
 	/// returns a pointer to the buffer with the given number.

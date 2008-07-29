@@ -53,8 +53,6 @@ class ParConstIterator;
 class ParIterator;
 class Text;
 class TocList;
-class FileNameList;
-
 
 namespace graphics { class PreviewLoader; }
 

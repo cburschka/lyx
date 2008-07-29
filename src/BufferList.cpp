@@ -24,8 +24,9 @@
 
 #include "support/ExceptionMessage.h"
 #include "support/debug.h"
-#include "support/filetools.h"
 #include "support/FileName.h"
+#include "support/FileNameList.h"
+#include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/Package.h"
@@ -122,12 +123,13 @@ void BufferList::closeAll()
 }
 
 
-vector<string> const BufferList::getFileNames() const
+FileNameList const & BufferList::fileNames() const
 {
-	vector<string> nvec;
+	static FileNameList nvec;
+	nvec.clear();
 	transform(bstore.begin(), bstore.end(),
 		  back_inserter(nvec),
-		  boost::bind(&Buffer::absFileName, _1));
+		  boost::bind(&Buffer::fileName, _1));
 	return nvec;
 }
 
@@ -317,11 +319,11 @@ void BufferList::setCurrentAuthor(docstring const & name, docstring const & emai
 }
 
 
-int BufferList::bufferNum(string const & name) const
+int BufferList::bufferNum(FileName const & fname) const
 {
-	vector<string> buffers = getFileNames();
-	vector<string>::const_iterator cit =
-		find(buffers.begin(), buffers.end(), name);
+	FileNameList const & buffers = fileNames();
+	FileNameList::const_iterator cit =
+		find(buffers.begin(), buffers.end(), fname);
 	if (cit == buffers.end())
 		return 0;
 	return int(cit - buffers.begin());

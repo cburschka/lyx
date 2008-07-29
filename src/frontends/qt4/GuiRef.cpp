@@ -22,6 +22,7 @@
 #include "insets/InsetRef.h"
 
 #include "support/FileName.h"
+#include "support/FileNameList.h"
 #include "support/filetools.h" // makeAbsPath, makeDisplayPath
 
 #include <QLineEdit>
@@ -214,10 +215,10 @@ void GuiRef::updateContents()
 
 	// insert buffer list
 	bufferCO->clear();
-	vector<string> buffers = theBufferList().getFileNames();
-	for (vector<string>::iterator it = buffers.begin();
+	FileNameList const & buffers = theBufferList().fileNames();
+	for (FileNameList::const_iterator it = buffers.begin();
 	     it != buffers.end(); ++it) {
-		bufferCO->addItem(toqstr(makeDisplayPath(*it)));
+		bufferCO->addItem(toqstr(makeDisplayPath(it->absFilename())));
 	}
 
 	// restore the buffer combo setting for new insets
@@ -225,7 +226,7 @@ void GuiRef::updateContents()
 	    && restored_buffer_ < bufferCO->count()) 
 		bufferCO->setCurrentIndex(restored_buffer_);
 	else {
-		int num = theBufferList().bufferNum(buffer().absFileName());
+		int num = theBufferList().bufferNum(buffer().fileName());
 		bufferCO->setCurrentIndex(num);
 	}
 
@@ -346,8 +347,8 @@ void GuiRef::redoRefs()
 void GuiRef::updateRefs()
 {
 	refs_.clear();
-	string const name = theBufferList().getFileNames()[bufferCO->currentIndex()];
-	Buffer const * buf = theBufferList().getBuffer(support::makeAbsPath(name));
+	FileName const & name = theBufferList().fileNames()[bufferCO->currentIndex()];
+	Buffer const * buf = theBufferList().getBuffer(name);
 	buf->getLabelList(refs_);
 	sortCB->setEnabled(!refs_.empty());
 	refsLW->setEnabled(!refs_.empty());
