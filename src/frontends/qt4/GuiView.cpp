@@ -1325,6 +1325,8 @@ void GuiView::openDocument(string const & fname)
 		setBuffer(buf);
 		buf->errors("Parse");
 		str2 = bformat(_("Document %1$s opened."), disp_fn);
+		if (buf->lyxvc().inUse())
+			str2 += " " + _("Version control detected, enabling VCS support.");
 	} else {
 		str2 = bformat(_("Could not open document %1$s"), disp_fn);
 	}
