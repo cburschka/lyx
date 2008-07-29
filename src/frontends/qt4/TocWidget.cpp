@@ -61,6 +61,10 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 
 	// The toc types combo won't change its model.
 	typeCO->setModel(gui_view_.tocModels().nameModel());
+
+	// Make sure the buttons are disabled when first shown without a loaded
+	// Buffer.
+	enableControls(false);
 }
 
 
