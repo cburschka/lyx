@@ -276,12 +276,10 @@ docstring BufferList::emergencyWrite(Buffer * buf)
 
 bool BufferList::exists(FileName const & fname) const
 {
-	//FIXME: use Buffer::fileName()!
-	string const s = fname.absFilename();
 	return find_if(bstore.begin(), bstore.end(),
-		       bind(equal_to<string>(),
-			    bind(&Buffer::absFileName, _1),
-			    s))
+		       bind(equal_to<FileName>(),
+			    bind(&Buffer::fileName, _1),
+			    fname))
 		!= bstore.end();
 }
 
