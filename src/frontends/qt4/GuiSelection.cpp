@@ -101,9 +101,11 @@ bool GuiSelection::empty()
 	if (!selection_supported_)
 		return true;
 
-	if (schedule_check_)
+	if (schedule_check_) {
 		text_selection_empty_ = qApp->clipboard()->
 			text(QClipboard::Selection).isEmpty();
+		schedule_check_ = false;
+	}
 
 	LYXERR(Debug::SELECTION, "GuiSelection::filled: " << !text_selection_empty_);
 	return text_selection_empty_;
