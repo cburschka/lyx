@@ -91,19 +91,21 @@ void GuiSelection::put(docstring const & str)
 
 void GuiSelection::on_dataChanged()
 {
-	text_selection_empty_ = qApp->clipboard()->
-		text(QClipboard::Selection).isEmpty();
-	LYXERR(Debug::SELECTION, "GuiSelection::on_dataChanged::filled: " << !text_selection_empty_);
+	schedule_check_ = true;
+	LYXERR(Debug::SELECTION, "GuiSelection::on_dataChanged");
 }
 
 
-bool GuiSelection::empty() const
+bool GuiSelection::empty()
 {
 	if (!selection_supported_)
 		return true;
 
-	LYXERR(Debug::SELECTION, "GuiSelection::filled: " << !text_selection_empty_);
+	if (schedule_check_)
+		text_selection_empty_ = qApp->clipboard()->
+			text(QClipboard::Selection).isEmpty();
 
+	LYXERR(Debug::SELECTION, "GuiSelection::filled: " << !text_selection_empty_);
 	return text_selection_empty_;
 }
 

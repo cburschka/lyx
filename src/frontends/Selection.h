@@ -62,7 +62,7 @@ public:
 	 * This does always return true on systems that don't have a real
 	 * selection.
 	 */
-	virtual bool empty() const = 0;
+	virtual bool empty() = 0;
 };
 
 } // namespace frontend
