@@ -44,9 +44,6 @@ private Q_SLOTS:
 	void on_dataChanged();
 
 private:
-	// Cache which is to speed up selection-status read
-	// (4 calls when openi Edit menu).
-	mutable bool text_selection_empty_;
 	// Direct call clipboard()->text(QClipboard::Selection) inside onDataChanged causes
 	// selection to be obtained. Now imagine the some LyX instance A, when making selection -
 	// each change triggers onDataChange in all others instances for each mouse

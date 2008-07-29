@@ -32,7 +32,8 @@ using support::externalLineEnding;
 
 
 GuiSelection::GuiSelection()
-	: selection_supported_(qApp->clipboard()->supportsSelection())
+	: selection_supported_(qApp->clipboard()->supportsSelection()),
+	schedule_check_(true)
 {
 	connect(qApp->clipboard(), SIGNAL(selectionChanged()),
 		this, SLOT(on_dataChanged()));
@@ -101,14 +102,17 @@ bool GuiSelection::empty() const
 	if (!selection_supported_)
 		return true;
 
+	// Cache which is to speed up selection-status read
+	// (4 calls when openi Edit menu).
+	static bool text_selection_empty;
 	if (schedule_check_) {
-		text_selection_empty_ = qApp->clipboard()->
+		text_selection_empty = qApp->clipboard()->
 			text(QClipboard::Selection).isEmpty();
 		schedule_check_ = false;
 	}
 
-	LYXERR(Debug::SELECTION, "GuiSelection::filled: " << !text_selection_empty_);
-	return text_selection_empty_;
+	LYXERR(Debug::SELECTION, "GuiSelection::filled: " << !text_selection_empty);
+	return text_selection_empty;
 }
 
 } // namespace frontend
