@@ -1,0 +1,2238 @@
+#LyX 1.5.7svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+ % link all cross references and URLs in pdf output
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
+  bookmarksopen, bookmarksopenlevel=2,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+  pdfpagelayout=OneColumn, pdfnewwindow=true,
+  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+  pdfauthor={LyX Team}, pdftex,
+  pdftitle={Introducción a LyX},pdfsubject={LyX-documentación Introducción},
+  pdfkeywords={LyX, Documentación}]{hyperref}
+
+\else % if dvi or ps is produced
+
+ % link all cross references and URLs in dvi output
+ \usepackage[ps2pdf]{hyperref}
+
+\fi % end if pdflatex is used
+
+ % the pages of the TOC are numbered roman
+ % and a pdf-bookmark for the TOC is added
+ \pagenumbering{roman}
+ \let\myTOC\tableofcontents
+ \renewcommand\tableofcontents{%
+   \pdfbookmark[1]{Índice}{}
+   \myTOC
+   \clearpage
+   \pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
+\end_preamble
+\language catalan
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize 12
+\spacing single
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Introducció al LyX
+\end_layout
+
+\begin_layout Author
+per l'Equip LyX
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+\noindent
+Si teniu comentaris o correccions d'errors envieu-los, si us plau, a la
+ llista de correu de documentació del LyX: 
+\family typewriter
+lyx-docs@lists.lyx.org
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+La filosofia del LyX
+\end_layout
+
+\begin_layout Subsection
+Què és el LyX?
+\end_layout
+
+\begin_layout Standard
+El LyX és un sistema de preparació de documents.
+ És excel·lent per crear articles tècnics i matemàtics complexos, referències
+ creuades, bibliografies, índexs, etc.
+ És molt bo per a documents de qualsevol longitud en les tasques de processament
+ més habituals: paginació i divisió automàtica de seccions, correcció ortogràfic
+a, etc.
+ També es pot fer servir per escriure cartes a la mare, encara que per a
+ això hi ha programes més senzills.
+ És clar que no és la millor eina per a crear cartells, fulls de propaganda
+ o avisos (després explicarem el perquè), tot i això, amb una mica d'esforç
+ també es pot fer tot això.
+ Aquí teniu alguns exemples dels usos més freqüents: informes, cartes, discursos
+ i tesis, apunts, conferències, documentació de programari, llibres, articles
+ de publicacions científiques, guions de cinema i teatre, presentacions
+ comercials \SpecialChar \ldots{}
+ 
+\end_layout
+
+\begin_layout Standard
+El LyX és un programa que dóna un enfocament modern a l'escriptura de documents
+ amb ordinador fent servir un paradigma de llenguatge de disseny, un enfocament
+ que trenca amb la tradició obsoleta del 
+\begin_inset Quotes eld
+\end_inset
+
+com una màquina d'escriure
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Està dissenyat per autors que desitgen una presentació professional amb
+ rapidesa i un esforç mínim sense haver de ser especialista en composició
+ gràfica; aquesta tasca la realitza majoritàriament l'ordinador, no l'autor,
+ que amb el LyX pot concentrar-se en els continguts.
+\end_layout
+
+\begin_layout Standard
+Part del repte inicial en l'ús del LyX es troba en el canvi de forma de
+ pensar que l'usuari ha de fer.
+ En altre temps només teníem màquines d'escriure per crear documents, així
+ que vam aprendre alguns trucs per a superar les limitacions.
+ Subratllar, que bàsicament és sobreescriure amb el caràcter
+\begin_inset Quotes eld
+\end_inset
+
+_
+\begin_inset Quotes erd
+\end_inset
+
+, es va convertir en una forma de ressaltar el text.
+ Per crear una taula, s'establia a mà l'ample de cada columna i es posaven
+ les tabulacions necessàries.
+ Amb les cartes i altres texts amb alineament a la dreta passava el mateix.
+ A més, el guionatge de paraules a final de línia requeria ser molt curós
+ i previsor.
+\end_layout
+
+\begin_layout Standard
+En altres paraules, ens hem habituat a preocupar-nos pel petits detalls
+ de 
+\begin_inset Quotes eld
+\end_inset
+
+quin caràcter va en quin lloc
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Com a conseqüència, gairebé tots els processadors de text es basen en aquesta
+ mentalitat.
+ Encara empren tabuladors per afegir espais en blanc.
+ Encara us heu d'amoïnar de en quina part exacta de la pàgina sortirà cada
+ cosa.
+ Ressaltar text significa canviar el tipus de lletra, semblant a canviar
+ la roda d'una màquina d'escriure.
+ Aquesta és la filosofia subjacent en un processador de text del tipus WYSIWYG:
+ 
+\begin_inset Quotes eld
+\end_inset
+
+What You See Is What You Get
+\begin_inset Quotes erd
+\end_inset
+
+ (
+\begin_inset Quotes eld
+\end_inset
+
+Això que veus és això que obtens
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Malauradament, això es converteix amb freqüència en 
+\begin_inset Quotes eld
+\end_inset
+
+Això que veus és tot el que tens
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Aquí és on el LyX difereix d'un processador de text normal i corrent.
+ No us heu d'amoïnar de que una lletra vagi a un lloc determinat.
+ Li dieu al Lyx 
+\emph on
+allò que esteu fent
+\emph default
+ i ell s'encarrega de tota la resta, seguint un conjunt de regles anomenat
+ 
+\emph on
+estil
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Si hem de ser sincers, les versions recents dels processadors de text més
+ coneguts incorporen una mena de fulls d'estil que segueixen un mètode de
+ disseny similar.
+ Tot i això, l'experiència ens diu que a la pràctica no es fan servir gaire.
+\end_layout
+
+\end_inset
+
+.
+ Vegeu un petit exemple:
+\end_layout
+
+\begin_layout Standard
+Suposeu que escriviu un informe.
+ Voleu que comenci amb una secció anomenada 
+\begin_inset Quotes eld
+\end_inset
+
+Introducció
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Així doncs, us dirigiu al menú del processador de text que canvia la mida
+ de la lletra i trieu un nova mida.
+ Després canvieu també a negreta.
+ Tot seguit escriviu: 
+\begin_inset Quotes eld
+\end_inset
+
+1.\InsetSpace ~
+\InsetSpace ~
+Introducció
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Per descomptat, si més tard decidiu que aquesta secció pertany a alguna
+ altra part del document.
+ o bé inseriu una nova secció anterior a aquesta, heu de canviar la numeració
+ a la secció i a totes les seccions posterior, a més de les corresponents
+ entrades en l'índex.
+\end_layout
+
+\begin_layout Standard
+Al LyX, en la llista desplegable a l'esquerra de la barra de botons, seleccioneu
+ 
+\family sans
+Secció
+\family default
+, i escriviu 
+\begin_inset Quotes eld
+\end_inset
+
+Introducció
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Això és tot.
+ Si retalleu i enganxeu la secció, serà numerada automàticament ---a qualsevol
+ part---.
+ I si introduïu correctament referències a aquesta secció (inserint una
+ etiqueta de referència creuada), el LyX les actualitzarà automàticament
+ a través de tot el document, de manera que mai no haureu d'escriure un
+ número de secció.
+ 
+\end_layout
+
+\begin_layout Standard
+Veiem ara el problema de la consistència.
+ Cinc dies més tard, obriu l'informe i comenceu la secció 4.
+ Però heu oblidat que estàveu usant lletra en negreta de 18 punts, i useu
+ la de 16, així que acabeu escrivint l'encapçalament de la secció 4 amb
+ un tipus de lletra diferent al que vau emprar a la secció 1.
+ Aquest problema no existeix al LyX.
+ L'ordinador s'encarrega de tota la feina feixuga de portar el compte de
+ mides i tipus de lletra, no l'autor.
+ Al cap i a la fi, per això està l'ordinador.
+\end_layout
+
+\begin_layout Standard
+Un altre exemple.
+ Suposeu que esteu fent una llista.
+ En altre processadors de tex una llista és només un seqüència de tabuladors
+ i salts de línia.
+ Necessiteu pensar on posar l'etiqueta de cada element de a llista, que
+ ha de ser aquesta etiqueta, quantes línies en blanc s'han de posar entre
+ cada element, etc.
+ Amb el LyX, només teniu dues preocupacions: quina classe de llista és,
+ i que hi posareu.
+ Això és tot.
+\end_layout
+
+\begin_layout Standard
+Així doncs, la idea essencial darrere del LyX és especificar 
+\emph on
+allò
+\emph default
+ que esteu fent, i no pas 
+\emph on
+com
+\emph default
+ fer-ho.
+ En comptes de 
+\begin_inset Quotes eld
+\end_inset
+
+Això que veus és allò que obtens
+\begin_inset Quotes erd
+\end_inset
+
+ (WYSIWIG), el model del LyX és 
+\begin_inset Quotes eld
+\end_inset
+
+Això que veus és allò que vols dir
+\begin_inset Quotes erd
+\end_inset
+
+ (WYSIWIM).
+ És una idea poderosa que simplifica molt els mecanismes de l'escriptura
+ de documents.
+ I per això el LyX no és idoni per crear pòsters i fulls de propaganda ---en
+ aquesta casos 
+\emph on
+sí
+\emph default
+ voleu especificar exactament on va cada cosa perquè no hi ha unitats funcionals
+ com paràgrafs, seccions, etc---.
+ Això significa que el LyX ha perdut funcionalitat, significa simplement
+ que no és l'eina adient per aquestes tasques ---per clavar un clau no empreu
+ un tornavís---.
+ 
+\end_layout
+
+\begin_layout Subsection
+Diferències entre el LyX i altres processadors de text
+\begin_inset OptArg
+status open
+
+\begin_layout Standard
+El LyX i altres processadors de text
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aquí teniu una llista de coses que no trobareu al LyX:
+\end_layout
+
+\begin_layout Itemize
+Els regles de pàgina
+\end_layout
+
+\begin_layout Itemize
+Tabuladors
+\end_layout
+
+\begin_layout Itemize
+Espais en blanc addicionals (p.ex.
+ pitgeu 
+\family sans
+Retorn
+\family default
+ o 
+\family sans
+Espai
+\family default
+ dues o més vegades)
+\end_layout
+
+\begin_layout Standard
+Els tabuladors, així com els regles (que us mostren la posició dels elements
+ a la pàgina), són inútils al LyX.
+ El programa s'amoïna d'on ha d'anar cada cosa, no pas l'autor.
+ Amb els espais en blanc addicionals ocorre el mateix, el LyX els afegeix
+ allà on calgui, segons el context.
+ Al principi pot ser emprenyador no poder escriure dues línies en blanc
+ seguides, però té molt sentit un cop comenceu a pensar en termes WYSIWYM.
+\end_layout
+
+\begin_layout Standard
+Aquí teniu algunes coses disponibles al LyX però que no s'usen de la forma
+ que podríeu pensar:
+\end_layout
+
+\begin_layout Itemize
+Controls de sangnat
+\end_layout
+
+\begin_layout Itemize
+Salts de pàgina
+\end_layout
+
+\begin_layout Itemize
+Espai entre línies (p.ex.
+ espai simple, doble, etc.)
+\end_layout
+
+\begin_layout Itemize
+Espai en blanc, horitzontal i vertical
+\end_layout
+
+\begin_layout Itemize
+Pòlisses i mides de lletra
+\end_layout
+
+\begin_layout Itemize
+Estil de lletra (negreta, cursiva, subratllat, etc.)
+\end_layout
+
+\begin_layout Standard
+Encara que existeixen al LyX, normalment no es necessiten.
+ El programa s'amoïna d'aquesta coses, actuant en conseqüència segon el
+ que estigueu fent.
+ Diferents parts del document són automàticament canviades a diferent mida
+ i estil de lletra.
+ El sagnat de paràgraf depèn del context; diferents tipus de paràgraf se
+ sagnen de manera diferent.
+ Els salts de pàgina es gestionen automàticament.
+ En general, l'espai entre línies i entre paràgrafs és variable, triat pel
+ LyX.
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Podeu ajustar totes aquestes característiques (només unes poques requereixen
+ coneixements de LaTeX), tant per a tot el document com per a una part concreta.
+ Vegeu la 
+\emph on
+Guia\InsetSpace ~
+de\InsetSpace ~
+l'usuari
+\emph default
+ i/o 
+\emph on
+Característiques\InsetSpace ~
+
+\emph default
+esteses per a més detalls.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finalment, hi ha certes àrees on les que el LyX (i LaTeX) supera a molts
+ dels processadors de text:
+\end_layout
+
+\begin_layout Itemize
+Divisió de paraula a final de línia
+\end_layout
+
+\begin_layout Itemize
+Llistes de qualsevol tipus
+\end_layout
+
+\begin_layout Itemize
+Matemàtiques
+\end_layout
+
+\begin_layout Itemize
+Taules i quadres
+\end_layout
+
+\begin_layout Itemize
+Referències creuades
+\end_layout
+
+\begin_layout Standard
+Per descomptat, molts processadors de text moderns gestionen símbols matemàtics,
+ taules, divisió de paraules a final de línia, i fins i tot comencen a aproximar
+-se a les definicions d'estil i al concepte WYSIWYM.
+ Tot i això, acaben de començar a incloure aquestes característiques, mentre
+ que el LyX està construït sobre el sistema de processament de documents
+ LaTeX.
+ El LaTeX porta més de 20 anys amb elles, i 
+\emph on
+funciona
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Què és el LaTeX?
+\end_layout
+
+\begin_layout Standard
+El LaTeX és un sistema de preparació de documents dissenyat per en Leslie
+ Lamport el 1985.
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+La font d'informació d'aquesta secció és 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+A Guide to LaTeX2e
+\emph default
+,
+\begin_inset Quotes erd
+\end_inset
+
+ d'en Helmut Kopka i en Patrick Daly, que figura en la bibliografia de la
+ 
+\emph on
+Guia\InsetSpace ~
+de\InsetSpace ~
+l'usuari.
+ 
+\end_layout
+
+\end_inset
+
+ Fou desenvolupat a partir d'un llenguatge de tipografia anomenat TeX, creat
+ per en Donald Knuth el 1984.
+ El TeX pren una seqüència d'ordres tipogràfiques, escrites en un guió en
+ un fitxer ASCII i els executa.
+ Molts dels 
+\begin_inset Quotes eld
+\end_inset
+
+trucs
+\begin_inset Quotes erd
+\end_inset
+
+ del procés d'impressió foren modelats per en Knuth com algorismes de computació
+ i incorporats al TeX, d'aquí la seva excel·lent aparença impresa.
+ La sortida directa del TeX és el format 
+\emph on
+pdf
+\emph default
+ (
+\begin_inset Quotes eld
+\end_inset
+
+portable document format
+\begin_inset Quotes erd
+\end_inset
+
+) o el format anomenat 
+\emph on
+dvi
+\emph default
+ (
+\begin_inset Quotes eld
+\end_inset
+
+device independent
+\begin_inset Quotes erd
+\end_inset
+
+).
+ El format 
+\emph on
+dvi
+\emph default
+ se sol emprar per a vistes preliminars i després és pot convertir a altres
+ formats com ara el PostScript.
+ 
+\end_layout
+
+\begin_layout Standard
+El TeX no és només un motor de tipografia, també us permet definir macroinstrucc
+ions.
+ En realitat, la majoria dels usuaris de TeX està emprant un paquet de macroinst
+ruccions que en Knuth creà per amagar molts dels detalls del procés de composici
+ó tipogràfica.
+ Aquí és on Leslie Lamport entra en escena.
+ En Leslie cercava un paquet de macroinstruccions que fos més orientat a
+ l'usuari que al tipògraf, amb un conjunt d'ordres per a composar coses
+ com seccions, taules o fórmules de manera consistent i uniforme.
+ Això és com va néixer el LaTeX.
+ 
+\end_layout
+
+\begin_layout Standard
+Paral·lelament al desenvolupament i creixement del LaTeX, altres persones
+ anaren creant els seus propis paquets personalitzats de macroinstruccions
+ pel TeX, alguns per a fer diapositives, altres per a escriure articles
+ en publicacions matemàtiques, etc.
+ Per a fer això, alguns van emprar directament TeX, altres van començar
+ a modificar LaTeX.
+ Per evitar confusió i unificar criteris, un equip d'experts en LaTeX començaren
+ a treballar a finals dels 80 en el LaTeX2e, la versió actual del programa.
+ Aquesta nova versió de LaTeX té ordres que proporcionen una interfície
+ més fàcil d'usar per a la creació de macroinstruccions, ajuda en l'ús de
+ noves pòlisses tipogràfiques i altres millores.
+ Per dret propi, el LaTeX és en si mateix un ampli llenguatge! Usuaris de
+ tot el món han estat creant les seves pròpies contribucions per al LaTeX,
+ que es van afegint a les originals.
+\end_layout
+
+\begin_layout Standard
+Hi ha dues formes d'estendre el LaTeX: les classes i els estils.
+ Una 
+\emph on
+classe
+\emph default
+ és un conjunt de macroinstruccions LaTeX que descriuen un nou tipus de
+ document, com un llibre o un article.
+ Hi ha classes per a transparències, per a publicacions de física, matemàtiques\SpecialChar \ldots{}
+,
+ fins i tot moltes universitats tenen un classe per al disseny de les tesis
+ pròpies! Un 
+\emph on
+estil
+\emph default
+ es diferencia d'una classe ena que no defineix un tipus de document nou,
+ sinó un 
+\emph on
+comportament
+\emph default
+ diferent que pot ser usat en qualsevol document.
+ Per exemple, al LyX els marges de pàgina i l'interlineat hi ha dos fitxers
+ d'estil de LaTeX diferents dissenyats amb aquesta fi.
+ Hi ha fitxers d'estil per a un munt de coses: imprimir sobres o etiquetes,
+ canviar la sangria, afegir tipus de lletra nous, manipular gràfics, personalitz
+ar els encapçalaments o la bibliografia, alterar la col·locació i l'aparença
+ de notes a peu de pàgina, taules i figures, personalitzar llistes, etc.
+\end_layout
+
+\begin_layout Standard
+Aquí teniu un resum:
+\end_layout
+
+\begin_layout Description
+TeX Llenguatge de composició amb capacitat per a macroinstruccions.
+\end_layout
+
+\begin_layout Description
+LaTeX: Paquet de macroinstruccions construït sobre el TeX\SpecialChar \@.
+
+\end_layout
+
+\begin_layout Description
+classes: Descripcions d'un tipus de document, fent servir el LaTeX\SpecialChar \@.
+
+\end_layout
+
+\begin_layout Description
+estils: Alteren algun aspecte del comportament normal del LaTeX.
+\end_layout
+
+\begin_layout Description
+LyX: Processador de text visual, WYSIWYM, que usa tota la potència del LaTeX
+ per al treball d'impressió.
+\end_layout
+
+\begin_layout Standard
+El LaTeX és la raó per la que el LyX es diferencia d'altres processadors
+ de text.
+ El LyX és un programa d'interfície gràfica d'usuari (GUI) pel LaTeX.
+ Està dissenyat per a compondre documents fent servir LaTeX sense necessitat
+ de conèixer les ordres de macroinstruccions.
+ Tot i que el LyX no podrà mai implementar de forma gràfica totes les ordres,
+ si que en permet l'ús, per tant el LyX és tan funcional com el LaTeX.
+\end_layout
+
+\begin_layout Standard
+Igual que el LaTeX, el LyX se centra en el context d'
+\emph on
+allò
+\emph default
+ que esteu escrivint.
+ L'ordinador s'encarrega de gestionar la seva aparença.
+\end_layout
+
+\begin_layout Section
+Navegar per la documentació
+\end_layout
+
+\begin_layout Standard
+Per facilitar les respostes a les preguntes i descriure totes les característiqu
+es del LyX, la documentació s'ha dividit en diversos fitxers.
+ Cada un d'ells té un propòsit concret.
+ com veureu més endavant.
+ Tot i això, abans que topeu amb algun d'aquest fitxers, hauríeu de llegir
+ aquest mateix fitxer en primer lloc, ja que conté molta informació i comentaris
+ útils que us poden fer estalviar temps.
+\end_layout
+
+\begin_layout Standard
+Confiem en que el desenvolupament del LyX mai no finalitzarà, així doncs
+ alguna documentació pot estar incompleta o desfasada, encara que procurem
+ mantenir-la al dia.
+ Com la resta del LyX, els manuals són la feina d'un grup de voluntaris
+ que tenen una 
+\begin_inset Quotes eld
+\end_inset
+
+feina de veritat
+\begin_inset Quotes erd
+\end_inset
+
+, família, plats que rentar, cubells del gat que netejar, etc.
+ (Si voleu ajudar, assegureu-vos de llegir la secció\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Contrib"
+
+\end_inset
+
+, a més de la resta del document).
+ 
+\end_layout
+
+\begin_layout Standard
+També podeu fer-nos un favor: si qualsevol coa d'aquest manuals us sembla
+ confusa, poc clar o errònia, no dubteu en fer-nos-ho saber! Podeu posar-vos
+ en contacte amb els encarregats actuals escrivint a 
+\family typewriter
+lyx-docs@lists.lyx.org
+\family default
+.
+ Si teniu preguntes que no tenen una resposta evident a la documentació,
+ i necessiteu ajuda ràpidament, hi ha una llista de correu activa d'usuaris
+ amb els que podeu posar en contacte: 
+\family typewriter
+lyx-users@lists.lyx.org
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+El Format dels manuals
+\end_layout
+
+\begin_layout Standard
+Alguns llegireu els manuals en versió per imprimir.
+ Altres podeu estar llegint-los en la pantalla del LyX.
+ Hi ha algunes diferències entre la versió per imprimir i el fitxer LyX.
+ En primer lloc, el títol està simplement al principi del document, no en
+ un pàgina separada comen algunes de les versions per imprimir.
+ Ni les notes a peu de pàgina ni l'índex general es troben visibles.
+ Per obrir una nota a peu de pàgina, que apareix d'aquesta forma: 
+\begin_inset Graphics
+	filename ../clipart/footnoteQt4.png
+	scale 75
+
+\end_inset
+
+, pitgeu sobre el quadre gris amb el botó esquerre del ratolí.
+ Per veure l'índex general, pitgeu al seu quadre gris o en menú 
+\family sans
+Navega,
+\family default
+ això fa que els continguts es despleguin automàticament.
+\end_layout
+
+\begin_layout Standard
+En els manuals impresos, totes les referències creuades apareixen amb els
+ números reals per capítols, seccions, subseccions i altres.
+ Tot i això, en pantalla les referències creuades es mostren amb aquest
+ requadre gris: 
+\begin_inset Graphics
+	filename ../clipart/referenceQt4.png
+	scale 75
+
+\end_inset
+
+.
+ Si pitgeu en aquest tipus de requadre amb el botó esquerre, apareix un
+ quadre de diàleg amb una llista de totes les referències creuades del document.
+ En aquest només hi ha una anomenada 
+\begin_inset Quotes eld
+\end_inset
+
+sec:Contrib
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Podeu anar a aquesta secció fent clic dret sobre el quadre o pitjant el
+ botó 
+\family sans
+
+\begin_inset Quotes eld
+\end_inset
+
+Vés\InsetSpace ~
+a\InsetSpace ~
+l'etiqueta
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ en el quadre de diàleg.
+ Tornar a la posició anterior és igual de fàcil pitjant 
+\family sans
+
+\begin_inset Quotes eld
+\end_inset
+
+Vés\InsetSpace ~
+enrere
+\family default
+''.
+\end_layout
+
+\begin_layout Standard
+Un cop aclarides algunes diferències entre les versions d'impressió i en
+ pantalla d'aquest fitxer, podem seguir fent una ullada al seu format.
+ Tant en tant veureu coses en diferents tipus de lletra:
+\end_layout
+
+\begin_layout Itemize
+El tipus 
+\emph on
+lletra cursiva
+\emph default
+ s'usa per èmfasi en general, raonaments genèrics, títols de llibres, seccions
+ d'altres manuals i notes d'autor.
+\end_layout
+
+\begin_layout Itemize
+El tipus 
+\family typewriter
+mecanogràfic
+\family default
+ s'usa per a programes i noms de fitxer, codi i funcions del LyX.
+\end_layout
+
+\begin_layout Itemize
+El tipus 
+\family sans
+Sans Serif
+\family default
+ s'usa per a menús, botons, o noms de menús emergents, i noms de tecles.
+\end_layout
+
+\begin_layout Itemize
+L'estil
+\noun on
+ Versaletes
+\noun default
+ s'usa per a noms propis de persones.
+\end_layout
+
+\begin_layout Itemize
+El tipus 
+\series bold
+Negreta
+\series default
+ s'usa per a codi LaTeX.
+\end_layout
+
+\begin_layout Standard
+Respecte a les tecles de menú i dreceres de teclat, probablement us remetrem
+ a la secció 
+\emph on
+Combinacions de tecles
+\emph default
+ del 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Manual\InsetSpace ~
+de\InsetSpace ~
+característiques\InsetSpace ~
+esteses
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ (fitxer 
+\family typewriter
+Extended.lyx
+\family default
+).
+ Quan necessitem fer referència a associacions de tecles, usarem la següent
+ convenció:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+C-
+\family default
+
+\begin_inset Quotes eld
+\end_inset
+
+ indica la tecla 
+\family sans
+Control
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+S-
+\family default
+
+\begin_inset Quotes eld
+\end_inset
+
+ indica la tecla 
+\family sans
+Majúscules (Shift)
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+M-
+\family default
+
+\begin_inset Quotes eld
+\end_inset
+
+ indica la tecla 
+\family sans
+Meta
+\family default
+, que en la majoria dels teclats serà la tecla 
+\family sans
+Alt
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+F1
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ \SpecialChar \ldots{}
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+F12
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ són les tecles de funció.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Esc
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ és la tecla d'escapada.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Esquerra
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Dreta
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Amunt
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Avall
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+: són autoexplicatives (també s'anomenen tecles de direcció o cursors).
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\begin_inset Quotes eld
+\end_inset
+
+Inser
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Supr
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Inici
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Fin
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Av Pàg
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Re Pàg
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+: són les 6 tecles que apareixen sobre els cursors a la majoria de teclats
+ de PC.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Av Pàg
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ y 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Re Pàg
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ també són anomenades 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Anterior
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ i 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Següent
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ en alguns teclats.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\begin_inset Quotes eld
+\end_inset
+
+Retorn
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+ i 
+\family sans
+
+\begin_inset Quotes eld
+\end_inset
+
+Intro
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+ es refereixen totes dues a la mateixa tecla.
+ Alguns teclats l'etiqueten com a 
+\begin_inset Quotes eld
+\end_inset
+
+Return,
+\begin_inset Quotes erd
+\end_inset
+
+ altres com 
+\begin_inset Quotes eld
+\end_inset
+
+Enter,
+\begin_inset Quotes erd
+\end_inset
+
+ fins i tot alguns tenen dues tecles.
+ El LyX les tracta totes com la mateixa tecla, així doncs, usarem 
+\family sans
+Retorn
+\family default
+ i 
+\family sans
+Intro
+\family default
+ indistintament.
+\end_layout
+
+\begin_layout Standard
+També veureu de tant en tant coses como 
+\begin_inset Quotes eld
+\end_inset
+
+(Vegeu 
+\emph on
+Característiques\InsetSpace ~
+esteses
+\emph default
+)
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Hem llistat les possibles associacions de tecles predeterminades per a
+ cada funció a l'entrada corresponent en el manual 
+\emph on
+Característiques\InsetSpace ~
+esteses
+\emph default
+, així que mireu també allà.
+ Observeu que hi ha dos mapes de teclat diferents d'ús habitual a la comunitat
+ LyX: l'estil 
+\begin_inset Quotes eld
+\end_inset
+
+CUA
+\begin_inset Quotes erd
+\end_inset
+
+ és el predeterminat i conegut pels usuaris de OC, i l'estil 
+\begin_inset Quotes eld
+\end_inset
+
+emacs
+\begin_inset Quotes erd
+\end_inset
+
+, que és comú pels usuaris de l'editor Emacs en sistemes Unix.
+ Si no s'especifica el contrari, les combinacions corresponen al sistema
+ predeterminat CUA.
+ Si us agrada Emacs, hauríeu de ser prou eixerit per llegir la documentació
+ i imaginar les combinacions escaients..
+\end_layout
+
+\begin_layout Subsection
+Unitats emprades als manuals
+\end_layout
+
+\begin_layout Standard
+Per entendre les unitat emprades en aquesta documentació, la taula\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "cap:Unitats"
+
+\end_inset
+
+ descriu totes les unitats disponibles al LyX.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement t
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "cap:Unitats"
+
+\end_inset
+
+Unitats
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+unitat
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+nom/descripció
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+mm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+mil·límetre
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+cm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+centímetre
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+in
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+polzada
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+pt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+punt (72.27
+\begin_inset Formula $\,$
+\end_inset
+
+pt = 1
+\begin_inset Formula $\,$
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+pc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+pica (1
+\begin_inset Formula $\,$
+\end_inset
+
+pc = 12
+\begin_inset Formula $\,$
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+sp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+punt escalat (65536
+\begin_inset Formula $\,$
+\end_inset
+
+sp = 1
+\begin_inset Formula $\,$
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+bp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+punt gran (72
+\begin_inset Formula $\,$
+\end_inset
+
+bp = 1
+\begin_inset Formula $\,$
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+dd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+didot (72
+\begin_inset Formula $\,$
+\end_inset
+
+dd 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 37.6
+\begin_inset Formula $\,$
+\end_inset
+
+mm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+cc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+cicero (1
+\begin_inset Formula $\,$
+\end_inset
+
+cc = 12
+\begin_inset Formula $\,$
+\end_inset
+
+dd)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Scale%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\InsetSpace \thinspace{}
+% d'amplada de la imatge original
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+text%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\InsetSpace \thinspace{}
+% d'amplada del text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+col%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\InsetSpace \thinspace{}
+% d'amplada de la columna
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+page%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\InsetSpace \thinspace{}
+% d'amplada del paper
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+line%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\InsetSpace \thinspace{}
+% d'amplada de la línia
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+theight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\InsetSpace \thinspace{}
+% d'alçada del text
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+pheight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\InsetSpace \thinspace{}
+% d'alçada del paper
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+ex
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+alçada de la lletra 
+\emph on
+x
+\emph default
+ en la lletra actual
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+amplada de la lletra 
+\emph on
+M
+\emph default
+ en la lletra actual
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+mu
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+unitat matemàtica (1
+\begin_inset Formula $\,$
+\end_inset
+
+mu = 1/18
+\begin_inset Formula $\,$
+\end_inset
+
+em)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Els manuals
+\end_layout
+
+\begin_layout Standard
+La llista següent descriu els continguts de cada un dels fitxers de documentació
+:
+\end_layout
+
+\begin_layout Description
+Introducció Aquest fitxer.
+\end_layout
+
+\begin_layout Description
+Tutorial Si sou novell en l'ús del LyX, i mai no heu emprat el LaTeX, hauríeu
+ de començar per aquí.
+ Si ja heu emprat el LaTeX, també hauríeu de llegir el 
+\emph on
+Tutorial
+\emph default
+, començant per la secció 
+\begin_inset Quotes eld
+\end_inset
+
+LyX per a usuaris de LaTeX
+\begin_inset Quotes erd
+\end_inset
+
+.
+ (Tampoc us vindria malament fullejar la resta del document).
+\end_layout
+
+\begin_layout Description
+Guia
+\emph on
+\InsetSpace ~
+
+\emph default
+de\InsetSpace ~
+l
+\emph on
+'
+\emph default
+usuari La documentació principal.
+ Intentarem cobrir aquí la major part de les opcions i característiques
+ bàsiques del LyX.
+ El manual principal suposa que heu llegit el 
+\emph on
+Tutorial
+\emph default
+.
+\end_layout
+
+\begin_layout Description
+Objectes\InsetSpace ~
+inserits Ampliació de la 
+\emph on
+Guia\InsetSpace ~
+de\InsetSpace ~
+l'usuari
+\emph default
+.
+ Explica amb detall l'ús de taules, gràfics, flotants, notes i quadres.
+ A més a més, conté molts trucs d'experts en LaTeX.
+\end_layout
+
+\begin_layout Description
+Característiques\InsetSpace ~
+esteses Ampliació de la 
+\emph on
+Guia\InsetSpace ~
+de\InsetSpace ~
+l'usuari
+\emph default
+.
+ Documenta l'ús d'ordres pures de LaTeX, formats addicionals i característiques
+ específiques d'edició.
+\end_layout
+
+\begin_layout Description
+Personalització Una descripció de característiques avançades del LyX, incloent-h
+i com personalitzar el comportament global del programa: coses com associacions
+ de tecles, internacionalització i fitxers de configuració.
+\end_layout
+
+\begin_layout Description
+Configuració\InsetSpace ~
+del\InsetSpace ~
+LaTeX El LyX explora el vostre sistema durant la instal·lació.
+ Aquest fitxer conté la informació que el LyX ha extret en la instal·lació.
+ Examineu-lo per veure si trobeu a mancar alguna cosa que hauríeu de tenir.
+\end_layout
+
+\begin_layout Standard
+Aquests fitxers faran referència uns als altres quan sigui necessari.
+ Per exemple, la 
+\emph on
+Guia\InsetSpace ~
+de\InsetSpace ~
+l'usuari
+\emph default
+ explica 
+\emph on
+alguna cosa
+\emph default
+ sobre la instal·lació i personalització, però remet al lector al manual
+\emph on
+ Personalització
+\emph default
+ per a més informació.
+\end_layout
+
+\begin_layout Standard
+Altre cop, destaquem un punt important:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Si sou novell en l'ús del LyX, llegiu el 
+\emph on
+Tutorial
+\emph default
+.
+ Ara\SpecialChar \@.
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si no ho feu, podríeu frustrar-vos sense necessitat.
+ El LyX fa tot el que necessiteu d'un processador de text, però d'una manera
+ diferent.
+\end_layout
+
+\begin_layout Section
+Contribuir al projecte LyX
+\begin_inset LatexCommand label
+name "sec:Contrib"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Col·laborar amb el LyX
+\end_layout
+
+\begin_layout Standard
+El LyX està escrit gairebé completament en llenguatge C++ (l'importador
+ LaTeX està escrit en Python).
+ És un projecte molt extens, i per tant no és lliure d'errors, ni de la
+ necessitat de millores en el codi font.
+\end_layout
+
+\begin_layout Subsubsection
+Informació d'errors
+\end_layout
+
+\begin_layout Standard
+En usar el LyX és possible que observeu comportaments que es puguin considerar
+ com errors.
+ Encara que és estrany, poden ocórrer penjades.
+ Els problemes de la interfície d'usuari es consideren error majors per
+ l'equip LyX: es consideren d'interès especial les indicacions sobre parts
+ de la interfície que trobeu confuses o poc clares.
+\end_layout
+
+\begin_layout Standard
+El LyX té un sistema de seguiment d'errors allotjat a 
+\family typewriter
+
+\begin_inset LatexCommand url
+target "http://bugzilla.lyx.org/"
+
+\end_inset
+
+
+\family default
+.
+ Hauríeu de comprovar en aquest sistema abans d'informar de qualsevol error,
+ per si s'hagués informat ja de l'error.
+ Si teniu algun comentari referent a un error conegut o voleu informar d'un
+ de nou, podeu usar el rastrejador d'errors o enviar un missatge a la llista
+ de correu de desenvolupament, 
+\family typewriter
+lyx-devel@lists.lyx.org
+\family default
+.
+ Podeu accedir als arxius històrics d'aquesta llista des de l'enllaç del
+ lloc web principal del LyX, 
+\family typewriter
+
+\begin_inset LatexCommand url
+target "http://www.lyx.org/"
+
+\end_inset
+
+
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Un informe d'errors vàlid ha d'incloure com a mínim la versió de LyX amb
+ la que heu tingut el problema.
+ Es prefereixen descripcions precises i detallades -- quant més temps inverteixe
+n els desenvolupadors en trobar l'origen de l'error, menys temps tenen per
+ a les millores.
+ Mencioneu el sistema i versió en el que executeu el LyX.
+ Doneu les versions de les biblioteques instal·lades en el vostre sistema
+ i, si és rellevant, les versions dels programes extern que usa el LyX.
+ Si és un problema relacionat amb la compilació o la configuració, incloeu
+ el fitxer 
+\family typewriter
+config.log
+\family default
+, i mencioneu el compilador que empreu.
+\end_layout
+
+\begin_layout Subsubsection
+Contribuir amb correccions d'errors i característiques noves
+\end_layout
+
+\begin_layout Standard
+Si heu fet canvis en el codi font del LyX que penseu que haurien d'incorporar-se
+, envieu-los com a fitxer 
+\begin_inset Quotes eld
+\end_inset
+
+diff
+\begin_inset Quotes erd
+\end_inset
+
+ (en format unificat) a la llita de desenvolupament mencionada anteriorment,
+ juntament amb un fitxer de registre de canvis, i una descripció del que
+ fa el pedaç.
+\end_layout
+
+\begin_layout Subsection
+Contribuir a la documentació
+\end_layout
+
+\begin_layout Standard
+La documentació del LyX és estensa; tot i això, el LyX està en desenvolupament
+ continu i cada nova versió afegeix noves característiques.
+ Si observeu alguna documentació que necessita millores, si trobeu cap error
+ o teniu suggeriments, aquesta secció us indica com procedir.
+\end_layout
+
+\begin_layout Subsubsection
+Informar d'errors en els manuals
+\end_layout
+
+\begin_layout Standard
+Si trobeu un problema en la documentació, envieu un missatge a la llista
+ de correu 
+\family typewriter
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{mailto:lyx-docs@lists.lyx.org}{
+\end_layout
+
+\end_inset
+
+lyx-docs@lists.lyx.org
+\emph on
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\family default
+\emph default
+.
+ L'equip de documentació farà les correccions pertinents.
+\end_layout
+
+\begin_layout Subsubsection
+Unir-se a l'equip de documentació
+\end_layout
+
+\begin_layout Standard
+El Projecte de Documentació del LyX, como tota la resta del projecte LyX,
+ sempre pot aprofitar la teva ajuda! Si esteu interessat en col·laborar
+ amb el Projecte de Documentació, heu de fer el següent:
+\end_layout
+
+\begin_layout Enumerate
+Obteniu el darrer codi font del LyX a
+\newline
+
+\begin_inset LatexCommand url
+target "http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc"
+
+\end_inset
+
+
+\newline
+En aquest directori hi ha un fitxer anomenat 
+\family typewriter
+DocStyle.lyx
+\family default
+.
+ Llegiu-lo; és el full d'estil de la documentació.
+\end_layout
+
+\begin_layout Enumerate
+Després llegiu el 
+\emph on
+Tutorial
+\emph default
+ i la 
+\emph on
+Guia\InsetSpace ~
+de\InsetSpace ~
+l'usuari
+\emph default
+.
+\newline
+Això és per a donar-vos idees.
+ El 
+\emph on
+Tutorial
+\emph default
+ i la 
+\emph on
+Guia\InsetSpace ~
+de\InsetSpace ~
+l'usuari
+\emph default
+ són, probablement, la part més actualitzada de la documentació.
+ Hauríeu de ser capça de fer-vos una idea de com desitja que es vegin i
+ es llegeixin els manuals.
+\end_layout
+
+\begin_layout Enumerate
+Poseu-vos en contacte amb l'equip a:
+\newline
+
+\family typewriter
+lyx-docs@lists.lyx.org
+\family default
+
+\newline
+per a discutir i remodelar propostes.
+\end_layout
+
+\begin_layout Standard
+Els canvis que podeu proposar poden anar des de clarificar el text fins
+ a importants reestructuracions importants d'un documents.
+ Totes i cada una de les millores són benvingudes gratament.
+\end_layout
+
+\end_body
+\end_document

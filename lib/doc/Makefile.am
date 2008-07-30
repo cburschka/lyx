@@ -42,6 +42,10 @@ dist_clipartdoc_DATA = \
 	clipart/without_fntright.pdf \
 	clipart/with_fntright.pdf
 
+cadocdir = $(pkgdatadir)/doc/ca
+dist_cadoc_DATA = \
+	ca/Intro.lyx
+
 csdocdir = $(pkgdatadir)/doc/cs
 dist_csdoc_DATA = \
 	cs/Tutorial.lyx
