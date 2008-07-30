@@ -2077,6 +2077,11 @@ lib_doc_extra_files = Split('''
 ''')
 
 
+lib_doc_ca_files = Split('''
+    Intro.lyx
+''')
+
+
 lib_doc_cs_files = Split('''
     Tutorial.lyx
 ''')
@@ -2344,6 +2349,8 @@ lib_examples_files = Split('''
 
 
 lib_examples_ca_files = Split('''
+    ItemizeBullets.lyx
+    mathed.lyx
     splash.lyx
 ''')
 
