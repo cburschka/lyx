@@ -817,10 +817,11 @@ bool operator==(FileName const & lhs, FileName const & rhs)
 	// This is supposed to be fixed for Qt5.
 
 	if (lhs.empty())
+		// QFileInfo::operator==() returns false if the two QFileInfo are empty.
 		return rhs.empty();
 
 	if (rhs.empty())
-		// Avoid unnecessary checks.
+		// Avoid unnecessary checks below.
 		return false;
 
 	lhs.d->refresh();
@@ -829,6 +830,7 @@ bool operator==(FileName const & lhs, FileName const & rhs)
 	if (!lhs.d->fi.isSymLink() && !rhs.d->fi.isSymLink())
 		return lhs.d->fi == rhs.d->fi;
 
+	// FIXME: When/if QFileInfo support symlink comparison, remove this code.
 	QFileInfo fi1(lhs.d->fi);
 	if (fi1.isSymLink())
 		fi1 = QFileInfo(fi1.symLinkTarget());
