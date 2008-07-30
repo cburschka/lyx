@@ -291,7 +291,7 @@ public:
 	void expandFlexInsert(Buffer const * buf, std::string s);
 	void expandToc2(Toc const & toc_list, size_t from, size_t to, int depth);
 	void expandToc(Buffer const * buf);
-	void expandPasteRecent();
+	void expandPasteRecent(Buffer const * buf);
 	void expandToolbars();
 	void expandBranches(Buffer const * buf);
 	void expandCiteStyles(BufferView const *);
@@ -989,9 +989,9 @@ void MenuDefinition::expandToc(Buffer const * buf)
 }
 
 
-void MenuDefinition::expandPasteRecent()
+void MenuDefinition::expandPasteRecent(Buffer const * buf)
 {
-	docstring_list const sel = cap::availableSelections();
+	docstring_list const sel = cap::availableSelections(buf);
 
 	docstring_list::const_iterator cit = sel.begin();
 	docstring_list::const_iterator end = sel.end();
@@ -1367,7 +1367,7 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 			break;
 
 		case MenuItem::PasteRecent:
-			tomenu.expandPasteRecent();
+			tomenu.expandPasteRecent(buf);
 			break;
 
 		case MenuItem::Toolbars:

@@ -33,7 +33,7 @@ class ParagraphList;
 namespace cap {
 
 /// Get all elements of the cut buffer in plain text format.
-std::vector<docstring> availableSelections();
+std::vector<docstring> availableSelections(Buffer const *);
 /// Get the number of available elements in the cut buffer.
 size_type numberOfSelections();
 /// Get the sel_index-th element of the cut buffer in plain text format.

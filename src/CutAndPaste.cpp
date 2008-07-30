@@ -555,9 +555,11 @@ void switchBetweenClasses(DocumentClass const * const oldone,
 }
 
 
-vector<docstring> availableSelections()
+vector<docstring> availableSelections(Buffer const * buf)
 {
 	vector<docstring> selList;
+	if (!buf)
+		return selList;
 
 	CutStack::const_iterator cit = theCuts.begin();
 	CutStack::const_iterator end = theCuts.end();
@@ -569,7 +571,10 @@ vector<docstring> availableSelections()
 		ParagraphList::const_iterator pit = pars.begin();
 		ParagraphList::const_iterator pend = pars.end();
 		for (; pit != pend; ++pit) {
-			asciiSel += pit->asString(AS_STR_INSETS);
+			Paragraph par(*pit, 0, 26);
+			// adapt paragraph to current buffer.
+			par.setBuffer(const_cast<Buffer &>(*buf));
+			asciiSel += par.asString(AS_STR_INSETS);
 			if (asciiSel.size() > 25) {
 				asciiSel.replace(22, docstring::npos,
 						 from_ascii("..."));
