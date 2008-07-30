@@ -89,6 +89,9 @@ public:
 	Paragraph();
 	///
 	Paragraph(Paragraph const &);
+	/// Partial copy constructor.
+	/// Copy the Paragraph contents from \p beg to \p end (without end).
+	Paragraph(Paragraph const & par, pos_type beg, pos_type end);
 	///
 	Paragraph & operator=(Paragraph const &);
 	///

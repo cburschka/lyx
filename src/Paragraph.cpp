@@ -83,6 +83,8 @@ public:
 	Private(Paragraph * owner, Layout const & layout);
 	/// "Copy constructor"
 	Private(Private const &, Paragraph * owner);
+	/// Copy constructor from \p beg  to \p end
+	Private(Private const &, Paragraph * owner, pos_type beg, pos_type end);
 
 	///
 	void insertChar(pos_type pos, char_type c, Change const & change);
@@ -244,6 +246,43 @@ Paragraph::Private::Private(Private const & p, Paragraph * owner)
 	  layout_(p.layout_)
 {
 	id_ = paragraph_id++;
+}
+
+
+Paragraph::Private::Private(Private const & p, Paragraph * owner,
+	pos_type beg, pos_type end)
+	: owner_(owner), inset_owner_(p.inset_owner_), fontlist_(p.fontlist_), 
+	  params_(p.params_), changes_(p.changes_),
+	  begin_of_body_(p.begin_of_body_), words_(p.words_),
+	  layout_(p.layout_)
+{
+	id_ = paragraph_id++;
+	if (beg >= pos_type(p.text_.size()))
+		return;
+	text_ = p.text_.substr(beg, end - beg);
+	InsetList::const_iterator icit = p.insetlist_.begin();
+	InsetList::const_iterator iend = p.insetlist_.end();
+	for (; icit != iend; ++icit) {
+		if (icit->pos < beg)
+			continue;
+		if (icit->pos >= end)
+			break;
+		// Add a new entry in the insetlist_.
+		insetlist_.insert(icit->inset, icit->pos - beg);
+	}
+	FontList::const_iterator fcit = fontlist_.begin();
+	FontList::const_iterator fend = fontlist_.end();
+	for (; fcit != fend; ++fcit) {
+		if (fcit->pos() < beg)
+			continue;
+		if (fcit->pos() >= end) {
+			// Add last entry in the fontlist_.
+			fontlist_.set(text_.size() - 1, fcit->font());
+			break;
+		}
+		// Add a new entry in the fontlist_.
+		fontlist_.set(fcit->pos() - beg, fcit->font());
+	}
 }
 
 
@@ -1055,6 +1094,14 @@ Paragraph::Paragraph()
 Paragraph::Paragraph(Paragraph const & par)
 	: itemdepth(par.itemdepth),
 	d(new Paragraph::Private(*par.d, this))
+{
+	registerWords();
+}
+
+
+Paragraph::Paragraph(Paragraph const & par, pos_type beg, pos_type end)
+	: itemdepth(par.itemdepth),
+	d(new Paragraph::Private(*par.d, this, beg, end))
 {
 	registerWords();
 }
