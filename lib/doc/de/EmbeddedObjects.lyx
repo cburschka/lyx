@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 338
+\lyxformat 339
 \begin_document
 \begin_header
 \textclass scrbook
@@ -26255,13 +26255,11 @@ Box (Minipage)
  erscheint: 
 \begin_inset Graphics
 	filename clipart/StandardBoxQt4.png
-	lyxscale 80
-	scale 60
+	scale 85
 	scaleBeforeRotation
 
 \end_inset
 
-.
  Mit einem Rechts\SpecialChar \-
 klick auf das graue Kästchen kann der Typ spezifiziert
  werden.
@@ -31201,8 +31199,6 @@ Tag-Monat-Jahr
 \end_inset
 
 
-\lang english
-
 \begin_inset space ~
 \end_inset
 
@@ -31218,8 +31214,6 @@ Remove the protected space when bug 4398 is fixed!
 
 \end_inset
 
-
-\lang ngerman
 
 \begin_inset Newline newline
 \end_inset
@@ -31266,6 +31260,28 @@ target "http://en.wikipedia.org/wiki/LilyPond"
 
 \series default
  schreiben.
+\end_layout
+
+\begin_layout Description
+PDFPages Mit dieser Vorlage können Sie PDF-Dokumente in ihr Dokument einfügen.
+ Um bestimmte oder alle Seiten eines PDFs einzufügen, benutzen Sie die 
+\emph on
+pages
+\emph default
+ Option im Feld 
+\family sans
+Option
+\family default
+ in der Karteikarte 
+\family sans
+LaTeX- und LyX-Optionen
+\family default
+ entsprechend der Vorlagenbeschreibung im Dialog.
+ Wenn keine 
+\emph on
+pages
+\emph default
+ Option gegeben ist, wird nur die erste Seite des PDFs eingefügt.
 \end_layout
 
 \begin_layout Description
@@ -31541,34 +31557,29 @@ in der Karteikarte
 Entwurf
 \family default
  benutzen, wird nur der Pfad der ausgewählten Datei in der Ausgabe erscheinen.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 LyX kann externes Material entweder als Box wie hier: 
 \begin_inset Graphics
 	filename clipart/ExternesMaterialQt4.png
-	lyxscale 80
-	scale 60
+	scale 85
 	scaleBeforeRotation
 
 \end_inset
 
  oder als Bild darstellen.
- Das hängt davon ab, ob Sie im Dialogfenster
+ Das hängt davon ab, ob Sie im Dialog
 \family sans
- Externes
-\begin_inset space ~
-\end_inset
-
-Material 
+ 
 \family default
 in der Karteikarte 
 \family sans
-LyX-Ansicht
+LaTeX- und LyX-Optionen
 \family default
  die Option 
 \family sans
-in
+In
 \begin_inset space ~
 \end_inset
 
@@ -31588,7 +31599,7 @@ Im LyX-Handbuch
 Anpassung
 \family default
 \emph default
- wird erklärt, wie Sie Ihre eigenen Vorlagen erzeugen können.
+ wird erklärt, wie Sie eigenen Vorlagen erzeugen können.
 \end_layout
 
 \begin_layout Section
@@ -31623,13 +31634,11 @@ Unterdokumente benutzt man bei größeren Dokumenten, die aus mehreren Kapiteln
 Unterdokumente werden in LyX als Box angezeigt: 
 \begin_inset Graphics
 	filename clipart/UnterdokumentQt4.png
-	lyxscale 80
-	scale 60
+	scale 85
 	scaleBeforeRotation
 
 \end_inset
 
-.
  Sie werden über
 \family sans
  Einfügen\SpecialChar \menuseparator

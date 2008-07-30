@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 338
+\lyxformat 339
 \begin_document
 \begin_header
 \textclass scrbook
@@ -25762,7 +25762,7 @@ Box (Minipage)
 
 \end_inset
 
-, will be inserted.
+ will be inserted.
  The box type can be specified by right-clicking on the box.
  The appearing box dialog offers the 
 \family sans
@@ -30704,7 +30704,7 @@ Templates
 
 \begin_layout Description
 ChessDiagram This template supports chess position diagrams made with the
- programas 
+ program 
 \series bold
 
 \begin_inset CommandInset href
@@ -30795,6 +30795,28 @@ target "http://en.wikipedia.org/wiki/LilyPond"
 
 \series default
 .
+\end_layout
+
+\begin_layout Description
+PDFPages With this template you can insert PDF documents to your document.
+ To insert certain or all pages of a PDF, use the 
+\emph on
+pages
+\emph default
+ option in the 
+\family sans
+Option
+\family default
+ field in the 
+\family sans
+LaTeX and LyX options
+\family default
+ tab according to the template description in the dialog.
+ When no 
+\emph on
+pages
+\emph default
+ option is given, only the first page of the PDF will be inserted.
 \end_layout
 
 \begin_layout Description
@@ -31073,19 +31095,15 @@ External material is displayed in LyX either as box like this:
 
 \end_inset
 
- or as image, depending on the setting in the 
+ or as image, depending on the option 
 \family sans
-LyX
-\begin_inset space ~
-\end_inset
-
-View
+Show in LyX
 \family default
- tab of the 
+ in the 
 \family sans
-External Material
+LaTeX and LyX options
 \family default
- dialog.
+ tab of the dialog.
 \end_layout
 
 \begin_layout Standard
