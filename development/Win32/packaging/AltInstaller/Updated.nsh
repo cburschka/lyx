@@ -37,9 +37,9 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  SetOutPath "$INSTDIR\Resources\scripts"
  #File "${PRODUCT_SOURCEDIR}\Resources\scripts\csv2lyx.py"
- SetOutPath "$INSTDIR\Resources\templates"
- #File "${PRODUCT_SOURCEDIR}\Resources\templates\aa.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\templates\JSS-article.lyx"
+ SetOutPath "$INSTDIR\Resources\man\man1"
+ File "${PRODUCT_SOURCEDIR}\Resources\man\man1\lyx.1"
+ File "${PRODUCT_SOURCEDIR}\Resources\man\man1\tex2lyx.1"
 
 FunctionEnd
 
