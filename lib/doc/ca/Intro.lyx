@@ -94,7 +94,7 @@ Introducció al LyX
 \begin_layout Author
 per l'Equip LyX
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 \noindent
@@ -242,9 +242,9 @@ allò que esteu fent
 \emph on
 estil
 \emph default
-
+.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Si hem de ser sincers, les versions recents dels processadors de text més
@@ -255,7 +255,6 @@ Si hem de ser sincers, les versions recents dels processadors de text més
 
 \end_inset
 
-.
  Vegeu un petit exemple:
 \end_layout
 
@@ -386,7 +385,7 @@ sí
 \begin_layout Subsection
 Diferències entre el LyX i altres processadors de text
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 El LyX i altres processadors de text
@@ -474,7 +473,7 @@ Encara que existeixen al LyX, normalment no es necessiten.
  En general, l'espai entre línies i entre paràgrafs és variable, triat pel
  LyX.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Podeu ajustar totes aquestes característiques (només unes poques requereixen
@@ -545,7 +544,7 @@ Què és el LaTeX?
 El LaTeX és un sistema de preparació de documents dissenyat per en Leslie
  Lamport el 1985.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 La font d'informació d'aquesta secció és 
@@ -1401,7 +1400,7 @@ mm
 \begin_inset Text
 
 \begin_layout Standard
-mil·límetre
+millímetre
 \end_layout
 
 \end_inset
@@ -1633,7 +1632,6 @@ Scale%
 \begin_inset Text
 
 \begin_layout Standard
-\InsetSpace \thinspace{}
 % d'amplada de la imatge original
 \end_layout
 
@@ -1654,7 +1652,6 @@ text%
 \begin_inset Text
 
 \begin_layout Standard
-\InsetSpace \thinspace{}
 % d'amplada del text
 \end_layout
 
@@ -1675,7 +1672,6 @@ col%
 \begin_inset Text
 
 \begin_layout Standard
-\InsetSpace \thinspace{}
 % d'amplada de la columna
 \end_layout
 
@@ -1696,7 +1692,6 @@ page%
 \begin_inset Text
 
 \begin_layout Standard
-\InsetSpace \thinspace{}
 % d'amplada del paper
 \end_layout
 
@@ -1717,7 +1712,6 @@ line%
 \begin_inset Text
 
 \begin_layout Standard
-\InsetSpace \thinspace{}
 % d'amplada de la línia
 \end_layout
 
@@ -1738,7 +1732,6 @@ theight%
 \begin_inset Text
 
 \begin_layout Standard
-\InsetSpace \thinspace{}
 % d'alçada del text
 \end_layout
 
@@ -1759,7 +1752,6 @@ pheight%
 \begin_inset Text
 
 \begin_layout Standard
-\InsetSpace \thinspace{}
 % d'alçada del paper
 \end_layout
 
