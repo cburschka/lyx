@@ -816,10 +816,11 @@ bool operator==(FileName const & lhs, FileName const & rhs)
 	//   treated as if they referred to different files.
 	// This is supposed to be fixed for Qt5.
 
-	if (lhs.empty() && rhs.empty())
-		return true;
+	if (lhs.empty())
+		return rhs.empty();
 
-	if (lhs.empty() || rhs.empty())
+	if (rhs.empty())
+		// Avoid unnecessary checks.
 		return false;
 
 	lhs.d->refresh();
