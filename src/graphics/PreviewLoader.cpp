@@ -354,7 +354,7 @@ InProgress::InProgress(string const & filename_base,
 		       PendingSnippets const & pending,
 		       string const & to_format)
 	: pid(0),
-	  metrics_file(FileName(filename_base + ".metrics")),
+	  metrics_file(filename_base + ".metrics"),
 	  snippets(pending.size())
 {
 	PendingSnippets::const_iterator pit  = pending.begin();
