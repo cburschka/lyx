@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 338
+\lyxformat 339
 \begin_document
 \begin_header
 \textclass scrbook
@@ -10641,12 +10641,12 @@ Tablas ! Saltos de línea
 \end_layout
 
 \begin_layout Standard
-\align center
+\noindent
 \begin_inset Float table
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -11079,10 +11079,6 @@ i
 
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newpage newpage
 \end_inset
 
 

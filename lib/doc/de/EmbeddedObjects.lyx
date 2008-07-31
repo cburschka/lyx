@@ -3028,11 +3028,97 @@ Tabelle
 verwenden
 \family default
  ankreuzen, damit die Tabelle automatisch auf mehrere Seiten verteilt wird.
- Außerdem werden weitere Optionen aktiviert, die im 
-\emph on
-Benutzerhandbuch
-\emph default
- beschrieben sind.
+ Wird dies gemacht, werden folgende Optionen freigeschaltet:
+\end_layout
+
+\begin_layout Description
+
+\family sans
+Kopfzei
+\family default
+le: Die aktuelle Zeile sowie alle darüberliegenden, die keine Sonderoptionen
+ aktiviert haben, werden als Überschrifts-Zeilen aller Seiten festgelegt;
+ mit Ausnahme der ersten, wenn 
+\family sans
+Erste
+\begin_inset space ~
+\end_inset
+
+Kopfzeile
+\family default
+ aktiviert ist.
+\end_layout
+
+\begin_layout Description
+
+\family sans
+Erste
+\lang english
+
+\begin_inset space ~
+\end_inset
+
+
+\lang ngerman
+Kopfz
+\family default
+eile: Die aktuelle Zeile sowie alle darüberliegenden, die keine Sonderoptionen
+ aktiviert haben, werden als Überschrifts-Zeilen der ersten Seite einer
+ mehrseitigen Tabelle definiert.
+\end_layout
+
+\begin_layout Description
+
+\family sans
+Fußz
+\family default
+eile: Die aktuelle Zeile sowie alle darüberliegenden, die keine Sonderoptionen
+ aktiviert haben, werden als Fußzeilen aller Seiten festgelegt; mit Ausnahme
+ der letzten, wenn 
+\family sans
+Letzte
+\begin_inset space ~
+\end_inset
+
+Fußzeile
+\family default
+ aktiviert ist.
+\end_layout
+
+\begin_layout Description
+
+\family sans
+Letzte
+\begin_inset space ~
+\end_inset
+
+Fußz
+\family default
+eile: Die aktuelle Zeile sowie alle darüberliegenden, die keine Sonderoptionen
+ aktiviert haben, werden als die Fußzeilen der letzten Seite einer mehrseitigen
+ Tabelle definiert.
+\end_layout
+
+\begin_layout Description
+Legende: Die erste Zeile wird als einzelne Spalte zurückgesetzt.
+ Sie dort können nun die Tabellenbeschriftung (Legende) über das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Marke
+\family default
+ einfügen.
+ Mehr über Beschriftungen langer Tabellen ist in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "uab:Beschriftungen-langer-Tabellen"
+
+\end_inset
+
+ erklärt.
 \end_layout
 
 \begin_layout Standard
@@ -5165,8 +5251,6 @@ Franz
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
 Ende
 \end_layout
 
@@ -5220,7 +5304,7 @@ Die Bedeutung diese Befehle finden Sie in der Bemerkung 1 von Abschnitt
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "uab:Titel-für-lange"
+reference "uab:Beschriftungen-langer-Tabellen"
 
 \end_inset
 
@@ -5651,19 +5735,19 @@ fill}
 
 \begin_layout Subsection
 Beschriftungen langer Tabellen
+\begin_inset CommandInset label
+LatexCommand label
+name "uab:Beschriftungen-langer-Tabellen"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
 Tabellen ! lange ! Titel
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "uab:Titel-für-lange"
 
 \end_inset
 
@@ -5681,95 +5765,25 @@ Tabelle
 \family default
  kann man nicht in ein Gleitobjekt packen, weil Gleitobjekte nur auf eine
  Seite gedruckt werden können.
- Aber die 
-\family sans
-Legende
-\family default
--Umgebung von Gleitobjekten kann auch in langen Tabellen benutzt werden.
-\end_layout
-
-\begin_layout Standard
-Weil LyX das noch nicht völlig unterstützt, muss man ein wenig tricksen:
-\end_layout
-
-\begin_layout Enumerate
-Erstellen Sie eine 
-\family sans
-lange
+ Daher wird die Beschriftung als erste Zeile der Tabelle eingegeben, wie
+ in Abschnitt
 \begin_inset space ~
 \end_inset
 
-Tabelle
-\family default
-.
-\end_layout
 
-\begin_layout Enumerate
-Markieren Sie die erste Zeile und entfernen Sie die obere Linie.
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abs:Lange-Tabellen"
 
-\begin_layout Enumerate
-Fügen Sie 
-\family sans
-mit Einfügen\SpecialChar \menuseparator
-Legende
-\family default
- eine Beschriftung in die erste Tabellenzelle.
- Sie können auch noch einen Kurztitel hinzufügen, 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Kurztitel
-\family default
-.
-\end_layout
-
-\begin_layout Enumerate
-Fügen Sie hinter dem Titel 
-\series bold
-
-\begin_inset Quotes gld
 \end_inset
 
-
-\backslash
-
-\backslash
-%
-\series default
-
-\begin_inset Quotes grd
-\end_inset
-
- als TeX-Code ein.
-\end_layout
-
-\begin_layout Standard
-Ein Kurztitel wird anstatt der richtigen Beschriftung im Tabellenverzeichnis
- gedruckt.
- Die Zeichen 
-\series bold
-
-\begin_inset Quotes gld
-\end_inset
-
-
-\backslash
-
-\backslash
-%
-\series default
-
-\begin_inset Quotes grd
-\end_inset
-
- hinter dem Titel lässt die vertikalen Linien aller Zellen der ersten Zeile
- weg.
- Die erste Tabellenzeile ist damit nur ein Platzhalter für die Beschriftung,
+ erklärt.
+ Die erste Tabellenzeile ist dan nur ein Platzhalter für die Beschriftung,
  und die eigentliche Tabelle beginnt mit der zweiten Zeile.
 \end_layout
 
 \begin_layout Standard
-Hier ist eine kleine 
+Hier ist eine kurze 
 \family sans
 lange
 \begin_inset space ~
@@ -6121,15 +6135,8 @@ Bemerkung
 
 1:
 \series default
- Die Tabellennummer wird für jede 
-\family sans
-lange
-\begin_inset space ~
-\end_inset
-
-Tabelle
-\family default
- erhöht, auch wenn Sie keinen Titel vergeben.
+ Die Tabellennummer wird für jede lange Tabelle erhöht, auch wenn Sie keinen
+ Titel vergeben.
  Deshalb könnte es passieren, dass zum Beispiel Tabelle
 \begin_inset space ~
 \end_inset
@@ -6138,24 +6145,10 @@ Tabelle
 \begin_inset space ~
 \end_inset
 
-2.1 im Tabellenverzeichnis folgt, wenn dazwischen zwei
-\family sans
- lange
-\begin_inset space ~
-\end_inset
-
-Tabellen
-\family default
- ohne Titel sind.
- Um das zu vermeiden, können Sie hinter jede 
-\family sans
-lange
-\begin_inset space ~
-\end_inset
-
-Tabelle
-\family default
- ohne Titel folgenden LaTeX-Befehl als TeX-Code einfügen:
+2.1 im Tabellenverzeichnis folgt, wenn dazwischen zwei lange Tabellen ohne
+ Titel sind.
+ Um das zu vermeiden, können Sie hinter jede lange Tabelle ohne Titel folgenden
+ LaTeX-Befehl als TeX-Code einfügen:
 \end_layout
 
 \begin_layout Plain Layout
@@ -6184,7 +6177,7 @@ Bemerkung
 
 2:
 \series default
- Wenn Sie das LaTeX-Paket 
+ Wenn Sie 
 \series bold
 hyperref
 \series default
@@ -6198,7 +6191,15 @@ LaTeX-Pakete ! hyperref
 
 \end_inset
 
- für Querverweise benutzen, wird der Verweis auf eine 
+ in den
+\family sans
+ PDF-Eigenschaften
+\family default
+ im 
+\family sans
+Dokument-Einstellungen
+\family default
+ Dialog für Querverweise benutzen, wird der Verweis auf eine 
 \family sans
 lange
 \begin_inset space ~
@@ -6221,11 +6222,7 @@ Tabelle
 \begin_layout Subsubsection
 Querverweise auf 
 \family sans
-lange
-\begin_inset space ~
-\end_inset
-
-Tabelle
+lange Tabelle
 \family default
 n
 \begin_inset Index
@@ -6562,32 +6559,8 @@ asd
 \end_layout
 
 \begin_layout Standard
-Damit auf eine 
-\family sans
-lange
-\begin_inset space ~
-\end_inset
-
-Tabelle
-\family default
- verwiesen werden kann, müssen Sie eine 
-\family sans
-Marke
-\family default
+Damit auf eine lange Tabelle verwiesen werden kann, müssen Sie eine Marke
  im Titel einfügen.
- Beachten Sie dabei, dass Sie 
-\emph on
-
-\begin_inset Quotes gld
-\end_inset
-
-tab:
-\emph default
-
-\begin_inset Quotes grd
-\end_inset
-
- selber ins Markenfeld schreiben müssen.
 \end_layout
 
 \begin_layout Standard
@@ -6688,11 +6661,7 @@ LTcapwidth}{Breite}
 \end_layout
 
 \begin_layout Standard
-wobei 
-\family typewriter
-Breite
-\family default
- eine der in Anhang
+wobei die Breite eine der in Anhang
 \begin_inset space ~
 \end_inset
 
@@ -11141,7 +11110,7 @@ Tabellen ! Zeilenumbrüche
 \end_layout
 
 \begin_layout Standard
-\align center
+\noindent
 \begin_inset Float table
 placement H
 wide false
@@ -11357,7 +11326,7 @@ reference "tab:Table-with-and"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -20995,9 +20964,27 @@ Wenn Sie
 \series bold
 hyperref
 \series default
- benutzen, um in der Ausgabe Querverweise zu verlinken, springt ein Klick
- auf den Querverweis für eine Gleitobjekt-Abbildung zur Abbildungsmarke,
- und Sie werden das Bild ohne Rollen nicht sehen.
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! hyperref
+\end_layout
+
+\end_inset
+
+ in den
+\family sans
+ PDF-Eigenschaften
+\family default
+ im 
+\family sans
+Dokument-Einstellungen
+\family default
+ Dialog benutzen, um in der Ausgabe Querverweise zu verlinken, springt ein
+ Klick auf den Querverweis für eine Gleitobjekt-Abbildung zur Abbildungsmarke,
+ und Sie werden das Bild ohne Scrollen nicht sehen.
  Das liegt daran, dass der Querverweis-Link an der Marken-Position verankert
  ist.
  Wenn Sie das  LaTeX-Paket 
@@ -21072,37 +21059,13 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Bemerkung 1:
+Bemerkung:
 \series default
  
 \series bold
 hypcap
-\series default
- muss nach 
-\series bold
-hyperref
-\series default
- geladen werden.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Bemerkung 2:
-\series default
- 
 \series medium
-Das Setzen der Querverweis-Position hat keinen Einfluss auf Querverweise
- zu Teilabbildungen.
+ hat keinen Einfluss auf Querverweise zu Teilabbildungen.
 \end_layout
 
 \end_inset
@@ -21123,7 +21086,7 @@ name "abs:Gleitobjekt-Platzierung"
 status collapsed
 
 \begin_layout Plain Layout
-Gleitobjekte ! Plazierung
+Gleitobjekte ! Platzierung
 \end_layout
 
 \end_inset

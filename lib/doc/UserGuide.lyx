@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 338
+\lyxformat 339
 \begin_document
 \begin_header
 \textclass scrbook
@@ -16645,6 +16645,25 @@ footer
 \family default
 : The current row and all rows below, that don't have any special options
  defined, are defined to be the footer rows of the last page of the longtable.
+\end_layout
+
+\begin_layout Description
+Caption: The first row is reset as single column.
+ You can now insert there the table caption via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Caption
+\family default
+.
+ More about longtable captions can be found in the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Standard

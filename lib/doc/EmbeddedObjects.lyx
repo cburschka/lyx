@@ -2984,7 +2984,7 @@ table
 Longtable
 \family default
  of the table dialog to split the table automatically over more pages.
- Doing this enables some check boxes and you can now define:
+ Doing this enables the following options:
 \end_layout
 
 \begin_layout Description
@@ -3048,6 +3048,28 @@ footer
 \family default
 : The current row and all rows below, that don't have any special options
  defined, are defined to be the footer rows of the last page of the longtable.
+\end_layout
+
+\begin_layout Description
+Caption: The first row is reset as single column.
+ You can now insert there the table caption via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Caption
+\family default
+.
+ More about longtable captions is explained in sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Longtable-Captions"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -5706,69 +5728,20 @@ name "sub:Longtable-Captions"
 A longtable cannot be put into a table float because floats can only be
  on one page but the caption environment of floats can also be used for
  longtables.
-\end_layout
+ Therefore the caption is inserted as first row of the table, as explained
+ in sec.
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Standard
-As LyX does not yet fully support captions in longtables, a hack is needed
- to create them:
-\end_layout
 
-\begin_layout Enumerate
-Create a longtable
-\family sans
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Longtables"
+
+\end_inset
+
 .
-\end_layout
-
-\begin_layout Enumerate
-Mark the first row and disable its upper line.
-\end_layout
-
-\begin_layout Enumerate
-Insert a caption via the menu 
-\family sans
-Insert\SpecialChar \menuseparator
-Caption
-\family default
- into the first table cell.
-\begin_inset Newline newline
-\end_inset
-
-You can also add a short title for the caption.
-\end_layout
-
-\begin_layout Enumerate
-Insert a 
-\begin_inset Quotes eld
-\end_inset
-
-
-\series bold
-
-\backslash
-
-\backslash
-%
-\series default
-
-\begin_inset Quotes erd
-\end_inset
-
- as TeX-Code behind the caption.
-\end_layout
-
-\begin_layout Standard
-A short title that will appear in the LOT instead of the full title.
- The 
-\series bold
-
-\backslash
-
-\backslash
-%
-\series default
- behind the caption omits the vertical lines between the following cells
- in the row.
- The first table row is now only a dummy row for the caption, the actual
+ The first table row is then only a dummy row for the caption, the actual
  table starts with the second row.
 \end_layout
 
@@ -6143,9 +6116,9 @@ status open
 \series bold
 Note:
 \series default
- If you are using the LaTeX-package 
+ If you are using
 \series bold
-hyperref
+ hyperref
 \series default
 
 \begin_inset Index
@@ -6157,8 +6130,16 @@ LaTeX-packages ! hyperref
 
 \end_inset
 
- to link cross-references, the link to a longtable caption will always point
- to the beginning of the document.
+ in the 
+\family sans
+PDF Properties
+\family default
+ of the 
+\family sans
+Document Settings
+\family default
+ dialog to link cross-references, the link to a longtable caption will always
+ point to the beginning of the document.
 \end_layout
 
 \end_inset
@@ -6502,19 +6483,6 @@ asd
 
 \begin_layout Standard
 To reference a longtable, insert a label into the caption.
- Note that you have to add the label prefix 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-tab:
-\emph default
-
-\begin_inset Quotes eld
-\end_inset
-
- manually in the label field.
 \end_layout
 
 \begin_layout Standard
@@ -6533,7 +6501,7 @@ reference "tab:RefExample"
 \end_layout
 
 \begin_layout Standard
-The caption layout can be set together with all other caption of your document
+The caption layout can be set together with all other captions of your document
  using the LaTeX-package 
 \series bold
 caption
@@ -7431,7 +7399,7 @@ reference "tab:DiffCaptions"
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="59" columns="3">
+<lyxtabular version="3" rows="60" columns="3">
 <features islongtable="true">
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="0pt">
@@ -8137,7 +8105,7 @@ Rizzardi
 \series default
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Example footnote
@@ -9314,6 +9282,35 @@ Roberto
 \end_inset
 </cell>
 </row>
+<row endlastfoot="true">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
 </lyxtabular>
 
 \end_inset
@@ -9570,7 +9567,7 @@ must be inserted as TeX-Code at the beginning of the cell.
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="38" columns="3">
+<lyxtabular version="3" rows="39" columns="3">
 <features islongtable="true">
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -10823,6 +10820,35 @@ Franz
 \end_inset
 </cell>
 </row>
+<row endlastfoot="true">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
 </lyxtabular>
 
 \end_inset
@@ -10873,7 +10899,7 @@ Table ! Linebreaks
 \end_layout
 
 \begin_layout Standard
-\align center
+\noindent
 \begin_inset Float table
 placement H
 wide false
@@ -11312,13 +11338,6 @@ i
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -20323,8 +20342,16 @@ LaTeX-packages ! hyperref
 
 \end_inset
 
- to link cross-references in the output, you will see that clicking on an
- image float reference jumps to the image label.
+ in the 
+\family sans
+PDF Properties
+\family default
+ of the 
+\family sans
+Document Settings
+\family default
+ dialog to link cross-references in the output, you will see that clicking
+ on an image float reference jumps to the image label.
  The caption will be the first text part on the screen, so that you cannot
  see the image without scrolling.
  This is because the reference link anchor is placed at the position of
@@ -20378,7 +20405,7 @@ You can also use
 \series bold
 hypcap
 \series default
- for all floats but this isn't recommended for stability reasons.
+ for all float types but this is not recommended for stability reasons.
  For more informations, have a look at 
 \series bold
 hypcap
@@ -20391,31 +20418,6 @@ key "hypcap"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- 
-\series bold
-hypcap
-\series default
- must be loaded after 
-\series bold
-hyperref
-\series default
- in the document preamble.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 338
+\lyxformat 339
 \begin_document
 \begin_header
 \textclass scrbook
@@ -11083,7 +11083,7 @@ Tableau ! Saut de ligne
 \end_layout
 
 \begin_layout Standard
-\align center
+\noindent
 \begin_inset Float table
 placement H
 wide false
@@ -11270,7 +11270,7 @@ Si vous avez un mot long dans une cellule de largeur fixée, LaTeX ne peut
 
 pt juste avant votre mot.
  Comme l'espace est égal à zéro, la sortie ne sera pas modifiée.
- Le tableau 
+ Le tableau
 \begin_inset space ~
 \end_inset
 
@@ -11524,13 +11524,6 @@ i
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 

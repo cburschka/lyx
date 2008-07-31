@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 338
+\lyxformat 339
 \begin_document
 \begin_header
 \textclass scrbook
@@ -161,8 +161,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 24.
- Juli 2008
+letzte Änderung: 1.
+ August 2008
 \end_layout
 
 \begin_layout Standard
@@ -19281,7 +19281,7 @@ Tabellen-Einstellungen
 status collapsed
 
 \begin_layout Plain Layout
-Tabellen!Einstellungen bearbeiten
+Tabellen ! Einstellungen bearbeiten
 \end_layout
 
 \end_inset
@@ -20193,10 +20193,10 @@ name "Tab:Zellen-um-90°-drehen"
 
 Zellen um 90° drehen
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Tabellen!zelle drehen@-zelle drehen
+Tabellen ! -zelle drehen
 \end_layout
 
 \end_inset
@@ -21046,10 +21046,10 @@ reference "Tab:Zellen-um-90°-drehen"
 \begin_layout Subsection
 Was kann eine Zelle
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Tabellen!zelle@-zelle
+Tabellen ! -zelle
 \end_layout
 
 \end_inset
@@ -21080,20 +21080,20 @@ Abschnitt*
 \begin_layout Subsection
 Ausschneiden
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Tabellen!ausschneiden
+Tabellen ! ausschneiden
 \end_layout
 
 \end_inset
 
  und Einfügen
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Tabellen!einfugen@einfügen
+Tabellen ! einfügen
 \end_layout
 
 \end_inset
@@ -21689,10 +21689,10 @@ Sie können auch eine ganze Tabelle auf einmal kopieren.
 \begin_layout Subsection
 Mehrzeiliger Text in Tabellen
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Tabellen!mehrzeiliger Text
+Tabellen ! mehrzeiliger Text
 \end_layout
 
 \end_inset
@@ -21802,10 +21802,10 @@ name "Tab:Mehrzeilige-Tabelle"
 
 Mehrzeilige Tabelle
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Tabellen!mehrzeilig
+Tabellen ! mehrzeilig
 \end_layout
 
 \end_inset
@@ -22151,6 +22151,25 @@ Tabellen!letzte Fußzeile
 \end_layout
 
 \begin_layout Enumerate
+Legende: Die erste Zeile wird als einzelne Spalte zurückgesetzt.
+ Sie dort können nun die Tabellenbeschriftung (Legende) über das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Marke
+\family default
+ einfügen.
+ Mehr über Beschriftungen langer Tabellen ist im 
+\emph on
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
+\emph default
+ Handbuch zu finden.
+\end_layout
+
+\begin_layout Enumerate
 
 \family sans
 Seitenumbruch
@@ -22292,10 +22311,10 @@ Tabelle
 \family default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Tabellen!lange
+Tabellen ! lange
 \end_layout
 
 \end_inset
@@ -22760,10 +22779,10 @@ Gleitobjekt
 \family default
 -Umgebungen
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Tabellen!in Legende-Umgebungen
+Tabellen ! in Legende-Umgebungen
 \end_layout
 
 \end_inset
@@ -22979,10 +22998,10 @@ c & d\end{array}\right]$
 \begin_layout Subsubsection
 Tabellentitel
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Tabellen!titel@-titel
+Tabellen ! -titel
 \end_layout
 
 \end_inset
