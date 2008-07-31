@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 339
 \begin_document
 \begin_header
 \textclass hollywood
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry true
 \use_amsmath 0
@@ -40,81 +42,69 @@
 \paperpagestyle fancy
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 <your title>
 \end_layout
 
 \begin_layout Author
-
 <your name>
 \end_layout
 
-\begin_layout Standard
+\begin_layout General
 
+\end_layout
 
-\begin_inset VSpace vfill
+\begin_layout Right Address
+<your address>
+\begin_inset Newline newline
+\end_inset
+
+<continued>
+\begin_inset Newline newline
+\end_inset
+
+<last line>
+\end_layout
+
+\begin_layout General
+\begin_inset Newpage newpage
 \end_inset
 
 
 \end_layout
 
-
-\begin_layout Right Address
-
-<your address>
-\newline
-<continued>
-\newline
-<last line>
-\end_layout
-
-
-\begin_layout Standard
-
-
-\newpage
-
-\end_layout
-
 \begin_layout Narrative
-
 Delete this text.
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout General
 Don't date your script
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout General
 Use a three hole punch.
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout General
 Bind it in plain vanilla with no text on the binding.
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout General
 Use two 1.5in brass brads and hammer them down.
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout General
 Remember---nothing goes in a script that you cannot see or hear!! 1 page
  per minute.
  120 pages max.
 \end_layout
 
 \begin_layout Narrative
-
 See examples/script_form.lyx for details.
 \end_layout
 
