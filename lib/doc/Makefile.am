@@ -244,6 +244,7 @@ dist_doc_DATA = \
 	Formula-numbering.lyx \
 	Intro.lyx \
 	LaTeXConfig.lyx \
+	LFUNs.lyx \
 	Math.lyx \
 	Reference.lyx \
 	Shortcuts.lyx \

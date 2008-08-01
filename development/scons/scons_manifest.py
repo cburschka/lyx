@@ -2022,6 +2022,7 @@ lib_doc_files = Split('''
     Formula-numbering.lyx
     Intro.lyx
     LaTeXConfig.lyx
+    LFUNs.lyx
     Math.lyx
     Reference.lyx
     Shortcuts.lyx
