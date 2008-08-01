@@ -10348,23 +10348,6 @@ European Computer Modern
 ec
 \family default
 ).
- Note though, that 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-Latin Modern
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- (
-\family typewriter
-lm
-\family default
-) fonts are probably the best choice, see below.
 \end_layout
 
 \begin_layout Standard
@@ -10640,13 +10623,21 @@ The best solution is to use the
 \family typewriter
 Latin Modern
 \family default
- fonts.
+ (
+\family typewriter
+lm
+\family default
+) fonts.
  These fonts are developed in order of the LaTeX community to replace 
 \family typewriter
 cm
 \family default
  as default fonts.
- They all look the same, although some kerning is different, but 
+ They basically look the same as 
+\family typewriter
+cm
+\family default
+, although some kerning is different, but 
 \family typewriter
 lm
 \family default
