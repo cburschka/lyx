@@ -1,8 +1,11 @@
-#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 339
 \begin_document
 \begin_header
 \textclass amsart
+\begin_modules
+theorems-ams
+\end_modules
 \language english
 \inputencoding auto
 \font_roman default
@@ -13,9 +16,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry true
 \use_amsmath 1
@@ -38,6 +43,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -48,9 +54,9 @@ LFUNs documentation automatically generated 23.7.2008.
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -602,12 +608,16 @@ Action Displays shortcuts, lyxrc, package and textclass availability and
 
 \begin_layout Description
 Notion Apart from lfun arguments you can use the following method:  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  1.
  input the type and argument of this inset, e.g.
  "menu paste", in the work area.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  2.
  select the text and run info-insert lfun.
   
@@ -619,9 +629,10 @@ Syntax info-insert <TYPE> <ARG>
 
 \begin_layout Description
 Params <TYPE>: shortcut|lyxrc|package|textclass|menu|buffer  
-\newline
- <ARG>: argument
- for a given type.
+\begin_inset Newline newline
+\end_inset
+
+ <ARG>: argument for a given type.
  Look into InsetInfo.h for detailed description.
   
 \end_layout
@@ -663,7 +674,9 @@ Syntax box-insert [<TYPE>]
 \begin_layout Description
 Params <TYPE>: Boxed|Frameless|Framed|ovalbox|Ovalbox|Shadowbox|Shaded|Doublebox
   
-\newline
+\begin_inset Newline newline
+\end_inset
+
  Framed is the default one.
   
 \end_layout
@@ -685,13 +698,17 @@ Action Inserts CharStyle, Custom inset or XML short element.
 Notion Look into the Customization manual for more information about these
  elements.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  To make this command enabled the layout file for the document class you're
  using has to load the character styles.
  There are a few contained in the Logical Markup module.
  You can also of course create some yourself.
   
-\newline
+\begin_inset Newline newline
+\end_inset
+
  For dissolving the element see LFUN_INSET_DISSOLVE.
   
 \end_layout
@@ -702,15 +719,19 @@ Syntax flex-insert <TYPE:Name>
 
 \begin_layout Description
 Params TYPE: CharStyle|Custom|Element|Standard  
-\newline
- Identifies whether this
- is a Character Style, a Custom Inset or an XML Element, and which dynamical
- sub-menu this flex inset is in on the LyX menu tree.
+\begin_inset Newline newline
+\end_inset
+
+ Identifies whether this is a Character Style, a Custom Inset or an XML
+ Element, and which dynamical sub-menu this flex inset is in on the LyX
+ menu tree.
  If Standard (currently unused): none of these.
  Name: This name must be defined either in your layout file or imported
  by some module.
  The definition is  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  InsetLayout <TYPE:Name>  
 \end_layout
 
@@ -753,9 +774,10 @@ Syntax space-insert <NAME> [<LEN>]
 \begin_layout Description
 Params <NAME>: normal, protected, thin, quad, qquad, enspace, enskip, negthinspa
 ce, hfill, hfill*, dotfill, hrulefill, hspace, hspace*  
-\newline
- <LEN>: length for
- custom spaces (hspace, hspace* for protected)  
+\begin_inset Newline newline
+\end_inset
+
+ <LEN>: length for custom spaces (hspace, hspace* for protected)  
 \end_layout
 
 \begin_layout Description
@@ -1140,7 +1162,9 @@ Syntax scroll <TYPE> <QUANTITY>
 
 \begin_layout Description
 Params <TYPE>:  line|page 
-\newline
+\begin_inset Newline newline
+\end_inset
+
  <QUANTITY>: up|down|<number>  
 \end_layout
 
@@ -1510,11 +1534,14 @@ Syntax word-replace [<DATA>]
 
 \begin_layout Description
 Params <DATA>: data is of the form "<search>  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  <replace>  
-\newline
- <casesensitive>
- <matchword> <all> <forward>"  
+\begin_inset Newline newline
+\end_inset
+
+ <casesensitive> <matchword> <all> <forward>"  
 \end_layout
 
 \begin_layout Description
@@ -2194,7 +2221,8 @@ Syntax font-size <SIZE>
 
 \begin_layout Description
 Params <SIZE>: tiny|scriptsize|footnotesize|small|normal|large|larger| 
-\newline
+\begin_inset Newline newline
+\end_inset
 
  largest|huge|giant|increase|decrease|default  
 \end_layout
@@ -2241,7 +2269,9 @@ Params <FONT_INFO>: specifies font atributes, e.g.
  family, series, shape, size, emph, noun, underbar, number, color, language,
  toggleall.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  Use lyx -dbg action for exact syntax of text-style dialog parameters.
   
 \end_layout
@@ -2301,7 +2331,9 @@ Syntax citation-insert [<KEY>[|<TEXT_BEFORE>]]
 \begin_layout Description
 Params <KEY>: Citation (shortcut listed in available citations).
   
-\newline
+\begin_inset Newline newline
+\end_inset
+
  <TEXT_BEFORE>: text which should appear before citation.
   
 \end_layout
@@ -2627,9 +2659,10 @@ Syntax math-bigdelim <LSIZE> <LDELIM> <RSIZE> <RDELIM>
 
 \begin_layout Description
 Params <L/RSIZE>: bigl/r|Bigl/r|biggl/r|Biggl/r  
-\newline
- <L/RDELIM>: TeX code for
- delimiter.
+\begin_inset Newline newline
+\end_inset
+
+ <L/RDELIM>: TeX code for delimiter.
  See Delimiter dialog for delimiters to be used.
   
 \end_layout
@@ -2810,10 +2843,13 @@ Syntax math-space [<TYPE>]
 
 \begin_layout Description
 Params <TYPE>: negative spaces: !|negmedspace|negthickspace  
-\newline
- positive spaces:
- ,|:|;|quad|qquad  
-\newline
+\begin_inset Newline newline
+\end_inset
+
+ positive spaces: ,|:|;|quad|qquad  
+\begin_inset Newline newline
+\end_inset
+
  "," used by default.
   
 \end_layout
@@ -2944,9 +2980,11 @@ Syntax math-extern <LANG> [<COMMAND>]
 
 \begin_layout Description
 Params <LANG>: octave|maxima|maple|mathematica|script  
-\newline
- where "script" stands
- fot the external script (normalized expression will be passed)  
+\begin_inset Newline newline
+\end_inset
+
+ where "script" stands fot the external script (normalized expression will
+ be passed)  
 \end_layout
 
 \begin_layout Description
@@ -3410,9 +3448,10 @@ Syntax paragraph-goto <PAR_ID_NUMBER> <POSITION_IN_PAR>
 
 \begin_layout Description
 Params <PAR_ID_NUMBER>:  paragraph id  
-\newline
- <POSITION_IN_PAR>: desired position
- within the paragraph  
+\begin_inset Newline newline
+\end_inset
+
+ <POSITION_IN_PAR>: desired position within the paragraph  
 \end_layout
 
 \begin_layout Description
@@ -3486,21 +3525,29 @@ indent|
 indent-toggle|
 \backslash
 leftindent LENGTH 
-\newline
+\begin_inset Newline newline
+\end_inset
+
  <SPACING>: 
 \backslash
 paragraph_spacing default|single|onehalf|double|other 
-\newline
+\begin_inset Newline newline
+\end_inset
+
  <ALIGN>:   
 \backslash
 align block|left|right|center|default 
-\newline
+\begin_inset Newline newline
+\end_inset
+
  <OTHERS>:  
 \backslash
 labelwidthstring WIDTH|
 \backslash
 start_of_appendix 
-\newline
+\begin_inset Newline newline
+\end_inset
+
   
 \end_layout
 
@@ -3665,7 +3712,9 @@ Syntax inset-edit [<INSET_PARAMS>]
 \begin_layout Description
 Params <INSET_PARAMS>: Parameters for the inset.
   
-\newline
+\begin_inset Newline newline
+\end_inset
+
  Currently only the filename will be considered.
   
 \end_layout
@@ -3726,9 +3775,11 @@ set-usebox|set-lthead| unset-lthead|set-ltfirsthead|unset-ltfirsthead|set-ltfoot
 |unset-ltfoot| set-ltlastfoot|unset-ltlastfoot|set-ltnewpage|toggle-ltcaption|
  set-special-column|set-special-multi|set-booktabs|unset-booktabs| set-top-space
 |set-bottom-space|set-interline-space|set-border-lines  
-\newline
- <ARG>: additional
- argument for some commands, use debug mode to explore its values.
+\begin_inset Newline newline
+\end_inset
+
+ <ARG>: additional argument for some commands, use debug mode to explore
+ its values.
   
 \end_layout
 
@@ -3798,7 +3849,9 @@ Action Register the document as an file inside version control system (RCS,
 Notion File is registered inside cvs, svn or rcs repository acording to
  the existence of cvs/svn/rcs entries in the document's directory.
   
-\newline
+\begin_inset Newline newline
+\end_inset
+
  See LyX Extended Manual (Version Control Chapter) for additional information.
   
 \end_layout
@@ -4084,7 +4137,9 @@ Params <INSET>: this can be used to make sure the right kind of inset is
  the charstyle inset, even if the cursor is inside several nested insets
  of different type.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  For values see lyx::InsetLayout::lyxtype_ .
   
 \end_layout
@@ -4109,9 +4164,10 @@ Syntax inset-insert <INSET> <ARGS>
 \begin_layout Description
 Params <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics| hyperlink|i
 nclude|index|label|nomencl|vspace|ref|toc> 
-\newline
- <ARGS>: depends on the given
- inset.
+\begin_inset Newline newline
+\end_inset
+
+ <ARGS>: depends on the given inset.
  Use "lyx -dbg action" to explore.
   
 \end_layout
@@ -4120,23 +4176,35 @@ nclude|index|label|nomencl|vspace|ref|toc>
 Sample inset-insert ref LatexCommand <Format> reference "<label name>"
 \backslash
 end_inset  
-\newline
-where <label name> is the name of the referenced label and<Format>
- is one of the following:  
-\newline
+\begin_inset Newline newline
+\end_inset
+
+where <label name> is the name of the referenced label and<Format> is one
+ of the following:  
+\begin_inset Newline newline
+\end_inset
+
 ref -- <reference>  
-\newline
+\begin_inset Newline newline
+\end_inset
+
 eqref -- (<reference>)  
-\newline
-pageref
- -- <page>  
-\newline
+\begin_inset Newline newline
+\end_inset
+
+pageref -- <page>  
+\begin_inset Newline newline
+\end_inset
+
 vpageref -- on <page>  
-\newline
+\begin_inset Newline newline
+\end_inset
+
 vref -- <reference> on <page>  
-\newline
-prettyref
- -- Formatted reference 
+\begin_inset Newline newline
+\end_inset
+
+prettyref -- Formatted reference 
 \end_layout
 
 \begin_layout Subsection*
@@ -4290,12 +4358,16 @@ Syntax inset-toggle [<ARG>]
 \begin_layout Description
 Params <ARG>: <open|close|toggle|assign>.
   
-\newline
+\begin_inset Newline newline
+\end_inset
+
  open/close/toggle are for collapsable insets.
  close can be currently used by LFUN_NEXT_INSET_TOGGLE.
  toggle is used when no argument is given.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  assign is for branch inset.
   
 \end_layout
@@ -4325,9 +4397,11 @@ Syntax all-insets-toggle <STATE> <INSET>
 
 \begin_layout Description
 Params <STATE>: <toggle|open|close> default: toggle  
-\newline
- <INSET>: <box|branch|ert|f
-loat|listings|note|tabular|wrap> default: all insets  
+\begin_inset Newline newline
+\end_inset
+
+ <INSET>: <box|branch|ert|float|listings|note|tabular|wrap> default: all
+ insets  
 \end_layout
 
 \begin_layout Description
@@ -4707,16 +4781,24 @@ Syntax ui-toggle <statusbar|menubar|frame|fullscreen>
 \begin_layout Description
 Params statusbar  : Toggle visibility of the statusbar.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  menubar    : Toggle visibility of the menubar.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  scrollbar  : Toggle visibility of the scrollbar.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  frame      : Toggle visibility of the frames around editing window.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  fullscreen : Toggle fullscreen mode.
  This also covers calling the previous functions.
  However LFUN_TOOLBAR_TOGGLE for the custom tweaks of the toolbars should
@@ -4795,7 +4877,9 @@ Syntax split-view <vertical|horizontal>
 \begin_layout Description
 Params horizontal : The work areas are laid out side by side.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  vertical   : The work areas laid out vertically.
   
 \end_layout
@@ -4844,23 +4928,33 @@ Syntax dialog-show <NAME> [<DATA>]
 \begin_layout Description
 Params <NAME>: aboutlyx|bibitem|bibtex|box|branch|changes|character|citation|
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  document|errorlist|ert|external|file|findreplace|float|graphics| 
-\newline
- include|inde
-x|info|nomenclature|label|log|mathdelimiter|mathmatrix| 
-\newline
- note|paragraph|prefs|pr
-int|ref|sendto|space|spellchecker|symbols| 
-\newline
- tabular|tabularcreate|thesaurus|texi
-nfo|toc|href|view-source|vspace 
-\newline
+\begin_inset Newline newline
+\end_inset
+
+ include|index|info|nomenclature|label|log|mathdelimiter|mathmatrix| 
+\begin_inset Newline newline
+\end_inset
+
+ note|paragraph|prefs|print|ref|sendto|space|spellchecker|symbols| 
+\begin_inset Newline newline
+\end_inset
+
+ tabular|tabularcreate|thesaurus|texinfo|toc|href|view-source|vspace 
+\begin_inset Newline newline
+\end_inset
+
  wrap|listings|<SPECIAL>  
-\newline
- <SPECIAL>: latexlog|v
-clog  
-\newline
+\begin_inset Newline newline
+\end_inset
+
+ <SPECIAL>: latexlog|vclog  
+\begin_inset Newline newline
+\end_inset
+
  <DATA>: data, usually settings for the given dialog.
  Use debug mode for the details.
   
@@ -4914,7 +5008,9 @@ Syntax dialog-update <NAME>
 
 \begin_layout Description
 Params <NAME>: paragraph|prefs|<INSET>  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  <INSET>: inset name  
 \end_layout
 
@@ -5119,7 +5215,9 @@ Notion Maps were widely used in past, when X-windows didn't have nowadays
  They can be still used to maintain uniform keyboard layout across the various
  plaforms.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  The language is to be set in the Preferences dialog.
   
 \end_layout
@@ -5262,16 +5360,20 @@ Notion Latex file with extension literate_extension is generated.
  Then LyX invokes build_command (with a default of``make'') to generate
  the code and build_error_filter to process the compilation error messages.
   
-\newline
- In case you want to process your literate file with a script, or some
- other program, just insert in your lyxrc file an entry with: 
-\newline
- build_command
- "my_script my_arguments"  
-\newline
- The build_error_filter differs from the literate_err
-or_filter only in that the former will identify error messages from your
- compiler.
+\begin_inset Newline newline
+\end_inset
+
+ In case you want to process your literate file with a script, or some other
+ program, just insert in your lyxrc file an entry with: 
+\begin_inset Newline newline
+\end_inset
+
+ build_command "my_script my_arguments"  
+\begin_inset Newline newline
+\end_inset
+
+ The build_error_filter differs from the literate_error_filter only in that
+ the former will identify error messages from your compiler.
   
 \end_layout
 
@@ -5398,7 +5500,9 @@ Params <FORMAT> is either "custom" or one of the formats which you can find
  Usual format you will enter is "pdf2" (pdflatex), "pdflatex" (plain tex
  for pdflatex) or "ps" for postscript.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  In case of "custom" you will be asked for a format you want to start from
  and for the command that you want to apply to this format.
  Internally the control is then passed to LFUN_BUFFER_EXPORT_CUSTOM.
@@ -5427,7 +5531,9 @@ Syntax buffer-export-custom <FORMAT> <COMMAND>
 Params <FORMAT> format to start from (LyX will care to produce such intermediate
  file).
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  <COMMAND> this command will be launched on the file.
  Note that you can use "$$FName" string to qualify the intermediate file.
   
@@ -5462,10 +5568,14 @@ Syntax buffer-print <TARGET> <TARGET-NAME> <COMMAND>
 \begin_layout Description
 Params <TARGET> is either "printer" or "file".
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  <TARGER-NAME> is either "default" or file name or printer name.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  <COMMAND> command ensuring the printing job.
   
 \end_layout
@@ -5606,7 +5716,9 @@ Notion In the ->Readonly mode checks-in/commits the data if the file is
  under version control.
  In the Readonly-> mode checkouts the data from repository.
   
-\newline
+\begin_inset Newline newline
+\end_inset
+
  If these operations fail, buffer won't be toggled.
   
 \end_layout
@@ -5969,7 +6081,9 @@ Action Executes a command defined in a .def file.
 \begin_layout Description
 Notion The definitions are by default read from lib/commands/default.def.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
  A .def file allows to define a command with 
 \backslash
 define "<NAME>" "<LFUN>" where <NAME> is the name of the new command and
@@ -5979,9 +6093,11 @@ define "<NAME>" "<LFUN>" where <NAME> is the name of the new command and
 \backslash
 def_file "FileName" allows to include another .def file.
   
-\newline
- This is particularly useful in connection with toolbar buttons: Since
- the name of the button image for this lfun is lib/images/commands/<NAME>.png
+\begin_inset Newline newline
+\end_inset
+
+ This is particularly useful in connection with toolbar buttons: Since the
+ name of the button image for this lfun is lib/images/commands/<NAME>.png
  this is the way to assign an image to a complex command-sequence.
   
 \end_layout
@@ -6060,7 +6176,9 @@ Action Return the current key sequence and available options as a string.
 \begin_layout Description
 Notion No options are added if no current map exists.
   
-\newline
+\begin_inset Newline newline
+\end_inset
+
  This is probably usable only with connection to lyxserver.
   
 \end_layout
@@ -6302,10 +6420,11 @@ Params <BRANCH>: The branch to activate
 
 \begin_layout Description
 Sample lyx -e pdf2 -x "branch-activate answers" finalexam.lyx  
-\newline
-could be used
- to export a pdf with the answers branch includedwithout one's having to
- open LyX and activate the branch manually.
+\begin_inset Newline newline
+\end_inset
+
+could be used to export a pdf with the answers branch includedwithout one's
+ having to open LyX and activate the branch manually.
 \end_layout
 
 \begin_layout Description
