@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-07-13 13:54+0200\n"
-"PO-Revision-Date: 2008-07-29 18:16+0300\n"
+"PO-Revision-Date: 2008-08-01 01:11+0300\n"
 "Last-Translator: Hatim Alahmadi <Dr.Hatim@hotmail.com>\n"
 "Language-Team: LyX team <Dr.Hatim@hotmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -1157,11 +1157,11 @@ msgstr "من"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:25
 msgid "Use &default placement"
-msgstr "استخدام النسب الافتراضية"
+msgstr "استخدام الوضع الافتراضية"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:32
 msgid "Advanced Placement Options"
-msgstr "الخيارات المتقدمة للنسب"
+msgstr "الخيارات المتقدمة للوضع"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:44
 msgid "&Top of page"
@@ -1787,7 +1787,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:199
 msgid "Placement"
-msgstr ""
+msgstr "الوضع"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:211
 msgid "Specify placement (htbp) for floating listings"
@@ -1812,7 +1812,7 @@ msgstr ""
 #: src/frontends/qt4/ui/ListingsUi.ui:238
 #: src/frontends/qt4/ui/WrapUi.ui:185
 msgid "&Placement:"
-msgstr ""
+msgstr "الوضع:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:254
 msgid "Line numbering"
@@ -1824,7 +1824,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:296
 msgid "Choose the font size for line numbers"
-msgstr ""
+msgstr "اختر حجم خط رقم السطر"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:312
 msgid "Font si&ze:"
@@ -1844,11 +1844,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:382
 msgid "Select the dialect of the programming language, if available"
-msgstr ""
+msgstr "حدد لهجة لغة البيان, اذا كانت متاحة"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:389
 msgid "&Dialect:"
-msgstr ""
+msgstr "اللهجة:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:399
 msgid "Lan&guage:"
@@ -1856,7 +1856,7 @@ msgstr "اللغة:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:409
 msgid "Select the programming language"
-msgstr ""
+msgstr "حدد لغة البيان"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:419
 msgid "Range"
@@ -2072,7 +2072,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:121
 msgid "Style used for the page header and footer"
-msgstr ""
+msgstr "الاسلوب المستخدم للرأس والتذييل"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:128
 msgid "Headings &style:"
@@ -2102,11 +2102,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:256
 msgid "&Two-sided document"
-msgstr ""
+msgstr "مستند بوجهين"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:44
 msgid "I&mmediate Apply"
-msgstr ""
+msgstr "تطبيق فوري"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:123
 msgid "Use the default alignment for this paragraph, whatever it is."
@@ -2845,11 +2845,11 @@ msgstr "طباعة لملف:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:98
 msgid "Option used to print to non-default printer."
-msgstr ""
+msgstr "خيار يستخدم للطباعة بغير الطابعة الافتراضية"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:101
 msgid "Set p&rinter:"
-msgstr ""
+msgstr "الطابعة المعينة:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:114
 msgid "Option used with spool command to set printer."
@@ -2869,11 +2869,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:153
 msgid "Option used to reverse page order."
-msgstr ""
+msgstr "خيار يستخدم لعكس الصفحات."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:156
 msgid "Re&verse pages:"
-msgstr ""
+msgstr "عكس الصفحات:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:169
 msgid "Lan&dscape:"
@@ -2885,11 +2885,11 @@ msgstr "عدد النسخ:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:192
 msgid "Option used to set number of copies."
-msgstr ""
+msgstr "خيار يستخدم لتعيين عدد النسخ."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:199
 msgid "Option used to print a range of pages."
-msgstr ""
+msgstr "خيار يستخدم لطباعة مدى الصفحات"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:206
 msgid "Co&llated:"
@@ -2901,7 +2901,7 @@ msgstr "مدى الصفحة:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:226
 msgid "Option used to collate multiple copies."
-msgstr ""
+msgstr "خيار يستخدم لجمع نسخ متعددة."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:233
 msgid "&Odd pages:"
@@ -3093,7 +3093,7 @@ msgstr "مستندات"
 
 #: src/frontends/qt4/ui/PrefUi.ui:101
 msgid "&Maximum last files:"
-msgstr ""
+msgstr "عدد آخر ملفات:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:146
 msgid "minutes"
@@ -3117,7 +3117,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefUi.ui:214
 msgid "Enable &tool tips in main work area"
-msgstr ""
+msgstr "تفعيل اداة التلميحات في منطقة العمل"
 
 #: src/frontends/qt4/ui/PrefUi.ui:224
 msgid "Bro&wse..."
@@ -3241,7 +3241,7 @@ msgstr "<صفحة>"
 
 #: src/frontends/qt4/ui/RefUi.ui:182
 msgid "on page <page>"
-msgstr ""
+msgstr "على الصفحة <صفحة>"
 
 #: src/frontends/qt4/ui/RefUi.ui:187
 msgid "<reference> on page <page>"
@@ -3349,31 +3349,31 @@ msgstr ""
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:45
 msgid "Replace word with current choice"
-msgstr ""
+msgstr "استبدل الكلمة بالاختيار الحالي"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:55
 msgid "Add the word to your personal dictionary"
-msgstr ""
+msgstr "اضافة الكلمة إلى قاموسك"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:65
 msgid "Ignore this word"
-msgstr ""
+msgstr "تجاهل هذه الكلمة"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:68
 msgid "&Ignore"
-msgstr ""
+msgstr "تجاهل"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:75
 msgid "Ignore this word throughout this session"
-msgstr ""
+msgstr "تجاهل هذه الكلمه طوال هذه الجلسة"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:78
 msgid "I&gnore All"
-msgstr ""
+msgstr "تجاهل الكل"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:101
 msgid "Replacement:"
-msgstr ""
+msgstr "البديل:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:111
 msgid "Current word"
@@ -3397,7 +3397,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:116
 msgid "Select this to display all available characters at once"
-msgstr ""
+msgstr "حدد هذا الخيار لعرض كل ما هو متاح من المحارف دفعة واحدة"
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:119
 msgid "&Display all"
@@ -3479,15 +3479,15 @@ msgstr "كل الاطارات"
 
 #: src/frontends/qt4/ui/TabularUi.ui:259
 msgid "Set all borders of the current (selected) cell(s)"
-msgstr ""
+msgstr "تعيين جميع الحدود للخلايا المحددة حالياً"
 
 #: src/frontends/qt4/ui/TabularUi.ui:262
 msgid "&Set"
-msgstr ""
+msgstr "تعيين"
 
 #: src/frontends/qt4/ui/TabularUi.ui:269
 msgid "Unset all borders of the current (selected) cell(s)"
-msgstr ""
+msgstr "الغاء جميع الحدود للخلايا المحددة حالياً"
 
 #: src/frontends/qt4/ui/TabularUi.ui:310
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
@@ -3507,7 +3507,7 @@ msgstr "افتراضي"
 
 #: src/frontends/qt4/ui/TabularUi.ui:349
 msgid "Set Borders"
-msgstr ""
+msgstr "تعيين الحدود"
 
 #: src/frontends/qt4/ui/TabularUi.ui:861
 msgid "Set borders of the current (selected) cell(s)"
@@ -3515,7 +3515,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:874
 msgid "Additional Space"
-msgstr ""
+msgstr "مساحة اضافية"
 
 #: src/frontends/qt4/ui/TabularUi.ui:886
 msgid "T&op of row:"
@@ -3531,15 +3531,15 @@ msgstr "بين الصفوف:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:997
 msgid "&Longtable"
-msgstr ""
+msgstr "جدول طويل"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1025
 msgid "Set a page break on the current row"
-msgstr ""
+msgstr "وضع فاصل الصفحة عند الصف الحالي"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1028
 msgid "Page &break on current row"
-msgstr ""
+msgstr "فاصل الصفحة عند الصف الحالي"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1038
 msgid "Settings"
@@ -3547,7 +3547,7 @@ msgstr "اعدادات"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1050
 msgid "Status"
-msgstr ""
+msgstr "الحالة"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1057
 msgid "Border above"
@@ -3567,7 +3567,7 @@ msgstr "رأس:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1085
 msgid "Repeat this row as header on every (except the first) page"
-msgstr ""
+msgstr "كرر هذا الصف على رأس كل صفحة ما عدا الاولى"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1088
 #: src/frontends/qt4/ui/TabularUi.ui:1125
@@ -3600,7 +3600,7 @@ msgstr "هذا الصف رأس الصفحة الاولى"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1146
 msgid "Don't output the first header"
-msgstr ""
+msgstr "لا تخرج الرأس الاول"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1149
 #: src/frontends/qt4/ui/TabularUi.ui:1221
@@ -3613,7 +3613,7 @@ msgstr "تذييل:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1163
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr ""
+msgstr "كرر هذا الصف في تذييل كل صفحة ما عدا الاخيرة"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1187
 msgid "Last footer:"
@@ -3633,7 +3633,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:1245
 msgid "Select for tables that span multiple pages"
-msgstr ""
+msgstr "اختر الجداول التي تمتد لعدة صفحات"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1248
 msgid "&Use long table"
@@ -3653,7 +3653,7 @@ msgstr "موقع العمود التالي"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:55
 msgid "Close this dialog"
-msgstr ""
+msgstr "اغلاق هذا الحوار"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:91
 msgid "Rebuild the file lists"
@@ -3685,7 +3685,7 @@ msgstr "اسلوب لتيك"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:138
 msgid "BibTeX styles"
-msgstr ""
+msgstr "اسلوب BibTeX"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:162
 msgid "Toggles view of the file list"
@@ -3705,15 +3705,15 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:112
 msgid "Listing settings"
-msgstr ""
+msgstr "قائمة الاعدادات"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:224
 msgid "Format text into two columns"
-msgstr ""
+msgstr "وضع النص في عمودين"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:227
 msgid "Two-&column document"
-msgstr ""
+msgstr "مستند بعمودين"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:237
 msgid "&Vertical space"
@@ -3725,11 +3725,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:247
 msgid "&Indentation"
-msgstr ""
+msgstr "فراغ"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:313
 msgid "&Line spacing:"
-msgstr ""
+msgstr "مسافات الاسطر:"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:39
 msgid "Index entry"
@@ -3747,7 +3747,7 @@ msgstr "مدخل"
 #: src/frontends/qt4/ui/ThesaurusUi.ui:85
 #: src/frontends/qt4/ui/ThesaurusUi.ui:98
 msgid "The selected entry"
-msgstr ""
+msgstr "المدخل المحدد"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:88
 msgid "&Selection:"
@@ -3779,11 +3779,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TocUi.ui:118
 msgid "Move selected item down by one"
-msgstr ""
+msgstr "انزال المادة المحددة للأسفل"
 
 #: src/frontends/qt4/ui/TocUi.ui:137
 msgid "Move selected item up by one"
-msgstr ""
+msgstr "رفع المادة المحددة للأعلى"
 
 #: src/frontends/qt4/ui/TocUi.ui:166
 msgid "Switch between available lists (table of contents, list of figures, list of tables, and others)"
@@ -4116,11 +4116,11 @@ msgstr ""
 #: lib/layouts/theorems-starred-equivalents.inc:48
 #: src/frontends/qt4/GuiDocument.cpp:827
 msgid "Example"
-msgstr ""
+msgstr "مثال"
 
 #: lib/layouts/IEEEtran.layout:166
 msgid "Example #:"
-msgstr ""
+msgstr "مثال #:"
 
 #: lib/layouts/IEEEtran.layout:173
 #: lib/layouts/theorems-ams-extended.module:101
@@ -4362,7 +4362,7 @@ msgstr ""
 #: lib/layouts/db_stdstarsections.inc:36
 #: lib/layouts/stdstarsections.inc:34
 msgid "Section*"
-msgstr ""
+msgstr "قسم*"
 
 #: lib/layouts/IEEEtran.layout:308
 #: lib/layouts/beamer.layout:222
@@ -5385,7 +5385,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:848
 #: lib/layouts/beamer.layout:895
 msgid "Titling"
-msgstr ""
+msgstr "عنونة"
 
 #: lib/layouts/beamer.layout:770
 msgid "Title (Plain Frame)"
@@ -6101,12 +6101,12 @@ msgstr "كلمات مفتاحية:"
 #: lib/layouts/europecv.layout:49
 #: lib/layouts/moderncv.layout:80
 msgid "Item"
-msgstr ""
+msgstr "مادة"
 
 #: lib/layouts/europecv.layout:58
 #: lib/layouts/moderncv.layout:89
 msgid "Item:"
-msgstr ""
+msgstr "المادة:"
 
 #: lib/layouts/europecv.layout:65
 msgid "BulletedItem"
@@ -6118,7 +6118,7 @@ msgstr ""
 
 #: lib/layouts/europecv.layout:71
 msgid "Begin"
-msgstr ""
+msgstr "بداية"
 
 #: lib/layouts/europecv.layout:81
 msgid "Begin of CV"
@@ -6171,7 +6171,7 @@ msgstr ""
 
 #: lib/layouts/europecv.layout:137
 msgid "End"
-msgstr ""
+msgstr "نهاية"
 
 #: lib/layouts/europecv.layout:147
 msgid "End of CV"
@@ -7397,11 +7397,11 @@ msgstr "مدخل:"
 
 #: lib/layouts/moderncv.layout:96
 msgid "ListItem"
-msgstr ""
+msgstr "قائمة المواد"
 
 #: lib/layouts/moderncv.layout:99
 msgid "List Item:"
-msgstr ""
+msgstr "قائمة المواد:"
 
 #: lib/layouts/moderncv.layout:102
 msgid "DoubleItem"
@@ -7816,7 +7816,7 @@ msgstr ""
 
 #: lib/layouts/simplecv.layout:55
 msgid "Topic"
-msgstr ""
+msgstr "موضوع"
 
 #: lib/layouts/simplecv.layout:69
 msgid "MMMMM"
@@ -17524,7 +17524,7 @@ msgstr "خيارات الرياضيات"
 
 #: src/frontends/qt4/GuiDocument.cpp:989
 msgid "Float Placement"
-msgstr "مكان عائم"
+msgstr "وضع عائم"
 
 #: src/frontends/qt4/GuiDocument.cpp:990
 msgid "Bullets"
