@@ -956,7 +956,7 @@ Layout & TextClass::operator[](docstring const & name)
 
 bool TextClass::deleteLayout(docstring const & name)
 {
-	if (name == defaultLayoutName() || name == emptyLayoutName())
+	if (name == defaultLayoutName() || name == plainLayoutName())
 		return false;
 
 	LayoutList::iterator it =
@@ -1044,7 +1044,7 @@ bool TextClass::isDefaultLayout(Layout const & layout) const
 
 bool TextClass::isPlainLayout(Layout const & layout) const 
 {
-	return layout.name() == emptyLayoutName();
+	return layout.name() == plainLayoutName();
 }
 
 

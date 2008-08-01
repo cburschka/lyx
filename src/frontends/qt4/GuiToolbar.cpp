@@ -623,7 +623,7 @@ void GuiLayoutBox::updateContents(bool reset)
 		if (name == text_class_->defaultLayoutName() && inset_ && useEmpty)
 			continue;
 		// if it doesn't require the empty layout, we skip it
-		if (name == text_class_->emptyLayoutName() && inset_ && !useEmpty)
+		if (name == text_class_->plainLayoutName() && inset_ && !useEmpty)
 			continue;
 		// obsoleted layouts are skipped as well
 		if (!lit->obsoleted_by().empty())

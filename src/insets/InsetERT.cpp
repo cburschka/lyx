@@ -104,7 +104,7 @@ int InsetERT::docbook(odocstream & os, OutputParams const &) const
 void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	BufferParams const & bp = cur.buffer().params();
-	Layout const layout = bp.documentClass().emptyLayout();
+	Layout const layout = bp.documentClass().plainLayout();
 	//lyxerr << "\nInsetERT::doDispatch (begin): cmd: " << cmd << endl;
 	switch (cmd.action) {
 	case LFUN_QUOTE_INSERT: {

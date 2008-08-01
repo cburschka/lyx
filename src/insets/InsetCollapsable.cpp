@@ -86,7 +86,7 @@ InsetCollapsable::InsetCollapsable(Buffer const & buf,
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_collapsableframe);
-	paragraphs().back().setLayout(dc.emptyLayout());
+	paragraphs().back().setLayout(dc.plainLayout());
 }
 
 
@@ -147,7 +147,7 @@ void InsetCollapsable::setLayout(DocumentClass const * const dc)
 		layout_ = &(dc->insetLayout(name()));
 		labelstring_ = translateIfPossible(layout_->labelstring());
 	} else {
-		layout_ = &DocumentClass::emptyInsetLayout();
+		layout_ = &DocumentClass::plainInsetLayout();
 		labelstring_ = _("UNDEFINED");
 	}
 
@@ -848,7 +848,7 @@ void InsetCollapsable::validate(LaTeXFeatures & features) const
 bool InsetCollapsable::undefined() const
 {
 	docstring const & n = getLayout().name();
-	return n.empty() || n == DocumentClass::emptyInsetLayout().name();
+	return n.empty() || n == DocumentClass::plainInsetLayout().name();
 }
 
 

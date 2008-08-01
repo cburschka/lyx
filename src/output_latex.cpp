@@ -110,7 +110,7 @@ TeXEnvironment(Buffer const & buf,
 	BufferParams const & bparams = buf.params();
 
 	Layout const & style = pit->forcePlainLayout() ?
-		bparams.documentClass().emptyLayout() : pit->layout();
+		bparams.documentClass().plainLayout() : pit->layout();
 
 	ParagraphList const & paragraphs = text.paragraphs();
 
@@ -310,7 +310,7 @@ TeXOnePar(Buffer const & buf,
 	}
 
 	Layout const style = pit->forcePlainLayout() ?
-		bparams.documentClass().emptyLayout() : pit->layout();
+		bparams.documentClass().plainLayout() : pit->layout();
 
 	OutputParams runparams = runparams_in;
 	runparams.moving_arg |= style.needprotect;
@@ -785,7 +785,7 @@ void latexParagraphs(Buffer const & buf,
 	while (par != endpar) {
 		lastpar = par;
 		Layout const & layout = par->forcePlainLayout() ?
-				tclass.emptyLayout() :
+				tclass.plainLayout() :
 				par->layout();
 
 		if (layout.intitle) {

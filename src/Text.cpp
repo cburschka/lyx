@@ -104,14 +104,14 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 
 		if (par.forcePlainLayout()) {
 			// in this case only the empty layout is allowed
-			layoutname = tclass.emptyLayoutName();
+			layoutname = tclass.plainLayoutName();
 		} else if (par.usePlainLayout()) {
 			// in this case, default layout maps to empty layout 
 			if (layoutname == tclass.defaultLayoutName())
-				layoutname = tclass.emptyLayoutName();
+				layoutname = tclass.plainLayoutName();
 		} else { 
 			// otherwise, the empty layout maps to the default
-			if (layoutname == tclass.emptyLayoutName())
+			if (layoutname == tclass.plainLayoutName())
 				layoutname = tclass.defaultLayoutName();
 		}
 
@@ -382,11 +382,11 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 	if (sensitive) {
 		if (cur.pos() == 0)
 			// set to standard-layout
-		//FIXME Check if this should be emptyLayout() in some cases
+		//FIXME Check if this should be plainLayout() in some cases
 			pars_[cpit].applyLayout(tclass.defaultLayout());
 		else
 			// set to standard-layout
-			//FIXME Check if this should be emptyLayout() in some cases
+			//FIXME Check if this should be plainLayout() in some cases
 			pars_[next_par].applyLayout(tclass.defaultLayout());
 	}
 

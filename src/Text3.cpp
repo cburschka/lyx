@@ -239,7 +239,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 		cur.leaveInset(*inset);
 		// reset surrounding par to default
 		docstring const layoutname = insetText->usePlainLayout()
-			? bparams.documentClass().emptyLayoutName()
+			? bparams.documentClass().plainLayoutName()
 			: bparams.documentClass().defaultLayoutName();
 		text->setLayout(cur, layoutname);
 	}
@@ -1014,14 +1014,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		if (para.forcePlainLayout()) 
 			// in this case only the empty layout is allowed
-			layout = tclass.emptyLayoutName();
+			layout = tclass.plainLayoutName();
 		else if (para.usePlainLayout()) {
 			// in this case, default layout maps to empty layout 
 			if (layout == tclass.defaultLayoutName())
-				layout = tclass.emptyLayoutName();
+				layout = tclass.plainLayoutName();
 		} else { 
 			// otherwise, the empty layout maps to the default
-			if (layout == tclass.emptyLayoutName())
+			if (layout == tclass.plainLayoutName())
 				layout = tclass.defaultLayoutName();
 		}
 
@@ -1695,7 +1695,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 
 			docstring const laystr = cur.inset().usePlainLayout() ?
-				tclass.emptyLayoutName() :
+				tclass.plainLayoutName() :
 				tclass.defaultLayoutName();
 			setLayout(cur, laystr);
 			ParagraphParameters p;

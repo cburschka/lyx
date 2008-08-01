@@ -1883,7 +1883,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 	bool asdefault = forcePlainLayout();
 
 	Layout const & style = asdefault ?
-		bparams.documentClass().emptyLayout() :
+		bparams.documentClass().plainLayout() :
 		*d->layout_;
 
 	// Current base font for all inherited font changes, without any
@@ -2426,7 +2426,7 @@ void Paragraph::setLayout(Layout const & layout)
 void Paragraph::setPlainOrDefaultLayout(DocumentClass const & tclass)
 {
 	if (usePlainLayout())
-		setLayout(tclass.emptyLayout());
+		setLayout(tclass.plainLayout());
 	else
 		setLayout(tclass.defaultLayout());
 }

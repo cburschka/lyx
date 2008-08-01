@@ -487,7 +487,7 @@ Tabular::CellData::CellData(Buffer & buf)
 	  inset(new InsetTableCell(buf))
 {
 	inset->setBuffer(const_cast<Buffer &>(buf));
-	inset->paragraphs().back().setLayout(buf.params().documentClass().emptyLayout());
+	inset->paragraphs().back().setLayout(buf.params().documentClass().plainLayout());
 }
 
 
@@ -981,7 +981,7 @@ void toggleFixedWidth(Cursor & cur, InsetTableCell * inset, bool fixedWidth)
 	cur.push(*inset);
 	// undo information has already been recorded
 	inset->getText(0)->setLayout(cur.bv().buffer(), 0, cur.lastpit() + 1,
-			bp.documentClass().emptyLayoutName());
+			bp.documentClass().plainLayoutName());
 	cur.pop();
 }
 

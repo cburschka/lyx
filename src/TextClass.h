@@ -124,10 +124,10 @@ public:
 	bool isPlainLayout(Layout const &) const;
 	/// returns a special layout for use when we don't really want one,
 	/// e.g., in table cells
-	Layout const & emptyLayout() const 
+	Layout const & plainLayout() const 
 			{ return operator[](emptylayout_); };
-	/// the name of the empty layout
-	docstring const & emptyLayoutName() const 
+	/// the name of the plain layout
+	docstring const & plainLayoutName() const 
 			{ return emptylayout_; }
 	/// Enumerate the paragraph styles.
 	size_t layoutCount() const { return layoutlist_.size(); }
@@ -191,8 +191,8 @@ protected:
 	TextClass();
 	///
 	Layout & operator[](docstring const & vname);
-	/// Create an empty layout for this textclass.
-	/** \param unknown Set to true if this layout is a default layout used to
+	/// Create an new, empty layout for this textclass.
+	/** \param unknown Set to true if this layout is an empty layout used to
 	 * represent an unknown layout
 	 */
 	Layout createEmptyLayout(docstring const & name, bool unknown = false) const;
@@ -240,7 +240,7 @@ protected:
 	std::string class_header_;
 	///
 	docstring defaultlayout_;
-	/// name of empty layout
+	/// name of plain layout
 	static const docstring emptylayout_;
 	/// preamble text to support layout styles
 	docstring preamble_;
@@ -340,9 +340,9 @@ public:
 	/// If that doesn't work either, an empty object returns (shouldn't
 	/// happen).  -- Idea JMarc, comment MV
 	InsetLayout const & insetLayout(docstring const & name) const;
-	/// an empty inset layout for use as a default
-	static InsetLayout const & emptyInsetLayout() { return empty_insetlayout_; }
-	/// add an empty layout \c name if it does not exist in layoutlist_
+	/// a plain inset layout for use as a default
+	static InsetLayout const & plainInsetLayout() { return empty_insetlayout_; }
+	/// add a new, empty layout \c name if it does not exist in layoutlist_
 	void addLayoutIfNeeded(docstring const & name) const;
 
 	///////////////////////////////////////////////////////////////////

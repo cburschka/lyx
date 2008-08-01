@@ -133,7 +133,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	// set the paragraphs to empty layout if necessary
 	if (cur.inset().usePlainLayout()) {
 		bool forcePlainLayout = cur.inset().forcePlainLayout();
-		Layout const & emptyLayout = newDocClass->emptyLayout();
+		Layout const & emptyLayout = newDocClass->plainLayout();
 		Layout const & defaultLayout = newDocClass->defaultLayout();
 		ParagraphList::iterator const end = insertion.end();
 		ParagraphList::iterator par = insertion.begin();
@@ -144,7 +144,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 		}
 	} else { // check if we need to reset from empty layout
 		Layout const & defaultLayout = newDocClass->defaultLayout();
-		Layout const & emptyLayout = newDocClass->emptyLayout();
+		Layout const & emptyLayout = newDocClass->plainLayout();
 		ParagraphList::iterator const end = insertion.end();
 		ParagraphList::iterator par = insertion.begin();
 		for (; par != end; ++par) {
@@ -523,7 +523,7 @@ void switchBetweenClasses(DocumentClass const * const oldone,
 		newtc.addLayoutIfNeeded(name);
 
 		if (in.usePlainLayout())
-			it->setLayout(newtc.emptyLayout());
+			it->setLayout(newtc.plainLayout());
 		else
 			it->setLayout(newtc[name]);
 	}
@@ -720,7 +720,7 @@ void copySelectionToStack(Cursor & cur, CutStack & cutstack)
 		Paragraph par;
 		BufferParams const & bp = cur.buffer().params();
 		// FIXME This should be the empty layout...right?
-		par.setLayout(bp.documentClass().emptyLayout());
+		par.setLayout(bp.documentClass().plainLayout());
 		par.insert(0, grabSelection(cur), Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
 		cutstack.push(make_pair(pars, bp.documentClassPtr()));
@@ -747,7 +747,7 @@ void copySelection(Cursor & cur, docstring const & plaintext)
 		ParagraphList pars;
 		Paragraph par;
 		BufferParams const & bp = cur.buffer().params();
-		par.setLayout(bp.documentClass().emptyLayout());
+		par.setLayout(bp.documentClass().plainLayout());
 		par.insert(0, plaintext, Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
 		theCuts.push(make_pair(pars, bp.documentClassPtr()));

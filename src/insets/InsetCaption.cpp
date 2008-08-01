@@ -54,7 +54,7 @@ InsetCaption::InsetCaption(Buffer const & buf)
 	setDrawFrame(true);
 	setFrameColor(Color_captionframe);
 	// There will always be only one
-	paragraphs().back().setLayout(buf.params().documentClass().emptyLayout());
+	paragraphs().back().setLayout(buf.params().documentClass().plainLayout());
 }
 
 
