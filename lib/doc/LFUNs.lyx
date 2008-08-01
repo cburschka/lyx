@@ -1,0 +1,6336 @@
+#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass amsart
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+LFUNs documentation automatically generated 23.7.2008.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ACCENT_ACUTE 
+\end_layout
+
+\begin_layout Description
+Action Adds an acute accent to the next character typed.
+  
+\end_layout
+
+\begin_layout Description
+Syntax accent-acute 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ACCENT_BREVE 
+\end_layout
+
+\begin_layout Description
+Action Adds a breve accent to the next character typed.
+  
+\end_layout
+
+\begin_layout Description
+Syntax accent-breve 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ACCENT_CARON 
+\end_layout
+
+\begin_layout Description
+Action Adds a caron to the next character typed.
+  
+\end_layout
+
+\begin_layout Description
+Syntax accent-caron 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ACCENT_CEDILLA 
+\end_layout
+
+\begin_layout Description
+Action Adds a cedilla to the next character typed.
+  
+\end_layout
+
+\begin_layout Description
+Syntax accent-cedilla 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ACCENT_CIRCLE 
+\end_layout
+
+\begin_layout Description
+Action Adds a circle accent to the next character typed.
+  
+\end_layout
+
+\begin_layout Description
+Syntax accent-circle 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ACCENT_CIRCUMFLEX 
+\end_layout
+
+\begin_layout Description
+Action Adds a circumflex to the next character typed.
+  
+\end_layout
+
+\begin_layout Description
+Syntax accent-circumflex 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ACCENT_DOT 
+\end_layout
+
+\begin_layout Description
+Action Adds a dot accent to the next character typed.
+  
+\end_layout
+
+\begin_layout Description
+Syntax accent-dot 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ACCENT_GRAVE 
+\end_layout
+
+\begin_layout Description
+Action Adds a grave accent to the next character typed.
+  
+\end_layout
+
+\begin_layout Description
+Syntax accent-grave 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ACCENT_HUNGARIAN_UMLAUT 
+\end_layout
+
+\begin_layout Description
+Action Adds a Hungarian umlaut to the next character typed.
+  
+\end_layout
+
+\begin_layout Description
+Syntax accent-grave 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ACCENT_MACRON 
+\end_layout
+
+\begin_layout Description
+Action Adds a macron to the next character typed.
+  
+\end_layout
+
+\begin_layout Description
+Syntax accent-macron 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ACCENT_OGONEK 
+\end_layout
+
+\begin_layout Description
+Action Adds an ogonek accent to the next character typed.
+  
+\end_layout
+
+\begin_layout Description
+Syntax accent-ogonek 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ACCENT_TIE 
+\end_layout
+
+\begin_layout Description
+Action Adds a tie over the next two character typed.
+  
+\end_layout
+
+\begin_layout Description
+Notion The following char will finish the tie.
+  
+\end_layout
+
+\begin_layout Description
+Syntax accent-tie 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ACCENT_TILDE 
+\end_layout
+
+\begin_layout Description
+Action Adds a tilde over the next character typed.
+  
+\end_layout
+
+\begin_layout Description
+Syntax accent-tilde 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ACCENT_UMLAUT 
+\end_layout
+
+\begin_layout Description
+Action Adds an umlaut over the next character typed.
+  
+\end_layout
+
+\begin_layout Description
+Syntax accent-umlaut 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ACCENT_UNDERBAR 
+\end_layout
+
+\begin_layout Description
+Action Adds a bar under the next character typed.
+  
+\end_layout
+
+\begin_layout Description
+Syntax accent-underbar 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ACCENT_UNDERDOT 
+\end_layout
+
+\begin_layout Description
+Action Adds a dot under the next character typed.
+  
+\end_layout
+
+\begin_layout Description
+Syntax accent-underdot 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CAPTION_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts a caption inset.
+  
+\end_layout
+
+\begin_layout Description
+Syntax caption-insert 
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 18 Jul 2000 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_DATE_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts the current date.
+  
+\end_layout
+
+\begin_layout Description
+Syntax date-insert [<ARG>] 
+\end_layout
+
+\begin_layout Description
+Params <ARG>: Format of date.
+ The default value (%x) can be set in Preferences->Date format.
+ For possible formats see manual page of strftime function.
+  
+\end_layout
+
+\begin_layout Description
+Origin jdblair, 31 Jan 2000 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FOOTNOTE_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts a footnote inset.
+  
+\end_layout
+
+\begin_layout Description
+Syntax footnote-insert 
+\end_layout
+
+\begin_layout Description
+Origin Jug, 7 Mar 2000 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ERT_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts an ERT inset.
+  
+\end_layout
+
+\begin_layout Description
+Syntax ert-insert 
+\end_layout
+
+\begin_layout Description
+Origin Jug, 18 Feb 2000 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FLOAT_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts a float inset.
+  
+\end_layout
+
+\begin_layout Description
+Syntax float-insert <TYPE> 
+\end_layout
+
+\begin_layout Description
+Params <TYPE>: type of float depends on the used textclass.
+ Usually "algorithm", "table", "figure" parameters can be given.
+  
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 27 Jun 2000 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FLOAT_WIDE_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts float insets as in LFUN_FLOAT_INSERT but span multiple columns.
+  
+\end_layout
+
+\begin_layout Description
+Notion Corresponds to the starred floats (figure*, table*, etc.) in LaTeX.
+  
+\end_layout
+
+\begin_layout Description
+Syntax float-wide-insert <TYPE> 
+\end_layout
+
+\begin_layout Description
+Params <TYPE>: type of float depends on the used textclass.
+ Usually "algorithm", "table", "figure" parameters can be given.
+  
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 31 Oct 2001 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FLOAT_LIST_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts the list of floats in the document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax float-list-insert <TYPE> 
+\end_layout
+
+\begin_layout Description
+Params <TYPE>: type of float depends on the used textclass.
+ Usually "algorithm", "table", "figure" parameters can be given.
+  
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 3 May 2001 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WRAP_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts floats wrapped by the text around.
+  
+\end_layout
+
+\begin_layout Description
+Syntax wrap-insert <TYPE> 
+\end_layout
+
+\begin_layout Description
+Params <TYPE>: table|figure  
+\end_layout
+
+\begin_layout Description
+Origin Dekel, 7 Apr 2002 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_OPTIONAL_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts an optional-argument (short title) inset.
+  
+\end_layout
+
+\begin_layout Description
+Syntax optional-insert 
+\end_layout
+
+\begin_layout Description
+Origin vermeer, 12 Aug 2002 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LINE_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts a horizontal line.
+  
+\end_layout
+
+\begin_layout Description
+Syntax line-insert 
+\end_layout
+
+\begin_layout Description
+Origin Andre, Oct 27 2003 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_NEWPAGE_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts a new page.
+  
+\end_layout
+
+\begin_layout Description
+Syntax newpage-insert <ARG> 
+\end_layout
+
+\begin_layout Description
+Params <ARG>: <newpage|pagebreak|clearpage|cleardoublepage> default: newpage
+  
+\end_layout
+
+\begin_layout Description
+Origin uwestoehr, 24 Nov 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MARGINALNOTE_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts a marginal note.
+  
+\end_layout
+
+\begin_layout Description
+Syntax marginalnote-insert 
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 26 Jun 2000 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_UNICODE_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts a single unicode character.
+  
+\end_layout
+
+\begin_layout Description
+Syntax unicode-insert <CHAR> 
+\end_layout
+
+\begin_layout Description
+Params <CHAR>: The character to insert, given as its code point, in hexadecimal.
+  
+\end_layout
+
+\begin_layout Description
+Sample unicode-insert 0x0100 
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 22 Oct 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LISTING_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts a new listings inset.
+  
+\end_layout
+
+\begin_layout Description
+Syntax listing-insert 
+\end_layout
+
+\begin_layout Description
+Origin Herbert, 10 Nov 2001; bpeng, 2 May 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_QUOTE_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts quotes according to the type and quote-language preference.
+  
+\end_layout
+
+\begin_layout Description
+Action Currently  English, Swedish, German, Polish, French, Danish quotes
+ are distinguished.
+  
+\end_layout
+
+\begin_layout Description
+Syntax quote-insert [<TYPE>] 
+\end_layout
+
+\begin_layout Description
+Params <TYPE>: 'single' for single quotes, otherwise double quotes will
+ be used.
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INFO_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Displays shortcuts, lyxrc, package and textclass availability and
+ menu information in a non-editable boxed InsetText.
+  
+\end_layout
+
+\begin_layout Description
+Notion Apart from lfun arguments you can use the following method:  
+\newline
+ 1.
+ input the type and argument of this inset, e.g.
+ "menu paste", in the work area.
+ 
+\newline
+ 2.
+ select the text and run info-insert lfun.
+  
+\end_layout
+
+\begin_layout Description
+Syntax info-insert <TYPE> <ARG> 
+\end_layout
+
+\begin_layout Description
+Params <TYPE>: shortcut|lyxrc|package|textclass|menu|buffer  
+\newline
+ <ARG>: argument
+ for a given type.
+ Look into InsetInfo.h for detailed description.
+  
+\end_layout
+
+\begin_layout Description
+Origin bpeng, 7 Oct 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BRANCH_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts branch inset.
+  
+\end_layout
+
+\begin_layout Description
+Syntax branch-insert <BRANCH-NAME> 
+\end_layout
+
+\begin_layout Description
+Origin vermeer, 17 Aug 2003 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BOX_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts Box inset.
+  
+\end_layout
+
+\begin_layout Description
+Syntax box-insert [<TYPE>] 
+\end_layout
+
+\begin_layout Description
+Params <TYPE>: Boxed|Frameless|Framed|ovalbox|Ovalbox|Shadowbox|Shaded|Doublebox
+  
+\newline
+ Framed is the default one.
+  
+\end_layout
+
+\begin_layout Description
+Origin vermeer, 7 Oct 2003 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FLEX_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts CharStyle, Custom inset or XML short element.
+  
+\end_layout
+
+\begin_layout Description
+Notion Look into the Customization manual for more information about these
+ elements.
+ 
+\newline
+ To make this command enabled the layout file for the document class you're
+ using has to load the character styles.
+ There are a few contained in the Logical Markup module.
+ You can also of course create some yourself.
+  
+\newline
+ For dissolving the element see LFUN_INSET_DISSOLVE.
+  
+\end_layout
+
+\begin_layout Description
+Syntax flex-insert <TYPE:Name> 
+\end_layout
+
+\begin_layout Description
+Params TYPE: CharStyle|Custom|Element|Standard  
+\newline
+ Identifies whether this
+ is a Character Style, a Custom Inset or an XML Element, and which dynamical
+ sub-menu this flex inset is in on the LyX menu tree.
+ If Standard (currently unused): none of these.
+ Name: This name must be defined either in your layout file or imported
+ by some module.
+ The definition is  
+\newline
+ InsetLayout <TYPE:Name>  
+\end_layout
+
+\begin_layout Description
+Sample flex-insert CharStyle:Code 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SELF_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts the given string (accordingly to the correct keymap).
+  
+\end_layout
+
+\begin_layout Description
+Notion Automatically replace the currently selected text.
+ Depends on lyxrc settings "auto_region_delete".
+  
+\end_layout
+
+\begin_layout Description
+Syntax self-insert <STRING> 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SPACE_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts one of horizontal space insets.
+  
+\end_layout
+
+\begin_layout Description
+Syntax space-insert <NAME> [<LEN>] 
+\end_layout
+
+\begin_layout Description
+Params <NAME>: normal, protected, thin, quad, qquad, enspace, enskip, negthinspa
+ce, hfill, hfill*, dotfill, hrulefill, hspace, hspace*  
+\newline
+ <LEN>: length for
+ custom spaces (hspace, hspace* for protected)  
+\end_layout
+
+\begin_layout Description
+Origin JSpitzm, 20 May 2003, Mar 17 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_HYPERLINK_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts hyperlinks into the document (clickable in pdf output).
+  
+\end_layout
+
+\begin_layout Description
+Notion Hyperlink target can be set via selection + hyperlink-insert function.
+  
+\end_layout
+
+\begin_layout Description
+Syntax href-insert [<TARGET>] 
+\end_layout
+
+\begin_layout Description
+Origin CFO-G, 21 Nov 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SPECIALCHAR_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts various characters into the document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax specialchar-insert <CHAR> 
+\end_layout
+
+\begin_layout Description
+Params <CHAR>: hyphenation, ligature-break, slash, nobreakdash, dots, end-of-sen
+tence, menu-separator.
+  
+\end_layout
+
+\begin_layout Description
+Origin JSpitzm, 6 Dec 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_TOC_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts table of contents.
+  
+\end_layout
+
+\begin_layout Description
+Syntax toc-insert 
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 27 May 97 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_APPENDIX 
+\end_layout
+
+\begin_layout Description
+Action Start (or remove) Appendix on the given cursor position.
+  
+\end_layout
+
+\begin_layout Description
+Syntax appendix 
+\end_layout
+
+\begin_layout Description
+Origin ettrich, 5 May 1998 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INDEX_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts Index entry.
+  
+\end_layout
+
+\begin_layout Description
+Notion It automatically takes the word on the cursor position.
+  
+\end_layout
+
+\begin_layout Description
+Syntax index-insert 
+\end_layout
+
+\begin_layout Description
+Origin leeming, 3 Aug 2000 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INDEX_PRINT 
+\end_layout
+
+\begin_layout Description
+Action Inserts list of Index entries on a new page.
+  
+\end_layout
+
+\begin_layout Description
+Syntax index-print 
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 27 Feb 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_NOMENCL_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts Nomenclature entry.
+  
+\end_layout
+
+\begin_layout Description
+Notion It automatically takes the word on the cursor position if no symbol
+ is given.
+  
+\end_layout
+
+\begin_layout Description
+Syntax nomencl-insert [<SYMBOL>] 
+\end_layout
+
+\begin_layout Description
+Origin Ugras, 4 Nov 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_NOMENCLATURE_PRINT 
+\end_layout
+
+\begin_layout Description
+Action Inserts list of Nomenclature entries.
+  
+\end_layout
+
+\begin_layout Description
+Syntax nomenclature-print 
+\end_layout
+
+\begin_layout Description
+Origin Ugras, 4 Nov 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_NOTE_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts Note on the current cursor postion, move selection inside
+ the inset.
+  
+\end_layout
+
+\begin_layout Description
+Syntax note-insert [<TYPE>] 
+\end_layout
+
+\begin_layout Description
+Params <TYPE>: <Note|Greyedout|Comment> default: Note  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_NOTE_NEXT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor to the begining of next Note inset.
+  
+\end_layout
+
+\begin_layout Description
+Syntax note-next 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_NOTES_MUTATE 
+\end_layout
+
+\begin_layout Description
+Action Changes all Note insets of a particular type (source) to a different
+ type (target) fot the current document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax notes-mutate <SOURCE> <TARGET> 
+\end_layout
+
+\begin_layout Description
+Params <SOURCE/TARGET>: Note|Comment|Greyedout  
+\end_layout
+
+\begin_layout Description
+Origin sanda, 18 Jun 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_NEWLINE_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts a line break or new line.
+  
+\end_layout
+
+\begin_layout Description
+Syntax newline-insert [<ARG>] 
+\end_layout
+
+\begin_layout Description
+Params <ARG>: <newline|linebreak> default: newline  
+\end_layout
+
+\begin_layout Description
+Origin JSpitzm, 25 Mar 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ESCAPE 
+\end_layout
+
+\begin_layout Description
+Action Clears the selection.
+ If no text is selected call LFUN_FINISHED_FORWARD.
+  
+\end_layout
+
+\begin_layout Description
+Syntax escape 
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 17 May 2001 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_DOWN 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor one line in downward direction.
+  
+\end_layout
+
+\begin_layout Description
+Syntax down 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_UP 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor one line in upward direction.
+  
+\end_layout
+
+\begin_layout Description
+Syntax up 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_DOWN_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor one line in downward direction adding the current
+ position to the selection.
+  
+\end_layout
+
+\begin_layout Description
+Syntax down-select 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_UP_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor one line in upward direction adding the current
+ position to the selection.
+  
+\end_layout
+
+\begin_layout Description
+Syntax up-select 
+\end_layout
+
+\begin_layout Subsection*
+SCREEN_DOWN 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor one page in downward direction.
+  
+\end_layout
+
+\begin_layout Description
+Syntax screen-down 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SCREEN_UP 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor one page in upward direction.
+  
+\end_layout
+
+\begin_layout Description
+Syntax screen-up 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SCREEN_DOWN_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor one screen in downward direction adding the current
+ position to the selection.
+  
+\end_layout
+
+\begin_layout Description
+Syntax screen-down-select 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SCREEN_UP_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor one page in upward direction adding the current
+ position to the selection.
+  
+\end_layout
+
+\begin_layout Description
+Syntax screen-up-select 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SCROLL 
+\end_layout
+
+\begin_layout Description
+Action Scroll the buffer view.
+  
+\end_layout
+
+\begin_layout Description
+Notion Only scrolls the screen up or down; does not move the cursor.
+  
+\end_layout
+
+\begin_layout Description
+Syntax scroll <TYPE> <QUANTITY> 
+\end_layout
+
+\begin_layout Description
+Params <TYPE>:  line|page 
+\newline
+ <QUANTITY>: up|down|<number>  
+\end_layout
+
+\begin_layout Description
+Origin Abdel, Dec 27 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SCREEN_RECENTER 
+\end_layout
+
+\begin_layout Description
+Action Recenters the screen on the current cursor position.
+  
+\end_layout
+
+\begin_layout Description
+Syntax screen-recenter 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHAR_BACKWARD 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor one position logically backwards.
+  
+\end_layout
+
+\begin_layout Description
+Notion This is not the action which should be bound to the arrow keys, because
+ backwards may be left or right, depending on the language.
+ The arrow keys should be bound to LFUN_CHAR_LEFT or LFUN_CHAR_RIGHT actions,
+ which in turn may employ this one.
+  
+\end_layout
+
+\begin_layout Description
+Syntax char-backward 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHAR_BACKWARD_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor one position logically backwards, adding traversed
+ position to the selection.
+  
+\end_layout
+
+\begin_layout Description
+Notion See also LFUN_CHAR_BACKWARD.
+  
+\end_layout
+
+\begin_layout Description
+Syntax char-backward-select 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHAR_DELETE_BACKWARD 
+\end_layout
+
+\begin_layout Description
+Action Deletes one character in the backward direction (usually the "BackSpace"
+ key).
+  
+\end_layout
+
+\begin_layout Description
+Syntax char-delete-backward 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHAR_DELETE_FORWARD 
+\end_layout
+
+\begin_layout Description
+Action Deletes one character in the backward direction (usually the "Delete"
+ key).
+  
+\end_layout
+
+\begin_layout Description
+Syntax char-delete-forward 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHAR_FORWARD 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor one position logically forward.
+  
+\end_layout
+
+\begin_layout Description
+Notion This is not the action which should be bound to the arrow keys, because
+ forward may be left or right, depending on the language.
+ The arrow keys should be bound to LFUN_CHAR_LEFT or LFUN_CHAR_RIGHT actions,
+ which in turn may employ this one.
+  
+\end_layout
+
+\begin_layout Description
+Syntax char-forward 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHAR_FORWARD_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor one position logically forward, adding traversed
+ position to the selection.
+  
+\end_layout
+
+\begin_layout Description
+Notion See also LFUN_CHAR_FORWARD.
+  
+\end_layout
+
+\begin_layout Description
+Syntax char-forward-select 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHAR_LEFT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor one position "to the left".
+  
+\end_layout
+
+\begin_layout Description
+Notion This is the action which should be taken when the "left" key is pressed.
+ Generally, it moves the cursor one position to the left.
+ However, in Bidi text this become slightly more complicated, and there
+ are different modes of cursor movement.
+ In "visual mode", this moves left, plain and simple.
+ In "logical mode", movement is logically forward in RTL paragraphs, and
+ logically backwards in LTR paragraphs.
+  
+\end_layout
+
+\begin_layout Description
+Syntax char-left 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHAR_LEFT_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor one position "to the left", adding traversed position
+ to the selection.
+  
+\end_layout
+
+\begin_layout Description
+Notion See also LFUN_CHAR_LEFT for exact details of the movement.
+  
+\end_layout
+
+\begin_layout Description
+Syntax char-left-select 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHAR_RIGHT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor one position "to the right".
+  
+\end_layout
+
+\begin_layout Description
+Notion This is the action which should be taken when the "right" key is
+ pressed.
+ Generally, it moves the cursor one position to the right.
+ However, in Bidi text this become slightly more complicated, and there
+ are different modes of cursor movement.
+ In "visual mode", this moves right, plain and simple.
+ In "logical mode", movement is logically forward in LTR paragraphs, and
+ logically backwards in RTL paragraphs.
+  
+\end_layout
+
+\begin_layout Description
+Syntax char-right 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHAR_RIGHT_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor one position "to the right", adding traversed position
+ to the selection.
+  
+\end_layout
+
+\begin_layout Description
+Notion See also LFUN_CHAR_RIGHT for exact details of the movement.
+  
+\end_layout
+
+\begin_layout Description
+Syntax char-right-select 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_BACKWARD 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor to the logically previous beginning of a word.
+  
+\end_layout
+
+\begin_layout Description
+Notion This is not the action which should be bound to the arrow keys, because
+ backwards may be left or right, depending on the language.
+ The arrow keys should be bound to LFUN_WORD_LEFT or LFUN_WORD_RIGHT actions,
+ which in turn may employ this one.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-backward 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_BACKWARD_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor to the logically previous beginning of a word, adding
+ the logically traversed text to the selection.
+  
+\end_layout
+
+\begin_layout Description
+Notion See also LFUN_WORD_BACKWARD.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-backward-select 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_DELETE_BACKWARD 
+\end_layout
+
+\begin_layout Description
+Action Deletes characters to the begining of the word (usually the "C+BackSpace"
+ key).
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-delete-backward 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_DELETE_FORWARD 
+\end_layout
+
+\begin_layout Description
+Action Deletes characters to the end of the word (usually the "C+Delete"
+ key).
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-delete-forward 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_FIND_FORWARD 
+\end_layout
+
+\begin_layout Description
+Action Search for a given string in forward direction.
+  
+\end_layout
+
+\begin_layout Description
+Notion Case sensitive, match words.
+ If no argument given, last search repeated.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-find-forward [<STRING>] 
+\end_layout
+
+\begin_layout Description
+Origin Etienne, 16 Feb 1998 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_FIND_BACKWARD 
+\end_layout
+
+\begin_layout Description
+Action Search for a given string in backward direction.
+  
+\end_layout
+
+\begin_layout Description
+Notion Case sensitive, match words.
+ If no argument given, last search repeated.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-find-backward [<STRING>] 
+\end_layout
+
+\begin_layout Description
+Origin Etienne, 20 Feb 1998 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_FIND 
+\end_layout
+
+\begin_layout Description
+Action Search for next occurence of a string.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-find [<DATA>] 
+\end_layout
+
+\begin_layout Description
+Params <DATA>: data encoded from Find dialog (see lyx::find2string()).
+ If no parameter is given, search with last find-dialog data is used for
+ search (i.e.
+ find-next).
+  
+\end_layout
+
+\begin_layout Description
+Origin Andre, Jan 7 2004 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_FIND 
+\end_layout
+
+\begin_layout Description
+Action Replace a string in the document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-replace [<DATA>] 
+\end_layout
+
+\begin_layout Description
+Params <DATA>: data is of the form "<search>  
+\newline
+ <replace>  
+\newline
+ <casesensitive>
+ <matchword> <all> <forward>"  
+\end_layout
+
+\begin_layout Description
+Origin Andre, Jan 7 2004 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_FORWARD 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor to the logically next beginning of a word.
+  
+\end_layout
+
+\begin_layout Description
+Notion This is not the action which should be bound to the arrow keys, because
+ forward may be left or right, depending on the language.
+ The arrow keys should be bound to LFUN_WORD_LEFT or LFUN_WORD_RIGHT actions,
+ which in turn may employ this one.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-forward 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_FORWARD_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor to the logically next beginning of a word, adding
+ the logically traversed text to the selection.
+  
+\end_layout
+
+\begin_layout Description
+Notion See also LFUN_WORD_FORWARD.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-forward-select 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_LEFT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor to the next beginning of a word "on the left".
+  
+\end_layout
+
+\begin_layout Description
+Notion This is the action which should be taken when the (e.g., ctrl-) "left"
+ key is pressed.
+ Generally, it moves the cursor to the next beginning of a word on the left.
+ However, in Bidi text this become slightly more complicated, and there
+ are different modes of cursor movement.
+ In "visual mode", this moves left, plain and simple.
+ In "logical mode", movement is logically forward in RTL paragraphs, and
+ logically backwards in LTR paragraphs.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-left 
+\end_layout
+
+\begin_layout Description
+Origin dov, 28 Oct 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_LEFT_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor to the next beginning of a word "on the left", adding
+ *logically* traversed text to the selection.
+  
+\end_layout
+
+\begin_layout Description
+Notion See also LFUN_WORD_LEFT for exact details of the movement.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-left-select 
+\end_layout
+
+\begin_layout Description
+Origin dov, 28 Oct 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_RIGHT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor to the next beginning of a word "on the right".
+  
+\end_layout
+
+\begin_layout Description
+Notion This is the action which should be taken when the (e.g., ctrl-) "right"
+ key is pressed.
+ Generally, it moves the cursor to the next beginning of a word on the right.
+ However, in Bidi text this become slightly more complicated, and there
+ are different modes of cursor movement.
+ In "visual mode", this moves right, plain and simple.
+ In "logical mode", movement is logically forward in LTR paragraphs, and
+ logically backwards in RTL paragraphs.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-right 
+\end_layout
+
+\begin_layout Description
+Origin dov, 28 Oct 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_RIGHT_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor to the next beginning of a word "on the right",
+ adding *logically* traversed text to the selection.
+  
+\end_layout
+
+\begin_layout Description
+Notion See also LFUN_WORD_RIGHT for exact details of the movement.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-right-select 
+\end_layout
+
+\begin_layout Description
+Origin dov, 28 Oct 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Puts the word where the cursor stands into the selection.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-select 
+\end_layout
+
+\begin_layout Description
+Origin Andre, 11 Sep 2002 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_CAPITALIZE 
+\end_layout
+
+\begin_layout Description
+Action Capitalizes the words in the selection (i.e.
+ the first letters) or the letter on the cursor position.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-capitalize 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_UPCASE 
+\end_layout
+
+\begin_layout Description
+Action Change the words in the selection or from the cursor position to
+ the end of word to the upper case.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-upcase 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WORD_LOWCASE 
+\end_layout
+
+\begin_layout Description
+Action Change the words in the selection or from the cursor position to
+ the end of word to the lower case.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-lowcase 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_THESAURUS_ENTRY 
+\end_layout
+
+\begin_layout Description
+Action Look up thesaurus entries with respect to the word under the cursor.
+  
+\end_layout
+
+\begin_layout Description
+Syntax thesaurus-entry 
+\end_layout
+
+\begin_layout Description
+Origin Levon, 20 Jul 2001 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_BEGIN 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the beginning of the document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-begin 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_BEGIN_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the beginning of the document adding the traversed
+ text to the selection.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-begin-select 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_END 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the end of the document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-end 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_END_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the end of the document adding the traversed text
+ to the selection.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-end-select 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LINE_BEGIN 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the begining of the (screen) line.
+  
+\end_layout
+
+\begin_layout Description
+Syntax line-begin 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LINE_BEGIN_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the beginning of the (screen) line adding the
+ traversed text to the selection.
+  
+\end_layout
+
+\begin_layout Description
+Syntax line-begin-select 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LINE_END 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the end of the (screen) line.
+  
+\end_layout
+
+\begin_layout Description
+Syntax line-end 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LINE_END_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the end of the (screen) line adding the traversed
+ text to the selection.
+  
+\end_layout
+
+\begin_layout Description
+Syntax line-end-select 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LINE_DELETE 
+\end_layout
+
+\begin_layout Description
+Action Deletes the letters to the end of the (screen) line or deletes the
+ selection.
+  
+\end_layout
+
+\begin_layout Description
+Syntax line-delete-forward 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_COPY 
+\end_layout
+
+\begin_layout Description
+Action Copies to the clipboard the last edit.
+  
+\end_layout
+
+\begin_layout Description
+Syntax copy 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CUT 
+\end_layout
+
+\begin_layout Description
+Action Cuts to the clipboard.
+  
+\end_layout
+
+\begin_layout Description
+Syntax cut 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_PASTE 
+\end_layout
+
+\begin_layout Description
+Action Pastes material from the active clipboard.
+  
+\end_layout
+
+\begin_layout Description
+Syntax paste [<TYPE>] 
+\end_layout
+
+\begin_layout Description
+Params <TYPE>: pdf|png|jpeg|linkback  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CLIPBOARD_PASTE 
+\end_layout
+
+\begin_layout Description
+Action Pastes text from the active clipboard.
+  
+\end_layout
+
+\begin_layout Description
+Syntax clipboard-paste [<ARG>] 
+\end_layout
+
+\begin_layout Description
+Params <ARG>: "paragraph" will cause pasting as one paragraph, i.e.
+ "Join lines".
+  
+\end_layout
+
+\begin_layout Description
+Origin baum, 10 Jul 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_PRIMARY_SELECTION_PASTE 
+\end_layout
+
+\begin_layout Description
+Action Pastes the currently text selected text.
+  
+\end_layout
+
+\begin_layout Description
+Notion Primary selection mechanism is linux-only thing.
+  
+\end_layout
+
+\begin_layout Description
+Syntax primary-selection-paste [<ARG>] 
+\end_layout
+
+\begin_layout Description
+Params <ARG>: "paragraph" will cause pasting as one paragraph, i.e.
+ "Join lines".
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_UNDO 
+\end_layout
+
+\begin_layout Description
+Action Undoes the last edit.
+  
+\end_layout
+
+\begin_layout Description
+Syntax undo 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_REDO 
+\end_layout
+
+\begin_layout Description
+Action Redoes the last thing undone.
+  
+\end_layout
+
+\begin_layout Description
+Syntax redo 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_REPEAT 
+\end_layout
+
+\begin_layout Description
+Action Repeat the given command.
+  
+\end_layout
+
+\begin_layout Description
+Syntax repeat <COUNT> <LFUN-COMMAND> 
+\end_layout
+
+\begin_layout Description
+Origin Andre, , 27 Oct 2003 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHARS_TRANSPOSE 
+\end_layout
+
+\begin_layout Description
+Action Transposes the character at the cursor with the one before it.
+  
+\end_layout
+
+\begin_layout Description
+Syntax chars-transpose 
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 25 Apr 2001 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_DEPTH_DECREMENT 
+\end_layout
+
+\begin_layout Description
+Action Decrease the nesting depth of the (selected) paragraph(s) inside
+ lists.
+  
+\end_layout
+
+\begin_layout Description
+Syntax depth-decrement 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_DEPTH_INCREMENT 
+\end_layout
+
+\begin_layout Description
+Action Increase the nesting depth of the (selected) paragraph(s) inside
+ lists.
+  
+\end_layout
+
+\begin_layout Description
+Syntax depth-increment 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FONT_BOLD 
+\end_layout
+
+\begin_layout Description
+Action Toggles the bold font (selection-wise).
+  
+\end_layout
+
+\begin_layout Description
+Syntax font-bold 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FONT_TYPEWRITER 
+\end_layout
+
+\begin_layout Description
+Action Toggles the typewriter family font (selection-wise).
+  
+\end_layout
+
+\begin_layout Description
+Syntax font-typewriter 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FONT_UNDERLINE 
+\end_layout
+
+\begin_layout Description
+Action Toggles underline in the font (selection-wise).
+  
+\end_layout
+
+\begin_layout Description
+Syntax font-underline 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FONT_EMPH 
+\end_layout
+
+\begin_layout Description
+Action Toggles the emphasis font style (selection-wise).
+  
+\end_layout
+
+\begin_layout Description
+Syntax font-emph 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FONT_NOUN 
+\end_layout
+
+\begin_layout Description
+Action Toggles Noun text style font (selection-wise).
+  
+\end_layout
+
+\begin_layout Description
+Syntax font-noun 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FONT_ROMAN 
+\end_layout
+
+\begin_layout Description
+Action Toggles Roman family font (selection-wise).
+  
+\end_layout
+
+\begin_layout Description
+Syntax font-roman 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FONT_SANS 
+\end_layout
+
+\begin_layout Description
+Action Toggles Sans Serif family font (selection-wise).
+  
+\end_layout
+
+\begin_layout Description
+Syntax font-sans 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FONT_FRAK 
+\end_layout
+
+\begin_layout Description
+Action Toggles Fraktur family font (math-mode, selection-wise).
+  
+\end_layout
+
+\begin_layout Description
+Syntax font-frak 
+\end_layout
+
+\begin_layout Description
+Origin vermeer, 10 Jan 2002 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FONT_ITAL 
+\end_layout
+
+\begin_layout Description
+Action Toggles Italics font shape (math-mode, selection-wise).
+  
+\end_layout
+
+\begin_layout Description
+Syntax font-ital 
+\end_layout
+
+\begin_layout Description
+Origin vermeer, 10 Jan 2002 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FONT_DEFAULT 
+\end_layout
+
+\begin_layout Description
+Action Reverts the settings of the font to the default values (selection-wise).
+  
+\end_layout
+
+\begin_layout Description
+Syntax font-default 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FONT_SIZE 
+\end_layout
+
+\begin_layout Description
+Action Sets font size according to lyx format string.
+  
+\end_layout
+
+\begin_layout Description
+Syntax font-size <SIZE> 
+\end_layout
+
+\begin_layout Description
+Params <SIZE>: tiny|scriptsize|footnotesize|small|normal|large|larger| 
+\newline
+
+ largest|huge|giant|increase|decrease|default  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_TEXTSTYLE_APPLY 
+\end_layout
+
+\begin_layout Description
+Action Toggle user-defined (=last-time used) text style.
+  
+\end_layout
+
+\begin_layout Description
+Notion This style is set via LFUN_TEXTSTYLE_UPDATE, which is automatically
+ trigerred when using Text Style dialog.
+  
+\end_layout
+
+\begin_layout Description
+Syntax textstyle-apply 
+\end_layout
+
+\begin_layout Description
+Origin leeming, 12 Mar 2003 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_TEXTSTYLE_UPDATE 
+\end_layout
+
+\begin_layout Description
+Action Apply text style and update the settings to be used by LFUN_TEXTSTYLE_APP
+LY.
+  
+\end_layout
+
+\begin_layout Description
+Syntax textstyle-update <FONT_INFO> 
+\end_layout
+
+\begin_layout Description
+Params <FONT_INFO>: specifies font atributes, e.g.
+ family, series, shape, size, emph, noun, underbar, number, color, language,
+ toggleall.
+ 
+\newline
+ Use lyx -dbg action for exact syntax of text-style dialog parameters.
+  
+\end_layout
+
+\begin_layout Description
+Origin leeming, 12 Mar 2003 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SCREEN_FONT_UPDATE 
+\end_layout
+
+\begin_layout Description
+Action Update fonts and its metrics.
+  
+\end_layout
+
+\begin_layout Description
+Notion Automatically called after zoom, dpi, font names, or norm change.
+  
+\end_layout
+
+\begin_layout Description
+Syntax screen-font-update 
+\end_layout
+
+\begin_layout Description
+Origin ARRae, 13 Aug 2000 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FONT_STATE 
+\end_layout
+
+\begin_layout Description
+Action Returns the info about the current font.
+  
+\end_layout
+
+\begin_layout Description
+Syntax font-state 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CITATION_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts citation from loaded citation database.
+  
+\end_layout
+
+\begin_layout Description
+Syntax citation-insert [<KEY>[|<TEXT_BEFORE>]] 
+\end_layout
+
+\begin_layout Description
+Params <KEY>: Citation (shortcut listed in available citations).
+  
+\newline
+ <TEXT_BEFORE>: text which should appear before citation.
+  
+\end_layout
+
+\begin_layout Description
+Origin AAS, 97-02-23 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BIBTEX_DATABASE_ADD 
+\end_layout
+
+\begin_layout Description
+Action Adds database, which will be used for bibtex citations.
+  
+\end_layout
+
+\begin_layout Description
+Notion Databases are added to the first BibTeX inset (Inset->List/TOC->BibTeX
+ bibliography) found from the cursor postion.
+  
+\end_layout
+
+\begin_layout Description
+Syntax bibtex-database-add <DATABASE-NAME> 
+\end_layout
+
+\begin_layout Description
+Origin Ale, 30 May 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BIBTEX_DATABASE_DEL 
+\end_layout
+
+\begin_layout Description
+Action Adds database, which will be used for bibtex citations.
+  
+\end_layout
+
+\begin_layout Description
+Notion Databases are deleted from the first BibTeX inset (Inset->List/TOC->BibTe
+X bibliography) found from the cursor postion.
+  
+\end_layout
+
+\begin_layout Description
+Syntax bibtex-database-del <DATABASE-NAME> 
+\end_layout
+
+\begin_layout Description
+Origin Ale, 30 May 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LAYOUT 
+\end_layout
+
+\begin_layout Description
+Action Sets the layout (that is, environment) for the current paragraph.
+  
+\end_layout
+
+\begin_layout Description
+Syntax layout <LAYOUT> 
+\end_layout
+
+\begin_layout Description
+Params <LAYOUT>: the layout to use  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LAYOUT_PARAGRAPH 
+\end_layout
+
+\begin_layout Description
+Action Launches the paragraph settings dialog.
+  
+\end_layout
+
+\begin_layout Description
+Syntax layout-paragraph 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LAYOUT_TABULAR 
+\end_layout
+
+\begin_layout Description
+Action Launches the tabular settings dialog.
+  
+\end_layout
+
+\begin_layout Description
+Syntax layout-tabular 
+\end_layout
+
+\begin_layout Description
+Origin Jug, 31 Jul 2000 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_DROP_LAYOUTS_CHOICE 
+\end_layout
+
+\begin_layout Description
+Action Displays list of layout choices.
+  
+\end_layout
+
+\begin_layout Description
+Notion In the current (as of 2007) Qt4 frontend, this LFUN opens the dropbox
+ allowing for choice of layout.
+  
+\end_layout
+
+\begin_layout Description
+Syntax drop-layouts-choice 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LAYOUT_MODULES_CLEAR 
+\end_layout
+
+\begin_layout Description
+Action Clears the module list.
+  
+\end_layout
+
+\begin_layout Description
+Notion Clears the list of included modules for the current buffer.
+  
+\end_layout
+
+\begin_layout Description
+Syntax layout-modules-clear 
+\end_layout
+
+\begin_layout Description
+Origin rgh, 25 August 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LAYOUT_MODULE_ADD 
+\end_layout
+
+\begin_layout Description
+Action Adds a module.
+  
+\end_layout
+
+\begin_layout Description
+Notion Adds a module to the list of included modules for the current buffer.
+  
+\end_layout
+
+\begin_layout Description
+Syntax layout-module-add <MODULE> 
+\end_layout
+
+\begin_layout Description
+Params <MODULE>: the module to be added  
+\end_layout
+
+\begin_layout Description
+Origin rgh, 25 August 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LAYOUT_RELOAD 
+\end_layout
+
+\begin_layout Description
+Action Reloads layout information.
+  
+\end_layout
+
+\begin_layout Description
+Notion Reloads all layout information for the current buffer from disk,
+ thus recognizing any changes that have been made to layout files on the
+ fly.
+ This is intended to be used only by layout developers and should not be
+ used when one is trying to do actual work.
+  
+\end_layout
+
+\begin_layout Description
+Syntax layout-reload 
+\end_layout
+
+\begin_layout Description
+Origin rgh, 3 September 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_TEXTCLASS_APPLY 
+\end_layout
+
+\begin_layout Description
+Action Sets the text class for the current buffer.
+  
+\end_layout
+
+\begin_layout Description
+Syntax textclass-apply <TEXTCLASS> 
+\end_layout
+
+\begin_layout Description
+Params <TEXTCLASS>: the textclass to set.
+ Note that this must be the filename, minus the ".layout" extension.
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_TEXTCLASS_LOAD 
+\end_layout
+
+\begin_layout Description
+Action Loads information for a textclass from disk.
+  
+\end_layout
+
+\begin_layout Description
+Syntax textclass-load <TEXTCLASS> 
+\end_layout
+
+\begin_layout Description
+Params <TEXTCLASS>: the textclass to load.
+ Note that this must be the filename, minus the ".layout" extension.
+   
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MARK_OFF 
+\end_layout
+
+\begin_layout Description
+Action Disable selecting of text-region.
+  
+\end_layout
+
+\begin_layout Description
+Syntax mark-off 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MARK_ON 
+\end_layout
+
+\begin_layout Description
+Action Enable selecting of text-region.
+  
+\end_layout
+
+\begin_layout Description
+Notion After enabling you can simply move arrow keys to get selected region.
+  
+\end_layout
+
+\begin_layout Description
+Syntax mark-on 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MARK_TOGGLE 
+\end_layout
+
+\begin_layout Description
+Action Toggle between LFUN_MARK_ON and LFUN_MARK_OFF .
+  
+\end_layout
+
+\begin_layout Description
+Syntax mark-toggle 
+\end_layout
+
+\begin_layout Description
+Origin Andre, May 5 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_DELIM 
+\end_layout
+
+\begin_layout Description
+Action Inserts math delimiters (e.g.
+ parentheses, brackets) enclosing expression.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-delim [<LEFT>] [<RIGHT>] 
+\end_layout
+
+\begin_layout Description
+Params <LEFT/RIGHT>: Delimiters to be used.
+ Each delimiter can be specified by either a LaTeX name or a valid character.
+ ( is the default letter.
+  
+\end_layout
+
+\begin_layout Description
+Sample math-delim { rangle 
+\end_layout
+
+\begin_layout Description
+Origin Alejandro, 18 Jun 1996 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_BIGDELIM 
+\end_layout
+
+\begin_layout Description
+Action Inserts math fixed size delimiters (e.g.
+ parentheses, brackets) enclosing expression.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-bigdelim <LSIZE> <LDELIM> <RSIZE> <RDELIM> 
+\end_layout
+
+\begin_layout Description
+Params <L/RSIZE>: bigl/r|Bigl/r|biggl/r|Biggl/r  
+\newline
+ <L/RDELIM>: TeX code for
+ delimiter.
+ See Delimiter dialog for delimiters to be used.
+  
+\end_layout
+
+\begin_layout Description
+Sample math-bigdelim "Bigl" "Downarrow" "Bigr" "}" 
+\end_layout
+
+\begin_layout Description
+Origin Enrico & Georg, 7 May 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_DISPLAY 
+\end_layout
+
+\begin_layout Description
+Action Creates a new displayed equation in text mode.
+ Toggles inlined/display formula in math mode.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-display [<ARG>] 
+\end_layout
+
+\begin_layout Description
+Params <ARG>: this argument will be passed to LFUN_MATH_INSERT when creating
+ new equation from the text mode.
+  
+\end_layout
+
+\begin_layout Description
+Origin Alejandro, 18 Jun 1996 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts math objects and symbols.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-insert <ARG> 
+\end_layout
+
+\begin_layout Description
+Params <ARG>: Symbol or LaTeX code to be inserted.
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_SUBSCRIPT 
+\end_layout
+
+\begin_layout Description
+Action Enters subscript expression in math expression.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-subscript 
+\end_layout
+
+\begin_layout Description
+Origin vermeer, 12 Dec 2001 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_SUPERSCRIPT 
+\end_layout
+
+\begin_layout Description
+Action Enters subscript expression in math expression.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-superscript 
+\end_layout
+
+\begin_layout Description
+Origin vermeer, 12 Dec 2001 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_LIMITS 
+\end_layout
+
+\begin_layout Description
+Action Toggles the position of the limits from above/below to the right
+ side an vice versa in integral symbol, a limit, a summation, etc.
+  
+\end_layout
+
+\begin_layout Description
+Notion Put the cursor before the symbol with the limits and then invoke
+ math-limits.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-limits [<STATE>] 
+\end_layout
+
+\begin_layout Description
+Params <STATE>: limits|nolimits  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_MACRO 
+\end_layout
+
+\begin_layout Description
+Action Inserts a math macro definition at the cursor position in the text.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-macro <NAME> [<NARGS>] [def] 
+\end_layout
+
+\begin_layout Description
+Params <NAME>: The name of the macro, e.g.
+ "mymacro".
+ <NARGS>: The number of parameters of the macro.
+ Default is 0.
+ "def": Has no effect anymore, just for compatibility with former LyX versions.
+  
+\end_layout
+
+\begin_layout Description
+Origin ale, 10 May 1997;  sts, 21 Dec 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_MUTATE 
+\end_layout
+
+\begin_layout Description
+Action Mutates the type of math inset to the newly selected one.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-mutate <TYPE> 
+\end_layout
+
+\begin_layout Description
+Params <TYPE>: none|simple|equation|eqnarray|align|alignat|xalignat|xxalignat|
+ multline|gather|flalign  
+\end_layout
+
+\begin_layout Description
+Origin Andre, 23 May 2001 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_SPACE 
+\end_layout
+
+\begin_layout Description
+Action Inserts space into math expression.
+  
+\end_layout
+
+\begin_layout Description
+Notion Use spacebar after entering this space to change type of space.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-space [<TYPE>] 
+\end_layout
+
+\begin_layout Description
+Params <TYPE>: negative spaces: !|negmedspace|negthickspace  
+\newline
+ positive spaces:
+ ,|:|;|quad|qquad  
+\newline
+ "," used by default.
+  
+\end_layout
+
+\begin_layout Description
+Origin Andre, 25 Jul 2001; sanda, 16 Jun 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_MATRIX 
+\end_layout
+
+\begin_layout Description
+Action Inserts a matrix.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-matrix <COLS> <ROWS> [<ALIGN>] 
+\end_layout
+
+\begin_layout Description
+Params <ALIGN>: Alignment is a word composed of the vertical alignment (b,
+ c or t) (i.e.
+ 1 char) and the horizontal alignments (l, c or r) (i.e.
+ <COL> chars).
+  
+\end_layout
+
+\begin_layout Description
+Sample math-matrix 3 3 bccc 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_MODE 
+\end_layout
+
+\begin_layout Description
+Action In text mode enters math mode (i.e.
+ puts math insets on the current cursor position), in math mode enters text
+ mode inside math expression.
+  
+\end_layout
+
+\begin_layout Description
+Notion If there is some selected text, it puts the text inside created math
+ box.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-mode [<ARG>] 
+\end_layout
+
+\begin_layout Description
+Params <ARG>: eventual argument (LaTeX code) is passed to LFUN_MATH_INSERT
+ .
+  
+\end_layout
+
+\begin_layout Description
+Origin Alejandro, 4 Jun 1996 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_NUMBER_LINE_TOGGLE 
+\end_layout
+
+\begin_layout Description
+Action Toggles numbering of the current formula line.
+  
+\end_layout
+
+\begin_layout Description
+Notion Must be in display formula mode.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-number-line-toggle 
+\end_layout
+
+\begin_layout Description
+Origin Alejandro, 18 Jun 1996 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_NUMBER_TOGGLE 
+\end_layout
+
+\begin_layout Description
+Action Toggles numbering/labeling of the current formula.
+  
+\end_layout
+
+\begin_layout Description
+Notion Must be in display formula mode.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-number-toggle 
+\end_layout
+
+\begin_layout Description
+Origin Alejandro, 4 Jun 1996 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_EXTERN 
+\end_layout
+
+\begin_layout Description
+Action Calls external program and passes the current expression/equation
+ as an argument for the calculation in the format appropriate to the given
+ language.
+  
+\end_layout
+
+\begin_layout Description
+Notion Selection can be used to determine the input for the external program.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-extern <LANG> [<COMMAND>] 
+\end_layout
+
+\begin_layout Description
+Params <LANG>: octave|maxima|maple|mathematica|script  
+\newline
+ where "script" stands
+ fot the external script (normalized expression will be passed)  
+\end_layout
+
+\begin_layout Description
+Origin Andre, 24 Apr 2001 
+\end_layout
+
+\begin_layout Description
+Sample math-extern maple simplify 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_SIZE 
+\end_layout
+
+\begin_layout Description
+Action Changes arbitrarily the size used by math fonts inside a context.
+  
+\end_layout
+
+\begin_layout Description
+Notion Provides an interface to the LaTeX math mode font size commands.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-size <STYLE> 
+\end_layout
+
+\begin_layout Description
+Params <STYLE>: displaystyle|
+\backslash
+textstyle|
+\backslash
+scriptstyle|
+\backslash
+scriptscriptstyle  
+\end_layout
+
+\begin_layout Description
+Origin Alejandro, 15 Aug 1996; ps, 14 Jun 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_MACRO_UNFOLD 
+\end_layout
+
+\begin_layout Description
+Action Unfold a Math Macro.
+  
+\end_layout
+
+\begin_layout Description
+Notion Unfold the Math Macro the cursor is in, i.e.
+ display it as foo.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-macro-unfold 
+\end_layout
+
+\begin_layout Description
+Origin sts, 06 January 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_MACRO_FOLD 
+\end_layout
+
+\begin_layout Description
+Action Fold a Math Macro.
+  
+\end_layout
+
+\begin_layout Description
+Notion Fold the Math Macro the cursor is in if it was unfolded, i.e.
+ displayed as foo before.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-macro-fold 
+\end_layout
+
+\begin_layout Description
+Origin sts, 06 January 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_MACRO_ADD_PARAM 
+\end_layout
+
+\begin_layout Description
+Action Add a parameter.
+  
+\end_layout
+
+\begin_layout Description
+Notion Add a parameter to a Math Macro.
+  
+\end_layout
+
+\begin_layout Description
+Params <NUM>: The number of the parameter behind which the new one will
+ be added (1 for the first, i.e.
+ use 0 for add a parameter at the left), defaults to the last one.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-macro-add-param <NUM> 
+\end_layout
+
+\begin_layout Description
+Origin sts, 06 January 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_MACRO_REMOVE_PARAM 
+\end_layout
+
+\begin_layout Description
+Action Remove the last parameter.
+  
+\end_layout
+
+\begin_layout Description
+Notion Remove the last parameter of a Math Macro and remove its value in
+ all instances of the macro in the buffer.
+  
+\end_layout
+
+\begin_layout Description
+Params <NUM>: The number of the parameter to be deleted (1 for the first),
+ defaults to the last one.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-macro-remove-param <NUM> 
+\end_layout
+
+\begin_layout Description
+Origin sts, 06 January 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_MACRO_APPEND_GREEDY_PARAM 
+\end_layout
+
+\begin_layout Description
+Action Append a greedy parameter.
+  
+\end_layout
+
+\begin_layout Description
+Notion Append a greedy parameter to a Math Macro which eats the following
+ mathed cell in every instance of the macro in the buffer.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-macro-append-greedy-param 
+\end_layout
+
+\begin_layout Description
+Origin sts, 06 January 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM 
+\end_layout
+
+\begin_layout Description
+Action Remove a greedy parameter.
+  
+\end_layout
+
+\begin_layout Description
+Notion Remove a greedy parameter of a Math Macro and spit out the values
+ of it in every instance of the macro in the buffer.
+ If it is an optional parameter the [valud] format is used.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-macro-remove-greedy-param 
+\end_layout
+
+\begin_layout Description
+Origin sts, 06 January 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_MACRO_MAKE_OPTIONAL 
+\end_layout
+
+\begin_layout Description
+Action Make a parameter optional.
+  
+\end_layout
+
+\begin_layout Description
+Notion Turn the first non-optional parameter of a Math Macro into an optional
+ parameter with a default value.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-macro-make-optional 
+\end_layout
+
+\begin_layout Description
+Origin sts, 06 January 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_MACRO_MAKE_NONOPTIONAL 
+\end_layout
+
+\begin_layout Description
+Action Make a parameter non-optional.
+  
+\end_layout
+
+\begin_layout Description
+Notion Turn the last optional parameter of a Math Macro into a non-optional
+ parameter.
+ The default value is remembered to be reused later if the user changes
+ his mind.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-macro-make-nonoptional 
+\end_layout
+
+\begin_layout Description
+Origin sts, 06 January 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM 
+\end_layout
+
+\begin_layout Description
+Action Add an optional parameter.
+  
+\end_layout
+
+\begin_layout Description
+Notion Insert an optional parameter just behind the already existing optional
+ parameters.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-macro-add-optional-param 
+\end_layout
+
+\begin_layout Description
+Origin sts, 06 January 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM 
+\end_layout
+
+\begin_layout Description
+Action Remove the last optional parameter.
+  
+\end_layout
+
+\begin_layout Description
+Notion Remove the last optional parameter of a Math Macro and remove it
+ in all the instances of the macro in the buffer.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-macro-remove-optional-param 
+\end_layout
+
+\begin_layout Description
+Origin sts, 06 January 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM 
+\end_layout
+
+\begin_layout Description
+Action Add a greedy optional parameter.
+  
+\end_layout
+
+\begin_layout Description
+Notion Add a greedy optional parameter which eats the value from the following
+ cells in mathed which are in the [value] format.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-macro-add-greedy-optional-param 
+\end_layout
+
+\begin_layout Description
+Origin sts, 06 January 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_IN_MATHMACROTEMPLATE 
+\end_layout
+
+\begin_layout Description
+Action Only active in Math Macro definition.
+  
+\end_layout
+
+\begin_layout Description
+Notion Dummy function which is only active in a Math Macro definition.
+ It's used to toggle the Math Macro toolbar if the cursor moves into a Math
+ Macro definition.
+  
+\end_layout
+
+\begin_layout Description
+Syntax in-mathmacrotemplate 
+\end_layout
+
+\begin_layout Description
+Origin sts, 06 January 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_PARAGRAPH_MOVE_DOWN 
+\end_layout
+
+\begin_layout Description
+Action Moves the current paragraph downwards in the document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax paragraph-move-down 
+\end_layout
+
+\begin_layout Description
+Origin Edwin, 8 Apr 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_PARAGRAPH_MOVE_UP 
+\end_layout
+
+\begin_layout Description
+Action Moves the current paragraph upwards in the document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax paragraph-move-up 
+\end_layout
+
+\begin_layout Description
+Origin Edwin, 8 Apr 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_PARAGRAPH_UP 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the next paragraph (or begining of the current
+ one) in upward direction.
+  
+\end_layout
+
+\begin_layout Description
+Syntax paragraph-up 
+\end_layout
+
+\begin_layout Description
+Origin Asger, 1 Oct 1996 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_PARAGRAPH_UP_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor and select the text to the next paragraph (or begining
+ of the current one) in upward direction.
+  
+\end_layout
+
+\begin_layout Description
+Syntax paragraph-up-select 
+\end_layout
+
+\begin_layout Description
+Origin Asger, 1 Oct 1996 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_PARAGRAPH_DOWN 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the next paragraph (or begining of the current
+ one) in downward direction.
+  
+\end_layout
+
+\begin_layout Description
+Syntax paragraph-down 
+\end_layout
+
+\begin_layout Description
+Origin Asger, 1 Oct 1996 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_PARAGRAPH_DOWN_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor and select the text to the next paragraph (or begining
+ of the current one) in downward direction.
+  
+\end_layout
+
+\begin_layout Description
+Syntax paragraph-down-select 
+\end_layout
+
+\begin_layout Description
+Origin Asger, 1 Oct 1996 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_PARAGRAPH_GOTO 
+\end_layout
+
+\begin_layout Description
+Action Jump to a paragraph given by its id number and optionally the desired
+ position within the paragraph.
+  
+\end_layout
+
+\begin_layout Description
+Notion Note that id number of paragraph is not the sequential number of
+ paragraph seen on the screen.
+ Moreover the id is unique for all opened buffers (documents).
+  
+\end_layout
+
+\begin_layout Description
+Syntax paragraph-goto <PAR_ID_NUMBER> <POSITION_IN_PAR> 
+\end_layout
+
+\begin_layout Description
+Params <PAR_ID_NUMBER>:  paragraph id  
+\newline
+ <POSITION_IN_PAR>: desired position
+ within the paragraph  
+\end_layout
+
+\begin_layout Description
+Origin Dekel, 26 Aug 2000 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BREAK_PARAGRAPH 
+\end_layout
+
+\begin_layout Description
+Action Breaks the current paragraph at the current location.
+  
+\end_layout
+
+\begin_layout Description
+Syntax break-paragraph 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BREAK_PARAGRAPH 
+\end_layout
+
+\begin_layout Description
+Action Breaks the current paragraph at the current location.
+  
+\end_layout
+
+\begin_layout Description
+Notion Removes the selection.
+  
+\end_layout
+
+\begin_layout Description
+Syntax break-paragraph [<LAYOUT>] 
+\end_layout
+
+\begin_layout Description
+Params <LAYOUT>: "inverse" - decreases depth by one (or change layout to
+ default layout) when the cursor is at the end of the line.
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_PARAGRAPH_PARAMS 
+\end_layout
+
+\begin_layout Description
+Action Change paragraph settings.
+  
+\end_layout
+
+\begin_layout Description
+Notion Modifies the current paragraph, or currently selected paragraphs.
+ This function only modifies, and does not override, existing settings.
+ Note that the "leftindent" indent setting is deprecated.
+  
+\end_layout
+
+\begin_layout Description
+Syntax paragraph-params [<INDENT>] [<SPACING>] [<ALIGN>] [<OTHERS>] 
+\end_layout
+
+\begin_layout Description
+Params <INDENT>:  
+\backslash
+noindent|
+\backslash
+indent|
+\backslash
+indent-toggle|
+\backslash
+leftindent LENGTH 
+\newline
+ <SPACING>: 
+\backslash
+paragraph_spacing default|single|onehalf|double|other 
+\newline
+ <ALIGN>:   
+\backslash
+align block|left|right|center|default 
+\newline
+ <OTHERS>:  
+\backslash
+labelwidthstring WIDTH|
+\backslash
+start_of_appendix 
+\newline
+  
+\end_layout
+
+\begin_layout Description
+Origin rgh, Aug 15 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_PARAGRAPH_PARAMS_APPLY 
+\end_layout
+
+\begin_layout Description
+Action Change paragraph settings.
+  
+\end_layout
+
+\begin_layout Description
+Notion Overwrite all nonspecified settings to the default ones.
+ Use paragraph-params lfun if you don't want to overwrite others settings.
+  
+\end_layout
+
+\begin_layout Description
+Syntax paragraph-params-apply <INDENT> <SPACING> <ALIGN> <OTHERS> 
+\end_layout
+
+\begin_layout Description
+Params For parameters see LFUN_PARAGRAPH_PARAMS  
+\end_layout
+
+\begin_layout Description
+Origin leeming, 30 Mar 2004 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_PARAGRAPH_UPDATE 
+\end_layout
+
+\begin_layout Description
+Action Updates the values inside the paragraph dialog from the paragraph.
+  
+\end_layout
+
+\begin_layout Description
+Notion This is internal LFUN, not to be used by users.
+ Called internally by LFUN_DIALOG_UPDATE.
+  
+\end_layout
+
+\begin_layout Description
+Origin leeming, 13 Mar 2003 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_OUTLINE_UP 
+\end_layout
+
+\begin_layout Description
+Action Move the current group in the upward direction in the structure of
+ the document.
+  
+\end_layout
+
+\begin_layout Description
+Notion The "group" can be Part/Chapter/Section/etc.
+ It moves the whole substructure of the group.
+  
+\end_layout
+
+\begin_layout Description
+Syntax outline-up 
+\end_layout
+
+\begin_layout Description
+Origin Vermeer, 23 Mar 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_OUTLINE_DOWN 
+\end_layout
+
+\begin_layout Description
+Action Move the current group in the downward direction in the structure
+ of the document.
+  
+\end_layout
+
+\begin_layout Description
+Notion The "group" can be Part/Chapter/Section/etc.
+ It moves the whole substructure of the group.
+  
+\end_layout
+
+\begin_layout Description
+Syntax outline-down 
+\end_layout
+
+\begin_layout Description
+Origin Vermeer, 23 Mar 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_OUTLINE_IN 
+\end_layout
+
+\begin_layout Description
+Action Moves the current group in the downward direction in the hierarchy
+ of the document structure.
+  
+\end_layout
+
+\begin_layout Description
+Notion Part -> Chapter -> Section -> etc.
+  
+\end_layout
+
+\begin_layout Description
+Syntax outline-in 
+\end_layout
+
+\begin_layout Description
+Origin Vermeer, 23 Mar 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_OUTLINE_OUT 
+\end_layout
+
+\begin_layout Description
+Action Moves the current group in the upward direction in the hierarchy
+ of the document structure.
+  
+\end_layout
+
+\begin_layout Description
+Notion Part <- Chapter <- Section <- etc.
+  
+\end_layout
+
+\begin_layout Description
+Syntax outline-out 
+\end_layout
+
+\begin_layout Description
+Origin Vermeer, 23 Mar 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_EDIT 
+\end_layout
+
+\begin_layout Description
+Action Edit the inset at cursor with an external application, *        
+     if one is attributed.
+  
+\end_layout
+
+\begin_layout Description
+Syntax inset-edit [<INSET_PARAMS>] 
+\end_layout
+
+\begin_layout Description
+Params <INSET_PARAMS>: Parameters for the inset.
+  
+\newline
+ Currently only the filename will be considered.
+  
+\end_layout
+
+\begin_layout Description
+Origin JSpitzm, 27 Apr 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_TABULAR_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts table into the document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax tabular-insert [<ROWS> <COLUMNS>] 
+\end_layout
+
+\begin_layout Description
+Params In case no arguments are given show insert dialog.
+  
+\end_layout
+
+\begin_layout Description
+Origin Jug, 12 Apr 2000 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_TABULAR_FEATURE 
+\end_layout
+
+\begin_layout Description
+Action Sets various features to the table/cell on the current cursor position.
+  
+\end_layout
+
+\begin_layout Description
+Notion Various math-environment features are handled here as well, e.g.
+ add-vline-left/right for Grid/Cases environment  
+\end_layout
+
+\begin_layout Description
+Syntax tabular-feature <FEATURE> [<ARG>] 
+\end_layout
+
+\begin_layout Description
+Params <FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|cop
+y-column| toggle-line-top|toggle-line-bottom|toggle-line-left|toggle-line-right|
+ align-left|align-right|align-center|align-block|valign-top|valign-bottom|
+ valign-middle|m-align-left|m-align-right|m-align-center|m-valign-top| m-valign-
+bottom|m-valign-middle|multicolumn|set-all-lines|unset-all-lines| set-longtabula
+r|unset-longtabular|set-pwidth|set-mpwidth| set-rotate-tabular|unset-rotate-tabu
+lar|toggle-rotate-tabular| set-rotate-cell|unset-rotate-cell|toggle-rotate-cell|
+set-usebox|set-lthead| unset-lthead|set-ltfirsthead|unset-ltfirsthead|set-ltfoot
+|unset-ltfoot| set-ltlastfoot|unset-ltlastfoot|set-ltnewpage|toggle-ltcaption|
+ set-special-column|set-special-multi|set-booktabs|unset-booktabs| set-top-space
+|set-bottom-space|set-interline-space|set-border-lines  
+\newline
+ <ARG>: additional
+ argument for some commands, use debug mode to explore its values.
+  
+\end_layout
+
+\begin_layout Description
+Origin Jug, 28 Jul 2000 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CELL_BACKWARD 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor to the previous cell inside the table.
+  
+\end_layout
+
+\begin_layout Description
+Syntax cell-backward 
+\end_layout
+
+\begin_layout Description
+Origin Jug, 22 May 2000 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CELL_FORWARD 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor to the next cell inside the table.
+  
+\end_layout
+
+\begin_layout Description
+Syntax cell-forward 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CELL_SPLIT 
+\end_layout
+
+\begin_layout Description
+Action Splits cell and shifts right part to the next cell (inside the math
+ grid).
+  
+\end_layout
+
+\begin_layout Description
+Syntax cell-split 
+\end_layout
+
+\begin_layout Description
+Origin Ale, 15 May 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_VC_REGISTER 
+\end_layout
+
+\begin_layout Description
+Action Register the document as an file inside version control system (RCS,
+ CVS).
+  
+\end_layout
+
+\begin_layout Description
+Notion File is registered inside cvs, svn or rcs repository acording to
+ the existence of cvs/svn/rcs entries in the document's directory.
+  
+\newline
+ See LyX Extended Manual (Version Control Chapter) for additional information.
+  
+\end_layout
+
+\begin_layout Description
+Syntax vc-register 
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 1 Jul 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_VC_CHECK_IN 
+\end_layout
+
+\begin_layout Description
+Action Checks-in/commits the changes of the registered file to the repository.
+  
+\end_layout
+
+\begin_layout Description
+Notion In RCS case this also unlocks the file.
+  
+\end_layout
+
+\begin_layout Description
+Syntax vc-check-in 
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 1 Jul 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_VC_CHECK_OUT 
+\end_layout
+
+\begin_layout Description
+Action Checks-out the document for edit (and locks it for RCS).
+  
+\end_layout
+
+\begin_layout Description
+Notion This is implemented only for RCS and SVN, not CVS.
+  
+\end_layout
+
+\begin_layout Description
+Syntax vc-check-out 
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 1 Jul 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_VC_REVERT 
+\end_layout
+
+\begin_layout Description
+Action Reverts the document to the last check-in/commit in VCS.
+  
+\end_layout
+
+\begin_layout Description
+Syntax vc-revert 
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 1 Jul 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_VC_UNDO_LAST 
+\end_layout
+
+\begin_layout Description
+Action Undo last check-in.
+  
+\end_layout
+
+\begin_layout Description
+Notion This is currently implemented only for RCS.
+  
+\end_layout
+
+\begin_layout Description
+Syntax vc-check-out 
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 1 Jul 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHANGES_TRACK 
+\end_layout
+
+\begin_layout Description
+Action Toggles change tracking to on/off.
+  
+\end_layout
+
+\begin_layout Description
+Syntax changes-track 
+\end_layout
+
+\begin_layout Description
+Origin levon, 1 Oct 2002 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHANGES_OUTPUT 
+\end_layout
+
+\begin_layout Description
+Action Toggles showing of change tracking in typesetted output.
+  
+\end_layout
+
+\begin_layout Description
+Syntax changes-output 
+\end_layout
+
+\begin_layout Description
+Origin jspitzm, 21 Jan 2005 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHANGE_NEXT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor to the position of the next change of the change
+ tracking records.
+  
+\end_layout
+
+\begin_layout Description
+Syntax change-next 
+\end_layout
+
+\begin_layout Description
+Origin schmitt, 4 Oct 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHANGES_MERGE 
+\end_layout
+
+\begin_layout Description
+Action Open change tracking dialog for merging and moves the cursor to the
+ position of the next change.
+  
+\end_layout
+
+\begin_layout Description
+Syntax changes-merge 
+\end_layout
+
+\begin_layout Description
+Origin Levon, 16 Oct 2002 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHANGE_ACCEPT 
+\end_layout
+
+\begin_layout Description
+Action Accepts tracked change inside the selection.
+  
+\end_layout
+
+\begin_layout Description
+Syntax change-accept 
+\end_layout
+
+\begin_layout Description
+Origin Levon, 16 Oct 2002 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CHANGE_REJECT 
+\end_layout
+
+\begin_layout Description
+Action Rejects tracked change inside the selection.
+  
+\end_layout
+
+\begin_layout Description
+Syntax change-accept 
+\end_layout
+
+\begin_layout Description
+Origin Levon, 16 Oct 2002 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ALL_CHANGES_ACCEPT 
+\end_layout
+
+\begin_layout Description
+Action Accepts all tracked changes in the document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax all-changes-accept 
+\end_layout
+
+\begin_layout Description
+Origin Levon, 16 Oct 2002 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ALL_CHANGES_REJECT 
+\end_layout
+
+\begin_layout Description
+Action Rejects all tracked changes in the document.
+  
+\end_layout
+
+\begin_layout Description
+Notion Reject does not work recursively; the user may have to repeat the
+ operation.
+  
+\end_layout
+
+\begin_layout Description
+Syntax all-changes-reject 
+\end_layout
+
+\begin_layout Description
+Origin Levon, 16 Oct 2002 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_APPLY 
+\end_layout
+
+\begin_layout Description
+Action Apply data for an inset.
+  
+\end_layout
+
+\begin_layout Description
+Notion LFUN_INSET_APPLY is sent from the dialogs when the data should be
+ applied.
+ This is either changed to LFUN_INSET_MODIFY or LFUN_INSET_INSERT depending
+ on the context where it is called.
+  
+\end_layout
+
+\begin_layout Description
+Syntax inset-apply <ARGS> 
+\end_layout
+
+\begin_layout Description
+Params See LFUN_INSET_INSERT .
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_DISSOLVE 
+\end_layout
+
+\begin_layout Description
+Action Dissolve the current inset into text.
+  
+\end_layout
+
+\begin_layout Description
+Syntax inset-dissolve [<INSET>] 
+\end_layout
+
+\begin_layout Description
+Params <INSET>: this can be used to make sure the right kind of inset is
+ dissolved.
+ For example "dissolve" entry in the charstyles sub-menu should only dissolve
+ the charstyle inset, even if the cursor is inside several nested insets
+ of different type.
+ 
+\newline
+ For values see lyx::InsetLayout::lyxtype_ .
+  
+\end_layout
+
+\begin_layout Description
+Origin JSpitz, 7 Aug 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Insert new inset (type given by the parameters).
+  
+\end_layout
+
+\begin_layout Description
+Syntax inset-insert <INSET> <ARGS> 
+\end_layout
+
+\begin_layout Description
+Params <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics| hyperlink|i
+nclude|index|label|nomencl|vspace|ref|toc> 
+\newline
+ <ARGS>: depends on the given
+ inset.
+ Use "lyx -dbg action" to explore.
+  
+\end_layout
+
+\begin_layout Description
+Sample inset-insert ref LatexCommand <Format> reference "<label name>"
+\backslash
+end_inset  
+\newline
+where <label name> is the name of the referenced label and<Format>
+ is one of the following:  
+\newline
+ref -- <reference>  
+\newline
+eqref -- (<reference>)  
+\newline
+pageref
+ -- <page>  
+\newline
+vpageref -- on <page>  
+\newline
+vref -- <reference> on <page>  
+\newline
+prettyref
+ -- Formatted reference 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_MODIFY 
+\end_layout
+
+\begin_layout Description
+Action Modify existing inset.
+  
+\end_layout
+
+\begin_layout Description
+Notion Used for label, floats, listings, box, branch, external, wrap bibtex,
+ ert, command, graphics, note, space, vspace, tabular, bibitem, inlude,
+ ref insets.
+  
+\end_layout
+
+\begin_layout Description
+Syntax inset-modify <INSET> <ARGS> 
+\end_layout
+
+\begin_layout Description
+Params See LFUN_INSET_INSERT for further details.
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_NEXT_INSET_MODIFY 
+\end_layout
+
+\begin_layout Description
+Action Modify the inset at cursor position, if there is one.
+  
+\end_layout
+
+\begin_layout Description
+Notion Used for label, floats, listings, box, branch, external, wrap bibtex,
+ ert, command, graphics, note, space, vspace, tabular, bibitem, inlude,
+ ref insets.
+  
+\end_layout
+
+\begin_layout Description
+Syntax next-inset-modify <INSET> <ARGS> 
+\end_layout
+
+\begin_layout Description
+Syntax next-inset-modify changetype <TYPE> 
+\end_layout
+
+\begin_layout Description
+Params See LFUN_INSET_INSERT for further details.
+  
+\end_layout
+
+\begin_layout Description
+Origin JSpitzm, 23 Mar 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_DIALOG_UPDATE 
+\end_layout
+
+\begin_layout Description
+Action Updates the values inside the dialog from the inset.
+  
+\end_layout
+
+\begin_layout Description
+Notion This is internal LFUN, not to be used by users.
+ Called internally by LFUN_DIALOG_UPDATE  
+\end_layout
+
+\begin_layout Description
+Params <DIALOG-NAME>  
+\end_layout
+
+\begin_layout Description
+Origin leeming, 25 Feb 2003 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_SETTINGS 
+\end_layout
+
+\begin_layout Description
+Action Open the inset's properties dialog.
+  
+\end_layout
+
+\begin_layout Description
+Notion Used for box, branch, ert, float, listings, note, tabular, wrap insets.
+  
+\end_layout
+
+\begin_layout Description
+Syntax inset-settings <INSET> 
+\end_layout
+
+\begin_layout Description
+Params <INSET>: <box|branch|ert|float|listings|note|tabular|wrap>  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_NEXT_INSET_TOGGLE 
+\end_layout
+
+\begin_layout Description
+Action Toggles the inset at cursor position.
+ For collapsables, this means it will be (un-)collapsed, in case of other
+ insets, the editing widget (dialog) will be entered.
+ Also cf.
+ LFUN_INSET_SETTINGS.
+  
+\end_layout
+
+\begin_layout Description
+Notion Used for label, floats, listings, box, branch, external, wrap bibtex,
+ ert, command, graphics, note, space, vspace, tabular, bibitem, inlude,
+ ref insets.
+  
+\end_layout
+
+\begin_layout Description
+Syntax next-inset-toggle <ARG> 
+\end_layout
+
+\begin_layout Description
+Params <ARG>: these are passed as arguments to LFUN_INSET_TOGGLE .
+  
+\end_layout
+
+\begin_layout Description
+Origin leeming, 30 Mar 2004 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_TOGGLE 
+\end_layout
+
+\begin_layout Description
+Action Toggles the collapsable inset we are currently in.
+  
+\end_layout
+
+\begin_layout Description
+Syntax inset-toggle [<ARG>] 
+\end_layout
+
+\begin_layout Description
+Params <ARG>: <open|close|toggle|assign>.
+  
+\newline
+ open/close/toggle are for collapsable insets.
+ close can be currently used by LFUN_NEXT_INSET_TOGGLE.
+ toggle is used when no argument is given.
+ 
+\newline
+ assign is for branch inset.
+  
+\end_layout
+
+\begin_layout Description
+Origin lasgouttes, 19 Jul 2001 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_ALL_INSETS_TOGGLE 
+\end_layout
+
+\begin_layout Description
+Action Toggles (open/closes) all collapsable insets (of a given type) in
+ the document.
+  
+\end_layout
+
+\begin_layout Description
+Notion Used for box, branch, ert, float, listings, note, tabular, wrap insets.
+  
+\end_layout
+
+\begin_layout Description
+Syntax all-insets-toggle <STATE> <INSET> 
+\end_layout
+
+\begin_layout Description
+Params <STATE>: <toggle|open|close> default: toggle  
+\newline
+ <INSET>: <box|branch|ert|f
+loat|listings|note|tabular|wrap> default: all insets  
+\end_layout
+
+\begin_layout Description
+Origin leeming, 30 Mar 2004 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_GRAPHICS_GROUPS_UNIFY 
+\end_layout
+
+\begin_layout Description
+Action Unify all graphics insets with the one given as an parameter.
+  
+\end_layout
+
+\begin_layout Description
+Notion This is internally used for synchronize certain group of graphics
+ insets.
+  
+\end_layout
+
+\begin_layout Description
+Syntax graphics-groups-unigfy <GRAPHICS_PARAMS> 
+\end_layout
+
+\begin_layout Description
+Params <GRAPHICS_PARAMS>: Parameters for graphics inset (syntax can be seen
+ in .lyx files).
+  
+\end_layout
+
+\begin_layout Description
+Origin sanda, 6 May 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SET_GRAPHICS_GROUP 
+\end_layout
+
+\begin_layout Description
+Action Set the group for the graphics inset on the cursor position.
+  
+\end_layout
+
+\begin_layout Description
+Syntax set-graphics-group [<GROUP>] 
+\end_layout
+
+\begin_layout Description
+Params <GROUP>: Id for an existing group.
+ In case tthe Id is an empty string, the graphics inset is removed from
+ the current group.
+  
+\end_layout
+
+\begin_layout Description
+Origin sanda, 6 May 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FINISHED_FORWARD 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor out of the current slice, going forward.
+  
+\end_layout
+
+\begin_layout Description
+Notion Cursor movement within an inset may be different than cursor movement
+ in the surrounding text.
+ This action should be called automatically by the cursor movement within
+ the inset, when movement within the inset has ceased (reached the end of
+ the last paragraph, for example), in order to move correctly back into
+ the surrounding text.
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FINISHED_BACKWARD 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor out of the current slice, going backwards.
+  
+\end_layout
+
+\begin_layout Description
+Notion See also LFUN_FINISHED_FORWARD.
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FINISHED_RIGHT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor out of the current slice, going right.
+  
+\end_layout
+
+\begin_layout Description
+Notion See also LFUN_FINISHED_FORWARD  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FINISHED_LEFT 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor out of the current slice, going left.
+  
+\end_layout
+
+\begin_layout Description
+Notion See also LFUN_FINISHED_FORWARD.
+   
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LANGUAGE 
+\end_layout
+
+\begin_layout Description
+Action Set language from the current cursor position.
+  
+\end_layout
+
+\begin_layout Description
+Syntax language <LANG> 
+\end_layout
+
+\begin_layout Description
+Params <LANG>: Requested language.
+ Look in lib/languages for the list.
+  
+\end_layout
+
+\begin_layout Description
+Origin Dekel, 2 Mar 2000 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LABEL_GOTO 
+\end_layout
+
+\begin_layout Description
+Action Goto a label.
+  
+\end_layout
+
+\begin_layout Description
+Syntax label-goto [<LABEL>] 
+\end_layout
+
+\begin_layout Description
+Params <LABEL>: Requested label.
+ If no label is given and refernce is on cursor position, Bookmark 0 is
+ saved and cursor moves to the position of referenced label.
+  
+\end_layout
+
+\begin_layout Description
+Origin Ale, 6 Aug 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LABEL_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts label to text or displayed formula.
+  
+\end_layout
+
+\begin_layout Description
+Syntax label-insert [<LABEL>] 
+\end_layout
+
+\begin_layout Description
+Params <LABEL>: Requested label.
+ If no label is given dialog requesting name will be opened.
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_REFERENCE_NEXT 
+\end_layout
+
+\begin_layout Description
+Action Go to the next label or cross-reference.
+  
+\end_layout
+
+\begin_layout Description
+Syntax reference-next 
+\end_layout
+
+\begin_layout Description
+Origin Dekel, 14 Jan 2001 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BOOKMARK_GOTO 
+\end_layout
+
+\begin_layout Description
+Action Goto a bookmark.
+  
+\end_layout
+
+\begin_layout Description
+Notion Moves the cursor to the numbered bookmark, opening the file if necessary.
+ Note that bookmarsk are saved per-session, not per file.
+  
+\end_layout
+
+\begin_layout Description
+Syntax bookmark-goto <NUMBER> 
+\end_layout
+
+\begin_layout Description
+Params <NUMBER>: the number of the bookmark to restore.
+  
+\end_layout
+
+\begin_layout Description
+Origin Dekel, 27 January 2001 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BOOKMARK_SAVE 
+\end_layout
+
+\begin_layout Description
+Action Save a bookmark.
+  
+\end_layout
+
+\begin_layout Description
+Notion Saves a numbered bookmark to the sessions file.
+ The number must be between 1 and 9, inclusive.
+ Note that bookmarks are saved per-session, not per file.
+  
+\end_layout
+
+\begin_layout Description
+Syntax bookmark-save <NUMBER> 
+\end_layout
+
+\begin_layout Description
+Params <NUMBER>: the number of the bookmark to save.
+  
+\end_layout
+
+\begin_layout Description
+Origin Dekel, 27 January 2001 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BOOKMARK_CLEAR 
+\end_layout
+
+\begin_layout Description
+Action Clears the list of saved bookmarks.
+  
+\end_layout
+
+\begin_layout Description
+Syntax bookmark-clear 
+\end_layout
+
+\begin_layout Description
+Origin bpeng, 31 October 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_HELP_OPEN 
+\end_layout
+
+\begin_layout Description
+Action Open the given help file according to the language setting.
+  
+\end_layout
+
+\begin_layout Description
+Syntax help-open <FILE>[.lyx] 
+\end_layout
+
+\begin_layout Description
+Params <FILE>: any document from (/usr/share/)doc directory.
+  
+\end_layout
+
+\begin_layout Description
+Origin Jug, 27 Jun 1999 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LYX_QUIT 
+\end_layout
+
+\begin_layout Description
+Action Terminates the current LyX instance.
+  
+\end_layout
+
+\begin_layout Description
+Notion Terminates the current LyX instance, asking whether to save modified
+ documents, etc.
+  
+\end_layout
+
+\begin_layout Description
+Syntax lyx-quit 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_TOOLBAR_TOGGLE 
+\end_layout
+
+\begin_layout Description
+Action Toggles visibility of a given toolbar between on/off/auto.
+  
+\end_layout
+
+\begin_layout Description
+Notion Skiping "auto" when allowauto is false.
+  
+\end_layout
+
+\begin_layout Description
+Syntax toolbar-toggle <NAME> [allowauto] 
+\end_layout
+
+\begin_layout Description
+Params <NAME>: standard|extra|table|math|mathmacrotemplate| minibuffer|review|vi
+ew/update|math_panels  
+\end_layout
+
+\begin_layout Description
+Origin Edwin, 21 May 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MENU_OPEN 
+\end_layout
+
+\begin_layout Description
+Action Opens the menu given by its name.
+  
+\end_layout
+
+\begin_layout Description
+Syntax menu-open <NAME> 
+\end_layout
+
+\begin_layout Description
+Params <NAME>: menu name.
+ See various .inc files in lib/ui for candidates.
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_UI_TOGGLE 
+\end_layout
+
+\begin_layout Description
+Action Various UI visibility-toggling actions.
+  
+\end_layout
+
+\begin_layout Description
+Syntax ui-toggle <statusbar|menubar|frame|fullscreen> 
+\end_layout
+
+\begin_layout Description
+Params statusbar  : Toggle visibility of the statusbar.
+ 
+\newline
+ menubar    : Toggle visibility of the menubar.
+ 
+\newline
+ scrollbar  : Toggle visibility of the scrollbar.
+ 
+\newline
+ frame      : Toggle visibility of the frames around editing window.
+ 
+\newline
+ fullscreen : Toggle fullscreen mode.
+ This also covers calling the previous functions.
+ However LFUN_TOOLBAR_TOGGLE for the custom tweaks of the toolbars should
+ be used.
+  
+\end_layout
+
+\begin_layout Description
+Origin sanda, 9 Feb 2007 
+\end_layout
+
+\begin_layout Subsection*
+WINDOW_NEW 
+\end_layout
+
+\begin_layout Description
+Action Creates new empty LyX window.
+  
+\end_layout
+
+\begin_layout Description
+Notion Already opened documents from the previous window can be found under
+ View menu.
+  
+\end_layout
+
+\begin_layout Description
+Syntax window-new [<GEOMETRY>] 
+\end_layout
+
+\begin_layout Description
+Params <GEOMETRY>: pass the geometry of the window.
+ This parameter is currently accepted only on Windows platform.
+  
+\end_layout
+
+\begin_layout Description
+Origin Abdel, 21 Oct 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_WINDOW_CLOSE 
+\end_layout
+
+\begin_layout Description
+Action Closes the current LyX window.
+  
+\end_layout
+
+\begin_layout Description
+Syntax window-close 
+\end_layout
+
+\begin_layout Description
+Origin Abdel, 23 Oct 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SPLIT_VIEW 
+\end_layout
+
+\begin_layout Description
+Action Creates another split view of current buffer.
+  
+\end_layout
+
+\begin_layout Description
+Notion All split views act in the same way indpendently.
+  
+\end_layout
+
+\begin_layout Description
+Syntax split-view <vertical|horizontal> 
+\end_layout
+
+\begin_layout Description
+Params horizontal : The work areas are laid out side by side.
+ 
+\newline
+ vertical   : The work areas laid out vertically.
+  
+\end_layout
+
+\begin_layout Description
+Origin Abdel, 20 Feb 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CLOSE_TAB_GROUP 
+\end_layout
+
+\begin_layout Description
+Action Close the current tab group.
+  
+\end_layout
+
+\begin_layout Description
+Notion This only closes the work areas, not the buffer themselves.
+ The still opened buffers can be visualized in another tab group.
+  
+\end_layout
+
+\begin_layout Description
+Syntax close-tab-group 
+\end_layout
+
+\begin_layout Description
+Origin Abdel, 21 Feb 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_DIALOG_SHOW 
+\end_layout
+
+\begin_layout Description
+Action Shows hidden dialog or create new one for a given function/inset
+ settings etc.
+  
+\end_layout
+
+\begin_layout Description
+Syntax dialog-show <NAME> [<DATA>] 
+\end_layout
+
+\begin_layout Description
+Params <NAME>: aboutlyx|bibitem|bibtex|box|branch|changes|character|citation|
+ 
+\newline
+ document|errorlist|ert|external|file|findreplace|float|graphics| 
+\newline
+ include|inde
+x|info|nomenclature|label|log|mathdelimiter|mathmatrix| 
+\newline
+ note|paragraph|prefs|pr
+int|ref|sendto|space|spellchecker|symbols| 
+\newline
+ tabular|tabularcreate|thesaurus|texi
+nfo|toc|href|view-source|vspace 
+\newline
+ wrap|listings|<SPECIAL>  
+\newline
+ <SPECIAL>: latexlog|v
+clog  
+\newline
+ <DATA>: data, usually settings for the given dialog.
+ Use debug mode for the details.
+  
+\end_layout
+
+\begin_layout Description
+Origin leeming, 17 Jun 2003 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_DIALOG_SHOW_NEW_INSET 
+\end_layout
+
+\begin_layout Description
+Action Shows hidden dialog or create new one for a given inset settings
+ etc.
+  
+\end_layout
+
+\begin_layout Description
+Notion Internally uses LFUN_DIALOG_SHOW with processed data for a given
+ inset.
+  
+\end_layout
+
+\begin_layout Description
+Syntax dialog-show-new-inset <NAME> [<DATA>] 
+\end_layout
+
+\begin_layout Description
+Params See LFUN_DIALOG_SHOW .
+  
+\end_layout
+
+\begin_layout Description
+Origin leeming, 25 Feb 2003 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_DIALOG_UPDATE 
+\end_layout
+
+\begin_layout Description
+Action Updates the dialog values from the inset/paragraph/document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax dialog-update <NAME> 
+\end_layout
+
+\begin_layout Description
+Params <NAME>: paragraph|prefs|<INSET>  
+\newline
+ <INSET>: inset name  
+\end_layout
+
+\begin_layout Description
+Origin leeming, 25 Feb 2003 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_DIALOG_HIDE 
+\end_layout
+
+\begin_layout Description
+Action Hides showed dialog.
+ Counterpart to LFUN_DIALOG_SHOW .
+  
+\end_layout
+
+\begin_layout Description
+Syntax dialog-hide <NAME> 
+\end_layout
+
+\begin_layout Description
+Params See LFUN_DIALOG_SHOW .
+  
+\end_layout
+
+\begin_layout Description
+Origin leeming, 25 Feb 2003 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_DIALOG_TOGGLE 
+\end_layout
+
+\begin_layout Description
+Action Toggles dialog between showed/hidden state.
+  
+\end_layout
+
+\begin_layout Description
+Notion Internally uses LFUN_DIALOG_SHOW , LFUN_DIALOG_HIDE .
+  
+\end_layout
+
+\begin_layout Description
+Syntax dialog-toggle <NAME> [<DATA>] 
+\end_layout
+
+\begin_layout Description
+Params See LFUN_DIALOG_SHOW .
+  
+\end_layout
+
+\begin_layout Description
+Origin JSpitzm, 30 Apr 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_DIALOG_DISCONNECT_INSET 
+\end_layout
+
+\begin_layout Description
+Action Closes opened connection to opened inset.
+  
+\end_layout
+
+\begin_layout Description
+Notion Connection is used for apply functions.
+  
+\end_layout
+
+\begin_layout Description
+Syntax dialog-disconnect-inset <INSET-NAME> 
+\end_layout
+
+\begin_layout Description
+Origin leeming, 25 Feb 2003 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MOUSE_PRESS 
+\end_layout
+
+\begin_layout Description
+Action This function is called when mouse button is pressed (inside workarea).Act
+ion depends on the context.
+  
+\end_layout
+
+\begin_layout Description
+Notion This is internal LFUN, not to be used by users.
+  
+\end_layout
+
+\begin_layout Description
+Origin Andre, 9 Aug 2002 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MOUSE_DOUBLE 
+\end_layout
+
+\begin_layout Description
+Action This function is called when double click on mouse button is pressed
+ (inside workarea).
+ Action depends on the context.
+  
+\end_layout
+
+\begin_layout Description
+Notion This is internal LFUN, not to be used by users.
+  
+\end_layout
+
+\begin_layout Description
+Origin Andre, 9 Aug 2002 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MOUSE_TRIPLE 
+\end_layout
+
+\begin_layout Description
+Action This function is called when triple click on mouse button is pressed
+ (inside workarea).
+ Action depends on the context.
+  
+\end_layout
+
+\begin_layout Description
+Notion This is internal LFUN, not to be used by users.
+  
+\end_layout
+
+\begin_layout Description
+Origin Andre, 9 Aug 2002 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MOUSE_MOTION 
+\end_layout
+
+\begin_layout Description
+Action This function is called when mouse cursor is moving over the text.Action
+ depends on the context.
+  
+\end_layout
+
+\begin_layout Description
+Notion This is internal LFUN, not to be used by users.
+  
+\end_layout
+
+\begin_layout Description
+Origin Andre, 9 Aug 2002 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MOUSE_RELEASE 
+\end_layout
+
+\begin_layout Description
+Action This function is called when mouse button is released (inside workarea).Ac
+tion depends on the context.
+  
+\end_layout
+
+\begin_layout Description
+Notion This is internal LFUN, not to be used by users.
+  
+\end_layout
+
+\begin_layout Description
+Origin Andre, 9 Aug 2002 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_KEYMAP_OFF 
+\end_layout
+
+\begin_layout Description
+Action Turn off the loaded keyboard map.
+  
+\end_layout
+
+\begin_layout Description
+Syntax keymap-off 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_KEYMAP_PRIMARY 
+\end_layout
+
+\begin_layout Description
+Action Turn on the primary keyboard map.
+  
+\end_layout
+
+\begin_layout Description
+Notion Maps were widely used in past, when X-windows didn't have nowadays
+ keyboard support.
+ They can be still used to maintain uniform keyboard layout across the various
+ plaforms.
+ 
+\newline
+ The language is to be set in the Preferences dialog.
+  
+\end_layout
+
+\begin_layout Description
+Syntax keymap-primary 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_KEYMAP_SECONDARY 
+\end_layout
+
+\begin_layout Description
+Action Turn on the secondary keyboard map.
+  
+\end_layout
+
+\begin_layout Description
+Syntax keymap-secondary 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_KEYMAP_TOGGLE 
+\end_layout
+
+\begin_layout Description
+Action Toggles keyboard maps (first/second/off).
+  
+\end_layout
+
+\begin_layout Description
+Syntax keymap-toggle 
+\end_layout
+
+\begin_layout Description
+Origin leeming, 30 Mar 2004 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SERVER_GET_LAYOUT 
+\end_layout
+
+\begin_layout Description
+Action Returns the current layout (that is environment) name on the cursor
+ position.
+  
+\end_layout
+
+\begin_layout Description
+Syntax server-get-layout 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SERVER_GET_FILENAME 
+\end_layout
+
+\begin_layout Description
+Action Returns path and file name of the currently edited document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax server-get-filename 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SERVER_GOTO_FILE_ROW 
+\end_layout
+
+\begin_layout Description
+Action Sets the cursor position based on the row number of generated TeX
+ file.
+  
+\end_layout
+
+\begin_layout Description
+Syntax server-goto-file-row <LYX_FILE_NAME> <ROW_NUMBER> 
+\end_layout
+
+\begin_layout Description
+Origin Edmar, 23 Dec 1998 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SERVER_NOTIFY 
+\end_layout
+
+\begin_layout Description
+Action Sends notify message about the last key-sequence to client.
+  
+\end_layout
+
+\begin_layout Description
+Notion This can be used to grab last key-sequence used inside the LyX window.
+  
+\end_layout
+
+\begin_layout Description
+Syntax server-notify 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SERVER_SET_XY 
+\end_layout
+
+\begin_layout Description
+Action Sets the cursor position based on the editing area coordinates (similar
+ as clicking on that point with left mouse button).
+  
+\end_layout
+
+\begin_layout Description
+Syntax server-set-xy <X> <Y> 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SERVER_GET_XY 
+\end_layout
+
+\begin_layout Description
+Action Returns the coordinates of cursor position in the editing area.
+  
+\end_layout
+
+\begin_layout Description
+Syntax server-get-xy 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUILD_PROGRAM 
+\end_layout
+
+\begin_layout Description
+Action Generates the code (literate programming).
+  
+\end_layout
+
+\begin_layout Description
+Notion Latex file with extension literate_extension is generated.
+ Then LyX invokes build_command (with a default of``make'') to generate
+ the code and build_error_filter to process the compilation error messages.
+  
+\newline
+ In case you want to process your literate file with a script, or some
+ other program, just insert in your lyxrc file an entry with: 
+\newline
+ build_command
+ "my_script my_arguments"  
+\newline
+ The build_error_filter differs from the literate_err
+or_filter only in that the former will identify error messages from your
+ compiler.
+  
+\end_layout
+
+\begin_layout Description
+Syntax build-program 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_AUTO_SAVE 
+\end_layout
+
+\begin_layout Description
+Action Saves the current buffer to a temporary file.
+  
+\end_layout
+
+\begin_layout Description
+Notion Saves the current buffer to a file named "#filename#".
+ This LFUN is called automatically by LyX, to "autosave" the current buffer.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-auto-save 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_CHILD_OPEN 
+\end_layout
+
+\begin_layout Description
+Action Loads the given child document.
+  
+\end_layout
+
+\begin_layout Description
+Notion The current document is treated as a parent.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-child-open <FILE> 
+\end_layout
+
+\begin_layout Description
+Params <FILE>: Filename of the child.
+ The directory of the parent is assumed by default.
+  
+\end_layout
+
+\begin_layout Description
+Origin Ale, 28 May 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_CHKTEX 
+\end_layout
+
+\begin_layout Description
+Action Runs chktex for the current document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-chktex 
+\end_layout
+
+\begin_layout Description
+Origin Asger, 30 Oct 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_TOGGLE_COMPRESSION 
+\end_layout
+
+\begin_layout Description
+Action Toggles compression of the current document on/off.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-toggle-compression 
+\end_layout
+
+\begin_layout Description
+Origin bpeng, 27 Apr 2006 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_CLOSE 
+\end_layout
+
+\begin_layout Description
+Action Closes the current buffer.
+  
+\end_layout
+
+\begin_layout Description
+Notion Closes the current buffer, asking whether to save it, etc, if the
+ buffer has been modified.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-close 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_EXPORT 
+\end_layout
+
+\begin_layout Description
+Action Exports the current buffer (document) to the given format.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-export <FORMAT> 
+\end_layout
+
+\begin_layout Description
+Params <FORMAT> is either "custom" or one of the formats which you can find
+ in Tools->Preferences->File formats->Format.
+ Usual format you will enter is "pdf2" (pdflatex), "pdflatex" (plain tex
+ for pdflatex) or "ps" for postscript.
+ 
+\newline
+ In case of "custom" you will be asked for a format you want to start from
+ and for the command that you want to apply to this format.
+ Internally the control is then passed to LFUN_BUFFER_EXPORT_CUSTOM.
+  
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 29 Jul 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_EXPORT_CUSTOM 
+\end_layout
+
+\begin_layout Description
+Action Exports the current buffer (document) from the given format using
+ the given command on it.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-export-custom <FORMAT> <COMMAND> 
+\end_layout
+
+\begin_layout Description
+Params <FORMAT> format to start from (LyX will care to produce such intermediate
+ file).
+ 
+\newline
+ <COMMAND> this command will be launched on the file.
+ Note that you can use "$$FName" string to qualify the intermediate file.
+  
+\end_layout
+
+\begin_layout Description
+Sample buffer-export-custom dvi dvips -f $$FName -o myfile.ps 
+\end_layout
+
+\begin_layout Description
+Origin leeming, 27 Mar 2004 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_PRINT 
+\end_layout
+
+\begin_layout Description
+Action Prints the current document.
+  
+\end_layout
+
+\begin_layout Description
+Notion Many settings can be given via the preferences dialog.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-print <TARGET> <TARGET-NAME> <COMMAND> 
+\end_layout
+
+\begin_layout Description
+Params <TARGET> is either "printer" or "file".
+ 
+\newline
+ <TARGER-NAME> is either "default" or file name or printer name.
+ 
+\newline
+ <COMMAND> command ensuring the printing job.
+  
+\end_layout
+
+\begin_layout Description
+Sample buffer-print file "/trash/newfile1.ps" "dvips" 
+\end_layout
+
+\begin_layout Description
+Origin leeming, 28 Mar 2004 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_IMPORT 
+\end_layout
+
+\begin_layout Description
+Action Import a given file as a lyx document.
+  
+\end_layout
+
+\begin_layout Description
+Notion File can be imported iff lyx file format is (transitively) reachable
+ via defined convertors in preferences.
+ Look into File->Import menu to get an idea of the currently active import
+ formats.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-import <FORMAT> [<FILE>] 
+\end_layout
+
+\begin_layout Description
+Origin Asger, 24 Jul 1998 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_NEW 
+\end_layout
+
+\begin_layout Description
+Action Creates a new buffer (that is, document).
+  
+\end_layout
+
+\begin_layout Description
+Notion Implicit path can be set in Preferences dialog.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-new [<FILE>] 
+\end_layout
+
+\begin_layout Description
+Params <FILE>: filename of created file with absolute path.
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_NEW_TEMPLATE 
+\end_layout
+
+\begin_layout Description
+Action Creates a new buffer (that is, document) from a template.
+  
+\end_layout
+
+\begin_layout Description
+Notion Path for new files and templates can be set in Preferences dialog.
+ Template will be asked for via Open-dialog.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-new-template [<FILE>] 
+\end_layout
+
+\begin_layout Description
+Params <FILE>: filename of created file with absolute path.
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_RELOAD 
+\end_layout
+
+\begin_layout Description
+Action Reverts opened document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-reload 
+\end_layout
+
+\begin_layout Description
+Origin Asger, 2 Feb 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_SWITCH 
+\end_layout
+
+\begin_layout Description
+Action Switch to the given buffer.
+  
+\end_layout
+
+\begin_layout Description
+Notion This is useful also in case you need simultaneously more views of
+ the edited document in different LyX windows.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-new-template <BUFFER> 
+\end_layout
+
+\begin_layout Description
+Params <BUFFER>: already opened document which is to be shown.
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_TOGGLE_READ_ONLY 
+\end_layout
+
+\begin_layout Description
+Action Toggle editing mode of the current document between read/write and
+ read-only.
+  
+\end_layout
+
+\begin_layout Description
+Notion In the ->Readonly mode checks-in/commits the data if the file is
+ under version control.
+ In the Readonly-> mode checkouts the data from repository.
+  
+\newline
+ If these operations fail, buffer won't be toggled.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-toggle-read-only 
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 27 May 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_VIEW 
+\end_layout
+
+\begin_layout Description
+Action Displays current buffer in chosen format.
+  
+\end_layout
+
+\begin_layout Description
+Notion Displays the contents of the current buffer in the chosen format,
+ for example, PDF or DVI.
+ This runs the necessary converter, calls the defined viewer, and so forth.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-view <FORMAT> 
+\end_layout
+
+\begin_layout Description
+Params <FORMAT>: The format to display, where this is one of the formats
+ defined (in the current GUI) in the Tools>Preferences>File Formats dialog.
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_UPDATE 
+\end_layout
+
+\begin_layout Description
+Action Exports the current document and put the result into the temporary
+ directory.
+  
+\end_layout
+
+\begin_layout Description
+Notion In case you are already viewing the exported document (see LFUN_BUFFER_VI
+EW) the output will be rewriten - updated.
+ This is useful in case your viewer is able to detect such changes (e.g.
+ ghostview for postscript).
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-update <FORMAT> 
+\end_layout
+
+\begin_layout Description
+Params <FORMAT>: The format to display, where this is one of the formats
+ defined (in the current GUI) in the Tools>Preferences>File Formats dialog.
+  
+\end_layout
+
+\begin_layout Description
+Origin Dekel, 5 Aug 2000 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_WRITE 
+\end_layout
+
+\begin_layout Description
+Action Saves the current buffer.
+  
+\end_layout
+
+\begin_layout Description
+Notion Saves the current buffer to disk, using the filename that is already
+ associated with the buffer, asking for one if none is yet assigned.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-write 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_WRITE_AS 
+\end_layout
+
+\begin_layout Description
+Action Rename and save current buffer.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-write-as <FILENAME> 
+\end_layout
+
+\begin_layout Description
+Params <FILENAME>: New name of the buffer/file.
+ A relative path is with respect to the original location of the buffer/file.
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_WRITE_ALL 
+\end_layout
+
+\begin_layout Description
+Action Save all changed documents.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-write-all 
+\end_layout
+
+\begin_layout Description
+Origin rgh, gpothier 6 Aug 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_NEXT 
+\end_layout
+
+\begin_layout Description
+Action Switch to the next opened document.
+  
+\end_layout
+
+\begin_layout Description
+Notion Note that this does not necessarily mean next in tabbar (for full
+ list see View menu).
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-next 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_PREVIOUS 
+\end_layout
+
+\begin_layout Description
+Action Switch to the previous opened document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-previous 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MASTER_BUFFER_UPDATE 
+\end_layout
+
+\begin_layout Description
+Action When run from a child document, this updates (exports) document built
+ from the master buffer.
+ If a master is not found, it updates the current buffer.
+  
+\end_layout
+
+\begin_layout Description
+Syntax master-buffer-update 
+\end_layout
+
+\begin_layout Description
+Origin Tommaso, 20 Sep 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MASTER_BUFFER_VIEW 
+\end_layout
+
+\begin_layout Description
+Action When run from a child document, this command shows a preview built
+ from the master buffer.
+ If a master is not found, it previews the current buffer.
+  
+\end_layout
+
+\begin_layout Description
+Syntax master-buffer-view 
+\end_layout
+
+\begin_layout Description
+Origin Tommaso, 20 Sep 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_LANGUAGE 
+\end_layout
+
+\begin_layout Description
+Action Set language of the current document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-language <LANG> 
+\end_layout
+
+\begin_layout Description
+Params <LANG>: language name.
+ See lib/languages for list.
+  
+\end_layout
+
+\begin_layout Description
+Origin leeming, 30 Mar 2004 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_SAVE_AS_DEFAULT 
+\end_layout
+
+\begin_layout Description
+Action Save the current document settings as default.
+  
+\end_layout
+
+\begin_layout Description
+Notion The file will will be saved into ~/.lyx/templates/defaults.lyx .
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-save-as-default [<ARGS>] 
+\end_layout
+
+\begin_layout Description
+Params <ARGS>: contains the particular settings to be saved.
+ They obey the syntax you can find in document header of usual .lyx file.
+  
+\end_layout
+
+\begin_layout Description
+Origin leeming, 30 Mar 2004 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_PARAMS_APPLY 
+\end_layout
+
+\begin_layout Description
+Action Apply the given settings to the current document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-params-apply [<ARGS>] 
+\end_layout
+
+\begin_layout Description
+Params <ARGS>: contains the particular settings to be saved.
+ They obey the syntax you can find in document header of usual .lyx file.
+  
+\end_layout
+
+\begin_layout Description
+Origin leeming, 30 Mar 2004 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FILE_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts another LyX file.
+  
+\end_layout
+
+\begin_layout Description
+Syntax file-insert [<FILE>] 
+\end_layout
+
+\begin_layout Description
+Params <FILE>: Filename to be inserted.
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FILE_INSERT_PLAINTEXT 
+\end_layout
+
+\begin_layout Description
+Action Inserts plain text file.
+  
+\end_layout
+
+\begin_layout Description
+Syntax file-insert-plaintext [<FILE>] 
+\end_layout
+
+\begin_layout Description
+Params <FILE>: Filename to be inserted.
+  
+\end_layout
+
+\begin_layout Description
+Origin CFO-G, 19 Nov 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FILE_INSERT_PLAINTEXT_PARA 
+\end_layout
+
+\begin_layout Description
+Action Inserts plain text file as paragraph (i.e.
+ join lines).
+  
+\end_layout
+
+\begin_layout Description
+Syntax file-insert-plaintext-para [<FILE>] 
+\end_layout
+
+\begin_layout Description
+Params <FILE>: Filename to be inserted.
+  
+\end_layout
+
+\begin_layout Description
+Origin Levon, 14 Feb 2001 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FILE_OPEN 
+\end_layout
+
+\begin_layout Description
+Action Open LyX document.
+  
+\end_layout
+
+\begin_layout Description
+Syntax file-open [<FILE>] 
+\end_layout
+
+\begin_layout Description
+Params <FILE>: Filename to be opened.
+   
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CALL 
+\end_layout
+
+\begin_layout Description
+Action Executes a command defined in a .def file.
+  
+\end_layout
+
+\begin_layout Description
+Notion The definitions are by default read from lib/commands/default.def.
+ 
+\newline
+ A .def file allows to define a command with 
+\backslash
+define "<NAME>" "<LFUN>" where <NAME> is the name of the new command and
+ <LFUN> is the lfun code to be executed (see e.g.
+ LFUN_COMMAND_SEQUENCE).
+ 
+\backslash
+def_file "FileName" allows to include another .def file.
+  
+\newline
+ This is particularly useful in connection with toolbar buttons: Since
+ the name of the button image for this lfun is lib/images/commands/<NAME>.png
+ this is the way to assign an image to a complex command-sequence.
+  
+\end_layout
+
+\begin_layout Description
+Syntax call <NAME> 
+\end_layout
+
+\begin_layout Description
+Params <NAME>: Name of the command that must be called.
+  
+\end_layout
+
+\begin_layout Description
+Origin broider, 2 Oct 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_META_PREFIX 
+\end_layout
+
+\begin_layout Description
+Action Simulate halting Meta key (Alt key on PCs).
+  
+\end_layout
+
+\begin_layout Description
+Notion Used for buffer editation not for GUI control.
+  
+\end_layout
+
+\begin_layout Description
+Syntax meta-prefix 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CANCEL 
+\end_layout
+
+\begin_layout Description
+Action Cancels sequence prepared by LFUN_META_PREFIX .
+  
+\end_layout
+
+\begin_layout Description
+Syntax cancel 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_COMMAND_EXECUTE 
+\end_layout
+
+\begin_layout Description
+Action Opens the minibuffer toolbar so that the user can type in there.
+  
+\end_layout
+
+\begin_layout Description
+Notion Usually bound to M-x shortcut.
+  
+\end_layout
+
+\begin_layout Description
+Syntax command-execute 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_COMMAND_PREFIX 
+\end_layout
+
+\begin_layout Description
+Action Return the current key sequence and available options as a string.
+  
+\end_layout
+
+\begin_layout Description
+Notion No options are added if no current map exists.
+  
+\newline
+ This is probably usable only with connection to lyxserver.
+  
+\end_layout
+
+\begin_layout Description
+Syntax command-prefix 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_COMMAND_SEQUENCE 
+\end_layout
+
+\begin_layout Description
+Action Run more commands (LFUN and its parameters) in a sequence.
+  
+\end_layout
+
+\begin_layout Description
+Syntax command-sequence <CMDS> 
+\end_layout
+
+\begin_layout Description
+Params <CMDS>: Sequence of commands separated by semicolons.
+  
+\end_layout
+
+\begin_layout Description
+Sample command-sequence cut; ert-insert; self-insert ; paste; self-insert
+ {}; inset-toggle; 
+\end_layout
+
+\begin_layout Description
+Origin Andre, 11 Nov 1999 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_MESSAGE 
+\end_layout
+
+\begin_layout Description
+Action Shows message in statusbar (for script purposes).
+  
+\end_layout
+
+\begin_layout Description
+Syntax message <STRING> 
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 8 Apr 2001 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_PREFERENCES_SAVE 
+\end_layout
+
+\begin_layout Description
+Action Save user preferences.
+  
+\end_layout
+
+\begin_layout Description
+Syntax preferences-save 
+\end_layout
+
+\begin_layout Description
+Origin Lgb, 27 Nov 1999 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_RECONFIGURE 
+\end_layout
+
+\begin_layout Description
+Action Reconfigure the automatic settings.
+  
+\end_layout
+
+\begin_layout Description
+Syntax reconfigure 
+\end_layout
+
+\begin_layout Description
+Origin Asger, 14 Feb 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_LYXRC_APPLY 
+\end_layout
+
+\begin_layout Description
+Action Apply the given settings to user preferences.
+  
+\end_layout
+
+\begin_layout Description
+Syntax lyxrc-apply <SETTINGS> 
+\end_layout
+
+\begin_layout Description
+Params <SETTINGS>: settings which are to be set.
+ Take a look into ~/.lyx/preferences to get an idea which commands to use
+ and their syntax.
+ lyx::LyXRC::LyXRCTags has the list of possible commands.
+  
+\end_layout
+
+\begin_layout Subsection*
+LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE 
+\end_layout
+
+\begin_layout Description
+Action Determine whether keep cursor inside the editing window regardless
+ the scrollbar movement.
+  
+\end_layout
+
+\begin_layout Description
+Syntax toggle-cursor-follows-scrollbar 
+\end_layout
+
+\begin_layout Description
+Origin ARRae, 2 Dec 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SET_COLOR 
+\end_layout
+
+\begin_layout Description
+Action Set the given LyX color to the color defined by the X11 name given.
+  
+\end_layout
+
+\begin_layout Description
+Notion A new color entry is created if the color is unknown.
+ Color names can be stored as a part of user settings.
+  
+\end_layout
+
+\begin_layout Description
+Syntax set-color <LYX_NAME> <X11_NAME> 
+\end_layout
+
+\begin_layout Description
+Origin SLior, 11 Jun 2000 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_STATISTICS 
+\end_layout
+
+\begin_layout Description
+Action Count the statistics (number of words and characters) in the document
+ or in the given selection.
+  
+\end_layout
+
+\begin_layout Description
+Notion Note that this function gives the number of words/chars written,
+ not the number of characters which will be typeset.
+  
+\end_layout
+
+\begin_layout Description
+Syntax statistics 
+\end_layout
+
+\begin_layout Description
+Origin lasgouttes, Jan 27 2004; sanda, Jan 8 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_COMPLETION_INLINE 
+\end_layout
+
+\begin_layout Description
+Action Show the inline completion at the cursor position.
+  
+\end_layout
+
+\begin_layout Description
+Syntax completion-inline 
+\end_layout
+
+\begin_layout Description
+Origin sts, Feb 19 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_COMPLETION_POPUP 
+\end_layout
+
+\begin_layout Description
+Action Show the completion popup at the cursor position.
+  
+\end_layout
+
+\begin_layout Description
+Syntax completion-popup 
+\end_layout
+
+\begin_layout Description
+Origin sts, Feb 19 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_COMPLETION_COMPLETE 
+\end_layout
+
+\begin_layout Description
+Action Try to complete the word or command at the cursor position.
+  
+\end_layout
+
+\begin_layout Description
+Syntax completion-complete 
+\end_layout
+
+\begin_layout Description
+Origin sts, Feb 19 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BRANCH_ACTIVATE 
+\end_layout
+
+\begin_layout Description
+Action Activate the branch  
+\end_layout
+
+\begin_layout Description
+Syntax branch-activate <BRANCH> 
+\end_layout
+
+\begin_layout Description
+Params <BRANCH>: The branch to activate  
+\end_layout
+
+\begin_layout Description
+Sample lyx -e pdf2 -x "branch-activate answers" finalexam.lyx  
+\newline
+could be used
+ to export a pdf with the answers branch includedwithout one's having to
+ open LyX and activate the branch manually.
+\end_layout
+
+\begin_layout Description
+Origin rgh, 27 May 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BRANCH_ACTIVATE 
+\end_layout
+
+\begin_layout Description
+Action De-activate the branch  
+\end_layout
+
+\begin_layout Description
+Syntax branch-deactivate <BRANCH> 
+\end_layout
+
+\begin_layout Description
+Params <BRANCH>: The branch to deactivate  
+\end_layout
+
+\begin_layout Description
+Origin rgh, 27 May 2008 
+\end_layout
+
+\end_body
+\end_document
