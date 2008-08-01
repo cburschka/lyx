@@ -125,10 +125,10 @@ public:
 	/// returns a special layout for use when we don't really want one,
 	/// e.g., in table cells
 	Layout const & plainLayout() const 
-			{ return operator[](emptylayout_); };
+			{ return operator[](plain_layout_); };
 	/// the name of the plain layout
 	docstring const & plainLayoutName() const 
-			{ return emptylayout_; }
+			{ return plain_layout_; }
 	/// Enumerate the paragraph styles.
 	size_t layoutCount() const { return layoutlist_.size(); }
 	///
@@ -241,7 +241,7 @@ protected:
 	///
 	docstring defaultlayout_;
 	/// name of plain layout
-	static const docstring emptylayout_;
+	static const docstring plain_layout_;
 	/// preamble text to support layout styles
 	docstring preamble_;
 	/// latex packages loaded by document class.

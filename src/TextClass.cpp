@@ -111,7 +111,7 @@ std::string translateRT(TextClass::ReadType rt)
 
 // This string should not be translated here, 
 // because it is a layout identifier.
-docstring const TextClass::emptylayout_ = from_ascii("Plain Layout");
+docstring const TextClass::plain_layout_ = from_ascii("Plain Layout");
 
 
 InsetLayout DocumentClass::empty_insetlayout_;
@@ -246,8 +246,8 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 	// Define the `empty' layout used in table cells, ert, etc. Note that 
 	// we do this before loading any layout file, so that classes can 
 	// override features of this layout if they should choose to do so.
-	if (rt == BASECLASS && !hasLayout(emptylayout_))
-		layoutlist_.push_back(createEmptyLayout(emptylayout_));
+	if (rt == BASECLASS && !hasLayout(plain_layout_))
+		layoutlist_.push_back(createEmptyLayout(plain_layout_));
 
 	Lexer lexrc(textClassTags);
 	lexrc.setFile(filename);
