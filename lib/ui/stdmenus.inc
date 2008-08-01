@@ -523,6 +523,7 @@ Menuset
 		Item "Customization|C" "help-open Customization"
 		Item "Shortcuts|S" "help-open Shortcuts"
 		Item "FAQ|F" "help-open FAQ"
+		Item "LyX Functions|y" "help-open LFUNs"
 		Item "Table of Contents|a" "help-open TOC"
 		Item "LaTeX Configuration|L" "help-open LaTeXConfig"
 		Separator
