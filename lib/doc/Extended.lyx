@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 338
+\lyxformat 339
 \begin_document
 \begin_header
 \textclass scrbook
@@ -16117,7 +16117,11 @@ Version Control in LyX
 \begin_layout Standard
 by
 \noun on
- Lars Gullik Bjønnes
+ Lars Gullik Bjønnes, 
+\noun default
+updated by 
+\noun on
+Pavel Sanda
 \end_layout
 
 \begin_layout Subsection
@@ -16161,8 +16165,10 @@ man rcsintro
 \end_layout
 
 \begin_layout Standard
-Also, as there is only basic CVS/SVN implementation you should be familiar
- with CVS/SVN usage before start using it under LyX.
+Later basic CVS/SVN support was added.
+ You should be familiar with CVS/SVN usage before start using it under LyX.
+ Most of the log messages are not currently displayed after operations -
+ you can check them in terminal window if unsure.
 \end_layout
 
 \begin_layout Standard
@@ -16543,7 +16549,7 @@ Control
 \family default
  submenu.
  Please note that if you use password protected access to repository via
- ssh, you will be asked on termial window.
+ ssh, you will be asked in terminal window.
 \end_layout
 
 \begin_layout Subsubsection
@@ -16637,7 +16643,7 @@ Updates the changes of this file from the repository.
 \end_layout
 
 \begin_layout Standard
-RCS command: 
+SVN command: 
 \family typewriter
 svn update 
 \begin_inset Quotes eld
@@ -16664,7 +16670,7 @@ This will discard all changes made to the document since the last check
 \end_layout
 
 \begin_layout Standard
-CVS command: 
+SVN command: 
 \family typewriter
 svn revert -q 
 \begin_inset Quotes eld
