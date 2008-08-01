@@ -227,7 +227,7 @@ def latex2ert(line):
             end = rest
         # If we wanted to put labels into an InsetLabel, for example, then we
         # would just need to test here for cmd == "label" and then take some
-        # appropriate action, i.e., to use arg to get the content and then 
+        # appropriate action, i.e., to use arg to get the content and then
         # wrap it appropriately.
         cmd = put_cmd_in_ert(cmd)
         retval += "\n" + cmd + "\n"
@@ -238,7 +238,7 @@ def latex2ert(line):
 
 
 def latex2lyx(data):
-    '''Takes a string, possibly multi-line, and returns the result of 
+    '''Takes a string, possibly multi-line, and returns the result of
     converting LaTeX constructs into LyX constructs. Returns a list of
     lines, suitable for insertion into document.body.'''
 
@@ -304,7 +304,7 @@ def lyx2latex(lines):
     content = ""
     ert_end = 0
     reps = read_unicodesymbols()
-  
+
     for curline in range(len(lines)):
       line = lines[curline]
       if line.startswith("\\begin_inset ERT"):
@@ -341,7 +341,7 @@ def lyx2latex(lines):
             line.strip() == "status open":
           #skip all that stuff
           continue
-  
+
       # a lossless reversion is not possible
       # try at least to handle some common insets and settings
       # do not replace inside ERTs
@@ -1315,7 +1315,8 @@ def convert_ams_classes(document):
       return
     m = r.match(document.body[i])
     if m == None:
-      document.warning("Weirdly formed \\begin_layout at line %d of body!" % i)
+      # This is an empty layout
+      # document.warning("Weirdly formed \\begin_layout at line %d of body!" % i)
       i += 1
       continue
     m = m.group(1)
@@ -1622,7 +1623,7 @@ def convert_framed_notes(document):
                  'position "t"',
                  'hor_pos "c"',
                  'has_inner_box 0',
-                 'inner_pos "t"', 
+                 'inner_pos "t"',
                  'use_parbox 0',
                  'width "100col%"',
                  'special "none"',
@@ -1778,7 +1779,7 @@ def revert_nobreakdash(document):
 
 #Returns number of lines added/removed
 def revert_nocite_key(body, start, end):
-    'key "..." -> \nocite{...}' 
+    'key "..." -> \nocite{...}'
     r = re.compile(r'^key "(.*)"')
     i = start
     j = end
@@ -1948,17 +1949,17 @@ def revert_rotfloat(document):
         subst = ['\\begin_layout Standard',
                   '\\begin_inset ERT',
                   'status collapsed', '',
-                  '\\begin_layout Standard', '', '', 
+                  '\\begin_layout Standard', '', '',
                   '\\backslash', '',
                   'end{sideways' + floattype + '}',
                   '\\end_layout', '', '\\end_inset']
         document.body[j : j+1] = subst
         addedLines = len(subst) - 1
         del document.body[i+1 : l]
-        addedLines -= (l-1) - (i+1) 
+        addedLines -= (l-1) - (i+1)
         subst = ['\\begin_inset ERT', 'status collapsed', '',
-                  '\\begin_layout Standard', '', '', '\\backslash', 
-                  'begin{sideways' + floattype + '}', 
+                  '\\begin_layout Standard', '', '', '\\backslash',
+                  'begin{sideways' + floattype + '}',
                   '\\end_layout', '', '\\end_inset', '',
                   '\\end_layout', '']
         document.body[i : i+1] = subst
@@ -2007,10 +2008,10 @@ def revert_widesideways(document):
         if l == -1:
             document.warning("Malformed LyX document: Missing `\\begin_layout' in Float inset.")
             return
-        subst = ['\\begin_layout Standard', '\\begin_inset ERT', 
-                  'status collapsed', '', 
+        subst = ['\\begin_layout Standard', '\\begin_inset ERT',
+                  'status collapsed', '',
                   '\\begin_layout Standard', '', '', '\\backslash',
-                  'end{sideways' + floattype + '*}', 
+                  'end{sideways' + floattype + '*}',
                   '\\end_layout', '', '\\end_inset']
         document.body[j : j+1] = subst
         addedLines = len(subst) - 1
@@ -2076,10 +2077,10 @@ def convert_subfig(document):
         del document.body[l]
         del document.body[k]
         addedLines = -2
-        subst = ['\\begin_inset Float figure', 'wide false', 'sideways false', 
-                 'status open', '', '\\begin_layout Plain Layout', '\\begin_inset Caption', 
+        subst = ['\\begin_inset Float figure', 'wide false', 'sideways false',
+                 'status open', '', '\\begin_layout Plain Layout', '\\begin_inset Caption',
                  '', '\\begin_layout Plain Layout'] + latex2lyx(caption) + \
-                 [ '\\end_layout', '', '\\end_inset', '', 
+                 [ '\\end_layout', '', '\\end_inset', '',
                  '\\end_layout', '', '\\begin_layout Plain Layout']
         document.body[i : i] = subst
         addedLines += len(subst)
@@ -2805,7 +2806,7 @@ def remove_fontsCJK(document):
 
 
 def convert_plain_layout(document):
-    " Convert 'PlainLayout' to 'Plain Layout'" 
+    " Convert 'PlainLayout' to 'Plain Layout'"
     i = 0
     while True:
         i = find_token(document.body, '\\begin_layout PlainLayout', i)
@@ -2817,7 +2818,7 @@ def convert_plain_layout(document):
 
 
 def revert_plain_layout(document):
-    " Convert 'PlainLayout' to 'Plain Layout'" 
+    " Convert 'PlainLayout' to 'Plain Layout'"
     i = 0
     while True:
         i = find_token(document.body, '\\begin_layout Plain Layout', i)
@@ -2829,7 +2830,7 @@ def revert_plain_layout(document):
 
 
 def revert_plainlayout(document):
-    " Convert 'PlainLayout' to 'Plain Layout'" 
+    " Convert 'PlainLayout' to 'Plain Layout'"
     i = 0
     while True:
         i = find_token(document.body, '\\begin_layout PlainLayout', i)
@@ -2872,6 +2873,16 @@ def revert_removed_modules(document):
             break
         document.header[i : j + 1] = []
 
+
+def add_plain_layout(document):
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout", i)
+        if i == -1:
+            return
+        if len(document.body[i].split()) == 1:
+            document.body[i] = "\\begin_layout Plain Layout"
+        i += 1
 
 ##
 # Conversion hub
@@ -2941,9 +2952,11 @@ convert = [[277, [fix_wrong_tables]],
            [337, [convert_display_enum]],
            [338, []],
            [339, []],
+           [340, [add_plain_layout]]
           ]
 
-revert =  [[338, [revert_removed_modules]],
+revert =  [[339, []],
+           [338, [revert_removed_modules]],
            [337, [revert_polytonicgreek]],
            [336, [revert_display_enum]],
            [335, [remove_fontsCJK]],
