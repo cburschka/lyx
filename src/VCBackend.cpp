@@ -470,7 +470,7 @@ string SVN::checkIn(string const & msg)
 
 	doVCCommand("svn commit -m \"" + msg + "\" "
 		    + quoteName(onlyFilename(owner_->absFileName()))
-		    + " 2> " + tmpf.toFilesystemEncoding(),
+		    + " > " + tmpf.toFilesystemEncoding(),
 		    FileName(owner_->filePath()));
 
 	string log;
