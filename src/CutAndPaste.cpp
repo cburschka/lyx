@@ -130,26 +130,26 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 		}
 	}
 
-	// set the paragraphs to empty layout if necessary
+	// set the paragraphs to plain layout if necessary
 	if (cur.inset().usePlainLayout()) {
 		bool forcePlainLayout = cur.inset().forcePlainLayout();
-		Layout const & emptyLayout = newDocClass->plainLayout();
+		Layout const & plainLayout = newDocClass->plainLayout();
 		Layout const & defaultLayout = newDocClass->defaultLayout();
 		ParagraphList::iterator const end = insertion.end();
 		ParagraphList::iterator par = insertion.begin();
 		for (; par != end; ++par) {
 			Layout const & parLayout = par->layout();
 			if (forcePlainLayout || parLayout == defaultLayout)
-				par->setLayout(emptyLayout);
+				par->setLayout(plainLayout);
 		}
-	} else { // check if we need to reset from empty layout
+	} else { // check if we need to reset from plain layout
 		Layout const & defaultLayout = newDocClass->defaultLayout();
-		Layout const & emptyLayout = newDocClass->plainLayout();
+		Layout const & plainLayout = newDocClass->plainLayout();
 		ParagraphList::iterator const end = insertion.end();
 		ParagraphList::iterator par = insertion.begin();
 		for (; par != end; ++par) {
 			Layout const & parLayout = par->layout();
-			if (parLayout == emptyLayout)
+			if (parLayout == plainLayout)
 				par->setLayout(defaultLayout);
 		}
 	}
@@ -719,7 +719,7 @@ void copySelectionToStack(Cursor & cur, CutStack & cutstack)
 		ParagraphList pars;
 		Paragraph par;
 		BufferParams const & bp = cur.buffer().params();
-		// FIXME This should be the empty layout...right?
+		// FIXME This should be the plain layout...right?
 		par.setLayout(bp.documentClass().plainLayout());
 		par.insert(0, grabSelection(cur), Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
