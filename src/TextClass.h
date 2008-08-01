@@ -190,12 +190,15 @@ protected:
 	/// Protect construction
 	TextClass();
 	///
-	Layout & operator[](docstring const & vname);
-	/// Create an new, empty layout for this textclass.
-	/** \param unknown Set to true if this layout is an empty layout used to
-	 * represent an unknown layout
+	Layout & operator[](docstring const & name);
+	/** Create an new, very basic layout for this textclass. This is used for
+	    the Plain Layout common to all TextClass objects and also, in 
+	    DocumentClass, for the creation of new layouts `on the fly' when
+	    previously unknown layouts are encountered.
+	    \param unknown Set to true if this layout is used to represent an 
+	    unknown layout
 	 */
-	Layout createEmptyLayout(docstring const & name, bool unknown = false) const;
+	Layout createBasicLayout(docstring const & name, bool unknown = false) const;
 	
 	///////////////////////////////////////////////////////////////////
 	// non-const iterators
@@ -341,8 +344,8 @@ public:
 	/// happen).  -- Idea JMarc, comment MV
 	InsetLayout const & insetLayout(docstring const & name) const;
 	/// a plain inset layout for use as a default
-	static InsetLayout const & plainInsetLayout() { return empty_insetlayout_; }
-	/// add a new, empty layout \c name if it does not exist in layoutlist_
+	static InsetLayout const & plainInsetLayout() { return plain_insetlayout_; }
+	/// add a new layout \c name if it does not exist in layoutlist_
 	void addLayoutIfNeeded(docstring const & name) const;
 
 	///////////////////////////////////////////////////////////////////
@@ -406,7 +409,7 @@ private:
 	/// DocumentClassBundle, which calls the protected constructor.
 	friend class DocumentClassBundle;
 	///
-	static InsetLayout empty_insetlayout_;
+	static InsetLayout plain_insetlayout_;
 };
 
 

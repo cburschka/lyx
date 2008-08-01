@@ -114,7 +114,7 @@ std::string translateRT(TextClass::ReadType rt)
 docstring const TextClass::plain_layout_ = from_ascii("Plain Layout");
 
 
-InsetLayout DocumentClass::empty_insetlayout_;
+InsetLayout DocumentClass::plain_insetlayout_;
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -243,11 +243,11 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 	LYXERR(Debug::TCLASS, "Reading " + translateRT(rt) + ": " +
 		to_utf8(makeDisplayPath(filename.absFilename())));
 
-	// Define the `empty' layout used in table cells, ert, etc. Note that 
+	// Define the plain layout used in table cells, ert, etc. Note that 
 	// we do this before loading any layout file, so that classes can 
 	// override features of this layout if they should choose to do so.
 	if (rt == BASECLASS && !hasLayout(plain_layout_))
-		layoutlist_.push_back(createEmptyLayout(plain_layout_));
+		layoutlist_.push_back(createBasicLayout(plain_layout_));
 
 	Lexer lexrc(textClassTags);
 	lexrc.setFile(filename);
@@ -1000,7 +1000,7 @@ bool TextClass::load(string const & path) const
 void DocumentClass::addLayoutIfNeeded(docstring const & n) const
 {
 	if (!hasLayout(n))
-		layoutlist_.push_back(createEmptyLayout(n, true));
+		layoutlist_.push_back(createBasicLayout(n, true));
 }
 
 
@@ -1019,7 +1019,7 @@ InsetLayout const & DocumentClass::insetLayout(docstring const & name) const
 			break;
 		n = n.substr(0,i);
 	}
-	return empty_insetlayout_;
+	return plain_insetlayout_;
 }
 
 
@@ -1048,7 +1048,7 @@ bool TextClass::isPlainLayout(Layout const & layout) const
 }
 
 
-Layout TextClass::createEmptyLayout(docstring const & name, bool unknown) const
+Layout TextClass::createBasicLayout(docstring const & name, bool unknown) const
 {
 	static Layout * defaultLayout = NULL;
 
