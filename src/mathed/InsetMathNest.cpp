@@ -1813,12 +1813,12 @@ MathCompletionList::MathCompletionList(Cursor const & cur)
 	// fill in global macros
 	macros.clear();
 	MacroTable::globalMacros().getMacroNames(macros);
-	lyxerr << "Globals completion macros: ";
+	//lyxerr << "Globals completion macros: ";
 	for (it = macros.begin(); it != macros.end(); ++it) {
-		lyxerr << "\\" + *it << " ";
+		//lyxerr << "\\" + *it << " ";
 		globals.push_back("\\" + *it);
 	}
-	lyxerr << std::endl;
+	//lyxerr << std::endl;
 
 	// fill in global commands
 	globals.push_back(from_ascii("\\boxed"));
@@ -1868,12 +1868,12 @@ MathCompletionList::MathCompletionList(Cursor const & cur)
 	globals.push_back(from_ascii("\\vphantom"));
 	MathWordList const & words = mathedWordList();
 	MathWordList::const_iterator it2;
-	lyxerr << "Globals completion commands: ";
+	//lyxerr << "Globals completion commands: ";
 	for (it2 = words.begin(); it2 != words.end(); ++it2) {
 		globals.push_back("\\" + (*it2).first);
-		lyxerr << "\\" + (*it2).first << " ";
+		//lyxerr << "\\" + (*it2).first << " ";
 	}
-	lyxerr << std::endl;
+	//lyxerr << std::endl;
 	sort(globals.begin(), globals.end());
 }
 
