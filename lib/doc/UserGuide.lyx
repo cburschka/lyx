@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 339
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass scrbook
@@ -10637,6 +10637,20 @@ cm
 \family typewriter
 cm
 \family default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+One difference is improved kerning for the 
+\family typewriter
+lm
+\family default
+ fonts.
+\end_layout
+
+\end_inset
+
 , but 
 \family typewriter
 lm
