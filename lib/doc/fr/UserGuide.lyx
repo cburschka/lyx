@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 338
+#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass scrbook
@@ -2176,7 +2176,7 @@ Les bases de LyX
 status collapsed
 
 \begin_layout Plain Layout
-Lyx@LyX ! Les bases
+LyX ! Les bases
 \end_layout
 
 \end_inset
@@ -3692,7 +3692,7 @@ Document ! Paramètres
 
 
 \family default
-vous pouvez changer l'espacement entre les lignes (dans la rubrique 
+vous pouvez changer l'espacement entre les lignes dans la rubrique 
 \family sans
 Format
 \begin_inset space ~
@@ -3708,7 +3708,16 @@ texte
 \family sans
 Interligne
 \family default
-) à condition d'avoir installé le paquetage LaTeX 
+.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+You need to have
+\lang french
+ le paquetage LaTeX 
 \series bold
 setspace
 \series default
@@ -3722,7 +3731,16 @@ Paquetages LaTeX ! setspace
 
 \end_inset
 
+ avoir installé 
+\lang english
+to use this feature
+\lang french
 .
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -11299,6 +11317,8 @@ status collapsed
 En chargeant le paquetage LaTeX 
 \series bold
 aeguill
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -11308,8 +11328,6 @@ Paquetages LaTeX ! aeguill
 
 \end_inset
 
-
-\series default
  avec cette ligne dans le préambule du document
 \end_layout
 
@@ -11411,16 +11429,14 @@ serif
 \end_inset
 
 : 
-\family sans
-Times
-\begin_inset space ~
-\end_inset
-
-Roman
+\family typewriter
+Times Roman
 \family default
  comme police romane,
 \family sans
- Helvetica
+ 
+\family typewriter
+Helvetica
 \family default
  réduite à 92 ou 95
 \begin_inset space \thinspace{}
@@ -11431,7 +11447,7 @@ Roman
 \end_inset
 
 serif font, et enfin 
-\family sans
+\family typewriter
 courier
 \family default
  comme police à chasse fixe.
@@ -11470,23 +11486,15 @@ reference "sub:Réglage-fin-avec"
 \end_inset
 
 La police 
-\family sans
-Times
-\begin_inset space ~
-\end_inset
-
-Roman
+\family typewriter
+Times Roman
 \family default
  a été crée à l'origine pour être utilisée pour les journaux.
  ce qui signifie que ses glyphes sont plus petits que ceux des autres polices
  pour pouvoir tenir plus facilement dans les petites colonnes des journaux.
  La police 
-\family sans
-Times
-\begin_inset space ~
-\end_inset
-
-Roman
+\family typewriter
+Times Roman
 \family default
  n'est donc pas le choix optimal pour les document importants comme les
  livres.
@@ -11497,7 +11505,11 @@ La meilleure solution est d'utiliser les polices
 \family typewriter
 Latin Modern
 \family default
- .
+ (
+\family typewriter
+lm
+\family default
+).
  Ces polices ont été développées à la demande de la communauté LaTeX pour
  remplacer les polices 
 \family typewriter
@@ -13363,7 +13375,7 @@ LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-Formats de Fichiers ! Latex@LaTeX
+Formats de Fichiers ! LaTeX
 \end_layout
 
 \end_inset
@@ -14288,7 +14300,7 @@ Césure
 status collapsed
 
 \begin_layout Plain Layout
-Césure
+Cesure@Césure
 \end_layout
 
 \end_inset
@@ -14309,6 +14321,8 @@ Les mots ne sont pas coupés dans LyX, mais ils le sont automatiquement à
  La césure est effectuée par le paquetage 
 \series bold
 babel
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -14318,8 +14332,6 @@ Paquetages LaTeX ! babel
 
 \end_inset
 
-
-\series default
  de LaTeX, en suivant les règles spécifiques à la langue du document.
 \begin_inset Foot
 status collapsed
@@ -15218,7 +15230,7 @@ name "sub:Noms-Propres"
 status collapsed
 
 \begin_layout Plain Layout
-Lyx@LyX ! Noms propres
+LyX ! Noms propres
 \end_layout
 
 \end_inset
@@ -25442,7 +25454,7 @@ name "sec:Références-croisées"
 status collapsed
 
 \begin_layout Plain Layout
-Références croisées
+References@Références croisées
 \end_layout
 
 \end_inset
@@ -25767,6 +25779,8 @@ Note:
  le paquetage LaTeX 
 \series bold
 prettyref
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -25776,8 +25790,6 @@ Paquetages LaTeX ! prettyref
 
 \end_inset
 
-
-\series default
 .
 \end_layout
 
@@ -27768,6 +27780,8 @@ On a parfois besoin de compiler une liste de tous les symboles utilisés
 Pour pouvoir créer des glossaires, vous avez besoin du paquetage LaTeX 
 \series bold
 nomencl
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -27777,8 +27791,6 @@ Paquetages LaTeX ! nomencl
 
 \end_inset
 
-
-\series default
 .
  Vous le trouverez dans le catalogue TeX, 
 \begin_inset CommandInset citation
@@ -29333,9 +29345,11 @@ DVI
 
 \begin_layout Standard
 Si vous voulez voir dans LyX comment LaTeX va mettre en forme vos équations,
- installez le paquetage LaTeX
+ installez le paquetage LaTeX 
 \series bold
- preview-latex
+preview-latex
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29345,8 +29359,6 @@ Paquetages LaTeX ! preview-latex
 
 \end_inset
 
-
-\series default
  comme c'est expliqué plus loin et activez 
 \family sans
 Aperçu
@@ -30539,6 +30551,8 @@ Si vous voulez que les marques de modifications soient visibles sur la sortie
  finale, vous avez besoin du paquetage LaTeX 
 \series bold
 dvipost
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -30548,8 +30562,6 @@ Paquetages LaTeX ! dvipost
 
 \end_inset
 
-
-\series default
 .
  Vous le trouverez dans le catalogue TeX, 
 \begin_inset CommandInset citation
@@ -30731,70 +30743,6 @@ reference "sub:Paramètres"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-LyX permet aussi des sorties Unicode, ce qui est particulièrement intéressant
- si vous utilisez de nombreux caractères spéciaux ou non alphabétiques.
- Si vous voulez utiliser cette possibilité et que votre installation LaTeX
- accepte Unicode, l'encodage 
-\family typewriter
-utf8
-\family default
- est le bon choix dans presque tous les cas.
- A côté de ces cas, vous trouverez d'autres encodages Unicode pour des utilisati
-ons particulières: 
-\family typewriter
-UTF8
-\family default
- and 
-\family typewriter
-utf8x
-\family default
- sont fournis pour les langues CJK (Chinois, Japonais et Coréen), 
-\family typewriter
-utf8-plain
-\family default
-, enfin, devrait être utilisé avec 
-\family sans
-XeTeX
-\family default
-, qui utilise Unicode directement, sans passer par le paquetage LaTeX 
-\series bold
-inputenc
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Paquetages LaTeX ! inputenc
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Voir la section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Paramètres"
-
-\end_inset
-
- pour plus de détails.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -35619,7 +35567,7 @@ Légende
 status collapsed
 
 \begin_layout Plain Layout
-Légendes
+Legendes@Légendes
 \end_layout
 
 \end_inset
@@ -36359,6 +36307,8 @@ Langue implicite
 , mais le paquetage LaTeX 
 \series bold
 inputenc
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -36368,8 +36318,6 @@ Paquetages LaTeX ! inputenc
 
 \end_inset
 
-
-\series default
  n'est pas utilisé.
  Si vous utilisez cet encodage, vous aurez probablement à charger manuellement
  quelques paquetages supplémentaires dans le préambule et à préciser l'encodage
@@ -36525,7 +36473,7 @@ CJK
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages Latex ! CJK
+Paquetages LaTeX ! CJK
 \end_layout
 
 \end_inset
@@ -36604,6 +36552,8 @@ Vous pouvez choisir un style de citation utilisant les paquetages LaTeX
  
 \series bold
 natbib
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -36613,8 +36563,6 @@ Paquetages LaTeX ! natbib
 
 \end_inset
 
-
-\series default
  ou 
 \series bold
 jurabib
@@ -36652,6 +36600,8 @@ Options des Maths
 Ces options vont forcer LyX à utiliser les paquetages LaTeX 
 \series bold
 amsmath
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -36661,11 +36611,11 @@ Paquetages LaTeX ! amsmath
 
 \end_inset
 
-
-\series default
  et 
 \series bold
 esint
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -36675,8 +36625,6 @@ Paquetages LaTeX ! esint
 
 \end_inset
 
-
-\series default
  ou alors à ne les utiliser que si nécessaire.
 \end_layout
 
@@ -36900,7 +36848,7 @@ Reconfiguration de LyX
 status collapsed
 
 \begin_layout Plain Layout
-Lyx@LyX ! Reconfigurer|see
+LyX ! Reconfigurer|see
 \begin_inset ERT
 status collapsed
 
@@ -39786,7 +39734,7 @@ name "sub:Clavier"
 status collapsed
 
 \begin_layout Plain Layout
-Réaffectation clavier
+Reaffectation@Réaffectation clavier
 \end_layout
 
 \end_inset
@@ -39843,6 +39791,16 @@ Note:
 
 \begin_layout Section
 Répertoires
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Repertoires@Répertoires
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -41104,7 +41062,7 @@ Répertoires
 status collapsed
 
 \begin_layout Plain Layout
-Répertoires
+Repertoires@Répertoires
 \end_layout
 
 \end_inset

@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 338
+#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass scrbook
@@ -1836,7 +1836,7 @@ Fundamentos de LyX
 status collapsed
 
 \begin_layout Plain Layout
-Lyx@LyX ! Fundamentos
+LyX ! Fundamentos
 \end_layout
 
 \end_inset
@@ -2200,7 +2200,7 @@ name "sub:Módulos"
 status collapsed
 
 \begin_layout Plain Layout
-Módulos
+Modulos@Módulos
 \end_layout
 
 \end_inset
@@ -2931,7 +2931,7 @@ fancyhdr
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! fancyhdr
+LaTeX, paquetes ! fancyhdr
 \end_layout
 
 \end_inset
@@ -3149,19 +3149,19 @@ Documentos ! Márgenes
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Márgenes"
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Márgenes
+Margenes@Márgenes
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Márgenes"
 
 \end_inset
 
@@ -3505,7 +3505,7 @@ setspace
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! setspace
+LaTeX, paquetes ! setspace
 \end_layout
 
 \end_inset
@@ -10388,7 +10388,7 @@ name "sub:Líneas-horizontales"
 status collapsed
 
 \begin_layout Plain Layout
-Líneas horizontales
+Lineas@Líneas horizontales
 \end_layout
 
 \end_inset
@@ -10863,7 +10863,7 @@ aeguill
 status open
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! aeguill
+LaTeX, paquetes ! aeguill
 \end_layout
 
 \end_inset
@@ -10974,16 +10974,14 @@ serif
 \end_inset
 
  
-\family sans
-Times
-\begin_inset space ~
-\end_inset
-
-Roman
+\family typewriter
+Times Roman
 \family default
  para tipos romanos,
 \family sans
- Helvetica
+ 
+\family typewriter
+Helvetica
 \family default
  escalada a 92
 \begin_inset space \thinspace{}
@@ -10998,7 +10996,7 @@ Roman
 \end_inset
 
 serif, y 
-\family sans
+\family typewriter
 courier
 \family default
  para tipos máquina de escribir.
@@ -11041,23 +11039,15 @@ reference "sub:Ajuste-fino-con"
 \end_inset
 
 La fuente 
-\family sans
-Times
-\begin_inset space ~
-\end_inset
-
-Roman
+\family typewriter
+Times Roman
 \family default
  se diseñó originalmente para periódicos.
  Esto significa que sus formas son más pequeñas que las de otras fuentes
  para encajar en las pequeñas columnas de un periódico.
  Así pues, 
-\family sans
-Times
-\begin_inset space ~
-\end_inset
-
-Roman
+\family typewriter
+Times Roman
 \family default
  no es la elección óptima para documentos extensos como los libros.
 \end_layout
@@ -11067,7 +11057,11 @@ La mejor solución es utilizar la fuente
 \family typewriter
 Latin Modern
 \family default
-.
+ (
+\family typewriter
+lm
+\family default
+).
  Esta fuente ha sido desarrollada por la comunidad LaTeX para reemplazar
  a 
 \family typewriter
@@ -13319,7 +13313,7 @@ pstricks
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! pstricks
+LaTeX, paquetes ! pstricks
 \end_layout
 
 \end_inset
@@ -14119,7 +14113,7 @@ babel
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! babel
+LaTeX, paquetes ! babel
 \end_layout
 
 \end_inset
@@ -15011,7 +15005,7 @@ Nombres propios en LyX
 status collapsed
 
 \begin_layout Plain Layout
-Lyx@LyX ! Nombres propios
+LyX ! Nombres propios
 \end_layout
 
 \end_inset
@@ -20603,7 +20597,7 @@ wrapfig
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! wrapfig
+LaTeX, paquetes ! wrapfig
 \end_layout
 
 \end_inset
@@ -25578,7 +25572,7 @@ prettyref
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! prettyref
+LaTeX, paquetes ! prettyref
 \end_layout
 
 \end_inset
@@ -27471,7 +27465,7 @@ nomencl
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! nomencl
+LaTeX, paquetes ! nomencl
 \end_layout
 
 \end_inset
@@ -28432,10 +28426,10 @@ name "sec:Código-TeX"
 \begin_layout Subsection
 Cuadros de código TeX
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Código TeX
+Codigo@Código TeX
 \end_layout
 
 \end_inset
@@ -28646,7 +28640,7 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! caption
+LaTeX, paquetes ! caption
 \end_layout
 
 \end_inset
@@ -28822,7 +28816,7 @@ preview-latex
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! preview-latex
+LaTeX, paquetes ! preview-latex
 \end_layout
 
 \end_inset
@@ -29934,7 +29928,7 @@ dvipost
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! dvipost
+LaTeX, paquetes ! dvipost
 \end_layout
 
 \end_inset
@@ -35902,7 +35896,7 @@ fonéticos
 status collapsed
 
 \begin_layout Plain Layout
-Símbolos fonéticos
+Simbolos@Símbolos fonéticos
 \end_layout
 
 \end_inset
@@ -35933,7 +35927,7 @@ tipa
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! tipa
+LaTeX, paquetes ! tipa
 \end_layout
 
 \end_inset
@@ -37300,7 +37294,7 @@ inputenc
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! inputenc
+LaTeX, paquetes ! inputenc
 \end_layout
 
 \end_inset
@@ -37431,7 +37425,7 @@ inputenc
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! inputenc
+LaTeX, paquetes ! inputenc
 \end_layout
 
 \end_inset
@@ -37447,10 +37441,10 @@ ucs
 \series default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! ucs
+LaTeX, paquetes ! ucs
 \end_layout
 
 \end_inset
@@ -37469,7 +37463,7 @@ CJK
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! CJK
+LaTeX, paquetes ! CJK
 \end_layout
 
 \end_inset
@@ -37542,7 +37536,7 @@ natbib
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! natbib
+LaTeX, paquetes ! natbib
 \end_layout
 
 \end_inset
@@ -37556,7 +37550,7 @@ jurabib
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! jurabib
+LaTeX, paquetes ! jurabib
 \end_layout
 
 \end_inset
@@ -37593,7 +37587,7 @@ amsmath
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! amsmath
+LaTeX, paquetes ! amsmath
 \end_layout
 
 \end_inset
@@ -37607,7 +37601,7 @@ esint
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! esint
+LaTeX, paquetes ! esint
 \end_layout
 
 \end_inset
@@ -37869,7 +37863,7 @@ Reconfiguración de LyX
 status collapsed
 
 \begin_layout Plain Layout
-Lyx@LyX ! Reconfigurar|see
+LyX ! Reconfigurar|see
 \begin_inset ERT
 status collapsed
 
@@ -41634,7 +41628,7 @@ name "sub:LaTeX-Configuración"
 status collapsed
 
 \begin_layout Plain Layout
-Configuración ! Latex@LaTeX
+Configuración ! LaTeX
 \end_layout
 
 \end_inset
@@ -43091,7 +43085,7 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! caption
+LaTeX, paquetes ! caption
 \end_layout
 
 \end_inset
@@ -43142,7 +43136,7 @@ fancyhdr
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! fancyhdr
+LaTeX, paquetes ! fancyhdr
 \end_layout
 
 \end_inset
@@ -43193,7 +43187,7 @@ nomencl
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! nomencl
+LaTeX, paquetes ! nomencl
 \end_layout
 
 \end_inset
@@ -43240,7 +43234,7 @@ tipa
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! tipa
+LaTeX, paquetes ! tipa
 \end_layout
 
 \end_inset
@@ -43287,7 +43281,7 @@ wrapfig
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX, paquetes ! wrapfig
+LaTeX, paquetes ! wrapfig
 \end_layout
 
 \end_inset

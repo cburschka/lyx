@@ -2002,7 +2002,7 @@ LyX Basics
 status collapsed
 
 \begin_layout Plain Layout
-Lyx@LyX ! Basics
+LyX ! Basics
 \end_layout
 
 \end_inset
@@ -3046,7 +3046,7 @@ fancyhdr
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! fancyhdr
+LaTeX-packages ! fancyhdr
 \end_layout
 
 \end_inset
@@ -3552,7 +3552,7 @@ setspace
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! setspace
+LaTeX-packages ! setspace
 \end_layout
 
 \end_inset
@@ -5366,7 +5366,7 @@ List
 status collapsed
 
 \begin_layout Plain Layout
-Lists ! Lyx@LyX list
+Lists ! LyX list
 \end_layout
 
 \end_inset
@@ -10438,7 +10438,7 @@ aeguill
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! aeguill
+LaTeX-packages ! aeguill
 \end_layout
 
 \end_inset
@@ -10542,16 +10542,14 @@ serif
 \end_inset
 
 : 
-\family sans
-Times
-\begin_inset space ~
-\end_inset
-
-Roman
+\family typewriter
+Times Roman
 \family default
  as roman font,
 \family sans
- Helvetica
+ 
+\family typewriter
+Helvetica
 \family default
  scaled to 92 or 95
 \begin_inset space \thinspace{}
@@ -10562,7 +10560,7 @@ Roman
 \end_inset
 
 serif font, and 
-\family sans
+\family typewriter
 courier
 \family default
  as typewriter font.
@@ -10597,23 +10595,15 @@ reference "sub:Fine-Tuning-with-the"
 \end_inset
 
 The font 
-\family sans
-Times
-\begin_inset space ~
-\end_inset
-
-Roman
+\family typewriter
+Times Roman
 \family default
  was originally designed for newspapers.
  That means its glyphs are smaller than the one from other fonts to fit
  into the small newspaper columns.
  Therefore 
-\family sans
-Times
-\begin_inset space ~
-\end_inset
-
-Roman
+\family typewriter
+Times Roman
 \family default
  is not the optimal choice for larger documents like books.
 \end_layout
@@ -10661,7 +10651,7 @@ cm
 \family default
  and 
 \family typewriter
-ce
+ec
 \family default
 .
 \end_layout
@@ -12759,7 +12749,7 @@ LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-File formats ! Latex@LaTeX
+File formats ! LaTeX
 \end_layout
 
 \end_inset
@@ -12942,7 +12932,7 @@ pstricks
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! pstricks
+LaTeX-packages ! pstricks
 \end_layout
 
 \end_inset
@@ -13710,7 +13700,7 @@ babel
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! babel
+LaTeX-packages ! babel
 \end_layout
 
 \end_inset
@@ -14570,7 +14560,7 @@ LyX's Proper Names
 status collapsed
 
 \begin_layout Plain Layout
-Lyx@LyX ! Proper names
+LyX ! Proper names
 \end_layout
 
 \end_inset
@@ -20165,7 +20155,7 @@ wrapfig
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! wrapfig
+LaTeX-packages ! wrapfig
 \end_layout
 
 \end_inset
@@ -24884,7 +24874,7 @@ prettyref
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! prettyref
+LaTeX-packages ! prettyref
 \end_layout
 
 \end_inset
@@ -26771,7 +26761,7 @@ nomencl
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! nomencl
+LaTeX-packages ! nomencl
 \end_layout
 
 \end_inset
@@ -27827,7 +27817,7 @@ hyperref
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! hyperref
+LaTeX-packages ! hyperref
 \end_layout
 
 \end_inset
@@ -28093,7 +28083,7 @@ The LaTeX Syntax
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX Syntax
+LaTeX Syntax
 \end_layout
 
 \end_inset
@@ -28156,7 +28146,7 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! caption
+LaTeX-packages ! caption
 \end_layout
 
 \end_inset
@@ -28343,7 +28333,7 @@ preview-latex
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! preview-latex
+LaTeX-packages ! preview-latex
 \end_layout
 
 \end_inset
@@ -29383,7 +29373,7 @@ dvipost
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! dvipost
+LaTeX-packages ! dvipost
 \end_layout
 
 \end_inset
@@ -35363,7 +35353,7 @@ tipa
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! tipa
+LaTeX-packages ! tipa
 \end_layout
 
 \end_inset
@@ -36651,7 +36641,7 @@ inputenc
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! inputenc
+LaTeX-packages ! inputenc
 \end_layout
 
 \end_inset
@@ -36776,7 +36766,7 @@ inputenc
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! inputenc
+LaTeX-packages ! inputenc
 \end_layout
 
 \end_inset
@@ -36796,7 +36786,7 @@ ucs
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! ucs
+LaTeX-packages ! ucs
 \end_layout
 
 \end_inset
@@ -36814,7 +36804,7 @@ CJK
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! CJK
+LaTeX-packages ! CJK
 \end_layout
 
 \end_inset
@@ -36876,7 +36866,7 @@ Bibliography
 \end_layout
 
 \begin_layout Standard
-You can specify here a citation style using the Latex@LaTeX-packages 
+You can specify here a citation style using the LaTeX-packages 
 \series bold
 natbib
 \series default
@@ -36885,7 +36875,7 @@ natbib
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! natbib
+LaTeX-packages ! natbib
 \end_layout
 
 \end_inset
@@ -36899,7 +36889,7 @@ jurabib
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! jurabib
+LaTeX-packages ! jurabib
 \end_layout
 
 \end_inset
@@ -36924,7 +36914,7 @@ Math Options
 \end_layout
 
 \begin_layout Standard
-These options will force LyX to use the Latex@LaTeX-packages 
+These options will force LyX to use the LaTeX-packages 
 \series bold
 amsmath
 \series default
@@ -36933,7 +36923,7 @@ amsmath
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! amsmath
+LaTeX-packages ! amsmath
 \end_layout
 
 \end_inset
@@ -36947,7 +36937,7 @@ esint
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! esint
+LaTeX-packages ! esint
 \end_layout
 
 \end_inset
@@ -37163,7 +37153,7 @@ Reconfigure
 status collapsed
 
 \begin_layout Plain Layout
-Lyx@LyX ! Reconfigure|see
+LyX ! Reconfigure|see
 \begin_inset ERT
 status collapsed
 
@@ -40327,7 +40317,7 @@ babel
 \begin_layout Description
 Global When this option is set, the languages used in the document will
  be added as options to the document class options, so that they can be
- used by all Latex@LaTeX-packages.
+ used by all LaTeX-packages.
  Otherwise they will only be used as options for the 
 \series bold
 babel
@@ -40702,7 +40692,7 @@ name "sub:LaTeX-settings"
 status collapsed
 
 \begin_layout Plain Layout
-Settings ! Latex@LaTeX
+Settings ! LaTeX
 \end_layout
 
 \end_inset
@@ -42104,7 +42094,7 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! caption
+LaTeX-packages ! caption
 \end_layout
 
 \end_inset
@@ -42151,7 +42141,7 @@ fancyhdr
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! fancyhdr
+LaTeX-packages ! fancyhdr
 \end_layout
 
 \end_inset
@@ -42202,7 +42192,7 @@ hyperref
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! hyperref
+LaTeX-packages ! hyperref
 \end_layout
 
 \end_inset
@@ -42249,7 +42239,7 @@ nomencl
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! nomencl
+LaTeX-packages ! nomencl
 \end_layout
 
 \end_inset
@@ -42296,7 +42286,7 @@ tipa
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! tipa
+LaTeX-packages ! tipa
 \end_layout
 
 \end_inset
@@ -42343,7 +42333,7 @@ wrapfig
 status collapsed
 
 \begin_layout Plain Layout
-Latex@LaTeX-packages ! wrapfig
+LaTeX-packages ! wrapfig
 \end_layout
 
 \end_inset
