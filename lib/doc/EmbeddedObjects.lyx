@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 339
+#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass scrbook
@@ -20175,9 +20175,31 @@ The LaTeX-package
 \series bold
 hyperref
 \series default
- provides a very useful feature that cross-references automatically include
- the name of the referenced floats (or text parts like sections).
- You save to write e.
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! hyperref
+\end_layout
+
+\end_inset
+
+, that is enabled in the 
+\family sans
+PDF Properties
+\family default
+ of the 
+\family sans
+Document Settings
+\family default
+ dialog, provides a very useful feature that cross-references automatically
+ include the name of the referenced floats (or text parts like 
+\emph on
+section
+\emph default
+).
+ So you will save to write e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -20193,34 +20215,17 @@ Figure
 \begin_inset Quotes erd
 \end_inset
 
- before every reference box.
- To get this automatic reference naming, you have to load the LaTeX-package
- 
+ before every reference to a figure.
+ To use this feature, enable 
 \series bold
 hyperref
 \series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! hyperref
-\end_layout
-
-\end_inset
-
- in the document preamble with
+ and insert this line to the LaTeX preamble:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-
-\backslash
-usepackage[pdfborder={0 0 0}]{hyperref}
-\begin_inset Newline newline
-\end_inset
-
 
 \backslash
 AtBeginDocument{
@@ -20235,31 +20240,147 @@ autoref{#1}}}}
 \end_layout
 
 \begin_layout Standard
+When you prefer other reference names than the default ones, for example
+ you want instead of 
+\begin_inset Quotes eld
+\end_inset
+
+section
+\begin_inset Quotes erd
+\end_inset
+
+ the name 
+\begin_inset Quotes eld
+\end_inset
+
+sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+, you can redefine the name by inserting this to the preamble:
+\end_layout
+
+\begin_layout Standard
 
 \series bold
-hyperref
+
+\backslash
+addto
+\backslash
+extrasenglish{
+\backslash
+renewcommand{
+\backslash
+sectionautorefname}
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{ }
+\end_layout
+
+\end_inset
+
+{sec.
+\backslash
+negthinspace}}
+\end_layout
+
+\begin_layout Standard
+When you are using another document language than English, replace
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+extrasenglish
 \series default
- is used to link cross-references in the DVI- and PDF-output, this means
- that the reader of your document will be able to click on a table of content
- (TOC) entry or on a reference and he will be shown the referenced document
- part.
- 
+ by 
+\series bold
+
+\backslash
+extras***
+\series default
+, where *** is the name of the used language.
+\end_layout
+
+\begin_layout Standard
+To get automatic names, but not for certain reference types, for example
+ not for equations, use this preamble code:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newlength{
+\backslash
+abc}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+settowidth{
+\backslash
+abc}{
+\backslash
+space}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+addto
+\backslash
+extrasenglish{
+\backslash
+renewcommand{
+\backslash
+equationautorefname}
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{ }
+\end_layout
+
+\end_inset
+
+{
+\backslash
+hspace{-
+\backslash
+abc}}
+\end_layout
+
+\begin_layout Standard
+More about this topic can be found in 
 \series bold
 hyperref
 \series default
- also creates PDF-bookmarks for every section of your document to make it
- easier for readers to navigate through the document.
- This is also used in this document but when you have a look in the document
- preamble you will find various options in the load command of 
-\series bold
-hyperref
-\series default
-.
- To learn more about the 
-\series bold
-hyperref
-\series default
- package, we refer to its documentation 
+'s documentation 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
@@ -20287,7 +20408,7 @@ Formatted
 
 reference
 \family default
- style, described in section
+ style, as described in section
 \begin_inset space ~
 \end_inset
 
@@ -20304,6 +20425,14 @@ reference "sub:Cross-Reference-Formats"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+Math
+\emph default
+ manual is an example where automatic reference naming is used.
 \end_layout
 
 \begin_layout Subsection
