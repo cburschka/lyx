@@ -1,4 +1,4 @@
-#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.7svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -106,7 +106,7 @@ Das Einmaleins der LyX-Dokumentation
 \begin_layout Author
 vom LyX Team
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Deutsche Übersetzung: 
@@ -134,8 +134,8 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 25.
- 1.
+letzte Änderung: 3.
+ 8.
  2008
 \end_layout
 
@@ -248,7 +248,7 @@ Wie es früher war\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Standard
-Ein Teil der anfänglichen Herausforderung beim verwenden von LyX liegt in
+Ein Teil der anfänglichen Herausforderung beim Verwenden von LyX liegt in
  der Änderung der Denkweise, die Sie, der Leser, schaffen müssen.
  Früher gab es nur Schreibmaschinen, um Texte zu erstellen, und so lernten
  wir alle viele Tricks, um deren Unzulänglichkeiten zu umgehen.
@@ -383,8 +383,8 @@ Einleitung
 \begin_layout Standard
 Ja, das ist wirklich alles.
  Wenn Sie diesen Abschnitt später an eine andere Stelle verschieben, wird
- die Nummerierung automatisch angemaßt --- egal wohin Sie ihn verschieben.
- Wenn Sie in ihrem Text Querverweise auf diesen Abschnitt haben und diese
+ die Nummerierung automatisch angepasst --- egal wohin Sie ihn verschieben.
+ Wenn Sie in Ihrem Text Querverweise auf diesen Abschnitt haben und diese
  korrekt über das LyX-eigene System getan haben, werden auch all diese Verweise
  (Kapitel- und Seitennummern) automatisch aktualisiert.
  Sie werden nie wieder explizite Kapitelnummern verwenden müssen.
@@ -538,9 +538,7 @@ Seitenumbrüche
 \end_layout
 
 \begin_layout Itemize
-Zeilenabstände (d.\InsetSpace \thinspace{}
-h.\InsetSpace \space{}
-einzeilig, zweizeilig usw.)
+Zeilenabstände (einzeilig, zweizeilig usw.)
 \end_layout
 
 \begin_layout Itemize
@@ -833,18 +831,17 @@ Stil
 Verhalten
 \emph default
 , das ein Dokument nutzen kann.
- So nutzt LyX zwei unterschiedliche Stil-Dateien, um die Ränder und Zeilenabstän
-de in den Dokumenten festzulegen.
+\end_layout
+
+\begin_layout Standard
+So nutzt LyX zwei unterschiedliche Stil-Dateien, um die Ränder und Zeilenabständ
+e in den Dokumenten festzulegen.
  Es existieren Stil-Dateien für fast jeden denkbaren Zweck: Um Etiketten
  und Umschläge zu beschriften, den Texteinzug zu verändern, um Grafikdateien
  handhaben zu können, spezielle Kopf- und Fußzeilen zu erstellen, Literaturliste
 n den eigenen Wünschen anzupassen, Erscheinungsbild und Position von Fußnoten,
  Tabellen und Abbildungen zu verändern und so weiter und so fort.
-\end_layout
-
-\begin_layout List
-\labelwidthstring 00.00.0000
-Hier eine kurze Zusammenfassung:
+ Hier eine kurze Zusammenfassung:
 \end_layout
 
 \begin_layout List
@@ -924,7 +921,7 @@ Licks
 \end_inset
 
  --- je nachdem, aus welchem Land man stammt, aber über die Aussprache wurden
- auf der Mailing Liste schon endlose Diskussionen geführt, also sprechen
+ auf der Mailing-Liste schon endlose Diskussionen geführt, also sprechen
  Sie es einfach so aus, wie es Ihnen gefällt --- nur nicht 
 \begin_inset Quotes gld
 \end_inset
@@ -1020,10 +1017,10 @@ Das Format der Handbücher
 Einige von Ihnen haben vielleicht die gesamte Dokumentation ausgedruckt.
  Andere lesen sie 
 \emph on
-online
+inline
 \emph default
 , also als Datei in LyX.
- Für diejenigen, die online lesen, gibt es einige Unterschiede zur gedruckten
+ Für diejenigen, die inline lesen, gibt es einige Unterschiede zur gedruckten
  Version.
  Zunächst ist der Titel einfach am Anfang des Dokuments, und nicht schön
  zentriert auf einer eigenen Seite.
@@ -1045,13 +1042,28 @@ Fußnote
 
  aus.
  Um sie zu öffnen, klicken Sie mit dem linken Mausknopf darauf.
- Um das Inhaltsverzeichnis zu betrachten, klicken Sie entweder auf den entsprech
-enden grauen Kasten oder wählen Sie das Menü 
+ Um das Inhaltsverzeichnis zu betrachten, wählen Sie das Menü 
 \family sans
 Navigieren
 \family default
 , dort wird der Inhalt ebenfalls automatisch angezeigt -- Versuchen Sie
- es einmal!
+ es einmal! Wenn Sie auf den Werkzezugleistenknopf
+\begin_inset Marginal
+status open
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../../images/dialog-toggle_toc.xpm
+	BoundingBox 0bp 6bp 24bp 24bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ klicken, wird das Inhaltsverzeichnis im LyX-Fenster gezeigt.
 \end_layout
 
 \begin_layout Standard
@@ -1124,8 +1136,7 @@ Strg+<
 
 \begin_layout Standard
 Nachdem nun die wichtigsten Unterschiede zwischen der gedruckten und der
- Online-Dokumenta\SpecialChar \-
-tion geklärt sind, können wir uns mit dem Format der Handbücher
+ Inline-Dokumentation geklärt sind, können wir uns mit dem Format der Handbücher
  befassen.
  Sie werden immer wieder Begriffe finden, die in unterschiedlichen Zeichensätzen
  gesetzt sind:
@@ -1145,8 +1156,7 @@ Hervorgehoben
 \family typewriter
 Schreibmaschine
 \family default
- kennzeichnet Programmtext und Dateinamen, LaTeX- und/ oder LyX-Code und
- Funktionen.
+ kennzeichnet Programmtext und Dateinamen, LaTeX- und LyX-Code und Funktionen.
 \end_layout
 
 \begin_layout Itemize
@@ -1325,19 +1335,19 @@ Ab und zu werden Sie auch Hinweise wie
 \begin_inset Quotes gld
 \end_inset
 
-(siehe 
+siehe 
 \emph on
 Tutorium
 \emph default
-) sehen
+
 \begin_inset Quotes grd
 \end_inset
 
-.
+ sehen.
  Dort sind für jede Funktion auch alle möglichen Tastaturbelegungen aufgezählt,
  Sie können also auch dort nachschlagen.
- Beachten Sie dabei bitte auch, daß unter den LyX-Benutzern zwei unterschiedlich
-e Tastaturbelegungen verbreitet sind: Der standardmäßig voreingestellte
+ Beachten Sie dabei bitte auch, dass unter den LyX-Benutzern zwei unterschiedlic
+he Tastaturbelegungen verbreitet sind: Der standardmäßig voreingestellte
  
 \begin_inset Quotes gld
 \end_inset
@@ -1477,6 +1487,14 @@ enthält eine ausführliche Beschreibung der Abbildungen, Tabellen, Gleitobjekte
 \end_layout
 
 \begin_layout Description
+Mathe \InsetSpace ~
+
+\newline
+Eine Zusammenstellung und Erläuterung der wichtigsten LaTeX-Befehle
+ für mathematische Zeichen und Konstruktionen.
+\end_layout
+
+\begin_layout Description
 
 \emph on
 Anpassung
@@ -1517,7 +1535,7 @@ Inhaltsverzeichnis
 \newline
 
 \size default
-Inhaltsverzeichnis LyX Dokumentation
+Inhaltsverzeichnis der LyX-Dokumentation
 \end_layout
 
 \begin_layout Description
@@ -1640,7 +1658,7 @@ Es mag sein, dass Sie beim Benutzen von LyX auf Dinge stoßen, die Sie als
 \end_layout
 
 \begin_layout Standard
-LyX hat ein Web-basiertes Fehlermeldesystem, den LyX Bug Tracker
+LyX hat ein Web-basiertes Fehlermeldesystem, den LyX-Bug-Tracker
 \newline
 
 \begin_inset LatexCommand url
@@ -1707,7 +1725,8 @@ gdb
 
 
 \family typewriter
-gdb /usr/src/lyx-1.4.0/src/ lyx
+gdb \SpecialChar \ldots{}
+/lyx
 \family default
 
 \begin_inset Quotes grd
@@ -1885,11 +1904,11 @@ DocStyle.lyx
 \begin_layout Enumerate
 Als nächstes lesen Sie 
 \emph on
-Benutzerhandbuch
+Tutorium 
 \emph default
- und 
+und 
 \emph on
-Tutorium
+Benutzerhandbuch
 \emph default
 .
 \end_layout

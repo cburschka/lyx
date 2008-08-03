@@ -18,7 +18,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\ca\Intro.lyx"
  SetOutPath "$INSTDIR\Resources\doc\de"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\de\EmbeddedObjects.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Extended.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Intro.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Math.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Userguide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\es"
@@ -34,6 +34,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\ca\ItemizeBullets.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\ca\mathed.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\ca\splash.lyx"
+ SetOutPath "$INSTDIR\Resources\examples\de"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\de\splash.lyx"
  SetOutPath "$INSTDIR\Resources\layouts"
  #File "${PRODUCT_SOURCEDIR}\Resources\layouts\aa.layout"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
