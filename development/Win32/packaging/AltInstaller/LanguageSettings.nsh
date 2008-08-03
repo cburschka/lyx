@@ -518,6 +518,11 @@
 
 !macro GetLangCode LangCde Name LangEnc
 
+  ${if} ${Name} = "Arabic"
+   StrCpy ${LangCde} "ar_SA"
+   StrCpy ${LangEnc} "cp-1256"
+  ${endif}
+
   ${if} ${Name} == "Català"
    StrCpy ${LangCde} "ca_ES"
    StrCpy ${LangEnc} "cp-1252"
