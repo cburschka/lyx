@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 339
+#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass scrbook
@@ -10622,7 +10622,7 @@ name "sub:Líneas-Múltiples-en"
 status collapsed
 
 \begin_layout Plain Layout
-Líneas múltiples en celdas
+Lineas@Líneas múltiples en celdas
 \end_layout
 
 \end_inset
@@ -11879,16 +11879,6 @@ Tablas ! Multifilas
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-paquetes ! multirow
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -11898,6 +11888,16 @@ A diferencia de multicolumnas, LyX aún no soporta multifilas por lo que
 \series bold
 multirow
 \series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-paquetes ! multirow
+\end_layout
+
+\end_inset
+
  en el preámbulo del documento con el comando
 \end_layout
 
@@ -19586,7 +19586,7 @@ Flotantes ! Referencias
 status collapsed
 
 \begin_layout Plain Layout
-Referencias
+Referencias ! a flotantes
 \end_layout
 
 \end_inset
@@ -21145,16 +21145,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Flotantes ! Formato de las leyendas
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-paquetes ! caption
 \end_layout
 
 \end_inset
@@ -29101,6 +29091,8 @@ Para poder usar los comandos descritos en esta sección hay que cargar el
  paquete LaTeX 
 \series bold
 graphicx
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -29110,8 +29102,6 @@ LaTeX-paquetes ! graphicx
 
 \end_inset
 
-
-\series default
  en el preámbulo del documento, con el comando
 \end_layout
 
@@ -31087,7 +31077,7 @@ Listado de programa
 status collapsed
 
 \begin_layout Plain Layout
-Código de programa
+Codigo@Código de programa
 \end_layout
 
 \end_inset

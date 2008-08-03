@@ -12131,16 +12131,6 @@ Table ! Multirows
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! multirow
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -12150,6 +12140,16 @@ In contrary to multicolumns multirows are not yet supported by LyX so a
 \series bold
 multirow
 \series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! multirow
+\end_layout
+
+\end_inset
+
  in your document preamble with the command
 \end_layout
 
@@ -19860,7 +19860,7 @@ Floats ! References
 status collapsed
 
 \begin_layout Plain Layout
-References
+References ! to Floats
 \end_layout
 
 \end_inset
@@ -21510,16 +21510,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Floats ! Caption Formatting
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! caption
 \end_layout
 
 \end_inset

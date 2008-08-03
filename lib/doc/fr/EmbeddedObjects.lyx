@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 339
+#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass scrbook
@@ -975,7 +975,7 @@ M.C.
 status collapsed
 
 \begin_layout Plain Layout
-Références ! à des Figures
+References@Références ! à des Figures
 \end_layout
 
 \end_inset
@@ -2285,19 +2285,9 @@ reference "sec:Questions-sur-tableaux-longs"
 \end_layout
 
 \begin_layout Standard
-Quand la barre d'outils tableau est activée
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ou la fenêtre ?
-\end_layout
-
-\end_inset
-
-, vous pouvez déplacer le curseur de cellule en cellule avec les touches
- de déplacement et voir s'afficher les propriétés de la cellule courante
- dans la fenêtre de dialogue.
+Quand la barre d'outils tableau est activée, vous pouvez déplacer le curseur
+ de cellule en cellule avec les touches de déplacement et voir s'afficher
+ les propriétés de la cellule courante dans la fenêtre de dialogue.
 \end_layout
 
 \begin_layout Section
@@ -2948,7 +2938,7 @@ Dans le texte, on fait référence à un tableau
 status collapsed
 
 \begin_layout Plain Layout
-Références ! à un Tableau
+References@Références ! à des Tableaux
 \end_layout
 
 \end_inset
@@ -5790,7 +5780,7 @@ Légendes et Tableaux longs
 status collapsed
 
 \begin_layout Plain Layout
-Tableaux longs ! Légendes
+Tableaux longs ! Legendes@Légendes
 \end_layout
 
 \end_inset
@@ -7499,7 +7489,7 @@ Légendes différentes
 status collapsed
 
 \begin_layout Plain Layout
-Tableaux longs ! Légendes différentes par page
+Tableaux longs ! Legendes@Légendes différentes par page
 \end_layout
 
 \end_inset
@@ -12333,6 +12323,16 @@ Tableau ! Multi-ligne
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Au contraire des multi-colonnes, les multi-lignes ne sont pas encore gérés
+ par LyX, il faut donc utiliser un peu de code TeX.
+ Pour utiliser les multi-lignes, vous devez charger le paquetage LaTeX 
+\series bold
+multirow
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -12343,14 +12343,8 @@ Paquetages LaTeX ! multirow
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Au contraire des multi-colonnes, les multi-lignes ne sont pas encore gérés
- par LyX, il faut donc utiliser un peu de code TeX.
- Pour utiliser les multi-lignes, vous devez charger le paquetage LaTeX 
 \series bold
-multirow 
+ 
 \series default
 dans le préambule de votre document avec la commande 
 \end_layout
@@ -20251,7 +20245,7 @@ Flottants ! Références
 status collapsed
 
 \begin_layout Plain Layout
-Références
+References@Références ! à des Flottants 
 \end_layout
 
 \end_inset
@@ -20388,7 +20382,7 @@ name "sub:Formats-Références-Croisées"
 status collapsed
 
 \begin_layout Plain Layout
-Références ! Formats
+References@Références ! Formats
 \end_layout
 
 \end_inset
@@ -20587,7 +20581,7 @@ Nommage automatique des références croisées
 status collapsed
 
 \begin_layout Plain Layout
-Références ! Nommage automatique
+References@Références ! Nommage automatique
 \end_layout
 
 \end_inset
@@ -20746,7 +20740,7 @@ name "sub:Reference-Position"
 status collapsed
 
 \begin_layout Plain Layout
-Références ! Positionnement
+References@Références ! Positionnement
 \end_layout
 
 \end_inset
@@ -21892,16 +21886,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Flottants ! Mise en forme de la Légende
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Paquetages LaTeX ! caption
 \end_layout
 
 \end_inset
