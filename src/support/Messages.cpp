@@ -23,10 +23,12 @@
 
 using namespace std;
 
-namespace {
+namespace lyx {
 
-using lyx::docstring;
-using lyx::from_ascii;
+// Instanciate static member.
+string Messages::main_lang_;
+
+namespace {
 
 void cleanTranslation(docstring & trans) 
 {
@@ -48,7 +50,8 @@ void cleanTranslation(docstring & trans)
 	}
 }
 
-}
+} // anonymous
+} // lyx
 
 
 #ifdef ENABLE_NLS
@@ -81,10 +84,6 @@ void Messages::setDefaultLanguage()
 	// Not found!
 	LYXERR(Debug::LOCALE, "Default language not found!");
 }
-
-
-// Instanciate static member.
-string Messages::main_lang_;
 
 
 // This version use the traditional gettext.
