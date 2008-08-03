@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -27795,6 +27795,138 @@ reference "sec:math-macros"
 \end_layout
 
 \begin_layout Section
+PDF properties
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+PDF properties
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\family sans
+Document Settings
+\family default
+ dialog provides under 
+\family sans
+PDF Properties
+\family default
+ to set up special options for the PDF output of your document.
+ All options there are provided by the LaTeX-package 
+\series bold
+hyperref
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! hyperref
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Using 
+\series bold
+hyperref
+\series default
+ will link all cross-references in the DVI- and PDF-output.
+ This means that the reader of your document will be able to click on a
+ table of contents entry or on a reference and he is shown the referenced
+ document part.
+ You can specify in the dialog tab 
+\family sans
+Hyperlinks
+\family default
+ how the links will look like and if links for bibliographical backreferences
+ are created.
+ The backreferences will appear in the bibliography behind the different
+ entries, showing where in the document the entry is referenced.
+\end_layout
+
+\begin_layout Standard
+In the dialog tab 
+\family sans
+Bookmarks
+\family default
+ you can set if PDF-bookmarks should be created for every section of your
+ document to make it easier for readers to navigate through the document.
+ You can decide if the bookmarks should be numbered like your document sections
+ or not.
+ With the open bookmarks level you can specify what sectioning level should
+ be displayed in the bookmarks when opening the PDF.
+ For example level
+\begin_inset space ~
+\end_inset
+
+2 will display all sections and subsections, while level
+\begin_inset space ~
+\end_inset
+
+1 will only display the sections.
+\end_layout
+
+\begin_layout Standard
+The header informations in the dialog tab 
+\family sans
+General
+\family default
+ are saved together with the PDF as file properties.
+ Many programs are able to extract these informations to e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+automatically recognize who is the author and what is the PDF about.
+ This is very useful to sort, classify, or use PDFs for bibliography issues.
+ When the option 
+\family sans
+Automatic fill header
+\family default
+ is set, LyX tries to extract the header informations from your document
+ title and author settings.
+\end_layout
+
+\begin_layout Standard
+The option 
+\family sans
+Load in fullscreen mode
+\family default
+ will open the PDF in fullscreen mode, which is useful for presentations.
+\end_layout
+
+\begin_layout Standard
+PDF properties are also used in this document.
+ When you look in its document settings, you can see that some additional
+ 
+\series bold
+hyperref
+\series default
+ options are used.
+ For an explanation of them we refer to the hyperref manual 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hyperref"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
 TeX Code and the LaTeX Syntax
 \begin_inset CommandInset label
 LatexCommand label
@@ -42035,6 +42167,57 @@ status collapsed
 \begin_layout Plain Layout
 
 ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "hyperref"
+
+\end_inset
+
+
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf"
+
+\end_inset
+
+
+\series default
+ of the LaTeX-package 
+\series bold
+hyperref
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! hyperref
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf
 \end_layout
 
 \end_inset
