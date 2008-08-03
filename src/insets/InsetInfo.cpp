@@ -254,7 +254,8 @@ void InsetInfo::updateInfo()
 		}
 		KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(func);
 		if (bindings.empty()) {
-			error("No binding for action %1$s");
+			// It is impropriate to use error() for undefined shortcut
+			setText(_("undefined"));
 			break;
 		}
 		if (type_ == SHORTCUT_INFO)
