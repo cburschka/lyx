@@ -125,7 +125,10 @@ void GuiInfo::paramsToDialog()
 	nameLE->blockSignals(true);
 	int type = findToken(info_types, fromqstr(type_));
 	typeCO->setCurrentIndex(type >= 0 ? type : 0);
-	nameLE->setText(name_);
+	// Without this test, 'math-insert' (name_) will replace 'math-insert '
+	// in nameLE and effectively disallow the input of spaces after a LFUN.
+	if (nameLE->text().trimmed() != name_)
+		nameLE->setText(name_);
 	typeCO->blockSignals(false);
 	nameLE->blockSignals(false);
 }
