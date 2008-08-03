@@ -147,10 +147,34 @@ void InsetInfo::write(ostream & os) const
 }
 
 
-bool InsetInfo::validate(docstring const & /* argument */) const
+bool InsetInfo::validate(docstring const & arg) const
 {
-	// FIXME!
-	return true;
+	string type;
+	string name;
+
+	name = trim(split(to_utf8(arg), type, ' '));
+	switch (nameTranslator().find(type)) {
+	case UNKNOWN_INFO:
+		return false;
+	case SHORTCUT_INFO:
+	case SHORTCUTS_INFO:
+	case MENU_INFO:
+	case ICON_INFO: {
+		FuncRequest func = lyxaction.lookupFunc(name);
+		return func.action != LFUN_UNKNOWN_ACTION;
+	}
+	case LYXRC_INFO: {
+		ostringstream oss;
+		lyxrc.write(oss, true, name);
+		return !oss.str().empty();
+	}
+	case PACKAGE_INFO:
+	case TEXTCLASS_INFO:
+		return true;
+	case BUFFER_INFO:
+		return name_ == "name" || name_ == "path" || name_ == "class";
+	}
+	return false;
 }
 
 
