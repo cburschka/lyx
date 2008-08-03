@@ -809,8 +809,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	langModule->quoteStyleCO->addItem(qt_("''text''"));
 	langModule->quoteStyleCO->addItem(qt_(",,text``"));
 	langModule->quoteStyleCO->addItem(qt_(",,text''"));
-	langModule->quoteStyleCO->addItem(qt_("<<text>>"));
-	langModule->quoteStyleCO->addItem(qt_(">>text<<"));
+	langModule->quoteStyleCO->addItem(tr("«text»"));
+	langModule->quoteStyleCO->addItem(tr("»text«"));
 
 
 	numberingModule = new UiWidget<Ui::NumberingUi>;
