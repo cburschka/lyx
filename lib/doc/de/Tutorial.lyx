@@ -1,4 +1,4 @@
-#LyX 1.5.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.7svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -123,11 +123,28 @@ Peter Sütterlin
 \end_inset
 
 
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Wenn Sie Anmerkungen oder Fehlerkorrekturen haben, senden Sie diese bitte
+ an die LyX Dokumentationsliste, 
+\begin_inset LatexCommand url
+target "lyx-docs@lists.lyx.org"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 25.
- Januar 2008
+letzte Änderung: 4.
+ August 2008
 \end_layout
 
 \begin_layout Standard
@@ -140,48 +157,6 @@ letzte Änderung: 25.
 
 \begin_layout Chapter
 Einleitung
-\end_layout
-
-\begin_layout Section*
-Vorbemerkung
-\end_layout
-
-\begin_layout Standard
-
-\noun on
-HHa
-\noun default
-: Ich habe ab dieser Version alle Unterstreichnungen von Menü-Befehlen weggelass
-en, weil es zu mühsam ist, die Änderungen während der Weiterentwicklung
- immer wieder nachzuvollziehen.
- Ein Befehl sieht jetzt so aus: 
-\family sans
-Ansicht
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Werkzeugleisten
-\family default
- an Stelle von 
-\family sans
-Ans
-\bar under
-i
-\bar default
-cht
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-\bar under
-W
-\bar default
-erkzeugleisten
-\family default
-.
- Wenn Sie mit Tastenkürzeln arbeiten wollen, können Sie sich die unterstrichenen
- Buchstaben merken, wenn Sie einen Menü-Befehl aufrufen.
 \end_layout
 
 \begin_layout Section
@@ -214,13 +189,14 @@ Einige sind wahrscheinlich auf dieses Dokument gestoßen, weil sie versucht
  Und nicht nur das, die meisten Tricks, die Sie vermutlich von anderen Textverar
 beitungen her gewohnt sind, funktionieren in LyX nicht.
  Das liegt daran, dass Sie bei den meisten Textverarbeitungen, mit denen
- Sie bisher gearbeitet haben, derartige Abstände oder auch Zeichensatzänderungen
+ Sie bisher gearbeitet haben, derartige Abstände oder auch Zeichensatz\SpecialChar \-
+änderungen
  von Hand eingeben mussten.
  Dadurch schreibt man einen Text nicht einfach nur, man muss auch die Aufgaben
  eines Schriftsetzers übernehmen.
  LyX übernimmt nun den Schriftsatz für Sie, und zwar in einer konsistenten
  Art und Weise, und lässt Sie sich dadurch auf die wichtigen Dinge konzentrieren
- -- etwa den Inhalt ihres Textes.
+ -- etwa den Inhalt Ihres Textes.
 \end_layout
 
 \begin_layout Standard
@@ -293,8 +269,8 @@ Tutorium
  Um den besten Nutzen aus dem Dokument zu ziehen, sollten Sie es in Ruhe
  durchlesen und all die kleinen Übungen ausprobieren um zu sehen, ob Sie
  sie nachvollziehen können.
- Zum besseren Verständnis kann es hilfreich sein, die PostScript-Version
- des Textes auszudrucken.
+ Zum besseren Verständnis kann es hilfreich sein, die PostScript- oder PDF-Versi
+on des Textes auszudrucken.
 \end_layout
 
 \begin_layout Standard
@@ -305,35 +281,17 @@ Tutorium
 \emph default
  vielleicht sogar etwas schneller durcharbeiten können, denn viele Ansätze
  in LyX sind nur verkleidete LaTeX-Ideen.
- Allerdings besitzt LyX einige spezifische Eigenheiten,
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-\SpecialChar \ldots{}
-oder, optimistisch ausgedrückt: 
-\begin_inset Quotes gld
-\end_inset
-
-Features
-\begin_inset Quotes grd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- mit denen Sie sich vertraut machen sollten.
+ Allerdings besitzt LyX einige spezifische Eigenheiten, mit denen Sie sich
+ vertraut machen sollten.
  Und selbst wenn Sie den Rest dieses Textes nicht lesen wollen, sollten
- Sie in jedem Fall einen Blick in das Kapitel\InsetSpace \space{}
+ Sie in jedem Fall einen Blick in den Abschnitt\InsetSpace \space{}
 
 \begin_inset LatexCommand vref
 reference "Latexnutzer"
 
 \end_inset
 
- werfen, das vorrangig für erfahrene LaTeX-Benutzer geschrieben wurde.
+ werfen, der vorrangig für erfahrene LaTeX-Benutzer geschrieben wurde.
 \end_layout
 
 \begin_layout Subsection
@@ -368,7 +326,7 @@ ausführliche Erklärungen zu LaTeX.
 \begin_layout Standard
 Dies ist nicht nötig.
  Wenn Sie ein paar nette LaTeX-Tricks für LyX kennenlernen wollen, schauen
- Sie in die 
+ Sie in 
 \emph on
 Eingebette Objekte
 \emph default
@@ -468,7 +426,7 @@ Tutorium
 \emph default
  gehen wir davon aus, dass Sie eine voll funktionsfähige LyX-Version besitzen,
  das heißt LyX, LaTeX, ein Programm zum Anzeigen von DVI- und PDF-Dokumenten.
- Diese Voraussetzungen sollten auf jeder Linux und BSD-Distribution erfüllt
+ Diese Voraussetzungen sollten auf jeder Linux- und BSD-Distribution erfüllt
  sein.
  Bei Windows wird dies durch das LyX-Installationsprogramm sichergestellt.
 \end_layout
@@ -526,8 +484,7 @@ examples/de
 stal\SpecialChar \-
 la\SpecialChar \-
 tions\SpecialChar \-
-ord\SpecialChar \-
-ners (
+ordners (
 \family sans
 Datei
 \family default
@@ -560,7 +517,7 @@ unter
 \begin_layout Standard
 Darüber hinaus finden Sie in 
 \family typewriter
-examples/de
+examples[/de]
 \family default
  viele weitere Beispieldateien.
  Sie führen Ihnen vor, wie Sie das eine oder andere Formatierungsproblem
@@ -640,7 +597,7 @@ DVI
 )\SpecialChar \@.
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Von jetzt an wird 
@@ -659,7 +616,7 @@ oder klicken Sie auf den Werkzeugleistenknopf
  LyX wird einen DVI-Betrachter starten, der dann ein eigenes Fenster öffnet,
  in dem Sie den Text so sehen können, wie er später gedruckt aussehen wird.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Sie können Zeit sparen, wenn Sie den DVI-Betrachter nicht jedes Mal neu
@@ -701,8 +658,16 @@ Drucken\SpecialChar \ldots{}
 Drucken
 \family default
  klicken.
- Oder exportieren Sie es mit Datei\SpecialChar \menuseparator
-Exportieren in ein format Ihrer Wahl.
+ Oder exportieren Sie es mit 
+\family sans
+Datei
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Exportieren
+\family default
+ in ein Format Ihrer Wahl.
 \end_layout
 
 \begin_layout Standard
@@ -771,7 +736,7 @@ Wiederholen
 
 \begin_deeper
 \begin_layout Standard
-Derzeit ist das Undo auf 100 Schritte beschränkt.
+Derzeit ist das Rückgängigmachen auf 100 Schritte beschränkt.
  Außerdem funktioniert es nicht für 
 \emph on
 alle
@@ -853,7 +818,7 @@ igung von Groß/Klein\SpecialChar \-
 schreibung sowie als ganzes Wort) suchen und ersetzen
  können.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Sie können das Dialogfenster nach getaner Arbeit wieder schließen.
@@ -932,7 +897,7 @@ Einfügen
 Drucken
 \family default
  einfach anzuklicken.
- Wenn Sie den Mauszeiger eine kurze Zeit unbewegt über einen solchen Schalter
+ Wenn Sie den Mauszeiger eine kurze Zeit unbewegt über einem solchen Schalter
  positionieren, erscheint ein kleines hellgelbes Feld, das seine Funktion
  beschreibt (genannt 
 \emph on
@@ -1015,7 +980,7 @@ Eingabe
  einen Absatz; ein Leerzeichen trennt zwei Worte.
  Warum also mehrere davon hintereinander verwenden? Dasselbe gilt für Tabulatore
 n: Sie haben keine grammatische Bedeutung, deshalb benötigt LyX sie nicht.
- Wenn Sie LyX verwenden, werden Sie bald feststellen, dass Sie viel mehr
+ Wenn Sie LyX benutzen, werden Sie bald feststellen, dass Sie viel mehr
  Zeit darauf verwenden, sich um den 
 \emph on
 Inhalt
@@ -1086,7 +1051,7 @@ Leerzeichen
 
  erscheint.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Wenn Sie das 
@@ -1130,7 +1095,7 @@ Abschnitt
 
  in derselben Zeile stehen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Im 
@@ -1217,7 +1182,7 @@ Einleitung
 \family sans
 Abschnitt.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Sie müssen die Zeile dazu nicht extra markieren.
@@ -1262,7 +1227,7 @@ Eingabe
 \family default
  beendet sind.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Im 
@@ -1552,7 +1517,7 @@ Abschnitt*
 \family default
 .
  LyX setzt die Überschrift in genau demselben Zeichensatz wie zuvor -- nur
- eben ohne diesen Abschnitt zu nummerieren.
+ eben ohne Abschnittsnummern.
  Entsprechende 
 \emph on
 gesternte
@@ -1605,7 +1570,7 @@ Tab
 führen.
  Dadurch können Sie sich voll auf den Inhalt der Liste konzentrieren.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Auf diesen Punkt wird sehr häufig in diesem 
@@ -1685,10 +1650,16 @@ Eingabe
 \family sans
 Auflistung
 \family default
- aus dem Auswahlmenü.
- LyX schreibt jetzt einen Aufzählungspunkt an den Anfang der Zeile (in der
- endgültigen Ausgabe wird dieser Stern ein gefüllter Kreis sein -- im englischen
- mit bullet bezeichnet).
+ aus dem Auswahlmenü (
+\begin_inset Graphics
+	filename ../../images/layout_Itemize.xpm
+	scale 70
+	BoundingBox 0bp 4bp 20bp 20bp
+
+\end_inset
+
+).
+ LyX schreibt jetzt einen Aufzählungspunkt an den Anfang der Zeile.
  Zählen Sie nun die Gründe auf:
 \end_layout
 
@@ -1713,9 +1684,9 @@ Eingabe
  nicht auf Standard zurückgesetzt.
  Vielmehr nimmt LyX an, dass Sie ein weiteres Listenelement einfügen wollen.
  Wenn Sie in einem Listenelement mehr als einen Absatz unterbringen wollen,
- müssen Sie ein 
+ müssen Sie einen 
 \family sans
-Zeileumbruch
+Zeilenumbruch
 \family default
  durch Eingabe von 
 \family sans
@@ -1738,7 +1709,7 @@ Sie haben nun also eine wunderschöne Stichpunktliste.
  als nummerierte Aufzählung hätten? Kein Problem, markieren Sie einfach
  die gesamte Liste
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 LyX wird es Ihnen nicht ermöglichen, den Stern vor dem ersten Listenelement
@@ -1751,7 +1722,7 @@ LyX wird es Ihnen nicht ermöglichen, den Stern vor dem ersten Listenelement
 
 \end_inset
 
- und wählen Sie aus dem Umgebungsmenü den Typ 
+,³§ und wählen Sie aus dem Umgebungsmenü den Typ 
 \family sans
 Aufzählung
 \family default
@@ -1784,7 +1755,7 @@ Beschreibung
 \family default
 ) oder durch einen Tabulatorstop
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Es handelt sich dabei aber nicht um den üblichen, festen Schreibmaschinentabulat
@@ -1875,7 +1846,7 @@ Gedicht
 \family default
  können Sie sogar Gedichte schreiben.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 \SpecialChar \ldots{}
@@ -1908,7 +1879,7 @@ Benutzerhandbuch
 \series default
 : Setzen Sie die Beispiele für 
 \family sans
-Quote
+Zitat
 \family default
 , 
 \family sans
@@ -1927,7 +1898,7 @@ X-Code
 \family default
  und 
 \family sans
-Verse
+Gedicht
 \family default
  in der Datei 
 \family typewriter
@@ -1972,8 +1943,8 @@ Unterschiedliche Dokumentarten sollten verschieden gesetzt werden.
  So werden Bücher im allgemeinen zweiseitig gedruckt, wohingegen Artikel
  meist einseitig sind.
  Darüber hinaus besitzen manche Dokumente besondere Umgebungstypen: In Briefen
- gibt es einige Umgebungen -- zum Beispiel Absender oder Unterschrift --
- die in einem Buch oder einem Artikel völlig sinnlos sind.
+ gibt es einige Umgebungen, zum Beispiel Absender oder Unterschrift, die
+ in einem Buch oder einem Artikel völlig sinnlos sind.
  In LyX sorgen die 
 \emph on
 Dokumentklassen
@@ -1990,7 +1961,7 @@ book
 \InsetSpace \space{}
 
 \family sans
-(koma-script)
+(KOMA-script)
 \family default
  erstellt.
  Die Dokumentklassen sind ein weiterer wichtiger Bestandteil des WYSIWYM-Prinzip
@@ -2004,7 +1975,7 @@ Ihr (erstes) Dokument entstand vermutlich in der Dokumentklasse
 \family sans
 article.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Dies ist normalerweise die Standardeinstellung von LyX, Sie können das aber
@@ -2021,7 +1992,7 @@ Als Dokument-Standards speichern
 \family default
 ) in Ihrer Datei 
 \family typewriter
-preferences
+~/.lyx/preferences
 \family default
  festlegen.
 \end_layout
@@ -2095,7 +2066,7 @@ Hier ist eine kurze Zusammenstellung einiger vorhandener Dokumentklassen.
 \begin_inset Quotes gld
 \end_inset
 
-Besondere Dokumentenklassen
+Besondere Dokumentklassen
 \begin_inset Quotes grd
 \end_inset
 
@@ -2291,7 +2262,7 @@ Dokumentklasse
 \family sans
 letter
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Außer 
@@ -2426,7 +2397,7 @@ vorfinden.
 \end_layout
 
 \begin_layout Section
-Dokumententitel
+Dokumenttitel
 \end_layout
 
 \begin_layout Standard
@@ -2448,7 +2419,7 @@ article
 \family default
  verwenden.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Sie sollten hierfür 
@@ -2468,8 +2439,8 @@ Titel
 
 \end_inset
 
- Geben Sie nun in der ersten Zeile eine Überschrift ein und ändern Sie den
- Umgebungstyp in 
+ Geben Sie nun in der ersten Zeile eine Überschrift ein, und ändern Sie
+ den Umgebungstyp in 
 \family sans
 Titel
 \family default
@@ -2562,7 +2533,7 @@ Marke\SpecialChar \ldots{}
 \family sans
 ).
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Falls Sie diesen Text direkt über das Hilfe-Menü von LyX geöffnet haben,
@@ -2725,7 +2696,7 @@ chen Werte von Kapitel und Seitennummer ersetzt.
 \family typewriter
 dvi
 \family default
--Vorschau an und Sie werden feststellen, dass der Eintrag durch 
+-Vorschau an, und Sie werden feststellen, dass der Eintrag durch 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2832,7 +2803,7 @@ Fußnoten und Randnotizen
 \end_layout
 
 \begin_layout Standard
-Fußnoten können Sie entweder über den Menüpunkt 
+Fußnoten können Sie über den Menüpunkt 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Fußnote
@@ -2845,7 +2816,7 @@ Fußnote
 
 \end_inset
 
-) einfügen.
+ ) einfügen.
  Setzen Sie beispielsweise den Cursor hinter das Wort 
 \emph on
 LyX
@@ -2918,11 +2889,11 @@ dvi
 \end_layout
 
 \begin_layout Standard
-Eine Fußnote kann man übrigens auch ausschneiden und wie gewöhnlichen Text
+Eine Fußnote kann man übrigens auch auswählen und wie gewöhnlichen Text
  kopieren.
  Sie müssen dazu lediglich die Fußnoten-Markierung selektieren
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Es ist wahrscheinlich einfacher, dies über die Tastatur zu tun, da sich
@@ -2943,7 +2914,7 @@ vor
 \family sans
 Ausschneiden
 \family default
- und 
+ oder 
 \family sans
 Kopieren
 \family default
@@ -2951,8 +2922,17 @@ Kopieren
  Sie können auch einfach gewöhnlichen, bereits geschriebenen Text in eine
  Fußnote umwandeln, indem Sie ihn markieren und dann die Fußnoten-Schaltfläche
  anklicken.
- Umgekehrt können Sie eine Fußnote nicht in gewöhnlichen Text zurückwandeln,
- sondern Sie müssen den Fußnotentext kopieren und dann die Fußnote löschen.
+ Umgekehrt können Sie eine Fußnote in gewöhnlichen Text zurückwandeln, indem
+ Sie den Cursor vor den Fußnotentext stellen und die 
+\begin_inset Graphics
+	filename ../../images/math/leftarrow.xpm
+	BoundingBox 0bp 4bp 10bp 10bp
+
+\end_inset
+
+\InsetSpace ~
+\InsetSpace ~
+-Taste drücken.
 \end_layout
 
 \begin_layout Standard
@@ -3056,15 +3036,12 @@ Literaturverzeichnis
  setzt.
  Klicken Sie auf diese Nummer, und es erscheint die Dialogbox 
 \family sans
-Literatureintrag
+Literatureintrag-Einstellungen
 \family default
 .
  Das erste Feld in diesem Dialog, 
 \family sans
-\bar under
-S
-\bar default
-chlüssel
+Schlüssel
 \family default
 , dient zur Festlegung eines Namens, unter dem die Referenz innerhalb des
  Textes angesprochen werden kann; voreingestellt ist hier 
@@ -3123,7 +3100,7 @@ OK
 \family default
  eingefügt.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Aus diesem Grund ist es eine gute Idee, anstelle der Zahlen eindeutige und
@@ -3218,16 +3195,7 @@ Liste\InsetSpace \space{}
 Inhaltsverzeichnis\SpecialChar \menuseparator
 Inhaltsverzeichnis
 \family default
- (
-\begin_inset Graphics
-	filename ../../images/dialog-toggle_toc.xpm
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-).
+.
  Der Schriftzug 
 \emph on
 Inhaltsverzeichnis
@@ -3250,25 +3218,17 @@ führt.
 \end_layout
 
 \begin_layout Standard
-Innerhalb von LyX selber wird das Inhaltsverzeichnis nicht ausgegeben, denn
- es wird automatisch erstellt, so dass Sie es sowieso nicht verändern könnten.
- Sie können das Inhaltsverzeichnis dafür aber in einem zusätzlichen Fenster
- anzeigen.
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-Entweder indem Sie auf das eingefügte Symbol klicken, oder -- falls Sie
- kein Inhaltsverzeichnis eingefügt haben -- über den Menüpunkt 
-\family sans
-Dokument\SpecialChar \menuseparator
-Inhaltsverzeichnis
-\family default
-.
-\end_layout
+Innerhalb von LyX selber wird das Inhaltsverzeichnis in einem Unterfenster
+ angezeigt, wenn Sie auf (
+\begin_inset Graphics
+	filename ../../images/dialog-toggle_toc.xpm
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
+ ) klicken.
  Dieses Fenster ist ungemein hilfreich, denn Sie können damit in Ihrem Dokument
  navigieren: Klicken Sie auf ein (Unter)kapitel im Fenster 
 \family sans
@@ -3276,8 +3236,6 @@ Inhaltsverzeichnis
 \family default
 , dann wird die entsprechende Zeile hervorgehoben und der Cursor im Textfenster
  auf den Anfang des betreffenden Kapitels gesetzt.
- Innerhalb des Inhaltsverzeichnisses können Sie auch mit Hilfe der Cursortasten
- navigieren.
  Wer viel in seinem Text herumspringt, wird sich schnell daran gewöhnen,
  dieses Fenster dauernd geöffnet zu lassen.
  Darüber hinaus können Sie auch das Menü 
@@ -3327,7 +3285,7 @@ LaTeX wird von vielen Wissenschaftlern benutzt, weil es den Druck erstklassig
  dass man professionell aussehende mathematische Ausdrücke schnell und leicht
  schreiben kann, auch wenn man noch nie LaTeX benutzt hat.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 LyX kann leider nicht prüfen, ob die Formeln, die man schreibt, wirklich
@@ -3428,7 +3386,6 @@ nicht
 \emph default
 ).
  Das purpurrote Rechteck verschwindet, der Cursor ist rechts neben dem Ausdruck.
- Der Ausdruck und die enthaltenen Ausdrücke haben jetzt grüne Ecken.
  Wenn jetzt etwas geschrieben wird, dann wird es wieder normaler Text.
 \end_layout
 
@@ -3555,7 +3512,7 @@ Rückgängig
 
 \end_inset
 
-) funktioniert auch im Mathematik-Modus, ebenso wie 
+ ) funktioniert auch im Mathematik-Modus, ebenso wie 
 \family sans
 Ausschneiden
 \family default
@@ -3579,7 +3536,16 @@ Backspace
 Bearbeiten\SpecialChar \menuseparator
 Rückgängig
 \family default
- zurückholen.
+ (
+\begin_inset Graphics
+	filename ../../images/undo.xpm
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+ ) zurückholen.
 \end_layout
 
 \begin_layout Standard
@@ -3692,7 +3658,7 @@ Geben Sie am Ende des Exponenten einfach ein Leerzeichen ein, und der Cursor
  In Fällen, wo diese Aktion keinen Sinn macht, bewirkt das Leerzeichen rein
  gar nichts.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -3738,7 +3704,7 @@ Esc
 \family default
  den Mathematik-Modus verlassen, ist zu beachten, dass (normalerweise) kein
  Leerzeichen nach dem Ausdruck gesetzt wird.
- Das ist gut, wenn ein Punkt oder ein Komma folgt; wenn Sie aber ein Wort
+ Das ist gut, wenn ein Punkt oder ein Komma folgen; wenn Sie aber ein Wort
  nach einer Formel schreiben möchten, dann müssen Sie explizit ein Leerzeichen
  eingeben.
 \end_layout
@@ -4140,7 +4106,7 @@ tik-Modus.
 \begin_layout Subsection
 TeX-Modus: Grenzwerte, Logarithmen, Trigonometrische Funktionen und anderes
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 TeX-Modus
@@ -4357,7 +4323,7 @@ Mathe-Werkzeugleiste
 \end_layout
 
 \begin_layout Standard
-Um sich waagrecht zwischen den Spalten einer Matrix bewegen, können Sie
+Um sich waagrecht zwischen den Spalten einer Matrix zu bewegen, können Sie
  die 
 \family sans
 Tab-
@@ -4686,7 +4652,7 @@ n können.
  Dies kann sowohl bei dem obigen Beispiel als auch bei einer aufgeteilten,
  sehr langen Gleichung sinnvoll sein:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Wenn Sie sich das Ergebnis ansehen, werden Sie feststellen, dass der Abstand
@@ -4767,7 +4733,7 @@ E & = & mc^{2}\\
 
 umzuschreiben.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 KDE-Benutzer können diese Übung leider nicht nachvollziehen, da mit 
@@ -4887,7 +4853,7 @@ Schreiben von Makros.
  und dann immer wieder anwenden kann.
  Wenn man die Makrodefinition verändert, dann ändert sich der Bezug zum
  Makro auch innerhalb des ganzen Dokumentes.
- Es ist sogar möglich, Makros mit Parameters zu schreiben.
+ Es ist sogar möglich, Makros mit Parametern zu schreiben.
 \end_layout
 
 \begin_layout Itemize
@@ -5091,11 +5057,11 @@ F7
 \family default
  können Sie Ihre Texte auf korrekte Rechtschreibung prüfen lassen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Beachten Sie dabei, dass die Rechtschreibprüfung an der momentanen Position
- des Cursor beginnt, nicht am Anfang des Dokumentes.
+ des Cursors beginnt, nicht am Anfang des Dokumentes.
 \end_layout
 
 \end_inset
@@ -5122,7 +5088,7 @@ dann
  Aber vermutlich wird ein Großteil derjenigen, die LyX benutzen, bereits
  mit LaTeX vertraut sein.
  Wenn Sie auch zu diesem Personenkreis gehören, fragen Sie sich sicherlich,
- ob LyX wirklich alles das kann, was LaTeX auch kann.
+ ob LyX wirklich all das kann, was LaTeX auch kann.
  Die kurze Antwort ist: LyX kann auf die eine oder andere Weise fast alles,
  was auch mit LaTeX selber möglich ist, und in jedem Fall vereinfacht es
  die meisten Dinge beim Schreiben eines Textes.
@@ -5290,7 +5256,7 @@ reference "LaTeX-Vorspann"
 usepackage {foo}
 \family default
  eingeben, können Sie aber auch solche Pakete verwenden -- wenn auch nicht
- mit Unterstützung von WYSIWYG.
+ mit Unterstützung von WYSIWYM.
 \end_layout
 
 \begin_layout Subsection
@@ -5412,7 +5378,7 @@ Der LaTeX-Vorspann
 \end_layout
 
 \begin_layout Subsubsection
-Die Dokumentenklasse
+Die Dokumentklasse
 \end_layout
 
 \begin_layout Standard
@@ -5432,7 +5398,7 @@ Einstellungen
 documentclass
 \family default
  als Option mitgeben würde.
- Hier werden die Dokumentenklasse und die Standard\SpecialChar \-
+ Hier werden die Dokumentklasse und die Standard\SpecialChar \-
 schrift- und Papiergröße
  eingestellt.
  Für weitere, nicht vorgesehene Einträge verwenden Sie das Feld 
@@ -5467,10 +5433,20 @@ Einstellungen
  
 \family sans
 \SpecialChar \menuseparator
-LaTeX\InsetSpace ~
-Vorspann
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Vorspann
 \family default
-, und tragen Sie dort die gewünschten TeX-Kommandos ein.
+, und tragen Sie dort die gewünschten LaTeX-Kommandos ein.
  Alles, was Sie hier eingeben, wird direkt von LaTeX ausgewertet.
 \end_layout
 
@@ -5492,7 +5468,18 @@ Einfügen\SpecialChar \menuseparator
 Liste\InsetSpace \space{}
 /\InsetSpace \space{}
 Inhaltsverzeichnis\SpecialChar \menuseparator
-BibTeX\InsetSpace \space{}
+BibTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X\InsetSpace \space{}
 Literaturverzeichnis
 \family default
 \SpecialChar \ldots{}
@@ -5510,7 +5497,7 @@ Von BibTeX erstellte Verweise
 \family sans
 Datenbanken
 \family default
- geben Sie den Namen ein, den Sie in den Klammern des TeX-Befehls 
+ geben Sie den Namen ein, den Sie in den Klammern des LaTeX-Befehls 
 \family typewriter
 
 \backslash
@@ -5589,7 +5576,7 @@ Manchmal treten bei einem LaTeX-Lauf Fehler auf, also irgendwelche Dinge,
  Klicken Sie auf eine Fehlermeldung, wird im unteren Teilfenster die entsprechen
 de LaTeX-Meldung ausgegeben und der Cursor im LyX-Fenster in etwa an die
  Stelle gestellt, wo der Fehler auftrat.
- So können Sie meisten Fehler relativ leicht beheben.
+ So können Sie die meisten Fehler relativ leicht beheben.
 \end_layout
 
 \begin_layout Bibliography
