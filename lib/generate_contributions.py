@@ -1472,6 +1472,14 @@ contributers = [
                  "12 January 2008",
                  u"small fixes"),
 
+     contributer(u"Vincent van Ravesteijn",
+                 "V.F.vanRavesteijn () tudelft ! nl",
+                 "GPL",
+                 "RE: crash lyx-1.6rc1",
+                 "m=121786603726114",
+                 "4 August 2008",
+                 u"small fixes"),
+
      contributer(u"Xiaokun Zhu",
                  "xiaokun () aero ! gla ! ac ! uk",
                  "",
