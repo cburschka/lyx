@@ -117,15 +117,20 @@ void PanelStack::setCurrentPanel(QString const & name)
 void PanelStack::switchPanel(QTreeWidgetItem * item,
 			     QTreeWidgetItem * previous)
 {
+	// do nothing when clicked on whitespace (item=NULL)
+	if( !item )
+		return;
+
 	// if we have a category, expand the tree and go to the
 	// first item
 	if (item->childCount() > 0) {
 		item->setExpanded(true);
-		if (previous != item->child(0))
-			list_->setCurrentItem(item->child(0));
+		if (previous && previous->parent() != item)
+			switchPanel( item->child(0), previous );
 	}
-	if (QWidget * w = widget_map_.value(item, 0))
-		stack_->setCurrentWidget(w);
+	else
+		if (QWidget * w = widget_map_.value(item, 0))
+			stack_->setCurrentWidget(w);
 }
 
 
