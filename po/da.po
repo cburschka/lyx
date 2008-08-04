@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-29 00:33+0200\n"
+"POT-Creation-Date: 2008-08-04 02:11+0200\n"
 "PO-Revision-Date: 2005-12-18 15:13+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -88,12 +88,12 @@ msgstr "&O.k."
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:836
 #: src/Buffer.cpp:2522 src/Buffer.cpp:2546 src/Buffer.cpp:2581
 #: src/LyXFunc.cpp:666 src/LyXFunc.cpp:802 src/LyXFunc.cpp:980
-#: src/LyXVC.cpp:179 src/frontends/qt4/GuiClipboard.cpp:208
+#: src/LyXVC.cpp:181 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1251
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1464
-#: src/frontends/qt4/GuiView.cpp:1642 src/frontends/qt4/GuiView.cpp:1687
-#: src/frontends/qt4/GuiView.cpp:1740 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1467
+#: src/frontends/qt4/GuiView.cpp:1645 src/frontends/qt4/GuiView.cpp:1690
+#: src/frontends/qt4/GuiView.cpp:1743 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
 msgstr "&Anullér"
 
@@ -3253,7 +3253,7 @@ msgid "&User interface file:"
 msgstr "&Brugerflade-fil"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:665
-#: src/frontends/qt4/GuiView.cpp:1740
+#: src/frontends/qt4/GuiView.cpp:1743
 msgid "&Save"
 msgstr "&Gem"
 
@@ -3396,7 +3396,7 @@ msgstr "Opdatér referencelisten"
 msgid "Jump to the label"
 msgstr "Gå til referencen"
 
-#: src/frontends/qt4/ui/RefUi.ui:250 src/frontends/qt4/GuiRef.cpp:272
+#: src/frontends/qt4/ui/RefUi.ui:250 src/frontends/qt4/GuiRef.cpp:273
 #, fuzzy
 msgid "&Go to Label"
 msgstr "&Mærkat"
@@ -4998,7 +4998,7 @@ msgid "Seriate"
 msgstr "Seriate"
 
 #: lib/layouts/apa.layout:406 lib/layouts/apa.layout:407
-#: src/buffer_funcs.cpp:390
+#: src/buffer_funcs.cpp:389
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -8620,7 +8620,7 @@ msgid "Branch"
 msgstr "Gren"
 
 #: lib/layouts/stdinsets.inc:180 lib/layouts/minimalistic.module:8
-#: src/insets/InsetIndex.cpp:149
+#: src/insets/InsetIndex.cpp:186
 msgid "Index"
 msgstr "Indeks"
 
@@ -9403,7 +9403,7 @@ msgstr "Tysk (ny stavning)"
 msgid "German"
 msgstr "Tysk"
 
-#: lib/languages:44 lib/ui/stdtoolbars.inc:462
+#: lib/languages:44 lib/ui/stdtoolbars.inc:470
 #: src/frontends/qt4/GuiSymbols.cpp:59
 msgid "Greek"
 msgstr "Græsk"
@@ -10642,15 +10642,15 @@ msgstr "Tilpasning|p"
 msgid "FAQ|F"
 msgstr "Ofte stillede spørgsmål|O"
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:526
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:527
 msgid "Table of Contents|a"
 msgstr "Indholdsfortegnelse|f"
 
-#: lib/ui/classic.ui:418 lib/ui/stdmenus.inc:527
+#: lib/ui/classic.ui:418 lib/ui/stdmenus.inc:528
 msgid "LaTeX Configuration|L"
 msgstr "Konfigurering af LaTeX|L"
 
-#: lib/ui/classic.ui:420 lib/ui/stdmenus.inc:529
+#: lib/ui/classic.ui:420 lib/ui/stdmenus.inc:530
 msgid "About LyX|X"
 msgstr "Om LyX|X"
 
@@ -11729,6 +11729,11 @@ msgstr "TeX-oplysninger|X"
 msgid "Shortcuts|S"
 msgstr "&Genvej:"
 
+#: lib/ui/stdmenus.inc:526
+#, fuzzy
+msgid "LyX Functions|y"
+msgstr "&Funktioner"
+
 #: lib/ui/stdtoolbars.inc:57
 msgid "New document"
 msgstr "Nyt dokument"
@@ -12136,2406 +12141,2439 @@ msgstr "Postscript-&driver:"
 
 #: lib/ui/stdtoolbars.inc:213
 #, fuzzy
+msgid "Version Control"
+msgstr "Versionsstyring|V"
+
+# , c-format
+#: lib/ui/stdtoolbars.inc:214
+#, fuzzy
+msgid "Register"
+msgstr "Registrér...|R"
+
+# , c-format
+#: lib/ui/stdtoolbars.inc:215
+#, fuzzy
+msgid "Check-out for edit"
+msgstr "Hent til redigering|H"
+
+# , c-format
+#: lib/ui/stdtoolbars.inc:216
+#, fuzzy
+msgid "Check-in changes"
+msgstr "Indsend ændringer...|I"
+
+#: lib/ui/stdtoolbars.inc:217
+#, fuzzy
+msgid "View revision log"
+msgstr "Versionsstyringslog"
+
+#: lib/ui/stdtoolbars.inc:218
+#, fuzzy
+msgid "Revert changes"
+msgstr "Afvis ændring|#A"
+
+#: lib/ui/stdtoolbars.inc:221
+#, fuzzy
 msgid "Math Panels"
 msgstr "Matematikpanel"
 
-#: lib/ui/stdtoolbars.inc:214
+#: lib/ui/stdtoolbars.inc:222
 #, fuzzy
 msgid "Math Spacings"
 msgstr "Matematik-afstand"
 
-#: lib/ui/stdtoolbars.inc:215 lib/ui/stdtoolbars.inc:287
+#: lib/ui/stdtoolbars.inc:223 lib/ui/stdtoolbars.inc:295
 #, fuzzy
 msgid "Styles"
 msgstr "Stil"
 
-#: lib/ui/stdtoolbars.inc:216 lib/ui/stdtoolbars.inc:294
+#: lib/ui/stdtoolbars.inc:224 lib/ui/stdtoolbars.inc:302
 #, fuzzy
 msgid "Fractions"
 msgstr "LyX: Matematikpanel"
 
-#: lib/ui/stdtoolbars.inc:217 lib/ui/stdtoolbars.inc:309
+#: lib/ui/stdtoolbars.inc:225 lib/ui/stdtoolbars.inc:317
 #: src/frontends/qt4/GuiDocument.cpp:980
 #, fuzzy
 msgid "Fonts"
 msgstr "&Skrift: "
 
-#: lib/ui/stdtoolbars.inc:218 lib/ui/stdtoolbars.inc:234
+#: lib/ui/stdtoolbars.inc:226 lib/ui/stdtoolbars.inc:242
 #, fuzzy
 msgid "Functions"
 msgstr "&Funktioner"
 
-#: lib/ui/stdtoolbars.inc:235
+#: lib/ui/stdtoolbars.inc:243
 msgid "arccos"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:236
+#: lib/ui/stdtoolbars.inc:244
 #, fuzzy
 msgid "arcsin"
 msgstr "margin"
 
-#: lib/ui/stdtoolbars.inc:237
+#: lib/ui/stdtoolbars.inc:245
 #, fuzzy
 msgid "arctan"
 msgstr "Catalansk"
 
-#: lib/ui/stdtoolbars.inc:238
+#: lib/ui/stdtoolbars.inc:246
 #, fuzzy
 msgid "arg"
 msgstr "Stor"
 
-#: lib/ui/stdtoolbars.inc:239
+#: lib/ui/stdtoolbars.inc:247
 msgid "bmod"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:240
+#: lib/ui/stdtoolbars.inc:248
 msgid "cos"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:241
+#: lib/ui/stdtoolbars.inc:249
 #, fuzzy
 msgid "cosh"
 msgstr "Skotsk"
 
-#: lib/ui/stdtoolbars.inc:242
+#: lib/ui/stdtoolbars.inc:250
 #, fuzzy
 msgid "cot"
 msgstr "par"
 
-#: lib/ui/stdtoolbars.inc:243
+#: lib/ui/stdtoolbars.inc:251
 #, fuzzy
 msgid "coth"
 msgstr "Skotsk"
 
-#: lib/ui/stdtoolbars.inc:244
+#: lib/ui/stdtoolbars.inc:252
 #, fuzzy
 msgid "csc"
 msgstr "cc"
 
-#: lib/ui/stdtoolbars.inc:245
-msgid "deg"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:246
-#, fuzzy
-msgid "det"
-msgstr "standard"
-
-#: lib/ui/stdtoolbars.inc:247
-#, fuzzy
-msgid "dim"
-msgstr "Medium"
-
-#: lib/ui/stdtoolbars.inc:248
-#, fuzzy
-msgid "exp"
-msgstr "ex"
-
-#: lib/ui/stdtoolbars.inc:249
-msgid "gcd"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:250
-#, fuzzy
-msgid "hom"
-msgstr "teorem"
-
-#: lib/ui/stdtoolbars.inc:251
-#, fuzzy
-msgid "inf"
-msgstr "tomme"
-
-#: lib/ui/stdtoolbars.inc:252
-#, fuzzy
-msgid "ker"
-msgstr "Taler"
-
 #: lib/ui/stdtoolbars.inc:253
-msgid "lg"
+msgid "deg"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:254
 #, fuzzy
-msgid "lim"
-msgstr "Påstand"
+msgid "det"
+msgstr "standard"
 
 #: lib/ui/stdtoolbars.inc:255
-msgid "liminf"
-msgstr ""
+#, fuzzy
+msgid "dim"
+msgstr "Medium"
 
 #: lib/ui/stdtoolbars.inc:256
-msgid "limsup"
-msgstr ""
+#, fuzzy
+msgid "exp"
+msgstr "ex"
 
 #: lib/ui/stdtoolbars.inc:257
-msgid "ln"
+msgid "gcd"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:258
 #, fuzzy
+msgid "hom"
+msgstr "teorem"
+
+#: lib/ui/stdtoolbars.inc:259
+#, fuzzy
+msgid "inf"
+msgstr "tomme"
+
+#: lib/ui/stdtoolbars.inc:260
+#, fuzzy
+msgid "ker"
+msgstr "Taler"
+
+#: lib/ui/stdtoolbars.inc:261
+msgid "lg"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:262
+#, fuzzy
+msgid "lim"
+msgstr "Påstand"
+
+#: lib/ui/stdtoolbars.inc:263
+msgid "liminf"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:264
+msgid "limsup"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:265
+msgid "ln"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:266
+#, fuzzy
 msgid "log"
 msgstr "&Global"
 
-#: lib/ui/stdtoolbars.inc:259
+#: lib/ui/stdtoolbars.inc:267
 #, fuzzy
 msgid "max"
 msgstr "Fax"
 
-#: lib/ui/stdtoolbars.inc:260
+#: lib/ui/stdtoolbars.inc:268
 #, fuzzy
 msgid "min"
 msgstr "tomme"
 
-#: lib/ui/stdtoolbars.inc:261
+#: lib/ui/stdtoolbars.inc:269
 #, fuzzy
 msgid "sec"
 msgstr "Addsec"
 
-#: lib/ui/stdtoolbars.inc:262
+#: lib/ui/stdtoolbars.inc:270
 #, fuzzy
 msgid "sin"
 msgstr "tomme"
 
-#: lib/ui/stdtoolbars.inc:263
+#: lib/ui/stdtoolbars.inc:271
 #, fuzzy
 msgid "sinh"
 msgstr "tomme"
 
-#: lib/ui/stdtoolbars.inc:264
+#: lib/ui/stdtoolbars.inc:272
 #, fuzzy
 msgid "sup"
 msgstr "sp"
 
-#: lib/ui/stdtoolbars.inc:265
+#: lib/ui/stdtoolbars.inc:273
 #, fuzzy
 msgid "tan"
 msgstr "Land"
 
-#: lib/ui/stdtoolbars.inc:266
+#: lib/ui/stdtoolbars.inc:274
 #, fuzzy
 msgid "tanh"
 msgstr "Gren"
 
-#: lib/ui/stdtoolbars.inc:267
+#: lib/ui/stdtoolbars.inc:275
 #, fuzzy
 msgid "Pr"
 msgstr "Klip ud"
 
-#: lib/ui/stdtoolbars.inc:270
+#: lib/ui/stdtoolbars.inc:278
 #, fuzzy
 msgid "Spacings"
 msgstr "&Afstand:"
 
-#: lib/ui/stdtoolbars.inc:271
+#: lib/ui/stdtoolbars.inc:279
 #, fuzzy
 msgid "Thin space\t\\,"
 msgstr "Lille mellemrum\t\\,"
 
-#: lib/ui/stdtoolbars.inc:272
+#: lib/ui/stdtoolbars.inc:280
 #, fuzzy
 msgid "Medium space\t\\:"
 msgstr "Standardmellemrum\t\\:"
 
-#: lib/ui/stdtoolbars.inc:273
+#: lib/ui/stdtoolbars.inc:281
 #, fuzzy
 msgid "Thick space\t\\;"
 msgstr "Stort mellemrum\t\\;"
 
-#: lib/ui/stdtoolbars.inc:274
+#: lib/ui/stdtoolbars.inc:282
 #, fuzzy
 msgid "Quadratin space\t\\quad"
 msgstr "Fast mellemrum\t\\quad"
 
-#: lib/ui/stdtoolbars.inc:275
+#: lib/ui/stdtoolbars.inc:283
 #, fuzzy
 msgid "Double quadratin space\t\\qquad"
 msgstr "Dobbelt mellemrum\t\\qquad"
 
-#: lib/ui/stdtoolbars.inc:276
+#: lib/ui/stdtoolbars.inc:284
 #, fuzzy
 msgid "Negative space\t\\!"
 msgstr "Negativt mellemrum\t\\!"
 
-#: lib/ui/stdtoolbars.inc:277
+#: lib/ui/stdtoolbars.inc:285
 msgid "Placeholder\t\\phantom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:278
+#: lib/ui/stdtoolbars.inc:286
 msgid "Horizontal placeholder\t\\hphantom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:279
+#: lib/ui/stdtoolbars.inc:287
 msgid "Vertical placeholder\t\\vphantom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:282
+#: lib/ui/stdtoolbars.inc:290
 #, fuzzy
 msgid "Roots"
 msgstr "fodnote"
 
-#: lib/ui/stdtoolbars.inc:283
+#: lib/ui/stdtoolbars.inc:291
 #, fuzzy
 msgid "Square root\t\\sqrt"
 msgstr "Kvadratrod\t\\sqrt"
 
-#: lib/ui/stdtoolbars.inc:284
+#: lib/ui/stdtoolbars.inc:292
 #, fuzzy
 msgid "Other root\t\\root"
 msgstr "Anden rod\t\\root"
 
-#: lib/ui/stdtoolbars.inc:288
+#: lib/ui/stdtoolbars.inc:296
 #, fuzzy
 msgid "Display style\t\\displaystyle"
 msgstr "Vis stil\t\\displaystyle"
 
-#: lib/ui/stdtoolbars.inc:289
+#: lib/ui/stdtoolbars.inc:297
 #, fuzzy
 msgid "Normal text style\t\\textstyle"
 msgstr "Normal tekststil\t\\textstyle"
 
-#: lib/ui/stdtoolbars.inc:290
+#: lib/ui/stdtoolbars.inc:298
 #, fuzzy
 msgid "Script (small) style\t\\scriptstyle"
 msgstr "Skripttil (lille)\t\\scriptstyle"
 
-#: lib/ui/stdtoolbars.inc:291
+#: lib/ui/stdtoolbars.inc:299
 #, fuzzy
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr "Skriptskriptstil (mindre)\t\\scriptscriptstyle"
 
-#: lib/ui/stdtoolbars.inc:295
+#: lib/ui/stdtoolbars.inc:303
 #, fuzzy
 msgid "Standard\t\\frac"
 msgstr "Standard"
 
-#: lib/ui/stdtoolbars.inc:296
+#: lib/ui/stdtoolbars.inc:304
 #, fuzzy
 msgid "No horizontal line\t\\atop"
 msgstr "Ikke flere indstik"
 
-#: lib/ui/stdtoolbars.inc:297
+#: lib/ui/stdtoolbars.inc:305
 msgid "Nice fraction (3/4)\t\\nicefrac"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:298
+#: lib/ui/stdtoolbars.inc:306
 msgid "Unit (km)\t\\unit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:299
+#: lib/ui/stdtoolbars.inc:307
 msgid "Unit (864 m)\t\\unit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:300
+#: lib/ui/stdtoolbars.inc:308
 msgid "Unit fraction (km/h)\t\\unitfrac"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:301
+#: lib/ui/stdtoolbars.inc:309
 msgid "Unit fraction (20 km/h)\t\\unitfrac"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:302
+#: lib/ui/stdtoolbars.inc:310
 msgid "Text fraction (amsmath)\t\\tfrac"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:303
+#: lib/ui/stdtoolbars.inc:311
 msgid "Display fraction (amsmath)\t\\dfrac"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:304
+#: lib/ui/stdtoolbars.inc:312
 msgid "Binomial\t\\binom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:305
+#: lib/ui/stdtoolbars.inc:313
 msgid "Text binomial\t\\tbinom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:306
+#: lib/ui/stdtoolbars.inc:314
 msgid "Display binomial\t\\dbinom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:310
+#: lib/ui/stdtoolbars.inc:318
 #, fuzzy
 msgid "Roman\t\\mathrm"
 msgstr "Ordinær\t\\mathrm"
 
-#: lib/ui/stdtoolbars.inc:311
+#: lib/ui/stdtoolbars.inc:319
 #, fuzzy
 msgid "Bold\t\\mathbf"
 msgstr "Fed\t\\mathbf"
 
-#: lib/ui/stdtoolbars.inc:312
+#: lib/ui/stdtoolbars.inc:320
 msgid "Bold symbol\t\\boldsymbol"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:313
+#: lib/ui/stdtoolbars.inc:321
 #, fuzzy
 msgid "Sans serif\t\\mathsf"
 msgstr "Grotesk\t\\mathsf"
 
-#: lib/ui/stdtoolbars.inc:314
+#: lib/ui/stdtoolbars.inc:322
 #, fuzzy
 msgid "Italic\t\\mathit"
 msgstr "Kursiv\t\\mathit"
 
-#: lib/ui/stdtoolbars.inc:315
+#: lib/ui/stdtoolbars.inc:323
 #, fuzzy
 msgid "Typewriter\t\\mathtt"
 msgstr "Skrivemaskine\t\\mathtt"
 
-#: lib/ui/stdtoolbars.inc:316
+#: lib/ui/stdtoolbars.inc:324
 #, fuzzy
 msgid "Blackboard\t\\mathbb"
 msgstr "Tavle\t\\mathbb"
 
-#: lib/ui/stdtoolbars.inc:317
+#: lib/ui/stdtoolbars.inc:325
 #, fuzzy
 msgid "Fraktur\t\\mathfrak"
 msgstr "Fraktur\t\\mathfrak"
 
-#: lib/ui/stdtoolbars.inc:318
+#: lib/ui/stdtoolbars.inc:326
 #, fuzzy
 msgid "Calligraphic\t\\mathcal"
 msgstr "Kalligrafisk\t\\mathcal"
 
-#: lib/ui/stdtoolbars.inc:319
+#: lib/ui/stdtoolbars.inc:327
 #, fuzzy
 msgid "Normal text mode\t\\textrm"
 msgstr "Normal teksttilstand\t\\textrm"
 
-#: lib/ui/stdtoolbars.inc:322
+#: lib/ui/stdtoolbars.inc:330
 msgid "Dots"
 msgstr "Prikker"
 
-#: lib/ui/stdtoolbars.inc:323
+#: lib/ui/stdtoolbars.inc:331
 #, fuzzy
 msgid "ldots"
 msgstr "Prikker"
 
-#: lib/ui/stdtoolbars.inc:324
+#: lib/ui/stdtoolbars.inc:332
 #, fuzzy
 msgid "cdots"
 msgstr "Prikker"
 
-#: lib/ui/stdtoolbars.inc:325
+#: lib/ui/stdtoolbars.inc:333
 #, fuzzy
 msgid "vdots"
 msgstr "Prikker"
 
-#: lib/ui/stdtoolbars.inc:326
+#: lib/ui/stdtoolbars.inc:334
 #, fuzzy
 msgid "ddots"
 msgstr "Prikker"
 
-#: lib/ui/stdtoolbars.inc:329
+#: lib/ui/stdtoolbars.inc:337
 #, fuzzy
 msgid "Frame Decorations"
 msgstr "Rammedekorationer"
 
-#: lib/ui/stdtoolbars.inc:330
+#: lib/ui/stdtoolbars.inc:338
 #, fuzzy
 msgid "hat"
 msgstr "Kapitel"
 
-#: lib/ui/stdtoolbars.inc:331
+#: lib/ui/stdtoolbars.inc:339
 #, fuzzy
 msgid "tilde"
 msgstr "Fil"
 
-#: lib/ui/stdtoolbars.inc:332
+#: lib/ui/stdtoolbars.inc:340
 msgid "bar"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:333
+#: lib/ui/stdtoolbars.inc:341
 #, fuzzy
 msgid "grave"
 msgstr "grøn"
 
-#: lib/ui/stdtoolbars.inc:334
+#: lib/ui/stdtoolbars.inc:342
 #, fuzzy
 msgid "dot"
 msgstr "par"
 
-#: lib/ui/stdtoolbars.inc:335
+#: lib/ui/stdtoolbars.inc:343
 msgid "check"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:336
+#: lib/ui/stdtoolbars.inc:344
 msgid "widehat"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:337
+#: lib/ui/stdtoolbars.inc:345
 msgid "widetilde"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:338
-msgid "vec"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:339
-#, fuzzy
-msgid "acute"
-msgstr "Dato"
-
-#: lib/ui/stdtoolbars.inc:340
-#, fuzzy
-msgid "ddot"
-msgstr "dd"
-
-#: lib/ui/stdtoolbars.inc:341
-#, fuzzy
-msgid "breve"
-msgstr "Smugkig"
-
-#: lib/ui/stdtoolbars.inc:342
-#, fuzzy
-msgid "overline"
-msgstr "Slovensk"
-
-#: lib/ui/stdtoolbars.inc:343
-msgid "overbrace"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:344
-#, fuzzy
-msgid "overleftarrow"
-msgstr "Slet række"
-
-#: lib/ui/stdtoolbars.inc:345
-msgid "overrightarrow"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:346
-msgid "overleftrightarrow"
+msgid "vec"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:347
 #, fuzzy
+msgid "acute"
+msgstr "Dato"
+
+#: lib/ui/stdtoolbars.inc:348
+#, fuzzy
+msgid "ddot"
+msgstr "dd"
+
+#: lib/ui/stdtoolbars.inc:349
+#, fuzzy
+msgid "breve"
+msgstr "Smugkig"
+
+#: lib/ui/stdtoolbars.inc:350
+#, fuzzy
+msgid "overline"
+msgstr "Slovensk"
+
+#: lib/ui/stdtoolbars.inc:351
+msgid "overbrace"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:352
+#, fuzzy
+msgid "overleftarrow"
+msgstr "Slet række"
+
+#: lib/ui/stdtoolbars.inc:353
+msgid "overrightarrow"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:354
+msgid "overleftrightarrow"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:355
+#, fuzzy
 msgid "overset"
 msgstr "Nulstil"
 
-#: lib/ui/stdtoolbars.inc:348
+#: lib/ui/stdtoolbars.inc:356
 #, fuzzy
 msgid "underline"
 msgstr "Understreget %1$s, "
 
-#: lib/ui/stdtoolbars.inc:349
+#: lib/ui/stdtoolbars.inc:357
 #, fuzzy
 msgid "underbrace"
 msgstr "Underlinje"
 
-#: lib/ui/stdtoolbars.inc:350
+#: lib/ui/stdtoolbars.inc:358
 msgid "underleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:351
+#: lib/ui/stdtoolbars.inc:359
 msgid "underrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:352
+#: lib/ui/stdtoolbars.inc:360
 msgid "underleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:353
+#: lib/ui/stdtoolbars.inc:361
 #, fuzzy
 msgid "underset"
 msgstr "Vers"
 
-#: lib/ui/stdtoolbars.inc:356 src/frontends/qt4/GuiSymbols.cpp:87
+#: lib/ui/stdtoolbars.inc:364 src/frontends/qt4/GuiSymbols.cpp:87
 msgid "Arrows"
 msgstr "Pile"
 
-#: lib/ui/stdtoolbars.inc:357
+#: lib/ui/stdtoolbars.inc:365
 #, fuzzy
 msgid "leftarrow"
 msgstr "Slet række"
 
-#: lib/ui/stdtoolbars.inc:358
+#: lib/ui/stdtoolbars.inc:366
 msgid "rightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:359
+#: lib/ui/stdtoolbars.inc:367
 msgid "downarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:360
+#: lib/ui/stdtoolbars.inc:368
 #, fuzzy
 msgid "uparrow"
 msgstr "Pil"
 
-#: lib/ui/stdtoolbars.inc:361
+#: lib/ui/stdtoolbars.inc:369
 msgid "updownarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:362
+#: lib/ui/stdtoolbars.inc:370
 msgid "leftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:363
+#: lib/ui/stdtoolbars.inc:371
 #, fuzzy
 msgid "Leftarrow"
 msgstr "Venstre"
 
-#: lib/ui/stdtoolbars.inc:364
+#: lib/ui/stdtoolbars.inc:372
 #, fuzzy
 msgid "Rightarrow"
 msgstr "HøjreHoved"
 
-#: lib/ui/stdtoolbars.inc:365
+#: lib/ui/stdtoolbars.inc:373
 msgid "Downarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:366
+#: lib/ui/stdtoolbars.inc:374
 #, fuzzy
 msgid "Uparrow"
 msgstr "Pil"
 
-#: lib/ui/stdtoolbars.inc:367
+#: lib/ui/stdtoolbars.inc:375
 msgid "Updownarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:368
+#: lib/ui/stdtoolbars.inc:376
 msgid "Leftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:369
+#: lib/ui/stdtoolbars.inc:377
 msgid "Longleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:370
+#: lib/ui/stdtoolbars.inc:378
 msgid "Longleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:371
+#: lib/ui/stdtoolbars.inc:379
 msgid "Longrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:372
+#: lib/ui/stdtoolbars.inc:380
 msgid "longleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:373
+#: lib/ui/stdtoolbars.inc:381
 msgid "longleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:374
+#: lib/ui/stdtoolbars.inc:382
 msgid "longrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:375
+#: lib/ui/stdtoolbars.inc:383
 msgid "leftharpoondown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:376
-msgid "rightharpoondown"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:377
-#, fuzzy
-msgid "mapsto"
-msgstr "Billedtekst"
-
-#: lib/ui/stdtoolbars.inc:378
-msgid "longmapsto"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:379
-#, fuzzy
-msgid "nwarrow"
-msgstr "Pil"
-
-#: lib/ui/stdtoolbars.inc:380
-#, fuzzy
-msgid "nearrow"
-msgstr "Pil"
-
-#: lib/ui/stdtoolbars.inc:381
-msgid "leftharpoonup"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:382
-msgid "rightharpoonup"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:383
-msgid "hookleftarrow"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:384
-msgid "hookrightarrow"
+msgid "rightharpoondown"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:385
 #, fuzzy
+msgid "mapsto"
+msgstr "Billedtekst"
+
+#: lib/ui/stdtoolbars.inc:386
+msgid "longmapsto"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:387
+#, fuzzy
+msgid "nwarrow"
+msgstr "Pil"
+
+#: lib/ui/stdtoolbars.inc:388
+#, fuzzy
+msgid "nearrow"
+msgstr "Pil"
+
+#: lib/ui/stdtoolbars.inc:389
+msgid "leftharpoonup"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:390
+msgid "rightharpoonup"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:391
+msgid "hookleftarrow"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:392
+msgid "hookrightarrow"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:393
+#, fuzzy
 msgid "swarrow"
 msgstr "Pil"
 
-#: lib/ui/stdtoolbars.inc:386
+#: lib/ui/stdtoolbars.inc:394
 #, fuzzy
 msgid "searrow"
 msgstr "Pil"
 
-#: lib/ui/stdtoolbars.inc:387 lib/ui/stdtoolbars.inc:655
+#: lib/ui/stdtoolbars.inc:395 lib/ui/stdtoolbars.inc:663
 msgid "rightleftharpoons"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:390
+#: lib/ui/stdtoolbars.inc:398
 msgid "Operators"
 msgstr "Operatorer"
 
-#: lib/ui/stdtoolbars.inc:391
-msgid "pm"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:392
-#, fuzzy
-msgid "cap"
-msgstr "Scrap"
-
-#: lib/ui/stdtoolbars.inc:393
-#, fuzzy
-msgid "diamond"
-msgstr "Land"
-
-#: lib/ui/stdtoolbars.inc:394
-#, fuzzy
-msgid "oplus"
-msgstr "Kolonner"
-
-#: lib/ui/stdtoolbars.inc:395
-#, fuzzy
-msgid "mp"
-msgstr "Fremhævet"
-
-#: lib/ui/stdtoolbars.inc:396
-msgid "cup"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:397
-msgid "bigtriangleup"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:398
-#, fuzzy
-msgid "ominus"
-msgstr "minut"
-
 #: lib/ui/stdtoolbars.inc:399
-msgid "times"
+msgid "pm"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:400
 #, fuzzy
-msgid "uplus"
-msgstr "Uddata"
+msgid "cap"
+msgstr "Scrap"
 
 #: lib/ui/stdtoolbars.inc:401
-msgid "bigtriangledown"
-msgstr ""
+#, fuzzy
+msgid "diamond"
+msgstr "Land"
 
 #: lib/ui/stdtoolbars.inc:402
 #, fuzzy
-msgid "otimes"
-msgstr "Kopier"
+msgid "oplus"
+msgstr "Kolonner"
 
 #: lib/ui/stdtoolbars.inc:403
-msgid "div"
-msgstr ""
+#, fuzzy
+msgid "mp"
+msgstr "Fremhævet"
 
 #: lib/ui/stdtoolbars.inc:404
-#, fuzzy
-msgid "sqcap"
-msgstr "Scrap"
+msgid "cup"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:405
-#, fuzzy
-msgid "triangleright"
-msgstr "Total højde"
+msgid "bigtriangleup"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:406
 #, fuzzy
-msgid "oslash"
-msgstr "Polsk"
+msgid "ominus"
+msgstr "minut"
 
 #: lib/ui/stdtoolbars.inc:407
-msgid "cdot"
+msgid "times"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:408
-msgid "sqcup"
-msgstr ""
+#, fuzzy
+msgid "uplus"
+msgstr "Uddata"
 
 #: lib/ui/stdtoolbars.inc:409
-msgid "triangleleft"
+msgid "bigtriangledown"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:410
 #, fuzzy
-msgid "odot"
-msgstr "fodnote"
+msgid "otimes"
+msgstr "Kopier"
 
 #: lib/ui/stdtoolbars.inc:411
-msgid "star"
+msgid "div"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:412
 #, fuzzy
+msgid "sqcap"
+msgstr "Scrap"
+
+#: lib/ui/stdtoolbars.inc:413
+#, fuzzy
+msgid "triangleright"
+msgstr "Total højde"
+
+#: lib/ui/stdtoolbars.inc:414
+#, fuzzy
+msgid "oslash"
+msgstr "Polsk"
+
+#: lib/ui/stdtoolbars.inc:415
+msgid "cdot"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:416
+msgid "sqcup"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:417
+msgid "triangleleft"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:418
+#, fuzzy
+msgid "odot"
+msgstr "fodnote"
+
+#: lib/ui/stdtoolbars.inc:419
+msgid "star"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:420
+#, fuzzy
 msgid "vee"
 msgstr "Slovensk"
 
-#: lib/ui/stdtoolbars.inc:413
+#: lib/ui/stdtoolbars.inc:421
 #, fuzzy
 msgid "amalg"
 msgstr "E-post"
 
-#: lib/ui/stdtoolbars.inc:414
+#: lib/ui/stdtoolbars.inc:422
 msgid "bigcirc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:415
+#: lib/ui/stdtoolbars.inc:423
 #, fuzzy
 msgid "setminus"
 msgstr "minut"
 
-#: lib/ui/stdtoolbars.inc:416
+#: lib/ui/stdtoolbars.inc:424
 msgid "wedge"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:417
+#: lib/ui/stdtoolbars.inc:425
 #, fuzzy
 msgid "dagger"
 msgstr "Større"
 
-#: lib/ui/stdtoolbars.inc:418
+#: lib/ui/stdtoolbars.inc:426
 #, fuzzy
 msgid "circ"
 msgstr "cc"
 
-#: lib/ui/stdtoolbars.inc:419
+#: lib/ui/stdtoolbars.inc:427
 #, fuzzy
 msgid "bullet"
 msgstr "Punkttegn"
 
-#: lib/ui/stdtoolbars.inc:420
+#: lib/ui/stdtoolbars.inc:428
 #, fuzzy
 msgid "wr"
 msgstr "Ombrydningsfigur: "
 
-#: lib/ui/stdtoolbars.inc:421
+#: lib/ui/stdtoolbars.inc:429
 #, fuzzy
 msgid "ddagger"
 msgstr "Større"
 
-#: lib/ui/stdtoolbars.inc:424
+#: lib/ui/stdtoolbars.inc:432
 msgid "Relations"
 msgstr "Relationer"
 
-#: lib/ui/stdtoolbars.inc:425
+#: lib/ui/stdtoolbars.inc:433
 msgid "leq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:426
+#: lib/ui/stdtoolbars.inc:434
 msgid "geq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:427
+#: lib/ui/stdtoolbars.inc:435
 msgid "equiv"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:428
+#: lib/ui/stdtoolbars.inc:436
 #, fuzzy
 msgid "models"
 msgstr "Kode"
 
-#: lib/ui/stdtoolbars.inc:429
+#: lib/ui/stdtoolbars.inc:437
 #, fuzzy
 msgid "prec"
 msgstr "pc"
 
-#: lib/ui/stdtoolbars.inc:430
+#: lib/ui/stdtoolbars.inc:438
 #, fuzzy
 msgid "succ"
 msgstr "cc"
 
-#: lib/ui/stdtoolbars.inc:431
+#: lib/ui/stdtoolbars.inc:439
 msgid "sim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:432
+#: lib/ui/stdtoolbars.inc:440
 msgid "perp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:433
+#: lib/ui/stdtoolbars.inc:441
 #, fuzzy
 msgid "preceq"
 msgstr "&Beskyt:"
 
-#: lib/ui/stdtoolbars.inc:434
+#: lib/ui/stdtoolbars.inc:442
 msgid "succeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:435
+#: lib/ui/stdtoolbars.inc:443
 msgid "simeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:436
+#: lib/ui/stdtoolbars.inc:444
 msgid "mid"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:437
+#: lib/ui/stdtoolbars.inc:445
 #, fuzzy
 msgid "ll"
 msgstr "&Alle"
 
-#: lib/ui/stdtoolbars.inc:438
+#: lib/ui/stdtoolbars.inc:446
 msgid "gg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:439
+#: lib/ui/stdtoolbars.inc:447
 msgid "asymp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:440
+#: lib/ui/stdtoolbars.inc:448
 #, fuzzy
 msgid "parallel"
 msgstr "tabelkant"
 
-#: lib/ui/stdtoolbars.inc:441
+#: lib/ui/stdtoolbars.inc:449
 #, fuzzy
 msgid "subset"
 msgstr "Underundersektion"
 
-#: lib/ui/stdtoolbars.inc:442
-msgid "supset"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:443
-#, fuzzy
-msgid "approx"
-msgstr "Parbox"
-
-#: lib/ui/stdtoolbars.inc:444
-#, fuzzy
-msgid "smile"
-msgstr "Fil"
-
-#: lib/ui/stdtoolbars.inc:445
-msgid "subseteq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:446
-msgid "supseteq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:447
-#, fuzzy
-msgid "cong"
-msgstr "på"
-
-#: lib/ui/stdtoolbars.inc:448
-#, fuzzy
-msgid "frown"
-msgstr "By"
-
-#: lib/ui/stdtoolbars.inc:449
-msgid "sqsubseteq"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:450
-msgid "sqsupseteq"
+msgid "supset"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:451
 #, fuzzy
-msgid "doteq"
-msgstr "notat"
+msgid "approx"
+msgstr "Parbox"
 
 #: lib/ui/stdtoolbars.inc:452
-msgid "neq"
+#, fuzzy
+msgid "smile"
+msgstr "Fil"
+
+#: lib/ui/stdtoolbars.inc:453
+msgid "subseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:453 src/lengthcommon.cpp:38
-msgid "in"
-msgstr "tomme"
-
 #: lib/ui/stdtoolbars.inc:454
-msgid "ni"
+msgid "supseteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:455
 #, fuzzy
-msgid "propto"
-msgstr "par"
+msgid "cong"
+msgstr "på"
 
 #: lib/ui/stdtoolbars.inc:456
 #, fuzzy
-msgid "notin"
-msgstr "notat"
+msgid "frown"
+msgstr "By"
 
 #: lib/ui/stdtoolbars.inc:457
-msgid "vdash"
+msgid "sqsubseteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:458
-msgid "dashv"
+msgid "sqsupseteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:459
 #, fuzzy
+msgid "doteq"
+msgstr "notat"
+
+#: lib/ui/stdtoolbars.inc:460
+msgid "neq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:461 src/lengthcommon.cpp:38
+msgid "in"
+msgstr "tomme"
+
+#: lib/ui/stdtoolbars.inc:462
+msgid "ni"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:463
+#, fuzzy
+msgid "propto"
+msgstr "par"
+
+#: lib/ui/stdtoolbars.inc:464
+#, fuzzy
+msgid "notin"
+msgstr "notat"
+
+#: lib/ui/stdtoolbars.inc:465
+msgid "vdash"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:466
+msgid "dashv"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:467
+#, fuzzy
 msgid "bowtie"
 msgstr "notat"
 
-#: lib/ui/stdtoolbars.inc:463
+#: lib/ui/stdtoolbars.inc:471
 msgid "alpha"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:464
+#: lib/ui/stdtoolbars.inc:472
 msgid "beta"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:465
+#: lib/ui/stdtoolbars.inc:473
 #, fuzzy
 msgid "gamma"
 msgstr "Lemma"
 
-#: lib/ui/stdtoolbars.inc:466
+#: lib/ui/stdtoolbars.inc:474
 #, fuzzy
 msgid "delta"
 msgstr "standard"
 
-#: lib/ui/stdtoolbars.inc:467
+#: lib/ui/stdtoolbars.inc:475
 #, fuzzy
 msgid "epsilon"
 msgstr "Version"
 
-#: lib/ui/stdtoolbars.inc:468
+#: lib/ui/stdtoolbars.inc:476
 msgid "varepsilon"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:469
-msgid "zeta"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:470
-#, fuzzy
-msgid "eta"
-msgstr "Magenta"
-
-#: lib/ui/stdtoolbars.inc:471
-#, fuzzy
-msgid "theta"
-msgstr "tekst"
-
-#: lib/ui/stdtoolbars.inc:472
-#, fuzzy
-msgid "vartheta"
-msgstr "Parantesbemærkning"
-
-#: lib/ui/stdtoolbars.inc:473
-#, fuzzy
-msgid "iota"
-msgstr "Rotér"
-
-#: lib/ui/stdtoolbars.inc:474
-msgid "kappa"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:475
-msgid "lambda"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:476 src/lengthcommon.cpp:38
-msgid "mu"
-msgstr "mu"
-
 #: lib/ui/stdtoolbars.inc:477
-msgid "nu"
+msgid "zeta"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:478
 #, fuzzy
-msgid "xi"
-msgstr "x"
+msgid "eta"
+msgstr "Magenta"
 
 #: lib/ui/stdtoolbars.inc:479
-msgid "pi"
-msgstr ""
+#, fuzzy
+msgid "theta"
+msgstr "tekst"
 
 #: lib/ui/stdtoolbars.inc:480
-msgid "varpi"
-msgstr ""
+#, fuzzy
+msgid "vartheta"
+msgstr "Parantesbemærkning"
 
 #: lib/ui/stdtoolbars.inc:481
-msgid "rho"
-msgstr ""
+#, fuzzy
+msgid "iota"
+msgstr "Rotér"
 
 #: lib/ui/stdtoolbars.inc:482
-#, fuzzy
-msgid "varrho"
-msgstr "Pil"
+msgid "kappa"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:483
-msgid "sigma"
+msgid "lambda"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:484
-msgid "varsigma"
-msgstr ""
+#: lib/ui/stdtoolbars.inc:484 src/lengthcommon.cpp:38
+msgid "mu"
+msgstr "mu"
 
 #: lib/ui/stdtoolbars.inc:485
-#, fuzzy
-msgid "tau"
-msgstr "Status"
+msgid "nu"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:486
 #, fuzzy
-msgid "upsilon"
-msgstr "Spørgsmål"
+msgid "xi"
+msgstr "x"
 
 #: lib/ui/stdtoolbars.inc:487
-msgid "phi"
+msgid "pi"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:488
-msgid "varphi"
+msgid "varpi"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:489
-msgid "chi"
+msgid "rho"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:490
 #, fuzzy
-msgid "psi"
-msgstr "ps"
+msgid "varrho"
+msgstr "Pil"
 
 #: lib/ui/stdtoolbars.inc:491
-#, fuzzy
-msgid "omega"
-msgstr "Ordinær"
+msgid "sigma"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:492
-#, fuzzy
-msgid "Gamma"
-msgstr "Lemma"
+msgid "varsigma"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:493
 #, fuzzy
-msgid "Delta"
-msgstr "&Slet"
+msgid "tau"
+msgstr "Status"
 
 #: lib/ui/stdtoolbars.inc:494
 #, fuzzy
-msgid "Theta"
-msgstr "Thai"
+msgid "upsilon"
+msgstr "Spørgsmål"
 
 #: lib/ui/stdtoolbars.inc:495
-#, fuzzy
-msgid "Lambda"
-msgstr "Land"
+msgid "phi"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:496
-msgid "Xi"
+msgid "varphi"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:497
-msgid "Pi"
+msgid "chi"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:498
 #, fuzzy
-msgid "Sigma"
-msgstr "Lille"
+msgid "psi"
+msgstr "ps"
 
 #: lib/ui/stdtoolbars.inc:499
-msgid "Upsilon"
-msgstr ""
+#, fuzzy
+msgid "omega"
+msgstr "Ordinær"
 
 #: lib/ui/stdtoolbars.inc:500
-msgid "Phi"
-msgstr ""
+#, fuzzy
+msgid "Gamma"
+msgstr "Lemma"
 
 #: lib/ui/stdtoolbars.inc:501
-msgid "Psi"
-msgstr ""
+#, fuzzy
+msgid "Delta"
+msgstr "&Slet"
 
 #: lib/ui/stdtoolbars.inc:502
-msgid "Omega"
+#, fuzzy
+msgid "Theta"
+msgstr "Thai"
+
+#: lib/ui/stdtoolbars.inc:503
+#, fuzzy
+msgid "Lambda"
+msgstr "Land"
+
+#: lib/ui/stdtoolbars.inc:504
+msgid "Xi"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:505
+msgid "Pi"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:506
+#, fuzzy
+msgid "Sigma"
+msgstr "Lille"
+
+#: lib/ui/stdtoolbars.inc:507
+msgid "Upsilon"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:508
+msgid "Phi"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:509
+msgid "Psi"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:510
+msgid "Omega"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:513
 msgid "Miscellaneous"
 msgstr "Diverse"
 
-#: lib/ui/stdtoolbars.inc:506
+#: lib/ui/stdtoolbars.inc:514
 #, fuzzy
 msgid "nabla"
 msgstr "&Lang tabel"
 
-#: lib/ui/stdtoolbars.inc:507
+#: lib/ui/stdtoolbars.inc:515
 #, fuzzy
 msgid "partial"
 msgstr "tabelkant"
 
-#: lib/ui/stdtoolbars.inc:508
+#: lib/ui/stdtoolbars.inc:516
 #, fuzzy
 msgid "infty"
 msgstr "Lillebitte"
 
-#: lib/ui/stdtoolbars.inc:509
+#: lib/ui/stdtoolbars.inc:517
 msgid "prime"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:510
+#: lib/ui/stdtoolbars.inc:518
 #, fuzzy
 msgid "ell"
 msgstr "hspell"
 
-#: lib/ui/stdtoolbars.inc:511
+#: lib/ui/stdtoolbars.inc:519
 #, fuzzy
 msgid "emptyset"
 msgstr "tom"
 
-#: lib/ui/stdtoolbars.inc:512
+#: lib/ui/stdtoolbars.inc:520
 #, fuzzy
 msgid "exists"
 msgstr "Rulletekster"
 
-#: lib/ui/stdtoolbars.inc:513
+#: lib/ui/stdtoolbars.inc:521
 #, fuzzy
 msgid "forall"
 msgstr "Normal"
 
-#: lib/ui/stdtoolbars.inc:514
+#: lib/ui/stdtoolbars.inc:522
 #, fuzzy
 msgid "imath"
 msgstr "matematik"
 
-#: lib/ui/stdtoolbars.inc:515
+#: lib/ui/stdtoolbars.inc:523
 #, fuzzy
 msgid "jmath"
 msgstr "matematik"
 
-#: lib/ui/stdtoolbars.inc:516
+#: lib/ui/stdtoolbars.inc:524
 #, fuzzy
 msgid "Re"
 msgstr "Gendan"
 
-#: lib/ui/stdtoolbars.inc:517
+#: lib/ui/stdtoolbars.inc:525
 #, fuzzy
 msgid "Im"
 msgstr "Punktinddeling"
 
-#: lib/ui/stdtoolbars.inc:518
+#: lib/ui/stdtoolbars.inc:526
 #, fuzzy
 msgid "aleph"
 msgstr "Dybde"
 
-#: lib/ui/stdtoolbars.inc:519
+#: lib/ui/stdtoolbars.inc:527
 #, fuzzy
 msgid "wp"
 msgstr "Ombrydningsfigur: "
 
-#: lib/ui/stdtoolbars.inc:520 lib/ui/stdtoolbars.inc:599
+#: lib/ui/stdtoolbars.inc:528 lib/ui/stdtoolbars.inc:607
 #, fuzzy
 msgid "hbar"
 msgstr "dybde-bjælke"
 
-#: lib/ui/stdtoolbars.inc:521 lib/ui/stdtoolbars.inc:606
+#: lib/ui/stdtoolbars.inc:529 lib/ui/stdtoolbars.inc:614
 #, fuzzy
 msgid "angle"
 msgstr "Enkelt"
 
-#: lib/ui/stdtoolbars.inc:522
+#: lib/ui/stdtoolbars.inc:530
 #, fuzzy
 msgid "top"
 msgstr "par"
 
-#: lib/ui/stdtoolbars.inc:523
+#: lib/ui/stdtoolbars.inc:531
 #, fuzzy
 msgid "bot"
 msgstr "par"
 
-#: lib/ui/stdtoolbars.inc:524
+#: lib/ui/stdtoolbars.inc:532
 #, fuzzy
 msgid "Vert"
 msgstr "Vers"
 
-#: lib/ui/stdtoolbars.inc:525
+#: lib/ui/stdtoolbars.inc:533
 msgid "neg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:526
+#: lib/ui/stdtoolbars.inc:534
 #, fuzzy
 msgid "flat"
 msgstr "flyder: "
 
-#: lib/ui/stdtoolbars.inc:527
+#: lib/ui/stdtoolbars.inc:535
 #, fuzzy
 msgid "natural"
 msgstr "Signatur"
 
-#: lib/ui/stdtoolbars.inc:528
+#: lib/ui/stdtoolbars.inc:536
 msgid "sharp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:529
+#: lib/ui/stdtoolbars.inc:537
 msgid "surd"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:530
+#: lib/ui/stdtoolbars.inc:538
 #, fuzzy
 msgid "triangle"
 msgstr "Enkelt"
 
-#: lib/ui/stdtoolbars.inc:531
+#: lib/ui/stdtoolbars.inc:539
 msgid "diamondsuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:532
+#: lib/ui/stdtoolbars.inc:540
 #, fuzzy
 msgid "heartsuit"
 msgstr "arv"
 
-#: lib/ui/stdtoolbars.inc:533
+#: lib/ui/stdtoolbars.inc:541
 msgid "clubsuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:534
+#: lib/ui/stdtoolbars.inc:542
 msgid "spadesuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:535
+#: lib/ui/stdtoolbars.inc:543
 msgid "textrm \\AA"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:536
+#: lib/ui/stdtoolbars.inc:544
 #, fuzzy
 msgid "textrm \\O"
 msgstr "tekst"
 
-#: lib/ui/stdtoolbars.inc:537
+#: lib/ui/stdtoolbars.inc:545
 msgid "mathcircumflex"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:538
+#: lib/ui/stdtoolbars.inc:546
 msgid "_"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:539
+#: lib/ui/stdtoolbars.inc:547
 #, fuzzy
 msgid "mathrm T"
 msgstr "matematikramme"
 
-#: lib/ui/stdtoolbars.inc:540
+#: lib/ui/stdtoolbars.inc:548
 #, fuzzy
 msgid "mathbb N"
 msgstr "matematik"
 
-#: lib/ui/stdtoolbars.inc:541
+#: lib/ui/stdtoolbars.inc:549
 #, fuzzy
 msgid "mathbb Z"
 msgstr "matematik"
 
-#: lib/ui/stdtoolbars.inc:542
+#: lib/ui/stdtoolbars.inc:550
 #, fuzzy
 msgid "mathbb Q"
 msgstr "matematik"
 
-#: lib/ui/stdtoolbars.inc:543
+#: lib/ui/stdtoolbars.inc:551
 #, fuzzy
 msgid "mathbb R"
 msgstr "matematik"
 
-#: lib/ui/stdtoolbars.inc:544
+#: lib/ui/stdtoolbars.inc:552
 #, fuzzy
 msgid "mathbb C"
 msgstr "matematik"
 
-#: lib/ui/stdtoolbars.inc:545
+#: lib/ui/stdtoolbars.inc:553
 #, fuzzy
 msgid "mathbb H"
 msgstr "matematik"
 
-#: lib/ui/stdtoolbars.inc:546
+#: lib/ui/stdtoolbars.inc:554
 #, fuzzy
 msgid "mathcal F"
 msgstr "matematik"
 
-#: lib/ui/stdtoolbars.inc:547
+#: lib/ui/stdtoolbars.inc:555
 #, fuzzy
 msgid "mathcal L"
 msgstr "matematik"
 
-#: lib/ui/stdtoolbars.inc:548
+#: lib/ui/stdtoolbars.inc:556
 #, fuzzy
 msgid "mathcal H"
 msgstr "matematik"
 
-#: lib/ui/stdtoolbars.inc:549
+#: lib/ui/stdtoolbars.inc:557
 #, fuzzy
 msgid "mathcal O"
 msgstr "matematik"
 
-#: lib/ui/stdtoolbars.inc:552
+#: lib/ui/stdtoolbars.inc:560
 #, fuzzy
 msgid "Big Operators"
 msgstr "Store operatorer"
 
-#: lib/ui/stdtoolbars.inc:553
+#: lib/ui/stdtoolbars.inc:561
 #, fuzzy
 msgid "intop"
 msgstr "Topjustering"
 
-#: lib/ui/stdtoolbars.inc:554
+#: lib/ui/stdtoolbars.inc:562
 #, fuzzy
 msgid "int"
 msgstr "tomme"
 
-#: lib/ui/stdtoolbars.inc:555
+#: lib/ui/stdtoolbars.inc:563
 #, fuzzy
 msgid "iint"
 msgstr "tomme"
 
-#: lib/ui/stdtoolbars.inc:556
+#: lib/ui/stdtoolbars.inc:564
 #, fuzzy
 msgid "iintop"
 msgstr "Topjustering"
 
-#: lib/ui/stdtoolbars.inc:557
+#: lib/ui/stdtoolbars.inc:565
 msgid "iiint"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:558
+#: lib/ui/stdtoolbars.inc:566
 #, fuzzy
 msgid "iiintop"
 msgstr "Topjustering"
 
-#: lib/ui/stdtoolbars.inc:559
+#: lib/ui/stdtoolbars.inc:567
 msgid "iiiint"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:560
+#: lib/ui/stdtoolbars.inc:568
 msgid "iiiintop"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:561
+#: lib/ui/stdtoolbars.inc:569
 msgid "dotsint"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:562
+#: lib/ui/stdtoolbars.inc:570
 msgid "dotsintop"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:563
+#: lib/ui/stdtoolbars.inc:571
 #, fuzzy
 msgid "oint"
 msgstr "tomme"
 
-#: lib/ui/stdtoolbars.inc:564
+#: lib/ui/stdtoolbars.inc:572
 #, fuzzy
 msgid "ointop"
 msgstr "Konto"
 
-#: lib/ui/stdtoolbars.inc:565
+#: lib/ui/stdtoolbars.inc:573
 #, fuzzy
 msgid "oiint"
 msgstr "&Skrift: "
 
-#: lib/ui/stdtoolbars.inc:566
+#: lib/ui/stdtoolbars.inc:574
 #, fuzzy
 msgid "oiintop"
 msgstr "Konto"
 
-#: lib/ui/stdtoolbars.inc:567
+#: lib/ui/stdtoolbars.inc:575
 msgid "ointctrclockwiseop"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:568
+#: lib/ui/stdtoolbars.inc:576
 msgid "ointctrclockwise"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:569
+#: lib/ui/stdtoolbars.inc:577
 msgid "ointclockwiseop"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:570
+#: lib/ui/stdtoolbars.inc:578
 msgid "ointclockwise"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:571
+#: lib/ui/stdtoolbars.inc:579
 msgid "sqint"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:572
+#: lib/ui/stdtoolbars.inc:580
 #, fuzzy
 msgid "sqintop"
 msgstr "Topjustering"
 
-#: lib/ui/stdtoolbars.inc:573
+#: lib/ui/stdtoolbars.inc:581
 msgid "sqiint"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:574
+#: lib/ui/stdtoolbars.inc:582
 msgid "sqiintop"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:575
+#: lib/ui/stdtoolbars.inc:583
 msgid "sum"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:576
+#: lib/ui/stdtoolbars.inc:584
 #, fuzzy
 msgid "prod"
 msgstr "&Beskyt:"
 
-#: lib/ui/stdtoolbars.inc:577
+#: lib/ui/stdtoolbars.inc:585
 msgid "coprod"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:578
+#: lib/ui/stdtoolbars.inc:586
 msgid "bigsqcup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:579
+#: lib/ui/stdtoolbars.inc:587
 msgid "bigotimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:580
+#: lib/ui/stdtoolbars.inc:588
 msgid "bigodot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:581
+#: lib/ui/stdtoolbars.inc:589
 msgid "bigoplus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:582
+#: lib/ui/stdtoolbars.inc:590
 msgid "bigcap"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:583
+#: lib/ui/stdtoolbars.inc:591
 msgid "bigcup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:584
+#: lib/ui/stdtoolbars.inc:592
 msgid "biguplus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:585
+#: lib/ui/stdtoolbars.inc:593
 msgid "bigvee"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:586
+#: lib/ui/stdtoolbars.inc:594
 msgid "bigwedge"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:589
+#: lib/ui/stdtoolbars.inc:597
 msgid "AMS Miscellaneous"
 msgstr "Diverse AMS"
 
-#: lib/ui/stdtoolbars.inc:590
+#: lib/ui/stdtoolbars.inc:598
 msgid "digamma"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:591
+#: lib/ui/stdtoolbars.inc:599
 msgid "varkappa"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:592
+#: lib/ui/stdtoolbars.inc:600
 #, fuzzy
 msgid "beth"
 msgstr "Dybde"
 
-#: lib/ui/stdtoolbars.inc:593
+#: lib/ui/stdtoolbars.inc:601
 #, fuzzy
 msgid "daleth"
 msgstr "standard"
 
-#: lib/ui/stdtoolbars.inc:594
+#: lib/ui/stdtoolbars.inc:602
 msgid "gimel"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:595
+#: lib/ui/stdtoolbars.inc:603
 msgid "ulcorner"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:596
+#: lib/ui/stdtoolbars.inc:604
 msgid "urcorner"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:597
+#: lib/ui/stdtoolbars.inc:605
 #, fuzzy
 msgid "llcorner"
 msgstr "Alle kanter"
 
-#: lib/ui/stdtoolbars.inc:598
+#: lib/ui/stdtoolbars.inc:606
 msgid "lrcorner"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:600
+#: lib/ui/stdtoolbars.inc:608
 msgid "hslash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:601
+#: lib/ui/stdtoolbars.inc:609
 #, fuzzy
 msgid "vartriangle"
 msgstr "tabelkant"
 
-#: lib/ui/stdtoolbars.inc:602
+#: lib/ui/stdtoolbars.inc:610
 msgid "triangledown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:603
+#: lib/ui/stdtoolbars.inc:611
 #, fuzzy
 msgid "square"
 msgstr "Baskisk"
 
-#: lib/ui/stdtoolbars.inc:604
+#: lib/ui/stdtoolbars.inc:612
 #, fuzzy
 msgid "lozenge"
 msgstr "Slovensk"
 
-#: lib/ui/stdtoolbars.inc:605
+#: lib/ui/stdtoolbars.inc:613
 msgid "circledS"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:607
+#: lib/ui/stdtoolbars.inc:615
 msgid "measuredangle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:608
+#: lib/ui/stdtoolbars.inc:616
 #, fuzzy
 msgid "nexists"
 msgstr "Indeks|k"
 
-#: lib/ui/stdtoolbars.inc:609
+#: lib/ui/stdtoolbars.inc:617
 msgid "mho"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:610
+#: lib/ui/stdtoolbars.inc:618
 #, fuzzy
 msgid "Finv"
 msgstr "tomme"
 
-#: lib/ui/stdtoolbars.inc:611
+#: lib/ui/stdtoolbars.inc:619
 #, fuzzy
 msgid "Game"
 msgstr "Navn"
 
-#: lib/ui/stdtoolbars.inc:612
+#: lib/ui/stdtoolbars.inc:620
 msgid "Bbbk"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:613
+#: lib/ui/stdtoolbars.inc:621
 msgid "backprime"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:614
+#: lib/ui/stdtoolbars.inc:622
 msgid "varnothing"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:615
+#: lib/ui/stdtoolbars.inc:623
 msgid "blacktriangle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:616
+#: lib/ui/stdtoolbars.inc:624
 msgid "blacktriangledown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:617
+#: lib/ui/stdtoolbars.inc:625
 #, fuzzy
 msgid "blacksquare"
 msgstr "sort"
 
-#: lib/ui/stdtoolbars.inc:618
+#: lib/ui/stdtoolbars.inc:626
 msgid "blacklozenge"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:619
+#: lib/ui/stdtoolbars.inc:627
 msgid "bigstar"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:620
+#: lib/ui/stdtoolbars.inc:628
 msgid "sphericalangle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:621
+#: lib/ui/stdtoolbars.inc:629
 #, fuzzy
 msgid "complement"
 msgstr "kommentar"
 
-#: lib/ui/stdtoolbars.inc:622
+#: lib/ui/stdtoolbars.inc:630
 #, fuzzy
 msgid "eth"
 msgstr "Dybde"
 
-#: lib/ui/stdtoolbars.inc:623
+#: lib/ui/stdtoolbars.inc:631
 msgid "diagup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:624
+#: lib/ui/stdtoolbars.inc:632
 msgid "diagdown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:627
+#: lib/ui/stdtoolbars.inc:635
 #, fuzzy
 msgid "AMS Arrows"
 msgstr "AMS-pile"
 
-#: lib/ui/stdtoolbars.inc:628
+#: lib/ui/stdtoolbars.inc:636
 msgid "dashleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:629
+#: lib/ui/stdtoolbars.inc:637
 msgid "dashrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:630
+#: lib/ui/stdtoolbars.inc:638
 msgid "leftleftarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:631
+#: lib/ui/stdtoolbars.inc:639
 msgid "leftrightarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:632
+#: lib/ui/stdtoolbars.inc:640
 msgid "rightrightarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:633
+#: lib/ui/stdtoolbars.inc:641
 msgid "rightleftarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:634
+#: lib/ui/stdtoolbars.inc:642
 #, fuzzy
 msgid "Lleftarrow"
 msgstr "Slet række"
 
-#: lib/ui/stdtoolbars.inc:635
+#: lib/ui/stdtoolbars.inc:643
 #, fuzzy
 msgid "Rrightarrow"
 msgstr "HøjreHoved"
 
-#: lib/ui/stdtoolbars.inc:636
+#: lib/ui/stdtoolbars.inc:644
 msgid "twoheadleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:637
+#: lib/ui/stdtoolbars.inc:645
 msgid "twoheadrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:638
+#: lib/ui/stdtoolbars.inc:646
 msgid "leftarrowtail"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:639
+#: lib/ui/stdtoolbars.inc:647
 msgid "rightarrowtail"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:640
+#: lib/ui/stdtoolbars.inc:648
 msgid "looparrowleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:641
+#: lib/ui/stdtoolbars.inc:649
 #, fuzzy
 msgid "looparrowright"
 msgstr "Ophavsret"
 
-#: lib/ui/stdtoolbars.inc:642
+#: lib/ui/stdtoolbars.inc:650
 msgid "curvearrowleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:643
+#: lib/ui/stdtoolbars.inc:651
 msgid "curvearrowright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:644
+#: lib/ui/stdtoolbars.inc:652
 msgid "circlearrowleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:645
+#: lib/ui/stdtoolbars.inc:653
 msgid "circlearrowright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:646
+#: lib/ui/stdtoolbars.inc:654
 msgid "Lsh"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:647
+#: lib/ui/stdtoolbars.inc:655
 msgid "Rsh"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:648
+#: lib/ui/stdtoolbars.inc:656
 #, fuzzy
 msgid "upuparrows"
 msgstr "Pile"
 
-#: lib/ui/stdtoolbars.inc:649
+#: lib/ui/stdtoolbars.inc:657
 msgid "downdownarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:650
+#: lib/ui/stdtoolbars.inc:658
 msgid "upharpoonleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:651
+#: lib/ui/stdtoolbars.inc:659
 msgid "upharpoonright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:652
+#: lib/ui/stdtoolbars.inc:660
 msgid "downharpoonleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:653
+#: lib/ui/stdtoolbars.inc:661
 msgid "downharpoonright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:654
+#: lib/ui/stdtoolbars.inc:662
 msgid "leftrightharpoons"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:656
+#: lib/ui/stdtoolbars.inc:664
 msgid "rightsquigarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:657
+#: lib/ui/stdtoolbars.inc:665
 msgid "leftrightsquigarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:658
+#: lib/ui/stdtoolbars.inc:666
 #, fuzzy
 msgid "nleftarrow"
 msgstr "Slet række"
 
-#: lib/ui/stdtoolbars.inc:659
+#: lib/ui/stdtoolbars.inc:667
 msgid "nrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:660
+#: lib/ui/stdtoolbars.inc:668
 msgid "nleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:661
+#: lib/ui/stdtoolbars.inc:669
 msgid "nLeftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:662
+#: lib/ui/stdtoolbars.inc:670
 #, fuzzy
 msgid "nRightarrow"
 msgstr "HøjreHoved"
 
-#: lib/ui/stdtoolbars.inc:663
+#: lib/ui/stdtoolbars.inc:671
 msgid "nLeftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:664
+#: lib/ui/stdtoolbars.inc:672
 msgid "multimap"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:667
+#: lib/ui/stdtoolbars.inc:675
 #, fuzzy
 msgid "AMS Relations"
 msgstr "AMS-relationer"
 
-#: lib/ui/stdtoolbars.inc:668
+#: lib/ui/stdtoolbars.inc:676
 msgid "leqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:669
+#: lib/ui/stdtoolbars.inc:677
 msgid "geqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:670
+#: lib/ui/stdtoolbars.inc:678
 msgid "leqslant"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:671
+#: lib/ui/stdtoolbars.inc:679
 msgid "geqslant"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:672
+#: lib/ui/stdtoolbars.inc:680
 msgid "eqslantless"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:673
+#: lib/ui/stdtoolbars.inc:681
 msgid "eqslantgtr"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:674
+#: lib/ui/stdtoolbars.inc:682
 msgid "lesssim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:675
+#: lib/ui/stdtoolbars.inc:683
 msgid "gtrsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:676
+#: lib/ui/stdtoolbars.inc:684
 msgid "lessapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:677
+#: lib/ui/stdtoolbars.inc:685
 msgid "gtrapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:678
-msgid "approxeq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:679
-#, fuzzy
-msgid "triangleq"
-msgstr "Enkelt"
-
-#: lib/ui/stdtoolbars.inc:680
-msgid "lessdot"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:681
-msgid "gtrdot"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:682
-msgid "lll"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:683
-msgid "ggg"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:684
-msgid "lessgtr"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:685
-#, fuzzy
-msgid "gtrless"
-msgstr "Uden ramme"
-
 #: lib/ui/stdtoolbars.inc:686
-msgid "lesseqgtr"
+msgid "approxeq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:687
 #, fuzzy
-msgid "gtreqless"
-msgstr "Uden ramme"
+msgid "triangleq"
+msgstr "Enkelt"
 
 #: lib/ui/stdtoolbars.inc:688
-msgid "lesseqqgtr"
+msgid "lessdot"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:689
+msgid "gtrdot"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:690
+msgid "lll"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:691
+msgid "ggg"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:692
+msgid "lessgtr"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:693
+#, fuzzy
+msgid "gtrless"
+msgstr "Uden ramme"
+
+#: lib/ui/stdtoolbars.inc:694
+msgid "lesseqgtr"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:695
+#, fuzzy
+msgid "gtreqless"
+msgstr "Uden ramme"
+
+#: lib/ui/stdtoolbars.inc:696
+msgid "lesseqqgtr"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:697
 #, fuzzy
 msgid "gtreqqless"
 msgstr "Uden ramme"
 
-#: lib/ui/stdtoolbars.inc:690
+#: lib/ui/stdtoolbars.inc:698
 msgid "eqcirc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:691
+#: lib/ui/stdtoolbars.inc:699
 msgid "circeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:692
+#: lib/ui/stdtoolbars.inc:700
 msgid "thicksim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:693
+#: lib/ui/stdtoolbars.inc:701
 msgid "thickapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:694
+#: lib/ui/stdtoolbars.inc:702
 #, fuzzy
 msgid "backsim"
 msgstr "sort"
 
-#: lib/ui/stdtoolbars.inc:695
+#: lib/ui/stdtoolbars.inc:703
 msgid "backsimeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:696
+#: lib/ui/stdtoolbars.inc:704
 msgid "subseteqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:697
+#: lib/ui/stdtoolbars.inc:705
 msgid "supseteqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:698
+#: lib/ui/stdtoolbars.inc:706
 #, fuzzy
 msgid "Subset"
 msgstr "Emne"
 
-#: lib/ui/stdtoolbars.inc:699
+#: lib/ui/stdtoolbars.inc:707
 #, fuzzy
 msgid "Supset"
 msgstr "Undersektion"
 
-#: lib/ui/stdtoolbars.inc:700
+#: lib/ui/stdtoolbars.inc:708
 msgid "sqsubset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:701
+#: lib/ui/stdtoolbars.inc:709
 msgid "sqsupset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:702
+#: lib/ui/stdtoolbars.inc:710
 msgid "preccurlyeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:703
+#: lib/ui/stdtoolbars.inc:711
 msgid "succcurlyeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:704
+#: lib/ui/stdtoolbars.inc:712
 msgid "curlyeqprec"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:705
+#: lib/ui/stdtoolbars.inc:713
 msgid "curlyeqsucc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:706
+#: lib/ui/stdtoolbars.inc:714
 msgid "precsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:707
+#: lib/ui/stdtoolbars.inc:715
 msgid "succsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:708
+#: lib/ui/stdtoolbars.inc:716
 msgid "precapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:709
+#: lib/ui/stdtoolbars.inc:717
 msgid "succapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:710
-msgid "vartriangleleft"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:711
-#, fuzzy
-msgid "vartriangleright"
-msgstr "Højre basislinje"
-
-#: lib/ui/stdtoolbars.inc:712
-msgid "trianglelefteq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:713
-msgid "trianglerighteq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:714
-#, fuzzy
-msgid "bumpeq"
-msgstr "blå"
-
-#: lib/ui/stdtoolbars.inc:715
-#, fuzzy
-msgid "Bumpeq"
-msgstr "Blå"
-
-#: lib/ui/stdtoolbars.inc:716
-msgid "doteqdot"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:717
-msgid "risingdotseq"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:718
-msgid "fallingdotseq"
+msgid "vartriangleleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:719
 #, fuzzy
-msgid "vDash"
-msgstr "Dansk"
+msgid "vartriangleright"
+msgstr "Højre basislinje"
 
 #: lib/ui/stdtoolbars.inc:720
-msgid "Vvdash"
+msgid "trianglelefteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:721
-msgid "Vdash"
+msgid "trianglerighteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:722
+#, fuzzy
+msgid "bumpeq"
+msgstr "blå"
+
+#: lib/ui/stdtoolbars.inc:723
+#, fuzzy
+msgid "Bumpeq"
+msgstr "Blå"
+
+#: lib/ui/stdtoolbars.inc:724
+msgid "doteqdot"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:725
+msgid "risingdotseq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:726
+msgid "fallingdotseq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:727
+#, fuzzy
+msgid "vDash"
+msgstr "Dansk"
+
+#: lib/ui/stdtoolbars.inc:728
+msgid "Vvdash"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:729
+msgid "Vdash"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:730
 msgid "shortmid"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:723
+#: lib/ui/stdtoolbars.inc:731
 msgid "shortparallel"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:724
+#: lib/ui/stdtoolbars.inc:732
 #, fuzzy
 msgid "smallsmile"
 msgstr "LilleAfstand"
 
-#: lib/ui/stdtoolbars.inc:725
+#: lib/ui/stdtoolbars.inc:733
 msgid "smallfrown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:726
+#: lib/ui/stdtoolbars.inc:734
 msgid "blacktriangleleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:727
+#: lib/ui/stdtoolbars.inc:735
 msgid "blacktriangleright"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:728
-#, fuzzy
-msgid "because"
-msgstr "Formindsk"
-
-#: lib/ui/stdtoolbars.inc:729
-#, fuzzy
-msgid "therefore"
-msgstr "teorem"
-
-#: lib/ui/stdtoolbars.inc:730
-msgid "backepsilon"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:731
-msgid "varpropto"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:732
-msgid "between"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:733
-msgid "pitchfork"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:736
 #, fuzzy
+msgid "because"
+msgstr "Formindsk"
+
+#: lib/ui/stdtoolbars.inc:737
+#, fuzzy
+msgid "therefore"
+msgstr "teorem"
+
+#: lib/ui/stdtoolbars.inc:738
+msgid "backepsilon"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:739
+msgid "varpropto"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:740
+msgid "between"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:741
+msgid "pitchfork"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:744
+#, fuzzy
 msgid "AMS Negative Relations"
 msgstr "Negerede AMS-relationer"
 
-#: lib/ui/stdtoolbars.inc:737
+#: lib/ui/stdtoolbars.inc:745
 #, fuzzy
 msgid "nless"
 msgstr "Meningsløs: "
 
-#: lib/ui/stdtoolbars.inc:738
+#: lib/ui/stdtoolbars.inc:746
 #, fuzzy
 msgid "ngtr"
 msgstr "Indgang"
 
-#: lib/ui/stdtoolbars.inc:739
+#: lib/ui/stdtoolbars.inc:747
 #, fuzzy
 msgid "nleq"
 msgstr "Enkelt"
 
-#: lib/ui/stdtoolbars.inc:740
+#: lib/ui/stdtoolbars.inc:748
 #, fuzzy
 msgid "ngeq"
 msgstr "Enkelt"
 
-#: lib/ui/stdtoolbars.inc:741
+#: lib/ui/stdtoolbars.inc:749
 msgid "nleqslant"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:742
+#: lib/ui/stdtoolbars.inc:750
 msgid "ngeqslant"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:743
+#: lib/ui/stdtoolbars.inc:751
 msgid "nleqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:744
+#: lib/ui/stdtoolbars.inc:752
 msgid "ngeqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:745
+#: lib/ui/stdtoolbars.inc:753
 msgid "lneq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:746
+#: lib/ui/stdtoolbars.inc:754
 #, fuzzy
 msgid "gneq"
 msgstr "Ignorér"
 
-#: lib/ui/stdtoolbars.inc:747
+#: lib/ui/stdtoolbars.inc:755
 msgid "lneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:748
-msgid "gneqq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:749
-#, fuzzy
-msgid "lvertneqq"
-msgstr "Slovensk"
-
-#: lib/ui/stdtoolbars.inc:750
-msgid "gvertneqq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:751
-#, fuzzy
-msgid "lnsim"
-msgstr "Påstand"
-
-#: lib/ui/stdtoolbars.inc:752
-msgid "gnsim"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:753
-msgid "lnapprox"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:754
-msgid "gnapprox"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:755
-msgid "nprec"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:756
-msgid "nsucc"
+msgid "gneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:757
 #, fuzzy
-msgid "npreceq"
-msgstr "&Beskyt:"
+msgid "lvertneqq"
+msgstr "Slovensk"
 
 #: lib/ui/stdtoolbars.inc:758
-msgid "nsucceq"
+msgid "gvertneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:759
-msgid "precnsim"
-msgstr ""
+#, fuzzy
+msgid "lnsim"
+msgstr "Påstand"
 
 #: lib/ui/stdtoolbars.inc:760
-msgid "succnsim"
+msgid "gnsim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:761
-msgid "precnapprox"
+msgid "lnapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:762
-msgid "succnapprox"
+msgid "gnapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:763
-#, fuzzy
-msgid "subsetneq"
-msgstr "Underundersektion"
+msgid "nprec"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:764
-msgid "supsetneq"
+msgid "nsucc"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:765
 #, fuzzy
-msgid "subsetneqq"
-msgstr "Underundersektion"
+msgid "npreceq"
+msgstr "&Beskyt:"
 
 #: lib/ui/stdtoolbars.inc:766
-msgid "supsetneqq"
+msgid "nsucceq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:767
-msgid "nsubseteq"
+msgid "precnsim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:768
-msgid "nsupseteq"
+msgid "succnsim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:769
-msgid "nsupseteqq"
+msgid "precnapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:770
-msgid "nvdash"
+msgid "succnapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:771
 #, fuzzy
+msgid "subsetneq"
+msgstr "Underundersektion"
+
+#: lib/ui/stdtoolbars.inc:772
+msgid "supsetneq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:773
+#, fuzzy
+msgid "subsetneqq"
+msgstr "Underundersektion"
+
+#: lib/ui/stdtoolbars.inc:774
+msgid "supsetneqq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:775
+msgid "nsubseteq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:776
+msgid "nsupseteq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:777
+msgid "nsupseteqq"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:778
+msgid "nvdash"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:779
+#, fuzzy
 msgid "nvDash"
 msgstr "Dansk"
 
-#: lib/ui/stdtoolbars.inc:772
+#: lib/ui/stdtoolbars.inc:780
 #, fuzzy
 msgid "nVDash"
 msgstr "Dansk"
 
-#: lib/ui/stdtoolbars.inc:773
+#: lib/ui/stdtoolbars.inc:781
 msgid "varsubsetneq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:774
+#: lib/ui/stdtoolbars.inc:782
 msgid "varsupsetneq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:775
+#: lib/ui/stdtoolbars.inc:783
 msgid "varsubsetneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:776
+#: lib/ui/stdtoolbars.inc:784
 msgid "varsupsetneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:777
+#: lib/ui/stdtoolbars.inc:785
 msgid "ntriangleleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:778
+#: lib/ui/stdtoolbars.inc:786
 #, fuzzy
 msgid "ntriangleright"
 msgstr "Total højde"
 
-#: lib/ui/stdtoolbars.inc:779
+#: lib/ui/stdtoolbars.inc:787
 msgid "ntrianglelefteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:780
+#: lib/ui/stdtoolbars.inc:788
 msgid "ntrianglerighteq"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:781
-#, fuzzy
-msgid "ncong"
-msgstr "ingen"
-
-#: lib/ui/stdtoolbars.inc:782
-msgid "nsim"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:783
-msgid "nmid"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:784
-msgid "nshortmid"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:785
-msgid "nparallel"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:786
-msgid "nshortparallel"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:789
 #, fuzzy
-msgid "AMS Operators"
-msgstr "AMS-operatorer"
+msgid "ncong"
+msgstr "ingen"
 
 #: lib/ui/stdtoolbars.inc:790
-msgid "dotplus"
+msgid "nsim"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:791
-msgid "smallsetminus"
+msgid "nmid"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:792
+msgid "nshortmid"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:793
+msgid "nparallel"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:794
+msgid "nshortparallel"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:797
+#, fuzzy
+msgid "AMS Operators"
+msgstr "AMS-operatorer"
+
+#: lib/ui/stdtoolbars.inc:798
+msgid "dotplus"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:799
+msgid "smallsetminus"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:800
 #, fuzzy
 msgid "Cap"
 msgstr "Billedtekst"
 
-#: lib/ui/stdtoolbars.inc:793
+#: lib/ui/stdtoolbars.inc:801
 #, fuzzy
 msgid "Cup"
 msgstr "Klip"
 
-#: lib/ui/stdtoolbars.inc:794
+#: lib/ui/stdtoolbars.inc:802
 #, fuzzy
 msgid "barwedge"
 msgstr "Stor"
 
-#: lib/ui/stdtoolbars.inc:795
+#: lib/ui/stdtoolbars.inc:803
 msgid "veebar"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:796
+#: lib/ui/stdtoolbars.inc:804
 #, fuzzy
 msgid "doublebarwedge"
 msgstr "dobbelt"
 
-#: lib/ui/stdtoolbars.inc:797
+#: lib/ui/stdtoolbars.inc:805
 #, fuzzy
 msgid "boxminus"
 msgstr "minut"
 
-#: lib/ui/stdtoolbars.inc:798
+#: lib/ui/stdtoolbars.inc:806
 msgid "boxtimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:799
+#: lib/ui/stdtoolbars.inc:807
 #, fuzzy
 msgid "boxdot"
 msgstr "fodnote"
 
-#: lib/ui/stdtoolbars.inc:800
+#: lib/ui/stdtoolbars.inc:808
 msgid "boxplus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:801
+#: lib/ui/stdtoolbars.inc:809
 #, fuzzy
 msgid "divideontimes"
 msgstr "SlideIndhold"
 
-#: lib/ui/stdtoolbars.inc:802
-msgid "ltimes"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:803
-#, fuzzy
-msgid "rtimes"
-msgstr "Britisk"
-
-#: lib/ui/stdtoolbars.inc:804
-msgid "leftthreetimes"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:805
-msgid "rightthreetimes"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:806
-msgid "curlywedge"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:807
-msgid "curlyvee"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:808
-msgid "circleddash"
-msgstr ""
-
-#: lib/ui/stdtoolbars.inc:809
-msgid "circledast"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:810
-msgid "circledcirc"
+msgid "ltimes"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:811
 #, fuzzy
+msgid "rtimes"
+msgstr "Britisk"
+
+#: lib/ui/stdtoolbars.inc:812
+msgid "leftthreetimes"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:813
+msgid "rightthreetimes"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:814
+msgid "curlywedge"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:815
+msgid "curlyvee"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:816
+msgid "circleddash"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:817
+msgid "circledast"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:818
+msgid "circledcirc"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:819
+#, fuzzy
 msgid "centerdot"
 msgstr "Midten"
 
-#: lib/ui/stdtoolbars.inc:812
+#: lib/ui/stdtoolbars.inc:820
 #, fuzzy
 msgid "intercal"
 msgstr "Råt"
@@ -14987,11 +15025,11 @@ msgstr "Tilføj litteraturliste til &indhold"
 msgid "before"
 msgstr "før"
 
-#: src/Buffer.cpp:236
+#: src/Buffer.cpp:237
 msgid "Disk Error: "
 msgstr ""
 
-#: src/Buffer.cpp:237
+#: src/Buffer.cpp:238
 #, fuzzy, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
@@ -15135,8 +15173,8 @@ msgid "Overwrite modified file?"
 msgstr "&Overskriv"
 
 #: src/Buffer.cpp:836 src/Exporter.cpp:49 src/LyXFunc.cpp:980
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1464
-#: src/frontends/qt4/GuiView.cpp:1642
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1467
+#: src/frontends/qt4/GuiView.cpp:1645
 #, fuzzy
 msgid "&Overwrite"
 msgstr "&Overskriv"
@@ -15334,27 +15372,27 @@ msgstr "Hente fra versionsstyring?"
 msgid "&Retrieve"
 msgstr "&Hent"
 
-#: src/BufferList.cpp:220
+#: src/BufferList.cpp:223
 #, fuzzy
 msgid "No file open!"
 msgstr "Fandt ingen fil!"
 
-#: src/BufferList.cpp:230
+#: src/BufferList.cpp:233
 #, fuzzy, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Forsøger at gemme dokumentet %1$s"
 
-#: src/BufferList.cpp:240 src/BufferList.cpp:253 src/BufferList.cpp:267
+#: src/BufferList.cpp:243 src/BufferList.cpp:256 src/BufferList.cpp:270
 #, fuzzy
 msgid "  Save seems successful. Phew.\n"
 msgstr "  Lagring så ud til at lykkedes. Pyha."
 
-#: src/BufferList.cpp:243 src/BufferList.cpp:257
+#: src/BufferList.cpp:246 src/BufferList.cpp:260
 #, fuzzy
 msgid "  Save failed! Trying...\n"
 msgstr "  Lagring virkede ikke! Forsøger..."
 
-#: src/BufferList.cpp:271
+#: src/BufferList.cpp:274
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Lagring virkede ikke! Beklager, dokumentet er tabt."
 
@@ -15979,7 +16017,7 @@ msgstr "Uddata er tomt"
 msgid "An empty output file was generated."
 msgstr "Der blev oprettet en tom uddatafil."
 
-#: src/CutAndPaste.cpp:541
+#: src/CutAndPaste.cpp:545
 #, fuzzy, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -15990,7 +16028,7 @@ msgstr ""
 "p.g.a. klassekonvertering fra \n"
 "%3$s til %4$s"
 
-#: src/CutAndPaste.cpp:548
+#: src/CutAndPaste.cpp:552
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "Tekst-indstik åbnet"
@@ -16235,7 +16273,7 @@ msgstr "Kører MakeIndex."
 msgid "Could not read configuration file"
 msgstr "Kunne ikke læse opsætningsfilen"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1402
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1397
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16516,7 +16554,7 @@ msgstr ""
 "\n"
 "Vil du gemme dokumentet?"
 
-#: src/LyXFunc.cpp:664 src/frontends/qt4/GuiView.cpp:1739
+#: src/LyXFunc.cpp:664 src/frontends/qt4/GuiView.cpp:1742
 msgid "Save changed document?"
 msgstr "Gem ændret dokument?"
 
@@ -16547,7 +16585,7 @@ msgid "Revert to saved document?"
 msgstr "Gendan gemte dokument?"
 
 # , c-format
-#: src/LyXFunc.cpp:802 src/LyXVC.cpp:179
+#: src/LyXFunc.cpp:802 src/LyXVC.cpp:181
 msgid "&Revert"
 msgstr "&Gendan"
 
@@ -17143,15 +17181,15 @@ msgstr "LyX-versionsstyring: Beskrivelse"
 msgid "(no initial description)"
 msgstr "(ingen beskrivelse)"
 
-#: src/LyXVC.cpp:149
+#: src/LyXVC.cpp:150
 msgid "LyX VC: Log Message"
 msgstr "LyX-versionsstyring: Beskrivelse til log"
 
-#: src/LyXVC.cpp:152
+#: src/LyXVC.cpp:153
 msgid "(no log message)"
 msgstr "(ingen log-besked)"
 
-#: src/LyXVC.cpp:175
+#: src/LyXVC.cpp:177
 #, fuzzy, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -17163,32 +17201,32 @@ msgstr ""
 "\n"
 "Vil du gendanne den gemte udgave?"
 
-#: src/LyXVC.cpp:178
+#: src/LyXVC.cpp:180
 msgid "Revert to stored version of document?"
 msgstr "Gendan den gemte udgave af dokumentet?"
 
-#: src/Paragraph.cpp:1512 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1559 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Giver ingen mening med dette layout"
 
-#: src/Paragraph.cpp:1578
+#: src/Paragraph.cpp:1625
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1579
+#: src/Paragraph.cpp:1626
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2047 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2094 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:182 src/insets/InsetListings.cpp:190
 #: src/insets/InsetListings.cpp:214 src/mathed/InsetMathString.cpp:164
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX-version "
 
-#: src/Paragraph.cpp:2048 src/insets/InsetListings.cpp:183
+#: src/Paragraph.cpp:2095 src/insets/InsetListings.cpp:183
 #: src/insets/InsetListings.cpp:191 src/mathed/InsetMathString.cpp:165
 #, fuzzy
 msgid "uncodable character"
@@ -17367,26 +17405,31 @@ msgid ""
 "%1$s."
 msgstr ""
 
-#: src/VCBackend.cpp:46 src/VCBackend.cpp:468 src/VCBackend.cpp:515
+#: src/VCBackend.cpp:52 src/VCBackend.cpp:479 src/VCBackend.cpp:530
 #, fuzzy
 msgid "Revision control error."
 msgstr "Versionsstyring"
 
-#: src/VCBackend.cpp:47
+#: src/VCBackend.cpp:53
 #, fuzzy, c-format
 msgid ""
 "Some problem occured while running the command:\n"
 "'%1$s'."
 msgstr "Der skete en fejl under kørslen af %1$s"
 
-#: src/VCBackend.cpp:469
+#: src/VCBackend.cpp:468 src/VCBackend.cpp:520
+#, fuzzy
+msgid "Error: Could not generate logfile."
+msgstr "Kunne ikke læse fil"
+
+#: src/VCBackend.cpp:480
 msgid ""
 "Error when commiting to repository.\n"
 "You have to manually resolve the problem.\n"
 "After pressing OK, LyX will reopen the document."
 msgstr ""
 
-#: src/VCBackend.cpp:516
+#: src/VCBackend.cpp:531
 #, c-format
 msgid ""
 "Error when updating from repository.\n"
@@ -17495,21 +17538,21 @@ msgstr ""
 msgid "Could not read template"
 msgstr "Kunne ikke læse skabelon"
 
-#: src/buffer_funcs.cpp:387
+#: src/buffer_funcs.cpp:386
 #, fuzzy
 msgid "\\arabic{enumi}."
 msgstr "Undersektion"
 
-#: src/buffer_funcs.cpp:393
+#: src/buffer_funcs.cpp:392
 msgid "\\roman{enumiii}."
 msgstr ""
 
-#: src/buffer_funcs.cpp:396
+#: src/buffer_funcs.cpp:395
 #, fuzzy
 msgid "\\Alph{enumiv}."
 msgstr "markeret"
 
-#: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:293
+#: src/buffer_funcs.cpp:412 src/insets/InsetCaption.cpp:293
 #, fuzzy
 msgid "Senseless!!! "
 msgstr "Meningsløs: "
@@ -17649,12 +17692,12 @@ msgstr ""
 "Angivelse af farven \"%1$s\" mislykkedes - farven er udefineret eller måske "
 "ikke gendefineret"
 
-#: src/frontends/qt4/GuiApplication.cpp:1211
+#: src/frontends/qt4/GuiApplication.cpp:1206
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Dokumentudskrift mislykkedes"
 
-#: src/frontends/qt4/GuiApplication.cpp:1221
+#: src/frontends/qt4/GuiApplication.cpp:1216
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -17662,18 +17705,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1225
-#: src/frontends/qt4/GuiApplication.cpp:1231
+#: src/frontends/qt4/GuiApplication.cpp:1220
+#: src/frontends/qt4/GuiApplication.cpp:1226
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1229
+#: src/frontends/qt4/GuiApplication.cpp:1224
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1401
+#: src/frontends/qt4/GuiApplication.cpp:1396
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Kunne ikke læse opsætningsfilen"
@@ -17692,8 +17735,8 @@ msgstr "Litteraturliste"
 #: src/frontends/qt4/GuiDocument.cpp:1293
 #: src/frontends/qt4/GuiExternal.cpp:661 src/frontends/qt4/GuiGraphics.cpp:740
 #: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1219
-#: src/frontends/qt4/GuiView.cpp:1277 src/frontends/qt4/GuiView.cpp:1414
-#: src/frontends/qt4/GuiView.cpp:1533 src/frontends/qt4/GuiView.cpp:1612
+#: src/frontends/qt4/GuiView.cpp:1277 src/frontends/qt4/GuiView.cpp:1417
+#: src/frontends/qt4/GuiView.cpp:1536 src/frontends/qt4/GuiView.cpp:1615
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#d#D"
 
@@ -17907,9 +17950,9 @@ msgid "Choose a filename to save the pasted graphic as"
 msgstr "Vælg filnavnet, som dokumentet skal gemmes under"
 
 #: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1295
-#: src/frontends/qt4/GuiView.cpp:1434 src/frontends/qt4/GuiView.cpp:1450
-#: src/frontends/qt4/GuiView.cpp:1467 src/frontends/qt4/GuiView.cpp:1550
-#: src/frontends/qt4/GuiView.cpp:1588
+#: src/frontends/qt4/GuiView.cpp:1437 src/frontends/qt4/GuiView.cpp:1453
+#: src/frontends/qt4/GuiView.cpp:1470 src/frontends/qt4/GuiView.cpp:1553
+#: src/frontends/qt4/GuiView.cpp:1591
 msgid "Canceled."
 msgstr "Annulleret."
 
@@ -18855,19 +18898,19 @@ msgstr "Udskriv til fil"
 msgid "PostScript files (*.ps)"
 msgstr "PostScript-filer (*.ps)"
 
-#: src/frontends/qt4/GuiRef.cpp:42
+#: src/frontends/qt4/GuiRef.cpp:43
 msgid "Cross-reference"
 msgstr "Krydshenvisning"
 
-#: src/frontends/qt4/GuiRef.cpp:264
+#: src/frontends/qt4/GuiRef.cpp:265
 msgid "&Go Back"
 msgstr "&Gå tilbage"
 
-#: src/frontends/qt4/GuiRef.cpp:266
+#: src/frontends/qt4/GuiRef.cpp:267
 msgid "Jump back"
 msgstr "Hop tilbage"
 
-#: src/frontends/qt4/GuiRef.cpp:274
+#: src/frontends/qt4/GuiRef.cpp:275
 #, fuzzy
 msgid "Jump to label"
 msgstr "Hop til reference"
@@ -19419,12 +19462,12 @@ msgstr "Ukendt symbol: %1$s %2$s\n"
 msgid "Select template file"
 msgstr "Vælg skabelonfil"
 
-#: src/frontends/qt4/GuiView.cpp:1220 src/frontends/qt4/GuiView.cpp:1613
+#: src/frontends/qt4/GuiView.cpp:1220 src/frontends/qt4/GuiView.cpp:1616
 msgid "Templates|#T#t"
 msgstr "Skabeloner|#S#s"
 
 #: src/frontends/qt4/GuiView.cpp:1223 src/frontends/qt4/GuiView.cpp:1281
-#: src/frontends/qt4/GuiView.cpp:1539 src/frontends/qt4/GuiView.cpp:1620
+#: src/frontends/qt4/GuiView.cpp:1542 src/frontends/qt4/GuiView.cpp:1623
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-dokumenter (*.lyx)"
 
@@ -19437,8 +19480,8 @@ msgstr "Dokument ikke gemt"
 msgid "Select document to open"
 msgstr "Vælg dokument, som skal åbnes"
 
-#: src/frontends/qt4/GuiView.cpp:1278 src/frontends/qt4/GuiView.cpp:1415
-#: src/frontends/qt4/GuiView.cpp:1534
+#: src/frontends/qt4/GuiView.cpp:1278 src/frontends/qt4/GuiView.cpp:1418
+#: src/frontends/qt4/GuiView.cpp:1537
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
@@ -19467,26 +19510,31 @@ msgstr "Åbner dokument %1$s..."
 msgid "Document %1$s opened."
 msgstr "Dokumentet %1$s blev åbnet."
 
-#: src/frontends/qt4/GuiView.cpp:1329
+#: src/frontends/qt4/GuiView.cpp:1330
+#, fuzzy
+msgid "Version control detected."
+msgstr "Versionsstyring"
+
+#: src/frontends/qt4/GuiView.cpp:1332
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikke åbne dokumentet %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1358
+#: src/frontends/qt4/GuiView.cpp:1361
 msgid "Couldn't import file"
 msgstr "Kunne ikke importere fil"
 
-#: src/frontends/qt4/GuiView.cpp:1359
+#: src/frontends/qt4/GuiView.cpp:1362
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Ingen oplysninger om import af formatet %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:1410
+#: src/frontends/qt4/GuiView.cpp:1413
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vælg %1$s-fil at importere"
 
-#: src/frontends/qt4/GuiView.cpp:1461 src/frontends/qt4/GuiView.cpp:1637
+#: src/frontends/qt4/GuiView.cpp:1464 src/frontends/qt4/GuiView.cpp:1640
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -19497,43 +19545,43 @@ msgstr ""
 "\n"
 "Vil du overskrive dette dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:1463 src/frontends/qt4/GuiView.cpp:1641
+#: src/frontends/qt4/GuiView.cpp:1466 src/frontends/qt4/GuiView.cpp:1644
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Overskriv dokument?"
 
 # , c-format
-#: src/frontends/qt4/GuiView.cpp:1472
+#: src/frontends/qt4/GuiView.cpp:1475
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Importerer %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1475
+#: src/frontends/qt4/GuiView.cpp:1478
 msgid "imported."
 msgstr "importeret."
 
-#: src/frontends/qt4/GuiView.cpp:1477
+#: src/frontends/qt4/GuiView.cpp:1480
 #, fuzzy
 msgid "file not imported!"
 msgstr "Streng ikke fundet!"
 
-#: src/frontends/qt4/GuiView.cpp:1532
+#: src/frontends/qt4/GuiView.cpp:1535
 msgid "Select LyX document to insert"
 msgstr "Vælg LyX-dokument at indsætte"
 
-#: src/frontends/qt4/GuiView.cpp:1573
+#: src/frontends/qt4/GuiView.cpp:1576
 msgid "Select file to insert"
 msgstr "Vælg fil som skal indsættes"
 
-#: src/frontends/qt4/GuiView.cpp:1610
+#: src/frontends/qt4/GuiView.cpp:1613
 msgid "Choose a filename to save document as"
 msgstr "Vælg filnavnet, som dokumentet skal gemmes under"
 
-#: src/frontends/qt4/GuiView.cpp:1642 src/frontends/qt4/GuiView.cpp:1687
+#: src/frontends/qt4/GuiView.cpp:1645 src/frontends/qt4/GuiView.cpp:1690
 msgid "&Rename"
 msgstr "&Omdøb"
 
-#: src/frontends/qt4/GuiView.cpp:1683
+#: src/frontends/qt4/GuiView.cpp:1686
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -19544,16 +19592,16 @@ msgstr ""
 "\n"
 "Vil du omdøbe dokumentet og prøve igen?"
 
-#: src/frontends/qt4/GuiView.cpp:1686
+#: src/frontends/qt4/GuiView.cpp:1689
 msgid "Rename and save?"
 msgstr "Omdøb og gem?"
 
-#: src/frontends/qt4/GuiView.cpp:1687
+#: src/frontends/qt4/GuiView.cpp:1690
 #, fuzzy
 msgid "&Retry"
 msgstr "&Gendan"
 
-#: src/frontends/qt4/GuiView.cpp:1737
+#: src/frontends/qt4/GuiView.cpp:1740
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -19564,21 +19612,21 @@ msgstr ""
 "\n"
 "Ønsker du at gemme dokumentet eller at skrotte ændringerne?"
 
-#: src/frontends/qt4/GuiView.cpp:1740
+#: src/frontends/qt4/GuiView.cpp:1743
 msgid "&Discard"
 msgstr "&Skrot"
 
-#: src/frontends/qt4/GuiView.cpp:1844
+#: src/frontends/qt4/GuiView.cpp:1847
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "Gemmer dokumentet %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1854
+#: src/frontends/qt4/GuiView.cpp:1857
 #, fuzzy
 msgid "All documents saved."
 msgstr "Dokument ikke gemt"
 
-#: src/frontends/qt4/GuiView.cpp:2054
+#: src/frontends/qt4/GuiView.cpp:2057
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
@@ -20101,17 +20149,22 @@ msgstr "Streng ikke fundet!"
 msgid "Information regarding "
 msgstr "Ingen oplysninger om visning af %1$s"
 
-#: src/insets/InsetInfo.cpp:280 src/insets/InsetInfo.cpp:284
+#: src/insets/InsetInfo.cpp:282
+#, fuzzy
+msgid "undefined"
+msgstr "Understreget %1$s, "
+
+#: src/insets/InsetInfo.cpp:305 src/insets/InsetInfo.cpp:309
 #, fuzzy
 msgid "yes"
 msgstr "Stil"
 
-#: src/insets/InsetInfo.cpp:280 src/insets/InsetInfo.cpp:284
+#: src/insets/InsetInfo.cpp:305 src/insets/InsetInfo.cpp:309
 #, fuzzy
 msgid "no"
 msgstr "Fortryd"
 
-#: src/insets/InsetInfo.cpp:338
+#: src/insets/InsetInfo.cpp:363
 #, fuzzy
 msgid "Unknown buffer info"
 msgstr "Ukendt indstik"
@@ -20482,7 +20535,7 @@ msgstr "Ukendt symbol"
 msgid "Opened table"
 msgstr "Åbnede tabel"
 
-#: src/insets/InsetText.cpp:215
+#: src/insets/InsetText.cpp:212
 msgid "Opened Text Inset"
 msgstr "Tekst-indstik åbnet"
 
@@ -20764,7 +20817,8 @@ msgstr ""
 msgid ""
 "Unable to determine the system directory having searched\n"
 "\t%1$s\n"
-"Use the '-sysdir' command line parameter or set the environment variable "
+"Use the '-sysdir' command line parameter or set the environment variable\n"
+"%2$s to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 
 #: src/support/Package.cpp:636 src/support/Package.cpp:663
@@ -20972,10 +21026,6 @@ msgstr "Ukendt indstik"
 #, fuzzy
 #~ msgid "Adds an environment for hanging paragraphs."
 #~ msgstr "Kan ikke indeksere flere end ét afsnit!"
-
-#, fuzzy
-#~ msgid "Reject change"
-#~ msgstr "Afvis ændring|#A"
 
 #, fuzzy
 #~ msgid "The document class %1$s could not be found."

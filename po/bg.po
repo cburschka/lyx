@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-07-29 00:33+0200\n"
+"POT-Creation-Date: 2008-08-04 02:11+0200\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -107,12 +107,12 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:836
 #: src/Buffer.cpp:2522 src/Buffer.cpp:2546 src/Buffer.cpp:2581
 #: src/LyXFunc.cpp:666 src/LyXFunc.cpp:802 src/LyXFunc.cpp:980
-#: src/LyXVC.cpp:179 src/frontends/qt4/GuiClipboard.cpp:208
+#: src/LyXVC.cpp:181 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1251
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1464
-#: src/frontends/qt4/GuiView.cpp:1642 src/frontends/qt4/GuiView.cpp:1687
-#: src/frontends/qt4/GuiView.cpp:1740 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1467
+#: src/frontends/qt4/GuiView.cpp:1645 src/frontends/qt4/GuiView.cpp:1690
+#: src/frontends/qt4/GuiView.cpp:1743 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
 msgstr "(&C)Отказ"
 
@@ -4013,7 +4013,7 @@ msgstr ""
 
 # src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:44
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:665
-#: src/frontends/qt4/GuiView.cpp:1740
+#: src/frontends/qt4/GuiView.cpp:1743
 #, fuzzy
 msgid "&Save"
 msgstr "Запази"
@@ -4208,7 +4208,7 @@ msgstr "Към препратка"
 
 # src/insets/insetbib.C:69 src/insets/insetbib.C:70 src/insets/insetbib.C:210
 # src/insets/insetbib.C:211
-#: src/frontends/qt4/ui/RefUi.ui:250 src/frontends/qt4/GuiRef.cpp:272
+#: src/frontends/qt4/ui/RefUi.ui:250 src/frontends/qt4/GuiRef.cpp:273
 #, fuzzy
 msgid "&Go to Label"
 msgstr "Етикет(L):|#L"
@@ -6109,7 +6109,7 @@ msgid "Seriate"
 msgstr "Сръбски"
 
 #: lib/layouts/apa.layout:406 lib/layouts/apa.layout:407
-#: src/buffer_funcs.cpp:390
+#: src/buffer_funcs.cpp:389
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -10502,7 +10502,7 @@ msgstr "Френски"
 
 # src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:36
 #: lib/layouts/stdinsets.inc:180 lib/layouts/minimalistic.module:8
-#: src/insets/InsetIndex.cpp:149
+#: src/insets/InsetIndex.cpp:186
 msgid "Index"
 msgstr "Индекс"
 
@@ -11408,7 +11408,7 @@ msgid "German"
 msgstr "Немски"
 
 # src/ext_l10n.h:446 src/mathed/math_forms.C:26
-#: lib/languages:44 lib/ui/stdtoolbars.inc:462
+#: lib/languages:44 lib/ui/stdtoolbars.inc:470
 #: src/frontends/qt4/GuiSymbols.cpp:59
 msgid "Greek"
 msgstr "Гръцки"
@@ -12960,16 +12960,16 @@ msgid "FAQ|F"
 msgstr "FAQ|F"
 
 # src/ext_l10n.h:144
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:526
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:527
 msgid "Table of Contents|a"
 msgstr "Съдържание(a)|a"
 
 # src/ext_l10n.h:146
-#: lib/ui/classic.ui:418 lib/ui/stdmenus.inc:527
+#: lib/ui/classic.ui:418 lib/ui/stdmenus.inc:528
 msgid "LaTeX Configuration|L"
 msgstr "LaTeX конфигурация|L"
 
-#: lib/ui/classic.ui:420 lib/ui/stdmenus.inc:529
+#: lib/ui/classic.ui:420 lib/ui/stdmenus.inc:530
 msgid "About LyX|X"
 msgstr ""
 
@@ -14254,6 +14254,12 @@ msgstr "LaTeX конфигурация|L"
 msgid "Shortcuts|S"
 msgstr "Подзаглавие"
 
+# src/mathed/math_forms.C:22
+#: lib/ui/stdmenus.inc:526
+#, fuzzy
+msgid "LyX Functions|y"
+msgstr "Функции"
+
 # src/LyXAction.C:141
 #: lib/ui/stdtoolbars.inc:57
 msgid "New document"
@@ -14798,2581 +14804,2617 @@ msgstr ""
 msgid "Update PostScript"
 msgstr ""
 
-# src/mathed/math_panel.C:383
+# src/ext_l10n.h:24
 #: lib/ui/stdtoolbars.inc:213
+#, fuzzy
+msgid "Version Control"
+msgstr "Контрол на версията(V)|V"
+
+# src/ext_l10n.h:30
+#: lib/ui/stdtoolbars.inc:214
+#, fuzzy
+msgid "Register"
+msgstr "Регистрирай(R)|R"
+
+# src/ext_l10n.h:32
+#: lib/ui/stdtoolbars.inc:215
+#, fuzzy
+msgid "Check-out for edit"
+msgstr "Изтегли за редактиране(O)|O"
+
+# src/ext_l10n.h:31
+#: lib/ui/stdtoolbars.inc:216
+#, fuzzy
+msgid "Check-in changes"
+msgstr "Вкарай промените(I)|I"
+
+# src/ext_l10n.h:24
+#: lib/ui/stdtoolbars.inc:217
+#, fuzzy
+msgid "View revision log"
+msgstr "Контрол на версията(V)|V"
+
+# src/form1.C:249
+#: lib/ui/stdtoolbars.inc:218
+#, fuzzy
+msgid "Revert changes"
+msgstr "Нов прочит"
+
+# src/mathed/math_panel.C:383
+#: lib/ui/stdtoolbars.inc:221
 #, fuzzy
 msgid "Math Panels"
 msgstr "Матем. символи"
 
 # src/mathed/math_panel.C:128
-#: lib/ui/stdtoolbars.inc:214
+#: lib/ui/stdtoolbars.inc:222
 #, fuzzy
 msgid "Math Spacings"
 msgstr "Разстояние"
 
 # src/insets/insetbib.C:340
-#: lib/ui/stdtoolbars.inc:215 lib/ui/stdtoolbars.inc:287
+#: lib/ui/stdtoolbars.inc:223 lib/ui/stdtoolbars.inc:295
 #, fuzzy
 msgid "Styles"
 msgstr "Стил: "
 
 # src/mathed/math_panel.C:383
-#: lib/ui/stdtoolbars.inc:216 lib/ui/stdtoolbars.inc:294
+#: lib/ui/stdtoolbars.inc:224 lib/ui/stdtoolbars.inc:302
 #, fuzzy
 msgid "Fractions"
 msgstr "Матем. символи"
 
 # src/bufferview_funcs.C:267
-#: lib/ui/stdtoolbars.inc:217 lib/ui/stdtoolbars.inc:309
+#: lib/ui/stdtoolbars.inc:225 lib/ui/stdtoolbars.inc:317
 #: src/frontends/qt4/GuiDocument.cpp:980
 #, fuzzy
 msgid "Fonts"
 msgstr "Шрифт:"
 
 # src/mathed/math_forms.C:22
-#: lib/ui/stdtoolbars.inc:218 lib/ui/stdtoolbars.inc:234
+#: lib/ui/stdtoolbars.inc:226 lib/ui/stdtoolbars.inc:242
 #, fuzzy
 msgid "Functions"
 msgstr "Функции"
 
-#: lib/ui/stdtoolbars.inc:235
+#: lib/ui/stdtoolbars.inc:243
 msgid "arccos"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:98
-#: lib/ui/stdtoolbars.inc:236
+#: lib/ui/stdtoolbars.inc:244
 #, fuzzy
 msgid "arcsin"
 msgstr "Полета"
 
 # src/ext_l10n.h:432
-#: lib/ui/stdtoolbars.inc:237
+#: lib/ui/stdtoolbars.inc:245
 #, fuzzy
 msgid "arctan"
 msgstr "Каталонски"
 
 # src/lyxfont.C:56
-#: lib/ui/stdtoolbars.inc:238
+#: lib/ui/stdtoolbars.inc:246
 #, fuzzy
 msgid "arg"
 msgstr "Голям"
 
-#: lib/ui/stdtoolbars.inc:239
+#: lib/ui/stdtoolbars.inc:247
 msgid "bmod"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:240
+#: lib/ui/stdtoolbars.inc:248
 msgid "cos"
 msgstr ""
 
 # src/ext_l10n.h:457
-#: lib/ui/stdtoolbars.inc:241
+#: lib/ui/stdtoolbars.inc:249
 #, fuzzy
 msgid "cosh"
 msgstr "Шотландски"
 
 # src/frontends/kde/dlg/paraextradlgdata.C:142
-#: lib/ui/stdtoolbars.inc:242
+#: lib/ui/stdtoolbars.inc:250
 #, fuzzy
 msgid "cot"
 msgstr "(&T)Отгоре"
 
 # src/ext_l10n.h:457
-#: lib/ui/stdtoolbars.inc:243
+#: lib/ui/stdtoolbars.inc:251
 #, fuzzy
 msgid "coth"
 msgstr "Шотландски"
 
-#: lib/ui/stdtoolbars.inc:244
+#: lib/ui/stdtoolbars.inc:252
 msgid "csc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:245
+#: lib/ui/stdtoolbars.inc:253
 msgid "deg"
 msgstr ""
 
 # src/frontends/xforms/form_graphics.C:61
 # src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:411
-#: lib/ui/stdtoolbars.inc:246
+#: lib/ui/stdtoolbars.inc:254
 #, fuzzy
 msgid "det"
 msgstr "Стандартно"
 
 # src/lyxfont.C:47
-#: lib/ui/stdtoolbars.inc:247
+#: lib/ui/stdtoolbars.inc:255
 #, fuzzy
 msgid "dim"
 msgstr "Средно"
 
 # src/LColor.C:63
-#: lib/ui/stdtoolbars.inc:248
+#: lib/ui/stdtoolbars.inc:256
 #, fuzzy
 msgid "exp"
 msgstr "текст"
 
-#: lib/ui/stdtoolbars.inc:249
+#: lib/ui/stdtoolbars.inc:257
 msgid "gcd"
 msgstr ""
 
 # src/insets/insettheorem.C:39
-#: lib/ui/stdtoolbars.inc:250
+#: lib/ui/stdtoolbars.inc:258
 #, fuzzy
 msgid "hom"
 msgstr "Теорема"
 
 # src/lyxfont.C:56
-#: lib/ui/stdtoolbars.inc:251
+#: lib/ui/stdtoolbars.inc:259
 #, fuzzy
 msgid "inf"
 msgstr "Дребен"
 
 # src/spellchecker.C:717
-#: lib/ui/stdtoolbars.inc:252
+#: lib/ui/stdtoolbars.inc:260
 #, fuzzy
 msgid "ker"
 msgstr "Правопис"
 
-#: lib/ui/stdtoolbars.inc:253
+#: lib/ui/stdtoolbars.inc:261
 msgid "lg"
 msgstr ""
 
 # src/mathed/math_panel.C:128
-#: lib/ui/stdtoolbars.inc:254
+#: lib/ui/stdtoolbars.inc:262
 #, fuzzy
 msgid "lim"
 msgstr "Разстояние"
 
-#: lib/ui/stdtoolbars.inc:255
+#: lib/ui/stdtoolbars.inc:263
 msgid "liminf"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:256
+#: lib/ui/stdtoolbars.inc:264
 msgid "limsup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:257
+#: lib/ui/stdtoolbars.inc:265
 msgid "ln"
 msgstr ""
 
 # src/frontends/kde/FormRef.C:103
-#: lib/ui/stdtoolbars.inc:258
+#: lib/ui/stdtoolbars.inc:266
 #, fuzzy
 msgid "log"
 msgstr "(&G)Назад"
 
-#: lib/ui/stdtoolbars.inc:259
+#: lib/ui/stdtoolbars.inc:267
 msgid "max"
 msgstr ""
 
 # src/lyxfont.C:56
-#: lib/ui/stdtoolbars.inc:260
+#: lib/ui/stdtoolbars.inc:268
 #, fuzzy
 msgid "min"
 msgstr "Дребен"
 
 # src/frontends/xforms/FormPreferences.C:1016
 # src/frontends/xforms/FormPreferences.C:1288
-#: lib/ui/stdtoolbars.inc:261
+#: lib/ui/stdtoolbars.inc:269
 #, fuzzy
 msgid "sec"
 msgstr "Добави"
 
 # src/lyxfont.C:56
-#: lib/ui/stdtoolbars.inc:262
+#: lib/ui/stdtoolbars.inc:270
 #, fuzzy
 msgid "sin"
 msgstr "Дребен"
 
 # src/lyxfont.C:56
-#: lib/ui/stdtoolbars.inc:263
+#: lib/ui/stdtoolbars.inc:271
 #, fuzzy
 msgid "sinh"
 msgstr "Дребен"
 
-#: lib/ui/stdtoolbars.inc:264
+#: lib/ui/stdtoolbars.inc:272
 msgid "sup"
 msgstr ""
 
 # src/ext_l10n.h:170
-#: lib/ui/stdtoolbars.inc:265
+#: lib/ui/stdtoolbars.inc:273
 #, fuzzy
 msgid "tan"
 msgstr "И"
 
 # src/ext_l10n.h:441
-#: lib/ui/stdtoolbars.inc:266
+#: lib/ui/stdtoolbars.inc:274
 #, fuzzy
 msgid "tanh"
 msgstr "Френски"
 
 # src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:432
-#: lib/ui/stdtoolbars.inc:267
+#: lib/ui/stdtoolbars.inc:275
 #, fuzzy
 msgid "Pr"
 msgstr "Копирай"
 
 # src/mathed/math_panel.C:128
-#: lib/ui/stdtoolbars.inc:270
+#: lib/ui/stdtoolbars.inc:278
 #, fuzzy
 msgid "Spacings"
 msgstr "Разстояние"
 
 # src/frontends/kde/parageneraldlg.C:40 src/frontends/kde/parageneraldlg.C:47
-#: lib/ui/stdtoolbars.inc:271
+#: lib/ui/stdtoolbars.inc:279
 #, fuzzy
 msgid "Thin space\t\\,"
 msgstr "Средно разстояние"
 
 # src/frontends/kde/parageneraldlg.C:40 src/frontends/kde/parageneraldlg.C:47
-#: lib/ui/stdtoolbars.inc:272
+#: lib/ui/stdtoolbars.inc:280
 #, fuzzy
 msgid "Medium space\t\\:"
 msgstr "Средно разстояние"
 
 # src/frontends/kde/parageneraldlg.C:40 src/frontends/kde/parageneraldlg.C:47
-#: lib/ui/stdtoolbars.inc:273
+#: lib/ui/stdtoolbars.inc:281
 #, fuzzy
 msgid "Thick space\t\\;"
 msgstr "Средно разстояние"
 
-#: lib/ui/stdtoolbars.inc:274
+#: lib/ui/stdtoolbars.inc:282
 msgid "Quadratin space\t\\quad"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:275
+#: lib/ui/stdtoolbars.inc:283
 msgid "Double quadratin space\t\\qquad"
 msgstr ""
 
 # src/frontends/kde/parageneraldlg.C:40 src/frontends/kde/parageneraldlg.C:47
-#: lib/ui/stdtoolbars.inc:276
+#: lib/ui/stdtoolbars.inc:284
 #, fuzzy
 msgid "Negative space\t\\!"
 msgstr "Средно разстояние"
 
-#: lib/ui/stdtoolbars.inc:277
+#: lib/ui/stdtoolbars.inc:285
 msgid "Placeholder\t\\phantom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:278
+#: lib/ui/stdtoolbars.inc:286
 msgid "Horizontal placeholder\t\\hphantom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:279
+#: lib/ui/stdtoolbars.inc:287
 msgid "Vertical placeholder\t\\vphantom"
 msgstr ""
 
 # src/insets/insetfoot.C:32
-#: lib/ui/stdtoolbars.inc:282
+#: lib/ui/stdtoolbars.inc:290
 #, fuzzy
 msgid "Roots"
 msgstr "бел. под линия"
 
-#: lib/ui/stdtoolbars.inc:283
+#: lib/ui/stdtoolbars.inc:291
 msgid "Square root\t\\sqrt"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:284
+#: lib/ui/stdtoolbars.inc:292
 msgid "Other root\t\\root"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:288
+#: lib/ui/stdtoolbars.inc:296
 msgid "Display style\t\\displaystyle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:289
+#: lib/ui/stdtoolbars.inc:297
 msgid "Normal text style\t\\textstyle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:290
+#: lib/ui/stdtoolbars.inc:298
 msgid "Script (small) style\t\\scriptstyle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:291
+#: lib/ui/stdtoolbars.inc:299
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr ""
 
 # src/ext_l10n.h:361
-#: lib/ui/stdtoolbars.inc:295
+#: lib/ui/stdtoolbars.inc:303
 #, fuzzy
 msgid "Standard\t\\frac"
 msgstr "Стандартен"
 
 # src/BufferView2.C:636 src/BufferView2.C:640
-#: lib/ui/stdtoolbars.inc:296
+#: lib/ui/stdtoolbars.inc:304
 #, fuzzy
 msgid "No horizontal line\t\\atop"
 msgstr "Няма повече бележки"
 
-#: lib/ui/stdtoolbars.inc:297
+#: lib/ui/stdtoolbars.inc:305
 msgid "Nice fraction (3/4)\t\\nicefrac"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:298
+#: lib/ui/stdtoolbars.inc:306
 msgid "Unit (km)\t\\unit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:299
+#: lib/ui/stdtoolbars.inc:307
 msgid "Unit (864 m)\t\\unit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:300
+#: lib/ui/stdtoolbars.inc:308
 msgid "Unit fraction (km/h)\t\\unitfrac"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:301
+#: lib/ui/stdtoolbars.inc:309
 msgid "Unit fraction (20 km/h)\t\\unitfrac"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:302
+#: lib/ui/stdtoolbars.inc:310
 msgid "Text fraction (amsmath)\t\\tfrac"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:303
+#: lib/ui/stdtoolbars.inc:311
 msgid "Display fraction (amsmath)\t\\dfrac"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:304
+#: lib/ui/stdtoolbars.inc:312
 msgid "Binomial\t\\binom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:305
+#: lib/ui/stdtoolbars.inc:313
 msgid "Text binomial\t\\tbinom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:306
+#: lib/ui/stdtoolbars.inc:314
 msgid "Display binomial\t\\dbinom"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:310
+#: lib/ui/stdtoolbars.inc:318
 msgid "Roman\t\\mathrm"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:311
+#: lib/ui/stdtoolbars.inc:319
 msgid "Bold\t\\mathbf"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:312
+#: lib/ui/stdtoolbars.inc:320
 msgid "Bold symbol\t\\boldsymbol"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:108
-#: lib/ui/stdtoolbars.inc:313
+#: lib/ui/stdtoolbars.inc:321
 #, fuzzy
 msgid "Sans serif\t\\mathsf"
 msgstr "Sans Serif"
 
 # src/lyxfont.C:51
-#: lib/ui/stdtoolbars.inc:314
+#: lib/ui/stdtoolbars.inc:322
 #, fuzzy
 msgid "Italic\t\\mathit"
 msgstr "Курсив"
 
 # src/frontends/xforms/form_preferences.C:111 src/lyxfont.C:42
-#: lib/ui/stdtoolbars.inc:315
+#: lib/ui/stdtoolbars.inc:323
 #, fuzzy
 msgid "Typewriter\t\\mathtt"
 msgstr "Машинопис"
 
-#: lib/ui/stdtoolbars.inc:316
+#: lib/ui/stdtoolbars.inc:324
 msgid "Blackboard\t\\mathbb"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:317
+#: lib/ui/stdtoolbars.inc:325
 msgid "Fraktur\t\\mathfrak"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:318
+#: lib/ui/stdtoolbars.inc:326
 msgid "Calligraphic\t\\mathcal"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:319
+#: lib/ui/stdtoolbars.inc:327
 msgid "Normal text mode\t\\textrm"
 msgstr ""
 
 # src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3054
 # src/lyxfunc.C:3156 src/lyxfunc.C:3212 src/lyxfunc.C:3288
-#: lib/ui/stdtoolbars.inc:322
+#: lib/ui/stdtoolbars.inc:330
 #, fuzzy
 msgid "Dots"
 msgstr "Документи"
 
 # src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3054
 # src/lyxfunc.C:3156 src/lyxfunc.C:3212 src/lyxfunc.C:3288
-#: lib/ui/stdtoolbars.inc:323
+#: lib/ui/stdtoolbars.inc:331
 #, fuzzy
 msgid "ldots"
 msgstr "Документи"
 
 # src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3054
 # src/lyxfunc.C:3156 src/lyxfunc.C:3212 src/lyxfunc.C:3288
-#: lib/ui/stdtoolbars.inc:324
+#: lib/ui/stdtoolbars.inc:332
 #, fuzzy
 msgid "cdots"
 msgstr "Документи"
 
 # src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3054
 # src/lyxfunc.C:3156 src/lyxfunc.C:3212 src/lyxfunc.C:3288
-#: lib/ui/stdtoolbars.inc:325
+#: lib/ui/stdtoolbars.inc:333
 #, fuzzy
 msgid "vdots"
 msgstr "Документи"
 
 # src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3054
 # src/lyxfunc.C:3156 src/lyxfunc.C:3212 src/lyxfunc.C:3288
-#: lib/ui/stdtoolbars.inc:326
+#: lib/ui/stdtoolbars.inc:334
 #, fuzzy
 msgid "ddots"
 msgstr "Документи"
 
 # src/ext_l10n.h:219
-#: lib/ui/stdtoolbars.inc:329
+#: lib/ui/stdtoolbars.inc:337
 #, fuzzy
 msgid "Frame Decorations"
 msgstr "Посвещение"
 
 # src/ext_l10n.h:194
-#: lib/ui/stdtoolbars.inc:330
+#: lib/ui/stdtoolbars.inc:338
 #, fuzzy
 msgid "hat"
 msgstr "Глава"
 
 # src/frontends/kde/dlg/printdlgdata.C:246
-#: lib/ui/stdtoolbars.inc:331
+#: lib/ui/stdtoolbars.inc:339
 #, fuzzy
 msgid "tilde"
 msgstr "(&F)Файл"
 
-#: lib/ui/stdtoolbars.inc:332
+#: lib/ui/stdtoolbars.inc:340
 msgid "bar"
 msgstr ""
 
 # src/LColor.C:56
-#: lib/ui/stdtoolbars.inc:333
+#: lib/ui/stdtoolbars.inc:341
 #, fuzzy
 msgid "grave"
 msgstr "зелен"
 
 # src/frontends/kde/dlg/paraextradlgdata.C:142
-#: lib/ui/stdtoolbars.inc:334
+#: lib/ui/stdtoolbars.inc:342
 #, fuzzy
 msgid "dot"
 msgstr "(&T)Отгоре"
 
-#: lib/ui/stdtoolbars.inc:335
+#: lib/ui/stdtoolbars.inc:343
 msgid "check"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:336
+#: lib/ui/stdtoolbars.inc:344
 msgid "widehat"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:337
+#: lib/ui/stdtoolbars.inc:345
 msgid "widetilde"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:338
+#: lib/ui/stdtoolbars.inc:346
 msgid "vec"
 msgstr ""
 
 # src/ext_l10n.h:217
-#: lib/ui/stdtoolbars.inc:339
+#: lib/ui/stdtoolbars.inc:347
 #, fuzzy
 msgid "acute"
 msgstr "Дата"
 
 # src/frontends/xforms/FormPreferences.C:1016
 # src/frontends/xforms/FormPreferences.C:1288
-#: lib/ui/stdtoolbars.inc:340
+#: lib/ui/stdtoolbars.inc:348
 #, fuzzy
 msgid "ddot"
 msgstr "Добави"
 
 # src/frontends/kde/dlg/printdlgdata.C:246
-#: lib/ui/stdtoolbars.inc:341
+#: lib/ui/stdtoolbars.inc:349
 #, fuzzy
 msgid "breve"
 msgstr "(&F)Файл"
 
 # src/ext_l10n.h:462
-#: lib/ui/stdtoolbars.inc:342
+#: lib/ui/stdtoolbars.inc:350
 #, fuzzy
 msgid "overline"
 msgstr "Словенски"
 
-#: lib/ui/stdtoolbars.inc:343
+#: lib/ui/stdtoolbars.inc:351
 msgid "overbrace"
 msgstr ""
 
 # src/ext_l10n.h:74
-#: lib/ui/stdtoolbars.inc:344
+#: lib/ui/stdtoolbars.inc:352
 #, fuzzy
 msgid "overleftarrow"
 msgstr "Изтрий ред(w)|w"
 
-#: lib/ui/stdtoolbars.inc:345
+#: lib/ui/stdtoolbars.inc:353
 msgid "overrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:346
+#: lib/ui/stdtoolbars.inc:354
 msgid "overleftrightarrow"
 msgstr ""
 
 # src/lyxfunc.C:1125
-#: lib/ui/stdtoolbars.inc:347
+#: lib/ui/stdtoolbars.inc:355
 #, fuzzy
 msgid "overset"
 msgstr "LyX версия "
 
 # src/lyxfont.C:404
-#: lib/ui/stdtoolbars.inc:348
+#: lib/ui/stdtoolbars.inc:356
 #, fuzzy
 msgid "underline"
 msgstr "Подчертаване "
 
-#: lib/ui/stdtoolbars.inc:349
+#: lib/ui/stdtoolbars.inc:357
 msgid "underbrace"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:350
+#: lib/ui/stdtoolbars.inc:358
 msgid "underleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:351
+#: lib/ui/stdtoolbars.inc:359
 msgid "underrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:352
+#: lib/ui/stdtoolbars.inc:360
 msgid "underleftrightarrow"
 msgstr ""
 
 # src/lyxfunc.C:1125
-#: lib/ui/stdtoolbars.inc:353
+#: lib/ui/stdtoolbars.inc:361
 #, fuzzy
 msgid "underset"
 msgstr "LyX версия "
 
 # src/frontends/xforms/form_preferences.C:465
 # src/frontends/xforms/form_preferences.C:467
-#: lib/ui/stdtoolbars.inc:356 src/frontends/qt4/GuiSymbols.cpp:87
+#: lib/ui/stdtoolbars.inc:364 src/frontends/qt4/GuiSymbols.cpp:87
 #, fuzzy
 msgid "Arrows"
 msgstr "Търси"
 
 # src/ext_l10n.h:74
-#: lib/ui/stdtoolbars.inc:357
+#: lib/ui/stdtoolbars.inc:365
 #, fuzzy
 msgid "leftarrow"
 msgstr "Изтрий ред(w)|w"
 
-#: lib/ui/stdtoolbars.inc:358
+#: lib/ui/stdtoolbars.inc:366
 msgid "rightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:359
+#: lib/ui/stdtoolbars.inc:367
 msgid "downarrow"
 msgstr ""
 
 # src/LColor.C:92
-#: lib/ui/stdtoolbars.inc:360
+#: lib/ui/stdtoolbars.inc:368
 #, fuzzy
 msgid "uparrow"
 msgstr "грешка"
 
-#: lib/ui/stdtoolbars.inc:361
+#: lib/ui/stdtoolbars.inc:369
 msgid "updownarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:362
+#: lib/ui/stdtoolbars.inc:370
 msgid "leftrightarrow"
 msgstr ""
 
 # src/frontends/kde/dlg/parageneraldlgdata.C:120
-#: lib/ui/stdtoolbars.inc:363
+#: lib/ui/stdtoolbars.inc:371
 #, fuzzy
 msgid "Leftarrow"
 msgstr "Ляв"
 
 # src/ext_l10n.h:337
-#: lib/ui/stdtoolbars.inc:364
+#: lib/ui/stdtoolbars.inc:372
 #, fuzzy
 msgid "Rightarrow"
 msgstr "Заглавие"
 
-#: lib/ui/stdtoolbars.inc:365
+#: lib/ui/stdtoolbars.inc:373
 msgid "Downarrow"
 msgstr ""
 
 # src/LColor.C:92
-#: lib/ui/stdtoolbars.inc:366
+#: lib/ui/stdtoolbars.inc:374
 #, fuzzy
 msgid "Uparrow"
 msgstr "грешка"
 
-#: lib/ui/stdtoolbars.inc:367
+#: lib/ui/stdtoolbars.inc:375
 msgid "Updownarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:368
+#: lib/ui/stdtoolbars.inc:376
 msgid "Leftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:369
+#: lib/ui/stdtoolbars.inc:377
 msgid "Longleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:370
+#: lib/ui/stdtoolbars.inc:378
 msgid "Longleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:371
+#: lib/ui/stdtoolbars.inc:379
 msgid "Longrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:372
+#: lib/ui/stdtoolbars.inc:380
 msgid "longleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:373
+#: lib/ui/stdtoolbars.inc:381
 msgid "longleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:374
+#: lib/ui/stdtoolbars.inc:382
 msgid "longrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:375
+#: lib/ui/stdtoolbars.inc:383
 msgid "leftharpoondown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:376
+#: lib/ui/stdtoolbars.inc:384
 msgid "rightharpoondown"
 msgstr ""
 
 # src/ext_l10n.h:191
-#: lib/ui/stdtoolbars.inc:377
+#: lib/ui/stdtoolbars.inc:385
 #, fuzzy
 msgid "mapsto"
 msgstr "Заглавие"
 
-#: lib/ui/stdtoolbars.inc:378
+#: lib/ui/stdtoolbars.inc:386
 msgid "longmapsto"
 msgstr ""
 
 # src/LColor.C:92
-#: lib/ui/stdtoolbars.inc:379
+#: lib/ui/stdtoolbars.inc:387
 #, fuzzy
 msgid "nwarrow"
 msgstr "грешка"
 
 # src/LColor.C:92
-#: lib/ui/stdtoolbars.inc:380
+#: lib/ui/stdtoolbars.inc:388
 #, fuzzy
 msgid "nearrow"
 msgstr "грешка"
 
-#: lib/ui/stdtoolbars.inc:381
+#: lib/ui/stdtoolbars.inc:389
 msgid "leftharpoonup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:382
+#: lib/ui/stdtoolbars.inc:390
 msgid "rightharpoonup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:383
+#: lib/ui/stdtoolbars.inc:391
 msgid "hookleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:384
+#: lib/ui/stdtoolbars.inc:392
 msgid "hookrightarrow"
 msgstr ""
 
 # src/LColor.C:92
-#: lib/ui/stdtoolbars.inc:385
+#: lib/ui/stdtoolbars.inc:393
 #, fuzzy
 msgid "swarrow"
 msgstr "грешка"
 
 # src/LColor.C:92
-#: lib/ui/stdtoolbars.inc:386
+#: lib/ui/stdtoolbars.inc:394
 #, fuzzy
 msgid "searrow"
 msgstr "грешка"
 
-#: lib/ui/stdtoolbars.inc:387 lib/ui/stdtoolbars.inc:655
+#: lib/ui/stdtoolbars.inc:395 lib/ui/stdtoolbars.inc:663
 msgid "rightleftharpoons"
 msgstr ""
 
 # src/ext_l10n.h:438
-#: lib/ui/stdtoolbars.inc:390
+#: lib/ui/stdtoolbars.inc:398
 #, fuzzy
 msgid "Operators"
 msgstr "Есперанто"
 
-#: lib/ui/stdtoolbars.inc:391
+#: lib/ui/stdtoolbars.inc:399
 msgid "pm"
 msgstr ""
 
 # src/frontends/xforms/form_tabular.C:453
-#: lib/ui/stdtoolbars.inc:392
+#: lib/ui/stdtoolbars.inc:400
 #, fuzzy
 msgid "cap"
 msgstr "Специален"
 
 # src/ext_l10n.h:170
-#: lib/ui/stdtoolbars.inc:393
+#: lib/ui/stdtoolbars.inc:401
 #, fuzzy
 msgid "diamond"
 msgstr "И"
 
 # src/frontends/kde/dlg/tabcreatedlgdata.C:107
 # src/frontends/xforms/form_tabular_create.C:45
-#: lib/ui/stdtoolbars.inc:394
+#: lib/ui/stdtoolbars.inc:402
 #, fuzzy
 msgid "oplus"
 msgstr "Колони"
 
 # src/lyxfont.C:401
-#: lib/ui/stdtoolbars.inc:395
+#: lib/ui/stdtoolbars.inc:403
 #, fuzzy
 msgid "mp"
 msgstr "Наблягане "
 
-#: lib/ui/stdtoolbars.inc:396
+#: lib/ui/stdtoolbars.inc:404
 msgid "cup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:397
+#: lib/ui/stdtoolbars.inc:405
 msgid "bigtriangleup"
 msgstr ""
 
 # src/frontends/xforms/form_paragraph.C:145
-#: lib/ui/stdtoolbars.inc:398
+#: lib/ui/stdtoolbars.inc:406
 #, fuzzy
 msgid "ominus"
 msgstr "Редове"
 
-#: lib/ui/stdtoolbars.inc:399
+#: lib/ui/stdtoolbars.inc:407
 msgid "times"
 msgstr ""
 
 # src/frontends/xforms/FormPreferences.C:232
-#: lib/ui/stdtoolbars.inc:400
+#: lib/ui/stdtoolbars.inc:408
 #, fuzzy
 msgid "uplus"
 msgstr "Изход"
 
-#: lib/ui/stdtoolbars.inc:401
+#: lib/ui/stdtoolbars.inc:409
 msgid "bigtriangledown"
 msgstr ""
 
 # src/frontends/kde/dlg/printdlgdata.C:73
 # src/frontends/xforms/form_print.C:135
-#: lib/ui/stdtoolbars.inc:402
+#: lib/ui/stdtoolbars.inc:410
 #, fuzzy
 msgid "otimes"
 msgstr "Копия"
 
-#: lib/ui/stdtoolbars.inc:403
+#: lib/ui/stdtoolbars.inc:411
 msgid "div"
 msgstr ""
 
 # src/frontends/xforms/form_tabular.C:453
-#: lib/ui/stdtoolbars.inc:404
+#: lib/ui/stdtoolbars.inc:412
 #, fuzzy
 msgid "sqcap"
 msgstr "Специален"
 
 # src/ext_l10n.h:209
-#: lib/ui/stdtoolbars.inc:405
+#: lib/ui/stdtoolbars.inc:413
 #, fuzzy
 msgid "triangleright"
 msgstr "Авторски права"
 
 # src/ext_l10n.h:453
-#: lib/ui/stdtoolbars.inc:406
+#: lib/ui/stdtoolbars.inc:414
 #, fuzzy
 msgid "oslash"
 msgstr "Полски"
 
-#: lib/ui/stdtoolbars.inc:407
+#: lib/ui/stdtoolbars.inc:415
 msgid "cdot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:408
+#: lib/ui/stdtoolbars.inc:416
 msgid "sqcup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:409
+#: lib/ui/stdtoolbars.inc:417
 msgid "triangleleft"
 msgstr ""
 
 # src/insets/insetfoot.C:32
-#: lib/ui/stdtoolbars.inc:410
+#: lib/ui/stdtoolbars.inc:418
 #, fuzzy
 msgid "odot"
 msgstr "бел. под линия"
 
-#: lib/ui/stdtoolbars.inc:411
+#: lib/ui/stdtoolbars.inc:419
 msgid "star"
 msgstr ""
 
 # src/ext_l10n.h:462
-#: lib/ui/stdtoolbars.inc:412
+#: lib/ui/stdtoolbars.inc:420
 #, fuzzy
 msgid "vee"
 msgstr "Словенски"
 
 # src/layout_forms.C:23
-#: lib/ui/stdtoolbars.inc:413
+#: lib/ui/stdtoolbars.inc:421
 #, fuzzy
 msgid "amalg"
 msgstr "Семейство(F):|#F"
 
-#: lib/ui/stdtoolbars.inc:414
+#: lib/ui/stdtoolbars.inc:422
 msgid "bigcirc"
 msgstr ""
 
 # src/frontends/xforms/form_paragraph.C:145
-#: lib/ui/stdtoolbars.inc:415
+#: lib/ui/stdtoolbars.inc:423
 #, fuzzy
 msgid "setminus"
 msgstr "Редове"
 
-#: lib/ui/stdtoolbars.inc:416
+#: lib/ui/stdtoolbars.inc:424
 msgid "wedge"
 msgstr ""
 
 # src/lyxfont.C:57
-#: lib/ui/stdtoolbars.inc:417
+#: lib/ui/stdtoolbars.inc:425
 #, fuzzy
 msgid "dagger"
 msgstr "Голям 2"
 
-#: lib/ui/stdtoolbars.inc:418
+#: lib/ui/stdtoolbars.inc:426
 msgid "circ"
 msgstr ""
 
 # src/frontends/xforms/FormDocument.C:281
-#: lib/ui/stdtoolbars.inc:419
+#: lib/ui/stdtoolbars.inc:427
 #, fuzzy
 msgid "bullet"
 msgstr "Точки"
 
 # src/frontends/xforms/form_tabular.C:453
-#: lib/ui/stdtoolbars.inc:420
+#: lib/ui/stdtoolbars.inc:428
 #, fuzzy
 msgid "wr"
 msgstr "Специален"
 
 # src/lyxfont.C:57
-#: lib/ui/stdtoolbars.inc:421
+#: lib/ui/stdtoolbars.inc:429
 #, fuzzy
 msgid "ddagger"
 msgstr "Голям 2"
 
 # src/frontends/xforms/form_document.C:244
-#: lib/ui/stdtoolbars.inc:424
+#: lib/ui/stdtoolbars.inc:432
 #, fuzzy
 msgid "Relations"
 msgstr "Абзац разделяне"
 
-#: lib/ui/stdtoolbars.inc:425
+#: lib/ui/stdtoolbars.inc:433
 msgid "leq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:426
+#: lib/ui/stdtoolbars.inc:434
 msgid "geq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:427
+#: lib/ui/stdtoolbars.inc:435
 msgid "equiv"
 msgstr ""
 
 # src/ext_l10n.h:201
-#: lib/ui/stdtoolbars.inc:428
+#: lib/ui/stdtoolbars.inc:436
 #, fuzzy
 msgid "models"
 msgstr "Код"
 
 # src/ext_l10n.h:99
-#: lib/ui/stdtoolbars.inc:429
+#: lib/ui/stdtoolbars.inc:437
 #, fuzzy
 msgid "prec"
 msgstr "Защитен интервал(B)|B"
 
-#: lib/ui/stdtoolbars.inc:430
+#: lib/ui/stdtoolbars.inc:438
 msgid "succ"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:431
+#: lib/ui/stdtoolbars.inc:439
 msgid "sim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:432
+#: lib/ui/stdtoolbars.inc:440
 msgid "perp"
 msgstr ""
 
 # src/ext_l10n.h:99
-#: lib/ui/stdtoolbars.inc:433
+#: lib/ui/stdtoolbars.inc:441
 #, fuzzy
 msgid "preceq"
 msgstr "Защитен интервал(B)|B"
 
-#: lib/ui/stdtoolbars.inc:434
+#: lib/ui/stdtoolbars.inc:442
 msgid "succeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:435
+#: lib/ui/stdtoolbars.inc:443
 msgid "simeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:436
+#: lib/ui/stdtoolbars.inc:444
 msgid "mid"
 msgstr ""
 
 # src/frontends/kde/dlg/paradlgdata.C:65
-#: lib/ui/stdtoolbars.inc:437
+#: lib/ui/stdtoolbars.inc:445
 #, fuzzy
 msgid "ll"
 msgstr "(&A)Установи"
 
-#: lib/ui/stdtoolbars.inc:438
+#: lib/ui/stdtoolbars.inc:446
 msgid "gg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:439
+#: lib/ui/stdtoolbars.inc:447
 msgid "asymp"
 msgstr ""
 
 # src/LColor.C:97
-#: lib/ui/stdtoolbars.inc:440
+#: lib/ui/stdtoolbars.inc:448
 #, fuzzy
 msgid "parallel"
 msgstr "ред на таблица"
 
 # src/ext_l10n.h:373
-#: lib/ui/stdtoolbars.inc:441
+#: lib/ui/stdtoolbars.inc:449
 #, fuzzy
 msgid "subset"
 msgstr "Под-подраздел"
 
-#: lib/ui/stdtoolbars.inc:442
+#: lib/ui/stdtoolbars.inc:450
 msgid "supset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:443
+#: lib/ui/stdtoolbars.inc:451
 msgid "approx"
 msgstr ""
 
 # src/frontends/kde/dlg/printdlgdata.C:246
-#: lib/ui/stdtoolbars.inc:444
+#: lib/ui/stdtoolbars.inc:452
 #, fuzzy
 msgid "smile"
 msgstr "(&F)Файл"
 
-#: lib/ui/stdtoolbars.inc:445
+#: lib/ui/stdtoolbars.inc:453
 msgid "subseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:446
+#: lib/ui/stdtoolbars.inc:454
 msgid "supseteq"
 msgstr ""
 
 # src/ext_l10n.h:398
-#: lib/ui/stdtoolbars.inc:447
+#: lib/ui/stdtoolbars.inc:455
 #, fuzzy
 msgid "cong"
 msgstr "Град"
 
 # src/ext_l10n.h:398
-#: lib/ui/stdtoolbars.inc:448
+#: lib/ui/stdtoolbars.inc:456
 #, fuzzy
 msgid "frown"
 msgstr "Град"
 
-#: lib/ui/stdtoolbars.inc:449
+#: lib/ui/stdtoolbars.inc:457
 msgid "sqsubseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:450
-msgid "sqsupseteq"
-msgstr ""
-
-# src/LColor.C:67
-#: lib/ui/stdtoolbars.inc:451
-#, fuzzy
-msgid "doteq"
-msgstr "бележка"
-
-#: lib/ui/stdtoolbars.inc:452
-msgid "neq"
-msgstr ""
-
-# src/lyxfont.C:56
-#: lib/ui/stdtoolbars.inc:453 src/lengthcommon.cpp:38
-#, fuzzy
-msgid "in"
-msgstr "Дребен"
-
-#: lib/ui/stdtoolbars.inc:454
-msgid "ni"
-msgstr ""
-
-# src/frontends/kde/dlg/paraextradlgdata.C:142
-#: lib/ui/stdtoolbars.inc:455
-#, fuzzy
-msgid "propto"
-msgstr "(&T)Отгоре"
-
-# src/LColor.C:67
-#: lib/ui/stdtoolbars.inc:456
-#, fuzzy
-msgid "notin"
-msgstr "бележка"
-
-#: lib/ui/stdtoolbars.inc:457
-msgid "vdash"
-msgstr ""
-
 #: lib/ui/stdtoolbars.inc:458
-msgid "dashv"
+msgid "sqsupseteq"
 msgstr ""
 
 # src/LColor.C:67
 #: lib/ui/stdtoolbars.inc:459
 #, fuzzy
+msgid "doteq"
+msgstr "бележка"
+
+#: lib/ui/stdtoolbars.inc:460
+msgid "neq"
+msgstr ""
+
+# src/lyxfont.C:56
+#: lib/ui/stdtoolbars.inc:461 src/lengthcommon.cpp:38
+#, fuzzy
+msgid "in"
+msgstr "Дребен"
+
+#: lib/ui/stdtoolbars.inc:462
+msgid "ni"
+msgstr ""
+
+# src/frontends/kde/dlg/paraextradlgdata.C:142
+#: lib/ui/stdtoolbars.inc:463
+#, fuzzy
+msgid "propto"
+msgstr "(&T)Отгоре"
+
+# src/LColor.C:67
+#: lib/ui/stdtoolbars.inc:464
+#, fuzzy
+msgid "notin"
+msgstr "бележка"
+
+#: lib/ui/stdtoolbars.inc:465
+msgid "vdash"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:466
+msgid "dashv"
+msgstr ""
+
+# src/LColor.C:67
+#: lib/ui/stdtoolbars.inc:467
+#, fuzzy
 msgid "bowtie"
 msgstr "бележка"
 
-#: lib/ui/stdtoolbars.inc:463
+#: lib/ui/stdtoolbars.inc:471
 msgid "alpha"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:464
+#: lib/ui/stdtoolbars.inc:472
 msgid "beta"
 msgstr ""
 
 # src/ext_l10n.h:271
-#: lib/ui/stdtoolbars.inc:465
+#: lib/ui/stdtoolbars.inc:473
 #, fuzzy
 msgid "gamma"
 msgstr "Лема"
 
 # src/frontends/xforms/form_graphics.C:61
 # src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:411
-#: lib/ui/stdtoolbars.inc:466
+#: lib/ui/stdtoolbars.inc:474
 #, fuzzy
 msgid "delta"
 msgstr "Стандартно"
 
 # src/lyxfunc.C:1125
-#: lib/ui/stdtoolbars.inc:467
+#: lib/ui/stdtoolbars.inc:475
 #, fuzzy
 msgid "epsilon"
 msgstr "LyX версия "
 
-#: lib/ui/stdtoolbars.inc:468
+#: lib/ui/stdtoolbars.inc:476
 msgid "varepsilon"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:469
+#: lib/ui/stdtoolbars.inc:477
 msgid "zeta"
 msgstr ""
 
 # src/ext_l10n.h:451
-#: lib/ui/stdtoolbars.inc:470
+#: lib/ui/stdtoolbars.inc:478
 #, fuzzy
 msgid "eta"
 msgstr "Унгарски"
 
 # src/LColor.C:63
-#: lib/ui/stdtoolbars.inc:471
+#: lib/ui/stdtoolbars.inc:479
 #, fuzzy
 msgid "theta"
 msgstr "текст"
 
 # src/mathed/math_panel.C:134
-#: lib/ui/stdtoolbars.inc:472
+#: lib/ui/stdtoolbars.inc:480
 #, fuzzy
 msgid "vartheta"
 msgstr "Матрица"
 
 # src/ext_l10n.h:362
-#: lib/ui/stdtoolbars.inc:473
+#: lib/ui/stdtoolbars.inc:481
 #, fuzzy
 msgid "iota"
 msgstr "Държава"
 
-#: lib/ui/stdtoolbars.inc:474
+#: lib/ui/stdtoolbars.inc:482
 msgid "kappa"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:475
+#: lib/ui/stdtoolbars.inc:483
 msgid "lambda"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:476 src/lengthcommon.cpp:38
+#: lib/ui/stdtoolbars.inc:484 src/lengthcommon.cpp:38
 msgid "mu"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:477
+#: lib/ui/stdtoolbars.inc:485
 msgid "nu"
 msgstr ""
 
 # src/LColor.C:63
-#: lib/ui/stdtoolbars.inc:478
+#: lib/ui/stdtoolbars.inc:486
 #, fuzzy
 msgid "xi"
 msgstr "текст"
 
-#: lib/ui/stdtoolbars.inc:479
+#: lib/ui/stdtoolbars.inc:487
 msgid "pi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:480
+#: lib/ui/stdtoolbars.inc:488
 msgid "varpi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:481
+#: lib/ui/stdtoolbars.inc:489
 msgid "rho"
 msgstr ""
 
 # src/LColor.C:92
-#: lib/ui/stdtoolbars.inc:482
+#: lib/ui/stdtoolbars.inc:490
 #, fuzzy
 msgid "varrho"
 msgstr "грешка"
 
-#: lib/ui/stdtoolbars.inc:483
+#: lib/ui/stdtoolbars.inc:491
 msgid "sigma"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:484
+#: lib/ui/stdtoolbars.inc:492
 msgid "varsigma"
 msgstr ""
 
 # src/ext_l10n.h:362
-#: lib/ui/stdtoolbars.inc:485
+#: lib/ui/stdtoolbars.inc:493
 #, fuzzy
 msgid "tau"
 msgstr "Държава"
 
 # src/ext_l10n.h:323
-#: lib/ui/stdtoolbars.inc:486
+#: lib/ui/stdtoolbars.inc:494
 #, fuzzy
 msgid "upsilon"
 msgstr "Въпрос"
 
-#: lib/ui/stdtoolbars.inc:487
+#: lib/ui/stdtoolbars.inc:495
 msgid "phi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:488
+#: lib/ui/stdtoolbars.inc:496
 msgid "varphi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:489
+#: lib/ui/stdtoolbars.inc:497
 msgid "chi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:490
+#: lib/ui/stdtoolbars.inc:498
 msgid "psi"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:105 src/lyxfont.C:42
-#: lib/ui/stdtoolbars.inc:491
+#: lib/ui/stdtoolbars.inc:499
 #, fuzzy
 msgid "omega"
 msgstr "Roman"
 
 # src/ext_l10n.h:271
-#: lib/ui/stdtoolbars.inc:492
+#: lib/ui/stdtoolbars.inc:500
 #, fuzzy
 msgid "Gamma"
 msgstr "Лема"
 
 # src/frontends/xforms/form_preferences.C:600
 # src/frontends/xforms/form_preferences.C:687
-#: lib/ui/stdtoolbars.inc:493
+#: lib/ui/stdtoolbars.inc:501
 #, fuzzy
 msgid "Delta"
 msgstr "Изтрий(D)|#D"
 
 # src/LColor.C:63
-#: lib/ui/stdtoolbars.inc:494
+#: lib/ui/stdtoolbars.inc:502
 #, fuzzy
 msgid "Theta"
 msgstr "текст"
 
 # src/frontends/xforms/form_preferences.C:920
-#: lib/ui/stdtoolbars.inc:495
+#: lib/ui/stdtoolbars.inc:503
 #, fuzzy
 msgid "Lambda"
 msgstr "пейзаж"
 
-#: lib/ui/stdtoolbars.inc:496
+#: lib/ui/stdtoolbars.inc:504
 msgid "Xi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:497
+#: lib/ui/stdtoolbars.inc:505
 msgid "Pi"
 msgstr ""
 
 # src/lyxfont.C:56
-#: lib/ui/stdtoolbars.inc:498
+#: lib/ui/stdtoolbars.inc:506
 #, fuzzy
 msgid "Sigma"
 msgstr "Малък"
 
-#: lib/ui/stdtoolbars.inc:499
+#: lib/ui/stdtoolbars.inc:507
 msgid "Upsilon"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:500
+#: lib/ui/stdtoolbars.inc:508
 msgid "Phi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:501
+#: lib/ui/stdtoolbars.inc:509
 msgid "Psi"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:502
+#: lib/ui/stdtoolbars.inc:510
 msgid "Omega"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:505
+#: lib/ui/stdtoolbars.inc:513
 msgid "Miscellaneous"
 msgstr ""
 
 # src/frontends/xforms/FormTabular.C:133
-#: lib/ui/stdtoolbars.inc:506
+#: lib/ui/stdtoolbars.inc:514
 #, fuzzy
 msgid "nabla"
 msgstr "Дълга таблица"
 
 # src/LColor.C:97
-#: lib/ui/stdtoolbars.inc:507
+#: lib/ui/stdtoolbars.inc:515
 #, fuzzy
 msgid "partial"
 msgstr "ред на таблица"
 
 # src/lyxfont.C:56
-#: lib/ui/stdtoolbars.inc:508
+#: lib/ui/stdtoolbars.inc:516
 #, fuzzy
 msgid "infty"
 msgstr "Дребен"
 
-#: lib/ui/stdtoolbars.inc:509
+#: lib/ui/stdtoolbars.inc:517
 msgid "prime"
 msgstr ""
 
 # src/frontends/xforms/FormTabular.C:131
-#: lib/ui/stdtoolbars.inc:510
+#: lib/ui/stdtoolbars.inc:518
 #, fuzzy
 msgid "ell"
 msgstr "Клетка"
 
 # src/frontends/kde/tocdlg.C:57
-#: lib/ui/stdtoolbars.inc:511
+#: lib/ui/stdtoolbars.inc:519
 #, fuzzy
 msgid "emptyset"
 msgstr "Дълбочина"
 
 # src/credits.C:72
-#: lib/ui/stdtoolbars.inc:512
+#: lib/ui/stdtoolbars.inc:520
 #, fuzzy
 msgid "exists"
 msgstr "Credits"
 
 # src/frontends/kde/paraextradlg.C:25 src/lyxfont.C:56
-#: lib/ui/stdtoolbars.inc:513
+#: lib/ui/stdtoolbars.inc:521
 #, fuzzy
 msgid "forall"
 msgstr "Нормален"
 
 # src/LColor.C:80
-#: lib/ui/stdtoolbars.inc:514
+#: lib/ui/stdtoolbars.inc:522
 #, fuzzy
 msgid "imath"
 msgstr "математика"
 
 # src/LColor.C:80
-#: lib/ui/stdtoolbars.inc:515
+#: lib/ui/stdtoolbars.inc:523
 #, fuzzy
 msgid "jmath"
 msgstr "математика"
 
 # src/BufferView2.C:456 src/LyXAction.C:357
-#: lib/ui/stdtoolbars.inc:516
+#: lib/ui/stdtoolbars.inc:524
 #, fuzzy
 msgid "Re"
 msgstr "Повтори"
 
 # src/LyXAction.C:251
-#: lib/ui/stdtoolbars.inc:517
+#: lib/ui/stdtoolbars.inc:525
 #, fuzzy
 msgid "Im"
 msgstr "Вмъкни индекс списък"
 
 # src/bufferview_funcs.C:271
-#: lib/ui/stdtoolbars.inc:518
+#: lib/ui/stdtoolbars.inc:526
 #, fuzzy
 msgid "aleph"
 msgstr ", Дълбочина: "
 
 # src/frontends/xforms/form_tabular.C:453
-#: lib/ui/stdtoolbars.inc:519
+#: lib/ui/stdtoolbars.inc:527
 #, fuzzy
 msgid "wp"
 msgstr "Специален"
 
-#: lib/ui/stdtoolbars.inc:520 lib/ui/stdtoolbars.inc:599
+#: lib/ui/stdtoolbars.inc:528 lib/ui/stdtoolbars.inc:607
 msgid "hbar"
 msgstr ""
 
 # src/bufferview_funcs.C:280
-#: lib/ui/stdtoolbars.inc:521 lib/ui/stdtoolbars.inc:606
+#: lib/ui/stdtoolbars.inc:529 lib/ui/stdtoolbars.inc:614
 #, fuzzy
 msgid "angle"
 msgstr "Единично"
 
 # src/frontends/kde/dlg/paraextradlgdata.C:142
-#: lib/ui/stdtoolbars.inc:522
+#: lib/ui/stdtoolbars.inc:530
 #, fuzzy
 msgid "top"
 msgstr "(&T)Отгоре"
 
 # src/frontends/kde/dlg/paraextradlgdata.C:142
-#: lib/ui/stdtoolbars.inc:523
+#: lib/ui/stdtoolbars.inc:531
 #, fuzzy
 msgid "bot"
 msgstr "(&T)Отгоре"
 
 # src/lyxfunc.C:1125
-#: lib/ui/stdtoolbars.inc:524
+#: lib/ui/stdtoolbars.inc:532
 #, fuzzy
 msgid "Vert"
 msgstr "LyX версия "
 
-#: lib/ui/stdtoolbars.inc:525
+#: lib/ui/stdtoolbars.inc:533
 msgid "neg"
 msgstr ""
 
 # src/frontends/xforms/FormPreferences.C:252
-#: lib/ui/stdtoolbars.inc:526
+#: lib/ui/stdtoolbars.inc:534
 #, fuzzy
 msgid "flat"
 msgstr "Формати"
 
 # src/ext_l10n.h:351
-#: lib/ui/stdtoolbars.inc:527
+#: lib/ui/stdtoolbars.inc:535
 #, fuzzy
 msgid "natural"
 msgstr "Подпис"
 
-#: lib/ui/stdtoolbars.inc:528
+#: lib/ui/stdtoolbars.inc:536
 msgid "sharp"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:529
+#: lib/ui/stdtoolbars.inc:537
 msgid "surd"
 msgstr ""
 
 # src/bufferview_funcs.C:280
-#: lib/ui/stdtoolbars.inc:530
+#: lib/ui/stdtoolbars.inc:538
 #, fuzzy
 msgid "triangle"
 msgstr "Единично"
 
-#: lib/ui/stdtoolbars.inc:531
+#: lib/ui/stdtoolbars.inc:539
 msgid "diamondsuit"
 msgstr ""
 
 # src/LColor.C:109
-#: lib/ui/stdtoolbars.inc:532
+#: lib/ui/stdtoolbars.inc:540
 #, fuzzy
 msgid "heartsuit"
 msgstr "наследяване"
 
-#: lib/ui/stdtoolbars.inc:533
+#: lib/ui/stdtoolbars.inc:541
 msgid "clubsuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:534
+#: lib/ui/stdtoolbars.inc:542
 msgid "spadesuit"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:535
+#: lib/ui/stdtoolbars.inc:543
 msgid "textrm \\AA"
 msgstr ""
 
 # src/LColor.C:63
-#: lib/ui/stdtoolbars.inc:536
+#: lib/ui/stdtoolbars.inc:544
 #, fuzzy
 msgid "textrm \\O"
 msgstr "текст"
 
-#: lib/ui/stdtoolbars.inc:537
+#: lib/ui/stdtoolbars.inc:545
 msgid "mathcircumflex"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:538
+#: lib/ui/stdtoolbars.inc:546
 msgid "_"
 msgstr ""
 
 # src/LColor.C:82
-#: lib/ui/stdtoolbars.inc:539
+#: lib/ui/stdtoolbars.inc:547
 #, fuzzy
 msgid "mathrm T"
 msgstr "рамка на математика"
 
 # src/LColor.C:80
-#: lib/ui/stdtoolbars.inc:540
+#: lib/ui/stdtoolbars.inc:548
 #, fuzzy
 msgid "mathbb N"
 msgstr "математика"
 
 # src/LColor.C:80
-#: lib/ui/stdtoolbars.inc:541
+#: lib/ui/stdtoolbars.inc:549
 #, fuzzy
 msgid "mathbb Z"
 msgstr "математика"
 
 # src/LColor.C:80
-#: lib/ui/stdtoolbars.inc:542
+#: lib/ui/stdtoolbars.inc:550
 #, fuzzy
 msgid "mathbb Q"
 msgstr "математика"
 
 # src/LColor.C:80
-#: lib/ui/stdtoolbars.inc:543
+#: lib/ui/stdtoolbars.inc:551
 #, fuzzy
 msgid "mathbb R"
 msgstr "математика"
 
 # src/LColor.C:80
-#: lib/ui/stdtoolbars.inc:544
+#: lib/ui/stdtoolbars.inc:552
 #, fuzzy
 msgid "mathbb C"
 msgstr "математика"
 
 # src/LColor.C:80
-#: lib/ui/stdtoolbars.inc:545
+#: lib/ui/stdtoolbars.inc:553
 #, fuzzy
 msgid "mathbb H"
 msgstr "математика"
 
 # src/LColor.C:80
-#: lib/ui/stdtoolbars.inc:546
+#: lib/ui/stdtoolbars.inc:554
 #, fuzzy
 msgid "mathcal F"
 msgstr "математика"
 
 # src/LColor.C:80
-#: lib/ui/stdtoolbars.inc:547
+#: lib/ui/stdtoolbars.inc:555
 #, fuzzy
 msgid "mathcal L"
 msgstr "математика"
 
 # src/LColor.C:80
-#: lib/ui/stdtoolbars.inc:548
+#: lib/ui/stdtoolbars.inc:556
 #, fuzzy
 msgid "mathcal H"
 msgstr "математика"
 
 # src/LColor.C:80
-#: lib/ui/stdtoolbars.inc:549
+#: lib/ui/stdtoolbars.inc:557
 #, fuzzy
 msgid "mathcal O"
 msgstr "математика"
 
 # src/ext_l10n.h:438
-#: lib/ui/stdtoolbars.inc:552
+#: lib/ui/stdtoolbars.inc:560
 #, fuzzy
 msgid "Big Operators"
 msgstr "Есперанто"
 
 # src/ext_l10n.h:69
-#: lib/ui/stdtoolbars.inc:553
+#: lib/ui/stdtoolbars.inc:561
 #, fuzzy
 msgid "intop"
 msgstr "В.Подр. отгоре(o)|o"
 
 # src/lyxfont.C:56
-#: lib/ui/stdtoolbars.inc:554
+#: lib/ui/stdtoolbars.inc:562
 #, fuzzy
 msgid "int"
 msgstr "Дребен"
 
 # src/lyxfont.C:56
-#: lib/ui/stdtoolbars.inc:555
+#: lib/ui/stdtoolbars.inc:563
 #, fuzzy
 msgid "iint"
 msgstr "Дребен"
 
 # src/ext_l10n.h:69
-#: lib/ui/stdtoolbars.inc:556
+#: lib/ui/stdtoolbars.inc:564
 #, fuzzy
 msgid "iintop"
 msgstr "В.Подр. отгоре(o)|o"
 
-#: lib/ui/stdtoolbars.inc:557
+#: lib/ui/stdtoolbars.inc:565
 msgid "iiint"
 msgstr ""
 
 # src/ext_l10n.h:69
-#: lib/ui/stdtoolbars.inc:558
+#: lib/ui/stdtoolbars.inc:566
 #, fuzzy
 msgid "iiintop"
 msgstr "В.Подр. отгоре(o)|o"
 
-#: lib/ui/stdtoolbars.inc:559
+#: lib/ui/stdtoolbars.inc:567
 msgid "iiiint"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:560
+#: lib/ui/stdtoolbars.inc:568
 msgid "iiiintop"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:561
+#: lib/ui/stdtoolbars.inc:569
 msgid "dotsint"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:562
+#: lib/ui/stdtoolbars.inc:570
 msgid "dotsintop"
 msgstr ""
 
 # src/lyxfont.C:56
-#: lib/ui/stdtoolbars.inc:563
+#: lib/ui/stdtoolbars.inc:571
 #, fuzzy
 msgid "oint"
 msgstr "Дребен"
 
 # src/bufferview_funcs.C:267
-#: lib/ui/stdtoolbars.inc:564
+#: lib/ui/stdtoolbars.inc:572
 #, fuzzy
 msgid "ointop"
 msgstr "Шрифт:"
 
 # src/bufferview_funcs.C:267
-#: lib/ui/stdtoolbars.inc:565
+#: lib/ui/stdtoolbars.inc:573
 #, fuzzy
 msgid "oiint"
 msgstr "Шрифт:"
 
 # src/bufferview_funcs.C:267
-#: lib/ui/stdtoolbars.inc:566
+#: lib/ui/stdtoolbars.inc:574
 #, fuzzy
 msgid "oiintop"
 msgstr "Шрифт:"
 
-#: lib/ui/stdtoolbars.inc:567
+#: lib/ui/stdtoolbars.inc:575
 msgid "ointctrclockwiseop"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:568
+#: lib/ui/stdtoolbars.inc:576
 msgid "ointctrclockwise"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:569
+#: lib/ui/stdtoolbars.inc:577
 msgid "ointclockwiseop"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:570
+#: lib/ui/stdtoolbars.inc:578
 msgid "ointclockwise"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:571
+#: lib/ui/stdtoolbars.inc:579
 msgid "sqint"
 msgstr ""
 
 # src/ext_l10n.h:69
-#: lib/ui/stdtoolbars.inc:572
+#: lib/ui/stdtoolbars.inc:580
 #, fuzzy
 msgid "sqintop"
 msgstr "В.Подр. отгоре(o)|o"
 
-#: lib/ui/stdtoolbars.inc:573
+#: lib/ui/stdtoolbars.inc:581
 msgid "sqiint"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:574
+#: lib/ui/stdtoolbars.inc:582
 msgid "sqiintop"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:575
+#: lib/ui/stdtoolbars.inc:583
 msgid "sum"
 msgstr ""
 
 # src/ext_l10n.h:99
-#: lib/ui/stdtoolbars.inc:576
+#: lib/ui/stdtoolbars.inc:584
 #, fuzzy
 msgid "prod"
 msgstr "Защитен интервал(B)|B"
 
-#: lib/ui/stdtoolbars.inc:577
+#: lib/ui/stdtoolbars.inc:585
 msgid "coprod"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:578
+#: lib/ui/stdtoolbars.inc:586
 msgid "bigsqcup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:579
+#: lib/ui/stdtoolbars.inc:587
 msgid "bigotimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:580
+#: lib/ui/stdtoolbars.inc:588
 msgid "bigodot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:581
+#: lib/ui/stdtoolbars.inc:589
 msgid "bigoplus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:582
+#: lib/ui/stdtoolbars.inc:590
 msgid "bigcap"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:583
+#: lib/ui/stdtoolbars.inc:591
 msgid "bigcup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:584
+#: lib/ui/stdtoolbars.inc:592
 msgid "biguplus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:585
+#: lib/ui/stdtoolbars.inc:593
 msgid "bigvee"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:586
+#: lib/ui/stdtoolbars.inc:594
 msgid "bigwedge"
 msgstr ""
 
 # src/frontends/xforms/FormPreferences.C:247
 # src/frontends/xforms/FormPreferences.C:264
 # src/frontends/xforms/FormPreferences.C:272 src/mathed/math_forms.C:46
-#: lib/ui/stdtoolbars.inc:589
+#: lib/ui/stdtoolbars.inc:597
 #, fuzzy
 msgid "AMS Miscellaneous"
 msgstr "Различни"
 
-#: lib/ui/stdtoolbars.inc:590
+#: lib/ui/stdtoolbars.inc:598
 msgid "digamma"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:591
+#: lib/ui/stdtoolbars.inc:599
 msgid "varkappa"
 msgstr ""
 
 # src/bufferview_funcs.C:271
-#: lib/ui/stdtoolbars.inc:592
+#: lib/ui/stdtoolbars.inc:600
 #, fuzzy
 msgid "beth"
 msgstr ", Дълбочина: "
 
 # src/frontends/xforms/form_graphics.C:61
 # src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:411
-#: lib/ui/stdtoolbars.inc:593
+#: lib/ui/stdtoolbars.inc:601
 #, fuzzy
 msgid "daleth"
 msgstr "Стандартно"
 
-#: lib/ui/stdtoolbars.inc:594
+#: lib/ui/stdtoolbars.inc:602
 msgid "gimel"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:595
+#: lib/ui/stdtoolbars.inc:603
 msgid "ulcorner"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:596
+#: lib/ui/stdtoolbars.inc:604
 msgid "urcorner"
 msgstr ""
 
 # src/frontends/xforms/form_tabular.C:223
 # src/frontends/xforms/form_tabular.C:349
-#: lib/ui/stdtoolbars.inc:597
+#: lib/ui/stdtoolbars.inc:605
 #, fuzzy
 msgid "llcorner"
 msgstr "Рамки"
 
-#: lib/ui/stdtoolbars.inc:598
+#: lib/ui/stdtoolbars.inc:606
 msgid "lrcorner"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:600
+#: lib/ui/stdtoolbars.inc:608
 msgid "hslash"
 msgstr ""
 
 # src/LColor.C:97
-#: lib/ui/stdtoolbars.inc:601
+#: lib/ui/stdtoolbars.inc:609
 #, fuzzy
 msgid "vartriangle"
 msgstr "ред на таблица"
 
-#: lib/ui/stdtoolbars.inc:602
+#: lib/ui/stdtoolbars.inc:610
 msgid "triangledown"
 msgstr ""
 
 # src/LColor.C:57
-#: lib/ui/stdtoolbars.inc:603
+#: lib/ui/stdtoolbars.inc:611
 #, fuzzy
 msgid "square"
 msgstr "син"
 
 # src/ext_l10n.h:462
-#: lib/ui/stdtoolbars.inc:604
+#: lib/ui/stdtoolbars.inc:612
 #, fuzzy
 msgid "lozenge"
 msgstr "Словенски"
 
-#: lib/ui/stdtoolbars.inc:605
+#: lib/ui/stdtoolbars.inc:613
 msgid "circledS"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:607
+#: lib/ui/stdtoolbars.inc:615
 msgid "measuredangle"
 msgstr ""
 
 # src/ext_l10n.h:114
-#: lib/ui/stdtoolbars.inc:608
+#: lib/ui/stdtoolbars.inc:616
 #, fuzzy
 msgid "nexists"
 msgstr "Индекс списък(I)|I"
 
-#: lib/ui/stdtoolbars.inc:609
+#: lib/ui/stdtoolbars.inc:617
 msgid "mho"
 msgstr ""
 
 # src/lyxfont.C:56
-#: lib/ui/stdtoolbars.inc:610
+#: lib/ui/stdtoolbars.inc:618
 #, fuzzy
 msgid "Finv"
 msgstr "Дребен"
 
 # src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
-#: lib/ui/stdtoolbars.inc:611
+#: lib/ui/stdtoolbars.inc:619
 #, fuzzy
 msgid "Game"
 msgstr "Име"
 
-#: lib/ui/stdtoolbars.inc:612
+#: lib/ui/stdtoolbars.inc:620
 msgid "Bbbk"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:613
+#: lib/ui/stdtoolbars.inc:621
 msgid "backprime"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:614
+#: lib/ui/stdtoolbars.inc:622
 msgid "varnothing"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:615
+#: lib/ui/stdtoolbars.inc:623
 msgid "blacktriangle"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:616
+#: lib/ui/stdtoolbars.inc:624
 msgid "blacktriangledown"
 msgstr ""
 
 # src/LColor.C:53
-#: lib/ui/stdtoolbars.inc:617
+#: lib/ui/stdtoolbars.inc:625
 #, fuzzy
 msgid "blacksquare"
 msgstr "черен"
 
-#: lib/ui/stdtoolbars.inc:618
+#: lib/ui/stdtoolbars.inc:626
 msgid "blacklozenge"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:619
+#: lib/ui/stdtoolbars.inc:627
 msgid "bigstar"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:620
+#: lib/ui/stdtoolbars.inc:628
 msgid "sphericalangle"
 msgstr ""
 
 # src/ext_l10n.h:202
-#: lib/ui/stdtoolbars.inc:621
+#: lib/ui/stdtoolbars.inc:629
 #, fuzzy
 msgid "complement"
 msgstr "Коментар"
 
 # src/bufferview_funcs.C:271
-#: lib/ui/stdtoolbars.inc:622
+#: lib/ui/stdtoolbars.inc:630
 #, fuzzy
 msgid "eth"
 msgstr ", Дълбочина: "
 
-#: lib/ui/stdtoolbars.inc:623
+#: lib/ui/stdtoolbars.inc:631
 msgid "diagup"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:624
+#: lib/ui/stdtoolbars.inc:632
 msgid "diagdown"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:465
 # src/frontends/xforms/form_preferences.C:467
-#: lib/ui/stdtoolbars.inc:627
+#: lib/ui/stdtoolbars.inc:635
 #, fuzzy
 msgid "AMS Arrows"
 msgstr "Търси"
 
-#: lib/ui/stdtoolbars.inc:628
+#: lib/ui/stdtoolbars.inc:636
 msgid "dashleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:629
+#: lib/ui/stdtoolbars.inc:637
 msgid "dashrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:630
+#: lib/ui/stdtoolbars.inc:638
 msgid "leftleftarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:631
+#: lib/ui/stdtoolbars.inc:639
 msgid "leftrightarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:632
+#: lib/ui/stdtoolbars.inc:640
 msgid "rightrightarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:633
+#: lib/ui/stdtoolbars.inc:641
 msgid "rightleftarrows"
 msgstr ""
 
 # src/ext_l10n.h:74
-#: lib/ui/stdtoolbars.inc:634
+#: lib/ui/stdtoolbars.inc:642
 #, fuzzy
 msgid "Lleftarrow"
 msgstr "Изтрий ред(w)|w"
 
 # src/ext_l10n.h:337
-#: lib/ui/stdtoolbars.inc:635
+#: lib/ui/stdtoolbars.inc:643
 #, fuzzy
 msgid "Rrightarrow"
 msgstr "Заглавие"
 
-#: lib/ui/stdtoolbars.inc:636
+#: lib/ui/stdtoolbars.inc:644
 msgid "twoheadleftarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:637
+#: lib/ui/stdtoolbars.inc:645
 msgid "twoheadrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:638
+#: lib/ui/stdtoolbars.inc:646
 msgid "leftarrowtail"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:639
+#: lib/ui/stdtoolbars.inc:647
 msgid "rightarrowtail"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:640
+#: lib/ui/stdtoolbars.inc:648
 msgid "looparrowleft"
 msgstr ""
 
 # src/ext_l10n.h:209
-#: lib/ui/stdtoolbars.inc:641
+#: lib/ui/stdtoolbars.inc:649
 #, fuzzy
 msgid "looparrowright"
 msgstr "Авторски права"
 
-#: lib/ui/stdtoolbars.inc:642
+#: lib/ui/stdtoolbars.inc:650
 msgid "curvearrowleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:643
+#: lib/ui/stdtoolbars.inc:651
 msgid "curvearrowright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:644
+#: lib/ui/stdtoolbars.inc:652
 msgid "circlearrowleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:645
+#: lib/ui/stdtoolbars.inc:653
 msgid "circlearrowright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:646
+#: lib/ui/stdtoolbars.inc:654
 msgid "Lsh"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:647
+#: lib/ui/stdtoolbars.inc:655
 msgid "Rsh"
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:465
 # src/frontends/xforms/form_preferences.C:467
-#: lib/ui/stdtoolbars.inc:648
+#: lib/ui/stdtoolbars.inc:656
 #, fuzzy
 msgid "upuparrows"
 msgstr "Търси"
 
-#: lib/ui/stdtoolbars.inc:649
+#: lib/ui/stdtoolbars.inc:657
 msgid "downdownarrows"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:650
+#: lib/ui/stdtoolbars.inc:658
 msgid "upharpoonleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:651
+#: lib/ui/stdtoolbars.inc:659
 msgid "upharpoonright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:652
+#: lib/ui/stdtoolbars.inc:660
 msgid "downharpoonleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:653
+#: lib/ui/stdtoolbars.inc:661
 msgid "downharpoonright"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:654
+#: lib/ui/stdtoolbars.inc:662
 msgid "leftrightharpoons"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:656
+#: lib/ui/stdtoolbars.inc:664
 msgid "rightsquigarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:657
+#: lib/ui/stdtoolbars.inc:665
 msgid "leftrightsquigarrow"
 msgstr ""
 
 # src/ext_l10n.h:74
-#: lib/ui/stdtoolbars.inc:658
+#: lib/ui/stdtoolbars.inc:666
 #, fuzzy
 msgid "nleftarrow"
 msgstr "Изтрий ред(w)|w"
 
-#: lib/ui/stdtoolbars.inc:659
+#: lib/ui/stdtoolbars.inc:667
 msgid "nrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:660
+#: lib/ui/stdtoolbars.inc:668
 msgid "nleftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:661
+#: lib/ui/stdtoolbars.inc:669
 msgid "nLeftarrow"
 msgstr ""
 
 # src/ext_l10n.h:337
-#: lib/ui/stdtoolbars.inc:662
+#: lib/ui/stdtoolbars.inc:670
 #, fuzzy
 msgid "nRightarrow"
 msgstr "Заглавие"
 
-#: lib/ui/stdtoolbars.inc:663
+#: lib/ui/stdtoolbars.inc:671
 msgid "nLeftrightarrow"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:664
+#: lib/ui/stdtoolbars.inc:672
 msgid "multimap"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:244
-#: lib/ui/stdtoolbars.inc:667
+#: lib/ui/stdtoolbars.inc:675
 #, fuzzy
 msgid "AMS Relations"
 msgstr "Абзац разделяне"
 
-#: lib/ui/stdtoolbars.inc:668
+#: lib/ui/stdtoolbars.inc:676
 msgid "leqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:669
+#: lib/ui/stdtoolbars.inc:677
 msgid "geqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:670
+#: lib/ui/stdtoolbars.inc:678
 msgid "leqslant"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:671
+#: lib/ui/stdtoolbars.inc:679
 msgid "geqslant"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:672
+#: lib/ui/stdtoolbars.inc:680
 msgid "eqslantless"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:673
+#: lib/ui/stdtoolbars.inc:681
 msgid "eqslantgtr"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:674
+#: lib/ui/stdtoolbars.inc:682
 msgid "lesssim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:675
+#: lib/ui/stdtoolbars.inc:683
 msgid "gtrsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:676
+#: lib/ui/stdtoolbars.inc:684
 msgid "lessapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:677
+#: lib/ui/stdtoolbars.inc:685
 msgid "gtrapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:678
+#: lib/ui/stdtoolbars.inc:686
 msgid "approxeq"
 msgstr ""
 
 # src/bufferview_funcs.C:280
-#: lib/ui/stdtoolbars.inc:679
+#: lib/ui/stdtoolbars.inc:687
 #, fuzzy
 msgid "triangleq"
 msgstr "Единично"
 
-#: lib/ui/stdtoolbars.inc:680
+#: lib/ui/stdtoolbars.inc:688
 msgid "lessdot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:681
+#: lib/ui/stdtoolbars.inc:689
 msgid "gtrdot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:682
+#: lib/ui/stdtoolbars.inc:690
 msgid "lll"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:683
+#: lib/ui/stdtoolbars.inc:691
 msgid "ggg"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:684
+#: lib/ui/stdtoolbars.inc:692
 msgid "lessgtr"
 msgstr ""
 
 # src/lyx.C:87
-#: lib/ui/stdtoolbars.inc:685
+#: lib/ui/stdtoolbars.inc:693
 #, fuzzy
 msgid "gtrless"
 msgstr "Параметри(p)|#p"
 
-#: lib/ui/stdtoolbars.inc:686
+#: lib/ui/stdtoolbars.inc:694
 msgid "lesseqgtr"
 msgstr ""
 
 # src/lyx.C:87
-#: lib/ui/stdtoolbars.inc:687
+#: lib/ui/stdtoolbars.inc:695
 #, fuzzy
 msgid "gtreqless"
 msgstr "Параметри(p)|#p"
 
-#: lib/ui/stdtoolbars.inc:688
+#: lib/ui/stdtoolbars.inc:696
 msgid "lesseqqgtr"
 msgstr ""
 
 # src/lyx.C:87
-#: lib/ui/stdtoolbars.inc:689
+#: lib/ui/stdtoolbars.inc:697
 #, fuzzy
 msgid "gtreqqless"
 msgstr "Параметри(p)|#p"
 
-#: lib/ui/stdtoolbars.inc:690
+#: lib/ui/stdtoolbars.inc:698
 msgid "eqcirc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:691
+#: lib/ui/stdtoolbars.inc:699
 msgid "circeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:692
+#: lib/ui/stdtoolbars.inc:700
 msgid "thicksim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:693
+#: lib/ui/stdtoolbars.inc:701
 msgid "thickapprox"
 msgstr ""
 
 # src/LColor.C:53
-#: lib/ui/stdtoolbars.inc:694
+#: lib/ui/stdtoolbars.inc:702
 #, fuzzy
 msgid "backsim"
 msgstr "черен"
 
-#: lib/ui/stdtoolbars.inc:695
+#: lib/ui/stdtoolbars.inc:703
 msgid "backsimeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:696
+#: lib/ui/stdtoolbars.inc:704
 msgid "subseteqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:697
+#: lib/ui/stdtoolbars.inc:705
 msgid "supseteqq"
 msgstr ""
 
 # src/ext_l10n.h:367
-#: lib/ui/stdtoolbars.inc:698
+#: lib/ui/stdtoolbars.inc:706
 #, fuzzy
 msgid "Subset"
 msgstr "Тема"
 
 # src/ext_l10n.h:371
-#: lib/ui/stdtoolbars.inc:699
+#: lib/ui/stdtoolbars.inc:707
 #, fuzzy
 msgid "Supset"
 msgstr "Подраздел"
 
-#: lib/ui/stdtoolbars.inc:700
+#: lib/ui/stdtoolbars.inc:708
 msgid "sqsubset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:701
+#: lib/ui/stdtoolbars.inc:709
 msgid "sqsupset"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:702
+#: lib/ui/stdtoolbars.inc:710
 msgid "preccurlyeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:703
+#: lib/ui/stdtoolbars.inc:711
 msgid "succcurlyeq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:704
+#: lib/ui/stdtoolbars.inc:712
 msgid "curlyeqprec"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:705
+#: lib/ui/stdtoolbars.inc:713
 msgid "curlyeqsucc"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:706
+#: lib/ui/stdtoolbars.inc:714
 msgid "precsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:707
+#: lib/ui/stdtoolbars.inc:715
 msgid "succsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:708
+#: lib/ui/stdtoolbars.inc:716
 msgid "precapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:709
+#: lib/ui/stdtoolbars.inc:717
 msgid "succapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:710
+#: lib/ui/stdtoolbars.inc:718
 msgid "vartriangleleft"
 msgstr ""
 
 # src/ext_l10n.h:65
-#: lib/ui/stdtoolbars.inc:711
+#: lib/ui/stdtoolbars.inc:719
 #, fuzzy
 msgid "vartriangleright"
 msgstr "Ред отдясно(R)|R"
 
-#: lib/ui/stdtoolbars.inc:712
+#: lib/ui/stdtoolbars.inc:720
 msgid "trianglelefteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:713
+#: lib/ui/stdtoolbars.inc:721
 msgid "trianglerighteq"
 msgstr ""
 
 # src/LColor.C:57
-#: lib/ui/stdtoolbars.inc:714
+#: lib/ui/stdtoolbars.inc:722
 #, fuzzy
 msgid "bumpeq"
 msgstr "син"
 
 # src/LColor.C:57
-#: lib/ui/stdtoolbars.inc:715
+#: lib/ui/stdtoolbars.inc:723
 #, fuzzy
 msgid "Bumpeq"
 msgstr "син"
 
-#: lib/ui/stdtoolbars.inc:716
+#: lib/ui/stdtoolbars.inc:724
 msgid "doteqdot"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:717
+#: lib/ui/stdtoolbars.inc:725
 msgid "risingdotseq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:718
+#: lib/ui/stdtoolbars.inc:726
 msgid "fallingdotseq"
 msgstr ""
 
 # src/ext_l10n.h:435
-#: lib/ui/stdtoolbars.inc:719
+#: lib/ui/stdtoolbars.inc:727
 #, fuzzy
 msgid "vDash"
 msgstr "Датски"
 
-#: lib/ui/stdtoolbars.inc:720
+#: lib/ui/stdtoolbars.inc:728
 msgid "Vvdash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:721
+#: lib/ui/stdtoolbars.inc:729
 msgid "Vdash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:722
+#: lib/ui/stdtoolbars.inc:730
 msgid "shortmid"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:723
+#: lib/ui/stdtoolbars.inc:731
 msgid "shortparallel"
 msgstr ""
 
 # src/frontends/kde/parageneraldlg.C:39 src/frontends/kde/parageneraldlg.C:46
-#: lib/ui/stdtoolbars.inc:724
+#: lib/ui/stdtoolbars.inc:732
 #, fuzzy
 msgid "smallsmile"
 msgstr "Малко разстояние"
 
-#: lib/ui/stdtoolbars.inc:725
+#: lib/ui/stdtoolbars.inc:733
 msgid "smallfrown"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:726
+#: lib/ui/stdtoolbars.inc:734
 msgid "blacktriangleleft"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:727
+#: lib/ui/stdtoolbars.inc:735
 msgid "blacktriangleright"
 msgstr ""
 
 # src/lyxfont.C:57
-#: lib/ui/stdtoolbars.inc:728
+#: lib/ui/stdtoolbars.inc:736
 #, fuzzy
 msgid "because"
 msgstr "Намали"
 
 # src/insets/insettheorem.C:39
-#: lib/ui/stdtoolbars.inc:729
+#: lib/ui/stdtoolbars.inc:737
 #, fuzzy
 msgid "therefore"
 msgstr "Теорема"
 
-#: lib/ui/stdtoolbars.inc:730
+#: lib/ui/stdtoolbars.inc:738
 msgid "backepsilon"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:731
+#: lib/ui/stdtoolbars.inc:739
 msgid "varpropto"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:732
+#: lib/ui/stdtoolbars.inc:740
 msgid "between"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:733
+#: lib/ui/stdtoolbars.inc:741
 msgid "pitchfork"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:244
-#: lib/ui/stdtoolbars.inc:736
+#: lib/ui/stdtoolbars.inc:744
 #, fuzzy
 msgid "AMS Negative Relations"
 msgstr "Абзац разделяне"
 
 # src/ext_l10n.h:163
-#: lib/ui/stdtoolbars.inc:737
+#: lib/ui/stdtoolbars.inc:745
 #, fuzzy
 msgid "nless"
 msgstr "Адреси"
 
 # src/frontends/xforms/FormDocument.C:279
 # src/frontends/xforms/FormParagraph.C:133
-#: lib/ui/stdtoolbars.inc:738
+#: lib/ui/stdtoolbars.inc:746
 #, fuzzy
 msgid "ngtr"
 msgstr "Екстри"
 
 # src/bufferview_funcs.C:280
-#: lib/ui/stdtoolbars.inc:739
+#: lib/ui/stdtoolbars.inc:747
 #, fuzzy
 msgid "nleq"
 msgstr "Единично"
 
 # src/bufferview_funcs.C:280
-#: lib/ui/stdtoolbars.inc:740
+#: lib/ui/stdtoolbars.inc:748
 #, fuzzy
 msgid "ngeq"
 msgstr "Единично"
 
-#: lib/ui/stdtoolbars.inc:741
+#: lib/ui/stdtoolbars.inc:749
 msgid "nleqslant"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:742
+#: lib/ui/stdtoolbars.inc:750
 msgid "ngeqslant"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:743
+#: lib/ui/stdtoolbars.inc:751
 msgid "nleqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:744
+#: lib/ui/stdtoolbars.inc:752
 msgid "ngeqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:745
+#: lib/ui/stdtoolbars.inc:753
 msgid "lneq"
 msgstr ""
 
 # src/lyxfont.C:43 src/lyxfont.C:47 src/lyxfont.C:52 src/lyxfont.C:58
 # src/lyxfont.C:62
-#: lib/ui/stdtoolbars.inc:746
+#: lib/ui/stdtoolbars.inc:754
 #, fuzzy
 msgid "gneq"
 msgstr "Игнорирай"
 
-#: lib/ui/stdtoolbars.inc:747
+#: lib/ui/stdtoolbars.inc:755
 msgid "lneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:748
+#: lib/ui/stdtoolbars.inc:756
 msgid "gneqq"
 msgstr ""
 
 # src/ext_l10n.h:462
-#: lib/ui/stdtoolbars.inc:749
+#: lib/ui/stdtoolbars.inc:757
 #, fuzzy
 msgid "lvertneqq"
 msgstr "Словенски"
 
-#: lib/ui/stdtoolbars.inc:750
+#: lib/ui/stdtoolbars.inc:758
 msgid "gvertneqq"
 msgstr ""
 
 # src/mathed/math_panel.C:128
-#: lib/ui/stdtoolbars.inc:751
+#: lib/ui/stdtoolbars.inc:759
 #, fuzzy
 msgid "lnsim"
 msgstr "Разстояние"
 
-#: lib/ui/stdtoolbars.inc:752
+#: lib/ui/stdtoolbars.inc:760
 msgid "gnsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:753
+#: lib/ui/stdtoolbars.inc:761
 msgid "lnapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:754
+#: lib/ui/stdtoolbars.inc:762
 msgid "gnapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:755
+#: lib/ui/stdtoolbars.inc:763
 msgid "nprec"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:756
+#: lib/ui/stdtoolbars.inc:764
 msgid "nsucc"
 msgstr ""
 
 # src/ext_l10n.h:99
-#: lib/ui/stdtoolbars.inc:757
+#: lib/ui/stdtoolbars.inc:765
 #, fuzzy
 msgid "npreceq"
 msgstr "Защитен интервал(B)|B"
 
-#: lib/ui/stdtoolbars.inc:758
+#: lib/ui/stdtoolbars.inc:766
 msgid "nsucceq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:759
+#: lib/ui/stdtoolbars.inc:767
 msgid "precnsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:760
+#: lib/ui/stdtoolbars.inc:768
 msgid "succnsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:761
+#: lib/ui/stdtoolbars.inc:769
 msgid "precnapprox"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:762
+#: lib/ui/stdtoolbars.inc:770
 msgid "succnapprox"
 msgstr ""
 
 # src/ext_l10n.h:373
-#: lib/ui/stdtoolbars.inc:763
+#: lib/ui/stdtoolbars.inc:771
 #, fuzzy
 msgid "subsetneq"
 msgstr "Под-подраздел"
 
-#: lib/ui/stdtoolbars.inc:764
+#: lib/ui/stdtoolbars.inc:772
 msgid "supsetneq"
 msgstr ""
 
 # src/ext_l10n.h:373
-#: lib/ui/stdtoolbars.inc:765
+#: lib/ui/stdtoolbars.inc:773
 #, fuzzy
 msgid "subsetneqq"
 msgstr "Под-подраздел"
 
-#: lib/ui/stdtoolbars.inc:766
+#: lib/ui/stdtoolbars.inc:774
 msgid "supsetneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:767
+#: lib/ui/stdtoolbars.inc:775
 msgid "nsubseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:768
+#: lib/ui/stdtoolbars.inc:776
 msgid "nsupseteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:769
+#: lib/ui/stdtoolbars.inc:777
 msgid "nsupseteqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:770
+#: lib/ui/stdtoolbars.inc:778
 msgid "nvdash"
 msgstr ""
 
 # src/ext_l10n.h:435
-#: lib/ui/stdtoolbars.inc:771
+#: lib/ui/stdtoolbars.inc:779
 #, fuzzy
 msgid "nvDash"
 msgstr "Датски"
 
 # src/ext_l10n.h:435
-#: lib/ui/stdtoolbars.inc:772
+#: lib/ui/stdtoolbars.inc:780
 #, fuzzy
 msgid "nVDash"
 msgstr "Датски"
 
-#: lib/ui/stdtoolbars.inc:773
+#: lib/ui/stdtoolbars.inc:781
 msgid "varsubsetneq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:774
+#: lib/ui/stdtoolbars.inc:782
 msgid "varsupsetneq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:775
+#: lib/ui/stdtoolbars.inc:783
 msgid "varsubsetneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:776
+#: lib/ui/stdtoolbars.inc:784
 msgid "varsupsetneqq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:777
+#: lib/ui/stdtoolbars.inc:785
 msgid "ntriangleleft"
 msgstr ""
 
 # src/ext_l10n.h:209
-#: lib/ui/stdtoolbars.inc:778
+#: lib/ui/stdtoolbars.inc:786
 #, fuzzy
 msgid "ntriangleright"
 msgstr "Авторски права"
 
-#: lib/ui/stdtoolbars.inc:779
+#: lib/ui/stdtoolbars.inc:787
 msgid "ntrianglelefteq"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:780
+#: lib/ui/stdtoolbars.inc:788
 msgid "ntrianglerighteq"
 msgstr ""
 
 # src/LColor.C:52
-#: lib/ui/stdtoolbars.inc:781
+#: lib/ui/stdtoolbars.inc:789
 #, fuzzy
 msgid "ncong"
 msgstr "няма"
 
-#: lib/ui/stdtoolbars.inc:782
+#: lib/ui/stdtoolbars.inc:790
 msgid "nsim"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:783
+#: lib/ui/stdtoolbars.inc:791
 msgid "nmid"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:784
+#: lib/ui/stdtoolbars.inc:792
 msgid "nshortmid"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:785
+#: lib/ui/stdtoolbars.inc:793
 msgid "nparallel"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:786
+#: lib/ui/stdtoolbars.inc:794
 msgid "nshortparallel"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:244
-#: lib/ui/stdtoolbars.inc:789
+#: lib/ui/stdtoolbars.inc:797
 #, fuzzy
 msgid "AMS Operators"
 msgstr "Абзац разделяне"
 
-#: lib/ui/stdtoolbars.inc:790
+#: lib/ui/stdtoolbars.inc:798
 msgid "dotplus"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:791
+#: lib/ui/stdtoolbars.inc:799
 msgid "smallsetminus"
 msgstr ""
 
 # src/ext_l10n.h:191
-#: lib/ui/stdtoolbars.inc:792
+#: lib/ui/stdtoolbars.inc:800
 #, fuzzy
 msgid "Cap"
 msgstr "Заглавие"
 
 # src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:431
-#: lib/ui/stdtoolbars.inc:793
+#: lib/ui/stdtoolbars.inc:801
 #, fuzzy
 msgid "Cup"
 msgstr "Отрежи"
 
 # src/lyxfont.C:56
-#: lib/ui/stdtoolbars.inc:794
+#: lib/ui/stdtoolbars.inc:802
 #, fuzzy
 msgid "barwedge"
 msgstr "Голям"
 
-#: lib/ui/stdtoolbars.inc:795
+#: lib/ui/stdtoolbars.inc:803
 msgid "veebar"
 msgstr ""
 
 # src/bufferview_funcs.C:286
-#: lib/ui/stdtoolbars.inc:796
+#: lib/ui/stdtoolbars.inc:804
 #, fuzzy
 msgid "doublebarwedge"
 msgstr "Двойно"
 
 # src/frontends/xforms/form_paragraph.C:145
-#: lib/ui/stdtoolbars.inc:797
+#: lib/ui/stdtoolbars.inc:805
 #, fuzzy
 msgid "boxminus"
 msgstr "Редове"
 
-#: lib/ui/stdtoolbars.inc:798
+#: lib/ui/stdtoolbars.inc:806
 msgid "boxtimes"
 msgstr ""
 
 # src/insets/insetfoot.C:32
-#: lib/ui/stdtoolbars.inc:799
+#: lib/ui/stdtoolbars.inc:807
 #, fuzzy
 msgid "boxdot"
 msgstr "бел. под линия"
 
-#: lib/ui/stdtoolbars.inc:800
+#: lib/ui/stdtoolbars.inc:808
 msgid "boxplus"
 msgstr ""
 
@@ -17380,57 +17422,57 @@ msgstr ""
 # src/frontends/kde/FormToc.C:167 src/frontends/kde/FormToc.C:168
 # src/frontends/kde/tocdlg.C:28 src/frontends/xforms/FormToc.C:35
 # src/insets/insettoc.C:22
-#: lib/ui/stdtoolbars.inc:801
+#: lib/ui/stdtoolbars.inc:809
 #, fuzzy
 msgid "divideontimes"
 msgstr "Съдържание"
 
-#: lib/ui/stdtoolbars.inc:802
+#: lib/ui/stdtoolbars.inc:810
 msgid "ltimes"
 msgstr ""
 
 # src/ext_l10n.h:429
-#: lib/ui/stdtoolbars.inc:803
+#: lib/ui/stdtoolbars.inc:811
 #, fuzzy
 msgid "rtimes"
 msgstr "Британски"
 
-#: lib/ui/stdtoolbars.inc:804
+#: lib/ui/stdtoolbars.inc:812
 msgid "leftthreetimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:805
+#: lib/ui/stdtoolbars.inc:813
 msgid "rightthreetimes"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:806
+#: lib/ui/stdtoolbars.inc:814
 msgid "curlywedge"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:807
+#: lib/ui/stdtoolbars.inc:815
 msgid "curlyvee"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:808
+#: lib/ui/stdtoolbars.inc:816
 msgid "circleddash"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:809
+#: lib/ui/stdtoolbars.inc:817
 msgid "circledast"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:810
+#: lib/ui/stdtoolbars.inc:818
 msgid "circledcirc"
 msgstr ""
 
 # src/frontends/kde/dlg/parageneraldlgdata.C:107
-#: lib/ui/stdtoolbars.inc:811
+#: lib/ui/stdtoolbars.inc:819
 #, fuzzy
 msgid "centerdot"
 msgstr "Центринан"
 
 # src/frontends/xforms/FormPreferences.C:269
-#: lib/ui/stdtoolbars.inc:812
+#: lib/ui/stdtoolbars.inc:820
 #, fuzzy
 msgid "intercal"
 msgstr "Принтер"
@@ -17922,12 +17964,12 @@ msgstr "Библ. перо"
 msgid "before"
 msgstr "Текст преди(T)|#T"
 
-#: src/Buffer.cpp:236
+#: src/Buffer.cpp:237
 msgid "Disk Error: "
 msgstr ""
 
 # src/support/filetools.C:453
-#: src/Buffer.cpp:237
+#: src/Buffer.cpp:238
 #, fuzzy, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
@@ -18088,8 +18130,8 @@ msgstr "Машинопис"
 
 # src/frontends/xforms/form_preferences.C:111 src/lyxfont.C:42
 #: src/Buffer.cpp:836 src/Exporter.cpp:49 src/LyXFunc.cpp:980
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1464
-#: src/frontends/qt4/GuiView.cpp:1642
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1467
+#: src/frontends/qt4/GuiView.cpp:1645
 #, fuzzy
 msgid "&Overwrite"
 msgstr "Машинопис"
@@ -18323,31 +18365,31 @@ msgid "&Retrieve"
 msgstr "(&R)Въстанови"
 
 # src/LaTeXLog.C:59 src/LaTeXLog.C:62
-#: src/BufferList.cpp:220
+#: src/BufferList.cpp:223
 #, fuzzy
 msgid "No file open!"
 msgstr "Не е намерен LaTeX файл-протокол"
 
 # src/bufferlist.C:289
-#: src/BufferList.cpp:230
+#: src/BufferList.cpp:233
 #, fuzzy, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Опит за запазване на докумнета %s като..."
 
 # src/bufferlist.C:302 src/bufferlist.C:315 src/bufferlist.C:329
-#: src/BufferList.cpp:240 src/BufferList.cpp:253 src/BufferList.cpp:267
+#: src/BufferList.cpp:243 src/BufferList.cpp:256 src/BufferList.cpp:270
 #, fuzzy
 msgid "  Save seems successful. Phew.\n"
 msgstr "  Записът изглежда е успешен. Какъв късмет!"
 
 # src/bufferlist.C:305 src/bufferlist.C:319
-#: src/BufferList.cpp:243 src/BufferList.cpp:257
+#: src/BufferList.cpp:246 src/BufferList.cpp:260
 #, fuzzy
 msgid "  Save failed! Trying...\n"
 msgstr "  Записът пропадна! Опитвам..."
 
 # src/bufferlist.C:332
-#: src/BufferList.cpp:271
+#: src/BufferList.cpp:274
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Записът пропадна! Документът е загубен."
 
@@ -19111,7 +19153,7 @@ msgstr "Дълбочина"
 msgid "An empty output file was generated."
 msgstr ""
 
-#: src/CutAndPaste.cpp:541
+#: src/CutAndPaste.cpp:545
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -19119,7 +19161,7 @@ msgid ""
 msgstr ""
 
 # src/insets/insettext.C:478
-#: src/CutAndPaste.cpp:548
+#: src/CutAndPaste.cpp:552
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "Отворен Text Inset"
@@ -19404,7 +19446,7 @@ msgstr "Изпълнявам MakeIndex."
 msgid "Could not read configuration file"
 msgstr "Недъзможна е работата с файл: "
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1402
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1397
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -19723,7 +19765,7 @@ msgid ""
 msgstr "Документът използва непознат текстклас \""
 
 # src/bufferlist.C:113 src/bufferlist.C:189
-#: src/LyXFunc.cpp:664 src/frontends/qt4/GuiView.cpp:1739
+#: src/LyXFunc.cpp:664 src/frontends/qt4/GuiView.cpp:1742
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Запазване на документа?"
@@ -19756,7 +19798,7 @@ msgid "Revert to saved document?"
 msgstr "Записано състояние"
 
 # src/ext_l10n.h:30
-#: src/LyXFunc.cpp:802 src/LyXVC.cpp:179
+#: src/LyXFunc.cpp:802 src/LyXVC.cpp:181
 #, fuzzy
 msgid "&Revert"
 msgstr "Регистрирай(R)|R"
@@ -20427,16 +20469,16 @@ msgid "(no initial description)"
 msgstr "(няма начално описание)"
 
 # src/lyxvc.C:139
-#: src/LyXVC.cpp:149
+#: src/LyXVC.cpp:150
 msgid "LyX VC: Log Message"
 msgstr "LyX СКВ: протоколно съобщение"
 
 # src/lyxvc.C:142
-#: src/LyXVC.cpp:152
+#: src/LyXVC.cpp:153
 msgid "(no log message)"
 msgstr "(няма протоколно съобщение)"
 
-#: src/LyXVC.cpp:175
+#: src/LyXVC.cpp:177
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -20446,28 +20488,28 @@ msgid ""
 msgstr ""
 
 # src/LyXAction.C:127
-#: src/LyXVC.cpp:178
+#: src/LyXVC.cpp:180
 #, fuzzy
 msgid "Revert to stored version of document?"
 msgstr "Маркирай до края на документа"
 
 # src/frontends/kde/paradlg.C:95 src/paragraph.C:1957
-#: src/Paragraph.cpp:1512 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1559 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Неизползваем с това оформление!"
 
-#: src/Paragraph.cpp:1578
+#: src/Paragraph.cpp:1625
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1579
+#: src/Paragraph.cpp:1626
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
 # src/lyxfunc.C:1125
-#: src/Paragraph.cpp:2047 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2094 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:182 src/insets/InsetListings.cpp:190
 #: src/insets/InsetListings.cpp:214 src/mathed/InsetMathString.cpp:164
 #, fuzzy
@@ -20475,7 +20517,7 @@ msgid "LyX Warning: "
 msgstr "LyX версия "
 
 # src/ext_l10n.h:78
-#: src/Paragraph.cpp:2048 src/insets/InsetListings.cpp:183
+#: src/Paragraph.cpp:2095 src/insets/InsetListings.cpp:183
 #: src/insets/InsetListings.cpp:191 src/mathed/InsetMathString.cpp:165
 #, fuzzy
 msgid "uncodable character"
@@ -20701,27 +20743,33 @@ msgid ""
 msgstr ""
 
 # src/debug.C:44
-#: src/VCBackend.cpp:46 src/VCBackend.cpp:468 src/VCBackend.cpp:515
+#: src/VCBackend.cpp:52 src/VCBackend.cpp:479 src/VCBackend.cpp:530
 #, fuzzy
 msgid "Revision control error."
 msgstr "Система за контрол на версиите"
 
 # src/lyx_main.C:605
-#: src/VCBackend.cpp:47
+#: src/VCBackend.cpp:53
 #, fuzzy, c-format
 msgid ""
 "Some problem occured while running the command:\n"
 "'%1$s'."
 msgstr "Грешка при четене "
 
-#: src/VCBackend.cpp:469
+# src/buffer.C:3331
+#: src/VCBackend.cpp:468 src/VCBackend.cpp:520
+#, fuzzy
+msgid "Error: Could not generate logfile."
+msgstr "Недъзможна е работата с файл: "
+
+#: src/VCBackend.cpp:480
 msgid ""
 "Error when commiting to repository.\n"
 "You have to manually resolve the problem.\n"
 "After pressing OK, LyX will reopen the document."
 msgstr ""
 
-#: src/VCBackend.cpp:516
+#: src/VCBackend.cpp:531
 #, c-format
 msgid ""
 "Error when updating from repository.\n"
@@ -20841,23 +20889,23 @@ msgid "Could not read template"
 msgstr "Недъзможна е работата с файл: "
 
 # src/ext_l10n.h:371
-#: src/buffer_funcs.cpp:387
+#: src/buffer_funcs.cpp:386
 #, fuzzy
 msgid "\\arabic{enumi}."
 msgstr "Подраздел"
 
-#: src/buffer_funcs.cpp:393
+#: src/buffer_funcs.cpp:392
 msgid "\\roman{enumiii}."
 msgstr ""
 
 # src/LColor.C:64
-#: src/buffer_funcs.cpp:396
+#: src/buffer_funcs.cpp:395
 #, fuzzy
 msgid "\\Alph{enumiv}."
 msgstr "избор"
 
 # src/ext_l10n.h:163
-#: src/buffer_funcs.cpp:413 src/insets/InsetCaption.cpp:293
+#: src/buffer_funcs.cpp:412 src/insets/InsetCaption.cpp:293
 #, fuzzy
 msgid "Senseless!!! "
 msgstr "Адреси"
@@ -21013,12 +21061,12 @@ msgstr "\" пропадна  - цветът не е дефиниран или не може да бъде предефиниран"
 
 # src/frontends/kde/dlg/printdlgdata.C:88
 # src/frontends/xforms/form_print.C:138
-#: src/frontends/qt4/GuiApplication.cpp:1211
+#: src/frontends/qt4/GuiApplication.cpp:1206
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Печат на"
 
-#: src/frontends/qt4/GuiApplication.cpp:1221
+#: src/frontends/qt4/GuiApplication.cpp:1216
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -21026,19 +21074,19 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1225
-#: src/frontends/qt4/GuiApplication.cpp:1231
+#: src/frontends/qt4/GuiApplication.cpp:1220
+#: src/frontends/qt4/GuiApplication.cpp:1226
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1229
+#: src/frontends/qt4/GuiApplication.cpp:1224
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
 # src/buffer.C:3331
-#: src/frontends/qt4/GuiApplication.cpp:1401
+#: src/frontends/qt4/GuiApplication.cpp:1396
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Недъзможна е работата с файл: "
@@ -21060,8 +21108,8 @@ msgstr "Библиография"
 #: src/frontends/qt4/GuiDocument.cpp:1293
 #: src/frontends/qt4/GuiExternal.cpp:661 src/frontends/qt4/GuiGraphics.cpp:740
 #: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1219
-#: src/frontends/qt4/GuiView.cpp:1277 src/frontends/qt4/GuiView.cpp:1414
-#: src/frontends/qt4/GuiView.cpp:1533 src/frontends/qt4/GuiView.cpp:1612
+#: src/frontends/qt4/GuiView.cpp:1277 src/frontends/qt4/GuiView.cpp:1417
+#: src/frontends/qt4/GuiView.cpp:1536 src/frontends/qt4/GuiView.cpp:1615
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Документи(D)|D"
@@ -21336,9 +21384,9 @@ msgstr "Въведете име за запазване на документа"
 # src/lyxfunc.C:3061 src/lyxfunc.C:3088 src/lyxfunc.C:3165 src/lyxfunc.C:3223
 # src/lyxfunc.C:3251 src/lyxfunc.C:3261 src/lyxfunc.C:3297
 #: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1295
-#: src/frontends/qt4/GuiView.cpp:1434 src/frontends/qt4/GuiView.cpp:1450
-#: src/frontends/qt4/GuiView.cpp:1467 src/frontends/qt4/GuiView.cpp:1550
-#: src/frontends/qt4/GuiView.cpp:1588
+#: src/frontends/qt4/GuiView.cpp:1437 src/frontends/qt4/GuiView.cpp:1453
+#: src/frontends/qt4/GuiView.cpp:1470 src/frontends/qt4/GuiView.cpp:1553
+#: src/frontends/qt4/GuiView.cpp:1591
 msgid "Canceled."
 msgstr "Прекъснат."
 
@@ -22515,26 +22563,26 @@ msgid "PostScript files (*.ps)"
 msgstr ""
 
 # src/frontends/kde/FormRef.C:249
-#: src/frontends/qt4/GuiRef.cpp:42
+#: src/frontends/qt4/GuiRef.cpp:43
 #, fuzzy
 msgid "Cross-reference"
 msgstr "LyX: Препратка"
 
 # src/frontends/kde/FormRef.C:103
-#: src/frontends/qt4/GuiRef.cpp:264
+#: src/frontends/qt4/GuiRef.cpp:265
 #, fuzzy
 msgid "&Go Back"
 msgstr "(&G)Назад"
 
 # src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:214
-#: src/frontends/qt4/GuiRef.cpp:266
+#: src/frontends/qt4/GuiRef.cpp:267
 #, fuzzy
 msgid "Jump back"
 msgstr "Обратно"
 
 # src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:105
 # src/frontends/xforms/FormRef.C:222 src/frontends/xforms/FormRef.C:245
-#: src/frontends/qt4/GuiRef.cpp:274
+#: src/frontends/qt4/GuiRef.cpp:275
 #, fuzzy
 msgid "Jump to label"
 msgstr "Към препратка"
@@ -23152,14 +23200,14 @@ msgid "Select template file"
 msgstr "Избор на файл"
 
 # src/lyx.C:75
-#: src/frontends/qt4/GuiView.cpp:1220 src/frontends/qt4/GuiView.cpp:1613
+#: src/frontends/qt4/GuiView.cpp:1220 src/frontends/qt4/GuiView.cpp:1616
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Шаблон(t)|#t"
 
 # src/ext_l10n.h:116
 #: src/frontends/qt4/GuiView.cpp:1223 src/frontends/qt4/GuiView.cpp:1281
-#: src/frontends/qt4/GuiView.cpp:1539 src/frontends/qt4/GuiView.cpp:1620
+#: src/frontends/qt4/GuiView.cpp:1542 src/frontends/qt4/GuiView.cpp:1623
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX документ(X)...|X"
@@ -23177,8 +23225,8 @@ msgid "Select document to open"
 msgstr "Изберете документ за отваряне"
 
 # src/lyxfunc.C:3157 src/lyxfunc.C:3213 src/lyxfunc.C:3289
-#: src/frontends/qt4/GuiView.cpp:1278 src/frontends/qt4/GuiView.cpp:1415
-#: src/frontends/qt4/GuiView.cpp:1534
+#: src/frontends/qt4/GuiView.cpp:1278 src/frontends/qt4/GuiView.cpp:1418
+#: src/frontends/qt4/GuiView.cpp:1537
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Примери"
@@ -23213,32 +23261,38 @@ msgstr "Отварям документ"
 msgid "Document %1$s opened."
 msgstr "Няма отворени документи!"
 
+# src/debug.C:44
+#: src/frontends/qt4/GuiView.cpp:1330
+#, fuzzy
+msgid "Version control detected."
+msgstr "Система за контрол на версиите"
+
 # src/lyxfunc.C:3185
-#: src/frontends/qt4/GuiView.cpp:1329
+#: src/frontends/qt4/GuiView.cpp:1332
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Неуспех при отварянето"
 
 # src/importer.C:57
-#: src/frontends/qt4/GuiView.cpp:1358
+#: src/frontends/qt4/GuiView.cpp:1361
 #, fuzzy
 msgid "Couldn't import file"
 msgstr "Невъзможност за импортиране на файл"
 
 # src/importer.C:58
-#: src/frontends/qt4/GuiView.cpp:1359
+#: src/frontends/qt4/GuiView.cpp:1362
 #, fuzzy, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Няма информация за импортиране от "
 
 # src/lyxfunc.C:3291
-#: src/frontends/qt4/GuiView.cpp:1410
+#: src/frontends/qt4/GuiView.cpp:1413
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Изберете документ за вмъкване"
 
 # src/buffer.C:534
-#: src/frontends/qt4/GuiView.cpp:1461 src/frontends/qt4/GuiView.cpp:1637
+#: src/frontends/qt4/GuiView.cpp:1464 src/frontends/qt4/GuiView.cpp:1640
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -23247,54 +23301,54 @@ msgid ""
 msgstr "Документът използва непознат текстклас \""
 
 # src/bufferlist.C:113 src/bufferlist.C:189
-#: src/frontends/qt4/GuiView.cpp:1463 src/frontends/qt4/GuiView.cpp:1641
+#: src/frontends/qt4/GuiView.cpp:1466 src/frontends/qt4/GuiView.cpp:1644
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Запазване на документа?"
 
 # src/importer.C:39
-#: src/frontends/qt4/GuiView.cpp:1472
+#: src/frontends/qt4/GuiView.cpp:1475
 #, fuzzy, c-format
 msgid "Importing %1$s..."
 msgstr "Импортиране"
 
 # src/importer.C:81
-#: src/frontends/qt4/GuiView.cpp:1475
+#: src/frontends/qt4/GuiView.cpp:1478
 msgid "imported."
 msgstr "импортиран."
 
 # src/lyxfr1.C:192 src/lyxfr1.C:239
-#: src/frontends/qt4/GuiView.cpp:1477
+#: src/frontends/qt4/GuiView.cpp:1480
 #, fuzzy
 msgid "file not imported!"
 msgstr "Низът не е намерен!"
 
 # src/lyxfunc.C:3291
-#: src/frontends/qt4/GuiView.cpp:1532
+#: src/frontends/qt4/GuiView.cpp:1535
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Изберете документ за вмъкване"
 
 # src/lyxfunc.C:3291
-#: src/frontends/qt4/GuiView.cpp:1573
+#: src/frontends/qt4/GuiView.cpp:1576
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Изберете документ за вмъкване"
 
 # src/lyx_cb.C:203
-#: src/frontends/qt4/GuiView.cpp:1610
+#: src/frontends/qt4/GuiView.cpp:1613
 #, fuzzy
 msgid "Choose a filename to save document as"
 msgstr "Въведете име за запазване на документа"
 
 # src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
-#: src/frontends/qt4/GuiView.cpp:1642 src/frontends/qt4/GuiView.cpp:1687
+#: src/frontends/qt4/GuiView.cpp:1645 src/frontends/qt4/GuiView.cpp:1690
 #, fuzzy
 msgid "&Rename"
 msgstr "Име"
 
 # src/buffer.C:534
-#: src/frontends/qt4/GuiView.cpp:1683
+#: src/frontends/qt4/GuiView.cpp:1686
 #, fuzzy, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -23302,18 +23356,18 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr "Документът използва непознат текстклас \""
 
-#: src/frontends/qt4/GuiView.cpp:1686
+#: src/frontends/qt4/GuiView.cpp:1689
 msgid "Rename and save?"
 msgstr ""
 
 # src/frontends/kde/dlg/paradlgdata.C:82
-#: src/frontends/qt4/GuiView.cpp:1687
+#: src/frontends/qt4/GuiView.cpp:1690
 #, fuzzy
 msgid "&Retry"
 msgstr "(&R)Въстанови"
 
 # src/buffer.C:534
-#: src/frontends/qt4/GuiView.cpp:1737
+#: src/frontends/qt4/GuiView.cpp:1740
 #, fuzzy, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -23321,23 +23375,23 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr "Документът използва непознат текстклас \""
 
-#: src/frontends/qt4/GuiView.cpp:1740
+#: src/frontends/qt4/GuiView.cpp:1743
 msgid "&Discard"
 msgstr ""
 
 # src/lyxfunc.C:795
-#: src/frontends/qt4/GuiView.cpp:1844
+#: src/frontends/qt4/GuiView.cpp:1847
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "Записвам документа"
 
 # src/lyx_cb.C:263
-#: src/frontends/qt4/GuiView.cpp:1854
+#: src/frontends/qt4/GuiView.cpp:1857
 #, fuzzy
 msgid "All documents saved."
 msgstr "Документът не може да бъде записан!"
 
-#: src/frontends/qt4/GuiView.cpp:2054
+#: src/frontends/qt4/GuiView.cpp:2057
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
@@ -23966,20 +24020,26 @@ msgstr "Низът не е намерен!"
 msgid "Information regarding "
 msgstr "Липсва информация за показване на "
 
+# src/lyxfont.C:404
+#: src/insets/InsetInfo.cpp:282
+#, fuzzy
+msgid "undefined"
+msgstr "Подчертаване "
+
 # src/insets/insetbib.C:340
-#: src/insets/InsetInfo.cpp:280 src/insets/InsetInfo.cpp:284
+#: src/insets/InsetInfo.cpp:305 src/insets/InsetInfo.cpp:309
 #, fuzzy
 msgid "yes"
 msgstr "Стил: "
 
 # src/BufferView2.C:435 src/LyXAction.C:406
-#: src/insets/InsetInfo.cpp:280 src/insets/InsetInfo.cpp:284
+#: src/insets/InsetInfo.cpp:305 src/insets/InsetInfo.cpp:309
 #, fuzzy
 msgid "no"
 msgstr "Отмени"
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/insets/InsetInfo.cpp:338
+#: src/insets/InsetInfo.cpp:363
 #, fuzzy
 msgid "Unknown buffer info"
 msgstr "Непознато действие"
@@ -24408,7 +24468,7 @@ msgid "Opened table"
 msgstr "Отвори помощен файл"
 
 # src/insets/insettext.C:478
-#: src/insets/InsetText.cpp:215
+#: src/insets/InsetText.cpp:212
 msgid "Opened Text Inset"
 msgstr "Отворен Text Inset"
 
@@ -24745,7 +24805,8 @@ msgstr ""
 msgid ""
 "Unable to determine the system directory having searched\n"
 "\t%1$s\n"
-"Use the '-sysdir' command line parameter or set the environment variable "
+"Use the '-sysdir' command line parameter or set the environment variable\n"
+"%2$s to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 
 # src/lyxfr1.C:192 src/lyxfr1.C:239
