@@ -901,8 +901,11 @@ void GuiApplication::resetGui()
 		d->menus_.fillMenuBar(d->global_menubar_, 0, true);
 
 	QHash<int, GuiView *>::iterator it;
-	for (it = d->views_.begin(); it != d->views_.end(); ++it)
-		(*it)->resetDialogs();
+	for (it = d->views_.begin(); it != d->views_.end(); ++it) {
+		GuiView * gv = *it;
+		gv->setLayoutDirection(layoutDirection());
+		gv->resetDialogs();
+	}
 
 	dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
 }
