@@ -222,6 +222,7 @@
   ${endif}
 
   ${if} ${LangISOCode} = 1058
+   StrCpy ${LangNme} "Ukrainian"
    StrCpy ${LangCdeSys} "uk"
    StrCpy ${LangNmeSys} "Ukrainian"
    StrCpy ${LangSysEnc} "1251"
