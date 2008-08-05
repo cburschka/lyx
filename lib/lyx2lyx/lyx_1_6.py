@@ -1039,26 +1039,24 @@ def convert_latexcommand_index(document):
             return
         if document.body[i + 1] != "LatexCommand index": # Might also be index_print
             return
+        j = find_end_of_inset(document.body, i + 2)
+        if j == -1:
+            document.warning("Unable to find end of index inset at line " + i + "!")
+            i += 2
+            continue
         m = r1.match(document.body[i + 2])
         if m == None:
             document.warning("Unable to match: " + document.body[i+2])
             i += 1
             continue
         fullcontent = m.group(1)
-        #document.warning(fullcontent)
-        document.body[i:i + 3] = ["\\begin_inset Index",
-          "status collapsed",
-          "\\begin_layout Standard"]
-        i += 3
-        # We are now on the blank line preceding "\end_inset"
-        # We will write the content here, into the inset.
-
         linelist = latex2lyx(fullcontent)
-        document.body[i+1:i+1] = linelist
-        i += len(linelist)
+        #document.warning(fullcontent)
 
-        document.body.insert(i + 1, "\\end_layout")
-        i += 1
+        linelist = ["\\begin_inset Index", "status collapsed", "\\begin_layout Standard", ""] + \
+                   linelist + ["\\end_layout"]
+        document.body[i : j] = linelist
+        i += len(linelist) - (j - i)
 
 
 def revert_latexcommand_index(document):
