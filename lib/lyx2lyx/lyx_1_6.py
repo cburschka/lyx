@@ -64,6 +64,11 @@ def add_to_preamble(document, text):
 
     document.preamble.extend(text)
 
+def insert_to_preamble(index, document, text):
+    """ Insert text to the preamble at a given line"""
+
+    document.preamble.insert(index, text)
+
 # Convert a LyX length into a LaTeX length
 def convert_len(len):
     units = {"text%":"\\backslash\ntextwidth", "col%":"\\backslash\ncolumnwidth",
@@ -872,9 +877,12 @@ def revert_pdf_options(document):
                 setupstart = ""
                 setupend = ""
             # write the preamble
-            add_to_preamble(document,
-                                ['% Commands inserted by lyx2lyx for PDF properties',
-                                 '\\usepackage[unicode=true'
+            # babel must be loaded before hyperref and hyperref the first part
+            # of the preamble, like in LyX 1.6
+            insert_to_preamble(0, document,
+                                 '% Commands inserted by lyx2lyx for PDF properties\n'
+                                 + '\\usepackage{babel}\n'
+                                 + '\\usepackage[unicode=true'
                                  + bookmarks
                                  + breaklinks
                                  + pdfborder
@@ -883,14 +891,14 @@ def revert_pdf_options(document):
                                  + colorlinks
                                  + pagemode
                                  + ']\n'
-                                 ' {hyperref}\n'
+                                 + ' {hyperref}\n'
                                  + setupstart
                                  + title
                                  + author
                                  + subject
                                  + keywords
                                  + otheroptions
-                                 + setupend])
+                                 + setupend)
 
 
 def remove_inzip_options(document):
