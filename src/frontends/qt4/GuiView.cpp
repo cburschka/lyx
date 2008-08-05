@@ -770,6 +770,8 @@ bool GuiView::event(QEvent * e)
 
 	case QEvent::ShortcutOverride: {
 
+#ifndef Q_WS_X11
+		// FIXME bug 4888
 		if (isFullScreen() && menuBar()->isHidden()) {
 			QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 			// FIXME: we should also try to detect special LyX shortcut such as
@@ -780,6 +782,7 @@ bool GuiView::event(QEvent * e)
 				menuBar()->show();
 			return QMainWindow::event(e);
 		}
+#endif
 
 		if (d.current_work_area_)
 			// Nothing special to do.
@@ -2001,6 +2004,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			break;
 	}
 
+	// Part of automatic menu appearance feature.
 	if (isFullScreen()) {
 		if (menuBar()->isVisible())
 			menuBar()->hide();
