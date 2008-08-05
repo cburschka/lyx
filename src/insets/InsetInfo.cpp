@@ -283,7 +283,7 @@ void InsetInfo::updateInfo()
 			break;
 		}
 		if (type_ == SHORTCUT_INFO)
-			setText(bindings.rbegin()->print(KeySequence::ForGui));
+			setText(bindings.rbegin()->print(KeySequence::Portable));
 		else
 			setText(theTopLevelKeymap().printBindings(func));
 		break;
