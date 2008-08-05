@@ -649,12 +649,12 @@ contributers = [
                  u"Norwegian documentation and localization"),
          
      contributer(u"Richard Heck",
-                 "rgheck () brown ! edu",
+                 "rgheck () comcast ! net",
                  "GPL",
                  "GPL Statement",
                  "m=117501689204059",
                  "27 March 2007",
-                 u"Bug fixes, layout modules, BibTeX code"),
+                 u"Layout modules, BibTeX code, various bugs"),
 
      contributer(u"Bennett Helm",
                  "bennett.helm () fandm ! edu",
