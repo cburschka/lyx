@@ -663,7 +663,7 @@ def revert_long_charstyle_names(document):
         i = find_token(document.body, "\\begin_inset CharStyle", i)
         if i == -1:
             return
-        document.body[i] = document.body[i].replace("CharStyle CharStyle:", "CharStyle")
+        document.body[i] = document.body[i].replace("CharStyle CharStyle:", "CharStyle ")
         i += 1
 
 
