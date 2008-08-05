@@ -261,7 +261,7 @@ InsetLayout URL
 	  Color               urllabel
 	  Size                Small
 	EndFont
-	Requires	      url
+	Requires              url
 End
 
 InsetLayout OptArg
