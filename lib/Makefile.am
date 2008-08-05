@@ -997,6 +997,7 @@ dist_layouts_DATA =\
 	layouts/seminar.layout \
 	layouts/siamltex.layout \
 	layouts/simplecv.layout \
+	layouts/singlecol.layout \
 	layouts/slides.layout \
 	layouts/spie.layout \
 	layouts/stdclass.inc \

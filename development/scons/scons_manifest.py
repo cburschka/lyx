@@ -2775,6 +2775,7 @@ lib_layouts_files = Split('''
     seminar.layout
     siamltex.layout
     simplecv.layout
+    singlecol.layout
     slides.layout
     spie.layout
     svglobal.layout
