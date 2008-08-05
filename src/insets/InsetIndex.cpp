@@ -20,6 +20,7 @@
 #include "sgml.h"
 #include "TocBackend.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -49,22 +50,54 @@ int InsetIndex::latex(odocstream & os,
 	os << "\\index";
 	os << '{';
 	int i = 7;
-	odocstringstream ods;
-	InsetText::latex(ods, runparams);
-	odocstringstream ods2;
-	InsetText::plaintext(ods2, runparams);
+
+	// get contents of InsetText as LaTeX and plaintext
+	odocstringstream ourlatex;
+	InsetText::latex(ourlatex, runparams);
+	odocstringstream ourplain;
+	InsetText::plaintext(ourplain, runparams);
+	docstring latexstr = ourlatex.str();
+	docstring plainstr = ourplain.str();
+
+	// this will get what follows | if anything does
+	docstring cmd;
+
+	// check for the | separator
+	// FIXME This would go wrong on an escaped "|", but
+	// how far do we want to go here?
+	size_t pos = latexstr.find(from_ascii("|"));
+	if (pos != docstring::npos) {
+		// put the bit after "|" into cmd...
+		cmd = latexstr.substr(pos + 1);
+		// ...and erase that stuff from latexstr
+		latexstr = latexstr.erase(pos);
+		// ...and similarly from plainstr
+		size_t ppos = plainstr.find(from_ascii("|"));
+		if (ppos < plainstr.size())
+			plainstr.erase(ppos);
+		else
+			LYXERR0("The `|' separator was not found in the plaintext version!");
+	}
+
+	// Separate the entires and subentries, i.e., split on "!"
+	// FIXME This would do the wrong thing with escaped ! characters
 	std::vector<docstring> const levels =
-		getVectorFromString(ods.str(), from_ascii("!"), true);
+		getVectorFromString(latexstr, from_ascii("!"), true);
 	std::vector<docstring> const levels_plain =
-		getVectorFromString(ods2.str(), from_ascii("!"), true);
+		getVectorFromString(plainstr, from_ascii("!"), true);
+
 	vector<docstring>::const_iterator it = levels.begin();
 	vector<docstring>::const_iterator end = levels.end();
 	vector<docstring>::const_iterator it2 = levels_plain.begin();
+	bool first = true;
 	for (; it != end; ++it) {
-		if (it > levels.begin()) {
+		// write the separator except the first time
+		if (!first) {
 			os << '!';
 			i += 1;
-		}
+		} else
+			first = false;
+
 		// correctly sort macros and formatted strings
 		// if we do find a command, prepend a plain text
 		// version of the content to get sorting right,
@@ -72,9 +105,8 @@ int InsetIndex::latex(odocstream & os,
 		// Don't do that if the user entered '@' himself, though.
 		if (contains(*it, '\\') && !contains(*it, '@')) {
 			// Plaintext might return nothing (e.g. for ERTs)
-			docstring spart =
-				(it2 < levels_plain.end()
-				 && !(*it2).empty()) ? *it2 : *it;
+			docstring const spart = 
+				(it2 < levels_plain.end() && !(*it2).empty()) ? *it2 : *it;
 			// remove remaining \'s for the sorting part
 			docstring const ppart =
 				subst(spart, from_ascii("\\"), docstring());
@@ -87,6 +119,11 @@ int InsetIndex::latex(odocstream & os,
 		i += tpart.size();
 		if (it2 < levels_plain.end())
 			++it2;
+	}
+	// write the bit that followed "|"
+	if (!cmd.empty()) {
+		os << "|" << cmd;
+		i += cmd.size() + 1;
 	}
 	os << '}';
 	i += 1;
