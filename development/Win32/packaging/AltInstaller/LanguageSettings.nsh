@@ -10,6 +10,7 @@
  StrCpy ${LangCdeSys} ""
 
   ${if} ${LangISOCode} = 1025
+   StrCpy ${LangNme} "Arabic"
    StrCpy ${LangCdeSys} "ar"
    StrCpy ${LangNmeSys} "Arabic"
    StrCpy ${LangSysEnc} "1256"
@@ -222,6 +223,7 @@
   ${endif}
 
   ${if} ${LangISOCode} = 1058
+   StrCpy ${LangNme} "Ukrainian"
    StrCpy ${LangCdeSys} "uk"
    StrCpy ${LangNmeSys} "Ukrainian"
    StrCpy ${LangSysEnc} "1251"
@@ -694,7 +696,7 @@ Function SelectMenuLanguage_LeaveFunction
   !insertmacro MUI_INSTALLOPTIONS_READ $LangName "io_ui_language.ini" "Field 2" "State"
   # Get the language code
   StrCpy $LangCode ""
-  !insertmacro GetLangCode $LangCode $LangName $LangEncoding # macro from lyx_utils.nsh
+  !insertmacro GetLangCode $LangCode $LangName $LangEncoding
 
 FunctionEnd
 

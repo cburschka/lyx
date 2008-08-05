@@ -3,8 +3,8 @@
 
 !define PRODUCT_DIR "D:\LyXPackage1.6"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.6.0beta4"
-!define PRODUCT_VERSION_SHORT "16beta4"
+!define PRODUCT_VERSION "1.6.0rc1"
+!define PRODUCT_VERSION_SHORT "16rc1"
 !define PRODUCT_SUBFOLDER "lyx16"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
 !define PRODUCT_SOURCEDIR "${PRODUCT_DIR}\LyX"
