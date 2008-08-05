@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 339
+#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass scrbook
@@ -11304,6 +11304,11 @@ protect
 \end_inset
 
 'ed.
+ (Note: This is 
+\emph on
+not
+\emph default
+ whether this command should itself be protected.)
 \end_layout
 
 \begin_layout Description
@@ -11922,6 +11927,7 @@ reference "sec:fonts"
 \end_layout
 
 \begin_layout Description
+Need
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -13292,6 +13298,58 @@ end
 
  (indicating a dummy definition ending definitions of charstyles etc.).
  This entry is only meaningful for Flex (user definable) insets.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+NeedProtect
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Whether fragile commands in this layout should be 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+'ed.
+ (Note: This is 
+\emph on
+not
+\emph default
+ whether this command should itself be protected.)
 \end_layout
 
 \begin_layout Description
