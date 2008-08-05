@@ -1167,6 +1167,7 @@ po_extra_files = Split('''
     de.po
     en@boldquot.header
     en@quot.header
+    en.po
     es.po
     eu.po
     fi.po
