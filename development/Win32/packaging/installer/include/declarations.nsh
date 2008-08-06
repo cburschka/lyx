@@ -63,17 +63,16 @@ SetCompressor /SOLID lzma
 #--------------------------------
 # Locations of components to download
 
-!define MIRROR_SF1 "http://downloads.sourceforge.net" # A random mirror is selected
-!define MIRROR_SF2 "http://downloads.sourceforge.net"
+# CTAN and SourceForge select a mirror automatically
 
-!macro SourceForgeMirror ID FILENAME
-  !define DOWNLOAD_${ID} "${MIRROR_SF1}/${FILENAME}"
-  !define DOWNLOADALT_${ID} "${MIRROR_SF2}/${FILENAME}"
-!macroend
+!define DOWNLOAD_LATEX "http://www.ctan.org/get/systems/win32/miktex/setup/${SETUPFILE_LATEX}"
+!define DOWNLOADALT_LATEX "http://www.ctan.org/get/systems/win32/miktex/setup/${SETUPFILE_LATEX}"
 
-!insertmacro SourceForgeMirror LATEX "miktex/${SETUPFILE_LATEX}"
-!insertmacro SourceForgeMirror IMAGEMAGICK "imagemagick/${SETUPFILE_IMAGEMAGICK}"
-!insertmacro SourceForgeMirror GHOSTSCRIPT "ghostscript/${SETUPFILE_GHOSTSCRIPT}"
+!define DOWNLOAD_IMAGEMAGICK "http://downloads.sourceforge.net/imagemagick/${SETUPFILE_IMAGEMAGICK}"
+!define DOWNLOADALT_IMAGEMAGICK "http://downloads.sourceforge.net/imagemagick/${SETUPFILE_IMAGEMAGICK}"
+
+!define DOWNLOAD_GHOSTSCRIPT "http://downloads.sourceforge.net/imagemagick/${SETUPFILE_GHOSTSCRIPT}"
+!define DOWNLOADALT_GHOSTSCRIPT "http://downloads.sourceforge.net/imagemagick/${SETUPFILE_GHOSTSCRIPT}"
 
 !define DOWNLOAD_ASPELLDICTS "ftp://ftp.lyx.org/pub/lyx/contrib/aspell6-windows"
 !define DOWNLOADALT_ASPELLDICTS "http://www.lyx.org/~bpeng/aspell6-windows"
