@@ -22,6 +22,7 @@
   ${endif}
 
   ${if} ${LangISOCode} = 1027
+   StrCpy ${LangNme} "Català"
    StrCpy ${LangCdeSys} "ca"
    StrCpy ${LangNmeSys} "Català"
    StrCpy ${LangSysEnc} "1252"
@@ -690,7 +691,7 @@ Function SelectMenuLanguage_LeaveFunction
   !insertmacro MUI_INSTALLOPTIONS_READ $LangName "io_ui_language.ini" "Field 2" "State"
   # Get the language code
   StrCpy $LangCode ""
-  !insertmacro GetLangCode $LangCode $LangName $LangEncoding # macro from lyx_utils.nsh
+  !insertmacro GetLangCode $LangCode $LangName $LangEncoding
 
 FunctionEnd
 
