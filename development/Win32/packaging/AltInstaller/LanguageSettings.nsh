@@ -23,6 +23,7 @@
   ${endif}
 
   ${if} ${LangISOCode} = 1027
+   StrCpy ${LangNme} "Català"
    StrCpy ${LangCdeSys} "ca"
    StrCpy ${LangNmeSys} "Català"
    StrCpy ${LangSysEnc} "1252"

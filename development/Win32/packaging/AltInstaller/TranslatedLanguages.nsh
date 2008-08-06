@@ -1,6 +1,7 @@
 # list of all languages the installers are translated to
 !insertmacro MUI_LANGUAGE "English" # first language is the default language
 !insertmacro MUI_LANGUAGE "Arabic"
+!insertmacro MUI_LANGUAGE "Catalan"
 !insertmacro MUI_LANGUAGE "Czech"
 !insertmacro MUI_LANGUAGE "Danish"
 !insertmacro MUI_LANGUAGE "Dutch"
@@ -22,6 +23,7 @@
 
 !include "lyx_languages\english.nsh"
 !include "lyx_languages\arabic.nsh"
+!include "lyx_languages\catalan.nsh"
 !include "lyx_languages\czech.nsh"
 !include "lyx_languages\danish.nsh"
 !include "lyx_languages\dutch.nsh"
