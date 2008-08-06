@@ -340,7 +340,6 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 
 	// This does the actual undo/redo.
 	//LYXERR0("undo, performing: " << undo);
-	bool labelsUpdateNeeded = false;
 	DocIterator dit = undo.cell.asDocIterator(&buffer_.inset());
 	if (undo.isFullBuffer) {
 		LASSERT(undo.pars, /**/);
@@ -387,7 +386,6 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 		plist.insert(first, undo.pars->begin(), undo.pars->end());
 		delete undo.pars;
 		undo.pars = 0;
-		labelsUpdateNeeded = true;
 	}
 	LASSERT(undo.pars == 0, /**/);
 	LASSERT(undo.array == 0, /**/);
@@ -395,9 +393,8 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 	cur = undo.cursor.asDocIterator(&buffer_.inset());
 	// Now that we're done with undo, we pop it off the stack.
 	stack.pop();
-
-	if (labelsUpdateNeeded)
-		updateLabels(buffer_);
+	// Addapt the new material to current buffer.
+	updateLabels(buffer_);
 	undo_finished_ = true;
 	return true;
 }
