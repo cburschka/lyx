@@ -134,7 +134,7 @@ SectionEnd
 
 !macro DOWNLOAD_FILE RET ID FILENAME APPEND
 
-  # Downloads a file using the InetLoad plug-in (HTTP or FTP)
+  # Downloads a file using the Inetc plug-in (HTTP or FTP)
   
   # RET = Return value (OK if succesful)
   # ID = Name of the download in settings.nsh
@@ -142,12 +142,12 @@ SectionEnd
   # APPEND = Filename to append to server location in settings.nsh
 
   # Try first mirror server
-  InetLoad::load "${DOWNLOAD_${ID}}${APPEND}" "$PLUGINSDIR\${FILENAME}" /END
+  Inetc::get "${DOWNLOAD_${ID}}${APPEND}" "$PLUGINSDIR\${FILENAME}" /END
   Pop ${RET} # Return value (OK if succesful)
 
   ${If} ${RET} != "OK"
     # Download failed, try second mirror server
-    InetLoad::load "${DOWNLOADALT_${ID}}${APPEND}" "$PLUGINSDIR\${FILENAME}" /END
+    Inetc::get "${DOWNLOADALT_${ID}}${APPEND}" "$PLUGINSDIR\${FILENAME}" /END
     Pop ${RET}
   ${EndIf}
 
