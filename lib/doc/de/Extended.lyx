@@ -1,5 +1,5 @@
-#LyX 1.6.0beta4 created this file. For more info see http://www.lyx.org/
-\lyxformat 338
+#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass scrbook
@@ -154,8 +154,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 13.
- Juli 2008
+letzte Änderung: 7.
+ August 2008
 \end_layout
 
 \begin_layout Standard
@@ -3429,6 +3429,60 @@ Querverweis
 \end_inset
 
 und wählen die gewünschte.
+\end_layout
+
+\begin_layout Subsection
+Literaturverzeichnisse in allen Unterdokumenten
+\end_layout
+
+\begin_layout Standard
+Kopieren Sie das Literaturverzeichnis mit allen Einträgen in alle Unterdokumente
+, und ändern Sie es um in einen Kommentar.
+ Auf diese Weise findet LyX die 
+\family typewriter
+.bib
+\family default
+-Dateien, und Sie können die Verweise einfach einfügen, ohne das Literaturverzei
+chnis sichtbar zu machen.
+\end_layout
+
+\begin_layout Standard
+Da das Literaturverzeichnis in einem Kommentar ist, wird LaTeX es aber nicht
+ benutzen, und die Verweise werden wie [?] anstatt [1] aussehen.
+ Eine Lösung ist, das LaTeX-Paket 
+\family typewriter
+comment
+\family default
+ zu benutzen, mit dem die Kommentare nur beim separaten Druck eingefügt
+ werden.
+ Fügen Sie im LaTeX-Vorspann jedes Unterdokuments folgendes ein:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+usepackage{comment}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+includecomment{comment}
+\end_layout
+
+\begin_layout Standard
+Siehe auch 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/FAQ/Unsorted#toc31
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection

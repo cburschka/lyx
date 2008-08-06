@@ -2958,6 +2958,59 @@ buffer
  to use.
 \end_layout
 
+\begin_layout Subsection
+Bibliography Lists in all Subdocuments
+\end_layout
+
+\begin_layout Standard
+Copy the bibliography list with all entries to all subdocuments and transform
+ them to a comment.
+ This way LyX will find the 
+\family typewriter
+.bib
+\family default
+-files and you can easily insert references without making the bibliography
+ list visible.
+\end_layout
+
+\begin_layout Standard
+As the bibliography list is in a comment, LaTeX won't use use it and the
+ references will look like this [?] instead of [1].
+ A solution is to use the LaTeX-package 
+\family typewriter
+comment
+\family default
+ that will only include comments by processing the files separately.
+ To do this, add in the LaTeX preamble of every subdocument the following:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+usepackage{comment}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+includecomment{comment}
+\end_layout
+
+\begin_layout Standard
+See also 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/FAQ/Unsorted#toc31
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 Fancy Headers and Footers
 \end_layout
