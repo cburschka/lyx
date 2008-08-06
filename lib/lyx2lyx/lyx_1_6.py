@@ -242,6 +242,11 @@ def latex2ert(line):
     return retval
 
 
+#Bug 5022....
+#Might should do latex2ert first, then deal with stuff that DOESN'T
+#end up inside ERT. That routine could be modified so that it returned
+#a list of lines, and we could then skip ERT bits and only deal with
+#the other bits.
 def latex2lyx(data):
     '''Takes a string, possibly multi-line, and returns the result of
     converting LaTeX constructs into LyX constructs. Returns a list of
@@ -355,7 +360,7 @@ def lyx2latex(lines):
       else:
           # Do the LyX text --> LaTeX conversion
           for rep in reps:
-            line = line.replace(rep[1], rep[0])
+            line = line.replace(rep[1], rep[0] + "{}")
           line = line.replace(r'\backslash', r'\textbackslash{}')
           line = line.replace(r'\series bold', r'\bfseries{}').replace(r'\series default', r'\mdseries{}')
           line = line.replace(r'\shape italic', r'\itshape{}').replace(r'\shape smallcaps', r'\scshape{}')
