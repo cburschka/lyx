@@ -52,6 +52,21 @@ InsetList::InsetList(InsetList const & il)
 }
 
 
+InsetList::InsetList(InsetList const & il, pos_type beg, pos_type end)
+{
+	InsetList::const_iterator cit = il.begin();
+	InsetList::const_iterator cend = il.end();
+	for (; cit != cend; ++cit) {
+		if (cit->pos < beg)
+			continue;
+		if (cit->pos >= end)
+			break;
+		// Add a new entry in the insetlist_.
+		insert(cit->inset->clone(), cit->pos - beg);
+	}
+}
+
+
 InsetList::~InsetList()
 {
 	List::iterator it = list_.begin();

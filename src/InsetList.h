@@ -31,6 +31,9 @@ public:
 	InsetList() {}
 	///
 	InsetList(InsetList const &);
+	/// Partial copy constructor.
+	/// Copy the InsetList contents from \p beg to \p end (without end).
+	InsetList(InsetList const &, pos_type beg, pos_type end);
 	///
 	void setBuffer(Buffer &);
 

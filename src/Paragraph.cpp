@@ -251,7 +251,8 @@ Paragraph::Private::Private(Private const & p, Paragraph * owner)
 
 Paragraph::Private::Private(Private const & p, Paragraph * owner,
 	pos_type beg, pos_type end)
-	: owner_(owner), inset_owner_(p.inset_owner_), fontlist_(p.fontlist_), 
+	: owner_(owner), inset_owner_(p.inset_owner_),
+	  insetlist_(p.insetlist_, beg, end),
 	  params_(p.params_), changes_(p.changes_),
 	  begin_of_body_(p.begin_of_body_), words_(p.words_),
 	  layout_(p.layout_)
@@ -260,16 +261,7 @@ Paragraph::Private::Private(Private const & p, Paragraph * owner,
 	if (beg >= pos_type(p.text_.size()))
 		return;
 	text_ = p.text_.substr(beg, end - beg);
-	InsetList::const_iterator icit = p.insetlist_.begin();
-	InsetList::const_iterator iend = p.insetlist_.end();
-	for (; icit != iend; ++icit) {
-		if (icit->pos < beg)
-			continue;
-		if (icit->pos >= end)
-			break;
-		// Add a new entry in the insetlist_.
-		insetlist_.insert(icit->inset, icit->pos - beg);
-	}
+
 	FontList::const_iterator fcit = fontlist_.begin();
 	FontList::const_iterator fend = fontlist_.end();
 	for (; fcit != fend; ++fcit) {
