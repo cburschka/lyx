@@ -529,7 +529,8 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MOUSE_RELEASE:
-		if (geometry() == NoButton || !hitButton(cmd)) {
+		if (geometry() == NoButton 
+			|| (geometry() != ButtonOnly && !hitButton(cmd))) {
 			// The mouse click has to be within the inset!
 			InsetText::doDispatch(cur, cmd);
 			break;
