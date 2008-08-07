@@ -393,10 +393,7 @@ FileName FileName::tempName(FileName const & temp_dir, string const & mask)
 
 FileName FileName::tempName(string const & mask)
 {
-	QFileInfo tmp_fi(toqstr(mask));
-	if (!tmp_fi.isAbsolute())
-		tmp_fi.setFile(package().temp_dir().d->fi.absoluteDir(), toqstr(mask));
-	return FileName(createTempFile(tmp_fi.absoluteFilePath()));
+	return tempName(package().temp_dir(), mask);
 }
 
 
