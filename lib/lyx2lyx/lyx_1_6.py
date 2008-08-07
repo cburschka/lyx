@@ -308,7 +308,7 @@ def latex2lyx(data):
     return retval
 
 
-def lyx2latex(lines):
+def lyx2latex(document, lines):
     'Convert some LyX stuff into corresponding LaTeX stuff, as best we can.'
     # clean up multiline stuff
     content = ""
@@ -352,12 +352,23 @@ def lyx2latex(lines):
           #skip all that stuff
           continue
 
+      # this needs to be added to the preamble because of cases like
+      # \textmu, \textbackslash, etc.
+      add_to_preamble(document, ['% added by lyx2lyx for converted index entries\n'
+                                 + '\\@ifundefined{textmu}\n'
+                                 + ' {\\usepackage{textcomp}}{}'])
       # a lossless reversion is not possible
       # try at least to handle some common insets and settings
-      # do not replace inside ERTs
       if ert_end >= curline:
           line = line.replace(r'\backslash', r'\\')
       else:
+          line = line.replace('&', '\\&{}')
+          line = line.replace('#', '\\#{}')
+          line = line.replace('^', '\\^{}')
+          line = line.replace('%', '\\%{}')
+          line = line.replace('_', '\\_{}')
+          line = line.replace('$', '\\${}')
+
           # Do the LyX text --> LaTeX conversion
           for rep in reps:
             line = line.replace(rep[1], rep[0] + "{}")
@@ -1083,7 +1094,7 @@ def revert_latexcommand_index(document):
         if j == -1:
           return
 
-        content = lyx2latex(document.body[i:j])
+        content = lyx2latex(document, document.body[i:j])
         # escape quotes
         content = content.replace('"', r'\"')
         document.body[i:j] = ["\\begin_inset CommandInset index", "LatexCommand index",
