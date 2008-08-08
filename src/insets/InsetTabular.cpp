@@ -3165,6 +3165,10 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			if (rowselect_) {
 				row_type r = rowFromY(cur, cmd.y);
 				cur.idx() = tabular.getLastCellInRow(r);
+				// we need to reset the cursor's pit and pos now, as the old ones
+				// may no longer be valid.
+				cur.pit() = 0;
+				cur.pos() = 0;
 				bvcur.setCursor(cur);
 				bvcur.selection() = true;
 				break;
@@ -3173,6 +3177,10 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			if (colselect_) {
 				col_type c = columnFromX(cur, cmd.x);
 				cur.idx() = tabular.cellIndex(tabular.row_info.size() - 1, c);
+				// we need to reset the cursor's pit and pos now, as the old ones
+				// may no longer be valid.
+				cur.pit() = 0;
+				cur.pos() = 0;
 				bvcur.setCursor(cur);
 				bvcur.selection() = true;
 				break;
