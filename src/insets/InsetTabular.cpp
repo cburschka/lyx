@@ -2742,6 +2742,26 @@ bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
 	return true;
 }
 
+docstring InsetTableCell::asString(bool intoInsets) 
+{
+	docstring retval;
+	if (paragraphs().empty())
+		return retval;
+	ParagraphList::const_iterator it = paragraphs().begin();
+	ParagraphList::const_iterator en = paragraphs().end();
+	bool first = true;
+	for (; it != en; ++it) {
+		if (!first)
+			retval += "\n";
+		else
+			first = false;
+		retval += it->asString(intoInsets ? AS_STR_INSETS : AS_STR_NONE);
+	}
+	return retval;
+}
+
+
+
 /////////////////////////////////////////////////////////////////////
 //
 // InsetTabular
@@ -4650,6 +4670,27 @@ bool InsetTabular::isRightToLeft(Cursor & cur) const
 	pos_type const parentpos = cur[cur.depth() - 2].pos();
 	return parentpar.getFontSettings(cur.bv().buffer().params(),
 					 parentpos).language()->rightToLeft();
+}
+
+docstring InsetTabular::asString(idx_type stidx, idx_type enidx, 
+                                 bool intoInsets)
+{
+	LASSERT(stidx <= enidx, return docstring());
+	docstring retval;
+	col_type const col1 = tabular.cellColumn(stidx);
+	col_type const col2 = tabular.cellColumn(enidx);
+	row_type const row1 = tabular.cellRow(stidx);
+	row_type const row2 = tabular.cellRow(enidx);
+	bool first = true;
+	for (col_type col = col1; col <= col2; col++)
+		for (row_type row = row1; row <= row2; row++) {
+			if (!first)
+				retval += "\n";
+			else
+				first = false;
+			retval += tabular.cellInset(row, col)->asString(intoInsets);
+		}
+	return retval;
 }
 
 

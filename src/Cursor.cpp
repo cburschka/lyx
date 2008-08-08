@@ -1859,11 +1859,19 @@ docstring Cursor::selectionAsString(bool with_label) const
 		? AS_STR_LABEL | AS_STR_INSETS : AS_STR_INSETS;
 
 	if (inTexted()) {
+		idx_type const startidx = selBegin().idx();
+		idx_type const endidx = selEnd().idx();
+		if (startidx != endidx) {
+			// multicell selection
+			InsetTabular * table = inset().asInsetTabular();
+			LASSERT(table, return docstring());
+			return table->asString(startidx, endidx);
+		}
+		
 		ParagraphList const & pars = text()->paragraphs();
 
-		// should be const ...
-		pit_type startpit = selBegin().pit();
-		pit_type endpit = selEnd().pit();
+		pit_type const startpit = selBegin().pit();
+		pit_type const endpit = selEnd().pit();
 		size_t const startpos = selBegin().pos();
 		size_t const endpos = selEnd().pos();
 

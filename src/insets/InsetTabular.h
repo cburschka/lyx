@@ -643,6 +643,9 @@ public:
 		FuncStatus & status) const;
 	///
 	void toggleFixedWidth(bool fw) { isFixedWidth = fw; }
+	/// writes the contents of the cell as a string, optionally
+	/// descending into insets
+	docstring asString(bool intoInsets = true);
 private:
 	/// unimplemented
 	InsetTableCell();
@@ -818,6 +821,9 @@ public:
 	virtual InsetTabular const * asInsetTabular() const { return this; }
 	///
 	bool isRightToLeft(Cursor & cur) const;
+	/// writes the cells between stidx and enidx as a string, optionally
+	/// descending into the insets
+	docstring asString(idx_type stidx, idx_type enidx, bool intoInsets = true);
 
 	//
 	// Public structures and variables
