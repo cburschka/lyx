@@ -354,9 +354,9 @@ def lyx2latex(document, lines):
 
       # this needs to be added to the preamble because of cases like
       # \textmu, \textbackslash, etc.
-      add_to_preamble(document, ['% added by lyx2lyx for converted index entries\n'
-                                 + '\\@ifundefined{textmu}\n'
-                                 + ' {\\usepackage{textcomp}}{}'])
+      add_to_preamble(document, ['% added by lyx2lyx for converted index entries',
+                                 '\\@ifundefined{textmu}',
+                                 ' {\\usepackage{textcomp}}{}'])
       # a lossless reversion is not possible
       # try at least to handle some common insets and settings
       if ert_end >= curline:
