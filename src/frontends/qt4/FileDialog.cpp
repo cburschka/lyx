@@ -96,7 +96,10 @@ FileDialog::Result FileDialog::save(QString const & path,
 		QFileDialog::getSaveFileName(qApp->focusWidget(),
 	     title_, startsWith, filters.join(";;"),
 			 0, QFileDialog::DontConfirmOverwrite);
-	result.second = toqstr(os::internal_path(fromqstr(name)));
+	if (name.isNull())
+		result.first = FileDialog::Later;
+	else
+		result.second = toqstr(os::internal_path(fromqstr(name)));
 #else
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
 #if QT_VERSION != 0x040203
@@ -113,6 +116,8 @@ FileDialog::Result FileDialog::save(QString const & path,
 	LYXERR(Debug::GUI, "result " << res);
 	if (res == QDialog::Accepted)
 		result.second = internalPath(dlg.selectedFiles()[0]);
+	else
+		result.first = FileDialog::Later;
 	dlg.hide();
 #endif
 	return result;
@@ -132,7 +137,10 @@ FileDialog::Result FileDialog::open(QString const & path,
 	QString const startsWith = makeAbsPath(suggested, path);
 	QString const file = QFileDialog::getOpenFileName(qApp->focusWidget(),
 		title_, startsWith, filters.join(";;"));
-	result.second = internalPath(file);
+	if (file.isNull())
+		result.first = FileDialog::Later;
+	else
+		result.second = internalPath(file);
 #else
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
 
@@ -144,6 +152,8 @@ FileDialog::Result FileDialog::open(QString const & path,
 	LYXERR(Debug::GUI, "result " << res);
 	if (res == QDialog::Accepted)
 		result.second = internalPath(dlg.selectedFiles()[0]);
+	else
+		result.first = FileDialog::Later;
 	dlg.hide();
 #endif
 	return result;
@@ -161,9 +171,12 @@ FileDialog::Result FileDialog::opendir(QString const & path,
 #ifdef USE_NATIVE_FILEDIALOG
 	QString const startsWith = toqstr(makeAbsPath(fromqstr(suggested),
 		fromqstr(path)).absFilename());
-	result.second = toqstr(os::internal_path(fromqstr(
-		QFileDialog::getExistingDirectory(qApp->focusWidget(),
-		title_, startsWith))));
+	QString const dir = QFileDialog::getExistingDirectory(qApp->focusWidget(),
+		title_, startsWith);
+	if (dir.isNull())
+		result.first = FileDialog::Later;
+	else
+		result.second = toqstr(os::internal_path(fromqstr(dir)));
 #else
 	LyXFileDialog dlg(title_, path, QStringList(qt_("Directories")),
 		private_->b1, private_->b2);
@@ -178,6 +191,8 @@ FileDialog::Result FileDialog::opendir(QString const & path,
 	LYXERR(Debug::GUI, "result " << res);
 	if (res == QDialog::Accepted)
 		result.second = internalPath(dlg.selectedFiles()[0]);
+	else
+		result.first = FileDialog::Later;
 	dlg.hide();
 #endif
 	return result;
