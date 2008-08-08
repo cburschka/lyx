@@ -3192,6 +3192,12 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			setCursorFromCoordinates(cur, cmd.x, cmd.y);
 			bvcur.setCursor(cur);
 			bvcur.selection() = true;
+			// if this is a multicell selection, we just set the cursor to
+			// the beginning of the cell's text.
+			if (bvcur.selBegin().idx() != bvcur.selEnd().idx()) {
+				bvcur.pit() = 0;
+				bvcur.pos() = 0;
+			}
 		}
 		break;
 
