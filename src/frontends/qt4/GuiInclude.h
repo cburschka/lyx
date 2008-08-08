@@ -48,6 +48,8 @@ private Q_SLOTS:
 private:
 	///
 	bool initialiseParams(std::string const & data);
+	///
+	void paramsToDialog(InsetCommandParams const & params_);
 	/// clean-up on hide.
 	void clearParams() { params_.clear(); }
 	/// clean-up on hide.
@@ -75,7 +77,7 @@ private:
 	/// Apply changes
 	void applyView();
 	/// update
-	void updateContents();
+	void updateContents() { };
 	/// Browse for a file
 	QString browse(QString const &, Type) const;
 

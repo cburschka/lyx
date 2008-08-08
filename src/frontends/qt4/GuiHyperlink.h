@@ -38,9 +38,11 @@ private:
 	/// apply dialog
 	void applyView();
 	/// update dialog
-	void updateContents();
+	void updateContents() { };
 	///
 	bool initialiseParams(std::string const & data);
+	///
+	void paramsToDialog(InsetCommandParams const & icp);
 	/// clean-up on hide.
 	void clearParams() { params_.clear(); }
 	/// clean-up on hide.

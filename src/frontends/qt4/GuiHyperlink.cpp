@@ -62,7 +62,7 @@ void GuiHyperlink::changed_adaptor()
 }
 
 
-void GuiHyperlink::updateContents()
+void GuiHyperlink::paramsToDialog(InsetCommandParams const & icp)
 {
 	targetED->setText(toqstr(params_["target"]));
 	nameED->setText(toqstr(params_["name"]));
@@ -101,6 +101,7 @@ bool GuiHyperlink::initialiseParams(std::string const & data)
 	// The name passed with LFUN_INSET_APPLY is also the name
 	// used to identify the mailer.
 	InsetCommand::string2params("href", data, params_);
+	paramsToDialog(params_);
 	return true;
 }
 
