@@ -3754,11 +3754,16 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 
 	case LFUN_PASTE:
+		if (cur.selBegin().idx() != cur.selEnd().idx()) {
+			status.setEnabled(false);
+			status.message(_("You cannot paste into a multicell selection."));
+			return true;
+		}
 		if (tabularStackDirty() && theClipboard().isInternal()) {
 			status.setEnabled(true);
 			return true;
-		} else
-			return cell(cur.idx())->getStatus(cur, cmd, status);
+		} 
+		return cell(cur.idx())->getStatus(cur, cmd, status);
 
 	case LFUN_INSET_MODIFY:
 		if (insetCode(cmd.getArg(0)) == TABULAR_CODE) {

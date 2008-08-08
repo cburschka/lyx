@@ -19164,6 +19164,25 @@ This is a multiline entry in a table.
 \begin_layout Standard
 Cutting and pasting between tables and table cells works reasonably well.
  You can cut and paste even more than one row.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Note, however, that you cannot paste into a multicell selection.
+ The reason is that it is simply not clear what LyX should do in this case.
+ If you select a 2x3 group of cells but paste just the word 
+\begin_inset Quotes eld
+\end_inset
+
+the
+\begin_inset Quotes erd
+\end_inset
+
+ (or a 3x5 group of cells) what should happen? 
+\end_layout
+
+\end_inset
+
  Selection with the mouse or with 
 \family sans
 Shift

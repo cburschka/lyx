@@ -931,6 +931,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_PASTE: {
 		cur.message(_("Paste"));
+		LASSERT(cur.selBegin().idx() == cur.selEnd().idx(), /**/);
 		cap::replaceSelection(cur);
 
 		// without argument?
