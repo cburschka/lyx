@@ -71,6 +71,9 @@ public:
 	bool selection() const { return selection_; }
 	/// selection active?
 	bool & selection() { return selection_; }
+	/// do we have a multicell selection?
+	bool isMultiCell() const 
+		{ return selection_ && selBegin().idx() != selEnd().idx(); }
 	/// did we place the anchor?
 	bool mark() const { return mark_; }
 	/// did we place the anchor?

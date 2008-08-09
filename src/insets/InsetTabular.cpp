@@ -2995,7 +2995,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 	//resetPos(cur);
 
 
-	if (tablemode(cur)) {
+	if (cur.isMultiCell()) {
 		row_type rs, re;
 		col_type cs, ce;
 		getSelection(cur, rs, re, cs, ce);
@@ -3166,7 +3166,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// some cells (bug 2715).
 		if (cmd.button() == mouse_button::button3
 		    && &bvcur.selBegin().inset() == this 
-		    && tablemode(bvcur)) 
+		    && bvcur.isMultiCell()) 
 			;
 		else
 			// Let InsetTableCell do it
@@ -3214,7 +3214,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			bvcur.selection() = true;
 			// if this is a multicell selection, we just set the cursor to
 			// the beginning of the cell's text.
-			if (bvcur.selBegin().idx() != bvcur.selEnd().idx()) {
+			if (bvcur.isMultiCell()) {
 				bvcur.pit() = 0;
 				bvcur.pos() = 0;
 			}
@@ -3279,8 +3279,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 
 		// if we don't have a multicell selection...
-		if (!cur.selection() ||
-		     cur.selBegin().idx() == cur.selEnd().idx() ||
+		if (!cur.isMultiCell() ||
 		  // ...or we're not doing some LFUN_*_SELECT thing, anyway...
 		    (cmd.action != LFUN_CHAR_FORWARD_SELECT &&
 		     cmd.action != LFUN_CHAR_BACKWARD_SELECT &&
@@ -3424,7 +3423,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_CUT:
-		if (tablemode(cur)) {
+		if (cur.isMultiCell()) {
 			if (copySelection(cur)) {
 				cur.recordUndoInset(DELETE_UNDO);
 				cutSelection(cur);
@@ -3436,7 +3435,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_CHAR_DELETE_BACKWARD:
 	case LFUN_CHAR_DELETE_FORWARD:
-		if (tablemode(cur)) {
+		if (cur.isMultiCell()) {
 			cur.recordUndoInset(DELETE_UNDO);
 			cutSelection(cur);
 		}
@@ -3447,7 +3446,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_COPY:
 		if (!cur.selection())
 			break;
-		if (tablemode(cur)) {
+		if (cur.isMultiCell()) {
 			cur.finishUndo();
 			copySelection(cur);
 		} else
@@ -3508,7 +3507,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_UPCASE:
 	case LFUN_WORD_LOWCASE:
 	case LFUN_CHARS_TRANSPOSE:
-		if (tablemode(cur)) {
+		if (cur.isMultiCell()) {
 			row_type rs, re;
 			col_type cs, ce;
 			getSelection(cur, rs, re, cs, ce);
@@ -3780,7 +3779,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_BRANCH_INSERT:
 	case LFUN_WRAP_INSERT:
 	case LFUN_ERT_INSERT: {
-		if (tablemode(cur)) {
+		if (cur.isMultiCell()) {
 			status.setEnabled(false);
 			return true;
 		} else
@@ -3798,7 +3797,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 
 	case LFUN_PASTE:
-		if (cur.selBegin().idx() != cur.selEnd().idx()) {
+		if (cur.isMultiCell()) {
 			status.setEnabled(false);
 			status.message(_("You cannot paste into a multicell selection."));
 			return true;
@@ -4870,12 +4869,6 @@ void InsetTabular::addPreview(PreviewLoader & loader) const
 		for (col_type j = 0; j < columns; ++j)
 			tabular.cellInset(i, j)->addPreview(loader);
 	}
-}
-
-
-bool InsetTabular::tablemode(Cursor & cur) const
-{
-	return cur.selection() && cur.selBegin().idx() != cur.selEnd().idx();
 }
 
 

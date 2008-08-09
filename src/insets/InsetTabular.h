@@ -871,8 +871,6 @@ private:
 			  col_type & cs, col_type & ce) const;
 	///
 	bool insertPlaintextString(BufferView &, docstring const & buf, bool usePaste);
-	/// are we operating on several cells?
-	bool tablemode(Cursor & cur) const;
 
 	/// return the "Manhattan distance" to nearest corner
 	int dist(BufferView &, idx_type cell, int x, int y) const;
