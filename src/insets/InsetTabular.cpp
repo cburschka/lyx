@@ -3796,6 +3796,10 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return cell(cur.idx())->getStatus(cur, cmd, status);
 	}
 
+	case LFUN_NEWPAGE_INSERT:
+		status.setEnabled(false);
+		return true;
+
 	case LFUN_PASTE:
 		if (cur.isMultiCell()) {
 			status.setEnabled(false);
