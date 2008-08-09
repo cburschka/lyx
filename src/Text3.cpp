@@ -1432,21 +1432,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_NOMENCL_INSERT: {
 		InsetCommandParams p(NOMENCL_CODE);
-		if (cmd.argument().empty()) {
+		if (cmd.argument().empty())
 			p["symbol"] = bv->cursor().innerText()->getStringToIndex(bv->cursor());
-			string const data = InsetCommand::params2string("nomenclature", p);
-			bv->showDialog("nomenclature", data);
-			break;
-		}
-		// this back and forth checks the validity of the data
-		InsetCommand::string2params("nomenclature", to_utf8(cmd.argument()), p);
+		else
+			p["symbol"] = cmd.argument();
 		string const data = InsetCommand::params2string("nomenclature", p);
-		if (p["symbol"].empty() || p["description"].empty())
-			bv->showDialog("nomenclature", data);
-		else {
-			FuncRequest fr(LFUN_INSET_INSERT, data);
-			dispatch(cur, fr);
-		}
+		bv->showDialog("nomenclature", data);	
 		break;
 	}
 
@@ -1997,10 +1988,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		code = TOC_CODE;
 		break;
 	case LFUN_HYPERLINK_INSERT:
-		if (cur.selection() && 
-		    (cur.isMultiCell() ||
-		    cur.selBegin().pit() != cur.selEnd().pit())
-			 ) {
+		if (cur.selIsMultiCell() || cur.selIsMultiLine()) {
 			enable = false;
 			break;
 		}
