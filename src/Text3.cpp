@@ -1432,14 +1432,18 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_NOMENCL_INSERT: {
 		InsetCommandParams p(NOMENCL_CODE);
-		docstring const content = cmd.argument().empty() ?
-				bv->cursor().innerText()->getStringToIndex(bv->cursor()) :
-				cmd.argument();
-		p["symbol"] = content;
-		string const data = InsetCommand::params2string("nomenclature", p);
-		if (p["symbol"].empty()) {
+		if (cmd.argument().empty()) {
+			p["symbol"] = bv->cursor().innerText()->getStringToIndex(bv->cursor());
+			string const data = InsetCommand::params2string("nomenclature", p);
 			bv->showDialog("nomenclature", data);
-		} else {
+			break;
+		}
+		// this back and forth checks the validity of the data
+		InsetCommand::string2params("nomenclature", to_utf8(cmd.argument()), p);
+		string const data = InsetCommand::params2string("nomenclature", p);
+		if (p["symbol"].empty() || p["description"].empty())
+			bv->showDialog("nomenclature", data);
+		else {
 			FuncRequest fr(LFUN_INSET_INSERT, data);
 			dispatch(cur, fr);
 		}
