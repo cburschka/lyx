@@ -225,7 +225,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	cur.clearSelection(); // bug 393
 	cur.finishUndo();
 	InsetText * insetText = dynamic_cast<InsetText *>(inset);
-	if (insetText && !insetText->allowMultiPar() || cur.lastpit() == 0) {
+	if (insetText && (!insetText->allowMultiPar() || cur.lastpit() == 0)) {
 		// reset first par to default
 		cur.text()->paragraphs().begin()
 			->setPlainOrDefaultLayout(bparams.documentClass());
@@ -238,9 +238,10 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	} else {
 		cur.leaveInset(*inset);
 		// reset surrounding par to default
-		docstring const layoutname = insetText->usePlainLayout()
-			? bparams.documentClass().plainLayoutName()
-			: bparams.documentClass().defaultLayoutName();
+		DocumentClass const & dc = bparams.documentClass();
+		docstring const layoutname = inset->usePlainLayout()
+			? dc.plainLayoutName()
+			: dc.defaultLayoutName();
 		text->setLayout(cur, layoutname);
 	}
 
