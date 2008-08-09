@@ -72,8 +72,11 @@ public:
 	/// selection active?
 	bool & selection() { return selection_; }
 	/// do we have a multicell selection?
-	bool isMultiCell() const 
+	bool selIsMultiCell() const 
 		{ return selection_ && selBegin().idx() != selEnd().idx(); }
+	/// do we have a multiline selection?
+	bool selIsMultiLine() const 
+		{ return selection_ && selBegin().pit() != selEnd().pit(); }
 	/// did we place the anchor?
 	bool mark() const { return mark_; }
 	/// did we place the anchor?
