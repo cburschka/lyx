@@ -3235,6 +3235,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		moveNextCell(cur);
 		cur.selection() = false;
 		break;
+
 	case LFUN_CHAR_FORWARD_SELECT:
 	case LFUN_CHAR_FORWARD:
 	case LFUN_CHAR_BACKWARD_SELECT:
@@ -3243,7 +3244,6 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_RIGHT:
 	case LFUN_CHAR_LEFT_SELECT:
 	case LFUN_CHAR_LEFT: {
-
 		// determine whether we move to next or previous cell, where to enter 
 		// the new cell from, and which command to "finish" (i.e., exit the
 		// inset) with:
@@ -3277,24 +3277,34 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			else
 				finish_lfun = LFUN_FINISHED_LEFT;
 		}
-		
 
-		// finally, now that we know what we want to do, do it!
-		cell(cur.idx())->dispatch(cur, cmd);
-		if (!cur.result().dispatched()) {
-			// move to next/prev cell, as appropriate
-			LYXERR(Debug::RTL, "entering " << (next_cell ? "next" : "previous")
-				<< " cell from: " << int(entry_from));
-			if (next_cell)
-				moveNextCell(cur, entry_from);
-			else
-				movePrevCell(cur, entry_from);
-			// if we're exiting the table, call the appropriate FINISHED lfun
-			if (sl == cur.top())
-				cmd = FuncRequest(finish_lfun);
-			else
-				cur.dispatched();
+		// if we don't have a multicell selection...
+		if (!cur.selection() ||
+		     cur.selBegin().idx() == cur.selEnd().idx() ||
+		  // ...or we're not doing some LFUN_*_SELECT thing, anyway...
+		    (cmd.action != LFUN_CHAR_FORWARD_SELECT &&
+		     cmd.action != LFUN_CHAR_BACKWARD_SELECT &&
+		     cmd.action != LFUN_CHAR_RIGHT_SELECT &&
+		     cmd.action != LFUN_CHAR_LEFT_SELECT)) {
+			// ...try to dispatch to the cell's inset.
+			cell(cur.idx())->dispatch(cur, cmd);
+			if (cur.result().dispatched()) 
+				break;
 		}
+		// move to next/prev cell, as appropriate
+		// note that we will always do this if we're selecting and we have
+		// a multicell selection
+		LYXERR(Debug::RTL, "entering " << (next_cell ? "next" : "previous")
+			<< " cell from: " << int(entry_from));
+		if (next_cell)
+			moveNextCell(cur, entry_from);
+		else
+			movePrevCell(cur, entry_from);
+		// if we're exiting the table, call the appropriate FINISHED lfun
+		if (sl == cur.top())
+			cmd = FuncRequest(finish_lfun);
+		else
+			cur.dispatched();
 		break;
 
 	}
