@@ -1979,6 +1979,10 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		code = INDEX_PRINT_CODE;
 		break;
 	case LFUN_NOMENCL_INSERT:
+		if (cur.selIsMultiCell() || cur.selIsMultiLine()) {
+			enable = false;
+			break;
+		}
 		code = NOMENCL_CODE;
 		break;
 	case LFUN_NOMENCL_PRINT:
