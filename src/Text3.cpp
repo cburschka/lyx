@@ -1996,6 +1996,13 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		code = TOC_CODE;
 		break;
 	case LFUN_HYPERLINK_INSERT:
+		if (cur.selection() && 
+		    (cur.isMultiCell() ||
+		    cur.selBegin().pit() != cur.selEnd().pit())
+			 ) {
+			enable = false;
+			break;
+		}
 		code = HYPERLINK_CODE;
 		break;
 	case LFUN_QUOTE_INSERT:
