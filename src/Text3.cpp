@@ -1431,21 +1431,18 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_NOMENCL_INSERT: {
-		FuncRequest cmd1 = cmd;
-		if (cmd.argument().empty())
-			cmd1 = FuncRequest(cmd,
-				bv->cursor().innerText()->getStringToIndex(bv->cursor()));
-		Inset * inset = createInset(cur.bv().buffer(), cmd1);
-		if (!inset)
-			break;
-		cur.recordUndo();
-		cur.clearSelection();
-		insertInset(cur, inset);
-		// Show the dialog for the nomenclature entry, since the
-		// description entry still needs to be filled in.
-		if (cmd.action == LFUN_NOMENCL_INSERT)
-			inset->edit(cur, true);
-		cur.posForward();
+		InsetCommandParams p(NOMENCL_CODE);
+		docstring const content = cmd.argument().empty() ?
+				bv->cursor().innerText()->getStringToIndex(bv->cursor()) :
+				cmd.argument();
+		p["symbol"] = content;
+		string const data = InsetCommand::params2string("nomenclature", p);
+		if (p["symbol"].empty()) {
+			bv->showDialog("nomenclature", data);
+		} else {
+			FuncRequest fr(LFUN_INSET_INSERT, data);
+			dispatch(cur, fr);
+		}
 		break;
 	}
 
