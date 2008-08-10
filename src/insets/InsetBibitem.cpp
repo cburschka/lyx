@@ -116,9 +116,9 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.noUpdate();
 			break;
 		}
-		docstring old_key = params()["key"];
+		docstring const & old_key = params()["key"];
 		setParam("label", p["label"]);
-		if (params()["key"] != old_key) {
+		if (p["key"] != old_key) {
 			updateCommand(p["key"]);
 			cur.bv().buffer().changeRefsIfUnique(old_key,
 				params()["key"], CITE_CODE);
