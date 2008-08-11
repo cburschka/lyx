@@ -32,16 +32,17 @@ autoversion=`$AUTOCONF --version 2>/dev/null | head -n 1`
 test "$autoversion" != "" && {
     echo "Using $autoversion"
 } || {
-    echo "LyX requires autoconf >= 2.52"
+    echo "LyX requires autoconf >= 2.59c"
     exit 1
 }
 
+
 case $autoversion in
-    *' '2.5[2-9]|*' '2.60[ab]|*' '2.6[0-2])
+    *' '2.59[cd]|*' '2.60[ab]|*' '2.6[0-2])
 	;;
     *)
 	echo "This autoconf version is not supported by LyX."
-	echo "LyX only supports autoconf 2.52-2.61."
+	echo "LyX only supports autoconf 2.59c-2.61."
 	exit 1
 	;;
 esac
