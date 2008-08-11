@@ -42,7 +42,7 @@ case $autoversion in
 	;;
     *)
 	echo "This autoconf version is not supported by LyX."
-	echo "LyX only supports autoconf 2.59c-2.61."
+	echo "LyX only supports autoconf 2.59c-2.62."
 	exit 1
 	;;
 esac

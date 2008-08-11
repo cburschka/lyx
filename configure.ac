@@ -1,4 +1,4 @@
-vdnl Process with autoconf to generate configure script   -*- sh -*-
+dnl Process with autoconf to generate configure script   -*- sh -*-
 
 AC_INIT(LyX,1.6.0svn,[lyx-devel@lists.lyx.org],[lyx])
 AC_SUBST(LYX_DATE, ["Fri, Aug 1, 2008"])
@@ -34,8 +34,8 @@ for file in config/install-sh config/mkinstalldirs ; do
 done
 
 ### Check for programs
-AC_PROG_MAKE_SET
-AC_PROG_INSTALL
+dnl AC_PROG_MAKE_SET
+dnl AC_PROG_INSTALL
 
 # Check for installed python
 AM_PATH_PYTHON(2.3,, :)
@@ -48,11 +48,7 @@ INSTALL_SCRIPT='${INSTALL}'
 
 ### we will also need a C compiler to compile GNU gettext
 AC_PROG_CC
-AC_GNU_SOURCE
-
-### check for special systems
-AC_ISC_POSIX
-AC_AIX
+AC_USE_SYSTEM_EXTENSIONS
 
 ### we need to know the byte order for unicode conversions
 AC_C_BIGENDIAN
@@ -224,6 +220,10 @@ fi
 ### Setup GNU gettext
 dnl GNU gettext is written in C
 AC_LANG_PUSH(C)
+dnl Dirty trick ahead: disable macro AC_GNU_SOURCE because it triggers a bug with autoconf 2.62.
+dnl this can be removed if gettext is been updated to avoid that.
+m4_undefine([AC_GNU_SOURCE])
+m4_defun([AC_GNU_SOURCE],[])
 AM_GNU_GETTEXT
 AM_GNU_GETTEXT_VERSION([0.16.1])
 AC_LANG_POP(C)
