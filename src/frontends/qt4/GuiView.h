@@ -150,6 +150,8 @@ public Q_SLOTS:
 private Q_SLOTS:
 	///
 	void updateWindowTitle(GuiWorkArea * wa);
+	///
+	void resetWindowTitleAndIconText();
 
 	///
 	void on_currentWorkAreaChanged(GuiWorkArea *);

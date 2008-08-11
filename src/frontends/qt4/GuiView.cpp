@@ -689,6 +689,8 @@ void GuiView::on_lastWorkAreaRemoved()
 	updateDialog("document", "");
 	updateDialogs();
 
+	resetWindowTitleAndIconText();
+
 	if (lyxrc.open_buffers_in_tabs)
 		// Nothing more to do, the window should stay open.
 		return;
@@ -761,8 +763,7 @@ bool GuiView::event(QEvent * e)
 			updateDialog("document", "");
 			updateDialogs();
 		} else {
-			setWindowTitle(qt_("LyX"));
-			setWindowIconText(qt_("LyX"));
+			resetWindowTitleAndIconText();
 		}
 		setFocus();
 		return QMainWindow::event(e);
@@ -810,6 +811,11 @@ bool GuiView::event(QEvent * e)
 	}
 }
 
+void GuiView::resetWindowTitleAndIconText()
+{
+    setWindowTitle(qt_("LyX"));
+    setWindowIconText(qt_("LyX"));
+}
 
 bool GuiView::focusNextPrevChild(bool /*next*/)
 {
