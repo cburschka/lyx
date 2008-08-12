@@ -833,8 +833,8 @@ name "sec:Basic-Editing-Features"
 
 \begin_layout Standard
 Like most modern word processors, LyX can perform cut and paste operations
- on blocks of text, can move by character, word, or screenful of text, and
- can delete whole words as well as individual characters.
+ on blocks of text, can move by character, word, or page of text, and can
+ delete whole words as well as individual characters.
  The next four sections cover the basic LyX editing features and how to
  access them.
  We'll start with cut and paste.
@@ -1239,7 +1239,7 @@ Undo
 Edit\SpecialChar \menuseparator
 Redo
 \family default
- ot the toolbar button 
+ or the toolbar button 
 \begin_inset Graphics
 	filename ../images/redo.png
 	BoundingBox 0bp 5bp 20bp 20bp
@@ -2172,7 +2172,7 @@ broadway Layout for writing plays.
 \end_layout
 
 \begin_layout Description
-curiculum
+curriculum
 \begin_inset space ~
 \end_inset
 
@@ -4426,7 +4426,7 @@ You can use labels and cross-references to refer to their numbers.
 \end_layout
 
 \begin_layout Subsection
-Quotes and Poetryline spacing
+Quotes and Poetry line spacing
 \end_layout
 
 \begin_layout Standard
@@ -4780,7 +4780,7 @@ not
 Standard
 \family default
  but keeps the current environment and creates a new list item.
- The nesting depth is herby kept.
+ The nesting depth is hereby kept.
  If you want to keep the paragraph environment but reset the current nesting
  depth, you can use 
 \family sans
@@ -9462,7 +9462,7 @@ hphantom
 \series bold
 vphantom
 \series default
-, but this too special for the LyX Userguide.
+, but this too special for the LyX User Guide.
  If you are interested in knowing more about this, have a look at 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -15542,7 +15542,7 @@ export
 \family default
  is explained in the 
 \emph on
-EmbeddedObjects
+Embedded Objects
 \emph default
  manual in section 
 \emph on
@@ -19168,17 +19168,9 @@ Cutting and pasting between tables and table cells works reasonably well.
 status open
 
 \begin_layout Plain Layout
-Note, however, that you cannot paste into a multicell selection.
- The reason is that it is simply not clear what LyX should do in this case.
- If you select a 2x3 group of cells but paste just the word 
-\begin_inset Quotes eld
-\end_inset
-
-the
-\begin_inset Quotes erd
-\end_inset
-
- (or a 3x5 group of cells) what should happen? 
+Note, that you cannot paste into a multicell selection because it would
+ not be clear what to do when pasting a single word in a selected 2×3.
+ 
 \end_layout
 
 \end_inset
@@ -24101,7 +24093,7 @@ Note:
 \series default
  that you can only print capital letters in the typefaces 
 \family sans
-Blackbold
+Blackboard
 \family default
  and 
 \family sans
@@ -24134,7 +24126,7 @@ N
 
  in 
 \family sans
-Blackbold
+Blackboard
 \family default
  denotes the set of numbers:
 \begin_inset Formula \[
@@ -36155,7 +36147,7 @@ Date
 
 \begin_layout Standard
 Inserts the actual date.
- The format dependends on the date format of the language that is used for
+ The format depends on the date format of the language that is used for
  LyX's menus.
  LyX offers another ways to insert a date which is explained in section
  
@@ -36634,7 +36626,7 @@ LyX also supports Unicode output, which is particularly useful if you need
 use language's default encoding
 \family default
  (when LyX uses it's list of known LaTeX-commands), but does not work with
- a fixed utf8 encoding (when the list of known LaTeX-commands is ot used,
+ a fixed utf8 encoding (when the list of known LaTeX-commands is not used,
  because all unicode symbols can be encoded in utf8).
 \end_layout
 
