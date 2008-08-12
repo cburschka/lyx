@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-08-04 02:11+0200\n"
+"POT-Creation-Date: 2008-08-13 01:26+0200\n"
 "PO-Revision-Date: 2005-12-18 15:13+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -91,9 +91,9 @@ msgstr "&O.k."
 #: src/LyXVC.cpp:181 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1251
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1467
-#: src/frontends/qt4/GuiView.cpp:1645 src/frontends/qt4/GuiView.cpp:1690
-#: src/frontends/qt4/GuiView.cpp:1743 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1476
+#: src/frontends/qt4/GuiView.cpp:1654 src/frontends/qt4/GuiView.cpp:1699
+#: src/frontends/qt4/GuiView.cpp:1752 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
 msgstr "&Anullér"
 
@@ -3253,7 +3253,7 @@ msgid "&User interface file:"
 msgstr "&Brugerflade-fil"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:665
-#: src/frontends/qt4/GuiView.cpp:1743
+#: src/frontends/qt4/GuiView.cpp:1752
 msgid "&Save"
 msgstr "&Gem"
 
@@ -9909,7 +9909,7 @@ msgstr "Søg og erstat...|S"
 msgid "Tabular|T"
 msgstr "Tabel|a"
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106 lib/ui/stdmenus.inc:522
 msgid "Math|M"
 msgstr "Matematik|M"
 
@@ -10145,7 +10145,7 @@ msgstr "Gather-miljø"
 msgid "Multline Environment"
 msgstr "Flerlinjemiljø"
 
-#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:320 lib/ui/stdmenus.inc:522
+#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:320
 msgid "Math|h"
 msgstr "Matematik|M"
 
@@ -10630,7 +10630,7 @@ msgstr "Brugervejledning|B"
 msgid "Extended Features|E"
 msgstr "Avancerede funktioner|A"
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:521
+#: lib/ui/classic.ui:413
 msgid "Embedded Objects|m"
 msgstr ""
 
@@ -11075,19 +11075,19 @@ msgid "Justified Line Break|J"
 msgstr "Linjeskift|L"
 
 #: lib/ui/stdcontext.inc:242 lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:88
-#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:973
+#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:975
 #: src/mathed/InsetMathNest.cpp:540
 msgid "Cut"
 msgstr "Klip"
 
 #: lib/ui/stdcontext.inc:243 lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:89
-#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:978
+#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:980
 #: src/mathed/InsetMathNest.cpp:548
 msgid "Copy"
 msgstr "Kopiér"
 
 #: lib/ui/stdcontext.inc:244 lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:90
-#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:933
+#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:934
 #: src/mathed/InsetMathGrid.cpp:1239 src/mathed/InsetMathNest.cpp:520
 msgid "Paste"
 msgstr "Indsæt"
@@ -11723,6 +11723,10 @@ msgstr "Status"
 #, fuzzy
 msgid "TeX Information|I"
 msgstr "TeX-oplysninger|X"
+
+#: lib/ui/stdmenus.inc:521
+msgid "Embedded Objects|O"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:524
 #, fuzzy
@@ -14923,8 +14927,8 @@ msgstr "Næste kommando"
 msgid "Table (CSV)"
 msgstr "Tabel"
 
-#: lib/configure.py:319 src/frontends/qt4/GuiView.cpp:764
-#: src/frontends/qt4/GuiView.cpp:765 src/mathed/MathMacroTemplate.cpp:536
+#: lib/configure.py:319 src/frontends/qt4/GuiView.cpp:816
+#: src/frontends/qt4/GuiView.cpp:817 src/mathed/MathMacroTemplate.cpp:536
 msgid "LyX"
 msgstr "LyX"
 
@@ -15173,8 +15177,8 @@ msgid "Overwrite modified file?"
 msgstr "&Overskriv"
 
 #: src/Buffer.cpp:836 src/Exporter.cpp:49 src/LyXFunc.cpp:980
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1467
-#: src/frontends/qt4/GuiView.cpp:1645
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1476
+#: src/frontends/qt4/GuiView.cpp:1654
 #, fuzzy
 msgid "&Overwrite"
 msgstr "&Overskriv"
@@ -16273,7 +16277,7 @@ msgstr "Kører MakeIndex."
 msgid "Could not read configuration file"
 msgstr "Kunne ikke læse opsætningsfilen"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1397
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1400
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16554,7 +16558,7 @@ msgstr ""
 "\n"
 "Vil du gemme dokumentet?"
 
-#: src/LyXFunc.cpp:664 src/frontends/qt4/GuiView.cpp:1742
+#: src/LyXFunc.cpp:664 src/frontends/qt4/GuiView.cpp:1751
 msgid "Save changed document?"
 msgstr "Gem ændret dokument?"
 
@@ -16589,7 +16593,7 @@ msgstr "Gendan gemte dokument?"
 msgid "&Revert"
 msgstr "&Gendan"
 
-#: src/LyXFunc.cpp:1016 src/Text3.cpp:1483
+#: src/LyXFunc.cpp:1016 src/Text3.cpp:1474
 msgid "Missing argument"
 msgstr "Mangler parameter"
 
@@ -17205,28 +17209,28 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Gendan den gemte udgave af dokumentet?"
 
-#: src/Paragraph.cpp:1559 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1551 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Giver ingen mening med dette layout"
 
-#: src/Paragraph.cpp:1625
+#: src/Paragraph.cpp:1617
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1626
+#: src/Paragraph.cpp:1618
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2094 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2086 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:182 src/insets/InsetListings.cpp:190
 #: src/insets/InsetListings.cpp:214 src/mathed/InsetMathString.cpp:164
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX-version "
 
-#: src/Paragraph.cpp:2095 src/insets/InsetListings.cpp:183
+#: src/Paragraph.cpp:2087 src/insets/InsetListings.cpp:183
 #: src/insets/InsetListings.cpp:191 src/mathed/InsetMathString.cpp:165
 #, fuzzy
 msgid "uncodable character"
@@ -17349,23 +17353,23 @@ msgstr "Kan ikke indeksere flere end ét afsnit!"
 msgid "Math editor mode"
 msgstr "Matematikredigering"
 
-#: src/Text3.cpp:797
+#: src/Text3.cpp:798
 msgid "Unknown spacing argument: "
 msgstr "Ukendt linjeafstandsparameter: "
 
-#: src/Text3.cpp:1038
+#: src/Text3.cpp:1040
 msgid "Layout "
 msgstr "Layout "
 
-#: src/Text3.cpp:1039
+#: src/Text3.cpp:1041
 msgid " not known"
 msgstr " ukendt"
 
-#: src/Text3.cpp:1590 src/Text3.cpp:1602
+#: src/Text3.cpp:1581 src/Text3.cpp:1593
 msgid "Character set"
 msgstr "Tegnsæt"
 
-#: src/Text3.cpp:1748 src/Text3.cpp:1759
+#: src/Text3.cpp:1739 src/Text3.cpp:1750
 msgid "Paragraph layout set"
 msgstr "Afsnitslayout ændret"
 
@@ -17586,7 +17590,7 @@ msgstr "Dings &3"
 msgid "Dings 4"
 msgstr "Dings &4"
 
-#: src/frontends/qt4/FileDialog.cpp:168
+#: src/frontends/qt4/FileDialog.cpp:181
 msgid "Directories"
 msgstr "Mapper"
 
@@ -17692,12 +17696,12 @@ msgstr ""
 "Angivelse af farven \"%1$s\" mislykkedes - farven er udefineret eller måske "
 "ikke gendefineret"
 
-#: src/frontends/qt4/GuiApplication.cpp:1206
+#: src/frontends/qt4/GuiApplication.cpp:1209
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Dokumentudskrift mislykkedes"
 
-#: src/frontends/qt4/GuiApplication.cpp:1216
+#: src/frontends/qt4/GuiApplication.cpp:1219
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -17705,18 +17709,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1220
-#: src/frontends/qt4/GuiApplication.cpp:1226
+#: src/frontends/qt4/GuiApplication.cpp:1223
+#: src/frontends/qt4/GuiApplication.cpp:1229
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1224
+#: src/frontends/qt4/GuiApplication.cpp:1227
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1396
+#: src/frontends/qt4/GuiApplication.cpp:1399
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Kunne ikke læse opsætningsfilen"
@@ -17734,9 +17738,9 @@ msgstr "Litteraturliste"
 #: src/frontends/qt4/GuiBibtex.cpp:424 src/frontends/qt4/GuiBibtex.cpp:434
 #: src/frontends/qt4/GuiDocument.cpp:1293
 #: src/frontends/qt4/GuiExternal.cpp:661 src/frontends/qt4/GuiGraphics.cpp:740
-#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1219
-#: src/frontends/qt4/GuiView.cpp:1277 src/frontends/qt4/GuiView.cpp:1417
-#: src/frontends/qt4/GuiView.cpp:1536 src/frontends/qt4/GuiView.cpp:1615
+#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1228
+#: src/frontends/qt4/GuiView.cpp:1286 src/frontends/qt4/GuiView.cpp:1426
+#: src/frontends/qt4/GuiView.cpp:1545 src/frontends/qt4/GuiView.cpp:1624
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#d#D"
 
@@ -17949,10 +17953,10 @@ msgstr ""
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Vælg filnavnet, som dokumentet skal gemmes under"
 
-#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1295
-#: src/frontends/qt4/GuiView.cpp:1437 src/frontends/qt4/GuiView.cpp:1453
-#: src/frontends/qt4/GuiView.cpp:1470 src/frontends/qt4/GuiView.cpp:1553
-#: src/frontends/qt4/GuiView.cpp:1591
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1304
+#: src/frontends/qt4/GuiView.cpp:1446 src/frontends/qt4/GuiView.cpp:1462
+#: src/frontends/qt4/GuiView.cpp:1479 src/frontends/qt4/GuiView.cpp:1562
+#: src/frontends/qt4/GuiView.cpp:1600
 msgid "Canceled."
 msgstr "Annulleret."
 
@@ -19458,83 +19462,83 @@ msgstr ""
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Ukendt symbol: %1$s %2$s\n"
 
-#: src/frontends/qt4/GuiView.cpp:1218
+#: src/frontends/qt4/GuiView.cpp:1227
 msgid "Select template file"
 msgstr "Vælg skabelonfil"
 
-#: src/frontends/qt4/GuiView.cpp:1220 src/frontends/qt4/GuiView.cpp:1616
+#: src/frontends/qt4/GuiView.cpp:1229 src/frontends/qt4/GuiView.cpp:1625
 msgid "Templates|#T#t"
 msgstr "Skabeloner|#S#s"
 
-#: src/frontends/qt4/GuiView.cpp:1223 src/frontends/qt4/GuiView.cpp:1281
-#: src/frontends/qt4/GuiView.cpp:1542 src/frontends/qt4/GuiView.cpp:1623
+#: src/frontends/qt4/GuiView.cpp:1232 src/frontends/qt4/GuiView.cpp:1290
+#: src/frontends/qt4/GuiView.cpp:1551 src/frontends/qt4/GuiView.cpp:1632
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-dokumenter (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1240
+#: src/frontends/qt4/GuiView.cpp:1249
 #, fuzzy
 msgid "Document not loaded."
 msgstr "Dokument ikke gemt"
 
-#: src/frontends/qt4/GuiView.cpp:1276
+#: src/frontends/qt4/GuiView.cpp:1285
 msgid "Select document to open"
 msgstr "Vælg dokument, som skal åbnes"
 
-#: src/frontends/qt4/GuiView.cpp:1278 src/frontends/qt4/GuiView.cpp:1418
-#: src/frontends/qt4/GuiView.cpp:1537
+#: src/frontends/qt4/GuiView.cpp:1287 src/frontends/qt4/GuiView.cpp:1427
+#: src/frontends/qt4/GuiView.cpp:1546
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:1282
+#: src/frontends/qt4/GuiView.cpp:1291
 #, fuzzy
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "LyX-dokumenter (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1283
+#: src/frontends/qt4/GuiView.cpp:1292
 #, fuzzy
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "LyX-dokumenter (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1284
+#: src/frontends/qt4/GuiView.cpp:1293
 #, fuzzy
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "LyX-dokumenter (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1318
+#: src/frontends/qt4/GuiView.cpp:1327
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Åbner dokument %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1327
+#: src/frontends/qt4/GuiView.cpp:1336
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokumentet %1$s blev åbnet."
 
-#: src/frontends/qt4/GuiView.cpp:1330
+#: src/frontends/qt4/GuiView.cpp:1339
 #, fuzzy
 msgid "Version control detected."
 msgstr "Versionsstyring"
 
-#: src/frontends/qt4/GuiView.cpp:1332
+#: src/frontends/qt4/GuiView.cpp:1341
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikke åbne dokumentet %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1361
+#: src/frontends/qt4/GuiView.cpp:1370
 msgid "Couldn't import file"
 msgstr "Kunne ikke importere fil"
 
-#: src/frontends/qt4/GuiView.cpp:1362
+#: src/frontends/qt4/GuiView.cpp:1371
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Ingen oplysninger om import af formatet %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:1413
+#: src/frontends/qt4/GuiView.cpp:1422
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vælg %1$s-fil at importere"
 
-#: src/frontends/qt4/GuiView.cpp:1464 src/frontends/qt4/GuiView.cpp:1640
+#: src/frontends/qt4/GuiView.cpp:1473 src/frontends/qt4/GuiView.cpp:1649
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -19545,43 +19549,43 @@ msgstr ""
 "\n"
 "Vil du overskrive dette dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:1466 src/frontends/qt4/GuiView.cpp:1644
+#: src/frontends/qt4/GuiView.cpp:1475 src/frontends/qt4/GuiView.cpp:1653
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Overskriv dokument?"
 
 # , c-format
-#: src/frontends/qt4/GuiView.cpp:1475
+#: src/frontends/qt4/GuiView.cpp:1484
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Importerer %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1478
+#: src/frontends/qt4/GuiView.cpp:1487
 msgid "imported."
 msgstr "importeret."
 
-#: src/frontends/qt4/GuiView.cpp:1480
+#: src/frontends/qt4/GuiView.cpp:1489
 #, fuzzy
 msgid "file not imported!"
 msgstr "Streng ikke fundet!"
 
-#: src/frontends/qt4/GuiView.cpp:1535
+#: src/frontends/qt4/GuiView.cpp:1544
 msgid "Select LyX document to insert"
 msgstr "Vælg LyX-dokument at indsætte"
 
-#: src/frontends/qt4/GuiView.cpp:1576
+#: src/frontends/qt4/GuiView.cpp:1585
 msgid "Select file to insert"
 msgstr "Vælg fil som skal indsættes"
 
-#: src/frontends/qt4/GuiView.cpp:1613
+#: src/frontends/qt4/GuiView.cpp:1622
 msgid "Choose a filename to save document as"
 msgstr "Vælg filnavnet, som dokumentet skal gemmes under"
 
-#: src/frontends/qt4/GuiView.cpp:1645 src/frontends/qt4/GuiView.cpp:1690
+#: src/frontends/qt4/GuiView.cpp:1654 src/frontends/qt4/GuiView.cpp:1699
 msgid "&Rename"
 msgstr "&Omdøb"
 
-#: src/frontends/qt4/GuiView.cpp:1686
+#: src/frontends/qt4/GuiView.cpp:1695
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -19592,16 +19596,16 @@ msgstr ""
 "\n"
 "Vil du omdøbe dokumentet og prøve igen?"
 
-#: src/frontends/qt4/GuiView.cpp:1689
+#: src/frontends/qt4/GuiView.cpp:1698
 msgid "Rename and save?"
 msgstr "Omdøb og gem?"
 
-#: src/frontends/qt4/GuiView.cpp:1690
+#: src/frontends/qt4/GuiView.cpp:1699
 #, fuzzy
 msgid "&Retry"
 msgstr "&Gendan"
 
-#: src/frontends/qt4/GuiView.cpp:1740
+#: src/frontends/qt4/GuiView.cpp:1749
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -19612,21 +19616,21 @@ msgstr ""
 "\n"
 "Ønsker du at gemme dokumentet eller at skrotte ændringerne?"
 
-#: src/frontends/qt4/GuiView.cpp:1743
+#: src/frontends/qt4/GuiView.cpp:1752
 msgid "&Discard"
 msgstr "&Skrot"
 
-#: src/frontends/qt4/GuiView.cpp:1847
+#: src/frontends/qt4/GuiView.cpp:1856
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "Gemmer dokumentet %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1857
+#: src/frontends/qt4/GuiView.cpp:1866
 #, fuzzy
 msgid "All documents saved."
 msgstr "Dokument ikke gemt"
 
-#: src/frontends/qt4/GuiView.cpp:2057
+#: src/frontends/qt4/GuiView.cpp:2067
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
@@ -20531,9 +20535,14 @@ msgstr "Beskyttet mellemrum|B"
 msgid "Unknown TOC type"
 msgstr "Ukendt symbol"
 
-#: src/insets/InsetTabular.cpp:3054
+#: src/insets/InsetTabular.cpp:3074
 msgid "Opened table"
 msgstr "Åbnede tabel"
+
+#: src/insets/InsetTabular.cpp:3806
+#, fuzzy
+msgid "You cannot paste into a multicell selection."
+msgstr "Du kan ikke bruge flerkollonner lodret."
 
 #: src/insets/InsetText.cpp:212
 msgid "Opened Text Inset"
@@ -21226,9 +21235,6 @@ msgstr "Ukendt indstik"
 
 #~ msgid "Error setting multicolumn"
 #~ msgstr "Fejl ved aktivere af flerkollonner"
-
-#~ msgid "You cannot set multicolumn vertically."
-#~ msgstr "Du kan ikke bruge flerkollonner lodret."
 
 #, fuzzy
 #~ msgid "Enspace|E"

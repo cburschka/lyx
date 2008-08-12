@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-08-04 02:11+0200\n"
+"POT-Creation-Date: 2008-08-13 01:26+0200\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -90,9 +90,9 @@ msgstr "&V redu"
 #: src/LyXVC.cpp:181 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1251
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1467
-#: src/frontends/qt4/GuiView.cpp:1645 src/frontends/qt4/GuiView.cpp:1690
-#: src/frontends/qt4/GuiView.cpp:1743 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1476
+#: src/frontends/qt4/GuiView.cpp:1654 src/frontends/qt4/GuiView.cpp:1699
+#: src/frontends/qt4/GuiView.cpp:1752 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
 msgstr "&Preklièi"
 
@@ -3293,7 +3293,7 @@ msgid "&User interface file:"
 msgstr "Datoteka z &uporabni¹kim vmesnikom:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:665
-#: src/frontends/qt4/GuiView.cpp:1743
+#: src/frontends/qt4/GuiView.cpp:1752
 msgid "&Save"
 msgstr "&Shrani"
 
@@ -9977,7 +9977,7 @@ msgstr "Poi¹èi in zamenjaj...|P"
 msgid "Tabular|T"
 msgstr "Tabela|T"
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106 lib/ui/stdmenus.inc:522
 msgid "Math|M"
 msgstr "Matematika|M"
 
@@ -10228,7 +10228,7 @@ msgstr "Okolje Gather"
 msgid "Multline Environment"
 msgstr "Okolje Multline"
 
-#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:320 lib/ui/stdmenus.inc:522
+#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:320
 msgid "Math|h"
 msgstr "Matematika|M"
 
@@ -10741,7 +10741,7 @@ msgstr "Uporabni¹ki vodnik|v"
 msgid "Extended Features|E"
 msgstr "Dodatne lastnosti|l"
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:521
+#: lib/ui/classic.ui:413
 msgid "Embedded Objects|m"
 msgstr ""
 
@@ -11187,19 +11187,19 @@ msgid "Justified Line Break|J"
 msgstr "Prelom vrstice|P"
 
 #: lib/ui/stdcontext.inc:242 lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:88
-#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:973
+#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:975
 #: src/mathed/InsetMathNest.cpp:540
 msgid "Cut"
 msgstr "Izre¾i"
 
 #: lib/ui/stdcontext.inc:243 lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:89
-#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:978
+#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:980
 #: src/mathed/InsetMathNest.cpp:548
 msgid "Copy"
 msgstr "Prepi¹i"
 
 #: lib/ui/stdcontext.inc:244 lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:90
-#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:933
+#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:934
 #: src/mathed/InsetMathGrid.cpp:1239 src/mathed/InsetMathNest.cpp:520
 msgid "Paste"
 msgstr "Prilepi"
@@ -11861,6 +11861,10 @@ msgstr "Mesto"
 #, fuzzy
 msgid "TeX Information|I"
 msgstr "Podatki za TeX|X"
+
+#: lib/ui/stdmenus.inc:521
+msgid "Embedded Objects|O"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:524
 #, fuzzy
@@ -15093,8 +15097,8 @@ msgstr "Naslednji ukaz"
 msgid "Table (CSV)"
 msgstr "Tabela"
 
-#: lib/configure.py:319 src/frontends/qt4/GuiView.cpp:764
-#: src/frontends/qt4/GuiView.cpp:765 src/mathed/MathMacroTemplate.cpp:536
+#: lib/configure.py:319 src/frontends/qt4/GuiView.cpp:816
+#: src/frontends/qt4/GuiView.cpp:817 src/mathed/MathMacroTemplate.cpp:536
 msgid "LyX"
 msgstr "LyX"
 
@@ -15341,8 +15345,8 @@ msgid "Overwrite modified file?"
 msgstr "Poglej datoteko"
 
 #: src/Buffer.cpp:836 src/Exporter.cpp:49 src/LyXFunc.cpp:980
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1467
-#: src/frontends/qt4/GuiView.cpp:1645
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1476
+#: src/frontends/qt4/GuiView.cpp:1654
 #, fuzzy
 msgid "&Overwrite"
 msgstr "&pisalni stroj:"
@@ -16454,7 +16458,7 @@ msgstr "Izvaja se MakeIndex."
 msgid "Could not read configuration file"
 msgstr "Ni moè pognati z datoteko:"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1397
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1400
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16736,7 +16740,7 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:664 src/frontends/qt4/GuiView.cpp:1742
+#: src/LyXFunc.cpp:664 src/frontends/qt4/GuiView.cpp:1751
 #, fuzzy
 msgid "Save changed document?"
 msgstr "®elite shraniti spis?"
@@ -16770,7 +16774,7 @@ msgstr "Vrni se k shranjenemu"
 msgid "&Revert"
 msgstr "Obnovi|O"
 
-#: src/LyXFunc.cpp:1016 src/Text3.cpp:1483
+#: src/LyXFunc.cpp:1016 src/Text3.cpp:1474
 msgid "Missing argument"
 msgstr "Manjkajoèi argument"
 
@@ -17308,28 +17312,28 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Izberi do konca spisa"
 
-#: src/Paragraph.cpp:1559 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1551 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Brez pomena s tem videzom!"
 
-#: src/Paragraph.cpp:1625
+#: src/Paragraph.cpp:1617
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1626
+#: src/Paragraph.cpp:1618
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2094 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2086 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:182 src/insets/InsetListings.cpp:190
 #: src/insets/InsetListings.cpp:214 src/mathed/InsetMathString.cpp:164
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "Razlièica LyXa "
 
-#: src/Paragraph.cpp:2095 src/insets/InsetListings.cpp:183
+#: src/Paragraph.cpp:2087 src/insets/InsetListings.cpp:183
 #: src/insets/InsetListings.cpp:191 src/mathed/InsetMathString.cpp:165
 #, fuzzy
 msgid "uncodable character"
@@ -17462,25 +17466,25 @@ msgstr "Celica tabele ne more obsegati veè kot enega odstavka!"
 msgid "Math editor mode"
 msgstr "Naèin matematiènega urejanja"
 
-#: src/Text3.cpp:797
+#: src/Text3.cpp:798
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Manjkajoèi argument"
 
-#: src/Text3.cpp:1038
+#: src/Text3.cpp:1040
 msgid "Layout "
 msgstr "Videz "
 
-#: src/Text3.cpp:1039
+#: src/Text3.cpp:1041
 msgid " not known"
 msgstr " ni znan"
 
-#: src/Text3.cpp:1590 src/Text3.cpp:1602
+#: src/Text3.cpp:1581 src/Text3.cpp:1593
 #, fuzzy
 msgid "Character set"
 msgstr "Znakovni nabor:|#Z"
 
-#: src/Text3.cpp:1748 src/Text3.cpp:1759
+#: src/Text3.cpp:1739 src/Text3.cpp:1750
 msgid "Paragraph layout set"
 msgstr "Nastavljen videz odstavka"
 
@@ -17693,7 +17697,7 @@ msgstr "Ding 3|#n"
 msgid "Dings 4"
 msgstr "Ding 4|#g"
 
-#: src/frontends/qt4/FileDialog.cpp:168
+#: src/frontends/qt4/FileDialog.cpp:181
 #, fuzzy
 msgid "Directories"
 msgstr "Uporabni¹ki imenik: "
@@ -17802,12 +17806,12 @@ msgstr ""
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1206
+#: src/frontends/qt4/GuiApplication.cpp:1209
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Tiskaj na"
 
-#: src/frontends/qt4/GuiApplication.cpp:1216
+#: src/frontends/qt4/GuiApplication.cpp:1219
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -17815,18 +17819,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1220
-#: src/frontends/qt4/GuiApplication.cpp:1226
+#: src/frontends/qt4/GuiApplication.cpp:1223
+#: src/frontends/qt4/GuiApplication.cpp:1229
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1224
+#: src/frontends/qt4/GuiApplication.cpp:1227
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1396
+#: src/frontends/qt4/GuiApplication.cpp:1399
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Ni moè pognati z datoteko:"
@@ -17844,9 +17848,9 @@ msgstr "Literatura"
 #: src/frontends/qt4/GuiBibtex.cpp:424 src/frontends/qt4/GuiBibtex.cpp:434
 #: src/frontends/qt4/GuiDocument.cpp:1293
 #: src/frontends/qt4/GuiExternal.cpp:661 src/frontends/qt4/GuiGraphics.cpp:740
-#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1219
-#: src/frontends/qt4/GuiView.cpp:1277 src/frontends/qt4/GuiView.cpp:1417
-#: src/frontends/qt4/GuiView.cpp:1536 src/frontends/qt4/GuiView.cpp:1615
+#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1228
+#: src/frontends/qt4/GuiView.cpp:1286 src/frontends/qt4/GuiView.cpp:1426
+#: src/frontends/qt4/GuiView.cpp:1545 src/frontends/qt4/GuiView.cpp:1624
 msgid "Documents|#o#O"
 msgstr "Spisi|#s#S"
 
@@ -18077,10 +18081,10 @@ msgstr ""
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Vnesite ime datoteke, pod katerim naj se shrani spis"
 
-#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1295
-#: src/frontends/qt4/GuiView.cpp:1437 src/frontends/qt4/GuiView.cpp:1453
-#: src/frontends/qt4/GuiView.cpp:1470 src/frontends/qt4/GuiView.cpp:1553
-#: src/frontends/qt4/GuiView.cpp:1591
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1304
+#: src/frontends/qt4/GuiView.cpp:1446 src/frontends/qt4/GuiView.cpp:1462
+#: src/frontends/qt4/GuiView.cpp:1479 src/frontends/qt4/GuiView.cpp:1562
+#: src/frontends/qt4/GuiView.cpp:1600
 msgid "Canceled."
 msgstr "Preklicano."
 
@@ -19626,85 +19630,85 @@ msgstr ""
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Naèrt tabele"
 
-#: src/frontends/qt4/GuiView.cpp:1218
+#: src/frontends/qt4/GuiView.cpp:1227
 msgid "Select template file"
 msgstr "Izberite vzorèno datoteko"
 
-#: src/frontends/qt4/GuiView.cpp:1220 src/frontends/qt4/GuiView.cpp:1616
+#: src/frontends/qt4/GuiView.cpp:1229 src/frontends/qt4/GuiView.cpp:1625
 msgid "Templates|#T#t"
 msgstr "Vzorci|#V#v"
 
-#: src/frontends/qt4/GuiView.cpp:1223 src/frontends/qt4/GuiView.cpp:1281
-#: src/frontends/qt4/GuiView.cpp:1542 src/frontends/qt4/GuiView.cpp:1623
+#: src/frontends/qt4/GuiView.cpp:1232 src/frontends/qt4/GuiView.cpp:1290
+#: src/frontends/qt4/GuiView.cpp:1551 src/frontends/qt4/GuiView.cpp:1632
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1240
+#: src/frontends/qt4/GuiView.cpp:1249
 #, fuzzy
 msgid "Document not loaded."
 msgstr "Nastavitev videza spisa"
 
-#: src/frontends/qt4/GuiView.cpp:1276
+#: src/frontends/qt4/GuiView.cpp:1285
 msgid "Select document to open"
 msgstr "Izberite spis za odprtje"
 
-#: src/frontends/qt4/GuiView.cpp:1278 src/frontends/qt4/GuiView.cpp:1418
-#: src/frontends/qt4/GuiView.cpp:1537
+#: src/frontends/qt4/GuiView.cpp:1287 src/frontends/qt4/GuiView.cpp:1427
+#: src/frontends/qt4/GuiView.cpp:1546
 msgid "Examples|#E#e"
 msgstr "Zgledi|#Z#z"
 
-#: src/frontends/qt4/GuiView.cpp:1282
+#: src/frontends/qt4/GuiView.cpp:1291
 #, fuzzy
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1283
+#: src/frontends/qt4/GuiView.cpp:1292
 #, fuzzy
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1284
+#: src/frontends/qt4/GuiView.cpp:1293
 #, fuzzy
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1318
+#: src/frontends/qt4/GuiView.cpp:1327
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Odpira se spis %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1327
+#: src/frontends/qt4/GuiView.cpp:1336
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s je odprt."
 
-#: src/frontends/qt4/GuiView.cpp:1330
+#: src/frontends/qt4/GuiView.cpp:1339
 #, fuzzy
 msgid "Version control detected."
 msgstr "Nadzor razlièic"
 
-#: src/frontends/qt4/GuiView.cpp:1332
+#: src/frontends/qt4/GuiView.cpp:1341
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Spisa ni moè odpreti"
 
-#: src/frontends/qt4/GuiView.cpp:1361
+#: src/frontends/qt4/GuiView.cpp:1370
 #, fuzzy
 msgid "Couldn't import file"
 msgstr "Datoteke ni moè pretvoriti"
 
-#: src/frontends/qt4/GuiView.cpp:1362
+#: src/frontends/qt4/GuiView.cpp:1371
 #, fuzzy, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Ni podatkov za pretvarjanje iz "
 
-#: src/frontends/qt4/GuiView.cpp:1413
+#: src/frontends/qt4/GuiView.cpp:1422
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Izberite spis za vstavitev"
 
-#: src/frontends/qt4/GuiView.cpp:1464 src/frontends/qt4/GuiView.cpp:1640
+#: src/frontends/qt4/GuiView.cpp:1473 src/frontends/qt4/GuiView.cpp:1649
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -19712,44 +19716,44 @@ msgid ""
 "Do you want to overwrite that document?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1466 src/frontends/qt4/GuiView.cpp:1644
+#: src/frontends/qt4/GuiView.cpp:1475 src/frontends/qt4/GuiView.cpp:1653
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "®elite shraniti spis?"
 
-#: src/frontends/qt4/GuiView.cpp:1475
+#: src/frontends/qt4/GuiView.cpp:1484
 #, fuzzy, c-format
 msgid "Importing %1$s..."
 msgstr "Uvoz%m"
 
-#: src/frontends/qt4/GuiView.cpp:1478
+#: src/frontends/qt4/GuiView.cpp:1487
 msgid "imported."
 msgstr "uvo¾ena."
 
-#: src/frontends/qt4/GuiView.cpp:1480
+#: src/frontends/qt4/GuiView.cpp:1489
 #, fuzzy
 msgid "file not imported!"
 msgstr "Niza ni moè najti!"
 
-#: src/frontends/qt4/GuiView.cpp:1535
+#: src/frontends/qt4/GuiView.cpp:1544
 msgid "Select LyX document to insert"
 msgstr "Izberite spis LyXa za vstavitev"
 
-#: src/frontends/qt4/GuiView.cpp:1576
+#: src/frontends/qt4/GuiView.cpp:1585
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Izberite spis za vstavitev"
 
-#: src/frontends/qt4/GuiView.cpp:1613
+#: src/frontends/qt4/GuiView.cpp:1622
 msgid "Choose a filename to save document as"
 msgstr "Vnesite ime datoteke, pod katerim naj se shrani spis"
 
-#: src/frontends/qt4/GuiView.cpp:1645 src/frontends/qt4/GuiView.cpp:1690
+#: src/frontends/qt4/GuiView.cpp:1654 src/frontends/qt4/GuiView.cpp:1699
 #, fuzzy
 msgid "&Rename"
 msgstr "&Odstrani"
 
-#: src/frontends/qt4/GuiView.cpp:1686
+#: src/frontends/qt4/GuiView.cpp:1695
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -19757,16 +19761,16 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1689
+#: src/frontends/qt4/GuiView.cpp:1698
 msgid "Rename and save?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1690
+#: src/frontends/qt4/GuiView.cpp:1699
 #, fuzzy
 msgid "&Retry"
 msgstr "&Obnovi"
 
-#: src/frontends/qt4/GuiView.cpp:1740
+#: src/frontends/qt4/GuiView.cpp:1749
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -19774,21 +19778,21 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1743
+#: src/frontends/qt4/GuiView.cpp:1752
 msgid "&Discard"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1847
+#: src/frontends/qt4/GuiView.cpp:1856
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "Spis se shranjuje"
 
-#: src/frontends/qt4/GuiView.cpp:1857
+#: src/frontends/qt4/GuiView.cpp:1866
 #, fuzzy
 msgid "All documents saved."
 msgstr "Nastavitev videza spisa"
 
-#: src/frontends/qt4/GuiView.cpp:2057
+#: src/frontends/qt4/GuiView.cpp:2067
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
@@ -20702,10 +20706,14 @@ msgstr "Za¹èiten presledek|Z"
 msgid "Unknown TOC type"
 msgstr "Neznana akcija"
 
-#: src/insets/InsetTabular.cpp:3054
+#: src/insets/InsetTabular.cpp:3074
 #, fuzzy
 msgid "Opened table"
 msgstr "Odpira se datoteko s pomoèjo"
+
+#: src/insets/InsetTabular.cpp:3806
+msgid "You cannot paste into a multicell selection."
+msgstr ""
 
 #: src/insets/InsetText.cpp:212
 #, fuzzy
