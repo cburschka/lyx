@@ -2047,6 +2047,8 @@ if 'install' in BUILD_TARGETS or 'installer' in BUILD_TARGETS:
         env.Install(postinstall_path, tmp_script)
         Alias('install', postinstall_path)
     # man
+    env.InstallAs(os.path.join(man_dest_dir, 'lyx' + version_suffix + '.1'),
+        env.subst('$TOP_SRCDIR/lyx.1in'))
     env.InstallAs(os.path.join(man_dest_dir, 'tex2lyx' + version_suffix + '.1'),
         env.subst('$TOP_SRCDIR/src/tex2lyx/tex2lyx.man'))
     env.InstallAs(os.path.join(man_dest_dir, 'lyxclient' + version_suffix + '.1'),
