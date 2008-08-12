@@ -143,7 +143,7 @@ target "lyx-docs@lists.lyx.org"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 4.
+letzte Änderung: 12.
  August 2008
 \end_layout
 
@@ -212,6 +212,12 @@ ist
 , und was 
 \emph on
 nicht
+\begin_inset LatexCommand label
+name "sec:Was-das-Tutorium"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -478,7 +484,7 @@ beispiel_gelyxt.lyx
 \begin_layout Standard
 Die Beispieldateien finden Sie im Verzeichnis 
 \family typewriter
-examples/de
+[resources/]examples/de
 \family default
  des LyX-In\SpecialChar \-
 stal\SpecialChar \-
@@ -499,11 +505,17 @@ Schaltfläche
 Beispiele
 \family default
 \SpecialChar \menuseparator
-Verzeichnis 
+Ver\SpecialChar \-
+zeich\SpecialChar \-
+nis 
 \series bold
 de
 \series default
-).
+) (
+\family typewriter
+resources
+\family default
+ bei Windows).
  Laden Sie die nicht modifizierte Datei und verwenden Sie 
 \family sans
 Datei\SpecialChar \menuseparator
@@ -1122,7 +1134,7 @@ Umgebungstypen
 
 \begin_layout Standard
 Unterschiedliche Teile eines Dokumentes dienen verschiedenen Zwecken; man
- bezeichnet solche logischen Unterteilungen 
+ bezeichnet solche logischen Unterteilungen als 
 \emph on
 Umgebungen
 \emph default
@@ -2493,8 +2505,6 @@ Sie können jedes Kapitel, Unterkapitel (oder, wenn auch seltener benötigt,
  Seite im Text, auf der das besagte Kapitel steht, beziehen.
  Wie auch bei der Nummerierung von Abschnitten und Fußnoten kümmert sich
  LyX um die korrekte Verwaltung dieser Querverweise.
- Automatische Marken und Querverweise stellen einen der größten Vorzüge
- von LyX (und LaTeX) gegenüber gewöhnlichen Textverarbeitungen dar.
 \end_layout
 
 \begin_layout Subsection
@@ -2563,24 +2573,19 @@ unter
  Marke vorschlägt.
  In diesem Fall wird es 
 \family typewriter
-sub:Was-das-Tutorium 
+sec:Was-das-Tutorium 
 \family default
 sein.
- Sie können den Namen für die Marke ändern.
- Geben Sie zum Beispiel ein 
-\family typewriter
-sec:Was-das-Tutorium
-\family default
-.
- Dies ist ein einprägsamer Name, den Sie nicht so einfach mit anderen Marken
- im Text verwechseln können.
+ Sie können den Namen für die Marke ändern und einen einprägsamen Namen
+ verwenden, den Sie nicht so einfach mit anderen Marken im Text verwechseln
+ können.
  Das 
 \begin_inset Quotes gld
 \end_inset
 
 
 \family typewriter
-sub:
+sec:
 \family default
 
 \begin_inset Quotes grd
@@ -2669,7 +2674,7 @@ Querverweis
 \begin_inset Quotes gld
 \end_inset
 
-sub:Was-das-Tutorium
+sec:Was-das-Tutorium
 \begin_inset Quotes grd
 \end_inset
 

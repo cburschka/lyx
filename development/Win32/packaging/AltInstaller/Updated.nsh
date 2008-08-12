@@ -33,6 +33,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\ca\mathed.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\ca\splash.lyx"
  SetOutPath "$INSTDIR\Resources\examples\de"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\de\beispiel_roh.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\splash.lyx"
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\singlecol.layout"
