@@ -746,8 +746,8 @@ AC_DEFUN([LYX_SET_VERSION_INFO],
  lyx_release=`echo $lyx_patch | sed -e 's/[[^0-9]].*//'`
  lyx_patch=`echo $lyx_patch | sed -e "s/^$lyx_release//" -e 's/^[[.]]//' -e 's/[[^0-9]].*//'`
  test "x$lyx_patch" = "x" && lyx_patch=0
- lyx_dir_ver=`echo LYX_DIR_${lyx_major}${lyx_minor}x`
- lyx_userdir_ver=`echo LYX_USERDIR_${lyx_major}${lyx_minor}x`
+ lyx_dir_ver=LYX_DIR_${lyx_major}${lyx_minor}x
+ lyx_userdir_ver=LYX_USERDIR_${lyx_major}${lyx_minor}x
  AC_SUBST(LYX_MAJOR_VERSION,$lyx_major)
  AC_SUBST(LYX_MINOR_VERSION,$lyx_minor)
  AC_SUBST(LYX_RELEASE_LEVEL,$lyx_release)
