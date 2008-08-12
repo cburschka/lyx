@@ -68,7 +68,9 @@ public:
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 	///
 	bool boundary, int & x, int & y) const;
-	///
+	/// Returns true if (mouse) action is over the inset's button.
+	/// Always returns false when the inset does not have a
+	/// button.
 	bool hitButton(FuncRequest const &) const;
 	///
 	docstring const getNewLabel(docstring const & l) const;

@@ -425,7 +425,7 @@ void InsetCollapsable::cursorPos(BufferView const & bv,
 
 Inset::EDITABLE InsetCollapsable::editable() const
 {
-	return geometry() != ButtonOnly? HIGHLY_EDITABLE : IS_EDITABLE;
+	return geometry() != ButtonOnly ? HIGHLY_EDITABLE : IS_EDITABLE;
 }
 
 
@@ -489,28 +489,23 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
-		if (hitButton(cmd) && geometry() != NoButton) {
+		if (hitButton(cmd)) {
 			switch (cmd.button()) {
 			case mouse_button::button1:
-				// reset selection if necessary (see bug 3060)
-				if (cur.selection())
-					cur.bv().cursor().clearSelection();
-				else
-					cur.noUpdate();
-				cur.dispatched();
-				return;
+				// Pass the command to the enclosing InsetText,
+				// so that the cursor gets set.
+				cur.undispatched();
+				break;
 			case mouse_button::none:
 			case mouse_button::button2:
 			case mouse_button::button3:
 			case mouse_button::button4:
 			case mouse_button::button5:
 				// Nothing to do.
-				cur.undispatched();
-				return;
+				cur.noUpdate();
+				break;
 			}
-		}
-		if (geometry() == NoButton 
-			|| (geometry() != ButtonOnly && !hitButton(cmd)))
+		} else if (geometry() != ButtonOnly)
 			InsetText::doDispatch(cur, cmd);
 		else
 			cur.undispatched();
@@ -519,24 +514,26 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_MOTION:
 	case LFUN_MOUSE_DOUBLE:
 	case LFUN_MOUSE_TRIPLE:
-		if (geometry() == NoButton)
-			InsetText::doDispatch(cur, cmd);
-		else if (geometry() != ButtonOnly
-		     && !hitButton(cmd))
+		if (hitButton(cmd)) 
+			cur.noUpdate();
+		else if (geometry() != ButtonOnly)
 			InsetText::doDispatch(cur, cmd);
 		else
 			cur.undispatched();
 		break;
 
 	case LFUN_MOUSE_RELEASE:
-		if (geometry() == NoButton 
-			|| (geometry() != ButtonOnly && !hitButton(cmd))) {
+		if (!hitButton(cmd)) {
 			// The mouse click has to be within the inset!
-			InsetText::doDispatch(cur, cmd);
+			if (geometry() != ButtonOnly)
+				InsetText::doDispatch(cur, cmd);
+			else
+				cur.undispatched();			
 			break;
 		}
 		if (cmd.button() != mouse_button::button1) {
-			cur.dispatched();
+			// Nothing to do.
+			cur.noUpdate();
 			break;
 		}
 		// if we are selecting, we do not want to
