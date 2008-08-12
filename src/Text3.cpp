@@ -1179,23 +1179,20 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			bv->cursor().finishUndo();
 			break;
 
-		case mouse_button::button3:
-			if (cur.selection()) {
-				DocIterator const selbeg = cur.selectionBegin();
-				DocIterator const selend = cur.selectionEnd();
-				Cursor tmpcur = cur;
-				tm.setCursorFromCoordinates(tmpcur, cmd.x, cmd.y);
-				// Don't do anything if we right-click a selection, a selection
-				// context menu should popup instead.
-				if (tmpcur < selbeg || tmpcur >= selend) {
-					cur.noUpdate();
-					return;
-				}
+		case mouse_button::button3: {
+			Cursor const & bvcur = cur.bv().cursor();
+			// Don't do anything if we right-click a
+			// selection, a context menu will popup.
+			if (bvcur.selection() && cur >= bvcur.selectionBegin()
+			    && cur <= bvcur.selectionEnd()) {
+				cur.noUpdate();
+				return;
 			}
-			if (!bv->mouseSetCursor(cur, false)) {
+			if (!bv->mouseSetCursor(cur, false))
 				cur.updateFlags(Update::SinglePar | Update::FitCursor);
-				break;			
-			}
+			break;			
+		}
+
 		default:
 			break;
 		} // switch (cmd.button())
