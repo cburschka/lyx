@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 339
+#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass scrbook
@@ -63,7 +63,7 @@
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks false
+\pdf_breaklinks true
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
@@ -1015,6 +1015,7 @@ Neu (Strg+N)
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -1044,6 +1045,7 @@ Vorlage\SpecialChar \ldots{}
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -18109,7 +18111,45 @@ Datei:
  Ihre Bilddatei eingeben.
  Bemerken Sie auch, dass die Darstellungen in LyX (Karteikarte 
 \family sans
-Zusatz-Optionen\SpecialChar \menuseparator
+LaTe
+\family default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family sans
+X-
+\begin_inset space \space{}
+\end_inset
+
+und
+\begin_inset space \space{}
+\end_inset
+
+Ly
+\family default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family sans
+X-Optionen\SpecialChar \menuseparator
 in
 \begin_inset space \space{}
 \end_inset
@@ -18133,10 +18173,9 @@ X
 \begin_inset space \space{}
 \end_inset
 
-anzeigen\SpecialChar \menuseparator
-Anzeige
+anzeigen
 \family default
-) und im gedruckten Dokument (
+) und im gedruckten Dokument (Feld 
 \family sans
 Ausgabegröße
 \family default
@@ -18176,7 +18215,15 @@ status collapsed
 
 \end_inset
 
-X- und Ly
+X-
+\begin_inset space \space{}
+\end_inset
+
+und
+\begin_inset space \space{}
+\end_inset
+
+Ly
 \begin_inset ERT
 status collapsed
 
@@ -18480,6 +18527,78 @@ SVG
 Pixelbilder lassen sich nicht oder nur stark vereinfacht in Vektorgrafiken
  verwandeln, zum Beispiel EPS oder PDF, sind dann aber nicht skalierbar.
  Umgekehrt geht das schon.
+\end_layout
+
+\begin_layout Subsection
+Abbildungseinstellungen gruppieren
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Abbildungen!Einstellungen gruppieren
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jede Abbildung kann eine neu Gruppe von Abbildungseinstellungen definieren
+ oder zu einer vorhandenen hinzugefügt werden.
+ Abbildungen einer Gruppe haben dieselben Einstellungen, so dass die Änderung
+ der Einstellungen einer Abbildung automatisch die Einstellungen aller Abbildung
+en dieser Gruppe ändert.
+ Das erleichtert das Bearbeiten ähnlicher Abbildungen.
+\end_layout
+
+\begin_layout Standard
+Eine Gruppe definieren Sie, indem im Grafik-Dialogfenster einer Abbildung
+ auf der Karteikarte 
+\family sans
+LaTe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-
+\begin_inset space \space{}
+\end_inset
+
+und
+\begin_inset space \space{}
+\end_inset
+
+Ly
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Optionen
+\family default
+ im Feld 
+\family sans
+Gruppenname
+\begin_inset space \space{}
+\end_inset
+
+initialisieren
+\family default
+ einen Namen einfügen.
+ Wenn Sie dann im Grafik-Dialogfenster einer anderen Abbildung denselben
+ Namen eintragen, gehört auch diese Abbildung zur Gruppe.
 \end_layout
 
 \begin_layout Subsection
@@ -22158,15 +22277,15 @@ Einfügen\SpecialChar \menuseparator
 Marke
 \family default
  einfügen.
- Mehr über Beschriftungen langer Tabellen ist im 
+ Mehr über Beschriftungen langer Tabellen ist im Handbuch 
 \emph on
 Eingebettete
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 Objekte
 \emph default
- Handbuch zu finden.
+ zu finden.
 \end_layout
 
 \begin_layout Enumerate
@@ -31643,6 +31762,169 @@ reference "Makro-erzeugen"
 \end_layout
 
 \begin_layout Section
+PDF-Eigenschaften
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+PDF!-Eigenschaften
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "PDF-Eigenschaften"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Im Dialogfenster 
+\family sans
+Dokument-Einstellungen
+\family default
+ können Sie unter 
+\family sans
+PDF-Eigenschaften
+\family default
+ spezielle Optionen für die PDF-Ausgabe eines Dokuments setzen.
+ Alle Optionen stammen vom LaTeX-Paket 
+\family typewriter
+hyperref
+\family default
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+LaTeX! -Paket ! hyperref
+\end_layout
+
+\end_inset
+
+, siehe auch Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "PDF-Eigenschaften-B"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+hyperref
+\family default
+ wird in der DVI- oder PDF-Ausgabe alle Querverweise verlinken, so dass
+ ein Leser, der die DVI- oder PDF-Ausgabe auf seinem PC liest, einen Querverweis
+ anklicken kann und so zur entsprechenden Stelle gelangt, wie es auch im
+ Internet passiert.
+ Auf der Karteikarte 
+\family sans
+Hyperlinks
+\family default
+ können Sie festlegen, wie die Querverweise aussehen sollen, und ob Bibliografis
+che Rückverweise angelegt werden sollen.
+\end_layout
+
+\begin_layout Standard
+Auf der Karteikarte 
+\family sans
+Lesezeichen
+\family default
+ können Sie festlegen, ob welche erzeugt und auch nummeriert werden sollen.
+ Das erleichtert es Lesern, durch die PDF-Ausgabe des Dokuments zu navigieren.
+ Mit 
+\family sans
+Ebene
+\family default
+ legen Sie fest, welche Lesezeichen angezeigt werden sollen.
+ 2 zum Beispiel zeigt die Lesezeichen aller Abschnitte und Unterabschnitte,
+ während 1 nur Abschnitte berücksichtigt.
+\end_layout
+
+\begin_layout Standard
+Die 
+\family sans
+Dokument-Informationen
+\family default
+ auf Karteikarte 
+\family sans
+Allgemein
+\family default
+ werden zusammen mit der PDF-Ausgabe als Datei-Eigenschaften gespeichert.
+ Viele PDF-Leseprogramme können diese Informationen verarbeiten.
+ Das zum Verwalten von PDF-Dateien sehr hilfreich.
+ Ist 
+\family sans
+Informationen
+\begin_inset space \space{}
+\end_inset
+
+automatisch
+\begin_inset space \space{}
+\end_inset
+
+eintragen
+\family default
+ angekreuzt, versucht LyX, diese Informationen aus dem Titel und dem Autor
+ des Dokuments zu gewinnen.
+\end_layout
+
+\begin_layout Standard
+Die Option 
+\family sans
+Im
+\begin_inset space \space{}
+\end_inset
+
+Vollbildmodus
+\begin_inset space \space{}
+\end_inset
+
+öffnen
+\family default
+ sorgt dafür, dass die PDF-Datei automatisch so geöffnet wird, was bei Präsentat
+ionen hilfreich ist.
+\end_layout
+
+\begin_layout Standard
+Auch in diesem Handbuch werden PDF-Eigenschaften benutzt, wie Sie im Dialogfenst
+er 
+\family sans
+Dokument-Einstellungen
+\family default
+ sehen können.
+ Dort sehen Sie auch, dass 
+\family sans
+Zusätzliche
+\begin_inset space \space{}
+\end_inset
+
+Optionen
+\family default
+ benutzt werden.
+ Genaueres dazu finden Sie im hyperref-Handbuch 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hyperref"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
 TeX-Code und LaTeX-Syntax 
 \begin_inset CommandInset label
 LatexCommand label
@@ -31722,6 +32004,7 @@ Strg+L
 	filename ../../images/ert-insert.png
 	scale 70
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icons
 
 \end_inset
 
@@ -33035,7 +33318,7 @@ Thesaurus gibt es zur Zeit nur für die englische Sprache.
 status collapsed
 
 \begin_layout Plain Layout
-Änderungsverfolgung
+Anderungsverfolgung@Änderungsverfolgung
 \end_layout
 
 \end_inset
@@ -39675,7 +39958,7 @@ PDF!-Eigenschaften
 
 \begin_inset CommandInset label
 LatexCommand label
-name "PDF-Eigenschaften"
+name "PDF-Eigenschaften-B"
 
 \end_inset
 
@@ -39715,7 +39998,7 @@ Betreff,
 \begin_inset space ~
 \end_inset
 
-Schlagworte sind selbsterklärend.
+Schlagwörter sind selbsterklärend.
 \end_layout
 
 \begin_layout Description
@@ -39740,6 +40023,14 @@ Vollbildmodus
 \end_inset
 
 öffnen ist selbsterklärend.
+\end_layout
+
+\begin_layout Description
+Zusätzliche
+\begin_inset space ~
+\end_inset
+
+Optionen ist etwas für LaTeX-Spezialisten.
 \end_layout
 
 \end_deeper
@@ -39782,11 +40073,20 @@ Links ist selbsterklärend.
 \end_layout
 
 \begin_layout Description
-Bibliographische
+Links
 \begin_inset space ~
 \end_inset
 
-Rückverweise ???
+einfärben ist selbsterklärend.
+\end_layout
+
+\begin_layout Description
+Bibliografische
+\begin_inset space ~
+\end_inset
+
+Rückverweise zeigt im Literaturverzeichnis hinter dem jeweiligen Eintrag
+ an, wo auf ihn verwiesen wurde.
 \end_layout
 
 \begin_layout Description
@@ -39829,18 +40129,35 @@ Lesezeichen
 \begin_inset space ~
 \end_inset
 
-öffnen ???
+öffnen öffnet die Lesezeichen in der DVI-Ausgabe automatisch
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-Ebene ???
+Ebene legt fest, bis zu welcher Ebene (Kapitel, Abschnitt\SpecialChar \ldots{}
+) Lesezeichen angezeigt
+ werden sollen.
 \end_layout
 
 \end_deeper
 \end_deeper
 \end_deeper
 \end_deeper
+\begin_layout Standard
+Siehe auch Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "PDF-Eigenschaften"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 Mathe-Optionen
 \end_layout
@@ -40879,6 +41196,57 @@ status collapsed
 \begin_layout Plain Layout
 
 ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "hyperref"
+
+\end_inset
+
+
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Dokumentation"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf"
+
+\end_inset
+
+
+\series default
+ des LaTeX-Pakets 
+\series bold
+hyperref
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX!-Paket ! hyperref
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf
 \end_layout
 
 \end_inset
