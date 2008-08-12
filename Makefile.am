@@ -28,7 +28,8 @@ EXTRA_DIST = ANNOUNCE INSTALL.autoconf RELEASE-NOTES UPGRADING \
 man_MANS = lyx.1
 
 lyx.1:
-	cp -p $(srcdir)/lyx.man lyx.1
+	sed -e "s/LYX_DIR_VER/$(LYX_DIR_VER)/g" \
+	    -e "s/LYX_USERDIR_VER/$(LYX_USERDIR_VER)/g" $(srcdir)/lyx.man > lyx.1
 
 rpmdist: dist
 	$(LN_S) $(srcdir)/lib/images/lyx.png . ; \

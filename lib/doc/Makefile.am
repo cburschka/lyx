@@ -253,6 +253,30 @@ dist_doc_DATA = \
 
 doc_DATA = $(docfiles) 
 
+doc_files = \
+	    $(dist_doc_DATA) \
+	    $(dist_cadoc_DATA) \
+	    $(dist_csdoc_DATA) \
+	    $(dist_dadoc_DATA) \
+	    $(dist_dedoc_DATA) \
+	    $(dist_esdoc_DATA) \
+	    $(dist_eudoc_DATA) \
+	    $(dist_frdoc_DATA) \
+	    $(dist_gldoc_DATA) \
+	    $(dist_hedoc_DATA) \
+	    $(dist_hudoc_DATA) \
+	    $(dist_itdoc_DATA) \
+	    $(dist_jadoc_DATA) \
+	    $(dist_nldoc_DATA) \
+	    $(dist_nbdoc_DATA) \
+	    $(dist_pldoc_DATA) \
+	    $(dist_ptdoc_DATA) \
+	    $(dist_rodoc_DATA) \
+	    $(dist_rudoc_DATA) \
+	    $(dist_skdoc_DATA) \
+	    $(dist_sldoc_DATA) \
+	    $(dist_svdoc_DATA)
+
 DEPENDFILE = $(srcdir)/Makefile.depend
 # include $(DEPENDFILE) does not work because automake is too limited.
 include $(srcdir)/Makefile.depend
@@ -283,6 +307,16 @@ install-data-hook: $(tocfiles)
 		if test -f "$(srcdir)/$$i"; then file="$(srcdir)/$$i"; \
 		else file="$$i"; fi; \
 		$(docDATA_INSTALL) "$$file" "$(DESTDIR)$(docdir)/$$i"; \
+	done
+	for i in $(doc_files); \
+	do \
+		if $(EGREP) -q "LYX_DIR_VER|LYX_USERDIR_VER" "$(DESTDIR)$(docdir)/$$i"; then \
+			sed -e "s/LYX_DIR_VER/$(LYX_DIR_VER)/g" \
+			    -e "s/LYX_USERDIR_VER/$(LYX_USERDIR_VER)/g" \
+				"$(DESTDIR)$(docdir)/$$i" > "$(DESTDIR)$(docdir)/$$i.tmp"; \
+			mv -f "$(DESTDIR)$(docdir)/$$i.tmp" "$(DESTDIR)$(docdir)/$$i"; \
+			chmod 644 "$(DESTDIR)$(docdir)/$$i"; \
+		fi; \
 	done
 
 uninstall-local:

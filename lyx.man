@@ -75,7 +75,7 @@ where fmt is the import format of choice and file.xxx is the file to be imported
 
 .SH ENVIRONMENT
 .TP
-.B LYX_DIR_16x
+.B LYX_DIR_VER
 can be used to specify which system directory to use.
 .PP
 The system directory is determined by searching for the file
@@ -83,7 +83,7 @@ The system directory is determined by searching for the file
 .br
 1) \-sysdir command line parameter
 .br
-2) LYX_DIR_16x environment variable
+2) LYX_DIR_VER environment variable
 .br
 3) Maybe <path of binary>/TOP_SRCDIR/lib
 .br
@@ -91,14 +91,14 @@ The system directory is determined by searching for the file
 .br
 5) hardcoded lyx_dir (usually /usr/local/share/lyx on UNIX)
 .TP
-.B LYX_USERDIR_16x
+.B LYX_USERDIR_VER
 can be used to specify which user directory to use.
 .PP
 The user directory is, in order of precedence:
 .br
 1) \-userdir command line parameter
 .br
-2) LYX_USERDIR_16x environment variable
+2) LYX_USERDIR_VER environment variable
 .br
 3) $HOME/.<name of binary> if no explicit setting is made
 
