@@ -313,6 +313,7 @@ AC_SUBST(AM_CPPFLAGS)
 AC_SUBST(AM_CXXFLAGS)
 AC_SUBST(AM_CFLAGS)
 AC_SUBST(AM_LDFLAGS)
+AC_SUBST(real_pkgdatadir)
 
 ## Some config.h stuff
 
@@ -458,7 +459,8 @@ AC_DEFINE_UNQUOTED([LYX_MINOR_VERSION],$lyx_minor,[Minor version number])
 AC_DEFINE_UNQUOTED([LYX_RELEASE_LEVEL],$lyx_release,[Release version number])
 AC_DEFINE_UNQUOTED([LYX_RELEASE_PATCH],$lyx_patch,[Patch version number])
 
-AC_CONFIG_FILES([Makefile
+AC_CONFIG_FILES([Makefile \
+      lyx.1:lyx.1in \
       boost/Makefile \
       config/Makefile \
       development/Makefile \

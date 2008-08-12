@@ -2,8 +2,6 @@ include $(top_srcdir)/config/common.am
 
 ACLOCAL_AMFLAGS = -I m4 -I config
 
-DISTCLEANFILES += lyx.1
-
 MAINTAINERCLEANFILES += $(srcdir)/aclocal.m4 $(srcdir)/configure \
 	$(srcdir)/config.h.in
 
@@ -23,13 +21,9 @@ SUBDIRS = config development intl po $(BOOST) src sourcedoc lib \
 
 EXTRA_DIST = ANNOUNCE INSTALL.autoconf RELEASE-NOTES UPGRADING \
 	INSTALL.Win32 INSTALL.MacOSX INSTALL.scons INSTALL.cmake \
-	README.Win32 README.Cygwin README.localization lyx.man autogen.sh
+	README.Win32 README.Cygwin README.localization lyx.1in autogen.sh
 
 man_MANS = lyx.1
-
-lyx.1:
-	sed -e "s/LYX_DIR_VER/$(LYX_DIR_VER)/g" \
-	    -e "s/LYX_USERDIR_VER/$(LYX_USERDIR_VER)/g" $(srcdir)/lyx.man > lyx.1
 
 rpmdist: dist
 	$(LN_S) $(srcdir)/lib/images/lyx.png . ; \
