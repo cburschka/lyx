@@ -228,7 +228,6 @@ public:
 	 *  stored by the dialog are not applied to the inset currently
 	 *  connected to the dialog. Instead, they will be used to generate
 	 *  a new inset at the cursor position.
-	 *  \param name is used to identify the dialog to the kernel.
 	 */
 	void disconnect() const;
 
