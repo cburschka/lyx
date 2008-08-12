@@ -21,9 +21,6 @@
 namespace lyx {
 namespace frontend {
 
-/** \c Dialog collects the different parts of a Model-Controller-View
- *  split of a generic dialog together.
- */
 class DialogView : public QDialog, public Dialog
 {
 public:
