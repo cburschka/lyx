@@ -21,7 +21,6 @@ TOP_extra_files = Split('''
     autogen.sh
     config.log
     configure.ac
-    lyx.man
     rename.sh
     scons_lyx.log
 ''')
