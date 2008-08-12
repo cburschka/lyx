@@ -309,6 +309,13 @@ bool operator<=(DocIterator const & p, DocIterator const & q)
 }
 
 
+inline	
+bool operator>=(DocIterator const & p, DocIterator const & q)
+{
+	return !(p < q);
+}
+
+
 // The difference to a ('non stable') DocIterator is the removed
 // (overwritten by 0...) part of the CursorSlice data items. So this thing
 // is suitable for external storage, but not for iteration as such.
