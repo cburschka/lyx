@@ -476,23 +476,36 @@ void updateLabels(Buffer const & buf, ParIterator & parit)
 // the contents of the paragraphs.
 void updateLabels(Buffer const & buf, bool childonly)
 {
-	Buffer const * const master = buf.masterBuffer();
 	// Use the master text class also for child documents
+	Buffer const * const master = buf.masterBuffer();
 	DocumentClass const & textclass = master->params().documentClass();
 
+	// keep the buffers to be children in this set. If the call from the
+	// master comes back we can see which of them were actually seen (i.e.
+	// via an InsetInclude). The remaining ones in the set need still be updated.
+	static std::set<Buffer const *> bufToUpdate;
 	if (!childonly) {
 		// If this is a child document start with the master
 		if (master != &buf) {
+			bufToUpdate.insert(&buf);
 			updateLabels(*master);
-			return;
+
+			// was buf referenced from the master (i.e. not in bufToUpdate anymore)?
+			if (bufToUpdate.find(&buf) == bufToUpdate.end())
+				return;
 		}
 
-		// start over the counters
+		// start over the counters in the master
 		textclass.counters().reset();
-		buf.clearReferenceCache();
-		buf.inset().setBuffer(const_cast<Buffer &>(buf));
-		buf.updateMacros();
 	}
+
+	// update will be done below for buf
+	bufToUpdate.erase(&buf);
+
+	// update all caches
+	buf.clearReferenceCache();
+	buf.inset().setBuffer(const_cast<Buffer &>(buf));
+	buf.updateMacros();
 
 	Buffer & cbuf = const_cast<Buffer &>(buf);
 
