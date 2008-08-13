@@ -1,4 +1,4 @@
-#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -2359,7 +2359,7 @@ broadway Disposition pour écrire des pièces de théatre.
 \end_layout
 
 \begin_layout Description
-curiculum
+curriculum
 \begin_inset space ~
 \end_inset
 
@@ -2776,7 +2776,7 @@ Une
 \begin_layout Plain Layout
 
 \family sans
-Chapter
+Chapitre
 \end_layout
 
 \end_inset
@@ -2827,7 +2827,7 @@ Une
 \begin_layout Plain Layout
 
 \family sans
-Chapter
+Chapitre
 \end_layout
 
 \end_inset
@@ -3710,14 +3710,10 @@ Interligne
 \family default
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-You need to have
-\lang french
- le paquetage LaTeX 
+Le paquetage LaTeX 
 \series bold
 setspace
 \series default
@@ -3731,11 +3727,7 @@ Paquetages LaTeX ! setspace
 
 \end_inset
 
- avoir installé 
-\lang english
-to use this feature
-\lang french
-.
+ doit avoir été installé pour utiliser cette fonction.
 \end_layout
 
 \end_inset
@@ -10158,7 +10150,7 @@ vphantom
 , mais elles sont d'un usage trop spécialisé pour avoir leur place dans
  le 
 \emph on
-Manuel de l'Utilisateur
+Guide de l'Utilisateur
 \emph default
 .
  Si vous souhaitez en savoir plus à ce sujet, voyez 
@@ -11516,6 +11508,37 @@ lm
 cm
 \family default
  comme polices par défaut.
+ Dans la plupart des cas elles ressemblent aux polices 
+\family typewriter
+cm
+\family default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Une différence est un crénage amélioré avec les polices 
+\family typewriter
+lm
+\family default
+.
+\end_layout
+
+\end_inset
+
+, mais 
+\family typewriter
+lm
+\family default
+ couvre un grand nombre de caractères issus des deux familles 
+\family typewriter
+cm
+\family default
+ et 
+\family typewriter
+ec
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -11566,7 +11589,7 @@ du
 Texte
 \family default
  si c'est nécessaire.
- Les différentes tailles polices utilisables pour des portions de texte
+ Les différentes tailles de polices utilisables pour des portions de texte
  sont décrites section
 \begin_inset space ~
 \end_inset
@@ -16749,6 +16772,54 @@ En principe il est quasiment impossible de convertir une image matricielle
  en graphique vectoriel, seul le contraire est possible.
 \end_layout
 
+\begin_layout Subsection
+Groupement de paramétrisation pour les images
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Images ! Groupe de paramétrisation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Chaque image peut définir un nouveau groupe de paramètres d'image ou rejoindre
+ un groupe existant.
+ Les images qui appartiennent à un tel groupe partagent leurs paramètres,
+ ce qui fait que quand on modifie une image du groupe, on modifie aussi
+ automatiquement toutes les autres images du groupe de la même façon.
+ Vous pouvez par exemple changer la taille de tout un lot d'images, sans
+ avoir à répéter l'opération manuellement sur chaque image.
+\end_layout
+
+\begin_layout Standard
+On crée un nouveau groupe en entrant un nom dans le champ 
+\family sans
+Initialise le nom du groupe
+\family default
+ dans la fenêtre de dialogue 
+\family sans
+Graphique
+\family default
+.
+ On rattache une image à un groupe existant en utilisant le menu contextuel
+ de l'image et en cochant le nom du groupe voulu
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La liste des groupes n'apparaît que si au moins un groupe a été défini (NdT).
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 Tableaux
 \begin_inset CommandInset label
@@ -17440,7 +17511,27 @@ Dernier
 
 pied: La ligne courante et toutes celles situées au-dessous et qui n'ont
  pas d'attributs particuliers, sont définies comme faisant partie des lignes
- constituant le pied de la dernière page du tableau long
+ constituant le pied de la dernière page du tableau long.
+\end_layout
+
+\begin_layout Description
+Légende: La première ligne est transformée en une seule colonne.
+ Vous pouvez maintenant y mettre la légende du tableau grâce au menu 
+\family sans
+Insérer\SpecialChar \menuseparator
+Légende
+\family default
+\series bold
+.
+ 
+\series default
+Vous trouverez plus d'information sur les tableaux longs dans le manuel
+ 
+\emph on
+Objets Insérés
+\emph default
+.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -19818,7 +19909,19 @@ Et ceci pour allonger.
 \begin_layout Standard
 Les opérations de coupé-collé entre des tableaux ou des cellules marchent
  relativement bien.
- Vous pouvez couper et coller plus d'une ligne.
+ Vous pouvez couper et coller plus d'une ligne
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Notez que vous ne pouvez coller dans une sélection de plusieurs cellules
+ puisque dans les cas, par exemple de la copie d'un mot seul dans une sélection
+ 2×3, ce qu'il faut faire n'est pas clair.
+\end_layout
+
+\end_inset
+
+.
  Vous sélectionnez les cellules à copier avec la souris ou avec la touche
  
 \family sans
@@ -25897,6 +26000,13 @@ Objets insérés
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Table des matières et autres Sommaires
 \begin_inset Index
@@ -28910,6 +29020,140 @@ x^{2}-2x-2\Rightarrow\question{x_{1}}\reponse{x_{2}}=1\question{+\sqrt{3}}\repon
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Macros définies"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Les propriétés du PDF
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+PDF ! Propriétés
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La fenêtre de dialogue 
+\family sans
+Paramètres du document
+\family default
+ permet dans la rubrique 
+\family sans
+Propriétés du PDF
+\family default
+, d'activer des options spéciales pour la sortie PDF de votre document.
+ Toutes les options qui sont proposées viennent du paquetage LaTeX 
+\series bold
+hyperref
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! hyperref
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En utilisant 
+\series bold
+hyperref
+\series default
+, toutes les références croisées seront transformées en liens dans les sorties
+ DVI et PDF.
+ Cela signifie que le lecteur de votre document pourra cliquer sur un élément
+ de la tables de matières ou sur une référence pour voir la partie du document
+ référencée.
+ Dans l'onglet 
+\family sans
+hyperlien
+\family default
+ vous pouvez préciser l'aspect que devront avoir les liens et si des renvois
+ bibliographiques doivent être créés.
+ Ces renvois apparaîtrons dans la bibliographie à la fin des différentes
+ entrées, indiquant où dans le document cette entrée est citée.
+\end_layout
+
+\begin_layout Standard
+Dans l'onglet 
+\family sans
+Signets
+\family default
+ vous pouvez indiquer si des signets PDF doivent être générés pour chaque
+ section pour faciliter la navigation dans votre document.
+ Vous pouvez décider si les signets doivent être numérotés comme les sections
+ de votre document ou non.
+ Avec la case 
+\family sans
+Ouvrir le signet
+\family default
+ vous pouvez préciser le niveau de sectionnement des signets qui sera affiché
+ quand on ouvrira le PDF.
+ Par exemple, le niveau
+\begin_inset space ~
+\end_inset
+
+2 affichera toutes les sections et sous-sections, alors que le niveau
+\begin_inset space ~
+\end_inset
+
+1 n'affichera que les sections.
+ 
+\end_layout
+
+\begin_layout Standard
+Les informations d'entête que vous pouvez entrer dans l'onglet 
+\family sans
+Général
+\family default
+ sont enregistrées dans le fichier PDF comme propriétés du fichier.
+ De nombreux programmes sont capables d'extraire ces informations pour,
+ par exemple reconnaître automatiquement qui est l'auteur ou quel est le
+ sujet d'un PDF donné.
+ C'est très utilise pour trier, classer ou utiliser les PDF pour des recherches
+ bibliographiques.
+ Quand l'option 
+\family sans
+Compléter automatiquement l'entête
+\family default
+ est activée, LyX essaie d'extraire les informations de l'entête à partir
+ du titre de votre document et des données sur l'auteur.
+ 
+\end_layout
+
+\begin_layout Standard
+L'option 
+\family sans
+Charge en mode plein écran
+\family default
+ ouvrira le PDF en mode plein écran, ce qui est particulièrement utile pour
+ les présentations.
+\end_layout
+
+\begin_layout Standard
+Les propriétés du PDF sont aussi utilisées dans ce document.
+ Si vous regardez dans les paramètres du document, vous verrez que quelques
+ options supplémentaires de 
+\series bold
+hyperref
+\series default
+ sont utilisées.
+ Pour avoir une explication sur ces dernières nous vous référons au manuel
+ du paquetage hyperref 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hyperref"
 
 \end_inset
 
@@ -42292,6 +42536,59 @@ status collapsed
 \begin_layout Plain Layout
 
 ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+
+\series bold
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "hyperref"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf"
+
+\end_inset
+
+
+\series default
+ du paquetage LaTeX 
+\series bold
+hyperref
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages LaTeX ! hyperref
+\end_layout
+
+\end_inset
+
+:
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf
 \end_layout
 
 \end_inset
