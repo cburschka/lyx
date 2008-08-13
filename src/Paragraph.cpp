@@ -252,8 +252,8 @@ Paragraph::Private::Private(Private const & p, Paragraph * owner)
 Paragraph::Private::Private(Private const & p, Paragraph * owner,
 	pos_type beg, pos_type end)
 	: owner_(owner), inset_owner_(p.inset_owner_),
-	  insetlist_(p.insetlist_, beg, end),
 	  params_(p.params_), changes_(p.changes_),
+	  insetlist_(p.insetlist_, beg, end),
 	  begin_of_body_(p.begin_of_body_), words_(p.words_),
 	  layout_(p.layout_)
 {
