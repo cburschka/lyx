@@ -1998,7 +1998,6 @@ bool Cursor::fixIfBroken()
 {
 	if (DocIterator::fixIfBroken()) {
 			clearSelection();
-			resetAnchor();
 			return true;
 	}
 	return false;
@@ -2090,8 +2089,7 @@ bool Cursor::textUndo()
 		return false;
 	// Set cursor
 	setCursor(dit);
-	selection() = false;
-	resetAnchor();
+	clearSelection();
 	fixIfBroken();
 	return true;
 }
@@ -2105,8 +2103,7 @@ bool Cursor::textRedo()
 		return false;
 	// Set cursor
 	setCursor(dit);
-	selection() = false;
-	resetAnchor();
+	clearSelection();
 	fixIfBroken();
 	return true;
 }
