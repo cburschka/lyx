@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 DISTCLEANFILES += $(tocfiles)
 
-EXTRA_DIST = depend.py doc_toc.py README.Documentation $(DEPENDFILE) $(docfiles)
+EXTRA_DIST = depend.py doc_toc.py README.Documentation $(DEPENDFILE)
 
 bibliodocdir = $(pkgdatadir)/doc/biblio
 dist_bibliodoc_DATA = \
@@ -243,8 +243,6 @@ dist_doc_DATA = \
 	Tutorial.lyx \
 	UserGuide.lyx
 
-doc_DATA = $(docfiles) 
-
 DEPENDFILE = $(srcdir)/Makefile.depend
 # include $(DEPENDFILE) does not work because automake is too limited.
 include $(srcdir)/Makefile.depend
@@ -257,11 +255,11 @@ TOCs : $(DEPENDFILE) $(tocfiles)
 $(DEPENDFILE): $(srcdir)/Makefile.am $(srcdir)/depend.py
 	python $(srcdir)/depend.py > $(DEPENDFILE)
 
-# The TOCs are not built for the install and dist targets if they don't exist
-# for some weird reason.
-# Make complains although we have rules for them in $(DEPENDFILE), so we
-# must not include the TOCs in $(docfiles) and have to use the install and
-# dist hooks below.
+# The TOCs are not built for the install and dist targets if they
+# don't exist for some weird reason. Make complains although we have
+# rules for them in $(DEPENDFILE), so we must not include the TOCs in
+# the dist_xxdoc_DATA variables and have to use the install and dist
+# hooks below.
 dist-hook: $(tocfiles)
 	for i in $(tocfiles); \
 	do \
