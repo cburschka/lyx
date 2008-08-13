@@ -34,15 +34,15 @@ LyXRC_PreviewStatus Previews::status()
 namespace {
 typedef boost::shared_ptr<PreviewLoader> PreviewLoaderPtr;
 ///
-typedef map<Buffer const *, PreviewLoaderPtr> CacheType;
+typedef map<Buffer const *, PreviewLoaderPtr> LyxCacheType;
 ///
-static CacheType preview_cache_;
+static LyxCacheType preview_cache_;
 }
 
 
 PreviewLoader & Previews::loader(Buffer const & buffer) const
 {
-	CacheType::iterator it = preview_cache_.find(&buffer);
+	LyxCacheType::iterator it = preview_cache_.find(&buffer);
 
 	if (it == preview_cache_.end()) {
 		PreviewLoaderPtr ptr(new PreviewLoader(buffer));
@@ -56,7 +56,7 @@ PreviewLoader & Previews::loader(Buffer const & buffer) const
 
 void Previews::removeLoader(Buffer const & buffer) const
 {
-	CacheType::iterator it = preview_cache_.find(&buffer);
+	LyxCacheType::iterator it = preview_cache_.find(&buffer);
 
 	if (it != preview_cache_.end())
 		preview_cache_.erase(it);

@@ -130,13 +130,13 @@ docstring const InsetVSpace::label() const
 
 
 namespace {
-int const arrow_size = 4;
+int const vspace_arrow_size = 4;
 }
 
 
 void InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	int height = 3 * arrow_size;
+	int height = 3 * vspace_arrow_size;
 	if (space_.length().len().value() >= 0.0)
 		height = max(height, space_.inPixels(*mi.base.bv));
 
@@ -153,7 +153,7 @@ void InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	dim.asc = height / 2 + (a - d) / 2; // align cursor with the
 	dim.des = height - dim.asc;         // label text
-	dim.wid = ADD_TO_VSPACE_WIDTH + 2 * arrow_size + 5 + w;
+	dim.wid = ADD_TO_VSPACE_WIDTH + 2 * vspace_arrow_size + 5 + w;
 	// Cache the inset dimension. 
 	setDimCache(mi, dim);
 }
@@ -178,14 +178,14 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 		// adding or removing space
 		bool const added = space_.kind() != VSpace::LENGTH ||
 				   space_.length().len().value() >= 0.0;
-		ty1 = added ? (start + arrow_size) : start;
-		ty2 = added ? start : (start + arrow_size);
-		by1 = added ? (end - arrow_size) : end;
-		by2 = added ? end : (end - arrow_size);
+		ty1 = added ? (start + vspace_arrow_size) : start;
+		ty2 = added ? start : (start + vspace_arrow_size);
+		by1 = added ? (end - vspace_arrow_size) : end;
+		by2 = added ? end : (end - vspace_arrow_size);
 	}
 
-	int const midx = x + arrow_size;
-	int const rightx = midx + arrow_size;
+	int const midx = x + vspace_arrow_size;
+	int const rightx = midx + vspace_arrow_size;
 
 	// first the string
 	int w = 0;
@@ -199,7 +199,7 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 	docstring const lab = label();
 	theFontMetrics(font).rectText(lab, w, a, d);
 
-	pi.pain.rectText(x + 2 * arrow_size + 5,
+	pi.pain.rectText(x + 2 * vspace_arrow_size + 5,
 			 start + (end - start) / 2 + (a - d) / 2,
 			 lab, font, Color_none, Color_none);
 
