@@ -492,13 +492,13 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (hitButton(cmd)) {
 			switch (cmd.button()) {
 			case mouse_button::button1:
+			case mouse_button::button3:
 				// Pass the command to the enclosing InsetText,
 				// so that the cursor gets set.
 				cur.undispatched();
 				break;
 			case mouse_button::none:
 			case mouse_button::button2:
-			case mouse_button::button3:
 			case mouse_button::button4:
 			case mouse_button::button5:
 				// Nothing to do.
