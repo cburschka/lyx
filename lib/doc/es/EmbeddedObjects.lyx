@@ -1,4 +1,4 @@
-#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -431,8 +431,8 @@ Imagen
 \end_layout
 
 \begin_layout Standard
-El diálogo Gráficos puede lanzarse en cualquier momento haciendo clic-derecha
- sobre una imagen.
+El diálogo Gráficos puede lanzarse en cualquier momento haciendo clic sobre
+ una imagen.
  Este diálogo tiene tres pestañas:
 \end_layout
 
@@ -556,8 +556,20 @@ Opciones
 \begin_inset space ~
 \end_inset
 
-extra En esta solapa puedes modificar la apariencia de la imagen en LyX,
- y poner la imagen como subfigura de una figura flotante con su propio título.
+de
+\begin_inset space ~
+\end_inset
+
+LaTeX
+\begin_inset space ~
+\end_inset
+
+y
+\begin_inset space ~
+\end_inset
+
+LyX En esta solapa puedes modificar la apariencia de la imagen en LyX, y
+ poner la imagen como subfigura de una figura flotante con su propio título.
  Las subfiguras se explican en la sección
 \begin_inset space ~
 \end_inset
@@ -657,15 +669,46 @@ zgrep %%Bounding x.eps.gz > x.eps.bb
 \begin_inset Newline newline
 \end_inset
 
-El segundo comando crea un archivo de cuadro delimitador 
-\begin_inset Quotes eld
+El segundo comando crea un archivo de cuadro delimitador «x.eps.bb» que necesita
+ LaTeX para gráficos comprimidos.
+\begin_inset Newline newline
 \end_inset
 
-x.eps.bb
-\begin_inset Quotes erd
+El campo 
+\family sans
+Iniciar
+\begin_inset space ~
 \end_inset
 
- que necesita LaTeX para gráficos comprimidos.
+nombre
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+grupo
+\family default
+ permite definir o unir un conjunto de ajustes de imagen.
+ 
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Figuras ! Agrupación de ajustes
+\end_layout
+
+\end_inset
+
+ Las imágenes incluidas en un grupo comparten sus características, de modo
+ que al modificar las de una imagen del grupo se modifican igualmente las
+ de las demás imágenes del grupo.
+ Así, por ejemplo, puedes cambiar el tamaño de un grupo de imágenes sin
+ necesidad de hacerlo individualmente para cada una de ellas.
+ También se pude unir un grupo existente usando el menú contextual de la
+ imagen marcando el nombre del grupo.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -725,6 +768,10 @@ Esta es la misma imagen pero en modo borrador:
 	draft
 	rotateOrigin center
 
+\end_inset
+
+
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -1073,6 +1120,7 @@ Estructura indefinible
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
 	width 45col%
+	groupId distorsionadas
 
 \end_inset
 
@@ -1112,8 +1160,8 @@ Platypus
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
-	lyxscale 60
 	width 45col%
+	groupId distorsionadas
 
 \end_inset
 
@@ -1140,6 +1188,7 @@ name "fig:Dos-imágenes-distorsionadas"
 \end_inset
 
 Dos imágenes distorsionadas.
+ Ambas están en el grupo llamado «distorsionadas».
 \end_layout
 
 \end_inset
@@ -1147,6 +1196,10 @@ Dos imágenes distorsionadas.
 
 \end_layout
 
+\end_inset
+
+
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -2746,7 +2799,7 @@ larga
 \family default
  del diálogo de tablas, para repartir automáticamente la tabla en varias
  páginas.
- Al hacerlo se habilitan diversos botones opcionales en los que puedes definir:
+ Al hacerlo se habilitan las siguientes opciones:
 \end_layout
 
 \begin_layout Description
@@ -2808,6 +2861,28 @@ pie: L
 \family default
 a fila actual y siguientes, que no tienen ninguna opción especial definida,
  se definen como filas de pie de la última página de la tabla.
+\end_layout
+
+\begin_layout Description
+Leyenda: La primera fila se reajusta como columna simple.
+ Ahora puedes insertar ahí la leyenda de la tabla con el menú 
+\family sans
+Insertar\SpecialChar \menuseparator
+Leyenda
+\family default
+.
+ Más detalles sobre leyendas en tablas largas en la sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Leyendas-en-Tablas"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -5441,6 +5516,10 @@ fill}
 \end_inset
 
 
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -5466,66 +5545,23 @@ name "sub:Leyendas-en-Tablas"
 
 \begin_layout Standard
 Una tabla larga no se puede poner flotante porque los flotantes sólo pueden
- estar en una página, aunque el entorno leyendas de flotantes sí puede usarse
+ estar en una página, aunque el entorno leyenda de flotantes sí puede usarse
  para tablas largas.
-\end_layout
-
-\begin_layout Standard
-LyX todavía no soporta totalmente leyendas en tablas largas, de modo que
- hay que crearlos de la sigiente forma:
-\end_layout
-
-\begin_layout Enumerate
-Crea una tabla larga.
-\end_layout
-
-\begin_layout Enumerate
-Marca la primera fila y deshabilita su línea superior.
-\end_layout
-
-\begin_layout Enumerate
-Inserta una leyenda con el menú 
-\family sans
-Insertar\SpecialChar \menuseparator
-Leyenda
-\family default
- en la primera celda.
-\begin_inset Newline newline
+ Por tanto la leyenda se inserta como primera fila de la tabla, como se
+ explica en la sec.
+\begin_inset space \thinspace{}
 \end_inset
 
-También puedes añadir un 
-\family sans
-título breve
-\family default
- para la leyenda .
-\end_layout
 
-\begin_layout Enumerate
-Inserta un «
-\series bold
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Tablas-Largas"
 
-\backslash
+\end_inset
 
-\backslash
-%
-\series default
-» en código TeX detrás de la leyenda.
-\end_layout
-
-\begin_layout Standard
-En la Lista de tablas aparecerá el título breve en vez del título completo.
- El «
-\series bold
-
-\backslash
-
-\backslash
-%
-\series default
-» detrás de la leyenda elimina las líneas verticales entre las siguientes
- celdas de la fila.
- Ahora, la primera fila de la tabla es sólo una fila postiza para la leyenda,
- la tabla real comienza en la segunda fila.
+.
+ En este caso la primera fila de la tabla es sólo una fila postiza para
+ la leyenda, la tabla se inicia realmente en la segunda fila.
 \end_layout
 
 \begin_layout Standard
@@ -5902,7 +5938,7 @@ status open
 \series bold
 Nota:
 \series default
- Si utilizas el paquete LaTeX 
+ Si utilizas 
 \series bold
 hyperref
 \series default
@@ -5916,7 +5952,15 @@ LaTeX-paquetes ! hyperref
 
 \end_inset
 
- para enlazar referencias cruzadas en la salida, los enlaces a tablas largas
+ en las 
+\family sans
+Propiedades PDF 
+\family default
+del diálogo 
+\family sans
+Configuración del documento 
+\family default
+para enlazar referencias cruzadas en la salida, los enlaces a tablas largas
  llevan siempre al principio del documento.
 \end_layout
 
@@ -6254,11 +6298,6 @@ asd
 
 \begin_layout Standard
 Para referenciar una tabla larga, inserta una etiqueta en la leyenda.
- Observa que tienes que añadir el prefijo «
-\emph on
-tab
-\emph default
-:» manualmente en el campo de etiqueta.
  
 \end_layout
 
@@ -7315,7 +7354,7 @@ status open
 
 
 \backslash
-caption*{Continúa Ejemplo de lista telefónica}
+caption*{continúa Ejemplo de lista telefónica}
 \backslash
 
 \backslash
@@ -9451,7 +9490,7 @@ status collapsed
 
 
 \backslash
-caption*{Continúa tabla con salto de página forzado en celda}
+caption*{continúa Tabla con salto de página forzado en celda}
 \backslash
 
 \backslash
@@ -10603,6 +10642,10 @@ Franz
 \end_inset
 
 
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -10825,7 +10868,7 @@ Si hay una palabra larga en una celda con anchura fija, LaTeX no puede cortarla
 
 pt delante de la palabra.
  Como el espacio es 0 la salida no cambia.
- La tabla
+ El cuadro
 \begin_inset space ~
 \end_inset
 
@@ -11146,8 +11189,8 @@ Configuración
 Las multicolumnas tienen su propia configuración de celdas.
  Esto es, los cambios de bordes, alineación y anchura sólo afectan a la
  multicolumna.
- Aquí hay un ejemplo de tabla con una multicolumna en la primera fila y
- otra en la última fila sin borde superior:
+ Aquí hay un ejemplo con una multicolumna en la primera fila y otra en la
+ última fila sin borde superior:
 \end_layout
 
 \begin_layout Standard
@@ -12760,7 +12803,7 @@ reference "cha:Unidades-disponibles-en"
 
 \end_inset
 
-para establecer el grosor.
+ para establecer el grosor.
 \end_layout
 
 \begin_layout Standard
@@ -19586,7 +19629,7 @@ Flotantes ! Referencias
 status collapsed
 
 \begin_layout Plain Layout
-Referencias ! a flotantes
+Referencias
 \end_layout
 
 \end_inset
@@ -19903,22 +19946,6 @@ El paquete LaTeX
 \series bold
 hyperref
 \series default
- dispone de una característica muy útil que permite incluir automáticamente
- en las referencias cruzadas el nombre de los flotantes referidos (o partes
- de texto como secciones).
- Quieres p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space ~
-\end_inset
-
-escribir la palabra «Figura» antes de cada cuadro de referencia.
- Para conseguirlo debes cargar el paquete LaTeX 
-\series bold
-hyperref
-\series default
 
 \begin_inset Index
 status collapsed
@@ -19929,18 +19956,38 @@ LaTeX-paquetes ! hyperref
 
 \end_inset
 
- en el preámbulo del documento con
+, que se habilita en 
+\family sans
+Propiedades PDF
+\family default
+ del diálogo 
+\family sans
+Documento\SpecialChar \menuseparator
+Configuración
+\family default
+, dispone de una característica muy útil que permite incluir automáticamente
+ en las referencias cruzadas el nombre de los flotantes referidos (o partes
+ de texto como 
+\emph on
+sección
+\emph default
+).
+ Así, p.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., no tendrás que escribir la palabra «Figura» delante de cada referencia
+ a una figura.
+ Para usar esta característica habilita el soporte para 
+\series bold
+hyperref
+\series default
+ e inserta la siguiente línea en el preámbulo LaTeX:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-
-\backslash
-usepackage[pdfborder={0 0 0}]{hyperref}
-\begin_inset Newline newline
-\end_inset
-
 
 \backslash
 AtBeginDocument{
@@ -19955,34 +20002,138 @@ autoref{#1}}}}
 \end_layout
 
 \begin_layout Standard
+Si prefieres otros nombres para las referencias distintos de los predeterminados
+, por ejemplo «sec.» en lugar de «sección», puedes redefinir el nombre insertando
+ lo siguiente en el preámbulo:
+\end_layout
+
+\begin_layout Standard
 
 \series bold
-hyperref
-\series default
- se utiliza para enlazar referencias cruzadas en las salidas DVI y PDF,
- esto significa que el lector del documento podrá pinchar sobre una entrada
- de Índice o una referencia y será inmediatamente dirigido a esa parte del
- documento.
+
+\backslash
+addto
+\backslash
+extrasenglish{
+\backslash
+renewcommand{
+\backslash
+sectionautorefname}
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{ }
+\end_layout
+
+\end_inset
+
+{sec.
+\backslash
+negthinspace}}
+\end_layout
+
+\begin_layout Standard
+Si estás usando un idioma de documento distinto del inglés, reemplaza
+\begin_inset Newline newline
+\end_inset
+
  
 \series bold
-hyperref
+
+\backslash
+extrasenglish
 \series default
- también crea marcadores PDF para cada sección para facilitar al lector
- la navegación por el documento.
- Esto también se ha usado en este documento pero si echas una ojeada al
- preámbulo encontrarás varias opciones en la carga de 
+ por
+\series bold
+ 
+\backslash
+extras***
+\series default
+, donde *** es el nombre del idioma utilizado.
+\end_layout
+
+\begin_layout Standard
+Para obtener nombres automáticos pero no para determinados tipos de referencias,
+ por ejemplo no para ecuaciones, usa este código de preámbulo:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newlength{
+\backslash
+abc}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+settowidth{
+\backslash
+abc}{
+\backslash
+space}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+addto
+\backslash
+extrasenglish{
+\backslash
+renewcommand{
+\backslash
+equationautorefname}
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{ }
+\end_layout
+
+\end_inset
+
+{
+\backslash
+hspace{-
+\backslash
+abc}}
+\end_layout
+
+\begin_layout Standard
+En la documentación de 
 \series bold
 hyperref
 \series default
-.
- Para aprender más sobre ello acude a la documentación del paquete 
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
 
 \end_inset
 
-.
+ puedes encontrar más información.
+
+\series bold
+ 
 \end_layout
 
 \begin_layout Standard
@@ -20025,6 +20176,15 @@ reference "sub:Formatos-referencia-cruzada"
 
 \end_layout
 
+\begin_layout Standard
+El manual 
+\emph on
+Ecuaciones
+\emph default
+ es un ejemplo de documento en el que se ha utilizado designación automática
+ de referencias.
+\end_layout
+
 \begin_layout Subsection
 Colocación de referencias
 \begin_inset CommandInset label
@@ -20061,7 +20221,16 @@ LaTeX-paquetes ! hyperref
 
 \end_inset
 
- para enlazar referencias cruzadas en la salida, verás que al pinchar sobre
+, en las 
+\family sans
+Preferencias PDF 
+\family default
+del diálogo 
+\family sans
+Documento\SpecialChar \menuseparator
+Configuración
+\family default
+, para enlazar referencias cruzadas en la salida, verás que al pinchar sobre
  la referencia de una imagen flotante te lleva hasta la etiqueta de la imagen.
  La leyenda será la primera parte del texto en pantalla, de forma que para
  ver la imagen debes deslizar.
@@ -20137,32 +20306,13 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Nota: hypcap
-\series default
- debe cargarse después de 
-\series bold
-hyperref
-\series default
- en el preámbulo
-\series bold
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
 Nota:
 \series default
- La colocación de referencias no afecta a las referencias a subfiguras.
+ 
+\series bold
+hypcap
+\series default
+ no funciona para las referencias a subfiguras.
 \end_layout
 
 \end_inset
@@ -20968,7 +21118,7 @@ un
  solo flotante.
  En él se insertan dos cuadros tipo minipágina.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Las minipáginas se explican en la sección
@@ -22912,7 +23062,7 @@ name "sec:Notas-en-LyX"
 status collapsed
 
 \begin_layout Plain Layout
-Notas ! Notas en LyX
+Notas ! en LyX
 \end_layout
 
 \end_inset
@@ -22955,7 +23105,7 @@ LyX Este tipo es para notas internas que no han de aparecer en la salida.
 \begin_inset Graphics
 	filename clipart/NotaLyXImagenQt4.png
 	display false
-	scale 85
+	scale 75
 
 \end_inset
 
@@ -22993,7 +23143,7 @@ LaTeX (pdflatex) / (plain)
 \begin_inset Graphics
 	filename clipart/ComentNotaImagenQt4.png
 	display false
-	scale 85
+	scale 75
 
 \end_inset
 
@@ -23032,7 +23182,7 @@ gris Esta nota aparece en la salida como texto resaltado en gris.
 \begin_inset Graphics
 	filename clipart/GrisNotaImagenQt4.png
 	display false
-	scale 85
+	scale 75
 
 \end_inset
 
@@ -23621,9 +23771,9 @@ Notas al pie ! Numeración
 \end_layout
 
 \begin_layout Standard
-Para reiniciar el número de pie a 1 en cada sección añade este 
+Para reiniciar el número de pie a 1 en cada sección añade
 \family roman
-comando en el preámbulo:
+ en el preámbulo el comando:
 \end_layout
 
 \begin_layout Standard
@@ -23988,19 +24138,15 @@ Notas al pie ! Colocación
 \begin_layout Standard
 Si tienes varias notas al pie de una página, se muestran sin espacio vertical
  entre ellas al final de la página.
- Para hacerlas más legibles puedes añadir p.
+ Para hacerlas más legibles puedes añadir 1.5
 \begin_inset space \thinspace{}
 \end_inset
 
-e.
-\begin_inset space ~
-\end_inset
-
-1.5
+mm, p.
 \begin_inset space \thinspace{}
 \end_inset
 
-mm con el comando siguiente en el preámbulo:
+e., con el comando siguiente en el preámbulo:
 \end_layout
 
 \begin_layout Standard
@@ -24231,17 +24377,17 @@ reference "fig:Notas-al-pie-al-final"
 \end_inset
 
 .
- Para usar notas finales
+ Para reunir las notas al final
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Notas finales
+Notas ! al final
 \end_layout
 
 \end_inset
 
- en vez de notas al pie, carga el paquete LaTeX 
+ en vez de al pie, carga el paquete LaTeX 
 \series bold
 endnotes
 \series default
@@ -24255,7 +24401,7 @@ LaTeX-paquetes ! endnotes
 
 \end_inset
 
- con las siguientes líneas en el preámbulo de tu documento:
+ con las siguientes líneas en el preámbulo:
 \end_layout
 
 \begin_layout Standard
@@ -24541,8 +24687,7 @@ margen
  Aparece un cuadro gris con la etiqueta 
 \family roman
 \series medium
-«margen» en color rojo y un marco en el que puedes escribir el texto de
- la nota.
+«margen» en rojo y un marco en el que puedes escribir el texto de la nota.
 \end_layout
 
 \begin_layout Standard
@@ -27444,13 +27589,6 @@ horizontal
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -28129,9 +28267,9 @@ de
 
 \family default
 línea (atajo 
-\series bold
+\family sans
 Ctrl-Retorno
-\series default
+\family default
 ), un salto de línea antes de la palabra:
 \end_layout
 
@@ -30356,6 +30494,29 @@ target "http://en.wikipedia.org/wiki/LilyPond"
 \end_layout
 
 \begin_layout Description
+PDFPages Con esta plantilla puedes insertar documentos PDF en tu documento.
+ Para insertar algunas o todas las páginas de un documento PDF, utiliza
+ la opción 
+\emph on
+pages
+\emph default
+ en el campo 
+\family sans
+Opción
+\family default
+ de la pestaña 
+\family sans
+Opciones de LaTeX y LyX
+\family default
+, según la descripción de la plantilla en el diálogo.
+ Si no se usa la opción 
+\emph on
+pages
+\emph default
+, sólo se inserta la primera página del PDF.
+\end_layout
+
+\begin_layout Description
 RasterImage Sirve para insertar imágenes bitmap.
  Casi todos los formatos populares de imágenes están soportados.
  Las imágenes se pueden tratar en el diálogo 
@@ -30437,7 +30598,7 @@ Comparación de los métodos de inserción de fecha.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Tipo del Documento
+Documento
 \end_layout
 
 \end_inset
@@ -30448,7 +30609,7 @@ Tipo del Documento
 \begin_layout Plain Layout
 
 \family sans
-Material Externo\SpecialChar \menuseparator
+Material externo\SpecialChar \menuseparator
 Fecha
 \end_layout
 
@@ -30512,7 +30673,7 @@ como fecha
 \begin_inset Text
 
 \begin_layout Plain Layout
-como cuadro en código TeX
+como cuadro código TeX
 \end_layout
 
 \end_inset
@@ -30638,17 +30799,17 @@ El material externo se muestra en LyX como un cuadro del tipo:
 
 \end_inset
 
- o como imagen, según la configuración elegida en la solapa 
+ o como imagen, dependiendo de si se marca la opción 
 \family sans
-Vista
-\begin_inset space ~
-\end_inset
-
-LyX 
+Mostrar en LyX 
 \family default
-del diálogo 
+de la pestaña 
 \family sans
-Material Externo.
+Opciones de LaTeX y LyX
+\family default
+ del diálogo
+\family sans
+.
 \end_layout
 
 \begin_layout Standard
@@ -31077,7 +31238,7 @@ Listado de programa
 status collapsed
 
 \begin_layout Plain Layout
-Codigo@Código de programa
+Código de programa
 \end_layout
 
 \end_inset

@@ -1,4 +1,4 @@
-#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -4682,13 +4682,13 @@ no
 Normal
 \family default
 , se mantiene el entorno actual y se genera un nuevo ítem.
- La profundidad de anidación no se mantiene.
- Para mantener el entorno de párrafo pero reiniciar el ni vel actual de
- anidación debes pulsar 
+ La profundidad de anidación se mantiene.
+ Para crear un nuevo ítem pero con un nivel menor de profundidad de anidación
+ debes pulsar 
 \family sans
-M-Entorno
+M-Retorno
 \family default
- para saltar párrafo.
+.
 \end_layout
 
 \begin_layout Standard
@@ -4721,7 +4721,7 @@ Enumeración
 status collapsed
 
 \begin_layout Plain Layout
-Listas ! No numeradas
+Listas ! Enumeración*
 \end_layout
 
 \end_inset
@@ -10773,8 +10773,8 @@ cm
 \family typewriter
 ec
 \family default
- son fuentes en mapa de bits, se muestran a menudo pixeladas en la salida
- PDF, sobre todo cuando la lees con zoom aumentado.
+ son fuentes en mapa de bits, a menudo se ven pixeladas en la salida PDF,
+ sobre todo si se lee con ampliación.
 \begin_inset Foot
 status collapsed
 
@@ -10978,10 +10978,8 @@ serif
 Times Roman
 \family default
  para tipos romanos,
-\family sans
- 
 \family typewriter
-Helvetica
+ Helvetica
 \family default
  escalada a 92
 \begin_inset space \thinspace{}
@@ -11053,7 +11051,7 @@ Times Roman
 \end_layout
 
 \begin_layout Itemize
-La mejor solución es utilizar la fuente 
+La mejor solución es utilizar fuentes 
 \family typewriter
 Latin Modern
 \family default
@@ -11062,12 +11060,43 @@ Latin Modern
 lm
 \family default
 ).
- Esta fuente ha sido desarrollada por la comunidad LaTeX para reemplazar
+ Estas fuentes han sido desarrolladas por la comunidad LaTeX para reemplazar
  a 
 \family typewriter
 cm
 \family default
- como fuente predeterminada.
+ como fuentes predeterminadas.
+ En la mayoría de los casos tienen un aspecto semejante a  
+\family typewriter
+cm
+\family default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Una diferencia es un espaciado mejorado para las fuentes 
+\family typewriter
+lm
+\family default
+.
+\end_layout
+
+\end_inset
+
+, pero 
+\family typewriter
+lm
+\family default
+ cubre un enorme número de caracteres en comparación con las familias 
+\family typewriter
+cm
+\family default
+ y 
+\family typewriter
+ec
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -15965,6 +15994,19 @@ borrador
 \family default
  hace que la imagen no aparezca en la salida, sólo sale un marco con el
  tamaño de la imagen.
+ La opción 
+\family sans
+No descomprimir al exportar
+\family default
+ se esplica en la sección 
+\emph on
+Diálogo de gráficos
+\emph default
+ del manual 
+\emph on
+Objetos incrustados
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -16012,7 +16054,7 @@ Formatos de imagen
 status collapsed
 
 \begin_layout Plain Layout
-Imágenes ! Formatos
+Formatos de imagen
 \end_layout
 
 \end_inset
@@ -16440,6 +16482,44 @@ En el caso de PDF, además se comprime la imagen original.
 \begin_layout Standard
 Normalmente no es posible convertir una imagen bitmap a escalable, sólo
  viceversa.
+\end_layout
+
+\begin_layout Subsection
+Agrupación de la configuración de imágenes
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Imágenes ! Agrupación de configuraciones
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Con cada imagen se puede definir un nuevo grupo de configuración de imágenes
+ o unir un grupo existente.
+ Las imágenes dentro de un grupo comparten su configuración, de modo que
+ si se modifican las características de una imagen se modifican igual y
+ automáticamente las de las imágenes incluidas en el mismo grupo.
+ Así puedes cambiar, por ejemplo, el tamaño de un grupo de imágenes sin
+ necesidad de hacerlo individualmente con cada una de ellas.
+\end_layout
+
+\begin_layout Standard
+Para crear un nuevo grupo se le adjudica un nombre en el campo 
+\family sans
+Iniciar nombre de grupo
+\family default
+ en la pestaña 
+\family sans
+Opciones de LaTeX y LyX 
+\family default
+del diálogo de gráficos.
+ Se puede unir un grupo existente marcando el nombre del grupo deseado en
+ el menú contextual de la imagen.
 \end_layout
 
 \begin_layout Section
@@ -17135,6 +17215,21 @@ pie: L
 \family default
 a fila actual y siguientes, que no tienen ninguna opción especial definida,
  se definen como pie de la última página de la tabla.
+\end_layout
+
+\begin_layout Description
+Leyenda: La primera fila se reajusta como columna simple.
+ Ahora puedes insertar ahí la leyenda de la tabla con el menú 
+\family sans
+Insertar\SpecialChar \menuseparator
+Leyenda
+\family default
+.
+ Más detalles sobre leyendas en tablas largas en el manual 
+\emph on
+Objetos incrustados
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -28413,6 +28508,137 @@ reference "sec:Definición de macros"
 \end_layout
 
 \begin_layout Section
+Propiedades PDF
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Propiedades PDF
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En 
+\family sans
+Propiedades PDF 
+\family default
+del diálogo 
+\family sans
+Documento\SpecialChar \menuseparator
+Configuración
+\family default
+ se pueden configurar opciones especiales para la salida PDF del documento.
+ Todas las opciones son suministradas por el paquete LaTeX 
+\series bold
+hyperref
+\series default
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+LaTeX, paquetes ! hyperref
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Utilizando 
+\series bold
+hyperref
+\series default
+ se enlazan todas las referencias cruzadas en las salidas DVI y PDF.
+ Esto significa que el lector puede desplazarse por las partes del documento
+ referenciadas clicando sobre una entrada del índice general o una referencia.
+ En la pestaña 
+\family sans
+Hiperenlaces
+\family default
+ del diálogo puedes especificar el aspecto de los enlaces y si se crean
+ enlaces para las referencias bibliográficas.
+ Estas aparecerán en la bibilografía detrás de las diferentes entradas,
+ mostrando el lugar del documento en que está referenciada la entrada.
+ 
+\end_layout
+
+\begin_layout Standard
+En la pestaña 
+\family sans
+Marcadores
+\family default
+ puedes determinar si se crean marcadores para cada sección del documento
+ para facilitar al lector la navegación por el mismo.
+ Puedes decidir si los marcadores se numeran o no como las secciones del
+ documento.
+ Con el nivel de marcadores abiertos puedes determinar qué niveles de sección
+ deben mostrarse al abrir el PDF.
+ Por ejemplo, un nivel
+\begin_inset space ~
+\end_inset
+
+2 mostrará las secciones y subsecciones, un nivel
+\begin_inset space ~
+\end_inset
+
+1 mostrará sólo las secciones.
+\end_layout
+
+\begin_layout Standard
+La información de cabecera de la pestaña 
+\family sans
+General
+\family default
+ se guarda como propiedades del arhivo junto con el PDF.
+ Muchos programas son capaces de extraer estas informaciones para, p.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., reconocer automáticamente quién es el autor y otras características del
+ PDF.
+ Esto es muy útil para ordenar, clasificar o usar PDFs para propósitos bibliográ
+ficos.
+ Si se marca la opción 
+\family sans
+Llenar automáticamente la cabecera
+\family default
+, LyX intenta extraer la información de cabecera a partir de la configuración
+ del título y del autor del documento.
+\end_layout
+
+\begin_layout Standard
+La opción 
+\family sans
+Modo pantalla completa
+\family default
+ abre el PDF en pantalla completa, útil para presentaciones.
+\end_layout
+
+\begin_layout Standard
+En este documento se han utilizado las propiedades PDF.
+ Si miras la configuración del documento puedes ver algunas opciones adicionales
+ de 
+\series bold
+hyperref
+\series default
+ utilizadas.
+ Para explicación de las mismas te remitimos al manual de hyperref 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hyperref"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
 Código TeX y la sintaxis de LaTeX
 \begin_inset CommandInset label
 LatexCommand label
@@ -36781,10 +37007,6 @@ Esta opción permite definir marcadores personales.
  Esto es útil cuando trabajas en un documento extenso y debes cambiar a
  menudo de una parte a otra del mismo.
  Por ejemplo, si tienes que cambiar con frecuencia de la sección
-\begin_inset space ~
-\end_inset
-
-
 \begin_inset Formula $\,$
 \end_inset
 
