@@ -1249,10 +1249,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			// otherwise, single click does not clear persistent selection
 			// buffer.
 			if (cur.selection()) {
-				// Finish selection.
-				// If double click, cur is moved to the end of word by selectWord
-				// but bvcur is current mouse position.
-				cur.bv().cursor().selection() = true;
+				// Finish selection. If double click,
+				// cur is moved to the end of word by
+				// selectWord but bvcur is current
+				// mouse position.
+				cur.bv().cursor().setSelection();
 			}
 			// FIXME: We could try to handle drag and drop of selection here.
 			cur.noUpdate();
