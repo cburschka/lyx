@@ -468,7 +468,7 @@ bool Cursor::posVisRight(bool skip_inset)
 	new_cur.pos() = right_pos;
 	new_cur.boundary(false);
 	if (!skip_inset &&
-		text()->checkAndActivateInsetVisual(new_cur, right_pos>=pos(), false)) {
+		text()->checkAndActivateInsetVisual(new_cur, right_pos >= pos(), false)) {
 		// we actually move the cursor at the end of this function, for now
 		// we just keep track of the new position in new_cur...
 		LYXERR(Debug::RTL, "entering inset at: " << new_cur.pos());
