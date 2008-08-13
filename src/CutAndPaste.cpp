@@ -387,7 +387,7 @@ void putClipboard(ParagraphList const & paragraphs,
 }
 
 
-void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
+void copySelectionHelper(Buffer const & buf, ParagraphList const & pars,
 	pit_type startpit, pit_type endpit,
 	int start, int end, DocumentClass const * const dc, CutStack & cutstack)
 {
@@ -675,7 +675,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 }
 
 
-void copySelection(Cursor & cur)
+void copySelection(Cursor const & cur)
 {
 	copySelection(cur, cur.selectionAsString(true));
 }
@@ -683,7 +683,7 @@ void copySelection(Cursor & cur)
 
 namespace {
 
-void copySelectionToStack(Cursor & cur, CutStack & cutstack)
+void copySelectionToStack(Cursor const & cur, CutStack & cutstack)
 {
 	// this doesn't make sense, if there is no selection
 	if (!cur.selection())
@@ -737,7 +737,7 @@ void copySelectionToStack()
 }
 
 
-void copySelection(Cursor & cur, docstring const & plaintext)
+void copySelection(Cursor const & cur, docstring const & plaintext)
 {
 	// In tablemode, because copy and paste actually use special table stack
 	// we do not attempt to get selected paragraphs under cursor. Instead, a
@@ -760,7 +760,7 @@ void copySelection(Cursor & cur, docstring const & plaintext)
 }
 
 
-void saveSelection(Cursor & cur)
+void saveSelection(Cursor const & cur)
 {
 	// This function is called, not when a selection is formed, but when
 	// a selection is cleared. Therefore, multiple keyboard selection

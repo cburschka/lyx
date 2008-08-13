@@ -63,17 +63,17 @@ void replaceSelection(Cursor & cur);
  */
 void cutSelection(Cursor & cur, bool doclear = true, bool realcut = true);
 /// Push the current selection to the cut buffer and the system clipboard.
-void copySelection(Cursor & cur);
+void copySelection(Cursor const & cur);
 /**
  * Push the current selection to the cut buffer and the system clipboard.
  * \param plaintext plain text version of the selection for the system
  *        clipboard
  */
-void copySelection(Cursor & cur, docstring const & plaintext);
+void copySelection(Cursor const & cur, docstring const & plaintext);
 /// Push the selection buffer to the cut buffer.
 void copySelectionToStack();
 /// Store the current selection in the internal selection buffer
-void saveSelection(Cursor & cur);
+void saveSelection(Cursor const & cur);
 /// Is a selection available in our selection buffer?
 bool selection();
 /// Clear our selection buffer

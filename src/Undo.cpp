@@ -181,7 +181,7 @@ struct Undo::Private
 
 	///
 	void recordUndo(UndoKind kind,
-		DocIterator & cur,
+		DocIterator const & cur,
 		pit_type first_pit,
 		pit_type last_pit);
 
@@ -297,7 +297,7 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 }
 
 
-void Undo::Private::recordUndo(UndoKind kind, DocIterator & cur,
+void Undo::Private::recordUndo(UndoKind kind, DocIterator const & cur,
 	pit_type first_pit, pit_type last_pit)
 {
 	LASSERT(first_pit <= cur.lastpit(), /**/);
@@ -419,13 +419,13 @@ bool Undo::textRedo(DocIterator & cur)
 }
 
 
-void Undo::recordUndo(DocIterator & cur, UndoKind kind)
+void Undo::recordUndo(DocIterator const & cur, UndoKind kind)
 {
 	d->recordUndo(kind, cur, cur.pit(), cur.pit());
 }
 
 
-void Undo::recordUndoInset(DocIterator & cur, UndoKind kind)
+void Undo::recordUndoInset(DocIterator const & cur, UndoKind kind)
 {
 	DocIterator c = cur;
 	c.pop_back();
@@ -433,20 +433,20 @@ void Undo::recordUndoInset(DocIterator & cur, UndoKind kind)
 }
 
 
-void Undo::recordUndo(DocIterator & cur, UndoKind kind, pit_type from)
+void Undo::recordUndo(DocIterator const & cur, UndoKind kind, pit_type from)
 {
 	d->recordUndo(kind, cur, cur.pit(), from);
 }
 
 
-void Undo::recordUndo(DocIterator & cur, UndoKind kind,
+void Undo::recordUndo(DocIterator const & cur, UndoKind kind,
 	pit_type from, pit_type to)
 {
 	d->recordUndo(kind, cur, from, to);
 }
 
 
-void Undo::recordUndoFullDocument(DocIterator & cur)
+void Undo::recordUndoFullDocument(DocIterator const & cur)
 {
 	d->doRecordUndo(
 		ATOMIC_UNDO,

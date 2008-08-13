@@ -1903,7 +1903,7 @@ docstring Cursor::selectionAsString(bool with_label) const
 }
 
 
-docstring Cursor::currentState()
+docstring Cursor::currentState() const
 {
 	if (inMathed()) {
 		odocstringstream os;
@@ -1918,7 +1918,7 @@ docstring Cursor::currentState()
 }
 
 
-docstring Cursor::getPossibleLabel()
+docstring Cursor::getPossibleLabel() const
 {
 	return inMathed() ? from_ascii("eq:") : text()->getPossibleLabel(*this);
 }
@@ -2112,43 +2112,43 @@ bool Cursor::textRedo()
 }
 
 
-void Cursor::finishUndo()
+void Cursor::finishUndo() const
 {
 	bv_->buffer().undo().finishUndo();
 }
 
 
-void Cursor::recordUndo(UndoKind kind, pit_type from, pit_type to)
+void Cursor::recordUndo(UndoKind kind, pit_type from, pit_type to) const
 {
 	bv_->buffer().undo().recordUndo(*this, kind, from, to);
 }
 
 
-void Cursor::recordUndo(UndoKind kind, pit_type from)
+void Cursor::recordUndo(UndoKind kind, pit_type from) const
 {
 	bv_->buffer().undo().recordUndo(*this, kind, from);
 }
 
 
-void Cursor::recordUndo(UndoKind kind)
+void Cursor::recordUndo(UndoKind kind) const
 {
 	bv_->buffer().undo().recordUndo(*this, kind);
 }
 
 
-void Cursor::recordUndoInset(UndoKind kind)
+void Cursor::recordUndoInset(UndoKind kind) const
 {
 	bv_->buffer().undo().recordUndoInset(*this, kind);
 }
 
 
-void Cursor::recordUndoFullDocument()
+void Cursor::recordUndoFullDocument() const
 {
 	bv_->buffer().undo().recordUndoFullDocument(*this);
 }
 
 
-void Cursor::recordUndoSelection()
+void Cursor::recordUndoSelection() const
 {
 	if (inMathed()) {
 		if (cap::multipleCellsSelected(*this))

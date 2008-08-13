@@ -80,20 +80,20 @@ public:
 	bool hasRedoStack() const;
 
 	/// The general case: prepare undo for an arbitrary range.
-	void recordUndo(DocIterator & cur, UndoKind kind,
+	void recordUndo(DocIterator const & cur, UndoKind kind,
 		pit_type from, pit_type to);
 
 	/// Convenience: prepare undo for the range between 'from' and cursor.
-	void recordUndo(DocIterator & cur, UndoKind kind, pit_type from);
+	void recordUndo(DocIterator const & cur, UndoKind kind, pit_type from);
 
 	/// Convenience: prepare undo for the single paragraph or cell
 	/// containing the cursor
-	void recordUndo(DocIterator & cur, UndoKind kind = ATOMIC_UNDO);
+	void recordUndo(DocIterator const & cur, UndoKind kind = ATOMIC_UNDO);
 	/// Convenience: prepare undo for the inset containing the cursor
-	void recordUndoInset(DocIterator & cur, UndoKind kind = ATOMIC_UNDO);
+	void recordUndoInset(DocIterator const & cur, UndoKind kind = ATOMIC_UNDO);
 
 	/// Convenience: prepare undo for the whole buffer
-	void recordUndoFullDocument(DocIterator & cur);
+	void recordUndoFullDocument(DocIterator const & cur);
 
 private:
 	struct Private;

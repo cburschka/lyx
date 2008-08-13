@@ -100,7 +100,7 @@ public:
 	///
 	docstring selectionAsString(bool label) const;
 	///
-	docstring currentState();
+	docstring currentState() const;
 
 	/// auto-correct mode
 	bool autocorrect() const { return autocorrect_; }
@@ -240,26 +240,26 @@ public:
 	bool textRedo();
 
 	/// makes sure the next operation will be stored
-	void finishUndo();
+	void finishUndo() const;
 
 	/// The general case: prepare undo for an arbitrary range.
-	void recordUndo(UndoKind kind, pit_type from, pit_type to);
+	void recordUndo(UndoKind kind, pit_type from, pit_type to) const;
 
 	/// Convenience: prepare undo for the range between 'from' and cursor.
-	void recordUndo(UndoKind kind, pit_type from);
+	void recordUndo(UndoKind kind, pit_type from) const;
 
 	/// Convenience: prepare undo for the single paragraph or cell
 	/// containing the cursor
-	void recordUndo(UndoKind kind = ATOMIC_UNDO);
+	void recordUndo(UndoKind kind = ATOMIC_UNDO) const;
 
 	/// Convenience: prepare undo for the inset containing the cursor
-	void recordUndoInset(UndoKind kind = ATOMIC_UNDO);
+	void recordUndoInset(UndoKind kind = ATOMIC_UNDO) const;
 
 	/// Convenience: prepare undo for the whole buffer
-	void recordUndoFullDocument();
+	void recordUndoFullDocument() const;
 
 	/// Convenience: prepare undo for the selected paragraphs or cells
-	void recordUndoSelection();
+	void recordUndoSelection() const;
 
 	///
 	void checkBufferStructure();
@@ -400,7 +400,7 @@ public:
 	/// display an error message
 	void errorMessage(docstring const & msg) const;
 	///
-	docstring getPossibleLabel();
+	docstring getPossibleLabel() const;
 
 	/// the name of the macro we are currently inputting
 	docstring macroName();

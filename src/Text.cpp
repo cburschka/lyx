@@ -1332,7 +1332,7 @@ bool Text::read(Buffer const & buf, Lexer & lex,
 }
 
 // Returns the current font and depth as a message.
-docstring Text::currentState(Cursor & cur)
+docstring Text::currentState(Cursor const & cur) const
 {
 	LASSERT(this == cur.text(), /**/);
 	Buffer & buf = cur.buffer();
@@ -1411,7 +1411,7 @@ docstring Text::currentState(Cursor & cur)
 }
 
 
-docstring Text::getPossibleLabel(Cursor & cur) const
+docstring Text::getPossibleLabel(Cursor const & cur) const
 {
 	pit_type pit = cur.pit();
 
