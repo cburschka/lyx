@@ -968,7 +968,9 @@ void Cursor::setSelection()
 	selection() = true;
 	// A selection with no contents is not a selection
 	// FIXME: doesnt look ok
-	if (pit() == anchor().pit() && pos() == anchor().pos())
+	if (idx() == anchor().idx() && 
+	    pit() == anchor().pit() && 
+	    pos() == anchor().pos())
 		selection() = false;
 }
 
