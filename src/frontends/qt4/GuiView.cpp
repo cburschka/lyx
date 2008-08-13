@@ -57,6 +57,7 @@
 
 #include "support/lassert.h"
 #include "support/debug.h"
+#include "support/ExceptionMessage.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
@@ -2219,11 +2220,17 @@ void GuiView::showDialog(string const & name, string const & data,
 		return;
 
 	d.in_show_ = true;
-	Dialog * dialog = findOrBuild(name, false);
-	if (dialog) {
-		dialog->showData(data);
-		if (inset)
-			d.open_insets_[name] = inset;
+	try {
+		Dialog * dialog = findOrBuild(name, false);
+		if (dialog) {
+			dialog->showData(data);
+			if (inset)
+				d.open_insets_[name] = inset;
+		}
+	}
+	catch (ExceptionMessage const & ex) {
+		d.in_show_ = false;
+		throw ex;
 	}
 	d.in_show_ = false;
 }
