@@ -49,6 +49,15 @@ protected:
 		Dialog::disconnect();
 		ev->accept();
 	}
+	/// Any dialog that overrides this method should make sure to call it.
+	void hideEvent(QHideEvent * ev)
+	{
+		if (!ev->spontaneous()) {
+			clearParams();
+			Dialog::disconnect();
+			ev->accept();
+		}
+	}
 };
 
 } // namespace frontend

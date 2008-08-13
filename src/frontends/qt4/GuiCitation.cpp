@@ -105,8 +105,6 @@ GuiCitation::GuiCitation(GuiView & lv)
 	connect(textAfterED, SIGNAL(returnPressed()),
 		this, SLOT(on_okPB_clicked()));
 
-	connect(this, SIGNAL(rejected()), this, SLOT(cleanUp()));
-
 	selectionManager = new GuiSelectionManager(availableLV, selectedLV, 
 			addPB, deletePB, upPB, downPB, &available_model_, &selected_model_);
 	connect(selectionManager, SIGNAL(selectionChanged()),
@@ -124,13 +122,6 @@ GuiCitation::GuiCitation(GuiView & lv)
 GuiCitation::~GuiCitation()
 {
 	delete selectionManager;
-}
-
-
-void GuiCitation::cleanUp() 
-{
-	clearParams();
-	close();
 }
 
 
