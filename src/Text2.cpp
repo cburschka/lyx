@@ -74,6 +74,7 @@ bool Text::isMainText(Buffer const & buffer) const
 }
 
 
+// Note that this is supposed to return a fully realized font.
 FontInfo Text::layoutFont(Buffer const & buffer, pit_type const pit) const
 {
 	Layout const & layout = pars_[pit].layout();
@@ -84,9 +85,11 @@ FontInfo Text::layoutFont(Buffer const & buffer, pit_type const pit) const
 		if (layout.font.family() == INHERIT_FAMILY)
 			lf.setFamily(buffer.params().getFont().fontInfo().family());
 		InsetCollapsable const * icp = pars_[pit].inInset()->asInsetCollapsable();
-		if (icp)
-			lf.update(icp->getLayout().font(), false);
-		return lf;
+		if (!icp)
+			return lf;
+		FontInfo icf = icp->getLayout().font();
+		icf.realize(lf);
+		return icf;
 	}
 
 	FontInfo font = layout.font;
@@ -98,6 +101,7 @@ FontInfo Text::layoutFont(Buffer const & buffer, pit_type const pit) const
 }
 
 
+// Note that this is supposed to return a fully realized font.
 FontInfo Text::labelFont(Buffer const & buffer, Paragraph const & par) const
 {
 	Layout const & layout = par.layout();
@@ -108,9 +112,11 @@ FontInfo Text::labelFont(Buffer const & buffer, Paragraph const & par) const
 		if (layout.labelfont.family() == INHERIT_FAMILY)
 			lf.setFamily(buffer.params().getFont().fontInfo().family());
 		InsetCollapsable const * icp = par.inInset()->asInsetCollapsable();
-		if (icp)
-			lf.update(icp->getLayout().labelfont(), false);
-		return lf;
+		if (!icp)
+			return lf;
+		FontInfo icf = icp->getLayout().labelfont();
+		icf.realize(lf);
+		return icf;
 	}
 
 	FontInfo font = layout.labelfont;
