@@ -606,31 +606,28 @@ void BufferView::setCursorFromScrollbar()
 	int const height = 2 * defaultRowHeight();
 	int const first = height;
 	int const last = height_ - height;
-	Cursor & cur = d->cursor_;
+	int newy = 0;
+	Cursor const & oldcur = d->cursor_;
 
-	switch (cursorStatus(cur)) {
+	switch (cursorStatus(oldcur)) {
 	case CUR_ABOVE:
-		// We reset the cursor because cursorStatus() does not
-		// work when the cursor is within mathed.
-		cur.reset(buffer_.inset());
-		tm.setCursorFromCoordinates(cur, 0, first);
-		cur.clearSelection();
+		newy = first;
 		break;
 	case CUR_BELOW:
-		// We reset the cursor because cursorStatus() does not
-		// work when the cursor is within mathed.
-		cur.reset(buffer_.inset());
-		tm.setCursorFromCoordinates(cur, 0, last);
-		cur.clearSelection();
+		newy = last;
 		break;
 	case CUR_INSIDE:
-		int const y = getPos(cur, cur.boundary()).y_;
-		int const newy = min(last, max(y, first));
-		if (y != newy) {
-			cur.reset(buffer_.inset());
-			tm.setCursorFromCoordinates(cur, 0, newy);
-		}
+		int const y = getPos(oldcur, oldcur.boundary()).y_;
+		newy = min(last, max(y, first));
+		if (y == newy) 
+			return;
 	}
+	// We reset the cursor because cursorStatus() does not
+	// work when the cursor is within mathed.
+	Cursor cur(*this);
+	cur.reset(buffer_.inset());
+	tm.setCursorFromCoordinates(cur, 0, newy);
+	mouseSetCursor(cur);
 }
 
 
