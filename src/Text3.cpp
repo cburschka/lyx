@@ -1160,6 +1160,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		case mouse_button::button2:
 			// Middle mouse pasting.
+			bv->mouseSetCursor(cur);
 			if (!cap::selection()) {			
 				// There is no local selection in the current buffer, so try to
 				// paste primary selection instead.
