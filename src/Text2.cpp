@@ -46,6 +46,8 @@
 #include "TextMetrics.h"
 #include "VSpace.h"
 
+#include "insets/InsetCollapsable.h"
+
 #include "mathed/InsetMathHull.h"
 
 #include "support/lassert.h"
@@ -81,6 +83,9 @@ FontInfo Text::layoutFont(Buffer const & buffer, pit_type const pit) const
 		// In case the default family has been customized
 		if (layout.font.family() == INHERIT_FAMILY)
 			lf.setFamily(buffer.params().getFont().fontInfo().family());
+		InsetCollapsable const * icp = pars_[pit].inInset()->asInsetCollapsable();
+		if (icp)
+			lf.update(icp->getLayout().font(), false);
 		return lf;
 	}
 
@@ -102,6 +107,9 @@ FontInfo Text::labelFont(Buffer const & buffer, Paragraph const & par) const
 		// In case the default family has been customized
 		if (layout.labelfont.family() == INHERIT_FAMILY)
 			lf.setFamily(buffer.params().getFont().fontInfo().family());
+		InsetCollapsable const * icp = par.inInset()->asInsetCollapsable();
+		if (icp)
+			lf.update(icp->getLayout().labelfont(), false);
 		return lf;
 	}
 
