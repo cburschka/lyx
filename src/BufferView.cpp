@@ -533,6 +533,10 @@ docstring BufferView::toolTip(int x, int y) const
 
 docstring BufferView::contextMenu(int x, int y) const
 {
+	//If there is a selection, return the containing inset menu
+	if (d->cursor_.selection())
+		return d->cursor_.inset().contextMenu(*this, x, y);
+
 	// Get inset under mouse, if there is one.
 	Inset const * covering_inset = getCoveringInset(buffer_.text(), x, y);
 	if (covering_inset)
