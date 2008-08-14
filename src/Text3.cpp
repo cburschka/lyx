@@ -1184,7 +1184,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			// Don't do anything if we right-click a
 			// selection, a context menu will popup.
 			if (bvcur.selection() && cur >= bvcur.selectionBegin()
-			    && cur <= bvcur.selectionEnd()) {
+			    && cur < bvcur.selectionEnd()) {
 				cur.noUpdate();
 				return;
 			}
