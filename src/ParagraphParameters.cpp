@@ -256,15 +256,6 @@ void ParagraphParameters::apply(
 }
 
 
-//FIXME This needs to be made a real method, so that getStatus()
-//can return sensible information.
-bool ParagraphParameters::canApply(
-	ParagraphParameters const & /*params*/, Layout const & /*layout*/)
-{
-	return true;
-}
-
-
 void ParagraphParameters::write(ostream & os) const
 {
 	// Maybe the paragraph has special spacing

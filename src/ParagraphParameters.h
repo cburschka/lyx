@@ -87,8 +87,10 @@ public:
 	/// 
 	void apply(ParagraphParameters const & params, Layout const & layout);
 	
-	///
-	bool canApply(ParagraphParameters const & params, Layout const & layout);
+	// It would be nice to have a working version of this method, so that
+	// getStatus() could return information about what was possible.
+	// bool canApply(ParagraphParameters const & params, Layout const & layout)
+	// 	{ return true; }
 
 	/// write out the parameters to a stream
 	void write(std::ostream & os) const;
