@@ -1,4 +1,4 @@
-#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -3001,7 +3001,7 @@ arg   "math-insert \neq"
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
 arg   "math-insert \Rightarrow"
@@ -3081,7 +3081,7 @@ arg   "math-insert \geq"
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
 arg   "math-insert \Leftarrow"
@@ -3712,6 +3712,10 @@ arg   "math-delim | |"
 \end_inset
 
 
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3719,7 +3723,7 @@ arg   "math-delim | |"
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
 arg   "math-delim ( ."
@@ -3738,6 +3742,10 @@ arg   "math-delim ( ."
 \end_inset
 
 
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3745,7 +3753,7 @@ arg   "math-delim ( ."
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
 arg   "math-delim [ ."
@@ -3764,6 +3772,10 @@ arg   "math-delim [ ."
 \end_inset
 
 
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3771,7 +3783,7 @@ arg   "math-delim [ ."
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
 arg   "math-delim { ."
