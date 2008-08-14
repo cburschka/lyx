@@ -1692,6 +1692,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				tclass.defaultLayoutName();
 			setLayout(cur, laystr);
 			ParagraphParameters p;
+			// FIXME If this call were replaced with one to clearParagraphParams(),
+			// then we could get rid of this method altogether.
 			setParagraphs(cur, p);
 			// FIXME This should be simplified when InsetFloatList takes a 
 			// Buffer in its constructor.
