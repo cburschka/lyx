@@ -117,6 +117,7 @@ FontInfo Text::labelFont(Buffer const & buffer, Paragraph const & par) const
 		// In case the default family has been customized
 		if (layout.labelfont.family() == INHERIT_FAMILY)
 			lf.setFamily(buffer.params().getFont().fontInfo().family());
+		// FIXME As above....
 		InsetCollapsable const * icp = par.inInset()->asInsetCollapsable();
 		if (!icp)
 			return lf;
