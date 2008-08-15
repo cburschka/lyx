@@ -28,6 +28,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Math.lyx"
  SetOutPath "$INSTDIR\Resources\doc\he"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\he\Intro.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\uk"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\uk\Intro.lyx"
  SetOutPath "$INSTDIR\Resources\examples\ca"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\ca\ItemizeBullets.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\ca\mathed.lyx"

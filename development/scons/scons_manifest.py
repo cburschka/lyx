@@ -2484,6 +2484,16 @@ lib_doc_sv_files = Split('''
 ''')
 
 
+lib_doc_uk_files = Split('''
+    Intro.lyx
+''')
+
+
+lib_doc_uk_clipart_files = Split('''
+    FootnoteQT4.png
+''')
+
+
 lib_examples_files = Split('''
     CV-image.eps
     CV-image.png

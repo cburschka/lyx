@@ -225,6 +225,14 @@ dist_svdoc_DATA = \
 	sv/Intro.lyx \
 	sv/Tutorial.lyx
 
+ukdocdir = $(pkgdatadir)/doc/uk
+dist_ukdoc_DATA = \
+	uk/Intro.lyx
+
+ukclipartdocdir = $(pkgdatadir)/doc/uk/clipart
+dist_ukclipartdoc_DATA = \
+	uk/clipart/FootnoteQT4.png
+
 docdir = $(pkgdatadir)/doc
 dist_doc_DATA = \
 	Customization.lyx \
