@@ -77,7 +77,7 @@ public:
 	/// toolbar name
 	std::string name;
 	/// toolbar GUI name
-	std::string gui_name;
+	docstring gui_name;
 	/// toolbar contents
 	Items items;
 

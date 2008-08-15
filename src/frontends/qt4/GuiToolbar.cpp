@@ -679,7 +679,7 @@ void GuiLayoutBox::selected(int index)
 
 
 GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
-	: QToolBar(qt_(tbinfo.gui_name), &owner), visibility_(0),
+	: QToolBar(toqstr(tbinfo.gui_name), &owner), visibility_(0),
 	  allowauto_(false), owner_(owner), layout_(0), command_buffer_(0),
 	  tbinfo_(tbinfo), filled_(false)
 {

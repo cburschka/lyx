@@ -1010,7 +1010,7 @@ void MenuDefinition::expandToolbars()
 	Toolbars::Infos::const_iterator cit = guiApp->toolbars().begin();
 	Toolbars::Infos::const_iterator end = guiApp->toolbars().end();
 	for (; cit != end; ++cit) {
-		MenuItem const item(MenuItem::Command, qt_(cit->gui_name),
+		MenuItem const item(MenuItem::Command, toqstr(cit->gui_name),
 				FuncRequest(LFUN_TOOLBAR_TOGGLE, cit->name));
 		if (guiApp->toolbars().isMainToolbar(cit->name))
 			add(item);
