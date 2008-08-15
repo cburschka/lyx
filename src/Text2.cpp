@@ -84,6 +84,12 @@ FontInfo Text::layoutFont(Buffer const & buffer, pit_type const pit) const
 		// In case the default family has been customized
 		if (layout.font.family() == INHERIT_FAMILY)
 			lf.setFamily(buffer.params().getFont().fontInfo().family());
+		// FIXME
+		// It ought to be possible here just to use Inset::getLayout() and skip
+		// the asInsetCollapsable() bit. Unfortunatley, that doesn't work right
+		// now, because Inset::getLayout() will return a default-constructed
+		// InsetLayout, and that e.g. sets the foreground color to red. So we
+		// need to do some work to make that possible.
 		InsetCollapsable const * icp = pars_[pit].inInset()->asInsetCollapsable();
 		if (!icp)
 			return lf;
