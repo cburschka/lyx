@@ -312,6 +312,14 @@ contributers = [
                  "27 February 2005",
                  u"Dutch translation team member"),
 
+     contributer(u"Liviu Andronic",
+                 "landronimirc () gmail ! com",
+                 "GPL",
+                 "contributions GPLed",
+                 "m=121869084720708",
+                 "14 August 2008",
+                 u"Romanian localization; Wiki editor; and Individual sponsor"),
+
      contributer(u"Hatim Alahmadi",
                  "dr.hatim () hotmail ! com",
                  "GPL",
@@ -647,14 +655,14 @@ contributers = [
                  "m=110916171925288",
                  "23 February 2005",
                  u"Norwegian documentation and localization"),
-         
+
      contributer(u"Richard Heck",
-                 "rgheck () comcast ! net",
+                 "rgheck () brown ! edu",
                  "GPL",
                  "GPL Statement",
                  "m=117501689204059",
                  "27 March 2007",
-                 u"Layout modules, BibTeX code, various bugs"),
+                 u"Bug fixes, layout modules, BibTeX code"),
 
      contributer(u"Bennett Helm",
                  "bennett.helm () fandm ! edu",
