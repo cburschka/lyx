@@ -4,12 +4,32 @@ DISTCLEANFILES += $(tocfiles)
 
 EXTRA_DIST = depend.py doc_toc.py README.Documentation $(DEPENDFILE)
 
-bibliodocdir = $(pkgdatadir)/doc/biblio
+docdir = $(pkgdatadir)/doc
+dist_doc_DATA = \
+	Customization.lyx \
+	DocStyle.lyx \
+	DummyTextDocument.txt \
+	DummyDocument1.lyx \
+	DummyDocument2.lyx \
+	EmbeddedObjects.lyx \
+	Extended.lyx \
+	FAQ.lyx \
+	Formula-numbering.lyx \
+	Intro.lyx \
+	LaTeXConfig.lyx \
+	LFUNs.lyx \
+	Math.lyx \
+	Reference.lyx \
+	Shortcuts.lyx \
+	Tutorial.lyx \
+	UserGuide.lyx
+
+bibliodocdir = $(docdir)/biblio
 dist_bibliodoc_DATA = \
 	biblio/alphadin.bst \
 	biblio/LyXDocs.bib
 
-clipartdocdir = $(pkgdatadir)/doc/clipart
+clipartdocdir = $(docdir)/clipart
 dist_clipartdoc_DATA = \
 	clipart/escher-lsd.eps \
 	clipart/mobius.eps \
@@ -40,19 +60,19 @@ dist_clipartdoc_DATA = \
 	clipart/without_fntright.pdf \
 	clipart/with_fntright.pdf
 
-cadocdir = $(pkgdatadir)/doc/ca
+cadocdir = $(docdir)/ca
 dist_cadoc_DATA = \
 	ca/Intro.lyx
 
-csdocdir = $(pkgdatadir)/doc/cs
+csdocdir = $(docdir)/cs
 dist_csdoc_DATA = \
 	cs/Tutorial.lyx
 
-dadocdir = $(pkgdatadir)/doc/da
+dadocdir = $(docdir)/da
 dist_dadoc_DATA = \
 	da/Intro.lyx
 
-dedocdir = $(pkgdatadir)/doc/de
+dedocdir = $(docdir)/de
 dist_dedoc_DATA = \
 	de/Customization.lyx \
 	de/DummyDocument1.lyx \
@@ -68,7 +88,7 @@ dist_dedoc_DATA = \
 	de/Tutorial.lyx \
 	de/UserGuide.lyx
 
-declipartdocdir = $(pkgdatadir)/doc/de/clipart
+declipartdocdir = $(dedocdir)/clipart
 dist_declipartdoc_DATA = \
 	de/clipart/ERT.png \
 	de/clipart/ExternesMaterialQt4.png \
@@ -82,7 +102,7 @@ dist_declipartdoc_DATA = \
 	de/clipart/StandardBoxQt4.png \
 	de/clipart/UnterdokumentQt4.png
 
-esdocdir = $(pkgdatadir)/doc/es
+esdocdir = $(docdir)/es
 dist_esdoc_DATA = \
 	es/DocumentoPostizo1.lyx \
 	es/DocumentoPostizo2.lyx \
@@ -96,7 +116,7 @@ dist_esdoc_DATA = \
 	es/Tutorial.lyx \
 	es/UserGuide.lyx
 
-esclipartdocdir = $(pkgdatadir)/doc/es/clipart
+esclipartdocdir = $(esdocdir)/clipart
 dist_esclipartdoc_DATA = \
 	es/clipart/ComentNotaImagenQt4.png \
 	es/clipart/CuadroMinipagQt4.png \
@@ -111,7 +131,7 @@ dist_esclipartdoc_DATA = \
 	es/clipart/referenciaQt4.png \
 	es/clipart/Resumen.pdf
 
-eudocdir = $(pkgdatadir)/doc/eu
+eudocdir = $(docdir)/eu
 dist_eudoc_DATA = \
 	eu/Customization.lyx \
 	eu/Extended.lyx \
@@ -120,7 +140,7 @@ dist_eudoc_DATA = \
 	eu/Tutorial.lyx \
 	eu/UserGuide.lyx
 
-frdocdir = $(pkgdatadir)/doc/fr
+frdocdir = $(docdir)/fr
 dist_frdoc_DATA = \
 	fr/Customization.lyx \
 	fr/DocumentBidon1.lyx \
@@ -135,7 +155,7 @@ dist_frdoc_DATA = \
 	fr/Tutorial.lyx \
 	fr/UserGuide.lyx
 
-frclipartdocdir = $(pkgdatadir)/doc/fr/clipart
+frclipartdocdir = $(frdocdir)/clipart
 dist_frclipartdoc_DATA = \
 	fr/clipart/BoxInsetDefaultQt4.png \
 	fr/clipart/ChildDocumentQt4.png \
@@ -146,34 +166,34 @@ dist_frclipartdoc_DATA = \
 	fr/clipart/footnoteQt4.png \
 	fr/clipart/labelQt4.png
 
-gldocdir = $(pkgdatadir)/doc/gl
+gldocdir = $(docdir)/gl
 dist_gldoc_DATA = \
 	gl/Intro.lyx \
 	gl/Tutorial.lyx
 
-hedocdir = $(pkgdatadir)/doc/he
+hedocdir = $(docdir)/he
 dist_hedoc_DATA = \
 	he/Intro.lyx \
 	he/Tutorial.lyx
 
-hudocdir = $(pkgdatadir)/doc/hu
+hudocdir = $(docdir)/hu
 dist_hudoc_DATA = \
 	hu/Intro.lyx \
 	hu/Tutorial.lyx
 
-itdocdir = $(pkgdatadir)/doc/it
+itdocdir = $(docdir)/it
 dist_itdoc_DATA = \
 	it/Customization.lyx \
 	it/Intro.lyx \
 	it/Tutorial.lyx \
 	it/UserGuide.lyx
 
-itclipartdocdir = $(pkgdatadir)/doc/it/clipart
+itclipartdocdir = $(itdocdir)/clipart
 dist_itclipartdoc_DATA = \
 	it/clipart/it_footnoteQt4.png \
 	it/clipart/it_referenceQt4.png
 
-jadocdir = $(pkgdatadir)/doc/ja
+jadocdir = $(docdir)/ja
 dist_jadoc_DATA = \
 	ja/FAQ.lyx \
 	ja/Intro.lyx \
@@ -181,83 +201,63 @@ dist_jadoc_DATA = \
 	ja/Shortcuts.lyx \
 	ja/Tutorial.lyx
 
-jaclipartdocdir = $(pkgdatadir)/doc/ja/clipart
+jaclipartdocdir = $(jadocdir)/clipart
 dist_jaclipartdoc_DATA = \
 	ja/clipart/footnoteQt4.png \
 	ja/clipart/referenceQt4.png
 
-nldocdir = $(pkgdatadir)/doc/nl
+nldocdir = $(docdir)/nl
 dist_nldoc_DATA = \
 	nl/Intro.lyx \
 	nl/Tutorial.lyx
 
-nbdocdir = $(pkgdatadir)/doc/nb
+nbdocdir = $(docdir)/nb
 dist_nbdoc_DATA = \
 	nb/Intro.lyx
 
-pldocdir = $(pkgdatadir)/doc/pl
+pldocdir = $(docdir)/pl
 dist_pldoc_DATA = \
 	pl/Extended.lyx \
 	pl/Intro.lyx \
 	pl/Tutorial.lyx
 
-ptdocdir = $(pkgdatadir)/doc/pt
+ptdocdir = $(docdir)/pt
 dist_ptdoc_DATA = \
 	pt/Intro.lyx \
 	pt/Tutorial.lyx
 
-rodocdir = $(pkgdatadir)/doc/ro
+rodocdir = $(docdir)/ro
 dist_rodoc_DATA = \
 	ro/Intro.lyx
 
-rudocdir = $(pkgdatadir)/doc/ru
+rudocdir = $(docdir)/ru
 dist_rudoc_DATA = \
 	ru/FAQ.lyx \
 	ru/Intro.lyx \
 	ru/Tutorial.lyx
 
-skdocdir = $(pkgdatadir)/doc/sk
+skdocdir = $(docdir)/sk
 dist_skdoc_DATA = \
 	sk/Tutorial.lyx \
 	sk/UserGuide.lyx
 
-sldocdir = $(pkgdatadir)/doc/sl
+sldocdir = $(docdir)/sl
 dist_sldoc_DATA = \
 	sl/Intro.lyx \
 	sl/Tutorial.lyx
 
-svdocdir = $(pkgdatadir)/doc/sv
+svdocdir = $(docdir)/sv
 dist_svdoc_DATA = \
 	sv/Intro.lyx \
 	sv/Tutorial.lyx
 
-ukdocdir = $(pkgdatadir)/doc/uk
+ukdocdir = $(docdir)/uk
 dist_ukdoc_DATA = \
 	uk/Intro.lyx
 
-ukclipartdocdir = $(pkgdatadir)/doc/uk/clipart
+ukclipartdocdir = $(ukdocdir)/clipart
 dist_ukclipartdoc_DATA = \
 	uk/clipart/FootnoteQT4.png
-
-docdir = $(pkgdatadir)/doc
-dist_doc_DATA = \
-	Customization.lyx \
-	DocStyle.lyx \
-	DummyTextDocument.txt \
-	DummyDocument1.lyx \
-	DummyDocument2.lyx \
-	EmbeddedObjects.lyx \
-	Extended.lyx \
-	FAQ.lyx \
-	Formula-numbering.lyx \
-	Intro.lyx \
-	LaTeXConfig.lyx \
-	LFUNs.lyx \
-	Math.lyx \
-	Reference.lyx \
-	Shortcuts.lyx \
-	Tutorial.lyx \
-	UserGuide.lyx
 
 doc_files = \
 	    $(dist_doc_DATA) \
