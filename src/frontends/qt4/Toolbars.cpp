@@ -15,10 +15,11 @@
 #include "FuncRequest.h"
 #include "Lexer.h"
 #include "LyXAction.h"
-#include "support/lstrings.h"
+#include "qt_helpers.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"
+#include "support/lstrings.h"
 
 #include <boost/bind.hpp>
 
@@ -94,7 +95,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 	name = lex.getString();
 
 	lex.next(true);
-	gui_name = lex.getString();
+	gui_name = fromqstr(qt_(lex.getString()));
 
 	// FIXME what to do here?
 	if (!lex) {
@@ -304,7 +305,8 @@ void Toolbars::readToolbarSettings(Lexer & lex)
 
 		if (visibility >= MATH) {
 			if (ToolbarInfo const * ti = info(name))
-				const_cast<ToolbarInfo *>(ti)->gui_name += " (auto)";
+				const_cast<ToolbarInfo *>(ti)->gui_name +=
+					fromqstr(" (" + qt_("auto") + ")");
 		}
 	}
 }
