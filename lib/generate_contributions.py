@@ -91,7 +91,7 @@ def error(message):
 
 
 def usage(prog_name):
-     return "Usage: %s <CREDITS> <credits.php> <blanket-permission.php>" % prog_name
+     return "Usage: %s <CREDITS> <credits.inc> <blanket-permission.inc>" % prog_name
 
 
 def collate_incomplete(contributers):
@@ -312,14 +312,6 @@ contributers = [
                  "27 February 2005",
                  u"Dutch translation team member"),
 
-     contributer(u"Liviu Andronic",
-                 "landronimirc () gmail ! com",
-                 "GPL",
-                 "contributions GPLed",
-                 "m=121869084720708",
-                 "14 August 2008",
-                 u"Romanian localization; Wiki editor; and Individual sponsor"),
-
      contributer(u"Hatim Alahmadi",
                  "dr.hatim () hotmail ! com",
                  "GPL",
@@ -343,6 +335,14 @@ contributers = [
                  "m=111263406200012",
                  "1 April 2005",
                  u"External style definition files, linuxdoc sgml support and more ftp-site ftp.lyx.org"),
+
+     contributer(u"Liviu Andronic",
+                 "landronimirc () gmail ! com",
+                 "GPL",
+                 "contributions GPLed",
+                 "m=121869084720708",
+                 "14 August 2008",
+                 u"Romanian localization; Wiki editor; and Individual sponsor"),
 
      contributer(u"João Luis Meloni Assirati",
                  "assirati () nonada ! if ! usp ! br",
