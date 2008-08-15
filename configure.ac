@@ -390,11 +390,6 @@ char * strerror(int n);
 ])
 
 
-AC_ARG_WITH(qmake,
-	AC_HELP_STRING([--with-qmake],
-		[Use qmake instead of automake to generate Makefiles]),,
-	[with_qmake=no])
-
 AC_ARG_ENABLE(monolithic-boost,
   AC_HELP_STRING([--enable-monolithic-boost],
 		[Use monolithic boost compilations]),,
@@ -488,30 +483,6 @@ AC_CONFIG_FILES([Makefile \
 
 
 AC_OUTPUT
-
-if test x$with_qmake = xyes ; then
-	echo "CONFIGURE WITH QMAKE ONLY"
-	if test x$srcdir = x ; then
-		echo "ONLY FOR OUT-OF-TREE-BUILDS POSSIBLE"
-	else
-		rm boost/Makefile
-		rm src/client/Makefile
-		rm src/Makefile
-		rm src/tex2lyx/Makefile
-		rm src/support/Makefile
-		rm src/frontends/Makefile
-		rm src/frontends/qt4/Makefile
-		rm -rf boost/.deps
-		rm -rf src/client/.deps
-		rm -rf src/.deps
-		rm -rf src/tex2lyx/.deps
-		rm -rf src/support/.deps
-		rm -rf src/frontends/.deps
-		rm -rf src/frontends/qt4/.deps
-		${srcdir}/development/qmake/doit
-	fi
-fi
-
 
 # show version information
 echo
