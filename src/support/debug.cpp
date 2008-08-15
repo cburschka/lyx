@@ -49,7 +49,7 @@ ErrorItem errorTags[] = {
 	{ Debug::TCLASS,    "tclass",    N_("Textclass files reading")},
 	{ Debug::LYXVC,     "lyxvc",     N_("Version control")},
 	{ Debug::LYXSERVER, "lyxserver", N_("External control interface")},
-	{ Debug::ROFF,      "roff",      N_("Keep *roff temporary files")},
+	{ Debug::UNDO,      "undo",      N_("Undo/Redo mechanism")},
 	{ Debug::ACTION,    "action",    N_("User commands")},
 	{ Debug::LYXLEX,    "lyxlex",    N_("The LyX Lexxer")},
 	{ Debug::DEPEND,    "depend",    N_("Dependency information")},
