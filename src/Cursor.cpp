@@ -2117,6 +2117,18 @@ void Cursor::finishUndo() const
 }
 
 
+void Cursor::beginUndoGroup() const
+{
+	bv_->buffer().undo().beginUndoGroup();
+}
+
+
+void Cursor::endUndoGroup() const
+{
+	bv_->buffer().undo().endUndoGroup();
+}
+
+
 void Cursor::recordUndo(UndoKind kind, pit_type from, pit_type to) const
 {
 	bv_->buffer().undo().recordUndo(*this, kind, from, to);

@@ -1569,10 +1569,17 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 
 			LASSERT(lyx_view_->view(), /**/);
+
+			// Start an undo group. Normally, all the code
+			// above only invoked recordUndoFullDocument,
+			// which does not really require a group.
+			view()->cursor().beginUndoGroup();
+
 			// Let the current BufferView dispatch its own actions.
 			if (view()->dispatch(cmd)) {
 				// The BufferView took care of its own updates if needed.
 				updateFlags = Update::None;
+				view()->cursor().endUndoGroup();
 				break;
 			}
 
@@ -1581,6 +1588,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			view()->cursor().getPos(cursorPosBeforeDispatchX_,
 						cursorPosBeforeDispatchY_);
 			view()->cursor().dispatch(cmd);
+
+			// we assume here that the buffer view has not
+			// changed since the beginUndoGroup.
+			view()->cursor().endUndoGroup();
 
 			// notify insets we just left
 			if (view()->cursor() != old) {

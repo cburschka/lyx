@@ -148,19 +148,19 @@ int replaceAll(BufferView * bv,
 	if (!searchAllowed(bv, searchstr) || buf.isReadonly())
 		return 0;
 
-	bv->cursor().recordUndoFullDocument();
-
 	MatchString const match(searchstr, cs, mw);
 	int num = 0;
 
 	int const rsize = replacestr.size();
 	int const ssize = searchstr.size();
 
-	DocIterator cur = doc_iterator_begin(buf.inset());
+	Cursor cur(*bv);
+	cur.setCursor(doc_iterator_begin(buf.inset()));
 	while (findForward(cur, match, false)) {
 		pos_type pos = cur.pos();
 		Font const font
 			= cur.paragraph().getFontSettings(buf.params(), pos);
+		cur.recordUndo();
 		int striked = ssize - cur.paragraph().eraseChars(pos, pos + ssize,
 							    buf.params().trackChanges);
 		cur.paragraph().insert(pos, replacestr, font,

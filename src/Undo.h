@@ -79,6 +79,12 @@ public:
 	///
 	bool hasRedoStack() const;
 
+	/// open a new group of undo operations. Groups can be nested.
+	void beginUndoGroup();
+
+	/// end the current undo group
+	void endUndoGroup();
+
 	/// The general case: prepare undo for an arbitrary range.
 	void recordUndo(DocIterator const & cur, UndoKind kind,
 		pit_type from, pit_type to);

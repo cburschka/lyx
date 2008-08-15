@@ -242,6 +242,12 @@ public:
 	/// makes sure the next operation will be stored
 	void finishUndo() const;
 
+	/// open a new group of undo operations. Groups can be nested.
+	void beginUndoGroup() const;
+
+	/// end the current undo group
+	void endUndoGroup() const;
+
 	/// The general case: prepare undo for an arbitrary range.
 	void recordUndo(UndoKind kind, pit_type from, pit_type to) const;
 
