@@ -280,7 +280,7 @@ install-data-hook: $(tocfiles)
 	do \
 		if test -f "$(srcdir)/$$i"; then file="$(srcdir)/$$i"; \
 		else file="$$i"; fi; \
-		$(docDATA_INSTALL) "$$file" "$(DESTDIR)$(docdir)/$$i"; \
+		$(INSTALL_DATA) "$$file" "$(DESTDIR)$(docdir)/$$i"; \
 	done
 
 uninstall-local:
