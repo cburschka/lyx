@@ -342,7 +342,7 @@ contributers = [
                  "contributions GPLed",
                  "m=121869084720708",
                  "14 August 2008",
-                 u"Romanian localization; Wiki editor; and Individual sponsor"),
+                 u"Romanian localization"),
 
      contributer(u"João Luis Meloni Assirati",
                  "assirati () nonada ! if ! usp ! br",
