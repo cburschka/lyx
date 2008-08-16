@@ -1397,6 +1397,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_MATRIX:
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM: {
+		recordUndo(cur);
 		cap::replaceSelection(cur);
 		InsetMathHull * inset = new InsetMathHull(hullSimple);
 		cur.insert(inset);
