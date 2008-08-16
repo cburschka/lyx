@@ -39,6 +39,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\splash.lyx"
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\singlecol.layout"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\svglobal3.layout"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\svjour3.inc"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  SetOutPath "$INSTDIR\Resources\scripts"

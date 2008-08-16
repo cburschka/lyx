@@ -912,6 +912,13 @@ dist_layouts_DATA =\
 	layouts/aapaper.inc \
 	layouts/aapaper.layout \
 	layouts/aastex.layout \
+	layouts/agu-dtd.layout \
+	layouts/agu_stdclass.inc \
+	layouts/agu_stdcounters.inc \
+	layouts/agu_stdlists.inc \
+	layouts/agu_stdsections.inc \
+	layouts/agu_stdtitle.inc \
+	layouts/agums.layout \
 	layouts/aguplus.inc \
 	layouts/amsart-plain.layout \
 	layouts/amsart-seq.layout \
@@ -958,6 +965,7 @@ dist_layouts_DATA =\
 	layouts/foils.layout \
 	layouts/g-brief-de.layout \
 	layouts/g-brief-en.layout \
+	layouts/g-brief2.layout \
 	layouts/heb-article.layout \
 	layouts/heb-letter.layout \
 	layouts/hollywood.layout \
@@ -978,10 +986,14 @@ dist_layouts_DATA =\
 	layouts/ltugboat.layout \
 	layouts/lyxmacros.inc \
 	layouts/manpage.layout \
+	layouts/memoir.layout \
 	layouts/moderncv.layout \
 	layouts/mwart.layout \
 	layouts/mwbk.layout \
 	layouts/mwrep.layout \
+	layouts/numarticle.inc \
+	layouts/numreport.inc \
+	layouts/numrevtex.inc \
 	layouts/paper.layout \
 	layouts/powerdot.layout \
 	layouts/report.layout \
@@ -1010,22 +1022,12 @@ dist_layouts_DATA =\
 	layouts/stdstarsections.inc \
 	layouts/stdstruct.inc \
 	layouts/stdtitle.inc \
+	layouts/svglobal.layout \
+	layouts/svglobal3.layout \
 	layouts/svjog.layout \
 	layouts/svjour.inc \
-	layouts/svprobth.layout \
-	layouts/agums.layout \
-	layouts/memoir.layout \
-	layouts/numarticle.inc \
-	layouts/numreport.inc \
-	layouts/numrevtex.inc \
-	layouts/agu-dtd.layout \
-	layouts/agu_stdclass.inc \
-	layouts/agu_stdcounters.inc \
-	layouts/agu_stdlists.inc \
-	layouts/agu_stdsections.inc \
-	layouts/agu_stdtitle.inc \
-	layouts/g-brief2.layout \
-	layouts/svglobal.layout
+	layouts/svjour3.inc \
+	layouts/svprobth.layout
 
 scriptsdir = $(pkgdatadir)/scripts
 # Note that we "chmod 755" manually these files in install-data-hook.

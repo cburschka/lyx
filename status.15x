@@ -36,6 +36,8 @@ What's new
 
 - New layout file for journal articles of the Inderscience publishing group.
 
+- New layout file for the svjour3 class (journal articles of the Springer publishing group).
+
 
 * USER INTERFACE
 
@@ -65,8 +67,7 @@ What's new
 - Fix undo for "text in math mode" (bug 3407).
 
 - Fix undo for insertion of some math elements (e.g. delimiters)
-  directly from text mode. Note that these actions will require two
-  undo steps to be undone (bug 2449).
+  directly from text mode (bug 2449).
 
 * DOCUMENTATION AND LOCALIZATION
 
