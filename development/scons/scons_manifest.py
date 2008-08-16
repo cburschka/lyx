@@ -2607,6 +2607,7 @@ lib_layouts_files = Split('''
     slides.layout
     spie.layout
     svglobal.layout
+    svglobal3.layout
     svjog.layout
     svprobth.layout
     tarticle.layout
@@ -2654,6 +2655,7 @@ lib_layouts_inc_files = Split('''
     stdstruct.inc
     stdtitle.inc
     svjour.inc
+    svjour3.inc
     theorems.inc
     theorems-ams.inc
     theorems-order.inc
