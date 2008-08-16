@@ -917,6 +917,7 @@ goto_char_backwards:
 		// ignore math-mode on when already in math mode
 		if (currentMode() == Inset::MATH_MODE && cmd.argument() == "on")
 			break;
+		recordUndoSelection(cur);
 		cur.macroModeClose();
 		docstring const save_selection = grabAndEraseSelection(cur);
 		selClearOrDel(cur);
@@ -927,6 +928,7 @@ goto_char_backwards:
 		cur.niceInsert(save_selection);
 #else
 		if (currentMode() == Inset::TEXT_MODE) {
+			recordUndoSelection(cur);
 			cur.niceInsert(MathAtom(new InsetMathHull("simple")));
 			cur.message(_("create new math text environment ($...$)"));
 		} else {
