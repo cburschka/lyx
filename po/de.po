@@ -94,7 +94,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-08-16 17:03+0200\n"
+"POT-Creation-Date: 2008-08-18 10:04+0200\n"
 "PO-Revision-Date: 2008-08-13 01:29+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -1372,7 +1372,8 @@ msgstr "Gruppenname &initialisieren:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:660
 msgid "Group Name to be set up from the current parameters"
-msgstr "Name der Gruppe von Grafiken, die die gegebenen Einstellungen teilen soll"
+msgstr ""
+"Name der Gruppe von Grafiken, die die gegebenen Einstellungen teilen soll"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"
@@ -4509,8 +4510,8 @@ msgstr "Post"
 #: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:72
 #: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:162
 #: lib/layouts/stdtitle.inc:50 lib/layouts/svjour.inc:227
-#: lib/ui/stdmenus.inc:347 lib/external_templates:298
-#: lib/external_templates:299 lib/external_templates:303
+#: lib/ui/stdmenus.inc:347 lib/external_templates:296
+#: lib/external_templates:297 lib/external_templates:301
 msgid "Date"
 msgstr "Datum"
 
@@ -13554,15 +13555,15 @@ msgstr ""
 msgid "PDFPages"
 msgstr "PDF-Seiten"
 
-#: lib/external_templates:258 lib/external_templates:271
+#: lib/external_templates:258 lib/external_templates:269
 msgid "PDF pages: $$AbsOrRelPathParent$$Basename"
 msgstr "PDF pages: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:260
 msgid ""
 "Includes PDF documents, using the 'pdfpages' package.\n"
-"To include multiple pages, use the pages-option,\n"
-"which must be inserted to Options.\n"
+"To include multiple pages, use the 'pages'-option,\n"
+"which must be inserted to 'Options'.\n"
 "Examples:\n"
 "* pages={x-y} (for a range of pages)\n"
 "* pages={x,y,z} (for specific pages)\n"
@@ -13572,15 +13573,14 @@ msgid ""
 msgstr ""
 "Fügt PDF-Dokumente mit Hilfe des Pakets 'pdfpages' ein.\n"
 "Um meherere Seiten einzufügen, benutzen Sie die Option 'pages'\n"
-" nach folgendem Schema:\n"
-"\n"
+"nach folgendem Schema:\n"
 "* pages={x-y} (für einen Bereich von Seiten)\n"
 "* pages={x,y,z} (für spezielle Seiten)\n"
 "* pages=- (für alle Seiten)\n"
 "Lesen die Dokumentation des Pakets pdfpages\n"
 "bezüglich weiterer Optionen und Details.\n"
 
-#: lib/external_templates:301
+#: lib/external_templates:299
 msgid ""
 "Today's date.\n"
 "Read 'info date' for more information.\n"
