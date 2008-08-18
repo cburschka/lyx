@@ -12,6 +12,7 @@
 
 #include "OutputParams.h"
 #include "Exporter.h"
+#include "Encoding.h"
 
 
 namespace lyx {
@@ -20,13 +21,18 @@ namespace lyx {
 OutputParams::OutputParams(Encoding const * enc)
 	: flavor(LATEX), nice(false), moving_arg(false),
 	  local_font(0), encoding(enc), free_spacing(false), use_babel(false),
-	  linelen(0), depth(0),
+	  use_japanese(false), linelen(0), depth(0),
 	  exportdata(new ExportData),
 	  inComment(false),
 	  inDeletedInset(0), changeOfDeletedInset(Change::UNCHANGED),
 	  par_begin(0), par_end(0),
 	  dryrun(false), verbatim(false)
-{}
+{
+	// Note: in PreviewLoader::Impl::dumpPreamble
+	// OutputParams runparams(0); 
+	if (enc && enc->package() == Encoding::japanese)
+		use_japanese = true;
+}
 
 
 OutputParams::~OutputParams()

@@ -901,6 +901,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	docstring const inputenc_arg(from_ascii(newEnc.latexName()));
 	switch (newEnc.package()) {
 		case Encoding::none:
+		case Encoding::japanese:
 			// shouldn't ever reach here, see above
 			return make_pair(true, 0);
 		case Encoding::inputenc: {
@@ -924,6 +925,9 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 				count += 7;
 				open_encoding_ = inputenc;
 			}
+			// with the japanese option, inputenc is omitted.
+			if (runparams.use_japanese)
+				return make_pair(true, count);
 			os << "\\inputencoding{" << inputenc_arg << '}';
 			return make_pair(true, count + 16);
 		}

@@ -373,12 +373,13 @@ void LaTeXFeatures::useLanguage(Language const * lang)
 		UsedLanguages_.insert(lang);
 	if (lang->lang() == "vietnamese")
 		require("vietnamese");
-	else if (lang->lang() == "japanese")
-		require("japanese");
 	// CJK languages do not have a babel name.
 	// They use the CJK package
 	if (lang->encoding()->package() == Encoding::CJK)
 		require("CJK");
+	// japanese package is special
+	if (lang->encoding()->package() == Encoding::japanese)
+		require("japanese");
 }
 
 
@@ -420,7 +421,8 @@ set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding) const
 	LanguageList::const_iterator end = UsedLanguages_.end();
 	for (; it != end; ++it)
 		if ((*it)->encoding()->latexName() != doc_encoding &&
-		    (*it)->encoding()->package() == Encoding::inputenc)
+		    ((*it)->encoding()->package() == Encoding::inputenc
+		     || (*it)->encoding()->package() == Encoding::japanese))
 			encodings.insert((*it)->encoding()->latexName());
 	return encodings;
 }

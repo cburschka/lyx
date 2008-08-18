@@ -224,8 +224,11 @@ def crop_files(pnmcrop, basename):
 
 
 def legacy_conversion(argv):
+    latex_commands = ["latex", "pplatex", "platex", "latex2e"]
     # Parse and manipulate the command line arguments.
-    if len(argv) != 6:
+    if len(argv) == 7:
+        latex_commands = [argv[6]]
+    elif len(argv) != 6:
         error(usage(argv[0]))
 
     dir, latex_file = os.path.split(argv[1])
@@ -242,7 +245,7 @@ def legacy_conversion(argv):
 
     # External programs used by the script.
     path  = string.split(os.environ["PATH"], os.pathsep)
-    latex = find_exe_or_terminate(["latex", "pplatex", "platex", "latex2e"], path)
+    latex = find_exe_or_terminate(latex_commands, path)
 
     # Move color information into the latex file.
     if not legacy_latex_file(latex_file, fg_color, bg_color, bg_color_gr):

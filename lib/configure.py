@@ -200,6 +200,22 @@ def checkLatex(dtl_tools):
     ''' Check latex, return lyx_check_config '''
     path, LATEX = checkProg('a Latex2e program', ['latex $$i', 'platex $$i', 'latex2e $$i'])
     path, PPLATEX = checkProg('a DVI postprocessing program', ['pplatex $$i'])
+    #-----------------------------------------------------------------
+    path, PLATEX = checkProg('pLaTeX, the Japanese LaTeX', ['platex $$i'])
+    # check if PLATEX is pLaTeX2e
+    writeToFile('chklatex.ltx', '''
+\\nonstopmode
+\\@@end
+''')
+    # run platex on chklatex.ltx and check result
+    if cmdOutput(PLATEX + ' chklatex.ltx').find('pLaTeX2e') != -1:
+        # We have the Japanese pLaTeX2e
+        addToRC(r'\converter platex   dvi       "%s"   "latex"' % PLATEX)
+        LATEX = PLATEX
+    else:
+        PLATEX = ''
+    removeFiles(['chklatex.ltx', 'chklatex.log'])
+    #-----------------------------------------------------------------
     # use LATEX to convert from latex to dvi if PPLATEX is not available    
     if PPLATEX == '':
         PPLATEX = LATEX
@@ -267,6 +283,7 @@ def checkFormatEntries(dtl_tools):
 \Format docbook    sgml    DocBook                B  ""	"%%"	"document"
 \Format docbook-xml xml   "Docbook (XML)"         "" ""	"%%"	"document"
 \Format dot        dot    "Graphviz Dot"          "" ""	"%%"	"vector"
+\Format platex     tex    "LaTeX (pLaTeX)"        "" "" "%%"    "document"
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document"
 \Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
 \Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document"
@@ -324,6 +341,7 @@ def checkFormatEntries(dtl_tools):
 \Format jlyx       cjklyx "CJK LyX 1.4.x (euc-jp)" "" ""	""	"document"
 \Format klyx       cjklyx "CJK LyX 1.4.x (euc-kr)" "" ""	""	"document"
 \Format lyxpreview lyxpreview "LyX Preview"       "" ""	""	""
+\Format lyxpreview-platex lyxpreview-platex "LyX Preview (pLaTeX)"       "" ""	""	""
 \Format pdftex     pdftex_t PDFTEX                "" ""	""	""
 \Format program    ""      Program                "" ""	""	""
 \Format pstex      pstex_t PSTEX                  "" ""	""	""
@@ -508,6 +526,7 @@ def checkConverterEntries():
     #
     # Entries that do not need checkProg
     addToRC(r'''\converter lyxpreview ppm        "python -tt $$s/scripts/lyxpreview2bitmap.py"	""
+\converter lyxpreview-platex ppm        "python -tt $$s/scripts/lyxpreview-platex2bitmap.py"	""
 \converter csv        lyx        "python -tt $$s/scripts/csv2lyx.py $$i $$o"	""
 \converter date       dateout    "python -tt $$s/scripts/date.py %d-%m-%Y > $$o"	""
 \converter docbook    docbook-xml "cp $$i $$o"	"xml"

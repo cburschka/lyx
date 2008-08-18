@@ -67,10 +67,8 @@ string const unique_filename(string const & bufferpath)
 }
 
 
-lyx::Converter const * setConverter()
+lyx::Converter const * setConverter(string const from)
 {
-	string const from = "lyxpreview";
-
 	typedef vector<string> FmtList;
 	typedef lyx::graphics::Cache GCache;
 	FmtList const & loadableFormats = GCache::get().loadableFormats();
@@ -397,8 +395,12 @@ PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 	LYXERR(Debug::GRAPHICS, "The font scaling factor is "
 				<< font_scaling_factor_);
 
-	if (!pconverter_)
-		pconverter_ = setConverter();
+	if (!pconverter_){
+		if (b.params().encoding().package() == Encoding::japanese)
+			pconverter_ = setConverter("lyxpreview-platex");
+		else
+			pconverter_ = setConverter("lyxpreview");
+	}
 }
 
 

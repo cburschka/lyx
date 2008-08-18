@@ -45,7 +45,8 @@ public:
 	enum Package {
 		none,
 		inputenc,
-		CJK
+		CJK,
+		japanese
 	};
 	///
 	Encoding() {}

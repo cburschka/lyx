@@ -98,6 +98,10 @@ public:
 	*/
 	bool use_babel;
 
+	/** Are we using japanese (pLaTeX)?
+	*/
+	bool use_japanese;
+
 	/** Line length to use with plaintext export.
 	*/
 	size_type linelen;

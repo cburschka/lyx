@@ -1087,6 +1087,8 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		// Write the preamble
 		runparams.use_babel = params().writeLaTeX(os, features, d->texrow);
 
+		runparams.use_japanese = features.isRequired("japanese");
+
 		if (!output_body)
 			return;
 
@@ -2313,6 +2315,8 @@ string Buffer::bufferFormat() const
 		return "docbook";
 	if (isLiterate())
 		return "literate";
+	if (params().encoding().package() == Encoding::japanese)
+		return "platex";
 	return "latex";
 }
 

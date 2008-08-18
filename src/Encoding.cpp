@@ -761,6 +761,8 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 				package = Encoding::inputenc;
 			else if (p == "CJK")
 				package = Encoding::CJK;
+			else if (p == "japanese")
+				package = Encoding::japanese;
 			else
 				lex.printError("Unknown package");
 

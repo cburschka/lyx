@@ -1063,7 +1063,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// set font encoding
 	// this one is not per buffer
 	// for arabic_arabi and farsi we also need to load the LAE and LFE encoding
-	if (lyxrc.fontenc != "default") {
+	if (lyxrc.fontenc != "default" && language->lang() != "japanese") {
 		if (language->lang() == "arabic_arabi" || language->lang() == "farsi") {
 			os << "\\usepackage[" << from_ascii(lyxrc.fontenc)
 			   << ",LFE,LAE]{fontenc}\n";
@@ -1870,11 +1870,11 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 		// If the encodings EUC-JP-plain, JIS-plain, or SJIS-plain are used, the
 		// package inputenc must be omitted. Therefore set the encoding to empty.
 		// see http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
-		if (doc_encoding == "EUC-JP-plain" || doc_encoding == "JIS-plain" ||
-			doc_encoding == "SJIS-plain")
-			encodings.clear();
+		if (package == Encoding::japanese)
+		     features.require("japanese");
 
-		if (!encodings.empty() || package == Encoding::inputenc) {
+		if ((!encodings.empty() || package == Encoding::inputenc)
+		    && !features.isRequired("japanese")) {
 			os << "\\usepackage[";
 			set<string>::const_iterator it = encodings.begin();
 			set<string>::const_iterator const end = encodings.end();
@@ -1899,8 +1899,12 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 	} else if (inputenc != "default") {
 		switch (encoding().package()) {
 		case Encoding::none:
+		case Encoding::japanese:
 			break;
 		case Encoding::inputenc:
+			// do not load inputenc if japanese is used
+			if (features.isRequired("japanese"))
+				break;
 			os << "\\usepackage[" << from_ascii(inputenc)
 			   << "]{inputenc}\n";
 			texrow.newline();

@@ -166,8 +166,13 @@
 
 % (2) strip the useless parts from \mesg. This uses the fact that TeX
 % allows to define macros with parameters delimited by arbitrary text.
-\def\strip#1patterns for #2, loaded.#3\endmark{\def\langs{#2}}
-\expandafter\strip\mesg\endmark
+\def\platexname{pLaTeX2e}
+\ifx\pfmtname\platexname
+  \def\langs{japanese}
+\else
+  \def\strip#1patterns for #2, loaded.#3\endmark{\def\langs{#2}}
+  \expandafter\strip\mesg\endmark
+\fi
 
 % (3) handle the result
 \message{^^J\prefix checking for available hyphenation patterns... \langs}
