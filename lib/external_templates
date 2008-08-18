@@ -258,14 +258,12 @@ Template PDFPages
 	GuiName "PDF pages: $$AbsOrRelPathParent$$Basename"
 	HelpText
 		Includes PDF documents, using the 'pdfpages' package.
-		
-		To include multiple pages, use the "pages"-option,
-		which must be inserted to "Options".
+		To include multiple pages, use the 'pages'-option,
+		which must be inserted to 'Options'.
 		Examples:
-		    * pages={x-y} (for a range of pages)
-		    * pages={x,y,z} (for specific pages)
-		    * pages=- (to include all pages)
-		
+		* pages={x-y} (for a range of pages)
+		* pages={x,y,z} (for specific pages)
+		* pages=- (to include all pages)
 		Read the documentation of the pdfpages package
 		for further options and details.
 	HelpTextEnd
