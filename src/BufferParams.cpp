@@ -1016,17 +1016,18 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 				language_options << ',';
 			language_options << language->babel();
 		}
-		// if Vietnamese is used, babel must directly be loaded with the
-		// language options, not in the class options, see
+		// if Vietnamese is used, babel must directly be loaded
+		// with language options, not in the class options, see
 		// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
 		size_t viet = language_options.str().find("vietnam");
 		// viet = string::npos when not found
-		// if Japanese is used, babel must directly be loaded with the
-		// language options, not in the class options, see
+		// if Japanese is used, babel must directly be loaded
+		// with language options, not in the class options, see
 		// http://bugzilla.lyx.org/show_bug.cgi?id=4597#c4
 		size_t japan = language_options.str().find("japanese");
 		// japan = string::npos when not found
-		if (lyxrc.language_global_options && !language_options.str().empty()
+		if (lyxrc.language_global_options
+			&& !language_options.str().empty()
 			&& viet == string::npos && japan == string::npos)
 			clsoptions << language_options.str() << ',';
 	}
@@ -1062,9 +1063,11 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	// set font encoding
 	// this one is not per buffer
-	// for arabic_arabi and farsi we also need to load the LAE and LFE encoding
+	// for arabic_arabi and farsi we also need to load the LAE and
+	// LFE encoding
 	if (lyxrc.fontenc != "default" && language->lang() != "japanese") {
-		if (language->lang() == "arabic_arabi" || language->lang() == "farsi") {
+		if (language->lang() == "arabic_arabi"
+		    || language->lang() == "farsi") {
 			os << "\\usepackage[" << from_ascii(lyxrc.fontenc)
 			   << ",LFE,LAE]{fontenc}\n";
 			texrow.newline();
@@ -1082,8 +1085,10 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		os << "\\usepackage{listings}\n";
 		texrow.newline();
 		os << "\\lstset{";
-		// do not test validity because listings_params is supposed to be valid
-		string par = InsetListingsParams(listings_params).separatedParams(true);
+		// do not test validity because listings_params is 
+		// supposed to be valid
+		string par =
+			InsetListingsParams(listings_params).separatedParams(true);
 		os << from_ascii(par);
 		// count the number of newlines
 		for (size_t i = 0; i < par.size(); ++i)
@@ -1916,9 +1921,10 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 		}
 	}
 
-	// The encoding "armscii8" is only available when the package "armtex" is loaded.
-	// armscii8 is used for Armenian.
-	if (language->encoding()->latexName() == "armscii8" || inputenc == "armscii8") {
+	// The encoding "armscii8" (for Armenian) is only available when
+	// the package "armtex" is loaded.
+	if (language->encoding()->latexName() == "armscii8"
+	    || inputenc == "armscii8") {
 		os << "\\usepackage{armtex}\n";
 		texrow.newline();
 	}
