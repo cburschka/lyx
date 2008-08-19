@@ -2696,6 +2696,7 @@ lib_scripts_files = Split('''
     legacy_lyxpreview2ppm.py
     listerrors
     lyxpreview2bitmap.py
+    lyxpreview-platex2bitmap.py
     lyxpreview_tools.py
     tex_copy.py
 ''')

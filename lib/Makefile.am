@@ -1101,6 +1101,7 @@ dist_scripts_PYTHON = \
 	scripts/legacy_lyxpreview2ppm.py \
 	scripts/listerrors \
 	scripts/lyxpreview2bitmap.py \
+	scripts/lyxpreview-platex2bitmap.py \
 	scripts/lyxpreview_tools.py \
 	scripts/tex_copy.py
 
