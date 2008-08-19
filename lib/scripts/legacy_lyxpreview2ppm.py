@@ -56,7 +56,7 @@
 import glob, os, pipes, re, string, sys
 
 from lyxpreview_tools import copyfileobj, error, find_exe, \
-     find_exe_or_terminate, mkstemp, run_command
+     find_exe_or_terminate, make_texcolor, mkstemp, run_command, warning
 
 # Pre-compiled regular expression.
 latex_file_re = re.compile("\.tex$")
@@ -168,25 +168,34 @@ def extract_resolution(log_file, dpi):
     return dpi * (10.0 / fontsize) * (1000.0 / magnification)
 
 
-def legacy_latex_file(latex_file, fg_color, bg_color):
-    use_preview_re = re.compile("(\\\\usepackage\[[^]]+)(\]{preview})")
+def legacy_latex_file(latex_file, fg_color, bg_color, bg_color_gr):
+    use_preview_dvi_re = re.compile("(\s*\\\\usepackage\[[^]]+)(dvips\]{preview})")
+    use_preview_pdf_re = re.compile("(\s*\\\\usepackage\[[^]]+)(pdftex\]{preview})")
 
     tmp = mkstemp()
 
     success = 0
     try:
         for line in open(latex_file, 'r').readlines():
-            match = use_preview_re.match(line)
+            match = use_preview_dvi_re.match(line)
             if match == None:
-                tmp.write(line)
+                match = use_preview_pdf_re.match(line)
+                if match == None:
+                    tmp.write(line)
+                    continue
+                success = 1
+                tmp.write("  \\usepackage{color}\n" \
+                      "  \\pagecolor[rgb]{%s}\n" \
+                      "%s\n" \
+                      % (bg_color_gr, match.group()))
                 continue
 
             success = 1
-            tmp.write("%s,dvips,tightpage%s\n\n" \
-                      "\\AtBeginDocument{\\AtBeginDvi{%%\n" \
-                      "\\special{!userdict begin/bop-hook{//bop-hook exec\n" \
-                      "<%s%s>{255 div}forall setrgbcolor\n" \
-                      "clippath fill setrgbcolor}bind def end}}}\n" \
+            tmp.write("%stightpage,%s\n" \
+                      "  \\AtBeginDocument{\\AtBeginDvi{%%\n" \
+                      "  \\special{!userdict begin/bop-hook{//bop-hook exec\n" \
+                      "  <%s%s>{255 div}forall setrgbcolor\n" \
+                      "  clippath fill setrgbcolor}bind def end}}}\n" \
                       % (match.group(1), match.group(2), fg_color, bg_color))
 
     except:
@@ -226,21 +235,17 @@ def legacy_conversion(argv):
     dpi = string.atoi(argv[2])
 
     output_format = argv[3]
-    if output_format != "ppm":
-        error("This script will generate ppm format images only.")
 
     fg_color = argv[4]
     bg_color = argv[5]
+    bg_color_gr = make_texcolor(argv[5], True)
 
     # External programs used by the script.
-    path = string.split(os.environ["PATH"], os.pathsep)
-    latex   = find_exe_or_terminate(["pplatex", "latex2e", "latex"], path)
-    dvips   = find_exe_or_terminate(["dvips"], path)
-    gs      = find_exe_or_terminate(["gswin32c", "gs"], path)
-    pnmcrop = find_exe(["pnmcrop"], path)
+    path  = string.split(os.environ["PATH"], os.pathsep)
+    latex = find_exe_or_terminate(["latex", "pplatex", "latex2e"], path)
 
     # Move color information into the latex file.
-    if not legacy_latex_file(latex_file, fg_color, bg_color):
+    if not legacy_latex_file(latex_file, fg_color, bg_color, bg_color_gr):
         error("Unable to move color info into the latex file")
 
     # Compile the latex file.
@@ -251,15 +256,29 @@ def legacy_conversion(argv):
         error("%s failed to compile %s" \
               % (os.path.basename(latex), latex_file))
 
+    return legacy_conversion_step2(latex_file, dpi, output_format)
+
+
+def legacy_conversion_step2(latex_file, dpi, output_format):
+    # External programs used by the script.
+    path    = string.split(os.environ["PATH"], os.pathsep)
+    dvips   = find_exe_or_terminate(["dvips"], path)
+    gs      = find_exe_or_terminate(["gswin32c", "gs"], path)
+    pnmcrop = find_exe(["pnmcrop"], path)
+
     # Run the dvi file through dvips.
     dvi_file = latex_file_re.sub(".dvi", latex_file)
     ps_file  = latex_file_re.sub(".ps",  latex_file)
+    pdf_file  = latex_file_re.sub(".pdf", latex_file)
 
     dvips_call = '%s -o "%s" "%s"' % (dvips, ps_file, dvi_file)
+    dvips_failed = False
 
     dvips_status, dvips_stdout = run_command(dvips_call)
     if dvips_status != None:
-        error("Failed: %s %s" % (os.path.basename(dvips), dvi_file))
+        warning('Failed: %s %s ... looking for PDF' \
+            % (os.path.basename(dvips), dvi_file))
+        dvips_failed = True
 
     # Extract resolution data for gs from the log file.
     log_file = latex_file_re.sub(".log", latex_file)
@@ -271,13 +290,27 @@ def legacy_conversion(argv):
     if resolution > 150:
         alpha = 2
 
+    gs_device = "png16m"
+    gs_ext = "png"
+    if output_format == "ppm":
+        gs_device = "pnmraw"
+        gs_ext = "ppm"
+
     # Generate the bitmap images
-    gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pnmraw ' \
-              '-sOutputFile="%s%%d.ppm" ' \
+    gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
+              '-sOutputFile="%s%%d.%s" ' \
               '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
               '-r%f "%s"' \
-              % (gs, latex_file_re.sub("", latex_file), \
-                 alpha, alpha, resolution, ps_file)
+              % (gs, gs_device, latex_file_re.sub("", latex_file), \
+                 gs_ext, alpha, alpha, resolution, ps_file)
+
+    if dvips_failed:
+        gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
+                  '-sOutputFile="%s%%d.%s" ' \
+                  '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
+                  '-r%f "%s"' \
+                  % (gs, gs_device, latex_file_re.sub("", latex_file), \
+                     gs_ext, alpha, alpha, resolution, pdf_file)
 
     gs_status, gs_stdout = run_command(gs_call)
     if gs_status != None:

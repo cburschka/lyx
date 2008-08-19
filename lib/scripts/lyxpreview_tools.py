@@ -11,7 +11,7 @@
 #   Paul A. Rubin, rubin@msu.edu.
 
 # A repository of the following functions, used by the lyxpreview2xyz scripts.
-# copyfileobj, error, find_exe, find_exe_or_terminate, mkstemp,
+# copyfileobj, error, find_exe, find_exe_or_terminate, make_texcolor, mkstemp,
 # run_command, warning
 
 import os, re, string, sys, tempfile
@@ -41,6 +41,22 @@ def warning(message):
 def error(message):
     sys.stderr.write(message + '\n')
     sys.exit(1)
+
+
+def make_texcolor(hexcolor, graphics):
+    # Test that the input string contains 6 hexadecimal chars.
+    hexcolor_re = re.compile("^[0-9a-fA-F]{6}$")
+    if not hexcolor_re.match(hexcolor):
+        error("Cannot convert color '%s'" % hexcolor)
+
+    red   = float(string.atoi(hexcolor[0:2], 16)) / 255.0
+    green = float(string.atoi(hexcolor[2:4], 16)) / 255.0
+    blue  = float(string.atoi(hexcolor[4:6], 16)) / 255.0
+
+    if graphics:
+        return "%f,%f,%f" % (red, green, blue)
+    else:
+        return "rgb %f %f %f" % (red, green, blue)
 
 
 def find_exe(candidates, path):

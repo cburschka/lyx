@@ -743,8 +743,19 @@ void PreviewLoader::Impl::dumpPreamble(odocstream & os) const
 
 	// Use the preview style file to ensure that each snippet appears on a
 	// fresh page.
+	// Also support PDF output (automatically generated e.g. when
+	// \usepackage[pdftex]{hyperref} is used.
 	os << "\n"
-	   << "\\usepackage[active,delayed,dvips,showlabels,lyx]{preview}\n"
+	   << "\\newif\\ifpdf\n"
+	   << "\\ifx\\pdfoutput\\undefined\n"
+	   << "\\else\\ifx\\pdfoutput\\relax\n"
+	   << "\\else\\ifnum0=\\pdfoutput\n"
+	   << "\\else\\pdftrue\\fi\\fi\\fi\n"
+	   << "\\ifpdf\n"
+	   << "  \\usepackage[active,delayed,tightpage,showlabels,lyx,pdftex]{preview}\n"
+	   << "\\else\n"
+	   << "  \\usepackage[active,delayed,showlabels,lyx,dvips]{preview}\n"
+	   << "\\fi\n"
 	   << "\n";
 }
 
