@@ -57,8 +57,12 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix instant preview when \usepackage[pdftex]{hyperref} is used in the 
+  preamble (bug 2165).
+
 - The LaTeX package amscd is now automatically loaded when creating math
   diagrams (bug 5090).
+
 
 * USER INTERFACE
 
@@ -70,6 +74,7 @@ What's new
 - Fix undo for insertion of some math elements (e.g. delimiters)
   directly from text mode (bug 2449).
 
+
 * DOCUMENTATION AND LOCALIZATION
 
 - The tex2lyx man page reflects the current state (bug 2770).
@@ -79,4 +84,4 @@ What's new
 
 - Very light Makefile cleanup. Now works with automake 10.1.
 
-- Fix the building on Mac OS X 10.5 of a binary compatible with OS X 10.4. 
+- Fix the building on Mac OS X 10.5 of a binary compatible with OS X 10.4.
