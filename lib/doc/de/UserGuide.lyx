@@ -1,4 +1,4 @@
-#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 1.
+letzte Änderung: 18.
  August 2008
 \end_layout
 
@@ -1014,7 +1014,7 @@ Neu (Strg+N)
 	filename ../../images/buffer-new.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
+	BoundingBox 0bp 6bp 24bp 24bp
 	groupId Icon
 
 \end_inset
@@ -1044,7 +1044,7 @@ Vorlage\SpecialChar \ldots{}
 	filename ../../images/file-open.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
+	BoundingBox 0bp 6bp 24bp 24bp
 	groupId Icon
 
 \end_inset
@@ -1068,34 +1068,8 @@ Speichern (Strg+S)
 	filename ../../images/buffer-write.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
- 
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-
-\noun on
-HHa
-\noun default
-: Sollten bei Ihnen einige Icons, insbesondere die schwarz-weißen, nicht
- oder schlecht gedruckt werden, beschweren Sie sich bitte bei den Entwicklern:
- 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-lyx-devel@lists.lyx.org
-\end_layout
-
-\end_inset
-
-.
-\end_layout
+	BoundingBox 0bp 6bp 24bp 24bp
+	groupId Icon
 
 \end_inset
 
@@ -1137,6 +1111,7 @@ Drucken\SpecialChar \ldots{}
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
+	groupId Icon
 
 \end_inset
 
@@ -1283,6 +1258,7 @@ Ausschneiden
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
+	groupId Icon
 
 \end_inset
 
@@ -1310,6 +1286,7 @@ Kopieren
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
+	groupId Icon
 
 \end_inset
 
@@ -1341,6 +1318,7 @@ Strg+V
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
+	groupId Icon
 
 \end_inset
 
@@ -1385,6 +1363,7 @@ Ersetzen
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
+	groupId Icon
 
 \end_inset
 
@@ -18544,7 +18523,7 @@ Abbildungen!Einstellungen gruppieren
 \end_layout
 
 \begin_layout Standard
-Jede Abbildung kann eine neu Gruppe von Abbildungseinstellungen definieren
+Jede Abbildung kann eine neue Gruppe von Abbildungseinstellungen definieren
  oder zu einer vorhandenen hinzugefügt werden.
  Abbildungen einer Gruppe haben dieselben Einstellungen, so dass die Änderung
  der Einstellungen einer Abbildung automatisch die Einstellungen aller Abbildung
@@ -36118,6 +36097,10 @@ LilyPond erstellt Notenblätter, konvertiert sie nach .pdf oder .eps, um sie
  einzufügen.
  Zur Benutzung von .eps benötigt man mindestens lilypond 2.6, zur Benutzung
  von .pdf lilypond 2.9.
+\end_layout
+
+\begin_layout Description
+PDF-Seiten fügt eine oder mehrere Seiten eines PDF-Dokumentes ein.
 \end_layout
 
 \begin_layout Description
