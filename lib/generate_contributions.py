@@ -904,6 +904,14 @@ contributers = [
                  "1 July 2007",
                  u"Bugfixes"),
 
+     contributer(u"Tetsuya Makimura",
+                 "makimura () ims ! tsukuba.ac ! jp",
+                 "GPL",
+                 "Re: Support request for Japanese without CJK, again (Re: [Fwd: About Japanese edition ...)",
+                 "m=121905769227884",
+                 "18 August 2008",
+                 u"Improvements to the Japanese language support."),
+
      contributer(u"José Matos",
                  "jamatos () fc ! up ! pt",
                  "GPL",
