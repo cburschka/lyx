@@ -972,6 +972,11 @@ bool Paragraph::Private::latexSpecialT1(char_type const c, odocstream & os,
 	case '|':
 		os.put(c);
 		return true;
+	case '\"':
+		// soul.sty breaks with \char`\"
+		os << "\\textquotedbl{}";
+		column += 14;
+		return true;
 	default:
 		return false;
 	}
