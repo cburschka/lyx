@@ -65,6 +65,9 @@ What's new
 
 - Fix inputenc error with ligature glyphs in utf8 encoding (bug 5086).
 
+- Fix LaTeX error with deleted straight quotes in change tracking mode
+  (bug 5091; only fixed for T1 font encoding).
+
 
 * USER INTERFACE
 

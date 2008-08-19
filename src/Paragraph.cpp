@@ -952,6 +952,12 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			break;
 
 		case '\"':
+			if (lyxrc.fontenc == "T1") {
+				// soul.sty breaks with \char`\"
+				os << "\\textquotedbl{}";
+				column += 14;
+				break;
+			}
 			os << "\\char`\\\"{}";
 			column += 9;
 			break;
