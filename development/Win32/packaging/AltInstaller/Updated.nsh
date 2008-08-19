@@ -7,9 +7,9 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  #File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
- #File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
+ File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
  #File "${PRODUCT_SOURCEDIR}\Resources\symbols"
- #File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
+ File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  SetOutPath "$INSTDIR\Resources\doc"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
@@ -44,7 +44,9 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  SetOutPath "$INSTDIR\Resources\scripts"
- #File "${PRODUCT_SOURCEDIR}\Resources\scripts\csv2lyx.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\scripts\lyxpreview2bitmap.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\scripts\lyxpreview_tools.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\scripts\legacy_lyxpreview2ppm.py"
  SetOutPath "$INSTDIR\Resources\templates"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\hollywood.lyx"
  SetOutPath "$INSTDIR\Resources\man\man1"
