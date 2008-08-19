@@ -171,13 +171,13 @@ End
 
 # encodings that do not use a package
 
-# Traditional Japanese TeX programs require neither CJK nor inputenc
-# package.
-Encoding euc-jp-plain EUC-JP-pLaTeX "Japanese (pLaTeX, EUC-JP)" EUC-JP variable japanese
+# Traditional Japanese TeX programs require the japanese package.
+# that is incompatible with CJK and inputenc.
+Encoding euc-jp-plain EUC-JP-pLaTeX "Japanese (non-CJK) (EUC-JP)" EUC-JP variable japanese
 End
-Encoding jis-plain JIS-pLaTeX "Japanese (pLaTeX, JIS)" ISO-2022-JP variable japanese
+Encoding jis-plain JIS-pLaTeX "Japanese (non-CJK) (JIS)" ISO-2022-JP variable japanese
 End
-Encoding shift-jis-plain SJIS-pLaTeX "Japanese (pLaTeX, SJIS)" CP932 variable japanese
+Encoding shift-jis-plain SJIS-pLaTeX "Japanese (non-CJK) (SJIS)" CP932 variable japanese
 End
 
 # This one needs hardcoded support, since the inputenc package does not know
