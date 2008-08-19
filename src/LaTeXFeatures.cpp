@@ -585,7 +585,7 @@ string const LaTeXFeatures::getPackages() const
 
 	// setspace.sty
 	if (mustProvide("setspace") && !tclass.provides("SetSpace"))
-    packages << "\\usepackage{setspace}\n";
+		packages << "\\usepackage{setspace}\n";
 
 	// amssymb.sty
 	if (mustProvide("amssymb")
