@@ -918,9 +918,11 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 				open_encoding_ = none;
 				count += 7;
 			}
-			if (runparams.local_font != 0 && oldEnc.package() == Encoding::CJK) {
-				// within insets, \inputenc switches need to be 
-				// embraced within \bgroup ... \egroup; else CJK fails.
+			if (runparams.local_font != 0
+			    && oldEnc.package() == Encoding::CJK) {
+				// within insets, \inputenc switches need
+				// to be embraced within \bgroup...\egroup;
+				// else CJK fails.
 				os << "\\bgroup";
 				count += 7;
 				open_encoding_ = inputenc;
