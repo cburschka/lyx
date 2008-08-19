@@ -1872,8 +1872,8 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 		set<string> encodings =
 			features.getEncodingSet(doc_encoding);
 
-		// If the encodings EUC-JP-plain, JIS-plain, or SJIS-plain are used, the
-		// package inputenc must be omitted. Therefore set the encoding to empty.
+		// If the "japanese" package (i.e. pLaTeX) is used,
+		// inputenc must be omitted.
 		// see http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
 		if (package == Encoding::japanese)
 		     features.require("japanese");
