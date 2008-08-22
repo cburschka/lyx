@@ -36,7 +36,14 @@ InsetNomencl::InsetNomencl(InsetCommandParams const & p)
 
 docstring const InsetNomencl::getScreenLabel(Buffer const &) const
 {
-	return _("Nom");
+	size_t const maxLabelChars = 25;
+
+	docstring label = _("Nom: ") + getParam("symbol");
+	if (label.size() > maxLabelChars) {
+		label.erase(maxLabelChars - 3);
+		label += "...";
+	}
+	return label;
 }
 
 
