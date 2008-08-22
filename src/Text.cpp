@@ -218,21 +218,9 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 	} else if (token == "\\InsetSpace" || token == "\\SpecialChar") {
 
 		// Insets don't make sense in a free-spacing context! ---Kayvan
-		if (par.isFreeSpacing()) {
-			if (token == "\\InsetSpace")
+		if (par.isFreeSpacing() && token == "\\InsetSpace")
 				par.insertChar(par.size(), ' ', font, change);
-			else if (lex.isOK()) {
-				lex.next();
-				string const next_token = lex.getString();
-				if (next_token == "\\-")
-					par.insertChar(par.size(), '-', font, change);
-				else {
-					lex.printError("Token `$$Token' "
-						       "is in free space "
-						       "paragraph layout!");
-				}
-			}
-		} else {
+		else {
 			auto_ptr<Inset> inset;
 			if (token == "\\SpecialChar" )
 				inset.reset(new InsetSpecialChar);
