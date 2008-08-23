@@ -261,7 +261,7 @@ int LaTeX::run(TeXErrors & terr)
 	if (head.haschanged(idxfile)) {
 		// no checks for now
 		LYXERR(Debug::LATEX, "Running MakeIndex.");
-		message(_("Running MakeIndex."));
+		message(_("Running Index Processor."));
 		// onlyFilename() is needed for cygwin
 		rerun |= runMakeIndex(onlyFilename(idxfile.absFilename()),
 				runparams);
@@ -335,7 +335,7 @@ int LaTeX::run(TeXErrors & terr)
 	if (head.haschanged(idxfile)) {
 		// no checks for now
 		LYXERR(Debug::LATEX, "Running MakeIndex.");
-		message(_("Running MakeIndex."));
+		message(_("Running Index Processor."));
 		// onlyFilename() is needed for cygwin
 		rerun = runMakeIndex(onlyFilename(changeExtension(
 				file.absFilename(), ".idx")), runparams);
@@ -416,12 +416,14 @@ bool LaTeX::runMakeIndexNomencl(FileName const & file,
 {
 	LYXERR(Debug::LATEX, "Running MakeIndex for nomencl.");
 	message(_("Running MakeIndex for nomencl."));
+	string tmp = lyxrc.nomencl_command + ' ';
 	// onlyFilename() is needed for cygwin
-	string const nomenclstr = " -s nomencl.ist -o "
+	tmp += quoteName(onlyFilename(changeExtension(file.absFilename(), nlo)));
+	tmp += " -o "
 		+ onlyFilename(changeExtension(file.toFilesystemEncoding(), nls));
-	return runMakeIndex(
-			onlyFilename(changeExtension(file.absFilename(), nlo)),
-			runparams, nomenclstr);
+	Systemcall one;
+	one.startscript(Systemcall::Wait, tmp);
+	return true;
 }
 
 
