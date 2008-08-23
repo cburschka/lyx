@@ -23,15 +23,17 @@
 
 #include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/lstrings.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
 
 /////////////////////////////////////////////////////////////////////
 //
-// InsetPrintNomencl
+// InsetNomencl
 //
 /////////////////////////////////////////////////////////////////////
 
@@ -64,6 +66,18 @@ docstring InsetNomencl::screenLabel() const
 	}
 	return label;
 }
+
+
+docstring InsetNomencl::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) const
+{
+	docstring tip = _("Nomenclature Symbol: ") + getParam("symbol") + "\n";
+	tip += _("Description: ") + "\t"
+		+ subst(getParam("description"), from_ascii("\\\\"), from_ascii("\n\t"));
+	if (!getParam("prefix").empty())
+		tip += "\n" + _("Sorting: ") + getParam("prefix");
+	return tip;
+}
+
 
 
 int InsetNomencl::docbook(odocstream & os, OutputParams const &) const

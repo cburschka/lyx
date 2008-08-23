@@ -30,6 +30,8 @@ public:
 	///
 	docstring screenLabel() const;
 	///
+	docstring toolTip(BufferView const & bv, int x, int y) const;
+	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
