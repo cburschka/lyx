@@ -13,7 +13,6 @@
 
 #include "InsetNewline.h"
 
-#include "Buffer.h"
 #include "Dimension.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -143,8 +142,6 @@ ColorCode InsetNewline::ColorName() const
 
 int InsetNewline::latex(odocstream & os, OutputParams const &) const
 {
-	LYXERR0("Code: " << buffer().inset().lyxCode());
-	
 	switch (params_.kind) {
 		case InsetNewlineParams::NEWLINE:
 			os << "\\\\\n";
