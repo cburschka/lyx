@@ -33,6 +33,7 @@
 #include "Language.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
+#include "LyXVC.h"
 #include "MetricsInfo.h"
 #include "qt_helpers.h"
 #include "Text.h"
@@ -1146,6 +1147,8 @@ void GuiWorkArea::updateWindowTitle()
 	if (!fileName.empty()) {
 		maximize_title = fileName.displayName(30);
 		minimize_title = from_utf8(fileName.onlyFileName());
+		if (buf.lyxvc().inUse())
+			maximize_title +=  _(" (version control)");
 		if (!buf.isClean()) {
 			maximize_title += _(" (changed)");
 			minimize_title += char_type('*');
