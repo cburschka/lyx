@@ -99,7 +99,7 @@ void InsetMathFBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	cell(0).metrics(mi, dim);
-	metricsMarkers(dim, 3); // 1 pixel space, 1 frame, 1 space
+	metricsMarkers2(dim, 3); // 1 pixel space, 1 frame, 1 space
 }
 
 
