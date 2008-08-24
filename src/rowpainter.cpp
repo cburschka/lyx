@@ -95,7 +95,7 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 {
 	Font const font = text_metrics_.displayFont(pit_, pos);
 
-	LASSERT(inset, /**/);
+	LASSERT(inset, return);
 	// Backup full_repaint status because some insets (InsetTabular)
 	// requires a full repaint
 	bool pi_full_repaint = pi_.full_repaint;
