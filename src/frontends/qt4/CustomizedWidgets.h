@@ -32,7 +32,7 @@ public:
 	ShortcutWidget(QWidget * parent);
 	void reset();
 	bool eventFilter(QObject*, QEvent* e );
-	lyx::KeySequence const getKeySequence() const;
+	KeySequence const getKeySequence() const;
 	void setKeySequence(lyx::KeySequence const s);
 	void removeFromSequence();
 protected Q_SLOTS:
@@ -40,7 +40,7 @@ protected Q_SLOTS:
 	void keyPressEvent(QKeyEvent * e);
 private:
 	void appendToSequence(QKeyEvent * e);
-	lyx::KeySequence keysequence_;
+	KeySequence keysequence_;
 	bool has_cursor_;
 };
 
