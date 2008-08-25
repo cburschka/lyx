@@ -40,6 +40,7 @@ private Q_SLOTS:
 	void sortToggled(bool);
 	void updateClicked();
 	void reset_dialog();
+	void dialog_rejected();
 
 private:
 	///

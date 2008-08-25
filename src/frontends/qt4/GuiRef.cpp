@@ -59,7 +59,7 @@ GuiRef::GuiRef(GuiView & lv)
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(reset_dialog()));
-	connect(this, SIGNAL(rejected()), this, SLOT(reset_dialog()));
+	connect(this, SIGNAL(rejected()), this, SLOT(dialog_rejected()));
 
 	connect(typeCO, SIGNAL(activated(int)),
 		this, SLOT(changed_adaptor()));
@@ -175,6 +175,15 @@ void GuiRef::sortToggled(bool on)
 void GuiRef::updateClicked()
 {
 	updateRefs();
+}
+
+
+void GuiRef::dialog_rejected()
+{
+	reset_dialog();
+	// We have to do this manually, instead of calling slotClose(), because
+	// the dialog has already been made invisible before rejected() triggers.
+	Dialog::disconnect();
 }
 
 
