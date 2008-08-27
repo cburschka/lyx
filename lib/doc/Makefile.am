@@ -273,15 +273,16 @@ doc_files = \
 	    $(dist_hudoc_DATA) \
 	    $(dist_itdoc_DATA) \
 	    $(dist_jadoc_DATA) \
-	    $(dist_nldoc_DATA) \
 	    $(dist_nbdoc_DATA) \
+	    $(dist_nldoc_DATA) \
 	    $(dist_pldoc_DATA) \
 	    $(dist_ptdoc_DATA) \
 	    $(dist_rodoc_DATA) \
 	    $(dist_rudoc_DATA) \
 	    $(dist_skdoc_DATA) \
 	    $(dist_sldoc_DATA) \
-	    $(dist_svdoc_DATA)
+	    $(dist_svdoc_DATA) \
+	    $(dist_ukdoc_DATA)
 
 DEPENDFILE = $(srcdir)/Makefile.depend
 # include $(DEPENDFILE) does not work because automake is too limited.
