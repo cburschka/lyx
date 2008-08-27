@@ -32,8 +32,8 @@ using support::externalLineEnding;
 
 
 GuiSelection::GuiSelection()
-	: selection_supported_(qApp->clipboard()->supportsSelection()),
-	schedule_check_(true)
+	: schedule_check_(true),
+	selection_supported_(qApp->clipboard()->supportsSelection())
 {
 	connect(qApp->clipboard(), SIGNAL(selectionChanged()),
 		this, SLOT(on_dataChanged()));
