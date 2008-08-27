@@ -1,4 +1,4 @@
-#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.7svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -120,7 +120,7 @@ vom LyX-Team
 \size normal
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -182,8 +182,8 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 21.
- Mai 2008
+letzte Änderung: 23.
+ August 2008
 \end_layout
 
 \begin_layout Standard
@@ -2631,20 +2631,6 @@ sequential numbering
 unnumbered
 \series default
  verzichtet vollständig auf die Nummerierung.
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-
-\family typewriter
-sloppypar
-\family default
- wird hier benötigt, weil LaTeX sonst über den Rand hinaus schreibt.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
@@ -4359,8 +4345,8 @@ key "latex-einführung"
 
 \end_inset
 
-, S.\InsetSpace \space{}
-21 und S.\InsetSpace \space{}
+, S.\InsetSpace \thinspace{}
+21 und S.\InsetSpace \thinspace{}
 101.
  LaTeX hat offensichtlich Probleme, den Schreibmaschinenfont richtig umzubrechen.
 \newline
@@ -8627,12 +8613,18 @@ Der beste Weg zu erklären, was Sie mit schachteln erreichen können, sind
  Wir haben mehrere mit geschachtelten Umgebungen.
  Darin erklären wir, wie wir sie erzeugt haben, so dass Sie sie reproduzieren
  können.
+\begin_inset LatexCommand label
+name "Sloppypar"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
 Beispiel 1: Sechsfache und gemischte Schachtelung
-\begin_inset LatexCommand index
-name "Schachtelungs!-beispiele"
+\begin_inset LatexCommand label
+name "Beispiele"
 
 \end_inset
 
@@ -14168,14 +14160,13 @@ Sie setzen den Abschnitt, in dem sich das zusammengesetzte Wort befindet,
 \family typewriter
 sloppypar
 \family default
- (siehe Abschnitt\InsetSpace \space{}
-
-\begin_inset LatexCommand vref
-reference "Sloppypar"
+ wie 
+\begin_inset LatexCommand vpageref
+reference "Beispiele"
 
 \end_inset
 
-).
+.
 \end_layout
 
 \begin_layout Paragraph
@@ -14366,8 +14357,8 @@ key "latex-einführung"
 
 \end_inset
 
-, S.
- 405) innerhalb von Abkürzungen.
+, S.\InsetSpace \thinspace{}
+405) innerhalb von Abkürzungen.
 \end_layout
 
 \begin_layout Enumerate
@@ -14404,15 +14395,6 @@ B.
 \begin_layout Itemize
 Dies bin ICH\SpecialChar \@.
  Hier ist zu wenig.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Anmerkung
-\series default
-: Da diese Effekte im Deutschen NICHT zu sehen sind, habe ich die Beispiele
- als Englisch markiert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -26360,7 +26342,7 @@ Die Datenbank ist eine Textdatei mit der Endung
 .bib
 \family default
  und enthält das Literaturverzeichnis in einem eigenen Format.
- Diese wird in LaTeX-Bücher beschrieben (
+ Diese wird in LaTeX-Büchern beschrieben (
 \begin_inset LatexCommand cite
 key "Mittelbach,Kopka,Lamport"
 
@@ -35853,7 +35835,7 @@ status collapsed
 Eine Einführung in die LaTeX-Syntax finden Sie in Abschnitt\InsetSpace \space{}
 
 \begin_inset LatexCommand vref
-reference "ERT"
+reference "LaTeX-Syntax"
 
 \end_inset
 
