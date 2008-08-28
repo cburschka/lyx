@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-08-27 21:45+0200\n"
+"POT-Creation-Date: 2008-08-28 16:01+0100\n"
 "PO-Revision-Date: 2008-08-27 02:33+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -1134,7 +1134,8 @@ msgstr "Mìøítk&o (%):"
 
 #: src/frontends/qt4/ui/FontUi.ui:165
 msgid "Scale the Sans Serif font to match the base font's dimensions"
-msgstr "Zmìnit mìøítko bezpatkového fontu tak, aby odpovídal rozmìru základního fontu"
+msgstr ""
+"Zmìnit mìøítko bezpatkového fontu tak, aby odpovídal rozmìru základního fontu"
 
 #: src/frontends/qt4/ui/FontUi.ui:178
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:117
@@ -1161,7 +1162,9 @@ msgstr "&Mìøítko (%):"
 
 #: src/frontends/qt4/ui/FontUi.ui:222
 msgid "Scale the Typewriter font to match the base font's dimensions"
-msgstr "Zmìnit mìøítko strojopisného fontu tak, aby odpovídal rozmìru základního fontu"
+msgstr ""
+"Zmìnit mìøítko strojopisného fontu tak, aby odpovídal rozmìru základního "
+"fontu"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:136
 msgid "&Graphics"
@@ -1271,8 +1274,8 @@ msgid ""
 "Enable LyX to preview this graphics, only if graphics previewing is not "
 "disabled at application level (see Preference dialog)."
 msgstr ""
-"Zapnout náhled tohoto obrázku. Pouze v pøípadì ¾e náhled obrázkù není"
-"vypnutý v Nastaveních."
+"Zapnout náhled tohoto obrázku. Pouze v pøípadì ¾e náhled obrázkù nenívypnutý "
+"v Nastaveních."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:607
 msgid "Sho&w in LyX"
@@ -15592,8 +15595,8 @@ msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
 msgstr ""
-"Definuje volby programu makeindex pou¾ívané pro nomenklatury. "
-"Ty se mohou li¹it od voleb pro generování rejstøíku."
+"Definuje volby programu makeindex pou¾ívané pro nomenklatury. Ty se mohou "
+"li¹it od voleb pro generování rejstøíku."
 
 #: src/LyXRC.cpp:2563
 msgid ""
@@ -17490,8 +17493,7 @@ msgstr "Je potøeba restartovat LyX!"
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
-msgstr ""
-"Zmìna u¾ivatelského rozhraní bude plnì aktivní pouze po restartu LyXu."
+msgstr "Zmìna u¾ivatelského rozhraní bude plnì aktivní pouze po restartu LyXu."
 
 #: src/frontends/qt4/GuiPrefs.cpp:1780
 msgid "Printer"
