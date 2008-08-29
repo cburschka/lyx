@@ -517,9 +517,9 @@ void GuiPainter::underline(FontInfo const & f, int x, int y, int width)
 	int const height = max((fm.maxDescent() / 4) - 1, 1);
 
 	if (height < 2)
-		line(x, y + below, x + width, y + below, f.color());
+		line(x, y + below, x + width, y + below, f.realColor());
 	else
-		fillRectangle(x, y + below, width, below + height, f.color());
+		fillRectangle(x, y + below, width, below + height, f.realColor());
 }
 
 
@@ -534,7 +534,7 @@ void GuiPainter::dashedUnderline(FontInfo const & f, int x, int y, int width)
 		height += below;
 
 	for (int n = 0; n != height; ++n)
-		line(x, y + below + n, x + width, y + below + n, f.color(), line_onoffdash);
+		line(x, y + below + n, x + width, y + below + n, f.realColor(), line_onoffdash);
 }
 
 } // namespace frontend
