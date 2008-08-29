@@ -86,9 +86,11 @@ int InsetHyperlink::latex(odocstream & os, OutputParams const & runparams) const
 		}
 
 		// add "http://" when the type is web (type = empty)
-		// and no "://" is given
+		// and no "://" or "run:" is given
 		docstring type = getParam("type");
-		if (url.find(from_ascii("://")) == string::npos	&& type == "")
+		if (url.find(from_ascii("://")) == string::npos
+			&& url.find(from_ascii("run:")) == string::npos
+			&& type == "")
 			url = from_ascii("http://") + url;
 
 	} // end if (!url.empty())
