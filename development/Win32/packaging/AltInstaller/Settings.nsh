@@ -18,13 +18,14 @@
 !define PRODUCT_ABOUT_URL "http://www.lyx.org/about/"
 !define PRODUCT_INFO_URL "http://www.lyx.org/"
 !define LAUNCHER_EXE "$INSTDIR\bin\LyXLauncher.exe"
+!define INSTALLER_SUBVERSION "08"
 
-BrandingText "LyXWinInstaller v4.08 - ${INSTALLER_VERSION}"
+BrandingText "LyXWinInstaller v4.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 
 # to check later if this installer version is running at the same time
-!define INSTALLER_EXE "LyX-${PRODUCT_VERSION_SHORT}-4-08-AltInstaller-${INSTALLER_VERSION}.exe"
-!define INSTALLER2_EXE "LyX-${PRODUCT_VERSION_SHORT}-4-08-AltInstaller-${INSTALLER2_VERSION}.exe"
-!define INSTALLER3_EXE "LyX-${PRODUCT_VERSION_SHORT}-4-08-AltInstaller-${INSTALLER3_VERSION}.exe"
+!define INSTALLER_EXE "LyX-${PRODUCT_VERSION_SHORT}-4-${INSTALLER_SUBVERSION}-AltInstaller-${INSTALLER_VERSION}.exe"
+!define INSTALLER2_EXE "LyX-${PRODUCT_VERSION_SHORT}-4-${INSTALLER_SUBVERSION}-AltInstaller-${INSTALLER2_VERSION}.exe"
+!define INSTALLER3_EXE "LyX-${PRODUCT_VERSION_SHORT}-4-${INSTALLER_SUBVERSION}-AltInstaller-${INSTALLER3_VERSION}.exe"
 !define VERSION_BITMAP "${PRODUCT_DIR}\icons\lyx_logo_vert${PRODUCT_VERSION_SHORT}.bmp"
 
 # Replaced by HKLM or HKCU depending on SetShellVarContext.
@@ -41,7 +42,7 @@ BrandingText "LyXWinInstaller v4.08 - ${INSTALLER_VERSION}"
 !if ${INSTALLER_VERSION} == "Update"
  !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX16svn3"
  !define PRODUCT_VERSION_OLD "LyX 1.6.0rc1"
- !define PRODUCT_VERSION_SHORT_OLD "16beta4"
+ !define PRODUCT_VERSION_SHORT_OLD "16rc1"
  !define JabRefVersion "2.3.1" # could be an older version
  !define ImageMagickVersion_Old "6.4.2" # could be an older version
  !define GhostscriptVersion_Old "8.62" # could be an older version
