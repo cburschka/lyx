@@ -109,18 +109,8 @@ docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
 	Dimension dim = dimensionCollapsed();
 	if (geometry() == NoButton)
 		return translateIfPossible(layout_->labelstring());
-	if (x > xo(bv) + dim.wid || y > yo(bv) + dim.des)
+	if (x > xo(bv) + dim.wid || y > yo(bv) + dim.des || isOpen())
 		return docstring();
-
-	docstring default_tip;
-	switch (status_) {
-	case Open:
-		default_tip = _("Left-click to collapse the inset");
-		break;
-	case Collapsed:
-		default_tip = _("Left-click to open the inset");
-		break;
-	}
 
 	OutputParams rp(&buffer().params().encoding());
 	odocstringstream ods;
@@ -129,9 +119,7 @@ docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
 	// shorten it if necessary
 	if (content_tip.size() > 200)
 		content_tip = content_tip.substr(0, 200) + "...";
-	if (!isOpen() && !content_tip.empty())
-		return content_tip + '\n' + default_tip;
-	return default_tip;
+	return content_tip;
 }
 
 
