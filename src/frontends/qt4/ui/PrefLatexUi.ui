@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>QPrefLatexUi</class>
  <widget class="QWidget" name="QPrefLatexUi" >
   <property name="geometry" >
@@ -9,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>427</width>
-    <height>285</height>
+    <height>329</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -22,16 +19,6 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="2" column="0" colspan="3" >
-    <widget class="QCheckBox" name="latexAutoresetCB" >
-     <property name="toolTip" >
-      <string>Set class options to default on class change</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Reset class options when document class changes</string>
-     </property>
-    </widget>
-   </item>
    <item row="4" column="0" colspan="3" >
     <spacer>
      <property name="orientation" >
@@ -43,33 +30,126 @@
      <property name="sizeHint" >
       <size>
        <width>409</width>
-       <height>75</height>
+       <height>16</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="latexPaperSizeLA" >
-     <property name="text" >
-      <string>Default paper si&amp;ze:</string>
+   <item row="3" column="0" colspan="3" >
+    <widget class="QGroupBox" name="GroupBox3" >
+     <property name="title" >
+      <string>External Applications</string>
      </property>
-     <property name="buddy" >
-      <cstring>latexPaperSizeCO</cstring>
-     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="3" column="0" >
+       <widget class="QLabel" name="latexNomenclLA" >
+        <property name="text" >
+         <string>&amp;Nomenclature command:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>latexDviPaperED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" >
+       <widget class="QLineEdit" name="latexNomenclED" >
+        <property name="toolTip" >
+         <string>Command and options for nomencl processing (usually makeindex)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="latexIndexLA" >
+        <property name="text" >
+         <string>Index command:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>latexDviPaperED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="QLineEdit" name="latexIndexED" >
+        <property name="toolTip" >
+         <string>Index command and options (makeindex, xindy)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" >
+       <widget class="QLineEdit" name="latexDviPaperED" >
+        <property name="toolTip" >
+         <string>Optional paper size flag (-paper) for some DVI viewers</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" >
+       <widget class="QLabel" name="latexDviPaperLA" >
+        <property name="text" >
+         <string>DVI viewer paper size options:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>latexDviPaperED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="latexBibtexLA" >
+        <property name="text" >
+         <string>&amp;BibTeX command:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>latexChecktexED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLineEdit" name="latexBibtexED" >
+        <property name="toolTip" >
+         <string>BibTeX command and options</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="latexChecktexLA" >
+        <property name="text" >
+         <string>Chec&amp;kTeX command:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>latexChecktexED</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLineEdit" name="latexChecktexED" >
+        <property name="toolTip" >
+         <string>CheckTeX start options and flags</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="latexEncodingLA" >
-     <property name="text" >
-      <string>Te&amp;X encoding:</string>
+   <item rowspan="2" row="0" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
      </property>
-     <property name="buddy" >
-      <cstring>latexEncodingED</cstring>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
      </property>
-    </widget>
-   </item>
-   <item row="0" column="1" >
-    <widget class="QLineEdit" name="latexEncodingED" />
+     <property name="sizeHint" >
+      <size>
+       <width>178</width>
+       <height>54</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item row="1" column="1" >
     <widget class="QComboBox" name="latexPaperSizeCO" >
@@ -115,111 +195,41 @@
      </item>
     </widget>
    </item>
-   <item rowspan="2" row="0" column="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>178</width>
-       <height>54</height>
-      </size>
-     </property>
-    </spacer>
+   <item row="0" column="1" >
+    <widget class="QLineEdit" name="latexEncodingED" />
    </item>
-   <item row="3" column="0" colspan="3" >
-    <widget class="QGroupBox" name="GroupBox3" >
-     <property name="title" >
-      <string>External Applications</string>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="latexEncodingLA" >
+     <property name="text" >
+      <string>Te&amp;X encoding:</string>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>11</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="0" column="1" >
-       <widget class="QLineEdit" name="latexChecktexED" >
-        <property name="toolTip" >
-         <string>CheckTeX start options and flags</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="latexChecktexLA" >
-        <property name="text" >
-         <string>Chec&amp;kTeX command:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>latexChecktexED</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" >
-       <widget class="QLineEdit" name="latexBibtexED" >
-        <property name="toolTip" >
-         <string>BibTeX command and options</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="latexBibtexLA" >
-        <property name="text" >
-         <string>&amp;BibTeX command:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>latexChecktexED</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1" >
-       <widget class="QLineEdit" name="latexIndexED" >
-        <property name="toolTip" >
-         <string>Index command and options (makeindex, xindy)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="latexIndexLA" >
-        <property name="text" >
-         <string>Index command:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>latexDviPaperED</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0" >
-       <widget class="QLabel" name="latexDviPaperLA" >
-        <property name="text" >
-         <string>DVI viewer paper size options:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>latexDviPaperED</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1" >
-       <widget class="QLineEdit" name="latexDviPaperED" >
-        <property name="toolTip" >
-         <string>Optional paper size flag (-paper) for some DVI viewers</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <property name="buddy" >
+      <cstring>latexEncodingED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLabel" name="latexPaperSizeLA" >
+     <property name="text" >
+      <string>Default paper si&amp;ze:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>latexPaperSizeCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3" >
+    <widget class="QCheckBox" name="latexAutoresetCB" >
+     <property name="toolTip" >
+      <string>Set class options to default on class change</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Reset class options when document class changes</string>
+     </property>
     </widget>
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <tabstops>
   <tabstop>latexEncodingED</tabstop>
   <tabstop>latexPaperSizeCO</tabstop>
@@ -227,6 +237,9 @@
   <tabstop>latexChecktexED</tabstop>
   <tabstop>latexDviPaperED</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>

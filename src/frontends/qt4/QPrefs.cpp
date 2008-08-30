@@ -329,6 +329,7 @@ void PrefLatex::apply(LyXRC & rc) const
 	rc.chktex_command = fromqstr(latexChecktexED->text());
 	rc.bibtex_command = fromqstr(latexBibtexED->text());
 	rc.index_command = fromqstr(latexIndexED->text());
+	rc.nomencl_command = fromqstr(latexNomenclED->text());
 	rc.auto_reset_options = latexAutoresetCB->isChecked();
 	rc.view_dvi_paper_option = fromqstr(latexDviPaperED->text());
 	rc.default_papersize =
@@ -342,6 +343,7 @@ void PrefLatex::update(LyXRC const & rc)
 	latexChecktexED->setText(toqstr(rc.chktex_command));
 	latexBibtexED->setText(toqstr(rc.bibtex_command));
 	latexIndexED->setText(toqstr(rc.index_command));
+	latexNomenclED->setText(toqstr(rc.nomencl_command));
 	latexAutoresetCB->setChecked(rc.auto_reset_options);
 	latexDviPaperED->setText(toqstr(rc.view_dvi_paper_option));
 	latexPaperSizeCO->setCurrentIndex(

@@ -460,12 +460,14 @@ bool LaTeX::runMakeIndexNomencl(FileName const & file,
 {
 	LYXERR(Debug::LATEX) << "Running MakeIndex for nomencl." << endl;
 	message(_("Running MakeIndex for nomencl."));
+	string tmp = lyxrc.nomencl_command + ' ';
 	// onlyFilename() is needed for cygwin
-	string const nomenclstr = " -s nomencl.ist -o "
+	tmp += quoteName(onlyFilename(changeExtension(file.absFilename(), nlo)));
+	tmp += " -o "
 		+ onlyFilename(changeExtension(file.toFilesystemEncoding(), nls));
-	return runMakeIndex(
-			onlyFilename(changeExtension(file.absFilename(), nlo)),
-			runparams, nomenclstr);
+	Systemcall one;
+	one.startscript(Systemcall::Wait, tmp);
+	return true;
 }
 
 

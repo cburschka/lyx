@@ -111,6 +111,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\mac_like_word_movement", LyXRC::RC_MAC_LIKE_WORD_MOVEMENT },
 	{ "\\make_backup", LyXRC::RC_MAKE_BACKUP },
 	{ "\\mark_foreign_language", LyXRC::RC_MARK_FOREIGN_LANGUAGE },
+	{ "\\nomencl_command", LyXRC::RC_NOMENCL_COMMAND },
 	{ "\\num_lastfiles", LyXRC::RC_NUMLASTFILES },
 	{ "\\path_prefix", LyXRC::RC_PATH_PREFIX },
 	{ "\\personal_dictionary", LyXRC::RC_PERS_DICT },
@@ -218,6 +219,7 @@ void LyXRC::setDefaults() {
 	bibtex_command = "bibtex";
 	fontenc = "default";
 	index_command = "makeindex -c -q";
+	nomencl_command = "makeindex -s nomencl.ist";
 	dpi = 75;
 	// Because a screen typically is wider than a piece of paper:
 	zoom = 150;
@@ -619,6 +621,12 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_INDEX_COMMAND:
 			if (lexrc.next(true)) {
 				index_command = lexrc.getString();
+			}
+			break;
+
+		case RC_NOMENCL_COMMAND:
+			if (lexrc.next(true)) {
+				nomencl_command = lexrc.getString();
 			}
 			break;
 
@@ -1364,6 +1372,11 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		if (ignore_system_lyxrc ||
 		    index_command != system_lyxrc.index_command) {
 			os << "\\index_command \"" << escapeCommand(index_command) << "\"\n";
+		}
+	case RC_NOMENCL_COMMAND:
+		if (ignore_system_lyxrc ||
+		    nomencl_command != system_lyxrc.nomencl_command) {
+			os << "\\nomencl_command \"" << escapeCommand(nomencl_command) << "\"\n";
 		}
 	case RC_TEX_EXPECTS_WINDOWS_PATHS:
 		if (ignore_system_lyxrc ||
@@ -2225,6 +2238,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_INDEX_COMMAND:
 		str = _("Define the options of makeindex (cf. man makeindex) or select an alternative compiler. E.g., using xindy/make-rules, the command string would be \"makeindex.sh -m $$lang\".");
+		break;
+
+	case RC_NOMENCL_COMMAND:
+		str = _("Define the options of makeindex (cf. man makeindex) to be used for nomenclatures. This might differ from the index processing options.");
 		break;
 
 	case RC_INPUT:

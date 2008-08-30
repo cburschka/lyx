@@ -85,6 +85,7 @@ public:
 		RC_LOADSESSION,
 		RC_MAKE_BACKUP,
 		RC_MARK_FOREIGN_LANGUAGE,
+		RC_NOMENCL_COMMAND,
 		RC_NUMLASTFILES,
 		RC_PATH_PREFIX,
 		RC_PERS_DICT,
@@ -223,6 +224,8 @@ public:
 	std::string bibtex_command;
 	/// command to run makeindex incl. options or other index programs
 	std::string index_command;
+	/// command to run makeindex incl. options for nomencl
+	std::string nomencl_command;
 	///
 	std::string document_path;
 	///
