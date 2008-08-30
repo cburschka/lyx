@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-08-23 10:41+0200\n"
+"POT-Creation-Date: 2008-08-30 17:59+0200\n"
 "PO-Revision-Date: 2008-07-23 09:43+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -465,7 +465,7 @@ msgstr "Ро&змір:"
 #: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ExternalUi.ui:192
 #: src/frontends/qt4/ui/GraphicsUi.ui:620
 #: src/frontends/qt4/ui/ParagraphUi.ui:255
-#: src/frontends/qt4/ui/PrefLatexUi.ui:78
+#: src/frontends/qt4/ui/PrefLatexUi.ui:158
 #: src/frontends/qt4/ui/TabularUi.ui:707 src/frontends/qt4/ui/TabularUi.ui:726
 #: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:85
 #: src/Font.cpp:522 src/frontends/controllers/ControlDocument.cpp:48
@@ -600,7 +600,7 @@ msgstr "Серія шрифтів"
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:117
 #: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:587
-#: src/frontends/qt4/QPrefs.cpp:1639
+#: src/frontends/qt4/QPrefs.cpp:1641
 msgid "Language"
 msgstr "Мова"
 
@@ -2012,86 +2012,95 @@ msgstr "Автоматично &закінчувати"
 msgid "Mark &foreign languages"
 msgstr "Мітити &інші мови"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:28
-msgid "Set class options to default on class change"
-msgstr "Встановити параметри класу типовий при зміні класу"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:31
-msgid "&Reset class options when document class changes"
-msgstr "&Скинути параметри класу при зміні класу документа"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:54
-msgid "Default paper si&ze:"
-msgstr "&Звичайний розмір паперу:"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:64
-msgid "Te&X encoding:"
-msgstr "Кодування Te&X:"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:355
-msgid "US letter"
-msgstr "US letter"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:356
-msgid "US legal"
-msgstr "US legal"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:357
-msgid "US executive"
-msgstr "US executive"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:358
-msgid "A3"
-msgstr "A3"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:359
-msgid "A4"
-msgstr "A4"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:360
-msgid "A5"
-msgstr "A5"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:363
-msgid "B5"
-msgstr "B5"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:137
+#: src/frontends/qt4/ui/PrefLatexUi.ui:41
 msgid "External Applications"
 msgstr "Зовнішні програми"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:149
-msgid "CheckTeX start options and flags"
-msgstr "Початкові параметри і прапорці CheckTeX"
+#: src/frontends/qt4/ui/PrefLatexUi.ui:53
+#, fuzzy
+msgid "&Nomenclature command:"
+msgstr "Номенклатура"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:156
-msgid "Chec&kTeX command:"
-msgstr "Команда Chec&kTeX:"
+#: src/frontends/qt4/ui/PrefLatexUi.ui:63
+msgid "Command and options for nomencl processing (usually makeindex)"
+msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:166
-msgid "BibTeX command and options"
-msgstr "Пакети і параметри LaTeX"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:173
-msgid "&BibTeX command:"
-msgstr "Команда &BibTeX:"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:183
-msgid "Index command and options (makeindex, xindy)"
-msgstr "Команди індексації та опції (makeindex, xindy)"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:190
+#: src/frontends/qt4/ui/PrefLatexUi.ui:70
 msgid "Index command:"
 msgstr "Команда індексування:"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:200
-msgid "DVI viewer paper size options:"
-msgstr "Параметри розміру паперу переглядач DVI:"
+#: src/frontends/qt4/ui/PrefLatexUi.ui:80
+msgid "Index command and options (makeindex, xindy)"
+msgstr "Команди індексації та опції (makeindex, xindy)"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:210
+#: src/frontends/qt4/ui/PrefLatexUi.ui:87
 msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr ""
 "Додатковий прапорець розміру паперу (-paper) для деяких переглядачів DVI"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:94
+msgid "DVI viewer paper size options:"
+msgstr "Параметри розміру паперу переглядач DVI:"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:104
+msgid "&BibTeX command:"
+msgstr "Команда &BibTeX:"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:114
+msgid "BibTeX command and options"
+msgstr "Пакети і параметри LaTeX"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:121
+msgid "Chec&kTeX command:"
+msgstr "Команда Chec&kTeX:"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:131
+msgid "CheckTeX start options and flags"
+msgstr "Початкові параметри і прапорці CheckTeX"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:163 src/frontends/qt4/QDocument.cpp:355
+msgid "US letter"
+msgstr "US letter"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:168 src/frontends/qt4/QDocument.cpp:356
+msgid "US legal"
+msgstr "US legal"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:173 src/frontends/qt4/QDocument.cpp:357
+msgid "US executive"
+msgstr "US executive"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:178 src/frontends/qt4/QDocument.cpp:358
+msgid "A3"
+msgstr "A3"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:183 src/frontends/qt4/QDocument.cpp:359
+msgid "A4"
+msgstr "A4"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:188 src/frontends/qt4/QDocument.cpp:360
+msgid "A5"
+msgstr "A5"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:193 src/frontends/qt4/QDocument.cpp:363
+msgid "B5"
+msgstr "B5"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:204
+msgid "Te&X encoding:"
+msgstr "Кодування Te&X:"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:214
+msgid "Default paper si&ze:"
+msgstr "&Звичайний розмір паперу:"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:224
+msgid "Set class options to default on class change"
+msgstr "Встановити параметри класу типовий при зміні класу"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:227
+msgid "&Reset class options when document class changes"
+msgstr "&Скинути параметри класу при зміні класу документа"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:28
 msgid "Ly&XServer pipe:"
@@ -2129,7 +2138,7 @@ msgstr "&Шаблони документів:"
 msgid "&roff command:"
 msgstr "команда &roff:"
 
-#: src/frontends/qt4/ui/PrefPlaintextUi.ui:54 src/LyXRC.cpp:2131
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:54 src/LyXRC.cpp:2144
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -13174,7 +13183,7 @@ msgstr "Перезаписати документ?"
 msgid "Welcome to LyX!"
 msgstr "Ласкаво просимо до LyX!"
 
-#: src/LyXRC.cpp:2118
+#: src/LyXRC.cpp:2131
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -13182,13 +13191,13 @@ msgstr ""
 "Визначає, чи вважати роздільно написані слова, наприклад \"diskdrive\" для "
 "\"disk drive\", припустимими словами."
 
-#: src/LyXRC.cpp:2123
+#: src/LyXRC.cpp:2136
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "Вкажіть додаткову мову. Типово використовується мова документа."
 
-#: src/LyXRC.cpp:2127
+#: src/LyXRC.cpp:2140
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
@@ -13199,7 +13208,7 @@ msgstr ""
 "-- назва вхідного файла. Якщо вказано  \"\" використовується внутрішня "
 "підпрограма."
 
-#: src/LyXRC.cpp:2135
+#: src/LyXRC.cpp:2148
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -13207,7 +13216,7 @@ msgstr ""
 "Зніміть позначку, якщо ви не бажаєте, щоб виділений текст автоматично "
 "заміщався тим, що ви друкуєте."
 
-#: src/LyXRC.cpp:2139
+#: src/LyXRC.cpp:2152
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -13215,14 +13224,14 @@ msgstr ""
 "Зніміть позначку, якщо не бажаєте, щоб параметри класу встановлювалися "
 "типово після зміни класу."
 
-#: src/LyXRC.cpp:2143
+#: src/LyXRC.cpp:2156
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Проміжок часу між автозбереженнями (в секундах). 0 означає не виконувати "
 "автозбереження."
 
-#: src/LyXRC.cpp:2150
+#: src/LyXRC.cpp:2163
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -13231,7 +13240,7 @@ msgstr ""
 "рядок, LyX буде створювати резервний файл в тій теці, де знаходиться "
 "редагований файл."
 
-#: src/LyXRC.cpp:2154
+#: src/LyXRC.cpp:2167
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -13239,7 +13248,7 @@ msgstr ""
 "Визначити опції bibtex (див. man bibtex) або оберіть альтернативний "
 "компілятор (наприклад mlbibtex або bibulus)."
 
-#: src/LyXRC.cpp:2158
+#: src/LyXRC.cpp:2171
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -13247,13 +13256,13 @@ msgstr ""
 "Файл з розкладками клавіатури. Можна вказати повний шлях, або ж LyX буде "
 "шукати файл в теках bind/ глобальних і локальних налаштувань."
 
-#: src/LyXRC.cpp:2162
+#: src/LyXRC.cpp:2175
 msgid "Select to check whether the lastfiles still exist."
 msgstr ""
 "Позначте, щоб здійснювалася перевірка, чи існує ще файл, який є в списку "
 "недавніх."
 
-#: src/LyXRC.cpp:2166
+#: src/LyXRC.cpp:2179
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -13261,7 +13270,7 @@ msgstr ""
 "Визначає як запускати chktex. Наприклад, \"chktex -n11 -n1 -n3 -n6 -n9 -22 -"
 "n25 -n30 -n38\" Звертайтесь до документації з ChkTeX."
 
-#: src/LyXRC.cpp:2176
+#: src/LyXRC.cpp:2189
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -13270,11 +13279,11 @@ msgstr ""
 "позиція курсора не оновлюється. Позначте цей пункт, якщо ви віддаєте "
 "перевагу тому, щоб бачити курсор на екрані."
 
-#: src/LyXRC.cpp:2180
+#: src/LyXRC.cpp:2193
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
 msgstr "Використовувати правила Mac OS X для пересування на рівні слів"
 
-#: src/LyXRC.cpp:2191
+#: src/LyXRC.cpp:2204
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -13283,15 +13292,15 @@ msgstr ""
 "Тут використовується звичайний формат strftime; дивіться man strftime для "
 "докладної інформації. Наприклад \"%A, %e. %B %Y\"."
 
-#: src/LyXRC.cpp:2195
+#: src/LyXRC.cpp:2208
 msgid "New documents will be assigned this language."
 msgstr "Нові документи будуть створюватися на цій мові."
 
-#: src/LyXRC.cpp:2199
+#: src/LyXRC.cpp:2212
 msgid "Specify the default paper size."
 msgstr "Вкажіть типовий розмір паперу."
 
-#: src/LyXRC.cpp:2203
+#: src/LyXRC.cpp:2216
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -13299,11 +13308,11 @@ msgstr ""
 "Згортати діалоги при згортанні головного вікна програми. (Подіє тільки на "
 "знову відкриті діалоги.)"
 
-#: src/LyXRC.cpp:2207
+#: src/LyXRC.cpp:2220
 msgid "Select how LyX will display any graphics."
 msgstr "Вкажіть як LyX буде показувати всю графіку в документі."
 
-#: src/LyXRC.cpp:2211
+#: src/LyXRC.cpp:2224
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -13311,11 +13320,11 @@ msgstr ""
 "Типовий шлях для ваших документів. Порожнє значення обирає теку, з якої буде "
 "запускатися LyX."
 
-#: src/LyXRC.cpp:2216
+#: src/LyXRC.cpp:2229
 msgid "Specify additional chars that can be part of a word."
 msgstr "Вкажіть додаткові символи, які можуть бути частиною слова."
 
-#: src/LyXRC.cpp:2220
+#: src/LyXRC.cpp:2233
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -13323,7 +13332,7 @@ msgstr ""
 "Кодування символів, що використовується пакетом fontenc LaTeX. Для всіх мов, "
 "окрім англійської, особливо рекомендується кодування T1."
 
-#: src/LyXRC.cpp:2227
+#: src/LyXRC.cpp:2240
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -13333,7 +13342,13 @@ msgstr ""
 "альтернативний компілятор. Наприклад, використовуючи xindy/make-правила, "
 "команда буде \"makeindex.sh -m $$lang\"."
 
-#: src/LyXRC.cpp:2236
+#: src/LyXRC.cpp:2244
+msgid ""
+"Define the options of makeindex (cf. man makeindex) to be used for "
+"nomenclatures. This might differ from the index processing options."
+msgstr ""
+
+#: src/LyXRC.cpp:2253
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -13342,23 +13357,23 @@ msgstr ""
 "Вам потрібна ця можливість, якщо Ви, наприклад, забажаєте набирати документи "
 "німецькою мовою на американській клавіатурі."
 
-#: src/LyXRC.cpp:2240
+#: src/LyXRC.cpp:2257
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr "Максимальне число слів в ініціалізації для нової мітки."
 
-#: src/LyXRC.cpp:2244
+#: src/LyXRC.cpp:2261
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr ""
 "Позначте, якщо на початку документу потрібна команда переключення мови."
 
-#: src/LyXRC.cpp:2248
+#: src/LyXRC.cpp:2265
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Позначте, якщо в кінці документа потрібна команда перемикання мови."
 
-#: src/LyXRC.cpp:2252
+#: src/LyXRC.cpp:2269
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -13367,22 +13382,22 @@ msgstr ""
 "Команда LaTeX для перемикання від мови документа до іншої мови. Наприклад "
 "\\selectlanguage{$$lang}, де $$lang заміняється назвою іншої мови."
 
-#: src/LyXRC.cpp:2256
+#: src/LyXRC.cpp:2273
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "Команда LaTeX для повернення назад до мови документа."
 
-#: src/LyXRC.cpp:2260
+#: src/LyXRC.cpp:2277
 msgid "The LaTeX command for local changing of the language."
 msgstr "Команда LaTeX для локальної зміни мови."
 
-#: src/LyXRC.cpp:2264
+#: src/LyXRC.cpp:2281
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr ""
 "Зніміть позначку щоб мова(и) використовувалася як аргумент в \\documentclass."
 
-#: src/LyXRC.cpp:2268
+#: src/LyXRC.cpp:2285
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -13390,7 +13405,7 @@ msgstr ""
 "Команда LaTeX для завантаження мовного пакета. Наприклад \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 
-#: src/LyXRC.cpp:2272
+#: src/LyXRC.cpp:2289
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -13398,22 +13413,22 @@ msgstr ""
 "Зніміть позначку, щоб babel використовувався, коли мова документа збігається "
 "з типовою мовою"
 
-#: src/LyXRC.cpp:2276
+#: src/LyXRC.cpp:2293
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 "Не позначайте, якщо ви не бажаєте щоб LyX прокручував до збереженої позиції."
 
-#: src/LyXRC.cpp:2280
+#: src/LyXRC.cpp:2297
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "Зніміть позначку, щоб запобігти завантаженню файлів, відкритих протягом "
 "останнього сеансу використання LyX."
 
-#: src/LyXRC.cpp:2284
+#: src/LyXRC.cpp:2301
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Зніміть позначку, щоб LyX не створював резервні файли."
 
-#: src/LyXRC.cpp:2288
+#: src/LyXRC.cpp:2305
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -13421,12 +13436,12 @@ msgstr ""
 "Позначте для увімкнення підкреслювання слів, написаних на мові, відмінній "
 "від мови документа."
 
-#: src/LyXRC.cpp:2292
+#: src/LyXRC.cpp:2309
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr "Кількість недавніх файлів (до %1$d), які буде показано в меню Файл."
 
-#: src/LyXRC.cpp:2297
+#: src/LyXRC.cpp:2314
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -13434,33 +13449,33 @@ msgstr ""
 "Ці теки будуть використані до обробки змінної середовища PATH. Вказуйте їх в "
 "тому вигляді, як прийнято в Вашій операційній системі."
 
-#: src/LyXRC.cpp:2304
+#: src/LyXRC.cpp:2321
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Вкажіть додатковий особистий словниковий файл. Наприклад \".ispell_english\"."
 
-#: src/LyXRC.cpp:2308
+#: src/LyXRC.cpp:2325
 msgid "Shows a typeset preview of things such as math"
 msgstr "Показувати формули так, як вони будуть виглядати при друці"
 
-#: src/LyXRC.cpp:2312
+#: src/LyXRC.cpp:2329
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "У попередньо показуваних формул будуть мітки \"(#)\" замість номерів"
 
-#: src/LyXRC.cpp:2316
+#: src/LyXRC.cpp:2333
 msgid "Scale the preview size to suit."
 msgstr "Змінити розмір попереднього показу до зручного."
 
-#: src/LyXRC.cpp:2320
+#: src/LyXRC.cpp:2337
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Параметр, що вказує чи потрібно збирати сторінки кожної копії разом."
 
-#: src/LyXRC.cpp:2324
+#: src/LyXRC.cpp:2341
 msgid "The option for specifying the number of copies to print."
 msgstr "Параметр для зазначення числа копій для друку."
 
-#: src/LyXRC.cpp:2328
+#: src/LyXRC.cpp:2345
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -13468,11 +13483,11 @@ msgstr ""
 "Типова друкарка. Якщо нічого не вказано, LyX буде використовувати змінну "
 "оточення PRINTER."
 
-#: src/LyXRC.cpp:2332
+#: src/LyXRC.cpp:2349
 msgid "The option to print only even pages."
 msgstr "Параметр для друку тільки парних сторінок."
 
-#: src/LyXRC.cpp:2336
+#: src/LyXRC.cpp:2353
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -13480,35 +13495,35 @@ msgstr ""
 "Додаткові параметри, які будуть передані програмі друку після всіх інших, "
 "але перед назвою файла DVI, який повинен бути роздрукований."
 
-#: src/LyXRC.cpp:2340
+#: src/LyXRC.cpp:2357
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Розширення вихідного файла друкувальної програми. Зазвичай, \".ps\"."
 
-#: src/LyXRC.cpp:2344
+#: src/LyXRC.cpp:2361
 msgid "The option to print out in landscape."
 msgstr "Параметр для друку в ландшафтній орієнтації."
 
-#: src/LyXRC.cpp:2348
+#: src/LyXRC.cpp:2365
 msgid "The option to print only odd pages."
 msgstr "Параметр для друку тільки непарних сторінок."
 
-#: src/LyXRC.cpp:2352
+#: src/LyXRC.cpp:2369
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "Параметр для зазначення розділеного комами списку сторінок для друку."
 
-#: src/LyXRC.cpp:2356
+#: src/LyXRC.cpp:2373
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Параметр для задання розмірів паперу."
 
-#: src/LyXRC.cpp:2360
+#: src/LyXRC.cpp:2377
 msgid "The option to specify paper type."
 msgstr "Параметр, що вказує формат паперу."
 
-#: src/LyXRC.cpp:2364
+#: src/LyXRC.cpp:2381
 msgid "The option to reverse the order of the pages printed."
 msgstr "Параметр для задання зворотнього порядку друку сторінок."
 
-#: src/LyXRC.cpp:2368
+#: src/LyXRC.cpp:2385
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -13518,7 +13533,7 @@ msgstr ""
 "викликається окрема програма друку для цього файла з поточним назвою і "
 "параметрами."
 
-#: src/LyXRC.cpp:2372
+#: src/LyXRC.cpp:2389
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -13526,32 +13541,32 @@ msgstr ""
 "Якщо Ви вкажете назву друкарки в діалозі друку, наступний аргумент додасться "
 "перед назвою друкарки після команди друку."
 
-#: src/LyXRC.cpp:2376
+#: src/LyXRC.cpp:2393
 msgid "Option to pass to the print program to print to a file."
 msgstr "Параметр для зазначення програмі друку друкувати в файл."
 
-#: src/LyXRC.cpp:2380
+#: src/LyXRC.cpp:2397
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr "Параметр для зазначення програмі друку друкувати на вказаній друкарці."
 
-#: src/LyXRC.cpp:2384
+#: src/LyXRC.cpp:2401
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr "Позначте, щоб LyX передавав назва друкарки вашій команді друку."
 
-#: src/LyXRC.cpp:2388
+#: src/LyXRC.cpp:2405
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Програма друку, якою ви користуєтесь, наприклад \"dvips\", \"dvilj4\"."
 
-#: src/LyXRC.cpp:2392
+#: src/LyXRC.cpp:2409
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Позначте для увімкнення підтримки мов \"з права ліворуч\" (таких як "
 "єврейська, арабська)."
 
-#: src/LyXRC.cpp:2396
+#: src/LyXRC.cpp:2413
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -13559,11 +13574,11 @@ msgstr ""
 "DPI (кількість точок на дюйм) вашого монітора визначається LyX автоматично. "
 "Якщо LyX зробив це неправильно, ви можете вказати правильне значення тут."
 
-#: src/LyXRC.cpp:2402
+#: src/LyXRC.cpp:2419
 msgid "The screen fonts used to display the text while editing."
 msgstr "Екранні шрифти, що використовуються для показу тексту при редагуванні."
 
-#: src/LyXRC.cpp:2411
+#: src/LyXRC.cpp:2428
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -13573,12 +13588,12 @@ msgstr ""
 "шрифти можуть виглядати зазубреними. Якщо позначку знято, LyX замість "
 "масштабування буде використовуватися найближчий за розміром доступний шрифт."
 
-#: src/LyXRC.cpp:2415
+#: src/LyXRC.cpp:2432
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "Розміри шрифтів, що використовуються для обчислення розміру екранних шрифтів."
 
-#: src/LyXRC.cpp:2420
+#: src/LyXRC.cpp:2437
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -13587,7 +13602,7 @@ msgstr ""
 "Масштабування для екранних шрифтів. Визначення 100% буде давати шрифти "
 "такого ж розміру, як і на папері."
 
-#: src/LyXRC.cpp:2425
+#: src/LyXRC.cpp:2442
 msgid ""
 "Specify geometry of the main view in width x height (values from last "
 "session will not be used if non-zero values are specified)."
@@ -13596,12 +13611,12 @@ msgstr ""
 "останнього сенсу не будуть використовуватися, якщо Ви визначите ненульові "
 "величини)."
 
-#: src/LyXRC.cpp:2429
+#: src/LyXRC.cpp:2446
 msgid "Allow session manager to save and restore windows position."
 msgstr ""
 "Дозволити керівнику сеансів зберігати та відновлювати розташування вікна."
 
-#: src/LyXRC.cpp:2433
+#: src/LyXRC.cpp:2450
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -13609,15 +13624,15 @@ msgstr ""
 "Зазначення назви тут запускає lyxserver. Труби отримують додаткове "
 "розширення \"in\" і \"out\". Тільки для досвідчених користувачів."
 
-#: src/LyXRC.cpp:2440
+#: src/LyXRC.cpp:2457
 msgid "De-select if you don't want the startup banner."
 msgstr "Зніміть позначку, якщо ви не бажаєте бачити заставку при запуску."
 
-#: src/LyXRC.cpp:2444
+#: src/LyXRC.cpp:2461
 msgid "What command runs the spellchecker?"
 msgstr "Оберіть потрібну програму перевірки правопису"
 
-#: src/LyXRC.cpp:2448
+#: src/LyXRC.cpp:2465
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -13625,7 +13640,7 @@ msgstr ""
 "LyX буде розміщувати тимчасові теки за цим шляхом. Їх буде вилучено при "
 "виході з LyX."
 
-#: src/LyXRC.cpp:2452
+#: src/LyXRC.cpp:2469
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -13633,7 +13648,7 @@ msgstr ""
 "Шлях, за яким LyX буде переходити за потреби обрати шаблон. Порожнє значення "
 "означає, що буде обрано теку, з якої LyX було запущено."
 
-#: src/LyXRC.cpp:2462
+#: src/LyXRC.cpp:2479
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -13641,7 +13656,7 @@ msgstr ""
 "Файл інтерфейсу користувача (UI). Може бути або вказаний абсолютний шлях, "
 "або LyX буде шукати його в глобальній або локальній теці ui/."
 
-#: src/LyXRC.cpp:2475
+#: src/LyXRC.cpp:2492
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
@@ -13651,14 +13666,14 @@ msgstr ""
 "пункт, якщо ви не можете перевірити правопис слів з міжнародними літерами в "
 "них. Це може спрацьовувати не з усіма словниками."
 
-#: src/LyXRC.cpp:2479
+#: src/LyXRC.cpp:2496
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "Увімкнути кешування растрових зображень, що може підвищити швидкодію на  Mac "
 "і Windows."
 
-#: src/LyXRC.cpp:2486
+#: src/LyXRC.cpp:2503
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Вкажіть команду налаштування формату паперу для DVI (залиште порожнім або "
@@ -14826,7 +14841,7 @@ msgstr ""
 msgid "About %1"
 msgstr "Про %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:408 src/frontends/qt4/QPrefs.cpp:2084
+#: src/frontends/qt4/GuiApplication.cpp:408 src/frontends/qt4/QPrefs.cpp:2086
 msgid "Preferences"
 msgstr "Налаштування"
 
@@ -15227,7 +15242,7 @@ msgstr "Масштаб%"
 msgid "Float Settings"
 msgstr "Налаштування плаваючих об'єктів"
 
-#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:649
+#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:651
 msgid "Graphics"
 msgstr "Зображення"
 
@@ -15306,93 +15321,93 @@ msgstr "Формат дати"
 msgid "Keyboard"
 msgstr "Клавіатура"
 
-#: src/frontends/qt4/QPrefs.cpp:359
+#: src/frontends/qt4/QPrefs.cpp:361
 msgid "Screen fonts"
 msgstr "Екранні шрифти"
 
-#: src/frontends/qt4/QPrefs.cpp:522
+#: src/frontends/qt4/QPrefs.cpp:524
 msgid "Colors"
 msgstr "Кольори"
 
-#: src/frontends/qt4/QPrefs.cpp:623 src/frontends/qt4/QPrefs.cpp:722
+#: src/frontends/qt4/QPrefs.cpp:625 src/frontends/qt4/QPrefs.cpp:724
 msgid "Paths"
 msgstr "Шляхи"
 
-#: src/frontends/qt4/QPrefs.cpp:773
+#: src/frontends/qt4/QPrefs.cpp:775
 msgid "Select a document templates directory"
 msgstr "Оберіть теку з шаблонами документів"
 
-#: src/frontends/qt4/QPrefs.cpp:783
+#: src/frontends/qt4/QPrefs.cpp:785
 msgid "Select a temporary directory"
 msgstr "Оберіть тимчасову теку"
 
-#: src/frontends/qt4/QPrefs.cpp:793
+#: src/frontends/qt4/QPrefs.cpp:795
 msgid "Select a backups directory"
 msgstr "Оберіть теку для створення резервних копій"
 
-#: src/frontends/qt4/QPrefs.cpp:803
+#: src/frontends/qt4/QPrefs.cpp:805
 msgid "Select a document directory"
 msgstr "Оберіть теку для документів"
 
-#: src/frontends/qt4/QPrefs.cpp:813
+#: src/frontends/qt4/QPrefs.cpp:815
 msgid "Give a filename for the LyX server pipe"
 msgstr "Вкажіть назва файла для каналу LyX-сервера"
 
-#: src/frontends/qt4/QPrefs.cpp:826 src/frontends/qt4/QSpellchecker.cpp:135
+#: src/frontends/qt4/QPrefs.cpp:828 src/frontends/qt4/QSpellchecker.cpp:135
 msgid "Spellchecker"
 msgstr "Перевірка правопису"
 
-#: src/frontends/qt4/QPrefs.cpp:848
+#: src/frontends/qt4/QPrefs.cpp:850
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/QPrefs.cpp:849
+#: src/frontends/qt4/QPrefs.cpp:851
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/QPrefs.cpp:850
+#: src/frontends/qt4/QPrefs.cpp:852
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/QPrefs.cpp:852
+#: src/frontends/qt4/QPrefs.cpp:854
 msgid "pspell (library)"
 msgstr "pspell (бібліотека)"
 
-#: src/frontends/qt4/QPrefs.cpp:855
+#: src/frontends/qt4/QPrefs.cpp:857
 msgid "aspell (library)"
 msgstr "aspell (бібліотека)"
 
-#: src/frontends/qt4/QPrefs.cpp:936
+#: src/frontends/qt4/QPrefs.cpp:938
 msgid "Converters"
 msgstr "Перетворювачі"
 
-#: src/frontends/qt4/QPrefs.cpp:1134
+#: src/frontends/qt4/QPrefs.cpp:1136
 msgid "Copiers"
 msgstr "Копіри"
 
-#: src/frontends/qt4/QPrefs.cpp:1387
+#: src/frontends/qt4/QPrefs.cpp:1389
 msgid "File formats"
 msgstr "Формати файлів"
 
-#: src/frontends/qt4/QPrefs.cpp:1617
+#: src/frontends/qt4/QPrefs.cpp:1619
 msgid "Format in use"
 msgstr "Формати"
 
-#: src/frontends/qt4/QPrefs.cpp:1618
+#: src/frontends/qt4/QPrefs.cpp:1620
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Неможливо вилучити формат, що використовується перетворювачем. Вилучіть "
 "спочатку перетворювач."
 
-#: src/frontends/qt4/QPrefs.cpp:1719
+#: src/frontends/qt4/QPrefs.cpp:1721
 msgid "Printer"
 msgstr "Друкарка"
 
-#: src/frontends/qt4/QPrefs.cpp:1817 src/frontends/qt4/QPrefs.cpp:2018
+#: src/frontends/qt4/QPrefs.cpp:1819 src/frontends/qt4/QPrefs.cpp:2020
 msgid "User interface"
 msgstr "Інтерфейс користувача"
 
-#: src/frontends/qt4/QPrefs.cpp:1942
+#: src/frontends/qt4/QPrefs.cpp:1944
 msgid "Identity"
 msgstr "Про автора"
 

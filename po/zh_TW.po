@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-08-23 10:41+0200\n"
+"POT-Creation-Date: 2008-08-30 17:59+0200\n"
 "PO-Revision-Date: 2007-10-07 21:30+0800\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -466,7 +466,7 @@ msgstr "大小(&Z)："
 #: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ExternalUi.ui:192
 #: src/frontends/qt4/ui/GraphicsUi.ui:620
 #: src/frontends/qt4/ui/ParagraphUi.ui:255
-#: src/frontends/qt4/ui/PrefLatexUi.ui:78
+#: src/frontends/qt4/ui/PrefLatexUi.ui:158
 #: src/frontends/qt4/ui/TabularUi.ui:707 src/frontends/qt4/ui/TabularUi.ui:726
 #: src/frontends/qt4/ui/TabularUi.ui:774 lib/ui/stdtoolbars.inc:85
 #: src/Font.cpp:522 src/frontends/controllers/ControlDocument.cpp:48
@@ -601,7 +601,7 @@ msgstr "字型系列"
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:370 lib/layouts/europecv.layout:117
 #: lib/layouts/moderncv.layout:111 src/frontends/qt4/QDocument.cpp:587
-#: src/frontends/qt4/QPrefs.cpp:1639
+#: src/frontends/qt4/QPrefs.cpp:1641
 msgid "Language"
 msgstr "語言"
 
@@ -2010,85 +2010,94 @@ msgstr "自動結束(&E)"
 msgid "Mark &foreign languages"
 msgstr "標記外來語言集(&F)"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:28
-msgid "Set class options to default on class change"
-msgstr "類別變更時設定類別選項為預設"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:31
-msgid "&Reset class options when document class changes"
-msgstr "文件類別變更時重置類別選項(&R)"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:54
-msgid "Default paper si&ze:"
-msgstr "預設紙張大小(&Z)："
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:64
-msgid "Te&X encoding:"
-msgstr "Te&X 編碼："
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:83 src/frontends/qt4/QDocument.cpp:355
-msgid "US letter"
-msgstr "US letter"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:88 src/frontends/qt4/QDocument.cpp:356
-msgid "US legal"
-msgstr "US legal"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:93 src/frontends/qt4/QDocument.cpp:357
-msgid "US executive"
-msgstr "US executive"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/QDocument.cpp:358
-msgid "A3"
-msgstr "A3"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:103 src/frontends/qt4/QDocument.cpp:359
-msgid "A4"
-msgstr "A4"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:108 src/frontends/qt4/QDocument.cpp:360
-msgid "A5"
-msgstr "A5"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:113 src/frontends/qt4/QDocument.cpp:363
-msgid "B5"
-msgstr "B5"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:137
+#: src/frontends/qt4/ui/PrefLatexUi.ui:41
 msgid "External Applications"
 msgstr "外部應用程式"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:149
-msgid "CheckTeX start options and flags"
-msgstr "CheckTeX 開始選項和旗標"
+#: src/frontends/qt4/ui/PrefLatexUi.ui:53
+#, fuzzy
+msgid "&Nomenclature command:"
+msgstr "命名法則"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:156
-msgid "Chec&kTeX command:"
-msgstr "Chec&kTeX 命令："
+#: src/frontends/qt4/ui/PrefLatexUi.ui:63
+msgid "Command and options for nomencl processing (usually makeindex)"
+msgstr ""
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:166
-msgid "BibTeX command and options"
-msgstr "BibTeX 命令和選項"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:173
-msgid "&BibTeX command:"
-msgstr "&BibTeX 命令："
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:183
-msgid "Index command and options (makeindex, xindy)"
-msgstr "索引命令和選項 (makeindex、xindy)"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:190
+#: src/frontends/qt4/ui/PrefLatexUi.ui:70
 msgid "Index command:"
 msgstr "索引命令："
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:200
+#: src/frontends/qt4/ui/PrefLatexUi.ui:80
+msgid "Index command and options (makeindex, xindy)"
+msgstr "索引命令和選項 (makeindex、xindy)"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:87
+msgid "Optional paper size flag (-paper) for some DVI viewers"
+msgstr "可選的紙張大小旗標 (-paper) 用於某些 DVI 檢視器"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:94
 msgid "DVI viewer paper size options:"
 msgstr "DVI 檢視器紙張大小選項："
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:210
-msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr "可選的紙張大小旗標 (-paper) 用於某些 DVI 檢視器"
+#: src/frontends/qt4/ui/PrefLatexUi.ui:104
+msgid "&BibTeX command:"
+msgstr "&BibTeX 命令："
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:114
+msgid "BibTeX command and options"
+msgstr "BibTeX 命令和選項"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:121
+msgid "Chec&kTeX command:"
+msgstr "Chec&kTeX 命令："
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:131
+msgid "CheckTeX start options and flags"
+msgstr "CheckTeX 開始選項和旗標"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:163 src/frontends/qt4/QDocument.cpp:355
+msgid "US letter"
+msgstr "US letter"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:168 src/frontends/qt4/QDocument.cpp:356
+msgid "US legal"
+msgstr "US legal"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:173 src/frontends/qt4/QDocument.cpp:357
+msgid "US executive"
+msgstr "US executive"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:178 src/frontends/qt4/QDocument.cpp:358
+msgid "A3"
+msgstr "A3"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:183 src/frontends/qt4/QDocument.cpp:359
+msgid "A4"
+msgstr "A4"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:188 src/frontends/qt4/QDocument.cpp:360
+msgid "A5"
+msgstr "A5"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:193 src/frontends/qt4/QDocument.cpp:363
+msgid "B5"
+msgstr "B5"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:204
+msgid "Te&X encoding:"
+msgstr "Te&X 編碼："
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:214
+msgid "Default paper si&ze:"
+msgstr "預設紙張大小(&Z)："
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:224
+msgid "Set class options to default on class change"
+msgstr "類別變更時設定類別選項為預設"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:227
+msgid "&Reset class options when document class changes"
+msgstr "文件類別變更時重置類別選項(&R)"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:28
 msgid "Ly&XServer pipe:"
@@ -2126,7 +2135,7 @@ msgstr "文件模板(&D)："
 msgid "&roff command:"
 msgstr "&roff 命令："
 
-#: src/frontends/qt4/ui/PrefPlaintextUi.ui:54 src/LyXRC.cpp:2131
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:54 src/LyXRC.cpp:2144
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -13181,19 +13190,19 @@ msgstr "覆寫文件？"
 msgid "Welcome to LyX!"
 msgstr "歡迎使用 LyX！"
 
-#: src/LyXRC.cpp:2118
+#: src/LyXRC.cpp:2131
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr "將共同作用的字詞 (像是「diskdrive」用於「磁碟機」)視為合法的字詞？"
 
-#: src/LyXRC.cpp:2123
+#: src/LyXRC.cpp:2136
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "指定替代語言。預設是使用文件的語言。"
 
-#: src/LyXRC.cpp:2127
+#: src/LyXRC.cpp:2140
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
@@ -13202,25 +13211,25 @@ msgstr ""
 "做為在純文字輸出中定義外部程式以潤算表格。例如：「groff -t -Tlatin1 $$FName」"
 "其中 $$FName 為輸入檔案。如果指定為「」，就使用內部例程。"
 
-#: src/LyXRC.cpp:2135
+#: src/LyXRC.cpp:2148
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr "如果您不想要讓目前所選，自動被您所輸入的置換，就取消選取。"
 
-#: src/LyXRC.cpp:2139
+#: src/LyXRC.cpp:2152
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
 msgstr ""
 "取消選取如果您不想要讓類別選項，在類別變更之後被重置為預設值，就取消選取。。"
 
-#: src/LyXRC.cpp:2143
+#: src/LyXRC.cpp:2156
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr "自動儲存之間的時間間隔 (秒)。0 表示沒有自動儲存。"
 
-#: src/LyXRC.cpp:2150
+#: src/LyXRC.cpp:2163
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -13228,7 +13237,7 @@ msgstr ""
 "用於儲存備份檔案的路徑。如果它是空字串，LyX 將以原來的檔案在相同目錄中儲存備"
 "份。"
 
-#: src/LyXRC.cpp:2154
+#: src/LyXRC.cpp:2167
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -13236,18 +13245,18 @@ msgstr ""
 "定義 bibtex 的選項(參考 man bibtex) 或選取一個替代編譯器(例如 mlbibtex 或 "
 "bibulus)。"
 
-#: src/LyXRC.cpp:2158
+#: src/LyXRC.cpp:2171
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
 "按鍵聯結檔案。可以指定絕對路徑，或者 LyX 將在它的全域和本地連結/目錄中查找。"
 
-#: src/LyXRC.cpp:2162
+#: src/LyXRC.cpp:2175
 msgid "Select to check whether the lastfiles still exist."
 msgstr "選取以檢查是否上一個檔案仍然存在。"
 
-#: src/LyXRC.cpp:2166
+#: src/LyXRC.cpp:2179
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -13255,7 +13264,7 @@ msgstr ""
 "定義如何運行 chktex。例如：「chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38」"
 "參考 ChkTeX 文件。"
 
-#: src/LyXRC.cpp:2176
+#: src/LyXRC.cpp:2189
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -13263,11 +13272,11 @@ msgstr ""
 "如果您移動捲動軸，LyX 通常不會更新游標位置。如果您較偏好螢幕上總是有游標，就"
 "設定為真。"
 
-#: src/LyXRC.cpp:2180
+#: src/LyXRC.cpp:2193
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
 msgstr ""
 
-#: src/LyXRC.cpp:2191
+#: src/LyXRC.cpp:2204
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -13276,41 +13285,41 @@ msgstr ""
 "這裏接受一般的 strftime 格式；參看 man strftime 以獲得全部細節。例如：「%A, %"
 "e. %B %Y」。"
 
-#: src/LyXRC.cpp:2195
+#: src/LyXRC.cpp:2208
 msgid "New documents will be assigned this language."
 msgstr "新文件將指派此語言。"
 
-#: src/LyXRC.cpp:2199
+#: src/LyXRC.cpp:2212
 msgid "Specify the default paper size."
 msgstr "指定預設紙張大小。"
 
-#: src/LyXRC.cpp:2203
+#: src/LyXRC.cpp:2216
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
 msgstr "主視窗最小化時也最小化對話框。(只影響變更完成之後所顯示的對話框。)"
 
-#: src/LyXRC.cpp:2207
+#: src/LyXRC.cpp:2220
 msgid "Select how LyX will display any graphics."
 msgstr "選取 LyX 顯示任何圖形的方式。"
 
-#: src/LyXRC.cpp:2211
+#: src/LyXRC.cpp:2224
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr "您文件的預設路徑。空白值將選取 LyX 開始時的目錄。"
 
-#: src/LyXRC.cpp:2216
+#: src/LyXRC.cpp:2229
 msgid "Specify additional chars that can be part of a word."
 msgstr "可以用部分的字詞指定額外字元。"
 
-#: src/LyXRC.cpp:2220
+#: src/LyXRC.cpp:2233
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr "用於 LaTeX2e fontenc 套件的字型編碼。強烈建議 T1 用於非英語語言。"
 
-#: src/LyXRC.cpp:2227
+#: src/LyXRC.cpp:2240
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -13319,7 +13328,13 @@ msgstr ""
 "定義 makeindex 的選項 (參看 man makeindex) 或選取替代編譯器。例如：使用 "
 "xindy/make-rules 時，命令字串則是「makeindex.sh -m $$ lang」。"
 
-#: src/LyXRC.cpp:2236
+#: src/LyXRC.cpp:2244
+msgid ""
+"Define the options of makeindex (cf. man makeindex) to be used for "
+"nomenclatures. This might differ from the index processing options."
+msgstr ""
+
+#: src/LyXRC.cpp:2253
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -13327,22 +13342,22 @@ msgstr ""
 "使用這個以設定用於您鍵盤的正確對映檔案。舉例來說，如果您要以美式鍵盤輸入德語"
 "文件，您將會需要它。"
 
-#: src/LyXRC.cpp:2240
+#: src/LyXRC.cpp:2257
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr "在新標籤初始字串中的最大字詞數量"
 
-#: src/LyXRC.cpp:2244
+#: src/LyXRC.cpp:2261
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "如果文件起始處需要語言切換命令就選取它。"
 
-#: src/LyXRC.cpp:2248
+#: src/LyXRC.cpp:2265
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "如果文件結束處需要語言切換命令就選取它。"
 
-#: src/LyXRC.cpp:2252
+#: src/LyXRC.cpp:2269
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -13351,21 +13366,21 @@ msgstr ""
 "用於將文件語言變更到其他語言的 LaTeX 命令。例如：\\selectlanguage{$$lang} 中 "
 "$$lang 將由第二語言的名稱所替代。"
 
-#: src/LyXRC.cpp:2256
+#: src/LyXRC.cpp:2273
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "用於變回文件語言的 LaTeX 命令。"
 
-#: src/LyXRC.cpp:2260
+#: src/LyXRC.cpp:2277
 msgid "The LaTeX command for local changing of the language."
 msgstr "用於語言本地變更的 LaTeX 命令。"
 
-#: src/LyXRC.cpp:2264
+#: src/LyXRC.cpp:2281
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr "如果您不想要該語言做為 \\documentclass 的引數就取消選取。"
 
-#: src/LyXRC.cpp:2268
+#: src/LyXRC.cpp:2285
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -13373,112 +13388,112 @@ msgstr ""
 "用於載入語言套裝模組的 LaTeX 命令。例如：「\\usepackage{babel}」、"
 "「\\usepackage{omega}」。"
 
-#: src/LyXRC.cpp:2272
+#: src/LyXRC.cpp:2289
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
 msgstr "當文件的語言為預設語言時，如果您不想要使用 babel 就取消選取。"
 
-#: src/LyXRC.cpp:2276
+#: src/LyXRC.cpp:2293
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr "如果您不想要 LyX 捲動到儲存的位置就取消選取。"
 
-#: src/LyXRC.cpp:2280
+#: src/LyXRC.cpp:2297
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr "取消選取以防止載入於最後一次 LyX 執行階段所開啟的檔案。"
 
-#: src/LyXRC.cpp:2284
+#: src/LyXRC.cpp:2301
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "如果您不想要 LyX 建立備份檔案就取消選取。"
 
-#: src/LyXRC.cpp:2288
+#: src/LyXRC.cpp:2305
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr "選取以控制對於該文件是外來語言字詞的高亮度顯示。"
 
-#: src/LyXRC.cpp:2292
+#: src/LyXRC.cpp:2309
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr "上近使用檔案的最大數量。最多可以在檔案選單中出現 %1$d 個。"
 
-#: src/LyXRC.cpp:2297
+#: src/LyXRC.cpp:2314
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr "指定那些應該前置於 PATH 環境變數的目錄。使用 OS 的原生格式。"
 
-#: src/LyXRC.cpp:2304
+#: src/LyXRC.cpp:2321
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "指定替代個人字典的檔案。例如：「.ispell_english」。"
 
-#: src/LyXRC.cpp:2308
+#: src/LyXRC.cpp:2325
 msgid "Shows a typeset preview of things such as math"
 msgstr "顯示諸如數學的排版預覽"
 
-#: src/LyXRC.cpp:2312
+#: src/LyXRC.cpp:2329
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "預覽的方程式將有「(#)」標籤而非編號"
 
-#: src/LyXRC.cpp:2316
+#: src/LyXRC.cpp:2333
 msgid "Scale the preview size to suit."
 msgstr "伸縮預覽大小至合適比例。"
 
-#: src/LyXRC.cpp:2320
+#: src/LyXRC.cpp:2337
 msgid "The option for specifying whether the copies should be collated."
 msgstr "用於指定複本是否應該排序的選項。"
 
-#: src/LyXRC.cpp:2324
+#: src/LyXRC.cpp:2341
 msgid "The option for specifying the number of copies to print."
 msgstr "用於指定列印份數的選項。"
 
-#: src/LyXRC.cpp:2328
+#: src/LyXRC.cpp:2345
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
 msgstr "預設用來列印的印表機。如果沒有指定，LyX 將使用環境變數 PRINTER。"
 
-#: src/LyXRC.cpp:2332
+#: src/LyXRC.cpp:2349
 msgid "The option to print only even pages."
 msgstr "只有列印偶數頁面的選項。"
 
-#: src/LyXRC.cpp:2336
+#: src/LyXRC.cpp:2353
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
 msgstr ""
 "於其他東西之後傳遞給列印程式的額外選項，但是位於要列印的 DVI 檔名之前。"
 
-#: src/LyXRC.cpp:2340
+#: src/LyXRC.cpp:2357
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "印表機程式輸出檔案的延伸檔名。常常是「.ps」。"
 
-#: src/LyXRC.cpp:2344
+#: src/LyXRC.cpp:2361
 msgid "The option to print out in landscape."
 msgstr "橫式列印的選項。"
 
-#: src/LyXRC.cpp:2348
+#: src/LyXRC.cpp:2365
 msgid "The option to print only odd pages."
 msgstr "只列印奇數頁面的選項。"
 
-#: src/LyXRC.cpp:2352
+#: src/LyXRC.cpp:2369
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "用於指定以逗號分隔的列印頁面清單的選項。"
 
-#: src/LyXRC.cpp:2356
+#: src/LyXRC.cpp:2373
 msgid "Option to specify the dimensions of the print paper."
 msgstr "指定列印紙張尺寸的選項。"
 
-#: src/LyXRC.cpp:2360
+#: src/LyXRC.cpp:2377
 msgid "The option to specify paper type."
 msgstr "指定紙張型態的選項。"
 
-#: src/LyXRC.cpp:2364
+#: src/LyXRC.cpp:2381
 msgid "The option to reverse the order of the pages printed."
 msgstr "反向排序列印頁面的選項。"
 
-#: src/LyXRC.cpp:2368
+#: src/LyXRC.cpp:2385
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -13487,7 +13502,7 @@ msgstr ""
 "設定時，此印表機選項會自動列印到檔案，然後呼叫另外的列印暫存作業程式，並以給"
 "定的名稱和引數用於該檔案。"
 
-#: src/LyXRC.cpp:2372
+#: src/LyXRC.cpp:2389
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -13495,30 +13510,30 @@ msgstr ""
 "如果您在列印對話框中指定印表機名稱，下列引數將在暫存命令之後前置於印表機名"
 "稱。"
 
-#: src/LyXRC.cpp:2376
+#: src/LyXRC.cpp:2393
 msgid "Option to pass to the print program to print to a file."
 msgstr "傳遞給列印程式以列印檔案的選項。"
 
-#: src/LyXRC.cpp:2380
+#: src/LyXRC.cpp:2397
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr "傳遞給列印程式以列印於特定印表機的選項。"
 
-#: src/LyXRC.cpp:2384
+#: src/LyXRC.cpp:2401
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr "選取以傳遞目的印表機名稱給您的 LyX 列印命令。"
 
-#: src/LyXRC.cpp:2388
+#: src/LyXRC.cpp:2405
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "您偏愛的列印程式，例如：「dvips」、「dvilj4」。"
 
-#: src/LyXRC.cpp:2392
+#: src/LyXRC.cpp:2409
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr "選取啟用從右到左語言集的支援 (例如：希伯來語、阿拉伯語)。"
 
-#: src/LyXRC.cpp:2396
+#: src/LyXRC.cpp:2413
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -13526,11 +13541,11 @@ msgstr ""
 "您監視器的 DPI (點/英吋) 是由 LyX 自動偵測。如果出現了錯誤，就在此強制變更設"
 "定。"
 
-#: src/LyXRC.cpp:2402
+#: src/LyXRC.cpp:2419
 msgid "The screen fonts used to display the text while editing."
 msgstr "編輯時用來顯示文字的螢幕字型。"
 
-#: src/LyXRC.cpp:2411
+#: src/LyXRC.cpp:2428
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -13540,18 +13555,18 @@ msgstr ""
 "型外觀在 LyX 中呈現鋸齒狀。取消這個選項會讓 LyX 使用最接近的可用點陣圖字型尺"
 "寸，以代替縮放。"
 
-#: src/LyXRC.cpp:2415
+#: src/LyXRC.cpp:2432
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr "用於計算螢幕字型縮放的字型大小。"
 
-#: src/LyXRC.cpp:2420
+#: src/LyXRC.cpp:2437
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr "用於螢幕字型的縮放比例。設定為 100% 將使字型與紙張上的大小大致相同。"
 
-#: src/LyXRC.cpp:2425
+#: src/LyXRC.cpp:2442
 msgid ""
 "Specify geometry of the main view in width x height (values from last "
 "session will not be used if non-zero values are specified)."
@@ -13559,11 +13574,11 @@ msgstr ""
 "以寬度 x 高度的方式指定主要檢視視窗的幾何位置 (如果指定非零值，最後一次執行階"
 "段所得的值將無法使用)。"
 
-#: src/LyXRC.cpp:2429
+#: src/LyXRC.cpp:2446
 msgid "Allow session manager to save and restore windows position."
 msgstr "允許執行階段管理員去儲存和還原視窗位置。"
 
-#: src/LyXRC.cpp:2433
+#: src/LyXRC.cpp:2450
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -13571,27 +13586,27 @@ msgstr ""
 "這將啟動 lyxserver。輸出入管道會取得額外的延伸名稱「.in」和「.out」。只供進階"
 "使用者。"
 
-#: src/LyXRC.cpp:2440
+#: src/LyXRC.cpp:2457
 msgid "De-select if you don't want the startup banner."
 msgstr "如果您不想要啟動橫幅就取消選取。"
 
-#: src/LyXRC.cpp:2444
+#: src/LyXRC.cpp:2461
 msgid "What command runs the spellchecker?"
 msgstr "用什麼命令運行拼寫檢查器？"
 
-#: src/LyXRC.cpp:2448
+#: src/LyXRC.cpp:2465
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr "LyX 將它的暫存目錄置放在此路徑中。當您離開 LyX 時它們將被刪除。"
 
-#: src/LyXRC.cpp:2452
+#: src/LyXRC.cpp:2469
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 msgstr "提供您選擇模板時 LyX 將會設定的路徑。空值將會選取 LyX 開始時的目錄。"
 
-#: src/LyXRC.cpp:2462
+#: src/LyXRC.cpp:2479
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -13599,7 +13614,7 @@ msgstr ""
 "UI (使用者介面) 檔案。可以指定絕對路徑，或是 LyX 將在它的全域和本地 ui/目錄中"
 "查找。"
 
-#: src/LyXRC.cpp:2475
+#: src/LyXRC.cpp:2492
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
@@ -13608,12 +13623,12 @@ msgstr ""
 "指定是否要傳遞 -T 輸入編碼選項給 ispell。啟用此如果您無法檢查包含揚音字母的字"
 "詞拼寫，就啟用它。這可能不適用於所有字典。"
 
-#: src/LyXRC.cpp:2479
+#: src/LyXRC.cpp:2496
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 
-#: src/LyXRC.cpp:2486
+#: src/LyXRC.cpp:2503
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr "指定紙張命令給 DVI 檢視器 (保留為空或使用「-paper」)"
 
@@ -14766,7 +14781,7 @@ msgstr ""
 msgid "About %1"
 msgstr "關於 %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:408 src/frontends/qt4/QPrefs.cpp:2084
+#: src/frontends/qt4/GuiApplication.cpp:408 src/frontends/qt4/QPrefs.cpp:2086
 msgid "Preferences"
 msgstr "偏好設定"
 
@@ -15164,7 +15179,7 @@ msgstr "比例%"
 msgid "Float Settings"
 msgstr "浮動設定值"
 
-#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:649
+#: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:651
 msgid "Graphics"
 msgstr "圖形"
 
@@ -15240,91 +15255,91 @@ msgstr "日期格式"
 msgid "Keyboard"
 msgstr "鍵盤"
 
-#: src/frontends/qt4/QPrefs.cpp:359
+#: src/frontends/qt4/QPrefs.cpp:361
 msgid "Screen fonts"
 msgstr "螢幕字型"
 
-#: src/frontends/qt4/QPrefs.cpp:522
+#: src/frontends/qt4/QPrefs.cpp:524
 msgid "Colors"
 msgstr "顏色"
 
-#: src/frontends/qt4/QPrefs.cpp:623 src/frontends/qt4/QPrefs.cpp:722
+#: src/frontends/qt4/QPrefs.cpp:625 src/frontends/qt4/QPrefs.cpp:724
 msgid "Paths"
 msgstr "路徑"
 
-#: src/frontends/qt4/QPrefs.cpp:773
+#: src/frontends/qt4/QPrefs.cpp:775
 msgid "Select a document templates directory"
 msgstr "選取文件模板目錄"
 
-#: src/frontends/qt4/QPrefs.cpp:783
+#: src/frontends/qt4/QPrefs.cpp:785
 msgid "Select a temporary directory"
 msgstr "選取暫存目錄"
 
-#: src/frontends/qt4/QPrefs.cpp:793
+#: src/frontends/qt4/QPrefs.cpp:795
 msgid "Select a backups directory"
 msgstr "選取備份目錄"
 
-#: src/frontends/qt4/QPrefs.cpp:803
+#: src/frontends/qt4/QPrefs.cpp:805
 msgid "Select a document directory"
 msgstr "選取文件目錄"
 
-#: src/frontends/qt4/QPrefs.cpp:813
+#: src/frontends/qt4/QPrefs.cpp:815
 msgid "Give a filename for the LyX server pipe"
 msgstr "給出用於 LyX 伺服器管道的檔名"
 
-#: src/frontends/qt4/QPrefs.cpp:826 src/frontends/qt4/QSpellchecker.cpp:135
+#: src/frontends/qt4/QPrefs.cpp:828 src/frontends/qt4/QSpellchecker.cpp:135
 msgid "Spellchecker"
 msgstr "拼寫檢查器"
 
-#: src/frontends/qt4/QPrefs.cpp:848
+#: src/frontends/qt4/QPrefs.cpp:850
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/QPrefs.cpp:849
+#: src/frontends/qt4/QPrefs.cpp:851
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/QPrefs.cpp:850
+#: src/frontends/qt4/QPrefs.cpp:852
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/QPrefs.cpp:852
+#: src/frontends/qt4/QPrefs.cpp:854
 msgid "pspell (library)"
 msgstr "pspell (函式庫)"
 
-#: src/frontends/qt4/QPrefs.cpp:855
+#: src/frontends/qt4/QPrefs.cpp:857
 msgid "aspell (library)"
 msgstr "aspell (函式庫)"
 
-#: src/frontends/qt4/QPrefs.cpp:936
+#: src/frontends/qt4/QPrefs.cpp:938
 msgid "Converters"
 msgstr "轉換器"
 
-#: src/frontends/qt4/QPrefs.cpp:1134
+#: src/frontends/qt4/QPrefs.cpp:1136
 msgid "Copiers"
 msgstr "複製器"
 
-#: src/frontends/qt4/QPrefs.cpp:1387
+#: src/frontends/qt4/QPrefs.cpp:1389
 msgid "File formats"
 msgstr "檔案格式"
 
-#: src/frontends/qt4/QPrefs.cpp:1617
+#: src/frontends/qt4/QPrefs.cpp:1619
 msgid "Format in use"
 msgstr "使用中格式"
 
-#: src/frontends/qt4/QPrefs.cpp:1618
+#: src/frontends/qt4/QPrefs.cpp:1620
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr "無法移除轉換器所使用的格式。先移除轉換器。"
 
-#: src/frontends/qt4/QPrefs.cpp:1719
+#: src/frontends/qt4/QPrefs.cpp:1721
 msgid "Printer"
 msgstr "印表機"
 
-#: src/frontends/qt4/QPrefs.cpp:1817 src/frontends/qt4/QPrefs.cpp:2018
+#: src/frontends/qt4/QPrefs.cpp:1819 src/frontends/qt4/QPrefs.cpp:2020
 msgid "User interface"
 msgstr "使用者介面"
 
-#: src/frontends/qt4/QPrefs.cpp:1942
+#: src/frontends/qt4/QPrefs.cpp:1944
 msgid "Identity"
 msgstr "身分"
 
