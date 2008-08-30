@@ -194,7 +194,6 @@
 \tracking_changes false
 \output_changes false
 \author "" 
-\author "" 
 \end_header
 
 \begin_body
@@ -12513,6 +12512,12 @@ The table has been set into a minipage to make the footnote appearing.
 \end_inset
 
 
+\begin_inset FormulaMacro
+\newcommand{\pad}[2]{{\fboxrule0mm\fboxsep#1\boxed{\fboxrule0.4pt{}{#2}}}}
+{\framebox[pad][#1]{#2}}
+\end_inset
+
+
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -12638,7 +12643,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{6mm}{}\fbox{$\int A=B$}\raisebox{-4mm}{}$
+\begin_inset Formula $\pad{0.8ex}{\fbox{$\int A=B$}}$
 \end_inset
 
 
@@ -12691,7 +12696,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{8.5mm}{}\boxed{\int A=B}\raisebox{-6.5mm}{}$
+\begin_inset Formula $\pad{0.8ex}{\boxed{\int A=B}}$
 \end_inset
 
 
@@ -12729,7 +12734,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{6mm}{}A+\fbox{B}\raisebox{-3mm}{}$
+\begin_inset Formula $\pad{0.8ex}{A+\fbox{B}}$
 \end_inset
 
 
@@ -12798,15 +12803,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{6mm}{}$
-\end_inset
-
-
-\begin_inset Formula $\framebox[20mm][]{$\frac{A}{B}$}$
-\end_inset
-
-
-\begin_inset Formula $\raisebox{-4mm}{}$
+\begin_inset Formula $\pad{0.8ex}{\framebox[20mm][]{$\frac{A}{B}$}}$
 \end_inset
 
 
