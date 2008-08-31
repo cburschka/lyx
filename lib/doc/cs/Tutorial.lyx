@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 339
+#LyX 1.6.0rc2 created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass article
@@ -1186,6 +1186,24 @@ Prohlížet
 PDF (vlna,pdflatex)
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+Jinou možností je napsat vlastní skript, který interně volá vlnu & LaTeX
+ a tento skript podstrčit coby konvertor PDF/PS.
+ Příklad, pro tentokrát z prostředí Windows, by vypadal následovně:
+\end_layout
+
+\begin_layout LyX-Code
+Cesta
+\backslash
+vlna32.exe -l -f %1 %1vlna
+\end_layout
+
+\begin_layout LyX-Code
+Cesta2
+\backslash
+pdflatex %1vlna
 \end_layout
 
 \begin_layout Subsection
