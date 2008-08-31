@@ -19,7 +19,6 @@ dist_doc_DATA = \
 	LaTeXConfig.lyx \
 	LFUNs.lyx \
 	Math.lyx \
-	Reference.lyx \
 	Shortcuts.lyx \
 	Tutorial.lyx \
 	UserGuide.lyx
