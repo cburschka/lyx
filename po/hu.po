@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.4svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-08-28 16:01+0100\n"
+"POT-Creation-Date: 2008-09-01 10:43+0200\n"
 "PO-Revision-Date: 2008-08-04 22:37+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -8072,7 +8072,7 @@ msgid "CharStyle"
 msgstr "Betűstílus: "
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
-#: src/insets/InsetCollapsable.cpp:151
+#: src/insets/InsetCollapsable.cpp:139
 msgid "UNDEFINED"
 msgstr ""
 
@@ -15453,7 +15453,7 @@ msgstr "MakeIndex futtatása nomencl-hez."
 msgid "Could not read configuration file"
 msgstr "Konfiguráció fájl nem olvasható"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1400
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1402
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16879,12 +16879,12 @@ msgstr ""
 "Set-color \"%1$s\" sikertelen - a szín nincs meghatározva vagy nem lehet "
 "újradefiniálni"
 
-#: src/frontends/qt4/GuiApplication.cpp:1209
+#: src/frontends/qt4/GuiApplication.cpp:1211
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Nyomtatás sikertelen"
 
-#: src/frontends/qt4/GuiApplication.cpp:1219
+#: src/frontends/qt4/GuiApplication.cpp:1221
 #, fuzzy
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
@@ -16897,12 +16897,12 @@ msgstr ""
 "\n"
 "Kivétel: "
 
-#: src/frontends/qt4/GuiApplication.cpp:1223
-#: src/frontends/qt4/GuiApplication.cpp:1229
+#: src/frontends/qt4/GuiApplication.cpp:1225
+#: src/frontends/qt4/GuiApplication.cpp:1231
 msgid "Software exception Detected"
 msgstr "Szoftveres kivétel történt"
 
-#: src/frontends/qt4/GuiApplication.cpp:1227
+#: src/frontends/qt4/GuiApplication.cpp:1229
 #, fuzzy
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
@@ -16911,7 +16911,7 @@ msgstr ""
 "A LyX elkapott egy nagyon durva kivételt, meg fogja próbálni menteni a még "
 "mentetlen dokumentumokat és ki fog lépni."
 
-#: src/frontends/qt4/GuiApplication.cpp:1399
+#: src/frontends/qt4/GuiApplication.cpp:1401
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Konfiguráció fájl nem olvasható"
@@ -17355,8 +17355,9 @@ msgid "B4"
 msgstr "B4"
 
 #: src/frontends/qt4/GuiDocument.cpp:799
-msgid "LaTeX default"
-msgstr "LaTeX alapértékek"
+#, fuzzy
+msgid "Language Default (no inputenc)"
+msgstr "Nyelv fejléc:"
 
 #: src/frontends/qt4/GuiDocument.cpp:808
 msgid "``text''"
@@ -19154,14 +19155,6 @@ msgstr ""
 msgid "not cited"
 msgstr "védett"
 
-#: src/insets/InsetCollapsable.cpp:118 src/insets/InsetFloat.cpp:137
-msgid "Left-click to collapse the inset"
-msgstr ""
-
-#: src/insets/InsetCollapsable.cpp:121 src/insets/InsetFloat.cpp:139
-msgid "Left-click to open the inset"
-msgstr ""
-
 #: src/insets/InsetCommand.cpp:102
 msgid "LaTeX Command: "
 msgstr "LaTeX parancs: "
@@ -19208,24 +19201,24 @@ msgstr "A %1$s külső sablon nincs telepítve"
 msgid "Opened Flex Inset"
 msgstr "Szövegbetét kinyitva"
 
-#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:421
+#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:413
 msgid "float: "
 msgstr "úsztatás:"
 
-#: src/insets/InsetFloat.cpp:286
+#: src/insets/InsetFloat.cpp:278
 msgid "Opened Float Inset"
 msgstr "Úsztatóbetét kinyitva"
 
-#: src/insets/InsetFloat.cpp:357
+#: src/insets/InsetFloat.cpp:349
 msgid "float"
 msgstr "úsztatás"
 
-#: src/insets/InsetFloat.cpp:424
+#: src/insets/InsetFloat.cpp:416
 #, fuzzy
 msgid "subfloat: "
 msgstr "úsztatás:"
 
-#: src/insets/InsetFloat.cpp:432
+#: src/insets/InsetFloat.cpp:424
 msgid " (sideways)"
 msgstr " (oldalt)"
 
@@ -20165,6 +20158,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Ismeretlen felhasználó"
+
+#~ msgid "LaTeX default"
+#~ msgstr "LaTeX alapértékek"
 
 #~ msgid "LyX binary not found"
 #~ msgstr "Nem találom a LyX futattható-állományát"

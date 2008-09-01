@@ -94,7 +94,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-08-28 16:01+0100\n"
+"POT-Creation-Date: 2008-09-01 10:43+0200\n"
 "PO-Revision-Date: 2008-08-27 22:41+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -8021,7 +8021,7 @@ msgid "CharStyle"
 msgstr "Textstil"
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
-#: src/insets/InsetCollapsable.cpp:151
+#: src/insets/InsetCollapsable.cpp:139
 msgid "UNDEFINED"
 msgstr "UNDEFINIERT"
 
@@ -15211,7 +15211,7 @@ msgstr "MakeIndex wird für nomencl ausgeführt."
 msgid "Could not read configuration file"
 msgstr "Die Konfigurationsdatei konnte nicht gelesen werden"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1400
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1402
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16688,11 +16688,11 @@ msgstr ""
 "Set-color \"%1$s\" ist fehlgeschlagen -- die Farbe ist nicht definiert oder "
 "darf nicht umdefiniert werden."
 
-#: src/frontends/qt4/GuiApplication.cpp:1209
+#: src/frontends/qt4/GuiApplication.cpp:1211
 msgid "The current document was closed."
 msgstr "Das aktuelle Dokument wurde geschlossen."
 
-#: src/frontends/qt4/GuiApplication.cpp:1219
+#: src/frontends/qt4/GuiApplication.cpp:1221
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -16702,12 +16702,12 @@ msgstr ""
 "LyX hat einen Fehler entdeckt. Das Programm wird jetzt versuchen, alle "
 "ungespeicherten Dateien zu speichern, und dann beendet."
 
-#: src/frontends/qt4/GuiApplication.cpp:1223
-#: src/frontends/qt4/GuiApplication.cpp:1229
+#: src/frontends/qt4/GuiApplication.cpp:1225
+#: src/frontends/qt4/GuiApplication.cpp:1231
 msgid "Software exception Detected"
 msgstr "Softwareausnahme erkannt"
 
-#: src/frontends/qt4/GuiApplication.cpp:1227
+#: src/frontends/qt4/GuiApplication.cpp:1229
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -16715,7 +16715,7 @@ msgstr ""
 "LyX hat einen ziemlich seltsamen Fehler entdeckt. Das Programm wird jetzt "
 "versuchen, alle ungespeicherten Dateien zu speichern, und dann beendet."
 
-#: src/frontends/qt4/GuiApplication.cpp:1399
+#: src/frontends/qt4/GuiApplication.cpp:1401
 msgid "Could not find UI definition file"
 msgstr "Die Benutzeroberflächen-Definitionsdatei konnte nicht gefunden werden"
 
@@ -17144,8 +17144,8 @@ msgid "B4"
 msgstr "B4"
 
 #: src/frontends/qt4/GuiDocument.cpp:799
-msgid "LaTeX default"
-msgstr "LaTeX-Standard"
+msgid "Language Default (no inputenc)"
+msgstr "Sprach-Voreinstellung (ohne inputenc)"
 
 #: src/frontends/qt4/GuiDocument.cpp:808
 msgid "``text''"
@@ -18826,14 +18826,6 @@ msgstr "Unter-%1$s"
 msgid "not cited"
 msgstr "nicht zitiert"
 
-#: src/insets/InsetCollapsable.cpp:118 src/insets/InsetFloat.cpp:137
-msgid "Left-click to collapse the inset"
-msgstr "Links klicken um die Einfügung zu schließen"
-
-#: src/insets/InsetCollapsable.cpp:121 src/insets/InsetFloat.cpp:139
-msgid "Left-click to open the inset"
-msgstr "Links klicken um die Einfügung zu öffnen"
-
 #: src/insets/InsetCommand.cpp:102
 msgid "LaTeX Command: "
 msgstr "LaTeX-Befehl: "
@@ -18875,23 +18867,23 @@ msgstr "Externe Vorlage %1$s ist nicht installiert"
 msgid "Opened Flex Inset"
 msgstr "Geöffnete Flex-Einfügung"
 
-#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:421
+#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:413
 msgid "float: "
 msgstr "Gleitobjekt: "
 
-#: src/insets/InsetFloat.cpp:286
+#: src/insets/InsetFloat.cpp:278
 msgid "Opened Float Inset"
 msgstr "Gleitobjekt-Einfügung geöffnet"
 
-#: src/insets/InsetFloat.cpp:357
+#: src/insets/InsetFloat.cpp:349
 msgid "float"
 msgstr "Gleitobjekt"
 
-#: src/insets/InsetFloat.cpp:424
+#: src/insets/InsetFloat.cpp:416
 msgid "subfloat: "
 msgstr "Untergleitobjekt: "
 
-#: src/insets/InsetFloat.cpp:432
+#: src/insets/InsetFloat.cpp:424
 msgid " (sideways)"
 msgstr " (seitwärts)"
 
@@ -19811,6 +19803,15 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "LaTeX default"
+#~ msgstr "LaTeX-Standard"
+
+#~ msgid "Left-click to collapse the inset"
+#~ msgstr "Links klicken um die Einfügung zu schließen"
+
+#~ msgid "Left-click to open the inset"
+#~ msgstr "Links klicken um die Einfügung zu öffnen"
 
 #~ msgid "LyX binary not found"
 #~ msgstr "LyX binär nicht gefunden"

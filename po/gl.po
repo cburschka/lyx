@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-08-28 16:01+0100\n"
+"POT-Creation-Date: 2008-09-01 10:43+0200\n"
 "PO-Revision-Date: 2008-08-04 22:31+0100\n"
 "Last-Translator: Ramon Flores <fa2ramon@usc.es>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -8073,7 +8073,7 @@ msgid "CharStyle"
 msgstr "Mudanza: "
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
-#: src/insets/InsetCollapsable.cpp:151
+#: src/insets/InsetCollapsable.cpp:139
 msgid "UNDEFINED"
 msgstr ""
 
@@ -15479,7 +15479,7 @@ msgstr "Executando MakeIndex para nomencl."
 msgid "Could not read configuration file"
 msgstr "Non foi posíbel ler ficheiro de configuración"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1400
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1402
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16917,12 +16917,12 @@ msgstr ""
 "set-color \"%1$s\" fallou - a cor non está definida ou pode non ser "
 "redefinida"
 
-#: src/frontends/qt4/GuiApplication.cpp:1209
+#: src/frontends/qt4/GuiApplication.cpp:1211
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Fallou a impresión do documento"
 
-#: src/frontends/qt4/GuiApplication.cpp:1219
+#: src/frontends/qt4/GuiApplication.cpp:1221
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -16930,18 +16930,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1223
-#: src/frontends/qt4/GuiApplication.cpp:1229
+#: src/frontends/qt4/GuiApplication.cpp:1225
+#: src/frontends/qt4/GuiApplication.cpp:1231
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1227
+#: src/frontends/qt4/GuiApplication.cpp:1229
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1399
+#: src/frontends/qt4/GuiApplication.cpp:1401
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Non foi posíbel ler ficheiro de configuración"
@@ -17385,8 +17385,9 @@ msgid "B4"
 msgstr "B4"
 
 #: src/frontends/qt4/GuiDocument.cpp:799
-msgid "LaTeX default"
-msgstr "Predefinida do LaTeX"
+#, fuzzy
+msgid "Language Default (no inputenc)"
+msgstr "Cabezallo de língua:"
 
 #: src/frontends/qt4/GuiDocument.cpp:808
 msgid "``text''"
@@ -19184,14 +19185,6 @@ msgstr ""
 msgid "not cited"
 msgstr "protexido"
 
-#: src/insets/InsetCollapsable.cpp:118 src/insets/InsetFloat.cpp:137
-msgid "Left-click to collapse the inset"
-msgstr ""
-
-#: src/insets/InsetCollapsable.cpp:121 src/insets/InsetFloat.cpp:139
-msgid "Left-click to open the inset"
-msgstr ""
-
 #: src/insets/InsetCommand.cpp:102
 msgid "LaTeX Command: "
 msgstr "Comando LaTeX: "
@@ -19238,24 +19231,24 @@ msgstr "O modelo externo %1$s non está instalado"
 msgid "Opened Flex Inset"
 msgstr "Recadro de texto aberto"
 
-#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:421
+#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:413
 msgid "float: "
 msgstr "flutuante: "
 
-#: src/insets/InsetFloat.cpp:286
+#: src/insets/InsetFloat.cpp:278
 msgid "Opened Float Inset"
 msgstr "Recadro flutuante aberto"
 
-#: src/insets/InsetFloat.cpp:357
+#: src/insets/InsetFloat.cpp:349
 msgid "float"
 msgstr "flutuante"
 
-#: src/insets/InsetFloat.cpp:424
+#: src/insets/InsetFloat.cpp:416
 #, fuzzy
 msgid "subfloat: "
 msgstr "flutuante: "
 
-#: src/insets/InsetFloat.cpp:432
+#: src/insets/InsetFloat.cpp:424
 msgid " (sideways)"
 msgstr " (de lado)"
 
@@ -20191,6 +20184,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Usuário descoñecido"
+
+#~ msgid "LaTeX default"
+#~ msgstr "Predefinida do LaTeX"
 
 #~ msgid "LyX binary not found"
 #~ msgstr "Non se achou o binario de LyX"

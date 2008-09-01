@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-08-28 16:01+0100\n"
+"POT-Creation-Date: 2008-09-01 10:43+0200\n"
 "PO-Revision-Date: 2007-05-15 16:13+0900\n"
 "Last-Translator: cghan <cghan@pusan.ac.kr>\n"
 "Language-Team: hangul <ko@li.org>\n"
@@ -8006,7 +8006,7 @@ msgid "CharStyle"
 msgstr "형식(Style)"
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
-#: src/insets/InsetCollapsable.cpp:151
+#: src/insets/InsetCollapsable.cpp:139
 msgid "UNDEFINED"
 msgstr ""
 
@@ -15371,7 +15371,7 @@ msgstr ""
 msgid "Could not read configuration file"
 msgstr "설정(configuration) 파일을 읽을 수 없습니다."
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1400
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1402
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16662,12 +16662,12 @@ msgstr ""
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1209
+#: src/frontends/qt4/GuiApplication.cpp:1211
 #, fuzzy
 msgid "The current document was closed."
 msgstr "문서 인쇄 실패"
 
-#: src/frontends/qt4/GuiApplication.cpp:1219
+#: src/frontends/qt4/GuiApplication.cpp:1221
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -16675,18 +16675,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1223
-#: src/frontends/qt4/GuiApplication.cpp:1229
+#: src/frontends/qt4/GuiApplication.cpp:1225
+#: src/frontends/qt4/GuiApplication.cpp:1231
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1227
+#: src/frontends/qt4/GuiApplication.cpp:1229
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1399
+#: src/frontends/qt4/GuiApplication.cpp:1401
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "설정(configuration) 파일을 읽을 수 없습니다."
@@ -17163,8 +17163,8 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:799
 #, fuzzy
-msgid "LaTeX default"
-msgstr "LaTeX 실행 실패함"
+msgid "Language Default (no inputenc)"
+msgstr "언어(&Language):"
 
 #: src/frontends/qt4/GuiDocument.cpp:808
 #, fuzzy
@@ -18962,14 +18962,6 @@ msgstr ""
 msgid "not cited"
 msgstr "노우트(Note) #:"
 
-#: src/insets/InsetCollapsable.cpp:118 src/insets/InsetFloat.cpp:137
-msgid "Left-click to collapse the inset"
-msgstr ""
-
-#: src/insets/InsetCollapsable.cpp:121 src/insets/InsetFloat.cpp:139
-msgid "Left-click to open the inset"
-msgstr ""
-
 #: src/insets/InsetCommand.cpp:102
 #, fuzzy
 msgid "LaTeX Command: "
@@ -19019,25 +19011,25 @@ msgstr "외부 응용 프로그램(External Applications)"
 msgid "Opened Flex Inset"
 msgstr "열려있는 상자 삽입구(Box Inset)"
 
-#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:421
+#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:413
 msgid "float: "
 msgstr "뜨내기(float):"
 
-#: src/insets/InsetFloat.cpp:286
+#: src/insets/InsetFloat.cpp:278
 msgid "Opened Float Inset"
 msgstr "열려있는 뜨내기 삽입구(Opened Float Inset)"
 
-#: src/insets/InsetFloat.cpp:357
+#: src/insets/InsetFloat.cpp:349
 #, fuzzy
 msgid "float"
 msgstr "뜨내기(float):"
 
-#: src/insets/InsetFloat.cpp:424
+#: src/insets/InsetFloat.cpp:416
 #, fuzzy
 msgid "subfloat: "
 msgstr "뜨내기(float):"
 
-#: src/insets/InsetFloat.cpp:432
+#: src/insets/InsetFloat.cpp:424
 msgid " (sideways)"
 msgstr ""
 
@@ -20001,6 +19993,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "모르는 사용자(user)"
+
+#, fuzzy
+#~ msgid "LaTeX default"
+#~ msgstr "LaTeX 실행 실패함"
 
 #, fuzzy
 #~ msgid "LyX binary not found"

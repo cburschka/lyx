@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-08-28 16:01+0100\n"
+"POT-Creation-Date: 2008-09-01 10:43+0200\n"
 "PO-Revision-Date: 2008-08-04 22:42+0100\n"
 "Last-Translator: Michał Fita <michal.fita@gmail.com>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -8138,7 +8138,7 @@ msgid "CharStyle"
 msgstr "Zmiana: "
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
-#: src/insets/InsetCollapsable.cpp:151
+#: src/insets/InsetCollapsable.cpp:139
 msgid "UNDEFINED"
 msgstr ""
 
@@ -15490,7 +15490,7 @@ msgstr "Uruchamiam MakeIndex dla nomecl."
 msgid "Could not read configuration file"
 msgstr "Nie można wczytać pliku konfiguracyjnego"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1400
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1402
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16886,12 +16886,12 @@ msgstr ""
 "Ustawienie koloru %1$s nie powiodło się -- kolor nie został zdefiniowanylub "
 "nie można go przedefiniować"
 
-#: src/frontends/qt4/GuiApplication.cpp:1209
+#: src/frontends/qt4/GuiApplication.cpp:1211
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Nieudane drukowanie dokumentu"
 
-#: src/frontends/qt4/GuiApplication.cpp:1219
+#: src/frontends/qt4/GuiApplication.cpp:1221
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -16899,18 +16899,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1223
-#: src/frontends/qt4/GuiApplication.cpp:1229
+#: src/frontends/qt4/GuiApplication.cpp:1225
+#: src/frontends/qt4/GuiApplication.cpp:1231
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1227
+#: src/frontends/qt4/GuiApplication.cpp:1229
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1399
+#: src/frontends/qt4/GuiApplication.cpp:1401
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Nie można wczytać pliku konfiguracyjnego"
@@ -17352,8 +17352,9 @@ msgid "B4"
 msgstr "B4"
 
 #: src/frontends/qt4/GuiDocument.cpp:799
-msgid "LaTeX default"
-msgstr "Domyślne LaTeX'a"
+#, fuzzy
+msgid "Language Default (no inputenc)"
+msgstr "Lewy Nagłówek:"
 
 #: src/frontends/qt4/GuiDocument.cpp:808
 msgid "``text''"
@@ -19132,14 +19133,6 @@ msgstr ""
 msgid "not cited"
 msgstr "chronione"
 
-#: src/insets/InsetCollapsable.cpp:118 src/insets/InsetFloat.cpp:137
-msgid "Left-click to collapse the inset"
-msgstr ""
-
-#: src/insets/InsetCollapsable.cpp:121 src/insets/InsetFloat.cpp:139
-msgid "Left-click to open the inset"
-msgstr ""
-
 #: src/insets/InsetCommand.cpp:102
 msgid "LaTeX Command: "
 msgstr "Polecenie LaTeX:"
@@ -19186,24 +19179,24 @@ msgstr "Szablon zewnętrzny %1$s nie jest zainstalowany"
 msgid "Opened Flex Inset"
 msgstr "Otwarta wstawka tekstowa"
 
-#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:421
+#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:413
 msgid "float: "
 msgstr "Wstawka: "
 
-#: src/insets/InsetFloat.cpp:286
+#: src/insets/InsetFloat.cpp:278
 msgid "Opened Float Inset"
 msgstr "Otwarta wstawka"
 
-#: src/insets/InsetFloat.cpp:357
+#: src/insets/InsetFloat.cpp:349
 msgid "float"
 msgstr "wstawka"
 
-#: src/insets/InsetFloat.cpp:424
+#: src/insets/InsetFloat.cpp:416
 #, fuzzy
 msgid "subfloat: "
 msgstr "Wstawka: "
 
-#: src/insets/InsetFloat.cpp:432
+#: src/insets/InsetFloat.cpp:424
 msgid " (sideways)"
 msgstr " (obrót)"
 
@@ -20132,6 +20125,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Nieznany użytkownik"
+
+#~ msgid "LaTeX default"
+#~ msgstr "Domyślne LaTeX'a"
 
 #~ msgid "LyX binary not found"
 #~ msgstr "Binaria LyX nie znalezione"

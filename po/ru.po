@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-08-28 16:01+0100\n"
+"POT-Creation-Date: 2008-09-01 10:43+0200\n"
 "PO-Revision-Date: 2008-08-04 23:57+0100\n"
 "Last-Translator: Andrey V. Panov <panov@canopus.iacp.dvo.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -8374,7 +8374,7 @@ msgid "CharStyle"
 msgstr "Стр. от:"
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
-#: src/insets/InsetCollapsable.cpp:151
+#: src/insets/InsetCollapsable.cpp:139
 msgid "UNDEFINED"
 msgstr ""
 
@@ -15843,7 +15843,7 @@ msgstr "Выполняю MakeIndex."
 msgid "Could not read configuration file"
 msgstr "Не удаётся прочитать файл конфигурации"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1400
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1402
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -17268,12 +17268,12 @@ msgstr ""
 "Установка цвета не удалась \"%1$s\" - цвет не определён или не может быть "
 "переопределён"
 
-#: src/frontends/qt4/GuiApplication.cpp:1209
+#: src/frontends/qt4/GuiApplication.cpp:1211
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Печатать в файл"
 
-#: src/frontends/qt4/GuiApplication.cpp:1219
+#: src/frontends/qt4/GuiApplication.cpp:1221
 #, fuzzy
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
@@ -17286,13 +17286,13 @@ msgstr ""
 "\n"
 "Ошибка: "
 
-#: src/frontends/qt4/GuiApplication.cpp:1223
-#: src/frontends/qt4/GuiApplication.cpp:1229
+#: src/frontends/qt4/GuiApplication.cpp:1225
+#: src/frontends/qt4/GuiApplication.cpp:1231
 #, fuzzy
 msgid "Software exception Detected"
 msgstr "Обнаружено исключение программы iconv"
 
-#: src/frontends/qt4/GuiApplication.cpp:1227
+#: src/frontends/qt4/GuiApplication.cpp:1229
 #, fuzzy
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
@@ -17301,7 +17301,7 @@ msgstr ""
 "LyX получил сообщение о серьёзной ошибке, сейчас он попытается сохранить все "
 "документы и выйти."
 
-#: src/frontends/qt4/GuiApplication.cpp:1399
+#: src/frontends/qt4/GuiApplication.cpp:1401
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Не удаётся прочитать файл конфигурации"
@@ -17750,8 +17750,9 @@ msgid "B4"
 msgstr "B4"
 
 #: src/frontends/qt4/GuiDocument.cpp:799
-msgid "LaTeX default"
-msgstr "LaTeX по умолчанию"
+#, fuzzy
+msgid "Language Default (no inputenc)"
+msgstr "Левая шапка"
 
 #: src/frontends/qt4/GuiDocument.cpp:808
 msgid "``text''"
@@ -19528,14 +19529,6 @@ msgstr ""
 msgid "not cited"
 msgstr "защищённый"
 
-#: src/insets/InsetCollapsable.cpp:118 src/insets/InsetFloat.cpp:137
-msgid "Left-click to collapse the inset"
-msgstr ""
-
-#: src/insets/InsetCollapsable.cpp:121 src/insets/InsetFloat.cpp:139
-msgid "Left-click to open the inset"
-msgstr ""
-
 #: src/insets/InsetCommand.cpp:102
 msgid "LaTeX Command: "
 msgstr "Команда LaTeX: "
@@ -19583,24 +19576,24 @@ msgstr "Сообщения внешнего шаблона/вклейки"
 msgid "Opened Flex Inset"
 msgstr "Открытая текстовая вкладка"
 
-#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:421
+#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:413
 msgid "float: "
 msgstr "плавающий объект: "
 
-#: src/insets/InsetFloat.cpp:286
+#: src/insets/InsetFloat.cpp:278
 msgid "Opened Float Inset"
 msgstr "Открытая вкладка плавающего объекта"
 
-#: src/insets/InsetFloat.cpp:357
+#: src/insets/InsetFloat.cpp:349
 msgid "float"
 msgstr "плавающий объект"
 
-#: src/insets/InsetFloat.cpp:424
+#: src/insets/InsetFloat.cpp:416
 #, fuzzy
 msgid "subfloat: "
 msgstr "плавающий объект: "
 
-#: src/insets/InsetFloat.cpp:432
+#: src/insets/InsetFloat.cpp:424
 #, fuzzy
 msgid " (sideways)"
 msgstr "Повернуть на 90 градусов"
@@ -20519,6 +20512,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Неизвестный пользователь"
+
+#~ msgid "LaTeX default"
+#~ msgstr "LaTeX по умолчанию"
 
 #, fuzzy
 #~ msgid "LyX binary not found"
