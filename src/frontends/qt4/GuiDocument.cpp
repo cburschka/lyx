@@ -796,7 +796,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	langModule->languageCO->setModel(language_model);
 
 	// Always put the default encoding in the first position.
-	langModule->encodingCO->addItem(qt_("LaTeX default"));
+	langModule->encodingCO->addItem(qt_("Language Default (no inputenc)"));
 	QStringList encodinglist;
 	Encodings::const_iterator it = encodings.begin();
 	Encodings::const_iterator const end = encodings.end();
