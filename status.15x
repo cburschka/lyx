@@ -24,7 +24,8 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Updated localization of the user interface for Catalan, Italian, Czech and Hebrew.
+- Updated localization of the user interface for Catalan, German, Italian,
+  Czech and Hebrew.
 
 - New Catalan translation of the Intro manual and the example file
   ItemizeBullets.lyx.
@@ -76,6 +77,8 @@ What's new
   versions of ImageMagick (bug 4749).
 
 - Do not delete special characters in free spacing mode (bug 5125).
+
+- Fix importing of LaTeX files that don't use the package inputenc (bug 5181).
 
 
 * USER INTERFACE

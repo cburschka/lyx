@@ -59,7 +59,7 @@ bool documentclass_language;
 namespace {
 
 const char * const known_languages[] = { "afrikaans", "american", "austrian",
-"babel", "bahasa", "basque", "belarusian", "brazil", "breton", "british",
+"bahasa", "basque", "belarusian", "brazil", "breton", "british",
 "bulgarian", "catalan", "croatian", "czech", "danish", "dutch", "english",
 "esperanto", "estonian", "finnish", "francais", "french", "frenchb",
 "frenchle", "frenchpro", "galician", "german", "germanb", "greek", "hebcal",
