@@ -2025,7 +2025,6 @@ lib_doc_files = Split('''
     LaTeXConfig.lyx
     LFUNs.lyx
     Math.lyx
-    Reference.lyx
     Shortcuts.lyx
     Tutorial.lyx
     UserGuide.lyx
