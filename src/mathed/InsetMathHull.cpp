@@ -35,6 +35,7 @@
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
+#include "Language.h"
 #include "LyXRC.h"
 #include "OutputParams.h"
 #include "ParIterator.h"
@@ -445,7 +446,12 @@ void InsetMathHull::drawT(TextPainter & pain, int x, int y) const
 static docstring latexString(InsetMathHull const & inset)
 {
 	odocstringstream ls;
-	WriteStream wi(ls, false, false, false);
+	// This has to be static, because a preview snippet containing math
+	// in text mode (such as $\text{$\phi$}$) gets processed twice. The
+	// first time as a whole, and the second time only the inner math.
+	// In this last case inset.buffer() would be invalid.
+	static Encoding const * encoding = inset.buffer().language()->encoding();
+	WriteStream wi(ls, false, true, false, encoding);
 	inset.write(wi);
 	return ls.str();
 }
