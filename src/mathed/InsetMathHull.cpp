@@ -1019,6 +1019,7 @@ docstring InsetMathHull::eolString(row_type row, bool emptyline, bool fragile) c
 
 void InsetMathHull::write(WriteStream & os) const
 {
+	ModeSpecifier specifier(os, MATH_MODE);
 	header_write(os);
 	InsetMathGrid::write(os);
 	footer_write(os);
