@@ -450,6 +450,8 @@ static docstring latexString(InsetMathHull const & inset)
 	// in text mode (such as $\text{$\phi$}$) gets processed twice. The
 	// first time as a whole, and the second time only the inner math.
 	// In this last case inset.buffer() would be invalid.
+	// FIXME: preview snippets should only be processed once, such that
+	// both static qualifier and isBufferValid() check can be dropped.
 	static Encoding const * encoding = 0;
 	if (inset.isBufferValid())
 		encoding = &(inset.buffer().params().encoding());
