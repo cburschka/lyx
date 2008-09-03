@@ -38,7 +38,7 @@ private:
 	/// apply dialog
 	void applyView();
 	/// update dialog
-	void updateContents() { };
+	void updateContents() {}
 	///
 	bool initialiseParams(std::string const & data);
 	///

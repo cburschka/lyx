@@ -39,7 +39,7 @@ private:
 	/// Apply changes
 	void applyView();
 	/// update
-	void updateContents() { };
+	void updateContents() {}
 	///
 	bool initialiseParams(std::string const & data);
 	///

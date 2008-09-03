@@ -77,7 +77,7 @@ private:
 	/// Apply changes
 	void applyView();
 	/// update
-	void updateContents() { };
+	void updateContents() {}
 	/// Browse for a file
 	QString browse(QString const &, Type) const;
 
