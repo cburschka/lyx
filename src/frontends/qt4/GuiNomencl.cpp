@@ -64,7 +64,7 @@ void GuiNomenclature::reject()
 }
 
 
-void GuiNomenclature::updateContents()
+void GuiNomenclature::paramsToDialog(InsetCommandParams const & icp)
 {
 	prefixED->setText(toqstr(params_["prefix"]));
 	symbolED->setText(toqstr(params_["symbol"]));
@@ -96,6 +96,7 @@ bool GuiNomenclature::isValid()
 bool GuiNomenclature::initialiseParams(std::string const & data)
 {
 	InsetCommand::string2params("nomenclature", data, params_);
+	paramsToDialog(params_);
 	return true;
 }
 
