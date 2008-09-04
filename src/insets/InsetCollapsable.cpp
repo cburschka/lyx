@@ -615,7 +615,10 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {
-	// suppress these
+	// FIXME At present, these are being enabled and disabled according to
+	// whether PASSTHRU has been set in the InsetLayout. This makes some
+	// sense, but there are other checks that should really be done. E.g.,
+	// one should not be able to inset IndexPrint inside an optional argument!!
 	case LFUN_ACCENT_ACUTE:
 	case LFUN_ACCENT_BREVE:
 	case LFUN_ACCENT_CARON:
@@ -668,8 +671,6 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_LABEL_INSERT:
 	case LFUN_LINE_INSERT:
 	case LFUN_NEWPAGE_INSERT:
-	case LFUN_LAYOUT:
-	case LFUN_LAYOUT_PARAGRAPH:
 	case LFUN_LAYOUT_TABULAR:
 	case LFUN_MARGINALNOTE_INSERT:
 	case LFUN_MATH_DISPLAY:
@@ -683,10 +684,6 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_NOTE_INSERT:
 	case LFUN_NOTE_NEXT:
 	case LFUN_OPTIONAL_INSERT:
-	case LFUN_PARAGRAPH_PARAMS:
-	case LFUN_PARAGRAPH_PARAMS_APPLY:
-	case LFUN_PARAGRAPH_SPACING:
-	case LFUN_PARAGRAPH_UPDATE:
 	case LFUN_REFERENCE_NEXT:
 	case LFUN_SERVER_GOTO_FILE_ROW:
 	case LFUN_SERVER_NOTIFY:
@@ -701,6 +698,18 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return true;
 		}
 		return InsetText::getStatus(cur, cmd, flag);
+
+	case LFUN_LAYOUT:
+		flag.setEnabled(!forcePlainLayout());
+		return true;
+
+	case LFUN_LAYOUT_PARAGRAPH:
+	case LFUN_PARAGRAPH_PARAMS:
+	case LFUN_PARAGRAPH_PARAMS_APPLY:
+	case LFUN_PARAGRAPH_SPACING:
+	case LFUN_PARAGRAPH_UPDATE:
+		flag.setEnabled(allowParagraphCustomization());
+		return true;
 
 	case LFUN_INSET_TOGGLE:
 		if (cmd.argument() == "open")

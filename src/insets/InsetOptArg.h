@@ -46,6 +46,8 @@ private:
 	int plaintext(odocstream &, OutputParams const &) const;
 	/// Standard DocBook output -- short-circuited
 	int docbook(odocstream &, OutputParams const &) const;
+	///
+	virtual bool forcePlainLayout(idx_type = 0) const { return true; }
 
 	/// Write out to the .lyx file
 	void write(std::ostream & os) const;
