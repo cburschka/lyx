@@ -1,6 +1,6 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass[svjour3,svglov3.clo]{article (Springer svjour3/global)}
-# svjour3/global3 (article) textclass definition file.
+# svjour3/global (article) textclass definition file.
 # for various Springer Verlag Journals for which no specific file exists (Global).
 # --------
 #
@@ -19,7 +19,7 @@
 #
 # The standard Springer Journal sections
 Format 4
-Input svjour3.inc
+Input svjour.inc
 
 ClassOptions
   Other		global
