@@ -602,8 +602,7 @@ string const LaTeXFeatures::getPackages() const
 	// Some classes load natbib themselves, but still allow (or even require)
 	// plain numeric citations (ReVTeX is such a case, see bug 5182).
 	// This special case is indicated by the "natbib-internal" key.
-	if (mustProvide("natbib")
-	    && !params_.getTextClass().provides("natbib-internal")) {
+	if (mustProvide("natbib") && !tclass.provides("natbib-internal")) {
 		packages << "\\usepackage[";
 		if (params_.citeEngine() == ENGINE_NATBIB_NUMERICAL)
 			packages << "numbers";
