@@ -338,6 +338,7 @@ SOURCEFILESMATHED = \
 	mathed/InsetMathDelim.cpp \
 	mathed/InsetMathDiff.cpp \
 	mathed/InsetMathDots.cpp \
+	mathed/InsetMathEnsureMath.cpp \
 	mathed/InsetMathEnv.cpp \
 	mathed/InsetMathExFunc.cpp \
 	mathed/InsetMathExInt.cpp \
@@ -400,6 +401,7 @@ HEADERFILESMATHED = \
 	mathed/InsetMathDelim.h \
 	mathed/InsetMathDiff.h \
 	mathed/InsetMathDots.h \
+	mathed/InsetMathEnsureMath.h \
 	mathed/InsetMathEnv.h \
 	mathed/InsetMathExFunc.h \
 	mathed/InsetMathExInt.h \

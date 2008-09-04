@@ -20,6 +20,7 @@
 #include "InsetMathColor.h"
 #include "InsetMathDecoration.h"
 #include "InsetMathDots.h"
+#include "InsetMathEnsureMath.h"
 #include "InsetMathFont.h"
 #include "InsetMathFontOld.h"
 #include "InsetMathFrac.h"
@@ -443,6 +444,8 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathPhantom(InsetMathPhantom::phantom));
 	if (s == "vphantom")
 		return MathAtom(new InsetMathPhantom(InsetMathPhantom::vphantom));
+	if (s == "ensuremath")
+		return MathAtom(new InsetMathEnsureMath);
 
 	return MathAtom(new MathMacro(s));
 }
