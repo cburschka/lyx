@@ -2654,7 +2654,6 @@ lib_layouts_inc_files = Split('''
     stdstruct.inc
     stdtitle.inc
     svjour.inc
-    svjour3.inc
     theorems.inc
     theorems-ams.inc
     theorems-order.inc

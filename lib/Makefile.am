@@ -1066,7 +1066,6 @@ dist_layouts_DATA =\
 	layouts/svglobal3.layout \
 	layouts/svjog.layout \
 	layouts/svjour.inc \
-	layouts/svjour3.inc \
 	layouts/svprobth.layout \
 	layouts/tarticle.layout \
 	layouts/tbook.layout \
