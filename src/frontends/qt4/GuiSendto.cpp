@@ -23,6 +23,7 @@
 #include "support/qstring_helpers.h"
 #include "support/filetools.h"
 
+#include <QLineEdit>
 #include <QListWidget>
 #include <QPushButton>
 
@@ -48,6 +49,8 @@ GuiSendTo::GuiSendTo(GuiView & lv)
 		this, SLOT(slotFormatSelected(QListWidgetItem *)));
 	connect(formatLW, SIGNAL(itemClicked(QListWidgetItem *)),
 		this, SLOT(changed_adaptor()));
+	connect(formatLW, SIGNAL(itemSelectionChanged()),
+		this, SLOT(changed_adaptor()));
 	connect(commandCO, SIGNAL(textChanged(QString)),
 		this, SLOT(changed_adaptor()));
 
@@ -68,6 +71,13 @@ void GuiSendTo::updateContents()
 {
 	all_formats_ = allFormats();
 
+	// Save the current selection if any
+	Format const * current_format = 0;
+	int const line = formatLW->currentRow();
+	if (line >= 0 && line <= formatLW->count()
+	    && formatLW->selectedItems().size() > 0)
+		current_format = all_formats_[line];
+
 	// Check whether the current contents of the browser will be
 	// changed by loading the contents of formats
 	vector<string> keys;
@@ -76,8 +86,14 @@ void GuiSendTo::updateContents()
 	vector<string>::iterator result = keys.begin();
 	vector<Format const *>::const_iterator it  = all_formats_.begin();
 	vector<Format const *>::const_iterator end = all_formats_.end();
-	for (; it != end; ++it, ++result)
+
+	int current_line = -1;
+	for (int ln = 0; it != end; ++it, ++result, ++ln) {
 		*result = (*it)->prettyname();
+		if (current_format 
+		    && (*it)->prettyname() == current_format->prettyname())
+			current_line = ln;
+	}
 
 	// Reload the browser
 	formatLW->clear();
@@ -87,19 +103,25 @@ void GuiSendTo::updateContents()
 		formatLW->addItem(qt_(*it));
 	}
 
-	commandCO->addItem(command_);
+	// Restore the selection
+	if (current_line > -1)
+		formatLW->setCurrentItem(formatLW->item(current_line));
 }
 
 
 void GuiSendTo::applyView()
 {
 	int const line = formatLW->currentRow();
+	QString const command = commandCO->currentText().trimmed();
+
+	if (commandCO->findText(command) == -1)
+		commandCO->insertItem(0, command);
 
 	if (line < 0 || line > formatLW->count())
 		return;
 
 	format_ = all_formats_[line];
-	command_ = commandCO->currentText().trimmed();
+	command_ = command;
 }
 
 
@@ -110,8 +132,9 @@ bool GuiSendTo::isValid()
 	if (line < 0 || line > int(formatLW->count()))
 		return false;
 
-	return formatLW->count() != 0 &&
-		!commandCO->currentText().isEmpty();
+	return (formatLW->selectedItems().size() > 0
+		&& formatLW->count() != 0
+		&& !commandCO->currentText().isEmpty());
 }
 
 
@@ -119,7 +142,17 @@ bool GuiSendTo::initialiseParams(string const &)
 {
 	format_ = 0;
 	command_ = toqstr(lyxrc.custom_export_command);
+	paramsToDialog(format_, command_);
 	return true;
+}
+
+
+void GuiSendTo::paramsToDialog(Format const * format, QString const & command)
+{
+	if (!command.isEmpty())
+		commandCO->addItem(command);
+
+	bc().setValid(isValid());
 }
 
 

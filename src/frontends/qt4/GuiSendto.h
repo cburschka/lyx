@@ -51,6 +51,8 @@ private:
 	///
 	bool initialiseParams(std::string const & data);
 	///
+	void paramsToDialog(Format const * format, QString const & command);
+	///
 	void clearParams() {}
 	///
 	void dispatchParams();

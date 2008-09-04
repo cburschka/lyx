@@ -48,7 +48,7 @@
       <number>666</number>
      </property>
      <property name="insertPolicy" >
-      <enum>QComboBox::InsertAtTop</enum>
+      <enum>QComboBox::NoInsert</enum>
      </property>
      <property name="autoCompletion" >
       <bool>true</bool>
@@ -117,10 +117,6 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_i18n.h</include>
- </includes>
  <tabstops>
   <tabstop>formatLW</tabstop>
   <tabstop>commandCO</tabstop>
@@ -128,6 +124,9 @@
   <tabstop>applyPB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_i18n.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>
