@@ -38,17 +38,8 @@ from scons_manifest import *
 
 # scons asks for 1.5.2, lyx requires 2.3
 EnsurePythonVersion(2, 3)
-# Please use at least 0.96.92 (not 0.96.1)
-EnsureSConsVersion(0, 96)
-# also check for minor version number for scons 0.96
-from SCons import __version__
-# allow the use of snapshot version of scons
-__version__ = __version__.split('d')[0]
-version = map(int, __version__.split('.'))
-if version[0] == 0 and version[1] == 96 and version[2] < 92:
-    print "Scons >= 0.96.92 is required."
-    Exit(1)
-
+# Please use at least version 0.97
+EnsureSConsVersion(0, 97)
 
 #----------------------------------------------------------
 # Global definitions
