@@ -896,6 +896,7 @@ void GuiApplication::resetGui()
 		return;
 
 #ifdef Q_WS_MACX
+	d->global_menubar_->clear();
 	delete d->global_menubar_;
 	// Create the global default menubar which is shown for the dialogs
 	// and if no GuiView is visible.
