@@ -895,12 +895,16 @@ void GuiApplication::resetGui()
 		// Gives some error box here.
 		return;
 
+#ifdef Q_WS_MACX
+	delete d->global_menubar_;
+	// Create the global default menubar which is shown for the dialogs
+	// and if no GuiView is visible.
+	d->global_menubar_ = new GlobalMenuBar();
+
 	// init the global menubar on Mac. This must be done after the session
 	// was recovered to know the "last files".
-	if (d->global_menubar_) {
-		d->global_menubar_->clear();
-		d->menus_.fillMenuBar(d->global_menubar_, 0, true);
-	}
+	d->menus_.fillMenuBar(d->global_menubar_, 0, true);
+#endif
 
 	QHash<int, GuiView *>::iterator it;
 	for (it = d->views_.begin(); it != d->views_.end(); ++it) {
