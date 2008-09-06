@@ -45,7 +45,7 @@ void writePlaintextFile(Buffer const & buf, odocstream & os,
 	OutputParams const & runparams)
 {
 	bool ref_printed = false;
-	ParagraphList const par = buf.paragraphs();
+	ParagraphList const & par = buf.paragraphs();
 	ParagraphList::const_iterator beg = par.begin();
 	ParagraphList::const_iterator end = par.end();
 	ParagraphList::const_iterator it = beg;
