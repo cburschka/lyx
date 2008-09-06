@@ -66,7 +66,7 @@ public:
 	/// Create the right quote inset after character c
 	InsetQuotes(Buffer const & buffer, char_type c);
 	/// Direct access to inner/outer quotation marks
-	InsetQuotes(Buffer const & buf, char_type c, QuoteLanguage l, QuoteTimes t);
+	InsetQuotes(Buffer const & buf, char_type c, QuoteTimes t);
 	///
 	docstring name() const;
 	///

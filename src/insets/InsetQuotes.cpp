@@ -102,8 +102,8 @@ InsetQuotes::InsetQuotes(Buffer const & buf, char_type c)
 }
 
 
-InsetQuotes::InsetQuotes(Buffer const & buf, char_type c, QuoteLanguage l, QuoteTimes t)
-	: language_(l), times_(t)
+InsetQuotes::InsetQuotes(Buffer const & buf, char_type c, QuoteTimes t)
+	: language_(buf.params().quotes_language), times_(t)
 {
 	setSide(c);
 	setBuffer(const_cast<Buffer &>(buf));
