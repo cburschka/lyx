@@ -88,29 +88,25 @@ char const * const latex_quote_babel[2][5] = {
 } // namespace anon
 
 
-InsetQuotes::InsetQuotes(string const & str)
+InsetQuotes::InsetQuotes(Buffer const & buf, string const & str)
 {
 	parseString(str);
+	setBuffer(const_cast<Buffer &>(buf));
 }
-
-
-InsetQuotes::InsetQuotes(QuoteLanguage l, QuoteSide s, QuoteTimes t)
-	: language_(l), side_(s), times_(t)
-{
-}
-
 
 InsetQuotes::InsetQuotes(Buffer const & buf, char_type c)
 	: language_(buf.params().quotes_language), times_(buf.params().quotes_times)
 {
 	setSide(c);
+	setBuffer(const_cast<Buffer &>(buf));
 }
 
 
-InsetQuotes::InsetQuotes(char_type c, QuoteLanguage l, QuoteTimes t)
+InsetQuotes::InsetQuotes(Buffer const & buf, char_type c, QuoteLanguage l, QuoteTimes t)
 	: language_(l), times_(t)
 {
 	setSide(c);
+	setBuffer(const_cast<Buffer &>(buf));
 }
 
 

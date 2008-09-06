@@ -495,7 +495,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		// can be translated to inset codes using insetCode(). And the insets'
 		// write() routines should use insetName() rather than hardcoding it.
 		if (tmptok == "Quotes") {
-			inset.reset(new InsetQuotes);
+			inset.reset(new InsetQuotes(buf));
 		} else if (tmptok == "External") {
 			inset.reset(new InsetExternal(const_cast<Buffer &>(buf)));
 		} else if (tmptok == "FormulaMacro") {

@@ -62,11 +62,11 @@ public:
 	    \item etc.
 	  \end{itemize}
 	  */
-	explicit InsetQuotes(std::string const & str = "eld");
+	explicit InsetQuotes(Buffer const & buf, std::string const & str = "eld");
 	/// Create the right quote inset after character c
 	InsetQuotes(Buffer const & buffer, char_type c);
 	/// Direct access to inner/outer quotation marks
-	InsetQuotes(char_type c, QuoteLanguage l, QuoteTimes t);
+	InsetQuotes(Buffer const & buf, char_type c, QuoteLanguage l, QuoteTimes t);
 	///
 	docstring name() const;
 	///
@@ -98,10 +98,6 @@ private:
 	///
 	Inset * clone() const { return new InsetQuotes(*this); }
 
-	/** The parameters of the constructor are the language, the
-	    side and the multiplicity of the quote.
-	 */
-	InsetQuotes(QuoteLanguage l, QuoteSide s, QuoteTimes t);
 	/// Decide whether we need left or right quotation marks
 	void setSide(char_type c);
 	///
