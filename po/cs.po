@@ -599,7 +599,7 @@ msgstr "Øe&z:"
 #: src/frontends/qt4/ui/CharacterUi.ui:96
 #: src/frontends/qt4/ui/CharacterUi.ui:173
 msgid "Font series"
-msgstr "Duktus písma"
+msgstr "Tlou¹»ka kresby písma"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
@@ -1086,13 +1086,12 @@ msgid "Input the font to be used for Chinese, Japanese or Korean (CJK) script"
 msgstr "Vlo¾it font, který má být pou¾it pro CJK skript"
 
 #: src/frontends/qt4/ui/FontUi.ui:71
-#, fuzzy
 msgid "Use old style instead of lining figures"
-msgstr "Pou¾ít starý styl místo lemování obrázkù"
+msgstr "Pou¾ít minuskové èíslice namísto verzálkových"
 
 #: src/frontends/qt4/ui/FontUi.ui:74
 msgid "Use &Old Style Figures"
-msgstr "Pou¾ít &støedovìké èíslice (old style figures)"
+msgstr "Pou¾ít &minuskové èíslice (old style figures)"
 
 #: src/frontends/qt4/ui/FontUi.ui:81
 msgid "Use a real small caps shape, if the font provides one"
@@ -8175,6 +8174,7 @@ msgstr ""
 "pøidat \\theendnotes do vlo¾ky TeX-ového kódu, a to v místì kde se "
 "majíkoncové poznámky objevit."
 
+#TODO Existuje typografický název?
 #: lib/layouts/hanging.module:2 lib/layouts/hanging.module:16
 msgid "Hanging"
 msgstr "Zavì¹ený"
@@ -14205,6 +14205,8 @@ msgid ""
 "layouts will be used. LyX might not be able to produce output unless a "
 "correct textclass is selected from the document settings dialog."
 msgstr ""
+"Tøída dokumentu %1$s nenalezena. Bude pou¾ita standardní tøída a rozvr¾ení."
+"LyX mo¾ná nebude schopen vyrobit výstup dokud nezvolíte správnou tøídu v nastaveních dokumentu."
 
 #: src/BufferParams.cpp:1445
 msgid "Document class not found"
@@ -16898,9 +16900,8 @@ msgid "B4"
 msgstr "B4"
 
 #: src/frontends/qt4/GuiDocument.cpp:799
-#, fuzzy
 msgid "Language Default (no inputenc)"
-msgstr "&Standardní pro daný jazyk"
+msgstr "&Standardní pro daný jazyk (bez inputenc)"
 
 #: src/frontends/qt4/GuiDocument.cpp:808
 msgid "``text''"
@@ -18765,7 +18766,7 @@ msgstr "Výpis - otevøená vlo¾ka"
 
 #: src/insets/InsetListings.cpp:215
 msgid "no more lstline delimiters available"
-msgstr ""
+msgstr "¾ádné dal¹í dostupné oddìlovaèe lstline"
 
 #: src/insets/InsetListings.cpp:220
 msgid "Running out of delimiters"
@@ -19390,7 +19391,7 @@ msgstr ""
 "$s"
 
 #: src/support/Package.cpp:555
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
 "\t%1$s\n"
@@ -19399,8 +19400,8 @@ msgid ""
 msgstr ""
 "Nepodaøilo se zjitit systémový adresáø, pøi prohledávání\n"
 "\t%1$s\n"
-"Pou¾ijte parametr pøíkazové øádky '-sysdir' nebo nastavte promìnnou "
-"prostøedí LYX_DIR_16x do systémového adresáøe LyX-u obsahujícího soubor "
+"Pou¾ijte parametr pøíkazové øádky '-sysdir' nebo nastavte promìnnou prostøedí\n"
+"%2$s do systémového adresáøe LyX-u obsahujícího soubor "
 "`chkconfig.ltx'."
 
 #: src/support/Package.cpp:636 src/support/Package.cpp:663
