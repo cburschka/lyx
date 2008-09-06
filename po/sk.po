@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-08-27 22:10+0200\n"
+"POT-Creation-Date: 2008-09-06 18:16+0200\n"
 "PO-Revision-Date: 2006-06-29 20:19+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -4036,8 +4036,7 @@ msgstr ""
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
-#: lib/layouts/svjour3.inc:27 lib/ui/stdtoolbars.inc:55
-#: src/insets/InsetRef.cpp:171
+#: lib/ui/stdtoolbars.inc:55 src/insets/InsetRef.cpp:171
 msgid "Standard"
 msgstr "©tandard"
 
@@ -4050,8 +4049,8 @@ msgstr "©ablóna_Teorémy"
 #: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:217
 #: lib/layouts/ijmpd.layout:217 lib/layouts/llncs.layout:371
 #: lib/layouts/siamltex.layout:250 lib/layouts/svjour.inc:433
-#: lib/layouts/svjour3.inc:436 lib/layouts/theorems-order.inc:76
-#: lib/layouts/theorems-proof.inc:13 lib/layouts/theorems-std.module:21
+#: lib/layouts/theorems-order.inc:76 lib/layouts/theorems-proof.inc:13
+#: lib/layouts/theorems-std.module:21
 msgid "Proof"
 msgstr "Dôkaz"
 
@@ -4065,11 +4064,11 @@ msgstr "Dôkaz"
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:196
 #: lib/layouts/ijmpd.layout:199 lib/layouts/llncs.layout:412
 #: lib/layouts/siamltex.layout:200 lib/layouts/svjour.inc:475
-#: lib/layouts/svjour3.inc:478 lib/layouts/theorems.inc:24
-#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:202
-#: lib/layouts/theorems-ams.inc:24 lib/layouts/theorems-ams.inc:25
-#: lib/layouts/theorems-ams.inc:208 lib/layouts/theorems-order.inc:7
-#: lib/layouts/theorems-proof.inc:14 lib/layouts/theorems-starred.inc:24
+#: lib/layouts/theorems.inc:24 lib/layouts/theorems.inc:25
+#: lib/layouts/theorems.inc:202 lib/layouts/theorems-ams.inc:24
+#: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
+#: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems-starred.inc:24
 #: lib/layouts/theorems-starred-equivalents.inc:6
 #: lib/layouts/theorems-chap.module:17 lib/layouts/theorems-sec.module:16
 msgid "Theorem"
@@ -4084,9 +4083,8 @@ msgstr "Teoréma"
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:246 lib/layouts/ijmpd.layout:251
 #: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:215
-#: lib/layouts/svjour.inc:412 lib/layouts/svjour3.inc:415
-#: lib/layouts/theorems.inc:69 lib/layouts/theorems-ams.inc:71
-#: lib/layouts/theorems-order.inc:19
+#: lib/layouts/svjour.inc:412 lib/layouts/theorems.inc:69
+#: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-order.inc:19
 #: lib/layouts/theorems-starred-equivalents.inc:20
 msgid "Lemma"
 msgstr ""
@@ -4100,8 +4098,8 @@ msgstr ""
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:236
 #: lib/layouts/ijmpd.layout:237 lib/layouts/llncs.layout:316
 #: lib/layouts/siamltex.layout:222 lib/layouts/svjour.inc:373
-#: lib/layouts/svjour3.inc:376 lib/layouts/theorems.inc:58
-#: lib/layouts/theorems-ams.inc:59 lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems.inc:58 lib/layouts/theorems-ams.inc:59
+#: lib/layouts/theorems-order.inc:13
 #: lib/layouts/theorems-starred-equivalents.inc:13
 msgid "Corollary"
 msgstr ""
@@ -4114,8 +4112,8 @@ msgstr ""
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:256
 #: lib/layouts/ijmpd.layout:262 lib/layouts/llncs.layout:385
 #: lib/layouts/siamltex.layout:229 lib/layouts/svjour.inc:447
-#: lib/layouts/svjour3.inc:450 lib/layouts/theorems.inc:80
-#: lib/layouts/theorems-ams.inc:83 lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems.inc:80 lib/layouts/theorems-ams.inc:83
+#: lib/layouts/theorems-order.inc:25
 #: lib/layouts/theorems-starred-equivalents.inc:27
 msgid "Proposition"
 msgstr ""
@@ -4127,8 +4125,8 @@ msgstr ""
 #: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:363
 #: lib/layouts/ijmpc.layout:296 lib/layouts/ijmpd.layout:306
 #: lib/layouts/llncs.layout:309 lib/layouts/svjour.inc:366
-#: lib/layouts/svjour3.inc:369 lib/layouts/theorems.inc:91
-#: lib/layouts/theorems-ams.inc:95 lib/layouts/theorems-order.inc:31
+#: lib/layouts/theorems.inc:91 lib/layouts/theorems-ams.inc:95
+#: lib/layouts/theorems-order.inc:31
 #: lib/layouts/theorems-starred-equivalents.inc:34
 msgid "Conjecture"
 msgstr "Dohad"
@@ -4172,8 +4170,8 @@ msgstr "Axióma"
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:132
 #: lib/layouts/ijmpd.layout:129 lib/layouts/llncs.layout:330
 #: lib/layouts/siamltex.layout:236 lib/layouts/svjour.inc:387
-#: lib/layouts/svjour3.inc:390 lib/layouts/theorems.inc:113
-#: lib/layouts/theorems-ams.inc:119 lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems.inc:113 lib/layouts/theorems-ams.inc:119
+#: lib/layouts/theorems-order.inc:37
 #: lib/layouts/theorems-starred-equivalents.inc:41
 msgid "Definition"
 msgstr "Definícia"
@@ -4186,9 +4184,8 @@ msgstr "Definícia"
 #: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:959
 #: lib/layouts/elsart.layout:370 lib/layouts/ijmpc.layout:166
 #: lib/layouts/ijmpd.layout:163 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:394 lib/layouts/svjour3.inc:397
-#: lib/layouts/theorems.inc:132 lib/layouts/theorems-ams.inc:138
-#: lib/layouts/theorems-order.inc:43
+#: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:132
+#: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:48
 #: src/frontends/qt4/GuiDocument.cpp:827
 msgid "Example"
@@ -4211,8 +4208,8 @@ msgstr "Podmienka"
 
 #: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:377
 #: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:426
-#: lib/layouts/svjour3.inc:429 lib/layouts/theorems.inc:144
-#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-order.inc:49
+#: lib/layouts/theorems.inc:144 lib/layouts/theorems-ams.inc:150
+#: lib/layouts/theorems-order.inc:49
 #: lib/layouts/theorems-starred-equivalents.inc:55
 msgid "Problem"
 msgstr "Problém"
@@ -4223,9 +4220,8 @@ msgid "Problem #:"
 msgstr "Problém"
 
 #: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:401 lib/layouts/svjour3.inc:404
-#: lib/layouts/theorems.inc:156 lib/layouts/theorems-ams.inc:162
-#: lib/layouts/theorems-order.inc:55
+#: lib/layouts/svjour.inc:401 lib/layouts/theorems.inc:156
+#: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-order.inc:55
 #: lib/layouts/theorems-starred-equivalents.inc:62
 msgid "Exercise"
 msgstr "Cvièenie"
@@ -4238,8 +4234,8 @@ msgstr "Cvièenie"
 #: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:384
 #: lib/layouts/ijmpc.layout:176 lib/layouts/ijmpd.layout:174
 #: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:461
-#: lib/layouts/svjour3.inc:464 lib/layouts/theorems.inc:168
-#: lib/layouts/theorems-ams.inc:174 lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems.inc:168 lib/layouts/theorems-ams.inc:174
+#: lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:69
 msgid "Remark"
 msgstr "Pripomienka"
@@ -4252,9 +4248,8 @@ msgstr "Pripomienka"
 #: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:398
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:286
 #: lib/layouts/ijmpd.layout:295 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:345 lib/layouts/svjour3.inc:348
-#: lib/layouts/theorems.inc:188 lib/layouts/theorems-ams.inc:194
-#: lib/layouts/theorems-order.inc:67
+#: lib/layouts/svjour.inc:345 lib/layouts/theorems.inc:188
+#: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-order.inc:67
 #: lib/layouts/theorems-starred-equivalents.inc:76
 msgid "Claim"
 msgstr "Tvrdenie"
@@ -4268,7 +4263,7 @@ msgstr "Tvrdenie"
 #: lib/layouts/elsart.layout:391 lib/layouts/iopart.layout:92
 #: lib/layouts/llncs.layout:357 lib/layouts/powerdot.layout:197
 #: lib/layouts/slides.layout:167 lib/layouts/svjour.inc:419
-#: lib/layouts/svjour3.inc:422 lib/layouts/theorems-ams-extended.module:123
+#: lib/layouts/theorems-ams-extended.module:123
 msgid "Note"
 msgstr "Poznámka"
 
@@ -4319,7 +4314,6 @@ msgstr ""
 #: lib/layouts/scrclass.inc:62 lib/layouts/stdsections.inc:12
 #: lib/layouts/stdsections.inc:38 lib/layouts/stdsections.inc:61
 #: lib/layouts/stdsections.inc:62 lib/layouts/svjour.inc:53
-#: lib/layouts/svjour3.inc:52
 msgid "Section"
 msgstr "Oddiel"
 
@@ -4339,7 +4333,7 @@ msgstr "Oddiel"
 #: lib/layouts/agu_stdsections.inc:40 lib/layouts/aguplus.inc:41
 #: lib/layouts/db_stdsections.inc:36 lib/layouts/numrevtex.inc:15
 #: lib/layouts/scrclass.inc:69 lib/layouts/stdsections.inc:85
-#: lib/layouts/svjour.inc:62 lib/layouts/svjour3.inc:61
+#: lib/layouts/svjour.inc:62
 msgid "Subsection"
 msgstr "Pododdiel"
 
@@ -4356,7 +4350,7 @@ msgstr "Pododdiel"
 #: lib/layouts/siamltex.layout:65 lib/layouts/agu_stdsections.inc:50
 #: lib/layouts/db_stdsections.inc:44 lib/layouts/numrevtex.inc:24
 #: lib/layouts/scrclass.inc:76 lib/layouts/stdsections.inc:100
-#: lib/layouts/svjour.inc:71 lib/layouts/svjour3.inc:70
+#: lib/layouts/svjour.inc:71
 msgid "Subsubsection"
 msgstr "Podpododdiel"
 
@@ -4402,8 +4396,7 @@ msgstr "Podpododdiel*"
 #: lib/layouts/agu_stdtitle.inc:193 lib/layouts/amsdefs.inc:96
 #: lib/layouts/db_stdstruct.inc:11 lib/layouts/scrclass.inc:216
 #: lib/layouts/stdstruct.inc:12 lib/layouts/stdstruct.inc:27
-#: lib/layouts/svjour.inc:249 lib/layouts/svjour3.inc:252
-#: src/output_plaintext.cpp:133
+#: lib/layouts/svjour.inc:249 src/output_plaintext.cpp:133
 msgid "Abstract"
 msgstr "Výòatok"
 
@@ -4420,7 +4413,7 @@ msgstr "Výòatok"
 #: lib/layouts/paper.layout:171 lib/layouts/revtex4.layout:241
 #: lib/layouts/siamltex.layout:167 lib/layouts/spie.layout:39
 #: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:166
-#: lib/layouts/svjour.inc:270 lib/layouts/svjour3.inc:273
+#: lib/layouts/svjour.inc:270
 msgid "Keywords"
 msgstr "Kµúèové slová"
 
@@ -4447,8 +4440,7 @@ msgstr "Polo¾ka indexu"
 #: lib/layouts/simplecv.layout:139 lib/layouts/aguplus.inc:167
 #: lib/layouts/aguplus.inc:169 lib/layouts/amsdefs.inc:201
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:323 lib/layouts/svjour3.inc:326
-#: src/frontends/qt4/GuiDocument.cpp:986
+#: lib/layouts/svjour.inc:323 src/frontends/qt4/GuiDocument.cpp:986
 msgid "Bibliography"
 msgstr "Literatúra "
 
@@ -4541,7 +4533,7 @@ msgstr "Zoznam"
 #: lib/layouts/svprobth.layout:35 lib/layouts/agu_stdtitle.inc:246
 #: lib/layouts/amsdefs.inc:30 lib/layouts/db_stdtitle.inc:13
 #: lib/layouts/scrclass.inc:147 lib/layouts/stdtitle.inc:12
-#: lib/layouts/svjour.inc:129 lib/layouts/svjour3.inc:129
+#: lib/layouts/svjour.inc:129
 msgid "Title"
 msgstr "Nadpis"
 
@@ -4549,7 +4541,7 @@ msgstr "Nadpis"
 #: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:778
 #: lib/layouts/kluwer.layout:121 lib/layouts/llncs.layout:123
 #: lib/layouts/svprobth.layout:44 lib/layouts/aapaper.inc:9
-#: lib/layouts/svjour.inc:152 lib/layouts/svjour3.inc:152
+#: lib/layouts/svjour.inc:152
 msgid "Subtitle"
 msgstr "Podnadpis"
 
@@ -4570,7 +4562,6 @@ msgstr "Podnadpis"
 #: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:52
 #: lib/layouts/db_stdtitle.inc:21 lib/layouts/scrclass.inc:155
 #: lib/layouts/stdtitle.inc:31 lib/layouts/svjour.inc:181
-#: lib/layouts/svjour3.inc:182
 msgid "Author"
 msgstr "Autor"
 
@@ -4593,7 +4584,7 @@ msgid "Offprint"
 msgstr "Separát"
 
 #: lib/layouts/aa.layout:77 lib/layouts/aa.layout:170
-#: lib/layouts/svjour.inc:233 lib/layouts/svjour3.inc:236
+#: lib/layouts/svjour.inc:233
 msgid "Mail"
 msgstr "Po¹ta"
 
@@ -4609,17 +4600,15 @@ msgstr "Po¹ta"
 #: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:72
 #: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:162
 #: lib/layouts/stdtitle.inc:50 lib/layouts/svjour.inc:227
-#: lib/layouts/svjour3.inc:230 lib/ui/stdmenus.inc:347
-#: lib/external_templates:296 lib/external_templates:297
-#: lib/external_templates:301
+#: lib/ui/stdmenus.inc:347 lib/external_templates:296
+#: lib/external_templates:297 lib/external_templates:301
 msgid "Date"
 msgstr "Dátum"
 
 #: lib/layouts/aa.layout:86 lib/layouts/aa.layout:192
 #: lib/layouts/aapaper.layout:100 lib/layouts/egs.layout:527
 #: lib/layouts/elsart.layout:423 lib/layouts/aapaper.inc:80
-#: lib/layouts/svjour.inc:316 lib/layouts/svjour3.inc:319
-#: lib/layouts/theorems-ams-extended.module:189
+#: lib/layouts/svjour.inc:316 lib/layouts/theorems-ams-extended.module:189
 msgid "Acknowledgement"
 msgstr "Poïakovanie"
 
@@ -4633,7 +4622,7 @@ msgid "Correspondence to:"
 msgstr ""
 
 #: lib/layouts/aa.layout:203 lib/layouts/egs.layout:516
-#: lib/layouts/svjour.inc:305 lib/layouts/svjour3.inc:308
+#: lib/layouts/svjour.inc:305
 #, fuzzy
 msgid "Acknowledgements."
 msgstr "Poïakovanie"
@@ -4679,7 +4668,7 @@ msgstr "Synonymický slovník"
 #: lib/layouts/agu_stdsections.inc:60 lib/layouts/aguplus.inc:55
 #: lib/layouts/db_stdsections.inc:52 lib/layouts/numrevtex.inc:33
 #: lib/layouts/scrclass.inc:83 lib/layouts/stdsections.inc:114
-#: lib/layouts/svjour.inc:80 lib/layouts/svjour3.inc:79
+#: lib/layouts/svjour.inc:80
 msgid "Paragraph"
 msgstr "Odstavec"
 
@@ -4699,7 +4688,6 @@ msgstr "A"
 #: lib/layouts/elsart.layout:429 lib/layouts/isprs.layout:213
 #: lib/layouts/kluwer.layout:293 lib/layouts/kluwer.layout:304
 #: lib/layouts/aapaper.inc:91 lib/layouts/svjour.inc:291
-#: lib/layouts/svjour3.inc:294
 msgid "Acknowledgements"
 msgstr "Poïakovanie"
 
@@ -4711,7 +4699,7 @@ msgstr "Poïakovanie"
 #: lib/layouts/llncs.layout:272 lib/layouts/moderncv.layout:162
 #: lib/layouts/siamltex.layout:192 lib/layouts/amsdefs.inc:215
 #: lib/layouts/stdstruct.inc:54 lib/layouts/svjour.inc:337
-#: lib/layouts/svjour3.inc:340 src/output_plaintext.cpp:145
+#: src/output_plaintext.cpp:145
 msgid "References"
 msgstr "Referencie"
 
@@ -4943,7 +4931,7 @@ msgstr ""
 #: lib/layouts/memoir.layout:76 lib/layouts/paper.layout:80
 #: lib/layouts/agu_stdsections.inc:70 lib/layouts/db_stdsections.inc:60
 #: lib/layouts/scrclass.inc:90 lib/layouts/stdsections.inc:124
-#: lib/layouts/svjour.inc:89 lib/layouts/svjour3.inc:88
+#: lib/layouts/svjour.inc:89
 msgid "Subparagraph"
 msgstr "Pododstavec"
 
@@ -5205,7 +5193,6 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:825 lib/layouts/cl2emult.layout:69
 #: lib/layouts/llncs.layout:211 lib/layouts/svjour.inc:209
-#: lib/layouts/svjour3.inc:211
 msgid "Institute"
 msgstr "In¹titút"
 
@@ -5268,8 +5255,7 @@ msgstr "Fakt"
 #: lib/layouts/beamer.layout:986 lib/layouts/foils.layout:281
 #: lib/layouts/ijmpc.layout:225 lib/layouts/ijmpd.layout:225
 #: lib/layouts/llncs.layout:374 lib/layouts/siamltex.layout:253
-#: lib/layouts/svjour.inc:436 lib/layouts/svjour3.inc:439
-#: lib/layouts/theorems-proof.inc:30
+#: lib/layouts/svjour.inc:436 lib/layouts/theorems-proof.inc:30
 #, fuzzy
 msgid "Proof."
 msgstr "Dôkaz"
@@ -5710,13 +5696,13 @@ msgstr ""
 #: lib/layouts/llncs.layout:251 lib/layouts/siamltex.layout:154
 #: lib/layouts/svglobal.layout:44 lib/layouts/svglobal3.layout:44
 #: lib/layouts/svjog.layout:49 lib/layouts/amsdefs.inc:110
-#: lib/layouts/svjour.inc:263 lib/layouts/svjour3.inc:266
+#: lib/layouts/svjour.inc:263
 #, fuzzy
 msgid "Abstract."
 msgstr "Výòatok"
 
 #: lib/layouts/egs.layout:541 lib/layouts/svjour.inc:319
-#: lib/layouts/svjour3.inc:322 lib/layouts/theorems-ams-extended.module:203
+#: lib/layouts/theorems-ams-extended.module:203
 #, fuzzy
 msgid "Acknowledgement."
 msgstr "Poïakovanie"
@@ -5847,7 +5833,6 @@ msgid "Keyword"
 msgstr "Kµúèové slovo"
 
 #: lib/layouts/entcs.layout:109 lib/layouts/svjour.inc:284
-#: lib/layouts/svjour3.inc:287
 #, fuzzy
 msgid "Key words:"
 msgstr "Kµúèové slová"
@@ -6022,32 +6007,31 @@ msgstr "Pravá_päta"
 
 #: lib/layouts/foils.layout:232 lib/layouts/heb-article.layout:33
 #: lib/layouts/llncs.layout:415 lib/layouts/siamltex.layout:204
-#: lib/layouts/svjour.inc:478 lib/layouts/svjour3.inc:481
+#: lib/layouts/svjour.inc:478
 #, fuzzy
 msgid "Theorem #."
 msgstr "Teoréma"
 
 #: lib/layouts/foils.layout:246 lib/layouts/heb-article.layout:48
 #: lib/layouts/llncs.layout:354 lib/layouts/siamltex.layout:218
-#: lib/layouts/svjour.inc:415 lib/layouts/svjour3.inc:418
+#: lib/layouts/svjour.inc:415
 msgid "Lemma #."
 msgstr ""
 
 #: lib/layouts/foils.layout:253 lib/layouts/heb-article.layout:58
 #: lib/layouts/llncs.layout:319 lib/layouts/siamltex.layout:225
-#: lib/layouts/svjour.inc:376 lib/layouts/svjour3.inc:379
+#: lib/layouts/svjour.inc:376
 msgid "Corollary #."
 msgstr ""
 
 #: lib/layouts/foils.layout:260 lib/layouts/llncs.layout:388
 #: lib/layouts/siamltex.layout:232 lib/layouts/svjour.inc:450
-#: lib/layouts/svjour3.inc:453
 msgid "Proposition #."
 msgstr ""
 
 #: lib/layouts/foils.layout:267 lib/layouts/heb-article.layout:78
 #: lib/layouts/llncs.layout:333 lib/layouts/siamltex.layout:239
-#: lib/layouts/svjour.inc:390 lib/layouts/svjour3.inc:393
+#: lib/layouts/svjour.inc:390
 #, fuzzy
 msgid "Definition #."
 msgstr "Definícia"
@@ -6885,7 +6869,6 @@ msgstr ""
 
 #: lib/layouts/ijmpc.layout:276 lib/layouts/ijmpd.layout:284
 #: lib/layouts/llncs.layout:391 lib/layouts/svjour.inc:454
-#: lib/layouts/svjour3.inc:457
 msgid "Question"
 msgstr "Otázka"
 
@@ -7012,7 +6995,7 @@ msgid "RunningTitle"
 msgstr ""
 
 #: lib/layouts/kluwer.layout:216 lib/layouts/llncs.layout:158
-#: lib/layouts/svjour.inc:177 lib/layouts/svjour3.inc:178
+#: lib/layouts/svjour.inc:177
 #, fuzzy
 msgid "Running title:"
 msgstr "BibTeX spustený."
@@ -7038,7 +7021,6 @@ msgid "Chapter"
 msgstr "Kapitola"
 
 #: lib/layouts/llncs.layout:144 lib/layouts/svjour.inc:173
-#: lib/layouts/svjour3.inc:174
 #, fuzzy
 msgid "Running LaTeX Title"
 msgstr "Pracuje_LaTeX_Nadpis"
@@ -7054,13 +7036,11 @@ msgid "TOC title:"
 msgstr "Obsah_Nadpis"
 
 #: lib/layouts/llncs.layout:195 lib/layouts/svjour.inc:201
-#: lib/layouts/svjour3.inc:203
 #, fuzzy
 msgid "Author Running"
 msgstr "Info_o_autorovi"
 
 #: lib/layouts/llncs.layout:199 lib/layouts/svjour.inc:205
-#: lib/layouts/svjour3.inc:207
 #, fuzzy
 msgid "Author Running:"
 msgstr "Info_o_autorovi"
@@ -7081,71 +7061,60 @@ msgid "Case #."
 msgstr ""
 
 #: lib/layouts/llncs.layout:305 lib/layouts/svjour.inc:359
-#: lib/layouts/svjour3.inc:362 lib/layouts/theorems-starred.inc:196
+#: lib/layouts/theorems-starred.inc:196
 #, fuzzy
 msgid "Claim."
 msgstr "Tvrdenie"
 
 #: lib/layouts/llncs.layout:312 lib/layouts/svjour.inc:369
-#: lib/layouts/svjour3.inc:372
 #, fuzzy
 msgid "Conjecture #."
 msgstr "Dohad"
 
 #: lib/layouts/llncs.layout:340 lib/layouts/svjour.inc:397
-#: lib/layouts/svjour3.inc:400
 #, fuzzy
 msgid "Example #."
 msgstr "Príklad"
 
 #: lib/layouts/llncs.layout:347 lib/layouts/svjour.inc:404
-#: lib/layouts/svjour3.inc:407
 #, fuzzy
 msgid "Exercise #."
 msgstr "Cvièenie"
 
 #: lib/layouts/llncs.layout:360 lib/layouts/svjour.inc:422
-#: lib/layouts/svjour3.inc:425
 #, fuzzy
 msgid "Note #."
 msgstr "Poznámka"
 
 #: lib/layouts/llncs.layout:367 lib/layouts/svjour.inc:429
-#: lib/layouts/svjour3.inc:432
 #, fuzzy
 msgid "Problem #."
 msgstr "Problém"
 
 #: lib/layouts/llncs.layout:378 lib/layouts/svjour.inc:440
-#: lib/layouts/svjour3.inc:443
 msgid "Property"
 msgstr "Vlastníctvo"
 
 #: lib/layouts/llncs.layout:381 lib/layouts/svjour.inc:443
-#: lib/layouts/svjour3.inc:446
 #, fuzzy
 msgid "Property #."
 msgstr "Vlastníctvo"
 
 #: lib/layouts/llncs.layout:394 lib/layouts/svjour.inc:457
-#: lib/layouts/svjour3.inc:460
 #, fuzzy
 msgid "Question #."
 msgstr "Otázka"
 
 #: lib/layouts/llncs.layout:401 lib/layouts/svjour.inc:464
-#: lib/layouts/svjour3.inc:467
 #, fuzzy
 msgid "Remark #."
 msgstr "Pripomienka"
 
 #: lib/layouts/llncs.layout:405 lib/layouts/svjour.inc:468
-#: lib/layouts/svjour3.inc:471
 msgid "Solution"
 msgstr "Rie¹enie"
 
 #: lib/layouts/llncs.layout:408 lib/layouts/svjour.inc:471
-#: lib/layouts/svjour3.inc:474
 #, fuzzy
 msgid "Solution #."
 msgstr "Rie¹enie"
@@ -8246,7 +8215,6 @@ msgid "Dedicatory"
 msgstr "Venovací"
 
 #: lib/layouts/amsdefs.inc:183 lib/layouts/svjour.inc:125
-#: lib/layouts/svjour3.inc:125
 #, fuzzy
 msgid "Dedication:"
 msgstr "Venovanie"
@@ -8449,7 +8417,6 @@ msgid "Publishers"
 msgstr "Vydavatelia"
 
 #: lib/layouts/scrclass.inc:181 lib/layouts/svjour.inc:121
-#: lib/layouts/svjour3.inc:121
 msgid "Dedication"
 msgstr "Venovanie"
 
@@ -8490,7 +8457,7 @@ msgid "CharStyle"
 msgstr "©týl"
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
-#: src/insets/InsetCollapsable.cpp:151
+#: src/insets/InsetCollapsable.cpp:139
 msgid "UNDEFINED"
 msgstr ""
 
@@ -8628,24 +8595,24 @@ msgstr "Cvièenie"
 msgid "Appendix \\thechapter"
 msgstr "panel prílohy"
 
-#: lib/layouts/svjour.inc:98 lib/layouts/svjour3.inc:97
+#: lib/layouts/svjour.inc:98
 msgid "Headnote"
 msgstr "Hlavièka"
 
-#: lib/layouts/svjour.inc:112 lib/layouts/svjour3.inc:112
+#: lib/layouts/svjour.inc:112
 msgid "Headnote (optional):"
 msgstr ""
 
-#: lib/layouts/svjour.inc:237 lib/layouts/svjour3.inc:240
+#: lib/layouts/svjour.inc:237
 #, fuzzy
 msgid "Corr Author:"
 msgstr "Autor"
 
-#: lib/layouts/svjour.inc:241 lib/layouts/svjour3.inc:244
+#: lib/layouts/svjour.inc:241
 msgid "Offprints"
 msgstr "Separáty"
 
-#: lib/layouts/svjour.inc:245 lib/layouts/svjour3.inc:248
+#: lib/layouts/svjour.inc:245
 #, fuzzy
 msgid "Offprints:"
 msgstr "Separáty"
@@ -16213,7 +16180,7 @@ msgstr "MakeIndex spustený."
 msgid "Could not read configuration file"
 msgstr "Nemô¾em pracova» so súborom:"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1400
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1407
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16519,7 +16486,7 @@ msgstr "Obnovenie ulo¾enej verzie"
 msgid "&Revert"
 msgstr "Vráti»|r"
 
-#: src/LyXFunc.cpp:1016 src/Text3.cpp:1476
+#: src/LyXFunc.cpp:1016 src/Text3.cpp:1475
 msgid "Missing argument"
 msgstr "Chýbajúci parameter"
 
@@ -17285,7 +17252,7 @@ msgstr "Nie je èo indexova»!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Nie je mo¾né indexova» viac ako jeden odstavec!"
 
-#: src/Text3.cpp:173 src/mathed/InsetMathHull.cpp:1461
+#: src/Text3.cpp:173 src/mathed/InsetMathHull.cpp:1472
 msgid "Math editor mode"
 msgstr "Re¾im matematického editoru"
 
@@ -17301,11 +17268,11 @@ msgstr "Formát "
 msgid " not known"
 msgstr " neznámy"
 
-#: src/Text3.cpp:1584 src/Text3.cpp:1596
+#: src/Text3.cpp:1591 src/Text3.cpp:1603
 msgid "Character set"
 msgstr "Znaková sada"
 
-#: src/Text3.cpp:1744 src/Text3.cpp:1755
+#: src/Text3.cpp:1751 src/Text3.cpp:1762
 msgid "Paragraph layout set"
 msgstr "Formát odstavca je nastavený."
 
@@ -17625,12 +17592,12 @@ msgstr ""
 "Nepodarilo sa nastavi» farbu  \"%1$s\" - nie je definovaná alebo ju nie je "
 "mo¾né predefinova»"
 
-#: src/frontends/qt4/GuiApplication.cpp:1209
+#: src/frontends/qt4/GuiApplication.cpp:1216
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Tlaèi» do súboru"
 
-#: src/frontends/qt4/GuiApplication.cpp:1219
+#: src/frontends/qt4/GuiApplication.cpp:1226
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -17638,18 +17605,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1223
-#: src/frontends/qt4/GuiApplication.cpp:1229
+#: src/frontends/qt4/GuiApplication.cpp:1230
+#: src/frontends/qt4/GuiApplication.cpp:1236
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1227
+#: src/frontends/qt4/GuiApplication.cpp:1234
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1399
+#: src/frontends/qt4/GuiApplication.cpp:1406
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Nemô¾em pracova» so súborom:"
@@ -18103,8 +18070,8 @@ msgstr "B4"
 
 #: src/frontends/qt4/GuiDocument.cpp:799
 #, fuzzy
-msgid "LaTeX default"
-msgstr "Log súbor LaTeXu|L"
+msgid "Language Default (no inputenc)"
+msgstr "¥avá_Hlavièka"
 
 #: src/frontends/qt4/GuiDocument.cpp:808
 msgid "``text''"
@@ -18862,7 +18829,7 @@ msgstr "Skok na oznaèenie"
 msgid "Find and Replace"
 msgstr "Hµada» a nahradi»"
 
-#: src/frontends/qt4/GuiSendto.cpp:37
+#: src/frontends/qt4/GuiSendto.cpp:38
 msgid "Send Document to Command"
 msgstr "Posla» dokument príkazu"
 
@@ -19910,14 +19877,6 @@ msgstr ""
 msgid "not cited"
 msgstr "Chránená medzera|m"
 
-#: src/insets/InsetCollapsable.cpp:118 src/insets/InsetFloat.cpp:137
-msgid "Left-click to collapse the inset"
-msgstr ""
-
-#: src/insets/InsetCollapsable.cpp:121 src/insets/InsetFloat.cpp:139
-msgid "Left-click to open the inset"
-msgstr ""
-
 #: src/insets/InsetCommand.cpp:102
 #, fuzzy
 msgid "LaTeX Command: "
@@ -19966,25 +19925,25 @@ msgstr ""
 msgid "Opened Flex Inset"
 msgstr "Otvorený text prílohy"
 
-#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:421
+#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:413
 msgid "float: "
 msgstr "objekt:"
 
-#: src/insets/InsetFloat.cpp:286
+#: src/insets/InsetFloat.cpp:278
 msgid "Opened Float Inset"
 msgstr "Otvorený objekt prílohy"
 
-#: src/insets/InsetFloat.cpp:357
+#: src/insets/InsetFloat.cpp:349
 #, fuzzy
 msgid "float"
 msgstr "objekt:"
 
-#: src/insets/InsetFloat.cpp:424
+#: src/insets/InsetFloat.cpp:416
 #, fuzzy
 msgid "subfloat: "
 msgstr "objekt:"
 
-#: src/insets/InsetFloat.cpp:432
+#: src/insets/InsetFloat.cpp:424
 msgid " (sideways)"
 msgstr ""
 
@@ -20647,7 +20606,7 @@ msgstr "Re»azec bol nahradený."
 msgid " strings have been replaced."
 msgstr " re»azce boli nahradené."
 
-#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1370
+#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1381
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -20680,27 +20639,27 @@ msgstr ""
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Vlastnosti tabuµky"
 
-#: src/mathed/InsetMathHull.cpp:1166 src/mathed/InsetMathHull.cpp:1174
+#: src/mathed/InsetMathHull.cpp:1177 src/mathed/InsetMathHull.cpp:1185
 #, fuzzy
 msgid "No number"
 msgstr "  Èíslo "
 
-#: src/mathed/InsetMathHull.cpp:1166 src/mathed/InsetMathHull.cpp:1174
+#: src/mathed/InsetMathHull.cpp:1177 src/mathed/InsetMathHull.cpp:1185
 #, fuzzy
 msgid "Number"
 msgstr "Èíslovanie"
 
-#: src/mathed/InsetMathHull.cpp:1343
+#: src/mathed/InsetMathHull.cpp:1354
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1353
+#: src/mathed/InsetMathHull.cpp:1364
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1363
+#: src/mathed/InsetMathHull.cpp:1374
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
@@ -20970,6 +20929,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy pou¾ívateµ"
+
+#, fuzzy
+#~ msgid "LaTeX default"
+#~ msgstr "Log súbor LaTeXu|L"
 
 #~ msgid "Keep *roff temporary files"
 #~ msgstr "Uchova» doèasné *roff súbory"

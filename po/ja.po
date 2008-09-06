@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-09-01 10:43+0200\n"
+"POT-Creation-Date: 2008-09-06 18:16+0200\n"
 "PO-Revision-Date: 2008-08-27 18:30+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-devel@lists.lyx.org>\n"
@@ -1918,112 +1918,6 @@ msgstr "目次に載せる(&L)"
 msgid "&Numbering"
 msgstr "連番を振る(&N)"
 
-#: src/frontends/qt4/ui/PDFSupportUi.ui:28
-msgid "&Use hyperref support"
-msgstr "hyperrefサポートを使う(&U)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:53
-msgid "&General"
-msgstr "一般(&G)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:99
-msgid ""
-"If not stated explicitly, fill title and author from appropriate environments"
-msgstr "明示的に指定しなければ、タイトルと著者を適当な環境から補完します"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:102
-msgid "Automatically fi&ll header"
-msgstr "自動的にヘッダを補完(&L)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:109
-msgid "Enable fullscreen PDF presentation"
-msgstr "全画面表示のPDFプレゼンテーションを有効にする"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:112
-msgid "Load in &fullscreen mode"
-msgstr "全画面モードで読み込む(&F)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:121
-msgid "Header Information"
-msgstr "ヘッダ情報"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:133
-msgid "&Title:"
-msgstr "タイトル(&T):"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:146
-msgid "&Author:"
-msgstr "著者(&A):"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:159
-msgid "&Subject:"
-msgstr "主題(&S):"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:172
-msgid "&Keywords:"
-msgstr "キーワード(&K):"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:189
-msgid "H&yperlinks"
-msgstr "ハイパーリンク(&Y)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:222
-msgid "Allows link text to break across lines."
-msgstr "リンクを張った文が行を跨いで改行することを許可する。"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:225
-msgid "B&reak links over lines"
-msgstr "リンクを分割して改行(&R)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:232
-msgid "No &frames around links"
-msgstr "リンクの周りに枠を付けない(&F)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:242
-msgid "C&olor links"
-msgstr "色付きリンク(&O)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:249
-#: src/frontends/qt4/ui/PDFSupportUi.ui:259
-msgid "Adds \"backlink\" text to the end of each item in the bibliography"
-msgstr "参考文献の各アイテムの後ろに「バックリンク」テキストを付加する"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:252
-msgid "B&ibliographical backreferences"
-msgstr "参考文献の逆参照(&I)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:262
-msgid "Backreference by pa&ge number"
-msgstr "頁番号による逆参照(&G)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:285
-msgid "&Bookmarks"
-msgstr "しおり(&B)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:297
-msgid "G&enerate Bookmarks"
-msgstr "しおりを生成する(&E)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:318
-msgid "&Numbered bookmarks"
-msgstr "連番のしおり(&N)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:343
-msgid "Number of levels"
-msgstr "階層数"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:352
-msgid "&Open bookmarks"
-msgstr "しおりを開く(&O)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:392
-msgid "Additional o&ptions"
-msgstr "追加オプション(&P)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:421
-msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
-msgstr "例: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
-
 #: src/frontends/qt4/ui/PageLayoutUi.ui:33
 #: src/frontends/qt4/GuiDocument.cpp:982
 msgid "Page Layout"
@@ -2133,6 +2027,112 @@ msgstr "半行"
 #: src/frontends/qt4/GuiDocument.cpp:583
 msgid "Double"
 msgstr "一行"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:28
+msgid "&Use hyperref support"
+msgstr "hyperrefサポートを使う(&U)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:53
+msgid "&General"
+msgstr "一般(&G)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:99
+msgid ""
+"If not stated explicitly, fill title and author from appropriate environments"
+msgstr "明示的に指定しなければ、タイトルと著者を適当な環境から補完します"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:102
+msgid "Automatically fi&ll header"
+msgstr "自動的にヘッダを補完(&L)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:109
+msgid "Enable fullscreen PDF presentation"
+msgstr "全画面表示のPDFプレゼンテーションを有効にする"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:112
+msgid "Load in &fullscreen mode"
+msgstr "全画面モードで読み込む(&F)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:121
+msgid "Header Information"
+msgstr "ヘッダ情報"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:133
+msgid "&Title:"
+msgstr "タイトル(&T):"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:146
+msgid "&Author:"
+msgstr "著者(&A):"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:159
+msgid "&Subject:"
+msgstr "主題(&S):"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:172
+msgid "&Keywords:"
+msgstr "キーワード(&K):"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:189
+msgid "H&yperlinks"
+msgstr "ハイパーリンク(&Y)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:222
+msgid "Allows link text to break across lines."
+msgstr "リンクを張った文が行を跨いで改行することを許可する。"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:225
+msgid "B&reak links over lines"
+msgstr "リンクを分割して改行(&R)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:232
+msgid "No &frames around links"
+msgstr "リンクの周りに枠を付けない(&F)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:242
+msgid "C&olor links"
+msgstr "色付きリンク(&O)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:249
+#: src/frontends/qt4/ui/PDFSupportUi.ui:259
+msgid "Adds \"backlink\" text to the end of each item in the bibliography"
+msgstr "参考文献の各アイテムの後ろに「バックリンク」テキストを付加する"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:252
+msgid "B&ibliographical backreferences"
+msgstr "参考文献の逆参照(&I)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:262
+msgid "Backreference by pa&ge number"
+msgstr "頁番号による逆参照(&G)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:285
+msgid "&Bookmarks"
+msgstr "しおり(&B)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:297
+msgid "G&enerate Bookmarks"
+msgstr "しおりを生成する(&E)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:318
+msgid "&Numbered bookmarks"
+msgstr "連番のしおり(&N)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:343
+msgid "Number of levels"
+msgstr "階層数"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:352
+msgid "&Open bookmarks"
+msgstr "しおりを開く(&O)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:392
+msgid "Additional o&ptions"
+msgstr "追加オプション(&P)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:421
+msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+msgstr "例: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "&Alter..."
@@ -3835,8 +3835,7 @@ msgstr "フローティングを許可(&F)"
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
-#: lib/layouts/svjour3.inc:27 lib/ui/stdtoolbars.inc:55
-#: src/insets/InsetRef.cpp:171
+#: lib/ui/stdtoolbars.inc:55 src/insets/InsetRef.cpp:171
 msgid "Standard"
 msgstr "標準"
 
@@ -3849,8 +3848,8 @@ msgstr "定理ひな型"
 #: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:217
 #: lib/layouts/ijmpd.layout:217 lib/layouts/llncs.layout:371
 #: lib/layouts/siamltex.layout:250 lib/layouts/svjour.inc:433
-#: lib/layouts/svjour3.inc:436 lib/layouts/theorems-order.inc:76
-#: lib/layouts/theorems-proof.inc:13 lib/layouts/theorems-std.module:21
+#: lib/layouts/theorems-order.inc:76 lib/layouts/theorems-proof.inc:13
+#: lib/layouts/theorems-std.module:21
 msgid "Proof"
 msgstr "証明"
 
@@ -3863,12 +3862,12 @@ msgstr "証明:"
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:196
 #: lib/layouts/ijmpd.layout:199 lib/layouts/llncs.layout:412
 #: lib/layouts/siamltex.layout:200 lib/layouts/svjour.inc:475
-#: lib/layouts/svjour3.inc:478 lib/layouts/theorems-ams.inc:24
+#: lib/layouts/theorems.inc:24 lib/layouts/theorems.inc:25
+#: lib/layouts/theorems.inc:202 lib/layouts/theorems-ams.inc:24
 #: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
 #: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems-starred.inc:24
 #: lib/layouts/theorems-starred-equivalents.inc:6
-#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:24
-#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:202
 #: lib/layouts/theorems-chap.module:17 lib/layouts/theorems-sec.module:16
 msgid "Theorem"
 msgstr "定理"
@@ -3881,9 +3880,9 @@ msgstr "定理 #:"
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:246 lib/layouts/ijmpd.layout:251
 #: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:215
-#: lib/layouts/svjour.inc:412 lib/layouts/svjour3.inc:415
+#: lib/layouts/svjour.inc:412 lib/layouts/theorems.inc:69
 #: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-order.inc:19
-#: lib/layouts/theorems-starred-equivalents.inc:20 lib/layouts/theorems.inc:69
+#: lib/layouts/theorems-starred-equivalents.inc:20
 msgid "Lemma"
 msgstr "補題"
 
@@ -3896,9 +3895,9 @@ msgstr "補題 #:"
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:236
 #: lib/layouts/ijmpd.layout:237 lib/layouts/llncs.layout:316
 #: lib/layouts/siamltex.layout:222 lib/layouts/svjour.inc:373
-#: lib/layouts/svjour3.inc:376 lib/layouts/theorems-ams.inc:59
+#: lib/layouts/theorems.inc:58 lib/layouts/theorems-ams.inc:59
 #: lib/layouts/theorems-order.inc:13
-#: lib/layouts/theorems-starred-equivalents.inc:13 lib/layouts/theorems.inc:58
+#: lib/layouts/theorems-starred-equivalents.inc:13
 msgid "Corollary"
 msgstr "系"
 
@@ -3910,9 +3909,9 @@ msgstr "系 #:"
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:256
 #: lib/layouts/ijmpd.layout:262 lib/layouts/llncs.layout:385
 #: lib/layouts/siamltex.layout:229 lib/layouts/svjour.inc:447
-#: lib/layouts/svjour3.inc:450 lib/layouts/theorems-ams.inc:83
+#: lib/layouts/theorems.inc:80 lib/layouts/theorems-ams.inc:83
 #: lib/layouts/theorems-order.inc:25
-#: lib/layouts/theorems-starred-equivalents.inc:27 lib/layouts/theorems.inc:80
+#: lib/layouts/theorems-starred-equivalents.inc:27
 msgid "Proposition"
 msgstr "命題"
 
@@ -3923,9 +3922,9 @@ msgstr "命題 #:"
 #: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:363
 #: lib/layouts/ijmpc.layout:296 lib/layouts/ijmpd.layout:306
 #: lib/layouts/llncs.layout:309 lib/layouts/svjour.inc:366
-#: lib/layouts/svjour3.inc:369 lib/layouts/theorems-ams.inc:95
+#: lib/layouts/theorems.inc:91 lib/layouts/theorems-ams.inc:95
 #: lib/layouts/theorems-order.inc:31
-#: lib/layouts/theorems-starred-equivalents.inc:34 lib/layouts/theorems.inc:91
+#: lib/layouts/theorems-starred-equivalents.inc:34
 msgid "Conjecture"
 msgstr "推論"
 
@@ -3943,7 +3942,7 @@ msgid "Criterion #:"
 msgstr "基準 #:"
 
 #: lib/layouts/IEEEtran.layout:133 lib/layouts/beamer.layout:977
-#: lib/layouts/theorems-ams.inc:107 lib/layouts/theorems.inc:102
+#: lib/layouts/theorems.inc:102 lib/layouts/theorems-ams.inc:107
 msgid "Fact"
 msgstr "事実"
 
@@ -3964,10 +3963,9 @@ msgstr "公理 #:"
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:132
 #: lib/layouts/ijmpd.layout:129 lib/layouts/llncs.layout:330
 #: lib/layouts/siamltex.layout:236 lib/layouts/svjour.inc:387
-#: lib/layouts/svjour3.inc:390 lib/layouts/theorems-ams.inc:119
+#: lib/layouts/theorems.inc:113 lib/layouts/theorems-ams.inc:119
 #: lib/layouts/theorems-order.inc:37
 #: lib/layouts/theorems-starred-equivalents.inc:41
-#: lib/layouts/theorems.inc:113
 msgid "Definition"
 msgstr "定義"
 
@@ -3978,10 +3976,10 @@ msgstr "定義 #:"
 #: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:959
 #: lib/layouts/elsart.layout:370 lib/layouts/ijmpc.layout:166
 #: lib/layouts/ijmpd.layout:163 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:394 lib/layouts/svjour3.inc:397
+#: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:132
 #: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:48
-#: lib/layouts/theorems.inc:132 src/frontends/qt4/GuiDocument.cpp:827
+#: src/frontends/qt4/GuiDocument.cpp:827
 msgid "Example"
 msgstr "例"
 
@@ -4000,10 +3998,9 @@ msgstr "条件 #:"
 
 #: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:377
 #: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:426
-#: lib/layouts/svjour3.inc:429 lib/layouts/theorems-ams.inc:150
+#: lib/layouts/theorems.inc:144 lib/layouts/theorems-ams.inc:150
 #: lib/layouts/theorems-order.inc:49
 #: lib/layouts/theorems-starred-equivalents.inc:55
-#: lib/layouts/theorems.inc:144
 msgid "Problem"
 msgstr "問題"
 
@@ -4012,10 +4009,9 @@ msgid "Problem #:"
 msgstr "問題 #:"
 
 #: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:401 lib/layouts/svjour3.inc:404
+#: lib/layouts/svjour.inc:401 lib/layouts/theorems.inc:156
 #: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-order.inc:55
 #: lib/layouts/theorems-starred-equivalents.inc:62
-#: lib/layouts/theorems.inc:156
 msgid "Exercise"
 msgstr "演習"
 
@@ -4026,10 +4022,9 @@ msgstr "演習 #:"
 #: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:384
 #: lib/layouts/ijmpc.layout:176 lib/layouts/ijmpd.layout:174
 #: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:461
-#: lib/layouts/svjour3.inc:464 lib/layouts/theorems-ams.inc:174
+#: lib/layouts/theorems.inc:168 lib/layouts/theorems-ams.inc:174
 #: lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:69
-#: lib/layouts/theorems.inc:168
 msgid "Remark"
 msgstr "注釈"
 
@@ -4040,10 +4035,9 @@ msgstr "注釈 #:"
 #: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:398
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:286
 #: lib/layouts/ijmpd.layout:295 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:345 lib/layouts/svjour3.inc:348
+#: lib/layouts/svjour.inc:345 lib/layouts/theorems.inc:188
 #: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-order.inc:67
 #: lib/layouts/theorems-starred-equivalents.inc:76
-#: lib/layouts/theorems.inc:188
 msgid "Claim"
 msgstr "主張"
 
@@ -4055,7 +4049,7 @@ msgstr "主張 #:"
 #: lib/layouts/elsart.layout:391 lib/layouts/iopart.layout:92
 #: lib/layouts/llncs.layout:357 lib/layouts/powerdot.layout:197
 #: lib/layouts/slides.layout:167 lib/layouts/svjour.inc:419
-#: lib/layouts/svjour3.inc:422 lib/layouts/theorems-ams-extended.module:123
+#: lib/layouts/theorems-ams-extended.module:123
 msgid "Note"
 msgstr "注釈"
 
@@ -4073,8 +4067,8 @@ msgid "Notation #:"
 msgstr "記法 #:"
 
 #: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:413
-#: lib/layouts/llncs.layout:281 lib/layouts/theorems-ams.inc:207
-#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:201
+#: lib/layouts/llncs.layout:281 lib/layouts/theorems.inc:201
+#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-order.inc:73
 msgid "Case"
 msgstr "ケース"
 
@@ -4104,7 +4098,6 @@ msgstr "ケース #:"
 #: lib/layouts/scrclass.inc:62 lib/layouts/stdsections.inc:12
 #: lib/layouts/stdsections.inc:38 lib/layouts/stdsections.inc:61
 #: lib/layouts/stdsections.inc:62 lib/layouts/svjour.inc:53
-#: lib/layouts/svjour3.inc:52
 msgid "Section"
 msgstr "節"
 
@@ -4124,7 +4117,7 @@ msgstr "節"
 #: lib/layouts/agu_stdsections.inc:40 lib/layouts/aguplus.inc:41
 #: lib/layouts/db_stdsections.inc:36 lib/layouts/numrevtex.inc:15
 #: lib/layouts/scrclass.inc:69 lib/layouts/stdsections.inc:85
-#: lib/layouts/svjour.inc:62 lib/layouts/svjour3.inc:61
+#: lib/layouts/svjour.inc:62
 msgid "Subsection"
 msgstr "小節"
 
@@ -4141,7 +4134,7 @@ msgstr "小節"
 #: lib/layouts/siamltex.layout:65 lib/layouts/agu_stdsections.inc:50
 #: lib/layouts/db_stdsections.inc:44 lib/layouts/numrevtex.inc:24
 #: lib/layouts/scrclass.inc:76 lib/layouts/stdsections.inc:100
-#: lib/layouts/svjour.inc:71 lib/layouts/svjour3.inc:70
+#: lib/layouts/svjour.inc:71
 msgid "Subsubsection"
 msgstr "小々節"
 
@@ -4187,8 +4180,7 @@ msgstr "小々節*"
 #: lib/layouts/agu_stdtitle.inc:193 lib/layouts/amsdefs.inc:96
 #: lib/layouts/db_stdstruct.inc:11 lib/layouts/scrclass.inc:216
 #: lib/layouts/stdstruct.inc:12 lib/layouts/stdstruct.inc:27
-#: lib/layouts/svjour.inc:249 lib/layouts/svjour3.inc:252
-#: src/output_plaintext.cpp:133
+#: lib/layouts/svjour.inc:249 src/output_plaintext.cpp:133
 msgid "Abstract"
 msgstr "概要"
 
@@ -4204,7 +4196,7 @@ msgstr "概要---"
 #: lib/layouts/paper.layout:171 lib/layouts/revtex4.layout:241
 #: lib/layouts/siamltex.layout:167 lib/layouts/spie.layout:39
 #: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:166
-#: lib/layouts/svjour.inc:270 lib/layouts/svjour3.inc:273
+#: lib/layouts/svjour.inc:270
 msgid "Keywords"
 msgstr "キーワード"
 
@@ -4230,8 +4222,7 @@ msgstr "索引の見出し---"
 #: lib/layouts/simplecv.layout:139 lib/layouts/aguplus.inc:167
 #: lib/layouts/aguplus.inc:169 lib/layouts/amsdefs.inc:201
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:323 lib/layouts/svjour3.inc:326
-#: src/frontends/qt4/GuiDocument.cpp:986
+#: lib/layouts/svjour.inc:323 src/frontends/qt4/GuiDocument.cpp:986
 msgid "Bibliography"
 msgstr "参考文献"
 
@@ -4323,7 +4314,7 @@ msgstr "箇条書き(一覧)"
 #: lib/layouts/svprobth.layout:35 lib/layouts/agu_stdtitle.inc:246
 #: lib/layouts/amsdefs.inc:30 lib/layouts/db_stdtitle.inc:13
 #: lib/layouts/scrclass.inc:147 lib/layouts/stdtitle.inc:12
-#: lib/layouts/svjour.inc:129 lib/layouts/svjour3.inc:129
+#: lib/layouts/svjour.inc:129
 msgid "Title"
 msgstr "タイトル"
 
@@ -4331,7 +4322,7 @@ msgstr "タイトル"
 #: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:778
 #: lib/layouts/kluwer.layout:121 lib/layouts/llncs.layout:123
 #: lib/layouts/svprobth.layout:44 lib/layouts/aapaper.inc:9
-#: lib/layouts/svjour.inc:152 lib/layouts/svjour3.inc:152
+#: lib/layouts/svjour.inc:152
 msgid "Subtitle"
 msgstr "サブタイトル"
 
@@ -4352,7 +4343,6 @@ msgstr "サブタイトル"
 #: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:52
 #: lib/layouts/db_stdtitle.inc:21 lib/layouts/scrclass.inc:155
 #: lib/layouts/stdtitle.inc:31 lib/layouts/svjour.inc:181
-#: lib/layouts/svjour3.inc:182
 msgid "Author"
 msgstr "著者"
 
@@ -4375,7 +4365,7 @@ msgid "Offprint"
 msgstr "抜き刷り"
 
 #: lib/layouts/aa.layout:77 lib/layouts/aa.layout:170
-#: lib/layouts/svjour.inc:233 lib/layouts/svjour3.inc:236
+#: lib/layouts/svjour.inc:233
 msgid "Mail"
 msgstr "メール"
 
@@ -4391,17 +4381,15 @@ msgstr "メール"
 #: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:72
 #: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:162
 #: lib/layouts/stdtitle.inc:50 lib/layouts/svjour.inc:227
-#: lib/layouts/svjour3.inc:230 lib/ui/stdmenus.inc:347
-#: lib/external_templates:296 lib/external_templates:297
-#: lib/external_templates:301
+#: lib/ui/stdmenus.inc:347 lib/external_templates:296
+#: lib/external_templates:297 lib/external_templates:301
 msgid "Date"
 msgstr "日付"
 
 #: lib/layouts/aa.layout:86 lib/layouts/aa.layout:192
 #: lib/layouts/aapaper.layout:100 lib/layouts/egs.layout:527
 #: lib/layouts/elsart.layout:423 lib/layouts/aapaper.inc:80
-#: lib/layouts/svjour.inc:316 lib/layouts/svjour3.inc:319
-#: lib/layouts/theorems-ams-extended.module:189
+#: lib/layouts/svjour.inc:316 lib/layouts/theorems-ams-extended.module:189
 msgid "Acknowledgement"
 msgstr "謝辞"
 
@@ -4414,7 +4402,7 @@ msgid "Correspondence to:"
 msgstr "連絡先:"
 
 #: lib/layouts/aa.layout:203 lib/layouts/egs.layout:516
-#: lib/layouts/svjour.inc:305 lib/layouts/svjour3.inc:308
+#: lib/layouts/svjour.inc:305
 msgid "Acknowledgements."
 msgstr "謝辞."
 
@@ -4457,7 +4445,7 @@ msgstr "類義語辞典"
 #: lib/layouts/agu_stdsections.inc:60 lib/layouts/aguplus.inc:55
 #: lib/layouts/db_stdsections.inc:52 lib/layouts/numrevtex.inc:33
 #: lib/layouts/scrclass.inc:83 lib/layouts/stdsections.inc:114
-#: lib/layouts/svjour.inc:80 lib/layouts/svjour3.inc:79
+#: lib/layouts/svjour.inc:80
 msgid "Paragraph"
 msgstr "段落"
 
@@ -4477,7 +4465,6 @@ msgstr "And"
 #: lib/layouts/elsart.layout:429 lib/layouts/isprs.layout:213
 #: lib/layouts/kluwer.layout:293 lib/layouts/kluwer.layout:304
 #: lib/layouts/aapaper.inc:91 lib/layouts/svjour.inc:291
-#: lib/layouts/svjour3.inc:294
 msgid "Acknowledgements"
 msgstr "謝辞"
 
@@ -4489,7 +4476,7 @@ msgstr "謝辞"
 #: lib/layouts/llncs.layout:272 lib/layouts/moderncv.layout:162
 #: lib/layouts/siamltex.layout:192 lib/layouts/amsdefs.inc:215
 #: lib/layouts/stdstruct.inc:54 lib/layouts/svjour.inc:337
-#: lib/layouts/svjour3.inc:340 src/output_plaintext.cpp:145
+#: src/output_plaintext.cpp:145
 msgid "References"
 msgstr "参考文献"
 
@@ -4699,7 +4686,7 @@ msgstr "寸法を調整したビットマップ"
 #: lib/layouts/memoir.layout:76 lib/layouts/paper.layout:80
 #: lib/layouts/agu_stdsections.inc:70 lib/layouts/db_stdsections.inc:60
 #: lib/layouts/scrclass.inc:90 lib/layouts/stdsections.inc:124
-#: lib/layouts/svjour.inc:89 lib/layouts/svjour3.inc:88
+#: lib/layouts/svjour.inc:89
 msgid "Subparagraph"
 msgstr "小段落"
 
@@ -4735,11 +4722,6 @@ msgstr "ラテン切"
 msgid "Latin off"
 msgstr "ラテン切"
 
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "フレーム開始"
-
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:117
 #: lib/layouts/beamer.layout:132 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:32 lib/layouts/scrartcl.layout:20
@@ -4754,6 +4736,11 @@ msgstr "部"
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "部*"
+
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "フレーム開始"
 
 #: lib/layouts/beamer.layout:107 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:114 lib/layouts/stdlists.inc:65
@@ -4936,7 +4923,6 @@ msgstr "タイトル(白紙フレーム)"
 
 #: lib/layouts/beamer.layout:825 lib/layouts/cl2emult.layout:69
 #: lib/layouts/llncs.layout:211 lib/layouts/svjour.inc:209
-#: lib/layouts/svjour3.inc:211
 msgid "Institute"
 msgstr "所属機関"
 
@@ -4989,8 +4975,7 @@ msgstr "事実."
 #: lib/layouts/beamer.layout:986 lib/layouts/foils.layout:281
 #: lib/layouts/ijmpc.layout:225 lib/layouts/ijmpd.layout:225
 #: lib/layouts/llncs.layout:374 lib/layouts/siamltex.layout:253
-#: lib/layouts/svjour.inc:436 lib/layouts/svjour3.inc:439
-#: lib/layouts/theorems-proof.inc:30
+#: lib/layouts/svjour.inc:436 lib/layouts/theorems-proof.inc:30
 msgid "Proof."
 msgstr "証明."
 
@@ -5418,12 +5403,12 @@ msgstr "リプリント版送り先"
 #: lib/layouts/llncs.layout:251 lib/layouts/siamltex.layout:154
 #: lib/layouts/svglobal.layout:44 lib/layouts/svglobal3.layout:44
 #: lib/layouts/svjog.layout:49 lib/layouts/amsdefs.inc:110
-#: lib/layouts/svjour.inc:263 lib/layouts/svjour3.inc:266
+#: lib/layouts/svjour.inc:263
 msgid "Abstract."
 msgstr "概要."
 
 #: lib/layouts/egs.layout:541 lib/layouts/svjour.inc:319
-#: lib/layouts/svjour3.inc:322 lib/layouts/theorems-ams-extended.module:203
+#: lib/layouts/theorems-ams-extended.module:203
 msgid "Acknowledgement."
 msgstr "謝辞."
 
@@ -5547,7 +5532,6 @@ msgid "Keyword"
 msgstr "キーワード"
 
 #: lib/layouts/entcs.layout:109 lib/layouts/svjour.inc:284
-#: lib/layouts/svjour3.inc:287
 msgid "Key words:"
 msgstr "キーワード:"
 
@@ -5703,31 +5687,30 @@ msgstr "右フッタ:"
 
 #: lib/layouts/foils.layout:232 lib/layouts/heb-article.layout:33
 #: lib/layouts/llncs.layout:415 lib/layouts/siamltex.layout:204
-#: lib/layouts/svjour.inc:478 lib/layouts/svjour3.inc:481
+#: lib/layouts/svjour.inc:478
 msgid "Theorem #."
 msgstr "定理 #."
 
 #: lib/layouts/foils.layout:246 lib/layouts/heb-article.layout:48
 #: lib/layouts/llncs.layout:354 lib/layouts/siamltex.layout:218
-#: lib/layouts/svjour.inc:415 lib/layouts/svjour3.inc:418
+#: lib/layouts/svjour.inc:415
 msgid "Lemma #."
 msgstr "補題 #."
 
 #: lib/layouts/foils.layout:253 lib/layouts/heb-article.layout:58
 #: lib/layouts/llncs.layout:319 lib/layouts/siamltex.layout:225
-#: lib/layouts/svjour.inc:376 lib/layouts/svjour3.inc:379
+#: lib/layouts/svjour.inc:376
 msgid "Corollary #."
 msgstr "系 #."
 
 #: lib/layouts/foils.layout:260 lib/layouts/llncs.layout:388
 #: lib/layouts/siamltex.layout:232 lib/layouts/svjour.inc:450
-#: lib/layouts/svjour3.inc:453
 msgid "Proposition #."
 msgstr "命題 #."
 
 #: lib/layouts/foils.layout:267 lib/layouts/heb-article.layout:78
 #: lib/layouts/llncs.layout:333 lib/layouts/siamltex.layout:239
-#: lib/layouts/svjour.inc:390 lib/layouts/svjour3.inc:393
+#: lib/layouts/svjour.inc:390
 msgid "Definition #."
 msgstr "定義 #."
 
@@ -6447,7 +6430,7 @@ msgid "Notation \\thenotation."
 msgstr "記法 \\thenotation."
 
 #: lib/layouts/ijmpc.layout:206 lib/layouts/ijmpd.layout:209
-#: lib/layouts/theorems-ams.inc:42 lib/layouts/theorems.inc:42
+#: lib/layouts/theorems.inc:42 lib/layouts/theorems-ams.inc:42
 msgid "Theorem \\thetheorem."
 msgstr "定理 \\thetheorem."
 
@@ -6473,7 +6456,6 @@ msgstr "命題\\theprop."
 
 #: lib/layouts/ijmpc.layout:276 lib/layouts/ijmpd.layout:284
 #: lib/layouts/llncs.layout:391 lib/layouts/svjour.inc:454
-#: lib/layouts/svjour3.inc:457
 msgid "Question"
 msgstr "問題"
 
@@ -6586,7 +6568,7 @@ msgid "RunningTitle"
 msgstr "ヘッダ用タイトル"
 
 #: lib/layouts/kluwer.layout:216 lib/layouts/llncs.layout:158
-#: lib/layouts/svjour.inc:177 lib/layouts/svjour3.inc:178
+#: lib/layouts/svjour.inc:177
 msgid "Running title:"
 msgstr "ヘッダ用タイトル:"
 
@@ -6610,7 +6592,6 @@ msgid "Chapter"
 msgstr "章"
 
 #: lib/layouts/llncs.layout:144 lib/layouts/svjour.inc:173
-#: lib/layouts/svjour3.inc:174
 msgid "Running LaTeX Title"
 msgstr "ヘッダ用LaTeXタイトル"
 
@@ -6623,12 +6604,10 @@ msgid "TOC title:"
 msgstr "目次タイトル:"
 
 #: lib/layouts/llncs.layout:195 lib/layouts/svjour.inc:201
-#: lib/layouts/svjour3.inc:203
 msgid "Author Running"
 msgstr "ヘッダ用著者名"
 
 #: lib/layouts/llncs.layout:199 lib/layouts/svjour.inc:205
-#: lib/layouts/svjour3.inc:207
 msgid "Author Running:"
 msgstr "ヘッダ用著者名:"
 
@@ -6640,68 +6619,57 @@ msgstr "目次著者"
 msgid "TOC Author:"
 msgstr "目次著者:"
 
-#: lib/layouts/llncs.layout:295 lib/layouts/theorems-ams.inc:213
-#: lib/layouts/theorems.inc:207
+#: lib/layouts/llncs.layout:295 lib/layouts/theorems.inc:207
+#: lib/layouts/theorems-ams.inc:213
 msgid "Case #."
 msgstr "ケース #."
 
 #: lib/layouts/llncs.layout:305 lib/layouts/svjour.inc:359
-#: lib/layouts/svjour3.inc:362 lib/layouts/theorems-starred.inc:196
+#: lib/layouts/theorems-starred.inc:196
 msgid "Claim."
 msgstr "主張."
 
 #: lib/layouts/llncs.layout:312 lib/layouts/svjour.inc:369
-#: lib/layouts/svjour3.inc:372
 msgid "Conjecture #."
 msgstr "推論 #."
 
 #: lib/layouts/llncs.layout:340 lib/layouts/svjour.inc:397
-#: lib/layouts/svjour3.inc:400
 msgid "Example #."
 msgstr "例 #."
 
 #: lib/layouts/llncs.layout:347 lib/layouts/svjour.inc:404
-#: lib/layouts/svjour3.inc:407
 msgid "Exercise #."
 msgstr "演習 #."
 
 #: lib/layouts/llncs.layout:360 lib/layouts/svjour.inc:422
-#: lib/layouts/svjour3.inc:425
 msgid "Note #."
 msgstr "注釈 #."
 
 #: lib/layouts/llncs.layout:367 lib/layouts/svjour.inc:429
-#: lib/layouts/svjour3.inc:432
 msgid "Problem #."
 msgstr "問題 #."
 
 #: lib/layouts/llncs.layout:378 lib/layouts/svjour.inc:440
-#: lib/layouts/svjour3.inc:443
 msgid "Property"
 msgstr "性質"
 
 #: lib/layouts/llncs.layout:381 lib/layouts/svjour.inc:443
-#: lib/layouts/svjour3.inc:446
 msgid "Property #."
 msgstr "性質 #."
 
 #: lib/layouts/llncs.layout:394 lib/layouts/svjour.inc:457
-#: lib/layouts/svjour3.inc:460
 msgid "Question #."
 msgstr "問 #."
 
 #: lib/layouts/llncs.layout:401 lib/layouts/svjour.inc:464
-#: lib/layouts/svjour3.inc:467
 msgid "Remark #."
 msgstr "注釈 #."
 
 #: lib/layouts/llncs.layout:405 lib/layouts/svjour.inc:468
-#: lib/layouts/svjour3.inc:471
 msgid "Solution"
 msgstr "解"
 
 #: lib/layouts/llncs.layout:408 lib/layouts/svjour.inc:471
-#: lib/layouts/svjour3.inc:474
 msgid "Solution #."
 msgstr "解 #."
 
@@ -7661,7 +7629,6 @@ msgid "Dedicatory"
 msgstr "献呈"
 
 #: lib/layouts/amsdefs.inc:183 lib/layouts/svjour.inc:125
-#: lib/layouts/svjour3.inc:125
 msgid "Dedication:"
 msgstr "献呈:"
 
@@ -7846,7 +7813,6 @@ msgid "Publishers"
 msgstr "出版社"
 
 #: lib/layouts/scrclass.inc:181 lib/layouts/svjour.inc:121
-#: lib/layouts/svjour3.inc:121
 msgid "Dedication"
 msgstr "献呈"
 
@@ -8002,67 +7968,67 @@ msgstr "第\\thechapter章"
 msgid "Appendix \\thechapter"
 msgstr "付録 \\thechapter"
 
-#: lib/layouts/svjour.inc:98 lib/layouts/svjour3.inc:97
+#: lib/layouts/svjour.inc:98
 msgid "Headnote"
 msgstr "ヘッドノート"
 
-#: lib/layouts/svjour.inc:112 lib/layouts/svjour3.inc:112
+#: lib/layouts/svjour.inc:112
 msgid "Headnote (optional):"
 msgstr "ヘッドノート(オプション):"
 
-#: lib/layouts/svjour.inc:237 lib/layouts/svjour3.inc:240
+#: lib/layouts/svjour.inc:237
 msgid "Corr Author:"
 msgstr "共著者:"
 
-#: lib/layouts/svjour.inc:241 lib/layouts/svjour3.inc:244
+#: lib/layouts/svjour.inc:241
 msgid "Offprints"
 msgstr "抜き刷り"
 
-#: lib/layouts/svjour.inc:245 lib/layouts/svjour3.inc:248
+#: lib/layouts/svjour.inc:245
 msgid "Offprints:"
 msgstr "抜き刷り:"
 
-#: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:62
+#: lib/layouts/theorems.inc:62 lib/layouts/theorems-ams.inc:63
 msgid "Corollary \\thetheorem."
 msgstr "系 \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems.inc:73
+#: lib/layouts/theorems.inc:73 lib/layouts/theorems-ams.inc:75
 msgid "Lemma \\thetheorem."
 msgstr "補題 \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems.inc:84
+#: lib/layouts/theorems.inc:84 lib/layouts/theorems-ams.inc:87
 msgid "Proposition \\thetheorem."
 msgstr "命題 \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:99 lib/layouts/theorems.inc:95
+#: lib/layouts/theorems.inc:95 lib/layouts/theorems-ams.inc:99
 msgid "Conjecture \\thetheorem."
 msgstr "予想 \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems.inc:106
+#: lib/layouts/theorems.inc:106 lib/layouts/theorems-ams.inc:111
 msgid "Fact \\thetheorem."
 msgstr "事実 \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:117
+#: lib/layouts/theorems.inc:117 lib/layouts/theorems-ams.inc:123
 msgid "Definition \\thetheorem."
 msgstr "定義 \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:135
+#: lib/layouts/theorems.inc:135 lib/layouts/theorems-ams.inc:141
 msgid "Example \\thetheorem."
 msgstr "例 \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:153 lib/layouts/theorems.inc:147
+#: lib/layouts/theorems.inc:147 lib/layouts/theorems-ams.inc:153
 msgid "Problem \\thetheorem."
 msgstr "問題 \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:165 lib/layouts/theorems.inc:159
+#: lib/layouts/theorems.inc:159 lib/layouts/theorems-ams.inc:165
 msgid "Exercise \\thetheorem."
 msgstr "演習 \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:178 lib/layouts/theorems.inc:172
+#: lib/layouts/theorems.inc:172 lib/layouts/theorems-ams.inc:178
 msgid "Remark \\thetheorem."
 msgstr "注釈 \\thetheorem."
 
-#: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems.inc:191
+#: lib/layouts/theorems.inc:191 lib/layouts/theorems-ams.inc:197
 msgid "Claim \\thetheorem."
 msgstr "主張 \\thetheorem."
 
@@ -15048,7 +15014,7 @@ msgstr "nomencl用にMakeIndexを実行しています。"
 msgid "Could not read configuration file"
 msgstr "設定ファイルを読み込むことができませんでした"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1402
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1407
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -15217,7 +15183,7 @@ msgstr ""
 "\t-version        バージョンとビルド情報を表示\n"
 "詳細は LyX man ページを見て下さい。"
 
-#: src/LyX.cpp:994
+#: src/LyX.cpp:994 src/support/Package.cpp:554
 msgid "No system directory"
 msgstr "システムディレクトリがありません"
 
@@ -15362,7 +15328,7 @@ msgstr "保存されている文書に復帰しますか？"
 msgid "&Revert"
 msgstr "元に戻す(&R)"
 
-#: src/LyXFunc.cpp:1016 src/Text3.cpp:1476
+#: src/LyXFunc.cpp:1016 src/Text3.cpp:1475
 msgid "Missing argument"
 msgstr "引数がありません"
 
@@ -16004,15 +15970,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "文書を保管されている版に戻しますか？"
 
-#: src/Paragraph.cpp:1549 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1556 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "このレイアウトでは意味を持ちません！"
 
-#: src/Paragraph.cpp:1615
+#: src/Paragraph.cpp:1622
 msgid "Alignment not permitted"
 msgstr "配置が使えません"
 
-#: src/Paragraph.cpp:1616
+#: src/Paragraph.cpp:1623
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -16020,13 +15986,13 @@ msgstr ""
 "新しいレイアウトでは，これまで使っていた配置を使うことが出来ません。\n"
 "既定値に設定します。"
 
-#: src/Paragraph.cpp:2084 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2091 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:182 src/insets/InsetListings.cpp:190
 #: src/insets/InsetListings.cpp:214 src/mathed/InsetMathString.cpp:164
 msgid "LyX Warning: "
 msgstr "LyX警告: "
 
-#: src/Paragraph.cpp:2085 src/insets/InsetListings.cpp:183
+#: src/Paragraph.cpp:2092 src/insets/InsetListings.cpp:183
 #: src/insets/InsetListings.cpp:191 src/mathed/InsetMathString.cpp:165
 msgid "uncodable character"
 msgstr "コード化できない文字"
@@ -16140,7 +16106,7 @@ msgstr "索引にするものがありません！"
 msgid "Cannot index more than one paragraph!"
 msgstr "一段落以上は索引にすることができません！"
 
-#: src/Text3.cpp:173 src/mathed/InsetMathHull.cpp:1461
+#: src/Text3.cpp:173 src/mathed/InsetMathHull.cpp:1472
 msgid "Math editor mode"
 msgstr "数式編集モード"
 
@@ -16156,11 +16122,11 @@ msgstr "割り付け"
 msgid " not known"
 msgstr "解釈不能"
 
-#: src/Text3.cpp:1584 src/Text3.cpp:1596
+#: src/Text3.cpp:1591 src/Text3.cpp:1603
 msgid "Character set"
 msgstr "文字が調整されました"
 
-#: src/Text3.cpp:1744 src/Text3.cpp:1755
+#: src/Text3.cpp:1751 src/Text3.cpp:1762
 msgid "Paragraph layout set"
 msgstr "段落を割り付けました。"
 
@@ -16473,11 +16439,11 @@ msgstr ""
 "Set-color \"%1$s\"は失敗しました。───色が未定義か、再定義されていない可能性が"
 "あります。"
 
-#: src/frontends/qt4/GuiApplication.cpp:1211
+#: src/frontends/qt4/GuiApplication.cpp:1216
 msgid "The current document was closed."
 msgstr "現在の文書は閉じられました。"
 
-#: src/frontends/qt4/GuiApplication.cpp:1221
+#: src/frontends/qt4/GuiApplication.cpp:1226
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -16489,12 +16455,12 @@ msgstr ""
 "\n"
 "例外エラー: "
 
-#: src/frontends/qt4/GuiApplication.cpp:1225
-#: src/frontends/qt4/GuiApplication.cpp:1231
+#: src/frontends/qt4/GuiApplication.cpp:1230
+#: src/frontends/qt4/GuiApplication.cpp:1236
 msgid "Software exception Detected"
 msgstr "ソフトウェア例外エラーが検出されました"
 
-#: src/frontends/qt4/GuiApplication.cpp:1229
+#: src/frontends/qt4/GuiApplication.cpp:1234
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -16502,7 +16468,7 @@ msgstr ""
 "LyXは何か非常におかしな例外エラーを検出したので、保存されていない全ての文書の"
 "保存を試み、終了します。"
 
-#: src/frontends/qt4/GuiApplication.cpp:1401
+#: src/frontends/qt4/GuiApplication.cpp:1406
 msgid "Could not find UI definition file"
 msgstr "UI定義ファイルを見つけることができませんでした"
 
@@ -17638,7 +17604,7 @@ msgstr "ラベルに移動"
 msgid "Find and Replace"
 msgstr "検索及び置換"
 
-#: src/frontends/qt4/GuiSendto.cpp:37
+#: src/frontends/qt4/GuiSendto.cpp:38
 msgid "Send Document to Command"
 msgstr "文書をコマンドに送る"
 
@@ -18083,7 +18049,7 @@ msgstr "レイアウト一覧をフィルターにかける文字を入力して
 msgid " (unknown)"
 msgstr " (解釈不能)"
 
-#: src/frontends/qt4/GuiToolbar.cpp:945
+#: src/frontends/qt4/GuiToolbar.cpp:945 src/frontends/qt4/Toolbars.cpp:309
 msgid "auto"
 msgstr "自動"
 
@@ -19313,12 +19279,7 @@ msgstr "文字列が置換されました。"
 msgid " strings have been replaced."
 msgstr "個の文字列が置換されました。"
 
-#: src/mathed/InsetFormulaMacro.cpp:119
-#, c-format
-msgid " Macro: %1$s: "
-msgstr " マクロ: %1$s: "
-
-#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1370
+#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1381
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -19350,25 +19311,25 @@ msgstr "削除する vline はありません"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "「%1$s」は未知の表の特性です"
 
-#: src/mathed/InsetMathHull.cpp:1166 src/mathed/InsetMathHull.cpp:1174
+#: src/mathed/InsetMathHull.cpp:1177 src/mathed/InsetMathHull.cpp:1185
 msgid "No number"
 msgstr "番号なし"
 
-#: src/mathed/InsetMathHull.cpp:1166 src/mathed/InsetMathHull.cpp:1174
+#: src/mathed/InsetMathHull.cpp:1177 src/mathed/InsetMathHull.cpp:1185
 msgid "Number"
 msgstr "番号あり"
 
-#: src/mathed/InsetMathHull.cpp:1343
+#: src/mathed/InsetMathHull.cpp:1354
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "「%1$s」の行数を変えることができません。"
 
-#: src/mathed/InsetMathHull.cpp:1353
+#: src/mathed/InsetMathHull.cpp:1364
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "「%1$s」の列数を変えることができません。"
 
-#: src/mathed/InsetMathHull.cpp:1363
+#: src/mathed/InsetMathHull.cpp:1374
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "「%1$s」に水平境界線を加えることができません。"
@@ -19413,6 +19374,57 @@ msgstr "要約: "
 #: src/output_plaintext.cpp:148
 msgid "References: "
 msgstr "引用: "
+
+#: src/support/Package.cpp:435
+#, fuzzy
+msgid "LyX binary not found"
+msgstr "文字列が見つかりません！"
+
+#: src/support/Package.cpp:436
+#, c-format
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
+msgstr ""
+
+#: src/support/Package.cpp:555
+#, c-format
+msgid ""
+"Unable to determine the system directory having searched\n"
+"\t%1$s\n"
+"Use the '-sysdir' command line parameter or set the environment variable\n"
+"%2$s to the LyX system directory containing the file `chkconfig.ltx'."
+msgstr ""
+
+#: src/support/Package.cpp:636 src/support/Package.cpp:663
+#, fuzzy
+msgid "File not found"
+msgstr "モジュールが見つかりません"
+
+#: src/support/Package.cpp:637
+#, c-format
+msgid ""
+"Invalid %1$s switch.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+
+#: src/support/Package.cpp:664
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+
+#: src/support/Package.cpp:688
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"%2$s is not a directory."
+msgstr ""
+
+#: src/support/Package.cpp:690
+#, fuzzy
+msgid "Directory not found"
+msgstr "文字列が見つかりません！"
 
 #: src/support/debug.cpp:38
 msgid "No debugging message"
@@ -19583,6 +19595,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "未知のユーザー"
 
+#~ msgid " Macro: %1$s: "
+#~ msgstr " マクロ: %1$s: "
+
 #~ msgid "LaTeX default"
 #~ msgstr "LaTeX既定値"
 
@@ -19591,15 +19606,3 @@ msgstr "未知のユーザー"
 
 #~ msgid "Left-click to open the inset"
 #~ msgstr "左クリックで差込枠を展開"
-
-#, fuzzy
-#~ msgid "LyX binary not found"
-#~ msgstr "文字列が見つかりません！"
-
-#, fuzzy
-#~ msgid "File not found"
-#~ msgstr "モジュールが見つかりません"
-
-#, fuzzy
-#~ msgid "Directory not found"
-#~ msgstr "文字列が見つかりません！"

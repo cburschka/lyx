@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-09-01 10:43+0200\n"
+"POT-Creation-Date: 2008-09-06 18:16+0200\n"
 "PO-Revision-Date: 2008-08-04 17:39+0100\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -1960,6 +1960,123 @@ msgstr "&Список у Змісті"
 msgid "&Numbering"
 msgstr "&Нумерація"
 
+#: src/frontends/qt4/ui/PageLayoutUi.ui:33
+#: src/frontends/qt4/GuiDocument.cpp:982
+msgid "Page Layout"
+msgstr "Формат сторінки"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:68
+#, fuzzy
+msgid "Paper Format"
+msgstr "Формат дати"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:103
+msgid "Choose a particular paper size, or set your own with \"Custom\""
+msgstr "Обрати розмір паперу чи встановити свій через \"Обрати\""
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:121
+msgid "Style used for the page header and footer"
+msgstr "Стиль використаний для шапки та підвалу"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:128
+#, fuzzy
+msgid "Headings &style:"
+msgstr "Стиль &сторінки:"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:138
+msgid "&Landscape"
+msgstr "&Ландшафт"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:145
+msgid "&Portrait"
+msgstr "П&ортрет"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:191
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:92
+#: src/frontends/qt4/ui/RefUi.ui:129
+msgid "&Format:"
+msgstr "&Формат:"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:227
+#, fuzzy
+msgid "&Orientation:"
+msgstr "Розташування"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:253
+msgid "Lay out the page for double-sided printing"
+msgstr "Переверніть сторінку для двостороннього друку"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:256
+msgid "&Two-sided document"
+msgstr "&Двосторонній документ"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:44
+msgid "I&mmediate Apply"
+msgstr ""
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:123
+msgid "Use the default alignment for this paragraph, whatever it is."
+msgstr ""
+"Використовувати типове вирівнювання для цього абзацу, яким би воно не було."
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:126
+#, fuzzy
+msgid "Paragraph's &Default"
+msgstr "Використовувати &типове вирівнювання абзацу"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:133
+msgid "Ri&ght"
+msgstr "&Праворуч"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:140
+msgid "C&enter"
+msgstr "По&середині"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:147
+msgid "&Left"
+msgstr "&Ліворуч"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:154
+msgid "&Justified"
+msgstr "По &ширині"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:164
+#, fuzzy
+msgid "&Indent Paragraph"
+msgstr "Робити абзацний &відступ"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:174
+msgid "Label Width"
+msgstr "Ширина мітки"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:189
+#: src/frontends/qt4/ui/ParagraphUi.ui:196
+msgid "This text defines the width of the paragraph label"
+msgstr "Цей текст визначає ширину абзацу"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:199
+msgid "Lo&ngest label"
+msgstr "&Найдовша мітка"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:212
+#, fuzzy
+msgid "Line &spacing"
+msgstr "Міжрядковий &проміжок:"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:240 src/Text.cpp:1377
+#: src/frontends/qt4/GuiDocument.cpp:579
+msgid "Single"
+msgstr "Одинарний"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:245
+msgid "1.5"
+msgstr "1,5"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:250 src/Text.cpp:1383
+#: src/frontends/qt4/GuiDocument.cpp:583
+msgid "Double"
+msgstr "Подвійний"
+
 #: src/frontends/qt4/ui/PDFSupportUi.ui:28
 msgid "&Use hyperref support"
 msgstr ""
@@ -2081,123 +2198,6 @@ msgstr "Додаткові параметри LaTeX"
 #: src/frontends/qt4/ui/PDFSupportUi.ui:421
 msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 msgstr ""
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:33
-#: src/frontends/qt4/GuiDocument.cpp:982
-msgid "Page Layout"
-msgstr "Формат сторінки"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:68
-#, fuzzy
-msgid "Paper Format"
-msgstr "Формат дати"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:103
-msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr "Обрати розмір паперу чи встановити свій через \"Обрати\""
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:121
-msgid "Style used for the page header and footer"
-msgstr "Стиль використаний для шапки та підвалу"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:128
-#, fuzzy
-msgid "Headings &style:"
-msgstr "Стиль &сторінки:"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:138
-msgid "&Landscape"
-msgstr "&Ландшафт"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:145
-msgid "&Portrait"
-msgstr "П&ортрет"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:191
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:92
-#: src/frontends/qt4/ui/RefUi.ui:129
-msgid "&Format:"
-msgstr "&Формат:"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:227
-#, fuzzy
-msgid "&Orientation:"
-msgstr "Розташування"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:253
-msgid "Lay out the page for double-sided printing"
-msgstr "Переверніть сторінку для двостороннього друку"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:256
-msgid "&Two-sided document"
-msgstr "&Двосторонній документ"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:44
-msgid "I&mmediate Apply"
-msgstr ""
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:123
-msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr ""
-"Використовувати типове вирівнювання для цього абзацу, яким би воно не було."
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:126
-#, fuzzy
-msgid "Paragraph's &Default"
-msgstr "Використовувати &типове вирівнювання абзацу"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:133
-msgid "Ri&ght"
-msgstr "&Праворуч"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:140
-msgid "C&enter"
-msgstr "По&середині"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:147
-msgid "&Left"
-msgstr "&Ліворуч"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:154
-msgid "&Justified"
-msgstr "По &ширині"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:164
-#, fuzzy
-msgid "&Indent Paragraph"
-msgstr "Робити абзацний &відступ"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:174
-msgid "Label Width"
-msgstr "Ширина мітки"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:189
-#: src/frontends/qt4/ui/ParagraphUi.ui:196
-msgid "This text defines the width of the paragraph label"
-msgstr "Цей текст визначає ширину абзацу"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:199
-msgid "Lo&ngest label"
-msgstr "&Найдовша мітка"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:212
-#, fuzzy
-msgid "Line &spacing"
-msgstr "Міжрядковий &проміжок:"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:240 src/Text.cpp:1377
-#: src/frontends/qt4/GuiDocument.cpp:579
-msgid "Single"
-msgstr "Одинарний"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:245
-msgid "1.5"
-msgstr "1,5"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:250 src/Text.cpp:1383
-#: src/frontends/qt4/GuiDocument.cpp:583
-msgid "Double"
-msgstr "Подвійний"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "&Alter..."
@@ -3938,8 +3938,7 @@ msgstr ""
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
-#: lib/layouts/svjour3.inc:27 lib/ui/stdtoolbars.inc:55
-#: src/insets/InsetRef.cpp:171
+#: lib/ui/stdtoolbars.inc:55 src/insets/InsetRef.cpp:171
 msgid "Standard"
 msgstr "Звичайний"
 
@@ -3952,8 +3951,8 @@ msgstr "ШаблонТеореми"
 #: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:217
 #: lib/layouts/ijmpd.layout:217 lib/layouts/llncs.layout:371
 #: lib/layouts/siamltex.layout:250 lib/layouts/svjour.inc:433
-#: lib/layouts/svjour3.inc:436 lib/layouts/theorems-order.inc:76
-#: lib/layouts/theorems-proof.inc:13 lib/layouts/theorems-std.module:21
+#: lib/layouts/theorems-order.inc:76 lib/layouts/theorems-proof.inc:13
+#: lib/layouts/theorems-std.module:21
 msgid "Proof"
 msgstr "Доведення"
 
@@ -3966,12 +3965,12 @@ msgstr "Доведення:"
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:196
 #: lib/layouts/ijmpd.layout:199 lib/layouts/llncs.layout:412
 #: lib/layouts/siamltex.layout:200 lib/layouts/svjour.inc:475
-#: lib/layouts/svjour3.inc:478 lib/layouts/theorems-ams.inc:24
+#: lib/layouts/theorems.inc:24 lib/layouts/theorems.inc:25
+#: lib/layouts/theorems.inc:202 lib/layouts/theorems-ams.inc:24
 #: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
 #: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems-starred.inc:24
 #: lib/layouts/theorems-starred-equivalents.inc:6
-#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:24
-#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:202
 #: lib/layouts/theorems-chap.module:17 lib/layouts/theorems-sec.module:16
 msgid "Theorem"
 msgstr "Теорема"
@@ -3984,9 +3983,9 @@ msgstr "Теорема #:"
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:246 lib/layouts/ijmpd.layout:251
 #: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:215
-#: lib/layouts/svjour.inc:412 lib/layouts/svjour3.inc:415
+#: lib/layouts/svjour.inc:412 lib/layouts/theorems.inc:69
 #: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-order.inc:19
-#: lib/layouts/theorems-starred-equivalents.inc:20 lib/layouts/theorems.inc:69
+#: lib/layouts/theorems-starred-equivalents.inc:20
 msgid "Lemma"
 msgstr "Лема"
 
@@ -3999,9 +3998,9 @@ msgstr "Лема #:"
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:236
 #: lib/layouts/ijmpd.layout:237 lib/layouts/llncs.layout:316
 #: lib/layouts/siamltex.layout:222 lib/layouts/svjour.inc:373
-#: lib/layouts/svjour3.inc:376 lib/layouts/theorems-ams.inc:59
+#: lib/layouts/theorems.inc:58 lib/layouts/theorems-ams.inc:59
 #: lib/layouts/theorems-order.inc:13
-#: lib/layouts/theorems-starred-equivalents.inc:13 lib/layouts/theorems.inc:58
+#: lib/layouts/theorems-starred-equivalents.inc:13
 msgid "Corollary"
 msgstr "Наслідок"
 
@@ -4013,9 +4012,9 @@ msgstr "Наслідок #:"
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:256
 #: lib/layouts/ijmpd.layout:262 lib/layouts/llncs.layout:385
 #: lib/layouts/siamltex.layout:229 lib/layouts/svjour.inc:447
-#: lib/layouts/svjour3.inc:450 lib/layouts/theorems-ams.inc:83
+#: lib/layouts/theorems.inc:80 lib/layouts/theorems-ams.inc:83
 #: lib/layouts/theorems-order.inc:25
-#: lib/layouts/theorems-starred-equivalents.inc:27 lib/layouts/theorems.inc:80
+#: lib/layouts/theorems-starred-equivalents.inc:27
 msgid "Proposition"
 msgstr "Твердження"
 
@@ -4026,9 +4025,9 @@ msgstr "Твердження #:"
 #: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:363
 #: lib/layouts/ijmpc.layout:296 lib/layouts/ijmpd.layout:306
 #: lib/layouts/llncs.layout:309 lib/layouts/svjour.inc:366
-#: lib/layouts/svjour3.inc:369 lib/layouts/theorems-ams.inc:95
+#: lib/layouts/theorems.inc:91 lib/layouts/theorems-ams.inc:95
 #: lib/layouts/theorems-order.inc:31
-#: lib/layouts/theorems-starred-equivalents.inc:34 lib/layouts/theorems.inc:91
+#: lib/layouts/theorems-starred-equivalents.inc:34
 msgid "Conjecture"
 msgstr "Припущення"
 
@@ -4046,7 +4045,7 @@ msgid "Criterion #:"
 msgstr "Критерій #:"
 
 #: lib/layouts/IEEEtran.layout:133 lib/layouts/beamer.layout:977
-#: lib/layouts/theorems-ams.inc:107 lib/layouts/theorems.inc:102
+#: lib/layouts/theorems.inc:102 lib/layouts/theorems-ams.inc:107
 msgid "Fact"
 msgstr "Факт"
 
@@ -4067,10 +4066,9 @@ msgstr "Аксіома #:"
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:132
 #: lib/layouts/ijmpd.layout:129 lib/layouts/llncs.layout:330
 #: lib/layouts/siamltex.layout:236 lib/layouts/svjour.inc:387
-#: lib/layouts/svjour3.inc:390 lib/layouts/theorems-ams.inc:119
+#: lib/layouts/theorems.inc:113 lib/layouts/theorems-ams.inc:119
 #: lib/layouts/theorems-order.inc:37
 #: lib/layouts/theorems-starred-equivalents.inc:41
-#: lib/layouts/theorems.inc:113
 msgid "Definition"
 msgstr "Визначення"
 
@@ -4081,10 +4079,10 @@ msgstr "Визначення #:"
 #: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:959
 #: lib/layouts/elsart.layout:370 lib/layouts/ijmpc.layout:166
 #: lib/layouts/ijmpd.layout:163 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:394 lib/layouts/svjour3.inc:397
+#: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:132
 #: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:48
-#: lib/layouts/theorems.inc:132 src/frontends/qt4/GuiDocument.cpp:827
+#: src/frontends/qt4/GuiDocument.cpp:827
 msgid "Example"
 msgstr "Приклад"
 
@@ -4103,10 +4101,9 @@ msgstr "Умова #:"
 
 #: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:377
 #: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:426
-#: lib/layouts/svjour3.inc:429 lib/layouts/theorems-ams.inc:150
+#: lib/layouts/theorems.inc:144 lib/layouts/theorems-ams.inc:150
 #: lib/layouts/theorems-order.inc:49
 #: lib/layouts/theorems-starred-equivalents.inc:55
-#: lib/layouts/theorems.inc:144
 msgid "Problem"
 msgstr "Задача"
 
@@ -4115,10 +4112,9 @@ msgid "Problem #:"
 msgstr "Задача #:"
 
 #: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:401 lib/layouts/svjour3.inc:404
+#: lib/layouts/svjour.inc:401 lib/layouts/theorems.inc:156
 #: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-order.inc:55
 #: lib/layouts/theorems-starred-equivalents.inc:62
-#: lib/layouts/theorems.inc:156
 msgid "Exercise"
 msgstr "Вправа"
 
@@ -4129,10 +4125,9 @@ msgstr "Вправа #:"
 #: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:384
 #: lib/layouts/ijmpc.layout:176 lib/layouts/ijmpd.layout:174
 #: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:461
-#: lib/layouts/svjour3.inc:464 lib/layouts/theorems-ams.inc:174
+#: lib/layouts/theorems.inc:168 lib/layouts/theorems-ams.inc:174
 #: lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:69
-#: lib/layouts/theorems.inc:168
 msgid "Remark"
 msgstr "Помітка"
 
@@ -4143,10 +4138,9 @@ msgstr "Помітка #:"
 #: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:398
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:286
 #: lib/layouts/ijmpd.layout:295 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:345 lib/layouts/svjour3.inc:348
+#: lib/layouts/svjour.inc:345 lib/layouts/theorems.inc:188
 #: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-order.inc:67
 #: lib/layouts/theorems-starred-equivalents.inc:76
-#: lib/layouts/theorems.inc:188
 msgid "Claim"
 msgstr "Твердження"
 
@@ -4158,7 +4152,7 @@ msgstr "Твердження #:"
 #: lib/layouts/elsart.layout:391 lib/layouts/iopart.layout:92
 #: lib/layouts/llncs.layout:357 lib/layouts/powerdot.layout:197
 #: lib/layouts/slides.layout:167 lib/layouts/svjour.inc:419
-#: lib/layouts/svjour3.inc:422 lib/layouts/theorems-ams-extended.module:123
+#: lib/layouts/theorems-ams-extended.module:123
 msgid "Note"
 msgstr "Зауваження"
 
@@ -4176,8 +4170,8 @@ msgid "Notation #:"
 msgstr "Позначення #:"
 
 #: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:413
-#: lib/layouts/llncs.layout:281 lib/layouts/theorems-ams.inc:207
-#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:201
+#: lib/layouts/llncs.layout:281 lib/layouts/theorems.inc:201
+#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-order.inc:73
 msgid "Case"
 msgstr "Варіант"
 
@@ -4207,7 +4201,6 @@ msgstr "Варіант #:"
 #: lib/layouts/scrclass.inc:62 lib/layouts/stdsections.inc:12
 #: lib/layouts/stdsections.inc:38 lib/layouts/stdsections.inc:61
 #: lib/layouts/stdsections.inc:62 lib/layouts/svjour.inc:53
-#: lib/layouts/svjour3.inc:52
 msgid "Section"
 msgstr "Розділ"
 
@@ -4227,7 +4220,7 @@ msgstr "Розділ"
 #: lib/layouts/agu_stdsections.inc:40 lib/layouts/aguplus.inc:41
 #: lib/layouts/db_stdsections.inc:36 lib/layouts/numrevtex.inc:15
 #: lib/layouts/scrclass.inc:69 lib/layouts/stdsections.inc:85
-#: lib/layouts/svjour.inc:62 lib/layouts/svjour3.inc:61
+#: lib/layouts/svjour.inc:62
 msgid "Subsection"
 msgstr "Підрозділ"
 
@@ -4244,7 +4237,7 @@ msgstr "Підрозділ"
 #: lib/layouts/siamltex.layout:65 lib/layouts/agu_stdsections.inc:50
 #: lib/layouts/db_stdsections.inc:44 lib/layouts/numrevtex.inc:24
 #: lib/layouts/scrclass.inc:76 lib/layouts/stdsections.inc:100
-#: lib/layouts/svjour.inc:71 lib/layouts/svjour3.inc:70
+#: lib/layouts/svjour.inc:71
 msgid "Subsubsection"
 msgstr "Підпідрозділ"
 
@@ -4290,8 +4283,7 @@ msgstr "Підпідрозділ*"
 #: lib/layouts/agu_stdtitle.inc:193 lib/layouts/amsdefs.inc:96
 #: lib/layouts/db_stdstruct.inc:11 lib/layouts/scrclass.inc:216
 #: lib/layouts/stdstruct.inc:12 lib/layouts/stdstruct.inc:27
-#: lib/layouts/svjour.inc:249 lib/layouts/svjour3.inc:252
-#: src/output_plaintext.cpp:133
+#: lib/layouts/svjour.inc:249 src/output_plaintext.cpp:133
 msgid "Abstract"
 msgstr "Анотація"
 
@@ -4307,7 +4299,7 @@ msgstr "Анотація---"
 #: lib/layouts/paper.layout:171 lib/layouts/revtex4.layout:241
 #: lib/layouts/siamltex.layout:167 lib/layouts/spie.layout:39
 #: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:166
-#: lib/layouts/svjour.inc:270 lib/layouts/svjour3.inc:273
+#: lib/layouts/svjour.inc:270
 msgid "Keywords"
 msgstr "Ключові слова"
 
@@ -4333,8 +4325,7 @@ msgstr "Записи в покажчику---"
 #: lib/layouts/simplecv.layout:139 lib/layouts/aguplus.inc:167
 #: lib/layouts/aguplus.inc:169 lib/layouts/amsdefs.inc:201
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:323 lib/layouts/svjour3.inc:326
-#: src/frontends/qt4/GuiDocument.cpp:986
+#: lib/layouts/svjour.inc:323 src/frontends/qt4/GuiDocument.cpp:986
 msgid "Bibliography"
 msgstr "Бібліографія"
 
@@ -4426,7 +4417,7 @@ msgstr "Список"
 #: lib/layouts/svprobth.layout:35 lib/layouts/agu_stdtitle.inc:246
 #: lib/layouts/amsdefs.inc:30 lib/layouts/db_stdtitle.inc:13
 #: lib/layouts/scrclass.inc:147 lib/layouts/stdtitle.inc:12
-#: lib/layouts/svjour.inc:129 lib/layouts/svjour3.inc:129
+#: lib/layouts/svjour.inc:129
 msgid "Title"
 msgstr "Заголовок"
 
@@ -4434,7 +4425,7 @@ msgstr "Заголовок"
 #: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:778
 #: lib/layouts/kluwer.layout:121 lib/layouts/llncs.layout:123
 #: lib/layouts/svprobth.layout:44 lib/layouts/aapaper.inc:9
-#: lib/layouts/svjour.inc:152 lib/layouts/svjour3.inc:152
+#: lib/layouts/svjour.inc:152
 msgid "Subtitle"
 msgstr "Підзаголовок"
 
@@ -4455,7 +4446,6 @@ msgstr "Підзаголовок"
 #: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:52
 #: lib/layouts/db_stdtitle.inc:21 lib/layouts/scrclass.inc:155
 #: lib/layouts/stdtitle.inc:31 lib/layouts/svjour.inc:181
-#: lib/layouts/svjour3.inc:182
 msgid "Author"
 msgstr "Автор"
 
@@ -4478,7 +4468,7 @@ msgid "Offprint"
 msgstr "Окремий відбиток"
 
 #: lib/layouts/aa.layout:77 lib/layouts/aa.layout:170
-#: lib/layouts/svjour.inc:233 lib/layouts/svjour3.inc:236
+#: lib/layouts/svjour.inc:233
 msgid "Mail"
 msgstr "Пошта"
 
@@ -4494,17 +4484,15 @@ msgstr "Пошта"
 #: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:72
 #: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:162
 #: lib/layouts/stdtitle.inc:50 lib/layouts/svjour.inc:227
-#: lib/layouts/svjour3.inc:230 lib/ui/stdmenus.inc:347
-#: lib/external_templates:296 lib/external_templates:297
-#: lib/external_templates:301
+#: lib/ui/stdmenus.inc:347 lib/external_templates:296
+#: lib/external_templates:297 lib/external_templates:301
 msgid "Date"
 msgstr "Дата"
 
 #: lib/layouts/aa.layout:86 lib/layouts/aa.layout:192
 #: lib/layouts/aapaper.layout:100 lib/layouts/egs.layout:527
 #: lib/layouts/elsart.layout:423 lib/layouts/aapaper.inc:80
-#: lib/layouts/svjour.inc:316 lib/layouts/svjour3.inc:319
-#: lib/layouts/theorems-ams-extended.module:189
+#: lib/layouts/svjour.inc:316 lib/layouts/theorems-ams-extended.module:189
 msgid "Acknowledgement"
 msgstr "Подяка"
 
@@ -4517,7 +4505,7 @@ msgid "Correspondence to:"
 msgstr "Відповідність:"
 
 #: lib/layouts/aa.layout:203 lib/layouts/egs.layout:516
-#: lib/layouts/svjour.inc:305 lib/layouts/svjour3.inc:308
+#: lib/layouts/svjour.inc:305
 msgid "Acknowledgements."
 msgstr "Подяки."
 
@@ -4561,7 +4549,7 @@ msgstr "Тезаурус"
 #: lib/layouts/agu_stdsections.inc:60 lib/layouts/aguplus.inc:55
 #: lib/layouts/db_stdsections.inc:52 lib/layouts/numrevtex.inc:33
 #: lib/layouts/scrclass.inc:83 lib/layouts/stdsections.inc:114
-#: lib/layouts/svjour.inc:80 lib/layouts/svjour3.inc:79
+#: lib/layouts/svjour.inc:80
 msgid "Paragraph"
 msgstr "Параграф"
 
@@ -4581,7 +4569,6 @@ msgstr "І"
 #: lib/layouts/elsart.layout:429 lib/layouts/isprs.layout:213
 #: lib/layouts/kluwer.layout:293 lib/layouts/kluwer.layout:304
 #: lib/layouts/aapaper.inc:91 lib/layouts/svjour.inc:291
-#: lib/layouts/svjour3.inc:294
 msgid "Acknowledgements"
 msgstr "Подяки"
 
@@ -4593,7 +4580,7 @@ msgstr "Подяки"
 #: lib/layouts/llncs.layout:272 lib/layouts/moderncv.layout:162
 #: lib/layouts/siamltex.layout:192 lib/layouts/amsdefs.inc:215
 #: lib/layouts/stdstruct.inc:54 lib/layouts/svjour.inc:337
-#: lib/layouts/svjour3.inc:340 src/output_plaintext.cpp:145
+#: src/output_plaintext.cpp:145
 msgid "References"
 msgstr "Посилання"
 
@@ -4804,7 +4791,7 @@ msgstr "FitBitmap"
 #: lib/layouts/memoir.layout:76 lib/layouts/paper.layout:80
 #: lib/layouts/agu_stdsections.inc:70 lib/layouts/db_stdsections.inc:60
 #: lib/layouts/scrclass.inc:90 lib/layouts/stdsections.inc:124
-#: lib/layouts/svjour.inc:89 lib/layouts/svjour3.inc:88
+#: lib/layouts/svjour.inc:89
 msgid "Subparagraph"
 msgstr "Підпараграф"
 
@@ -4840,11 +4827,6 @@ msgstr "LatinOff"
 msgid "Latin off"
 msgstr "Вимкнути латиницю"
 
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "BeginFrame"
-
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:117
 #: lib/layouts/beamer.layout:132 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:32 lib/layouts/scrartcl.layout:20
@@ -4859,6 +4841,11 @@ msgstr "Частина"
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Частина*"
+
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "BeginFrame"
 
 #: lib/layouts/beamer.layout:107 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:114 lib/layouts/stdlists.inc:65
@@ -5046,7 +5033,6 @@ msgstr "Заголовок (звичайна вставка)"
 
 #: lib/layouts/beamer.layout:825 lib/layouts/cl2emult.layout:69
 #: lib/layouts/llncs.layout:211 lib/layouts/svjour.inc:209
-#: lib/layouts/svjour3.inc:211
 msgid "Institute"
 msgstr "Institute"
 
@@ -5100,8 +5086,7 @@ msgstr "Факт."
 #: lib/layouts/beamer.layout:986 lib/layouts/foils.layout:281
 #: lib/layouts/ijmpc.layout:225 lib/layouts/ijmpd.layout:225
 #: lib/layouts/llncs.layout:374 lib/layouts/siamltex.layout:253
-#: lib/layouts/svjour.inc:436 lib/layouts/svjour3.inc:439
-#: lib/layouts/theorems-proof.inc:30
+#: lib/layouts/svjour.inc:436 lib/layouts/theorems-proof.inc:30
 msgid "Proof."
 msgstr "Доведення."
 
@@ -5532,12 +5517,12 @@ msgstr "копії_для:"
 #: lib/layouts/llncs.layout:251 lib/layouts/siamltex.layout:154
 #: lib/layouts/svglobal.layout:44 lib/layouts/svglobal3.layout:44
 #: lib/layouts/svjog.layout:49 lib/layouts/amsdefs.inc:110
-#: lib/layouts/svjour.inc:263 lib/layouts/svjour3.inc:266
+#: lib/layouts/svjour.inc:263
 msgid "Abstract."
 msgstr "Анотація."
 
 #: lib/layouts/egs.layout:541 lib/layouts/svjour.inc:319
-#: lib/layouts/svjour3.inc:322 lib/layouts/theorems-ams-extended.module:203
+#: lib/layouts/theorems-ams-extended.module:203
 msgid "Acknowledgement."
 msgstr "Подяка."
 
@@ -5661,7 +5646,6 @@ msgid "Keyword"
 msgstr "Ключове слово"
 
 #: lib/layouts/entcs.layout:109 lib/layouts/svjour.inc:284
-#: lib/layouts/svjour3.inc:287
 msgid "Key words:"
 msgstr "Ключові слова:"
 
@@ -5817,31 +5801,30 @@ msgstr "Підвал праворуч:"
 
 #: lib/layouts/foils.layout:232 lib/layouts/heb-article.layout:33
 #: lib/layouts/llncs.layout:415 lib/layouts/siamltex.layout:204
-#: lib/layouts/svjour.inc:478 lib/layouts/svjour3.inc:481
+#: lib/layouts/svjour.inc:478
 msgid "Theorem #."
 msgstr "Теорема #."
 
 #: lib/layouts/foils.layout:246 lib/layouts/heb-article.layout:48
 #: lib/layouts/llncs.layout:354 lib/layouts/siamltex.layout:218
-#: lib/layouts/svjour.inc:415 lib/layouts/svjour3.inc:418
+#: lib/layouts/svjour.inc:415
 msgid "Lemma #."
 msgstr "Лема #."
 
 #: lib/layouts/foils.layout:253 lib/layouts/heb-article.layout:58
 #: lib/layouts/llncs.layout:319 lib/layouts/siamltex.layout:225
-#: lib/layouts/svjour.inc:376 lib/layouts/svjour3.inc:379
+#: lib/layouts/svjour.inc:376
 msgid "Corollary #."
 msgstr "Наслідок #."
 
 #: lib/layouts/foils.layout:260 lib/layouts/llncs.layout:388
 #: lib/layouts/siamltex.layout:232 lib/layouts/svjour.inc:450
-#: lib/layouts/svjour3.inc:453
 msgid "Proposition #."
 msgstr "Твердження #."
 
 #: lib/layouts/foils.layout:267 lib/layouts/heb-article.layout:78
 #: lib/layouts/llncs.layout:333 lib/layouts/siamltex.layout:239
-#: lib/layouts/svjour.inc:390 lib/layouts/svjour3.inc:393
+#: lib/layouts/svjour.inc:390
 msgid "Definition #."
 msgstr "Визначення #."
 
@@ -6566,7 +6549,7 @@ msgid "Notation \\thenotation."
 msgstr "Позначення \\arabic{notation}."
 
 #: lib/layouts/ijmpc.layout:206 lib/layouts/ijmpd.layout:209
-#: lib/layouts/theorems-ams.inc:42 lib/layouts/theorems.inc:42
+#: lib/layouts/theorems.inc:42 lib/layouts/theorems-ams.inc:42
 #, fuzzy
 msgid "Theorem \\thetheorem."
 msgstr "Теорема \\arabic{theorem}."
@@ -6597,7 +6580,6 @@ msgstr "Властивість \\arabic{prop}."
 
 #: lib/layouts/ijmpc.layout:276 lib/layouts/ijmpd.layout:284
 #: lib/layouts/llncs.layout:391 lib/layouts/svjour.inc:454
-#: lib/layouts/svjour3.inc:457
 msgid "Question"
 msgstr "Питання"
 
@@ -6713,7 +6695,7 @@ msgid "RunningTitle"
 msgstr "RunningTitle"
 
 #: lib/layouts/kluwer.layout:216 lib/layouts/llncs.layout:158
-#: lib/layouts/svjour.inc:177 lib/layouts/svjour3.inc:178
+#: lib/layouts/svjour.inc:177
 msgid "Running title:"
 msgstr "Альтернативна назва:"
 
@@ -6737,7 +6719,6 @@ msgid "Chapter"
 msgstr "Глава"
 
 #: lib/layouts/llncs.layout:144 lib/layouts/svjour.inc:173
-#: lib/layouts/svjour3.inc:174
 msgid "Running LaTeX Title"
 msgstr "Running_LaTeX_Title"
 
@@ -6750,12 +6731,10 @@ msgid "TOC title:"
 msgstr "Назва «Змісту»:"
 
 #: lib/layouts/llncs.layout:195 lib/layouts/svjour.inc:201
-#: lib/layouts/svjour3.inc:203
 msgid "Author Running"
 msgstr "Author Running"
 
 #: lib/layouts/llncs.layout:199 lib/layouts/svjour.inc:205
-#: lib/layouts/svjour3.inc:207
 msgid "Author Running:"
 msgstr "Author Running:"
 
@@ -6767,68 +6746,57 @@ msgstr "Автор змісту"
 msgid "TOC Author:"
 msgstr "Автор змісту:"
 
-#: lib/layouts/llncs.layout:295 lib/layouts/theorems-ams.inc:213
-#: lib/layouts/theorems.inc:207
+#: lib/layouts/llncs.layout:295 lib/layouts/theorems.inc:207
+#: lib/layouts/theorems-ams.inc:213
 msgid "Case #."
 msgstr "Варіант #."
 
 #: lib/layouts/llncs.layout:305 lib/layouts/svjour.inc:359
-#: lib/layouts/svjour3.inc:362 lib/layouts/theorems-starred.inc:196
+#: lib/layouts/theorems-starred.inc:196
 msgid "Claim."
 msgstr "Твердження."
 
 #: lib/layouts/llncs.layout:312 lib/layouts/svjour.inc:369
-#: lib/layouts/svjour3.inc:372
 msgid "Conjecture #."
 msgstr "Припущення #."
 
 #: lib/layouts/llncs.layout:340 lib/layouts/svjour.inc:397
-#: lib/layouts/svjour3.inc:400
 msgid "Example #."
 msgstr "Приклад #."
 
 #: lib/layouts/llncs.layout:347 lib/layouts/svjour.inc:404
-#: lib/layouts/svjour3.inc:407
 msgid "Exercise #."
 msgstr "Вправа #."
 
 #: lib/layouts/llncs.layout:360 lib/layouts/svjour.inc:422
-#: lib/layouts/svjour3.inc:425
 msgid "Note #."
 msgstr "Помітка #."
 
 #: lib/layouts/llncs.layout:367 lib/layouts/svjour.inc:429
-#: lib/layouts/svjour3.inc:432
 msgid "Problem #."
 msgstr "Задача #."
 
 #: lib/layouts/llncs.layout:378 lib/layouts/svjour.inc:440
-#: lib/layouts/svjour3.inc:443
 msgid "Property"
 msgstr "Властивість"
 
 #: lib/layouts/llncs.layout:381 lib/layouts/svjour.inc:443
-#: lib/layouts/svjour3.inc:446
 msgid "Property #."
 msgstr "Властивість #."
 
 #: lib/layouts/llncs.layout:394 lib/layouts/svjour.inc:457
-#: lib/layouts/svjour3.inc:460
 msgid "Question #."
 msgstr "Питання #."
 
 #: lib/layouts/llncs.layout:401 lib/layouts/svjour.inc:464
-#: lib/layouts/svjour3.inc:467
 msgid "Remark #."
 msgstr "Зауваження #."
 
 #: lib/layouts/llncs.layout:405 lib/layouts/svjour.inc:468
-#: lib/layouts/svjour3.inc:471
 msgid "Solution"
 msgstr "Розв'язок"
 
 #: lib/layouts/llncs.layout:408 lib/layouts/svjour.inc:471
-#: lib/layouts/svjour3.inc:474
 msgid "Solution #."
 msgstr "Розв'язок #."
 
@@ -7821,7 +7789,6 @@ msgid "Dedicatory"
 msgstr "У якості присвяти"
 
 #: lib/layouts/amsdefs.inc:183 lib/layouts/svjour.inc:125
-#: lib/layouts/svjour3.inc:125
 msgid "Dedication:"
 msgstr "Присвята:"
 
@@ -8011,7 +7978,6 @@ msgid "Publishers"
 msgstr "Видавці"
 
 #: lib/layouts/scrclass.inc:181 lib/layouts/svjour.inc:121
-#: lib/layouts/svjour3.inc:121
 msgid "Dedication"
 msgstr "Присвята"
 
@@ -8184,76 +8150,76 @@ msgstr "Глава \\arabic{chapter}"
 msgid "Appendix \\thechapter"
 msgstr "Додаток \\Alph{chapter}"
 
-#: lib/layouts/svjour.inc:98 lib/layouts/svjour3.inc:97
+#: lib/layouts/svjour.inc:98
 msgid "Headnote"
 msgstr "Помітка в шапці"
 
-#: lib/layouts/svjour.inc:112 lib/layouts/svjour3.inc:112
+#: lib/layouts/svjour.inc:112
 msgid "Headnote (optional):"
 msgstr "Headnote (бажано):"
 
-#: lib/layouts/svjour.inc:237 lib/layouts/svjour3.inc:240
+#: lib/layouts/svjour.inc:237
 msgid "Corr Author:"
 msgstr "Corr Author:"
 
-#: lib/layouts/svjour.inc:241 lib/layouts/svjour3.inc:244
+#: lib/layouts/svjour.inc:241
 msgid "Offprints"
 msgstr "Окремі відбитки"
 
-#: lib/layouts/svjour.inc:245 lib/layouts/svjour3.inc:248
+#: lib/layouts/svjour.inc:245
 msgid "Offprints:"
 msgstr "Окремі відбитки:"
 
-#: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:62
+#: lib/layouts/theorems.inc:62 lib/layouts/theorems-ams.inc:63
 #, fuzzy
 msgid "Corollary \\thetheorem."
 msgstr "Наслідок \\arabic{theorem}"
 
-#: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems.inc:73
+#: lib/layouts/theorems.inc:73 lib/layouts/theorems-ams.inc:75
 #, fuzzy
 msgid "Lemma \\thetheorem."
 msgstr "Лема \\arabic{theorem}"
 
-#: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems.inc:84
+#: lib/layouts/theorems.inc:84 lib/layouts/theorems-ams.inc:87
 #, fuzzy
 msgid "Proposition \\thetheorem."
 msgstr "Твердження \\arabic{theorem}"
 
-#: lib/layouts/theorems-ams.inc:99 lib/layouts/theorems.inc:95
+#: lib/layouts/theorems.inc:95 lib/layouts/theorems-ams.inc:99
 #, fuzzy
 msgid "Conjecture \\thetheorem."
 msgstr "Припущення \\arabic{theorem}"
 
-#: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems.inc:106
+#: lib/layouts/theorems.inc:106 lib/layouts/theorems-ams.inc:111
 msgid "Fact \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:117
+#: lib/layouts/theorems.inc:117 lib/layouts/theorems-ams.inc:123
 #, fuzzy
 msgid "Definition \\thetheorem."
 msgstr "Означення \\arabic{theorem}"
 
-#: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:135
+#: lib/layouts/theorems.inc:135 lib/layouts/theorems-ams.inc:141
 #, fuzzy
 msgid "Example \\thetheorem."
 msgstr "Приклад \\arabic{theorem}"
 
-#: lib/layouts/theorems-ams.inc:153 lib/layouts/theorems.inc:147
+#: lib/layouts/theorems.inc:147 lib/layouts/theorems-ams.inc:153
 #, fuzzy
 msgid "Problem \\thetheorem."
 msgstr "Задача \\arabic{theorem}"
 
-#: lib/layouts/theorems-ams.inc:165 lib/layouts/theorems.inc:159
+#: lib/layouts/theorems.inc:159 lib/layouts/theorems-ams.inc:165
 #, fuzzy
 msgid "Exercise \\thetheorem."
 msgstr "Вправа @Section@.\\arabic{theorem}."
 
-#: lib/layouts/theorems-ams.inc:178 lib/layouts/theorems.inc:172
+#: lib/layouts/theorems.inc:172 lib/layouts/theorems-ams.inc:178
 #, fuzzy
 msgid "Remark \\thetheorem."
 msgstr "Зауваження \\arabic{theorem}"
 
-#: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems.inc:191
+#: lib/layouts/theorems.inc:191 lib/layouts/theorems-ams.inc:197
 #, fuzzy
 msgid "Claim \\thetheorem."
 msgstr "Вимога \\arabic{theorem}"
@@ -15391,7 +15357,7 @@ msgstr "Запуск MakeIndex для nomencl."
 msgid "Could not read configuration file"
 msgstr "Помилка запуску конфігураційного файла"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1402
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1407
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -15558,7 +15524,7 @@ msgstr ""
 "                  імпортувати заданий файл у вказаному форматі\n"
 "Докладніший опис командного рядка можна знайти в документації (man)."
 
-#: src/LyX.cpp:994
+#: src/LyX.cpp:994 src/support/Package.cpp:554
 msgid "No system directory"
 msgstr "Відсутня системна тека"
 
@@ -15704,7 +15670,7 @@ msgstr "Повернутися до збереженого?"
 msgid "&Revert"
 msgstr "&Повернутися"
 
-#: src/LyXFunc.cpp:1016 src/Text3.cpp:1476
+#: src/LyXFunc.cpp:1016 src/Text3.cpp:1475
 msgid "Missing argument"
 msgstr "Відсутній аргумент"
 
@@ -16342,15 +16308,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Виокремити до кінця документа"
 
-#: src/Paragraph.cpp:1549 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1556 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Не має сенсу в цьому форматі!"
 
-#: src/Paragraph.cpp:1615
+#: src/Paragraph.cpp:1622
 msgid "Alignment not permitted"
 msgstr "Вирівнювання не дозволене"
 
-#: src/Paragraph.cpp:1616
+#: src/Paragraph.cpp:1623
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -16358,13 +16324,13 @@ msgstr ""
 "Новий шаблон не дозволяє попередньо визначеного вирівнювання.\n"
 "Використовується типове."
 
-#: src/Paragraph.cpp:2084 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2091 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:182 src/insets/InsetListings.cpp:190
 #: src/insets/InsetListings.cpp:214 src/mathed/InsetMathString.cpp:164
 msgid "LyX Warning: "
 msgstr "Попередження LyX: "
 
-#: src/Paragraph.cpp:2085 src/insets/InsetListings.cpp:183
+#: src/Paragraph.cpp:2092 src/insets/InsetListings.cpp:183
 #: src/insets/InsetListings.cpp:191 src/mathed/InsetMathString.cpp:165
 msgid "uncodable character"
 msgstr "непридатний для кодування символ"
@@ -16479,7 +16445,7 @@ msgstr "Нема чого індексувати!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Не можна індексувати більше ніж один абзац!"
 
-#: src/Text3.cpp:173 src/mathed/InsetMathHull.cpp:1461
+#: src/Text3.cpp:173 src/mathed/InsetMathHull.cpp:1472
 msgid "Math editor mode"
 msgstr "Математичний режим"
 
@@ -16495,11 +16461,11 @@ msgstr "Формат "
 msgid " not known"
 msgstr " невідомий"
 
-#: src/Text3.cpp:1584 src/Text3.cpp:1596
+#: src/Text3.cpp:1591 src/Text3.cpp:1603
 msgid "Character set"
 msgstr "Кодування символів"
 
-#: src/Text3.cpp:1744 src/Text3.cpp:1755
+#: src/Text3.cpp:1751 src/Text3.cpp:1762
 msgid "Paragraph layout set"
 msgstr "Встановлено розміщення абзацу"
 
@@ -16813,12 +16779,12 @@ msgstr ""
 "Встановлення кольору не вдалося \"%1$s\" - колір не визначено або не може "
 "бути перевизначено"
 
-#: src/frontends/qt4/GuiApplication.cpp:1211
+#: src/frontends/qt4/GuiApplication.cpp:1216
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Друк невдалий"
 
-#: src/frontends/qt4/GuiApplication.cpp:1221
+#: src/frontends/qt4/GuiApplication.cpp:1226
 #, fuzzy
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
@@ -16831,12 +16797,12 @@ msgstr ""
 "\n"
 "Виключення: "
 
-#: src/frontends/qt4/GuiApplication.cpp:1225
-#: src/frontends/qt4/GuiApplication.cpp:1231
+#: src/frontends/qt4/GuiApplication.cpp:1230
+#: src/frontends/qt4/GuiApplication.cpp:1236
 msgid "Software exception Detected"
 msgstr "Виявлено виключення у програмі"
 
-#: src/frontends/qt4/GuiApplication.cpp:1229
+#: src/frontends/qt4/GuiApplication.cpp:1234
 #, fuzzy
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
@@ -16845,7 +16811,7 @@ msgstr ""
 "У LyX сталося якесь дуже дивне виключення, зараз програма спробує зберегти "
 "всі незбережені документи і завершити роботу."
 
-#: src/frontends/qt4/GuiApplication.cpp:1401
+#: src/frontends/qt4/GuiApplication.cpp:1406
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Помилка запуску конфігураційного файла"
@@ -18028,7 +17994,7 @@ msgstr "Перейти до мітки"
 msgid "Find and Replace"
 msgstr "Знайти і замінити"
 
-#: src/frontends/qt4/GuiSendto.cpp:37
+#: src/frontends/qt4/GuiSendto.cpp:38
 msgid "Send Document to Command"
 msgstr "Переслати документ в команду"
 
@@ -18513,7 +18479,7 @@ msgstr ""
 msgid " (unknown)"
 msgstr " невідомий"
 
-#: src/frontends/qt4/GuiToolbar.cpp:945
+#: src/frontends/qt4/GuiToolbar.cpp:945 src/frontends/qt4/Toolbars.cpp:309
 msgid "auto"
 msgstr "авто"
 
@@ -19800,12 +19766,7 @@ msgstr "Рядок було замінено."
 msgid " strings have been replaced."
 msgstr " рядків було замінено."
 
-#: src/mathed/InsetFormulaMacro.cpp:119
-#, c-format
-msgid " Macro: %1$s: "
-msgstr " Макрос: %1$s: "
-
-#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1370
+#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1381
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -19837,25 +19798,25 @@ msgstr "Нічого вилучати"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Невідома властивість таблиці '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1166 src/mathed/InsetMathHull.cpp:1174
+#: src/mathed/InsetMathHull.cpp:1177 src/mathed/InsetMathHull.cpp:1185
 msgid "No number"
 msgstr "Без номеру"
 
-#: src/mathed/InsetMathHull.cpp:1166 src/mathed/InsetMathHull.cpp:1174
+#: src/mathed/InsetMathHull.cpp:1177 src/mathed/InsetMathHull.cpp:1185
 msgid "Number"
 msgstr "Нумерація"
 
-#: src/mathed/InsetMathHull.cpp:1343
+#: src/mathed/InsetMathHull.cpp:1354
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Не можу змінити число рядків в '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1353
+#: src/mathed/InsetMathHull.cpp:1364
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Не можу змінити кількість колонок до '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1363
+#: src/mathed/InsetMathHull.cpp:1374
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Не можу додати горизонтальні лінії ґратки '%1$s'"
@@ -19902,6 +19863,66 @@ msgstr "Анотація: "
 #: src/output_plaintext.cpp:148
 msgid "References: "
 msgstr "Посилання: "
+
+#: src/support/Package.cpp:435
+msgid "LyX binary not found"
+msgstr "Не знайдено виконуваний файл LyX"
+
+#: src/support/Package.cpp:436
+#, c-format
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
+msgstr "Неможливо визначити шлях до програми LyX з командного рядка %1$s"
+
+#: src/support/Package.cpp:555
+#, fuzzy, c-format
+msgid ""
+"Unable to determine the system directory having searched\n"
+"\t%1$s\n"
+"Use the '-sysdir' command line parameter or set the environment variable\n"
+"%2$s to the LyX system directory containing the file `chkconfig.ltx'."
+msgstr ""
+"Неможливо визначити системну теку, що містить шуканий\n"
+"\t%1$s\n"
+"Використайте параметр командного рядка '-sysdir' або встановіть системну "
+"змінну LYX_DIR_15x у значення системної теки LyX, що містить файл `chkconfig."
+"ltx'."
+
+#: src/support/Package.cpp:636 src/support/Package.cpp:663
+#, fuzzy
+msgid "File not found"
+msgstr "Файл не знайдено"
+
+#: src/support/Package.cpp:637
+#, c-format
+msgid ""
+"Invalid %1$s switch.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"Помилковий ключ %1$s.\n"
+"Тека %2$s не містить %3$s."
+
+#: src/support/Package.cpp:664
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+"Невірна змінна оточення %1$s.\n"
+"Тека %2$s не містить %3$s."
+
+#: src/support/Package.cpp:688
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"%2$s is not a directory."
+msgstr ""
+"Невірна змінна оточення %1$s.\n"
+"%2$s не є текою."
+
+#: src/support/Package.cpp:690
+msgid "Directory not found"
+msgstr "Теку не знайдено"
 
 #: src/support/debug.cpp:38
 msgid "No debugging message"
@@ -20074,56 +20095,11 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Невідомий користувач"
 
+#~ msgid " Macro: %1$s: "
+#~ msgstr " Макрос: %1$s: "
+
 #~ msgid "LaTeX default"
 #~ msgstr "Типовий для LaTeX"
-
-#~ msgid "LyX binary not found"
-#~ msgstr "Не знайдено виконуваний файл LyX"
-
-#~ msgid ""
-#~ "Unable to determine the path to the LyX binary from the command line %1$s"
-#~ msgstr "Неможливо визначити шлях до програми LyX з командного рядка %1$s"
-
-#, fuzzy
-#~ msgid ""
-#~ "Unable to determine the system directory having searched\n"
-#~ "\t%1$s\n"
-#~ "Use the '-sysdir' command line parameter or set the environment variable\n"
-#~ "%2$s to the LyX system directory containing the file `chkconfig.ltx'."
-#~ msgstr ""
-#~ "Неможливо визначити системну теку, що містить шуканий\n"
-#~ "\t%1$s\n"
-#~ "Використайте параметр командного рядка '-sysdir' або встановіть системну "
-#~ "змінну LYX_DIR_15x у значення системної теки LyX, що містить файл "
-#~ "`chkconfig.ltx'."
-
-#, fuzzy
-#~ msgid "File not found"
-#~ msgstr "Файл не знайдено"
-
-#~ msgid ""
-#~ "Invalid %1$s switch.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "Помилковий ключ %1$s.\n"
-#~ "Тека %2$s не містить %3$s."
-
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "Directory %2$s does not contain %3$s."
-#~ msgstr ""
-#~ "Невірна змінна оточення %1$s.\n"
-#~ "Тека %2$s не містить %3$s."
-
-#~ msgid ""
-#~ "Invalid %1$s environment variable.\n"
-#~ "%2$s is not a directory."
-#~ msgstr ""
-#~ "Невірна змінна оточення %1$s.\n"
-#~ "%2$s не є текою."
-
-#~ msgid "Directory not found"
-#~ msgstr "Теку не знайдено"
 
 #~ msgid "Keep *roff temporary files"
 #~ msgstr "Зберігати тимчасові файли *roff"
