@@ -1,4 +1,4 @@
-#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -205,7 +205,15 @@ Section
 \begin_inset Quotes eld
 \end_inset
 
-Bold, 17 pt type, left justified, 5 mm space below
+Bold, 17
+\begin_inset space \thinspace{}
+\end_inset
+
+pt type, left justified, 5
+\begin_inset space \thinspace{}
+\end_inset
+
+mm space below
 \begin_inset Quotes erd
 \end_inset
 
@@ -34855,7 +34863,7 @@ reference "sec:Basic-Editing-Features"
 \end_layout
 
 \begin_layout Subsection
-Move paragraph Up/Down
+Move Paragraph Up/Down
 \end_layout
 
 \begin_layout Standard
@@ -35083,6 +35091,30 @@ View
 \end_layout
 
 \begin_layout Subsection
+Open/Close all Insets
+\end_layout
+
+\begin_layout Standard
+Opens/closes all insets in your document.
+\end_layout
+
+\begin_layout Subsection
+Unfold/Fold Math Macros
+\end_layout
+
+\begin_layout Standard
+Unfolds/folds the current math macro.
+\end_layout
+
+\begin_layout Standard
+More about math macros will be described in the 
+\emph on
+Math
+\emph default
+ manual.??
+\end_layout
+
+\begin_layout Subsection
 View Source
 \end_layout
 
@@ -35109,6 +35141,43 @@ Update
 \begin_layout Standard
 This menu allows you to update the view with your latest changes without
  opening a new view window.
+\end_layout
+
+\begin_layout Subsection
+Split View
+\end_layout
+
+\begin_layout Standard
+This will split LyX's main window vertically or horizontally.
+ This allows you view documents the same time to compare them, or to view
+ the same document, but at different positions.
+ You can split the main window even several times to view for example 3
+ or more documents the same time.
+ To return to an unsplit view, use the menu 
+\family sans
+Close Tab Group
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Close Tab Group
+\end_layout
+
+\begin_layout Standard
+Closes a split view.
+\end_layout
+
+\begin_layout Subsection
+Fullscreen
+\end_layout
+
+\begin_layout Standard
+Using this menu or pressing F11 removes the menu bar and all toolbars so
+ that you will see nothing than your text.
+ It furthermore displays LyX's main window fullscreen.
+ To return from fullscreen to the normal view, press F11, or right-click
+ and turn off the fullscreen mode in the the appearing context menu.
 \end_layout
 
 \begin_layout Subsection
