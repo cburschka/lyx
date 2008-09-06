@@ -1168,7 +1168,7 @@ void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) cons
 	} else {
 		// in LyX output we use some pseudo syntax which is implementation
 		// independent, e.g.
-		// \newcommand{\foo}[2][default}{#1,#2}
+		// \newcommand{\foo}[2][default]{#1,#2}
 		if (redefinition_ && !overwriteRedefinition)
 			os << "\\renewcommand";
 		else
