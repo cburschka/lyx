@@ -1481,8 +1481,16 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			MacroType type = MacroTypeNewcommand;
 			if (s2 == "def")
 				type = MacroTypeDef;
-			cur.insert(new MathMacroTemplate(from_utf8(token(s, ' ', 0)), nargs, false, type));
-			//cur.nextInset()->edit(cur, true);
+			MathMacroTemplate * inset = new MathMacroTemplate(from_utf8(token(s, ' ', 0)), nargs, false, type);
+			inset->setBuffer(bv->buffer());
+			insertInset(cur, inset);
+
+			// enter macro inset and select the name
+			cur.push(*inset);
+			cur.top().pos() = cur.top().lastpos();
+			cur.resetAnchor();
+			cur.selection() = true;
+			cur.top().pos() = 0;
 		}
 		break;
 
