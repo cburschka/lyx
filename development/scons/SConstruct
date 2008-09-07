@@ -1288,7 +1288,7 @@ if platform_name == 'cygwin':
 # to be built with all the include directories etc
 #
 if frontend == 'qt4':
-    frontend_env = env.Copy()
+    frontend_env = env.Clone()
     frontend_env['BUILDERS']['qtResource'] = Builder(action = utils.env_qtResource)
 
     # handle qt related user specified paths
