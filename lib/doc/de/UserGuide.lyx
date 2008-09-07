@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 6.
+letzte Änderung: 7.
  September 2008
 \end_layout
 
@@ -4242,16 +4242,20 @@ name "Seitenformat"
 
 \begin_deeper
 \begin_layout Description
-Papiergröße: eine Liste der Papiergrößen, die LyX unterstützt.
+Format: eine Liste der Papiergrößen, die LyX unterstützt.
  Wenn Sie 
 \family sans
 Benutzerdefiniert
 \family default
  wählen, müssen Sie
 \family sans
- 
+ Höhe
 \family default
-Höhe und Breite eintragen.
+ und 
+\family sans
+Breite
+\family default
+ festlegen.
 \end_layout
 
 \begin_layout Description
@@ -4297,17 +4301,17 @@ LaTeX macht diesen Teil.
 
 \begin_deeper
 \begin_layout Description
-default das Standardseitenformat der gewählten Klasse benutzen.
+Standard das Standardseitenformat der gewählten Klasse benutzen.
 \end_layout
 
 \begin_layout Description
-empty weder Seitenzahlen noch Überschriften.
+leer weder Seitenzahlen noch Überschriften.
 \end_layout
 
 \begin_layout Description
 
 \family sans
-plain
+einfach
 \family default
  nur Seitenzahlen.
 \end_layout
@@ -4315,20 +4319,13 @@ plain
 \begin_layout Description
 
 \family sans
-headings
-\begin_inset CommandInset label
-LatexCommand label
-name "Headings"
-
+mit
+\begin_inset space ~
 \end_inset
 
-
+Überschriften
 \family default
- Seitenzahlen und Kapitel- oder Abschnittsüberschriften mit
-\begin_inset Newline linebreak
-\end_inset
-
-Nummer.
+ Seitenzahlen und Kapitel- oder Abschnittsüberschriften mit Nummer.
  
 \begin_inset Note Note
 status open
@@ -4344,8 +4341,8 @@ Ob LyX die Kapitel- oder die Abschnittsüberschriften benutzt, hängt von
 \end_layout
 
 \begin_layout Description
-fancy gestattet individuell gestaltete Kopf- und Fußzeilen, wenn Sie das
- Paket 
+ausgefallen gestattet individuell gestaltete Kopf- und Fußzeilen, wenn Sie
+ das Paket 
 \family typewriter
 fancyhdr
 \family default
@@ -32465,6 +32462,13 @@ key "latex-einführung,latex-praxisbuch,latexcompanion,latexguide"
 
 \begin_layout Section
 Dokumentschnipsel ansehen
+\begin_inset CommandInset label
+LatexCommand label
+name "Dokumentschnipsel-ansehen"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -32475,7 +32479,7 @@ Ansicht\SpecialChar \menuseparator
 DVI
 \family default
  vollständig zu bearbeiten.
- Wenn Sie Ihre mathematischen Formel als Druckvorschau sehen wollen, müssen
+ Wenn Sie Ihre mathematischen Formeln als Druckvorschau sehen wollen, müssen
  Sie die notwendigen Pakete wie unten beschrieben installieren und unter
  
 \family sans
@@ -32516,6 +32520,29 @@ keine
 \end_layout
 
 \begin_layout Standard
+Vorschauen werden erzeugt, wenn Sie ein Dokument öffnen und wenn Sie eine
+ Einfügung beendet haben.
+ Vorschauen werden allein durch Setzen von 
+\family sans
+Sofortige
+\begin_inset space \space{}
+\end_inset
+
+Vorschau
+\family default
+ auf 
+\family sans
+An
+\family default
+ 
+\emph on
+nicht
+\emph default
+ gezeigt.
+ Sie müssen die Dokumente neu laden.
+\end_layout
+
+\begin_layout Standard
 LyX erzeugt Vorschauen von mathematischen Objekten.
  Es erzeugt auch Vorschauen von include-Einfügungen und Unterdokumenten,
  wenn Sie in dem entsprechenden Menü 
@@ -32535,13 +32562,9 @@ anzeigen
 Damit Vorschauen möglich sind, müssen Sie zusätzliche Pakete installieren.
  Zunächst benötigen Sie das LaTeX-Paket 
 \family typewriter
-preview.sty
+preview[-latex]
 \family default
-, das Sie hier finden:
-\begin_inset Newline newline
-\end_inset
-
-
+, das Sie hier finden: 
 \begin_inset Flex URL
 status collapsed
 
@@ -32555,13 +32578,15 @@ CTAN/support/preview-latex/
 .
  Schönere Ergebnisse erzielen Sie, wenn Sie zusätzlich 
 \family typewriter
-pnmcrop
+pnm\SpecialChar \-
+crop
 \family default
  des 
 \family typewriter
 netpbm
 \family default
 -Paketes installieren.
+ Unter Windows wird es zusammen mit LyX automatisch installiert.
 \end_layout
 
 \begin_layout Section
@@ -34017,7 +34042,7 @@ Die Werkzeugleisten
 status collapsed
 
 \begin_layout Plain Layout
-Werkzeugleiste
+Werkzeugleisten
 \end_layout
 
 \end_inset
@@ -34025,7 +34050,7 @@ Werkzeugleiste
  
 \begin_inset CommandInset label
 LatexCommand label
-name "Werkzeugleiste"
+name "Werkzeugleisten"
 
 \end_inset
 
@@ -35557,6 +35582,91 @@ i
 cht
 \end_layout
 
+\begin_layout Standard
+Das 
+\family sans
+Ansicht
+\family default
+-Menü enthält eine Liste von Formaten, in denen Sie das aktuelle Dokument
+ mit einem externen Programm betrachten können.
+ Welche Menüeinträge dort zu finden sind, hängt davon ab, welche LaTeX-Programme
+ während der LyX-Konfiguration gefunden wurden.
+ Die möglichen Formate sind auch in den 
+\emph on
+Handbuchergänzungen
+\emph default
+ im Abschnitt 
+\begin_inset Quotes gld
+\end_inset
+
+Export in andere Formate
+\begin_inset Quotes grd
+\end_inset
+
+ zu finden.
+\end_layout
+
+\begin_layout Standard
+Auf jeden Fall sollten Sie 
+\family sans
+DVI
+\family default
+ und 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+ sehen.
+ Wenn einer der beiden Menüpunkte fehlt, sollten Sie Ihre LaTeX-Installation
+ aktualisieren.
+ Danach müssen Sie, wie in Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "LyX-Grundeinstellungen"
+
+\end_inset
+
+ beschrieben, LyX neu konfigurieren.
+\end_layout
+
+\begin_layout Standard
+Der Aufruf einer Ansicht startet das entsprechende Betrachtungsprogramm.
+ Dieses können Sie in 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Datei-Handhabung\SpecialChar \menuseparator
+Dateiformate
+\family default
+ ändern (siehe auch Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Dateiformate"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Am Ende des 
+\family sans
+Ansicht
+\family default
+-Menüs werden alle gerade geöffneten Dokumente aufgeliste.
+\end_layout
+
 \begin_layout Subsection
 Alle Einfügungen öffnen/schließen
 \end_layout
@@ -35566,11 +35676,16 @@ Das ist selbsterklärend.
 \end_layout
 
 \begin_layout Subsection
-Mathe-Makro aufklappen/zuklappen
+Mathe-Makro auf-/zuklappen
 \end_layout
 
 \begin_layout Standard
-Diese Menüpunkte sind noch nirgends näher beschrieben.
+Öffnet oder schließt das aktuelle Makro.
+ Mehr über Mathe-Makros finden Sie im 
+\emph on
+Mathe
+\emph default
+-Handbuch.
 \end_layout
 
 \begin_layout Subsection
@@ -35578,19 +35693,48 @@ Quelle ansehen
 \end_layout
 
 \begin_layout Standard
-In einem Fenster
+Wenn Sie das ankreuzen wird der Paragraph, in dem der Cursor steht oder
+ der Text, den Sie ausgewählt haben, so dargestellt, wie er an LaTeX übergeben
+ wird, Sie müssen also keinen Editor dafür aufrufen.
+ Wenn Sie 
 \family sans
+Vollständige
+\begin_inset space \space{}
+\end_inset
+
+Quelle
+\family default
+ ankreuzen, wird der LaTeX-Code des gesamten Dokuments angezeigt.
+ Der LaTeX-Code wird aktualisiert, wenn Sie 
+\family sans
+Automatische
+\begin_inset space \space{}
+\end_inset
+
+Aktualisierung
+\family default
+ ankreuzen oder auf 
+\family sans
+Aktualisieren
+\family default
+ klicken.
+\end_layout
+
+\begin_layout Standard
+Dieses Fenster
+\emph on
  
-\family default
-wird der Paragraph, in dem der Cursor steht, so dargestellt, wie er in der
- .
-\family typewriter
-lyx
-\family default
--Datei gespeichert wird.
- Sie müssen also keinen Editor dafür aufrufen.
- Außerdem können Sie dort ankreuzen, dass Sie das gesamte Dokument sehen
- wollen.
+\emph default
+ist auch hilfreich, um LaTeX-Reste aufzuspüren, die manchmal beim Editieren
+ übrigbleiben, aber sonst nicht weiter stören.
+ Machen Sie es einmal mit diesem Absatz, dann sehen Sie, was ich meine.
+\end_layout
+
+\begin_layout Standard
+Besonders hilfreich ist dieses Fenster, wenn Sie sich über Druckergebnisse
+ wundern und in LyX nicht sehen, wo sie herkommen.
+ Am häufigsten passiert das, wenn Sie etwas Neues in die falsche Absatzumgebung
+ schreiben.
 \end_layout
 
 \begin_layout Subsection
@@ -35820,9 +35964,94 @@ Werkzeugleisten
 \end_layout
 
 \begin_layout Standard
-Hier können Sie ankreuzen, welche der Werkeugleisten Standard, Ansicht/Aktualisi
-erung, Extra, Überarbeitung, Tabelle, Mathe-Kontrollflächen, Mathe und Befehlspu
-ffer Sie sehen wollen.
+Hier können Sie ankreuzen, welche der 
+\family sans
+Werkeugleisten
+\family default
+ 
+\family sans
+Standard
+\family default
+, 
+\family sans
+Extra
+\family default
+, 
+\family sans
+Tabelle
+\begin_inset space \space{}
+\end_inset
+
+
+\family default
+(a), 
+\family sans
+Mathe
+\family default
+
+\begin_inset space \space{}
+\end_inset
+
+(a), 
+\family sans
+Mathe-Makros
+\family default
+
+\begin_inset space \space{}
+\end_inset
+
+(a), 
+\family sans
+Befehlseingabefenster
+\family default
+, 
+\family sans
+Überarbeiten
+\family default
+
+\begin_inset space \space{}
+\end_inset
+
+(a), 
+\family sans
+Ansicht/Aktualisierung
+\family default
+, 
+\family sans
+Versionskontrolle
+\family default
+ und 
+\family sans
+Mathe-Kontrollflächen
+\family default
+
+\begin_inset space \space{}
+\end_inset
+
+(a) Sie sehen wollen.
+ Die mit (a) gekennzeichneten Werkeugleisten werden automatisch gezeigt,
+ wenn der Cursor in der entsprechenden Umgebung steht.
+ Außerdem gibt es unter 
+\family sans
+Andere
+\begin_inset space \space{}
+\end_inset
+
+Werkzeugleisten
+\family default
+ zahlreiche Mathe-Werkeugleisten.
+ Die einzelnen Werkzeugleisten sind in Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Werkzeugleisten"
+
+\end_inset
+
+ff beschrieben.
 \end_layout
 
 \begin_layout Subsection
@@ -38969,6 +39198,13 @@ ndern
 
 \begin_layout Subsection
 Dateiformate
+\begin_inset CommandInset label
+LatexCommand label
+name "Dateiformate"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
