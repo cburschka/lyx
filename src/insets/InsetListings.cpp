@@ -180,7 +180,7 @@ int InsetListings::latex(Buffer const & buf, odocstream & os,
 		if (param_string.empty())
 			os << "\\lstinline" << *delimiter;
 		else
-			os << "\\lstinline[" << from_ascii(param_string) << "]" << *delimiter;
+			os << "\\lstinline[" << from_utf8(param_string) << "]" << *delimiter;
 	} else {
 		OutputParams rp = runparams;
 		rp.local_font = &text_.real_current_font;

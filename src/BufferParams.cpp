@@ -929,7 +929,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		os << "\\lstset{";
 		// do not test validity because listings_params is supposed to be valid
 		string par = InsetListingsParams(listings_params).separatedParams(true);
-		os << from_ascii(par);
+		os << from_utf8(par);
 		// count the number of newlines
 		for (size_t i = 0; i < par.size(); ++i)
 			if (par[i] == '\n')
