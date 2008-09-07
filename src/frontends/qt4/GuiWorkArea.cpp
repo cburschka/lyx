@@ -848,7 +848,7 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 	
 	// intercept keys for the completion
 	if ((completer_->popupVisible() || completer_->inlineVisible())
-					&& ev->key() == Qt::Key_Tab) {
+	    && ev->key() == Qt::Key_Tab) {
 		completer_->tab();
 		ev->accept();
 		return;
