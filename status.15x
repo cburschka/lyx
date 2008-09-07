@@ -63,6 +63,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix an assertion when non-ascii characters are used in listings
+  parameters (bug 5221).
+
 - Fix instant preview when \usepackage[pdftex]{hyperref} is used in the 
   preamble (bug 2165).
 
