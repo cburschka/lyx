@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 7.
+letzte Änderung: 8.
  September 2008
 \end_layout
 
@@ -12507,20 +12507,7 @@ environment
 \family sans
 Strg+ Umschalt+ Return
 \family default
-) zu benutzen wie bei 
-\family sans
-\series bold
-headings
-\family default
-\series default
- 
-\begin_inset CommandInset ref
-LatexCommand vpageref
-reference "Headings"
-
-\end_inset
-
-:
+) zu benutzen:
 \end_layout
 
 \begin_layout Standard
@@ -35919,7 +35906,7 @@ OpenDocument
 \begin_layout Subsection
 Ansicht in linke und rechte/obere und untere Hälfte teilen
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ansicht teilen
@@ -35935,6 +35922,9 @@ Damit wird das Fenster entsprechend geteilt.
  Wenn Sie zum Beispiel in links und rechts geteilt haben und dann eins der
  Teilfenster in oben und unten teilen wollen, wird dies zur Zeit nicht erlaubt,
  umgekehrt genauso.
+ Aber Sie können in der gleichen Art weiter unterteilen (drei, vier \SpecialChar \ldots{}
+ Fenster
+ unter- oder nebeneinander).
 \end_layout
 
 \begin_layout Subsection
