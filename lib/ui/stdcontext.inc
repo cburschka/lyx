@@ -253,6 +253,7 @@ Menuset
 		OptItem "Demote Section|m" "outline-in"
 		OptItem "Move Section down|d" "outline-down"
 		OptItem "Move Section up|u" "outline-up"
+		OptItem "Insert Short Title|T" "optional-insert"
 		Separator
 		Item "Apply Last Text Style|A" "textstyle-apply"
 		Submenu "Text Style|S" "edit_textstyles"
