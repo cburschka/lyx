@@ -1969,11 +1969,6 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			setFocus();
 			break;
 
-		case LFUN_COMPLETION_INLINE:
-			if (d.current_work_area_)
-				d.current_work_area_->completer().showInline();
-			break;
-
 		case LFUN_SPLIT_VIEW:
 			if (Buffer * buf = buffer()) {
 				string const orientation = cmd.getArg(0);
@@ -2003,6 +1998,11 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			}
 			break;
 			
+		case LFUN_COMPLETION_INLINE:
+			if (d.current_work_area_)
+				d.current_work_area_->completer().showInline();
+			break;
+
 		case LFUN_COMPLETION_POPUP:
 			if (d.current_work_area_)
 				d.current_work_area_->completer().showPopup();
