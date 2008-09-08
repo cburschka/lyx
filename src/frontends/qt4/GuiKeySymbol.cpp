@@ -403,6 +403,7 @@ static std::string const qkey_to_string(int lkey)
 	case Qt::Key_Z: return "z";
 
 	case Qt::Key_Escape: return "Escape";
+	case Qt::Key_Tab: return "Tab";
 	case Qt::Key_Backspace: return "BackSpace";
 	case Qt::Key_Insert: return "Insert";
 	case Qt::Key_Delete: return "Delete";
