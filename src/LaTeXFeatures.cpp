@@ -471,7 +471,7 @@ char const * simplefeatures[] = {
 	"endnotes",
 	"ifthen",
 	"amsthm",
-	"listings",
+	// listings is handled in BufferParams.cpp
 	"bm",
 	"pdfpages",
 	"relsize",

@@ -1081,15 +1081,20 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// handle inputenc etc.
 	writeEncodingPreamble(os, features, texrow);
 
-	if (!listings_params.empty()) {
+	if (!listings_params.empty() || features.isRequired("listings")) {
 		os << "\\usepackage{listings}\n";
 		texrow.newline();
+	}
+	if (!listings_params.empty()) {
 		os << "\\lstset{";
 		// do not test validity because listings_params is 
 		// supposed to be valid
 		string par =
 			InsetListingsParams(listings_params).separatedParams(true);
-		os << from_ascii(par);
+		// we can't support all packages, but we should load the color package
+		if (par.find("\\color", 0) != string::npos)
+			features.require("color");
+		os << from_utf8(par);
 		// count the number of newlines
 		for (size_t i = 0; i < par.size(); ++i)
 			if (par[i] == '\n')

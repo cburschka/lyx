@@ -99,13 +99,19 @@ docstring ListingsParam::validate(string const & par) const
 	bool unclosed = false;
 	string par2 = par;
 	// braces are allowed
-	if (prefixIs(par, "{") && suffixIs(par, "}"))
+	if (prefixIs(par, "{") && suffixIs(par, "}") && !suffixIs(par, "\\}"))	
 		par2 = par.substr(1, par.size() - 2);
-	else if (prefixIs(par, "{")) {
-		par2 = par.substr(1);
-		unclosed = true;
-	}
 
+	// check for unmatched braces
+	int braces = 0;
+	for (size_t i = 0; i < par2.size(); ++i) {
+		if (par2[i] == '{' && (i == 0 || par2[i-1] != '\\'))
+			++braces;
+		else if (par2[i] == '}' && (i == 0 || par2[i-1] != '\\'))
+			--braces;
+	}
+	unclosed = braces != 0;
+	
 	switch (type_) {
 
 	case ALL:
@@ -116,7 +122,7 @@ docstring ListingsParam::validate(string const & par) const
 				return _("A value is expected.");
 		}
 		if (unclosed)
-				return _("Unbalanced braces!");
+			return _("Unbalanced braces!");
 		return docstring();
 
 	case TRUEFALSE:
@@ -795,11 +801,12 @@ void InsetListingsParams::addParams(string const & par)
 		} else if (par[i] == '=' && braces == 0) {
 			isValue = true;
 			continue;
-		} else if (par[i] == '{' && i > 0 && par[i - 1] == '=')
-			braces ++;
-		else if (par[i] == '}'
-			&& (i == par.size() - 1 || par[i + 1] == ',' || par[i + 1] == '\n'))
-			braces --;
+		} else if (par[i] == '{' && i > 0 && par[i-1] != '\\')
+			// don't count a brace in first position
+			++braces;
+		else if (par[i] == '}' && i != par.size() - 1 
+		         && (i == 0 || (i > 0 && par[i-1] != '\\')))
+			--braces;
 
 		if (isValue)
 			value += par[i];

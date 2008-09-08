@@ -228,6 +228,7 @@ GuiListings::GuiListings(GuiView & lv)
 	lastlineLE->setValidator(new QIntValidator(0, 1000000, this));
 	placementLE->setValidator(new QRegExpValidator(QRegExp("[\\*tbph]*"), this));
 
+	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	bc().setOK(okPB);
 	bc().setApply(applyPB);
 	bc().setCancel(closePB);

@@ -228,7 +228,7 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 		if (param_string.empty())
 			os << "\\lstinline" << *delimiter;
 		else
-			os << "\\lstinline[" << from_ascii(param_string) << "]" << *delimiter;
+			os << "\\lstinline[" << from_utf8(param_string) << "]" << *delimiter;
                 os << code
                    << *delimiter;
 	} else {
@@ -326,6 +326,9 @@ void InsetListings::setButtonLabel()
 void InsetListings::validate(LaTeXFeatures & features) const
 {
 	features.require("listings");
+	string param_string = params().params();
+	if (param_string.find("\\color") != string::npos)
+		features.require("color");
 	InsetCollapsable::validate(features);
 }
 
