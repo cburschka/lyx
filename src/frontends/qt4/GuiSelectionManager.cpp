@@ -214,7 +214,7 @@ void GuiSelectionManager::deletePB_clicked()
 	if (nrows > 1)
 		selectedLV->setCurrentIndex(idx);
 	else if (nrows == 1)
-		selectedLV->setCurrentIndex(selectedLV->model()->index(0,0));
+		selectedLV->setCurrentIndex(selectedLV->model()->index(0, 0));
 	selectedHasFocus_ = (nrows > 0);
 	updateHook();
 }

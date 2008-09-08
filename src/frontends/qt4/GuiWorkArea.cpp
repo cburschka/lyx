@@ -1102,7 +1102,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 
 QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 {
-	QRect cur_r(0,0,0,0);
+	QRect cur_r(0, 0, 0, 0);
 	switch (query) {
 		// this is the CJK-specific composition window position.
 		case Qt::ImMicroFocus:

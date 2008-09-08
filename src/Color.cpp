@@ -77,9 +77,9 @@ RGBColor rgbFromHexName(string const & x11hexname)
 {
 	RGBColor c;
 	LASSERT(x11hexname.size() == 7 && x11hexname[0] == '#', /**/);
-	c.r = hexstrToInt(x11hexname.substr(1,2));
-	c.g = hexstrToInt(x11hexname.substr(3,2));
-	c.b = hexstrToInt(x11hexname.substr(5,2));
+	c.r = hexstrToInt(x11hexname.substr(1, 2));
+	c.g = hexstrToInt(x11hexname.substr(3, 2));
+	c.b = hexstrToInt(x11hexname.substr(5, 2));
 	return c;
 }
 

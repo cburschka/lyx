@@ -474,7 +474,7 @@ void PreambleModule::update(BufferParams const & params, BufferId id)
 	Coords::const_iterator it = preamble_coords_.find(current_id_);
 	if (it == preamble_coords_.end())
 		// First time we open this one.
-		preamble_coords_[current_id_] = make_pair(0,0);
+		preamble_coords_[current_id_] = make_pair(0, 0);
 	else {
 		// Restore saved coords.
 		QTextCursor cur = preambleTE->textCursor();

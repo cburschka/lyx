@@ -1017,7 +1017,7 @@ InsetLayout const & DocumentClass::insetLayout(docstring const & name) const
 		size_t i = n.find(':');
 		if (i == string::npos)
 			break;
-		n = n.substr(0,i);
+		n = n.substr(0, i);
 	}
 	return plain_insetlayout_;
 }

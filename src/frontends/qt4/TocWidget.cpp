@@ -132,7 +132,7 @@ void TocWidget::setTreeDepth(int depth)
 	// but my qt 4.1.2 doesn't have expandAll()..
 	//tocTV->expandAll();
 	QModelIndexList indices = tocTV->model()->match(
-		tocTV->model()->index(0,0),
+		tocTV->model()->index(0, 0),
 		Qt::DisplayRole, "*", -1,
 		Qt::MatchFlags(Qt::MatchWildcard|Qt::MatchRecursive));
 

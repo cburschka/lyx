@@ -1232,7 +1232,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 	if (runparams.flavor == OutputParams::XML)
 		top += params().language->code();
 	else
-		top += params().language->code().substr(0,2);
+		top += params().language->code().substr(0, 2);
 	top += '"';
 
 	if (!params().options.empty()) {

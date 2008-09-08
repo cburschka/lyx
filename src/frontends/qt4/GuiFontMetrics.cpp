@@ -79,7 +79,7 @@ int GuiFontMetrics::lbearing(char_type c) const
 	if (!is_utf16(c))
 		// FIXME: QFontMetrics::leftBearingdoes not support the
 		//        full unicode range. Once it does, we could use:
-		//return metrics_.leftBearing(toqstr(docstring(1,c)));
+		//return metrics_.leftBearing(toqstr(docstring(1, c)));
 		return 0;
 
 	return metrics_.leftBearing(ucs4_to_qchar(c));
@@ -104,7 +104,7 @@ int GuiFontMetrics::rbearing(char_type c) const
 	} else {
 		// FIXME: QFontMetrics::leftBearing does not support the
 		//        full unicode range. Once it does, we could use:
-		// metrics_.rightBearing(toqstr(docstring(1,c)));
+		// metrics_.rightBearing(toqstr(docstring(1, c)));
 		value = width(c);
 	}
 
@@ -125,7 +125,7 @@ int GuiFontMetrics::smallcapsWidth(char_type c) const
 		else
 			return metrics_.width(qc);
 	} else {
-		QString const s = toqstr(docstring(1,c));
+		QString const s = toqstr(docstring(1, c));
 		QString const us = s.toUpper();
 		if (s != us)
 			return smallcaps_metrics_.width(us);
@@ -216,7 +216,7 @@ GuiFontMetrics::AscendDescend const GuiFontMetrics::fillMetricsCache(
 	if (is_utf16(c))
 		r = metrics_.boundingRect(ucs4_to_qchar(c));
 	else
-		r = metrics_.boundingRect(toqstr(docstring(1,c)));
+		r = metrics_.boundingRect(toqstr(docstring(1, c)));
 
 	AscendDescend ad = { -r.top(), r.bottom() + 1};
 	// We could as well compute the width but this is not really

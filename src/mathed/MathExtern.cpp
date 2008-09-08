@@ -1139,7 +1139,7 @@ namespace {
 			string mid = out.substr(i + 13, j - i - 13);
 			if (mid.find("\\over") != npos)
 				mid = '{' + mid + '}';
-			out = out.substr(0,i)
+			out = out.substr(0, i)
 				+ mid
 				+ out.substr(k + 1);
 			//lyxerr << "output: " << out << endl;
@@ -1155,10 +1155,10 @@ namespace {
 			size_t k = get_matching_brace(out, i + 5);
 			if (k == npos || k + 1 == out.size())
 				break;
-			out = out.substr(0,j - 1)
+			out = out.substr(0, j - 1)
 				+ "\\frac"
-				+ out.substr(j,i - j)
-				+ out.substr(i + 5,k - i - 4)
+				+ out.substr(j, i - j)
+				+ out.substr(i + 5, k - i - 4)
 				+ out.substr(k + 2);
 			//lyxerr << "output: " << out << endl;
 			i = out.find("\\over", i + 4);
