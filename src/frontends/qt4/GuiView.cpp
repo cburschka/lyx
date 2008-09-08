@@ -1323,6 +1323,12 @@ void GuiView::openDocument(string const & fname)
 	if (!fullname.empty())
 		filename = fullname.absFilename();
 
+	if (!fullname.onlyPath().isDirectory()) {
+		Alert::warning(_("Invalid filename"),
+				bformat(_("The directory in the given path\n%1$s\ndoes not exists."),
+				from_utf8(fullname.absFilename())));
+		return;
+	}
 	// if the file doesn't exist, let the user create one
 	if (!fullname.exists()) {
 		// the user specifically chose this name. Believe him.
