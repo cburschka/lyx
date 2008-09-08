@@ -67,8 +67,10 @@ enum ColorCode
 	Color_greyedoutlabel,
 	/// Background color of greyedout inset
 	Color_greyedoutbg,
-	/// Shaded box background
+	/// Background color of shaded box
 	Color_shadedbg,
+	/// Background color of listings inset
+	Color_listingsbg,
 
 	/// Label color for branches
 	Color_branchlabel,

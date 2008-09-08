@@ -120,6 +120,7 @@ ColorSet::ColorSet()
 	{ Color_greyedoutlabel, N_("greyedout inset label"), "greyedout", "#ff0080", "greyedout" },
 	{ Color_greyedoutbg, N_("greyedout inset background"), "greyedoutbg", "linen", "greyedoutbg" },
 	{ Color_shadedbg, N_("shaded box"), "shaded", "#ff0000", "shaded" },
+	{ Color_listingsbg, N_("listings background"), "listingsbg", "white", "listingsbg" },
 	{ Color_branchlabel, N_("branch label"), "branchlabel", "#c88000", "branchlabel" },
 	{ Color_footlabel, N_("footnote label"), "footlabel", "#00aaff", "footlabel" },
 	{ Color_indexlabel, N_("index label"), "indexlabel", "green", "indexlabel" },

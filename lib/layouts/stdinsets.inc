@@ -161,6 +161,7 @@ InsetLayout Listings
 	  Color               foreground
 	  Size                Small
 	EndFont
+	BgColor               listingsbg
 	MultiPar              true
 	PassThru              true
 	KeepEmpty             true
