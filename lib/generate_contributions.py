@@ -1494,7 +1494,7 @@ contributers = [
                  "RE: crash lyx-1.6rc1",
                  "m=121786603726114",
                  "4 August 2008",
-                 u"small fixes"),
+                 u"lots of fixes"),
 
      contributer(u"Xiaokun Zhu",
                  "xiaokun () aero ! gla ! ac ! uk",
