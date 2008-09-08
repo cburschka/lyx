@@ -3006,7 +3006,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_COMPLETION_CANCEL
  * \li Action: Try to cancel completion, either the popup or the inline completion
- * \li Syntax: completion-escape
+ * \li Syntax: completion-cancel
  * \li Origin: sts, Sep 07 2008
  * \endvar
  */
