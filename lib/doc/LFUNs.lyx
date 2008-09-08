@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 339
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass amsart
@@ -19,7 +19,6 @@ theorems-ams
 
 \graphics default
 \paperfontsize default
-\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry true
@@ -49,7 +48,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 23.7.2008.
+LFUNs documentation automatically generated 08.09.2008.
 \end_layout
 
 \begin_layout Standard
@@ -65,7 +64,7 @@ thispagestyle{empty}
 
 \end_inset
 
- 
+
 \begin_inset VSpace 1cm
 \end_inset
 
@@ -4739,7 +4738,7 @@ Syntax toolbar-toggle <NAME> [allowauto]
 
 \begin_layout Description
 Params <NAME>: standard|extra|table|math|mathmacrotemplate| minibuffer|review|vi
-ew/update|math_panels  
+ew/update|math_panels|vcs  
 \end_layout
 
 \begin_layout Description
@@ -6395,11 +6394,45 @@ Action Try to complete the word or command at the cursor position.
 \end_layout
 
 \begin_layout Description
-Syntax completion-complete 
+Syntax complete 
 \end_layout
 
 \begin_layout Description
 Origin sts, Feb 19 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_COMPLETION_CANCEL 
+\end_layout
+
+\begin_layout Description
+Action Try to cancel completion, either the popup or the inline completion
+  
+\end_layout
+
+\begin_layout Description
+Syntax completion-cancel 
+\end_layout
+
+\begin_layout Description
+Origin sts, Sep 07 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_COMPLETION_ACCEPT 
+\end_layout
+
+\begin_layout Description
+Action Accept suggested completion.
+  
+\end_layout
+
+\begin_layout Description
+Syntax completion-accept 
+\end_layout
+
+\begin_layout Description
+Origin sanda, Sep 08 2008 
 \end_layout
 
 \begin_layout Subsection*
