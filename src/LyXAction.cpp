@@ -3011,6 +3011,15 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_COMPLETION_CANCEL, "completion-cancel", SingleParUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_COMPLETION_ACCEPT
+ * \li Action: Accept suggested completion.
+ * \li Syntax: completion-accept
+ * \li Origin: sanda, Sep 08 2008
+ * \endvar
+ */
+		{ LFUN_COMPLETION_ACCEPT, "completion-accept", SingleParUpdate, Edit },
+
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_BRANCH_ACTIVATE

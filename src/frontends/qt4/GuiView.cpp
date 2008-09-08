@@ -1212,6 +1212,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		    enable = false;
 		break;
 
+	case LFUN_COMPLETION_ACCEPT:
 	case LFUN_COMPLETION_CANCEL:
 		if (!d.current_work_area_
 		    || (!d.current_work_area_->completer().popupVisible()
@@ -2021,6 +2022,12 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 					d.current_work_area_->completer().hideInline();
 			}
 			break;
+
+		case LFUN_COMPLETION_ACCEPT:
+			if (d.current_work_area_)
+				d.current_work_area_->completer().activate();
+			break;
+
 
 		default:
 			dispatched = false;
