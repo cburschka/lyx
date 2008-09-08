@@ -1212,6 +1212,13 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		    enable = false;
 		break;
 
+	case LFUN_COMPLETION_CANCEL:
+		if (!d.current_work_area_
+		    || (!d.current_work_area_->completer().popupVisible()
+			&& !d.current_work_area_->completer().inlineVisible()))
+			enable = false;
+		break;
+
 	default:
 		return false;
 	}
@@ -2004,6 +2011,15 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 		case LFUN_COMPLETION_COMPLETE:
 			if (d.current_work_area_)
 				d.current_work_area_->completer().tab();
+			break;
+
+		case LFUN_COMPLETION_CANCEL:
+			if (d.current_work_area_) {
+				if (d.current_work_area_->completer().popupVisible())
+					d.current_work_area_->completer().hidePopup();
+				else
+					d.current_work_area_->completer().hideInline();
+			}
 			break;
 
 		default:

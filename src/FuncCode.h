@@ -404,6 +404,7 @@ enum FuncCode
 	// 310
 	LFUN_GRAPHICS_GROUPS_UNIFY,
 	LFUN_SET_GRAPHICS_GROUP,
+	LFUN_COMPLETION_CANCEL,
 	LFUN_LASTACTION                  // end of the table
 };
 

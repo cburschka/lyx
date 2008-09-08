@@ -845,26 +845,6 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 			return;
 		}
 	}
-	
-	// intercept keys for the completion
-	if ((completer_->popupVisible() || completer_->inlineVisible())
-	    && ev->key() == Qt::Key_Tab) {
-		completer_->tab();
-		ev->accept();
-		return;
-	} 
-
-	if (completer_->popupVisible() && ev->key() == Qt::Key_Escape) {
-		completer_->hidePopup();
-		ev->accept();
-		return;
-	}
-
-	if (completer_->inlineVisible() && ev->key() == Qt::Key_Escape) {
-		completer_->hideInline();
-		ev->accept();
-		return;
-	}
 
 	// do nothing if there are other events
 	// (the auto repeated events come too fast)

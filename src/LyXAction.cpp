@@ -2997,11 +2997,21 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_COMPLETION_COMPLETE
  * \li Action: Try to complete the word or command at the cursor position.
- * \li Syntax: completion-complete
+ * \li Syntax: complete
  * \li Origin: sts, Feb 19 2008
  * \endvar
  */
 		{ LFUN_COMPLETION_COMPLETE, "complete", SingleParUpdate, Edit },
+
+/*!
+ * \var lyx::FuncCode lyx::LFUN_COMPLETION_CANCEL
+ * \li Action: Try to cancel completion, either the popup or the inline completion
+ * \li Syntax: completion-escape
+ * \li Origin: sts, Sep 07 2008
+ * \endvar
+ */
+		{ LFUN_COMPLETION_CANCEL, "completion-cancel", SingleParUpdate, Edit },
+
 /*!
  * \var lyx::FuncCode lyx::LFUN_BRANCH_ACTIVATE
  * \li Action: Activate the branch
