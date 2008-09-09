@@ -33,7 +33,7 @@ static void uniqueInsert(QComboBox * box, QString const & text)
 		if (box->itemText(i) == text)
 			return;
 
-	box->addItem(text);
+	box->insertItem(0, text);
 }
 
 
