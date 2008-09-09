@@ -23,7 +23,7 @@ OutputParams::OutputParams(Encoding const * enc)
 	  local_font(0), encoding(enc), free_spacing(false), use_babel(false),
 	  use_japanese(false), linelen(0), depth(0),
 	  exportdata(new ExportData),
-	  inComment(false),
+	  inComment(false), inTableCell(false),
 	  inDeletedInset(0), changeOfDeletedInset(Change::UNCHANGED),
 	  par_begin(0), par_end(0),
 	  dryrun(false), verbatim(false)

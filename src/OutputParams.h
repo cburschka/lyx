@@ -125,6 +125,9 @@ public:
 	 */
 	bool inComment;
 
+	/// Whether we are in a table cell
+	bool inTableCell;
+
 	/** Whether we are inside an inset that is logically deleted.
 	 *  A value > 0 indicates a deleted inset.
          */

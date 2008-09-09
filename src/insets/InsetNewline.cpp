@@ -140,11 +140,14 @@ ColorCode InsetNewline::ColorName() const
 }
 
 
-int InsetNewline::latex(odocstream & os, OutputParams const &) const
+int InsetNewline::latex(odocstream & os, OutputParams const & op) const
 {
 	switch (params_.kind) {
 		case InsetNewlineParams::NEWLINE:
-			os << "\\\\\n";
+			if (op.inTableCell)
+				os << "\\newline\n";
+			else
+				os << "\\\\\n";
 			break;
 		case InsetNewlineParams::LINEBREAK:
 			os << "\\linebreak{}\n";

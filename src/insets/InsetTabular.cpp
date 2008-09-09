@@ -2724,6 +2724,13 @@ bool InsetTableCell::allowParagraphCustomization(idx_type) const
 	return isFixedWidth;
 }
 
+int InsetTableCell::latex(odocstream & od, OutputParams const & rp) const
+{
+	OutputParams newrp = rp;
+	newrp.inTableCell = true;
+	return InsetText::latex(od, newrp);
+}
+
 bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
