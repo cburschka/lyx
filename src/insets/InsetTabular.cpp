@@ -4002,14 +4002,16 @@ void InsetTabular::resetPos(Cursor & cur) const
 	BufferView & bv = cur.bv();
 	int const maxwidth = bv.workWidth();
 
-	if (&cur.inset() != this) {
+	int const scx_old = scx_;
+	int const i = cur.find(this);
+	if (i == -1) {
 		scx_ = 0;
 	} else {
 		int const X1 = 0;
 		int const X2 = maxwidth;
 		int const offset = ADD_TO_TABULAR_WIDTH + 2;
-		int const x1 = xo(cur.bv()) + cellXPos(cur.idx()) + offset;
-		int const x2 = x1 + tabular.columnWidth(cur.idx());
+		int const x1 = xo(cur.bv()) + cellXPos(cur[i].idx()) + offset;
+		int const x2 = x1 + tabular.columnWidth(cur[i].idx());
 
 		if (x1 < X1)
 			scx_ = X1 + 20 - x1;
@@ -4019,7 +4021,9 @@ void InsetTabular::resetPos(Cursor & cur) const
 			scx_ = 0;
 	}
 
-	cur.updateFlags(Update::Force | Update::FitCursor);
+	// only update if offset changed
+	if (scx_ != scx_old)
+		cur.updateFlags(Update::Force | Update::FitCursor);
 }
 
 
@@ -4103,8 +4107,7 @@ void InsetTabular::movePrevCell(Cursor & cur, EntryDirection entry_from)
 
 	}
 
-	// FIXME: this accesses the position cache before it is initialized
-	//resetPos(cur);
+	resetPos(cur);
 }
 
 
