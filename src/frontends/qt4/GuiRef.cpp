@@ -361,6 +361,8 @@ void GuiRef::updateRefs()
 	buf->getLabelList(refs_);
 	sortCB->setEnabled(!refs_.empty());
 	refsLW->setEnabled(!refs_.empty());
+	// refsLW should only be the focus proxy when it is enabled
+	setFocusProxy(refs_.empty() ? 0 : refsLW);
 	gotoPB->setEnabled(!refs_.empty());
 	redoRefs();
 }
