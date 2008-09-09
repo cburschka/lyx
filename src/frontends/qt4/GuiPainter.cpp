@@ -231,6 +231,9 @@ void GuiPainter::rectangle(int x, int y, int w, int h,
 
 void GuiPainter::fillRectangle(int x, int y, int w, int h, ColorCode col)
 {
+	if (!isDrawingEnabled())
+		return;
+
 	fillRect(x, y, w, h, guiApp->colorCache().get(col));
 }
 
@@ -370,7 +373,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		if (font() != ff)
 			setFont(ff);
 		// We need to draw the text as LTR as we use our own bidi code.
-		setLayoutDirection(Qt::LeftToRight);
+		QPainter::setLayoutDirection(Qt::LeftToRight);
 		drawText(x, y, str);
 		//LYXERR(Debug::PAINTING, "draw " << string(str.toUtf8())
 		//	<< " at " << x << "," << y);
