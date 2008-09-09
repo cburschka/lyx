@@ -517,7 +517,7 @@ fontinfo fontinfos[] = {
 	// math fonts
 	{"mathnormal",    ROMAN_FAMILY, MEDIUM_SERIES,
 			  ITALIC_SHAPE, Color_math},
-	{"mathbf",        inh_family, BOLD_SERIES,
+	{"boldsymbol",    inh_family, BOLD_SERIES,
 			  inh_shape, Color_math},
 	{"mathcal",       CMSY_FAMILY, inh_series,
 			  inh_shape, Color_math},
