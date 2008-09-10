@@ -637,8 +637,6 @@ public:
 	///
 	InsetCode lyxCode() const { return CELL_CODE; }
 	///
-	int latex(odocstream &, OutputParams const &) const;
-	///
 	Inset * clone() { return new InsetTableCell(*this); }
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,

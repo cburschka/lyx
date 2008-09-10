@@ -35,6 +35,12 @@ public:
 		XML
 	};
 
+	enum TableCell {
+		NO,
+		PLAIN,
+		ALIGNED
+	};
+
 	OutputParams(Encoding const *);
 	~OutputParams();
 
@@ -125,8 +131,10 @@ public:
 	 */
 	bool inComment;
 
-	/// Whether we are in a table cell
-	bool inTableCell;
+	/** Whether we are in a table cell.
+	 *  For newline, it matters whether its content is aligned or not.
+         */
+	TableCell inTableCell;
 
 	/** Whether we are inside an inset that is logically deleted.
 	 *  A value > 0 indicates a deleted inset.

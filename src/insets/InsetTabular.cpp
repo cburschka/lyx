@@ -2153,16 +2153,25 @@ int Tabular::TeXRow(odocstream & os, row_type i,
 			&& getPWidth(cell).zero();
 
 		if (rtl) {
-			if (par.getParLanguage(buffer().params())->lang() ==
-			"farsi")
+			string const lang =
+				par.getParLanguage(buffer().params())->lang();
+			if (lang == "farsi")
 				os << "\\textFR{";
-			else if (par.getParLanguage(buffer().params())->lang() == "arabic_arabi")
+			else if (lang == "arabic_arabi")
 				os << "\\textAR{";
-			// currently, remaning RTL languages are arabic_arabtex and hebrew
+			// currently, remaning RTL languages are
+			// arabic_arabtex and hebrew
 			else
 				os << "\\R{";
 		}
-		ret += inset->latex(os, runparams);
+		// pass to the OutputParams that we are in a cell and
+		// which alignment we have set.
+		// InsetNewline needs this context information.
+		OutputParams newrp = runparams;
+		newrp.inTableCell = (getAlignment(cell) == LYX_ALIGN_BLOCK)
+				    ? OutputParams::PLAIN
+				    : OutputParams::ALIGNED;
+		ret += inset->latex(os, newrp);
 		if (rtl)
 			os << '}';
 
@@ -2732,17 +2741,12 @@ bool InsetTableCell::forcePlainLayout(idx_type) const
 	return !isFixedWidth;
 }
 
+
 bool InsetTableCell::allowParagraphCustomization(idx_type) const
 {
 	return isFixedWidth;
 }
 
-int InsetTableCell::latex(odocstream & od, OutputParams const & rp) const
-{
-	OutputParams newrp = rp;
-	newrp.inTableCell = true;
-	return InsetText::latex(od, newrp);
-}
 
 bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
