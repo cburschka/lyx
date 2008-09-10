@@ -92,8 +92,6 @@ void InsetMathFont::validate(LaTeXFeatures & features) const
 		features.require("amsmath");
 	if (key_->name == "textipa")
 		features.require("tipa");
-	if (key_->name == "boldsymbol")
-		features.require("amsbsy");
 }
 
 
