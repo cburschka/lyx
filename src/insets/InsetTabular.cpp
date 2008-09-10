@@ -1904,6 +1904,19 @@ int Tabular::TeXCellPreamble(odocstream & os, idx_type cell, bool & ismulticol) 
 			os << cellInfo(cell).align_special;
 		} else {
 			if (!getPWidth(cell).zero()) {
+				switch (align) {
+				case LYX_ALIGN_LEFT:
+					os << ">{\\raggedright}";
+					break;
+				case LYX_ALIGN_RIGHT:
+					os << ">{\\raggedleft}";
+					break;
+				case LYX_ALIGN_CENTER:
+					os << ">{\\centering}";
+					break;
+				default:
+					break;
+				}
 				switch (valign) {
 				case LYX_VALIGN_TOP:
 					os << 'p';
@@ -2680,8 +2693,8 @@ void Tabular::validate(LaTeXFeatures & features) const
 	if (needRotating())
 		features.require("rotating");
 	for (idx_type cell = 0; cell < numberofcells; ++cell) {
-		if (getVAlignment(cell) != LYX_VALIGN_TOP ||
-		     (!getPWidth(cell).zero() && !isMultiColumn(cell)))
+		if (getVAlignment(cell) != LYX_VALIGN_TOP
+		    || !getPWidth(cell).zero())
 			features.require("array");
 		cellInset(cell)->validate(features);
 	}
