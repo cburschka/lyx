@@ -83,6 +83,8 @@ void TocModel::reset(Toc const & toc)
 {
 	toc_ = &toc;
 	if (toc_->empty()) {
+		maxdepth_ = 0;
+		mindepth_ = 0;
 		reset();
 		return;
 	}
