@@ -67,8 +67,8 @@ QModelIndex TocModel::modelIndex(DocIterator const & dit) const
 }
 
 
-TocModel::TocModel(QObject * parent): QStandardItemModel(parent) //,	
-//		maxdepth_(0), mindepth_(0)
+TocModel::TocModel(QObject * parent): QStandardItemModel(parent),	
+		maxdepth_(0), mindepth_(0)
 {
 }
 
