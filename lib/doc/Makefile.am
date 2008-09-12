@@ -204,8 +204,17 @@ dist_jadoc_DATA = \
 
 jaclipartdocdir = $(jadocdir)/clipart
 dist_jaclipartdoc_DATA = \
+	ja/clipart/ERT.png \
+	ja/clipart/floatQt4.png \
 	ja/clipart/footnoteQt4.png \
-	ja/clipart/referenceQt4.png
+	ja/clipart/referenceQt4.png \
+	ja/clipart/ToolbarEnvBox.png
+
+jabibliodocdir = $(jadocdir)/biblio
+dist_jabibliodoc_DATA = \
+	ja/biblio/alphadin.bst \
+	ja/biblio/LyXDocs.bib
+
 
 nldocdir = $(docdir)/nl
 dist_nldoc_DATA = \
