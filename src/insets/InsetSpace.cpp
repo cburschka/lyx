@@ -212,9 +212,11 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 			break;
 		case InsetSpaceParams::CUSTOM:
 		case InsetSpaceParams::CUSTOM_PROTECTED: {
-			int const minwidth = (params_.length.inBP() < 0)
-				? 3 * arrow_size : 4;
-			dim.wid = max(minwidth, abs(params_.length.inBP()));
+			int const w = 
+				params_.length.inPixels(mi.base.textwidth,
+							fm.width(char_type('M')));
+			int const minw = (w < 0) ? 3 * arrow_size : 4;
+			dim.wid = max(minw, abs(w));
 			break;
 		}
 		case InsetSpaceParams::HFILL:
@@ -237,7 +239,7 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
 
-	if (isStretchableSpace() || params_.length.inBP() < 0) {
+	if (isStretchableSpace() || params_.length.value() < 0) {
 		int const asc = theFontMetrics(pi.base.font).ascent('M');
 		int const desc = theFontMetrics(pi.base.font).descent('M');
 		// Pixel height divisible by 2 for prettier fill graphics:
