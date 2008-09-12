@@ -68,6 +68,9 @@ else
 	exit 1
 fi
 
+echo "Building lib/doc/Makefile.depend..."
+python lib/doc/depend.py > lib/doc/Makefile.depend
+
 echo "Building Makefile templates..."
 if ( $AUTOMAKE --version ) < /dev/null > /dev/null 2>&1; then
 	$AUTOMAKE
