@@ -378,8 +378,9 @@ bool GuiView::restoreLayout()
 		setGeometry(50, 50, 690, 510);
 #endif
 	// Allow the toc and view-source dock widget to be restored if needed.
-	findOrBuild("toc", true);
-	findOrBuild("view-source", true);
+	Dialog * tmp;
+	if (tmp = findOrBuild("toc", true)) tmp->showView();
+	if (tmp = findOrBuild("view-source", true)) tmp->showView();
 	if (!restoreState(settings.value(key + "/layout").toByteArray(), 0))
 		initToolbars();
 	updateDialogs();
