@@ -96,7 +96,9 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	Buffer const & buffer = cur.buffer();
 	pit_type pit = cur.pit();
 	pos_type pos = cur.pos();
-	ParagraphList & pars = cur.text()->paragraphs();
+	InsetText * target_inset = cur.inset().asInsetText();
+	LASSERT(target_inset, return make_pair(PitPosPair(pit, pos), pit));
+	ParagraphList & pars = target_inset->paragraphs();
 
 	if (parlist.empty())
 		return make_pair(PitPosPair(pit, pos), pit);
@@ -190,11 +192,11 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 			max_depth = tmpbuf->getMaxDepthAfter();
 
 		// Set the inset owner of this paragraph.
-		tmpbuf->setInsetOwner(pars[pit].inInset());
+		tmpbuf->setInsetOwner(target_inset);
 		for (pos_type i = 0; i < tmpbuf->size(); ++i) {
 			// do not track deletion of invalid insets
 			if (Inset * inset = tmpbuf->getInset(i))
-				if (!pars[pit].insetAllowed(inset->lyxCode()))
+				if (target_inset->insetAllowed(inset->lyxCode()))
 					tmpbuf->eraseChar(i--, false);
 		}
 
