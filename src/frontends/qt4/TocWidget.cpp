@@ -221,6 +221,10 @@ void TocWidget::enableControls(bool enable)
 	moveDownTB->setEnabled(enable);
 	moveInTB->setEnabled(enable);
 	moveOutTB->setEnabled(enable);
+	if (!enable) {
+		depthSL->setMaximum(0);
+		depthSL->setValue(0);
+	}
 }
 
 
@@ -255,7 +259,6 @@ void TocWidget::updateView()
 	bool controls_enabled = toc_model && toc_model->rowCount() > 0
 		&& !gui_view_.buffer()->isReadonly();
 	enableControls(controls_enabled);
-
 	depthSL->setMaximum(gui_view_.tocModels().depth(current_type_));
 	depthSL->setValue(depth_);
 	setTreeDepth(depth_);
