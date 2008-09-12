@@ -199,7 +199,8 @@ dist_jadoc_DATA = \
 	ja/Intro.lyx \
 	ja/LaTeXConfig.lyx \
 	ja/Shortcuts.lyx \
-	ja/Tutorial.lyx
+	ja/Tutorial.lyx \
+	ja/UserGuide.lyx
 
 jaclipartdocdir = $(jadocdir)/clipart
 dist_jaclipartdoc_DATA = \
