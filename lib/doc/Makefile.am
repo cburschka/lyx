@@ -210,12 +210,6 @@ dist_jaclipartdoc_DATA = \
 	ja/clipart/referenceQt4.png \
 	ja/clipart/ToolbarEnvBox.png
 
-jabibliodocdir = $(jadocdir)/biblio
-dist_jabibliodoc_DATA = \
-	ja/biblio/alphadin.bst \
-	ja/biblio/LyXDocs.bib
-
-
 nldocdir = $(docdir)/nl
 dist_nldoc_DATA = \
 	nl/Intro.lyx \

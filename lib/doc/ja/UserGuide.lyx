@@ -5265,7 +5265,7 @@ status collapsed
 \color none
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 ぶんしょ@文書!せってい@------ 設定
@@ -7003,7 +7003,7 @@ name "sec:引用"
 
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 いんよう@引用
@@ -8124,7 +8124,7 @@ reference "sec:入れ子"
 \color none
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 ぶんしょ@
@@ -10317,7 +10317,7 @@ C-リターン
 \begin_layout Subsubsection
 概要
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 がいよう@概要
@@ -11985,7 +11985,7 @@ LyX-Code
 \begin_layout Subsection
 他のものを入れ子にする：表・数式・フロートなど
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 いれこ@入れ子!ひょうなどの@表などの------
@@ -12851,7 +12851,7 @@ name "sub:入れ子−使い方"
 \begin_layout Subsection
 いくつかの例
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 いれこ@入れ子!のれい@------の例
@@ -13696,7 +13696,7 @@ S-M-左矢印
 \begin_layout Subsubsection
 例3：ラベルと階層、および箇条書き（連番）と箇条書き（記号）環境
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Plain Layout
 例3：ラベルと階層および他のリスト環境
@@ -27067,7 +27067,7 @@ name "fig:何かわからない"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /usr/local/share/lyx-svn/doc/clipart/escher-lsd.eps
+	filename ../clipart/escher-lsd.eps
 	width 45col%
 
 \end_inset
@@ -27107,7 +27107,7 @@ name "fig:カモノハシ"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /usr/local/share/lyx-svn/doc/clipart/platypus.eps
+	filename ../clipart/platypus.eps
 	lyxscale 60
 	width 45col%
 
@@ -29584,7 +29584,7 @@ reference "sub:関数"
 \begin_layout Subsection
 数式記号
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 すうしき@数式!きごう@記号
@@ -35527,7 +35527,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Branch 解答
-status collapsed
+status open
 
 \begin_layout Standard
 解答：Wilhelm Conrad R
@@ -35663,7 +35663,7 @@ answer}[1]{}
 
 \begin_layout Standard
 \begin_inset Branch 解答
-status collapsed
+status open
 
 \begin_layout Standard
 \begin_inset ERT
@@ -37088,7 +37088,7 @@ reference "sub:キーボード配置表"
 \begin_layout Standard
 最後に、いくつかのキー配置だけを変更したり、あるいはまったく別のキー配置（例えばバルカン語、とか
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -47836,8 +47836,8 @@ bibname
 
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "biblio/LyXDocs"
-options "biblio/alphadin"
+bibfiles "../biblio/LyXDocs"
+options "../biblio/alphadin"
 
 \end_inset
 
