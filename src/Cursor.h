@@ -95,7 +95,12 @@ public:
 	DocIterator selectionBegin() const;
 	/// access start of selection
 	DocIterator selectionEnd() const;
-	/// FIXME: document this
+	/*
+	  Update the selection status and save permanent
+	  selection if needed.
+	  @param selecting the new selection status
+	  @return whether the selection status has changed 
+	*/
 	bool selHandle(bool selecting);
 	///
 	docstring selectionAsString(bool label) const;
