@@ -164,6 +164,7 @@ void breakParagraphConservative(BufferParams const & bparams,
 	Paragraph & par = pars[par_offset];
 
 	tmp.makeSameLayout(par);
+	tmp.setInsetOwner(par.inInset());
 
 	LASSERT(pos <= par.size(), /**/);
 
