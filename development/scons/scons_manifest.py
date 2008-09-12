@@ -2235,12 +2235,16 @@ lib_doc_ja_files = Split('''
     LaTeXConfig.lyx
     Shortcuts.lyx
     Tutorial.lyx
+    UserGuide.lyx
 ''')
 
 
 lib_doc_ja_clipart_files = Split('''
+    floatQt4.png
     footnoteQt4.png
     referenceQt4.png
+    ERT.png
+    ToolbarEnvBox.png
 ''')
 
 
