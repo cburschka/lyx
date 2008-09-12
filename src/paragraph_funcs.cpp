@@ -47,7 +47,8 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 			tmpInset = fromPar.releaseInset(fromPos);
 		}
 
-		if (!toPar.insetAllowed(tmpInset->lyxCode())) {
+		Inset * inset = toPar.inInset();
+		if (inset && inset->insetAllowed(tmpInset->lyxCode())) {
 			delete tmpInset;
 			return false;
 		}

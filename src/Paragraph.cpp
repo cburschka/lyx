@@ -1304,12 +1304,6 @@ void Paragraph::insertInset(pos_type pos, Inset * inset,
 }
 
 
-bool Paragraph::insetAllowed(InsetCode code)
-{
-	return !d->inset_owner_ || d->inset_owner_->insetAllowed(code);
-}
-
-
 void Paragraph::resetFonts(Font const & font)
 {
 	d->fontlist_.clear();

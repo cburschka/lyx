@@ -308,8 +308,6 @@ public:
 	void insertInset(pos_type pos, Inset * inset,
 			 Font const &, Change const & change);
 	///
-	bool insetAllowed(InsetCode code);
-	///
 	Inset * getInset(pos_type pos);
 	///
 	Inset const * getInset(pos_type pos) const;
