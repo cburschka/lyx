@@ -90,7 +90,8 @@ FontInfo Text::layoutFont(Buffer const & buffer, pit_type const pit) const
 		// now, because Inset::getLayout() will return a default-constructed
 		// InsetLayout, and that e.g. sets the foreground color to red. So we
 		// need to do some work to make that possible.
-		InsetCollapsable const * icp = pars_[pit].inInset()->asInsetCollapsable();
+		Inset const * inset = pars_[pit].inInset();
+		InsetCollapsable const * icp = inset? inset->asInsetCollapsable() : 0;
 		if (!icp)
 			return lf;
 		FontInfo icf = icp->getLayout().font();
@@ -118,7 +119,8 @@ FontInfo Text::labelFont(Buffer const & buffer, Paragraph const & par) const
 		if (layout.labelfont.family() == INHERIT_FAMILY)
 			lf.setFamily(buffer.params().getFont().fontInfo().family());
 		// FIXME As above....
-		InsetCollapsable const * icp = par.inInset()->asInsetCollapsable();
+		Inset const * inset = par.inInset();
+		InsetCollapsable const * icp = inset? inset->asInsetCollapsable() : 0;
 		if (!icp)
 			return lf;
 		FontInfo icf = icp->getLayout().labelfont();
