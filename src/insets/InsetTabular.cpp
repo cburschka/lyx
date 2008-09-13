@@ -945,6 +945,7 @@ void Tabular::setAlignment(idx_type cell, LyXAlignment align,
 		column_info[cellColumn(cell)].alignment = align;
 	if (!onlycolumn)
 		cellInfo(cell).alignment = align;
+	cellInset(cell).get()->setContentAlignment(align);
 }
 
 
@@ -1423,6 +1424,8 @@ void Tabular::read(Lexer & lex)
 			}
 			getTokenValue(line, "multicolumn", cell_info[i][j].multicolumn);
 			getTokenValue(line, "alignment", cell_info[i][j].alignment);
+			setAlignment(cellIndex(i, j), cell_info[i][j].alignment, 
+				cell_info[i][j].multicolumn);
 			getTokenValue(line, "valignment", cell_info[i][j].valignment);
 			getTokenValue(line, "topline", cell_info[i][j].top_line);
 			getTokenValue(line, "bottomline", cell_info[i][j].bottom_line);
@@ -2732,7 +2735,8 @@ Tabular::BoxType Tabular::useParbox(idx_type cell) const
 /////////////////////////////////////////////////////////////////////
 
 InsetTableCell::InsetTableCell(Buffer & buf)
-	: InsetText(buf), isFixedWidth(false)
+	: InsetText(buf), isFixedWidth(false),
+	  contentAlign(LYX_ALIGN_CENTER)
 {}
 
 

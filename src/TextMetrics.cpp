@@ -550,6 +550,22 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 		else
 			align = par.params().align();
 
+		// handle alignment inside tabular cells
+		if (Inset const * owner = par.inInset()) {
+			switch (owner->contentAlignment()) {
+				case LYX_ALIGN_CENTER:
+				case LYX_ALIGN_LEFT:
+				case LYX_ALIGN_RIGHT:
+					if (align == LYX_ALIGN_NONE 
+					    || align == LYX_ALIGN_BLOCK)
+						align = owner->contentAlignment();
+					break;
+				default:
+					// unchanged (use align)
+					break;
+			}
+		}
+
 		// Display-style insets should always be on a centred row
 		if (Inset const * inset = par.getInset(row.pos())) {
 			switch (inset->display()) {

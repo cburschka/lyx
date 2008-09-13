@@ -17,6 +17,7 @@
 
 #include "ColorCode.h"
 #include "InsetCode.h"
+#include "Layout.h"
 
 #include "support/strfwd.h"
 #include "support/types.h"
@@ -403,6 +404,8 @@ public:
 
 	/// should we have a non-filled line before this inset?
 	virtual DisplayType display() const { return Inline; }
+	///
+	virtual LyXAlignment contentAlignment() const { return LYX_ALIGN_NONE; }
 	/// should we break lines after this inset?
 	virtual bool isLineSeparator() const { return false; }
 	/// should paragraph indendation be ommitted in any case?

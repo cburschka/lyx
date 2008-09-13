@@ -643,6 +643,8 @@ public:
 		FuncStatus & status) const;
 	///
 	void toggleFixedWidth(bool fw) { isFixedWidth = fw; }
+	///
+	void setContentAlignment(LyXAlignment al) {contentAlign = al; }
 	/// writes the contents of the cell as a string, optionally
 	/// descending into insets
 	docstring asString(bool intoInsets = true);
@@ -676,8 +678,13 @@ private:
 	// --rgh
 	///
 	bool isFixedWidth;
+	// FIXME: Here the thoughts from the comment above also apply.
+	///
+	LyXAlignment contentAlign;
 	/// should paragraph indendation be omitted in any case?
 	bool neverIndent() const { return true; }
+	///
+	LyXAlignment contentAlignment() const { return contentAlign; }
 	///
 	virtual bool usePlainLayout() const { return true; }
 	/// 
