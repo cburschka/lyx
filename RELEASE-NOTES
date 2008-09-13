@@ -8,15 +8,17 @@ been applied because of incomplete testing.
 Interface changes
 -----------------
 
-The external template format recognize now a new tag: 'Preview'. This tag is
-used to define how an external material should be previewed in LyX. For more 
-detail, see the 'external_templates' file in the resource directory of LyX.
+The external template format recognize now a new tag: 'Preview'. This
+tag is used to define how an external material should be previewed in
+LyX. For more detail, see the 'external_templates' file in the resource
+directory of LyX.
 
-LyX 1.6.0 introduces support for the pLaTeX distribution which provides extended
-language and script support for Japanese. The language "Japanese" now uses this
-new method. Japanese support via the CJK package is still available, but has been
-renamed to "Japanese (CJK)". Old documents continue to use the CJK method.
-Also cf. the "known issues" section for some remaining problems.
+LyX 1.6.0 introduces support for the pLaTeX distribution which provides
+extended language and script support for Japanese. The language
+"Japanese" now uses this new method. Japanese support via the CJK
+package is still available, but has been renamed to "Japanese (CJK)".
+Old documents continue to use the CJK method.  Also cf. the "known
+issues" section for some remaining problems.
 
 Some of the LyX functions have changed names:
 
@@ -29,14 +31,16 @@ Some of the LyX functions have changed names:
     has been replaced by "specialchar-insert ligature-break"
   * LFUN_DOTS_INSERT: removed. "dots-insert" 
     has been replaced by "specialchar-insert dots"
-  * LFUN_END_OF_SENTENCE_PERIOD_INSERT: removed. "end-of-sentence-period-insert" 
-    has been replaced by "specialchar-insert end-of-sentence"
+  * LFUN_END_OF_SENTENCE_PERIOD_INSERT: removed.
+    "end-of-sentence-period-insert" has been replaced by
+    "specialchar-insert end-of-sentence"
   * LFUN_MENU_SEPARATOR_INSERT: removed. "menu-separator-insert" 
     has been replaced by "specialchar-insert menu-separator"
 
-- The function LFUN_BREAK_LINE, "break-line" has been renamed to LFUN_NEWLINE_INSERT,
-  "newline-insert", and it now allows two options: "newline-insert newline" inserts
-  a \newline, "newline-insert linebreak" inserts a \linebreak.
+- The function LFUN_BREAK_LINE, "break-line" has been renamed to
+  LFUN_NEWLINE_INSERT, "newline-insert", and it now allows two options:
+  "newline-insert newline" inserts a \newline, "newline-insert linebreak"
+  inserts a \linebreak.
 
 - The function LFUN_PAGEBREAK_INSERT, "pagebreak-insert" has been renamed to
   LFUN_NEWPAGE_INSERT, "newpage-insert". It obsololetes the following functions:
@@ -63,19 +67,21 @@ Some of the LyX functions have changed names:
   LFUN_FLEX_INSERT, "flex-insert". It now handles beside charstyles, also
   custom insets and XML short element insets.
 
-- The function LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR, "toggle-cursor-follows-scrollbar"
+- The function LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR,
+  "toggle-cursor-follows-scrollbar"
   has been renamed to LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE,
   "cursor-follows-scrollbar-toggle".
 
 - The function LFUN_FONT_CODE, "font-code", has been renamed to
   LFUN_FONT_TYPEWRITER, "font-typewriter".
 
-- The functions LFUN_HTML_INSERT, "html-insert", LFUN_URL_INSERT, "url-insert" was
-  superseded by LFUN_HYPERLINK_INSERT, "href-insert".
+- The functions LFUN_HTML_INSERT, "html-insert", LFUN_URL_INSERT,
+  "url-insert" was superseded by LFUN_HYPERLINK_INSERT, "href-insert".
 
 - The function LFUN_FLOAT_LIST has been renamed to LFUN_FLOAT_LIST_INSERT.
 
-- The functions delete-back/forward has been renamed to char-delete-back/forward.
+- The functions delete-back/forward has been renamed to
+  char-delete-back/forward.
 
 - The functions LFUN_FONT_FREE_APPLY/UPDATE has been renamed to
   LFUN_TEXTSTYLE_APPLY/UPDATE.
