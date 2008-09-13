@@ -944,7 +944,14 @@ DocIterator Cursor::selectionBegin() const
 {
 	if (!selection())
 		return *this;
-	DocIterator di = (anchor() < top() ? anchor_ : *this);
+
+	DocIterator di;
+	// FIXME: This is a work-around for the problem that
+	// CursorSlice doesn't keep track of the boundary.
+	if (anchor() == top())
+		di = anchor_.boundary() > boundary() ? anchor_ : *this;
+	else
+		di = anchor() < top() ? anchor_ : *this;
 	di.resize(depth());
 	return di;
 }
@@ -954,7 +961,15 @@ DocIterator Cursor::selectionEnd() const
 {
 	if (!selection())
 		return *this;
-	DocIterator di = (anchor() > top() ? anchor_ : *this);
+
+	DocIterator di;
+	// FIXME: This is a work-around for the problem that
+	// CursorSlice doesn't keep track of the boundary.
+	if (anchor() == top())
+		di = anchor_.boundary() < boundary() ? anchor_ : *this;
+	else
+		di = anchor() > top() ? anchor_ : *this;
+
 	if (di.depth() > depth()) {
 		di.resize(depth());
 		++di.pos();
