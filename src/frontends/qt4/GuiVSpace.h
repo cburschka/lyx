@@ -48,8 +48,6 @@ private:
 	void dispatchParams();
 	///
 	bool isBufferDependent() const { return true; }
-	///
-	bool inInset() const;
 
 	///
 	VSpace params_;

@@ -49,8 +49,6 @@ private:
 	void dispatchParams();
 	///
 	bool isBufferDependent() const { return true; }
-	///
-	bool inInset() const;
 
 	///
 	InsetSpaceParams params_;
