@@ -1304,9 +1304,9 @@ bool Text::read(Buffer const & buf, Lexer & lex,
 			lex.pushToken(token);
 
 			Paragraph par;
+			par.setInsetOwner(insetPtr);
 			par.params().depth(depth);
 			par.setFont(0, Font(inherit_font, buf.params().language));
-			par.setInsetOwner(insetPtr);
 			pars_.push_back(par);
 
 			// FIXME: goddamn InsetTabular makes us pass a Buffer

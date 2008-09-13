@@ -1401,7 +1401,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		// add a separate paragraph for the caption inset
 		pars.push_back(Paragraph());
-		pars.back().setInsetOwner(pars[0].inInset());
+		pars.back().setInsetOwner(&pars[0].inInset());
 		pars.back().setPlainOrDefaultLayout(tclass);
 		int cap_pit = pars.size() - 1;
 
@@ -1410,7 +1410,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// the graphics (or table).
 		if (!content) {
 			pars.push_back(Paragraph());
-			pars.back().setInsetOwner(pars[0].inInset());
+			pars.back().setInsetOwner(&pars[0].inInset());
 			pars.back().setPlainOrDefaultLayout(tclass);
 		}
 

@@ -551,19 +551,18 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			align = par.params().align();
 
 		// handle alignment inside tabular cells
-		if (Inset const * owner = par.inInset()) {
-			switch (owner->contentAlignment()) {
-				case LYX_ALIGN_CENTER:
-				case LYX_ALIGN_LEFT:
-				case LYX_ALIGN_RIGHT:
-					if (align == LYX_ALIGN_NONE 
-					    || align == LYX_ALIGN_BLOCK)
-						align = owner->contentAlignment();
-					break;
-				default:
-					// unchanged (use align)
-					break;
-			}
+		Inset const & owner = par.inInset();
+		switch (owner.contentAlignment()) {
+			case LYX_ALIGN_CENTER:
+			case LYX_ALIGN_LEFT:
+			case LYX_ALIGN_RIGHT:
+				if (align == LYX_ALIGN_NONE 
+				    || align == LYX_ALIGN_BLOCK)
+					align = owner.contentAlignment();
+				break;
+			default:
+				// unchanged (use align)
+				break;
 		}
 
 		// Display-style insets should always be on a centred row
@@ -1916,7 +1915,7 @@ int TextMetrics::leftMargin(int max_width,
 	    && align == LYX_ALIGN_BLOCK
 	    && !par.params().noindent()
 	    // in some insets, paragraphs are never indented
-	    && !(par.inInset() && par.inInset()->neverIndent())
+	    && !par.inInset().neverIndent()
 	    // display style insets are always centered, omit indentation
 	    && !(!par.empty()
 		    && par.isInset(pos)
