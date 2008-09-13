@@ -195,7 +195,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 		for (pos_type i = 0; i < tmpbuf->size(); ++i) {
 			// do not track deletion of invalid insets
 			if (Inset * inset = tmpbuf->getInset(i))
-				if (target_inset->insetAllowed(inset->lyxCode()))
+				if (!target_inset->insetAllowed(inset->lyxCode()))
 					tmpbuf->eraseChar(i--, false);
 		}
 
