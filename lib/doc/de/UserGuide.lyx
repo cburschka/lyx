@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 8.
+letzte Änderung: 9.
  September 2008
 \end_layout
 
@@ -612,7 +612,11 @@ Alt+Ü
 \family sans
 Alt+Ü
 \family default
- nichts anfangen können lesen Sie bitte Abschnitt 
+ nichts anfangen können, lesen Sie bitte Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Grundlegende-Tastaturfunktionen"
@@ -2143,7 +2147,10 @@ Grafiken
 \emph on
 Marken und Querverweise
 \emph default
- enthält die Marken und Querverweise des Dokuments
+ enthält die Marken und Querverweise des Dokuments.
+ Der Name, den Sie sehen ist der Markenname.
+ Wenn links davon ein + ist, gibt es Querverweise, die mit einem Klick auf
+ das + angezeigt werden.
 \end_layout
 
 \begin_layout Enumerate
@@ -2278,7 +2285,7 @@ Die Gliederung erhalten Sie auch, wenn Sie am Anfang des Dokuments ein Inhalts-,
 \begin_layout Section
 Grundlegende Tastaturfunktionen
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tastatur!-funktionen
@@ -2287,16 +2294,15 @@ Tastatur!-funktionen
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "Grundlegende-Tastaturfunktionen"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Auch hier werden nur einige grundlegende Tastaturfunktionen beschrieben.
  Generell sollten Sie mit der Tastatur vertraut sein, ansonsten finden Sie
  in 
