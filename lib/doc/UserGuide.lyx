@@ -9736,12 +9736,12 @@ this one is left aligned.
 \end_layout
 
 \begin_layout Subsection
-Forced Pagebreaks
+Forced Page Breaks
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Pagebreaks ! Forced
+Page breaks ! Forced
 \end_layout
 
 \end_inset
@@ -9749,7 +9749,7 @@ Pagebreaks ! Forced
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Forced-Pagebreaks"
+name "sub:Forced-Page-Breaks"
 
 \end_inset
 
@@ -9758,8 +9758,8 @@ name "sub:Forced-Pagebreaks"
 
 \begin_layout Standard
 If you don't like the way LaTeX does the pagebreaks in your document, you
- can force a pagebreak where you want one.
- Normally this will not be necessary, because LaTeX is good at pagebreaking.
+ can force a page break where you want one.
+ Normally this will not be necessary, because LaTeX is good at page breaking.
  Only if you use many 
 \family sans
 Floats
@@ -9773,7 +9773,7 @@ We recommend not to use forced pagebreaks until the text is finished, and
 \emph on
 really
 \emph default
- have to change the pagebreaking.
+ have to change the page breaking.
 \end_layout
 
 \begin_layout Standard
@@ -9802,12 +9802,12 @@ Break
 \family default
 , ends a page but stretches the content of the page, so that it fills out
  the complete page.
- This type is useful to avoid whitespace when a pagebreak produces a page
+ This type is useful to avoid whitespace when a page break produces a page
  on which only the last few lines are absent.
 \end_layout
 
 \begin_layout Standard
-You might try to use a pagebreak to ensure that a figure or table appears
+You might try to use a page break to ensure that a figure or table appears
  at the top of a page.
  This is, of course, the wrong way to do it.
  LyX gives you a way of automatically ensuring that your figures and tables
@@ -9828,10 +9828,10 @@ Floats
 \end_layout
 
 \begin_layout Subsubsection
-Clear Pagebreaks
+Clear Page Breaks
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Clear-Pages"
+name "sub:Clear-Page-Breaks"
 
 \end_inset
 
@@ -9840,7 +9840,7 @@ name "sub:Clear-Pages"
 status collapsed
 
 \begin_layout Plain Layout
-Pagebreaks ! Clear
+Page breaks ! Clear
 \end_layout
 
 \end_inset
@@ -9857,7 +9857,7 @@ Differently to forced pagebreaks where the content behind the break is directly
 \end_layout
 
 \begin_layout Standard
-You can insert a clear pagebreak with the menu 
+You can insert a clear page break with the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Formatting\SpecialChar \menuseparator
@@ -9882,17 +9882,17 @@ Double
 
 Page
 \family default
- to insert a clear pagebreak that assures that the next page is a right-hand
+ to insert a clear page break that assures that the next page is a right-hand
  page (odd-numbered), if necessary by adding a page.
 \end_layout
 
 \begin_layout Subsection
-Forced Linebreaks
+Forced Line Breaks
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Linebreaks
+Line breaks
 \end_layout
 
 \end_inset
@@ -9900,7 +9900,7 @@ Linebreaks
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Forced-Linebreaks"
+name "sub:Forced-Line-Breaks"
 
 \end_inset
 
@@ -9908,7 +9908,7 @@ name "sub:Forced-Linebreaks"
 \end_layout
 
 \begin_layout Standard
-Similar to pagebreaks there are two types of linebreaks: One that simply
+Similar to page breaks there are two types of line breaks: One that simply
  breaks the line.
  You can force this line break within a paragraph by selecting 
 \family sans
@@ -9953,14 +9953,14 @@ fringes
 \begin_inset Quotes erd
 \end_inset
 
- in justified paragraphs due to whitespace introduced by linebreaks.
+ in justified paragraphs due to whitespace introduced by line breaks.
 \end_layout
 
 \begin_layout Standard
-You shouldn't use forced linebreaks to correct LaTeX's linebreaking, as
- LaTeX is very good at linebreaking.
+You shouldn't use forced line breaks to correct LaTeX's line breaking, as
+ LaTeX is very good at line breaking.
  There are, however, a number of situations where it is necessary to actively
- set a linebreak, e.g.
+ set a line break, e.g.
  in a poem or for an address (see sections
 \begin_inset space ~
 \end_inset
@@ -25187,17 +25187,17 @@ Hyperlinks
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:URL"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
 URLs
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:URLs"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -25254,6 +25254,13 @@ Note:
 
 \begin_layout Subsection
 Hyperlinks
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Hyperlinks"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -35309,7 +35316,11 @@ reference "cha:Mathematical-Formulas"
 
 \end_inset
 
-.
+ and the 
+\emph on
+Math
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Subsection
@@ -35325,6 +35336,43 @@ name "sub:Special-Character"
 
 \begin_layout Standard
 Here you can insert the following characters:
+\end_layout
+
+\begin_layout Description
+Symbols Inserts any character that can be output by your LaTeX system.
+ Therefore the number of character categories in this dialog and the available
+ characters depend on the LaTeX-packages you have installed.
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ Not all characters will be visible in the 
+\family sans
+Symbols
+\family default
+ dialog because none of the screen font that you can set in the preferences
+ dialog (see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Screen-Fonts"
+
+\end_inset
+
+) can display every character.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -35385,6 +35433,24 @@ Quote Inserts this quote:
 \begin_inset Quotes els
 \end_inset
 
+
+\end_layout
+
+\begin_layout Description
+Protected
+\begin_inset space ~
+\end_inset
+
+Hyphen Inserts a hyphen that is protected from line breaks: \SpecialChar \nobreakdash-
+
+\end_layout
+
+\begin_layout Description
+Breakable
+\begin_inset space ~
+\end_inset
+
+Slash Inserts a slash where also a line break can occur: \SpecialChar \slash{}
 
 \end_layout
 
@@ -35558,7 +35624,7 @@ Horizontal
 \begin_inset space ~
 \end_inset
 
-Fill Inserts an horizontal fill, see section
+Space Inserts horizontal space, see section
 \begin_inset space ~
 \end_inset
 
@@ -35626,7 +35692,7 @@ reference "sub:Hyphenation"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Description
@@ -35645,10 +35711,14 @@ reference "sub:Ligatures"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Description
+Ragged
+\begin_inset space ~
+\end_inset
+
 Line
 \begin_inset space ~
 \end_inset
@@ -35660,11 +35730,50 @@ Break Inserts a forced line break, see section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Forced-Linebreaks"
+reference "sub:Forced-Line-Breaks"
 
 \end_inset
 
+.
+\end_layout
 
+\begin_layout Description
+Justified
+\begin_inset space ~
+\end_inset
+
+Break Inserts a forced line break that furthermore stretches the broken
+ text line to the page border, see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Forced-Line-Breaks"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+New
+\begin_inset space ~
+\end_inset
+
+Page Inserts a forced page break, described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Forced-Page-Breaks"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -35672,18 +35781,19 @@ Page
 \begin_inset space ~
 \end_inset
 
-Break Inserts a forced page break, described in section
+Break Inserts a forced page break that furthermore stretches the broken
+ text page to the page border, described in section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Forced-Pagebreaks"
+reference "sub:Forced-Page-Breaks"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Description
@@ -35698,11 +35808,11 @@ Page Inserts a clear page break, described in section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Clear-Pages"
+reference "sub:Clear-Page-Breaks"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Description
@@ -35721,11 +35831,11 @@ Page Inserts a clear doublepage break, described in section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Clear-Pages"
+reference "sub:Clear-Page-Breaks"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsection
@@ -35855,7 +35965,7 @@ External Material
 \end_layout
 
 \begin_layout Standard
-Here you can inserts files to include them or its content to your document.
+Here you can insert files to include them or its content to your document.
  How this can be done is in detail explained in chapter 
 \emph on
 External Stuff
@@ -35999,7 +36109,7 @@ reference "sec:Floats"
 
 \end_inset
 
-, cations in longtables are described in section 
+, captions in longtables are described in section 
 \emph on
 Longtable Captions
 \emph default
@@ -36093,14 +36203,33 @@ URL
 \end_layout
 
 \begin_layout Standard
-Inserts an URL box as described in section
+Inserts an URL as described in section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:URL"
+reference "sub:URLs"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Hyperlinks
+\end_layout
+
+\begin_layout Standard
+Inserts a hyperlink as described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Hyperlinks"
 
 \end_inset
 
@@ -36246,13 +36375,12 @@ Menu ! Navigate
 \end_layout
 
 \begin_layout Standard
-This menu lists the existing, chapter, sections, figures, and tables of
- the current document.
- This allows you to navigate easily through you document.
-\end_layout
+This menu lists the existing chapters, sections, figures, tables, etc.
+\begin_inset space ~
+\end_inset
 
-\begin_layout Standard
-The Navigate menu also offers to 
+of the current document.
+ This allows you to navigate easily through you document.
 \end_layout
 
 \begin_layout Subsection
@@ -36688,15 +36816,15 @@ LyX also supports Unicode output, which is particularly useful if you need
  lots of special symbols or non-alphabetic scripts, respectively.
  If you want to use this (and your LaTeX installation supports Unicode,
  for that matter), choose one of the four utf8 variants from the list below.
- Unfortunately the unicode support of standard LaTeX is quite incomplete,
- so it is not uncommon that a file with lots of unicode symbols works fine
+ Unfortunately the Unicode support of standard LaTeX is quite incomplete,
+ so it is not uncommon that a file with lots of Unicode symbols works fine
  with 
 \family sans
 use language's default encoding
 \family default
  (when LyX uses it's list of known LaTeX-commands), but does not work with
  a fixed utf8 encoding (when the list of known LaTeX-commands is not used,
- because all unicode symbols can be encoded in utf8).
+ because all Unicode symbols can be encoded in utf8).
 \end_layout
 
 \begin_layout Standard
@@ -38177,7 +38305,7 @@ The extra toolbar as shown above contains from left to right the following
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="24" columns="2">
+<lyxtabular version="3" rows="25" columns="2">
 <features islongtable="true">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -38810,6 +38938,36 @@ eX
 
 \begin_layout Plain Layout
 \begin_inset Graphics
+	filename ../images/math-macro_newmacroname_newcommand.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Insert\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Macro
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
 	filename ../images/dialog-show-new-inset_include.png
 	BoundingBox 0bp 5bp 20bp 20bp
 
@@ -39224,9 +39382,13 @@ Toolbar ! Table
 
 \end_inset
 
- is explained in the 
+ in the 
 \emph on
 Embedded Objects
+\emph default
+ manual, the math macro toolbar in the 
+\emph on
+Math
 \emph default
  manual.
 \end_layout
