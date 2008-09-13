@@ -52,6 +52,7 @@
 #include "support/lassert.h"
 #include "support/convert.h"
 #include "support/debug.h"
+#include "support/ExceptionMessage.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/Messages.h"
@@ -2416,7 +2417,8 @@ void Paragraph::setPlainOrDefaultLayout(DocumentClass const & tclass)
 
 Inset const & Paragraph::inInset() const
 {
-	LASSERT(d->inset_owner_, exit(10));
+	LASSERT(d->inset_owner_, throw ExceptionMessage(BufferException,
+		_("Memory problem"), _("Paragraph not properly initiliazed")));
 	return *d->inset_owner_;
 }
 
