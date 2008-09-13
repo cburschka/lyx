@@ -153,9 +153,9 @@ public:
 	void makeSameLayout(Paragraph const & par);
 
 	///
-	void setInsetOwner(Inset * inset);
+	void setInsetOwner(Inset const * inset);
 	///
-	Inset * inInset() const;
+	Inset const & inInset() const;
 	///
 	InsetCode ownerCode() const;
 	///

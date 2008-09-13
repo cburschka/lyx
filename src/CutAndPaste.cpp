@@ -122,6 +122,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 				if (insertion[i].isNewline(j)) {
 					// do not track deletion of newline
 					insertion[i].eraseChar(j, false);
+					insertion[i].setInsetOwner(target_inset);
 					breakParagraphConservative(
 							buffer.params(),
 							insertion, i, j);

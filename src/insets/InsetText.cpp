@@ -103,8 +103,8 @@ void InsetText::initParagraphs(BufferParams const & bparams)
 	LASSERT(paragraphs().empty(), /**/);
 	paragraphs().push_back(Paragraph());
 	Paragraph & ourpar = paragraphs().back();
-	ourpar.setPlainOrDefaultLayout(bparams.documentClass());
 	ourpar.setInsetOwner(this);
+	ourpar.setPlainOrDefaultLayout(bparams.documentClass());
 }
 
 

@@ -47,8 +47,7 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 			tmpInset = fromPar.releaseInset(fromPos);
 		}
 
-		Inset * inset = toPar.inInset();
-		if (inset && !inset->insetAllowed(tmpInset->lyxCode())) {
+		if (!toPar.inInset().insetAllowed(tmpInset->lyxCode())) {
 			delete tmpInset;
 			return false;
 		}
@@ -75,7 +74,7 @@ void breakParagraph(BufferParams const & bparams,
 	Paragraph & par = pars[par_offset];
 
 	// remember to set the inset_owner
-	tmp->setInsetOwner(par.inInset());
+	tmp->setInsetOwner(&par.inInset());
 	// without doing that we get a crash when typing <Return> at the
 	// end of a paragraph
 	tmp->setPlainOrDefaultLayout(bparams.documentClass());
@@ -163,8 +162,8 @@ void breakParagraphConservative(BufferParams const & bparams,
 				       Paragraph());
 	Paragraph & par = pars[par_offset];
 
+	tmp.setInsetOwner(&par.inInset());
 	tmp.makeSameLayout(par);
-	tmp.setInsetOwner(par.inInset());
 
 	LASSERT(pos <= par.size(), /**/);
 

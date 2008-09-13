@@ -175,7 +175,7 @@ public:
 	Paragraph * owner_;
 
 	/// In which Inset?
-	Inset * inset_owner_;
+	Inset const * inset_owner_;
 
 	///
 	FontList fontlist_;
@@ -1656,28 +1656,19 @@ void Paragraph::setBeginOfBody()
 
 bool Paragraph::forcePlainLayout() const
 {
-	Inset const * const inset = inInset();
-	if (!inset)
-		return true;
-	return inset->forcePlainLayout();
+	return inInset().forcePlainLayout();
 }
 
 
 bool Paragraph::allowParagraphCustomization() const
 {
-	Inset const * const inset = inInset();
-	if (!inset)
-		return true;
-	return inset->allowParagraphCustomization();
+	return inInset().allowParagraphCustomization();
 }
 
 
 bool Paragraph::usePlainLayout() const
 {
-	Inset const * const inset = inInset();
-	if (!inset)
-		return false;
-	return inset->usePlainLayout();
+	return inInset().usePlainLayout();
 }
 
 
@@ -2390,7 +2381,7 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options) const
 }
 
 
-void Paragraph::setInsetOwner(Inset * inset)
+void Paragraph::setInsetOwner(Inset const * inset)
 {
 	d->inset_owner_ = inset;
 }
@@ -2423,9 +2414,10 @@ void Paragraph::setPlainOrDefaultLayout(DocumentClass const & tclass)
 }
 
 
-Inset * Paragraph::inInset() const
+Inset const & Paragraph::inInset() const
 {
-	return d->inset_owner_;
+	LASSERT(d->inset_owner_, exit(10));
+	return *d->inset_owner_;
 }
 
 
