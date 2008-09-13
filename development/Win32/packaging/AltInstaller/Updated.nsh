@@ -13,6 +13,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
  SetOutPath "$INSTDIR\Resources\doc\ca"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\ca\Intro.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\clipart"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\clipart\ExtraToolbar.png"
  SetOutPath "$INSTDIR\Resources\doc\de"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Intro.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Math.lyx"
