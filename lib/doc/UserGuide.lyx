@@ -35342,6 +35342,9 @@ Here you can insert the following characters:
 Symbols Inserts any character that can be output by your LaTeX system.
  Therefore the number of character categories in this dialog and the available
  characters depend on the LaTeX-packages you have installed.
+\begin_inset Newline newline
+\end_inset
+
  
 \begin_inset Note Greyedout
 status open
@@ -35526,7 +35529,7 @@ key "tipa"
 
 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -35535,7 +35538,7 @@ http://wiki.lyx.org/LyX/LinguistLyX
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Subsection
