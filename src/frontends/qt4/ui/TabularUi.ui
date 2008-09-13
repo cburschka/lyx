@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>390</width>
-    <height>336</height>
+    <width>436</width>
+    <height>359</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -75,7 +75,7 @@
           <item row="1" column="1" colspan="2" >
            <widget class="QComboBox" name="vAlignCB" >
             <property name="toolTip" >
-             <string>Vertical alignment for fixed width columns</string>
+             <string>Specifies the vertical alignment of the other cells in the current row in relation to the height of this cell.</string>
             </property>
             <item>
              <property name="text" >
@@ -107,7 +107,7 @@
           <item row="1" column="0" >
            <widget class="QLabel" name="vAlignCO" >
             <property name="text" >
-             <string>&amp;Vertical alignment:</string>
+             <string>&amp;Vertical row alignment:</string>
             </property>
             <property name="buddy" >
              <cstring>vAlignCB</cstring>
