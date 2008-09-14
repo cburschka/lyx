@@ -75,7 +75,7 @@
           <item row="1" column="1" colspan="2" >
            <widget class="QComboBox" name="vAlignCB" >
             <property name="toolTip" >
-             <string>Specifies the vertical alignment of the other cells in the current row in relation to the height of this cell.</string>
+             <string>Specifies the vertical alignment of this cell in relation to the baseline of the row.</string>
             </property>
             <item>
              <property name="text" >
@@ -107,7 +107,7 @@
           <item row="1" column="0" >
            <widget class="QLabel" name="vAlignCO" >
             <property name="text" >
-             <string>&amp;Vertical row alignment:</string>
+             <string>&amp;Vertical alignment in row:</string>
             </property>
             <property name="buddy" >
              <cstring>vAlignCB</cstring>
