@@ -1829,6 +1829,8 @@ void Cursor::handleFont(string const & font)
 		safe = cap::grabAndEraseSelection(*this);
 	}
 
+	recordUndoInset();
+
 	if (lastpos() != 0) {
 		// something left in the cell
 		if (pos() == 0) {
@@ -1848,8 +1850,9 @@ void Cursor::handleFont(string const & font)
 		}
 	} else {
 		// nothing left in the cell
-		pullArg();
+		popBackward();
 		plainErase();
+		resetAnchor();
 	}
 	insert(safe);
 }
