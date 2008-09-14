@@ -1424,8 +1424,8 @@ void Tabular::read(Lexer & lex)
 			}
 			getTokenValue(line, "multicolumn", cell_info[i][j].multicolumn);
 			getTokenValue(line, "alignment", cell_info[i][j].alignment);
-			setAlignment(cellIndex(i, j), cell_info[i][j].alignment, 
-				cell_info[i][j].multicolumn);
+			cellInset(cellIndex(i, j)).get()->setContentAlignment(
+				cell_info[i][j].alignment);
 			getTokenValue(line, "valignment", cell_info[i][j].valignment);
 			getTokenValue(line, "topline", cell_info[i][j].top_line);
 			getTokenValue(line, "bottomline", cell_info[i][j].bottom_line);
