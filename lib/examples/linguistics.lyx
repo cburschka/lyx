@@ -1,13 +1,15 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 308
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass article
 \begin_preamble
-
+%% Uncomment the following for Tableaux captions on top:
+%\floatstyle{plaintop}
+%\restylefloat{tableau}
 \end_preamble
 \begin_modules
-Linguistics
+linguistics
 \end_modules
 \language english
 \inputencoding auto
@@ -19,6 +21,7 @@ Linguistics
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -52,12 +55,14 @@ Writing linguistic papers with LyX
 
 \begin_layout Author
 Jürgen Spitzmüller
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Flex URL
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <spitz@lyx.org>
 \end_layout
@@ -68,13 +73,13 @@ status open
 \end_layout
 
 \begin_layout Date
-18/12/2007
+14/09/2008
 \end_layout
 
 \begin_layout Abstract
 This paper describes some features that LyX provides to linguists.
  It demonstrates how to use some native support in order to produce numbered
- examples, glosses, semantic markup, and phonetic symbols (IPA).
+ examples, glosses, OT tableaux, semantic markup, and phonetic symbols (IPA).
 \end_layout
 
 \begin_layout Section
@@ -191,6 +196,22 @@ Meaning
  character style.
  The package provides context sensitive quotation marks, depending on the
  language in use.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+float.sty
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "float"
+
+\end_inset
+
+: Needed for the OT tableaux floats and list of floats.
+ This package should be part of any LaTeX distribution.
 \end_layout
 
 \begin_layout Section
@@ -316,15 +337,15 @@ Here is a simple example:
 \begin_inset Flex Custom:Glosse
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 C'est un exemple simple
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {This is} an example simple
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 glt 
@@ -352,19 +373,19 @@ Note that the braces hold together multi-word expressions.
 \begin_inset Flex Custom:Tri-Glosse
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 C'est un exemple simple
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {Das ist} ein Beispiel einfach
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 {This is} an example simple
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 glt 
@@ -392,19 +413,19 @@ If you want to have numbered glosses, you can simply insert the Glosse inset
 \begin_inset Flex Custom:Tri-Glosse
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Mein Luftkissenfahrzeug ist voller Aale
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 My skeertuig is vol palings
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 My hovercraft is {full of} eels
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 glt 
@@ -417,6 +438,394 @@ Do you have matches?
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Optimality Theory Tableaux
+\end_layout
+
+\begin_layout Standard
+OT tableaux itself can of course simply be inserted as ordinary tables (for
+ specific features such as dashed lines and shaded cells, cf.
+ the 
+\emph on
+EmbeddedObjects
+\emph default
+ manual).
+ However, you might want to have the tableaux numbered throughout the document,
+ and you might want to have a 
+\emph on
+List of Tableaux
+\emph default
+, similar to the 
+\emph on
+List of Tables
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The Linguistics module provides support for both.
+ In 
+\family sans
+Insert\SpecialChar \menuseparator
+Floats
+\family default
+, you'll find a Tableaux float:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float tableau
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features>
+<column alignment="right" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0" special="|c">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+/atikap/
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+Onset
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+NoCoda
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+Dep
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\noun on
+Max
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mbox{☞}$
+\end_inset
+
+ 
+\begin_inset Formula $\mbox{\textipa{P}}$
+\end_inset
+
+a.ti.ka
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a.ti.ka
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*!
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mbox{\textipa{P}}$
+\end_inset
+
+a.ti.kap
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*!
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a.ti.kap
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*!
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+*!
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Example Tableau
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that by default, the caption is always placed below the tableaux in
+ the output, no matter where you put it in the LyX window.
+ To get the Tableaux captions on top, put the following code in 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Preamble
+\family default
+:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+floatstyle{plaintop}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+restylefloat{tableau}
+\end_layout
+
+\begin_layout Standard
+If your using a KOMA class, use the following instead for better spacing:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+floatstyle{komaabove}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+restylefloat{tableau}
+\end_layout
+
+\begin_layout Standard
+A List of Tableaux inset can be found in 
+\family sans
+Insert\SpecialChar \menuseparator
+Lists & TOC
+\family default
+.
+ Even though this usually is placed at the beginning or the end of the document,
+ we do this here for exemplification purposes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList tableau
 
 \end_inset
 
@@ -437,7 +846,7 @@ Concept (in small caps):
 \begin_inset Flex CharStyle:Concepts
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 concept
 \end_layout
 
@@ -451,7 +860,7 @@ Expression (emphasized):
 \begin_inset Flex CharStyle:Expression
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 expression
 \end_layout
 
@@ -465,7 +874,7 @@ Meaning (in single quotes):
 \begin_inset Flex CharStyle:Meaning
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 meaning
 \end_layout
 
@@ -603,7 +1012,7 @@ The covington package:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://www.ctan.org/tex-archive/macros/latex/contrib/covington/
 \end_layout
@@ -624,7 +1033,7 @@ The csquotes package:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://www.ctan.org/tex-archive/macros/latex/contrib/csquotes/
 \end_layout
@@ -645,9 +1054,30 @@ The enumitem package:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://www.ctan.org/tex-archive/macros/latex/contrib/enumitem/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "float"
+
+\end_inset
+
+The float package: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/float/
 \end_layout
 
 \end_inset
@@ -668,7 +1098,7 @@ c Papers.
 \begin_inset Flex URL
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://wiki.lyx.org/LyX/LinguistLyX
 \end_layout
@@ -689,7 +1119,7 @@ The preview-latex package:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://www.ctan.org/tex-archive/macros/latex/contrib/preview/
 \end_layout
@@ -710,7 +1140,7 @@ The tipa package and fonts:
 \begin_inset Flex URL
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 http://www.ctan.org/tex-archive/fonts/tipa/
 \end_layout
