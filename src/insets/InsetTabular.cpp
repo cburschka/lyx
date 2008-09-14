@@ -1802,35 +1802,33 @@ bool Tabular::isPartOfMultiColumn(row_type row, col_type column) const
 
 int Tabular::TeXTopHLine(odocstream & os, row_type row) const
 {
-	// FIXME: assert or return 0 as in TeXBottomHLine()?
-	LASSERT(row != npos, /**/);
-	LASSERT(row < row_info.size(), /**/);
-
-	idx_type const fcell = getFirstCellInRow(row);
-	idx_type const n = numberOfCellsInRow(fcell) + fcell;
-	idx_type tmp = 0;
-
-	for (idx_type i = fcell; i < n; ++i) {
-		if (topLine(i))
-			++tmp;
+	col_type const ncols = column_info.size();
+	vector<bool> topline;
+	int nset = 0;
+	for (col_type c = 0; c < ncols; ++c) {
+		topline.push_back(topLine(cellIndex(row, c)));
+		if (topline[c])
+			++nset;
 	}
-	if (use_booktabs && row == 0) {
-		if (topLine(fcell))
-			os << "\\toprule ";
-	} else if (tmp == n - fcell) {
-		os << (use_booktabs ? "\\midrule " : "\\hline ");
-	} else if (tmp) {
-		for (idx_type i = fcell; i < n; ++i) {
-			if (topLine(i)) {
-				os << (use_booktabs ? "\\cmidrule{" : "\\cline{")
-				   << cellColumn(i) + 1
-				   << '-'
-				   << cellRightColumn(i) + 1
-				   << "} ";
+
+	if ((row == 0 && nset == 0) || (row > 0 && nset != ncols))
+		return 0;
+
+	if (nset == ncols) {
+		if (use_booktabs) {
+			os << (row == 0 ? "\\toprule " : "\\midrule ");
+		} else {
+			os << "\\hline ";
+		}
+	} else if (row == 0) {
+		for (col_type c = 0; c < ncols; ++c) {
+			if (topline[c]) {
+				os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 << '-';
+				while (c < ncols && topline[c])
+					++c;
+				os << c << "} ";
 			}
 		}
-	} else {
-		return 0;
 	}
 	os << "\n";
 	return 1;
@@ -1839,35 +1837,41 @@ int Tabular::TeXTopHLine(odocstream & os, row_type row) const
 
 int Tabular::TeXBottomHLine(odocstream & os, row_type row) const
 {
-	// FIXME: return 0 or assert as in TeXTopHLine()?
-	if (row == npos || row >= row_info.size())
+	bool lastrow = row == row_info.size() - 1;
+	col_type const ncols = column_info.size();
+	vector<bool> bottomline, topline;
+	bool nextrowset = true;
+	for (col_type c = 0; c < ncols; ++c) {
+		bottomline.push_back(bottomLine(cellIndex(row, c)));
+		topline.push_back(!lastrow && topLine(cellIndex(row + 1, c)));
+		nextrowset &= topline[c];
+	}
+
+	int nset = 0;
+	for (col_type c = 0; c < ncols; ++c) {
+		if (!nextrowset)
+			bottomline[c] = bottomline[c] || topline[c];
+		if (bottomline[c])
+			++nset;
+	}
+
+	if (nset == 0 || (nextrowset && nset != ncols))
 		return 0;
 
-	idx_type const fcell = getFirstCellInRow(row);
-	idx_type const n = numberOfCellsInRow(fcell) + fcell;
-	idx_type tmp = 0;
-
-	for (idx_type i = fcell; i < n; ++i) {
-		if (bottomLine(i))
-			++tmp;
-	}
-	if (use_booktabs && row == row_info.size() - 1) {
-		if (bottomLine(fcell))
-			os << "\\bottomrule";
-	} else if (tmp == n - fcell) {
-		os << (use_booktabs ? "\\midrule" : "\\hline");
-	} else if (tmp) {
-		for (idx_type i = fcell; i < n; ++i) {
-			if (bottomLine(i)) {
-				os << (use_booktabs ? "\\cmidrule{" : "\\cline{")
-				   << cellColumn(i) + 1
-				   << '-'
-				   << cellRightColumn(i) + 1
-				   << "} ";
+	if (nset == ncols) {
+		if (use_booktabs)
+			os << (lastrow ? "\\bottomrule" : "\\midrule");
+		else
+			os << "\\hline";
+	} else {
+		for (col_type c = 0; c < ncols; ++c) {
+			if (bottomline[c]) {
+				os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 << '-';
+				while (c < ncols && bottomline[c])
+					++c;
+				os << c << "} ";
 			}
 		}
-	} else {
-		return 0;
 	}
 	os << "\n";
 	return 1;
