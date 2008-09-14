@@ -49,8 +49,8 @@ public:
 	void setSelection(pos_type sel_beg, pos_type sel_end) const;
 	///
 	bool selection() const;
-	/// Set the selection begin and end and whether the margin begin and end
-	/// are selected.
+	/// Set the selection begin and end and whether the left and/or right
+	/// margins are selected.
 	void setSelectionAndMargins(DocIterator const & beg, 
 		DocIterator const & end) const;
 	
@@ -100,7 +100,7 @@ private:
 	  * \param beg
 	  * \param end
 	  */
-	bool isMarginSelected(bool margin_begin, DocIterator const & beg, 
+	bool isMarginSelected(bool left_margin, DocIterator const & beg,
 		DocIterator const & end) const;
 
 	/// has the Row appearance changed since last drawing?

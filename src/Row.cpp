@@ -65,11 +65,11 @@ void Row::endpos(pos_type p)
 }
 
 
-bool Row::isMarginSelected(bool margin_begin, DocIterator const & beg, 
-								 DocIterator const & end) const
+bool Row::isMarginSelected(bool left_margin, DocIterator const & beg,
+		DocIterator const & end) const
 {
-	pos_type const sel_pos = margin_begin ? sel_beg : sel_end;
-	pos_type const margin_pos = margin_begin ? pos_ : end_;
+	pos_type const sel_pos = left_margin ? sel_beg : sel_end;
+	pos_type const margin_pos = left_margin ? pos_ : end_;
 
 	// Is the chosen margin selected ?
 	if (sel_pos == margin_pos) {
@@ -94,7 +94,7 @@ bool Row::isMarginSelected(bool margin_begin, DocIterator const & beg,
 
 
 void Row::setSelectionAndMargins(DocIterator const & beg, 
-								 DocIterator const & end) const
+		DocIterator const & end) const
 {
 	setSelection(beg.pos(), end.pos());
 	
