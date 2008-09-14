@@ -1802,6 +1802,10 @@ bool Tabular::isPartOfMultiColumn(row_type row, col_type column) const
 
 int Tabular::TeXTopHLine(odocstream & os, row_type row) const
 {
+	// we only output complete row lines and the 1st row here, the rest
+	// is done in Tabular::TeXBottomHLine(...)
+
+	// get for each column the topline (if any)
 	col_type const ncols = column_info.size();
 	vector<bool> topline;
 	int nset = 0;
@@ -1811,9 +1815,11 @@ int Tabular::TeXTopHLine(odocstream & os, row_type row) const
 			++nset;
 	}
 
+	// do nothing if empty first row, or incomplete row line after
 	if ((row == 0 && nset == 0) || (row > 0 && nset != ncols))
 		return 0;
 
+	// only output complete row lines and the 1st row's clines
 	if (nset == ncols) {
 		if (use_booktabs) {
 			os << (row == 0 ? "\\toprule " : "\\midrule ");
@@ -1824,6 +1830,7 @@ int Tabular::TeXTopHLine(odocstream & os, row_type row) const
 		for (col_type c = 0; c < ncols; ++c) {
 			if (topline[c]) {
 				os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 << '-';
+				// get to last column of line span
 				while (c < ncols && topline[c])
 					++c;
 				os << c << "} ";
@@ -1837,6 +1844,10 @@ int Tabular::TeXTopHLine(odocstream & os, row_type row) const
 
 int Tabular::TeXBottomHLine(odocstream & os, row_type row) const
 {
+	// we output bottomlines of row r and the toplines of row r+1
+	// if the latter do not span the whole tabular
+
+	// get the bottomlines of row r, and toplines in next row
 	bool lastrow = row == row_info.size() - 1;
 	col_type const ncols = column_info.size();
 	vector<bool> bottomline, topline;
@@ -1847,6 +1858,7 @@ int Tabular::TeXBottomHLine(odocstream & os, row_type row) const
 		nextrowset &= topline[c];
 	}
 
+	// combine this row's bottom lines and next row's toplines if necessary
 	int nset = 0;
 	for (col_type c = 0; c < ncols; ++c) {
 		if (!nextrowset)
@@ -1855,6 +1867,7 @@ int Tabular::TeXBottomHLine(odocstream & os, row_type row) const
 			++nset;
 	}
 
+	// do nothing if empty, OR incomplete row line with a topline in next row
 	if (nset == 0 || (nextrowset && nset != ncols))
 		return 0;
 
@@ -1866,7 +1879,9 @@ int Tabular::TeXBottomHLine(odocstream & os, row_type row) const
 	} else {
 		for (col_type c = 0; c < ncols; ++c) {
 			if (bottomline[c]) {
-				os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 << '-';
+				os << (use_booktabs ? "\\cmidrule{" : "\\cline{")
+				   << c + 1 << '-';
+				// get to last column of line span
 				while (c < ncols && bottomline[c])
 					++c;
 				os << c << "} ";
