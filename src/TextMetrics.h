@@ -160,8 +160,7 @@ private:
 
 	/// draw selection for a single row
 	void drawRowSelection(PainterInfo & pi, int x, Row const & row,
-		DocIterator const & beg, DocIterator const & end, 
-		bool drawOnBegMargin, bool drawOnEndMargin) const;
+		Cursor const & cur, pit_type const pit) const;
 
 // Temporary public:
 public:

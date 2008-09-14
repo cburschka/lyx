@@ -103,9 +103,10 @@ size_t ParagraphMetrics::computeRowSignature(Row const & row,
 	}
 
 	Dimension const & d = row.dimension();
-	char_type const b[] = { row.sel_beg, row.sel_end, d.wid, d.asc, d.des};
-	// Each of the variable to process is 4 bytes: 4x5 = 20
-	crc.process_bytes(b, 20);
+	char_type const b[] = { row.sel_beg, row.sel_end, 
+		row.left_margin_sel, row.right_margin_sel, d.wid, d.asc, d.des};
+	// Each of the variable to process is 4 bytes: 4x7 = 28
+	crc.process_bytes(b, 28);
 
 	return crc.checksum();
 }

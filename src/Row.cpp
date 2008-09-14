@@ -18,6 +18,8 @@
 
 #include "Row.h"
 
+#include "DocIterator.h"
+
 #include "support/debug.h"
 
 
@@ -26,13 +28,15 @@ namespace lyx {
 
 Row::Row()
 	: separator(0), label_hfill(0), x(0),
-	sel_beg(-1), sel_end(-1), changed_(false), crc_(0), pos_(0), end_(0)
+	sel_beg(-1), sel_end(-1), changed_(false), crc_(0), 
+	pos_(0), end_(0), left_margin_sel(false), right_margin_sel(false)
 {}
 
 
 Row::Row(pos_type pos)
 	: separator(0), label_hfill(0), x(0),
-	sel_beg(-1), sel_end(-1), changed_(false), crc_(0), pos_(pos), end_(0)
+	sel_beg(-1), sel_end(-1), changed_(false), crc_(0), 
+	pos_(0), end_(0), left_margin_sel(false), right_margin_sel(false)
 {}
 
 
@@ -61,6 +65,46 @@ void Row::endpos(pos_type p)
 }
 
 
+bool Row::isMarginSelected(bool margin_begin, DocIterator const & beg, 
+								 DocIterator const & end) const
+{
+	pos_type const sel_pos = margin_begin ? sel_beg : sel_end;
+	pos_type const margin_pos = margin_begin ? pos_ : end_;
+
+	// Is the chosen margin selected ?
+	if (sel_pos == margin_pos) {
+		if (beg.pos() == end.pos())
+			// This is a special case in which the space between after 
+			// pos i-1 and before pos i is selected, i.e. the margins
+			// (see DocIterator::boundary_).
+			return beg.boundary() && !end.boundary();
+		else if (end.pos() == margin_pos)
+			// If the selection ends around the margin, it is only
+			// drawn if the cursor is after the margin.
+			return !end.boundary();
+		else if (beg.pos() == margin_pos)
+			// If the selection begins around the margin, it is 
+			// only drawn if the cursor is before the margin.
+			return beg.boundary();
+		else 
+			return true;
+	}
+	return false;
+}
+
+
+void Row::setSelectionAndMargins(DocIterator const & beg, 
+								 DocIterator const & end) const
+{
+	setSelection(beg.pos(), end.pos());
+	
+	if (selection()) {
+		right_margin_sel = isMarginSelected(false, beg, end);
+		left_margin_sel = isMarginSelected(true, beg, end);
+	}
+}
+
+
 void Row::setSelection(pos_type beg, pos_type end) const
 {
 	if (pos_ >= beg && pos_ <= end)
@@ -76,6 +120,12 @@ void Row::setSelection(pos_type beg, pos_type end) const
 		sel_end = end;
 	else
 		sel_end = -1;
+}
+
+
+bool Row::selection() const
+{
+	return sel_beg != -1 && sel_end != -1;
 }
 
 
