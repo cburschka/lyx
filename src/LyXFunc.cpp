@@ -1561,19 +1561,21 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (lyx_view_ == 0)
 				break;
 
+			// Start an undo group. This may be needed for
+			// some stuff like inset-apply on labels.
+			if (lyx_view_->view())
+				view()->cursor().beginUndoGroup();
+				
 			// Let the current LyXView dispatch its own actions.
 			if (lyx_view_->dispatch(cmd)) {
-				if (lyx_view_->view())
+				if (lyx_view_->view()) {
 					updateFlags = lyx_view_->view()->cursor().result().update();
+					view()->cursor().endUndoGroup();
+				}
 				break;
 			}
 
 			LASSERT(lyx_view_->view(), /**/);
-
-			// Start an undo group. Normally, all the code
-			// above only invoked recordUndoFullDocument,
-			// which does not really require a group.
-			view()->cursor().beginUndoGroup();
 
 			// Let the current BufferView dispatch its own actions.
 			if (view()->dispatch(cmd)) {
