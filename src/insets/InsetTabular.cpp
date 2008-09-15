@@ -691,10 +691,14 @@ void Tabular::appendColumn(idx_type const cell)
 	for (row_type r = 0; r < nrows; ++r) {
 		cell_info[r].insert(cell_info[r].begin() + c + 1, 
 			CellData(buffer()));
+#if 0
+// FIXME: This code does not work. It deletes the cell's content and
+// it triggers an assertion if the cursor is at pos > 0.
 		if (cell_info[r][c].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
 			cell_info[r][c + 1].multicolumn = CELL_PART_OF_MULTICOLUMN;
 		else
 			cell_info[r][c + 1].multicolumn = cell_info[r][c].multicolumn;
+#endif
 	}
 	updateIndexes();
 	for (row_type r = 0; r < nrows; ++r) {
