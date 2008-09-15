@@ -56,7 +56,6 @@
 #include "insets/InsetQuotes.h"
 #include "insets/InsetSpecialChar.h"
 #include "insets/InsetText.h"
-#include "insets/InsetInfo.h"
 #include "insets/InsetGraphics.h"
 #include "insets/InsetGraphicsParams.h"
 
