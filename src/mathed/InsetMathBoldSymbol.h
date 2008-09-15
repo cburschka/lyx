@@ -29,6 +29,8 @@ public:
 	///
 	InsetMathBoldSymbol(Kind kind = AMS_BOLD);
 	///
+	docstring name() const;
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;

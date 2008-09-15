@@ -42,7 +42,7 @@
 \bind "M-Tab" 			"buffer-next"
 \bind "M-S-BackTab" 		"buffer-previous"
 
-\bind "C-M-b"			"math-insert \mathbf"
+\bind "C-M-b"			"font-boldsymbol"
 \bind "C-b"			"font-bold"
 \bind "C-e"			"font-emph"
 \bind "C-k"			"font-noun"		# 'k' for capitals

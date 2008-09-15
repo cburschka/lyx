@@ -878,6 +878,12 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (currentMode() == TEXT_MODE)
 			handleFont(cur, cmd.argument(), "textbf");
 		else
+			handleFont(cur, cmd.argument(), "mathbf");
+		break;
+	case LFUN_FONT_BOLDSYMBOL:
+		if (currentMode() == TEXT_MODE)
+			handleFont(cur, cmd.argument(), "textbf");
+		else
 			handleFont(cur, cmd.argument(), "boldsymbol");
 		break;
 	case LFUN_FONT_SANS:
@@ -1192,6 +1198,7 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 	/// We have to handle them since 1.4 blocks all unhandled actions
 	case LFUN_FONT_ITAL:
 	case LFUN_FONT_BOLD:
+	case LFUN_FONT_BOLDSYMBOL:
 	case LFUN_FONT_SANS:
 	case LFUN_FONT_EMPH:
 	case LFUN_FONT_TYPEWRITER:

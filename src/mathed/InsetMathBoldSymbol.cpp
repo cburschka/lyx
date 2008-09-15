@@ -32,6 +32,21 @@ Inset * InsetMathBoldSymbol::clone() const
 }
 
 
+docstring InsetMathBoldSymbol::name() const
+{
+	switch (kind_) {
+	case AMS_BOLD:
+		return from_ascii("boldsymbol");
+	case BM_BOLD:
+		return from_ascii("bm");
+	case BM_HEAVY:
+		return from_ascii("hm");
+	}
+	// avoid compiler warning
+	return docstring();
+}
+
+
 void InsetMathBoldSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//FontSetChanger dummy(mi.base, "mathbf");

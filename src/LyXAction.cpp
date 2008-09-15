@@ -1092,11 +1092,19 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_FONT_BOLD
- * \li Action: Toggles the bold font (selection-wise).
+ * \li Action: Toggles the bold font (selection-wise) using mathbf in math.
  * \li Syntax: font-bold
  * \endvar
  */
 		{ LFUN_FONT_BOLD, "font-bold", Noop, Layout },
+
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_BOLDSYMBOL
+ * \li Action: Toggles the bold font (selection-wise) using boldsymbol in math.
+ * \li Syntax: font-boldsymbol
+ * \endvar
+ */
+		{ LFUN_FONT_BOLDSYMBOL, "font-boldsymbol", Noop, Layout },
 /*!
  * \var lyx::FuncCode lyx::LFUN_FONT_TYPEWRITER
  * \li Action: Toggles the typewriter family font (selection-wise).

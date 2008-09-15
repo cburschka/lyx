@@ -1524,7 +1524,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_FONT_BOLD: {
+	case LFUN_FONT_BOLD:
+	case LFUN_FONT_BOLDSYMBOL: {
 		Font font(ignore_font, ignore_language);
 		font.fontInfo().setSeries(BOLD_SERIES);
 		toggleAndShow(cur, this, font);
@@ -2040,6 +2041,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_FONT_BOLD:
+	case LFUN_FONT_BOLDSYMBOL:
 		flag.setOnOff(fontinfo.series() == BOLD_SERIES);
 		break;
 

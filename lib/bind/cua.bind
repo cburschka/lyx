@@ -55,7 +55,7 @@
 \bind "C-Prior"			"buffer-previous"
 \bind "C-S-Tab"			"buffer-previous"
 
-\bind "C-M-b"			"math-insert \mathbf"
+\bind "C-M-b"			"font-boldsymbol"
 \bind "C-b"			"font-bold"
 \bind "C-e"			"font-emph"
 # used below for line-delete-forward

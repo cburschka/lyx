@@ -3549,6 +3549,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_FONT_EMPH:
 	case LFUN_FONT_BOLD:
+	case LFUN_FONT_BOLDSYMBOL:
 	case LFUN_FONT_ROMAN:
 	case LFUN_FONT_NOUN:
 	case LFUN_FONT_ITAL:
