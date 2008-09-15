@@ -116,7 +116,7 @@ int InsetIndex::latex(odocstream & os,
 			// encoding. If not try the LaTeX macro which might
 			// or might not be a good choice, and issue a warning.
 			docstring spart2;
-			for (int n = 0; n < spart.size(); ++n) {
+			for (size_t n = 0; n < spart.size(); ++n) {
 				try {
 					spart2 += runparams.encoding->latexChar(spart[n]);
 				} catch (EncodingException & /* e */) {
