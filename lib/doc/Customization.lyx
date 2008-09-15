@@ -1,4 +1,4 @@
-#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0rc2 created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -2332,6 +2332,57 @@ Editing
 \begin_layout Standard
 The settings in this section are used to customise the behavior of the LyX
  editor.
+\end_layout
+
+\begin_layout Subsection
+Fullscreen mode and toggling window elements
+\end_layout
+
+\begin_layout Standard
+Fullscreen mode switch is done by internal call of 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+ui-toggle fullscreen
+\end_layout
+
+\end_inset
+
+LFUN.
+ Note that except standard switches in the preference dialog additional
+ parameters 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+statusbar
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+menubar
+\end_layout
+
+\end_inset
+
+ can be used for toggling.
+ You can also use 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+toolbar-toggle <toolbar>
+\end_layout
+
+\end_inset
+
+ LFUN for advanced settings of toolbars.
 \end_layout
 
 \begin_layout Subsection
