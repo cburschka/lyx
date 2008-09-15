@@ -183,7 +183,11 @@ The following new LyX functions have been introduced:
 
 - LFUN_NOTES_MUTATE, "notes-mutate"
 
-The following new LyX functions have been removed:
+- LFUN_FONT_BOLDSYMBOL, "font-boldsymbol"
+  This is the same as LFUN_FONT_BOLD except that in math mode \boldsymbol
+  is used instead of \mathbf.
+
+The following LyX functions have been removed:
 
 - LFUN_FILE_NEW.
 
