@@ -34,6 +34,7 @@
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParIterator.h"
+#include "Undo.h"
 
 #include "insets/InsetTabular.h"
 #include "insets/InsetText.h"
@@ -1302,6 +1303,8 @@ void Cursor::handleFont(string const & font)
 		safe = cap::grabAndEraseSelection(*this);
 	}
 
+	recordUndoInset(*this);
+
 	if (lastpos() != 0) {
 		// something left in the cell
 		if (pos() == 0) {
@@ -1321,8 +1324,9 @@ void Cursor::handleFont(string const & font)
 		}
 	} else {
 		// nothing left in the cell
-		pullArg();
+		popLeft();
 		plainErase();
+		resetAnchor();
 	}
 	insert(safe);
 }
