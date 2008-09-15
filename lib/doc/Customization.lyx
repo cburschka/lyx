@@ -1,4 +1,4 @@
-#LyX 1.6.0rc2 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -8164,7 +8164,7 @@ int
 
 ] This tag was introduced with LyX 1.4.0 (layout files of LyX 1.3.x and earlier
  don't have an explicit file format).
- The file format that is documented here is format 7.
+ The file format that is documented here is format 8.
 \end_layout
 
 \begin_layout Subsection
@@ -9174,7 +9174,7 @@ TitleLatexName
 
 \begin_layout Description
 \begin_inset Flex CharStyle:Code
-status collapsed
+status open
 
 \begin_layout Plain Layout
 TocDepth
@@ -9183,6 +9183,32 @@ TocDepth
 \end_inset
 
  [[FIXME]]
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+UseModule
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+string]
+\end_layout
+
+\end_inset
+
+ Specifies a module to be included by default with this document class.
+ The user can still remove the module, but it will be active at the outset.
+ (This applies only when new files are created, or when this class is chosen
+ for an existing document.)
 \end_layout
 
 \begin_layout Subsection
