@@ -775,6 +775,7 @@ void Tabular::updateIndexes()
 			rowofcell[i] = row;
 			columnofcell[i] = column;
 			setFixedWidth(row, column);
+			updateContentAlignment(row, column);
 			++i;
 		}
 }
@@ -1019,6 +1020,13 @@ bool Tabular::setFixedWidth(row_type r, col_type c)
 		return true;
 	}
 	return false;
+}
+
+
+void Tabular::updateContentAlignment(row_type r, col_type c)
+{
+	cell_info[r][c].inset->setContentAlignment(
+		getAlignment(cellIndex(r, c)));
 }
 
 
@@ -1424,8 +1432,6 @@ void Tabular::read(Lexer & lex)
 			}
 			getTokenValue(line, "multicolumn", cell_info[i][j].multicolumn);
 			getTokenValue(line, "alignment", cell_info[i][j].alignment);
-			cellInset(cellIndex(i, j)).get()->setContentAlignment(
-				cell_info[i][j].alignment);
 			getTokenValue(line, "valignment", cell_info[i][j].valignment);
 			getTokenValue(line, "topline", cell_info[i][j].top_line);
 			getTokenValue(line, "bottomline", cell_info[i][j].bottom_line);

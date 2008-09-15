@@ -577,6 +577,8 @@ public:
 	void updateIndexes();
 	///
 	bool setFixedWidth(row_type r, col_type c);
+	///
+	void updateContentAlignment(row_type r, col_type c);
 	/// return true of update is needed
 	bool updateColumnWidths();
 	///
