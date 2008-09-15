@@ -150,9 +150,7 @@ void InsetInfo::write(ostream & os) const
 bool InsetInfo::validate(docstring const & arg) const
 {
 	string type;
-	string name;
-
-	name = trim(split(to_utf8(arg), type, ' '));
+	string const name = trim(split(to_utf8(arg), type, ' '));
 	switch (nameTranslator().find(type)) {
 	case UNKNOWN_INFO:
 		return false;
@@ -172,7 +170,7 @@ bool InsetInfo::validate(docstring const & arg) const
 	case TEXTCLASS_INFO:
 		return true;
 	case BUFFER_INFO:
-		return name_ == "name" || name_ == "path" || name_ == "class";
+		return name == "name" || name == "path" || name == "class";
 	}
 	return false;
 }
