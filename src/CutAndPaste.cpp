@@ -97,6 +97,10 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	pit_type pit = cur.pit();
 	pos_type pos = cur.pos();
 	InsetText * target_inset = cur.inset().asInsetText();
+	if (!target_inset) {
+		InsetTabular * it = cur.inset().asInsetTabular();
+		target_inset = it? it->cell(cur.idx())->asInsetText() : 0;
+	}
 	LASSERT(target_inset, return make_pair(PitPosPair(pit, pos), pit));
 	ParagraphList & pars = target_inset->paragraphs();
 
