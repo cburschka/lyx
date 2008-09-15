@@ -458,7 +458,7 @@ void Paragraph::insertInset(pos_type pos, Inset * inset,
 
 bool Paragraph::eraseChar(pos_type pos, bool trackChanges)
 {
-	LASSERT(pos >= 0 && pos <= size(), /**/);
+	LASSERT(pos >= 0 && pos <= size(), return false);
 
 	// keep the logic here in sync with the logic of isMergedOnEndOfParDeletion()
 
