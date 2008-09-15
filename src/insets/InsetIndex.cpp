@@ -13,6 +13,7 @@
 
 #include "Buffer.h"
 #include "DispatchResult.h"
+#include "Encoding.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
@@ -24,6 +25,8 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+
+#include "frontends/alert.h"
 
 #include <ostream>
 
@@ -106,10 +109,31 @@ int InsetIndex::latex(odocstream & os,
 		if (contains(*it, '\\') && !contains(*it, '@')) {
 			// Plaintext might return nothing (e.g. for ERTs)
 			docstring const spart = 
-				(it2 < levels_plain.end() && !(*it2).empty()) ? *it2 : *it;
+				(it2 < levels_plain.end() && !(*it2).empty())
+				? *it2 : *it;
+			// Now we need to validate that all characters in
+			// the sorting part are representable in the current
+			// encoding. If not try the LaTeX macro which might
+			// or might not be a good choice, and issue a warning.
+			docstring spart2;
+			for (int n = 0; n < spart.size(); ++n) {
+				try {
+					spart2 += runparams.encoding->latexChar(spart[n]);
+				} catch (EncodingException & /* e */) {
+					LYXERR0("Uncodable character in index entry. Sorting might be wrong!");
+				}
+			}
+			if (spart != spart2 && !runparams.dryrun) {
+				// FIXME: warning should be passed to the error dialog
+				frontend::Alert::warning(_("Index sorting failed"),
+				bformat(_("LyX's automatic index sorting algorithm faced\n"
+				  "problems with the entry '%1$s'.\n"
+				  "Please specify the sorting of this entry manually, as\n"
+				  "explained in the User Guide."), spart));
+			}
 			// remove remaining \'s for the sorting part
 			docstring const ppart =
-				subst(spart, from_ascii("\\"), docstring());
+				subst(spart2, from_ascii("\\"), docstring());
 			os << ppart;
 			os << '@';
 			i += ppart.size() + 1;
