@@ -34,14 +34,6 @@ Row::Row()
 {}
 
 
-Row::Row(pos_type pos)
-	: separator(0), label_hfill(0), x(0),
-	sel_beg(-1), sel_end(-1),
-	left_margin_sel(false), right_margin_sel(false), 
-	changed_(false), crc_(0), pos_(pos), end_(0)
-{}
-
-
 void Row::setCrc(size_type crc) const
 {
 	changed_ = crc != crc_;

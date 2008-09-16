@@ -34,8 +34,6 @@ public:
 	///
 	Row();
 	///
-	Row(pos_type pos);
-	///
 	bool changed() const { return changed_; }
 	///
 	void setChanged(bool c) { changed_ = c; }
