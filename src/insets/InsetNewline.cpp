@@ -133,10 +133,9 @@ ColorCode InsetNewline::ColorName() const
 		case InsetNewlineParams::LINEBREAK:
 			return Color_pagebreak;
 			break;
-		default:
-			return Color_eolmarker;
-			break;
 	}
+	// not really useful, but to avoids gcc complaints
+	return Color_eolmarker;
 }
 
 

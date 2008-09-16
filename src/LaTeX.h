@@ -172,7 +172,7 @@ private:
 			  std::string const & = std::string());
 
 	///
-	bool runMakeIndexNomencl(support::FileName const &, OutputParams const &,
+	bool runMakeIndexNomencl(support::FileName const &, 
 				 std::string const &, std::string const &);
 
 	///

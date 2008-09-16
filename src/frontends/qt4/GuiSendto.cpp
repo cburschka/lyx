@@ -147,7 +147,7 @@ bool GuiSendTo::initialiseParams(string const &)
 }
 
 
-void GuiSendTo::paramsToDialog(Format const * format, QString const & command)
+void GuiSendTo::paramsToDialog(Format const * /*format*/, QString const & command)
 {
 	if (!command.isEmpty())
 		commandCO->addItem(command);

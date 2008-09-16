@@ -64,7 +64,7 @@ void GuiNomenclature::reject()
 }
 
 
-void GuiNomenclature::paramsToDialog(InsetCommandParams const & icp)
+void GuiNomenclature::paramsToDialog(InsetCommandParams const & /*icp*/)
 {
 	prefixED->setText(toqstr(params_["prefix"]));
 	symbolED->setText(toqstr(params_["symbol"]));

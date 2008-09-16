@@ -62,7 +62,7 @@ void GuiHyperlink::changed_adaptor()
 }
 
 
-void GuiHyperlink::paramsToDialog(InsetCommandParams const & icp)
+void GuiHyperlink::paramsToDialog(InsetCommandParams const & /*icp*/)
 {
 	targetED->setText(toqstr(params_["target"]));
 	nameED->setText(toqstr(params_["name"]));

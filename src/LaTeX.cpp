@@ -268,10 +268,10 @@ int LaTeX::run(TeXErrors & terr)
 	}
 	FileName const nlofile(changeExtension(file.absFilename(), ".nlo"));
 	if (head.haschanged(nlofile))
-		rerun |= runMakeIndexNomencl(file, runparams, ".nlo", ".nls");
+		rerun |= runMakeIndexNomencl(file, ".nlo", ".nls");
 	FileName const glofile(changeExtension(file.absFilename(), ".glo"));
 	if (head.haschanged(glofile))
-		rerun |= runMakeIndexNomencl(file, runparams, ".glo", ".gls");
+		rerun |= runMakeIndexNomencl(file, ".glo", ".gls");
 
 	// run bibtex
 	// if (scanres & UNDEF_CIT || scanres & RERUN || run_bibtex)
@@ -343,9 +343,9 @@ int LaTeX::run(TeXErrors & terr)
 
 	// I am not pretty sure if need this twice.
 	if (head.haschanged(nlofile))
-		rerun |= runMakeIndexNomencl(file, runparams, ".nlo", ".nls");
+		rerun |= runMakeIndexNomencl(file, ".nlo", ".nls");
 	if (head.haschanged(glofile))
-		rerun |= runMakeIndexNomencl(file, runparams, ".glo", ".gls");
+		rerun |= runMakeIndexNomencl(file, ".glo", ".gls");
 
 	// 2
 	// we will only run latex more if the log file asks for it.
@@ -411,7 +411,6 @@ bool LaTeX::runMakeIndex(string const & f, OutputParams const & runparams,
 
 
 bool LaTeX::runMakeIndexNomencl(FileName const & file,
-		OutputParams const & runparams,
 		string const & nlo, string const & nls)
 {
 	LYXERR(Debug::LATEX, "Running MakeIndex for nomencl.");

@@ -197,22 +197,17 @@ docstring InsetNewpage::insetLabel() const
 ColorCode InsetNewpage::ColorName() const
 {
 	switch (params_.kind) {
-		case InsetNewpageParams::NEWPAGE:
-			return Color_newpage;
-			break;
 		case InsetNewpageParams::PAGEBREAK:
 			return Color_pagebreak;
 			break;
+		case InsetNewpageParams::NEWPAGE:
 		case InsetNewpageParams::CLEARPAGE:
-			return Color_newpage;
-			break;
 		case InsetNewpageParams::CLEARDOUBLEPAGE:
 			return Color_newpage;
 			break;
-		default:
-			return Color_newpage;
-			break;
 	}
+	// not really useful, but to avoids gcc complaints
+	return Color_newpage;
 }
 
 
