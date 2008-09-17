@@ -41,7 +41,7 @@ test -d "${USER_SUPPORT}" || {
 	exit 1
 }
 
-for LYXDIR in LyX-1.5 LyX-1.4 LyX
+for LYXDIR in LyX-1.6 LyX-1.5 LyX-1.4 LyX
 do
 	ABS_USER_LYXDIR="${USER_SUPPORT}/${LYXDIR}"
 	test -d "${ABS_USER_LYXDIR}" || {
