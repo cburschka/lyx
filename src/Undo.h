@@ -59,7 +59,7 @@ public:
 	bool textRedo(DocIterator &);
 
 	/// End a sequence of INSERT_UNDO or DELETE_UNDO type of undo
-	/// operations.
+	/// operations (grouping of consecutive characters insertion/deletion).
 	void finishUndo();
 
 	///
