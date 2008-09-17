@@ -66,15 +66,19 @@ void InsetLabel::updateCommand(docstring const & new_label, bool updaterefs)
 			"it will be changed to %2$s."), new_label, label));
 	}
 
+	buffer().undo().beginUndoGroup();
 	setParam("name", label);
 
 	if (updaterefs) {
 		Buffer::References & refs = buffer().references(old_label);
 		Buffer::References::iterator it = refs.begin();
 		Buffer::References::iterator end = refs.end();
-		for (; it != end; ++it)
+		for (; it != end; ++it) {
+			buffer().undo().recordUndo(it->second);
 			it->first->setParam("reference", label);
+		}
 	}
+	buffer().undo().endUndoGroup();
 
 	// We need an update of the Buffer reference cache. This is achieved by
 	// updateLabel().
