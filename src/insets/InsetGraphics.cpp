@@ -987,11 +987,12 @@ string getGroupParams(Buffer const & b, string const & groupId)
 }
 
 
-void unifyGraphicsGroups(Buffer const & b, string const & argument)
+void unifyGraphicsGroups(Buffer & b, string const & argument)
 {
 	InsetGraphicsParams params;
 	InsetGraphics::string2params(argument, b, params);
 
+	b.undo().beginUndoGroup();
 	Inset & inset = b.inset();
 	InsetIterator it  = inset_iterator_begin(inset);
 	InsetIterator const end = inset_iterator_end(inset);
@@ -1000,12 +1001,13 @@ void unifyGraphicsGroups(Buffer const & b, string const & argument)
 			InsetGraphics & ins = static_cast<InsetGraphics &>(*it);
 			InsetGraphicsParams inspar = ins.getParams();
 			if (params.groupId == inspar.groupId) {
+				b.undo().recordUndo(it);
 				params.filename = inspar.filename;
 				ins.setParams(params);
 			}
 		}
 	}
-
+	b.undo().endUndoGroup();
 }
 
 

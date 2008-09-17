@@ -1432,7 +1432,6 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	case LFUN_GRAPHICS_GROUPS_UNIFY: {
 		if (cmd.argument().empty())
 			break;
-		//view()->cursor().recordUndoFullDocument(); let inset-apply do that job
 		graphics::unifyGraphicsGroups(cur.buffer(), to_utf8(cmd.argument()));
 		processUpdateFlags(Update::Force | Update::FitCursor);
 		break;

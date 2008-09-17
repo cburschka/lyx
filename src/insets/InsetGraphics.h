@@ -134,7 +134,7 @@ namespace graphics {
 	/** Synchronize all Graphics insets of the group.
 	    Both groupId and params are taken from argument.
 	*/
-	void unifyGraphicsGroups(Buffer const &,	std::string const &);
+	void unifyGraphicsGroups(Buffer &, std::string const &);
 	InsetGraphics * getCurrentGraphicsInset(Cursor const &);
 
 }
