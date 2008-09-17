@@ -44,19 +44,6 @@ enum UndoKind {
 };
 
 
-/**
- * Record undo information - call with the current cursor and the 'other
- * end' of the range of changed  paragraphs.  So we give an inclusive range.
- * This is called before you make the changes to the paragraph, and it
- * will record the original information of the paragraphs in the undo stack.
- *
- * FIXME: We need something to record undo in partial grids for mathed.
- * Right now we use recordUndoInset if more than one cell is changed,
- * but that puts the cursor in front of the inset after undo. We would need
- * something like
- * recordUndoGrid(DocIterator & cur, UndoKind kind, idx_type from, idx_type to);
- * and store the cell information in class Undo.
- */
 class Undo
 {
 public:
@@ -71,7 +58,8 @@ public:
 	/// this will redo the last undo - returns false if no redo possible
 	bool textRedo(DocIterator &);
 
-	/// makes sure the next operation will be stored
+	/// End a sequence of INSERT_UNDO or DELETE_UNDO type of undo
+	/// operations.
 	void finishUndo();
 
 	///
@@ -82,21 +70,40 @@ public:
 	/// open a new group of undo operations. Groups can be nested.
 	void beginUndoGroup();
 
-	/// end the current undo group
+	/// end the current undo group.
 	void endUndoGroup();
 
-	/// The general case: prepare undo for an arbitrary range.
+	/// The general case: record undo information for an arbitrary range.
+	/**
+	 * Record undo information - call with the current cursor and
+	 * the 'other end' of the range of changed paragraphs. So we
+	 * give an inclusive range. This is called before you make the
+	 * changes to the paragraph, and it will record the original
+	 * information of the paragraphs in the undo stack.
+	 *
+	 * FIXME: We need something to record undo in partial grids
+	 * for mathed. Right now we use recordUndoInset if more than
+	 * one cell is changed, but that puts the cursor in front of
+	 * the inset after undo. We would need something like
+	 * recordUndoGrid(DocIterator & cur, UndoKind kind, idx_type
+	 * from, idx_type to); and store the cell information in class
+	 * Undo.
+	 */
 	void recordUndo(DocIterator const & cur, UndoKind kind,
 		pit_type from, pit_type to);
 
-	/// Convenience: prepare undo for the range between 'from' and cursor.
+	/// Convenience: record undo information for the range between
+	/// 'from' and cursor.
 	void recordUndo(DocIterator const & cur, UndoKind kind, pit_type from);
 
-	/// Convenience: prepare undo for the single paragraph or cell
-	/// containing the cursor
+	/// Convenience: record undo information for the single
+	/// paragraph or cell containing the cursor.
 	void recordUndo(DocIterator const & cur, UndoKind kind = ATOMIC_UNDO);
-	/// Convenience: prepare undo for the inset containing the cursor
-	void recordUndoInset(DocIterator const & cur, UndoKind kind = ATOMIC_UNDO);
+
+	/// Convenience: record undo information for the inset
+	/// containing the cursor.
+	void recordUndoInset(DocIterator const & cur, 
+			     UndoKind kind = ATOMIC_UNDO);
 
 	/// Convenience: prepare undo for the whole buffer
 	void recordUndoFullDocument(DocIterator const & cur);
