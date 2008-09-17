@@ -1054,11 +1054,6 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	// insert file functions
 	case LFUN_LINE_DELETE:
-		// FIXME: We use recordUndoInset when a change reflects more
-		// than one cell, because recordUndo does not work for
-		// multiple cells. Unfortunately this puts the cursor in front
-		// of the inset after undo. This is (especilally for large
-		// grids) annoying.
 		cur.recordUndoInset();
 		//autocorrect_ = false;
 		//macroModeClose();

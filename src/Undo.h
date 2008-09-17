@@ -80,14 +80,6 @@ public:
 	 * give an inclusive range. This is called before you make the
 	 * changes to the paragraph, and it will record the original
 	 * information of the paragraphs in the undo stack.
-	 *
-	 * FIXME: We need something to record undo in partial grids
-	 * for mathed. Right now we use recordUndoInset if more than
-	 * one cell is changed, but that puts the cursor in front of
-	 * the inset after undo. We would need something like
-	 * recordUndoGrid(DocIterator & cur, UndoKind kind, idx_type
-	 * from, idx_type to); and store the cell information in class
-	 * Undo.
 	 */
 	void recordUndo(DocIterator const & cur, UndoKind kind,
 		pit_type from, pit_type to);
