@@ -1960,13 +1960,18 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_INSET_APPLY: {
-			view()->cursor().recordUndoFullDocument();
 			string const name = cmd.getArg(0);
 			Inset * inset = getOpenInset(name);
 			if (inset) {
+				// put cursor in front of inset.
+				if (!view()->setCursorFromInset(inset))
+					LASSERT(false, /**/);
+				
+				view()->cursor().recordUndo();
 				FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
 				inset->dispatch(view()->cursor(), fr);
 			} else {
+				view()->cursor().recordUndo();
 				FuncRequest fr(LFUN_INSET_INSERT, cmd.argument());
 				lyx::dispatch(fr);
 			}

@@ -144,6 +144,9 @@ public:
 	/// set the cursor based on the given TeX source row.
 	void setCursorFromRow(int row);
 
+	/// set cursor to the given inset. Return true if found.
+	bool setCursorFromInset(Inset const *);
+
 	/// Ensure that the BufferView cursor is visible.
 	/// This method will automatically scroll and update the BufferView
 	/// if needed.
