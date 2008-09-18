@@ -1591,10 +1591,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 						cursorPosBeforeDispatchY_);
 			view()->cursor().dispatch(cmd);
 
-			// we assume here that the buffer view has not
-			// changed since the beginUndoGroup.
-			view()->cursor().endUndoGroup();
-
 			// notify insets we just left
 			if (view()->cursor() != old) {
 				old.fixIfBroken();
@@ -1602,6 +1598,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				if (badcursor)
 					view()->cursor().fixIfBroken();
 			}
+
+			// we assume here that the buffer view has not
+			// changed since the beginUndoGroup.
+			view()->cursor().endUndoGroup();
 
 			// update completion. We do it here and not in
 			// processKeySym to avoid another redraw just for a
