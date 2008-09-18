@@ -96,6 +96,8 @@ What's new
 - Empty lines are correctly removed when the cursor moves due to the
   "cursor follows scrollbar" feature (bug 5065).
 
+- Fix undo when modifying the parameters of an inset (bug 2040).
+
 - Fix undo for "text in math mode" (bug 3407).
 
 - Fix undo for insertion of some math elements (e.g. delimiters)

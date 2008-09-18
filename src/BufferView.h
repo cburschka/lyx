@@ -130,10 +130,14 @@ public:
 	/// set the cursor based on the given TeX source row.
 	void setCursorFromRow(int row);
 
+	/// set cursor to the given inset. Return true if found.
+	bool setCursorFromInset(Inset const *);
+
 	/// center the document view around the cursor.
 	void center();
 	/// scroll document by the given number of lines of default height.
 	void scroll(int lines);
+
 	/// Scroll the view by a number of pixels.
 	void scrollDocView(int pixels);
 	/// Set the cursor position based on the scrollbar one.

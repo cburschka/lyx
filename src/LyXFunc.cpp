@@ -1645,9 +1645,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			string const name = cmd.getArg(0);
 			Inset * inset = lyx_view_->getDialogs().getOpenInset(name);
 			if (inset) {
-				FuncRequest fr(LFUN_INSET_MODIFY, argument);
+				// put cursor in front of inset. 
+				if (!view()->setCursorFromInset(inset))
+					BOOST_ASSERT(false);
+				recordUndo(view()->cursor());
+ 				FuncRequest fr(LFUN_INSET_MODIFY, argument);
 				inset->dispatch(view()->cursor(), fr);
 			} else {
+				recordUndo(view()->cursor());
 				FuncRequest fr(LFUN_INSET_INSERT, argument);
 				dispatch(fr);
 			}

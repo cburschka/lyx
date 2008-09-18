@@ -1270,6 +1270,27 @@ void BufferView::setCursorFromRow(int row)
 }
 
 
+bool BufferView::setCursorFromInset(Inset const * inset)
+{
+	// are we already there?
+	if (cursor().nextInset() == inset)
+		return true;
+
+	// Inset is not at cursor position. Find it in the document.
+	Cursor cur(*this);
+	cur.reset(buffer()->inset());
+	do 
+		cur.forwardInset();
+	while (cur && cur.nextInset() != inset);
+
+	if (cur) {
+		setCursor(cur);
+		return true;
+	}
+	return false;
+}
+
+
 void BufferView::gotoLabel(docstring const & label)
 {
 	for (InsetIterator it = inset_iterator_begin(buffer_->inset()); it; ++it) {
