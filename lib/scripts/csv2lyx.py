@@ -149,7 +149,10 @@ else:
         dialect = guesser.sniff(input_file)
         reader = csv.reader(open(infile, "rb"), dialect = dialect)
     except:
-        reader = csv.reader(open(infile, "rb"), dialect = dialect, delimiter =',')
+        if dialect:
+            reader = csv.reader(open(infile, "rb"), dialect = dialect, delimiter = ',')
+        else:
+            reader = csv.reader(open(infile, "rb"), delimiter = ',')
 
 # read input
 num_cols = 1 # max columns
