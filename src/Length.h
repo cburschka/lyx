@@ -89,7 +89,7 @@ public:
 	std::string const asLatexString() const;
 	/// return the on-screen size of this length
 	int inPixels(int text_width, int em_width = 0) const;
-	/// return the on-screen size of this length of an image
+	/// return the value in Big Postscript points.
 	int inBP() const;
 
 	friend bool isValidLength(std::string const & data, Length * result);

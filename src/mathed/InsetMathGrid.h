@@ -49,7 +49,7 @@ public:
 		///
 		RowInfo();
 		///
-		int skipPixels() const;
+		int skipPixels(MetricsInfo const & mi) const;
 		/// cached descent
 		mutable int descent_;
 		/// cached ascent

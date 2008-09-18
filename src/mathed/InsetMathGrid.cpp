@@ -25,6 +25,7 @@
 #include "FuncRequest.h"
 
 #include "frontends/Clipboard.h"
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 #include "support/debug.h"
@@ -80,9 +81,11 @@ InsetMathGrid::RowInfo::RowInfo()
 
 
 
-int InsetMathGrid::RowInfo::skipPixels() const
+int InsetMathGrid::RowInfo::skipPixels(MetricsInfo const & mi) const
 {
-	return crskip_.inBP();
+	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
+	return crskip_.inPixels(mi.base.textwidth,
+				fm.width(char_type('M')));
 }
 
 
@@ -367,7 +370,7 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 		rowinfo_[row].offset_  =
 			rowinfo_[row - 1].offset_  +
 			rowinfo_[row - 1].descent_ +
-			rowinfo_[row - 1].skipPixels() +
+			rowinfo_[row - 1].skipPixels(mi) +
 			rowsep() +
 			rowinfo_[row].lines_ * hlinesep() +
 			rowinfo_[row].ascent_;
@@ -550,7 +553,7 @@ void InsetMathGrid::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 		rowinfo_[row].offset_  =
 			rowinfo_[row - 1].offset_  +
 			rowinfo_[row - 1].descent_ +
-			//rowinfo_[row - 1].skipPixels() +
+			//rowinfo_[row - 1].skipPixels(mi) +
 			1 + //rowsep() +
 			//rowinfo_[row].lines_ * hlinesep() +
 			rowinfo_[row].ascent_;
