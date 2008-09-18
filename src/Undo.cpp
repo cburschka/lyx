@@ -285,7 +285,10 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 	    && stack.top().end == end)
 		return;
 
-	LYXERR(Debug::UNDO, "Create undo element of group " << group_id);
+	if (isFullBuffer)
+		LYXERR(Debug::UNDO, "Create full buffer undo element of group " << group_id);
+	else
+		LYXERR(Debug::UNDO, "Create undo element of group " << group_id);
 	// create the position information of the Undo entry
 	UndoElement undo(kind, cur, cell, from, end, 0, 0, 
 	                 buffer_.params(), isFullBuffer, group_id);
