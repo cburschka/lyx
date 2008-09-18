@@ -383,6 +383,7 @@ bool mutateNotes(Cursor & cur, string const & source, string const &target)
 	// did we found some conforming inset?
 	bool ret = false;
 
+	cur.beginUndoGroup();
 	Inset & inset = cur.buffer().inset();
 	InsetIterator it  = inset_iterator_begin(inset);
 	InsetIterator const end = inset_iterator_end(inset);
@@ -390,12 +391,14 @@ bool mutateNotes(Cursor & cur, string const & source, string const &target)
 		if (it->lyxCode() == NOTE_CODE) {
 			InsetNote & ins = static_cast<InsetNote &>(*it);
 			if (ins.params().type == typeSrc) {
+				cur.buffer().undo().recordUndo(it);
 				FuncRequest fr(LFUN_INSET_MODIFY, "note Note " + target);
 				ins.dispatch(cur, fr);
 				ret = true;
 			}
 		}
 	}
+	cur.endUndoGroup();
 
 	return ret;
 }

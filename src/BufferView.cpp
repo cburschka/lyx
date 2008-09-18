@@ -1440,7 +1440,6 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	case LFUN_NOTES_MUTATE: {
 		if (cmd.argument().empty())
 			break;
-		cur.recordUndoFullDocument();
 
 		if (mutateNotes(cur, cmd.getArg(0), cmd.getArg(1))) {
 			processUpdateFlags(Update::Force);
