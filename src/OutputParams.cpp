@@ -25,7 +25,7 @@ OutputParams::OutputParams(Encoding const * enc)
 	  exportdata(new ExportData),
 	  inComment(false), inTableCell(NO),
 	  inDeletedInset(0), changeOfDeletedInset(Change::UNCHANGED),
-	  par_begin(0), par_end(0),
+	  par_begin(0), par_end(0), isLastPar(false),
 	  dryrun(false), verbatim(false)
 {
 	// Note: in PreviewLoader::Impl::dumpPreamble

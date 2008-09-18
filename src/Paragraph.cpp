@@ -113,11 +113,11 @@ public:
 
 	/// This could go to ParagraphParameters if we want to.
 	int startTeXParParams(BufferParams const &, odocstream &, TexRow &,
-			      bool) const;
+			      OutputParams const &) const;
 
 	/// This could go to ParagraphParameters if we want to.
 	int endTeXParParams(BufferParams const &, odocstream &, TexRow &,
-			    bool) const;
+			    OutputParams const &) const;
 
 	///
 	void latexInset(BufferParams const &,
@@ -1680,7 +1680,9 @@ namespace {
 
 bool noTrivlistCentering(InsetCode code)
 {
-	return code == FLOAT_CODE || code == WRAP_CODE;
+	return code == FLOAT_CODE
+	       || code == WRAP_CODE
+	       || code == CELL_CODE;
 }
 
 
@@ -1697,12 +1699,19 @@ string correction(string const & orig)
 
 
 string const corrected_env(string const & suffix, string const & env,
-	InsetCode code)
+	InsetCode code, bool const lastpar)
 {
 	string output = suffix + "{";
-	if (noTrivlistCentering(code))
+	if (noTrivlistCentering(code)) {
+		if (lastpar) {
+			// the last paragraph in non-trivlist-aligned
+			// context is special (to avoid unwanted whitespace)
+			if (suffix == "\\begin")
+				return "\\" + correction(env) + "{}";
+			return string();
+		}
 		output += correction(env);
-	else
+	} else
 		output += env;
 	output += "}";
 	if (suffix == "\\begin")
@@ -1727,7 +1736,7 @@ void adjust_row_column(string const & str, TexRow & texrow, int & column)
 
 int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 				 odocstream & os, TexRow & texrow,
-				 bool moving_arg) const
+				 OutputParams const & runparams) const
 {
 	int column = 0;
 
@@ -1750,12 +1759,16 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_LEFT:
 	case LYX_ALIGN_RIGHT:
 	case LYX_ALIGN_CENTER:
-		if (moving_arg) {
+		if (runparams.moving_arg) {
 			os << "\\protect";
 			column += 8;
 		}
 		break;
 	}
+
+	string const begin_tag = "\\begin";
+	InsetCode code = owner_->ownerCode();
+	bool const lastpar = runparams.isLastPar;
 
 	switch (curAlign) {
 	case LYX_ALIGN_NONE:
@@ -1766,24 +1779,24 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_LEFT: {
 		string output;
 		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env("\\begin", "flushleft", owner_->ownerCode());
+			output = corrected_env(begin_tag, "flushleft", code, lastpar);
 		else
-			output = corrected_env("\\begin", "flushright", owner_->ownerCode());
+			output = corrected_env(begin_tag, "flushright", code, lastpar);
 		os << from_ascii(output);
 		adjust_row_column(output, texrow, column);
 		break;
 	} case LYX_ALIGN_RIGHT: {
 		string output;
 		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env("\\begin", "flushright", owner_->ownerCode());
+			output = corrected_env(begin_tag, "flushright", code, lastpar);
 		else
-			output = corrected_env("\\begin", "flushleft", owner_->ownerCode());
+			output = corrected_env(begin_tag, "flushleft", code, lastpar);
 		os << from_ascii(output);
 		adjust_row_column(output, texrow, column);
 		break;
 	} case LYX_ALIGN_CENTER: {
 		string output;
-		output = corrected_env("\\begin", "center", owner_->ownerCode());
+		output = corrected_env(begin_tag, "center", code, lastpar);
 		os << from_ascii(output);
 		adjust_row_column(output, texrow, column);
 		break;
@@ -1796,7 +1809,7 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 
 int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 			       odocstream & os, TexRow & texrow,
-			       bool moving_arg) const
+			       OutputParams const & runparams) const
 {
 	int column = 0;
 
@@ -1809,12 +1822,16 @@ int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_LEFT:
 	case LYX_ALIGN_RIGHT:
 	case LYX_ALIGN_CENTER:
-		if (moving_arg) {
+		if (runparams.moving_arg) {
 			os << "\\protect";
 			column = 8;
 		}
 		break;
 	}
+
+	string const end_tag = "\n\\par\\end";
+	InsetCode code = owner_->ownerCode();
+	bool const lastpar = runparams.isLastPar;
 
 	switch (params_.align()) {
 	case LYX_ALIGN_NONE:
@@ -1825,24 +1842,24 @@ int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_LEFT: {
 		string output;
 		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env("\n\\par\\end", "flushleft", owner_->ownerCode());
+			output = corrected_env(end_tag, "flushleft", code, lastpar);
 		else
-			output = corrected_env("\n\\par\\end", "flushright", owner_->ownerCode());
+			output = corrected_env(end_tag, "flushright", code, lastpar);
 		os << from_ascii(output);
 		adjust_row_column(output, texrow, column);
 		break;
 	} case LYX_ALIGN_RIGHT: {
 		string output;
 		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env("\n\\par\\end", "flushright", owner_->ownerCode());
+			output = corrected_env(end_tag, "flushright", code, lastpar);
 		else
-			output = corrected_env("\n\\par\\end", "flushleft", owner_->ownerCode());
+			output = corrected_env(end_tag, "flushleft", code, lastpar);
 		os << from_ascii(output);
 		adjust_row_column(output, texrow, column);
 		break;
 	} case LYX_ALIGN_CENTER: {
 		string output;
-		output = corrected_env("\n\\par\\end", "center", owner_->ownerCode());
+		output = corrected_env(end_tag, "center", code, lastpar);
 		os << from_ascii(output);
 		adjust_row_column(output, texrow, column);
 		break;
@@ -1908,7 +1925,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 		}
 		if (!asdefault)
 			column += d->startTeXParParams(bparams, os, texrow,
-						    runparams.moving_arg);
+						    runparams);
 	}
 
 	for (pos_type i = 0; i < size(); ++i) {
@@ -1939,7 +1956,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 			if (!asdefault)
 				column += d->startTeXParParams(bparams, os,
 							    texrow,
-							    runparams.moving_arg);
+							    runparams);
 		}
 
 		Change const & change = runparams.inDeletedInset ? runparams.changeOfDeletedInset
@@ -2116,7 +2133,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 
 	if (!asdefault) {
 		column += d->endTeXParParams(bparams, os, texrow,
-					  runparams.moving_arg);
+					  runparams);
 	}
 
 	LYXERR(Debug::LATEX, "SimpleTeXOnePar...done " << this);

@@ -157,6 +157,9 @@ public:
 	 */
 	pit_type par_end;
 
+	/// is this the last paragraph in the current buffer/inset?
+	bool isLastPar;
+
 	/** whether or not do actual file copying and image conversion
 	 *  This mode will be used to preview the source code
 	 */

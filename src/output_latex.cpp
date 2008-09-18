@@ -294,7 +294,10 @@ TeXOnePar(Buffer const & buf,
 	if (nextpit != paragraphs.end())
 		++nextpit;
 
-	if (runparams_in.verbatim) {
+	OutputParams runparams = runparams_in;
+	runparams.isLastPar = nextpit == paragraphs.end();
+
+	if (runparams.verbatim) {
 		int const dist = distance(paragraphs.begin(), pit);
 		Font const outerfont = outerFont(dist, paragraphs);
 
@@ -305,14 +308,13 @@ TeXOnePar(Buffer const & buf,
 		}
 
 		/*bool need_par = */ pit->latex(bparams, outerfont,
-			os, texrow, runparams_in);
+			os, texrow, runparams);
 		return nextpit;
 	}
 
 	Layout const style = pit->forcePlainLayout() ?
 		bparams.documentClass().plainLayout() : pit->layout();
 
-	OutputParams runparams = runparams_in;
 	runparams.moving_arg |= style.needprotect;
 
 	bool const maintext = text.isMainText(buf);
