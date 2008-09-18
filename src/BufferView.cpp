@@ -1617,6 +1617,8 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 	// Put anchor at the same position.
 	cur.resetAnchor();
 
+	cur.beginUndoGroup();
+
 	// Try to dispatch to an non-editable inset near this position
 	// via the temp cursor. If the inset wishes to change the real
 	// cursor it has to do so explicitly by using
@@ -1628,6 +1630,8 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 	// be modified, the inset's dispatch has to do so explicitly.
 	if (!inset || !cur.result().dispatched())
 		cur.dispatch(cmd);
+
+	cur.endUndoGroup();
 
 	// Notify left insets
 	if (cur != old) {
