@@ -159,7 +159,7 @@ for row in reader:
     num_cols = max(num_cols, len(row))
     rows.append(row)
 
-num_rows = reader.line_num # number of lines
+num_rows = len(rows) # number of lines
 
 # create a LyX file
 #####################
