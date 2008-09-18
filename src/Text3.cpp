@@ -863,7 +863,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (!ins)
 			break;
 
-		cur.recordUndoFullDocument();
+		cur.recordUndo();
 
 		string id = to_utf8(cmd.argument());
 		string grp = graphics::getGroupParams(bv->buffer(), id);
