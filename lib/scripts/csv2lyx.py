@@ -99,13 +99,13 @@ If no options are given csv2lyx will try to infer the CSV type of the csvfile,
 """
 parser = optparse.OptionParser(**args)
 
-parser.set_defaults(excel='', column_sep='')
-parser.add_option("-e", "--excel", metavar="CHAR",
-                  help="""CHAR corresponds to a CSV type:
+parser.set_defaults(excel ='', column_sep = '')
+parser.add_option("-e", "--excel", metavar ="CHAR",
+                  help = """CHAR corresponds to a CSV type:
    		       'e': Excel-generated CSV file
    		       't': Excel-generated TAB-delimited CSV file""")
-parser.add_option("-s", "--separator", dest="column_sep",
-                  help= """column separator
+parser.add_option("-s", "--separator", dest = "column_sep",
+                  help = """column separator
 		   		       't' means Tab""")
 
 group = optparse.OptionGroup(parser, "Remarks", """If your CSV file contains special characters (e. g. umlauts,
@@ -119,7 +119,7 @@ parser.add_option_group(group)
 if len(args) == 1:
     infile = args[0]
     fout = sys.stdout
-elif len(args) ==2:
+elif len(args) == 2:
     infile = args[0]
     fout = open(args[1], 'w')
 else:
@@ -133,23 +133,26 @@ dialects = {'' : None, 'e' : 'excel', 't' : 'excel-tab'}
 if options.excel not in dialects:
     parser.print_help()
     sys.exit(1)
-dialect= dialects[options.excel]
+dialect = dialects[options.excel]
 
 # Set Tab, if necessary
 if options.column_sep == 't':
 	options.column_sep = "\t"
 
 # when no special column separator is given, try to detect it:
-if options.column_sep or dialect :
-    reader = csv.reader(open(infile, "rb"), dialect= dialect, delimiter=options.column_sep)
+if options.column_sep and dialect :
+    reader = csv.reader(open(infile, "rb"), dialect = dialect, delimiter = options.column_sep)
 else:
     guesser = csv.Sniffer()
     input_file = "".join(open(infile,'rb').readlines())
     try:
         dialect = guesser.sniff(input_file)
-        reader = csv.reader(open(infile, "rb"), dialect= dialect)
+        reader = csv.reader(open(infile, "rb"), dialect = dialect)
     except:
-        reader = csv.reader(open(infile, "rb"), dialect= dialect, delimiter=',')
+        if dialect:
+            reader = csv.reader(open(infile, "rb"), dialect = dialect, delimiter = ',')
+        else:
+            reader = csv.reader(open(infile, "rb"), delimiter = ',')
 
 # read input
 num_cols = 1 # max columns
@@ -159,7 +162,7 @@ for row in reader:
     num_cols = max(num_cols, len(row))
     rows.append(row)
 
-num_rows = reader.line_num # number of lines
+num_rows = len(rows) # number of lines
 
 # create a LyX file
 #####################
