@@ -1818,7 +1818,7 @@ int Tabular::TeXTopHLine(odocstream & os, row_type row) const
 	// get for each column the topline (if any)
 	col_type const ncols = column_info.size();
 	vector<bool> topline;
-	int nset = 0;
+	col_type nset = 0;
 	for (col_type c = 0; c < ncols; ++c) {
 		topline.push_back(topLine(cellIndex(row, c)));
 		if (topline[c])
@@ -1869,7 +1869,7 @@ int Tabular::TeXBottomHLine(odocstream & os, row_type row) const
 	}
 
 	// combine this row's bottom lines and next row's toplines if necessary
-	int nset = 0;
+	col_type nset = 0;
 	for (col_type c = 0; c < ncols; ++c) {
 		if (!nextrowset)
 			bottomline[c] = bottomline[c] || topline[c];
