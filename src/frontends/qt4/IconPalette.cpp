@@ -237,10 +237,10 @@ void IconPalette::paintEvent(QPaintEvent * event)
 	if (fw && !tornoff_) {
 		QPainter p(this);
 		QRegion borderReg;
-		borderReg += QRect(0, 0, fw, height()); //left
-		borderReg += QRect(width() - fw, 0, fw, height()); //right
-		borderReg += QRect(0, 0, width(), fw); //top
-		borderReg += QRect(0, height() - fw, width(), fw); //bottom
+		borderReg += QRegion(QRect(0, 0, fw, height())); //left
+		borderReg += QRegion(QRect(width() - fw, 0, fw, height())); //right
+		borderReg += QRegion(QRect(0, 0, width(), fw)); //top
+		borderReg += QRegion(QRect(0, height() - fw, width(), fw)); //bottom
 		p.setClipRegion(borderReg);
 		QStyleOptionFrame frame;
 		frame.rect = rect();
