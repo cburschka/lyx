@@ -85,12 +85,6 @@ protected:
 	Image() {}
 	/// Don't copy the signal finishedLoading
 	Image(Image const &) {}
-
-	/** Uses the params to ascertain the dimensions of the scaled image.
-	 *  Returned as Dimension(width, height, 0 descend).
-	 *  If something goes wrong, returns make_pair(getWidth(), getHeight(), 0)
-	 */
-	Dimension scaledDimension(Params const & params) const;
 };
 
 

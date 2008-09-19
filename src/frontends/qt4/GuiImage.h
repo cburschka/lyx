@@ -15,7 +15,7 @@
 
 #include "graphics/GraphicsImage.h"
 
-#include <QPixmap>
+#include <QImage>
 #include <QString>
 
 namespace lyx {
@@ -27,9 +27,8 @@ public:
 	/// Access to this class is through this static method.
 	static Image * newImage();
 
-	/// Retrieve the buffered pixmap.
-	QPixmap const & pixmap() const
-	{ return is_transformed_? transformed_ : original_; }
+	/// Retrieve the rendered image.
+	QImage const & image() const;
 
 private:
 	/// Create a copy
@@ -44,6 +43,7 @@ private:
 	 * Load the image file into memory.
 	 */
 	bool load(support::FileName const & filename);
+	bool load();
 	/**
 	 * Finishes the process of modifying transformed_, using
 	 * \c params to decide on color, grayscale etc.
@@ -59,16 +59,17 @@ private:
 	bool scale(Params const & params);
 
 	/// Access to the class is through newImage() and clone.
-	GuiImage() {}
+	GuiImage();
 	///
 	GuiImage(GuiImage const &);
 
 	/// The original loaded image.
-	QPixmap original_;
+	QImage original_;
 
 	/// The transformed image for display.
-	QPixmap transformed_;
-	/// Buffer the pixmap itself
+	QImage transformed_;
+
+	///
 	bool is_transformed_;
 	///
 	QString fname_;

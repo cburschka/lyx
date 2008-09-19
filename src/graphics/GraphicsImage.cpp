@@ -25,23 +25,5 @@ namespace graphics {
 // instance of a viable derived class.
 boost::function<Image *()> Image::newImage;
 
-Dimension Image::scaledDimension(Params const & params) const
-{
-	// scale only when value > 0
-	unsigned int w = width();
-	unsigned int h = height();
-	if (params.scale) {
-		w = (w * params.scale) / 100;
-		h = (h * params.scale) / 100;
-	}
-
-	LYXERR(Debug::GRAPHICS, "graphics::Image::getScaledDimensions()"
-		<< "\n\tparams.scale       : " << params.scale
-		<< "\n\twidth              : " << w
-		<< "\n\theight             : " << h);
-
-	return Dimension(w, h, 0);
-}
-
 } // namespace graphics
 } // namespace lyx
