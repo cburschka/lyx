@@ -8,6 +8,11 @@ been applied because of incomplete testing.
 Known issues in version 1.5.6
 ------------------------------------
 
+- Unicode characters are generally not yet supported in mathed. If you insert
+  a special character to a math formula, the output of the document will
+  silently fail. Support for unicode in mathed will be introduced in the next
+  major release, LyX 1.6.0.
+
 - If you are using a local layout file (i.e., a *.layout file that resides in
   the same directory as the document), and if you are saving the document to
   another directory, the class information of the document get lost unless
