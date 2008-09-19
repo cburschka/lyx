@@ -149,9 +149,12 @@ else:
         dialect = guesser.sniff(input_file)
         reader = csv.reader(open(infile, "rb"), dialect = dialect)
     except:
-        if dialect:
+        # older versions (python < 2.5) of csv have problems (bugs)
+        # that is why we try harder to get a result, this should work on most cases
+        # as it assumes that the separator is a comma (the c in csv :-) )
+        try:
             reader = csv.reader(open(infile, "rb"), dialect = dialect, delimiter = ',')
-        else:
+        except:
             reader = csv.reader(open(infile, "rb"), delimiter = ',')
 
 # read input
