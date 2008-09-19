@@ -98,8 +98,7 @@ LengthAutoValidator::LengthAutoValidator(QWidget * parent)
 
 QValidator::State LengthAutoValidator::validate(QString & qtext, int & dummy) const
 {
-	string const text = fromqstr(qtext);
-	if (text == "auto")
+	if (qtext == "auto")
 		return QValidator::Acceptable;
 	return LengthValidator::validate(qtext, dummy);
 }
@@ -123,8 +122,7 @@ DoubleAutoValidator::DoubleAutoValidator(double bottom,
 
 
 QValidator::State DoubleAutoValidator::validate(QString & input, int & pos) const {
-	string const text = fromqstr(input);
-	if (text == "auto")
+	if (input == "auto")
 		return QValidator::Acceptable;
 	return QDoubleValidator::validate(input, pos);
 }
