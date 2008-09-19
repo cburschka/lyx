@@ -165,24 +165,12 @@ bool GuiImage::scale(Params const & params)
 {
 	QImage const & image = is_transformed_ ? transformed_ : original_;
 
-	unsigned int w = image.width();
-	unsigned int h = image.height();
-
-	// scale only when value > 0
-	if (params.scale > 0) {
-		w = (w * params.scale) / 100;
-		h = (h * params.scale) / 100;
-	}
-
-	LYXERR(Debug::GRAPHICS, "\n\tparams.scale  : " << params.scale
-		                 << "\n\twidth         : " << w
-		                 << "\n\theight        : " << h);
-
-	if (w == image.width() && h == image.height())
+	if (params.scale < 0 || params.scale == 100)
 		return false;
-	
+
+	qreal const scale = qreal(params.scale) / 100.0;
 	QMatrix m;
-	m.scale(double(w) / image.width(), double(h) / image.height());
+	m.scale(scale, scale);
 	transformed_ = image.transformed(m);
 	return true;
 }
