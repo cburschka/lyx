@@ -90,7 +90,6 @@ bool GuiImage::load()
 		LYXERR(Debug::GRAPHICS, "Unable to open image");
 		return false;
 	}
-	original_.detach();
 	return true;
 }
 
@@ -110,13 +109,10 @@ bool GuiImage::setPixmap(Params const & params)
 	is_transformed_ |= scale(params);
 
 	// Clear the pixmap to save some memory.
-	if (is_transformed_) {
-		original_.detach();
+	if (is_transformed_)
 		original_ = QImage();
-	} else {
-		transformed_.detach();
+	else
 		transformed_ = QImage();
-	}
 
 	return true;
 }
