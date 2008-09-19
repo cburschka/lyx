@@ -24,8 +24,10 @@ namespace graphics {
 class GuiImage : public Image
 {
 public:
-	/// Access to this class is through this static method.
-	static Image * newImage();
+	/// Access to the class is through newImage() and clone.
+	GuiImage();
+	///
+	GuiImage(GuiImage const &);
 
 	/// Retrieve the rendered image.
 	QImage const & image() const;
@@ -57,11 +59,6 @@ private:
 	bool rotate(Params const & params);
 	/// Scale the image using params.
 	bool scale(Params const & params);
-
-	/// Access to the class is through newImage() and clone.
-	GuiImage();
-	///
-	GuiImage(GuiImage const &);
 
 	/// The original loaded image.
 	QImage original_;

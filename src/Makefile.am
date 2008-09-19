@@ -300,7 +300,6 @@ liblyxgraphics_la_SOURCES = \
 	graphics/GraphicsConverter.h \
 	graphics/GraphicsConverter.cpp \
 	graphics/GraphicsImage.h \
-	graphics/GraphicsImage.cpp \
 	graphics/GraphicsLoader.h \
 	graphics/GraphicsLoader.cpp \
 	graphics/GraphicsParams.cpp \

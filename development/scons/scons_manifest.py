@@ -409,7 +409,6 @@ src_graphics_files = Split('''
     GraphicsCache.cpp
     GraphicsCacheItem.cpp
     GraphicsConverter.cpp
-    GraphicsImage.cpp
     GraphicsLoader.cpp
     GraphicsParams.cpp
     PreviewImage.cpp

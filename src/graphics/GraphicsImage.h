@@ -26,11 +26,6 @@
 
 #include "Dimension.h"
 
-#include <boost/function.hpp>
-#include <boost/signal.hpp>
-
-#include <vector>
-
 namespace lyx {
 
 namespace support { class FileName; }
@@ -41,11 +36,6 @@ class Params;
 
 class Image {
 public:
-	/** This is to be connected to a function that will return a new
-	 *  instance of a viable derived class.
-	 */
-	static boost::function<Image *()> newImage;
-
 	///
 	virtual ~Image() {}
 
@@ -61,13 +51,6 @@ public:
 	/// Is the image drawable ?
 	virtual bool isDrawable() const = 0;
 
-	/** At the end of the loading process inform the outside world
-	 *  by emitting a signal
-	 */
-	typedef boost::signal<void(bool)> SignalType;
-	///
-	SignalType finishedLoading;
-
 	/** Start loading the image file.
 	 *  The caller should expect this process to be asynchronous and
 	 *  so should connect to the "finished" signal above.
@@ -79,14 +62,11 @@ public:
 	 *  Returns true if the pixmap is created.
 	 */
 	virtual bool setPixmap(Params const & params) = 0;
-
-protected:
-	/// Must define default c-tor explicitly as we define a copy c-tor.
-	Image() {}
-	/// Don't copy the signal finishedLoading
-	Image(Image const &) {}
 };
 
+/// Only way to create a new Image.
+/// Implemented in the frontend.
+Image * newImage();
 
 } // namespace graphics
 } // namespace lyx

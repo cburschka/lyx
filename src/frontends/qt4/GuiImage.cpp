@@ -31,8 +31,8 @@ using namespace lyx::support;
 namespace lyx {
 namespace graphics {
 
-/// Access to this class is through this static method.
-Image * GuiImage::newImage()
+/// Implement factory method defined in GraphicsImage.h
+Image * newImage()
 {
 	return new GuiImage;
 }

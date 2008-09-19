@@ -693,10 +693,6 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 
 	connect(this, SIGNAL(lastWindowClosed()), this, SLOT(onLastWindowClosed()));
 
-	using namespace lyx::graphics;
-
-	Image::newImage = boost::bind(&GuiImage::newImage);
-
 	// needs to be done before reading lyxrc
 	QWidget w;
 	lyxrc.dpi = (w.logicalDpiX() + w.logicalDpiY()) / 2;

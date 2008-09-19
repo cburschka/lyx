@@ -291,7 +291,7 @@ bool CacheItem::Impl::loadImage()
 {
 	LYXERR(Debug::GRAPHICS, "Loading image.");
 
-	image_.reset(Image::newImage());
+	image_.reset(newImage());
 
 	bool success = image_->load(file_to_load_);
 	string const text = success ? "succeeded" : "failed";
