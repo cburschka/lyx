@@ -17,10 +17,6 @@
 #include "Inset.h"
 #include "InsetGraphicsParams.h"
 
-#include <boost/scoped_ptr.hpp>
-#include <boost/signals/trackable.hpp>
-
-
 namespace lyx {
 
 class RenderGraphic;
@@ -33,7 +29,7 @@ class LaTeXFeatures;
 /////////////////////////////////////////////////////////////////////////
 
 /// Used for images etc.
-class InsetGraphics : public Inset, public boost::signals::trackable
+class InsetGraphics : public Inset
 {
 public:
 	///
@@ -120,7 +116,7 @@ private:
 	/// holds the entity name that defines the graphics location (SGML).
 	docstring const graphic_label;
 	/// The thing that actually draws the image on LyX's screen.
-	boost::scoped_ptr<RenderGraphic> const graphic_;
+	RenderGraphic * graphic_;
 };
 
 namespace graphics {

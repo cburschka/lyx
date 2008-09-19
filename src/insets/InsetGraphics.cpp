@@ -83,9 +83,6 @@ TODO
 #include "support/os.h"
 #include "support/Systemcall.h"
 
-#include <boost/bind.hpp>
-#include <boost/tuple/tuple.hpp>
-
 #include <algorithm>
 #include <sstream>
 
@@ -164,8 +161,7 @@ InsetGraphics::InsetGraphics(Buffer & buf)
 
 InsetGraphics::InsetGraphics(InsetGraphics const & ig)
 	: Inset(ig),
-	  boost::signals::trackable(),
-		graphic_label(sgml::uniqueID(from_ascii("graph"))),
+	  graphic_label(sgml::uniqueID(from_ascii("graph"))),
 	  graphic_(new RenderGraphic(*ig.graphic_, this))
 {
 	setParams(ig.params());
@@ -181,6 +177,7 @@ Inset * InsetGraphics::clone() const
 InsetGraphics::~InsetGraphics()
 {
 	hideDialogs("graphics", this);
+	delete graphic_;
 }
 
 
