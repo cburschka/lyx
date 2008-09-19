@@ -92,8 +92,7 @@ LengthAutoValidator::LengthAutoValidator(QWidget * parent)
 
 QValidator::State LengthAutoValidator::validate(QString & qtext, int & dummy) const
 {
-	string const text = fromqstr(qtext);
-	if (text == "auto")
+	if (qtext == "auto")
 		return QValidator::Acceptable;
 	return LengthValidator::validate(qtext, dummy);
 }
