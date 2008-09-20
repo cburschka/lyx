@@ -13,16 +13,19 @@
  */
 
 #include <config.h>
+
 #include "GuiSelectionManager.h"
-#include "GuiDocument.h"
 
 #include "support/debug.h"
 
-using std::vector;
+#include <QKeyEvent>
+#include <QListView>
+#include <QPushButton>
+#include <QAbstractListModel>
+
 
 namespace lyx {
 namespace frontend {
-
 
 GuiSelectionManager::GuiSelectionManager(
 	QListView * avail, 
@@ -180,9 +183,12 @@ bool GuiSelectionManager::insertRowToSelected(int i,
 
 void GuiSelectionManager::addPB_clicked()
 {
-	QModelIndex const idxToAdd = getSelectedIndex(availableLV);
-	if (!idxToAdd.isValid())
+	QModelIndexList selIdx =
+		availableLV->selectionModel()->selectedIndexes();
+	if (selIdx.isEmpty())
 		return;
+
+	QModelIndex const idxToAdd = selectedLV->currentIndex();
 	QModelIndex const idx = selectedLV->currentIndex();
 	int const srows = selectedModel->rowCount();
 	
@@ -190,7 +196,7 @@ void GuiSelectionManager::addPB_clicked()
 	insertRowToSelected(srows, qm);
 	
 	selectionChanged(); //signal
-	
+
 	if (idx.isValid())
 		selectedLV->setCurrentIndex(idx);
 	
@@ -200,10 +206,11 @@ void GuiSelectionManager::addPB_clicked()
 
 void GuiSelectionManager::deletePB_clicked()
 {
-	QModelIndex idx = getSelectedIndex(selectedLV);
-	if (!idx.isValid())
+	QModelIndexList selIdx =
+		selectedLV->selectionModel()->selectedIndexes();
+	if (selIdx.isEmpty())
 		return;
-	
+	QModelIndex idx = selIdx.first();
 	selectedModel->removeRow(idx.row());
 	selectionChanged(); //signal
 	
@@ -307,10 +314,9 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 		if (keyPressed == Qt::Key_Enter || keyPressed == Qt::Key_Return) {
 			if (!keyModifiers)
 				addPB_clicked();
-			else if ((keyModifiers == Qt::ControlModifier) ||
-					(keyModifiers == Qt::KeypadModifier)  ||
-					(keyModifiers == (Qt::ControlModifier | Qt::KeypadModifier))
-				 ) {
+			else if (keyModifiers == Qt::ControlModifier ||
+					keyModifiers == Qt::KeypadModifier  ||
+					keyModifiers == (Qt::ControlModifier | Qt::KeypadModifier)) {
 				if (addPB->isEnabled()) {
 					addPB_clicked();
 					okHook(); //signal

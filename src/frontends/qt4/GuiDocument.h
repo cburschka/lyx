@@ -19,7 +19,6 @@
 #include "BulletsModule.h"
 #include "GuiDialog.h"
 #include "GuiIdListModel.h"
-#include "GuiSelectionManager.h"
 
 #include "ui_DocumentUi.h"
 #include "ui_FontUi.h"
@@ -37,20 +36,17 @@
 #include <map>
 #include <vector>
 
-class FloatPlacement;
-
 namespace lyx {
 
 class BufferParams;
+class FloatPlacement;
 class TextClass;
 
 namespace frontend {
 
 class GuiBranches;
+class GuiSelectionManager;
 class PreambleModule;
-
-///
-QModelIndex getSelectedIndex(QListView * lv);
 
 ///
 typedef void const * BufferId;
@@ -60,41 +56,6 @@ class UiWidget : public QWidget, public UI
 {
 public:
 	UiWidget(QWidget * parent = 0) : QWidget(parent) { UI::setupUi(this); }
-};
-
-
-/// SelectionManager for use with modules
-class ModuleSelectionManager : public GuiSelectionManager 
-{
-public:
-	ModuleSelectionManager(
-		QListView * availableLV, 
-		QListView * selectedLV,
-		QPushButton * addPB, 
-		QPushButton * delPB, 
-		QPushButton * upPB, 
-		QPushButton * downPB,
-		GuiIdListModel * availableModel,
-		GuiIdListModel * selectedModel);
-private:
-	///
-	virtual void updateAddPB();
-	///
-	virtual void updateUpPB();
-	///
-	virtual void updateDownPB();
-	///
-	virtual void updateDelPB();
-	/// returns availableModel as a GuiIdListModel
-	GuiIdListModel * getAvailableModel() 
-	{
-		return dynamic_cast<GuiIdListModel *>(availableModel);
-	}
-	/// returns selectedModel as a GuiIdListModel
-	GuiIdListModel * getSelectedModel() 
-	{
-		return dynamic_cast<GuiIdListModel *>(selectedModel);
-	}
 };
 
 

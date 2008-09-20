@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file floatplacement.h
+ * \file FloatPlacement.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,8 +10,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QT_FLOATPLACEMENT_H
-#define QT_FLOATPLACEMENT_H
+#ifndef FLOATPLACEMENT_H
+#define FLOATPLACEMENT_H
 
 #include "ui_FloatPlacementUi.h"
 #include <QWidget>
@@ -19,7 +19,9 @@
 #include <string>
 
 
-namespace lyx { class InsetFloatParams; }
+namespace lyx {
+
+class InsetFloatParams;
 
 class FloatPlacement : public QWidget, public Ui::FloatPlacementUi {
 	Q_OBJECT
@@ -52,7 +54,6 @@ private:
 
 };
 
+} // namespace lyx
 
-//} // namespace lyx
-
-#endif
+#endif // FLOATPLACEMENT_H

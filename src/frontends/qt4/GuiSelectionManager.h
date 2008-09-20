@@ -12,18 +12,14 @@
 #ifndef GUISELECTIONMANAGER_H
 #define GUISELECTIONMANAGER_H
 
-#include "Dialog.h"
-
 #include <QObject>
-#include <QKeyEvent>
-#include <QStringList>
-#include <QAbstractListModel>
-#include <QListView>
-#include <QPushButton>
 
-#include "support/qstring_helpers.h"
-
-#include <vector>
+class QAbstractListModel;
+class QModelIndex;
+class QListView;
+class QPushButton;
+class QVariant;
+template <class T, class U> class QMap;
 
 namespace lyx {
 namespace frontend {
@@ -38,7 +34,7 @@ namespace frontend {
  */
 class GuiSelectionManager : public QObject
 {
-Q_OBJECT
+	Q_OBJECT
 
 public:
 	///
@@ -66,24 +62,24 @@ public:
 	bool selectedFocused() { return selectedHasFocus_; };
 
 Q_SIGNALS:
-	///Emitted when the list of selected items has changed. 
+	/// Emitted when the list of selected items has changed. 
 	void selectionChanged();
-	///Emitted when something has changed that might lead the containing 
-	///dialog to want to update---the focused subwidget or selected item.
-	///(Specifically, it is emitted by *_PB_clicked() and *_LV_clicked.)
-	///NOTE: No automatic update of the button state is done here. If you
-	///just want to do that, connect updateHook() to updateView(). Much of the
-	///time, though, you will want to do a bit more processing first, so
-	///you can connect to some other function that itself calls updateView().
+	/// Emitted when something has changed that might lead the containing 
+	/// dialog to want to update---the focused subwidget or selected item.
+	/// (Specifically, it is emitted by *_PB_clicked() and *_LV_clicked.)
+	/// NOTE: No automatic update of the button state is done here. If you
+	/// just want to do that, connect updateHook() to updateView(). Much of the
+	/// time, though, you will want to do a bit more processing first, so
+	/// you can connect to some other function that itself calls updateView().
 	void updateHook();
-	///Emitted on Ctrl-Enter in the availableLV. Intended to be connected 
-	///to an "OK" event in the parent dialog.
+	/// Emitted on Ctrl-Enter in the availableLV. Intended to be connected 
+	/// to an "OK" event in the parent dialog.
 	void okHook();
 
 
 protected:
-	///Given a QModelIndex from availableLV, determines whether it has
-	///been selected (i.e., is also in selectedLV).
+	/// Given a QModelIndex from availableLV, determines whether it has
+	/// been selected (i.e., is also in selectedLV).
 	bool isSelected(const QModelIndex & idx);
 	///
  	bool insertRowToSelected(int i, QMap<int, QVariant> const & itemData);

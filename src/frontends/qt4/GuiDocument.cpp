@@ -15,6 +15,7 @@
 
 #include "GuiApplication.h"
 #include "GuiBranches.h"
+#include "GuiSelectionManager.h"
 #include "LaTeXHighlighter.h"
 #include "LengthCombo.h"
 #include "PanelStack.h"
@@ -140,7 +141,7 @@ class less_textclass_avail_desc
 	: public binary_function<string, string, int>
 {
 public:
-	int operator()(string const & lhs, string const & rhs) const
+	bool operator()(string const & lhs, string const & rhs) const
 	{
 		// Ordering criteria:
 		//   1. Availability of text class
@@ -156,20 +157,6 @@ public:
 }
 
 namespace frontend {
-
-
-/// 
-QModelIndex getSelectedIndex(QListView * lv)
-{
-	QModelIndex retval = QModelIndex();
-	QModelIndexList selIdx = 
-			lv->selectionModel()->selectedIndexes();
-	if (!selIdx.empty())
-		retval = selIdx.first();
-	return retval;
-}
-
-
 namespace {
 
 vector<string> getRequiredList(string const & modName) 
@@ -225,19 +212,44 @@ bool isModuleAvailable(string const & modName)
 //
 /////////////////////////////////////////////////////////////////////
 
-ModuleSelectionManager::ModuleSelectionManager(
-	QListView * availableLV, 
-	QListView * selectedLV,
-	QPushButton * addPB, 
-	QPushButton * delPB, 
-	QPushButton * upPB, 
-	QPushButton * downPB,
-	GuiIdListModel * availableModel,
-	GuiIdListModel * selectedModel) :
-GuiSelectionManager(availableLV, selectedLV, addPB, delPB,
+/// SelectionManager for use with modules
+class ModuleSelectionManager : public GuiSelectionManager 
+{
+public:
+	ModuleSelectionManager(
+		QListView * availableLV, 
+		QListView * selectedLV,
+		QPushButton * addPB, 
+		QPushButton * delPB, 
+		QPushButton * upPB, 
+		QPushButton * downPB,
+		GuiIdListModel * availableModel,
+		GuiIdListModel * selectedModel)
+	: GuiSelectionManager(availableLV, selectedLV, addPB, delPB,
                     upPB, downPB, availableModel, selectedModel) 
-{}
+		{}
 	
+
+private:
+	///
+	virtual void updateAddPB();
+	///
+	virtual void updateUpPB();
+	///
+	virtual void updateDownPB();
+	///
+	virtual void updateDelPB();
+	/// returns availableModel as a GuiIdListModel
+	GuiIdListModel * getAvailableModel() 
+	{
+		return dynamic_cast<GuiIdListModel *>(availableModel);
+	}
+	/// returns selectedModel as a GuiIdListModel
+	GuiIdListModel * getSelectedModel() 
+	{
+		return dynamic_cast<GuiIdListModel *>(selectedModel);
+	}
+};
 
 void ModuleSelectionManager::updateAddPB() 
 {

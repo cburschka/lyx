@@ -21,7 +21,7 @@ using namespace std;
 using namespace lyx::support;
 
 
-//namespace lyx {
+namespace lyx {
 
 FloatPlacement::FloatPlacement(QWidget *)
 {
@@ -239,6 +239,6 @@ void FloatPlacement::checkAllowed()
 	}
 }
 
-//} // namespace lyx
+} // namespace lyx
 
 #include "FloatPlacement_moc.cpp"
