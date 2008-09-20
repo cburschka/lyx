@@ -188,7 +188,7 @@ void GuiSelectionManager::addPB_clicked()
 	if (selIdx.isEmpty())
 		return;
 
-	QModelIndex const idxToAdd = selectedLV->currentIndex();
+	QModelIndex const idxToAdd = selIdx.first();
 	QModelIndex const idx = selectedLV->currentIndex();
 	int const srows = selectedModel->rowCount();
 	
