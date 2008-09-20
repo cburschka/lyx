@@ -127,7 +127,7 @@ char const * tex_fonts_monospaced_gui[] =
 };
 
 
-vector<pair<string, lyx::docstring> > pagestyles;
+vector<pair<string, QString> > pagestyles;
 
 
 } // anonymous namespace
@@ -718,35 +718,35 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(setCustomMargins(bool)));
 	connect(marginsModule->marginCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	connect(marginsModule->topLE, SIGNAL(textChanged(const QString &)),
+	connect(marginsModule->topLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(marginsModule->topUnit, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	connect(marginsModule->bottomLE, SIGNAL(textChanged(const QString &)),
+	connect(marginsModule->bottomLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(marginsModule->bottomUnit, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	connect(marginsModule->innerLE, SIGNAL(textChanged(const QString &)),
+	connect(marginsModule->innerLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(marginsModule->innerUnit, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	connect(marginsModule->outerLE, SIGNAL(textChanged(const QString &)),
+	connect(marginsModule->outerLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(marginsModule->outerUnit, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	connect(marginsModule->headheightLE, SIGNAL(textChanged(const QString &)),
+	connect(marginsModule->headheightLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(marginsModule->headheightUnit, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	connect(marginsModule->headsepLE, SIGNAL(textChanged(const QString &)),
+	connect(marginsModule->headsepLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(marginsModule->headsepUnit, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	connect(marginsModule->footskipLE, SIGNAL(textChanged(const QString&)),
+	connect(marginsModule->footskipLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(marginsModule->footskipUnit, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	connect(marginsModule->columnsepLE, SIGNAL(textChanged(const QString&)),
+	connect(marginsModule->columnsepLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(marginsModule->columnsepUnit, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
@@ -876,7 +876,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	latexModule = new UiWidget<Ui::LaTeXUi>;
 	// latex class
-	connect(latexModule->optionsLE, SIGNAL(textChanged(const QString &)),
+	connect(latexModule->optionsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(latexModule->psdriverCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
@@ -890,7 +890,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(latexModule->childDocGB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	connect(latexModule->childDocLE, SIGNAL(textChanged(const QString &)),
+	connect(latexModule->childDocLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(latexModule->childDocPB, SIGNAL(clicked()),
 		this, SLOT(browseMaster()));
@@ -947,13 +947,13 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	connect(pdfSupportModule->use_hyperrefGB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
-	connect(pdfSupportModule->titleLE, SIGNAL(textChanged(const QString &)),
+	connect(pdfSupportModule->titleLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
-	connect(pdfSupportModule->authorLE, SIGNAL(textChanged(const QString &)),
+	connect(pdfSupportModule->authorLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
-	connect(pdfSupportModule->subjectLE, SIGNAL(textChanged(const QString &)),
+	connect(pdfSupportModule->subjectLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
-	connect(pdfSupportModule->keywordsLE, SIGNAL(textChanged(const QString &)),
+	connect(pdfSupportModule->keywordsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->bookmarksGB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
@@ -977,7 +977,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->fullscreenCB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
-	connect(pdfSupportModule->optionsLE, SIGNAL(textChanged(const QString &)),
+	connect(pdfSupportModule->optionsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 
 	// float
@@ -1214,11 +1214,11 @@ void GuiDocument::updatePagestyle(string const & items, string const & sel)
 	pageLayoutModule->pagestyleCO->clear();
 	pageLayoutModule->pagestyleCO->addItem(qt_("Default"));
 
-	for (int n = 0; !token(items,'|',n).empty(); ++n) {
+	for (int n = 0; !token(items, '|', n).empty(); ++n) {
 		string style = token(items, '|', n);
-		docstring style_gui = _(style);
-		pagestyles.push_back(pair<string, docstring>(style, style_gui));
-		pageLayoutModule->pagestyleCO->addItem(toqstr(style_gui));
+		QString style_gui = qt_(style);
+		pagestyles.push_back(pair<string, QString>(style, style_gui));
+		pageLayoutModule->pagestyleCO->addItem(style_gui);
 	}
 
 	if (sel == "default") {
@@ -1230,8 +1230,7 @@ void GuiDocument::updatePagestyle(string const & items, string const & sel)
 
 	for (size_t i = 0; i < pagestyles.size(); ++i)
 		if (pagestyles[i].first == sel)
-			nn = pageLayoutModule->pagestyleCO->findText(
-					toqstr(pagestyles[i].second));
+			nn = pageLayoutModule->pagestyleCO->findText(pagestyles[i].second);
 
 	if (nn > 0)
 		pageLayoutModule->pagestyleCO->setCurrentIndex(nn);
@@ -1347,17 +1346,17 @@ namespace {
 	docstring formatStrVec(vector<string> const & v, docstring const & s) 
 	{
 		//this mess formats the list as "v[0], v[1], ..., [s] v[n]"
-		int const vSize = v.size();
 		if (v.size() == 0)
 			return docstring();
-		else if (v.size() == 1) 
+		if (v.size() == 1) 
 			return from_ascii(v[0]);
-		else if (v.size() == 2) {
+		if (v.size() == 2) {
 			docstring retval = _("%1$s and %2$s");
 			retval = subst(retval, _("and"), s);
 			return bformat(retval, from_ascii(v[0]), from_ascii(v[1]));
 		}
-		//The idea here is to format all but the last two items...
+		// The idea here is to format all but the last two items...
+		int const vSize = v.size();
 		docstring t2 = _("%1$s, %2$s");
 		docstring retval = from_ascii(v[0]);
 		for (int i = 1; i < vSize - 2; ++i)
@@ -1618,9 +1617,8 @@ void GuiDocument::apply(BufferParams & params)
 	if (pageLayoutModule->pagestyleCO->currentIndex() == 0)
 		params.pagestyle = "default";
 	else {
-		docstring style_gui =
-			qstring_to_ucs4(pageLayoutModule->pagestyleCO->currentText());
-		for (size_t i = 0; i < pagestyles.size(); ++i)
+		QString style_gui = pageLayoutModule->pagestyleCO->currentText();
+		for (size_t i = 0; i != pagestyles.size(); ++i)
 			if (pagestyles[i].second == style_gui)
 				params.pagestyle = pagestyles[i].first;
 	}
