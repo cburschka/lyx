@@ -111,13 +111,11 @@ public:
 	void updatePagestyle(std::string const &, std::string const &);
 
 	void showPreamble();
-	/// validate listings parameters and return an error message, if any
-	docstring validate_listings_params();
 
 private Q_SLOTS:
 	void updateNumbering();
 	void change_adaptor();
-	void set_listings_msg();
+	void setListingsMessage();
 	void saveDefaultClicked();
 	void useDefaultsClicked();
 	void setLSpacing(int);
@@ -137,6 +135,9 @@ private Q_SLOTS:
 	void updateModuleInfo();
 
 private:
+	/// validate listings parameters and return an error message, if any
+	QString validateListingsParameters();
+
 	UiWidget<Ui::TextLayoutUi> *textLayoutModule;
 	UiWidget<Ui::FontUi> *fontModule;
 	UiWidget<Ui::PageLayoutUi> *pageLayoutModule;
@@ -184,7 +185,6 @@ private:
 	/// current buffer
 	BufferId current_id_;
 
-protected:
 	/// return false if validate_listings_params returns error
 	bool isValid();
 

@@ -559,9 +559,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(textLayoutModule->bypassCB, SIGNAL(clicked()), 
 		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->bypassCB, SIGNAL(clicked()), 
-		this, SLOT(set_listings_msg()));
+		this, SLOT(setListingsMessage()));
 	connect(textLayoutModule->listingsED, SIGNAL(textChanged()),
-		this, SLOT(set_listings_msg()));
+		this, SLOT(setListingsMessage()));
 	textLayoutModule->listingsTB->setPlainText(
 		qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
 	textLayoutModule->lspacingLE->setValidator(new QDoubleValidator(
@@ -1023,40 +1023,41 @@ void GuiDocument::change_adaptor()
 }
 
 
-docstring GuiDocument::validate_listings_params()
+QString GuiDocument::validateListingsParameters()
 {
 	// use a cache here to avoid repeated validation
 	// of the same parameters
-	static string param_cache = string();
-	static docstring msg_cache = docstring();
+	static string param_cache;
+	static QString msg_cache;
 	
 	if (textLayoutModule->bypassCB->isChecked())
-		return docstring();
+		return QString();
 
 	string params = fromqstr(textLayoutModule->listingsED->toPlainText());
 	if (params != param_cache) {
 		param_cache = params;
-		msg_cache = InsetListingsParams(params).validate();
+		msg_cache = toqstr(InsetListingsParams(params).validate());
 	}
 	return msg_cache;
 }
 
 
-void GuiDocument::set_listings_msg()
+void GuiDocument::setListingsMessage()
 {
 	static bool isOK = true;
-	docstring msg = validate_listings_params();
-	if (msg.empty()) {
+	QString msg = validateListingsParameters();
+	if (msg.isEmpty()) {
 		if (isOK)
 			return;
 		isOK = true;
 		// listingsTB->setTextColor("black");
 		textLayoutModule->listingsTB->setPlainText(
-			qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
+			qt_("Input listings parameters on the right. "
+                "Enter ? for a list of parameters."));
 	} else {
 		isOK = false;
 		// listingsTB->setTextColor("red");
-		textLayoutModule->listingsTB->setPlainText(toqstr(msg));
+		textLayoutModule->listingsTB->setPlainText(msg);
 	}
 }
 
@@ -2178,7 +2179,7 @@ void GuiDocument::setLayoutComboByIDString(std::string const & idString)
 
 bool GuiDocument::isValid()
 {
-	return validate_listings_params().empty()
+	return validateListingsParameters().isEmpty()
 		&& (textLayoutModule->skipCO->currentIndex() != 3
 			|| !textLayoutModule->skipLE->text().isEmpty());
 }
