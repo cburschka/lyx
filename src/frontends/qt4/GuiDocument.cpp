@@ -171,53 +171,61 @@ QModelIndex getSelectedIndex(QListView * lv)
 
 
 namespace {
-	vector<string> getRequiredList(string const & modName) 
-	{
-		LyXModule const * const mod = moduleList[modName];
-		if (!mod)
-			return vector<string>(); //empty such thing
-		return mod->getRequiredModules();
-	}
+
+vector<string> getRequiredList(string const & modName) 
+{
+	LyXModule const * const mod = moduleList[modName];
+	if (!mod)
+		return vector<string>(); //empty such thing
+	return mod->getRequiredModules();
+}
 
 
-	vector<string> getExcludedList(string const & modName)
-	{
-		LyXModule const * const mod = moduleList[modName];
-		if (!mod)
-			return vector<string>(); //empty such thing
-		return mod->getExcludedModules();
-	}
+vector<string> getExcludedList(string const & modName)
+{
+	LyXModule const * const mod = moduleList[modName];
+	if (!mod)
+		return vector<string>(); //empty such thing
+	return mod->getExcludedModules();
+}
 
 
-	docstring getModuleDescription(string const & modName)
-	{
-		LyXModule const * const mod = moduleList[modName];
-		if (!mod)
-			return _("Module not found!");
-		return _(mod->getDescription());
-	}
+docstring getModuleDescription(string const & modName)
+{
+	LyXModule const * const mod = moduleList[modName];
+	if (!mod)
+		return _("Module not found!");
+	return _(mod->getDescription());
+}
 
 
-	vector<string> getPackageList(string const & modName)
-	{
-		LyXModule const * const mod = moduleList[modName];
-		if (!mod)
-			return vector<string>(); //empty such thing
-		return mod->getPackageList();
-	}
+vector<string> getPackageList(string const & modName)
+{
+	LyXModule const * const mod = moduleList[modName];
+	if (!mod)
+		return vector<string>(); //empty such thing
+	return mod->getPackageList();
+}
 
 
-	bool isModuleAvailable(string const & modName)
-	{
-		LyXModule * mod = moduleList[modName];
-		if (!mod)
-			return false;
-		return mod->isAvailable();
-	}
-} //anonymous namespace
+bool isModuleAvailable(string const & modName)
+{
+	LyXModule * mod = moduleList[modName];
+	if (!mod)
+		return false;
+	return mod->isAvailable();
+}
+
+} // anonymous namespace
 
 
-ModuleSelMan::ModuleSelMan(
+/////////////////////////////////////////////////////////////////////
+//
+// ModuleSelectionManager
+//
+/////////////////////////////////////////////////////////////////////
+
+ModuleSelectionManager::ModuleSelectionManager(
 	QListView * availableLV, 
 	QListView * selectedLV,
 	QPushButton * addPB, 
@@ -231,7 +239,7 @@ GuiSelectionManager(availableLV, selectedLV, addPB, delPB,
 {}
 	
 
-void ModuleSelMan::updateAddPB() 
+void ModuleSelectionManager::updateAddPB() 
 {
 	int const arows = availableModel->rowCount();
 	QModelIndexList const availSels = 
@@ -292,7 +300,7 @@ void ModuleSelMan::updateAddPB()
 }
 
 
-void ModuleSelMan::updateDownPB()
+void ModuleSelectionManager::updateDownPB()
 {
 	int const srows = selectedModel->rowCount();
 	if (srows == 0) {
@@ -331,7 +339,7 @@ void ModuleSelMan::updateDownPB()
 			find(reqs.begin(), reqs.end(), curModName) == reqs.end());
 }
 
-void ModuleSelMan::updateUpPB() 
+void ModuleSelectionManager::updateUpPB() 
 {
 	int const srows = selectedModel->rowCount();
 	if (srows == 0) {
@@ -370,7 +378,7 @@ void ModuleSelMan::updateUpPB()
 	upPB->setEnabled(find(reqs.begin(), reqs.end(), preModName) == reqs.end());
 }
 
-void ModuleSelMan::updateDelPB() 
+void ModuleSelectionManager::updateDelPB() 
 {
 	int const srows = selectedModel->rowCount();
 	if (srows == 0) {
@@ -445,7 +453,7 @@ void ModuleSelMan::updateDelPB()
 //
 /////////////////////////////////////////////////////////////////////
 
-PreambleModule::PreambleModule(): current_id_(0)
+PreambleModule::PreambleModule() : current_id_(0)
 {
 	// This is not a memory leak. The object will be destroyed
 	// with this.
@@ -888,7 +896,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(browseMaster()));
 	
 	selectionManager = 
-		new ModuleSelMan(latexModule->availableLV, latexModule->selectedLV, 
+		new ModuleSelectionManager(latexModule->availableLV,
+			latexModule->selectedLV, 
 			latexModule->addPB, latexModule->deletePB, 
 	 		latexModule->upPB, latexModule->downPB, 
 			availableModel(), selectedModel());

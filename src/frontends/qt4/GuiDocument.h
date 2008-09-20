@@ -64,10 +64,10 @@ public:
 
 
 /// SelectionManager for use with modules
-class ModuleSelMan : public GuiSelectionManager 
+class ModuleSelectionManager : public GuiSelectionManager 
 {
 public:
-	ModuleSelMan(
+	ModuleSelectionManager(
 		QListView * availableLV, 
 		QListView * selectedLV,
 		QPushButton * addPB, 
@@ -89,12 +89,12 @@ private:
 	GuiIdListModel * getAvailableModel() 
 	{
 		return dynamic_cast<GuiIdListModel *>(availableModel);
-	};
+	}
 	/// returns selectedModel as a GuiIdListModel
 	GuiIdListModel * getSelectedModel() 
 	{
 		return dynamic_cast<GuiIdListModel *>(selectedModel);
-	};
+	}
 };
 
 
