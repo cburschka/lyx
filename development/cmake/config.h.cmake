@@ -18,6 +18,8 @@
 #include "pcheaders.h"
 #endif
 
+#cmakedefine WORDS_BIGENDIAN 1
+
 #cmakedefine HAVE_ASPELL_ASPELL_H 1
 #cmakedefine HAVE_ASPELL_H 1
 

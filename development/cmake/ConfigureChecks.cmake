@@ -13,7 +13,9 @@ include(CheckLibraryExists)
 include(CheckTypeSize)
 include(CheckCXXSourceCompiles)
 include(MacroBoolTo01)
+include(TestBigEndian)
 
+test_big_endian(WORDS_BIGENDIAN)
 
 check_include_file_cxx(aspell.h HAVE_ASPELL_H)
 check_include_file_cxx(aspell/aspell.h HAVE_ASPELL_ASPELL_H)
