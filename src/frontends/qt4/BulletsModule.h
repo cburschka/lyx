@@ -9,9 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QBULLETSMODULE_H
-#define QBULLETSMODULE_H
-
+#ifndef BULLETSMODULE_H
+#define BULLETSMODULE_H
 
 #include "ui_BulletsUi.h"
 #include "Bullet.h"
@@ -21,17 +20,18 @@
 
 namespace lyx {
 
-class BulletsModule : public QWidget, public Ui::BulletsUi {
+class BulletsModule : public QWidget, public Ui::BulletsUi
+{
 	Q_OBJECT
 
 public:
 	///
-	BulletsModule(QWidget * parent = 0, const char * name = 0, Qt::WFlags fl = 0);
+	BulletsModule(QWidget * parent = 0);
 
 	/// set a bullet
 	void setBullet(int level, Bullet const & bullet);
 	/// get bullet setting
-	Bullet const & getBullet(int level) const;
+	Bullet const & bullet(int level) const;
 	/// update 1st level
 	void init();
 

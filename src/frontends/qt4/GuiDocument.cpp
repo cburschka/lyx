@@ -1543,10 +1543,10 @@ void GuiDocument::apply(BufferParams & params)
 	}
 
 	// bullets
-	params.user_defined_bullet(0) = bulletsModule->getBullet(0);
-	params.user_defined_bullet(1) = bulletsModule->getBullet(1);
-	params.user_defined_bullet(2) = bulletsModule->getBullet(2);
-	params.user_defined_bullet(3) = bulletsModule->getBullet(3);
+	params.user_defined_bullet(0) = bulletsModule->bullet(0);
+	params.user_defined_bullet(1) = bulletsModule->bullet(1);
+	params.user_defined_bullet(2) = bulletsModule->bullet(2);
+	params.user_defined_bullet(3) = bulletsModule->bullet(3);
 
 	// packages
 	params.graphicsDriver =

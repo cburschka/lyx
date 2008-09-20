@@ -20,7 +20,8 @@ using namespace std;
 
 namespace lyx {
 
-BulletsModule::BulletsModule(QWidget * , char const * , Qt::WFlags)
+BulletsModule::BulletsModule(QWidget * parent)
+    : QWidget(parent)
 {
 	setupUi(this);
 
@@ -186,7 +187,7 @@ void BulletsModule::setBullet(int level, Bullet const & bullet)
 }
 
 
-Bullet const & BulletsModule::getBullet(int level) const
+Bullet const & BulletsModule::bullet(int level) const
 {
 	return bullets_[level];
 }
