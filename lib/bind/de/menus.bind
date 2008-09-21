@@ -4,12 +4,12 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 
-# author Lars Gullik Bjønnes
+# author Lars Gullik BjÃ¸nnes
 # author Jean-Marc Lasgouttes
-# author André Pönitz
+# author AndrÃ© PÃ¶nitz
 # author Michael Gerz
-# author Jürgen Spitzmüller
-# author Pit Sütterlin
+# author JÃ¼rgen SpitzmÃ¼ller
+# author Pit SÃ¼tterlin
 
 # Full author contact details are available in file CREDITS.
 
@@ -17,26 +17,26 @@
 # Adapted to the german internationalisation 98-1-31 pit@uni-sw.gwdg.de
 
 # Diese Datei ist die deutsche Version der systemweiten Datei
-# /usr/local/share/lyx/bind/menus.bind.  Sie ist für diejenigen
+# /usr/local/share/lyx/bind/menus.bind.  Sie ist fÃ¼r diejenigen
 # gedacht, die die Deutsche Internationalisierung verwenden und legt
 # Menuefunktionen konsistent zu den deutschen Namen der Menues
 # fest.
 #
 #   ACHTUNG!
 #
-# Die Belegung der Sequenz ALT-D für die Funktionen des Menues "Datei"
-# verträgt sich nicht mit einer Definition der Dateien (x)emacs.bind
-# Wer diese verwendet, muß entweder die Definitionen in dieser Datei
-# ändern, oder aber die entsprechende bind-datei ebenfalls in das
+# Die Belegung der Sequenz ALT-D fÃ¼r die Funktionen des Menues "Datei"
+# vertrÃ¤gt sich nicht mit einer Definition der Dateien (x)emacs.bind
+# Wer diese verwendet, muÃŸ entweder die Definitionen in dieser Datei
+# Ã¤ndern, oder aber die entsprechende bind-datei ebenfalls in das
 # private Verzeichnis kopieren und dort die Definition veraendern.
 # Ich verwende z.B. in emacs.bind anstelle der normalen Definition
-# \bind "M-d" "word-delete-forward"  die leicht veränderte Variante
-# \bind "M-S-D" "word-delete-forward", wodurch die Funktion "Löschen
+# \bind "M-d" "word-delete-forward"  die leicht verÃ¤nderte Variante
+# \bind "M-S-D" "word-delete-forward", wodurch die Funktion "LÃ¶schen
 # eines Wortes" auf die Tastenkombination ALT-SHIFT-D gelegt wird
 
 
 #
-# Menue Schrifgröße
+# MenÃ¼ SchriftgrÃ¶ÃŸe
 #
 \bind "M-s t"			"font-size tiny"
 \bind "M-s S-S"			"font-size footnotesize"
@@ -62,7 +62,7 @@
 \bind "M-s minus"		"font-size decrease"
 
 #
-# Menue Absatztyp
+# MenÃ¼ Absatztyp
 #
 \bind "M-a 0"			"layout Part"
 \bind "M-a 1"			"layout Chapter"
@@ -110,17 +110,17 @@
 \bind "M-a Up"			"outline-up"
 \bind "M-a Down"		"outline-down"
 
-# Obsolete Tastenbelegung: in die persönliche *.bind Datei kopieren und
-# auskommentieren wenn diese Tastenbelegung gewünscht ist.
+# Obsolete Tastenbelegung: in die persÃ¶nliche *.bind Datei kopieren und
+# auskommentieren wenn diese Tastenbelegung gewÃ¼nscht ist.
 # \bind "M-a S-quotedbl"		"layout Section*"	# M-a S-2
-# \bind "M-a S-§"			"layout Subsection*"	# M-a S-3
+# \bind "M-a S-Â§"			"layout Subsection*"	# M-a S-3
 # \bind "M-a S-dollar"		"layout Subsubsection*"	# M-a S-4
 
 
 #
-# Menue Zeichensatz
+# MenÃ¼ Zeichensatz
 #
-\bind "M-z f"			"font-bold"
+\bind "M-z f"			"font-boldsymbol"
 \bind "M-z k"			"font-noun"
 \bind "M-z h"			"font-emph"
 \bind "M-z i"			"font-emph"
@@ -138,7 +138,7 @@
 \bind "M-z space"		"font-default"
 
 #
-# Menue Tastatur
+# MenÃ¼ Tastatur
 #
 \bind "M-t 1"			"keymap-primary"
 \bind "M-t 2"			"keymap-secondary"

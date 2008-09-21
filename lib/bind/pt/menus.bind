@@ -5,7 +5,7 @@
 # Licence details can be found in the file COPYING.
 
 # author unknown
-# author Lars Gullik Bj¯nnes
+# author Lars Gullik Bj√∏nnes
 # author Jean-Marc Lasgouttes
 
 # Full author contact details are available in file CREDITS.
@@ -13,9 +13,9 @@
 # Key bindings for menus, both invisible and visible.
 
 # Note que trocamos a tecla f10 para Control para abrir os menus
-# Pedro Krˆger <kroger@e-net.com.br>
+# Pedro Kr√∂ger <kroger@e-net.com.br>
 # 03/22/1999
-# 0.3 version [n„o-revisada]
+# 0.3 version [n√£o-revisada]
 
 
 #
@@ -59,7 +59,7 @@
 
 
 #
-# Par·grafo
+# Par√°grafo
 #
 
 \bind "M-p 1"			"layout Chapter"
@@ -70,13 +70,13 @@
 \bind "M-p 6"			"layout Subparagraph"
 \bind "M-p r"			"layout Abstract"       # resumo
 \bind "M-p S-A"			"layout Author"
-\bind "M-p e"			"layout Address"        # endereÁo
-\bind "M-p S-E"			"layout Right_Address"   # endereÁo ‡ direita
+\bind "M-p e"			"layout Address"        # endere√ßo
+\bind "M-p S-E"			"layout Right_Address"   # endere√ßo √† direita
 \bind "M-p m"			"layout Itemize"	# lista com Marcadores
 \bind "M-p S-B"			"layout Bibliography"   # Bibliografia
 \bind "M-p y"			"layout LyX-Code"
-\bind "M-p S-C"			"layout Comment"        # comet·rio
-\bind "M-p d"			"layout Description" 	# descriÁ„o
+\bind "M-p S-C"			"layout Comment"        # comet√°rio
+\bind "M-p d"			"layout Description" 	# descri√ß√£o
 \bind "M-p S-D"			"layout Date"		# Data
 \bind "M-p n"			"layout Enumerate"	# lista Numerada
 \bind "M-p f"			"layout ShortFoilhead"	# Foils!!
@@ -85,13 +85,13 @@
 \bind "M-p l"			"layout List"
 # \bind "M-p S-X"			"layout LaTeX"
 \bind "M-p n"			"layout Enumerate"	# numbered list
-\bind "M-p S-C"			"layout Quote"		# CitaÁ„o
+\bind "M-p S-C"			"layout Quote"		# Cita√ß√£o
 \bind "M-p c"			"layout Quotation"
 
 \bind "M-p r"			"layout ShortRotatefoilhead"	# Foils!!
 \bind "M-p S-R"			"layout Rotatefoilhead"	# Foils!!
 
-\bind "M-p p"			"layout Standard"	# Padr„o
+\bind "M-p p"			"layout Standard"	# Padr√£o
 \bind "M-p t"			"layout Title"
 \bind "M-p x"			"layout LaTeX"
 \bind "M-p space"		"drop-layouts-choice"
@@ -110,10 +110,10 @@
 # Estilo do Caractere
 #
 
-\bind "M-c n"			"font-bold"	# Negrito
+\bind "M-c n"			"font-boldsymbol"	# Negrito
 \bind "M-c S-S"			"font-noun"	# substantivo
 \bind "M-c e"			"font-emph"	#
-\bind "M-c m"			"math-mode"	# modo matem·tico
+\bind "M-c m"			"math-mode"	# modo matem√°tico
 \bind "M-c p"			"font-typewriter"
 \bind "M-c r"			"font-roman"
 \bind "M-c s"			"font-sans"

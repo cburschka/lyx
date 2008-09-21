@@ -5,7 +5,7 @@
 # Licence details can be found in the file COPYING.
 
 # author Pauli Virtanen
-# author Lars Gullik Bj¯nnes
+# author Lars Gullik Bj√∏nnes
 # author Jean-Marc Lasgouttes
 
 # Full author contact details are available in file CREDITS.
@@ -72,10 +72,10 @@
 # Paragraph style menu
 #
 
-# abcdefghij  mn  qrs uvwxyzÂ‰ˆ
-# a cdefghij  mnopqrs uvwxyzÂ‰ˆ (S)
-# abcdefghij lmnopqrstuvwxyzÂ‰ˆ (M)
-# abcdefghij lmn pqrstuvwxyzÂ‰ˆ (C)
+# abcdefghij  mn  qrs uvwxyz√•√§√∂
+# a cdefghij  mnopqrs uvwxyz√•√§√∂ (S)
+# abcdefghij lmnopqrstuvwxyz√•√§√∂ (M)
+# abcdefghij lmn pqrstuvwxyz√•√§√∂ (C)
 #
 #
 
@@ -89,13 +89,13 @@
 \bind "M-p 5"			"layout Paragraph"      # Osakappale
 \bind "M-p 6"			"layout Subparagraph"	# Aliosakappale
 
-\bind "M-p t"			"layout Author"		# Tekij‰
+\bind "M-p t"			"layout Author"		# Tekij√§
 \bind "M-p S-T"			"layout Title"		# Teoksen nimi
 \bind "M-p o"			"layout Address"	# Osoite
 \bind "M-p S-O"			"layout Right_Address"	# Oikea osoite
-\bind "M-p v"			"layout Date"		# P‰iv‰ys
-\bind "M-p M-c"			"layout Abstract"	# Tiivistelm‰
-\bind "M-p b"			"layout Bibliography"	# L‰hdeviitteet
+\bind "M-p v"			"layout Date"		# P√§iv√§ys
+\bind "M-p M-c"			"layout Abstract"	# Tiivistelm√§
+\bind "M-p b"			"layout Bibliography"	# L√§hdeviitteet
 
 \bind "M-p l"			"layout Itemize"	# Luettelo
 \bind "M-p S-L"			"layout Enumerate"	# Numeroitu luettelo
@@ -106,7 +106,7 @@
 \bind "M-p C-k"			"layout Description"	# Kuvaus
 \bind "M-p a"			"layout Quote"		# Lainaus
 \bind "M-p s"			"layout Quotation"	# Sitaatti
-\bind "M-p S-S"			"layout Verse"		# S‰e
+\bind "M-p S-S"			"layout Verse"		# S√§e
 \bind "M-p x"			"layout LaTeX"		# LaTeX
 
 \bind "M-p f"			"layout ShortFoilhead"	# Foils!!
@@ -134,7 +134,7 @@
 # Character style menu
 #
 
-\bind "M-c b"			"font-bold"	# Lihavoi
+\bind "M-c b"			"font-boldsymbol"	# Lihavoi
 \bind "M-c c"			"font-noun"	# Nimityyli
 \bind "M-c e"			"font-emph"	# Korosta
 \bind "M-c m"			"math-mode"	# Matematiikkatila

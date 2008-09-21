@@ -17914,7 +17914,7 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
--
+Strg-b
 \end_layout
 
 \end_inset
@@ -17965,7 +17965,7 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-z f
+Alt-z f oder Strg-Alt-b
 \end_layout
 
 \end_inset
@@ -18558,6 +18558,133 @@ unboldmath
 \end_layout
 
 \begin_layout Subsection
+Farbige Formeln
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Formel ! farbige
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Formeln können wie normaler Text gefärbt werden: Markieren Sie eine Formel
+ oder Formelteile und verwenden dann den 
+\family sans
+Textstil
+\family default
+ Dialog.
+ Hier ist eine Formel in Magenta:
+\begin_inset Formula \[
+{\color{magenta}\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Man kann auch eigene Farben definieren, wie in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Farbige-Boxen"
+
+\end_inset
+
+ erklärt ist.
+ Diese können dann mit dem TeX-Code Befehl 
+\series bold
+
+\backslash
+textcolor
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Befehle! T ! 
+\backslash
+textcolor
+\end_layout
+
+\end_inset
+
+ verwendet werden, dass folgendes Schema besitzt:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+textcolor{Farbe}{Zeichen oder Formel}
+\end_layout
+
+\begin_layout Standard
+Das folgende Beispiel wurde komplett dunkelgrün und teilweise rot eingefärbt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textcolor{dunkelgruen}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \[
+\int A\,\mathrm{d}x=\frac{{\color{red}\sqrt[5]{B}}}{\ln\left(\frac{1}{3}\right)}\]
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aufgrund eines Fehlers in LyX können nur komplette Formeln mit selbst definierte
+n Farben gefärbt werden.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-bug #5269"
+target "http://bugzilla.lyx.org/show_bug.cgi?id=5269"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Schriftgrößen
 \begin_inset CommandInset label
 LatexCommand label
@@ -18907,13 +19034,6 @@ A
 \begin_layout Standard
 Kann ein Symbol nicht in verschiedenen Größen dargestellt werden, wird es
  immer in der Standardgröße dargestellt.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -21332,6 +21452,13 @@ bot
 
 
 \begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 

@@ -17883,7 +17883,7 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
--
+Ctrl-b
 \end_layout
 
 \end_inset
@@ -17934,7 +17934,7 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-c b
+Alt-c b or Ctrl-Alt-b
 \end_layout
 
 \end_inset
@@ -18519,6 +18519,133 @@ status collapsed
 
 \backslash
 unboldmath 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Colored Formulas
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Formula ! colored
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Formulas can be colored like normal text: Highlight a formula or a formula
+ part and use the 
+\family sans
+Text Style
+\family default
+ dialog.
+ Here is a formula in magenta:
+\begin_inset Formula \[
+{\color{magenta}\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You can also define your own colors as described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Colored-Boxes"
+
+\end_inset
+
+.
+ They can be used with the TeX code command 
+\series bold
+
+\backslash
+textcolor
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Commands ! T ! 
+\backslash
+textcolor
+\end_layout
+
+\end_inset
+
+ in the scheme
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+textcolor{color}{characters or formula}
+\end_layout
+
+\begin_layout Standard
+The following example was colored completely dark green and partly red:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textcolor{darkgreen}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \[
+\int A\,\mathrm{d}x=\frac{{\color{red}\sqrt[5]{B}}}{\ln\left(\frac{1}{3}\right)}\]
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Due to a bug in LyX only complete formulas can be colored with self-defined
+ colors.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-bug #5269"
+target "http://bugzilla.lyx.org/show_bug.cgi?id=5269"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21274,13 +21401,6 @@ bot
 
 
 \begin_inset space \hfill{}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -24165,10 +24285,6 @@ sin(x)+B
 </row>
 </lyxtabular>
 
-\end_inset
-
-
-\begin_inset Newpage pagebreak
 \end_inset
 
 

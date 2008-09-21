@@ -5,7 +5,7 @@
 # Licence details can be found in the file COPYING.
 
 # author unknown
-# author Lars Gullik Bjønnes
+# author Lars Gullik BjÃ¸nnes
 # author Jean-Marc Lasgouttes
 # author Allan Rae
 
@@ -18,12 +18,12 @@
 #################################
 # Menu key bindings for Swedish locale.
 #
-# Denna är avsedd för användning tillsammans med svensk lokalisering av LyX.
+# Denna Ã¤r avsedd fÃ¶r anvÃ¤ndning tillsammans med svensk lokalisering av LyX.
 # Placeras i LYXDIR/bind, eller ~/.lyx/bind under namnet sv_menus.bind och
-# laddas automatiskt av LyX i stället för menus.bind då LANG=sv
+# laddas automatiskt av LyX i stÃ¤llet fÃ¶r menus.bind dÃ¥ LANG=sv
 # Dessa bindningar kan krocka med andra bindningar; betrakta detta som ett
-# prov. Observera att namnen på menyerna måste stämma med de översatta
-# (File/Fil, Edit/Redigera osv.), för "menu-open"
+# prov. Observera att namnen pÃ¥ menyerna mÃ¥ste stÃ¤mma med de Ã¶versatta
+# (File/Fil, Edit/Redigera osv.), fÃ¶r "menu-open"
 # Wed Dec  9 17:15:45 GMT+0100 1998, Joacim Persson <sp2joap1@ida.his.se>
 #
 #
@@ -37,9 +37,9 @@
 \bind "M-s s"			"font-size liten"
 \bind "M-s n"			"font-size normal"
 \bind "M-s l"			"font-size stor"
-\bind "M-s S-L"			"font-size större"
-\bind "M-s h"			"font-size störst"
-\bind "M-s S-H"			"font-size störstare"
+\bind "M-s S-L"			"font-size stÃ¶rre"
+\bind "M-s h"			"font-size stÃ¶rst"
+\bind "M-s S-H"			"font-size stÃ¶rstare"
 
 \bind "M-s 1"			"font-size pytteliten"
 \bind "M-s 2"			"font-size minst"
@@ -47,12 +47,12 @@
 \bind "M-s 4"			"font-size liten"
 \bind "M-s 5"			"font-size normal"
 \bind "M-s 6"			"font-size stor"
-\bind "M-s 7"			"font-size större"
-\bind "M-s 8"			"font-size störst"
-\bind "M-s 9"			"font-size störstare"
-\bind "M-s 0"			"font-size störstast"
+\bind "M-s 7"			"font-size stÃ¶rre"
+\bind "M-s 8"			"font-size stÃ¶rst"
+\bind "M-s 9"			"font-size stÃ¶rstare"
+\bind "M-s 0"			"font-size stÃ¶rstast"
 
-\bind "M-s plus"		"font-size öka"
+\bind "M-s plus"		"font-size Ã¶ka"
 \bind "M-s minus"		"font-size minska"
 
 
@@ -118,7 +118,7 @@
 # Character style menu
 #
 
-\bind "M-c b"			"font-bold"
+\bind "M-c b"			"font-boldsymbol"
 \bind "M-c c"			"font-noun"
 \bind "M-c e"			"font-emph"
 \bind "M-c m"			"math-mode"
