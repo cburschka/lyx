@@ -50,11 +50,11 @@ GuiSelectionManager::GuiSelectionManager(
 	availableLV->setModel(amod);
 	
 	connect(availableLV->selectionModel(),
-	        SIGNAL(currentChanged(const QModelIndex &, const QModelIndex &)),
-	        this, SLOT(availableChanged(const QModelIndex &, const QModelIndex &)));
+	        SIGNAL(currentChanged(QModelIndex,QModelIndex)),
+	        this, SLOT(availableChanged(QModelIndex, QModelIndex)));
 	connect(selectedLV->selectionModel(),
-	        SIGNAL(currentChanged(const QModelIndex &, const QModelIndex &)),
-	        this, SLOT(selectedChanged(const QModelIndex &, const QModelIndex &)));
+	        SIGNAL(currentChanged(QModelIndex, QModelIndex)),
+	        this, SLOT(selectedChanged(QModelIndex, QModelIndex)));
 	connect(addPB, SIGNAL(clicked()), 
 	        this, SLOT(addPB_clicked()));
 	connect(deletePB, SIGNAL(clicked()), 
@@ -63,12 +63,12 @@ GuiSelectionManager::GuiSelectionManager(
 	        this, SLOT(upPB_clicked()));
 	connect(downPB, SIGNAL(clicked()), 
 	        this, SLOT(downPB_clicked()));
-	connect(availableLV, SIGNAL(clicked(const QModelIndex &)), 
-	        this, SLOT(availableLV_clicked(const QModelIndex &)));
-	connect(availableLV, SIGNAL(doubleClicked(const QModelIndex &)), 
-	        this, SLOT(availableLV_doubleClicked(const QModelIndex &)));
-	connect(selectedLV, SIGNAL(clicked(const QModelIndex &)), 
-	        this, SLOT(selectedLV_clicked(const QModelIndex &)));
+	connect(availableLV, SIGNAL(clicked(QModelIndex)), 
+	        this, SLOT(availableLV_clicked(QModelIndex)));
+	connect(availableLV, SIGNAL(doubleClicked(QModelIndex)), 
+	        this, SLOT(availableLV_doubleClicked(QModelIndex)));
+	connect(selectedLV, SIGNAL(clicked(QModelIndex)), 
+	        this, SLOT(selectedLV_clicked(QModelIndex)));
 	
 	availableLV->installEventFilter(this);
 	selectedLV->installEventFilter(this);
@@ -273,6 +273,7 @@ void GuiSelectionManager::downPB_clicked()
 // can enter the QListView in other ways. But there are no signals sent
 // in that case. We need to reimplement focusInEvent() to capture those,
 // which means subclassing QListView. (rgh)
+// Or by installing an event listener.. (andre)
 void GuiSelectionManager::availableLV_clicked(const QModelIndex &)
 {
 	selectedHasFocus_ = false;
