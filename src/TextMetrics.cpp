@@ -425,8 +425,10 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		MetricsInfo mi(bv_, font.fontInfo(), w, mc);
 		ii->inset->metrics(mi, dim);
 		Dimension const old_dim = pm.insetDimension(ii->inset);
-		pm.setInsetDimension(ii->inset, dim);
-		changed |= (old_dim != dim);
+		if (old_dim != dim) {
+			pm.setInsetDimension(ii->inset, dim);
+			changed = true;
+		}
 	}
 
 	par.setBeginOfBody();
