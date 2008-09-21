@@ -43,6 +43,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  SetOutPath "$INSTDIR\Resources\scripts"
  File "${PRODUCT_SOURCEDIR}\Resources\scripts\convertDefault.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\scripts\csv2lyx.py"
  File "${PRODUCT_SOURCEDIR}\Resources\scripts\lyxpreview2bitmap.py"
  File "${PRODUCT_SOURCEDIR}\Resources\scripts\lyxpreview_tools.py"
  File "${PRODUCT_SOURCEDIR}\Resources\scripts\legacy_lyxpreview2ppm.py"
