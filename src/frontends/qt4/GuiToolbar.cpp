@@ -917,7 +917,7 @@ void GuiToolbar::update(bool in_math, bool in_table, bool in_review,
 
 QString GuiToolbar::sessionKey() const
 {
-	return "view-" + QString::number(owner_.id()) + "/" + objectName();
+	return "views/" + QString::number(owner_.id()) + "/" + objectName();
 }
 
 

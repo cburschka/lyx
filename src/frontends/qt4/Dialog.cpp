@@ -257,7 +257,7 @@ void Dialog::checkStatus()
 
 QString Dialog::sessionKey() const
 {
-	return "view-" + QString::number(lyxview_->id())
+	return "views/" + QString::number(lyxview_->id())
 		+ "/" + name();
 }
 

@@ -334,7 +334,7 @@ GuiView::GuiView(int id)
 	initToolbars();
 	// This enables to clear session data if any.
 	QSettings settings;
-	settings.clear();
+	settings.remove("views");
 }
 
 
@@ -347,7 +347,7 @@ GuiView::~GuiView()
 void GuiView::saveLayout() const
 {
 	QSettings settings;
-	QString const key = "view-" + QString::number(id_);
+	QString const key = "views/" + QString::number(id_);
 #ifdef Q_WS_X11
 	settings.setValue(key + "/pos", pos());
 	settings.setValue(key + "/size", size());
@@ -362,7 +362,7 @@ void GuiView::saveLayout() const
 bool GuiView::restoreLayout()
 {
 	QSettings settings;
-	QString const key = "view-" + QString::number(id_);
+	QString const key = "views/" + QString::number(id_);
 	QString const icon_key = key + "/icon_size";
 	if (!settings.contains(icon_key))
 		return false;
@@ -377,6 +377,9 @@ bool GuiView::restoreLayout()
 	if (!restoreGeometry(settings.value(key + "/geometry").toByteArray()))
 		setGeometry(50, 50, 690, 510);
 #endif
+	// Make sure layout is correctly oriented.
+	setLayoutDirection(qApp->layoutDirection());
+
 	// Allow the toc and view-source dock widget to be restored if needed.
 	Dialog * tmp;
 	if ((tmp = findOrBuild("toc", true)))

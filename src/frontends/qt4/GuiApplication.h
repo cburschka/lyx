@@ -52,6 +52,9 @@ public:
 	GuiApplication(int & argc, char ** argv);
 	~GuiApplication();
 
+	/// Clear all session information.
+	void clearSession();
+
 	/// Method inherited from \c Application class
 	//@{
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag) const;

@@ -67,6 +67,7 @@
 #include <QDir>
 #include <QEventLoop>
 #include <QFileOpenEvent>
+#include <QFileInfo>
 #include <QHash>
 #include <QIcon>
 #include <QImageReader>
@@ -81,6 +82,7 @@
 #include <QPixmapCache>
 #include <QRegExp>
 #include <QSessionManager>
+#include <QSettings>
 #include <QSocketNotifier>
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>
@@ -720,6 +722,13 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 }
 
 
+void GuiApplication::clearSession()
+{
+	QSettings settings;
+	settings.clear();
+}
+
+
 docstring GuiApplication::iconName(FuncRequest const & f, bool unknown)
 {
 	return qstring_to_ucs4(lyx::frontend::iconName(f, unknown));
@@ -1085,6 +1094,7 @@ void GuiApplication::execBatchCommands()
 	lyx::execBatchCommands();
 }
 
+
 QAbstractItemModel * GuiApplication::languageModel()
 {
 	if (d->language_model_)
@@ -1371,21 +1381,6 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 		{ "toolbarset", ui_toolbarset }
 	};
 
-	// Ensure that a file is read only once (prevents include loops)
-	static QStringList uifiles;
-	if (uifiles.contains(name)) {
-		if (!include) {
-			// We are reading again the top uifile so reset the safeguard:
-			uifiles.clear();
-			d->menus_.reset();
-			d->toolbars_.reset();
-		} else {
-			LYXERR(Debug::INIT, "UI file '" << name << "' has been read already. "
-				<< "Is this an include loop?");
-			return false;
-		}
-	}
-
 	LYXERR(Debug::INIT, "About to read " << name << "...");
 
 	FileName ui_path;
@@ -1405,9 +1400,26 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 		return false;
 	}
 
-	uifiles.push_back(name);
+
+	// Ensure that a file is read only once (prevents include loops)
+	static QStringList uifiles;
+	QString const uifile = toqstr(ui_path.absFilename());
+	if (uifiles.contains(uifile)) {
+		if (!include) {
+			// We are reading again the top uifile so reset the safeguard:
+			uifiles.clear();
+			d->menus_.reset();
+			d->toolbars_.reset();
+		} else {
+			LYXERR(Debug::INIT, "UI file '" << name << "' has been read already. "
+				<< "Is this an include loop?");
+			return false;
+		}
+	}
+	uifiles.push_back(uifile);
 
 	LYXERR(Debug::INIT, "Found " << name << " in " << ui_path);
+
 	Lexer lex(uitags);
 	lex.setFile(ui_path);
 	if (!lex.isOK()) {
@@ -1446,6 +1458,33 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 			break;
 		}
 	}
+
+	if (include)
+		return true;
+
+	QSettings settings;
+	settings.beginGroup("ui_files");
+	bool touched = false;
+	for (int i = 0; i != uifiles.size(); ++i) {
+		QFileInfo fi(uifiles[i]);
+		QDateTime const date_value = fi.lastModified();
+		QString const name_key = QString::number(i);
+		qDebug() << "File read " << i << " " << uifiles[i] << " " << date_value.toString("hh:mm:ss.zzz");
+		qDebug() << "File saved " << name_key << " " << settings.value(name_key).toString()
+			<< " " << settings.value(name_key + "/date").toDateTime().toString("hh:mm:ss.zzz");
+	
+		if (!settings.contains(name_key)
+		 || settings.value(name_key).toString() != uifiles[i]
+		 || settings.value(name_key + "/date").toDateTime() != date_value) {
+			touched = true;
+			settings.setValue(name_key, uifiles[i]);
+			settings.setValue(name_key + "/date", date_value);
+		}
+	}
+	settings.endGroup();
+	if (touched)
+		settings.remove("views");
+
 	return true;
 }
 
