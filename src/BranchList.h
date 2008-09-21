@@ -27,8 +27,8 @@
  */
 
 
-#ifndef BRANCHES_H
-#define BRANCHES_H
+#ifndef BRANCHLIST_H
+#define BRANCHLIST_H
 
 #include "ColorCode.h"
 
@@ -39,23 +39,22 @@
 
 namespace lyx {
 
-
 class Branch {
 public:
 	///
 	Branch();
 	///
-	docstring const & getBranch() const;
+	docstring const & branch() const;
 	///
 	void setBranch(docstring const &);
 	///
-	bool getSelected() const;
+	bool isSelected() const;
 	/** Select/deselect the branch.
 	 *  \return true if the selection status changes.
 	 */
 	bool setSelected(bool);
 	///
-	RGBColor const & getColor() const;
+	RGBColor const & color() const;
 	///
 	void setColor(RGBColor const &);
 	/**
@@ -114,9 +113,6 @@ private:
 	docstring separator_;
 };
 
-
-
-
 } // namespace lyx
 
-#endif
+#endif // BRANCHLIST_H

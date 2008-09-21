@@ -34,8 +34,8 @@ namespace lyx {
 namespace frontend {
 
 
-GuiBranches::GuiBranches(QWidget * parent, Qt::WFlags f)
-	: QWidget(parent, f)
+GuiBranches::GuiBranches(QWidget * parent)
+	: QWidget(parent)
 {
 	setupUi(this);
 	branchesTW->setColumnCount(3);
@@ -67,11 +67,11 @@ void GuiBranches::updateView()
 	for (; it != end; ++it) {
 		QTreeWidgetItem * newItem = new QTreeWidgetItem(branchesTW);
 
-		QString const bname = toqstr(it->getBranch());
+		QString const bname = toqstr(it->branch());
 		newItem->setText(0, bname);
-		newItem->setText(1, it->getSelected() ? qt_("Yes") : qt_("No"));
+		newItem->setText(1, it->isSelected() ? qt_("Yes") : qt_("No"));
 
-		QColor const itemcolor = rgb2qcolor(it->getColor());
+		QColor const itemcolor = rgb2qcolor(it->color());
 		if (itemcolor.isValid()) {
 			QPixmap coloritem(30, 10);
 			coloritem.fill(itemcolor);
@@ -172,7 +172,7 @@ void GuiBranches::toggleColor(QTreeWidgetItem * item)
 	if (!branch)
 		return;
 
-	QColor const initial = rgb2qcolor(branch->getColor());
+	QColor const initial = rgb2qcolor(branch->color());
 	QColor ncol = QColorDialog::getColor(initial, qApp->focusWidget());
 	if (!ncol.isValid())
 		return;

@@ -196,7 +196,7 @@ bool InsetBranch::isBranchSelected() const
 	Branch const * ourBranch = branchlist.find(params_.branch);
 	if (!ourBranch)
 		return false;
-	return ourBranch->getSelected();
+	return ourBranch->isSelected();
 }
 
 

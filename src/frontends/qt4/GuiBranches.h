@@ -18,10 +18,6 @@
 
 #include <QWidget>
 
-#include <vector>
-#include <string>
-
-
 class QTreeWidgetItem;
 
 namespace lyx {
@@ -34,7 +30,7 @@ class GuiBranches : public QWidget, public Ui::BranchesUi
 {
 	Q_OBJECT
 public:
-	GuiBranches(QWidget * parent=0, Qt::WFlags f=0);
+	GuiBranches(QWidget * parent = 0);
 
 	void update(BufferParams const & params);
 	void apply(BufferParams & params) const;
@@ -62,4 +58,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // GUIBRANCHES
+#endif // GUIBRANCHES_H

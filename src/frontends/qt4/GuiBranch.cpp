@@ -66,7 +66,7 @@ void GuiBranch::updateContents()
 	int id = 0;
 	int count = 0;
 	for (const_iterator it = begin; it != end; ++it, ++count) {
-		docstring const & branch = it->getBranch();
+		docstring const & branch = it->branch();
 		branchCO->addItem(toqstr(branch));
 
 		if (cur_branch == branch)

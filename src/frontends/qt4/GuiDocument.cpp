@@ -2315,9 +2315,9 @@ void GuiDocument::dispatchParams()
 		BranchList::const_iterator it = branchlist.begin();
 		BranchList::const_iterator const end = branchlist.end();
 		for (; it != end; ++it) {
-			docstring const & current_branch = it->getBranch();
+			docstring const & current_branch = it->branch();
 			Branch const * branch = branchlist.find(current_branch);
-			string const x11hexname = X11hexname(branch->getColor());
+			string const x11hexname = X11hexname(branch->color());
 			// display the new color
 			docstring const str = current_branch + ' ' + from_ascii(x11hexname);
 			dispatch(FuncRequest(LFUN_SET_COLOR, str));

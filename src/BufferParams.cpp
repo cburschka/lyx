@@ -761,9 +761,9 @@ void BufferParams::writeFile(ostream & os) const
 	BranchList::const_iterator it = branchlist().begin();
 	BranchList::const_iterator end = branchlist().end();
 	for (; it != end; ++it) {
-		os << "\\branch " << to_utf8(it->getBranch())
-		   << "\n\\selected " << it->getSelected()
-		   << "\n\\color " << lyx::X11hexname(it->getColor())
+		os << "\\branch " << to_utf8(it->branch())
+		   << "\n\\selected " << it->isSelected()
+		   << "\n\\color " << lyx::X11hexname(it->color())
 		   << "\n\\end_branch"
 		   << "\n";
 	}

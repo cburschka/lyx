@@ -19,16 +19,19 @@
 
 using namespace std;
 
+
 namespace lyx {
 
 namespace {
-class BranchNamesEqual : public std::unary_function<Branch, bool> {
+
+class BranchNamesEqual : public std::unary_function<Branch, bool>
+{
 public:
-	BranchNamesEqual(docstring const & name)
-		: name_(name) {}
+	BranchNamesEqual(docstring const & name) : name_(name) {}
+
 	bool operator()(Branch const & branch) const
 	{
-		return branch.getBranch() == name_;
+		return branch.branch() == name_;
 	}
 private:
 	docstring name_;
@@ -44,7 +47,7 @@ Branch::Branch() : selected_(false)
 }
 
 
-docstring const & Branch::getBranch() const
+docstring const & Branch::branch() const
 {
 	return branch_;
 }
@@ -56,7 +59,7 @@ void Branch::setBranch(docstring const & s)
 }
 
 
-bool Branch::getSelected() const
+bool Branch::isSelected() const
 {
 	return selected_;
 }
@@ -71,7 +74,7 @@ bool Branch::setSelected(bool b)
 }
 
 
-RGBColor const & Branch::getColor() const
+RGBColor const & Branch::color() const
 {
 	return color_;
 }
@@ -112,9 +115,9 @@ Branch const * BranchList::find(docstring const & name) const
 bool BranchList::add(docstring const & s)
 {
 	bool added = false;
-	docstring::size_type i = 0;
+	size_t i = 0;
 	while (true) {
-		docstring::size_type const j = s.find_first_of(separator_, i);
+		size_t const j = s.find_first_of(separator_, i);
 		docstring name;
 		if (j == docstring::npos)
 			name = s.substr(i);
