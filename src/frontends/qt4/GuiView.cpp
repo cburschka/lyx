@@ -362,8 +362,9 @@ void GuiView::saveLayout() const
 bool GuiView::restoreLayout()
 {
 	QSettings settings;
-	QString const key = "views/" + QString::number(id_);
-	QString const icon_key = key + "/icon_size";
+	settings.beginGroup("views");
+	settings.beginGroup(QString::number(id_));
+	QString const icon_key = "icon_size";
 	if (!settings.contains(icon_key))
 		return false;
 
@@ -374,7 +375,7 @@ bool GuiView::restoreLayout()
 	resize(size);
 	move(pos);
 #else
-	if (!restoreGeometry(settings.value(key + "/geometry").toByteArray()))
+	if (!restoreGeometry(settings.value("geometry").toByteArray()))
 		setGeometry(50, 50, 690, 510);
 #endif
 	// Make sure layout is correctly oriented.
@@ -387,7 +388,7 @@ bool GuiView::restoreLayout()
 	if ((tmp = findOrBuild("view-source", true)))
 		tmp->showView();
 
-	if (!restoreState(settings.value(key + "/layout").toByteArray(), 0))
+	if (!restoreState(settings.value("layout").toByteArray(), 0))
 		initToolbars();
 	updateDialogs();
 	return true;
