@@ -81,6 +81,9 @@
        <property name="text" >
         <string>&amp;OK</string>
        </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -268,10 +271,18 @@
  <tabstops>
   <tabstop>linespacing</tabstop>
   <tabstop>linespacingValue</tabstop>
-  <tabstop>indentCB</tabstop>
   <tabstop>labelWidth</tabstop>
+  <tabstop>indentCB</tabstop>
+  <tabstop>alignDefaultRB</tabstop>
+  <tabstop>alignJustRB</tabstop>
+  <tabstop>alignLeftRB</tabstop>
+  <tabstop>alignCenterRB</tabstop>
+  <tabstop>alignRightRB</tabstop>
+  <tabstop>synchronizedViewCB</tabstop>
   <tabstop>restorePB</tabstop>
+  <tabstop>okPB</tabstop>
   <tabstop>applyPB</tabstop>
+  <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
   <include location="local" >qt_i18n.h</include>
