@@ -9,6 +9,7 @@
  *
  * Full author contact details are available in file CREDITS.
  */
+
 #ifndef PANELSTACK_H
 #define PANELSTACK_H
 

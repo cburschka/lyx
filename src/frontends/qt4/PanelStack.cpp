@@ -17,14 +17,12 @@
 #include "support/debug.h"
 
 #include <QFontMetrics>
-#include <QStackedWidget>
-#include <QTreeWidget>
 #include <QHBoxLayout>
 #include <QHeaderView>
+#include <QStackedWidget>
+#include <QTreeWidget>
 
 #include "support/lassert.h"
-
-#include <iostream>
 
 using namespace std;
 
@@ -40,13 +38,9 @@ PanelStack::PanelStack(QWidget * parent)
 
 	list_->setRootIsDecorated(false);
 	list_->setColumnCount(1);
-	// Hide the pointless list header
 	list_->header()->hide();
-//	QStringList HeaderLabels;
-//	HeaderLabels << QString("Category");
-//	list_->setHeaderLabels(HeaderLabels);
 
-	connect(list_, SIGNAL(currentItemChanged (QTreeWidgetItem*, QTreeWidgetItem*)),
+	connect(list_, SIGNAL(currentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*)),
 		this, SLOT(switchPanel(QTreeWidgetItem *, QTreeWidgetItem*)));
 	connect(list_, SIGNAL(itemClicked (QTreeWidgetItem*, int)),
 		this, SLOT(itemSelected(QTreeWidgetItem *, int)));
@@ -83,8 +77,7 @@ void PanelStack::addCategory(QString const & name, QString const & parent)
 	QFontMetrics fm(list_->font());
 		
 	// calculate the real size the current item needs in the listview
-	int itemsize = fm.width(name) + 10
-		+ list_->indentation() * depth;
+	int itemsize = fm.width(name) + 10 + list_->indentation() * depth;
 	// adjust the listview width to the max. itemsize
 	if (itemsize > list_->minimumWidth())
 		list_->setMinimumWidth(itemsize);
@@ -104,7 +97,7 @@ void PanelStack::addPanel(QWidget * panel, QString const & name, QString const &
 void PanelStack::setCurrentPanel(QString const & name)
 {
 	QTreeWidgetItem * item = panel_map_.value(name, 0);
-	LASSERT(item, /**/);
+	LASSERT(item, return);
 
 	// force on first set
 	if (list_->currentItem() == item)
@@ -128,9 +121,9 @@ void PanelStack::switchPanel(QTreeWidgetItem * item,
 		if (previous && previous->parent() != item)
 			switchPanel( item->child(0), previous );
 	}
-	else
-		if (QWidget * w = widget_map_.value(item, 0))
-			stack_->setCurrentWidget(w);
+	else if (QWidget * w = widget_map_.value(item, 0)) {
+		stack_->setCurrentWidget(w);
+	}
 }
 
 
