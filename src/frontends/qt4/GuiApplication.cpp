@@ -1469,10 +1469,6 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 		QFileInfo fi(uifiles[i]);
 		QDateTime const date_value = fi.lastModified();
 		QString const name_key = QString::number(i);
-		qDebug() << "File read " << i << " " << uifiles[i] << " " << date_value.toString("hh:mm:ss.zzz");
-		qDebug() << "File saved " << name_key << " " << settings.value(name_key).toString()
-			<< " " << settings.value(name_key + "/date").toDateTime().toString("hh:mm:ss.zzz");
-	
 		if (!settings.contains(name_key)
 		 || settings.value(name_key).toString() != uifiles[i]
 		 || settings.value(name_key + "/date").toDateTime() != date_value) {
