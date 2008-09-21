@@ -64,6 +64,7 @@
 
 #include <QByteArray>
 #include <QClipboard>
+#include <QDateTime>
 #include <QDir>
 #include <QEventLoop>
 #include <QFileOpenEvent>
