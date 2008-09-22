@@ -168,10 +168,10 @@ Buffer * BufferList::next(Buffer const * buf) const
 						bstore.end(), buf);
 	LASSERT(it != bstore.end(), /**/);
 	++it;
-	if (it == bstore.end())
-		return bstore.front();
-	else
-		return *it;
+	Buffer * nextbuf = (it == bstore.end()) ? bstore.front() : *it;
+	if (nextbuf->fileName().extension() == "internal")
+		return next(nextbuf);
+	return nextbuf;
 }
 
 
@@ -184,10 +184,11 @@ Buffer * BufferList::previous(Buffer const * buf) const
 	BufferStorage::const_iterator it = find(bstore.begin(),
 						bstore.end(), buf);
 	LASSERT(it != bstore.end(), /**/);
-	if (it == bstore.begin())
-		return bstore.back();
-	else
-		return *(it - 1);
+
+	Buffer * previousbuf = (it == bstore.begin()) ? bstore.back() : *(it - 1);
+	if (previousbuf->fileName().extension() == "internal")
+		return previous(previousbuf);
+	return previousbuf;
 }
 
 
