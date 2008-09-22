@@ -155,6 +155,16 @@ enum ColorCode
 	Color_deletedtext,
 	/// added text color
 	Color_addedtext,
+	/// changed text color author 1
+	Color_changedtextauthor1,
+	/// changed text color author 2
+	Color_changedtextauthor2,
+	/// changed text color author 3
+	Color_changedtextauthor3,
+	/// changed text color author 4
+	Color_changedtextauthor4,
+	/// changed text color author 5
+	Color_changedtextauthor5,
 	/// Top and bottom line color
 	Color_topline,
 	/// Table line color

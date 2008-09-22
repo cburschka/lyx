@@ -15,6 +15,8 @@
 #ifndef CHANGES_H
 #define CHANGES_H
 
+#include "ColorCode.h"
+
 #include "support/strfwd.h"
 #include "support/types.h"
 #include "support/lyxtime.h"
@@ -35,11 +37,25 @@ public:
 		DELETED // deleted text
 	};
 
-	explicit Change(Type t, int a = 0, time_t ct = current_time())
+	explicit Change(Type t = UNCHANGED, int a = 0, time_t ct = current_time())
 		: type(t), author(a), changetime(ct) {}
 
 	/// is the change similar to the given change such that both can be merged?
-	bool isSimilarTo(Change const & change);
+	bool isSimilarTo(Change const & change) const;
+	/// The color of this change on screen
+	ColorCode color() const;
+	///
+	bool changed() const { return type != UNCHANGED; }
+	///
+	void setUnchanged() { type = UNCHANGED; }
+	///
+	bool inserted() const { return type == INSERTED; }
+	///
+	void setInserted() { type = INSERTED; }
+	///
+	bool deleted() const { return type == DELETED; }
+	///
+	void setDeleted() { type = DELETED; }
 
 	Type type;
 

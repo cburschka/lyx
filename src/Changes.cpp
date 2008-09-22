@@ -39,7 +39,7 @@ namespace lyx {
  * the later change time is preserved.
  */
 
-bool Change::isSimilarTo(Change const & change)
+bool Change::isSimilarTo(Change const & change) const
 {
 	if (type != change.type)
 		return false;
@@ -48,6 +48,30 @@ bool Change::isSimilarTo(Change const & change)
 		return true;
 
 	return author == change.author;
+}
+
+
+ColorCode Change::color() const
+{
+	ColorCode color = Color_none;
+	switch (author % 5) {
+		case 0:
+			color = Color_changedtextauthor1;
+			break;
+		case 1:
+			color = Color_changedtextauthor2;
+			break;
+		case 2:
+			color = Color_changedtextauthor3;
+			break;
+		case 3:
+			color = Color_changedtextauthor4;
+			break;
+		case 4:
+			color = Color_changedtextauthor5;
+			break;
+	}
+	return color;
 }
 
 

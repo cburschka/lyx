@@ -241,7 +241,8 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	pos_type const end = row_.endpos();
 	FontSpan const font_span = par_.fontSpan(pos);
 	// Track-change status.
-	Change::Type const change_type = par_.lookupChange(pos).type;
+	Change const & change_running = par_.lookupChange(pos);
+		
 	// selected text?
 	bool const selection = pos >= row_.sel_beg && pos < row_.sel_end;
 
@@ -256,8 +257,9 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 			// Selection ends or starts here.
 			break;
 
-		if (change_type != par_.lookupChange(pos).type)
-			// Track change type has changed.
+		Change const & change = par_.lookupChange(pos);
+		if (!change_running.isSimilarTo(change))
+			// Track change type or author has changed.
 			break;
 
 		char_type c = par_.getChar(pos);
@@ -306,16 +308,14 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 
 	docstring s(&str[0], str.size());
 
-	if (!selection && change_type == Change::UNCHANGED) {
+	if (!selection && !change_running.changed()) {
 		x_ += pi_.pain.text(int(x_), yo_, s, font);
 		return;
 	}
 	
 	FontInfo copy = font;
-	if (change_type == Change::DELETED)
-		copy.setColor(Color_deletedtext);
-	else if (change_type == Change::INSERTED)
-		copy.setColor(Color_addedtext);
+	if (change_running.changed())
+		copy.setColor(change_running.color());
 	else if (selection)
 		copy.setColor(Color_selectiontext);
 
@@ -601,15 +601,24 @@ void RowPainter::paintLast()
 
 	// paint imaginary end-of-paragraph character
 
-	if (par_.isInserted(par_.size()) || par_.isDeleted(par_.size())) {
-		FontMetrics const & fm = theFontMetrics(pi_.base.bv->buffer().params().getFont());
+	Change const & change = par_.lookupChange(par_.size());
+	if (change.changed()) {
+		FontMetrics const & fm = 
+			theFontMetrics(pi_.base.bv->buffer().params().getFont());
 		int const length = fm.maxAscent() / 2;
-		ColorCode col = par_.isInserted(par_.size()) ? Color_addedtext : Color_deletedtext;
+		ColorCode col = change.color();
 
 		pi_.pain.line(int(x_) + 1, yo_ + 2, int(x_) + 1, yo_ + 2 - length, col,
 			   Painter::line_solid, Painter::line_thick);
-		pi_.pain.line(int(x_) + 1 - length, yo_ + 2, int(x_) + 1, yo_ + 2, col,
-			   Painter::line_solid, Painter::line_thick);
+		
+		if (change.deleted()) {
+			pi_.pain.line(int(x_) + 1 - length, yo_ + 2, int(x_) + 1 + length, 
+				yo_ + 2, col, Painter::line_solid, Painter::line_thick);
+		} else {
+			pi_.pain.line(int(x_) + 1 - length, yo_ + 2, int(x_) + 1, 
+				yo_ + 2, col, Painter::line_solid, Painter::line_thick);
+		}
+
 	}
 
 	// draw an endlabel
@@ -687,10 +696,9 @@ void RowPainter::paintText()
 
 	Layout const & layout = par_.layout();
 
-	bool running_strikeout = false;
-	bool is_struckout = false;
-	int last_strikeout_x = 0;
-
+	Change change_running;
+	int change_last_x = 0;
+	
 	// check for possible inline completion
 	DocIterator const & inlineCompletionPos = pi_.base.bv->inlineCompletionPos();
 	pos_type inlineCompletionVPos = -1;
@@ -747,28 +755,35 @@ void RowPainter::paintText()
 			++vpos;
 			continue;
 		}
-
-		is_struckout = par_.isDeleted(pos);
-
-		if (is_struckout && !running_strikeout) {
-			running_strikeout = true;
-			last_strikeout_x = int(x_);
+		Change const & change = par_.lookupChange(pos);
+		if (change.changed() && !change_running.changed()) {
+			change_running = change;
+			change_last_x = int(x_);
 		}
 
 		Inset const * inset = par_.getInset(pos);
 		bool const highly_editable_inset = inset
 			&& inset->editable() == Inset::HIGHLY_EDITABLE;
 
-		// If we reach the end of a struck out range, paint it.
+		// If we reach the end of a change or if the author changes, paint it.
 		// We also don't paint across things like tables
-		if (running_strikeout && (highly_editable_inset || !is_struckout)) {
+		if (change_running.changed() && (highly_editable_inset 
+			|| !change.changed() || !change_running.isSimilarTo(change))) {
 			// Calculate 1/3 height of the buffer's default font
 			FontMetrics const & fm
 				= theFontMetrics(pi_.base.bv->buffer().params().getFont());
-			int const middle = yo_ - fm.maxAscent() / 3;
-			pi_.pain.line(last_strikeout_x, middle, int(x_), middle,
-				Color_deletedtext, Painter::line_solid, Painter::line_thin);
-			running_strikeout = false;
+			int const y_bar = change_running.deleted() ? 
+				yo_ - fm.maxAscent() / 3 : yo_ + fm.maxAscent() / 6;
+			pi_.pain.line(change_last_x, y_bar, int(x_), y_bar,
+				change_running.color(), Painter::line_solid, 
+				Painter::line_thin);
+			
+			// Change might continue with a different author or type
+			if (change.changed() && !highly_editable_inset) {
+				change_running = change;
+				change_last_x = int(x_);
+			} else 
+				change_running.setUnchanged();
 		}
 
 		if (body_pos > 0 && pos == body_pos - 1) {
@@ -808,14 +823,14 @@ void RowPainter::paintText()
 	}
 
 	// if we reach the end of a struck out range, paint it
-	if (running_strikeout) {
-		// calculate 1/3 height of the buffer's default font
+	if (change_running.changed()) {
 		FontMetrics const & fm
 			= theFontMetrics(pi_.base.bv->buffer().params().getFont());
-		int const middle = yo_ - fm.maxAscent() / 3;
-		pi_.pain.line(last_strikeout_x, middle, int(x_), middle,
-			Color_deletedtext, Painter::line_solid, Painter::line_thin);
-		running_strikeout = false;
+		int const y_bar = change_running.deleted() ? 
+				yo_ - fm.maxAscent() / 3 : yo_ + fm.maxAscent() / 6;
+		pi_.pain.line(change_last_x, y_bar, int(x_), y_bar,
+			change_running.color(), Painter::line_solid, Painter::line_thin);
+		change_running.setUnchanged();
 	}
 }
 
