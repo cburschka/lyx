@@ -109,6 +109,9 @@ What's new
 
 - Fix toggling of font and corresponding undo in mathed (bug 5246).
 
+- On Windows Vista, fix application association when a file type is not
+  registered (in this case the "Unknown" application would be used).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
