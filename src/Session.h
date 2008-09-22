@@ -21,9 +21,6 @@
 #include <vector>
 #include <map>
 
-// used by at least frontends/qt4/GuiPref.cpp
-const long maxlastfiles = 20;
-
 /** This session file maintains
   1. the latest documents loaded (lastfiles)
   2. cursor positions of files closed (lastfilepos)
