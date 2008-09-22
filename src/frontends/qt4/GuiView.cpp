@@ -370,8 +370,8 @@ bool GuiView::restoreLayout()
 
 	setIconSize(settings.value(icon_key).toSize());
 #ifdef Q_WS_X11
-	QPoint pos = settings.value(key + "/pos", QPoint(50, 50)).toPoint();
-	QSize size = settings.value(key + "/size", QSize(690, 510)).toSize();
+	QPoint pos = settings.value("pos", QPoint(50, 50)).toPoint();
+	QSize size = settings.value("size", QSize(690, 510)).toSize();
 	resize(size);
 	move(pos);
 #else
