@@ -291,63 +291,6 @@ BookmarksSection::Bookmark const & BookmarksSection::bookmark(unsigned int i) co
 }
 
 
-void SessionInfoSection::read(istream & is)
-{
-	string tmp;
-	do {
-		char c = is.peek();
-		if (c == '[')
-			break;
-		getline(is, tmp);
-		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ')
-			continue;
-
-		try {
-			// Read session info, saved as key/value pairs
-			// would better yell if pos returns npos
-			string::size_type pos = tmp.find_first_of(" = ");
-			// silently ignore lines without " = "
-			if (pos != string::npos) {
-				string key = tmp.substr(0, pos);
-				string value = tmp.substr(pos + 3);
-				sessioninfo[key] = value;
-			} else
-				LYXERR(Debug::INIT, "LyX: Warning: Ignore session info: " << tmp);
-		} catch (...) {
-			LYXERR(Debug::INIT, "LyX: Warning: unknown Session info: " << tmp);
-		}
-	} while (is.good());
-}
-
-
-void SessionInfoSection::write(ostream & os) const
-{
-	os << '\n' << sec_session << '\n';
-	for (MiscInfo::const_iterator val = sessioninfo.begin();
-		val != sessioninfo.end(); ++val) {
-		os << val->first << " = " << val->second << '\n';
-	}
-}
-
-
-void SessionInfoSection::save(string const & key, string const & value)
-{
-	sessioninfo[key] = value;
-}
-
-
-string const SessionInfoSection::load(string const & key, bool release)
-{
-	MiscInfo::const_iterator pos = sessioninfo.find(key);
-	string value;
-	if (pos != sessioninfo.end())
-		value = pos->second;
-	if (release)
-		sessioninfo.erase(key);
-	return value;
-}
-
-
 Session::Session(unsigned int num) :
 	last_files(num)
 {
@@ -380,8 +323,6 @@ void Session::readFile()
 			lastFilePos().read(is);
 		else if (tmp == sec_bookmarks)
 			bookmarks().read(is);
-		else if (tmp == sec_session)
-			sessionInfo().read(is);
 		else
 			LYXERR(Debug::INIT, "LyX: Warning: unknown Session section: " << tmp);
 	}
@@ -399,7 +340,6 @@ void Session::writeFile() const
 		lastOpened().write(os);
 		lastFilePos().write(os);
 		bookmarks().write(os);
-		sessionInfo().write(os);
 	} else
 		LYXERR(Debug::INIT, "LyX: Warning: unable to save Session: "
 		       << session_file);

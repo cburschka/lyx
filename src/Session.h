@@ -263,38 +263,6 @@ private:
 };
 
 
-class SessionInfoSection : SessionSection
-{
-public:
-	///
-	typedef std::map<std::string, std::string> MiscInfo;
-
-public:
-	///
-	void read(std::istream & is);
-
-	///
-	void write(std::ostream & os) const;
-
-	/** set session info
-		@param key key of the value to store
-		@param value value, a string without newline ('\n')
-	*/
-	void save(std::string const & key, std::string const & value);
-
-	/** load session info
-		@param key a key to extract value from the session file
-		@param release whether or not clear the value. Default to true
-			since most of such values are supposed to be used only once.
-	*/
-	std::string const load(std::string const & key, bool release = true);
-
-private:
-	/// a map to save session info
-	MiscInfo sessioninfo;
-};
-
-
 class Session
 {
 public:
@@ -318,10 +286,6 @@ public:
 	BookmarksSection & bookmarks() { return bookmarks_; }
 	///
 	BookmarksSection const & bookmarks() const { return bookmarks_; }
-	///
-	SessionInfoSection & sessionInfo() { return session_info; }
-	///
-	SessionInfoSection const & sessionInfo() const { return session_info; }
 
 private:
 	friend class LyX;
@@ -347,8 +311,6 @@ private:
 	LastFilePosSection last_file_pos;
 	///
 	BookmarksSection bookmarks_;
-	///
-	SessionInfoSection session_info;
 };
 
 /// This is a singleton class. Get the instance.
