@@ -170,8 +170,10 @@ public:
 
 	/// filename without path
 	std::string onlyFileName() const;
-        /// filename without path and without extension
-        std::string onlyFileNameWithoutExt() const;
+	/// filename without path and without extension
+	std::string onlyFileNameWithoutExt() const;
+	/// only extension after the last dot.
+	std::string extension() const;
 	/// path without file name
 	FileName onlyPath() const;
 	/// used for display in the Gui

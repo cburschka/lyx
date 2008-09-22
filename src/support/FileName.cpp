@@ -302,6 +302,12 @@ string FileName::onlyFileNameWithoutExt() const
 }
 
 
+string FileName::extension() const
+{
+       return fromqstr(d->fi.suffix());
+}
+
+
 FileName FileName::onlyPath() const
 {
 	FileName path;
