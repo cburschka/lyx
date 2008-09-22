@@ -242,7 +242,7 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	FontSpan const font_span = par_.fontSpan(pos);
 	// Track-change status.
 	Change const & change_running = par_.lookupChange(pos);
-		
+
 	// selected text?
 	bool const selection = pos >= row_.sel_beg && pos < row_.sel_end;
 
@@ -603,19 +603,19 @@ void RowPainter::paintLast()
 
 	Change const & change = par_.lookupChange(par_.size());
 	if (change.changed()) {
-		FontMetrics const & fm = 
+		FontMetrics const & fm =
 			theFontMetrics(pi_.base.bv->buffer().params().getFont());
 		int const length = fm.maxAscent() / 2;
 		ColorCode col = change.color();
 
 		pi_.pain.line(int(x_) + 1, yo_ + 2, int(x_) + 1, yo_ + 2 - length, col,
 			   Painter::line_solid, Painter::line_thick);
-		
+
 		if (change.deleted()) {
-			pi_.pain.line(int(x_) + 1 - length, yo_ + 2, int(x_) + 1 + length, 
+			pi_.pain.line(int(x_) + 1 - length, yo_ + 2, int(x_) + 1 + length,
 				yo_ + 2, col, Painter::line_solid, Painter::line_thick);
 		} else {
-			pi_.pain.line(int(x_) + 1 - length, yo_ + 2, int(x_) + 1, 
+			pi_.pain.line(int(x_) + 1 - length, yo_ + 2, int(x_) + 1,
 				yo_ + 2, col, Painter::line_solid, Painter::line_thick);
 		}
 
@@ -698,7 +698,7 @@ void RowPainter::paintText()
 
 	Change change_running;
 	int change_last_x = 0;
-	
+
 	// check for possible inline completion
 	DocIterator const & inlineCompletionPos = pi_.base.bv->inlineCompletionPos();
 	pos_type inlineCompletionVPos = -1;
@@ -767,22 +767,22 @@ void RowPainter::paintText()
 
 		// If we reach the end of a change or if the author changes, paint it.
 		// We also don't paint across things like tables
-		if (change_running.changed() && (highly_editable_inset 
+		if (change_running.changed() && (highly_editable_inset
 			|| !change.changed() || !change_running.isSimilarTo(change))) {
 			// Calculate 1/3 height of the buffer's default font
 			FontMetrics const & fm
 				= theFontMetrics(pi_.base.bv->buffer().params().getFont());
-			int const y_bar = change_running.deleted() ? 
+			int const y_bar = change_running.deleted() ?
 				yo_ - fm.maxAscent() / 3 : yo_ + fm.maxAscent() / 6;
 			pi_.pain.line(change_last_x, y_bar, int(x_), y_bar,
-				change_running.color(), Painter::line_solid, 
+				change_running.color(), Painter::line_solid,
 				Painter::line_thin);
-			
+
 			// Change might continue with a different author or type
 			if (change.changed() && !highly_editable_inset) {
 				change_running = change;
 				change_last_x = int(x_);
-			} else 
+			} else
 				change_running.setUnchanged();
 		}
 
@@ -826,7 +826,7 @@ void RowPainter::paintText()
 	if (change_running.changed()) {
 		FontMetrics const & fm
 			= theFontMetrics(pi_.base.bv->buffer().params().getFont());
-		int const y_bar = change_running.deleted() ? 
+		int const y_bar = change_running.deleted() ?
 				yo_ - fm.maxAscent() / 3 : yo_ + fm.maxAscent() / 6;
 		pi_.pain.line(change_last_x, y_bar, int(x_), y_bar,
 			change_running.color(), Painter::line_solid, Painter::line_thin);
