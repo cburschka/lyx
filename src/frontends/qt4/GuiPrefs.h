@@ -395,6 +395,7 @@ public:
 
 public Q_SLOTS:
 	void select_ui();
+	void on_clearSessionPB_clicked();
 };
 
 

@@ -1947,6 +1947,13 @@ void PrefUserInterface::select_ui()
 }
 
 
+void PrefUserInterface::on_clearSessionPB_clicked()
+{
+	guiApp->clearSession();
+}
+
+
+
 /////////////////////////////////////////////////////////////////////
 //
 // PrefEdit

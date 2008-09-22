@@ -10,9 +10,7 @@
    </rect>
   </property>
   <property name="sizePolicy" >
-   <sizepolicy>
-    <hsizetype>0</hsizetype>
-    <vsizetype>0</vsizetype>
+   <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -51,7 +49,7 @@
          <string>Restore to cursor position when the file was last closed</string>
         </property>
         <property name="text" >
-         <string>Allow saving/restoring of windows geometry</string>
+         <string>Allow saving/restoring of window layouts and geometries</string>
         </property>
        </widget>
       </item>
@@ -66,6 +64,13 @@
        <widget class="QCheckBox" name="loadSessionCB" >
         <property name="text" >
          <string>Load opened files from last session</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" >
+       <widget class="QPushButton" name="clearSessionPB" >
+        <property name="text" >
+         <string>Clear All Session Information</string>
         </property>
        </widget>
       </item>
@@ -89,11 +94,11 @@
       </property>
       <item row="1" column="0" colspan="4" >
        <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
         <property name="spacing" >
          <number>6</number>
+        </property>
+        <property name="margin" >
+         <number>0</number>
         </property>
         <item>
          <widget class="QLabel" name="lastfilesLA" >
@@ -117,7 +122,7 @@
           <property name="orientation" >
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0" >
            <size>
             <width>40</width>
             <height>20</height>
@@ -132,7 +137,7 @@
         <property name="orientation" >
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="sizeHint" >
+        <property name="sizeHint" stdset="0" >
          <size>
           <width>61</width>
           <height>21</height>
@@ -149,11 +154,11 @@
       </item>
       <item row="0" column="1" >
        <widget class="QSpinBox" name="autoSaveSB" >
-        <property name="maximum" >
-         <number>300</number>
-        </property>
         <property name="minimum" >
          <number>1</number>
+        </property>
+        <property name="maximum" >
+         <number>300</number>
         </property>
        </widget>
       </item>
@@ -179,7 +184,7 @@
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0" >
       <size>
        <width>395</width>
        <height>16</height>
