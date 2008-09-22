@@ -2379,11 +2379,38 @@ Document ! Settings
 \end_layout
 
 \begin_layout Standard
-Note that some modules require LaTeX packages that are not always installed
- by default.
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ Some modules require LaTeX packages that are not always installed by default.
  LyX will warn you if you do not have the needed package.
- Note also that some modules require other modules, and some pairs of modules
- are incompatible.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note also:
+\series default
+ Some modules require other modules, and some pairs of modules are incompatible.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -36680,7 +36707,7 @@ Default
 \family default
 , the default driver for the LaTeX-packages are used.
  It is recommended to use the default unless your know what you are doing.
- Specifiying a master document is necessary when the current document is
+ Specifying a master document is necessary when the current document is
  a child or subdocument.
  More about master and child documents is explained in the section 
 \emph on
