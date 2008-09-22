@@ -347,15 +347,16 @@ GuiView::~GuiView()
 void GuiView::saveLayout() const
 {
 	QSettings settings;
-	QString const key = "views/" + QString::number(id_);
+	settings.beginGroup("views");
+	settings.beginGroup(QString::number(id_));
 #ifdef Q_WS_X11
-	settings.setValue(key + "/pos", pos());
-	settings.setValue(key + "/size", size());
+	settings.setValue("pos", pos());
+	settings.setValue("size", size());
 #else
-	settings.setValue(key + "/geometry", saveGeometry());
+	settings.setValue("geometry", saveGeometry());
 #endif
-	settings.setValue(key + "/layout", saveState(0));
-	settings.setValue(key + "/icon_size", iconSize());
+	settings.setValue("layout", saveState(0));
+	settings.setValue("icon_size", iconSize());
 }
 
 
