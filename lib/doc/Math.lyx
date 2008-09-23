@@ -10004,7 +10004,11 @@ status collapsed
 \backslash
 raisebox
 \series default
- is only used as spacer.
+ and the 0
+\begin_inset space \thinspace{}
+\end_inset
+
+pt space are only used as spacer.
 \end_layout
 
 \end_inset
@@ -10034,8 +10038,13 @@ i
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset space \hspace{}
+\length 0pt
+\end_inset
+
 
 \lang ngerman
+
 \begin_inset Formula $"i$
 \end_inset
 

@@ -9919,7 +9919,13 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ et le 0
+\begin_inset space \thinspace{}
+\end_inset
+
+pt espace sont seulement utilisés pour faire de la place
 \end_layout
 
 \end_inset
@@ -9947,8 +9953,13 @@ i
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset space \hspace{}
+\length 0pt
+\end_inset
+
 
 \lang german
+
 \begin_inset Formula $"i$
 \end_inset
 
