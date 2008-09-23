@@ -2107,6 +2107,7 @@ void PrefShortcuts::update(LyXRC const & rc)
 	system_bind_.clear();
 	user_bind_.clear();
 	user_unbind_.clear();
+	system_bind_.read("site");
 	system_bind_.read(rc.bind_file);
 	// \unbind in user.bind is added to user_unbind_
 	user_bind_.read("user", &user_unbind_);
