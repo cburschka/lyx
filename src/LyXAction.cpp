@@ -3126,5 +3126,11 @@ LyXAction::const_func_iterator LyXAction::func_end() const
 	return lyx_func_map.end();
 }
 
+LyXErr & operator<<(LyXErr & l, FuncCode code)
+{
+	if (l.enabled()) 
+		l.stream() << lyxaction.getActionName(code); 
+	return l;
+}
 
 } // namespace lyx

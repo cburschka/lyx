@@ -22,6 +22,7 @@
 namespace lyx {
 
 class FuncRequest;
+class LyXErr;
 
 /**
  * This class is a container for LyX actions. It associates a name to
@@ -116,6 +117,8 @@ private:
 	 */
 	info_map lyx_info_map;
 };
+
+LyXErr & operator<<(LyXErr &, FuncCode);
 
 /// singleton instance
 extern LyXAction lyxaction;
