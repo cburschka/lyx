@@ -421,15 +421,6 @@ public:
 class PrefShortcuts : public PrefModule, public Ui::PrefShortcuts
 {
 	Q_OBJECT
-private:
-	enum ItemType {
-		System,         //< loaded from a bind file
-		UserBind,       //< \bind loaded from user.bind
-		UserUnbind,     //< \unbind loaded from user.bind, with corresponding
-		                //<    entry in system bind file
-		UserExtraUnbind	//< \unbind loaded from user.bind, without
-		                //<    corresponding entry in system bind file.
-	};
 public:
 	PrefShortcuts(GuiPreferences * form);
 
@@ -439,9 +430,9 @@ public:
 	void modifyShortcut();
 	void removeShortcut();
 	///
-	void setItemType(QTreeWidgetItem * item, ItemType tag);
+	void setItemType(QTreeWidgetItem * item, KeyMap::ItemType tag);
 	QTreeWidgetItem * insertShortcutItem(FuncRequest const & lfun, 
-		KeySequence const & shortcut, ItemType tag);
+		KeySequence const & shortcut, KeyMap::ItemType tag);
 
 public Q_SLOTS:
 	void select_bind();

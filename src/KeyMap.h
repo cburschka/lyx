@@ -29,6 +29,14 @@ namespace lyx {
 /// Defines key maps and actions for key sequences
 class KeyMap {
 public:
+	enum ItemType {
+		System,         //< loaded from a bind file
+		UserBind,       //< \bind loaded from user.bind
+		UserUnbind,     //< \unbind loaded from user.bind, with corresponding
+		                //<    entry in system bind file
+		UserExtraUnbind	//< \unbind loaded from user.bind, without
+		                //<    corresponding entry in system bind file.
+	};
 	/**
 	 * Bind/Unbind a key sequence to an action.
 	 * @return 0 on success, or position in string seq where error
@@ -70,7 +78,7 @@ public:
 	 * @param unbind use \unbind instead of \bind, indicating this KeyMap
 	 *        actually record unbind maps.
 	 */
-	void write(std::string const & bind_file, bool append, bool unbind=false) const;
+	void write(std::string const & bind_file, bool append, bool unbind = false) const;
 
 	/**
 	 * print all available keysyms
@@ -87,7 +95,7 @@ public:
 	 * @return the action / LFUN_COMMAND_PREFIX / LFUN_UNKNOWN_ACTION
 	 */
 	FuncRequest const &
-	lookup(KeySymbol const & key, KeyModifier mod, KeySequence * seq) const;
+		lookup(KeySymbol const & key, KeyModifier mod, KeySequence * seq) const;
 
 	///
 	typedef std::vector<KeySequence> Bindings;
@@ -99,11 +107,11 @@ public:
 	docstring printBindings(FuncRequest const & func) const;
 
 	struct Binding {
-		Binding(FuncRequest const & r, KeySequence const & s, int t)
+		Binding(FuncRequest const & r, KeySequence const & s, ItemType t)
 			: request(r), sequence(s), tag(t) {}
 		FuncRequest request;
 		KeySequence sequence;
-		int tag;
+		KeyMap::ItemType tag;
 	}; 
 	typedef std::vector<Binding> BindingList;
 	/**
@@ -111,7 +119,7 @@ public:
 	 * @param unbound list unbound (func without any keybinding) as well
 	 * @param tag an optional tag to indicate the source of the bindinglist
 	 */
-	BindingList listBindings(bool unbound, int tag = 0) const;
+	BindingList listBindings(bool unbound, ItemType tag = System) const;
 
 	/**
 	 *  Given an action, find the first 1-key binding (if it exists).
@@ -119,7 +127,7 @@ public:
 	 *  [only used by the Qt/Mac frontend]
 	 */
 	std::pair<KeySymbol, KeyModifier>
-	find1keybinding(FuncRequest const & func) const;
+		find1keybinding(FuncRequest const & func) const;
 
 	/**
 	 * Returns a string of the given keysym, with modifiers.
@@ -151,10 +159,10 @@ private:
 	 * @param prefix a sequence to prepend the results
 	 */
 	Bindings findBindings(FuncRequest const & func,
-			      KeySequence const & prefix) const;
+	                      KeySequence const & prefix) const;
 	
 	void listBindings(BindingList & list, KeySequence const & prefix,
-				  int tag) const;
+	                  ItemType tag) const;
 
 	/// is the table empty ?
 	bool empty() const { return table.empty(); }

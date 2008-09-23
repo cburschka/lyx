@@ -449,7 +449,7 @@ KeyMap::Bindings KeyMap::findBindings(FuncRequest const & func,
 }
 
 
-KeyMap::BindingList KeyMap::listBindings(bool unbound, int tag) const
+KeyMap::BindingList KeyMap::listBindings(bool unbound, KeyMap::ItemType tag) const
 {
 	BindingList list;
 	listBindings(list, KeySequence(0, 0), tag);
@@ -475,7 +475,7 @@ KeyMap::BindingList KeyMap::listBindings(bool unbound, int tag) const
 
 
 void KeyMap::listBindings(BindingList & list,
-	KeySequence const & prefix, int tag) const
+	KeySequence const & prefix, KeyMap::ItemType tag) const
 {
 	Table::const_iterator it = table.begin();
 	Table::const_iterator it_end = table.end();
