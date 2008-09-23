@@ -15,14 +15,15 @@
 #include <config.h>
 
 #include "GuiGraphics.h"
-
-#include "LengthCombo.h"
-#include "Length.h"
-#include "LyXRC.h"
 #include "qt_helpers.h"
 #include "Validator.h"
 
+#include "Buffer.h"
 #include "FuncRequest.h"
+#include "LengthCombo.h"
+#include "Length.h"
+#include "LyXRC.h"
+#include "Undo.h"
 
 #include "graphics/GraphicsCache.h"
 #include "graphics/GraphicsCacheItem.h"
@@ -715,10 +716,12 @@ void GuiGraphics::dispatchParams()
 {
 	InsetGraphicsParams tmp_params(params_);
 	string const lfun = InsetGraphics::params2string(tmp_params, buffer());
+	buffer().undo().beginUndoGroup();
 	dispatch(FuncRequest(getLfun(), lfun));
 	if (!params_.groupId.empty())
 		dispatch(FuncRequest(LFUN_GRAPHICS_GROUPS_UNIFY,
 				InsetGraphics::params2string(params_, buffer())));
+	buffer().undo().endUndoGroup();
 }
 
 
