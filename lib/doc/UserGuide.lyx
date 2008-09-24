@@ -6237,7 +6237,7 @@ When you first open a
 \family sans
 Bibliography
 \family default
- environment, LyX add a large vertical space, followed by the heading 
+ environment, LyX adds a large vertical space, followed by the heading 
 \begin_inset Quotes eld
 \end_inset
 
@@ -6273,8 +6273,10 @@ Bibliography
 \end_layout
 
 \begin_layout Standard
-For a detailed description of LyX's bibliography handling, have a look at
- in section
+There is another, usually better way to include references in your document,
+ namely, by using a BibTeX database.
+ For more information on that, and for a a detailed description of LyX's
+ bibliography handling, have a look at in section
 \begin_inset space ~
 \end_inset
 
@@ -25575,7 +25577,7 @@ name "sec:Bibliography"
 
 \begin_layout Standard
 There are two ways of generating the bibliography in a LyX-document.
- You can include a bibliography database
+ You can include a bibliography database,
 \begin_inset Foot
 status collapsed
 
@@ -25593,13 +25595,12 @@ BibTeX-database
 
 \end_inset
 
-, which is explained in the next subsection or you can insert the bibliography
- manually.
- For the second method we use the paragraph environment 
+ which is explained in the next subsection, or you can insert the bibliography
+ manually, using the paragraph environment 
 \family sans
 Bibliography
 \family default
-, described in section
+, which was described in section
 \begin_inset space ~
 \end_inset
 
@@ -25611,6 +25612,17 @@ reference "sub:Biblio_environment"
 \end_inset
 
 .
+ If you want anything other than numerical citations, such as the ones in
+ this document---in particular, if you want author-year cituations---then
+ you 
+\emph on
+must
+\emph default
+ use BibTeX.
+\end_layout
+
+\begin_layout Subsection
+The Bibliography Environment
 \end_layout
 
 \begin_layout Standard
@@ -25744,12 +25756,27 @@ name "sub:Bibliography-databases"
 \begin_layout Standard
 Bibliography databases are useful if you use the same bibliography in different
  documents.
- It makes it also very easy to have a uniform layout for all bibliography
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+They are also useful simply for keeping a database of articles and notes
+ concerning them.
+ Most of the programs mentioned below will allow you to store annotations
+ and reviews along with bibliographical information.
+\end_layout
+
+\end_inset
+
+ It also makes it very easy to have a uniform layout for all bibliography
  entries.
  You can collect the bibliography of all relevant books and articles of
  your working field in a database.
- This database can be used for different documents, because only the referenced
- entries of the database will appear in the bibliography list.
+ This database can be used for different documents, and only the entries
+ cited in a particular document will appear in the bibliography list for
+ that document.
+ This relieves you of the need to keep track of which articles and books
+ you have cited.
 \end_layout
 
 \begin_layout Standard
@@ -25765,7 +25792,7 @@ The database is a text file with the file extension
 \begin_inset Quotes erd
 \end_inset
 
- containing the bibliography in a special format.
+, containing the bibliography in a special format.
  The format is explained in LaTeX books (
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -25774,14 +25801,11 @@ key "Mittelbach,Kopka,Lamport"
 \end_inset
 
 ).
- Normally one uses a special program to create and edit entries of the database.
- Under
-\begin_inset Newline newline
-\end_inset
-
- 
+ The file can be created using any text editor, but normally one uses a
+ special program to create and edit the entries in the database.
+ A list of such programs is maintained on the LyX wiki at 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -25790,11 +25814,7 @@ http://wiki.lyx.org/BibTeX/Programs
 
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-you find a list of programs for bibliography databases.
+.
 \end_layout
 
 \begin_layout Standard
@@ -25829,7 +25849,7 @@ Bibliography
 \end_layout
 
 \begin_layout Standard
-The style file is a text file with the file extension
+The style file is a text file with the file extension 
 \begin_inset Quotes erd
 \end_inset
 
@@ -25841,13 +25861,38 @@ The style file is a text file with the file extension
 \begin_inset Quotes erd
 \end_inset
 
- that declares the layout of all bibliography entries.
- Many publishers provide special style files, so that you don't have to
- take care of the layout.
+ that controls how the bibliography entries will appear.
+ Your LaTeX distribution should provide several of these, and many publishers
+ provide their own style files, so that you don't have to take care of the
+ layout.
+ It is, of course, possible to write your own style file, but this is something
+ of a black art and is recommended only for the very brave.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+The courageous can look at the BibTeX documentation, which is available
+ on CTAN at 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Inserting a citation reference works like described above.
+Inserting a citation reference works as described in the previous section.
 \end_layout
 
 \begin_layout Standard
@@ -25858,8 +25903,8 @@ Inserting a citation reference works like described above.
 \end_layout
 
 \begin_layout Standard
-To generate the bibliography from a database, the program BibTeX is used
- by LyX.
+LyX uses the program BibTeX to generate the bibliography from the database,
+ the program BibTeX is used by LyX.
  This program can be controlled with options that you can add in LyX's preferenc
 es dialog under 
 \family sans
