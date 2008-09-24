@@ -25868,7 +25868,7 @@ The style file is a text file with the file extension
  It is, of course, possible to write your own style file, but this is something
  of a black art and is recommended only for the very brave.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 The courageous can look at the BibTeX documentation, which is available
@@ -25888,7 +25888,16 @@ http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
 
 \end_inset
 
+ But if you need just a little customization, then try the custom-bib package
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "custom-bib"
 
+\end_inset
+
+, which allows the user to generate a customized style file simply by answering
+ a series of questions.
 \end_layout
 
 \begin_layout Standard
@@ -42566,6 +42575,53 @@ status collapsed
 \begin_layout Plain Layout
 
 ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "custom-bib"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://www.ctan.org/get/macros/latex/contrib/custom-bib/makebst.pdf"
+
+\end_inset
+
+ of the LaTeX package 
+\series bold
+custom-bib
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+custom-bib
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/get/macros/latex/contrib/custom-bib/makebst.pdf
 \end_layout
 
 \end_inset
