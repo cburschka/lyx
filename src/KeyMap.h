@@ -56,11 +56,11 @@ public:
 		    unsigned int r = 0);
 
 
-	// if a keybinding has been defined.
+	/// if a keybinding has been defined.
 	bool hasBinding(KeySequence const & seq, FuncRequest const & func,
 			unsigned int r = 0);
 
-	// clear all bindings
+	/// clear all bindings
 	void clear();
 
 	/** Parse a bind file. If a valid unbind_map is given, put \unbind 
