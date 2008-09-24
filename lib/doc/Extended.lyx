@@ -2047,183 +2047,20 @@ Supplemental Tools
 
 \begin_layout Section
 Preparing a Bibliography with BibTeX
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Preparing-a-Bibliography"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-by 
-\noun on
-Mike Ressler
-\noun default
- and 
-\noun on
-Jürgen Spitzmüller
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-STOP! If you don't know what BibTeX is, or have a reasonably good idea of
- how to use it (
+Tha basics how to use BibTeX are explained in section 
 \emph on
-e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+Bibliography databases (BibTeX)
 \emph default
-
-\begin_inset space ~
-\end_inset
-
-setting up your own bibliographic databases), 
+ of the 
 \emph on
-run
+User's Guide
 \emph default
-, do not walk, to your nearest copy of the 2nd edition of Lamport's 
-\emph on
-LaTeX: A Document Preparation System
-\emph default
-, particularly Appendix B.
- The rest of this discussion assumes you have created a correct bibliography
- file, that you have all relevant environment variables set correctly (esp.
- 
-\family typewriter
-BIBINPUTS
-\family default
-, 
-\family typewriter
-BSTINPUTS
-\family default
-, and 
-\family typewriter
-TEXINPUTS
-\family default
-), and that if sufficiently desperate, you could create and 
-\begin_inset Quotes eld
-\end_inset
-
-TeX
-\begin_inset Quotes erd
-\end_inset
-
- a LaTeX file with a BibTeX database.
- 
-\end_layout
-
-\begin_layout Standard
-For those who don't know what BibTeX is, it is a system for creating a large
- database of your most used journal references.
- For all future articles you write, you only need to include this standard
- database and reference the appropriate key to each reference.
- Even if you write only a few papers with handful of references each, it
- is well worth your time to examine BibTeX and decide whether it will be
- useful to you.
-\end_layout
-
-\begin_layout Standard
-To use BibTeX with LyX, first read the 
-\emph on
-User Guide
-\emph default
- where it describes how to insert citations.
- The basic mechanism for inserting BibTeX references is the same.
- Then, at the very end of your document, select 
-\family sans
-Insert\SpecialChar \menuseparator
-List
-\family default
- / 
-\family sans
-TOC\SpecialChar \menuseparator
-BibTeX Reference
-\family default
 .
- In the resulting dialog, fill out the dialog boxes as follows: 
-\end_layout
-
-\begin_layout Description
-Database: enter the name of your 
-\family typewriter
-.bib
-\family default
- file 
-\emph on
-without
-\emph default
- the 
-\family typewriter
-.bib
-\family default
- extension.
- For searching multiple 
-\family typewriter
-.bib
-\family default
- files, just enter them in the desired order, separated by commas.
- 
-\end_layout
-
-\begin_layout Description
-Style: enter the name of your BibTeX style file *without* the 
-\family typewriter
-.bst
-\family default
- extension.
- The default style is 
-\family typewriter
-plain
-\family default
- (which should be included in your LaTeX distribution, so you don't have
- to worry about creating it).
-\end_layout
-
-\begin_layout Standard
-For each citation, assuming that the source is in the 
-\family typewriter
-.bib
-\family default
- file, just call 
-\family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
-
-\bar under
-C
-\bar default
-itation Reference
-\family default
- at the correct location in the text, and enter the appropriate reference
- key.
- Nothing else is required; when invoking 
-\family sans
-\bar under
-V
-\bar default
-iew\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
-\family default
-, for example, you should see that BibTeX and LaTeX are invoked as needed,
- including multiple invocations of LaTeX.
- 
+ The following subsections explains special bibliography features supported
+ by LyX.
 \end_layout
 
 \begin_layout Subsection
@@ -2295,26 +2132,14 @@ jurabib
 The handling of both packages in LyX is basically the same.
  Go to 
 \family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \family default
- and select the 
+ and select under 
 \family sans
 Bibliography
 \family default
- pane (with the xforms frontend: the 
-\family sans
-Extras
-\family default
- tab).
- Then select 
+ the option 
 \family sans
 Natbib
 \family default
@@ -2389,18 +2214,11 @@ natbib
 
 \begin_layout Subsection
 Sectionated Bibliographies
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Sectionated-Bibliographies"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 Sometimes you might need to divide your bibliography into several sections.
- If you are, for instance, a historian, the possibility to separate sources
+ If you are for instance a historian, the possibility to separate sources
  and scientific works is most likely a 
 \begin_inset Quotes eld
 \end_inset
@@ -2411,13 +2229,12 @@ must have
 
 .
  Unfortunately, BibTeX itself does not allow you to do this.
- The good news is, though: With the help of some LaTeX packages, BibTeX
- can be extended to fit your historical needs.
+ But with the help of some LaTeX packages, BibTeX can be extended to fit
+ your needs.
 \end_layout
 
 \begin_layout Standard
-As of version 1.4, LyX provides native support for one of these packages,
- Stefan Ulrich's 
+LyX provides native support for one of these packages, 
 \family typewriter
 bibtopic
 \family default
@@ -2428,7 +2245,7 @@ status collapsed
 \begin_layout Plain Layout
 Available from 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2487,49 +2304,27 @@ scientific.bib
 \end_layout
 
 \begin_layout Standard
-In LyX, go to 
+Go in LyX to 
 \family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \family default
- and select the 
+ and check under 
 \family sans
 Bibliography
 \family default
- pane (with the xforms frontend: the 
+ the option 
 \family sans
-Extras
-\family default
- tab).
- Check 
-\family sans
-Sectionated
+Sectioned
 \begin_inset space ~
 \end_inset
 
 bibliography
 \family default
 .
- Now you can insert multiple BibTeX references (as described in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Preparing-a-Bibliography"
-
-\end_inset
-
-), one for each section of your bibliography.
- Returning to our example: Insert a BibTeX reference for the database 
+ Now you can insert multiple BibTeX bibliographies, one for each section
+ of your bibliography.
+ Returning to our example: Insert the BibTeX bibliography 
 \family typewriter
 sources.bib
 \family default
@@ -2620,23 +2415,8 @@ a bibliography for each section or chapter of the document, are not supported
 bibtopic
 \family default
  package, which is used for the creation of sectionated bibliographies in
- LyX (cf.
-\begin_inset space ~
-\end_inset
-
-section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Sectionated-Bibliographies"
-
-\end_inset
-
-), provides an easy way to solve this task, if you are willing to use some
- LaTeX-Code (ERT, cf.
+ LyX (see the previous section), provides an easy way to solve this task,
+ if you are willing to use some LaTeX-Code (ERT, cf.
 \begin_inset space ~
 \end_inset
 
@@ -2673,30 +2453,18 @@ bibunits
 \end_layout
 
 \begin_layout Standard
-First, go to 
+First go to 
 \family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \family default
- and select the 
+ and under 
 \family sans
 Bibliography
 \family default
- pane (with the xforms frontend: the 
+ check 
 \family sans
-Extras
-\family default
- tab).
- Check 
-\family sans
-Sectionated
+Sectioned
 \begin_inset space ~
 \end_inset
 
@@ -2704,7 +2472,7 @@ bibliography
 \family default
 .
  In the document, you have to enclose the sections, which shall contain
- their own bibliography (including the BibTeX reference itself), between
+ their own bibliography (including the BibTeX bibliography itself), between
  
 \family typewriter
 
@@ -2720,11 +2488,11 @@ end{btUnit}
  (those commands have to be inserted as ERT).
  The bibliography will contain all references which have been cited in the
  current btUnit.
- N.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.: If you are using this approach, then 
+ 
+\series bold
+Note:
+\series default
+ If you are using this approach, then 
 \emph on
 every
 \emph default
@@ -2792,15 +2560,8 @@ end{document}
 \begin_layout Standard
 LyX allows you to include files quite easily with 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
-ChiI
-\bar under
-d
-\bar default
-
+Insert\SpecialChar \menuseparator
+ChiId
 \begin_inset space ~
 \end_inset
 
@@ -2916,10 +2677,7 @@ verbatim mode, with the characters set in a fixed-width typewriter font.
  are conserved, unlike LyX's normal treatment of spaces.
  However, setting the 
 \family sans
-\bar under
-M
-\bar default
-ark
+Mark
 \begin_inset space ~
 \end_inset
 
@@ -4365,12 +4123,9 @@ At the end of this environment , a QED symbol (usually a square, but it
  environments---and have the QED symbol appear only after them, then the
  other environments need to be nested within the proof environment.
  See section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Nesting"
-
-\end_inset
-
+\emph on
+Nesting Environments
+\emph default
  of the 
 \emph on
 User's Guide
@@ -17227,15 +16982,8 @@ To help orientate you, I will now explain what happens inside LyX:
 \begin_layout Enumerate
 When the 
 \family sans
-\bar under
-U
-\bar default
-pdate\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+Update\SpecialChar \menuseparator
+DVI
 \family default
  menu option is chosen, a LaTeX file is generated.
  
@@ -17277,15 +17025,8 @@ status collapsed
 \begin_layout Plain Layout
 The converters are defined in the 
 \family sans
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-references
+Tools\SpecialChar \menuseparator
+Preferences
 \family default
  panel, under the 
 \begin_inset Quotes eld
@@ -17297,12 +17038,9 @@ Conversion
 
  tab.
  See section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:converters"
-
-\end_inset
-
+\emph on
+Converters
+\emph default
  of the 
 \emph on
 Customization
@@ -17505,12 +17243,9 @@ status collapsed
 
 \begin_layout Plain Layout
 See section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:converters-etc"
-
-\end_inset
-
+\emph on
+Copiers
+\emph default
  of the 
 \emph on
 Customization
