@@ -1667,13 +1667,6 @@ Avec les boutons
 
 \begin_layout Section
 Raccourcis clavier de base
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Raccourcis-clavier"
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -15448,9 +15441,10 @@ TeX-3.14159
 Si vous ne voulez pas utiliser les noms propres, par exemple dans un en-tête
  de section, vous pouvez insérer une paire d'accolades vides en code TeX,
  au milieu du mot.
- Dans LyX, cela ressemblera à ceci:
+ Dans LyX, cela ressemblera à ceci: 
 \begin_inset Graphics
 	filename ../clipart/LaTeX.png
+	scale 80
 
 \end_inset
 
@@ -22245,20 +22239,6 @@ spce
 
 \series default
 .
- Notez que par défaut, l'indice ou l'exposant ne concerne que le symbole
- immédiatement à gauche, ce qui influe sur l'espacement et l'alignement
- ; lisez la Section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:regroupement"
-
-\end_inset
-
- si vous avez besoin d'autre chose.
 \end_layout
 
 \begin_layout Subsection
@@ -29544,19 +29524,19 @@ key "latexcompanion,latexguide"
 
 \begin_layout Section
 Aperçu de Morceaux de votre Document
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Aperçu-de-morceaux"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
 Aperçu au vol
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Apperçu-de-morceaux"
 
 \end_inset
 
@@ -34950,7 +34930,7 @@ On peut limiter la visualisation à une sélection.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Apperçu-de-morceaux"
+reference "sec:Aperçu-de-morceaux"
 
 \end_inset
 
@@ -39199,13 +39179,6 @@ Apparence
 
 \begin_layout Subsection
 Interface Utilisateur
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Interface-Utilisateur"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

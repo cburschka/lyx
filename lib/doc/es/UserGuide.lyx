@@ -1440,13 +1440,6 @@ Con los botones
 
 \begin_layout Section
 Atajos de teclado básicos
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Atajos-de-teclado"
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -15233,6 +15226,7 @@ e.
  En LyX lo verás como: 
 \begin_inset Graphics
 	filename ../clipart/LaTeX.png
+	scale 80
 
 \end_inset
 
@@ -28997,19 +28991,19 @@ key "latexcompanion,latexguide"
 
 \begin_layout Section
 Vista preliminar inmediata
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Vista-preliminar-inmediata"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
 Documentos ! Vista instantánea
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Vista-preliminar-inmediata"
 
 \end_inset
 
@@ -40164,33 +40158,6 @@ Aspecto y comportamiento
 
 \begin_layout Subsection
 Interfaz de usuario
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Interfaz-de-usuario"
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Personalización ! de barras de herramientas
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Personalización ! de menús
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -43345,6 +43312,57 @@ status collapsed
 \begin_layout Plain Layout
 
 ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "hyperref"
+
+\end_inset
+
+
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf"
+
+\end_inset
+
+
+\series default
+ del paquete LaTeX 
+\series bold
+hyperref
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX, paquetes! hyperref
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf
 \end_layout
 
 \end_inset
