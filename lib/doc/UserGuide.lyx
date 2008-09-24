@@ -25868,7 +25868,7 @@ The style file is a text file with the file extension
  It is, of course, possible to write your own style file, but this is something
  of a black art and is recommended only for the very brave.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 The courageous can look at the BibTeX documentation, which is available
@@ -25903,15 +25903,11 @@ Inserting a citation reference works as described in the previous section.
 \end_layout
 
 \begin_layout Standard
-LyX uses the program BibTeX to generate the bibliography from the database,
- the program BibTeX is used by LyX.
+LyX uses the program BibTeX to generate the bibliography from the database.
  This program can be controlled with options that you can add in LyX's preferenc
 es dialog under 
 \family sans
-Outputs
-\family default
-, 
-\family sans
+Outputs\SpecialChar \menuseparator
 LaT
 \begin_inset ERT
 status collapsed
@@ -25925,7 +25921,7 @@ status collapsed
 
 eX
 \family default
- in the field 
+ in the 
 \family sans
 BibT
 \begin_inset ERT
@@ -25944,7 +25940,7 @@ eX
 
 command
 \family default
-.
+ field.
  Before adding options, it is strongly recommended to read the manual of
  
 \family sans
@@ -25988,11 +25984,11 @@ Bibliography ! Layout
 
 \begin_layout Standard
 In the citation reference dialog you can set a special citation format.
- For this feature you need to use the option 
+ For this feature you need to enable the option 
 \family sans
 Natbib
 \family default
- enabled in the 
+ in the 
 \family sans
 Document\SpecialChar \menuseparator
 Settings
