@@ -72,8 +72,8 @@ namespace lyx {
 
 void Messages::setDefaultLanguage()
 {
-	char * env_lang[5] = {"LANGUAGE", "LC_ALL", "LC_MESSAGES", "LC_MESSAGE",
-		"LANG"};
+	char const * env_lang[5] = {"LANGUAGE", "LC_ALL", "LC_MESSAGES",
+		"LC_MESSAGE", "LANG"};
 	for (size_t i = 0; i != 5; ++i) {
 		string const lang = getEnv(env_lang[i]);
 		if (lang.empty())
