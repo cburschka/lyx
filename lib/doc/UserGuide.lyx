@@ -1552,7 +1552,7 @@ With the buttons
 Basic Key Bindings
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Key-Bindings"
+name "sec:Basic-Key-Bindings"
 
 \end_inset
 
@@ -1562,6 +1562,70 @@ status collapsed
 
 \begin_layout Plain Layout
 Key Bindings
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Bindings|see
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Key Bindings
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Shortcuts|see
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Key Bindings
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -37414,7 +37478,7 @@ reference "sec:Thesaurus"
 \end_layout
 
 \begin_layout Subsection
-Count Words
+Statistics
 \begin_inset Index
 status collapsed
 
@@ -37425,11 +37489,21 @@ Word count
 \end_inset
 
 
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Character count
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Counts the number of words in the actual document or the highlighted document
- part.
+Counts the number of words and characters in the actual document or the
+ highlighted document part.
 \end_layout
 
 \begin_layout Subsection
@@ -37708,7 +37782,7 @@ Embedded Objects
 \begin_inset Text
 
 \begin_layout Plain Layout
-pull-down menu for the paragraph environments
+pull-down box for the paragraph environments
 \end_layout
 
 \end_inset
@@ -39361,23 +39435,6 @@ PDF
 View\SpecialChar \menuseparator
 Update\SpecialChar \menuseparator
 PDF
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-This button is on some LyX for Windows installations not here because its
- functionality is merged with 
-\family sans
-View\SpecialChar \menuseparator
-PDF
-\family default
-.
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -39514,8 +39571,12 @@ Preferences
 \end_layout
 
 \begin_layout Standard
-The preferences dialog is called with the menu Tools\SpecialChar \menuseparator
-Preferences.
+The preferences dialog is called with the menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences
+\family default
+.
  It consists of submenus explained in the following.
 \end_layout
 
@@ -39527,7 +39588,7 @@ Look and Feel
 User Interface
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:ui"
+name "sub:User-Interface"
 
 \end_inset
 
@@ -39547,23 +39608,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Customization ! of menus
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- You have to restart LyX before changes in ui- and bind-files take effect.
 \end_layout
 
 \end_inset
@@ -39596,9 +39640,27 @@ Customization ! of menus
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ You have to restart LyX before the change of the user interface file take
+ effect.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 The appearance of the menus and toolbars can be changed by choosing an user
  interface (ui) file.
- An ui-file is a textfile where the toolbars and menus are listed.
+ An ui-file is a text file where the toolbars and menus are listed.
  The toolbar buttons and menu entries are specified in the files 
 \shape italic
 stdtoolbars.inc
@@ -39750,12 +39812,406 @@ to the navigate menu section in the .inc-file to have the sixth bookmark.
 \end_layout
 
 \begin_layout Subsubsection
-Bind-File
+Session
+\end_layout
+
+\begin_layout Standard
+With the option 
+\family sans
+Allow saving
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+restoring of window layout and geometries
+\family default
+ LyX's main window will be opened with the size and layout that was used
+ in the last LyX session.
+\end_layout
+
+\begin_layout Standard
+The option 
+\family sans
+Restore cursor positions
+\family default
+ sets the cursor to the position in the file where it has been the last
+ time.
+\end_layout
+
+\begin_layout Standard
+The option 
+\family sans
+Load opened files from last session
+\family default
+ opens all files that were opened in the last LyX session.
+\end_layout
+
+\begin_layout Subsubsection
+Documents
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Backup documents"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Bindings
+Backup ! Documents
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When the option 
+\family sans
+Backup documents
+\family default
+ is set, you can specify the time between backup saves.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Maximum last files
+\family default
+ is the number of last opened files that LyX should display in the menu
+ 
+\family sans
+File\SpecialChar \menuseparator
+Open
+\begin_inset space ~
+\end_inset
+
+Recent
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Screen Fonts
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Font ! Screen
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Screen-Fonts"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These fonts are used to display your documents on the screen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ This section only deals with the fonts 
+\emph on
+inside
+\emph default
+ the LyX window.
+ The fonts that appear on the output are independent from these fonts, and
+ set in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Fonts
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By default, LyX uses 
+\family typewriter
+Times
+\family default
+ as roman (serif) font, 
+\family typewriter
+Arial
+\family default
+ or 
+\family typewriter
+Helvetica
+\family default
+ (depends on the system) as 
+\family sans
+sans
+\begin_inset space ~
+\end_inset
+
+serif
+\family default
+ font, and 
+\family typewriter
+Courier
+\family default
+ as 
+\family typewriter
+typewriter
+\family default
+ font.
+\end_layout
+
+\begin_layout Standard
+You can change the font size with the 
+\family sans
+Zoom
+\family default
+ setting.
+ You can also change the font zoom outside the preferences dialog for the
+ current LyX session by pressing Ctrl and scrolling the mouse wheel.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Screen DPI
+\family default
+ is the screen resolution in dpi (dots per inch).
+ The Font Sizes are calculated as letter height in units of points.
+ 72
+\begin_inset space \thinspace{}
+\end_inset
+
+points have the size of 1
+\begin_inset space \thinspace{}
+\end_inset
+
+inch, see Appendix
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:Units-available-in"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The default 
+\family sans
+Font Sizes
+\family default
+ are the same as if a document font size of 10
+\begin_inset space \thinspace{}
+\end_inset
+
+pt would be used.
+ The sizes are explained in detail in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Document-Font"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+With the option 
+\family sans
+Use Pixmap Cache to speed up font rendering
+\family default
+ enabled, LyX needs to redraw the screen less often.
+ This results in better performance, especially on slow systems.
+ On the other hand, the characters might look more fuzzy on screen.
+ So whether you enable this or not depends on whether you prefer speed over
+ aesthetics.
+ Note that the Pixmap Cache is only available and useful under Mac
+\begin_inset space ~
+\end_inset
+
+OS and Windows.
+\end_layout
+
+\begin_layout Subsection
+Colors
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Color ! LyX screen
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Settings ! Color
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You can here change all colors used by LyX.
+ Choose an item in the list and use the 
+\family sans
+Alter
+\family default
+ button.
+\end_layout
+
+\begin_layout Subsection
+Graphics
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Settings ! Graphics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here you can specify how graphics inside LyX are displayed.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Instant Preview
+\family default
+ enables previewing snippets of your document.
+ This feature is described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Previewing-snippets-of"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Editing
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Settings ! Editing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Control
+\end_layout
+
+\begin_layout Subsubsection
+Editing
+\end_layout
+
+\begin_layout Standard
+The option 
+\family sans
+Cursor follows scrollbar
+\family default
+ sets the cursor to the top of the currently displayed document part when
+ scrolling.
+\end_layout
+
+\begin_layout Standard
+The option 
+\family sans
+Sort environments alphabetically
+\family default
+ sorts the entries in the pull-down box for the paragraph environments.
+\end_layout
+
+\begin_layout Standard
+The option 
+\family sans
+Group environments by their category
+\family default
+ groups the entries in the pull-down box for the paragraph environments.
+\end_layout
+
+\begin_layout Subsubsection
+Fullscreen
+\end_layout
+
+\begin_layout Standard
+Here you can specify what is hidden in the fullscreen mode.
+ The option 
+\family sans
+Limit text width
+\family default
+ specifies the width of the text in fullscreen mode.
+ This way you can display the text smaller than the screen, the text appears
+ then centered.
+\end_layout
+
+\begin_layout Subsection
+Shortcuts
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Key Bindings
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Settings ! Shortcuts
 \end_layout
 
 \end_inset
@@ -39870,14 +40326,8 @@ key "LyX-func"
 .
 \end_layout
 
-\begin_layout Subsubsection
-Session
-\end_layout
-
-\begin_layout Standard
-When the option 
-\family sans
-Save
+\begin_layout Subsection
+Keyboard
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -39885,346 +40335,14 @@ Save
 \begin_inset space \thinspace{}
 \end_inset
 
-restore window size, or use fixed size
-\family default
- is not checked, you can specify the size of LyX's main window when LyX
- is started.
-\end_layout
-
-\begin_layout Standard
-With the option 
-\family sans
-Save
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-restore window position
-\family default
- LyX will be opened with its main window at the last used position.
-\end_layout
-
-\begin_layout Standard
-The option 
-\family sans
-Restore cursor positions
-\family default
- sets the cursor to the position in the file where it has been the last
- time.
-\end_layout
-
-\begin_layout Standard
-The option 
-\family sans
-Load opened files from last session
-\family default
- opens all files that were opened in the last LyX session.
-\end_layout
-
-\begin_layout Subsubsection
-Documents
+Mouse
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Backup documents"
+name "sub:Keyboard-Map"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Backup ! Documents
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-When the option 
-\family sans
-Backup documents
-\family default
- is set, you can specify the time between backup saves.
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-Maximum last files
-\family default
- is the number of last opened files that LyX should display in the menu
- 
-\family sans
-File\SpecialChar \menuseparator
-Open
-\begin_inset space ~
-\end_inset
-
-Recent
-\family default
-.
-\end_layout
-
-\begin_layout Subsubsection
-Scrolling
-\end_layout
-
-\begin_layout Standard
-The option 
-\family sans
-Cursor follows scrollbar
-\family default
- sets the cursor to the top of the currently displayed document part when
- scrolling.
-\end_layout
-
-\begin_layout Subsubsection
-Pixmap Cache
-\end_layout
-
-\begin_layout Standard
-With the option 
-\family sans
-Enable Pixmap Cache
-\family default
- enabled, LyX needs to redraw the screen less often.
- This results in better performance, especially on slow systems.
- On the other hand, the characters might look more fuzzy on screen.
- So whether you enable this or not depends on whether you prefer speed over
- aesthetics.
- Note that the Pixmap Cache is only available and useful under Mac
-\begin_inset space ~
-\end_inset
-
-OS and Windows.
-\end_layout
-
-\begin_layout Subsection
-Screen Fonts
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Font ! Screen
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Screen-Fonts"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-These fonts are used to display your documents on the screen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- This section only deals with the fonts 
-\emph on
-inside
-\emph default
- the LyX window.
- The fonts that appear on the output are independent from these fonts, and
- set in the menu 
-\family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Fonts
-\family default
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-By default, LyX uses 
-\family typewriter
-Times
-\family default
- as roman (serif) font, 
-\family typewriter
-Arial
-\family default
- or 
-\family typewriter
-Helvetica
-\family default
- (depends on the system) as 
-\family sans
-sans
-\begin_inset space ~
-\end_inset
-
-serif
-\family default
- font, and 
-\family typewriter
-Courier
-\family default
- as 
-\family typewriter
-typewriter
-\family default
- font.
-\end_layout
-
-\begin_layout Standard
-You can change the font size with the 
-\family sans
-Zoom
-\family default
- setting.
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-Screen DPI
-\family default
- is the screen resolution in dpi (dots per inch).
- The Font Sizes are calculated as letter height in units of points.
- 72
-\begin_inset space \thinspace{}
-\end_inset
-
-points have the size of 1
-\begin_inset space \thinspace{}
-\end_inset
-
-inch, see Appendix
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:Units-available-in"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-The default 
-\family sans
-Font Sizes
-\family default
- are the same as if a document font size of 10
-\begin_inset Formula $\,$
-\end_inset
-
-pt would be used.
- The sizes are explained in detail in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Document-Font"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
-Colors
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Color ! LyX screen
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Settings ! Color
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-You can here change all colors used by LyX.
- Choose an item in the list and use the 
-\family sans
-Alter
-\family default
- button.
-\end_layout
-
-\begin_layout Subsection
-Graphics
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Settings ! Graphics
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Here you can specify how graphics inside LyX are displayed.
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-Instant Preview
-\family default
- enables previewing snippets of your document.
- This feature is described in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Previewing-snippets-of"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
-Keyboard Map
 \begin_inset Index
 status collapsed
 
@@ -40241,13 +40359,6 @@ status collapsed
 \begin_layout Plain Layout
 Settings ! Keyboard Map
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Keyboard-Map"
 
 \end_inset
 
@@ -40306,7 +40417,7 @@ Paths
 status collapsed
 
 \begin_layout Plain Layout
-Settings ! Directory
+Settings ! Paths
 \end_layout
 
 \end_inset
