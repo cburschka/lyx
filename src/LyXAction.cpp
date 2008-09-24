@@ -2925,6 +2925,8 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_COMMAND_ALTERNATIVES
  * \li Action: Runs the first listed command that is enabled.
+ * \li Notion: This can be used to bind multiple functions to a single key,
+               and then which one is used will depend upon the context.
  * \li Syntax: command-alternatives <CMDS>
  * \li Params: <CMDS>: Sequence of commands separated by semicolons.
  * \li Sample: command-alternatives completion-accept;cell-forward
