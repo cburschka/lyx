@@ -40,8 +40,7 @@ FuncRequest const & KeySequence::addkey(KeySymbol const & key,
 	if (curmap)
 		return curmap->lookup(key, mod, this);
 
-	static FuncRequest unknown(LFUN_UNKNOWN_ACTION);
-	return unknown;
+	return FuncRequest::unknown;
 }
 
 

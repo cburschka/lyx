@@ -262,12 +262,10 @@ void KeyMap::write(string const & bind_file, bool append, bool unbind) const
 FuncRequest const & KeyMap::lookup(KeySymbol const &key,
 		  KeyModifier mod, KeySequence * seq) const
 {
-	static FuncRequest const unknown(LFUN_UNKNOWN_ACTION);
-
 	if (table.empty()) {
 		seq->curmap = seq->stdmap;
 		seq->mark_deleted();
-		return unknown;
+		return FuncRequest::unknown;
 	}
 
 	Table::const_iterator end = table.end();
@@ -295,7 +293,7 @@ FuncRequest const & KeyMap::lookup(KeySymbol const &key,
 	seq->curmap = seq->stdmap;
 	seq->mark_deleted();
 
-	return unknown;
+	return FuncRequest::unknown;
 }
 
 
