@@ -6369,6 +6369,12 @@ Bibliografía.
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+There is another, usually better way to include references in your document
+ by using a BibTeX database.
+ 
+\lang spanish
 Para una descripción detallada del manejo de la bibliografía en LyX, echa
  una ojeada a la sección
 \begin_inset space ~
@@ -43132,6 +43138,43 @@ status collapsed
 \begin_layout Plain Layout
 
 http://www.tex.ac.uk/cgi-bin/texfaq2html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "BibTeX"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentación"
+target "http://www.ctan.org/get/biblio/bibtex/contrib/doc/btxdoc.pdf"
+
+\end_inset
+
+ del programa 
+\family sans
+BibTeX
+\family default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/get/biblio/bibtex/contrib/doc/btxdoc.pdf
 \end_layout
 
 \end_inset
