@@ -922,7 +922,7 @@ void Text::deleteWordForward(Cursor & cur)
 		cursorForward(cur);
 	else {
 		cur.resetAnchor();
-		cur.selection() = true;
+		cur.setSelection(true);
 		cursorForwardOneWord(cur);
 		cur.setSelection();
 		cutSelection(cur, true, false);
@@ -938,7 +938,7 @@ void Text::deleteWordBackward(Cursor & cur)
 		cursorBackward(cur);
 	else {
 		cur.resetAnchor();
-		cur.selection() = true;
+		cur.setSelection(true);
 		cursorBackwardOneWord(cur);
 		cur.setSelection();
 		cutSelection(cur, true, false);
@@ -1180,14 +1180,15 @@ bool Text::backspace(Cursor & cur)
 }
 
 
-bool Text::dissolveInset(Cursor & cur) {
-	LASSERT(this == cur.text(), /**/);
+bool Text::dissolveInset(Cursor & cur)
+{
+	LASSERT(this == cur.text(), return false);
 
 	if (isMainText(cur.bv().buffer()) || cur.inset().nargs() != 1)
 		return false;
 
 	cur.recordUndoInset();
-	cur.mark() = false;
+	cur.setMark(false);
 	cur.selHandle(false);
 	// save position
 	pos_type spos = cur.pos();

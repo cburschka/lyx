@@ -249,13 +249,13 @@ bool bruteFind3(Cursor & cur, int x, int y, bool up)
 
 docstring parbreak(Paragraph const & par)
 {
-	odocstringstream ods;
-	ods << '\n';
+	odocstringstream os;
+	os << '\n';
 	// only add blank line if we're not in an ERT or Listings inset
 	if (par.ownerCode() != ERT_CODE
 			&& par.ownerCode() != LISTINGS_CODE)
-		ods << '\n';
-	return ods.str();
+		os << '\n';
+	return os.str();
 }
 
 } // namespace anon
@@ -980,20 +980,20 @@ DocIterator Cursor::selectionEnd() const
 
 void Cursor::setSelection()
 {
-	selection() = true;
+	setSelection(true);
 	// A selection with no contents is not a selection
 	// FIXME: doesnt look ok
 	if (idx() == anchor().idx() && 
 	    pit() == anchor().pit() && 
 	    pos() == anchor().pos())
-		selection() = false;
+		setSelection(false);
 }
 
 
 void Cursor::setSelection(DocIterator const & where, int n)
 {
 	setCursor(where);
-	selection() = true;
+	setSelection(true);
 	anchor_ = where;
 	pos() += n;
 }
@@ -1001,8 +1001,8 @@ void Cursor::setSelection(DocIterator const & where, int n)
 
 void Cursor::clearSelection()
 {
-	selection() = false;
-	mark() = false;
+	setSelection(false);
+	setMark(false);
 	resetAnchor();
 }
 
@@ -1065,7 +1065,7 @@ bool Cursor::selHandle(bool sel)
 		cap::saveSelection(*this);
 
 	resetAnchor();
-	selection() = sel;
+	setSelection(sel);
 	return true;
 }
 
@@ -1324,7 +1324,7 @@ bool Cursor::backspace()
 		// let's require two backspaces for 'big stuff' and
 		// highlight on the first
 		resetAnchor();
-		selection() = true;
+		setSelection(true);
 		--pos();
 	} else {
 		--pos();
@@ -1372,7 +1372,7 @@ bool Cursor::erase()
 	// 'clever' UI hack: only erase large items if previously slected
 	if (pos() != lastpos() && nextAtom()->nargs() > 0) {
 		resetAnchor();
-		selection() = true;
+		setSelection(true);
 		++pos();
 	} else {
 		plainErase();

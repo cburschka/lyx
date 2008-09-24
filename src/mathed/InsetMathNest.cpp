@@ -672,7 +672,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.pos() = 0;
 		cur.idx() = 0;
 		cur.resetAnchor();
-		cur.selection() = true;
+		cur.setSelection(true);
 		cur.pos() = cur.lastpos();
 		cur.idx() = cur.lastidx();
 		break;
@@ -1361,7 +1361,7 @@ void InsetMathNest::lfunMouseMotion(Cursor & cur, FuncRequest & cmd)
 		if (bvcur.anchor_.hasPart(cur)) {
 			//lyxerr << "## lfunMouseMotion: cursor: " << cur << endl;
 			bvcur.setCursor(cur);
-			bvcur.selection() = true;
+			bvcur.setSelection(true);
 			//lyxerr << "MOTION " << bvcur << endl;
 		} else
 			cur.undispatched();
@@ -1378,7 +1378,7 @@ void InsetMathNest::lfunMouseRelease(Cursor & cur, FuncRequest & cmd)
 			cur.noUpdate();
 		else {
 			Cursor & bvcur = cur.bv().cursor();
-			bvcur.selection() = true;
+			bvcur.setSelection(true);
 		}
 		return;
 	}
@@ -1496,7 +1496,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 
 	// just clear selection on pressing the space bar
 	if (cur.selection() && c == ' ') {
-		cur.selection() = false;
+		cur.setSelection(false);
 		return true;
 	}
 

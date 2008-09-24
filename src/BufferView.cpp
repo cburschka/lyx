@@ -1221,7 +1221,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_MARK_ON:
 		cur.clearSelection();
-		cur.mark() = true;
+		cur.setMark(true);
 		cur.resetAnchor();
 		cur.message(from_utf8(N_("Mark on")));
 		break;
@@ -1229,10 +1229,10 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	case LFUN_MARK_TOGGLE:
 		cur.clearSelection();
 		if (cur.mark()) {
-			cur.mark() = false;
+			cur.setMark(false);
 			cur.message(from_utf8(N_("Mark removed")));
 		} else {
-			cur.mark() = true;
+			cur.setMark(true);
 			cur.message(from_utf8(N_("Mark set")));
 		}
 		cur.resetAnchor();
@@ -1570,7 +1570,7 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 	Cursor old = cursor();
 	Cursor cur(*this);
 	cur.push(buffer_.inset());
-	cur.selection() = d->cursor_.selection();
+	cur.setSelection(d->cursor_.selection());
 
 	// Either the inset under the cursor or the
 	// surrounding Text will handle this event.
@@ -1816,7 +1816,7 @@ void BufferView::setCursor(DocIterator const & dit)
 		dit[i].inset().edit(d->cursor_, true);
 
 	d->cursor_.setCursor(dit);
-	d->cursor_.selection() = false;
+	d->cursor_.setSelection(false);
 }
 
 

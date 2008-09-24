@@ -1148,7 +1148,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	// Single-click on work area
 	case LFUN_MOUSE_PRESS:
 		// We are not marking a selection with the keyboard in any case.
-		cur.bv().cursor().mark() = false;
+		cur.bv().cursor().setMark(false);
 		switch (cmd.button()) {
 		case mouse_button::button1:
 			// Set the cursor
@@ -1230,7 +1230,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// We continue with our existing selection or start a new one, so don't
 		// reset the anchor.
 		bvcur.setCursor(cur);
-		bvcur.selection() = true;
+		bvcur.setSelection(true);
 		if (cur.top() == old) {
 			// We didn't move one iota, so no need to update the screen.
 			cur.updateFlags(Update::SinglePar | Update::FitCursor);
@@ -1491,7 +1491,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cur.push(*inset);
 			cur.top().pos() = cur.top().lastpos();
 			cur.resetAnchor();
-			cur.selection() = true;
+			cur.setSelection(true);
 			cur.top().pos() = 0;
 		}
 		break;
@@ -1768,7 +1768,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_ESCAPE:
 		if (cur.selection()) {
-			cur.selection() = false;
+			cur.setSelection(false);
 		} else {
 			cur.undispatched();
 			// This used to be LFUN_FINISHED_RIGHT, I think FORWARD is more

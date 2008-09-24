@@ -37,7 +37,8 @@ class Encoding;
 
 // The public inheritance should go in favour of a suitable data member
 // (or maybe private inheritance) at some point of time.
-class Cursor : public DocIterator {
+class Cursor : public DocIterator
+{
 public:
 	/// create the cursor of a BufferView
 	explicit Cursor(BufferView & bv);
@@ -69,8 +70,8 @@ public:
 	//
 	/// selection active?
 	bool selection() const { return selection_; }
-	/// selection active?
-	bool & selection() { return selection_; }
+	/// set selection;
+	void setSelection(bool sel) { selection_ = sel; }
 	/// do we have a multicell selection?
 	bool selIsMultiCell() const 
 		{ return selection_ && selBegin().idx() != selEnd().idx(); }
@@ -80,7 +81,7 @@ public:
 	/// did we place the anchor?
 	bool mark() const { return mark_; }
 	/// did we place the anchor?
-	bool & mark() { return mark_; }
+	void setMark(bool mark) { mark_ = mark; }
 	///
 	void setSelection();
 	/// set selection at given position

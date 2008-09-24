@@ -1079,7 +1079,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_CELL_BACKWARD:
 		// See below.
-		cur.selection() = false;
+		cur.setSelection(false);
 		if (!idxPrev(cur)) {
 			cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
 			cur.undispatched();
@@ -1089,7 +1089,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CELL_FORWARD:
 		// Can't handle selection by additional 'shift' as this is
 		// hard bound to LFUN_CELL_BACKWARD
-		cur.selection() = false;
+		cur.setSelection(false);
 		if (!idxNext(cur)) {
 			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 			cur.undispatched();

@@ -3136,7 +3136,7 @@ void InsetTabular::edit(Cursor & cur, bool front, EntryDirection)
 {
 	//lyxerr << "InsetTabular::edit: " << this << endl;
 	cur.finishUndo();
-	cur.selection() = false;
+	cur.setSelection(false);
 	cur.push(*this);
 	if (front) {
 		if (isRightToLeft(cur))
@@ -3199,7 +3199,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.resetAnchor();
 			cur.idx() = tabular.getLastCellInRow(r);
 			cur.pos() = cur.lastpos();
-			cur.selection() = true;
+			cur.setSelection(true);
 			bvcur = cur; 
 			rowselect_ = true;
 			break;
@@ -3214,7 +3214,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.resetAnchor();
 			cur.idx() = tabular.cellIndex(tabular.row_info.size() - 1, c);
 			cur.pos() = cur.lastpos();
-			cur.selection() = true;
+			cur.setSelection(true);
 			bvcur = cur; 
 			colselect_ = true;
 			break;
@@ -3247,7 +3247,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				cur.pit() = 0;
 				cur.pos() = 0;
 				bvcur.setCursor(cur);
-				bvcur.selection() = true;
+				bvcur.setSelection(true);
 				break;
 			}
 			// select (additional) column
@@ -3259,7 +3259,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				cur.pit() = 0;
 				cur.pos() = 0;
 				bvcur.setCursor(cur);
-				bvcur.selection() = true;
+				bvcur.setSelection(true);
 				break;
 			}
 			// only update if selection changes
@@ -3268,7 +3268,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				cur.noUpdate();
 			setCursorFromCoordinates(cur, cmd.x, cmd.y);
 			bvcur.setCursor(cur);
-			bvcur.selection() = true;
+			bvcur.setSelection(true);
 			// if this is a multicell selection, we just set the cursor to
 			// the beginning of the cell's text.
 			if (bvcur.selIsMultiCell()) {
@@ -3285,12 +3285,12 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_CELL_BACKWARD:
 		movePrevCell(cur);
-		cur.selection() = false;
+		cur.setSelection(false);
 		break;
 
 	case LFUN_CELL_FORWARD:
 		moveNextCell(cur);
-		cur.selection() = false;
+		cur.setSelection(false);
 		break;
 
 	case LFUN_CHAR_FORWARD_SELECT:
@@ -4009,7 +4009,7 @@ int InsetTabular::dist(BufferView & bv, idx_type const cell, int x, int y) const
 Inset * InsetTabular::editXY(Cursor & cur, int x, int y)
 {
 	//lyxerr << "InsetTabular::editXY: " << this << endl;
-	cur.selection() = false;
+	cur.setSelection(false);
 	cur.push(*this);
 	cur.idx() = getNearestCell(cur.bv(), x, y);
 	resetPos(cur);
@@ -4325,7 +4325,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		cur.idx() = tabular.cellIndex(sel_row_start, column);
 		cur.pit() = 0;
 		cur.pos() = 0;
-		cur.selection() = false;
+		cur.setSelection(false);
 		break;
 
 	case Tabular::DELETE_COLUMN:
@@ -4336,7 +4336,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		cur.idx() = tabular.cellIndex(row, sel_col_start);
 		cur.pit() = 0;
 		cur.pos() = 0;
-		cur.selection() = false;
+		cur.setSelection(false);
 		break;
 
 	case Tabular::COPY_ROW:
@@ -4423,7 +4423,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		cur.idx() = s_start;
 		cur.pit() = 0;
 		cur.pos() = 0;
-		cur.selection() = false;
+		cur.setSelection(false);
 		break;
 	}
 
@@ -4542,7 +4542,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		cur.idx() = tabular.setLTCaption(row, !tabular.ltCaption(row));
 		cur.pit() = 0;
 		cur.pos() = 0;
-		cur.selection() = false;
+		cur.setSelection(false);
 		break;
 
 	case Tabular::SET_BOOKTABS:
