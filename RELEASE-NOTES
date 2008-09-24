@@ -187,6 +187,13 @@ The following new LyX functions have been introduced:
   This is the same as LFUN_FONT_BOLD except that in math mode \boldsymbol
   is used instead of \mathbf.
 
+- LFUN_COMMAND_ALTERNATIVES, "command-alternatives"
+  This works similarly to command-sequence, except that instead of running
+  each of the commands, it only runs the first one that is enabled. This can
+  be used to bind multiple functions to a single key, and then which one is
+  used will depend upon the context.
+
+
 The following LyX functions have been removed:
 
 - LFUN_FILE_NEW.
@@ -220,7 +227,7 @@ The following LyX functions have been removed:
 
 - LFUN_BIBITEM_INSERT.
 
-For the detailed description of LyX functions look into doxygen documentation.
+For the detailed description of LyX functions look under the Help menu.
 
 
 Known issues in version 1.6.0
