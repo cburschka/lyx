@@ -603,14 +603,14 @@ tex2lyx
 \end_layout
 
 \begin_layout Standard
-If you just want to put a piece of LaTeX code into a LyX file, see Section
+If you just want to put a piece of TeX code into a LyX file, see section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:latexcodes"
+reference "sec:Inserting-TeX-Code"
 
 \end_inset
 
@@ -618,10 +618,10 @@ reference "sec:latexcodes"
 \end_layout
 
 \begin_layout Section
-Inserting LaTeX Code into LyX Documents 
+Inserting TeX Code into LyX Documents 
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Inserting-LaTeX-Code"
+name "sec:Inserting-TeX-Code"
 
 \end_inset
 
@@ -629,31 +629,18 @@ name "sec:Inserting-LaTeX-Code"
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:latexcodes"
-
-\end_inset
-
- This is a rather important point: You can always insert LaTeX code into
- any LyX document.
+This is a rather important point: You can always insert TeX code into any
+ LyX document.
  LyX simply cannot, and will probably never be able to, display every possible
  LaTeX construct.
  If ever you need to insert LaTeX commands into your LyX document, you can
- use the ERT box, which you can insert into your document with 
+ use the TeX Code box, which you can insert into your document with 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
-
-\bar under
-T
-\bar default
-eX
+Insert\SpecialChar \menuseparator
+TeX
 \family default
-.
- The ERT box comes in three forms: collapsed, open, and inlined.
+ Code.
+ The TeX Code box comes in three forms: collapsed, open, and inlined.
  The first two are used just like any other collapsible (foldable) box (such
  as footnotes), and are useful for significant amounts of LaTeX commands.
  An 
@@ -664,8 +651,8 @@ inlined
 \begin_inset Quotes erd
 \end_inset
 
- ERT box displays its content as part of the button, and is useful for very
- short sections of LaTeX commands.
+ TeX Code box displays its content as part of the button, and is useful
+ for very short sections of LaTeX commands.
  
 \begin_inset ERT
 status open
@@ -681,7 +668,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-You can switch between all three by right-clicking on the ERT.
+You can switch between all three by right-clicking on the TeX Code.
  Note that if you want more than one line of LaTeX commands, you cannot
  use the inlined mode.
 \end_layout
@@ -779,7 +766,7 @@ end{tabular}
 \end_layout
 
 \begin_layout Standard
-The ERT box containing this text is directly after this paragraph.
+The TeX Code box containing this text is directly after this paragraph.
  Those of you reading the manual online will only see a bunch of funky text
  in red.
  Those reading a printed version of the manuals will see the actual results:
@@ -887,15 +874,8 @@ In addition to these two methods, you can also create a separate file containing
  some complex LaTeX structure.
  You can then use 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
-Chil
-\bar under
-d
-\bar default
-
+Insert\SpecialChar \menuseparator
+Child
 \begin_inset space ~
 \end_inset
 
@@ -2050,7 +2030,7 @@ Preparing a Bibliography with BibTeX
 \end_layout
 
 \begin_layout Standard
-Tha basics how to use BibTeX are explained in section 
+The basics how to use BibTeX are explained in section 
 \emph on
 Bibliography databases (BibTeX)
 \emph default
@@ -2059,7 +2039,7 @@ Bibliography databases (BibTeX)
 User's Guide
 \emph default
 .
- The following subsections explains special bibliography features supported
+ The following subsections explain special bibliography features supported
  by LyX.
 \end_layout
 
@@ -2213,7 +2193,7 @@ natbib
 \end_layout
 
 \begin_layout Subsection
-Sectionated Bibliographies
+Sectioned Bibliographies
 \end_layout
 
 \begin_layout Standard
@@ -2414,20 +2394,16 @@ a bibliography for each section or chapter of the document, are not supported
 \family typewriter
 bibtopic
 \family default
- package, which is used for the creation of sectionated bibliographies in
+ package, which is used for the creation of sectioned bibliographies in
  LyX (see the previous section), provides an easy way to solve this task,
- if you are willing to use some LaTeX-Code (ERT, cf.
-\begin_inset space ~
-\end_inset
-
-section
+ if you are willing to use some TeX Code (see section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Inserting-LaTeX-Code"
+reference "sec:Inserting-TeX-Code"
 
 \end_inset
 
@@ -14429,7 +14405,7 @@ section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Inserting-LaTeX-Code"
+reference "sec:Inserting-TeX-Code"
 
 \end_inset
 
