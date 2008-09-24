@@ -85,12 +85,11 @@ size_t KeyMap::unbind(string const & seq, FuncRequest const & func)
 }
 
 
-bool KeyMap::hasBinding(KeySequence const & seq, FuncRequest const & func,
-		unsigned int r)
+FuncRequest KeyMap::getBinding(KeySequence const & seq, unsigned int r)
 {
 	KeySymbol code = seq.sequence[r];
 	if (!code.isOK())
-		return false;
+		return FuncRequest::unknown;
 
 	KeyModifier const mod1 = seq.modifiers[r].first;
 	KeyModifier const mod2 = seq.modifiers[r].second;
@@ -102,12 +101,12 @@ bool KeyMap::hasBinding(KeySequence const & seq, FuncRequest const & func,
 		    && mod1 == it->mod.first
 		    && mod2 == it->mod.second) {
 			if (r + 1 == seq.length())
-				return it->func == func;
+				return it->func;
 			else if (it->table.get())
-				return it->table->hasBinding(seq, func, r + 1);
+				return it->table->getBinding(seq, r + 1);
 		}
 	}
-	return false;
+	return FuncRequest::unknown;
 }
 
 

@@ -2404,6 +2404,15 @@ void PrefShortcuts::on_searchLE_textEdited()
 }
 
 
+docstring makeCmdString(FuncRequest const & f)
+{
+	docstring actionStr = from_ascii(lyxaction.getActionName(f.action));
+	if (!f.argument().empty())
+		actionStr += " " + f.argument();
+	return actionStr;
+}
+
+
 void PrefShortcuts::shortcut_okPB_pressed()
 {
 	QString const new_lfun = shortcut_->lfunLE->text();
@@ -2422,10 +2431,29 @@ void PrefShortcuts::shortcut_okPB_pressed()
 		return;
 	}
 
-	// if both lfun and shortcut is valid
-	if (user_bind_.hasBinding(k, func) || system_bind_.hasBinding(k, func)) {
+	// check to see if there's been any change
+	FuncRequest oldBinding = system_bind_.getBinding(k);
+	if (oldBinding.action == LFUN_UNKNOWN_ACTION)
+		oldBinding = user_bind_.getBinding(k);
+	if (oldBinding == func) {
+		docstring const actionStr = makeCmdString(func);
 		Alert::error(_("Failed to create shortcut"),
-			_("Shortcut is already defined"));
+			bformat(_("Shortcut `%1$s' is already bound to:\n%2$s"), 
+			k.print(KeySequence::ForGui), actionStr));
+		return;
+	}
+	
+	// make sure this key isn't already bound---and, if so, not unbound
+	FuncCode const unbind = user_unbind_.getBinding(k).action;
+	if (oldBinding.action != LFUN_UNKNOWN_ACTION && unbind == LFUN_UNKNOWN_ACTION)
+	{
+		// FIXME Perhaps we should offer to over-write the old shortcut?
+		// If so, we'll need to remove it from our list, etc.
+		docstring const actionStr = makeCmdString(oldBinding);
+		Alert::error(_("Failed to create shortcut"),
+			bformat(_("Shortcut `%1$s' is already bound to:\n%2$s\n"
+			  "You need to remove that binding before creating a new one."), 
+			k.print(KeySequence::ForGui), actionStr));
 		return;
 	}
 

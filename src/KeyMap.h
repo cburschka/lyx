@@ -56,9 +56,11 @@ public:
 		    unsigned int r = 0);
 
 
-	/// if a keybinding has been defined.
-	bool hasBinding(KeySequence const & seq, FuncRequest const & func,
-			unsigned int r = 0);
+	/// returns the function bound to this key sequence, or 
+	/// FuncRequest::unknown if no binding exists for it.
+	/// @param r an internal recursion counter
+	// FIXME Surely there's a better way to do that?
+	FuncRequest getBinding(KeySequence const & seq, unsigned int r = 0);
 
 	/// clear all bindings
 	void clear();
