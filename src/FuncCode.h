@@ -408,6 +408,7 @@ enum FuncCode
 	LFUN_COMPLETION_CANCEL,
 	LFUN_COMPLETION_ACCEPT,
 	// 315
+ 	LFUN_COMMAND_ALTERNATIVES,
 	LFUN_LASTACTION                  // end of the table
 };
 

@@ -533,6 +533,23 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
+	// we want to check if at least one of these is enabled
+	case LFUN_COMMAND_ALTERNATIVES: {
+		// argument contains ';'-terminated commands
+		string arg = to_utf8(cmd.argument());
+		while (!arg.empty()) {
+			string first;
+			arg = split(arg, first, ';');
+			FuncRequest func(lyxaction.lookupFunc(first));
+			func.origin = cmd.origin;
+			flag = getStatus(func);
+			// if this one is enabled, the whole thing is
+			if (flag.enabled())
+				break;
+		}
+		break;
+	}
+
 	case LFUN_CALL: {
 		FuncRequest func;
 		string name = to_utf8(cmd.argument());
@@ -1340,6 +1357,23 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				FuncRequest func(lyxaction.lookupFunc(first));
 				func.origin = cmd.origin;
 				dispatch(func);
+			}
+			break;
+		}
+
+		case LFUN_COMMAND_ALTERNATIVES: {
+			// argument contains ';'-terminated commands
+			string arg = argument;
+			while (!arg.empty()) {
+				string first;
+				arg = split(arg, first, ';');
+				FuncRequest func(lyxaction.lookupFunc(first));
+				func.origin = cmd.origin;
+				FuncStatus stat = getStatus(func);
+				if (stat.enabled()) {
+					dispatch(func);
+					break;
+				}
 			}
 			break;
 		}

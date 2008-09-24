@@ -2923,6 +2923,16 @@ void LyXAction::init()
  */
 		{ LFUN_COMMAND_SEQUENCE, "command-sequence", NoBuffer, System },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_COMMAND_ALTERNATIVES
+ * \li Action: Runs the first listed command that is enabled.
+ * \li Syntax: command-alternatives <CMDS>
+ * \li Params: <CMDS>: Sequence of commands separated by semicolons.
+ * \li Sample: command-alternatives completion-accept;cell-forward
+ * \li Origin: rgh, 24 September 2008
+ * \endvar
+ */
+		{ LFUN_COMMAND_ALTERNATIVES, "command-alternatives", NoBuffer, System },
+/*!
  * \var lyx::FuncCode lyx::LFUN_MESSAGE
  * \li Action: Shows message in statusbar (for script purposes).
  * \li Syntax: message <STRING>
