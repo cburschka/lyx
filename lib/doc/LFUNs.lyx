@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0rc2 created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -19,6 +19,7 @@ theorems-ams
 
 \graphics default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry true
@@ -30,7 +31,7 @@ theorems-ams
 \leftmargin 2.5cm
 \topmargin 2cm
 \rightmargin 3cm
-\bottommargin 2cm
+\bottommargin 1cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -48,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 08.09.2008.
+LFUNs documentation automatically generated 25.09.2008.
 \end_layout
 
 \begin_layout Standard
@@ -1519,7 +1520,7 @@ Origin Andre, Jan 7 2004
 \end_layout
 
 \begin_layout Subsection*
-LFUN_WORD_FIND 
+LFUN_WORD_REPLACE 
 \end_layout
 
 \begin_layout Description
@@ -2072,12 +2073,25 @@ LFUN_FONT_BOLD
 \end_layout
 
 \begin_layout Description
-Action Toggles the bold font (selection-wise).
+Action Toggles the bold font (selection-wise) using mathbf in math.
   
 \end_layout
 
 \begin_layout Description
 Syntax font-bold 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_FONT_BOLDSYMBOL 
+\end_layout
+
+\begin_layout Description
+Action Toggles the bold font (selection-wise) using boldsymbol in math.
+  
+\end_layout
+
+\begin_layout Description
+Syntax font-boldsymbol 
 \end_layout
 
 \begin_layout Subsection*
@@ -4408,35 +4422,6 @@ Origin leeming, 30 Mar 2004
 \end_layout
 
 \begin_layout Subsection*
-LFUN_GRAPHICS_GROUPS_UNIFY 
-\end_layout
-
-\begin_layout Description
-Action Unify all graphics insets with the one given as an parameter.
-  
-\end_layout
-
-\begin_layout Description
-Notion This is internally used for synchronize certain group of graphics
- insets.
-  
-\end_layout
-
-\begin_layout Description
-Syntax graphics-groups-unigfy <GRAPHICS_PARAMS> 
-\end_layout
-
-\begin_layout Description
-Params <GRAPHICS_PARAMS>: Parameters for graphics inset (syntax can be seen
- in .lyx files).
-  
-\end_layout
-
-\begin_layout Description
-Origin sanda, 6 May 2008 
-\end_layout
-
-\begin_layout Subsection*
 LFUN_SET_GRAPHICS_GROUP 
 \end_layout
 
@@ -4451,8 +4436,8 @@ Syntax set-graphics-group [<GROUP>]
 
 \begin_layout Description
 Params <GROUP>: Id for an existing group.
- In case tthe Id is an empty string, the graphics inset is removed from
- the current group.
+ In case the Id is an empty string, the graphics inset is removed from the
+ current group.
   
 \end_layout
 
@@ -6211,6 +6196,38 @@ Sample command-sequence cut; ert-insert; self-insert ; paste; self-insert
 
 \begin_layout Description
 Origin Andre, 11 Nov 1999 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_COMMAND_ALTERNATIVES 
+\end_layout
+
+\begin_layout Description
+Action Runs the first listed command that is enabled.
+  
+\end_layout
+
+\begin_layout Description
+Notion This can be used to bind multiple functions to a single key, and
+ then which one is used will depend upon the context.
+  
+\end_layout
+
+\begin_layout Description
+Syntax command-alternatives <CMDS> 
+\end_layout
+
+\begin_layout Description
+Params <CMDS>: Sequence of commands separated by semicolons.
+  
+\end_layout
+
+\begin_layout Description
+Sample command-alternatives completion-accept;cell-forward 
+\end_layout
+
+\begin_layout Description
+Origin rgh, 24 September 2008 
 \end_layout
 
 \begin_layout Subsection*
