@@ -2047,17 +2047,27 @@ Shift-Control-s
 \end_layout
 
 \begin_layout Standard
-You can list or change the keybindings in the LyX preferences under 
-\family sans
-Editing\SpecialChar \menuseparator
-Shortcuts
-\family default
-.
- The preferences are opened with the menu 
+You can list or change the keybindings in the menu 
 \family sans
 Tools\SpecialChar \menuseparator
 Preferences
 \family default
+ under 
+\family sans
+Editing\SpecialChar \menuseparator
+Shortcuts
+\family default
+ as explained in sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Editing-Shortcuts"
+
+\end_inset
+
 .
 \end_layout
 
@@ -25834,9 +25844,9 @@ key "Mittelbach,Kopka,Lamport"
 ).
  The file can be created using any text editor, but normally one uses a
  special program to create and edit the entries in the database.
- A list of such programs is maintained on the LyX wiki at 
+ A list of such programs is maintained on the LyX Wiki at 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -25877,6 +25887,16 @@ Bibliography
 .
  A grey box will be inserted and a window appears.
  In this window you can load one or more databases and a style file.
+ The option 
+\family sans
+Add bibliography to TOC
+\family default
+ adds a table of contents entry for the bibliography.
+ In the 
+\family sans
+Content
+\family default
+ drop box you can select what part of the database should be output.
 \end_layout
 
 \begin_layout Standard
@@ -25923,13 +25943,6 @@ target "http://www.ctan.org/get/biblio/bibtex/contrib/doc/btxhak.pdf"
 
 \begin_layout Standard
 Inserting a citation reference works as described in the previous section.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -25987,10 +26000,29 @@ key "BibTeX"
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
+When you select the option 
+\family sans
+Sectioned bibliography
+\family default
+ in the 
+\family sans
+Document\SpecialChar \menuseparator
+Settings
+\family default
+ dialog, it is possible to have multiple and sectioned bibliographies.
+ This and more specials are explained in detail in section 
+\emph on
+Customizing Bibliographies
+\emph default
+ 
+\emph on
+with BibTeX
+\emph default
+ of the 
+\emph on
+Extended
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Standard
@@ -36806,7 +36838,7 @@ default.lyx
 The different submenus of the dialog are explained in the following:
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Document Class
 \end_layout
 
@@ -36856,7 +36888,7 @@ Embedded Objects
  manual.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Fonts
 \end_layout
 
@@ -36875,7 +36907,7 @@ reference "sec:Fonts-and-Text"
 .
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Text Layout
 \end_layout
 
@@ -36901,7 +36933,7 @@ Embedded Objects
  manual.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Page Layout
 \end_layout
 
@@ -36927,7 +36959,7 @@ reference "sub:Document-Layout"
 .
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Page Margins
 \end_layout
 
@@ -36946,7 +36978,7 @@ reference "sub:Margins"
 .
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Language
 \begin_inset Index
 status collapsed
@@ -37261,7 +37293,7 @@ key "XeTeX"
 
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Numbering & TOC
 \end_layout
 
@@ -37281,7 +37313,7 @@ reference "sub:Numbering-depth"
 .
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Bibliography
 \end_layout
 
@@ -37329,7 +37361,7 @@ reference "sec:Bibliography"
 .
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 PDF Properties
 \end_layout
 
@@ -37348,7 +37380,7 @@ reference "sec:PDF-Properties"
 .
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Math Options
 \end_layout
 
@@ -37401,7 +37433,7 @@ esint
  is used for special integral characters.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Float Placement
 \end_layout
 
@@ -37420,7 +37452,7 @@ reference "sub:Float-Placement"
 .
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Bullets
 \end_layout
 
@@ -37440,7 +37472,7 @@ reference "sec:Itemize"
 .
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Branches
 \end_layout
 
@@ -37459,7 +37491,7 @@ reference "sec:Branches"
 .
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 LaT
 \begin_inset ERT
 status collapsed
@@ -40264,8 +40296,12 @@ Settings ! Shortcuts
 
 \end_layout
 
+\begin_layout Subsubsection
+Bind File
+\end_layout
+
 \begin_layout Standard
-Bindings are used to bind a function to a key.
+Bindings are used to bind a LyX-function to a key.
  Several binding files are available:
 \end_layout
 
@@ -40330,9 +40366,97 @@ cua.bind
 , you can see that they are included to keep the overview in the bind-file.
 \end_layout
 
+\begin_layout Subsubsection
+Editing Shortcuts
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Editing-Shortcuts"
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Key Bindings ! Editing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-If you like to customize the keybindings to your own taste, modify the bind-file
-s with a text editor.
+To add new or modify existing keybindings to your own taste you can use
+ the table in the dialog that lists all LyX-functions and the bound shortcuts.
+ To find functions easily, they are grouped by categories and the dialog
+ provides the field 
+\family sans
+Show key-bindings containing
+\family default
+.
+ In this field you can insert a keyword for a function you want to edit.
+ Insert there for example as keyword 
+\begin_inset Quotes eld
+\end_inset
+
+paste
+\begin_inset Quotes erd
+\end_inset
+
+ and you get the 4 different existing shortcuts for the 3 different functions
+ that contain 
+\begin_inset Quotes eld
+\end_inset
+
+paste
+\begin_inset Quotes erd
+\end_inset
+
+ in their name.
+ As you can see, one function can have more than one shortcut.
+ All LyX-functions are also listed in the file 
+\emph on
+LyX Functions
+\emph default
+ that you find in the 
+\family sans
+Help
+\family default
+ menu.
+\end_layout
+
+\begin_layout Standard
+To add e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+the shortcut 
+\family sans
+Alt+Q
+\family default
+ for the function 
+\family sans
+textstyle-apply
+\family default
+, select the function and press the 
+\family sans
+Modify
+\family default
+ button.
+ A dialog pops up where you can add the shortcut by using it.
+ So press Alt+Q to define the shortcut.
+ Modifying an existing shortcut is done the same way.
+\end_layout
+
+\begin_layout Standard
+Alternatively you can also edit shortcuts by modifying bind-files with a
+ text editor.
  The syntax of the entries is:
 \end_layout
 
@@ -40358,17 +40482,6 @@ LyX-function
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-All LyX-functions are listed in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "LyX-func"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Subsection
@@ -40444,6 +40557,16 @@ Note:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Besides this, you can specify here the 
+\family sans
+Wheel scrolling speed
+\family default
+.
+ The standard value is 1.0, higher values speed up the scrolling, lower ones
+ slow it down.
 \end_layout
 
 \begin_layout Section
