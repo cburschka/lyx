@@ -25,7 +25,7 @@
 \bind "Up"         "up"
 \bind "Down"       "down"
 
-\bind "Tab"        "cell-forward"
+\bind "Tab"        "command-alternatives completion-accept;cell-forward"
 \bind "C-Tab"      "cell-split"
 \bind "~S-ISO_Left_Tab"    "cell-backward"
 \bind "~S-BackTab" "cell-backward"
@@ -42,7 +42,7 @@
 \bind "KP_Enter"   "break-paragraph"
 \bind "KP_Right"   "char-right"
 \bind "KP_Left"    "char-left"
-\bind "KP_Up"	   "up"
+\bind "KP_Up"      "up"
 \bind "KP_Down"    "down"
 \bind "KP_Home"    "line-begin"
 \bind "KP_End"     "line-end"
