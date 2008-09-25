@@ -1,10 +1,43 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
-\textclass book
+\textclass article
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\pagenumbering{Roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \cleardoublepage
+  \pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
+\end_preamble
 \language galician
-\inputencoding default
+\inputencoding auto
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -13,11 +46,28 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
-\papersize default
-\use_geometry true
+\use_hyperref true
+\pdf_title "Introdución ao LyX"
+\pdf_author "LyX team, tradución: Ramón Flores"
+\pdf_subject "LyX-documentation Introdución"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pagebackref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize a4paper
+\use_geometry false
 \use_amsmath 0
 \use_esint 0
 \cite_engine basic
@@ -33,10 +83,12 @@
 \defskip medskip
 \quotes_language english
 \papercolumns 1
-\papersides 2
+\papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -46,42 +98,67 @@ Introdución ao LyX
 \end_layout
 
 \begin_layout Author
-pola equipa de LyX 
+pola equipa de LyX
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Se quer facer algun comentário ou achou algun erro, agradeceremo-lle no-lo
  comunique na lista de correo, en inglés, do proxecto de documentación do
- LyX
-\lang galician
- 
-\lang english
-<lyx-docs@lists.lyx.org>.
+ LyX 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
 
 
-\size normal
+\begin_inset Foot
+status collapsed
 
-\newline
-tradución: Ramón Flores <fa2ramon@usc.es>
+\begin_layout Plain Layout
+
+\size normal
+tradución: Ramón Flores 
+\begin_inset CommandInset href
+LatexCommand href
+target "fa2ramon@usc.es"
+type "mailto:"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Chapter
-\begin_inset LatexCommand label
-name "cha:A-filosofia-do-LyX"
+\begin_layout Section
+A filosofia do LyX
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:A-filosofia-do-LyX"
+
 \end_inset
 
-A filosofia do LyX
+
 \end_layout
 
 \begin_layout Quote
@@ -108,8 +185,9 @@ Tio Cosmo, por que lle chaman a isto procesador de texto?
 \end_layout
 
 \begin_layout Quote
+\begin_inset space \hfill{}
+\end_inset
 
-\hfill
 --- Jeff MacNelly en 
 \begin_inset Quotes eld
 \end_inset
@@ -121,8 +199,8 @@ Shoe
  
 \end_layout
 
-\begin_layout Section
-Que é o  LyX?
+\begin_layout Subsection
+Que é o LyX?
 \end_layout
 
 \begin_layout Standard
@@ -218,9 +296,7 @@ No LyX, a diferenza dun procesador de textos ordinário, o usuário non ten
  que se preocupar de como conseguir que un determinado carácter vaia nalgun
  lugar determinado, simplesmente di-lle ao LyX que é o que quer facer, e
  o programa encarrega-se do resto, seguindo un conxunto de regras chamadas
- un
-\emph default
- 
+ un 
 \emph on
 estilo
 \emph default
@@ -228,7 +304,7 @@ estilo
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Para ser xustos, cumpre recoñecermos que hoxe en dia os procesadores de
  texto incluen algun tipo de follas de estilo con unha filosofia similar,
  mais menos potente, ao do LyX, porén na prática apenas son utilizadas.
@@ -256,8 +332,14 @@ Introdución
 \begin_inset Quotes eld
 \end_inset
 
-1.\InsetSpace ~
-\InsetSpace ~
+1.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
 Introdución
 \begin_inset Quotes erd
 \end_inset
@@ -270,9 +352,7 @@ Introdución
 
 \begin_layout Standard
 No LyX, vai a lista de estilos, un menu despregueábel que se acha á esquerda
- da barra de botóns, selecciona
-\family default
- 
+ da barra de botóns, selecciona 
 \family sans
 Sección
 \family default
@@ -299,13 +379,19 @@ e --- en calquer lado.
 \begin_layout Standard
 Outro tema importante é o da consisténcia do texto.
  Dias despois de escreber o relatório decide incluir unha nova sección,
- a Sección\InsetSpace ~
+ a Sección
+\begin_inset space ~
+\end_inset
+
 4.
  Pon-se a escrebé-la, mais engana-se en canto a fonte que estaba a utilizar
  para os títulos da sección, e no canto de empregar unha fonte 18pt en negrito
- usa outra de 16pt, polo que o título da Sección\InsetSpace ~
-4 vai ir con unha fonte,
- semellante mais non igual, á que usou para nas seccións anteriores.
+ usa outra de 16pt, polo que o título da Sección
+\begin_inset space ~
+\end_inset
+
+4 vai ir con unha fonte, semellante mais non igual, á que usou para nas
+ seccións anteriores.
  Este problema non existe no LyX, que toma conta de todos eses detalles.
  Ao fin e ao cabo, son nesas cousas nas que os computadores son imbatíbeis.
 \end_layout
@@ -322,15 +408,11 @@ Outro exemplo, supoña que está a facer unha lista.
 \end_layout
 
 \begin_layout Standard
-Asi que a idea básica por tras do LyX é: especifique o
-\emph default
- 
+Asi que a idea básica por tras do LyX é: especifique o 
 \emph on
 que
 \emph default
- quer facer, non
-\emph default
- 
+ quer facer, non 
 \emph on
 como
 \emph default
@@ -351,46 +433,32 @@ o que vé é o que pretende facer
 \begin_inset Quotes erd
 \end_inset
 
- (WYSIWYM -
-\series default
- 
+ (WYSIWYM - 
 \series bold
 \lang english
 W
 \series default
-hat
-\series default
- 
+hat 
 \series bold
 Y
 \series default
-ou
-\series default
- 
+ou 
 \series bold
 S
 \series default
-ee
-\series default
- 
+ee 
 \series bold
 I
 \series default
-s
-\series default
- 
+s 
 \series bold
 W
 \series default
-hat
-\series default
- 
+hat 
 \series bold
 Y
 \series default
-ou
-\series default
- 
+ou 
 \series bold
 M
 \series default
@@ -408,12 +476,12 @@ Esta é a razón pola que o LyX non é bon para elaborar cartaces e anúncios---
  para apertar un parafuso, non si?.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Diferenzas entre o LyX e outros procesadores de texto
 \begin_inset OptArg
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX e outros procesadores de texto
 \end_layout
 
@@ -423,7 +491,7 @@ LyX e outros procesadores de texto
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Non, non tentamos iniciar (ou gañar) unha cruzada sobre procesadores de
  texto.
  Mais consideramos necesário descreber as características do LyX, e unha
@@ -450,15 +518,11 @@ Tabuladores
 
 \begin_layout Itemize
 Espazos en branco extras (i.e.
- ao premer
-\family default
- 
+ ao premer 
 \family sans
 Enter
 \family default
- ou
-\family default
- 
+ ou 
 \family sans
 Space
 \family default
@@ -520,13 +584,11 @@ Se ben é posíbel utilizar tais funcións no LyX, usualmente o usuário non
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 O usuário pode escoller manualmente todos estes parámetros (se ben que para
  alguns precise coñecimentos de LaTeX), para todo o documento ou para unha
  parte específica.
- No
-\shape default
- 
+ No 
 \shape italic
 Guia do Usuário
 \shape default
@@ -573,16 +635,14 @@ Certamente a maioria dos procesadores de texto actuais dan manexado símbolos
  do conceito WYSIWYM.
  Mais polo momento son novos nestes eidos, entanto que o LyX está baseado
  no sistema de preparación de documentos LaTeX.
- Sistema que ten décadas de existéncia, e ademais
-\emph default
- 
+ Sistema que ten décadas de existéncia, e ademais 
 \emph on
 funciona
 \emph default
 .
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Que demo é iso do LaTeX? ( e por que me debe importar?)
 \end_layout
 
@@ -592,7 +652,7 @@ O LaTeX é un sistema de preparación de documentos desenvolvido por Leslie
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 A fonte da que bebe esta sección é o libro 
 \begin_inset Quotes eld
 \end_inset
@@ -606,8 +666,6 @@ A Guide to LaTeX2e
 \end_inset
 
  de Helmut Kopka e Patrick Daly, que ten unha entrada na bibliografia do
-
-\emph default
  
 \emph on
 Guia do Usuário
@@ -640,28 +698,22 @@ device independent
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 dispositivo de impresión, na maior parte dos casos unha impresora.
 \end_layout
 
 \end_inset
 
-), ou
-\family default
- 
+), ou 
 \family typewriter
 dvi
 \family default
  para abreviar.
- O ficheiro
-\family default
- 
+ O ficheiro 
 \family typewriter
 dvi
 \family default
  pode enviar-se directamente a calquer dispositivo que entenda o formato
-
-\family default
  
 \family typewriter
 dvi
@@ -704,72 +756,52 @@ Entretanto e en paralelo co desenvolvimento e crecimento do LaTeX, outra
 \end_layout
 
 \begin_layout Standard
-Ha duas vias de estender o LateX, as
-\emph default
- 
+Ha duas vias de estender o LateX, as 
 \emph on
 clases
 \emph default
- e os
-\emph default
- 
+ e os 
 \emph on
 estilos
 \emph default
 .
- Unha
-\emph default
- 
+ Unha 
 \emph on
 clase
 \emph default
  é un conxunto de macros de LaTeX (e TeX) que descreben un tipo novo de
  documento, como un libro ou un artigo.
- Ha
-\emph default
- 
+ Ha 
 \emph on
 clases
 \emph default
  para diapositivas, para revistas de matemática e de física \SpecialChar \ldots{}
 , mesmo ha moitas
- universidades que teñen unha
-\emph default
- 
+ universidades que teñen unha 
 \emph on
 clase
 \emph default
  própria para as suas teses.
- Un
-\emph default
- 
+ Un 
 \emph on
 estilo
 \emph default
- a diferenza dunha
-\emph default
- 
+ a diferenza dunha 
 \emph on
 clase
 \emph default
- non define un novo tipo de documento, senón un tipo de
-\emph default
- 
+ non define un novo tipo de documento, senón un tipo de 
 \emph on
 comportamento
 \emph default
  diferente que calquer documento pode usar.
  Por exemplo, o LyX controla as marxes das páxinas e os espazos entre liñas,
- através de dous ficheiros de
-\emph default
- 
+ através de dous ficheiros de 
 \emph on
 estilo
 \emph default
  para LaTeX deseñados con ese propósito.
- Ha ficheiros de
-\emph default
- 
+ Ha ficheiros de 
 \emph on
 estilo
 \emph default
@@ -815,16 +847,14 @@ LyX: Procesador de texto WYSIWYM, que emprega o LaTeX, en toda a sua gloria,
 A idea desta sección é tentar explicar porqué o LyX funciona de forma un
  tanto diferente dos outros procesadores de texto.
  A razón é simples: o LyX basea-se no LaTeX para compor o texto impreso,
- e tal como o LaTeX, o LyX foca-se no contexto da sua escrita --
-\emph default
- 
+ e tal como o LaTeX, o LyX foca-se no contexto da sua escrita -- 
 \emph on
 o que
 \emph default
  está a escreber, deixando ao computador ocupar-se da aparéncia do texto.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 Navegando pola documentación
 \end_layout
 
@@ -853,8 +883,10 @@ ocupacións reais
  Facemos o posíbel para manter os manuais a ponto, mais nen sempre o conseguimos.
  (Se quer axudar a remediar esta situación, asegure-se de ler o capítulo
  
-\begin_inset LatexCommand ref
-reference "chp:Contrib"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Contrib"
+
 \end_inset
 
 , alén do restante deste documento.)
@@ -864,22 +896,25 @@ reference "chp:Contrib"
 Un outro favor que nos pode facer é avisar-nos se calquer cousa nestes manuais
  lle confundir, non estiver claro, ou estiver errado.
  Pode contactar cos actuais responsábeis pola documentación enviando un
- correo electrónico a
-\family default
- 
+ correo electrónico a 
 \family typewriter
 lyx-docs@lists.lyx.org
 \family default
 
 \begin_inset Foot
-status open
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 [N.
- do T.]Pode-se aceder ás listas do proxecto LyX na seguinte 
-\begin_inset LatexCommand htmlurl
-name "páxina"
-target "http://www.lyx.org/internet/mailing.php"
+ do T.]Pode-se aceder ás listas do proxecto LyX na seguinte páxina 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/internet/mailing.php
+\end_layout
+
 \end_inset
 
 .
@@ -894,12 +929,18 @@ lyx.org.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 [N.
- do T.] É posíbel aceder aos arquivos das mensaxes da dita lista na 
-\begin_inset LatexCommand htmlurl
-name "páxina"
-target "http://www.mail-archive.com/lyx-users@lists.lyx.org/"
+ do T.] É posíbel aceder aos arquivos das mensaxes da dita lista na páxina
+ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.mail-archive.com/lyx-users@lists.lyx.org/
+\end_layout
+
 \end_inset
 
 .
@@ -910,7 +951,7 @@ target "http://www.mail-archive.com/lyx-users@lists.lyx.org/"
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 O Formato dos Manuais
 \end_layout
 
@@ -924,9 +965,9 @@ Os manuais poden-se ler directamente no LyX, ou imprimi-los e le-los en
  O índice e as notas de rodapé non están visíbeis nun princípio.
  As notas de rodapé, como esta
 \begin_inset Foot
-status open
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Esta é unha nota de rodapé
 \end_layout
 
@@ -944,8 +985,10 @@ No manual impreso as referéncias cruzadas mostran os números correspondentes
  ao capítulo, sección, subsección etc., referenciados.
  Lendo directamente no LyX porén, as referéncias aparecen nunha caixa cincenta
  como esta: 
-\begin_inset LatexCommand ref
-reference "chp:Contrib"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Contrib"
+
 \end_inset
 
 .
@@ -971,9 +1014,7 @@ Ir á etiqueta
  o LyX saltará a etiqueta correspondente á referéncia.
  Outra forma de facer o salto é clicando na referéncia co botón direito
  do rato.
- Pode-se voltar ao lugar de orixe dixitando
-\family default
- 
+ Pode-se voltar ao lugar de orixe dixitando 
 \family sans
 Crtl-<
 \family default
@@ -1009,15 +1050,17 @@ Notará que as veces se usan fontes diferentes da padrón, estas mudanzas
 \emph on
 Enfatizado
 \emph default
- 
-usa-se para dar énfase en xeral, argumentos xenéricos, títulos de libros,
+ usa-se para dar énfase en xeral, argumentos xenéricos, títulos de libros,
  nomes de seccións doutros manuais, e notas dos autores;
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-Fonte\InsetSpace ~
+Fonte
+\begin_inset space ~
+\end_inset
+
 Fixa
 \family default
  usa-se para programas e nomes de ficheiros, código LaTeX, e códigos e funcións
@@ -1027,7 +1070,10 @@ Fixa
 \begin_layout Itemize
 
 \family sans
-Sans\InsetSpace ~
+Sans
+\begin_inset space ~
+\end_inset
+
 Serif
 \family default
  usa-se para menus, botóns, xanelas suspensas e nomes de teclas;
@@ -1066,9 +1112,7 @@ Crtl-
 \begin_inset Quotes erd
 \end_inset
 
-: indica a tecla
-\family default
- 
+: indica a tecla 
 \family sans
 Control
 \family default
@@ -1087,9 +1131,7 @@ S-
 \begin_inset Quotes erd
 \end_inset
 
-: indica a tecla
-\family default
- 
+: indica a tecla 
 \family sans
 Shift
 \family default
@@ -1108,15 +1150,11 @@ M-
 \begin_inset Quotes erd
 \end_inset
 
-: indica a tecla
-\family default
- 
+: indica a tecla 
 \family sans
 Meta
 \family default
- que en moitos teclados será a tecla
-\family default
- 
+ que en moitos teclados será a tecla 
 \family sans
 Alt
 \family default
@@ -1291,9 +1329,7 @@ AvPág
 \begin_inset Quotes erd
 \end_inset
 
-: son as 6 teclas que aparecen normalmente sobre as teclas de
-\emph default
- 
+: son as 6 teclas que aparecen normalmente sobre as teclas de 
 \emph on
 cursor
 \emph default
@@ -1313,12 +1349,7 @@ Return
 \begin_inset Quotes erd
 \end_inset
 
- e
-\family sans
-
-\family default
- 
-
+ e 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1331,12 +1362,7 @@ Enter
 \end_inset
 
 : ambas referen-se á mesma tecla, a correspondente ao retorno de carro.
- Nalguns teclados esta tecla
-\family sans
-
-\family default
- 
-aparece como 
+ Nalguns teclados esta tecla aparece como 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1354,15 +1380,11 @@ Enter
 
 , noutros onde o que aparece é unha frecha en ángulo, e mesmo ha teclados
  onde ha duas teclas diferentes.
- O LyX trata todo como a mesma tecla, e usará-se
-\family default
- 
+ O LyX trata todo como a mesma tecla, e usará-se 
 \family sans
 Return
 \family default
- e
-\family default
- 
+ e 
 \family sans
 Enter
 \family default
@@ -1372,11 +1394,6 @@ Enter
 \begin_layout Standard
 As distintas combinacións de teclas que se usan en LyX son descritas no
  capítulo 
-\begin_inset LatexCommand ref
-reference "ch:functions"
-\end_inset
-
-, 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1400,9 +1417,7 @@ Manual de Referéncia
 \begin_inset Quotes erd
 \end_inset
 
- (o ficheiro
-\family default
- 
+ (o ficheiro 
 \family typewriter
 Reference.lyx
 \family default
@@ -1410,15 +1425,13 @@ Reference.lyx
  
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Os manuais
 \end_layout
 
 \begin_layout Standard
 Na seguinte lista descrebe-se o contido dos manuais aos que se acede desde
- a
-\family default
- 
+ a 
 \family typewriter
 A
 \bar under
@@ -1453,42 +1466,31 @@ Se esta a iniciar-se no LyX, e non coñece LaTeX, debe ler antes que nada
  este tutorial.
  Se pensa que LaTeX é o material co que se elaboran os preservativos, entón
  cumpre-lle reler o capítulo 
-\begin_inset LatexCommand ref
-reference "cha:A-filosofia-do-LyX"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:A-filosofia-do-LyX"
+
 \end_inset
 
- desta
-\emph default
- 
+ desta 
 \emph on
 Introdución
 \emph default
 , e despois pasar ao tutorial.
- E ben posíbel que despois de ler o
-\emph default
- 
+ E ben posíbel que despois de ler o 
 \emph on
 Tutorial
 \emph default
- continue a pensar que LaTeX é algunha substáncia elástica,
-\lang english
-
-\lang galician
- 
-mais saberá como usar LyX.
+ continue a pensar que LaTeX é algunha substáncia elástica, mais saberá
+ como usar LyX.
 \end_layout
 
 \begin_layout Standard
-Se
-\emph default
- 
+Se 
 \emph on
 coñece
 \emph default
- 
-LaTeX, debe tamén ler o
-\emph default
- 
+ LaTeX, debe tamén ler o 
 \emph on
 Tutorial
 \emph default
@@ -1517,33 +1519,32 @@ Se en calquer momento non sabe moi ben como facer algo en LyX, probe a ler
 \begin_layout Description
 
 \emph on
-Guia\InsetSpace ~
+Guia
+\begin_inset space ~
+\end_inset
+
 
 \series bold
-do\InsetSpace ~
+do
+\begin_inset space ~
+\end_inset
+
 Usuário
 \series default
 \emph default
  
-\emph on
-\series default
-
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 É a documentación primária.
- Tenta cobrir
-\emph default
- 
+ Tenta cobrir 
 \emph on
 a maioria
 \emph default
  das operacións básicas e recursos disponíbeis do LyX.
  O manual principal asume que o leitor ten alguns coñecimentos de LaTeX
- ou que xa leu o
-\emph default
- 
+ ou que xa leu o 
 \emph on
 Tutorial.
 \end_layout
@@ -1552,15 +1553,16 @@ Tutorial.
 \begin_layout Description
 
 \emph on
-Funcións\InsetSpace ~
+Funcións
+\begin_inset space ~
+\end_inset
+
 Avanzadas 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Ampliación do
-\emph default
- 
+Ampliación do 
 \emph on
 Guia do Usuário
 \emph default
@@ -1582,9 +1584,7 @@ Personalización
 Unha descrición de características avanzadas do LyX, incluindo como personalizar
  o comportamento; composición de teclas, internacionalización, e ficheiros
  de configuración.
- Nen pense e achegar-se a este documento sen ler previamente o
-\emph default
- 
+ Nen pense e achegar-se a este documento sen ler previamente o 
 \emph on
 Tutorial
 \emph default
@@ -1603,22 +1603,24 @@ Conxunto ordenado de respostas a perguntas frecuentes sobre o LyX.
 
 \end_deeper
 \begin_layout Description
-Táboa\InsetSpace ~
-de\InsetSpace ~
+Táboa
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
 contidos
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Neste documento recollen-se os índices dos seguintes manuais:
-\emph default
- 
+Neste documento recollen-se os índices dos seguintes manuais: 
 \emph on
 Introdución, FAQ, Tutorial, Guia de usuário, Funcións avanzadas
 \emph default
- e
-\emph default
- 
+ e 
 \emph on
 Personalización
 \emph default
@@ -1629,8 +1631,14 @@ Personalización
 \begin_layout Description
 
 \emph on
-Configuración\InsetSpace ~
-do\InsetSpace ~
+Configuración
+\begin_inset space ~
+\end_inset
+
+do
+\begin_inset space ~
+\end_inset
+
 LaTeX
 \end_layout
 
@@ -1652,17 +1660,20 @@ Ademais deste manuais existen outros dous, que se poden achar na directória
 \begin_layout Description
 
 \emph on
-Manual\InsetSpace ~
+Manual
+\begin_inset space ~
+\end_inset
+
 
 \series bold
-de\InsetSpace ~
+de
+\begin_inset space ~
+\end_inset
+
 Referéncia
 \series default
 \emph default
  
-\emph on
-\series default
-
 \end_layout
 
 \begin_deeper
@@ -1673,9 +1684,7 @@ Reference.lyx
 \family default
 ) Este manual conterá, cando este rematado, unha descrición exaustiva e
  detallada das funcións do LyX, mais sen as úteis dicas de uso encontradas
- no
-\emph default
- 
+ no 
 \emph on
 Guia do Usuário
 \emph default
@@ -1685,8 +1694,14 @@ Guia do Usuário
 
 \end_deeper
 \begin_layout Description
-Guia\InsetSpace ~
-de\InsetSpace ~
+Guia
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
 estilo
 \end_layout
 
@@ -1704,22 +1719,16 @@ DocStyle.lyx
 \end_deeper
 \begin_layout Standard
 Os manuais fan referéncia uns aos outros, cando é necesário.
- Por exemplo, o
-\emph default
- 
+ Por exemplo, o 
 \emph on
 Guia do Usuário
 \emph default
- contén
-\emph default
- 
+ contén 
 \emph on
 algunha
 \emph default
  información sobre instalación e personalización, mais encamiña ao leitor
- ao manual de
-\emph default
- 
+ ao manual de 
 \emph on
 Personalización
 \emph default
@@ -1739,9 +1748,7 @@ Salientamos novamente un ponto importante:
 
 \begin_layout Standard
 \align center
-Se é novato nisto do LyX lea o
-\emph default
- 
+Se é novato nisto do LyX lea o 
 \emph on
 Tutorial.
 
@@ -1763,17 +1770,11 @@ Senón pode frustrar-se inecesariamente.
 \end_layout
 
 \begin_layout Subsection
-\begin_inset LatexCommand label
-name "sub:manuais-traducidos"
-\end_inset
-
 As traducións dos manuais
 \end_layout
 
 \begin_layout Standard
-Os manuais son ficheiros lyx que fican na directória
-\family default
- 
+Os manuais son ficheiros lyx que fican na directória 
 \family typewriter
 \size small
 .../share/lyx/doc
@@ -1783,27 +1784,20 @@ Os manuais son ficheiros lyx que fican na directória
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-En linux fican normalmente en
-\family default
- 
+\begin_layout Plain Layout
+En linux fican normalmente en 
 \family typewriter
 \size small
 /usr/share/lyx/doc
 \family default
 \size default
- ou
-\family default
- 
+ ou 
 \family typewriter
 \size small
 /usr/local/share/lyx/doc.
 
 \family default
- 
-En MSWindows en
-\family default
- 
+ En MSWindows en 
 \family typewriter
 C:
 \backslash
@@ -1824,27 +1818,19 @@ doc
 .
  Nesta directória armacenan-se os manuais orixinais en inglés, e as diversas
  traducións que existen.
- Asi a introdución que está a ler é o ficheiro
-\family default
- 
+ Asi a introdución que está a ler é o ficheiro 
 \family typewriter
 intro.lyx
 \family default
-, o orixinal é o ficheiro
-\family default
- 
+, o orixinal é o ficheiro 
 \family typewriter
 intro.lyx
 \family default
-, e as versións portuguesa, española e francesa son respectivamente
-\family default
- 
+, e as versións portuguesa, española e francesa son respectivamente 
 \family typewriter
 pt_intro.lyx, es_intro.lyx
 \family default
- e
-\family default
- 
+ e 
 \family typewriter
 fr_intro.lyx
 \family default
@@ -1852,9 +1838,7 @@ fr_intro.lyx
  Se olla na dita directória verá que non todos os manuais están traducidos
  a todas as línguas.
  Cando falta a tradución dalgun manual, ao aceder a ese manual mediante
- o menu de
-\family default
- 
+ o menu de 
 \family typewriter
 A
 \bar under
@@ -1865,9 +1849,7 @@ uda
  aparece o manual orixinal, i.e.
  en inglés.
  Se preferir lé-lo noutra língua, que teña tradución, non ten mais que abrir
- o ficheiro correspondente no menu
-\family default
- 
+ o ficheiro correspondente no menu 
 \family typewriter
 \bar under
 F
@@ -1888,9 +1870,7 @@ Os manuais traducidos ao galego fan referéncia aos menus en galego, e os
  manuais noutras línguas fan loxicamente referéncia aos menus na língua
  correspondente.
  Polo momento só ha traducidos 2 manuais ao galego, este que está a ler
- e o
-\emph default
- 
+ e o 
 \emph on
 Tutorial
 \emph default
@@ -1917,15 +1897,11 @@ Pode lanzar o LyX en distintas línguas utilizando a variábel de entorno
 \family typewriter
 LANG=en_US lyx
 \family default
- (ou
-\family default
- 
+ (ou 
 \family typewriter
 LC_ALL=en_US lyx
 \family default
-, ou
-\family default
- 
+, ou 
 \family typewriter
 KDE_LANG=en_US
 \family default
@@ -1942,30 +1918,29 @@ e se preferir en francés, use:
 \family typewriter
 LANG=fr_FR lyx
 \family default
- (ou
-\family default
- 
+ (ou 
 \family typewriter
 LC_ALL=fr_FR lyx
 \family default
-, ou
-\family default
- 
+, ou 
 \family typewriter
 KDE_LANG=fr_FR
 \family default
 )
 \end_layout
 
-\begin_layout Chapter
-\begin_inset LatexCommand label
-name "chp:Contrib"
+\begin_layout Section
+Axudando ao proxecto LyX
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Contrib"
+
 \end_inset
 
-Axudando ao proxecto LyX
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 O programa
 \end_layout
 
@@ -1974,7 +1949,7 @@ O LyX é un programa bastante grande, escrito maiormente en C++, que non
  está libre de erros, sendo sempre ben-vidas as melloras no código fonte.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Informando de erros de código
 \end_layout
 
@@ -1993,14 +1968,17 @@ tos.
 \end_layout
 
 \begin_layout Standard
-LyX ten un sistema de seguimento de erros, ao cal se pode aceder en
-\family default
- 
+LyX ten un sistema de seguimento de erros, ao cal se pode aceder en 
 \family typewriter
+LyX bug tracker 
+\begin_inset Flex URL
+status collapsed
 
-\begin_inset LatexCommand htmlurl
-name "LyX bug tracker"
-target "http://bugzilla.lyx.org/"
+\begin_layout Plain Layout
+
+http://bugzilla.lyx.org/
+\end_layout
+
 \end_inset
 
 
@@ -2011,23 +1989,24 @@ target "http://bugzilla.lyx.org/"
  No sistema de seguimento de erros, ademais de facer novos informes de erros,
  poden-se facer comentários nos informes abertos por calquer outra persoa.
  Ademais é posíbel informar dun erro enviando un correo electrónico á lista
- de desenvolvimento do proxecto:
-\family default
- 
+ de desenvolvimento do proxecto: 
 \family typewriter
 lyx-devel@lists.lyx.org
 \family default
 .
  As mensaxes enviadas a esta lista, como as das outras listas do proxecto,
  armacenan-se nun arquivo público ao cal se pode aceder desde o site do
- proxecto LyX,
-\family default
- 
+ proxecto LyX, 
 \family typewriter
+LyX website 
+\begin_inset Flex URL
+status collapsed
 
-\begin_inset LatexCommand htmlurl
-name "LyX website"
-target "http://www.lyx.org/"
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
+
 \end_inset
 
 
@@ -2051,8 +2030,6 @@ Mencione o sistema operativo, incluindo a versión, no cal está a traballar,
 
 \begin_layout Standard
 Se é un problema de compilación ou configuración, inclua no informe o ficheiro
-
-\family default
  
 \family typewriter
 config.log
@@ -2119,7 +2096,7 @@ bt
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 se quer ser exaustivo, use os comandos 
 \begin_inset Quotes eld
 \end_inset
@@ -2158,7 +2135,7 @@ up
  que contén os desenvolvedores.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Mellorando o código
 \end_layout
 
@@ -2171,7 +2148,7 @@ Se fixo algunha mudanza do código fonte que pensa pudera tornar-se parte
  
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 A documentación
 \end_layout
 
@@ -2184,15 +2161,13 @@ Se ben é certo que a documentación de LyX é extensa, tamén o é que o progra
  suxestións para mellorar a documentación.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Erros nos manuais
 \end_layout
 
 \begin_layout Standard
 Se acha un problema na documentación envie unha mensaxe, en inglés, á lista
- de correos
-\family default
- 
+ de correos 
 \family typewriter
 lyx-docs@lists.lyx.org
 \family default
@@ -2201,16 +2176,14 @@ lyx-docs@lists.lyx.org
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Xuntar-se á equipa de documentación.
 \end_layout
 
 \begin_layout Standard
 O proxecto de documentación do LyX, como calquer outra parte do proxecto
  LyX, aceita axuda en calquer momento! Se está interesado en contribuir
- a el, necesita realizar as seguintes tarefas
-\emph default
- 
+ a el, necesita realizar as seguintes tarefas 
 \emph on
 primeiramente
 \emph default
@@ -2222,11 +2195,9 @@ Obteña o código fonte de LyX mais recente
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Os mais aventureiros pode obter a última documentación, contida no módulo
 \lang english
-
-\family default
  
 \family typewriter
 \lang galician
@@ -2238,16 +2209,12 @@ lyxdoc,
 \end_inset
 
 , e descompacte-o.
- Achará unha directória dentro da árbore principal chamada
-\family default
- 
+ Achará unha directória dentro da árbore principal chamada 
 \family typewriter
 lib/doc/
 \family default
 .
- Dentro da directória ha un ficheiro chamado
-\family default
- 
+ Dentro da directória ha un ficheiro chamado 
 \family typewriter
 DocStyle.lyx
 \family default
@@ -2256,15 +2223,11 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-A seguir lea o
-\emph default
- 
+A seguir lea o 
 \emph on
 User's Guide
 \emph default
- (Guia de usuário) e o
-\emph default
- 
+ (Guia de usuário) e o 
 \emph on
 Tutorial
 \emph default
@@ -2275,15 +2238,11 @@ Tutorial
 \begin_deeper
 \begin_layout Standard
 A razón destas leituras é dar-lle ideas.
- O
-\emph default
- 
+ O 
 \emph on
 Tutorial
 \emph default
- e o
-\emph default
- 
+ e o 
 \emph on
 User's Guide
 \emph default
@@ -2319,7 +2278,7 @@ As mudanzas que pode suxerir poden ir desde esclarecer alguns treitos do
  Calquer mellora é ben recebida.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 A tradución
 \end_layout
 
@@ -2328,14 +2287,17 @@ A tradución
  documentación, que polo momento está por traducir na sua maior parte, e
  do programa.
  Pode por-se en contacto co tradutor, ben no enderezo que aparece no início
- do documento, ben no proxecto de tradución ao galego de GNU/Linux,
-\family default
- 
+ do documento, ben no proxecto de tradución ao galego de GNU/Linux, 
 \family typewriter
+Proxecto Trasno 
+\begin_inset Flex URL
+status collapsed
 
-\begin_inset LatexCommand htmlurl
-name "Proxecto Trasno"
-target "http://www.trasno.net"
+\begin_layout Plain Layout
+
+http://www.trasno.net
+\end_layout
+
 \end_inset
 
 .
