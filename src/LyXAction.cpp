@@ -811,7 +811,7 @@ void LyXAction::init()
  */
 		{ LFUN_WORD_FIND, "word-find", ReadOnly, Edit },
 /*!
- * \var lyx::FuncCode lyx::LFUN_WORD_FIND
+ * \var lyx::FuncCode lyx::LFUN_WORD_REPLACE
  * \li Action: Replace a string in the document.
  * \li Syntax: word-replace [<DATA>]
  * \li Params: <DATA>: data is of the form
