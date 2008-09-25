@@ -1,4 +1,4 @@
-#LyX 1.6.0rc2 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -2861,12 +2861,6 @@ Značky a odkazy
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:labels"
-
-\end_inset
-
 Máte možnost označit značkou jakoukoli sekci vašeho dokumentu (v podstatě
  libovolný výsek textu).
  Jakmile to uděláte, máte možnost se na ni odkázat odkudkoli z dokumentu
@@ -4751,14 +4745,6 @@ LyX je vyvíjen týmem programátorů na pěti kontinentech.
 
 \begin_layout Itemize
 LyX umí číst dokumenty v LaTeXu.
- Viz kapitola 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:relyx"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Itemize
