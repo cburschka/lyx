@@ -113,12 +113,4 @@ void InsetFlex::textString(odocstream & os) const
 }
 
 
-void InsetFlex::validate(LaTeXFeatures & features) const
-{
-	string const preamble = getLayout().preamble();
-	if (!preamble.empty())
-		features.addPreambleSnippet(preamble);
-	features.require(getLayout().requires());
-}
-
 } // namespace lyx

@@ -832,11 +832,10 @@ int InsetCollapsable::latex(odocstream & os,
 
 void InsetCollapsable::validate(LaTeXFeatures & features) const
 {
-	if (!layout_)
-		return;
-
-	// Force inclusion of preamble snippet in layout file
-	features.require(to_utf8(layout_->name()));
+	string const preamble = getLayout().preamble();
+	if (!preamble.empty())
+		features.addPreambleSnippet(preamble);
+	features.require(getLayout().requires());
 	InsetText::validate(features);
 }
 
