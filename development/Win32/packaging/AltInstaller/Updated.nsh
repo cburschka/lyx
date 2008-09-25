@@ -2,7 +2,10 @@ Function UpdateModifiedFiles
 
  # list with modified files for LyX 1.5.7
  SetOutPath "$INSTDIR\bin" # always here
+ File /r "${PRODUCT_SOURCEDIR}\bin\DLLs"
+ File /r "${PRODUCT_SOURCEDIR}\bin\Lib"
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
+ File "${PRODUCT_SOURCEDIR}\bin\python.exe"
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  SetOutPath "$INSTDIR\Resources"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here

@@ -137,6 +137,9 @@ Function MissingPrograms
   ${if} $BibTeXEditorPath == ""
    ReadRegStr $BibTeXEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef 2.3.1" "UninstallString"
   ${endif}
+  ${if} $BibTeXEditorPath == ""
+   ReadRegStr $BibTeXEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef 2.4" "UninstallString"
+  ${endif}
   
   # test if Inkscape is installed
   ReadRegStr $SVGPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Inkscape" "InstallLocation"
