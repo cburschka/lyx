@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,21 +35,28 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
 Introduktion till LyX
-\newline
+\begin_inset Newline newline
+\end_inset
+
 eller
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Hur använda dessa manualer!
 \end_layout
 
 \begin_layout Author
 av John Weiss och dokumentationsgruppen för LyX
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \size normal
 \emph on
@@ -101,7 +110,7 @@ Dokumentationen är till stor del ofullständig i nuläget! Som programmet,
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Den engelska då förstås.
  (ö.anm)
 \end_layout
@@ -114,15 +123,13 @@ Den engelska då förstås.
 \begin_layout Standard
 Gör oss alla en tjänst -- om något i dokumentationen verkar förvirrande,
  är oklart, eller fel, tveka inte att tala om det för oss! Du kan nå LyX-folket
- på utvecklarnas epostlista
-\family default
- 
+ på utvecklarnas epostlista 
 \family typewriter
 lyx-docs@lists.lyx.org
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 På listan talas engelska.
  Felaktigheter i de engelska orginalversionerna slår troligen igenom i den
  svenska.
@@ -159,15 +166,11 @@ Innehåll
 \begin_inset Quotes srd
 \end_inset
 
- i dokumentfönstret, eller genom att välja
-\family default
- 
+ i dokumentfönstret, eller genom att välja 
 \family sans
 Innehållsförteckning
 \family default
- från menyn
-\family default
- 
+ från menyn 
 \family sans
 Redigera
 \family default
@@ -176,7 +179,7 @@ Redigera
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Hej på dej du!
 \end_layout
 
@@ -227,15 +230,11 @@ Namnstil
 
 \begin_layout Standard
 För tangenter och deras bindningar till funktioner kommer du troligtvis
- att hänvisas till
-\emph default
- 
+ att hänvisas till 
 \emph on
 Tangentbindningar
 \emph default
- i
-\emph default
- 
+ i 
 \emph on
 
 \begin_inset Quotes sld
@@ -263,9 +262,7 @@ C-
 \begin_inset Quotes sld
 \end_inset
 
- indikerar
-\family default
- 
+ indikerar 
 \family sans
 Control.
 \end_layout
@@ -282,9 +279,7 @@ S-
 \begin_inset Quotes sld
 \end_inset
 
- indikerar
-\family default
- 
+ indikerar 
 \family sans
 Shift
 \family default
@@ -303,15 +298,11 @@ M-
 \begin_inset Quotes sld
 \end_inset
 
- indikerar
-\family default
- 
+ indikerar 
 \family sans
 Meta-
 \family default
- tangenten, vilken på många tangentbord är samma som
-\family default
- 
+ tangenten, vilken på många tangentbord är samma som 
 \family sans
 Alt
 \family default
@@ -358,9 +349,7 @@ Esc
 \begin_inset Quotes srd
 \end_inset
 
- är
-\family default
- 
+ är 
 \family sans
 Escape.
 \end_layout
@@ -546,16 +535,12 @@ Next
 \family sans
 Retur
 \family default
- och
-\family default
- 
+ och 
 \family sans
 Enter
 \family default
  avser båda samma tangent.
- Vissa tangentbord betecknar
-\family default
- 
+ Vissa tangentbord betecknar 
 \family sans
 Retur
 \family default
@@ -576,15 +561,11 @@ Enter
 \end_inset
 
 , och vissa har en av varje.
- LyX behandlar alla som samma tangent, så vi kommer att använda
-\family default
- 
+ LyX behandlar alla som samma tangent, så vi kommer att använda 
 \family sans
 Retur
 \family default
- och
-\family default
- 
+ och 
 \family sans
 Enter
 \family default
@@ -596,9 +577,7 @@ Du lär också se något i stil med
 \begin_inset Quotes sld
 \end_inset
 
-[Se
-\emph default
- 
+[Se 
 \emph on
 Referensmanualen
 \emph default
@@ -607,9 +586,7 @@ Referensmanualen
 \end_inset
 
  ibland.
- Vi har listat de förvalda tangentbindningarna för funktionerna i
-\emph default
- 
+ Vi har listat de förvalda tangentbindningarna för funktionerna i 
 \emph on
 
 \begin_inset Quotes sld
@@ -637,8 +614,7 @@ Följande lista beskriver innehållet i var och en av filerna i dokumentationen:
 \emph on
 Introduktion
 \emph default
- 
-Denna fil.
+ Denna fil.
 \end_layout
 
 \begin_layout Description
@@ -646,8 +622,7 @@ Denna fil.
 \emph on
 Nybörjarkurs
 \emph default
- 
-Om du är nybörjare med LyX, och aldrig har använt LaTeX förut, eller aldrig
+ Om du är nybörjare med LyX, och aldrig har använt LaTeX förut, eller aldrig
  ens hört talas om LaTeX så bör du börja här.
 \end_layout
 
@@ -656,20 +631,14 @@ Om du är nybörjare med LyX, och aldrig har använt LaTeX förut, eller aldrig
 \emph on
 Handboken
 \emph default
- 
-Huvuddokumentationen.
- Vi försöker täcka
-\emph default
- 
+ Huvuddokumentationen.
+ Vi försöker täcka 
 \emph on
 det mesta
 \emph default
- 
-av grundläggande funktioner och tillgängliga finesser i LyX här.
+ av grundläggande funktioner och tillgängliga finesser i LyX här.
  Huvudmanualen förtsätter att du har åtminstone någon kunskap om LaTeX,
- eller att du läst
-\emph default
- 
+ eller att du läst 
 \emph on
 Nybörjarkursen.
 \end_layout
@@ -677,18 +646,17 @@ Nybörjarkursen.
 \begin_layout Description
 
 \emph on
-Avancerad\InsetSpace ~
+Avancerad
+\begin_inset space ~
+\end_inset
+
 redigering
 \emph default
- 
-Förlängning av
-\emph default
- 
+ Förlängning av 
 \emph on
 Handboken
 \emph default
- 
-som behandlar fler dokumenttyper och särskild redigering, bland annat några
+ som behandlar fler dokumenttyper och särskild redigering, bland annat några
  knep med LaTeX.
 \end_layout
 
@@ -697,8 +665,7 @@ som behandlar fler dokumenttyper och särskild redigering, bland annat några
 \emph on
 Anpassning
 \emph default
- 
-En beskrivning till hur man skräddarsyr tangentbindningar, verktygspanelen
+ En beskrivning till hur man skräddarsyr tangentbindningar, verktygspanelen
  och andra saker i LyX.
 \end_layout
 
@@ -707,28 +674,29 @@ En beskrivning till hur man skräddarsyr tangentbindningar, verktygspanelen
 \emph on
 Referensmanualen
 \emph default
- 
-Denna innehåller en utförlig, detaljerad beskrivning av finesserna i LyX.
- Dock utan de hjälpsamma tipsen och beskrivningarna som finns i
-\emph default
- 
+ Denna innehåller en utförlig, detaljerad beskrivning av finesserna i LyX.
+ Dock utan de hjälpsamma tipsen och beskrivningarna som finns i 
 \emph on
-Handboken.Särskilda\InsetSpace ~
+Handboken.Särskilda
+\begin_inset space ~
+\end_inset
+
 verktyg
 \emph default
- 
-En fil som täcker alla specialverktyg och avancerade företeelser, bland
+ En fil som täcker alla specialverktyg och avancerade företeelser, bland
  annat några knep som används av mästarna på LaTeX.
 \end_layout
 
 \begin_layout Description
 
 \emph on
-Kända\InsetSpace ~
+Kända
+\begin_inset space ~
+\end_inset
+
 fel
 \emph default
- 
-Denna fil innehåller en lista av fel i programmet LyX, och ger instruktioner
+ Denna fil innehåller en lista av fel i programmet LyX, och ger instruktioner
  om vad du skall göra om du hittar ett.
 \end_layout
 
@@ -737,8 +705,7 @@ Denna fil innehåller en lista av fel i programmet LyX, och ger instruktioner
 \emph on
 LaTeX-konfiguration
 \emph default
- 
-LyX undersöker ditt system vid installationen.
+ LyX undersöker ditt system vid installationen.
  Denna fil innehåller information om vad LyX har tagit reda på om din LaTeX-inst
 allation.
  Titta i den och se om du saknar något som du skulle vilja ha.
@@ -746,22 +713,15 @@ allation.
 
 \begin_layout Standard
 Dessa filer kommer att hänvisa till varandra när så är nödvändigt.
- Till exempel innehåller
-\emph default
- 
+ Till exempel innehåller 
 \emph on
 Handboken
 \emph default
- inte
-\emph default
- 
+ inte 
 \emph on
 all
 \emph default
- 
-information om installation och anpassning utan hänvisar läsaren till
-\emph default
- 
+ information om installation och anpassning utan hänvisar läsaren till 
 \emph on
 Anpassning
 \emph default
@@ -781,9 +741,7 @@ Vi vill åter igen betona en viktig sak:
 
 \begin_layout Standard
 \align center
-Om du aldrig använt eller ens hört talas om LaTeX, läs
-\emph default
- 
+Om du aldrig använt eller ens hört talas om LaTeX, läs 
 \emph on
 Nybörjarkursen
 \emph default
@@ -825,10 +783,8 @@ Doc Error
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Nu finns det förstås ännu ingen särskild epostlista för den svenska versionen
-
-\emph default
  
 \emph on
 (ö.anm.)
@@ -872,9 +828,7 @@ Att sätta igång
 
 \begin_layout Standard
 Dokumentationsprojektet kan, som allt annat i LyX-projektet, alltid behöva
- hjälp! Om du är sugen på att bidra till projektet så bör du
-\emph default
- 
+ hjälp! Om du är sugen på att bidra till projektet så bör du 
 \emph on
 först
 \emph default
@@ -883,16 +837,12 @@ först
 
 \begin_layout Enumerate
 Skaffa den senaste versionen av källkoden till LyX.
- I filträdet hittar du en katalog som heter
-\family default
- 
+ I filträdet hittar du en katalog som heter 
 \family typewriter
 development
 \family default
 .
- I den katalogen ligger en fil som heter
-\family default
- 
+ I den katalogen ligger en fil som heter 
 \family typewriter
 DocStyle.lyx
 \family default
@@ -901,9 +851,7 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-Läs
-\family default
- 
+Läs 
 \family typewriter
 DocStyle.lyx
 \family default
@@ -911,9 +859,7 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-Läs sedan
-\emph default
- 
+Läs sedan 
 \emph on
 Handboken
 \emph default
@@ -925,8 +871,6 @@ Handboken
 \begin_deeper
 \begin_layout Standard
 Vitsen med det är att ge dig idéer.
-
-\emph default
  
 \emph on
 Handboken
@@ -951,13 +895,10 @@ lyx@via.ecp.fr
 \end_layout
 
 \begin_layout Standard
-Vi vill försäkra oss om att du förstår stilen som beskrivs i
-\family default
- 
+Vi vill försäkra oss om att du förstår stilen som beskrivs i 
 \family typewriter
 DocStyle.lyx
 \family default
-\emph default
  
 \emph on
 innan
@@ -992,14 +933,11 @@ Svenska typografiska fackord
 \end_layout
 
 \begin_layout Standard
-I översättningarna av både denna
-\emph default
- 
+I översättningarna av både denna 
 \emph on
 Introduktion, Handboken,
 \emph default
- 
-och lokaliseringen
+ och lokaliseringen
 \begin_inset Foot
 status collapsed
 
@@ -1016,9 +954,7 @@ r.
 \end_layout
 
 \begin_layout Description
-Antikva kallas i engelska texter för
-\emph default
- 
+Antikva kallas i engelska texter för 
 \emph on
 Roman
 \emph default
@@ -1035,15 +971,12 @@ Brödtext den teckenstil som används för löpande text i ett visst dokument.
 \end_layout
 
 \begin_layout Description
-Kapitäler
-\shape default
- 
+Kapitäler 
 \shape smallcaps
 Snitt som ser ut så här.
 
 \shape default
- 
-Det är inte riktigt samma sak som 
+ Det är inte riktigt samma sak som 
 \begin_inset Quotes sld
 \end_inset
 
@@ -1087,9 +1020,7 @@ luft
 \end_layout
 
 \begin_layout Description
-Linjärer
-\family default
- 
+Linjärer 
 \family sans
 Teckensnitt utan seriffer, som denna.
 \end_layout
@@ -1099,9 +1030,7 @@ Jag rekommenderar att läsaren dessutom läser någon svensk bok i ämnet.
  Nu är jag programmerare och inte typograf, så det kan tänkas att jag misstagit
  mig på betydelserna här och där.
  Har du förslag till förbättringar av översättningarna kan du kontakta mig
- på
-\family default
- 
+ på 
 \family typewriter
 sp2joap1@ida.his.se
 \end_layout
@@ -1118,15 +1047,11 @@ Typografiska traditioner och konventioner skiljer sig från land till land.
  lätt som möjligt.
  I de engelska manualerna för LyX och LaTeX är det genomgående amerikansk
  typografi som används i exempel, och det bör man vara medveten om.
- Det finns åtskilliga böcker om svensk typografi; titta i hyllorna
-\family default
- 
+ Det finns åtskilliga böcker om svensk typografi; titta i hyllorna 
 \family sans
 Aef
 \family default
- och
-\family default
- 
+ och 
 \family sans
 Poa
 \family default
@@ -1148,9 +1073,7 @@ citat
  (dubbelapostrofer om båda sidor, vända åt samma håll).
  I bland, och särskilt i äldre texter, används »måsögon», vända åt samma
  håll.
- Bara det första stöds i menyn
-\family default
- 
+ Bara det första stöds i menyn 
 \family sans
 Stil->Citattecken
 \family default
@@ -1208,9 +1131,7 @@ swedish
 \begin_inset Quotes srd
 \end_inset
 
- i
-\family default
- 
+ i 
 \family sans
 Stil->Dokument
 \family default
@@ -1218,42 +1139,39 @@ Stil->Dokument
 \end_layout
 
 \begin_layout Itemize
-I utombrittisk europeisk typografi används
-\emph default
- 
+I utombrittisk europeisk typografi används 
 \emph on
 didot
 \emph default
 -systemet som måttsystem.
- Amerikaner och britter använder sig av
-\emph default
- 
+ Amerikaner och britter använder sig av 
 \emph on
 pica
 \emph default
 .
- I didotsystemet är en
-\emph default
- 
+ I didotsystemet är en 
 \emph on
 punkt
 \emph default
- 
-0,376\InsetSpace ~
-mm, och i picasystemet är en
-\emph default
- 
+ 0,376
+\begin_inset space ~
+\end_inset
+
+mm, och i picasystemet är en 
 \emph on
 point
 \emph default
- 0,352\InsetSpace ~
+ 0,352
+\begin_inset space ~
+\end_inset
+
 mm.
  TeX hanterar båda, men LaTeX använder typgrader mätta i pica om inget annat
  anges
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \SpecialChar \ldots{}
 tror jag
 \end_layout
@@ -1270,15 +1188,11 @@ storlek
 \begin_inset Quotes srd
 \end_inset
 
- som sätts i
-\family default
- 
+ som sätts i 
 \family sans
 Stil->Tecken
 \family default
- är
-\emph default
- 
+ är 
 \emph on
 relativ
 \emph default
@@ -1289,8 +1203,7 @@ relativ
 \emph on
 petit, korpus, cicero, mittel
 \emph default
- 
-osv.).
+ osv.).
 \end_layout
 
 \begin_layout Itemize
@@ -1316,36 +1229,27 @@ Vi använder kommatecken som decimaltecken, och punkt för att markera tusental:
 
 \begin_layout Standard
 Nu är det förstås din ensak hur du skriver dina dokument, och det är alltid
-
-\emph default
  
 \emph on
 läsbarheten
-\emph default
-
 \emph default
  
 \emph on
 som
 \emph default
-
-\emph default
  
 \emph on
 är
-\emph default
-
 \emph default
  
 \emph on
 viktigast.
 
 \emph default
- 
-Det kan kanske vara motiverat att använda engelsk typografi för texter som
- till exempel skall läsas av svenska datavetenskapstudenter, eftersom de
- högst troligen plöjer igenom mängder av engelsk kurslitteratur, och är
- mest vana vid den stilen, men använd gott omdöme.
+ Det kan kanske vara motiverat att använda engelsk typografi för texter
+ som till exempel skall läsas av svenska datavetenskapstudenter, eftersom
+ de högst troligen plöjer igenom mängder av engelsk kurslitteratur, och
+ är mest vana vid den stilen, men använd gott omdöme.
  Det kan nämnas att det har gjorts studier på senare år rörande hur vi läser.
  Det finns litteratur i det ämnet med.
 \end_layout

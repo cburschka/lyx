@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,28 +35,35 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
 Uvod v LyX
-\newline
+\begin_inset Newline newline
+\end_inset
+
 ali
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Kako uporabljati dokumentacijo!
 \end_layout
 
 \begin_layout Author
 John Weiss in skupina LyX Team
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \size normal
 Prevod: Roman Maurer
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Jezikovni pregled: Dora Mali
 \end_layout
 
@@ -125,10 +134,15 @@ pravimi službami
  in tako naprej in tako naprej.
  Po svojih najboljših močeh se trudimo, da bi ohranili priročnike v tip-top
  formi, vendar nam to morda kdaj tudi ne bo uspelo.
- (Če želite to popraviti, poleg tega spisa preberite še razdelek\InsetSpace ~
+ (Če želite to popraviti, poleg tega spisa preberite še razdelek
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:Contrib"
+
 \end_inset
 
 .)
@@ -137,9 +151,7 @@ reference "sec:Contrib"
 \begin_layout Standard
 In še nekaj vas prosimo -- če vas karkoli v teh priročnikih zmede, ker je
  nejasno ali napačno, ne oklevajte in nam sporočite! S trenutnimi vzdrževalci
- spisov lahko stopite v stik tudi po elektronski pošti na naslov
-\family default
- 
+ spisov lahko stopite v stik tudi po elektronski pošti na naslov 
 \family typewriter
 lyx-docs@lists.lyx.org
 \family default
@@ -159,17 +171,16 @@ Nekateri ste priročnik(e) za LyX že natisnili.
  kot v nekaterih tiskanih različicah.
  Opombe v nogi in kazalo vsebine niso vidni.
  Na voljo je postavka menuja za ogled kazala vsebine.
- Odprete ga tako, da z menuja
-\family default
- 
+ Odprete ga tako, da z menuja 
 \family sans
 Uredi
 \family default
- izberete postavko
-\family default
- 
+ izberete postavko 
 \family sans
-Kazalo\InsetSpace ~
+Kazalo
+\begin_inset space ~
+\end_inset
+
 vsebine
 \family default
 .
@@ -177,11 +188,11 @@ vsebine
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Zdravo!
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Zaprete me lahko s klikom sive škatle z napisom 
 \begin_inset Quotes gld
 \end_inset
@@ -203,16 +214,16 @@ V tiskanih priročnikih so vsa navzkrižna sklicevanja vidna kot prave številke
  poglavja, razdelka, podrazdelka in tako naprej.
  Na zvezi pa so vsa navzkrižna sklicevanja videti kot siva škatla, podobna
  tej: 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:Contrib"
+
 \end_inset
 
 .
  (V tiskanem priročniku boste namesto tega videli številko.) Če to škatlo
  kliknete z levim gumbom miške, vas LyX popelje v tisti razdelek.
- Nazaj se vrnete s
-\family default
- 
+ Nazaj se vrnete s 
 \family sans
 C-<
 \family default
@@ -261,8 +272,7 @@ Pisava pisalnega stroja
 \family sans
 Neserifna pisava
 \family default
- 
-se uporablja za imena menujev, gumbov ali menujskih postavk ter imena tipk
+ se uporablja za imena menujev, gumbov ali menujskih postavk ter imena tipk
  na tipkovnici.
 \end_layout
 
@@ -276,8 +286,6 @@ se uporabljajo za imena ljudi.
 
 \begin_layout Standard
 Kar zadeva tipke in tipkovne povezave, vas bomo verjetno napotili k razdelku
-
-\emph default
  
 \emph on
 Key Bindings
@@ -294,9 +302,7 @@ Referenčnem priročniku
 \begin_inset Quotes grd
 \end_inset
 
- (datoteka
-\family default
- 
+ (datoteka 
 \family typewriter
 Reference.lyx
 \family default
@@ -317,9 +323,7 @@ C-
 \begin_inset Quotes grd
 \end_inset
 
- označuje tipko
-\family default
- 
+ označuje tipko 
 \family sans
 Control-
 \family default
@@ -338,9 +342,7 @@ S-
 \begin_inset Quotes grd
 \end_inset
 
- označuje tipko
-\family default
- 
+ označuje tipko 
 \family sans
 Shift-
 \family default
@@ -359,15 +361,11 @@ M-
 \begin_inset Quotes grd
 \end_inset
 
- označuje tipko
-\family default
- 
+ označuje tipko 
 \family sans
 Meta-
 \family default
-, ki bo na nekaterih tipkovnicah označena z
-\family default
- 
+, ki bo na nekaterih tipkovnicah označena z 
 \family sans
 Alt-
 \family default
@@ -598,16 +596,12 @@ Next
 \family sans
 Return
 \family default
- in
-\family default
- 
+ in 
 \family sans
 Enter
 \family default
  se nanašata na isto tipko.
- Nekatere tipkovnice imajo tipko
-\family default
- 
+ Nekatere tipkovnice imajo tipko 
 \family sans
 Return
 \family default
@@ -628,15 +622,11 @@ Enter
 \end_inset
 
 , tretje imajo dve tipki.
- LyX ju obravnava kot eno samo, zato bomo izmenoma uporabljali oznaki
-\family default
- 
+ LyX ju obravnava kot eno samo, zato bomo izmenoma uporabljali oznaki 
 \family sans
 Return
 \family default
- in
-\family default
- 
+ in 
 \family sans
 Enter
 \family default
@@ -648,9 +638,7 @@ Včasih boste videli tudi kaj podobnega temu:
 \begin_inset Quotes gld
 \end_inset
 
-[Glej
-\emph default
- 
+[Glej 
 \emph on
 ,Referenčni priročnik`
 \emph default
@@ -685,36 +673,42 @@ Na naslednjem seznamu je opisana vsebina vseh datotek v dokumentaciji:
 \begin_layout Description
 
 \emph on
-Uvod \InsetSpace ~
+Uvod 
+\begin_inset space ~
+\end_inset
+
 
 \emph default
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Ta datoteka.
 \end_layout
 
 \begin_layout Description
 
 \emph on
-Učbenik \InsetSpace ~
+Učbenik 
+\begin_inset space ~
+\end_inset
+
 
 \emph default
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Če ste novinec v LyXu in niste nikoli prej uporabljali LaTeXa, bi se morali
  branja lotiti tukaj.
  Če mislite, da je LaTeX snov, iz katere izdelujejo kondome, morate vsekakor
- prebrati
-\emph default
- 
+ prebrati 
 \emph on
 Učbenik
 \emph default
 .
  Vedite, da boste tudi potem še vedno mislili, da je LaTeX nekaj raztegljivega
- -- vendar
-\emph default
- 
+ -- vendar 
 \emph on
 boste
 \emph default
@@ -724,16 +718,11 @@ boste
 
 \begin_deeper
 \begin_layout Standard
-Tudi, če
-\emph default
- 
+Tudi, če 
 \emph on
 ste
 \emph default
- 
-že prej uporabljali LaTeX, bi morali prebrati
-\emph default
- 
+ že prej uporabljali LaTeX, bi morali prebrati 
 \emph on
 Učbenik
 \emph default
@@ -749,9 +738,7 @@ LyX za uporabnike LaTeXa
 \end_layout
 
 \begin_layout Standard
-Če kdaj ostanete brez navdiha v zvezi z LyXom, najprej vzemite v roke
-\emph default
- 
+Če kdaj ostanete brez navdiha v zvezi z LyXom, najprej vzemite v roke 
 \emph on
 Učbenik
 \emph default
@@ -763,29 +750,33 @@ Učbenik
 \begin_layout Description
 
 \emph on
-Uporabniški\InsetSpace ~
-vodnik \InsetSpace ~
+Uporabniški
+\begin_inset space ~
+\end_inset
+
+vodnik 
+\begin_inset space ~
+\end_inset
+
 
 \emph default
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Primarna dokumentacija.
- Tu bomo poskušali obdelati
-\emph default
- 
+ Tu bomo poskušali obdelati 
 \emph on
 večino
 \emph default
  osnovnih postopkov in dostopnih odlik LyXa.
- Osrednji priročnik predpostavlja, da ste prebrali
-\emph default
- 
+ Osrednji priročnik predpostavlja, da ste prebrali 
 \emph on
 Učbenik
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \SpecialChar \ldots{}
  ali pa vsaj bežno poznate LaTeX.
 \end_layout
@@ -798,15 +789,21 @@ status collapsed
 \begin_layout Description
 
 \emph on
-Razširjene\InsetSpace ~
-odlike \InsetSpace ~
+Razširjene
+\begin_inset space ~
+\end_inset
 
-\newline
+odlike 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
 
 \emph default
-Razširitev
-\emph default
- 
+Razširitev 
 \emph on
 Uporabniškega vodnika
 \emph default
@@ -818,18 +815,21 @@ Uporabniškega vodnika
 \begin_layout Description
 
 \emph on
-Prilagoditev \InsetSpace ~
+Prilagoditev 
+\begin_inset space ~
+\end_inset
+
 
 \emph default
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Opis izpopolnjenih možnosti LyXa, skupaj s postopki za prilagoditev splošnega
  vedenja LyXa.
  Sem so vštete tudi kombinacije tipk, internacionalizacija in nastavitvene
  datoteke.
- Naj vam ne pride na misel, da bi pokukali semkaj, dokler ne preberete
-\emph default
- 
+ Naj vam ne pride na misel, da bi pokukali semkaj, dokler ne preberete 
 \emph on
 Učbenika
 \emph default
@@ -839,22 +839,26 @@ Učbenika
 \begin_layout Description
 
 \emph on
-Referenčni\InsetSpace ~
-priročnik \InsetSpace ~
+Referenčni
+\begin_inset space ~
+\end_inset
+
+priročnik 
+\begin_inset space ~
+\end_inset
+
 
 \emph default
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Ta obsega izčrpen, podroben opis odlik LyXa, a brez uporabnih namigov, kako
- ga uporabljati, ter napotke, kdaj pogledati v
-\emph default
- 
+ ga uporabljati, ter napotke, kdaj pogledati v 
 \emph on
 Uporabniški vodnik
 \emph default
-,
-\emph default
- 
+, 
 \emph on
 Učbenik
 \emph default
@@ -864,12 +868,20 @@ Učbenik
 \begin_layout Description
 
 \emph on
-Znani\InsetSpace ~
-hrošči \InsetSpace ~
+Znani
+\begin_inset space ~
+\end_inset
+
+hrošči 
+\begin_inset space ~
+\end_inset
+
 
 \emph default
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 V tej datoteki je seznam znanih hroščev v LyXu in napotki, kaj storiti,
  če v LyXu naletite na hrošča.
 \end_layout
@@ -877,12 +889,20 @@ V tej datoteki je seznam znanih hroščev v LyXu in napotki, kaj storiti,
 \begin_layout Description
 
 \emph on
-Nastavitev\InsetSpace ~
-LaTeXa \InsetSpace ~
+Nastavitev
+\begin_inset space ~
+\end_inset
+
+LaTeXa 
+\begin_inset space ~
+\end_inset
+
 
 \emph default
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 LyX takoj po namestitvi preišče sistem.
  V tej datoteki so podatki, ki jih je LyX zbral o vaši namestitvi LaTeXa.
  Preverite to datoteko in poglejte, ali vam manjka kaj, kar bi sicer želeli
@@ -891,21 +911,15 @@ LyX takoj po namestitvi preišče sistem.
 
 \begin_layout Standard
 Te datoteke se bodo po potrebi sklicevale druga na drugo.
- V
-\emph default
- 
+ V 
 \emph on
 Uporabniškem vodniku
 \emph default
-, denimo, so zbrani
-\emph default
- 
+, denimo, so zbrani 
 \emph on
 nekateri
 \emph default
- podatki o namestitvi in prilagoditvi, kaj več pa boste izvedeli v
-\emph default
- 
+ podatki o namestitvi in prilagoditvi, kaj več pa boste izvedeli v 
 \emph on
 Prilagoditvenem priročniku
 \emph default
@@ -925,9 +939,7 @@ Prilagoditvenem priročniku
 
 \begin_layout Standard
 \align center
-Če ste novinec v LyXu, si preberite
-\emph default
- 
+Če ste novinec v LyXu, si preberite 
 \emph on
 Učbenik
 \emph default
@@ -947,8 +959,10 @@ Drugače se boste po nepotrebnem jezili.
 \end_layout
 
 \begin_layout Section
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:Contrib"
+
 \end_inset
 
 Prispevki k dokumentacijskem projektu
@@ -962,9 +976,7 @@ Poročanje o napakah v priročnikih
 To je zelo preprosto.
  Sporočilo lahko pošljete na dopisni seznam za razvijalce ali za uporabnike
  LyXa.
- Dokumentacijska skupina pa bo najbolj vesela sporočila na naslov
-\family default
- 
+ Dokumentacijska skupina pa bo najbolj vesela sporočila na naslov 
 \family typewriter
 lyx-docs@lists.lyx.org
 \family default
@@ -1002,7 +1014,7 @@ Takšne naključne spremembe ne bodo prišle v dokumentacijo, saj dokumentacijsk
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 CVS je sistem za nadzorovanje različic datotek prek omrežja.
 \end_layout
 
@@ -1017,9 +1029,7 @@ Pridružitev dokumentacijski skupini
 
 \begin_layout Standard
 Dokumentacijskemu projektu za LyX, tako kot vsemu pri projektu LyX, vedno
- prav pride pomoč! Če bi radi prispevali k Dokumentacijskem projektu,
-\emph default
- 
+ prav pride pomoč! Če bi radi prispevali k Dokumentacijskem projektu, 
 \emph on
 najprej
 \emph default
@@ -1032,7 +1042,7 @@ Pridobite zadnjo izvorno kodo LyXa.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Bolj pustolovske duše med vami bodo anonimno pobrale zadnjo izvorno kodo
  iz arhiva CVS za LyX.
 \end_layout
@@ -1040,16 +1050,12 @@ Bolj pustolovske duše med vami bodo anonimno pobrale zadnjo izvorno kodo
 \end_inset
 
 .
- V glavnem drevesu boste našli imenik, imenovan
-\family default
- 
+ V glavnem drevesu boste našli imenik, imenovan 
 \family typewriter
 development
 \family default
 .
- V njem je datoteka
-\family default
- 
+ V njem je datoteka 
 \family typewriter
 DocStyle.lyx
 \family default
@@ -1058,9 +1064,7 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-Vzemite si dan ali dva oddiha, potem pa še enkrat preberite
-\family default
- 
+Vzemite si dan ali dva oddiha, potem pa še enkrat preberite 
 \family typewriter
 DocStyle.lyx
 \family default
@@ -1068,15 +1072,11 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-Zatem preberite
-\emph default
- 
+Zatem preberite 
 \emph on
 Uporabniški vodnik
 \emph default
- in
-\emph default
- 
+ in 
 \emph on
 Učbenik
 \emph default
@@ -1087,15 +1087,11 @@ Učbenik
 \begin_deeper
 \begin_layout Standard
 Smisel te naloge je, da si ustvarite predstavo in da se vam utrnejo zamisli.
-
-\emph default
  
 \emph on
 Učbenik
 \emph default
- in
-\emph default
- 
+ in 
 \emph on
 Uporabniški vodnik
 \emph default
@@ -1106,9 +1102,7 @@ Uporabniški vodnik
 
 \end_deeper
 \begin_layout Enumerate
-Spet preberite
-\family default
- 
+Spet preberite 
 \family typewriter
 DocStyle.lyx
 \family default
@@ -1127,9 +1121,7 @@ lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Standard
-Radi bi dosegli, da bi razumeli
-\emph default
- 
+Radi bi dosegli, da bi razumeli 
 \emph on
 slog
 \emph default
@@ -1143,9 +1135,7 @@ Naj vam ne pride na misel, da bi se lotili pisanja, dokler ne poklepetamo
  po e-pošti.
  Trenutno stanje v dokumentaciji si boste lahko ogledali na spletni strani
  dokumentacijske skupine (ko jo bomo usposobili) ali v arhivih dopisnih
- seznamov na
-\family default
- 
+ seznamov na 
 \family typewriter
 www.lyx.org
 \family default

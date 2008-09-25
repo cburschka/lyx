@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics none
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,6 +35,7 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -46,7 +49,7 @@ de John Weiss şi echipa LyX
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 traducere Gabriel Cristache <cristache@adcomm.pub.ro>
 \end_layout
 
@@ -143,9 +146,7 @@ Formatul manualelor
 
 \begin_layout Standard
 Unii dintre cititorii acestui articol vor tipări această documentaţie.
- Alţii o vor citi
-\emph default
- 
+ Alţii o vor citi 
 \emph on
 online
 \emph toggle
@@ -161,31 +162,26 @@ online
   formatat pe o pagină separată ca în unele dintre versiunile tipărite.
  Cuprinsul şi notele de subsol nu sunt vizibile.
  Pentru a-l afişa selectaţi
-\family default
 \emph default
  
-\emph toggle
 \family sans
+\emph toggle
 Structura documentului
 \family default
 \emph default
  
 \emph toggle
-\family default
 din
-\family default
 \emph default
  
-\emph toggle
 \family sans
+\emph toggle
 meniul
 \family default
-
-\family default
 \emph default
  
-\emph toggle
 \family sans
+\emph toggle
 Editare
 \family default
 .
@@ -193,7 +189,7 @@ Editare
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Salut!
 \end_layout
 
@@ -204,9 +200,7 @@ Salut!
 
 \begin_layout Standard
 Acum, dupa ce am clarificat câteva dintre diferenţele dintre versiunea tipărită
- şi cea
-\emph default
- 
+ şi cea 
 \emph on
 online
 \emph toggle
@@ -219,8 +213,7 @@ online
 \emph on
 Stilul evidenţiat
 \emph default
- 
-este folosit pentru accentuări generale, argumente generice, titluri de
+ este folosit pentru accentuări generale, argumente generice, titluri de
  cărţi, nume de secţiuni ale manualelor şi note din partea autorilor.
 \end_layout
 
@@ -238,9 +231,7 @@ Maşină de scris
 \family sans
 Sans Serif
 \family default
- este utilizat pentru meniu, butoane, nume de meniuri
-\emph default
- 
+ este utilizat pentru meniu, butoane, nume de meniuri 
 \emph on
 popup
 \emph default
@@ -259,13 +250,9 @@ Stilul substantiv
 
 \begin_layout Standard
 Pentru a afla diferitele asocieri dintre taste şi comenzi ar trebui să citiţi
- secţiunea
-\emph default
- 
+ secţiunea 
 \emph on
 Maparea
-\emph toggle
-
 \emph default
  
 \emph on
@@ -276,7 +263,6 @@ tastelor
 din
 \emph default
  
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -288,9 +274,7 @@ Manualul de referinţă
 
 
 \emph default
- [fişierul
-\family default
- 
+ [fişierul 
 \family typewriter
 Reference.
 \family default
@@ -310,9 +294,7 @@ C-
 \begin_inset Quotes eld
 \end_inset
 
- indică tasta
-\family default
- 
+ indică tasta 
 \family sans
 Control.
 \end_layout
@@ -329,9 +311,7 @@ S-
 \begin_inset Quotes eld
 \end_inset
 
-indică tasta
-\family default
- 
+indică tasta 
 \family sans
 Shift.
 \end_layout
@@ -348,15 +328,11 @@ M-
 \begin_inset Quotes eld
 \end_inset
 
- indică tasta
-\family default
- 
+ indică tasta 
 \family sans
 Meta
 \family default
-, care pentru unele tastaturi este reprezentată de tasta
-\family default
- 
+, care pentru unele tastaturi este reprezentată de tasta 
 \family sans
 Alt
 \family default
@@ -587,16 +563,12 @@ Next
 \family sans
 Return
 \family default
- şi
-\family default
- 
+ şi 
 \family sans
 Enter
 \family default
  se referă amândouă la aceiaşi tastă.
- Unele tastaturi etichetează tasta
-\family default
- 
+ Unele tastaturi etichetează tasta 
 \family sans
 Return
 \family default
@@ -671,11 +643,8 @@ Următoarea listă descrie conţinutul fiecărui fişier din documentaţie:
 
 \emph on
 Introducere
-\emph toggle
-
 \emph default
- 
-Acest fişier.
+ Acest fişier.
 \end_layout
 
 \begin_layout Description
@@ -691,14 +660,17 @@ Tutorial
 \begin_layout Description
 
 \emph on
-Cum\InsetSpace ~
-să\InsetSpace ~
-fac
-\emph toggle
+Cum
+\begin_inset space ~
+\end_inset
 
+să
+\begin_inset space ~
+\end_inset
+
+fac
 \emph default
- 
-Acesta este un fişier cu cele mai frecvente întrebări referitoare la LyX
+ Acesta este un fişier cu cele mai frecvente întrebări referitoare la LyX
  [
 \emph on
 sau va fi, la timpul potrivit
@@ -717,24 +689,19 @@ sau va fi, la timpul potrivit
 \begin_layout Description
 
 \emph on
-Ghidul\InsetSpace ~
+Ghidul
+\begin_inset space ~
+\end_inset
+
 utilizatorului
-\emph toggle
-
 \emph default
- 
-Aceasta este o documentaţie primară.
- Este de aşteptat ca această documentaţie să acopere
-\emph on
-
-\emph default
- 
+ Aceasta este o documentaţie primară.
+ Este de aşteptat ca această documentaţie să acopere 
 \emph toggle
 elementele
 \emph default
  de bază ce privesc operarea în LyX şi caracteristile lui.
  Manualul principal presupune că aveţi cunostinţe de LaTeX sau că aţi citit
-\emph default
  
 \emph on
 Tutorialul
@@ -746,15 +713,13 @@ Tutorialul
 \begin_layout Description
 
 \emph on
-Editare\InsetSpace ~
-avansată
-\emph toggle
+Editare
+\begin_inset space ~
+\end_inset
 
+avansată
 \emph default
- 
-Aceasta este o extensie a
-\emph default
- 
+ Aceasta este o extensie a 
 \emph on
 Ghidului utilizatorului
 \emph default
@@ -769,8 +734,7 @@ Ghidului utilizatorului
 \emph on
 Personalizare
 \emph default
- 
-O descriere avansată a caracteristicilor LyX-ului, incluzând informaţii
+ O descriere avansată a caracteristicilor LyX-ului, incluzând informaţii
  despre cum să vă personalizaţi întregul comportament al LyX-ului.
  Aceasta include chestiuni legate de mapări, internaţionalizări şi fişiere
  de configurare.
@@ -779,15 +743,19 @@ O descriere avansată a caracteristicilor LyX-ului, incluzând informaţii
 \begin_layout Description
 
 \emph on
-Manualul\InsetSpace ~
-de\InsetSpace ~
+Manualul
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
 referinţă
 \emph default
   Acesta contine o descriere exhaustivă şi detaliată a caracteristicilor
  LyX-ului, dar fără aluziile şi descrierile ajutătoare pe care le găsiţi
- în
-\emph default
- 
+ în 
 \emph on
 Ghidul utilizatorului
 \emph default
@@ -798,46 +766,42 @@ Ghidul utilizatorului
 \begin_layout Description
 
 \emph on
-Erori\InsetSpace ~
-cunoscute
-\emph toggle
+Erori
+\begin_inset space ~
+\end_inset
 
+cunoscute
 \emph default
- 
-Acest fişier conţine o listă a erorilor cunoscute în LyX şi informaţii despre
- ce trebuie să faceţi dacă depistaţi o eroare în LyX\SpecialChar \@.
+ Acest fişier conţine o listă a erorilor cunoscute în LyX şi informaţii
+ despre ce trebuie să faceţi dacă depistaţi o eroare în LyX\SpecialChar \@.
 
 \end_layout
 
 \begin_layout Description
 
 \emph on
-Configuraţia\InsetSpace ~
+Configuraţia
+\begin_inset space ~
+\end_inset
+
 LaTeX
 \emph default
- 
-Acest fişier conţine informaţii pe care LyX-ul le-a aflat despre instalarea
+ Acest fişier conţine informaţii pe care LyX-ul le-a aflat despre instalarea
  pe care aţi făcut-o dumneavoastră.
  Verificaţi pentru a afla dacă vă lipseşte ceva ce aţi dori să aveţi.
 \end_layout
 
 \begin_layout Standard
 Aceste fişiere fac referire unul la celălalt.
- De exemplu,
-\emph default
- 
+ De exemplu, 
 \emph on
 Ghidul utilizatorului
 \emph default
- conţine
-\emph default
- 
+ conţine 
 \emph on
 unele
 \emph default
  informaţii despre instalare şi personalizare, dar face referire la manualul
-
-\emph default
  
 \emph on
 Personalizare
@@ -858,9 +822,7 @@ Reamintim un lucru foarte important:
 
 \begin_layout Standard
 \align center
-Dacă nu aţi utilizat LaTeX înainte citiţi
-\emph default
- 
+Dacă nu aţi utilizat LaTeX înainte citiţi 
 \emph on
 Tutorialul.
 \end_layout
@@ -939,24 +901,18 @@ Proiectul de documentare al LyX, ca şi orice alt proiect LyX, poate fi susţinu
 \begin_layout Enumerate
 Obţineţi ultimul cod sursă LyX.
  Dezarhivaţi-l.
- Veţi găsi un director în calea principală numit
-\family default
- 
+ Veţi găsi un director în calea principală numit 
 \family typewriter
 development
 \family default
 .
- În interiorul acestui director este un fişier numit
-\family default
- 
+ În interiorul acestui director este un fişier numit 
 \family typewriter
 DocStyle.lyx
 \family default
 .
  Citiţi-l.
- Conţine
-\emph default
- 
+ Conţine 
 \emph on
 stylesheet
 \emph toggle
@@ -964,9 +920,7 @@ stylesheet
 \end_layout
 
 \begin_layout Enumerate
-Citiţi
-\family default
- 
+Citiţi 
 \family typewriter
 DocStyle.lyx
 \family default
@@ -974,9 +928,7 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-Apoi, citiţi,
-\emph default
- 
+Apoi, citiţi, 
 \emph on
 Ghidul utilizatorului
 \emph default
@@ -987,8 +939,6 @@ Ghidul utilizatorului
 \begin_deeper
 \begin_layout Standard
 Scopul acestui exerciţiu este sa vă dăm câteva idei.
-
-\emph default
  
 \emph on
 Ghidul utilizatorului
@@ -1012,18 +962,15 @@ LyX@via.ecp.fr
 
 \end_deeper
 \begin_layout Standard
-Vrem să fim siguri că aţi înţeles
-\emph default
- 
+Vrem să fim siguri că aţi înţeles 
 \emph on
 stylesheet
 \emph toggle
 -ul
-\series default
 \emph default
  
-\emph toggle
 \series bold
+\emph toggle
 înainte
 \series default
 \emph default

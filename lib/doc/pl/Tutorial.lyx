@@ -1,5 +1,5 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass book
@@ -16,9 +16,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics none
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -37,6 +39,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -47,12 +50,15 @@ The LyX Tutorial
 
 \begin_layout Author
 by Amir Karger and the LyX Team
-\newline
+\begin_inset Newline newline
+\end_inset
+
 polskie tłumaczenie: Wojtek Pękala
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -69,8 +75,13 @@ LyX wita.
 
 \begin_layout Standard
 Dokument niniejszy 
-\begin_inset LatexCommand htmlurl
-target "http://friko2.onet.pl/wr/voyttek"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://friko2.onet.pl/wr/voyttek
+\end_layout
 
 \end_inset
 
@@ -311,7 +322,8 @@ robienie rzeczy samemu.
 Z ciężkim sercem wyrzuciłem jakieś 20 stron, które już napisałem i zacząłem
  od początku.
  Jedyną pozostałością jest podrozdział 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:what-is-lyx"
 
 \end_inset
@@ -347,7 +359,8 @@ składa się z ćwiczeń i przykładów.
 
 \begin_layout Standard
 Podrozdział 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:what-is-lyx"
 
 \end_inset
@@ -403,7 +416,7 @@ Opanowanie powyższych umiejętności jest konieczne i nie wchodzi w zakres
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \SpecialChar \ldots{}
 and occupational therapy ain't one of 'em! (Sarkastyczny styl oryginału
  rozmija się ze skromnymi możliwościami tłumacza, jak również jego poglądem
@@ -506,7 +519,8 @@ Niepotrzebne.
 Komu w drogę, temu czas.
  Można rzucić okiem na następny podrozdział lub przejść wprost do podrozdziału
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:first-doc-ex"
 
 \end_inset
@@ -516,7 +530,8 @@ reference "sec:first-doc-ex"
 
 \begin_layout Section
 Czym jest LyX?
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:what-is-lyx"
 
 \end_inset
@@ -707,7 +722,7 @@ Tabulatory, które wraz z linijką służą do wskazania położenia poszczegól
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Istnieją sposoby regulacji minimalnych i maksymalnych odstepów, lecz wymagają
  znajomości LaTeX-a.
  O tym potem.
@@ -798,7 +813,7 @@ Oczywiście wiele nowoczesnych edytorów obsługuje symbole matematyczne, tabele
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Wprawdzie nic nie jest doskonałe, ale LaTeX jest naprawdę bliski ideału.
 \end_layout
 
@@ -829,7 +844,7 @@ LaTeX to system przygotowywania dokumentów zaprojektowany przez Leslie Lamport-
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Żródłem informacji w tym podrozdziale jest 
 \begin_inset Quotes eld
 \end_inset
@@ -927,7 +942,7 @@ Odtąd, obok rozwoju LaTeX-a, inni użytkownicy tworzyli własne pakiety makr,
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 ...i był nim również przed wersją 2e, która jedynie poszerzyła niektóre jego
  możliwości.
 \end_layout
@@ -950,9 +965,11 @@ Klasa
 \emph default
  
 \emph toggle
-to zbiór makr LaTeX-a i\InsetSpace ~
-TeX-a opisujący nowy typ dokumentu, jak książka czy
- artykuł.
+to zbiór makr LaTeX-a i
+\begin_inset space ~
+\end_inset
+
+TeX-a opisujący nowy typ dokumentu, jak książka czy artykuł.
  Istnieją klasy dla prezentacji, pism fizycznych, matematycznych...
  niektóre uniwersytety mają nawet własne klasy dla prac naukowych.
 
@@ -1089,7 +1106,8 @@ Pierwszy dokument w LyX-ie
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:first-doc-ex"
 
 \end_inset
@@ -1145,7 +1163,7 @@ Elementarz
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Same podręczniki mogą być jednocześnie dobrymi przykładami użycia różnorodnych
  funkcji LyX-a.
 \end_layout
@@ -1258,7 +1276,7 @@ To mój pierwszy dokument w LyX-ie !
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 W porządku.
  Można wpisać cokolwiek.
  To naprawdę wszystko jedno.
@@ -1322,7 +1340,7 @@ jące wygląd dokumentu na wydruku
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Dobrym pomysłem oszczędzającym czas jest pozostawienie otwartego okna kdvi
  po obejrzeniu dokumentu.
  Następnym razem wystarczy użyć polecenia 
@@ -1519,8 +1537,14 @@ dycja->
 \bar under
 Z
 \bar default
-najdź\InsetSpace ~
-i\InsetSpace ~
+najdź
+\begin_inset space ~
+\end_inset
+
+i
+\begin_inset space ~
+\end_inset
+
 zastąp
 \family default
  służy do przeszu\SpecialChar \-
@@ -1537,20 +1561,29 @@ astąp
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Po zakończeniu zamknij okno, lub jeśli to wygodniejsze, zostaw je otwarte.
  Większość okien w LyX-ie --- włącznie z 
 \family sans
 \bar under
 Z
 \bar default
-najdźj\InsetSpace ~
-i\InsetSpace ~
+najdźj
+\begin_inset space ~
+\end_inset
+
+i
+\begin_inset space ~
+\end_inset
+
 zastąp
 \family default
 , 
 \family sans
-Spisem\InsetSpace ~
+Spisem
+\begin_inset space ~
+\end_inset
+
 treści
 \family default
  i 
@@ -1582,7 +1615,10 @@ twórz
 \end_layout
 
 \begin_layout Description
-Formatowanie\InsetSpace ~
+Formatowanie
+\begin_inset space ~
+\end_inset
+
 znaków Tekst może być 
 \emph on
 wyróżniony
@@ -1608,7 +1644,10 @@ nazwa własna
 \end_layout
 
 \begin_layout Description
-Pasek\InsetSpace ~
+Pasek
+\begin_inset space ~
+\end_inset
+
 narzędzi Poniżej menu znajduje się pasek narzędzi, ułatwiający wykonanie
  najpopularniejszych poleceń, takich jak Wklej i Drukuj.
  Jeśli kursor myszy znajdzie się na dłużej nad przyciskiem z paska zadań,
@@ -1626,7 +1665,8 @@ WYSIWYM: puste miejsca w LyX-ie
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:whitespace"
 
 \end_inset
@@ -1671,7 +1711,8 @@ ej, zatem LyX go nie używa.
  Pracując z LyX-em użytkownik koncentruje się na zawartości dokumentu, a
  nie jego formacie.
  Przejrzyj podrozdział 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:what-is-lyx"
 
 \end_inset
@@ -1773,7 +1814,7 @@ Section
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Nie musisz 
 \emph on
 zaznaczać
@@ -2002,7 +2043,8 @@ Podręcznik użytkownika
  dokumentów LyX-a (patrz podrozdział
 \emph default
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:textclasses"
 
 \end_inset
@@ -2060,9 +2102,11 @@ examples/
 \family default
 .
  Wykonaj polecenie Plik->Otwórz i naciśnij Przykłady.
- Otwórz dokument i zachowaj go poleceniem Plik->Zapisz\InsetSpace ~
-jako w swoim katalogu
- jako kopię roboczą.
+ Otwórz dokument i zachowaj go poleceniem Plik->Zapisz
+\begin_inset space ~
+\end_inset
+
+jako w swoim katalogu jako kopię roboczą.
 \end_layout
 
 \begin_layout Subsection
@@ -2077,7 +2121,7 @@ LyX dysponuje szeregiem różnych środowisk do składu list.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Tak, przesadzamy z ciągłym podkreślaniem tego faktu w 
 \emph on
 Elementarzu
@@ -2182,7 +2226,10 @@ C-Return
 \emph default
  
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 s
 \family default
 ).
@@ -2195,7 +2242,7 @@ Powstała piękna lista argumentów.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX nie pozwoli na zaznaczenie pierwszego znaczka, o ile nie zostanie zaznaczony
  akapit przed listą, co akurat nie jest potrzebne.
  Podobnie nie można zaznaczyć numeru postawionego przed tytułem rozdziału.
@@ -2246,7 +2293,7 @@ tabulatorem
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Ale jest to tabulator drukarski, a nie żałosny, ograniczony, niereformowalny
  tabulator maszyny do pisania.
 \end_layout
@@ -2334,7 +2381,7 @@ Verse
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 nie wspominając o odrobinie talentu.
 \end_layout
 
@@ -2397,7 +2444,8 @@ Klasy tekstu i wzorce: pisanie listów
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:textclasses"
 
 \end_inset
@@ -2415,7 +2463,7 @@ Różne typy dokumentów wymagają różnego formatowania.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Dla użytkowników LaTeX-a: ekwiwalent latexowej 
 \emph on
 documentclass
@@ -2449,7 +2497,7 @@ Article
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 To domyślna klasa, chyba że ją zmienić w pliku 
 \family typewriter
 lyxrc
@@ -2488,7 +2536,10 @@ Rozmiary czcionek, druk jedno- lub dwukolumnowy, nagłówki stron to możliwe
  Na przykład LyX obsługuje format (i dodatkowe środowiska) dla biuletynu
  Amerykańskiego Towarzystwa Matematycznego stosując klasę 
 \family sans
-Article\InsetSpace ~
+Article
+\begin_inset space ~
+\end_inset
+
 (AMS)
 \family default
 .
@@ -2511,33 +2562,33 @@ Oto bardzo krótki zestaw niektórych klas.
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Nazwa
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Uwagi
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 article
 \end_layout
 
@@ -2546,18 +2597,18 @@ article
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 druk jednostronny, bez rozdziałów
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 article (AMS)
 \end_layout
 
@@ -2566,18 +2617,18 @@ article (AMS)
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 układ i środowiska dla American Math Society
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 report
 \end_layout
 
@@ -2586,67 +2637,67 @@ report
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 dłuższy niż article, druk dwustronny
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 book
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 report + dodatki z przodu i z tyłu
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 slides
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 slajdy (z FoilTeX-em włącznie)
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 letter 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 list---mnóstwo dodatkowych środowisk dla adresu, podpisu\SpecialChar \ldots{}
 
 \end_layout
@@ -2698,7 +2749,10 @@ latex_letter.lyx
 Na liście środowisk znajduje się teraz kilka pozycji włącznie ze środowiskiem
  
 \family sans
-My\InsetSpace ~
+My
+\begin_inset space ~
+\end_inset
+
 Address
 \family default
  (mój adres), których nie ma w innych klasach.
@@ -2743,12 +2797,15 @@ Wzorzec jest normalnym plikiem LyX-a.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Jedno ostrzeżenie.
  Jeśli wykasujesz cały tekst ze środowiska np.
  wykasujesz całe pole 
 \family sans
-My\InsetSpace ~
+My
+\begin_inset space ~
+\end_inset
+
 Address
 \family default
  celem wpisania własnego adresu i przemieścisz kursor nic nie wpisując,
@@ -2823,11 +2880,6 @@ Etykiety i odnośniki
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
-name "sec:labels"
-
-\end_inset
-
  Zaetykietować można podrozdział (albo sekcję, czy też, rzadziej, pop prostu
  kawałek tekstu) w dowolnym dokumencie.
  Dzięki temu powstaje możliwość odwołania się do tego podrozdziału w innych
@@ -2868,7 +2920,7 @@ sec:o_dok
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Piszemy 
 \begin_inset Quotes pld
 \end_inset
@@ -2930,7 +2982,10 @@ Wstaw->Odnośnik
 .
  Otworzy się okno 
 \family sans
-Wstaw\InsetSpace ~
+Wstaw
+\begin_inset space ~
+\end_inset
+
 odnośnik
 \family default
 , pokazując listę możliwych etykiet.
@@ -2945,7 +3000,10 @@ sec:o_dokumencie
 .
  Wybierz ją i kliknij na 
 \family sans
-Wstaw\InsetSpace ~
+Wstaw
+\begin_inset space ~
+\end_inset
+
 odnośnik
 \family default
 .
@@ -2959,13 +3017,22 @@ stronie
 
  i kliknij na 
 \family sans
-Wstaw\InsetSpace ~
-numer\InsetSpace ~
+Wstaw
+\begin_inset space ~
+\end_inset
+
+numer
+\begin_inset space ~
+\end_inset
+
 strony
 \family default
  w oknie 
 \family sans
-Wstaw\InsetSpace ~
+Wstaw
+\begin_inset space ~
+\end_inset
+
 odnośnik
 \family default
 .
@@ -2976,7 +3043,10 @@ LyX wstawia odnośnik do prostokąta w miejscu kursora.
  Na wydruku prostokąt z odnośnikiem zostanie zastąpiony numerem podrozdziału,
  względnie strony ( w zależności co wskazałeś w oknie 
 \family sans
-Wstaw\InsetSpace ~
+Wstaw
+\begin_inset space ~
+\end_inset
+
 odnośnik
 \family default
 ).
@@ -2984,8 +3054,14 @@ odnośnik
  LyX-a; kliknięcie na nich przenosi kursor do wskazywanej etykiety.
  Użyj polecenia 
 \family sans
-Plik->Podgląd->Obejrzyj\InsetSpace ~
-jako\InsetSpace ~
+Plik->Podgląd->Obejrzyj
+\begin_inset space ~
+\end_inset
+
+jako
+\begin_inset space ~
+\end_inset
+
 DVI
 \family default
  aby zobaczyć, że na ostatniej stronie odsyłamy do 
@@ -3047,7 +3123,10 @@ sec:moja_etykieta
  do niej.
  Podczas częstego wstawiania odnośników warto zostawić otwarte okno 
 \family sans
-Wstaw\InsetSpace ~
+Wstaw
+\begin_inset space ~
+\end_inset
+
 odnośnik
 \family default
 .
@@ -3063,12 +3142,13 @@ Podręcznika użytkownika
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Skopiowanie tytułu rozdziału może spowodować błąd LyX-a, ponieważ rozdziały
  nie są dozwolone w klasie Article.
  W takim przypadku skasuj tytuł rozdziału.
  Jeśli chcesz wiedzieć, czemu tak się dzieje, zobacz podrozdział 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:textclasses"
 
 \end_inset
@@ -3099,18 +3179,24 @@ Przypisy i notatki
 \begin_layout Standard
 Przypisy są dodawane za pomocą przycisku 
 \family sans
-Wstaw\InsetSpace ~
+Wstaw
+\begin_inset space ~
+\end_inset
+
 przypis
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Przycisk oznaczony jest strzałką wskazującą przypis
 \end_layout
 
 \end_inset
 
- z paska narzędzi lub poleceniem Wstaw\InsetSpace ~
+ z paska narzędzi lub poleceniem Wstaw
+\begin_inset space ~
+\end_inset
+
 przypis
 \family default
 .
@@ -3124,7 +3210,10 @@ LyX
 
  gdzieś w dokumencie i naciśnij przycisk 
 \family sans
-Wstaw\InsetSpace ~
+Wstaw
+\begin_inset space ~
+\end_inset
+
 przypis
 \family default
 .
@@ -3198,7 +3287,7 @@ Przypis może być wycinany i wklejany tak jak zwykły tekst.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Być może łatwiej zaznaczyć go przy pomocy klawiszy.
  Zaznaczając znaczek stopki myszą można przypadkiem otworzyć stopkę.
 \end_layout
@@ -3209,23 +3298,32 @@ Być może łatwiej zaznaczyć go przy pomocy klawiszy.
  Poza tym można zamienić w przypis zwykły tekst, zaznaczając go i naciskając
  przycisk 
 \family sans
-Wstaw\InsetSpace ~
+Wstaw
+\begin_inset space ~
+\end_inset
+
 przypis
 \family default
 .
 \end_layout
 
 \begin_layout Standard
-Przycisk Wstaw\InsetSpace ~
+Przycisk Wstaw
+\begin_inset space ~
+\end_inset
+
 notatkę dodaje notatki na marginesach
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Przycisk przedstawia strzałkę wskazującą kolumnę tekstu na marginesie i
  powinien znajdować się po prawej stronie przycisku 
 \family sans
-Wstaw\InsetSpace ~
+Wstaw
+\begin_inset space ~
+\end_inset
+
 stopkę
 \family default
  na pasku narzędzi.
@@ -3294,7 +3392,8 @@ Bibliografie
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:bibliographies"
 
 \end_inset
@@ -3322,7 +3421,10 @@ Elementarz LyX-a, Zespół Dokumentacji LyX-a
  pozycją.
  Kliknij na takim numerze, aby otworzyć okno 
 \family sans
-Pozycja\InsetSpace ~
+Pozycja
+\begin_inset space ~
+\end_inset
+
 bibliografii
 \family default
 .
@@ -3348,15 +3450,24 @@ Znajdź teraz w swoim dokumencie jakieś miejsce do umieszczenia odwołania
  do literatury.
  Wstaw je za pomocą 
 \family sans
-Wstaw->Odwołanie\InsetSpace ~
-do\InsetSpace ~
+Wstaw->Odwołanie
+\begin_inset space ~
+\end_inset
+
+do
+\begin_inset space ~
+\end_inset
+
 literatury
 \family default
 \SpecialChar \@.
  LyX wstawi w tekst prostokąt z trzema znakami zapytania w nawiasach kwadratowyc
 h i pojawi się okno 
 \family sans
-Wstaw\InsetSpace ~
+Wstaw
+\begin_inset space ~
+\end_inset
+
 odwołanie
 \family default
 .
@@ -3402,7 +3513,10 @@ Etykieta
 \family default
  z okna 
 \family sans
-Pozycja\InsetSpace ~
+Pozycja
+\begin_inset space ~
+\end_inset
+
 bibliografii
 \family default
 .
@@ -3439,7 +3553,7 @@ Return
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Nawet nie próbuj umieścić kursora przed numerem podrozdziału.
  Nie uda się.
  Tak czy inaczej nie można ręcznie poprawiać tego numeru, bo LyX numeruje
@@ -3450,7 +3564,10 @@ Nawet nie próbuj umieścić kursora przed numerem podrozdziału.
 
  i wykonaj polecenie 
 \family sans
-Wstaw->Spisy->Spis\InsetSpace ~
+Wstaw->Spisy->Spis
+\begin_inset space ~
+\end_inset
+
 treści
 \family default
 .
@@ -3477,7 +3594,10 @@ Spis treści nie pokazuje się w edytowanej wersji dokumentu, bo i tak nie
  ma możliwości jego edycji.
  Można jednak wyświetlić go za pomocą polecenia 
 \family sans
-Edycja->Struktura\InsetSpace ~
+Edycja->Struktura
+\begin_inset space ~
+\end_inset
+
 dokumentu
 \family default
 .
@@ -3485,7 +3605,10 @@ dokumentu
  dokumencie.
  Kliknięcie na tytule podrozdziału w oknie 
 \family sans
-Struktura\InsetSpace ~
+Struktura
+\begin_inset space ~
+\end_inset
+
 dokumentu
 \family default
  wyróżnia ten tytuł i przenosi w to miejsce kursor (w oknie edycyjnym).
@@ -3524,7 +3647,7 @@ LaTeX jest używany przez wielu naukowców z powodu jego świetnie wyglądający
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX nie potrafi, niestety, sprawdzić 
 \emph on
 poprawności
@@ -3583,7 +3706,10 @@ Tekst matematyczny powinno pisać się w trybie formuł matematycznych.
  Wyrażenie napisane jest na niebiesko, a niebieski prostokąt znika kiedy
  punkt wstawiania nie jest pusty.
  Teraz naciśnij Esc celem opuszczenia trybu matematycznego (zauważ, że powtórne
- przyciśnięcie przycisku Tryb\InsetSpace ~
+ przyciśnięcie przycisku Tryb
+\begin_inset space ~
+\end_inset
+
 formuł 
 \emph on
 nie opuszcza
@@ -3809,13 +3935,14 @@ c
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Spacja i tabulator nie służą do wstawiania dodatkowego wolnego miejsca między
  częściami równania.
  Odstępy są zagadnieniem składu drukarskiego, co oznacza, że użytkownik
  powinien pozostawić je LyX-owi (LaTeX-owi) (zobacz podrozdz.
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:whitespace"
 
 \end_inset
@@ -3924,7 +4051,7 @@ Pasek narzędzi formuł matematycznych
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 W klyx-ie jest to pasek, w lyx-ie panel
 \end_layout
 
@@ -4021,7 +4148,10 @@ Nadpisywanie znaków (
 \family sans
 Daszki, tyldy, wektory
 \family default
-, oznaczony niebieskim prostokątem przykrytym czarną tyldą\InsetSpace ~
+, oznaczony niebieskim prostokątem przykrytym czarną tyldą
+\begin_inset space ~
+\end_inset
+
 (~).
  Kliknij na symbolu, żeby wstawić go w tekst wraz punktem wstawiania nad
  lub pod symbolem.
@@ -4356,7 +4486,8 @@ Macierze
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:matrices"
 
 \end_inset
@@ -4424,7 +4555,7 @@ Tryb równań
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Ten podrozdział dotyczy opcji nieobecnej w menu klyx 0.9.6, gdzie występuje
  ona na pasku narzędzi.
  (przyp.
@@ -4450,7 +4581,8 @@ Podręcznik użytkownika
 ), a ponadto równania wielolinijkowe (patrz podrozdz.
 \emph default
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:multiline"
 
 \end_inset
@@ -4560,7 +4692,8 @@ Równania wielolinijkowe
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:multiline"
 
 \end_inset
@@ -4647,7 +4780,8 @@ LyX wyrównuje drugie (środkowe) pole w każdej linijce, tak więc zwykle tam
  Nie należy jednak używać równania wielolinijkowego do tworzenia macierzy;
  służy do tego osobny symbol macierzy (patrz podrozdz.
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:matrices"
 
 \end_inset
@@ -4695,7 +4829,10 @@ E & = & mc^{2}\\
 Jeżeli wstawiłeś za dużo linijek, przesuń kursor na koniec bieżącej linijki
  i naciśnij 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 k
 \family default
  aby skasować następną nadmiarową linijkę.
@@ -4704,7 +4841,10 @@ k
  Jeżeli następna linijka jest pusta, spowoduje to jej skasowanie.
  Ostrzeżenie: naciśnięcie 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 k
 \family default
  kiedy kursor nie jest na końcu linijki może prowadzić do dziwnych efektów.
@@ -4857,12 +4997,15 @@ go, niemieckiego, greckiego, czeskiego, tureckiego,\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Itemize
-Pisownia dokumentu jest sprawdzana poleceniem Edycja->Sprawdzanie\InsetSpace ~
+Pisownia dokumentu jest sprawdzana poleceniem Edycja->Sprawdzanie
+\begin_inset space ~
+\end_inset
+
 pisowni
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 od kursora do końca dokumentu
 \end_layout
 
@@ -4925,7 +5068,10 @@ kład->
 \bar under
 F
 \bar default
-ormat\InsetSpace ~
+ormat
+\begin_inset space ~
+\end_inset
+
 TeX-a
 \family default
 , albo klikając na czerwonym przycisku-przełączniku TeX-a na pasku narzędzi.
@@ -5006,7 +5152,8 @@ LyX nie potrafi zrobić absolutnie wszystkiego co LaTeX (jeszcze?).
 usepackage{foo}
 \family default
 w preambule (zobacz podrozdz.: 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:preamble"
 
 \end_inset
@@ -5021,11 +5168,6 @@ Konwersja dokumentów LaTeX-a do LyX-a -- tex2lyx
 \begin_layout Standard
 
 \lang english
-\begin_inset LatexCommand label
-name "sec:tex2lyx"
-
-\end_inset
-
 You can import a LaTeX file into LyX by using the 
 \family sans
 \bar under
@@ -5101,7 +5243,10 @@ Może zaistnieć potrzeba konwersji dokumentu LyX-a na format LaTeX-a.
  dokument.
  Wystarczy w tym celu wykonać polecenie 
 \family sans
-Plik->Eksport->jako\InsetSpace ~
+Plik->Eksport->jako
+\begin_inset space ~
+\end_inset
+
 LaTeX.
 
 \family default
@@ -5137,7 +5282,10 @@ documentclass
 \family default
  należy wpisać w polu 
 \family sans
-Dodatkowe\InsetSpace ~
+Dodatkowe
+\begin_inset space ~
+\end_inset
+
 opcje
 \family default
 .
@@ -5148,7 +5296,8 @@ Inne wykorzystanie preambuły
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:preamble"
 
 \end_inset
@@ -5157,7 +5306,10 @@ name "sec:preamble"
  możesz użyć ich również w dokumencie LyX-a.
  Wykonaj polecenie 
 \family sans
-Układ->Preambuła\InsetSpace ~
+Układ->Preambuła
+\begin_inset space ~
+\end_inset
+
 LaTeX-a
 \family default
  i napisz je w otworzonym oknie.
@@ -5175,7 +5327,10 @@ LyX obsługuje BibTeX w sposób dobry acz niekompletny.
  wielu dokumentach.
  Użyj 
 \family sans
-Wstaw->Spisy->Odsyłacz\InsetSpace ~
+Wstaw->Spisy->Odsyłacz
+\begin_inset space ~
+\end_inset
+
 BibTeX-a
 \family default
  celem włączenia pliku typu bib.
@@ -5186,7 +5341,10 @@ Odnośniki wygenerowane przez BibTeX
  otworzy okno BibTeX-a.
  W polu 
 \family sans
-Baza\InsetSpace ~
+Baza
+\begin_inset space ~
+\end_inset
+
 danych
 \family default
  wpisz to co wpisałbyś nawiasach polecenia 
@@ -5197,7 +5355,7 @@ bibliography{}
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Tak jak w LaTeX-u, bibliografie powinny być odseparowane przecinkami, nie
  spacjami/tabulatorami.
 \end_layout
@@ -5224,12 +5382,19 @@ bibliographystyle{}
 Po wykonaniu powyższych czynności można używać cytatów z dowolnych bibliografii
  włączanych poleceniem 
 \family sans
-Wstaw->Odwołanie\InsetSpace ~
-do\InsetSpace ~
+Wstaw->Odwołanie
+\begin_inset space ~
+\end_inset
+
+do
+\begin_inset space ~
+\end_inset
+
 literatury
 \family default
  (zobacz podrozdz.:
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:bibliographies"
 
 \end_inset
@@ -5272,9 +5437,12 @@ u
 
 .
  Jest ich mnóstwo w niniejszym Elementarzu.
- W menu Wstaw->Znak\InsetSpace ~
-specjalny znajduje się więcej znaków specjalnych, z wielokrop
-kiem, wymuszonym końcem linii i punktem podziału włącznie.
+ W menu Wstaw->Znak
+\begin_inset space ~
+\end_inset
+
+specjalny znajduje się więcej znaków specjalnych, z wielokropkiem, wymuszonym
+ końcem linii i punktem podziału włącznie.
 \end_layout
 
 \begin_layout Section
