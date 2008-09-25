@@ -197,10 +197,17 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		InsetGraphicsParams p;
 		string2params(to_utf8(cmd.argument()), buffer(), p);
-		if (!p.filename.empty())
-			setParams(p);
-		else
+		if (p.filename.empty()) {
 			cur.noUpdate();
+			break;
+		}
+
+		setParams(p);
+		// if the inset is part of a graphics group, all the
+		// other members should be updated too.
+		if (!params_.groupId.empty())
+			graphics::unifyGraphicsGroups(cur.buffer(), 
+						      to_utf8(cmd.argument()));
 		break;
 	}
 

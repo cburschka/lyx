@@ -716,12 +716,7 @@ void GuiGraphics::dispatchParams()
 {
 	InsetGraphicsParams tmp_params(params_);
 	string const lfun = InsetGraphics::params2string(tmp_params, buffer());
-	buffer().undo().beginUndoGroup();
 	dispatch(FuncRequest(getLfun(), lfun));
-	if (!params_.groupId.empty())
-		dispatch(FuncRequest(LFUN_GRAPHICS_GROUPS_UNIFY,
-				InsetGraphics::params2string(params_, buffer())));
-	buffer().undo().endUndoGroup();
 }
 
 
