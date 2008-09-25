@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass scrbook
@@ -16,9 +16,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -36,6 +38,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -49,7 +52,7 @@ egilea: LyX taldea.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Fitxategi honen arduradun nagusia 
 \noun on
 John Weiss
@@ -57,12 +60,14 @@ John Weiss
  da.
  Bidali iradokizunak edo erroreei buruzko zuzenketak LyX dokumentazioko
  posta-zerrenda honetara: <lyx-docs@lists.lyx.org> 
-\newline
-Itzulpena: Iñaki Larrañaga
- Murgoitio <dooteo@euskalgnu.org>, 2004.
-\newline
-Zuzenketak: Hizkuntza Politikarako
- Sailburuordetza <hizpol@ej-gv.es>, 2004.
+\begin_inset Newline newline
+\end_inset
+
+Itzulpena: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004.
+\begin_inset Newline newline
+\end_inset
+
+Zuzenketak: Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
 \end_layout
 
 \end_inset
@@ -71,7 +76,9 @@ Zuzenketak: Hizkuntza Politikarako
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
 \end_inset
 
 
@@ -91,8 +98,9 @@ LyX-en filosofia
 \end_layout
 
 \begin_layout Quote
+\begin_inset space \hfill{}
+\end_inset
 
-\hfill
 --- Jeff MacNelly, "Shoe" 
 \end_layout
 
@@ -189,23 +197,17 @@ zer hizki zein lekutan kokatu
 \end_layout
 
 \begin_layout Standard
-LyX-eko oinarrizko izaera zer egiten ari garen horretan datza, eta ez
-\emph default
- 
+LyX-eko oinarrizko izaera zer egiten ari garen horretan datza, eta ez 
 \emph on
 nola
 \emph default
  egitean.
  "Ikusten duzuna lortzen duzu" (WYSIWYG, What You See Is What You Get) pentsamol
-deko prozesadore baten ordez LyX-en eredua "Ikusten duzuna
-\emph default
- 
+deko prozesadore baten ordez LyX-en eredua "Ikusten duzuna 
 \emph on
 esan nahi
 \emph default
- duzu" (WYSIWYM, What You See Is What You
-\emph default
- 
+ duzu" (WYSIWYM, What You See Is What You 
 \emph on
 Mean
 \emph default
@@ -216,15 +218,11 @@ Mean
 LyX arlo honetan bereizten da, beste testu-prozesadore normal batekin konparatuz
  .
  Hizki bat leku zehatz batean egoteaz arduratu beharrik ez daukazu.
- Esan LyX-i
-\emph default
- 
+ Esan LyX-i 
 \emph on
 zer egiten ari zaren
 \emph default
-, eta bera,
-\emph default
- 
+, eta bera, 
 \emph on
 estilo
 \emph default
@@ -232,7 +230,7 @@ estilo
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
  Zehatzago izatearren, bulegotikako suiteak (azken bertsioak) markatze-metodoare
 n antzekoa erabiltzen duten orri-estiloak dituzte.
  Nola nahi ere, gure esperientziaren arabera, eguneroko zereginetan oso
@@ -262,7 +260,10 @@ Sarrera
 \begin_inset Quotes eld
 \end_inset
 
-1.\InsetSpace ~
+1.
+\begin_inset space ~
+\end_inset
+
 Sarrera
 \begin_inset Quotes erd
 \end_inset
@@ -276,9 +277,7 @@ Sarrera
 
 \begin_layout Standard
 LyX-en, berriz, kokatu goialdean dauden botoitxo guztien ezkerretara dagoen
- zerrendan, hautatu
-\family default
- 
+ zerrendan, hautatu 
 \family sans
 Atala
 \family default
@@ -296,15 +295,28 @@ tzia guztiak egunera ditzake, ez daukazu atalen numerazioa gehiago idatzi
 
 \begin_layout Standard
 Ohiko testu-prozesadore orokorrekin kontsistentzia-arazoak gertatzen dira.
- Bost egun igaro ondoren, 4.\InsetSpace ~
+ Bost egun igaro ondoren, 4.
+\begin_inset space ~
+\end_inset
+
 atala hasteko asmoa daukazu.
- 18\InsetSpace ~
-neurriko letra lodia erabili behar dela ahaztu zaizu, eta 16\InsetSpace ~
-neurrikoa
- erabiltzen duzu; beraz, 4.\InsetSpace ~
-ataleko izenburuko letra-tipoa eta 1.\InsetSpace ~
-atalean erabilitak
-oa ezberdin erabili dituzu.
+ 18
+\begin_inset space ~
+\end_inset
+
+neurriko letra lodia erabili behar dela ahaztu zaizu, eta 16
+\begin_inset space ~
+\end_inset
+
+neurrikoa erabiltzen duzu; beraz, 4.
+\begin_inset space ~
+\end_inset
+
+ataleko izenburuko letra-tipoa eta 1.
+\begin_inset space ~
+\end_inset
+
+atalean erabilitakoa ezberdin erabili dituzu.
  LyX-en ez dago arazo hori, zure ordez letra-tipoa eta tamainak egoki edukitzeaz
  ordenagailua arduratuko baita.
  Azken finean, horretarako sortu ziren ordenagailuak, guri bizitza errazteko.
@@ -326,9 +338,7 @@ Beste adibide bat.
 Beraz, LyX inguruan dagoen ideia hau da: zer egin nahi duzun zehaztea, ez
  nola egin nahi duzun.
  "What You See Is What You Get" modeloaren ordez LyX-ek "What You See Is
- What You
-\emph default
- 
+ What You 
 \emph on
 Mean"
 \emph default
@@ -348,12 +358,14 @@ Horregatik irudi edo iragarkiak sortzeko LyX ez da erabilgarria -- kasu
 
 \begin_layout Section
 LyX eta testu-prozesadoreen 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 arteko ezberdintasunak
 \begin_inset OptArg
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX eta beste testu-prozesadoreak
 \end_layout
 
@@ -363,7 +375,7 @@ LyX eta beste testu-prozesadoreak
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Ez, gerra-santu bat irabazteko asmoarekin ez gabiltza.
  LyX-en berezitasunak aipatzea garrantzitsua dela deritzogu.
  Berezitasun garrantzitsuenetariko bat WYSIWYM da, jendearen %99-ak testua
@@ -389,11 +401,12 @@ Tabuladoreak
 
 \begin_layout Itemize
 Zuriune osagarriak (adbz.
-
-\family default
  
 \family sans
-lerro\InsetSpace ~
+lerro
+\begin_inset space ~
+\end_inset
+
 itzulera (Intro)
 \family default
  edo zuriune tekla bi edo gehiagotan sakatzea)
@@ -455,18 +468,14 @@ in bat egiten du.
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Ezaugarri hauek denak zehatz ditzakezu (gutxi batzuk zehazteko LaTeX-eko
  ezaguerak behar dira) bai dokumentu osorako bai eta zati baterako ere.
- Xehetasun gehiagotarako, ikusi
-\emph default
- 
+ Xehetasun gehiagotarako, ikusi 
 \emph on
 Erabiltzailearen gida
 \emph default
- edota
-\emph default
- 
+ edota 
 \emph on
 Ezaugarri hedatuak
 \emph default
@@ -509,9 +518,7 @@ Egungo prozesadore askok matematikako ikurrak, taulak, lerro amaierako hitz
  hurbiltzen hasiak dira.
  Ezaugarri horiek ezartzen hasi berri dira; LyX, ordea, LaTeX dokumentu-prestatz
 e sisteman oinarritua dago.
- LaTeX duela 15 urte baino gehiago sortu zen, eta
-\emph default
- 
+ LaTeX duela 15 urte baino gehiago sortu zen, eta 
 \emph on
 funtzionatzen du
 \emph default
@@ -528,11 +535,9 @@ LaTeX
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Atal honetako informazioaren jatorria, Helmut Kopka eta Patrick Daly-k idatzitak
 o "A Guide to LaTeX2e"-a.
-
-\emph default
  
 \emph on
 Erabiltzailaren Gida
@@ -559,15 +564,11 @@ device independent
 \begin_inset Quotes erd
 \end_inset
 
-) izeneko formatuan sortzen du,
-\family default
- 
+) izeneko formatuan sortzen du, 
 \family typewriter
 dvi
 \family default
  era motzean esateko.
-
-\family default
  
 \family typewriter
 dvi
@@ -615,8 +616,6 @@ n komandoekin dator, letra-tipo berriak erabiltzeko laguntza eta hobekuntza
 
 \begin_layout Standard
 LaTeX hedatzeko bi modu daude: klaseak eta estiloak.
-
-\emph default
  
 \emph on
 Klase
@@ -625,16 +624,12 @@ Klase
  duen LaTeX-eko (eta TeX-ekoa ere) makro talde bat.
  Diapositibentzako klaseak daude, fisika eta matematikako argitarapenetan...
  zenbait unibertsitatek tesiak zehazten dituen formatuak dituzte.
-
-\emph default
  
 \emph on
 Estiloa
 \emph default
  bat berriz, eta klase batetik ezberdinduz, ez du dokumentu berri bat zehazten,
- edozein dokumentutan erabil dezakezun
-\emph default
- 
+ edozein dokumentutan erabil dezakezun 
 \emph on
 jokabide
 \emph default
@@ -679,9 +674,7 @@ LyX: WYSIWYM testu-prozesadore bisuala, LaTeX-en indar eta ahalmen guztiak
 \end_layout
 
 \begin_layout Standard
-Atal honen asmoa izan da zuri argitzea LyX
-\emph default
- 
+Atal honen asmoa izan da zuri argitzea LyX 
 \emph on
 zergatik
 \emph default
@@ -703,7 +696,7 @@ Epaaa! Gauza bat gehiago.
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 Itzultzailearen oharra
@@ -740,8 +733,10 @@ Nahiz eta LyX-ek "1.0 bertsioa" ongi igarota eduki, laguntza dokumentuaren
  egon daitezen ahalegintzen gara.
  Laguntzeko prest bazaude, ziurta zaitez dokumentuko beste ezer baino lehen
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:auzolana"
+
 \end_inset
 
  atala irakurtzen.
@@ -751,9 +746,7 @@ reference "atal:auzolana"
 Beste mesede bat egin dezakezu: eskuliburu hauetan zerbait argi ez badago
  edo akatsak baditu, guri jakinarazi! Dokumentazioa eguneratua edukitzen
  arduratuta dauden neska/mutilekin harremanetan jar zaitezke, horretarako
- idatzi
-\family default
- 
+ idatzi 
 \family typewriter
 lyx-docs@lists.lyx.org
 \family default
@@ -763,9 +756,7 @@ lyx-docs@lists.lyx.org
 
 \begin_layout Standard
 Dokumentazioarekin zerikusirik ez duten eta erantzun azkarra eskatzen duten
- galderentzat, erabil posta-zerrenda hau:
-\family default
- 
+ galderentzat, erabil posta-zerrenda hau: 
 \family typewriter
 lyx-users@lists.lyx.org
 \family default
@@ -783,9 +774,7 @@ Agian, eskulibururen bat edo beste inprimatuta edukiko duzu, edo bestela
  Aurrenekoa, izenburua eskuliburuaren hasieran dago, ez da bereizitako orrialdea
 n agertzen, inprimatutako bertsioan lehenbiziko orrialdean agertzen da.
  Bai oin-oharra, bai edukien aurkibidea ez daude bistaratuak.
- Edukien aurkibidea ikusteko menuko aukera bat badaukazu:
-\family default
- 
+ Edukien aurkibidea ikusteko menuko aukera bat badaukazu: 
 \family sans
 Arakatu
 \family default
@@ -794,7 +783,7 @@ Arakatu
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Kaixo! Oin-ohar hau ixteko, ezkerraldeko laukitxo gris horretan klikatu\SpecialChar \ldots{}
 Bai,
  "oina" hitza bertan idatzita agertzen da.
@@ -811,11 +800,16 @@ Inprimatutako eskuliburuetan, erreferentzia gurutzatu guztiak kapitulu,
  atal, azpiatal eta bestelakoen zenbatzaile bezala agertzen dira.
  Pantailan, ordea, erreferentzia gurutzatuak datorrena bezalako laukiluze
  grisetan agertzen dira: 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:auzolana"
+
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 alegia (inprimatutako eskuliburuetan zenbakiak agertzen dira laukiluze hauen
  ordez).
  Laukiluzea saguaren ezker botoiarekin klikatuz dokumentuko erreferentzia
@@ -823,8 +817,6 @@ alegia (inprimatutako eskuliburuetan zenbakiak agertzen dira laukiluze hauen
  Sarrera honek "atal:auzolana" izeneko bakar bat dauka.
  Erreferentziatu den atalera joateko, erabili elkarrizketa koadroan "Joan"
  botoia.
-
-\family default
  
 \family sans
 C-<
@@ -884,8 +876,6 @@ Izen
 
 \begin_layout Standard
 Menuen laster-teklak eta beste tekla-loturei buruz gehiago jakiteko, irakurri
-
-\emph default
  
 \emph on
 Ezaugarri Hedatuak
@@ -903,9 +893,7 @@ Extended.lyx
 \family sans
 C-
 \family default
-"
-\family default
- 
+" 
 \family sans
 Kontrol
 \family default
@@ -921,9 +909,7 @@ Ctrl
 \family sans
 S-
 \family default
-"
-\family default
- 
+" 
 \family sans
 Shift
 \family default
@@ -935,15 +921,11 @@ Shift
 \family sans
 M-
 \family default
-"
-\family default
- 
+" 
 \family sans
 Meta
 \family default
- tekla, ia teklatu gehienetan
-\family default
- 
+ tekla, ia teklatu gehienetan 
 \family sans
 Alt
 \family default
@@ -968,15 +950,11 @@ F12
 \family sans
 "Esc"
 \family default
-
-\family default
  
 \family sans
 'Ihes'
 \family default
- edo
-\family default
- 
+ edo 
 \family sans
 'Escape'
 \family default
@@ -988,21 +966,15 @@ F12
 \family sans
 "Ezkerra"
 \family default
-,
-\family default
- 
+, 
 \family sans
 "Eskuina"
 \family default
-,
-\family default
- 
+, 
 \family sans
 Gora"
 \family default
-,
-\family default
- 
+, 
 \family sans
 "Behera"
 \family default
@@ -1015,19 +987,13 @@ Gora"
 \family sans
 "Txertatu",
 \family default
-
-\family default
  
 \family sans
 "Ezabatu",
 \family default
-
-\family default
  
 \family sans
 "Etxea",
-\family default
-
 \family default
  
 \family sans
@@ -1042,15 +1008,11 @@ Goratu Orria
 Beheratu Orria
 \family default
 " gezien gainean egon ohi diren 6 tekla dira.
- Goratu Orria eta Beheratu Orria teklatu batzuetan
-\family default
- 
+ Goratu Orria eta Beheratu Orria teklatu batzuetan 
 \family sans
 Prior
 \family default
- eta
-\family default
- 
+ eta 
 \family sans
 Next
 \family default
@@ -1060,7 +1022,10 @@ Next
 \begin_layout Itemize
 
 \family sans
-Lerro\InsetSpace ~
+Lerro
+\begin_inset space ~
+\end_inset
+
 itzulera
 \family default
  (
@@ -1068,30 +1033,25 @@ itzulera
 Intro
 \family default
 ).
- Teklatu batzuek
-\family default
- 
+ Teklatu batzuek 
 \family sans
 Return
 \family default
- edo
-\family default
- 
+ edo 
 \family sans
 Enter
 \family default
  bezala daukate.
  Beste batzuek birritan daukate.
- LyX-ek tekla denak berdin erabiliko ditu, beraz
-\family default
- 
+ LyX-ek tekla denak berdin erabiliko ditu, beraz 
 \family sans
-lerro\InsetSpace ~
+lerro
+\begin_inset space ~
+\end_inset
+
 itzulera
 \family default
- edo
-\family default
- 
+ edo 
 \family sans
 intro
 \family default
@@ -1102,7 +1062,6 @@ intro
 Noizean behin "
 \family sans
 (ikus
-\emph default
 \family default
  
 \family sans
@@ -1150,8 +1109,6 @@ Tutoretza
 \begin_layout Standard
 LyX erabiltzen hasiberria bazara, eta orain arte LaTeX inoiz ez baduzu entzun
  ez eta erabili ere, orduan hemendik hasi beharko duzu.
-
-\emph default
  
 \emph on
 Tutoretza
@@ -1161,9 +1118,7 @@ Tutoretza
 \end_layout
 
 \begin_layout Standard
-LaTeX erabili baduzu,
-\emph default
- 
+LaTeX erabili baduzu, 
 \emph on
 Tutoretza
 \emph default
@@ -1173,9 +1128,7 @@ ko beste atalek kalterik ez dizute egingo).
 
 \begin_layout Standard
 Edozein unetan LyX-ekiko iparra (edo norabidea) galdu egin duzulakoan bazaude,
- beste edozein eskulibururen bat irakurri eta ulertu aurretik,
-\emph default
- 
+ beste edozein eskulibururen bat irakurri eta ulertu aurretik, 
 \emph on
 Tutoretza
 \emph default
@@ -1185,7 +1138,10 @@ Tutoretza
 
 \end_deeper
 \begin_layout Description
-Erabiltzailearen\InsetSpace ~
+Erabiltzailearen
+\begin_inset space ~
+\end_inset
+
 gida
 \end_layout
 
@@ -1195,8 +1151,6 @@ Eskuliburu nagusia.
  Hemen LyX programaren oinarrizko ezaugarri eta aukeren gehiengo bat argitzen
  saiatuko gara.
  Eskuliburu nagusiak LaTeX-eko ezagutza batzuk badauzkazulakoan dago, edo
-
-\emph default
  
 \emph on
 Tutoretza
@@ -1206,7 +1160,10 @@ Tutoretza
 
 \end_deeper
 \begin_layout Description
-Ezaugarri\InsetSpace ~
+Ezaugarri
+\begin_inset space ~
+\end_inset
+
 hedatuak
 \end_layout
 
@@ -1231,8 +1188,6 @@ Pertsonalizazioa
 LyX-en ezaugarri garatuen azalpena, programaren jarrera (izakera) orokorra
  pertsonalizatzea; tekla-lotura, nazioartekotza eta konfigurazio-fitxategi
  bezalakoak.
-
-\emph default
  
 \emph on
 Tutoretza
@@ -1242,7 +1197,10 @@ Tutoretza
 
 \end_deeper
 \begin_layout Description
-LaTeX\InsetSpace ~
+LaTeX
+\begin_inset space ~
+\end_inset
+
 konfigurazioa
 \end_layout
 
@@ -1254,7 +1212,7 @@ LyX-ek, instalatzerakoan, zure sistema aztertzen du.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 Itzultzailearen oharra
@@ -1271,15 +1229,11 @@ Itzultzailearen oharra
 \end_deeper
 \begin_layout Standard
 Fitxategiok elkar erreferentziatzen dute, beharrezkoa denean.
- Adibidez,
-\emph default
- 
+ Adibidez, 
 \emph on
 Erabiltzailearen Gida
 \emph default
--k instalatze eta pertsonalizatze buruzko zerbait dio, baina irakurlea
-\emph default
- 
+-k instalatze eta pertsonalizatze buruzko zerbait dio, baina irakurlea 
 \emph on
 Pertsonalizazioa
 \emph default
@@ -1299,9 +1253,7 @@ Berriro, gauza garrantzitsu bat azpimarratu behar dugu:
 
 \begin_layout Standard
 \align center
-LyX-ekin hasiberria bazara,
-\emph default
- 
+LyX-ekin hasiberria bazara, 
 \emph on
 Tutoretza
 \emph default
@@ -1323,8 +1275,10 @@ Bestela alferrik haserretuko zara zeure buruarekin.
 \end_layout
 
 \begin_layout Chapter
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:auzolana"
+
 \end_inset
 
 LyX proiektuan laguntzea
@@ -1355,14 +1309,17 @@ etik sor daiteke: LyX interfazeko zein zati korapilotsua, zaila ulertzeko,
 
 \begin_layout Standard
 LyX-ek erroreen txostenak bidaltzeko eta kudeatzeko sistema bat erabiltzen
- du,
-\family default
- 
+ du, 
 \family typewriter
+LyX bug tracker 
+\begin_inset Flex URL
+status collapsed
 
-\begin_inset LatexCommand htmlurl
-name "LyX bug tracker"
-target "http://bugzilla.lyx.org/"
+\begin_layout Plain Layout
+
+http://bugzilla.lyx.org/
+\end_layout
+
 \end_inset
 
 
@@ -1376,22 +1333,23 @@ target "http://bugzilla.lyx.org/"
  sistema horretan.
  Erabili sistema errore-kudeatzaile hori dagoen errore bati buruzko iradokizunak
 , edo errore berri bati buruzko txostena bidaltzeko, edo, bestela, bidali
- mezu bat
-\family default
- 
+ mezu bat 
 \family typewriter
 lyx-devel@lists.lyx.org
 \family default
  posta-zerrendara.
  Posta-zerrenda honen artxiboei zuzenduriko estekak LyX gune nagusian jarri
- dira,
-\family default
- 
+ dira, 
 \family typewriter
+LyX website 
+\begin_inset Flex URL
+status collapsed
 
-\begin_inset LatexCommand htmlurl
-name "LyX website"
-target "http://www.lyx.org/"
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
+
 \end_inset
 
 
@@ -1425,7 +1383,7 @@ LyX hondatzeko gai bazara, eskertuko genizuke "backtrace
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 Itzultzailearen oharra
@@ -1458,14 +1416,12 @@ run
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 perfektua izatea nahi baduzu, erabili "
 \family typewriter
 info locals
 \family default
-" eta
-\family default
- 
+" eta 
 \family typewriter
 "up"
 \family default
@@ -1488,15 +1444,11 @@ Lagundu finkatzen eta ezaugarri berrietan
 
 \begin_layout Standard
 Baldin eta LyX-eko iturburuetan aldaketak egin badituzu eta LyX proiektuko
- zati izatea garrantzitsua dela uste baduzu, bidal iezaguzu
-\family default
- 
+ zati izatea garrantzitsua dela uste baduzu, bidal iezaguzu 
 \family typewriter
 diff
 \family default
  fitxategi bat (formatu bateratu batean) arestiko posta-zerrendara, baita
-
-\family default
  
 \family typewriter
 changelog
@@ -1526,9 +1478,7 @@ Eskuliburuetako errore-txostena
 \end_layout
 
 \begin_layout Standard
-Dokumentazioan arazorik aurkitzen baduzu bidali mezu bat
-\family default
- 
+Dokumentazioan arazorik aurkitzen baduzu bidali mezu bat 
 \family typewriter
 lyx-docs@lists.lyx.org
 \family default
@@ -1552,12 +1502,10 @@ Eskuratu LyX-en azken iturburuak.
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Abenturazaleek dokumentazioa LyX-eko CVS eduki-sistematik anonimoki eskura
  daiteke.
- Edukien sistema honek
-\family default
- 
+ Edukien sistema honek 
 \family typewriter
 lyxdoc
 \family default
@@ -1568,9 +1516,7 @@ lyxdoc
 
 .
  Bertan lib/doc/ izeneko direktorioa aurkituko duzu.
- Direktorio honetan
-\family default
- 
+ Direktorio honetan 
 \family typewriter
 DocStyle.lyx
 \family default
@@ -1579,15 +1525,11 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-Ondoren, irakurri
-\emph default
- 
+Ondoren, irakurri 
 \emph on
 Erabiltzailearen gida
 \emph default
- eta
-\emph default
- 
+ eta 
 \emph on
 Tutoretza
 \emph default
@@ -1597,17 +1539,16 @@ Tutoretza
 \begin_deeper
 \begin_layout Standard
 Ariketa honen helburua zuri ideiak ematea dauka helburutzat.
-
-\emph default
  
 \emph on
 Tutoretza
 \emph default
- eta
-\emph default
- 
+ eta 
 \emph on
-Erabiltzailearen\InsetSpace ~
+Erabiltzailearen
+\begin_inset space ~
+\end_inset
+
 gida
 \emph default
  izango dira dokumentaziotik gehien eguneratu behar direnak.

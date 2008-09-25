@@ -1,5 +1,5 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass book
@@ -19,9 +19,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics none
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -54,7 +56,7 @@ dal LyX Team
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 Questa guida è aggiornata da 
 \noun on
@@ -71,12 +73,15 @@ Claudio Coco,
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 traduzione italiana a cura di Lino Muoio
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -130,11 +135,6 @@ File di configurazione di LyX
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
-name "chap:config"
-
-\end_inset
-
  Questo capitolo ha lo scopo di aiutare ad orientarsi all'interno dei file
  di configurazione di LyX.
  Prima di continuare a leggere questo capitolo, dovreste trovare dove si
@@ -271,7 +271,10 @@ L
 \bar under
 a
 \bar default
-TeX\InsetSpace ~
+TeX
+\begin_inset space ~
+\end_inset
+
 Configuration.
 \end_layout
 
@@ -347,33 +350,12 @@ bind/
 \family typewriter
 .bind
 \family default
- che definiscono i tasti di scelta rapida usati in LyX (vedere la sezione\InsetSpace ~
-
-\begin_inset LatexCommand ref
-reference "sec: bindings"
-
-\end_inset
-
-).
+ che definiscono i tasti di scelta rapida usati in LyX.
  Se esiste una versione internazionalizzata del bindfile chiamato 
 \family typewriter
 $LANG_xxx.bind
 \family default
  , questo sarà usato per primo.
- Vedere il capitolo\InsetSpace ~
-
-\begin_inset LatexCommand ref
-reference "chap:i18n"
-
-\end_inset
-
-, e la sezione
-\begin_inset LatexCommand ref
-reference "sec: bindings"
-
-\end_inset
-
- per i dettagli.
 \end_layout
 
 \begin_layout List
@@ -408,9 +390,13 @@ LaTeXConfig.lyx
 $LANG_
 \family default
  preposto al nome, quello sarà usato per primo.
- Guardare il capitolo\InsetSpace ~
+ Guardare il capitolo
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "chap:i18n"
 
 \end_inset
@@ -454,9 +440,13 @@ Document
 kdb/
 \family default
  contiene i files di keymapping della tastiera.
- Guardare il capitolo\InsetSpace ~
+ Guardare il capitolo
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:keymap"
 
 \end_inset
@@ -470,9 +460,13 @@ reference "sec:keymap"
 \family typewriter
 layouts/
 \family default
- contiene i files di classi di testo descritti nel capitolo\InsetSpace ~
+ contiene i files di classi di testo descritti nel capitolo
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "chap:textclass"
 
 \end_inset
@@ -488,7 +482,10 @@ scripts/
 \family default
  contiene alcuni files che dimostrano le capacità dell'insieme 
 \family sans
-External\InsetSpace ~
+External
+\begin_inset space ~
+\end_inset
+
 Template.
 
 \family default
@@ -513,9 +510,13 @@ Nota dell'autore: se questo file è incorporato in un altro dei documenti
 \family typewriter
 templates/
 \family default
- contiene i files templates standard di LyX descritti nel Capitolo\InsetSpace ~
+ contiene i files templates standard di LyX descritti nel Capitolo
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:templates"
 
 \end_inset
@@ -545,9 +546,13 @@ ui/
  che definiscono l'interfaccia utente di LyX.
  Cioè i files definiscono quali oggetti appaiono in quali menu e quelli
  che appaiono nella toolbar.
- Riferirsi al Capitolo\InsetSpace ~
+ Riferirsi al Capitolo
+\begin_inset space ~
+\end_inset
+
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:ui"
 
 \end_inset
@@ -631,7 +636,10 @@ external_templates
 \family default
  questo file contiene i template disponibili nella nuova funzione 
 \family sans
-External\InsetSpace ~
+External
+\begin_inset space ~
+\end_inset
+
 Template
 \family default
 .
@@ -641,7 +649,10 @@ Template
 H
 \bar default
 elp\SpecialChar \menuseparator
-External\InsetSpace ~
+External
+\begin_inset space ~
+\end_inset
+
 
 \bar under
 M
@@ -774,9 +785,13 @@ econfigure
  LyX lancia configure ed i files risultanti sono scritti nella vostra directory
  di configurazione locale 
 \family sans
-(vedere la sezione\InsetSpace ~
+(vedere la sezione
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:autodetected"
 
 \end_inset
@@ -813,7 +828,7 @@ TEXTINPUTS
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 come pure se voi o LyX abbiate un file 
 \family typewriter
 .layout
@@ -915,7 +930,8 @@ R
 econfigure
 \family default
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:autodetected"
 
 \end_inset
@@ -1295,7 +1311,10 @@ Il valore di default dello zoom è 150 dato che un monitor è generalmente
  più grande che un pezzo di carta, ma dovreste comunque provare a modificarlo
  tramite il comando 
 \family sans
-Font\InsetSpace ~
+Font
+\begin_inset space ~
+\end_inset
+
 Zo\SpecialChar \@.
 default  nel menu Preferences
 \family default
@@ -1620,8 +1639,14 @@ Quando settate LyX per l'uso di una codifica differente, dovrete considerare
  i cambiamenti nei fonts della finestra pop-up di LyX.
  Per esempio il menu 
 \family sans
-Table\InsetSpace ~
-of\InsetSpace ~
+Table
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
 Contents
 \family default
  non sarà comprensibile fino a quando non dite a LyX di usare un font differente.
@@ -1684,12 +1709,6 @@ anti-aliased
 
 \begin_layout Section
 Bindings
-\begin_inset LatexCommand label
-name "sec:bindings"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1709,7 +1728,7 @@ One True Way
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Sto scherzando, ovviamente!
 \end_layout
 
@@ -1743,9 +1762,13 @@ LyX supporta l'internazionalizzazione dell'interfaccia utente (vedere il
  Capitolo
 \shape italic
 \emph on
-\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "chap:i18n"
 
 \end_inset
@@ -1821,7 +1844,8 @@ Guida di Riferimento.
 
 \begin_layout Section
 User Interface
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:ui"
 
 \end_inset
@@ -2072,7 +2096,7 @@ ghostview
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -2192,31 +2216,49 @@ Examples:
 
 \begin_layout LyX-Code
 # This let's you generate ASCII tables with latin1
-\newline
-# characters, using the
- groff formatter
-\newline
+\begin_inset Newline newline
+\end_inset
+
+# characters, using the groff formatter
+\begin_inset Newline newline
+\end_inset
+
 #
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \backslash
 plaintext_roff_command groff -t -ms -Tlatin1"
-\newline
+\begin_inset Newline newline
+\end_inset
 
-\newline
-# This let's you generate ASCII
- tables using the
-\newline
+
+\begin_inset Newline newline
+\end_inset
+
+# This let's you generate ASCII tables using the
+\begin_inset Newline newline
+\end_inset
+
 # nroff formatter
-\newline
+\begin_inset Newline newline
+\end_inset
+
 #
 \backslash
 plaintext_roff_command "nroff"
-\newline
+\begin_inset Newline newline
+\end_inset
+
 # This sets the line length to 80 characters
-\newline
+\begin_inset Newline newline
+\end_inset
+
 #
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \backslash
 plaintext_linelen 80
@@ -2451,14 +2493,14 @@ Di seguito è presentata una lista (parziale) delle funzioni e dei colori
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="3">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 Nome LyX
@@ -2466,10 +2508,10 @@ Nome LyX
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 Scopo
@@ -2477,10 +2519,10 @@ Scopo
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 Colore di default (X11)
@@ -2489,11 +2531,11 @@ Colore di default (X11)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 background
@@ -2504,7 +2546,7 @@ background
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 text background
@@ -2515,7 +2557,7 @@ text background
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 black
@@ -2524,11 +2566,11 @@ black
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 foreground
@@ -2539,7 +2581,7 @@ foreground
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 text foreground
@@ -2550,7 +2592,7 @@ text foreground
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 linen
@@ -2559,11 +2601,11 @@ linen
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 latex
@@ -2574,7 +2616,7 @@ latex
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 LaTeX code
@@ -2585,7 +2627,7 @@ LaTeX code
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 DarkRed
@@ -2594,11 +2636,11 @@ DarkRed
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 math
@@ -2609,7 +2651,7 @@ math
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 Mathed formulae
@@ -2620,7 +2662,7 @@ Mathed formulae
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 DarkBlue
@@ -2629,11 +2671,11 @@ DarkBlue
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 mathline
@@ -2644,7 +2686,7 @@ mathline
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 fraction Lines, brackets, etc.
@@ -2655,7 +2697,7 @@ fraction Lines, brackets, etc.
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 Blue
@@ -2664,11 +2706,11 @@ Blue
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 mathbag
@@ -2679,7 +2721,7 @@ mathbag
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -2688,7 +2730,7 @@ mathbag
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 AntiqueWhite
@@ -2697,11 +2739,11 @@ AntiqueWhite
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 mathframe
@@ -2712,7 +2754,7 @@ mathframe
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -2721,7 +2763,7 @@ mathframe
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 black
@@ -2730,11 +2772,11 @@ black
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 selection
@@ -2742,10 +2784,10 @@ selection
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 selection background
@@ -2753,10 +2795,10 @@ selection background
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 LightBlue
@@ -2792,7 +2834,7 @@ Alcuni siti
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 come la mia macchina da ufficio -- Dave johnson
@@ -2841,7 +2883,7 @@ lyxrc
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 come la mia macchina da ufficio -- Dave johnson
@@ -2874,7 +2916,8 @@ I settaggi autorilevati
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:autodetected"
 
 \end_inset
@@ -3026,7 +3069,10 @@ fax_command
 \series default
  è settato su 
 \family typewriter
-fax\InsetSpace ~
+fax
+\begin_inset space ~
+\end_inset
+
 send
 \family default
  o 
@@ -3394,9 +3440,13 @@ echo "LYXCMD:test:beginning-of-buffer:" >~/.lyxpipe.in
 
 \begin_layout LyX-Code
 echo "LYXCMD:test:get-xy:" >~/.lyxpipe.in
-\newline
+\begin_inset Newline newline
+\end_inset
+
 read a <~/.lyxpipe.out
-\newline
+\begin_inset Newline newline
+\end_inset
+
 echo $a
 \end_layout
 
@@ -3519,7 +3569,8 @@ bye
 
 \begin_layout Chapter
 Internazionalizzare LyX
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "chap:i18n"
 
 \end_inset
@@ -3618,7 +3669,7 @@ Usare scorciatoie per linguaggi alternativi
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -3700,7 +3751,7 @@ xx
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -3783,7 +3834,7 @@ xx
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -3828,7 +3879,7 @@ xx.po
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Raccomandiamo di usare Emacs per fare questo, dato che la distribuzione
  gettext include un appropriato supporto.
 \end_layout
@@ -3874,7 +3925,9 @@ xx
 \family default
 .
  Questo può essere fatto con
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family typewriter
 msgfmt -o
@@ -3905,7 +3958,9 @@ xx
 lyx.mo
 \family default
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 (es.
  
 \family typewriter
@@ -3924,7 +3979,7 @@ xx
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -3974,7 +4029,7 @@ Help)
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Ad Aprile 1999, quasi tutti i documenti sono stati tradotti in tedesco.
  Il tutorial è stato tradotto in francese, polacco, portoghese e svedese,
  con altre traduzioni in corso.
@@ -4025,10 +4080,15 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Itemize
-Controllare la pagina web delle traduzioni 
-\begin_inset LatexCommand url
-name "The LyX Developer's Web Site"
-target "http://www.devel.lyx.org"
+Controllare la pagina web delle traduzioni The LyX Developer's Web Site
+ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.devel.lyx.org
+\end_layout
 
 \end_inset
 
@@ -4086,7 +4146,7 @@ Qualche volta il documento originale (dal team LyX) viene aggiornato.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Alternativamente, potete procurarvi una copia dell'ultima versione del documento
  inglese che avete tradotto.
 \end_layout
@@ -4209,42 +4269,54 @@ deadkey
 
 \emph on
 Name
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 Example
 \end_layout
 
 \begin_layout Quotation
 acute (acu)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 áéíóú
 \end_layout
 
 \begin_layout Quotation
 grave (gra)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 àèìòù
 \end_layout
 
 \begin_layout Quotation
 macron (mac)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
  ō
 \end_layout
 
 \begin_layout Quotation
 tilde (til)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 ñÑ
 \end_layout
 
 \begin_layout Quotation
 underbar (underb)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -4258,18 +4330,22 @@ b o
 
 \begin_layout Quotation
 cedilla (ced)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 çÇ
 \end_layout
 
 \begin_layout Quotation
 underdot (underd)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -4283,19 +4359,25 @@ d o
 
 \begin_layout Quotation
 circumflex (circu)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 âêîôû
 \end_layout
 
 \begin_layout Quotation
 circle (circl)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 ÅůŮ
 \end_layout
 
 \begin_layout Quotation
 tie (tie)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 
 \backslash
 t oo
@@ -4303,12 +4385,14 @@ t oo
 
 \begin_layout Quotation
 breve (bre)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 ă
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -4322,30 +4406,38 @@ u o
 
 \begin_layout Quotation
 caron (car)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 čšž
 \end_layout
 
 \begin_layout Quotation
 hungarian umlaut (hug)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 őű
 \end_layout
 
 \begin_layout Quotation
 umlaut (uml)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 äöü
 \end_layout
 
 \begin_layout Quotation
 dot (dot)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 ż
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -4459,7 +4551,9 @@ kinclude filename
 \family default
 \emph on
 
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 
 \family typewriter
 \emph default
@@ -4477,7 +4571,9 @@ kprog program
 \family default
 \emph on
 
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 
 \family typewriter
 \emph default
@@ -4502,7 +4598,8 @@ kinclude
 
 \begin_layout Section
 Materiale sulle tastiere internazionali
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:keymap"
 
 \end_inset
@@ -4649,7 +4746,7 @@ char sia accentato sul carattere ammesso
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Il termine tasto morto si riferisce ad un tasto che non produce un carattere
  da solo, ma soltanto quando è seguito da un altro tasto.
  Ad esempio, si può riprodurre un carattere tedesco con un umlaunt come
@@ -5007,7 +5104,9 @@ iso-8859-7.cdef
 
 \backslash
 "{i}}"
-\newline
+\begin_inset Newline newline
+\end_inset
+
 192 "
 \backslash
 
@@ -5053,7 +5152,10 @@ Supponiamo di avere bisogno di un carattere circonflesso,
 .
  Si potrebbe associare il tasto ^ [a.k.a.
 \family sans
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 Shift-
 \family default
 6] al comando LyX 
@@ -5178,7 +5280,7 @@ usldead_cedilla
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Nota da 
 \noun on
 John Weiss
@@ -5194,7 +5296,10 @@ John Weiss
 .
  Ho il mio tasto 
 \family sans
-Scroll\InsetSpace ~
+Scroll
+\begin_inset space ~
+\end_inset
+
 Lock settato come Mode_Shift
 \family default
  e un sacco di questi tasti simbolici 
@@ -5215,7 +5320,10 @@ usldead_
 \family default
  che consentono di ottenere cose del tipo 
 \family sans
-Scroll\InsetSpace ~
+Scroll
+\begin_inset space ~
+\end_inset
+
 Lock
 \family default
 -
@@ -5256,11 +5364,6 @@ Salvare la vostra configurazione di Linguaggio
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
-name "sec:savlang"
-
-\end_inset
-
 Potete editare il vostro file 
 \family typewriter
 lyxrc
@@ -5329,7 +5432,8 @@ screen_font_encoding iso8859-2
 
 \begin_layout Chapter
 Installare Nuove Classi di Documento, Layouts e Templates 
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "chap:textclass"
 
 \end_inset
@@ -5411,7 +5515,7 @@ Alcune installazioni possono non includere un pacchetto LaTeX che vorreste
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Vedere il manuale 
 \emph on
 Extended LyX Features
@@ -5426,7 +5530,7 @@ Ecco di seguito tutti i passaggi necessari per avere il pacchetto e lanciarlo
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Questa procedura è definitivamente valida per la versione v1.0 e tutte le
  versioni beta v0.9.
  Commenti sul funzionamento per le versioni v.04 sono graditi, anche se è
@@ -5443,7 +5547,7 @@ Procurarsi il pacchetto da CTAN o simili.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Vedere il manuale 
 \emph on
 Inventory of your LaTeX configuration
@@ -5506,7 +5610,9 @@ TEXMFLOCAL
 \family default
  sulla directory che avete scelto; es.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family typewriter
 TEXMFLOCAL = /usr/local/texmf
@@ -5523,7 +5629,9 @@ TEXMFLOCAL
 \family default
  variable; es.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family typewriter
 TEXMF = {$HOMETEXMF,!!$TEXMFLOCAL,!!$TEXMFMAIN}
@@ -5836,7 +5944,7 @@ ocument
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 Report
@@ -6266,7 +6374,7 @@ Questi sono i parametri generali che descrivono la struttura dell'intero
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -6411,11 +6519,14 @@ Counter_Chapter
 \emph default
 , Counter_Section, Counter_Subsection, Counter_Subsubsection, Counter_Paragraph,
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Counter_Subparagraph, Counter_EnumI, Counter_EnumII, 
-\newline
-Counter_EnumIII, Counter_E
-numIV
+\begin_inset Newline newline
+\end_inset
+
+Counter_EnumIII, Counter_EnumIV
 \family default
 ] Il più alto livello di enumerazione automatica.
  Valori utili sono 
@@ -6450,14 +6561,6 @@ End
 \series default
  Questa sezione descrive varie opzioni globali supportate dalla classe di
  documento.
- Guardare la sezione\InsetSpace ~
-
-\begin_inset LatexCommand label
-name "Ref: sec:classoptions"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Description
@@ -6554,9 +6657,13 @@ DefaultFont
 \family default
 \series default
  Questo è usato per descrivere il font di default del documento.
- Guardare la sezione\InsetSpace ~
+ Guardare la sezione
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:fonts"
 
 \end_inset
@@ -6608,7 +6715,7 @@ NoStyle
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -6627,11 +6734,6 @@ ClassOption
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
-name "sec:classoptions"
-
-\end_inset
-
  La sezione 
 \family typewriter
 ClassOption
@@ -6722,7 +6824,7 @@ La descrizione di un layout description è di questo tipo
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Notate che questo può definire un nuovo layout o modificarne uno esistente.
 \end_layout
 
@@ -6756,7 +6858,7 @@ dove sono consentiti i seguenti comandi:
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -6949,7 +7051,9 @@ Static
 , Manual, Dynamic, First_Dynamic, Right_Address_Box
 \family default
 ] 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Il tipo di margine che il layout ha sul lato sinistro.
  
 \family typewriter
@@ -7298,23 +7402,31 @@ Labeltype
 No_Label
 \emph default
 , Manual, Static, Top_Environment, 
-\newline
-Centered_Top_Environment, Sensitive,
- Counter_Chapter, 
-\newline
-Counter_Section, Counter_Subsection, Counter_Subsubsection,
- 
-\newline
+\begin_inset Newline newline
+\end_inset
+
+Centered_Top_Environment, Sensitive, Counter_Chapter, 
+\begin_inset Newline newline
+\end_inset
+
+Counter_Section, Counter_Subsection, Counter_Subsubsection, 
+\begin_inset Newline newline
+\end_inset
+
 Counter_Paragraph, Counter_Subparagraph, Counter_EnumI,
 \family default
  
 \family typewriter
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Counter_EnumII, Counter_EnumIII, Counter_EnumIV
 \family default
 ] 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family typewriter
 Manual
@@ -7543,7 +7655,7 @@ ayout\SpecialChar \-
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 Nota di Jean-Marc:
@@ -7748,10 +7860,14 @@ sia
 che
 \emph default
  per l'etichetta.
- Vedere la sezione\InsetSpace ~
+ Vedere la sezione
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand label
-name "Ref: sec:fonts"
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:fonts"
 
 \end_inset
 
@@ -7770,9 +7886,13 @@ TextFont
 \family default
 \series default
  Il font usato per il corpo del testo.
- Vedere la sezione\InsetSpace ~
+ Vedere la sezione
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:fonts"
 
 \end_inset
@@ -7788,9 +7908,13 @@ LabelFont
 \family default
 \series default
  Il font usato per le etichette.
- Vedere la sezione\InsetSpace ~
+ Vedere la sezione
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:fonts"
 
 \end_inset
@@ -7816,7 +7940,7 @@ EndPreamble
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -7833,7 +7957,8 @@ Descrizione dei Font
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:fonts"
 
 \end_inset
@@ -7983,7 +8108,8 @@ Latex
 
 \begin_layout Section
 Creare Templates
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:templates"
 
 \end_inset
@@ -8046,12 +8172,6 @@ template_path
 
 \begin_layout Chapter
 Un Tutorial sulla Stampante
-\begin_inset LatexCommand label
-name "chap:printer"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -8137,7 +8257,7 @@ stampanti
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Nota di
 \noun on
  John Weiss
@@ -8209,7 +8329,9 @@ lp|Text on an Epson:
 
 \begin_layout LyX-Code
 :sf:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \end_layout
 
@@ -8257,7 +8379,9 @@ draft|Postscript on an Epson Stylus Color IIs, 180dpi:
 
 \begin_layout LyX-Code
 :sf:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \end_layout
 
@@ -8773,7 +8897,7 @@ maggior parte
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Perchè è 
 \family typewriter
 /dev/lp1
@@ -8827,7 +8951,7 @@ non
  sarà quindi la porta parallela sulla maggior parte dei sistemi.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Se avete più di una porta parallela, la situazione cambia.
  Inoltre se alterate l'indirizzo I/O della porta per qualsiasi motivo, poi
  uno degli altri dispositivi 
@@ -9369,7 +9493,7 @@ bjc600 Color BubbleJet BJC-600, BJC-4000 and BJC-70.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Buona anche per alcune Apple come la StyleWriter 2x00
 \end_layout
 
@@ -9925,7 +10049,7 @@ Questo filtro genera un output monocromatico a 360dpi su una Epson Stylus
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Nota da 
 \noun on
 John Weiss
@@ -10030,7 +10154,7 @@ lpd
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Alcune macchine tengono i loro scripts di bootup nella directory 
 \family typewriter
 /etc/rc.d
@@ -10322,7 +10446,9 @@ lp|Text printer:
 
 \begin_layout LyX-Code
 :mx#0:sh:sf:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \end_layout
 
@@ -10726,7 +10852,7 @@ L'insieme del materiale esterno prova a risolvere tutti questi problemi
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Anche se l'insieme delle figure non può risolvere tutti i problemi, è ancora
  valutabile perchè fornisce un'anteprima in linea della figura, e supporta
  trasformazioni geometriche avanzate con una semplice interfaccia utente.

@@ -1,5 +1,5 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass scrbook
@@ -16,9 +16,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -37,6 +39,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -52,7 +55,7 @@ egilea: LyX taldea.
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
  Fitxategi honen arduradun nagusia 
 \family typewriter
 John Weiss
@@ -61,12 +64,15 @@ John Weiss
  Bidali iradokizunak edo erroreei buruzko zuzenketak LyX dokumentazioko
  posta-zerrendara: <lyx-docs@lists.lyx.org>.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Itzulpena: Iñaki Larrañaga Murgoitio (dooteo@euskalgnu.org) eta Sara Elorza,
  2004.
-\newline
-Zuzenketak: Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>,
- 2004.
+\begin_inset Newline newline
+\end_inset
+
+Zuzenketak: Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
 \end_layout
 
 \end_inset
@@ -75,7 +81,8 @@ Zuzenketak: Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>,
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -177,7 +184,7 @@ LaTeX ezagutzen baduzu, tutoretza hau azkarrago irakur dezakezu, LyX-eko
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 edo, era dotoreago batean,"ezaugarriak"
 \end_layout
 
@@ -185,7 +192,8 @@ edo, era dotoreago batean,"ezaugarriak"
 
  ditu.
  Baldin eta tutoretza osoa irakurtzeko asmorik ez baduzu, 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:latexerabiltzaileak"
 
 \end_inset
@@ -276,11 +284,6 @@ Lehenbiziko LyX dokumentua
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
-name "atal:lyxlehenidazkia"
-
-\end_inset
-
  Oso ondo.
  Idazten hasteko prest zaude.
  Hasi aurretik, ordea, tutoretza hau hezigarri, erabilgarri eta atseginagoa
@@ -360,7 +363,7 @@ adibide_gordina.lyx
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Trikimailuak hori koloredun "oharretan" agertzen dira.
  Horien gainean saguarekin klikatuz irakur ditzakezu.
  
@@ -409,7 +412,10 @@ adibide_gordina.lyx
 F
 \bar default
 itxategia\SpecialChar \menuseparator
-Gorde\InsetSpace ~
+Gorde
+\begin_inset space ~
+\end_inset
+
 honela
 \family default
 \SpecialChar \ldots{}
@@ -463,7 +469,10 @@ Gorde dokumentua (
 F
 \bar default
 itxategia\SpecialChar \menuseparator
-Gorde\InsetSpace ~
+Gorde
+\begin_inset space ~
+\end_inset
+
 honela
 \family default
 \SpecialChar \ldots{}
@@ -497,7 +506,7 @@ VI
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 xdvi atzeko planoan exekutatzen utziz denbora aurrez dezakezu.
  Ondoren, 
 \family sans
@@ -665,8 +674,14 @@ Bilatu/Ordeztu Erabili
 E
 \bar default
 ditatu\SpecialChar \menuseparator
-Bilatu\InsetSpace ~
-eta\InsetSpace ~
+Bilatu
+\begin_inset space ~
+\end_inset
+
+eta
+\begin_inset space ~
+\end_inset
+
 ordeztu
 \family default
  esaldi edo hitzak bilatzeko.
@@ -682,7 +697,7 @@ rdeztu
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Amaitzean leihotxoa itxi.
  Edo irekita utzi lagungarriagoa dela baderitzozu.
  LyX-eko elkarrizketa-koadro gehienak (
@@ -725,7 +740,10 @@ reki...
 \end_layout
 
 \begin_layout Description
-Karaktereak\InsetSpace ~
+Karaktereak
+\begin_inset space ~
+\end_inset
+
 formateatzea Testua 
 \emph on
 enfasiarekin
@@ -779,16 +797,14 @@ WYSIWYM: zuriuneak LyX-en
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
-name "atal:zuriuneak"
-
-\end_inset
-
 Gauza zailenetariko bat (erabiltzaile berrientzako) LyX-ek zuriuneak erabiltzeko
  modura ohitzea izaten da.
  Nahiz eta mila bider 
 \family sans
-lerro\InsetSpace ~
+lerro
+\begin_inset space ~
+\end_inset
+
 itzulera
 \family default
  (
@@ -931,7 +947,7 @@ Ingurunea
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Ez daukazu lerro osoa hautatu beharrik.
  Ezer ez baduzu hautatzen, LyX-ek unean dagoen paragrafoa hautatutako ingurunera
  aldatuko du.
@@ -1100,7 +1116,8 @@ Atala
 \family default
  gainetik, baina LyX dokumentuetako testu-klase batzuetan bakarrik erabil
  ditzakezu (
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:testuklaseak"
 
 \end_inset
@@ -1155,7 +1172,7 @@ Tabuladoreari
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Bai, badakigu hau 
 \emph on
 Tutoretza
@@ -1178,7 +1195,7 @@ Elementua
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \series bold
 Bulet
@@ -1295,7 +1312,7 @@ Zerrenda polita lortu duzu.
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX-ek ez dizu lehenbiziko buleta aukeratzen utziko, zerrendaren aurreko
  paragrafoa ez baduzu aukeratzen, bederen, eta ziurrenik ez duzu hori egin
  nahiko.
@@ -1340,7 +1357,7 @@ Azalpena
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Konposaketako tabuladorea da, ordea, eta zerrendako "termino" handienaren
  neurrira moldatzeko aldatuko da, idazmakina bateko tabuladore lehor, goibel
  eta aldagaitz bat ez bezala.
@@ -1439,9 +1456,9 @@ Bertso
 \family default
  inguruneak honeko fitxategian konpondu:
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1478,7 +1495,8 @@ Testu-klaseak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:testuklaseak"
 
 \end_inset
@@ -1497,7 +1515,7 @@ testu-klaseak
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LaTeX-eko erabiltzaileentzat: hau LaTeX-eko dokumentu-klasearen (documentclass)
  antzekoa da
 \end_layout
@@ -1524,7 +1542,7 @@ Artikulua
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Testu-klase lehenetsia izan ohi da.
 \end_layout
 
@@ -1571,7 +1589,10 @@ ta bidal ditzaten.
  Horretarako ere prestatuta dago LyX.
  Adibidez, LyX-ek 
 \family sans
-Article\InsetSpace ~
+Article
+\begin_inset space ~
+\end_inset
+
 (AMS)
 \family default
  testu-klasearen bidez Amerikar Matematika Elkarteko egunkarientzat (eta
@@ -1595,33 +1616,33 @@ Dokumentu-klase bereziak
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Izena
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Azalpena
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 article
 \end_layout
 
@@ -1630,18 +1651,18 @@ article
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 orrialde bakarrekoa, kapitulurik gabe
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 article (AMS)
 \end_layout
 
@@ -1650,18 +1671,18 @@ article (AMS)
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Amerikar Matematika Elkarteko diseinu eta inguruneak
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 report
 \end_layout
 
@@ -1670,67 +1691,67 @@ report
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 artikulua baino luzeagoa, bi orrialdetatik
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 book
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 txostena + azala + kontrazala
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 slides
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 gardenkiak (FoilTeX dauka)
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 letter
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 helbide, sinadura eta bestelako inguruneak dauzka
 \end_layout
 
@@ -1768,7 +1789,10 @@ okumentua
 \family default
  elkarrizketa-koadroko 
 \family sans
-Dokumentu\InsetSpace ~
+Dokumentu
+\begin_inset space ~
+\end_inset
+
 klasea
 \family default
  eremuan 
@@ -1793,7 +1817,10 @@ Ireki fitxategi berri bat
 F
 \bar default
 itxategia\SpecialChar \menuseparator
-Berria\InsetSpace ~
+Berria
+\begin_inset space ~
+\end_inset
+
 (txantiloitik)
 \family default
  menua aukeratuz.
@@ -1814,7 +1841,10 @@ Ingurunea
  menuan begiratzen duzunean beste testu-klase batzuetan ageri ez diren hainbat
  ingurune ikusiko dituzu, adibidez, 
 \family sans
-Nire\InsetSpace ~
+Nire
+\begin_inset space ~
+\end_inset
+
 Helbidea
 \family default
 .
@@ -1864,11 +1894,14 @@ Txantiloi bat LyX fitxategi arrunt bat besterik ez da.
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Abisu bat, txantiloitik idazten duzun kasurako.
  Ingurune bateko testua ezabatuz (zure helbidea sartzeko 
 \family sans
-Nire\InsetSpace ~
+Nire
+\begin_inset space ~
+\end_inset
+
 helbidea
 \family default
  eremua erabat ezabatzen baduzu) eta ondoren ezer idatzi gabe kurtsorea
@@ -1912,7 +1945,7 @@ Article
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Gutun mota ez darabilzula, 
 \family sans
 Letter
@@ -1964,11 +1997,6 @@ Etiketa eta erreferentzia gurutzatuak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
-name "atal:etiketak"
-
-\end_inset
-
 Dokumentuko atal bati (edo azpiatala, edo edozein testu-zati bat) etiketa
  jar diezaiokezu.
  Etiketa bat jarritakoan, dokumentuko beste edozein lekutan atal honi buruzko
@@ -2039,9 +2067,10 @@ Kokatu kurtsorea zure dokumentuko 2.
 
 \begin_layout LyX-Code
 Dokumentu honi buruz gehiago jakiteko asmoz, 
-\newline
-ikus atala , orrialdean aurki
- dezakezu.
+\begin_inset Newline newline
+\end_inset
+
+ikus atala , orrialdean aurki dezakezu.
 \end_layout
 
 \begin_layout Standard
@@ -2081,7 +2110,10 @@ Ados
 .
  Erabat zuzenak izateko, erreferentzia eta "atala" hitzaren artean 
 \family sans
-zuriune\InsetSpace ~
+zuriune
+\begin_inset space ~
+\end_inset
+
 babestu
 \family default
  bat sartu beharko duzu.
@@ -2140,9 +2172,11 @@ ko unea heldu zaizu.
  adibidez).
  Orain exekutatu LaTeX berriro eta --- 'Voilà!'--- atalaren erreferentzia
  gurutzatua "3" izatera aldatu da; sinesgaitza eh? Aldatu "Dokumentu honi
- buruz" azpiatal batera, eta erreferentzia gurutzatua 3 atalaren ordez 2.1\InsetSpace ~
-azpiata
-la bezala aipatuko du.
+ buruz" azpiatal batera, eta erreferentzia gurutzatua 3 atalaren ordez 2.1
+\begin_inset space ~
+\end_inset
+
+azpiatala bezala aipatuko du.
  Hori bai, orrialdearen erreferentzia aldatzeko etiketaren aurretik testu
  asko daukan orrialde berri bat idatzi beharko duzu.
  
@@ -2169,12 +2203,13 @@ Erabiltzailearen Gida
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Gauza bat, kapitulu baten izenburua kopiatzeak errore bat sor dezake, zeren
  eta artikulu testu-klaseak kapitulurik ez baitu onartzen.
  Hori gertatzen bada, ezabatu kapituluaren izenburua.
  Xehetasun gehiago 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:testuklaseak"
 
 \end_inset
@@ -2202,14 +2237,17 @@ Oin-oharrak eta albokoak
 \begin_layout Standard
 Oin-oharrak gehitzeko, tresna-barrako 
 \family sans
-Txertatu\InsetSpace ~
+Txertatu
+\begin_inset space ~
+\end_inset
+
 oin-oharra
 \family default
  botoia
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Botoiak beltz koloreko testuaren azpian dagoen testu gorri batera zuzendutako
  gezia irudikatzen du.
 \end_layout
@@ -2235,7 +2273,10 @@ n
  menua erabil dezakezu.
  Jarri kurtsorea dokumentuko "LyX" hitzaren atzean eta klikatu 
 \family sans
-Txertatu\InsetSpace ~
+Txertatu
+\begin_inset space ~
+\end_inset
+
 oin-oharra
 \family default
  botoian.
@@ -2275,7 +2316,7 @@ Oin-oharrak testu arrunt bezala ebaki eta itsats daitezke.
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Teklatuaren bitartez errazago hautatuko duzu.
  Saguarekin saiatzean oin-oharraren kutxa irekitzeko arriskua baitaukazu.
 \end_layout
@@ -2319,7 +2360,10 @@ Txertatu oin-oharra
 \begin_layout Standard
 Albo-oharrak gehitzeko, erabili 
 \family sans
-Txertatu\InsetSpace ~
+Txertatu
+\begin_inset space ~
+\end_inset
+
 albo-oharra
 \family default
  botoia edo 
@@ -2362,7 +2406,8 @@ Bibliografiak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:bibliografiak"
 
 \end_inset
@@ -2424,7 +2469,10 @@ Orain, kokatu kurtsorea dokumentuko leku batean, erreferentzia txertatu
 T
 \bar default
 xertatu\SpecialChar \menuseparator
-Zitazio\InsetSpace ~
+Zitazio
+\begin_inset space ~
+\end_inset
+
 erreferentzia
 \family default
 .
@@ -2455,7 +2503,10 @@ lyxtutoretza
 \begin_layout Standard
 Nola erabiltzen dira beste eremuak? Zitazioa elkarrizketa-koadroko 
 \family sans
-Testua\InsetSpace ~
+Testua
+\begin_inset space ~
+\end_inset
+
 ondoren
 \family default
  eremuak erreferentziaren ondoren, baina giltza artean, testua sartuko du
@@ -2504,8 +2555,14 @@ T
 xertatu\SpecialChar \menuseparator
 
 \family default
-Zerrendak\InsetSpace ~
-eta\InsetSpace ~
+Zerrendak
+\begin_inset space ~
+\end_inset
+
+eta
+\begin_inset space ~
+\end_inset
+
 
 \family sans
 Aurk.
@@ -2513,7 +2570,10 @@ Aurk.
 \family default
  menuan 
 \family sans
-Gaien\InsetSpace ~
+Gaien
+\begin_inset space ~
+\end_inset
+
 aurkibidea
 \family default
  elementua.
@@ -2549,7 +2609,10 @@ Dokumentua pantailan editatzerakoan, ez da gaien aurkibidea testu gisa azaltzen,
 I
 \bar default
 kusi\SpecialChar \menuseparator
-Gaien\InsetSpace ~
+Gaien
+\begin_inset space ~
+\end_inset
+
 aurkibidea
 \family default
  menuan klikatuz banandutako leiho batean zerrendatzen da.
@@ -2558,7 +2621,10 @@ aurkibidea
  Hori tresna eraginkorra da.
  Dokumentuan zehar mugitzeko 
 \family sans
-Gaien\InsetSpace ~
+Gaien
+\begin_inset space ~
+\end_inset
+
 aurkibidea
 \family default
  leihoa erabil dezakezu: (azpi)atal baten izenburuan klikatuz bat elementuaren
@@ -2622,7 +2688,7 @@ rekin bide azkar eta erosoan profesional-itxurako adierazpen matematikoak
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX-ek ezin du egiaztatu idazten dituzun ekuazioak zuzenak al diren edo
  ez.
  Sentitzen da.
@@ -2838,7 +2904,10 @@ Berretzaile eta indizeak
 \begin_layout Standard
 Berretzaile bat 
 \family sans
-Matematikako\InsetSpace ~
+Matematikako
+\begin_inset space ~
+\end_inset
+
 panela
 \family default
  erabiliz sar daitekeen arren (ikus ondogo atala), askoz ere azkarragoa
@@ -2920,7 +2989,10 @@ xertatu\SpecialChar \menuseparator
 M
 \bar default
 atematika\SpecialChar \menuseparator
-Matematikako\InsetSpace ~
+Matematikako
+\begin_inset space ~
+\end_inset
+
 panela
 \family default
  eta atal hau irakurtzen ari zaren bitartean irekita utzi.
@@ -2974,7 +3046,7 @@ une
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 Itzultzailearen oharra
@@ -3035,7 +3107,10 @@ Existitzen den testu batean mugatzaileak, erroketak edo apaingarriak txerta
  ditzakezu.
  Hautatu egokitu nahi duzun ekuazioa, ondoren klikatu 
 \family sans
-Matematikako\InsetSpace ~
+Matematikako
+\begin_inset space ~
+\end_inset
+
 panela
 \family default
  leihoko nahi duzun botoia.
@@ -3063,7 +3138,10 @@ Zatikiak
 Matematika-eran zatikiak idaztea oso erraza da.
  Klikatu 
 \family sans
-Matematikako\InsetSpace ~
+Matematikako
+\begin_inset space ~
+\end_inset
+
 panela
 \family default
  leihoko 
@@ -3218,11 +3296,6 @@ Matrizeak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
-name "atal:matrizeak"
-
-\end_inset
-
 Klikatu 
 \family sans
 Matematikako panela
@@ -3290,24 +3363,36 @@ atematika
 \family default
  menuan 
 \family sans
-Gehitu\InsetSpace ~
+Gehitu
+\begin_inset space ~
+\end_inset
+
 errenkada
 \family default
  eta 
 \family sans
-Gehitu\InsetSpace ~
+Gehitu
+\begin_inset space ~
+\end_inset
+
 zutabea
 \family default
 .
  Uneko kokapenaren ondoren gehituko ditu.
  Gehiegi direla? Erabili menu berdineko 
 \family sans
-Ezabatu\InsetSpace ~
+Ezabatu
+\begin_inset space ~
+\end_inset
+
 errenkada
 \family default
  eta 
 \family sans
-Ezabatu\InsetSpace ~
+Ezabatu
+\begin_inset space ~
+\end_inset
+
 zutabea
 \family default
  aukerak.
@@ -3346,12 +3431,18 @@ Erabiltzailearen Gida
 \begin_layout Standard
 Klikatu 
 \family sans
-Matematikako\InsetSpace ~
+Matematikako
+\begin_inset space ~
+\end_inset
+
 panela
 \family default
  leihoko 
 \family sans
-Adierazpen\InsetSpace ~
+Adierazpen
+\begin_inset space ~
+\end_inset
+
 era
 \family default
  botoia, laukitxo urdin baten gainean eta azpian testu-marra bikotea marraztuta
@@ -3361,7 +3452,10 @@ era
  Orain idatzi ekuazio bat eta exekutatu LaTeX bere itxura ikusteko.
  
 \family sans
-Adierazpen\InsetSpace ~
+Adierazpen
+\begin_inset space ~
+\end_inset
+
 era
 \family default
  botoia era batetik bestera txandakatzeko erabiltzen da: adierazpen eratik
@@ -3419,7 +3513,7 @@ Ariketa: atal honetan ikasitako zenbait tresnarekin, Hurrengo ekuazioa bezalako
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Bide zailenetik aritu ondoren, zergatik ez zara 
 \family sans
 \bar under
@@ -3431,7 +3525,10 @@ Matematika\SpecialChar \menuseparator
 \bar under
 K
 \bar default
-asu\InsetSpace ~
+asu
+\begin_inset space ~
+\end_inset
+
 ingurunea
 \family default
  menuarekin saiatzen?
@@ -3534,7 +3631,10 @@ aula
  menua.
  Klikatu taulan saguaren eskuineko botoiarekin eta 
 \family sans
-Editatu\InsetSpace ~
+Editatu
+\begin_inset space ~
+\end_inset
+
 taula
 \family default
  elkarrizketa-koadroa irekiko da, eta taula editatzeko aukera izango duzula.
@@ -3667,8 +3767,9 @@ ertsonalizazioa
 \begin_layout Itemize
 LyX-ek LaTeX formatuko dokumentuak irakur ditzake.
  Ikus 
-\begin_inset LatexCommand ref
-reference "atal:relyx"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "atal:LaTeX-dokumentuak-inportatzea"
 
 \end_inset
 
@@ -3693,7 +3794,8 @@ LyX LaTeX-eko erabiltzaileentzat
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:latexerabiltzaileak"
 
 \end_inset
@@ -3788,7 +3890,10 @@ gamma
 sin bezalako funtzioak gorriz jarraituko dutela, bere WYSIWYM itxura baita).
  
 \family sans
-Matematikako\InsetSpace ~
+Matematikako
+\begin_inset space ~
+\end_inset
+
 panela
 \family default
  erabiltzea baino azkarragoa izan daiteke, batipat LaTeX-eko erabiltzaile
@@ -3822,28 +3927,34 @@ Hitzaurrean
 usepackage{pakete_izena}
 \family default
  idatziz (ikus 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:hitzaurrea"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 atala), nahi dituzun pakete guztiak erabiltzeko gaitasuna izango duzu (kontutan
  izan pakete hauek WYSIWYM euskarria ez dutela izango).
 \end_layout
 
 \begin_layout Subsection
 LaTeX dokumentuak inportatzea: tex2lyx
+\begin_inset CommandInset label
+LatexCommand label
+name "atal:LaTeX-dokumentuak-inportatzea"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-\begin_inset LatexCommand label
-name "sec:tex2lyx"
-
-\end_inset
-
 You can import a LaTeX file into LyX by using the 
 \family sans
 \bar under
@@ -3982,7 +4093,10 @@ documentclass
 \family default
  bidaliko zaizkion aukera-osagarriak 
 \family sans
-LaTeX\InsetSpace ~
+LaTeX
+\begin_inset space ~
+\end_inset
+
 hitzaurrea
 \family default
  arean.
@@ -3993,7 +4107,8 @@ Hitzaurreko beste alderdi batzuk
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:hitzaurrea"
 
 \end_inset
@@ -4009,7 +4124,7 @@ Hitzaurrea
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \emph on
 Itzultzailearen oharra
@@ -4046,14 +4161,23 @@ LyX-ek BibTeX euskarria du, honekin erreferentzia bibliografikoen datu-baseak
 T
 \bar default
 xertatu\SpecialChar \menuseparator
-Zerrendak\InsetSpace ~
-eta\InsetSpace ~
+Zerrendak
+\begin_inset space ~
+\end_inset
+
+eta
+\begin_inset space ~
+\end_inset
+
 Aurk.\SpecialChar \menuseparator
 
 \bar under
 B
 \bar default
-ibTeX\InsetSpace ~
+ibTeX
+\begin_inset space ~
+\end_inset
+
 erreferentzia
 \family default
  menua bib motako fitxategi bat gehitzeko.
@@ -4087,7 +4211,7 @@ bibliography{}
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LaTeX arruntean bezala, bereiztu bi bibliografia edo gehiago komaz, eta
  zuriunerik gabe.
 \end_layout
@@ -4107,14 +4231,21 @@ bibliographystyle{}
 \begin_layout Standard
 Hori egindakoan, edozein bibliografia-sarreraren aipamenak egin ditzakezu
  Txertatu\SpecialChar \menuseparator
-Zitazio\InsetSpace ~
+Zitazio
+\begin_inset space ~
+\end_inset
+
 erreferentzia menua erabiliz (ikus 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:bibliografiak"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 atala).
  LyX arduratuko da 
 \family sans

@@ -1,5 +1,5 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass book
@@ -71,9 +71,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -116,14 +118,16 @@ Készítette: a LyX csapat
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Amennyiben megjegyzése vagy hibajavítási javaslatai lennének, úgy kérem
  küldje azokat a LyX dokumentációs levelezési listára
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -133,8 +137,13 @@ mbox{
 \end_inset
 
  
-\begin_inset LatexCommand htmlurl
-target "lyx-docs@lists.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+lyx-docs@lists.lyx.org
+\end_layout
 
 \end_inset
 
@@ -142,7 +151,7 @@ target "lyx-docs@lists.lyx.org"
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -155,12 +164,15 @@ status collapsed
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Fordította: Zrubecz László és Szőke Sándor
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -253,8 +265,10 @@ azt kapja amit lát
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset Quotes pld
 \end_inset
@@ -289,8 +303,10 @@ csak azt kapja amit lát
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset Quotes pld
 \end_inset
@@ -330,8 +346,10 @@ nak hívunk
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Azért ne felejtsük el, hogy a népszerű irodai programok jelenlegi verziói
  rendelkeznek valamilyen stílus oldalakkal, amelyek egyszerű jelzésmódot
  alkalmaznak.
@@ -360,8 +378,14 @@ Bevezetés
 \begin_inset Quotes pld
 \end_inset
 
-1.\InsetSpace ~
-\InsetSpace ~
+1.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
 Bevezetés
 \begin_inset Quotes erd
 \end_inset
@@ -401,12 +425,20 @@ Igen, ez minden.
 
 \begin_layout Standard
 Most nézzük a következetesség problémáját.
- Öt nappal később, újra megnyitja egyik jelentését és elkezdi a 4.\InsetSpace ~
+ Öt nappal később, újra megnyitja egyik jelentését és elkezdi a 4.
+\begin_inset space ~
+\end_inset
+
 fejezetet.
  Azonban, azt már elfelejtette, hogy korábban 18-as félkövér betűt használt,
- a 16-os helyett, és beírja a 4.\InsetSpace ~
-fejezet címét egy másmilyen betűvel, mint
- amit az 1.\InsetSpace ~
+ a 16-os helyett, és beírja a 4.
+\begin_inset space ~
+\end_inset
+
+fejezet címét egy másmilyen betűvel, mint amit az 1.
+\begin_inset space ~
+\end_inset
+
 fejezet-hez használt.
  Ez a probléma a LyX-ben nem létezik.
  A számítógép gondoskodik azon ostoba információk nyilvántartásáról, hogy
@@ -448,8 +480,10 @@ azt kapja amit lát
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset Quotes pld
 \end_inset
@@ -487,8 +521,10 @@ gondol
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset Quotes pld
 \end_inset
@@ -534,7 +570,7 @@ Eltérések a LyX és a többi szövegszerkesztő között
 \begin_inset OptArg
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX és a többi szövegszerkesztő
 \end_layout
 
@@ -620,8 +656,10 @@ Habár mindezek léteznek a LyX-ben, általában nincs rájuk szüksége.
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Van rá mód, hogyan módosíthatjuk ezeket (közülük néhány LaTeX ismeretet
  igényel), a teljes dokumentumra, vagy pedig a dokumentum egy bizonyos pontjára
  vonatkozóan.
@@ -689,8 +727,10 @@ A LaTeX egy dokumentum előkészítő rendszer amit Leslie Lamport készített
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Ezen információ forrása a Helmut Kopka és Patrick Daly által készített 
 \emph on
 
@@ -734,8 +774,10 @@ trükkjét
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 DVI -- Device Independent
 \end_layout
 
@@ -780,8 +822,10 @@ Kétféle módon lehet bővíteni a LaTeX-et: osztályokkal
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 LaTeX neve: class
 \end_layout
 
@@ -791,8 +835,10 @@ LaTeX neve: class
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 LaTeX neve: style
 \end_layout
 
@@ -901,12 +947,16 @@ igazi
  Mi megteszünk, minden tőlünk telhetőt, hogy ez a dokumentáció mindig naprakész
  formában legyen, de ez nem mindig sikerül.
  Ha segíteni akar orvosolni ezt a problémát, mindenképpen olvassa el a 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "rész:Közreműködés"
 
 \end_inset
 
-.\InsetSpace ~
+.
+\begin_inset space ~
+\end_inset
+
 részt\SpecialChar \@.
 
 \end_layout
@@ -917,8 +967,13 @@ Először is tegyen nekünk egy szívességet: ha valami nem tiszta, érthetetle
  elérheti a levelezési listájukon: 
 \family typewriter
 
-\begin_inset LatexCommand url
-target "mailto:lyx-docs@lists.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+mailto:lyx-docs@lists.lyx.org
+\end_layout
 
 \end_inset
 
@@ -926,8 +981,10 @@ target "mailto:lyx-docs@lists.lyx.org"
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Persze először érdemes nekünk (a fordítóknak) írni, hátha csak a fordítás
  a hibás :-(
 \end_layout
@@ -941,8 +998,13 @@ Persze először érdemes nekünk (a fordítóknak) írni, hátha csak a fordít
  sürgősen segítségre van szüksége, írjon a felhasználók listájára: 
 \family typewriter
 
-\begin_inset LatexCommand url
-target "mailto:lyx-users@lists.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+mailto:lyx-users@lists.lyx.org
+\end_layout
 
 \end_inset
 
@@ -950,8 +1012,10 @@ target "mailto:lyx-users@lists.lyx.org"
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 A levelezőlista nyelve angol.
 \end_layout
 
@@ -1501,7 +1565,8 @@ Kézikönyvekben használt mértékegységek
 
 \begin_layout Standard
 A dokumentációban található mértékegységek mégértéséhez a 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "tab:mertekegysegek"
 
 \end_inset
@@ -1516,11 +1581,12 @@ wide false
 sideways false
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Caption
 
-\begin_layout Standard
-\begin_inset LatexCommand label
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
 name "tab:mertekegysegek"
 
 \end_inset
@@ -1533,45 +1599,45 @@ Mértékegységek
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset VSpace medskip
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Egység
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Név/Leírás
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 mm
 \end_layout
 
@@ -1580,18 +1646,18 @@ mm
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 milliméter
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 cm
 \end_layout
 
@@ -1600,18 +1666,18 @@ cm
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 centiméter
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 in
 \end_layout
 
@@ -1620,18 +1686,18 @@ in
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 inch
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 pt
 \end_layout
 
@@ -1640,20 +1706,26 @@ pt
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-point (72.27\InsetSpace \thinspace{}
-pt = 1\InsetSpace \thinspace{}
+\begin_layout Plain Layout
+point (72.27
+\begin_inset space \thinspace{}
+\end_inset
+
+pt = 1
+\begin_inset space \thinspace{}
+\end_inset
+
 in)
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 pc
 \end_layout
 
@@ -1662,20 +1734,26 @@ pc
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-pica (1\InsetSpace \thinspace{}
-pc = 12\InsetSpace \thinspace{}
+\begin_layout Plain Layout
+pica (1
+\begin_inset space \thinspace{}
+\end_inset
+
+pc = 12
+\begin_inset space \thinspace{}
+\end_inset
+
 pt)
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 sp
 \end_layout
 
@@ -1684,20 +1762,26 @@ sp
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-scaled point (65536\InsetSpace \thinspace{}
-sp = 1\InsetSpace \thinspace{}
+\begin_layout Plain Layout
+scaled point (65536
+\begin_inset space \thinspace{}
+\end_inset
+
+sp = 1
+\begin_inset space \thinspace{}
+\end_inset
+
 pt)
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 bp
 \end_layout
 
@@ -1706,20 +1790,26 @@ bp
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-big point (72\InsetSpace \thinspace{}
-bp = 1\InsetSpace \thinspace{}
+\begin_layout Plain Layout
+big point (72
+\begin_inset space \thinspace{}
+\end_inset
+
+bp = 1
+\begin_inset space \thinspace{}
+\end_inset
+
 in)
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 dd
 \end_layout
 
@@ -1728,24 +1818,30 @@ dd
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-didot (72\InsetSpace \thinspace{}
+\begin_layout Plain Layout
+didot (72
+\begin_inset space \thinspace{}
+\end_inset
+
 dd 
 \begin_inset Formula $\approx$
 \end_inset
 
- 37.6\InsetSpace \thinspace{}
+ 37.6
+\begin_inset space \thinspace{}
+\end_inset
+
 mm)
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 cc
 \end_layout
 
@@ -1754,20 +1850,26 @@ cc
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-cicero (1\InsetSpace \thinspace{}
-cc = 12\InsetSpace \thinspace{}
+\begin_layout Plain Layout
+cicero (1
+\begin_inset space \thinspace{}
+\end_inset
+
+cc = 12
+\begin_inset space \thinspace{}
+\end_inset
+
 dd)
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Scale%
 \end_layout
 
@@ -1776,18 +1878,18 @@ Scale%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 kép eredeti szélességének %-a
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 text%
 \end_layout
 
@@ -1796,18 +1898,18 @@ text%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 a szöveg szélességének %-a
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 col%
 \end_layout
 
@@ -1816,18 +1918,18 @@ col%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 a oszlop szélességének %-a
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 page%
 \end_layout
 
@@ -1836,18 +1938,18 @@ page%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 a papír szélességének %-a
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 line%
 \end_layout
 
@@ -1856,18 +1958,18 @@ line%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 a sor szélességének %-a
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 theight%
 \end_layout
 
@@ -1876,18 +1978,18 @@ theight%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 a szöveg magasságának %-a
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 pheight%
 \end_layout
 
@@ -1896,18 +1998,18 @@ pheight%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 a papír magasságának %-a
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 ex
 \end_layout
 
@@ -1916,7 +2018,7 @@ ex
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 az aktuális betűkészlet 
 \emph on
 x
@@ -1927,11 +2029,11 @@ x
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 em
 \end_layout
 
@@ -1940,7 +2042,7 @@ em
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 az aktuális betűkészlet 
 \emph on
 M
@@ -1951,22 +2053,28 @@ M
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 mu
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-képlet egység (1\InsetSpace \thinspace{}
-mu = 1/18\InsetSpace \thinspace{}
+\begin_layout Plain Layout
+képlet egység (1
+\begin_inset space \thinspace{}
+\end_inset
+
+mu = 1/18
+\begin_inset space \thinspace{}
+\end_inset
+
 em)
 \end_layout
 
@@ -2044,7 +2152,10 @@ LyX a LaTeX felhasználóknak
 \begin_layout Description
 
 \emph on
-Felhasználói\InsetSpace ~
+Felhasználói
+\begin_inset space ~
+\end_inset
+
 Kézikönyv
 \end_layout
 
@@ -2067,7 +2178,10 @@ et.
 \begin_layout Description
 
 \emph on
-Beágyazott\InsetSpace ~
+Beágyazott
+\begin_inset space ~
+\end_inset
+
 objektumok
 \end_layout
 
@@ -2085,7 +2199,10 @@ A felhasználói kéziköny bővítése.
 \begin_layout Description
 
 \emph on
-Haladó\InsetSpace ~
+Haladó
+\begin_inset space ~
+\end_inset
+
 Szolgáltatások
 \end_layout
 
@@ -2120,7 +2237,10 @@ Bemutatja a LyX fejlett képességeit, valamint a saját igényeinknek megfelel�
 \begin_layout Description
 
 \emph on
-LaTeX\InsetSpace ~
+LaTeX
+\begin_inset space ~
+\end_inset
+
 információ
 \end_layout
 
@@ -2180,7 +2300,8 @@ Közreműködés a dokumentációs projekthez
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "rész:Közreműködés"
 
 \end_inset
@@ -2215,8 +2336,13 @@ A LyX használata közben előfordulhat, hogy a program valamire rosszul reagál
 \begin_layout Standard
 A LyX rendelkezik egy hibakövető rendszerrel, amelyet a következő web címen
  található meg: 
-\begin_inset LatexCommand url
-target "http://bugzilla.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://bugzilla.lyx.org/
+\end_layout
 
 \end_inset
 
@@ -2225,15 +2351,25 @@ target "http://bugzilla.lyx.org/"
  hogy azt már valaki bejelentette! Amennyiben megjegyzése van egy hibához
  vagy új hibát szeretne jelenteni, megteheti ezt a hibakövetőn vagy küldhet
  egy levelet a fejlesztői levelező listára a 
-\begin_inset LatexCommand url
-target "mailto:lyx-devel@lists.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+mailto:lyx-devel@lists.lyx.org
+\end_layout
 
 \end_inset
 
 -címen.
  A levelezőlista archívumának címe megtalálható a 
-\begin_inset LatexCommand url
-target "http://www.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org
+\end_layout
 
 \end_inset
 
@@ -2289,8 +2425,13 @@ A kézikönyvekben talált hibák jelentése
 
 \begin_layout Standard
 Amennyiben talál egy hibát a dokumentációban küldjön egy levelet a 
-\begin_inset LatexCommand url
-target "mailto:lyx-docs@lists.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+mailto:lyx-docs@lists.lyx.org
+\end_layout
 
 \end_inset
 
@@ -2298,8 +2439,10 @@ target "mailto:lyx-docs@lists.lyx.org"
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Mielőtt ide írna jelezze a hibát nekünk a fordítóknak is, mert lehet hogy
  csak a fordítás hibás.
 \end_layout
@@ -2322,8 +2465,13 @@ A LyX dokumentációs projekt, mint minden a LyX projekten belül, hasznosítani
 
 \begin_layout Enumerate
 Töltse le a legfrissebb LyX forráskódot a 
-\begin_inset LatexCommand url
-target "http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc
+\end_layout
 
 \end_inset
 
@@ -2373,9 +2521,14 @@ Lépjen kapcsolatba a csapattal:
 \begin_layout Standard
 
 \family typewriter
-\begin_inset LatexCommand url
-name "lyx-docs@lists.lyx.org"
-target "mailto:lyx-docs@lists.lyx.org"
+lyx-docs@lists.lyx.org 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+mailto:lyx-docs@lists.lyx.org
+\end_layout
 
 \end_inset
 
@@ -2396,8 +2549,13 @@ Semmi esetre se
  kezdjen dokumentációt írni, amíg nem lépett kapcsolatba a Dokumentációs
  Csapattal.
  A Dokumentációs Csapat honlapján: 
-\begin_inset LatexCommand url
-target "http://www.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org
+\end_layout
 
 \end_inset
 
@@ -2414,10 +2572,14 @@ Csatlakozás a dokumentációk fordításához, honosításához
 Ha szeretne bekapcsolódni a dokumentációk fordításába, vegye fel a kapcsolatot
  a fordítókkal a következő e-mail címen: 
 \family typewriter
+alex@lyx.hu 
+\begin_inset Flex URL
+status collapsed
 
-\begin_inset LatexCommand url
-name "alex@lyx.hu"
-target "mailto:alex@lyx.hu"
+\begin_layout Plain Layout
+
+mailto:alex@lyx.hu
+\end_layout
 
 \end_inset
 
@@ -2428,8 +2590,13 @@ target "mailto:alex@lyx.hu"
 
 \begin_layout Standard
 A fordítás állásáról pedig információkat kaphat a következő honlapon: 
-\begin_inset LatexCommand htmlurl
-target "http://www.lyx.hu"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.hu
+\end_layout
 
 \end_inset
 

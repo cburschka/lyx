@@ -1,5 +1,5 @@
-#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass book
@@ -74,9 +74,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics none
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -116,8 +118,10 @@ Készítette: a LyX csapat
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Ezen dokumentum formális karbantartója: 
 \noun on
 Amir Karger
@@ -134,7 +138,9 @@ lyx-docs@lists.lyx.org
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \shape italic
 \size small
@@ -142,7 +148,8 @@ Fordította: Szőke Sándor
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -166,8 +173,10 @@ Ez a tankönyv azok számára készült, akik még sohasem hallottak a LaTeX-rő
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Fordító megjegyzése: 
 \begin_inset Quotes pld
 \end_inset
@@ -278,7 +287,7 @@ Ez a tankönyv példákból és feladatokból áll.
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -287,7 +296,10 @@ textregistered
 
 \end_inset
 
- \InsetSpace ~
+ 
+\begin_inset space ~
+\end_inset
+
 változatát.
 \end_layout
 
@@ -301,8 +313,10 @@ Tankönyv
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 vagy optimistábban 
 \begin_inset Quotes pld
 \end_inset
@@ -322,12 +336,16 @@ előnyös tulajdonsága
 Tankönyv
 \emph default
 -et, mindenképpen javasoljuk, hogy nézze át az 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:latexusers"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 részt, amit a gyakorlott LaTeX felhasználóknak szántunk.
 \end_layout
 
@@ -411,11 +429,6 @@ Az első LyX dokumentuma
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
-name "sec:first-doc-ex"
-
-\end_inset
-
 Szuper, látom már készen áll arra, hogy elkezdjük.
  Mielőtt folytatnánk van pár dolog, amit meg kell említenünk, ezek remélhetőleg
  jobbá, hasznosabbá és szórakoztatóbbá teszik a 
@@ -453,8 +466,10 @@ Tankönyv
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Ezek jó példaként is szolgálnak, hogyan használja ki a LyX lehetőségeit.
 \end_layout
 
@@ -502,7 +517,7 @@ dvi
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -536,8 +551,10 @@ example-raw.lyx
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Ezek egy sárga 
 \begin_inset Quotes pld
 \end_inset
@@ -601,7 +618,10 @@ Men
 \bar under
 t
 \bar default
-és\InsetSpace ~
+és
+\begin_inset space ~
+\end_inset
+
 másként\SpecialChar \ldots{}
 
 \family default
@@ -664,7 +684,10 @@ Men
 \bar under
 t
 \bar default
-és\InsetSpace ~
+és
+\begin_inset space ~
+\end_inset
+
 másként\SpecialChar \ldots{}
 
 \family default
@@ -705,8 +728,10 @@ dvi
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Időt spórolhat meg azzal, ha ezt az ablakot nyitva hagyja és később csak
  a 
 \family sans
@@ -814,7 +839,10 @@ rkesztés \SpecialChar \menuseparator
 \bar under
 M
 \bar default
-égis\InsetSpace ~
+égis
+\begin_inset space ~
+\end_inset
+
 alkalmaz
 \family default
  menüpontot kell használnia.
@@ -873,8 +901,14 @@ középső egérgomb
 \end_layout
 
 \begin_layout Description
-Keresés\InsetSpace ~
-és\InsetSpace ~
+Keresés
+\begin_inset space ~
+\end_inset
+
+és
+\begin_inset space ~
+\end_inset
+
 Csere Használja a 
 \family sans
 Sz
@@ -882,8 +916,14 @@ Sz
 e
 \bar default
 rkesztés\SpecialChar \menuseparator
-Keresés\InsetSpace ~
-és\InsetSpace ~
+Keresés
+\begin_inset space ~
+\end_inset
+
+és
+\begin_inset space ~
+\end_inset
+
 
 \bar under
 c
@@ -911,14 +951,22 @@ r
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Becsukhatja a dialógusablakot amint befejezte a keresést, de nyitva is hagyhatja
  ha az kényelmesebb.
  A legtöbb dialógusablak -- beleértve a 
 \family sans
-Keresés\InsetSpace ~
-és\InsetSpace ~
+Keresés
+\begin_inset space ~
+\end_inset
+
+és
+\begin_inset space ~
+\end_inset
+
 csere
 \family default
 , 
@@ -981,7 +1029,10 @@ rkesztés\SpecialChar \menuseparator
 \bar under
 S
 \bar default
-zöveg\InsetSpace ~
+zöveg
+\begin_inset space ~
+\end_inset
+
 stílus\SpecialChar \ldots{}
 
 \family default
@@ -1014,11 +1065,6 @@ WYSIWYM: Szóközök a LyX-ben
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
-name "sec:whitespace"
-
-\end_inset
-
 Az egyik legnehezebb dolog kezdő LyX felhasználóknak, a szóközök és kihagyások
  használatának elsajátítása.
  Akárhányszor leütheti a 
@@ -1060,8 +1106,10 @@ What You See Is What You Get
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Ford.
  megj.: ALAKHŰ - 
 \begin_inset Quotes pld
@@ -1092,8 +1140,10 @@ Mean
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Ford.
  megj.: 
 \begin_inset Quotes pld
@@ -1271,8 +1321,10 @@ Környezetek
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Nem kell 
 \emph on
 kijelölnie
@@ -1424,9 +1476,14 @@ További dolgok
 \begin_inset Quotes prd
 \end_inset
 
- szakasz, ami az előbb még a 2.\InsetSpace ~
-szakasz volt, automatikusan átszámozódott
- 3.\InsetSpace ~
+ szakasz, ami az előbb még a 2.
+\begin_inset space ~
+\end_inset
+
+szakasz volt, automatikusan átszámozódott 3.
+\begin_inset space ~
+\end_inset
+
 szakasszá! A valódi WYSIWYM filozófiában, önnek csak be kell azonosítania
  a szakaszícmeket alkotó szöveget, a LyX fog gondoskodni a szakaszok számozásáró
 l és a szakaszcímek szedéséről.
@@ -1439,7 +1496,10 @@ Return
 \family default
 -t a 
 \family sans
-Normál\InsetSpace ~
+Normál
+\begin_inset space ~
+\end_inset
+
 szöveg
 \family default
 -hez való visszatéréshez és írja be a következő öt sort:
@@ -1509,10 +1569,15 @@ Alszakasz
 \end_inset
 
 -re.
- Ha beszúr egy másik szakaszt a 2.\InsetSpace ~
-szakasz elé, akkor az átszámozódik 3.\InsetSpace ~
-szakasszá
- és az alszakaszok átszámozódnak 
+ Ha beszúr egy másik szakaszt a 2.
+\begin_inset space ~
+\end_inset
+
+szakasz elé, akkor az átszámozódik 3.
+\begin_inset space ~
+\end_inset
+
+szakasszá és az alszakaszok átszámozódnak 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1564,12 +1629,16 @@ Szakasz
 \family default
  után, de csak bizonyos típusú (szöveg osztályú) LyX dokumentumoknál használható
  (Lásd 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:textclasses"
 
 \end_inset
 
-.\InsetSpace ~
+.
+\begin_inset space ~
+\end_inset
+
 szakasz).
 \end_layout
 
@@ -1638,8 +1707,10 @@ Tab
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Igen, azt hiszem eléggi kihangsúlyoztuk ezt a 
 \emph on
 Bevezetés
@@ -1766,7 +1837,10 @@ elemen
 \emph default
  belül, használhatja a 
 \family sans
-Védett\InsetSpace ~
+Védett
+\begin_inset space ~
+\end_inset
+
 Sortörés
 \family default
 -t, amit a 
@@ -1776,12 +1850,18 @@ C-Return
  leütésével érhet el.
  Ahhoz, hogy a felsorolásból kikerüljön ki kell választania a 
 \family sans
-Normál\InsetSpace ~
+Normál
+\begin_inset space ~
+\end_inset
+
 szöveg
 \family default
  környezetet (vagy használja a 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 s
 \family default
  billentyűkombinációt).
@@ -1796,8 +1876,10 @@ Kapott egy gyönyörű felsorolást.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Az első felsorolás jelét nem tudja kijelölni, kivéve ha kijelöli az 
 \emph on
 előző
@@ -1811,7 +1893,10 @@ előző
 
  és válassza a 
 \family sans
-Számozott\InsetSpace ~
+Számozott
+\begin_inset space ~
+\end_inset
+
 felsorolás
 \family default
 -t a 
@@ -1856,8 +1941,10 @@ Tabulátor
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 De ez a tabulátor a leghosszabb kifejezés hosszúságára lesz méretezve, nem
  pedig a patetikus, merev, változtathatatlan írógép 
 \family sans
@@ -1871,7 +1958,10 @@ Tabulátor
  (Lista) többi részétől.
  Ha több mint egy szót szeretne a kifejezésben, a szavakat a 
 \family sans
-Védett\InsetSpace ~
+Védett
+\begin_inset space ~
+\end_inset
+
 szóköz
 \family default
 zel válassza el .
@@ -1915,7 +2005,10 @@ Idézet
 \family default
  a rövid idézetekhez és 
 \family sans
-Idézet\InsetSpace ~
+Idézet
+\begin_inset space ~
+\end_inset
+
 (hosszú)
 \family default
  a hosszabbakhoz.
@@ -2002,7 +2095,8 @@ Szövegosztályok
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:textclasses"
 
 \end_inset
@@ -2025,8 +2119,10 @@ szövegosztály
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 LaTeX felhasználóknak: ez megegyezik a LaTeX dokumentum osztállyal
 \end_layout
 
@@ -2056,8 +2152,10 @@ Article
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Ford.
  megj.: Ez megfelel az 
 \begin_inset Quotes pld
@@ -2076,8 +2174,10 @@ Ford.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Rendszerint ez, az alapértelmezett szövegosztály
 \end_layout
 
@@ -2106,8 +2206,10 @@ Book
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Ford.
  megj.: jelentése 
 \begin_inset Quotes pld
@@ -2158,7 +2260,10 @@ stílus fájlokat
  A LyX például támogatja az American Mathematics Society folyóirat szedését
  (és extra környezeteit) az 
 \family sans
-Article\InsetSpace ~
+Article
+\begin_inset space ~
+\end_inset
+
 (AMS)
 \family default
  szövegosztály segítségével.
@@ -2182,39 +2287,41 @@ Haladó szolgáltatások
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Név
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Megjegyzés
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 article
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Ford.megj.: Jelentése 
 \begin_inset Quotes pld
 \end_inset
@@ -2236,18 +2343,18 @@ Ford.megj.: Jelentése
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 egyoldalas, nincsenek fejezetek
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 article (AMS)
 \end_layout
 
@@ -2256,24 +2363,26 @@ article (AMS)
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 elrendezés és környezetek az American Math Society folyóirathoz
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 report
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Ford.megj.: Jelentése 
 \begin_inset Quotes pld
 \end_inset
@@ -2295,24 +2404,26 @@ Jelentés
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 kétoldalas, hosszabb mint az article
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 book
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Ford.megj.: Jelentése 
 \begin_inset Quotes pld
 \end_inset
@@ -2334,24 +2445,26 @@ Könyv
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 report + elő- és utószó
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 slides
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Ford.megj.: Jelentése 
 \begin_inset Quotes pld
 \end_inset
@@ -2373,24 +2486,26 @@ Prezentáció
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 írásvetítő fóliákhoz (tartalmazza a FoilTeX-et)
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 letter
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Ford.megj.: Jelentése 
 \begin_inset Quotes pld
 \end_inset
@@ -2409,10 +2524,10 @@ Levél
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 sok extra környezet címhez, aláíráshoz\SpecialChar \ldots{}
 
 \end_layout
@@ -2562,8 +2677,10 @@ feladatot
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Egy figyelmeztetés, arra az esetre ha sablonból dolgozik.
  Amennyiben egy környezet minden szövegét kitörli -- például a 
 \family sans
@@ -2619,8 +2736,10 @@ Article
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Most már nem a levelet kell használnia.
  Mivel a 
 \family sans
@@ -2677,11 +2796,6 @@ Címkék és kereszt referenciák
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
-name "sec:labels"
-
-\end_inset
-
 Felcímkézheti a dokumentumának egy szakaszát (vagy alszakaszát, ritkábban
  valamely szövegrészét).
  Amint ezt megteszi, a dokumentum bármely részében hivatkozhat rá a keresztrefer
@@ -2773,7 +2887,10 @@ Most -- helyezze a kurzort közvetlen a
 \begin_inset Quotes pld
 \end_inset
 
-.\InsetSpace ~
+.
+\begin_inset space ~
+\end_inset
+
 szakasz
 \begin_inset Quotes prd
 \end_inset
@@ -2821,7 +2938,10 @@ Alkalmaz
 \begin_inset Quotes pld
 \end_inset
 
-.\InsetSpace ~
+.
+\begin_inset space ~
+\end_inset
+
 oldalon
 \begin_inset Quotes prd
 \end_inset
@@ -2834,7 +2954,10 @@ Alkalmaz
 -on.
  (Hogy pontos legyek, egy 
 \family sans
-Védett\InsetSpace ~
+Védett
+\begin_inset space ~
+\end_inset
+
 szóköz
 \family default
 -t kell a szakasz és a hivatkozás közé elhelyeznie.
@@ -2876,7 +2999,10 @@ VI
 \begin_inset Quotes pld
 \end_inset
 
-2.\InsetSpace ~
+2.
+\begin_inset space ~
+\end_inset
+
 szakaszra
 \begin_inset Quotes prd
 \end_inset
@@ -2885,12 +3011,18 @@ szakaszra
 \begin_inset Quotes pld
 \end_inset
 
-1.\InsetSpace ~
+1.
+\begin_inset space ~
+\end_inset
+
 oldalon
 \begin_inset Quotes prd
 \end_inset
 
- (vagy bármely oldalon, ahol is a 2.\InsetSpace ~
+ (vagy bármely oldalon, ahol is a 2.
+\begin_inset space ~
+\end_inset
+
 szakasz található).
 \end_layout
 
@@ -2903,7 +3035,10 @@ Kereszthivatkozás
 \family default
  dialógusablak jelenik meg, ahol a 
 \family sans
-Címkére\InsetSpace ~
+Címkére
+\begin_inset space ~
+\end_inset
+
 
 \bar under
 u
@@ -2921,7 +3056,10 @@ További játék a címkékkel
 \begin_layout Standard
 Ahogy már említettük, a LyX kezeli a kereszthivatkozások számozását; mindjárt
  le is tesztelheti ezt.
- Írjon be egy új szakaszt a 2.\InsetSpace ~
+ Írjon be egy új szakaszt a 2.
+\begin_inset space ~
+\end_inset
+
 szakasz elé.
  Futtasa újra a LaTeX-et (
 \family sans
@@ -3008,19 +3146,25 @@ illessze be
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Vigyázat, a fejezetcímek másolása hibát eredményezhet, mivel az article
  dokumentum-osztályban a nincsenek fejezetek.
  Ha ilyen hiba történne, egyszerűen törölje ki a fejezetcímet.
  Amennyiben többet szeretne erről a témáról megtudni, kérem nézze meg a
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:textclasses"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 szakaszt.
 \end_layout
 
@@ -3050,8 +3194,10 @@ Az eszköztáron
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 A gombon pár sor fekete szöveg alatt 2 sor piros szöveg látható.
 \end_layout
 
@@ -3059,7 +3205,10 @@ A gombon pár sor fekete szöveg alatt 2 sor piros szöveg látható.
 
  található 
 \family sans
-Lábjegyzet\InsetSpace ~
+Lábjegyzet
+\begin_inset space ~
+\end_inset
+
 beszúrása
 \family default
  gomb segítségével vagy a 
@@ -3089,7 +3238,10 @@ LyX
 
  szó mögé és kattintson a 
 \family sans
-Lábjegyzet\InsetSpace ~
+Lábjegyzet
+\begin_inset space ~
+\end_inset
+
 beszúrása
 \family default
  gombra.
@@ -3150,8 +3302,10 @@ A lábjegyzetet ugyanúgy ki lehet vágni és be lehet illeszteni, mint bármily
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 A billyentyűzet segítségével lehet, hogy mindez egyszerűbb.
  Amennyiben az egérrel kattog a gomb körül, ahelyett hogy kijelölné, könnyen
  kinyithatja azt.
@@ -3171,7 +3325,10 @@ Beillesztés.
  Továbbá, a normál szöveget át is változtathatja lábjegyzetté azzal, hogy
  kijelöli majd rákattint a 
 \family sans
-Lábjegyzet\InsetSpace ~
+Lábjegyzet
+\begin_inset space ~
+\end_inset
+
 beszúrása
 \family default
  gombra.
@@ -3191,7 +3348,10 @@ Delete
 Széljegyzetet az eszköztár gombjával (a sok szöveg mellett lévő kevés szöveget
  jelképező ikon (azaz valaminek a széle), ami közvetlen a 
 \family sans
-Lábjegyzet\InsetSpace ~
+Lábjegyzet
+\begin_inset space ~
+\end_inset
+
 beszúrása
 \family default
  gomb mellett található) vagy a 
@@ -3265,7 +3425,8 @@ Irodalomjegyzék
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:bibliographies"
 
 \end_inset
@@ -3295,7 +3456,10 @@ A LyX kézikönyv, a LyX dokumentációs csapat készítésében
  egy számot tesz.
  Kattintson a betétben lévő számra, és az 
 \family sans
-Irodalomjegyzék\InsetSpace ~
+Irodalomjegyzék
+\begin_inset space ~
+\end_inset
+
 elem
 \family default
  dialógus ablak jelenik meg.
@@ -3375,7 +3539,10 @@ Idézet
 \family default
  dialógusablakban, a 
 \family sans
-Szöveg\InsetSpace ~
+Szöveg
+\begin_inset space ~
+\end_inset
+
 utána
 \family default
  mező egy megjegyzést (ami lehet egy hivatkozás egy bizonyos oldalra vagy
@@ -3397,7 +3564,10 @@ Címke
 \family default
  mezőt az 
 \family sans
-Irodalomjegyzék\InsetSpace ~
+Irodalomjegyzék
+\begin_inset space ~
+\end_inset
+
 elem
 \family default
  dialógusablakban.
@@ -3442,8 +3612,14 @@ Listá
 \bar under
 k
 \bar default
-\InsetSpace ~
-és\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
+és
+\begin_inset space ~
+\end_inset
+
 tartalomjegyzék\SpecialChar \menuseparator
 
 \bar under
@@ -3548,8 +3724,10 @@ vel gyorsan és könnyedén fog professzionális megjelenésű képleteket kész
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Sajnos, a LyX nem tudja eldönteni, hogy a bevitt képletek 
 \emph on
 helyesek
@@ -3981,8 +4159,14 @@ et
 \bar under
 l
 \bar default
-etszerkesztő\InsetSpace ~
-eszköztár\InsetSpace ~
+etszerkesztő
+\begin_inset space ~
+\end_inset
+
+eszköztár
+\begin_inset space ~
+\end_inset
+
 mutatása/elrejtése
 \family default
  segítségével és hagyja nyitva amíg ezt a fejezetet olvassa.
@@ -4069,7 +4253,10 @@ Egy jel fölé (
 ) hasonlóan helyezhetünk ékezeteket.
  A 
 \family sans
-Keret\InsetSpace ~
+Keret
+\begin_inset space ~
+\end_inset
+
 díszítőelemek
 \family default
  egy panelen keresztül érhetőek el.
@@ -4398,18 +4585,16 @@ Mátrixok
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
-name "sec:matrices"
-
-\end_inset
-
 Kattintson a 
 \family sans
 Képletszerkesztő
 \family default
  a 
 \family sans
-Mátrix\InsetSpace ~
+Mátrix
+\begin_inset space ~
+\end_inset
+
 beszúrása
 \family default
  gombjára.
@@ -4465,10 +4650,19 @@ rkesztés \SpecialChar \menuseparator
 \bar under
 r
 \bar default
-ok\InsetSpace ~
-és\InsetSpace ~
+ok
+\begin_inset space ~
+\end_inset
+
+és
+\begin_inset space ~
+\end_inset
+
 oszlopok \SpecialChar \menuseparator
- Oszlop\InsetSpace ~
+ Oszlop
+\begin_inset space ~
+\end_inset
+
 
 \bar under
 h
@@ -4477,7 +4671,10 @@ ozzáadása
 \family default
  vagy 
 \family sans
-Sor\InsetSpace ~
+Sor
+\begin_inset space ~
+\end_inset
+
 hozzá
 \bar under
 a
@@ -4488,12 +4685,18 @@ dása
  Ezek beszúrnak egy új sort vagy oszlopot az aktuális pozícióba.
  Ha túl sokat szúrt be? Használja a 
 \family sans
-Oszlop\InsetSpace ~
+Oszlop
+\begin_inset space ~
+\end_inset
+
 törlése
 \family default
  vagy 
 \family sans
-Sor\InsetSpace ~
+Sor
+\begin_inset space ~
+\end_inset
+
 törlése
 \family default
  parancsokat ugyanebből a menüből.
@@ -4537,8 +4740,14 @@ Képletszerkesztő
 \family default
  eszköztár 
 \family sans
-Megjelenítés\InsetSpace ~
-módjának\InsetSpace ~
+Megjelenítés
+\begin_inset space ~
+\end_inset
+
+módjának
+\begin_inset space ~
+\end_inset
+
 váltása
 \family default
  gombjára, amelynek megjelenése: egy kék négyzet alatta és fölötte két vonalalla
@@ -4548,8 +4757,14 @@ l.
  néz ki.
  A 
 \family sans
-Megjelenítés\InsetSpace ~
-módjának\InsetSpace ~
+Megjelenítés
+\begin_inset space ~
+\end_inset
+
+módjának
+\begin_inset space ~
+\end_inset
+
 váltása
 \family default
  gomb a két megjelenítés között vált, változtasson meg néhány kifejezést
@@ -4624,8 +4839,10 @@ Feladat
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Miután a bonyolultabb módon elkészítette, miért nem próbálja ki a 
 \family sans
 \bar under
@@ -4641,7 +4858,10 @@ E
 \bar under
 s
 \bar default
-etek \InsetSpace ~
+etek 
+\begin_inset space ~
+\end_inset
+
 környezet
 \family default
  parancsot?
@@ -4758,7 +4978,10 @@ gombbal
 \emph default
  a táblázaton a 
 \family sans
-Táblázat\InsetSpace ~
+Táblázat
+\begin_inset space ~
+\end_inset
+
 beállítása
 \family default
  dialógusablak eléréséhez, amiben szinte mindent beállíthat.
@@ -4770,7 +4993,7 @@ A LyX támogatja képek beszúrását számos formátumban (beleértve JPEG-et,
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -4896,12 +5119,16 @@ streszabás
 \begin_layout Itemize
 A LyX be tudja olvasni a LaTeX dokumentumokat.
  Lásd a 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:relyx"
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 szakaszt.
 \end_layout
 
@@ -4925,7 +5152,8 @@ LyX a LaTeX felhasználóknak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:latexusers"
 
 \end_inset
@@ -5074,12 +5302,16 @@ A LyX (egyenlőre) nem képes mindarra amire a LaTeX.
 usepackage{foo}-t
 \family default
  a preambulumba (lásd a 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:preamble"
 
 \end_inset
 
-.\InsetSpace ~
+.
+\begin_inset space ~
+\end_inset
+
 szakaszt), olyan csomagot használ, amilyet csak akar -- azonban nem lesz
  WYSIWYM támogatás a csomag jellemzőihez.
 \end_layout
@@ -5091,7 +5323,8 @@ tex2lyx
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:relyx"
 
 \end_inset
@@ -5254,7 +5487,8 @@ Egyéb szedési beállítások -- Other Preamble Matter
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:preamble"
 
 \end_inset
@@ -5280,7 +5514,10 @@ eállítások
 \bar under
  
 \bar default
-LaTeX\InsetSpace ~
+LaTeX
+\begin_inset space ~
+\end_inset
+
 Preambulum
 \family default
 -ot és írja be a megjelenő dialógusablakba.
@@ -5302,8 +5539,14 @@ B
 \family sans
 \bar default
 eszúrás \SpecialChar \menuseparator
- Listák\InsetSpace ~
-és\InsetSpace ~
+ Listák
+\begin_inset space ~
+\end_inset
+
+és
+\begin_inset space ~
+\end_inset
+
 tartal
 \bar under
 o
@@ -5313,7 +5556,10 @@ mjegyzék \SpecialChar \menuseparator
 \bar under
  B
 \bar default
-ibTeX\InsetSpace ~
+ibTeX
+\begin_inset space ~
+\end_inset
+
 irodalomjegyzék
 \family default
 -et egy 
@@ -5325,9 +5571,18 @@ bib
 \begin_inset Quotes pld
 \end_inset
 
-BibTeX\InsetSpace ~
-által\InsetSpace ~
-létrehozott\InsetSpace ~
+BibTeX
+\begin_inset space ~
+\end_inset
+
+által
+\begin_inset space ~
+\end_inset
+
+létrehozott
+\begin_inset space ~
+\end_inset
+
 irodalomjegyzék
 \begin_inset Quotes prd
 \end_inset
@@ -5351,8 +5606,10 @@ bibliography{}
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Mint a LaTeX-nél, több irodalomjegyzék elemet is megadhatunk vesszővel elválaszt
 va, szóközök nélkül
 \end_layout
@@ -5389,12 +5646,16 @@ dézet
 \family default
 \SpecialChar \ldots{}
  paranccsal (lásd 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:bibliographies"
 
 \end_inset
 
-.\InsetSpace ~
+.
+\begin_inset space ~
+\end_inset
+
 szakasz).
  A LyX fogja futtatni a BibTeX-et.
  Az 

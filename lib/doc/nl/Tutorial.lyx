@@ -1,5 +1,5 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass book
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics none
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -34,6 +36,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -47,7 +50,8 @@ door Amir Karger en het LyX Team
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -164,7 +168,7 @@ Tutorial
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 anders gezegd , 
 \begin_inset Quotes eld
 \end_inset
@@ -184,7 +188,8 @@ kenmerken
 Tutorial
 \emph default
  door te lezen, zou je zeker Sectie 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:latexgebruikers"
 
 \end_inset
@@ -194,7 +199,8 @@ reference "sec:latexgebruikers"
 
 \begin_layout Standard
 Sectie 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:wat-is-lyx"
 
 \end_inset
@@ -226,7 +232,7 @@ De trend in doe-het-zelf literatuur voor computers vandaag de dag
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Notitie van 
 \noun on
 John 
@@ -270,7 +276,7 @@ Als je er nu nog niet achter bent hoe je je computer moet gebruiken, kunnen
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Afgezien daarvan, als je LyX al gebruikt zal je waarschijnlijk wel slimmer
  zijn de gemiddelde mens.
  
@@ -329,7 +335,8 @@ Onnodig.
 Zo, dappere lezer, het is tijd om verder te gaan.
  Je kunt een korte excursie door de volgende sectie nemen, of je kunt doorgaan
  naar sectie 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:eerste-doc"
 
 \end_inset
@@ -339,7 +346,8 @@ reference "sec:eerste-doc"
 
 \begin_layout Section
 Wat is LyX?
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:wat-is-lyx"
 
 \end_inset
@@ -418,8 +426,14 @@ Vet
 \begin_inset Quotes eld
 \end_inset
 
-1.\InsetSpace ~
-\InsetSpace ~
+1.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
 Introductie
 \begin_inset Quotes erd
 \end_inset
@@ -525,7 +539,7 @@ Verschillen tussen LyX en Tekstverwerkers
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Nee, we proberen hier niet een heilige oorlog over tekstverwerkers te starten
  (of te winnen).
  Maar we zijn wel van mening dat het belangrijk is om de eigenschappen van
@@ -619,7 +633,7 @@ n variabel, en worden deze gezet door LyX.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Er zijn manieren of al deze dingen zelf aan te passen [slechts enkele behoeven
  kennis van LaTeX], ofwel voor een heel document, ofwel voor een specifieke
  plaats in een document.
@@ -675,7 +689,7 @@ werkt
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 OK, niets is perfect, maar LaTeX is zo foutvrij als een computerprogramma
  maar kan zijn.
 \end_layout
@@ -737,7 +751,7 @@ LaTeX is een document-opmaak-systeem ontworpen door Leslie Lamport in 1985
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 De bron voor de info in deze paragraaf is 
 \begin_inset Quotes eld
 \end_inset
@@ -984,7 +998,8 @@ Je Eerste LyX Document.
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:eerste-doc"
 
 \end_inset
@@ -1022,7 +1037,7 @@ Tutorial
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Ze dienen tevens als goede voorbeelden van de vele mogelijkheden van LyX
  .
 \end_layout
@@ -1098,7 +1113,7 @@ eden van LyX af weet.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 De aanwijzingen bevinden zich in gele 
 \begin_inset Quotes eld
 \end_inset
@@ -1207,7 +1222,7 @@ Dit is mijn eerste LyX document!
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Toegegeven.
  Je zou in feite alles kunnen typen wat je wilt.
  Het maakt in weze niet uit.
@@ -1227,7 +1242,10 @@ Bewaar je document met
 F
 \bar default
 ile\SpecialChar \menuseparator
-Save\InsetSpace ~
+Save
+\begin_inset space ~
+\end_inset
+
 
 \bar under
 A
@@ -1271,7 +1289,7 @@ dvi
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Je kunt tijd besparen door 
 \family typewriter
 xdvi
@@ -1356,7 +1374,7 @@ De meeste dingen die je met een tekstverwerker gewend bent te doen, kun
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Als je bent zoals je meeste 
 \noun on
 unix
@@ -1522,8 +1540,14 @@ dit\SpecialChar \menuseparator
 \bar under
 F
 \bar default
-ind\InsetSpace ~
-&\InsetSpace ~
+ind
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
 Replace
 \family default
  voor een hoofdletter-gevoelige zoekopdracht.
@@ -1540,7 +1564,7 @@ eplace
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Sluit het zoekscherm als je klaar bent.
  Of laat het staan als je dat makkelijker vindt.
  De meeste popup-schermen in LyX --- inclusief de 
@@ -1548,14 +1572,26 @@ Sluit het zoekscherm als je klaar bent.
 \bar under
 F
 \bar default
-ind\InsetSpace ~
-&\InsetSpace ~
+ind
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
 Replace
 \family default
 , 
 \family sans
-Table\InsetSpace ~
-of\InsetSpace ~
+Table
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
 Contents
 \family default
 , en 
@@ -1654,11 +1690,6 @@ WYSIWYM: Witruimte in LyX
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
-name "sec:witruimte"
-
-\end_inset
-
 Een van de moeilijkste dingen waar nieuwe gebruikers aan moeten wennen is
  de manier waarop LyX met witruimte omgaat.
  Hoe vaak je ook op de 
@@ -1732,7 +1763,8 @@ inhoud
 \emph default
  van je document, en minder over de vorm.
  Zie paragraaf 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:wat-is-lyx"
 
 \end_inset
@@ -1862,7 +1894,7 @@ Omgeving
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Je hoeft de regel niet vooraf te selecteren.
  Als er niets geselecteerd is zal LyX de paragraaf waarin je op dat moment
  aan het werken bent veranderen in de geselecteerde omgeving.
@@ -1917,7 +1949,7 @@ Return
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Zie de 
 \emph on
 Gebruikshandleiding
@@ -2150,7 +2182,8 @@ Section
  komt.
  Deze kun je echter alleen in bepaalde typen Tekstklassen gebruiken .
  Zie hiervoor sectie 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:tekstklassen"
 
 \end_inset
@@ -2214,7 +2247,7 @@ LyX heeft verschillende omgevingen om lijsten op te maken.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Ja , we leggen te veel nadruk op dit punt in de 
 \emph on
 Tutorial
@@ -2336,7 +2369,10 @@ Return,
 \family default
  een 
 \family sans
-Protected\InsetSpace ~
+Protected
+\begin_inset space ~
+\end_inset
+
 Return
 \family default
  geven door 
@@ -2350,7 +2386,10 @@ Standard
 \family default
  omgeving selecteren (of de toetscombinatie 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 s
 \family default
  gebruiken).
@@ -2364,7 +2403,7 @@ Je hebt nu een prachtige lijst met items.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX staat het niet toe het eerste opsommingsteken te selecteren tenzij je
  ook de paragraaf 
 \emph on
@@ -2424,7 +2463,7 @@ Tab
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Een tab van een zetter wel te verstaan, welke zich aanpast aan de lengte
  van de grootste term, niet een zielige, stijve, onveranderlijke 
 \family sans
@@ -2443,7 +2482,10 @@ List
  Als je meer dan één woord in de definitie wilt hebben, scheidt dan de woorden
  met 
 \family sans
-Protected\InsetSpace ~
+Protected
+\begin_inset space ~
+\end_inset
+
 Space
 \family default
 s die je krijgt met de toetscombinatie 
@@ -2522,7 +2564,7 @@ typemachine
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \SpecialChar \ldots{}
 aangenomen dat je überhaupt creatief genoeg bent om poëzie te schrijven.
 \end_layout
@@ -2595,7 +2637,8 @@ Tekstklassen en Sjablonen: Brieven Schrijven
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:tekstklassen"
 
 \end_inset
@@ -2615,7 +2658,7 @@ tekstklasse
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LaTeX gebruikers: dit is hetzelfde als de documentklasse in LaTeX
 \end_layout
 
@@ -2645,7 +2688,7 @@ Article
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Dat is gewoonlijk de tekstklasse die standaard aan een nieuw document wordt
  toegewezen.
  Je kunt dit veranderen in je 
@@ -2722,7 +2765,10 @@ stijl-bestanden
  tijdschriften van de American Mathematics Society, door gebruik te maken
  van de tekstklasse 
 \family sans
-Article\InsetSpace ~
+Article
+\begin_inset space ~
+\end_inset
+
 (AMS)
 \family default
 .
@@ -2749,13 +2795,13 @@ Gebruikshandleiding
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2770,21 +2816,21 @@ Naam
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Opmerkingen
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2802,7 +2848,7 @@ article
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2818,11 +2864,11 @@ enkelzijdig, geen hoofdstukken
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2840,7 +2886,7 @@ article (AMS)
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2872,11 +2918,11 @@ omgevingen voor American Mathematics Society
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2894,7 +2940,7 @@ report
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2910,11 +2956,11 @@ langer dan article, dubbelzijdig
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2929,10 +2975,10 @@ book
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2958,11 +3004,11 @@ gedoe
 \end_inset
 </cell>
 </row>
-<row bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2977,10 +3023,10 @@ slides
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -2996,11 +3042,11 @@ transparanten (inclusief FoilTeX)
 \end_inset
 </cell>
 </row>
-<row bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -3015,10 +3061,10 @@ letter
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 \series medium
@@ -3104,8 +3150,14 @@ Open een nieuw bestand met
 F
 \bar default
 ile\SpecialChar \menuseparator
-New\InsetSpace ~
-from\InsetSpace ~
+New
+\begin_inset space ~
+\end_inset
+
+from
+\begin_inset space ~
+\end_inset
+
 
 \bar under
 t
@@ -3119,7 +3171,10 @@ letter.lyx
 \family default
  van popupvenster met de titel 
 \family sans
-Choose\InsetSpace ~
+Choose
+\begin_inset space ~
+\end_inset
+
 Template
 \family default
 .
@@ -3134,7 +3189,10 @@ Environment
 \family default
  menu kijkt, zul je verschillende omgevingen zien zoals de 
 \family sans
-My\InsetSpace ~
+My
+\begin_inset space ~
+\end_inset
+
 Address
 \family default
  omgeving, die in de meeste tekstklassen niet eens bestaan.
@@ -3196,11 +3254,14 @@ oefening
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Een waarschuwing als je een vanaf een sjabloon schrijft: als je alle tekst
  in een omgeving verwijdert--- bijvoorbeeld als je het gehele 
 \family sans
-My\InsetSpace ~
+My
+\begin_inset space ~
+\end_inset
+
 Address
 \family default
  veld verwijdert zodat je het met je eigen tekst kunt vervangen--- en dan
@@ -3255,7 +3316,7 @@ Article
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Je moet de brief niet langer gebruiken, omdat de tekstklasse 
 \family sans
 Letter
@@ -3304,11 +3365,6 @@ Labels en Kruisverwijzingen
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
-name "sec:labels"
-
-\end_inset
-
 Je kunt een label toewijzen aan een sectie (of een subsubsectie of wat minder
  vaak voorkomt, een willekeurig stuk tekst) van je document.
  Als je dit eenmaal hebt gedaan kun je naar dit gedeelte verwijzen in andere
@@ -3357,7 +3413,7 @@ sec:overdocument
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 We schrijven 
 \begin_inset Quotes eld
 \end_inset
@@ -3414,9 +3470,10 @@ Zet de cursor ergens in sectie 2 van je document en typ:
 
 \begin_layout LyX-Code
 als je meer over dit document wilt weten, zie dan sectie 
-\newline
-dat je vindt op
- pagina .
+\begin_inset Newline newline
+\end_inset
+
+dat je vindt op pagina .
 \end_layout
 
 \begin_layout Standard
@@ -3443,7 +3500,10 @@ ross-Reference
 .
  Het 
 \family sans
-Insert\InsetSpace ~
+Insert
+\begin_inset space ~
+\end_inset
+
 Reference
 \family default
  popupvenster verschijnt.
@@ -3463,7 +3523,10 @@ sec:overdocument
 \bar under
 I
 \bar default
-nsert\InsetSpace ~
+nsert
+\begin_inset space ~
+\end_inset
+
 Reference
 \family default
 .
@@ -3477,17 +3540,26 @@ pagina
 
  en klik op 
 \family sans
-Insert\InsetSpace ~
+Insert
+\begin_inset space ~
+\end_inset
+
 
 \bar under
 P
 \bar default
-age\InsetSpace ~
+age
+\begin_inset space ~
+\end_inset
+
 Number
 \family default
  van het 
 \family sans
-Insert\InsetSpace ~
+Insert
+\begin_inset space ~
+\end_inset
+
 Reference
 \family default
  popupvenster.
@@ -3499,7 +3571,10 @@ LyX zet de referenties in een rechthoek daar waar de cursor zich bevond.
  ofwel een paginanummer of een sectienummer (dit hangt af wat je in het
  
 \family sans
-Insert\InsetSpace ~
+Insert
+\begin_inset space ~
+\end_inset
+
 Reference
 \family default
  popupvenster geselecteerd hebt).
@@ -3568,10 +3643,16 @@ Leuke dingen met labels
 \begin_layout Standard
 We vertelden je dat LyX het nummeren van kruisverwijzingen regelt; je kunt
  dit nu uitproberen.
- Voeg een nieuwe sectie toe voor Sectie\InsetSpace ~
+ Voeg een nieuwe sectie toe voor Sectie
+\begin_inset space ~
+\end_inset
+
 2.
  Doe nu een nieuwe LaTeX run, en --- voilà! --- de kruisverwijzing naar
- Sectie\InsetSpace ~
+ Sectie
+\begin_inset space ~
+\end_inset
+
 2 is veranderd naar 3! Verander 
 \begin_inset Quotes eld
 \end_inset
@@ -3580,9 +3661,14 @@ Over dit document
 \begin_inset Quotes erd
 \end_inset
 
- in een subsectie, en de kruisverwijzing zal naar Subsectie\InsetSpace ~
-2.1 refereren
- in plaats van Sectie\InsetSpace ~
+ in een subsectie, en de kruisverwijzing zal naar Subsectie
+\begin_inset space ~
+\end_inset
+
+2.1 refereren in plaats van Sectie
+\begin_inset space ~
+\end_inset
+
 3.
  De paginaverwijzing zal niet veranderen tenzij je natuurlijk voor het label
  een hele pagina tekst toevoegt.
@@ -3603,7 +3689,10 @@ sec:myfirstlabel
  Als je veel kruisverwijzingen toevoegt (bijvoorbeeld als je vakliteratuur
  schrijft), is het misschien makkelijk om het 
 \family sans
-Insert\InsetSpace ~
+Insert
+\begin_inset space ~
+\end_inset
+
 Reference
 \family default
  venster open te laten.
@@ -3619,14 +3708,18 @@ Gebruikshandleiding
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Tussen twee haakjes, het kopiëren van een hoofdstuk-titel kan resulteren
  in een foutmelding van LyX omdat hoofdstukken niet toegestaan zijn in de
  klasse article.
  Als dit gebeurt, verwijder dan gewoon de titel van het hoofdstuk.
- Als je wilt weten waarom dit gebeurt bekijk dan Sectie\InsetSpace ~
+ Als je wilt weten waarom dit gebeurt bekijk dan Sectie
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:tekstklassen"
 
 \end_inset
@@ -3656,14 +3749,17 @@ Voetnoten en Margenoten
 \begin_layout Standard
 Voetnoten kunnen worden toegevoegd met de 
 \family sans
-Insert\InsetSpace ~
+Insert
+\begin_inset space ~
+\end_inset
+
 Footnote
 \family default
 -knop in de knoppenbalk
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 De knop laat een pijl naar rode tekst zien welke net onder wat zwarte tekst
  staat.
 \end_layout
@@ -3693,7 +3789,10 @@ LyX
 
  ergens in je document en klik op de 
 \family sans
-Insert\InsetSpace ~
+Insert
+\begin_inset space ~
+\end_inset
+
 Footnote
 \family default
 -knop.
@@ -3794,14 +3893,20 @@ aste
  Daarnaast kun je gewone tekst veranderen in een voetnoot door het te selecteren
  en op de 
 \family sans
-Insert\InsetSpace ~
+Insert
+\begin_inset space ~
+\end_inset
+
 Footnote
 \family default
 -knop te drukken.
  Andersom kun je ook een voetnoot in gewone tekst veranderen door op de
  
 \family sans
-Insert\InsetSpace ~
+Insert
+\begin_inset space ~
+\end_inset
+
 Footnote
 \family default
 -knop te drukken als de cursor binnen een voetnoot staat.
@@ -3811,20 +3916,29 @@ Footnote
 Margenoten (aantekeningen in de kantlijn) kunnen worden toegevoegd met behulp
  van de 
 \family sans
-Insert\InsetSpace ~
-Margin\InsetSpace ~
+Insert
+\begin_inset space ~
+\end_inset
+
+Margin
+\begin_inset space ~
+\end_inset
+
 Note
 \family default
 -knop
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 De knop laat een pijl zien die naar rode tekst wijst welke naast (d.w.z.
  in de kantlijn staat van) zwarte tekst.
  De knop zou naast de 
 \family sans
-Insert\InsetSpace ~
+Insert
+\begin_inset space ~
+\end_inset
+
 Footnote
 \family default
 -knop op de knoppenbalk moeten zitten
@@ -3842,7 +3956,10 @@ nsert\SpecialChar \menuseparator
 \bar under
 M
 \bar default
-argin\InsetSpace ~
+argin
+\begin_inset space ~
+\end_inset
+
 Note
 \family default
 .
@@ -3906,7 +4023,8 @@ Bibliografieën
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:bibliografieën"
 
 \end_inset
@@ -3935,7 +4053,10 @@ De Lyx Tutorial, door het LyX DocTeam
  zet.
  Klik op het nummer van de referentie en een 
 \family sans
-Bibliography\InsetSpace ~
+Bibliography
+\begin_inset space ~
+\end_inset
+
 item
 \family default
  popup verschijnt.
@@ -3968,7 +4089,10 @@ C
 \bar under
 i
 \bar default
-tation\InsetSpace ~
+tation
+\begin_inset space ~
+\end_inset
+
 Reference
 \family default
 .
@@ -3986,7 +4110,7 @@ Key
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Dit is waarom het een goed idee is om de sleutels unieke en logische namen
  te geven, in plaats van de standaard nummers te gebruiken in het 
 \family sans
@@ -4047,7 +4171,10 @@ Label
 \family default
 -veld in het 
 \family sans
-Bibliography\InsetSpace ~
+Bibliography
+\begin_inset space ~
+\end_inset
+
 item
 \family default
 .
@@ -4083,7 +4210,7 @@ Return
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Raak niet gefrustreerd door te trachten met de backspace toets, of met muisklikk
 en voor het sectienummer te komen.
  Dit zal nooit lukken.
@@ -4099,15 +4226,27 @@ en voor het sectienummer te komen.
 I
 \bar default
 nsert\SpecialChar \menuseparator
-Lists\InsetSpace ~
-&\InsetSpace ~
+Lists
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
 
 \bar under
 T
 \bar default
 OC\SpecialChar \menuseparator
-Table\InsetSpace ~
-of\InsetSpace ~
+Table
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
 
 \bar under
 C
@@ -4165,13 +4304,19 @@ dit\SpecialChar \menuseparator
 \bar under
 T
 \bar default
-able\InsetSpace ~
-of\InsetSpace ~
+able
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
 Contents
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Het menucommando werkt zelfs als je geen 
 \begin_inset Quotes eld
 \end_inset
@@ -4187,15 +4332,27 @@ table of contents
 
 .
  Dit is een erg nuttig hulpmiddel.
- Je kunt het Table\InsetSpace ~
-of\InsetSpace ~
+ Je kunt het Table
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
 Contents
 \family default
 -venster gebruiken om door je document te manoeuvreren.
  Als je op een (sub)sectie-titel in het 
 \family sans
-Table\InsetSpace ~
-of\InsetSpace ~
+Table
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
 Contents
 \family default
 -venster klikt zal deze doen oplichten en de cursor in het LyX scherm naar
@@ -4256,7 +4413,7 @@ Math Panel
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lyx kan niet controleren of de vergelijking die je invoert 
 \emph on
 correct
@@ -4617,7 +4774,7 @@ c
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family sans
 Spatie
@@ -4882,7 +5039,10 @@ Een accent plaatsen boven een enkel karakter (
 \begin_inset Formula $\overrightarrow{v}$
 \end_inset
 
-) of een groep van karakters\InsetSpace ~
+) of een groep van karakters
+\begin_inset space ~
+\end_inset
+
 (
 \begin_inset Formula $\overrightarrow{a+b}$
 \end_inset
@@ -4892,7 +5052,10 @@ Een accent plaatsen boven een enkel karakter (
 \family sans
 Decoratie
 \family default
- knop: een blauwe rechthoek met een zwarte tilde\InsetSpace ~
+ knop: een blauwe rechthoek met een zwarte tilde
+\begin_inset space ~
+\end_inset
+
 (~) erboven.
  Het 
 \family sans
@@ -5271,7 +5434,8 @@ voorbeeld_ruw.lyx
 
 \begin_layout Subsection
 Matrices
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "Matrices"
 
 \end_inset
@@ -5359,7 +5523,8 @@ Gebruikshandleiding
 \emph default
 ).
  Multi-lijn vergelijkingen (zie Sec.
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "multi-lijn verg"
 
 \end_inset
@@ -5463,7 +5628,8 @@ f(x)=\left\{ \begin{array}{cc}
 
 \begin_layout Section
 Multi-lijn vergelijkingen
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "multi-lijn verg"
 
 \end_inset
@@ -5553,7 +5719,8 @@ LyX aligneert het tweede (centrale) veld van elke regel, dus meestal plaats
  er in principe van alles neerzetten.
  Gebruik echter geen multi-lijn vergelijking om een array op te bouwen;
  gebruik daarvoor een matrix (zie Sec.
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "Matrices"
 
 \end_inset
@@ -5604,7 +5771,10 @@ E & = & mc^{2}\\
 Als je teveel regels geschreven hebt, plaats de cursor dan op het einde
  van een regel en gebruik 
 \family sans
-M-e\InsetSpace ~
+M-e
+\begin_inset space ~
+\end_inset
+
 k
 \family default
  om de volgende regel te verwijderen.
@@ -5718,7 +5888,10 @@ rechter
 \emph default
  muisknop op de tabel om een 
 \family sans
-Table\InsetSpace ~
+Table
+\begin_inset space ~
+\end_inset
+
 Layout
 \family default
  popup-venster te krijgen waar je de tabel uitgebreid mee kunt bewerken.
@@ -5765,7 +5938,7 @@ lyxrc
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Momenteel moet je het 
 \family typewriter
 lyxrc
@@ -5845,8 +6018,9 @@ ustomization\SpecialChar \@.
 \begin_layout Itemize
 LyX kan LaTeX documenten inlezen.
  Zie sectie 
-\begin_inset LatexCommand ref
-reference "sec:relyx"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-Documenten-Importeren"
 
 \end_inset
 
@@ -5870,7 +6044,7 @@ pellchecker
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Merk op dat de spellingscontrole werkt vanaf het punt waar de cursor zich
  op dat moment bevindt tot aan het einde van het document.
 \end_layout
@@ -5885,7 +6059,8 @@ LyX voor LaTeX Gebruikers
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:latexgebruikers"
 
 \end_inset
@@ -5992,7 +6167,10 @@ sin
  rood zullen blijven omdat deze al WYSIWYM zijn.
  Deze manier van invoeren kan sneller zijn dan het gebruik van het 
 \family sans
-Math\InsetSpace ~
+Math
+\begin_inset space ~
+\end_inset
+
 Panel
 \family default
 , en het zal in het bijzonder gemakkelijk zijn voor ervaren LaTeX gebruikers.
@@ -6025,7 +6203,8 @@ LyX kan (nog?) niet alles doen wat LaTeX kan.
 usepackage{foo}
 \family default
  in de preambule (zie Sectie 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:preambule"
 
 \end_inset
@@ -6038,16 +6217,18 @@ reference "sec:preambule"
 LaTeX Documenten Importeren--- 
 \family typewriter
 tex2lyx
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:LaTeX-Documenten-Importeren"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-\begin_inset LatexCommand label
-name "sec:tex2lyx"
-
-\end_inset
-
 You can import a LaTeX file into LyX by using the 
 \family sans
 \bar under
@@ -6133,7 +6314,10 @@ ile\SpecialChar \menuseparator
 E
 \bar default
 xport\SpecialChar \menuseparator
-as\InsetSpace ~
+as
+\begin_inset space ~
+\end_inset
+
 LaTeX
 \family default
 .
@@ -6191,7 +6375,10 @@ E
 \bar under
 x
 \bar default
-tra\InsetSpace ~
+tra
+\begin_inset space ~
+\end_inset
+
 Options
 \family default
 .
@@ -6202,7 +6389,8 @@ Extra Preambule Codes
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:preambule"
 
 \end_inset
@@ -6219,7 +6407,10 @@ ayout\SpecialChar \menuseparator
 \bar under
 L
 \bar default
-atex\InsetSpace ~
+atex
+\begin_inset space ~
+\end_inset
+
 Preamble
 \family default
  en typ in het popupvenster.
@@ -6241,8 +6432,14 @@ LyX ondersteunt BibTeX.
 I
 \bar default
 nsert\SpecialChar \menuseparator
-Lists\InsetSpace ~
-&\InsetSpace ~
+Lists
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
 
 \bar under
 T
@@ -6252,7 +6449,10 @@ OC\SpecialChar \menuseparator
 \bar under
 B
 \bar default
-ibTeX\InsetSpace ~
+ibTeX
+\begin_inset space ~
+\end_inset
+
 Reference
 \family default
  om een 
@@ -6287,7 +6487,7 @@ bibliography{}
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Net als in LaTeX moeten meervoudige bibliografieën door kommas gescheiden
  zijn, zonder spatiëring.
 \end_layout
@@ -6320,11 +6520,15 @@ C
 \bar under
 i
 \bar default
-tation\InsetSpace ~
+tation
+\begin_inset space ~
+\end_inset
+
 Reference
 \family default
  bijgevoegd hebt, gebruiken (zie Sectie 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:bibliografieën"
 
 \end_inset
@@ -6377,7 +6581,10 @@ nsert\SpecialChar \menuseparator
 \bar under
 S
 \bar default
-pecial\InsetSpace ~
+pecial
+\begin_inset space ~
+\end_inset
+
 Character
 \family default
  menu voor meer speciale tekens, waaronder ellipsis, geforceerde regeleinde,
