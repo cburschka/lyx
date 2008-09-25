@@ -118,10 +118,11 @@ void InsetMathString::write(WriteStream & os) const
 	os.pendingBrace(false);
 
 	while (cit != end) {
+		bool mathmode = in_forced_mode ? os.textMode() : !os.textMode();
 		char_type const c = *cit;
+		docstring command(1, c);
 		try {
-			docstring command(1, c);
-			if (c < 0x80 || Encodings::latexMathChar(c, os.encoding(), command)) {
+			if (c < 0x80 || Encodings::latexMathChar(c, mathmode, os.encoding(), command)) {
 				if (os.textMode()) {
 					if (in_forced_mode) {
 						// we were inside \lyxmathsym
@@ -129,7 +130,7 @@ void InsetMathString::write(WriteStream & os) const
 						os.textMode(false);
 						in_forced_mode = false;
 					}
-					if (c >= 0x80) {
+					if (c >= 0x80 && os.textMode()) {
 						os << "\\ensuremath{";
 						os.textMode(false);
 						in_forced_mode = true;

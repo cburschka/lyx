@@ -114,6 +114,12 @@ private:
 class Encodings {
 public:
 	///
+	typedef std::set<char_type> MathCommandSet;
+	///
+	typedef std::set<char_type> TextCommandSet;
+	///
+	typedef std::set<char_type> MathSymbolSet;
+	///
 	typedef std::map<std::string, Encoding> EncodingList;
 	/// iterator to iterate over all encodings.
 	/// We hide the fact that our encoding list is implemented as a map.
@@ -181,12 +187,40 @@ public:
 	 */
 	static bool isForced(char_type c);
 	/**
-	 * If \p c cannot be encoded in the given \p encoding, convert
-	 * it to something that LaTeX can understand in math mode.
-	 * \return whether \p command is a math mode command
+	 * Register \p c as a mathmode command.
 	 */
-	static bool latexMathChar(char_type c, Encoding const * encoding, docstring & command);
-
+	static void addMathCmd(char_type c) { mathcmd.insert(c); }
+	/**
+	 * Register \p c as a textmode command.
+	 */
+	static void addTextCmd(char_type c) { textcmd.insert(c); }
+	/**
+	 * Register \p c as a mathmode symbol.
+	 */
+	static void addMathSym(char_type c) { mathsym.insert(c); }
+	/**
+	 * Tell whether \p c is registered as a mathmode command.
+	 */
+	static bool isMathCmd(char_type c) { return mathcmd.count(c); }
+	/**
+	 * Tell whether \p c is registered as a textmode command.
+	 */
+	static bool isTextCmd(char_type c) { return textcmd.count(c); }
+	/**
+	 * Tell whether \p c is registered as a mathmode symbol.
+	 */
+	static bool isMathSym(char_type c) { return mathsym.count(c); }
+	/**
+	 * Initialize mathcmd, textcmd, and mathsym sets.
+	 */
+	static void initMathAndTextSets() { mathcmd.clear(); textcmd.clear(); mathsym.clear(); }
+	/**
+	 * If \p c cannot be encoded in the given \p encoding, convert
+	 * it to something that LaTeX can understand in mathmode.
+	 * \return whether \p command is a mathmode command
+	 */
+	static bool latexMathChar(char_type c, bool mathmode,
+			Encoding const * encoding, docstring & command);
 	/**
 	 * Convert the LaTeX command in \p cmd to the corresponding unicode
 	 * point and set \p combining to true if it is a combining symbol
@@ -211,6 +245,12 @@ public:
 private:
 	///
 	EncodingList encodinglist;
+	///
+	static MathCommandSet mathcmd;
+	///
+	static TextCommandSet textcmd;
+	///
+	static MathSymbolSet mathsym;
 };
 
 extern Encodings encodings;

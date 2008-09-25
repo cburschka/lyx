@@ -34,6 +34,10 @@ namespace lyx {
 
 Encodings encodings;
 
+Encodings::MathCommandSet Encodings::mathcmd;
+Encodings::TextCommandSet Encodings::textcmd;
+Encodings::MathSymbolSet  Encodings::mathsym;
+
 namespace {
 
 char_type arabic_table[172][4] = {
@@ -377,25 +381,34 @@ vector<char_type> Encoding::symbolsList() const
 }
 
 
-bool Encodings::latexMathChar(char_type c, Encoding const * encoding,
-				docstring & command)
+bool Encodings::latexMathChar(char_type c, bool mathmode,
+			Encoding const * encoding, docstring & command)
 {
-	if (encoding) {
+	if (encoding)
 		command = encoding->latexChar(c, true);
-		if (!command.empty())
-			return false;
-	}
+
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
-	if (it == unicodesymbols.end())
-		throw EncodingException(c);
-	if (it->second.mathcommand.empty()) {
-		if (it->second.textcommand.empty())
+	if (it == unicodesymbols.end()) {
+		if (!encoding || command.empty())
 			throw EncodingException(c);
-		command = it->second.textcommand;
+		if (mathmode)
+			addMathSym(c);
 		return false;
 	}
-	command = it->second.mathcommand;
-	return true;
+	// at least one of mathcommand and textcommand is nonempty
+	bool use_math = (mathmode && !it->second.mathcommand.empty()) ||
+			(!mathmode && it->second.textcommand.empty());
+	if (use_math) {
+		command = it->second.mathcommand;
+		addMathCmd(c);
+	} else {
+		if (!encoding || command.empty()) {
+			command = it->second.textcommand;
+			addTextCmd(c);
+		} else if (mathmode)
+			addMathSym(c);
+	}
+	return use_math;
 }
 
 
@@ -496,9 +509,11 @@ void Encodings::validate(char_type c, LaTeXFeatures & features, bool for_mathed)
 {
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
 	if (it != unicodesymbols.end()) {
-		// at least one of mathcommand and textcommand is nonempty
-		bool const use_math = (for_mathed && !it->second.mathcommand.empty()) ||
+		// In mathed, c could be used both in textmode and mathmode
+		bool const use_math = (for_mathed && isMathCmd(c)) ||
 		                      (!for_mathed && it->second.textcommand.empty());
+		bool const use_text = (for_mathed && isTextCmd(c)) ||
+		                      (!for_mathed && !it->second.textcommand.empty());
 		if (use_math) {
 			if (!it->second.mathpreamble.empty()) {
 				if (it->second.mathfeature)
@@ -506,18 +521,19 @@ void Encodings::validate(char_type c, LaTeXFeatures & features, bool for_mathed)
 				else
 					features.addPreambleSnippet(it->second.mathpreamble);
 			}
-		} else {
+		}
+		if (use_text) {
 			if (!it->second.textpreamble.empty()) {
 				if (it->second.textfeature)
 					features.require(it->second.textpreamble);
 				else
 					features.addPreambleSnippet(it->second.textpreamble);
 			}
-			if (for_mathed) {
-				features.require("relsize");
-				features.require("lyxmathsym");
-			}
 		}
+	}
+	if (for_mathed && isMathSym(c)) {
+		features.require("relsize");
+		features.require("lyxmathsym");
 	}
 }
 

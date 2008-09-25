@@ -749,6 +749,8 @@ void latexParagraphs(Buffer const & buf,
 	ParagraphList::const_iterator par = paragraphs.begin();
 	ParagraphList::const_iterator endpar = paragraphs.end();
 
+	Encodings::initMathAndTextSets();
+
 	LASSERT(runparams.par_begin <= runparams.par_end, /**/);
 	// if only part of the paragraphs will be outputed
 	if (runparams.par_begin !=  runparams.par_end) {
