@@ -41,7 +41,7 @@ GuiErrorList::GuiErrorList(GuiView & lv)
 
 	connect(closePB, SIGNAL(clicked()),
 		this, SLOT(slotClose()));
-	connect(errorsLW, SIGNAL(itemSelectionChanged()),
+	connect(errorsLW, SIGNAL(currentRowChanged(int)),
 		this, SLOT(select()));
 
 	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
