@@ -3012,9 +3012,8 @@ msgid "Restore to cursor position when the file was last closed"
 msgstr "Obnovit pozici kurzoru v místì, kde byl pøi posledním zavøení souboru"
 
 #: src/frontends/qt4/ui/PrefUi.ui:52
-#, fuzzy
 msgid "Allow saving/restoring of window layouts and geometries"
-msgstr "Povolit ulo¾ení/naètení geometrie okna"
+msgstr "Povolit naètení/zápisu rozvr¾ení oken a jejich geometrie"
 
 #: src/frontends/qt4/ui/PrefUi.ui:59
 msgid "Restore cursor positions"
@@ -3025,9 +3024,8 @@ msgid "Load opened files from last session"
 msgstr "Naèíst soubory otevøené v pøedchozí relaci"
 
 #: src/frontends/qt4/ui/PrefUi.ui:73
-#, fuzzy
 msgid "Clear All Session Information"
-msgstr "Informace v hlavièce"
+msgstr "Smazat ve¹kerá nastavení rozvrhu oken"
 
 #: src/frontends/qt4/ui/PrefUi.ui:83
 msgid "Documents"
@@ -3376,16 +3374,14 @@ msgid "Fixed width of the column"
 msgstr "Pevná ¹íøka sloupce"
 
 #: src/frontends/qt4/ui/TabularUi.ui:78
-#, fuzzy
 msgid ""
 "Specifies the vertical alignment of this cell in relation to the baseline of "
 "the row."
-msgstr "Vertikální uspoøádání obsahu uvnitø rámeèku"
+msgstr "Udává vertikální zarovnání této buòky vzhledem k základní lince øádku."
 
 #: src/frontends/qt4/ui/TabularUi.ui:110
-#, fuzzy
 msgid "&Vertical alignment in row:"
-msgstr "&Vertikální zarovnání:"
+msgstr "&Vertikální zarovnání v øádku:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:123
 msgid "&Horizontal alignment:"
@@ -10274,7 +10270,6 @@ msgid "Move Section up|u"
 msgstr "Pøesunout sekci nahorù|n"
 
 #: lib/ui/stdcontext.inc:256
-#, fuzzy
 msgid "Insert Short Title|T"
 msgstr "Krátký titulek"
 
@@ -14537,9 +14532,8 @@ msgid "shaded box"
 msgstr "stínovaný rámeèek"
 
 #: src/Color.cpp:123
-#, fuzzy
 msgid "listings background"
-msgstr "vlo¾ka - pozadí"
+msgstr "výpis kódu - pozadí"
 
 #: src/Color.cpp:124
 msgid "branch label"
@@ -14602,9 +14596,8 @@ msgid "graphics background"
 msgstr "pozadí obrázku"
 
 #: src/Color.cpp:139 src/Color.cpp:143
-#, fuzzy
 msgid "math macro background"
-msgstr "pozadí makra"
+msgstr "pozadí makra (matematika)"
 
 #: src/Color.cpp:140
 msgid "math frame"
@@ -14619,32 +14612,26 @@ msgid "math line"
 msgstr "linka (matematika)"
 
 #: src/Color.cpp:144
-#, fuzzy
 msgid "math macro hovered background"
 msgstr "makro - pozadí popisu (matematika)"
 
 #: src/Color.cpp:145
-#, fuzzy
 msgid "math macro label"
 msgstr "znaèka makra (matematika)"
 
 #: src/Color.cpp:146
-#, fuzzy
 msgid "math macro frame"
 msgstr "rám makra (matematika)"
 
 #: src/Color.cpp:147
-#, fuzzy
 msgid "math macro blended out"
 msgstr "makro - okolí (matematika)"
 
 #: src/Color.cpp:148
-#, fuzzy
 msgid "math macro old parameter"
 msgstr "starý parametr makra (matematika)"
 
 #: src/Color.cpp:149
-#, fuzzy
 msgid "math macro new parameter"
 msgstr "nový parametr makra (matematika)"
 
@@ -14685,34 +14672,32 @@ msgid "change bar"
 msgstr "znaèka revize"
 
 #: src/Color.cpp:159
-#, fuzzy
 msgid "deleted text"
 msgstr "smazaný text"
 
 #: src/Color.cpp:160
-#, fuzzy
 msgid "added text"
 msgstr "pøidaný text"
 
 #: src/Color.cpp:161
 msgid "changed text 1st author"
-msgstr ""
+msgstr "revize - 1. autor"
 
 #: src/Color.cpp:162
 msgid "changed text 2nd author"
-msgstr ""
+msgstr "revize - 2. autor"
 
 #: src/Color.cpp:163
 msgid "changed text 3rd author"
-msgstr ""
+msgstr "revize - 3. autor"
 
 #: src/Color.cpp:164
 msgid "changed text 4th author"
-msgstr ""
+msgstr "revize - 4. autor"
 
 #: src/Color.cpp:165
 msgid "changed text 5th author"
-msgstr ""
+msgstr "revize - 5. autor"
 
 #: src/Color.cpp:166
 msgid "added space markers"
@@ -16057,11 +16042,11 @@ msgstr "nekódovatelný znak"
 
 #: src/Paragraph.cpp:2445
 msgid "Memory problem"
-msgstr ""
+msgstr "Interní chyba"
 
 #: src/Paragraph.cpp:2445
 msgid "Paragraph not properly initiliazed"
-msgstr ""
+msgstr "Odstavec není správnì inicializován"
 
 #: src/SpellBase.cpp:51
 msgid "Native OS API not yet supported."
@@ -18209,6 +18194,9 @@ msgid ""
 "%1$s\n"
 "does not exists."
 msgstr ""
+"Adresáø v zadané cestì\n"
+"%1$s\n"
+"neexistuje."
 
 #: src/frontends/qt4/GuiView.cpp:1351
 #, c-format
@@ -18796,9 +18784,8 @@ msgid "Module not found"
 msgstr "Modul nenalezen"
 
 #: src/insets/InsetIndex.cpp:128
-#, fuzzy
 msgid "Index sorting failed"
-msgstr "Konverze se nezdaøila"
+msgstr "Tøídìní rejstøíku se nezdaøilo"
 
 #: src/insets/InsetIndex.cpp:129
 #, c-format
@@ -18808,6 +18795,10 @@ msgid ""
 "Please specify the sorting of this entry manually, as\n"
 "explained in the User Guide."
 msgstr ""
+"Algoritmus pro automatické tøídìní rejstøíku narazil na problém\n"
+"s polo¾kou:'%1$s'.\n"
+"Prosím nastavte tøídìní této polo¾ky ruènì podle\n"
+"popisu v u¾ivatelské pøíruèce."
 
 #: src/insets/InsetInfo.cpp:81
 msgid "Information regarding "
