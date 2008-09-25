@@ -67,7 +67,7 @@ public:
 	///
 	bool hasRedoStack() const;
 
-	/// open a new group of undo operations. Groups can be nested.
+	/// open a new group of undo operations.
 	/**
 	 *  Groups can be nested. Such a nested group e.g. { {} {} } is undone in
 	 *  a single step. This means you can add a group whenever you are not sure.
