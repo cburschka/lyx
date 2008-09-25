@@ -1,4 +1,4 @@
-#LyX 1.6.0rc1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -154,8 +154,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 7.
- August 2008
+letzte Änderung: 25.
+ September 2008
 \end_layout
 
 \begin_layout Standard
@@ -328,12 +328,6 @@ X
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "Wie-LyX-LaTeX-benutzt"
-
-\end_inset
-
 Dieses Kapitel ist für LaTeX-niker und LaTeX-Sonderlinge gedacht.
  Hier werden wir erklären, wie LyX und LaTeX zusammenarbeiten, um eine Druckausg
 abe zu erzeugen.
@@ -1503,12 +1497,6 @@ LyX und der LaTeX-Vorspann
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "LaTeX-Vorspann"
-
-\end_inset
-
 Wenn Sie LaTeX bereits kennen, müssen wir Ihnen hier nicht erklären, wofür
  der Vorspann da ist.
  Wenn nicht, wird das Folgende Ihnen einige Ideen geben --- wir empfehlen
@@ -2462,12 +2450,6 @@ Gut, Sie haben keine der Feineinstellungen benutzt, Sie haben die Regeln
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset CommandInset label
-LatexCommand label
-name "Sloppypar"
-
-\end_inset
-
 Haben Sie lange Textabschnitte, bei denen LaTeX keinen Zeilenumbruch finden
  kann? Standardmäßig ist LaTeX ziemlich streng mit dem Wortzwischenraum
  beim Zeilenumbruch.
@@ -5754,13 +5736,6 @@ Die Marke sollte am Text
 kleben
 \emph default
 , damit sie nicht auf die falsche Seite gerät.
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "Chktex"
-
-\end_inset
-
  
 \begin_inset Foot
 status open
@@ -14063,13 +14038,6 @@ Blocksatz
 
 \begin_layout Subsubsection
 Literaturverzeichnisse
-\begin_inset CommandInset label
-LatexCommand label
-name "Literaturverzeichnisse"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

@@ -188,12 +188,6 @@ LyX configuration files
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "chap:config"
-
-\end_inset
-
 This chapter aims to help you to find your way through the LyX configuration
  files.
  Before continuing to read this chapter, you should find out where your
@@ -531,18 +525,7 @@ status collapsed
 
 \end_inset
 
- that define the keybindings used in LyX (see section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:bindings"
-
-\end_inset
-
-).
+ that define the keybindings used in LyX.
  If there exists an internationalized version of the bind file named 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -554,25 +537,6 @@ $LANG_xxx.bind
 \end_inset
 
 , that will be used first.
- See Chapter
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:i18n"
-
-\end_inset
-
-, and section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:bindings"
-
-\end_inset
-
-for details.
 \end_layout
 
 \begin_layout Labeling
@@ -845,14 +809,6 @@ status collapsed
  that define the user interface to LyX.
  That is, the files define which items appear in which menus and the items
  appearing on the toolbar.
- See 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ui"
-
-\end_inset
-
- for details.
 \end_layout
 
 \begin_layout Subsection
@@ -1447,12 +1403,6 @@ Save
 \end_layout
 
 \begin_layout Section
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:converters-etc"
-
-\end_inset
-
 File Handling
 \end_layout
 
@@ -5401,12 +5351,6 @@ Saving your Language Configuration
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:savlang"
-
-\end_inset
-
 You can edit your preferences so that your desired language environment
  is automatically configured when LyX starts up, via the 
 \begin_inset Flex CharStyle:MenuItem
@@ -5873,12 +5817,6 @@ Document Class
 \end_layout
 
 \begin_layout Section
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Layouts"
-
-\end_inset
-
 Layouts
 \end_layout
 
@@ -6012,12 +5950,6 @@ default
 \end_layout
 
 \begin_layout Subsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Layout-modules"
-
-\end_inset
-
 Layout modules
 \end_layout
 
@@ -6855,14 +6787,7 @@ layout-reload
 
 .
  There is no default binding for this function---though, of course, you
- can bind it to a key yourself (see section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:bindings"
-
-\end_inset
-
-).
+ can bind it to a key yourself.
  If you want to use this function, then, you should simply enter it in the
  mini-buffer.
  
@@ -7489,14 +7414,7 @@ Provides
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:Provides"
-
-\end_inset
-
-[
+ [
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -9516,14 +9434,7 @@ LatexName
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:LatexName"
-
-\end_inset
-
-The name of the corresponding LaTeX stuff.
+ The name of the corresponding LaTeX stuff.
  Either the environment or command name.
 \end_layout
 
@@ -9550,14 +9461,7 @@ LatexParam
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:LatexParam"
-
-\end_inset
-
-An optional parameter for the corresponding 
+ An optional parameter for the corresponding 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -10094,14 +9998,7 @@ NeedProtect
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:NeedProtect"
-
-\end_inset
-
-[
+ [
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -10470,14 +10367,7 @@ PassThru
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "des:PassThru"
-
-\end_inset
-
-[
+ [
 \emph on
 
 \begin_inset Flex CharStyle:Code

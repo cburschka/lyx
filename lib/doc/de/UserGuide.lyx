@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 23.
+letzte Änderung: 25.
  September 2008
 \end_layout
 
@@ -2927,13 +2927,6 @@ Dokument!klassen@-klassen
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "Dokumentklassen"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4232,13 +4225,6 @@ werden
 
 \family sans
 Seitenformat
-\begin_inset CommandInset label
-LatexCommand label
-name "Seitenformat"
-
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9215,13 +9201,6 @@ Andere Dinge schachteln
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "Andere-Dinge-schachteln"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -11016,13 +10995,6 @@ Ist ein Leerzeichen ein Leerzeichen? Nicht in guter Typographie.
 
 \begin_layout Subsubsection
 Normales Leerzeichen
-\begin_inset CommandInset label
-LatexCommand label
-name "Normales-Leerzeichen"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -11622,13 +11594,6 @@ Leerraum!senkrechter
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "Senkrechter-Leerraum"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -12093,13 +12058,6 @@ reference "Tabellen"
 
 \begin_layout Subsubsection
 Leerender Seitenumbruch
-\begin_inset CommandInset label
-LatexCommand label
-name "Leerender-Seitenumbruch"
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -12227,13 +12185,6 @@ status collapsed
 \begin_layout Plain Layout
 Zeilenumbruch ! rechtsbündig
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Zeilenumbruch-rechtsbündig"
 
 \end_inset
 
@@ -12997,7 +12948,7 @@ Hervorhebungsstil
 \begin_layout Subsection
 Dokumentfont
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dokument!font@-font
@@ -13012,13 +12963,6 @@ status collapsed
 \begin_layout Plain Layout
 Font!-größe
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Dokumentfont-und-Fontgröße"
 
 \end_inset
 
@@ -14965,13 +14909,6 @@ dvi
 -Betrachter
 \family typewriter
 
-\begin_inset CommandInset label
-LatexCommand label
-name "DVI-Version-anschauen"
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -15607,13 +15544,6 @@ status collapsed
 \begin_layout Plain Layout
 Bindestriche
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Bindestriche"
 
 \end_inset
 
@@ -16700,13 +16630,6 @@ Ligatur
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "Ligaturen"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -17111,13 +17034,6 @@ Fusnoten@Fußnoten
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "Fußnoten"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -17249,13 +17165,6 @@ status collapsed
 \begin_layout Plain Layout
 Randnotizen
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Randnotizen"
 
 \end_inset
 
@@ -23505,13 +23414,6 @@ Gleitobjekte
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "Gleitobjekte"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -23532,13 +23434,6 @@ Objekte, Kapitel
 
 \begin_layout Section
 Minipage
-\begin_inset CommandInset label
-LatexCommand label
-name "Minipage"
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -23575,13 +23470,6 @@ status collapsed
 \begin_layout Plain Layout
 mathematische!Formeln
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Mathematische-Formeln"
 
 \end_inset
 
@@ -24925,13 +24813,6 @@ Mathe-!Werkzeugleiste
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "Mathe-Werkzeugleiste"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -26199,13 +26080,6 @@ Gruppierung
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "Gruppierung"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -26650,7 +26524,7 @@ Mit LyX ist es sehr einfach, Gleichungen zu nummerieren.
 
 in eine nummerierte
 \begin_inset Formula \begin{equation}
-1+2=3\label{mathed:first-eqn}\end{equation}
+1+2=3\label{eq:first-eqn}\end{equation}
 
 \end_inset
 
@@ -26705,7 +26579,7 @@ Querverweis
  verweisen, aber nicht auf eine mit dem Nummerzeichen, zum Beispiel (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "mathed:first-eqn"
+reference "eq:first-eqn"
 
 \end_inset
 
@@ -26721,13 +26595,13 @@ Bei nummerierten oder markierten mehrzeiligen Formeln wird standardmäßig
  (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "mathed:fourth-eqn"
+reference "eq:fourth-eqn"
 
 \end_inset
 
 ).
 \begin_inset Formula \begin{eqnarray}
-1 & = & 3-2\label{mathed:second-equation}\\
+1 & = & 3-2\\
 2 & = & 4-2\\
 4 & \leq & 7.\end{eqnarray}
 
@@ -26754,17 +26628,17 @@ N
  aus.
  
 \begin_inset Formula \begin{eqnarray}
-1 & = & 4-3\label{mathed:fourth-eqn}\\
+1 & = & 4-3\label{eq:fourth-eqn}\\
 2 & = & 7-5\\
 1 & = & e^{2\pi i}\nonumber \\
-16 & \equiv & 2\,(mod\,7)\label{mathed:fifth-eqn}\end{eqnarray}
+16 & \equiv & 2\,(mod\,7)\label{eq:fifth-eqn}\end{eqnarray}
 
 \end_inset
 
 Beachten Sie, dass die erste Gleichung (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "mathed:fourth-eqn"
+reference "eq:fourth-eqn"
 
 \end_inset
 
@@ -26772,7 +26646,7 @@ reference "mathed:fourth-eqn"
  letzte (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "mathed:fifth-eqn"
+reference "eq:fifth-eqn"
 
 \end_inset
 
@@ -26917,13 +26791,6 @@ macro
 Bei Makros mit 
 \emph on
 Argumenten
-\begin_inset CommandInset label
-LatexCommand label
-name "Makro!mit Argumenten"
-
-\end_inset
-
-
 \emph default
  aber kann man den Cursor in das Makro stellen.
  In einer Makrodefinition sieht ein Argument aus wie ein # mit einer Nummer
@@ -27231,13 +27098,6 @@ status collapsed
 \begin_layout Plain Layout
 Schriftstile
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Schriftstile"
 
 \end_inset
 
@@ -28630,7 +28490,7 @@ reference "Makro-erzeugen"
 \begin_layout Enumerate
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "mathed:fifth-eqn"
+reference "eq:fifth-eqn"
 
 \end_inset
 
@@ -29260,13 +29120,6 @@ Der Text eines URLs wird immer im Schreibmaschinenstil gedruckt.
 
 \begin_layout Subsection
 Hyperlink
-\begin_inset CommandInset label
-LatexCommand label
-name "Hyperlink"
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -31890,13 +31743,6 @@ key "hyperref"
 
 \begin_layout Section
 TeX-Code und LaTeX-Syntax 
-\begin_inset CommandInset label
-LatexCommand label
-name "LaTeX-Syntax-und-TeX-Code"
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -31929,7 +31775,7 @@ name "TeX-Code-Kästchen"
 
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 TeX-Code
@@ -32450,13 +32296,6 @@ key "latex-einführung,latex-praxisbuch,latexcompanion,latexguide"
 
 \begin_layout Section
 Dokumentschnipsel ansehen
-\begin_inset CommandInset label
-LatexCommand label
-name "Dokumentschnipsel-ansehen"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -33287,13 +33126,6 @@ status collapsed
 \begin_layout Plain Layout
 Thesaurus
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Thesaurus"
 
 \end_inset
 
@@ -34843,13 +34675,6 @@ X-Code
 Strg+L
 \family default
 )
-\begin_inset CommandInset label
-LatexCommand label
-name "LaTeX-Code-einfügen"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -38938,13 +38763,6 @@ status collapsed
 \end_inset
 
 X
-\begin_inset CommandInset label
-LatexCommand label
-name "LaTeX-Einstellungen"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
@@ -39355,13 +39173,6 @@ Damit eine Änderung wirksam wird, müssen Sie auf
 
 \begin_layout Chapter
 Dokument-Einstellungen
-\begin_inset CommandInset label
-LatexCommand label
-name "Dokument-Einstellungen-2"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -39580,12 +39391,6 @@ verwenden bedeutet, einen echten Font zu benutzen, anstatt Kapitälchen durch
 \end_layout
 
 \begin_layout Description
-\begin_inset CommandInset label
-LatexCommand label
-name "Mediävalziffern"
-
-\end_inset
-
 Mediävalziffern
 \begin_inset space ~
 \end_inset
@@ -40507,13 +40312,6 @@ Er enthält LaTeX-Befehle, die nicht zum Klassenstandard gehören.
 
 \begin_layout Chapter
 In LyX verfügbare Maßeinheiten
-\begin_inset CommandInset label
-LatexCommand label
-name "LyX-Maßeinheiten"
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 

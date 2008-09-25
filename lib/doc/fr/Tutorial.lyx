@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 337
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass book
@@ -424,14 +424,7 @@ Démarrer avec LyX
 \end_layout
 
 \begin_layout Section
-Votre premier document LyX
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:premier-doc-LyX"
-
-\end_inset
-
- 
+Votre premier document LyX 
 \end_layout
 
 \begin_layout Standard
@@ -947,13 +940,6 @@ Bien sûr, vous n'en avez pas écrit assez pour vous être servi de toutes
 
 \begin_layout Subsection
 WYSIWYM : les espaces avec LyX
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:espace"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2593,13 +2579,6 @@ exemple_brut.lyx
 
 \begin_layout Section
 Étiquettes et références croisées
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:étiquettes"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4597,13 +4576,6 @@ exemple_brut.lyx
 
 \begin_layout Subsection
 Matrices
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:matrices"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5769,12 +5741,6 @@ LyX et la typographie française
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:typographie-française"
-
-\end_inset
-
 Pour rédiger un document en français, il faut avant tout sélectionner l'un
  des paquetages français de LaTeX (
 \family sans
