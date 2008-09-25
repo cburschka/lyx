@@ -1,15 +1,24 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass book
 \begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
 %disable hyphenation (breaking words at end of line)
 \usepackage[none]{hyphenat}
 %disable double space after end-of-sentence period
 \frenchspacing
 %Allow larger space between words in a line
-\sloppy
+%\sloppy
 
 % These are fancyhdr commands that makes the heading "fancy"
 % behave like "heading", only without the Hebrew bugs.
@@ -29,9 +38,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -64,7 +75,7 @@
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 תורגם על ידי גדי קוזמא, 
 \numeric on
 2002
@@ -78,7 +89,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -94,14 +106,24 @@ status collapsed
 \lang english
 If you cannot see anything in this document except for this paragraph, do
  not despair! Everything you need is here: 
-\begin_inset LatexCommand url
-target "http://wiki.lyx.org/Windows/Hebrew"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Windows/Hebrew
+\end_layout
 
 \end_inset
 
  and here: 
-\begin_inset LatexCommand htmlurl
-target "http://www.cs.haifa.ac.il/~dekelts/lyx/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.cs.haifa.ac.il/~dekelts/lyx/
+\end_layout
 
 \end_inset
 
@@ -142,7 +164,7 @@ LaTeX
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 מנהג מקובל באנגלית 
 \lang english
 ---
@@ -208,7 +230,8 @@ LaTeX
  במסווה.
  עם זאת, לליקס יש את המוזרויות שלה שאתה צריך להכיר.
  גם אם אין לך כוח לקרוא את כל המסמך הזה, מומלץ בחום שתקרא את סעיף 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:latexusers"
 
 \end_inset
@@ -264,7 +287,7 @@ do it yourself
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 מה גם שליקס מטבעו מיועד למשתמשים שיש להם קורטוב שכל בראש.
 \end_layout
 
@@ -363,7 +386,7 @@ elp
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 חוץ מהתוכן, הקבצים האלה גם יכולים לשמש כדוגמא איך להשתמש בתכונות של ליקס.
 \end_layout
 
@@ -425,7 +448,7 @@ dvi
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 אפשר להתחיל מפרק 
 \numeric on
 2
@@ -481,7 +504,7 @@ example_raw.lyx
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 הרמזים מופיעים כקוביות עם המילה 
 \lang english
 note
@@ -503,7 +526,7 @@ example_lyxified.lyx
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 בעברית אנחנו מציעים לך שתי אופציות אטרקטיביות: או הקובץ 
 \family typewriter
 \lang english
@@ -598,7 +621,10 @@ xamples
 F
 \bar default
 ile\SpecialChar \menuseparator
-Save\InsetSpace ~
+Save
+\begin_inset space ~
+\end_inset
+
 
 \bar under
 A
@@ -631,7 +657,7 @@ examples/
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 בחלק זה, ובתעוד בכלל, לא נסביר איך לעבוד עם עברית בליקס.
  הסברים בנושא זה נמצאים באתר של דקל צור שהפנייה אליו נמצאת בראש המסמך.
  לא, אל תלך לשם עכשיו.
@@ -683,7 +709,7 @@ This is my first LyX document!
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 בסדר, בסדר, מצדנו תדפיס את דעתך על מצב החסה בשטחים.
  זה לא משנה.
  ואנחנו מתנצלים מראש על האויליות של משפט הדוגמא הזה וכל דבר אחר שנבקש ממך
@@ -707,7 +733,10 @@ status collapsed
 F
 \bar default
 ile\SpecialChar \menuseparator
-Save\InsetSpace ~
+Save
+\begin_inset space ~
+\end_inset
+
 
 \bar under
 A
@@ -768,7 +797,7 @@ dvi
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 אפשר לחסוך זמן בפעמים הבאות שאתה מבצע את הפעולה.
  השאר את החלון של 
 \family typewriter
@@ -864,7 +893,7 @@ OK
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 זה לא שאנחנו לא יודעים שעשית את זה הרבה לפני שפתחת את המסמך הזה.
 \end_layout
 
@@ -1006,7 +1035,10 @@ py
 \begin_layout Description
 חפש/החלף השתמש ב- 
 \family sans
-עריכה:חפש\InsetSpace ~
+עריכה:חפש
+\begin_inset space ~
+\end_inset
+
 והחלף
 \family default
  )
@@ -1020,8 +1052,14 @@ dit\SpecialChar \menuseparator
 \bar under
 F
 \bar default
-ind\InsetSpace ~
-&\InsetSpace ~
+ind
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
 Replace
 \family default
 \lang hebrew
@@ -1043,7 +1081,7 @@ eplace
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 סגור את החלון כשאתה גומר.
  או השאר אותו פתוח.
  רוב תבות הדיאלוג בליקס, כולל חלון החיפוש, חלון 
@@ -1071,7 +1109,10 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-פורמט\InsetSpace ~
+פורמט
+\begin_inset space ~
+\end_inset
+
 תו אפשר להדגיש טקסט )באנגלית זה נקרא 
 \emph on
 \lang english
@@ -1125,15 +1166,20 @@ ayout
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 אף אחד מאלה לא עובד כמו שצריך בעברית, בהתקנה הבסיסית של 
 \lang english
 LaTeX
 \lang hebrew
  עברי.
  הוראות כיצד לטפל בבעיה תמצא ב-
-\begin_inset LatexCommand url
-target "http://www.math.tau.ac.il/~dekelts/lyx/ttf.html"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.math.tau.ac.il/~dekelts/lyx/ttf.html
+\end_layout
 
 \end_inset
 
@@ -1146,15 +1192,21 @@ target "http://www.math.tau.ac.il/~dekelts/lyx/ttf.html"
 \end_layout
 
 \begin_layout Description
-לוח\InsetSpace ~
-הכלים שנמצא בדיוק מתחת לתפריטים נותן קיצורים לכמה פונקציות נפוצות, כמו
- הדבק או הדפס.
+לוח
+\begin_inset space ~
+\end_inset
+
+הכלים שנמצא בדיוק מתחת לתפריטים נותן קיצורים לכמה פונקציות נפוצות, כמו הדבק
+ או הדפס.
  אם תשאיר את העכבר מספר שניות מעל הכפתור, יופיע פתק צהוב קטן שיאמר לך מה
  הוא עושה.
 \end_layout
 
 \begin_layout Description
-שורת\InsetSpace ~
+שורת
+\begin_inset space ~
+\end_inset
+
 מידע הפס האפור בתחתית החלון נקרא שורת המידע )
 \lang english
 minibuffer
@@ -1180,7 +1232,8 @@ WYSIWYM
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:whitespace"
 
 \end_inset
@@ -1329,8 +1382,14 @@ C-Space
 \lang hebrew
  או 
 \family sans
-הוספה:תו\InsetSpace ~
-מיוחד:רווח\InsetSpace ~
+הוספה:תו
+\begin_inset space ~
+\end_inset
+
+מיוחד:רווח
+\begin_inset space ~
+\end_inset
+
 מוגן
 \family default
  )
@@ -1344,9 +1403,15 @@ nsert\SpecialChar \menuseparator
 \bar under
 S
 \bar default
-pecial\InsetSpace ~
+pecial
+\begin_inset space ~
+\end_inset
+
 Character\SpecialChar \menuseparator
-Protected\InsetSpace ~
+Protected
+\begin_inset space ~
+\end_inset
+
 
 \bar under
 B
@@ -1367,7 +1432,7 @@ u
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 אם אתה קורא את המסמך במחשב, מן הסתם כבר ראית אותם ותהית לגבי משמעותם.
 \end_layout
 
@@ -1376,13 +1441,19 @@ status collapsed
 .
  אם תשים 
 \family sans
-רווח\InsetSpace ~
+רווח
+\begin_inset space ~
+\end_inset
+
 מוגן
 \family default
  בין שתי מילים, זה יראה בדיוק כמו רווח רגיל בהדפסה.
  ההבדל הוא ש
 \family sans
-רווח\InsetSpace ~
+רווח
+\begin_inset space ~
+\end_inset
+
 מוגן
 \family default
  אומר ל- 
@@ -1390,7 +1461,10 @@ status collapsed
 LaTeX
 \lang hebrew
  לא לשבור את השורה בין שתי המילים האלה.
- מקובל, למשל, להשתמש בו כדי לכתוב משהו כמו "ראה פרק\InsetSpace ~
+ מקובל, למשל, להשתמש בו כדי לכתוב משהו כמו "ראה פרק
+\begin_inset space ~
+\end_inset
+
 
 \numeric on
 1
@@ -1403,11 +1477,14 @@ LaTeX
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 במסמך הזה אנחנו משתמשים בהם כדי לתאר שמות של תפריטים, קיצורים, ותוים מיוחדים,
  כמו למשל 
 \family sans
-רווח\InsetSpace ~
+רווח
+\begin_inset space ~
+\end_inset
+
 מוגן
 \family default
 ...
@@ -1500,7 +1577,7 @@ Section
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 אתה לא צריך לבחור את השורה בשביל זה.
  אם ברגע נתון לא בחרת שום טקסט, ליקס תשנה את הפסקה הנוכחית לסביבה החדשה.
  לחילופין, כדי לשנות כמה פסקאות לסביבה חדשה בבת אחת, בחר אותן ואז בחר את
@@ -1549,7 +1626,7 @@ Return
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 ראה במדריך למשתמש )
 \emph on
 \lang english
@@ -1813,7 +1890,8 @@ Section
 \lang hebrew
 , אבל אתה יכול להשתמש בה רק בסוגי מסמכים מסוימים.
  על כך ראה סעיף 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:textclasses"
 
 \end_inset
@@ -1878,7 +1956,7 @@ Tab
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 הכוונה כאן למסמך מהסוג שבו הרבה מאוד מספרי סעיפים וסעיפי משנה ומעט מאוד
  תוכן 
 \lang english
@@ -1898,7 +1976,7 @@ status collapsed
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 כן, אולי הגזמנו קצת עם הנקודה הזו, אבל זו הנקודה העיקרית בפילוסופיה של ליקס,
  אז סלח לנו, בבקשה.
 \end_layout
@@ -2033,7 +2111,10 @@ Return
  אם אתה רוצה יותר מפסקה אחת בתוך פריט אחד, הדרך הפשוטה ביותר היא להשתמש
  ב
 \family sans
-שבירת\InsetSpace ~
+שבירת
+\begin_inset space ~
+\end_inset
+
 שורה
 \family default
  
@@ -2072,7 +2153,7 @@ LaTeX
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 אתה לא יכול לבחור את הכוכבית הראשונה.
  היא תסומן )בתכלת( רק אם הבחירה שלך כוללת חלקים מהפסקה הקודמת, שזה מן הסתם
  לא מה שאתה רוצה.
@@ -2108,7 +2189,7 @@ List
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 הסביבה 
 \family sans
 \lang english
@@ -2161,7 +2242,7 @@ tab
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 מדובר ב- 
 \lang english
 tab
@@ -2180,7 +2261,10 @@ List
 ( משאר הפסקה.
  אם אתה רוצה יותר ממילה אחת במונח, הפרד אותן בעזרת 
 \family sans
-רווח\InsetSpace ~
+רווח
+\begin_inset space ~
+\end_inset
+
 מוגן
 \family default
 .
@@ -2249,7 +2333,7 @@ typewriter
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 הכוונה כאן היא למה שידוע בד"כ כ- 
 \family typewriter
 \lang english
@@ -2358,7 +2442,8 @@ Verse
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:textclasses"
 
 \end_inset
@@ -2368,7 +2453,7 @@ name "sec:textclasses"
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 הכוונה כאן למגוון של הבדלים קטנים בין דפים זוגיים ואי-זוגיים, כמו למשל גודל
  השוליים, מיקום מספרי הדפים, מיקום הערות צד, ולעיתים חוקים כמו "פרק חייב
  להתחיל בדף אי-זוגי", כמו במסמך זה, לדוגמא 
@@ -2401,7 +2486,7 @@ Class
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 משתמשי 
 \lang english
 LaTeX
@@ -2440,7 +2525,7 @@ article
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 זו בדרך כלל ברירת המחדל, אם כי אפשר לשנות את זה מקובץ הקונפיגורציה 
 \family typewriter
 \lang english
@@ -2533,7 +2618,10 @@ American Mathematics Society
 ( בעזרת המחלקה 
 \family sans
 \lang english
-article\InsetSpace ~
+article
+\begin_inset space ~
+\end_inset
+
 (AMS)
 \family default
 \lang hebrew
@@ -2575,33 +2663,33 @@ Special Document Classes
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 הערות
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 שם
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 צד אחד, אין פרקים )
 \family sans
 \lang english
@@ -2616,7 +2704,7 @@ Chapter
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family sans
 \lang english
@@ -2626,11 +2714,11 @@ article
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 מחלקה וסביבות עבור האגודה המתמטית האמריקאית
 \end_layout
 
@@ -2639,7 +2727,7 @@ article
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family sans
 \lang english
@@ -2649,11 +2737,11 @@ article (AMS)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 ארוך יותר מ- 
 \family sans
 \lang english
@@ -2668,7 +2756,7 @@ article
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family sans
 \lang english
@@ -2678,11 +2766,11 @@ report
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 דו"ח )
 \family sans
 \lang english
@@ -2697,7 +2785,7 @@ report
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family sans
 \lang english
@@ -2707,11 +2795,11 @@ book
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 שקפים )עם תמיכה ב- 
 \family typewriter
 \lang english
@@ -2726,7 +2814,7 @@ FoilTeX
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family sans
 \lang english
@@ -2736,20 +2824,20 @@ slides
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 הרבה סביבות יחודיות, עבור כתובת, חתימה...
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family sans
 \lang english
@@ -2836,7 +2924,10 @@ ocument
 \begin_layout Standard
 פתחי קובץ חדש בעזרת 
 \family sans
-קובץ:חדש\InsetSpace ~
+קובץ:חדש
+\begin_inset space ~
+\end_inset
+
 מתבנית
 \family default
  )
@@ -2846,8 +2937,14 @@ ocument
 F
 \bar default
 ile\SpecialChar \menuseparator
-New\InsetSpace ~
-from\InsetSpace ~
+New
+\begin_inset space ~
+\end_inset
+
+from
+\begin_inset space ~
+\end_inset
+
 
 \bar under
 t
@@ -2865,7 +2962,10 @@ letter.lyx
  מתיבת הדיאלוג 
 \family sans
 \lang english
-Choose\InsetSpace ~
+Choose
+\begin_inset space ~
+\end_inset
+
 Template
 \family default
 \lang hebrew
@@ -2877,7 +2977,10 @@ Template
 כשתסתכלי בתפריט הסביבה, תראי כמה וכמה סביבות, כמו 
 \family sans
 \lang english
-My\InsetSpace ~
+My
+\begin_inset space ~
+\end_inset
+
 Address
 \family default
 \lang hebrew
@@ -2938,7 +3041,7 @@ WYSIWYM
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 אזהרה אחת, אם את כותבת תבנית חדשה.
  אם את מוחקת את כל הטקסט בסביבה נתונה 
 \lang english
@@ -2947,7 +3050,10 @@ status collapsed
  למשל אם מחקת את כל הסביבה 
 \family sans
 \lang english
-My\InsetSpace ~
+My
+\begin_inset space ~
+\end_inset
+
 Address
 \family default
 \lang hebrew
@@ -3013,7 +3119,7 @@ article
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 אל תשתמש יותר ב- 
 \lang english
 letter
@@ -3072,7 +3178,8 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:labels"
 
 \end_inset
@@ -3140,7 +3247,7 @@ sec:aboutdocument
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 אפשר להשתמש בטקסט בעברית בתוית בלי בעיה 
 \lang english
 ---
@@ -3160,7 +3267,7 @@ status collapsed
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 אנחנו כתובים 
 \family typewriter
 \lang english
@@ -3198,7 +3305,7 @@ OK
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 זה לא ממש נכון 
 \lang english
 ---
@@ -3254,9 +3361,10 @@ dvi
 
 \lang english
 If you want to know more about this document, then see
-\newline
-Section , which can
- be found on page .
+\begin_inset Newline newline
+\end_inset
+
+Section , which can be found on page .
 \end_layout
 
 \begin_layout Standard
@@ -3279,7 +3387,10 @@ Section
 I
 \bar default
 nsert\SpecialChar \menuseparator
-Cross\InsetSpace ~
+Cross
+\begin_inset space ~
+\end_inset
+
 
 \bar under
 R
@@ -3327,7 +3438,10 @@ Reference Type
 Standard
 \family default
 \lang hebrew
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 
 \lang english
 ---
@@ -3370,7 +3484,10 @@ Apply
 (.
  מקובל לשים 
 \family sans
-רווח\InsetSpace ~
+רווח
+\begin_inset space ~
+\end_inset
+
 מוגן
 \family default
  בין המילה 
@@ -3410,7 +3527,10 @@ pdate\SpecialChar \menuseparator
 \lang hebrew
 ( ותראה בעמוד האחרון )או איפה ששמת את ההפניות( שאנחנו מתיחסים ל-"
 \lang english
-Section\InsetSpace ~
+Section
+\begin_inset space ~
+\end_inset
+
 2
 \lang hebrew
 
@@ -3419,7 +3539,10 @@ Section\InsetSpace ~
 
  ו-"
 \lang english
-Page\InsetSpace ~
+Page
+\begin_inset space ~
+\end_inset
+
 1
 \lang hebrew
 
@@ -3438,7 +3561,10 @@ Page\InsetSpace ~
 , וממנה הכפתור 
 \family sans
 \lang english
-Goto\InsetSpace ~
+Goto
+\begin_inset space ~
+\end_inset
+
 reference
 \family default
 \lang hebrew
@@ -3524,7 +3650,7 @@ sec:myfirstlabel
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 אגב, אם העתקת גם כותרת של פרק, אתה עלול לקבל הודעת שגיאה, כי פרקים אסורים
  ב
 \family sans
@@ -3538,9 +3664,13 @@ class
 \lang hebrew
 .
  אם זה יקרה, פשוט מחק את כותרת הפרק.
- אם שכחת למה, חזור לסעיף\InsetSpace ~
+ אם שכחת למה, חזור לסעיף
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:textclasses"
 
 \end_inset
@@ -3570,15 +3700,21 @@ example_raw.lyx
 \begin_layout Standard
 כדי להכניס הערת שוליים, ניתן להשתמש בכפתור 
 \family sans
-הוסף\InsetSpace ~
-הערת\InsetSpace ~
+הוסף
+\begin_inset space ~
+\end_inset
+
+הערת
+\begin_inset space ~
+\end_inset
+
 שוליים
 \family default
  על לוח הכלים
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 זה הכפתור שנראה כמו חץ שמצביע על שני פסים אדומים, שמעליהם כמה פסים שחורים.
 \end_layout
 
@@ -3586,7 +3722,10 @@ status collapsed
 
  או ב
 \family sans
-הוספה:הערת\InsetSpace ~
+הוספה:הערת
+\begin_inset space ~
+\end_inset
+
 תחתית
 \family default
  )
@@ -3606,8 +3745,14 @@ ootnote
 (.
  לחץ בסוף שורה במקום כלשהו במסמך שלך, ואז על על הכפתור 
 \family sans
-הוסף\InsetSpace ~
-הערת\InsetSpace ~
+הוסף
+\begin_inset space ~
+\end_inset
+
+הערת
+\begin_inset space ~
+\end_inset
+
 שוליים
 \family default
 .
@@ -3683,7 +3828,7 @@ LaTeX
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 לפעמים יכול להיות קשה לבחור את הערת השוליים בלי לפתוח אותה בטעות.
  במקרים כאלה, פשוט בחר בעזרת החצים.
 \end_layout
@@ -3693,15 +3838,27 @@ status collapsed
  ולגזור ולהדביק אותו.
  בנוסף, אפשר להפוך טקסט רגיל להערת שוליים ע"י בחירתו, ולחיצה על הכפתור 
 \family sans
-הוסף\InsetSpace ~
-הערת\InsetSpace ~
+הוסף
+\begin_inset space ~
+\end_inset
+
+הערת
+\begin_inset space ~
+\end_inset
+
 שוליים
 \family default
 .
  בכיוון ההפוך, לחץ על הכפתור 
 \family sans
-הוסף\InsetSpace ~
-הערת\InsetSpace ~
+הוסף
+\begin_inset space ~
+\end_inset
+
+הערת
+\begin_inset space ~
+\end_inset
+
 שוליים
 \family default
  כאשר הסמן בתוך הערת שוליים פתוחה ותהפוך אותה לטקסט רגיל.
@@ -3710,18 +3867,30 @@ status collapsed
 \begin_layout Standard
 הערות צד אפשר להכניס בעזרת הכפתור 
 \family sans
-הכנס\InsetSpace ~
-הערת\InsetSpace ~
+הכנס
+\begin_inset space ~
+\end_inset
+
+הערת
+\begin_inset space ~
+\end_inset
+
 צד
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 הכפתור הזה מראה חץ מצביע על שלושה קוים אדומים ליד כמה קוים שחורים.
  הוא אמור להיות ממש ליד הפתור 
 \family sans
-הכנס\InsetSpace ~
-הערת\InsetSpace ~
+הכנס
+\begin_inset space ~
+\end_inset
+
+הערת
+\begin_inset space ~
+\end_inset
+
 שוליים
 \family default
  בלוח הכלים.
@@ -3733,7 +3902,10 @@ status collapsed
 \family default
  או בעזרת 
 \family sans
-הוספה:הערת\InsetSpace ~
+הוספה:הערת
+\begin_inset space ~
+\end_inset
+
 צד
 \family default
  )
@@ -3747,7 +3919,10 @@ nsert\SpecialChar \menuseparator
 \bar under
 M
 \bar default
-arginal\InsetSpace ~
+arginal
+\begin_inset space ~
+\end_inset
+
 Note
 \family default
 \lang hebrew
@@ -3799,13 +3974,15 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:bibliographies"
 
 \end_inset
 
 הפניות ביבליוגרפיות )במדעים המדויקים( דומות להפניות בתוך המסמך )סעיף 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:labels"
 
 \end_inset
@@ -3814,7 +3991,7 @@ reference "sec:labels"
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 כדי לקבל הפניות ביבליוגרפיות בצורה המקובלת במדעי החברה והרוח, תצטרך להשתמש
  בטכניקות של סעיף זה, בהערות שוליים, ובקצת יצירתיות.
 \end_layout
@@ -3884,7 +4061,10 @@ lyxtutorial
 כעת בחר מקום במסמך שבו אתה רוצה לצטט את המסמך דנן.
  בחר 
 \family sans
-הוספה:הפניית\InsetSpace ~
+הוספה:הפניית
+\begin_inset space ~
+\end_inset
+
 ציטוט
 \family default
  )
@@ -3898,7 +4078,10 @@ nsert\SpecialChar \menuseparator
 \bar under
 C
 \bar default
-itation\InsetSpace ~
+itation
+\begin_inset space ~
+\end_inset
+
 Reference
 \family default
 \lang hebrew
@@ -3915,7 +4098,10 @@ Bibliograph
 \bar under
 y
 \bar default
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 keys
 \family default
 \lang hebrew
@@ -3923,7 +4109,7 @@ keys
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 זו הסיבה שעדיף לבחור שמות שיקלו על הזכרון, ולא להשאיר את המספר שמופיע באופן
  אוטומטי.
 \end_layout
@@ -3942,7 +4128,10 @@ lyxtutorial
 \lang english
 I
 \bar default
-nset\InsetSpace ~
+nset
+\begin_inset space ~
+\end_inset
+
 keys
 \family default
 \lang hebrew
@@ -4025,7 +4214,7 @@ Return
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 אין טעם ליאש את עצמך בנסיון ללחוץ או למחוק לפני מספר הסעיף.
  זה לא יעבוד.
  אתה לא יכול לשנות את מספר הסעיף כי ליקס קובעת אותו אוטומטית.
@@ -4035,8 +4224,14 @@ status collapsed
 
  ובחר 
 \family sans
-הוספה:רשימות\InsetSpace ~
-ותוכן:תוכן\InsetSpace ~
+הוספה:רשימות
+\begin_inset space ~
+\end_inset
+
+ותוכן:תוכן
+\begin_inset space ~
+\end_inset
+
 העניינים
 \family default
  )
@@ -4046,15 +4241,27 @@ status collapsed
 I
 \bar default
 nsert\SpecialChar \menuseparator
-Lists\InsetSpace ~
-&\InsetSpace ~
+Lists
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
 T
 \bar under
 O
 \bar default
 C\SpecialChar \menuseparator
-Table\InsetSpace ~
-of\InsetSpace ~
+Table
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
 
 \bar under
 C
@@ -4097,7 +4304,10 @@ dvi
  לעומת זאת אתה יכול לראות אותו בחלון נפרד אם תלחץ על המסגרת של תוכן העניינים,
  או בעזרת 
 \family sans
-צפייה:תוכן\InsetSpace ~
+צפייה:תוכן
+\begin_inset space ~
+\end_inset
+
 העניינים
 \family default
  )
@@ -4111,8 +4321,14 @@ iew\SpecialChar \menuseparator
 \bar under
 T
 \bar default
-able\InsetSpace ~
-of\InsetSpace ~
+able
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
 Contents
 \family default
 \lang hebrew
@@ -4120,7 +4336,7 @@ Contents
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 פקודת התפריט תעבוד גם אם לא הכנסת תוכן עניינים למסמך.
 \end_layout
 
@@ -4135,7 +4351,7 @@ status collapsed
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 לא פחות נוח להשתמש בתפריט ה
 \family sans
 ניווט
@@ -4203,7 +4419,10 @@ LaTeX
 \lang hebrew
 , פאנל הנוסחאות )
 \lang english
-Math\InsetSpace ~
+Math
+\begin_inset space ~
+\end_inset
+
 Panel
 \lang hebrew
 ( מאפשר לך להגיע לכל סימן רצוי, בלי לזכור פקודות קריפטיות בעל פה, וליצר
@@ -4211,7 +4430,7 @@ Panel
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 ליקס )עדיין( לא בודקת אם המתמטיקה שלך נכונה.
  עמך הסליחה.
 \end_layout
@@ -4495,7 +4714,7 @@ Delete
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 אתה לא יכול להשתמש ב
 \family sans
 רווח
@@ -4512,7 +4731,8 @@ Tab
 LaTeX
 \lang hebrew
 ( לטפל בו )ראה סעיף 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:whitespace"
 
 \end_inset
@@ -4625,7 +4845,10 @@ example_raw.lyx
  מקשי פקודה אתה יכול ללמוד אחר כך, ממסמכים אחרים )זה היה רמז(.
  אז בחר 
 \family sans
-הוספה:מתמטיקה:פאנל\InsetSpace ~
+הוספה:מתמטיקה:פאנל
+\begin_inset space ~
+\end_inset
+
 הנוסחאות
 \family default
  )
@@ -4640,7 +4863,10 @@ Mat
 h
 \bar default
 \SpecialChar \menuseparator
-Math\InsetSpace ~
+Math
+\begin_inset space ~
+\end_inset
+
 pane
 \bar under
 l
@@ -4704,7 +4930,7 @@ l
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 הכפתורים השחורים נותנים לך את הסימנים הרגילים של 
 \lang english
 LaTeX
@@ -4973,7 +5199,10 @@ log
 \lang hebrew
  ברשימת הפונקציות ב
 \family sans
-פנל\InsetSpace ~
+פנל
+\begin_inset space ~
+\end_inset
+
 הנוסחאות
 \family default
 .
@@ -5045,7 +5274,8 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:matrices"
 
 \end_inset
@@ -5148,7 +5378,10 @@ Tab
 \begin_layout Standard
 המטריצה קטנה עליך? 
 \family sans
-עריכה:מתמטיקה:הוספת\InsetSpace ~
+עריכה:מתמטיקה:הוספת
+\begin_inset space ~
+\end_inset
+
 שורה
 \family default
  )
@@ -5163,19 +5396,28 @@ dit\SpecialChar \menuseparator
 M
 \bar default
 ath\SpecialChar \menuseparator
-Add\InsetSpace ~
+Add
+\begin_inset space ~
+\end_inset
+
 Row
 \family default
 \lang hebrew
 ( ו
 \family sans
-הוספת\InsetSpace ~
+הוספת
+\begin_inset space ~
+\end_inset
+
 עמודה
 \family default
  )
 \family sans
 \lang english
-Add\InsetSpace ~
+Add
+\begin_inset space ~
+\end_inset
+
 Column
 \family default
 \lang hebrew
@@ -5183,12 +5425,18 @@ Column
  שורה חדשה תופיע מתחת לסמן, ועמודה חדשה מימין לו.
  הגזמת? 
 \family sans
-מחיקת\InsetSpace ~
+מחיקת
+\begin_inset space ~
+\end_inset
+
 שורה
 \family default
  ו
 \family sans
-מחיקת\InsetSpace ~
+מחיקת
+\begin_inset space ~
+\end_inset
+
 עמודה
 \family default
  מאותו תפריט יבטלו.
@@ -5216,7 +5464,8 @@ inline
  אם אתה רוצה שהנוסחאות שלך יבלטו, אתה צריך להשתמש בנוסחאות ממורכזות.
  בנוסף, רק נוסחאות ממורכזות אפשר למספר או לשים עליהן תוית, )ראה במדריך למשתמש(
  ונוסחאות של כמה שורות )ראה סעיף 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:multiline"
 
 \end_inset
@@ -5301,7 +5550,7 @@ example_raw.lyx
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 ואחרי שעשית את זה בדרך הקשה, למה שלא תנסה את 
 \family sans
 הוספה:מתמטיקה:
@@ -5309,7 +5558,10 @@ status collapsed
 \lang english
 C
 \bar default
-ases\InsetSpace ~
+ases
+\begin_inset space ~
+\end_inset
+
 environment
 \family default
 \lang hebrew
@@ -5350,7 +5602,8 @@ f(x)=\left\{ \begin{array}{cc}
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:multiline"
 
 \end_inset
@@ -5403,7 +5656,10 @@ C-Return
 \family sans
 הוספה:מתמטיקה:
 \lang english
-Eqnarray\InsetSpace ~
+Eqnarray
+\begin_inset space ~
+\end_inset
+
 environment
 \family default
 \lang hebrew
@@ -5427,7 +5683,10 @@ h
  זו משוואה מרובת שורות עם שורה אחת.
  מאוכזבת? בחרי 
 \family sans
-עריכה:מתמטיקה:הוסף\InsetSpace ~
+עריכה:מתמטיקה:הוסף
+\begin_inset space ~
+\end_inset
+
 שורה
 \family default
  )
@@ -5442,7 +5701,10 @@ dit\SpecialChar \menuseparator
 M
 \bar default
 ath\SpecialChar \menuseparator
-Add\InsetSpace ~
+Add
+\begin_inset space ~
+\end_inset
+
 Row
 \family default
 \lang hebrew
@@ -5467,7 +5729,7 @@ Tab
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 שימי לב שהרווח אחרי הפלוס הראשון בשורה השני קצר מדי.
  זה אחד מהמקרים הנדירים ש-
 \lang english
@@ -5494,7 +5756,8 @@ x & = & a+b+c+d\\
  שווה או סימני השוואה אחרים.
  את יכולה לשים שם כל דבר, אבל אל תשתמשי במשוואות מרובות שורות בשביל ליצר
  מערך, בשביל זה יש מטריצות )ראי סעיף 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:matrices"
 
 \end_inset
@@ -5549,7 +5812,10 @@ E & = & mc^{2}\\
 \begin_layout Standard
 אם פתחת יותר מדי שורות, הפתרון הוא 
 \family sans
-עריכה:מתמטיקה:מחק\InsetSpace ~
+עריכה:מתמטיקה:מחק
+\begin_inset space ~
+\end_inset
+
 שורה
 \family default
  )
@@ -5564,7 +5830,10 @@ dit\SpecialChar \menuseparator
 M
 \bar default
 ath\SpecialChar \menuseparator
-Delete\InsetSpace ~
+Delete
+\begin_inset space ~
+\end_inset
+
 Row
 \lang hebrew
 (
@@ -5683,7 +5952,10 @@ Ta
 \bar under
 b
 \bar default
-ular\InsetSpace ~
+ular
+\begin_inset space ~
+\end_inset
+
 Material
 \family default
 \lang hebrew
@@ -5803,7 +6075,10 @@ references
 (.
  על זה אתה יכול ללמוד יותר ב
 \family sans
-עזרה:התאמה\InsetSpace ~
+עזרה:התאמה
+\begin_inset space ~
+\end_inset
+
 אישית
 \family default
  )
@@ -5875,7 +6150,7 @@ O
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 בעברית מקשי הפקודה לא מודגשים באלגנטיות בקו תחתי אלא מופיעים משמאל לפקודה,
  לפעמים עם קו תחתי ולפעמים בלי )אם יש חוקיות, אני לא גיליתי אותה( 
 \lang english
@@ -5897,7 +6172,10 @@ status collapsed
  מקשים משלהן.
  שוב, מידע על זה ב
 \family sans
-עזרה:התאמה\InsetSpace ~
+עזרה:התאמה
+\begin_inset space ~
+\end_inset
+
 אישית
 \family default
 .
@@ -5910,8 +6188,9 @@ LaTeX
 \lang hebrew
 .
  ראה סעיף 
-\begin_inset LatexCommand ref
-reference "sec:relyx"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:tex2lyx"
 
 \end_inset
 
@@ -5923,7 +6202,7 @@ reference "sec:relyx"
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 לא עובד בעברית.
  בנוסף, הוא מתייחס רק לשפת המסמך ומתעלם מהעובדה שניתן לשנות שפה מקומית )בעזרת
  
@@ -5941,7 +6220,10 @@ status collapsed
 
  בעזרת 
 \family sans
-עריכה:בדוק\InsetSpace ~
+עריכה:בדוק
+\begin_inset space ~
+\end_inset
+
 איות
 \family default
  )
@@ -5962,7 +6244,7 @@ pellchecker
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 שים לב שהוא בודק רק מהסמן ועד סוף המסמך.
 \end_layout
 
@@ -5978,7 +6260,8 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:latexusers"
 
 \end_inset
@@ -6212,7 +6495,8 @@ usepackage{foo}
 preamble
 \lang hebrew
  )ראה סעיף 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:preamble"
 
 \end_inset
@@ -6234,16 +6518,20 @@ LaTeX
 \family typewriter
 \lang english
 tex2lyx
+\lang hebrew
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:tex2lyx"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-\begin_inset LatexCommand label
-name "sec:tex2lyx"
-
-\end_inset
-
 You can import a LaTeX file into LyX by using the 
 \family sans
 \bar under
@@ -6429,7 +6717,10 @@ documentclass
 \lang hebrew
  שים בתיבה 
 \family sans
-אפשרויות\InsetSpace ~
+אפשרויות
+\begin_inset space ~
+\end_inset
+
 נוספות
 \family default
  )
@@ -6439,7 +6730,10 @@ E
 \bar under
 x
 \bar default
-tra\InsetSpace ~
+tra
+\begin_inset space ~
+\end_inset
+
 Options
 \family default
 \lang hebrew
@@ -6451,7 +6745,8 @@ Options
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:preamble"
 
 \end_inset
@@ -6495,7 +6790,7 @@ LaTeX
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -6519,8 +6814,14 @@ LaTeX
  בסיס נתונים עבור מסמכים שונים.
  בחר 
 \family sans
-הוספה:רשימות\InsetSpace ~
-ותוכן:הפניית\InsetSpace ~
+הוספה:רשימות
+\begin_inset space ~
+\end_inset
+
+ותוכן:הפניית
+\begin_inset space ~
+\end_inset
+
 
 \lang english
 BibTeX
@@ -6533,8 +6834,14 @@ BibTeX
 I
 \bar default
 nsert\SpecialChar \menuseparator
-Lists\InsetSpace ~
-&\InsetSpace ~
+Lists
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
 T
 \bar under
 O
@@ -6544,7 +6851,10 @@ C\SpecialChar \menuseparator
 \bar under
 B
 \bar default
-ibTex\InsetSpace ~
+ibTex
+\begin_inset space ~
+\end_inset
+
 Reference
 \family default
 \lang hebrew
@@ -6557,8 +6867,14 @@ bib
 .
  לחץ על המסגרת 
 \lang english
-BibTeX\InsetSpace ~
-Generated\InsetSpace ~
+BibTeX
+\begin_inset space ~
+\end_inset
+
+Generated
+\begin_inset space ~
+\end_inset
+
 Reference
 \lang hebrew
  שנוצרה ותקבל את תיבת הדיאלוג 
@@ -6583,7 +6899,7 @@ bibliography
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 כמו ב-
 \lang english
 LaTeX
@@ -6616,7 +6932,10 @@ bibliographystyle{}
 \begin_layout Standard
 מרגע שעשית את זה, אתה יכול לצטט מתוך הביבליוגרפיות שהכנסת בעזרת 
 \family sans
-הוספה:הפניית\InsetSpace ~
+הוספה:הפניית
+\begin_inset space ~
+\end_inset
+
 ציטוט
 \family default
  )
@@ -6630,12 +6949,16 @@ nsert\SpecialChar \menuseparator
 \bar under
 C
 \bar default
-itation\InsetSpace ~
+itation
+\begin_inset space ~
+\end_inset
+
 Reference
 \family default
 \lang hebrew
 (, ראה סעיף 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:bibliographies"
 
 \end_inset
@@ -6666,7 +6989,10 @@ bib
 \begin_layout Standard
 ראה תחת 
 \family sans
-הוספה:תו\InsetSpace ~
+הוספה:תו
+\begin_inset space ~
+\end_inset
+
 מיוחד
 \family default
  )
@@ -6680,7 +7006,10 @@ nsert\SpecialChar \menuseparator
 \bar under
 S
 \bar default
-pecial\InsetSpace ~
+pecial
+\begin_inset space ~
+\end_inset
+
 Character
 \family default
 \lang hebrew
