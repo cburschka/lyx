@@ -1,5 +1,5 @@
-#LyX 1.5.7svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass book
@@ -28,9 +28,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -63,7 +65,7 @@ LyX
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 המסמך מנוסח בלשון זכר אך מיועד כמובן לקוראים ולקוראות כאחד.
 \end_layout
 
@@ -98,7 +100,7 @@ LyX
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 תורגם ע"י רן רוטנברג, 
 \numeric on
 2006
@@ -123,8 +125,13 @@ status open
 \noun default
 \color inherit
 
-\begin_inset LatexCommand htmlurl
-target "hebrew.lyx@gmail.com"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+hebrew.lyx@gmail.com
+\end_layout
 
 \end_inset
 
@@ -137,7 +144,8 @@ target "hebrew.lyx@gmail.com"
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -159,8 +167,9 @@ LyX
 \end_layout
 
 \begin_layout Quote
+\begin_inset space \hfill{}
+\end_inset
 
-\hfill
 )ג'ף מקנלי "
 \lang english
 Shoe
@@ -174,14 +183,24 @@ Shoe
 In case you can read only this paragraph, probably you did not set the Hebrew
  language correctly.
  Please refer to the instructions on (for Windows machines): 
-\begin_inset LatexCommand htmlurl
-target "http://wiki.lyx.org/Windows/Hebrew"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Windows/Hebrew
+\end_layout
 
 \end_inset
 
  or on (for Linux): 
-\begin_inset LatexCommand htmlurl
-target "http://wiki.lyx.org/LyX/HebrewOnLinux"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/LyX/HebrewOnLinux
+\end_layout
 
 \end_inset
 
@@ -200,7 +219,7 @@ LyX
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 שורה עברית
 \end_layout
 
@@ -242,7 +261,7 @@ PostgreSQL
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 עברית
 \end_layout
 
@@ -312,7 +331,7 @@ LyX
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 זהו תרגום שקבעה האקדמיה ללשון לקיצור 
 \lang english
 WYSIWYG
@@ -393,7 +412,7 @@ LyX
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 למען ההגינות, נציין שבגרסאות החדשות של חבילות האופיס המקובלות ישנם גליונות
  סגנון שפועלים לפי שיטה דומה של סמני עריכה.
  אף על פי כן, הניסיון מצביע על כך שעדיין אפשרות זו היא בשימוש מועט ונדיר.
@@ -432,8 +451,14 @@ status collapsed
 \numeric on
 1
 \numeric off
-.\InsetSpace ~
-\InsetSpace ~
+.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
 מבוא".
  כמובן, במידה ותחליט לשנות את מיקום חלק זה למקום אחר, או לחלופין להכניס
  חלק אחר לפני המבוא תדרש למספר מחדש את כל החלקים ולשנות את תוכן העניינים.
@@ -531,7 +556,7 @@ LyX
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 במקור מופיע הקיצור 
 \lang english
 WYSIWYM
@@ -696,7 +721,7 @@ LyX
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 המשתמש יכול לשנות את כל אלה )חלק מהשינויים דורש ידע ב- 
 \lang english
 (LaTeX
@@ -776,7 +801,7 @@ LaTeX
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 עברית
 \end_layout
 
@@ -800,14 +825,23 @@ Leslie Lamport
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 המקור למידע בחלק זה הוא 
 \lang english
 "
 \emph on
-A\InsetSpace ~
-Guide\InsetSpace ~
-to\InsetSpace ~
+A
+\begin_inset space ~
+\end_inset
+
+Guide
+\begin_inset space ~
+\end_inset
+
+to
+\begin_inset space ~
+\end_inset
+
 LaTeX2e"
 \emph default
 \lang hebrew
@@ -1062,13 +1096,16 @@ LaTeX
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 עברית
 \end_layout
 
 \end_inset
 
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 
 \lang english
 TeX
@@ -1081,7 +1118,7 @@ TeX
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 עברית
 \end_layout
 
@@ -1121,7 +1158,7 @@ LaTeX
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 עברית
 \end_layout
 
@@ -1225,9 +1262,13 @@ LyX
 \lang hebrew
 , גם המדריכים הם פרי עבודתם של מתנדבים בעלי "עבודות אמיתיות", בעלי משפחות,
  כלים שצריך לשטוף אחרי הארוחה, כלבים שצריך להוציא לטיול וכו'.
- אם אתה מעוניין לעזור, קרא את פרק\InsetSpace ~
+ אם אתה מעוניין לעזור, קרא את פרק
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "פרק:תרומה"
 
 \end_inset
@@ -1247,7 +1288,9 @@ lyx-docs@lists.lyx.org
 .
  אם יש לך שאלה שלא נמצאה לה תשובה ברורה בתיעוד ואתה צריך עזרה במהירות, ישנה
  קבוצת דיוור פעילה של משתמשים בכתובת:
-\newline
+\begin_inset Newline newline
+\end_inset
+
  
 \family typewriter
 \lang english
@@ -1276,7 +1319,7 @@ LyX
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 שלום
 \end_layout
 
@@ -1296,7 +1339,8 @@ status collapsed
 \begin_layout Standard
 במדריכים המודפסים, כל ההפניות מופיעות כמספרים אמיתיים השייכים לפרק, חלק,
  תת חלק וכו', אך על המחשב כל ההפניות מופיעות ככמלבן אפור כמו זה: 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "פרק:תרומה"
 
 \end_inset
@@ -1834,9 +1878,13 @@ emacs
 \bar default
 \noun default
 \color inherit
-נעשה שימוש בתיעוד, טבלה\InsetSpace ~
+נעשה שימוש בתיעוד, טבלה
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "tab:יחידות-מדידה"
 
 \end_inset
@@ -1872,16 +1920,17 @@ wide false
 sideways false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Caption
 
-\begin_layout Standard
+\begin_layout Plain Layout
 יחידות מדידה
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "tab:יחידות-מדידה"
 
 \end_inset
@@ -1894,47 +1943,47 @@ name "tab:יחידות-מדידה"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset VSpace medskip
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align center
 
 \lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 שם או תיאור
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 יחידה
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 מילימטר
 \end_layout
 
@@ -1943,7 +1992,7 @@ name "tab:יחידות-מדידה"
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 mm
@@ -1952,11 +2001,11 @@ mm
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 סנטימטר
 \end_layout
 
@@ -1965,7 +2014,7 @@ mm
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 cm
@@ -1974,11 +2023,11 @@ cm
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 אינטש
 \end_layout
 
@@ -1987,7 +2036,7 @@ cm
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 in
@@ -1996,11 +2045,11 @@ in
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 נקודה/
 \lang english
 point
@@ -2024,8 +2073,14 @@ point
 \color inherit
 )
 \lang english
-28.45\InsetSpace ~
-pt=1\InsetSpace ~
+28.45
+\begin_inset space ~
+\end_inset
+
+pt=1
+\begin_inset space ~
+\end_inset
+
 cm
 \lang hebrew
 (
@@ -2036,7 +2091,7 @@ cm
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 pt
@@ -2045,11 +2100,11 @@ pt
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 פיקה/
 \lang english
 pica
@@ -2073,8 +2128,14 @@ pica
 \color inherit
 )
 \lang english
-1\InsetSpace ~
-pc = 12\InsetSpace ~
+1
+\begin_inset space ~
+\end_inset
+
+pc = 12
+\begin_inset space ~
+\end_inset
+
 pt
 \lang hebrew
 (
@@ -2085,7 +2146,7 @@ pt
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 pc
@@ -2094,11 +2155,11 @@ pc
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 נקודה קטנה/
 \lang english
 scaled point
@@ -2122,8 +2183,14 @@ scaled point
 \color inherit
 )
 \lang english
-65536\InsetSpace ~
-sp = 1\InsetSpace ~
+65536
+\begin_inset space ~
+\end_inset
+
+sp = 1
+\begin_inset space ~
+\end_inset
+
 pt
 \lang hebrew
 (
@@ -2134,7 +2201,7 @@ pt
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 sp
@@ -2143,11 +2210,11 @@ sp
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 bp
@@ -2158,7 +2225,7 @@ bp
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 big point (72
@@ -2175,11 +2242,11 @@ in)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 dd
@@ -2190,7 +2257,7 @@ dd
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 didot (72
@@ -2211,11 +2278,11 @@ mm)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 cc
@@ -2226,7 +2293,7 @@ cc
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 cicero (1
@@ -2243,11 +2310,11 @@ dd)
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 Scale%
@@ -2258,7 +2325,7 @@ Scale%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 % of original image width
@@ -2267,11 +2334,11 @@ Scale%
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 text%
@@ -2282,7 +2349,7 @@ text%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 % of text width
@@ -2291,11 +2358,11 @@ text%
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 col%
@@ -2306,7 +2373,7 @@ col%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 % of column width
@@ -2315,11 +2382,11 @@ col%
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 page%
@@ -2330,7 +2397,7 @@ page%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 % of paper width
@@ -2339,11 +2406,11 @@ page%
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 line%
@@ -2354,7 +2421,7 @@ line%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 % of line width
@@ -2363,11 +2430,11 @@ line%
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 theight%
@@ -2378,7 +2445,7 @@ theight%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 % of text height
@@ -2387,11 +2454,11 @@ theight%
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 pheight%
@@ -2402,7 +2469,7 @@ pheight%
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 % of paper height
@@ -2411,11 +2478,11 @@ pheight%
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 ex
@@ -2426,7 +2493,7 @@ ex
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 height of letter 
@@ -2439,11 +2506,11 @@ x
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 em
@@ -2454,7 +2521,7 @@ em
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 width of letter 
@@ -2467,11 +2534,11 @@ M
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 mu
@@ -2479,10 +2546,10 @@ mu
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 math unit (1
@@ -2520,7 +2587,7 @@ em)
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 עדיין לא כל הקבצים תורגמו, סבלנות\SpecialChar \ldots{}
 
 \end_layout
@@ -2531,31 +2598,50 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-מבוא\InsetSpace ~
+מבוא
+\begin_inset space ~
+\end_inset
+
 )
 \emph on
 \lang english
 Introduction
 \emph default
 \lang hebrew
-( \InsetSpace ~
+( 
+\begin_inset space ~
+\end_inset
 
-\newline
+
+\begin_inset Newline newline
+\end_inset
+
  הקובץ הזה.
 \end_layout
 
 \begin_layout Description
-שיעור\InsetSpace ~
-מודרך\InsetSpace ~
+שיעור
+\begin_inset space ~
+\end_inset
+
+מודרך
+\begin_inset space ~
+\end_inset
+
 )
 \emph on
 \lang english
 Tutorial
 \emph default
 \lang hebrew
-( \InsetSpace ~
+( 
+\begin_inset space ~
+\end_inset
 
-\newline
+
+\begin_inset Newline newline
+\end_inset
+
 אם אתה חדש ל- 
 \lang english
 LyX
@@ -2583,7 +2669,9 @@ LaTeX
 LyX
 \lang hebrew
 .
-\newline
+\begin_inset Newline newline
+\end_inset
+
 אם 
 \emph on
 כבר
@@ -2601,9 +2689,10 @@ LyX
 LaTeX
 \lang hebrew
 " )לקרוא ברפרוף את שאר המסמך בוודאי לא יזיק(.
-\newline
-אם באיזשהו שלב תרגיש קצת "אבוד"
- בנוגע ל- 
+\begin_inset Newline newline
+\end_inset
+
+אם באיזשהו שלב תרגיש קצת "אבוד" בנוגע ל- 
 \lang english
 LyX
 \lang hebrew
@@ -2612,24 +2701,38 @@ LyX
 \end_layout
 
 \begin_layout Description
-המדריך\InsetSpace ~
-למשתמש\InsetSpace ~
+המדריך
+\begin_inset space ~
+\end_inset
+
+למשתמש
+\begin_inset space ~
+\end_inset
+
 )
 \emph on
 \lang english
 Guide
 \emph default
 \lang hebrew
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 
 \emph on
 \lang english
 User's
 \emph default
 \lang hebrew
-( \InsetSpace ~
+( 
+\begin_inset space ~
+\end_inset
 
-\newline
+
+\begin_inset Newline newline
+\end_inset
+
  קובץ ההדרכה הראשי.
  כאן נכסה את 
 \emph on
@@ -2644,16 +2747,30 @@ LyX
 \end_layout
 
 \begin_layout Description
-תכונות\InsetSpace ~
-נוספות\InsetSpace ~
+תכונות
+\begin_inset space ~
+\end_inset
+
+נוספות
+\begin_inset space ~
+\end_inset
+
 )
 \lang english
-Extended\InsetSpace ~
+Extended
+\begin_inset space ~
+\end_inset
+
 Features
 \lang hebrew
-( \InsetSpace ~
+( 
+\begin_inset space ~
+\end_inset
 
-\newline
+
+\begin_inset Newline newline
+\end_inset
+
 הרחבה של "המדריך למשתמש".
  פה יש תיעוד של פקודות 
 \lang english
@@ -2668,8 +2785,14 @@ LaTeX
 \end_layout
 
 \begin_layout Description
-התאמה\InsetSpace ~
-אישית\InsetSpace ~
+התאמה
+\begin_inset space ~
+\end_inset
+
+אישית
+\begin_inset space ~
+\end_inset
+
 )
 \emph on
 \lang english
@@ -2681,9 +2804,14 @@ Customization
 \series default
  
 \series bold
-\InsetSpace ~
 
-\newline
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
 
 \series default
  תיאור של תכונות מתקדמות ב- 
@@ -2705,28 +2833,42 @@ Internationalization
 \end_layout
 
 \begin_layout Description
-תצורת\InsetSpace ~
+תצורת
+\begin_inset space ~
+\end_inset
+
 
 \lang english
 LaTeX
 \lang hebrew
-\InsetSpace ~
+
+\begin_inset space ~
+\end_inset
+
 )
 \series bold
 \lang english
-LaTeX\InsetSpace ~
+LaTeX
+\begin_inset space ~
+\end_inset
+
 configuration
 \lang hebrew
 (
 \series default
- \InsetSpace ~
+ 
+\begin_inset space ~
+\end_inset
 
-\newline
+
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 עברית
 \end_layout
 
@@ -2766,14 +2908,17 @@ LyX
 \end_layout
 
 \begin_layout Standard
+\begin_inset space \hfill{}
+\end_inset
 
-\hfill
 אם אתה חדש ל- 
 \lang english
 LyX
 \lang hebrew
 , קרא את "השיעור המודרך" עכשיו.
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 
 \end_layout
 
@@ -2794,7 +2939,8 @@ LyX
 \end_layout
 
 \begin_layout Chapter
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "פרק:תרומה"
 
 \end_inset
@@ -2814,7 +2960,7 @@ LyX
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 עברית
 \end_layout
 
@@ -2854,8 +3000,13 @@ LyX
 LyX
 \lang hebrew
  יש מערכת עקיבה אחר תקלות )באגים(, אותה תוכל למצוא בכתובת 
-\begin_inset LatexCommand htmlurl
-target "http://bugzilla.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://bugzilla.lyx.org/
+\end_layout
 
 \end_inset
 
@@ -2864,8 +3015,13 @@ target "http://bugzilla.lyx.org/"
  שם.
  אם יש לך הערה כלשהי על בעיה קיימת, או אם אתה רוצה לדווח על תקלה חדשה, אתה
  יכול להשתמש במערכת התקלות, או לשלוח דוא"ל לרשימת הדיוור של המפתחים: 
-\begin_inset LatexCommand htmlurl
-target "lyx-devel@lists.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+lyx-devel@lists.lyx.org
+\end_layout
 
 \end_inset
 
@@ -2875,8 +3031,13 @@ target "lyx-devel@lists.lyx.org"
 LyX
 \lang hebrew
 : 
-\begin_inset LatexCommand htmlurl
-target "http://www.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org
+\end_layout
 
 \end_inset
 
@@ -2949,7 +3110,10 @@ gdb
  בעזרת הקלדת הפקודה, לדוגמא, 
 \family typewriter
 \lang english
-gdb\InsetSpace ~
+gdb
+\begin_inset space ~
+\end_inset
+
 /users/steve/1.2.0pre4/src/lyx
 \family default
 \lang hebrew
@@ -2986,7 +3150,7 @@ backtrace
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 אם ברצונך להיות יסודי, השתמש בפקודות 
 \family typewriter
 \lang english
@@ -3075,8 +3239,13 @@ LyX
 
 \begin_layout Standard
 אם אתה מוצא שגיאה או טעות כלשהי בתיעוד, שלח הודעה לרשימת הדיוור 
-\begin_inset LatexCommand htmlurl
-target "lyx-docs@lists.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+lyx-docs@lists.lyx.org
+\end_layout
 
 \end_inset
 
@@ -3107,7 +3276,7 @@ LyX
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 ניתן להשיג את התיעוד הכי עדכני ממאגר ה- 
 \lang english
 CVS
@@ -3147,9 +3316,10 @@ DocStyle.lyx
 
 \begin_layout Enumerate
 לאחר מכן, קרא את "השיעור המודרך" ואת "המדריך למשתמש".
-\newline
-המטרה של תרגיל זה היא
- להעניק לך רעיונות.
+\begin_inset Newline newline
+\end_inset
+
+המטרה של תרגיל זה היא להעניק לך רעיונות.
  "השיעור המודרך" ו"המדריך למשתמש" הם כנראה המעודכנים ביותר מבין קבצי התיעוד.
  בעזרתם תוכל לקבל את התובנה של כיצד אנו מעוניינים שהמדריכים יראו וגם כיצד
  אנחנו רוצים שהם יקראו.
@@ -3157,15 +3327,24 @@ DocStyle.lyx
 
 \begin_layout Enumerate
 צור קשר עם הצוות:
-\newline
+\begin_inset Newline newline
+\end_inset
 
-\begin_inset LatexCommand htmlurl
-target "lyx-docs@lists.lyx.org"
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+lyx-docs@lists.lyx.org
+\end_layout
 
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 על מנת לדון בשינויים המוצעים ולקבל משוב עליהם.
 \end_layout
 
