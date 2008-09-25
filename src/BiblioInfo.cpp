@@ -434,8 +434,8 @@ unsigned int const nCiteCommands =
 		sizeof(citeCommands) / sizeof(char *);
 
 CiteStyle const citeStylesArray[] = {
-	CITE, NOCITE, CITET, CITEP, CITEALT,
-	CITEALP, CITEAUTHOR, CITEYEAR, CITEYEARPAR };
+	CITE, CITET, CITEP, CITEALT, CITEALP, 
+	CITEAUTHOR, CITEYEAR, CITEYEARPAR, NOCITE };
 
 unsigned int const nCiteStyles =
 		sizeof(citeStylesArray) / sizeof(CiteStyle);
