@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0rc3 created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -1649,6 +1649,18 @@ Avec les boutons
 
 \end_inset
 
+ ou les 
+\lang english
+corresponding key bindings
+\lang french
+ 
+\family sans
+Tab
+\family default
+ et 
+\family sans
+S-Tab
+\family default
  vous pouvez modifier le niveau hierarchique d'une section.
  Vous pouvez par exemple transformer la section
 \begin_inset space ~
@@ -6984,6 +6996,14 @@ Liste
 
  ou les raccourcis clavier bien pratiques 
 \family sans
+Tab
+\family default
+ et 
+\family sans
+S-Tab
+\family default
+ ou 
+\family sans
 S-M-Gauche
 \family default
  et 
@@ -7040,7 +7060,7 @@ Mais l'emboîtement n'est pas limité aux listes.
 \begin_layout Subsection
 Ce que vous pouvez et ce que vous ne pouvez pas emboîter
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ce que vous pouvez emboîter
@@ -36183,6 +36203,13 @@ Ouvre la fenêtre du plan/table des matières, décrit section
 \end_inset
 
 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Naviguer"
+
+\end_inset
+
+ et 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Table-des-Matières"

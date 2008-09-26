@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0rc3 created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -1291,7 +1291,7 @@ name "sec:Navegación"
 
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Navegación
@@ -1422,6 +1422,18 @@ Con los botones
 
 \end_inset
 
+ o 
+\lang english
+the corresponding key bindings
+\lang spanish
+ 
+\family sans
+Tab
+\family default
+ y 
+\family sans
+S-Tab
+\family default
  puedes cambiar el nivel de anidamiento.
  Por ejemplo, puedes convertir la sección
 \begin_inset space ~
@@ -6730,6 +6742,14 @@ Editar
 \end_inset
 
  o el atajo de teclado 
+\family sans
+Tab
+\family default
+ y 
+\family sans
+S-Tab 
+\family default
+o 
 \family sans
 S-M-Derecha
 \family default
@@ -37062,6 +37082,13 @@ Abre una ventana lateral para navegar por los índices descrita en la sección
 \end_inset
 
 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Navegación"
+
+\end_inset
+
+ o 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Indice-general"
