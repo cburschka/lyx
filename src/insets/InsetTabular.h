@@ -588,9 +588,9 @@ public:
 	///
 	// helper function for Latex returns number of newlines
 	///
-	int TeXTopHLine(odocstream &, row_type row) const;
+	int TeXTopHLine(odocstream &, row_type row, std::string const lang) const;
 	///
-	int TeXBottomHLine(odocstream &, row_type row) const;
+	int TeXBottomHLine(odocstream &, row_type row, std::string const lang) const;
 	///
 	int TeXCellPreamble(odocstream &, idx_type cell, bool & ismulticol) const;
 	///
