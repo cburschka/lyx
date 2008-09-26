@@ -23,6 +23,8 @@
 
 #include "support/lassert.h"
 
+#include <iostream>
+
 using namespace std;
 using namespace lyx::support;
 
@@ -3127,10 +3129,11 @@ LyXAction::const_func_iterator LyXAction::func_end() const
 	return lyx_func_map.end();
 }
 
+
 LyXErr & operator<<(LyXErr & l, FuncCode code)
 {
-	if (l.enabled()) 
-		l.stream() << lyxaction.getActionName(code); 
+	if (l.enabled())
+		l.stream() << lyxaction.getActionName(code);
 	return l;
 }
 
