@@ -1022,6 +1022,9 @@ void Buffer::writeLaTeXSource(odocstream & os,
 
 	OutputParams runparams = runparams_in;
 
+	// Classify the unicode characters appearing in math insets
+	Encodings::initUnicodeMath(*this);
+
 	// validate the buffer.
 	LYXERR(Debug::LATEX, "  Validating buffer...");
 	LaTeXFeatures features(*this, params(), runparams);

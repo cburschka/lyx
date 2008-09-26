@@ -24,6 +24,7 @@ namespace lyx {
 
 namespace support { class FileName; }
 
+class Buffer;
 class LaTeXFeatures;
 
 class EncodingException : public std::exception {
@@ -182,10 +183,16 @@ public:
 	static bool isKnownScriptChar(char_type const c, std::string & preamble);
 	/**
 	 * Do we have to output this character as LaTeX command in any case?
-	 * This is true if the "forced" flag is set.
+	 * This is true if the "force" flag is set.
 	 * We need this if the inputencoding does not support a certain glyph.
 	 */
 	static bool isForced(char_type c);
+	/**
+	 * Do we have to display in italics this character when in mathmode?
+	 * This is true if the "mathalpha" flag is set. We use this for
+	 * accented characters that are output as math commands.
+	 */
+	static bool isMathAlpha(char_type c);
 	/**
 	 * Register \p c as a mathmode command.
 	 */
@@ -213,7 +220,7 @@ public:
 	/**
 	 * Initialize mathcmd, textcmd, and mathsym sets.
 	 */
-	static void initMathAndTextSets() { mathcmd.clear(); textcmd.clear(); mathsym.clear(); }
+	static void initUnicodeMath(Buffer const & buffer);
 	/**
 	 * If \p c cannot be encoded in the given \p encoding, convert
 	 * it to something that LaTeX can understand in mathmode.

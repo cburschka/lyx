@@ -121,6 +121,8 @@ public:
 	//bool insetAllowed(InsetCode code) const;
 	///
 	void addPreview(graphics::PreviewLoader &) const;
+	///
+	void initUnicodeMath() const;
 
 	///
 	static int displayMargin() { return 12; }

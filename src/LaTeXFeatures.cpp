@@ -187,26 +187,22 @@ static string const changetracking_none_def =
 
 static string const textgreek_def =
 	"\\DeclareRobustCommand{\\greektext}{%\n"
-	" \\fontencoding{LGR}\\selectfont\n"
-	" \\def\\encodingdefault{LGR}}\n"
+	"  \\fontencoding{LGR}\\selectfont\\def\\encodingdefault{LGR}}\n"
 	"\\DeclareRobustCommand{\\textgreek}[1]{\\leavevmode{\\greektext #1}}\n"
 	"\\DeclareFontEncoding{LGR}{}{}\n";
 
 static string const textcyr_def =
 	"\\DeclareRobustCommand{\\cyrtext}{%\n"
-	" \\fontencoding{T2A}\\selectfont\n"
-	" \\def\\encodingdefault{T2A}}\n"
+	"  \\fontencoding{T2A}\\selectfont\\def\\encodingdefault{T2A}}\n"
 	"\\DeclareRobustCommand{\\textcyr}[1]{\\leavevmode{\\cyrtext #1}}\n"
 	"\\AtBeginDocument{\\DeclareFontEncoding{T2A}{}{}}\n";
 
 static string const lyxmathsym_def =
-	"\\DeclareRobustCommand{\\lyxmathsym}[1]{%\n"
-	" \\ifmmode\\begingroup\n"
-	" \\edef\\b@ld{bold}%\n"
-	" \\def\\rmorbf##1{\\ifx\\math@version\\b@ld\\textbf{##1}\\else\\textrm{##1}\\fi}%\n"
-	" \\mathchoice{\\hbox{\\rmorbf{#1}}}{\\hbox{\\rmorbf{#1}}}%\n"
-	"  {\\hbox{\\smaller[2]\\rmorbf{#1}}}{\\hbox{\\smaller[3]\\rmorbf{#1}}}%\n"
-	" \\endgroup\\else#1\\fi}\n";
+	"\\DeclareRobustCommand{\\lyxmathsym}[1]{\\ifmmode\\begingroup\\def\\b@ld{bold}\n"
+	"  \\def\\rmorbf##1{\\ifx\\math@version\\b@ld\\textbf{##1}\\else\\textrm{##1}\\fi}\n"
+	"  \\mathchoice{\\hbox{\\rmorbf{#1}}}{\\hbox{\\rmorbf{#1}}}\n"
+	"  {\\hbox{\\smaller[2]\\rmorbf{#1}}}{\\hbox{\\smaller[3]\\rmorbf{#1}}}\n"
+	"  \\endgroup\\else#1\\fi}\n";
 
 static string const papersizedvi_def =
 	"\\special{papersize=\\the\\paperwidth,\\the\\paperheight}\n";
@@ -214,6 +210,46 @@ static string const papersizedvi_def =
 static string const papersizepdf_def =
 	"\\pdfpageheight\\paperheight\n"
 	"\\pdfpagewidth\\paperwidth\n";
+
+static string const cedilla_def =
+	"\\newcommand{\\docedilla}[2]{\\underaccent{#1\\mathchar'30}{#2}}\n"
+	"\\newcommand{\\cedilla}[1]{\\mathpalette\\docedilla{#1}}\n";
+
+static string const subring_def =
+	"\\newcommand{\\dosubring}[2]{\\underaccent{#1\\mathchar'27}{#2}}\n"
+	"\\newcommand{\\subring}[1]{\\mathpalette\\dosubring{#1}}\n";
+
+static string const subdot_def =
+	"\\newcommand{\\dosubdot}[2]{\\underaccent{#1.}{#2}}\n"
+	"\\newcommand{\\subdot}[1]{\\mathpalette\\dosubdot{#1}}\n";
+
+static string const subhat_def =
+	"\\newcommand{\\dosubhat}[2]{\\underaccent{#1\\mathchar'136}{#2}}\n"
+	"\\newcommand{\\subhat}[1]{\\mathpalette\\dosubhat{#1}}\n";
+
+static string const subtilde_def =
+	"\\newcommand{\\dosubtilde}[2]{\\underaccent{#1\\mathchar'176}{#2}}\n"
+	"\\newcommand{\\subtilde}[1]{\\mathpalette\\dosubtilde{#1}}\n";
+
+static string const dacute_def =
+	"\\DeclareMathAccent{\\dacute}{\\mathalpha}{operators}{'175}\n";
+
+static string const tipasymb_def =
+	"\\DeclareFontEncoding{T3}{}{}\n"
+	"\\DeclareSymbolFont{tipasymb}{T3}{cmr}{m}{n}\n";
+
+static string const dgrave_def =
+	"\\DeclareMathAccent{\\dgrave}{\\mathord}{tipasymb}{'15}\n";
+
+static string const rcap_def =
+	"\\DeclareMathAccent{\\rcap}{\\mathord}{tipasymb}{'20}\n";
+
+static string const ogonek_def =
+	"\\newcommand{\\doogonek}[2]{\\setbox0=\\hbox{$#1#2$}\\underaccent{#1\\mkern-6mu\n"
+	"  \\ifx#2O\\hskip0.5\\wd0\\else\\ifx#2U\\hskip0.5\\wd0\\else\\hskip\\wd0\\fi\\fi\n"
+	"  \\ifx#2o\\mkern-2mu\\else\\ifx#2e\\mkern-1mu\\fi\\fi\n"
+	"  \\mathchar\"0\\hexnumber@\\symtipasymb0C}{#2}}\n"
+	"\\newcommand{\\ogonek}[1]{\\mathpalette\\doogonek{#1}}\n";
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -475,7 +511,8 @@ char const * simplefeatures[] = {
 	"bm",
 	"pdfpages",
 	"relsize",
-	"amscd"
+	"amscd",
+	"slashed"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
@@ -531,6 +568,10 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("wasysym") &&
 	    (params_.use_esint != BufferParams::package_off || !isRequired("esint")))
 		packages << "\\usepackage{wasysym}\n";
+
+	// accents must be loaded after amsmath
+	if (mustProvide("accents"))
+		packages << "\\usepackage{accents}\n";
 
 	// [x]color.sty
 	if (mustProvide("color") || mustProvide("xcolor")) {
@@ -679,6 +720,36 @@ string const LaTeXFeatures::getMacros() const
 
 	if (mustProvide("lyxmathsym"))
 		macros << lyxmathsym_def << '\n';
+
+	if (mustProvide("cedilla"))
+		macros << cedilla_def << '\n';
+
+	if (mustProvide("subring"))
+		macros << subring_def << '\n';
+
+	if (mustProvide("subdot"))
+		macros << subdot_def << '\n';
+
+	if (mustProvide("subhat"))
+		macros << subhat_def << '\n';
+
+	if (mustProvide("subtilde"))
+		macros << subtilde_def << '\n';
+
+	if (mustProvide("dacute"))
+		macros << dacute_def << '\n';
+
+	if (mustProvide("tipasymb"))
+		macros << tipasymb_def << '\n';
+
+	if (mustProvide("dgrave"))
+		macros << dgrave_def << '\n';
+
+	if (mustProvide("rcap"))
+		macros << rcap_def << '\n';
+
+	if (mustProvide("ogonek"))
+		macros << ogonek_def << '\n';
 
 	// quotes.
 	if (mustProvide("quotesinglbase"))

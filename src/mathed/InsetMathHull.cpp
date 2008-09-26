@@ -461,6 +461,13 @@ static docstring latexString(InsetMathHull const & inset)
 }
 
 
+void InsetMathHull::initUnicodeMath() const
+{
+	// Trigger classification of the unicode symbols in this inset
+	docstring const dummy = latexString(*this);
+}
+
+
 void InsetMathHull::addPreview(graphics::PreviewLoader & ploader) const
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {

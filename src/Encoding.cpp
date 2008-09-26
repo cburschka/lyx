@@ -14,6 +14,8 @@
 
 #include "Encoding.h"
 
+#include "Buffer.h"
+#include "InsetIterator.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "LyXRC.h"
@@ -253,6 +255,9 @@ CharInfoMap unicodesymbols;
 
 typedef std::set<char_type> CharSet;
 CharSet forced;
+
+typedef std::set<char_type> MathAlphaSet;
+MathAlphaSet mathalpha;
 
 
 /// The highest code point in UCS4 encoding (1<<20 + 1<<16)
@@ -505,6 +510,21 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, docstring & rem)
 }
 
 
+void Encodings::initUnicodeMath(Buffer const & buffer)
+{
+	mathcmd.clear();
+	textcmd.clear();
+	mathsym.clear();
+
+	Inset & inset = buffer.inset();
+	InsetIterator it = inset_iterator_begin(inset);
+	InsetIterator const end = inset_iterator_end(inset);
+
+	for (; it != end; ++it)
+		it->initUnicodeMath();
+}
+
+
 void Encodings::validate(char_type c, LaTeXFeatures & features, bool for_mathed)
 {
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
@@ -516,18 +536,32 @@ void Encodings::validate(char_type c, LaTeXFeatures & features, bool for_mathed)
 		                      (!for_mathed && !it->second.textcommand.empty());
 		if (use_math) {
 			if (!it->second.mathpreamble.empty()) {
-				if (it->second.mathfeature)
-					features.require(it->second.mathpreamble);
-				else
+				if (it->second.mathfeature) {
+					string feats = it->second.mathpreamble;
+					while (!feats.empty()) {
+						string feat;
+						feats = split(feats, feat, ',');
+						features.require(feat);
+					}
+				} else
 					features.addPreambleSnippet(it->second.mathpreamble);
 			}
 		}
 		if (use_text) {
 			if (!it->second.textpreamble.empty()) {
-				if (it->second.textfeature)
-					features.require(it->second.textpreamble);
-				else
+				if (it->second.textfeature) {
+					string feats = it->second.textpreamble;
+					while (!feats.empty()) {
+						string feat;
+						feats = split(feats, feat, ',');
+						features.require(feat);
+					}
+				} else
 					features.addPreambleSnippet(it->second.textpreamble);
+			}
+			if (for_mathed) {
+				features.require("relsize");
+				features.require("lyxmathsym");
 			}
 		}
 	}
@@ -608,6 +642,12 @@ bool Encodings::isForced(char_type c)
 }
 
 
+bool Encodings::isMathAlpha(char_type c)
+{
+	return mathalpha.count(c);
+}
+
+
 Encoding const * Encodings::fromLyXName(string const & name) const
 {
 	EncodingList::const_iterator const it = encodinglist.find(name);
@@ -677,16 +717,19 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		while (!flags.empty()) {
 			string flag;
 			flags = split(flags, flag, ',');
-			if (flag == "combining")
+			if (flag == "combining") {
 				info.combining = true;
-			else if (flag == "force") {
+			} else if (flag == "force") {
 				info.force = true;
 				forced.insert(symbol);
-			} else
+			} else if (flag == "mathalpha") {
+				mathalpha.insert(symbol);
+			} else {
 				lyxerr << "Ignoring unknown flag `" << flag
 				       << "' for symbol `0x"
 				       << hex << symbol << dec
 				       << "'." << endl;
+			}
 		}
 		// mathcommand and mathpreamble have been added for 1.6.0.
 		// make them optional so that old files still work.

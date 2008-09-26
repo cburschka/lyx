@@ -26,6 +26,7 @@
 
 #include "support/debug.h"
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 
 namespace lyx {
@@ -41,7 +42,7 @@ static bool isBinaryOp(char_type c)
 
 static bool slanted(char_type c)
 {
-	return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
+	return isAlphaASCII(c) || Encodings::isMathAlpha(c);
 }
 
 

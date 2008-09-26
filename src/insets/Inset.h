@@ -438,6 +438,16 @@ public:
 	 *  defaults to empty.
 	 */
 	virtual void addPreview(graphics::PreviewLoader &) const {}
+
+	/** Classifies the unicode characters appearing in a math inset
+	 *  depending on whether they are to be translated as latex
+	 *  math/text commands or used as math symbols without translation.
+	 *
+	 *  Only math insets have interest in this classification, so the
+	 *  method defaults to empty.
+	 */
+	virtual void initUnicodeMath() const {}
+
 	/// Add an entry to the TocList
 	/// pit is the ParConstIterator of the paragraph containing the inset
 	virtual void addToToc(DocIterator const &) {}
