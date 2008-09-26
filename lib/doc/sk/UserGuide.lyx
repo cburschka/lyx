@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0rc3 created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -17,63 +17,13 @@
 \renewcommand{\arraystretch}{1.25}
 \setlength{\tabcolsep}{0.45em}
 
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
 
-%% Provides certain commands which are missing.
-%%
-\DeclareRobustCommand{\textyen}{%
-{\fontencoding{U}\fontfamily{msa}\selectfont\char85}%
-}
-\DeclareRobustCommand{\textcurrency}{%
-{\fontencoding{U}\fontfamily{wasy}\selectfont\char27}%
-}
-\DeclareRobustCommand{\textcent}{%
-{\fontencoding{U}\fontfamily{wasy}\selectfont\char103}%
-}
-\DeclareRobustCommand{\textbrokenbar}{%
-{\fontencoding{U}\fontfamily{wasy}\selectfont\char124}%
-}
-
-
-%% For some odd reason, this character isn't defined in T1-encoding. 
-%%
-\DeclareInputText{"0AD}{\textendash}
-
-
-%% Accented characters missing in non-T1 encodings.
-%%
-\ProvideTextCommandDefault{\quotedblbase}{%
-\raisebox{-1ex}{\textquotedblright}
-\hspace{-0.7em}
-}
-\ProvideTextCommandDefault{\quotesinglbase}{%
-\raisebox{-1ex}{\textquoteright}
-\hspace{-0.7em}
-}
-\ProvideTextCommandDefault{\guillemotleft}{%
-\raisebox{0.27ex}{\ensuremath{\scriptscriptstyle \ll\!\!\!}}
-}
-\ProvideTextCommandDefault{\guillemotright}{%
-\raisebox{0.27ex}{\ensuremath{\scriptscriptstyle \gg}}
-}
-\ProvideTextCommandDefault{\guilsinglleft}{%
-\raisebox{0.27ex}{\ensuremath{\scriptscriptstyle <\!\!\!}}
-}
-\ProvideTextCommandDefault{\guilsinglright}{%
-\raisebox{0.27ex}{\ensuremath{\scriptscriptstyle >}}
-}
-\ProvideTextCommandDefault{\DH}{%
-D\hspace{-0.7em}\rule[0.8ex]{0.30em}{0.08ex}\hspace{0.40em}
-}
-\ProvideTextCommandDefault{\dh}{%
-\ensuremath{\mathrm{\partial}}
-\hspace{-0.65em}\rule[1.35ex]{0.3em}{0.08ex}\hspace{0.35em}
-}
-\ProvideTextCommandDefault{\TH}{%
-\textsc{I\hspace{-0.325em}p}
-}
-\ProvideTextCommandDefault{\th}{%
-p\hspace{-0.55em}l
-}
+%remove this line when bug 5291 is fixed
+\@ifundefined{textcolor}{\usepackage{color}}{}
 \end_preamble
 \language slovak
 \inputencoding latin2
@@ -87,10 +37,25 @@ p\hspace{-0.55em}l
 \font_tt_scale 100
 
 \graphics default
-\float_placement htp
+\float_placement tph
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_title "Užívateľská príručka LyXu"
+\pdf_author "LyX Team, translation: Stanislav Peťko"
+\pdf_subject "LyX"
+\pdf_keywords "LyX"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pagebackref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels,pdftex"
 \papersize default
 \use_geometry false
 \use_amsmath 1
