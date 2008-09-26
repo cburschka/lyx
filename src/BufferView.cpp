@@ -1188,6 +1188,10 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		FuncRequest req = cmd;
 		if (cmd.argument().empty() && !d->search_request_cache_.argument().empty())
 			req = d->search_request_cache_;
+		if (req.argument().empty()) {
+			theLyXFunc().dispatch(FuncRequest(LFUN_DIALOG_SHOW, "findreplace"));
+			break;
+		}
 		if (find(this, req))
 			showCursor();
 		else
