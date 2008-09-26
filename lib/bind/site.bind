@@ -25,10 +25,10 @@
 \bind "Up"         "up"
 \bind "Down"       "down"
 
-\bind "Tab"        "command-alternatives completion-accept;cell-forward;depth-increment"
+\bind "Tab"        "command-alternatives completion-accept;cell-forward;depth-increment;outline-in"
 \bind "C-Tab"      "cell-split"
 \bind "~S-ISO_Left_Tab"    "cell-backward"
-\bind "~S-BackTab" "command-alternatives cell-backward;depth-decrement"
+\bind "~S-BackTab" "command-alternatives cell-backward;depth-decrement;outline-out"
 
 \bind "Home"       "line-begin"
 \bind "End"        "line-end"
