@@ -31,7 +31,7 @@
   linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
   pdfpagelayout=OneColumn, pdfnewwindow=true,
   pdfstartview=XYZ, plainpages=false, pdfpagelabels,
-  pdfauthor={LyX Team}, pdftex, unicode,
+  pdfauthor={LyX Team, translation: Yuri Chornoivan}, pdftex, unicode,
   pdftitle={Introduction to LyX},pdfsubject={LyX-documentation Intro},
   pdfkeywords={LyX}]{hyperref}
  
@@ -107,6 +107,16 @@ status collapsed
  листа до списку листування щодо Документації до LyX: 
 \family typewriter
 lyx-docs@lists.lyx.org
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+translated by Yuri Chornoivan: yurchor@ukr.net
 \end_layout
 
 \end_inset
