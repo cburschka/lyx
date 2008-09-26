@@ -1,5 +1,5 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass article
@@ -13,10 +13,23 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
-\papersize default
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pagebackref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize a4paper
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
@@ -34,6 +47,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -47,24 +61,32 @@ LyX.
 \begin_layout Author
 от команды разработчиков LyX 
 \begin_inset Foot
-status open
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 Пожалуйста, комментарии и исправления отсылайте по указанному адресу.
-\end_layout
+ По русскому переводу замечания ожидаются Vitaly Lipatov по адресу 
+\begin_inset CommandInset href
+LatexCommand href
+target "lav@altlinux.ru"
+type "mailto:"
 
-\begin_layout Standard
-По русскому переводу замечания ожидаются Vitaly Lipatov по адресу <lav@altlinux.r
-u>
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
 перевод: Андрей Новосёлов
-\newline
+\begin_inset Newline newline
+\end_inset
+
 лит.
  редактор: Виталий Липатов
 \end_layout
@@ -88,7 +110,8 @@ lyx-users@lists.lyx.org
 \end_layout
 
 \begin_layout Abstract
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -196,8 +219,13 @@ LyX обеспечивает
 \begin_deeper
 \begin_layout Itemize
 например, 
-\begin_inset LatexCommand url
-target "http://www.fee.uva.nl/scholar/mdw/leuven/thesis.pdf"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.fee.uva.nl/scholar/mdw/leuven/thesis.pdf
+\end_layout
 
 \end_inset
 
@@ -232,8 +260,13 @@ target "http://www.fee.uva.nl/scholar/mdw/leuven/thesis.pdf"
 \begin_layout Itemize
 например, книга о PostgreSQL, см.
  
-\begin_inset LatexCommand url
-target "http://www.postgresql.org/docs/awbook.html"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.postgresql.org/docs/awbook.html
+\end_layout
 
 \end_inset
 
@@ -291,8 +324,13 @@ Herbert Voss: Praktische Kryptologie mit Java 286 pages, lots of equations,
 
 \begin_layout Standard
 Сайт 
-\begin_inset LatexCommand url
-target "www.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.lyx.org
+\end_layout
 
 \end_inset
 
@@ -311,8 +349,13 @@ target "www.lyx.org"
 
 \begin_layout Standard
 Другое основательное руководство для начинающего можно найти по адресу 
-\begin_inset LatexCommand url
-target "www.bilkent.edu.tr/~robin/lyxguide.pdf"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.bilkent.edu.tr/~robin/lyxguide.pdf
+\end_layout
 
 \end_inset
 
@@ -336,7 +379,7 @@ Linux: RedHat 4.2, 5.0, 5.1, 6.0, 6.1, SUSE 5.x, Mandrake 7.0, 7.2
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 и конечно, ALTLinux.
  --- прим.
  лит.
@@ -408,8 +451,13 @@ OSF1 flore V4.0 1091 alpha
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "www.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.lyx.org
+\end_layout
 
 \end_inset
 
@@ -417,8 +465,13 @@ target "www.lyx.org"
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "www.devel.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.devel.lyx.org
+\end_layout
 
 \end_inset
 
@@ -431,8 +484,13 @@ target "www.devel.lyx.org"
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "www.mx.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.mx.lyx.org
+\end_layout
 
 \end_inset
 
@@ -440,8 +498,13 @@ target "www.mx.lyx.org"
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "www.no.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.no.lyx.org
+\end_layout
 
 \end_inset
 
@@ -449,8 +512,13 @@ target "www.no.lyx.org"
 \end_layout
 
 \begin_layout Itemize
-\begin_inset LatexCommand url
-target "www.it.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.it.lyx.org
+\end_layout
 
 \end_inset
 
@@ -530,8 +598,13 @@ docs
 \end_inset
 
 ; в любом случае более подробно смотрите 
-\begin_inset LatexCommand url
-target "http://www.lyx.org/internet/mailing.php3"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/internet/mailing.php3
+\end_layout
 
 \end_inset
 
@@ -553,8 +626,13 @@ target "http://www.lyx.org/internet/mailing.php3"
 
 \begin_layout Itemize
 Объявления: 
-\begin_inset LatexCommand url
-target "http://www.mail-archive.com/lyx-announce@lists.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.mail-archive.com/lyx-announce@lists.lyx.org/
+\end_layout
 
 \end_inset
 
@@ -563,8 +641,13 @@ target "http://www.mail-archive.com/lyx-announce@lists.lyx.org/"
 
 \begin_layout Itemize
 Пользователи: 
-\begin_inset LatexCommand url
-target "http://www.mail-archive.com/lyx-users@lists.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.mail-archive.com/lyx-users@lists.lyx.org/
+\end_layout
 
 \end_inset
 
@@ -573,8 +656,13 @@ target "http://www.mail-archive.com/lyx-users@lists.lyx.org/"
 
 \begin_layout Itemize
 Разработчики: 
-\begin_inset LatexCommand url
-target "http://www.mail-archive.com/lyx-devel@lists.lyx.org/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.mail-archive.com/lyx-devel@lists.lyx.org/
+\end_layout
 
 \end_inset
 
@@ -711,7 +799,7 @@ LaTeX, позволяющие преобразовывать в обратном
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -769,8 +857,13 @@ make install
  систем Linux, впрочем и для многих других систем тоже.
  Двоичные пакеты LyX существуют в форме RPMS и нескольких других форматах
  и могут быть скачаны с 
-\begin_inset LatexCommand url
-target "ftp://ftp.sylvan.com/pub/lyx"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ftp://ftp.sylvan.com/pub/lyx
+\end_layout
 
 \end_inset
 
@@ -779,8 +872,13 @@ target "ftp://ftp.sylvan.com/pub/lyx"
 
 \begin_layout Standard
 Вариант для Windows доступен по адресу 
-\begin_inset LatexCommand url
-target "http://www.fh-hannover.de/mbau/tim/hentschel/lyx/index.html"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.fh-hannover.de/mbau/tim/hentschel/lyx/index.html
+\end_layout
 
 \end_inset
 
@@ -852,8 +950,13 @@ ERT (Неприятный Красный Текст) позволяет выде
 В этой главе мы собрали наиболее часто задаваемые вопросов.
  Для широкого круга не столь часто встречающихся вопросов, обратитесь к
  обширной коллекции Герберта Восса (Herbert Voss) по адресу 
-\begin_inset LatexCommand url
-target "http://www.educat.hu-berlin.de/~voss/lyx"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.educat.hu-berlin.de/~voss/lyx
+\end_layout
 
 \end_inset
 
@@ -1566,8 +1669,13 @@ Xvfb :1 -once -terminate &; rm <file>.tex; lyx -display :1 --export latex
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand url
-target "http://sourceforge.net/bugs/?func=detailbug&bug_id=124957&group_id=1897"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://sourceforge.net/bugs/?func=detailbug&bug_id=124957&group_id=1897
+\end_layout
 
 \end_inset
 
@@ -1615,7 +1723,7 @@ target "http://sourceforge.net/bugs/?func=detailbug&bug_id=124957&group_id=1897"
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
  читайте документацию --- прим.
  лит.
  редактора
@@ -1702,7 +1810,7 @@ lyx-docs@lists.lyx.org.
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 а теперь и русская.
  --- прим.
  лит.

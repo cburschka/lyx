@@ -1,5 +1,5 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 340
 \begin_document
 \begin_header
 \textclass book
@@ -16,9 +16,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics none
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -37,6 +39,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -47,15 +50,20 @@
 
 \begin_layout Author
 автор: Amir Karger и команда разработки LyX
-\newline
+\begin_inset Newline newline
+\end_inset
+
 перевод: Максим Дзюманенко
-\newline
+\begin_inset Newline newline
+\end_inset
+
 лит.
  редакторы: Юрий Калиниченко, Виталий Липатов
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -160,7 +168,7 @@
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -183,7 +191,7 @@ textregistered
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 или, более оптимистично, 
 \begin_inset Quotes fld
 \end_inset
@@ -202,9 +210,13 @@ status collapsed
 \emph on
 Самоучителя
 \emph default
-, вы определённо должны просмотреть раздел\InsetSpace ~
+, вы определённо должны просмотреть раздел
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:latexusers"
 
 \end_inset
@@ -230,7 +242,7 @@ reference "sec:latexusers"
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Заметка 
 \shape smallcaps
 \noun on
@@ -281,7 +293,7 @@ Weiss
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Более того, если вы начинаете с использования LyX, у вас наверно большая
  часть головы заполнена мозгами.
 \end_layout
@@ -365,11 +377,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
-name "sec:first-doc-ex"
-
-\end_inset
-
  Итак, вы готовы к написанию.
  Однако перед тем как вы приступите к этом, нам нужно сделать несколько
  замечаний, которые, будем надеяться, сделают 
@@ -418,7 +425,7 @@ name "sec:first-doc-ex"
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Они также могут служить хорошим примером использования многих возможностей
  LyX'а.
 \end_layout
@@ -470,7 +477,7 @@ dvips
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -513,7 +520,7 @@ example_raw.lyx
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Эти намёки размещены в жёлтых 
 \begin_inset Quotes fld
 \end_inset
@@ -568,7 +575,10 @@ examples/
 Ф
 \bar default
 айл\SpecialChar \menuseparator
-Сохранить\InsetSpace ~
+Сохранить
+\begin_inset space ~
+\end_inset
+
 как
 \family default
 , сохраните копию в вашем рабочем каталоге.
@@ -623,7 +633,7 @@ examples/
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Всё верно.
  Вы действительно можете набрать всё, что захотите.
  Это не имеет значения.
@@ -640,7 +650,10 @@ status collapsed
 Сохраните документ с помощью 
 \family sans
 Файл\SpecialChar \menuseparator
-Сохранить\InsetSpace ~
+Сохранить
+\begin_inset space ~
+\end_inset
+
 как\SpecialChar \@.
 
 \end_layout
@@ -675,7 +688,7 @@ dvi
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Вы можете сэкономить время, оставив 
 \family typewriter
 xdvi
@@ -744,7 +757,7 @@ OK\SpecialChar \@.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Если вы похожи на многих других пользователей 
 \noun on
 unix
@@ -788,8 +801,14 @@ unix
  редактирования нажатием 
 \family sans
 Правка\SpecialChar \menuseparator
-Отменить\InsetSpace ~
-последнее\InsetSpace ~
+Отменить
+\begin_inset space ~
+\end_inset
+
+последнее
+\begin_inset space ~
+\end_inset
+
 действие
 \family default
  нужное количество раз.
@@ -797,8 +816,14 @@ unix
  
 \family sans
 Правка\SpecialChar \menuseparator
-Повторить\InsetSpace ~
-отменённое\InsetSpace ~
+Повторить
+\begin_inset space ~
+\end_inset
+
+отменённое
+\begin_inset space ~
+\end_inset
+
 действие
 \family default
 .
@@ -846,8 +871,14 @@ unix
  Для поиска используйте 
 \family sans
 Правка\SpecialChar \menuseparator
-Найти\InsetSpace ~
-и\InsetSpace ~
+Найти
+\begin_inset space ~
+\end_inset
+
+и
+\begin_inset space ~
+\end_inset
+
 заменить
 \family default
 .
@@ -868,13 +899,19 @@ unix
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Когда закончите, закройте окно.
  Либо оставьте его открытым, если вам так удобнее.
  Большинство диалоговых окон в LyX --- включая 
 \family sans
-Найти\InsetSpace ~
-и\InsetSpace ~
+Найти
+\begin_inset space ~
+\end_inset
+
+и
+\begin_inset space ~
+\end_inset
+
 заменить
 \family default
 , 
@@ -901,7 +938,10 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-Форматирование\InsetSpace ~
+Форматирование
+\begin_inset space ~
+\end_inset
+
 символов.
  Вы можете 
 \emph on
@@ -925,7 +965,10 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-Панель\InsetSpace ~
+Панель
+\begin_inset space ~
+\end_inset
+
 инструментов.
  Кнопки на панели инструментов (прямо под меню) позволяют вам выполнять
  некоторые часто используемые действия, такие как 
@@ -970,7 +1013,8 @@ WYSIWYM: Пробельное пространство в LyX
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:whitespace"
 
 \end_inset
@@ -1106,7 +1150,10 @@ Tab
 \begin_layout Standard
 Ещё один специальный тип пустого пространства --- 
 \family sans
-Неразрывный\InsetSpace ~
+Неразрывный
+\begin_inset space ~
+\end_inset
+
 пробел
 \family default
 , которое делается нажатием 
@@ -1116,9 +1163,15 @@ C-Пробел
  (или 
 \family sans
 Вставить\SpecialChar \menuseparator
-Специальный\InsetSpace ~
+Специальный
+\begin_inset space ~
+\end_inset
+
 символ\SpecialChar \menuseparator
-Неразрывный\InsetSpace ~
+Неразрывный
+\begin_inset space ~
+\end_inset
+
 пробел
 \family default
 ) и показывается на экране как маленькая буква 
@@ -1133,7 +1186,7 @@ u
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Если вы читаете это руководство с экрана, вы вероятно уже заметили это и
  были удивлены.
 \end_layout
@@ -1143,7 +1196,10 @@ status collapsed
 .
  Если вы вставляете 
 \family sans
-Неразрывный\InsetSpace ~
+Неразрывный
+\begin_inset space ~
+\end_inset
+
 пробел
 \family default
  между двумя словами, на бумаге он напечатается как обычный пробел.
@@ -1156,7 +1212,10 @@ status collapsed
 \begin_inset Quotes fld
 \end_inset
 
-смотрите Раздел\InsetSpace ~
+смотрите Раздел
+\begin_inset space ~
+\end_inset
+
 1
 \begin_inset Quotes frd
 \end_inset
@@ -1181,7 +1240,7 @@ status collapsed
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Мы также используем его в 
 \emph on
 Самоучителе
@@ -1189,7 +1248,10 @@ status collapsed
  для описания названий меню, или специальных символов подобных\SpecialChar \ldots{}
  
 \family sans
-Неразрывному\InsetSpace ~
+Неразрывному
+\begin_inset space ~
+\end_inset
+
 пробелу!
 \end_layout
 
@@ -1307,7 +1369,7 @@ status collapsed
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Не обязательно 
 \emph on
 выделять
@@ -1373,7 +1435,7 @@ Enter
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 О том, как набирать заголовки из двух или более строк см.
  
 \emph on
@@ -1438,7 +1500,10 @@ Enter
 
 \begin_layout Standard
 Выглядит лучше.
- Снова перейдите к концу Раздела\InsetSpace ~
+ Снова перейдите к концу Раздела
+\begin_inset space ~
+\end_inset
+
 1 (после текста 
 \begin_inset Quotes fld
 \end_inset
@@ -1490,11 +1555,16 @@ Enter
 \begin_inset Quotes frd
 \end_inset
 
-, который был Разделом\InsetSpace ~
-2, автоматически перенумеруется в Раздел\InsetSpace ~
-3! В манере
- WYSIWYM, вам нужно просто указать текст, который составляет заголовок,
- и LyX возьмёт на себя нумерацию разделов и их оформление.
+, который был Разделом
+\begin_inset space ~
+\end_inset
+
+2, автоматически перенумеруется в Раздел
+\begin_inset space ~
+\end_inset
+
+3! В манере WYSIWYM, вам нужно просто указать текст, который составляет
+ заголовок, и LyX возьмёт на себя нумерацию разделов и их оформление.
 \end_layout
 
 \begin_layout Standard
@@ -1563,10 +1633,18 @@ Enter
 \end_inset
 
 .
- Если вы вставите другой раздел перед Разделом\InsetSpace ~
-2, Раздел\InsetSpace ~
-2 будет перенумерован
- в Раздел\InsetSpace ~
+ Если вы вставите другой раздел перед Разделом
+\begin_inset space ~
+\end_inset
+
+2, Раздел
+\begin_inset space ~
+\end_inset
+
+2 будет перенумерован в Раздел
+\begin_inset space ~
+\end_inset
+
 3, а подразделы будут перенумерованы в 
 \begin_inset Quotes fld
 \end_inset
@@ -1606,9 +1684,13 @@ Enter
 Раздел
 \family default
 , но его использование разрешено только в некоторых типах текстовых классов
- документов LyX (смотрите Раздел\InsetSpace ~
+ документов LyX (смотрите Раздел
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:textclasses"
 
 \end_inset
@@ -1672,7 +1754,7 @@ Tab
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Да, мы подчёркиваем это на протяжении всего 
 \emph on
 Самоучителя
@@ -1795,7 +1877,10 @@ Enter
 \emph default
  одним из способов будет использовать 
 \family sans
-Разрыв\InsetSpace ~
+Разрыв
+\begin_inset space ~
+\end_inset
+
 Строки
 \family default
 , который вы получите, нажав 
@@ -1809,7 +1894,10 @@ C-Enter
 \family default
  (или использовать клавишную комбинацию 
 \family sans
-M-p\InsetSpace ~
+M-p
+\begin_inset space ~
+\end_inset
+
 s
 \family default
 ).
@@ -1824,7 +1912,7 @@ s
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LyX не позволит вам выделить первую метку, пока вы не выберете абзац 
 \emph on
 перед
@@ -1879,7 +1967,7 @@ Enter
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Но отступ оформления, который будет изменяться, чтобы вместить наибольший
  из терминов, --- не печальный, жёсткий, неизменяемый табулятор в печатающей
  машинке.
@@ -1895,7 +1983,10 @@ status collapsed
  Если вы хотите получить более одного слова в определении, разделяйте их
  с помощью 
 \family sans
-Неразрывного\InsetSpace ~
+Неразрывного
+\begin_inset space ~
+\end_inset
+
 пробела
 \family default
 .
@@ -1936,7 +2027,10 @@ example_raw.lyx
 \family default
  для коротких цитат и 
 \family sans
-Большая\InsetSpace ~
+Большая
+\begin_inset space ~
+\end_inset
+
 цитата
 \family default
  для длинных.
@@ -1958,7 +2052,7 @@ LyX-
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \SpecialChar \ldots{}
 предполагается вы достаточно творческий человек, чтобы поэзия была у вас
  на первом месте.
@@ -2025,7 +2119,8 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:textclasses"
 
 \end_inset
@@ -2043,7 +2138,7 @@ name "sec:textclasses"
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 для пользователей LaTeX'а: это эквивалентно классу документа в LaTeX'е
 \end_layout
 
@@ -2072,7 +2167,7 @@ Article
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Обычно он является классом по умолчанию, однако вы можете изменить это в
  вашем файле 
 \family typewriter
@@ -2131,7 +2226,10 @@ Book
  Например, LyX поддерживает оформление (и дополнительные окружения) журналов
  Американского Математического Общества, используя класс текста 
 \family sans
-Article\InsetSpace ~
+Article
+\begin_inset space ~
+\end_inset
+
 (AMS)
 \family default
 .
@@ -2161,33 +2259,33 @@ Article\InsetSpace ~
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Имя
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Заметки
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 article
@@ -2198,18 +2296,18 @@ article
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 печать с одной стороны, без глав
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 article (AMS)
@@ -2220,18 +2318,18 @@ article (AMS)
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 форматы и окружения для Американского Математического Oбщества
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 report
@@ -2242,18 +2340,18 @@ report
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 больше чем article, печать с двух сторон
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 book
@@ -2261,21 +2359,21 @@ book
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 отчёты и книги
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 slides
@@ -2283,21 +2381,21 @@ slides
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 прозрачные плёнки, также включает FoilTeX
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 letter
@@ -2305,10 +2403,10 @@ letter
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 множество дополнительных окружений: адреса, подписи
 \end_layout
 
@@ -2371,8 +2469,14 @@ Letter
 Создайте новый файл с помощью 
 \family sans
 Файл\SpecialChar \menuseparator
-Создать\InsetSpace ~
-из\InsetSpace ~
+Создать
+\begin_inset space ~
+\end_inset
+
+из
+\begin_inset space ~
+\end_inset
+
 шаблона
 \family default
 .
@@ -2382,7 +2486,10 @@ letter.lyx
 \family default
  в диалоговом окне 
 \family sans
-Выберите\InsetSpace ~
+Выберите
+\begin_inset space ~
+\end_inset
+
 шаблон
 \family default
 .
@@ -2397,7 +2504,10 @@ letter.lyx
 \family default
 , вы увидите несколько окружений, таких как окружение 
 \family sans
-Мой\InsetSpace ~
+Мой
+\begin_inset space ~
+\end_inset
+
 адрес
 \family default
 , которых нет ни в каких других классах текстов..
@@ -2457,12 +2567,15 @@ Signature:
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Одно замечание, если вы пишете на основе шаблона.
  Если вы удалите весь текст в каком-либо окружении --- например, очистив
  всё поле 
 \family sans
-Мой\InsetSpace ~
+Мой
+\begin_inset space ~
+\end_inset
+
 адрес,
 \family default
  чтобы заменить его своим текстом, а затем переместите курсор, не введя
@@ -2516,7 +2629,7 @@ Article
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Вы больше не должны использовать класс текста 
 \family sans
 Letter
@@ -2562,20 +2675,9 @@ example_raw.lyx
 
 \begin_layout Section
 Метки и перекрёстные ссылки
-\begin_inset LatexCommand label
-name "sec:Метки-и-перекрёстные"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
-name "sec:labels"
-
-\end_inset
-
 Вы можете пометить раздел (или подподраздел, или, что реже используется,
  просто произвольную часть текста) в вашем документе.
  Как только вы это сделали, вы можете ссылаться на этот раздел в других
@@ -2612,14 +2714,17 @@ name "sec:labels"
  метки.
  Напишем 
 \family typewriter
-разд:о\InsetSpace ~
+разд:о
+\begin_inset space ~
+\end_inset
+
 документе
 \family default
 
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Возможно, у вас будут проблемы с названиями меток по-русски и вам придётся
  называть метки только латинскими буквами.
  --- 
@@ -2636,7 +2741,7 @@ status collapsed
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Мы написали 
 \begin_inset Quotes fld
 \end_inset
@@ -2685,16 +2790,20 @@ dvi
 \end_layout
 
 \begin_layout Standard
-Поставьте курсор где-нибудь в Разделе\InsetSpace ~
+Поставьте курсор где-нибудь в Разделе
+\begin_inset space ~
+\end_inset
+
 2 вашего документа.
  Наберите 
 \end_layout
 
 \begin_layout LyX-Code
 Если вы хотите больше узнать об этом документе, смотрите 
-\newline
-Раздел, который
- можно найти на странице .
+\begin_inset Newline newline
+\end_inset
+
+Раздел, который можно найти на странице .
 \end_layout
 
 \begin_layout Standard
@@ -2709,13 +2818,19 @@ dvi
  и выберите 
 \family sans
 Вставить\SpecialChar \menuseparator
-Перекрёстную\InsetSpace ~
+Перекрёстную
+\begin_inset space ~
+\end_inset
+
 ссылку
 \family default
 .
  Появится диалоговое окно 
 \family sans
-Перекрёстная\InsetSpace ~
+Перекрёстная
+\begin_inset space ~
+\end_inset
+
 ссылка
 \family default
 .
@@ -2724,7 +2839,10 @@ dvi
 \begin_inset Quotes fld
 \end_inset
 
-разд:о\InsetSpace ~
+разд:о
+\begin_inset space ~
+\end_inset
+
 документе
 \begin_inset Quotes frd
 \end_inset
@@ -2732,7 +2850,10 @@ dvi
 .
  Выделите её (она может быть выделена по умолчанию), затем установите 
 \family sans
-Тип\InsetSpace ~
+Тип
+\begin_inset space ~
+\end_inset
+
 ссылки
 \family default
  на 
@@ -2758,7 +2879,10 @@ dvi
 \family default
  на 
 \family typewriter
-Номер\InsetSpace ~
+Номер
+\begin_inset space ~
+\end_inset
+
 страницы
 \family default
 , затем нажмите 
@@ -2768,7 +2892,10 @@ dvi
 .
  (Чтобы быть более точным, вы должны вставить 
 \family sans
-Неразрывный\InsetSpace ~
+Неразрывный
+\begin_inset space ~
+\end_inset
+
 пробел
 \family default
  между словом 
@@ -2790,20 +2917,32 @@ LyX вставляет ссылки в виде серого прямоугол�
  либо на номер раздела (в зависимости от того, что вы выбрали диалоговом
  окне 
 \family sans
-Перекрёстная\InsetSpace ~
+Перекрёстная
+\begin_inset space ~
+\end_inset
+
 ссылка
 \family default
 ).
  Для удобства перекрёстная ссылка выступает в роли гиперссылки при просмотре
  документа LyX; нажатие на неё приводит к появлению диалога 
 \family sans
-Перекрёстная\InsetSpace ~
+Перекрёстная
+\begin_inset space ~
+\end_inset
+
 ссылка
 \family default
 , в котором нажатие на 
 \family sans
-Перейти\InsetSpace ~
-к\InsetSpace ~
+Перейти
+\begin_inset space ~
+\end_inset
+
+к
+\begin_inset space ~
+\end_inset
+
 ссылке
 \family default
  переместит курсор к метке ссылки, а 
@@ -2825,7 +2964,10 @@ VI
 \begin_inset Quotes fld
 \end_inset
 
-Раздел\InsetSpace ~
+Раздел
+\begin_inset space ~
+\end_inset
+
 2
 \begin_inset Quotes frd
 \end_inset
@@ -2834,12 +2976,18 @@ VI
 \begin_inset Quotes fld
 \end_inset
 
-Страницу\InsetSpace ~
+Страницу
+\begin_inset space ~
+\end_inset
+
 1
 \begin_inset Quotes frd
 \end_inset
 
- (либо на другую страницу, на которой появится заголовок Раздела\InsetSpace ~
+ (либо на другую страницу, на которой появится заголовок Раздела
+\begin_inset space ~
+\end_inset
+
 2).
 \end_layout
 
@@ -2850,7 +2998,10 @@ VI
 \begin_layout Standard
 Мы говорили вам, что LyX заботится о нумерации перекрёстных ссылок, теперь
  вы сможете это проверить.
- Добавьте новый раздел перед Разделом\InsetSpace ~
+ Добавьте новый раздел перед Разделом
+\begin_inset space ~
+\end_inset
+
 2.
  Теперь перезапустите LaTeX, и --- вуаля! --- перекрёстная ссылка изменилась
  на 
@@ -2869,9 +3020,14 @@ VI
 \begin_inset Quotes frd
 \end_inset
 
- на подраздел, и перекрёстная ссылка будет ссылаться на Раздел\InsetSpace ~
-2.1 вместо
- Раздела\InsetSpace ~
+ на подраздел, и перекрёстная ссылка будет ссылаться на Раздел
+\begin_inset space ~
+\end_inset
+
+2.1 вместо Раздела
+\begin_inset space ~
+\end_inset
+
 3.
  Конечно, ссылка на страницу не изменится, пока вы не добавите целую страницу
  текста перед ссылкой.
@@ -2892,7 +3048,10 @@ VI
  Если вы будете часто вставлять перекрёстные ссылки (например, если вы пишете
  журнальную статью), будет удобнее оставить окно 
 \family sans
-Перекрёстная\InsetSpace ~
+Перекрёстная
+\begin_inset space ~
+\end_inset
+
 ссылка
 \family default
  открытым.
@@ -2916,7 +3075,7 @@ VI
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Кстати, копирование заголовка главы может вызвать ошибку, так как использование
  глав поддерживается в классе текста 
 \family sans
@@ -2924,9 +3083,13 @@ Article
 \family default
 .
  Если это случилось --- просто удалите заголовок главы.
- Если вы хотите знать почему это происходит, смотрите Раздел\InsetSpace ~
+ Если вы хотите знать почему это происходит, смотрите Раздел
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:textclasses"
 
 \end_inset
@@ -2957,14 +3120,17 @@ example_raw.lyx
 \begin_layout Standard
 Сноски можно добавить используя кнопку 
 \family sans
-Вставить\InsetSpace ~
+Вставить
+\begin_inset space ~
+\end_inset
+
 сноску
 \family default
  в панели инструментов
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Кнопка выглядит в виде стрелки, указывающей на красный текст, прямо под
  строками с чёрным текстом.
 \end_layout
@@ -2987,7 +3153,10 @@ LyX
 
  где-то в вашем документе и нажмите кнопку 
 \family sans
-Вставить\InsetSpace ~
+Вставить
+\begin_inset space ~
+\end_inset
+
 сноску
 \family default
 .
@@ -3063,7 +3232,7 @@ dvi
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Это проще сделать с клавиатуры.
  Если вы попытаетесь выделить маркер мышкой, вы можете случайно развернуть
  сноску.
@@ -3083,12 +3252,18 @@ status collapsed
  В дополнение, вы можете превратить обычный текст в сноску, выделив его
  и нажав кнопку 
 \family sans
-Вставить\InsetSpace ~
+Вставить
+\begin_inset space ~
+\end_inset
+
 сноску
 \family default
 ; изменить сноску на обычный текст можно, нажав на кнопку 
 \family sans
-Вставить\InsetSpace ~
+Вставить
+\begin_inset space ~
+\end_inset
+
 сноску,
 \family default
  когда курсор находится в сноске.
@@ -3097,18 +3272,30 @@ status collapsed
 \begin_layout Standard
 Примечания на полях можно добавить, нажав кнопку 
 \family sans
-Вставить\InsetSpace ~
-примечание\InsetSpace ~
-на\InsetSpace ~
+Вставить
+\begin_inset space ~
+\end_inset
+
+примечание
+\begin_inset space ~
+\end_inset
+
+на
+\begin_inset space ~
+\end_inset
+
 полях
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Кнопка выглядит в виде стрелки указывающей на красный текст следующий за
  (т.е., в полях) чёрным текстом, и обычно располагается за кнопкой 
 \family sans
-Вставить\InsetSpace ~
+Вставить
+\begin_inset space ~
+\end_inset
+
 сноску
 \family default
  на панели инструментов.
@@ -3121,8 +3308,14 @@ status collapsed
  или 
 \family sans
 Вставить\SpecialChar \menuseparator
-Примечание\InsetSpace ~
-на\InsetSpace ~
+Примечание
+\begin_inset space ~
+\end_inset
+
+на
+\begin_inset space ~
+\end_inset
+
 полях
 \family default
 \SpecialChar \@.
@@ -3178,7 +3371,8 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:bibliographies"
 
 \end_inset
@@ -3187,7 +3381,7 @@ name "sec:bibliographies"
 \begin_inset Foot
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Чтобы получить гуманитарный стиль библиографий, творчески совместите методику
  из этого раздела с использованием сносок.
 \end_layout
@@ -3227,7 +3421,10 @@ status open
  Нажмите на прямоугольнике с номером ссылки, и появится диалоговое окно
  
 \family sans
-Элемент\InsetSpace ~
+Элемент
+\begin_inset space ~
+\end_inset
+
 библиографии
 \family default
 .
@@ -3253,7 +3450,7 @@ lyxtutorial
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Кириллические символы вызовут ошибку при вызове LaTeX.
  --- 
 \emph on
@@ -3271,9 +3468,18 @@ status collapsed
  Теперь вставьте ссылку с помощью меню 
 \family sans
 Вставить\SpecialChar \menuseparator
-Ссылку\InsetSpace ~
-на\InsetSpace ~
-источник\InsetSpace ~
+Ссылку
+\begin_inset space ~
+\end_inset
+
+на
+\begin_inset space ~
+\end_inset
+
+источник
+\begin_inset space ~
+\end_inset
+
 цитирования\SpecialChar \@.
 
 \family default
@@ -3288,7 +3494,7 @@ status collapsed
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Рекомендуется в поле 
 \family sans
 Ссылка
@@ -3310,7 +3516,10 @@ lyxtutorial
  (сейчас это единственный элемент библиографии), затем, используя стрелку
  влево в центре, переместите её в прямоугольник 
 \family sans
-Выбранные\InsetSpace ~
+Выбранные
+\begin_inset space ~
+\end_inset
+
 ссылки
 \family default
 .
@@ -3347,7 +3556,10 @@ lyxtutorial
 \family default
  в диалоговом окне 
 \family sans
-Элемент\InsetSpace ~
+Элемент
+\begin_inset space ~
+\end_inset
+
 библиографии
 \family default
 .
@@ -3383,7 +3595,7 @@ Enter
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Не пытайтесь установить курсор перед номером раздела.
  Это не сработает.
  Вы всё равно не сможете отредактировать номер раздела, так как о нумерации
@@ -3395,8 +3607,14 @@ status collapsed
  и выберите 
 \family sans
 Вставить\SpecialChar \menuseparator
-Списки\InsetSpace ~
-и\InsetSpace ~
+Списки
+\begin_inset space ~
+\end_inset
+
+и
+\begin_inset space ~
+\end_inset
+
 содержания\SpecialChar \menuseparator
 Содержание
 \family default
@@ -3441,7 +3659,7 @@ dvi
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Команда меню будет работать, даже если в вашем документе нет вкладки 
 \begin_inset Quotes fld
 \end_inset
@@ -3514,14 +3732,17 @@ LaTeX используется многими учёными, так как он
  математические команды LaTeX, но они будут показаны в манере WYSIWYM.
  Если же, вы никогда не писали в LaTeX, то 
 \family sans
-Математическая\InsetSpace ~
+Математическая
+\begin_inset space ~
+\end_inset
+
 панель
 \family default
  быстро и просто позволит вам составлять профессионально выглядящие формулы
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Извините, но LyX не может проверять 
 \emph on
 корректность
@@ -3595,7 +3816,10 @@ Esc
 \family default
  (Заметка: нажатие на кнопку 
 \family sans
-Математический\InsetSpace ~
+Математический
+\begin_inset space ~
+\end_inset
+
 режим
 \family default
  
@@ -3721,8 +3945,14 @@ Backspace
  
 \family sans
 Правка\SpecialChar \menuseparator
-Отменить\InsetSpace ~
-последнее\InsetSpace ~
+Отменить
+\begin_inset space ~
+\end_inset
+
+последнее
+\begin_inset space ~
+\end_inset
+
 действие
 \family default
  работает и в математическом режиме, так же, как и вырезка и вставка.
@@ -3738,8 +3968,14 @@ Backspace
 ), это приведёт к удалению всего выражения.
  К счастью, чтобы всё вернуть, вы можете просто использовать 
 \family sans
-Отменить\InsetSpace ~
-последнее\InsetSpace ~
+Отменить
+\begin_inset space ~
+\end_inset
+
+последнее
+\begin_inset space ~
+\end_inset
+
 действие
 \family default
 .
@@ -3876,7 +4112,7 @@ c
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family sans
 Пробел
@@ -3892,7 +4128,8 @@ Tab
  используются для создания дополнительного пространства между частями формулы.
  Это пространство создаётся при оформлении, что подразумевает, что вы должны
  дать LyX'у (LaTeX'у) позаботиться об этом (смотрите Раздел 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:whitespace"
 
 \end_inset
@@ -3965,7 +4202,10 @@ Esc
 \begin_layout Standard
 Показатель степени можно ввести через 
 \family sans
-Математическую\InsetSpace ~
+Математическую
+\begin_inset space ~
+\end_inset
+
 панель
 \family default
  (см.
@@ -4031,7 +4271,10 @@ example_raw.lyx
 \begin_layout Standard
 
 \family sans
-Математическая\InsetSpace ~
+Математическая
+\begin_inset space ~
+\end_inset
+
 панель
 \family default
  --- удобный способ ввода символов или выполнения многих сложных функций
@@ -4063,14 +4306,20 @@ example_raw.lyx
 .
  Однако мы собираемся сконцентрироваться на использовании 
 \family sans
-Математической\InsetSpace ~
+Математической
+\begin_inset space ~
+\end_inset
+
 панели
 \family default
 , чтобы дать вам представление о том, что там есть; комбинации клавиш вы
  сможете изучить позже из других руководств.
  Так что откройте сейчас 
 \family sans
-Математическую\InsetSpace ~
+Математическую
+\begin_inset space ~
+\end_inset
+
 панель
 \family default
  через меню 
@@ -4112,7 +4361,10 @@ example_raw.lyx
  theta, и sigma.
  Для сокращения при наборе текста, вы можете сразу выбирать что-либо в 
 \family sans
-Математической\InsetSpace ~
+Математической
+\begin_inset space ~
+\end_inset
+
 панели
 \family default
 , при этом автоматически откроется математический редактор.
@@ -4121,7 +4373,10 @@ example_raw.lyx
 \begin_layout Standard
 Внизу 
 \family sans
-Математической\InsetSpace ~
+Математической
+\begin_inset space ~
+\end_inset
+
 панели
 \family default
  расположено двенадцать кнопок, которые позволят вам выбрать из широкого
@@ -4130,7 +4385,7 @@ example_raw.lyx
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Чёрные кнопки для обычных символов LaTeX и синие кнопки для более специализирова
 нных символов, предоставляемых Американским Математическим Сообществом.
  Но я забегаю вперёд.
@@ -4161,7 +4416,10 @@ status collapsed
 \begin_layout Standard
 Четыре нижние кнопки 
 \family sans
-Математической\InsetSpace ~
+Математической
+\begin_inset space ~
+\end_inset
+
 панели
 \family default
  позволят вам выбрать символы из широкого диапазона используемых в математике
@@ -4219,7 +4477,10 @@ status collapsed
 \family sans
 Декорация
 \family default
-, на которой изображён синий квадрат с чёрной тильдой\InsetSpace ~
+, на которой изображён синий квадрат с чёрной тильдой
+\begin_inset space ~
+\end_inset
+
 (~) над ним.
  Нажмите мышью на значок, и LyX напечатает значок с точкой ввода под (или
  над) ним.
@@ -4336,7 +4597,10 @@ OK
  Выберите желаемую часть формулы и нажмите кнопку мыши на нужной кнопке
  
 \family sans
-Математической\InsetSpace ~
+Математической
+\begin_inset space ~
+\end_inset
+
 панели
 \family default
 .
@@ -4512,7 +4776,10 @@ sin
 \family default
  в 
 \family sans
-Математической\InsetSpace ~
+Математической
+\begin_inset space ~
+\end_inset
+
 панели
 \family default
 .
@@ -4599,7 +4866,8 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:matrices"
 
 \end_inset
@@ -4610,7 +4878,10 @@ name "sec:matrices"
 \family default
  в 
 \family sans
-Математической\InsetSpace ~
+Математической
+\begin_inset space ~
+\end_inset
+
 панели
 \family default
 .
@@ -4666,7 +4937,10 @@ Tab
 М
 \bar default
 атематика\SpecialChar \menuseparator
-Вставить\InsetSpace ~
+Вставить
+\begin_inset space ~
+\end_inset
+
 строку
 \family default
  и 
@@ -4680,19 +4954,28 @@ Tab
 М
 \bar default
 атематика\SpecialChar \menuseparator
-Вставить\InsetSpace ~
+Вставить
+\begin_inset space ~
+\end_inset
+
 столбец
 \family default
 .
  Они добавляют колонку или строку после текущей позиции.
  Если вы добавили слишком много, используйте 
 \family sans
-Удалить\InsetSpace ~
+Удалить
+\begin_inset space ~
+\end_inset
+
 строку
 \family default
  и 
 \family sans
-Удалить\InsetSpace ~
+Удалить
+\begin_inset space ~
+\end_inset
+
 столбец
 \family default
  из того же меню.
@@ -4702,7 +4985,10 @@ Tab
 Способы изменения горизонтального выравнивания каждого столбца, а также
  изменения вертикальной позиции всей матрицы смотрите в 
 \emph on
-Руководстве\InsetSpace ~
+Руководстве
+\begin_inset space ~
+\end_inset
+
 Пользователя
 \emph default
 .
@@ -4729,7 +5015,8 @@ Tab
 \emph default
 ), также многострочные формулы (смотрите Разд.
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:multiline"
 
 \end_inset
@@ -4744,7 +5031,10 @@ reference "sec:multiline"
 \family default
  в 
 \family sans
-Математической\InsetSpace ~
+Математической
+\begin_inset space ~
+\end_inset
+
 панели
 \family default
 , на которой изображены несколько линий текста до и после синего прямоугольника.
@@ -4827,7 +5117,7 @@ example_raw.lyx
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 После того, как вы сделаете это самым сложным способом, почему бы вам не
  попробовать меню 
 \family sans
@@ -4841,7 +5131,10 @@ status collapsed
 \SpecialChar \menuseparator
 
 \family sans
-Блок\InsetSpace ~
+Блок
+\begin_inset space ~
+\end_inset
+
 вариантов
 \family default
 ?
@@ -4866,7 +5159,8 @@ f(x)=\left\{ \begin{array}{cc}
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:multiline"
 
 \end_inset
@@ -4932,7 +5226,10 @@ C-Enter
 \family sans
 Вставить\SpecialChar \menuseparator
 Математика\SpecialChar \menuseparator
-Блок\InsetSpace ~
+Блок
+\begin_inset space ~
+\end_inset
+
 уравнений
 \family default
 .
@@ -4942,7 +5239,10 @@ C-Enter
 \family sans
 Правка\SpecialChar \menuseparator
 Математика\SpecialChar \menuseparator
-Добавить\InsetSpace ~
+Добавить
+\begin_inset space ~
+\end_inset
+
 строку
 \family default
  или просто нажмите 
@@ -4958,7 +5258,7 @@ C-Enter
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Заметьте, что промежуток после первого плюса во второй строке очень мал.
  Это один из редких случаев когда LaTeX терпит неудачу и вы должны позаботиться
  о промежутке самостоятельно.
@@ -4989,7 +5289,8 @@ LyX выровняет второе (среднее) поле каждой ст�
  Но не используйте многострочные формулы для составления массивов; для этого
  используйте матрицы (смотрите Разд.
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:matrices"
 
 \end_inset
@@ -5040,7 +5341,10 @@ E & = & mc^{2}\\
 \family sans
 Правка\SpecialChar \menuseparator
 Математика\SpecialChar \menuseparator
-Удалить\InsetSpace ~
+Удалить
+\begin_inset space ~
+\end_inset
+
 строку
 \family default
 .
@@ -5105,7 +5409,10 @@ C-k
 Изменений гарнитур, например, чтобы написать в выражении текст жирным шрифтом.
  Мы должны заметить, что нажатие кнопки 
 \family sans
-Математический\InsetSpace ~
+Математический
+\begin_inset space ~
+\end_inset
+
 режим
 \family default
  в панели инструментов, в то время как вы уже в математическом редакторе,
@@ -5174,7 +5481,7 @@ C-k
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Убрано в русском переводе: (Мы предпочитаем использовать соглашение LaTeX'а:
  tabular и table --- чтобы отличить содержимое таблицы от плавающей таблицы,
  которая включает содержимое таблицы, заголовок и т.д.) --- 
@@ -5191,7 +5498,10 @@ status collapsed
 \emph default
  мыши приводит к появлению меню 
 \family sans
-Формат\InsetSpace ~
+Формат
+\begin_inset space ~
+\end_inset
+
 таблицы,
 \family default
  которое позволяет вам выполнять всестороннее её редактирование.
@@ -5203,7 +5513,7 @@ LyX также поддерживает включение рисунков в �
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -5247,8 +5557,14 @@ LyX гибко настраивается.
  Более подробно об этом смотрите в 
 \family sans
 Помощь\SpecialChar \menuseparator
-Руководство\InsetSpace ~
-по\InsetSpace ~
+Руководство
+\begin_inset space ~
+\end_inset
+
+по
+\begin_inset space ~
+\end_inset
+
 настройке\SpecialChar \@.
 
 \end_layout
@@ -5268,7 +5584,7 @@ LyX разрабатывается командой программистов �
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 В русском варианте локализации клавишные комбинации (пока?) не реализованы.
  --- 
 \emph on
@@ -5329,18 +5645,28 @@ C-O
 \family sans
 \emph on
 Помощь\SpecialChar \menuseparator
-Руководство\InsetSpace ~
-по\InsetSpace ~
+Руководство
+\begin_inset space ~
+\end_inset
+
+по
+\begin_inset space ~
+\end_inset
+
 настройке\SpecialChar \@.
 
 \end_layout
 
 \begin_layout Itemize
 LyX может читать документы в формате LaTeX.
- Смотрите Раздел\InsetSpace ~
+ Смотрите Раздел
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
-reference "sec:relyx"
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Импортирование-документов-LaTeX"
 
 \end_inset
 
@@ -5358,7 +5684,7 @@ reference "sec:relyx"
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Обратите внимание, что проверка орфографии производится только от позиции
  курсора до конца документа.
 \end_layout
@@ -5373,7 +5699,8 @@ LyX для пользователей LaTeX
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:latexusers"
 
 \end_inset
@@ -5424,7 +5751,10 @@ name "sec:latexusers"
  Вы можете использовать команды LaTeX в LyX, выбрав 
 \family sans
 Вставить\SpecialChar \menuseparator
-Команду\InsetSpace ~
+Команду
+\begin_inset space ~
+\end_inset
+
 LaTeX
 \family default
  или нажав на кнопке с красной надписью TeX.
@@ -5488,7 +5818,10 @@ gamma
  Это работает практически для всех простых математических макросов.
  Набор таким способом может быть более быстрым, чем с помощью 
 \family sans
-Математической\InsetSpace ~
+Математической
+\begin_inset space ~
+\end_inset
+
 панели
 \family default
 , и будет особенно удобен опытным пользователям LaTeX.
@@ -5524,9 +5857,13 @@ LyX не может делать абсолютно всё, что может La
 \backslash
 usepackage{foo}
 \family default
- в преамбуле LaTeX (смотрите Раздел\InsetSpace ~
+ в преамбуле LaTeX (смотрите Раздел
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:preamble"
 
 \end_inset
@@ -5539,16 +5876,18 @@ reference "sec:preamble"
 Импортирование документов LaTeX --- 
 \family typewriter
 tex2lyx
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Импортирование-документов-LaTeX"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-\begin_inset LatexCommand label
-name "sec:tex2lyx"
-
-\end_inset
-
 You can import a LaTeX file into LyX by using the 
 \family sans
 \bar under
@@ -5626,7 +5965,10 @@ tex2lyx
  Выберите 
 \family sans
 Файл\SpecialChar \menuseparator
-Экспортировать\InsetSpace ~
+Экспортировать
+\begin_inset space ~
+\end_inset
+
 в\SpecialChar \menuseparator
 LaTeX
 \family default
@@ -5675,7 +6017,10 @@ documentclass
 \family default
  в 
 \family sans
-Доп.\InsetSpace ~
+Доп.
+\begin_inset space ~
+\end_inset
+
 параметры
 \family default
 .
@@ -5686,7 +6031,8 @@ documentclass
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:preamble"
 
 \end_inset
@@ -5696,7 +6042,10 @@ name "sec:preamble"
  Выберите 
 \family sans
 Формат\SpecialChar \menuseparator
-Преамбула\InsetSpace ~
+Преамбула
+\begin_inset space ~
+\end_inset
+
 LaTeX
 \family default
  и введите их в появившемся окне.
@@ -5718,12 +6067,27 @@ bib
 -файла выберите 
 \family sans
 Вставить\SpecialChar \menuseparator
-Списки\InsetSpace ~
-и\InsetSpace ~
+Списки
+\begin_inset space ~
+\end_inset
+
+и
+\begin_inset space ~
+\end_inset
+
 содержания\SpecialChar \menuseparator
-Ссылки\InsetSpace ~
-сгенерированные\InsetSpace ~
-через\InsetSpace ~
+Ссылки
+\begin_inset space ~
+\end_inset
+
+сгенерированные
+\begin_inset space ~
+\end_inset
+
+через
+\begin_inset space ~
+\end_inset
+
 BibTeX
 \family default
 .
@@ -5734,7 +6098,10 @@ BibTeX
 .
  В поле 
 \family sans
-База\InsetSpace ~
+База
+\begin_inset space ~
+\end_inset
+
 данных
 \family default
  наберите всё, что вы хотели бы набрать в скобках команды 
@@ -5745,7 +6112,7 @@ bibliography{}
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Как и в обычном LaTeX, множественные библиографии разделяются запятыми без
  пробелов.
 \end_layout
@@ -5773,14 +6140,27 @@ bibliographystyle{}
  библиографии с помощью 
 \family sans
 Вставить\SpecialChar \menuseparator
-Ссылку\InsetSpace ~
-на\InsetSpace ~
-источник\InsetSpace ~
+Ссылку
+\begin_inset space ~
+\end_inset
+
+на
+\begin_inset space ~
+\end_inset
+
+источник
+\begin_inset space ~
+\end_inset
+
 цитирования
 \family default
- (смотрите Раздел\InsetSpace ~
+ (смотрите Раздел
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:bibliographies"
 
 \end_inset
@@ -5789,8 +6169,14 @@ reference "sec:bibliographies"
  LyX позаботится о запуске BibTeX.
  В появившемся окне 
 \family sans
-Ссылка\InsetSpace ~
-на\InsetSpace ~
+Ссылка
+\begin_inset space ~
+\end_inset
+
+на
+\begin_inset space ~
+\end_inset
+
 источник
 \family default
  будет показан список всех присутствующих в вашем 
@@ -5809,7 +6195,10 @@ bib
  точки переносов, смотрите меню 
 \family sans
 Вставить\SpecialChar \menuseparator
-Специальный\InsetSpace ~
+Специальный
+\begin_inset space ~
+\end_inset
+
 символ
 \family default
 .
