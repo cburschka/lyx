@@ -197,7 +197,7 @@ static string const textcyr_def =
 	" \\fontencoding{T2A}\\selectfont\n"
 	" \\def\\encodingdefault{T2A}}\n"
 	"\\DeclareRobustCommand{\\textcyr}[1]{\\leavevmode{\\cyrtext #1}}\n"
-	"\\DeclareFontEncoding{T2A}{}{}\n";
+	"\\AtBeginDocument{\\DeclareFontEncoding{T2A}{}{}}\n";
 
 static string const lyxmathsym_def =
 	"\\DeclareRobustCommand{\\lyxmathsym}[1]{%\n"
