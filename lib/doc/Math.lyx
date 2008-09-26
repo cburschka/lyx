@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 340
+#LyX 1.6.0rc3 created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -9918,7 +9918,13 @@ A
 \begin_inset VSpace bigskip
 \end_inset
 
-To create umlauts
+
+\end_layout
+
+\begin_layout Standard
+You can directly insert accents like é to formulas.
+ LyX will transform them to the corresponding accent command.
+ For umlauts
 \begin_inset Index
 status collapsed
 
@@ -9928,7 +9934,7 @@ Umlauts
 
 \end_inset
 
- in formulas, a quotation mark is inserted before the vowel.
+ it is better to insert a quotation mark before the vowel.
  These two characters are then treated by LaTeX as 
 \emph on
 one

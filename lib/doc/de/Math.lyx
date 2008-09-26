@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 340
+#LyX 1.6.0rc3 created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -9937,7 +9937,10 @@ A
 \begin_inset VSpace bigskip
 \end_inset
 
-Wenn man in einer Formel Umlaute
+Akzente wie z.B.
+ é können direkt in Formeln eingegeben werden.
+ LyX transformiert sie dann in den entsprechenden Akzentbefehl.
+ Für Umlaute
 \begin_inset Index
 status collapsed
 
@@ -9947,7 +9950,7 @@ Umlaute
 
 \end_inset
 
- erstellen will, schreibt man ein Anführungszeichen vor den Selbstlaut.
+ ist es besser wenn man ein Anführungszeichen vor den Selbstlaut schreibt.
  Diese beiden Zeichen bilden dann für LaTeX 
 \emph on
 ein
