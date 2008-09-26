@@ -619,7 +619,7 @@ int main(int argc, char * argv[])
 		iowatch.wait();
 		if (iowatch.isset(0)) {
 			string command;
-			cin >> command;
+			getline(cin, command);
 			if (command == "BYE:") {
 				server->writeln("BYE:");
 				saidbye = true;
