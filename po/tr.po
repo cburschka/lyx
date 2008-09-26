@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-09-23 21:23+0200\n"
+"POT-Creation-Date: 2008-09-26 13:46+0100\n"
 "PO-Revision-Date: 2006-07-01 11:06+0200\n"
 "Last-Translator: Gürer Özen <gurer@pardus.org.tr>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -84,7 +84,7 @@ msgstr "&Tamam"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:626 src/Buffer.cpp:836
 #: src/Buffer.cpp:2526 src/Buffer.cpp:2550 src/Buffer.cpp:2585
-#: src/LyXFunc.cpp:666 src/LyXFunc.cpp:802 src/LyXFunc.cpp:980
+#: src/LyXFunc.cpp:683 src/LyXFunc.cpp:821 src/LyXFunc.cpp:999
 #: src/LyXVC.cpp:181 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1272
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -164,7 +164,7 @@ msgstr "&Ekle"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/LabelUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:92
-#: src/frontends/qt4/ui/ShortcutUi.ui:65 src/LyXFunc.cpp:772
+#: src/frontends/qt4/ui/ShortcutUi.ui:65 src/LyXFunc.cpp:791
 #: src/buffer_funcs.cpp:104 src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
 msgstr "Vazgeç"
@@ -291,7 +291,7 @@ msgid "Left"
 msgstr "Sola dayalý"
 
 #: src/frontends/qt4/ui/BoxUi.ui:70 src/frontends/qt4/ui/TabularUi.ui:147
-#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:71
+#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
 #: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:714
 msgid "Center"
 msgstr "Ortalý"
@@ -491,7 +491,7 @@ msgstr "Boy:"
 #: src/frontends/qt4/GuiDocument.cpp:1182
 #: src/frontends/qt4/GuiDocument.cpp:1227
 #: src/frontends/qt4/GuiDocument.cpp:2213 src/frontends/qt4/GuiExternal.cpp:75
-#: src/frontends/qt4/GuiGraphics.cpp:69 src/frontends/qt4/GuiListings.cpp:151
+#: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiListings.cpp:151
 #: src/frontends/qt4/GuiListings.cpp:158 src/frontends/qt4/GuiPrefs.cpp:1709
 msgid "Default"
 msgstr "Öntanýmlý"
@@ -2001,127 +2001,6 @@ msgstr "Ýçindekilerde Listele"
 msgid "&Numbering"
 msgstr "&Numaralama"
 
-#: src/frontends/qt4/ui/PageLayoutUi.ui:33
-#: src/frontends/qt4/GuiDocument.cpp:1003
-msgid "Page Layout"
-msgstr "Sayfa Yerleþimi"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:68
-#, fuzzy
-msgid "Paper Format"
-msgstr "Tarih biçimi"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:103
-msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr "Belli bir kaðýt boyu seçin, yada \"Özel\" ile kendiniz belirleyin"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:121
-msgid "Style used for the page header and footer"
-msgstr "Sayfa baþlýk ve altlýðýnda kullanýlacak stil"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:128
-#, fuzzy
-msgid "Headings &style:"
-msgstr "Sayfa st&ili:"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:138
-msgid "&Landscape"
-msgstr "&Dikey"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:145
-msgid "&Portrait"
-msgstr "&Yatay"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:191
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:92
-#: src/frontends/qt4/ui/RefUi.ui:129
-msgid "&Format:"
-msgstr "&Biçim:"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:227
-#, fuzzy
-msgid "&Orientation:"
-msgstr "Yönlenim"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:253
-msgid "Lay out the page for double-sided printing"
-msgstr "Sayfayý iki yüzlü yazdýrma için yerleþtir"
-
-#: src/frontends/qt4/ui/PageLayoutUi.ui:256
-msgid "&Two-sided document"
-msgstr "Ýki y&üzlü belge"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:44
-msgid "I&mmediate Apply"
-msgstr ""
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:129
-msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr ""
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:132
-#, fuzzy
-msgid "Paragraph's &Default"
-msgstr "Öntanýmlý yerleþim"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:139
-#, fuzzy
-msgid "Ri&ght"
-msgstr "Saða dayalý"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:146
-#, fuzzy
-msgid "C&enter"
-msgstr "Ortalý"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:153
-#, fuzzy
-msgid "&Left"
-msgstr "Sola dayalý"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:160
-#, fuzzy
-msgid "&Justified"
-msgstr "Yaslanmýþ"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:170
-#, fuzzy
-msgid "&Indent Paragraph"
-msgstr "Paragrafý &girintile"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:180
-msgid "Label Width"
-msgstr "Etiket Geniþliði"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:195
-#: src/frontends/qt4/ui/ParagraphUi.ui:202
-msgid "This text defines the width of the paragraph label"
-msgstr "Bu metin paragraf etiketinin geniþliðini tanýmlar"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:205
-#, fuzzy
-msgid "Lo&ngest label"
-msgstr "&En uzun etiket"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:218
-#, fuzzy
-msgid "Line &spacing"
-msgstr "Satýr &aralýðý:"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:246 src/Text.cpp:1377
-#: src/frontends/qt4/GuiDocument.cpp:599
-msgid "Single"
-msgstr "Tek"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:251
-msgid "1.5"
-msgstr "1.5"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:256 src/Text.cpp:1383
-#: src/frontends/qt4/GuiDocument.cpp:603
-msgid "Double"
-msgstr "Çift"
-
 #: src/frontends/qt4/ui/PDFSupportUi.ui:28
 msgid "&Use hyperref support"
 msgstr ""
@@ -2244,6 +2123,127 @@ msgstr "Ek LaTeX seçenekleri"
 #: src/frontends/qt4/ui/PDFSupportUi.ui:421
 msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 msgstr ""
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:33
+#: src/frontends/qt4/GuiDocument.cpp:1003
+msgid "Page Layout"
+msgstr "Sayfa Yerleþimi"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:68
+#, fuzzy
+msgid "Paper Format"
+msgstr "Tarih biçimi"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:103
+msgid "Choose a particular paper size, or set your own with \"Custom\""
+msgstr "Belli bir kaðýt boyu seçin, yada \"Özel\" ile kendiniz belirleyin"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:121
+msgid "Style used for the page header and footer"
+msgstr "Sayfa baþlýk ve altlýðýnda kullanýlacak stil"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:128
+#, fuzzy
+msgid "Headings &style:"
+msgstr "Sayfa st&ili:"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:138
+msgid "&Landscape"
+msgstr "&Dikey"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:145
+msgid "&Portrait"
+msgstr "&Yatay"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:191
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:92
+#: src/frontends/qt4/ui/RefUi.ui:129
+msgid "&Format:"
+msgstr "&Biçim:"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:227
+#, fuzzy
+msgid "&Orientation:"
+msgstr "Yönlenim"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:253
+msgid "Lay out the page for double-sided printing"
+msgstr "Sayfayý iki yüzlü yazdýrma için yerleþtir"
+
+#: src/frontends/qt4/ui/PageLayoutUi.ui:256
+msgid "&Two-sided document"
+msgstr "Ýki y&üzlü belge"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:44
+msgid "I&mmediate Apply"
+msgstr ""
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:129
+msgid "Use the default alignment for this paragraph, whatever it is."
+msgstr ""
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:132
+#, fuzzy
+msgid "Paragraph's &Default"
+msgstr "Öntanýmlý yerleþim"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:139
+#, fuzzy
+msgid "Ri&ght"
+msgstr "Saða dayalý"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:146
+#, fuzzy
+msgid "C&enter"
+msgstr "Ortalý"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:153
+#, fuzzy
+msgid "&Left"
+msgstr "Sola dayalý"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:160
+#, fuzzy
+msgid "&Justified"
+msgstr "Yaslanmýþ"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:170
+#, fuzzy
+msgid "&Indent Paragraph"
+msgstr "Paragrafý &girintile"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:180
+msgid "Label Width"
+msgstr "Etiket Geniþliði"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:195
+#: src/frontends/qt4/ui/ParagraphUi.ui:202
+msgid "This text defines the width of the paragraph label"
+msgstr "Bu metin paragraf etiketinin geniþliðini tanýmlar"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:205
+#, fuzzy
+msgid "Lo&ngest label"
+msgstr "&En uzun etiket"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:218
+#, fuzzy
+msgid "Line &spacing"
+msgstr "Satýr &aralýðý:"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:246 src/Text.cpp:1378
+#: src/frontends/qt4/GuiDocument.cpp:599
+msgid "Single"
+msgstr "Tek"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:251
+msgid "1.5"
+msgstr "1.5"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:256 src/Text.cpp:1384
+#: src/frontends/qt4/GuiDocument.cpp:603
+msgid "Double"
+msgstr "Çift"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "&Alter..."
@@ -3194,7 +3194,7 @@ msgstr "G&öz at..."
 msgid "&User interface file:"
 msgstr "Arabirim dosyasý:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:665
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:682
 #: src/frontends/qt4/GuiView.cpp:1776
 msgid "&Save"
 msgstr "&Kaydet"
@@ -4025,12 +4025,12 @@ msgstr "Ýspat:"
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:196
 #: lib/layouts/ijmpd.layout:199 lib/layouts/llncs.layout:412
 #: lib/layouts/siamltex.layout:200 lib/layouts/svjour.inc:475
-#: lib/layouts/theorems.inc:24 lib/layouts/theorems.inc:25
-#: lib/layouts/theorems.inc:202 lib/layouts/theorems-ams.inc:24
-#: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
-#: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-proof.inc:14
-#: lib/layouts/theorems-starred.inc:24
+#: lib/layouts/theorems-ams.inc:24 lib/layouts/theorems-ams.inc:25
+#: lib/layouts/theorems-ams.inc:208 lib/layouts/theorems-order.inc:7
+#: lib/layouts/theorems-proof.inc:14
 #: lib/layouts/theorems-starred-equivalents.inc:6
+#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:24
+#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:202
 #: lib/layouts/theorems-chap.module:17 lib/layouts/theorems-sec.module:16
 msgid "Theorem"
 msgstr "Teorem"
@@ -4043,9 +4043,9 @@ msgstr "Teorem #:"
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:246 lib/layouts/ijmpd.layout:251
 #: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:215
-#: lib/layouts/svjour.inc:412 lib/layouts/theorems.inc:69
-#: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-order.inc:19
-#: lib/layouts/theorems-starred-equivalents.inc:20
+#: lib/layouts/svjour.inc:412 lib/layouts/theorems-ams.inc:71
+#: lib/layouts/theorems-order.inc:19
+#: lib/layouts/theorems-starred-equivalents.inc:20 lib/layouts/theorems.inc:69
 msgid "Lemma"
 msgstr "Lemma"
 
@@ -4058,9 +4058,8 @@ msgstr "Lemma #:"
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:236
 #: lib/layouts/ijmpd.layout:237 lib/layouts/llncs.layout:316
 #: lib/layouts/siamltex.layout:222 lib/layouts/svjour.inc:373
-#: lib/layouts/theorems.inc:58 lib/layouts/theorems-ams.inc:59
-#: lib/layouts/theorems-order.inc:13
-#: lib/layouts/theorems-starred-equivalents.inc:13
+#: lib/layouts/theorems-ams.inc:59 lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-starred-equivalents.inc:13 lib/layouts/theorems.inc:58
 msgid "Corollary"
 msgstr ""
 
@@ -4072,9 +4071,8 @@ msgstr ""
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:256
 #: lib/layouts/ijmpd.layout:262 lib/layouts/llncs.layout:385
 #: lib/layouts/siamltex.layout:229 lib/layouts/svjour.inc:447
-#: lib/layouts/theorems.inc:80 lib/layouts/theorems-ams.inc:83
-#: lib/layouts/theorems-order.inc:25
-#: lib/layouts/theorems-starred-equivalents.inc:27
+#: lib/layouts/theorems-ams.inc:83 lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems-starred-equivalents.inc:27 lib/layouts/theorems.inc:80
 msgid "Proposition"
 msgstr ""
 
@@ -4085,9 +4083,8 @@ msgstr ""
 #: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:363
 #: lib/layouts/ijmpc.layout:296 lib/layouts/ijmpd.layout:306
 #: lib/layouts/llncs.layout:309 lib/layouts/svjour.inc:366
-#: lib/layouts/theorems.inc:91 lib/layouts/theorems-ams.inc:95
-#: lib/layouts/theorems-order.inc:31
-#: lib/layouts/theorems-starred-equivalents.inc:34
+#: lib/layouts/theorems-ams.inc:95 lib/layouts/theorems-order.inc:31
+#: lib/layouts/theorems-starred-equivalents.inc:34 lib/layouts/theorems.inc:91
 msgid "Conjecture"
 msgstr ""
 
@@ -4106,7 +4103,7 @@ msgid "Criterion #:"
 msgstr "Alýntý"
 
 #: lib/layouts/IEEEtran.layout:133 lib/layouts/beamer.layout:977
-#: lib/layouts/theorems.inc:102 lib/layouts/theorems-ams.inc:107
+#: lib/layouts/theorems-ams.inc:107 lib/layouts/theorems.inc:102
 msgid "Fact"
 msgstr ""
 
@@ -4127,9 +4124,9 @@ msgstr "Aksiyom #:"
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:132
 #: lib/layouts/ijmpd.layout:129 lib/layouts/llncs.layout:330
 #: lib/layouts/siamltex.layout:236 lib/layouts/svjour.inc:387
-#: lib/layouts/theorems.inc:113 lib/layouts/theorems-ams.inc:119
-#: lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems-ams.inc:119 lib/layouts/theorems-order.inc:37
 #: lib/layouts/theorems-starred-equivalents.inc:41
+#: lib/layouts/theorems.inc:113
 msgid "Definition"
 msgstr "Taným"
 
@@ -4140,10 +4137,10 @@ msgstr "Taným #:"
 #: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:959
 #: lib/layouts/elsart.layout:370 lib/layouts/ijmpc.layout:166
 #: lib/layouts/ijmpd.layout:163 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:132
-#: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-order.inc:43
+#: lib/layouts/svjour.inc:394 lib/layouts/theorems-ams.inc:138
+#: lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:48
-#: src/frontends/qt4/GuiDocument.cpp:847
+#: lib/layouts/theorems.inc:132 src/frontends/qt4/GuiDocument.cpp:847
 msgid "Example"
 msgstr "Örnek"
 
@@ -4162,9 +4159,9 @@ msgstr "Koþul #:"
 
 #: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:377
 #: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:426
-#: lib/layouts/theorems.inc:144 lib/layouts/theorems-ams.inc:150
-#: lib/layouts/theorems-order.inc:49
+#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-order.inc:49
 #: lib/layouts/theorems-starred-equivalents.inc:55
+#: lib/layouts/theorems.inc:144
 msgid "Problem"
 msgstr "Problem"
 
@@ -4173,9 +4170,10 @@ msgid "Problem #:"
 msgstr "Problem #:"
 
 #: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:401 lib/layouts/theorems.inc:156
-#: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-order.inc:55
+#: lib/layouts/svjour.inc:401 lib/layouts/theorems-ams.inc:162
+#: lib/layouts/theorems-order.inc:55
 #: lib/layouts/theorems-starred-equivalents.inc:62
+#: lib/layouts/theorems.inc:156
 msgid "Exercise"
 msgstr "Alýþtýrma"
 
@@ -4186,9 +4184,9 @@ msgstr "Alýþtýrma #:"
 #: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:384
 #: lib/layouts/ijmpc.layout:176 lib/layouts/ijmpd.layout:174
 #: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:461
-#: lib/layouts/theorems.inc:168 lib/layouts/theorems-ams.inc:174
-#: lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems-ams.inc:174 lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:69
+#: lib/layouts/theorems.inc:168
 msgid "Remark"
 msgstr ""
 
@@ -4199,9 +4197,10 @@ msgstr ""
 #: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:398
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:286
 #: lib/layouts/ijmpd.layout:295 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:345 lib/layouts/theorems.inc:188
-#: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-order.inc:67
+#: lib/layouts/svjour.inc:345 lib/layouts/theorems-ams.inc:194
+#: lib/layouts/theorems-order.inc:67
 #: lib/layouts/theorems-starred-equivalents.inc:76
+#: lib/layouts/theorems.inc:188
 msgid "Claim"
 msgstr ""
 
@@ -4231,8 +4230,8 @@ msgid "Notation #:"
 msgstr "Notasyon #:"
 
 #: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:413
-#: lib/layouts/llncs.layout:281 lib/layouts/theorems.inc:201
-#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-order.inc:73
+#: lib/layouts/llncs.layout:281 lib/layouts/theorems-ams.inc:207
+#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:201
 msgid "Case"
 msgstr ""
 
@@ -4898,6 +4897,11 @@ msgstr "Letonca"
 msgid "Latin off"
 msgstr "Letonca"
 
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr ""
+
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:117
 #: lib/layouts/beamer.layout:132 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:32 lib/layouts/scrartcl.layout:20
@@ -4912,11 +4916,6 @@ msgstr "Kýsým"
 #: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Kýsým*"
-
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:232
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr ""
 
 #: lib/layouts/beamer.layout:107 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:114 lib/layouts/stdlists.inc:65
@@ -6737,7 +6736,7 @@ msgid "Notation \\thenotation."
 msgstr ""
 
 #: lib/layouts/ijmpc.layout:206 lib/layouts/ijmpd.layout:209
-#: lib/layouts/theorems.inc:42 lib/layouts/theorems-ams.inc:42
+#: lib/layouts/theorems-ams.inc:42 lib/layouts/theorems.inc:42
 #, fuzzy
 msgid "Theorem \\thetheorem."
 msgstr "Alt bölüm"
@@ -6946,8 +6945,8 @@ msgstr ""
 msgid "TOC Author:"
 msgstr "Yazar"
 
-#: lib/layouts/llncs.layout:295 lib/layouts/theorems.inc:207
-#: lib/layouts/theorems-ams.inc:213
+#: lib/layouts/llncs.layout:295 lib/layouts/theorems-ams.inc:213
+#: lib/layouts/theorems.inc:207
 msgid "Case #."
 msgstr ""
 
@@ -8461,52 +8460,52 @@ msgstr ""
 msgid "Offprints:"
 msgstr "Seçe&nekler"
 
-#: lib/layouts/theorems.inc:62 lib/layouts/theorems-ams.inc:63
+#: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:62
 msgid "Corollary \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:73 lib/layouts/theorems-ams.inc:75
+#: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems.inc:73
 msgid "Lemma \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:84 lib/layouts/theorems-ams.inc:87
+#: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems.inc:84
 #, fuzzy
 msgid "Proposition \\thetheorem."
 msgstr "Bulunulan satýr"
 
-#: lib/layouts/theorems.inc:95 lib/layouts/theorems-ams.inc:99
+#: lib/layouts/theorems-ams.inc:99 lib/layouts/theorems.inc:95
 msgid "Conjecture \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:106 lib/layouts/theorems-ams.inc:111
+#: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems.inc:106
 msgid "Fact \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:117 lib/layouts/theorems-ams.inc:123
+#: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:117
 #, fuzzy
 msgid "Definition \\thetheorem."
 msgstr "Taným"
 
-#: lib/layouts/theorems.inc:135 lib/layouts/theorems-ams.inc:141
+#: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:135
 #, fuzzy
 msgid "Example \\thetheorem."
 msgstr "Örnek"
 
-#: lib/layouts/theorems.inc:147 lib/layouts/theorems-ams.inc:153
+#: lib/layouts/theorems-ams.inc:153 lib/layouts/theorems.inc:147
 #, fuzzy
 msgid "Problem \\thetheorem."
 msgstr "Problem"
 
-#: lib/layouts/theorems.inc:159 lib/layouts/theorems-ams.inc:165
+#: lib/layouts/theorems-ams.inc:165 lib/layouts/theorems.inc:159
 #, fuzzy
 msgid "Exercise \\thetheorem."
 msgstr "Alýþtýrma"
 
-#: lib/layouts/theorems.inc:172 lib/layouts/theorems-ams.inc:178
+#: lib/layouts/theorems-ams.inc:178 lib/layouts/theorems.inc:172
 msgid "Remark \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:191 lib/layouts/theorems-ams.inc:197
+#: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems.inc:191
 msgid "Claim \\thetheorem."
 msgstr ""
 
@@ -11456,11 +11455,11 @@ msgstr "Belgeyi yazdýr"
 msgid "Check spelling"
 msgstr "Yazým denetimi"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1022
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1021
 msgid "Undo"
 msgstr "Geri al"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1031
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1030
 msgid "Redo"
 msgstr "Ýleri al"
 
@@ -14740,12 +14739,12 @@ msgstr "\\begin_header eksik"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document eksik"
 
-#: src/Buffer.cpp:557 src/Buffer.cpp:563 src/BufferView.cpp:1141
-#: src/BufferView.cpp:1147
+#: src/Buffer.cpp:557 src/Buffer.cpp:563 src/BufferView.cpp:1140
+#: src/BufferView.cpp:1146
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:558 src/BufferView.cpp:1142
+#: src/Buffer.cpp:558 src/BufferView.cpp:1141
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -14753,7 +14752,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:564 src/BufferView.cpp:1148
+#: src/Buffer.cpp:564 src/BufferView.cpp:1147
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -14838,7 +14837,7 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Dosyayýnýn Üzerine Yaz?"
 
-#: src/Buffer.cpp:836 src/Exporter.cpp:49 src/LyXFunc.cpp:980
+#: src/Buffer.cpp:836 src/Exporter.cpp:49 src/LyXFunc.cpp:999
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1500
 #: src/frontends/qt4/GuiView.cpp:1678
 #, fuzzy
@@ -15089,12 +15088,12 @@ msgstr ""
 msgid "Document class not found"
 msgstr "Belge sýnýfý mevcut deðil!"
 
-#: src/BufferParams.cpp:1457 src/LyXFunc.cpp:697
+#: src/BufferParams.cpp:1457 src/LyXFunc.cpp:714
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "Belge okunamýyor"
 
-#: src/BufferParams.cpp:1459 src/LyXFunc.cpp:699
+#: src/BufferParams.cpp:1459 src/LyXFunc.cpp:716
 #, fuzzy
 msgid "Could not load class"
 msgstr "Sýnýf deðiþtirilemiyor"
@@ -15156,93 +15155,93 @@ msgstr "Özel Nokta:"
 msgid "Save bookmark"
 msgstr "Yerimi 5 Ýþaretle"
 
-#: src/BufferView.cpp:1025
+#: src/BufferView.cpp:1024
 msgid "No further undo information"
 msgstr "Baþka geri alma bilgisi yok"
 
-#: src/BufferView.cpp:1034
+#: src/BufferView.cpp:1033
 msgid "No further redo information"
 msgstr "Baþka ileri alma bilgisi yok"
 
-#: src/BufferView.cpp:1195 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1198 src/lyxfind.cpp:295 src/lyxfind.cpp:313
 msgid "String not found!"
 msgstr "Dizge bulunamadý!"
 
-#: src/BufferView.cpp:1219
+#: src/BufferView.cpp:1222
 msgid "Mark off"
 msgstr "Ýþaret kapalý"
 
-#: src/BufferView.cpp:1226
+#: src/BufferView.cpp:1229
 msgid "Mark on"
 msgstr "Ýþaret açýk"
 
-#: src/BufferView.cpp:1233
+#: src/BufferView.cpp:1236
 msgid "Mark removed"
 msgstr "Ýþaret kaldýrýldý"
 
-#: src/BufferView.cpp:1236
+#: src/BufferView.cpp:1239
 msgid "Mark set"
 msgstr "Ýþaret kondu"
 
-#: src/BufferView.cpp:1283
+#: src/BufferView.cpp:1286
 #, fuzzy
 msgid "Statistics for the selection:"
 msgstr "Açýk bir belgeye geç"
 
-#: src/BufferView.cpp:1285
+#: src/BufferView.cpp:1288
 #, fuzzy
 msgid "Statistics for the document:"
 msgstr "Açýk bir belgeye geç"
 
-#: src/BufferView.cpp:1288
+#: src/BufferView.cpp:1291
 #, fuzzy, c-format
 msgid "%1$d words"
 msgstr "%1$d sözcük denetlendi."
 
-#: src/BufferView.cpp:1290
+#: src/BufferView.cpp:1293
 #, fuzzy
 msgid "One word"
 msgstr "Anahtarlar"
 
-#: src/BufferView.cpp:1293
+#: src/BufferView.cpp:1296
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1296
+#: src/BufferView.cpp:1299
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1299
+#: src/BufferView.cpp:1302
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1302
+#: src/BufferView.cpp:1305
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1304
+#: src/BufferView.cpp:1307
 #, fuzzy
 msgid "Statistics"
 msgstr "Durum"
 
-#: src/BufferView.cpp:2063
+#: src/BufferView.cpp:2058
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Belge %1$s ekleniyor..."
 
-#: src/BufferView.cpp:2074
+#: src/BufferView.cpp:2069
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Belge %1$s eklendi."
 
-#: src/BufferView.cpp:2076
+#: src/BufferView.cpp:2071
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Belge %1$s eklenemedi"
 
-#: src/BufferView.cpp:2304
+#: src/BufferView.cpp:2299
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15252,26 +15251,26 @@ msgstr ""
 "Belirtilen dosya açýlamýyor\n"
 "%1$s."
 
-#: src/BufferView.cpp:2306
+#: src/BufferView.cpp:2301
 msgid "Could not read file"
 msgstr "Dosya okunamýyor"
 
-#: src/BufferView.cpp:2313
+#: src/BufferView.cpp:2308
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s okunamadý."
 
-#: src/BufferView.cpp:2314 src/output.cpp:39
+#: src/BufferView.cpp:2309 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Dosya açýlamýyor"
 
-#: src/BufferView.cpp:2321
+#: src/BufferView.cpp:2316
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2322
+#: src/BufferView.cpp:2317
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -15729,7 +15728,7 @@ msgstr ""
 msgid "Undefined flex inset"
 msgstr "Derinliði Azalt|z"
 
-#: src/Exporter.cpp:44 src/LyXFunc.cpp:976
+#: src/Exporter.cpp:44 src/LyXFunc.cpp:995
 #, fuzzy, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -15740,7 +15739,7 @@ msgstr ""
 "\n"
 "Belgeyi kayýt mý edeyim, yoksa deðiþiklikleri unutayým mý?"
 
-#: src/Exporter.cpp:47 src/LyXFunc.cpp:979
+#: src/Exporter.cpp:47 src/LyXFunc.cpp:998
 #, fuzzy
 msgid "Overwrite file?"
 msgstr "Dosyayýnýn Üzerine Yaz?"
@@ -15936,7 +15935,7 @@ msgid ""
 "2$s'."
 msgstr ""
 
-#: src/KeySequence.cpp:167
+#: src/KeySequence.cpp:166
 #, fuzzy
 msgid "   options: "
 msgstr "LaTe&X seçenekleri:"
@@ -16124,7 +16123,7 @@ msgstr ""
 "\t-version        sürüm ve inþa bilgilerini verir\n"
 "Daha fazla bilgi için LyX man sayfasýna bakýnýz."
 
-#: src/LyX.cpp:994 src/support/Package.cpp:554
+#: src/LyX.cpp:994
 #, fuzzy
 msgid "No system directory"
 msgstr "Kullanýcý dizini: "
@@ -16211,7 +16210,7 @@ msgstr "Ýndeksleyecek bir þey yok!"
 msgid "Unknown action"
 msgstr "Bilinmeyen fonksiyon."
 
-#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:648
+#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:665
 msgid "Command disabled"
 msgstr "Komut kapalý"
 
@@ -16219,15 +16218,15 @@ msgstr "Komut kapalý"
 msgid "Command not allowed without any document open"
 msgstr "Bir belge açýlmadan bu komut çalýþmaz"
 
-#: src/LyXFunc.cpp:633
+#: src/LyXFunc.cpp:650
 msgid "Document is read-only"
 msgstr "Belge yalnýzca okunabilir"
 
-#: src/LyXFunc.cpp:642
+#: src/LyXFunc.cpp:659
 msgid "This portion of the document is deleted."
 msgstr "Belgenin bu kýsmý silindi."
 
-#: src/LyXFunc.cpp:661
+#: src/LyXFunc.cpp:678
 #, fuzzy, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -16238,74 +16237,74 @@ msgstr ""
 "\n"
 "Belgeyi kayýt mý edeyim, yoksa deðiþiklikleri unutayým mý?"
 
-#: src/LyXFunc.cpp:664 src/frontends/qt4/GuiView.cpp:1775
+#: src/LyXFunc.cpp:681 src/frontends/qt4/GuiView.cpp:1775
 msgid "Save changed document?"
 msgstr "Deðiþmiþ belgeyi kaydedeyim mi?"
 
-#: src/LyXFunc.cpp:679
+#: src/LyXFunc.cpp:696
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/LyXFunc.cpp:682
+#: src/LyXFunc.cpp:699
 msgid "Print document failed"
 msgstr "Belge yazdýrma baþarýsýz oldu"
 
-#: src/LyXFunc.cpp:799
+#: src/LyXFunc.cpp:818
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/LyXFunc.cpp:801
+#: src/LyXFunc.cpp:820
 msgid "Revert to saved document?"
 msgstr "Kayýtlý belgeye geri dön?"
 
-#: src/LyXFunc.cpp:802 src/LyXVC.cpp:181
+#: src/LyXFunc.cpp:821 src/LyXVC.cpp:181
 msgid "&Revert"
 msgstr "&Geri dön"
 
-#: src/LyXFunc.cpp:1016 src/Text3.cpp:1477
+#: src/LyXFunc.cpp:1035 src/Text3.cpp:1477
 msgid "Missing argument"
 msgstr "Eksik parametre"
 
-#: src/LyXFunc.cpp:1025
+#: src/LyXFunc.cpp:1044
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Yardým dosyasý %1$s açýlýyor..."
 
-#: src/LyXFunc.cpp:1272
+#: src/LyXFunc.cpp:1291
 #, fuzzy, c-format
 msgid "Opening child document %1$s..."
 msgstr "Belge %1$s açýlýyor..."
 
-#: src/LyXFunc.cpp:1414
+#: src/LyXFunc.cpp:1450
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Belge kaydedilemedi!"
 
-#: src/LyXFunc.cpp:1417
+#: src/LyXFunc.cpp:1453
 msgid "Unable to save document defaults"
 msgstr "Belge öntanýmlarý kaydedilemedi"
 
-#: src/LyXFunc.cpp:1707
+#: src/LyXFunc.cpp:1743
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "Belge %1$s açýldý."
 
-#: src/LyXFunc.cpp:1709
+#: src/LyXFunc.cpp:1745
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "Belge okunamýyor"
 
-#: src/LyXFunc.cpp:1746
+#: src/LyXFunc.cpp:1782
 msgid "Welcome to LyX!"
 msgstr "LyX'e Hoþgeldiniz!"
 
-#: src/LyXFunc.cpp:1767
+#: src/LyXFunc.cpp:1803
 msgid "Converting document to new document class..."
 msgstr "Belge yeni sýnýfa çevriliyor..."
 
@@ -16825,38 +16824,38 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Belgeyi kayýtlý sürüme geri al?"
 
-#: src/Paragraph.cpp:1551 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1544 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr ""
 
-#: src/Paragraph.cpp:1617
+#: src/Paragraph.cpp:1610
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1618
+#: src/Paragraph.cpp:1611
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2094 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2087 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:182 src/insets/InsetListings.cpp:190
-#: src/insets/InsetListings.cpp:214 src/mathed/InsetMathString.cpp:164
+#: src/insets/InsetListings.cpp:214 src/mathed/InsetMathString.cpp:165
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX Sürüm "
 
-#: src/Paragraph.cpp:2095 src/insets/InsetListings.cpp:183
-#: src/insets/InsetListings.cpp:191 src/mathed/InsetMathString.cpp:165
+#: src/Paragraph.cpp:2088 src/insets/InsetListings.cpp:183
+#: src/insets/InsetListings.cpp:191 src/mathed/InsetMathString.cpp:166
 #, fuzzy
 msgid "uncodable character"
 msgstr "özel karakter"
 
-#: src/Paragraph.cpp:2445
+#: src/Paragraph.cpp:2438
 msgid "Memory problem"
 msgstr ""
 
-#: src/Paragraph.cpp:2445
+#: src/Paragraph.cpp:2438
 msgid "Paragraph not properly initiliazed"
 msgstr ""
 
@@ -16899,65 +16898,65 @@ msgstr "Paragraf baþýna boþluk koyamazsýnýz. Lütfen Yardým/Eðitim'i okuyun."
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Böyle iki boþluk koyamazsýnýz. Lütfen Yardým/Eðitim'i okuyun."
 
-#: src/Text.cpp:1343
+#: src/Text.cpp:1344
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Dil deðiþtir"
 
-#: src/Text.cpp:1349
+#: src/Text.cpp:1350
 #, fuzzy
 msgid "Change: "
 msgstr "Sayfa: "
 
-#: src/Text.cpp:1353
+#: src/Text.cpp:1354
 #, fuzzy
 msgid " at "
 msgstr "Kýsým"
 
-#: src/Text.cpp:1363
+#: src/Text.cpp:1364
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/Text.cpp:1368
+#: src/Text.cpp:1369
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Derinlik: %1$d"
 
-#: src/Text.cpp:1374
+#: src/Text.cpp:1375
 msgid ", Spacing: "
 msgstr ", Aralýk: "
 
-#: src/Text.cpp:1380 src/frontends/qt4/GuiDocument.cpp:601
+#: src/Text.cpp:1381 src/frontends/qt4/GuiDocument.cpp:601
 msgid "OneHalf"
 msgstr "BirBuçuk"
 
-#: src/Text.cpp:1386
+#: src/Text.cpp:1387
 msgid "Other ("
 msgstr "Diðer ("
 
-#: src/Text.cpp:1395
+#: src/Text.cpp:1396
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Derinlik: "
 
-#: src/Text.cpp:1396
+#: src/Text.cpp:1397
 msgid ", Paragraph: "
 msgstr ", Paragraf: "
 
-#: src/Text.cpp:1397
+#: src/Text.cpp:1398
 msgid ", Id: "
 msgstr ", Ad: "
 
-#: src/Text.cpp:1398
+#: src/Text.cpp:1399
 msgid ", Position: "
 msgstr ", Konum: "
 
-#: src/Text.cpp:1404
+#: src/Text.cpp:1405
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1406
+#: src/Text.cpp:1407
 msgid ", Boundary: "
 msgstr ", Sýnýr: "
 
@@ -17276,7 +17275,7 @@ msgid "About %1"
 msgstr "LyX Hakkýnda"
 
 #: src/frontends/qt4/GuiApplication.cpp:390
-#: src/frontends/qt4/GuiPrefs.cpp:2509
+#: src/frontends/qt4/GuiPrefs.cpp:2537
 msgid "Preferences"
 msgstr "Ayarlar"
 
@@ -17343,7 +17342,7 @@ msgstr "BibTeX Kaynakça"
 
 #: src/frontends/qt4/GuiBibtex.cpp:424 src/frontends/qt4/GuiBibtex.cpp:434
 #: src/frontends/qt4/GuiDocument.cpp:1314
-#: src/frontends/qt4/GuiExternal.cpp:661 src/frontends/qt4/GuiGraphics.cpp:740
+#: src/frontends/qt4/GuiExternal.cpp:661 src/frontends/qt4/GuiGraphics.cpp:738
 #: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1246
 #: src/frontends/qt4/GuiView.cpp:1304 src/frontends/qt4/GuiView.cpp:1450
 #: src/frontends/qt4/GuiView.cpp:1569 src/frontends/qt4/GuiView.cpp:1648
@@ -18020,39 +18019,39 @@ msgstr "Program açýlýþý"
 msgid "%1$s Errors (%2$s)"
 msgstr "%1$s ve %2$s"
 
-#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:70
+#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:71
 msgid "Top left"
 msgstr "Üst sol"
 
-#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:70
+#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:71
 msgid "Bottom left"
 msgstr "Alt sol"
 
-#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:70
+#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:71
 msgid "Baseline left"
 msgstr "Taban sol"
 
-#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:71
+#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Top center"
 msgstr "Üst orta"
 
-#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:71
+#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Bottom center"
 msgstr "Alt orta"
 
-#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:71
+#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Baseline center"
 msgstr "Taban orta"
 
-#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:72
+#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:73
 msgid "Top right"
 msgstr "Üst sað"
 
-#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:72
+#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:73
 msgid "Bottom right"
 msgstr "Alt sað"
 
-#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:72
+#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:73
 msgid "Baseline right"
 msgstr "Taban sað"
 
@@ -18072,15 +18071,15 @@ msgstr "Dýþ dosya seçin"
 msgid "Float Settings"
 msgstr "Yüzen Ayarlarý"
 
-#: src/frontends/qt4/GuiGraphics.cpp:152 src/frontends/qt4/GuiPrefs.cpp:867
+#: src/frontends/qt4/GuiGraphics.cpp:153 src/frontends/qt4/GuiPrefs.cpp:867
 msgid "Graphics"
 msgstr "Grafikler"
 
-#: src/frontends/qt4/GuiGraphics.cpp:727
+#: src/frontends/qt4/GuiGraphics.cpp:725
 msgid "Select graphics file"
 msgstr "Grafik dosyasýný seçin"
 
-#: src/frontends/qt4/GuiGraphics.cpp:739
+#: src/frontends/qt4/GuiGraphics.cpp:737
 msgid "Clipart|#C#c"
 msgstr ""
 
@@ -18387,7 +18386,7 @@ msgstr ""
 msgid "Printer"
 msgstr "Yazýcý"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1878 src/frontends/qt4/GuiPrefs.cpp:2548
+#: src/frontends/qt4/GuiPrefs.cpp:1878 src/frontends/qt4/GuiPrefs.cpp:2576
 msgid "User interface"
 msgstr "Arayüz"
 
@@ -18439,67 +18438,79 @@ msgstr "AMS çeþitli"
 msgid "Res&tore"
 msgstr "&Geri al"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2413 src/frontends/qt4/GuiPrefs.cpp:2420
-#: src/frontends/qt4/GuiPrefs.cpp:2427 src/frontends/qt4/GuiPrefs.cpp:2444
+#: src/frontends/qt4/GuiPrefs.cpp:2422 src/frontends/qt4/GuiPrefs.cpp:2429
+#: src/frontends/qt4/GuiPrefs.cpp:2440 src/frontends/qt4/GuiPrefs.cpp:2453
+#: src/frontends/qt4/GuiPrefs.cpp:2472
 #, fuzzy
 msgid "Failed to create shortcut"
 msgstr "Dizin oluþturulamadý. Çýkýyorum."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2414
+#: src/frontends/qt4/GuiPrefs.cpp:2423
 #, fuzzy
 msgid "Unknown or invalid LyX function"
 msgstr "Bilinmeyen fonksiyon."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2421
+#: src/frontends/qt4/GuiPrefs.cpp:2430
 msgid "Invalid or empty key sequence"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2428
-msgid "Shortcut is already defined"
+#: src/frontends/qt4/GuiPrefs.cpp:2441
+#, c-format
+msgid ""
+"Shortcut `%1$s' is already bound to:\n"
+"%2$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2445
+#: src/frontends/qt4/GuiPrefs.cpp:2454
+#, c-format
+msgid ""
+"Shortcut `%1$s' is already bound to:\n"
+"%2$s\n"
+"You need to remove that binding before creating a new one."
+msgstr ""
+
+#: src/frontends/qt4/GuiPrefs.cpp:2473
 #, fuzzy
 msgid "Can not insert shortcut to the list"
 msgstr "Listeye yeni bir dal ekle"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2476
+#: src/frontends/qt4/GuiPrefs.cpp:2504
 msgid "Identity"
 msgstr "Kimlik"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2665
+#: src/frontends/qt4/GuiPrefs.cpp:2693
 msgid "Choose bind file"
 msgstr "Baðlama dosyasý seçin"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2666
+#: src/frontends/qt4/GuiPrefs.cpp:2694
 msgid "LyX bind files (*.bind)"
 msgstr "LyX baðlama dosyasý (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2672
+#: src/frontends/qt4/GuiPrefs.cpp:2700
 msgid "Choose UI file"
 msgstr "Arabirim dosyasý seçin"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2673
+#: src/frontends/qt4/GuiPrefs.cpp:2701
 msgid "LyX UI files (*.ui)"
 msgstr "LyX arabirim dosyalarý (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2679
+#: src/frontends/qt4/GuiPrefs.cpp:2707
 msgid "Choose keyboard map"
 msgstr "Klavye haritasý seçin"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2680
+#: src/frontends/qt4/GuiPrefs.cpp:2708
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX klavye haritasý (*.kmap)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2686
+#: src/frontends/qt4/GuiPrefs.cpp:2714
 msgid "Choose personal dictionary"
 msgstr "Kiþisel sözlüðü deðiþtir"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2687
+#: src/frontends/qt4/GuiPrefs.cpp:2715
 msgid "*.pws"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2687
+#: src/frontends/qt4/GuiPrefs.cpp:2715
 msgid "*.ispell"
 msgstr "*.ispell"
 
@@ -19113,7 +19124,7 @@ msgstr "LyX Belgeleri (*.lyx)"
 
 #: src/frontends/qt4/GuiView.cpp:1336 src/frontends/qt4/Validator.cpp:174
 #: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
-#: src/insets/InsetGraphics.cpp:585 src/insets/InsetInclude.cpp:443
+#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:443
 msgid "Invalid filename"
 msgstr "Geçersiz dosya adý"
 
@@ -19251,7 +19262,7 @@ msgstr "Belge %1$s kaydediliyor..."
 msgid "All documents saved."
 msgstr "Belge kaydedilemedi"
 
-#: src/frontends/qt4/GuiView.cpp:2111
+#: src/frontends/qt4/GuiView.cpp:2113
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
@@ -19450,7 +19461,7 @@ msgid "List of Branches"
 msgstr "Tablo Listesi"
 
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:287
-#: src/insets/InsetGraphics.cpp:586 src/insets/InsetInclude.cpp:444
+#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:444
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -19699,7 +19710,7 @@ msgstr "Derinliði Azalt|z"
 msgid "footnote"
 msgstr "Dipnot|D"
 
-#: src/insets/InsetGraphics.cpp:463 src/insets/InsetInclude.cpp:521
+#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:521
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -19707,12 +19718,12 @@ msgid ""
 "into the temporary directory."
 msgstr "Geçici dizin yaratýlamadý"
 
-#: src/insets/InsetGraphics.cpp:696
+#: src/insets/InsetGraphics.cpp:703
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/InsetGraphics.cpp:790
+#: src/insets/InsetGraphics.cpp:797
 #, fuzzy, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafik dosyasýný seçin"
@@ -20367,6 +20378,11 @@ msgstr "Dizge deðiþtirildi."
 msgid " strings have been replaced."
 msgstr " dizge deðiþtirildi."
 
+#: src/mathed/InsetFormulaMacro.cpp:119
+#, fuzzy, c-format
+msgid " Macro: %1$s: "
+msgstr "Eksik parametre"
+
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1381
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
@@ -20469,57 +20485,6 @@ msgstr "Özet: "
 #: src/output_plaintext.cpp:148
 msgid "References: "
 msgstr "Referanslar: "
-
-#: src/support/Package.cpp:435
-#, fuzzy
-msgid "LyX binary not found"
-msgstr "Dizge bulunamadý!"
-
-#: src/support/Package.cpp:436
-#, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
-
-#: src/support/Package.cpp:555
-#, c-format
-msgid ""
-"Unable to determine the system directory having searched\n"
-"\t%1$s\n"
-"Use the '-sysdir' command line parameter or set the environment variable\n"
-"%2$s to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr ""
-
-#: src/support/Package.cpp:636 src/support/Package.cpp:663
-#, fuzzy
-msgid "File not found"
-msgstr "Dizge bulunamadý!"
-
-#: src/support/Package.cpp:637
-#, c-format
-msgid ""
-"Invalid %1$s switch.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-
-#: src/support/Package.cpp:664
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-
-#: src/support/Package.cpp:688
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"%2$s is not a directory."
-msgstr ""
-
-#: src/support/Package.cpp:690
-#, fuzzy
-msgid "Directory not found"
-msgstr "Dizge bulunamadý!"
 
 #: src/support/debug.cpp:38
 msgid "No debugging message"
@@ -20699,8 +20664,16 @@ msgid "Unknown user"
 msgstr "Bilinmeyen kullanýcý"
 
 #, fuzzy
-#~ msgid " Macro: %1$s: "
-#~ msgstr "Eksik parametre"
+#~ msgid "LyX binary not found"
+#~ msgstr "Dizge bulunamadý!"
+
+#, fuzzy
+#~ msgid "File not found"
+#~ msgstr "Dizge bulunamadý!"
+
+#, fuzzy
+#~ msgid "Directory not found"
+#~ msgstr "Dizge bulunamadý!"
 
 #~ msgid "Vertical alignment for fixed width columns"
 #~ msgstr "Sabit enli sütunlar için dikey hizalama"
