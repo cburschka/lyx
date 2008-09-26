@@ -748,6 +748,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		       << lyxaction.getActionName(action)
 		       << " [" << action << "] is disabled at this location");
 		setErrorMessage(flag.message());
+		if (lyx_view_)
+			lyx_view_->restartCursor();
 	} else {
 		switch (action) {
 
