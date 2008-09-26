@@ -21,7 +21,7 @@
  \pagenumbering{roman}
  \let\myTOC\tableofcontents
  \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{Contents}{}
+   \pdfbookmark[1]{\contentsname}{}
    \myTOC
    \clearpage
    \pagenumbering{arabic} }
@@ -44,7 +44,7 @@
  \pagenumbering{roman}
  \let\myTOC\tableofcontents
  \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{Contents}{}
+   \pdfbookmark[1]{\contentsname}{}
    \myTOC
    \clearpage
    \pagenumbering{arabic} }
