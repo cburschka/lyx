@@ -97,8 +97,8 @@ public:
 	void setBuffer(Buffer const * buffer) { buffer_ = buffer; }
 	///
 	void update();
-	///
-	void updateItem(DocIterator const & pit);
+	/// \return true if the item was updated.
+	bool updateItem(DocIterator const & pit);
 
 	///
 	TocList const & tocs() const { return tocs_; }

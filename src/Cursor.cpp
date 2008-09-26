@@ -2192,11 +2192,9 @@ void Cursor::recordUndoSelection() const
 
 void Cursor::checkBufferStructure()
 {
-	if (paragraph().layout().toclevel == Layout::NOT_IN_TOC)
-		return;
 	Buffer const * master = buffer().masterBuffer();
-	master->tocBackend().updateItem(ParConstIterator(*this));
-	master->structureChanged();
+	if (master->tocBackend().updateItem(*this))
+		master->structureChanged();
 }
 
 

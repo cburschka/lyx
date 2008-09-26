@@ -104,13 +104,16 @@ Toc & TocBackend::toc(string const & type)
 }
 
 
-void TocBackend::updateItem(DocIterator const & dit)
+bool TocBackend::updateItem(DocIterator const & dit)
 {
+	if (dit.paragraph().layout().toclevel == Layout::NOT_IN_TOC)
+		return false;
+
 	if (toc("tableofcontents").empty()) {
 		// FIXME: should not happen, 
 		// a call to TocBackend::update() is missing somewhere
 		LYXERR0("TocBackend::updateItem called but the TOC is empty!");
-		return;
+		return false;
 	}
 
 	BufferParams const & bufparams = buffer_->params();
@@ -145,6 +148,8 @@ void TocBackend::updateItem(DocIterator const & dit)
 			tocstring = par.asString(AS_STR_LABEL);
 
 	const_cast<TocItem &>(*toc_item).str_ = tocstring;
+
+	return true;
 }
 
 
