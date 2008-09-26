@@ -338,6 +338,7 @@ void GuiParagraph::dispatchParams()
 
 	bufferview()->updateMetrics();
 	bufferview()->buffer().changed();
+	bufferview()->buffer().markDirty();
 }
 
 
