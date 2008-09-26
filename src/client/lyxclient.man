@@ -47,7 +47,7 @@ This is safe if you are running only one LyX process at any one time.
 .SH COMMAND MODE OPTIONS
 \fBlyxclient\fR can send commands to LyX from both the command-line
 and from standard input.
-LyX commands are documented in <fixme>.
+LyX commands documentation can be found in LyX Help menu.
 .TP 6
 .BI \-c " command"
 send a single \fIcommand\fR, print LyX information to standard output and exit.
@@ -77,7 +77,7 @@ can be used to specify the socket special file that must be used.
 LyX sets this variable.
 It is overridden by the \fB\-a\fR option.
 .SH SEE ALSO
-lyx(1), xdvi(1), lyx functions <fixme>.
+lyx(1), xdvi(1), LFUNs.lyx.
 .SH AUTHORS
 Jo\[~a]o Luis M. Assirati <assirati@fma.if.usp.br> is the principal author
 of lyxclient.
