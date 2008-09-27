@@ -3844,6 +3844,35 @@ Other packages
 \end_layout
 
 \begin_layout Subsection
+accents
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "accents"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/bezos/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+accents
+\family default
+ is needed by LyX to correctly typeset unicode symbols with under accents
+ in math.
+\end_layout
+
+\begin_layout Subsection
 algorithm
 \end_layout
 
@@ -4445,6 +4474,34 @@ rotfloat
 \family default
  is needed by LyX to rotate floats sideways.
  Note that it only really works with a PostScript® compatible printer.
+\end_layout
+
+\begin_layout Subsection
+slashed
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "slashed"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/carlisle/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+slashed
+\family default
+ is needed by LyX to correctly typeset unicode symbols with slashes in math.
 \end_layout
 
 \begin_layout Subsection
