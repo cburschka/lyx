@@ -60,11 +60,6 @@
 #include <cerrno>
 #include <fcntl.h>
 
-
-#ifdef HAVE_UNISTD_H
-# include <unistd.h>
-#endif
-
 #if defined(HAVE_MKSTEMP) && ! defined(HAVE_DECL_MKSTEMP)
 extern "C" int mkstemp(char *);
 #endif
@@ -82,16 +77,6 @@ extern "C" int mkstemp(char *);
 // are available. Order is faster to slowest.
 #if defined(HAVE_MMAP) && defined(HAVE_MUNMAP)
 #define SUM_WITH_MMAP
-#ifdef HAVE_SYS_TYPES_H
-# include <sys/types.h>
-#endif
-#ifdef HAVE_SYS_STAT_H
-# include <sys/stat.h>
-#endif
-#include <fcntl.h>
-#ifdef HAVE_UNISTD_H
-# include <unistd.h>
-#endif
 #include <sys/mman.h>
 #endif // SUM_WITH_MMAP
 
