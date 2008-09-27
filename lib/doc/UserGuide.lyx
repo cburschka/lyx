@@ -40817,6 +40817,8 @@ Modify
  You can also bind multiple functions to one shortcut by modifying an existing
  binding and adding the different function names as semicolon separated
  list.
+ LyX will then use the first function that is enabled in the current document
+ part.
  The binding for the function 
 \family sans
 command-alter
