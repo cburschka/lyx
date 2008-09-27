@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0rc3 created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -90,6 +90,10 @@ The participating hosts in the Comprehensive TeX Archive Network are:
 \end_layout
 
 \begin_layout LyX-Code
+ftp://ctan.org/tex-archive/
+\end_layout
+
+\begin_layout LyX-Code
 ftp://ftp.dante.de/tex-archive
 \end_layout
 
@@ -150,39 +154,14 @@ Some common LaTeX packages that you might need with LyX, and you might also
 
 \begin_layout Standard
 Note that most of these packages will be available if you use a modern TeX
- distribution such as teTeX.
+ distribution such as TeXLive and MiKTeX.
  If you decide to install one of the missing items, you should tell LyX
  about it.
  After the installation, please use the menu entry 
 \family sans
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-econfigure
+Tools\SpecialChar \menuseparator
+Reconfigure
 \family default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-or, if you want to change the system-wide settings, issue the command 
-\family typewriter
-./configure
-\family default
- from the LyX system directory (by default 
-\family typewriter
-/usr/local/lib/lyx/
-\family default
-)
-\end_layout
-
-\end_inset
-
  and reload this file to see if the new package was recognized.
  If the 
 \begin_inset Quotes eld
@@ -196,19 +175,16 @@ Found
 \begin_inset Quotes eld
 \end_inset
 
-???
+no
 \begin_inset Quotes erd
 \end_inset
 
 , it means that LyX could not do the inventory of your LaTeX configuration
  for some reason.
- If you are using teTeX, it might be that the new package you installed
- is not found.
- This is because you forgot to run the command 
-\family typewriter
-texhash
-\family default
-, which tells teTeX to update its own configuration.
+ In most cases, you only have forgotten to update the file name database
+ (texhash).
+ Check the documentation of your LaTeX distribution for how this is done
+ properly.
 \end_layout
 
 \begin_layout Section
@@ -288,9 +264,9 @@ Notes: The
 \family sans
 Latin Modern
 \family default
- fonts are PostScript® versions of LaTeX' standard font (Computer Modern).
+ fonts are PostScript versions of LaTeX' standard font (Computer Modern).
  They aim to become the default LaTeX font eventually.
- We recommend to use them instead of other PostScript® versions of Computer
+ We recommend to use them instead of other PostScript versions of Computer
  Modern (like AE).
  
 \end_layout
@@ -320,7 +296,7 @@ Notes: The
 \family sans
 AE
 \family default
- package provide virtual PostScript® versions of LaTeX' standard font (Computer
+ package provide virtual PostScript versions of LaTeX' standard font (Computer
  Modern).
  Unless you rely on special characters, we recommend to use 
 \family sans
@@ -389,12 +365,12 @@ Notes: The
 psnfss
 \family default
  bundle allows you to change the fonts used by LyX to one of the 35 classical
- fonts available on PostScript® printers.
+ fonts available on PostScript printers.
  Currently, the support for 
 \family sans
 psnfss
 \family default
- is limited in LyX: you can only chose a few combinations of PostScript®
+ is limited in LyX: you can only chose a few combinations of PostScript
  fonts in 
 \family sans
 \size normal
@@ -634,7 +610,7 @@ Notes: The
 \family sans
 fourier
 \family default
- package provides support for the Utopia PostScript® font.
+ package provides support for the Utopia PostScript font.
  Contrary to the 
 \family sans
 utopia
@@ -2580,7 +2556,7 @@ report
 book
 \family default
 .
- They have been adapted to polish typesetting standards by Marcin Woliñski.
+ They have been adapted to polish typesetting standards by Marcin Woliński.
 \end_layout
 
 \begin_layout Subsection
@@ -3393,7 +3369,7 @@ color
 \family default
  is needed by LyX to handle colored text.
  These colors will not show in the DVI preview window, but will be correct
- on the printed output or with a PostScript® previewer.
+ on the printed output or with a PostScript previewer.
  This package is bundled with the 
 \family sans
 graphics
@@ -3426,8 +3402,7 @@ Notes: The package
 \family sans
 graphicx
 \family default
- is needed by LyX to insert PostScript® figures (using the new graphics
- inset).
+ is needed by LyX to insert PostScript figures (using the new graphics inset).
  You will also need 
 \family typewriter
 \size normal
@@ -4444,7 +4419,7 @@ Notes: The package
 rotating
 \family default
  is needed by LyX to change the orientation of some parts of your documents.
- Note that it only really works with a PostScript® compatible printer.
+ Note that it only really works with a PostScript compatible printer.
 \end_layout
 
 \begin_layout Subsection
@@ -4473,7 +4448,7 @@ Notes: The package
 rotfloat
 \family default
  is needed by LyX to rotate floats sideways.
- Note that it only really works with a PostScript® compatible printer.
+ Note that it only really works with a PostScript compatible printer.
 \end_layout
 
 \begin_layout Subsection
