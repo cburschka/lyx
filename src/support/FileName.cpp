@@ -73,8 +73,7 @@ extern "C" int mkstemp(char *);
 # endif
 #endif
 
-// Various implementations of sum(), depending on what methods
-// are available. Order is faster to slowest.
+// Three implementations of checksum(), depending on having mmap support or not.
 #if defined(HAVE_MMAP) && defined(HAVE_MUNMAP)
 #define SUM_WITH_MMAP
 #include <sys/mman.h>
@@ -94,10 +93,65 @@ template struct boost::detail::crc_table_t<32, 0x04C11DB7, true>;
 namespace lyx {
 namespace support {
 
-static unsigned long sum(char const * file)
+/////////////////////////////////////////////////////////////////////
+//
+// FileName::Private
+//
+/////////////////////////////////////////////////////////////////////
+
+struct FileName::Private
 {
+	Private() {}
+
+	Private(string const & abs_filename) : fi(toqstr(abs_filename))
+	{
+		fi.setCaching(fi.exists() ? true : false);
+	}
+	///
+	inline void refresh() 
+	{
+// There seems to be a bug in Qt >= 4.2.0, at least, that causes problems with
+// QFileInfo::refresh() on *nix. So we recreate the object in that case.
+// FIXME: When Trolltech fixes the bug, we will have to replace 0x999999 below
+// with the actual working minimum version.
+#if defined(_WIN32) || (QT_VERSION >= 0x999999)
+		fi.refresh();
+#else
+		fi = QFileInfo(fi.absoluteFilePath());
+#endif
+	}
+
+	unsigned long checksum();
+
+	///
+	QFileInfo fi;
+};
+
+unsigned long FileName::Private::checksum()
+{
+#if QT_VERSION >= 0x040400
+	// First version of checksum uses Qt4.4 mmap support.
+	// FIXME: should we check if the MapExtension extension is supported?
+	// see QAbstractFileEngine::supportsExtension() and 
+	// QAbstractFileEngine::MapExtension)
+	QFile qf(fi.filePath());
+	if (!qf.open(QIODevice::ReadOnly))
+		return 0;
+	qint64 size = fi.size();
+	uchar * ubeg = qf.map(0, size);
+	uchar * uend = ubeg + size;
+	boost::crc_32_type ucrc;
+	ucrc.process_block(ubeg, uend);
+	return ucrc.checksum();
+#endif
+
+	//FIXME: This doesn't work on Windows for non ascii file names. Provided that
+	// Windows package uses Qt4.4, this isn't a problem.
+	QByteArray const encoded = QFile::encodeName(fi.absoluteFilePath());
+	char const * file = encoded.constData();
+
 #ifdef SUM_WITH_MMAP
-	//LYXERR(Debug::FILES, "lyx::sum() using mmap (lightning fast)");
+	//LYXERR(Debug::FILES, "using mmap (lightning fast)");
 
 	int fd = open(file, O_RDONLY);
 	if (!fd)
@@ -141,38 +195,6 @@ static unsigned long sum(char const * file)
 
 #endif // SUM_WITH_MMAP
 }
-
-
-/////////////////////////////////////////////////////////////////////
-//
-// FileName::Private
-//
-/////////////////////////////////////////////////////////////////////
-
-struct FileName::Private
-{
-	Private() {}
-
-	Private(string const & abs_filename) : fi(toqstr(abs_filename))
-	{
-		fi.setCaching(fi.exists() ? true : false);
-	}
-	///
-	inline void refresh() 
-	{
-// There seems to be a bug in Qt >= 4.2.0, at least, that causes problems with
-// QFileInfo::refresh() on *nix. So we recreate the object in that case.
-// FIXME: When Trolltech fixes the bug, we will have to replace 0x999999 below
-// with the actual working minimum version.
-#if defined(_WIN32) || (QT_VERSION >= 0x999999)
-		fi.refresh();
-#else
-		fi = QFileInfo(fi.absoluteFilePath());
-#endif
-	}
-	///
-	QFileInfo fi;
-};
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -505,13 +527,13 @@ unsigned long FileName::checksum() const
 		return 0;
 	}
 	if (!lyxerr.debugging(Debug::FILES))
-		return sum(absFilename().c_str());
+		return d->checksum();
 
 	QTime t;
 	t.start();
-	unsigned long r = sum(absFilename().c_str());
-	lyxerr << "Checksumming \"" << absFilename() << "\" lasted "
-		<< t.elapsed() << " ms." << endl;
+	unsigned long r = d->checksum();
+	lyxerr << "Checksumming \"" << absFilename() << "\" "
+		<< r << " lasted " << t.elapsed() << " ms." << endl;
 	return r;
 }
 
