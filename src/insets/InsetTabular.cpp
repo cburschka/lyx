@@ -2168,7 +2168,7 @@ int Tabular::TeXRow(odocstream & os, row_type i,
 	idx_type cell = cellIndex(i, 0);
 	shared_ptr<InsetTableCell> inset = cellInset(cell);
 	Paragraph const & par = inset->paragraphs().front();
-	string const lang =	par.getParLanguage(buffer().params())->lang();
+	string const lang = par.getParLanguage(buffer().params())->lang();
 
 	//output the top line
 	int ret = TeXTopHLine(os, i, lang);
@@ -2218,11 +2218,12 @@ int Tabular::TeXRow(odocstream & os, row_type i,
 		// pass to the OutputParams that we are in a cell and
 		// which alignment we have set.
 		// InsetNewline needs this context information.
-		OutputParams newrp = runparams;
+		OutputParams newrp(runparams);
 		newrp.inTableCell = (getAlignment(cell) == LYX_ALIGN_BLOCK)
 				    ? OutputParams::PLAIN
 				    : OutputParams::ALIGNED;
 		ret += inset->latex(os, newrp);
+		runparams.encoding = newrp.encoding;
 		if (rtl)
 			os << '}';
 
