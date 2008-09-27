@@ -36959,10 +36959,9 @@ Customization
 \begin_layout Standard
 If you use the option 
 \family sans
-use language's default encoding
+Language Default
 \family default
-, LyX determines the encoding of a portion of text from the language of
- this text.
+, LyX determines the encoding of a text part from the language of this text.
  If the document contains text in more than one language you may get more
  than one encoding in the LaTeX file.
  If you do not use this option then the complete document will always use
@@ -37003,7 +37002,7 @@ LyX also supports Unicode output, which is particularly useful if you need
  so it is not uncommon that a file with lots of Unicode symbols works fine
  with 
 \family sans
-use language's default encoding
+Language Default
 \family default
  (when LyX uses it's list of known LaTeX-commands), but does not work with
  a fixed utf8 encoding (when the list of known LaTeX-commands is not used,
@@ -37015,13 +37014,21 @@ Here is a list with the important encodings:
 \end_layout
 
 \begin_layout Description
-LaTeX
+Language
 \begin_inset space ~
 \end_inset
 
-default Same as 
+Default
+\begin_inset space ~
+\end_inset
+
+(no
+\begin_inset space ~
+\end_inset
+
+inputenc) Same as 
 \family sans
-use language's default encoding
+Language Default
 \family default
 , but the LaTeX-package 
 \series bold
@@ -37038,155 +37045,457 @@ LaTeX-packages ! inputenc
 \end_inset
 
  is not used.
- When using this, you probably need to load some other packages manually
+ When using this, you probably need to load some additional packages manually
  in the preamble and specify the used encoding for text parts in foreign
  languages in TeX code.
 \end_layout
 
 \begin_layout Description
-armscii8 encoding for Armenian
+ASCII the ASCII encoding, covers only plain English (7-bit ASCII).
+ LyX converts all other characters into LaTeX commands, which may result
+ in a big file when lots of LaTeX-commands are needed.
 \end_layout
 
 \begin_layout Description
-ascii the ASCII encoding, covers only plain English, may result in a big
- file because lots of LaTeX-commands may be needed
-\end_layout
-
-\begin_layout Description
-cp1250 MS Windows code page for latin2
-\end_layout
-
-\begin_layout Description
-cp1251 MS Windows code page for Cyrillic
-\end_layout
-
-\begin_layout Description
-cp1252 MS Windows code page for latin1
-\end_layout
-
-\begin_layout Description
-cp1255 MS Windows code page for Hebrew, superset of the ISO-8859-8 encoding
-\end_layout
-
-\begin_layout Description
-cp1256 MS Windows code page for Arabic and Farsi
-\end_layout
-
-\begin_layout Description
-cp1257 MS Windows code page for Estonian, Latvian, and Lithuanian, the ISO-8859-
-13 encoding that is a superset of the ISO-8859-4 encoding
-\end_layout
-
-\begin_layout Description
-iso88595 the ISO-8859-5 encoding, covers Belorussian, Bulgarian, Macedonian,
- Serbian, and Ukrainian
-\end_layout
-
-\begin_layout Description
-iso-8859-7 the ISO-8859-7 encoding, covers Greek
-\end_layout
-
-\begin_layout Description
-8859-8 the ISO-8859-8 encoding, covers Hebrew
-\end_layout
-
-\begin_layout Description
-koi8-r standard Cyrillic especially for Russian
-\end_layout
-
-\begin_layout Description
-koi8-u Cyrillic for Ukrainian
-\end_layout
-
-\begin_layout Description
-latin1 the ISO-8859-1 encoding, covers the languages Albanian, Catalan,
- Danish, Dutch, English, Faroese, Finnish, French, Galician, German, Icelandic,
- Irish, Italian, Norwegian, Portuguese, Spanish, and Swedish; should be
- replaced by latin9
-\end_layout
-
-\begin_layout Description
-latin2 the ISO-8859-2 encoding, covers Albanian, Croatian, Czech, German,
- Hungarian, Polish, Romanian, Slovak, and Slovenian
-\end_layout
-
-\begin_layout Description
-latin3 the ISO-8859-3 encoding, covers Esperanto, Galician, Maltese, and
- Turkish
-\end_layout
-
-\begin_layout Description
-latin4 the ISO-8859-4 encoding, covers Estonian, Latvian, and Lithuanian
-\end_layout
-
-\begin_layout Description
-latin5 the ISO-8859-9 encoding, covers Turkish, like the ISO-8859-1 encoding
- where the Icelandic letters are replaced by Turkish ones
-\end_layout
-
-\begin_layout Description
-latin9 the ISO-8859-15 encoding, like the ISO-8859-1 encoding, but with
- the euro currency sign, the 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-oe
-\end_layout
-
+Arabic
+\begin_inset space ~
 \end_inset
 
--ligature and some characters used for French and Finnish; latin9 should
- be the replacement for latin1
+(CP
+\begin_inset space ~
+\end_inset
+
+1256) MS Windows code page for Arabic and Farsi
 \end_layout
 
 \begin_layout Description
-pt154 Cyrillic for Kazakh
+Arabic
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-6) for Arabic and Farsi
 \end_layout
 
 \begin_layout Description
-utf8 Unicode utf8 based on the LaTeX-package 
+Armenian
+\begin_inset space ~
+\end_inset
+
+(ArmSCII8) for Armenian
+\end_layout
+
+\begin_layout Description
+Baltic
+\begin_inset space ~
+\end_inset
+
+(CP
+\begin_inset space ~
+\end_inset
+
+1257) MS Windows code page for Estonian, Latvian, and Lithuanian, the same
+ as the ISO-8859-13 encoding
+\end_layout
+
+\begin_layout Description
+Baltic
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-13) for Estonian, Latvian, and Lithuanian, a superset of the ISO-8859-4
+ encoding
+\end_layout
+
+\begin_layout Description
+Baltic
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-4) (latin 4) for Estonian, Latvian, and Lithuanian, a subset of the
+ ISO-8859-13 encoding
+\end_layout
+
+\begin_layout Description
+Central
+\begin_inset space ~
+\end_inset
+
+European
+\begin_inset space ~
+\end_inset
+
+(CP
+\begin_inset space ~
+\end_inset
+
+1250) MS Windows code page for ISO
+\begin_inset space ~
+\end_inset
+
+8859-2 (latin2)
+\end_layout
+
+\begin_layout Description
+Central
+\begin_inset space ~
+\end_inset
+
+European
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-2) (latin 2) covers Albanian, Croatian, Czech, German, Hungarian, Polish,
+ Romanian, Slovak, and Slovenian
+\end_layout
+
+\begin_layout Description
+Chinese
+\begin_inset space ~
+\end_inset
+
+(simplified)
+\begin_inset space ~
+\end_inset
+
+(EUC-CN) for simplified Chinese, used especially on UNIX OSes, since 2001
+ this encoding is officially replaced by the encoding GB18030, as GB18030
+ is not available for LaTeX you should try to use the encoding Unicode
+\begin_inset space ~
+\end_inset
+
+(CJK)
+\begin_inset space ~
+\end_inset
+
+(utf8)
+\end_layout
+
+\begin_layout Description
+Chinese
+\begin_inset space ~
+\end_inset
+
+(simplified)
+\begin_inset space ~
+\end_inset
+
+(GBK) for simplified Chinese, is the same as the Windows code page CP 936
+ except of the Euro currency sign, since 2001 this encoding is officially
+ replaced by the encoding GB18030, as GB18030 is not available for LaTeX
+ you should try to use the encoding Unicode
+\begin_inset space ~
+\end_inset
+
+(CJK)
+\begin_inset space ~
+\end_inset
+
+(utf8)
+\end_layout
+
+\begin_layout Description
+Chinese
+\begin_inset space ~
+\end_inset
+
+(simplified)
+\begin_inset space ~
+\end_inset
+
+(EUC-TW) for traditional Chinese
+\end_layout
+
+\begin_layout Description
+Cyrillic
+\begin_inset space ~
+\end_inset
+
+(CP
+\begin_inset space ~
+\end_inset
+
+1251) MS Windows code page for Cyrillic
+\end_layout
+
+\begin_layout Description
+Cyrillic
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-5) covers Belorussian, Bulgarian, Macedonian, Serbian, and Ukrainian
+\end_layout
+
+\begin_layout Description
+Cyrillic
+\begin_inset space ~
+\end_inset
+
+(KOI8-R) standard Cyrillic especially for Russian
+\end_layout
+
+\begin_layout Description
+Cyrillic
+\begin_inset space ~
+\end_inset
+
+(KOI8-U) Cyrillic for Ukrainian
+\end_layout
+
+\begin_layout Description
+Cyrillic
+\begin_inset space ~
+\end_inset
+
+(pt
+\begin_inset space ~
+\end_inset
+
+154) Cyrillic for Kazakh
+\end_layout
+
+\begin_layout Description
+Greek
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-7) for Greek
+\end_layout
+
+\begin_layout Description
+Hebrew
+\begin_inset space ~
+\end_inset
+
+(CP
+\begin_inset space ~
+\end_inset
+
+1255) MS Windows code page for Hebrew, a superset of the ISO-8859-8 encoding
+\end_layout
+
+\begin_layout Description
+Hebrew
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-8) for Hebrew
+\end_layout
+
+\begin_layout Description
+Japanese
+\begin_inset space ~
+\end_inset
+
+(CJK)
+\begin_inset space ~
+\end_inset
+
+(EUC-JP) EUC-JP encoding for Japanese, uses the LaTeX-package 
 \series bold
-inputenc
+CJK
 \series default
 
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! inputenc
+LaTeX-packages ! CJK
 \end_layout
 
 \end_inset
 
-.
- Currently only a limited range of characters (mainly for Latin scripts)
- is supported.
+, when using this, set the document language to 
+\family sans
+Japanese (CJK)
 \end_layout
 
 \begin_layout Description
-utf8x Unicode utf8 based on the LaTeX package 
+Japanese
+\begin_inset space ~
+\end_inset
+
+(CJK)
+\begin_inset space ~
+\end_inset
+
+(JIS) JIS encoding for Japanese, uses the LaTeX-package 
 \series bold
-ucs
+CJK
+\series default
+, when using this, set the document language to 
+\family sans
+Japanese (CJK)
+\end_layout
+
+\begin_layout Description
+Japanese
+\begin_inset space ~
+\end_inset
+
+(non-CJK)
+\begin_inset space ~
+\end_inset
+
+(EUC-JP) EUC-JP encoding for Japanese, uses the LaTeX-package 
+\series bold
+japanese
 \series default
 
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! ucs
+LaTeX-packages ! japanese
 \end_layout
 
 \end_inset
 
- (comprehensive, including Latin, Greek, Cyrillic and CJK scripts).
+, when using this, set the document language to 
+\family sans
+Japanese
 \end_layout
 
 \begin_layout Description
-UTF8 Unicode utf8 with the LaTeX-package 
+Japanese
+\begin_inset space ~
+\end_inset
+
+(non-CJK)
+\begin_inset space ~
+\end_inset
+
+(JIS) JIS encoding for Japanese, uses the LaTeX-package 
+\series bold
+japanese
+\series default
+, when using this, set the document language to 
+\family sans
+Japanese
+\end_layout
+
+\begin_layout Description
+Japanese
+\begin_inset space ~
+\end_inset
+
+(non-CJK)
+\begin_inset space ~
+\end_inset
+
+(SJIS) SJIS encoding for Japanese, uses the LaTeX-package 
+\series bold
+japanese
+\series default
+, when using this, set the document language to 
+\family sans
+Japanese
+\end_layout
+
+\begin_layout Description
+Korean
+\begin_inset space ~
+\end_inset
+
+(EUC-KR) for Korean
+\end_layout
+
+\begin_layout Description
+Southern
+\begin_inset space ~
+\end_inset
+
+European
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-3) (latin 3) covers Esperanto, Galician, Maltese, and Turkish
+\end_layout
+
+\begin_layout Description
+South-Eastern
+\begin_inset space ~
+\end_inset
+
+European
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-16) (latin 10) covers Albanian, Croatian, Finnish, French, German,
+ Hungarian, Irish Gaelic, Italian, Polish, Romanian, Slovenian, is designed
+ to cover many languages and characters with diacritics
+\end_layout
+
+\begin_layout Description
+Thai
+\begin_inset space ~
+\end_inset
+
+(TIS
+\begin_inset space ~
+\end_inset
+
+620-0) for Thai
+\end_layout
+
+\begin_layout Description
+Turkish
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-9) (latin 5) for Turkish, is like the ISO-8859-1 encoding where the
+ Icelandic letters are replaced by Turkish ones
+\end_layout
+
+\begin_layout Description
+Unicode
+\begin_inset space ~
+\end_inset
+
+(CJK)
+\begin_inset space ~
+\end_inset
+
+(utf8) Unicode utf8 with the LaTeX-package 
 \series bold
 CJK
 \series default
@@ -37204,7 +37513,15 @@ LaTeX-packages ! CJK
 \end_layout
 
 \begin_layout Description
-utf8-plain Unicode utf8 to be used with 
+Unicode
+\begin_inset space ~
+\end_inset
+
+(XeTeX)
+\begin_inset space ~
+\end_inset
+
+(utf8) Unicode utf8 to be used with 
 \family sans
 XeTeX
 \family default
@@ -37230,6 +37547,112 @@ key "XeTeX"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Description
+Unicode
+\begin_inset space ~
+\end_inset
+
+(ucs-extended)
+\begin_inset space ~
+\end_inset
+
+(utf8x) Unicode utf8 based on the LaTeX package 
+\series bold
+ucs
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! ucs
+\end_layout
+
+\end_inset
+
+ (comprehensive, including Latin, Greek, Cyrillic and CJK scripts).
+\end_layout
+
+\begin_layout Description
+Unicode
+\begin_inset space ~
+\end_inset
+
+(utf8) Unicode utf8 based on the LaTeX-package 
+\series bold
+inputenc
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! inputenc
+\end_layout
+
+\end_inset
+
+.
+ Currently only a limited range of characters (mainly for Latin scripts)
+ is supported.
+\end_layout
+
+\begin_layout Description
+Western
+\begin_inset space ~
+\end_inset
+
+European
+\begin_inset space ~
+\end_inset
+
+(CP
+\begin_inset space ~
+\end_inset
+
+1252) MS Windows code page for ISO
+\begin_inset space ~
+\end_inset
+
+8859-1 (latin1)
+\end_layout
+
+\begin_layout Description
+Western
+\begin_inset space ~
+\end_inset
+
+European
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-1) (latin 1) covers the languages Albanian, Catalan, Danish, Dutch,
+ English, Faroese, Finnish, French, Galician, German, Icelandic, Irish,
+ Italian, Norwegian, Portuguese, Spanish, and Swedish; better use the ISO-8859-1
+5 encoding instead
+\end_layout
+
+\begin_layout Description
+Western
+\begin_inset space ~
+\end_inset
+
+European
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-15) (latin 9) like the ISO-8859-1 encoding, but with the Euro currency
+ sign, the œ-ligature and some characters used for French and Finnish
 \end_layout
 
 \begin_layout Subsubsection
