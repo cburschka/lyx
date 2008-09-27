@@ -16,6 +16,7 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/filetools.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/qstring_helpers.h"
 #include "support/os.h"
@@ -30,13 +31,15 @@
 #include <QTemporaryFile>
 #include <QTime>
 
-#include "support/lassert.h"
+#include <boost/crc.hpp>
 #include <boost/scoped_array.hpp>
 
+#include <algorithm>
+#include <iterator>
+#include <fstream>
+#include <iomanip>
 #include <map>
 #include <sstream>
-#include <fstream>
-#include <algorithm>
 
 #ifdef HAVE_SYS_TYPES_H
 # include <sys/types.h>
@@ -75,10 +78,84 @@ extern "C" int mkstemp(char *);
 # endif
 #endif
 
+// Various implementations of sum(), depending on what methods
+// are available. Order is faster to slowest.
+#if defined(HAVE_MMAP) && defined(HAVE_MUNMAP)
+#define SUM_WITH_MMAP
+#ifdef HAVE_SYS_TYPES_H
+# include <sys/types.h>
+#endif
+#ifdef HAVE_SYS_STAT_H
+# include <sys/stat.h>
+#endif
+#include <fcntl.h>
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
+#include <sys/mman.h>
+#endif // SUM_WITH_MMAP
+
 using namespace std;
+
+// OK, this is ugly, but it is the only workaround I found to compile
+// with gcc (any version) on a system which uses a non-GNU toolchain.
+// The problem is that gcc uses a weak symbol for a particular
+// instantiation and that the system linker usually does not
+// understand those weak symbols (seen on HP-UX, tru64, AIX and
+// others). Thus we force an explicit instanciation of this particular
+// template (JMarc)
+template struct boost::detail::crc_table_t<32, 0x04C11DB7, true>;
 
 namespace lyx {
 namespace support {
+
+static unsigned long sum(char const * file)
+{
+#ifdef SUM_WITH_MMAP
+	//LYXERR(Debug::FILES, "lyx::sum() using mmap (lightning fast)");
+
+	int fd = open(file, O_RDONLY);
+	if (!fd)
+		return 0;
+
+	struct stat info;
+	fstat(fd, &info);
+
+	void * mm = mmap(0, info.st_size, PROT_READ,
+			 MAP_PRIVATE, fd, 0);
+	// Some platforms have the wrong type for MAP_FAILED (compaq cxx).
+	if (mm == reinterpret_cast<void*>(MAP_FAILED)) {
+		close(fd);
+		return 0;
+	}
+
+	char * beg = static_cast<char*>(mm);
+	char * end = beg + info.st_size;
+
+	boost::crc_32_type crc;
+	crc.process_block(beg, end);
+	unsigned long result = crc.checksum();
+
+	munmap(mm, info.st_size);
+	close(fd);
+
+	return result;
+
+#else // no SUM_WITH_MMAP
+
+	//LYXERR(Debug::FILES, "lyx::sum() using istreambuf_iterator (fast)");
+	ifstream ifs(file, ios_base::in | ios_base::binary);
+	if (!ifs)
+		return 0;
+
+	istreambuf_iterator<char> beg(ifs);
+	istreambuf_iterator<char> end;
+	boost::crc_32_type crc;
+	crc = for_each(beg, end, crc);
+	return crc.checksum();
+
+#endif // SUM_WITH_MMAP
+}
 
 
 /////////////////////////////////////////////////////////////////////
@@ -430,8 +507,6 @@ bool FileName::chdir() const
 	return QDir::setCurrent(d->fi.absoluteFilePath());
 }
 
-
-extern unsigned long sum(char const * file);
 
 unsigned long FileName::checksum() const
 {

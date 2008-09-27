@@ -72,7 +72,6 @@ liblyxsupport_la_SOURCES = \
 	lyxlib.h \
 	lyxtime.cpp \
 	lyxtime.h \
-	lyxsum.cpp \
 	Messages.cpp \
 	Messages.h \
 	os.cpp \

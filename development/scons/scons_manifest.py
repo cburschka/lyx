@@ -341,7 +341,6 @@ src_support_files = Split('''
     kill.cpp
     lassert.cpp
     lstrings.cpp
-    lyxsum.cpp
     lyxtime.cpp
     os.cpp
     qstring_helpers.cpp
