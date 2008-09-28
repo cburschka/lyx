@@ -108,6 +108,17 @@ public:
 	/// FIXME: replace Cursor with DocIterator.
 	docstring getStringToIndex(Cursor const & cur);
 
+	/// Convert the paragraphs to a string.
+	/// \param AsStringParameter options. This can contain any combination of
+	/// asStringParameter values. Valid examples:
+	///		asString(AS_STR_LABEL)
+	///		asString(AS_STR_LABEL | AS_STR_INSETS)
+	///		asString(AS_STR_INSETS)
+	docstring asString(int options = AS_STR_NONE) const;
+	///
+	docstring asString(pit_type beg, pit_type end,
+		int options = AS_STR_NONE) const;
+
 	/// insert a character at cursor position
 	/// FIXME: replace Cursor with DocIterator.
 	void insertChar(Cursor & cur, char_type c);

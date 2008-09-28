@@ -41,6 +41,8 @@ private:
 	/// should paragraph indendation be omitted in any case?
 	bool neverIndent() const { return true; }
 	///
+	void textString(odocstream &) const;
+	///
 	void addToToc(DocIterator const &);
 	///
 	Inset * clone() const { return new InsetIndex(*this); }

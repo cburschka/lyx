@@ -1489,6 +1489,25 @@ docstring Text::getPossibleLabel(Cursor const & cur) const
 }
 
 
+docstring Text::asString(int options) const
+{
+	return asString(0, pars_.size(), options);
+}
+
+
+docstring Text::asString(pit_type beg, pit_type end, int options) const
+{
+	size_t i = size_t(beg);
+	docstring str = pars_[i].asString(options);
+	for (++i; i != size_t(end); ++i) {
+		str += '\n';
+		str += pars_[i].asString(options);
+	}
+	return str;
+}
+
+
+
 void Text::charsTranspose(Cursor & cur)
 {
 	LASSERT(this == cur.text(), /**/);
