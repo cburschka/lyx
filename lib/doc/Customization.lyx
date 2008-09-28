@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0rc3 created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -70,7 +70,7 @@ End
 \font_sf_scale 100
 \font_tt_scale 100
 
-\graphics none
+\graphics default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -5473,14 +5473,86 @@ Installing a new LaTeX package
 \begin_layout Standard
 Some installations may not include a LaTeX package that you would like to
  use within LyX.
- For example, you might need FoilTeX, a common (and very powerful) package
- for preparing slides or viewgraphs for overhead projectors.
- On some systems, you may have a GUI for installing such packages: MikTeX
- on Windows®, for example.
+ For example, you might need FoilTeX, a package for preparing slides or
+ viewgraphs for overhead projectors.
+ Modern LaTeX distributions like TeXLive (2008 or newer) or MiKTeX provide
+ a user interface for that.
+ For example on MiKTeX you start its program 
+\begin_inset Quotes eld
+\end_inset
+
+Browse Packages
+\begin_inset Quotes erd
+\end_inset
+
+ to get a list of available packages.
+ To install one, right click on it or use the installing toolbar button.
+ When the package you want to install is not in the list, but you have it
+ in form of a 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+.cls
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+.sty
+\end_layout
+
+\end_inset
+
+-file, then copy these files to a subfolder of your LaTeX distribution,
+ for example to the folder 
+\family sans
+~
+\backslash
+tex
+\backslash
+latex
+\family default
+.
+ Then update the file name database of your LaTeX-distribution.
+ For example on MiKTeX this is done by pressing the button 
+\family sans
+Refresh
+\begin_inset space ~
+\end_inset
+
+FNDB
+\family default
+ that you find in MiKTeX's 
+\begin_inset Quotes eld
+\end_inset
+
+Settings
+\begin_inset Quotes erd
+\end_inset
+
+ program.
+ In both cases you need afterwards to reconfigure LyX using the menu 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Tools\SpecialChar \menuseparator
+Reconfigure
+\end_layout
+
+\end_inset
+
+ and then to restart LyX.
 \end_layout
 
 \begin_layout Standard
-If you don't have such a GUI, then you can follow these steps.
+If your LaTeX distribution doesn't provide a user interface, then you can
+ follow these steps by using a UNIX/Linux console.
 \end_layout
 
 \begin_layout Enumerate
@@ -5621,7 +5693,6 @@ TEXMFHOME
 \end_inset
 
  variables; e.g.
- 
 \begin_inset Newline newline
 \end_inset
 
@@ -5758,16 +5829,8 @@ Your package is now installed and available to LaTeX.
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-econfigure
+Tools\SpecialChar \menuseparator
+Reconfigure
 \end_layout
 
 \end_inset
@@ -5788,16 +5851,8 @@ slides (FoilTeX)
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \end_layout
 
 \end_inset
