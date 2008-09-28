@@ -25,6 +25,8 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
+#include <boost/regex.hpp>
+
 #include <algorithm>
 #include <iostream>
 #include <sstream>
@@ -34,6 +36,8 @@
 
 using namespace std;
 using namespace lyx::support;
+using boost::regex;
+using boost::smatch;
 
 namespace lyx {
 
@@ -244,7 +248,8 @@ string const scale_as_percentage(string const & scale)
 }
 
 
-void handle_package(string const & name, string const & opts)
+void handle_package(string const & name, string const & opts,
+					bool in_lyx_preamble)
 {
 	vector<string> options = split_options(opts);
 	add_package(name, options);
@@ -385,13 +390,16 @@ void handle_package(string const & name, string const & opts)
 	}
 	else if (name == "jurabib")
 		h_cite_engine = "jurabib";
-
-	else if (options.empty())
-		h_preamble << "\\usepackage{" << name << "}\n";
-	else {
-		h_preamble << "\\usepackage[" << opts << "]{" << name << "}\n";
-		options.clear();
+	else if (!in_lyx_preamble) {
+		if (options.empty())
+			h_preamble << "\\usepackage{" << name << "}\n";
+		else {
+			h_preamble << "\\usepackage[" << opts << "]{" 
+				   << name << "}\n";
+			options.clear();
+		}
 	}
+
 	// We need to do something with the options...
 	if (!options.empty())
 		cerr << "Ignoring options '" << join(options, ",")
@@ -455,6 +463,8 @@ void parse_preamble(Parser & p, ostream & os,
 	// initialize fixed types
 	special_columns['D'] = 3;
 	bool is_full_document = false;
+	bool is_lyx_file = false;
+	bool in_lyx_preamble = true;
 
 	// determine whether this is a full document or a fragment for inclusion
 	while (p.good()) {
@@ -477,32 +487,55 @@ void parse_preamble(Parser & p, ostream & os,
 		//
 		// cat codes
 		//
-		if (t.cat() == catLetter ||
-			  t.cat() == catSuper ||
-			  t.cat() == catSub ||
-			  t.cat() == catOther ||
-			  t.cat() == catMath ||
-			  t.cat() == catActive ||
-			  t.cat() == catBegin ||
-			  t.cat() == catEnd ||
-			  t.cat() == catAlign ||
-			  t.cat() == catParameter)
-		h_preamble << t.character();
+		if (!in_lyx_preamble &&
+		    (t.cat() == catLetter ||
+		     t.cat() == catSuper ||
+		     t.cat() == catSub ||
+		     t.cat() == catOther ||
+		     t.cat() == catMath ||
+		     t.cat() == catActive ||
+		     t.cat() == catBegin ||
+		     t.cat() == catEnd ||
+		     t.cat() == catAlign ||
+		     t.cat() == catParameter))
+			h_preamble << t.character();
 
-		else if (t.cat() == catSpace || t.cat() == catNewline)
+		else if (!in_lyx_preamble && 
+			 (t.cat() == catSpace || t.cat() == catNewline))
 			h_preamble << t.asInput();
 
-		else if (t.cat() == catComment)
-			h_preamble << t.asInput();
+		else if (t.cat() == catComment) {
+			// regex to parse comments
+			static regex const islyxfile("%% LyX .* created this file");
+			static regex const usercommands("User specified LaTeX commands");	
+			
+			string const comment = t.asInput();
+			cerr << "Seen comment: " << comment << std::endl;
+			smatch sub;
+			if (regex_search(comment, sub, islyxfile))
+				is_lyx_file = true;
+			else if (is_lyx_file 
+				 && regex_search(comment, sub, usercommands))
+				in_lyx_preamble = false;
+			else if (!in_lyx_preamble)
+				h_preamble << t.asInput();
+			cerr << "lyx_file: " << is_lyx_file << ", lyx_preamble " << in_lyx_preamble << std::endl;
+		}
 
 		else if (t.cs() == "pagestyle")
 			h_paperpagestyle = p.verbatim_item();
 
 		else if (t.cs() == "makeatletter") {
+			if (!is_lyx_file || !in_lyx_preamble
+				|| p.getCatCode('@') != catLetter)
+				h_preamble << "\\makeatletter";
 			p.setCatCode('@', catLetter);
 		}
 
 		else if (t.cs() == "makeatother") {
+			if (!is_lyx_file || !in_lyx_preamble
+				|| p.getCatCode('@') != catOther)
+				h_preamble << "\\makeatother";
 			p.setCatCode('@', catOther);
 		}
 
@@ -536,19 +569,7 @@ void parse_preamble(Parser & p, ostream & os,
 				h_font_default_family = family.erase(0,1);
 			}
 			// only non-lyxspecific stuff
-			if (   name != "\\noun"
-			    && name != "\\tabularnewline"
-			    && name != "\\LyX"
-			    && name != "\\lyxline"
-			    && name != "\\lyxaddress"
-			    && name != "\\lyxrightaddress"
-			    && name != "\\lyxdot"
-			    && name != "\\boldsymbol"
-			    && name != "\\lyxarrow"
-			    && name != "\\rmdefault"
-			    && name != "\\sfdefault"
-			    && name != "\\ttdefault"
-			    && name != "\\familydefault") {
+			if (!in_lyx_preamble) {
 				ostringstream ss;
 				ss << '\\' << t.cs();
 				if (star)
@@ -637,9 +658,10 @@ void parse_preamble(Parser & p, ostream & os,
 				vector<string>::const_iterator it  = vecnames.begin();
 				vector<string>::const_iterator end = vecnames.end();
 				for (; it != end; ++it)
-					handle_package(trim(*it), string());
+					handle_package(trim(*it), string(),
+					in_lyx_preamble);
 			} else {
-				handle_package(name, options);
+				handle_package(name, options, in_lyx_preamble);
 			}
 		}
 
@@ -651,9 +673,7 @@ void parse_preamble(Parser & p, ostream & os,
 			ss << p.getOpt();
 			ss << '{' << p.verbatim_item() << '}';
 			ss << '{' << p.verbatim_item() << '}';
-			if (name != "lyxcode" && name != "lyxlist" &&
-			    name != "lyxrightadress" &&
-			    name != "lyxaddress" && name != "lyxgreyedout")
+			if (!in_lyx_preamble)
 				h_preamble << ss.str();
 		}
 
@@ -661,8 +681,9 @@ void parse_preamble(Parser & p, ostream & os,
 			string name = p.get_token().cs();
 			while (p.next_token().cat() != catBegin)
 				name += p.get_token().asString();
-			h_preamble << "\\def\\" << name << '{'
-				   << p.verbatim_item() << "}";
+			if (!in_lyx_preamble)
+				h_preamble << "\\def\\" << name << '{'
+				<< p.verbatim_item() << "}";
 		}
 
 		else if (t.cs() == "newcolumntype") {
@@ -768,7 +789,7 @@ void parse_preamble(Parser & p, ostream & os,
 			}
 		}
 
-		else if (!t.cs().empty())
+		else if (!t.cs().empty() && !in_lyx_preamble)
 			h_preamble << '\\' << t.cs();
 	}
 	p.skip_spaces();
