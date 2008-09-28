@@ -500,7 +500,8 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("color") || mustProvide("xcolor")) {
 		string const package =
 			(mustProvide("xcolor") ? "xcolor" : "color");
-		if (params_.graphicsDriver == "default")
+		if (params_.graphicsDriver == "default"
+		    || params_.graphicsDriver == "none")
 			packages << "\\usepackage{" << package << "}\n";
 		else
 			packages << "\\usepackage["
