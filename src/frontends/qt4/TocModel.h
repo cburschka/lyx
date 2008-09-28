@@ -16,11 +16,9 @@
 
 #include <QHash>
 #include <QList>
+#include <QSortFilterProxyModel>
 #include <QStandardItemModel>
 #include <QStringList>
-
-class QAbstractItemModel;
-class QSortFilterProxyModel;
 
 namespace lyx {
 
@@ -42,7 +40,7 @@ public:
 };
 
 
-class TocModel : public QStandardItemModel
+class TocModel
 {
 public:
 	///
@@ -51,6 +49,16 @@ public:
 	void reset(Toc const & toc);
 	///
 	void reset();
+	///
+	void clear();
+	///
+	QAbstractItemModel * model();
+	///
+	QAbstractItemModel const * model() const;
+	///
+	void sort(bool sort_it);
+	///
+	bool isSorted() const { return is_sorted_; }
 	///
 	TocItem const & tocItem(QModelIndex const & index) const;
 	///
@@ -61,6 +69,12 @@ public:
 private:
 	///
 	void populate(unsigned int & index, QModelIndex const & parent);
+	///
+	TocTypeModel * model_;
+	///
+	QSortFilterProxyModel * sorted_model_;
+	///
+	bool is_sorted_;
 	///
 	QList<QModelIndex> toc_indexes_;
 	///
@@ -82,7 +96,7 @@ public:
 	///
 	int depth(QString const & type);
 	///
-	QStandardItemModel * model(QString const & type);
+	QAbstractItemModel * model(QString const & type);
 	///
 	QAbstractItemModel * nameModel();
 	///
@@ -93,6 +107,10 @@ public:
 	void init(Buffer const & buffer);
 	///
 	void updateBackend() const;
+	///
+	void sort(QString const & type, bool sort_it);
+	///
+	bool isSorted(QString const & type) const;
 
 Q_SIGNALS:
 	/// Signal that the internal toc_models_ has been reset.

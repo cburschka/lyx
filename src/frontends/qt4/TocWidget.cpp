@@ -99,6 +99,12 @@ void TocWidget::on_updateTB_clicked()
 }
 
 
+void TocWidget::on_sortCB_stateChanged(int state)
+{
+	gui_view_.tocModels().sort(current_type_, state == Qt::Checked);
+	updateView();
+}
+
 /* FIXME (Ugras 17/11/06):
 I have implemented a indexDepth function to get the model indices. In my
 opinion, somebody should derive a new qvariant class for tocModelItem
@@ -213,6 +219,7 @@ static bool canOutline(QString const & type)
 void TocWidget::enableControls(bool enable)
 {
 	updateTB->setEnabled(enable);
+	sortCB->setEnabled(enable);
 
 	if (!canOutline(current_type_))
 		enable = false;
@@ -251,11 +258,16 @@ void TocWidget::updateView()
 	typeCO->setEnabled(true);
 	tocTV->setEnabled(true);
 
-	QStandardItemModel * toc_model = gui_view_.tocModels().model(current_type_);	
+	QAbstractItemModel * toc_model = gui_view_.tocModels().model(current_type_);	
 	if (tocTV->model() != toc_model) {
 		tocTV->setModel(toc_model);
 		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	}
+
+	sortCB->blockSignals(true);
+	sortCB->setChecked(gui_view_.tocModels().isSorted(current_type_));
+	sortCB->blockSignals(false);
+
 	bool controls_enabled = toc_model && toc_model->rowCount() > 0
 		&& !gui_view_.buffer()->isReadonly();
 	enableControls(controls_enabled);
