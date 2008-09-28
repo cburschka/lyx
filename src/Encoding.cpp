@@ -410,7 +410,8 @@ bool Encodings::latexMathChar(char_type c, bool mathmode,
 		if (!encoding || command.empty()) {
 			command = it->second.textcommand;
 			addTextCmd(c);
-		} else if (mathmode)
+		}
+		if (mathmode)
 			addMathSym(c);
 	}
 	return use_math;
@@ -558,10 +559,6 @@ void Encodings::validate(char_type c, LaTeXFeatures & features, bool for_mathed)
 					}
 				} else
 					features.addPreambleSnippet(it->second.textpreamble);
-			}
-			if (for_mathed) {
-				features.require("relsize");
-				features.require("lyxmathsym");
 			}
 		}
 	}
