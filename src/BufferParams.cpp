@@ -917,8 +917,14 @@ void BufferParams::validate(LaTeXFeatures & features) const
 		}
 	}
 
-	if (pdfoptions().use_hyperref)
+	if (pdfoptions().use_hyperref) {
 		features.require("hyperref");
+		// due to interferences with babel and hyperref, the color package has to
+		// be loaded after hyperref when hyperref is used with the colorlinks
+		// option, see http://bugzilla.lyx.org/show_bug.cgi?id=5291
+		if (pdfoptions().colorlinks)
+			features.require("color");
+	}
 
 	if (language->lang() == "vietnamese")
 		features.require("vietnamese");
@@ -1249,23 +1255,30 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 
-	// If we use hyperref, jurabib, japanese, or vietnamese, we have to call babel here.
+	// Now insert the LyX specific LaTeX commands...
+	docstring lyxpreamble;
+
+	// due to interferences with babel and hyperref, the color package has to
+	// be loaded (when it is not already loaded) before babel when hyperref
+	// is used with the colorlinks option, see
+	// http://bugzilla.lyx.org/show_bug.cgi?id=5291
+	// we decided therefore to load color always before babel, see
+	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg144349.html
+	lyxpreamble += from_ascii(features.getColorOptions());
+	
+	// If we use hyperref, jurabib, japanese, or vietnamese, we have to call babel before them.
 	if (use_babel
 		&& (features.isRequired("jurabib")
 			|| features.isRequired("hyperref")
 			|| features.isRequired("vietnamese")
 			|| features.isRequired("japanese") ) ) {
-		// FIXME UNICODE
-		os << from_utf8(babelCall(language_options.str()))
-		   << '\n'
-		   << from_utf8(features.getBabelOptions());
-		texrow.newline();
+				// FIXME UNICODE
+				lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
+				lyxpreamble += from_utf8(features.getBabelOptions()) + '\n';
 	}
 
-	// Now insert the LyX specific LaTeX commands...
-
 	// The optional packages;
-	docstring lyxpreamble(from_ascii(features.getPackages()));
+	lyxpreamble += from_ascii(features.getPackages());
 
 	// Line spacing
 	lyxpreamble += from_utf8(spacing().writePreamble(tclass.provides("SetSpace")));
@@ -1284,7 +1297,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		pdfoptions().writeLaTeX(oss, documentClass().provides("hyperref"));
 		lyxpreamble += oss.str();
 	}
-
+	
 	// Will be surrounded by \makeatletter and \makeatother when needed
 	docstring atlyxpreamble;
 
@@ -1367,8 +1380,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	else
 		lyxpreamble += '\n' + atlyxpreamble;
 
-	// We try to load babel late, in case it interferes
-	// with other packages.
+	// We try to load babel late, in case it interferes with other packages.
 	// Jurabib and Hyperref have to be called after babel, though.
 	if (use_babel && !features.isRequired("jurabib")
 	    && !features.isRequired("hyperref")

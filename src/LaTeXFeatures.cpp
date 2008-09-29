@@ -520,6 +520,35 @@ int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
 }
 
 
+string const LaTeXFeatures::getColorOptions() const
+{
+	ostringstream colors;
+
+	// Handling the color packages separately is needed to be able to load them
+	// before babel when hyperref is loaded with the colorlinks option
+	// for more info see Bufferparams.cpp
+
+	// [x]color.sty
+	if (mustProvide("color") || mustProvide("xcolor")) {
+		string const package =
+			(mustProvide("xcolor") ? "xcolor" : "color");
+		if (params_.graphicsDriver == "default"
+			|| params_.graphicsDriver == "none")
+			colors << "\\usepackage{" << package << "}\n";
+		else
+			colors << "\\usepackage["
+				 << params_.graphicsDriver
+				 << "]{" << package << "}\n";
+	}
+
+	// pdfcolmk must be loaded after color
+	if (mustProvide("pdfcolmk"))
+		colors << "\\usepackage{pdfcolmk}\n";
+
+	return colors.str();
+}
+
+
 string const LaTeXFeatures::getPackages() const
 {
 	ostringstream packages;
@@ -573,23 +602,8 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("accents"))
 		packages << "\\usepackage{accents}\n";
 
-	// [x]color.sty
-	if (mustProvide("color") || mustProvide("xcolor")) {
-		string const package =
-			(mustProvide("xcolor") ? "xcolor" : "color");
-		if (params_.graphicsDriver == "default"
-		    || params_.graphicsDriver == "none")
-			packages << "\\usepackage{" << package << "}\n";
-		else
-			packages << "\\usepackage["
-				 << params_.graphicsDriver
-				 << "]{" << package << "}\n";
-	}
-
-	// pdfcolmk must be loaded after color
-	if (mustProvide("pdfcolmk"))
-		packages << "\\usepackage{pdfcolmk}\n";
-
+	// [x]color and pdfcolmk are handled in getColorOptions() above
+	
 	// makeidx.sty
 	if (isRequired("makeidx")) {
 		if (!tclass.provides("makeidx"))

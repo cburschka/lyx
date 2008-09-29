@@ -46,6 +46,8 @@ public:
 	///
 	LaTeXFeatures(Buffer const &, BufferParams const &,
 		      OutputParams const &);
+	/// The color packages
+	std::string const getColorOptions() const;
 	/// The packages needed by the document
 	std::string const getPackages() const;
 	/// The macros definitions needed by the document
