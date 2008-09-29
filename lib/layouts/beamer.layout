@@ -45,6 +45,7 @@ Style Standard
   LabelType        No_Label
 End
 
+
 # List section
 # Itemize style definition
 Style Itemize
@@ -873,6 +874,60 @@ Style Bibliography
     Size           Larger
   EndFont
 End
+
+
+Style Quote
+  Margin           Static
+  LatexType        Environment
+  LatexName        quote}%{
+  NextNoIndent     1
+  LeftMargin       MMM
+  RightMargin      MMM
+  TopSep           0.5
+  ParSep           0.5
+  BottomSep        0.5
+  Align            Block
+  AlignPossible    Block, Left, Right, Center
+  LabelType        No_Label
+End
+
+
+Style Quotation
+  Margin           Static
+  LatexType        Environment
+  LatexName        quotation}%{
+  NextNoIndent     1
+  LeftMargin       MMM
+  RightMargin      MMM
+  ParIndent        MM
+  ParSkip          0
+  ItemSep          0
+  TopSep           0.5
+  BottomSep        0.5
+  ParSep           0
+  Align            Block
+  AlignPossible    Block, Left, Right, Center
+End
+
+
+Style Verse
+  # LaTeX type is first dynamic because of LaTeX implementation.
+  # In LyX this does not make sense.
+  LatexType        Environment
+  LatexName        verse}%{
+  Margin           First_Dynamic
+  NextNoIndent     1
+  LeftMargin       MMMM
+  LabelIndent      MMMM
+  ParSkip          0.4
+  TopSep           0.7
+  BottomSep        0.7
+  ParSep           0.5
+  Align            Block
+  AlignPossible    Block, Left
+  LabelType        No_Label
+End
+
 
 Style TitleGraphic
   Margin           Static
