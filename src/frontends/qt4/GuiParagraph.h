@@ -59,11 +59,9 @@ private:
 	///
 	LyXAlignment getAlignmentFromDialog();
 	///
-	ParagraphParameters & params();
-	///
 	ParagraphParameters const & params() const;
 	///
-	bool haveMultiParSelection();
+	bool haveMultiParSelection() const;
 	///
 	bool canIndent() const;
 	///
@@ -96,7 +94,7 @@ private:
 	///
 	QString alignDefaultLabel_;
 	///
-	ParagraphParameters multiparsel_;
+	mutable ParagraphParameters params_;
 };
 
 } // namespace frontend

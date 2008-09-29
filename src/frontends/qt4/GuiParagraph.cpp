@@ -196,9 +196,15 @@ void GuiParagraph::on_restorePB_clicked()
 
 void GuiParagraph::applyView()
 {
-	ParagraphParameters & pp = params();
+	if (haveMultiParSelection()) {
+		// FIXME: in case of multi-paragraph selection, it would be nice to
+		// initialise the parameters that are common to all paragraphs.
+		params_ = ParagraphParameters();
+	} else {
+		params_ = bufferview()->cursor().innerParagraph().params();
+	}
 
-	pp.align(getAlignmentFromDialog());
+	params_.align(getAlignmentFromDialog());
 
 	// get spacing
 	Spacing::Space ls = Spacing::Default;
@@ -223,12 +229,12 @@ void GuiParagraph::applyView()
 	}
 
 	Spacing const spacing(ls, other);
-	pp.spacing(spacing);
+	params_.spacing(spacing);
 
 	// label width
-	pp.labelWidthString(qstring_to_ucs4(labelWidth->text()));
+	params_.labelWidthString(qstring_to_ucs4(labelWidth->text()));
 	// indendation
-	pp.noindent(!indentCB->isChecked());
+	params_.noindent(!indentCB->isChecked());
 
 	dispatchParams();
 }
@@ -307,42 +313,28 @@ void GuiParagraph::enableView(bool enable)
 }
 
 
-ParagraphParameters & GuiParagraph::params()
-{
-	if (haveMultiParSelection()) {
-		multiparsel_ = ParagraphParameters();
-		// FIXME: It would be nice to initialise the parameters that
-		// are common to all paragraphs.
-		return multiparsel_;
-	}
-
-	return bufferview()->cursor().innerParagraph().params();
-}
-
-
 ParagraphParameters const & GuiParagraph::params() const
 {
+	if (haveMultiParSelection()) {
+		// FIXME: in case of multi-paragraph selection, it would be nice to
+		// initialise the parameters that are common to all paragraphs.
+		params_ = ParagraphParameters();
+		return params_;
+	}
 	return bufferview()->cursor().innerParagraph().params();
 }
 
 
 void GuiParagraph::dispatchParams()
 {
-	if (haveMultiParSelection()) {
-		ostringstream data;
-		multiparsel_.write(data);
-		FuncRequest const fr(getLfun(), data.str());
-		dispatch(fr);
-		return;
-	}
-
-	bufferview()->updateMetrics();
-	bufferview()->buffer().changed();
-	bufferview()->buffer().markDirty();
+	ostringstream data;
+	params_.write(data);
+	FuncRequest const fr(getLfun(), data.str());
+	dispatch(fr);
 }
 
 
-bool GuiParagraph::haveMultiParSelection()
+bool GuiParagraph::haveMultiParSelection() const
 {
 	Cursor const & cur = bufferview()->cursor();
 	return cur.selection() && cur.selBegin().pit() != cur.selEnd().pit();
