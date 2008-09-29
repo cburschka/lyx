@@ -70,7 +70,7 @@ ViewSourceWidget::ViewSourceWidget(GuiViewSource & controller)
 
 void ViewSourceWidget::updateView()
 {
-	BufferView * view = controller_.bufferview();
+	BufferView const * view = controller_.bufferview();
 	if (!view) {
 		document_->setPlainText(QString());
 		setEnabled(false);
@@ -134,7 +134,7 @@ QString GuiViewSource::getContent(bool fullSource)
 	pit_type par_begin;
 	pit_type par_end;
 
-	BufferView * view = bufferview();
+	BufferView const * view = bufferview();
 	if (!view->cursor().selection()) {
 		par_begin = view->cursor().bottom().pit();
 		par_end = par_begin;

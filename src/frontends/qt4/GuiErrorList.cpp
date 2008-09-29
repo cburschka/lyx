@@ -104,7 +104,7 @@ bool GuiErrorList::goTo(int item)
 	if (err.par_id == -1)
 		return false;
 
-	Buffer & buf = buffer();
+	Buffer const & buf = buffer();
 	DocIterator dit = buf.getParFromID(err.par_id);
 
 	if (dit == doc_iterator_end(buf.inset())) {
@@ -121,9 +121,10 @@ bool GuiErrorList::goTo(int item)
 	pos_type const start = min(err.pos_start, end);
 	pos_type const range = end - start;
 	dit.pos() = start;
-	bufferview()->putSelectionAt(dit, range, false);
+	BufferView * bv = const_cast<BufferView *>(bufferview());
 	// FIXME: If we used an LFUN, we would not need this line:
-	bufferview()->processUpdateFlags(Update::Force | Update::FitCursor);
+	bv->putSelectionAt(dit, range, false);
+	bv->processUpdateFlags(Update::Force | Update::FitCursor);
 	return true;
 }
 

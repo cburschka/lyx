@@ -106,22 +106,9 @@ KernelDocType Dialog::docType() const
 }
 
 
-BufferView * Dialog::bufferview()
-{
-	return lyxview_->view();
-}
-
-
 BufferView const * Dialog::bufferview() const
 {
 	return lyxview_->view();
-}
-
-
-Buffer & Dialog::buffer()
-{
-	LASSERT(lyxview_->buffer(), /**/);
-	return *lyxview_->buffer();
 }
 
 

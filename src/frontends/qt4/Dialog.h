@@ -251,10 +251,8 @@ public:
 	GuiView & lyxview() { return *lyxview_; }
 	GuiView const & lyxview() const { return *lyxview_; }
 
-	Buffer & buffer();
 	Buffer const & buffer() const;
 
-	BufferView * bufferview();
 	BufferView const * bufferview() const;
 	//@}
 

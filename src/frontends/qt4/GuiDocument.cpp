@@ -2216,7 +2216,7 @@ char const * GuiDocument::fontfamilies_gui[5] = {
 
 bool GuiDocument::initialiseParams(string const &)
 {
-	BufferView * view = bufferview();
+	BufferView const * view = bufferview();
 	if (!view) {
 		bp_ = BufferParams();
 		paramsToDialog(bp_);
@@ -2305,7 +2305,7 @@ void GuiDocument::dispatchParams()
 			   support::onlyPath(buffer().absFileName()));
 		if (isLyXFilename(master_file.absFilename())) {
 			Buffer * master = checkAndLoadLyXFile(master_file);
-			buffer().setParent(master);
+			const_cast<Buffer &>(buffer()).setParent(master);
 		}
 	}
 
@@ -2328,7 +2328,8 @@ void GuiDocument::dispatchParams()
 			"assign branch"));
 	}
 	// FIXME: If we used an LFUN, we would not need those two lines:
-	bufferview()->processUpdateFlags(Update::Force | Update::FitCursor);
+	BufferView * bv = const_cast<BufferView *>(bufferview());
+	bv->processUpdateFlags(Update::Force | Update::FitCursor);
 }
 
 

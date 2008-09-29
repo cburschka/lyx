@@ -372,11 +372,12 @@ void GuiSpellchecker::check()
 
 	int const size = cur.selEnd().pos() - cur.selBegin().pos();
 	cur.pos() -= size;
-	bufferview()->putSelectionAt(cur, size, false);
+	BufferView * bv = const_cast<BufferView *>(bufferview());
+	bv->putSelectionAt(cur, size, false);
 	// FIXME: if we used a lfun like in find/replace, dispatch would do
 	// that for us
 	// FIXME: this Controller is very badly designed...
-	bufferview()->processUpdateFlags(Update::Force | Update::FitCursor);
+	bv->processUpdateFlags(Update::Force | Update::FitCursor);
 
 	// set suggestions
 	if (res != SpellBase::OK && res != SpellBase::IGNORED_WORD) {
@@ -427,10 +428,11 @@ void GuiSpellchecker::replace(docstring const & replacement)
 {
 	LYXERR(Debug::GUI, "GuiSpellchecker::replace("
 			   << to_utf8(replacement) << ")");
-	cap::replaceSelectionWithString(bufferview()->cursor(), replacement, true);
-	buffer().markDirty();
+	BufferView * bv = const_cast<BufferView *>(bufferview());
+	cap::replaceSelectionWithString(bv->cursor(), replacement, true);
+	bv->buffer().markDirty();
 	// If we used an LFUN, we would not need that
-	bufferview()->processUpdateFlags(Update::Force | Update::FitCursor);
+	bv->processUpdateFlags(Update::Force | Update::FitCursor);
 	// fix up the count
 	--count_;
 	check();

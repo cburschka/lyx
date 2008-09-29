@@ -969,7 +969,7 @@ bool GuiTabular::initialiseParams(string const & data)
 		return true;
 	}
 
-	InsetTabular tmp(buffer());
+	InsetTabular tmp(const_cast<Buffer &>(buffer()));
 	InsetTabular::string2params(data, tmp);
 	tabular_ = Tabular(tmp.tabular);
 	return true;
@@ -978,7 +978,7 @@ bool GuiTabular::initialiseParams(string const & data)
 
 void GuiTabular::clearParams()
 {
-	InsetTabular tmp(buffer());
+	InsetTabular tmp(const_cast<Buffer &>(buffer()));
 	tabular_ = tmp.tabular;
 	active_cell_ = Tabular::npos;
 }
