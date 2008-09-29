@@ -8104,7 +8104,7 @@ msgstr "Definuje prostøedí pro sazbu Braillova slepeckého písma."
 
 #: lib/layouts/braille.module:20
 msgid "Braille (default)"
-msgstr "Braillovo písmo (standardní)"
+msgstr "Braille (standardní)"
 
 #: lib/layouts/braille.module:34 lib/layouts/braille.module:56
 msgid "Braille:"
@@ -8112,39 +8112,39 @@ msgstr "Braillovo písmo:"
 
 #: lib/layouts/braille.module:42
 msgid "Braille (textsize)"
-msgstr "Braillovo písmo (velikost)"
+msgstr "Braille (velikost textu)"
 
 #: lib/layouts/braille.module:64
 msgid "Braille (dots on)"
-msgstr ""
+msgstr "Braille (teèky zap.)"
 
 #: lib/layouts/braille.module:79
 msgid "Braille_dots_on"
-msgstr ""
+msgstr "Braille_teèky_zap"
 
 #: lib/layouts/braille.module:87
 msgid "Braille (dots off)"
-msgstr ""
+msgstr "Braille (teèky vyp.)"
 
 #: lib/layouts/braille.module:102
 msgid "Braille_dots_off"
-msgstr ""
+msgstr "Braille_teèky_vyp"
 
 #: lib/layouts/braille.module:110
 msgid "Braille (mirror on)"
-msgstr ""
+msgstr "Braille (zrcadlení zap.)"
 
 #: lib/layouts/braille.module:125
 msgid "Braille_mirror_on"
-msgstr ""
+msgstr "Braille_zrcadlení_zap"
 
 #: lib/layouts/braille.module:133
 msgid "Braille (mirror off)"
-msgstr ""
+msgstr "Braille (zrcadlení vyp.)"
 
 #: lib/layouts/braille.module:148
 msgid "Braille mirror off"
-msgstr ""
+msgstr "Braille_zrcadlení_vyp"
 
 #: lib/layouts/endnotes.module:2
 msgid "Endnote"
@@ -8199,14 +8199,14 @@ msgid "Linguistics"
 msgstr "Lingvistika"
 
 #: lib/layouts/linguistics.module:7
-#, fuzzy
 msgid ""
 "Defines some special environments useful for linguistics (numbered examples, "
 "glosses, semantic markup, tableau floats). See linguistics.lyx file in "
 "examples."
 msgstr ""
 "Definuje speciální prostøedí u¾iteèné pro lingvistiku (èíslované pøíklady, "
-"glosy, semantické styly znakù (markup), plovoucí tabla)."
+"glosy, semantické styly znakù (markup), plovoucí tabla). Viz soubor linguistics.lyx"
+" v pøíkladech."
 
 #: lib/layouts/linguistics.module:13
 msgid "Numbered Example (multiline)"
@@ -17574,11 +17574,12 @@ msgid "Invalid or empty key sequence"
 msgstr "Chybná nebo prázdná sekvence kláves"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2441
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
 "%2$s"
-msgstr "Zkratka je u¾ definována"
+msgstr "Zkratka `%1$s' je ji¾ pøiøazena k:\n"
+"%2$s"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2454
 #, c-format
