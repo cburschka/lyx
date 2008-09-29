@@ -15,10 +15,9 @@
 #include "qt_helpers.h"
 
 #include <QHash>
-#include <QList>
-#include <QSortFilterProxyModel>
 #include <QStandardItemModel>
-#include <QStringList>
+
+class QSortFilterProxyModel;
 
 namespace lyx {
 
@@ -34,7 +33,7 @@ class TocTypeModel : public QStandardItemModel
 {
 public:
 	///
-	TocTypeModel(QObject * parent = 0);
+	TocTypeModel(QObject * parent);
 	///
 	void reset();
 };
@@ -44,7 +43,7 @@ class TocModel
 {
 public:
 	///
-	TocModel(QObject * parent = 0);
+	TocModel(QObject * parent);
 	///
 	void reset(Toc const & toc);
 	///
@@ -76,16 +75,15 @@ private:
 	///
 	bool is_sorted_;
 	///
-	QList<QModelIndex> toc_indexes_;
-	///
 	Toc const * toc_;
 	///
 	int maxdepth_;
+	///
 	int mindepth_;
 };
 
 
-class TocModels: public QObject
+class TocModels : public QObject
 {
 	Q_OBJECT
 public:

@@ -34,7 +34,14 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-TocTypeModel::TocTypeModel(QObject * parent): QStandardItemModel(parent)
+///////////////////////////////////////////////////////////////////////////////
+//
+// TocModels
+//
+///////////////////////////////////////////////////////////////////////////////
+
+TocTypeModel::TocTypeModel(QObject * parent)
+	: QStandardItemModel(parent)
 {
 }
 
@@ -127,8 +134,6 @@ void TocModel::reset(Toc const & toc)
 	}
 
 	model_->blockSignals(true);
-	int current_row;
-	QModelIndex top_level_item;
 	model_->insertColumns(0, 1);
 	maxdepth_ = 0;
 	mindepth_ = INT_MAX;
@@ -138,9 +143,9 @@ void TocModel::reset(Toc const & toc)
 		TocItem const & item = (*toc_)[index];
 		maxdepth_ = max(maxdepth_, item.depth());
 		mindepth_ = min(mindepth_, item.depth());
-		current_row = model_->rowCount();
+		int current_row = model_->rowCount();
 		model_->insertRows(current_row, 1);
-		top_level_item = model_->index(current_row, 0);
+		QModelIndex top_level_item = model_->index(current_row, 0);
 		model_->setData(top_level_item, toqstr(item.str()), Qt::DisplayRole);
 		model_->setData(top_level_item, index, Qt::UserRole);
 
@@ -200,10 +205,13 @@ int TocModel::modelDepth() const
 
 
 ///////////////////////////////////////////////////////////////////////////////
-// TocModels implementation.
+//
+// TocModels
+//
 ///////////////////////////////////////////////////////////////////////////////
 
-TocModels::TocModels(): bv_(0)
+TocModels::TocModels()
+	: bv_(0)
 {
 	names_ = new TocTypeModel(this);
 	names_sorted_ = new QSortFilterProxyModel(this);
