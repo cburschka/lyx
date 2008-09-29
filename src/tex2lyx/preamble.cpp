@@ -249,7 +249,7 @@ string const scale_as_percentage(string const & scale)
 
 
 void handle_package(string const & name, string const & opts,
-					bool in_lyx_preamble)
+		    bool in_lyx_preamble)
 {
 	vector<string> options = split_options(opts);
 	add_package(name, options);
@@ -507,19 +507,20 @@ void parse_preamble(Parser & p, ostream & os,
 		else if (t.cat() == catComment) {
 			// regex to parse comments
 			static regex const islyxfile("%% LyX .* created this file");
-			static regex const usercommands("User specified LaTeX commands");	
+			static regex const usercommands("User specified LaTeX commands");
 			
 			string const comment = t.asInput();
 			cerr << "Seen comment: " << comment << std::endl;
 			smatch sub;
 			if (regex_search(comment, sub, islyxfile))
 				is_lyx_file = true;
-			else if (is_lyx_file 
+			else if (is_lyx_file
 				 && regex_search(comment, sub, usercommands))
 				in_lyx_preamble = false;
 			else if (!in_lyx_preamble)
 				h_preamble << t.asInput();
-			cerr << "lyx_file: " << is_lyx_file << ", lyx_preamble " << in_lyx_preamble << std::endl;
+			cerr << "lyx_file: " << is_lyx_file << ", lyx_preamble "
+			     << in_lyx_preamble << std::endl;
 		}
 
 		else if (t.cs() == "pagestyle")
@@ -527,14 +528,14 @@ void parse_preamble(Parser & p, ostream & os,
 
 		else if (t.cs() == "makeatletter") {
 			if (!is_lyx_file || !in_lyx_preamble
-				|| p.getCatCode('@') != catLetter)
+			    || p.getCatCode('@') != catLetter)
 				h_preamble << "\\makeatletter";
 			p.setCatCode('@', catLetter);
 		}
 
 		else if (t.cs() == "makeatother") {
 			if (!is_lyx_file || !in_lyx_preamble
-				|| p.getCatCode('@') != catOther)
+			    || p.getCatCode('@') != catOther)
 				h_preamble << "\\makeatother";
 			p.setCatCode('@', catOther);
 		}
@@ -658,8 +659,8 @@ void parse_preamble(Parser & p, ostream & os,
 				vector<string>::const_iterator it  = vecnames.begin();
 				vector<string>::const_iterator end = vecnames.end();
 				for (; it != end; ++it)
-					handle_package(trim(*it), string(),
-					in_lyx_preamble);
+					handle_package(trim(*it), string(), 
+						       in_lyx_preamble);
 			} else {
 				handle_package(name, options, in_lyx_preamble);
 			}
@@ -683,7 +684,7 @@ void parse_preamble(Parser & p, ostream & os,
 				name += p.get_token().asString();
 			if (!in_lyx_preamble)
 				h_preamble << "\\def\\" << name << '{'
-				<< p.verbatim_item() << "}";
+					   << p.verbatim_item() << "}";
 		}
 
 		else if (t.cs() == "newcolumntype") {
