@@ -512,7 +512,7 @@ unsigned long FileName::checksum() const
 
 	boost::crc_32_type crc;
 	crc.process_block(beg, end);
-	unsigned long result = crc.checksum();
+	result = crc.checksum();
 
 	munmap(mm, info.st_size);
 	close(fd);
