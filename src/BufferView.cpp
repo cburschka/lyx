@@ -1742,7 +1742,7 @@ void BufferView::setCursorFromRow(int row)
 bool BufferView::setCursorFromInset(Inset const * inset)
 {
 	// are we already there?
-	if (cursor().nextInset() == inset)
+	if (&cursor().inset() == inset || cursor().nextInset() == inset)
 		return true;
 
 	// Inset is not at cursor position. Find it in the document.
