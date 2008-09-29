@@ -135,7 +135,7 @@ void GuiParagraph::alignmentToRadioButtons(LyXAlignment align)
 }
 
 
-LyXAlignment GuiParagraph::getAlignmentFromDialog()
+LyXAlignment GuiParagraph::getAlignmentFromDialog() const
 {
 	LyXAlignment alignment = LYX_ALIGN_NONE;
 	RadioMap::const_iterator it = radioMap_.begin();

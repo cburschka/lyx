@@ -57,7 +57,7 @@ private:
 	///
 	void alignmentToRadioButtons(LyXAlignment align = LYX_ALIGN_LAYOUT);
 	///
-	LyXAlignment getAlignmentFromDialog();
+	LyXAlignment getAlignmentFromDialog() const;
 	///
 	ParagraphParameters const & params() const;
 	///
