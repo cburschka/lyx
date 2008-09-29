@@ -530,7 +530,7 @@ unsigned long FileName::checksum() const
 		LYXERR0('"' << absFilename() << "\" is a directory!");
 		return 0;
 	}
-	if (0)//!lyxerr.debugging(Debug::FILES))
+	if (!lyxerr.debugging(Debug::FILES))
 		return d->checksum();
 
 	QTime t;
