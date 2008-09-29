@@ -2103,7 +2103,7 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 
 
 void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
-	pit_type par_end, bool full_source)
+	pit_type par_end, bool full_source) const
 {
 	OutputParams runparams(&params().encoding());
 	runparams.nice = true;

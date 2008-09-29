@@ -400,7 +400,7 @@ public:
 	/// get source code (latex/docbook) for some paragraphs, or all paragraphs
 	/// including preamble
 	void getSourceCode(odocstream & os, pit_type par_begin, pit_type par_end,
-		bool full_source);
+		bool full_source) const;
 
 	/// Access to error list.
 	/// This method is used only for GUI visualisation of Buffer related
