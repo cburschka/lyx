@@ -248,11 +248,8 @@ public:
 	 *  We should aim to reduce/remove these from the interface.
 	 */
 	//@{
-	GuiView & lyxview() { return *lyxview_; }
 	GuiView const & lyxview() const { return *lyxview_; }
-
 	Buffer const & buffer() const;
-
 	BufferView const * bufferview() const;
 	//@}
 
