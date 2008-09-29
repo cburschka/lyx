@@ -578,7 +578,7 @@ string const LaTeXFeatures::getPackages() const
 		string const package =
 			(mustProvide("xcolor") ? "xcolor" : "color");
 		if (params_.graphicsDriver == "default"
-			|| params_.graphicsDriver == "none")
+		    || params_.graphicsDriver == "none")
 			packages << "\\usepackage{" << package << "}\n";
 		else
 			packages << "\\usepackage["
