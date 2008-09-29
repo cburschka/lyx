@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0rc3 created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -32390,8 +32390,11 @@ Paquetages LaTeX ! listings
 \end_layout
 
 \begin_layout Standard
-Quand vous cliquez avec le bouton droit sur un insert de listings, une fenêtre
- de dialogue s'ouvre pour vous permettre de modifier le format du listing.
+Quand vous cliquez avec le bouton droit sur un insert de listings, 
+\lang english
+the context menu
+\lang french
+ s'ouvre pour vous permettre de modifier le format du listing.
 \end_layout
 
 \begin_layout Standard
@@ -32613,8 +32616,11 @@ status open
 Note:
 \series default
  Si vous n'obtenez pas des mots-clés en caractères gras quand vous utilisez
- une police de caractères à chasse fixe, c'est que votre police ne contient
- probablement pas de série grasse.
+ une police de caractères à 
+\family typewriter
+chasse fixe
+\family default
+, c'est que votre police ne contient probablement pas de série grasse.
  Dans ce cas choisissez une police différente dans le menu 
 \family sans
 Document\SpecialChar \menuseparator
@@ -32942,7 +32948,7 @@ reference "lst:listing-fichier"
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "EmbeddedObjects.lyx"
-lstparams "breaklines=true,caption={Lignes 10 - 15 de ce fichier LyX},firstline=10,label={lst:listing-fichier},language={[LaTeX]TeX},lastline=15"
+lstparams "breaklines=true,caption={Lignes 10 - 15 de ce fichier LyX},extendedchars=true,firstline=10,label={lst:listing-fichier},language={[LaTeX]TeX},lastline=15"
 
 \end_inset
 

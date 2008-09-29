@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0rc3 created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -32155,8 +32155,7 @@ Um Programm-Code-Listen einzufügen und zu drucken, können Sie
 \family sans
 Einfügen\SpecialChar \menuseparator
 Pro\SpecialChar \-
-gramm\SpecialChar \-
-listing
+grammlisting
 \family default
  verwenden.
  Das LaTeX-Paket 
@@ -32177,25 +32176,13 @@ LaTeX-Pakete ! listings
 \end_layout
 
 \begin_layout Standard
-Ein Rechtsklick auf das 
-\family sans
-Listing
-\family default
--Kästchen öffnet das Dialogfenster 
-\family sans
-Programm\SpecialChar \-
-listing-Einstellungen
-\family default
-, in dem Sie das Ausgabeformat der Programm-Code-Liste festlegen.
+Ein Rechtsklick auf ein Listing öffnet das Kontextmenü, in dem Sie das Ausgabefo
+rmat der Programm-Code-Liste festlegen.
 \end_layout
 
 \begin_layout Standard
 Standardmäßig fängt ein Listing mit einem neuen Absatz an.
- Die 
-\family sans
-Platzierung
-\family default
--Option 
+ Die Platzierungsoption 
 \family sans
 Eingebettetes
 \begin_inset space ~
@@ -32392,11 +32379,7 @@ maschine
 \family default
  erhalten, enthält die von Ihnen verwendete Schrift in diesem Stil wahrscheinlic
 h keine fett gedruckten Buchstaben.
- Wählen Sie in diesem Fall eine andere Schrift für 
-\family typewriter
-Schreibmaschine
-\family default
- im Menü 
+ Wählen Sie in diesem Fall eine andere Schrift im Menü 
 \family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
@@ -32424,13 +32407,9 @@ Im Abschnitt
 \family sans
 Zeilennummerierung
 \family default
- des 
-\family sans
-Programmlisting-Einstellungen
-\family default
--Dialogs können Sie den Stil der Zeilennummerierung festlegen, zum Beispiel,
- ob die Nummerierung links oder rechts gedruckt, jede wievielte Zeile nummeriert
- werden soll und die 
+ des Programmlisting Einstellungsdialogs können Sie den Stil der Zeilennummerier
+ung festlegen, zum Beispiel, ob die Nummerierung links oder rechts gedruckt,
+ jede wievielte Zeile nummeriert werden soll und die 
 \family sans
 Schriftgröße
 \family default
@@ -32460,8 +32439,15 @@ Zeichentabelle
 \end_layout
 
 \begin_layout Standard
-Hier ist ein Beispiel mit der Nummerierung links, der Schrittweite 3, der
- Sprache 
+Hier ist ein Beispiel mit der Nummerierung links, Schrittweite 
+\begin_inset Quotes gld
+\end_inset
+
+3
+\begin_inset Quotes grd
+\end_inset
+
+, Sprache 
 \begin_inset Quotes gld
 \end_inset
 
@@ -32469,27 +32455,23 @@ Python
 \begin_inset Quotes grd
 \end_inset
 
-, den Optionen 
-\family sans
-Erweiterte
-\begin_inset space ~
+, Optionen 
+\begin_inset Quotes gld
 \end_inset
 
-Zeichentabelle
-\family default
+Erweiterte Zeichentabelle
+\begin_inset Quotes grd
+\end_inset
+
  und 
-\family sans
-Leerzeichen
-\begin_inset space ~
+\begin_inset Quotes gld
 \end_inset
 
-als
-\begin_inset space ~
+Leerzeichen als Symbol
+\begin_inset Quotes grd
 \end_inset
 
-Symbol
-\family default
- und Bereich 3
+ und Bereich Zeilen 3
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -32695,7 +32677,7 @@ reference "lst:Datei-Listing"
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "EmbeddedObjects.lyx"
-lstparams "breaklines=true,caption={Zeilen 10 - 15 dieser LyX-Datei},firstline=10,label={lst:Datei-Listing},language={[LaTeX]TeX},lastline=15"
+lstparams "breaklines=true,caption={Zeilen 10 - 15 dieser LyX-Datei},extendedchars=true,firstline=10,label={lst:Datei-Listing},language={[LaTeX]TeX},lastline=15"
 
 \end_inset
 
@@ -32715,9 +32697,7 @@ Dokumentweite Listing-Eigenschaften können in
 \family sans
  Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
-Text\SpecialChar \-
-for\SpecialChar \-
-mat\SpecialChar \menuseparator
+Textformat\SpecialChar \menuseparator
 Listing-Einstellungen
 \family default
  festgelegt werden.

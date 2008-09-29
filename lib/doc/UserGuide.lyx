@@ -36814,6 +36814,34 @@ Default
 \family default
 , the default driver for the LaTeX-packages are used.
  It is recommended to use the default unless your know what you are doing.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+When you want one of the following drivers
+\begin_inset Newline newline
+\end_inset
+
+dvi2ps, dvialw, dvilaser, dvitops, psprint, pubps, ln
+\begin_inset Newline newline
+\end_inset
+
+you first have to activate them in your LaTeX distribution, see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+2 in 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://tug.ctan.org/get/macros/latex/required/graphics/grfguide.pdf"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
  Specifying a master document is necessary when the current document is
  a child or subdocument.
  More about master and child documents is explained in the section 

@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0rc3 created this file. For more info see http://www.lyx.org/
 \lyxformat 340
 \begin_document
 \begin_header
@@ -31642,8 +31642,8 @@ LaTeX-packages ! listings
 \end_layout
 
 \begin_layout Standard
-When right-clicking on a listings inset a dialog pops up where you can set
- the listings format.
+Right-clicking on a listings inset opens the context menu containing where
+ you can set the listings format.
 \end_layout
 
 \begin_layout Standard
@@ -31864,7 +31864,10 @@ status open
 \series bold
 Note:
 \series default
- If you don't get bold keywords when using typewriter fonts, your typewriter
+ If you don't get bold keywords when using typewriter fonts, your 
+\family typewriter
+typewriter
+\family default
  font probably doesn't provide a bold shape.
  In this case select a different one in the menu 
 \family sans
@@ -31922,11 +31925,7 @@ You can furthermore specify a range of lines, only these will then appear
  in the output.
  The option 
 \family sans
-Extended
-\begin_inset space ~
-\end_inset
-
-chars
+Extended character table
 \family default
  should be used when you use national characters like the German umlauts
  in the listing.
@@ -31953,11 +31952,7 @@ Python
 \begin_inset Quotes eld
 \end_inset
 
-Extended
-\begin_inset space ~
-\end_inset
-
-chars
+Extended character table
 \begin_inset Quotes erd
 \end_inset
 
@@ -31973,7 +31968,7 @@ as
 \begin_inset space ~
 \end_inset
 
-Symbol
+symbol
 \begin_inset Quotes erd
 \end_inset
 
@@ -32158,7 +32153,7 @@ reference "lst:file-listing"
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "EmbeddedObjects.lyx"
-lstparams "breaklines=true,caption={Lines 10 - 15 of this LyX file},firstline=10,label={lst:file-listing},language={[LaTeX]TeX},lastline=15"
+lstparams "breaklines=true,caption={Lines 10 - 15 of this LyX file},extendedchars=true,firstline=10,label={lst:file-listing},language={[LaTeX]TeX},lastline=15"
 
 \end_inset
 
