@@ -197,7 +197,7 @@ void Text::setInsetFont(BufferView const & bv, pit_type pit,
 // return past-the-last paragraph influenced by a layout change on pit
 pit_type Text::undoSpan(pit_type pit)
 {
-	pit_type end = paragraphs().size();
+	pit_type const end = paragraphs().size();
 	pit_type nextpit = pit + 1;
 	if (nextpit == end)
 		return nextpit;

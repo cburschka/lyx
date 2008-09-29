@@ -344,7 +344,7 @@ void GuiParagraph::dispatchParams()
 
 bool GuiParagraph::haveMultiParSelection()
 {
-	Cursor cur = bufferview()->cursor();
+	Cursor const & cur = bufferview()->cursor();
 	return cur.selection() && cur.selBegin().pit() != cur.selEnd().pit();
 }
 
