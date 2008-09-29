@@ -94,7 +94,7 @@ private:
 	///
 	QString alignDefaultLabel_;
 	///
-	mutable ParagraphParameters params_;
+	ParagraphParameters params_;
 };
 
 } // namespace frontend

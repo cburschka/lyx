@@ -196,13 +196,7 @@ void GuiParagraph::on_restorePB_clicked()
 
 void GuiParagraph::applyView()
 {
-	if (haveMultiParSelection()) {
-		// FIXME: in case of multi-paragraph selection, it would be nice to
-		// initialise the parameters that are common to all paragraphs.
-		params_ = ParagraphParameters();
-	} else {
-		params_ = bufferview()->cursor().innerParagraph().params();
-	}
+	params_ = params();
 
 	params_.align(getAlignmentFromDialog());
 
@@ -318,8 +312,8 @@ ParagraphParameters const & GuiParagraph::params() const
 	if (haveMultiParSelection()) {
 		// FIXME: in case of multi-paragraph selection, it would be nice to
 		// initialise the parameters that are common to all paragraphs.
-		params_ = ParagraphParameters();
-		return params_;
+		static ParagraphParameters empty;
+		return empty;
 	}
 	return bufferview()->cursor().innerParagraph().params();
 }
