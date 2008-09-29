@@ -84,8 +84,11 @@ static char const * const string_footnotekinds[] = {
 
 
 static char const * const tex_graphics[] = {
-	"default", "dvips", "dvitops", "emtex",
-	"ln", "oztex", "textures", "none", ""
+	"default", "dvialw", "dvilaser", "dvipdf", "dvipdfm", "dvipdfmx",
+	"dvips", "dvipsone", "dvitops", "dviwin", "dviwindo", "dvi2ps", "emtex",
+	"ln", "oztex", "pctexhp", "pctexps", "pctexwin", "pctex32", "pdftex",
+	"psprint", "pubps", "tcidvi", "textures", "truetex", "vtex", "xdvi",
+	"xetex", "none", ""
 };
 
 

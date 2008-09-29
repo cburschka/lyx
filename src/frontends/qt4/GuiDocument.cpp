@@ -71,15 +71,21 @@ namespace {
 
 char const * const tex_graphics[] =
 {
-	"default", "dvips", "dvitops", "emtex",
-	"ln", "oztex", "textures", "none", ""
+	"default", "dvialw", "dvilaser", "dvipdf", "dvipdfm", "dvipdfmx",
+	"dvips", "dvipsone", "dvitops", "dviwin", "dviwindo", "dvi2ps", "emtex",
+	"ln", "oztex", "pctexhp", "pctexps", "pctexwin", "pctex32", "pdftex",
+	"psprint", "pubps", "tcidvi", "textures", "truetex", "vtex", "xdvi",
+	"xetex", "none", ""
 };
 
 
 char const * const tex_graphics_gui[] =
 {
-	N_("Default"), "Dvips", "DVItoPS", "EmTeX",
-	"LN", "OzTeX", "Textures", N_("None"), ""
+	N_("Default"), "dvialw", "DviLaser", "dvipdf", "DVIPDFM", "DVIPDFMx",
+	"Dvips", "DVIPSONE", "DVItoPS", "DVIWIN", "DVIWindo", "dvi2ps", "EmTeX",
+	"LN", "OzTeX", "pctexhp", "pctexps", "pctexwin", "PCTeX32", "pdfTeX",
+	"psprint", "pubps", "tcidvi", "Textures", "TrueTeX", "VTeX", "xdvi",
+	"XeTeX", N_("None"), ""
 };
 
 
