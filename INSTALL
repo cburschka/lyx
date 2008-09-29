@@ -130,10 +130,11 @@ flags:
        --with-extra-lib=DIRECTORY/lib --with-extra-inc=DIRECTORY/include
     If DIRECTORY is not specified, the current prefix is used.
 
-  o --with-version-suffix[=VERSION] will install LyX as lyxVERSION,
-    e.g. lyx1.6.1. The LyX data directory will be something like
-    <whatever>/lyx1.6.1/. Additionally your user configuration files
-    will be found in e.g. $HOME/.lyx1.6.1
+  o --with-version-suffix[=SUFFIX] will install LyX as lyxSUFFIX. The
+    LyX data directory will be something like <whatever>/lyxSUFFIX/.
+    Additionally your user configuration files will be found in e.g.
+    $HOME/.lyxSUFFIX. The default for SUFFIX is "-<currentversion>",
+    e.g. lyx-1.6.1.
 
     You can use this feature to install more than one version of LyX
     on the same system. You can optionally specify a "version" of your
