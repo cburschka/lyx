@@ -129,8 +129,10 @@ struct FileName::Private
 
 unsigned long FileName::Private::checksum()
 {
-#if QT_VERSION >= 0x040400
+#if QT_VERSION >= 0x999999
 	// First version of checksum uses Qt4.4 mmap support.
+	// FIXME: This code is not ready with Qt4.4.2,
+	// see http://bugzilla.lyx.org/show_bug.cgi?id=5293
 	// FIXME: should we check if the MapExtension extension is supported?
 	// see QAbstractFileEngine::supportsExtension() and 
 	// QAbstractFileEngine::MapExtension)
@@ -142,6 +144,8 @@ unsigned long FileName::Private::checksum()
 	uchar * uend = ubeg + size;
 	boost::crc_32_type ucrc;
 	ucrc.process_block(ubeg, uend);
+	qf.unmap(ubeg);
+	qf.close();
 	return ucrc.checksum();
 #endif
 
@@ -526,7 +530,7 @@ unsigned long FileName::checksum() const
 		LYXERR0('"' << absFilename() << "\" is a directory!");
 		return 0;
 	}
-	if (!lyxerr.debugging(Debug::FILES))
+	if (0)//!lyxerr.debugging(Debug::FILES))
 		return d->checksum();
 
 	QTime t;
