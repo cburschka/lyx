@@ -890,7 +890,7 @@ GuiWorkArea const * GuiView::currentWorkArea() const
 
 void GuiView::setCurrentWorkArea(GuiWorkArea * wa)
 {
-	LASSERT(wa, /**/);
+	LASSERT(wa, return);
 	d.current_work_area_ = wa;
 	for (int i = 0; i != d.splitter_->count(); ++i) {
 		if (d.tabWorkArea(i)->setCurrentWorkArea(wa))
@@ -901,7 +901,7 @@ void GuiView::setCurrentWorkArea(GuiWorkArea * wa)
 
 void GuiView::removeWorkArea(GuiWorkArea * wa)
 {
-	LASSERT(wa, /**/);
+	LASSERT(wa, return);
 	if (wa == d.current_work_area_) {
 		disconnectBuffer();
 		disconnectBufferView();
@@ -989,7 +989,7 @@ Buffer const * GuiView::buffer() const
 
 void GuiView::setBuffer(Buffer * newBuffer)
 {
-	LASSERT(newBuffer, /**/);
+	LASSERT(newBuffer, return);
 	setBusy(true);
 
 	GuiWorkArea * wa = workArea(*newBuffer);
@@ -1192,7 +1192,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			FuncStatus fs;
 			if (!inset->getStatus(view()->cursor(), fr, fs)) {
 				// Every inset is supposed to handle this
-				LASSERT(false, /**/);
+				LASSERT(false, break);
 			}
 			flag |= fs;
 		} else {
@@ -1970,7 +1970,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			if (inset) {
 				// put cursor in front of inset.
 				if (!view()->setCursorFromInset(inset))
-					LASSERT(false, /**/);
+					LASSERT(false, break);
 				
 				// useful if we are called from a dialog.
 				view()->cursor().beginUndoGroup();
@@ -2398,7 +2398,7 @@ Dialog * createGuiWrap(GuiView & lv);
 
 Dialog * GuiView::build(string const & name)
 {
-	LASSERT(isValidName(name), /**/);
+	LASSERT(isValidName(name), return 0);
 
 	if (name == "aboutlyx")
 		return createGuiAbout(*this);
