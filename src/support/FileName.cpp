@@ -121,84 +121,9 @@ struct FileName::Private
 #endif
 	}
 
-	unsigned long checksum();
-
 	///
 	QFileInfo fi;
 };
-
-unsigned long FileName::Private::checksum()
-{
-#if QT_VERSION >= 0x999999
-	// First version of checksum uses Qt4.4 mmap support.
-	// FIXME: This code is not ready with Qt4.4.2,
-	// see http://bugzilla.lyx.org/show_bug.cgi?id=5293
-	// FIXME: should we check if the MapExtension extension is supported?
-	// see QAbstractFileEngine::supportsExtension() and 
-	// QAbstractFileEngine::MapExtension)
-	QFile qf(fi.filePath());
-	if (!qf.open(QIODevice::ReadOnly))
-		return 0;
-	qint64 size = fi.size();
-	uchar * ubeg = qf.map(0, size);
-	uchar * uend = ubeg + size;
-	boost::crc_32_type ucrc;
-	ucrc.process_block(ubeg, uend);
-	qf.unmap(ubeg);
-	qf.close();
-	return ucrc.checksum();
-#endif
-
-	//FIXME: This doesn't work on Windows for non ascii file names. Provided that
-	// Windows package uses Qt4.4, this isn't a problem.
-	QByteArray const encoded = QFile::encodeName(fi.absoluteFilePath());
-	char const * file = encoded.constData();
-
-#ifdef SUM_WITH_MMAP
-	//LYXERR(Debug::FILES, "using mmap (lightning fast)");
-
-	int fd = open(file, O_RDONLY);
-	if (!fd)
-		return 0;
-
-	struct stat info;
-	fstat(fd, &info);
-
-	void * mm = mmap(0, info.st_size, PROT_READ,
-			 MAP_PRIVATE, fd, 0);
-	// Some platforms have the wrong type for MAP_FAILED (compaq cxx).
-	if (mm == reinterpret_cast<void*>(MAP_FAILED)) {
-		close(fd);
-		return 0;
-	}
-
-	char * beg = static_cast<char*>(mm);
-	char * end = beg + info.st_size;
-
-	boost::crc_32_type crc;
-	crc.process_block(beg, end);
-	unsigned long result = crc.checksum();
-
-	munmap(mm, info.st_size);
-	close(fd);
-
-	return result;
-
-#else // no SUM_WITH_MMAP
-
-	//LYXERR(Debug::FILES, "lyx::sum() using istreambuf_iterator (fast)");
-	ifstream ifs(file, ios_base::in | ios_base::binary);
-	if (!ifs)
-		return 0;
-
-	istreambuf_iterator<char> beg(ifs);
-	istreambuf_iterator<char> end;
-	boost::crc_32_type crc;
-	crc = for_each(beg, end, crc);
-	return crc.checksum();
-
-#endif // SUM_WITH_MMAP
-}
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -330,6 +255,8 @@ bool FileName::changePermission(unsigned long int mode) const
 
 string FileName::toFilesystemEncoding() const
 {
+	// FIXME: This doesn't work on Windows for non ascii file names with Qt < 4.4.
+	// Provided that Windows package uses Qt4.4, this isn't a problem.
 	QByteArray const encoded = QFile::encodeName(d->fi.absoluteFilePath());
 	return string(encoded.begin(), encoded.end());
 }
@@ -521,24 +448,94 @@ bool FileName::chdir() const
 
 unsigned long FileName::checksum() const
 {
+	unsigned long result = 0;
+
 	if (!exists()) {
 		//LYXERR0("File \"" << absFilename() << "\" does not exist!");
-		return 0;
+		return result;
 	}
 	// a directory may be passed here so we need to test it. (bug 3622)
 	if (isDirectory()) {
 		LYXERR0('"' << absFilename() << "\" is a directory!");
-		return 0;
+		return result;
 	}
-	if (!lyxerr.debugging(Debug::FILES))
-		return d->checksum();
 
-	QTime t;
-	t.start();
-	unsigned long r = d->checksum();
-	lyxerr << "Checksumming \"" << absFilename() << "\" "
-		<< r << " lasted " << t.elapsed() << " ms." << endl;
-	return r;
+	// This is used in the debug output at the end of the method.
+	static QTime t;
+	if (lyxerr.debugging(Debug::FILES))
+		t.restart();
+
+#if QT_VERSION >= 0x999999
+	// First version of checksum uses Qt4.4 mmap support.
+	// FIXME: This code is not ready with Qt4.4.2,
+	// see http://bugzilla.lyx.org/show_bug.cgi?id=5293
+	// FIXME: should we check if the MapExtension extension is supported?
+	// see QAbstractFileEngine::supportsExtension() and 
+	// QAbstractFileEngine::MapExtension)
+	QFile qf(fi.filePath());
+	if (!qf.open(QIODevice::ReadOnly))
+		return result;
+	qint64 size = fi.size();
+	uchar * ubeg = qf.map(0, size);
+	uchar * uend = ubeg + size;
+	boost::crc_32_type ucrc;
+	ucrc.process_block(ubeg, uend);
+	qf.unmap(ubeg);
+	qf.close();
+	result = ucrc.checksum();
+
+#else // QT_VERSION
+
+	string const encoded = toFilesystemEncoding();
+	char const * file = encoded.c_str();
+
+ #ifdef SUM_WITH_MMAP
+	//LYXERR(Debug::FILES, "using mmap (lightning fast)");
+
+	int fd = open(file, O_RDONLY);
+	if (!fd)
+		return result;
+
+	struct stat info;
+	fstat(fd, &info);
+
+	void * mm = mmap(0, info.st_size, PROT_READ,
+			 MAP_PRIVATE, fd, 0);
+	// Some platforms have the wrong type for MAP_FAILED (compaq cxx).
+	if (mm == reinterpret_cast<void*>(MAP_FAILED)) {
+		close(fd);
+		return result;
+	}
+
+	char * beg = static_cast<char*>(mm);
+	char * end = beg + info.st_size;
+
+	boost::crc_32_type crc;
+	crc.process_block(beg, end);
+	unsigned long result = crc.checksum();
+
+	munmap(mm, info.st_size);
+	close(fd);
+
+ #else // no SUM_WITH_MMAP
+
+	//LYXERR(Debug::FILES, "lyx::sum() using istreambuf_iterator (fast)");
+	ifstream ifs(file, ios_base::in | ios_base::binary);
+	if (!ifs)
+		return result;
+
+	istreambuf_iterator<char> beg(ifs);
+	istreambuf_iterator<char> end;
+	boost::crc_32_type crc;
+	crc = for_each(beg, end, crc);
+	result = crc.checksum();
+
+ #endif // SUM_WITH_MMAP
+#endif // QT_VERSION
+
+	LYXERR(Debug::FILES, "Checksumming \"" << absFilename() << "\" "
+		<< result << " lasted " << t.elapsed() << " ms.");
+	return result;
 }
 
 
