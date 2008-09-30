@@ -29,6 +29,8 @@ class TocItem;
 
 namespace frontend {
 
+/// A QStandardItemModel that gives access to the reset method.
+/// This is needed in order to fix http://bugzilla.lyx.org/show_bug.cgi?id=3740
 class TocTypeModel : public QStandardItemModel
 {
 public:
@@ -38,7 +40,9 @@ public:
 	void reset();
 };
 
-
+/// A class that adapt the TocBackend of a Buffer into standard Qt models for
+/// GUI visualisation.
+/// There is one TocModel per list in the TocBackend.
 class TocModel
 {
 public:
@@ -83,6 +87,7 @@ private:
 };
 
 
+/// A container for the different TocModels.
 class TocModels : public QObject
 {
 	Q_OBJECT

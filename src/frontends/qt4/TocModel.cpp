@@ -36,7 +36,7 @@ namespace frontend {
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// TocModels
+// TocTypeModel
 //
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -51,6 +51,12 @@ void TocTypeModel::reset()
 	QStandardItemModel::reset();
 }
 
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// TocModel
+//
+///////////////////////////////////////////////////////////////////////////////
 
 TocModel::TocModel(QObject * parent)
 	: model_(new TocTypeModel(parent)),
@@ -94,6 +100,7 @@ void TocModel::sort(bool sort_it)
 	if (is_sorted_)
 		sorted_model_->sort(0);
 }
+
 
 TocItem const & TocModel::tocItem(QModelIndex const & index) const
 {
@@ -199,7 +206,7 @@ void TocModel::populate(unsigned int & index, QModelIndex const & parent)
 int TocModel::modelDepth() const
 {
 	int const d = maxdepth_ - mindepth_;
-	LASSERT(d >= 0 && d <= 100, /* */);
+	LASSERT(d >= 0 && d <= 100, return 0);
 	return d;
 }
 
