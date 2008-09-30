@@ -417,10 +417,13 @@ void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer) const
 		if (it == change_list.end()) {
 			change_list.push_back(TocItem(dit, 0, author));
 			change_list.push_back(TocItem(dit, 1, str));
-		} else {
-			it++;
-			change_list.insert(it, TocItem(dit, 1, str));
+			continue;
 		}
+		for (++it; it != change_list.end(); ++it) {
+			if (it->depth() == 0 && it->str() != author)
+				break;
+		}
+		change_list.insert(it, TocItem(dit, 1, str));
 	}
 }
 
