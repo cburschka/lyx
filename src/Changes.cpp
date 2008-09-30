@@ -15,11 +15,14 @@
 
 #include "Changes.h"
 #include "Author.h"
+#include "Buffer.h"
 #include "BufferParams.h"
 #include "LaTeXFeatures.h"
+#include "Paragraph.h"
+#include "TocBackend.h"
 
 #include "support/debug.h"
-
+#include "support/gettext.h"
 #include "support/lassert.h"
 
 #include <ostream>
@@ -379,6 +382,46 @@ void Changes::checkAuthors(AuthorList const & authorList)
 	for ( ; it != endit ; ++it) 
 		if (it->change.type != Change::UNCHANGED)
 			authorList.get(it->change.author).setUsed(true);
+}
+
+
+void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer) const
+{
+	if (table_.empty())
+		return;
+
+	Toc & change_list = buffer.tocBackend().toc("change");
+	AuthorList const & author_list = buffer.params().authors();
+	DocIterator dit = cdit;
+
+	ChangeTable::const_iterator it = table_.begin();
+	ChangeTable::const_iterator const itend = table_.end();
+	for (; it != itend; ++it) {
+		docstring str;
+		switch (it->change.type) {
+		case Change::UNCHANGED:
+			continue;
+		case Change::DELETED:
+			// 0x2702 is a scissors symbol in the Dingbats unicode group.
+			str.push_back(0x2702);
+			break;
+		case Change::INSERTED:
+			// 0x2702 is the hand writting symbol in the Dingbats unicode group.
+			str.push_back(0x270d);
+			break;
+		}
+		dit.pos() = it->range.start;
+		str += " " + dit.paragraph().asString(it->range.start, it->range.end);
+		docstring const & author = author_list.get(it->change.author).name();
+		Toc::const_iterator it = change_list.item(0, author);
+		if (it == change_list.end()) {
+			change_list.push_back(TocItem(dit, 0, author));
+			change_list.push_back(TocItem(dit, 1, str));
+		} else {
+			it++;
+			change_list.insert(it, TocItem(dit, 1, str));
+		}
+	}
 }
 
 } // namespace lyx

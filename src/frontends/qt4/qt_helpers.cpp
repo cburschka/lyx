@@ -498,6 +498,8 @@ QString guiName(string const & type, BufferParams const & bp)
 		return qt_("Labels and References");
 	if (type == "branch")
 		return qt_("List of Branches");
+	if (type == "change")
+		return qt_("List of Changes");
 
 	FloatList const & floats = bp.documentClass().floats();
 	if (floats.typeExist(type))

@@ -498,6 +498,9 @@ void InsetText::addToToc(DocIterator const & cdit)
 				tocstring = par.asString(AS_STR_LABEL);
 			toc.push_back(TocItem(dit, toclevel - min_toclevel, tocstring));
 		}
+		
+		// And now the list of changes.
+		par.addChangesToToc(dit, buffer());
 	}
 }
 

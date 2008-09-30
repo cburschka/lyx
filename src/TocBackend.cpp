@@ -203,6 +203,20 @@ TocIterator Toc::item(DocIterator const & dit) const
 }
 
 
+TocIterator Toc::item(int depth, docstring const & str) const
+{
+	if (empty())
+		return end();
+	TocIterator it = begin();
+	TocIterator itend = end();
+	for (; it != itend; --it) {
+		if (it->depth() == depth && it->str() == str)
+			break;
+	}
+	return it;
+}
+
+
 void TocBackend::writePlaintextTocList(string const & type, odocstream & os) const
 {
 	TocList::const_iterator cit = tocs_.find(type);

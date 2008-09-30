@@ -33,6 +33,7 @@ class Change;
 class Counters;
 class Cursor;
 class CursorSlice;
+class DocIterator;
 class DocumentClass;
 class Inset;
 class InsetBibitem;
@@ -47,7 +48,7 @@ class OutputParams;
 class PainterInfo;
 class ParagraphParameters;
 class TexRow;
-
+class Toc;
 
 class FontSpan {
 public:
@@ -99,6 +100,8 @@ public:
 	///
 	int id() const;
 
+	///
+	void addChangesToToc(DocIterator const & cdit, Buffer const & buf) const;
 	///
 	Language const * getParLanguage(BufferParams const &) const;
 	///

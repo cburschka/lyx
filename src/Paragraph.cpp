@@ -279,6 +279,13 @@ Paragraph::Private::Private(Private const & p, Paragraph * owner,
 }
 
 
+void Paragraph::addChangesToToc(DocIterator const & cdit,
+	Buffer const & buf) const
+{
+	d->changes_.addToToc(cdit, buf);
+}
+
+
 bool Paragraph::isChanged(pos_type start, pos_type end) const
 {
 	LASSERT(start >= 0 && start <= size(), /**/);

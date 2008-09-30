@@ -242,7 +242,7 @@ static bool canNavigate(QString const & type)
 	// and efficient way with the label type because Toc::item() do a linear
 	// seatch. Even if fixed, it might even not be desirable to do so if we 
 	// want to support drag&drop of labels and references.
-	return type != "label";
+	return type != "label" && type != "change";
 }
 
 

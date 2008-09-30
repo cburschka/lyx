@@ -27,6 +27,8 @@
 namespace lyx {
 
 class AuthorList;
+class Buffer;
+class DocIterator;
 
 class Change {
 public:
@@ -92,8 +94,6 @@ public:
 	/// return true if there is a change in the given range (excluding end)
 	bool isChanged(pos_type start, pos_type end) const;
 
-	///
-
 	/// output latex to mark a transition between two change types
 	/// returns length of text outputted
 	static int latexMarkChange(odocstream & os, BufferParams const & bparams,
@@ -105,6 +105,9 @@ public:
 
 	///
 	void checkAuthors(AuthorList const & authorList);
+
+	///
+	void addToToc(DocIterator const & cdit, Buffer const & buffer) const;
 
 private:
 	class Range {
