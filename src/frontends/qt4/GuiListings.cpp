@@ -20,6 +20,7 @@
 #include "insets/InsetListings.h"
 #include "insets/InsetListingsParams.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -198,6 +199,8 @@ GuiListings::GuiListings(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(spaceInStringCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+	connect(tabsizeSB, SIGNAL(valueChanged(int)),
+		this, SLOT(change_adaptor()));
 	connect(extendedcharsCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 
@@ -296,6 +299,7 @@ string GuiListings::construct_params()
 		basicstyle += "\\" + fontstyle;
 	bool breakline = breaklinesCB->isChecked();
 	bool space = spaceCB->isChecked();
+	int tabsize = tabsizeSB->value();
 	bool spaceInString = spaceInStringCB->isChecked();
 	bool extendedchars = extendedcharsCB->isChecked();
 	string extra = fromqstr(listingsED->toPlainText());
@@ -331,6 +335,8 @@ string GuiListings::construct_params()
 		par.addParam("showspaces", "true");
 	if (!spaceInString)
 		par.addParam("showstringspaces", "false");
+	if (tabsize != 8)
+		par.addParam("tabsize", convert<string>(tabsize));
 	if (extendedchars)
 		par.addParam("extendedchars", "true");
 	par.addParams(extra);
@@ -456,6 +462,7 @@ void GuiListings::updateContents()
 	breaklinesCB->setChecked(false);
 	spaceCB->setChecked(false);
 	spaceInStringCB->setChecked(true);
+	tabsizeSB->setValue(8);
 	extendedcharsCB->setChecked(false);
 
 	// set values from param string
@@ -582,6 +589,9 @@ void GuiListings::updateContents()
 			*it = "";
 		} else if (prefixIs(*it, "showstringspaces=")) {
 			spaceInStringCB->setChecked(contains(*it, "true"));
+			*it = "";
+		} else if (prefixIs(*it, "tabsize=")) {
+			tabsizeSB->setValue(convert<int>(plainParam(it->substr(8))));
 			*it = "";
 		} else if (prefixIs(*it, "extendedchars=")) {
 			extendedcharsCB->setChecked(contains(*it, "true"));

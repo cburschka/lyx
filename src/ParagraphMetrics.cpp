@@ -220,6 +220,9 @@ int ParagraphMetrics::singleWidth(pos_type pos, Font const & font) const
 
 	char_type c = par_->getChar(pos);
 
+	if (c == '\t')
+		return 4 * theFontMetrics(font).width(' ');
+	
 	if (!isPrintable(c))
 		return theFontMetrics(font).width(c);
 

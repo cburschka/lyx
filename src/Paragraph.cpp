@@ -2396,7 +2396,7 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options) const
 
 	for (pos_type i = beg; i < end; ++i) {
 		char_type const c = d->text_[i];
-		if (isPrintable(c))
+		if (isPrintable(c) || c == '\t')
 			os.put(c);
 		else if (c == META_INSET && options & AS_STR_INSETS)
 			getInset(i)->textString(os);

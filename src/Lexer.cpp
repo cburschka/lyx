@@ -499,7 +499,7 @@ bool Lexer::Pimpl::nextToken()
 		char cc = 0;
 		is.get(cc);
 		c = cc;
-		if (c >= ' ' && is) {
+		if ((c >= ' ' || c == '\t') && is) {
 			buff.clear();
 
 			if (c == '\\') { // first char == '\\'
@@ -513,7 +513,7 @@ bool Lexer::Pimpl::nextToken()
 					buff.push_back(c);
 					is.get(cc);
 					c = cc;
-				} while (c >= ' ' && c != '\\' && is);
+				} while ((c >= ' ' || c == '\t') && c != '\\' && is);
 			}
 
 			if (c == '\\')

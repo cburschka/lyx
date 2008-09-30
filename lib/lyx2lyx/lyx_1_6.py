@@ -2906,6 +2906,37 @@ def add_plain_layout(document):
             document.body[i] = "\\begin_layout Plain Layout"
         i += 1
 
+
+def revert_tabulators(document):
+    "Revert tabulators to 4 spaces"
+    i = 0
+    while True:
+        i = find_token(document.body, "\t", i)
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace("\t", "    ")
+        i += 1
+
+
+def revert_tabsize(document):
+    "Revert the tabsize parameter of listings"
+    i = 0
+    j = 0
+    while True:
+        # either it is the only parameter
+        i = find_token(document.body, 'lstparams "tabsize=4"', i)
+        if i != -1:
+            del document.body[i]
+        # or the last one
+        j = find_token(document.body, "lstparams", j)
+        if j == -1:
+            return
+        pos = document.body[j].find(",tabsize=")
+        document.body[j] = document.body[j][:pos] + '"'
+        i += 1
+        j += 1
+
+
 ##
 # Conversion hub
 #
@@ -2974,10 +3005,12 @@ convert = [[277, [fix_wrong_tables]],
            [337, [convert_display_enum]],
            [338, []],
            [339, []],
-           [340, [add_plain_layout]]
+           [340, [add_plain_layout]],
+           [341, []]
           ]
 
-revert =  [[339, []],
+revert =  [[340, [revert_tabulators, revert_tabsize]],
+           [339, []],
            [338, [revert_removed_modules]],
            [337, [revert_polytonicgreek]],
            [336, [revert_display_enum]],

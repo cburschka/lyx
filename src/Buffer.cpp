@@ -115,7 +115,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 340; //jamatos: add plain layout
+int const LYX_FORMAT = 341; //uwestoehr: TAB support for listings
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
@@ -619,11 +619,8 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 				++pos;
 				space_inserted = true;
 			} else {
-				const pos_type n = 8 - pos % 8;
-				for (pos_type i = 0; i < n; ++i) {
-					par.insertChar(pos, ' ', font, params().trackChanges);
-					++pos;
-				}
+				par.insertChar(pos, *cit, font, params().trackChanges);
+				++pos;
 				space_inserted = true;
 			}
 		} else if (!isPrintable(*cit)) {

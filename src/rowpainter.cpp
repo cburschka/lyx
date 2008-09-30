@@ -246,6 +246,7 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	// selected text?
 	bool const selection = pos >= row_.sel_beg && pos < row_.sel_end;
 
+	char_type prev_char = ' ';
 	// collect as much similar chars as we can
 	for (++vpos ; vpos < end ; ++vpos) {
 		pos = bidi_.vis2log(vpos);
@@ -263,6 +264,11 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 			break;
 
 		char_type c = par_.getChar(pos);
+
+		if (c == '\t' || prev_char == '\t') {
+			prev_char = c;
+			break;
+		}
 
 		if (!isPrintableNonspace(c))
 			break;
@@ -307,6 +313,9 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	}
 
 	docstring s(&str[0], str.size());
+
+	if (s[0] == '\t')
+		s.replace(0,1,from_ascii("    "));
 
 	if (!selection && !change_running.changed()) {
 		x_ += pi_.pain.text(int(x_), yo_, s, font);

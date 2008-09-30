@@ -33,6 +33,7 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/lassert.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
@@ -289,6 +290,87 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_DIALOG_UPDATE:
 		cur.bv().updateDialog("listings", params2string(params()));
 		break;
+	case LFUN_CELL_FORWARD:
+		if (cur.selection()) {
+			// If there is a selection, a tab is inserted at the
+			// beginning of each paragraph.
+			cur.recordUndoSelection();
+			pit_type const pit_end = cur.selEnd().pit();
+			for (pit_type pit = cur.selBegin().pit(); pit <= pit_end; pit++) {
+				LASSERT(pit < paragraphs().size(), /**/);
+				paragraphs()[pit].insertChar(0, '\t', 
+					buffer().params().trackChanges);
+				// Update the selection pos to make sure the selection does not
+				// change as the inserted tab will increase the logical pos.
+				if (cur.anchor_.pit() == pit)
+					cur.anchor_.forwardPos();
+				if (cur.pit() == pit)
+					cur.forwardPos();
+			}
+			cur.finishUndo();
+		} else {
+			// Maybe we shouldn't allow tabs within a line, because they
+			// are not (yet) aligned as one might do expect.
+			cur.recordUndo();
+			cur.insert(from_ascii("\t"));
+			cur.finishUndo();
+		}
+		break;
+	case LFUN_CELL_BACKWARD:
+		if (cur.selection()) {
+			// If there is a selection, a tab (if present) is removed from
+			// the beginning of each paragraph.
+			cur.recordUndoSelection();
+			pit_type const pit_end = cur.selEnd().pit();
+			for (pit_type pit = cur.selBegin().pit(); pit <= pit_end; pit++) {
+				LASSERT( pit < paragraphs().size(), /**/ );
+				Paragraph & par = paragraphs()[pit];
+				if (par.getChar(0) == '\t') {
+					if (cur.pit() == pit)
+						cur.posBackward();
+					if (cur.anchor_.pit() == pit && cur.anchor_.pos() > 0 )
+						cur.anchor_.backwardPos();
+
+					par.eraseChar(0, buffer().params().trackChanges);
+				} else 
+					// If no tab was present, try to remove up to four spaces.
+					for (int n_spaces = 0;
+						par.getChar(0) == ' ' && n_spaces < 4; ++n_spaces) {
+							if (cur.pit() == pit)
+								cur.posBackward();
+							if (cur.anchor_.pit() == pit && cur.anchor_.pos() > 0 )
+								cur.anchor_.backwardPos();
+
+							par.eraseChar(0, buffer().params().trackChanges);
+					}
+			}
+			cur.finishUndo();
+		} else {
+			// If there is no selection, try to remove a tab or some spaces 
+			// before the position of the cursor.
+			LASSERT(cur.pit() >= 0 && cur.pit() < paragraphs().size(), /**/);
+
+			Paragraph & par = paragraphs()[cur.pit()];
+			pos_type const pos = cur.pos();
+
+			if (pos == 0)
+				break;
+
+			char_type const c = par.getChar(pos - 1);
+			cur.recordUndo();
+			if (c == '\t') {
+				cur.posBackward();
+				par.eraseChar(cur.pos(), buffer().params().trackChanges);
+			} else
+				for (int n_spaces = 0; cur.pos() > 0
+					&& par.getChar(cur.pos() - 1) == ' ' && n_spaces < 4;
+					++n_spaces) {
+						cur.posBackward();
+						par.eraseChar(cur.pos(), buffer().params().trackChanges);
+				}
+				cur.finishUndo();
+		}
+		break;
 	default:
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
@@ -307,6 +389,10 @@ bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case LFUN_CAPTION_INSERT:
 			status.setEnabled(!params().isInline());
 			return true;
+			case LFUN_CELL_BACKWARD:
+			case LFUN_CELL_FORWARD:
+				status.setEnabled(true);
+				return true;
 		default:
 			return InsetCollapsable::getStatus(cur, cmd, status);
 	}
