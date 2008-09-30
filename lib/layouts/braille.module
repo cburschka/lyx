@@ -107,7 +107,7 @@ Style Braille_(dots_off)
 	EndFont
 End
 
-# turn off dots
+# turn off mirroring
 Style Braille_(mirror_on)
 	LatexType		command
 	LatexName		braillemirrortrue
@@ -130,13 +130,13 @@ Style Braille_(mirror_on)
 	EndFont
 End
 
-# turn off dots
+# turn off mirroring
 Style Braille_(mirror_off)
 	LatexType		command
 	LatexName		braillemirrorfalse
 	NextNoIndent		1
 	KeepEmpty		1
-	LeftMargin		"XBraille mirror off"
+	LeftMargin		XBraille_mirror_off
 	LabelSep		xx
 	ParSkip			0.0
 	ItemSep			0.2
@@ -146,7 +146,7 @@ Style Braille_(mirror_off)
 	Align			Block
 	AlignPossible		Block, Left
 	LabelType		Static
-	LabelString		"Braille mirror off"
+	LabelString		"Braille_mirror_off"
 	LabelFont
 		Shape		Italic
 		Color		Green
