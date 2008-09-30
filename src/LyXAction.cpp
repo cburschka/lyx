@@ -368,6 +368,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_TAB_INSERT
  * \li Action: Insert a tab into a listings inset.
+ * \li Notion: It also works on a selection.
  * \li Syntax: tab-insert
  * \li Origin: vfvanravesteijn, Sep 30 2008
  * \endvar
@@ -375,8 +376,11 @@ void LyXAction::init()
 		{ LFUN_TAB_INSERT, "tab-insert", SingleParUpdate, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_TAB_DELETE
- * \li Action: Delete a tab or upto an equivalent amount of spaces from
+ * \li Action: Delete a tab or up to an equivalent amount of spaces from
                a listings inset.
+ * \li Notion: It also works on a selection - it removes a tab or spaces from the
+               beginning of each line spanned by the selection. This is useful if
+	       you want to indent/unindent multiple lines in one action.
  * \li Syntax: tab-delete
  * \li Origin: vfvanravesteijn, Sep 30 2008
  * \endvar
