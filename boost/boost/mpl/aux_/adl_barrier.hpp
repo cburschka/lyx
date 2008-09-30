@@ -11,7 +11,7 @@
 // See http://www.boost.org/libs/mpl for documentation.
 
 // $Source$
-// $Date: 2004-09-28 15:56:59 +0200 (Tue, 28 Sep 2004) $
+// $Date: 2004-09-28 09:56:59 -0400 (Tue, 28 Sep 2004) $
 // $Revision: 25453 $
 
 #include <boost/mpl/aux_/config/adl.hpp>

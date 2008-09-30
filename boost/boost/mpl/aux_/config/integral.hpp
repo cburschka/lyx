@@ -11,7 +11,7 @@
 // See http://www.boost.org/libs/mpl for documentation.
 
 // $Source$
-// $Date: 2004-09-07 10:53:22 +0200 (Tue, 07 Sep 2004) $
+// $Date: 2004-09-07 04:53:22 -0400 (Tue, 07 Sep 2004) $
 // $Revision: 24947 $
 
 #include <boost/mpl/aux_/config/msvc.hpp>

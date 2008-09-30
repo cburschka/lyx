@@ -335,13 +335,14 @@ namespace boost{
       if (next == end)
         return false;
 
-      if (current_offset_ == offsets_.size()) {
+      if (current_offset_ == offsets_.size())
+      {
         if (wrap_offsets_)
           current_offset_=0;
         else
           return false;
       }
-
+      
       int c = offsets_[current_offset_];
       int i = 0;
       for (; i < c; ++i) {
@@ -449,15 +450,18 @@ namespace boost{
       else { // m_empty_tokens == keep_empty_tokens
         
         // Handle empty token at the end
-        if (next == end) {
-          if (m_output_done == false) {
+        if (next == end)
+        {
+          if (m_output_done == false) 
+          {
             m_output_done = true;
             assigner::assign(start,next,tok);
             return true;
-          } else
+          } 
+          else
             return false;
         }
-
+        
         if (is_kept(*next)) {
           if (m_output_done == false)
             m_output_done = true;

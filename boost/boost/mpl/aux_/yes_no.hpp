@@ -11,7 +11,7 @@
 // See http://www.boost.org/libs/mpl for documentation.
 
 // $Source$
-// $Date: 2005-08-25 18:27:28 +0200 (Thu, 25 Aug 2005) $
+// $Date: 2005-08-25 12:27:28 -0400 (Thu, 25 Aug 2005) $
 // $Revision: 30670 $
 
 #include <boost/mpl/aux_/nttp_decl.hpp>

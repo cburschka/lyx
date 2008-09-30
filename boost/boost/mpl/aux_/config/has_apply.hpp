@@ -11,7 +11,7 @@
 // See http://www.boost.org/libs/mpl for documentation.
 
 // $Source$
-// $Date: 2004-09-13 08:10:10 +0200 (Mon, 13 Sep 2004) $
+// $Date: 2004-09-13 02:10:10 -0400 (Mon, 13 Sep 2004) $
 // $Revision: 25029 $
 
 #include <boost/mpl/aux_/config/has_xxx.hpp>

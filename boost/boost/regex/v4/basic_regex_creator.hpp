@@ -20,8 +20,20 @@
 #ifndef BOOST_REGEX_V4_BASIC_REGEX_CREATOR_HPP
 #define BOOST_REGEX_V4_BASIC_REGEX_CREATOR_HPP
 
+#ifdef BOOST_MSVC
+#pragma warning(push)
+#pragma warning(disable: 4103)
+#endif
 #ifdef BOOST_HAS_ABI_HEADERS
 #  include BOOST_ABI_PREFIX
+#endif
+#ifdef BOOST_MSVC
+#pragma warning(pop)
+#endif
+
+#ifdef BOOST_MSVC
+#  pragma warning(push)
+#  pragma warning(disable: 4800)
 #endif
 
 namespace boost{
@@ -1258,6 +1270,19 @@ void basic_regex_creator<charT, traits>::probe_leading_repeat(re_syntax_base* st
             state = state->next.p;
             continue;
          }
+         if((static_cast<re_brace*>(state)->index == -1)
+            || (static_cast<re_brace*>(state)->index == -2))
+         {
+            // skip past the zero width assertion:
+            state = static_cast<const re_jump*>(state->next.p)->alt.p->next.p;
+            continue;
+         }
+         if(static_cast<re_brace*>(state)->index == -3)
+         {
+            // Have to skip the leading jump state:
+            state = state->next.p->next.p;
+            continue;
+         }
          return;
       case syntax_element_endmark:
       case syntax_element_start_line:
@@ -1289,8 +1314,19 @@ void basic_regex_creator<charT, traits>::probe_leading_repeat(re_syntax_base* st
 
 } // namespace boost
 
+#ifdef BOOST_MSVC
+#  pragma warning(pop)
+#endif
+
+#ifdef BOOST_MSVC
+#pragma warning(push)
+#pragma warning(disable: 4103)
+#endif
 #ifdef BOOST_HAS_ABI_HEADERS
 #  include BOOST_ABI_SUFFIX
+#endif
+#ifdef BOOST_MSVC
+#pragma warning(pop)
 #endif
 
 #endif

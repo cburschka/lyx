@@ -62,11 +62,18 @@ struct is_function_impl
 template <typename T>
 struct is_function_impl
 {
+#if BOOST_WORKAROUND(_MSC_FULL_VER, >= 140050000)
+#pragma warning(push)
+#pragma warning(disable:6334)
+#endif
     static T* t;
     BOOST_STATIC_CONSTANT(
         bool, value = sizeof(::boost::type_traits::is_function_ptr_tester(t))
         == sizeof(::boost::type_traits::yes_type)
         );
+#if BOOST_WORKAROUND(_MSC_FULL_VER, >= 140050000)
+#pragma warning(pop)
+#endif
 };
 
 #if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)

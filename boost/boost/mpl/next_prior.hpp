@@ -11,7 +11,7 @@
 // See http://www.boost.org/libs/mpl for documentation.
 
 // $Source$
-// $Date: 2004-09-17 08:09:38 +0200 (Fri, 17 Sep 2004) $
+// $Date: 2004-09-17 02:09:38 -0400 (Fri, 17 Sep 2004) $
 // $Revision: 25163 $
 
 #include <boost/mpl/aux_/common_name_wknd.hpp>

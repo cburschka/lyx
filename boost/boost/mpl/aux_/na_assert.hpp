@@ -11,7 +11,7 @@
 // See http://www.boost.org/libs/mpl for documentation.
 
 // $Source$
-// $Date: 2005-07-13 15:13:38 +0200 (Wed, 13 Jul 2005) $
+// $Date: 2005-07-13 09:13:38 -0400 (Wed, 13 Jul 2005) $
 // $Revision: 30043 $
 
 #include <boost/mpl/aux_/na.hpp>

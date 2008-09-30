@@ -11,7 +11,7 @@
 // See http://www.boost.org/libs/mpl for documentation.
 
 // $Source$
-// $Date: 2004-09-26 11:54:25 +0200 (Sun, 26 Sep 2004) $
+// $Date: 2004-09-26 05:54:25 -0400 (Sun, 26 Sep 2004) $
 // $Revision: 25411 $
 
 #include <boost/mpl/bool_fwd.hpp>

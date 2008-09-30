@@ -8,8 +8,8 @@
 // See http://www.boost.org/libs/mpl for documentation.
 
 // $Source$
-// $Date: 2006-11-08 22:44:30 +0100 (Wed, 08 Nov 2006) $
-// $Revision: 35926 $
+// $Date: 2007-11-25 13:07:19 -0500 (Sun, 25 Nov 2007) $
+// $Revision: 41369 $
 
 // NO INCLUDE GUARDS, THE HEADER IS INTENDED FOR MULTIPLE INCLUSION!
 
@@ -65,7 +65,7 @@ struct AUX_WRAPPER_NAME
     typedef AUX_WRAPPER_INST(prior_value) prior;
 #elif BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x561)) \
     || BOOST_WORKAROUND(__IBMCPP__, BOOST_TESTED_AT(502)) \
-    || BOOST_WORKAROUND(__HP_aCC, <= 53800)
+    || (BOOST_WORKAROUND(__HP_aCC, <= 53800) && (BOOST_WORKAROUND(__hpxstd98, != 1)))
     typedef AUX_WRAPPER_INST( BOOST_MPL_AUX_STATIC_CAST(AUX_WRAPPER_VALUE_TYPE, (N + 1)) ) next;
     typedef AUX_WRAPPER_INST( BOOST_MPL_AUX_STATIC_CAST(AUX_WRAPPER_VALUE_TYPE, (N - 1)) ) prior;
 #else

@@ -10,7 +10,7 @@
 // See http://www.boost.org/libs/mpl for documentation.
 
 // $Source$
-// $Date: 2006-11-09 01:46:57 +0100 (Thu, 09 Nov 2006) $
+// $Date: 2006-11-08 19:46:57 -0500 (Wed, 08 Nov 2006) $
 // $Revision: 35931 $
 
 #include <boost/mpl/aux_/config/compiler.hpp>

@@ -11,8 +11,15 @@
 #ifndef BOOST_RANGE_ITERATOR_RANGE_HPP
 #define BOOST_RANGE_ITERATOR_RANGE_HPP
 
-// From boost/dynamic_bitset.hpp; thanks to Matthias Troyer for Cray X1 patch.
 #include <boost/config.hpp> // Define __STL_CONFIG_H, if appropriate.
+#include <boost/detail/workaround.hpp>
+
+#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1500))
+    #pragma warning( push )
+    #pragma warning( disable : 4996 )
+#endif
+
+// From boost/dynamic_bitset.hpp; thanks to Matthias Troyer for Cray X1 patch.
 #ifndef BOOST_OLD_IOSTREAMS 
 # if defined(__STL_CONFIG_H) && \
     !defined (__STL_USE_NEW_IOSTREAMS) && !defined(__crayx1) \
@@ -21,21 +28,23 @@
 # endif
 #endif // #ifndef BOOST_OLD_IOSTREAMS
 
-#include <boost/detail/workaround.hpp>
-#include <boost/range/functions.hpp>
-#include <boost/range/result_iterator.hpp>
-#include <boost/range/difference_type.hpp>
-#include <boost/iterator/iterator_traits.hpp>    
 #include <boost/assert.hpp>
+#include <boost/iterator/iterator_traits.hpp>    
+#include <boost/type_traits/is_abstract.hpp>
+#include <boost/range/functions.hpp>
+#include <boost/range/iterator.hpp>
+#include <boost/range/difference_type.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <iterator>
 #include <algorithm>
-#ifndef BOOST_OLD_IOSTREAMS
-# include <ostream>
-#else
-# include <ostream.h>
-#endif
+#ifndef _STLP_NO_IOSTREAMS
+# ifndef BOOST_OLD_IOSTREAMS
+#  include <ostream>
+# else
+#  include <ostream.h>
+# endif
+#endif // _STLP_NO_IOSTREAMS
 #include <cstddef>
-
 
 /*! \file
     Defines the \c iterator_class and related functions. 
@@ -70,10 +79,10 @@ namespace boost
         template< class Left, class Right >
         inline bool equal( const Left& l, const Right& r )
         {
-            typedef BOOST_DEDUCED_TYPENAME boost::range_size<Left>::type sz_type;
+            typedef BOOST_DEDUCED_TYPENAME boost::range_difference<Left>::type sz_type;
 
-            sz_type l_size = boost::size( l ),
-                    r_size = boost::size( r );
+            sz_type l_size = boost::distance( l ),
+                    r_size = boost::distance( r );
 
             if( l_size != r_size )
                 return false;
@@ -158,61 +167,72 @@ namespace boost
             //! iterator type
             typedef IteratorT iterator;
 
-            iterator_range() : m_Begin( iterator() ), m_End( iterator() ), 
-                               singular( true )
-            { }
-/*
-#if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x564))  
-            iterator_range( this_type r ) :
-            : m_Begin(r.begin()), m_End(r.end())
-            { }
+        private: // for return value of operator()()
+            typedef BOOST_DEDUCED_TYPENAME 
+                boost::mpl::if_< boost::is_abstract<value_type>,
+                                 reference, value_type >::type abstract_value_type;
 
-            this_type& operator=( this_type r )
-            {
-                m_Begin = r.begin();
-                m_End   = r.end();
-                return *this;
-            }
-#endif
-*/            
+        public:
+            iterator_range() : m_Begin( iterator() ), m_End( iterator() )
+                #ifndef NDEBUG
+            , singular( true )
+                #endif
+            { }
+           
             //! Constructor from a pair of iterators
             template< class Iterator >
             iterator_range( Iterator Begin, Iterator End ) : 
-                m_Begin(Begin), m_End(End), singular(false) {}
+                m_Begin(Begin), m_End(End)
+                #ifndef NDEBUG
+            , singular(false) 
+                #endif
+            {}
 
             //! Constructor from a Range
             template< class Range >
             iterator_range( const Range& r ) : 
-                m_Begin( impl::adl_begin( r ) ), m_End( impl::adl_end( r ) ), 
-                singular(false) {}
-
+                m_Begin( impl::adl_begin( r ) ), m_End( impl::adl_end( r ) )
+                #ifndef NDEBUG
+            , singular(false) 
+                #endif
+            {}
+            
             //! Constructor from a Range
             template< class Range >
             iterator_range( Range& r ) : 
-                m_Begin( impl::adl_begin( r ) ), m_End( impl::adl_end( r ) ), 
-                singular(false) {}
+                m_Begin( impl::adl_begin( r ) ), m_End( impl::adl_end( r ) )
+                #ifndef NDEBUG
+            , singular(false) 
+                #endif
+            {}
 
             //! Constructor from a Range
             template< class Range >
             iterator_range( const Range& r, iterator_range_detail::const_range_tag ) : 
-                m_Begin( impl::adl_begin( r ) ), m_End( impl::adl_end( r ) ), 
-                singular(false) {}
+                m_Begin( impl::adl_begin( r ) ), m_End( impl::adl_end( r ) )
+                #ifndef NDEBUG
+            , singular(false) 
+                #endif
+            {}
 
             //! Constructor from a Range
             template< class Range >
             iterator_range( Range& r, iterator_range_detail::range_tag ) : 
-                m_Begin( impl::adl_begin( r ) ), m_End( impl::adl_end( r ) ), 
-                singular(false) {}
+                m_Begin( impl::adl_begin( r ) ), m_End( impl::adl_end( r ) )
+                #ifndef NDEBUG
+            , singular(false) 
+                #endif
+            {}
 
             #if !BOOST_WORKAROUND(BOOST_MSVC, < 1300)
             this_type& operator=( const this_type& r )    
             {
                 m_Begin  = r.begin(); 
                 m_End    = r.end();
-                //
-                // remark: this need not necessarily be true, but it does no harm
-                //
+
+                #ifndef NDEBUG
                 singular = r.singular;
+                #endif
                 return *this;
             }
             #endif
@@ -222,10 +242,9 @@ namespace boost
             {
                 m_Begin  = r.begin(); 
                 m_End    = r.end();
-                //
-                // remark: this need not necessarily be true, but it does no harm
-                //
-                singular = r.empty();
+                #ifndef NDEBUG
+                singular = r.is_singular();
+                #endif
                 return *this;
             }
                                       
@@ -234,7 +253,9 @@ namespace boost
             {
                 m_Begin  = impl::adl_begin( r ); 
                 m_End    = impl::adl_end( r );
+                #ifndef NDEBUG
                 singular = false;
+                #endif
                 return *this;
             }
 
@@ -243,37 +264,33 @@ namespace boost
             {
                 m_Begin  = impl::adl_begin( r ); 
                 m_End    = impl::adl_end( r );
+                #ifndef NDEBUG    
                 singular = false;
+                #endif
                 return *this;
             }
 
             IteratorT begin() const 
             { 
+                BOOST_ASSERT( !is_singular() );
                 return m_Begin; 
             }
 
             IteratorT end() const 
             { 
+                BOOST_ASSERT( !is_singular() );
                 return m_End; 
             } 
 
-            size_type size() const
+            difference_type size() const
             { 
-                if( singular )
-                    return 0;
-
-#if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x582))
-                return std::distance<IteratorT>( m_Begin, m_End );
-#else                
-                return std::distance( m_Begin, m_End );
-#endif                
+                BOOST_ASSERT( !is_singular() );
+                return m_End - m_Begin;
             }
             
             bool empty() const
             {
-                if( singular )
-                    return true;
-                
+                BOOST_ASSERT( !is_singular() );
                 return m_Begin == m_End;
             }
 
@@ -292,7 +309,8 @@ namespace boost
 
             bool equal( const iterator_range& r ) const
             {
-                return singular == r.singular && m_Begin == r.m_Begin && m_End == r.m_End;
+                BOOST_ASSERT( !is_singular() );
+                return m_Begin == r.m_Begin && m_End == r.m_End;
             }
 
 
@@ -300,17 +318,20 @@ namespace boost
 
             bool operator==( const iterator_range& r ) const
             {
+                BOOST_ASSERT( !is_singular() );
                 return iterator_range_detail::equal( *this, r );
             }
 
             bool operator!=( const iterator_range& r ) const
             {
+                BOOST_ASSERT( !is_singular() );
                 return !operator==(r);
             }
 
            bool operator<( const iterator_range& r ) const
            {
-                return iterator_range_detail::less_than( *this, r );
+               BOOST_ASSERT( !is_singular() );
+               return iterator_range_detail::less_than( *this, r );
            }
 
 #endif            
@@ -329,21 +350,33 @@ namespace boost
                return *--last;
            }
     
-           reference operator[]( size_type sz ) const
+           reference operator[]( difference_type at ) const
            {
-               //BOOST_STATIC_ASSERT( is_random_access );
-               BOOST_ASSERT( sz < size() );
-               return m_Begin[sz];
+               BOOST_ASSERT( at >= 0 && at < size() );
+               return m_Begin[at];
+           }
+
+           //
+           // When storing transform iterators, operator[]()
+           // fails because it returns by reference. Therefore
+           // operator()() is provided for these cases.
+           // 
+           abstract_value_type operator()( difference_type at ) const                              
+           {
+               BOOST_ASSERT( at >= 0 && at < size() );
+               return m_Begin[at];               
            }
 
            iterator_range& advance_begin( difference_type n )
            {
+               BOOST_ASSERT( !is_singular() );
                std::advance( m_Begin, n );
                return *this;
            }
            
            iterator_range& advance_end( difference_type n )
            {
+               BOOST_ASSERT( !is_singular() );
                std::advance( m_End, n );
                return *this;
            }
@@ -352,25 +385,33 @@ namespace boost
             // begin and end iterators
             IteratorT m_Begin;
             IteratorT m_End;
+
+            #ifndef NDEBUG
             bool      singular;
+            #endif
+
+        public:
+            bool is_singular() const
+            {
+                 #ifndef NDEBUG
+                 return singular;
+                 #else
+                 return false;
+                 #endif
+            }
+
+        protected:
+            //
+            // Allow subclasses an easy way to access the
+            // base type
+            //
+            typedef iterator_range iterator_range_;
         };
 
 //  iterator range free-standing operators ---------------------------//
 
-#ifdef BOOST_NO_FUNCTION_TEMPLATE_ORDERING
-#else
-        template< class Iterator >
-        inline bool empty( const iterator_range<Iterator>& r )
-        {
-            //
-            // this will preserve the well-defined empty() even 
-            // though 'r' is singular.
-            //
-            return r.empty();
-        }
-#endif
-
-#ifndef BOOST_OLD_IOSTREAMS   
+#ifndef _STLP_NO_IOSTREAMS
+# ifndef BOOST_OLD_IOSTREAMS   
 
         //! iterator_range output operator
         /*!
@@ -384,12 +425,12 @@ namespace boost
         {
             std::copy( r.begin(), r.end(), 
                        std::ostream_iterator< BOOST_DEDUCED_TYPENAME 
-                                            iterator_value<IteratorT>::type, 
+                                              iterator_value<IteratorT>::type, 
                                               Elem, Traits>(Os) );
             return Os;
         }
 
-#else
+# else
 
         //! iterator_range output operator
         /*!
@@ -405,7 +446,8 @@ namespace boost
             return Os;
         }
 
-#endif
+# endif
+#endif // _STLP_NO_IOSTREAMS
 
         /////////////////////////////////////////////////////////////////////
         // comparison operators
@@ -500,10 +542,10 @@ namespace boost
 #ifdef BOOST_NO_FUNCTION_TEMPLATE_ORDERING
 
         template< typename Range >
-        inline iterator_range< BOOST_DEDUCED_TYPENAME range_result_iterator<Range>::type >
+        inline iterator_range< BOOST_DEDUCED_TYPENAME range_iterator<Range>::type >
         make_iterator_range( Range& r ) 
         {   
-            return iterator_range< BOOST_DEDUCED_TYPENAME range_result_iterator<Range>::type >
+            return iterator_range< BOOST_DEDUCED_TYPENAME range_iterator<Range>::type >
                 ( boost::begin( r ), boost::end( r ) );
         }
         
@@ -522,10 +564,10 @@ namespace boost
         }
 
         template< class ForwardRange >
-        inline iterator_range< BOOST_DEDUCED_TYPENAME range_const_iterator<ForwardRange>::type >
+        inline iterator_range< BOOST_DEDUCED_TYPENAME range_iterator<const ForwardRange>::type >
         make_iterator_range( const ForwardRange& r ) 
         {   
-           return iterator_range< BOOST_DEDUCED_TYPENAME range_const_iterator<ForwardRange>::type >
+           return iterator_range< BOOST_DEDUCED_TYPENAME range_iterator<const ForwardRange>::type >
                 ( r, iterator_range_detail::const_range_tag() );
         }
 
@@ -534,15 +576,19 @@ namespace boost
         namespace iterator_range_detail
         {    
             template< class Range >
-            inline iterator_range< BOOST_DEDUCED_TYPENAME range_result_iterator<Range>::type >
+            inline iterator_range< BOOST_DEDUCED_TYPENAME range_iterator<Range>::type >
             make_range_impl( Range& r, 
                              BOOST_DEDUCED_TYPENAME range_difference<Range>::type advance_begin,
                              BOOST_DEDUCED_TYPENAME range_difference<Range>::type advance_end )
             {
-                if( advance_begin == 0 && advance_end == 0 )
-                    return make_iterator_range( r );
+                //
+                // Not worth the effort
+                //
+                //if( advance_begin == 0 && advance_end == 0 )
+                //    return make_iterator_range( r );
+                //
 
-                BOOST_DEDUCED_TYPENAME range_result_iterator<Range>::type 
+                BOOST_DEDUCED_TYPENAME range_iterator<Range>::type 
                     new_begin = boost::begin( r ),
                     new_end   = boost::end( r );
                 std::advance( new_begin, advance_begin );
@@ -554,7 +600,7 @@ namespace boost
 #ifdef BOOST_NO_FUNCTION_TEMPLATE_ORDERING
 
         template< class Range >
-        inline iterator_range< BOOST_DEDUCED_TYPENAME range_result_iterator<Range>::type >
+        inline iterator_range< BOOST_DEDUCED_TYPENAME range_iterator<Range>::type >
         make_iterator_range( Range& r, 
                     BOOST_DEDUCED_TYPENAME range_difference<Range>::type advance_begin,
                     BOOST_DEDUCED_TYPENAME range_difference<Range>::type advance_end )
@@ -576,7 +622,7 @@ namespace boost
         }
 
         template< class Range >
-        inline iterator_range< BOOST_DEDUCED_TYPENAME range_const_iterator<Range>::type >
+        inline iterator_range< BOOST_DEDUCED_TYPENAME range_iterator<const Range>::type >
         make_iterator_range( const Range& r, 
                     BOOST_DEDUCED_TYPENAME range_difference<Range>::type advance_begin,
                     BOOST_DEDUCED_TYPENAME range_difference<Range>::type advance_end )
@@ -605,4 +651,9 @@ namespace boost
 
 #undef BOOST_OLD_IOSTREAMS
 
+#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1500)) 
+    #pragma warning( pop )
 #endif
+
+#endif
+
