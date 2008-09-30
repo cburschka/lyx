@@ -290,7 +290,7 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_DIALOG_UPDATE:
 		cur.bv().updateDialog("listings", params2string(params()));
 		break;
-	case LFUN_CELL_FORWARD:
+	case LFUN_TAB_INSERT:
 		if (cur.selection()) {
 			// If there is a selection, a tab is inserted at the
 			// beginning of each paragraph.
@@ -316,7 +316,7 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.finishUndo();
 		}
 		break;
-	case LFUN_CELL_BACKWARD:
+	case LFUN_TAB_DELETE:
 		if (cur.selection()) {
 			// If there is a selection, a tab (if present) is removed from
 			// the beginning of each paragraph.
@@ -389,8 +389,8 @@ bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case LFUN_CAPTION_INSERT:
 			status.setEnabled(!params().isInline());
 			return true;
-			case LFUN_CELL_BACKWARD:
-			case LFUN_CELL_FORWARD:
+			case LFUN_TAB_INSERT:
+			case LFUN_TAB_DELETE:
 				status.setEnabled(true);
 				return true;
 		default:

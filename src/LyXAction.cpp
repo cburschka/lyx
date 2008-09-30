@@ -366,6 +366,23 @@ void LyXAction::init()
  */
 		{ LFUN_LISTING_INSERT, "listing-insert", Noop, Edit },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_TAB_INSERT
+ * \li Action: Insert a tab into a listings inset.
+ * \li Syntax: tab-insert
+ * \li Origin: vfvanravesteijn, Sep 30 2008
+ * \endvar
+ */
+		{ LFUN_TAB_INSERT, "tab-insert", SingleParUpdate, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_TAB_DELETE
+ * \li Action: Delete a tab or upto an equivalent amount of spaces from
+               a listings inset.
+ * \li Syntax: tab-delete
+ * \li Origin: vfvanravesteijn, Sep 30 2008
+ * \endvar
+ */
+		{ LFUN_TAB_DELETE, "tab-delete", SingleParUpdate, Edit },
+/*!
  * \var lyx::FuncCode lyx::LFUN_QUOTE_INSERT
  * \li Action: Inserts quotes according to the type and quote-language preference.
  * \li Action: Currently  English, Swedish, German, Polish, French, Danish quotes
