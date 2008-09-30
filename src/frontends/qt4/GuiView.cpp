@@ -1042,6 +1042,12 @@ void GuiView::errors(string const & error_type)
 }
 
 
+void GuiView::updateTocItem(std::string const & type, DocIterator const & dit)
+{
+	d.toc_models_.updateItem(toqstr(type), dit);
+}
+
+
 void GuiView::structureChanged()
 {
 	d.toc_models_.reset(view());

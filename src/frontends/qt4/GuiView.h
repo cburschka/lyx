@@ -106,6 +106,7 @@ public:
 	void resetAutosaveTimers();
 	void errors(std::string const &);
 	void structureChanged();
+	void updateTocItem(std::string const &, DocIterator const &);
 	///@}
 
 	///

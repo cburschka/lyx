@@ -130,6 +130,14 @@ void TocModel::reset()
 }
 
 
+void TocModel::updateItem(DocIterator const & dit)
+{
+	QModelIndex index = modelIndex(dit);
+	TocItem const & toc_item = tocItem(index);
+	model_->setData(index, toqstr(toc_item.str()), Qt::DisplayRole);
+}
+
+
 void TocModel::reset(Toc const & toc)
 {
 	toc_ = &toc;
@@ -295,6 +303,12 @@ void TocModels::updateBackend() const
 {
 	bv_->buffer().masterBuffer()->tocBackend().update();
 	bv_->buffer().structureChanged();
+}
+
+
+void TocModels::updateItem(QString const & type, DocIterator const & dit)
+{
+	models_[type]->updateItem(dit);
 }
 
 

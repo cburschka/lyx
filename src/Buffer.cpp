@@ -2158,6 +2158,14 @@ ErrorList & Buffer::errorList(string const & type) const
 }
 
 
+void Buffer::updateTocItem(std::string const & type,
+	DocIterator const & dit) const
+{
+	if (gui_)
+		gui_->updateTocItem(type, dit);
+}
+
+
 void Buffer::structureChanged() const
 {
 	if (gui_)

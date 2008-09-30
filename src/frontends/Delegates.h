@@ -17,6 +17,7 @@
 namespace lyx {
 
 class Buffer;
+class DocIterator;
 class Inset;
 
 namespace frontend {
@@ -61,6 +62,8 @@ public:
 	virtual ~GuiBufferDelegate() {}
 	/// This function is called when the buffer structure is changed.
 	virtual void structureChanged() = 0;
+	/// This function is called when the buffer structure has been updated.
+	virtual void updateTocItem(std::string const &, DocIterator const &) = 0;
 	/// This function is called when some parsing error shows up.
 	virtual void errors(std::string const &) = 0;
 	/// This function is called when some message shows up.

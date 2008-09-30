@@ -106,6 +106,8 @@ Toc & TocBackend::toc(string const & type)
 
 bool TocBackend::updateItem(DocIterator const & dit)
 {
+//	Inset * inset = dit.paragraph().inInset();
+//	inset->addToToc(dit);
 	if (dit.paragraph().layout().toclevel == Layout::NOT_IN_TOC)
 		return false;
 
@@ -149,6 +151,7 @@ bool TocBackend::updateItem(DocIterator const & dit)
 
 	const_cast<TocItem &>(*toc_item).str_ = tocstring;
 
+	buffer_->updateTocItem("tableofcontents", dit);
 	return true;
 }
 

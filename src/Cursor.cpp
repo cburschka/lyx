@@ -2193,8 +2193,7 @@ void Cursor::recordUndoSelection() const
 void Cursor::checkBufferStructure()
 {
 	Buffer const * master = buffer().masterBuffer();
-	if (master->tocBackend().updateItem(*this))
-		master->structureChanged();
+	master->tocBackend().updateItem(*this);
 }
 
 

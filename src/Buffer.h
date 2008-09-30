@@ -420,6 +420,8 @@ public:
 
 	/// This function is called when the buffer is changed.
 	void changed() const;
+	///
+	void updateTocItem(std::string const &, DocIterator const &) const;
 	/// This function is called when the buffer structure is changed.
 	void structureChanged() const;
 	/// This function is called when some parsing error shows up.
