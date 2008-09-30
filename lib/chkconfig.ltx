@@ -21,13 +21,17 @@
 %%%    (or <file>, if this optional parameter is provided) exists.
 %%% 2- Add a description for <name> in doc/LaTeXConfig.lyx,
 %%%    containing in particular a line like
-%%%         Found   @chk_<name>@
-%%%    This line will be replaced at configure time by the proper text.
+%%%         Found: [InsetInfo]
+%%%    where [InsetInfo] is obtained by entering in the minibuffer (Alt+X)
+%%%    info-insert package <name>
+%%%    This inset will automatically display a boxed "yes" or "no"
+%%%    depending on the availability of the package.
 %%%
 %%% For document classes, things are even simpler, since you do not
 %%% need to edit this file. Just put your layout file in some place
 %%% where LyX can find it and add if you wish a description in
-%%% LaTeXConfig.lyx, as described above.
+%%% LaTeXConfig.lyx, as described above but using
+%%% "info-insert textclass <name>" instead of "info-insert package <name>".
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%% Initialization part (skip) %%%%%%%%%%%%%%%%%%%%%
@@ -64,7 +68,7 @@
   \immediate\write\packages{#1}}
 
 % Tests whether an item is present
-% Syntax: \TestItem{<file>}{<name>}{<type>}{<ext>}{<iftrue>}{<iffalse>}
+% Syntax: \TestItem[<file>]{<name>}{<type>}{<ext>}{<iftrue>}{<iffalse>}
 \newif\ifexists
 
 \newcommand{\TestItem}[6][\default]{
@@ -205,12 +209,11 @@
   \ecrm
   \ifin@
     \message{yes^^J}
-    \AddVariable{ec}{yes}
+    \AddPackage{ec}
     \AddVariable{fontenc}{T1}
-    \message{^^J \prefix\space\space default encoding will be set to T1^^J}
+    \message{^^J\prefix\space\space default encoding will be set to T1^^J}
   \else
     \message{no^^J}
-    \AddVariable{ec}{no}
     \AddVariable{fontenc}{default}
   \fi
 \fi
@@ -243,6 +246,7 @@
 \TestPackage{fancyhdr}
 \TestPackage{framed}
 \TestPackage{geometry}
+\TestPackage{graphicx}
 \TestPackage{hyperref}
 \TestPackage{jurabib}
 \TestPackage{latex8}
@@ -269,23 +273,6 @@
 \TestPackage{wrapfig}
 \TestPackage{xargs}
 \TestPackage{xcolor}
-
-
-% The test for the graphics package is slightly more involved...
-\newcommand\groption{dvips}
-\TestItem{graphicx}{package}{sty}
-
-%  Let's do some clever things to guess the default driver for the
-%  graphicx package. The maintainer of the site might have declared it
-%  in the file 'graphics.cfg'. Let's hope there are no strange commands
-%  in there...
-  {\renewcommand\ExecuteOptions[1]{\renewcommand\groption{default}}
-   \InputIfFileExists{graphics.cfg}{}{}
-   \AddPackage{graphicx}}
-  {\renewcommand{\groption}{none}}
-
-\message{^^J\prefix checking for graphics driver... \groption^^J}
-\AddVariable{graphicsdriver}{\groption}
 
 % psnfss is in fact the name of a set of style files, among which
 % times.sty. If times.sty is here, we will assume that everything is
