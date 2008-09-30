@@ -209,7 +209,7 @@ TocIterator Toc::item(int depth, docstring const & str) const
 		return end();
 	TocIterator it = begin();
 	TocIterator itend = end();
-	for (; it != itend; --it) {
+	for (; it != itend; ++it) {
 		if (it->depth() == depth && it->str() == str)
 			break;
 	}
