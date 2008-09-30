@@ -64,6 +64,10 @@
 # endif
 #endif
 
+#ifndef ASSOCF_INIT_IGNOREUNKNOWN
+#define ASSOCF_INIT_IGNOREUNKNOWN 0
+#endif
+
 using namespace std;
 
 namespace lyx {
