@@ -273,3 +273,43 @@ InsetLayout OptArg
 	EndFont
 	MultiPar              false
 End
+
+InsetLayout Info
+	Decoration	      conglomerate
+End
+
+InsetLayout Info:menu
+	LatexType             command
+	LatexName             menuitem
+	Preamble
+	  \providecommand{\menuitem}[1]{\textsf{#1}}
+	EndPreamble
+	Decoration	      conglomerate
+	Font
+	  Family              sans
+	EndFont
+End
+
+InsetLayout Info:shortcut
+	LatexType             command
+	LatexName             shortcut
+	Preamble
+	  \providecommand{\shortcut}[1]{\textsf{#1}}
+	EndPreamble
+	Decoration	      conglomerate
+	Font
+	  Family              sans
+	EndFont
+End
+
+InsetLayout Info:shortcuts
+	LatexType             command
+	LatexName             shortcut
+	Preamble
+	  \providecommand{\shortcut}[1]{\textsf{#1}}
+	EndPreamble
+	Decoration	      conglomerate
+	Font
+	  Family              sans
+	EndFont
+End

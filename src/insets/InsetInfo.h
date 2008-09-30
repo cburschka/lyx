@@ -12,8 +12,7 @@
 #ifndef INSET_INFO_H
 #define INSET_INFO_H
 
-#include "InsetText.h"
-#include "RenderButton.h"
+#include "InsetCollapsable.h"
 #include "Cursor.h"
 
 #include "support/gettext.h"
@@ -78,7 +77,7 @@ namespace lyx {
 
 /** Used to insert index labels
   */
-class InsetInfo : public InsetText {
+class InsetInfo : public InsetCollapsable {
 public:
 	enum info_type {
 		UNKNOWN_INFO,   // Invalid type
@@ -95,11 +94,13 @@ public:
 	///
 	InsetInfo(Buffer const & buf, std::string const & info = std::string());
 	///
+	InsetCode lyxCode() const { return INFO_CODE; }
+	///
+	docstring name() const;
+	///
 	Inset * editXY(Cursor & cur, int x, int y);
 	///
 	EDITABLE editable() const { return NOT_EDITABLE; }
-	///
-	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void read(Lexer & lex);
 	///
@@ -117,33 +118,29 @@ public:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	InsetCode lyxCode() const { return INFO_CODE; }
-	///
 	void setInfo(std::string const & info);
 	/// update info_ and text
 	void updateInfo();
 	///
-	bool setMouseHover(bool mouse_hover);
-	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
 	docstring contextMenu(BufferView const &, int, int) const;
+	/// should paragraph indendation be ommitted in any case?
+	bool neverIndent() const { return true; }
 
 private:
-	/// The translator between the information type enum and corresponding string.
-	Translator<info_type, std::string> const & nameTranslator() const;
 	///
 	virtual Inset * clone() const { return new InsetInfo(*this); }
 	///
 	void error(std::string const & err);
 	///
 	void setText(docstring const & str);
+	// make sure that the other version of setText is still available.
+	using InsetCollapsable::setText;
 	///
 	info_type type_;
 	///
 	std::string name_;
-	///
-	bool mouse_hover_;
 };
 
 
