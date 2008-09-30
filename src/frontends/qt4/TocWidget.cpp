@@ -256,7 +256,8 @@ void TocWidget::updateView()
 		return;
 	}
 	typeCO->setEnabled(true);
-	tocTV->setEnabled(true);
+	tocTV->setEnabled(false);
+	tocTV->setUpdatesEnabled(false);
 
 	QAbstractItemModel * toc_model = gui_view_.tocModels().model(current_type_);	
 	if (tocTV->model() != toc_model) {
@@ -277,6 +278,8 @@ void TocWidget::updateView()
 	setTreeDepth(depth_);
 	if (canNavigate(current_type_))
 		select(gui_view_.tocModels().currentIndex(current_type_));
+	tocTV->setEnabled(true);
+	tocTV->setUpdatesEnabled(true);
 }
 
 
