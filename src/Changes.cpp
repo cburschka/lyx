@@ -413,7 +413,7 @@ void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer) const
 		dit.pos() = it->range.start;
 		str += " " + dit.paragraph().asString(it->range.start, it->range.end);
 		docstring const & author = author_list.get(it->change.author).name();
-		Toc::const_iterator it = change_list.item(0, author);
+		Toc::iterator it = change_list.item(0, author);
 		if (it == change_list.end()) {
 			change_list.push_back(TocItem(dit, 0, author));
 			change_list.push_back(TocItem(dit, 1, str));

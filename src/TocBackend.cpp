@@ -203,12 +203,12 @@ TocIterator Toc::item(DocIterator const & dit) const
 }
 
 
-TocIterator Toc::item(int depth, docstring const & str) const
+Toc::iterator Toc::item(int depth, docstring const & str)
 {
 	if (empty())
 		return end();
-	TocIterator it = begin();
-	TocIterator itend = end();
+	iterator it = begin();
+	iterator itend = end();
 	for (; it != itend; ++it) {
 		if (it->depth() == depth && it->str() == str)
 			break;

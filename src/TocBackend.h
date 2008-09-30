@@ -75,11 +75,12 @@ class Toc : public std::vector<TocItem>
 {
 public:
 	typedef std::vector<TocItem>::const_iterator const_iterator;
+	typedef std::vector<TocItem>::iterator iterator;
 	const_iterator item(DocIterator const & dit) const;
 	/// Look for a TocItem given its depth and string.
 	/// \return The first matching item.
 	/// \retval end() if no item was found.
-	const_iterator item(int depth, docstring const & str) const;
+	iterator item(int depth, docstring const & str);
 };
 
 typedef Toc::const_iterator TocIterator;
