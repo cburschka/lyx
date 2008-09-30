@@ -263,6 +263,7 @@ void TocWidget::updateView()
 	if (tocTV->model() != toc_model) {
 		tocTV->setModel(toc_model);
 		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
+		setTreeDepth(depth_);
 	}
 
 	sortCB->blockSignals(true);
@@ -275,7 +276,6 @@ void TocWidget::updateView()
 
 	depthSL->setMaximum(gui_view_.tocModels().depth(current_type_));
 	depthSL->setValue(depth_);
-	setTreeDepth(depth_);
 	if (canNavigate(current_type_))
 		select(gui_view_.tocModels().currentIndex(current_type_));
 	tocTV->setEnabled(true);
