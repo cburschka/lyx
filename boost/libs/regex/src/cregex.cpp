@@ -559,7 +559,7 @@ std::string RegEx::What(int i)const
    return result;
 }
 
-#ifdef BOOST_HAS_LONG_LONG
+#if defined(BOOST_HAS_LONG_LONG) && !defined(_MSC_VER)
 const std::size_t RegEx::npos = static_cast<std::size_t>(~0ULL);
 #else
 const std::size_t RegEx::npos = static_cast<std::size_t>(~0UL);
