@@ -236,13 +236,23 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (!p.getCmdName().empty()) {
 			if (isListings(p)){
 				InsetListingsParams new_params(to_utf8(p["lstparams"]));
-				docstring const label_str = from_utf8(new_params.getParamValue("label"));
-				if (label_str.empty())
+				docstring const new_label =
+					from_utf8(new_params.getParamValue("label"));
+				docstring old_label;
+				if (label_)
+					old_label = label_->getParam("name");
+				if (new_label.empty())
 					delete label_;
-				else if (label_)
-					label_->updateCommand(label_str);
-				else {
-					label_ = createLabel(label_str);
+				else if (label_ && old_label != new_label) {
+					label_->updateCommand(new_label);
+					// the label might have been adapted (duplicate)
+					if (new_label != label_->getParam("name")) {
+						new_params.addParam("label",
+							"{" + to_utf8(label_->getParam("name")) + "}");
+						p["lstparams"] = from_utf8(new_params.params());
+					}
+				} else if (old_label != new_label) {
+					label_ = createLabel(new_label);
 					label_->setBuffer(buffer());
 					label_->initView();
 				}
