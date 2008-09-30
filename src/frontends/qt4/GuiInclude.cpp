@@ -256,7 +256,7 @@ void GuiInclude::applyView()
 		if (!label.empty())
 			par.addParam("label", "{" + label + "}");
 		string const listparams = par.params();
-		params_["lstparams"] = from_ascii(listparams);
+		params_["lstparams"] = from_utf8(listparams);
 	} else {
 		if (visiblespaceCB->isChecked())
 			params_.setCmdName("verbatiminput*");
