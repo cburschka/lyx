@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 310
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -9,7 +9,7 @@
  {\textcolor{blue}\bgroup}{\egroup}
 \end_preamble
 \begin_modules
-Braille
+braille
 \end_modules
 \language english
 \inputencoding utf8
@@ -21,22 +21,23 @@ Braille
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
 \use_hyperref true
 \pdf_title "How to write Braille with LyX"
 \pdf_author "Uwe Stöhr"
-\pdf_bookmarks true
+\pdf_bookmarks false
 \pdf_bookmarksnumbered false
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
-\pdf_pdfborder true
+\pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pagebackref false
-\pdf_pdfusetitle true
+\pdf_pdfusetitle false
 \papersize default
 \use_geometry true
 \use_amsmath 1
@@ -68,7 +69,9 @@ How to write Braille with LyX
 
 \begin_layout Author
 Uwe Stöhr
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset CommandInset href
 LatexCommand href
@@ -82,9 +85,14 @@ type "mailto:"
 
 \begin_layout Standard
 First a general note: The Braille you can create with LaTeX is not a professiona
-l one! Professional Braille can be 6 or 8\InsetSpace \thinspace{}
-dot, while LaTeX only supports
- only 6\InsetSpace \thinspace{}
+l one! Professional Braille can be 6 or 8
+\begin_inset space \thinspace{}
+\end_inset
+
+dot, while LaTeX only supports only 6
+\begin_inset space \thinspace{}
+\end_inset
+
 dot Braille without accented characters.
 \end_layout
 
@@ -95,18 +103,27 @@ Braille
 \family default
  in the document settings under 
 \family sans
-Document\InsetSpace ~
+Document
+\begin_inset space ~
+\end_inset
+
 Class
 \family default
 .
  Now select the environment 
 \family sans
-Braille\InsetSpace ~
+Braille
+\begin_inset space ~
+\end_inset
+
 (default)
 \family default
  or 
 \family sans
-Braille\InsetSpace ~
+Braille
+\begin_inset space ~
+\end_inset
+
 (textsize)
 \family default
  from the end of LyX's environment selection box and write your text.
@@ -122,7 +139,9 @@ Here is an example:
 
 \begin_layout Standard
 with Latin letters:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 This is an example sentence written in Braille.
 \end_layout
 
@@ -156,7 +175,7 @@ You can see that LaTeX is not able to hyphenate words written in Braille.
 \begin_inset Note Greyedout
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \series bold
 Note:
@@ -195,7 +214,7 @@ $
 \begin_inset Note Greyedout
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \series bold
 Note:
@@ -251,7 +270,7 @@ Latin:
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 LyX
 \end_layout
@@ -259,7 +278,9 @@ LyX
 \end_inset
 
  is cool!
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Braille:
 \end_layout
 
@@ -267,7 +288,7 @@ Braille:
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 LyX
 \end_layout
@@ -382,7 +403,9 @@ braillebox
 \series default
 .
  For example the command
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \series bold
 
@@ -390,12 +413,14 @@ braillebox
 braillebox{8175}
 \series default
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 leads to: 
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -408,7 +433,7 @@ brailleeightdotstrue
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -421,7 +446,7 @@ braillebox{8175}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -444,12 +469,21 @@ The size of the default Braille font can be changed by the length
 brailleunit
 \series default
 .
- Its default value is 2.4\InsetSpace \thinspace{}
+ Its default value is 2.4
+\begin_inset space \thinspace{}
+\end_inset
+
 mm.
- To get e.\InsetSpace \thinspace{}
-g.\InsetSpace ~
-double-sized Braille where also the tiny dots have the double
- size, use this command in ERT in your document:
+ To get e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+double-sized Braille where also the tiny dots have the double size, use
+ this command in ERT in your document:
 \end_layout
 
 \begin_layout Standard
@@ -460,8 +494,13 @@ double-sized Braille where also the tiny dots have the double
 renewcommand{
 \backslash
 braillenormal}[1]
-\newline
-\InsetSpace ~
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
 {
 \backslash
 setlength{
@@ -476,7 +515,7 @@ Double-sized Braille:
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -485,7 +524,7 @@ renewcommand{
 braillenormal}[1]
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
  {
 \backslash
@@ -509,7 +548,7 @@ This is Braille.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -518,7 +557,7 @@ renewcommand{
 braillenormal}[1]
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
  {
 \backslash
@@ -542,7 +581,7 @@ For more informations about the Braille cell dimensions have a look at
 \begin_inset CommandInset href
 LatexCommand href
 name "Braille cell dimensions"
-target "http://www.tiresias.org/publications/reports/braille_cell.htm"
+target "http://www.tiresias.org/research/reports/braille_cell.htm"
 
 \end_inset
 
