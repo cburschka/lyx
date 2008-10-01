@@ -3295,8 +3295,8 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// if this is a multicell selection, we just set the cursor to
 			// the beginning of the cell's text.
 			if (bvcur.selIsMultiCell()) {
-				bvcur.pit() = 0;
-				bvcur.pos() = 0;
+				bvcur.pit() = bvcur.lastpit();
+				bvcur.pos() = bvcur.lastpos();
 			}
 		}
 		break;
@@ -3409,6 +3409,11 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 			cur.undispatched();
 		}
+		if (cur.selIsMultiCell()) {
+			cur.pit() = cur.lastpit();
+			cur.pos() = cur.lastpos();
+			return;
+		}
 		break;
 
 	case LFUN_UP_SELECT:
@@ -3431,6 +3436,11 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (sl == cur.top()) {
 			cmd = FuncRequest(LFUN_UP);
 			cur.undispatched();
+		}
+		if (cur.selIsMultiCell()) {
+			cur.pit() = cur.lastpit();
+			cur.pos() = cur.lastpos();
+			return;
 		}
 		break;
 
@@ -3511,6 +3521,14 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		else
 			cell(cur.idx())->dispatch(cur, cmd);
+		break;
+
+	case LFUN_SELF_INSERT:
+		if (cur.selIsMultiCell()) {
+			cur.recordUndoInset(DELETE_UNDO);
+			cutSelection(cur);
+		}
+		cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
 	case LFUN_CHAR_DELETE_BACKWARD:
@@ -4126,9 +4144,18 @@ void InsetTabular::moveNextCell(Cursor & cur, EntryDirection entry_from)
 			return;
 		++cur.idx();
 	}
+
+	cur.boundary(false);
+
+	if (cur.selIsMultiCell()) {
+		cur.pit() = cur.lastpit();
+		cur.pos() = cur.lastpos();
+		resetPos(cur);
+		return;
+	}
+
 	cur.pit() = 0;
 	cur.pos() = 0;
-	cur.boundary(false);
 
 	// in visual mode, place cursor at extreme left or right
 	
@@ -4169,6 +4196,14 @@ void InsetTabular::movePrevCell(Cursor & cur, EntryDirection entry_from)
 			return;
 		--cur.idx();
 	}
+
+	if (cur.selIsMultiCell()) {
+		cur.pit() = cur.lastpit();
+		cur.pos() = cur.lastpos();
+		resetPos(cur);
+		return;
+	}
+
 	cur.pit() = cur.lastpit();
 	cur.pos() = cur.lastpos();
 
