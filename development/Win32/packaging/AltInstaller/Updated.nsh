@@ -6,6 +6,7 @@ Function UpdateModifiedFiles
  File /r "${PRODUCT_SOURCEDIR}\bin\Lib"
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\python.exe"
+ File "${PRODUCT_SOURCEDIR}\bin\python25.dll"
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  SetOutPath "$INSTDIR\Resources"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
@@ -43,6 +44,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\beispiel_roh.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\splash.lyx"
  SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\beamer.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\revtex4.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\singlecol.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\svglobal3.layout"
