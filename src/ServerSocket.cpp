@@ -52,7 +52,7 @@ ServerSocket::ServerSocket(LyXFunc * f, FileName const & addr)
 	  address_(addr)
 {
 	if (fd_ == -1) {
-		lyxerr << "lyx: Disabling LyX socket." << endl;
+		LYXERR(Debug::LYXSERVER, "lyx: Disabling LyX socket.");
 		return;
 	}
 
