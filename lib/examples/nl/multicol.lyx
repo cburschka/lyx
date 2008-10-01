@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -16,9 +16,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -36,40 +38,33 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 Meervoudige kolommen
 \end_layout
 
 \begin_layout Author
-
 door 
 \noun on
 Lars Gullik Bjønnes
 \end_layout
 
 \begin_layout Section
-
 Strekking
 \end_layout
 
 \begin_layout Standard
-
 Het is de bedoeling van dit hoofdstuk aan te geven hoe het LaTeX pakket
-
-\family default
  
 \family typewriter
 multicol
 \family default
  gebruikt kan worden in een LyX document.
- Aangezien LyX het pakket
-\family default
- 
+ Aangezien LyX het pakket 
 \family typewriter
 multicol
 \family default
@@ -79,15 +74,11 @@ multicol
 \end_layout
 
 \begin_layout Subsection
-
 Beperkingen 
 \end_layout
 
 \begin_layout Standard
-
-Met het
-\family default
- 
+Met het 
 \family typewriter
 multicol
 \family default
@@ -102,29 +93,22 @@ multicol
 \end_layout
 
 \begin_layout Subsection
-
 Voorbeelden
 \end_layout
 
 \begin_layout Subsubsection
-
 Twee kolommen
 \end_layout
 
 \begin_layout Standard
-
 Als je twee kolommen in uw tekst wenst, moet je de LaTeX mode gebruiken
- om
-\family default
- 
+ om 
 \family typewriter
 
 \backslash
 begin{multicols}{2}
 \family default
- te plaatsen op het punt waar je wilt dat de twee kolommen beginnen en
-\family default
- 
+ te plaatsen op het punt waar je wilt dat de twee kolommen beginnen en 
 \family typewriter
 
 \backslash
@@ -135,22 +119,18 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace -2ex
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{2}
@@ -169,14 +149,15 @@ begin{multicols}{2}
 Het avontuur van het lege huis
 \series default
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 door 
 \noun on
 Sir Arthur Conan Doyle
 \end_layout
 
 \begin_layout Standard
-
 
 \size small
 Het was in het voorjaar van het jaar 1894 dat iedereen in Londen  geïnteresseerd
@@ -207,12 +188,11 @@ Het was in het voorjaar van het jaar 1894 dat iedereen in Londen  geïnteresseer
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -224,34 +204,28 @@ end{multicols}
 \end_layout
 
 \begin_layout Subsubsection
-
 Meervoudige kolommen
 \end_layout
 
 \begin_layout Standard
-
 Hetzelfde patroon wordt toegepast als je meer dan twee kolommen wenst.
  (je kunt meer dan drie kolommen definieren, maar dat is mogelijk minder
  plezierig voor het oog.)
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace -2ex
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{3}
@@ -263,7 +237,6 @@ begin{multicols}{3}
 \end_layout
 
 \begin_layout Standard
-
 
 \size footnotesize
 U kunt zich voorstellen dat mijn nauwe vriendschap met Sherlock Holmes me
@@ -288,12 +261,11 @@ U kunt zich voorstellen dat mijn nauwe vriendschap met Sherlock Holmes me
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -305,32 +277,26 @@ end{multicols}
 \end_layout
 
 \begin_layout Subsubsection
-
 Kolommen binnen kolommen
 \end_layout
 
 \begin_layout Standard
-
 Je kunt zelfs kolommen binnen kolommen definieren:
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace -2ex
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{2}
@@ -342,7 +308,6 @@ begin{multicols}{2}
 \end_layout
 
 \begin_layout Standard
-
 
 \size footnotesize
 De rechtschapen Ronald Adair was de tweede zoon van de Graaf van Maynooth,
@@ -353,22 +318,18 @@ De rechtschapen Ronald Adair was de tweede zoon van de Graaf van Maynooth,
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace -2ex
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{2}
@@ -380,7 +341,6 @@ begin{multicols}{2}
 \end_layout
 
 \begin_layout Standard
-
 
 \size footnotesize
 De kinderen begaven zich in het beste milieu en hadden, voor zover bekend,
@@ -397,12 +357,11 @@ en.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -414,7 +373,6 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-
 
 \size footnotesize
 Ronald Adair was bijzonder gesteld op het kaartspel, maar nooit zodanig
@@ -442,12 +400,11 @@ ge speler en werd meestal de winnaar.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -459,15 +416,11 @@ end{multicols}
 \end_layout
 
 \begin_layout Subsection
-
 Voorbeelden voor gevorderden
 \end_layout
 
 \begin_layout Standard
-
-Zoals je mogelijk weet, kent
-\family default
- 
+Zoals je mogelijk weet, kent 
 \family typewriter
 multicol
 \family default
@@ -478,24 +431,21 @@ multicol
 \end_layout
 
 \begin_layout Subsubsection
-
 Inleiding en overslaan
 \end_layout
 
 \begin_layout Standard
-
 Als er minder dan 5cm ruimte op de pagina over is, zal op een nieuwe pagina
  worden begonnen voor dit deel dat een inleidende tekst boven twee  kolommen
  heeft:
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{2}[
@@ -508,7 +458,8 @@ En het verhaal gaat verder en verder en verder\SpecialChar \ldots{}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 ][5cm]
 \end_layout
 
@@ -518,7 +469,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 
 \size small
 Op de avond van de misdaad kwam hij precies om tien uur terug van de club.
@@ -544,12 +494,11 @@ Op de avond van de misdaad kwam hij precies om tien uur terug van de club.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -561,16 +510,12 @@ end{multicols}
 \end_layout
 
 \begin_layout Subsubsection
-
 Inleiding en secties
 \end_layout
 
 \begin_layout Standard
-
 Wat te doen als je wilt dat met de inleiding meteen een nieuwe sectie begint?
  Dat kan, maar alleen door LaTeX opdrachten binnen de parameters voor de
-
-\family default
  
 \family typewriter
 multicols
@@ -580,12 +525,11 @@ multicols
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{2}[
@@ -599,7 +543,8 @@ Dit is de sectie opdracht als inleiding
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 }][5cm]
 \end_layout
 
@@ -609,7 +554,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 
 \size small
 Het nauwkeurig onderzoeken van de omstandigheden zorgde er alleen voor dat
@@ -644,12 +588,11 @@ d werden door de volledige afwezigheid van een motief, want, zoals ik heb
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -661,31 +604,23 @@ end{multicols}
 \end_layout
 
 \begin_layout Subsubsection
-
 Lege ruimte
 \end_layout
 
 \begin_layout Standard
-
-Het
-\family default
- 
+Het 
 \family typewriter
 multicol
 \family default
  pakket vereist dat een zekere ruimte aanwezig is voor en na een deel met
   meerdere kolommen.
-  Bovendien zal
-\family default
- 
+  Bovendien zal 
 \family typewriter
 multicol
 \family default
  een lege ruimte plaatsen voor en na het deel met meerdere kolommen.
    De opdrachten om de voorkeursinstellingen voor de witruimte aan te passen
- moeten geplaatst worden voor
-\family default
- 
+ moeten geplaatst worden voor 
 \family typewriter
 
 \backslash
@@ -697,12 +632,11 @@ begin{multicols}
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -718,7 +652,6 @@ begin{multicols}{2}
 \end_layout
 
 \begin_layout Standard
-
 
 \size small
 De hele dag bleven deze feiten in mijn gedachten, strevend naar een theorie
@@ -749,12 +682,11 @@ De hele dag bleven deze feiten in mijn gedachten, strevend naar een theorie
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -766,15 +698,11 @@ end{multicols}
 \end_layout
 
 \begin_layout Paragraph
-
 Opmerking:
 \end_layout
 
 \begin_layout Standard
-
-De waarden die u heeft aangepast met
-\family default
- 
+De waarden die u heeft aangepast met 
 \family typewriter
 
 \backslash
@@ -785,12 +713,11 @@ setlength
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -804,15 +731,11 @@ multicolsep}{13pt}
 \end_layout
 
 \begin_layout Subsubsection
-
 Kolom breedte en afscheiding
 \end_layout
 
 \begin_layout Standard
-
-De breedte van de kolommen in de
-\family default
- 
+De breedte van de kolommen in de 
 \family sans
 multicols
 \family default
@@ -822,12 +745,11 @@ multicols
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -843,7 +765,6 @@ begin{multicols}{2}
 \end_layout
 
 \begin_layout Standard
-
 
 \size small
 Mijn observatie van Park Lane nr.
@@ -863,12 +784,11 @@ r, zijn spitse verschrompelde gezicht in het witte haar gehuld, en zijn
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -880,18 +800,16 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-
 Wederom moeten we de waarden naar hun voorkeursinstellingen terugzetten
  om te voorkomen dat ze voor de rest van het document worden gebruikt.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -905,15 +823,11 @@ columnsep}{10pt}
 \end_layout
 
 \begin_layout Subsubsection
-
 Vertikale strepen
 \end_layout
 
 \begin_layout Standard
-
-Tussen twee kolommen wordt een regel met breedte
-\family default
- 
+Tussen twee kolommen wordt een regel met breedte 
 \family typewriter
 
 \backslash
@@ -926,12 +840,11 @@ columnseprule
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -948,9 +861,7 @@ begin{multicols}{2}
 
 \begin_layout Standard
 
-
 \size small
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -963,16 +874,13 @@ U bent verbaasd mij te zien, mijnheer,
 
 \begin_layout Standard
 
-
 \size small
 Dat werd door mij bevestigd.
 \end_layout
 
 \begin_layout Standard
 
-
 \size small
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -989,9 +897,7 @@ Weet U, ik heb een geweten, mijnheer, en toen ik zag dat u in dit huis ging,
 
 \begin_layout Standard
 
-
 \size small
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -1013,9 +919,7 @@ Mag ik u vragen hoe u wist wie ik ben?
 
 \begin_layout Standard
 
-
 \size small
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -1025,7 +929,10 @@ Weet u, meneer, als ik zo vrij mag zijn, ik ben een buurman van u, want
  Misschien verzamelt u ook boeken, meneer.
  Hier heb ik 
 \noun on
-British\InsetSpace ~
+British
+\begin_inset space ~
+\end_inset
+
 Birds
 \noun default
 , 
@@ -1046,12 +953,11 @@ The Holy War
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -1063,17 +969,15 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-
 Zoals gebruikelijk moeten we de waarde herstellen na gebruik.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -1087,13 +991,11 @@ columnseprule}{0pt}
 \end_layout
 
 \begin_layout Standard
-
 Je zult naar de bibliotheek moeten gaan om de rest van het verhaal te lezen.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \SpecialChar \ldots{}
 of het verhaal opscharrelen in het Gutenberg project, ergens op het web.
  

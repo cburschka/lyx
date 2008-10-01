@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics dvips
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,18 +35,17 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Standard
-
 HAU IDAZKIAREN IZENBURUA DA
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Argibidea:: Izenburak izenburu baten itxura gehiago eduki beharko luke.
 \end_layout
 
@@ -54,13 +55,11 @@ Argibidea:: Izenburak izenburu baten itxura gehiago eduki beharko luke.
 \end_layout
 
 \begin_layout Standard
-
 egilea: Norbait
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Argibidea: Norbaitek egilea da.
 \end_layout
 
@@ -70,13 +69,11 @@ Argibidea: Norbaitek egilea da.
 \end_layout
 
 \begin_layout Standard
-
 1973ko urriak 23
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Argibidea:Hau DATA bat da.
 \end_layout
 
@@ -86,18 +83,15 @@ Argibidea:Hau DATA bat da.
 \end_layout
 
 \begin_layout Standard
-
 Aurkibide orokorra
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Argibidea: Zoragarria izango zatekeen aurkibidea eskuz idatzi
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 beharrik ez edukitzea.
 \end_layout
 
@@ -107,53 +101,44 @@ beharrik ez edukitzea.
 \end_layout
 
 \begin_layout Standard
-
 1.
  Oinarrizko Izakera..................1
 \end_layout
 
 \begin_layout Standard
-
 1.1 LyX-ek nola lantzen duen...............1
 \end_layout
 
 \begin_layout Standard
-
 1.2 LyX Zergaitik da hobeagoa...............1
 \end_layout
 
 \begin_layout Standard
-
 2.
  LyX-en Ezaugarriak
 \end_layout
 
 \begin_layout Standard
-
 3.
  LyX-eko gauz gehiago erabiltzean saiakera hutsak
 \end_layout
 
 \begin_layout Standard
-
 4.
  Matematikak
 \end_layout
 
 \begin_layout Standard
-
 ---------------------------------------------------
 \end_layout
 
 \begin_layout Standard
-
 1.
  Oinarrizko Izakera
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Argibidea: Ataleko izenburuek gehiago nabarmendu beharko ziren.
 \end_layout
 
@@ -163,17 +148,14 @@ Argibidea: Ataleko izenburuek gehiago nabarmendu beharko ziren.
 \end_layout
 
 \begin_layout Standard
-
 LyX-en oinarrizko izakeran idatzi beharrekoan datza, eta ez itxuran.
 \end_layout
 
 \begin_layout Standard
-
 1.1 LyX-ek nola lantzen duen
 \end_layout
 
 \begin_layout Standard
-
 LyX-ek LaTeX erabiltzen du, Leslie Lamport-ek 1985-an diseinatu zuen idazki
  prestaketa sisteman.
  TeX (Donald Knuth-ek 1984-ean sortuta) izeneko osaketa hizkuntzaren gain
@@ -183,23 +165,19 @@ LyX-ek LaTeX erabiltzen du, Leslie Lamport-ek 1985-an diseinatu zuen idazki
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Argibidea: AIPAMEN ERREFERENTZI hau eskuz idatzita ez
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 egotea legezkoena izango zatekeen.
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Zer gertatuko litzatekeen Lamport-en liburua bibliografiako
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 bigarren sarrera jartzen badugu?
 \end_layout
 
@@ -209,8 +187,6 @@ bigarren sarrera jartzen badugu?
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -231,8 +207,7 @@ Tipografi diseinuaren betebeharra irakurtzaileak egilearen burutazioak ulerttu
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Argibidea: Hau AIPAMEN bat da.
 \end_layout
 
@@ -242,12 +217,10 @@ Argibidea: Hau AIPAMEN bat da.
 \end_layout
 
 \begin_layout Standard
-
 1.2 LyX zergatik da hobeagoa
 \end_layout
 
 \begin_layout Standard
-
 LyX erabiltzaileentzat LaTeX baino erabilgarriagoa izan daiteke.
  Askoz ere erabil errazagokoa da, LaTeX zer den ikasi beharrik ez bait daukazu
  (azken finean ia programaketa hizkuntza denez).
@@ -277,25 +250,21 @@ ikusten duzuna esan nahi duzu
 \end_layout
 
 \begin_layout Standard
-
 2.
  LyX-en Ezaugarriak
 \end_layout
 
 \begin_layout Standard
-
 LyX-ek idazkiak idazteko erreztasun asko eskeintzen dituen ezugarri ugari
  ditu (bestela, zertarako nahiko zenuke erabiltzea?
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Argibidea: Parentesi arteko azalpen hau orri oineko ohar batean
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 hobekiago egongo litzatekeen.
 \end_layout
 
@@ -306,8 +275,7 @@ hobekiago egongo litzatekeen.
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Argibidea: Nabarmendu ezazu!
 \end_layout
 
@@ -318,36 +286,30 @@ Argibidea: Nabarmendu ezazu!
 \end_layout
 
 \begin_layout Standard
-
 * Margenak eta Orri Oineko Oharren zenbaketetaz LyX bera arduratzen da
 \end_layout
 
 \begin_layout Standard
-
 * LyX-ek matematika ekuazioak idaztean izugarrizko erreztasuna eskeintzen
  du.
 \end_layout
 
 \begin_layout Standard
-
 LyX beste testu prozesatzaileen baino hobeago izatearen zergatia eztabaidatzeko,
  1.2 atala ikusi, 1.
  orrialdean aurkitzen da.
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Argibidea: Ziurrenik, GURUTZATUTAKO ERREFERENTZI
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 hauek eskuz idatzirik ez luketeen egon behar.
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Eta ataletako zenbakiak aldatzen baditugu?
 \end_layout
 
@@ -357,24 +319,20 @@ Eta ataletako zenbakiak aldatzen baditugu?
 \end_layout
 
 \begin_layout Standard
-
 3.
  LyX-eko gauz gehiago erabiltzean saiakera hutsak
 \end_layout
 
 \begin_layout Standard
-
 Lehengo batean programa bat idatzi nuen.
  Ondoko hau zen:
 \end_layout
 
 \begin_layout Standard
-
 5 REMARK NERE PROGRAMA IKUSGARRIA
 \end_layout
 
 \begin_layout Standard
-
 10 PRINT 
 \begin_inset Quotes eld
 \end_inset
@@ -387,13 +345,11 @@ IKUSGARRIA NAIZ
 \end_layout
 
 \begin_layout Standard
-
 20 GOTO 10 
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Argibidea: Hau ordenagailu kodea da.
 \end_layout
 
@@ -403,34 +359,28 @@ Argibidea: Hau ordenagailu kodea da.
 \end_layout
 
 \begin_layout Standard
-
 Zientzilan ikaragarri haundi honen ondoren, artista bat nintzela sentitzen
  hasi nintzen, eta ondorengo hori idatzi nuen:
 \end_layout
 
 \begin_layout Standard
-
 LyX idazki prozezatzaile
 \end_layout
 
 \begin_layout Standard
-
 Zoragarri bat da
 \end_layout
 
 \begin_layout Standard
-
 Hainbeste denbora aurrezten du
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Argibidea: Ez da oso ona, baina olerkia da, estrofa bat
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 hain zuzen.
 \end_layout
 
@@ -440,19 +390,16 @@ hain zuzen.
 \end_layout
 
 \begin_layout Standard
-
 4.
  Matematikak
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Argibidea: Hemendik aurrera agertzen diren ekuazio guztiak
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 matematika eran idatziak izan beharko ziren.
 \end_layout
 
@@ -462,7 +409,6 @@ matematika eran idatziak izan beharko ziren.
 \end_layout
 
 \begin_layout Standard
-
 Nere ekuazio gogokoena bigarren mailako ekuazio baten emaitza da.
  Baldin eta ax^2+bx+c=0 (1.ek), orduan x= -b + o ken b^2-4ac-ren erroketa,hau
  dena 2a (2.
@@ -470,24 +416,20 @@ Nere ekuazio gogokoena bigarren mailako ekuazio baten emaitza da.
 \end_layout
 
 \begin_layout Standard
-
 Beste ekuazio ederrenetakoa kalkulu oinarria da: f'(x) limitzat definitzen
  da f(x+deltax) - f(x)-ren zerora hurbiltzen denean, deltax (3.
  ek)-egatik zatitua.
 \end_layout
 
 \begin_layout Standard
-
 ------------------------------------------------
 \end_layout
 
 \begin_layout Standard
-
 ERREFERENTZIAK
 \end_layout
 
 \begin_layout Standard
-
 [1] Lamport, Leslie.
  LaTeX: A Document Preparation System.
  Addison-Wesley, Reading, Massachusetts, bigarren argitaraketa, 1994.

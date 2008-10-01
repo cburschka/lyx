@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics dvips
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,67 +35,62 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 DIT IS DE TITEL VAN HET DOCUMENT
 \end_layout
 
 \begin_layout Author
-
 door Fee LyX
 \end_layout
 
 \begin_layout Date
-
 June 12, 1972
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
-
-\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
 \end_layout
 
 \begin_layout Section
-
 Uitgangspunten
 \end_layout
 
 \begin_layout Standard
-
 Het uitgangspunt van LyX is dat je je niet bezig houdt met de vormgeving,
  maar met de inhoud van je tekst.
 \end_layout
 
 \begin_layout Subsection
-
 Hoe LyX het fikst
 \end_layout
 
 \begin_layout Standard
-
 LyX gebruikt LaTeX, een tekstverwerkingssysteem ontworpen door Leslie Lamport
  in 1985.
  Dit was op zich weer gebaseerd op een opmaaktaal voor tekst genaamd TeX,
  door Donald Knuth gemaakt in 1984.
  LaTeX is ontworpen met dezelfde uitgangspunten als LyX.
  Leslie Lamport zei eens (zie referentie 
-\begin_inset LatexCommand cite
+\begin_inset CommandInset citation
+LatexCommand cite
 key "lamport"
+
 \end_inset
 
 ):
 \end_layout
 
 \begin_layout Quote
-
 De functie van typografisch ontwerp is om de lezer te helpen de ideeën van
  de schrijver te begrijpen.
  Om een document gemakkelijk leesbaar te laten zijn, zal de visuele structuur
@@ -108,15 +105,14 @@ De functie van typografisch ontwerp is om de lezer te helpen de ideeën van
 \end_layout
 
 \begin_layout Subsection
-
 Waarom LyX beter is
 \end_layout
 
 \begin_layout Standard
-
-
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:lyxbeter"
+
 \end_inset
 
 LyX kan voor meer mensen handig zijn dan LaTeX.
@@ -147,26 +143,21 @@ Wat je ziet is wat je bedoelt
 \end_layout
 
 \begin_layout Section
-
 De mogelijkheden van LyX
 \end_layout
 
 \begin_layout Standard
-
 LyX heeft vele mogelijkheden die het schrijven van documenten vergemakkelijken.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Waarom zou je het anders willen gebruiken?
 \end_layout
 
 \end_inset
 
- Ik vind het
-\emph default
- 
+ Ik vind het 
 \emph on
 geweldig
 \emph default
@@ -175,49 +166,46 @@ geweldig
 \end_layout
 
 \begin_layout Itemize
-
 LyX regelt marges, en het nummeren van voetnoten voor je
 \end_layout
 
 \begin_layout Itemize
-
 LyX maakt het gemakkelijk om wiskundige formules te maken en te veranderen
 \end_layout
 
 \begin_layout Standard
-
 Voor een meer filosofische verhandeling waarom LyX beter is dan andere tekstverw
 erkers, zie Sectie 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:lyxbeter"
+
 \end_inset
 
 , welke te vinden is op pagina 
-\begin_inset LatexCommand pageref
+\begin_inset CommandInset ref
+LatexCommand pageref
 reference "sec:lyxbeter"
+
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Section
-
 Slappe pogingen om andere dingen in LyX te gebruiken
 \end_layout
 
 \begin_layout Standard
-
 Ik heb laatst een programma geschreven.
  Het zag er uit als volgt.
 \end_layout
 
 \begin_layout LyX-Code
-
 5  REMARK MIJN GEWELDIGE PROGRAMMA
 \end_layout
 
 \begin_layout LyX-Code
-
 10 PRINT 
 \begin_inset Quotes eld
 \end_inset
@@ -230,39 +218,38 @@ IK BEN GEWELDIG!
 \end_layout
 
 \begin_layout LyX-Code
-
 20 GOTO 10
 \end_layout
 
 \begin_layout Standard
-
 Na al dit wetenschappelijk denkwerk, voelde ik mij meer artistiek, dus schreef
  ik deze haiku
 \end_layout
 
 \begin_layout Verse
-
 LyX is echt geweldig 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Tekstzettende tekstverwerker
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Hij bespaart zo veel tijd
 \end_layout
 
 \begin_layout Section
-
 Wiskunde dingen
 \end_layout
 
 \begin_layout Standard
-
 Mijn favoriete vergelijking is de oplossing van een kwadratische vergelijking.
  Als 
 \begin_inset Formula $ax^{2}+bx+c=0$
 \end_inset
 
  (verg.1), dan is 
-\begin_inset Formula $x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}$
+\begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
 \end_inset
 
  (verg.
@@ -270,9 +257,8 @@ Mijn favoriete vergelijking is de oplossing van een kwadratische vergelijking.
 \end_layout
 
 \begin_layout Standard
-
 Een andere favoriete vergelijking is de grondslag van calculus: 
-\begin_inset Formula $f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
+\begin_inset Formula $f'(x)\equiv\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset
 
  (verg.
@@ -280,17 +266,14 @@ Een andere favoriete vergelijking is de grondslag van calculus:
 \end_layout
 
 \begin_layout Section
-
 Opmerkingen
 \end_layout
 
 \begin_layout Standard
-
 Een paar opmerkingen over het verLyXen van dit bestand:
 \end_layout
 
 \begin_layout Itemize
-
 Ik kon de lijnen die met streepjes gemaakt waren verwijderen.
  Deze waren daar enkel om de titel en de referenties van de rest van het
  document te scheiden.
@@ -299,13 +282,10 @@ Ik kon de lijnen die met streepjes gemaakt waren verwijderen.
 \end_layout
 
 \begin_layout Itemize
-
 Ik heb niet de moeite genomen de wiskudige vergelijkingen in display-modus
  te zetten.
  Ik gebruikte ook niet de mogelijkheid van LyX om de vergelijkingen automatisch
- te nummeren, omdat dit niet in de
-\emph default
- 
+ te nummeren, omdat dit niet in de 
 \emph on
 Turorial
 \emph default
@@ -313,7 +293,6 @@ Turorial
 \end_layout
 
 \begin_layout Itemize
-
 Ik hoefde het woord 
 \begin_inset Quotes eld
 \end_inset
@@ -331,9 +310,7 @@ Bibliografie
 \begin_inset Quotes erd
 \end_inset
 
-, afhankelijk van de tekstklasse) wanneer je
-\family default
- 
+, afhankelijk van de tekstklasse) wanneer je 
 \family sans
 Bibliography
 \family default
@@ -341,7 +318,8 @@ Bibliography
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "lamport"
 
 \end_inset

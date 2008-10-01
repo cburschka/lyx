@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics dvips
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,18 +35,17 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Standard
-
 TO JE NASLOV VAŠEGA SPISA 
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Namig: naslov bi moral biti videti bolj kot naslov.
 \end_layout
 
@@ -54,13 +55,11 @@ Namig: naslov bi moral biti videti bolj kot naslov.
 \end_layout
 
 \begin_layout Standard
-
 Avtor: Fe LyX
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Namig: Fe je AVTOR (angl.
  Author).
 \end_layout
@@ -71,14 +70,12 @@ Namig: Fe je AVTOR (angl.
 \end_layout
 
 \begin_layout Standard
-
 12.
  junij 1972
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Namig: to je DATUM (angl.
  Date).
 \end_layout
@@ -89,18 +86,15 @@ Namig: to je DATUM (angl.
 \end_layout
 
 \begin_layout Standard
-
 Kazalo
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Namig: Fino bi bilo, če nam ne bi bilo treba ročno
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 dobesedno vpisovati vsebinskega kazala.
 \end_layout
 
@@ -110,59 +104,49 @@ dobesedno vpisovati vsebinskega kazala.
 \end_layout
 
 \begin_layout Standard
-
 1.
  Temeljna filozofija..................1
 \end_layout
 
 \begin_layout Standard
-
 1.1 Kako se stvari loteva LyX...............1
 \end_layout
 
 \begin_layout Standard
-
 1.2 Zakaj je LyX boljši................1
 \end_layout
 
 \begin_layout Standard
-
 2.
  Odlike LyXa
 \end_layout
 
 \begin_layout Standard
-
 3.
  Nerodni poskusi uporabe LyXa
 \end_layout
 
 \begin_layout Standard
-
 4.
  Matematične zadevščine
 \end_layout
 
 \begin_layout Standard
-
 ---------------------------------------------------
 \end_layout
 
 \begin_layout Standard
-
 1.
  Temeljna filozofija
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Namig: naslovi razdelkov (angl.
  Section) bi verjetno
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 morali bolj izstopati.
 \end_layout
 
@@ -172,18 +156,15 @@ morali bolj izstopati.
 \end_layout
 
 \begin_layout Standard
-
 Temeljna filozofija LyXa je, da naj bi se posvečali vsebini tistega, o čemer
  pišemo, ne obliki.
 \end_layout
 
 \begin_layout Standard
-
 1.1 Kako se stvari loteva LyX
 \end_layout
 
 \begin_layout Standard
-
 LyX uporablja LaTeX, sistem za pripravljanje spisov, ki ga je leta 1985
  zasnoval Leslie Lamport.
  LaTeX pa temelji na stavnem jeziku, imenovanem TeX, ki ga je leta 1984
@@ -193,19 +174,16 @@ LyX uporablja LaTeX, sistem za pripravljanje spisov, ki ga je leta 1985
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Namig: Verjetno ta NAVZKRIŽNI SKLIC ne bi smel
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 biti "vnešen".
  Kaj, če naredimo Lamportovo knjigo
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 za drugo postavko spiska literature?
 \end_layout
 
@@ -215,8 +193,6 @@ za drugo postavko spiska literature?
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Quotes gld
 \end_inset
 
@@ -236,8 +212,7 @@ Tipografsko oblikovanje naj bi pomagalo bralcu razumeti avtorjeve zamisli.
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Namig: To je NAVEDEK (angl.
  Quote).
 \end_layout
@@ -248,12 +223,10 @@ Namig: To je NAVEDEK (angl.
 \end_layout
 
 \begin_layout Standard
-
 1.2 Zakaj je LyX boljši
 \end_layout
 
 \begin_layout Standard
-
 LyX je uporaben za več ljudi kot LaTeX.
  Precej lažje se ga je naučiti, saj ni treba znati LaTeXa (ki je praktično
  programski jezik).
@@ -281,25 +254,21 @@ to, kar vidiš, to tudi misliš
 \end_layout
 
 \begin_layout Standard
-
 2.
  Odlike LyXa
 \end_layout
 
 \begin_layout Standard
-
 LyX ima številne odlike, ki nam olajšajo pisanje spisov.
  (Navsezadnje, le zakaj bi ga drugače sploh želeli uporabljati?
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Namig: Ta stavek v oklepaju je videti bolje kot
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 opomba v nogi.
 \end_layout
 
@@ -309,8 +278,7 @@ opomba v nogi.
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Namig: Poudarite!
 \end_layout
 
@@ -321,35 +289,29 @@ Namig: Poudarite!
 \end_layout
 
 \begin_layout Standard
-
 * Namesto vas skrbi za robove in številči opombe v nogi.
 \end_layout
 
 \begin_layout Standard
-
 * Olajša pisanje in urejanje matematičnih obrazcev.
 \end_layout
 
 \begin_layout Standard
-
 Bolj filozofsko razpravo o tem, zakaj je LyX boljši od drugih urejevalnikov
  besedil, pa boste našli v razdelku 1.2 na strani 1.
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Namig: Verjetno ta NAVZKRIŽNA SKLICEVANJA
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 ne bi smela biti "zakodirana".
  Kaj, če spremenimo
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 številke razdelkov?
 \end_layout
 
@@ -359,23 +321,19 @@ ne bi smela biti "zakodirana".
 \end_layout
 
 \begin_layout Standard
-
 3.
  Nerodni poskusi uporabe LyXa
 \end_layout
 
 \begin_layout Standard
-
 Zadnjič sem napisal program, podoben spodnjemu:
 \end_layout
 
 \begin_layout Standard
-
 5 REM MOJ STRAŠNI PROGRAM
 \end_layout
 
 \begin_layout Standard
-
 10 PRINT 
 \begin_inset Quotes eld
 \end_inset
@@ -388,13 +346,11 @@ STRAŠEN SEM!
 \end_layout
 
 \begin_layout Standard
-
 20 GOTO 10 
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Namig: To je računalniška KODA (angl.
  Code).
 \end_layout
@@ -405,34 +361,28 @@ Namig: To je računalniška KODA (angl.
 \end_layout
 
 \begin_layout Standard
-
 Po tem učenem razmišljanju me je nenadoma preplavilo bolj umetniško razpoloženje
  in napisal sem tale haiku
 \end_layout
 
 \begin_layout Standard
-
 LyX je zares čudovit
 \end_layout
 
 \begin_layout Standard
-
 stavni urejevalnik besedil
 \end_layout
 
 \begin_layout Standard
-
 prihrani mi toliko časa 
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Namig: Ni preveč dobro, a je poezija,
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 znana tudi kot VERZI (angl.
  Verse).
 \end_layout
@@ -443,19 +393,16 @@ znana tudi kot VERZI (angl.
 \end_layout
 
 \begin_layout Standard
-
 4.
  Matematične zadevščine
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Namig: Te matematične stvari bi morale biti izpisane
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 v matematičnem načinu!
 \end_layout
 
@@ -465,7 +412,6 @@ v matematičnem načinu!
 \end_layout
 
 \begin_layout Standard
-
 Najbolj so mi pri srcu enačbe za rešitev kvadratne enačbe.
  Če je ax^2+bx+c=0 (en.
  1), potem je x= -b + ali minus kvadratni koren od b^2-4ac vse skupaj ulomljeno
@@ -474,7 +420,6 @@ Najbolj so mi pri srcu enačbe za rešitev kvadratne enačbe.
 \end_layout
 
 \begin_layout Standard
-
 Druga priljubljena enačba je temelj matematične analize: izraz f'(x) je
  definiran kot limita izraza f(x+deltax) - f(x) ulomljenega z deltax, ko
  gredo števila deltax proti nič (en.
@@ -482,17 +427,14 @@ Druga priljubljena enačba je temelj matematične analize: izraz f'(x) je
 \end_layout
 
 \begin_layout Standard
-
 ------------------------------------------------
 \end_layout
 
 \begin_layout Standard
-
 LITERATURA
 \end_layout
 
 \begin_layout Standard
-
 [1] Lamport, Leslie.
  LaTeX: A Document Preparation System; Addison-Wesley, Reading, Massachusetts,
  druga izdaja, 1994.

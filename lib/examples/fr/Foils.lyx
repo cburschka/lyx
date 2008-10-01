@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass foils
@@ -18,9 +18,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics dvips
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -51,32 +53,28 @@
 \bullet 3 1 3 -1
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 Classe Foils
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 7pt
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 hrule height 7pt
@@ -89,7 +87,6 @@ hrule height 7pt
 
 \begin_layout Author
 
-
 \noun on
 Allan Rae 
 \noun default
@@ -97,12 +94,10 @@ et l'Équipe LyX
 \end_layout
 
 \begin_layout Date
-
 19 novembre 1997
 \end_layout
 
 \begin_layout Abstract
-
 On peut combiner LyX et FoilTeX en un puissant outil de préparation de 
 \begin_inset Quotes fld
 \end_inset
@@ -115,17 +110,15 @@ transparents
 \end_layout
 
 \begin_layout Foilhead
-
 Voici un En-tête_Diapo
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 hrule height 3pt
@@ -137,7 +130,6 @@ hrule height 3pt
 \end_layout
 
 \begin_layout Standard
-
 Un En-tête_Diapo démarre une nouvelle diapo.
  Il y a aussi une version Courte qui réduit l'espace entre l'en-tête et
  le corps de la diapo.
@@ -146,12 +138,11 @@ Un En-tête_Diapo démarre une nouvelle diapo.
 \end_layout
 
 \begin_layout Itemize
-
-
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 zerolistvertdimens{}
@@ -166,35 +157,33 @@ Puces
 
 \begin_deeper
 \begin_layout Itemize
-
 est idéale avec la classe foils
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
 vous permettant de choisir la puce
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
 pour chacun des quatre niveaux de l'environnement ListePuces
 \end_layout
+
 \end_deeper
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-
 NOTE : Pour exploiter toutes les possibilités de sélection de la forme des
  puces, lisez le manuel d'
 \emph on
-Options\InsetSpace ~
+Options
+\begin_inset space ~
+\end_inset
+
 Avancées
 \emph default
- et l'exemple
-\family default
- 
+ et l'exemple 
 \family typewriter
 fr_ListesPuces.lyx
 \family default
@@ -202,11 +191,8 @@ fr_ListesPuces.lyx
 \end_layout
 
 \begin_layout Itemize
-
 NOTE 2 : Pour avoir un espacement de liste petit comme ici mettez la commande
- FoilTeX
-\family default
- 
+ FoilTeX 
 \family typewriter
 
 \backslash
@@ -216,17 +202,15 @@ zerolistvertdimens{}
 \end_layout
 
 \begin_layout ShortFoilhead
-
 Voici un En-tête_Diapo_Court
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 hrule height 3pt
@@ -238,29 +222,24 @@ hrule height 3pt
 \end_layout
 
 \begin_layout Standard
-
 La classe foils a été étendue pour avoir deux nouveaux types de listes à
  puces.
  Ce sont :
 \end_layout
 
 \begin_layout TickList
-
 ListeCochés (TickList)
 \end_layout
 
 \begin_layout Standard
-
 et
 \end_layout
 
 \begin_layout CrossList
-
 ListeCroix (CrossList)
 \end_layout
 
 \begin_layout Standard
-
 Ces deux listes ont été ajoutées pour les listes de type conseils / interdiction
 s, ou 
 \begin_inset Quotes fld
@@ -285,17 +264,15 @@ pas d'accord
 \end_layout
 
 \begin_layout Rotatefoilhead
-
 En-tête_Diapo_Tourné
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 hrule height 3pt
@@ -307,42 +284,36 @@ hrule height 3pt
 \end_layout
 
 \begin_layout Itemize
-
 Vous pouvez créer des diapos paysage avec En-tête_Diapo_Tourné.
 \end_layout
 
 \begin_layout Itemize
-
 Notez qui si vous visionnez ça avec xdvi la page semblera déborder de la
  feuille car xdvi ne tourne pas le texte.
 \end_layout
 
 \begin_layout Itemize
-
 Si vous visionnez ce document avec ghostview ou quelque chose d'approchant
  la page apparaîtra tournée.
  Sinon c'est que vous n'avez sans doute pas le bon pilote dvips.
 \end_layout
 
 \begin_layout Definition*
-
 Il y a aussi plusieurs environnements spécialement destinés à présenter
  des Théorèmes, Lemmes, Corollaires, Propositions, Preuves et Définitions.
  Il en existe des versions numérotées et non numérotées.
 \end_layout
 
 \begin_layout ShortRotatefoilhead
-
 En-tête_Diapo_Court_Tourné
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 hrule height 3pt
@@ -354,19 +325,17 @@ hrule height 3pt
 \end_layout
 
 \begin_layout Itemize
-
 Là encore la version courte réduit l'espace sous l'en-tête.
 \end_layout
 
 \begin_layout Itemize
-
 Une autre façon de contrôler la séparation est d'en ajuster la taille dans
  le préambule, ce qui affectera à la fois la version normale et la version
  courte des en-têtes de diapo (droits et tournés).
  Par exemple, 
-\newline
+\begin_inset Newline newline
+\end_inset
 
-\family default
  
 \family typewriter
 
@@ -376,38 +345,43 @@ setlength{
 foilheadskip}{-0.5in}
 \family default
  
+\begin_inset Newline newline
+\end_inset
 
-\newline
-réduira l'espacement de 0,5\InsetSpace ~
+réduira l'espacement de 0,5
+\begin_inset space ~
+\end_inset
+
 pouce.
  Les autres unités comprennent mm (millimètres) et pt (points).
 \end_layout
 
 \begin_layout Itemize
-
-Les versions
-\emph default
- 
+Les versions 
 \emph on
 courtes
 \emph default
- des en-têtes de diapo réduisent la séparation de 0,5\InsetSpace ~
-pouce (environ 12,5\InsetSpace ~
+ des en-têtes de diapo réduisent la séparation de 0,5
+\begin_inset space ~
+\end_inset
+
+pouce (environ 12,5
+\begin_inset space ~
+\end_inset
+
 mm).
 \end_layout
 
 \begin_layout ShortFoilhead
-
 Preuves non triviales
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 hrule height 3pt
@@ -419,40 +393,27 @@ hrule height 3pt
 \end_layout
 
 \begin_layout Lemma*
-
-Plusieurs paragraphes consécutifs de type
-\emph default
- 
+Plusieurs paragraphes consécutifs de type 
 \emph on
 Theorem
 \emph default
-,
-\emph default
- 
+, 
 \emph on
 Lemme
 \emph default
-,
-\emph default
- 
+, 
 \emph on
 Corollaire
 \emph default
-,
-\emph default
- 
+, 
 \emph on
 Proposition
 \emph default
-,
-\emph default
- 
+, 
 \emph on
 Définition
 \emph default
-,
-\emph default
- 
+, 
 \emph on
 Preuve
 \emph default
@@ -461,45 +422,31 @@ Preuve
 \end_layout
 
 \begin_layout Lemma*
-
 Comme vous voyez, nous sommes toujours dans le même lemme.
 \end_layout
 
 \begin_layout Lemma*
-
-Several consecutive paragraphs of type
-\emph default
- 
+Several consecutive paragraphs of type 
 \emph on
 Theorem
 \emph default
-,
-\emph default
- 
+, 
 \emph on
 Lemma
 \emph default
-,
-\emph default
- 
+, 
 \emph on
 Corollary
 \emph default
-,
-\emph default
- 
+, 
 \emph on
 Proposition
 \emph default
-,
-\emph default
- 
+, 
 \emph on
 Definition
 \emph default
-,
-\emph default
- 
+, 
 \emph on
 Proof
 \emph default
@@ -507,17 +454,15 @@ Proof
 \end_layout
 
 \begin_layout Lemma*
-
 As you can see, we are still in the same lemma.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 %
 \end_layout
 
@@ -527,12 +472,9 @@ status inlined
 \end_layout
 
 \begin_layout Lemma*
-
 Pour mettre un deuxième Lemme juste après le premier, il faut les séparer
  par du texte standard ou, comme ici, par un insert TeX qui contient juste
- un
-\family default
- 
+ un 
 \family typewriter
 \emph on
 
@@ -553,11 +495,8 @@ ent les deux environnements.
 \end_layout
 
 \begin_layout Lemma*
-
 NOTE : Vous ne rencontrerez ce problème qu'avec des paragraphes du même
- type et
-\emph default
- 
+ type et 
 \emph on
 pas
 \emph default
@@ -565,17 +504,15 @@ pas
 \end_layout
 
 \begin_layout ShortFoilhead
-
 Tableaux et Figures
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 hrule height 3pt
@@ -586,10 +523,7 @@ hrule height 3pt
 
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.3cm
 \end_inset
 
@@ -598,51 +532,46 @@ hrule height 3pt
 
 \begin_layout Standard
 \align center
-
-\begin_inset  Tabular
+\begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Colonne 1
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Colonne 2
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Colonne 3
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Simple
 \end_layout
 
@@ -651,8 +580,7 @@ Simple
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 
 \emph on
 exemple
@@ -663,20 +591,18 @@ exemple
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 de
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 
 \bar under
 tableau
@@ -684,21 +610,19 @@ tableau
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 avec
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 
 \series bold
 foils
@@ -715,17 +639,13 @@ foils
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.3cm
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 Les tableaux et les figures sont tous deux supportés dans Foils.
  Cependant les flottants ne flottent pas, mais apparaissent exactement là
  où ils se trouvent dans le texte.
@@ -733,7 +653,6 @@ Les tableaux et les figures sont tous deux supportés dans Foils.
 \end_layout
 
 \begin_layout Standard
-
 Both tables and figures are supported in Foils however floats don't float
  instead they appear exactly where they appear in the text.
  Any placement parameters you set will be ignored.
@@ -743,31 +662,28 @@ wide false
 sideways false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align center
-
-\begin_inset  Tabular
+\begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Ligne 1
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 
 \emph on
 Autre
@@ -775,23 +691,21 @@ Autre
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 exemple
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Ligne 2
 \end_layout
 
@@ -800,8 +714,7 @@ Ligne 2
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 
 \bar under
 de
@@ -812,30 +725,27 @@ de
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 tableau
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Ligne 3
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 
 \series bold
 avec
@@ -843,11 +753,10 @@ avec
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 foils
 \end_layout
 
@@ -861,11 +770,10 @@ foils
 
 \end_layout
 
-\begin_layout 
+\begin_layout Plain Layout
 \begin_inset Caption
 
-\begin_layout 
-
+\begin_layout Plain Layout
 Voici un tableau flottant qui ne flotte pas
 \end_layout
 
@@ -880,17 +788,15 @@ Voici un tableau flottant qui ne flotte pas
 \end_layout
 
 \begin_layout ShortFoilhead
-
 En-têtes et Pieds de Page
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 hrule height 3pt
@@ -902,14 +808,12 @@ hrule height 3pt
 \end_layout
 
 \begin_layout Standard
-
 FoilTeX offre de nombreuses possibilités pour gérer les en-têtes et les
  pieds de page
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Vous pouvez aussi utiliser les notes en bas de page standard comme ici.
 \end_layout
 
@@ -923,18 +827,13 @@ Vous pouvez aussi utiliser les notes en bas de page standard comme ici.
 \end_layout
 
 \begin_layout Standard
-
-Le pied de page gauche est contrôlé par les deux commandes
-\family default
- 
+Le pied de page gauche est contrôlé par les deux commandes 
 \family typewriter
 
 \backslash
 MyLogo{}
 \family default
- et
-\family default
- 
+ et 
 \family typewriter
 
 \backslash
@@ -955,12 +854,10 @@ Restriction{}
 \end_layout
 
 \begin_layout Standard
-
 Les autres coins sont contrôlés par :
 \end_layout
 
 \begin_layout Standard
-
 
 \family typewriter
 
@@ -972,7 +869,6 @@ rightfooter{}
 
 \begin_layout Standard
 
-
 \family typewriter
 
 \backslash
@@ -981,7 +877,6 @@ rightheader{}
 
 \begin_layout Standard
 
-
 \family typewriter
 
 \backslash
@@ -989,17 +884,15 @@ leftheader{}
 \end_layout
 
 \begin_layout Foilhead
-
 Pour en Savoir Plus
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 hrule height 3pt
@@ -1011,7 +904,6 @@ hrule height 3pt
 \end_layout
 
 \begin_layout Standard
-
 Il devrait y avoir de la documentation sur FoilTeX dans votre distribution
  LaTeX.
  Il y a bien d'autres fonctions de FoilTeX qui n'ont pas été décrites ici.
@@ -1021,7 +913,8 @@ Il devrait y avoir de la documentation sur FoilTeX dans votre distribution
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "2"
 
 \end_inset
@@ -1034,22 +927,24 @@ The FoilTeX Class Package
 \begin_inset Quotes frd
 \end_inset
 
-,
-\family default
- 
+, 
 \family typewriter
 .../texmf/texmf/doc/latex/foiltex/foiltex.dvi
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "2"
 
 \end_inset
 
 Équipe de Documentation LyX, manuel d'
 \emph on
-Options\InsetSpace ~
+Options
+\begin_inset space ~
+\end_inset
+
 Avancées
 \emph default
 .

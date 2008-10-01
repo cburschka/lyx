@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics dvips
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,22 +35,20 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 זו הכותרת של המסמך
 \end_layout
 
 \begin_layout Author
-
 מאת יהושע ליקס
 \end_layout
 
 \begin_layout Date
-
 
 \numeric on
 18
@@ -59,35 +59,29 @@
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
-
-\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
 \end_layout
 
 \begin_layout Section
-
 פילוסופיה בסיסית
 \end_layout
 
 \begin_layout Standard
-
 הפילוסופיה הבסיסית של ליקס היא שאתה צריך לדאוג אודות התוכן של מה שאתה כותב
  ולא הצורה.
 \end_layout
 
 \begin_layout Subsection
-
 איך ליקס עושה את זה
 \end_layout
 
 \begin_layout Standard
-
-ליקס משתמשת ב-
-\lang hebrew
- 
+ליקס משתמשת ב- 
 \lang english
 LaTeX
 \lang hebrew
@@ -96,9 +90,7 @@ LaTeX
 1985
 \numeric off
 .
- היא, בתורה, בנויה מעל שפת מחשב יעודית בשם
-\lang hebrew
- 
+ היא, בתורה, בנויה מעל שפת מחשב יעודית בשם 
 \lang english
 TeX
 \lang hebrew
@@ -107,24 +99,22 @@ TeX
 1984
 \numeric off
 .
-
-\lang hebrew
  
 \lang english
 LaTeX
 \lang hebrew
  בנוה מסביב לפילוסופיה דומה לזו של ליקס.
  לסלי למפורט אמר פעם )ראה הפניה 
-\begin_inset LatexCommand cite
+\begin_inset CommandInset citation
+LatexCommand cite
 key "lamport"
+
 \end_inset
 
 (
 \end_layout
 
 \begin_layout Quote
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -132,9 +122,7 @@ key "lamport"
  מסמך קל לקריאה הוא מסמך שהמבנה הויזואלי שלו משקף את המבנה הלוגי שלו.
  ציטוטים ותוכניות מחשב, שהם אלמנטים לוגיים נפרדים, צריכים להיות מופרדים
  ויזואלית זה מזה...
- מכיוון ש-
-\lang hebrew
- 
+ מכיוון ש- 
 \lang english
 LaTeX
 \lang hebrew
@@ -148,27 +136,22 @@ LaTeX
 \end_layout
 
 \begin_layout Subsection
-
 למה ליקס יותר טובה
 \end_layout
 
 \begin_layout Standard
-
-
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:lyxbetter"
+
 \end_inset
 
-ליקס פונה להרבה יותר משתמשים מאשר
-\lang hebrew
- 
+ליקס פונה להרבה יותר משתמשים מאשר 
 \lang english
 LaTeX
 \lang hebrew
 .
- היא קלה יותר ללימוד בצורה משמעותית, כי, בניגוד ל-
-\lang hebrew
- 
+ היא קלה יותר ללימוד בצורה משמעותית, כי, בניגוד ל- 
 \lang english
 LaTeX
 \lang hebrew
@@ -197,9 +180,7 @@ What you see is what you mean
 \end_inset
 
 .
- כך היא מסוגלת לשלב בין הנוחות של מעבדי תמלילים והכוח של
-\lang hebrew
- 
+ כך היא מסוגלת לשלב בין הנוחות של מעבדי תמלילים והכוח של 
 \lang english
 LaTeX
 \lang hebrew
@@ -209,26 +190,21 @@ LaTeX
 \end_layout
 
 \begin_layout Section
-
 תכונותיה של ליקס
 \end_layout
 
 \begin_layout Standard
-
 לליקס תכונות רבות שמקלות על כתיבת מסמכים
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 אחרי הכל, למה שמישהו ירצה להשתמש בה אחרת?
 \end_layout
 
 \end_inset
 
- אני
-\series default
- 
+ אני 
 \series bold
 מאוד נרגש
 \series default
@@ -237,51 +213,48 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
 ליקס דואגת לשולי המסמך ולמספור הערות שוליים.
 \end_layout
 
 \begin_layout Itemize
-
 בליקס קל לכתוב ולערוך נוסחאות מתמטיות.
 \end_layout
 
 \begin_layout Standard
-
 אם אתה מעוניין בדיון פילוסופי למה ליקס עדיפה על הרבה מעבדי תמלילים, ראה
  סעיף 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:lyxbetter"
+
 \end_inset
 
 , בעמוד 
-\begin_inset LatexCommand pageref
+\begin_inset CommandInset ref
+LatexCommand pageref
 reference "sec:lyxbetter"
+
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Section
-
 נסיונות פתטיים להשתמש בתכונות נוספות של ליקס
 \end_layout
 
 \begin_layout Standard
-
 שלשום כתבתי תוכנית מחשב.
  והרי היא לפניכם
 \end_layout
 
 \begin_layout LyX-Code
 
-
 \lang english
 5 REMARK MY AWESOME PROGRAM
 \end_layout
 
 \begin_layout LyX-Code
-
 
 \lang english
 10 PRINT 
@@ -297,32 +270,31 @@ I'M AWESOME!
 
 \begin_layout LyX-Code
 
-
 \lang english
 20 GOTO 10
 \end_layout
 
 \begin_layout Standard
-
 זה היה יותר מדי מדעי בשבילי, אז כתבתי את החמשיר הבא
 \end_layout
 
 \begin_layout Verse
-
 ליקס פשוט גדול
-\newline
+\begin_inset Newline newline
+\end_inset
+
 מעבד תמלילים כל יכול
-\newline
+\begin_inset Newline newline
+\end_inset
+
 איתו לא תפול!
 \end_layout
 
 \begin_layout Section
-
 ענייני מתמטיקה
 \end_layout
 
 \begin_layout Standard
-
 הנוסחא האהובה עלי היא לפתרון משוואה ריבועית.
  אם 
 \begin_inset Formula $ax^{2}+bx+c=0$
@@ -333,7 +305,7 @@ I'M AWESOME!
 1
 \numeric off
 (, אזי 
-\begin_inset Formula $x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}$
+\begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
 \end_inset
 
  )משוואה 
@@ -344,9 +316,8 @@ I'M AWESOME!
 \end_layout
 
 \begin_layout Standard
-
 משוואה אהובה אפילו יותר עומדת בבסיס החשבון הדיפרנציאלי: 
-\begin_inset Formula $f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
+\begin_inset Formula $f'(x)\equiv\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset
 
  )משוואה 
@@ -357,7 +328,8 @@ I'M AWESOME!
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "lamport"
 
 \end_inset
@@ -365,8 +337,6 @@ key "lamport"
 
 \lang english
 Lamport, Leslie.
-
-\emph default
  
 \emph on
 LaTeX: A Document Preparation System.

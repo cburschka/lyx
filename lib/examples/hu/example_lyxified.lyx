@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -18,9 +18,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics dvips
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -38,6 +40,7 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -56,7 +59,9 @@ készítette egy LyX-es
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
 \end_inset
 
 
@@ -82,8 +87,10 @@ A LyX a LaTeX-et használja, ami egy dokumentum elkészítő rendszer, amit
  1984-ben.
  A LaTeX-et, a LyX-hez hasonló filozófia miatt készítették.
  Leslie Lamport egyszer azt mondta (lásd a hivatkozásban
-\begin_inset LatexCommand cite
+\begin_inset CommandInset citation
+LatexCommand cite
 key "lamport"
+
 \end_inset
 
 ):
@@ -108,8 +115,10 @@ Miért jobb a LyX
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:lyxbetter"
+
 \end_inset
 
 A LyX sokkal több embernek lehet hasznos, mint a LaTeX.
@@ -148,27 +157,20 @@ A LyX rengeteg olyan jellemzővel rendelkezik, amelyek megkönnyítik az írást
 \begin_inset Foot
 status open
 
-\begin_layout Standard
-\InsetSpace ~
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
 Ezek után, miért ne akarná használni?
 \end_layout
 
 \end_inset
 
-
-\shape default
  
 \shape italic
 Nagyon igazgatott
-\emph default
 \shape default
- 
-\shape italic
-\emph on
-
-\shape default
-\emph default
-vagyok, hogy beszélhessek róluk.
+ vagyok, hogy beszélhessek róluk.
  Íme közülük néhány.
 \end_layout
 
@@ -183,14 +185,18 @@ A LyX-el könnyen készíthet és szerkeszthet képleteket
 \begin_layout Standard
 A filozófiai értekezést, hogy miért jobb a LyX a többi szövegszerkesztőnél,
  megtalálja a 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:lyxbetter"
+
 \end_inset
 
 .
  szakaszban, amit a 
-\begin_inset LatexCommand pageref
+\begin_inset CommandInset ref
+LatexCommand pageref
 reference "sec:lyxbetter"
+
 \end_inset
 
 .
@@ -233,9 +239,13 @@ A tudományos gondolkodás után, teljesen művészien éreztem magam, és írta
 
 \begin_layout Verse
 A LyX egy nagyon szuper
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Szövegszedő szövegszerkesztő
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Sok időt takarít meg
 \end_layout
 
@@ -285,9 +295,7 @@ Ki tudtam szedni a kötőjeles sorokat.
 \begin_layout Itemize
 Nem zavartam be a képlet megjelenítési módjával.
  Valamint nem használtam az automatikus képlet számozást sem, mivel az nincs
- leírva a
-\emph default
- 
+ leírva a 
 \emph on
 Tankönyvben
 \emph default
@@ -316,14 +324,13 @@ Irodalomjegyzék
 \end_layout
 
 \begin_layout Bibliography
-
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "lamport"
 
 \end_inset
-Lamport, Leslie.
 
-\emph default
+Lamport, Leslie.
  
 \emph on
 LaTeX: A Document Preparation System.

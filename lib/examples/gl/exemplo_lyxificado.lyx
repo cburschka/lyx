@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics dvips
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,6 +35,7 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -50,7 +53,9 @@ por Pepe LyX
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
 \end_inset
 
 
@@ -76,8 +81,10 @@ LyX basea-se no LaTeX, un sistema de preparación de documentos deseñado
  TeX, criada por Donald Knuth en 1984.
  Por outra banda a filosofia do LaTeX é similar á de LyX.
  Leslie Lamport dixo (ver referéncia 
-\begin_inset LatexCommand cite
+\begin_inset CommandInset citation
+LatexCommand cite
 key "Lamport"
+
 \end_inset
 
 ) :
@@ -100,8 +107,10 @@ Por que o LyX é mellor
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sub:LyX-mellor"
+
 \end_inset
 
 LyX pode ser útil a mais xente que LaTeX.
@@ -126,16 +135,14 @@ LyX posui moitas características que facilitan a escrita de documentos
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Senón, porque o ia querer usar?
 \end_layout
 
 \end_inset
 
 .
- E a min
-\emph default
- 
+ E a min 
 \emph on
 agrada-me
 \emph default
@@ -155,13 +162,17 @@ LyX facilita a escrita e edición de fórmulas matemáticas.
 \begin_layout Standard
 Para unha discusión mais filosófica de por que LyX é mellor que a competéncia
  vexa a sección 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sub:LyX-mellor"
+
 \end_inset
 
 , que se acha na páxina 
-\begin_inset LatexCommand pageref
+\begin_inset CommandInset ref
+LatexCommand pageref
 reference "sub:LyX-mellor"
+
 \end_inset
 
 .
@@ -194,9 +205,13 @@ Após desta inxente lavoura informática, arrebatou-me unha vea poética e
 
 \begin_layout Verse
 LyX, veloz palilleira
-\newline
+\begin_inset Newline newline
+\end_inset
+
 teces as miñas palabras
-\newline
+\begin_inset Newline newline
+\end_inset
+
 nunha fermosa renda de letras.
 \end_layout
 
@@ -245,9 +260,7 @@ Eliminei as liñas a trazos que separaban o título e a bibliografia do resto
 
 \begin_layout Itemize
 Non coloquei as fórmulas en liñas independentes, nen usei a numeración automátic
-a que fornece o LyX, porque non se descreben no
-\emph default
- 
+a que fornece o LyX, porque non se descreben no 
 \emph on
 Tutorial
 \emph default
@@ -272,9 +285,7 @@ Bibliography,
 \begin_inset Quotes erd
 \end_inset
 
- segundo a clase de documento) ao seleccionar o ambiente
-\family default
- 
+ segundo a clase de documento) ao seleccionar o ambiente 
 \family sans
 Bibliografia
 \family default
@@ -282,14 +293,13 @@ Bibliografia
 \end_layout
 
 \begin_layout Bibliography
-
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "Lamport"
 
 \end_inset
-Lamport, Leslie.
 
-\emph default
+Lamport, Leslie.
  
 \emph on
 LaTeX: A Document Preparation System.

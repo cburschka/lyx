@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -17,9 +17,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -37,24 +39,21 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 Une meilleure solution pour l'Alignement Décimal
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Traduction par Adrien 
 \noun on
 Rebollo
 \noun default
-
-\family default
  
 \family typewriter
 <Adrien.Rebollo@gmx.fr>
@@ -68,18 +67,15 @@ Rebollo
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Informations de révision :
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Traduction : Mise à jour Date : 07/07/2003
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Original : Révision : 1.5, Date : 17/01/2003
 \end_layout
 
@@ -89,11 +85,8 @@ Original : Révision : 1.5, Date : 17/01/2003
 \end_layout
 
 \begin_layout Standard
-
 Une méthode alternative pour obtenir un alignement décimal dans les tableaux
- est de passer par le paquetage
-\family default
- 
+ est de passer par le paquetage 
 \family typewriter
 dcolumn
 \family default
@@ -102,8 +95,7 @@ dcolumn
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 NdT : Si votre séparateur décimal est la virgule.
  Si c'est le point, remplacez les virgules par des points.
 \end_layout
@@ -115,35 +107,37 @@ NdT : Si votre séparateur décimal est la virgule.
 
 \begin_layout LyX-Code
 
-
 \backslash
 usepackage{dcolumn} 
 \end_layout
 
 \begin_layout LyX-Code
 
-
 \backslash
 newcolumntype{d}[1]{D{,}{,}{#1}}
 \end_layout
 
 \begin_layout Standard
-
 Pour avoir une colonne alignée sur le symbole décimal, entrez ce qui suit
- dans le champ
-\family default
- 
+ dans le champ 
 \family sans
-Colonne\InsetSpace ~
+Colonne
+\begin_inset space ~
+\end_inset
+
 spéciale\SpecialChar \menuseparator
 Alignement
 \family default
- de la fenêtre
-\family default
- 
+ de la fenêtre 
 \family sans
-Style\InsetSpace ~
-du\InsetSpace ~
+Style
+\begin_inset space ~
+\end_inset
+
+du
+\begin_inset space ~
+\end_inset
+
 Tableau\SpecialChar \menuseparator
 Colonne/Rangée
 \family default
@@ -151,25 +145,18 @@ Colonne/Rangée
 \end_layout
 
 \begin_layout LyX-Code
-
 d{nombre de chiffres après la virgule dans les données}
 \end_layout
 
 \begin_layout Standard
-
-Dans le tableau suivant nous avons entré
-\family default
- 
+Dans le tableau suivant nous avons entré 
 \family typewriter
 d{4}
 \family default
 :
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.3cm
 \end_inset
 
@@ -178,18 +165,16 @@ d{4}
 
 \begin_layout Standard
 \align center
-
-\begin_inset  Tabular
+\begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
 <features>
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="right" valignment="top" leftline="true" width="0pt" special="d{4}">
-<row bottomline="true">
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<column alignment="right" valignment="top" width="0pt" special="d{4}">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Expression
 \end_layout
 
@@ -198,8 +183,7 @@ Expression
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Valeur
 \end_layout
 
@@ -207,12 +191,10 @@ Valeur
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
-
+\begin_layout Plain Layout
 \begin_inset Formula $\pi$
 \end_inset
 
@@ -224,8 +206,7 @@ Valeur
 <cell alignment="right" valignment="top" leftline="true" usebox="none" special="d{4}">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 3,1416
 \end_layout
 
@@ -233,12 +214,10 @@ Valeur
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
-
+\begin_layout Plain Layout
 \begin_inset Formula $\pi^{\pi}$
 \end_inset
 
@@ -247,11 +226,10 @@ Valeur
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 36,462
 \end_layout
 
@@ -259,12 +237,10 @@ Valeur
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
-
+\begin_layout Plain Layout
 \begin_inset Formula $(\pi^{\pi})^{\pi}$
 \end_inset
 
@@ -273,11 +249,10 @@ Valeur
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 80663,
 \end_layout
 
@@ -285,12 +260,10 @@ Valeur
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
-
+\begin_layout Plain Layout
 \begin_inset Formula $\pi^{\pi^{\pi}}$
 \end_inset
 
@@ -299,11 +272,10 @@ Valeur
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 1,3402e18
 \end_layout
 
@@ -318,37 +290,27 @@ Valeur
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset VSpace 0.3cm
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
 Pour créer de l'espace supplémentaire dans la colonne augmentez juste le
- nombre de décimales dans
-\family default
- 
+ nombre de décimales dans 
 \family typewriter
 d{}
 \family default
 .
- Cocher l'attribut
-\family default
- 
+ Cocher l'attribut 
 \family sans
 Multicolonne
 \family default
  pour une case isolée la rend insensible à l'alignement décimal, ce qui
  est commode.
  Un inconvénient de cette méthode est que le mode mathématique n'est pas
- autorisé dans une case avec l'alignement décimal sauf si l'attribut
-\family default
- 
+ autorisé dans une case avec l'alignement décimal sauf si l'attribut 
 \family sans
 Multicolonne
 \family default
@@ -356,10 +318,7 @@ Multicolonne
 \end_layout
 
 \begin_layout Standard
-
-Cette méthode offre la même flexibilité que le paquetage
-\family default
- 
+Cette méthode offre la même flexibilité que le paquetage 
 \family typewriter
 dcolumn
 \family default
@@ -371,13 +330,11 @@ t plusieurs types de colonnes dans le préambule.
 \end_layout
 
 \begin_layout LyX-Code
-
 D{inputsep}{outputsep}{decimal places}
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 NdT : non traduit car je ne suis pas certain du sens
 \end_layout
 
@@ -387,10 +344,7 @@ NdT : non traduit car je ne suis pas certain du sens
 \end_layout
 
 \begin_layout Standard
-
-Le lecteur intéressé se référera à la documentation du paquetage
-\family default
- 
+Le lecteur intéressé se référera à la documentation du paquetage 
 \family typewriter
 dcolumn
 \family default

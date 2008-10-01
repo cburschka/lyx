@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -16,9 +16,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize a4paper
 \use_geometry true
 \use_amsmath 0
@@ -40,6 +42,7 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -52,7 +55,9 @@ Mehrspaltige Dokumente
 von 
 \noun on
 Lars Gullik Bjønnes
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \noun default
 Übersetzung: 
@@ -66,7 +71,9 @@ letzte Änderung: 2.
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
 \end_inset
 
 
@@ -78,8 +85,6 @@ Absicht
 
 \begin_layout Standard
 Das Ziel dieses Abschnittes ist es, Ihnen die Verwendung des LaTeX-Paketes
-
-\family default
  
 \family typewriter
 multicol
@@ -92,8 +97,6 @@ multicol
 
 \begin_layout Standard
 Damit man mehrspaltige Dokumente drucken kann, muß in den LaTeX-Vorspann
-
-\family default
  
 \family typewriter
 
@@ -108,9 +111,7 @@ Einschränkungen
 \end_layout
 
 \begin_layout Standard
-Das Paket
-\family default
- 
+Das Paket 
 \family typewriter
 multicol
 \family default
@@ -135,20 +136,18 @@ Zwei Spalten
 \begin_layout Standard
 Wenn Sie Text in zwei Spalten setzen wollen, müssen Sie den LaTeX-Modus
  verwenden und an dem Punkt, an dem der zweispaltige Satz beginnen soll,
- den Befehl
-\family default
- 
+ den Befehl 
 \family typewriter
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \backslash
 begin{multicols}{2}
@@ -167,12 +166,12 @@ begin{multicols}{2}
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 
@@ -193,9 +192,10 @@ end{multicols}
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{2}
@@ -214,7 +214,9 @@ begin{multicols}{2}
 MOMO
 \series default
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 von 
 \noun on
 Michael Ende
@@ -267,9 +269,10 @@ Eigentlich waren es nur die Leute aus der näheren Umgebung, die das seltsame
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -290,12 +293,12 @@ Dasselbe Schema gilt, wenn Sie mehr als zwei Spalten haben wollen, Sie geben
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 
@@ -315,9 +318,10 @@ begin{multicols}{3}
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{3}
@@ -365,9 +369,10 @@ chen Farbe, denn sie lief fast immer barfuß.
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -394,9 +399,10 @@ Sie können sogar mehrspaltige Abschnitte innerhalb einer anderen, mehrspaltigen
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{2}
@@ -423,9 +429,10 @@ Darüber trug sie eine alte, viel zu weite Männerjacke, deren Ärmel an den
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{2}
@@ -455,9 +462,10 @@ te Kammern, die man durch ein Loch in der Außenmauer betreten konnte.
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -487,7 +495,9 @@ hier gefällt es dir also?
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Quotes gld
 \end_inset
@@ -497,7 +507,9 @@ Ja
 \end_inset
 
 , antwortet Momo.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Quotes gld
 \end_inset
@@ -507,7 +519,9 @@ Und du willst hier bleiben?
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Quotes gld
 \end_inset
@@ -517,7 +531,9 @@ Ja, gern.
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Quotes gld
 \end_inset
@@ -527,7 +543,9 @@ Aber wirst du denn nirgendwo erwartet?
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Quotes gld
 \end_inset
@@ -537,7 +555,9 @@ Nein.
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Quotes gld
 \end_inset
@@ -547,7 +567,9 @@ Ich meine, mußt du denn nicht wieder nach Hause?
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Quotes gld
 \end_inset
@@ -557,7 +579,9 @@ Ich bin hier zu Hause
 \end_inset
 
 , versicherte Momo schnell.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Quotes gld
 \end_inset
@@ -567,10 +591,14 @@ Wo kommst du denn her, Kind?
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Momo machte mit der Hand eine unbestimmte Bewegung, die irgendwohin in die
  Ferne deutete.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Quotes gld
 \end_inset
@@ -580,11 +608,15 @@ Wer sind denn deine Eltern?
 \end_inset
 
  forschte der Mann weiter.
-\newline
-Das Kind schaute ihn und die anderen Leute ratlos
- an und hob ein wenig die Schultern.
+\begin_inset Newline newline
+\end_inset
+
+Das Kind schaute ihn und die anderen Leute ratlos an und hob ein wenig die
+ Schultern.
  Die Leute tauschten Blicke und seufzten.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Quotes gld
 \end_inset
@@ -603,16 +635,19 @@ wir wollen dich nicht vertreiben.
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Momo nickte stumm, aber noch nicht ganz überzeugt\SpecialChar \ldots{}
 
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -628,9 +663,7 @@ Fortgeschrittene Beispiele
 \end_layout
 
 \begin_layout Standard
-Wie Sie vielleicht wissen, hat
-\family default
- 
+Wie Sie vielleicht wissen, hat 
 \family typewriter
 multicol
 \family default
@@ -652,12 +685,12 @@ Weil wegen des Abstandes auf der Seite jetzt weniger als 5 cm übrig sind,
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 
@@ -681,9 +714,10 @@ Text
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{2}[
@@ -694,9 +728,10 @@ begin{multicols}{2}[
 Und die Geschichte geht weiter und weiter und weiter und weiter\SpecialChar \ldots{}
 
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 ][5cm]
 \end_layout
 
@@ -898,9 +933,10 @@ Hundertzwei
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -917,26 +953,25 @@ Vorwort und Abschnitte
 
 \begin_layout Standard
 Was ist, wenn das Vorwort ein Abschnittsbefehl sein soll? Das geht, aber
- nur mit LaTeX-Befehlen innerhalb des
-\family default
- 
+ nur mit LaTeX-Befehlen innerhalb des 
 \family typewriter
 multicols
 \family default
 -Befehls.
  Deswegen kann der Abschnittsbefehl nicht von LyX geliefert werden LyX:
-\newline
+\begin_inset Newline newline
+\end_inset
 
  
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 
@@ -962,9 +997,10 @@ Text
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{2}[
@@ -976,9 +1012,10 @@ subsubsection{
 
 Dies ist ein Abschnittsbefehl als Vorwort
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 }][5cm]
 \end_layout
 
@@ -1129,9 +1166,10 @@ Ich brauch' nicht viel\SpecialChar \ldots{}
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -1147,16 +1185,12 @@ Leerraum
 \end_layout
 
 \begin_layout Standard
-Das
-\family default
- 
+Das 
 \family typewriter
 multicol
 \family default
 -Paket fügt vor und nach dem mehrspaltigen Abschnitt etwas Leerraum ein.
  Die Befehle zum ändern der Standardeinstellungen müssen unmittelbar vor
-
-\family default
  
 \family typewriter
 
@@ -1166,17 +1200,19 @@ begin{multicols}
  eingefügt werden.
  Das folgende Beispiel fügt 3 cm vor und nach dem  mehrspaltigen Abschnitt
  ein:
-\newline
+\begin_inset Newline newline
+\end_inset
+
  
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 
@@ -1202,7 +1238,8 @@ begin{multicols}{2}
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -1283,9 +1320,10 @@ Die Leute berieten lange hin und her, und zuletzt waren sie einverstanden.
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -1297,26 +1335,23 @@ end{multicols}
 \end_layout
 
 \begin_layout Description
-Bemerkung: Der mit
-\family default
- 
+Bemerkung: Der mit 
 \family typewriter
 
 \backslash
 setlength
 \family default
- 
-geänderte Wert muß hinterher wieder zurückgesetzt werden, sonst bleibt er
- für den Rest des Dokumentes erhalten: 
+ geänderte Wert muß hinterher wieder zurückgesetzt werden, sonst bleibt
+ er für den Rest des Dokumentes erhalten: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 
@@ -1338,9 +1373,10 @@ multicolsep}{13pt}
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -1358,26 +1394,26 @@ Spaltenbreite und Trennung
 \end_layout
 
 \begin_layout Standard
-Die Spaltenbreite der
-\family default
- 
+Die Spaltenbreite der 
 \family typewriter
 multicols
 \family default
 -Umgebung wird automatisch berechnet, aber Sie können den Abstand zwischen
  den Spalten festlegen.
  Der Abstand zwischen den den folgenden beiden Spalten wird 3 cm betragen:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 
@@ -1401,9 +1437,10 @@ begin{multicols}{2}
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -1440,9 +1477,10 @@ Sie fingen gleich an, indem sie zunächst einmal die halb eingestürzte steinern
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -1454,22 +1492,17 @@ end{multicols}
 \end_layout
 
 \begin_layout Description
-Bemerkung: Der
-\family typewriter
-
-\family default
- 
-geänderte Wert muß auch in diesem Fall hinterher wieder zurückgesetzt werden,
- sonst bleibt er für den Rest des Dokumentes erhalten: 
+Bemerkung: Der geänderte Wert muß auch in diesem Fall hinterher wieder zurückges
+etzt werden, sonst bleibt er für den Rest des Dokumentes erhalten: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 
@@ -1491,9 +1524,10 @@ columnsep}{10pt}
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -1511,9 +1545,7 @@ Vertikale Linien
 \end_layout
 
 \begin_layout Standard
-Mit
-\family default
- 
+Mit 
 \family typewriter
 
 \backslash
@@ -1528,12 +1560,12 @@ columnseprule
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 
@@ -1557,9 +1589,10 @@ begin{multicols}{2}
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -1595,9 +1628,10 @@ So begann die Freundschaft zwischen der kleinen Momo und den Leuten der
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -1613,12 +1647,12 @@ Wie immer setzen wir auch hier den Wert wieder zurück:
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
 <features>
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family typewriter
 
@@ -1640,9 +1674,10 @@ columnseprule}{0pt}
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{

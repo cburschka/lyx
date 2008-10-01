@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -16,9 +16,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -36,28 +38,25 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 MultiColonnes
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Informations de révision :
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Traduction : Mise à jour Date : 22/03/2002
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Original : Révision : 1.3, Date : 21/03/2002
 \end_layout
 
@@ -67,21 +66,17 @@ Original : Révision : 1.3, Date : 21/03/2002
 \end_layout
 
 \begin_layout Author
-
 par 
 \noun on
 Lars Gullik Bjønnes
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Traduction par Adrien 
 \noun on
 Rebollo
 \noun default
-
-\family default
  
 \family typewriter
 <Adrien.Rebollo@gmx.fr>
@@ -95,15 +90,11 @@ Rebollo
 \end_layout
 
 \begin_layout Section
-
 Objectif
 \end_layout
 
 \begin_layout Standard
-
 Le but de ce chapitre est de montrer comment utiliser le paquetage LaTeX
-
-\family default
  
 \family typewriter
 multicol
@@ -114,15 +105,11 @@ multicol
 \end_layout
 
 \begin_layout Subsection
-
 Limitations 
 \end_layout
 
 \begin_layout Standard
-
-Le paquetage
-\family default
- 
+Le paquetage 
 \family typewriter
 multicol
 \family default
@@ -137,20 +124,15 @@ multicol
 \end_layout
 
 \begin_layout Subsection
-
 Exemples
 \end_layout
 
 \begin_layout Subsubsection
-
 Deux Colonnes
 \end_layout
 
 \begin_layout Standard
-
 Si vous voulez avoir deux colonnes dans votre texte, il faut pour insérer
-
-\family default
  
 \family typewriter
 
@@ -158,9 +140,7 @@ Si vous voulez avoir deux colonnes dans votre texte, il faut pour insérer
 begin{multicols}{2}
 \family default
  en mode LaTeX à l'endroit où vous voulez démarrer la disposition en deux
- colonnes, et
-\family default
- 
+ colonnes, et 
 \family typewriter
 
 \backslash
@@ -171,12 +151,11 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{2}
@@ -196,8 +175,7 @@ The Adventure of the Empty House
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 NdT : Ne pensant pas être à la hauteur d'une traduction littéraire de 
 \noun on
 Conan Doyle
@@ -210,14 +188,15 @@ Conan Doyle
 \end_inset
 
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 by 
 \noun on
 Sir Arthur Conan Doyle
 \end_layout
 
 \begin_layout Standard
-
 
 \size small
 It was in the spring of the year 1894 that all London was interested, and
@@ -244,12 +223,11 @@ ty which utterly submerged my mind.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -261,24 +239,21 @@ end{multicols}
 \end_layout
 
 \begin_layout Subsubsection
-
 Colonnes Multiples
 \end_layout
 
 \begin_layout Standard
-
 Le même schéma s'applique si vous voulez plus de deux colonnes.
  (Vous pouvez avoir plus de 3 colonnes si vous voulez, mais ça risque de
  ne pas être très agréable à regarder.)
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{3}
@@ -290,7 +265,6 @@ begin{multicols}{3}
 \end_layout
 
 \begin_layout Standard
-
 
 \size footnotesize
 It can be imagined that my close intimacy with Sherlock Holmes had interested
@@ -315,12 +289,11 @@ It can be imagined that my close intimacy with Sherlock Holmes had interested
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -332,22 +305,19 @@ end{multicols}
 \end_layout
 
 \begin_layout Subsubsection
-
 Des colonnes dans une Colonne
 \end_layout
 
 \begin_layout Standard
-
 Vous pouvez même avoir des colonnes dans une colonne :
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{2}
@@ -359,7 +329,6 @@ begin{multicols}{2}
 \end_layout
 
 \begin_layout Standard
-
 
 \size footnotesize
 The Honourable Ronald Adair was the second son of the Earl of Maynooth,
@@ -370,12 +339,11 @@ The Honourable Ronald Adair was the second son of the Earl of Maynooth,
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{2}
@@ -387,7 +355,6 @@ begin{multicols}{2}
 \end_layout
 
 \begin_layout Standard
-
 
 \size footnotesize
 The youth moved in the best society--had, so far as was known, no enemies
@@ -403,12 +370,11 @@ The youth moved in the best society--had, so far as was known, no enemies
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -420,7 +386,6 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-
 
 \size footnotesize
 Ronald Adair was fond of cards--playing continually, but never for such
@@ -448,12 +413,11 @@ The evidence of those who had played with him-- Mr.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -465,15 +429,11 @@ end{multicols}
 \end_layout
 
 \begin_layout Subsection
-
 Exemples complexes
 \end_layout
 
 \begin_layout Standard
-
-Comme vous le savez sans doute
-\family default
- 
+Comme vous le savez sans doute 
 \family typewriter
 multicol
 \family default
@@ -483,27 +443,28 @@ multicol
 \end_layout
 
 \begin_layout Subsubsection
-
 Préface et Saut de page
 \end_layout
 
 \begin_layout Standard
+S'il reste moins de 5
+\begin_inset space ~
+\end_inset
 
-S'il reste moins de 5\InsetSpace ~
-cm sur la page, un saut de page sera inséré avant ce
- morceau, avec un texte de préface au-dessus des deux colonnes :
+cm sur la page, un saut de page sera inséré avant ce morceau, avec un texte
+ de préface au-dessus des deux colonnes :
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
-begin{multicols}{2}[Et l'histoire continue et continue et continue et continue...][5cm]
+begin{multicols}{2}[Et l'histoire continue et continue et continue et continue...][
+5cm]
 \end_layout
 
 \end_inset
@@ -512,7 +473,6 @@ begin{multicols}{2}[Et l'histoire continue et continue et continue et continue..
 \end_layout
 
 \begin_layout Standard
-
 
 \size small
 On the evening of the crime, he returned from the club exactly at ten.
@@ -537,12 +497,11 @@ On the evening of the crime, he returned from the club exactly at ten.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -554,17 +513,13 @@ end{multicols}
 \end_layout
 
 \begin_layout Subsubsection
-
 Préface et Sections
 \end_layout
 
 \begin_layout Standard
-
 Comment faire si vous voulez que la préface soit un en-tête de section ?
  Vous pouvez le faire, mais seulement par l'intermédiaire de commandes LaTeX
- à l'intérieur des paramètres de la commande
-\family default
- 
+ à l'intérieur des paramètres de la commande 
 \family typewriter
 multicols
 \family default
@@ -573,12 +528,11 @@ multicols
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{multicols}{2}[
@@ -592,7 +546,6 @@ subsubsection{C'est la commande de section en préface}][5cm]
 \end_layout
 
 \begin_layout Standard
-
 
 \size small
 A minute examination of the circumstances served only to make the case more
@@ -625,12 +578,11 @@ A minute examination of the circumstances served only to make the case more
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -642,49 +594,42 @@ end{multicols}
 \end_layout
 
 \begin_layout Subsubsection
-
 Espace Libre
 \end_layout
 
 \begin_layout Standard
-
-Le paquetage
-\family default
- 
+Le paquetage 
 \family typewriter
 multicol
 \family default
  nécessite une certaine quantité d'espace libre disponible avant et après
  chaque section en multi-colonnes.
- En plus
-\family default
- 
+ En plus 
 \family typewriter
 multicol
 \family default
  insère de l'espace avant et après la section multi-colonnes.
  Pour changer ce comportement par défaut il faut insérer des commandes juste
- avant le
-\family default
- 
+ avant le 
 \family typewriter
 
 \backslash
 begin{multicols}
 \family default
 .
- Dans cet exemple, on place 3\InsetSpace ~
-cm d'espace avant et après le texte en multi-colonn
-es :
+ Dans cet exemple, on place 3
+\begin_inset space ~
+\end_inset
+
+cm d'espace avant et après le texte en multi-colonnes :
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -700,7 +645,6 @@ begin{multicols}{2}
 \end_layout
 
 \begin_layout Standard
-
 
 \size small
 All day I turned these facts over in my mind, endeavouring to hit upon some
@@ -731,12 +675,11 @@ ion.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -748,15 +691,11 @@ end{multicols}
 \end_layout
 
 \begin_layout Paragraph
-
 Remarque :
 \end_layout
 
 \begin_layout Standard
-
-Les valeurs que vous fixez avec
-\family default
- 
+Les valeurs que vous fixez avec 
 \family typewriter
 
 \backslash
@@ -767,12 +706,11 @@ setlength
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -786,31 +724,29 @@ multicolsep}{13pt}
 \end_layout
 
 \begin_layout Subsubsection
-
 Largeur de Colonne et Séparation
 \end_layout
 
 \begin_layout Standard
-
-La largeur des colonnes dans un environnement
-\family default
- 
+La largeur des colonnes dans un environnement 
 \family sans
 multicols
 \family default
  est calculée automatiquement, mais vous pouvez modifier explicitement l'espace
  entre deux colonnes.
- Dans l'exemple suivant, l'espace entre les deux colonnes est de 3\InsetSpace ~
+ Dans l'exemple suivant, l'espace entre les deux colonnes est de 3
+\begin_inset space ~
+\end_inset
+
 cm :
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -826,7 +762,6 @@ begin{multicols}{2}
 \end_layout
 
 \begin_layout Standard
-
 
 \size small
 My observations of No.
@@ -845,12 +780,11 @@ My observations of No.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -862,18 +796,16 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-
 Une fois de plus, il faut réinitialiser la valeur pour éviter de l'utiliser
  dans le reste du document.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -887,35 +819,35 @@ columnsep}{10pt}
 \end_layout
 
 \begin_layout Subsubsection
-
 Lignes Verticales
 \end_layout
 
 \begin_layout Standard
-
-Entre deux colonnes, il y a un trait de largeur
-\family default
- 
+Entre deux colonnes, il y a un trait de largeur 
 \family typewriter
 
 \backslash
 columnseprule
 \family default
 .
- Si cette largeur est fixée à 0\InsetSpace ~
+ Si cette largeur est fixée à 0
+\begin_inset space ~
+\end_inset
+
 pt, le trait est supprimé.
- Dans l'exemple suivant, la ligne séparant les deux colonnes fait 2\InsetSpace ~
-pt d'épaisseu
-r.
+ Dans l'exemple suivant, la ligne séparant les deux colonnes fait 2
+\begin_inset space ~
+\end_inset
+
+pt d'épaisseur.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -932,9 +864,7 @@ begin{multicols}{2}
 
 \begin_layout Standard
 
-
 \size small
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -947,16 +877,13 @@ You're surprised to see me, sir,
 
 \begin_layout Standard
 
-
 \size small
 I acknowledged that I was.
 \end_layout
 
 \begin_layout Standard
 
-
 \size small
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -973,9 +900,7 @@ Well, I've a conscience, sir, and when I chanced to see you go into this
 
 \begin_layout Standard
 
-
 \size small
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -997,9 +922,7 @@ May I ask how you knew who I was?
 
 \begin_layout Standard
 
-
 \size small
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -1009,7 +932,10 @@ Well, sir, if it isn't too great a liberty, I am a neighbour of yours, for
  Maybe you collect yourself, sir.
  Here's 
 \noun on
-British\InsetSpace ~
+British
+\begin_inset space ~
+\end_inset
+
 Birds
 \noun default
 , and 
@@ -1030,12 +956,11 @@ The Holy War
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{multicols}
@@ -1047,17 +972,15 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-
 Comme d'habitude, on réinitialise la valeur après usage.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 setlength{
@@ -1071,13 +994,11 @@ columnseprule}{0pt}
 \end_layout
 
 \begin_layout Standard
-
 Pour lire le reste de l'histoire, il faudra que vous alliez à la bibliothèque...
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 ...ou trichez comme nous et allez la trouver dans le projet Gutenberg quelque
  part sur le réseau.
 \end_layout

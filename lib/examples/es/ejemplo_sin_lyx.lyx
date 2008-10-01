@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics dvips
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,18 +35,17 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Standard
-
 ESTE ES EL TÍTULO DEL DOCUMENTO
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Pista: el título debería parecerse más a un título
 \end_layout
 
@@ -54,13 +55,11 @@ Pista: el título debería parecerse más a un título
 \end_layout
 
 \begin_layout Standard
-
 por Fulanito
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Pista: Fulanito es el AUTOR
 \end_layout
 
@@ -70,13 +69,11 @@ Pista: Fulanito es el AUTOR
 \end_layout
 
 \begin_layout Standard
-
 12 de junio de 1972
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Pista: Esto es una FECHA
 \end_layout
 
@@ -86,18 +83,15 @@ Pista: Esto es una FECHA
 \end_layout
 
 \begin_layout Standard
-
 Índice general
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Pista: Sería estupendo que no tuviésemos que escribir el índice
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 de manera explícita
 \end_layout
 
@@ -107,53 +101,44 @@ de manera explícita
 \end_layout
 
 \begin_layout Standard
-
 1.
  Filosofía general..................1
 \end_layout
 
 \begin_layout Standard
-
 1.1 Cómo lo hace LyX...............1
 \end_layout
 
 \begin_layout Standard
-
 1.2 Por qué LyX es mejor...............1
 \end_layout
 
 \begin_layout Standard
-
 2.
  Características de LyX
 \end_layout
 
 \begin_layout Standard
-
 3.
  Intentos fallidos de usar más cosas de LyX
 \end_layout
 
 \begin_layout Standard
-
 4.
  Matemáticas
 \end_layout
 
 \begin_layout Standard
-
 ---------------------------------------------------
 \end_layout
 
 \begin_layout Standard
-
 1.
  Filosofía general
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Pista: Los títulos de sección deberían resaltar mas
 \end_layout
 
@@ -163,18 +148,15 @@ Pista: Los títulos de sección deberían resaltar mas
 \end_layout
 
 \begin_layout Standard
-
 La filosofía básica de LyX es que te preocupes del contenido de lo que escribes,
  no de la forma.
 \end_layout
 
 \begin_layout Standard
-
 1.1 Cómo lo hace LyX
 \end_layout
 
 \begin_layout Standard
-
 LyX utiliza LaTeX, un sistema de preparación de documentos diseñado por
  Leslie Lamport en 1985.
  Fue construido sobre un lenguaje de composición llamado TeX, creado por
@@ -184,19 +166,16 @@ LyX utiliza LaTeX, un sistema de preparación de documentos diseñado por
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Pista: Probablemente esta REFERENCIA A CITA no debería
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 estar escrita "directamente".
  ¿Qué pasaría si ponemos el libro
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 de Lamport en la segunda entrada de la bibliografía?
 \end_layout
 
@@ -206,8 +185,6 @@ de Lamport en la segunda entrada de la bibliografía?
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -227,8 +204,7 @@ La función del diseño tipográfico es ayudar al lector a comprender las ideas
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Pista: Esto es una CITA
 \end_layout
 
@@ -238,12 +214,10 @@ Pista: Esto es una CITA
 \end_layout
 
 \begin_layout Standard
-
 1.2 Por qué LyX es mejor
 \end_layout
 
 \begin_layout Standard
-
 LyX puede ser útil a más gente que LaTeX.
  Es considerablemente más fácil de usar, ya que no necesitas aprender LaTeX
  (que es prácticamente un lenguaje de programación).
@@ -273,25 +247,21 @@ lo que ves es lo que quieres decir
 \end_layout
 
 \begin_layout Standard
-
 2.
  Características de LyX
 \end_layout
 
 \begin_layout Standard
-
 LyX posee muchas características que hacen más fácil escribir documentos.
  (Después de todo, ¿por qué otra cosa lo querrías usar?
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Pista: Este comentario entre paréntesis quedaría mejor en una
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 nota a pie de página
 \end_layout
 
@@ -301,8 +271,7 @@ nota a pie de página
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Pista: ¡Resáltalo!
 \end_layout
 
@@ -313,36 +282,30 @@ Pista: ¡Resáltalo!
 \end_layout
 
 \begin_layout Standard
-
 * LyX se engarga él solo de los márgenes y la numeración de las notas a
  pie de página
 \end_layout
 
 \begin_layout Standard
-
 * LyX hace muy simple la edición de fórmulas matemáticas.
 \end_layout
 
 \begin_layout Standard
-
 Para una discusión más filosófica de por qué LyX es mejor que muchos procesadore
 s de texto, mira la sección 1.2, que se encuentra en la página 1.
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Pista: Seguramente, estas REFERENCIAS CRUZADAS no
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 deberían escribirse "directamente".
  ¿Y si cambiásemos los
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 números de sección?
 \end_layout
 
@@ -352,24 +315,20 @@ números de sección?
 \end_layout
 
 \begin_layout Standard
-
 3.
  Intentos fallidos de usar más cosas de LyX
 \end_layout
 
 \begin_layout Standard
-
 El otro día escribí un programa.
  Era el siguiente:
 \end_layout
 
 \begin_layout Standard
-
 5 REMARK MI IMPRESIONANTE PROGRAMA
 \end_layout
 
 \begin_layout Standard
-
 10 PRINT 
 \begin_inset Quotes eld
 \end_inset
@@ -382,13 +341,11 @@ El otro día escribí un programa.
 \end_layout
 
 \begin_layout Standard
-
 20 GOTO 10 
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Pista: Esto es código de ordenador
 \end_layout
 
@@ -398,34 +355,28 @@ Pista: Esto es código de ordenador
 \end_layout
 
 \begin_layout Standard
-
 Después de este gran esfuerzo científico, empecé a sentirme más artístico,
  así que escribí este haiku:
 \end_layout
 
 \begin_layout Standard
-
 LyX es un maravilloso
 \end_layout
 
 \begin_layout Standard
-
 Procesador de textos
 \end_layout
 
 \begin_layout Standard
-
 Ahorra tanto tiempo 
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Pista: No es muy bueno, pero es poesia, concretamente una
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 estrofa
 \end_layout
 
@@ -435,19 +386,16 @@ estrofa
 \end_layout
 
 \begin_layout Standard
-
 4.
  Matemáticas
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Pista: Todas las fórmulas a partir de aquí deberían escribirse
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 en modo matematico
 \end_layout
 
@@ -457,7 +405,6 @@ en modo matematico
 \end_layout
 
 \begin_layout Standard
-
 Mi ecuación favorita es la solución de la ecuación de segundo grado.
  Si ax^2+bx+c=0 (ec.1), entonces x= -b + o menos la raíz cuadrada de b^2-4ac,
  todo dividido por 2a (ec.
@@ -465,7 +412,6 @@ Mi ecuación favorita es la solución de la ecuación de segundo grado.
 \end_layout
 
 \begin_layout Standard
-
 Otra de mis ecuaciones favoritas es la base del cálculo: f'(x) se define
  como el límite cuando deltax tiende a cero de f(x+deltax) - f(x) dividido
  por deltax (ec.
@@ -473,17 +419,14 @@ Otra de mis ecuaciones favoritas es la base del cálculo: f'(x) se define
 \end_layout
 
 \begin_layout Standard
-
 ------------------------------------------------
 \end_layout
 
 \begin_layout Standard
-
 REFERENCIAS
 \end_layout
 
 \begin_layout Standard
-
 [1] Lamport, Leslie.
  LaTeX: A Document Preparation System.
  Addison-Wesley, Reading, Massachusetts, segunda edición, 1994.

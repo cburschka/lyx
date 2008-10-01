@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics dvips
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,6 +35,7 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -51,7 +54,9 @@ von Fee LyX
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
 \end_inset
 
 
@@ -99,8 +104,10 @@ Leslie
 Lamport
 \noun default
  sagte einmal (siehe Referenz 
-\begin_inset LatexCommand cite
+\begin_inset CommandInset citation
+LatexCommand cite
 key "lamport"
+
 \end_inset
 
 ):
@@ -127,8 +134,10 @@ Warum LyX besser ist
 \begin_layout Standard
 
 \series bold
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:lyxbetter"
+
 \end_inset
 
 
@@ -162,15 +171,13 @@ LyX hat viele Merkmale, die das Schreiben von Dokumenten erleichtern.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Warum sollte man es sonst benutzen?
 \end_layout
 
 \end_inset
 
- Ich bin
-\emph default
- 
+ Ich bin 
 \emph on
 sehr aufgeregt,
 \emph default
@@ -189,8 +196,10 @@ LyX erleichtert das Schreiben und Bearbeiten von mathematischen Formeln
 \begin_layout Standard
 Für eine mehr philosophische Diskussion, warum LyX besser als viele andere
  Textverarbeitungen ist, lesen Sie bitte Abschnitt  
-\begin_inset LatexCommand vref
+\begin_inset CommandInset ref
+LatexCommand vref
 reference "sec:lyxbetter"
+
 \end_inset
 
 .
@@ -224,11 +233,14 @@ Nach all dem wissenschaftlichen Denken fühlte ich mehr künstlerisch, also
 
 \begin_layout Verse
 LyX ist eine wirklich großartige
-\newline
+\begin_inset Newline newline
+\end_inset
+
 schriftsetzende Textverarbeitung.
-\newline
-Es spart
- soviel Zeit.
+\begin_inset Newline newline
+\end_inset
+
+Es spart soviel Zeit.
 \end_layout
 
 \begin_layout Section
@@ -278,14 +290,11 @@ Ich konnte die gestrichelten Linien entfernen.
 Ich kümmerte mich nicht darum, die mathematischen Formeln als abgesetzte
  Formeln zu schreiben.
  Außerdem habe ich nicht die automatische Gleichungsnummerierung von LyX
- benutzt, weil das nicht im
-\emph default
- 
+ benutzt, weil das nicht im 
 \emph on
 Tutorium
 \emph default
- 
-beschrieben wurde.
+ beschrieben wurde.
 \end_layout
 
 \begin_layout Itemize
@@ -306,25 +315,21 @@ Referenzen
 \begin_inset Quotes grd
 \end_inset
 
-, abhängig von der Dokumentklasse), wenn man als Umgebung
-\family default
- 
+, abhängig von der Dokumentklasse), wenn man als Umgebung 
 \family sans
 Literaturverzeichnis
 \family default
- 
-wählt.
+ wählt.
 \end_layout
 
 \begin_layout Bibliography
-
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "lamport"
 
 \end_inset
-Lamport, Leslie.
 
-\emph default
+Lamport, Leslie.
  
 \emph on
 LaTeX: A Document Preparation System.

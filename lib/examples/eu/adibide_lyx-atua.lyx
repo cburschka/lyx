@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics dvips
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,66 +35,61 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 HAU IDAZKIAREN IZENBURUA DA
 \end_layout
 
 \begin_layout Author
-
 egilea: Norbait
 \end_layout
 
 \begin_layout Date
-
 1973ko urriak 23
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
-
-\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
 \end_layout
 
 \begin_layout Section
-
 Oinarrizko Izakera
 \end_layout
 
 \begin_layout Standard
-
 LyX-en oinarrizko izakeran idatzi beharrekoan datza, eta ez itxuran.
 \end_layout
 
 \begin_layout Subsection
-
 LyX-ek nola lantzen duen
 \end_layout
 
 \begin_layout Standard
-
 LyX-ek LaTeX erabiltzen du, Leslie Lamport-ek 1985-an diseinatu zuen idazki
  prestaketa sisteman.
  TeX (Donald Knuth-ek 1984-ean sortuta) izeneko osaketa hizkuntzaren gain
  eraikia izan zen.
  LaTeX LyX-en antzeko izakera baten gain diseinatuta dago.
  Leslie Lamport-ek esan zuen (
-\begin_inset LatexCommand cite
+\begin_inset CommandInset citation
+LatexCommand cite
 key "Lamport"
+
 \end_inset
 
  erreferentzia ikusi) :
 \end_layout
 
 \begin_layout Quote
-
 Tipografi diseinuaren betebeharra irakurtzaileak egilearen burutazioak ulerttu
  araztean datza.
  Idazki bat irakur erraza izan dadin, bere ikus egitura bere logika egituraren
@@ -106,15 +103,14 @@ Tipografi diseinuaren betebeharra irakurtzaileak egilearen burutazioak ulerttu
 \end_layout
 
 \begin_layout Subsection
-
 LyX zergatik da hobeagoa
 \end_layout
 
 \begin_layout Standard
-
-
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "atal:lyxhobeagoa"
+
 \end_inset
 
 LyX erabiltzaileentzat LaTeX baino erabilgarriagoa izan daiteke.
@@ -146,27 +142,22 @@ ikusten duzuna esan nahi duzu
 \end_layout
 
 \begin_layout Section
-
 LyX-en Ezaugarriak
 \end_layout
 
 \begin_layout Standard
-
 LyX-ek idazkiak idazteko erreztasun asko eskeintzen dituen ezugarri ugari
  ditu.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 bestela, zertarako nahiko zenuke erabiltzea?
 \end_layout
 
 \end_inset
 
- Beraietaz mintzatzeak
-\emph default
- 
+ Beraietaz mintzatzeak 
 \emph on
 asko unkitzen
 \emph default
@@ -175,50 +166,47 @@ asko unkitzen
 \end_layout
 
 \begin_layout Itemize
-
 Margenak eta Orri Oineko Oharren zenbaketetaz LyX bera arduratzen da
 \end_layout
 
 \begin_layout Itemize
-
 LyX-ek matematika ekuazioak idaztean izugarrizko erreztasuna eskeintzen
  du.
 \end_layout
 
 \begin_layout Standard
-
 LyX beste testu prozesatzaileen baino hobeago izatearen zergatia eztabaidatzeko,
  
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "atal:lyxhobeagoa"
+
 \end_inset
 
  atala ikusi, 
-\begin_inset LatexCommand pageref
+\begin_inset CommandInset ref
+LatexCommand pageref
 reference "atal:lyxhobeagoa"
+
 \end_inset
 
  orrialdean aurkitzen da.
 \end_layout
 
 \begin_layout Section
-
 LyX-eko gauz gehiago erabiltzean saiakera hutsak
 \end_layout
 
 \begin_layout Standard
-
 Lehengo batean programa bat idatzi nuen.
  Ondoko hau zen:
 \end_layout
 
 \begin_layout LyX-Code
-
 5 REMARK NERE PROGRAMA IKUSGARRIA
 \end_layout
 
 \begin_layout LyX-Code
-
 10 PRINT 
 \begin_inset Quotes eld
 \end_inset
@@ -231,39 +219,38 @@ IKUSGARRIA NAIZ
 \end_layout
 
 \begin_layout LyX-Code
-
 20 GOTO 10 
 \end_layout
 
 \begin_layout Standard
-
 Zientzilan ikaragarri haundi honen ondoren, artista bat nintzela sentitzen
  hasi nintzen, eta ondorengo hori idatzi nuen:
 \end_layout
 
 \begin_layout Verse
-
 LyX idazki prozezatzaile
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Zoragarri bat da
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Hainbeste denbora aurrezten du
 \end_layout
 
 \begin_layout Section
-
 Matematikak
 \end_layout
 
 \begin_layout Standard
-
 Nere ekuazio gogokoena bigarren mailako ekuazio baten emaitza da.
  Baldin eta 
 \begin_inset Formula $ax^{2}+bx+c=0$
 \end_inset
 
  (1.ek), orduan 
-\begin_inset Formula $x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}$
+\begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
 \end_inset
 
  (2.
@@ -271,9 +258,8 @@ Nere ekuazio gogokoena bigarren mailako ekuazio baten emaitza da.
 \end_layout
 
 \begin_layout Standard
-
 Beste ekuazio polita kalkulu oinarria da: 
-\begin_inset Formula $f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
+\begin_inset Formula $f'(x)\equiv\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset
 
  (3.
@@ -281,7 +267,8 @@ Beste ekuazio polita kalkulu oinarria da:
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "Lamport"
 
 \end_inset

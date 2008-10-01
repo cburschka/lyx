@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass foils
@@ -14,9 +14,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -34,17 +36,17 @@
 \paperpagestyle foilheadings
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 MyLogo{HUT/ECDL Kimmo Koli 
@@ -58,21 +60,16 @@ today}
 \end_layout
 
 \begin_layout ShortFoilhead
-
 Landscape slide example with a figure
 \end_layout
 
 \begin_layout Standard
 
-
 \lyxline
 
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -85,31 +82,29 @@ height "1pt"
 height_special "totalheight"
 status open
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 It is possible to place text beside a figure (clipart platypus in this example)
  using the minipage enviroment
 \end_layout
 
 \begin_layout Itemize
-
 The text can contain also item lists
 \end_layout
 
 \begin_layout TickList
-
 Also other lists like tick lists 
 \end_layout
 
 \begin_layout CrossList
-
 and cross lists can be entered
 \end_layout
 
 \end_inset
 
 
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 
 \begin_inset Box Frameless
 position "c"
@@ -123,86 +118,62 @@ height "1pt"
 height_special "totalheight"
 status open
 
-
-\begin_layout Standard
-
-
+\begin_layout Plain Layout
 \begin_inset VSpace 0.3cm
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align center
-
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
-	display monochrome
 	width 10cm
 	rotateOrigin center
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-
-
+\begin_layout Plain Layout
 \begin_inset VSpace 0.3cm
 \end_inset
 
 
 \end_layout
 
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-
 You can also add more text below below the minipages as you may have guessed.
 \end_layout
 
 \begin_layout ShortFoilhead
-
 How it was done
 \end_layout
 
 \begin_layout Standard
 
-
 \lyxline
 
 \end_layout
 
-
 \begin_layout Itemize
-
 
 \family roman
 Just select with the mouse the text paragraphs you want to mark as minipages
  and then select
-\emph default
 \family default
- 
-\family roman
-\emph on
-
-\family default
-\emph default
-Layout->Paragraph:ExtraOpt
-\family default
- 
+ Layout->Paragraph:ExtraOpt 
 \family roman
 and press the
 \family default
- 
-Minipage
-\family default
- 
+ Minipage 
 \family roman
 button and add a minipage width.
  
@@ -210,69 +181,43 @@ button and add a minipage width.
 
 \begin_layout Itemize
 
-
 \family roman
 Then put cursor to the paragraph containing the figure and mark it also
  a minipage, but add also the
 \family default
- 
-HFill between the Minipage paragraphs
-\family default
- 
+ HFill between the Minipage paragraphs 
 \family roman
 and
-\emph default
 \family default
- 
-\family roman
-\emph on
-
-\family default
-\emph default
-Start a new Minipage
-\family default
- 
+ Start a new Minipage 
 \family roman
 options
 \end_layout
 
 \begin_layout Itemize
 
-
 \family roman
 You can also change the alignment in this
 \family default
- Extra options
-\family default
- 
+ Extra options 
 \family roman
 menu to middle for all minipage paragraphs for a better result.
 \end_layout
 
 \begin_layout Itemize
 
-
 \family roman
 Somehow (correct this if you know how) the figure size set by the
 \family default
- 
-% of the page
-\family default
- 
+ % of the page 
 \family roman
 doesn't scale the picture right but still the
 \family default
- 
-cm
-\family default
- 
+ cm 
 \family roman
 and
 \family default
- 
-inches
-\family default
- 
+ inches 
 \family roman
 entries will work.
 \end_layout

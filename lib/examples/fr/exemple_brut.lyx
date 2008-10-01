@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,28 +35,25 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Standard
-
 CECI EST LE TITRE DU DOCUMENT
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Informations de révision :
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Traduction : Mise à jour, Date: 07/07/2003
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Original : Révision: 1.5, Date: 17/01/2002
 \end_layout
 
@@ -64,13 +63,11 @@ Original : Révision: 1.5, Date: 17/01/2002
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Indication:
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Le titre devrait ressembler un peu plus à un titre ("TITLE")
 \end_layout
 
@@ -80,18 +77,15 @@ Le titre devrait ressembler un peu plus à un titre ("TITLE")
 \end_layout
 
 \begin_layout Standard
-
 par Fée LyX 
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Indication:
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Fée est l'auteur de ce document ("AUTHOR")
 \end_layout
 
@@ -101,18 +95,15 @@ Fée est l'auteur de ce document ("AUTHOR")
 \end_layout
 
 \begin_layout Standard
-
 12 Juin 1972 
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Indication:
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Ceci est une "DATE".(NdT: Si si !)
 \end_layout
 
@@ -122,23 +113,19 @@ Ceci est une "DATE".(NdT: Si si !)
 \end_layout
 
 \begin_layout Standard
-
 Table des Matières 
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Indication:
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Ce serait plus agréable de ne pas avoir à taper la
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 "Table des Matières" explicitement.
 \end_layout
 
@@ -148,63 +135,52 @@ Ce serait plus agréable de ne pas avoir à taper la
 \end_layout
 
 \begin_layout Standard
-
 1.
  Philosophie Générale.................1
 \end_layout
 
 \begin_layout Standard
-
 1.1 Comment LyX le fait...............1
 \end_layout
 
 \begin_layout Standard
-
 1.2 Pourquoi LyX est meilleur....1
 \end_layout
 
 \begin_layout Standard
-
 2.
  Fonctionnalités de LyX
 \end_layout
 
 \begin_layout Standard
-
 3.
  Tentatives maladroites de mieux utiliser LyX
 \end_layout
 
 \begin_layout Standard
-
 4.
  Les Maths
 \end_layout
 
 \begin_layout Standard
-
 ---------------------------------------------------
 \end_layout
 
 \begin_layout Standard
-
 1.
  Philosophie Générale 
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Indication:
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Les titres de "Sections" ne sont pas assez en valeur, et ne
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 devraient pas ^etre numérotés manuellement.
 \end_layout
 
@@ -214,18 +190,15 @@ devraient pas ^etre numérotés manuellement.
 \end_layout
 
 \begin_layout Standard
-
 La philosophie générale de LyX est de vous laisser vous concentrer sur le
  contenu et non pas sur la forme de vos écrits.
 \end_layout
 
 \begin_layout Standard
-
 1.1 Comment LyX procède
 \end_layout
 
 \begin_layout Standard
-
 LyX utilise LaTeX, un système de préparation de documents conçu par Leslie
  Lamport en 1985.
  Il a été construit, à son tour, à partir d'un langage de composition, appelé
@@ -235,24 +208,20 @@ LyX utilise LaTeX, un système de préparation de documents conçu par Leslie
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Indication:
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Cette "Citation Bibliographique" ne devrait probablement pas
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 ^etre écrite en dur.
  Que se passe-t-il si le livre de Leslie Lamport
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 passe en seconde position dans la bibliographie?
 \end_layout
 
@@ -262,8 +231,6 @@ passe en seconde position dans la bibliographie?
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Quotes fld
 \end_inset
 
@@ -284,13 +251,11 @@ Le but de la typographie est d'aider le lecteur à comprendre l'idée de l'auteu
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Indication:
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 C'est une citation (QUOTE).
 \end_layout
 
@@ -300,12 +265,10 @@ C'est une citation (QUOTE).
 \end_layout
 
 \begin_layout Standard
-
 1.2 Pourquoi LyX est meilleur
 \end_layout
 
 \begin_layout Standard
-
 LyX peut être profitable à un plus grand nombre d'utilisateurs que LaTeX.
  Il est beaucoup plus facile à apprendre, car vous n'avez pas à connaître
  LaTeX, qui est pratiquement un langage de programmation.
@@ -334,25 +297,21 @@ What you see is what you mean
 \end_layout
 
 \begin_layout Standard
-
 2.
  Fonctionnalités de LyX
 \end_layout
 
 \begin_layout Standard
-
 LyX possède un bon nombre de fonctionnalités qui facilitent l'écriture.
  ( Après tout, quelle autre raison pourrait vous le faire utiliser ? 
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Indication:
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Cette parenthèse serait bien mieux en "Note de bas de page"
 \end_layout
 
@@ -362,13 +321,11 @@ Cette parenthèse serait bien mieux en "Note de bas de page"
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Indication:
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 A mettre en "Italique" (ou en "Evidence") plut^ot qu'en majuscules!
 \end_layout
 
@@ -380,33 +337,27 @@ A mettre en "Italique" (ou en "Evidence") plut^ot qu'en majuscules!
 \end_layout
 
 \begin_layout Standard
-
 * LyX gère les marges et la numérotation des notes de bas de page pour vous.
 \end_layout
 
 \begin_layout Standard
-
 * L'écriture de formules mathématiques est un jeu d'enfant avec LyX.
 \end_layout
 
 \begin_layout Standard
-
 Voir Section 1.2, page 1 
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Indication:
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Cette "Référence Croisée" ne devrait pas ^etre écrite en dur.
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Que se passe-t-il si l'on change la numérotation des sections?
 \end_layout
 
@@ -418,24 +369,20 @@ Que se passe-t-il si l'on change la numérotation des sections?
 \end_layout
 
 \begin_layout Standard
-
 3.
  Tentatives maladroites de mieux utiliser LyX
 \end_layout
 
 \begin_layout Standard
-
 J'ai écrit un programme ces derniers jours.
  Le voici :
 \end_layout
 
 \begin_layout Standard
-
 5 REMARK MON SUPER PROGRAMME
 \end_layout
 
 \begin_layout Standard
-
 10 PRINT 
 \begin_inset Quotes eld
 \end_inset
@@ -448,18 +395,14 @@ JE SUIS SUPER !
 \end_layout
 
 \begin_layout Standard
-
 20 GOTO 10
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Indication: C'est du source de programme ("CODE").
 \end_layout
 
@@ -469,44 +412,35 @@ Indication: C'est du source de programme ("CODE").
 \end_layout
 
 \begin_layout Standard
-
 Après cette pensée hautement scientifique, je me suis senti l'âme d'un poète.
  J'ai donc écrit ceci :
 \end_layout
 
 \begin_layout Standard
-
 LyX est vraiment un extraordinaire
 \end_layout
 
 \begin_layout Standard
-
 Outil de composition et de traitement de texte
 \end_layout
 
 \begin_layout Standard
-
 Il fait gagner tellement de temps
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Indication:
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Pas terrible comme poésie! Mais ce sont quand m^eme
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 des vers ("VERSE").
 \end_layout
 
@@ -516,24 +450,20 @@ des vers ("VERSE").
 \end_layout
 
 \begin_layout Standard
-
 4.
  Les maths 
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Indication:
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Les mathématiques qui suivent devraient ^etre traitées
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 en "Mode Mathématique".
 \end_layout
 
@@ -543,7 +473,6 @@ en "Mode Mathématique".
 \end_layout
 
 \begin_layout Standard
-
 Ma formule préférée est la résolution d'une équation du second degré.
  Si ax^2+bx+c=0 (eq.1), alors x= -b + ou moins la racine carrée de b^2-4ac
  le tout divisé par 2a (eq.
@@ -551,7 +480,6 @@ Ma formule préférée est la résolution d'une équation du second degré.
 \end_layout
 
 \begin_layout Standard
-
 Une autre favorite, la base du calcul différentiel : f'(x) est définie comme
  la limite, quand deltax tend vers zéro, de l'expression f(x+deltax) - f(x)
  divisé par deltax (eq.
@@ -559,17 +487,14 @@ Une autre favorite, la base du calcul différentiel : f'(x) est définie comme
 \end_layout
 
 \begin_layout Standard
-
 ------------------------------------------------
 \end_layout
 
 \begin_layout Standard
-
 REFERENCES
 \end_layout
 
 \begin_layout Standard
-
 [1] Lamport, Leslie.
  LaTeX : A Document Preparation System.
  Addison-Wesley, Reading, Massachusetts, deuxième édition, 1994.

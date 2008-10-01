@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 314
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass scrlttr2
@@ -70,6 +70,7 @@ fromurl=true%               print sender URL
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 11
 \spacing other 1.15
@@ -114,12 +115,17 @@ Das LyX-Entwicklerteam
 \begin_layout SenderAddress
 Planstr.
  140
-\newline
+\begin_inset Newline newline
+\end_inset
+
 99999 Planstadt
 \end_layout
 
 \begin_layout Telephone
-0011/222\InsetSpace \thinspace{}
+0011/222
+\begin_inset space \thinspace{}
+\end_inset
+
 333
 \end_layout
 
@@ -133,10 +139,14 @@ www.lyx.org
 
 \begin_layout Backaddress
 Das LyX-Entwicklerteam
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Planstr.
  140
-\newline
+\begin_inset Newline newline
+\end_inset
+
 99999 Planstadt
 \end_layout
 
@@ -156,7 +166,7 @@ Im Internet
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -182,7 +192,7 @@ filename "../addressExample.adr"
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -223,7 +233,7 @@ LaTeX-Vorspann
 \begin_inset ERT
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 "=
 \end_layout
@@ -234,7 +244,7 @@ Script
 \begin_inset ERT
 status collapsed
 
-\begin_layout PlainLayout
+\begin_layout Plain Layout
 
 "=
 \end_layout
@@ -245,7 +255,7 @@ Dokumentation
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
 target "ftp://ftp.dante.de/tex-archive/macros/latex/contrib/koma-script/scrguide.pdf"
@@ -265,7 +275,10 @@ Viel Spaß!
 \end_layout
 
 \begin_layout PS
-P.\InsetSpace \thinspace{}
+P.
+\begin_inset space \thinspace{}
+\end_inset
+
 S.: Blaufarbige Items sollen vor der Adresse eingefügt werden, magentafarbige
  danach.
 \end_layout
@@ -278,7 +291,7 @@ Die LyX-User
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 keep this environment empty
 \end_layout
 

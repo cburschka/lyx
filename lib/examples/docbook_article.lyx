@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass docbook
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,7 +35,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "Jose' Matos"
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -47,22 +50,20 @@ Docbook with LyX
 \end_layout
 
 \begin_layout Author
-\begin_inset CharStyle Firstname
-show_label true
-status inlined
+\begin_inset Flex CharStyle:Firstname
+status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 José
 \end_layout
 
 \end_inset
 
 
-\begin_inset CharStyle Surname
-show_label true
-status inlined
+\begin_inset Flex CharStyle:Surname
+status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Matos
 \end_layout
 
@@ -80,7 +81,8 @@ The abstract can span several paragraphs.
 \end_layout
 
 \begin_layout Section
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "first-section"
 
 \end_inset
@@ -198,7 +200,8 @@ Labels
 If a label is the first element in any layout, that label will be merged
  with that element.
  See as an example 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 name "first-section"
 reference "first-section"
 
@@ -217,11 +220,10 @@ The only fonts supported are
 Emphasis
 \emph default
  and 
-\begin_inset CharStyle Literal
-show_label true
-status inlined
+\begin_inset Flex CharStyle:Literal
+status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 SGML
 \end_layout
 
@@ -256,25 +258,24 @@ wide false
 sideways false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../doc/platypus.eps
-	display grayscale
 	width 2cm
 	height 3cm
+	scaleBeforeRotation
 	rotateAngle 45
 	rotateOrigin center
 
-scaleBeforeRotation
 \end_inset
 
 
 \end_layout
 
-\begin_layout 
+\begin_layout Plain Layout
 \begin_inset Caption
 
-\begin_layout 
+\begin_layout Plain Layout
 Nice platypus
 \end_layout
 
@@ -299,25 +300,24 @@ wide true
 sideways false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../doc/platypus.eps
-	display grayscale
 	width 2cm
 	height 3cm
+	scaleBeforeRotation
 	rotateAngle 45
 	rotateOrigin center
 
-scaleBeforeRotation
 \end_inset
 
 
 \end_layout
 
-\begin_layout 
+\begin_layout Plain Layout
 \begin_inset Caption
 
-\begin_layout 
+\begin_layout Plain Layout
 long, very long...
  :-)
 \end_layout
@@ -344,21 +344,21 @@ wide false
 sideways false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="5">
 <features>
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
-<row topline="true">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -367,7 +367,7 @@ status open
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Software 1
 \end_layout
 
@@ -376,7 +376,7 @@ Software 1
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Software 2
 \end_layout
 
@@ -385,7 +385,7 @@ Software 2
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Software 3
 \end_layout
 
@@ -394,18 +394,18 @@ Software 3
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Software 4
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Plataform 1
 \end_layout
 
@@ -414,7 +414,7 @@ Plataform 1
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 25 MB
 \end_layout
 
@@ -423,7 +423,7 @@ Plataform 1
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 10 MB
 \end_layout
 
@@ -432,7 +432,7 @@ Plataform 1
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 34 MB
 \end_layout
 
@@ -441,18 +441,18 @@ Plataform 1
 <cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Plataform 2
 \end_layout
 
@@ -461,34 +461,34 @@ Plataform 2
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 12 MB
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 30 MB
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 35 MB
 \end_layout
 
@@ -502,10 +502,10 @@ Plataform 2
 
 \end_layout
 
-\begin_layout 
+\begin_layout Plain Layout
 \begin_inset Caption
 
-\begin_layout 
+\begin_layout Plain Layout
 Nice Formal Table
 \end_layout
 
@@ -530,7 +530,8 @@ Margins
 \begin_layout Standard
 There are some restrictions when using margins.
  For further information on docbook allowed syntax consult the 
-\begin_inset LatexCommand url
+\begin_inset CommandInset href
+LatexCommand href
 name "docbook reference manual"
 target "http://www.oasis-open.org/docbook/documentation/reference/"
 
@@ -546,14 +547,14 @@ It is also possible to insert margin notes inside some environments.
 \begin_deeper
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \begin_inset Marginal
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 margin note
 \end_layout
 
@@ -562,12 +563,12 @@ margin note
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 second par -> margin note
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 third par -> margin note
 \end_layout
@@ -583,13 +584,13 @@ Notice that the previous layout is at level 1
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 This comes from a docbook restriction.
  Sidebar can only appear inside "MSGTEXT", "CAUTION", "IMPORTANT", "NOTE",
  "TIP", "WARNING", "BLOCKQUOTE".
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 These environments are easily added to the docbook layout.
 \end_layout
 
@@ -601,14 +602,14 @@ These environments are easily added to the docbook layout.
 \begin_deeper
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \begin_inset Marginal
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 too marginal ;-)
 \end_layout
 
@@ -675,7 +676,7 @@ set (very unlikely)
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 I do not expect lyx to deal with colection of books, for now!
 \end_layout
 

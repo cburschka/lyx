@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics dvips
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,68 +35,63 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 To je naslov vašega spisa
 \end_layout
 
 \begin_layout Author
-
 Fe LyX
 \end_layout
 
 \begin_layout Date
-
 12.
  junij 1972
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
-
-\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
 \end_layout
 
 \begin_layout Section
-
 Temeljna filozofija
 \end_layout
 
 \begin_layout Standard
-
 Temeljna filozofija LyXa je, da naj bi se posvečali vsebini tistega, o čemer
  pišemo, ne obliki.
 \end_layout
 
 \begin_layout Subsection
-
 Kako se stvari loteva LyX
 \end_layout
 
 \begin_layout Standard
-
 LyX uporablja LaTeX, sistem za pripravljanje spisov, ki ga je leta 1985
  zasnoval Leslie Lamport.
  LaTeX pa temelji na stavnem jeziku, imenovanem TeX, ki ga je leta 1984
  ustvaril Donald Knuth.
  Filozofija LaTeXa je podobna filozofiji LyXa.
  Leslie Lamport je nekoč rekel (glej vir 
-\begin_inset LatexCommand cite
+\begin_inset CommandInset citation
+LatexCommand cite
 key "lamport"
+
 \end_inset
 
 ):
 \end_layout
 
 \begin_layout Quote
-
 Tipografsko oblikovanje naj bi pomagalo bralcu razumeti avtorjeve zamisli.
  Da bi bilo spis lahko brati, mora njegova zunanja podoba odsevati njegovo
  logično zgradbo.
@@ -108,17 +105,16 @@ Tipografsko oblikovanje naj bi pomagalo bralcu razumeti avtorjeve zamisli.
 \end_layout
 
 \begin_layout Subsection
-
-
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:lyxbetter"
+
 \end_inset
 
 Zakaj je LyX boljši
 \end_layout
 
 \begin_layout Standard
-
 LyX je uporaben za več ljudi kot LaTeX.
  Precej lažje se ga je naučiti, saj ni treba znati LaTeXa (ki je praktično
  programski jezik).
@@ -142,9 +138,7 @@ to, kar vidiš, to tudi misliš
  Tako združuje preprostost uporabe urejevalnikov besedil z močjo LaTeXa.
  To je Dobra Stvar.
  Tudi datotečni format je neodvisen od platforme.
- Najboljše od vsega pa je, da je
-\emph default
- 
+ Najboljše od vsega pa je, da je 
 \emph on
 prost
 \emph default
@@ -152,25 +146,20 @@ prost
 \end_layout
 
 \begin_layout Section
-
 Odlike LyXa
 \end_layout
 
 \begin_layout Standard
-
 LyX ima številne odlike, ki nam olajšajo pisanje spisov.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Navsezadnje, le zakaj bi ga drugače sploh želeli uporabljati?
 \end_layout
 
 \end_inset
 
-
-\emph default
  
 \emph on
 Zelo me veseli
@@ -180,72 +169,74 @@ Zelo me veseli
 \end_layout
 
 \begin_layout Itemize
-
 Namesto vas skrbi za robove in številči opombe v nogi.
 \end_layout
 
 \begin_layout Itemize
-
 Olajša pisanje in urejanje matematičnih obrazcev.
 \end_layout
 
 \begin_layout Standard
-
 Bolj filozofsko razpravo o tem, zakaj je LyX boljši od drugih urejevalnikov
  besedil, pa boste našli v razdelku 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:lyxbetter"
+
 \end_inset
 
  na strani 
-\begin_inset LatexCommand pageref
+\begin_inset CommandInset ref
+LatexCommand pageref
 reference "sec:lyxbetter"
+
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Section
-
 Nerodni poskusi uporabe LyXa
 \end_layout
 
 \begin_layout Standard
-
 Zadnjič sem napisal program, podoben spodnjemu:
 \end_layout
 
 \begin_layout LyX-Code
-
 5 REM MOJ STRAŠNI PROGRAM
-\newline
+\begin_inset Newline newline
+\end_inset
+
 10 PRINT "STRAŠEN SEM!"
-\newline
+\begin_inset Newline newline
+\end_inset
+
 20 GOTO 10
 \end_layout
 
 \begin_layout Standard
-
 Po tem učenem razmišljanju me je nenadoma preplavilo bolj umetniško razpoloženje
  in napisal sem tale haiku
 \end_layout
 
 \begin_layout Verse
-
 LyX je zares čudovit
-\newline
+\begin_inset Newline newline
+\end_inset
+
 stavni urejevalnik besedil
-\newline
+\begin_inset Newline newline
+\end_inset
+
 prihrani mi toliko časa
 \end_layout
 
 \begin_layout Section
-
 Matematične zadevščine
 \end_layout
 
 \begin_layout Standard
-
 Najbolj so mi pri srcu enačbe za rešitev kvadratne enačbe.
  Če je 
 \begin_inset Formula $ax^{2}+bx+c=0$
@@ -253,7 +244,7 @@ Najbolj so mi pri srcu enačbe za rešitev kvadratne enačbe.
 
  (en.
  1), potem je 
-\begin_inset Formula $x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}$
+\begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
 \end_inset
 
  (en.
@@ -261,9 +252,8 @@ Najbolj so mi pri srcu enačbe za rešitev kvadratne enačbe.
 \end_layout
 
 \begin_layout Standard
-
 Druga priljubljena enačba je temelj matematične analize: 
-\begin_inset Formula $f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
+\begin_inset Formula $f'(x)\equiv\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset
 
  (en.
@@ -271,17 +261,14 @@ Druga priljubljena enačba je temelj matematične analize:
 \end_layout
 
 \begin_layout Section
-
 Opazke
 \end_layout
 
 \begin_layout Standard
-
 Nekaj opazk o LyXanju te datoteke:
 \end_layout
 
 \begin_layout Itemize
-
 Vrstice z vezaji, sem lahko odstranil.
  Njihova edina naloga je bila, da so ločevale naslove in vire od preostanka
  spisa.
@@ -289,12 +276,9 @@ Vrstice z vezaji, sem lahko odstranil.
 \end_layout
 
 \begin_layout Itemize
-
 Nisem se trudil z vstavljanjem matematičnih enačb v prikazni način.
  Tudi samodejnega številčenja enačb, ki ga pozna LyX, nisem uporabljal,
- saj to ni opisano v
-\emph default
- 
+ saj to ni opisano v 
 \emph on
 Učbeniku
 \emph default
@@ -302,7 +286,6 @@ Učbeniku
 \end_layout
 
 \begin_layout Itemize
-
 Ni mi bilo treba vpisati besede 
 \begin_inset Quotes gld
 \end_inset
@@ -336,9 +319,7 @@ Literatura
 \end_inset
 
 ).
- LyX jo samodejno zapiše, ko izberete okolje
-\family default
- 
+ LyX jo samodejno zapiše, ko izberete okolje 
 \family sans
 Bibliography
 \family default
@@ -346,14 +327,13 @@ Bibliography
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "lamport"
 
 \end_inset
 
 Lamport, Leslie.
-
-\emph default
  
 \emph on
 LaTeX: A Document Preparation System
