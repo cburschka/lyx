@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics dvips
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,67 +35,62 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 THIS IS THE TITLE OF THE DOCUMENT
 \end_layout
 
 \begin_layout Author
-
 by Fee LyX
 \end_layout
 
 \begin_layout Date
-
 June 12, 1972
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
-
-\begin_inset LatexCommand tableofcontents
 \end_inset
 
 
 \end_layout
 
 \begin_layout Section
-
 Basic Philosophy
 \end_layout
 
 \begin_layout Standard
-
 The basic philosophy of LyX is that you should worry about the content of
  what you're writing and not the form.
 \end_layout
 
 \begin_layout Subsection
-
 How LyX does it
 \end_layout
 
 \begin_layout Standard
-
 LyX uses LaTeX, a document preparation system designed by Leslie Lamport
  in 1985.
  It, in turn, was built up from a typesetting language called TeX, created
  by Donald Knuth in 1984.
  LaTeX is designed around a philosophy similar to that of LyX.
  Leslie Lamport once said (see reference 
-\begin_inset LatexCommand cite
+\begin_inset CommandInset citation
+LatexCommand cite
 key "lamport"
+
 \end_inset
 
 ):
 \end_layout
 
 \begin_layout Quote
-
 The function of typographic design is to help the reader understand the
  author's ideas.
  For a document to be easy to read, its visual structure must reflect its
@@ -107,15 +104,14 @@ The function of typographic design is to help the reader understand the
 \end_layout
 
 \begin_layout Subsection
-
 Why LyX is better
 \end_layout
 
 \begin_layout Standard
-
-
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:lyxbetter"
+
 \end_inset
 
 LyX can be useful to more people than LaTeX.
@@ -146,26 +142,21 @@ What you see is what you mean
 \end_layout
 
 \begin_layout Section
-
 Features of LyX
 \end_layout
 
 \begin_layout Standard
-
 LyX has many features which make writing documents easier.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 After all, why else would you want to use it?
 \end_layout
 
 \end_inset
 
- I'm
-\shape default
- 
+ I'm 
 \shape italic
 very excited
 \shape default
@@ -174,49 +165,46 @@ very excited
 \end_layout
 
 \begin_layout Itemize
-
 LyX worries about margins, and footnote numbering for you
 \end_layout
 
 \begin_layout Itemize
-
 LyX makes it simple to write and edit mathematical formulae
 \end_layout
 
 \begin_layout Standard
-
 For a more philosophical discussion of why LyX is better than lots of other
  word processors, see Section 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:lyxbetter"
+
 \end_inset
 
 , which can be found on page 
-\begin_inset LatexCommand pageref
+\begin_inset CommandInset ref
+LatexCommand pageref
 reference "sec:lyxbetter"
+
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Section
-
 Lame attempts to use other LyX stuff
 \end_layout
 
 \begin_layout Standard
-
 I wrote a program the other day.
  It looked like this.
 \end_layout
 
 \begin_layout LyX-Code
-
 5 REMARK MY AWESOME PROGRAM
 \end_layout
 
 \begin_layout LyX-Code
-
 10 PRINT 
 \begin_inset Quotes eld
 \end_inset
@@ -229,39 +217,38 @@ I'M AWESOME!
 \end_layout
 
 \begin_layout LyX-Code
-
 20 GOTO 10
 \end_layout
 
 \begin_layout Standard
-
 After all that scientific thinking, I started feeling more artistic, so
  I wrote this haiku
 \end_layout
 
 \begin_layout Verse
-
 LyX is really great 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Typesetting word processor
-\newline
+\begin_inset Newline newline
+\end_inset
+
  It saves so much time
 \end_layout
 
 \begin_layout Section
-
 Math Stuff
 \end_layout
 
 \begin_layout Standard
-
 My favorite equation is the solution to a quadratic equation.
  If 
 \begin_inset Formula $ax^{2}+bx+c=0$
 \end_inset
 
  (eq.1), then 
-\begin_inset Formula $x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}$
+\begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
 \end_inset
 
  (eq.
@@ -269,9 +256,8 @@ My favorite equation is the solution to a quadratic equation.
 \end_layout
 
 \begin_layout Standard
-
 Another favorite equation is the basis of calculus: 
-\begin_inset Formula $f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
+\begin_inset Formula $f'(x)\equiv\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset
 
  (eq.
@@ -279,17 +265,14 @@ Another favorite equation is the basis of calculus:
 \end_layout
 
 \begin_layout Section
-
 Notes
 \end_layout
 
 \begin_layout Standard
-
 A couple notes about LyXifiying this file:
 \end_layout
 
 \begin_layout Itemize
-
 I was able to remove the lines made with dashes.
  They were there purely to separate the title and references from the rest
  of the document.
@@ -297,12 +280,9 @@ I was able to remove the lines made with dashes.
 \end_layout
 
 \begin_layout Itemize
-
 I didn't bother putting the math equations in display mode.
  Also, I didn't use LyX' automatic equation numbering, because it's not
- described in the
-\emph default
- 
+ described in the 
 \emph on
 Tutorial
 \emph default
@@ -310,7 +290,6 @@ Tutorial
 \end_layout
 
 \begin_layout Itemize
-
 I didn't have to type the word 
 \begin_inset Quotes eld
 \end_inset
@@ -328,25 +307,21 @@ Bibliography,
 \begin_inset Quotes erd
 \end_inset
 
- depending on the textclass) when you select
-\family default
- 
+ depending on the textclass) when you select 
 \family sans
 Bibliography
 \family default
- 
-style.
+ style.
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "lamport"
 
 \end_inset
 
 Lamport, Leslie.
-
-\emph default
  
 \emph on
 LaTeX: A Document Preparation System.

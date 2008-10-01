@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass armenian-article
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -33,7 +35,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "usti"
+\author "" 
 \end_header
 
 \begin_body
@@ -46,7 +48,7 @@ Test
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -138,7 +140,7 @@ aroff
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 {
 \backslash
@@ -151,7 +153,7 @@ Test words.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -174,7 +176,9 @@ Latin letters are translated to Armenian letters when they are outside the
 LyX uses the LaTeX-package ArmTeX to typeset Armenian.
  For more informations about Armenian typesetting look at the documentation
  of armTeX:
-\newline
+\begin_inset Newline newline
+\end_inset
+
 http://texcatalogue.sarovar.org/entries/armtex.html
 \end_layout
 

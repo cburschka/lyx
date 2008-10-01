@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass powerdot
@@ -21,9 +21,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize size=10
 \spacing single
+\use_hyperref false
 \papersize letterpaper
 \use_geometry false
 \use_amsmath 1
@@ -41,7 +43,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "usti"
+\author "" 
 \end_header
 
 \begin_body
@@ -54,7 +56,7 @@ A LyX sample
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \series bold
 Note:
@@ -69,7 +71,7 @@ powerdot
  manual.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \series bold
 Note:
@@ -95,7 +97,7 @@ Mael Hilléreau
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -108,7 +110,7 @@ and
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -124,7 +126,7 @@ and
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -154,7 +156,8 @@ My wide slide
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "toc"
 
 \end_inset
@@ -172,7 +175,8 @@ Let's have a look at the TOC:
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -187,7 +191,7 @@ This is the first section
 \begin_inset OptArg
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 toc=This slide has...
 \end_layout
 
@@ -198,7 +202,8 @@ This slide has a very very long title
 
 \begin_layout Standard
 This slide's title is different in the TOC, see slide 
-\begin_inset LatexCommand pageref
+\begin_inset CommandInset ref
+LatexCommand pageref
 reference "toc"
 
 \end_inset
@@ -236,7 +241,7 @@ Let's make a pause!
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -268,7 +273,7 @@ Let's enumerate things:
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -285,7 +290,7 @@ The first thing;
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -302,7 +307,7 @@ The second thing;
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -319,7 +324,7 @@ The third thing;
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -346,7 +351,7 @@ We may also make some items and nest them:
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -388,7 +393,7 @@ pause
 \begin_inset OptArg
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 toc=,randomdots
 \end_layout
 
@@ -414,7 +419,7 @@ This slide is empty\SpecialChar \ldots{}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -439,7 +444,7 @@ EmptySlide
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -458,16 +463,17 @@ You may also have noticed the use of
 randomdots
 \family default
  slide option which
-\newline
-allows displaying those multicolor dots into the slide
- background.
+\begin_inset Newline newline
+\end_inset
+
+allows displaying those multicolor dots into the slide background.
 \end_layout
 
 \begin_layout Slide
 \begin_inset OptArg
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 method=direct
 \end_layout
 
@@ -497,7 +503,7 @@ lstparams "language={[LaTeX]TeX}"
 inline false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -523,7 +529,7 @@ method=direct
 \begin_inset OptArg
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 method=file
 \end_layout
 
@@ -546,19 +552,19 @@ lstparams "language=C"
 inline false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 void HelloWorld() {
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 printf("Hello World!
 \backslash
 n");
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -572,7 +578,7 @@ n");
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash

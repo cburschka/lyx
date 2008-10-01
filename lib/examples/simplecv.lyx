@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass simplecv
@@ -34,9 +34,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -54,19 +56,24 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Left Header
 123 Hamlet Street
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Stratford-upon-Avon
 \end_layout
 
 \begin_layout Right Header
 TEL: 888-PUCK
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \family typewriter
 \size small
@@ -81,26 +88,17 @@ William Shakespeare
 Some people put a summary here.
  Note: there are many LaTeX variables you can set in the preamble to change
  the look of the CV.
- Look there (choose
-\family default
- 
+ Look there (choose 
 \family sans
-\bar under
-D
-\bar default
-ocument
+Document
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-S
-\bar default
-ettings...
+Settings...
 
 \family default
- 
-) for examples.
+ ) for examples.
 \end_layout
 
 \begin_layout Section
@@ -116,7 +114,9 @@ Work Experience
 
 \begin_layout Topic
 \labelwidthstring MMMMM
-\InsetSpace ~
+\begin_inset space ~
+\end_inset
+
  If a topic does not have a subtitle, you have to put a protected space
  there.
  This is a shortcoming of LyX.
@@ -140,9 +140,18 @@ Education
 
 \begin_layout Topic
 \labelwidthstring MMMMM
-April\InsetSpace ~
-to\InsetSpace ~
-May\InsetSpace ~
+April
+\begin_inset space ~
+\end_inset
+
+to
+\begin_inset space ~
+\end_inset
+
+May
+\begin_inset space ~
+\end_inset
+
 1581 Tried high school.
  Hated my English teacher.
  [Two things here: first, note (on paper) how a linebreak is inserted if
@@ -156,11 +165,12 @@ Publications
 
 \begin_layout Bibliography
 \labelwidthstring Publications
-
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "firstref"
 
 \end_inset
+
 First Folio.
  Me.
  1623.
@@ -168,16 +178,19 @@ First Folio.
 
 \begin_layout Bibliography
 \labelwidthstring Publications
-
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "secondref"
 
 \end_inset
+
 These references could have been entered via BibTeX\SpecialChar \ldots{}
  In any case, here I
  can cite my work of 
-\begin_inset LatexCommand cite
+\begin_inset CommandInset citation
+LatexCommand cite
 key "firstref"
+
 \end_inset
 
 .

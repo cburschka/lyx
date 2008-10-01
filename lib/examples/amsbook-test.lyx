@@ -1,8 +1,12 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass amsbook
+\begin_modules
+theorems-ams
+theorems-ams-extended
+\end_modules
 \language english
 \inputencoding default
 \font_roman default
@@ -13,9 +17,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,83 +39,74 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 Test of AMS-Book Style
 \end_layout
 
 \begin_layout Author
-
 David L.
  Johnson
 \end_layout
 
 \begin_layout Address
-
 Department of Mathematics
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Lehigh University
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Bethlehem, PA 18015
 \end_layout
 
 \begin_layout Current Address
-
 Home
 \end_layout
 
 \begin_layout Email
-
 dlj0@lehigh.edu
 \end_layout
 
 \begin_layout URL
-
 http://www.lehigh.edu/~dlj0/dlj0.html
 \end_layout
 
 \begin_layout Keywords
-
 Test
 \end_layout
 
 \begin_layout Thanks
-
 To Emmanuel, for forcing me to fix this, and Jean-Marc, for making it possible,
  and necessary.
 \end_layout
 
 \begin_layout Dedicatory
-
 To my wife.
 \end_layout
 
 \begin_layout Translator
-
 Joe
 \end_layout
 
 \begin_layout Subjectclass
-
 Primary: 12G34, Secondary: 09G87
 \end_layout
 
 \begin_layout Chapter
-
 Beginning.
 \end_layout
 
 \begin_layout Section
-
 Introduction
 \end_layout
 
 \begin_layout Standard
-
 This file, using the amsbook layout, numbers all results, Theorems, Definitions,
  etc., using 
 \begin_inset Formula $(m.n.p)$
@@ -131,23 +128,21 @@ This file, using the amsbook layout, numbers all results, Theorems, Definitions,
 \end_layout
 
 \begin_layout Standard
-
-This can be changed by modifying the layout file, removing the line
-\family default
- 
+This can be changed by modifying the layout file, removing the line 
 \family typewriter
 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 
 \backslash
 numberwithin{section}{chapter}
 \family default
  
+\begin_inset Newline newline
+\end_inset
 
-\newline
-from the
-\family default
- 
+from the 
 \family typewriter
 Preamble
 \family default
@@ -155,158 +150,126 @@ Preamble
 \end_layout
 
 \begin_layout Theorem
-
 This is a theorem
 \end_layout
 
 \begin_layout Proof
-
 Here is its proof.
 \end_layout
 
 \begin_layout Standard
-
 More text.
 \end_layout
 
 \begin_layout Corollary
-
 First corollary.
 \end_layout
 
 \begin_layout Proof
-
 Its proof.
 \end_layout
 
 \begin_layout Lemma
-
 Lemma number 1
 \end_layout
 
 \begin_layout Proposition
-
 First proposition.
 \end_layout
 
 \begin_layout Conjecture
-
 A wild guess.
 \end_layout
 
 \begin_layout Criterion
-
 Need some criteria
 \end_layout
 
 \begin_layout Algorithm
-
 first this, then the next
 \end_layout
 
 \begin_layout Fact
-
 Not fiction.
 \end_layout
 
 \begin_layout Axiom
-
 It stands to reason.
 \end_layout
 
 \begin_layout Definition
-
 a word means exactly what I say it means.
 \end_layout
 
 \begin_layout Example
-
 This should be an example.
 \end_layout
 
 \begin_layout Standard
-
 Plain text.
 \end_layout
 
 \begin_layout Condition
-
 If you say so.
 \end_layout
 
 \begin_layout Problem
-
 I don't know what to write is the problem.
 \end_layout
 
 \begin_layout Remark
-
 I think this will be useful.
 \end_layout
 
 \begin_layout Claim
-
 I did it the way the documentation said to.
 \end_layout
 
 \begin_layout Note
-
 It may need more work yet.
 \end_layout
 
 \begin_layout Standard
-
 More plain text, in standard format.
 \end_layout
 
 \begin_layout Theorem
-
 This is a second theorem
 \end_layout
 
 \begin_layout Proof
-
 Here is its proof.
 \end_layout
 
 \begin_layout Standard
-
 More text.
 \end_layout
 
 \begin_layout Corollary
-
 Second corollary.
 \end_layout
 
 \begin_layout Proof
-
 Its proof.
 \end_layout
 
 \begin_layout Lemma
-
 Lemma number 2
 \end_layout
 
 \begin_layout Proposition
-
 Second proposition.
 \end_layout
 
 \begin_layout Conjecture
-
 A wild guess.
 \end_layout
 
 \begin_layout Criterion
-
 Need some criteria
 \end_layout
 
 \begin_layout Notation
-
-
 \begin_inset Formula $S=\mathbb{R}$
 \end_inset
 
@@ -314,306 +277,249 @@ Need some criteria
 \end_layout
 
 \begin_layout Summary
-
 In the end, will it matter?
 \end_layout
 
 \begin_layout Acknowledgement
-
 Thanks to Mattias Ettrich.
  Without him I never would have learned LaTeX.
 \end_layout
 
 \begin_layout Case
-
 If this works, then the rest will.
 \end_layout
 
 \begin_layout Conclusion
-
 It seems to work.
 \end_layout
 
 \begin_layout Proof
-
 Here goes another proof.
 \end_layout
 
 \begin_layout Standard
-
 Plain text
 \end_layout
 
 \begin_layout Chapter Exercises
-
 Exercise 1
 \end_layout
 
 \begin_layout Chapter Exercises
-
 Exercise 2
 \end_layout
 
 \begin_layout Chapter Exercises
-
 These should not be italicised!
 \end_layout
 
 \begin_layout Section
-
 Next try.
 \end_layout
 
 \begin_layout Standard
-
 This tries out the section environments.
 \end_layout
 
 \begin_layout Theorem
-
 This is a theorem
 \end_layout
 
 \begin_layout Proof
-
 Here is its proof.
 \end_layout
 
 \begin_layout Standard
-
 More text.
 \end_layout
 
 \begin_layout Corollary
-
 Third corollary.
  First one of this section.
 \end_layout
 
 \begin_layout Proof
-
 Its proof.
 \end_layout
 
 \begin_layout Lemma
-
 Lemma number 3
 \end_layout
 
 \begin_layout Proposition
-
 Third proposition.
 \end_layout
 
 \begin_layout Conjecture
-
 A wild guess.
 \end_layout
 
 \begin_layout Criterion
-
 Need some criteria
 \end_layout
 
 \begin_layout Subsection
-
 This is a subsection
 \end_layout
 
 \begin_layout Standard
-
 With more results therein.
 \end_layout
 
 \begin_layout Theorem
-
 This is a theorem, maybe the fourth one.
 \end_layout
 
 \begin_layout Proof
-
 Here is its proof.
 \end_layout
 
 \begin_layout Standard
-
 More text.
 \end_layout
 
 \begin_layout Chapter
-
 Next one.
 \end_layout
 
 \begin_layout Section
-
 Next Section
 \end_layout
 
 \begin_layout Corollary
-
 Fourth corollary.
 \end_layout
 
 \begin_layout Proof
-
 Its proof.
 \end_layout
 
 \begin_layout Lemma
-
 Lemma number 4
 \end_layout
 
 \begin_layout Proposition
-
 Fourth proposition.
 \end_layout
 
 \begin_layout Conjecture
-
 A wild guess.
 \end_layout
 
 \begin_layout Criterion
-
 Need some criteria
 \end_layout
 
 \begin_layout Standard
-
 More random text.
 \end_layout
 
 \begin_layout Section
-
 Another section
 \end_layout
 
 \begin_layout Theorem
-
 This is a theorem
 \end_layout
 
 \begin_layout Proof
-
 Here is its proof.
 \end_layout
 
 \begin_layout Standard
-
 More text.
 \end_layout
 
 \begin_layout Corollary
-
 Fifth corollary.
 \end_layout
 
 \begin_layout Proof
-
 Its proof.
 \end_layout
 
 \begin_layout Lemma
-
 Lemma number 5
 \end_layout
 
 \begin_layout Proposition
-
 Fifth proposition.
 \end_layout
 
 \begin_layout Conjecture
-
 A wild guess.
 \end_layout
 
 \begin_layout Criterion
-
 Need some criteria
 \end_layout
 
 \begin_layout Subsubsection
-
 This is the subsection with results.
 \end_layout
 
 \begin_layout Standard
-
 The quick, brown fox jumped over the lazy dog.
 \end_layout
 
 \begin_layout Theorem
-
 This is a theorem - sixth in the series
 \end_layout
 
 \begin_layout Proof
-
 Here is its proof.
 \end_layout
 
 \begin_layout Standard
-
 More text.
 \end_layout
 
 \begin_layout Corollary
-
 Sixth corollary.
 \end_layout
 
 \begin_layout Proof
-
 Its proof.
 \end_layout
 
 \begin_layout Lemma
-
 Lemma number 6
 \end_layout
 
 \begin_layout Proposition
-
 Sixth proposition.
 \end_layout
 
 \begin_layout Conjecture
-
 A wild guess.
 \end_layout
 
 \begin_layout Criterion
-
 Need some criteria
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "1"
 
 \end_inset
 
 Johnson, D.
  L.
-
-\emph default
  
 \emph on
 Out of my head
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "2"
 
 \end_inset
 
-American Mathematical Society,
-\emph default
- 
+American Mathematical Society, 
 \emph on
 Instructions for preparation of papers and monographs: AMS-LaTeX
 \emph default
@@ -621,7 +527,8 @@ Instructions for preparation of papers and monographs: AMS-LaTeX
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "3"
 
 \end_inset

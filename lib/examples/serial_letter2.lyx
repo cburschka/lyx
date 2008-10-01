@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 314
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass scrlttr2
@@ -70,6 +70,7 @@ fromurl=true%               print sender URL
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 11
 \spacing other 1.15
@@ -113,12 +114,17 @@ The LyX Developers Team
 
 \begin_layout SenderAddress
 140 Map Road
-\newline
+\begin_inset Newline newline
+\end_inset
+
 SVN City
 \end_layout
 
 \begin_layout Telephone
-0011/222\InsetSpace \thinspace{}
+0011/222
+\begin_inset space \thinspace{}
+\end_inset
+
 333
 \end_layout
 
@@ -132,9 +138,13 @@ www.lyx.org
 
 \begin_layout Backaddress
 The LyX Developers Team
-\newline
+\begin_inset Newline newline
+\end_inset
+
 140 Map Road
-\newline
+\begin_inset Newline newline
+\end_inset
+
 SVN City
 \end_layout
 
@@ -154,7 +164,7 @@ The Internet
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -180,7 +190,7 @@ filename "addressExample.adr"
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -222,7 +232,7 @@ Preamble
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.ctan.org/tex-archive/macros/latex/contrib/koma-script/scrguien.pdf"
@@ -242,7 +252,10 @@ Have fun with it,
 \end_layout
 
 \begin_layout PS
-p.\InsetSpace \thinspace{}
+p.
+\begin_inset space \thinspace{}
+\end_inset
+
 s.: The blue colored items have to be before the address, the magenta colored
  after it.
 \end_layout
@@ -255,7 +268,7 @@ The LyX Users
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 keep this environment empty
 \end_layout
 
