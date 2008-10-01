@@ -2317,7 +2317,6 @@ lib_examples_files = Split('''
     Foils.lyx
     ItemizeBullets.lyx
     Literate.lyx
-    Minipage.lyx
     aa_sample.lyx
     aas_sample.lyx
     addressExample.adr
@@ -2349,7 +2348,6 @@ lib_examples_files = Split('''
     landslide.lyx
     linguistics.lyx
     listerrors.lyx
-    listings.lyx
     modernCV.lyx
     multicol.lyx
     noweb2lyx.lyx
@@ -2384,7 +2382,6 @@ lib_examples_de_files = Split('''
     Dezimal.lyx
     ItemizeBullets.lyx
     Lebenslauf.lyx
-    Minipage.lyx
     beispiel_gelyxt.lyx
     beispiel_roh.lyx
     multicol.lyx
@@ -2404,7 +2401,6 @@ lib_examples_fr_files = Split('''
     AlignementDecimal.lyx
     Foils.lyx
     ListesPuces.lyx
-    Minipage.lyx
     exemple_brut.lyx
     exemple_lyxifie.lyx
     multicol.lyx

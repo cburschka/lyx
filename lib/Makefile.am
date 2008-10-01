@@ -90,7 +90,6 @@ dist_deexamples_DATA = \
 	examples/de/Dezimal.lyx \
 	examples/de/ItemizeBullets.lyx \
 	examples/de/Lebenslauf.lyx \
-	examples/de/Minipage.lyx \
 	examples/de/multicol.lyx \
 	examples/de/serienbrief1.lyx \
 	examples/de/serienbrief2.lyx \
@@ -120,7 +119,6 @@ dist_frexamples_DATA = \
 	examples/fr/simplecv.lyx \
 	examples/fr/Foils.lyx \
 	examples/fr/ListesPuces.lyx \
-	examples/fr/Minipage.lyx \
 	examples/fr/exemple_brut.lyx \
 	examples/fr/exemple_lyxifie.lyx \
 	examples/fr/multicol.lyx \
@@ -191,7 +189,6 @@ dist_examples_DATA = \
 	examples/Foils.lyx \
 	examples/ItemizeBullets.lyx \
 	examples/Literate.lyx \
-	examples/Minipage.lyx \
 	examples/aa_sample.lyx \
 	examples/aas_sample.lyx \
 	examples/addressExample.adr \
@@ -223,7 +220,6 @@ dist_examples_DATA = \
 	examples/landslide.lyx \
 	examples/linguistics.lyx \
 	examples/listerrors.lyx \
-	examples/listings.lyx \
 	examples/modernCV.lyx \
 	examples/multicol.lyx \
 	examples/noweb2lyx.lyx \
