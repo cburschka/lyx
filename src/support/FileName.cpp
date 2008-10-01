@@ -346,7 +346,7 @@ bool FileName::isWritable() const
 bool FileName::isDirWritable() const
 {
 	LASSERT(d->fi.isDir(), return false);
-	QFileInfo tmp(d->fi.absoluteDir(), "lyxwritetest");
+	QFileInfo tmp(QDir(d->fi.absoluteFilePath()), "lyxwritetest");
 	QTemporaryFile qt_tmp(tmp.absoluteFilePath());
 	if (qt_tmp.open()) {
 		LYXERR(Debug::FILES, "Directory " << *this << " is writable");
@@ -591,6 +591,7 @@ bool FileName::destroyDirectory() const
 }
 
 
+// Only used in non Win32 platforms
 static int mymkdir(char const * pathname, unsigned long int mode)
 {
 	// FIXME: why don't we have mode_t in lyx::mkdir prototype ??
@@ -619,16 +620,22 @@ static int mymkdir(char const * pathname, unsigned long int mode)
 
 bool FileName::createDirectory(int permission) const
 {
-	LASSERT(!empty(), /**/);
+	LASSERT(!empty(), return false);
+#ifdef Q_OS_WIN32
+	// FIXME: "Permissions of created directories are ignored on this system."
+	return createPath();
+#else
 	return mymkdir(toFilesystemEncoding().c_str(), permission) == 0;
+#endif
 }
 
 
 bool FileName::createPath() const
 {
 	LASSERT(!empty(), /**/);
+	LYXERR(Debug::FILES, "creating path '" << *this << "'.");
 	if (isDirectory())
-		return true;
+		return false;
 
 	QDir dir;
 	bool success = dir.mkpath(d->fi.absoluteFilePath());
