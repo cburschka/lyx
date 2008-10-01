@@ -297,7 +297,6 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.recordUndoSelection();
 			pit_type const pit_end = cur.selEnd().pit();
 			for (pit_type pit = cur.selBegin().pit(); pit <= pit_end; pit++) {
-				LASSERT(pit < paragraphs().size(), /**/);
 				paragraphs()[pit].insertChar(0, '\t', 
 					buffer().params().trackChanges);
 				// Update the selection pos to make sure the selection does not
@@ -323,7 +322,6 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.recordUndoSelection();
 			pit_type const pit_end = cur.selEnd().pit();
 			for (pit_type pit = cur.selBegin().pit(); pit <= pit_end; pit++) {
-				LASSERT( pit < paragraphs().size(), /**/ );
 				Paragraph & par = paragraphs()[pit];
 				if (par.getChar(0) == '\t') {
 					if (cur.pit() == pit)
@@ -348,8 +346,6 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 		} else {
 			// If there is no selection, try to remove a tab or some spaces 
 			// before the position of the cursor.
-			LASSERT(cur.pit() >= 0 && cur.pit() < paragraphs().size(), /**/);
-
 			Paragraph & par = paragraphs()[cur.pit()];
 			pos_type const pos = cur.pos();
 
