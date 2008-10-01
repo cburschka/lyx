@@ -28,7 +28,7 @@ namespace boost {
 #ifndef BOOST_NO_EXCEPTIONS
 void throw_exception(exception const & e)
 {
-	lyxerr << "Exception caught:\n" << e.diagnostic_information() << endl;
+	lyxerr << "Exception caught:\n" << e.what() << endl;
 	LASSERT(false, /**/);
 }
 #endif
