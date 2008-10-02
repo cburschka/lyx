@@ -2533,6 +2533,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_SERVER_NOTIFY
  * \li Action: Sends notify message about the last key-sequence to client.
  * \li Notion: This can be used to grab last key-sequence used inside the LyX window.
+               See also Debug extensions section in Extended features manual.
  * \li Syntax: server-notify
  * \endvar
  */
