@@ -49,6 +49,7 @@ protected Q_SLOTS:
 	void on_tocTV_clicked(QModelIndex const &);
 	void on_updateTB_clicked();
 	void on_sortCB_stateChanged(int state);
+	void on_persistentCB_stateChanged(int state);
 	void on_depthSL_valueChanged(int depth);
 	void on_typeCO_currentIndexChanged(int value);
 	void on_moveUpTB_clicked();
@@ -68,6 +69,8 @@ private:
 
 	/// depth of list shown
 	int depth_;
+	/// persistence of uncollapsed nodes in toc view
+	bool persistent_;
 	///
 	GuiView & gui_view_;
 };

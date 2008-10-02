@@ -35,7 +35,7 @@ namespace lyx {
 namespace frontend {
 
 TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
-	: QWidget(parent), depth_(0), gui_view_(gui_view)
+	: QWidget(parent), depth_(0), persistent_(false), gui_view_(gui_view)
 {
 	setupUi(this);
 
@@ -104,6 +104,12 @@ void TocWidget::on_sortCB_stateChanged(int state)
 	gui_view_.tocModels().sort(current_type_, state == Qt::Checked);
 	updateView();
 }
+
+void TocWidget::on_persistentCB_stateChanged(int state)
+{
+	persistent_ = state == Qt::Checked;
+}
+
 
 /* FIXME (Ugras 17/11/06):
 I have implemented a indexDepth function to get the model indices. In my
@@ -228,6 +234,7 @@ void TocWidget::enableControls(bool enable)
 	moveDownTB->setEnabled(enable);
 	moveInTB->setEnabled(enable);
 	moveOutTB->setEnabled(enable);
+	persistentCB->setEnabled(enable);
 	if (!enable) {
 		depthSL->setMaximum(0);
 		depthSL->setValue(0);
@@ -263,12 +270,14 @@ void TocWidget::updateView()
 	if (tocTV->model() != toc_model) {
 		tocTV->setModel(toc_model);
 		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
-		setTreeDepth(depth_);
+		if (persistent_) setTreeDepth(depth_);
 	}
 
 	sortCB->blockSignals(true);
 	sortCB->setChecked(gui_view_.tocModels().isSorted(current_type_));
 	sortCB->blockSignals(false);
+
+	persistentCB->setChecked(persistent_);
 
 	bool controls_enabled = toc_model && toc_model->rowCount() > 0
 		&& !gui_view_.buffer()->isReadonly();
@@ -276,6 +285,7 @@ void TocWidget::updateView()
 
 	depthSL->setMaximum(gui_view_.tocModels().depth(current_type_));
 	depthSL->setValue(depth_);
+	if (!persistent_) setTreeDepth(depth_);
 	if (canNavigate(current_type_))
 		select(gui_view_.tocModels().currentIndex(current_type_));
 	tocTV->setEnabled(true);
