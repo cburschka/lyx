@@ -1471,6 +1471,45 @@ reference "sub:List-of-Figures"
 \end_inset
 
 .
+ The 
+\family sans
+Sort
+\family default
+ option sorts the current list, and the 
+\family sans
+Keep
+\family default
+ option keeps it in the current view state.
+ Keeping means that when you have e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+the subsections of section
+\begin_inset space ~
+\end_inset
+
+2 and 4 shown and click on section
+\begin_inset space ~
+\end_inset
+
+3, the subsections of section
+\begin_inset space ~
+\end_inset
+
+2 and 4 will still be shown.
+ Without the 
+\family sans
+Keep
+\family default
+ option they will be hidden to highlight the clicked section
+\begin_inset space ~
+\end_inset
+
+3.
 \end_layout
 
 \begin_layout Standard
@@ -1545,11 +1584,11 @@ S-Tab
 \begin_inset space ~
 \end_inset
 
-2.5 chapter
+2.5 to chapter
 \begin_inset space ~
 \end_inset
 
-3 or subsection
+3 or to subsection
 \begin_inset space ~
 \end_inset
 
