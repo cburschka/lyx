@@ -38,21 +38,6 @@ public:
 	bool
 	copy(support::FileName const & from, support::FileName const & to) const;
 
-	/** Copy file @c from to @c to.
-	 *  \see SpecialisedMover::SpecialisedMover() for an explanation of
-	 *  @c latex.
-	 *  This version should be used to copy files from the temporary
-	 *  directory to the export location, since @c to and @c latex may
-	 *  not be equal in this case.
-	 *  \returns true if successful.
-	 */
-	bool
-	copy(support::FileName const & from, support::FileName const & to,
-	     std::string const & latex) const
-	{
-		return do_copy(from, to, latex);
-	}
-
 	/** Rename file @c from as @c to.
 	 *  This version should be used to move files from the original
 	 *  location to the temporary directory, since @c to and @c latex
@@ -78,10 +63,6 @@ public:
 	}
 
 protected:
-	virtual bool
-	do_copy(support::FileName const & from, support::FileName const & to,
-		std::string const &) const;
-
 	virtual bool
 	do_rename(support::FileName const & from, support::FileName const & to,
 		  std::string const &) const;

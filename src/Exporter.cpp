@@ -86,7 +86,7 @@ CopyStatus copyFile(string const & format,
 	}
 
 	Mover const & mover = getMover(format);
-	if (!mover.copy(sourceFile, destFile, latexFile))
+	if (!mover.copy(sourceFile, destFile))
 		Alert::error(_("Couldn't copy file"),
 			     bformat(_("Copying %1$s to %2$s failed."),
 				     makeDisplayPath(sourceFile.absFilename()),
