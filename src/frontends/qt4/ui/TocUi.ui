@@ -32,7 +32,9 @@
    <item row="1" column="0" colspan="2" >
     <widget class="QTreeView" name="tocTV" >
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Expanding" hsizetype="Ignored" >
+      <sizepolicy>
+       <hsizetype>13</hsizetype>
+       <vsizetype>7</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
