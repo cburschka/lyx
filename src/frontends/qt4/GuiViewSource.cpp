@@ -197,7 +197,7 @@ void GuiViewSource::saveSession() const
 
 void GuiViewSource::restoreSession()
 {
-	Dialog::restoreSession();
+	DockView::restoreSession();
 	QSettings settings;
 	widget_->viewFullSourceCB->setChecked(
 		settings.value(sessionKey() + "/fullsource", false).toBool());

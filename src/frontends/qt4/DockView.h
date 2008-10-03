@@ -49,6 +49,9 @@ public:
 	virtual QWidget * asQWidget() { return this; }
 	virtual QWidget const * asQWidget() const { return this; }
 
+	/// We don't want to restore geometry session for dock widgets.
+	void restoreSession() {}
+
 	/// Dialog inherited methods
 	//@{
 	void applyView() {}
