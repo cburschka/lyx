@@ -1,5 +1,5 @@
-#LyX 1.5.7svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass sigplanconf
@@ -13,10 +13,12 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \float_placement tbh
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -45,7 +47,7 @@ PLDI ’05
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }{
 \end_layout
@@ -56,7 +58,7 @@ June 12--15, 2005, Chicago, Illinois, USA.
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The Conference expects 2 infos that are separated by 
 \begin_inset Quotes eld
 \end_inset
@@ -90,7 +92,7 @@ Example ACM Paper
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -103,7 +105,7 @@ This work was supported by ...
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -122,7 +124,7 @@ Suzi Smith
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -136,7 +138,7 @@ and
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }{
 \end_layout
@@ -147,7 +149,7 @@ Princeton University
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }{
 \end_layout
@@ -155,16 +157,18 @@ status collapsed
 \end_inset
 
 smith@cs.princeton.edu
-\newline
+\begin_inset Newline newline
+\end_inset
+
 anagnostopoulos@cs.princeton.edu
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 At least one autor is required.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The Author field expects 3 infos that are separated by 
 \begin_inset Quotes eld
 \end_inset
@@ -190,7 +194,7 @@ Fred Flymuffin
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }{
 \end_layout
@@ -199,17 +203,23 @@ status collapsed
 
 Washington University in St.
  Louis
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Department of Electrical and Computer Engineering
-\newline
+\begin_inset Newline newline
+\end_inset
+
 3301 S Dearborn Street
-\newline
+\begin_inset Newline newline
+\end_inset
+
 St.
  Louis, XX 60616, USA
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }{
 \end_layout
@@ -229,14 +239,14 @@ This paper is a demonstration of the Lyx template for the ACM alternate
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 category{B.2.4}{Arithmetic and Logic Structures}{High-Speed Arithmetic}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -280,20 +290,27 @@ Appendix, only when needed, can also be started behind the bibliography.
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "ahmed02"
 
 \end_inset
 
-Amal\InsetSpace ~
+Amal
+\begin_inset space ~
+\end_inset
+
 J.
- Ahmed, Andrew\InsetSpace ~
+ Ahmed, Andrew
+\begin_inset space ~
+\end_inset
+
 W.
  Appel, and Roberto Virga.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -307,7 +324,7 @@ newblock
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -325,18 +342,22 @@ n Proceedings of the 17th Annual IEEE Symposium on Logic in Computer Science
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "appel01:fpcc"
 
 \end_inset
 
-Andrew\InsetSpace ~
+Andrew
+\begin_inset space ~
+\end_inset
+
 W.
  Appel.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -349,7 +370,7 @@ newblock
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
