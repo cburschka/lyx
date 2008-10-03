@@ -15,19 +15,11 @@
   <property name="windowTitle" >
    <string/>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
+  <layout class="QGridLayout" name="gridLayout" >
    <item row="0" column="0" colspan="2" >
     <widget class="QComboBox" name="typeCO" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>0</hsizetype>
-       <vsizetype>0</vsizetype>
+      <sizepolicy vsizetype="Fixed" hsizetype="Ignored" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -52,9 +44,7 @@
    <item row="2" column="0" >
     <widget class="QSlider" name="depthSL" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>0</hsizetype>
-       <vsizetype>0</vsizetype>
+      <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -80,22 +70,20 @@
     </widget>
    </item>
    <item row="2" column="1" >
-    <layout class="QVBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
+    <layout class="QVBoxLayout" name="_2" >
      <property name="spacing" >
       <number>0</number>
      </property>
      <property name="sizeConstraint" >
       <enum>QLayout::SetMinimumSize</enum>
      </property>
+     <property name="leftMargin" >
+      <number>4</number>
+     </property>
      <item>
       <widget class="QCheckBox" name="sortCB" >
        <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>0</hsizetype>
-         <vsizetype>0</vsizetype>
+        <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -114,9 +102,7 @@
      <item>
       <widget class="QCheckBox" name="persistentCB" >
        <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>0</hsizetype>
-         <vsizetype>0</vsizetype>
+        <sizepolicy vsizetype="Minimum" hsizetype="Fixed" >
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -139,11 +125,11 @@
    </item>
    <item row="3" column="0" colspan="2" >
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="margin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="QToolButton" name="updateTB" >
@@ -154,7 +140,8 @@
         <string>...</string>
        </property>
        <property name="icon" >
-        <iconset>../../../../lib/images/reload.png</iconset>
+        <iconset>
+         <normaloff>../../../../lib/images/reload.png</normaloff>../../../../lib/images/reload.png</iconset>
        </property>
        <property name="iconSize" >
         <size>
@@ -169,7 +156,7 @@
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>16</width>
          <height>20</height>
@@ -186,7 +173,8 @@
         <string>...</string>
        </property>
        <property name="icon" >
-        <iconset>../../../../lib/images/promote.png</iconset>
+        <iconset>
+         <normaloff>../../../../lib/images/promote.png</normaloff>../../../../lib/images/promote.png</iconset>
        </property>
        <property name="iconSize" >
         <size>
@@ -205,7 +193,8 @@
         <string>...</string>
        </property>
        <property name="icon" >
-        <iconset>../../../../lib/images/demote.png</iconset>
+        <iconset>
+         <normaloff>../../../../lib/images/demote.png</normaloff>../../../../lib/images/demote.png</iconset>
        </property>
        <property name="iconSize" >
         <size>
@@ -224,7 +213,8 @@
         <string>...</string>
        </property>
        <property name="icon" >
-        <iconset>../../../../lib/images/down.png</iconset>
+        <iconset>
+         <normaloff>../../../../lib/images/down.png</normaloff>../../../../lib/images/down.png</iconset>
        </property>
        <property name="iconSize" >
         <size>
@@ -243,7 +233,8 @@
         <string>...</string>
        </property>
        <property name="icon" >
-        <iconset>../../../../lib/images/up.png</iconset>
+        <iconset>
+         <normaloff>../../../../lib/images/up.png</normaloff>../../../../lib/images/up.png</iconset>
        </property>
        <property name="iconSize" >
         <size>
