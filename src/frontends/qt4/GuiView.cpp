@@ -483,11 +483,11 @@ TocModels & GuiView::tocModels()
 void GuiView::setFocus()
 {
 	// Make sure LyXFunc points to the correct view.
+	guiApp->setCurrentView(this);
 	theLyXFunc().setLyXView(this);
+	QMainWindow::setFocus();
 	if (d.current_work_area_)
 		d.current_work_area_->setFocus();
-	else
-		QWidget::setFocus();
 }
 
 
@@ -517,8 +517,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 
 	// it can happen that this event arrives without selecting the view,
 	// e.g. when clicking the close button on a background window.
-	theLyXFunc().setLyXView(this);
-	guiApp->setCurrentView(this);
+	setFocus();
 
 	while (Buffer * b = buffer()) {
 		if (b->parent()) {

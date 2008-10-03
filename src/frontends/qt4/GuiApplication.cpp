@@ -968,7 +968,6 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
 #endif
 	}
 	view->setFocus();
-	setCurrentView(view);
 }
 
 
