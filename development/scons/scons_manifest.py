@@ -1267,10 +1267,9 @@ lib_kbd_files = Split('''
 
 
 lib_templates_files = Split('''
-    IEEEtran.lyx
-    README.new_templates
     aa.lyx
     aastex.lyx
+    ACM-sigplan.lyx
     agu_article.lyx
     apa.lyx
     beamer-conference-ornate-20min.lyx
@@ -1283,6 +1282,7 @@ lib_templates_files = Split('''
     g-brief-en.lyx
     g-brief2.lyx
     hollywood.lyx
+    IEEEtran.lyx
     ijmpc.lyx
     ijmpd.lyx
     iop-article.lyx
@@ -1291,6 +1291,7 @@ lib_templates_files = Split('''
     koma-letter2.lyx
     latex8.lyx
     letter.lyx
+    README.new_templates
     revtex.lyx
     revtex4.lyx
     slides.lyx
@@ -2524,7 +2525,6 @@ lib_lyx2lyx_extra_files = Split('''
 
 
 lib_layouts_files = Split('''
-    IEEEtran.layout
     aa.layout
     aapaper.layout
     aastex.layout
@@ -2563,6 +2563,7 @@ lib_layouts_files = Split('''
     heb-article.layout
     heb-letter.layout
     hollywood.layout
+    IEEEtran.layout
     ijmpc.layout
     ijmpd.layout
     iopart.layout
@@ -2601,6 +2602,7 @@ lib_layouts_files = Split('''
     scrreprt.layout
     seminar.layout
     siamltex.layout
+    sigplanconf.layout
     simplecv.layout
     singlecol.layout
     slides.layout
