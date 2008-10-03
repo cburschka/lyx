@@ -518,6 +518,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	// it can happen that this event arrives without selecting the view,
 	// e.g. when clicking the close button on a background window.
 	theLyXFunc().setLyXView(this);
+	guiApp->setCurrentView(this);
 
 	while (Buffer * b = buffer()) {
 		if (b->parent()) {
