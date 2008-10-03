@@ -398,101 +398,6 @@ psnfss
 \begin_layout Itemize
 
 \family sans
-mathpazo
-\family default
- (newest Palatino support).
- 
-\series bold
-Found:
-\series default
- 
-\begin_inset Info
-type  "package"
-arg   "mathpazo"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-mathpple
-\family default
- (deprecated Palatino support).
- 
-\series bold
-Found:
-\series default
- 
-\begin_inset Info
-type  "package"
-arg   "mathpple"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-mathptmx
-\family default
- (newest Times support).
- 
-\series bold
-Found:
-\series default
- 
-\begin_inset Info
-type  "package"
-arg   "mathptmx"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-mathptm
-\family default
- (deprecated Times support).
- 
-\series bold
-Found:
-\series default
- 
-\begin_inset Info
-type  "package"
-arg   "mathptm"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-utopia
-\family default
- (Utopia).
- 
-\series bold
-Found:
-\series default
- 
-\begin_inset Info
-type  "package"
-arg   "utopia"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
 avant
 \family default
  (Avant Garde).
@@ -531,6 +436,25 @@ arg   "bookman"
 \begin_layout Itemize
 
 \family sans
+chancery
+\family default
+ (Zapf Chancery).
+ 
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "chancery"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
 charter
 \family default
  (Charter).
@@ -542,6 +466,120 @@ Found:
 \begin_inset Info
 type  "package"
 arg   "charter"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+courier
+\family default
+ (Courier).
+ 
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "courier"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+helvet
+\family default
+ (Helvetica).
+ 
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "helvet"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathpazo
+\family default
+ (newest Palatino support).
+ 
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mathpazo"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathpple
+\family default
+ (deprecated Palatino support).
+ 
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mathpple"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathptm
+\family default
+ (deprecated Times support).
+ 
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mathptm"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathptmx
+\family default
+ (newest Times support).
+ 
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mathptmx"
 \end_inset
 
 
@@ -569,9 +607,9 @@ arg   "newcent"
 \begin_layout Itemize
 
 \family sans
-chancery
+pifont
 \family default
- (Zapf Chancery).
+ (Zapf Dingbats).
  
 \series bold
 Found:
@@ -579,7 +617,26 @@ Found:
  
 \begin_inset Info
 type  "package"
-arg   "chancery"
+arg   "pifont"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+utopia
+\family default
+ (Utopia).
+ 
+\series bold
+Found:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "utopia"
 \end_inset
 
 
