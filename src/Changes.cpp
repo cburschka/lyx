@@ -413,8 +413,9 @@ void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer) const
 		dit.pos() = it->range.start;
 		Paragraph const & par = dit.paragraph();
 		str += " " + par.asString(it->range.start, min(par.size(), it->range.end));
-		// FIXME: find an unicode character for carriage return presentation if
-		// present; i.e. when it->range.end > par.size()
+		if (it->range.end > par.size())
+			// the end of paragraph symbol from the Punctuation group
+			str.push_back(0x204B);
 		docstring const & author = author_list.get(it->change.author).name();
 		Toc::iterator it = change_list.item(0, author);
 		if (it == change_list.end()) {
