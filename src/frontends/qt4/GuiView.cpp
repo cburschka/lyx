@@ -2248,8 +2248,11 @@ Dialog * GuiView::findOrBuild(string const & name, bool hide_it)
 
 	map<string, DialogPtr>::iterator it = d.dialogs_.find(name);
 
-	if (it != d.dialogs_.end())
+	if (it != d.dialogs_.end()) {
+		if (hide_it)
+			it->second->hideView();
 		return it->second.get();
+	}
 
 	Dialog * dialog = build(name);
 	d.dialogs_[name].reset(dialog);
