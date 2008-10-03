@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass slides
@@ -22,9 +22,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics dvips
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -42,6 +44,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -51,7 +54,6 @@
 \end_layout
 
 \begin_layout Standard
-
 Test slide.
 \end_layout
 
@@ -60,7 +62,6 @@ Test slide.
 \end_layout
 
 \begin_layout Standard
-
 Text visible only in an overlay.
 \end_layout
 
@@ -69,7 +70,6 @@ Text visible only in an overlay.
 \end_layout
 
 \begin_layout Standard
-
 Text visible in the main slide.
 \end_layout
 
@@ -78,7 +78,6 @@ Text visible in the main slide.
 \end_layout
 
 \begin_layout Standard
-
 Test overlay.
 \end_layout
 
@@ -87,7 +86,6 @@ Test overlay.
 \end_layout
 
 \begin_layout Standard
-
 Text visible only in an overlay.
 \end_layout
 
@@ -96,7 +94,6 @@ Text visible only in an overlay.
 \end_layout
 
 \begin_layout Standard
-
 Text visible in the main slide.
 \end_layout
 
@@ -109,17 +106,16 @@ Text visible in the main slide.
 \end_layout
 
 \begin_layout Standard
-
 Test note.
 \end_layout
 
 \begin_layout Standard
-
 A time marker: 
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 settime{60}
@@ -131,12 +127,12 @@ settime{60}
 \end_layout
 
 \begin_layout Standard
-
 Don't talk more than 
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 addtime{200}

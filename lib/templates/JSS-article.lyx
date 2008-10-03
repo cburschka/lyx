@@ -1,5 +1,5 @@
-#LyX 1.5.5 created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass jss
@@ -86,9 +86,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -116,7 +118,7 @@
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 This is a template LyX file for an article written using the Journal of
  Statistical Software (JSS) LaTeX style file, which can be downloaded from
  http://www.jstatsoft.org/downloads/JSSstyle.zip.
@@ -125,7 +127,7 @@ This is a template LyX file for an article written using the Journal of
  See also the documentation included with the JSS LaTeX style file.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Note that title, author, address, abstract, keywords etc for this article
  style are written in the LaTeX preamble (accessed from Document\SpecialChar \menuseparator
 Settings...\SpecialChar \menuseparator
@@ -134,7 +136,7 @@ LaTeX
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 To use the JSS codesnippet, bookreview or softwarereview styles, replace
  the option 
 \begin_inset Quotes eld
@@ -175,7 +177,7 @@ softwarereview
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 If you want to use this JSS article style for a non-JSS article, replace
  the option 
 \begin_inset Quotes eld
@@ -197,7 +199,7 @@ nojss
  This will suppress the JSS-specic parts of the layout.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 To include the JSS-specific parts of the layout, the article has to be processed
  with PDF, i.e.
  you cannot process it with DVI or PS.
@@ -221,7 +223,7 @@ nojss
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The opt field provides bookmarks for PDF files
 \end_layout
 
@@ -231,7 +233,7 @@ The opt field provides bookmarks for PDF files
 \begin_inset OptArg
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 About package foo in R
 \end_layout
 
@@ -241,7 +243,7 @@ About package
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -254,7 +256,7 @@ pkg
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 {
 \end_layout
@@ -265,7 +267,7 @@ foo
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -276,7 +278,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -289,7 +291,7 @@ proglang
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 {
 \end_layout
@@ -300,7 +302,7 @@ R
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -316,7 +318,7 @@ The special JSS style commands related to software and mathematical formulas
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -329,7 +331,7 @@ proglang{R}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -342,7 +344,7 @@ R
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -353,7 +355,7 @@ status collapsed
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -366,7 +368,7 @@ pkg{foo}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -379,7 +381,7 @@ foo
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -390,7 +392,7 @@ status collapsed
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -403,7 +405,7 @@ code{some code}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -416,7 +418,7 @@ some code
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -431,7 +433,7 @@ status collapsed
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 written as 
 \backslash
 E
@@ -447,7 +449,7 @@ E
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 written as 
 \backslash
 VAR
@@ -463,7 +465,7 @@ VAR
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 written as 
 \backslash
 COV
@@ -479,7 +481,7 @@ COV
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 written as 
 \backslash
 Prob
@@ -498,43 +500,43 @@ Writing several lines of code:
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 begin{CodeChunk}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 begin{Code}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 first line of code
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 second line of code
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 third line of code
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 end{Code}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -554,67 +556,67 @@ Alternatively, you can distinguish between input and output code:
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 begin{CodeChunk}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 begin{CodeInput}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 first line of input code
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 second line of input code
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 end{CodeInput}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 begin{CodeOutput}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 first line of output code
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 second line of output code
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 third line of output code
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 end{CodeOutput}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash

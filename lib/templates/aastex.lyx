@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass aastex
@@ -18,9 +18,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -38,22 +40,22 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 <Paper Title>
 \end_layout
 
 \begin_layout Author
-
 <Author 1>
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 altaffilmark{1}
@@ -65,22 +67,20 @@ altaffilmark{1}
 \end_layout
 
 \begin_layout Affiliation
-
 <Institution and Address>
 \end_layout
 
 \begin_layout Email
-
 <email@address>
 \end_layout
 
 \begin_layout Author
-
 <Author 2>
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 altaffilmark{2,3}
@@ -92,7 +92,6 @@ altaffilmark{2,3}
 \end_layout
 
 \begin_layout Affiliation
-
 <Institution and Address>
 \end_layout
 
@@ -101,12 +100,12 @@ altaffilmark{2,3}
 \end_layout
 
 \begin_layout Author
-
 <Author 3>
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 altaffilmark{3}
@@ -118,37 +117,37 @@ altaffilmark{3}
 \end_layout
 
 \begin_layout Affiliation
-
 <Institution and Address>
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
-status inlined
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 altaffiltext{1}{Visiting Astronomer, etc.}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 altaffiltext{2}{Current Address, etc.}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 altaffiltext{3}{Visiting Astronomer, etc.}
@@ -160,72 +159,64 @@ altaffiltext{3}{Visiting Astronomer, etc.}
 \end_layout
 
 \begin_layout Abstract
-
 <Abstract text>
 \end_layout
 
 \begin_layout Keywords
-
 <Journal approved keywords>
 \end_layout
 
 \begin_layout Section
-
 Introduction
 \end_layout
 
 \begin_layout Standard
-
 <intro text>
 \end_layout
 
 \begin_layout Section
-
 Observations
 \end_layout
 
 \begin_layout Standard
-
 <observations text>
 \end_layout
 
 \begin_layout Section
-
 Results
 \end_layout
 
 \begin_layout Standard
-
 <results text; refer to Figure 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "fig1"
+
 \end_inset
 
  and to 
-\begin_inset LatexCommand citet
+\begin_inset CommandInset citation
+LatexCommand citet
 key "ref1"
+
 \end_inset
 
 > 
 \end_layout
 
 \begin_layout Section
-
 Discussion
 \end_layout
 
 \begin_layout Standard
-
 <discussion text> 
 \end_layout
 
 \begin_layout Section
-
 Conclusions
 \end_layout
 
 \begin_layout Standard
-
 <conclusions text>
 \end_layout
 
@@ -234,7 +225,6 @@ Conclusions
 \end_layout
 
 \begin_layout Standard
-
 <acknowledgment text>
 \end_layout
 
@@ -243,12 +233,12 @@ Conclusions
 \end_layout
 
 \begin_layout Section
-
 Appendix
 \end_layout
 
 \begin_layout References
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 label "Author(1982)"
 key "ref1"
 
@@ -258,7 +248,8 @@ Author, A.,
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 apj
@@ -270,12 +261,11 @@ apj
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 clearpage
@@ -287,10 +277,10 @@ clearpage
 \end_layout
 
 \begin_layout FigCaption
-
-
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "fig1"
+
 \end_inset
 
 This is the first figure.

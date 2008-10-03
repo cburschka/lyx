@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass ijmpd
@@ -13,10 +13,12 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \float_placement htbp
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -34,6 +36,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -42,7 +45,7 @@
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -58,7 +61,7 @@ markboth{<Authors' Names>} {<Paper's short title>}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -81,7 +84,7 @@ catchline{}{}{}{}{}
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 <Permanent or present address for the first author (optional).>
 \end_layout
 
@@ -92,10 +95,13 @@ status collapsed
 
 \begin_layout Address
 <University Department, University Name, Address>
-\newline
-<City, State ZIP/Zone,
- Country>
-\newline
+\begin_inset Newline newline
+\end_inset
+
+<City, State ZIP/Zone, Country>
+\begin_inset Newline newline
+\end_inset
+
 e-mail-1
 \end_layout
 
@@ -106,7 +112,7 @@ e-mail-1
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 <Permanent or present address for the second author (optional).>
 \end_layout
 
@@ -117,10 +123,13 @@ status collapsed
 
 \begin_layout Address
 <University Department, University Name, Address>
-\newline
-<City, State ZIP/Zone,
- Country>
-\newline
+\begin_inset Newline newline
+\end_inset
+
+<City, State ZIP/Zone, Country>
+\begin_inset Newline newline
+\end_inset
+
 e-mail-2
 \end_layout
 
@@ -254,18 +263,20 @@ Results and discussion
 \begin_layout Standard
 <Another standard section.
  A citation reference is included.
-\begin_inset LatexCommand cite
+\begin_inset CommandInset citation
+LatexCommand cite
 key "key-1"
+
 \end_inset
 
  Note that references appear as superscripts in the printed version.
-\begin_inset LatexCommand cite
+\begin_inset CommandInset citation
+LatexCommand cite
 key "key-1,key-2"
+
 \end_inset
 
- You can also use them directly, but in this case you should use the
-\family default
- 
+ You can also use them directly, but in this case you should use the 
 \family typewriter
 refcite
 \family default
@@ -273,12 +284,15 @@ refcite
 \begin_inset Quotes eld
 \end_inset
 
-see Ref.\InsetSpace ~
+see Ref.
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -300,10 +314,15 @@ A subsection
 
 \begin_layout Standard
 <Subsection text.
- Here, a table is included (see Table\InsetSpace ~
+ Here, a table is included (see Table
+\begin_inset space ~
+\end_inset
 
-\begin_inset LatexCommand ref
+
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "cap:fuf"
+
 \end_inset
 
 ).>
@@ -315,11 +334,11 @@ wide false
 sideways false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -332,7 +351,7 @@ An example table.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -343,7 +362,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 {
 \end_layout
@@ -353,36 +372,36 @@ status collapsed
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features>
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Column A
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Column B
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Column C
 \end_layout
 
@@ -390,28 +409,28 @@ Column C
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 1
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 4
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 7
 \end_layout
 
@@ -419,57 +438,57 @@ Column C
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 2
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 5
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 8
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 3
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 6
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 9
 \end_layout
 
@@ -481,15 +500,17 @@ Column C
 \end_inset
 
 
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "cap:fuf"
+
 \end_inset
 
 
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -556,15 +577,11 @@ Appendices Section
 \end_inset
 
  just marks the beginning of appendices.
- Note that appendices should be placed
-\emph default
- 
+ Note that appendices should be placed 
 \emph on
 after
 \emph default
- the Acknowledgments and
-\shape default
- 
+ the Acknowledgments and 
 \shape italic
 before
 \shape default
@@ -581,25 +598,22 @@ Another Appendix section
 \end_layout
 
 \begin_layout Bibliography
-
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "key-1"
 
 \end_inset
+
 First-1.
  Middle-1.
  Surname-1, First-2.
  Middle-2.
  Surname-2, and First-3.
  Middle-3.
- Surname-3,
-\emph default
- 
+ Surname-3, 
 \emph on
 Journal abbreviation
 \emph default
-
-\series default
  
 \series bold
 Volume
@@ -608,16 +622,15 @@ Volume
 \end_layout
 
 \begin_layout Bibliography
-
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "key-2"
 
 \end_inset
+
 First-1.
  Middle-1.
- Surname-1,
-\emph default
- 
+ Surname-1, 
 \emph on
 Book Title
 \emph default

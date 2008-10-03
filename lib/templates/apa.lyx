@@ -1,5 +1,5 @@
-#LyX 1.5.1svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass apa
@@ -34,9 +34,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -55,6 +57,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -63,7 +66,7 @@
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Note that the APA class provides three different 
 \begin_inset Quotes eld
 \end_inset
@@ -103,13 +106,18 @@ Options.
  This template uses the Printed Journal mode.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Have a look at Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
 Preamble for further settings.
  A brief documentation can be found at 
-\begin_inset LatexCommand url
-target "http://ctan.basemirror.de/macros/latex/contrib/apa/apacls.html"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://ctan.basemirror.de/macros/latex/contrib/apa/apacls.html
+\end_layout
 
 \end_inset
 
@@ -130,7 +138,7 @@ Running Head for Journal and LaTeX Mode
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 for manuscript mode, use 
 \emph on
 ShortTitle
@@ -149,12 +157,14 @@ Author's Name
 
 \begin_layout Affiliation
 Department of Psychology
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Your university
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 If your paper is written by multiple authors from the same affiliation,
  just enter them as 
 \begin_inset Quotes eld
@@ -187,14 +197,17 @@ Author
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }{
 \end_layout
 
 \end_inset
 
- in TeX mode, e.\InsetSpace \thinspace{}
+ in TeX mode, e.
+\begin_inset space \thinspace{}
+\end_inset
+
 g.
  
 \begin_inset Quotes eld
@@ -204,7 +217,7 @@ My name
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }{
 \end_layout
@@ -216,7 +229,10 @@ My colleague's name
 \end_inset
 
 .
- Note further that you must use the corresponding Affiliation style, i.\InsetSpace \thinspace{}
+ Note further that you must use the corresponding Affiliation style, i.
+\begin_inset space \thinspace{}
+\end_inset
+
 e.
  
 \emph on
@@ -231,7 +247,7 @@ TwoAuthors
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }{
 \end_layout
@@ -257,19 +273,22 @@ Article starts here.
 
 \begin_layout Standard
 Just to test the bibliography, we are citing some fake authors here: 
-\begin_inset LatexCommand citet
+\begin_inset CommandInset citation
+LatexCommand citet
 key "article-full"
 
 \end_inset
 
 , 
-\begin_inset LatexCommand citet
+\begin_inset CommandInset citation
+LatexCommand citet
 key "booklet-full"
 
 \end_inset
 
 , 
-\begin_inset LatexCommand citet
+\begin_inset CommandInset citation
+LatexCommand citet
 key "misc-full"
 
 \end_inset
@@ -277,7 +296,7 @@ key "misc-full"
 .
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Methods
 \end_layout
 
@@ -286,7 +305,7 @@ Descibing our methods \SpecialChar \ldots{}
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Participants
 \end_layout
 
@@ -295,7 +314,7 @@ Involved participants \SpecialChar \ldots{}
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Procedures
 \end_layout
 
@@ -304,7 +323,7 @@ Procedures
  and procedures
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Results
 \end_layout
 
@@ -313,7 +332,7 @@ And what came out \SpecialChar \ldots{}
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Descriptives
 \end_layout
 
@@ -322,7 +341,7 @@ This \SpecialChar \ldots{}
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Analysis
 \end_layout
 
@@ -331,7 +350,7 @@ Analysis
  and that.
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Discussion
 \end_layout
 
@@ -339,7 +358,7 @@ Discussion
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The APA class has a hardcoded bibliography style (apacite).
  So whatever you chose below in the BibTeX setting as a bibliography style,
  it will be ignored.
@@ -351,9 +370,10 @@ The APA class has a hardcoded bibliography style (apacite).
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand bibtex
-options "plain"
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
 bibfiles "xampl"
+options "plain"
 
 \end_inset
 

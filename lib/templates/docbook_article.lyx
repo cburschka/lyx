@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass docbook
@@ -13,8 +13,10 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -32,39 +34,34 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 Title
 \end_layout
 
 \begin_layout Date
-
 Date 
 \end_layout
 
 \begin_layout Author
+\begin_inset Flex CharStyle:Firstname
+status collapsed
 
-
-\begin_inset CharStyle Firstname
-status inlined
-
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Joe
 \end_layout
 
 \end_inset
 
 
-\begin_inset CharStyle Surname
-status inlined
+\begin_inset Flex CharStyle:Surname
+status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 Doe
 \end_layout
 
@@ -74,17 +71,14 @@ Doe
 \end_layout
 
 \begin_layout Abstract
-
 Abstract
 \end_layout
 
 \begin_layout Section
-
 First Section
 \end_layout
 
 \begin_layout Standard
-
 First paragraph.
 \end_layout
 

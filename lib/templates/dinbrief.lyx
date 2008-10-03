@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass dinbrief
@@ -13,9 +13,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -33,81 +35,77 @@
 \paperpagestyle empty
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout My Address
-
 <Mein Name>
-\newline
+\begin_inset Newline newline
+\end_inset
+
 <Meine Straße>
-\newline
+\begin_inset Newline newline
+\end_inset
+
 <Meine Stadt>
 \end_layout
 
 \begin_layout Send To Address
-
 <Dein Name> 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 <Deine Straße>
-\newline
+\begin_inset Newline newline
+\end_inset
+
 <Deine Stadt>
 \end_layout
 
 \begin_layout Stadt
-
 <Stadt für Datum>
 \end_layout
 
 \begin_layout Datum
-
 08.
  Juni 1997
 \end_layout
 
 \begin_layout Signature
-
 <Meine Unterschrift>
 \end_layout
 
 \begin_layout Betreff
-
 <Mein Betreff>
 \end_layout
 
 \begin_layout Opening
-
 <Anrede>
 \end_layout
 
 \begin_layout Standard
-
 <Hierher kommt der Text>
 \end_layout
 
 \begin_layout Standard
-
 <Auch in mehreren Absätzen>
 \end_layout
 
 \begin_layout Closing
-
 Mit freundlichen Grüßen
 \end_layout
 
 \begin_layout ps
-
 <Postscript.>
 \end_layout
 
 \begin_layout cc
-
 <Verteiler>
 \end_layout
 
 \begin_layout encl
-
 <Anlagen>
 \end_layout
 

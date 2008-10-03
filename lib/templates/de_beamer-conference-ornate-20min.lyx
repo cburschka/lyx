@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass beamer
@@ -20,9 +20,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 2
@@ -40,6 +42,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -48,21 +51,21 @@
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Diese Datei enthält eine Lösungsvorlage für:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Vorträge bei einer (deutschsprachigen) Konferenz/einem Kolloquium.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Vortragslänge von etwa 20 Minuten.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Aussehen des Vortrags ist verschnörkelt/dekorativ.
 \end_layout
 
@@ -75,12 +78,12 @@ Diese Datei enthält eine Lösungsvorlage für:
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 In principle, this file can be redistributed and/or modified under the terms
  of the GNU Public License, version 2.
  However, this file is supposed to be a template to be modified for your
@@ -99,18 +102,20 @@ In principle, this file can be redistributed and/or modified under the terms
 
 \begin_layout Title
 Titel wie im Tagunsband angegeben 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 (u.U.
  also englisch)
 \begin_inset OptArg
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Kurzversion des Titels 
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 optional, nur bei langen Titeln nötig
 \end_layout
 
@@ -129,12 +134,15 @@ Untertitel nur angeben, wenn es einen im Tagungsband gibt
 \end_layout
 
 \begin_layout Author
-F.\InsetSpace ~
+F.
+\begin_inset space ~
+\end_inset
+
 Autor
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -147,7 +155,7 @@ inst{1}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -156,12 +164,15 @@ and
 
 \end_inset
 
- S.\InsetSpace ~
+ S.
+\begin_inset space ~
+\end_inset
+
 Anders
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -174,12 +185,12 @@ inst{2}
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Namen müssen in derselben Reihenfolge wie im Papier erscheinen.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Der 
 \backslash
 inst{?} Befehl sollte nur verwendet werden, wenn die Autoren unterschiedlichen
@@ -192,16 +203,16 @@ inst{?} Befehl sollte nur verwendet werden, wenn die Autoren unterschiedlichen
 \begin_inset OptArg
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Author, Another
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - optional, nur bei vielen Autoren
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - wenn es wirklich viele Autoren gibt, 
 \begin_inset Quotes ald
 \end_inset
@@ -227,7 +238,7 @@ Autor et al.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -237,12 +248,14 @@ inst{1}
 \end_inset
 
 Institut für Informatik
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Universität Hier
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -255,7 +268,7 @@ and
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -265,12 +278,14 @@ inst{2}
 \end_inset
 
 Institut für theoretische Philosophie
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Universität Dort
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Der 
 \backslash
 inst{?} Befehl sollte nur verwendet werden, wenn die Autoren unterschiedlichen
@@ -278,7 +293,7 @@ inst{?} Befehl sollte nur verwendet werden, wenn die Autoren unterschiedlichen
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Keep it simple, niemand interessiert sich für die genau Adresse.
  
 \end_layout
@@ -289,12 +304,12 @@ inst{?} Befehl sollte nur verwendet werden, wenn die Autoren unterschiedlichen
 \begin_inset OptArg
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Universitäten Hier und Dort
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 optional, aber oft nötig
 \end_layout
 
@@ -313,12 +328,12 @@ Konferenz über Präsentationstechniken, 2004
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Voller oder abgekürzter Name sind möglich.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Dieser Eintrag ist nicht für das Publikum gedacht (das weiß nämlich, bei
  welcher Konferenz es ist), sondern für Leute, die die Folien später lesen.
 \end_layout
@@ -329,15 +344,15 @@ status open
 \begin_inset OptArg
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 KPT 2004
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 optional, should be abbreviation of conference name
 \end_layout
 
@@ -355,7 +370,7 @@ optional, should be abbreviation of conference name
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Falls eine Logodatei namens "university-logo-filename.xxx" vorhanden ist,
  wobei xxx ein von latex bzw.
  pdflatex lesbares Graphikformat ist, so kann man wie folgt ein Logo einfügen:
@@ -370,18 +385,18 @@ Falls eine Logodatei namens "university-logo-filename.xxx" vorhanden ist,
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 %
 \backslash
 pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 %
 \backslash
@@ -399,7 +414,7 @@ pgfuseimage{institution-logo}}
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Folgendes sollte gelöscht werden, wenn man nicht am Anfang jedes Unterabschnitts
  die Gliederung nochmal sehen möchte.
  
@@ -414,60 +429,60 @@ Folgendes sollte gelöscht werden, wenn man nicht am Anfang jedes Unterabschnitt
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 AtBeginSubsection[]{
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
   
 \backslash
 frame<beamer>{ 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
     
 \backslash
 frametitle{Gliederung}   
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
     
 \backslash
 tableofcontents[currentsection,currentsubsection] 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
   }
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -481,7 +496,7 @@ tableofcontents[currentsection,currentsubsection]
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Falls Aufzählungen immer schrittweise gezeigt werden sollen, kann folgendes
  Kommando benutzt werden:
 \end_layout
@@ -495,7 +510,7 @@ Falls Aufzählungen immer schrittweise gezeigt werden sollen, kann folgendes
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 %
 \backslash
@@ -512,7 +527,9 @@ Gliederung
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
 \end_inset
 
 
@@ -522,40 +539,40 @@ Gliederung
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Einen Vortrag zu strukturieren ist nicht immer einfach.
  Die nachfolgende Struktur kann unangemessen sein.
  Hier ein paar Regeln, die für diese Lösungsvorlage gelten:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Es sollte genau zwei oder drei Abschnitte geben (neben der % Zusammenfassung).
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - *Höchstens* drei Unterabschnitte pro Abschnitt.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Pro Rahmen sollte man zwischen 30s und 2min reden.
  Es sollte also 15 bis 30 Rahmen geben.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Konferenzteilnehmer wissen oft wenig von der Materie des Vortrags.
  Deshalb: vereinfachen! 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - In 20 Minuten ist es schon schwer genug, die Hauptbotschaft zu vermitteln.
  Deshalb sollten Details ausgelassen werden, selbst wenn dies zu Ungenauigkeiten
  oder Halbwahrheiten führt.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Falls man Details weglässt, die eigentlich wichtig für einen Beweis/Implementa
 tion sind, so sagt man dies einmal nüchtern.
  Alle werden damit glücklich sein.
@@ -578,7 +595,9 @@ Das behandelte Problem
 \begin_layout BeginFrame
 Überschriften sollten informativ sein.
  
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Korrekte Groß-/Kleinschreibung beachten.
 \end_layout
 
@@ -587,7 +606,7 @@ Untertitel sind optional.
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Eine Überschrift fasst einen Rahmen verständlich zusammen.
  Man muss sie verstehen können, selbst wenn man nicht den Rest des Rahmens
  versteht.
@@ -631,7 +650,7 @@ Diese Overlays werden mit dem Pause Stil erzeugt.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <1->
 \end_layout
@@ -645,7 +664,7 @@ Man kann auch Overlay-Spezifikationen benutzen, um Overlays zu erzeugen.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <3->
 \end_layout
@@ -659,7 +678,7 @@ Hiermit können, Punkte in beliebiger Reihenfolge präsentiert werden.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <2->
 \end_layout
@@ -677,7 +696,7 @@ Dies wird als zweites gezeigt.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <1->
 \end_layout
@@ -688,7 +707,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 {
 \end_layout
@@ -699,7 +718,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -723,7 +742,7 @@ Wird auf allen Overlays angezeigt.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <2->
 \end_layout
@@ -734,7 +753,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 {
 \end_layout
@@ -745,7 +764,7 @@ Ein Beispielblocktitel
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -783,7 +802,7 @@ Frühere Arbeiten
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <1->
 \end_layout
@@ -801,7 +820,7 @@ Auf dem ersten Overlay.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <2->
 \end_layout
@@ -852,7 +871,7 @@ Auf dem zweiten Overlay.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <1->
 \end_layout
@@ -870,7 +889,7 @@ In der linken Spalte.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <2->
 \end_layout
@@ -878,7 +897,9 @@ status collapsed
 \end_inset
 
 In der rechten Spalte.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Neue Zeile.
 \end_layout
 
@@ -899,7 +920,7 @@ Zusammenfassung
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Die Zusammenfassung sollte sehr kurz sein.
 \end_layout
 
@@ -915,9 +936,7 @@ Die
 \color red
 erste Hauptbotschaft
 \color none
- 
-\color default
-des Vortrags in ein bis zwei Zeilen.
+ des Vortrags in ein bis zwei Zeilen.
 \end_layout
 
 \begin_layout Itemize
@@ -927,9 +946,7 @@ Die
 \color red
 zweite Hauptbotschaft
 \color none
- 
-\color default
-des Vortrags in ein bis zwei Zeilen.
+ des Vortrags in ein bis zwei Zeilen.
 \end_layout
 
 \begin_layout Itemize
@@ -938,7 +955,7 @@ Eventuell noch eine
  
 \color red
 dritte Botschaft
-\color default
+\color none
 , aber nicht noch mehr.
 \end_layout
 
@@ -946,7 +963,7 @@ dritte Botschaft
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Der folgende Ausblick ist optional.
 \end_layout
 
@@ -959,7 +976,7 @@ Der folgende Ausblick ist optional.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -994,7 +1011,7 @@ Nochwas, das wir noch nicht lösen konnten.
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Alles nachfolgende ist optional und typischerweise nicht nötig.
 \end_layout
 
@@ -1011,7 +1028,7 @@ Weiterführende Literatur
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 [allowframebreaks]
 \end_layout
@@ -1025,7 +1042,7 @@ Weiterführende Literatur
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1038,7 +1055,7 @@ beamertemplatebookbibitems
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Anfangen sollte man mit Übersichtswerken.
 \end_layout
 
@@ -1048,18 +1065,19 @@ Anfangen sollte man mit Übersichtswerken.
 \end_layout
 
 \begin_layout Bibliography
-
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "Autor1990"
 
 \end_inset
+
 A.
  Autor.
  
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1068,8 +1086,6 @@ newblock
 
 \end_inset
 
-
-\emph default
  
 \emph on
 Einführung in das Präsentationswese
@@ -1079,7 +1095,7 @@ Einführung in das Präsentationswese
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1092,7 +1108,7 @@ newblock
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1105,7 +1121,7 @@ beamertemplatearticlebibitems
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Vertiefende Literatur kommt später.
  Die Liste sollte kurz sein.
 \end_layout
@@ -1116,17 +1132,18 @@ Vertiefende Literatur kommt später.
 \end_layout
 
 \begin_layout Bibliography
-
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "Jemand2002"
 
 \end_inset
+
 S.
  Jemand.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1141,11 +1158,10 @@ newblock
 
 \emph default
  
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash

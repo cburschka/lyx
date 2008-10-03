@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass elsart
@@ -17,9 +17,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -37,47 +39,42 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 Insert your Title Here
 \end_layout
 
 \begin_layout Author
-
 Author's name
 \end_layout
 
 \begin_layout Author Address
-
 Author's address
 \end_layout
 
 \begin_layout Author Email
-
 email@address
 \end_layout
 
 \begin_layout Author URL
-
 http://www.home.page
 \end_layout
 
 \begin_layout Abstract
-
 Text of abstract.
 \end_layout
 
 \begin_layout Keywords
-
 keyword1 
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 sep
@@ -89,7 +86,8 @@ sep
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 sep
@@ -101,12 +99,11 @@ sep
 \end_layout
 
 \begin_layout Keywords
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 PACS
@@ -118,7 +115,8 @@ PACS
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 sep
@@ -130,7 +128,8 @@ sep
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 sep
@@ -142,36 +141,36 @@ sep
 \end_layout
 
 \begin_layout Section
-
 First section
 \end_layout
 
 \begin_layout Standard
-
-See style options in the
-\family default
- 
+See style options in the 
 \family sans
-Document\InsetSpace ~
+Document
+\begin_inset space ~
+\end_inset
+
 Layout
 \family default
- popup (accessed from the
-\family default
- 
+ popup (accessed from the 
 \family sans
 Layout
 \family default
  menu).
  See the elsart manual for style options, special macros, and the like
-\begin_inset LatexCommand cite
+\begin_inset CommandInset citation
+LatexCommand cite
 key "mycitation"
+
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "mycitation"
 
 \end_inset
@@ -184,9 +183,7 @@ Title
 \begin_inset Quotes erd
 \end_inset
 
-, Journal
-\series default
- 
+, Journal 
 \series bold
 Volume
 \series default

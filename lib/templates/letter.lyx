@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass letter
@@ -13,8 +13,10 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -32,36 +34,41 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout My Address
-
 <My Name>
-\newline
+\begin_inset Newline newline
+\end_inset
+
 <My Street>
-\newline
+\begin_inset Newline newline
+\end_inset
+
 <My Town>
 \end_layout
 
 \begin_layout Send To Address
-
 <Send To Name> 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 <Send To Street> 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 <Send To Town>
 \end_layout
 
 \begin_layout Signature
-
 <Your signature
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 This field MUST come before the "Opening" field!
 \end_layout
 
@@ -71,12 +78,10 @@ This field MUST come before the "Opening" field!
 \end_layout
 
 \begin_layout Opening
-
 <Dear ...>
 \end_layout
 
 \begin_layout Standard
-
 <Text of Your Letter.
  To create a real letter, just replace erase all the text in <> (including
  the 
@@ -91,17 +96,14 @@ This field MUST come before the "Opening" field!
 \end_layout
 
 \begin_layout Closing
-
 <Yours sincerely,>
 \end_layout
 
 \begin_layout cc
-
 <cc>
 \end_layout
 
 \begin_layout encl
-
 <encl>
 \end_layout
 

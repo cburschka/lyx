@@ -1,5 +1,5 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass g-brief-en
@@ -20,9 +20,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -51,7 +53,7 @@ Thomas Hartkens
 \begin_inset Note Note
 status open
 
-\begin_layout Letter
+\begin_layout Plain Layout
 
 \series bold
 Important note:
@@ -148,9 +150,13 @@ www.hartkens.de/thomas
 
 \begin_layout Address
 Hans Beispiel
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Teststrasse 34
-\newline
+\begin_inset Newline newline
+\end_inset
+
 26871 Musterberg
 \end_layout
 
@@ -186,7 +192,7 @@ TH
 \begin_inset ERT
 status collapsed
 
-\begin_layout Letter
+\begin_layout Plain Layout
 
 
 \backslash

@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass beamer
@@ -21,9 +21,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 2
@@ -41,6 +43,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -49,23 +52,23 @@
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
  Ce fichier est un exemple d'exposé:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
  - pour des conférences, 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
  - d'une durée approximative de 20 minutes, 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - avec un style ornemental.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Pour afficher les explications, ouvrir les notes.
 \end_layout
 
@@ -78,21 +81,21 @@ Pour afficher les explications, ouvrir les notes.
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Traduction de Philippe De Sousa <philippejjg@free.fr>.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Adaptation à LyX par Jean-Pierre Chrétien <chretien@cert.fr> 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 En principe, ce fichier peut être redistribué et/ou modifié conformément
  aux termes de la GNU Public License, version 2.Cependant, ce fichier est
  un "exemple-type" qui peut être modifié selon vos propres besoins.
@@ -103,7 +106,7 @@ En principe, ce fichier peut être redistribué et/ou modifié conformément
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Correction mineure (style Institute au lieu de style Date) des fichiers
  originaux le 12 jan 07 par Jean-Pierre Chrétien <chretien@cert.fr> 
 \end_layout
@@ -118,12 +121,12 @@ Titre tel qu'il apparaît dans les actes
 \begin_inset OptArg
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Titre court
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 (facultatif, à utiliser uniquement si le titre de l'article est trop long)
 \end_layout
 
@@ -142,12 +145,15 @@ ne compléter que si l'article possède un sous-titre
 \end_layout
 
 \begin_layout Author
-F.\InsetSpace ~
+F.
+\begin_inset space ~
+\end_inset
+
 Auteur
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -160,7 +166,7 @@ inst{1}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -169,12 +175,15 @@ and
 
 \end_inset
 
- S.\InsetSpace ~
+ S.
+\begin_inset space ~
+\end_inset
+
 Lautre
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -187,12 +196,12 @@ inst{2}
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - composer les noms dans l'ordre dans lequel ils apparaîtrons dans l'article;
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - utiliser la commande 
 \backslash
 inst{?} command uniquement si les auteurs ont des affiliations  différentes.
@@ -204,16 +213,16 @@ inst{?} command uniquement si les auteurs ont des affiliations  différentes.
 \begin_inset OptArg
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Auteur, Lautre
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - facultatif, à utiliser seulement avec plusieurs auteurs;
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - s'il y a vraiment beaucoup d'auteurs, utiliser 
 \begin_inset Quotes eld
 \end_inset
@@ -239,7 +248,7 @@ Auteur et al.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -249,12 +258,14 @@ inst{1}
 \end_inset
 
 Département  d'Informatique
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Université de Quelque Part
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -267,7 +278,7 @@ and
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -277,18 +288,20 @@ inst{2}
 \end_inset
 
 Département de Philosophie Théorique
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Université d'Ailleurs
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - utilisez la commande 
 \backslash
 inst uniquement s'il y a plusieurs affiliations.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - faites quelque chose de simple, personne ne s'intéresse à votre adresse
 \end_layout
 
@@ -298,12 +311,12 @@ inst uniquement s'il y a plusieurs affiliations.
 \begin_inset OptArg
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Universités de Quelque Part et d'Ailleurs
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 optionnel, mais souvent nécessaire
 \end_layout
 
@@ -322,11 +335,11 @@ Conférence sur les Présentations Fabuleuses, 2006
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - utilisez le nom de la conférence ou son abréviation; 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - n'a pas réellement d'importance pour l'assistance qui sera présente lors
  de la conférence; mais en a pour les personnes (y compris vous-même) qui
  liront les transparents en ligne.
@@ -338,15 +351,15 @@ status collapsed
 \begin_inset OptArg
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 CPF 2006
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 facultatif, devrait être une abréviation du nom de la conférence
 \end_layout
 
@@ -364,7 +377,7 @@ facultatif, devrait être une abréviation du nom de la conférence
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Si vous avez un fichier nommé "université-logo-nomfichier.xxx", où xxxest
  un format graphique accepté par LyX (comme par exemple .png),alors vous
  pouvez insérer votre logo ainsi :
@@ -379,7 +392,7 @@ Si vous avez un fichier nommé "université-logo-nomfichier.xxx", où xxxest
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 %
 \backslash
@@ -388,7 +401,7 @@ logo{
 includegraphics[height=0.5cm]{institution-logo-filename}}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -401,7 +414,7 @@ includegraphics[height=0.5cm]{institution-logo-filename}}
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 A noter que la syntaxe pgf n'est pas supportée par LyX pour le moment; si
  vous l'utilisez, il faut mettre un chemin d'accès absolu au fichier
 \end_layout
@@ -415,7 +428,7 @@ A noter que la syntaxe pgf n'est pas supportée par LyX pour le moment; si
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 %
 \backslash
@@ -423,7 +436,7 @@ pgfdeclareimage[height=0.5cm]{institution-logo}{/my/path/to/institution-logo-fil
 name}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 %
 \backslash
@@ -441,7 +454,7 @@ pgfuseimage{institution-logo}}
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 À supprimer si vous ne voulez pas que la table des matières apparaisseau
  début de chaque sous-section :
 \end_layout
@@ -455,61 +468,61 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 AtBeginSubsection[]{
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
   
 \backslash
 frame<beamer>{ 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
     
 \backslash
 frametitle{Lignes directrices}   
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
     
 \backslash
 tableofcontents[currentsection,currentsubsection] 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 % Vous pouvez, si vous le souhaitez ajouter l'option [pausesections]
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
   }
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -523,7 +536,7 @@ tableofcontents[currentsection,currentsubsection]
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Si vous souhaitez recouvrir vos transparents un à un, utilisez la commande
  suivante (pour plus d'info, voir la page 74 du manueld'utilisation de Beamer
  (version 3.06) par Till Tantau) :
@@ -538,7 +551,7 @@ Si vous souhaitez recouvrir vos transparents un à un, utilisez la commande
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 %
 \backslash
@@ -555,7 +568,9 @@ Sommaire
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
 \end_inset
 
 
@@ -565,39 +580,39 @@ Sommaire
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Structurer l'exposé est une tâche difficile et la structure suivante pourrait
  ne pas convenir.
  Voici quelques règles à appliquer pour cet exemple ci :
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - avoir exactement deux ou trois sections (autre que le sommaire); 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - tout au plus trois sous-sections par section; 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - parler approximativement entre 30 secondes et 2 minutes par transparent.
  Il  devrait donc y avoir entre 15 et 30 transparents, pour tout dire;
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - le public d'une conférence connaîtra probablement peu de chose sur le
  sujet  que vous serez en train de traiter.
  Donc, *simplifier* !
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - dans un exposé de 20 minutes, garder à l'esprit les idées principales
  est largement  suffisant pour votre assistance.
  Laissez tomber certains détails, même s'ils vous  semblent nécessaires;
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - si un détail qui est vital pour une preuve/mise en oeuvre est omis,  le
  dire simplement une fois.
  Ce sera suffisant pour l'auditoire.
@@ -618,7 +633,7 @@ Le problème étudié
 \begin_inset OptArg
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Problème central
 \end_layout
 
@@ -637,7 +652,7 @@ Les sous-titres sont facultatifs.
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
  - Un titre doit résumer le transparent dans un langage compréhensible 
    par tous ceux qui ne suivront rien de ce qu'il y a sur ce transparent.
 \end_layout
@@ -679,7 +694,7 @@ Faites des titres qui informent
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <1->
 \end_layout
@@ -694,7 +709,7 @@ ents
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <3->
 \end_layout
@@ -708,7 +723,7 @@ Ceci vous permet d'afficher les lignes dans n'importe quel ordre
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <2->
 \end_layout
@@ -743,7 +758,7 @@ Pour faire un recouvrement exact d'un transparent à l'autre (transparents
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -753,7 +768,9 @@ onslide<1| handout:1>
 \end_inset
 
 Un texte sur la premier transparent, 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 éventuellement sur plusieurs lignes
 \end_layout
 
@@ -761,7 +778,7 @@ Un texte sur la premier transparent,
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -781,7 +798,7 @@ Faites des titres qui informent
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <1->
 \end_layout
@@ -792,7 +809,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 {
 \end_layout
@@ -803,7 +820,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -827,7 +844,7 @@ Affiché sur tous les transparents
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <2->
 \end_layout
@@ -838,7 +855,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 {
 \end_layout
@@ -849,7 +866,7 @@ Some Example Block Title
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -887,7 +904,7 @@ Faites des titres qui informent
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <1->
 \end_layout
@@ -905,7 +922,7 @@ Sur le premier trnsparent
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <2->
 \end_layout
@@ -956,7 +973,7 @@ Faites des titres qui informent
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <1->
 \end_layout
@@ -974,7 +991,7 @@ Dans la colonne de gauche
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <2->
 \end_layout
@@ -982,7 +999,9 @@ status collapsed
 \end_inset
 
 Dans la colonne de droite
-\newline
+\begin_inset Newline newline
+\end_inset
+
 New line
 \end_layout
 
@@ -1033,7 +1052,7 @@ troisième message
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
   Les perspectives sont toujours facultatives.
 \end_layout
 
@@ -1046,7 +1065,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1081,7 +1100,7 @@ Autre problème non résolu
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Tout ce qui suit est facultatif et n'est typiquement pas nécessaire.
 \end_layout
 
@@ -1098,7 +1117,7 @@ Lectures complémentaires
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 [allowframebreaks]
 \end_layout
@@ -1112,7 +1131,7 @@ Lectures complémentaires
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1125,7 +1144,7 @@ beamertemplatebookbibitems
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
   Commencer avec des livres (image d'un livre insérée)
 \end_layout
 
@@ -1135,18 +1154,19 @@ status collapsed
 \end_layout
 
 \begin_layout Bibliography
-
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "Auteur1990"
 
 \end_inset
+
 A.
  Auteur.
  
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1155,8 +1175,6 @@ newblock
 
 \end_inset
 
-
-\emph default
  
 \emph on
 Livre sur quelque chose
@@ -1165,7 +1183,7 @@ Livre sur quelque chose
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1178,7 +1196,7 @@ newblock
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1191,7 +1209,7 @@ beamertemplatearticlebibitems
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
   Et continuer avec les articles (image d'un article incluse).
  Faites une liste brève.
  
@@ -1203,17 +1221,18 @@ status collapsed
 \end_layout
 
 \begin_layout Bibliography
-
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "Quelqun2000"
 
 \end_inset
+
 S.
  Quelqu'un.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1228,11 +1247,10 @@ newblock{}
 
 \emph default
  
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1241,8 +1259,6 @@ newblock
 
 \end_inset
 
-
-\emph default
  
 \emph on
 Journal de ceci et cela

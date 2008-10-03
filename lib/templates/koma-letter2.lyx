@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 314
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass scrlttr2
@@ -70,6 +70,7 @@ fromalign=center%        alignment of the address
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 11
 \spacing other 1.15
@@ -103,12 +104,17 @@ The LyX Developers Team
 
 \begin_layout SenderAddress
 140 Map Road
-\newline
+\begin_inset Newline newline
+\end_inset
+
 SVN City
 \end_layout
 
 \begin_layout Telephone
-0011/222\InsetSpace \thinspace{}
+0011/222
+\begin_inset space \thinspace{}
+\end_inset
+
 333
 \end_layout
 
@@ -122,9 +128,13 @@ www.lyx.org
 
 \begin_layout Backaddress
 The LyX Developers Team
-\newline
+\begin_inset Newline newline
+\end_inset
+
 140 Map Road
-\newline
+\begin_inset Newline newline
+\end_inset
+
 SVN City
 \end_layout
 
@@ -144,7 +154,7 @@ The Internet
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -159,9 +169,13 @@ today
 \begin_layout Address
 Mr X.
  Ample
-\newline
+\begin_inset Newline newline
+\end_inset
+
 666 Sesame Street
-\newline
+\begin_inset Newline newline
+\end_inset
+
 12345 Nowhere
 \end_layout
 
@@ -186,7 +200,7 @@ Preamble
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 http://www.ctan.org/tex-archive/macros/latex/contrib/supported/koma-script/scrguie
 n.pdf
 \end_layout
@@ -201,7 +215,10 @@ Have fun with it,
 \end_layout
 
 \begin_layout PS
-p.\InsetSpace \thinspace{}
+p.
+\begin_inset space \thinspace{}
+\end_inset
+
 s.: The blue colored items have to be before the address, the magenta colored
  after it.
 \end_layout

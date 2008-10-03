@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass kluwer
@@ -13,10 +13,12 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \float_placement t
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -34,27 +36,28 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{article}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 begin{opening}
@@ -66,23 +69,20 @@ begin{opening}
 \end_layout
 
 \begin_layout Title
-
 <Title of the article>
 \end_layout
 
 \begin_layout Subtitle
-
 <Subtitle of the article(if needed)>
 \end_layout
 
 \begin_layout Author
-
 <First-1>.<Middle-1>.
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
  
 \backslash
 surname{
@@ -94,7 +94,8 @@ surname{
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 }
 \backslash
 email{
@@ -106,20 +107,23 @@ email{
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 }
 \end_layout
 
 \end_inset
 
 ,
-\newline
-<First-2>.<Middle-2>.
+\begin_inset Newline newline
+\end_inset
 
+<First-2>.<Middle-2>.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
  
 \backslash
 surname{
@@ -131,7 +135,8 @@ surname{
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 }
 \backslash
 email{
@@ -143,20 +148,23 @@ email{
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 }
 \end_layout
 
 \end_inset
 
  and
-\newline
-<First-3>.<Middle-3>.
+\begin_inset Newline newline
+\end_inset
 
+<First-3>.<Middle-3>.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
  
 \backslash
 surname{
@@ -168,7 +176,8 @@ surname{
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 }
 \backslash
 email{
@@ -180,7 +189,8 @@ email{
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -190,37 +200,31 @@ status collapsed
 \end_layout
 
 \begin_layout Address
-
 <Institution and Address>
 \end_layout
 
 \begin_layout RunningTitle
-
 <Running title of the article (printed on top of odd pages)>
 \end_layout
 
 \begin_layout RunningAuthor
-
 <Running author (printed on top of even pages)>
 \end_layout
 
 \begin_layout Abstract
-
 <abstract text>
 \end_layout
 
 \begin_layout Keywords
-
 <Journal approved keywords>
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{opening}
@@ -232,52 +236,45 @@ end{opening}
 \end_layout
 
 \begin_layout Section
-
 Introduction
 \end_layout
 
 \begin_layout Standard
-
 <intro text>
 \end_layout
 
 \begin_layout Section
-
 The theory
 \end_layout
 
 \begin_layout Standard
-
 <theory text; a citation reference is included 
-\begin_inset LatexCommand cite
+\begin_inset CommandInset citation
+LatexCommand cite
 key "PaperI"
+
 \end_inset
 
 >
 \end_layout
 
 \begin_layout Section
-
 The numerical method
 \end_layout
 
 \begin_layout Standard
-
 <numerical method text>
 \end_layout
 
 \begin_layout Section
-
 Results and discussion
 \end_layout
 
 \begin_layout Standard
-
 <results and discussion text>
 \end_layout
 
 \begin_layout Acknowledgements
-
 <acknowledgment text>
 \end_layout
 
@@ -286,41 +283,34 @@ Results and discussion
 \end_layout
 
 \begin_layout Section
-
 An appendix section
 \end_layout
 
 \begin_layout Standard
-
 <appendix text>
 \end_layout
 
 \begin_layout Section
-
 Another appendix section
 \end_layout
 
 \begin_layout Standard
-
 <another appendix text>
 \end_layout
 
 \begin_layout References
-\begin_inset LatexCommand bibitem
-label "\protect\citeauthoryear{Surname-1 et al.}{year}"
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "\\protect\\citeauthoryear{Surname-1 et al.}{year}"
 key "PaperI"
 
 \end_inset
 
 Surname-1, First-1, Middle-1., Surname-2, First-2, Middle-2.
- and Surname-3, First-3, Middle-3.: year,
-\emph default
- 
+ and Surname-3, First-3, Middle-3.: year, 
 \emph on
 Journal abbreviation
 \emph default
-
-\series default
  
 \series bold
 volume
@@ -329,17 +319,15 @@ volume
 \end_layout
 
 \begin_layout AddressForOffprints
-
 <Address for offprints, printed at the end of the article>
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 end{article}

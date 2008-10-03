@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass beamer
@@ -20,9 +20,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 2
@@ -40,6 +42,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -48,21 +51,21 @@
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 This file is a solution template for:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Talk at a conference/colloquium.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Talk length is about 20min.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Style is ornate.
 \end_layout
 
@@ -75,12 +78,12 @@ This file is a solution template for:
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 In principle, this file can be redistributed and/or modified under the terms
  of the GNU Public License, version 2.
  However, this file is supposed to be a template to be modified for your
@@ -102,12 +105,12 @@ Title As It Is In the Proceedings
 \begin_inset OptArg
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Short Paper Title 
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 optional, use only with long paper titles
 \end_layout
 
@@ -126,12 +129,15 @@ Include Only If Paper Has a Subtitle
 \end_layout
 
 \begin_layout Author
-F.\InsetSpace ~
+F.
+\begin_inset space ~
+\end_inset
+
 Author
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -144,7 +150,7 @@ inst{1}
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -153,12 +159,15 @@ and
 
 \end_inset
 
- S.\InsetSpace ~
+ S.
+\begin_inset space ~
+\end_inset
+
 Another
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -171,12 +180,12 @@ inst{2}
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Give the names in the same order as the appear in the paper.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Use the 
 \backslash
 inst{?} command only if the authors have different affiliations.
@@ -188,16 +197,16 @@ inst{?} command only if the authors have different affiliations.
 \begin_inset OptArg
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Author, Another
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - optional, use only with lots of authors
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - if there are reallylots of authors, use 
 \begin_inset Quotes eld
 \end_inset
@@ -223,7 +232,7 @@ Author et al.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -240,7 +249,7 @@ University of Somewhere
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -253,7 +262,7 @@ and
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -270,13 +279,13 @@ University of Elsewhere
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Use the 
 \backslash
 inst command only if there are several affiliations.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Keep it simple, no one is interested in your street address.
 \end_layout
 
@@ -286,12 +295,12 @@ inst command only if there are several affiliations.
 \begin_inset OptArg
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Universities of Somewhere and Elsewhere
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 optional, but mostly needed
 \end_layout
 
@@ -310,12 +319,12 @@ Conference on Fabulous Presentations, 2003
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Either use conference name or its abbreviation.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Not really informative to the audience, more for people (including yourself)
  who are reading the slides online
 \end_layout
@@ -326,15 +335,15 @@ status open
 \begin_inset OptArg
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 CFP 2003
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 optional, should be abbreviation of conference name
 \end_layout
 
@@ -352,7 +361,7 @@ optional, should be abbreviation of conference name
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 If you have a file called "institution-logo-filename.xxx", where xxx is a
  graphic format that can be processed by latex or pdflatex, resp., then you
  can add a logo by uncommenting the following:
@@ -367,18 +376,18 @@ If you have a file called "institution-logo-filename.xxx", where xxx is a
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 %
 \backslash
 pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 %
 \backslash
@@ -396,7 +405,7 @@ pgfuseimage{institution-logo}}
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The following causes the table of contents to be shown at the beginning
  of every subsection.
  Delete this, if you do not want it.
@@ -411,60 +420,60 @@ The following causes the table of contents to be shown at the beginning
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 AtBeginSubsection[]{
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
   
 \backslash
 frame<beamer>{ 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
     
 \backslash
 frametitle{Outline}   
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
     
 \backslash
 tableofcontents[currentsection,currentsubsection] 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
   }
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -478,7 +487,7 @@ tableofcontents[currentsection,currentsubsection]
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 If you wish to uncover everything in a step-wise fashion, uncomment the
  following command:
 \end_layout
@@ -492,7 +501,7 @@ If you wish to uncover everything in a step-wise fashion, uncomment the
 \begin_inset ERT
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 %
 \backslash
@@ -509,7 +518,9 @@ Outline
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
 \end_inset
 
 
@@ -519,40 +530,40 @@ Outline
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Structuring a talk is a difficult task and the following structure may not
  be suitable.
  Here are some rules that apply for this solution: 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Exactly two or three sections (other than the summary).
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - At *most* three subsections per section.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - Talk about 30s to 2min per frame.
  So there should be between about 15 and 30 frames, all told.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - A conference audience is likely to know very little of what you are going
  to talk about.
  So *simplify*! 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - In a 20min talk, getting the main ideas across is hard enough.
  Leave out details, even if it means being less precise than you think necessary.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - If you omit details that are vital to the proof/implementation, just say
  so once.
  Everybody will be happy with that.
@@ -573,7 +584,7 @@ The Basic Problem That We Studied
 \begin_inset OptArg
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Basic Problem
 \end_layout
 
@@ -593,7 +604,7 @@ Frame subtitles are optional.
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 - A title should summarize the slide in an understandable fashion for anyone
  how does not follow everything on the slide itself.
  
@@ -637,7 +648,7 @@ Make Titles Informative.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <1->
 \end_layout
@@ -651,7 +662,7 @@ You can also use overlay specifications to create overlays.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <3->
 \end_layout
@@ -665,7 +676,7 @@ This allows you to present things in any order.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <2->
 \end_layout
@@ -683,7 +694,7 @@ Make Titles Informative.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <1->
 \end_layout
@@ -694,7 +705,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 {
 \end_layout
@@ -705,7 +716,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -729,7 +740,7 @@ Shown on all slides.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <2->
 \end_layout
@@ -740,7 +751,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 {
 \end_layout
@@ -751,7 +762,7 @@ Some Example Block Title
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 }
 \end_layout
@@ -790,7 +801,7 @@ Make Titles Informative.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <1->
 \end_layout
@@ -809,7 +820,7 @@ On first slide.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <2->
 \end_layout
@@ -862,7 +873,7 @@ Make Titles Informative.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <1->
 \end_layout
@@ -880,7 +891,7 @@ In left column.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 <2->
 \end_layout
@@ -888,7 +899,9 @@ status collapsed
 \end_inset
 
 In right column.
-\newline
+\begin_inset Newline newline
+\end_inset
+
 New line
 \end_layout
 
@@ -912,9 +925,7 @@ The
 \color red
 first main message
 \color none
- 
-\color default
-of your talk in one or two lines.
+ of your talk in one or two lines.
 \end_layout
 
 \begin_layout Itemize
@@ -924,9 +935,7 @@ The
 \color red
 second main message
 \color none
- 
-\color default
-of your talk in one or two lines.
+ of your talk in one or two lines.
 \end_layout
 
 \begin_layout Itemize
@@ -935,7 +944,7 @@ Perhaps a
  
 \color red
 third message
-\color default
+\color none
 , but not more than that.
 \end_layout
 
@@ -943,7 +952,7 @@ third message
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 An outlook is always optional.
 \end_layout
 
@@ -956,7 +965,7 @@ An outlook is always optional.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -991,7 +1000,7 @@ Even more stuff.
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 All of the following is optional and typically not needed.
 \end_layout
 
@@ -1008,7 +1017,7 @@ For Further Reading
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 [allowframebreaks]
 \end_layout
@@ -1022,7 +1031,7 @@ For Further Reading
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1035,7 +1044,7 @@ beamertemplatebookbibitems
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Start with overview books.
 \end_layout
 
@@ -1045,18 +1054,19 @@ Start with overview books.
 \end_layout
 
 \begin_layout Bibliography
-
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "Author1990"
 
 \end_inset
+
 A.
  Author.
  
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1073,7 +1083,7 @@ Handbook of Everything
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1086,7 +1096,7 @@ newblock
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1099,7 +1109,7 @@ beamertemplatearticlebibitems
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Followed by interesting articles.
  Keep the list short.
  
@@ -1111,17 +1121,18 @@ Followed by interesting articles.
 \end_layout
 
 \begin_layout Bibliography
-
-\begin_inset LatexCommand bibitem
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "Someone2002"
 
 \end_inset
+
 S.
  Someone.
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1136,11 +1147,10 @@ newblock
 
 \emph default
  
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash

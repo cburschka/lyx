@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass g-brief2
@@ -20,9 +20,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -40,7 +42,7 @@
 \paperpagestyle empty
 \tracking_changes false
 \output_changes false
-\author "usti"
+\author "" 
 \end_header
 
 \begin_body
@@ -49,7 +51,7 @@
 \begin_inset Note Note
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Note also the document preamble settings.
 \end_layout
 
@@ -211,13 +213,21 @@ Airmail
 
 \size large
 Cynthia Mustermann
-\newline
-Musterstraße
-\newline
+\begin_inset Newline newline
+\end_inset
 
-\newline
+Musterstraße
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
 01234 Musterstadt
-\newline
+\begin_inset Newline newline
+\end_inset
+
 Germany
 \end_layout
 
@@ -237,7 +247,7 @@ your ref
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
