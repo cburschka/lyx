@@ -406,7 +406,7 @@ void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer) const
 			str.push_back(0x2702);
 			break;
 		case Change::INSERTED:
-			// 0x2702 is the hand writting symbol in the Dingbats unicode group.
+			// 0x270d is the hand writting symbol in the Dingbats unicode group.
 			str.push_back(0x270d);
 			break;
 		}
