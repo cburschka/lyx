@@ -42,6 +42,7 @@ public:
 		if (flags & Qt::Drawer)
 			setFeatures(QDockWidget::NoDockWidgetFeatures);
 		parent.addDockWidget(area, this);
+		hide();
 	}
 
 	virtual ~DockView() {}
