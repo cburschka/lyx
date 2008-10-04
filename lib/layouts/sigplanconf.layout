@@ -95,6 +95,12 @@ Input stdtitle.inc
 Input stdstruct.inc
 
 
+Style Title
+	CopyStyle		Title
+	AlignPossible		None
+End
+
+
 Style Subtitle
 	CopyStyle		Title
 	LatexName		subtitle
@@ -104,9 +110,7 @@ Style Subtitle
 End
 
 
-# don't use the Author definition from stdtitle.inc
-NoStyle	Author
-# define a new one
+# overwrite the Author definition from stdtitle.inc
 Style Author
 	Margin                Static
 	LatexType             Command
@@ -118,7 +122,7 @@ Style Author
 	BottomSep             0.7
 	ParSep                0.7
 	Align                 Center
-	AlignPossible         Center
+	AlignPossible         None
 	LabelType             No_Label
 	Font
 	  Size                Large
@@ -144,7 +148,6 @@ Style Abstract
 	Margin			Static
 	LatexType		Environment
 	LatexName		abstract
-	InTitle			1
 	NextNoIndent		1
 	LeftMargin		MMM
 	RightMargin		MMM
