@@ -22,11 +22,19 @@ Style Standard
 	LabelType             No_Label
 End
 
-
-Input stdinsets.inc
-Input stdlists.inc
+Input stdcounters.inc
+Input stdtitle.inc
+Input stdstruct.inc
+Input lyxmacros.inc
+Input stdlayouts.inc
+Input stdfloats.inc
 Input stdsections.inc
+Input stdstarsections.inc
+Input stdlists.inc
 
+# There are no chapters in a paper.
+NoStyle                 Chapter
+NoStyle                 Chapter*
 
 # All the section headings now use sans serif
 Style Part
@@ -83,22 +91,6 @@ Style Subparagraph
 	  Size                Normal
 	EndFont
 End
-
-
-Input stdstarsections.inc
-
-
-# There are no chapters in a paper.
-NoStyle                 Chapter
-NoStyle                 Chapter*
-
-Input stdtitle.inc
-Input stdstruct.inc
-Input lyxmacros.inc
-Input stdlayouts.inc
-Input stdfloats.inc
-Input stdcounters.inc
-
 
 Style Description
 	LabelFont
