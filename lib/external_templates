@@ -187,12 +187,16 @@ Template ChessDiagram
 	Format LaTeX
 		Product "\\loadgame{$$AbsOrRelPathMaster$$Basename}\\showboard"
 		Requirement "chess"
-		ReferencedFile latex "$$AbsPath$$Basename$$Extension"
+		UpdateFormat fen
+		UpdateResult "$$AbsPath$$Basename.fen"
+		ReferencedFile latex "$$AbsPath$$Basename.fen"
 	FormatEnd
 	Format PDFLaTeX
 		Product "\\loadgame{$$AbsOrRelPathMaster$$Basename}\\showboard"
 		Requirement "chess"
-		ReferencedFile pdflatex "$$AbsPath$$Basename$$Extension"
+		UpdateFormat fen
+		UpdateResult "$$AbsPath$$Basename.fen"
+		ReferencedFile pdflatex "$$AbsPath$$Basename.fen"
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"
