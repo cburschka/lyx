@@ -1,5 +1,5 @@
-#LyX 1.6.0rc3 created this file. For more info see http://www.lyx.org/
-\lyxformat 340
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass scrbook
@@ -12896,7 +12896,7 @@ System
 
 \begin_layout Plain Layout
 Medipix
-\begin_inset Formula $\,$
+\begin_inset space \thinspace{}
 \end_inset
 
 1
@@ -12909,7 +12909,7 @@ Medipix
 
 \begin_layout Plain Layout
 Medipix
-\begin_inset Formula $\,$
+\begin_inset space \thinspace{}
 \end_inset
 
 2
@@ -32539,6 +32539,14 @@ pass
 \end_layout
 
 \begin_layout Standard
+Wenn Ihr Listing Tabulatoren verwendet, können Sie im Feld 
+\family sans
+Tabulatorgröße
+\family default
+ die Anzahl der Zeichen festlegen, die ein Tabulator überspannen soll.
+\end_layout
+
+\begin_layout Standard
 \noindent
 \begin_inset Note Greyedout
 status open
@@ -32554,8 +32562,8 @@ listings
 \series default
 -Paket wird die Zeilennummerierung um eine Zeile durch vorhergehende Listen
  verschoben.
- Das ist der Grund, warum die Zeilen 2 und 5 und nicht 3 und 6 in obiger
- Liste nummeriert werden.
+ Das ist der Grund, warum die Zeilen 2 und 5 und nicht 3 und 6 in obigem
+ Listing nummeriert werden.
 \end_layout
 
 \end_inset
