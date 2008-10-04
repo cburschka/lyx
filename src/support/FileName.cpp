@@ -121,6 +121,23 @@ struct FileName::Private
 #endif
 	}
 
+	static QString longPathName(QString const & path)
+	{
+#ifndef Q_OS_WIN
+		return path;
+#else
+		if (path.isEmpty()) {
+			return QString();
+		}
+		QString maybeShort = QDir::toNativeSeparators(path);
+		QByteArray shortName = maybeShort.toLocal8Bit();;
+		char longPath[MAX_PATH];
+		int err = GetLongPathName(shortName.constData(), longPath, MAX_PATH);
+		(void)err;
+		return QDir::fromNativeSeparators(QString::fromLocal8Bit(longPath));
+#endif
+	}
+
 	///
 	QFileInfo fi;
 };
@@ -426,7 +443,7 @@ FileName FileName::getcwd()
 
 FileName FileName::tempPath()
 {
-	return FileName(fromqstr(QDir::tempPath()));
+	return FileName(fromqstr(Private::longPathName(QDir::tempPath())));
 }
 
 
