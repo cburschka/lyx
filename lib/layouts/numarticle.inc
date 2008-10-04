@@ -7,7 +7,7 @@ Format 8
 Counter
 	Name                  section
 	Within                "none"
-	LabelString	      "\arabic{section}"
+	LabelString	          "\arabic{section}"
 	LabelStringAppendix   "\Alph{section}"
 End
 
