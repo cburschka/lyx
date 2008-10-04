@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass chess
@@ -17,9 +17,11 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry true
 \use_amsmath 0
@@ -41,32 +43,31 @@
 \paperpagestyle empty
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 Email Chess Game analyzed
 \end_layout
 
 \begin_layout Author
-
 Kayvan A.
  Sylvan
-\newline
+\begin_inset Newline newline
+\end_inset
+
 <kayvan@sylvan.com>
 \end_layout
 
 \begin_layout Date
-
 
 \emph on
 Game start 05/29/2001
 \end_layout
 
 \begin_layout Standard
-
 The following game was played at the IECC (International Email Chess Club).
  It is presented as an example of the fun you can have with LyX's new chess
  support.
@@ -74,9 +75,7 @@ The following game was played at the IECC (International Email Chess Club).
  the chess positions from LyX.
 \end_layout
 
-
 \begin_layout Standard
-
 
 \lyxline
 
@@ -84,27 +83,29 @@ The following game was played at the IECC (International Email Chess Club).
 
 \begin_layout Standard
 
-
 \noun on
 Sylvan, Kayvan
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 Wakeham, Marc 
-\newline
+\begin_inset Newline newline
+\end_inset
+
 (1623)
-\hfill
+\begin_inset space \hfill{}
+\end_inset
+
 (1639)
 \end_layout
 
 \begin_layout Standard
 
-
 \lyxline
 
 \end_layout
 
-
 \begin_layout Mainline
-
 1.
  e4 c5 2.
  Nc3 d6 3.
@@ -114,26 +115,13 @@ Wakeham, Marc
 \end_layout
 
 \begin_layout Standard
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-\backslash
-vspace*{-0.2in}
-\end_layout
-
+\begin_inset VSpace -0.2in*
 \end_inset
 
 
 \end_layout
 
-
 \begin_layout Standard
-
-
 \begin_inset VSpace medskip
 \end_inset
 
@@ -141,12 +129,11 @@ vspace*{-0.2in}
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 [
@@ -165,7 +152,8 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 ]
@@ -177,46 +165,31 @@ status collapsed
 \end_layout
 
 \begin_layout KnightMove
-
 g1->e2
 \end_layout
 
 \begin_layout HighLight
-
 d4,f4
 \end_layout
 
 \begin_layout Standard
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-\backslash
-vspace*{-0.5in} % This is a hack!
-\end_layout
-
+\begin_inset VSpace -0.5in*
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-
 So far, so good.
  This is all according to theory.
 \end_layout
 
 \begin_layout Mainline
-
 5...
  Be7?!
 \end_layout
 
 \begin_layout Variation
-
 5...
  Nge7 [ 
 \backslash
@@ -224,25 +197,25 @@ equal{} ]
 \end_layout
 
 \begin_layout Mainline
-
 6.
  d4 cxd4 7.
  Nxd4 a6
 \end_layout
 
 \begin_layout Standard
+With 7...
+\begin_inset space ~
+\end_inset
 
-With 7...\InsetSpace ~
 a6, we are back in the well-trodden theory of this opening.
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 [
@@ -261,7 +234,8 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 ]
@@ -273,7 +247,6 @@ status collapsed
 \end_layout
 
 \begin_layout Mainline
-
 8.
  Nxc6 bxc6 9.
  O-O Bb7 10.
@@ -283,12 +256,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 [
@@ -307,7 +279,8 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
 
 \backslash
 ]
@@ -319,23 +292,19 @@ status collapsed
 \end_layout
 
 \begin_layout Arrow
-
 a1->d1
 \end_layout
 
 \begin_layout Standard
-
 White continues to develop pieces and also sets a trap for Black.
 \end_layout
 
 \begin_layout Mainline
-
 12...O-O? [ This move loses instantly.
  ]
 \end_layout
 
 \begin_layout Variation
-
 12...
  e5 13.
  Be3 Qc7 14.
@@ -345,19 +314,16 @@ wbetter{} is best ]
 \end_layout
 
 \begin_layout Mainline
-
 13.
  e5!
 \end_layout
 
 \begin_layout Standard
-
 Black's knight and bishop are in each other's way.
  The bishop is doomed.
 \end_layout
 
 \begin_layout Mainline
-
 13...
  Nd5!? 14.
  Bxd5 cxd5 15.
