@@ -1,4 +1,4 @@
-#LyX 1.5.6svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.7svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -427,71 +427,6 @@ psnfss
 \begin_layout Itemize
 
 \family sans
-mathpazo
-\family default
- (newest Palatino support).
- 
-\series bold
-Found:
-\series default
- @chk_mathpazo@
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-mathpple
-\family default
- (deprecated Palatino support).
- 
-\series bold
-Found:
-\series default
- @chk_mathpple@
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-mathptmx
-\family default
- (newest Times support).
- 
-\series bold
-Found:
-\series default
- @chk_mathptmx@
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-mathptm
-\family default
- (deprecated Times support).
- 
-\series bold
-Found:
-\series default
- @chk_mathptm@
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-utopia
-\family default
- (Utopia).
- 
-\series bold
-Found:
-\series default
- @chk_utopia@
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
 avant
 \family default
  (Avant Garde).
@@ -518,6 +453,19 @@ Found:
 \begin_layout Itemize
 
 \family sans
+chancery
+\family default
+ (Zapf Chancery).
+ 
+\series bold
+Found:
+\series default
+ @chk_chancery@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
 charter
 \family default
  (Charter).
@@ -526,6 +474,84 @@ charter
 Found:
 \series default
  @chk_charter@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+courier
+\family default
+ (Courier).
+ 
+\series bold
+Found:
+\series default
+ @chk_courier@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+helvet
+\family default
+ (Helvetica).
+ 
+\series bold
+Found:
+\series default
+ @chk_helvet@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathpazo
+\family default
+ (newest Palatino support).
+ 
+\series bold
+Found:
+\series default
+ @chk_mathpazo@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathpple
+\family default
+ (deprecated Palatino support).
+ 
+\series bold
+Found:
+\series default
+ @chk_mathpple@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathptm
+\family default
+ (deprecated Times support).
+ 
+\series bold
+Found:
+\series default
+ @chk_mathptm@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathptmx
+\family default
+ (newest Times support).
+ 
+\series bold
+Found:
+\series default
+ @chk_mathptmx@
 \end_layout
 
 \begin_layout Itemize
@@ -544,14 +570,27 @@ Found:
 \begin_layout Itemize
 
 \family sans
-chancery
+pifont
 \family default
- (Zapf Chancery).
+ (Zapf Dingbats).
  
 \series bold
 Found:
 \series default
- @chk_chancery@
+ @chk_pifont@
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+utopia
+\family default
+ (Utopia).
+ 
+\series bold
+Found:
+\series default
+ @chk_utopia@
 \end_layout
 
 \begin_layout Subsection
