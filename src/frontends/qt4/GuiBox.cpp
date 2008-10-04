@@ -185,6 +185,8 @@ void GuiBox::typeChanged(int index)
 	if (index != 1)
 		pagebreakCB->setChecked(false);
 	int itype = innerBoxCO->currentIndex();
+	if (innerBoxCO->count() == 2)
+		++itype;
 	pagebreakCB->setEnabled(index == 1 && itype == 0);
 	widthED->setEnabled(index != 5);
 	widthUnitsLC->setEnabled(index != 5);
@@ -414,8 +416,10 @@ void GuiBox::setSpecial(bool ibox)
 	ids_spec_ = boxGuiSpecialLengthIds();
 	gui_names_spec_ = boxGuiSpecialLengthNames();
 
+	QString const current_text = widthUnitsLC->currentText();
+
 	// check if the widget contains the special units
-	int count = widthUnitsLC->count();
+	int const count = widthUnitsLC->count();
 	bool has_special = false;
 	for (int i = 0; i != count; ++i)
 		if (widthUnitsLC->itemText(i).contains(qt_("Total Height")) > 0)
@@ -430,6 +434,10 @@ void GuiBox::setSpecial(bool ibox)
 		for (int i = 0; i != num_units; ++i)
 			widthUnitsLC->addItem(qt_(unit_name_gui[i]));
 	}
+	// restore selected text, if possible
+	int const idx = widthUnitsLC->findText(current_text);
+	if (idx != -1)
+		widthUnitsLC->setCurrentIndex(idx);
 }
 
 
@@ -446,8 +454,6 @@ void GuiBox::setInnerType(bool frameless, int i)
 		else
 			innerBoxCO->setCurrentIndex(i);
 	} else {
-		if (innerBoxCO->count() == 2)
-			++i;
 		innerBoxCO->clear();
 		innerBoxCO->addItem(qt_("None"));
 		innerBoxCO->addItem(qt_("Parbox"));
