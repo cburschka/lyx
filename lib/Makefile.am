@@ -903,7 +903,6 @@ dist_kbd_DATA = \
 
 layoutsdir = $(pkgdatadir)/layouts
 dist_layouts_DATA =\
-	layouts/IEEEtran.layout \
 	layouts/aa.layout \
 	layouts/aapaper.inc \
 	layouts/aapaper.layout \
@@ -965,6 +964,7 @@ dist_layouts_DATA =\
 	layouts/heb-article.layout \
 	layouts/heb-letter.layout \
 	layouts/hollywood.layout \
+	layouts/IEEEtran.layout \
 	layouts/ijmpc.layout \
 	layouts/ijmpd.layout \
 	layouts/iopart.layout \
@@ -1004,6 +1004,7 @@ dist_layouts_DATA =\
 	layouts/scrreprt.layout \
 	layouts/seminar.layout \
 	layouts/siamltex.layout \
+	layouts/sigplanconf.layout \
 	layouts/simplecv.layout \
 	layouts/singlecol.layout \
 	layouts/slides.layout \
@@ -1046,10 +1047,9 @@ dist_scripts_PYTHON = \
 
 templatesdir = $(pkgdatadir)/templates
 dist_templates_DATA = \
-	templates/IEEEtran.lyx \
-	templates/README.new_templates \
 	templates/aa.lyx \
 	templates/aastex.lyx \
+	templates/ACM-sigplan.lyx \
 	templates/agu_article.lyx \
 	templates/apa.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
@@ -1062,6 +1062,7 @@ dist_templates_DATA = \
 	templates/g-brief-de.lyx \
 	templates/g-brief-en.lyx \
 	templates/hollywood.lyx \
+	templates/IEEEtran.lyx \
 	templates/ijmpc.lyx \
 	templates/ijmpd.lyx \
 	templates/iop-article.lyx \
@@ -1070,6 +1071,7 @@ dist_templates_DATA = \
 	templates/koma-letter2.lyx \
 	templates/latex8.lyx \
 	templates/letter.lyx \
+	templates/README.new_templates \
 	templates/revtex.lyx \
 	templates/revtex4.lyx \
 	templates/slides.lyx

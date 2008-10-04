@@ -1,0 +1,370 @@
+#LyX 1.5.7svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass sigplanconf
+\language english
+\inputencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\float_placement tbh
+\paperfontsize default
+\spacing single
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 2
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Conference
+PLDI ’05
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{
+\end_layout
+
+\end_inset
+
+June 12--15, 2005, Chicago, Illinois, USA.
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+The Conference expects 2 infos that are separated by 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+}{
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ in TeX-code as in this example.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout CopyrightYear
+2005
+\end_layout
+
+\begin_layout Copyrightdata
+1-59593-057-4/05/0004
+\end_layout
+
+\begin_layout Title
+Example ACM Paper
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+thanks{
+\end_layout
+
+\end_inset
+
+This work was supported by ...
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subtitle
+Subtitle
+\end_layout
+
+\begin_layout Author
+Suzi Smith
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Paul C.
+ Anagnostopoulos
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{
+\end_layout
+
+\end_inset
+
+Princeton University
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{
+\end_layout
+
+\end_inset
+
+smith@cs.princeton.edu
+\newline
+anagnostopoulos@cs.princeton.edu
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+At least one autor is required.
+\end_layout
+
+\begin_layout Standard
+The Author field expects 3 infos that are separated by 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+}{
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ in TeX-code as in these examples.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Fred Flymuffin
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{
+\end_layout
+
+\end_inset
+
+Washington University in St.
+ Louis
+\newline
+Department of Electrical and Computer Engineering
+\newline
+3301 S Dearborn Street
+\newline
+St.
+ Louis, XX 60616, USA
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}{
+\end_layout
+
+\end_inset
+
+flymuffin@cs.wustl.edu
+\end_layout
+
+\begin_layout Abstract
+This paper is a demonstration of the Lyx template for the ACM alternate
+ latex style file.
+ It works quite well and makes writing an ACM paper so much easier.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+category{B.2.4}{Arithmetic and Logic Structures}{High-Speed Arithmetic}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+category{B.7.1}{Integrated Circuits}{Types and Design Styles}[algorithms implement
+ed into hardware]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Terms
+Algorithms, Performance, Design
+\end_layout
+
+\begin_layout Keywords
+Carry Propagate Addition, Ling Adder, Reed Adder, Carry-Skip Adder, Hybrid
+ Adder, Pseudo-Complements, Domino Logic, Conditional Sum Adder
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+This is the introduction to this paper.
+\end_layout
+
+\begin_layout Acknowledgments
+We would like to thank ...
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+First appendix
+\end_layout
+
+\begin_layout Standard
+Appendix, only when needed, can also be started behind the bibliography.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "ahmed02"
+
+\end_inset
+
+Amal\InsetSpace ~
+J.
+ Ahmed, Andrew\InsetSpace ~
+W.
+ Appel, and Roberto Virga.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+ A stratified semantics of general references embeddable in higher-order
+ logic.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+ I
+\emph on
+n Proceedings of the 17th Annual IEEE Symposium on Logic in Computer Science
+ (LICS 2002)
+\emph default
+, July 2002.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "appel01:fpcc"
+
+\end_inset
+
+Andrew\InsetSpace ~
+W.
+ Appel.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+ Foundational proof-carrying code.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+ In 
+\emph on
+Symposium on Logic in Computer Science (LICS ’01)
+\emph default
+, pages 247--258.
+ IEEE, 2001.
+\end_layout
+
+\end_body
+\end_document

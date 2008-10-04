@@ -1,0 +1,188 @@
+#% Do not delete he line below; configure depends on this
+#  \DeclareLaTeXClass[sigplanconf]{article (ACM SIGPLAN)}
+# ACM SIGPLAN sigplanconf textclass definition file.
+# Author : Uwe Stöhr
+#
+# We use sigplanconf.cls, the Sigplan class file that can be
+# downloaded from
+# http://www.sigplan.org/authorInformation.htm
+#
+# This layout is according to
+# http://www.sigplan.org/sigplanconf-guide.pdf
+#
+# ACM style files can be obtained at
+# http://www.acm.org/sigs/pubs/proceed/template.html
+
+Format 4
+
+Columns                 1
+Sides                   1
+SecNumDepth		3
+TocDepth		3
+DefaultStyle            Standard
+
+ClassOptions
+  FontSize		9|10|11
+End  
+
+DefaultFont
+  Family		Roman
+  Series		Medium
+  Shape			Up
+  Size			Normal
+  Color			None
+EndFont
+
+
+Style Standard
+  Margin  		Static
+  LatexType 		Paragraph
+  LatexName 		dummy
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Block
+  AlignPossible 	Block, Left, Right, Center
+  LabelType 		No_Label
+End
+
+
+Input stdlists.inc
+Input stdsections.inc
+Input stdstarsections.inc
+
+# don't use the following styles
+NoStyle			Part
+NoStyle			Part*
+NoStyle			Chapter
+NoStyle			Chapter*
+NoStyle			Subparagraph
+NoStyle			Subparagraph*
+
+
+Style Conference
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		conferenceinfo
+	InTitle			1
+	ParSkip			0.4
+	BottomSep		0.5
+	Align			Left
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Conference:"
+	LabelFont
+	  Color			Green
+	  Series		Bold
+	EndFont
+End
+
+
+Style CopyrightYear
+	CopyStyle		Conference
+	LatexName		CopyrightYear
+	LabelString		"Copyright year:"
+End
+
+
+Style Copyrightdata
+	CopyStyle		Conference
+	LatexName		copyrightdata
+	LabelString		"Copyright data:"
+End
+
+
+Input stdtitle.inc
+Input stdstruct.inc
+
+
+Style Title
+	CopyStyle		Title
+	AlignPossible		None
+End
+
+
+Style Subtitle
+	CopyStyle		Title
+	LatexName		subtitle
+	Font
+	  Size                Larger
+	EndFont
+End
+
+
+# overwrite the Author definition from stdtitle.inc
+Style Author
+	Margin                Static
+	LatexType             Command
+	InTitle               1
+	LatexName             authorinfo
+	LabelSep              xxx
+	ParSkip               0.4
+	TopSep                1.3
+	BottomSep             0.7
+	ParSep                0.7
+	Align                 Center
+	AlignPossible         None
+	LabelType             No_Label
+	Font
+	  Size                Large
+	EndFont
+End
+
+
+Style Terms
+	CopyStyle		Conference
+	LatexName		terms
+	LabelString		"Terms:"
+End
+
+
+Style Keywords
+	CopyStyle		Conference
+	LatexName		terms
+	LabelString		"Keywords:"
+End
+
+
+Style Abstract
+	Margin			Static
+	LatexType		Environment
+	LatexName		abstract
+	NextNoIndent		1
+	LeftMargin		MMM
+	RightMargin		MMM
+	ParIndent		MM
+	ItemSep			0
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0
+	Align			Block
+	AlignPossible		Block
+	LabelType		Centered_Top_Environment
+	LabelString		"Abstract"
+	LabelBottomSep		0.5
+	Font
+	  Size			Small
+	EndFont
+	LabelFont
+	  Series		Bold
+	  Size			Large
+	EndFont
+End
+
+
+Style Acknowledgments
+	CopyStyle		Abstract
+	LatexName		acks
+	InTitle			0
+	LabelBottomsep		0
+	LabelType		Top_Environment
+	LabelString		"Acknowledgments"
+End
+
+
+Input stdlayouts.inc
+Input stdfloats.inc
+Input stdcounters.inc
+Input amsmaths.inc
+
