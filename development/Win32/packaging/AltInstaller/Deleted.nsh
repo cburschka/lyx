@@ -5,6 +5,7 @@ Function DeleteFiles
  Delete "$INSTDIR\Resources\examples\Minipage.lyx"
  Delete "$INSTDIR\Resources\examples\de\Minipage.lyx"
  Delete "$INSTDIR\Resources\examples\fr\Minipage.lyx"
+ Delete "$INSTDIR\Resources\templates\elsart.lyx"
 
 FunctionEnd
 
