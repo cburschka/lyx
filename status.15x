@@ -42,6 +42,10 @@ What's new
 
 - New layout file for journal articles of the Inderscience publishing group.
 
+- New layout file and template for journal articles of the Elsevier publishing
+  group. The template file for the now obsolete Elsevier layout has been
+  removed.
+
 - New layout file for the svjour3 class (journal articles of the Springer
   publishing group) (bug 5154).
 
@@ -127,8 +131,6 @@ What's new
   registered (in this case the "Unknown" application would be used).
 
 - Remove confusing warning about 'server socket' under MS Windows.
-
-- Allow the Thanks environment in Elsevier articles to have short titles.
 
 
 * DOCUMENTATION AND LOCALIZATION
