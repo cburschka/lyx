@@ -977,6 +977,7 @@ dist_layouts_DATA =\
 	layouts/dtk.layout \
 	layouts/egs.layout \
 	layouts/elsart.layout \
+	layouts/elsarticle.layout \
 	layouts/endnotes.module \
 	layouts/entcs.layout \
 	layouts/europecv.layout \
@@ -1109,10 +1110,11 @@ dist_templates_DATA = \
 	templates/agu_article.lyx \
 	templates/apa.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
+	templates/biblioExample.bib \
 	templates/de_beamer-conference-ornate-20min.lyx \
 	templates/dinbrief.lyx \
 	templates/docbook_article.lyx \
-	templates/elsart.lyx \
+	templates/elsarticle.lyx \
 	templates/fr_beamer-conference-ornate-20min.lyx \
 	templates/g-brief2.lyx \
 	templates/g-brief-de.lyx \
