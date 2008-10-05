@@ -39,7 +39,7 @@ string current_root()
 bool isFilesystemCaseSensitive()
 {
 #ifdef __APPLE__
-	return false:
+	return false;
 #else
 	return true;
 #endif
