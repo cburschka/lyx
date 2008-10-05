@@ -76,6 +76,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -260,20 +261,6 @@ status collapsed
 Title of the thesis
 \end_layout
 
-\begin_layout Space
--1cm
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Inserts vertical space; negative values are allowed.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Item
 Supervisors
 \begin_inset ERT
@@ -287,10 +274,6 @@ status collapsed
 \end_inset
 
 Names of supervisors
-\end_layout
-
-\begin_layout Space
--1cm
 \end_layout
 
 \begin_layout Item
@@ -467,10 +450,6 @@ status collapsed
 
 \end_layout
 
-\begin_layout Space
--1cm
-\end_layout
-
 \begin_layout Language
 Dutch
 \begin_inset ERT
@@ -538,10 +517,6 @@ status collapsed
 Apache, Mailman
 \end_layout
 
-\begin_layout Space
--1cm
-\end_layout
-
 \begin_layout Computer
 Programming
 \begin_inset ERT
@@ -583,10 +558,6 @@ status collapsed
 PHP, Shell, Ruby
 \end_layout
 
-\begin_layout Space
--1cm
-\end_layout
-
 \begin_layout Computer
 Scientific
 \begin_inset ERT
@@ -622,10 +593,6 @@ status collapsed
 \end_inset
 
 LaTeX, ConTeXt, Scribus, QuarkXPress
-\end_layout
-
-\begin_layout Space
--1mm
 \end_layout
 
 \begin_layout Computer
@@ -720,16 +687,8 @@ Section with a list
 Single item.
 \end_layout
 
-\begin_layout Space
--1cm
-\end_layout
-
 \begin_layout ListItem
 Another single item.
-\end_layout
-
-\begin_layout Space
--1cm
 \end_layout
 
 \begin_layout DoubleItem
@@ -747,10 +706,6 @@ status collapsed
 
 \SpecialChar \ldots{}
  item.
-\end_layout
-
-\begin_layout Space
--1cm
 \end_layout
 
 \begin_layout DoubleItem
@@ -889,37 +844,9 @@ or BibTeX references:
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-nocite{*}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-
-\backslash
-nocite{*}
-\series default
- Prints all entries of the BibTeX-file
-\end_layout
-
-\end_inset
-
-
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
+btprint "btPrintAll"
 bibfiles "biblioExample"
 options "plain"
 
