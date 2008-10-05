@@ -29,7 +29,11 @@ import os, re, string, sys
 # Incremented to format 8, 25 July 2008 by rgh
 # UseModule tag added to layout files
 # CopyStyle added to InsetLayout
-currentFormat = 8
+
+# Incremented to format 9, 5 October 2008 by rgh
+# ForcePlain and CustomPars tags added to InsetLayout
+
+currentFormat = 9
 
 
 def usage(prog_name):
@@ -172,15 +176,8 @@ def convert(lines):
                 i += 1
             continue
 
-        if format == 7:
-          i += 1
-          continue
-
-        if format == 6:
-          i += 1
-          continue
-
-        if format == 5:
+        # These just involved new features, not any changes to old ones
+        if format >= 5 and format <= 8:
           i += 1
           continue
 
