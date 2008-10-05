@@ -35,8 +35,6 @@ public:
 	void write(std::ostream &) const;
 	///
 	void read(Lexer & lex);
-	///
-	virtual bool allowParagraphCustomization(idx_type = 0) const { return false; }
 
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
@@ -53,6 +51,14 @@ protected:
 
 private:
 	Inset * clone() const { return new InsetFlex(*this); }
+	/// should paragraphs be forced to use the empty layout?
+	//FIXME: this is not always correct. We need a layout tag that indicates
+	// whether layout changes are allowed or not
+	virtual bool forcePlainLayout(idx_type = 0) const { return !allowMultiPar(); }
+	/// should the user be allowed to customize alignment, etc.?
+	//FIXME: this is not always correct. We need a layout tag that indicates
+	// whether paragraph customization is allowed or not
+	virtual bool allowParagraphCustomization(idx_type = 0) const { return allowMultiPar(); }
 
 	///
 	std::string name_;
