@@ -252,6 +252,12 @@ void LyXComm::read_ready()
 	int const charbuf_size = 100;
 	char charbuf[charbuf_size];
 
+	// As O_NONBLOCK is set, until no data is available for reading,
+	// read() doesn't block but returns -1 and set errno to EAGAIN.
+	// After a client that opened the pipe for writing, closes it
+	// (and no other client is using the pipe), read() would always
+	// return 0 and thus the connection has to be reset.
+
 	errno = 0;
 	int status;
 	// the single = is intended here.
@@ -273,12 +279,13 @@ void LyXComm::read_ready()
 					clientcb_(client_, cmd);
 					//\n or not \n?
 			}
-		}
-		if (errno == EAGAIN) {
-			errno = 0;
-			return;
-		}
-		if (errno != 0) {
+		} else {
+			if (errno == EAGAIN) {
+				// Nothing to read, continue
+				errno = 0;
+				return;
+			}
+			// An error occurred, better bailing out
 			LYXERR0("LyXComm: " << strerror(errno));
 			if (!read_buffer_.empty()) {
 				LYXERR0("LyXComm: truncated command: " << read_buffer_);
@@ -288,8 +295,9 @@ void LyXComm::read_ready()
 		}
 	}
 
-	// The connection gets reset in errno != EAGAIN
-	// Why does it need to be reset if errno == 0?
+	// The connection gets reset when read() returns 0 (meaning that the
+	// last client closed the pipe) or an error occurred, in which case
+	// read() returns -1 and errno != EAGAIN.
 	closeConnection();
 	openConnection();
 	errno = 0;
