@@ -105,7 +105,7 @@ private:
 	///
 	DisplayType display() const { return Inline; }
 	///
-	bool allowParagraphCustomization(idx_type = 0) { return forcePlainLayout(); }
+	bool allowParagraphCustomization(idx_type = 0) const { return !forcePlainLayout(); }
 	///
 	bool forcePlainLayout(idx_type = 0) const;
 	///
