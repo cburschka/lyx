@@ -96,11 +96,14 @@ QString browseFile(QString const & filename,
 	QString const & label1 = QString(),
 	QString const & dir1 = QString(),
 	QString const & label2 = QString(),
-	QString const & dir2 = QString())
+	QString const & dir2 = QString(),
+	QString const & fallback_dir = QString())
 {
 	QString lastPath = ".";
 	if (!filename.isEmpty())
 		lastPath = onlyPath(filename);
+	else if(!fallback_dir.isEmpty())
+		lastPath = fallback_dir;
 
 	FileDialog dlg(title, LFUN_SELECT_FILE_SYNC);
 	dlg.setButton2(label1, dir1);
@@ -139,7 +142,7 @@ QString browseLibFile(QString const & dir,
 
 	QString const result = browseFile(toqstr(
 		libFileSearch(dir, name, ext).absFilename()),
-		title, filters, false, dir1, dir2);
+		title, filters, false, dir1, dir2, QString(), QString(), dir1);
 
 	// remove the extension if it is the default one
 	QString noextresult;
