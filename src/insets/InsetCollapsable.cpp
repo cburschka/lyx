@@ -700,18 +700,6 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 		return InsetText::getStatus(cur, cmd, flag);
 
-	case LFUN_LAYOUT:
-		flag.setEnabled(!forcePlainLayout());
-		return true;
-
-	case LFUN_LAYOUT_PARAGRAPH:
-	case LFUN_PARAGRAPH_PARAMS:
-	case LFUN_PARAGRAPH_PARAMS_APPLY:
-	case LFUN_PARAGRAPH_SPACING:
-	case LFUN_PARAGRAPH_UPDATE:
-		flag.setEnabled(allowParagraphCustomization());
-		return true;
-
 	case LFUN_INSET_TOGGLE:
 		if (cmd.argument() == "open")
 			flag.setEnabled(status_ != Open);
