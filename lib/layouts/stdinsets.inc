@@ -35,7 +35,13 @@
 #	EndFont               Nothing to put here, it's just a markup to indicate that we are
 #                         finished with the LabelFont definition.
 #	MultiPar              Indicates that multiple paragraphs are allowed within the inset
-#                         or not. FIXME: what is the default?
+#                         or not. Defaults to false. Sets CustomPars, as well, to the same
+#                         value, and sets ForcePlain to the opposite value. If you want
+#                         those to be different, then, you must set them after you set 
+#                         MultiPar.
+# CustomPars            Whether to allow the use of the Paragraph Settings dialog. Default is
+#                         false.
+# ForcePlain            Whether to force the PlainLayout. Default is true.
 #	Decoration:           Classic, Minimalistic, Conglomerate. Decoration styles
 #	PassThru              Do not do various LaTeX conversions, like the phrases
 #	                        LaTeX, LyX, quote commands, etc.
@@ -143,6 +149,8 @@ InsetLayout ERT
 	  Size                Small
 	EndFont
 	MultiPar              true
+	CustomPars            false
+	ForcePlain            true
 	PassThru              true
 	KeepEmpty             true
 	FreeSpacing           true
@@ -198,6 +206,8 @@ InsetLayout Index
 	  Size                Small
 	EndFont
 	MultiPar              false
+#	CustomPars            false
+#	ForcePlain            true
 	NeedProtect           true
 End
 
@@ -271,7 +281,7 @@ InsetLayout OptArg
 	  Color               collapsable
 	  Size                Small
 	EndFont
-	MultiPar              false
+#	MultiPar              false
 End
 
 InsetLayout Info
