@@ -916,12 +916,15 @@ docstring const FileName::relPath(string const & path) const
 }
 
 
-bool operator==(FileName const & lhs, FileName const & rhs)
+bool operator==(FileName const & l, FileName const & r)
 {
-	// FIXME: We need to solve this warning from Qt documentation:
+	// FIXME: In future use Qt.
+	// Qt 4.4: We need to solve this warning from Qt documentation:
 	// * Long and short file names that refer to the same file on Windows are
 	//   treated as if they referred to different files.
 	// This is supposed to be fixed for Qt5.
+	FileName const lhs(os::internal_path(l.absFilename()));
+	FileName const rhs(os::internal_path(r.absFilename()));
 
 	if (lhs.empty())
 		// QFileInfo::operator==() returns false if the two QFileInfo are empty.
