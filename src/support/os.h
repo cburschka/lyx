@@ -42,6 +42,9 @@ shell_type shell();
 /// Name of the python interpreter
 std::string const python();
 
+///
+bool isFilesystemCaseSensitive();
+
 /// Extract the path common to both @c p1 and @c p2. DBCS aware!
 /// \p p1, \p p2 and the return value are encoded in utf8.
 std::size_t common_path(docstring const & p1, docstring const & p2);

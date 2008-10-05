@@ -138,6 +138,13 @@ string current_root()
 }
 
 
+bool isFilesystemCaseSensitive()
+{
+	// FIXME: is this correct?
+	return true;
+}
+
+
 docstring::size_type common_path(docstring const & p1, docstring const & p2)
 {
 	docstring::size_type i = 0;

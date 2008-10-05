@@ -121,6 +121,14 @@ struct FileName::Private
 #endif
 	}
 
+
+	static
+	bool isFilesystemEqual(QString const & lhs, QString const & rhs)
+	{
+		return QString::compare(lhs, rhs, os::isFilesystemCaseSensitive() ?
+			Qt::CaseSensitive : Qt::CaseInsensitive) == 0;
+	}
+
 	///
 	QFileInfo fi;
 };
@@ -320,6 +328,12 @@ string FileName::onlyFileNameWithoutExt() const
 string FileName::extension() const
 {
        return fromqstr(d->fi.suffix());
+}
+
+
+bool FileName::hasExtension(const string & ext)
+{
+	return Private::isFilesystemEqual(d->fi.suffix(), toqstr(ext));
 }
 
 
@@ -920,8 +934,10 @@ bool operator==(FileName const & lhs, FileName const & rhs)
 	lhs.d->refresh();
 	rhs.d->refresh();
 	
-	if (!lhs.d->fi.isSymLink() && !rhs.d->fi.isSymLink())
+	if (!lhs.d->fi.isSymLink() && !rhs.d->fi.isSymLink()) {
+		// Qt already checks if the filesystem is case sensitive or not.
 		return lhs.d->fi == rhs.d->fi;
+	}
 
 	// FIXME: When/if QFileInfo support symlink comparison, remove this code.
 	QFileInfo fi1(lhs.d->fi);

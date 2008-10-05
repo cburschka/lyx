@@ -172,6 +172,12 @@ string current_root()
 }
 
 
+bool isFilesystemCaseSensitive()
+{
+	return false;
+}
+
+
 docstring::size_type common_path(docstring const & p1, docstring const & p2)
 {
 	size_t i = 0;

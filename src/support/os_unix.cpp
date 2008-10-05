@@ -36,6 +36,16 @@ string current_root()
 }
 
 
+bool isFilesystemCaseSensitive()
+{
+#ifdef __APPLE__
+	return false:
+#else
+	return true;
+#endif
+}
+
+
 docstring::size_type common_path(docstring const & p1, docstring const & p2)
 {
 	docstring::size_type i = 0;

@@ -668,7 +668,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 	LYXERR(Debug::GRAPHICS, "\tthe orig file is: " << orig_file);
 
 	if (from == to) {
-		if (!runparams.nice && getExtension(temp_file.absFilename()) != ext) {
+		if (!runparams.nice && !FileName(temp_file).hasExtension(ext)) {
 			// The LaTeX compiler will not be able to determine
 			// the file format from the extension, so we must
 			// change it.

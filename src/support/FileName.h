@@ -174,6 +174,9 @@ public:
 	std::string onlyFileNameWithoutExt() const;
 	/// only extension after the last dot.
 	std::string extension() const;
+	/** checks if the file has the given extension
+		on Windows and Mac it compares case insensitive */
+	bool hasExtension(const std::string & ext);
 	/// path without file name
 	FileName onlyPath() const;
 	/// used for display in the Gui
