@@ -104,7 +104,7 @@ What's new
 
 - Fix output of some Greek characters.
 
-- Fix some problems with csv importation.
+- Fix some problems with CSV importation.
 
 - Fix LaTeX output if no graphic driver was selected (part of bug 5294).
 
@@ -112,6 +112,9 @@ What's new
 
 - Layout file and template for journal articles of the IOP publishing group
   fixed.
+ 
+- Fix that chess games like the chessgame.lyx example file were not compilable
+  (bug 5320).
 
 
 * USER INTERFACE

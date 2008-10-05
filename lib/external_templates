@@ -178,11 +178,15 @@ Template ChessDiagram
 	Format LaTeX
 		Product "\\loadgame{$$AbsOrRelPathMaster$$Basename}\\showboard"
 		Requirement "chess"
+		UpdateFormat fen
+		UpdateResult "$$AbsPath$$Basename$$Extension"
 		ReferencedFile latex "$$AbsPath$$Basename$$Extension"
 	FormatEnd
 	Format PDFLaTeX
 		Product "\\loadgame{$$AbsOrRelPathMaster$$Basename}\\showboard"
 		Requirement "chess"
+		UpdateFormat fen
+		UpdateResult "$$AbsPath$$Basename$$Extension"
 		ReferencedFile pdflatex "$$AbsPath$$Basename$$Extension"
 	FormatEnd
 	Format Ascii
