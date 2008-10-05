@@ -25,6 +25,7 @@
 #include "DispatchResult.h"
 #include "ErrorList.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "InsetList.h"
 #include "Intl.h"
 #include "Lexer.h"
@@ -250,7 +251,21 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
-	return text_.getStatus(cur, cmd, status);
+	switch (cmd.action) {
+	case LFUN_LAYOUT:
+		status.setEnabled(!forcePlainLayout());
+		return true;
+
+	case LFUN_LAYOUT_PARAGRAPH:
+	case LFUN_PARAGRAPH_PARAMS:
+	case LFUN_PARAGRAPH_PARAMS_APPLY:
+	case LFUN_PARAGRAPH_SPACING:
+	case LFUN_PARAGRAPH_UPDATE:
+		status.setEnabled(allowParagraphCustomization());
+		return true;
+	default:
+		return text_.getStatus(cur, cmd, status);
+	}
 }
 
 
