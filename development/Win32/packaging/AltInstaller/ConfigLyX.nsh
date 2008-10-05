@@ -106,7 +106,16 @@ Function ConfigureLyX
    WriteRegStr SHCTX "Software\Classes\${PRODUCT_REGNAME}\Shell\open\command" "" '"${PRODUCT_BAT}" "%1"'
    # write informations about file extensions
    WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}" "" "${PRODUCT_REGNAME}"
-   WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}" "Content Type" "${PRODUCT_MIME_TYPE}"  
+   WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}" "Content Type" "${PRODUCT_MIME_TYPE}"
+   # .lyx13
+   WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}13" "" "${PRODUCT_REGNAME}"
+   WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}13" "Content Type" "${PRODUCT_MIME_TYPE}"
+   # .lyx14
+   WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}14" "" "${PRODUCT_REGNAME}"
+   WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}14" "Content Type" "${PRODUCT_MIME_TYPE}"
+   # .lyx15
+   WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}15" "" "${PRODUCT_REGNAME}"
+   WriteRegStr SHCTX "Software\Classes\${PRODUCT_EXT}15" "Content Type" "${PRODUCT_MIME_TYPE}"
    # refresh shell
    System::Call 'shell32.dll::SHChangeNotify(i, i, i, i) (${SHCNE_ASSOCCHANGED}, ${SHCNF_IDLIST}, 0, 0)'
   ${endif}
