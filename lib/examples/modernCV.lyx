@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.7svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -73,7 +73,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "usti"
+\author "" 
 \end_header
 
 \begin_body
@@ -259,7 +259,7 @@ Title of the thesis
 \end_layout
 
 \begin_layout Space
--1cm
+0.5cm
 \begin_inset Note Note
 status open
 
@@ -285,10 +285,6 @@ status collapsed
 \end_inset
 
 Names of supervisors
-\end_layout
-
-\begin_layout Space
--1cm
 \end_layout
 
 \begin_layout Item
@@ -463,10 +459,6 @@ status collapsed
 
 \end_layout
 
-\begin_layout Space
--1cm
-\end_layout
-
 \begin_layout Language
 Dutch
 \begin_inset ERT
@@ -534,10 +526,6 @@ status collapsed
 Apache, Mailman
 \end_layout
 
-\begin_layout Space
--1cm
-\end_layout
-
 \begin_layout Computer
 Programming
 \begin_inset ERT
@@ -579,10 +567,6 @@ status collapsed
 PHP, Shell, Ruby
 \end_layout
 
-\begin_layout Space
--1cm
-\end_layout
-
 \begin_layout Computer
 Scientific
 \begin_inset ERT
@@ -618,10 +602,6 @@ status collapsed
 \end_inset
 
 LaTeX, ConTeXt, Scribus, QuarkXPress
-\end_layout
-
-\begin_layout Space
--1mm
 \end_layout
 
 \begin_layout Computer
@@ -710,16 +690,8 @@ Section with a list
 Single item.
 \end_layout
 
-\begin_layout Space
--1cm
-\end_layout
-
 \begin_layout ListItem
 Another single item.
-\end_layout
-
-\begin_layout Space
--1cm
 \end_layout
 
 \begin_layout DoubleItem
@@ -737,10 +709,6 @@ status collapsed
 
 \SpecialChar \ldots{}
  item.
-\end_layout
-
-\begin_layout Space
--1cm
 \end_layout
 
 \begin_layout DoubleItem
