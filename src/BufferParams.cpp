@@ -1034,16 +1034,15 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		// with language options, not in the class options, see
 		// http://bugzilla.lyx.org/show_bug.cgi?id=4597#c4
 		size_t japan = language_options.str().find("japanese");
-		// japan = string::npos when not found
-		// if Lithuanian is used, babel must directly be loaded
+		// if Latvian or Lithuanian is used, babel must directly be loaded
 		// with language options, not in the class options, see
 		// http://bugzilla.lyx.org/show_bug.cgi?id=5323
+		size_t latvian = language_options.str().find("latvian");
 		size_t lithu = language_options.str().find("lithuanian");
-		// lithu = string::npos when not found
 		if (lyxrc.language_global_options
 			&& !language_options.str().empty()
 			&& viet == string::npos && japan == string::npos
-			&& lithu == string::npos)
+			&& latvian == string::npos && lithu == string::npos)
 			clsoptions << language_options.str() << ',';
 	}
 
@@ -1877,14 +1876,14 @@ string BufferParams::babelCall(string const & lang_opts) const
 	// language options, see
 	// http://bugzilla.lyx.org/show_bug.cgi?id=4597#c4
 	size_t japan = lang_opts.find("japanese");
-	// japan = string::npos when not found
-	// If Lithuanian is used, babel must directly be loaded with the
-	// language options, see
+	// If Latvian or Lithuanian is used, babel must directly be loaded with
+	// the language options, see
 	// http://bugzilla.lyx.org/show_bug.cgi?id=5323
+	size_t latvian = lang_opts.find("latvian");
 	size_t lithu = lang_opts.find("lithuanian");
-	// lithu = string::npos when not found
 	if (!lyxrc.language_global_options || viet != string::npos
-		|| japan != string::npos || lithu != string::npos)
+		|| japan != string::npos || latvian != string::npos
+		|| lithu != string::npos)
 		return "\\usepackage[" + lang_opts + "]{babel}";
 	return lang_pack;
 }
