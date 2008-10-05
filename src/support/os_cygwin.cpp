@@ -140,8 +140,7 @@ string current_root()
 
 bool isFilesystemCaseSensitive()
 {
-	// FIXME: is this correct?
-	return true;
+	return false;
 }
 
 
