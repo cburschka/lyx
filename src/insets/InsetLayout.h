@@ -67,6 +67,10 @@ public:
 	///
 	bool isMultiPar() const { return multipar_; };
 	///
+	bool forcePlainLayout() const { return forceplain_; }
+	///
+	bool allowParagraphCustomization() const { return custompars_; }
+	///
 	bool isPassThru() const { return passthru_; };
 	///
 	bool isNeedProtect() const { return needprotect_; };
@@ -107,6 +111,10 @@ private:
 	std::set<std::string> requires_;
 	///
 	bool multipar_;
+	/// 
+	bool custompars_;
+	///
+	bool forceplain_;
 	///
 	bool passthru_;
 	///

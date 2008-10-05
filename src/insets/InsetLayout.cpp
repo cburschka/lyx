@@ -34,10 +34,11 @@ InsetLayout::InsetLayout() :
 	name_(from_ascii("undefined")), labelstring_(from_ascii("UNDEFINED")),
 	decoration_(InsetLayout::Default),
 	font_(sane_font), labelfont_(sane_font), bgcolor_(Color_error), 
-	multipar_(false), passthru_(false), needprotect_(false),
-	freespacing_(false), keepempty_(false), forceltr_(false)
+	multipar_(false), custompars_(false), forceplain_(true), 
+	passthru_(false), needprotect_(false), freespacing_(false), 
+	keepempty_(false), forceltr_(false)
 { 
-	labelfont_.setColor(Color_error); 
+	labelfont_.setColor(Color_error);
 }
 
 
@@ -64,9 +65,11 @@ bool InsetLayout::read(Lexer & lex, TextClass & tclass)
 	enum {
 		IL_BGCOLOR,
 		IL_COPYSTYLE,
+		IL_CUSTOMPARS,
 		IL_DECORATION,
 		IL_FONT,
 		IL_FORCELTR,
+		IL_FORCEPLAIN,
 		IL_FREESPACING,
 		IL_LABELFONT,
 		IL_LABELSTRING,
@@ -86,11 +89,13 @@ bool InsetLayout::read(Lexer & lex, TextClass & tclass)
 
 	LexerKeyword elementTags[] = {
 		{ "bgcolor", IL_BGCOLOR },
-		{ "copystyle", IL_COPYSTYLE}, 
+		{ "copystyle", IL_COPYSTYLE }, 
+		{ "custompars", IL_CUSTOMPARS },
 		{ "decoration", IL_DECORATION },
 		{ "end", IL_END },
 		{ "font", IL_FONT },
 		{ "forceltr", IL_FORCELTR },
+		{ "forceplain", IL_FORCEPLAIN },
 		{ "freespacing", IL_FREESPACING },
 		{ "keepempty", IL_KEEPEMPTY },
 		{ "labelfont", IL_LABELFONT },
@@ -112,6 +117,9 @@ bool InsetLayout::read(Lexer & lex, TextClass & tclass)
 	labelfont_ = inherit_font;
 	bgcolor_ = Color_background;
 	bool getout = false;
+	// whether we've read the CustomPars or ForcePlain tag
+	// for issuing a warning in case MultiPars comes later
+	bool readCustomOrPlain = false;
 
 	string tmp;	
 	while (!getout && lex.isOK()) {
@@ -152,9 +160,24 @@ bool InsetLayout::read(Lexer & lex, TextClass & tclass)
 			break;
 		case IL_MULTIPAR:
 			lex >> multipar_;
+			// the defaults for these depend upon multipar_
+			if (readCustomOrPlain)
+				LYXERR0("Warning: Read MultiPar after CustomPars or ForcePlain. "
+				        "Previous value may be overwritten!");
+			readCustomOrPlain = false;
+			custompars_ = multipar_;
+			forceplain_ = !multipar_;
+			break;
+		case IL_CUSTOMPARS:
+			lex >> custompars_;
+			readCustomOrPlain = true;
+			break;
+		case IL_FORCEPLAIN:
+			lex >> forceplain_;
 			break;
 		case IL_PASSTHRU:
 			lex >> passthru_;
+			readCustomOrPlain = true;
 			break;
 		case IL_KEEPEMPTY:
 			lex >> keepempty_;
