@@ -135,6 +135,9 @@ What's new
 
 - Remove confusing warning about 'server socket' under MS Windows.
 
+- Fix problem that the lyxpipe was incorrectly reset after dispatching
+  certain functions (bug 1784).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
