@@ -67,6 +67,7 @@
 
 #include "mathed/InsetMathHull.h"
 #include "mathed/MathMacroTemplate.h"
+#include "mathed/MathParser.h"
 
 #include <boost/next_prior.hpp>
 
@@ -127,6 +128,9 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 	// It may happen that sel is empty but there is a selection
 	replaceSelection(cur);
 
+	// Is this a valid formula?
+	bool valid = true;
+
 	if (sel.empty()) {
 #ifdef ENABLE_ASSERTIONS
 		const int old_pos = cur.pos();
@@ -156,20 +160,35 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 				&& sel.find(from_ascii("\\def")) == string::npos)
 		{
 			InsetMathHull * formula = new InsetMathHull;
-			istringstream is(to_utf8(sel));
+			string const selstr = to_utf8(sel);
+			istringstream is(selstr);
 			Lexer lex;
 			lex.setStream(is);
+			mathed_parser_warn_contents(false);
 			formula->read(lex);
-			if (formula->getType() == hullNone)
-				// Don't create pseudo formulas if
-				// delimiters are left out
-				formula->mutate(hullSimple);
-			cur.insert(formula);
+			if (formula->getType() == hullNone) {
+				// No valid formula, let's try with delims
+				is.str("$" + selstr + "$");
+				lex.setStream(is);
+				formula->read(lex);
+				if (formula->getType() == hullNone) {
+					// Still not valid, leave it as is
+					valid = false;
+					delete formula;
+					cur.insert(sel);
+				} else
+					cur.insert(formula);
+			} else
+				cur.insert(formula);
+			mathed_parser_warn_contents(true);
 		} else {
 			cur.insert(new MathMacroTemplate(sel));
 		}
 	}
-	cur.message(from_utf8(N_("Math editor mode")));
+	if (valid)
+		cur.message(from_utf8(N_("Math editor mode")));
+	else
+		cur.message(from_utf8(N_("No valid math formula")));
 }
 
 

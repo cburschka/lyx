@@ -58,6 +58,9 @@ public:
 /// check whether this is a well-known (La)TeX macro or primitive
 latexkeys const * in_word_set(docstring const & str);
 
+/// tell the parser whether it should warn about unusual contents
+void mathed_parser_warn_contents(bool);
+
 /// parse formula from a string
 bool mathed_parse_normal(MathAtom &, docstring const &);
 /// ... the LyX lexxer

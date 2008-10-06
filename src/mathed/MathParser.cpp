@@ -79,6 +79,9 @@ namespace lyx {
 
 namespace {
 
+bool warn_unusual_contents = true;
+
+
 InsetMath::mode_type asMode(InsetMath::mode_type oldmode, docstring const & str)
 {
 	//lyxerr << "handling mode: '" << str << "'" << endl;
@@ -611,7 +614,8 @@ bool Parser::parse(MathAtom & at)
 	MathData ar;
 	parse(ar, false, InsetMath::UNDECIDED_MODE);
 	if (ar.size() != 1 || ar.front()->getType() == hullNone) {
-		lyxerr << "unusual contents found: " << ar << endl;
+		if (warn_unusual_contents)
+			lyxerr << "unusual contents found: " << ar << endl;
 		at = MathAtom(new InsetMathPar(ar));
 		//if (at->nargs() > 0)
 		//	at.nucleus()->cell(0) = ar;
@@ -1685,6 +1689,12 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 
 } // anonymous namespace
+
+
+void mathed_parser_warn_contents(bool warn)
+{
+	warn_unusual_contents = warn;
+}
 
 
 void mathed_parse_cell(MathData & ar, docstring const & str)
