@@ -7,7 +7,7 @@
 # commands that are useful for article-like document classes, but not
 # for letters.
 
-Format 8
+Format 9
 Style Part
 	Category              Section
 	Margin                Dynamic
