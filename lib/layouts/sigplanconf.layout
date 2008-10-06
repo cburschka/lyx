@@ -46,6 +46,8 @@ Style Standard
 End
 
 
+Input stdcounters.inc
+Input stdfloats.inc
 Input stdlists.inc
 Input stdsections.inc
 Input stdstarsections.inc
@@ -179,9 +181,4 @@ Style Acknowledgments
 	LabelType		Top_Environment
 	LabelString		"Acknowledgments"
 End
-
-
-Input stdlayouts.inc
-Input stdfloats.inc
-Input stdcounters.inc
 

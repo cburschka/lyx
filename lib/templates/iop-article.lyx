@@ -1046,6 +1046,26 @@ A & = & \prod_{i=1}^{\infty}B\nonumber \\
 
 \end_layout
 
+\begin_layout Subsection
+Subsection
+\end_layout
+
+\begin_layout Enumerate
+test
+\end_layout
+
+\begin_layout Enumerate
+test
+\end_layout
+
+\begin_layout Subsubsection
+Subsubsection
+\end_layout
+
+\begin_layout Standard
+Bla, bla
+\end_layout
+
 \begin_layout Standard
 
 \end_layout
@@ -1083,12 +1103,34 @@ Appendix, only when needed, inserted behind the acknowledgments but before
 
 \begin_layout Standard
 You can use either BibTeX:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following bibliography styles are allowed: 
+\family sans
+unsrt
+\family default
+ or 
+\family sans
+jphysicsB
+\family default
+ (part of the LaTeX-package 
+\series bold
+harvard
+\series default
+)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "biblioExample"
+bibfiles "../examples/biblioExample"
 options "bibtotoc,unsrt"
 
 \end_inset

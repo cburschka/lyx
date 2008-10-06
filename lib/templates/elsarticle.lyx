@@ -95,7 +95,7 @@ tnoteref{t1,t2}
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -670,7 +670,7 @@ PACS
 \backslash
 MSC
 \series default
- are optional classifications.
+ are optional classifiactions.
 \end_layout
 
 \end_inset
@@ -823,7 +823,7 @@ elsarticle-harv
 \family sans
 elsarticle-num-names
 \family default
-, 
+, or 
 \family sans
 elsarticle-num
 \end_layout
@@ -836,7 +836,7 @@ elsarticle-num
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "biblioExample"
+bibfiles "../examples/biblioExample"
 options "bibtotoc,elsarticle-harv"
 
 \end_inset

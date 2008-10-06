@@ -38,8 +38,8 @@ Style Standard
 	LabelType		No_Label
 End
 
-
-Input stdtitle.inc
+Input stdfloats.inc
+Input stdcounters.inc
 Input stdlists.inc
 Input stdsections.inc
 Input stdstarsections.inc
@@ -47,10 +47,24 @@ Input stdstarsections.inc
 NoStyle Chapter
 NoStyle Chapter*
 
+
 Style Title
-	CopyStyle		Title
+	Margin			Static
+	LatexType		Command
+	InTitle			1
 	OptionalArgs		0
+	LatexName		title
+	ParSkip			0.4
+	ItemSep			0
+	TopSep			0
+	BottomSep		1
+	ParSep			1
+	Align			Center
 	AlignPossible		None
+	LabelType		No_Label
+	Font
+	  Size			Largest
+	EndFont
 End
 
 
@@ -201,8 +215,4 @@ Style Bibliography
 	  Size			Larger
 	EndFont
 End
-
-
-Input stdfloats.inc
-Input stdcounters.inc
 

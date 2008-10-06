@@ -3,6 +3,7 @@
 \begin_document
 \begin_header
 \textclass sigplanconf
+\options natbib
 \language english
 \inputencoding default
 \font_roman default
@@ -257,6 +258,22 @@ ed into hardware]
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+category
+\series default
+ has 3 mandatory + 1 optional arguments
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Terms
@@ -273,7 +290,34 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-This is the introduction to this paper.
+Bla bla, as listed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Parkin2005,LComp2004"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Subsection
+\end_layout
+
+\begin_layout Enumerate
+test
+\end_layout
+
+\begin_layout Enumerate
+test
+\end_layout
+
+\begin_layout Subsubsection
+Subsubsection
+\end_layout
+
+\begin_layout Standard
+Bla, bla
 \end_layout
 
 \begin_layout Acknowledgments
@@ -287,6 +331,56 @@ First appendix
 
 \begin_layout Standard
 Appendix, only when needed, can also be started behind the bibliography.
+\end_layout
+
+\begin_layout Section*
+-----------------
+\end_layout
+
+\begin_layout Standard
+You can use either BibTeX:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following bibliography styles are allowed: 
+\family sans
+none
+\family default
+ or 
+\family sans
+plainnat
+\family default
+ (use then the document class option 
+\family sans
+natbib
+\family default
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "../examples/biblioExample"
+options "bibtotoc,plainnat"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+---------------------
+\end_layout
+
+\begin_layout Standard
+\noindent
+Or plain bibliography:
 \end_layout
 
 \begin_layout Bibliography
@@ -339,6 +433,22 @@ n Proceedings of the 17th Annual IEEE Symposium on Logic in Computer Science
  (LICS 2002)
 \emph default
 , July 2002.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Reference parts have to be separated by 
+\series bold
+
+\backslash
+newblock
+\series default
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
