@@ -23,6 +23,8 @@
 
 namespace lyx {
 
+class Lexer;
+
 /// This represents a single counter.
 class Counter {
 public:
@@ -31,6 +33,8 @@ public:
 	///
 	Counter(docstring const & mc, docstring const & ls, 
 		docstring const & lsa);
+	/// \return true on success
+	bool read(Lexer & lex);
 	///
 	void set(int v);
 	///
@@ -75,8 +79,6 @@ class Counters {
 public:
 	///
 	Counters() : appendix_(false), subfloat_(false) {}
-	/// Add a new counter to array.
-	void newCounter(docstring const & newc);
 	/// Add new counter newc having masterc as its master, 
 	/// ls as its label, and lsa as its appendix label.
 	void newCounter(docstring const & newc,
@@ -85,6 +87,9 @@ public:
 			docstring const & lsa);
 	/// Checks whether the given counter exists.
 	bool hasCounter(docstring const & c) const;
+	/// reads the counter name
+	/// \return true on success
+	bool read(Lexer & lex, docstring const & name);
 	///
 	void set(docstring const & ctr, int val);
 	///

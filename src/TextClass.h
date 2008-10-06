@@ -305,8 +305,6 @@ private:
 	void readCharStyle(Lexer &, std::string const &);
 	///
 	void readFloat(Lexer &);
-	///
-	void readCounter(Lexer &);
 };
 
 

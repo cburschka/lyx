@@ -33,7 +33,10 @@ import os, re, string, sys
 # Incremented to format 9, 5 October 2008 by rgh
 # ForcePlain and CustomPars tags added to InsetLayout
 
-currentFormat = 9
+# Incremented to format 10, 6 October 2008 by rgh
+# Change format of counters
+
+currentFormat = 10
 
 
 def usage(prog_name):
@@ -87,6 +90,8 @@ def concatenate_label(old, new):
 def convert(lines):
     " Convert to new format."
     re_Comment = re.compile(r'^(\s*)#')
+    re_Counter = re.compile(r'\s*Counter\s*')
+    re_Name = re.compile(r'\s*Name\s+(\S+)\s*')
     re_Empty = re.compile(r'^(\s*)$')
     re_Format = re.compile(r'^(\s*)(Format)(\s+)(\S+)', re.IGNORECASE)
     re_Preamble = re.compile(r'^(\s*)Preamble', re.IGNORECASE)
@@ -173,6 +178,27 @@ def convert(lines):
             i += 1
             while i < len(lines) and not re_EndPreamble.match(lines[i]):
                 i += 1
+            continue
+
+        if format == 9:
+            match = re_Counter.match(lines[i])
+            if match:
+                counterline = i
+                i += 1
+                while i < len(lines):
+                    namem = re_Name.match(lines[i])
+                    if namem:
+                        name = namem.group(1)
+                        lines.pop(i)
+                        lines[counterline] = "Counter %s" % name
+                        # we don't need to increment i
+                        continue
+                    endem = re_End.match(lines[i])
+                    if endem:
+                        i += 1
+                        break
+                    i += 1
+            i += 1
             continue
 
         # These just involved new features, not any changes to old ones

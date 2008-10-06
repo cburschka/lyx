@@ -61,7 +61,7 @@ private:
 };
 
 
-int const FORMAT = 9;
+int const FORMAT = 10;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)
@@ -520,7 +520,23 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			break;
 
 		case TC_COUNTER:
-			readCounter(lexrc);
+			if (lexrc.next()) {
+				docstring const name = lexrc.getDocString();
+				if (name.empty()) {
+					string s = "Could not read name for counter: `$$Token' "
+							+ lexrc.getString() + " is probably not valid UTF-8!";
+					lexrc.printError(s.c_str());
+					Counter c;
+					// Since we couldn't read the name, we just scan the rest
+					// and discard it.
+					c.read(lexrc);
+				} else
+					error = !counters_.read(lexrc, name);
+			}
+			else {
+				lexrc.printError("No name given for style: `$$Token'.");
+				error = true;
+			}
 			break;
 
 		case TC_TITLELATEXTYPE:
@@ -820,79 +836,6 @@ void TextClass::readFloat(Lexer & lexrc)
 		counters_.newCounter(subtype, from_ascii(type),
 				      "\\alph{" + subtype + "}", docstring());
 	}
-
-	lexrc.popTable();
-}
-
-
-void TextClass::readCounter(Lexer & lexrc)
-{
-	enum {
-		CT_NAME = 1,
-		CT_WITHIN,
-		CT_LABELSTRING,
-		CT_LABELSTRING_APPENDIX,
-		CT_END
-	};
-
-	LexerKeyword counterTags[] = {
-		{ "end", CT_END },
-		{ "labelstring", CT_LABELSTRING },
-		{ "labelstringappendix", CT_LABELSTRING_APPENDIX },
-		{ "name", CT_NAME },
-		{ "within", CT_WITHIN }
-	};
-
-	lexrc.pushTable(counterTags);
-
-	docstring name;
-	docstring within;
-	docstring labelstring;
-	docstring labelstring_appendix;
-
-	bool getout = false;
-	while (!getout && lexrc.isOK()) {
-		int le = lexrc.lex();
-		switch (le) {
-		case Lexer::LEX_UNDEF:
-			lexrc.printError("Unknown counter tag `$$Token'");
-			continue;
-		default: break;
-		}
-		switch (le) {
-		case CT_NAME:
-			lexrc.next();
-			name = lexrc.getDocString();
-			if (counters_.hasCounter(name))
-				LYXERR(Debug::TCLASS, "Reading existing counter " << to_utf8(name));
-			else
-				LYXERR(Debug::TCLASS, "Reading new counter " << to_utf8(name));
-			break;
-		case CT_WITHIN:
-			lexrc.next();
-			within = lexrc.getDocString();
-			if (within == "none")
-				within.erase();
-			break;
-		case CT_LABELSTRING:
-			lexrc.next();
-			labelstring = lexrc.getDocString();
-			labelstring_appendix = labelstring;
-			break;
-		case CT_LABELSTRING_APPENDIX:
-			lexrc.next();
-			labelstring_appendix = lexrc.getDocString();
-			break;
-		case CT_END:
-			getout = true;
-			break;
-		}
-	}
-
-	// Here if have a full counter if getout == true
-	if (getout)
-		counters_.newCounter(name, within, 
-				      labelstring, labelstring_appendix);
 
 	lexrc.popTable();
 }
