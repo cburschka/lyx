@@ -14958,7 +14958,7 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-When you to have the 
+If you have the 
 \family typewriter
 chktex
 \family default
@@ -14966,7 +14966,7 @@ chktex
 \family sans
 Tools
 \family default
- menu the entry 
+ menu the entry: 
 \family sans
 Check
 \begin_inset space ~
@@ -14974,7 +14974,7 @@ Check
 
 TeX
 \family default
- command.
+.
  You can get 
 \family typewriter
 chktex
@@ -14995,17 +14995,26 @@ The
 ChkTeX
 \family default
  package is a program that was written by 
-\noun on
+\begin_inset Flex CharStyle:Noun
+status collapsed
+
+\begin_layout Plain Layout
 Jens T.
- Berger Thielemann
-\noun default
+\begin_inset space ~
+\end_inset
+
+Berger Thielemann
+\end_layout
+
+\end_inset
+
  in frustration because some constructs in LaTeX are sometimes non-intuitive,
  and easy to forget.
- The program runs over your LaTeX file and checks the integrity of the file,
+ The program runs over your LaTeX file, checks the integrity of the file,
  and flags some common errors.
  In other technical words, it is 
 \family typewriter
-Lint
+lint
 \family default
  for LaTeX.
 \end_layout
@@ -16867,7 +16876,7 @@ LyX and Literate Programming
 
 \begin_layout Standard
 The LyX support for Literate Programming is provided by using the generic
- LyX convertors mechanism.
+ LyX converters mechanism.
  This support is provided in a 
 \begin_inset Quotes eld
 \end_inset
