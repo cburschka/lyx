@@ -43,6 +43,9 @@ Style Standard
 End
 
 
+Input stdcounters.inc
+Input stdfloats.inc
+Input amsmaths.inc
 Input stdlists.inc
 Input stdsections.inc
 Input stdstarsections.inc
@@ -278,7 +281,4 @@ Style "Bibliography heading"
 	LabelString		"References"
 End
 
-
-Input stdfloats.inc
-Input stdcounters.inc
 

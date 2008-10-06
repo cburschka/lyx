@@ -88,7 +88,7 @@ tnoteref{t1,t2}
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -775,7 +775,7 @@ elsarticle-harv
 \family sans
 elsarticle-num-names
 \family default
-, 
+, or 
 \family sans
 elsarticle-num
 \end_layout
@@ -788,7 +788,7 @@ elsarticle-num
 \begin_layout Standard
 \begin_inset LatexCommand bibtex
 options "bibtotoc,elsarticle-harv"
-bibfiles "biblioExample"
+bibfiles "../examples/biblioExample"
 
 \end_inset
 

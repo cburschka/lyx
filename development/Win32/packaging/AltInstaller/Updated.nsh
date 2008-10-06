@@ -68,7 +68,6 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\scripts\legacy_lyxpreview2ppm.py"
  SetOutPath "$INSTDIR\Resources\templates"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\ACM-sigplan.lyx"
- File "${PRODUCT_SOURCEDIR}\Resources\templates\biblioExample.bib"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\elsarticle.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\hollywood.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\iop-article.lyx"
