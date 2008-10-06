@@ -872,7 +872,14 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 				language_options << ',';
 			language_options << language->babel();
 		}
-		if (lyxrc.language_global_options && !language_options.str().empty())
+		// if Latvian or Lithuanian is used, babel must directly be loaded
+		// with language options, not in the class options, see
+		// http://bugzilla.lyx.org/show_bug.cgi?id=5323
+		size_t latvian = language_options.str().find("latvian");
+		size_t lithu = language_options.str().find("lithuanian");
+		// latvian = string::npos when not found
+		if (lyxrc.language_global_options && !language_options.str().empty()
+			&& latvian == string::npos && lithu == string::npos)
 			clsoptions << language_options.str() << ',';
 	}
 
@@ -1432,7 +1439,14 @@ string const BufferParams::babelCall(string const & lang_opts) const
 	// other languages are used (lang_opts is then empty)
 	if (lang_opts.empty())
 		return string();
-	if (!lyxrc.language_global_options)
+	// If Latvian or Lithuanian is used, babel must directly be loaded with
+	// the language options, see
+	// http://bugzilla.lyx.org/show_bug.cgi?id=5323
+	size_t latvian = lang_opts.find("latvian");
+	size_t lithu = lang_opts.find("lithuanian");
+	// latvian = string::npos when not found
+	if (!lyxrc.language_global_options
+		|| latvian != string::npos || lithu != string::npos)
 		return "\\usepackage[" + lang_opts + "]{babel}";
 	return lang_pack;
 }
