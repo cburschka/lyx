@@ -77,7 +77,8 @@ public:
 	Counters() : appendix_(false), subfloat_(false) {}
 	/// Add a new counter to array.
 	void newCounter(docstring const & newc);
-	/// Add new counter having oldc as its master and ls as its label.
+	/// Add new counter newc having masterc as its master, 
+	/// ls as its label, and lsa as its appendix label.
 	void newCounter(docstring const & newc,
 			docstring const & masterc,
 			docstring const & ls,
