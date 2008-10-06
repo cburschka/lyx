@@ -2042,9 +2042,14 @@ void LyXFunc::open(string const & fname)
 			make_pair(_("Documents|#o#O"), from_utf8(lyxrc.document_path)),
 			make_pair(_("Examples|#E#e"), from_utf8(addPath(package().system_support().absFilename(), "examples"))));
 
+		docstring filter = _("LyX Documents (*.lyx);;");
+		filter += _("LyX-1.3.x Documents (*.lyx13);;");
+		filter += _("LyX-1.4.x Documents (*.lyx14);;");
+		filter += _("LyX-1.5.x Documents (*.lyx15)");
+
 		FileDialog::Result result =
 			fileDlg.open(from_utf8(initpath),
-				     FileFilterList(_("LyX Documents (*.lyx)")),
+				     FileFilterList(filter),
 				     docstring());
 
 		if (result.first == FileDialog::Later)
