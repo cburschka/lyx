@@ -1,14 +1,14 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 340
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
 %
-% This preamble is designed to ensure that the User's Guide prints
+% This preamble is designed to ensure that the manual prints
 % out as advertised. If you mess with this preamble,
-% parts of the User's Guide may not print out as expected.  If you
+% parts of the manual may not print out as expected.  If you
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
@@ -116,11 +116,22 @@ status collapsed
 \noindent
 Principal maintainer of this file is
 \noun on
- Mike Ressler
+ Richard Heck
 \noun default
 .
  If you have comments or error corrections, please send them to the LyX
- Documentation mailing list, <lyx-docs@lists.lyx.org>.
+ Documentation mailing list, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+<lyx-docs@lists.lyx.org>
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -151,7 +162,7 @@ Extended LyX Features
 User's Guide\SpecialChar \@.
 
 \emph default
- The reason for splitting this document is simple: the 
+ The reason for separating this document out is simple: the 
 \emph on
 User's Guide
 \emph default
@@ -160,7 +171,8 @@ User's Guide
  However, the LyX Team has a long-term goal of making LyX extensible through
  various configuration files and external packages.
  That means that if you want to support the Fizzwizzle LaTeX package, you
- can create a layout file for it without having to alter LyX itself.
+ can create a layout file (or module) for it without having to alter LyX
+ itself.
  We've already had contributions of several new features this way.
  This is the place where all of that gets documented.
 \end_layout
@@ -174,24 +186,7 @@ This manual also documents some special features, like fax support, version
 \emph on
 is
 \emph default
- only WYSIWYM, and will only ever interface to certain LaTeX features.
-\end_layout
-
-\begin_layout Standard
-Of course, with all of this extra documentation, 
-\emph on
-Extended LyX Features
-\emph default
- may itself grow too big for its britches.
- In that case, you can just call it the 
-\begin_inset Quotes eld
-\end_inset
-
-Overextended Manual
-\begin_inset Quotes erd
-\end_inset
-
- for fun!
+ only WYSIWYM and will only ever interface to some, not all, LaTeX features.
 \end_layout
 
 \begin_layout Standard
@@ -247,7 +242,7 @@ This chapter is for both TeX-nicians and the LaTeX-curious.
 \end_layout
 
 \begin_layout Standard
-At one time, we called LyX a 
+At one time, LyX was called a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -269,7 +264,8 @@ does
 \emph default
  run LaTeX, and it also marks errors in the file, it also does much, much
  more.
- Thanks to the WYSIWYM concept, you don't need LaTeX to use LyX effectively.
+ Thanks to the WYSIWYM concept, you don't need to know LaTeX to use LyX
+ effectively.
  LyX has also added a few extensions to LaTeX.
  Try the following sometime: select 
 \family sans
@@ -283,7 +279,12 @@ F
 \bar default
 ile
 \family default
- menu, then look at the preamble of the resulting 
+ menu (or 
+\family sans
+View\SpecialChar \menuseparator
+Source
+\family default
+), then look at the preamble of the resulting 
 \family typewriter
 .tex
 \family default
@@ -366,7 +367,7 @@ They will only invoke LaTeX if the file has changed since the last time
 \end_layout
 
 \begin_layout Standard
-When you run LaTeX on the file you're editing, LyX performs these steps:
+When it runs LaTeX on the file you're editing, LyX performs these steps:
 \end_layout
 
 \begin_layout Enumerate
@@ -386,13 +387,12 @@ Run LaTeX on the
 \family typewriter
 .tex
 \family default
- file (maybe several times).
+ file (maybe several times), and run any other commands (such as bibtex
+ or makeindex) needed to compile the LaTeX file.
 \end_layout
 
 \begin_layout Enumerate
-If there are any errors, insert error boxes in the document to mark where
- they are.
- These boxes are transient and are not saved along with the document.
+If there are any errors, show the error log.
 \end_layout
 
 \begin_layout Standard
@@ -404,11 +404,7 @@ View
 
 DVI
 \family default
-, LyX then executes 
-\family typewriter
-xdvi
-\family default
- on the DVI-file.
+, LyX then runs a dvi viewer to display DVI-file.
  If you've used 
 \family sans
 View
@@ -417,14 +413,7 @@ View
 
 PostScript
 \family default
- or 
-\family sans
-\bar under
-P
-\bar default
-rint
-\family default
-, LyX performs two more steps:
+, LyX performs further steps:
 \end_layout
 
 \begin_layout Itemize
@@ -432,109 +421,19 @@ Run
 \family typewriter
 dvips
 \family default
- to convert the DVI file to PostScript:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-For 
-\family sans
-View
-\begin_inset space ~
-\end_inset
-
-PostScript
-\family default
-, the output file has the extension 
-\family typewriter
-.ps_tmp
+ to convert the DVI file to PostScript®.
 \end_layout
 
 \begin_layout Itemize
-For 
-\family sans
-\bar under
-P
-\bar default
-rint
-\family default
-
-\begin_inset space ~
-\end_inset
-
-, the output file has the extension 
-\family typewriter
-.ps
-\family default
-, as expected.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Execute 
+Run a Postscript viewer, such as 
 \family typewriter
 ghostview
 \family default
- or send the PostScript file to the printer.
-\end_layout
-
-\begin_layout Section
-\begin_inset Quotes eld
-\end_inset
-
-Help! LyX generated an unreadable 
-\family typewriter
-.tex
-\family default
- file!
-\begin_inset Quotes erd
-\end_inset
-
-
+, to display the PostScript® file.
 \end_layout
 
 \begin_layout Standard
-Die-hard LaTeX users will scream and howl this into the night, then declare
- LyX useless, simply because they didn't RTFM.
-\end_layout
-
-\begin_layout Standard
-We're going to set the record straight.
- LyX produces two kinds of LaTeX files.
- One is human readable.
- The other is LyX readable.
- Every time LyX executes LaTeX, it produces a LaTeX file that it can easily
- scan for errors.
- The resulting 
-\family typewriter
-.tex
-\family default
- file is not human readable.
- Don't even try to read it.
- If you want a 
-\family typewriter
-.tex
-\family default
- file that you can send to a colleague, select 
-\family sans
-\bar under
-E
-\bar default
-xport\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTeX
-\family default
- from the 
-\family sans
-\bar under
-F
-\bar default
-ile
-\family default
- menu.
+LyX does similar things when viewing, or exporting, other formats.
 \end_layout
 
 \begin_layout Section
@@ -572,7 +471,7 @@ foo.lyx
 \family typewriter
 foo.tex
 \family default
----and then open that file.
+---and then LyX will attempt to open that file.
 \end_layout
 
 \begin_layout Standard
@@ -581,83 +480,35 @@ foo.tex
 tex2lyx
 \family default
  will translate most legal LaTeX, but not everything.
- It will leave things it doesn't understand in TeX mode, so after translating
+ It will put things it doesn't understand into ERT, so after translating
  a file with 
 \family typewriter
 tex2lyx
 \family default
-, you can look for red text and hand-edit it to look right.
-\end_layout
-
-\begin_layout Standard
-If you just want to put a piece of TeX code into a LyX file, see section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Inserting-TeX-Code"
-
-\end_inset
-
-.
+, you can look for ERT and hand-edit it to look right.
 \end_layout
 
 \begin_layout Section
-Inserting TeX Code into LyX Documents 
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Inserting-TeX-Code"
 
 \end_inset
 
-
+Inserting TeX Code into LyX Documents 
 \end_layout
 
 \begin_layout Standard
 This is a rather important point: You can always insert TeX code into any
  LyX document.
- LyX simply cannot, and will probably never be able to, display every possible
- LaTeX construct.
+ LyX cannot, and will never be able to, display every possible LaTeX construct.
  If ever you need to insert LaTeX commands into your LyX document, you can
  use the TeX Code box, which you can insert into your document with 
 \family sans
 Insert\SpecialChar \menuseparator
-TeX
+TeX Code
 \family default
- Code.
- The TeX Code box comes in three forms: collapsed, open, and inlined.
- The first two are used just like any other collapsible (foldable) box (such
- as footnotes), and are useful for significant amounts of LaTeX commands.
- An 
-\begin_inset Quotes eld
-\end_inset
-
-inlined
-\begin_inset Quotes erd
-\end_inset
-
- TeX Code box displays its content as part of the button, and is useful
- for very short sections of LaTeX commands.
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-% like this
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-You can switch between all three by right-clicking on the TeX Code.
- Note that if you want more than one line of LaTeX commands, you cannot
- use the inlined mode.
+.
 \end_layout
 
 \begin_layout Standard
@@ -754,8 +605,7 @@ end{tabular}
 
 \begin_layout Standard
 The TeX Code box containing this text is directly after this paragraph.
- Those of you reading the manual online will only see a bunch of funky text
- in red.
+ Those of you reading the manual in LyX will only see the ERT inset.
  Those reading a printed version of the manuals will see the actual results:
 \end_layout
 
@@ -857,9 +707,8 @@ end{tabular}
 \end_layout
 
 \begin_layout Standard
-In addition to these two methods, you can also create a separate file containing
- some complex LaTeX structure.
- You can then use 
+In addition to using ERT, you can also create a separate file containing
+ some complex LaTeX structure and then use 
 \family sans
 Insert\SpecialChar \menuseparator
 Child
@@ -883,11 +732,11 @@ know
 \emph default
  works already.
  Otherwise, you'll have a big job tracking down LaTeX errors\SpecialChar \ldots{}
-
+.
 \end_layout
 
 \begin_layout Standard
-There are a few last notes to emphasize:
+There are a few last points to emphasize:
 \end_layout
 
 \begin_layout Itemize
@@ -909,43 +758,21 @@ Beware reinventing the wheel.
 \end_layout
 
 \begin_layout Standard
-That last note refers to two things.
- First, LyX does have quite a few features tucked into it, and more are
- coming.
+On that last point, LyX does have quite a few features tucked into it, and
+ more are coming.
  Be sure to check the manuals to make sure that LyX doesn't have such-and-such
- feature before you go off merrily coding LaTeX.
- Second, there are numerous LaTeX packages out there to do all sorts of
+ feature before you decide you have to do it by hand.
+ Moreover, there are numerous LaTeX packages out there to do all sorts of
  things, from labels to envelopes to fancy multipage tables.
- Check out a CTAN site for details (see Section 
-\begin_inset Quotes eld
-\end_inset
-
-Requirements
-\begin_inset Quotes erd
-\end_inset
-
- of the 
-\emph on
-User's Guide
-\emph default
-).
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Note from 
-\noun on
-John Weiss
-\noun default
-: I seem to do this an awful lot.
- Sat down and merrily began coding something to print out labels, only to
- learn that there were already 2 different LaTeX packages to do this.
- Worse yet --- I had them already!
-\end_layout
+ Check out 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://www.ctan.org/"
 
 \end_inset
 
-
+ for details.
 \end_layout
 
 \begin_layout Standard
@@ -956,12 +783,6 @@ If you do need to do some wild and fancy things within your document, be
 User's Guide
 \emph default
 .
-\end_layout
-
-\begin_layout Standard
-There are a number of LaTeX commands which have to be placed before the
- beginning of the actual text.
- They go into the preamble, and this is explained in the next section.
 \end_layout
 
 \begin_layout Section
@@ -975,7 +796,7 @@ About the LaTeX Preamble
 \begin_layout Standard
 If you already know LaTeX, there is no need to explain here what the preamble
  is good for.
- If you don't, the following will give you some ideas --- we recommend again
+ If you don't, the following will give you some ideas---we recommend again
  that you consult a LaTeX book for further information.
  In any case, you should read the points below, because they explain what
  you can do and what you don't need to do in the LaTeX preamble of a LyX
@@ -1029,8 +850,8 @@ set counters, variables, lengths and widths.
 must
 \emph default
  be set globally from within the preamble in order to have the desired effect.
- [There are other variables which you can set and reset inside the document,
- too.] Margins are a good example of something which must be set in the preamble.
+ (There are variables which you can set and reset inside the document, too.)
+ Margins are a good example of something which must be set in the preamble.
  Another example is the label format for lists.
  You can actually set these just about anywhere, but it's best to do it
  just once, inside the preamble.
@@ -1055,12 +876,9 @@ renewcommand
 \emph on
 can
 \emph default
- be declared anywhere else [but 
-\emph on
-before
-\emph default
- they are used for the first time, of course\SpecialChar \ldots{}
-].
+ be declared anywhere else (before they are used for the first time, of
+ course\SpecialChar \ldots{}
+).
  This can be useful if there is a lot of raw LaTeX code in your document,
  which normally should not be the case.
 \end_layout
@@ -1081,12 +899,7 @@ Changing the Preamble
 \begin_layout Standard
 The commands which LyX adds to the preamble of a LaTeX file are fixed; you
  can't change them without patching LyX itself.
- You can, however, add your own stuff to the preamble.
- There are two ways to do this:
-\end_layout
-
-\begin_layout Enumerate
-Select 
+ You can, however, add your own stuff to the preamble by selecting 
 \family sans
 \bar under
 L
@@ -1101,14 +914,7 @@ P
 \bar default
 reamble
 \family default
- from the 
-\family sans
-\bar under
-D
-\bar default
-ocument
-\family default
- menu, or via the 
+ in the 
 \family sans
 \bar under
 D
@@ -1123,33 +929,10 @@ S
 \bar default
 ettings
 \family default
- dialog, depending on your frontend.
- Note that the LyX keybindings will not work in this dialog, alas.
-\end_layout
-
-\begin_layout Enumerate
-Use the preamble contents you've added as your default template (see 
-\begin_inset Quotes eld
-\end_inset
-
-Basic LyX Setup
-\begin_inset Quotes erd
-\end_inset
-
- in the 
-\emph on
-User's Guide
-\emph default
-), so that it will be the default preamble for any file you create.
-\end_layout
-
-\begin_layout Standard
-LyX adds anything in the 
+ dialog.
+ LyX adds anything in the 
 \family sans
-\bar under
-P
-\bar default
-reamble
+Preamble
 \family default
  dialog to its own built-in preamble.
  Before adding your own declarations in the preamble, you should make sure
@@ -1222,19 +1005,7 @@ hoffset
 \backslash
 voffset
 \family default
- are both 0 pt.,
-\begin_inset space ~
-\end_inset
-
-i.
-\begin_inset space ~
-\end_inset
-
-e.
-\begin_inset space ~
-\end_inset
-
-the page isn't shifted.
+ are both 0 pt., i.e., the page isn't shifted.
 \end_layout
 
 \begin_layout Standard
@@ -1275,7 +1046,6 @@ voffset}{-0.5 in}
 \end_layout
 
 \begin_layout Standard
-\SpecialChar \ldots{}
 and your margins should now be correct.
 \end_layout
 
@@ -1286,7 +1056,7 @@ Example #2: Labels
 \begin_layout Standard
 Speaking of labels, suppose you wanted to print out a bunch of address labels.
  There's a rather nice package, available at your nearest CTAN archive,
- for printing sheets of labels, called 
+ for printing sheets of labels: 
 \family typewriter
 labels.sty
 \family default
@@ -1390,26 +1160,8 @@ every
  paragraph.
  As with all of their other weird quirks, most Americans will whine and
  moan until they can have their way and indent the first line of all paragraphs.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Note from 
-\noun on
-John Weiss
-\noun default
-: This was written by an American --- 
-\emph on
-me
-\emph default
-! It's my perception of my fellow countrymen.
- Tough if you don't like it.
- Thpbpbpbpbpbpbpbp!
-\end_layout
-
-\end_inset
-
-
+ (Yes, we're joking.
+ Aren't we?)
 \end_layout
 
 \begin_layout Standard
@@ -1449,15 +1201,6 @@ Example #4: This Document
 \begin_layout Standard
 You can also check out the preamble of this document to get an idea of some
  of the advanced things you can do.
- You'll probably need to make the 
-\family sans
-\bar under
-P
-\bar default
-reamble\SpecialChar \ldots{}
-
-\family default
- dialog full-screen to see most of it.
  Also, there are more examples and an assortment of LaTeX 
 \begin_inset Quotes eld
 \end_inset
@@ -1489,60 +1232,9 @@ LyX and LaTeX Errors
 When LyX calls LaTeX, it tells LaTeX to blithely ignore any errors and keep
  going.
  It then uses the log-file from the LaTeX run to do a post-mortem.
- As we stated earlier in the chapter, LyX generates two kinds of 
-\family typewriter
-.tex
-\family default
- files, one of which it uses to locate errors in the document.
- If there was an error someplace, LyX will put a box with the word 
-\begin_inset Quotes eld
-\end_inset
-
-Error
-\begin_inset Quotes erd
-\end_inset
-
- at the appropriate place in the document.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-LyX will occasionally misguess where the error was.
- This will typically happen with tables, figures, math, and the preamble.
-\end_layout
-
-\end_inset
-
- It will also display a message alerting you to the fact that there were
- errors.
-\end_layout
-
-\begin_layout Standard
-You can navigate through the errors by using 
-\family sans
-\bar under
-E
-\bar default
-rror
-\family default
- in the 
-\family sans
-\bar under
-N
-\bar default
-avigate
-\family default
- menu.
- You can 
-\begin_inset Quotes eld
-\end_inset
-
-open
-\begin_inset Quotes erd
-\end_inset
-
- the error-boxes and view the error message LaTeX produced by clicking on
- it.
+ LyX will then display a dialog listing the errors, and clicking on any
+ one of them will take you to the position in your LyX file where the error
+ occurred.
 \end_layout
 
 \begin_layout Standard
@@ -1798,7 +1490,7 @@ a
 \bar default
 TeX Configuration
 \family default
-, to get a list of packages that LyX knows about.
+ to get a list of packages that LyX knows about.
  This file is updated whenever you reconfigure LyX (using 
 \family sans
 \bar under
@@ -1825,8 +1517,8 @@ did
 \backslash
 usepackage{}
 \family default
- command, and the package in question isn't installed, you'll need to install
- it yourself.
+ command and the package in question isn't installed, then you'll need to
+ install it yourself.
 \end_layout
 
 \end_deeper
@@ -1875,6 +1567,7 @@ If you've inserted LaTeX code into your document, but made a typo, you'll
  You may have forgotten to load a package.
  In any case, this error message usually means that you used an undefined
  command.
+ 
 \end_layout
 
 \end_deeper
@@ -1899,7 +1592,7 @@ Look at the LaTeX code you inserted for typos.
 \end_layout
 
 \begin_layout Enumerate
-If there are no typos, check and see that you used the command(s) correctly.
+If there are no typos, check that you used the command(s) correctly.
 \end_layout
 
 \begin_layout Enumerate
@@ -1999,7 +1692,7 @@ If all this doesn't help --- well, then
 perhaps
 \emph default
  you might have found a bug in LyX\SpecialChar \ldots{}
-
+.
 \end_layout
 
 \begin_layout Chapter
@@ -2029,15 +1722,7 @@ Alternative Citation Styles
 \end_layout
 
 \begin_layout Standard
-Standard BibTeX uses numbers (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
+Standard BibTeX uses numbers (e.g., 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2047,15 +1732,7 @@ g.
 
 ) to refer to a cited work.
  However, in many scientific disciplines, other citation styles are in use.
- The most common one is the author-year style (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
+ The most common one is the author-year style (e.g., 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2152,7 +1829,7 @@ status collapsed
 \begin_layout Plain Layout
 See 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3683,17 +3360,17 @@ ftp://ftp.ams.org/pub/tex/amslatex/
 There are two basic AMS LaTeX layouts: 
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 amsart: The standard AMS article format.
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 amsbook: the standard AMS book (really, monograph) format.
  
 \end_layout
 
 \begin_layout Standard
-These layouts themselves contain only the minimum necessary to use the AMS
+The layouts themselves contain only the minimum necessary to use the AMS
  classes.
  They do not, in particular, contain any of the `theorem' environments used
  for setting theorems, lemmas, and the like.
@@ -3707,9 +3384,10 @@ Theorems (AMS)
 
 \end_inset
 
- module, which you will need to load separately when you selected one of
- the AMS classes.
- Less commonly used environments are in the 
+ module, which is loaded by default when when you select one of the AMS
+ classes.
+ (It can also be used with other classes and can be removed, if you would
+ rather use something else.) Less commonly used environments are in the 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -3719,8 +3397,7 @@ Theorems (AMS-Extended)
 
 \end_inset
 
- module.
- 
+ module, which must be loaded manually.
 \end_layout
 
 \begin_layout Standard
