@@ -22,7 +22,6 @@ Style Standard
 	LabelType             No_Label
 End
 
-Input stdcounters.inc
 Input stdtitle.inc
 Input stdstruct.inc
 Input lyxmacros.inc
@@ -31,6 +30,7 @@ Input stdfloats.inc
 Input stdsections.inc
 Input stdstarsections.inc
 Input stdlists.inc
+Input stdcounters.inc
 
 # There are no chapters in a paper.
 NoStyle                 Chapter
