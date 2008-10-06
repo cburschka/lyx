@@ -22,7 +22,7 @@
 #       numbered sections, as does the class file.
 
 
-Format 9
+Format 10
 Columns                 1
 Sides                   2
 PageStyle               headings
@@ -36,13 +36,11 @@ End
 TitleLatexType Environment
 TitleLatexName frontmatter
 
-Counter
-	Name                  summ
+Counter summ
 End
 
 
-Counter
-	Name                  case
+Counter case
 End
 
 
@@ -251,8 +249,7 @@ End
 # - Acknowledgement
 # - Case
 
-Counter
-	Name                  theorem
+Counter theorem
 End
 
 

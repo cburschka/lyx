@@ -5,15 +5,14 @@
 # $Header: /cvsroot/latex-beamer/latex-beamer/lyx/layouts/beamer.layout,v 1.16 2004/10/07 20:53:07 tantau Exp $
 
 # Includes
-Format 9
+Format 10
 Input stdcounters.inc
 Input stdinsets.inc
 
 # local counters
 
 # Is this needed? Could probably go -- MV 16/05/2007
-Counter
-  Name                 figure
+Counter figure
   Name                 lyxframeend{}\section
 End
 

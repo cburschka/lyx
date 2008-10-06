@@ -1,21 +1,19 @@
 # Author : André Pönitz
 # This include file contains label definitions for a report-like numbering.
 
-Format 9
+Format 10
 
 Style Part
 	TocLevel              -1
 End
 
-Counter
-	Name                  chapter
+Counter chapter
 	Within                ""
 	LabelString	      "\arabic{chapter}"
 	LabelStringAppendix   "\Alph{chapter}"
 End
 
-Counter
-	Name                  section
+Counter section
 	Within                chapter
 	LabelString	      ""
 End
@@ -37,13 +35,11 @@ Float
 	NumberWithin          chapter
 End
 
-Counter
-	Name                  listing
+Counter listing
 	Within		      chapter
 End
 
-Counter
-	Name                  footnote
+Counter footnote
 	Within		      chapter
 	LabelString	      "\arabic{footnote}"
 End

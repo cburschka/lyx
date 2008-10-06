@@ -9,7 +9,7 @@
 #
 # Version 1  2006-04-09  -  First version, for LyX 1.4.0.
 
-Format 9
+Format 10
 
 Input stdclass.inc
 Input numarticle.inc
@@ -126,8 +126,7 @@ Style Subsubsection
 	EndFont
 End
 
-Counter
-	Name                  definition
+Counter definition
 End
 Style Definition
 	LatexType             Environment
@@ -146,8 +145,7 @@ Style Definition
 	EndFont
 End
 
-Counter
-	Name                  step
+Counter step
 End
 Style Step
         CopyStyle             Definition
@@ -160,8 +158,7 @@ Style Step
 	EndFont
 End
 
-Counter
-	Name                  example
+Counter example
 End
 Style Example
         CopyStyle             Definition
@@ -170,8 +167,7 @@ Style Example
 	LabelString           "Example \theexample."
 End
 
-Counter
-	Name                  remark
+Counter remark
 End
 Style Remark
         CopyStyle             Definition
@@ -180,8 +176,7 @@ Style Remark
 	LabelString           "Remark \theremark."
 End
 
-Counter
-	Name                  notation
+Counter notation
 End
 Style Notation
         CopyStyle             Definition
@@ -190,8 +185,7 @@ Style Notation
 	LabelString           "Notation \thenotation."
 End
 
-Counter
-	Name                  theorem
+Counter theorem
 End
 Style Theorem
 	LatexType             Environment
@@ -230,8 +224,7 @@ Style Proof
 	EndLabelType          Box
 End
 
-Counter
-	Name                  corollary
+Counter corollary
 End
 Style Corollary
         CopyStyle             Theorem
@@ -240,8 +233,7 @@ Style Corollary
 	LabelString           "Corollary \thecorollary."
 End
 
-Counter
-	Name                  lemma
+Counter lemma
 End
 Style Lemma
         CopyStyle             Theorem
@@ -250,8 +242,7 @@ Style Lemma
 	LabelString           "Lemma \thelemma."
 End
 
-Counter
-	Name                  proposition
+Counter proposition
 End
 Style Proposition
         CopyStyle             Theorem
@@ -260,8 +251,7 @@ Style Proposition
 	LabelString           "Proposition \theproposition."
 End
 
-Counter
-	Name                  prop
+Counter prop
 End
 Style Prop
         CopyStyle             Definition
@@ -270,8 +260,7 @@ Style Prop
 	LabelString           "Prop \theprop."
 End
 
-Counter
-	Name                  question
+Counter question
 End
 Style Question
         CopyStyle             Definition
@@ -280,8 +269,7 @@ Style Question
 	LabelString           "Question \thequestion."
 End
 
-Counter
-	Name                  claim
+Counter claim
 End
 Style Claim
         CopyStyle             Theorem
@@ -290,8 +278,7 @@ Style Claim
 	LabelString           "Claim \theclaim."
 End
 
-Counter
-	Name                  conjecture
+Counter conjecture
 End
 Style Conjecture
         CopyStyle             Theorem
@@ -317,8 +304,7 @@ Style Appendices_Section
 	EndFont
 End
 
-Counter
-	Name                  appendix
+Counter appendix
 End
 Style Appendix
 	LatexType             Command

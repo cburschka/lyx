@@ -8,7 +8,7 @@
 ###
 # General textclass parameters
 ###
-Format 9
+Format 10
 Columns             1
 Sides               1
 Provides url        1
@@ -405,37 +405,29 @@ End
 ###
 # Counters definitions
 ###
-Counter
-  Name          enumi
+Counter enumi
 End
 
-Counter
-  Name          enumii
+Counter enumii
   Within        enumi
 End
 
-Counter
-  Name          enumiii
+Counter enumiii
   Within        enumii
 End
 
-Counter
-  Name          enumiv
+Counter enumiv
   Within        enumiii
 End
 
-Counter
-  Name          bibitem
+Counter bibitem
 End
 
-Counter
-  Name          figure
+Counter figure
 End
 
-Counter
-  Name          table
+Counter table
 End
 
-Counter
-  Name          algorithm
+Counter algorithm
 End

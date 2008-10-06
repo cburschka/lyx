@@ -12,7 +12,7 @@
 # Version 3  2006-04-09  -  Updated for LyX 1.4.0; all environments defined by
 #                           ijmpd are now supported by LyX.
 
-Format 9
+Format 10
 
 Input stdclass.inc
 Input numarticle.inc
@@ -122,8 +122,7 @@ Style Subsubsection
 	EndFont
 End
 
-Counter
-	Name                  definition
+Counter definition
 	Within                section
 End
 Style Definition
@@ -143,8 +142,7 @@ Style Definition
 	EndFont
 End
 
-Counter
-	Name                  step
+Counter step
 End
 Style Step
         CopyStyle             Definition
@@ -156,8 +154,7 @@ Style Step
 	EndFont
 End
 
-Counter
-	Name                  example
+Counter example
 	Within                section
 End
 Style Example
@@ -167,8 +164,7 @@ Style Example
 	LabelString           "Example \theexample."
 End
 
-Counter
-	Name                  remark
+Counter remark
 	Within                section
 End
 Style Remark
@@ -178,8 +174,7 @@ Style Remark
 	LabelString           "Remark \theremark."
 End
 
-Counter
-	Name                  notation
+Counter notation
 	Within                section
 End
 Style Notation
@@ -192,8 +187,7 @@ Style Notation
 	EndFont
 End
 
-Counter
-	Name                  theorem
+Counter theorem
 	Within                section
 End
 Style Theorem
@@ -230,8 +224,7 @@ Style Proof
 	EndLabelType          Box
 End
 
-Counter
-	Name                  corollary
+Counter corollary
 	Within                section
 End
 Style Corollary
@@ -244,8 +237,7 @@ Style Corollary
 	EndFont
 End
 
-Counter
-	Name                  lemma
+Counter lemma
 	Within                section
 End
 Style Lemma
@@ -255,8 +247,7 @@ Style Lemma
 	LabelString           "Lemma \thelemma."
 End
 
-Counter
-	Name                  proposition
+Counter proposition
 	Within                section
 End
 Style Proposition
@@ -266,8 +257,7 @@ Style Proposition
 	LabelString           "Proposition \theproposition."
 End
 
-Counter
-	Name                  prop
+Counter prop
 	Within                section
 End
 Style Prop
@@ -277,8 +267,7 @@ Style Prop
 	LabelString           "Prop \theprop."
 End
 
-Counter
-	Name                  question
+Counter question
 	Within                section
 End
 Style Question
@@ -288,8 +277,7 @@ Style Question
 	LabelString           "Question \thequestion."
 End
 
-Counter
-	Name                  claim
+Counter claim
 	Within                section
 End
 Style Claim
@@ -299,8 +287,7 @@ Style Claim
 	LabelString           "Claim \theclaim."
 End
 
-Counter
-	Name                  conjecture
+Counter conjecture
 	Within                section
 End
 Style Conjecture
@@ -327,8 +314,7 @@ Style Appendices_Section
 	EndFont
 End
 
-Counter
-	Name                  appendix
+Counter appendix
 	Within                section
 End
 Style Appendix

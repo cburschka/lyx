@@ -6,7 +6,7 @@
 # ftp://ftp.agu.org/journals/latex/journals
 
 
-Format 9
+Format 10
 Input stdclass.inc
 
 SecNumDepth             4
@@ -214,13 +214,11 @@ Style Table_Caption
 End
 
 
-Counter
-	Name                  plate
+Counter plate
 	Within                none
 End
 
 
-Counter
-	Name                  planotable
+Counter planotable
 	Within                none
 End

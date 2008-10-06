@@ -3,7 +3,7 @@
 
 # For theater plays
 
-Format 9
+Format 10
 Columns                 1
 Sides                   1
 SecNumDepth             2
@@ -20,13 +20,11 @@ Input stdfloats.inc
 Input stdcounters.inc
 # Input lyxmacros.inc
 
-Counter
-	Name                  act
+Counter act
 End
 
 
-Counter
-	Name                  scene
+Counter scene
 End
 
 
