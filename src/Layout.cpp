@@ -68,9 +68,6 @@ enum LayoutTags {
 	LT_LATEXPARAM,
 	LT_OPTARGS,
 	LT_LATEXTYPE,
-	LT_LATEXHEADER,
-	LT_LATEXFOOTER,
-	LT_LATEXPARAGRAPH,
 	LT_LEFTMARGIN,
 	LT_NEED_PROTECT,
 	LT_NEWLINE,
@@ -161,10 +158,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "labelstringappendix", LT_LABELSTRING_APPENDIX },
 		{ "labeltag",       LT_LABELTAG },
 		{ "labeltype",      LT_LABELTYPE },
-		{ "latexfooter",    LT_LATEXFOOTER },
-		{ "latexheader",    LT_LATEXHEADER },
 		{ "latexname",      LT_LATEXNAME },
-		{ "latexparagraph", LT_LATEXPARAGRAPH },
 		{ "latexparam",     LT_LATEXPARAM },
 		{ "latextype",      LT_LATEXTYPE },
 		{ "leftmargin",     LT_LEFTMARGIN },
@@ -267,18 +261,6 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 
 		case LT_LATEXTYPE:	// LaTeX style definition.
 			readLatexType(lex);
-			break;
-
-		case LT_LATEXHEADER:	// header for environments
-			lex >> latexheader;
-			break;
-
-		case LT_LATEXFOOTER:	// footer for environments
-			lex >> latexfooter;
-			break;
-
-		case LT_LATEXPARAGRAPH:
-			lex >> latexparagraph;
 			break;
 
 		case LT_INTITLE:

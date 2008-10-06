@@ -206,12 +206,6 @@ public:
 	int toclevel;
 	/// special value of toclevel for non-section layouts
 	static const int NOT_IN_TOC;
-	/// for new environment insets
-	std::string latexheader;
-	/// for new environment insets
-	std::string latexfooter;
-	/// for new environment insets
-	std::string latexparagraph;
 
 	/** true when the fragile commands in the paragraph need to be
 	    \protect'ed. */
