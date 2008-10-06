@@ -108,10 +108,10 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
-\author "Richard Heck" 
-\author "RGH" 
+\author "" 
+\author "" 
 \author "" 
 \end_header
 
@@ -3101,18 +3101,6 @@ DocStyle.lyx
 
 \begin_layout Itemize
 Check out the documentation translation web page at 
-\change_deleted 1 1223267367
-
-\begin_inset CommandInset href
-LatexCommand href
-name "http://www.devel.lyx.org"
-target "http://www.devel.lyx.org"
-
-\end_inset
-
-
-\change_inserted 1 1223267381
-
 \begin_inset CommandInset href
 LatexCommand href
 name "http://www.lyx.org/Translation"
@@ -3120,8 +3108,6 @@ target "http://www.lyx.org/Translation"
 
 \end_inset
 
-
-\change_unchanged
 .
  That way, you can find out which (if any) documents have already been translate
 d into your language.
@@ -4400,12 +4386,7 @@ sequence,
 \shape up
 \emph on
 result
-\family default
-\shape default
 \emph default
- 
-\family roman
-\shape up
  is produced.
  If such a declaration does not exist in
 \family default
@@ -4433,7 +4414,7 @@ u enter
  
 \family roman
 \emph on
-accent  char
+accent char
 \emph default
 , you get
 \family default
@@ -4441,20 +4422,14 @@ accent  char
 \family roman
 \emph on
 accent_key char
-\family default
 \emph default
- 
-\family roman
  where
 \family default
  
 \family roman
 \emph on
 accent_key
-\family default
 \emph default
- 
-\family roman
  is the first arg
 \family default
 ument of the 
@@ -5173,7 +5148,7 @@ xkeycaps
 
 \end_inset
 
-  to set up the special 
+ to set up the special 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -7304,11 +7279,7 @@ LeftMargin
 
 \end_inset
 
- 
-\change_deleted 1 1223264406
-[[FIXME]]
-\change_inserted 1 1223264424
-A string that indicates the width of the left margin on the screen, for
+ A string that indicates the width of the left margin on the screen, for
  example, 
 \begin_inset Quotes eld
 \end_inset
@@ -7318,8 +7289,6 @@ MMMMM
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -7362,15 +7331,9 @@ OutputType
 
 \end_inset
 
- 
-\change_deleted 1 1223264478
-[[FIXME]]
-\change_inserted 1 1223264538
-A string indicating what sort of output documents using this class will
+ A string indicating what sort of output documents using this class will
  produce.
  At present, the options are: `docbook', `latex', `linuxdoc', and `literate'.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -7671,11 +7634,7 @@ RightMargin
 
 \end_inset
 
- 
-\change_deleted 1 1223264443
-[[FIXME]]
-\change_inserted 1 1223264447
-A string that indicates the width of the right margin on the screen, for
+ A string that indicates the width of the right margin on the screen, for
  example, 
 \begin_inset Quotes eld
 \end_inset
@@ -7685,8 +7644,6 @@ MMMMM
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -7699,28 +7656,18 @@ SecNumDepth
 
 \end_inset
 
- 
-\change_deleted 1 1223264553
-[[FIXME]]
-\change_inserted 1 1223264811
-Sets which divisions get numbered.
+ Sets which divisions get numbered.
  Corresponds to the 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223264626
 secnumdepth
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
  counter in LaTeX.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -7984,28 +7931,18 @@ TocDepth
 
 \end_inset
 
- 
-\change_deleted 1 1223264639
-[[FIXME]]
-\change_inserted 1 1223264836
-Sets which divisions are included in the table of contents.
+ Sets which divisions are included in the table of contents.
  Corresponds to the 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223264831
 tocdepth
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
  counter in LaTeX.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -8119,11 +8056,7 @@ Header
 
 \end_inset
 
- 
-\change_deleted 1 1223264991
-[[FIXME]]
-\change_inserted 1 1223265053
-Used to set the DTD line with XML-based output classes.
+ Used to set the DTD line with XML-based output classes.
  E.g.: PUBLIC 
 \begin_inset Quotes eld
 \end_inset
@@ -8133,8 +8066,6 @@ Used to set the DTD line with XML-based output classes.
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -8419,14 +8350,8 @@ CommandDepth
 
 \end_inset
 
- 
-\change_deleted 1 1223265419
-[[FIXME]]
-\change_inserted 1 1223265432
-Depth of XML command.
+ Depth of XML command.
  Used only with XML-type formats.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -8904,11 +8829,7 @@ InnerTag
 
 \end_inset
 
- [[FIXME]]
-\change_inserted 1 1223265565
- (Used only with XML-type formats.)
-\change_unchanged
-
+ [[FIXME]] (Used only with XML-type formats.)
 \end_layout
 
 \begin_layout Description
@@ -9014,11 +8935,7 @@ ItemTag
 
 \end_inset
 
- [[FIXME]]
-\change_inserted 1 1223265576
- (Used only with XML-type formats.)
-\change_unchanged
-
+ [[FIXME]] (Used only with XML-type formats.)
 \end_layout
 
 \begin_layout Description
@@ -9184,29 +9101,19 @@ reference "sec:fonts"
 \end_inset
 
 .
-\change_inserted 1 1223265124
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted 1 1223265614
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223265133
 LabelIndent
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
  Text that indicates how far a label should be indented.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -9392,29 +9299,19 @@ LabelStringAppendix
 \end_inset
 
  too.
-\change_inserted 1 1223265160
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted 1 1223265640
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223265166
 LabelTag
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
  [FIXME] (Used only with XML-type formats.)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -9625,36 +9522,6 @@ reference "sec:counter"
 \end_layout
 
 \begin_layout Description
-
-\change_deleted 1 1223265792
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-LatexFooter
-\end_layout
-
-\end_inset
-
- [[FIXME]]
-\end_layout
-
-\begin_layout Description
-
-\change_deleted 1 1223265792
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-LatexHeader
-\end_layout
-
-\end_inset
-
- [[FIXME]]
-\end_layout
-
-\begin_layout Description
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -9666,21 +9533,6 @@ LatexName
 
  The name of the corresponding LaTeX stuff.
  Either the environment or command name.
-\end_layout
-
-\begin_layout Description
-
-\change_deleted 1 1223265962
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-LatexParagraph
-\end_layout
-
-\end_inset
-
- [[FIXME]]
 \end_layout
 
 \begin_layout Description
@@ -10389,14 +10241,8 @@ ObsoletedBy
 
 \end_inset
 
- 
-\change_deleted 1 1223265997
-[[FIXME]]
-\change_inserted 1 1223266000
-Name of a layout that has replaced this layout.
+ Name of a layout that has replaced this layout.
  This is used to rename a layout, while keeping backward compatibility.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -10607,16 +10453,12 @@ PassThru
 \end_inset
 
  
-\change_inserted 1 1223264275
-
 \begin_inset CommandInset label
 LatexCommand label
 name "des:PathThru"
 
 \end_inset
 
-
-\change_unchanged
 [
 \emph on
 
@@ -10899,11 +10741,6 @@ reference "sec:fonts"
 \end_layout
 
 \begin_layout Description
-
-\change_deleted 1 1223265258
-Need
-\change_unchanged
-
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -11506,8 +11343,8 @@ LyX has supported character styles since version 1.4.0; since version 1.6.0
 \begin_layout Standard
 Furthermore, it is possible to define the general layout of many different
  types of insets.
- Currently, InsetLayout can be used to customize the  layout parameters
- for footnotes, marginal notes, note insets, ERT insets, branches, listings,
+ Currently, InsetLayout can be used to customize the layout parameters for
+ footnotes, marginal notes, note insets, ERT insets, branches, listings,
  indexes, boxes, tables, algorithms, URLs, and optional arguments, as well
  as Flex insets.
  
@@ -11925,19 +11762,13 @@ reference "des:CopyStyle"
 \end_inset
 
 ).
-\change_inserted 1 1223263809
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted 1 1223263872
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223263814
 CustomPars
 \end_layout
 
@@ -11948,8 +11779,6 @@ CustomPars
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223263839
 
 \emph on
 0
@@ -11962,8 +11791,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223263839
 1
 \end_layout
 
@@ -11971,8 +11798,6 @@ status collapsed
 
 ] Indicates whether the user may employ the Paragraph Settings dialog to
  customize the paragraph.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -12047,29 +11872,19 @@ Conglomerate
 \end_inset
 
 .
-\change_inserted 1 1223264047
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted 1 1223264091
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223264053
 End
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
  Required at the end of the InsetLayout declarations.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -12133,22 +11948,14 @@ ForceLTR
 \end_inset
 
  [[FIXME]]
-\change_inserted 1 1223263904
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted 1 1223263954
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223263911
 ForcePlain
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -12158,8 +11965,6 @@ ForcePlain
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223263915
 
 \emph on
 0
@@ -12172,8 +11977,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223263915
 1
 \end_layout
 
@@ -12181,8 +11984,6 @@ status collapsed
 
 ] Indicates whether the PlainLayout should be used or, instead, the user
  can change the paragraph style used in the inset.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -12226,22 +12027,6 @@ reference "des:KeepEmpty"
 \end_layout
 
 \begin_layout Description
-
-\change_deleted 1 1223264111
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-LabelString
-\end_layout
-
-\end_inset
-
- What will be displayed on the button or elsewhere as the inset label.
- Some inset types (ERT and Branch) modify this label on the fly.
-\end_layout
-
-\begin_layout Description
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -12278,14 +12063,10 @@ Font
 \end_layout
 
 \begin_layout Description
-
-\change_inserted 1 1223264113
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223264113
 LabelString
 \end_layout
 
@@ -12415,22 +12196,14 @@ end
 
  (indicating a dummy definition ending definitions of charstyles etc.).
  This entry is only meaningful for Flex (user definable) insets.
-\change_inserted 1 1223264124
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted 1 1223264224
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223264131
 MultiPar
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -12440,8 +12213,6 @@ MultiPar
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223264137
 
 \emph on
 0
@@ -12454,8 +12225,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223264137
 1
 \end_layout
 
@@ -12469,8 +12238,6 @@ status collapsed
 after
 \emph default
  MultiPar.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -12523,22 +12290,14 @@ protect
 not
 \emph default
  whether this command should itself be protected.)
-\change_inserted 1 1223264245
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted 1 1223264288
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223264250
 PassThru
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -12548,8 +12307,6 @@ PassThru
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223264254
 
 \emph on
 0
@@ -12562,8 +12319,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1223264254
 1
 \end_layout
 
@@ -12577,8 +12332,6 @@ reference "des:PathThru"
 \end_inset
 
 ).
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -12684,21 +12437,15 @@ Input stdcounters.inc
 
 \begin_layout Standard
 to your layout file to get them to work.
- But if you want to define custom counters, then you can do so
-\change_inserted 0 1223303986
-.
+ But if you want to define custom counters, then you can do so.
  The counter declaration must begin with:
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted 0 1223304011
 Counter name
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1223304074
 where of course `name' is replaced by the name of the counter.
  And it must end with 
 \begin_inset Quotes eld
@@ -12709,11 +12456,7 @@ where of course `name' is replaced by the name of the counter.
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 0 1223304038
 End
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -12723,15 +12466,7 @@ End
 \end_inset
 
 .
- The following 
-\change_deleted 0 1223304075
-, using the following 
-\change_unchanged
-parameters
-\change_inserted 0 1223304083
- can also be used
-\change_unchanged
-:
+ The following parameters can also be used:
 \end_layout
 
 \begin_layout Description
@@ -13018,44 +12753,7 @@ LabelString
 
 \end_inset
 
-
-\change_inserted 0 1223304142
-, but for use in the Appendix
-\change_unchanged
-.
-\end_layout
-
-\begin_layout Description
-
-\change_deleted 0 1223303919
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Name
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-string
-\end_layout
-
-\end_inset
-
-=
-\begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-] The name of the counter.
+, but for use in the Appendix.
 \end_layout
 
 \begin_layout Description
@@ -13823,6 +13521,30 @@ e as Document Defaults
 
 \begin_layout Chapter
 Including External Material
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+WARNING: This portion of the documentation has not been updated for some
+ time.
+ We certainly hope that it is still accurate, but there are no guarantees.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -15515,15 +15237,28 @@ Security discussion
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status collapsed
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
 
 \begin_layout Plain Layout
-This section is outdated
+WARNING: This section is definitely outdated.
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 The external material feature interfaces with a lot of external programs
  and does so automatically, so we have to consider the security implications
  of this.
@@ -15664,20 +15399,32 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-The LyX server is a method implemented in LyX that will enable other programs
- to talk to LyX, invoke LyX commands, and retrieve information about the
- LyX internal state.
+The `LyX server' allows other programs to talk to LyX, invoke LyX commands,
+ and retrieve information about the LyX internal state.
  This is only intended for advanced users, but they should find it useful.
- Please note that, at present, 
+ It is by writing to the LyX server, for example, that bibliography managers,
+ such as JabRef, are able to 
+\begin_inset Quotes eld
+\end_inset
+
+push
+\begin_inset Quotes erd
+\end_inset
+
+ citations to LyX.
+\end_layout
+
+\begin_layout Standard
+Please note that, at present, 
 \emph on
 the server does not work on Windows
 \emph default
-.
+®.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-There is no principled reason it cannot do so.
+There is no reason it cannot do so.
  But none of the developers on Windows® have yet implemented this functionality
  there.
 \end_layout
@@ -15712,7 +15459,7 @@ UserDir
 status collapsed
 
 \begin_layout Plain Layout
-.lyxpipe.in
+lyxpipe.in
 \end_layout
 
 \end_inset
@@ -15730,7 +15477,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-.lyxpipe.out
+lyxpipe.out
 \end_layout
 
 \end_inset
@@ -15785,12 +15532,17 @@ references
 status collapsed
 
 \begin_layout Plain Layout
-"/home/myhome/.lyxpipe"
+"/home/myhome/lyxpipe"
 \end_layout
 
 \end_inset
 
 .
+ You 
+\emph on
+must
+\emph default
+ configure this manually in order for the server to start.
 \end_layout
 
 \begin_layout Standard
@@ -15815,23 +15567,52 @@ status collapsed
 \end_inset
 
 ' to create the pipes.
- The above setting also has the effect of activating the LyX server.
  If one of the pipes already exists, LyX will assume that another LyX process
  is already running and will not start the server.
- To have several LyX processes with servers at the same time, you have to
- change the configuration between the start of the programs.
+ This means that if LyX crashes, or if for some other reason, a 
+\begin_inset Quotes eld
+\end_inset
+
+stale
+\begin_inset Quotes erd
+\end_inset
+
+ pipe is left in existence when LyX closes, then LyX will not start the
+ server.
+ (This is bug 641.) You will need to delete the pipes manually and then restart
+ LyX.
+\end_layout
+
+\begin_layout Standard
+To have several LyX processes with servers at the same time, you have to
+ use different configurations, perhaps by using separate user directories,
+ each with its own 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+preferences
+\end_layout
+
+\end_inset
+
+ file, for each process.
 \end_layout
 
 \begin_layout Standard
 If you are developing a client program, you might find it useful to enable
  debugging information from the LyX server.
- Do this by starting LyX as lyx -dbg lyxserver.
+ Do this by starting LyX as 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyx -dbg lyxserver
 \end_layout
 
-\begin_layout Standard
-Warning: if LyX crashes, it may not manage to remove the pipes; in this
- case you must remove them manually.
- If LyX starts and the pipes exist already, it will not start any server.
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -15849,7 +15630,7 @@ On OS/2, only one client can connect to LyXServer at a time.
 \end_layout
 
 \begin_layout Itemize
-On OS/2, clients must open inpipe with 
+On OS/2, clients must open the input pipe with 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -15859,11 +15640,7 @@ O_WRONLY
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-mode.
+ mode.
 \end_layout
 
 \begin_layout Standard
@@ -15906,31 +15683,19 @@ argument
 \end_layout
 
 \begin_layout Description
-
-\emph on
-clientname
-\emph default
- is a name that the client can choose arbitrarily.
+clientname is a name that the client can choose arbitrarily.
  Its only use is that LyX will echo it if it sends an answer---so a client
  can dispatch results from different requesters.
 \end_layout
 
 \begin_layout Description
-
-\emph on
-function
-\emph default
- is the function you want LyX to perform.
+function is the function you want LyX to perform.
  It is the same as the commands you'd use in the minibuffer.
 \end_layout
 
 \begin_layout Description
-
-\emph on
-argument
-\emph default
- is an optional argument which is meaningful only to some functions (for
- instance 
+argument is an optional argument which is meaningful only to some functions
+ (for instance, the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -15938,7 +15703,7 @@ self-insert
 \begin_inset Quotes erd
 \end_inset
 
- which will insert the argument as text at the cursor position.)
+ LFUN will insert the argument as text at the cursor position).
 \end_layout
 
 \begin_layout Standard
@@ -15974,8 +15739,7 @@ data
 \emph default
  is more or less useful information filled according to how the command
  execution worked out.
- Some commands will return information about the internal state of LyX,
- such as 
+ Some commands, such as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -15983,7 +15747,8 @@ font-state
 \begin_inset Quotes erd
 \end_inset
 
-, while other will return an empty data-response.
+, will return information about the internal state of LyX, while other will
+ return an empty data-response.
  This means that the command execution went fine.
 \end_layout
 
@@ -16077,8 +15842,8 @@ key-sequence
 \end_layout
 
 \begin_layout Standard
-This mechanism can be used to extend LyX's command set and implement macros:
- bind some key sequence to 
+This mechanism can be used to extend LyX's command set and implement macros.
+ Bind some key sequence to 
 \begin_inset Quotes eld
 \end_inset
 
@@ -16086,9 +15851,10 @@ notify
 \begin_inset Quotes erd
 \end_inset
 
-, start a client that listens on the out pipe, dispatches the command according
- to the sequence and starts a function that may use LyX calls and LyX requests
- to issue a command or a series of commands to LyX.
+.
+ Then start a client that listens on the output pipe, dispatches the command
+ according to the sequence, and starts a function that may use LyX calls
+ and LyX requests to issue a command or a series of commands to LyX.
 \end_layout
 
 \begin_layout Section
