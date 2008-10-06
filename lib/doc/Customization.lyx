@@ -1,5 +1,5 @@
-#LyX 1.6.0rc3 created this file. For more info see http://www.lyx.org/
-\lyxformat 340
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass scrbook
@@ -108,9 +108,9 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
-\author "" 
+\author "RGH" 
 \author "" 
 \end_header
 
@@ -7289,7 +7289,22 @@ LeftMargin
 
 \end_inset
 
- [[FIXME]]
+ 
+\change_deleted 0 1223264406
+[[FIXME]]
+\change_inserted 0 1223264424
+A string that indicates the width of the left margin on the screen, for
+ example, 
+\begin_inset Quotes eld
+\end_inset
+
+MMMMM
+\begin_inset Quotes erd
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -7332,7 +7347,15 @@ OutputType
 
 \end_inset
 
- [[FIXME]]
+ 
+\change_deleted 0 1223264478
+[[FIXME]]
+\change_inserted 0 1223264538
+A string indicating what sort of output documents using this class will
+ produce.
+ At present, the options are: `docbook', `latex', `linuxdoc', and `literate'.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -7633,7 +7656,22 @@ RightMargin
 
 \end_inset
 
- [[FIXME]]
+ 
+\change_deleted 0 1223264443
+[[FIXME]]
+\change_inserted 0 1223264447
+A string that indicates the width of the right margin on the screen, for
+ example, 
+\begin_inset Quotes eld
+\end_inset
+
+MMMMM
+\begin_inset Quotes erd
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -7646,7 +7684,28 @@ SecNumDepth
 
 \end_inset
 
- [[FIXME]]
+ 
+\change_deleted 0 1223264553
+[[FIXME]]
+\change_inserted 0 1223264811
+Sets which divisions get numbered.
+ Corresponds to the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223264626
+secnumdepth
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ counter in LaTeX.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -7910,7 +7969,28 @@ TocDepth
 
 \end_inset
 
- [[FIXME]]
+ 
+\change_deleted 0 1223264639
+[[FIXME]]
+\change_inserted 0 1223264836
+Sets which divisions are included in the table of contents.
+ Corresponds to the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223264831
+tocdepth
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ counter in LaTeX.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -8024,7 +8104,22 @@ Header
 
 \end_inset
 
- [[FIXME]]
+ 
+\change_deleted 0 1223264991
+[[FIXME]]
+\change_inserted 0 1223265053
+Used to set the DTD line with XML-based output classes.
+ E.g.: PUBLIC 
+\begin_inset Quotes eld
+\end_inset
+
+-//OASIS//DTD DocBook V4.2//EN
+\begin_inset Quotes erd
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -8309,7 +8404,14 @@ CommandDepth
 
 \end_inset
 
- [[FIXME]]
+ 
+\change_deleted 0 1223265419
+[[FIXME]]
+\change_inserted 0 1223265432
+Depth of XML command.
+ Used only with XML-type formats.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -8788,6 +8890,10 @@ InnerTag
 \end_inset
 
  [[FIXME]]
+\change_inserted 0 1223265565
+ (Used only with XML-type formats.)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -8894,6 +9000,10 @@ ItemTag
 \end_inset
 
  [[FIXME]]
+\change_inserted 0 1223265576
+ (Used only with XML-type formats.)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -9059,6 +9169,29 @@ reference "sec:fonts"
 \end_inset
 
 .
+\change_inserted 0 1223265124
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 0 1223265614
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223265133
+LabelIndent
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ Text that indicates how far a label should be indented.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -9244,6 +9377,29 @@ LabelStringAppendix
 \end_inset
 
  too.
+\change_inserted 0 1223265160
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 0 1223265640
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223265166
+LabelTag
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ [FIXME] (Used only with XML-type formats.)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -9454,6 +9610,8 @@ reference "sec:counter"
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 0 1223265792
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -9467,6 +9625,8 @@ LatexFooter
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 0 1223265792
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -9494,6 +9654,8 @@ LatexName
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 0 1223265962
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -10212,7 +10374,14 @@ ObsoletedBy
 
 \end_inset
 
- [[FIXME]]
+ 
+\change_deleted 0 1223265997
+[[FIXME]]
+\change_inserted 0 1223266000
+Name of a layout that has replaced this layout.
+ This is used to rename a layout, while keeping backward compatibility.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -10422,7 +10591,18 @@ PassThru
 
 \end_inset
 
- [
+ 
+\change_inserted 0 1223264275
+
+\begin_inset CommandInset label
+LatexCommand label
+name "des:PathThru"
+
+\end_inset
+
+
+\change_unchanged
+[
 \emph on
 
 \begin_inset Flex CharStyle:Code
@@ -10704,7 +10884,11 @@ reference "sec:fonts"
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 0 1223265258
 Need
+\change_unchanged
+
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -11726,6 +11910,54 @@ reference "des:CopyStyle"
 \end_inset
 
 ).
+\change_inserted 0 1223263809
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 0 1223263872
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223263814
+CustomPars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223263839
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223263839
+1
+\end_layout
+
+\end_inset
+
+] Indicates whether the user may employ the Paragraph Settings dialog to
+ customize the paragraph.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -11800,6 +12032,29 @@ Conglomerate
 \end_inset
 
 .
+\change_inserted 0 1223264047
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 0 1223264091
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223264053
+End
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ Required at the end of the InsetLayout declarations.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -11854,7 +12109,7 @@ LabelFont
 
 \begin_layout Description
 \begin_inset Flex CharStyle:Code
-status collapsed
+status open
 
 \begin_layout Plain Layout
 ForceLTR
@@ -11863,6 +12118,56 @@ ForceLTR
 \end_inset
 
  [[FIXME]]
+\change_inserted 0 1223263904
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 0 1223263954
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223263911
+ForcePlain
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223263915
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223263915
+1
+\end_layout
+
+\end_inset
+
+] Indicates whether the PlainLayout should be used or, instead, the user
+ can change the paragraph style used in the inset.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -11906,6 +12211,8 @@ reference "des:KeepEmpty"
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 0 1223264111
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -11953,6 +12260,24 @@ Font
 \end_inset
 
 , lest it be ineffective.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 0 1223264113
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223264113
+LabelString
+\end_layout
+
+\end_inset
+
+ What will be displayed on the button or elsewhere as the inset label.
+ Some inset types (ERT and Branch) modify this label on the fly.
 \end_layout
 
 \begin_layout Description
@@ -12075,6 +12400,62 @@ end
 
  (indicating a dummy definition ending definitions of charstyles etc.).
  This entry is only meaningful for Flex (user definable) insets.
+\change_inserted 0 1223264124
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 0 1223264224
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223264131
+MultiPar
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223264137
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223264137
+1
+\end_layout
+
+\end_inset
+
+] Whether multiple paragraphs are permitted in this inset.
+ This will also set CustomPars to the same value and ForcePlain to the opposite
+ value.
+ These can be reset to other values, if they are used 
+\emph on
+after
+\emph default
+ MultiPar.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -12127,6 +12508,62 @@ protect
 not
 \emph default
  whether this command should itself be protected.)
+\change_inserted 0 1223264245
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 0 1223264288
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223264250
+PassThru
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223264254
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223264254
+1
+\end_layout
+
+\end_inset
+
+] As with paragraph styles (see page 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "des:PathThru"
+
+\end_inset
+
+).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
