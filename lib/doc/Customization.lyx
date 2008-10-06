@@ -110,6 +110,7 @@ End
 \paperpagestyle headings
 \tracking_changes true
 \output_changes false
+\author "Richard Heck" 
 \author "RGH" 
 \author "" 
 \end_header
@@ -3100,7 +3101,7 @@ DocStyle.lyx
 
 \begin_layout Itemize
 Check out the documentation translation web page at 
-\change_deleted 0 1223267367
+\change_deleted 1 1223267367
 
 \begin_inset CommandInset href
 LatexCommand href
@@ -3110,7 +3111,7 @@ target "http://www.devel.lyx.org"
 \end_inset
 
 
-\change_inserted 0 1223267381
+\change_inserted 1 1223267381
 
 \begin_inset CommandInset href
 LatexCommand href
@@ -7304,9 +7305,9 @@ LeftMargin
 \end_inset
 
  
-\change_deleted 0 1223264406
+\change_deleted 1 1223264406
 [[FIXME]]
-\change_inserted 0 1223264424
+\change_inserted 1 1223264424
 A string that indicates the width of the left margin on the screen, for
  example, 
 \begin_inset Quotes eld
@@ -7362,9 +7363,9 @@ OutputType
 \end_inset
 
  
-\change_deleted 0 1223264478
+\change_deleted 1 1223264478
 [[FIXME]]
-\change_inserted 0 1223264538
+\change_inserted 1 1223264538
 A string indicating what sort of output documents using this class will
  produce.
  At present, the options are: `docbook', `latex', `linuxdoc', and `literate'.
@@ -7671,9 +7672,9 @@ RightMargin
 \end_inset
 
  
-\change_deleted 0 1223264443
+\change_deleted 1 1223264443
 [[FIXME]]
-\change_inserted 0 1223264447
+\change_inserted 1 1223264447
 A string that indicates the width of the right margin on the screen, for
  example, 
 \begin_inset Quotes eld
@@ -7699,9 +7700,9 @@ SecNumDepth
 \end_inset
 
  
-\change_deleted 0 1223264553
+\change_deleted 1 1223264553
 [[FIXME]]
-\change_inserted 0 1223264811
+\change_inserted 1 1223264811
 Sets which divisions get numbered.
  Corresponds to the 
 \begin_inset Flex CharStyle:Code
@@ -7709,7 +7710,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223264626
+\change_inserted 1 1223264626
 secnumdepth
 \change_unchanged
 
@@ -7984,9 +7985,9 @@ TocDepth
 \end_inset
 
  
-\change_deleted 0 1223264639
+\change_deleted 1 1223264639
 [[FIXME]]
-\change_inserted 0 1223264836
+\change_inserted 1 1223264836
 Sets which divisions are included in the table of contents.
  Corresponds to the 
 \begin_inset Flex CharStyle:Code
@@ -7994,7 +7995,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223264831
+\change_inserted 1 1223264831
 tocdepth
 \change_unchanged
 
@@ -8119,9 +8120,9 @@ Header
 \end_inset
 
  
-\change_deleted 0 1223264991
+\change_deleted 1 1223264991
 [[FIXME]]
-\change_inserted 0 1223265053
+\change_inserted 1 1223265053
 Used to set the DTD line with XML-based output classes.
  E.g.: PUBLIC 
 \begin_inset Quotes eld
@@ -8419,9 +8420,9 @@ CommandDepth
 \end_inset
 
  
-\change_deleted 0 1223265419
+\change_deleted 1 1223265419
 [[FIXME]]
-\change_inserted 0 1223265432
+\change_inserted 1 1223265432
 Depth of XML command.
  Used only with XML-type formats.
 \change_unchanged
@@ -8904,7 +8905,7 @@ InnerTag
 \end_inset
 
  [[FIXME]]
-\change_inserted 0 1223265565
+\change_inserted 1 1223265565
  (Used only with XML-type formats.)
 \change_unchanged
 
@@ -9014,7 +9015,7 @@ ItemTag
 \end_inset
 
  [[FIXME]]
-\change_inserted 0 1223265576
+\change_inserted 1 1223265576
  (Used only with XML-type formats.)
 \change_unchanged
 
@@ -9183,19 +9184,19 @@ reference "sec:fonts"
 \end_inset
 
 .
-\change_inserted 0 1223265124
+\change_inserted 1 1223265124
 
 \end_layout
 
 \begin_layout Description
 
-\change_inserted 0 1223265614
+\change_inserted 1 1223265614
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223265133
+\change_inserted 1 1223265133
 LabelIndent
 \change_unchanged
 
@@ -9391,19 +9392,19 @@ LabelStringAppendix
 \end_inset
 
  too.
-\change_inserted 0 1223265160
+\change_inserted 1 1223265160
 
 \end_layout
 
 \begin_layout Description
 
-\change_inserted 0 1223265640
+\change_inserted 1 1223265640
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223265166
+\change_inserted 1 1223265166
 LabelTag
 \change_unchanged
 
@@ -9625,7 +9626,7 @@ reference "sec:counter"
 
 \begin_layout Description
 
-\change_deleted 0 1223265792
+\change_deleted 1 1223265792
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -9640,7 +9641,7 @@ LatexFooter
 
 \begin_layout Description
 
-\change_deleted 0 1223265792
+\change_deleted 1 1223265792
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -9669,7 +9670,7 @@ LatexName
 
 \begin_layout Description
 
-\change_deleted 0 1223265962
+\change_deleted 1 1223265962
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -10389,9 +10390,9 @@ ObsoletedBy
 \end_inset
 
  
-\change_deleted 0 1223265997
+\change_deleted 1 1223265997
 [[FIXME]]
-\change_inserted 0 1223266000
+\change_inserted 1 1223266000
 Name of a layout that has replaced this layout.
  This is used to rename a layout, while keeping backward compatibility.
 \change_unchanged
@@ -10606,7 +10607,7 @@ PassThru
 \end_inset
 
  
-\change_inserted 0 1223264275
+\change_inserted 1 1223264275
 
 \begin_inset CommandInset label
 LatexCommand label
@@ -10899,7 +10900,7 @@ reference "sec:fonts"
 
 \begin_layout Description
 
-\change_deleted 0 1223265258
+\change_deleted 1 1223265258
 Need
 \change_unchanged
 
@@ -11924,19 +11925,19 @@ reference "des:CopyStyle"
 \end_inset
 
 ).
-\change_inserted 0 1223263809
+\change_inserted 1 1223263809
 
 \end_layout
 
 \begin_layout Description
 
-\change_inserted 0 1223263872
+\change_inserted 1 1223263872
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223263814
+\change_inserted 1 1223263814
 CustomPars
 \end_layout
 
@@ -11948,7 +11949,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223263839
+\change_inserted 1 1223263839
 
 \emph on
 0
@@ -11962,7 +11963,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223263839
+\change_inserted 1 1223263839
 1
 \end_layout
 
@@ -12046,19 +12047,19 @@ Conglomerate
 \end_inset
 
 .
-\change_inserted 0 1223264047
+\change_inserted 1 1223264047
 
 \end_layout
 
 \begin_layout Description
 
-\change_inserted 0 1223264091
+\change_inserted 1 1223264091
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223264053
+\change_inserted 1 1223264053
 End
 \change_unchanged
 
@@ -12132,19 +12133,19 @@ ForceLTR
 \end_inset
 
  [[FIXME]]
-\change_inserted 0 1223263904
+\change_inserted 1 1223263904
 
 \end_layout
 
 \begin_layout Description
 
-\change_inserted 0 1223263954
+\change_inserted 1 1223263954
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223263911
+\change_inserted 1 1223263911
 ForcePlain
 \change_unchanged
 
@@ -12158,7 +12159,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223263915
+\change_inserted 1 1223263915
 
 \emph on
 0
@@ -12172,7 +12173,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223263915
+\change_inserted 1 1223263915
 1
 \end_layout
 
@@ -12226,7 +12227,7 @@ reference "des:KeepEmpty"
 
 \begin_layout Description
 
-\change_deleted 0 1223264111
+\change_deleted 1 1223264111
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -12278,13 +12279,13 @@ Font
 
 \begin_layout Description
 
-\change_inserted 0 1223264113
+\change_inserted 1 1223264113
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223264113
+\change_inserted 1 1223264113
 LabelString
 \end_layout
 
@@ -12414,19 +12415,19 @@ end
 
  (indicating a dummy definition ending definitions of charstyles etc.).
  This entry is only meaningful for Flex (user definable) insets.
-\change_inserted 0 1223264124
+\change_inserted 1 1223264124
 
 \end_layout
 
 \begin_layout Description
 
-\change_inserted 0 1223264224
+\change_inserted 1 1223264224
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223264131
+\change_inserted 1 1223264131
 MultiPar
 \change_unchanged
 
@@ -12440,7 +12441,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223264137
+\change_inserted 1 1223264137
 
 \emph on
 0
@@ -12454,7 +12455,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223264137
+\change_inserted 1 1223264137
 1
 \end_layout
 
@@ -12522,19 +12523,19 @@ protect
 not
 \emph default
  whether this command should itself be protected.)
-\change_inserted 0 1223264245
+\change_inserted 1 1223264245
 
 \end_layout
 
 \begin_layout Description
 
-\change_inserted 0 1223264288
+\change_inserted 1 1223264288
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223264250
+\change_inserted 1 1223264250
 PassThru
 \change_unchanged
 
@@ -12548,7 +12549,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223264254
+\change_inserted 1 1223264254
 
 \emph on
 0
@@ -12562,7 +12563,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1223264254
+\change_inserted 1 1223264254
 1
 \end_layout
 
@@ -12683,8 +12684,54 @@ Input stdcounters.inc
 
 \begin_layout Standard
 to your layout file to get them to work.
- But if you want to define custom counters, then you can do so, using the
- following parameters:
+ But if you want to define custom counters, then you can do so
+\change_inserted 0 1223303986
+.
+ The counter declaration must begin with:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 0 1223304011
+Counter name
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 0 1223304074
+where of course `name' is replaced by the name of the counter.
+ And it must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1223304038
+End
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The following 
+\change_deleted 0 1223304075
+, using the following 
+\change_unchanged
+parameters
+\change_inserted 0 1223304083
+ can also be used
+\change_unchanged
+:
 \end_layout
 
 \begin_layout Description
@@ -12971,10 +13018,16 @@ LabelString
 
 \end_inset
 
+
+\change_inserted 0 1223304142
+, but for use in the Appendix
+\change_unchanged
 .
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 0 1223303919
 \begin_inset Flex CharStyle:Code
 status collapsed
 
