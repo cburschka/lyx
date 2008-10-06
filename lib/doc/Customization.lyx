@@ -2630,7 +2630,7 @@ po
 -file for that language.
  When this is available, you'll have to generate a 
 \begin_inset Flex CharStyle:Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 mo
@@ -3100,6 +3100,8 @@ DocStyle.lyx
 
 \begin_layout Itemize
 Check out the documentation translation web page at 
+\change_deleted 0 1223267367
+
 \begin_inset CommandInset href
 LatexCommand href
 name "http://www.devel.lyx.org"
@@ -3107,6 +3109,18 @@ target "http://www.devel.lyx.org"
 
 \end_inset
 
+
+\change_inserted 0 1223267381
+
+\begin_inset CommandInset href
+LatexCommand href
+name "http://www.lyx.org/Translation"
+target "http://www.lyx.org/Translation"
+
+\end_inset
+
+
+\change_unchanged
 .
  That way, you can find out which (if any) documents have already been translate
 d into your language.
