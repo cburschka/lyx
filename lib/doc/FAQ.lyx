@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 340
+\lyxformat 341
 \begin_document
 \begin_header
 \textclass article
@@ -37,9 +37,9 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
-\author "" 
+\author "RGH" 
 \author "" 
 \end_header
 
@@ -816,11 +816,15 @@ eX
 Type the command as it is written in the normal way
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+
+\change_deleted 0 1223267937
 The new ERT inset is really inconvenient !
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1223267937
 A lot of people have been complaining about the ERT inset introduced in
  version 1.2.0.
  However, since there is little hope of to see the old LaTeX font return
@@ -828,6 +832,8 @@ A lot of people have been complaining about the ERT inset introduced in
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 0 1223267937
 You can collapse the ERT like any other floats by using 
 \family sans
 \bar under
@@ -848,6 +854,8 @@ C-i
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 0 1223267937
 You can also set it to 
 \begin_inset Quotes eld
 \end_inset
@@ -858,6 +866,8 @@ inlined
 
  by using the properties dialog obtained by right-clicking anywhere in the
  inset
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -1152,6 +1162,11 @@ How do I insert a fixed amount of horizontal space?
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 0 1223268084
+Use Insert>Formatting>Horizontal Space.
+ 
+\change_deleted 0 1223268105
 There are various ERT commands to use: 
 \family typewriter
 
@@ -1270,6 +1285,8 @@ hspace{1in}
 hspace{2.5em}
 \family default
 , etc.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1327,7 +1344,13 @@ Figure
 \begin_inset Quotes erd
 \end_inset
 
- is what I would really call a 
+ is what 
+\change_inserted 0 1223268123
+you might 
+\change_deleted 0 1223268127
+I would really 
+\change_unchanged
+call a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1360,6 +1383,8 @@ How do I get LyX to put the figure exactly where I want it?
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1223268182
 Select 
 \family sans
 Layout\SpecialChar \menuseparator
@@ -1389,8 +1414,25 @@ Float Placement
 \end_layout
 
 \begin_layout Standard
-If you want to control how each figure behaves, right-click in the figure
- float and you will get a dialog allowing to control the figure behavior.
+If you want to control how 
+\change_inserted 0 1223268187
+an individual 
+\change_deleted 0 1223268189
+each 
+\change_unchanged
+figure behaves, right-click in the figure float and you will get a dialog
+ allowing to control the figure behavior.
+
+\change_inserted 0 1223268280
+ If you want to control how they all behave, look at 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Float Placement
+\family default
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1522,8 +1564,12 @@ How do I convert LyX files to LaTeX from the command line?
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1223268310
 File export was vastly improved in version 1.1.6.
- Simply say
+ 
+\change_unchanged
+Simply say
 \end_layout
 
 \begin_layout LyX-Code
@@ -1532,9 +1578,16 @@ lyx --export latex <yourfile>.lyx
 
 \begin_layout Standard
 and that is all you need to do.
+
+\change_inserted 0 1223268347
+ Other formats can be exported in the same way.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1223268332
 If you have an older version of LyX, you can use the same syntax if you
  are running X, because it will cause LyX windows to pop up onto your screen.
  If you have the Xvfb command available, you can resort to a deeper level
@@ -1547,6 +1600,8 @@ bash
 
 \begin_layout Standard
 
+\change_deleted 0 1223268332
+
 \family typewriter
 (Xvfb :1 -once -terminate &); rm <file>.tex; lyx -display :1 --export latex
  <file>.lyx
@@ -1554,10 +1609,14 @@ bash
 
 \begin_layout Standard
 \noindent
+
+\change_deleted 0 1223268332
 Under csh/tcsh it is simply
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1223268332
 
 \family typewriter
 Xvfb :1 -once -terminate &; rm <file>.tex; lyx -display :1 --export latex
@@ -1566,7 +1625,11 @@ Xvfb :1 -once -terminate &; rm <file>.tex; lyx -display :1 --export latex
 
 \begin_layout Standard
 \noindent
+
+\change_deleted 0 1223268332
 This should work anywhere, whether or not X is actually running.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
