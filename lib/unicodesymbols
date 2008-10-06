@@ -727,10 +727,10 @@
 0x0375 "\\textgreek{\\char255}"    "textgreek" "" # GREEK LOWER NUMERAL SIGN
 0x037a "\\textgreek{\\char124}"    "textgreek" "" # GREEK YPOGEGRAMMENI
 0x037e "\\textgreek{\\char63}"     "textgreek" "" # GREEK QUESTION MARK
-0x0384 "\\textgreek{\\char39}"     "textgreek" "" # GREEK TONOS
-0x0385 "\\textgreek{\\char35}"     "textgreek" "" # GREEK DIALYTIKA TONOS
+0x0384 "\\textgreek{\\char39}"     "textgreek" "force" # GREEK TONOS
+0x0385 "\\textgreek{\\char35}"     "textgreek" "force" # GREEK DIALYTIKA TONOS
 0x0386 "\\textgreek{\\char39A}"    "textgreek" "" # GREEK CAPITAL LETTER ALPHA WITH TONOS
-0x0387 "\\textgreek{\\char38}"     "textgreek" "" # GREEK ANO TELEIA
+0x0387 "\\textgreek{\\char38}"     "textgreek" "force" # GREEK ANO TELEIA
 0x0388 "\\textgreek{\\char39E}"    "textgreek" "" # GREEK CAPITAL LETTER EPSILON WITH TONOS
 0x0389 "\\textgreek{\\char39H}"    "textgreek" "" # GREEK CAPITAL LETTER ETA WITH TONOS
 0x038a "\\textgreek{\\char39I}"    "textgreek" "" # GREEK CAPITAL LETTER IOTA WITH TONOS
