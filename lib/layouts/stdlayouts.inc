@@ -7,7 +7,7 @@
 # quotations and such.
 
 
-Format 9
+Format 10
 Style Quotation
 	Category              MainText
 	Margin                Static

@@ -18,7 +18,7 @@
 # - Claim
 # - Proof
 
-Format 9
+Format 10
 
 Style Theorem*
 	Category              Theorem

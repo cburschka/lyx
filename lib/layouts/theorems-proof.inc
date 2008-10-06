@@ -8,7 +8,7 @@
 # Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 # Modularized Jan 08 by Richard Heck <rgheck@comcast.net>
 
-Format 9
+Format 10
 
 Style Proof
 	Category              Theorem
