@@ -145,7 +145,6 @@ def convert(lines):
     maxcounter = 0
     format = 1
     while i < len(lines):
-
         # Skip comments and empty lines
         if re_Comment.match(lines[i]) or re_Empty.match(lines[i]):
             i += 1
@@ -153,21 +152,21 @@ def convert(lines):
 
         # insert file format if not already there
         if (only_comment):
-                match = re_Format.match(lines[i])
-                if match:
-                        format = int(match.group(4))
-                        if format > 1 and format < currentFormat:
-                            lines[i] = "Format %d" % (format + 1)
-                            only_comment = 0
-                        elif format == currentFormat:
-                                # nothing to do
-                                return format
-                        else:
-                            error('Cannot convert file format %s' % format)
+            match = re_Format.match(lines[i])
+            if match:
+                format = int(match.group(4))
+                if format > 1 and format < currentFormat:
+                    lines[i] = "Format %d" % (format + 1)
+                    only_comment = 0
+                elif format == currentFormat:
+                    # nothing to do
+                    return format
                 else:
-                        lines.insert(i, "Format 2")
-                        only_comment = 0
-                        continue
+                    error('Cannot convert file format %s' % format)
+            else:
+                lines.insert(i, "Format 2")
+                only_comment = 0
+                continue
 
         # Don't get confused by LaTeX code
         if re_Preamble.match(lines[i]):

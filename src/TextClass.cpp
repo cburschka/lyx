@@ -224,12 +224,12 @@ namespace {
 bool TextClass::convertLayoutFormat(support::FileName const & filename, ReadType rt)
 {
 	LYXERR(Debug::TCLASS, "Converting layout file to " << FORMAT);
-		FileName const tempfile = FileName::tempName("convert_layout");
-		bool success = layout2layout(filename, tempfile);
-		if (success)
-			success = read(tempfile, rt);
-		tempfile.removeFile();
-		return success;
+	FileName const tempfile = FileName::tempName("convert_layout");
+	bool success = layout2layout(filename, tempfile);
+	if (success)
+		success = read(tempfile, rt);
+	tempfile.removeFile();
+	return success;
 }
 
 bool TextClass::read(FileName const & filename, ReadType rt)
@@ -261,8 +261,8 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 	
 	bool const worx = convertLayoutFormat(filename, rt);
 	if (!worx) {
-		lyxerr << "Unable to convert " << filename << 
-			" to format " << FORMAT << std::endl;
+		LYXERR0 ("Unable to convert " << filename << 
+			" to format " << FORMAT);
 		return false;
 	}
 	return true;
@@ -398,10 +398,6 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				}
 			}
 			else {
-				//FIXME Should we also eat the style here? viz:
-				//Layout layout;
-				//readStyle(lexrc, layout);
-				//as above...
 				lexrc.printError("No name given for style: `$$Token'.");
 				error = true;
 			}
@@ -542,7 +538,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				floatlist_.erase(nofloat);
 			}
 			break;
-		}
+		} // end of switch
 
 		//Note that this is triggered the first time through the loop unless
 		//we hit a format tag.
