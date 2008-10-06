@@ -7,7 +7,7 @@
 # This include files contains various standard environments for lists.
 
 
-Format 8
+Format 9
 Style Itemize
 	Category              List
 	Margin                Static

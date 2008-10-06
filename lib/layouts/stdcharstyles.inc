@@ -2,7 +2,7 @@
 # Author : Martin vermeer <martin.vermeer@hut.fi>
 # Character Styles definition
 
-Format 8
+Format 9
 
 # Error fallback:
 InsetLayout CharStyle
