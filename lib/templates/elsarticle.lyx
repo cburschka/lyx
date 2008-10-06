@@ -59,18 +59,10 @@
 status open
 
 \begin_layout Plain Layout
-For informations about this article class, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
-\end_inset
-
-to use the right document class options to get the page format for your
- journal, have a look at the elsarticle documentation: 
+For the right document class options to get the page format for your journal,
+ have a look at the elsarticle documentation: 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -711,6 +703,10 @@ A & = & \prod_{i=1}^{\infty}B\nonumber \\
 
 \end_layout
 
+\begin_layout Subsection
+Subsection
+\end_layout
+
 \begin_layout Enumerate
 test
 \end_layout
@@ -792,14 +788,21 @@ test
 test
 \end_layout
 
+\begin_layout Subsubsection
+Subsubsection
+\end_layout
+
+\begin_layout Standard
+Bla, bla
+\end_layout
+
 \begin_layout Section
 \start_of_appendix
 Appendix name
 \end_layout
 
 \begin_layout Standard
-Appendix, only when needed, inserted behind the acknowledgments but before
- the bibliography.
+Appendix, only when needed.
 \end_layout
 
 \begin_layout Section*
