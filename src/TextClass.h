@@ -252,7 +252,7 @@ protected:
 	/// latex packages requested by document class.
 	std::set<std::string> requires_;
 	/// modules wanted by document class
-	std::set<std::string> usemod_;
+	std::list<std::string> usemod_;
 	///
 	unsigned int columns_;
 	///

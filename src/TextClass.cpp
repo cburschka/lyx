@@ -492,7 +492,8 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		case TC_USEMODULE: {
 			lexrc.next();
 			string const module = lexrc.getString();
-			usemod_.insert(module);
+			if (find(usemod_.begin(), usemod_.end(), module) == usemod_.end())
+				usemod_.push_back(module);
 			break;
 		}
 

@@ -1594,9 +1594,9 @@ void GuiDocument::apply(BufferParams & params)
 		params.addLayoutModule(modules_sel_model_.getIDString(i));
 	// update the list of removed modules
 	params.clearRemovedModules();
-	set<string> const & reqmods = params.baseClass()->defaultModules();
-	set<string>::const_iterator rit = reqmods.begin();
-	set<string>::const_iterator ren = reqmods.end();
+	list<string> const & reqmods = params.baseClass()->defaultModules();
+	list<string>::const_iterator rit = reqmods.begin();
+	list<string>::const_iterator ren = reqmods.end();
 	// check each of the required modules
 	for (; rit != ren; rit++) {
 		vector<string>::const_iterator mit = params.getModules().begin();

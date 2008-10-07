@@ -1483,9 +1483,9 @@ bool BufferParams::setBaseClass(string const & classname)
 	pimpl_->baseClass_ = classname;
 
 	// add any required modules not already in use
-	set<string> const & mods = baseClass()->defaultModules();
-	set<string>::const_iterator mit = mods.begin();
-	set<string>::const_iterator men = mods.end();
+	list<string> const & mods = baseClass()->defaultModules();
+	list<string>::const_iterator mit = mods.begin();
+	list<string>::const_iterator men = mods.end();
 	for (; mit != men; mit++) {
 		string const & modName = *mit;
 		// see if we're already in use
