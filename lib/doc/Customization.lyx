@@ -1876,14 +1876,14 @@ $$l
 \end_layout
 
 \begin_layout Standard
-The latter is to be given in a form suitable for inclusion in a LaTeX's
- 
+The latter should be the filename as it would be used in a LaTeX's 
 \series bold
 
 \backslash
 include
 \series default
- command and is relevant only when exporting files suitable for such inclusion.
+ command.
+ It is relevant only when exporting files suitable for such inclusion.
 \end_layout
 
 \begin_layout Standard
