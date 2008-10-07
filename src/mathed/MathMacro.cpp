@@ -14,6 +14,7 @@
 
 #include "MathMacro.h"
 
+#include "InsetMathChar.h"
 #include "MathCompletionList.h"
 #include "MathExtern.h"
 #include "MathStream.h"
@@ -693,7 +694,8 @@ void MathMacro::write(WriteStream & os) const
 	// Print remaining macros 
 	for (; i < cells_.size(); ++i) {
 		if (cell(i).size() == 1 
-			 && cell(i)[0].nucleus()->asCharInset()) {
+			&& cell(i)[0].nucleus()->asCharInset()
+			&& cell(i)[0].nucleus()->asCharInset()->getChar() < 0x80) {
 			if (first)
 				os << " ";
 			os << cell(i);
