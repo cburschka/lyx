@@ -214,23 +214,13 @@ Introduction
 \emph on
 Introduction
 \emph default
- is the first place to go, since it will direct you to the correct manual,
- and it also describes the notation and format of all of the manuals.
+ is the first place to go, since it describes the notation and format of
+ all of the manuals.
  You should also be thoroughly familiar with the 
 \emph on
 User's Guide
 \emph default
- and all of the basic features of LyX.
- 
-\end_layout
-
-\begin_layout Standard
-In this document, many sections are independent articles contributed by
- an individual and are noted as such.
- This person is generally whoever wrote the layout file for the new document
- class or LaTeX package, or implemented the feature.
- If there is no mention of an author to a chapter [or chapter sections],
- that means it was written by the LyX Documentation Team.
+ and all of the basic features of LyX before attempting to read this one.
 \end_layout
 
 \begin_layout Standard
@@ -267,8 +257,18 @@ WYSIWYM frontend to LaTeX,
 
  but that's no longer true.
  There are frontends to LaTeX out there.
- They are basically editors with the ability to run LaTeX and mark any errors
- in the file you're editing.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Some familar ones are TeXmaker and kile, on Linux, and TeXshop, OSX.
+ There are also the LaTeX modes for vi and emacs, of course.
+\end_layout
+
+\end_inset
+
+ These are basically text editors with the ability to run LaTeX and mark
+ any errors in the file you're editing.
  Although LyX 
 \emph on
 is
@@ -277,32 +277,56 @@ is
 \emph on
 does
 \emph default
- run LaTeX, and it also marks errors in the file, it also does much, much
- more.
- Thanks to the WYSIWYM concept, you don't need to know LaTeX to use LyX
- effectively.
- LyX has also added a few extensions to LaTeX.
+ run LaTeX, and it also indicates errors in the file, it also does much,
+ much more.
+ For one thing, you don't need to know LaTeX to use LyX effectively.
+ And LyX has added its own extensions to LaTeX.
  Try the following sometime: select 
-\family sans
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 Export\SpecialChar \menuseparator
 LaTeX
-\family default
+\end_layout
+
+\end_inset
+
  from the 
-\family sans
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
 \bar under
 F
 \bar default
 ile
-\family default
+\end_layout
+
+\end_inset
+
  menu (or 
-\family sans
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 View\SpecialChar \menuseparator
 Source
-\family default
+\end_layout
+
+\end_inset
+
 ), then look at the preamble of the resulting 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 .tex
-\family default
+\end_layout
+
+\end_inset
+
  file.
  You'll notice a variety of new macros defined specifically by LyX.
  These macros are defined automatically, according to the features you use
@@ -316,23 +340,34 @@ There are several commands that automatically invoke LaTeX.
 
 \begin_layout Itemize
 
-\family sans
+\bar under
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
 \bar under
 V
 \bar default
 iew\SpecialChar \menuseparator
-View
-\begin_inset space ~
-\end_inset
-
 
 \emph on
 Format
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 
-\family sans
+\bar under
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
 \bar under
 V
 \bar default
@@ -347,9 +382,19 @@ pdate\SpecialChar \menuseparator
 Format
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 
-\family sans
+\bar under
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
 \bar under
 F
 \bar default
@@ -361,9 +406,19 @@ P
 rint
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 
-\family sans
+\bar under
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
 \bar under
 F
 \bar default
@@ -375,6 +430,11 @@ F
 ax
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 They will only invoke LaTeX if the file has changed since the last time
  LaTeX was run.
@@ -382,28 +442,65 @@ They will only invoke LaTeX if the file has changed since the last time
 \end_layout
 
 \begin_layout Standard
-When it runs LaTeX on the file you're editing, LyX performs these steps:
+When LyX runs LaTeX on the file you're editing, it performs these steps:
 \end_layout
 
 \begin_layout Enumerate
 Convert the document to LaTeX and save to a file with the extension 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 .tex
-\family default
+\end_layout
+
+\end_inset
+
  in place of 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 .lyx
-\family default
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Enumerate
 Run LaTeX on the 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 .tex
-\family default
- file (maybe several times), and run any other commands (such as bibtex
- or makeindex) needed to compile the LaTeX file.
+\end_layout
+
+\end_inset
+
+ file (maybe several times), and run any other commands (such as 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+bibtex
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+makeindex
+\end_layout
+
+\end_inset
+
+) needed to compile the LaTeX file.
 \end_layout
 
 \begin_layout Enumerate
@@ -412,38 +509,64 @@ If there are any errors, show the error log.
 
 \begin_layout Standard
 If you've run LaTeX using 
-\family sans
-View
-\begin_inset space ~
-\end_inset
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
 
+\begin_layout Plain Layout
+View
+\bar under
+\SpecialChar \menuseparator
+
+\bar default
 DVI
-\family default
-, LyX then runs a dvi viewer to display DVI-file.
- If you've used 
-\family sans
-View
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
+, LyX then runs a DVI viewer to display the DVI-file.
+ If you've used 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+View
+\bar under
+\SpecialChar \menuseparator
+
+\bar default
 PostScript
-\family default
+\end_layout
+
+\end_inset
+
 , LyX performs further steps:
 \end_layout
 
 \begin_layout Itemize
 Run 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 dvips
-\family default
+\end_layout
+
+\end_inset
+
  to convert the DVI file to PostScript®.
 \end_layout
 
 \begin_layout Itemize
-Run a Postscript viewer, such as 
-\family typewriter
+Run a PostScript® viewer, such as 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 ghostview
-\family default
+\end_layout
+
+\end_inset
+
 , to display the PostScript® file.
 \end_layout
 
@@ -457,7 +580,11 @@ Translating LaTeX files into LyX
 
 \begin_layout Standard
 You can import a LaTeX file into LyX by using the 
-\family sans
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
 \bar under
 F
 \bar default
@@ -472,35 +599,91 @@ mport\SpecialChar \menuseparator
 L
 \bar default
 aTeX
-\family default
+\end_layout
+
+\end_inset
+
  command in LyX.
  This will call a program named 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 tex2lyx
-\family default
----which will create a file 
-\family typewriter
+\end_layout
+
+\end_inset
+
+ which will create a file 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 foo.lyx
-\family default
+\end_layout
+
+\end_inset
+
  from the file 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 foo.tex
-\family default
----and then LyX will attempt to open that file.
+\end_layout
+
+\end_inset
+
+.
+ LyX will then open that file.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+tex2lyx
+\end_layout
+
+\end_inset
+
+ can also be run from the command line, of course.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset Flex CharStyle:Code
+status collapsed
 
-\family typewriter
+\begin_layout Plain Layout
 tex2lyx
-\family default
+\end_layout
+
+\end_inset
+
  will translate most legal LaTeX, but not everything.
  It will put things it doesn't understand into ERT, so after translating
  a file with 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 tex2lyx
-\family default
-, you can look for ERT and hand-edit it to look right.
+\end_layout
+
+\end_inset
+
+, you can look for ERT and hand-edit it until it looks right.
+\end_layout
+
+\begin_layout Standard
+If you don't know what ERT is, read the next section.
 \end_layout
 
 \begin_layout Section
@@ -514,15 +697,31 @@ Inserting TeX Code into LyX Documents
 \end_layout
 
 \begin_layout Standard
-This is a rather important point: You can always insert TeX code into any
- LyX document.
+Anything you can do in LaTeX you can do in LyX, for a very simple reason:
+ You can always insert TeX code into any LyX document.
  LyX cannot, and will never be able to, display every possible LaTeX construct.
  If ever you need to insert LaTeX commands into your LyX document, you can
- use the TeX Code box, which you can insert into your document with 
-\family sans
+ use the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+TeX Code
+\end_layout
+
+\end_inset
+
+ box, which you can insert into your document with 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 Insert\SpecialChar \menuseparator
 TeX Code
-\family default
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
@@ -619,7 +818,17 @@ end{tabular}
 \end_layout
 
 \begin_layout Standard
-The TeX Code box containing this text is directly after this paragraph.
+The 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+TeX Code
+\end_layout
+
+\end_inset
+
+ box containing this text is directly after this paragraph.
  Those of you reading the manual in LyX will only see the ERT inset.
  Those reading a printed version of the manuals will see the actual results:
 \end_layout
@@ -724,40 +933,51 @@ end{tabular}
 \begin_layout Standard
 In addition to using ERT, you can also create a separate file containing
  some complex LaTeX structure and then use 
-\family sans
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 Insert\SpecialChar \menuseparator
 Child
 \begin_inset space ~
 \end_inset
 
 Document
-\family default
+\end_layout
+
+\end_inset
+
  to include your file (you should select the type 
-\family sans
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 Input
-\family default
+\end_layout
+
+\end_inset
+
 ).
  We recommend that you only do this if you have a 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 .tex
-\family default
+\end_layout
+
+\end_inset
+
  file which you 
 \emph on
 know
 \emph default
  works already.
- Otherwise, you'll have a big job tracking down LaTeX errors\SpecialChar \ldots{}
-.
+ Otherwise, you'll have a big job tracking down LaTeX errors.
 \end_layout
 
 \begin_layout Standard
 There are a few last points to emphasize:
-\end_layout
-
-\begin_layout Itemize
-Inside of LyX, LaTeX code appears 
-\emph on
-in red
 \end_layout
 
 \begin_layout Itemize
@@ -787,7 +1007,14 @@ target "http://www.ctan.org/"
 
 \end_inset
 
- for details.
+ for details, and see chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:secrets"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -828,39 +1055,50 @@ before
 \end_layout
 
 \begin_layout Itemize
-declare the document class.
- LyX already does this for you.
-\end_layout
+Declare the document class.
+ 
+\begin_inset Newline newline
+\end_inset
 
-\begin_deeper
-\begin_layout Standard
-If you're a seasoned LaTeX-nician, and you have some custom document class
+LyX already does this for you.
+ If you're a seasoned LaTeX-nician, and you have a custom document class
  you want to use, check out the 
 \emph on
 Customization Manual
 \emph default
  for information on how to make LyX interface to it.
- Be sure to submit your efforts to the LyX Team for inclusion in future
- versions!
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
-declare the usage of packages.
- LaTeX packages provide special commands, which are only available within
+Declare the usage of packages.
+ 
+\begin_inset Newline newline
+\end_inset
+
+LaTeX packages provide special commands, which are only available within
  a document when the package has been declared in the preamble.
  For example, the package 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 indentfirst
-\family default
+\end_layout
+
+\end_inset
+
  forces all paragraphs to be indented.
  There are other packages for labels, envelopes, margins, etc.
  
 \end_layout
 
 \begin_layout Itemize
-set counters, variables, lengths and widths.
- There are several LaTeX counters and variables which 
+Set counters, variables, lengths and widths.
+ 
+\begin_inset Newline newline
+\end_inset
+
+There are several LaTeX counters and variables which 
 \emph on
 must
 \emph default
@@ -873,36 +1111,56 @@ must
 \end_layout
 
 \begin_layout Itemize
-declare user defined commands [with 
-\family typewriter
+Declare user defined commands (with 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 newcommand
-\family default
+\end_layout
+
+\end_inset
+
  or 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 renewcommand
-\family default
-], mostly abbreviations for LaTeX commands which appear very often inside
+\end_layout
+
+\end_inset
+
+).
+\begin_inset Newline newline
+\end_inset
+
+These are abbreviations for LaTeX commands which appear very often inside
  a document.
  Although the preamble is a good place to declare such commands, they 
 \emph on
 can
 \emph default
- be declared anywhere else (before they are used for the first time, of
- course\SpecialChar \ldots{}
-).
+ be declared anywhere (before they are used for the first time, of course).
  This can be useful if there is a lot of raw LaTeX code in your document,
  which normally should not be the case.
 \end_layout
 
 \begin_layout Standard
 LyX adds its own set of definitions to the preamble of the 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 .tex
-\family default
+\end_layout
+
+\end_inset
+
  file it produces.
  This makes LaTeX files generated by LyX portable.
 \end_layout
@@ -915,7 +1173,11 @@ Changing the Preamble
 The commands which LyX adds to the preamble of a LaTeX file are fixed; you
  can't change them without patching LyX itself.
  You can, however, add your own stuff to the preamble by selecting 
-\family sans
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
 \bar under
 L
 \bar default
@@ -928,37 +1190,71 @@ aTeX
 P
 \bar default
 reamble
-\family default
+\end_layout
+
+\end_inset
+
  in the 
-\family sans
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
 \bar under
 D
 \bar default
-ocument
-\family default
-\SpecialChar \menuseparator
+ocument\SpecialChar \menuseparator
 
-\family sans
 \bar under
 S
 \bar default
 ettings
-\family default
+\end_layout
+
+\end_inset
+
  dialog.
  LyX adds anything in the 
-\family sans
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 Preamble
-\family default
+\end_layout
+
+\end_inset
+
  dialog to its own built-in preamble.
  Before adding your own declarations in the preamble, you should make sure
- that LyX doesn't already support what you want to do (remember what we
- said about reinventing the wheel?).
- Also, 
+ that LyX doesn't already support what you want to do.
+ (Remember what we said about reinventing the wheel?) Also, 
 \emph on
 make sure your preamble code is correct
 \emph default
 .
- LyX doesn't check it.
+ LyX doesn't check it for you.
+ If there is an error, you're likely to get an error like 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Missing 
+\backslash
+begin{document}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ If you see this error, check your preamble.
 \end_layout
 
 \begin_layout Subsection
@@ -967,7 +1263,7 @@ Examples
 
 \begin_layout Standard
 Here are some examples of what you can add to a preamble, and what they
- do:
+ do.
 \end_layout
 
 \begin_layout Subsubsection
@@ -976,69 +1272,114 @@ Example #1: Offsets
 
 \begin_layout Standard
 There are two variables under LaTeX that control page position: 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 hoffset
-\family default
+\end_layout
+
+\end_inset
+
  and 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 voffset
-\family default
+\end_layout
+
+\end_inset
+
 .
  Their names should be self-explanatory.
  These variables are useful if you think for a moment about computer labels.
  Sometimes, the size of a print medium and the area of the medium that you
  can actually print on aren't the same.
  This is where 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 hoffset
-\family default
+\end_layout
+
+\end_inset
+
  and 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 voffset
-\family default
+\end_layout
+
+\end_inset
+
  come in.
 \end_layout
 
 \begin_layout Standard
 The default values for 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 hoffset
-\family default
+\end_layout
+
+\end_inset
+
  and 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 voffset
-\family default
- are both 0 pt., i.e., the page isn't shifted.
 \end_layout
 
-\begin_layout Standard
-Unfortunately, some DVI drivers always seem to shift the page.
+\end_inset
+
+ are both 0 points, i.e., the page isn't shifted.
+ Unfortunately, some DVI drivers always seem to shift the page.
  We have no idea why, or why the sysadmin hasn't fixed such behavior.
  If you're using LyX on a system that you don't personally maintain, and
  your sysadmin is a doofus, 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 hoffset
-\family default
+\end_layout
+
+\end_inset
+
  and 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 voffset
-\family default
+\end_layout
+
+\end_inset
+
  can save the day.
  Suppose you're left and top margins are always 0.5 inches too big.
  You can add this to the preamble:
@@ -1072,9 +1413,15 @@ Example #2: Labels
 Speaking of labels, suppose you wanted to print out a bunch of address labels.
  There's a rather nice package, available at your nearest CTAN archive,
  for printing sheets of labels: 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 labels.sty
-\family default
+\end_layout
+
+\end_inset
+
 .
  Now, your system may not have this package installed by default.
  We leave that up to you to check.
@@ -1086,9 +1433,15 @@ labels.sty
 
 \begin_layout Standard
 First, make sure you're using the 
-\family sans
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 article
-\family default
+\end_layout
+
+\end_inset
+
  document class.
  Next, you need to put the following in your preamble:
 \end_layout
@@ -1139,22 +1492,40 @@ BottomBorder=2mm
 This sets things up for Avery® label sheets, stock #5360.
  You're now ready to print labels, but you'll need to insert LaTeX code,
  placing the commands 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 begin{labels}
-\family default
+\end_layout
+
+\end_inset
+
  and 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 end{labels}
-\family default
+\end_layout
+
+\end_inset
+
  around each label text.
  This and other special features of 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 labels.sty
-\family default
+\end_layout
+
+\end_inset
+
  are explained in its documentation.
 \end_layout
 
@@ -1176,7 +1547,11 @@ every
  As with all of their other weird quirks, most Americans will whine and
  moan until they can have their way and indent the first line of all paragraphs.
  (Yes, we're joking.
- Aren't we?)
+ (We are?) 
+\emph on
+Yeah
+\emph default
+, we are.)
 \end_layout
 
 \begin_layout Standard
@@ -1188,14 +1563,15 @@ if
  it follows another one.
  The idea behind indenting the first line of a paragraph is to distinguish
  neighboring paragraphs from one another.
- If there is no previous paragraph, for example, it follows a figure, or
- is the first paragraph in a section, then there is no special indentation.
+ If there is no previous paragraph---for example, if it follows a figure
+ or is the first paragraph in a section---then there is no need for indentation.
  
 \end_layout
 
 \begin_layout Standard
-If you're a typical American, though, you don't care about such esoteric
- things; you want your indentation! Add this to the preamble:
+If you're a typical American (we're still joking!), though, you don't care
+ about such esoteric things; you want your indentation! Add this to the
+ preamble:
 \end_layout
 
 \begin_layout LyX-Code
@@ -1205,8 +1581,9 @@ usepackage{indentfirst}
 \end_layout
 
 \begin_layout Standard
-If your TeX distribution isn't a braindead one, you'll have this package,
- and all of your paragraphs will get the indentation you think they deserve.
+If your TeX distribution isn't braindead, you'll have this package, and
+ all of your paragraphs will get the indentation the Founding Fathers intended
+ they should have.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1246,33 +1623,49 @@ LyX and LaTeX Errors
 \begin_layout Standard
 When LyX calls LaTeX, it tells LaTeX to blithely ignore any errors and keep
  going.
- It then uses the log-file from the LaTeX run to do a post-mortem.
- LyX will then display a dialog listing the errors, and clicking on any
- one of them will take you to the position in your LyX file where the error
- occurred.
+ It then uses the logfile from the LaTeX run to do a post-mortem.
+ After analyzing the logfile,LyX displays a dialog listing the errors.
+ Clicking on any one of them will take you to the position in your LyX file
+ where the error occurred.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Well, usually.
+ Analyzing the logfile is a tough job, and LyX doesn't always go to the
+ right line.
+ There are also cases where LaTeX reports the error on one line, but the
+ actual error is earlier.
+ This is not unlike forgetting a closing brace in a program: You'll get
+ an error, but only later.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Some folks also like to look at the log file directly, accessible from 
-\family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
+Some folks also like to look at the log file directly: It is available from
+ 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
 
+\begin_layout Plain Layout
+Document
 \bar under
-L
+\SpecialChar \menuseparator
+
 \bar default
-aTeX
+Latex
 \begin_inset space ~
 \end_inset
 
 Log
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-File
-\family default
 .
  There are some fairly common error messages and warnings.
  We'll cover those here.
@@ -1280,23 +1673,20 @@ File
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
+\begin_inset Flex CharStyle:Code
+status collapsed
 
-
-\family typewriter
-LaTeX Warning:
-\family default
-
-\begin_inset Quotes eld
-\end_inset
-
-
+\begin_layout Plain Layout
+LaTeX Warning
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Anything beginning with these word is a warning message for the purpose
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Anything beginning with these words is a warning message for the purpose
  of 
 \begin_inset Quotes eld
 \end_inset
@@ -1309,155 +1699,151 @@ debugging
  You'll get messages like this if you added or changed cross-references
  or bibliography entries, in which case, LaTeX is trying to tell you that
  you need to make another run.
+ You can by-and-large ignore these.
 \end_layout
 
-\begin_layout Standard
-You can by-and-large ignore these.
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
+\begin_inset Flex CharStyle:Code
+status collapsed
 
-
-\family typewriter
-LaTeX Font Warning:
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-
+\begin_layout Plain Layout
+LaTeX Font Warning
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
 Another warning message, this time about fonts which LaTeX couldn't find.
  The rest of the message will often say something about a replacement font
  that LaTeX used.
+ You can safely ignore these, too.
 \end_layout
 
-\begin_layout Standard
-You can safely ignore these.
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
+\begin_inset Flex CharStyle:Code
+status collapsed
 
-
-\family typewriter
+\begin_layout Plain Layout
 Overfull 
 \backslash
 hbox
-\family default
+\end_layout
 
-\begin_inset Quotes erd
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_deeper
-\begin_layout Standard
 LaTeX absolutely 
 \emph on
 loves
 \emph default
  to spew these out.
- They are warning you about lines that were too long and run past the right
+ They are warnings about lines that were too long and run past the right
  margin.
  Almost always, this is unnoticeable in the final output.
- Or, only one or two characters extend past the margin.
+ (It can be just a point or two.) Or, only one or two characters extend past
+ the margin.
  LaTeX seems to generate at least one of these messages for just about any
  document you write.
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-You can ignore these stupid messages.
+You can ignore these messages.
  Your eyes will tell you if there's a problem with something that's too
  wide; just look at the output.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+You can also enable the `draft' option in 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Document
+\bar under
+\SpecialChar \menuseparator
+
+\bar default
+Settings
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-\begin_inset Quotes eld
+\end_inset
+
+, and then LaTeX will draw a black box in the margin of lines that are overfull.
+\end_layout
+
 \end_inset
 
 
-\family typewriter
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 Underfull 
 \backslash
 hbox
-\family default
+\end_layout
 
-\begin_inset Quotes erd
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_deeper
-\begin_layout Standard
 Not quite as common as its cousin.
  LaTeX seems to like to print lines that are a bit too wide as opposed to
  ones that are a bit too narrow.
  We have no idea why.
 \end_layout
 
-\begin_layout Standard
-You can ignore these, too.
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
+\begin_inset Flex CharStyle:Code
+status collapsed
 
-
-\family typewriter
+\begin_layout Plain Layout
 Overfull 
 \backslash
 vbox
-\family default
+\end_layout
 
-\begin_inset Quotes erd
 \end_inset
 
  and 
-\begin_inset Quotes eld
-\end_inset
+\begin_inset Flex CharStyle:Code
+status collapsed
 
-
-\family typewriter
+\begin_layout Plain Layout
 Underfull 
 \backslash
 vbox
-\family default
+\end_layout
 
-\begin_inset Quotes erd
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_deeper
-\begin_layout Standard
 Warnings about troubles breaking the page.
  Once again, just look at the output.
  Your eyes will tell you where something has gone wrong.
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
+\begin_inset Flex CharStyle:Code
+status collapsed
 
- 
-\family typewriter
-LaTeX Error: File 
+\begin_layout Plain Layout
+ LaTeX Error: File 
 \begin_inset Quotes els
 \end_inset
 
@@ -1466,16 +1852,14 @@ Xxxx
 \end_inset
 
  not found
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- 
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
 The file 
 \begin_inset Quotes eld
 \end_inset
@@ -1487,96 +1871,94 @@ Xxxx
  isn't installed on this system.
  This usually appears because some package your document needs isn't installed.
  If you didn't touch the preamble or didn't use the 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 usepackage{}
-\family default
- command, then one of the packages LyX tried to load is missing.
- Use 
-\family sans
-\bar under
-H
-\bar default
-elp\SpecialChar \menuseparator
-L
-\bar under
-a
-\bar default
-TeX Configuration
-\family default
- to get a list of packages that LyX knows about.
- This file is updated whenever you reconfigure LyX (using 
-\family sans
-\bar under
-T
-\bar default
-ools
-\bar under
-\SpecialChar \menuseparator
-R
-\bar default
-econfigure
-\family default
-) and tells you which packages have been detected and what they do.
 \end_layout
 
-\begin_layout Standard
-If you 
-\emph on
-did
-\emph default
- use the 
-\family typewriter
+\end_inset
+
+ command, then one of the packages LyX tried to load is missing.
+ Use 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Help\SpecialChar \menuseparator
+LaTeX Configuration
+\end_layout
+
+\end_inset
+
+ to get a list of packages that LyX knows about.
+ This file is updated whenever you reconfigure LyX (using 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Tools\SpecialChar \menuseparator
+Reconfigure
+\end_layout
+
+\end_inset
+
+) and tells you which packages have been detected and what they do.
+\begin_inset Newline newline
+\end_inset
+
+If you did use the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 usepackage{}
-\family default
+\end_layout
+
+\end_inset
+
  command and the package in question isn't installed, then you'll need to
  install it yourself.
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
+\begin_inset Flex CharStyle:Code
+status collapsed
 
-
-\family typewriter
+\begin_layout Plain Layout
 LaTeX Error: Unknown option
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
 Error messages beginning with this are trying to tell you that you specified
  a bad or undefined option to a package.
  Check the package's documentation.
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
+\begin_inset Flex CharStyle:Code
+status collapsed
 
-
-\family typewriter
+\begin_layout Plain Layout
 Undefined control sequence
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
 If you've inserted LaTeX code into your document, but made a typo, you'll
  get one of these.
  You may have forgotten to load a package.
@@ -1585,17 +1967,17 @@ If you've inserted LaTeX code into your document, but made a typo, you'll
  
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 There are other error and warning messages.
  Some are self-explanatory.
  These are usually LaTeX messages.
  Others are downright cryptic.
- These are actually TeX error messages, and we really have 
+ These are usually TeX error messages, and we really have 
 \emph on
 no clue
 \emph default
  what they mean or how to decipher them.
+ No-one does.
 \end_layout
 
 \begin_layout Standard
@@ -1611,8 +1993,28 @@ If there are no typos, check that you used the command(s) correctly.
 \end_layout
 
 \begin_layout Enumerate
-If you get a bunch of error boxes piled up at the very top of the document,
- it means that there are errors in the preamble.
+If you get a bunch of error boxes piled up at the very top of the document---and
+ especially if you see a 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Missing 
+\backslash
+begin{document}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ error---it means that there are errors in the preamble.
  Start debugging your preamble.
 \end_layout
 
@@ -1630,23 +2032,41 @@ Okay, so there are no missing packages.
 misuse
 \emph default
  any of them, like trying to manually insert lots of 
-\family sans
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 Protected
 \begin_inset space ~
 \end_inset
 
-Blank
-\family default
-s, 
-\family sans
-Linebreak
-\family default
-s, or 
-\family sans
-Pagebreak
-\family default
-s? Did you try to kludge something together with these instead of using
- the appropriate paragraph environment?
+Blanks
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Linebreaks
+\end_layout
+
+\end_inset
+
+, or 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Pagebreaks
+\end_layout
+
+\end_inset
+
+? Did you try to kludge something together with these instead of using the
+ appropriate paragraph environment?
 \end_layout
 
 \begin_layout Enumerate
@@ -1662,11 +2082,17 @@ Do you have long sections of text where LaTeX cannot find a place to break
  spacing it will add in order to break a line.
  Preferably, you should rework the paragraph to avoid the problem.
  If this isn't an option, you can wrap your text in 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 sloppypar
-\family default
+\end_layout
+
+\end_inset
+
  to make LaTeX's line breaking more, well, sloppy.
 \end_layout
 
@@ -1678,10 +2104,11 @@ Did you go overboard with the nesting? LyX (currently) doesn't check to
 \end_inset
 
  level, that's the problem.
+ (The limit in LaTeX is five.)
 \end_layout
 
 \begin_layout Enumerate
-Okay, you didn't get any error messages, but your output looks whacked.
+Okay, you didn't get any error messages, but your output looks awful.
  If you have a table or figure that's too wide or long for the page, you
  need to:
 \end_layout
@@ -1695,14 +2122,14 @@ rescale the figure so it fits.
 trim down the table so it fits.
 \end_layout
 
-\begin_layout Standard
+\end_deeper
+\begin_layout Enumerate
 If something else is wrong with the output, and you didn't try to pull anything
  fancy or kludge the fine-tuning options, we're not sure what's wrong.
 \end_layout
 
-\end_deeper
 \begin_layout Standard
-If all this doesn't help --- well, then 
+If all this doesn't help---well, then 
 \emph on
 perhaps
 \emph default
@@ -1711,7 +2138,7 @@ perhaps
 \end_layout
 
 \begin_layout Chapter
-Supplemental Tools
+Supplemental Toopullls
 \end_layout
 
 \begin_layout Section
@@ -1757,49 +2184,106 @@ Knuth 1984a
 
 ).
  LyX supports two packages that provide this style, 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 natbib
-\family default
+\end_layout
+
+\end_inset
+
  and 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 jurabib
-\family default
+\end_layout
+
+\end_inset
+
 .
- Both packages have their own pros and cons, which cannot be listed in detail.
- If you only want to have simple author-year (or author-numerical) style
- or if you want to use one of the countless style files for natbib, than
- the established 
-\family typewriter
+ Both packages have their pros and cons, which cannot be listed in detail.
+ If you only want to have simple author-year (or author-numerical) style,
+ or if you want to use one of the countless style files for 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 natbib
-\family default
+\end_layout
+
+\end_inset
+
+, than the established 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+natbib
+\end_layout
+
+\end_inset
+
  package is probably your choice.
  If you need special features like short title references, ibidem etc., you
- might consider the fairly new 
-\family typewriter
+ might consider the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 jurabib
-\family default
+\end_layout
+
+\end_inset
+
  package.
 \end_layout
 
 \begin_layout Standard
 The handling of both packages in LyX is basically the same.
  Go to 
-\family sans
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 Document\SpecialChar \menuseparator
 Settings
-\family default
+\end_layout
+
+\end_inset
+
  and select under 
-\family sans
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 Bibliography
-\family default
+\end_layout
+
+\end_inset
+
  the option 
-\family sans
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 Natbib
-\family default
+\end_layout
+
+\end_inset
+
  or 
-\family sans
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 Jurabib
-\family default
+\end_layout
+
+\end_inset
+
 .
  With both packages, you will get some extra features in the citation dialog
  and you can select the style of the reference (
@@ -1835,9 +2319,9 @@ Knuth, 1984
 \end_inset
 
  etc.).
- Note that both packages need specifically designed style files (they both
- ship their own, while there are lots of additional style files and even
- an interactive style file builder
+ Note that both packages need specifically designed style files.
+ They both ship their own, but there are lots of additional style files,
+ and there is even an interactive style file builder
 \begin_inset Foot
 status collapsed
 
@@ -1859,10 +2343,16 @@ ftp://ctan.tug.org/tex-archive/macros/latex/contrib/custom-bib/
 \end_inset
 
  for 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 natbib
-\family default
- available).
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -1936,55 +2426,85 @@ Scientific works
 \begin_inset Quotes erd
 \end_inset
 
-, you first need to create two bibliographic databases, e.
-\begin_inset space \thinspace{}
-\end_inset
+, you first need to create two bibliographic databases, e.g., 
+\begin_inset Flex CharStyle:Code
+status collapsed
 
-g.
-\begin_inset space \space{}
-\end_inset
-
-
-\family typewriter
+\begin_layout Plain Layout
 sources.bib
-\family default
+\end_layout
+
+\end_inset
+
  and 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 scientific.bib
-\family default
+\end_layout
+
+\end_inset
+
 .
  
 \end_layout
 
 \begin_layout Standard
-Go in LyX to 
-\family sans
+Go to 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 Document\SpecialChar \menuseparator
 Settings
-\family default
- and check under 
-\family sans
-Bibliography
-\family default
- the option 
-\family sans
-Sectioned
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-bibliography
-\family default
+ and check under 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Bibliography
+\end_layout
+
+\end_inset
+
+ the option 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Sectioned bibliography
+\end_layout
+
+\end_inset
+
 .
  Now you can insert multiple BibTeX bibliographies, one for each section
  of your bibliography.
  Returning to our example: Insert the BibTeX bibliography 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 sources.bib
-\family default
+\end_layout
+
+\end_inset
+
  and a second one for the database 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 scientific.bib
-\family default
+\end_layout
+
+\end_inset
+
 .
  You are free to use the same or different styles for each section.
  Additionally, you can chose if the bibliography section should contain
@@ -2041,9 +2561,15 @@ Scientific works
 .
  The titles for the sections can be added as ordinary sections or subsections.
  Since 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 bibtopic
-\family default
+\end_layout
+
+\end_inset
+
  removes the bibliography title, you have manually re-add that, too (as
  a chapter* or section*, for instance).
 \end_layout
@@ -2053,23 +2579,31 @@ Multiple Bibliographies
 \end_layout
 
 \begin_layout Standard
-Multiple bibliographies, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-a bibliography for each section or chapter of the document, are not supported
- by BibTeX itself.
+Multiple bibliographies, e.g., a bibliography for each section or chapter
+ of the document, are not supported by BibTeX itself.
  But the 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 bibtopic
-\family default
+\end_layout
+
+\end_inset
+
  package, which is used for the creation of sectioned bibliographies in
  LyX (see the previous section), provides an easy way to solve this task,
- if you are willing to use some TeX Code (see section
+ if you are willing to use some 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+TeX Code
+\end_layout
+
+\end_inset
+
+ (see section
 \begin_inset space ~
 \end_inset
 
@@ -2086,13 +2620,25 @@ status collapsed
 
 \begin_layout Plain Layout
 An alternative approach is to use the 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 chapterbib
-\family default
+\end_layout
+
+\end_inset
+
  or 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 bibunits
-\family default
+\end_layout
+
+\end_inset
+
  package, respectively.
 \end_layout
 
@@ -2103,54 +2649,103 @@ bibunits
 
 \begin_layout Standard
 First go to 
-\family sans
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 Document\SpecialChar \menuseparator
 Settings
-\family default
- and under 
-\family sans
-Bibliography
-\family default
- check 
-\family sans
-Sectioned
-\begin_inset space ~
+\end_layout
+
 \end_inset
 
-bibliography
-\family default
+ and under 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Bibliography
+\end_layout
+
+\end_inset
+
+ check 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Sectioned bibliography
+\end_layout
+
+\end_inset
+
 .
  In the document, you have to enclose the sections, which shall contain
  their own bibliography (including the BibTeX bibliography itself), between
  
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 begin{btUnit}
-\family default
+\end_layout
+
+\end_inset
+
  and 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 end{btUnit}
-\family default
+\end_layout
+
+\end_inset
+
  (those commands have to be inserted as ERT).
  The bibliography will contain all references which have been cited in the
- current btUnit.
+ current 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+btUnit
+\end_layout
+
+\end_inset
+
+.
  
 \series bold
 Note:
 \series default
- If you are using this approach, then 
-\emph on
-every
-\emph default
- citation reference has to be inside some btUnit.
- Also, the btUnits cannot be nested.
+ If you are using this approach, then every citation reference has to be
+ inside some 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+btUnit
 \end_layout
 
-\begin_layout Standard
+\end_inset
 
+.
+ Also, the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+btUnit
+\end_layout
+
+\end_inset
+
+s cannot be nested.
 \end_layout
 
 \begin_layout Section
@@ -2182,7 +2777,7 @@ master
  It is important to note that each of these files is a full LyX file which
  can be formatted and printed on its own, as well as included in a master
  file.
- Each of these files must have the same document class, however--- don't
+ Each of these files must have the same document class, however---don't
  attempt to mix book classes with article classes.
  You may also include LaTeX files; however, these files must not have their
  own preamble 
@@ -2191,31 +2786,49 @@ master
 
 \emph default
  everything up to and including the 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 begin{document}
-\family default
+\end_layout
+
+\end_inset
+
  line as well as the 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 end{document}
-\family default
+\end_layout
+
+\end_inset
+
  line must be deleted) or else errors will be generated when you try to
  make a DVI file.
 \end_layout
 
 \begin_layout Standard
 LyX allows you to include files quite easily with 
-\family sans
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 Insert\SpecialChar \menuseparator
 ChiId
 \begin_inset space ~
 \end_inset
 
 Document
-\family default
+\end_layout
+
+\end_inset
+
 .
  When you click on this selection a small box is inserted into the file
  at the current cursor location.
@@ -2285,26 +2898,12 @@ inputted
 \end_inset
 
  are typeset starting on the current page.
- Perhaps the labeling in LyX will be changed someday to reflect this.
 \end_layout
 
 \begin_layout Standard
 Generally, the master file is converted into a full LaTeX file before typesettin
 g, while the included files are converted to LaTeX files which do not have
  all the preamble information.
- Checking the 
-\family sans
-Don't
-\family default
-
-\begin_inset space ~
-\end_inset
-
-
-\family sans
-typeset
-\family default
- button prevents this conversion.
 \end_layout
 
 \begin_layout Standard
@@ -2317,15 +2916,24 @@ verbatim
 \end_inset
 
  included file allows you to include a file typeset exactly as it appears
- in the file, i.e.
-\begin_inset space ~
+ in the file, i.e., in 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+verbatim
+\end_layout
+
 \end_inset
 
-verbatim mode, with the characters set in a fixed-width typewriter font.
+ mode, with the characters set in a fixed-width typewriter font.
  Normally, spaces in this file are invisible, though two consecutive spaces
  are conserved, unlike LyX's normal treatment of spaces.
  However, setting the 
-\family sans
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
 Mark
 \begin_inset space ~
 \end_inset
@@ -2339,13 +2947,41 @@ in
 \end_inset
 
 output
-\family default
+\end_layout
+
+\end_inset
+
  checkbox typesets a mark to unambiguously define the presence of a space.
  
 \end_layout
 
 \begin_layout Subsection
 Cross-References Between Files
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+This section is somewhat out of date.
+ Need to describe default master documents and how children are opened when
+ the master is.
+ [[FIXME]]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2370,23 +3006,58 @@ Bibliography Lists in all Subdocuments
 \end_layout
 
 \begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+This section also needs updating.
+ There is now material about this on the wiki, and it could be copied here.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Copy the bibliography list with all entries to all subdocuments and transform
  them to a comment.
  This way LyX will find the 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 .bib
-\family default
+\end_layout
+
+\end_inset
+
 -files and you can easily insert references without making the bibliography
  list visible.
 \end_layout
 
 \begin_layout Standard
 As the bibliography list is in a comment, LaTeX won't use use it and the
- references will look like this [?] instead of [1].
- A solution is to use the LaTeX-package 
-\family typewriter
+ references will look like this: [?], instead of like this: [1].
+ One solution is to use the LaTeX-package 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 comment
-\family default
+\end_layout
+
+\end_inset
+
  that will only include comments by processing the files separately.
  To do this, add in the LaTeX preamble of every subdocument the following:
 \end_layout
@@ -2423,10 +3094,22 @@ Fancy Headers and Footers
 \end_layout
 
 \begin_layout Standard
-The default page layout is rather plain; for an article document class,
- all you get is a centered page number at the bottom of the page.
- This document is the book class, so it appears to be a bit fancier, but
- to really put on a show, you need to set the document page style to 
+The default page layout is rather plain; for an 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+article
+\end_layout
+
+\end_inset
+
+ document class, all you get is a centered page number at the bottom of
+ the page.
+ This document uses KOMA-script's book class, so it appears to be a bit
+ fancier.
+ But to really put on a show, you need to set the document page style to
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2435,16 +3118,12 @@ fancy
 \end_inset
 
 , as mentioned in the 
-\family sans
-User
-\begin_inset space ~
-\end_inset
-
-Guide
-\family default
+\emph on
+User Guide
+\emph default
 .
- This section describes the LaTeX codes you need to insert in your LaTeX
- preamble or the text in order to get the desired effects.
+ This section describes the LaTeX code you need to insert in your LaTeX
+ preamble in order to get the desired effects.
 \end_layout
 
 \begin_layout Standard
@@ -2475,29 +3154,53 @@ right
 .
  The footer is also divided into these three fields.
  The LaTeX commands to set these fields in the simplest manner are 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 lhead
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 chead
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 rhead
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 lfoot
-\family default
+\end_layout
+
+\end_inset
+
 , etc.
  Suppose you wish to put your name in the upper left hand corner of each
  page.
@@ -2517,11 +3220,7 @@ lhead{John Q.
 You will now see your name in the upper left.
  If a field has a default entry that you would like to get rid of (often
  the page number appears in the central footer, simply include a command
- with a blank argument, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+ with a blank argument, e.g.:
 \end_layout
 
 \begin_layout Standard
@@ -2541,24 +3240,8 @@ Section
 \begin_inset Quotes erd
 \end_inset
 
- (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
-\end_inset
-
-Section 3) in the upper left, the page number (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
-\end_inset
-
-Page 4) in the upper right, your name in the lower left, and the date in
- the lower right.
+ (e.g., Section 3) in the upper left, the page number (e.g., Page 4) in the
+ upper right, your name in the lower left, and the date in the lower right.
  The following commands should now appear in the preamble:
 \end_layout
 
@@ -2618,78 +3301,125 @@ today}
 \end_layout
 
 \begin_layout Standard
-The codes 
-\family typewriter
+The commands 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 thesection
-\family default
+\end_layout
+
+\end_inset
+
  and 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 thepage
-\family default
+\end_layout
+
+\end_inset
+
  access LaTeX's section and page counters, and so print out the current
  section and page numbers.
  
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 today
-\family default
+\end_layout
+
+\end_inset
+
  simply prints out today's date.
 \end_layout
 
 \begin_layout Standard
 The thicknesses of the horizontal rules drawn beneath the header and above
  the footer can also be modified.
- If you don't want one of the headers, set its thickness to 0.
+ If you don't want one of the rules, set its thickness to 0.
  The header rule has a default thickness of 0.4pt, the footer rule is 0pt.
- Use the commands, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
- 
+ Use commands
 \family typewriter
+ 
+\family default
+like 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 renewcommand{
 \backslash
 headrulewidth}{0.4pt}
-\family default
+\end_layout
+
+\end_inset
+
  and 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 renewcommand{
 \backslash
 footrulewidth}{0.4pt}
-\family default
+\end_layout
+
+\end_inset
+
  to set the thicknesses.
 \end_layout
 
 \begin_layout Standard
 You can switch the header/footer settings on and off for individual pages
  using commands like 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 thispagestyle{empty}
-\family default
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 thispagestyle{plain}
-\family default
+\end_layout
+
+\end_inset
+
 , and 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 thispagestyle{fancy}
-\family default
+\end_layout
+
+\end_inset
+
 .
  Simply insert them in the text on the page you want changed and mark them
  as TeX code.
@@ -2699,22 +3429,33 @@ thispagestyle{fancy}
 
 \begin_layout Standard
 There are more complex commands which will let you insert things in the
- upper left on odd numbered pages, etc., but I will refer you to the 
-\family typewriter
+ upper left on odd numbered pages, etc., but we will refer you to the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 fancyhdr
-\family default
- package documentation for more descriptions.
- For example, if you have a teTeX installation, look for 
-\family typewriter
-/usr/share/texmf/doc/latex/fancyhdr/\SpecialChar \-
+\end_layout
+
+\end_inset
+
+ package documentation for more information.
+ (Find the file 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 fancyhdr.dvi
-\family default
-.
+\end_layout
+
+\end_inset
+
+.)
 \end_layout
 
 \begin_layout Standard
-As a final example, it is possible to include an Encapsulated PostScript
- file in the header or footer.
+As a final example, it is possible to include an image in the header or
+ footer.
  Suppose you want to put a company logo in the upper lefthand corner.
  You might try something like
 \end_layout
@@ -2734,12 +3475,19 @@ includegraphics{logo.eps}}}
 \begin_layout Standard
 \noindent
 (you may need to preface this with 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
 
 \backslash
 usepackage{graphics}
-\family default
- if you don't include EPS files elsewhere in your document).
+\end_layout
+
+\end_inset
+
+ if you don't include graphics elsewhere in your document).
 \end_layout
 
 \begin_layout Section
@@ -2768,7 +3516,7 @@ LyX provides 216 bullet shapes that can be accessed from a simple dialog.
  Using this dialog you can easily specify what bullet shape to use at each
  level of an itemized list.
  These settings are document-wide so you won't be able to specify different
- sets of bullets for different paragraphs
+ sets of bullets for different paragraphs.
 \begin_inset Foot
 status collapsed
 
@@ -2778,7 +3526,7 @@ Well, actually you can but you'll have to do it by hand.
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Subsection
@@ -2787,24 +3535,26 @@ How it looks
 
 \begin_layout Standard
 Open the dialog by selecting the 
-\family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
 
-\bar under
-S
-\bar default
-ettings
-\family default
+\begin_layout Plain Layout
+Document\SpecialChar \menuseparator
+Settings
+\end_layout
+
+\end_inset
+
  menu item and then select the 
-\family sans
-\bar under
-B
-\bar default
-ullets
-\family default
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Bullets
+\end_layout
+
+\end_inset
+
  tab.
 \end_layout
 
@@ -3106,10 +3856,19 @@ pifont.sty
 
 \begin_layout Standard
 LyX doesn't stop you using bullets from packages you don't have.
- If you get errors from LaTeX when you try to view or print the file then
- its likely you are missing a package.
- LyX doesn't restrict your use since you may be editing locally and exporting
+ If you get errors from LaTeX when you try to view or print the file, then
+ it is likely you are missing a package.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+LyX doesn't restrict your use since you may be editing locally and exporting
  elsewhere.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -3120,27 +3879,28 @@ How to use it
 Select which bullet depth you want to change then select the bullet shape
  and size.
  Any changes will not be visible in LyX, but are visible when viewing the
- document using xdvi or ghostview.
+ document.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 You can reset a bullet shape to the default simply by clicking your right
  mouse button on the appropriate bullet depth button.
-\end_layout
+\begin_inset Foot
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 If you 
 \emph on
 really
 \emph default
  want to have multiple sets of paragraphs with different sets of bullets
- in each then you're going to have to get your hands dirty.
- The itemize bullet selection dialog can help though because it provides
- you with the LaTeX code for a wide range of bullet shapes.
+ in each, then you're going to have to get your hands dirty with ERT.
+ The bullet selection dialog can help though because it provides you with
+ the LaTeX code for a wide range of bullet shapes.
  To make your own custom paragraphs you have the following options:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -3160,7 +3920,7 @@ labelitemi
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -3188,35 +3948,36 @@ sharp
 
 \begin_layout Itemize
 Use the LaTeX command 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 renewcommand{}{}
-\family default
+\end_layout
+
+\end_inset
+
  to specify a new bullet shape for a given depth.
  You'll also need to save the current bullet shape so you can restore it
  again afterwards.
  In this itemized list the following LaTeX code was used to change the bullet
  used for the first depth.
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
-\family typewriter
+\begin_deeper
+\begin_layout LyX-Code
 
 \backslash
 let
 \backslash
 savelabelitemi=
 \backslash
-labelitemi
-\family default
- 
-\family typewriter
+labelitemi 
+\end_layout
 
-\begin_inset Newline newline
-\end_inset
-
+\begin_layout LyX-Code
 
 \backslash
 renewcommand
@@ -3230,11 +3991,10 @@ small
 sharp
 \backslash
 )}
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
-\family default
+\end_deeper
+\begin_layout Itemize
 Note that the itemize depth is specified in Roman numerals as part of the
  
 \family typewriter
@@ -3263,9 +4023,22 @@ star
 \end_inset
 
  Specify each individual entry by starting each item with the bullet shape
- enclosed in square brackets and set as TeX.
+ enclosed in square brackets and set as 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+TeX Code
+\end_layout
+
+\end_inset
+
+.
  For example, this item was started with 
-\family typewriter
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 [
 \backslash
 (
@@ -3273,11 +4046,14 @@ star
 star
 \backslash
 )]
-\family default
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -3297,15 +4073,13 @@ savelabelitemi}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 You'll also need to revert the labelitem back to its previous setting for
  the global bullet shape settings to remain in effect.
  The way used here was:
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
-\family typewriter
+\begin_layout LyX-Code
 
 \backslash
 renewcommand
@@ -3313,6 +4087,11 @@ renewcommand
 labelitemi[0]{
 \backslash
 savelabelitemi}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
@@ -4288,12 +5067,12 @@ The numbering scheme for cases is on its own, not together with other numbered
 \end_layout
 
 \begin_layout Proof
-At the end of this environment , a QED symbol (usually a square, but it
- can vary with different styles) is placed.
+At the end of this environment, a QED symbol (usually a square, but it can
+ vary with different styles) is placed.
  If you want to have other environments within this one---for example, Case
  environments---and have the QED symbol appear only after them, then the
  other environments need to be nested within the proof environment.
- See section 
+ See the section 
 \emph on
 Nesting Environments
 \emph default
@@ -4305,7 +5084,7 @@ User's Guide
 \end_layout
 
 \begin_layout Standard
-And these are provided by 
+And these environments are provided by 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
