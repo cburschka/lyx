@@ -1432,7 +1432,7 @@ Tab
 \family default
  y 
 \family sans
-S-Tab
+Shift-Tab
 \family default
  puedes cambiar el nivel de anidamiento.
  Por ejemplo, puedes convertir la sección
@@ -1614,12 +1614,12 @@ Control
 \family default
  (Denominada «
 \family sans
-C
+Ctrl
 \family default
 »
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "C"
+symbol "Ctrl"
 description "Tecla Control"
 
 \end_inset
@@ -1675,12 +1675,12 @@ Mayúsculas
 \family default
  (Representada por «
 \family sans
-S
+Shift
 \family default
 »
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "S"
+symbol "Shift"
 description "Tecla Mayúsculas"
 
 \end_inset
@@ -1792,7 +1792,7 @@ Aprenderás más y más combinaciones de teclas y atajos de teclado conforme
  Sin embargo, ten en cuenta que las teclas modificadoras Mayúsculas se mencionan
  de forma explícita, así 
 \family sans
-«M-p S-A
+«M-p Shift-a
 \family default
 »
 \family sans
@@ -1803,15 +1803,6 @@ significa
 Meta-p
 \family default
  seguido de A mayúscula.
- 
-\family sans
-«S-C-s»
-\family default
- significa 
-\family sans
-Mayúsculas-Control-
-\family default
-s.
 \end_layout
 
 \begin_layout Standard
@@ -4588,7 +4579,7 @@ Y hacer que las cosas se vean bien
 
 Usa 
 \family sans
-C-Retorno
+Ctrl-Retorno
 \family default
 .
 \end_layout
@@ -4606,7 +4597,7 @@ salto-de-línea,
 \family default
  
 \family sans
-C-Retorno
+Ctrl-Retorno
 \family default
 .
 \end_layout
@@ -5408,7 +5399,7 @@ protegido
 .
  (Con 
 \family sans
-C-Espacio
+Ctrl-Espacio
 \family default
  o con el menú 
 \family sans
@@ -6055,7 +6046,7 @@ salto-de-línea
 \family default
  (
 \family sans
-C-Retorno
+Ctrl-Retorno
 \family default
  o 
 \family sans
@@ -6444,7 +6435,7 @@ protegido
 ; es el único caso en LyX en que puedes teclear múltiples espacios.
  Si necesitas insertar líneas en blanco debes usar 
 \family sans
-C-Retorno
+Ctrl-Retorno
 \family default
  (función 
 \family typewriter
@@ -6480,7 +6471,7 @@ Este entorno tiene ciertas peculiaridades:
 \begin_layout Itemize
 No puedes usar 
 \family sans
-C-Retorno
+Ctrl-Retorno
 \family default
  al principio de un nuevo párrafo (p.
 \begin_inset space \thinspace{}
@@ -6489,7 +6480,7 @@ C-Retorno
 e.
  no puedes hacer 
 \family sans
-C-Retorno
+Ctrl-Retorno
 \family default
  seguido a 
 \family sans
@@ -6501,7 +6492,7 @@ Retorno
 \begin_layout Itemize
 No puedes continuar un 
 \family sans
-C-Retorno
+Ctrl-Retorno
 \family default
  con un 
 \family sans
@@ -6526,7 +6517,7 @@ Espacio
 \begin_layout Itemize
 O: usa 
 \family sans
-C-Espacio
+Ctrl-Espacio
 \family default
  en su lugar.
 \end_layout
@@ -6558,11 +6549,11 @@ reales
 .
  Puedes ponerlas con 
 \family sans
-C-S-"
+Ctrl-Shift-"
 \family default
  (o 
 \family sans
-C-q
+Ctrl-q
 \family default
  si usas atajos de teclado tipo Emacs).
 \end_layout
@@ -6747,15 +6738,15 @@ Tab
 \family default
  y 
 \family sans
-S-Tab 
+Shift-Tab 
 \family default
 o 
 \family sans
-S-M-Derecha
+Shift-M-Derecha
 \family default
  y 
 \family sans
-S-M-Izquierda
+Shift-M-Izquierda
 \family default
 .
  El cambio de profundidad funcionará para el párrafo actual y también para
@@ -7695,7 +7686,7 @@ M-Retorno
 \family default
  seguido de 
 \family sans
-S-M-Derecha
+Shift-M-Derecha
 \family default
 .
 \end_layout
@@ -7710,7 +7701,7 @@ Retorno
 \family default
 , luego 
 \family sans
-S-M-Derecha
+Shift-M-Derecha
 \family default
  dos veces en una fila.
  También podríamos haber hecho como en el nivel anterior, pulsando 
@@ -7719,7 +7710,7 @@ M-Retorno
 \family default
  seguido de 
 \family sans
-S-M-Derecha
+Shift-M-Derecha
 \family default
 .
 \end_layout
@@ -7746,7 +7737,7 @@ M-Retorno
 \family default
 , luego 
 \family sans
-S-M-Derecha
+Shift-M-Derecha
 \family default
 , luego cambiando el párrafo a 
 \family sans
@@ -7838,7 +7829,7 @@ M-Retorno
 \family default
  seguido de 
 \family sans
-S-M-Izquierda
+Shift-M-Izquierda
 \family default
 .
 \end_layout
@@ -7852,7 +7843,7 @@ M-Retorno
 \family default
  seguido de 
 \family sans
-S-M-Izquierda
+Shift-M-Izquierda
 \family default
 .
 \end_layout
@@ -7926,7 +7917,7 @@ Retorno
 \family default
 , luego 
 \family sans
-S-M-Derecha
+Shift-M-Derecha
 \family default
 ,
 \end_layout
@@ -7973,7 +7964,7 @@ Normal
 \family default
  y reiniciar la profundidad de anidación con 
 \family sans
-S-M-Izquierda
+Shift-M-Izquierda
 \family default
  una vez.
 \end_layout
@@ -8018,7 +8009,7 @@ M-Retorno
 \family default
  seguido de 
 \family sans
-S-M-Derecha
+Shift-M-Derecha
 \family default
 .
  Ahora, ¿qué sucede si anidamos un entorno 
@@ -8082,7 +8073,7 @@ reference "sec:Enumeración"
 \bar default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -8118,7 +8109,7 @@ M-Retorno
 \family default
 , luego 
 \family sans
-S-M-Derecha
+Shift-M-Derecha
 \family default
 , luego cambiando a entorno 
 \family sans
@@ -8135,7 +8126,7 @@ M-Retorno
 \family default
 , luego 
 \family sans
-S-M-Derecha
+Shift-M-Derecha
 \family default
 .
  Haremos esto otra vez\SpecialChar \ldots{}
@@ -8161,7 +8152,7 @@ romana
 \bar no
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -8221,7 +8212,7 @@ M-Retorno
 \begin_layout Enumerate
 Usemos 
 \family sans
-S-M-Izquierda
+Shift-M-Izquierda
 \family default
  para disminuir la profundidad después del siguiente 
 \family sans
@@ -8245,7 +8236,7 @@ Este es el nivel #3.
 \bar no
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -8290,7 +8281,7 @@ M-Retorno
 \family default
  
 \family sans
-S-M-Izquierda
+Shift-M-Izquierda
 \family default
 , y volvemos al nivel #2.
  Esta vez, no sólo hemos cambiado la profundidad de anidación, también hemos
@@ -8309,7 +8300,7 @@ M-Retorno
 \family default
  
 \family sans
-S-M-Izquierda
+Shift-M-Izquierda
 \family default
  y volvemos al nivel #1, el más externo.
 \end_layout
@@ -8370,7 +8361,7 @@ Enumeración
 \begin_layout Standard
 (
 \family sans
-Retorno, S-M-Derecha, Normal
+Retorno, Shift-M-Derecha, Normal
 \family default
 : nivel #2) En algunos sitios pondremos entre paréntesis una descripción
  de cómo se ha hecho.
@@ -8400,7 +8391,7 @@ Será mucho peor.
 
 (
 \family sans
-Retorno, S-M-Derecha, Verso
+Retorno, Shift-M-Derecha, Verso
 \family default
 : nivel #2)
 \end_layout
@@ -8516,11 +8507,11 @@ pez-azul
 \begin_layout Verse
 (
 \family sans
-M-Retorno, Tabla, S-M-Derecha
+M-Retorno, Tabla, Shift-M-Derecha
 \family default
  3 veces, 
 \family sans
-M-Retorno, Verso, S-M-Izquierda
+M-Retorno, Verso, Shift-M-Izquierda
 \family default
 )
 \end_layout
@@ -8590,7 +8581,7 @@ M-Retorno
  para preservar la profundidad.
  Recuerda que debes usar 
 \family sans
-C-Retorno
+Ctrl-Retorno
 \family default
  para crear múltiples líneas en los entornos 
 \family sans
@@ -8797,7 +8788,7 @@ protegido
 \family default
  (atajo 
 \family sans
-C-Espacio).
+Ctrl-Espacio).
 \end_layout
 
 \begin_layout Subsection
@@ -8895,7 +8886,7 @@ Espacio
 \begin_inset space ~
 \end_inset
 
-entre-palabra (atajo C-M-Espacio).
+entre-palabra (atajo Ctrl-M-Espacio).
 \end_layout
 
 \begin_layout Subsubsection
@@ -8966,7 +8957,7 @@ delgado
 \family default
  (atajo 
 \family sans
-C-S-Espacio
+Ctrl-Shift-Espacio
 \family default
 ).
 \end_layout
@@ -10281,7 +10272,7 @@ roto
 \family default
  o con 
 \family sans
-C-Retorno
+Ctrl-Retorno
 \family default
 .
  El otro tipo, que se inserta con el menú 
@@ -12277,7 +12268,7 @@ M-s
 \begin_inset space ~
 \end_inset
 
-S-L
+Shift-l
 \family default
 
 \begin_inset ERT
@@ -13605,7 +13596,7 @@ DVI
 
  (atajo 
 \family sans
-C-d
+Ctrl-d
 \family default
 ), para 
 \family sans
@@ -13635,7 +13626,7 @@ Postscript
 
  (atajo 
 \family sans
-C-
+Ctrl-
 \family default
 t).
 \end_layout
@@ -14426,7 +14417,7 @@ oración
 \family default
  (atajo 
 \family sans
-C-punto
+Ctrl-punto
 \family default
 ) con el menú 
 \family sans
@@ -14803,7 +14794,7 @@ Estas opciones afectan al carácter generado por la tecla
 Por otra parte, si quieres generar un carácter comillas en texto simple,
  teclea 
 \family sans
-C-S-"
+Ctrl-Shift-"
 \family default
 .
  Esto genera 
@@ -15248,7 +15239,7 @@ delgado
 \family default
  (atajo 
 \family sans
-C-S-Espacio
+Ctrl-Shift-Espacio
 \family default
 ).
 \end_layout
@@ -22338,7 +22329,7 @@ Matemáticas ! Espacios
 El espacio estándar provisto por LaTeX se puede cambiar.
  Para hacerlo teclea 
 \family sans
-C-Espacio
+Ctrl-Espacio
 \family default
  o elige desde el botón 
 \begin_inset Graphics
@@ -22362,7 +22353,7 @@ matemáticas
  Se genera un espacio señalado con una pequeña marca en la pantalla.
  Por ejemplo, la secuencia 
 \series bold
-a C-Espacio b
+a Ctrl-Espacio b
 \series default
  da: 
 \begin_inset Formula $a\, b$
@@ -22385,7 +22376,7 @@ a C-Espacio b
 \begin_layout Standard
 
 \series bold
-a C-Espacio b
+a Ctrl-Espacio b
 \series default
  y 3×
 \family sans
@@ -22401,7 +22392,7 @@ Espacio
 \begin_layout Standard
 
 \series bold
-a C-Espacio b
+a Ctrl-Espacio b
 \series default
  y 5×
 \family sans
@@ -23575,7 +23566,7 @@ a\, la\, izquierda & al\, centro & a\, la\, derecha\end{array}\]
 \begin_layout Standard
 Puedes añadir más filas a una matriz existente con 
 \family sans
-C-Retorno
+Ctrl-Retorno
 \family default
  estando el cursor en la matriz.
  Puedes añadir o quitar filas y columnas con el menú 
@@ -23629,7 +23620,7 @@ f(x)=\begin{cases}
 Las ecuaciones con varias líneas se crean pulsando 
 \family sans
 \series medium
-C-Retorno
+Ctrl-Retorno
 \family default
 \series default
  dentro de la ecuación.
@@ -23637,7 +23628,7 @@ C-Retorno
  Si tecleas 
 \family sans
 \series medium
-C-Retorno
+Ctrl-Retorno
 \family default
 \series default
  en una ecuación no vacía, la parte anterior al signo de relación (signo
@@ -23654,7 +23645,7 @@ C-Retorno
  Por cada nueva pulsación de 
 \family sans
 \series medium
-C-Retorno
+Ctrl-Retorno
 \family default
 \series default
  se crea una fila nueva.
@@ -23676,7 +23667,7 @@ a & = & \sqrt{b^{4}-c^{4}}\label{eq:acuadrado}\end{eqnarray}
 Para cambiar la asignación de columna de las partes de la ecuación, pon
  el cursor donde quieras empezar el cambio y teclea 
 \family sans
-C-Tab.
+Ctrl-Tab.
 
 \family default
  Todo lo que esté a la derecha del cursor pasa a la columna siguiente.
@@ -36953,11 +36944,11 @@ marcador
  Ahora puedes saltar fácilmente de una sección a otra bien con el menú,
  bien con los atajos 
 \family sans
-C-1
+Ctrl-1
 \family default
  y 
 \family sans
-C-2
+Ctrl-2
 \family default
 .
 \end_layout

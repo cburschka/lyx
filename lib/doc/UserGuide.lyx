@@ -815,7 +815,7 @@ saved
 Control 
 \family default
 you can there register the changes you made to a document so that others
- can identify this as your changes.
+ can identify them as your changes.
 \end_layout
 
 \begin_layout Section
@@ -1080,7 +1080,7 @@ and
 Replace
 \family default
  dialog.
- Once you've found a word or expression, LyX selects it.
+ Once you have found a word or expression, LyX selects it.
  Hitting the 
 \family sans
 Replace
@@ -1151,8 +1151,11 @@ test
 \family sans
 Match whole words only
 \family default
- option can be used to force LyX to only find complete words.
- I.e., searching for 
+ option can be used to force LyX to only find complete words, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., searching for 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1270,8 +1273,8 @@ steps to minimize memory overhead.
 \end_layout
 
 \begin_layout Standard
-Notice that if you revert back all changes to arrive to the document as
- it was last saved, the 
+Note that if you revert back all changes to arrive to the document as it
+ was last saved, the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1316,7 +1319,7 @@ Mouse Operations
 \end_layout
 
 \begin_layout Standard
-This are the most basic mouse operations.
+These are the most basic mouse operations.
 \end_layout
 
 \begin_layout Enumerate
@@ -1370,11 +1373,7 @@ Insets (Footnotes, Notes, Floats, etc.)
 
 \begin_deeper
 \begin_layout Standard
-
-\emph on
-Single click
-\emph default
- the left mouse button to open or close any of these.
+Right-click on them to set their properties.
  Right-click on them to set its properties.
  Also check the appropriate section of this manual for more details.
 \end_layout
@@ -1577,7 +1576,7 @@ Tab
 \family default
  and 
 \family sans
-S-Tab
+Shift-Tab
 \family default
  you can change the sectioning level of sections.
  So you can for example make section
@@ -1833,7 +1832,7 @@ Control
 
 
 \family sans
-C
+Ctrl
 \family default
 
 \begin_inset Quotes erd
@@ -1842,7 +1841,7 @@ C
 
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "C"
+symbol "Ctrl"
 description "Control key"
 
 \end_inset
@@ -1901,7 +1900,7 @@ Shift
 
 
 \family sans
-S
+Shift
 \family default
 
 \begin_inset Quotes erd
@@ -1910,7 +1909,7 @@ S
 
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "S"
+symbol "Shift"
 description "Shift key"
 
 \end_inset
@@ -2054,12 +2053,12 @@ You'll learn more and more keybindings and short-cut keys as you use LyX,
  The notation for the keybindings is very similar to the notation used in
  this documentation, so you should not have any problems understanding it.
  However, notice that Shift-modifiers are explicitly mentioned, so 
-\family sans
-
 \begin_inset Quotes eld
 \end_inset
 
-M-p S-A
+
+\family sans
+M-p Shift-A
 \family default
 
 \begin_inset Quotes erd
@@ -2067,28 +2066,11 @@ M-p S-A
 
  means 
 \family sans
-Meta-p
+M-p
 \family default
  followed by a capital 
 \family sans
 A
-\family default
-.
- 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-S-C-s
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- means 
-\family sans
-Shift-Control-s
 \family default
 .
 \end_layout
@@ -2116,6 +2098,12 @@ reference "sub:Editing-Shortcuts"
 \end_inset
 
 .
+\begin_inset Formula \[
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
@@ -2168,7 +2156,7 @@ document class
  By setting the document class, you automatically select these properties,
  making it easier to create the type of document you want.
  If you don't choose a document class, LyX picks one for you by default.
- So, it behooves you to change the class of your document.
+ So it is up to you to change the class of your document.
 \end_layout
 
 \begin_layout Standard
@@ -4219,9 +4207,11 @@ Part
 \family sans
 Chapter
 \family default
- or 
+s or 
 \family sans
 Section
+\family default
+s
 \end_layout
 
 \begin_layout Itemize
@@ -4352,7 +4342,7 @@ There are 5 types of unnumbered section headings.
 \begin_layout Enumerate
 
 \family sans
-Part*line spacing
+Part*
 \end_layout
 
 \begin_layout Enumerate
@@ -4523,7 +4513,7 @@ name "sec:Short-Titles"
 
 \begin_layout Standard
 Some section or chapter titles, such as this one, can get quite long.
- This can cause troubles when there is limited horizontal space.
+ This can cause trouble when there is limited horizontal space.
  For example, if the header of the page is set to show the current section
  title, a long title will protrude over the page margins and look awful.
 \end_layout
@@ -4855,7 +4845,7 @@ And make things look fine
 
 Use 
 \family sans
-C-Return
+Ctrl-Return
 \family default
 .
 \end_layout
@@ -4873,7 +4863,7 @@ break-line
 \family default
  function 
 \family sans
-C-Return
+Ctrl-Return
 \family default
 .
 \end_layout
@@ -5426,7 +5416,7 @@ Protected Blank
 .
  (Use either 
 \family sans
-C-Space
+Ctrl-Space
 \family default
  or the menu 
 \family sans
@@ -6025,7 +6015,7 @@ break-line
 \family default
  (
 \family sans
-C-Return
+Ctrl-Return
 \family default
  or 
 \family sans
@@ -6396,7 +6386,7 @@ Blank
  this is the only case in which you can type multiple whitespaces in LyX.
  If you need to insert blank lines, you'll still need to use 
 \family sans
-C-Return
+Ctrl-Return
 \family default
  (the 
 \family typewriter
@@ -6432,7 +6422,7 @@ There are a few quirks with this environment:
 \begin_layout Itemize
 You cannot use 
 \family sans
-C-Return
+Ctrl-Return
 \family default
  at the beginning of a new paragraph (i.e.
  you can't follow 
@@ -6441,7 +6431,7 @@ Return
 \family default
  with a 
 \family sans
-C-Return
+Ctrl-Return
 \family default
 ).
 \end_layout
@@ -6449,7 +6439,7 @@ C-Return
 \begin_layout Itemize
 You can't follow a 
 \family sans
-C-Return
+Ctrl-Return
 \family default
  with a 
 \family sans
@@ -6474,7 +6464,7 @@ Space
 \begin_layout Itemize
 Or: use 
 \family sans
-C-Space
+Ctrl-Space
 \family default
  instead.
 \end_layout
@@ -6502,11 +6492,11 @@ real
  quotes.
  You get the typewriter double quotes with 
 \family sans
-C-"
+Ctrl-"
 \family default
  (or 
 \family sans
-C-q
+Ctrl-q
 \family default
  if you use Emacs-like key bindings).
 \end_layout
@@ -6695,15 +6685,15 @@ Tab
 \family default
  and 
 \family sans
-S-Tab
+Shift-Tab
 \family default
  or 
 \family sans
-S-M-Right
+Shift-M-Right
 \family default
  and 
 \family sans
-S-M-Left
+Shift-M-Left
 \family default
  to change the nesting level.
  The change will work on the current selection if you have made one (allowing
@@ -7628,7 +7618,7 @@ M-Return
 \family default
  followed by 
 \family sans
-S-M-Right
+Shift-M-Right
 \family default
 .
 \end_layout
@@ -7643,7 +7633,7 @@ Return
 \family default
 , then used 
 \family sans
-S-M-Right
+Shift-M-Right
 \family default
  twice in a row.
  We could have also created it the same way as we did the previous level,
@@ -7653,7 +7643,7 @@ M-Return
 \family default
  followed by 
 \family sans
-S-M-Right
+Shift-M-Right
 \family default
 .
 \end_layout
@@ -7680,7 +7670,7 @@ M-Return
 \family default
 , then 
 \family sans
-S-M-Right
+Shift-M-Right
 \family default
 , then changing the paragraph environment to 
 \family sans
@@ -7772,7 +7762,7 @@ M-Return
 \family default
  followed by a 
 \family sans
-S-M-Left
+Shift-M-Left
 \family default
 .
 \end_layout
@@ -7786,7 +7776,7 @@ M-Return
 \family default
  followed by a 
 \family sans
-S-M-Left
+Shift-M-Left
 \family default
 , we're back at level #4.
 \end_layout
@@ -7861,7 +7851,7 @@ Return
 \family default
 , then 
 \family sans
-S-M-Right
+Shift-M-Right
 \family default
 , after which, we'll change to the 
 \family sans
@@ -7904,7 +7894,7 @@ Standard
 \family default
  and resetting the nesting depth by using 
 \family sans
-S-M-Left
+Shift-M-Left
 \family default
  once.
 \end_layout
@@ -7949,7 +7939,7 @@ M-Return
 \family default
  followed by 
 \family sans
-S-M-Right
+Shift-M-Right
 \family default
 .
  Now, what happens if we nest an 
@@ -7979,7 +7969,7 @@ M-Return
 \family default
 , then 
 \family sans
-S-M-Right
+Shift-M-Right
 \family default
 , then changing the environment to 
 \family sans
@@ -7996,7 +7986,7 @@ M-Return
 \family default
 , then 
 \family sans
-S-M-Right
+Shift-M-Right
 \family default
 .
  We'll do that again\SpecialChar \ldots{}
@@ -8060,7 +8050,7 @@ M-Return
 \begin_layout Enumerate
 Let's use 
 \family sans
-S-M-Left
+Shift-M-Left
 \family default
  to decrease the depth after the next 
 \family sans
@@ -8107,7 +8097,7 @@ M-Return
 \family default
  
 \family sans
-S-M-Left
+Shift-M-Left
 \family default
  sequence, and we're back to level #2.
  This time, we not only changed the nesting depth, but we also moved back
@@ -8126,7 +8116,7 @@ M-Return
 \family default
  
 \family sans
-S-M-Left
+Shift-M-Left
 \family default
  sequence and return to level #1, the outermost level.
 \end_layout
@@ -8183,7 +8173,7 @@ Enumerate
 \begin_layout Standard
 (
 \family sans
-Return, S-M-Right, Standard
+Return, Shift-M-Right, Standard
 \family default
 : level #2) We'll stick an encapsulated description of how we created the
  example in parentheses someplace.
@@ -8213,7 +8203,7 @@ It will get much worse.
 
 (
 \family sans
-Return, S-M-Right, Verse
+Return, Shift-M-Right, Verse
 \family default
 : level #2)
 \end_layout
@@ -8338,11 +8328,11 @@ blue-fish
 \begin_layout Verse
 (
 \family sans
-M-Return, Table, S-M-Right
+M-Return, Table, Shift-M-Right
 \family default
  3 times, 
 \family sans
-M-Return, Verse, S-M-Left
+M-Return, Verse, Shift-M-Left
 \family default
 )
 \end_layout
@@ -8411,7 +8401,7 @@ M-Return
  to preserve the depth.
  Remember that you need to use 
 \family sans
-C-Return
+Ctrl-Return
 \family default
  to create multiple lines inside the 
 \family sans
@@ -8620,7 +8610,7 @@ Space
 \family default
  (shortcut 
 \family sans
-C-Space
+Ctrl-Space
 \family default
 ).
 \end_layout
@@ -8714,7 +8704,7 @@ reference "sub:Abbreviations"
  Sometimes, you want a normal space nevertheless.
  In this case, insert an inter-word space (shortcut 
 \family sans
-C-M-Space
+Ctrl-M-Space
 \family default
 ).
 \end_layout
@@ -8810,7 +8800,7 @@ Space
 \family default
  (shortcut 
 \family sans
-C-S-Space
+Ctrl-Shift-Space
 \family default
 ).
 \end_layout
@@ -10065,7 +10055,7 @@ Break
 \family default
  or with 
 \family sans
-C-Return
+Ctrl-Return
 \family default
 .
  Another type that is inserted via the menu 
@@ -10162,8 +10152,8 @@ Horizontal
 
 Line
 \family default
- you can insert horizontal lines that spans over the whole document columns
- width.
+ you can insert horizontal lines that span the whole width of the document
+ or column.
 \lyxline
 
 \end_layout
@@ -10361,8 +10351,8 @@ Type
 The result of all this, is that bitmap fonts are best for the size they
  are designed for, while scalable fonts are good for nearly all sizes.
  So one need less font size definitions for scalable fonts.
- That's the reason why nearly all text render and typesetting programs use
- scalable fonts.
+ That's the reason why nearly all text rendering and typesetting programs
+ use scalable fonts.
 \end_layout
 
 \begin_layout Standard
@@ -10667,7 +10657,7 @@ Latin Modern
 \family typewriter
 Computer Modern
 \family default
-, consists of these three main font types 
+, consist of these three main font types 
 \family sans
 sans
 \begin_inset space ~
@@ -10765,11 +10755,11 @@ Latin Modern
 lm
 \family default
 ) fonts.
- These fonts are developed in order of the LaTeX community to replace 
+ These fonts were developed in order of the LaTeX community to replace 
 \family typewriter
 cm
 \family default
- as default fonts.
+ as the default font.
  In most cases they look the same as 
 \family typewriter
 cm
@@ -11143,8 +11133,8 @@ Text Style
 \end_layout
 
 \begin_layout Standard
-There are always occasions when you'll need to do some fine-tuning, so LyX
- gives you a way to create custom character style.
+There are always occasions when you will need to do some fine-tuning, so
+ LyX gives you a way to create a custom character style.
  For example, an academic journal or a corporation may have a style sheet
  requiring a sans-serif font be used in certain situations.
  Also, writers sometimes use a different font to offset a character's thoughts
@@ -11158,7 +11148,7 @@ Before we document how to use custom character style, we want to issue a
 \end_inset
 
 Documents that overuse different fonts and sizes are not well readable and
- tend to look like someone has knocked huge holes in it.
+ tend to look as if someone has knocked huge holes in them.
 \end_layout
 
 \begin_layout Standard
@@ -12068,7 +12058,7 @@ M-s
 \begin_inset space ~
 \end_inset
 
-S-L
+Shift-l
 \family default
 
 \begin_inset ERT
@@ -12770,8 +12760,8 @@ text without serifs
 \begin_inset Newline newline
 \end_inset
 
-Serifs facilitates an easy and fast reading.
- They are therefore used as default font (named 
+Serifs facilitate quick and easy reading.
+ These fonts are therefore used as default (named 
 \family sans
 roman
 \family default
@@ -13395,7 +13385,7 @@ DVI
 
  (shortcut 
 \family sans
-C-d
+Ctrl-d
 \family default
 ), for 
 \family sans
@@ -13425,7 +13415,7 @@ Postscript
 
  (shortcut 
 \family sans
-C-t
+Ctrl-t
 \family default
 ).
 \end_layout
@@ -14204,7 +14194,7 @@ Character
  menu to force the use of inter-sentence spacing.
  This function is also bound to 
 \family sans
-C-period
+Ctrl-period
 \family default
  for easy access.
 \end_layout
@@ -14991,7 +14981,7 @@ Space
 \family default
  (shortcut 
 \family sans
-C-S-Space
+Ctrl-Shift-Space
 \family default
 ).
 \end_layout
@@ -21919,7 +21909,7 @@ You may want to create spaces that differs from the standard spacing that
  LaTeX provides.
  To do this, type 
 \family sans
-C-Space
+Ctrl-Space
 \family default
  or to use the 
 \family sans
@@ -21939,7 +21929,7 @@ Panel
  This generates a small space, and shows a small marker on the screen.
  Here a example for the sequence 
 \series bold
-a C-Space b
+a Ctrl-Space b
 \series default
 : 
 \begin_inset Formula $a\, b$
@@ -21963,7 +21953,7 @@ a C-Space b
 \begin_layout Standard
 
 \series bold
-a C-Space b
+a Ctrl-Space b
 \series default
  and 3×
 \family sans
@@ -21979,7 +21969,7 @@ Space
 \begin_layout Standard
 
 \series bold
-a C-Space b
+a Ctrl-Space b
 \series default
  and 5×
 \family sans
@@ -23112,7 +23102,7 @@ has\, left\, alignment & center\, alignment & alignment\end{array}.\]
 \begin_layout Standard
 You can add more rows to an existing matrix by hitting 
 \family sans
-C-Enter
+Ctrl-Enter
 \family default
  while the cursor is in the matrix.
  Adding or deleting columns can be done via the menu 
@@ -23161,7 +23151,7 @@ f(x)=\begin{cases}
 Multi-line formulas are created when you press 
 \family sans
 \series medium
-C-E
+Ctrl-E
 \series default
 nter
 \family default
@@ -23171,7 +23161,7 @@ nter
  When you press 
 \family sans
 \series medium
-C-E
+Ctrl-E
 \series default
 nter
 \family default
@@ -23188,7 +23178,7 @@ nter
  A new row is created by every further hit of 
 \family sans
 \series medium
-C-E
+Ctrl-E
 \series default
 nter
 \family default
@@ -23204,7 +23194,7 @@ a & = & \sqrt{b^{4}-c^{4}}\label{eq:asquared}\end{eqnarray}
  To change the column assignment of the formula parts, place the cursor
  where you want to start the shift and hit 
 \family sans
-C-Tab.
+Ctrl-Tab.
 
 \family default
  It shifts everything in the column which is right beside the current cursor
@@ -36625,11 +36615,11 @@ Bookmark
  Now you can easily jump between these sections by using the menu or by
  the key bindings 
 \family sans
-C-1
+Ctrl-1
 \family default
  and 
 \family sans
-C-2
+Ctrl-2
 \family default
 .
 \end_layout

@@ -1659,7 +1659,7 @@ Tab
 \family default
  et 
 \family sans
-S-Tab
+Shift-Tab
 \family default
  vous pouvez modifier le niveau hierarchique d'une section.
  Vous pouvez par exemple transformer la section
@@ -1894,7 +1894,7 @@ Control-
 
 
 \family sans
-C
+Ctrl
 \family default
 
 \begin_inset Quotes erd
@@ -1903,7 +1903,7 @@ C
 
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "C"
+symbol "Ctrl"
 description "Touche Contrôle"
 
 \end_inset
@@ -1962,7 +1962,7 @@ Shift-
 
 
 \family sans
-S
+Shift
 \family default
 
 \begin_inset Quotes erd
@@ -1971,7 +1971,7 @@ S
 
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "S"
+symbol "Shift"
 description "Touche Shift"
 
 \end_inset
@@ -1991,7 +1991,11 @@ Meta-
 \begin_inset Quotes eld
 \end_inset
 
+
+\family sans
 M
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -2057,10 +2061,7 @@ M-f
 \family default
  ouvre le menu 
 \family sans
-\bar under
-F
-\bar default
-ichier
+Fichier
 \begin_inset Foot
 status collapsed
 
@@ -2117,7 +2118,7 @@ Shift-
 \begin_inset Quotes fld
 \end_inset
 
-M-p S-A
+M-p Shift-A
 \begin_inset Quotes frd
 \end_inset
 
@@ -2132,23 +2133,6 @@ Meta-p
 A
 \family default
  majuscule.
- 
-\family sans
-
-\begin_inset Quotes fld
-\end_inset
-
-S-C-S
-\begin_inset Quotes frd
-\end_inset
-
-
-\family default
- signifie 
-\family sans
-Shift-Control-s
-\family default
-.
 \end_layout
 
 \begin_layout Standard
@@ -4869,7 +4853,7 @@ NdT : Désolé.
 
 Utilisez 
 \family sans
-C-Entrée
+Ctrl-Entrée
 \family default
 .
 \end_layout
@@ -4887,7 +4871,7 @@ break-line
 \family default
 , 
 \family sans
-C-Entrée
+Ctrl-Entrée
 \family default
 .
 \end_layout
@@ -5457,7 +5441,7 @@ Insécable
 .
  (Soit avec 
 \family sans
-C-Espace
+Ctrl-Espace
 \family default
  soit avec 
 \family sans
@@ -6236,7 +6220,7 @@ break-line
 \family default
  (
 \family sans
-C-Entrée
+Ctrl-Entrée
 \family default
  ou 
 \family sans
@@ -6656,7 +6640,7 @@ Insécable
  Si vous avez besoin d'insérer des lignes vides, vous devrez encore utiliser
  
 \family sans
-C-Entrée
+Ctrl-Entrée
 \family default
  (la fonction 
 \family typewriter
@@ -6700,7 +6684,7 @@ Voici quelques subtilités de cet environnement :
 \begin_layout Itemize
 Vous ne pouvez pas utiliser 
 \family sans
-C-Entrée
+Ctrl-Entrée
 \family default
  au début d'un nouveau paragraphe (c'est-à-dire faire suivre un 
 \family sans
@@ -6708,7 +6692,7 @@ Entrée
 \family default
  d'un 
 \family sans
-C-Entrée
+Ctrl-Entrée
 \family default
 ).
 \end_layout
@@ -6716,7 +6700,7 @@ C-Entrée
 \begin_layout Itemize
 Vous ne pouvez pas faire suivre 
 \family sans
-C-Entrée
+Ctrl-Entrée
 \family default
  d'une 
 \family sans
@@ -6741,7 +6725,7 @@ Espace
 \begin_layout Itemize
 Ou utilisez 
 \family sans
-C-Espace
+Ctrl-Espace
 \family default
  à la place.
 \end_layout
@@ -6770,11 +6754,11 @@ vrais
  guillemets.
  Vous pouvez obtenir les guillemets doubles de machine à écrire avec 
 \family sans
-C-"
+Ctrl-"
 \family default
  (ou 
 \family sans
-C-q
+Ctrl-q
 \family default
  si vous avez les raccourcis clavier type Emacs).
 \end_layout
@@ -7000,15 +6984,15 @@ Tab
 \family default
  et 
 \family sans
-S-Tab
+Shift-Tab
 \family default
  ou 
 \family sans
-S-M-Gauche
+Shift-M-Gauche
 \family default
  et 
 \family sans
-S-M-Droite
+Shift-M-Droite
 \begin_inset Foot
 status collapsed
 
@@ -8941,7 +8925,7 @@ M-Entrée
  pour préserver la profondeur.
  Rappelez-vous que vous pouvez utiliser 
 \family sans
-C-Entrée
+Ctrl-Entrée
 \family default
  pour entrer plusieurs lignes dans les environnement 
 \family sans
@@ -9144,7 +9128,7 @@ Insécable
 \family default
  (raccourci 
 \family sans
-C-Espace
+Ctrl-Espace
 \family default
 ).
 \end_layout
@@ -9238,7 +9222,7 @@ Mots
 \family default
  (raccourci 
 \family sans
-C-M-Espace
+Ctrl-M-Espace
 \family default
 ).
 \end_layout
@@ -9347,7 +9331,7 @@ Fine
 \family default
  (raccourci 
 \family sans
-C-S-Espace
+Ctrl-Shift-Espace
 \family default
 ).
 \end_layout
@@ -10684,7 +10668,7 @@ ragged line break pas encore traduit ?
 \family default
  ou avec le raccourci 
 \family sans
-C-Entrée
+Ctrl-Entrée
 \family default
 .
  Le deuxième type de saut de ligne, qui est inséré avec 
@@ -13844,7 +13828,7 @@ DVI
 
  (raccourci clavier 
 \family sans
-C-d
+Ctrl-d
 \family default
 ), pour 
 \family sans
@@ -13874,7 +13858,7 @@ Postscript
 
  (raccourci clavier 
 \family sans
-C-t
+Ctrl-t
 \family default
 ).
 \end_layout
@@ -14663,7 +14647,7 @@ final
  pour forcer l'espacement entre phrases.
  On l'obtient aussi avec 
 \family sans
-C-point
+Ctrl-point
 \begin_inset Foot
 status collapsed
 
@@ -15029,7 +15013,7 @@ Ces options changent les caractères que la touche
  produit.
  D'un autre côté, si vous voulez produire des guillemets droits, tapez 
 \family sans
-C-"
+Ctrl-"
 \family default
 , ou utilisez
 \family sans
@@ -15498,7 +15482,7 @@ Fine
 \family default
  (raccourci 
 \family sans
-C-S-Espace
+Ctrl-Shift-Espace
 \family default
 ).
 \end_layout
@@ -21755,7 +21739,7 @@ m
 \family default
  ou 
 \family sans
-C-m
+Ctrl-m
 \family default
  (raccourci CUA seulement).
 \end_layout
@@ -22604,7 +22588,7 @@ Vous voudrez peut-être créer des espaces qui soient différent de l'espacement
  proposé par défaut par LaTeX.
  Pour cela, tapez 
 \family sans
-C-Espace
+Ctrl-Espace
 \family default
  ou utilisez le bouton 
 \begin_inset Graphics
@@ -22624,7 +22608,7 @@ Mathématique
  Cela génère un petit espace et cela affiche un petit marqueur à l'écran.
  Voici un exemple obtenu en tapant la séquence 
 \series bold
-a C-Espace b
+a Ctrl-Espace b
 \series default
 : 
 \begin_inset Formula $a\, b$
@@ -22651,7 +22635,7 @@ dans LyX).
 \begin_layout Standard
 
 \series bold
-a C-Espace b
+a Ctrl-Espace b
 \series default
  et 3×
 \family sans
@@ -22667,7 +22651,7 @@ Espace
 \begin_layout Standard
 
 \series bold
-a C-Espace b
+a Ctrl-Espace b
 \series default
  et 5×
 \family sans
@@ -23700,7 +23684,7 @@ right
 \begin_layout Standard
 Vous pouvez ajouter des lignes à une matrice déjà existante en tapant 
 \family sans
-C-Entrée
+Ctrl-Entrée
 \family default
  dans la matrice, et vous pouvez ajouter des colonnes, et supprimer lignes
  et colonnes, dans le menu 
@@ -23765,13 +23749,13 @@ eqnarray
 \family default
  (le format d'équation sur plusieurs lignes de LaTeX) si vous tapez 
 \family sans
-C-Entrée
+Ctrl-Entrée
 \family default
 .
  La meilleure façon de faire si vous vous décidez pour une équation sur
  plusieurs lignes, est d'insérer immédiatement une nouvelle ligne avec 
 \family sans
-C-Entrée
+Ctrl-Entrée
 \family default
 .
  Chaque ligne a alors trois zones, à gauche, au centre et à droite, parmi
@@ -23783,7 +23767,7 @@ Tab
 .
  Une nouvelle ligne sera ajoutée à chaque fois que vous appuirez sur 
 \family sans
-C-Entrée
+Ctrl-Entrée
 \family default
 .
  En voici un exemple :
@@ -23796,7 +23780,7 @@ a & = & \sqrt{b^{4}-c^{4}}\label{eq:asquared}\end{eqnarray}
 Vous pouvez aussi transformer une formule hors ligne existante en formule
  multi-lignes en tapant 
 \family sans
-C-Entrée
+Ctrl-Entrée
 \family default
  alors que le curseur se trouve dans la formule d'origine.
  Cependant, LyX n'essaiera 
@@ -23808,7 +23792,7 @@ pas
  Pour changer les repères d'alignement de l'équation, placez le curseur
  là où vous voulez que commence la zone centrale de la ligne, et tapez 
 \family sans
-C-Tab
+Ctrl-Tab
 \family default
 .
  Ça met tout ce qui est à droite du curseur dans la zone centrale (que,
@@ -23830,7 +23814,7 @@ C-Tab
 Allez là où vous voulez que commence la zone de droite, et tapez de nouveau
  
 \family sans
-C-Tab
+Ctrl-Tab
 \family default
 .
  Les points d'insertion 
@@ -23997,7 +23981,7 @@ M-m
 \begin_inset space ~
 \end_inset
 
-S-N
+Shift-n
 \family default
  ne modifiera que la numérotation de la ligne où se trouve le curseur:
 \begin_inset Formula \begin{eqnarray}
@@ -29168,7 +29152,7 @@ TeX
 
  de la barre d'outils, soit encore en utilisant le raccourci clavier 
 \family sans
-C-l
+Ctrl-l
 \family default
  (L minuscule).
  La boîte de code TeX, peut être ouverte en faisant un clic gauche dessus
@@ -36098,11 +36082,11 @@ Signets
 \family default
 ) ou les raccourcis claviers 
 \family sans
-C-1
+Ctrl-1
 \family default
  et 
 \family sans
-C-2
+Ctrl-2
 \family default
 .
  Vous pouvez aussi sauter d'un document ouvert à un autre.
