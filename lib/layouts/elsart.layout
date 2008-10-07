@@ -226,9 +226,9 @@ Style Abstract
 End
 
 
-# Theorem environments have been copied over from the amsmaths.inc file. It
-# could not be input as it does some stuff which is incompatible with the
-# Elsevier stlye: it redefines the theorem* environments in the preamble.
+# Theorem environments have been copied over from the theorem modules. They
+# could not be input as they do some stuff which is incompatible with the
+# Elsevier stlye: redefine the theorem* environments in the preamble.
 
 # The environments defined are :
 # - Theorem
