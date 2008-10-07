@@ -1746,9 +1746,8 @@ msgid "Space i&n string as symbol"
 msgstr "&Mezera v øetìzci jako symbol"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:470
-#, fuzzy
 msgid "Tab&ulator size:"
-msgstr "Tabulka|T"
+msgstr "Velikost &tabelátoru:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:486
 msgid "Use extended character table"
@@ -3735,18 +3734,16 @@ msgid "Adjust the depth of the navigation tree"
 msgstr "Nastavit hloubku stromu"
 
 #: src/frontends/qt4/ui/TocUi.ui:100
-#, fuzzy
 msgid "Sort"
-msgstr "&Setøídit"
+msgstr "Tøídit"
 
 #: src/frontends/qt4/ui/TocUi.ui:119
 msgid "Try to keep persistent view of the uncollapsed nodes"
-msgstr ""
+msgstr "Pokusit se udr¾et strukturu rozbalení polo¾ek"
 
 #: src/frontends/qt4/ui/TocUi.ui:122
-#, fuzzy
 msgid "Keep"
-msgstr "KeyCap"
+msgstr "Dr¾et"
 
 #: src/frontends/qt4/ui/TocUi.ui:139
 msgid "Update navigation tree"
@@ -5436,34 +5433,28 @@ msgid "Case \\arabic{case}"
 msgstr "Case \\arabic{case}"
 
 #: lib/layouts/elsarticle.layout:57
-#, fuzzy
 msgid "Title footnote"
-msgstr "poznámka pod èarou"
+msgstr "Title footnote"
 
 #: lib/layouts/elsarticle.layout:68
-#, fuzzy
 msgid "Title footnote:"
-msgstr "poznámka pod èarou"
+msgstr "Title footnote:"
 
 #: lib/layouts/elsarticle.layout:95
-#, fuzzy
 msgid "Author footnote"
-msgstr "poznámka pod èarou"
+msgstr "Author footnote"
 
 #: lib/layouts/elsarticle.layout:98
-#, fuzzy
 msgid "Author footnote:"
-msgstr "Authorinfo:"
+msgstr "Author footnote:"
 
 #: lib/layouts/elsarticle.layout:102
-#, fuzzy
 msgid "Corresponding author"
-msgstr "Correspondence to:"
+msgstr "Corresponding author"
 
 #: lib/layouts/elsarticle.layout:105
-#, fuzzy
 msgid "Corresponding author text:"
-msgstr "Correspondence to:"
+msgstr "Corresponding author text:"
 
 #: lib/layouts/elsarticle.layout:175 lib/layouts/ijmpc.layout:79
 #: lib/layouts/ijmpd.layout:82 lib/layouts/iopart.layout:200
@@ -7173,44 +7164,36 @@ msgid "AMS subject classifications."
 msgstr "AMS subject classifications."
 
 #: lib/layouts/sigplanconf.layout:62
-#, fuzzy
 msgid "Conference"
-msgstr "Reference"
+msgstr "Conference"
 
 #: lib/layouts/sigplanconf.layout:72
-#, fuzzy
 msgid "Conference:"
-msgstr "Reference:"
+msgstr "Conference:"
 
 #: lib/layouts/sigplanconf.layout:80
-#, fuzzy
 msgid "CopyrightYear"
-msgstr "Autorská práva"
+msgstr "CopyrightYear"
 
 #: lib/layouts/sigplanconf.layout:83
-#, fuzzy
 msgid "Copyright year:"
-msgstr "Copyright:"
+msgstr "Copyright year:"
 
 #: lib/layouts/sigplanconf.layout:87
-#, fuzzy
 msgid "Copyrightdata"
-msgstr "Autorská práva"
+msgstr "Copyrightdata"
 
 #: lib/layouts/sigplanconf.layout:90
-#, fuzzy
 msgid "Copyright data:"
-msgstr "Copyright:"
+msgstr "Copyright data:"
 
 #: lib/layouts/sigplanconf.layout:133
-#, fuzzy
 msgid "Terms"
-msgstr "Theorems"
+msgstr "Terms"
 
 #: lib/layouts/sigplanconf.layout:136
-#, fuzzy
 msgid "Terms:"
-msgstr "Theorems"
+msgstr "Terms:"
 
 #: lib/layouts/simplecv.layout:55
 msgid "Topic"
@@ -8075,19 +8058,16 @@ msgid "Info"
 msgstr "Info"
 
 #: lib/layouts/stdinsets.inc:281
-#, fuzzy
 msgid "Info:menu"
-msgstr "menu"
+msgstr "Info:menu"
 
 #: lib/layouts/stdinsets.inc:293
-#, fuzzy
 msgid "Info:shortcut"
-msgstr "klávesová zkratka"
+msgstr "Info:zkratka"
 
 #: lib/layouts/stdinsets.inc:305
-#, fuzzy
 msgid "Info:shortcuts"
-msgstr "klávesové zkratky"
+msgstr "Info:zkratky"
 
 #: lib/layouts/stdlayouts.inc:67
 msgid "--Separator--"
@@ -8222,11 +8202,11 @@ msgid "Braille"
 msgstr "Braillovo písmo"
 
 #: lib/layouts/braille.module:6
-#, fuzzy
 msgid ""
 "Defines an environment to typeset Braille. For more details see Braille.lyx "
 "in examples."
-msgstr "Definuje prostøedí pro sazbu Braillova slepeckého písma."
+msgstr "Definuje prostøedí pro sazbu Braillova slepeckého písma. Detaily viz"
+"soubor Braille.lyx v pøíkladech."
 
 #: lib/layouts/braille.module:21
 msgid "Braille (default)"
@@ -8269,9 +8249,8 @@ msgid "Braille (mirror off)"
 msgstr "Braille (zrcadlení vyp.)"
 
 #: lib/layouts/braille.module:149
-#, fuzzy
 msgid "Braille_mirror_off"
-msgstr "Braille_zrcadlení_zap"
+msgstr "Braille_zrcadlení_vyp"
 
 #: lib/layouts/endnotes.module:2
 msgid "Endnote"
@@ -8614,34 +8593,40 @@ msgid ""
 "the theorems are numbered consecutively throughout the document. This can be "
 "changed by loading one of the Theorems (Ordered By ...) modules."
 msgstr ""
+"Definuje prostøedí mat. vìt a dùkazù za pou¾ití ro¹íøení AMS. K dispozici jsou oba èíslované a "
+"neoèíslované typy. Implicitnì jsou vìty èíslovány postupnì bez ohledu na strukturu dokumentu."
+"To lze zmìnit volbou dal¹ích teorém. modulù."
 
 #: lib/layouts/theorems-chap.module:2
 msgid "Theorems (Order By Chapter)"
-msgstr ""
+msgstr "Teorémy (poøadí dle kapitol)"
 
 #: lib/layouts/theorems-chap.module:6
 msgid ""
 "Numbers theorems and the like by chapter. Use this module only with layouts "
 "that provide a chapter environment."
 msgstr ""
+"Oèísluje vìty apod. dle kapitoly. Pou¾ijte tento modul pouze s rozvr¾ením, je¾"
+"podporuje prostøedí Vìty."
 
 #: lib/layouts/theorems-sec.module:2
 msgid "Theorems (Order By Section)"
-msgstr ""
+msgstr "Teorémy (poøadí dle sekcí)"
 
 #: lib/layouts/theorems-sec.module:5
 msgid "Numbers theorems and the like by section."
-msgstr ""
+msgstr "Oèísluje vìty apod. podle sekce."
 
 #: lib/layouts/theorems-starred.module:2
 msgid "Theorems (Starred)"
-msgstr ""
+msgstr "Teorémy (*)"
 
 #: lib/layouts/theorems-starred.module:6
 msgid ""
 "Defines only unnumbered theorem environments, and the proof environment, "
 "using the extended AMS machinery."
 msgstr ""
+"Definuje pouze neoèíslované prostøedí pro vìty a dùkazy, za pou¾ití roz¹íøení AMS."
 
 #: lib/layouts/theorems-std.module:7
 msgid ""
@@ -8649,6 +8634,9 @@ msgid ""
 "the theorems are numbered consecutively throughout the document. This can be "
 "changed by loading one of the Theorems (Ordered By ...) modules."
 msgstr ""
+"Definuje nìkterá prostøedí mat. vìt pro pou¾ití v tøídách neodvozených od AMS."
+"Implicitnì jsou vìty èíslovány postupnì bez ohledu na strukturu dokumentu."
+"To lze zmìnit volbou dal¹ích teorém. modulù."
 
 #: lib/languages:3 src/Font.cpp:51 src/Font.cpp:54 src/Font.cpp:58
 #: src/Font.cpp:63 src/Font.cpp:66
@@ -17712,6 +17700,9 @@ msgid ""
 "%2$s\n"
 "You need to remove that binding before creating a new one."
 msgstr ""
+"Zkratka `%1$s' je ji¾ pou¾ita pro:\n"
+"%2$s\n"
+"Musíte toto pøiøazení smazat pøed vytvoøením nového."
 
 #: src/frontends/qt4/GuiPrefs.cpp:2473
 msgid "Can not insert shortcut to the list"
@@ -18624,9 +18615,8 @@ msgid "List of Branches"
 msgstr "Seznam vìtví"
 
 #: src/frontends/qt4/qt_helpers.cpp:502
-#, fuzzy
 msgid "List of Changes"
-msgstr "Seznam vìtví"
+msgstr "Seznam Zmìn"
 
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:287
 #: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:454
@@ -18748,14 +18738,14 @@ msgid "Opened Box Inset"
 msgstr "Rámeèek - otevøená vlo¾ka"
 
 #: src/insets/InsetBox.cpp:164 src/insets/InsetBox.cpp:167
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s)"
-msgstr "%1$s, %2$s"
+msgstr "%1$s (%2$s)"
 
 #: src/insets/InsetBox.cpp:170
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s, %3$s)"
-msgstr "%1$s, %2$s a %3$s"
+msgstr "%1$s (%2$s, %3$s)"
 
 #: src/insets/InsetBranch.cpp:55
 msgid "Opened Branch Inset"
