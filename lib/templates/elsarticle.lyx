@@ -4,17 +4,8 @@
 \begin_header
 \textclass elsarticle
 \begin_preamble
-% options for the bibliography, see the elsarticle documentation for further
-% information!
-%\biboptions{longnamesfirst,angle,semicolon}
-
-% sort and compress citations
-% the heading "Reference" is inserted by natbib
-%\usepackage[numbers, sort&compress]{natbib}
-
-% define \newblock to get natbib work with ioparticle
-% (normally only needed for the "thebibliography" environment)
-%\def\newblock{\hskip .11em plus .33em minus .07em}
+% specify here the journal
+\journal{Example: Nuclear Physics B}
 \end_preamble
 \language english
 \inputencoding auto
@@ -59,8 +50,9 @@
 status open
 
 \begin_layout Plain Layout
-For the right document class options to get the page format for your journal,
- have a look at the elsarticle documentation: 
+The Journal is specified in the document preamble! For the right document
+ class options to get the page format for your journal, have a look at the
+ elsarticle documentation: 
 \begin_inset Flex URL
 status collapsed
 
@@ -72,6 +64,32 @@ http://www.ctan.org/get/macros/latex/contrib/elsarticle/elsdoc.pdf
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frontmatter}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+starts the front matter
 \end_layout
 
 \end_inset
@@ -671,6 +689,32 @@ PACS
 MSC
 \series default
  are optional classifications.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frontmatter}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+ends the front matter
 \end_layout
 
 \end_inset

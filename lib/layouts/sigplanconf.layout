@@ -65,6 +65,7 @@ Style Conference
 	Margin			Dynamic
 	LatexType		Command
 	LatexName		conferenceinfo
+	Category		FrontMatter
 	InTitle			1
 	ParSkip			0.4
 	BottomSep		0.5
@@ -107,27 +108,28 @@ Style Subtitle
 	CopyStyle		Title
 	LatexName		subtitle
 	Font
-	  Size                Larger
+	  Size			Larger
 	EndFont
 End
 
 
 # overwrite the Author definition from stdtitle.inc
 Style Author
-	Margin                Static
-	LatexType             Command
-	InTitle               1
-	LatexName             authorinfo
-	LabelSep              xxx
-	ParSkip               0.4
-	TopSep                1.3
-	BottomSep             0.7
-	ParSep                0.7
-	Align                 Center
-	AlignPossible         None
-	LabelType             No_Label
+	Margin			Static
+	LatexType		Command
+	LatexName		authorinfo
+	Category		FrontMatter
+	InTitle			1
+	LabelSep		xxx
+	ParSkip			0.4
+	TopSep			1.3
+	BottomSep		0.7
+	ParSep			0.7
+	Align			Center
+	AlignPossible		None
+	LabelType		No_Label
 	Font
-	  Size                Large
+	  Size			Large
 	EndFont
 End
 
@@ -150,6 +152,7 @@ Style Abstract
 	Margin			Static
 	LatexType		Environment
 	LatexName		abstract
+	Category		FrontMatter
 	NextNoIndent		1
 	LeftMargin		MMM
 	RightMargin		MMM
@@ -176,6 +179,7 @@ End
 Style Acknowledgments
 	CopyStyle		Abstract
 	LatexName		acks
+	Category		BackMatter
 	InTitle			0
 	LabelBottomsep		0
 	LabelType		Top_Environment

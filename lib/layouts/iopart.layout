@@ -55,9 +55,10 @@ NoStyle Chapter*
 Style Title
 	Margin			Static
 	LatexType		Command
+	LatexName		title
+	Category		FrontMatter
 	InTitle			1
 	OptionalArgs		1
-	LatexName		title
 	ParSkip			0.4
 	ItemSep			0
 	TopSep			0
@@ -123,9 +124,10 @@ End
 Style Author
 	Margin			Static
 	LatexType		Command
-	InTitle			1
 	LatexName		author
-	LabelSep		 xxx
+	Category		FrontMatter
+	InTitle			1
+	LabelSep		xxx
 	ParSkip			0.4
 	TopSep			1.3
 	BottomSep		0.7
@@ -142,22 +144,24 @@ Style Address
 	Margin			Static
 	LatexType		Command
 	LatexName		address
+	Category		FrontMatter
 	InTitle			1
 	ParSkip			0.4
 	Align			Center
 	LabelType		No_Label
+	Font
+	  Shape			Italic
+	EndFont
 End
 
 
 Style Email
-	Margin			Static
-	LatexType		Command
+	CopyStyle		Address
 	LatexName		ead
-	InTitle			1
-	ParSkip			0.4
 	BottomSep		0.5
-	Align			Center
-	LabelType		No_Label
+	Font
+	  Shape			Up
+	EndFont
 End
 
 
@@ -165,6 +169,7 @@ Style Abstract
 	Margin			Static
 	LatexType		Environment
 	LatexName		abstract
+	Category		FrontMatter
 	InTitle			1
 	NextNoIndent		1
 	LeftMargin		MMM
@@ -193,6 +198,7 @@ Style Keywords
 	Margin			Dynamic
 	LatexType		Command
 	LatexName		"noindent{\it Keywords\/}: "
+	Category		FrontMatter
 	InTitle			1
 	ParSkip			0.4
 	BottomSep		0.5
@@ -232,6 +238,7 @@ Style Acknowledgments
 	Margin			Dynamic
 	LatexType		Command
 	LatexName		ack{}
+	Category		BackMatter
 	NeedProtect		1
 	NextNoIndent		1
 	KeepEmpty		1
@@ -253,6 +260,7 @@ Style "Bibliography (plain)"
 	Margin			First_Dynamic
 	LatexType		Bib_Environment
 	LatexName		thebibliography
+	Category		BackMatter
 	NextNoIndent		1
 	LeftMargin		MM
 	ParSkip			0.4
@@ -275,6 +283,7 @@ End
 Style "Bibliography heading"
 	CopyStyle		Section
 	LatexName		section*{References}
+	Category		BackMatter
 	KeepEmpty		1
 	LabelType		Static
 	LabelString		"References"

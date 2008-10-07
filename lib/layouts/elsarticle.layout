@@ -51,9 +51,10 @@ NoStyle Chapter*
 Style Title
 	Margin			Static
 	LatexType		Command
+	LatexName		title
+	Category		FrontMatter
 	InTitle			1
 	OptionalArgs		0
-	LatexName		title
 	ParSkip			0.4
 	ItemSep			0
 	TopSep			0
@@ -72,6 +73,7 @@ Style "Title footnote"
 	Margin			Dynamic
 	LatexType		Command
 	LatexName		tnotetext
+	Category		FrontMatter
 	InTitle			1
 	OptionalArgs		1
 	ParSkip			0.4
@@ -90,6 +92,7 @@ End
 Style Author
 	Margin			Static
 	LatexType		Command
+	Category		FrontMatter
 	InTitle			1
 	OptionalArgs		1
 	LatexName		author
@@ -123,6 +126,7 @@ End
 Style Address
 	Margin			Static
 	LatexType		Command
+	Category		FrontMatter
 	LatexName		address
 	InTitle			1
 	OptionalArgs		1
@@ -150,6 +154,7 @@ Style Abstract
 	Margin			Static
 	LatexType		Environment
 	LatexName		abstract
+	Category		FrontMatter
 	InTitle			1
 	NextNoIndent		1
 	LeftMargin		MMM
@@ -178,6 +183,7 @@ Style Keywords
 	Margin			Dynamic
 	LatexType		Environment
 	LatexName		keyword
+	Category		FrontMatter
 	InTitle			1
 	Align			Left
 	NextNoIndent		1
@@ -198,6 +204,7 @@ Style Bibliography
 	Margin			First_Dynamic
 	LatexType		Bib_Environment
 	LatexName		thebibliography
+	Category		BackMatter
 	NextNoIndent		1
 	LeftMargin		MM
 	ParSkip			0.4
