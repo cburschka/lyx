@@ -234,7 +234,7 @@ buffer
  de comandos».
  Teclea 
 \family sans
-M-x
+Alt-x
 \family default
  cuando necesites escribir ahí un comando.
 \end_layout
@@ -1694,17 +1694,17 @@ description "Tecla Mayúsculas"
 \labelwidthstring 00.00.0000
 
 \family sans
-Meta
+Alt
 \family default
  (Representada por «
 \family sans
-M
+Alt
 \family default
 »
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "M"
-description "Tecla Meta o Alt"
+symbol "Alt"
+description "Tecla Alt o Meta"
 
 \end_inset
 
@@ -1721,7 +1721,7 @@ Meta
  Si tiene ambas teclas tendrás que probar cuál de ellas funciona realmente
  como 
 \family sans
-Meta
+Alt
 \family default
 .
  Esta tecla hace muchas cosas diferentes, una de ellas activar las 
@@ -1740,7 +1740,7 @@ Por ejemplo, la secuencia
 
 
 \family sans
-M-e
+Alt-e
 \begin_inset space ~
 \end_inset
 
@@ -1760,7 +1760,7 @@ e
 
 
 \family sans
-M-a
+Alt-a
 \family default
 
 \begin_inset Quotes frd
@@ -1772,7 +1772,7 @@ M-a
 \begin_layout Standard
 Más cosas relativas a la tecla 
 \family sans
-Meta
+Alt
 \family default
  en el manual 
 \emph on
@@ -1792,7 +1792,7 @@ Aprenderás más y más combinaciones de teclas y atajos de teclado conforme
  Sin embargo, ten en cuenta que las teclas modificadoras Mayúsculas se mencionan
  de forma explícita, así 
 \family sans
-«M-p Shift-a
+«Alt-p Shift-a
 \family default
 »
 \family sans
@@ -1800,7 +1800,7 @@ Aprenderás más y más combinaciones de teclas y atajos de teclado conforme
 \family default
 significa 
 \family sans
-Meta-p
+Alt-p
 \family default
  seguido de A mayúscula.
 \end_layout
@@ -3717,7 +3717,7 @@ Retorno
  Si quieres mantener el entorno y la sangría actuales en un nuevo párrafo
  usa 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
  en vez de 
 \family sans
@@ -4671,7 +4671,7 @@ Normal
  Para crear un nuevo ítem pero con un nivel menor de profundidad de anidación
  debes pulsar 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
 .
 \end_layout
@@ -6742,11 +6742,11 @@ Shift-Tab
 \family default
 o 
 \family sans
-Shift-M-Derecha
+Shift-Alt-Derecha
 \family default
  y 
 \family sans
-Shift-M-Izquierda
+Shift-Alt-Izquierda
 \family default
 .
  El cambio de profundidad funcionará para el párrafo actual y también para
@@ -7682,11 +7682,11 @@ Lista
 #2-a Este es el nivel #2.
  Lo hemos hecho con 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
  seguido de 
 \family sans
-Shift-M-Derecha
+Shift-Alt-Derecha
 \family default
 .
 \end_layout
@@ -7701,16 +7701,16 @@ Retorno
 \family default
 , luego 
 \family sans
-Shift-M-Derecha
+Shift-Alt-Derecha
 \family default
  dos veces en una fila.
  También podríamos haber hecho como en el nivel anterior, pulsando 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
  seguido de 
 \family sans
-Shift-M-Derecha
+Shift-Alt-Derecha
 \family default
 .
 \end_layout
@@ -7733,11 +7733,11 @@ Normal
  Así que está en el nivel #4.
  Lo hemos hecho pulsando 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
 , luego 
 \family sans
-Shift-M-Derecha
+Shift-Alt-Derecha
 \family default
 , luego cambiando el párrafo a 
 \family sans
@@ -7767,7 +7767,7 @@ Normal
 \family default
 , también en el nivel #4, hecho con sólo un 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
 .
 \end_layout
@@ -7777,7 +7777,7 @@ M-Retorno
 #4-a Este es nivel #4.
  Hemos pulsado 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
  y cambiado el párrafo de nuevo a 
 \family sans
@@ -7825,11 +7825,11 @@ y este el nivel #6.
 #5-b Vuelta al nivel #5.
  Sólo pulsa 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
  seguido de 
 \family sans
-Shift-M-Izquierda
+Shift-Alt-Izquierda
 \family default
 .
 \end_layout
@@ -7839,11 +7839,11 @@ Shift-M-Izquierda
 \labelwidthstring MMM
 #4-b Vuelta al nivel #4 tras 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
  seguido de 
 \family sans
-Shift-M-Izquierda
+Shift-Alt-Izquierda
 \family default
 .
 \end_layout
@@ -7917,7 +7917,7 @@ Retorno
 \family default
 , luego 
 \family sans
-Shift-M-Derecha
+Shift-Alt-Derecha
 \family default
 ,
 \end_layout
@@ -7964,7 +7964,7 @@ Normal
 \family default
  y reiniciar la profundidad de anidación con 
 \family sans
-Shift-M-Izquierda
+Shift-Alt-Izquierda
 \family default
  una vez.
 \end_layout
@@ -8005,11 +8005,11 @@ Enumeración
 Este es el nivel #2.
  Hemos usado 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
  seguido de 
 \family sans
-Shift-M-Derecha
+Shift-Alt-Derecha
 \family default
 .
  Ahora, ¿qué sucede si anidamos un entorno 
@@ -8105,11 +8105,11 @@ Enumeración*
  Por eso su etiqueta es un punto.
  (Hemos llegado aquí con 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
 , luego 
 \family sans
-Shift-M-Derecha
+Shift-Alt-Derecha
 \family default
 , luego cambiando a entorno 
 \family sans
@@ -8122,11 +8122,11 @@ Enumeración
 \begin_layout Itemize
 Aquí tenemos un nivel #4, generado con 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
 , luego 
 \family sans
-Shift-M-Derecha
+Shift-Alt-Derecha
 \family default
 .
  Haremos esto otra vez\SpecialChar \ldots{}
@@ -8204,7 +8204,7 @@ no
 \begin_layout Enumerate
 ¡Oh!, como si no lo pudieras imaginar ya, solo hemos usado 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
  para mantener el entorno y profundidad actuales pero crea un nuevo ítem.
 \end_layout
@@ -8212,11 +8212,11 @@ M-Retorno
 \begin_layout Enumerate
 Usemos 
 \family sans
-Shift-M-Izquierda
+Shift-Alt-Izquierda
 \family default
  para disminuir la profundidad después del siguiente 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
 .
 \end_layout
@@ -8277,11 +8277,11 @@ ha reiniciado
 \begin_layout Enumerate
 Otra secuencia 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
  
 \family sans
-Shift-M-Izquierda
+Shift-Alt-Izquierda
 \family default
 , y volvemos al nivel #2.
  Esta vez, no sólo hemos cambiado la profundidad de anidación, también hemos
@@ -8296,11 +8296,11 @@ Enumeración
 \begin_layout Enumerate
 Lo mismo sucede si hacemos otra secuencia 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
  
 \family sans
-Shift-M-Izquierda
+Shift-Alt-Izquierda
 \family default
  y volvemos al nivel #1, el más externo.
 \end_layout
@@ -8361,7 +8361,7 @@ Enumeración
 \begin_layout Standard
 (
 \family sans
-Retorno, Shift-M-Derecha, Normal
+Retorno, Shift-Alt-Derecha, Normal
 \family default
 : nivel #2) En algunos sitios pondremos entre paréntesis una descripción
  de cómo se ha hecho.
@@ -8391,7 +8391,7 @@ Será mucho peor.
 
 (
 \family sans
-Retorno, Shift-M-Derecha, Verso
+Retorno, Shift-Alt-Derecha, Verso
 \family default
 : nivel #2)
 \end_layout
@@ -8407,7 +8407,7 @@ Bippitey boppitey boo!
 
 (
 \family sans
-M-Retorno)
+Alt-Retorno)
 \end_layout
 
 \begin_layout Verse
@@ -8507,11 +8507,11 @@ pez-azul
 \begin_layout Verse
 (
 \family sans
-M-Retorno, Tabla, Shift-M-Derecha
+Alt-Retorno, Tabla, Shift-Alt-Derecha
 \family default
  3 veces, 
 \family sans
-M-Retorno, Verso, Shift-M-Izquierda
+Alt-Retorno, Verso, Shift-Alt-Izquierda
 \family default
 )
 \end_layout
@@ -8576,7 +8576,7 @@ Cita
  anidada para el cuerpo de la carta.
  Usaremos 
 \family sans
-M-Retorno
+Alt-Retorno
 \family default
  para preservar la profundidad.
  Recuerda que debes usar 
@@ -8886,7 +8886,7 @@ Espacio
 \begin_inset space ~
 \end_inset
 
-entre-palabra (atajo Ctrl-M-Espacio).
+entre-palabra (atajo Ctrl-Alt-Espacio).
 \end_layout
 
 \begin_layout Subsubsection
@@ -11221,7 +11221,7 @@ clic en el botón de la barra de herramientas
 \begin_layout Itemize
 teclea la combinación 
 \family sans
-M-c
+Alt-c
 \begin_inset space ~
 \end_inset
 
@@ -11280,7 +11280,7 @@ clic en el botón
 \begin_layout Itemize
 con la combinación de teclas 
 \family sans
-M-c
+Alt-c
 \begin_inset space ~
 \end_inset
 
@@ -11322,7 +11322,7 @@ Es un aviso además de un ejemplo.
 Siempre se puede restablecer la fuente predeterminada con la combinación
  
 \family sans
-M-c
+Alt-c
 \begin_inset space ~
 \end_inset
 
@@ -11459,7 +11459,7 @@ mbox{
 
 
 \family sans
-M-c
+Alt-c
 \begin_inset space ~
 \end_inset
 
@@ -11527,7 +11527,7 @@ mbox{
 
 
 \family sans
-M-c
+Alt-c
 \begin_inset space ~
 \end_inset
 
@@ -11573,7 +11573,7 @@ mbox{
 
 
 \family sans
-M-c
+Alt-c
 \begin_inset space ~
 \end_inset
 
@@ -11643,7 +11643,7 @@ mbox{
 
 
 \family sans
-M-c
+Alt-c
 \begin_inset space ~
 \end_inset
 
@@ -11775,7 +11775,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -11807,7 +11807,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -11861,7 +11861,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -11919,7 +11919,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -11951,7 +11951,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -12005,7 +12005,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -12037,7 +12037,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -12088,7 +12088,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -12120,7 +12120,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -12174,7 +12174,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -12206,7 +12206,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -12264,7 +12264,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -12296,7 +12296,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -12350,7 +12350,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -12404,7 +12404,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -12436,7 +12436,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -12494,7 +12494,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -12526,7 +12526,7 @@ mbox{
 
 
 \family sans
-M-s
+Alt-s
 \begin_inset space ~
 \end_inset
 
@@ -12625,7 +12625,7 @@ mbox{
 
 
 \family sans
-M-c
+Alt-c
 \begin_inset space ~
 \end_inset
 
@@ -12777,7 +12777,7 @@ Estilo del texto
 \begin_layout Standard
 Para reiniciar completamente el estilo a sus valores por omisión, usa 
 \family sans
-M-c
+Alt-c
 \begin_inset space ~
 \end_inset
 
@@ -22151,7 +22151,7 @@ Todos los operadores con límites cambian automáticamente de tamaño cuando
  La colocación de los límites puede cambiarse situando el cursor directamente
  detrás del operador y pulsando 
 \family sans
-M-m
+Alt-m
 \begin_inset space ~
 \end_inset
 
@@ -23766,7 +23766,7 @@ numeración
 \family default
  o el atajo 
 \family sans
-M-m
+Alt-m
 \begin_inset space ~
 \end_inset
 
@@ -23802,7 +23802,7 @@ n
 
 
 \family sans
-M-m
+Alt-m
 \begin_inset space ~
 \end_inset
 
@@ -23834,7 +23834,7 @@ línea
 \family default
  o el atajo 
 \family sans
-M-m
+Alt-m
 \begin_inset space ~
 \end_inset
 
@@ -23851,7 +23851,7 @@ N.
 
 Para numerar todas las líneas usa el atajo 
 \family sans
-M-m
+Alt-m
 \begin_inset space ~
 \end_inset
 
@@ -24888,7 +24888,7 @@ matemáticas
 \family default
  (o bien el atajo 
 \family sans
-M-m
+Alt-m
 \begin_inset space ~
 \end_inset
 
