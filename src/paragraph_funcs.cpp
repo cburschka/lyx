@@ -36,22 +36,19 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 	// Note: moveItem() does not honour change tracking!
 	// Therefore, it should only be used for breaking and merging paragraphs
 
-	char_type const tmpChar = fromPar.getChar(fromPos);
 	Font const tmpFont = fromPar.getFontSettings(params, fromPos);
 	Change const tmpChange = fromPar.lookupChange(fromPos);
 
-	if (fromPar.isInset(fromPos)) {
-		Inset * tmpInset = 0;
-		if (fromPar.getInset(fromPos)) {
-			// the inset is not in the paragraph any more
-			tmpInset = fromPar.releaseInset(fromPos);
-		}
+	Inset * tmpInset = fromPar.getInset(fromPos);
+	if (tmpInset) {
+		// the inset is not in the paragraph any more
+		tmpInset = fromPar.releaseInset(fromPos);
 		return toPar.insertInset(toPos, tmpInset, tmpFont, tmpChange);
-	} else {
-		fromPar.eraseChar(fromPos, false);
-		toPar.insertChar(toPos, tmpChar, tmpFont, tmpChange);
 	}
 
+	char_type const tmpChar = fromPar.getChar(fromPos);
+	fromPar.eraseChar(fromPos, false);
+	toPar.insertChar(toPos, tmpChar, tmpFont, tmpChange);
 	return true;
 }
 
