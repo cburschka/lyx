@@ -304,12 +304,15 @@ public:
 	///
 	void insertChar(pos_type pos, char_type c,
 			Font const &, Change const & change);
-	///
-	void insertInset(pos_type pos, Inset * inset,
+	/// Insert \p inset at position \p pos with \p change traking status.
+	/// \return true if successful.
+	bool insertInset(pos_type pos, Inset * inset,
 			 Change const & change);
-	///
-	void insertInset(pos_type pos, Inset * inset,
-			 Font const &, Change const & change);
+	/// Insert \p inset at position \p pos with \p change traking status and
+	/// \p font.
+	/// \return true if successful.
+	bool insertInset(pos_type pos, Inset * inset,
+			 Font const & font, Change const & change);
 	///
 	Inset * getInset(pos_type pos);
 	///

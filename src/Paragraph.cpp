@@ -449,17 +449,23 @@ void Paragraph::Private::insertChar(pos_type pos, char_type c,
 }
 
 
-void Paragraph::insertInset(pos_type pos, Inset * inset,
+bool Paragraph::insertInset(pos_type pos, Inset * inset,
 				   Change const & change)
 {
 	LASSERT(inset, /**/);
 	LASSERT(pos >= 0 && pos <= size(), /**/);
+
+	// Paragraph::insertInset() can be used in cut/copy/paste operation where
+	// d->inset_owner_ is not set yet.
+	if (d->inset_owner_ && d->inset_owner_->insetAllowed(inset->lyxCode()))
+		return false;
 
 	d->insertChar(pos, META_INSET, change);
 	LASSERT(d->text_[pos] == META_INSET, /**/);
 
 	// Add a new entry in the insetlist_.
 	d->insetlist_.insert(inset, pos);
+	return true;
 }
 
 
@@ -1303,12 +1309,13 @@ void Paragraph::insertChar(pos_type pos, char_type c,
 }
 
 
-void Paragraph::insertInset(pos_type pos, Inset * inset,
+bool Paragraph::insertInset(pos_type pos, Inset * inset,
 			    Font const & font, Change const & change)
 {
-	insertInset(pos, inset, change);
+	bool const success = insertInset(pos, inset, change);
 	// Set the font/language of the inset...
 	setFont(pos, font);
+	return success;
 }
 
 

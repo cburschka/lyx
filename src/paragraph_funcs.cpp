@@ -46,13 +46,7 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 			// the inset is not in the paragraph any more
 			tmpInset = fromPar.releaseInset(fromPos);
 		}
-
-		if (!toPar.inInset().insetAllowed(tmpInset->lyxCode())) {
-			delete tmpInset;
-			return false;
-		}
-
-		toPar.insertInset(toPos, tmpInset, tmpFont, tmpChange);
+		return toPar.insertInset(toPos, tmpInset, tmpFont, tmpChange);
 	} else {
 		fromPar.eraseChar(fromPos, false);
 		toPar.insertChar(toPos, tmpChar, tmpFont, tmpChange);
