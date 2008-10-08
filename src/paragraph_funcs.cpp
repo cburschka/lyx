@@ -42,7 +42,11 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 	if (Inset * tmpInset = fromPar.getInset(fromPos)) {
 		fromPar.releaseInset(fromPos);
 		// The inset is not in fromPar any more.
-		return toPar.insertInset(toPos, tmpInset, tmpFont, tmpChange);
+		if (!toPar.insertInset(toPos, tmpInset, tmpFont, tmpChange)) {
+			delete tmpInset;
+			return false;
+		}
+		return true;
 	}
 
 	char_type const tmpChar = fromPar.getChar(fromPos);
