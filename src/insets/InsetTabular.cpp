@@ -3235,6 +3235,10 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				setCursorFromCoordinates(cur, cmd.x, cmd.y);
 				bvcur.setCursor(cur);
 				bvcur.selection() = true;
+	  			if (tablemode(bvcur)) {
+	 				bvcur.pit() = bvcur.lastpit();
+	 				bvcur.pos() = bvcur.lastpos();
+	  			}
 			} else
 				cur.undispatched();
 		}
@@ -3301,6 +3305,11 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			cur.undispatched();
 		}
+		if (tablemode(cur)) {
+			cur.pit() = cur.lastpit();
+			cur.pos() = cur.lastpos();
+			return;
+		}
 		break;
 
 	case LFUN_UP_SELECT:
@@ -3323,6 +3332,11 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (sl == cur.top()) {
 			cmd = FuncRequest(LFUN_UP);
 			cur.undispatched();
+		}
+		if (tablemode(cur)) {
+			cur.pit() = cur.lastpit();
+			cur.pos() = cur.lastpos();
+			return;
 		}
 		break;
 
@@ -3413,6 +3427,14 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		else
 			cell(cur.idx())->dispatch(cur, cmd);
+		break;
+
+	case LFUN_SELF_INSERT:
+		if (tablemode(cur)) {
+			recordUndoInset(cur, Undo::DELETE);
+			cutSelection(cur);
+		}
+		cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
 	case LFUN_COPY:
@@ -4003,6 +4025,16 @@ void InsetTabular::moveNextCell(Cursor & cur)
 			return;
 		++cur.idx();
 	}
+ 
+ 	cur.boundary(false);
+ 
+ 	if (tablemode(cur)) {
+ 		cur.pit() = cur.lastpit();
+ 		cur.pos() = cur.lastpos();
+ 		resetPos(cur);
+ 		return;
+ 	}
+
 	cur.pit() = 0;
 	cur.pos() = 0;
 	resetPos(cur);
@@ -4028,6 +4060,14 @@ void InsetTabular::movePrevCell(Cursor & cur)
 			return;
 		--cur.idx();
 	}
+
+	if (tablemode(cur)) {
+		cur.pit() = cur.lastpit();
+		cur.pos() = cur.lastpos();
+		resetPos(cur);
+		return;
+	}
+
 	cur.pit() = cur.lastpit();
 	cur.pos() = cur.lastpos();
 

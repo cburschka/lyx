@@ -123,6 +123,9 @@ What's new
 
 - Fix a crash on some systems when using the math panel (bug 5189).
 
+- Fix the input behaviour when multiple cells of a table were selected,
+  including a possible assertion (bug 5225).
+
 - Empty lines are correctly removed when the cursor moves due to the
   "cursor follows scrollbar" feature (bug 5065).
 
