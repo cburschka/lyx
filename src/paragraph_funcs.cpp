@@ -37,12 +37,11 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 	// Therefore, it should only be used for breaking and merging paragraphs
 
 	Font const tmpFont = fromPar.getFontSettings(params, fromPos);
-	Change const tmpChange = fromPar.lookupChange(fromPos);
+	Change const & tmpChange = fromPar.lookupChange(fromPos);
 
-	Inset * tmpInset = fromPar.getInset(fromPos);
-	if (tmpInset) {
-		// the inset is not in the paragraph any more
-		tmpInset = fromPar.releaseInset(fromPos);
+	if (Inset * tmpInset = fromPar.getInset(fromPos)) {
+		fromPar.releaseInset(fromPos);
+		// The inset is not in fromPar any more.
 		return toPar.insertInset(toPos, tmpInset, tmpFont, tmpChange);
 	}
 
