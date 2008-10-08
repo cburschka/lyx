@@ -3,8 +3,24 @@
 \begin_document
 \begin_header
 \textclass dinbrief
-\language german
-\inputencoding latin1
+\begin_preamble
+% Erzeugen von Adressaufklebern
+%\makelabels
+
+%% Layout-Schalter (\no* = aus, \* = an) 
+% Fenster um Adressfeld
+% \nowindowrules
+% Trennstrich zwischen Absender und Anschrift
+% \nobackaddressrule
+% Faltmarkierung
+% \nowindowtics
+
+% Hochgestellte vs. Standardanschrift
+% \addresshigh
+% \addressstd (default)
+\end_preamble
+\language ngerman
+\inputencoding auto
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -18,9 +34,9 @@
 \paperfontsize 12
 \spacing single
 \use_hyperref false
-\papersize default
+\papersize a4paper
 \use_geometry false
-\use_amsmath 0
+\use_amsmath 1
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
@@ -29,84 +45,330 @@
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language german
+\quotes_language polish
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Die Datenfelder (Briefkopf, Absender, Betreffzeile, Empfängeradresse, Datum,
+ Unterschrift, Fußzeile, ...) müssen vor der Anrede definiert werden!
+\begin_inset Newline newline
+\end_inset
+
+Bei mehrfacher Verwendung in einem Dokument ersetzt die letzten Definition
+ die jeweils vorhergehende.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout My Address
-<Mein Name>
+Mein Name
+\begin_inset space \hfill{}
+\end_inset
+
+ggf.
+\begin_inset space ~
+\end_inset
+
+Firmenlogo
 \begin_inset Newline newline
 \end_inset
 
-<Meine Straße>
+Meine Straße
 \begin_inset Newline newline
 \end_inset
 
-<Meine Stadt>
+Meine Stadt
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+oder individuell gestalteter Briefkopf (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ Tabelle oder eingebundene Grafik)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Return address
+Mein Name, Meine Straße, Meine Stadt
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Absenderzeile im Adressfenster 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Send To Address
-<Dein Name> 
+Name
 \begin_inset Newline newline
 \end_inset
 
-<Deine Straße>
+Straße
 \begin_inset Newline newline
 \end_inset
 
-<Deine Stadt>
+Stadt
 \end_layout
 
-\begin_layout Stadt
-<Stadt für Datum>
+\begin_layout Postal comment
+Einschreiben/Luftpost
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
 \end_layout
 
-\begin_layout Datum
-08.
- Juni 1997
+\end_inset
+
+
+\end_layout
+
+\begin_layout Handling
+Eilt/Persönlich
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout YourRef
+20.10.2010
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout MyRef
+HGK
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Writer
+Müller
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+wenn hier etwas engetragen ist, wird auf die DIN 676 von Mai 1991 umgeschaltet
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Area code
+0800
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Telephone
+1231231
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Erscheint nur, wenn auch Ihre Zeichen oder Unsere Zeichen definiert ist
+ (ggf.
+ mit geschütztem Leerzeichen erzwingen).
+\begin_inset Newline newline
+\end_inset
+
+Kann auch als Teil der Nummer formatiert werden (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+.B.
+ 0351/12312312).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Signature
-<Meine Unterschrift>
+Müller
 \end_layout
 
-\begin_layout Betreff
-<Mein Betreff>
+\begin_layout Bottomtext
+Fußzeile: Besucheradresse, Konto, Telefon/-fax, Mail, Webseite, o.
+\begin_inset space \thinspace{}
+\end_inset
+
+Ä.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Location
+Beispielstadt
+\end_layout
+
+\begin_layout Date
+21.10.2010
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Wenn das Datum fehlt, wird automatisch das aktuelle Datum gesetzt.
+\begin_inset Newline newline
+\end_inset
+
+Ein leeres 
+\begin_inset Quotes pld
+\end_inset
+
+Datum
+\begin_inset Quotes prd
+\end_inset
+
+ Feld unterdrückt die Ausgabe.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subject
+Betreff
 \end_layout
 
 \begin_layout Opening
-<Anrede>
+Sehr geehrte(r)
 \end_layout
 
 \begin_layout Standard
-<Hierher kommt der Text>
+Brieftext
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Der Brieftext steht zwischen Anrede und Gruß.
+ Es sind alle Schriftstile möglich.
 \end_layout
 
-\begin_layout Standard
-<Auch in mehreren Absätzen>
+\end_inset
+
+
 \end_layout
 
 \begin_layout Closing
 Mit freundlichen Grüßen
+\begin_inset OptArg
+status open
+
+\begin_layout Plain Layout
+optionale, alternative Unterschrift
 \end_layout
 
-\begin_layout ps
-<Postscript.>
+\end_inset
+
+ 
 \end_layout
 
-\begin_layout cc
-<Verteiler>
+\begin_layout PS
+PS Text
 \end_layout
 
 \begin_layout encl
-<Anlagen>
+1
+\begin_inset space \thinspace{}
+\end_inset
+
+Fotokopie der Akte
+\end_layout
+
+\begin_layout cc
+AS, V, C
 \end_layout
 
 \end_body
