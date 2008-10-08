@@ -457,7 +457,7 @@ bool Paragraph::insertInset(pos_type pos, Inset * inset,
 
 	// Paragraph::insertInset() can be used in cut/copy/paste operation where
 	// d->inset_owner_ is not set yet.
-	if (d->inset_owner_ && d->inset_owner_->insetAllowed(inset->lyxCode()))
+	if (d->inset_owner_ && !d->inset_owner_->insetAllowed(inset->lyxCode()))
 		return false;
 
 	d->insertChar(pos, META_INSET, change);
