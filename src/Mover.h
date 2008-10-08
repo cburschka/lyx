@@ -31,17 +31,35 @@ public:
 
 	/** Copy file @c from to @c to.
 	 *  This version should be used to copy files from the original
-	 *  location to the temporary directory, since @c to and @c latex
-	 *  would be equal in this case.
+	 *  location to the temporary directory.
 	 *  \returns true if successful.
 	 */
 	bool
 	copy(support::FileName const & from, support::FileName const & to) const;
 
+	/** Copy file @c from to @c to.
+	 *  \see SpecialisedMover::SpecialisedMover() for an explanation of
+	 *  @c latex.
+	 *  This version should be used to copy files from the temporary
+	 *  directory to the export location, since @c to and @c latex may
+	 *  not be equal in this case.
+	 *  \returns true if successful.
+	 *  NOTE: Although this routine simply calls do_copy() and 
+	 *  Mover::do_copy() does not itself make any use of the @c latex argument,
+	 *  SpecialisedMover overrides do_copy(), so SpecialisedMover::copy(), which
+	 *  is just Mover::copy(), calls SpecialisedMover::do_copy(), and the @c latex 
+	 *  argument IS in that case used.
+	 */
+	bool
+	copy(support::FileName const & from, support::FileName const & to,
+	     std::string const & latex) const
+	{
+		return do_copy(from, to, latex);
+	}
+
 	/** Rename file @c from as @c to.
 	 *  This version should be used to move files from the original
-	 *  location to the temporary directory, since @c to and @c latex
-	 *  would be equal in this case.
+	 *  location to the temporary directory.
 	 *  \returns true if successful.
 	 */
 	bool
@@ -64,6 +82,10 @@ public:
 
 protected:
 	virtual bool
+	do_copy(support::FileName const & from, support::FileName const & to,
+		std::string const &) const;
+
+	virtual bool
 	do_rename(support::FileName const & from, support::FileName const & to,
 		  std::string const &) const;
 };
@@ -76,7 +98,13 @@ protected:
  *  For example, an Xfig .fig file can contain references to external
  *  picture files. If such a reference has a relative path, then the
  *  copied .fig file will require a transformation of the picture file
- *  reference if it is to be found by Xfig.
+ *  reference if it is to be found by Xfig. 
+ *
+ *  So, in this case, we need three arguments: 
+ *  (i)   @c from  the location of the file to be moved
+ *  (ii)  @c to    the location to which it should be moved
+ *  (iii) @c latex the identifier that should be used in the sort of
+ *                 transformation just mentioned.
  */
 class SpecialisedMover : public Mover
 {
@@ -92,14 +120,11 @@ public:
 	 *  where $$s is a placeholder for the lyx support directory,
 	 *        $$i is a placeholder for the name of the file to be moved,
 	 *        $$o is a placeholder for the name of the file after moving,
-	 *        $$l is a placeholder for the name of the file after moving,
-	 *        suitable as argument to a latex include command. This is
-	 *        either an absolute filename or relative to the master
-	 *        document.
-	 *        $$o and $$l can only differ if the file is copied from the
-	 *        temporary directory to the export location. If it is copied
-	 *        from the original location to the temporary directory, they
-	 *        are the same, so $$l may be ommitted in this case.
+	 *        $$l is a placeholder for the latex argument, as explained above.
+	 *  $$o and $$l can only differ if the file is copied from the temporary 
+	 *  directory to the export location. If it is copied from the original 
+	 *  location to the temporary directory, they are the same, so $$l may be 
+	 *  ignored in this case, as it is in the Mover baseclass.
 	 */
 	SpecialisedMover(std::string const & command)
 		: command_(command) {}

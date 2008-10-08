@@ -28,6 +28,13 @@ namespace lyx {
 
 bool Mover::copy(FileName const & from, FileName const & to) const
 {
+	return do_copy(from, to, to.absFilename());
+}
+
+
+bool Mover::do_copy(FileName const & from, FileName const & to,
+		    string const &) const
+{
 	return from.copyTo(to);
 }
 
@@ -50,7 +57,7 @@ bool SpecialisedMover::do_copy(FileName const & from, FileName const & to,
 			       string const & latex) const
 {
 	if (command_.empty())
-		return Mover::copy(from, to);
+		return Mover::do_copy(from, to, latex);
 
 	string command = libScriptSearch(command_);
 	command = subst(command, "$$i", quoteName(from.toFilesystemEncoding()));

@@ -287,7 +287,8 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 			return;
 		}
 		item->checksum = checksum;
-		if (!mover.copy(converted_file, item->cache_name)) {
+		if (!mover.copy(converted_file, item->cache_name,
+		              onlyFilename(item->cache_name.absFilename()))) {
 			LYXERR(Debug::FILES, "Could not copy file " << orig_from << " to "
 				<< item->cache_name);
 		} else if (!item->cache_name.changePermission(0600)) {
@@ -297,7 +298,8 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 	} else {
 		CacheItem new_item(orig_from, to_format, timestamp,
 				orig_from.checksum());
-		if (mover.copy(converted_file, new_item.cache_name)) {
+		if (mover.copy(converted_file, new_item.cache_name,
+		              onlyFilename(new_item.cache_name.absFilename()))) {
 			if (!new_item.cache_name.changePermission(0600)) {
 				LYXERR(Debug::FILES, "Could not change file mode"
 					<< new_item.cache_name);
@@ -433,7 +435,8 @@ bool ConverterCache::copy(FileName const & orig_from, string const & to_format,
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
 	LASSERT(item, /**/);
 	Mover const & mover = getMover(to_format);
-	return mover.copy(item->cache_name, dest);
+	return mover.copy(item->cache_name, dest,
+	                  onlyFilename(dest.absFilename()));
 }
 
 } // namespace lyx
