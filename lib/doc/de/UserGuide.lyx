@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 4.
+letzte Änderung: 8.
  Oktober 2008
 \end_layout
 
@@ -1022,7 +1022,7 @@ Neu (Strg+N)
 	filename ../../images/buffer-new.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 22bp 22bp
 	groupId Icon
 
 \end_inset
@@ -1052,7 +1052,7 @@ Vorlage\SpecialChar \ldots{}
 	filename ../../images/file-open.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 22bp 22bp
 	groupId Icon
 
 \end_inset
@@ -1076,7 +1076,7 @@ Speichern (Strg+S)
 	filename ../../images/buffer-write.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 22bp 22bp
 	groupId Icon
 
 \end_inset
@@ -1118,7 +1118,7 @@ Drucken\SpecialChar \ldots{}
 	filename ../../images/dialog-show_print.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 22bp 22bp
 	groupId Icon
 
 \end_inset
@@ -1265,7 +1265,7 @@ Ausschneiden
 	filename ../../images/cut.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 22bp 22bp
 	groupId Icon
 
 \end_inset
@@ -1293,7 +1293,7 @@ Kopieren
 	filename ../../images/copy.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 22bp 22bp
 	groupId Icon
 
 \end_inset
@@ -1325,7 +1325,7 @@ Strg+V
 	filename ../../images/paste.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 22bp 22bp
 	groupId Icon
 
 \end_inset
@@ -1370,7 +1370,7 @@ Ersetzen
 	filename ../../images/dialog-show_findreplace.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 22bp 22bp
 	groupId Icon
 
 \end_inset
@@ -2039,7 +2039,7 @@ name "Navigieren"
 
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Navigieren
@@ -2715,6 +2715,7 @@ Suchen & Ersetzen
 .
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 Es gibt noch weitere Funktionen, die über die 
 \family sans
@@ -2726,6 +2727,22 @@ Alt
 Tastenkürzel
 \emph default
 n.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+In Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Tastaturkürzel-bearbeiten"
+
+\end_inset
+
+ wird erklärt, wie man Tastenkürzel anzeigt und bearbeitet.
 \end_layout
 
 \begin_layout Section
@@ -3120,7 +3137,7 @@ paper
 
 -Dokumentklasse (nicht in allen LaTeX
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3314,6 +3331,68 @@ Handbuchergänzungen
 \end_layout
 
 \begin_layout Subsubsection
+Module
+\begin_inset CommandInset label
+LatexCommand label
+name "Module"
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Dokument!Module
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Module ergänzen ein Dokument um zusätzliche Funktionen, die nicht standardmäßig
+ zur gewählten Dokumentklasse gehören.
+ Wenn Sie zum Beispiel Brailleschrift benutzen wollen, gibt es das natürlich
+ in keiner Dokumentklasse, also müssen Sie ein entsprechendes Modul im Abschnitt
+ 
+\family sans
+Dokumentklasse
+\family default
+ von 
+\family sans
+Dokument
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Einstellungen
+\family default
+ laden.
+ Wenn Sie auf einen Namen klicken, erscheint im unteren Feld eine Erklärung.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Anmerkung 1
+\series default
+: Manche Module benötigen LaTeX-Pakete, die nicht immer standardmäßig installier
+t sind.
+ LyX warnt in diesem Fall.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Anmerkung 2
+\series default
+: Manche Module benötigen weitere Module, und manche Module sind nicht kompatibe
+l.
+\end_layout
+
+\begin_layout Subsubsection
 Eigenschaften
 \end_layout
 
@@ -3338,7 +3417,7 @@ reference "Tab:Dokumentklassen"
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -3352,7 +3431,7 @@ name "Tab:Dokumentklassen"
 
 Dokumentklassen
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dokument!klassen@-klassen
@@ -4046,7 +4125,7 @@ Mediävalziffern
 
 verwenden
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Mediävalziffern
@@ -4315,7 +4394,7 @@ mit
  Seitenzahlen und Kapitel- oder Abschnittsüberschriften mit Nummer.
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ob LyX die Kapitel- oder die Abschnittsüberschriften benutzt, hängt von
@@ -4343,7 +4422,7 @@ fancyhdr
 \family default
 -Paketes
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Suchen Sie in Ihrer Distribution nach fancyhdr.dvi ode fancyhdr.pdf.
@@ -5454,7 +5533,7 @@ Standard
 \begin_layout Subsection
 Dokumenttitel
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dokument!titel@-titel
@@ -5508,7 +5587,7 @@ Titel
 \family default
 -Umgebung
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Titel!Umgebung@-Umgebung
@@ -6937,7 +7016,7 @@ ff ausführlich beschreiben.
 \family sans
 Aufzählung
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Liste ! Aufzahlung@Aufzählung
@@ -7307,12 +7386,12 @@ Liste
 \family default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -7328,7 +7407,7 @@ X!-Liste
 
  und Liste
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Liste
@@ -8290,6 +8369,7 @@ reference "Literaturverzeichnis"
 \end_inset
 
 .
+ Dort finden Sie auch einiges über BibTeX-Literaturverzeichnisse.
 \end_layout
 
 \begin_layout Subsection
@@ -8416,12 +8496,12 @@ L
 \family default
 yX-Code
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -12550,7 +12630,7 @@ end{sloppypar}
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -12589,7 +12669,7 @@ environment
 .
  Alles zwischen den beiden Befehlen ist ein Absatz.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -12614,7 +12694,7 @@ Sloppy heisst salopp, schlampig.
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -12653,7 +12733,7 @@ environment
 .
  Alles zwischen den beiden Befehlen ist ein Absatz.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -12730,6 +12810,13 @@ ist eine solche Linie.
 
 \begin_layout Section
 Zeichen und Symbole
+\begin_inset CommandInset label
+LatexCommand label
+name "Zeichen-und-Symbole"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -13305,6 +13392,41 @@ reference "Fontgröße"
 \end_inset
 
  beschrieben.
+\end_layout
+
+\begin_layout Standard
+Im CJK-Feld können die Benutzer von Chinesisch, Japanisch oder Koreanisch
+ (CJK) eine Font festlegen, mit dem die Schriftzeichen dargestellt werden
+ sollen.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Der Font wird als Argument an die Befehle des LaTeX-Paketes 
+\family typewriter
+cjk
+\family default
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+LaTeX! -Paket ! cjk
+\end_layout
+
+\end_inset
+
+ übergeben.
+ Das wirk sich aber nicht auf die Dokumentsprache Japanisch aus, die 
+\family typewriter
+cjk
+\family default
+ nicht benutzt.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -18413,7 +18535,7 @@ Pixelbilder lassen sich nicht oder nur stark vereinfacht in Vektorgrafiken
 \begin_layout Subsection
 Abbildungseinstellungen gruppieren
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Abbildungen!Einstellungen gruppieren
@@ -18439,7 +18561,7 @@ Eine Gruppe definieren Sie, indem im Grafik-Dialogfenster einer Abbildung
 \family sans
 LaTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -18458,7 +18580,7 @@ und
 
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -20179,7 +20301,7 @@ reference "Tab:Zellen-um-90°-drehen"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -21321,6 +21443,15 @@ Umschalt
 \begin_layout Standard
 \noindent
 Beim Einfügen muss der Cursor in der Zelle links oben stehen.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In der Zieltabelle darf auch nicht mehr als eine Zelle markiert sein.
+\end_layout
+
+\end_inset
+
  Beachten Sie bitte, dass Quell- und Zieltabelle dieselbe Anzahl an Zeilen
  und Spalten haben sollten, da sonst beim Einfügen Daten weggelassen werden.
  Bei größeren Zieltabellen werden die überzähligen Zeilen und Spalten leergelass
@@ -21683,7 +21814,8 @@ en.
 
 \begin_layout Standard
 \noindent
-Sie können auch eine ganze Tabelle auf einmal kopieren.
+Sie können auch eine ganze Tabelle auf einmal kopieren, indem Sie den Cursor
+ vor oder hinter die Tabelle stellen und dann auswählen.
 \end_layout
 
 \begin_layout Subsection
@@ -21786,7 +21918,7 @@ reference "Tab:Mehrzeilige-Tabelle"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -23070,7 +23202,7 @@ reference "Tab:Gleitende-Tabelle"
 placement htbp
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -25488,7 +25620,7 @@ reference "Tab:Akzente"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -27841,7 +27973,7 @@ alpha}
 \begin_layout Subsection
 Mathematischer Textmodus
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 mathematische!r Textmodus
@@ -28921,7 +29053,7 @@ reference "Gliederung"
 \begin_layout Subsection
 Abbildungs-
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Abbildungs!-verzeichnis
@@ -28931,7 +29063,7 @@ Abbildungs!-verzeichnis
 
 , Tabellen-
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tabellen!verzeichnis@-verzeichnis
@@ -28941,7 +29073,7 @@ Tabellen!verzeichnis@-verzeichnis
 
  und Algorithmenverzeichnisse
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Algorithmen!-verzeichnis
@@ -29060,7 +29192,7 @@ http://www.lyx.org
 
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -29412,6 +29544,10 @@ reference "Literaturverzeichnis-Umgebung"
 ) benutzt.
 \end_layout
 
+\begin_layout Subsection
+Die Literaturverzeichnis-Umgebung
+\end_layout
+
 \begin_layout Standard
 Am 
 \emph on
@@ -29595,7 +29731,7 @@ name "Literaturverzeichnis-Datenbanken-(BibTeX)"
 Literaturverzeichnis-Datenbanken sind nützlich, wenn Sie dasselbe Literaturverze
 ichnis in mehreren Dokumenten benutzen wollen.
  Außerdem sehen sie dann auch gleich aus.
- Sie können alle Literaturangaben Ihres Arbeitsfeldes in einer Datenbank
+ Sie können alle Literaturangaben Ihres Arbeitsgebiets in einer Datenbank
  sammeln.
 \end_layout
 
@@ -29615,7 +29751,7 @@ key "Mittelbach,Kopka,Lamport"
 ).
  Normalerweise benutzt man ein besonderes Programm, um die Datenbank anzulegen
  und zu bearbeiten.
- Hier 
+ Auf 
 \begin_inset Flex URL
 status collapsed
 
@@ -29646,7 +29782,9 @@ e
 \end_inset
 
 Inhaltsverzeichnis\SpecialChar \menuseparator
-BibT
+BibTe
+\family default
+
 \begin_inset ERT
 status collapsed
 
@@ -29657,7 +29795,9 @@ status collapsed
 
 \end_inset
 
-eX-Literaturverzeichnis
+
+\family sans
+X-Literaturverzeichnis
 \family default
 , woraufhin das 
 \family sans
@@ -29689,6 +29829,24 @@ Löschen
 Stil
 \family default
  das Aussehen wählen.
+ Die Option 
+\family sans
+Literaturverzeichnis
+\begin_inset space \space{}
+\end_inset
+
+ins
+\begin_inset space \space{}
+\end_inset
+
+Inhaltsverzeichnis
+\family default
+ fügt einen Literaturverzeichniseintrag zum Inhaltsverzeichnis hinzu.
+ Über 
+\family sans
+Inhalt
+\family default
+ können Sie festlegen, was gedruckt werden soll.
 \end_layout
 
 \begin_layout Standard
@@ -29697,8 +29855,21 @@ Die Stildatei ist eine Textdatei mit der Endung
 .bst
 \family default
 , die das Aussehen der Literatureinträge definiert.
- Viele Verleger liefern eigene Stildateien, so dass Sie sich um das Aussehen
- nicht kümmern müssen.
+ Ihre LaTeX-Distribution sollte mehrere anbieten, und viele Verleger liefern
+ eigene Stildateien, so dass Sie sich um das Aussehen nicht kümmern müssen.
+ Sie können aber auch eine eigene Stildatei verwenden.
+ Auf 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/get/biblio/bibtex/contrib/doc/btxhak.pdf
+\end_layout
+
+\end_inset
+
+ können Sie nachlesen, wie man sie erstellt.
 \end_layout
 
 \begin_layout Standard
@@ -29713,7 +29884,7 @@ LyX verwendet BibTeX, um ein Literaturverzeichnis aus einer Datenbank zu
 Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
 Ausgaben\SpecialChar \menuseparator
-LaT
+LaTe
 \family default
 
 \begin_inset ERT
@@ -29728,11 +29899,13 @@ status collapsed
 
 
 \family sans
-eX
+X
 \family default
  können Sie im Feld 
 \family sans
-BibT
+BibTe
+\family default
+
 \begin_inset ERT
 status collapsed
 
@@ -29743,9 +29916,47 @@ status collapsed
 
 \end_inset
 
-eX-Befehl
+
+\family sans
+X-Befehl
 \family default
- Optionen angeben.
+ den Befehl samt Optionen angeben.
+ Bevor Sie aber Optionen verwenden, lesen Sie das BibTeX-Handbuch 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BibTeX"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie bei 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Literaturverzeichnis
+\family default
+ 
+\family sans
+Abschnittspezifisches
+\begin_inset space \space{}
+\end_inset
+
+Literaturverzeichnis
+\family default
+ angekreuzt haben, können Sie mehrfache und unterteilte Literaturverzeichnisse
+ erstellen.
+ Mehr darüber finden Sie im Abschnitt 
+\emph on
+Literaturverzeichnisse mit BibTeX
+\emph default
+ in den 
+\emph on
+Handbuchergänzungen
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -29787,6 +29998,7 @@ Literaturverweis\SpecialChar \ldots{}
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
+	groupId Icon
 
 \end_inset
 
@@ -30359,7 +30571,7 @@ Stichwort ! formatieren
 \begin_layout Standard
 Sie können ein Stichwort wie normalen Text formatieren.
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Stichwort ! 
@@ -30394,7 +30606,7 @@ reference "Mediävalziffern-verwenden"
 
 ) ausgibt.
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Stichwort ! Mediävalziffern| oldstylenums
@@ -31356,7 +31568,7 @@ Eine weitere mögliche Anwendung wäre eine Lehrerversion, in der die Antworten
 
 \begin_layout Standard
 \begin_inset Branch Frage
-status open
+status collapsed
 
 \begin_layout Standard
 Frage: Wer war der erste Physik-Nobelpreis-Gewinner?
@@ -31393,7 +31605,7 @@ Um konditionale Ausgaben zu erzeugen, wo keine Zweige angegeben werden können
  werden.
  Man kann zum Beispiel für den Frage-Zweig definieren:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Eine Einführung in die LaTeX-Syntax ist in Abschnitt
@@ -31455,7 +31667,7 @@ Antwort}[1]{#1}
 
 \lang english
 \begin_inset Branch Frage
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -31615,7 +31827,7 @@ hyperref
 \family default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LaTeX! -Paket ! hyperref
@@ -32474,7 +32686,7 @@ ispell.
 \family default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Die neueste Version können Sie im Internet unter 
@@ -33510,7 +33722,7 @@ key "TeXCatalogue"
 \begin_layout Section
 Internationale Unterstützung
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Internationale Unterstutzung@Unterstützung
@@ -33704,7 +33916,7 @@ utf8x
 \family default
  für CJK-Sprachen
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 CJK
@@ -33942,7 +34154,25 @@ reference "LyX-Hauptfenster"
 Standard-Werkzeugleiste
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../clipart/StandardToolbar.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Enumerate
+\begin_inset Graphics
+	filename ../clipart/ToolbarEnvBox.png
+	scale 70
+	BoundingBox 0bp 4bp 119bp 20bp
+
+\end_inset
+
+: 
 \begin_inset Quotes gld
 \end_inset
 
@@ -34293,6 +34523,16 @@ reference "Gliederung"
 
 \begin_layout Subsection
 Extra-Werkzeugleiste
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../clipart/ExtraToolbar.png
+	width 100col%
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -34749,6 +34989,16 @@ reference "Unterdokument"
 
 \begin_layout Subsection
 Ansicht/Aktualisierung-Werkzeugleiste
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../clipart/ViewToolbar.png
+	scale 70
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -35477,7 +35727,7 @@ Am Ende des
 \family sans
 Ansicht
 \family default
--Menüs werden alle gerade geöffneten Dokumente aufgeliste.
+-Menüs werden alle gerade geöffneten Dokumente aufgelistet.
 \end_layout
 
 \begin_layout Subsection
@@ -35485,7 +35735,8 @@ Alle Einfügungen öffnen/schließen
 \end_layout
 
 \begin_layout Standard
-Das ist selbsterklärend.
+Durch das Öffnen werden Texte aller Einfügungen sichtbar, durch das Schließen
+ nur noch ihre Marken.
 \end_layout
 
 \begin_layout Subsection
@@ -35574,7 +35825,7 @@ Im Browser muss der Knopf für neu laden angeklickt werden, damit die Änderung
 \family sans
 OpenDocument
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 OpenDocument
@@ -35767,12 +36018,20 @@ Vollbild / F11
 
 \begin_layout Standard
 Damit wird der Vollbildmodus eingeschaltet.
+ Dabei werden die Menüleiste und alle Werkzeugleisten entfernt, so dass
+ Sie nur noch den Textbereich sehen.
  Mit 
 \family sans
 F11
 \family default
  kehren Sie wieder zurück.
- F11 schalte den Vollbildmodus an und aus.
+ Das geht auch mit einem Rechtsklick in den Textbereich und Ankreuzen des
+ Vollbildmodus.
+
+\family sans
+ F11
+\family default
+ schaltet den Vollbildmodus an und aus.
 \end_layout
 
 \begin_layout Subsection
@@ -35921,7 +36180,7 @@ Mathe
 \begin_layout Standard
 Diese Menüpunkte sind noch nirgends näher beschrieben außer in 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -35952,6 +36211,16 @@ Hierfür benötigen Sie das LaTeX-Paket
 \family typewriter
 tipa.sty
 \family default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX!-Paket ! tipa
+\end_layout
+
+\end_inset
+
 , das für Linguisten geschrieben wurde.
  Das 
 \family typewriter
@@ -35976,6 +36245,36 @@ dZEsbEnt
 \emph on
 Jazzband
 \emph default
+.
+\end_layout
+
+\begin_layout Standard
+Weitere Informationen finden Sie in der 
+\family typewriter
+tipa
+\family default
+-Dokumentation 
+\series bold
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tipa"
+
+\end_inset
+
+
+\series default
+ und auf der Wiki-Seite 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/LyX/LinguistLyX
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
@@ -36306,7 +36605,7 @@ font dargestellt und ohne Zeilenumbrüche gesperrt gedruckt, sofern Sie in
 \begin_layout Standard
 \begin_inset listings
 inline false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -36369,11 +36668,12 @@ Lesezeichen
 \end_layout
 
 \begin_layout Standard
-Damit können Sie Lesezeichen setzen
+Damit können Sie bis zu fünf Lesezeichen setzen
 \family sans
 , 
 \family default
 löschen und dorthin gehen.
+ Das funktioniert auch dokumentübergreifend.
 \end_layout
 
 \begin_layout Subsection
@@ -36463,7 +36763,7 @@ nklicken zu einem in den Verzeichnissen genannten Punkt gehen.
 \family sans
 Dokument
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dokument!menü@-Menü
@@ -36511,11 +36811,13 @@ Werkzeuge
 \begin_layout Subsection
 
 \family sans
-Wörter zählen
+Statistik\SpecialChar \ldots{}
+
 \end_layout
 
 \begin_layout Standard
-Zählt die Wörter im Dokument oder der Auswahl, die Sie getroffen haben.
+Zählt die Wörter und Zeichen, mit und ohne Leerzeichen, im Dokument oder
+ der Auswahl, die Sie getroffen haben.
 \end_layout
 
 \begin_layout Subsection
@@ -36543,7 +36845,7 @@ Zeigt Informationen über die vorhandenen
 \family sans
 LaTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -36558,7 +36860,7 @@ X-Klassen
 \family sans
 LaTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -36573,7 +36875,7 @@ X-Stile
 \family sans
 BibTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -36700,7 +37002,7 @@ gen
  geöffnet.
  Der Baum im linken Teilfenster zeigt, was alles eingestellt werden kann.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -36748,6 +37050,114 @@ Durchsuchen\SpecialChar \ldots{}
 \end_layout
 
 \begin_deeper
+\begin_layout Standard
+Sie können aber auch eigene verwenden, indem Sie vorhandene kopieren und
+ verändern.
+ 
+\family typewriter
+default.ui
+\family default
+ lädt zum Beispiel 
+\family typewriter
+\shape italic
+\emph on
+stdtoolbars.inc
+\family default
+\shape default
+ 
+\emph default
+und
+\emph on
+ 
+\family typewriter
+\shape italic
+stdmenus.inc
+\family default
+.
+ Die Syntax ist ziemlich einfach, wie Sie sich überzeugen können:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+Name 
+\begin_inset Quotes gld
+\end_inset
+
+Bezeichnung
+\begin_inset Quotes grd
+\end_inset
+
+ 
+\begin_inset Quotes gld
+\end_inset
+
+LyX-Funktion
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Alle LyX-Funktionen sind in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LyX-func"
+
+\end_inset
+
+ aufgelistet.
+ 
+\end_layout
+
+\begin_layout Standard
+Wenn Sie zum Beispiel viel in Ihrem Dokument herumspringen müssen und die
+ fünf vordefinierten 
+\shape italic
+\emph on
+Lesezeichen
+\shape default
+\emph default
+ nicht ausreichen, können Sie in 
+\family typewriter
+\shape italic
+\emph on
+stdmenus.inc
+\family default
+ im Abschnitt 
+\family typewriter
+Menu "navigate_bookmarks"
+\family default
+ den Eintrag Item 
+\family typewriter
+"Save Bookmark 6" "bookmark-save 6"
+\family default
+ hinzufügen, und schon haben Sie sechs Lesezeichen.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Anmerkung
+\series default
+: Wenn Sie solche Änderungen bei laufendem LyX durchführen, müssen Sie 
+\family sans
+Werkzeuge
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Neu
+\begin_inset space \space{}
+\end_inset
+
+konfigurieren
+\family default
+ durchführen, bevor die Änderungen wirksam werden.
+\end_layout
+
+\end_deeper
 \begin_layout Description
 Automatische
 \begin_inset space ~
@@ -36797,6 +37207,7 @@ kreuzt ist, wird das LyX-Fenster
  dort geöffnet, wo es beim letzten Mal war.
 \end_layout
 
+\begin_deeper
 \begin_layout Description
 Cursor-Positionen
 \begin_inset space ~
@@ -36841,6 +37252,7 @@ hilfreich, wenn man längere Zeit mit denselben Dateien arbeitet.
 \end_layout
 
 \end_deeper
+\end_deeper
 \begin_layout Description
 Dokumente 
 \end_layout
@@ -36865,6 +37277,7 @@ Minuten Hier können Sie die automatische Datensicherung während einer
  soll.
 \end_layout
 
+\begin_deeper
 \begin_layout Description
 Maximale
 \begin_inset space ~
@@ -36922,7 +37335,7 @@ Darstellung
 \end_layout
 
 \begin_layout Description
-Roman Auswahl einer Schrift mit Serifen.
+Serifenschrift Auswahl einer Schrift mit Serifen.
  Sie können natürlich auch eine serifenfreie oder Schreibmachinenschrift
  auswählen, aber das macht wenig Sinn.
  Sinn macht auf jeden Fall, Schriften aus derselben Gruppe zu wählen.
@@ -36930,7 +37343,7 @@ Roman Auswahl einer Schrift mit Serifen.
 \end_layout
 
 \begin_layout Description
-Serifenfrei Auswahl einer serifenfreien Schrift.
+Serifenlos Auswahl einer serifenfreien Schrift.
 \end_layout
 
 \begin_layout Description
@@ -36974,19 +37387,19 @@ reference "Fontgröße"
 \end_layout
 
 \begin_layout Description
-Pixmap
+Pixmap-Zwischenspeicher
 \begin_inset space ~
 \end_inset
 
-Cache
-\begin_inset space ~
-\end_inset
-
-benutzen
+benutzen,
 \begin_inset space ~
 \end_inset
 
 um
+\begin_inset space ~
+\end_inset
+
+die
 \begin_inset space ~
 \end_inset
 
@@ -37003,11 +37416,17 @@ Zeichen
 \end_inset
 
 zu
-\begin_inset space ~
+\family sans
+\series bold
+
+\begin_inset Newline linebreak
 \end_inset
 
-beschleunigen Wenn diese Option verwendet wird, muss LyX die Bildschirmanzeige
- nicht so häufig neu aufbauen.
+beschleunigen
+\family default
+\series default
+ Wenn diese Option verwendet wird, muss LyX die Bildschirmanzeige nicht
+ so häufig neu aufbauen.
  Dies führt zu einer besseren Performance, besonders bei langsameren Systemen.
  Auf der anderen Seite können dadurch die Bildschirmschriften etwas pixelig
  aussehen.
@@ -37948,29 +38367,188 @@ Bildschirmbereich
 Tastenkürzel
 \end_layout
 
-\begin_layout Description
-Tastaturkürzel-Datei: ???
+\begin_layout Subsubsection
+Tastaturkürzel-Datei
+\end_layout
+
+\begin_layout Standard
+Tastaturkürzel-Dateien werden benutzt, um LyX-Funktionen mit einem Tastenkürzel
+ zu verknüpfen.
+ Es gibt mehrere Dateien:
 \end_layout
 
 \begin_layout Description
+cua.bind ist die gebräuchlichste Tastaturkürzel-Datei für PCs.
+\end_layout
+
+\begin_layout Description
+(x)emacs.bind definiert Tastaturkürzel so, wie es beim Editor (X)Emacs üblich
+ ist.
+\end_layout
+
+\begin_layout Description
+mac.bind macht dasselbe für MacOS-Systeme.
+\end_layout
+
+\begin_layout Standard
+Es gibt auch Tastaturkürzel-Dateien für spezielle Dokumentklassen, wie 
+\family typewriter
+broadway.
+\begin_inset Newline linebreak
+\end_inset
+
+bind
+\family default
+, und Sprachen.
+ Der Name einer Tastaturkürzel-Datei für Sprachen beginnt mit dem Sprach-Code,
+ zum Beispiel 
+\begin_inset Quotes gld
+\end_inset
+
+pt
+\begin_inset Quotes grd
+\end_inset
+
+ für Portugiesisch.
+ Wenn Sie Lyx für eine spezielle Sprache benutzen, wird es die entsprechende
+ Tastaturkürzel-Datei benutzen.
+\end_layout
+
+\begin_layout Standard
+Einige Tastaturkürzel-Dateien wie 
+\family typewriter
+math.bind
+\family default
+ haben nur einen kleinen Anwendungsbereich.
+ Am Ende von 
+\family typewriter
+cua.bind
+\family default
+ werden sie aufgeführt.
+\end_layout
+
+\begin_layout Subsubsection
+Tastaturkürzel suchen und bearbeiten
+\begin_inset CommandInset label
+LatexCommand label
+name "Tastaturkürzel-bearbeiten"
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Tastatur!-kürzel bearbeiten
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um ein Tastaturkürzel zu bearbeiten o der ein neues zu definieren, können
+ Sie die Tabelle benutzen, die alle LyX-Funktionen und ihre Tastaturkürzel
+ enthält.
+ Um sie leichter zu finden, sind sie nach Funktionen gruppiert.
+ Mit Hilfe von 
+\family sans
 Zeige
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 Tastaturkürzel,
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 die
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 Folgendes
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
-enthalten: der hier eingegebene Text wird in der Tabelle darunter angezeigt,
- wenn er dort zu finden ist.
+enthalten
+\family default
+ können Sie vorhandene Tastaturkürzel finden.
+ Wenn Sie zum Beispiel 
+\emph on
+paste
+\emph default
+ eingeben, werden die vier vorhandenen Tastaturkürzel für die drei verschiedenen
+ Funktionen, in deren Name 
+\emph on
+paste
+\emph default
+ vorkommt, angezeigt.
+ Sie sehen, dass eine Funktion mehrere Tastaturkürzel besitzen kann.
+ Außerdem sind alle LyX-Funktionen im gleichnamigen Handbuch aufgelistet.
+\end_layout
+
+\begin_layout Standard
+Um zum Beispiel das Tastaturkürzel 
+\family sans
+Alt+Q
+\family default
+ für die LyX-Funktion 
+\family typewriter
+textstyle-apply
+\family default
+ hinzuzufügen, suchen Sie sie, markieren sie und klicken auf 
+\family sans
+Ändern
+\family default
+.
+ Es erscheint ein Dialogfenster, in dem Sie das Tastaturkürzel einfügen
+ können, indem Sie es benutzen (Alt drücken, gedrückt halten, dann Q drücken).
+ Ein vorhandenes Tastaturkürzel wird ebenso geändert.
+\end_layout
+
+\begin_layout Standard
+Sie auch mehrere Funktionen einem Tastaturkürzel zuordnen, indem Sie im
+ 
+\family sans
+Funktion
+\family default
+-Feld des Dialoges weitere Funktionen, durch Kommas getrennt, hinzufügen.
+ LyX wird dann für das Tastaturkürzel die erste Funktion benutzen, die im
+ gerade bearbeiteten Dokumentteil aktiv ist.
+ 
+\family typewriter
+command-alternatives
+\family default
+ ist ein Beispiel hierfür.
+\end_layout
+
+\begin_layout Standard
+Sie können natürlich auch die entsprechende Tastaturkürzel-Datei mit einem
+ Editor bearbeiten.
+ Die Syntax für ein Kürzel ist
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+bind 
+\begin_inset Quotes gld
+\end_inset
+
+Tastaturkürzel
+\begin_inset Quotes grd
+\end_inset
+
+ 
+\begin_inset Quotes gld
+\end_inset
+
+LyX-Funktion
+\begin_inset Quotes grd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -39410,7 +39988,7 @@ http://de.wikipedia.org/wiki/Mediävalziffer
 
  und 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -39739,7 +40317,7 @@ Andere liefert eine Auswahl an Kodierungsmöglichkeiten.
 \begin_layout Description
 LaTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -39780,7 +40358,7 @@ inputenc
 \family default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LaTeX! -Paket ! inputenc
@@ -39811,7 +40389,7 @@ ucs
 \family default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LaTeX! -Paket ! ucs
@@ -39829,7 +40407,7 @@ CJK
 \family default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LaTeX! -Paket ! CJK
@@ -39845,7 +40423,7 @@ utf8-plain Diese Unicode-Variante wird von
 \family typewriter
 XeTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -39862,7 +40440,7 @@ inputenc
 \family default
  direkt benutzt.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 In 
@@ -41713,7 +42291,7 @@ http://wiki.lyx.org/LyX/NewInLyX16
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
