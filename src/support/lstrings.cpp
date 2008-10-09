@@ -1004,27 +1004,6 @@ int findToken(char const * const str[], string const & search_token)
 }
 
 
-docstring const externalLineEnding(docstring const & str)
-{
-#if defined(__APPLE__)
-	// The MAC clipboard uses \r for lineendings, and we use \n
-	return subst(str, '\n', '\r');
-#elif defined (_WIN32) || (defined (__CYGWIN__) && defined (X_DISPLAY_MISSING))
-	// Windows clipboard uses \r\n for lineendings, and we use \n
-	return subst(str, from_ascii("\n"), from_ascii("\r\n"));
-#else
-	return str;
-#endif
-}
-
-
-docstring const internalLineEnding(docstring const & str)
-{
-	docstring const s = subst(str, from_ascii("\r\n"), from_ascii("\n"));
-	return subst(s, '\r', '\n');
-}
-
-
 template<>
 docstring bformat(docstring const & fmt, int arg1)
 {

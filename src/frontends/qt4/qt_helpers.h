@@ -96,6 +96,12 @@ void rescanTexStyles();
  */
 QStringList texFileList(QString const & filename);
 
+/// Convert internal line endings to line endings as expected by the OS
+QString const externalLineEnding(docstring const & str);
+
+/// Convert line endings in any formnat to internal line endings
+docstring const internalLineEnding(QString const & str);
+
 // wrapper around the docstring versions
 QString internalPath(QString const &);
 QString onlyFilename(QString const & str);

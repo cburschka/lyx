@@ -242,13 +242,6 @@ std::string const getStringFromVector(std::vector<std::string> const & vec,
 /// found, else -1. The last item in \p str must be "".
 int findToken(char const * const str[], std::string const & search_token);
 
-/// Convert internal line endings to line endings as expected by the OS
-docstring const externalLineEnding(docstring const & str);
-
-/// Convert line endings in any formnat to internal line endings
-docstring const internalLineEnding(docstring const & str);
-
-
 template <class Arg1>
 docstring bformat(docstring const & fmt, Arg1);
 

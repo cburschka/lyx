@@ -311,7 +311,7 @@ docstring const GuiClipboard::getAsText() const
 	if (str.isNull())
 		return docstring();
 
-	return internalLineEnding(qstring_to_ucs4(str));
+	return internalLineEnding(str);
 }
 
 

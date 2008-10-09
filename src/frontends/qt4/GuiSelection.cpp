@@ -27,9 +27,6 @@
 namespace lyx {
 namespace frontend {
 
-using support::internalLineEnding;
-using support::externalLineEnding;
-
 
 GuiSelection::GuiSelection()
 	: schedule_check_(true),
@@ -75,7 +72,7 @@ docstring const GuiSelection::get() const
 	if (str.isNull())
 		return docstring();
 
-	return internalLineEnding(qstring_to_ucs4(str));
+	return internalLineEnding(str);
 }
 
 
@@ -83,7 +80,7 @@ void GuiSelection::put(docstring const & str)
 {
 	LYXERR(Debug::SELECTION, "GuiSelection::put: " << to_utf8(str));
 
-	qApp->clipboard()->setText(toqstr(externalLineEnding(str)),
+	qApp->clipboard()->setText(externalLineEnding(str),
 				   QClipboard::Selection);
 }
 
