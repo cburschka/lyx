@@ -1057,7 +1057,9 @@ int parse_import(string const & type, string const & file, string & batch)
 int parse_geometry(string const & arg1, string const &, string &)
 {
 	geometryArg = arg1;
-	return 1;
+	// don't remove "-geometry", it will be pruned out later in the
+	// frontend if need be.
+	return -1;
 }
 
 
