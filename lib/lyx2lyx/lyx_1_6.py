@@ -1429,11 +1429,6 @@ def revert_include(document):
     if i == -1:
       return
     nextline = i + 1
-    if r0.match(document.body[nextline]):
-      previewline = document.body[nextline]
-      nextline += 1
-    else:
-      previewline = ""
     m = r1.match(document.body[nextline])
     if m == None:
       document.warning("Malformed LyX document: No LatexCommand line for `" +
@@ -1442,6 +1437,11 @@ def revert_include(document):
       continue
     cmd = m.group(1)
     nextline += 1
+    if r0.match(document.body[nextline]):
+      previewline = document.body[nextline]
+      nextline += 1
+    else:
+      previewline = ""
     m = r2.match(document.body[nextline])
     if m == None:
       document.warning("Malformed LyX document: No filename line for `" + \
