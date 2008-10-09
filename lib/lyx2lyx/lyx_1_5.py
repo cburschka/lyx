@@ -721,7 +721,7 @@ def revert_commandparams(document):
             lines.append('')
             lines.append('\\end_inset')
         document.body[i:j+1] = lines
-        i = j + 1
+        i += len(lines) + 1
 
 
 def revert_nomenclature(document):
