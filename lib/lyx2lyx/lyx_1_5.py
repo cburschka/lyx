@@ -676,7 +676,7 @@ def revert_commandparams(document):
         if i == -1:
             break
         name = document.body[i].split()[2]
-        j = find_end_of_inset(document.body, i + 1)
+        j = find_end_of_inset(document.body, i)
         preview_line = ""
         option1 = ""
         option2 = ""
