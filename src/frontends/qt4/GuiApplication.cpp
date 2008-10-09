@@ -131,6 +131,19 @@ namespace lyx {
 
 frontend::Application * createApplication(int & argc, char * argv[])
 {
+#ifndef Q_WS_X11
+	// prune -geometry argument(s) by shifting
+	// the following ones 2 places down.
+	for (int i = 0 ; i < argc ; ++i) {
+		if (argv[i] == "-geometry") {
+			int const remove = (i+1) < argc ? 2 : 1;
+			argc -= remove;
+			for (int j = i; j < argc; ++j)
+				argv[j] = argv[j + remove];
+			--i;
+		}
+	}
+#endif
 	return new frontend::GuiApplication(argc, argv);
 }
 

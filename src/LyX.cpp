@@ -1057,13 +1057,6 @@ int parse_import(string const & type, string const & file, string & batch)
 int parse_geometry(string const & arg1, string const &, string &)
 {
 	geometryArg = arg1;
-#if defined(_WIN32) || (defined(__CYGWIN__) && defined(X_DISPLAY_MISSING))
-	// remove also the arg
-	return 1;
-#else
-	// don't remove "-geometry"
-	return -1;
-#endif
 }
 
 
