@@ -126,26 +126,30 @@ Section -Configure
 SectionEnd
 
 #--------------------------------
-# dvipost package
+# LaTeX files
 
 Var UpdateFNDBReturn
 
-Section -dvipost
+Section -LaTeXFiles
 
-  # Install package in local root
+  # Install files in local root
 
-  ${if} $PathLaTeXLocal != ""
+  ${If} $PathLaTeXLocal != ""
+    # dvipost
     SetOutPath "$PathLaTeXLocal\tex\latex\dvipost"
     File "${FILES_DVIPOST_PKG}\dvipost.sty"
-  ${endif}
+    # LyX files in Resources\tex
+    SetOutPath "$PathLaTeXLocal\tex\latex\lyx"
+    CopyFiles /SILENT "$INSTDIR\Resources\tex\*.*" "$PathLaTeXLocal\tex\latex\lyx"
+  ${EndIf}
 
   # Update file name database
 
-  ${if} $PathLaTeX != ""
+  ${If} $PathLaTeX != ""
     DetailPrint $(TEXT_CONFIGURE_MIKTEXFNDB)
     nsExec::ExecToLog '"$PathLaTeX\initexmf.exe" --update-fndb'
     Pop $UpdateFNDBReturn # Return value
-  ${endif}
+  ${EndIf}
 
 SectionEnd
 
@@ -180,6 +184,7 @@ Var ConfigureReturn
 
 Section -ConfigureScript
 
+  SetOutPath "$INSTDIR\Resources"
   DetailPrint $(TEXT_CONFIGURE_LYX)
   nsExec::ExecToLog '"$INSTDIR\python\python.exe" "$INSTDIR\Resources\configure.py"'
   Pop $ConfigureReturn # Return value
