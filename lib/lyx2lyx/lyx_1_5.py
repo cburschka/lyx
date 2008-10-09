@@ -287,7 +287,7 @@ necessary parsing in modern formats than in ancient ones.
                 inset_result = inset_re.match(document.body[i])
                 if inset_result:
                     insets.append(inset_result.group(1))
-                else: 
+                else:
                     insets.append("")
             elif find_token(document.body, "\\end_inset", i, i + 1) == i:
                 del insets[-1]
@@ -445,7 +445,7 @@ implemented.'''
             insets.append(line[13:].split()[0])
         if line.find('\\end_inset') > -1:
             del insets[-1]
-        
+
         # Try to write the line
         try:
             # If all goes well the line is written here
@@ -1287,7 +1287,7 @@ def normalize_font_whitespace_259(document):
     """ Before format 259 the font changes were ignored if a
     whitespace was the first or last character in the sequence, this function
     transfers the whitespace outside."""
-	
+
     char_properties = {"\\series": "default",
                        "\\emph": "default",
                        "\\color": "none",
@@ -1298,8 +1298,8 @@ def normalize_font_whitespace_259(document):
 
 def normalize_font_whitespace_274(document):
     """ Before format 259 (sic) the font changes were ignored if a
-    whitespace was the first or last character in the sequence. This was 
-    corrected for most font properties in format 259, but the language 
+    whitespace was the first or last character in the sequence. This was
+    corrected for most font properties in format 259, but the language
     was forgotten then. This function applies the same conversion done
     there (namely, transfers the whitespace outside) for font language
     changes, as well."""
@@ -1310,11 +1310,11 @@ def normalize_font_whitespace_274(document):
 def get_paragraph_language(document, i):
     """ Return the language of the paragraph in which line i of the document
     body is. If the first thing in the paragraph is a \\lang command, that
-    is the paragraph's langauge; otherwise, the paragraph's language is the 
+    is the paragraph's langauge; otherwise, the paragraph's language is the
     document's language."""
 
     lines = document.body
-	
+
     first_nonempty_line = \
         find_nonempty_line(lines, find_beginning_of_layout(lines, i) + 1)
 
@@ -1324,7 +1324,7 @@ def get_paragraph_language(document, i):
         return words[1]
     else:
         return document.language
-	
+
 def normalize_font_whitespace(document, char_properties):
     """ Before format 259 the font changes were ignored if a
     whitespace was the first or last character in the sequence, this function
@@ -1623,13 +1623,13 @@ def revert_tableborder(document):
 
 
 def revert_armenian(document):
-    
-    # set inputencoding from armscii8 to auto 
+
+    # set inputencoding from armscii8 to auto
     if document.inputencoding == "armscii8":
         i = find_token(document.header, "\\inputencoding", 0)
         if i != -1:
             document.header[i] = "\\inputencoding auto"
-    # check if preamble exists, if not k is set to -1 
+    # check if preamble exists, if not k is set to -1
     i = 0
     k = -1
     while i < len(document.preamble):
@@ -1646,7 +1646,7 @@ def revert_armenian(document):
         # create the preamble when it doesn't exist
         else:
             document.preamble.append('\\usepackage{armtex}')
-    # Set document language from armenian to english 
+    # Set document language from armenian to english
     if document.language == "armenian":
         document.language = "english"
         i = find_token(document.header, "\\language", 0)
@@ -1686,10 +1686,10 @@ def revert_preamble_listings_params(document):
 
 
 def revert_listings_inset(document):
-    r''' Revert listings inset to \lstinline or \begin, \end lstlisting, translate 
+    r''' Revert listings inset to \lstinline or \begin, \end lstlisting, translate
 FROM
 
-\begin_inset 
+\begin_inset
 lstparams "language=Delphi"
 inline true
 status open
@@ -1787,7 +1787,7 @@ after label
             k = cap_end + 1
         inlinecode = ''
         # looking for the oneline code for lstinline
-        inlinecode = document.body[find_end_of_layout(document.body, 
+        inlinecode = document.body[find_end_of_layout(document.body,
             find_token(document.body,  '\\begin_layout %s' % document.default_layout, i + 1) +1 ) - 1]
         if len(caption) > 0:
             if len(params) == 0:
@@ -1806,7 +1806,7 @@ after label
             document.body[i:(j+1)] = [r'\begin_inset ERT',
                                       'status %s' % status,
                                       r'\begin_layout %s' % document.default_layout,
-                                      '', 
+                                      '',
                                       '',
                                       r'\backslash',
                                       'lstinline%s{%s}' % (params, inlinecode),
@@ -1834,7 +1834,7 @@ after label
                                       r'\end_layout',
                                       '',
                                       r'\end_inset']
-            
+
 
 def revert_include_listings(document):
     r''' Revert lstinputlisting Include option , translate
@@ -1873,7 +1873,7 @@ lstinputlisting{file}[opt]
         # find command line lstinputlisting{file}[options]
         cmd, file, option = '', '', ''
         if re.match(r'\\(lstinputlisting){([.\w]*)}(.*)', document.body[i].split()[2]):
-            cmd, file, option = re.match(r'\\(lstinputlisting){([.\w]*)}(.*)', document.body[i].split()[2]).groups()            
+            cmd, file, option = re.match(r'\\(lstinputlisting){([.\w]*)}(.*)', document.body[i].split()[2]).groups()
         option = option.replace('\\', '\\backslash\n')
         document.body[i : j + 1] = [r'\begin_inset ERT',
                                     'status open',
