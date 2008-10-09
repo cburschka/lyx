@@ -20,7 +20,8 @@ Preamble
 	\newcommand{\areacode}{}
 EndPreamble
 
-Style DinBrief		# auxiliary style copied by other dinbrief styles
+# auxiliary style copied by other dinbrief styles
+Style DinBrief
 	LatexType	Command
 	Margin		Static
 	LeftMargin	"Unsere Zeichen"
@@ -42,7 +43,7 @@ End
 Style Send_To_Address
 	CopyStyle	DinBrief
 	LabelString	"Anschrift:"
-	KeepEmpty	1		# compulsory style
+	KeepEmpty	1
 	BottomSep	0.1
 	LatexName	letter
 End
@@ -52,16 +53,18 @@ End
 
 # need to be placed before the Opening in the LyX document!
 
-Style My_Address	# backaddress in letter head
+# backaddress in letter head
+Style My_Address
 	CopyStyle	DinBrief
 	LabelString	"Briefkopf:"
 	LatexName	address
-	KeepEmpty	1		# compulsory style
+	KeepEmpty	1
 	BottomSep	0.5
 	AlignPossible	Block, Left, Right, Center
 End
 
-Style "Return address"	# backaddress in address window
+# backaddress in address window
+Style "Return address"
 	CopyStyle	DinBrief
 	LabelString	"Absender:"
 	LatexName	backaddress
@@ -70,21 +73,24 @@ Style "Return address"	# backaddress in address window
 	EndFont
 End
 
-Style "Postal comment"	# vor der EmfÃ¤ngeranschrift (Einschreiben, Luftpost)
+# vor der Emfängeranschrift (Einschreiben, Luftpost)
+Style "Postal comment"
 	CopyStyle	DinBrief
 	LabelString	"Postvermerk:"
 	LatexName	postremark
 End
 
-Style Handling		# rechts neben der Emfï¿½ngeranschrift (Eilt, Pesï¿½nlich)
+# rechts neben der Emfängeranschrift (Eilt, Persönlich)
+Style Handling
 	CopyStyle	DinBrief
 	LabelString	"Zusatz:"
 	LatexName	handling
 End
 
+# "Ihre Zeichen/Ihre Nachricht vom"
 Style YourRef
 	CopyStyle	DinBrief
-	LabelString	"Ihre Zeichen:" # "Ihre Zeichen/Ihre Nachricht vom"
+	LabelString	"Ihre Zeichen:"
 	LatexName	yourmail
 End
 
@@ -106,9 +112,10 @@ Style Signature
 	LatexName	signature
 End
 
-Style Bottomtext	# contact info at the bottom of the first page
+# contact info at the bottom of the first page
+Style Bottomtext
 	CopyStyle	DinBrief
-	LabelString	"FuÃŸzeile(n):"
+	LabelString	"Fusszeile(n):"
 	LatexName	bottomtext
 	AlignPossible	Block, Left, Right, Center
 End
@@ -145,7 +152,8 @@ Style Date
 	LatexName	date
 End
 
-Style Subject		# dinbrief does not emphasize the subject line
+# dinbrief does not emphasize the subject line
+Style Subject
 	CopyStyle	DinBrief
 	LabelString	"Betreff:"
 	LatexName	subject
@@ -167,7 +175,7 @@ Style Opening
 	LeftMargin	""
 	LabelString	"Anrede:"
 	LatexName	opening
-	KeepEmpty	1		# compulsory style
+	KeepEmpty	1
 	TopSep		1.5
 	BottomSep	1
 End
@@ -179,10 +187,10 @@ End
 
 Style Closing
 	CopyStyle	Opening
-	LabelString	"GruÃŸ:"
+	LabelString	"Gruss:"
 	LatexName	closing
 	OptionalArgs	1
-	KeepEmpty	1		# compulsory style
+	KeepEmpty	1
 End
 
 Style encl
@@ -220,35 +228,43 @@ End
 
 # ease conversion from g-brief, scrletter, or letter
 
-Style SenderAddress	# scrletter
+# scrletter
+Style SenderAddress
 	ObsoletedBy	My_Address
 End
 
-Style Backaddress	# scrletter
+# scrletter
+Style Backaddress
 	ObsoletedBy	"Return address"
 End
 
-Style RetourAdresse	# g-brief-de
+# g-brief-de
+Style RetourAdresse
 	ObsoletedBy	"Return address"
 End
 
-Style Address		# dinbrief (gm old), g-brief-en, scrletter, ...
+# dinbrief (gm old), g-brief-en, scrletter, ...
+Style Address
 	ObsoletedBy	Send_To_Address
 End
 
-Style Adresse		# g-brief-de, g-brief2
+# g-brief-de, g-brief2
+Style Adresse
 	ObsoletedBy	Send_To_Address
 End
 
-Style Postvermerk	# g-brief-de
+# g-brief-de
+Style Postvermerk
 	ObsoletedBy	"Postal comment"
 End
 
-Style Zusatz		# g-brief-de
+# g-brief-de
+Style Zusatz
 	ObsoletedBy	Handling
 End
 
-Style IhrZeichen	# g-brief-de
+# g-brief-de
+Style IhrZeichen
 	ObsoletedBy	YourRef
 End
 
@@ -257,55 +273,68 @@ Style YourMail
 	ObsoletedBy	YourRef
 End
 
-Style IhrSchreiben	# g-brief-de
+# g-brief-de
+Style IhrSchreiben
 	ObsoletedBy	YourRef
 End
 
-Style MeinZeichen	# g-brief-de
+# g-brief-de
+Style MeinZeichen
 	ObsoletedBy	MyRef
 End
 
-Style Unterschrift	# g-brief-de
+# g-brief-de
+Style Unterschrift
 	ObsoletedBy	Signature
 End
 
-Style Phone		# dinbrief (gm old)
+# dinbrief (gm old)
+Style Phone
 	ObsoletedBy	Telephone
 End
 
-Style Telefon		# g-brief-de
+# g-brief-de
+Style Telefon
 	ObsoletedBy	Telephone
 End
 
-Style Place		# dinbrief (gm old)
+# dinbrief (gm old)
+Style Place
 	ObsoletedBy	Location
 End
 
-Style Stadt		# dinbrief v2
+# dinbrief v2
+Style Stadt
 	ObsoletedBy	Location
 End
 
-Style Town		# g-brief-en
+# g-brief-en
+Style Town
 	ObsoletedBy	Location
 End
 
-Style Ort		# g-brief-de
+# g-brief-de
+Style Ort
 	ObsoletedBy	Location
 End
 
-Style Datum		# g-brief-de
+# g-brief-de
+Style Datum
 	ObsoletedBy	Date
 End
 
-Style Reference		# g-brief-en, g-brief2
+# g-brief-en, g-brief2
+Style Reference
 	ObsoletedBy	Subject
 End
 
-Style Betreff		# g-brief-de
+# g-brief-de
+Style Betreff
 	ObsoletedBy	Subject
 End
 
-Style Anrede		# g-brief-de
+# g-brief-de
+Style Anrede
 	ObsoletedBy	Opening
 End
 
@@ -313,11 +342,14 @@ End
 Style Letter
 	ObsoletedBy	Standard
 End
-Style Brieftext		# g-brief-de
+
+# g-brief-de
+Style Brieftext
 	ObsoletedBy	Standard
 End
 
-Style Gruss		# g-brief-de
+# g-brief-de
+Style Gruss
 	ObsoletedBy	Closing
 End
 
@@ -325,18 +357,23 @@ Style ps
 	ObsoletedBy	PS
 End
 
-Style Encl.		# g-brief-en
+# g-brief-de
+Style Encl.
 	ObsoletedBy	encl
 End
 
-Style Anlagen		# g-brief-de
+# g-brief-de
+Style Anlagen
 	ObsoletedBy	encl
 End
 
-Style CC		# scrletter
+# scrletter
+Style CC
 	ObsoletedBy	cc
 End
-Style Verteiler		# g-brief-de
+
+# g-brief-de
+Style Verteiler
 	ObsoletedBy	cc
 End
 
