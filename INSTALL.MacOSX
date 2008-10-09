@@ -71,7 +71,7 @@ If you did not install pkg-config, first set the LDFLAGS variable:
 
 Then, cd to the top of the LyX source hierarchy, and enter:
 
-     ./configure --prefix=/path/to/LyX.app --with-version-suffix=-1.6 --without-x --with-qt4-dir=/path/to/QT4 --with-included-gettext --enable-optimization=-Os
+     ./configure --prefix=/path/to/LyX.app --with-version-suffix=-1.6 --with-qt4-dir=/path/to/QT4 --with-included-gettext --enable-optimization=-Os
      make
      make install-strip
 
@@ -91,13 +91,13 @@ If you did not install pkg-config, first set the LDFLAGS variable:
 Then, cd to the top of the LyX source hierarchy, and enter:
 
      ./autogen.sh
-     ./configure --prefix=/path/to/LyX.app --with-version-suffix=-1.6 --without-x --with-qt4-dir=/path/to/QT4 --with-included-gettext --enable-optimization=-Os
+     ./configure --prefix=/path/to/LyX.app --with-version-suffix=-1.6 --with-qt4-dir=/path/to/QT4 --with-included-gettext --enable-optimization=-Os
      make
      make install-strip
 
 Note that by default svn versions use some extra debugging code that
 somewhat slows LyX down. If it is a real problem, you can pass the
-option --disable-stdlib-debug to configure.
+option --enable-build-type=release to configure.
 
 The information on this page is believed to be accurate, has been used
 successfully on many systems and sites, and has benefited from the
