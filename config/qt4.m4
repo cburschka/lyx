@@ -182,6 +182,16 @@ AC_DEFUN([QT4_DO_PKG_CONFIG],
 
 AC_DEFUN([QT4_DO_MANUAL_CONFIG],
 [
+	dnl Check for X libraries
+	AC_PATH_X
+	AC_PATH_XTRA
+	case $have_x in
+	    yes) LIBS="$X_PRE_LIBS $LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
+	         CPPFLAGS="$CPPFLAGS $X_CFLAGS";;
+	     no) LYX_ERROR([Cannot find X window libraries and/or headers.]);;
+	disable) ;;
+	esac
+
 	dnl flags for compilation
 	QT4_INCLUDES=
 	QT4_LDFLAGS=

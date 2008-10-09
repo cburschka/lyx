@@ -164,18 +164,6 @@ AC_CHECK_HEADERS(zlib.h,
  [LYX_LIB_ERROR(zlib.h,zlib)])
 
 
-### Check for X libraries
-AC_PATH_XTRA
-case $have_x in
-  yes) LIBS="$X_PRE_LIBS $LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
-       CPPFLAGS="$CPPFLAGS $X_CFLAGS";;
-  no) LYX_ERROR(dnl
-[Cannot find X window libraries and/or headers. Check your installation.
-  If you use a Linux system, check that you have installed
-  the development tools.]);;
-  disable) ;;
-esac
-
 ### check which frontend we want to use
 
 dnl The code below is not in a macro, because this would cause big
