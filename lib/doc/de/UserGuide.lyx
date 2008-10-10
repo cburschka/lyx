@@ -1022,7 +1022,7 @@ Neu (Strg+N)
 	filename ../../images/buffer-new.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 2bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -1052,7 +1052,7 @@ Vorlage\SpecialChar \ldots{}
 	filename ../../images/file-open.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 2bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -1076,7 +1076,7 @@ Speichern (Strg+S)
 	filename ../../images/buffer-write.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 2bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -1118,7 +1118,7 @@ Drucken\SpecialChar \ldots{}
 	filename ../../images/dialog-show_print.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 2bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -1265,7 +1265,7 @@ Ausschneiden
 	filename ../../images/cut.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 2bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -1293,7 +1293,7 @@ Kopieren
 	filename ../../images/copy.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 2bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -1325,7 +1325,7 @@ Strg+V
 	filename ../../images/paste.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 2bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -1370,7 +1370,7 @@ Ersetzen
 	filename ../../images/dialog-show_findreplace.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 2bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -4035,22 +4035,35 @@ Einstellungen
  Dafür ist dieser Abschnitt da.
 \end_layout
 
-\begin_layout Description
-Dokumentklasse außer der Dokumentklasse gibt es noch:
+\begin_layout Subsubsection
+Dokumentklasse
+\begin_inset CommandInset label
+LatexCommand label
+name "Dokumentklasse"
+
+\end_inset
+
+
 \end_layout
 
-\begin_deeper
+\begin_layout Standard
+außer der Dokumentklasse gibt es noch:
+\end_layout
+
 \begin_layout Description
 Dokumentklasse hier wählen Sie die von Ihnen gewünschte Dokumentklasse aus,
 \end_layout
 
 \begin_layout Standard
-oder
+oder mit 
 \end_layout
 
 \begin_layout Description
-Benutzer-Layout benutzen eine auf Ihrem Rechner vorhandene Layout-Datei
- (
+Lokales
+\begin_inset space ~
+\end_inset
+
+Format benutzen Sie eine auf Ihrem Rechner vorhandene Layout-Datei (
 \family typewriter
 *.layout
 \family default
@@ -4076,33 +4089,190 @@ documentclass
 \begin_layout Description
 PostScript-Treiber: Hier können Sie einen anderen als den (wahrscheinlich)
  voreingestellten Treiber dvips auswählen.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Wenn Sie als Treiber 
+\family typewriter
+dvi2ps
+\family default
+, 
+\family typewriter
+dvialw
+\family default
+, 
+\family typewriter
+dvilaser
+\family default
+, 
+\family typewriter
+dvitops
+\family default
+, 
+\family typewriter
+psprint
+\family default
+, 
+\family typewriter
+pubps
+\family default
+ oder 
+\family typewriter
+ln
+\family default
+ benutzen wollen, müssen Sie ihn in Ihrer LaTeX-Distribution aktivieren,
+ siehe Abschnitt 2 von 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://tug.ctan.org/get/macros/latex/required/graphics/grfguide.pdf
 \end_layout
 
-\end_deeper
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Description
-Schriften
+Standard-Hauptdokument
+\begin_inset space ~
+\end_inset
+
+wählen Wenn Sie das ankreuzen, können Sie im Feld 
+\family sans
+\series bold
+Hauptdokument
+\family default
+\series default
+ dasselbige eintragen, wenn Ihr Dokument ein Unterdokument davon ist.
+ Mehr über Unterdokumente finden Sie im Handbuch 
+\emph on
+Eingebettete Objekte
+\emph default
+.
+\end_layout
+
+\begin_layout Description
+Module
 \end_layout
 
 \begin_deeper
+\begin_layout Description
+Verfügbar Hier finden Sie eine Liste mit Modulen, die Sie zusätzlich benutzen
+ können.
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Ausgewählt Hier erscheinen die von Ihnen hinzugefügten Module.
+\end_layout
+
+\begin_layout Description
+Hinzufügen und 
+\family sans
+\series bold
+Löschen
+\family default
+\series default
+ sind selbsterklärend.
+\end_layout
+
+\begin_layout Standard
+Mit 
+\family sans
+\series bold
+Rauf
+\family default
+\series default
+ und 
+\family sans
+\series bold
+Runter
+\family default
+\series default
+ können Sie die Reihenfolge der hinzugefügten Module ändern.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Außerdem erhalten Sie im darunterliegenden Fenster weitere Hinweise, wenn
+ Sie ein Modul anklicken.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Schriften
+\begin_inset CommandInset label
+LatexCommand label
+name "Schriften"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Description
 Standard-Familie: Hier legen Sie die Schriftart fest, die im Dokument als
  Standard verwendet werden soll.
 \end_layout
 
+\begin_deeper
 \begin_layout Description
-Basisgröße: Hier legen Sie die Standardgröße der verwendeten Schrift fest.
+Grundgröße: Hier legen Sie die Standardgröße der verwendeten Schrift fest.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Serifenschrift: Hier legen Sie den Font für den Roman-Zeichensatz fest.
 \end_layout
 
 \begin_layout Description
-Roman: Hier legen Sie den Font für den Roman-Zeichensatz fest.
+Serifenlos: Hier legen Sie den Font für den serifenfreien Zeichensatz fest.
 \end_layout
 
+\begin_deeper
 \begin_layout Description
-Serifenfrei: Hier legen Sie den Font für den serifenfreien Zeichensatz fest.
+Skalierung
+\begin_inset space ~
+\end_inset
+
+(%) Wenn Sie zum Beispiel den benutzten 11pt-Palatino-Font durch Helvetica
+ ersetzen, sieht das Ergebnis wahrscheinlich zu groß aus.
+ Wenn Sie es dann auf 95% herunterskalieren, wird es richtig aussehen.
 \end_layout
 
+\end_deeper
 \begin_layout Description
 Schreibmaschine Hier legen Sie den Schreibmaschinen-Zeichensatz fest.
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Skalierung
+\begin_inset space ~
+\end_inset
+
+(%) siehe oben.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+CJK siehe Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "CJK-Feld"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -4116,6 +4286,8 @@ Kapitälchen
 
 verwenden Manche Fonts erlauben auch, echte Kapitälchen (was auch der Unterschie
 d sein mag) zu verwenden.
+ Sonst werden Kapitälchen durch Herunterskalieren von Großbuchstaben zu
+ simuliert.
 \end_layout
 
 \begin_layout Description
@@ -4150,6 +4322,31 @@ Computer Modern
 Palatino
 \emph default
  sind zwei Beispiele.
+ Es werden Ziffern verwendet, die unter die Grundlinie reichen wie zum Beispiel
+ die 3.
+ Weitere Erkärungen hierzu finden Sie hier: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://de.wikipedia.org/wiki/Mediävalziffer
+\end_layout
+
+\end_inset
+
+ und 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.fonts.com/AboutFonts/Articles/fyti/OldstyleFigs.htm
+\end_layout
+
+\end_inset
+
+.
  Sie müssen dann so einen Font für 
 \family sans
 \series bold
@@ -4157,7 +4354,11 @@ Roman
 \family default
 \series default
  wählen.
- Eine weitere Möglichkeit, bei der Sie keinen Font kennen müssen, ist, den
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Eine weitere Möglichkeit, bei der Sie keinen Font kennen müssen, ist, den
  Befehl 
 \family typewriter
 
@@ -4180,14 +4381,46 @@ status collapsed
 X-Vorspann
 \family default
  Ihres Dokumentes zu schreiben.
+ Es kann aber sein, dass Ihnen die Anführungsstriche nicht gefallen.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie nur hin und wieder Mediävalziffern benutzen wollen, können Sie
+ das mit TeX-Code machen.
+ 
+\family typewriter
+
+\backslash
+oldstylenums{0123456789}
+\family default
+ als TeX-Code ergibt: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+oldstylenums{1234567890}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_deeper
-\begin_layout Description
+\begin_layout Subsubsection
 Textformat
+\begin_inset CommandInset label
+LatexCommand label
+name "Textformat"
+
+\end_inset
+
+
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 
 \family sans
@@ -4221,6 +4454,11 @@ reference "Absatzeinrückung-und--trennung"
 .
 \end_layout
 
+\begin_layout Description
+Abstand
+\end_layout
+
+\begin_deeper
 \begin_layout Description
 Zeilenabstand: Hier können Sie zwischen 
 \family sans
@@ -4301,14 +4539,44 @@ werden
 
 \end_deeper
 \begin_layout Description
-
-\family sans
-Seitenformat
+Listing-Einstellungen Wenn Sie im rechten Feld ein ? eingeben, werden links
+ alle infrage kommenden Parameter aufgelistet.
+ Wenn Sie dann rechts einen dieser Parameter eingeben, wird links angezeigt,
+ was Sie noch tun müssen.
+ Diese Option ist mehr etwas für LaTeX-Experten.
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-Format: eine Liste der Papiergrößen, die LyX unterstützt.
+Überprüfung
+\begin_inset space ~
+\end_inset
+
+umgehen kreuzen Sie an, wenn Sie einen Parameter eingeben wollen, den LyX
+ nicht erkennt.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+
+\family sans
+Seitenlayout
+\begin_inset CommandInset label
+LatexCommand label
+name "Seitenlayout"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Papierformat
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Format eine Liste der Papiergrößen, die LyX unterstützt.
  Wenn Sie 
 \family sans
 Benutzerdefiniert
@@ -4321,7 +4589,7 @@ Benutzerdefiniert
 \family sans
 Breite
 \family default
- festlegen.
+ selber festlegen.
 \end_layout
 
 \begin_layout Description
@@ -4339,19 +4607,22 @@ Querformat
 \begin_layout Description
 S
 \family sans
-eiten-Stil
+eitenlayout
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Seiten-Stil
+Seitenlayout
 \end_layout
 
 \end_inset
 
-:
-\family default
- Dies ist eine weitere Liste mit fünf Optionen.
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Seiten-Stil: Dies ist eine weitere Liste mit fünf Optionen.
  Damit wird festgelegt, wie Überschriften und Seitenzahlen aussehen.
 \begin_inset Foot
 status collapsed
@@ -4478,15 +4749,20 @@ reference "Eine-Datei-drucken"
 \end_layout
 
 \end_deeper
-\begin_layout Description
+\end_deeper
+\begin_layout Subsubsection
 Seitenränder
 \begin_inset CommandInset label
 LatexCommand label
-name "Seitenränderbeschreibung"
+name "Seitenränder"
 
 \end_inset
 
- Für einige Einstellungen benötigen Sie das 
+
+\end_layout
+
+\begin_layout Standard
+Für einige Einstellungen benötigen Sie das 
 \family typewriter
 geometry
 \family default
@@ -4508,25 +4784,37 @@ geometry
  Die Ränder sind dann festgelegt.
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
+\begin_layout Description
 
 \family sans
-Oben
+\series bold
+Standard-Ränder
 \family default
-, 
-\family sans
-Unten
+\series default
+ Wenn Sie das angekreuzt haben, werden die Randeinstellungen Ihrer verwendeten
+ Dokumentklasse benutzt.
+ Sie können dann das 
+\family typewriter
+geometry
 \family default
-, 
-\family sans
-Innen
-\family default
- und 
-\family sans
-Außen
-\family default
- legen den Druckbereich fest, bei A4 ist er dann 21cm 
+-Paket nicht benutzen.
+ Wenn nicht, können Sie eigene definieren:
+\end_layout
+
+\begin_layout Description
+Oben,
+\begin_inset space ~
+\end_inset
+
+Unten,
+\begin_inset space ~
+\end_inset
+
+Innen,
+\begin_inset space ~
+\end_inset
+
+Außen legen den Druckbereich fest, bei A4 ist er dann 21cm 
 \begin_inset Formula $-$
 \end_inset
 
@@ -4560,7 +4848,10 @@ Unten
 \family default
  hoch.
  Außerhalb davon werden Kopf- und Fußzeile und Randnotiz gedruckt.
- 
+\end_layout
+
+\begin_layout Description
+
 \family sans
 Abstand
 \begin_inset space \space{}
@@ -4573,7 +4864,43 @@ zum
 Kopf
 \family default
  ist der Abstand zwischen Unterkante Kopfzeile und Oberkante Druckbereich,
- 
+ siehe auch 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "latex-einführung"
+
+\end_inset
+
+, Seite 35.
+ Der dazugehörige LaTeX-Befehl ist 
+\family typewriter
+
+\backslash
+headsep
+\family default
+.
+\end_layout
+
+\begin_layout Description
+Kopfzeilenhöhe Höhe der Kopfzeile (siehe auch 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "latex-einführung"
+
+\end_inset
+
+, Seite 35).
+ Der dazugehörige LaTeX-Befehl ist 
+\family typewriter
+
+\backslash
+headheight
+\family default
+.
+\end_layout
+
+\begin_layout Description
+
 \family sans
 Abstand
 \begin_inset space \space{}
@@ -4591,6 +4918,32 @@ Fuß
 Kopfzeilenhöhe
 \family default
  ist selbsterklärend.
+\end_layout
+
+\begin_layout Description
+Abstand
+\begin_inset space ~
+\end_inset
+
+zum
+\begin_inset space ~
+\end_inset
+
+Kopf ist der Abstand Unterkante Kopf bis Oberkante Rumpf (siehe auch 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "latex-einführung"
+
+\end_inset
+
+, Seite 35).
+ Der dazugehörige LaTeX-Befehl ist 
+\family typewriter
+
+\backslash
+headsep
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -4629,20 +4982,35 @@ Kopf + Kopfzeilenhöhe
  ist.
 \end_layout
 
-\end_deeper
-\begin_layout Standard
-Siehe auch Abschnitt
-\begin_inset space \space{}
+\begin_layout Description
+Abstand
+\begin_inset space ~
 \end_inset
 
+zum
+\begin_inset space ~
+\end_inset
 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Seitenränder"
+Fuß ist der Abstand Unterkante Rumpf bis Unterkante Fußzeile (siehe auch
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "latex-einführung"
 
 \end_inset
 
+, Seite 35).
+ Der dazugehörige LaTeX-Befehl ist 
+\family typewriter
+
+\backslash
+footskip
+\family default
 .
+\end_layout
+
+\begin_layout Description
+Spaltenabstand ist der Abstand zwischen zwei Spalten bei mehrspaltigen Seiten.
 \end_layout
 
 \begin_layout Subsection
@@ -13376,6 +13744,7 @@ Textstil
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 2bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -13395,9 +13764,15 @@ reference "Fontgröße"
 \end_layout
 
 \begin_layout Standard
-Im CJK-Feld können die Benutzer von Chinesisch, Japanisch oder Koreanisch
- (CJK) eine Font festlegen, mit dem die Schriftzeichen dargestellt werden
- sollen.
+Im CJK-Feld
+\begin_inset CommandInset label
+LatexCommand label
+name "CJK-Feld"
+
+\end_inset
+
+können die Benutzer von Chinesisch, Japanisch oder Koreanisch (CJK) eine
+ Font festlegen, mit dem die Schriftzeichen dargestellt werden sollen.
 \begin_inset Foot
 status open
 
@@ -29997,7 +30372,7 @@ Literaturverweis\SpecialChar \ldots{}
 	filename ../../images/dialog-show-new-inset_citation.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 2bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -39827,64 +40202,18 @@ Dokumentklasse
 \end_layout
 
 \begin_layout Standard
-Siehe auch Abschnitt
+Siehe Abschnitt
 \begin_inset space \space{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Eine-Klasse-auswählen"
+reference "Dokumentklasse"
 
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Description
-Module
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Verfügbar Hier finden Sie eine Liste mit Modulen, die Sie zusätzlich benutzen
- können.
-\end_layout
-
-\begin_layout Description
-Ausgewählt Hier erscheinen die von Ihnen hinzugefügten Module.
-\end_layout
-
-\begin_layout Description
-Hinzufügen und 
-\family sans
-\series bold
-Löschen
-\family default
-\series default
- sind selbsterklärend.
-\end_layout
-
-\begin_layout Standard
-Mit 
-\family sans
-\series bold
-Rauf
-\family default
-\series default
- und 
-\family sans
-\series bold
-Runter
-\family default
-\series default
- können Sie die Reihenfolge der hinzugefügten Module ändern.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-Außerdem erhalten Sie im darunterliegenden Fenster weitere Hinweise, wenn
- Sie ein Modul anklicken.
 \end_layout
 
 \begin_layout Section
@@ -39892,120 +40221,14 @@ Schriften
 \end_layout
 
 \begin_layout Standard
-Hier können Sie die in 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Aussehen
-\begin_inset space \space{}
-\end_inset
-
-&
-\begin_inset space \space{}
-\end_inset
-
-Handhabung
-\family default
- definierten 
-\family sans
-Bildschirmschriften
-\family default
- ändern.
-\end_layout
-
-\begin_layout Description
-Standard-Familie
-\end_layout
-
-\begin_layout Description
-Basisgröße ist die Fontgröße in Punkten, die das Dokument verwendet.
-\end_layout
-
-\begin_layout Description
-Roman
-\end_layout
-
-\begin_layout Description
-Serifenfrei
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Skalierung
-\begin_inset space ~
-\end_inset
-
-(%) Wenn Sie zum Beispiel den benutzten 11pt-Palatino-Font durch Helvetica
- ersetzen, sieht das Ergebnis wahrscheinlich zu groß aus.
- Wenn Sie es dann auf 95% herunterskalieren, wird es richtig aussehen.
-\end_layout
-
-\end_deeper
-\begin_layout Description
-Schreibmaschine
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Skalierung
-\begin_inset space ~
-\end_inset
-
-(%) siehe oben.
-\end_layout
-
-\end_deeper
-\begin_layout Description
-Echte
-\begin_inset space ~
-\end_inset
-
-Kapitälchen
-\begin_inset space ~
-\end_inset
-
-verwenden bedeutet, einen echten Font zu benutzen, anstatt Kapitälchen durch
- herunterskalieren von Großbuchstaben zu simulieren.
-\end_layout
-
-\begin_layout Description
-Mediävalziffern
-\begin_inset space ~
-\end_inset
-
-verwenden bedeutet, Ziffern zu verwenden, die unter die Grundlinie reichen
- wie zum Beispiel die 3.
- Weitere Erkärungen hierzu finden Sie hier: 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://de.wikipedia.org/wiki/Mediävalziffer
-\end_layout
-
-\end_inset
-
- und 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.fonts.com/AboutFonts/Articles/fyti/OldstyleFigs.htm
-\end_layout
-
-\end_inset
-
-.
- Siehe auch Abschnitt
+Siehe Abschnitt
 \begin_inset space \space{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Mediävalziffern-verwenden"
+reference "Schriften"
 
 \end_inset
 
@@ -40017,77 +40240,33 @@ Textformat
 \end_layout
 
 \begin_layout Standard
-Siehe auch die Abschnitte
+Siehe Abschnitt
 \begin_inset space \space{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Globale-Absatztrennung"
-
-\end_inset
-
- und 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Absatz-einrücken"
+reference "Textformat"
 
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Description
-Abstand
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Zeilenabstand: hier können Sie einen auswählen oder selber definieren.
-\end_layout
-
-\begin_layout Description
-Zweispaltiges
-\begin_inset space ~
-\end_inset
-
-Dokument ist selbsterklärend
-\end_layout
-
-\end_deeper
-\begin_layout Description
-Listing-Einstellungen Wenn Sie im linken Feld ein ? eingeben, werden rechts
- alle infrage kommenden Parameter aufgelistet.
- Wenn Sie dann links einen dieser Parameter eingeben, wird rechts angezeigt,
- was Sie noch tun müssen.
- Diese Option ist mehr etwas für LaTeX-Experten.
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Überprüfung
-\begin_inset space ~
-\end_inset
-
-umgehen kreuzen Sie an, wenn Sie einen Parameter eingeben wollen, den LyX
- nicht erkennt.
-\end_layout
-
-\end_deeper
 \begin_layout Section
-Seitenformat
+Seitenlayout
 \end_layout
 
 \begin_layout Standard
-Siehe auch Abschnitt
+Siehe Abschnitt
 \begin_inset space \space{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Dokument-Einstellungen"
+reference "Seitenlayout"
 
 \end_inset
 
@@ -40096,131 +40275,21 @@ reference "Dokument-Einstellungen"
 
 \begin_layout Section
 Seitenränder
-\begin_inset CommandInset label
-LatexCommand label
-name "Seitenränder"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-Wenn Sie 
-\family sans
-\series bold
-Standard-Ränder
-\family default
-\series default
- angekreuzt haben, werden die Randeinstellungen Ihrer verwendeten Dokumentklasse
- benutzt.
- Wenn nicht, können Sie eigene definieren:
-\end_layout
-
-\begin_layout Description
-Oben,
-\begin_inset space ~
-\end_inset
-
-Unten,
-\begin_inset space ~
-\end_inset
-
-Innen,
-\begin_inset space ~
-\end_inset
-
-Außen ist selbsterklärend
-\end_layout
-
-\begin_layout Description
-Abstand
-\begin_inset space ~
-\end_inset
-
-zum
-\begin_inset space ~
-\end_inset
-
-Kopf ist der Abstand Unterkante Kopf bis Oberkante Rumpf (siehe auch 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latex-einführung"
-
-\end_inset
-
-, Seite 35).
- Der dazugehörige LaTeX-Befehl ist 
-\family typewriter
-
-\backslash
-headsep
-\family default
-.
-\end_layout
-
-\begin_layout Description
-Kopfzeilenhöhe Höhe der Kopfzeile (siehe auch 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latex-einführung"
-
-\end_inset
-
-, Seite 35).
- Der dazugehörige LaTeX-Befehl ist 
-\family typewriter
-
-\backslash
-headheight
-\family default
-.
-\end_layout
-
-\begin_layout Description
-Abstand
-\begin_inset space ~
-\end_inset
-
-zum
-\begin_inset space ~
-\end_inset
-
-Fuß ist der Abstand Unterkante Rumpf bis Unterkante Fußzeile (siehe auch
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "latex-einführung"
-
-\end_inset
-
-, Seite 35).
- Der dazugehörige LaTeX-Befehl ist 
-\family typewriter
-
-\backslash
-footskip
-\family default
-.
-\end_layout
-
-\begin_layout Description
-Spaltenabstand ist der Abstand zwischen zwei Spalten bei mehrspaltigen Seiten.
-\end_layout
-
-\begin_layout Standard
-Einzelheiten zu diesen vier Gruppen finden Sie in Abschnitt
+Siehe Abschnitt
 \begin_inset space \space{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Seitenränderbeschreibung"
+reference "Seitenränder"
 
 \end_inset
 
-f.
+.
 \end_layout
 
 \begin_layout Section
@@ -40228,18 +40297,8 @@ Sprache
 \end_layout
 
 \begin_layout Description
-Sprache siehe Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Rechtschreibprogramm"
-
-\end_inset
-
-.
+Sprache listet alle von LyX unterstützten Sprachen auf, von denen Sie eine
+ für Ihr Dokument auswählen können.
 \end_layout
 
 \begin_layout Description
@@ -40407,10 +40466,10 @@ CJK
 \family default
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
-LaTeX! -Paket ! CJK
+LaTeX! -Paket ! cjk
 \end_layout
 
 \end_inset
@@ -40460,11 +40519,11 @@ key "XeTeX"
 
 \end_deeper
 \begin_layout Standard
-Weitere Kodierungen sind im 
+Eine vollständige Liste der Kodierungen ist im englischen
 \emph on
-englischen Benutzerhandbuch
+ Benutzerhandbuch
 \emph default
- beschrieben.
+.
 \end_layout
 
 \end_deeper
@@ -40514,7 +40573,7 @@ Literaturverzeichnis
 \end_layout
 
 \begin_layout Description
-Zitat-Stil Verwenden Sie 
+Zitierstil Verwenden Sie 
 \family sans
 Standard (nummerisch)
 \family default
@@ -40527,6 +40586,18 @@ Natbib
 Jurabib
 \family default
  nichts sagen.
+ Mehr über Literaturverzeichnisse finden Sie in Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Literaturverzeichnis"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -40559,7 +40630,7 @@ name "PDF-Eigenschaften-B"
 \end_layout
 
 \begin_layout Description
-hyperref-Unterstützung
+Hyperref-Unterstützung
 \begin_inset space ~
 \end_inset
 
@@ -40725,14 +40796,12 @@ Lesezeichen
 öffnen öffnet die Lesezeichen in der DVI-Ausgabe automatisch
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Ebene legt fest, bis zu welcher Ebene (Kapitel, Abschnitt\SpecialChar \ldots{}
 ) Lesezeichen angezeigt
  werden sollen.
 \end_layout
 
-\end_deeper
 \end_deeper
 \end_deeper
 \end_deeper
@@ -40756,7 +40825,53 @@ Mathe-Optionen
 \end_layout
 
 \begin_layout Standard
-Siehe Abschnitt
+Mit diesen Optionen können Sie LyX zwingen, die LaTeX-Pakete 
+\family typewriter
+amsmath
+\family default
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+LaTeX! -Paket ! amsmath
+\end_layout
+
+\end_inset
+
+ und 
+\family typewriter
+esint
+\family default
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+LaTeX! -Paket ! esint
+\end_layout
+
+\end_inset
+
+ direkt zu benuitzen oder automatisch, wenn sie benötigt werden.
+\end_layout
+
+\begin_layout Description
+amsmath wird für viele Konstrukte benötigt.
+ Wenn Sie viele LaTeX-Fehlermeldungen in formeln bekommen, vergewissern
+ Sie sich, dass Sie
+\family typewriter
+ amsmath
+\family default
+ aktiviert haben.
+\end_layout
+
+\begin_layout Description
+esint wird für spezielle Integralzeichen benötigt.
+\end_layout
+
+\begin_layout Standard
+Siehe auch Abschnitt
 \begin_inset space \space{}
 \end_inset
 
@@ -40864,20 +40979,19 @@ Farbe
 \end_layout
 
 \end_deeper
-\begin_layout Section
-Eingebettete Dateien
-\end_layout
-
-\begin_layout Description
-Weitere
-\begin_inset space ~
+\begin_layout Standard
+Siehe auch Abschnitt
+\begin_inset space \space{}
 \end_inset
 
-eingebettete
-\begin_inset space ~
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Zweige"
+
 \end_inset
 
-Dateien werden hier aufgelistet und können hinzugefügt und entfernt werden.
+.
 \end_layout
 
 \begin_layout Section
@@ -40886,6 +41000,19 @@ LaTeX-Vorspann
 
 \begin_layout Standard
 Er enthält LaTeX-Befehle, die nicht zum Klassenstandard gehören.
+ Dies ist etwas für LaTeX-Experten.
+ Eine Einführung in die LaTeX-Syntax finden Sie in Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "LaTeX-Syntax"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Chapter
