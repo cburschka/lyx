@@ -2097,7 +2097,7 @@ msgstr "Datei&formate"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:100
 msgid "&Document format"
-msgstr "&Dokumentenformat"
+msgstr "&Dokumentformat"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:107
 msgid "Vector graphi&cs format"
@@ -12850,7 +12850,7 @@ msgstr "Unbekannte Dokumentklasse"
 #: src/Buffer.cpp:411
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
-msgstr "Verwende die Standard-Dokumentenklasse, da die Klasse %1$s unbekannt ist."
+msgstr "Verwende die Standard-Dokumentklasse, da die Klasse %1$s unbekannt ist."
 
 #: src/Buffer.cpp:471
 #: src/Text.cpp:284
@@ -12879,7 +12879,7 @@ msgstr "Die Dokumentklasse kann nicht geladen werden"
 #: src/Buffer.cpp:513
 #, c-format
 msgid "Using the default document class, because the class %1$s could not be loaded."
-msgstr "Verwende die Standard-Dokumentenklasse, da die Klasse %1$s nicht geladen werden konnte."
+msgstr "Verwende die Standard-Dokumentklasse, da die Klasse %1$s nicht geladen werden konnte."
 
 #: src/Buffer.cpp:524
 #: src/Buffer.cpp:530
@@ -12920,7 +12920,7 @@ msgstr "%1$s konnte nicht gelesen werden."
 #: src/Buffer.cpp:684
 #: src/Buffer.cpp:769
 msgid "Document format failure"
-msgstr "Dokumentenformat-Fehler"
+msgstr "Dokumentformat-Fehler"
 
 #: src/Buffer.cpp:685
 #, c-format
@@ -13009,7 +13009,7 @@ msgid ""
 "Changing the document encoding to utf8 could help."
 msgstr ""
 "Einige Zeichen Ihres Dokuments sind mit der gewählten Kodierung wahrscheinlich nicht darstellbar.\n"
-"Eine Änderung der Dokumentenkodierung auf 'utf8' könnte helfen."
+"Eine Änderung der Dokumentkodierung auf 'utf8' könnte helfen."
 
 #: src/Buffer.cpp:972
 msgid "iconv conversion failed"
@@ -14372,7 +14372,7 @@ msgstr "Definieren Sie die Optionen von makeindex (vgl. man makeindex) oder wäh
 
 #: src/LyXRC.cpp:2244
 msgid "Define the options of makeindex (cf. man makeindex) to be used for nomenclatures. This might differ from the index processing options."
-msgstr ""
+msgstr "Definieren Sie die Makeindex-Optionen (vgl. man makeindex) zur Erstellung des Glossars (Nomenklatur). Die Definition kann sich von jener zur Stichwortverzeichnis unterscheiden."
 
 #: src/LyXRC.cpp:2253
 msgid "Use this to set the correct mapping file for your keyboard. You'll need this if you for instance want to type German documents on an American keyboard."
@@ -16087,7 +16087,7 @@ msgstr "Textformat"
 
 #: src/frontends/qt4/QDocument.cpp:585
 msgid "Page Layout"
-msgstr "Seitenformat"
+msgstr "Seitenlayout"
 
 #: src/frontends/qt4/QDocument.cpp:586
 msgid "Page Margins"
