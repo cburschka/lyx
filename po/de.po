@@ -2154,11 +2154,11 @@ msgstr "&Nummerierung"
 #: src/frontends/qt4/ui/PageLayoutUi.ui:33
 #: src/frontends/qt4/GuiDocument.cpp:1009
 msgid "Page Layout"
-msgstr "Seitenformat"
+msgstr "Seitenlayout"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:68
 msgid "Paper Format"
-msgstr "Seitenformat"
+msgstr "Papierformat"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:103
 msgid "Choose a particular paper size, or set your own with \"Custom\""
@@ -2598,7 +2598,7 @@ msgstr "&Vektorgrafik-Format"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:102
 msgid "&Document format"
-msgstr "&Dokumentenformat"
+msgstr "&Dokumentformat"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
 msgid "&Viewer:"
@@ -12084,7 +12084,7 @@ msgstr "Tastenkürzel|k"
 
 #: lib/ui/stdmenus.inc:526
 msgid "LyX Functions|y"
-msgstr "LyX Funktionen|y"
+msgstr "LyX-Funktionen|y"
 
 #: lib/ui/stdtoolbars.inc:57
 msgid "New document"
@@ -15161,7 +15161,7 @@ msgstr "Unbekannte Dokumentklasse"
 #: src/Buffer.cpp:507
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
-msgstr "Verwende die Standard-Dokumentenklasse, da die Klasse %1$s unbekannt ist."
+msgstr "Verwende die Standard-Dokumentklasse, da die Klasse %1$s unbekannt ist."
 
 #: src/Buffer.cpp:511
 #: src/Text.cpp:241
@@ -15211,7 +15211,7 @@ msgstr ""
 #: src/Buffer.cpp:702
 #: src/Buffer.cpp:785
 msgid "Document format failure"
-msgstr "Dokumentenformat-Fehler"
+msgstr "Dokumentformat-Fehler"
 
 #: src/Buffer.cpp:703
 #, c-format
@@ -15314,7 +15314,7 @@ msgid ""
 "Changing the document encoding to utf8 could help."
 msgstr ""
 "Einige Zeichen Ihres Dokuments sind mit der gewählten Kodierung wahrscheinlich nicht darstellbar.\n"
-"Eine Änderung der Dokumentenkodierung auf 'utf8' könnte helfen."
+"Eine Änderung der Dokumentkodierung auf 'utf8' könnte helfen."
 
 #: src/Buffer.cpp:988
 msgid "iconv conversion failed"
@@ -16633,7 +16633,7 @@ msgid ""
 "updated document class specifications."
 msgstr ""
 "Das System wurde neu konfiguriert.\n"
-"Sie müssen LyX neu starten, um die aktualisierten Spezifikationenfür die Dokumentenklassen zu nutzen."
+"Sie müssen LyX neu starten, um die aktualisierten Spezifikationenfür die Dokumentklassen zu nutzen."
 
 #: src/LyXFunc.cpp:362
 msgid "Unknown function."
@@ -18150,7 +18150,7 @@ msgstr "Nicht verfügbar: %1$s"
 #: src/frontends/qt4/GuiDocument.cpp:1006
 #: src/frontends/qt4/GuiDocument.cpp:1020
 msgid "Document Class"
-msgstr "Dokumentenklasse"
+msgstr "Dokumentklasse"
 
 #: src/frontends/qt4/GuiDocument.cpp:1008
 msgid "Text Layout"
