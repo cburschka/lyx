@@ -3,193 +3,380 @@
 # German DIN-Brief textclass definition file.
 # Author : Juergen Vigna <jug@sad.it>
 # Modified by: Carsten Kaemmerer <kammerer@ips.cs.tu-bs.de>
-# Modifies only some things from letter.layout
-
+# Modified by: Guenter Milde <g.milde@users.berlios.de>
+#    Dummy Style DinBrief for common layout features (removed at eof)
+#    Generic style names (there are german translations for most names)
+#    Additional Styles and twiddeled layout
+#    Many "ObsoletedBy" to ease conversion from g-brief, scrletter,
+#    or letter (see also the update of the dinbrief.lyx template)
 
 Format 4
+
 Input letter.layout
 
+# dinbrief's \phone has 2 args, area and number. We define an empty
+# command that can be set by the Area_Code style
+Preamble
+	\newcommand{\areacode}{}
+EndPreamble
 
-Style My_Address
-	Margin                Static
-	LeftMargin            Unterschrift:
-	LabelType             Static
-	LabelString           "Briefkopf:"
-	LabelSep              x
+# auxiliary style copied by other dinbrief styles
+Style DinBrief
+	LatexType	Command
+	Margin		Static
+	LeftMargin	"Unsere Zeichen"
+	Align		Left
+	AlignPossible	Left
+	LabelType	Static
+	LabelSep	x
 	LabelFont
-	  Shape               Italic
-	  Size                Small
-	  Color               blue
+	  Series	Medium
+	  Shape		Italic
+	  Size		Small
+	  Color		blue
 	EndFont
-	BottomSep             0.5
-	Spacing               Other 0.9
 End
 
-
+# Open a new letter
+# in dinbrief, this is an environment spanning the whole letter
+# (see scrlettr2 for an alternative lyx-implementation)
 Style Send_To_Address
-	Margin                Static
-	BottomSep             0.1
-	LeftMargin            Unterschrift:
-	LabelType             Static
-	LabelString           "Adresse:"
-	LabelSep              x
-	LabelFont
-	  Series              Medium
-	  Shape               Italic
-	  Size                Small
-	  Color               blue
-	EndFont
-	Spacing               Other 0.9
+	CopyStyle	DinBrief
+	LabelString	"Anschrift:"
+	KeepEmpty	1
+	BottomSep	0.1
+	LatexName	letter
 End
 
+# Data Fields, placed according to DIN norm
+# ---------------------------------------------------------
 
-Style Opening
-	LeftMargin            Unterschrift:
-	LabelString           "Anrede:"
-	LabelSep              x
-	LabelFont
-	  Series              Medium
-	  Shape               Italic
-	  Size                Small
-	  Color               blue
+# need to be placed before the Opening in the LyX document!
+
+# backaddress in letter head
+Style My_Address
+	CopyStyle	DinBrief
+	LabelString	"Briefkopf:"
+	LatexName	address
+	KeepEmpty	1
+	BottomSep	0.5
+	AlignPossible	Block, Left, Right, Center
+End
+
+# backaddress in address window
+Style "Return address"
+	CopyStyle	DinBrief
+	LabelString	"Absender:"
+	LatexName	backaddress
+	TextFont
+	    Size	Small
 	EndFont
 End
 
+# vor der Emfängeranschrift (Einschreiben, Luftpost)
+Style "Postal comment"
+	CopyStyle	DinBrief
+	LabelString	"Postvermerk:"
+	LatexName	postremark
+End
+
+# rechts neben der Emfängeranschrift (Eilt, Persönlich)
+Style Handling
+	CopyStyle	DinBrief
+	LabelString	"Zusatz:"
+	LatexName	handling
+End
+
+# "Ihre Zeichen/Ihre Nachricht vom"
+Style YourRef
+	CopyStyle	DinBrief
+	LabelString	"Ihre Zeichen:"
+	LatexName	yourmail
+End
+
+Style MyRef
+	CopyStyle	DinBrief
+	LabelString	"Unsere Zeichen:"
+	LatexName	sign
+End
+
+Style Writer
+	CopyStyle	DinBrief
+	LabelString	"Sachbearbeiter:"
+	LatexName	writer
+End
 
 Style Signature
-	LeftMargin            Unterschrift:
-	LabelString           "Unterschrift:"
-	LabelSep              x
-	LabelFont
-	  Series              Medium
-	  Shape               Italic
-	  Size                Small
-	  Color               blue
-	EndFont
+	CopyStyle	DinBrief
+	LabelString	"Unterschrift:"
+	LatexName	signature
 End
 
+# contact info at the bottom of the first page
+Style Bottomtext
+	CopyStyle	DinBrief
+	LabelString	"Fusszeile(n):"
+	LatexName	bottomtext
+	AlignPossible	Block, Left, Right, Center
+End
+
+# dinbrief's \phone has 2 args, area and number,
+# define both as distinct styles
+
+Style "Area code"
+	CopyStyle	DinBrief
+	LabelString	"Vorwahl:"
+	LatexName	"renewcommand{\areacode}"
+End
+
+Style Telephone
+	CopyStyle	DinBrief
+	LabelString	"Telefon:"
+	LatexName	phone
+	LatexParam	{\areacode}
+End
+
+Style Location
+	CopyStyle	DinBrief
+	LabelString	"Ort:"
+	LatexName	place
+	Margin		Right_Address_Box
+	TopSep		0.1
+	BottomSep	0.1
+	ParSep		0.1
+End
+
+Style Date
+	CopyStyle	Location
+	LabelString	"Datum:"
+	LatexName	date
+End
+
+# dinbrief does not emphasize the subject line
+Style Subject
+	CopyStyle	DinBrief
+	LabelString	"Betreff:"
+	LatexName	subject
+	TopSep		0.4
+	BottomSep	0.4
+	ParSep		0.4
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
+End
+
+# Opening (Anrede)
+# ----------------
+
+# sets the above data fields
+
+Style Opening
+	CopyStyle	DinBrief
+	LabelType	Top_Environment
+	LeftMargin	""
+	LabelString	"Anrede:"
+	LatexName	opening
+	KeepEmpty	1
+	TopSep		1.5
+	BottomSep	1
+End
+
+# Backmatter (styles to be used at the end of the letter)
+# -------------------------------------------------------
+
+# placed in order of appearance in the document
 
 Style Closing
-	LeftMargin            Unterschrift:
-	LabelString           "Gruss:"
-	LabelSep              x
-	LabelFont
-	  Series              Medium
-	  Shape               Italic
-	  Size                Small
-	  Color               blue
-	EndFont
+	CopyStyle	Opening
+	LabelString	"Gruss:"
+	LatexName	closing
+	OptionalArgs	1
+	KeepEmpty	1
 End
-
 
 Style encl
-	LabelString           "Anlagen:"
-	LeftMargin            Unterschrift:
-	LabelSep              x
+	CopyStyle	Opening
+	LabelString	"Anlage(n):"
+	LatexName	encl
+	TopSep		0.4
+	BottomSep	0.4
+	KeepEmpty	0
 	LabelFont
-	  Series              Medium
-	  Shape               Italic
-	  Size                Small
-	  Color               blue
+	  Series	Medium
+	  Shape		Up
+	  Size		Normal
+	  Color		black
 	EndFont
 End
-
-
-Style ps
-	Margin                Static
-	LatexType             Command
-	LatexName             ps
-	LeftMargin            Unterschrift:
-	LabelSep              x
-	TopSep                0.4
-	BottomSep             0.4
-	ParSep                0.4
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
-	LabelString           "PS:"
-	LabelFont
-	  Series              Medium
-	  Shape               Italic
-	  Size                Small
-	  Color               blue
-	EndFont
-End
-
 
 Style cc
-	LabelString           "Verteiler:"
-	LeftMargin            Unterschrift:
-	LabelSep              x
-	LabelFont
-	  Series              Medium
-	  Shape               Italic
-	  Size                Small
-	  Color               blue
-	EndFont
+	CopyStyle	encl
+	LabelString	"Verteiler:"
+	LatexName	cc
 End
 
-
-Style Betreff
-	Margin                Static
-	LatexType             Command
-	LatexName             subject
-	LeftMargin            Unterschrift:
-	LabelSep              x
-	KeepEmpty             1
-	TopSep                0.4
-	BottomSep             0.4
-	ParSep                0.4
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
-	LabelString           "Betreff:"
-	LabelFont
-	  Shape               Italic
-	  Size                Small
-	  Color               blue
-	EndFont
-	TextFont
-	  Shape               Italic
-	EndFont
+Style PS
+	CopyStyle	encl
+	LabelString	"PS:"
+	LatexName	ps
+	Align		Block
+	AlignPossible	Block, Left
+	ParSep		0.4
 End
 
+# Obsoleted (or differently named) styles
+# ---------------------------------------
 
+# ease conversion from g-brief, scrletter, or letter
+
+# scrletter
+Style SenderAddress
+	ObsoletedBy	My_Address
+End
+
+# scrletter
+Style Backaddress
+	ObsoletedBy	"Return address"
+End
+
+# g-brief-de
+Style RetourAdresse
+	ObsoletedBy	"Return address"
+End
+
+# dinbrief (gm old), g-brief-en, scrletter, ...
+Style Address
+	ObsoletedBy	Send_To_Address
+End
+
+# g-brief-de, g-brief2
+Style Adresse
+	ObsoletedBy	Send_To_Address
+End
+
+# g-brief-de
+Style Postvermerk
+	ObsoletedBy	"Postal comment"
+End
+
+# g-brief-de
+Style Zusatz
+	ObsoletedBy	Handling
+End
+
+# g-brief-de
+Style IhrZeichen
+	ObsoletedBy	YourRef
+End
+
+# Ihr Schreiben vom ist in Dinbrief identisch mit Ihr Zeichen
+Style YourMail
+	ObsoletedBy	YourRef
+End
+
+# g-brief-de
+Style IhrSchreiben
+	ObsoletedBy	YourRef
+End
+
+# g-brief-de
+Style MeinZeichen
+	ObsoletedBy	MyRef
+End
+
+# g-brief-de
+Style Unterschrift
+	ObsoletedBy	Signature
+End
+
+# dinbrief (gm old)
+Style Phone
+	ObsoletedBy	Telephone
+End
+
+# g-brief-de
+Style Telefon
+	ObsoletedBy	Telephone
+End
+
+# dinbrief (gm old)
+Style Place
+	ObsoletedBy	Location
+End
+
+# dinbrief v2
 Style Stadt
-	Margin                Right_Address_Box
-	LatexType             Command
-	LatexName             place
-	LabelSep              x
-	TopSep                0.1
-	BottomSep             0.1
-	ParSep                0.1
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
-	LabelString           "Stadt:"
-	LabelFont
-	  Shape               Italic
-	  Size                Small
-	  Color               blue
-	EndFont
+	ObsoletedBy	Location
 End
 
+# g-brief-en
+Style Town
+	ObsoletedBy	Location
+End
 
+# g-brief-de
+Style Ort
+	ObsoletedBy	Location
+End
+
+# g-brief-de
 Style Datum
-	Margin                Right_Address_Box
-	LatexType             Command
-	LatexName             date
-	LabelSep              x
-	TopSep                0.1
-	BottomSep             0.1
-	ParSep                0.1
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
-	LabelString           "Datum:"
-	LabelFont
-	  Shape               Italic
-	  Size                Small
-	  Color               blue
-	EndFont
+	ObsoletedBy	Date
 End
+
+# g-brief-en, g-brief2
+Style Reference
+	ObsoletedBy	Subject
+End
+
+# g-brief-de
+Style Betreff
+	ObsoletedBy	Subject
+End
+
+# g-brief-de
+Style Anrede
+	ObsoletedBy	Opening
+End
+
+# in dinbrief, the letter text is in Standard format
+Style Letter
+	ObsoletedBy	Standard
+End
+
+# g-brief-de
+Style Brieftext
+	ObsoletedBy	Standard
+End
+
+# g-brief-de
+Style Gruss
+	ObsoletedBy	Closing
+End
+
+Style ps
+	ObsoletedBy	PS
+End
+
+# g-brief-de
+Style Encl.
+	ObsoletedBy	encl
+End
+
+# g-brief-de
+Style Anlagen
+	ObsoletedBy	encl
+End
+
+# scrletter
+Style CC
+	ObsoletedBy	cc
+End
+
+# g-brief-de
+Style Verteiler
+	ObsoletedBy	cc
+End
+
+# Remove auxiliary style
+NoStyle			DinBrief
+
