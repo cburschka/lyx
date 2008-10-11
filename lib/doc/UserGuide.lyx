@@ -6440,8 +6440,15 @@ type  "shortcut"
 arg   "newline-insert newline"
 \end_inset
 
- at the beginning of a new paragraph (i.e.
- you can't follow 
+ at the beginning of a new paragraph (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+you can't follow 
 \family sans
 Return
 \family default
@@ -6511,14 +6518,12 @@ real
 \emph default
  quotes.
  You get the typewriter double quotes with 
-\family sans
-Ctrl-"
-\family default
- (or 
-\family sans
-Ctrl-q
-\family default
- if you use Emacs-like key bindings).
+\begin_inset Info
+type  "shortcut"
+arg   "self-insert ""
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
