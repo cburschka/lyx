@@ -304,7 +304,7 @@ InsetLayout Info:shortcut
 	LatexType             command
 	LatexName             shortcut
 	Preamble
-	  \providecommand{\shortcut}[1]{\textsf{#1}}
+	  \providecommand{\shortcut}[1]{\mbox{\textsf{#1}}}
 	EndPreamble
 	Decoration	      conglomerate
 	Font
