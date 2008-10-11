@@ -329,15 +329,17 @@ void handle_package(string const & name, string const & opts,
 		// only set when there is not more than one inputenc option
 		// therefore check for the "," character
 		// also only set when there is not more then one babel language option
-		if (opts.find(",") == string::npos && one_language == true)
+		if (opts.find(",") == string::npos && one_language == true) {
 			if (opts == "ascii")
 				//change ascii to auto to be in the unicode range, see
 				//http://bugzilla.lyx.org/show_bug.cgi?id=4719
 				h_inputencoding = "auto";
-			else
+			else if (!opts.empty())
 				h_inputencoding = opts;
+		}
 		options.clear();
 	}
+
 	else if (name == "makeidx")
 		; // ignore this
 
@@ -664,6 +666,10 @@ void parse_preamble(Parser & p, ostream & os,
 			} else {
 				handle_package(name, options, in_lyx_preamble);
 			}
+		}
+
+		else if (t.cs() == "inputencoding") {
+			h_inputencoding = p.getArg('{','}');
 		}
 
 		else if (t.cs() == "newenvironment") {
