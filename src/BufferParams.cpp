@@ -1294,7 +1294,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// PDF support.
 	// * Hyperref manual: "Make sure it comes last of your loaded
 	//   packages, to give it a fighting chance of not being over-written,
-	//   since its job is to redefine many LATEX commands."
+	//   since its job is to redefine many LaTeX commands."
 	// * Email from Heiko Oberdiek: "It is usually better to load babel
 	//   before hyperref. Then hyperref has a chance to detect babel.
 	// * Has to be loaded before the "LyX specific LaTeX commands" to
