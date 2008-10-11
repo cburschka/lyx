@@ -115,7 +115,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 341; //uwestoehr: TAB support for listings
+int const LYX_FORMAT = 342; //uwestoehr: support for Mongolian
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
