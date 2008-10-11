@@ -299,9 +299,11 @@ command buffer
 
 .
  Type 
-\family sans
-Alt-x
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "command-execute"
+\end_inset
+
  when you need to type a command in the minibuffer.
 \end_layout
 
@@ -1949,7 +1951,7 @@ description "Alt or Meta key"
  If you have both keys, you will need to try out which one actually performs
  the 
 \family sans
-Alt-
+Alt+
 \family default
  function.
  This key does many different things, but it also activates the 
@@ -2030,7 +2032,7 @@ File
 \begin_layout Standard
 There are also other things bound to the 
 \family sans
-Alt-
+Alt+
 \family default
  key, but you'll have to check in the 
 \emph on
@@ -2058,7 +2060,7 @@ You'll learn more and more keybindings and short-cut keys as you use LyX,
 
 
 \family sans
-Alt-p Shift-A
+Alt+P Shift-A
 \family default
 
 \begin_inset Quotes erd
@@ -2066,7 +2068,7 @@ Alt-p Shift-A
 
  means 
 \family sans
-Alt-p
+Alt+P
 \family default
  followed by a capital 
 \family sans
@@ -3942,9 +3944,11 @@ Return
  to reset the paragraph environment and depth.
  If you want a new paragraph to keep the current environment and depth,
  use 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
  instead.
 \end_layout
 
@@ -4844,9 +4848,11 @@ And make things look fine
 \end_inset
 
 Use 
-\family sans
-Ctrl-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
 .
 \end_layout
 
@@ -4862,9 +4868,11 @@ Verse
 break-line
 \family default
  function 
-\family sans
-Ctrl-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
 .
 \end_layout
 
@@ -4938,9 +4946,11 @@ Standard
  The nesting depth is hereby kept.
  If you want to keep the paragraph environment but reset the current nesting
  depth, you can use 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
  to break paragraphs.
 \end_layout
 
@@ -6014,9 +6024,11 @@ break-paragraph
 break-line
 \family default
  (
-\family sans
-Ctrl-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
  or 
 \family sans
 Formatting
@@ -6385,9 +6397,11 @@ Blank
 
  this is the only case in which you can type multiple whitespaces in LyX.
  If you need to insert blank lines, you'll still need to use 
-\family sans
-Ctrl-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
  (the 
 \family typewriter
 break-line
@@ -6421,26 +6435,32 @@ There are a few quirks with this environment:
 
 \begin_layout Itemize
 You cannot use 
-\family sans
-Ctrl-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
  at the beginning of a new paragraph (i.e.
  you can't follow 
 \family sans
 Return
 \family default
  with a 
-\family sans
-Ctrl-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
 ).
 \end_layout
 
 \begin_layout Itemize
 You can't follow a 
-\family sans
-Ctrl-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
  with a 
 \family sans
 Space
@@ -6688,13 +6708,17 @@ Tab
 Shift-Tab
 \family default
  or 
-\family sans
-Shift-Alt-Right
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
  and 
-\family sans
-Shift-Alt-Left
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
+\end_inset
+
  to change the nesting level.
  The change will work on the current selection if you have made one (allowing
  you to change the nesting of several paragraphs at once), or the current
@@ -7613,13 +7637,17 @@ List
 \labelwidthstring MMM
 #2-a This is level #2.
  We created it by using 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
  followed by 
-\family sans
-Shift-Alt-Right
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
 .
 \end_layout
 
@@ -7632,19 +7660,25 @@ Shift-Alt-Right
 Return
 \family default
 , then used 
-\family sans
-Shift-Alt-Right
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
  twice in a row.
  We could have also created it the same way as we did the previous level,
  by hitting 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
  followed by 
-\family sans
-Shift-Alt-Right
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
 .
 \end_layout
 
@@ -7665,13 +7699,17 @@ Standard
 .
  So, it's at level #4.
  We did this by hitting 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
 , then 
-\family sans
-Shift-Alt-Right
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
 , then changing the paragraph environment to 
 \family sans
 Standard
@@ -7699,9 +7737,11 @@ Here's another
 Standard
 \family default
  paragraph, also at level #4, made with just a 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
 .
 \end_layout
 
@@ -7709,9 +7749,11 @@ Alt-Return
 \labelwidthstring MMM
 #4-a This is level #4.
  We hit 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
  and changed the paragraph environment back to 
 \family sans
 List
@@ -7757,13 +7799,17 @@ and this is level #6.
 \labelwidthstring MMM
 #5-b Back to level #5.
  Just hit 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
  followed by a 
-\family sans
-Shift-Alt-Left
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
+\end_inset
+
 .
 \end_layout
 
@@ -7771,13 +7817,17 @@ Shift-Alt-Left
 \begin_layout Labeling
 \labelwidthstring MMM
 #4-b After another 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
  followed by a 
-\family sans
-Shift-Alt-Left
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
+\end_inset
+
 , we're back at level #4.
 \end_layout
 
@@ -7850,9 +7900,11 @@ level.
 Return
 \family default
 , then 
-\family sans
-Shift-Alt-Right
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
 , after which, we'll change to the 
 \family sans
 Enumerate
@@ -7893,9 +7945,11 @@ Return
 Standard
 \family default
  and resetting the nesting depth by using 
-\family sans
-Shift-Alt-Left
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
+\end_inset
+
  once.
 \end_layout
 
@@ -7934,13 +7988,17 @@ Enumerate
 \begin_layout Enumerate
 This is level #2.
  We used 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
  followed by 
-\family sans
-Shift-Alt-Right
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
 .
  Now, what happens if we nest an 
 \family sans
@@ -7964,13 +8022,17 @@ Itemize
  environment, even though it's at level #3.
  So, its label is a bullet.
  (We got here by using 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
 , then 
-\family sans
-Shift-Alt-Right
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
 , then changing the environment to 
 \family sans
 Itemize
@@ -7981,13 +8043,17 @@ Itemize
 \begin_deeper
 \begin_layout Itemize
 Here's level #4, produced using 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
 , then 
-\family sans
-Shift-Alt-Right
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
 .
  We'll do that again\SpecialChar \ldots{}
 
@@ -8041,21 +8107,27 @@ don't
 
 \begin_layout Enumerate
 Oh, as if you couldn't guess by now, we're just using 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
  to keep the current environment and depth but create a new item.
 \end_layout
 
 \begin_layout Enumerate
 Let's use 
-\family sans
-Shift-Alt-Left
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
+\end_inset
+
  to decrease the depth after the next 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
 .
 \end_layout
 
@@ -8092,13 +8164,17 @@ did
 \end_deeper
 \begin_layout Enumerate
 Another 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
  
-\family sans
-Shift-Alt-Left
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
+\end_inset
+
  sequence, and we're back to level #2.
  This time, we not only changed the nesting depth, but we also moved back
  into the twofold-nested 
@@ -8111,14 +8187,18 @@ Enumerate
 \end_deeper
 \begin_layout Enumerate
 The same thing happens if we do another 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
  
-\family sans
-Shift-Alt-Left
-\family default
- sequence and return to level #1, the outermost level.
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
+\end_inset
+
+sequence and return to level #1, the outermost level.
 \end_layout
 
 \begin_layout Standard
@@ -8173,7 +8253,17 @@ Enumerate
 \begin_layout Standard
 (
 \family sans
-Return, Shift-Alt-Right, Standard
+Return, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
+
+\family sans
+, Standard
 \family default
 : level #2) We'll stick an encapsulated description of how we created the
  example in parentheses someplace.
@@ -8203,7 +8293,17 @@ It will get much worse.
 
 (
 \family sans
-Return, Shift-Alt-Right, Verse
+Return, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
+
+\family sans
+, Verse
 \family default
 : level #2)
 \end_layout
@@ -8218,8 +8318,14 @@ Bippitey boppitey boo!
 \end_inset
 
 (
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
+
 \family sans
-Alt-Return)
+)
 \end_layout
 
 \begin_layout Verse
@@ -8327,13 +8433,37 @@ blue-fish
 \end_deeper
 \begin_layout Verse
 (
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
+
 \family sans
-Alt-Return, Table, Shift-Alt-Right
+, Table, 
 \family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
  3 times, 
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
+
 \family sans
-Alt-Return, Verse, Shift-Alt-Left
+, Verse, 
 \family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
+\end_inset
+
 )
 \end_layout
 
@@ -8395,14 +8525,18 @@ Quotation
 \family default
  for the letter body.
  We'll use 
-\family sans
-Alt-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
  to preserve the depth.
  Remember that you need to use 
-\family sans
-Ctrl-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
  to create multiple lines inside the 
 \family sans
 Address
@@ -8703,9 +8837,11 @@ reference "sub:Abbreviations"
 ).
  Sometimes, you want a normal space nevertheless.
  In this case, insert an inter-word space (shortcut 
-\family sans
-Ctrl-Alt-Space
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "space-insert normal"
+\end_inset
+
 ).
 \end_layout
 
@@ -8799,9 +8935,11 @@ Thin
 Space
 \family default
  (shortcut 
-\family sans
-Ctrl-Shift-Space
-\family default
+\begin_inset Info
+type  "shortcuts"
+arg   "space-insert thin"
+\end_inset
+
 ).
 \end_layout
 
@@ -10054,9 +10192,11 @@ Line
 Break
 \family default
  or with 
-\family sans
-Ctrl-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
 .
  Another type that is inserted via the menu 
 \family sans
@@ -10983,12 +11123,12 @@ click on the toolbar button
 
 \begin_layout Itemize
 use the key binding 
-\family sans
-Alt-c
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "font-noun"
 \end_inset
 
-c
+
 \end_layout
 
 \begin_layout Standard
@@ -11046,12 +11186,12 @@ clicking on the toolbar button
 
 \begin_layout Itemize
 using the keybindings 
-\family sans
-Alt-c
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "font-emph"
 \end_inset
 
-e
+
 \end_layout
 
 \begin_layout Standard
@@ -11088,13 +11228,11 @@ It's also a warning in addition to an example.
 
 \begin_layout Standard
 You can always reset to the default font using the key binding 
-\family sans
-Alt-c
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "font-default"
 \end_inset
 
-Space
-\family default
  or the dialog 
 \family sans
 Edit\SpecialChar \menuseparator
@@ -11227,60 +11365,12 @@ Roman
  Normally a serif font.
  It's also the default family.
  (key binding 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-c
-\begin_inset space ~
-\end_inset
-
-r
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+\begin_inset Info
+type  "shortcut"
+arg   "font-roman"
 \end_inset
 
 )
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-The LaTeX-command prevents text to be broken at the end of a line.
- It is explained in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Hyphenation"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Labeling
@@ -11299,35 +11389,9 @@ This is the Sans Serif font family.
 
 \family default
  (key binding 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-c
-\begin_inset space ~
-\end_inset
-
-s
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+\begin_inset Info
+type  "shortcut"
+arg   "font-sans"
 \end_inset
 
 )
@@ -11345,35 +11409,9 @@ This is the Typewriter font family.
 
 \family default
  (key binding 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-c
-\begin_inset space ~
-\end_inset
-
-p
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+\begin_inset Info
+type  "shortcut"
+arg   "font-typewriter"
 \end_inset
 
 
@@ -11415,35 +11453,9 @@ This is the Bold font series.
 
 \series default
  (key binding 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-c
-\begin_inset space ~
-\end_inset
-
-b
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+\begin_inset Info
+type  "shortcut"
+arg   "font-bold"
 \end_inset
 
 )
@@ -11558,68 +11570,10 @@ Tiny
  font size.
 
 \size default
- (key binding 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-t
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- or 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-1
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+ (key bindings 
+\begin_inset Info
+type  "shortcuts"
+arg   "font-size tiny"
 \end_inset
 
 )
@@ -11645,35 +11599,9 @@ Smallest
 \size default
 .
  (key binding 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+\begin_inset Info
+type  "shortcut"
+arg   "font-size scriptsize"
 \end_inset
 
 )
@@ -11698,68 +11626,10 @@ Smaller
  font size.
 
 \size default
- (key binding 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-S
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- or 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-3
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+ (key bindings 
+\begin_inset Info
+type  "shortcuts"
+arg   "font-size footnotesize"
 \end_inset
 
 )
@@ -11784,68 +11654,10 @@ Small
  font size.
 
 \size default
- (key binding 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-s
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- or 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-4
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+ (key bindings 
+\begin_inset Info
+type  "shortcuts"
+arg   "font-size small"
 \end_inset
 
 )
@@ -11867,68 +11679,10 @@ Normal
 
  font size.
  It's also the default size.
- (key binding 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-n
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- or 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-5
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+ (key bindings 
+\begin_inset Info
+type  "shortcuts"
+arg   "font-size normal"
 \end_inset
 
 )
@@ -11953,68 +11707,10 @@ Large
  font size.
 
 \size default
- (key binding 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-l
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- or 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-6
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+ (key bindings 
+\begin_inset Info
+type  "shortcuts"
+arg   "font-size large"
 \end_inset
 
 )
@@ -12039,68 +11735,10 @@ Larger
  font size.
 
 \size default
- (key binding 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-Shift-l
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- or 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-7
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+ (key bindings 
+\begin_inset Info
+type  "shortcuts"
+arg   "font-size larger"
 \end_inset
 
 )
@@ -12126,35 +11764,9 @@ Largest
 
 \size default
  (key binding 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-8
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+\begin_inset Info
+type  "shortcut"
+arg   "font-size largest"
 \end_inset
 
 )
@@ -12179,68 +11791,10 @@ Huge
  font size.
 
 \size default
- (key binding 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-h
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- or 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-9
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+ (key bindings 
+\begin_inset Info
+type  "shortcuts"
+arg   "font-size huge"
 \end_inset
 
 )
@@ -12265,68 +11819,10 @@ Huger
  font size.
 
 \size default
- (key binding 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-H
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- or 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-0
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+ (key bindings 
+\begin_inset Info
+type  "shortcuts"
+arg   "font-size giant"
 \end_inset
 
 )
@@ -12394,35 +11890,9 @@ This is text with Underbar on.
 
 \bar default
  (key binding 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-c
-\begin_inset space ~
-\end_inset
-
-u
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+\begin_inset Info
+type  "shortcuts"
+arg   "font-underline"
 \end_inset
 
 
@@ -12578,13 +12048,11 @@ Style
 
 \begin_layout Standard
 To completely reset the character style to the default, use 
-\family sans
-Alt-c
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "font-default"
 \end_inset
 
-Space
-\family default
 .
  If you want to toggle only those properties that you have just changed
  (suppose you just set the shape to 
@@ -13384,9 +12852,11 @@ DVI
 \end_inset
 
  (shortcut 
-\family sans
-Ctrl-d
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "buffer-view dvi"
+\end_inset
+
 ), for 
 \family sans
 View\SpecialChar \menuseparator
@@ -13414,9 +12884,11 @@ Postscript
 \end_inset
 
  (shortcut 
-\family sans
-Ctrl-t
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "buffer-view ps"
+\end_inset
+
 ).
 \end_layout
 
@@ -14193,9 +13665,11 @@ Character
 \family default
  menu to force the use of inter-sentence spacing.
  This function is also bound to 
-\family sans
-Ctrl-period
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "specialchar-insert end-of-sentence"
+\end_inset
+
  for easy access.
 \end_layout
 
@@ -14980,9 +14454,11 @@ Thin
 Space
 \family default
  (shortcut 
-\family sans
-Ctrl-Shift-Space
-\family default
+\begin_inset Info
+type  "shortcuts"
+arg   "space-insert thin"
+\end_inset
+
 ).
 \end_layout
 
@@ -21745,9 +21221,11 @@ All operators with limits will be automatically re-sized when placed in
  display mode.
  The placement of the limits can be changed by placing the cursor directly
  behind the operator and hitting 
-\family sans
-Alt-m l
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "math-limits"
+\end_inset
+
  or using the menu 
 \family sans
 Edit\SpecialChar \menuseparator
@@ -23101,9 +22579,11 @@ has\, left\, alignment & center\, alignment & alignment\end{array}.\]
 
 \begin_layout Standard
 You can add more rows to an existing matrix by hitting 
-\family sans
-Ctrl-Enter
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
  while the cursor is in the matrix.
  Adding or deleting columns can be done via the menu 
 \family sans
@@ -23149,22 +22629,20 @@ f(x)=\begin{cases}
 \end_inset
 
 Multi-line formulas are created when you press 
-\family sans
-\series medium
-Ctrl-E
-\series default
-nter
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
  within a formula.
  In an empty formula you can see that three blue boxes appear, one for each
  column.
  When you press 
-\family sans
-\series medium
-Ctrl-E
-\series default
-nter
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
  in a non-empty formula, the part before the relation sign (equal sign 
 \begin_inset Quotes eld
 \end_inset
@@ -23176,12 +22654,11 @@ nter
  etc.) will be inserted automatically to the first column, the relation sign
  is in the second column, and the rest in the third column.
  A new row is created by every further hit of 
-\family sans
-\series medium
-Ctrl-E
-\series default
-nter
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
 .
  Multi-line formulas are always displayed formulas.
  Here is an example:
@@ -23283,13 +22760,11 @@ Toggle
 Numbering
 \family default
  or the shortcut 
-\family sans
-Alt-m
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "math-number-toggle"
 \end_inset
 
-n
-\family default
 .
  The formula number appears in LyX as 
 \begin_inset Quotes eld
@@ -23320,13 +22795,11 @@ n
 \end_inset
 
 Using 
-\family sans
-Alt-m
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "math-number-toggle"
 \end_inset
 
-n
-\family default
  in a numbered formula will switch off the numbering.
  You can only number displayed formulas.
 \end_layout
@@ -23351,13 +22824,11 @@ of
 Line
 \family default
  or the shortcut 
-\family sans
-Alt-m
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "math-number-line-toggle"
 \end_inset
 
-N
-\family default
  will only toggle the numbering of the line where the cursor is in:
 \begin_inset Formula \begin{eqnarray}
 1 & = & 3-2\\
@@ -23367,13 +22838,11 @@ N
 \end_inset
 
 To number all lines use the shortcut 
-\family sans
-Alt-m
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "math-number-toggle"
 \end_inset
 
-n
-\family default
 .
 \end_layout
 
@@ -24370,9 +23839,9 @@ Panel
 
 \end_inset
 
- (alternatively the shortcut 
+ (shortcut 
 \family sans
-Alt-m
+Alt+m
 \begin_inset space ~
 \end_inset
 
@@ -36612,15 +36081,19 @@ Bookmark
 
 \family default
 2.
- Now you can easily jump between these sections by using the menu or by
+ Now you can jump easily between these sections by using the menu or by
  the key bindings 
-\family sans
-Ctrl-1
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "bookmark-goto 1"
+\end_inset
+
  and 
-\family sans
-Ctrl-2
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "bookmark-goto 2"
+\end_inset
+
 .
 \end_layout
 
@@ -40857,7 +40330,7 @@ g.
 
 the shortcut 
 \family sans
-Alt-q
+Alt+Q
 \family default
  for the function 
 \family sans
@@ -40869,7 +40342,7 @@ Modify
 \family default
  button.
  A dialog pops up where you can add the shortcut by using it.
- So press Alt-q to define the shortcut.
+ So press Alt+Q to define the shortcut.
  Modifying an existing shortcut is done the same way.
  You can also bind multiple functions to one shortcut by modifying an existing
  binding and adding the different function names as semicolon separated
