@@ -544,7 +544,7 @@ The SIGHUP signal does not exist on Windows and does not need to be handled.
 
 Windows handles SIGFPE and SIGSEGV signals as expected.
 
-Cntl+C interrupts (mapped to SIGINT by Windows' POSIX compatability layer)
+Ctrl+C interrupts (mapped to SIGINT by Windows' POSIX compatability layer)
 cause a new thread to be spawned. This may well result in unexpected
 behaviour by the single-threaded LyX.
 
