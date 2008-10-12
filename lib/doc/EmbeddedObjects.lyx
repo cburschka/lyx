@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 343
 \begin_document
 \begin_header
 \textclass scrbook
@@ -162,6 +162,7 @@
   {LyX }}
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
 \language english
 \inputencoding auto
 \font_roman default
@@ -11051,9 +11052,11 @@ cm and choose centered for the vertical and horizontal alignment.
 
 cm, only one line will appear.
  To get two lines, a justified line break (shortcut 
-\family sans
-Ctrl-Shift-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert linebreak"
+\end_inset
+
 ) was added.
  If the text is wider than the set cell width, it will automatically be
  broken to several lines.
@@ -28500,9 +28503,11 @@ Line
 Break
 \family default
  (shortcut 
-\series bold
-Ctrl-Return
-\series default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
 ) a line break before the word:
 \end_layout
 
