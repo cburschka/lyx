@@ -1355,8 +1355,8 @@ void GuiDocument::classChanged()
 	// that, if the preceding is skipped and the user has changed the
 	// modules before changing the class, those changes will be lost on
 	// update. But maybe that's what we want?
-	updateSelectedModules();
 	bp_.makeDocumentClass();
+	updateSelectedModules();
 	paramsToDialog(bp_);
 }
 
