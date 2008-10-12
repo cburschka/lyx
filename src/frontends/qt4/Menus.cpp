@@ -860,7 +860,8 @@ void MenuDefinition::expandFlexInsert(Buffer const * buf, string s)
 			addedOne = true;
 		}
 	}
-	if (!addedOne)
+	// FIXME This is a little clunky.
+	if (!addedOne && s == "custom")
 		add(MenuItem(MenuItem::Command,
 				    qt_("No custom insets defined!"),
 				    FuncRequest(LFUN_NOACTION)));
