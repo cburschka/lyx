@@ -1025,25 +1025,24 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 				language_options << ',';
 			language_options << language->babel();
 		}
+		// FIXME: don't hardcode this! 
 		// if Vietnamese is used, babel must directly be loaded
 		// with language options, not in the class options, see
 		// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
-		size_t viet = language_options.str().find("vietnam");
-		// viet = string::npos when not found
+		//
 		// the same is for all other languages that are not directly supported by
 		// babel, but where LaTeX-packages add babel support.
 		// this is currently the case for Latvian, Lithuanian, and Mongolian
-		size_t latvian = language_options.str().find("latvian");
-		size_t lithu = language_options.str().find("lithuanian");
-		size_t mongo = language_options.str().find("mongolian");
+		//
 		// if Japanese is used, babel must directly be loaded
 		// with language options, not in the class options, see
 		// http://bugzilla.lyx.org/show_bug.cgi?id=4597#c4
-		size_t japan = language_options.str().find("japanese");
 		if (lyxrc.language_global_options && !language_options.str().empty()
-			&& viet == string::npos && japan == string::npos
-			&& latvian == string::npos && lithu == string::npos
-			&& mongo == string::npos)
+		 && !features.hasLanguage("vietnam")
+		 && !features.hasLanguage("latvian")
+		 && !features.hasLanguage("lithuanian")
+		 && !features.hasLanguage("mongolian")
+		 && !features.hasLanguage("japanese"))
 			clsoptions << language_options.str() << ',';
 	}
 

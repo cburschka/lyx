@@ -431,6 +431,18 @@ bool LaTeXFeatures::hasLanguages() const
 }
 
 
+bool LaTeXFeatures::hasLanguage(string const & lang) const
+{
+	LanguageList::const_iterator cit = UsedLanguages_.begin();
+	LanguageList::const_iterator const end = UsedLanguages_.end();
+	for (; cit != end; ++cit) {
+		if ((*cit)->babel() == lang)
+			return true;
+	}
+	return false;
+}
+
+
 string LaTeXFeatures::getLanguages() const
 {
 	ostringstream languages;
