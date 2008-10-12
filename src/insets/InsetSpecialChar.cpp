@@ -204,7 +204,7 @@ void InsetSpecialChar::read(Lexer & lex)
 
 
 int InsetSpecialChar::latex(odocstream & os,
-			    OutputParams const &) const
+			    OutputParams const & rp) const
 {
 	switch (kind_) {
 	case HYPHENATION:
@@ -226,6 +226,8 @@ int InsetSpecialChar::latex(odocstream & os,
 		os << "\\slash{}";
 		break;
 	case NOBREAKDASH:
+		if (rp.moving_arg)
+			os << "\\protect";
 		os << "\\nobreakdash-";
 		break;
 	}
