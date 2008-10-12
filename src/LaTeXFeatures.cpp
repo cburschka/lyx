@@ -588,11 +588,11 @@ string const LaTeXFeatures::getPackages() const
 	//
 
 	// esint is preferred for esintoramsmath
-	if ((mustProvide("amsmath") &&
-		 params_.use_amsmath != BufferParams::package_off) ||
-		(mustProvide("esintoramsmath") &&
-		 params_.use_esint == BufferParams::package_off
-		 && params_.use_amsmath != BufferParams::package_off)) {
+	if ((mustProvide("amsmath")
+	     && params_.use_amsmath != BufferParams::package_off)
+	    || (mustProvide("esintoramsmath")
+	        && params_.use_esint == BufferParams::package_off
+	        && params_.use_amsmath != BufferParams::package_off)) {
 		packages << "\\usepackage{amsmath}\n";
 	} else if (mustProvide("amsbsy")) {
 		// amsbsy is already provided by amsmath
