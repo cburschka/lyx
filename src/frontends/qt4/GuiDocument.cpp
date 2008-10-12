@@ -285,7 +285,7 @@ void ModuleSelectionManager::updateAddPB()
 	vector<string>::const_iterator selModStart = selModList.begin();
 	vector<string>::const_iterator selModEnd   = selModList.end();
 	
-	//Check whether some required module is available
+	// Check whether some required module is available
 	if (!reqs.empty()) {
 		bool foundOne = false;
 		vector<string>::const_iterator it  = reqs.begin();
@@ -302,7 +302,7 @@ void ModuleSelectionManager::updateAddPB()
 		}
 	}
 	
-	//Check whether any excluded module is being used
+	// Check whether any excluded module is being used
 	if (!excl.empty()) {
 		vector<string>::const_iterator it  = excl.begin();
 		vector<string>::const_iterator end = excl.end();
@@ -327,12 +327,12 @@ void ModuleSelectionManager::updateDownPB()
 	}
 	QModelIndexList const selSels = 
 			selectedLV->selectionModel()->selectedIndexes();
-	//disable if empty or last item is selected
+	// disable if empty or last item is selected
 	if (selSels.empty() || selSels.first().row() == srows - 1) {
 		downPB->setEnabled(false);
 		return;
 	}
-	//determine whether immediately succeding element requires this one
+	// determine whether immediately succeding element requires this one
 	QModelIndex const & curIdx = selectedLV->selectionModel()->currentIndex();
 	int curRow = curIdx.row();
 	if (curRow < 0 || curRow >= srows - 1) { //this shouldn't happen...
@@ -344,15 +344,15 @@ void ModuleSelectionManager::updateDownPB()
 
 	vector<string> reqs = getRequiredList(nextModName);
 
-	//if it doesn't require anything....
+	// if it doesn't require anything....
 	if (reqs.empty()) {
 		downPB->setEnabled(true);
 		return;
 	}
 
-	//FIXME This should perhaps be more flexible and check whether, even 
-	//if this one is required, there is also an earlier one that is required.
-	//enable it if this module isn't required
+	// Enable it if this module isn't required.
+	// FIXME This should perhaps be more flexible and check whether, even 
+	// if this one is required, there is also an earlier one that is required.
 	downPB->setEnabled(
 			find(reqs.begin(), reqs.end(), curModName) == reqs.end());
 }
@@ -372,7 +372,7 @@ void ModuleSelectionManager::updateUpPB()
 		return;
 	}
 
-	//determine whether immediately preceding element is required by this one
+	// determine whether immediately preceding element is required by this one
 	QModelIndex const & curIdx = selectedLV->selectionModel()->currentIndex();
 	int curRow = curIdx.row();
 	if (curRow <= -1 || curRow > srows - 1) { //sanity check
@@ -382,7 +382,7 @@ void ModuleSelectionManager::updateUpPB()
 	string const curModName = getSelectedModel()->getIDString(curRow);
 	vector<string> reqs = getRequiredList(curModName);
 	
-	//if this one doesn't require anything....
+	// if this one doesn't require anything....
 	if (reqs.empty()) {
 		upPB->setEnabled(true);
 		return;
@@ -390,9 +390,9 @@ void ModuleSelectionManager::updateUpPB()
 
 	string preModName = getSelectedModel()->getIDString(curRow - 1);
 
-	//NOTE This is less flexible than it might be. You could check whether, even 
-	//if this one is required, there is also an earlier one that is required.
-	//enable it if the preceding module isn't required
+	// Enable it if the preceding module isn't required.
+	// NOTE This is less flexible than it might be. You could check whether, even 
+	// if this one is required, there is also an earlier one that is required.
 	upPB->setEnabled(find(reqs.begin(), reqs.end(), preModName) == reqs.end());
 }
 
@@ -410,22 +410,22 @@ void ModuleSelectionManager::updateDelPB()
 		return;
 	}
 	
-	//determine whether some LATER module requires this one
-	//NOTE Things are arranged so that this is the only way there
-	//can be a problem. At least, we hope so.
+	// determine whether some LATER module requires this one
+	// NOTE Things are arranged so that this is the only way there
+	// can be a problem. At least, we hope so.
 	QModelIndex const & curIdx = 
 		selectedLV->selectionModel()->currentIndex();
 	int const curRow = curIdx.row();
-	if (curRow < 0 || curRow >= srows) { //this shouldn't happen
+	if (curRow < 0 || curRow >= srows) { // this shouldn't happen
 		deletePB->setEnabled(false);
 		return;
 	}
 		
 	QString const curModName = curIdx.data().toString();
 	
-	//We're looking here for a reason NOT to enable the button. If we
-	//find one, we disable it and return. If we don't, we'll end up at
-	//the end of the function, and then we enable it.
+	// We're looking here for a reason NOT to enable the button. If we
+	// find one, we disable it and return. If we don't, we'll end up at
+	// the end of the function, and then we enable it.
 	for (int i = curRow + 1; i < srows; ++i) {
 		string const thisMod = getSelectedModel()->getIDString(i);
 		vector<string> reqs = getRequiredList(thisMod);
@@ -434,33 +434,33 @@ void ModuleSelectionManager::updateDelPB()
 			//no...
 			continue;
 
-		//OK, so this module requires us
-		//is there an EARLIER module that also satisfies the require?
-		//NOTE We demand that it be earlier to keep the list of modules
-		//consistent with the rule that a module must be proceeded by a
-		//required module. There would be more flexible ways to proceed,
-		//but that would be a lot more complicated, and the logic here is
-		//already complicated. (That's why I've left the debugging code.)
-		//lyxerr << "Testing " << thisMod << std::endl;
+		// OK, so this module requires us
+		// is there an EARLIER module that also satisfies the require?
+		// NOTE We demand that it be earlier to keep the list of modules
+		// consistent with the rule that a module must be proceeded by a
+		// required module. There would be more flexible ways to proceed,
+		// but that would be a lot more complicated, and the logic here is
+		// already complicated. (That's why I've left the debugging code.)
+		// lyxerr << "Testing " << thisMod << std::endl;
 		bool foundOne = false;
 		for (int j = 0; j < curRow; ++j) {
 			string const mod = getSelectedModel()->getIDString(j);
-			//lyxerr << "In loop: Testing " << mod << std::endl;
-			//do we satisfy the require? 
+			// lyxerr << "In loop: Testing " << mod << std::endl;
+			// do we satisfy the require? 
 			if (find(reqs.begin(), reqs.end(), mod) != reqs.end()) {
-				//lyxerr << mod << " does the trick." << std::endl;
+				// lyxerr << mod << " does the trick." << std::endl;
 				foundOne = true;
 				break;
 			}
 		}
-		//did we find a module to satisfy the require?
+		// did we find a module to satisfy the require?
 		if (!foundOne) {
-			//lyxerr << "No matching module found." << std::endl;
+			// lyxerr << "No matching module found." << std::endl;
 			deletePB->setEnabled(false);
 			return;
 		}
 	}
-	//lyxerr << "All's well that ends well." << std::endl;	
+	// lyxerr << "All's well that ends well." << std::endl;	
 	deletePB->setEnabled(true);
 }
 
@@ -1332,14 +1332,21 @@ void GuiDocument::classChanged()
 		return;
 	string const classname = classes_model_.getIDString(idx);
 
-	// FIXME Note that by doing things this way, we load the TextClass
-	// as soon as it is selected. So, if you use the scroll wheel when
-	// sitting on the combo box, we'll load a lot of TextClass objects
-	// very quickly. This could be changed.
+	// We load the TextClass as soon as it is selected. This is
+	// necessary so that other options in the dialog can be updated
+	// according to the new class. Note, however, that, if you use 
+	// the scroll wheel when sitting on the combo box, we'll load a 
+	// lot of TextClass objects very quickly.... 
 	if (!bp_.setBaseClass(classname)) {
 		Alert::error(_("Error"), _("Unable to set document class."));
 		return;
 	}
+
+	// FIXME We should really check here whether the modules have been 
+	// changed, I think, even if auto_reset_options is false. And, if so,
+	// pop the same dialog. So we would need to compare what is in 
+	// modules_sel_model with what is in the OLD bp_.getModules() and
+	// so do that before we reset things.
 	if (lyxrc.auto_reset_options) {
 		if (applyPB->isEnabled()) {
 			int const ret = Alert::prompt(_("Unapplied changes"),
@@ -1352,16 +1359,13 @@ void GuiDocument::classChanged()
 		bp_.useClassDefaults();
 	}
 	// With the introduction of modules came a distinction between the base 
-	// class  and the document class. The former corresponds to the main layout 
-	// file; the  latter is that plus the modules (or the document-specific layout,
+	// class and the document class. The former corresponds to the main layout 
+	// file; the latter is that plus the modules (or the document-specific layout,
 	// or  whatever else there could be). Our parameters come from the document 
 	// class. So when we set the base class, we also need to recreate the document 
 	// class. Otherwise, we still have the old one.
 	bp_.makeDocumentClass();
-	// FIXME There's a little bug here connected with auto_reset, namely,
-	// that, if the preceding is skipped and the user has changed the
-	// modules before changing the class, those changes will be lost on
-	// update. But maybe that's what we want?
+	// the new class may require some default modules.
 	updateSelectedModules();
 	paramsToDialog(bp_);
 }
