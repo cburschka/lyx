@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 342
 \begin_document
 \begin_header
 \textclass scrbook
@@ -5426,7 +5426,7 @@ Protected Blank
 .
  (Use either 
 \family sans
-Ctrl-Space
+Ctrl+Space
 \family default
  or the menu 
 \family sans
@@ -6491,7 +6491,7 @@ Space
 \begin_layout Itemize
 Or: use 
 \family sans
-Ctrl-Space
+Ctrl+Space
 \family default
  instead.
 \end_layout
@@ -6518,11 +6518,9 @@ real
 \emph default
  quotes.
  You get the typewriter double quotes with 
-\begin_inset Info
-type  "shortcut"
-arg   "self-insert ""
-\end_inset
-
+\family sans
+Ctrl+"
+\family default
 .
 \end_layout
 
@@ -8749,7 +8747,7 @@ Space
 \family default
  (shortcut 
 \family sans
-Ctrl-Space
+Ctrl+Space
 \family default
 ).
 \end_layout
@@ -21392,7 +21390,7 @@ You may want to create spaces that differs from the standard spacing that
  LaTeX provides.
  To do this, type 
 \family sans
-Ctrl-Space
+Ctrl+Space
 \family default
  or to use the 
 \family sans
@@ -21412,7 +21410,7 @@ Panel
  This generates a small space, and shows a small marker on the screen.
  Here a example for the sequence 
 \series bold
-a Ctrl-Space b
+a Ctrl+Space b
 \series default
 : 
 \begin_inset Formula $a\, b$
@@ -21436,7 +21434,7 @@ a Ctrl-Space b
 \begin_layout Standard
 
 \series bold
-a Ctrl-Space b
+a Ctrl+Space b
 \series default
  and 3×
 \family sans
@@ -21452,7 +21450,7 @@ Space
 \begin_layout Standard
 
 \series bold
-a Ctrl-Space b
+a Ctrl+Space b
 \series default
  and 5×
 \family sans
