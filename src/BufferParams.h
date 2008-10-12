@@ -306,6 +306,8 @@ public:
 	};
 	///
 	std::string paperSizeName(PapersizePurpose purpose) const;
+	/// set up if and how babel is called
+	std::string babelCall(std::string const & lang_opts) const;
 	/// handle inputenc etc.
 	void writeEncodingPreamble(odocstream & os, LaTeXFeatures & features,
 					      TexRow & texrow) const;

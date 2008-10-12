@@ -89,8 +89,6 @@ public:
 	void useLanguage(Language const *);
 	///
 	bool hasLanguages() const;
-	/// \return true if the passed language name is used in the document.
-	bool hasLanguage(std::string const & lang) const;
 	///
 	std::string getLanguages() const;
 	///
