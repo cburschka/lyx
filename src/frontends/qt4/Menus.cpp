@@ -850,13 +850,20 @@ void MenuDefinition::expandFlexInsert(Buffer const * buf, string s)
 		buf->params().documentClass().insetLayouts();
 	TextClass::InsetLayouts::const_iterator cit = insetLayouts.begin();
 	TextClass::InsetLayouts::const_iterator end = insetLayouts.end();
+	bool addedOne = false;
 	for (; cit != end; ++cit) {
 		docstring const label = cit->first;
-		if (cit->second.lyxtype() == s)
+		if (cit->second.lyxtype() == s) {
 			addWithStatusCheck(MenuItem(MenuItem::Command, 
 				toqstr(translateIfPossible(label)),
 				FuncRequest(LFUN_FLEX_INSERT, label)));
+			addedOne = true;
+		}
 	}
+	if (!addedOne)
+		add(MenuItem(MenuItem::Command,
+				    qt_("No custom insets defined!"),
+				    FuncRequest(LFUN_NOACTION)));
 }
 
 
