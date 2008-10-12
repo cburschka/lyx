@@ -1,5 +1,5 @@
-#LyX 1.6.0rc3 created this file. For more info see http://www.lyx.org/
-\lyxformat 340
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 342
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -463,10 +463,12 @@ Formula ! inline
 
 \end_inset
 
- that is embedded into a text line, press 
-\family sans
-Ctrl-m
-\family default
+ that is embedded into a text line, use one of the shortcuts 
+\begin_inset Info
+type  "shortcuts"
+arg   "math-mode"
+\end_inset
+
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/math-mode.png
@@ -488,20 +490,25 @@ Formula ! display style
 
 \end_inset
 
- that will appear bigger and in an own paragraph, press 
-\family sans
-Ctrl-M
-\family default
+ that will appear bigger and in an own paragraph, use one of these shortcuts:
+ 
+\begin_inset Info
+type  "shortcuts"
+arg   "math-display"
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Standard
 To change a display style formula to an inline formula, set the cursor into
- the formula and press 
-\family sans
-Ctrl-M
-\family default
- or use the menu 
+ the formula and use one of the shortcuts 
+\begin_inset Info
+type  "shortcuts"
+arg   "math-mode"
+\end_inset
+
+ or the menu 
 \family sans
 Edit\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
@@ -639,9 +646,11 @@ status collapsed
 X Code
 \family default
  (shortcut 
-\family sans
-Ctrl-l
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "ert-insert"
+\end_inset
+
 ).
 \begin_inset Note Note
 status collapsed
@@ -786,13 +795,11 @@ Mathematical text
 
  is used.
  This mode is invoked with the the shortcut 
-\family sans
-Alt-m
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "math-mode"
 \end_inset
 
-m
-\family default
  or by the insertion of the command 
 \series bold
 
@@ -902,7 +909,7 @@ always
 \begin_layout Standard
 A protected space is inserted with 
 \family sans
-Ctrl-Space
+Ctrl+Space
 \family default
 .
 \end_layout
@@ -3114,7 +3121,13 @@ spce
 
 \end_inset
 
-Ctrl-Enter
+
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3156,9 +3169,11 @@ cases
 \end_inset
 
  you can create new lines with the shortcut 
-\family sans
-Ctrl-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
  or the table toolbar button 
 \begin_inset Graphics
 	filename ../images/tabular-feature_append-row.png
@@ -5103,9 +5118,11 @@ Rows & Columns
 \family default
  can be used.
  New rows can also be created with 
-\family sans
-Ctrl-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
 .
 \end_layout
 
@@ -5152,11 +5169,11 @@ right
 
  (shortcut 
 \family sans
-Alt-m
+Alt+M
 \begin_inset space ~
 \end_inset
 
-parenthesis
+Parenthesis
 \family default
 ), see 
 \begin_inset CommandInset ref
@@ -7040,11 +7057,11 @@ right
 \series default
  the shortcut 
 \family sans
-Alt-m
+Alt+M
 \begin_inset space ~
 \end_inset
 
-bracket
+Bracket
 \family default
  can be used.
  This has the advantage that you can see in LyX immediately the real bracket
@@ -7056,7 +7073,7 @@ The command for the last example would then be:
 \series bold
 
 \backslash
-ln Alt-m
+ln Alt+M
 \series default
  
 \series bold
@@ -10909,7 +10926,7 @@ Space ! horizontal ! predefined
 Sometimes it is necessary to insert horizontal space to a formula.
  This is done by inserting a protected space (shortcut 
 \family sans
-Ctrl-Space
+Ctrl+Space
 \family default
 ).
  A blue 
@@ -11596,9 +11613,11 @@ Thin
 Space
 \family default
  (shortcut 
-\family sans
-Ctrl-Shift-Space
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "space-insert thin"
+\end_inset
+
 ).
 \end_layout
 
@@ -12346,7 +12365,7 @@ fbox
 \series default
  an additional formula has to be created by 
 \family sans
-Ctrl-m
+Ctrl+M
 \family default
  within this box
 \begin_inset Foot
@@ -12355,7 +12374,7 @@ status collapsed
 \begin_layout Plain Layout
 Due to a bug in LyX it is not possible to create a new formula with 
 \family sans
-Ctrl-m
+Ctrl+M
 \family default
 , see 
 \begin_inset CommandInset href
@@ -12538,7 +12557,7 @@ status collapsed
 \begin_layout Plain Layout
 Due to a bug in LyX it is not possible to create a new formula with 
 \family sans
-Ctrl-m
+Ctrl+m
 \family default
 , see 
 \begin_inset CommandInset href
@@ -12606,7 +12625,7 @@ spce
 
 
 \family sans
-Ctrl-m
+Ctrl+M
 \family default
  
 \backslash
@@ -12762,7 +12781,7 @@ spce
 
 
 \family sans
-Ctrl-m
+Ctrl+M
 \family default
  
 \backslash
@@ -13202,7 +13221,7 @@ raisebox{-2mm
 \backslash
 {
 \family sans
-Ctrl-m
+Ctrl+M
 \family default
  
 \backslash
@@ -15429,13 +15448,11 @@ d
 d
 \emph default
  and using the keyboard shortcut 
-\family sans
-Alt-c
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "font-roman"
 \end_inset
 
-r
-\family default
 
 \begin_inset Foot
 status collapsed
@@ -15889,13 +15906,11 @@ Inline
 \family default
 \series default
  (shortcut 
-\family sans
-Alt-m
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "math-limits"
 \end_inset
 
-l
-\family default
 ).
  An example:
 \end_layout
@@ -16051,9 +16066,11 @@ spce
  The blue box is now within a purple box and now several lines can be written
  among each other.
  A new line is created by inserting a line break (
-\family sans
-Ctrl-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
 ).
  When now
 \begin_inset Newline newline
@@ -16061,7 +16078,7 @@ Ctrl-Return
 
 
 \series bold
-0<k<1000 Ctrl-Return
+0<k<1000 Ctrl+Return
 \begin_inset Newline newline
 \end_inset
 
@@ -16254,7 +16271,7 @@ spce
 
 \end_inset
 
-0<k<1000 Ctrl-Enter
+0<k<1000 Ctrl+Return
 \end_layout
 
 \begin_layout Standard
@@ -17826,7 +17843,12 @@ ABC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-c c
+\begin_inset Info
+type  "shortcut"
+arg   "font-noun"
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17877,7 +17899,12 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ctrl-b
+\begin_inset Info
+type  "shortcut"
+arg   "font-bold"
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17928,7 +17955,12 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-c b or Ctrl-Alt-b
+\begin_inset Info
+type  "shortcuts"
+arg   "font-boldsymbol"
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17979,7 +18011,12 @@ ABC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-c e
+\begin_inset Info
+type  "shortcut"
+arg   "font-emph"
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18176,7 +18213,12 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-c r
+\begin_inset Info
+type  "shortcut"
+arg   "font-roman"
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18227,7 +18269,12 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-c s
+\begin_inset Info
+type  "shortcut"
+arg   "font-sans"
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18278,7 +18325,12 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-c p
+\begin_inset Info
+type  "shortcut"
+arg   "font-typewriter"
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18874,7 +18926,7 @@ spce
 
 \end_inset
 
-A Alt-m m 
+A Alt+M M 
 \backslash
 Large
 \begin_inset ERT
@@ -18936,7 +18988,7 @@ A
 \length 1cm
 \end_inset
 
-Alt-m
+Alt+M
 \series default
  
 \series bold
@@ -27389,10 +27441,14 @@ General
 
 \begin_layout Standard
 In LyX multiline formulas are created by pressing 
-\family sans
 \series bold
-Ctrl-Return
-\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+
 \series default
  inside a formula.
  This creates either an 
@@ -27438,9 +27494,11 @@ Math
 \begin_layout Standard
 In all multiline formula environments a new line is created by pressing
  
-\family sans
-Ctrl-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
 .
  To add or delete lines, the math toolbar buttons 
 \begin_inset Graphics
@@ -28458,9 +28516,11 @@ Formula ! multiline ! align environment
 
 \begin_layout Standard
 This Align environment is created by presssing 
-\family sans
-Ctrl-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
  in a formula or by the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -29265,11 +29325,11 @@ Formula
 \family default
  (shortcut 
 \family sans
-Ctrl-Alt
+Ctrl+Alt
 \begin_inset space ~
 \end_inset
 
-n
+N
 \family default
 ).
  Existing formulas can be numbered with the menu 
@@ -29283,13 +29343,11 @@ Toggle
 Numbering
 \family default
  (shortcut 
-\family sans
-Alt-m
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "math-number-toggle"
 \end_inset
 
-n
-\family default
 ).
  The formula number is displayed in LyX behind the formula as number sign
  in parentheses.
@@ -29316,14 +29374,12 @@ of
 
 Line
 \family default
- (shortcut 
-\family sans
-Alt-m
-\begin_inset space ~
+ (shortcut
+\begin_inset Info
+type  "shortcut"
+arg   "math-number-line-toggle"
 \end_inset
 
-N
-\family default
 ) for every line.
 \end_layout
 
@@ -31714,9 +31770,11 @@ CD
  A blue box appears with two dashed lines where further commands can be
  inserted.
  With 
-\family sans
-Ctrl-Return
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
  a new line is created.
  Horizontal relations are inserted in odd, vertical in even formula lines.
 \end_layout
@@ -31822,7 +31880,7 @@ spce
 
 \end_inset
 
-A@>j>>B@>>k>C@=F Ctrl-Enter
+A@>j>>B@>>k>C@=F Ctrl+Return
 \begin_inset Newline newline
 \end_inset
 
@@ -31875,7 +31933,7 @@ status collapsed
 
 
 \series bold
-V@| Ctrl-Enter
+V@| Ctrl+Return
 \begin_inset Newline newline
 \end_inset
 
@@ -32164,13 +32222,11 @@ The
 This chemical equation can directly be created as formula.
  To avoid that the symbols appear italic, everything is highlighted and
  changed by the shortcut 
-\family sans
-Alt-c
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "font-roman"
 \end_inset
 
-r
-\family default
  to the upright font style.
 \begin_inset Foot
 status collapsed
@@ -32328,13 +32384,11 @@ In LaTeX a comma inside a formula is used, according to the English convention,
 \begin_layout Standard
 To avoid this, the comma is highlighted and changed to mathematical text
  (shortcut 
-\family sans
-Alt-m
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "math-mode"
 \end_inset
 
-m
-\family default
 ).
 \end_layout
 
