@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 343
 \begin_document
 \begin_header
 \textclass scrbook
@@ -40,6 +40,7 @@
   {LyX }}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
+\use_default_options false
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -161,7 +162,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 11.
+letzte Änderung: 12.
  Oktober 2008
 \end_layout
 
@@ -334,8 +335,46 @@ ten
  Umgebung befindet.
  Mit den gepunkteten Griffen links von einer Leiste können Sie diese verschieben.
  Dabei verwandelt sich der Mauszeiger in das Verschiebekreuz.
- Natürlich gibt es auch einen vertikalen Rollbalken und den Hauptarbeitsbereich,
+ Natürlich gibt es auch einen vertikalen Rollbalken und den Editierbereich,
  in dem Sie Ihre Dokumente bearbeiten.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie mehrere Dokumente geöffnet haben, erscheinen über dem Editierbereich
+ Reiter mit den Namen der Dokumente.
+ Mit einem Rechtsklick auf einen Reiter können Sie das zugehörige Dokument
+ schließen (
+\family sans
+Unterfenster
+\begin_inset space \space{}
+\end_inset
+
+schließen
+\family default
+, gleichbedeutend mit 
+\family sans
+Strg+W
+\family default
+) oder verstecken (
+\family sans
+Unterfenster
+\begin_inset space \space{}
+\end_inset
+
+verstecken
+\family default
+).
+ Das ist recht hilfreich, wenn es viele Reiter gibt.
+ Über das 
+\family sans
+Ansicht
+\family default
+-Menü können die versteckten Fenster wieder angezeigt werden.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie mit gedrückter linker Maustaste auf einen Reiter zeigen, können
+ Sie ihn nach links oder rechts verschieben.
 \end_layout
 
 \begin_layout Standard
@@ -1022,7 +1061,7 @@ Neu (Strg+N)
 	filename ../../images/buffer-new.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -1052,7 +1091,7 @@ Vorlage\SpecialChar \ldots{}
 	filename ../../images/file-open.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -1076,7 +1115,7 @@ Speichern (Strg+S)
 	filename ../../images/buffer-write.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -1118,7 +1157,7 @@ Drucken\SpecialChar \ldots{}
 	filename ../../images/dialog-show_print.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -1265,7 +1304,7 @@ Ausschneiden
 	filename ../../images/cut.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -1293,7 +1332,7 @@ Kopieren
 	filename ../../images/copy.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -1325,7 +1364,7 @@ Strg+V
 	filename ../../images/paste.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -1370,7 +1409,7 @@ Ersetzen
 	filename ../../images/dialog-show_findreplace.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -1736,6 +1775,7 @@ Strg+Z
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -1759,6 +1799,7 @@ Strg+Y
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -1895,7 +1936,8 @@ Kopieren, Strg+C
 	filename ../../images/copy.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -1913,7 +1955,8 @@ Einfügen, Strg+V
 	filename ../../images/paste.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -2080,7 +2123,8 @@ Gliederung
 	filename ../../images/dialog-toggle_toc.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -2210,7 +2254,8 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
 	filename ../../images/reload.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -2222,7 +2267,8 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
 	filename ../../images/promote.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -2236,7 +2282,8 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
 	filename ../../images/demote.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -2783,7 +2830,8 @@ Strg+X
 	filename ../../images/copy.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -2810,7 +2858,8 @@ Strg+C
 	filename ../../images/cut.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -2833,7 +2882,8 @@ oder
 	filename ../../images/paste.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -3340,7 +3390,7 @@ name "Module"
 
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dokument!Module
@@ -4090,7 +4140,7 @@ documentclass
 PostScript-Treiber: Hier können Sie einen anderen als den (wahrscheinlich)
  voreingestellten Treiber dvips auswählen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Wenn Sie als Treiber 
@@ -4124,7 +4174,7 @@ ln
  benutzen wollen, müssen Sie ihn in Ihrer LaTeX-Distribution aktivieren,
  siehe Abschnitt 2 von 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -4340,7 +4390,7 @@ http://de.wikipedia.org/wiki/Mediävalziffer
 
  und 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -4398,7 +4448,7 @@ oldstylenums{0123456789}
 \family default
  als TeX-Code ergibt: 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -5241,6 +5291,7 @@ Einstellungen
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -5310,6 +5361,7 @@ Einstellungen
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -5491,6 +5543,11 @@ abs
 \end_inset
 
  ein, werden alle Einträge angezeigt, die mit Abschnitten zu tun haben.
+ Mit der 
+\family sans
+Esc
+\family default
+-Taste wird der Filter wieder zurückgesetzt.
 \end_layout
 
 \begin_layout Standard
@@ -5515,6 +5572,7 @@ Standard
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -5528,6 +5586,7 @@ Aufzählung
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -5541,6 +5600,7 @@ Auflistung
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -5554,6 +5614,7 @@ Liste
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -5567,6 +5628,7 @@ Beschreibung
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -7985,6 +8047,7 @@ Einstellungen
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -12291,9 +12354,9 @@ einrücken
 \end_layout
 
 \begin_layout Subsubsection
-Absatzausrichtung
+Ausrichtung
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Absatz!-ausrichtung
@@ -12378,11 +12441,11 @@ Eingabe
 \begin_layout Standard
 Wenn Sie 
 \family sans
-Sofort
+Direkt
 \begin_inset space \space{}
 \end_inset
 
-anzeigen
+übernehmen
 \family default
  ankreuzen, wird die Änderung auch ohne 
 \family sans
@@ -13746,7 +13809,7 @@ Textstil
 	filename ../../images/dialog-show_character.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -13777,7 +13840,7 @@ name "CJK-Feld"
 können die Benutzer von Chinesisch, Japanisch oder Koreanisch (CJK) eine
  Font festlegen, mit dem die Schriftzeichen dargestellt werden sollen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Der Font wird als Argument an die Befehle des LaTeX-Paketes 
@@ -13786,7 +13849,7 @@ cjk
 \family default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LaTeX! -Paket ! cjk
@@ -13893,6 +13956,7 @@ Sie klicken auf den Werkzeugleistenknopf
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -17804,7 +17868,8 @@ Um eine Abbildung in Ihr Dokument einzufügen, klicken Sie auf das Symbol
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -18980,6 +19045,8 @@ initialisieren
  einen Namen einfügen.
  Wenn Sie dann im Grafik-Dialogfenster einer anderen Abbildung denselben
  Namen eintragen, gehört auch diese Abbildung zur Gruppe.
+ Wenn es schon Gruppennamen gibt, können Sie diese im Kontextmenü (Rechtsklick
+ auf die Abbildung) ankreuzen.
 \end_layout
 
 \begin_layout Subsection
@@ -25561,7 +25628,8 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	filename ../../images/tabular-feature_delete-column.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25577,7 +25645,8 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	filename ../../images/toolbar-toggle_math_panels.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -30375,7 +30444,7 @@ Literaturverweis\SpecialChar \ldots{}
 	filename ../../images/dialog-show-new-inset_citation.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
 	groupId Icon
 
 \end_inset
@@ -32321,7 +32390,11 @@ Zusätzliche
 Optionen
 \family default
  benutzt werden.
- Genaueres dazu finden Sie im hyperref-Handbuch 
+ Genaueres dazu finden Sie im 
+\family typewriter
+hyperref
+\family default
+-Handbuch 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
@@ -35579,6 +35652,7 @@ Mathe-Makros-Werkzeugleiste
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35591,6 +35665,7 @@ Mathe-Makros-Werkzeugleiste
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35603,6 +35678,7 @@ Mathe-Makros-Werkzeugleiste
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35615,6 +35691,7 @@ Mathe-Makros-Werkzeugleiste
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35627,6 +35704,7 @@ Mathe-Makros-Werkzeugleiste
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35639,6 +35717,7 @@ Mathe-Makros-Werkzeugleiste
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35651,6 +35730,7 @@ Mathe-Makros-Werkzeugleiste
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35663,6 +35743,7 @@ Mathe-Makros-Werkzeugleiste
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35675,10 +35756,69 @@ Mathe-Makros-Werkzeugleiste
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
  : optionalen Parameter von rechts hinzufügen
+\end_layout
+
+\begin_layout Subsection
+Befehlseingabefenster
+\end_layout
+
+\begin_layout Standard
+Wie schon in Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Makro-erzeugen"
+
+\end_inset
+
+ beschrieben, kann dieses Fenster zum Eingeben von Befehlen benutzt werden.
+ Das ist besonders für die LFUNen,
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LFUN
+\end_layout
+
+\end_inset
+
+ die LyX-Funtionen, nützlich.
+ Auf 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/~sanda/doxygen/lfuns.pdf
+\end_layout
+
+\end_inset
+
+ und
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/~sanda/doxygen/html/namespacelyx.html#5ae63e8160e98b54ad28f142ed
+40c202
+\end_layout
+
+\end_inset
+
+ sind diese detailliert beschrieben.
 \end_layout
 
 \begin_layout Subsection
@@ -36179,6 +36319,11 @@ Besonders hilfreich ist dieses Fenster, wenn Sie sich über Druckergebnisse
  schreiben.
 \end_layout
 
+\begin_layout Standard
+Wenn das Fenster offen ist und Sie Ihr Dokument als Druckausgabe ansehen
+ oder exportieren wollen, werden dort mögliche LaTeX-Fehler angezeigt.
+\end_layout
+
 \begin_layout Subsection
 
 \family sans
@@ -36558,7 +36703,7 @@ Mathe
 \begin_layout Standard
 Diese Menüpunkte sind noch nirgends näher beschrieben außer in 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -36644,7 +36789,7 @@ key "tipa"
 \series default
  und auf der Wiki-Seite 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -36766,7 +36911,7 @@ Text!-datei
 
 \end_inset
 
-[, als Zeilen/Absätze]
+[, Zeilen verbinden]
 \end_layout
 
 \begin_layout Standard
@@ -36784,7 +36929,7 @@ Text!-datei
 
 \end_inset
 
-[, als Zeilen/Absätze]
+[, Zeilen verbinden]
 \family default
  (siehe 
 \emph on
@@ -37585,7 +37730,6 @@ kreuzt ist, wird das LyX-Fenster
  dort geöffnet, wo es beim letzten Mal war.
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Cursor-Positionen
 \begin_inset space ~
@@ -37630,7 +37774,6 @@ hilfreich, wenn man längere Zeit mit denselben Dateien arbeitet.
 \end_layout
 
 \end_deeper
-\end_deeper
 \begin_layout Description
 Dokumente 
 \end_layout
@@ -37655,7 +37798,6 @@ Minuten Hier können Sie die automatische Datensicherung während einer
  soll.
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Maximale
 \begin_inset space ~
@@ -37687,11 +37829,10 @@ Unterfenstern
 \end_inset
 
 öffnen Wenn dieser Parameter angekreuzt ist, wird das neue Dokument im selben
- Fenster mit einem neuen Tab geöffnet, sonst in einem neuen Fenster (wie
- zum Beispiel bei OpenOffice).
+ Fenster mit einem neuen Reiter geöffnet, sonst in einem neuen Fenster (wie
+ zum Beispiel bei OpenOffice oder Mac).
 \end_layout
 
-\end_deeper
 \end_deeper
 \begin_layout Subsection
 Bildschirmschriften
@@ -37735,6 +37876,11 @@ Vergrößerung
 
 % Hiermit können Sie die Größe der dargestellten Schriften festlegen, je
  nachdem, ob sie Ihnen zu groß oder zu klein erscheinen.
+ Mit Hilfe von 
+\family sans
+Strg+Mausrad
+\family default
+ können Sie diese Einstellunge im laufenden Betrieb ändern.
 \end_layout
 
 \begin_layout Description
@@ -40469,7 +40615,7 @@ CJK
 \family default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LaTeX! -Paket ! cjk
@@ -40845,7 +40991,7 @@ amsmath
 \family default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LaTeX! -Paket ! amsmath
@@ -40859,7 +41005,7 @@ esint
 \family default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LaTeX! -Paket ! esint
@@ -42432,7 +42578,7 @@ http://wiki.lyx.org/LyX/NewInLyX16
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
