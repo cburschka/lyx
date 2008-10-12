@@ -120,6 +120,9 @@ What's new
 
 - Latvian and Lithuanian documents are now compilable (bug 5323, bug 5324).
 
+- Fix that the amsmath LaTeX-package was used although it was turned off in
+  the document settings math options (bug 5350).
+
 
 * USER INTERFACE
 
