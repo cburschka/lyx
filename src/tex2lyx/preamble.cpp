@@ -512,7 +512,18 @@ void parse_preamble(Parser & p, ostream & os,
 			static regex const usercommands("User specified LaTeX commands");
 			
 			string const comment = t.asInput();
-			cerr << "Seen comment: " << comment << std::endl;
+			//cerr << "Seen comment: " << comment << std::endl;
+			
+			// magically switch encoding default if it looks like XeLaTeX
+			static string const magicXeLaTeX =
+				"% This document must be compiled with XeLaTeX ";
+			if (comment.size() > magicXeLaTeX.size() 
+				  && comment.substr(0, magicXeLaTeX.size()) == magicXeLaTeX
+				  && h_inputencoding == "auto") {
+				cerr << "XeLaTeX comment found, switching to UTF8\n";
+				h_inputencoding = "utf8";
+			}
+
 			smatch sub;
 			if (regex_search(comment, sub, islyxfile))
 				is_lyx_file = true;
