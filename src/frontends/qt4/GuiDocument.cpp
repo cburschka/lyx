@@ -896,6 +896,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	// latex class
 	connect(latexModule->optionsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
+	connect(latexModule->defaultOptionsCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 	connect(latexModule->psdriverCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(latexModule->classCO, SIGNAL(activated(int)),
@@ -913,7 +915,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(latexModule->childDocPB, SIGNAL(clicked()),
 		this, SLOT(browseMaster()));
 	
-	selectionManager = 
+	selectionManager =
 		new ModuleSelectionManager(latexModule->availableLV,
 			latexModule->selectedLV, 
 			latexModule->addPB, latexModule->deletePB, 
@@ -1348,13 +1350,14 @@ void GuiDocument::classChanged()
 				applyView();
 		}
 		bp_.useClassDefaults();
-		paramsToDialog(bp_);
 	}
 	// FIXME There's a little bug here connected with auto_reset, namely,
 	// that, if the preceding is skipped and the user has changed the
 	// modules before changing the class, those changes will be lost on
 	// update. But maybe that's what we want?
 	updateSelectedModules();
+	bp_.makeDocumentClass();
+	paramsToDialog(bp_);
 }
 
 
@@ -1700,6 +1703,9 @@ void GuiDocument::apply(BufferParams & params)
 	params.options =
 		fromqstr(latexModule->optionsLE->text());
 
+	params.use_default_options =
+		latexModule->defaultOptionsCB->isChecked();
+
 	if (latexModule->childDocGB->isChecked())
 		params.master =
 			fromqstr(latexModule->childDocLE->text());
@@ -1994,6 +2000,24 @@ void GuiDocument::paramsToDialog(BufferParams const & params)
 	} else {
 		latexModule->optionsLE->setText(QString());
 	}
+
+	latexModule->defaultOptionsCB->setChecked(
+		params.use_default_options);
+
+	if (!documentClass().options().empty()) {
+		latexModule->defaultOptionsLE->setText(
+			toqstr(documentClass().options()));
+	} else {
+		latexModule->defaultOptionsLE->setText(
+			toqstr(_("[No options predefined]")));
+	}
+
+	latexModule->defaultOptionsLE->setEnabled(
+		params.use_default_options
+		&& !documentClass().options().empty());
+
+	latexModule->defaultOptionsCB->setEnabled(
+		!documentClass().options().empty());
 
 	if (!params.master.empty()) {
 		latexModule->childDocGB->setChecked(true);

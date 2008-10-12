@@ -335,6 +335,7 @@ BufferParams::BufferParams()
 	use_bibtopic = false;
 	trackChanges = false;
 	outputChanges = false;
+	use_default_options = true;
 	secnumdepth = 3;
 	tocdepth = 3;
 	language = default_language;
@@ -495,6 +496,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\options") {
 		lex.eatLine();
 		options = lex.getString();
+	} else if (token == "\\use_default_options") {
+		lex >> use_default_options;
 	} else if (token == "\\master") {
 		lex.eatLine();
 		master = lex.getString();
@@ -691,6 +694,10 @@ void BufferParams::writeFile(ostream & os) const
 	if (!options.empty()) {
 		os << "\\options " << options << '\n';
 	}
+
+	// use the class options defined in the layout?
+	os << "\\use_default_options " 
+	   << convert<string>(use_default_options) << "\n";
 
 	// the master document
 	if (!master.empty()) {
@@ -1073,6 +1080,10 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			clsoptions << language_options.str() << ',';
 	}
 
+	// the predefined options from the layout
+	if (use_default_options && !tclass.options().empty())
+		clsoptions << tclass.options() << ',';
+
 	// the user-defined options
 	if (!options.empty()) {
 		clsoptions << options << ',';
@@ -1444,7 +1455,7 @@ void BufferParams::useClassDefaults()
 	sides = tclass.sides();
 	columns = tclass.columns();
 	pagestyle = tclass.pagestyle();
-	options = tclass.options();
+	use_default_options = true;
 	// Only if class has a ToC hierarchy
 	if (tclass.hasTocLevels()) {
 		secnumdepth = tclass.secnumdepth();
@@ -1460,7 +1471,7 @@ bool BufferParams::hasClassDefaults() const
 	return sides == tclass.sides()
 		&& columns == tclass.columns()
 		&& pagestyle == tclass.pagestyle()
-		&& options == tclass.options()
+		&& use_default_options
 		&& secnumdepth == tclass.secnumdepth()
 		&& tocdepth == tclass.tocdepth();
 }
@@ -1499,7 +1510,7 @@ bool BufferParams::setBaseClass(string const & classname)
 	}
 
 	bool const success = bcl[classname].load();
-	if (!success) {	
+	if (!success) {
 		docstring s = 
 			bformat(_("The document class %1$s could not be loaded."),
 			from_utf8(classname));
@@ -1516,14 +1527,14 @@ bool BufferParams::setBaseClass(string const & classname)
 	for (; mit != men; mit++) {
 		string const & modName = *mit;
 		// see if we're already in use
-		if (find(layoutModules_.begin(), layoutModules_.end(), modName) != 
+		if (find(layoutModules_.begin(), layoutModules_.end(), modName) !=
 		    layoutModules_.end()) {
 			LYXERR(Debug::TCLASS, "Default module `" << modName << 
 					"' not added because already used.");
 			continue;
 		}
 		// make sure the user hasn't removed it
-		if (find(removedModules_.begin(), removedModules_.end(), modName) != 
+		if (find(removedModules_.begin(), removedModules_.end(), modName) !=
 		    removedModules_.end()) {
 			LYXERR(Debug::TCLASS, "Default module `" << modName << 
 					"' not added because removed by user.");

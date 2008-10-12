@@ -2955,6 +2955,22 @@ def revert_mongolian(document):
         j = j + 1
 
 
+def revert_default_options(document):
+    ' Remove param use_default_options '
+    i = find_token(document.header, "\\use_default_options", 0)
+    if i != -1:
+        del document.header[i]
+
+
+def convert_default_options(document):
+    ' Add param use_default_options and set it to false '
+    i = find_token(document.header, "\\textclass", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing `\\textclass'.")
+        return
+    document.header.insert(i, '\\use_default_options false')
+
+
 ##
 # Conversion hub
 #
@@ -3025,10 +3041,12 @@ convert = [[277, [fix_wrong_tables]],
            [339, []],
            [340, [add_plain_layout]],
            [341, []],
-           [342, []]
+           [342, []],
+           [343, [convert_default_options]]
           ]
 
-revert =  [[341, [revert_mongolian]],
+revert =  [[342, [revert_default_options]],
+           [341, [revert_mongolian]],
            [340, [revert_tabulators, revert_tabsize]],
            [339, []],
            [338, [revert_removed_modules]],

@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>381</width>
-    <height>413</height>
+    <height>449</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -19,54 +19,6 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="3" column="0" colspan="4" >
-    <widget class="QGroupBox" name="childDocGB" >
-     <property name="toolTip" >
-      <string>Select if the current document is included to a master file</string>
-     </property>
-     <property name="statusTip" >
-      <string/>
-     </property>
-     <property name="title" >
-      <string>Select de&amp;fault master document</string>
-     </property>
-     <property name="checkable" >
-      <bool>true</bool>
-     </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="childDocLA" >
-        <property name="text" >
-         <string>&amp;Master:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>childDocLE</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2" >
-       <widget class="QPushButton" name="childDocPB" >
-        <property name="text" >
-         <string>&amp;Browse...</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" >
-       <widget class="QLineEdit" name="childDocLE" >
-        <property name="toolTip" >
-         <string>Enter the name of the default master document</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
    <item row="4" column="0" colspan="4" >
     <widget class="QGroupBox" name="modulesGB" >
      <property name="title" >
@@ -160,18 +112,53 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="2" colspan="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
+   <item row="3" column="0" colspan="4" >
+    <widget class="QGroupBox" name="childDocGB" >
+     <property name="toolTip" >
+      <string>Select if the current document is included to a master file</string>
      </property>
-     <property name="sizeHint" >
-      <size>
-       <width>261</width>
-       <height>22</height>
-      </size>
+     <property name="statusTip" >
+      <string/>
      </property>
-    </spacer>
+     <property name="title" >
+      <string>Select de&amp;fault master document</string>
+     </property>
+     <property name="checkable" >
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="childDocLA" >
+        <property name="text" >
+         <string>&amp;Master:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>childDocLE</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QPushButton" name="childDocPB" >
+        <property name="text" >
+         <string>&amp;Browse...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLineEdit" name="childDocLE" >
+        <property name="toolTip" >
+         <string>Enter the name of the default master document</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
    <item row="2" column="1" >
     <widget class="QComboBox" name="psdriverCO" >
@@ -190,16 +177,23 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1" colspan="3" >
-    <widget class="QLineEdit" name="optionsLE" />
-   </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="optionsL" >
-     <property name="text" >
-      <string>&amp;Options:</string>
+   <item row="2" column="2" colspan="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
      </property>
-     <property name="buddy" >
-      <cstring>optionsLE</cstring>
+     <property name="sizeHint" >
+      <size>
+       <width>261</width>
+       <height>22</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="1" colspan="2" >
+    <widget class="QComboBox" name="classCO" >
+     <property name="maxVisibleItems" >
+      <number>20</number>
      </property>
     </widget>
    </item>
@@ -231,25 +225,63 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1" colspan="2" >
-    <widget class="QComboBox" name="classCO" >
-     <property name="maxVisibleItems" >
-      <number>20</number>
+   <item row="1" column="0" colspan="4" >
+    <widget class="QGroupBox" name="optionsGB" >
+     <property name="title" >
+      <string>Class options</string>
      </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item rowspan="2" row="0" column="1" >
+       <layout class="QVBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLineEdit" name="defaultOptionsLE" >
+          <property name="toolTip" >
+           <string>The options that are predefined in the layout file. Click to the left to select/deselect.</string>
+          </property>
+          <property name="readOnly" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="optionsLE" />
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="defaultOptionsCB" >
+        <property name="toolTip" >
+         <string>Enable to use the options that are predefined in the layout file</string>
+        </property>
+        <property name="text" >
+         <string>P&amp;redefined:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="optionsL" >
+        <property name="text" >
+         <string>Cust&amp;om:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>optionsLE</cstring>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
-   </item>
-   <item row="5" column="1" colspan="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
    </item>
   </layout>
  </widget>
@@ -269,5 +301,22 @@
   <include location="local" >qt_i18n.h</include>
  </includes>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>defaultOptionsCB</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>defaultOptionsLE</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>63</x>
+     <y>79</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>237</x>
+     <y>82</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

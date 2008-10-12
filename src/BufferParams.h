@@ -236,6 +236,8 @@ public:
 	std::string local_layout;
 	///
 	std::string options;
+	/// use the class options defined in the layout?
+	bool use_default_options;
 	///
 	std::string master;
 	///
