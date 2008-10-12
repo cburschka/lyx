@@ -1355,7 +1355,7 @@ void GuiDocument::classChanged()
 	// class  and the document class. The former corresponds to the main layout 
 	// file; the  latter is that plus the modules (or the document-specific layout,
 	// or  whatever else there could be). Our parameters come from the document 
-	// class.  So when we set the base class, we also need to recreate the document 
+	// class. So when we set the base class, we also need to recreate the document 
 	// class. Otherwise, we still have the old one.
 	bp_.makeDocumentClass();
 	// FIXME There's a little bug here connected with auto_reset, namely,
@@ -2180,7 +2180,6 @@ void GuiDocument::updateAvailableModules()
 
 void GuiDocument::updateSelectedModules() 
 {
-	// and selected ones, too
 	modules_sel_model_.clear();
 	vector<modInfoStruct> const selModList = getSelectedModules();
 	int const sSize = selModList.size();
