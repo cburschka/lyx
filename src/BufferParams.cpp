@@ -935,6 +935,49 @@ void BufferParams::validate(LaTeXFeatures & features) const
 		features.require("japanese");
 }
 
+/// Find out if we need special treatment for babel.
+static bool needsSpecialBabelCall(LaTeXFeatures const & features)
+{
+	// FIXME: don't hardcode this!!
+	// If Vietnamese is used, babel must directly be loaded with the
+	// language options, see
+	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
+	//
+	// viet = string::npos when not found
+	// the same is for all other languages that are not directly supported by
+	// babel, but where LaTeX-packages add babel support.
+	// this is currently the case for Latvian, Lithuanian, and Mongolian
+	//
+	// If Japanese is used, babel must directly be loaded with the
+	// language options, see
+	// http://bugzilla.lyx.org/show_bug.cgi?id=4597#c4
+	return !lyxrc.language_global_options
+	 || features.hasLanguage("vietnam")
+	 || features.hasLanguage("latvian")
+	 || features.hasLanguage("japanese")
+	 || features.hasLanguage("lithuanian")
+	 || features.hasLanguage("mongolian");
+}
+
+/// set up if and how babel is called
+static docstring babelCall(LaTeXFeatures const & features,
+	string const & lang_opts)
+{
+	string babel_call = lyxrc.language_package;
+	if (babel_call != "\\usepackage{babel}")
+		return from_utf8(babel_call);
+	// suppress the babel call when there is no babel language defined
+	// for the document language in the lib/languages file and if no
+	// other languages are used (lang_opts is then empty)
+	if (!features.hasLanguages())
+		return docstring();
+
+	if (needsSpecialBabelCall(features))
+		babel_call = "\\usepackage[" + lang_opts + "]{babel}";
+
+	return from_utf8(babel_call);
+}
+
 
 bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			      TexRow & texrow) const
@@ -1025,24 +1068,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 				language_options << ',';
 			language_options << language->babel();
 		}
-		// FIXME: don't hardcode this! 
-		// if Vietnamese is used, babel must directly be loaded
-		// with language options, not in the class options, see
-		// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
-		//
-		// the same is for all other languages that are not directly supported by
-		// babel, but where LaTeX-packages add babel support.
-		// this is currently the case for Latvian, Lithuanian, and Mongolian
-		//
-		// if Japanese is used, babel must directly be loaded
-		// with language options, not in the class options, see
-		// http://bugzilla.lyx.org/show_bug.cgi?id=4597#c4
-		if (lyxrc.language_global_options && !language_options.str().empty()
-		 && !features.hasLanguage("vietnam")
-		 && !features.hasLanguage("latvian")
-		 && !features.hasLanguage("lithuanian")
-		 && !features.hasLanguage("mongolian")
-		 && !features.hasLanguage("japanese"))
+		if (!language_options.str().empty()
+		 && !needsSpecialBabelCall(features))
 			clsoptions << language_options.str() << ',';
 	}
 
@@ -1281,7 +1308,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			|| features.isRequired("vietnamese")
 			|| features.isRequired("japanese") ) ) {
 				// FIXME UNICODE
-				lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
+				lyxpreamble += babelCall(features, language_options.str()) + '\n';
 				lyxpreamble += from_utf8(features.getBabelOptions()) + '\n';
 	}
 
@@ -1395,7 +1422,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	    && !features.isRequired("vietnamese")
 	    && !features.isRequired("japanese")) {
 		// FIXME UNICODE
-		lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
+		lyxpreamble += babelCall(features, language_options.str()) + '\n';
 		lyxpreamble += from_utf8(features.getBabelOptions()) + '\n';
 	}
 
@@ -1854,39 +1881,6 @@ string const BufferParams::dvips_options() const
 	    papersize != PAPER_CUSTOM)
 		result += ' ' + lyxrc.print_landscape_flag;
 	return result;
-}
-
-
-string BufferParams::babelCall(string const & lang_opts) const
-{
-	string lang_pack = lyxrc.language_package;
-	if (lang_pack != "\\usepackage{babel}")
-		return lang_pack;
-	// suppress the babel call when there is no babel language defined
-	// for the document language in the lib/languages file and if no
-	// other languages are used (lang_opts is then empty)
-	if (lang_opts.empty())
-		return string();
-	// If Vietnamese is used, babel must directly be loaded with the
-	// language options, see
-	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
-	size_t viet = lang_opts.find("vietnam");
-	// viet = string::npos when not found
-	// the same is for all other languages that are not directly supported by
-	// babel, but where LaTeX-packages add babel support.
-	// this is currently the case for Latvian, Lithuanian, and Mongolian
-	size_t latvian = lang_opts.find("latvian");
-	size_t lithu = lang_opts.find("lithuanian");
-	size_t mongo = lang_opts.find("mongolian");
-	// If Japanese is used, babel must directly be loaded with the
-	// language options, see
-	// http://bugzilla.lyx.org/show_bug.cgi?id=4597#c4
-	size_t japan = lang_opts.find("japanese");
-	if (!lyxrc.language_global_options || viet != string::npos
-		|| japan != string::npos || latvian != string::npos
-		|| lithu != string::npos || mongo != string::npos)
-		return "\\usepackage[" + lang_opts + "]{babel}";
-	return lang_pack;
 }
 
 
