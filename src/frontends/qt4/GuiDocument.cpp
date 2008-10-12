@@ -1461,7 +1461,7 @@ void GuiDocument::updateModuleInfo()
 
 void GuiDocument::updateNumbering()
 {
-	DocumentClass const & tclass = bp_.documentClass();
+	DocumentClass const & tclass = documentClass();
 
 	numberingModule->tocTW->setUpdatesEnabled(false);
 	numberingModule->tocTW->clear();
