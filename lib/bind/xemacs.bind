@@ -226,7 +226,7 @@
 \bind "C-space"			"space-insert protected"
 \bind "C-M-space"		"space-insert normal"
 \bind "S-C-space"		"space-insert thin"
-\bind "C-S-slash"		"specialchar-insert slash"
+\bind "M-~S-slash"		"specialchar-insert slash"
 \bind "C-period"		"specialchar-insert end-of-sentence"
 \bind "M-period"		"specialchar-insert dots"
 \bind "M-w"			"copy"

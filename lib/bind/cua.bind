@@ -90,7 +90,7 @@
 \bind "M-S-Right"		"depth-increment"
 \bind "M-S-Left"		"depth-decrement"
 \bind "C-S-L"			"specialchar-insert ligature-break"
-\bind "C-S-slash"		"specialchar-insert slash"
+\bind "C-~S-slash"		"specialchar-insert slash"
 \bind "C-l"			"ert-insert"		# 'l' for LaTeX
 \bind "C-S-I"			"info-insert"
 
