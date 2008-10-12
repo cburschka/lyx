@@ -288,7 +288,7 @@ public:
 	void expandFormats(MenuItem::Kind kind, Buffer const * buf);
 	void expandFloatListInsert(Buffer const * buf);
 	void expandFloatInsert(Buffer const * buf);
-	void expandFlexInsert(Buffer const * buf, std::string s);
+	void expandFlexInset(Buffer const * buf, std::string s);
 	void expandToc2(Toc const & toc_list, size_t from, size_t to, int depth);
 	void expandToc(Buffer const * buf);
 	void expandPasteRecent(Buffer const * buf);
@@ -839,7 +839,7 @@ void MenuDefinition::expandFloatInsert(Buffer const * buf)
 }
 
 
-void MenuDefinition::expandFlexInsert(Buffer const * buf, string s)
+void MenuDefinition::expandFlexInset(Buffer const * buf, string s)
 {
 	if (!buf) {
 		add(MenuItem(MenuItem::Command, qt_("No Document Open!"),
@@ -1349,15 +1349,15 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 			break;
 
 		case MenuItem::CharStyles:
-			tomenu.expandFlexInsert(buf, "charstyle");
+			tomenu.expandFlexInset(buf, "charstyle");
 			break;
 
 		case MenuItem::Custom:
-			tomenu.expandFlexInsert(buf, "custom");
+			tomenu.expandFlexInset(buf, "custom");
 			break;
 
 		case MenuItem::Elements:
-			tomenu.expandFlexInsert(buf, "element");
+			tomenu.expandFlexInset(buf, "element");
 			break;
 
 		case MenuItem::FloatListInsert:
