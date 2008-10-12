@@ -1071,10 +1071,11 @@ def convert_latexcommand_index(document):
         m = r1.match(document.body[i + 2])
         if m == None:
             document.warning("Unable to match: " + document.body[i+2])
-            i += 1
-            continue
-        fullcontent = m.group(1)
-        linelist = latex2lyx(fullcontent)
+            # this can happen with empty index insets!
+            linelist = [""]
+        else:
+            fullcontent = m.group(1)
+            linelist = latex2lyx(fullcontent)
         #document.warning(fullcontent)
 
         linelist = ["\\begin_inset Index", "status collapsed", "\\begin_layout Standard", ""] + \
