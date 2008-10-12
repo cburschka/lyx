@@ -1351,11 +1351,17 @@ void GuiDocument::classChanged()
 		}
 		bp_.useClassDefaults();
 	}
+	// With the introduction of modules came a distinction between the base 
+	// class  and the document class. The former corresponds to the main layout 
+	// file; the  latter is that plus the modules (or the document-specific layout,
+	// or  whatever else there could be). Our parameters come from the document 
+	// class.  So when we set the base class, we also need to recreate the document 
+	// class. Otherwise, we still have the old one.
+	bp_.makeDocumentClass();
 	// FIXME There's a little bug here connected with auto_reset, namely,
 	// that, if the preceding is skipped and the user has changed the
 	// modules before changing the class, those changes will be lost on
 	// update. But maybe that's what we want?
-	bp_.makeDocumentClass();
 	updateSelectedModules();
 	paramsToDialog(bp_);
 }
