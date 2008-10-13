@@ -84,7 +84,7 @@ int const CursorWidth = 1;
 int const TabIndicatorWidth = 3;
 
 #undef KeyPress
-#undef NoModifier 
+#undef NoModifier
 
 using namespace std;
 using namespace lyx::support;
@@ -137,7 +137,7 @@ public:
 	{
 		if (!show_ || !rect_.isValid())
 			return;
-		
+
 		int y = rect_.top();
 		int l = x_ - rect_.left();
 		int r = rect_.right() - x_;
@@ -145,7 +145,7 @@ public:
 
 		// draw vertica linel
 		painter.fillRect(x_, y, CursorWidth, rect_.height(), color_);
-		
+
 		// draw RTL/LTR indication
 		painter.setPen(color_);
 		if (l_shape_) {
@@ -154,7 +154,7 @@ public:
 			else
 				painter.drawLine(x_, bot, x_ + CursorWidth + r, bot);
 		}
-		
+
 		// draw completion triangle
 		if (completable_) {
 			int m = y + rect_.height() / 2;
@@ -177,7 +177,7 @@ public:
 		rtl_ = rtl;
 		completable_ = completable;
 		x_ = x;
-		
+
 		// extension to left and right
 		int l = 0;
 		int r = 0;
@@ -189,7 +189,7 @@ public:
 			else
 				r += h / 3;
 		}
-		
+
 		// completion triangle
 		if (completable_) {
 			if (rtl)
@@ -244,7 +244,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	// Setup the signals
 	connect(&cursor_timeout_, SIGNAL(timeout()),
 		this, SLOT(toggleCursor()));
-	
+
 	int const time = QApplication::cursorFlashTime() / 2;
 	if (time > 0) {
 		cursor_timeout_.setInterval(time);
@@ -274,7 +274,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	setMouseTracking(true);
 	setMinimumSize(100, 70);
 #ifdef Q_WS_MACX
-	setFrameStyle(QFrame::NoFrame);	
+	setFrameStyle(QFrame::NoFrame);
 #else
 	setFrameStyle(QFrame::Box);
 #endif
@@ -338,7 +338,7 @@ void GuiWorkArea::setFullScreen(bool full_screen)
 			setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	} else {
 #ifdef Q_WS_MACX
-		setFrameStyle(QFrame::NoFrame);	
+		setFrameStyle(QFrame::NoFrame);
 #else
 		setFrameStyle(QFrame::Box);
 #endif
@@ -399,7 +399,7 @@ void GuiWorkArea::redraw()
 		hideCursor();
 		showCursor();
 	}
-	
+
 	LYXERR(Debug::WORKAREA, "WorkArea::redraw screen");
 	updateScreen();
 	update(0, 0, viewport()->width(), viewport()->height());
@@ -455,9 +455,9 @@ void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 	else
 		cmd = cmd0;
 
-	bool const notJustMovingTheMouse = 
+	bool const notJustMovingTheMouse =
 		cmd.action != LFUN_MOUSE_MOTION || cmd.button() != mouse_button::none;
-	
+
 	// In order to avoid bad surprise in the middle of an operation, we better stop
 	// the blinking cursor.
 	if (notJustMovingTheMouse)
@@ -494,11 +494,11 @@ void GuiWorkArea::resizeBufferView()
 	updateScreen();
 
 	// Update scrollbars which might have changed due different
-	// BufferView dimension. This is especially important when the 
+	// BufferView dimension. This is especially important when the
 	// BufferView goes from zero-size to the real-size for the first time,
 	// as the scrollbar paramters are then set for the first time.
 	updateScrollbar();
-	
+
 	lyx_view_->updateLayoutList();
 	lyx_view_->setBusy(false);
 	need_resize_ = false;
@@ -850,7 +850,7 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 	// (the auto repeated events come too fast)
 	// \todo FIXME: remove hard coded Qt keys, process the key binding
 #ifdef Q_WS_X11
-	if (XEventsQueued(QX11Info::display(), 0) > 1 && ev->isAutoRepeat() 
+	if (XEventsQueued(QX11Info::display(), 0) > 1 && ev->isAutoRepeat()
 			&& (Qt::Key_PageDown || Qt::Key_PageUp)) {
 		LYXERR(Debug::KEY, "system is busy: scroll key event ignored");
 		ev->ignore();
@@ -1165,7 +1165,7 @@ bool GuiWorkArea::isFullScreen()
 
 ////////////////////////////////////////////////////////////////////
 //
-// TabWorkArea 
+// TabWorkArea
 //
 ////////////////////////////////////////////////////////////////////
 
@@ -1178,7 +1178,7 @@ public:
 	{
 		QRect rect = QMacStyle::subElementRect(element, option, widget);
 		bool noBar = static_cast<QTabWidget const *>(widget)->count() <= 1;
-		
+
 		// The Qt Mac style puts the contents into a 3 pixel wide box
 		// which looks very ugly and not like other Mac applications.
 		// Hence we remove this here, and moreover the 16 pixel round
@@ -1227,7 +1227,7 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 	QObject::connect(closeBufferButton, SIGNAL(clicked()),
 		this, SLOT(closeCurrentBuffer()));
 	setCornerWidget(closeBufferButton, Qt::TopRightCorner);
-	
+
 	// setup drag'n'drop
 	QTabBar* tb = new DragTabBar;
 	connect(tb, SIGNAL(tabMoveRequested(int, int)),
@@ -1239,7 +1239,7 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 	tb->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(tb, SIGNAL(customContextMenuRequested(const QPoint &)),
 		this, SLOT(showContextMenu(const QPoint &)));
-	
+
 	setUsesScrollButtons(true);
 }
 
@@ -1268,7 +1268,7 @@ GuiWorkArea * TabWorkArea::currentWorkArea()
 	if (count() == 0)
 		return 0;
 
-	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(currentWidget()); 
+	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(currentWidget());
 	LASSERT(wa, /**/);
 	return wa;
 }
@@ -1334,7 +1334,7 @@ GuiWorkArea * TabWorkArea::addWorkArea(Buffer & buffer, GuiView & view)
 		showBar(count() > 1);
 
 	updateTabTexts();
-	
+
 	return wa;
 }
 
@@ -1403,7 +1403,7 @@ void TabWorkArea::closeCurrentTab()
 	if (clicked_tab_ == -1)
 		removeWorkArea(currentWorkArea());
 	else {
-		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(clicked_tab_)); 
+		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(clicked_tab_));
 		LASSERT(wa, /**/);
 		removeWorkArea(wa);
 	}
@@ -1425,7 +1425,7 @@ public:
 		abs_ = toqstr(filename.absoluteFilePath());
 		dottedPrefix_ = false;
 	}
-	
+
 	/// Absolute path for debugging.
 	QString abs() const
 	{
@@ -1461,7 +1461,7 @@ public:
 	{
 		if (postfix_.count() == 0)
 			return displayString();
-		
+
 		return prefix_
 			+ (dottedPrefix_ ? ".../" : "")
 			+ postfix_.front() + "/";
@@ -1470,7 +1470,7 @@ public:
 	bool final() const { return postfix_.empty(); }
 	///
 	int tab() const { return tab_; }
-	
+
 private:
 	///
 	QString prefix_;
@@ -1507,26 +1507,26 @@ void TabWorkArea::updateTabTexts()
 		return;
 	std::list<DisplayPath> paths;
 	typedef std::list<DisplayPath>::iterator It;
-	
-	// collect full names first: path into postfix, empty prefix and 
+
+	// collect full names first: path into postfix, empty prefix and
 	// filename without extension
 	for (size_t i = 0; i < n; ++i) {
-		GuiWorkArea * i_wa = dynamic_cast<GuiWorkArea *>(widget(i)); 
+		GuiWorkArea * i_wa = dynamic_cast<GuiWorkArea *>(widget(i));
 		FileName const fn = i_wa->bufferView().buffer().fileName();
 		paths.push_back(DisplayPath(i, fn));
 	}
-	
+
 	// go through path segments and see if it helps to make the path more unique
 	bool somethingChanged = true;
 	bool allFinal = false;
 	while (somethingChanged && !allFinal) {
 		// adding path segments changes order
 		paths.sort();
-		
+
 		LYXERR(Debug::GUI, "updateTabTexts() iteration start");
 		somethingChanged = false;
 		allFinal = true;
-		
+
 		// find segments which are not unique (i.e. non-atomic)
 		It it = paths.begin();
 		It segStart = it;
@@ -1535,20 +1535,20 @@ void TabWorkArea::updateTabTexts()
 			// look to the next item
 			It next = it;
 			++next;
-			
+
 			// final?
 			allFinal = allFinal && it->final();
-			
+
 			LYXERR(Debug::GUI, "it = " << it->abs()
 			       << " => " << it->displayString());
-			
+
 			// still the same segment?
 			QString nextString;
 			if ((next != paths.end()
 			     && (nextString = next->displayString()) == segString))
 				continue;
 			LYXERR(Debug::GUI, "segment ended");
-			
+
 			// only a trivial one with one element?
 			if (it == segStart) {
 				// start new segment
@@ -1556,7 +1556,7 @@ void TabWorkArea::updateTabTexts()
 				segString = nextString;
 				continue;
 			}
-			
+
 			// we found a non-atomic segment segStart <= sit <= it < next.
 			// Shift path segments and hope for the best
 			// that it makes the path more unique.
@@ -1577,7 +1577,7 @@ void TabWorkArea::updateTabTexts()
 				LYXERR(Debug::GUI, "same forecast found for "
 					<< sit->abs() << " => " << dspString);
 			}
-			
+
 			// if the path segment helped, add it. Otherwise add dots
 			bool dots = !moreUnique;
 			LYXERR(Debug::GUI, "using dots = " << dots);
@@ -1592,10 +1592,10 @@ void TabWorkArea::updateTabTexts()
 			segString = nextString;
 		}
 	}
-	
+
 	// set new tab titles
 	for (It it = paths.begin(); it != paths.end(); ++it) {
-		GuiWorkArea * i_wa = dynamic_cast<GuiWorkArea *>(widget(it->tab())); 
+		GuiWorkArea * i_wa = dynamic_cast<GuiWorkArea *>(widget(it->tab()));
 		Buffer & buf = i_wa->bufferView().buffer();
 		if (!buf.fileName().empty() && !buf.isClean())
 			setTabText(it->tab(), it->displayString() + "*");
@@ -1611,7 +1611,7 @@ void TabWorkArea::showContextMenu(const QPoint & pos)
 	clicked_tab_ = static_cast<DragTabBar *>(tabBar())->tabAt(pos);
 	if (clicked_tab_ == -1)
 		return;
-	
+
 	// show tab popup
 	QMenu popup;
 	popup.addAction(QIcon(":/images/hidetab.png"),
@@ -1635,7 +1635,7 @@ void TabWorkArea::moveTab(int fromIndex, int toIndex)
 	insertTab(toIndex, w, icon, text);
 	setCurrentIndex(toIndex);
 }
-	
+
 
 DragTabBar::DragTabBar(QWidget* parent)
 	: QTabBar(parent)
@@ -1670,7 +1670,7 @@ void DragTabBar::mouseMoveEvent(QMouseEvent * event)
 	// If the left button isn't pressed anymore then return
 	if (!(event->buttons() & Qt::LeftButton))
 		return;
-	
+
 	// If the distance is too small then return
 	if ((event->pos() - dragStartPos_).manhattanLength()
 	    < QApplication::startDragDistance())
@@ -1680,21 +1680,21 @@ void DragTabBar::mouseMoveEvent(QMouseEvent * event)
 	int tab = tabAt(dragStartPos_);
 	if (tab == -1)
 		return;
-	
+
 	// simulate button release to remove highlight from button
 	int i = currentIndex();
 	QMouseEvent me(QEvent::MouseButtonRelease, dragStartPos_,
 		event->button(), event->buttons(), 0);
 	QTabBar::mouseReleaseEvent(&me);
 	setCurrentIndex(i);
-	
+
 	// initiate Drag
 	QDrag * drag = new QDrag(this);
 	QMimeData * mimeData = new QMimeData;
 	// a crude way to distinguish tab-reodering drops from other ones
 	mimeData->setData("action", "tab-reordering") ;
 	drag->setMimeData(mimeData);
-	
+
 #if QT_VERSION >= 0x040300
 	// get tab pixmap as cursor
 	QRect r = tabRect(tab);
@@ -1705,7 +1705,7 @@ void DragTabBar::mouseMoveEvent(QMouseEvent * event)
 #else
 	drag->start(Qt::MoveAction);
 #endif
-	
+
 }
 
 
@@ -1714,7 +1714,7 @@ void DragTabBar::dragEnterEvent(QDragEnterEvent * event)
 	// Only accept if it's an tab-reordering request
 	QMimeData const * m = event->mimeData();
 	QStringList formats = m->formats();
-	if (formats.contains("action") 
+	if (formats.contains("action")
 	    && m->data("action") == "tab-reordering")
 		event->acceptProposedAction();
 }
@@ -1724,8 +1724,8 @@ void DragTabBar::dropEvent(QDropEvent * event)
 {
 	int fromIndex = tabAt(dragStartPos_);
 	int toIndex = tabAt(event->pos());
-	
-	// Tell interested objects that 
+
+	// Tell interested objects that
 	if (fromIndex != toIndex)
 		tabMoveRequested(fromIndex, toIndex);
 	event->acceptProposedAction();

@@ -342,7 +342,7 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid += 1;
 		if (display())
 			dim.des += displayMargin();
-		// Cache the inset dimension. 
+		// Cache the inset dimension.
 		setDimCache(mi, dim);
 		return;
 	}
@@ -1180,7 +1180,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		else
 			for (row_type row = 0; row < nrows(); ++row)
 				numbered(row, !old);
-		
+
 		cur.message(old ? _("No number") : _("Number"));
 		break;
 	}
@@ -1283,7 +1283,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		if (cur.pos() > cur.lastpos())
 			cur.pos() = cur.lastpos();
-		
+
 		// FIXME: find some more clever handling of the selection,
 		// i.e. preserve it.
 		cur.clearSelection();
@@ -1464,7 +1464,7 @@ void InsetMathHull::handleFont2(Cursor & cur, docstring const & arg)
 void InsetMathHull::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
 	cur.push(*this);
-	bool enter_front = (entry_from == Inset::ENTRY_DIRECTION_LEFT || 
+	bool enter_front = (entry_from == Inset::ENTRY_DIRECTION_LEFT ||
 		(entry_from == Inset::ENTRY_DIRECTION_IGNORE && front));
 	enter_front ? idxFirst(cur) : idxLast(cur);
 	// The inset formula dimension is not necessarily the same as the

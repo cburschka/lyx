@@ -133,7 +133,7 @@ private Q_SLOTS:
 	void handleRegularEvents();
 	///
 	void onLastWindowClosed();
-	
+
 private:
 	///
 	bool closeAllViews();

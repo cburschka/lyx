@@ -330,9 +330,9 @@ TeXOnePar(Buffer const & buf,
 	Language const * const par_language = pit->getParLanguage(bparams);
 	// The document's language
 	Language const * const doc_language = bparams.language;
-	// The language that was in effect when the environment this paragraph is 
+	// The language that was in effect when the environment this paragraph is
 	// inside of was opened
-	Language const * const outer_language = 
+	Language const * const outer_language =
 		(runparams.local_font != 0) ?
 			runparams.local_font->language() : doc_language;
 	// The previous language that was in effect is either the language of
@@ -362,7 +362,7 @@ TeXOnePar(Buffer const & buf,
 			texrow.newline();
 		}
 
-		// We need to open a new language if we couldn't close the previous 
+		// We need to open a new language if we couldn't close the previous
 		// one (because there's no language_command_end); and even if we closed
 		// the previous one, if the current language is different than the
 		// outer_language (which is currently in effect once the previous one
@@ -381,11 +381,11 @@ TeXOnePar(Buffer const & buf,
 					// are we in an inset?
 					runparams.local_font != 0 &&
 					// is the inset within an \L or \R?
-					// 
+					//
 					// FIXME: currently, we don't check this; this means that
-					// we'll have unnnecessary \L and \R commands, but that 
+					// we'll have unnnecessary \L and \R commands, but that
 					// doesn't seem to hurt (though latex will complain)
-					// 
+					//
 					// is this paragraph in the opposite direction?
 					runparams.local_font->isRightToLeft() !=
 						par_language->rightToLeft()
@@ -607,7 +607,7 @@ TeXOnePar(Buffer const & buf,
 	// Closing the language is needed for the last paragraph; it is also
 	// needed if we're within an \L or \R that we may have opened above (not
 	// necessarily in this paragraph) and are about to close.
-	bool closing_rtl_ltr_environment = 
+	bool closing_rtl_ltr_environment =
 		// not for ArabTeX
 		(par_language->lang() != "arabic_arabtex" &&
 		 outer_language->lang() != "arabic_arabtex") &&
@@ -616,7 +616,7 @@ TeXOnePar(Buffer const & buf,
 		runparams.local_font->isRightToLeft() != par_language->rightToLeft() &&
 		// are we about to close the language?
 		((nextpit != paragraphs.end() &&
-		  par_language->babel() != 
+		  par_language->babel() !=
 		  	(nextpit->getParLanguage(bparams))->babel()) ||
 		 (nextpit == paragraphs.end() &&
 		  par_language->babel() != outer_language->babel()));
@@ -937,12 +937,12 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 		}
 		case Encoding::CJK: {
 			int count = inputenc_arg.length();
-			if (oldEnc.package() == Encoding::CJK && 
+			if (oldEnc.package() == Encoding::CJK &&
 			    open_encoding_ == CJK) {
 				os << "\\end{CJK}";
 				count += 9;
 			}
-			if (oldEnc.package() == Encoding::inputenc && 
+			if (oldEnc.package() == Encoding::inputenc &&
 			    open_encoding_ == inputenc) {
 				os << "\\egroup";
 				count += 7;

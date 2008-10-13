@@ -577,10 +577,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		} else {
 			if (reverseDirectionNeeded(cur)) {
-				cmd.action = cmd.action == LFUN_CHAR_LEFT_SELECT ? 
+				cmd.action = cmd.action == LFUN_CHAR_LEFT_SELECT ?
 					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD;
 			} else {
-				cmd.action = cmd.action == LFUN_CHAR_LEFT_SELECT ? 
+				cmd.action = cmd.action == LFUN_CHAR_LEFT_SELECT ?
 					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD;
 			}
 			dispatch(cur, cmd);
@@ -600,17 +600,17 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		} else {
 			if (reverseDirectionNeeded(cur)) {
-				cmd.action = cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
+				cmd.action = cmd.action == LFUN_CHAR_RIGHT_SELECT ?
 					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD;
 			} else {
-				cmd.action = cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
+				cmd.action = cmd.action == LFUN_CHAR_RIGHT_SELECT ?
 					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD;
 			}
 			dispatch(cur, cmd);
 			return;
 		}
 		break;
-		
+
 
 	case LFUN_UP_SELECT:
 	case LFUN_DOWN_SELECT:
@@ -620,7 +620,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bool select = cmd.action == LFUN_DOWN_SELECT ||
 			cmd.action == LFUN_UP_SELECT;
 		cur.selHandle(select);
-		
+
 		// move cursor up/down
 		bool up = cmd.action == LFUN_UP_SELECT || cmd.action == LFUN_UP;
 		bool const successful = cur.upDownInText(up, needsUpdate);
@@ -629,7 +629,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			needsUpdate |= cur.beforeDispatchCursor().inMathed();
 		} else
 			cur.undispatched();
-		
+
 		break;
 	}
 
@@ -738,7 +738,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		moveCursor(cur, false);
 		break;
 	}
-	
+
 	case LFUN_CHAR_DELETE_FORWARD:
 		if (!cur.selection()) {
 			if (cur.pos() == cur.paragraph().size())
@@ -1032,14 +1032,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (layout.empty())
 			layout = tclass.defaultLayoutName();
 
-		if (para.forcePlainLayout()) 
+		if (para.forcePlainLayout())
 			// in this case only the empty layout is allowed
 			layout = tclass.plainLayoutName();
 		else if (para.usePlainLayout()) {
-			// in this case, default layout maps to empty layout 
+			// in this case, default layout maps to empty layout
 			if (layout == tclass.defaultLayoutName())
 				layout = tclass.plainLayoutName();
-		} else { 
+		} else {
 			// otherwise, the empty layout maps to the default
 			if (layout == tclass.plainLayoutName())
 				layout = tclass.defaultLayoutName();
@@ -1173,12 +1173,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			// Set the cursor
 			if (!bv->mouseSetCursor(cur, cmd.argument() == "region-select"))
 				cur.updateFlags(Update::SinglePar | Update::FitCursor);
-			break;			
+			break;
 
 		case mouse_button::button2:
 			// Middle mouse pasting.
 			bv->mouseSetCursor(cur);
-			if (!cap::selection()) {			
+			if (!cap::selection()) {
 				// There is no local selection in the current buffer, so try to
 				// paste primary selection instead.
 				lyx::dispatch(FuncRequest(LFUN_PRIMARY_SELECTION_PASTE,
@@ -1208,7 +1208,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 			if (!bv->mouseSetCursor(cur, false))
 				cur.updateFlags(Update::SinglePar | Update::FitCursor);
-			break;			
+			break;
 		}
 
 		default:
@@ -1457,7 +1457,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		else
 			p["symbol"] = cmd.argument();
 		string const data = InsetCommand::params2string("nomenclature", p);
-		bv->showDialog("nomenclature", data);	
+		bv->showDialog("nomenclature", data);
 		break;
 	}
 
@@ -1631,9 +1631,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_FINISHED_LEFT:
 		LYXERR(Debug::DEBUG, "handle LFUN_FINISHED_LEFT:\n" << cur);
-		// We're leaving an inset, going left. If the inset is LTR, we're 
+		// We're leaving an inset, going left. If the inset is LTR, we're
 		// leaving from the front, so we should not move (remain at --- but
-		// not in --- the inset). If the inset is RTL, move left, without 
+		// not in --- the inset). If the inset is RTL, move left, without
 		// entering the inset itself; i.e., move to after the inset.
 		if (cur.paragraph().getFontSettings(
 				cur.bv().buffer().params(), cur.pos()).isRightToLeft())
@@ -1642,9 +1642,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_FINISHED_RIGHT:
 		LYXERR(Debug::DEBUG, "handle LFUN_FINISHED_RIGHT:\n" << cur);
-		// We're leaving an inset, going right. If the inset is RTL, we're 
+		// We're leaving an inset, going right. If the inset is RTL, we're
 		// leaving from the front, so we should not move (remain at --- but
-		// not in --- the inset). If the inset is LTR, move right, without 
+		// not in --- the inset). If the inset is LTR, move right, without
 		// entering the inset itself; i.e., move to after the inset.
 		if (!cur.paragraph().getFontSettings(
 				cur.bv().buffer().params(), cur.pos()).isRightToLeft())
@@ -1674,7 +1674,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		params2string(cur.paragraph(), data);
 
 		// Will the paragraph accept changes from the dialog?
-		bool const accept = 
+		bool const accept =
 			cur.inset().allowParagraphCustomization(cur.idx());
 
 		data = "update " + convert<string>(accept) + '\n' + data;
@@ -1725,7 +1725,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			// FIXME If this call were replaced with one to clearParagraphParams(),
 			// then we could get rid of this method altogether.
 			setParagraphs(cur, p);
-			// FIXME This should be simplified when InsetFloatList takes a 
+			// FIXME This should be simplified when InsetFloatList takes a
 			// Buffer in its constructor.
 			InsetFloatList * ifl = new InsetFloatList(to_utf8(cmd.argument()));
 			ifl->setBuffer(bv->buffer());
@@ -1767,17 +1767,17 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// Given data, an encoding of the ParagraphParameters
 		// generated in the Paragraph dialog, this function sets
 		// the current paragraph, or currently selected paragraphs,
-		// appropriately. 
+		// appropriately.
 		// NOTE: This function overrides all existing settings.
 		setParagraphs(cur, cmd.argument());
 		cur.message(_("Paragraph layout set"));
 		break;
 	}
-	
+
 	case LFUN_PARAGRAPH_PARAMS: {
 		// Given data, an encoding of the ParagraphParameters as we'd
-		// find them in a LyX file, this function modifies the current paragraph, 
-		// or currently selected paragraphs. 
+		// find them in a LyX file, this function modifies the current paragraph,
+		// or currently selected paragraphs.
 		// NOTE: This function only modifies, and does not override, existing
 		// settings.
 		setParagraphs(cur, cmd.argument(), true);
@@ -1976,7 +1976,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FLEX_INSERT: {
 		code = FLEX_CODE;
 		string s = cmd.getArg(0);
-		InsetLayout il = 
+		InsetLayout il =
 			cur.buffer().params().documentClass().insetLayout(from_utf8(s));
 		if (il.lyxtype() != "charstyle" &&
 		    il.lyxtype() != "custom" &&
@@ -2089,7 +2089,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 				enable = !theClipboard().empty();
 			break;
 		}
-		
+
 		// we have an argument
 		string const arg = to_utf8(cmd.argument());
 		if (isStrUnsignedInt(arg)) {
@@ -2098,7 +2098,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			enable = cap::numberOfSelections() > n;
 			break;
 		}
-		
+
 		// explicit graphics type?
 		if ((arg == "pdf" && theClipboard().hasGraphicsContents(Clipboard::PdfGraphicsType))
 		    || (arg == "png" && theClipboard().hasGraphicsContents(Clipboard::PngGraphicsType))
@@ -2107,7 +2107,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			enable = true;
 			break;
 		}
-		
+
 		// unknown argument
 		enable = false;
 		break;
@@ -2135,7 +2135,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			enable = cur.inset().lyxCode() == FLEX_CODE
 			         && il.lyxtype() == to_utf8(cmd.argument());
 		} else {
-			enable = !isMainText(cur.bv().buffer()) 
+			enable = !isMainText(cur.bv().buffer())
 			         && cur.inset().nargs() == 1;
 		}
 		break;
@@ -2167,7 +2167,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_SET_GRAPHICS_GROUP: {
 		InsetGraphics * ins = graphics::getCurrentGraphicsInset(cur);
-		if (!ins) 
+		if (!ins)
 			enable = false;
 		else
 			flag.setOnOff(to_utf8(cmd.argument()) == ins->getParams().groupId);

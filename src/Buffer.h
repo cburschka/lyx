@@ -91,14 +91,14 @@ public:
 	};
 
 
-	/// Method to check if a file is externally modified, used by 
+	/// Method to check if a file is externally modified, used by
 	/// isExternallyModified()
 	/**
 	 * timestamp is fast but inaccurate. For example, the granularity
 	 * of timestamp on a FAT filesystem is 2 second. Also, various operations
 	 * may touch the timestamp of a file even when its content is unchanged.
 	 *
-	 * checksum is accurate but slow, which can be a problem when it is 
+	 * checksum is accurate but slow, which can be a problem when it is
 	 * frequently used, or used for a large file on a slow (network) file
 	 * system.
 	 *
@@ -108,7 +108,7 @@ public:
 		checksum_method,  ///< Use file checksum
 		timestamp_method, ///< Use timestamp, and checksum if timestamp has changed
 	};
-	
+
 	/** Constructor
 	    \param file
 	    \param b  optional \c false by default
@@ -166,7 +166,7 @@ public:
 	/// Write file. Returns \c false if unsuccesful.
 	bool writeFile(support::FileName const &) const;
 
-  /// Loads LyX file \c filename into buffer, *  and \return success 
+  /// Loads LyX file \c filename into buffer, *  and \return success
 	bool loadLyXFile(support::FileName const & s);
 
 	/// Fill in the ErrorList with the TeXErrors
@@ -475,7 +475,7 @@ private:
 	void updateMacros(DocIterator & it,
 				     DocIterator & scope) const;
 
-	/// 
+	///
 	bool readFileHelper(support::FileName const & s);
 	///
 	std::vector<std::string> backends() const;

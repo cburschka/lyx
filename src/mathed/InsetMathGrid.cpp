@@ -480,7 +480,7 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 */
 	metricsMarkers2(dim);
-	// Cache the inset dimension. 
+	// Cache the inset dimension.
 	setDimCache(mi, dim);
 }
 
