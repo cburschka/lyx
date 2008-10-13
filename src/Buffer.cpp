@@ -277,6 +277,11 @@ Buffer::~Buffer()
 	// GuiView already destroyed
 	gui_ = 0;
 
+	if (d->unnamed && d->filename.extension() == "internal") {
+		// No need to do additional cleanups for internal buffer.
+		delete d;
+		return;
+	}
 
 	// loop over children
 	Impl::BufferPositionMap::iterator it = d->children_positions.begin();

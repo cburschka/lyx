@@ -38,6 +38,7 @@ public:
 
 public:
 	BufferList();
+	~BufferList();
 
 	iterator begin();
 	const_iterator begin() const;
@@ -122,6 +123,8 @@ private:
 
 	/// storage of all buffers
 	BufferStorage bstore;
+	/// storage of all internal buffers used for cut&paste, etc.
+	BufferStorage binternal;
 };
 
 /// Implementation is in LyX.cpp

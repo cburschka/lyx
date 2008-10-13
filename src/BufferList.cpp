@@ -51,6 +51,15 @@ BufferList::BufferList()
 {}
 
 
+BufferList::~BufferList()
+{
+	BufferStorage::iterator it = binternal.begin();
+	BufferStorage::iterator end = binternal.end();
+	for (; it != end; ++it)
+		delete (*it);
+}
+
+
 bool BufferList::empty() const
 {
 	return bstore.empty();
@@ -110,8 +119,12 @@ Buffer * BufferList::newBuffer(string const & s, bool const ronly)
 		}
 	}
 	tmpbuf->params().useClassDefaults();
-	LYXERR(Debug::INFO, "Assigning to buffer " << bstore.size());
-	bstore.push_back(tmpbuf.get());
+	if (tmpbuf->fileName().extension() == "internal") {
+		binternal.push_back(tmpbuf.get());
+	} else {
+		LYXERR(Debug::INFO, "Assigning to buffer " << bstore.size());
+		bstore.push_back(tmpbuf.get());
+	}
 	return tmpbuf.release();
 }
 
@@ -169,8 +182,6 @@ Buffer * BufferList::next(Buffer const * buf) const
 	LASSERT(it != bstore.end(), /**/);
 	++it;
 	Buffer * nextbuf = (it == bstore.end()) ? bstore.front() : *it;
-	if (nextbuf->fileName().extension() == "internal")
-		return next(nextbuf);
 	return nextbuf;
 }
 
@@ -186,8 +197,6 @@ Buffer * BufferList::previous(Buffer const * buf) const
 	LASSERT(it != bstore.end(), /**/);
 
 	Buffer * previousbuf = (it == bstore.begin()) ? bstore.back() : *(it - 1);
-	if (previousbuf->fileName().extension() == "internal")
-		return previous(previousbuf);
 	return previousbuf;
 }
 
