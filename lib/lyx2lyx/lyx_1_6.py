@@ -2990,14 +2990,10 @@ def convert_default_options(document):
 
 
 def revert_backref_options(document):
-    ' Remove pageref additional options '
+    ' Revert option pdf_backref=page to pagebackref '
     i = find_token(document.header, "\\pdf_backref page", 0)
     if i != -1:
         document.header[i] = "\\pdf_pagebackref true"
-        return
-    j = find_token(document.header, "\\pdf_backref", 0)
-    if j != -1:
-        del document.header[j]
 
 
 def convert_backref_options(document):
@@ -3008,6 +3004,10 @@ def convert_backref_options(document):
     j = find_token(document.header, "\\pdf_pagebackref false", 0)
     if j != -1:
         del document.header[j]
+    # backref=true was not a valid option, we meant backref=section
+    k = find_token(document.header, "\\pdf_backref true", 0)
+    if k != -1:
+        document.header[k] = "\\pdf_backref section"
 
 ##
 # Conversion hub
