@@ -87,9 +87,9 @@ public:
 	///
 	mutable pos_type sel_end;
 	///
-	mutable bool left_margin_sel;
+	mutable bool begin_margin_sel;
 	///
-	mutable bool right_margin_sel;
+	mutable bool end_margin_sel;
 
 private:
 	/// Decides whether the margin is selected.

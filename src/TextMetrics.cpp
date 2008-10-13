@@ -2025,9 +2025,9 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// whether this row is the first or last and update the margins.
 		if (row.selection()) {
 			if (row.sel_beg == 0)
-				row.left_margin_sel = sel_beg.pit() < pit;
+				row.begin_margin_sel = sel_beg.pit() < pit;
 			if (row.sel_end == sel_end_par.lastpos())
-				row.right_margin_sel = sel_end.pit() > pit;
+				row.end_margin_sel = sel_end.pit() > pit;
 		}
 
 		// Row signature; has row changed since last paint?
@@ -2108,27 +2108,30 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 	cur.boundary(begin_boundary);
 	int x1 = cursorX(beg.top(), begin_boundary);
 	int x2 = cursorX(end.top(), end_boundary);
-	int y1 = bv_->getPos(cur, cur.boundary()).y_ - row.ascent();
-	int y2 = y1 + row.height();
+	int const y1 = bv_->getPos(cur, cur.boundary()).y_ - row.ascent();
+	int const y2 = y1 + row.height();
+
+	int const rm = text_->isMainText(buffer) ? bv_->rightMargin() : 0;
+	int const lm = text_->isMainText(buffer) ? bv_->leftMargin() : 0;
 
 	// draw the margins
-	if (row.left_margin_sel) {
+	if (row.begin_margin_sel) {
 		if (text_->isRTL(buffer, beg.paragraph())) {
-			int const w = width() - bv_->leftMargin() - x1;
-			pi.pain.fillRectangle(x + x1, y1, w, y2 - y1, Color_selection);
+			pi.pain.fillRectangle(x + x1, y1,  width() - rm - x1, y2 - y1,
+				Color_selection);
 		} else {
-			int const rm = bv_->rightMargin();
-			pi.pain.fillRectangle(rm, y1, x1 - rm, y2 - y1, Color_selection);
+			pi.pain.fillRectangle(x + lm, y1, x1 - lm, y2 - y1,
+				Color_selection);
 		}
 	}
 
-	if (row.right_margin_sel) {
+	if (row.end_margin_sel) {
 		if (text_->isRTL(buffer, beg.paragraph())) {
-			int rm = bv_->rightMargin();
-			pi.pain.fillRectangle(x + rm, y1, x2 - rm, y2 - y1, Color_selection);
+			pi.pain.fillRectangle(x + lm, y1, x2 - lm, y2 - y1,
+				Color_selection);
 		} else {
-			int lm = bv_->leftMargin();
-			pi.pain.fillRectangle(x + x2, y1, width() - lm - x2, y2 - y1, Color_selection);
+			pi.pain.fillRectangle(x + x2, y1, width() - rm - x2, y2 - y1,
+				Color_selection);
 		}
 	}
 
@@ -2146,13 +2149,13 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 		// descend into insets and which does not go into the
 		// next line. Compare the logic with the original cursorForward
 
-		// if left of boundary -> just jump to right side
-		// but for RTL boundaries don't, because: abc|DDEEFFghi -> abcDDEEF|Fghi
+		// if left of boundary -> just jump to right side, but
+		// for RTL boundaries don't, because: abc|DDEEFFghi -> abcDDEEF|Fghi
 		if (cur.boundary()) {
 			cur.boundary(false);
 		}	else if (isRTLBoundary(cur.pit(), cur.pos() + 1)) {
-			// in front of RTL boundary -> Stay on this side of the boundary because:
-			//   ab|cDDEEFFghi -> abc|DDEEFFghi
+			// in front of RTL boundary -> Stay on this side of the boundary
+			// because:  ab|cDDEEFFghi -> abc|DDEEFFghi
 			++cur.pos();
 			cur.boundary(true);
 			drawNow = true;

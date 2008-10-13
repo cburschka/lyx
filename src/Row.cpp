@@ -29,7 +29,7 @@ namespace lyx {
 Row::Row()
 	: separator(0), label_hfill(0), x(0),
 	sel_beg(-1), sel_end(-1),
-	left_margin_sel(false), right_margin_sel(false), 
+	begin_margin_sel(false), end_margin_sel(false), 
 	changed_(false), crc_(0), pos_(0), end_(0)
 {}
 
@@ -93,8 +93,8 @@ void Row::setSelectionAndMargins(DocIterator const & beg,
 	setSelection(beg.pos(), end.pos());
 	
 	if (selection()) {
-		right_margin_sel = isMarginSelected(false, beg, end);
-		left_margin_sel = isMarginSelected(true, beg, end);
+		end_margin_sel = isMarginSelected(false, beg, end);
+		begin_margin_sel = isMarginSelected(true, beg, end);
 	}
 }
 
