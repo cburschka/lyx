@@ -115,7 +115,9 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 343;
+// Do not remove the comment below, so we get merge conflict in
+// in independent branches.
+int const LYX_FORMAT = 344;  // ps: backref
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;

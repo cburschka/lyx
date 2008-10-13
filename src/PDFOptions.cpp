@@ -47,7 +47,6 @@ bool PDFOptions::empty() const
 		&& pdfborder == x.pdfborder
 		&& colorlinks == x.colorlinks
 		&& backref == x.backref
-		&& pagebackref == x.pagebackref
 		&& pdfusetitle == x.pdfusetitle;
 }
 
@@ -76,8 +75,7 @@ void PDFOptions::writeFile(ostream & os) const
 	os << "\\pdf_breaklinks "  << convert<string>(breaklinks)  << '\n';
 	os << "\\pdf_pdfborder "   << convert<string>(pdfborder)   << '\n';
 	os << "\\pdf_colorlinks "  << convert<string>(colorlinks)  << '\n';
-	os << "\\pdf_backref "     << convert<string>(backref)     << '\n';
-	os << "\\pdf_pagebackref " << convert<string>(pagebackref) << '\n';
+	os << "\\pdf_backref "     << backref << '\n';
 	os << "\\pdf_pdfusetitle " << convert<string>(pdfusetitle) << '\n';
 	
 	if (!pagemode.empty())
@@ -116,9 +114,7 @@ void PDFOptions::writeLaTeX(odocstream & os, bool hyperref_already_provided) con
 	opt += (pdfborder ?'0':'1');
 	opt += "},";
 
-	opt += "backref="        + convert<string>(backref) + ',';
-	opt += "pagebackref="    + convert<string>(pagebackref) + ',';
-	opt += "\n ";
+	opt += "backref=" + backref + ',';
 	opt += "colorlinks="     + convert<string>(colorlinks) + ',';
 	if (!pagemode.empty())
 		opt += "pdfpagemode=" + pagemode + ',';
@@ -194,8 +190,6 @@ string PDFOptions::readToken(Lexer &lex, string const & token)
 		lex >> colorlinks;
 	} else if (token == "\\pdf_backref") {
 		lex >> backref;
-	} else if (token == "\\pdf_pagebackref") {
-		lex >> pagebackref;
 	} else if (token == "\\pdf_pdfusetitle") {
 		lex >> pdfusetitle;
 	} else if (token == "\\pdf_pagemode") {
@@ -231,8 +225,7 @@ void PDFOptions::clear()
 	breaklinks              = false;
 	pdfborder               = false;
 	colorlinks              = false;
-	backref                 = false;
-	pagebackref             = false;
+	backref                 = "false";
 	pagemode.clear();
 	quoted_options.clear();
 	pdfusetitle             = true;  //in contrast with hyperref

@@ -134,6 +134,18 @@ char const * tex_fonts_monospaced_gui[] =
 };
 
 
+char const * backref_opts[] =
+{
+	"false", "section", "slide", "page", ""
+};
+
+
+char const * backref_opts_gui[] =
+{
+	N_("Off"), N_("Section"), N_("Slide"), N_("Page"), ""
+};
+
+
 vector<pair<string, QString> > pagestyles;
 
 
@@ -989,16 +1001,17 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->colorlinksCB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
-	connect(pdfSupportModule->backrefCB, SIGNAL(toggled(bool)),
+	connect(pdfSupportModule->backrefCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->pdfusetitleCB, SIGNAL(toggled(bool)),
-		this, SLOT(change_adaptor()));
-	connect(pdfSupportModule->pagebackrefCB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->fullscreenCB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->optionsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
+
+	for (int i = 0; backref_opts[i][0]; ++i)
+		pdfSupportModule->backrefCO->addItem(qt_(backref_opts_gui[i]));
 
 	// float
 	floatModule = new FloatPlacement;
@@ -1812,8 +1825,8 @@ void GuiDocument::apply(BufferParams & params)
 	pdf.pdfborder = pdfSupportModule->pdfborderCB->isChecked();
 	pdf.pdfusetitle = pdfSupportModule->pdfusetitleCB->isChecked();
 	pdf.colorlinks = pdfSupportModule->colorlinksCB->isChecked();
-	pdf.backref = pdfSupportModule->backrefCB->isChecked();
-	pdf.pagebackref	= pdfSupportModule->pagebackrefCB->isChecked();
+	pdf.backref =
+		backref_opts[pdfSupportModule->backrefCO->currentIndex()];
 	if (pdfSupportModule->fullscreenCB->isChecked())
 		pdf.pagemode = pdf.pagemode_fullscreen;
 	else
@@ -2145,8 +2158,11 @@ void GuiDocument::paramsToDialog(BufferParams const & params)
 	pdfSupportModule->pdfborderCB->setChecked(pdf.pdfborder);
 	pdfSupportModule->pdfusetitleCB->setChecked(pdf.pdfusetitle);
 	pdfSupportModule->colorlinksCB->setChecked(pdf.colorlinks);
-	pdfSupportModule->backrefCB->setChecked(pdf.backref);
-	pdfSupportModule->pagebackrefCB->setChecked(pdf.pagebackref);
+
+	n = findToken(backref_opts, pdf.backref);
+	if (n >= 0)
+		pdfSupportModule->backrefCO->setCurrentIndex(n);
+
 	pdfSupportModule->fullscreenCB->setChecked
 		(pdf.pagemode == pdf.pagemode_fullscreen);
 

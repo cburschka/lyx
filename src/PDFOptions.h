@@ -96,18 +96,14 @@ public:
 	bool colorlinks;
 	/**
 		* Adds backlink text to the end of each item in the bibliography,
-		* as a list of section numbers.
+		* as a list of section/slide/page numbers.
 		* This can only work properly if there is a blank line after each
 		* \bibitem.
-		* backref        boolean false
+		* backref   string  empty(="section"), "false", "section", "slide", "page"
+		*
+		* Internally we use false/section/slide/pages. See also bug 5340.
 		*/
-	bool backref;
-	/**
-		* Adds backlink text to the end of each item in the bibliography,
-		* as a list of page numbers.
-		* pagebackref       boolean false
-		*/
-	bool pagebackref;
+	std::string backref;
 	/**
 		* Determines how the file is opening in Acrobat;
 		* the possibilities are None, UseThumbs (show thumbnails), UseOutlines

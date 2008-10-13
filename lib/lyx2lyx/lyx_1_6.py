@@ -2989,6 +2989,26 @@ def convert_default_options(document):
     document.header.insert(i, '\\use_default_options false')
 
 
+def revert_backref_options(document):
+    ' Remove pageref additional options '
+    i = find_token(document.header, "\\pdf_backref page", 0)
+    if i != -1:
+        document.header[i] = "\\pdf_pagebackref true"
+        return
+    j = find_token(document.header, "\\pdf_backref", 0)
+    if j != -1:
+        del document.header[j]
+
+
+def convert_backref_options(document):
+    ' We have changed the option pagebackref to backref=true '
+    i = find_token(document.header, "\\pdf_pagebackref true", 0)
+    if i != -1:
+        document.header[i] = "\\pdf_backref page"
+    j = find_token(document.header, "\\pdf_pagebackref false", 0)
+    if j != -1:
+        del document.header[j]
+
 ##
 # Conversion hub
 #
@@ -3060,10 +3080,12 @@ convert = [[277, [fix_wrong_tables]],
            [340, [add_plain_layout]],
            [341, []],
            [342, []],
-           [343, [convert_default_options]]
+           [343, [convert_default_options]],
+           [344, [convert_backref_options]]
           ]
 
-revert =  [[342, [revert_default_options]],
+revert =  [[343, [revert_backref_options]],
+           [342, [revert_default_options]],
            [341, [revert_mongolian]],
            [340, [revert_tabulators, revert_tabsize]],
            [339, []],
