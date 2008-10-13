@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 343
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass scrbook
@@ -68,7 +68,6 @@
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
-\pdf_pagebackref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels,pdftex"
 \papersize a4paper
@@ -162,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 12.
+letzte Änderung: 13.
  Oktober 2008
 \end_layout
 
@@ -35790,35 +35789,9 @@ LFUN
 
 \end_inset
 
- die LyX-Funtionen, nützlich.
- Auf 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org/~sanda/doxygen/lfuns.pdf
-\end_layout
-
-\end_inset
-
- und
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org/~sanda/doxygen/html/namespacelyx.html#5ae63e8160e98b54ad28f142ed
-40c202
-\end_layout
-
-\end_inset
-
- sind diese detailliert beschrieben.
+ die LyX-Funtionen, nützlich, die unter Hilfe\SpecialChar \menuseparator
+LyX-Funktionen detailliert
+ beschrieben sind.
 \end_layout
 
 \begin_layout Subsection
