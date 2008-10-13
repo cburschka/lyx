@@ -2136,6 +2136,20 @@ def revert_subfig(document):
             k = find_token(document.body, '\\begin_inset Float ', i + 1, j)
             if k == -1:
                 break
+            # is the subfloat aligned?
+            al = find_token(document.body, '\\align ', k - 1)
+            alignment_beg = ""
+            alignment_end = ""
+            if al != -1:
+                if get_value(document.body, '\\align', al) == "center":
+                    alignment_beg = "\\backslash\nbegin{centering}"
+                    alignment_end = "\\backslash\npar\\backslash\nend{centering}"
+                elif get_value(document.body, '\\align', al) == "left":
+                    alignment_beg = "\\backslash\nbegin{raggedright}"
+                    alignment_end = "\\backslash\npar\\backslash\nend{raggedright}"
+                elif get_value(document.body, '\\align', al) == "right":
+                    alignment_beg = "\\backslash\nbegin{raggedleft}"
+                    alignment_end = "\\backslash\npar\\backslash\nend{raggedleft}"
             l = find_end_of_inset(document.body, k)
             if l == -1:
                 document.warning("Malformed lyx document: Missing '\\end_inset' (embedded float).")
@@ -2197,7 +2211,8 @@ def revert_subfig(document):
                 if len(label) > 0:
                     caption += "\\backslash\nlabel{" + label + "}"
             subst = '\\begin_layout Plain Layout\n\\begin_inset ERT\nstatus collapsed\n\n' \
-                      '\\begin_layout Plain Layout\n\n}\n\\end_layout\n\n\\end_inset\n\n' \
+                      '\\begin_layout Plain Layout\n\n}' + alignment_end + \
+                      '\n\\end_layout\n\n\\end_inset\n\n' \
                       '\\end_layout\n\n\\begin_layout Plain Layout\n'
             subst = subst.split('\n')
             document.body[l : l+1] = subst
@@ -2209,7 +2224,7 @@ def revert_subfig(document):
             del document.body[k+1:m-1]
             addedLines -= (m - 1 - (k + 1))
             insertion = '\\begin_inset ERT\nstatus collapsed\n\n' \
-                        '\\begin_layout Plain Layout\n\n\\backslash\n' \
+                        '\\begin_layout Plain Layout\n\n' + alignment_beg + '\\backslash\n' \
                         'subfloat'
             if len(shortcap) > 0:
                 insertion = insertion + "[" + shortcap + "]"
@@ -2219,6 +2234,9 @@ def revert_subfig(document):
             insertion = insertion.split('\n')
             document.body[k : k + 1] = insertion
             addedLines += len(insertion) - 1
+            if al != -1:
+                del document.body[al]
+                addedLines -= 1
             add_to_preamble(document, ['\\usepackage{subfig}\n'])
         i += addedLines + 1
 
