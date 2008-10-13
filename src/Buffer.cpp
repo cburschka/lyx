@@ -116,7 +116,7 @@ namespace os = support::os;
 namespace {
 
 // Do not remove the comment below, so we get merge conflict in
-// in independent branches.
+// independent branches. Instead add your own.
 int const LYX_FORMAT = 344;  // ps: backref
 
 typedef map<string, bool> DepClean;
