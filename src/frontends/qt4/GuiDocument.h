@@ -65,7 +65,7 @@ class GuiDocument : public GuiDialog, public Ui::DocumentUi
 public:
 	GuiDocument(GuiView & lv);
 
-	void paramsToDialog(BufferParams const & params);
+	void paramsToDialog();
 	void apply(BufferParams & params);
 
 	void updateFontsize(std::string const &, std::string const &);

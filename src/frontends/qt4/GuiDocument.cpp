@@ -1379,7 +1379,7 @@ void GuiDocument::classChanged()
 	bp_.makeDocumentClass();
 	// the new class may require some default modules.
 	updateSelectedModules();
-	paramsToDialog(bp_);
+	paramsToDialog();
 }
 
 
@@ -1835,7 +1835,7 @@ void GuiDocument::apply(BufferParams & params)
 }
 
 
-void GuiDocument::paramsToDialog(BufferParams const & params)
+void GuiDocument::paramsToDialog()
 {
 	// set the default unit
 	Length::UNIT defaultUnit = Length::CM;
@@ -1861,44 +1861,44 @@ void GuiDocument::paramsToDialog(BufferParams const & params)
 	}
 
 	// preamble
-	preambleModule->update(params, id());
+	preambleModule->update(bp_, id());
 
 	// biblio
 	biblioModule->citeDefaultRB->setChecked(
-		params.citeEngine() == ENGINE_BASIC);
+		bp_.citeEngine() == ENGINE_BASIC);
 
 	biblioModule->citeNatbibRB->setChecked(
-		params.citeEngine() == ENGINE_NATBIB_NUMERICAL ||
-		params.citeEngine() == ENGINE_NATBIB_AUTHORYEAR);
+		bp_.citeEngine() == ENGINE_NATBIB_NUMERICAL ||
+		bp_.citeEngine() == ENGINE_NATBIB_AUTHORYEAR);
 
 	biblioModule->citeStyleCO->setCurrentIndex(
-		params.citeEngine() == ENGINE_NATBIB_NUMERICAL);
+		bp_.citeEngine() == ENGINE_NATBIB_NUMERICAL);
 
 	biblioModule->citeJurabibRB->setChecked(
-		params.citeEngine() == ENGINE_JURABIB);
+		bp_.citeEngine() == ENGINE_JURABIB);
 
 	biblioModule->bibtopicCB->setChecked(
-		params.use_bibtopic);
+		bp_.use_bibtopic);
 
 	// language & quotes
 	int const pos = langModule->languageCO->findData(toqstr(
-		params.language->lang()));
+		bp_.language->lang()));
 	langModule->languageCO->setCurrentIndex(pos);
 
 	langModule->quoteStyleCO->setCurrentIndex(
-		params.quotes_language);
+		bp_.quotes_language);
 
 	bool default_enc = true;
-	if (params.inputenc != "auto") {
+	if (bp_.inputenc != "auto") {
 		default_enc = false;
-		if (params.inputenc == "default") {
+		if (bp_.inputenc == "default") {
 			langModule->encodingCO->setCurrentIndex(0);
 		} else {
 			string enc_gui;
 			Encodings::const_iterator it = encodings.begin();
 			Encodings::const_iterator const end = encodings.end();
 			for (; it != end; ++it) {
-				if (it->latexName() == params.inputenc) {
+				if (it->latexName() == bp_.inputenc) {
 					enc_gui = it->guiName();
 					break;
 				}
@@ -1922,10 +1922,10 @@ void GuiDocument::paramsToDialog(BufferParams const & params)
 		numberingModule->setEnabled(true);
 		numberingModule->depthSL->setMinimum(min_toclevel - 1);
 		numberingModule->depthSL->setMaximum(max_toclevel);
-		numberingModule->depthSL->setValue(params.secnumdepth);
+		numberingModule->depthSL->setValue(bp_.secnumdepth);
 		numberingModule->tocSL->setMaximum(min_toclevel - 1);
 		numberingModule->tocSL->setMaximum(max_toclevel);
-		numberingModule->tocSL->setValue(params.tocdepth);
+		numberingModule->tocSL->setValue(bp_.tocdepth);
 		updateNumbering();
 	} else {
 		numberingModule->setEnabled(false);
@@ -1933,29 +1933,29 @@ void GuiDocument::paramsToDialog(BufferParams const & params)
 	}
 
 	// bullets
-	bulletsModule->setBullet(0, params.user_defined_bullet(0));
-	bulletsModule->setBullet(1, params.user_defined_bullet(1));
-	bulletsModule->setBullet(2, params.user_defined_bullet(2));
-	bulletsModule->setBullet(3, params.user_defined_bullet(3));
+	bulletsModule->setBullet(0, bp_.user_defined_bullet(0));
+	bulletsModule->setBullet(1, bp_.user_defined_bullet(1));
+	bulletsModule->setBullet(2, bp_.user_defined_bullet(2));
+	bulletsModule->setBullet(3, bp_.user_defined_bullet(3));
 	bulletsModule->init();
 
 	// packages
-	int nitem = findToken(tex_graphics, params.graphicsDriver);
+	int nitem = findToken(tex_graphics, bp_.graphicsDriver);
 	if (nitem >= 0)
 		latexModule->psdriverCO->setCurrentIndex(nitem);
 	updateModuleInfo();
 	
 	mathsModule->amsCB->setChecked(
-		params.use_amsmath == BufferParams::package_on);
+		bp_.use_amsmath == BufferParams::package_on);
 	mathsModule->amsautoCB->setChecked(
-		params.use_amsmath == BufferParams::package_auto);
+		bp_.use_amsmath == BufferParams::package_auto);
 
 	mathsModule->esintCB->setChecked(
-		params.use_esint == BufferParams::package_on);
+		bp_.use_esint == BufferParams::package_on);
 	mathsModule->esintautoCB->setChecked(
-		params.use_esint == BufferParams::package_auto);
+		bp_.use_esint == BufferParams::package_auto);
 
-	switch (params.spacing().getSpace()) {
+	switch (bp_.spacing().getSpace()) {
 		case Spacing::Other: nitem = 3; break;
 		case Spacing::Double: nitem = 2; break;
 		case Spacing::Onehalf: nitem = 1; break;
@@ -1963,26 +1963,26 @@ void GuiDocument::paramsToDialog(BufferParams const & params)
 	}
 
 	// text layout
-	string const & layoutID = params.baseClassID();
+	string const & layoutID = bp_.baseClassID();
 	setLayoutComboByIDString(layoutID);
 
 	updatePagestyle(documentClass().opt_pagestyle(),
-				 params.pagestyle);
+				 bp_.pagestyle);
 
 	textLayoutModule->lspacingCO->setCurrentIndex(nitem);
-	if (params.spacing().getSpace() == Spacing::Other) {
+	if (bp_.spacing().getSpace() == Spacing::Other) {
 		textLayoutModule->lspacingLE->setText(
-			toqstr(params.spacing().getValueAsString()));
+			toqstr(bp_.spacing().getValueAsString()));
 	}
 	setLSpacing(nitem);
 
-	if (params.paragraph_separation == BufferParams::ParagraphIndentSeparation)
+	if (bp_.paragraph_separation == BufferParams::ParagraphIndentSeparation)
 		textLayoutModule->indentRB->setChecked(true);
 	else
 		textLayoutModule->skipRB->setChecked(true);
 
 	int skip = 0;
-	switch (params.getDefSkip().kind()) {
+	switch (bp_.getDefSkip().kind()) {
 	case VSpace::SMALLSKIP:
 		skip = 0;
 		break;
@@ -1995,7 +1995,7 @@ void GuiDocument::paramsToDialog(BufferParams const & params)
 	case VSpace::LENGTH:
 	{
 		skip = 3;
-		string const length = params.getDefSkip().asLyXCommand();
+		string const length = bp_.getDefSkip().asLyXCommand();
 		lengthToWidgets(textLayoutModule->skipLE,
 			textLayoutModule->skipLengthCO,
 			length, defaultUnit);
@@ -2009,22 +2009,22 @@ void GuiDocument::paramsToDialog(BufferParams const & params)
 	setSkip(skip);
 
 	textLayoutModule->twoColumnCB->setChecked(
-		params.columns == 2);
+		bp_.columns == 2);
 
 	// break listings_params to multiple lines
 	string lstparams =
-		InsetListingsParams(params.listings_params).separatedParams();
+		InsetListingsParams(bp_.listings_params).separatedParams();
 	textLayoutModule->listingsED->setPlainText(toqstr(lstparams));
 
-	if (!params.options.empty()) {
+	if (!bp_.options.empty()) {
 		latexModule->optionsLE->setText(
-			toqstr(params.options));
+			toqstr(bp_.options));
 	} else {
 		latexModule->optionsLE->setText(QString());
 	}
 
 	latexModule->defaultOptionsCB->setChecked(
-		params.use_default_options);
+		bp_.use_default_options);
 
 	if (!documentClass().options().empty()) {
 		latexModule->defaultOptionsLE->setText(
@@ -2035,112 +2035,112 @@ void GuiDocument::paramsToDialog(BufferParams const & params)
 	}
 
 	latexModule->defaultOptionsLE->setEnabled(
-		params.use_default_options
+		bp_.use_default_options
 		&& !documentClass().options().empty());
 
 	latexModule->defaultOptionsCB->setEnabled(
 		!documentClass().options().empty());
 
-	if (!params.master.empty()) {
+	if (!bp_.master.empty()) {
 		latexModule->childDocGB->setChecked(true);
 		latexModule->childDocLE->setText(
-			toqstr(params.master));
+			toqstr(bp_.master));
 	} else {
 		latexModule->childDocLE->setText(QString());
 		latexModule->childDocGB->setChecked(false);
 	}
 
-	floatModule->set(params.float_placement);
+	floatModule->set(bp_.float_placement);
 
 	// Fonts
 	updateFontsize(documentClass().opt_fontsize(),
-			params.fontsize);
+			bp_.fontsize);
 
-	int n = findToken(tex_fonts_roman, params.fontsRoman);
+	int n = findToken(tex_fonts_roman, bp_.fontsRoman);
 	if (n >= 0) {
 		fontModule->fontsRomanCO->setCurrentIndex(n);
 		romanChanged(n);
 	}
 
-	n = findToken(tex_fonts_sans, params.fontsSans);
+	n = findToken(tex_fonts_sans, bp_.fontsSans);
 	if (n >= 0)	{
 		fontModule->fontsSansCO->setCurrentIndex(n);
 		sansChanged(n);
 	}
 
-	n = findToken(tex_fonts_monospaced, params.fontsTypewriter);
+	n = findToken(tex_fonts_monospaced, bp_.fontsTypewriter);
 	if (n >= 0) {
 		fontModule->fontsTypewriterCO->setCurrentIndex(n);
 		ttChanged(n);
 	}
 
-	if (!params.fontsCJK.empty())
+	if (!bp_.fontsCJK.empty())
 		fontModule->cjkFontLE->setText(
-			toqstr(params.fontsCJK));
+			toqstr(bp_.fontsCJK));
 	else
 		fontModule->cjkFontLE->setText(QString());
 
-	fontModule->fontScCB->setChecked(params.fontsSC);
-	fontModule->fontOsfCB->setChecked(params.fontsOSF);
-	fontModule->scaleSansSB->setValue(params.fontsSansScale);
-	fontModule->scaleTypewriterSB->setValue(params.fontsTypewriterScale);
-	n = findToken(GuiDocument::fontfamilies, params.fontsDefaultFamily);
+	fontModule->fontScCB->setChecked(bp_.fontsSC);
+	fontModule->fontOsfCB->setChecked(bp_.fontsOSF);
+	fontModule->scaleSansSB->setValue(bp_.fontsSansScale);
+	fontModule->scaleTypewriterSB->setValue(bp_.fontsTypewriterScale);
+	n = findToken(GuiDocument::fontfamilies, bp_.fontsDefaultFamily);
 	if (n >= 0)
 		fontModule->fontsDefaultCO->setCurrentIndex(n);
 
 	// paper
-	int const psize = params.papersize;
+	int const psize = bp_.papersize;
 	pageLayoutModule->papersizeCO->setCurrentIndex(psize);
 	setCustomPapersize(psize);
 
 	bool const landscape =
-		params.orientation == ORIENTATION_LANDSCAPE;
+		bp_.orientation == ORIENTATION_LANDSCAPE;
 	pageLayoutModule->landscapeRB->setChecked(landscape);
 	pageLayoutModule->portraitRB->setChecked(!landscape);
 
 	pageLayoutModule->facingPagesCB->setChecked(
-		params.sides == TwoSides);
+		bp_.sides == TwoSides);
 
 
 	lengthToWidgets(pageLayoutModule->paperwidthLE,
-		pageLayoutModule->paperwidthUnitCO, params.paperwidth, defaultUnit);
+		pageLayoutModule->paperwidthUnitCO, bp_.paperwidth, defaultUnit);
 
 	lengthToWidgets(pageLayoutModule->paperheightLE,
-		pageLayoutModule->paperheightUnitCO, params.paperheight, defaultUnit);
+		pageLayoutModule->paperheightUnitCO, bp_.paperheight, defaultUnit);
 
 	// margins
 	Ui::MarginsUi * m = marginsModule;
 
-	setMargins(!params.use_geometry);
+	setMargins(!bp_.use_geometry);
 
 	lengthToWidgets(m->topLE, m->topUnit,
-		params.topmargin, defaultUnit);
+		bp_.topmargin, defaultUnit);
 
 	lengthToWidgets(m->bottomLE, m->bottomUnit,
-		params.bottommargin, defaultUnit);
+		bp_.bottommargin, defaultUnit);
 
 	lengthToWidgets(m->innerLE, m->innerUnit,
-		params.leftmargin, defaultUnit);
+		bp_.leftmargin, defaultUnit);
 
 	lengthToWidgets(m->outerLE, m->outerUnit,
-		params.rightmargin, defaultUnit);
+		bp_.rightmargin, defaultUnit);
 
 	lengthToWidgets(m->headheightLE, m->headheightUnit,
-		params.headheight, defaultUnit);
+		bp_.headheight, defaultUnit);
 
 	lengthToWidgets(m->headsepLE, m->headsepUnit,
-		params.headsep, defaultUnit);
+		bp_.headsep, defaultUnit);
 
 	lengthToWidgets(m->footskipLE, m->footskipUnit,
-		params.footskip, defaultUnit);
+		bp_.footskip, defaultUnit);
 
 	lengthToWidgets(m->columnsepLE, m->columnsepUnit,
-		params.columnsep, defaultUnit);
+		bp_.columnsep, defaultUnit);
 
-	branchesModule->update(params);
+	branchesModule->update(bp_);
 
 	// PDF support
-	PDFOptions const & pdf = params.pdfoptions();
+	PDFOptions const & pdf = bp_.pdfoptions();
 	pdfSupportModule->use_hyperrefGB->setChecked(pdf.use_hyperref);
 	pdfSupportModule->titleLE->setText(toqstr(pdf.title));
 	pdfSupportModule->authorLE->setText(toqstr(pdf.author));
@@ -2233,7 +2233,7 @@ void GuiDocument::useClassDefaults()
 		return;
 	}
 	bp_.useClassDefaults();
-	paramsToDialog(bp_);
+	paramsToDialog();
 }
 
 
@@ -2271,7 +2271,7 @@ bool GuiDocument::initialiseParams(string const &)
 	BufferView const * view = bufferview();
 	if (!view) {
 		bp_ = BufferParams();
-		paramsToDialog(bp_);
+		paramsToDialog();
 		return true;
 	}
 	bp_ = view->buffer().params();
@@ -2282,7 +2282,7 @@ bool GuiDocument::initialiseParams(string const &)
 	//modules are consistent: That required modules are actually
 	//selected, and that we don't have conflicts. If so, we could
 	//at least pop up a warning.
-	paramsToDialog(bp_);
+	paramsToDialog();
 	return true;
 }
 
