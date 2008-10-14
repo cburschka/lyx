@@ -206,10 +206,20 @@ End
 # Define Case as an enumeration environment
 Style Case
 	Category              Theorem
-	CopyStyle             Enumerate
+	Margin                Static
+	LatexType             Item_Environment
 	LatexName             caseenv
 	LabelType             Static
+	NextNoIndent          1
 	LeftMargin            "Case ###."
+	ParSkip               0.0
+	ItemSep               0.2
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0.3
+	Align                 Block
+	AlignPossible         Block, Left
+	LabelSep              xx
 	LabelString           "Case #."
 	LabelFont
 	  Series              Medium
