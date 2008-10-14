@@ -3006,7 +3006,9 @@ def convert_backref_options(document):
         del document.header[j]
     # backref=true was not a valid option, we meant backref=section
     k = find_token(document.header, "\\pdf_backref true", 0)
-    if k != -1:
+    if k != -1 and i != -1:
+        del document.header[k]
+    elif k != -1 and j != -1:
         document.header[k] = "\\pdf_backref section"
 
 ##
