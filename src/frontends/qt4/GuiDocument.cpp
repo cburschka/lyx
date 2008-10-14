@@ -1354,12 +1354,22 @@ void GuiDocument::classChanged()
 		return;
 	}
 
-	// FIXME We should really check here whether the modules have been 
-	// changed, I think, even if auto_reset_options is false. And, if so,
-	// pop the same dialog. So we would need to compare what is in 
-	// modules_sel_model with what is in the OLD bp_.getModules() and
-	// so do that before we reset things.
-	if (lyxrc.auto_reset_options) {
+	// check whether the selected modules have changed.
+	bool modulesChanged = false;
+	int const srows = selectedModel()->rowCount();
+	if (srows != bp_.getModules().size())
+		modulesChanged = true;
+	else {
+		list<string>::const_iterator mit = bp_.getModules().begin();
+		list<string>::const_iterator men = bp_.getModules().end();
+		for (int i = 0; i < srows && mit != men; ++i, ++mit)
+			if (selectedModel()->getIDString(i) != *mit) {
+				modulesChanged = true;
+				break;
+			}
+	}
+
+	if (modulesChanged || lyxrc.auto_reset_options) {
 		if (applyPB->isEnabled()) {
 			int const ret = Alert::prompt(_("Unapplied changes"),
 					_("Some changes in the dialog were not yet applied.\n"
@@ -1368,7 +1378,8 @@ void GuiDocument::classChanged()
 			if (ret == 0)
 				applyView();
 		}
-		bp_.useClassDefaults();
+		if (lyxrc.auto_reset_options)
+			bp_.useClassDefaults();
 	}
 	// With the introduction of modules came a distinction between the base 
 	// class and the document class. The former corresponds to the main layout 
