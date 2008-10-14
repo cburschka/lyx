@@ -1326,16 +1326,6 @@ void GuiDocument::classChanged()
 		return;
 	string const classname = classes_model_.getIDString(idx);
 
-	// We load the TextClass as soon as it is selected. This is
-	// necessary so that other options in the dialog can be updated
-	// according to the new class. Note, however, that, if you use 
-	// the scroll wheel when sitting on the combo box, we'll load a 
-	// lot of TextClass objects very quickly....
-	if (!bp_.setBaseClass(classname)) {
-		Alert::error(_("Error"), _("Unable to set document class."));
-		return;
-	}
-
 	// check whether the selected modules have changed.
 	bool modulesChanged = false;
 	unsigned int const srows = selectedModel()->rowCount();
@@ -1360,9 +1350,20 @@ void GuiDocument::classChanged()
 			if (ret == 0)
 				applyView();
 		}
-		if (lyxrc.auto_reset_options)
-			bp_.useClassDefaults();
 	}
+
+	// We load the TextClass as soon as it is selected. This is
+	// necessary so that other options in the dialog can be updated
+	// according to the new class. Note, however, that, if you use 
+	// the scroll wheel when sitting on the combo box, we'll load a 
+	// lot of TextClass objects very quickly....
+	if (!bp_.setBaseClass(classname)) {
+		Alert::error(_("Error"), _("Unable to set document class."));
+		return;
+	}
+	if (lyxrc.auto_reset_options)
+		bp_.useClassDefaults();
+
 	// With the introduction of modules came a distinction between the base 
 	// class and the document class. The former corresponds to the main layout 
 	// file; the latter is that plus the modules (or the document-specific layout,
