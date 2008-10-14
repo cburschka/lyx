@@ -244,10 +244,8 @@ public:
 		GuiIdListModel * availableModel,
 		GuiIdListModel * selectedModel)
 	: GuiSelectionManager(availableLV, selectedLV, addPB, delPB,
-                    upPB, downPB, availableModel, selectedModel) 
+                        upPB, downPB, availableModel, selectedModel) 
 		{}
-	
-
 private:
 	///
 	virtual void updateAddPB();
@@ -1349,7 +1347,7 @@ void GuiDocument::classChanged()
 	// necessary so that other options in the dialog can be updated
 	// according to the new class. Note, however, that, if you use 
 	// the scroll wheel when sitting on the combo box, we'll load a 
-	// lot of TextClass objects very quickly.... 
+	// lot of TextClass objects very quickly....
 	if (!bp_.setBaseClass(classname)) {
 		Alert::error(_("Error"), _("Unable to set document class."));
 		return;
