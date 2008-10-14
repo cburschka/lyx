@@ -864,7 +864,7 @@ void latexParagraphs(Buffer const & buf,
 pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 		   OutputParams const & runparams, Encoding const & newEnc)
 {
-	Encoding const oldEnc = *runparams.encoding;
+	Encoding const & oldEnc = *runparams.encoding;
 	bool moving_arg = runparams.moving_arg;
 	if ((bparams.inputenc != "auto" && bparams.inputenc != "default")
 		|| moving_arg)

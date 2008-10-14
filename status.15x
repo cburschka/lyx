@@ -104,6 +104,8 @@ What's new
 - Fix importing of LaTeX files that don't use the package inputenc
   (bug 5181).
 
+- Speedup LaTeX export (part of bug 5347).
+
 - Fix output of citation commands in the ReVTeX4 class (bug 5182).
 
 - Fix output of some Greek characters.
