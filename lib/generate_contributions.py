@@ -1014,7 +1014,7 @@ contributers = [
                  "Re: czech translation",
                  "m=115522417204086",
                  "10 August 2006",
-                 u"Czech translation, support for the LaTeX package hyperref"),
+                 u"Czech translation, support for the LaTeX package hyperref, fullscreen support, lfuns docs/review"),
 
      contributer(u'Bo Peng',
                  "ben.bob () gmail ! com",
@@ -1495,6 +1495,14 @@ contributers = [
                  "m=121786603726114",
                  "4 August 2008",
                  u"lots of fixes"),
+
+     contributer(u"Günter Milde",
+                 "milde () users ! berlios ! de",
+                 "GPL",
+                 " copyleft",
+                 "m=122398147620761",
+                 "14 October 2008",
+                 u"unicode fixes"),
 
      contributer(u"Xiaokun Zhu",
                  "xiaokun () aero ! gla ! ac ! uk",
