@@ -875,7 +875,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 		   OutputParams const & runparams, Encoding const & newEnc,
 		   bool force)
 {
-	Encoding const oldEnc = *runparams.encoding;
+	Encoding const & oldEnc = *runparams.encoding;
 	bool moving_arg = runparams.moving_arg;
 	if (!force && ((bparams.inputenc != "auto" && bparams.inputenc != "default")
 		|| moving_arg))
