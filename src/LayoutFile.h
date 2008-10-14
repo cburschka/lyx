@@ -64,7 +64,8 @@ public:
 	/// check whether the TeX class is available
 	bool isTeXClassAvailable() const { return texClassAvail_; }
 	///
-	std::list<std::string> const & defaultModules() const { return usemod_; }
+	std::list<std::string> const & defaultModules() const 
+			{ return usemod_; }
 private:
 	/// Construct a layout with default values. Actual values loaded later.
 	explicit LayoutFile(std::string const & filename,

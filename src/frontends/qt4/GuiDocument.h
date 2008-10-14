@@ -33,8 +33,8 @@
 #include "ui_PreambleUi.h"
 #include "ui_PDFSupportUi.h"
 
+#include <list>
 #include <map>
-#include <vector>
 
 namespace lyx {
 
@@ -178,9 +178,9 @@ private:
 		QString description;
 	};
 	/// List of available modules
-	std::vector<modInfoStruct> const & getModuleInfo();
+	std::list<modInfoStruct> const & getModuleInfo();
 	/// Modules in use in current buffer
-	std::vector<modInfoStruct> const getSelectedModules();
+	std::list<modInfoStruct> const getSelectedModules();
 	///
 	void setLanguage() const;
 	///
@@ -199,7 +199,7 @@ private:
 	///
 	BufferParams bp_;
 	/// List of names of available modules
-	std::vector<modInfoStruct> moduleNames_;
+	std::list<modInfoStruct> moduleNames_;
 };
 
 

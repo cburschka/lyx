@@ -57,6 +57,7 @@
 #include <QTextCursor>
 
 #include <sstream>
+#include <vector>
 
 #ifdef IN
 #undef IN
@@ -1623,8 +1624,8 @@ void GuiDocument::apply(BufferParams & params)
 	list<string>::const_iterator ren = reqmods.end();
 	// check each of the required modules
 	for (; rit != ren; rit++) {
-		vector<string>::const_iterator mit = params.getModules().begin();
-		vector<string>::const_iterator men = params.getModules().end();
+		list<string>::const_iterator mit = params.getModules().begin();
+		list<string>::const_iterator men = params.getModules().end();
 		bool found = false;
 		for (; mit != men; mit++) {
 			if (*rit == *mit) {
@@ -2186,26 +2187,24 @@ void GuiDocument::saveDocDefault()
 void GuiDocument::updateAvailableModules() 
 {
 	modules_av_model_.clear();
-	vector<modInfoStruct> const & modInfoList = getModuleInfo();
-	int const mSize = modInfoList.size();
-	for (int i = 0; i != mSize; ++i) {
-		modInfoStruct const & modInfo = modInfoList[i];
-		modules_av_model_.insertRow(i, modInfo.name, modInfo.id, 
-				modInfo.description);
-	}
+	list<modInfoStruct> const & modInfoList = getModuleInfo();
+	list<modInfoStruct>::const_iterator mit = modInfoList.begin();
+	list<modInfoStruct>::const_iterator men = modInfoList.end();
+	for (int i = 0; mit != men; ++mit, ++i)
+		modules_av_model_.insertRow(i, mit->name, mit->id, 
+				mit->description);
 }
 
 
 void GuiDocument::updateSelectedModules() 
 {
 	modules_sel_model_.clear();
-	vector<modInfoStruct> const selModList = getSelectedModules();
-	int const sSize = selModList.size();
-	for (int i = 0; i != sSize; ++i) {
-		modInfoStruct const & modInfo = selModList[i];
-		modules_sel_model_.insertRow(i, modInfo.name, modInfo.id,
-				modInfo.description);
-	}
+	list<modInfoStruct> const selModList = getSelectedModules();
+	list<modInfoStruct>::const_iterator mit = selModList.begin();
+	list<modInfoStruct>::const_iterator men = selModList.end();
+	for (int i = 0; mit != men; ++mit, ++i)
+		modules_sel_model_.insertRow(i, mit->name, mit->id, 
+				mit->description);
 }
 
 
@@ -2238,7 +2237,7 @@ void GuiDocument::useClassDefaults()
 }
 
 
-void GuiDocument::setLayoutComboByIDString(std::string const & idString)
+void GuiDocument::setLayoutComboByIDString(string const & idString)
 {
 	int idx = classes_model_.findIDString(idString);
 	if (idx < 0)
@@ -2301,18 +2300,18 @@ BufferId GuiDocument::id() const
 }
 
 
-vector<GuiDocument::modInfoStruct> const & GuiDocument::getModuleInfo()
+list<GuiDocument::modInfoStruct> const & GuiDocument::getModuleInfo()
 {
 	return moduleNames_;
 }
 
 
-vector<GuiDocument::modInfoStruct> const GuiDocument::getSelectedModules()
+list<GuiDocument::modInfoStruct> const GuiDocument::getSelectedModules()
 {
-	vector<string> const & mods = params().getModules();
-	vector<string>::const_iterator it =  mods.begin();
-	vector<string>::const_iterator end = mods.end();
-	vector<modInfoStruct> mInfo;
+	list<string> const & mods = params().getModules();
+	list<string>::const_iterator it =  mods.begin();
+	list<string>::const_iterator end = mods.end();
+	list<modInfoStruct> mInfo;
 	for (; it != end; ++it) {
 		modInfoStruct m;
 		m.id = *it;

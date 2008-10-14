@@ -485,13 +485,13 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		// Make sure modules used in child are all included in master
 		//FIXME It might be worth loading the children's modules into the master
 		//over in BufferParams rather than doing this check.
-		vector<string> const masterModules = masterBuffer->params().getModules();
-		vector<string> const childModules = tmp->params().getModules();
-		vector<string>::const_iterator it = childModules.begin();
-		vector<string>::const_iterator end = childModules.end();
+		list<string> const masterModules = masterBuffer->params().getModules();
+		list<string> const childModules = tmp->params().getModules();
+		list<string>::const_iterator it = childModules.begin();
+		list<string>::const_iterator end = childModules.end();
 		for (; it != end; ++it) {
 			string const module = *it;
-			vector<string>::const_iterator found =
+			list<string>::const_iterator found =
 				find(masterModules.begin(), masterModules.end(), module);
 			if (found == masterModules.end()) {
 				docstring text = bformat(_("Included file `%1$s'\n"

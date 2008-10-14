@@ -23,6 +23,7 @@
 
 #include "support/copied_ptr.h"
 
+#include <list>
 #include <set>
 #include <vector>
 
@@ -53,7 +54,7 @@ class VSpace;
 class BufferParams {
 public:
 	///
-	typedef std::vector<std::string> LayoutModuleList;
+	typedef std::list<std::string> LayoutModuleList;
 	///
 	enum ParagraphSeparation {
 		///
