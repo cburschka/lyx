@@ -1499,10 +1499,10 @@ contributers = [
      contributer(u"Günter Milde",
                  "milde () users ! berlios ! de",
                  "GPL",
-                 " copyleft",
+                 "copyleft",
                  "m=122398147620761",
                  "14 October 2008",
-                 u"unicode fixes"),
+                 u"Unicode and layout file fixes"),
 
      contributer(u"Xiaokun Zhu",
                  "xiaokun () aero ! gla ! ac ! uk",
