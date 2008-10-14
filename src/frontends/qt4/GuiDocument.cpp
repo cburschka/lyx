@@ -336,20 +336,14 @@ void ModuleSelectionManager::updateDownPB()
 		downPB->setEnabled(false);
 		return;
 	}
-	QModelIndexList const selSels = 
-			selectedLV->selectionModel()->selectedIndexes();
-	// disable if empty or last item is selected
-	if (selSels.empty() || selSels.first().row() == srows - 1) {
-		downPB->setEnabled(false);
-		return;
-	}
-	// determine whether immediately succeding element requires this one
 	QModelIndex const & curIdx = selectedLV->selectionModel()->currentIndex();
-	int curRow = curIdx.row();
-	if (curRow < 0 || curRow >= srows - 1) { //this shouldn't happen...
+	int const curRow = curIdx.row();
+	if (curRow < 0 || curRow >= srows - 1) { // invalid or last item
 		downPB->setEnabled(false);
 		return;
 	}
+
+	// determine whether immediately succeding element requires this one
 	string const curModName = getSelectedModel()->getIDString(curRow);
 	string const nextModName = getSelectedModel()->getIDString(curRow + 1);
 
@@ -375,19 +369,12 @@ void ModuleSelectionManager::updateUpPB()
 		upPB->setEnabled(false);
 		return;
 	}
-	QModelIndexList const selSels = 
-			selectedLV->selectionModel()->selectedIndexes();
-	//disable if empty or first item is selected
-	if (selSels.empty() || selSels.first().row() == 0) {
-		upPB->setEnabled(false);
-		return;
-	}
 
 	// determine whether immediately preceding element is required by this one
 	QModelIndex const & curIdx = selectedLV->selectionModel()->currentIndex();
 	int curRow = curIdx.row();
-	if (curRow <= -1 || curRow > srows - 1) { //sanity check
-		downPB->setEnabled(false);
+	if (curRow <= 0 || curRow > srows - 1) { // first item or invalid
+		upPB->setEnabled(false);
 		return;
 	}
 	string const curModName = getSelectedModel()->getIDString(curRow);
@@ -414,24 +401,18 @@ void ModuleSelectionManager::updateDelPB()
 		deletePB->setEnabled(false);
 		return;
 	}
-	QModelIndexList const selSels = 
-			selectedLV->selectionModel()->selectedIndexes();
-	if (selSels.empty() || selSels.first().row() < 0) {
-		deletePB->setEnabled(false);
-		return;
-	}
 	
-	// determine whether some LATER module requires this one
-	// NOTE Things are arranged so that this is the only way there
-	// can be a problem. At least, we hope so.
 	QModelIndex const & curIdx = 
 		selectedLV->selectionModel()->currentIndex();
 	int const curRow = curIdx.row();
-	if (curRow < 0 || curRow >= srows) { // this shouldn't happen
+	if (curRow < 0 || curRow >= srows) { // invalid index?
 		deletePB->setEnabled(false);
 		return;
 	}
 		
+	// determine whether some LATER module requires this one
+	// NOTE Things are arranged so that this is the only way there
+	// can be a problem. At least, we hope so.
 	QString const curModName = curIdx.data().toString();
 	
 	// We're looking here for a reason NOT to enable the button. If we
