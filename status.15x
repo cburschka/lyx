@@ -27,12 +27,12 @@ What's new
 - Updated localization of the user interface for Catalan, Czech, French,
   German, Hebrew, Italian, and Ukrainian.
 
-- New Catalan translation of the Intro manual and the example file
+- New Catalan translations of the Intro manual and the example file
   ItemizeBullets.lyx.
 
 - New Ukrainian translation of the Intro manual.
 
-- The Minipage.lyx and listings.lyx example files were removed. Their
+- The Minipage.lyx and listings.lyx example files have been removed. Their
   content is covered by the ExtendedObjects manual.
 
 
@@ -40,21 +40,24 @@ What's new
 
 - New layout file for ACM SIGPLAN conference papers.
 
-- New layout file for journal articles of the Inderscience publishing group.
+- New layout file for journal articles of the Inderscience publishing
+  group.
 
-- New layout file and template for journal articles of the Elsevier publishing
-  group. The template file for the now obsolete Elsevier layout has been
-  removed.
+- New layout file and template for journal articles of the Elsevier
+  publishing group. The template file for the obsolete Elsevier layout has
+  been removed.
 
 - New layout file for the svjour3 class (journal articles of the Springer
   publishing group) (bug 5154).
+
+- Completely rewritten layout file for the siamltex (SIAM) class.
 
 - Add support for quote, quotation and verse in the beamer class.
 
 - Support some more Greek characters without Greek language set.
 
-- Example file for modernCV curriculum vitae updated to version 0.7 of the
-  moderncv LaTeX-package
+- The example file for modernCV curriculum vitae has been updated to
+  version 0.7 of the moderncv LaTeX package.
 
 
 * USER INTERFACE
@@ -71,7 +74,7 @@ What's new
 
 * BUILD
 
-- Allow the use of newer versions of scons such as scons 1.0.0.
+- Allow the use of newer versions of SCons such as SCons 1.0.0.
 
 
 ** Bug fixes:
@@ -79,14 +82,14 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix an assertion when non-ascii characters are used in listings
+- Fix an assertion when non-ASCII characters are used in listings
   parameters (bug 5221).
 
-- Fix instant preview when \usepackage[pdftex]{hyperref} is used in the 
+- Fix instant preview when \usepackage[pdftex]{hyperref} is used in the
   preamble (bug 2165).
 
-- The LaTeX package amscd is now automatically loaded when creating math
-  diagrams (bug 5090).
+- The LaTeX package amscd is now loaded automatically after math diagrams
+  have been created (bug 5090).
 
 - Fix inputenc error with ligature glyphs in utf8 encoding (bug 5086).
 
@@ -98,7 +101,8 @@ What's new
 
 - Do not delete special characters in free spacing mode (bug 5125).
 
-- Fix importing of LaTeX files that don't use the package inputenc (bug 5181).
+- Fix importing of LaTeX files that don't use the package inputenc
+  (bug 5181).
 
 - Fix output of citation commands in the ReVTeX4 class (bug 5182).
 
@@ -106,22 +110,22 @@ What's new
 
 - Fix some problems with CSV importation.
 
-- Fix LaTeX output if no graphic driver was selected (part of bug 5294).
+- Fix LaTeX output if no graphic driver has been selected (part of bug
+  5294).
 
 - Fix lyxclient to read the whole command line as one command.
 
-- Layout file and template for journal articles of the IOP publishing group
-  fixed.
+- Fix some problems in the layout file and template for journal articles
+  of the IOP publishing group.
 
-- Layout file and template for German letters (DIN Brief) fixed.
+- Fix some problems in the layout file and template of the DIN-Brief class.
  
-- Fix that chess games like the chessgame.lyx example file were not compilable
-  (bug 5320).
+- Fix LaTeX errors triggered by the external chess template (bug 5320).
 
-- Latvian and Lithuanian documents are now compilable (bug 5323, bug 5324).
+- Fix LaTeX errors in Latvian and Lithuanian documents (bug 5323, bug 5324).
 
-- Fix that the amsmath LaTeX-package was used although it was turned off in
-  the document settings math options (bug 5350).
+- If "Do not use amsmath" is selected in the document settings, really do 
+  not use it (bug 5350).
 
 
 * USER INTERFACE
@@ -148,8 +152,8 @@ What's new
 
 - Remove confusing warning about 'server socket' under MS Windows.
 
-- Fix problem that the lyxpipe was incorrectly reset after dispatching
-  certain functions (bug 1784).
+- Do not incorrectly reset the lyxpipe after dispatching certain
+  functions (bug 1784).
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -162,3 +166,4 @@ What's new
 - Very light Makefile cleanup. Now works with automake 10.1.
 
 - Fix the building on Mac OS X 10.5 of a binary compatible with OS X 10.4.
+
