@@ -329,6 +329,8 @@ private:
 	bool backspacePos0(Cursor & cur);
 	/// handle the case where bibitems were deleted
 	bool handleBibitems(Cursor & cur);
+	/// are we in a list item (description etc.)?
+	bool inDescriptionItem(Cursor & cur) const;
 	///
 	void charInserted(Cursor & cur);
 	/// set 'number' font property

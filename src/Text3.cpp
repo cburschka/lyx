@@ -1944,6 +1944,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_LISTING_INSERT:
 		code = LISTINGS_CODE;
+		// not allowed in description items
+		enable = !inDescriptionItem(cur);
 		break;
 	case LFUN_FOOTNOTE_INSERT:
 		code = FOOT_CODE;
@@ -1957,21 +1959,29 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FLOAT_INSERT:
 	case LFUN_FLOAT_WIDE_INSERT:
 		code = FLOAT_CODE;
+		// not allowed in description items
+		enable = !inDescriptionItem(cur);
 		break;
 	case LFUN_WRAP_INSERT:
 		code = WRAP_CODE;
+		// not allowed in description items
+		enable = !inDescriptionItem(cur);
 		break;
 	case LFUN_FLOAT_LIST_INSERT:
 		code = FLOAT_LIST_CODE;
 		break;
 	case LFUN_CAPTION_INSERT:
 		code = CAPTION_CODE;
+		// not allowed in description items
+		enable = !inDescriptionItem(cur);
 		break;
 	case LFUN_NOTE_INSERT:
 		code = NOTE_CODE;
-		// in commands (sections etc., only Notes are allowed)
+		// in commands (sections etc.) and description items,
+		// only Notes are allowed
 		enable = (cmd.argument().empty() || cmd.getArg(0) == "Note" ||
-			  !cur.paragraph().layout().isCommand());
+			  (!cur.paragraph().layout().isCommand()
+			   && !inDescriptionItem(cur)));
 		break;
 	case LFUN_FLEX_INSERT: {
 		code = FLEX_CODE;
@@ -2174,6 +2184,11 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	}
 
+	case LFUN_NEWPAGE_INSERT:
+		// not allowed in description items
+		enable = !inDescriptionItem(cur);
+		break;
+
 	case LFUN_WORD_DELETE_FORWARD:
 	case LFUN_WORD_DELETE_BACKWARD:
 	case LFUN_LINE_DELETE:
@@ -2222,7 +2237,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_DATE_INSERT:
 	case LFUN_SELF_INSERT:
 	case LFUN_LINE_INSERT:
-	case LFUN_NEWPAGE_INSERT:
 	case LFUN_MATH_DISPLAY:
 	case LFUN_MATH_MODE:
 	case LFUN_MATH_MACRO:
@@ -2293,6 +2307,24 @@ void Text::pasteString(Cursor & cur, docstring const & clip,
 		else
 			insertStringAsLines(cur, clip);
 	}
+}
+
+
+// FIXME: an item inset would make things much easier.
+bool Text::inDescriptionItem(Cursor & cur) const
+{
+	Paragraph & par = cur.paragraph();
+	pos_type const pos = cur.pos();
+	pos_type const body_pos = par.beginOfBody();
+
+	if (par.layout().latextype != LATEX_LIST_ENVIRONMENT
+	    && (par.layout().latextype != LATEX_ITEM_ENVIRONMENT
+		|| par.layout().margintype != MARGIN_FIRST_DYNAMIC))
+		return false;
+
+	return (pos < body_pos
+		|| (pos == body_pos
+		    && (pos == 0 || par.getChar(pos - 1) != ' ')));
 }
 
 } // namespace lyx
