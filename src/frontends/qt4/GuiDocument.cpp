@@ -245,7 +245,7 @@ public:
 		GuiIdListModel * availableModel,
 		GuiIdListModel * selectedModel)
 	: GuiSelectionManager(availableLV, selectedLV, addPB, delPB,
-                        upPB, downPB, availableModel, selectedModel) 
+                        upPB, downPB, availableModel, selectedModel)
 		{}
 private:
 	///
@@ -357,7 +357,7 @@ void ModuleSelectionManager::updateDownPB()
 
 	// Enable it if this module isn't required.
 	// FIXME This should perhaps be more flexible and check whether, even 
-	// if this one is required, there is also an earlier one that is required.
+	// if the next one is required, there is also an earlier one that will do.
 	downPB->setEnabled(
 			find(reqs.begin(), reqs.end(), curModName) == reqs.end());
 }
@@ -370,7 +370,6 @@ void ModuleSelectionManager::updateUpPB()
 		return;
 	}
 
-	// determine whether immediately preceding element is required by this one
 	QModelIndex const & curIdx = selectedLV->selectionModel()->currentIndex();
 	int curRow = curIdx.row();
 	if (curRow <= 0 || curRow > srows - 1) { // first item or invalid
@@ -378,6 +377,8 @@ void ModuleSelectionManager::updateUpPB()
 		return;
 	}
 	string const curModName = getSelectedModel()->getIDString(curRow);
+
+	// determine whether immediately preceding element is required by this one
 	vector<string> reqs = getRequiredList(curModName);
 	
 	// if this one doesn't require anything....
@@ -389,8 +390,8 @@ void ModuleSelectionManager::updateUpPB()
 	string preModName = getSelectedModel()->getIDString(curRow - 1);
 
 	// Enable it if the preceding module isn't required.
-	// NOTE This is less flexible than it might be. You could check whether, even 
-	// if this one is required, there is also an earlier one that is required.
+	// NOTE This is less flexible than it might be. We could check whether, even 
+	// if the previous one is required, there is an earlier one that would do.
 	upPB->setEnabled(find(reqs.begin(), reqs.end(), preModName) == reqs.end());
 }
 
@@ -1337,13 +1338,13 @@ void GuiDocument::classChanged()
 
 	// check whether the selected modules have changed.
 	bool modulesChanged = false;
-	int const srows = selectedModel()->rowCount();
+	unsigned int const srows = selectedModel()->rowCount();
 	if (srows != bp_.getModules().size())
 		modulesChanged = true;
 	else {
 		list<string>::const_iterator mit = bp_.getModules().begin();
 		list<string>::const_iterator men = bp_.getModules().end();
-		for (int i = 0; i < srows && mit != men; ++i, ++mit)
+		for (unsigned int i = 0; i < srows && mit != men; ++i, ++mit)
 			if (selectedModel()->getIDString(i) != *mit) {
 				modulesChanged = true;
 				break;
@@ -2015,8 +2016,9 @@ void GuiDocument::paramsToDialog()
 		latexModule->optionsLE->setText(QString());
 	}
 
+	// latex
 	latexModule->defaultOptionsCB->setChecked(
-		bp_.use_default_options);
+			bp_.use_default_options);
 
 	if (!documentClass().options().empty()) {
 		latexModule->defaultOptionsLE->setText(
