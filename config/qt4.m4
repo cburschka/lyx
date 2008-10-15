@@ -127,10 +127,6 @@ AC_DEFUN([QT4_DO_IT_ALL],
 	QT4_CPPFLAGS="-DQT_NO_STL -DQT_NO_KEYWORDS"
 	case ${host} in
 	*mingw*) QT4_CPPFLAGS="-DQT_DLL $QT4_CPPFLAGS";;
-	*cygwin*)
-	if test "x$with_x" = xno ; then
-		QT4_CPPFLAGS="$QT4_CPPFLAGS -DQ_CYGWIN_WIN"
-	fi;;
 	esac
 	AC_SUBST(QT4_CPPFLAGS)
 

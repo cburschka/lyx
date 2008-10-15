@@ -35,7 +35,7 @@
  *
  * Therefore there is a tradeoff in enabling or disabling this (JMarc)
  */
-#if defined(Q_WS_MACX) || (defined(Q_WS_WIN) && !defined(Q_CYGWIN_WIN))
+#if defined(Q_WS_MACX) || (defined(Q_WS_WIN) && !defined(Q_OS_CYGWIN))
 #define USE_NATIVE_FILEDIALOG 1
 #endif
 
