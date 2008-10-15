@@ -64,7 +64,7 @@
 # endif
 #endif
 
-#ifndef ASSOCF_INIT_IGNOREUNKNOWN
+#if !defined(ASSOCF_INIT_IGNOREUNKNOWN) && !defined(__MINGW32__)
 #define ASSOCF_INIT_IGNOREUNKNOWN 0
 #endif
 
