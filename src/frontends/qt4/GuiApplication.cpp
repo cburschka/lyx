@@ -101,7 +101,7 @@
 
 #ifdef Q_WS_WIN
 #include <QWindowsMime>
-#if defined(Q_CYGWIN_WIN) || defined(Q_CC_MINGW)
+#ifdef Q_CC_GNU
 #include <wtypes.h>
 #endif
 #include <objidl.h>
