@@ -1756,7 +1756,11 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 	if (buf.isClean() || buf.paragraphs().empty()) {
 		if (buf.masterBuffer() == &buf && tolastopened)
 			theSession().lastOpened().add(buf.fileName());
-		theBufferList().release(&buf);
+		if (buf.parent())
+			// Don't close child documents.
+			removeWorkArea(d.current_work_area_);
+		else
+			theBufferList().release(&buf);
 		return true;
 	}
 	// Switch to this Buffer.
