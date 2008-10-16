@@ -1806,11 +1806,11 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 
 	if (full_source) {
 		os << "% " << _("Preview source code") << "\n\n";
-		if (isLatex())
-			writeLaTeXSource(os, filePath(), runparams, true, true);
-		else {
+		if (isDocBook())
 			writeDocBookSource(os, fileName(), runparams, false);
-		}
+		else 
+			// latex or literate
+			writeLaTeXSource(os, filePath(), runparams, true, true);
 	} else {
 		runparams.par_begin = par_begin;
 		runparams.par_end = par_end;
@@ -1825,12 +1825,12 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 					convert<docstring>(par_end - 1))
 			   << "\n\n";
 		// output paragraphs
-		if (isLatex()) {
+		if (isDocBook()) 
+			docbookParagraphs(paragraphs(), *this, os, runparams);
+		else { 
+			// latex or literate
 			texrow().reset();
 			latexParagraphs(*this, text(), os, texrow(), runparams);
-		} else {
-			// DocBook
-			docbookParagraphs(paragraphs(), *this, os, runparams);
 		}
 	}
 }
