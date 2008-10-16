@@ -235,6 +235,7 @@ bool isModuleAvailable(string const & modName)
 class ModuleSelectionManager : public GuiSelectionManager 
 {
 public:
+	///
 	ModuleSelectionManager(
 		QListView * availableLV, 
 		QListView * selectedLV,
@@ -280,8 +281,8 @@ void ModuleSelectionManager::updateAddPB()
 	
 	QModelIndex const & idx = availableLV->selectionModel()->currentIndex();
 	string const modName = getAvailableModel()->getIDString(idx.row());
-	vector<string> reqs = getRequiredList(modName);
-	vector<string> excl = getExcludedList(modName);
+	vector<string> const reqs = getRequiredList(modName);
+	vector<string> const excl = getExcludedList(modName);
 	
 	if (reqs.empty() && excl.empty()) {
 		addPB->setEnabled(true);
@@ -293,15 +294,15 @@ void ModuleSelectionManager::updateAddPB()
 	for (int i = 0; i < srows; ++i)
 		selModList.push_back(getSelectedModel()->getIDString(i));
 
-	vector<string>::const_iterator selModStart = selModList.begin();
-	vector<string>::const_iterator selModEnd   = selModList.end();
+	vector<string>::const_iterator const selModStart = selModList.begin();
+	vector<string>::const_iterator const selModEnd   = selModList.end();
 	
 	// Check whether some required module is available
 	if (!reqs.empty()) {
 		bool foundOne = false;
-		vector<string>::const_iterator it  = reqs.begin();
-		vector<string>::const_iterator end = reqs.end();
-		for (; it != end; ++it) {
+		vector<string>::const_iterator it = reqs.begin();
+		vector<string>::const_iterator en = reqs.end();
+		for (; it != en; ++it) {
 			if (find(selModStart, selModEnd, *it) != selModEnd) {
 				foundOne = true;
 				break;
@@ -315,9 +316,9 @@ void ModuleSelectionManager::updateAddPB()
 	
 	// Check whether any excluded module is being used
 	if (!excl.empty()) {
-		vector<string>::const_iterator it  = excl.begin();
-		vector<string>::const_iterator end = excl.end();
-		for (; it != end; ++it) {
+		vector<string>::const_iterator it = excl.begin();
+		vector<string>::const_iterator en = excl.end();
+		for (; it != en; ++it) {
 			if (find(selModStart, selModEnd, *it) != selModEnd) {
 				addPB->setEnabled(false);
 				return;
@@ -380,18 +381,18 @@ void ModuleSelectionManager::updateUpPB()
 
 	// determine whether immediately preceding element is required by this one
 	vector<string> reqs = getRequiredList(curModName);
-	
+
 	// if this one doesn't require anything....
 	if (reqs.empty()) {
 		upPB->setEnabled(true);
 		return;
 	}
 
-	string preModName = getSelectedModel()->getIDString(curRow - 1);
 
 	// Enable it if the preceding module isn't required.
 	// NOTE This is less flexible than it might be. We could check whether, even 
 	// if the previous one is required, there is an earlier one that would do.
+	string const preModName = getSelectedModel()->getIDString(curRow - 1);
 	upPB->setEnabled(find(reqs.begin(), reqs.end(), preModName) == reqs.end());
 }
 
@@ -410,12 +411,9 @@ void ModuleSelectionManager::updateDelPB()
 		deletePB->setEnabled(false);
 		return;
 	}
-		
-	// determine whether some LATER module requires this one
-	// NOTE Things are arranged so that this is the only way there
-	// can be a problem. At least, we hope so.
-	QString const curModName = curIdx.data().toString();
-	
+
+	string const curModName = getSelectedModel()->getIDString(curRow);
+
 	// We're looking here for a reason NOT to enable the button. If we
 	// find one, we disable it and return. If we don't, we'll end up at
 	// the end of the function, and then we enable it.
@@ -423,7 +421,7 @@ void ModuleSelectionManager::updateDelPB()
 		string const thisMod = getSelectedModel()->getIDString(i);
 		vector<string> reqs = getRequiredList(thisMod);
 		//does this one require us?
-		if (find(reqs.begin(), reqs.end(), fromqstr(curModName)) == reqs.end())
+		if (find(reqs.begin(), reqs.end(), curModName) == reqs.end())
 			//no...
 			continue;
 
