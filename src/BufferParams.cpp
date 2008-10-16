@@ -1494,10 +1494,15 @@ bool BufferParams::setBaseClass(string const & classname)
 
 	pimpl_->baseClass_ = classname;
 
-	// add any required modules not already in use
+	// add any default modules not already in use
 	list<string> const & mods = baseClass()->defaultModules();
 	list<string>::const_iterator mit = mods.begin();
 	list<string>::const_iterator men = mods.end();
+
+	// we want to add these to the front, but in the right order,
+	// so we collect them here first.
+	list<string> modulesToAdd;
+
 	for (; mit != men; mit++) {
 		string const & modName = *mit;
 		// see if we're already in use
@@ -1514,12 +1519,25 @@ bool BufferParams::setBaseClass(string const & classname)
 					"' not added because removed by user.");
 			continue;
 		}
+
 		// Now we want to check the list of selected modules to see if any of them
-		// exclude this one.
+		// excludes this one, or if we exclude one of them.
+		LyXModule * thismod = moduleList[modName];
+		if (!thismod) {
+			LYXERR0("Adding default module " << modName << 
+					" even though it is unavailable.");
+			modulesToAdd.push_back(modName);
+			continue;
+		}
+
 		bool foundit = false;
+		vector<string> const ourExcMods = thismod->getExcludedModules();
+		vector<string>::const_iterator const eit = ourExcMods.begin();
+		vector<string>::const_iterator const een = ourExcMods.end();
+
 		// so iterate over the selected modules...
 		LayoutModuleList::const_iterator lit = layoutModules_.begin();
-		LayoutModuleList::const_iterator len = layoutModules_.end();
+		LayoutModuleList::const_iterator const len = layoutModules_.end();
 		for (; lit != len; lit++) {
 			LyXModule * lm = moduleList[*lit];
 			if (!lm)
@@ -1533,12 +1551,22 @@ bool BufferParams::setBaseClass(string const & classname)
 						*lit << "'.");
 				break;
 			}
+			if (find(eit, een, *lit) != een) {
+				foundit = true;
+				LYXERR(Debug::TCLASS, "Default module `" << modName << 
+						"' not added because it excludes loaded module `" << 
+						*lit << "'.");
+				break;
+			}
 		}
+
 		if (!foundit) {
 			LYXERR(Debug::TCLASS, "Default module `" << modName << "' added.");
-			layoutModules_.push_back(modName);
+			modulesToAdd.push_back(modName);
 		}
 	}
+
+	layoutModules_.insert(layoutModules_.begin(), modulesToAdd.begin(), modulesToAdd.end());
 	return true;
 }
 
