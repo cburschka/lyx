@@ -1468,33 +1468,9 @@ void BufferParams::setDocumentClass(DocumentClass const * const tc) {
 }
 
 
-bool BufferParams::setBaseClass(string const & classname)
+void BufferParams::addDefaultModules()
 {
-	LYXERR(Debug::TCLASS, "setBaseClass: " << classname);
-	LayoutFileList & bcl = LayoutFileList::get();
-	if (!bcl.haveClass(classname)) {
-		docstring s = 
-			bformat(_("The document class %1$s could not be found. "
-				"A default textclass with default layouts will be used. "
-				"LyX might not be able to produce output unless a correct "
-				"textclass is selected from the document settings dialog."),
-			from_utf8(classname));
-		frontend::Alert::error(_("Document class not found"), s);
-		bcl.addEmptyClass(classname);
-	}
-
-	bool const success = bcl[classname].load();
-	if (!success) {
-		docstring s = 
-			bformat(_("The document class %1$s could not be loaded."),
-			from_utf8(classname));
-		frontend::Alert::error(_("Could not load class"), s);
-		return false;
-	}
-
-	pimpl_->baseClass_ = classname;
-
-	// add any default modules not already in use
+		// add any default modules not already in use
 	list<string> const & mods = baseClass()->defaultModules();
 	list<string>::const_iterator mit = mods.begin();
 	list<string>::const_iterator men = mods.end();
@@ -1566,7 +1542,39 @@ bool BufferParams::setBaseClass(string const & classname)
 		}
 	}
 
-	layoutModules_.insert(layoutModules_.begin(), modulesToAdd.begin(), modulesToAdd.end());
+	// OK, now we can add the default modules.
+	layoutModules_.insert(
+			layoutModules_.begin(), modulesToAdd.begin(), modulesToAdd.end());
+}
+
+
+bool BufferParams::setBaseClass(string const & classname)
+{
+	LYXERR(Debug::TCLASS, "setBaseClass: " << classname);
+	LayoutFileList & bcl = LayoutFileList::get();
+	if (!bcl.haveClass(classname)) {
+		docstring s = 
+			bformat(_("The document class %1$s could not be found. "
+				"A default textclass with default layouts will be used. "
+				"LyX might not be able to produce output unless a correct "
+				"textclass is selected from the document settings dialog."),
+			from_utf8(classname));
+		frontend::Alert::error(_("Document class not found"), s);
+		bcl.addEmptyClass(classname);
+	}
+
+	bool const success = bcl[classname].load();
+	if (!success) {
+		docstring s = 
+			bformat(_("The document class %1$s could not be loaded."),
+			from_utf8(classname));
+		frontend::Alert::error(_("Could not load class"), s);
+		return false;
+	}
+
+	pimpl_->baseClass_ = classname;
+	addDefaultModules();
+
 	return true;
 }
 

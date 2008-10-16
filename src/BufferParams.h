@@ -344,6 +344,8 @@ private:
 	void readModules(Lexer &);
 	///
 	void readRemovedModules(Lexer &);
+	///
+	void addDefaultModules();
 
 	/// for use with natbib
 	CiteEngine cite_engine_;
