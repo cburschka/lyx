@@ -1580,7 +1580,6 @@ msgid "Document &class:"
 msgstr "Třída &dokumentu:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:231
-#, fuzzy
 msgid "Class options"
 msgstr "Nastavení třídy"
 
@@ -1588,21 +1587,19 @@ msgstr "Nastavení třídy"
 msgid ""
 "The options that are predefined in the layout file. Click to the left to "
 "select/deselect."
-msgstr ""
+msgstr "Nastavení, která jsou definoána v souboru rozvržení. Klikněte nalevo pro aktovaci."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:266
 msgid "Enable to use the options that are predefined in the layout file"
-msgstr ""
+msgstr "Aktivuj nastavení předdefinovaná v souboru s rozvržením."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:269
-#, fuzzy
 msgid "P&redefined:"
-msgstr "Tis&kárna:"
+msgstr "Před&definováno:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:276
-#, fuzzy
 msgid "Cust&om:"
-msgstr "Vlastní"
+msgstr "V&lastní"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:25
 msgid "Encoding"
@@ -2136,14 +2133,12 @@ msgid "C&olor links"
 msgstr "&Barevné odkazy"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:249
-#, fuzzy
 msgid "Bibliographical backreferences"
-msgstr "&Bibliografické zpětné reference"
+msgstr "Bibliografické zpětné reference"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:252
-#, fuzzy
 msgid "B&ackreferences:"
-msgstr "Nastavení"
+msgstr "Zpětné reference"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:281
 msgid "&Bookmarks"
@@ -5107,7 +5102,7 @@ msgstr "KnightMove:"
 
 #: lib/layouts/dinbrief.layout:24
 msgid "DinBrief"
-msgstr ""
+msgstr "DinBrief"
 
 #: lib/layouts/dinbrief.layout:43 lib/layouts/heb-letter.layout:15
 #: lib/layouts/stdletter.inc:35
@@ -5115,9 +5110,8 @@ msgid "Send To Address"
 msgstr "Send To Address"
 
 #: lib/layouts/dinbrief.layout:45
-#, fuzzy
 msgid "Anschrift:"
-msgstr "Unterschrift:"
+msgstr "Anschrift:"
 
 #: lib/layouts/dinbrief.layout:57 lib/layouts/heb-letter.layout:10
 #: lib/layouts/stdletter.inc:24
@@ -5129,14 +5123,12 @@ msgid "Briefkopf:"
 msgstr "Briefkopf:"
 
 #: lib/layouts/dinbrief.layout:67
-#, fuzzy
 msgid "Return address"
-msgstr "ReturnAddress"
+msgstr "Return address"
 
 #: lib/layouts/dinbrief.layout:69
-#, fuzzy
 msgid "Absender:"
-msgstr "Hlavička:"
+msgstr "Absender:"
 
 #: lib/layouts/dinbrief.layout:77
 #, fuzzy
@@ -5147,11 +5139,9 @@ msgstr "PostalComment"
 msgid "Postvermerk:"
 msgstr "Postvermerk:"
 
-# TODO Existuje typografický název?
 #: lib/layouts/dinbrief.layout:84
-#, fuzzy
 msgid "Handling"
-msgstr "Zavěšený"
+msgstr "Handling"
 
 #: lib/layouts/dinbrief.layout:86 lib/layouts/g-brief-de.layout:71
 msgid "Zusatz:"
@@ -5163,9 +5153,8 @@ msgid "YourRef"
 msgstr "YourRef"
 
 #: lib/layouts/dinbrief.layout:93
-#, fuzzy
 msgid "Ihre Zeichen:"
-msgstr "IhrZeichen:"
+msgstr "Ihre Zeichen:"
 
 #: lib/layouts/dinbrief.layout:97 lib/layouts/g-brief-en.layout:96
 #: lib/layouts/g-brief2.layout:737
@@ -5173,18 +5162,16 @@ msgid "MyRef"
 msgstr "MyRef"
 
 #: lib/layouts/dinbrief.layout:99
-#, fuzzy
 msgid "Unsere Zeichen:"
-msgstr "IhrZeichen:"
+msgstr "Unsere Zeichen:"
 
 #: lib/layouts/dinbrief.layout:103
-#, fuzzy
 msgid "Writer"
-msgstr "Tiskárna"
+msgstr "Writer"
 
 #: lib/layouts/dinbrief.layout:105
 msgid "Sachbearbeiter:"
-msgstr ""
+msgstr "Sachbearbeiter:"
 
 #: lib/layouts/dinbrief.layout:109 lib/layouts/g-brief-en.layout:54
 #: lib/layouts/g-brief2.layout:892 lib/layouts/scrlettr.layout:132
@@ -5197,23 +5184,20 @@ msgid "Unterschrift:"
 msgstr "Unterschrift:"
 
 #: lib/layouts/dinbrief.layout:116
-#, fuzzy
 msgid "Bottomtext"
-msgstr "Vlevo dole"
+msgstr "Bottomtext"
 
 #: lib/layouts/dinbrief.layout:118
 msgid "Fusszeile(n):"
-msgstr ""
+msgstr "Fusszeile(n):"
 
 #: lib/layouts/dinbrief.layout:126
-#, fuzzy
 msgid "Area code"
-msgstr "Anrede"
+msgstr "Area code"
 
 #: lib/layouts/dinbrief.layout:128
-#, fuzzy
 msgid "Vorwahl:"
-msgstr "Normální:"
+msgstr "Vorwahl:"
 
 #: lib/layouts/dinbrief.layout:132 lib/layouts/scrlettr.layout:146
 #: lib/layouts/scrlttr2.layout:181 lib/layouts/stdletter.inc:134
@@ -5271,9 +5255,8 @@ msgid "encl"
 msgstr "encl"
 
 #: lib/layouts/dinbrief.layout:198
-#, fuzzy
 msgid "Anlage(n):"
-msgstr "Anlagen:"
+msgstr "Anlage(n):"
 
 #: lib/layouts/dinbrief.layout:211 lib/layouts/g-brief-en.layout:222
 #: lib/layouts/g-brief2.layout:933 lib/layouts/stdletter.inc:100
@@ -7205,7 +7188,6 @@ msgid "LandscapeSlide"
 msgstr "LandscapeSlide"
 
 #: lib/layouts/seminar.layout:50
-#, fuzzy
 msgid "Landscape Slide"
 msgstr "Landscape Slide"
 
@@ -7214,7 +7196,6 @@ msgid "PortraitSlide"
 msgstr "PortraitSlide"
 
 #: lib/layouts/seminar.layout:61
-#, fuzzy
 msgid "Portrait Slide"
 msgstr "Portrait Slide"
 
@@ -7235,7 +7216,6 @@ msgid "ListOfSlides"
 msgstr "ListOfSlides"
 
 #: lib/layouts/seminar.layout:93
-#, fuzzy
 msgid "List Of Slides"
 msgstr "List Of Slides"
 
@@ -7252,9 +7232,8 @@ msgid "ProgressContents"
 msgstr "ProgressContents"
 
 #: lib/layouts/seminar.layout:113
-#, fuzzy
 msgid "Progress Contents"
-msgstr "ProgressContents"
+msgstr "Progress Contents"
 
 #: lib/layouts/siamltex.layout:105 lib/layouts/theorems-order.inc:34
 #: lib/layouts/theorems-starred.inc:93
@@ -7274,9 +7253,8 @@ msgid "Subjectclass"
 msgstr "Subjectclass"
 
 #: lib/layouts/siamltex.layout:306
-#, fuzzy
 msgid "AMS subject classifications:"
-msgstr "AMS subject classifications."
+msgstr "AMS subject classifications:"
 
 #: lib/layouts/sigplanconf.layout:64
 msgid "Conference"
@@ -8767,9 +8745,8 @@ msgid "Albanian"
 msgstr "Albánština"
 
 #: lib/languages:8
-#, fuzzy
 msgid "English (USA)"
-msgstr "Angličtina"
+msgstr "Angličtina (USA)"
 
 #: lib/languages:10
 msgid "Arabic (ArabTeX)"
@@ -8785,17 +8762,15 @@ msgstr "Arménština"
 
 #: lib/languages:14
 msgid "German (Austria)"
-msgstr ""
+msgstr "Němčina (Rakousko)"
 
 #: lib/languages:15
-#, fuzzy
 msgid "Indonesian"
 msgstr "Indonéština"
 
 #: lib/languages:16
-#, fuzzy
 msgid "Malay"
-msgstr "Malajálamština"
+msgstr "Malajština"
 
 #: lib/languages:17
 msgid "Basque"
@@ -8814,21 +8789,18 @@ msgid "Breton"
 msgstr "Bretonština"
 
 #: lib/languages:21
-#, fuzzy
 msgid "English (UK)"
-msgstr "Angličtina"
+msgstr "Angličtina (UK)"
 
 #: lib/languages:22
 msgid "Bulgarian"
 msgstr "Bulharština"
 
 #: lib/languages:23
-#, fuzzy
 msgid "English (Canada)"
-msgstr "Angličtina"
+msgstr "Angličtina (Kanada)"
 
 #: lib/languages:24
-#, fuzzy
 msgid "French (Canada)"
 msgstr "Kanadská Francouzština"
 
@@ -8963,7 +8935,7 @@ msgstr "Maďarština"
 
 #: lib/languages:66
 msgid "Mongolian"
-msgstr ""
+msgstr "Mongolština"
 
 #: lib/languages:67
 msgid "Norsk"
@@ -16394,7 +16366,7 @@ msgstr "Mód matematického editoru"
 
 #: src/Text3.cpp:189
 msgid "No valid math formula"
-msgstr ""
+msgstr "Žádný platný matematický vzorec"
 
 #: src/Text3.cpp:814
 msgid "Unknown spacing argument: "
@@ -17123,9 +17095,8 @@ msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/GuiDocument.cpp:146
-#, fuzzy
 msgid "Page"
-msgstr "Stránky"
+msgstr "Stránka"
 
 #: src/frontends/qt4/GuiDocument.cpp:203
 msgid "Module not found!"
@@ -17384,9 +17355,8 @@ msgid "WARNING: Some packages are unavailable!"
 msgstr "Upozornění: Některé balíčky jsou nedostupné!"
 
 #: src/frontends/qt4/GuiDocument.cpp:2029
-#, fuzzy
 msgid "[No options predefined]"
-msgstr "Žádná akce není definována!"
+msgstr "[Žádné nastavení předdefinováno]"
 
 #: src/frontends/qt4/GuiDocument.cpp:2239
 msgid "Can't set layout!"
@@ -18641,9 +18611,8 @@ msgid "No Document Open!"
 msgstr "Žádné otevřené dokumenty !"
 
 #: src/frontends/qt4/Menus.cpp:858
-#, fuzzy
 msgid "No custom insets defined!"
-msgstr "Žádná akce není definována!"
+msgstr "Žádné vlastní vložky definovány!"
 
 #: src/frontends/qt4/Menus.cpp:938
 msgid "Master Document"
