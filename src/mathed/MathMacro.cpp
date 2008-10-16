@@ -60,13 +60,12 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const {
 		mathMacro_.macro()->unlock();
-		if (!mathMacro_.editMetrics(mi.base.bv) 
+		mathMacro_.cell(idx_).metrics(mi, dim);
+
+		if (!mathMacro_.editMetrics(mi.base.bv)
 		    && mathMacro_.cell(idx_).empty())
 			def_.metrics(mi, dim);
-		else {
-			CoordCache & coords = mi.base.bv->coordCache();
-			dim = coords.arrays().dim(&mathMacro_.cell(idx_));
-		}
+
 		mathMacro_.macro()->lock();
 	}
 	///
@@ -236,13 +235,18 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		LASSERT(macro_ != 0, /**/);
 
-		// metrics are computed here for the cells,
-		// in the proxy we will then use the dim from the cache
-		InsetMathNest::metrics(mi);
-		
-		// calculate metrics finally
+		// calculate metrics, hoping that all cells are seen
 		macro_->lock();
 		expanded_.cell(0).metrics(mi, dim);
+
+		// otherwise do a manual metrics call
+		CoordCache & coords = mi.base.bv->coordCache();
+		for (idx_type i = 0; i < nargs(); ++i) {
+			if (!coords.arrays().has(&cell(i))) {
+				Dimension tdim;
+				cell(i).metrics(mi, tdim);
+			}
+		}
 		macro_->unlock();
 
 		// calculate dimension with label while editing
