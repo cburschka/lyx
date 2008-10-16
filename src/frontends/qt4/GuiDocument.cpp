@@ -316,28 +316,11 @@ void ModuleSelectionManager::updateAddPB()
 			return;
 		}
 	}
-	
-	// Check whether any excluded module is being used...
-	vector<string> const excl = getExcludedList(modName);
-	if (!excl.empty()) {
-		vector<string>::const_iterator it = excl.begin();
-		vector<string>::const_iterator en = excl.end();
-		for (; it != en; ++it) {
-			if (find(selModStart, selModEnd, *it) != selModEnd) {
-				addPB->setEnabled(false);
-				return;
-			}
-		}
-	}
 
-	// ...and whether any used module excludes us.
-	vector<string>::const_iterator selModIt = selModStart;
-	for (; selModIt != selModEnd; ++selModIt) {
-		string selMod = *selModIt;
-		vector<string> excMods = getExcludedList(selMod);
-		vector<string>::const_iterator const eit = excMods.begin();
-		vector<string>::const_iterator const een = excMods.end();
-		if (find(eit, een, modName) != een) {
+	// Check for conflicts with used modules
+ 	vector<string>::const_iterator selModIt = selModStart;
+ 	for (; selModIt != selModEnd; ++selModIt) {
+		if (!LyXModule::areCompatible(modName, *selModIt)) {
 			addPB->setEnabled(false);
 			return;
 		}

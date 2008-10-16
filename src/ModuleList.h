@@ -24,7 +24,6 @@ namespace lyx {
  *  a LaTeX package, where a layout file corresponds to a LaTeX class.
  */
 
-//FIXME Give us some access functions here.
 class LyXModule {
 public:
 	///
@@ -51,7 +50,13 @@ public:
 	/// Modules this one excludes: the list should be treated disjunctively
 	std::vector<std::string> const & getExcludedModules() const 
 		{ return excludedModules; }
-	
+	/// \return true if the module is compatible with this one, i.e.,
+	/// it does not exclude us and we do not exclude it.
+	/// this will also return true if modName is unknown and we do not
+	/// exclude it, since in that case we cannot check its exclusions.
+	bool isCompatible(std::string const & modName) const;
+	///
+	static bool areCompatible(std::string const & mod1, std::string const & mod2);
 private:
 	/// what appears in the ui
 	std::string name;
@@ -96,13 +101,10 @@ public:
 	LyXModuleList::iterator end();
 	///
 	bool empty() const { return modlist_.empty(); }
-	/// Returns a pointer to the LyXModule with name str.
-	/// Returns a null pointer if no such module is found.
-	LyXModule * getModuleByName(std::string const & str);
 	/// Returns a pointer to the LyXModule with filename str.
 	/// Returns a null pointer if no such module is found.
 	LyXModule * operator[](std::string const & str);
-	private:
+private:
 	/// noncopyable
 	ModuleList(ModuleList const &);
 	///

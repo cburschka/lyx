@@ -64,6 +64,38 @@ bool LyXModule::isAvailable() {
 }
 
 
+bool LyXModule::isCompatible(string const & modName) const
+{
+	// do we exclude it?
+	if (find(excludedModules.begin(), excludedModules.end(), modName) !=
+			excludedModules.end())
+		return false;
+
+	LyXModule const * const lm = moduleList[modName];
+	if (!lm)
+		return true;
+
+	// does it exclude us?
+	vector<string> const excMods = lm->getExcludedModules();
+	if (find(excMods.begin(), excMods.end(), name) != excMods.end())
+		return false;
+
+	return true;
+}
+
+
+bool LyXModule::areCompatible(string const & mod1, string const & mod2)
+{
+	LyXModule const * const lm1 = moduleList[mod1];
+	if (lm1)
+		return lm1->isCompatible(mod2);
+	LyXModule const * const lm2 = moduleList[mod2];
+	if (lm2)
+		return lm2->isCompatible(mod1);
+	// Can't check it either way.
+	return true;
+}
+
 // used when sorting the module list.
 class ModuleSorter
 {
@@ -200,17 +232,6 @@ LyXModuleList::iterator ModuleList::end()
 	return modlist_.end();
 }
 
-
-LyXModule * ModuleList::getModuleByName(string const & str)
-{
-	LyXModuleList::iterator it = modlist_.begin();
-	for (; it != modlist_.end(); ++it)
-		if (it->getName() == str) {
-			LyXModule & mod = *it;
-			return &mod;
-		}
-	return 0;
-}
 
 LyXModule * ModuleList::operator[](string const & str)
 {
