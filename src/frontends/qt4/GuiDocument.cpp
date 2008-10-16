@@ -1466,7 +1466,7 @@ void GuiDocument::updateModuleInfo()
 	if (!isModuleAvailable(modName)) {
 		if (!desc.empty())
 			desc += "\n";
-		desc += _("WARNING: Some packages are unavailable!");
+		desc += _("WARNING: Some required packages are unavailable!");
 	}
 
 	latexModule->infoML->document()->setPlainText(toqstr(desc));

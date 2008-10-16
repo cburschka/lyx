@@ -1470,7 +1470,7 @@ void BufferParams::setDocumentClass(DocumentClass const * const tc) {
 
 void BufferParams::addDefaultModules()
 {
-		// add any default modules not already in use
+	// add any default modules not already in use
 	list<string> const & mods = baseClass()->defaultModules();
 	list<string>::const_iterator mit = mods.begin();
 	list<string>::const_iterator men = mods.end();

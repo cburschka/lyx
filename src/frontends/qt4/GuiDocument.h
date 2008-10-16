@@ -45,7 +45,7 @@ class TextClass;
 namespace frontend {
 
 class GuiBranches;
-class GuiSelectionManager;
+class ModuleSelectionManager;
 class PreambleModule;
 
 ///
@@ -116,7 +116,7 @@ private:
 	BulletsModule * bulletsModule;
 	FloatPlacement * floatModule;
 
-	GuiSelectionManager * selectionManager;
+	ModuleSelectionManager * selectionManager;
 
 	/// Available modules
 	GuiIdListModel * availableModel() { return &modules_av_model_; }
