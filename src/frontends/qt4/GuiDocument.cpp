@@ -274,30 +274,33 @@ void ModuleSelectionManager::updateAddPB()
 	int const arows = availableModel->rowCount();
 	QModelIndexList const availSels = 
 			availableLV->selectionModel()->selectedIndexes();
-	if (arows == 0 || availSels.isEmpty()  || isSelected(availSels.first())) {
+
+	// disable if there aren't any modules (?), if none of them is chosen
+	// in the dialog, or if the chosen one is already selected for use.
+	if (arows == 0 || availSels.isEmpty() || isSelected(availSels.first())) {
 		addPB->setEnabled(false);
 		return;
 	}
-	
+
 	QModelIndex const & idx = availableLV->selectionModel()->currentIndex();
 	string const modName = getAvailableModel()->getIDString(idx.row());
-	vector<string> const reqs = getRequiredList(modName);
-	vector<string> const excl = getExcludedList(modName);
-	
-	if (reqs.empty() && excl.empty()) {
-		addPB->setEnabled(true);
-		return;
-	}
 
 	int const srows = selectedModel->rowCount();
+	// if no modules are yet selected, there is no more to check.
+	if (srows == 0) {
+ 		addPB->setEnabled(true);
+ 		return;
+ 	}
+
 	vector<string> selModList;
 	for (int i = 0; i < srows; ++i)
 		selModList.push_back(getSelectedModel()->getIDString(i));
 
 	vector<string>::const_iterator const selModStart = selModList.begin();
 	vector<string>::const_iterator const selModEnd   = selModList.end();
-	
+
 	// Check whether some required module is available
+	vector<string> const reqs = getRequiredList(modName);
 	if (!reqs.empty()) {
 		bool foundOne = false;
 		vector<string>::const_iterator it = reqs.begin();
@@ -314,7 +317,8 @@ void ModuleSelectionManager::updateAddPB()
 		}
 	}
 	
-	// Check whether any excluded module is being used
+	// Check whether any excluded module is being used...
+	vector<string> const excl = getExcludedList(modName);
 	if (!excl.empty()) {
 		vector<string>::const_iterator it = excl.begin();
 		vector<string>::const_iterator en = excl.end();
@@ -323,6 +327,19 @@ void ModuleSelectionManager::updateAddPB()
 				addPB->setEnabled(false);
 				return;
 			}
+		}
+	}
+
+	// ...and whether any used module excludes us.
+	vector<string>::const_iterator selModIt = selModStart;
+	for (; selModIt != selModEnd; ++selModIt) {
+		string selMod = *selModIt;
+		vector<string> excMods = getExcludedList(selMod);
+		vector<string>::const_iterator const eit = excMods.begin();
+		vector<string>::const_iterator const een = excMods.end();
+		if (find(eit, een, modName) != een) {
+			addPB->setEnabled(false);
+			return;
 		}
 	}
 
