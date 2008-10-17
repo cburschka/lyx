@@ -376,7 +376,8 @@ def checkConverterEntries():
 
     #
     checkProg('a Noweb -> LaTeX converter', ['noweave -delay -index $$i > $$o'],
-        rc_entry = [ r'\converter literate   latex      "%%"	""' ])
+        rc_entry = [r'''\converter literate   latex      "%%"	""
+\converter literate   pdflatex      "%%"	""'''])
     #
     checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex $$i', \
         'htmltolatex -input $$i -output $$o', 'java -jar htmltolatex.jar -input $$i -output $$o'],
