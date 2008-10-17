@@ -36,7 +36,7 @@ QErrorListDialog::QErrorListDialog(QErrorList * form)
 	setupUi(this);
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
-	connect(errorsLW, SIGNAL(itemSelectionChanged()),
+	connect(errorsLW, SIGNAL(currentRowChanged(int)),
 		this, SLOT(select_adaptor()));
 }
 
@@ -87,6 +87,8 @@ void QErrorList::build_dialog()
 void QErrorList::select(QListWidgetItem * wi)
 {
 	int const item = dialog_->errorsLW->row(wi);
+	if (item == -1)
+		return;
 	controller().goTo(item);
 	dialog_->descriptionTB->setPlainText(toqstr(controller().errorList()[item].description));
 }
