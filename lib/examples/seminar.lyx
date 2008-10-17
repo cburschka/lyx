@@ -1,0 +1,668 @@
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 344
+\begin_document
+\begin_header
+\textclass seminar
+\begin_preamble
+\renewcommand{\printlandscape}{\special{landscape}}
+%\sliderotation{right}
+\end_preamble
+\options a4, semrot, slidesec
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman lmodern
+\font_sans lmss
+\font_typewriter lmtt
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ You must not use the view PDF button to preview this file! For viewing
+ and exporting this as PDF use in the menus only the method 
+\family sans
+PDF (dvipdfm)
+\family default
+.
+ Viewing and exporting seminar documents to DVI and PS can result in an
+ unwanted output, depending on your LaTeX system and the DVI or PostScript
+ viewer.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ The 
+\family sans
+seminar
+\family default
+ class is designed to produce transparencies, not presentations.
+ For presentations, use a presentation document class like 
+\family sans
+beamer
+\family default
+ or 
+\family sans
+powerdot
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LandscapeSlide
+
+\end_layout
+
+\begin_deeper
+\begin_layout SlideHeading
+How to make a presentation with LyX
+\begin_inset Newline newline
+\end_inset
+
+and the seminar LaTeX class 
+\end_layout
+
+\begin_layout SlideSubHeading
+seminar.cls and seminar.layout
+\begin_inset Newline newline
+\end_inset
+
+template and introduction
+\end_layout
+
+\end_deeper
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout LandscapeSlide
+
+\end_layout
+
+\begin_deeper
+\begin_layout SlideHeading
+Some basic points to start with:
+\end_layout
+
+\begin_layout Itemize
+Start a slide with an paragraph of type 
+\family typewriter
+LandscapeSlide
+\family default
+ or 
+\family typewriter
+PortraitSlide
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+It is really helpful to read the seminar handbook: 
+\family typewriter
+sem-user.pdf
+\family default
+ (or 
+\family typewriter
+sem-user.dvi
+\family default
+)
+\end_layout
+
+\end_deeper
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout PortraitSlide
+
+\end_layout
+
+\begin_deeper
+\begin_layout SlideHeading
+Putting some stuff in a slide 
+\end_layout
+
+\begin_layout Standard
+If a paragraph shall appear in a slide, it need to be 
+\end_layout
+
+\begin_layout Itemize
+either inside the opening 
+\family sans
+LandscapeSlide
+\family default
+ paragraph 
+\end_layout
+
+\begin_layout Itemize
+or nested inside the 
+\family sans
+LandscapeSlide
+\family default
+ environment
+\end_layout
+
+\begin_layout Standard
+How to nest things is explained in LyX's User's Guide chapter 3.4.
+\end_layout
+
+\end_deeper
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout LandscapeSlide
+
+\end_layout
+
+\begin_deeper
+\begin_layout SlideHeading
+What can be part of a slide?
+\end_layout
+
+\begin_layout Standard
+Virtually everything that can appear in normal LaTeX, can also be on a slide.
+\end_layout
+
+\begin_layout Standard
+(Well, floats are an exception --- who would want them on a slide.)
+\end_layout
+
+\begin_layout Standard
+Additionally there are the paragraph styles:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+SlideHeading,
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+SlideSubheading,
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+ListOfSlides,
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+SlideContents,
+\family default
+ and
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+ProgressContents
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+All of them can be found in the Style pulldown.
+\end_layout
+
+\end_deeper
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout LandscapeSlide
+Text within the 
+\family sans
+LandscapeSlide
+\family default
+ environment will go on top of the slide as a standard paragraph.
+\end_layout
+
+\begin_deeper
+\begin_layout SlideHeading
+What happens, when you want a List or a Heading first? 
+\end_layout
+
+\begin_layout Standard
+Normally, LyX doesn't like empty paragraphs and it kills empty environments
+ before you are able to nest something in them (if you don't insert an empty
+ command, like 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+, say).
+ 
+\family typewriter
+seminar
+\family default
+.
+\family typewriter
+layout
+\family default
+ tells LyX to leave an empty 
+\family sans
+LandscapeSlide
+\family default
+ or 
+\family sans
+PortraitSlide
+\family default
+, so you don't need to use the above workaround.
+\end_layout
+
+\begin_layout Standard
+The same holds for the 
+\family sans
+--Separator--
+\family default
+ Environment, that is needed because LyX will normally merge two environments
+ if they come immediately one after the other (i.e.
+ two Paragraphs in the 
+\family sans
+LandscapeSlide
+\family default
+ environment will go to one slide, if there is nothing else in between.)
+\end_layout
+
+\end_deeper
+\begin_layout LandscapeSlide
+
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+There is no need for a 
+\family sans
+--Separator--
+\family default
+ paragraph, if some notes follow the slide (or if a 
+\family sans
+Landscape Slide
+\family default
+ is followed by a 
+\family sans
+Portrait Slide
+\family default
+.
+ The seminar class puts everything that is not nested inside a 
+\family sans
+Slide
+\family default
+ environment on extra pages (see slide 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sli:output-options"
+
+\end_inset
+
+ for output options).
+\end_layout
+
+\begin_layout Section
+Outline
+\end_layout
+
+\begin_layout Standard
+Seminar defines additional content-listing commands, as the standard Table
+ of Contents only lists standard headings and subheadings:
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\family sans
+SlideContents
+\family default
+ paragraph style lists every page of the output (to produce a slide with
+ the contents, nest it in a 
+\family sans
+Slide
+\family default
+ paragraph):
+\end_layout
+
+\begin_layout SlideContents
+
+\end_layout
+
+\begin_layout Standard
+If you want to have a listing of the slides only, use the 
+\family sans
+ListOfSlides
+\family default
+ paragraph style:
+\end_layout
+
+\begin_layout ListOfSlides
+
+\end_layout
+
+\begin_layout Section
+Progress Contents
+\end_layout
+
+\begin_layout Standard
+If you want to assure the audience, that the presentation is almost over,
+ insert a slide with 
+\family sans
+ProgressContents
+\family default
+:
+\end_layout
+
+\begin_layout LandscapeSlide
+
+\end_layout
+
+\begin_deeper
+\begin_layout ProgressContents
+
+\end_layout
+
+\end_deeper
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout LandscapeSlide
+
+\end_layout
+
+\begin_deeper
+\begin_layout SlideHeading
+output options 
+\begin_inset CommandInset label
+LatexCommand label
+name "sli:output-options"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The following options can be added to the 
+\family sans
+Options
+\family default
+ field in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document
+\begin_inset space ~
+\end_inset
+
+Class
+\family default
+:
+\end_layout
+
+\begin_layout Description
+slidesonly Only the slides are printed
+\end_layout
+
+\begin_layout Description
+notesonly Only the notes are printed
+\end_layout
+
+\begin_layout Description
+notes Both notes and slides are printed
+\end_layout
+
+\begin_layout Description
+notesonly* Produces a slide marker for each slide environment
+\end_layout
+
+\begin_layout Description
+article Print as article (two-up)
+\end_layout
+
+\begin_layout SlideHeading
+preamble commands 
+\end_layout
+
+\begin_layout Description
+
+\backslash
+onlyslides{8,9,11} print only slides number 8, 9 and 11 (e.g.
+ color plots),
+\end_layout
+
+\begin_layout Description
+
+\backslash
+notslides{4,8,9,11} don't print these slides.
+\end_layout
+
+\end_deeper
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout LandscapeSlide
+
+\end_layout
+
+\begin_deeper
+\begin_layout SlideHeading
+Fancier formatting
+\end_layout
+
+\begin_layout Standard
+The LaTeX preamble is the right place for many many options to get fancier
+ formatting, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.:
+\end_layout
+
+\begin_layout Itemize
+different font sets, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+the Iwona fonts: 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+
+\backslash
+usepackage{iwona}
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+fancy frames:
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+
+\backslash
+usepackage{fancybox}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+setlength{
+\backslash
+slideframewidth}{1pt}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+slideframe[
+\backslash
+setlength{
+\backslash
+shadowsize}{1pt}]{shadow} 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout LandscapeSlide
+
+\end_layout
+
+\begin_deeper
+\begin_layout SlideHeading
+Troubleshooting
+\end_layout
+
+\begin_layout Itemize
+There is a bug in 
+\family typewriter
+seminar.cls
+\family default
+ making it fail with the 
+\family typewriter
+a4paper
+\family default
+ option.
+ If you use A4 paper, set in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Page
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+ the 
+\family sans
+Paper
+\begin_inset space ~
+\end_inset
+
+Size
+\family default
+ to 
+\family sans
+Default
+\family default
+ and add 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+a4
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ to the 
+\family sans
+Options
+\family default
+ field in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document
+\begin_inset space ~
+\end_inset
+
+Class
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+If you have problems with the orientation of the slides/page, try the recommenda
+tions in Apppendix E of the seminar handbook.
+\end_layout
+
+\begin_layout Itemize
+Assure that the document page margins are set to default.
+\end_layout
+
+\end_deeper
+\begin_layout LandscapeSlide
+
+\end_layout
+
+\end_body
+\end_document

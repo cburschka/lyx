@@ -2354,6 +2354,7 @@ lib_examples_files = Split('''
     noweb2lyx.lyx
     powerdot-example.lyx
     script_form.lyx
+    seminar.lyx
     serial_letter1.lyx
     serial_letter2.lyx
     serial_letter3.lyx

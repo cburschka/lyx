@@ -225,6 +225,7 @@ dist_examples_DATA = \
 	examples/noweb2lyx.lyx \
 	examples/powerdot-example.lyx \
 	examples/script_form.lyx \
+	examples/seminar.lyx \
 	examples/serial_letter1.lyx \
 	examples/serial_letter2.lyx \
 	examples/serial_letter3.lyx \

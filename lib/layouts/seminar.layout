@@ -1,114 +1,92 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass{presentation (seminar)}
-# Initial attemt at makeing a LyX layout file for the seminar class.
-# Author : Lars Gullik Bjønnes <larsbj@lyx.org>
+#  \DeclareLaTeXClass{transparencies (seminar)}
+# Versions:
+#   1.0 Initial attemt at makeing a LyX layout file for the seminar class.
+#       Author : Lars Gullik Bjønnes <larsbj@lyx.org>
+#   1.1 08-04-2002 Günter Milde <milde users.sf.net>
+#   1.2 11-12-2002 Günter Milde (copying some stuff from L. G. Bjønnes
+#                                version in LyX 1.3)
+#   1.3 2007-09-18 GM (adapted to LyX 1.5)
+#   1.4 2008-10-08 GM (use --Separator-- "look")
 
-Format 10
-Input stdclass.inc
-
-NoStyle Chapter
-NoStyle Chapter*
-
-Sides                   1
-Columns                 1
-SecNumDepth             3
-TocDepth                3
-
+Format	10
+Sides	1
+Columns	1
 
 ClassOptions
-	FontSize              8|9|10|11|12|14|17
-	Other                 slidesec
+	FontSize	8|9|10|11|12|14|17
+	Other	slidesec
 End
 
-
-Style Part
-	Align                 Left
-	TopSep                2
-	BottomSep             1.5
-	Font
-	  Size                Larger
-	EndFont
-End
-
-
-Style Part*
-	Align                 Left
-	TopSep                2
-	BottomSep             1.5
-	Font
-	  Size                Larger
-	EndFont
-End
-
+# Input general definitions: (seminar is based on the article class)
+Input article.layout
 
 Style LandscapeSlide
-	CopyStyle             Standard
-	LatexType             Environment
-	LatexName             slide
-	KeepEmpty             1
-	Labeltype             Static
-	LabelString           "Landscape Slide"
-	LabelSep              "MMMMMMM"
+	CopyStyle		--Separator-- 
+	LatexType		Environment
+	LatexName		slide
+	NextNoIndent		1
+	Margin			Static
+	LeftMargin		N
+	ParIndent		""
+	TopSep			0.4
+	LabelType		Top_Environment
+	LabelString		"Landscape Slide:"
 End
-
+Style Slide
+	Obsoletedby		LandscapeSlide
+End
 
 Style PortraitSlide
-	CopyStyle             Standard
-	LatexType             Environment
-	LatexName             slide*
-	KeepEmpty             1
-	Labeltype             Static
-	LabelString           "Portrait Slide"
+	CopyStyle		LandscapeSlide
+	LatexName		slide*
+	LabelString		"Portrait Slide:"
 End
-
-
-Style Slide
-	Obsoletedby           LandscapeSlide
-End
-
-
 Style Slide*
-	Obsoletedby           PortraitSlide
+	Obsoletedby		PortraitSlide
 End
 
+# EndOfSlide was a dummy style whose main purpose is to separate subsequent
+# Slide environments. Nowadays lyx has the special --Separator-- style as
+# workaround:
+Style EndOfSlide
+	ObsoletedBy		--Separator--
+End
 
+# Note: \slideheading is only defined when the option slidesec is present
 Style SlideHeading
-	CopyStyle             Section
-	LatexName             slideheading
+	CopyStyle		Section
+	LatexName		slideheading
+	Align			Center
 End
 
-
+# Note: \slidesubheading is only defined when the option slidesec is present
 Style SlideSubHeading
-	CopyStyle             Subsection
-	LatexName             slidesubheading
+	CopyStyle		Subsection
+	LatexName		slidesubheading
+	Align			Center
 End
-
 
 Style ListOfSlides
-	KeepEmpty             1
-	Align                 Center
-	LatexType             Command
-	LatexName             listofslides
-	Labeltype             Static
-	LabelString           "List Of Slides"
+	CopyStyle		--Separator--
+	LatexType		Command
+	LatexName		listofslides
+	TopSep			0.5
+	BottomSep		0.5
+	Align			Center
+#	BottomSep		0
+	LabelString		"[List Of Slides]"
 End
-
 
 Style SlideContents
-	KeepEmpty             1
-	Align                 Center
-	LatexType             Command
-	LatexName             slidecontents
-	Labeltype             Static
-	LabelString           "Slidecontents"
+	CopyStyle		ListOfSlides
+	LatexName		slidecontents
+	LabelString		"[Slide Contents]"
 End
-
 
 Style ProgressContents
-	KeepEmpty             1
-	Align                 Center
-	LatexType             Command
-	LatexName             Slidecontents
-	Labeltype             Static
-	LabelString           "Progress Contents"
+	CopyStyle		ListOfSlides
+	LatexName		Slidecontents
+	LabelString		"[Progress Contents]"
 End
+
