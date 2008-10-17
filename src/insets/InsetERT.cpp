@@ -175,13 +175,6 @@ bool InsetERT::insetAllowed(InsetCode /* code */) const
 }
 
 
-void InsetERT::draw(PainterInfo & pi, int x, int y) const
-{
-	const_cast<InsetERT &>(*this).setButtonLabel();
-	InsetCollapsable::draw(pi, x, y);
-}
-
-
 bool InsetERT::showInsetDialog(BufferView * bv) const
 {
 	bv->showDialog("ert", params2string(status()), 

@@ -59,8 +59,6 @@ private:
 	///
 	void validate(LaTeXFeatures &) const {}
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
-	///
 	bool showInsetDialog(BufferView *) const;
 	///
 	virtual bool forcePlainLayout(idx_type = 0) const { return true; }

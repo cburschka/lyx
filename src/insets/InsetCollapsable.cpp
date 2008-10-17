@@ -170,8 +170,10 @@ void InsetCollapsable::read(Lexer & lex)
 
 	// this must be set before we enter InsetText::read()
 	setLayout(buffer().params());
-
 	InsetText::read(lex);
+	// set button label again as the inset contents was not read yet at
+	// setLayout() time.
+	setButtonLabel();
 
 	// Force default font, if so requested
 	// This avoids paragraphs in buffer language that would have a
