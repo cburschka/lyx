@@ -109,6 +109,8 @@ public:
 	///
 	void read(Lexer & lex);
 	///
+	void readQuiet(Lexer & lex);
+	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;

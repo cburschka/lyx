@@ -13,6 +13,7 @@
 #ifndef MATH_SUPPORT_H
 #define MATH_SUPPORT_H
 
+#include "mathparser_flags.h"
 #include "support/strfwd.h"
 #include <vector>
 
@@ -54,7 +55,7 @@ docstring asString(MathData const & ar);
 docstring asString(InsetMath const &);
 docstring asString(MathAtom const &);
 // converts string to single cell
-void asArray(docstring const & str, MathData & ar);
+void asArray(docstring const &, MathData &, Parse::flags f = Parse::NORMAL);
 
 } // namespace lyx
 

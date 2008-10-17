@@ -17,6 +17,8 @@
 #include "Font.h"
 #include "Undo.h"
 
+#include "mathed/mathparser_flags.h"
+
 #include <vector>
 
 
@@ -371,7 +373,7 @@ public:
 	///
 	void niceInsert(MathAtom const & at);
 	///
-	void niceInsert(docstring const & str);
+	void niceInsert(docstring const & str, Parse::flags f = Parse::NORMAL);
 
 	/// in pixels from top of screen
 	void setScreenPos(int x, int y);

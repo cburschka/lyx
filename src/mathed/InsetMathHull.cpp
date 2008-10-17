@@ -1584,6 +1584,14 @@ void InsetMathHull::read(Lexer & lex)
 }
 
 
+void InsetMathHull::readQuiet(Lexer & lex)
+{
+	MathAtom at;
+	mathed_parse_normal(at, lex, Parse::QUIET);
+	operator=(*at->asHullInset());
+}
+
+
 int InsetMathHull::plaintext(odocstream & os, OutputParams const & runparams) const
 {
 	if (0 && display()) {

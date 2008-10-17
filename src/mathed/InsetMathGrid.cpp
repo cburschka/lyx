@@ -62,6 +62,17 @@ static int extractInt(istream & is)
 }
 
 
+static void resetGrid(InsetMathGrid & grid)
+{
+	while (grid.ncols() > 1)
+		grid.delCol(grid.ncols());
+	while (grid.nrows() > 1)
+		grid.delRow(grid.nrows());
+	grid.cell(0).erase(0, grid.cell(0).size());
+	grid.setDefaults();
+}
+
+
 
 //////////////////////////////////////////////////////////////
 
@@ -1053,6 +1064,9 @@ void InsetMathGrid::splitCell(Cursor & cur)
 void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "*** InsetMathGrid: request: " << cmd << endl;
+
+	Parse::flags parseflg = Parse::QUIET;
+
 	switch (cmd.action) {
 
 	// insert file functions
@@ -1233,6 +1247,9 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_CLIPBOARD_PASTE:
+		parseflg |= Parse::VERBATIM;
+		// fall through
 	case LFUN_PASTE: {
 		cur.message(_("Paste"));
 		cap::replaceSelection(cur);
@@ -1247,7 +1264,12 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		InsetMathGrid grid(1, 1);
 		if (!topaste.empty())
-			mathed_parse_normal(grid, topaste);
+			if (topaste.size() == 1
+			    || !mathed_parse_normal(grid, topaste, parseflg)) {
+				resetGrid(grid);
+				mathed_parse_normal(grid, topaste,
+						parseflg | Parse::VERBATIM);
+			}
 
 		if (grid.nargs() == 1) {
 			// single cell/part of cell

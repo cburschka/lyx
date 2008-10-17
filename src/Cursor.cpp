@@ -1242,10 +1242,10 @@ void Cursor::insert(Inset * inset0)
 }
 
 
-void Cursor::niceInsert(docstring const & t)
+void Cursor::niceInsert(docstring const & t, Parse::flags f)
 {
 	MathData ar;
-	asArray(t, ar);
+	asArray(t, ar, f);
 	if (ar.size() == 1)
 		niceInsert(ar[0]);
 	else

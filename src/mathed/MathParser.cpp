@@ -68,6 +68,7 @@ following hack as starting point to write some macros:
 #include "support/debug.h"
 #include "support/convert.h"
 #include "support/docstream.h"
+#include "support/lstrings.h"
 
 #include <sstream>
 
@@ -77,10 +78,9 @@ using namespace std;
 
 namespace lyx {
 
+using support::subst;
+
 namespace {
-
-bool warn_unusual_contents = true;
-
 
 InsetMath::mode_type asMode(InsetMath::mode_type oldmode, docstring const & str)
 {
@@ -97,6 +97,21 @@ bool stared(docstring const & s)
 {
 	size_t const n = s.size();
 	return n && s[n - 1] == '*';
+}
+
+
+docstring escapeSpecialChars(docstring const & str)
+{
+	return subst(subst(subst(subst(subst(subst(subst(subst(subst(str,
+			from_ascii("\\"), from_ascii("\\backslash ")),
+			from_ascii("^"), from_ascii("\\mathcircumflex ")),
+			from_ascii("_"), from_ascii("\\_")),
+			from_ascii("$"), from_ascii("\\$")),
+			from_ascii("#"), from_ascii("\\#")),
+			from_ascii("&"), from_ascii("\\&")),
+			from_ascii("%"), from_ascii("\\%")),
+			from_ascii("{"), from_ascii("\\{")),
+			from_ascii("}"), from_ascii("\\}"));
 }
 
 
@@ -307,21 +322,23 @@ class Parser {
 public:
 	///
 	typedef  InsetMath::mode_type mode_type;
+	///
+	typedef  Parse::flags parse_mode;
 
 	///
-	Parser(Lexer & lex);
+	Parser(Lexer & lex, parse_mode mode);
 	/// Only use this for reading from .lyx file format, for the reason
 	/// see Parser::tokenize(istream &).
-	Parser(istream & is);
+	Parser(istream & is, parse_mode mode);
 	///
-	Parser(docstring const & str);
+	Parser(docstring const & str, parse_mode mode);
 
 	///
 	bool parse(MathAtom & at);
 	///
-	void parse(MathData & array, unsigned flags, mode_type mode);
+	bool parse(MathData & array, unsigned flags, mode_type mode);
 	///
-	void parse1(InsetMathGrid & grid, unsigned flags, mode_type mode,
+	bool parse1(InsetMathGrid & grid, unsigned flags, mode_type mode,
 		bool numbered);
 	///
 	MathData parse(unsigned flags, mode_type mode);
@@ -378,26 +395,30 @@ private:
 	unsigned pos_;
 	/// Stack of active environments
 	vector<docstring> environments_;
+	///
+	parse_mode mode_;
+	///
+	bool success_;
 };
 
 
-Parser::Parser(Lexer & lexer)
-	: lineno_(lexer.lineNumber()), pos_(0)
+Parser::Parser(Lexer & lexer, parse_mode mode)
+	: lineno_(lexer.lineNumber()), pos_(0), mode_(mode), success_(true)
 {
 	tokenize(lexer.getStream());
 	lexer.eatLine();
 }
 
 
-Parser::Parser(istream & is)
-	: lineno_(0), pos_(0)
+Parser::Parser(istream & is, parse_mode mode)
+	: lineno_(0), pos_(0), mode_(mode), success_(true)
 {
 	tokenize(is);
 }
 
 
-Parser::Parser(docstring const & str)
-	: lineno_(0), pos_(0)
+Parser::Parser(docstring const & str, parse_mode mode)
+	: lineno_(0), pos_(0), mode_(mode), success_(true)
 {
 	tokenize(str);
 }
@@ -519,7 +540,8 @@ void Parser::tokenize(istream & is)
 
 void Parser::tokenize(docstring const & buffer)
 {
-	idocstringstream is(buffer, ios::in | ios::binary);
+	idocstringstream is(mode_ & Parse::VERBATIM ?
+		escapeSpecialChars(buffer) : buffer, ios::in | ios::binary);
 
 	char_type c;
 	while (is.get(c)) {
@@ -573,7 +595,8 @@ void Parser::tokenize(docstring const & buffer)
 			}
 
 			case catIgnore: {
-				lyxerr << "ignoring a char: " << int(c) << endl;
+				if (!(mode_ & Parse::QUIET))
+					lyxerr << "ignoring a char: " << int(c) << endl;
 				break;
 			}
 
@@ -602,9 +625,12 @@ void Parser::dump() const
 
 void Parser::error(string const & msg)
 {
-	lyxerr << "Line ~" << lineno_ << ": Math parse error: " << msg << endl;
-	dump();
-	//exit(1);
+	success_ = false;
+	if (!(mode_ & Parse::QUIET)) {
+		lyxerr << "Line ~" << lineno_ << ": Math parse error: "
+		       << msg << endl;
+		dump();
+	}
 }
 
 
@@ -614,14 +640,14 @@ bool Parser::parse(MathAtom & at)
 	MathData ar;
 	parse(ar, false, InsetMath::UNDECIDED_MODE);
 	if (ar.size() != 1 || ar.front()->getType() == hullNone) {
-		if (warn_unusual_contents)
+		if (!(mode_ & Parse::QUIET))
 			lyxerr << "unusual contents found: " << ar << endl;
 		at = MathAtom(new InsetMathPar(ar));
 		//if (at->nargs() > 0)
 		//	at.nucleus()->cell(0) = ar;
 		//else
 		//	lyxerr << "unusual contents found: " << ar << endl;
-		return true;
+		return false;
 	}
 	at = ar[0];
 	return true;
@@ -673,11 +699,12 @@ MathData Parser::parse(unsigned flags, mode_type mode)
 }
 
 
-void Parser::parse(MathData & array, unsigned flags, mode_type mode)
+bool Parser::parse(MathData & array, unsigned flags, mode_type mode)
 {
 	InsetMathGrid grid(1, 1);
 	parse1(grid, flags, mode, false);
 	array = grid.cell(0);
+	return success_;
 }
 
 
@@ -688,7 +715,7 @@ void Parser::parse2(MathAtom & at, const unsigned flags, const mode_type mode,
 }
 
 
-void Parser::parse1(InsetMathGrid & grid, unsigned flags,
+bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 	const mode_type mode, const bool numbered)
 {
 	int limits = 0;
@@ -720,7 +747,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				// skip the brace and collect everything to the next matching
 				// closing brace
 				parse1(grid, FLAG_BRACE_LAST, mode, numbered);
-				return;
+				return success_;
 			}
 
 			// handle only this single token, leave the loop if done
@@ -734,7 +761,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 			if (t.cat() != catBegin) {
 				error("opening brace expected");
-				return;
+				return success_;
 			}
 
 			// skip the brace and collect everything to the next matching
@@ -752,7 +779,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				// no option found, put back token and we are done
 				putback();
 			}
-			return;
+			return success_;
 		}
 
 		//
@@ -777,7 +804,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 			else if (flags & FLAG_SIMPLE) {
 				// this is the end of the formula
-				return;
+				return success_;
 			}
 
 			else {
@@ -820,7 +847,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		else if (t.cat() == catEnd) {
 			if (flags & FLAG_BRACE_LAST)
-				return;
+				return success_;
 			error("found '}' unexpectedly");
 			//LASSERT(false, /**/);
 			//add(cell, '}', LM_TC_TEX);
@@ -830,7 +857,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			//lyxerr << " column now " << (cellcol + 1)
 			//       << " max: " << grid.ncols() << endl;
 			if (flags & FLAG_ALIGN)
-				return;
+				return success_;
 			if (addCol(grid, cellcol))
 				cell = &grid.cell(grid.index(cellrow, cellcol));
 		}
@@ -870,7 +897,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		else if (t.character() == ']' && (flags & FLAG_BRACK_LAST)) {
 			//lyxerr << "finished reading option" << endl;
-			return;
+			return success_;
 		}
 
 		else if (t.cat() == catOther)
@@ -934,12 +961,12 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			// get name
 			if (getToken().cat() != catBegin) {
 				error("'{' in \\newcommand expected (1) ");
-				return;
+				return success_;
 			}
 			docstring name = getToken().cs();
 			if (getToken().cat() != catEnd) {
 				error("'}' in \\newcommand expected");
-				return;
+				return success_;
 			}
 				
 			// get arity
@@ -983,7 +1010,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				name = getToken().cs();
 				if (getToken().cat() != catEnd) {
 					error("'}' in \\newcommandx expected");
-					return;
+					return success_;
 				}
 			} else
 				name = getToken().cs();
@@ -992,7 +1019,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			docstring const arg = getArg('[', ']');
 			if (arg.empty()) {
 				error("[num] in \\newcommandx expected");
-				return;
+				return success_;
 			}
 			int nargs = convert<int>(arg);
 			
@@ -1013,14 +1040,14 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 						if (n > nargs) {
 							error("Arity of \\newcommandx too low "
 							      "for given optional parameter.");
-							return;
+							return success_;
 						}
 						
 						// skip '='
 						if (getToken().character() != '=') {
 							error("'=' and optional parameter value "
 							      "expected for \\newcommandx");
-							return;
+							return success_;
 						}
 						
 						// get value
@@ -1055,7 +1082,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 						}
 					} else {
 						error("option for \\newcommandx expected");
-						return;
+						return success_;
 					}
 					
 					// skip komma
@@ -1066,13 +1093,13 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					} else if (nextToken().character() != ']') {
 						error("Expecting ',' or ']' in options "
 						      "of \\newcommandx");
-						return;
+						return success_;
 					}
 				}
 				
 				// skip ']'
 				if (!good())
-					return;
+					return success_;
 				getToken();
 			}
 
@@ -1128,7 +1155,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					// single line hull insets.
 					if (grid.nrows() > 1)
 						delEmptyLastRow(grid);
-					return;
+					return success_;
 				}
 			} else
 				error("found 'end' unexpectedly");
@@ -1136,19 +1163,19 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		else if (t.cs() == ")") {
 			if (flags & FLAG_SIMPLE2)
-				return;
+				return success_;
 			error("found '\\)' unexpectedly");
 		}
 
 		else if (t.cs() == "]") {
 			if (flags & FLAG_EQUATION)
-				return;
+				return success_;
 			error("found '\\]' unexpectedly");
 		}
 
 		else if (t.cs() == "\\") {
 			if (flags & FLAG_ALIGN)
-				return;
+				return success_;
 			bool added = false;
 			if (nextToken().asInput() == "*") {
 				getToken();
@@ -1174,6 +1201,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			parse(count, FLAG_ITEM, mode);
 			int cols = 1;
 			if (!extractNumber(count, cols)) {
+				success_ = false;
 				lyxerr << " can't extract number of cells from " << count << endl;
 			}
 			// resize the table if necessary
@@ -1291,10 +1319,10 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		else if (t.cs() == "right") {
 			if (flags & FLAG_RIGHT)
-				return;
+				return success_;
 			//lyxerr << "got so far: '" << cell << "'" << endl;
 			error("Unmatched right delimiter");
-			return;
+			return success_;
 		}
 
 		else if (t.cs() == "begin") {
@@ -1396,10 +1424,15 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					cell->push_back(MathAtom(new InsetMathSplit(name, (char)valign[0])));
 					parse2(cell->back(), FLAG_END, mode, false);
 				} else {
-					dump();
-					lyxerr << "found math environment `" << to_utf8(name)
-					       << "' in symbols file with unsupported inset `"
-					       << to_utf8(l->inset) << "'." << endl;
+					success_ = false;
+					if (!(mode_ & Parse::QUIET)) {
+						dump();
+						lyxerr << "found math environment `"
+						       << to_utf8(name)
+						       << "' in symbols file with unsupported inset `"
+						       << to_utf8(l->inset)
+						       << "'." << endl;
+					}
 					// create generic environment inset
 					cell->push_back(MathAtom(new InsetMathEnv(name)));
 					parse(cell->back().nucleus()->cell(0), FLAG_END, mode);
@@ -1407,9 +1440,12 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 
 			else {
-				dump();
-				lyxerr << "found unknown math environment '" << to_utf8(name)
-					<< "'" << endl;
+				success_ = false;
+				if (!(mode_ & Parse::QUIET)) {
+					dump();
+					lyxerr << "found unknown math environment '"
+					       << to_utf8(name) << "'" << endl;
+				}
 				// create generic environment inset
 				cell->push_back(MathAtom(new InsetMathEnv(name)));
 				parse(cell->back().nucleus()->cell(0), FLAG_END, mode);
@@ -1453,14 +1489,14 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			cell->clear();
 			parse(at.nucleus()->cell(1), flags, mode);
 			cell->push_back(at);
-			return;
+			return success_;
 		}
 
 		else if (t.cs() == "color") {
 			docstring const color = parse_verbatim_item();
 			cell->push_back(MathAtom(new InsetMathColor(true, color)));
 			parse(cell->back().nucleus()->cell(0), flags, mode);
-			return;
+			return success_;
 		}
 
 		else if (t.cs() == "textcolor") {
@@ -1472,7 +1508,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		else if (t.cs() == "normalcolor") {
 			cell->push_back(createInsetMath(t.cs()));
 			parse(cell->back().nucleus()->cell(0), flags, mode);
-			return;
+			return success_;
 		}
 
 		else if (t.cs() == "substack") {
@@ -1534,7 +1570,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			skipSpaces();
 			if (getToken().cat() != catBegin) {
 				error("'{' expected in \\" + t.cs());
-				return;
+				return success_;
 			}
 			int count = 0;
 			docstring cmd;
@@ -1549,7 +1585,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 			if (getToken().cat() != catEnd) {
 				error("'}' expected in \\" + t.cs());
-				return;
+				return success_;
 			}
 			docstring rem;
 			cmd = Encodings::fromLaTeXCommand(cmd, rem);
@@ -1559,7 +1595,8 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				MathAtom at = createInsetMath(t.cs());
 				cell->push_back(at);
 				MathData ar;
-				mathed_parse_cell(ar, '{' + rem + '}');
+				if (!mathed_parse_cell(ar, '{' + rem + '}', mode_))
+					success_ = false;;
 				cell->append(ar);
 			}
 		}
@@ -1591,7 +1628,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 						flags | FLAG_ALIGN, asMode(mode, l->extra));
 					if (prevToken().cat() != catAlign &&
 					    prevToken().cs() != "\\")
-						return;
+						return success_;
 					putback();
 				}
 
@@ -1601,7 +1638,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 						flags | FLAG_ALIGN, mode);
 					if (prevToken().cat() != catAlign &&
 					    prevToken().cs() != "\\")
-						return;
+						return success_;
 					putback();
 				}
 
@@ -1684,6 +1721,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			break;
 		}
 	}
+	return success_;
 }
 
 
@@ -1691,39 +1729,36 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 } // anonymous namespace
 
 
-void mathed_parser_warn_contents(bool warn)
+bool mathed_parse_cell(MathData & ar, docstring const & str, Parse::flags f)
 {
-	warn_unusual_contents = warn;
+	return Parser(str, f).parse(ar, 0, f & Parse::TEXTMODE ?
+				InsetMath::TEXT_MODE : InsetMath::MATH_MODE);
 }
 
 
-void mathed_parse_cell(MathData & ar, docstring const & str)
+bool mathed_parse_cell(MathData & ar, istream & is, Parse::flags f)
 {
-	Parser(str).parse(ar, 0, InsetMath::MATH_MODE);
+	return Parser(is, f).parse(ar, 0, f & Parse::TEXTMODE ?
+				InsetMath::TEXT_MODE : InsetMath::MATH_MODE);
 }
 
 
-void mathed_parse_cell(MathData & ar, istream & is)
+bool mathed_parse_normal(MathAtom & t, docstring const & str, Parse::flags f)
 {
-	Parser(is).parse(ar, 0, InsetMath::MATH_MODE);
+	return Parser(str, f).parse(t);
 }
 
 
-bool mathed_parse_normal(MathAtom & t, docstring const & str)
+bool mathed_parse_normal(MathAtom & t, Lexer & lex, Parse::flags f)
 {
-	return Parser(str).parse(t);
+	return Parser(lex, f).parse(t);
 }
 
 
-bool mathed_parse_normal(MathAtom & t, Lexer & lex)
+bool mathed_parse_normal(InsetMathGrid & grid, docstring const & str, Parse::flags f)
 {
-	return Parser(lex).parse(t);
-}
-
-
-void mathed_parse_normal(InsetMathGrid & grid, docstring const & str)
-{
-	Parser(str).parse1(grid, 0, InsetMath::MATH_MODE, false);
+	return Parser(str, f).parse1(grid, 0, f & Parse::TEXTMODE ?
+			InsetMath::TEXT_MODE : InsetMath::MATH_MODE, false);
 }
 
 

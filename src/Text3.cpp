@@ -164,13 +164,12 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 			istringstream is(selstr);
 			Lexer lex;
 			lex.setStream(is);
-			mathed_parser_warn_contents(false);
-			formula->read(lex);
+			formula->readQuiet(lex);
 			if (formula->getType() == hullNone) {
 				// No valid formula, let's try with delims
 				is.str("$" + selstr + "$");
 				lex.setStream(is);
-				formula->read(lex);
+				formula->readQuiet(lex);
 				if (formula->getType() == hullNone) {
 					// Still not valid, leave it as is
 					valid = false;
@@ -180,7 +179,6 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 					cur.insert(formula);
 			} else
 				cur.insert(formula);
-			mathed_parser_warn_contents(true);
 		} else {
 			cur.insert(new MathMacroTemplate(sel));
 		}

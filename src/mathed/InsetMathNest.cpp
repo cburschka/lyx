@@ -513,8 +513,13 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "InsetMathNest: request: " << cmd << endl;
 
+	Parse::flags parseflg = Parse::QUIET;
+
 	switch (cmd.action) {
 
+	case LFUN_CLIPBOARD_PASTE:
+		parseflg |= Parse::VERBATIM;
+		// fall through
 	case LFUN_PASTE: {
 		cur.recordUndoSelection();
 		cur.message(_("Paste"));
@@ -528,7 +533,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			is >> n;
 			topaste = cap::selection(n);
 		}
-		cur.niceInsert(topaste);
+		cur.niceInsert(topaste, parseflg);
 		cur.clearSelection(); // bug 393
 		cur.finishUndo();
 		break;
