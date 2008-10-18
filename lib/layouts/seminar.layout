@@ -55,14 +55,14 @@ End
 
 # Note: \slideheading is only defined when the option slidesec is present
 Style SlideHeading
-	CopyStyle		Section
+	CopyStyle		Section*
 	LatexName		slideheading
 	Align			Center
 End
 
 # Note: \slidesubheading is only defined when the option slidesec is present
 Style SlideSubHeading
-	CopyStyle		Subsection
+	CopyStyle		Subsection*
 	LatexName		slidesubheading
 	Align			Center
 End

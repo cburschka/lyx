@@ -99,19 +99,13 @@ powerdot
 
 \begin_deeper
 \begin_layout SlideHeading
-How to make a presentation with LyX
-\begin_inset Newline newline
-\end_inset
-
-and the seminar LaTeX class 
-\end_layout
-
-\begin_layout SlideSubHeading
-seminar.cls and seminar.layout
-\begin_inset Newline newline
-\end_inset
-
-template and introduction
+Slides and Notes with the 
+\family sans
+\noun on
+Seminar
+\family default
+\noun default
+ class
 \end_layout
 
 \end_deeper
@@ -163,7 +157,7 @@ sem-user.dvi
 
 \begin_deeper
 \begin_layout SlideHeading
-Putting some stuff in a slide 
+Putting some content in a slide 
 \end_layout
 
 \begin_layout Standard
@@ -200,7 +194,7 @@ How to nest things is explained in LyX's User's Guide chapter 3.4.
 \end_layout
 
 \begin_deeper
-\begin_layout SlideHeading
+\begin_layout SlideSubHeading
 What can be part of a slide?
 \end_layout
 
@@ -251,7 +245,7 @@ ProgressContents
 \end_layout
 
 \begin_layout Standard
-All of them can be found in the Style pulldown.
+All of them can be found in the Style pull-down box.
 \end_layout
 
 \end_deeper
@@ -273,20 +267,9 @@ What happens, when you want a List or a Heading first?
 \end_layout
 
 \begin_layout Standard
-Normally, LyX doesn't like empty paragraphs and it kills empty environments
+Normally, LyX does not like empty paragraphs and it kills empty environments
  before you are able to nest something in them (if you don't insert an empty
- command, like 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-, say).
+ command or a note).
  
 \family typewriter
 seminar
@@ -307,47 +290,41 @@ PortraitSlide
 \end_layout
 
 \begin_layout Standard
-The same holds for the 
+The 
 \family sans
 --Separator--
 \family default
- Environment, that is needed because LyX will normally merge two environments
- if they come immediately one after the other (i.e.
- two Paragraphs in the 
+ paragraph after a slide is needed because LyX will normally merge two environme
+nts if they come immediately one after the other (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+two Paragraphs in the 
 \family sans
 LandscapeSlide
 \family default
- environment will go to one slide, if there is nothing else in between.)
+ environment will go to one slide, if there is nothing else between.)
 \end_layout
 
 \end_deeper
-\begin_layout LandscapeSlide
-
-\end_layout
-
 \begin_layout --Separator--
 
 \end_layout
 
 \begin_layout Standard
-There is no need for a 
-\family sans
---Separator--
-\family default
- paragraph, if some notes follow the slide (or if a 
-\family sans
-Landscape Slide
-\family default
- is followed by a 
-\family sans
-Portrait Slide
-\family default
-.
- The seminar class puts everything that is not nested inside a 
+The seminar class puts everything that is not nested inside a 
 \family sans
 Slide
 \family default
- environment on extra pages (see slide 
+ environment on extra pages as 
+\emph on
+notes
+\emph default
+ (see slide 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sli:output-options"
@@ -357,13 +334,37 @@ reference "sli:output-options"
  for output options).
 \end_layout
 
+\begin_layout Standard
+There is no need for a 
+\family sans
+--Separator--
+\family default
+ paragraph, if notes follow the slide (or if a 
+\family sans
+Landscape Slide
+\family default
+ is followed by a 
+\family sans
+Portrait Slide
+\family default
+.
+\end_layout
+
 \begin_layout Section
 Outline
 \end_layout
 
 \begin_layout Standard
-Seminar defines additional content-listing commands, as the standard Table
- of Contents only lists standard headings and subheadings:
+Seminar defines additional content-listing commands, as the Table of Contents
+ only lists 
+\begin_inset Quotes eld
+\end_inset
+
+normal
+\begin_inset Quotes erd
+\end_inset
+
+ headings and subheadings:
 \end_layout
 
 \begin_layout Standard
@@ -375,36 +376,58 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Subsection
+Slide contents
+\end_layout
+
 \begin_layout Standard
 The 
 \family sans
 SlideContents
 \family default
- paragraph style lists every page of the output (to produce a slide with
- the contents, nest it in a 
+ paragraph style is an analogue to the table of contents but lists only
+ 
 \family sans
-Slide
+SlideHeading
 \family default
- paragraph):
+s.
+ It has problems with 
+\family sans
+SlideSubheading
+\family default
+s, though which fail to show up in the list (seems to be a bug in 
+\family typewriter
+slidesec.sty
+\family default
+):
 \end_layout
 
 \begin_layout SlideContents
 
 \end_layout
 
+\begin_layout Subsection
+List of slides
+\end_layout
+
 \begin_layout Standard
-If you want to have a listing of the slides only, use the 
+Analogue to a list of tables, the 
 \family sans
 ListOfSlides
 \family default
- paragraph style:
+ style lists all slides in your document (to produce a slide with the list,
+ nest it in a 
+\family sans
+...Slide
+\family default
+ paragraph):
 \end_layout
 
 \begin_layout ListOfSlides
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Progress Contents
 \end_layout
 
@@ -437,7 +460,11 @@ ProgressContents
 
 \begin_deeper
 \begin_layout SlideHeading
-output options 
+Configuration
+\end_layout
+
+\begin_layout SlideSubHeading
+Output options
 \begin_inset CommandInset label
 LatexCommand label
 name "sli:output-options"
@@ -466,7 +493,7 @@ Class
 \end_layout
 
 \begin_layout Description
-slidesonly Only the slides are printed
+slidesonly Only the slides are printed.
 \end_layout
 
 \begin_layout Description
@@ -474,7 +501,7 @@ notesonly Only the notes are printed
 \end_layout
 
 \begin_layout Description
-notes Both notes and slides are printed
+notes Both notes and slides are printed.
 \end_layout
 
 \begin_layout Description
@@ -482,18 +509,32 @@ notesonly* Produces a slide marker for each slide environment
 \end_layout
 
 \begin_layout Description
-article Print as article (two-up)
+article Print as article (two-up).
 \end_layout
 
-\begin_layout SlideHeading
-preamble commands 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout SlideSubHeading
+Preamble commands 
 \end_layout
 
 \begin_layout Description
 
 \backslash
-onlyslides{8,9,11} print only slides number 8, 9 and 11 (e.g.
- color plots),
+onlyslides{8,9,11} print only slides number 8, 9 and 11 (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+color plots),
 \end_layout
 
 \begin_layout Description
@@ -512,7 +553,7 @@ notslides{4,8,9,11} don't print these slides.
 \end_layout
 
 \begin_deeper
-\begin_layout SlideHeading
+\begin_layout SlideSubHeading
 Fancier formatting
 \end_layout
 
@@ -652,7 +693,11 @@ Class
 
 \begin_layout Itemize
 If you have problems with the orientation of the slides/page, try the recommenda
-tions in Apppendix E of the seminar handbook.
+tions in Apppendix
+\begin_inset space ~
+\end_inset
+
+E of the seminar handbook.
 \end_layout
 
 \begin_layout Itemize
