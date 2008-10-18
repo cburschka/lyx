@@ -13,7 +13,7 @@
 #ifndef MATH_SUPPORT_H
 #define MATH_SUPPORT_H
 
-#include "mathparser_flags.h"
+#include "MathParser_flags.h"
 #include "support/strfwd.h"
 #include <vector>
 

@@ -13,7 +13,7 @@
 #ifndef MATH_PARSER_H
 #define MATH_PARSER_H
 
-#include "mathparser_flags.h"
+#include "MathParser_flags.h"
 
 #include "support/types.h"
 #include "support/docstring.h"
