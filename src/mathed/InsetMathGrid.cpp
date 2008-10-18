@@ -1251,6 +1251,8 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		parseflg |= Parse::VERBATIM;
 		// fall through
 	case LFUN_PASTE: {
+		if (cur.currentMode() == TEXT_MODE)
+			parseflg |= Parse::TEXTMODE;
 		cur.message(_("Paste"));
 		cap::replaceSelection(cur);
 		docstring topaste;

@@ -521,6 +521,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		parseflg |= Parse::VERBATIM;
 		// fall through
 	case LFUN_PASTE: {
+		if (cur.currentMode() == TEXT_MODE)
+			parseflg |= Parse::TEXTMODE;
 		cur.recordUndoSelection();
 		cur.message(_("Paste"));
 		replaceSelection(cur);
