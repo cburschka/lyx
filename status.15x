@@ -96,6 +96,8 @@ What's new
 - The LaTeX package amscd is now loaded automatically after math diagrams
   have been created (bug 5090).
 
+- Load amsmath automatically for ams dots such as \dotsb (bug 5376).
+
 - Fix inputenc error with ligature glyphs in utf8 encoding (bug 5086).
 
 - Fix LaTeX error with deleted straight quotes in change tracking mode

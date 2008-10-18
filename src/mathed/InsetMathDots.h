@@ -30,6 +30,8 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	docstring name() const;
+	/// request "external features"
+	void validate(LaTeXFeatures & features) const;
 protected:
 	/// cache for the thing's height
 	mutable int dh_;

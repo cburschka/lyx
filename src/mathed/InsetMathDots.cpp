@@ -12,6 +12,8 @@
 #include <config.h>
 
 #include "InsetMathDots.h"
+
+#include "LaTeXFeatures.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "MathParser.h"
@@ -75,6 +77,13 @@ void InsetMathDots::draw(PainterInfo & pain, int x, int y) const
 docstring InsetMathDots::name() const
 {
 	return key_->name;
+}
+
+
+void InsetMathDots::validate(LaTeXFeatures & features) const
+{
+	if (!key_->requires.empty())
+		features.require(to_utf8(key_->requires));
 }
 
 
