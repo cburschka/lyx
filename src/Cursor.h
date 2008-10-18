@@ -17,7 +17,7 @@
 #include "Font.h"
 #include "Undo.h"
 
-#include "mathed/mathparser_flags.h"
+#include "mathed/MathParser_flags.h"
 
 #include <vector>
 
