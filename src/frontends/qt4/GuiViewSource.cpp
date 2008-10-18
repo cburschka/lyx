@@ -201,9 +201,11 @@ void GuiViewSource::saveSession() const
 void GuiViewSource::restoreSession()
 {
 	DockView::restoreSession();
+	// FIXME: Full source updating is too slow to be done at startup.
+	//widget_->viewFullSourceCB->setChecked(
+	//	settings.value(sessionKey() + "/fullsource", false).toBool());
+	widget_->viewFullSourceCB->setChecked(false);
 	QSettings settings;
-	widget_->viewFullSourceCB->setChecked(
-		settings.value(sessionKey() + "/fullsource", false).toBool());
 	widget_->autoUpdateCB->setChecked(
 		settings.value(sessionKey() + "/autoupdate", true).toBool());
 }
