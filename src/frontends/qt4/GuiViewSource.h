@@ -37,7 +37,9 @@ class ViewSourceWidget : public QWidget, public Ui::ViewSourceUi
 	Q_OBJECT
 
 public:
-	ViewSourceWidget(GuiViewSource &);
+	ViewSourceWidget();
+	///
+	void setBufferView(BufferView const * bv);
 
 public Q_SLOTS:
 	// update content
@@ -45,7 +47,7 @@ public Q_SLOTS:
 
 private:
 	///
-	GuiViewSource & controller_;	
+	BufferView const * bv_;
 	///
 	QTextDocument * document_;
 	/// LaTeX syntax highlighter
@@ -82,14 +84,6 @@ public:
 
 	/// The title displayed by the dialog reflects source type.
 	QString title() const;
-
-	/** get the source code of selected paragraphs, or the whole document
-		\param fullSource get full source code
-	 */
-	QString getContent(bool fullSource);
-	// cursor position in the source code
-	struct Row { int begin; int end; };
-	Row getRows() const;
 
 private:
 	/// The encapsulated widget.
