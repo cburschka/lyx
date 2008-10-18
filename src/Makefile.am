@@ -447,6 +447,7 @@ HEADERFILESMATHED = \
 	mathed/MacroTable.h \
 	mathed/MathMacroTemplate.h \
 	mathed/MathParser.h \
+	mathed/MathParser_flags.h \
 	mathed/ReplaceData.h \
 	mathed/MathStream.h \
 	mathed/MathSupport.h \

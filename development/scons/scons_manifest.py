@@ -485,6 +485,7 @@ src_mathed_header_files = Split('''
     MathMacroArgument.h
     MathMacroTemplate.h
     MathParser.h
+    MathParser_flags.h
     MathStream.h
     MathSupport.h
     ReplaceData.h
