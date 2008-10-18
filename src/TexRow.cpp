@@ -61,22 +61,24 @@ bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 
 int TexRow::getRowFromIdPos(int id, int pos) const
 {
-	int bestrow = 0;
 	bool foundid = false;
 
-	// this loop finds the last *nonempty* row whith the same id
+	// this loop finds the last *nonempty* row with the same id
 	// and position <= pos
-	for (unsigned r = 0, n = rowlist.size(); r != n; ++r) {
-		if (rowlist[r].id() == id && rowlist[r].pos() <= pos) {
+	RowList::const_iterator bestrow = rowlist.begin();
+	RowList::const_iterator it = rowlist.begin();
+	RowList::const_iterator const end = rowlist.end();
+	for (; it != end; ++it) {
+		if (it->id() == id && it->pos() <= pos) {
 			foundid = true;
-			if (rowlist[bestrow].id() != id || rowlist[r].pos() > rowlist[bestrow].pos())
-				bestrow = r;
+			if (bestrow->id() != id || it->pos() > bestrow->pos())
+				bestrow = it;
 		} else if (foundid)
 			break;
 	}
 	if (!foundid)
 		return rowlist.size();
-	return bestrow;
+	return distance(rowlist.begin(), bestrow);
 }
 
 
