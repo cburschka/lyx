@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 13.
+letzte Änderung: 18.
  Oktober 2008
 \end_layout
 
@@ -474,6 +474,7 @@ Sprache
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -2296,7 +2297,7 @@ Am unteren Rand gibt es einen Schieberegler, mit dem Sie die Anzeigetiefe
 	filename ../../images/down.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp -2bp 10bp 10bp
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -4112,7 +4113,11 @@ Lokales
 \begin_inset space ~
 \end_inset
 
-Format benutzen Sie eine auf Ihrem Rechner vorhandene Layout-Datei (
+Format benutzen Sie eine auf Ihrem Rechner vorhandene Layout-Datei
+\begin_inset Newline linebreak
+\end_inset
+
+(
 \family typewriter
 *.layout
 \family default
@@ -8802,7 +8807,18 @@ reference "Literaturverzeichnis"
 \end_inset
 
 .
- Dort finden Sie auch einiges über BibTeX-Literaturverzeichnisse.
+ Dort finden Sie auch einiges über BibTeX
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Literaturverzeichnisse.
 \end_layout
 
 \begin_layout Subsection
@@ -10123,6 +10139,7 @@ verringern
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10132,6 +10149,7 @@ verringern
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10155,6 +10173,7 @@ Beachten Sie, dass LyX die Schachtelungstiefe nur dann ändert, wenn es möglich
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10164,6 +10183,7 @@ Beachten Sie, dass LyX die Schachtelungstiefe nur dann ändert, wenn es möglich
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10190,6 +10210,7 @@ verringern
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10211,6 +10232,7 @@ erhöhen
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10417,6 +10439,7 @@ Alt+Eingabe
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10438,6 +10461,7 @@ gabe
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10453,6 +10477,7 @@ gabe
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10485,6 +10510,7 @@ Alt+Eingabe
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10590,6 +10616,7 @@ Alt+Eingabe
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10609,6 +10636,7 @@ Alt+Eingabe
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10714,12 +10742,13 @@ LyX-Code
 \end_layout
 
 \begin_layout LyX-Code
-Jetzt werden wir Eingabe drücken, dann 
+Jetzt werden wir Eingabe drücken, dann  
 \begin_inset Graphics
 	filename ../../images/depth-increment.png
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10775,6 +10804,7 @@ Standard
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10836,6 +10866,7 @@ Alt+Eingabe
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10871,6 +10902,7 @@ Alt+Eingabe
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10893,6 +10925,7 @@ Alt+Eingabe
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -10969,6 +11002,7 @@ Wir wollen
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -11022,6 +11056,7 @@ Alt+Eingabe+
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -11046,6 +11081,7 @@ Alt+Eingabe+
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -11130,6 +11166,7 @@ Eingabe,
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -11174,6 +11211,7 @@ Eingabe,
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -11271,6 +11309,7 @@ blaue Fische
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -11284,6 +11323,7 @@ Alt+Eingabe, Gedicht,
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -11343,7 +11383,18 @@ Adresse
 
 rechts
 \family default
--Umgebung hier hineinschachteln, dann ein weiteres geschachteltes 
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Umgebung hier hineinschachteln, dann ein weiteres geschachteltes 
 \family sans
 Zitat
 \begin_inset space ~
@@ -12047,8 +12098,10 @@ Herr Meier
  Das Phantom-Zeichen 
 \begin_inset Graphics
 	filename ../../images/math/hphantom.png
-	scale 85
-	BoundingBox 0bp 4bp 20bp 20bp
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -12218,6 +12271,7 @@ Absatz-Einstellungen
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -14014,7 +14068,8 @@ Sie klicken auf den Werkzeugleistenknopf
 	filename ../../images/font-emph.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -15233,6 +15288,7 @@ können
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -15501,6 +15557,7 @@ DVI, Strg+D
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -15620,7 +15677,8 @@ DVI
 	filename ../../images/buffer-update_dvi.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -15730,6 +15788,7 @@ Strg+T
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -15752,7 +15811,8 @@ Strg+Umschalt+T
 	filename ../../images/buffer-update_ps.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 0bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -15783,7 +15843,7 @@ PostScript® kann nur
 \begin_layout Standard
 Sie können aber auch den 
 \family sans
-Konverter-Datei-Cache
+Konverterdatei-Zwischenspeicher
 \family default
  aktivieren, siehe Anhang
 \begin_inset space \space{}
@@ -15792,7 +15852,7 @@ Konverter-Datei-Cache
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Konverter-Datei-Cache"
+reference "Konverterdatei-Zwischenspeicher"
 
 \end_inset
 
@@ -15822,7 +15882,8 @@ PDF\SpecialChar \ldots{}
 	filename ../../images/buffer-view_pdf2.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -15839,6 +15900,7 @@ PDF\SpecialChar \ldots{}
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -15863,7 +15925,7 @@ PDF-Dateien können Abbildungen im PDF-eigenen Grafikformat,
 \begin_layout Standard
 Sie können aber auch den 
 \family sans
-Konverter-Datei-Cache
+Konverterdatei-Zwischenspeicher
 \family default
  aktivieren, siehe Anhang
 \begin_inset space \space{}
@@ -15872,7 +15934,7 @@ Konverter-Datei-Cache
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Konverter-Datei-Cache"
+reference "Konverterdatei-Zwischenspeicher"
 
 \end_inset
 
@@ -15927,6 +15989,7 @@ Strg+P
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -17481,7 +17544,8 @@ Notiz
 	filename ../../images/note-insert.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 8bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -17621,7 +17685,8 @@ Fußnote
 	filename ../../images/footnote-insert.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -17663,7 +17728,8 @@ Fußnote
 	filename ../../images/footnote-insert.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -17748,6 +17814,7 @@ Randnotiz
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -19107,7 +19174,8 @@ dung
 	filename ../../images/float-insert_figure.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -19290,6 +19358,7 @@ Marke
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -19313,7 +19382,8 @@ Querverweis\SpecialChar \ldots{}
 	filename ../../images/dialog-show-new-inset_ref.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -19617,7 +19687,8 @@ Tabelle
 	filename ../../images/tabular-insert.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -19826,6 +19897,7 @@ Einstellungen
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -19882,6 +19954,7 @@ und auf die rechte Maustaste klicken.
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -19925,7 +19998,8 @@ Horizontale Ausrichtung
 	filename ../../images/tabular-feature_align-left.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -19938,7 +20012,8 @@ Horizontale Ausrichtung
 	filename ../../images/tabular-feature_align-center.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -19951,7 +20026,8 @@ Horizontale Ausrichtung
 	filename ../../images/tabular-feature_align-right.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -19986,7 +20062,8 @@ Ausrichtung
 	filename ../../images/tabular-feature_valign-top.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -19999,7 +20076,8 @@ Ausrichtung
 	filename ../../images/tabular-feature_valign-middle.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -20012,7 +20090,8 @@ Ausrichtung
 	filename ../../images/tabular-feature_valign-bottom.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -20038,7 +20117,8 @@ Mehrfachspalte
 	filename ../../images/tabular-feature_multicolumn.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -20067,7 +20147,8 @@ Drehen der gesamten Tabelle oder einzelner Zellen um 90 Grad (
 	filename ../../images/tabular-feature_set-rotate-tabular.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -20080,7 +20161,8 @@ Drehen der gesamten Tabelle oder einzelner Zellen um 90 Grad (
 	filename ../../images/tabular-feature_set-rotate-cell.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -20128,7 +20210,8 @@ Rahmen in einer Zeile oder Spalte ein- und ausschalten (
 	filename ../../images/tabular-feature_toggle-line-top.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -20141,7 +20224,8 @@ Rahmen in einer Zeile oder Spalte ein- und ausschalten (
 	filename ../../images/tabular-feature_toggle-line-bottom.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -20154,7 +20238,8 @@ Rahmen in einer Zeile oder Spalte ein- und ausschalten (
 	filename ../../images/tabular-feature_toggle-line-left.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -20163,7 +20248,8 @@ Rahmen in einer Zeile oder Spalte ein- und ausschalten (
 	filename ../../images/tabular-feature_toggle-line-right.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -20176,7 +20262,8 @@ Rahmen in einer Zeile oder Spalte ein- und ausschalten (
 	filename ../../images/tabular-feature_set-all-lines.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -20189,7 +20276,8 @@ Rahmen in einer Zeile oder Spalte ein- und ausschalten (
 	filename ../../images/tabular-feature_unset-all-lines.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -20412,7 +20500,8 @@ Spalten
 	filename ../../images/tabular-feature_append-row.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -20425,7 +20514,8 @@ Spalten
 	filename ../../images/tabular-feature_append-column.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -20438,7 +20528,8 @@ Spalten
 	filename ../../images/tabular-feature_delete-row.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -20447,7 +20538,8 @@ Spalten
 	filename ../../images/tabular-feature_delete-column.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -20687,7 +20779,8 @@ drehen
 	filename ../../images/tabular-feature_set-rotate-tabular.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -20721,7 +20814,8 @@ drehen
 	filename ../../images/tabular-feature_set-rotate-cell.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -22336,7 +22430,8 @@ newline
 	filename ../../images/ert-insert.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -23380,6 +23475,7 @@ Falls Sie zum Erstellen der Tabelle einfach nur die Schaltfläche
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -23402,9 +23498,10 @@ Tabelle
  oder 
 \begin_inset Graphics
 	filename ../../images/float-insert_table.png
-	scale 60
+	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -23797,9 +23894,10 @@ Tabelle
  (
 \begin_inset Graphics
 	filename ../../images/float-insert_table.png
-	scale 60
+	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -24114,7 +24212,8 @@ Mathed
 	filename ../../images/math-mode.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 0bp 0bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -24267,6 +24366,7 @@ Mathe
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -24609,6 +24709,7 @@ Mathe-Werkzeugleiste
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -24618,6 +24719,7 @@ Mathe-Werkzeugleiste
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -24707,6 +24809,7 @@ Einen Bruch kann man mit
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -24737,7 +24840,7 @@ Mathe-Werkzeugleiste
 	filename ../../images/math/frac.png
 	scale 50
 	scaleBeforeRotation
-	BoundingBox 0bp 8bp 12bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
 
 \end_inset
 
@@ -24774,7 +24877,7 @@ Wurzeln erhält man, wenn man auf das
 	filename ../../images/math/sqrt.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 25bp
+	BoundingBox 0bp 0bp 20bp 20bp
 
 \end_inset
 
@@ -24783,7 +24886,7 @@ Wurzeln erhält man, wenn man auf das
 	filename ../../images/math/root.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 25bp
+	BoundingBox 0bp 0bp 20bp 20bp
 
 \end_inset
 
@@ -25074,6 +25177,7 @@ Mathe-Modus
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25090,6 +25194,7 @@ Mathe-Modus
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25146,7 +25251,8 @@ reference "Fontgrößen-Mathe"
 	filename ../../images/math/frac-square.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 12bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25173,6 +25279,7 @@ rend ist.
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25184,7 +25291,8 @@ rend ist.
 	filename ../../images/math/functions.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25224,6 +25332,7 @@ reference "Andere-Mathe-Symbole"
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25236,6 +25345,7 @@ reference "Andere-Mathe-Symbole"
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25248,6 +25358,7 @@ reference "Andere-Mathe-Symbole"
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25260,6 +25371,7 @@ reference "Andere-Mathe-Symbole"
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25273,6 +25385,7 @@ reference "Andere-Mathe-Symbole"
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25285,6 +25398,7 @@ reference "Andere-Mathe-Symbole"
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25297,6 +25411,7 @@ reference "Andere-Mathe-Symbole"
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25309,6 +25424,7 @@ reference "Andere-Mathe-Symbole"
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25321,6 +25437,7 @@ reference "Andere-Mathe-Symbole"
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25333,6 +25450,7 @@ reference "Andere-Mathe-Symbole"
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25345,6 +25463,7 @@ reference "Andere-Mathe-Symbole"
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25357,6 +25476,7 @@ reference "Andere-Mathe-Symbole"
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25369,6 +25489,7 @@ reference "Andere-Mathe-Symbole"
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25402,6 +25523,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25415,6 +25537,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25427,6 +25550,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25438,7 +25562,8 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	filename ../../images/math/sqrt.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 25bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25450,7 +25575,8 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	filename ../../images/math/root.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 25bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25460,9 +25586,10 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_layout Enumerate
 \begin_inset Graphics
 	filename ../../images/math/frac.png
-	scale 50
+	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 12bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25482,6 +25609,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25494,6 +25622,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25505,7 +25634,8 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	filename ../../images/math/lparen_rparen.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 12bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25529,7 +25659,8 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	filename ../../images/math/lbrace_rbrace.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 12bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25539,9 +25670,10 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 \begin_layout Enumerate
 \begin_inset Graphics
 	filename ../../images/dialog-show_mathdelimiter.png
-	scale 75
+	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 0bp 0bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25554,6 +25686,7 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25565,7 +25698,8 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	filename ../../images/math/cases.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 8bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25579,7 +25713,8 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	filename ../../images/tabular-feature_append-row.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25595,7 +25730,8 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	filename ../../images/tabular-feature_append-column.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -25611,7 +25747,8 @@ Sie enthält ebenfalls eine Liste mit Schaltknöpfen:
 	filename ../../images/tabular-feature_delete-row.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -26579,7 +26716,8 @@ Mathe-Werkzeugleiste
 	filename ../../images/math/delim.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -26753,6 +26891,7 @@ Mathe-Werkzeugleiste
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -27690,6 +27829,7 @@ Sie können verschiedene Schriftstile benutzen, die Sie über die Schaltfläche
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -28586,7 +28726,8 @@ math-size displaystyle
 	filename ../../images/math/style.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -28992,7 +29133,8 @@ Marke
 	filename ../../images/label-insert.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -29015,7 +29157,8 @@ Querverweis
 	filename ../../images/dialog-show-new-inset_ref.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -29115,8 +29258,57 @@ reference "Makro-erzeugen"
  Wenn Sie bei Verwendung dieses Typs Probleme mit LaTeX bekommen sollten,
  verwenden Sie bitte einen anderen oder formulieren Sie den Text mit dem
  Querverweis etwas anders.
+ Am ehesten kommt es vor, dass der Querverweis über das Zeilenende hinaus
+ gedruckt wird:
 \end_layout
 
+\begin_deeper
+\begin_layout Description
+Voreinstellungung
+\begin_inset space ~
+\end_inset
+
+der
+\begin_inset space ~
+\end_inset
+
+gewählten
+\begin_inset space ~
+\end_inset
+
+Sprache siehe Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Zeichentabellen"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Das Beispiel ist aus Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Sprache"
+
+\end_inset
+
+.
+ Dort wurde der Querverweis auf zwei aufgeteilt, um das Problem zu beheben.
+ Etwas schwieriger wird es, wenn der Querverweis in einen Seitenumbruch
+ gerät.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 Formatierter Querverweis sieht aus wie 1.
 \end_layout
@@ -29468,7 +29660,8 @@ Sie können das Inhaltsverzeichnis auch als Gliederung verwenden.
 	filename ../../images/dialog-toggle_toc.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -29722,6 +29915,7 @@ Hyperlink
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -30054,7 +30248,8 @@ Zitat\SpecialChar \ldots{}
 	filename ../../images/dialog-show-new-inset_citation.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -30581,7 +30776,9 @@ oder
 \begin_inset Graphics
 	filename ../../images/index-insert.png
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -31463,7 +31660,9 @@ Nomenklartureintrag\SpecialChar \ldots{}
 \begin_inset Graphics
 	filename ../../images/nomencl-insert.png
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -31844,7 +32043,7 @@ Glossar!drucken
 \end_layout
 
 \begin_layout Standard
-mit 
+Mit 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Liste
@@ -31858,7 +32057,18 @@ Liste
 Inhaltsverzeichnis\SpecialChar \menuseparator
 Nomenklatur
 \family default
- können Sie ein Glossar-Verzeichnis einfügen.
+ können Sie ein Glossar
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Verzeichnis einfügen.
  An der Stelle erscheint ein hellblaues Kästchen mit der Aufschrift 
 \family sans
 Glossar
@@ -32475,8 +32685,9 @@ Strg+L
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
-	groupId Icons
+	groupId Icon
 
 \end_inset
 
@@ -32636,7 +32847,9 @@ Text
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -33204,6 +33417,7 @@ F7
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -33919,7 +34133,9 @@ Diese Werkzeugleiste enthält folgende Schaltknöpfe:
 \begin_inset Graphics
 	filename ../../images/changes-track.png
 	scale 70
-	BoundingBox 0bp 6bp 22bp 22bp
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -33944,7 +34160,9 @@ Strg+Umschalt+E
 \begin_inset Graphics
 	filename ../../images/changes-output.png
 	scale 70
-	BoundingBox 0bp 6bp 22bp 22bp
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -33971,7 +34189,9 @@ anzeigen
 \begin_inset Graphics
 	filename ../../images/change-next.png
 	scale 70
-	BoundingBox 0bp 6bp 24bp 24bp
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -33982,7 +34202,9 @@ anzeigen
 \begin_inset Graphics
 	filename ../../images/change-accept.png
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34001,7 +34223,9 @@ akzeptieren
 \begin_inset Graphics
 	filename ../../images/change-reject.png
 	scale 70
+	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34020,7 +34244,9 @@ ablehnen
 \begin_inset Graphics
 	filename ../../images/changes-merge.png
 	scale 70
-	BoundingBox 0bp 6bp 22bp 22bp
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34039,7 +34265,9 @@ zusammenfassen
 \begin_inset Graphics
 	filename ../../images/all-changes-accept.png
 	scale 70
-	BoundingBox 0bp 6bp 24bp 24bp
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34062,7 +34290,9 @@ akzeptieren
 \begin_inset Graphics
 	filename ../../images/all-changes-reject.png
 	scale 70
-	BoundingBox 0bp 6bp 24bp 24bp
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34085,7 +34315,9 @@ ablehnen
 \begin_inset Graphics
 	filename ../../images/note-insert.png
 	scale 70
-	BoundingBox 0bp 6bp 22bp 22bp
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34111,7 +34343,9 @@ X-Notiz
 \begin_inset Graphics
 	filename ../../images/note-next.png
 	scale 70
-	BoundingBox 0bp 6bp 24bp 24bp
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34638,7 +34872,8 @@ pull-down
 	filename ../../images/buffer-new.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34653,7 +34888,8 @@ Neu
 	filename ../../images/file-open.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34669,7 +34905,8 @@ Datei\SpecialChar \menuseparator
 	filename ../../images/buffer-write.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34684,7 +34921,8 @@ Speichern
 	filename ../../images/dialog-show_print.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34701,6 +34939,7 @@ Drucken\SpecialChar \ldots{}
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34712,7 +34951,8 @@ Drucken\SpecialChar \ldots{}
 	filename ../../images/undo.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34727,7 +34967,8 @@ Rückgängig
 	filename ../../images/redo.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34757,7 +34998,8 @@ Ausschneiden
 	filename ../../images/copy.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34772,7 +35014,8 @@ Kopieren
 	filename ../../images/paste.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34787,7 +35030,8 @@ Einfügen
 	filename ../../images/dialog-show_findreplace.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 24bp 24bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34809,7 +35053,8 @@ Strg+F
 	filename ../../images/font-emph.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34834,6 +35079,7 @@ Strg+E
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34854,6 +35100,7 @@ Alt+Z+K
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34872,7 +35119,8 @@ Textstil
 	filename ../../images/dialog-show_character.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34883,9 +35131,10 @@ Textstil
 \begin_layout Enumerate
 \begin_inset Graphics
 	filename ../../images/math-mode.png
-	scale 75
+	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 0bp 0bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34901,7 +35150,8 @@ Eingebettete Formel (Strg+M)
 	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34917,7 +35167,8 @@ Grafik\SpecialChar \ldots{}
 	filename ../../images/tabular-insert.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34933,7 +35184,8 @@ Tabelle\SpecialChar \ldots{}
 	filename ../../images/dialog-toggle_toc.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34952,7 +35204,8 @@ reference "Gliederung"
 	filename ../../images/toolbar-toggle_math.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34964,7 +35217,8 @@ reference "Gliederung"
 	filename ../../images/toolbar-toggle_table.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -34991,6 +35245,7 @@ Extra-Werkzeugleiste
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35007,6 +35262,7 @@ Standard
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35023,6 +35279,7 @@ Aufzählung
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35039,6 +35296,7 @@ Auflistung
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35055,6 +35313,7 @@ Liste
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35071,6 +35330,7 @@ Beschreibung
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35083,6 +35343,7 @@ Beschreibung
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35096,7 +35357,8 @@ Beschreibung
 	filename ../../images/float-insert_figure.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35118,7 +35380,8 @@ Abbildung
 	filename ../../images/float-insert_table.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35139,6 +35402,7 @@ Tabelle
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35156,7 +35420,8 @@ Marke
 	filename ../../images/dialog-show-new-inset_ref.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35174,7 +35439,8 @@ Querverweis
 	filename ../../images/dialog-show-new-inset_citation.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35193,6 +35459,7 @@ Zitat
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35212,6 +35479,7 @@ Handbuchergänzungen
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35240,6 +35508,7 @@ reference "Nomenklatur/Glossar"
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35258,6 +35527,7 @@ Fußnote
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35272,7 +35542,8 @@ Randnotiz
 	filename ../../images/note-insert.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35303,7 +35574,8 @@ X-Notiz
 	filename ../../images/box-insert.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35318,7 +35590,8 @@ Box
 	filename ../../images/url-insert.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35337,6 +35610,7 @@ URL
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35373,6 +35647,7 @@ Strg+L
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35389,6 +35664,7 @@ Makro
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35418,7 +35694,8 @@ reference "Unterdokument"
 	filename ../../images/dialog-show_character.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 4bp 20bp 20bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35431,6 +35708,7 @@ reference "Unterdokument"
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35457,6 +35735,7 @@ Ansicht/Aktualisierung-Werkzeugleiste
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35476,6 +35755,7 @@ DVI
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35500,6 +35780,7 @@ DVI
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35519,6 +35800,7 @@ PDF (pdflatex)
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35543,6 +35825,7 @@ PDF (pdflatex)
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -35562,6 +35845,7 @@ Postscript
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -36067,7 +36351,8 @@ Das ist das Gleiche, als wenn Sie auf
 	filename ../../images/dialog-show_character.png
 	scale 70
 	scaleBeforeRotation
-	BoundingBox 0bp 2bp 22bp 22bp
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
 
 \end_inset
 
@@ -37843,25 +38128,8 @@ Schreibmaschine Auswahl einer Schrift mit festen Abständen.
 \end_layout
 
 \begin_layout Description
-Vergrößerung
-\begin_inset space ~
-\end_inset
-
-% Hiermit können Sie die Größe der dargestellten Schriften festlegen, je
- nachdem, ob sie Ihnen zu groß oder zu klein erscheinen.
- Mit Hilfe von 
-\family sans
-Strg+Mausrad
-\family default
- können Sie diese Einstellunge im laufenden Betrieb ändern.
-\end_layout
-
-\begin_layout Description
-Bildschirm
-\begin_inset space ~
-\end_inset
-
-DPI Hiermit können Sie die Auflösung der Bildschirmschriften festlegen.
+Bildschirm-DPI Hiermit können Sie die Auflösung der Bildschirmschriften
+ festlegen.
 \end_layout
 
 \begin_layout Description
@@ -40020,10 +40288,14 @@ Zusatz-Flag manche Konvertierungsprogramme erlauben zusätzliche Flags (siehe
 \end_layout
 
 \begin_layout Description
-Konverter-Datei-Cache 
+
+\family sans
+Konverterdatei-Zwischenspeicher
+\family default
+
 \begin_inset CommandInset label
 LatexCommand label
-name "Konverter-Datei-Cache"
+name "Konverterdatei-Zwischenspeicher"
 
 \end_inset
 
@@ -40068,7 +40340,7 @@ Alter
 \begin_inset space ~
 \end_inset
 
-Tagen): Aufbewahreungszeit
+Tagen): Aufbewahrungszeit
 \end_layout
 
 \end_deeper
@@ -40416,6 +40688,13 @@ reference "Seitenränder"
 
 \begin_layout Section
 Sprache
+\begin_inset CommandInset label
+LatexCommand label
+name "Sprache"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -40481,7 +40760,14 @@ Sprache siehe Abschnitt
 
 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand ref
+reference "Zeichentabellen"
+
+\end_inset
+
+ auf Seite 
+\begin_inset CommandInset ref
+LatexCommand pageref
 reference "Zeichentabellen"
 
 \end_inset
