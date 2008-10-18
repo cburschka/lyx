@@ -28,6 +28,8 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 
+#include <boost/crc.hpp>
+
 #include <QSettings>
 #include <QTextCursor>
 #include <QTextDocument>
@@ -69,10 +71,19 @@ ViewSourceWidget::ViewSourceWidget()
 }
 
 
+static size_t crcCheck(docstring const & s)
+{
+	boost::crc_32_type crc;
+	crc.process_bytes(&s[0], sizeof(char_type) * s.size());
+	return crc.checksum();
+}
+
+
 /** get the source code of selected paragraphs, or the whole document
 	\param fullSource get full source code
+	\return true if the content has changed since last call.
  */
-static QString getContent(BufferView const * view, bool fullSource)
+static bool getContent(BufferView const * view, bool fullSource, QString & qstr)
 {
 	// get the *top* level paragraphs that contain the cursor,
 	// or the selected text
@@ -90,7 +101,14 @@ static QString getContent(BufferView const * view, bool fullSource)
 		swap(par_begin, par_end);
 	odocstringstream ostr;
 	view->buffer().getSourceCode(ostr, par_begin, par_end + 1, fullSource);
-	return toqstr(ostr.str());
+	docstring s = ostr.str();
+	static size_t crc = 0;
+	size_t newcrc = crcCheck(s);
+	if (newcrc == crc)
+		return false;
+	crc = newcrc;
+	qstr = toqstr(s);
+	return true;
 }
 
 
@@ -108,7 +126,9 @@ void ViewSourceWidget::updateView()
 		return;
 	}
 
-	document_->setPlainText(getContent(bv_, viewFullSourceCB->isChecked()));
+	QString content;
+	if (getContent(bv_, viewFullSourceCB->isChecked(), content))
+		document_->setPlainText(content);
 
 	CursorSlice beg = bv_->cursor().selectionBegin().bottom();
 	CursorSlice end = bv_->cursor().selectionEnd().bottom();
