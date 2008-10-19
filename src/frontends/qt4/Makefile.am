@@ -260,6 +260,7 @@ UIFILES = \
 	MarginsUi.ui \
 	MathMatrixUi.ui \
 	MathsUi.ui \
+	ModulesUi.ui \
 	NomenclUi.ui \
 	NoteUi.ui \
 	NumberingUi.ui \

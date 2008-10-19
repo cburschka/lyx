@@ -32,6 +32,7 @@
 #include "ui_MarginsUi.h"
 #include "ui_PreambleUi.h"
 #include "ui_PDFSupportUi.h"
+#include "ui_ModulesUi.h"
 
 #include <list>
 #include <map>
@@ -109,6 +110,7 @@ private:
 	UiWidget<Ui::MathsUi> *mathsModule;
 	UiWidget<Ui::LaTeXUi> *latexModule;
 	UiWidget<Ui::PDFSupportUi> *pdfSupportModule;
+	UiWidget<Ui::ModulesUi> *modulesModule;
 	PreambleModule *preambleModule;
 	
 	GuiBranches *branchesModule;

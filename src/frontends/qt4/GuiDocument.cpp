@@ -906,17 +906,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(latexModule->childDocPB, SIGNAL(clicked()),
 		this, SLOT(browseMaster()));
 	
-	selectionManager =
-		new ModuleSelectionManager(latexModule->availableLV,
-			latexModule->selectedLV, 
-			latexModule->addPB, latexModule->deletePB, 
-	 		latexModule->upPB, latexModule->downPB, 
-			availableModel(), selectedModel());
-	connect(selectionManager, SIGNAL(updateHook()),
-		this, SLOT(updateModuleInfo()));
-	connect(selectionManager, SIGNAL(updateHook()),
-		this, SLOT(change_adaptor()));
-	
 	// postscript drivers
 	for (int n = 0; tex_graphics[n][0]; ++n) {
 		QString enc = qt_(tex_graphics_gui[n]);
@@ -952,6 +941,21 @@ GuiDocument::GuiDocument(GuiView & lv)
 	bulletsModule = new BulletsModule;
 	connect(bulletsModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
+
+	// Modules
+	modulesModule = new UiWidget<Ui::ModulesUi>;
+
+	selectionManager =
+		new ModuleSelectionManager(modulesModule->availableLV,
+			modulesModule->selectedLV,
+			modulesModule->addPB, modulesModule->deletePB,
+			modulesModule->upPB, modulesModule->downPB,
+			availableModel(), selectedModel());
+	connect(selectionManager, SIGNAL(updateHook()),
+		this, SLOT(updateModuleInfo()));
+	connect(selectionManager, SIGNAL(updateHook()),
+		this, SLOT(change_adaptor()));
+
 
 	// PDF support
 	pdfSupportModule = new UiWidget<Ui::PDFSupportUi>;
@@ -998,6 +1002,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 
 	docPS->addPanel(latexModule, qt_("Document Class"));
+	docPS->addPanel(modulesModule, qt_("Modules"));
 	docPS->addPanel(fontModule, qt_("Fonts"));
 	docPS->addPanel(textLayoutModule, qt_("Text Layout"));
 	docPS->addPanel(pageLayoutModule, qt_("Page Layout"));
@@ -1426,9 +1431,9 @@ void GuiDocument::updateModuleInfo()
 	//Module description
 	bool const focusOnSelected = selectionManager->selectedFocused();
 	QListView const * const lv = 
-			focusOnSelected ? latexModule->selectedLV : latexModule->availableLV;
+			focusOnSelected ? modulesModule->selectedLV : modulesModule->availableLV;
 	if (lv->selectionModel()->selectedIndexes().isEmpty()) {
-		latexModule->infoML->document()->clear();
+		modulesModule->infoML->document()->clear();
 		return;
 	}
 	QModelIndex const & idx = lv->selectionModel()->currentIndex();
@@ -1469,7 +1474,7 @@ void GuiDocument::updateModuleInfo()
 		desc += _("WARNING: Some required packages are unavailable!");
 	}
 
-	latexModule->infoML->document()->setPlainText(toqstr(desc));
+	modulesModule->infoML->document()->setPlainText(toqstr(desc));
 }
 
 
