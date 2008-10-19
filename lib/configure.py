@@ -410,8 +410,10 @@ def checkConverterEntries():
         rc_entry = [ r'\converter odt        latex      "%%"	""' ])
     # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
     # Both SuSE and debian have oolatex
+    # TeXLive does not have oolatex, mk4ht has to be used.
     checkProg('a LaTeX -> Open Document converter', [
-        'oolatex $$i', 'oolatex.sh $$i', '/usr/share/tex4ht/oolatex $$i'],
+        'oolatex $$i', 'mk4ht oolatex $$i', 'oolatex.sh $$i', '/usr/share/tex4ht/oolatex $$i',
+        'htlatex $$i \'xhtml,ooffice\' \'ooffice/! -cmozhtf\' \'-coo\' \'-cvalidate\''],
         rc_entry = [ r'\converter latex      odt        "%%"	"needaux"' ])
     # On windows it is called latex2rt.exe
     checkProg('a LaTeX -> RTF converter', ['latex2rtf -p -S -o $$o $$i', 'latex2rt -p -S -o $$o $$i'],
