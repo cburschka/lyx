@@ -258,7 +258,7 @@
 #
 # Latin Extended-B
 #
-0x0180 "\\textcrb"                "tipa" "" # LATIN SMALL LETTER B WITH STROKE
+0x0180 "\\textcrb"                "tipa" "force" # LATIN SMALL LETTER B WITH STROKE
 #0x0181 ""                         "" "" # LATIN CAPITAL LETTER B WITH HOOK
 #0x0182 ""                         "" "" # LATIN CAPITAL LETTER B WITH TOPBAR
 #0x0183 ""                         "" "" # LATIN SMALL LETTER B WITH TOPBAR
@@ -266,7 +266,7 @@
 #0x0185 ""                         "" "" # LATIN SMALL LETTER TONE SIX
 #0x0186 ""                         "" "" # LATIN CAPITAL LETTER OPEN O
 #0x0187 ""                         "" "" # LATIN CAPITAL LETTER C WITH HOOK
-0x0188 "\\texthtc"               "tipa" "" # LATIN SMALL LETTER C WITH HOOK
+0x0188 "\\texthtc"               "tipa" "force" # LATIN SMALL LETTER C WITH HOOK
 #0x0189 ""                         "" "" # LATIN CAPITAL LETTER AFRICAN D
 #0x018a ""                         "" "" # LATIN CAPITAL LETTER D WITH HOOK
 #0x018b ""                         "" "" # LATIN CAPITAL LETTER D WITH TOPBAR
@@ -317,14 +317,14 @@
 #0x01b8 ""                         "" "" # LATIN CAPITAL LETTER EZH REVERSED
 #0x01b9 ""                         "" "" # LATIN SMALL LETTER EZH REVERSED
 #0x01ba ""                         "" "" # LATIN SMALL LETTER EZH WITH TAIL
-0x01bb "\\textcrtwo"              "tipa" "" # LATIN LETTER TWO WITH STROKE
+0x01bb "\\textcrtwo"              "tipa" "force" # LATIN LETTER TWO WITH STROKE
 #0x01bc ""                         "" "" # LATIN CAPITAL LETTER TONE FIVE
 #0x01bd ""                         "" "" # LATIN SMALL LETTER TONE FIVE
-0x01be "\\textcrinvglotstop"      "tipa" "" # LATIN LETTER INVERTED GLOTTAL STOP WITH STROKE
-0x01bf "\\textwynn"               "tipa" "" # LATIN LETTER WYNN
-0x01c0 "\\textpipe"               "tipa" "" # LATIN LETTER DENTAL CLICK
-0x01c1 "\\textdoublepipe"         "tipa" "" # LATIN LETTER LATERAL CLICK
-0x01c2 "\\textdoublebarpipe"      "tipa" "" # LATIN LETTER ALVEOLAR CLICK
+0x01be "\\textcrinvglotstop"      "tipa" "force" # LATIN LETTER INVERTED GLOTTAL STOP WITH STROKE
+0x01bf "\\textwynn"               "tipa" "force" # LATIN LETTER WYNN
+0x01c0 "\\textpipe"               "tipa" "force" # LATIN LETTER DENTAL CLICK
+0x01c1 "\\textdoublepipe"         "tipa" "force" # LATIN LETTER LATERAL CLICK
+0x01c2 "\\textdoublebarpipe"      "tipa" "force" # LATIN LETTER ALVEOLAR CLICK
 0x01c3 "!"                        "" "" # LATIN LETTER RETROFLEX CLICK
 #0x01c4 ""                         "" "" # LATIN CAPITAL LETTER DZ WITH CARON
 #0x01c5 ""                         "" "" # LATIN CAPITAL LETTER D WITH SMALL LETTER Z WITH CARON
@@ -386,30 +386,30 @@
 0x01fd "\\'{\\ae}"                "" "" # LATIN SMALL LETTER AE WITH ACUTE
 #0x01fe ""                         "" "" # LATIN CAPITAL LETTER O WITH STROKE AND ACUTE
 #0x01ff ""                         "" "" # LATIN SMALL LETTER O WITH STROKE AND ACUTE
-0x0200 "\\textdoublegrave{A}"     "tipa" "mathalpha" "\\dgrave{A}" "tipasymb,dgrave" # LATIN CAPITAL LETTER A WITH DOUBLE GRAVE
-0x0201 "\\textdoublegrave{a}"     "tipa" "mathalpha" "\\dgrave{a}" "tipasymb,dgrave" # LATIN SMALL LETTER A WITH DOUBLE GRAVE
-0x0202 "\\textroundcap{A}"        "tipa" "mathalpha" "\\rcap{A}" "tipasymb,rcap" # LATIN CAPITAL LETTER A WITH INVERTED BREVE
-0x0203 "\\textroundcap{a}"        "tipa" "mathalpha" "\\rcap{a}" "tipasymb,rcap" # LATIN SMALL LETTER A WITH INVERTED BREVE
-0x0204 "\\textdoublegrave{E}"     "tipa" "mathalpha" "\\dgrave{E}" "tipasymb,dgrave" # LATIN CAPITAL LETTER E WITH DOUBLE GRAVE
-0x0205 "\\textdoublegrave{e}"     "tipa" "mathalpha" "\\dgrave{e}" "tipasymb,dgrave" # LATIN SMALL LETTER E WITH DOUBLE GRAVE
-0x0206 "\\textroundcap{E}"        "tipa" "mathalpha" "\\rcap{E}" "tipasymb,rcap" # LATIN CAPITAL LETTER E WITH INVERTED BREVE
-0x0207 "\\textroundcap{e}"        "tipa" "mathalpha" "\\rcap{e}" "tipasymb,rcap" # LATIN SMALL LETTER E WITH INVERTED BREVE
-0x0208 "\\textdoublegrave{I}"     "tipa" "mathalpha" "\\dgrave{I}" "tipasymb,dgrave" # LATIN CAPITAL LETTER I WITH DOUBLE GRAVE
-0x0209 "\\textdoublegrave{\\i}"   "tipa" "mathalpha" "\\dgrave{\\imath}" "tipasymb,dgrave" # LATIN SMALL LETTER I WITH DOUBLE GRAVE
-0x020a "\\textroundcap{I}"        "tipa" "mathalpha" "\\rcap{I}" "tipasymb,rcap" # LATIN CAPITAL LETTER I WITH INVERTED BREVE
-0x020b "\\textroundcap{\\i}"      "tipa" "mathalpha" "\\rcap{\\imath}" "tipasymb,rcap" # LATIN SMALL LETTER I WITH INVERTED BREVE
-0x020c "\\textdoublegrave{O}"     "tipa" "mathalpha" "\\dgrave{O}" "tipasymb,dgrave" # LATIN CAPITAL LETTER O WITH DOUBLE GRAVE
-0x020d "\\textdoublegrave{o}"     "tipa" "mathalpha" "\\dgrave{o}" "tipasymb,dgrave" # LATIN SMALL LETTER O WITH DOUBLE GRAVE
-0x020e "\\textroundcap{O}"        "tipa" "mathalpha" "\\rcap{O}" "tipasymb,rcap" # LATIN CAPITAL LETTER O WITH INVERTED BREVE
-0x020f "\\textroundcap{o}"        "tipa" "mathalpha" "\\rcap{o}" "tipasymb,rcap" # LATIN SMALL LETTER O WITH INVERTED BREVE
-0x0210 "\\textdoublegrave{R}"     "tipa" "mathalpha" "\\dgrave{R}" "tipasymb,dgrave" # LATIN CAPITAL LETTER R WITH DOUBLE GRAVE
-0x0211 "\\textdoublegrave{r}"     "tipa" "mathalpha" "\\dgrave{r}" "tipasymb,dgrave" # LATIN SMALL LETTER R WITH DOUBLE GRAVE
-0x0212 "\\textroundcap{R}"        "tipa" "mathalpha" "\\rcap{R}" "tipasymb,rcap" # LATIN CAPITAL LETTER R WITH INVERTED BREVE
-0x0213 "\\textroundcap{r}"        "tipa" "mathalpha" "\\rcap{r}" "tipasymb,rcap" # LATIN SMALL LETTER R WITH INVERTED BREVE
-0x0214 "\\textdoublegrave{U}"     "tipa" "mathalpha" "\\dgrave{U}" "tipasymb,dgrave" # LATIN CAPITAL LETTER U WITH DOUBLE GRAVE
-0x0215 "\\textdoublegrave{u}"     "tipa" "mathalpha" "\\dgrave{u}" "tipasymb,dgrave" # LATIN SMALL LETTER U WITH DOUBLE GRAVE
-0x0216 "\\textroundcap{U}"        "tipa" "mathalpha" "\\rcap{U}" "tipasymb,rcap" # LATIN CAPITAL LETTER U WITH INVERTED BREVE
-0x0217 "\\textroundcap{u}"        "tipa" "mathalpha" "\\rcap{u}" "tipasymb,rcap" # LATIN SMALL LETTER U WITH INVERTED BREVE
+0x0200 "\\textdoublegrave{A}"     "tipa" "force,mathalpha" "\\dgrave{A}" "tipasymb,dgrave" # LATIN CAPITAL LETTER A WITH DOUBLE GRAVE
+0x0201 "\\textdoublegrave{a}"     "tipa" "force,mathalpha" "\\dgrave{a}" "tipasymb,dgrave" # LATIN SMALL LETTER A WITH DOUBLE GRAVE
+0x0202 "\\textroundcap{A}"        "tipa" "force,mathalpha" "\\rcap{A}" "tipasymb,rcap" # LATIN CAPITAL LETTER A WITH INVERTED BREVE
+0x0203 "\\textroundcap{a}"        "tipa" "force,mathalpha" "\\rcap{a}" "tipasymb,rcap" # LATIN SMALL LETTER A WITH INVERTED BREVE
+0x0204 "\\textdoublegrave{E}"     "tipa" "force,mathalpha" "\\dgrave{E}" "tipasymb,dgrave" # LATIN CAPITAL LETTER E WITH DOUBLE GRAVE
+0x0205 "\\textdoublegrave{e}"     "tipa" "force,mathalpha" "\\dgrave{e}" "tipasymb,dgrave" # LATIN SMALL LETTER E WITH DOUBLE GRAVE
+0x0206 "\\textroundcap{E}"        "tipa" "force,mathalpha" "\\rcap{E}" "tipasymb,rcap" # LATIN CAPITAL LETTER E WITH INVERTED BREVE
+0x0207 "\\textroundcap{e}"        "tipa" "force,mathalpha" "\\rcap{e}" "tipasymb,rcap" # LATIN SMALL LETTER E WITH INVERTED BREVE
+0x0208 "\\textdoublegrave{I}"     "tipa" "force,mathalpha" "\\dgrave{I}" "tipasymb,dgrave" # LATIN CAPITAL LETTER I WITH DOUBLE GRAVE
+0x0209 "\\textdoublegrave{\\i}"   "tipa" "force,mathalpha" "\\dgrave{\\imath}" "tipasymb,dgrave" # LATIN SMALL LETTER I WITH DOUBLE GRAVE
+0x020a "\\textroundcap{I}"        "tipa" "force,mathalpha" "\\rcap{I}" "tipasymb,rcap" # LATIN CAPITAL LETTER I WITH INVERTED BREVE
+0x020b "\\textroundcap{\\i}"      "tipa" "force,mathalpha" "\\rcap{\\imath}" "tipasymb,rcap" # LATIN SMALL LETTER I WITH INVERTED BREVE
+0x020c "\\textdoublegrave{O}"     "tipa" "force,mathalpha" "\\dgrave{O}" "tipasymb,dgrave" # LATIN CAPITAL LETTER O WITH DOUBLE GRAVE
+0x020d "\\textdoublegrave{o}"     "tipa" "force,mathalpha" "\\dgrave{o}" "tipasymb,dgrave" # LATIN SMALL LETTER O WITH DOUBLE GRAVE
+0x020e "\\textroundcap{O}"        "tipa" "force,mathalpha" "\\rcap{O}" "tipasymb,rcap" # LATIN CAPITAL LETTER O WITH INVERTED BREVE
+0x020f "\\textroundcap{o}"        "tipa" "force,mathalpha" "\\rcap{o}" "tipasymb,rcap" # LATIN SMALL LETTER O WITH INVERTED BREVE
+0x0210 "\\textdoublegrave{R}"     "tipa" "force,mathalpha" "\\dgrave{R}" "tipasymb,dgrave" # LATIN CAPITAL LETTER R WITH DOUBLE GRAVE
+0x0211 "\\textdoublegrave{r}"     "tipa" "force,mathalpha" "\\dgrave{r}" "tipasymb,dgrave" # LATIN SMALL LETTER R WITH DOUBLE GRAVE
+0x0212 "\\textroundcap{R}"        "tipa" "force,mathalpha" "\\rcap{R}" "tipasymb,rcap" # LATIN CAPITAL LETTER R WITH INVERTED BREVE
+0x0213 "\\textroundcap{r}"        "tipa" "force,mathalpha" "\\rcap{r}" "tipasymb,rcap" # LATIN SMALL LETTER R WITH INVERTED BREVE
+0x0214 "\\textdoublegrave{U}"     "tipa" "force,mathalpha" "\\dgrave{U}" "tipasymb,dgrave" # LATIN CAPITAL LETTER U WITH DOUBLE GRAVE
+0x0215 "\\textdoublegrave{u}"     "tipa" "force,mathalpha" "\\dgrave{u}" "tipasymb,dgrave" # LATIN SMALL LETTER U WITH DOUBLE GRAVE
+0x0216 "\\textroundcap{U}"        "tipa" "force,mathalpha" "\\rcap{U}" "tipasymb,rcap" # LATIN CAPITAL LETTER U WITH INVERTED BREVE
+0x0217 "\\textroundcap{u}"        "tipa" "force,mathalpha" "\\rcap{u}" "tipasymb,rcap" # LATIN SMALL LETTER U WITH INVERTED BREVE
 #0x0218 ""                         "" "" # LATIN CAPITAL LETTER S WITH COMMA BELOW
 #0x0219 ""                         "" "" # LATIN SMALL LETTER S WITH COMMA BELOW
 #0x021a ""                         "" "" # LATIN CAPITAL LETTER T WITH COMMA BELOW
@@ -438,151 +438,151 @@
 0x0232 "\\={Y}"                   "" "mathalpha" "\\bar{Y}" # LATIN CAPITAL LETTER Y WITH MACRON
 0x0233 "\\={y}"                   "" "mathalpha" "\\bar{y}" # LATIN SMALL LETTER Y WITH MACRON
 #0x0234 ""                         "" "" # LATIN SMALL LETTER L WITH CURL
-0x0235 "\\textctn"                "tipa" "" # LATIN SMALL LETTER N WITH CURL
-0x0236 "\\textctt"                "tipa" "" # LATIN SMALL LETTER T WITH CURL
+0x0235 "\\textctn"                "tipa" "force" # LATIN SMALL LETTER N WITH CURL
+0x0236 "\\textctt"                "tipa" "force" # LATIN SMALL LETTER T WITH CURL
 0x0237 "\\j"                      "" "mathalpha" "\\jmath" # LATIN SMALL LETTER DOTLESS J
-0x0238 "\\textdblig"              "tipx" "" # LATIN SMALL LETTER DB DIGRAPH
-0x0239 "\\textqplig"              "tipx" "" # LATIN SMALL LETTER QP DIGRAPH
+0x0238 "\\textdblig"              "tipx" "force" # LATIN SMALL LETTER DB DIGRAPH
+0x0239 "\\textqplig"              "tipx" "force" # LATIN SMALL LETTER QP DIGRAPH
 #
 # IPA extensions
 #
-0x0250 "\\textturna"              "tipa" "" # LATIN SMALL LETTER TURNED A
-0x0251 "\\textscripta"            "tipa" "" # LATIN SMALL LETTER ALPHA
-0x0252 "\\textturnscripta"        "tipa" "" # LATIN SMALL LETTER TURNED ALPHA
-0x0253 "\\texthtb"                "tipa" "" # LATIN SMALL LETTER B WITH HOOK
-0x0254 "\\textopeno"              "tipa" "" # LATIN SMALL LETTER OPEN O
-0x0255 "\\textctc"                "tipa" "" # LATIN SMALL LETTER C WITH CURL
-0x0256 "\\textrtaild"             "tipa" "" # LATIN SMALL LETTER D WITH TAIL
-0x0257 "\\texthtd"                "tipa" "" # LATIN SMALL LETTER D WITH HOOK
-0x0258 "\\textreve"               "tipa" "" # LATIN SMALL LETTER REVERSED E
-0x0259 "\\textschwa"              "tipa" "" # LATIN SMALL LETTER SCHWA
-0x025a "\\textrhookschwa"         "tipa" "" # LATIN SMALL LETTER SCHWA WITH HOOK
-0x025b "\\textepsilon"            "tipa" "" # LATIN SMALL LETTER OPEN E
-0x025c "\\textrevepsilon"         "tipa" "" # LATIN SMALL LETTER REVERSED OPEN E
-0x025d "\\textrhookrevepsilon"    "tipa" "" # LATIN SMALL LETTER REVERSED OPEN E WITH HOOK
-0x025e "\\textcloserevepsilon"    "tipa" "" # LATIN SMALL LETTER CLOSED REVERSED OPEN E
-0x025f "\\textbardotlessj"        "tipa" "" # LATIN SMALL LETTER DOTLESS J WITH STROKE
-0x0260 "\\texthtg"                "tipa" "" # LATIN SMALL LETTER G WITH HOOK
-0x0261 "\\textscriptg"            "tipa" "" # LATIN SMALL LETTER SCRIPT G
-0x0262 "\\textscg"                "tipa" "" # LATIN LETTER SMALL CAPITAL G
-0x0263 "\\textgamma"              "tipa" "" # LATIN SMALL LETTER GAMMA
-0x0264 "\\textramshorns"          "tipa" "" # LATIN SMALL LETTER RAMS HORN
-0x0265 "\\textturnh"              "tipa" "" # LATIN SMALL LETTER TURNED H
-0x0266 "\\texthth"                "tipa" "" # LATIN SMALL LETTER H WITH HOOK
-0x0267 "\\texththeng"             "tipa" "" # LATIN SMALL LETTER HENG WITH HOOK
-0x0268 "\\textbari"               "tipa" "" # LATIN SMALL LETTER I WITH STROKE
-0x0269 "\\textiota"               "tipa" "" # LATIN SMALL LETTER IOTA
-0x026a "\\textsci"                "tipa" "" # LATIN LETTER SMALL CAPITAL I
-0x026b "\\textltilde"             "tipa" "" # LATIN SMALL LETTER L WITH MIDDLE TILDE
-0x026c "\\textbeltl"              "tipa" "" # LATIN SMALL LETTER L WITH BELT
-0x026d "\\textrtaill"             "tipa" "" # LATIN SMALL LETTER L WITH RETROFLEX HOOK
-0x026e "\\textlyoghlig"           "tipa" "" # LATIN SMALL LETTER LEZH
-0x026f "\\textturnm"              "tipa" "" # LATIN SMALL LETTER TURNED M
-0x0270 "\\textturnmrleg"          "tipa" "" # LATIN SMALL LETTER TURNED M WITH LONG LEG
-0x0271 "\\textltailm"             "tipa" "" # LATIN SMALL LETTER M WITH HOOK
-0x0272 "\\textltailn"             "tipa" "" # LATIN SMALL LETTER N WITH LEFT HOOK
-0x0273 "\\textrtailn"             "tipa" "" # LATIN SMALL LETTER N WITH RETROFLEX HOOK
-0x0274 "\\textscn"                "tipa" "" # LATIN LETTER SMALL CAPITAL N
-0x0275 "\\textbaro"               "tipa" "" # LATIN SMALL LETTER BARRED O
-0x0276 "\\textscoelig"            "tipa" "" # LATIN LETTER SMALL CAPITAL OE
-0x0277 "\\textcloseomega"         "tipa" "" # LATIN SMALL LETTER CLOSED OMEGA
-0x0278 "\\textphi"                "tipa" "" # LATIN SMALL LETTER PHI
-0x0279 "\\textturnr"              "tipa" "" # LATIN SMALL LETTER TURNED R
-0x027a "\\textturnlonglegr"       "tipa" "" # LATIN SMALL LETTER TURNED R WITH LONG LEG
-0x027b "\\textturnrrtail"         "tipa" "" # LATIN SMALL LETTER TURNED R WITH HOOK
-0x027c "\\textlonglegr"           "tipa" "" # LATIN SMALL LETTER R WITH LONG LEG
-0x027d "\\textrtailr"             "tipa" "" # LATIN SMALL LETTER R WITH TAIL
-0x027e "\\textfishhookr"          "tipa" "" # LATIN SMALL LETTER R WITH FISHHOOK
-0x027f "\\textlhti"               "tipx" "" # LATIN SMALL LETTER REVERSED R WITH FISHHOOK
-0x0280 "\\textscr"                "tipa" "" # LATIN LETTER SMALL CAPITAL R
-0x0281 "\\textinvscr"             "tipa" "" # LATIN LETTER SMALL CAPITAL INVERTED R
-0x0282 "\\textrtails"             "tipa" "" # LATIN SMALL LETTER S WITH HOOK
-0x0283 "\\textesh"                "tipa" "" # LATIN SMALL LETTER ESH
-0x0284 "\\texthtbardotlessj"      "tipa" "" # LATIN SMALL LETTER DOTLESS J WITH STROKE AND HOOK
-0x0285 "\\textlooptoprevesh"      "tipx" "" # LATIN SMALL LETTER SQUAT REVERSED ESH
-0x0286 "\\textctesh"              "tipa" "" # LATIN SMALL LETTER ESH WITH CURL
-0x0287 "\\textturnt"              "tipa" "" # LATIN SMALL LETTER TURNED T
-0x0288 "\\textrtailt"             "tipa" "" # LATIN SMALL LETTER T WITH RETROFLEX HOOK
-0x0289 "\\textbaru"               "tipa" "" # LATIN SMALL LETTER U BAR
-0x028a "\\textupsilon"            "tipa" "" # LATIN SMALL LETTER UPSILON
-0x028b "\\textscriptv"            "tipa" "" # LATIN SMALL LETTER V WITH HOOK
-0x028c "\\textturnv"              "tipa" "" # LATIN SMALL LETTER TURNED V
-0x028d "\\textturnw"              "tipa" "" # LATIN SMALL LETTER TURNED W
-0x028e "\\textturny"              "tipa" "" # LATIN SMALL LETTER TURNED Y
-0x028f "\\textscy"                "tipa" "" # LATIN LETTER SMALL CAPITAL Y
-0x0290 "\\textrtailz"             "tipa" "" # LATIN SMALL LETTER Z WITH RETROFLEX HOOK
-0x0291 "\\textctz"                "tipa" "" # LATIN SMALL LETTER Z WITH CURL
-0x0292 "\\textyogh"               "tipa" "" # LATIN SMALL LETTER EZH
-0x0293 "\\textctyogh"             "tipa" "" # LATIN SMALL LETTER EZH WITH CURL
-0x0294 "\\textglotstop"           "tipa" "" # LATIN LETTER GLOTTAL STOP
-0x0295 "\\textrevglotstop"        "tipa" "" # LATIN LETTER PHARYNGEAL VOICED FRICATIVE
-0x0296 "\\textinvglotstop"        "tipa" "" # LATIN LETTER INVERTED GLOTTAL STOP
-0x0297 "\\textstretchc"           "tipa" "" # LATIN LETTER STRETCHED C
-0x0298 "\\textbullseye"           "tipa" "" # LATIN LETTER BILABIAL CLICK
-0x0299 "\\textscb"                "tipa" "" # LATIN LETTER SMALL CAPITAL B
-0x029a "\\textcloseepsilon"       "tipa" "" # LATIN SMALL LETTER CLOSED OPEN E
-0x029b "\\texthtscg"              "tipa" "" # LATIN LETTER SMALL CAPITAL G WITH HOOK
-0x029c "\\textsch"                "tipa" "" # LATIN LETTER SMALL CAPITAL H
-0x029d "\\textctj"                "tipa" "" # LATIN SMALL LETTER J WITH CROSSED-TAIL
-0x029e "\\textturnk"              "tipa" "" # LATIN SMALL LETTER TURNED K
-0x029f "\\textscl"                "tipa" "" # LATIN LETTER SMALL CAPITAL L
-0x02a0 "\\texthtq"                "tipa" "" # LATIN SMALL LETTER Q WITH HOOK
-0x02a1 "\\textbarglotstop"        "tipa" "" # LATIN LETTER GLOTTAL STOP WITH STROKE
-0x02a2 "\\textbarrevglotstop"     "tipa" "" # LATIN LETTER REVERSED GLOTTAL STOP WITH STROKE
-0x02a3 "\\textdzlig"              "tipa" "" # LATIN SMALL LETTER DZ DIGRAPH
-0x02a4 "\\textdyoghlig"           "tipa" "" # LATIN SMALL LETTER DEZH DIGRAPH
-0x02a5 "\\textdctzlig"            "tipa" "" # LATIN SMALL LETTER DZ DIGRAPH WITH CURL
-0x02a6 "\\texttslig"              "tipa" "" # LATIN SMALL LETTER TS DIGRAPH
-0x02a7 "\\textteshlig"            "tipa" "" # LATIN SMALL LETTER TESH DIGRAPH
-0x02a8 "\\texttctclig"            "tipa" "" # LATIN SMALL LETTER TC DIGRAPH WITH CURL
+0x0250 "\\textturna"              "tipa" "force" # LATIN SMALL LETTER TURNED A
+0x0251 "\\textscripta"            "tipa" "force" # LATIN SMALL LETTER ALPHA
+0x0252 "\\textturnscripta"        "tipa" "force" # LATIN SMALL LETTER TURNED ALPHA
+0x0253 "\\texthtb"                "tipa" "force" # LATIN SMALL LETTER B WITH HOOK
+0x0254 "\\textopeno"              "tipa" "force" # LATIN SMALL LETTER OPEN O
+0x0255 "\\textctc"                "tipa" "force" # LATIN SMALL LETTER C WITH CURL
+0x0256 "\\textrtaild"             "tipa" "force" # LATIN SMALL LETTER D WITH TAIL
+0x0257 "\\texthtd"                "tipa" "force" # LATIN SMALL LETTER D WITH HOOK
+0x0258 "\\textreve"               "tipa" "force" # LATIN SMALL LETTER REVERSED E
+0x0259 "\\textschwa"              "tipa" "force" # LATIN SMALL LETTER SCHWA
+0x025a "\\textrhookschwa"         "tipa" "force" # LATIN SMALL LETTER SCHWA WITH HOOK
+0x025b "\\textepsilon"            "tipa" "force" # LATIN SMALL LETTER OPEN E
+0x025c "\\textrevepsilon"         "tipa" "force" # LATIN SMALL LETTER REVERSED OPEN E
+0x025d "\\textrhookrevepsilon"    "tipa" "force" # LATIN SMALL LETTER REVERSED OPEN E WITH HOOK
+0x025e "\\textcloserevepsilon"    "tipa" "force" # LATIN SMALL LETTER CLOSED REVERSED OPEN E
+0x025f "\\textbardotlessj"        "tipa" "force" # LATIN SMALL LETTER DOTLESS J WITH STROKE
+0x0260 "\\texthtg"                "tipa" "force" # LATIN SMALL LETTER G WITH HOOK
+0x0261 "\\textscriptg"            "tipa" "force" # LATIN SMALL LETTER SCRIPT G
+0x0262 "\\textscg"                "tipa" "force" # LATIN LETTER SMALL CAPITAL G
+0x0263 "\\textgamma"              "tipa" "force" # LATIN SMALL LETTER GAMMA
+0x0264 "\\textramshorns"          "tipa" "force" # LATIN SMALL LETTER RAMS HORN
+0x0265 "\\textturnh"              "tipa" "force" # LATIN SMALL LETTER TURNED H
+0x0266 "\\texthth"                "tipa" "force" # LATIN SMALL LETTER H WITH HOOK
+0x0267 "\\texththeng"             "tipa" "force" # LATIN SMALL LETTER HENG WITH HOOK
+0x0268 "\\textbari"               "tipa" "force" # LATIN SMALL LETTER I WITH STROKE
+0x0269 "\\textiota"               "tipa" "force" # LATIN SMALL LETTER IOTA
+0x026a "\\textsci"                "tipa" "force" # LATIN LETTER SMALL CAPITAL I
+0x026b "\\textltilde"             "tipa" "force" # LATIN SMALL LETTER L WITH MIDDLE TILDE
+0x026c "\\textbeltl"              "tipa" "force" # LATIN SMALL LETTER L WITH BELT
+0x026d "\\textrtaill"             "tipa" "force" # LATIN SMALL LETTER L WITH RETROFLEX HOOK
+0x026e "\\textlyoghlig"           "tipa" "force" # LATIN SMALL LETTER LEZH
+0x026f "\\textturnm"              "tipa" "force" # LATIN SMALL LETTER TURNED M
+0x0270 "\\textturnmrleg"          "tipa" "force" # LATIN SMALL LETTER TURNED M WITH LONG LEG
+0x0271 "\\textltailm"             "tipa" "force" # LATIN SMALL LETTER M WITH HOOK
+0x0272 "\\textltailn"             "tipa" "force" # LATIN SMALL LETTER N WITH LEFT HOOK
+0x0273 "\\textrtailn"             "tipa" "force" # LATIN SMALL LETTER N WITH RETROFLEX HOOK
+0x0274 "\\textscn"                "tipa" "force" # LATIN LETTER SMALL CAPITAL N
+0x0275 "\\textbaro"               "tipa" "force" # LATIN SMALL LETTER BARRED O
+0x0276 "\\textscoelig"            "tipa" "force" # LATIN LETTER SMALL CAPITAL OE
+0x0277 "\\textcloseomega"         "tipa" "force" # LATIN SMALL LETTER CLOSED OMEGA
+0x0278 "\\textphi"                "tipa" "force" # LATIN SMALL LETTER PHI
+0x0279 "\\textturnr"              "tipa" "force" # LATIN SMALL LETTER TURNED R
+0x027a "\\textturnlonglegr"       "tipa" "force" # LATIN SMALL LETTER TURNED R WITH LONG LEG
+0x027b "\\textturnrrtail"         "tipa" "force" # LATIN SMALL LETTER TURNED R WITH HOOK
+0x027c "\\textlonglegr"           "tipa" "force" # LATIN SMALL LETTER R WITH LONG LEG
+0x027d "\\textrtailr"             "tipa" "force" # LATIN SMALL LETTER R WITH TAIL
+0x027e "\\textfishhookr"          "tipa" "force" # LATIN SMALL LETTER R WITH FISHHOOK
+0x027f "\\textlhti"               "tipx" "force" # LATIN SMALL LETTER REVERSED R WITH FISHHOOK
+0x0280 "\\textscr"                "tipa" "force" # LATIN LETTER SMALL CAPITAL R
+0x0281 "\\textinvscr"             "tipa" "force" # LATIN LETTER SMALL CAPITAL INVERTED R
+0x0282 "\\textrtails"             "tipa" "force" # LATIN SMALL LETTER S WITH HOOK
+0x0283 "\\textesh"                "tipa" "force" # LATIN SMALL LETTER ESH
+0x0284 "\\texthtbardotlessj"      "tipa" "force" # LATIN SMALL LETTER DOTLESS J WITH STROKE AND HOOK
+0x0285 "\\textlooptoprevesh"      "tipx" "force" # LATIN SMALL LETTER SQUAT REVERSED ESH
+0x0286 "\\textctesh"              "tipa" "force" # LATIN SMALL LETTER ESH WITH CURL
+0x0287 "\\textturnt"              "tipa" "force" # LATIN SMALL LETTER TURNED T
+0x0288 "\\textrtailt"             "tipa" "force" # LATIN SMALL LETTER T WITH RETROFLEX HOOK
+0x0289 "\\textbaru"               "tipa" "force" # LATIN SMALL LETTER U BAR
+0x028a "\\textupsilon"            "tipa" "force" # LATIN SMALL LETTER UPSILON
+0x028b "\\textscriptv"            "tipa" "force" # LATIN SMALL LETTER V WITH HOOK
+0x028c "\\textturnv"              "tipa" "force" # LATIN SMALL LETTER TURNED V
+0x028d "\\textturnw"              "tipa" "force" # LATIN SMALL LETTER TURNED W
+0x028e "\\textturny"              "tipa" "force" # LATIN SMALL LETTER TURNED Y
+0x028f "\\textscy"                "tipa" "force" # LATIN LETTER SMALL CAPITAL Y
+0x0290 "\\textrtailz"             "tipa" "force" # LATIN SMALL LETTER Z WITH RETROFLEX HOOK
+0x0291 "\\textctz"                "tipa" "force" # LATIN SMALL LETTER Z WITH CURL
+0x0292 "\\textyogh"               "tipa" "force" # LATIN SMALL LETTER EZH
+0x0293 "\\textctyogh"             "tipa" "force" # LATIN SMALL LETTER EZH WITH CURL
+0x0294 "\\textglotstop"           "tipa" "force" # LATIN LETTER GLOTTAL STOP
+0x0295 "\\textrevglotstop"        "tipa" "force" # LATIN LETTER PHARYNGEAL VOICED FRICATIVE
+0x0296 "\\textinvglotstop"        "tipa" "force" # LATIN LETTER INVERTED GLOTTAL STOP
+0x0297 "\\textstretchc"           "tipa" "force" # LATIN LETTER STRETCHED C
+0x0298 "\\textbullseye"           "tipa" "force" # LATIN LETTER BILABIAL CLICK
+0x0299 "\\textscb"                "tipa" "force" # LATIN LETTER SMALL CAPITAL B
+0x029a "\\textcloseepsilon"       "tipa" "force" # LATIN SMALL LETTER CLOSED OPEN E
+0x029b "\\texthtscg"              "tipa" "force" # LATIN LETTER SMALL CAPITAL G WITH HOOK
+0x029c "\\textsch"                "tipa" "force" # LATIN LETTER SMALL CAPITAL H
+0x029d "\\textctj"                "tipa" "force" # LATIN SMALL LETTER J WITH CROSSED-TAIL
+0x029e "\\textturnk"              "tipa" "force" # LATIN SMALL LETTER TURNED K
+0x029f "\\textscl"                "tipa" "force" # LATIN LETTER SMALL CAPITAL L
+0x02a0 "\\texthtq"                "tipa" "force" # LATIN SMALL LETTER Q WITH HOOK
+0x02a1 "\\textbarglotstop"        "tipa" "force" # LATIN LETTER GLOTTAL STOP WITH STROKE
+0x02a2 "\\textbarrevglotstop"     "tipa" "force" # LATIN LETTER REVERSED GLOTTAL STOP WITH STROKE
+0x02a3 "\\textdzlig"              "tipa" "force" # LATIN SMALL LETTER DZ DIGRAPH
+0x02a4 "\\textdyoghlig"           "tipa" "force" # LATIN SMALL LETTER DEZH DIGRAPH
+0x02a5 "\\textdctzlig"            "tipa" "force" # LATIN SMALL LETTER DZ DIGRAPH WITH CURL
+0x02a6 "\\texttslig"              "tipa" "force" # LATIN SMALL LETTER TS DIGRAPH
+0x02a7 "\\textteshlig"            "tipa" "force" # LATIN SMALL LETTER TESH DIGRAPH
+0x02a8 "\\texttctclig"            "tipa" "force" # LATIN SMALL LETTER TC DIGRAPH WITH CURL
 #0x02a9 ""                         "" "" # LATIN SMALL LETTER FENG DIGRAPH
 #0x02aa ""                         "" "" # LATIN SMALL LETTER LS DIGRAPH
 #0x02ab ""                         "" "" # LATIN SMALL LETTER LZ DIGRAPH
 #0x02ac ""                         "" "" # LATIN LETTER BILABIAL PERCUSSIVE
 #0x02ad ""                         "" "" # LATIN LETTER BIDENTAL PERCUSSIVE
-0x02ae "\\textlhtlongy"            "tipa" "" # LATIN SMALL LETTER TURNED H WITH FISHHOOK
-0x02af "\\textvibyy"               "tipa" "" # LATIN SMALL LETTER TURNED H WITH FISHHOOK AND TAIL
+0x02ae "\\textlhtlongy"            "tipa" "force" # LATIN SMALL LETTER TURNED H WITH FISHHOOK
+0x02af "\\textvibyy"               "tipa" "force" # LATIN SMALL LETTER TURNED H WITH FISHHOOK AND TAIL
 #
 # Spacing Modifier Letters
 #
 0x02b0 "\\textsuperscript{h}"      "" "" # MODIFIER LETTER SMALL H
-0x02b1 "\\textsuperscript{\\texthth}"  "tipa" "" # MODIFIER LETTER SMALL H WITH HOOK
+0x02b1 "\\textsuperscript{\\texthth}"  "tipa" "force" # MODIFIER LETTER SMALL H WITH HOOK
 0x02b2 "\\textsuperscript{j}"      "" "" # MODIFIER LETTER SMALL J
 0x02b3 "\\textsuperscript{r}"      "" "" # MODIFIER LETTER SMALL R
-0x02b4 "\\textsuperscript{\\textturnr}" "tipa" "" # MODIFIER LETTER SMALL TURNED R
-0x02b5 "\\textsuperscript{\\textturnrrtail}" "tipa" "" # MODIFIER LETTER SMALL TURNED R WITH HOOK
-0x02b6 "\\textsuperscript{\\textinvscr}" "tipa" "" # MODIFIER LETTER SMALL CAPITAL INVERTED R
+0x02b4 "\\textsuperscript{\\textturnr}" "tipa" "force" # MODIFIER LETTER SMALL TURNED R
+0x02b5 "\\textsuperscript{\\textturnrrtail}" "tipa" "force" # MODIFIER LETTER SMALL TURNED R WITH HOOK
+0x02b6 "\\textsuperscript{\\textinvscr}" "tipa" "force" # MODIFIER LETTER SMALL CAPITAL INVERTED R
 0x02b7 "\\textsuperscript{w}"      "" "" # MODIFIER LETTER SMALL W
 0x02b8 "\\textsuperscript{y}"      "" "" # MODIFIER LETTER SMALL Y
 0x02b9 "\\textasciiacute"          "textcomp" "" # MODIFIER LETTER PRIME
 0x02ba "\\textacutedbl"            "textcomp" "" # MODIFIER LETTER DOUBLE PRIME
 0x02bb "\\textquoteleft"           "" "" # MODIFIER LETTER TURNED COMMA
 0x02bc "'"                         "" "" # MODIFIER LETTER APOSTROPHE
-0x02bd "\\textrevapostrophe"       "tipa" "" # MODIFIER LETTER REVERSED COMMA
+0x02bd "\\textrevapostrophe"       "tipa" "force" # MODIFIER LETTER REVERSED COMMA
 #0x02be ""                         "" "" # MODIFIER LETTER RIGHT HALF RING
 #0x02bf ""                         "" "" # MODIFIER LETTER LEFT HALF RING
-0x02c0 "\\textraiseglotstop"      "tipa" "" # MODIFIER LETTER GLOTTAL STOP
-0x02c1 "\\textsuperscript{\\textrevglotstop}" "tipa" "" # MODIFIER LETTER REVERSED GLOTTAL STOP
-0x02c2 "\\textlptr"               "tipa" "" # MODIFIER LETTER LEFT ARROWHEAD
-0x02c3 "\\textrptr"               "tipa" "" # MODIFIER LETTER RIGHT ARROWHEAD
+0x02c0 "\\textraiseglotstop"      "tipa" "force" # MODIFIER LETTER GLOTTAL STOP
+0x02c1 "\\textsuperscript{\\textrevglotstop}" "tipa" "force" # MODIFIER LETTER REVERSED GLOTTAL STOP
+0x02c2 "\\textlptr"               "tipa" "force" # MODIFIER LETTER LEFT ARROWHEAD
+0x02c3 "\\textrptr"               "tipa" "force" # MODIFIER LETTER RIGHT ARROWHEAD
 #0x02c4 ""                         "" "" # MODIFIER LETTER UP ARROWHEAD
 #0x02c5 ""                         "" "" # MODIFIER LETTER DOWN ARROWHEAD
 0x02c6 "\\^{ }"                   "" "" # MODIFIER LETTER CIRCUMFLEX ACCENT
 0x02c7 "\\v{ }"                   "" "" # CARON
-0x02c8 "\\textprimstress"         "tipa" "" # MODIFIER LETTER VERTICAL LINE
+0x02c8 "\\textprimstress"         "tipa" "force" # MODIFIER LETTER VERTICAL LINE
 0x02c9 "\\={ }"                   "" "" # MODIFIER LETTER MACRON
 0x02ca "\\'{ }"                   "" "" # MODIFIER LETTER ACUTE ACCENT
 0x02cb "\\`{ }"                   "" "" # MODIFIER LETTER GRAVE ACCENT
-0x02cc "\\textsecstress"          "tipa" "" # MODIFIER LETTER LOW VERTICAL LINE
+0x02cc "\\textsecstress"          "tipa" "force" # MODIFIER LETTER LOW VERTICAL LINE
 0x02cd "\\b{ }"                   "" "" # MODIFIER LETTER LOW MACRON
-0x02ce "\\textsubgrave{ }"        "tipa" "" # MODIFIER LETTER LOW GRAVE ACCENT
-0x02cf "\\textsubacute{ }"        "tipa" "" # MODIFIER LETTER LOW ACUTE ACCENT
-0x02d0 "\\textlengthmark"         "tipa" "" # MODIFIER LETTER TRIANGULAR COLON
-0x02d1 "\\texthalflength"         "tipa" "" # MODIFIER LETTER HALF TRIANGULAR COLON
+0x02ce "\\textsubgrave{ }"        "tipa" "force" # MODIFIER LETTER LOW GRAVE ACCENT
+0x02cf "\\textsubacute{ }"        "tipa" "force" # MODIFIER LETTER LOW ACUTE ACCENT
+0x02d0 "\\textlengthmark"         "tipa" "force" # MODIFIER LETTER TRIANGULAR COLON
+0x02d1 "\\texthalflength"         "tipa" "force" # MODIFIER LETTER HALF TRIANGULAR COLON
 #0x02d2 ""                         "" "" # MODIFIER LETTER CENTRED RIGHT HALF RING
 #0x02d3 ""                         "" "" # MODIFIER LETTER CENTRED LEFT HALF RING
-0x02d4 "\\textraising{ }"         "tipa" "" # MODIFIER LETTER UP TACK
-0x02d5 "\\textlowering{ }"        "tipa" "" # MODIFIER LETTER DOWN TACK
+0x02d4 "\\textraising{ }"         "tipa" "force" # MODIFIER LETTER UP TACK
+0x02d5 "\\textlowering{ }"        "tipa" "force" # MODIFIER LETTER DOWN TACK
 0x02d6 ""                         "" "" "+" # MODIFIER LETTER PLUS SIGN
 0x02d7 ""                         "" "" "-" # MODIFIER LETTER MINUS SIGN
 0x02d8 "\\u{ }"                   "" "" # BREVE
@@ -591,34 +591,34 @@
 0x02db "\\k{ }"                   "" "" # OGONEK
 0x02dc "\\~{ }"                   "" "" # SMALL TILDE
 0x02dd "\\H{ }"                   "" "" # DOUBLE ACUTE ACCENT
-0x02de "\\textrhoticity"          "tipa" "" # MODIFIER LETTER RHOTIC HOOK
+0x02de "\\textrhoticity"          "tipa" "force" # MODIFIER LETTER RHOTIC HOOK
 #0x02df ""                        "" "" # MODIFIER LETTER CROSS ACCENT
-0x02e0 "\\textbabygamma"          "tipa" "" # MODIFIER LETTER SMALL GAMMA
+0x02e0 "\\textbabygamma"          "tipa" "force" # MODIFIER LETTER SMALL GAMMA
 0x02e1 "\\textsuperscript{l}"     "" "" # MODIFIER LETTER SMALL L
 0x02e2 "\\textsuperscript{s}"     "" "" # MODIFIER LETTER SMALL S
 0x02e3 "\\textsuperscript{x}"     "" "" # MODIFIER LETTER SMALL X
-0x02e4 "\\textsuperscript{\\textrevglotstop}" "tipa" "" # MODIFIER LETTER SMALL REVERSED GLOTTAL STOP
-0x02e5 "\\tone{55}"               "tipa" "" # MODIFIER LETTER EXTRA-HIGH TONE BAR
-0x02e6 "\\tone{44}"               "tipa" "" # MODIFIER LETTER HIGH TONE BAR
-0x02e7 "\\tone{33}"               "tipa" "" # MODIFIER LETTER MID TONE BAR
-0x02e8 "\\tone{22}"               "tipa" "" # MODIFIER LETTER LOW TONE BAR
-0x02e9 "\\tone{11}"               "tipa" "" # MODIFIER LETTER EXTRA-LOW TONE BAR
+0x02e4 "\\textsuperscript{\\textrevglotstop}" "tipa" "force" # MODIFIER LETTER SMALL REVERSED GLOTTAL STOP
+0x02e5 "\\tone{55}"               "tipa" "force" # MODIFIER LETTER EXTRA-HIGH TONE BAR
+0x02e6 "\\tone{44}"               "tipa" "force" # MODIFIER LETTER HIGH TONE BAR
+0x02e7 "\\tone{33}"               "tipa" "force" # MODIFIER LETTER MID TONE BAR
+0x02e8 "\\tone{22}"               "tipa" "force" # MODIFIER LETTER LOW TONE BAR
+0x02e9 "\\tone{11}"               "tipa" "force" # MODIFIER LETTER EXTRA-LOW TONE BAR
 #0x02ea ""                         "" "" # MODIFIER LETTER YIN DEPARTING TONE MARK
 #0x02eb ""                         "" "" # MODIFIER LETTER YANG DEPARTING TONE MARK
-0x02ec "\\textsubwedge{ }"        "tipa" "" # MODIFIER LETTER VOICING
+0x02ec "\\textsubwedge{ }"        "tipa" "force" # MODIFIER LETTER VOICING
 #0x02ed ""                         "" "" # MODIFIER LETTER UNASPIRATED
 #0x02ee ""                         "" "" # MODIFIER LETTER DOUBLE APOSTROPHE
-0x02f0 "\\textsubcircum{ }"       "tipa" "" # MODIFIER LETTER LOW UP ARROWHEAD
+0x02f0 "\\textsubcircum{ }"       "tipa" "force" # MODIFIER LETTER LOW UP ARROWHEAD
 #0x02f1 ""                         "" "" # MODIFIER LETTER LOW LEFT ARROWHEAD
 #0x02f2 ""                         "" "" # MODIFIER LETTER LOW RIGHT ARROWHEAD
 #0x02f3 ""                         "" "" # MODIFIER LETTER LOW RING
 #0x02f4 ""                         "" "" # MODIFIER LETTER MIDDLE GRAVE ACCENT
 #0x02f5 ""                         "" "" # MODIFIER LETTER MIDDLE DOUBLE GRAVE ACCENT
 #0x02f6 ""                         "" "" # MODIFIER LETTER MIDDLE DOUBLE ACUTE ACCENT
-0x02f7 "\\textsubtilde"           "tipa" "" # MODIFIER LETTER MIDDLE DOUBLE GRAVE ACCENT
+0x02f7 "\\textsubtilde"           "tipa" "force" # MODIFIER LETTER MIDDLE DOUBLE GRAVE ACCENT
 #0x02f8 ""                         "" "" # MODIFIER LETTER RAISED COLON
-0x02f9 "\\textopencorner"         "tipa" "" # MODIFIER LETTER BEGIN HIGH TONE
-0x02fa "\\textcorner"             "tipa" "" # MODIFIER LETTER END HIGH TONE
+0x02f9 "\\textopencorner"         "tipa" "force" # MODIFIER LETTER BEGIN HIGH TONE
+0x02fa "\\textcorner"             "tipa" "force" # MODIFIER LETTER END HIGH TONE
 #0x02fb ""                         "" "" # MODIFIER LETTER BEGIN LOW TONE
 #0x02fc ""                         "" "" # MODIFIER LETTER END LOW TONE
 #
@@ -910,20 +910,20 @@
 #
 # Phonetic Extensions
 #
-0x1d00 "\\textsca"                "tipa" "" # LATIN LETTER SMALL CAPITAL A
+0x1d00 "\\textsca"                "tipa" "force" # LATIN LETTER SMALL CAPITAL A
 #0x1d01 ""                        "" "" # LATIN LETTER SMALL CAPITAL AE
 #0x1d02 ""                        "" "" # LATIN SMALL LETTER TURNED AE
 #0x1d03 ""                         "" "" # LATIN LETTER SMALL CAPITAL BARRED B
 #0x1d04 ""                         "" "" # LATIN LETTER SMALL CAPITAL C
 #0x1d05 ""                         "" "" # LATIN LETTER SMALL CAPITAL D
 #0x1d06 ""                         "" "" # LATIN LETTER SMALL CAPITAL ETH
-0x1d07 "\\textsce"                "tipa" "" # LATIN LETTER SMALL CAPITAL E
-0x1d08 "\\textrevepsilon"         "tipa" "" # LATIN SMALL LETTER TURNED OPEN E
+0x1d07 "\\textsce"                "tipa" "force" # LATIN LETTER SMALL CAPITAL E
+0x1d08 "\\textrevepsilon"         "tipa" "force" # LATIN SMALL LETTER TURNED OPEN E
 #0x1d09 ""                         "" "" # LATIN SMALL LETTER TURNED I
-0x1d0a "\\textscj"                "tipa" "" # LATIN LETTER SMALL CAPITAL J
-0x1d0b "\\textsck"                "tipx" "" # LATIN LETTER SMALL CAPITAL K
+0x1d0a "\\textscj"                "tipa" "force" # LATIN LETTER SMALL CAPITAL J
+0x1d0b "\\textsck"                "tipx" "force" # LATIN LETTER SMALL CAPITAL K
 #0x1d0c ""                         "" "" # LATIN LETTER SMALL CAPITAL L WITH STROKE
-0x1d0d "\\textscm"                "tipx" "" # LATIN LETTER SMALL CAPITAL M
+0x1d0d "\\textscm"                "tipx" "force" # LATIN LETTER SMALL CAPITAL M
 #0x1d0e ""                         "" "" # LATIN LETTER SMALL CAPITAL REVERSED N
 #0x1d0f ""                         "" "" # LATIN LETTER SMALL CAPITAL O
 #0x1d10 ""                         "" "" # LATIN LETTER SMALL CAPITAL OPEN O
@@ -934,11 +934,11 @@
 #0x1d15 ""                         "" "" # LATIN LETTER SMALL CAPITAL OU
 #0x1d16 ""                         "" "" # LATIN SMALL LETTER TOP HALF O
 #0x1d17 ""                         "" "" # LATIN SMALL LETTER BOTTOM HALF O
-0x1d18 "\\textscp"                "tipx" "" # LATIN LETTER SMALL CAPITAL P
-0x1d19 "\\textrevscr"             "tipx" "" # LATIN LETTER SMALL CAPITAL REVERSED R
+0x1d18 "\\textscp"                "tipx" "force" # LATIN LETTER SMALL CAPITAL P
+0x1d19 "\\textrevscr"             "tipx" "force" # LATIN LETTER SMALL CAPITAL REVERSED R
 #0x1d1a ""                         "" "" # LATIN LETTER SMALL CAPITAL TURNED R
 #0x1d1b ""                         "" "" # LATIN LETTER SMALL CAPITAL T
-0x1d1c "\\textscu"                "tipa" "" # LATIN LETTER SMALL CAPITAL U
+0x1d1c "\\textscu"                "tipa" "force" # LATIN LETTER SMALL CAPITAL U
 #0x1d1d ""                         "" "" # LATIN SMALL LETTER SIDEWAYS U
 #0x1d1e ""                         "" "" # LATIN SMALL LETTER SIDEWAYS DIAERESIZED U
 #0x1d1f ""                         "" "" # LATIN SMALL LETTER SIDEWAYS TURNED M
@@ -978,29 +978,29 @@
 0x1d41 "\\textsuperscript{U}"      "" "" # MODIFIER LETTER CAPITAL U
 0x1d42 "\\textsuperscript{W}"      "" "" # MODIFIER LETTER CAPITAL W
 0x1d43 "\\textsuperscript{a}"      "" "" # MODIFIER LETTER SMALL A
-0x1d44 "\\textsuperscript{\\textturna}" "tipa" "" # MODIFIER LETTER SMALL TURNED A
-0x1d45 "\\textsuperscript{\\textscripta}" "tipa" "" # MODIFIER LETTER SMALL ALPHA
+0x1d44 "\\textsuperscript{\\textturna}" "tipa" "force" # MODIFIER LETTER SMALL TURNED A
+0x1d45 "\\textsuperscript{\\textscripta}" "tipa" "force" # MODIFIER LETTER SMALL ALPHA
 #0x1d46 ""                         "" "" # MODIFIER LETTER SMALL TURNED AE
 0x1d47 "\\textsuperscript{b}"      "" "" # MODIFIER LETTER SMALL B
 0x1d48 "\\textsuperscript{d}"      "" "" # MODIFIER LETTER SMALL D
 0x1d49 "\\textsuperscript{e}"      "" "" # MODIFIER LETTER SMALL E
-0x1d4a "\\textsuperscript{\\textschwa}" "tipa" "" # MODIFIER LETTER SMALL SCHWA
-0x1d4b "\\textsuperscript{\\textepsilon}" "tipa" "" # MODIFIER LETTER SMALL OPEN E
-0x1d4c "\\textsuperscript{\\textrevepsilon}" "tipa" "" # MODIFIER LETTER SMALL TURNED OPEN E
+0x1d4a "\\textsuperscript{\\textschwa}" "tipa" "force" # MODIFIER LETTER SMALL SCHWA
+0x1d4b "\\textsuperscript{\\textepsilon}" "tipa" "force" # MODIFIER LETTER SMALL OPEN E
+0x1d4c "\\textsuperscript{\\textrevepsilon}" "tipa" "force" # MODIFIER LETTER SMALL TURNED OPEN E
 0x1d4d "\\textsuperscript{g}"       "" "" # MODIFIER LETTER SMALL G
 #0x1d4e ""                         "" "" # MODIFIER LETTER SMALL TURNED I
 0x1d4f "\\textsuperscript{k}"      "" "" # MODIFIER LETTER SMALL K
 0x1d50 "\\textsuperscript{m}"      "" "" # MODIFIER LETTER SMALL M
-0x1d51 "\\textsuperscript{\\ng}"   "tipa" "" # MODIFIER LETTER SMALL ENG
+0x1d51 "\\textsuperscript{\\ng}"   "tipa" "force" # MODIFIER LETTER SMALL ENG
 0x1d52 "\\textsuperscript{o}"      "" "" # MODIFIER LETTER SMALL O
-0x1d53 "\\textsuperscript{\\textopeno}" "tipa" "" # MODIFIER LETTER SMALL OPEN O
+0x1d53 "\\textsuperscript{\\textopeno}" "tipa" "force" # MODIFIER LETTER SMALL OPEN O
 #0x1d54 ""                         "" "" # MODIFIER LETTER SMALL TOP HALF O
 #0x1d55 ""                         "" "" # MODIFIER LETTER SMALL BOTTOM HALF O
 0x1d56 "\\textsuperscript{p}"      "" "" # MODIFIER LETTER SMALL P
 0x1d57 "\\textsuperscript{t}"      "" "" # MODIFIER LETTER SMALL T
 0x1d58 "\\textsuperscript{u}"      "" "" # MODIFIER LETTER SMALL U
 #0x1d59 ""                         "" "" # MODIFIER LETTER SMALL SIDEWAYS U
-0x1d5a "\\textsuperscript{\\textturnm}" "tipa" "" # MODIFIER LETTER SMALL TURNED M
+0x1d5a "\\textsuperscript{\\textturnm}" "tipa" "force" # MODIFIER LETTER SMALL TURNED M
 0x1d5b "\\textsuperscript{v}"      "" "" # MODIFIER LETTER SMALL V
 #0x1d5c ""                         "" "" # MODIFIER LETTER SMALL AIN
 0x1d5d "\\textsuperscript{\\textgreek{b}}" "textgreek" "" # MODIFIER LETTER SMALL BETA
@@ -1019,16 +1019,16 @@
 #0x1d6a ""                         "" "" # GREEK SUBSCRIPT SMALL LETTER CHI
 #0x1d6b ""                         "" "" # LATIN SMALL LETTER UE
 #0x1d6c ""                         "" "" # LATIN SMALL LETTER B WITH MIDDLE TILDE
-0x1d6d "\\textsuperimposetilde{d}" "tipa" "" # LATIN SMALL LETTER D WITH MIDDLE TILDE
-0x1d6e "\\textsuperimposetilde{f}" "tipa" "" # LATIN SMALL LETTER F WITH MIDDLE TILDE
-0x1d6f "\\textsuperimposetilde{m}" "tipa" "" # LATIN SMALL LETTER M WITH MIDDLE TILDE
-0x1d70 "\\textsuperimposetilde{n}" "tipa" "" # LATIN SMALL LETTER N WITH MIDDLE TILDE
+0x1d6d "\\textsuperimposetilde{d}" "tipa" "force" # LATIN SMALL LETTER D WITH MIDDLE TILDE
+0x1d6e "\\textsuperimposetilde{f}" "tipa" "force" # LATIN SMALL LETTER F WITH MIDDLE TILDE
+0x1d6f "\\textsuperimposetilde{m}" "tipa" "force" # LATIN SMALL LETTER M WITH MIDDLE TILDE
+0x1d70 "\\textsuperimposetilde{n}" "tipa" "force" # LATIN SMALL LETTER N WITH MIDDLE TILDE
 #0x1d71 ""                          "" "" # LATIN SMALL LETTER P WITH MIDDLE TILDE
-0x1d72 "\\textsuperimposetilde{r}" "tipa" "" # LATIN SMALL LETTER R WITH MIDDLE TILDE
-0x1d73 "\\textsuperimposetilde{\\textfishhookr}" "tipa" "" # LATIN SMALL LETTER R WITH FISHHOOK AND MIDDLE TILDE
-0x1d74 "\\textsuperimposetilde{s}" "tipa" "" # LATIN SMALL LETTER S WITH MIDDLE TILDE
-0x1d75 "\\textsuperimposetilde{t}" "tipa" "" # LATIN SMALL LETTER T WITH MIDDLE TILDE
-0x1d76 "\\textsuperimposetilde{z}" "tipa" "" # LATIN SMALL LETTER Z WITH MIDDLE TILDE
+0x1d72 "\\textsuperimposetilde{r}" "tipa" "force" # LATIN SMALL LETTER R WITH MIDDLE TILDE
+0x1d73 "\\textsuperimposetilde{\\textfishhookr}" "tipa" "force" # LATIN SMALL LETTER R WITH FISHHOOK AND MIDDLE TILDE
+0x1d74 "\\textsuperimposetilde{s}" "tipa" "force" # LATIN SMALL LETTER S WITH MIDDLE TILDE
+0x1d75 "\\textsuperimposetilde{t}" "tipa" "force" # LATIN SMALL LETTER T WITH MIDDLE TILDE
+0x1d76 "\\textsuperimposetilde{z}" "tipa" "force" # LATIN SMALL LETTER Z WITH MIDDLE TILDE
 #0x1d77 ""                         "" "" # LATIN SMALL LETTER TURNED G
 #0x1d78 ""                         "" "" # MODIFIER LETTER CYRILLIC EN
 #0x1d79 ""                         "" "" # LATIN SMALL LETTER INSULAR G
@@ -1036,13 +1036,13 @@
 #0x1d7b ""                         "" "" # LATIN SMALL CAPITAL LETTER I WITH STROKE
 #0x1d7c ""                         "" "" # LATIN SMALL LETTER IOTA WITH STROKE
 #0x1d7d ""                         "" "" # LATIN SMALL LETTER P WITH STROKE
-0x1d7e "\\textbaru"               "tipa" "" # LATIN SMALL CAPITAL LETTER U WITH STROKE
+0x1d7e "\\textbaru"               "tipa" "force" # LATIN SMALL CAPITAL LETTER U WITH STROKE
 #0x1d7f ""                         "" "" # LATIN SMALL LETTER UPSILON WITH STROKE
 #
 # Latin Extended Additional
 #
-0x1e00 "\\textsubring{A}"         "tipa" "mathalpha" "\\subring{A}" "accents,subring" # LATIN CAPITAL LETTER A WITH RING BELOW
-0x1e01 "\\textsubring{a}"         "tipa" "mathalpha" "\\subring{a}" "accents,subring" # LATIN SMALL LETTER A WITH RING BELOW
+0x1e00 "\\textsubring{A}"         "tipa" "force,mathalpha" "\\subring{A}" "accents,subring" # LATIN CAPITAL LETTER A WITH RING BELOW
+0x1e01 "\\textsubring{a}"         "tipa" "force,mathalpha" "\\subring{a}" "accents,subring" # LATIN SMALL LETTER A WITH RING BELOW
 0x1e02 "\\.{B}"                   "" "mathalpha" "\\dot{B}" # LATIN CAPITAL LETTER B WITH DOT ABOVE
 0x1e03 "\\.{b}"                   "" "mathalpha" "\\dot{b}" # LATIN SMALL LETTER B WITH DOT ABOVE
 0x1e04 "\\d{B}"                   "" "mathalpha" "\\subdot{B}" "accents,subdot" # LATIN CAPITAL LETTER B WITH DOT BELOW
@@ -1059,16 +1059,16 @@
 #0x1e0f ""                         "" "" # LATIN SMALL LETTER D WITH LINE BELOW
 0x1e10 "\\c{D}"                   "" "mathalpha" "\\cedilla{D}" "accents,cedilla" # LATIN CAPITAL LETTER D WITH CEDILLA
 0x1e11 "\\c{d}"                   "" "mathalpha" "\\cedilla{d}" "accents,cedilla" # LATIN SMALL LETTER D WITH CEDILLA
-0x1e12 "\\textsubcircum{D}"       "tipa" "mathalpha" "\\subhat{D}" "accents,subhat" # LATIN CAPITAL LETTER D WITH CIRCUMFLEX BELOW
-0x1e13 "\\textsubcircum{d}"       "tipa" "mathalpha" "\\subhat{d}" "accents,subhat" # LATIN SMALL LETTER D WITH CIRCUMFLEX BELOW
+0x1e12 "\\textsubcircum{D}"       "tipa" "force,mathalpha" "\\subhat{D}" "accents,subhat" # LATIN CAPITAL LETTER D WITH CIRCUMFLEX BELOW
+0x1e13 "\\textsubcircum{d}"       "tipa" "force,mathalpha" "\\subhat{d}" "accents,subhat" # LATIN SMALL LETTER D WITH CIRCUMFLEX BELOW
 #0x1e14 ""                         "" "" # LATIN CAPITAL LETTER E WITH MACRON AND GRAVE
 #0x1e15 ""                         "" "" # LATIN SMALL LETTER E WITH MACRON AND GRAVE
 #0x1e16 ""                         "" "" # LATIN CAPITAL LETTER E WITH MACRON AND ACUTE
 #0x1e17 ""                         "" "" # LATIN SMALL LETTER E WITH MACRON AND ACUTE
-0x1e18 "\\textsubcircum{E}"       "tipa" "mathalpha" "\\subhat{E}" "accents,subhat" # LATIN CAPITAL LETTER E WITH CIRCUMFLEX BELOW
-0x1e19 "\\textsubcircum{e}"       "tipa" "mathalpha" "\\subhat{e}" "accents,subhat" # LATIN SMALL LETTER E WITH CIRCUMFLEX BELOW
-0x1e1a "\\textsubtilde{E}"        "tipa" "mathalpha" "\\subtilde{E}" "accents,subtilde" # LATIN CAPITAL LETTER E WITH TILDE BELOW
-0x1e1b "\\textsubtilde{e}"        "tipa" "mathalpha" "\\subtilde{e}" "accents,subtilde" # LATIN SMALL LETTER E WITH TILDE BELOW
+0x1e18 "\\textsubcircum{E}"       "tipa" "force,mathalpha" "\\subhat{E}" "accents,subhat" # LATIN CAPITAL LETTER E WITH CIRCUMFLEX BELOW
+0x1e19 "\\textsubcircum{e}"       "tipa" "force,mathalpha" "\\subhat{e}" "accents,subhat" # LATIN SMALL LETTER E WITH CIRCUMFLEX BELOW
+0x1e1a "\\textsubtilde{E}"        "tipa" "force,mathalpha" "\\subtilde{E}" "accents,subtilde" # LATIN CAPITAL LETTER E WITH TILDE BELOW
+0x1e1b "\\textsubtilde{e}"        "tipa" "force,mathalpha" "\\subtilde{e}" "accents,subtilde" # LATIN SMALL LETTER E WITH TILDE BELOW
 #0x1e1c ""                         "" "" # LATIN CAPITAL LETTER E WITH CEDILLA AND BREVE
 #0x1e1d ""                         "" "" # LATIN SMALL LETTER E WITH CEDILLA AND BREVE
 0x1e1e "\\.{F}"                   "" "mathalpha" "\\dot{F}" # LATIN CAPITAL LETTER F WITH DOT ABOVE
@@ -1085,8 +1085,8 @@
 0x1e29 "\\c{h}"                   "" "mathalpha" "\\cedilla{h}" "accents,cedilla" # LATIN SMALL LETTER H WITH CEDILLA
 #0x1e2a ""                         "" "" # LATIN CAPITAL LETTER H WITH BREVE BELOW
 #0x1e2b ""                         "" "" # LATIN SMALL LETTER H WITH BREVE BELOW
-0x1e2c "\\textsubtilde{I}"        "tipa" "mathalpha" "\\subtilde{I}" "accents,subtilde" # LATIN CAPITAL LETTER I WITH TILDE BELOW
-0x1e2d "\\textsubtilde{i}"        "tipa" "mathalpha" "\\subtilde{i}" "accents,subtilde" # LATIN SMALL LETTER I WITH TILDE BELOW
+0x1e2c "\\textsubtilde{I}"        "tipa" "force,mathalpha" "\\subtilde{I}" "accents,subtilde" # LATIN CAPITAL LETTER I WITH TILDE BELOW
+0x1e2d "\\textsubtilde{i}"        "tipa" "force,mathalpha" "\\subtilde{i}" "accents,subtilde" # LATIN SMALL LETTER I WITH TILDE BELOW
 #0x1e2e ""                         "" "" # LATIN CAPITAL LETTER I WITH DIAERESIS AND ACUTE
 #0x1e2f ""                         "" "" # LATIN SMALL LETTER I WITH DIAERESIS AND ACUTE
 0x1e30 "\\'{K}"                   "" "mathalpha" "\\acute{K}" # LATIN CAPITAL LETTER K WITH ACUTE
@@ -1101,8 +1101,8 @@
 #0x1e39 ""                         "" "" # LATIN SMALL LETTER L WITH DOT BELOW AND MACRON
 #0x1e3a ""                         "" "" # LATIN CAPITAL LETTER L WITH LINE BELOW
 #0x1e3b ""                         "" "" # LATIN SMALL LETTER L WITH LINE BELOW
-0x1e3c "\\textsubcircum{L}"       "tipa" "mathalpha" "\\subhat{L}" "accents,subhat" # LATIN CAPITAL LETTER L WITH CIRCUMFLEX BELOW
-0x1e3d "\\textsubcircum{l}"       "tipa" "mathalpha" "\\subhat{l}" "accents,subhat" # LATIN SMALL LETTER L WITH CIRCUMFLEX BELOW
+0x1e3c "\\textsubcircum{L}"       "tipa" "force,mathalpha" "\\subhat{L}" "accents,subhat" # LATIN CAPITAL LETTER L WITH CIRCUMFLEX BELOW
+0x1e3d "\\textsubcircum{l}"       "tipa" "force,mathalpha" "\\subhat{l}" "accents,subhat" # LATIN SMALL LETTER L WITH CIRCUMFLEX BELOW
 0x1e3e "\\'{M}"                   "" "mathalpha" "\\acute{M}" # LATIN CAPITAL LETTER M WITH ACUTE
 0x1e3f "\\'{m}"                   "" "mathalpha" "\\acute{m}" # LATIN SMALL LETTER M WITH ACUTE
 0x1e40 "\\.{M}"                   "" "mathalpha" "\\dot{M}" # LATIN CAPITAL LETTER M WITH DOT ABOVE
@@ -1115,8 +1115,8 @@
 0x1e47 "\\d{n}"                   "" "mathalpha" "\\subdot{n}" "accents,subdot" # LATIN SMALL LETTER N WITH DOT BELOW
 #0x1e48 ""                         "" "" # LATIN CAPITAL LETTER N WITH LINE BELOW
 #0x1e49 ""                         "" "" # LATIN SMALL LETTER N WITH LINE BELOW
-0x1e4a "\\textsubcircum{N}"       "tipa" "mathalpha" "\\subhat{N}" "accents,subhat" # LATIN CAPITAL LETTER N WITH CIRCUMFLEX BELOW
-0x1e4b "\\textsubcircum{n}"       "tipa" "mathalpha" "\\subhat{n}" "accents,subhat" # LATIN SMALL LETTER N WITH CIRCUMFLEX BELOW
+0x1e4a "\\textsubcircum{N}"       "tipa" "force,mathalpha" "\\subhat{N}" "accents,subhat" # LATIN CAPITAL LETTER N WITH CIRCUMFLEX BELOW
+0x1e4b "\\textsubcircum{n}"       "tipa" "force,mathalpha" "\\subhat{n}" "accents,subhat" # LATIN SMALL LETTER N WITH CIRCUMFLEX BELOW
 #0x1e4c ""                         "" "" # LATIN CAPITAL LETTER O WITH TILDE AND ACUTE
 #0x1e4d ""                         "" "" # LATIN SMALL LETTER O WITH TILDE AND ACUTE
 #0x1e4e ""                         "" "" # LATIN CAPITAL LETTER O WITH TILDE AND DIAERESIS
@@ -1153,14 +1153,14 @@
 0x1e6d "\\d{t}"                   "" "mathalpha" "\\subdot{t}" "accents,subdot" # LATIN SMALL LETTER T WITH DOT BELOW
 #0x1e6e ""                         "" "" # LATIN CAPITAL LETTER T WITH LINE BELOW
 #0x1e6f ""                         "" "" # LATIN SMALL LETTER T WITH LINE BELOW
-0x1e70 "\\textsubcircum{T}"       "tipa" "mathalpha" "\\subhat{T}" "accents,subhat" # LATIN CAPITAL LETTER T WITH CIRCUMFLEX BELOW
-0x1e71 "\\textsubcircum{t}"       "tipa" "mathalpha" "\\subhat{t}" "accents,subhat" # LATIN SMALL LETTER T WITH CIRCUMFLEX BELOW
+0x1e70 "\\textsubcircum{T}"       "tipa" "force,mathalpha" "\\subhat{T}" "accents,subhat" # LATIN CAPITAL LETTER T WITH CIRCUMFLEX BELOW
+0x1e71 "\\textsubcircum{t}"       "tipa" "force,mathalpha" "\\subhat{t}" "accents,subhat" # LATIN SMALL LETTER T WITH CIRCUMFLEX BELOW
 #0x1e72 ""                         "" "" # LATIN CAPITAL LETTER U WITH DIAERESIS BELOW
 #0x1e73 ""                         "" "" # LATIN SMALL LETTER U WITH DIAERESIS BELOW
-0x1e74 "\\textsubtilde{U}"        "tipa" "mathalpha" "\\subtilde{U}" "accents,subtilde" # LATIN CAPITAL LETTER U WITH TILDE BELOW
-0x1e75 "\\textsubtilde{u}"        "tipa" "mathalpha" "\\subtilde{u}" "accents,subtilde" # LATIN SMALL LETTER U WITH TILDE BELOW
-0x1e76 "\\textsubcircum{U}"       "tipa" "mathalpha" "\\subhat{U}" "accents,subhat" # LATIN CAPITAL LETTER U WITH CIRCUMFLEX BELOW
-0x1e77 "\\textsubcircum{u}"       "tipa" "mathalpha" "\\subhat{u}" "accents,subhat" # LATIN SMALL LETTER U WITH CIRCUMFLEX BELOW
+0x1e74 "\\textsubtilde{U}"        "tipa" "force,mathalpha" "\\subtilde{U}" "accents,subtilde" # LATIN CAPITAL LETTER U WITH TILDE BELOW
+0x1e75 "\\textsubtilde{u}"        "tipa" "force,mathalpha" "\\subtilde{u}" "accents,subtilde" # LATIN SMALL LETTER U WITH TILDE BELOW
+0x1e76 "\\textsubcircum{U}"       "tipa" "force,mathalpha" "\\subhat{U}" "accents,subhat" # LATIN CAPITAL LETTER U WITH CIRCUMFLEX BELOW
+0x1e77 "\\textsubcircum{u}"       "tipa" "force,mathalpha" "\\subhat{u}" "accents,subhat" # LATIN SMALL LETTER U WITH CIRCUMFLEX BELOW
 #0x1e78 ""                         "" "" # LATIN CAPITAL LETTER U WITH TILDE AND ACUTE
 #0x1e79 ""                         "" "" # LATIN SMALL LETTER U WITH TILDE AND ACUTE
 #0x1e7a ""                         "" "" # LATIN CAPITAL LETTER U WITH MACRON AND DIAERESIS
