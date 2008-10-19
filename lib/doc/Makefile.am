@@ -112,7 +112,7 @@ dist_esdoc_DATA = \
 	es/Formula-numbering.lyx \
 	es/Intro.lyx \
 	es/Math.lyx \
-	de/Shortcuts.lyx \
+	es/Shortcuts.lyx \
 	es/Tutorial.lyx \
 	es/UserGuide.lyx
 
