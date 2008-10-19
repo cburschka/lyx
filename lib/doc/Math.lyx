@@ -34612,13 +34612,14 @@ cm the multiplication sign
 \end_inset
 
  is used.
- It is available with the LaTeX-command 
-\series bold
-
-\backslash
-texttimes
-\series default
-, but can also directly be inserted with some keyboard definitions.
+ It is available via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Special Character\SpecialChar \menuseparator
+Symbols
+\family default
+.
+ With some keyboard definitions it can also be inserted directly.
 \end_layout
 
 \begin_layout Itemize
