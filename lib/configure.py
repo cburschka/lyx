@@ -287,7 +287,6 @@ def checkFormatEntries(dtl_tools):
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document"
 \Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
 \Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document"
-\Format linuxdoc   sgml    LinuxDoc               x  ""	"%%"	"document"
 \Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document"
 \Format text       txt    "Plain text"            a  ""	"%%"	"document"
 \Format text2      txt    "Plain text (pstotext)" "" ""	"%%"	"document"
@@ -549,25 +548,6 @@ def checkConverterEntries():
 ''')
 
 
-def checkLinuxDoc():
-    ''' Check linuxdoc '''
-    #
-    path, LINUXDOC = checkProg('SGML-tools 1.x (LinuxDoc)', ['sgml2lyx'],
-        rc_entry = [
-        r'''\converter linuxdoc   lyx        "sgml2lyx $$i"	""
-\converter linuxdoc   latex      "sgml2latex $$i"	""
-\converter linuxdoc   dvi        "sgml2latex -o dvi $$i"	""
-\converter linuxdoc   html       "sgml2html $$i"	""''',
-        r'''\converter linuxdoc   lyx        ""	""
-\converter linuxdoc   latex      ""	""
-\converter linuxdoc   dvi        ""	""
-\converter linuxdoc   html       ""	""''' ])
-    if LINUXDOC != '':
-        return ('yes', 'true', '\\def\\haslinuxdoc{yes}')
-    else:
-        return ('no', 'false', '')
-
-
 def checkDocBook():
     ''' Check docbook '''
     path, DOCBOOK = checkProg('SGML-tools 2.x (DocBook) or db2x scripts', ['sgmltools', 'db2dvi'],
@@ -621,7 +601,7 @@ def checkOtherEntries():
 ''')
 
 
-def processLayoutFile(file, bool_docbook, bool_linuxdoc):
+def processLayoutFile(file, bool_docbook):
     ''' process layout file and get a line of result
         
         Declare lines look like this: (article.layout, scrbook.layout, svjog.layout)
@@ -638,12 +618,12 @@ def processLayoutFile(file, bool_docbook, bool_linuxdoc):
     '''
     classname = file.split(os.sep)[-1].split('.')[0]
     # return ('LaTeX', '[a,b]', 'a', ',b,c', 'article') for \DeclareLaTeXClass[a,b,c]{article}
-    p = re.compile(r'\Declare(LaTeX|DocBook|LinuxDoc)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}')
+    p = re.compile(r'\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}')
     for line in open(file).readlines():
         res = p.search(line)
         if res != None:
             (classtype, optAll, opt, opt1, desc) = res.groups()
-            avai = {'LaTeX':'false', 'DocBook':bool_docbook, 'LinuxDoc':bool_linuxdoc}[classtype]
+            avai = {'LaTeX':'false', 'DocBook':bool_docbook}[classtype]
             if opt == None:
                 opt = classname
             return '"%s" "%s" "%s" "%s"\n' % (classname, opt, desc, avai)
@@ -651,7 +631,7 @@ def processLayoutFile(file, bool_docbook, bool_linuxdoc):
     sys.exit(2)
 
     
-def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
+def checkLatexConfig(check_config, bool_docbook):
     ''' Explore the LaTeX configuration 
         Return None (will be passed to sys.exit()) for success.
     '''
@@ -690,7 +670,7 @@ def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
             # make sure the same class is not considered twice
             if foundClasses.count(cleanclass) == 0: # not found before
                 foundClasses.append(cleanclass)
-                tx.write(processLayoutFile(file, bool_docbook, bool_linuxdoc))
+                tx.write(processLayoutFile(file, bool_docbook))
         tx.close()
         print '\tdone'
     if not check_config:
@@ -704,8 +684,8 @@ def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
         if not os.path.isfile( 'chkconfig.ltx' ):
             shutil.copyfile( os.path.join(srcdir, 'chkconfig.ltx'), 'chkconfig.ltx' )
             rmcopy = True
-        writeToFile('wrap_chkconfig.ltx', '%s\n%s\n\\input{chkconfig.ltx}\n' \
-            % (linuxdoc_cmd, docbook_cmd) )
+        writeToFile('wrap_chkconfig.ltx', '%s\n%s\n\\input{chkconfig.ltx}\n',
+            docbook_cmd)
         # Construct the list of classes to test for.
         # build the list of available layout files and convert it to commands
         # for chkconfig.ltx
@@ -782,12 +762,12 @@ def checkModulesConfig():
       print file
       if not os.path.isfile(file): 
           continue
-      tx.write(processModuleFile(file, bool_docbook, bool_linuxdoc))
+      tx.write(processModuleFile(file, bool_docbook))
   tx.close()
   print '\tdone'
 
 
-def processModuleFile(file, bool_docbook, bool_linuxdoc):
+def processModuleFile(file, bool_docbook):
     ''' process module file and get a line of result
 
         The top of a module file should look like this:
@@ -937,15 +917,13 @@ Options:
     LATEX = checkLatex(dtl_tools)
     checkFormatEntries(dtl_tools)
     checkConverterEntries()
-    (chk_linuxdoc, bool_linuxdoc, linuxdoc_cmd) = checkLinuxDoc()
     (chk_docbook, bool_docbook, docbook_cmd) = checkDocBook()
     checkTeXAllowSpaces()
     if windows_style_tex_paths != '':
         addToRC(r'\tex_expects_windows_paths %s' % windows_style_tex_paths)
     checkOtherEntries()
     # --without-latex-config can disable lyx_check_config
-    ret = checkLatexConfig(lyx_check_config and LATEX != '',
-        bool_docbook, bool_linuxdoc)
+    ret = checkLatexConfig(lyx_check_config and LATEX != '', bool_docbook)
     checkModulesConfig() #lyx_check_config and LATEX != '')
     removeTempFiles()
     # The return error code can be 256. Because most systems expect an error code
