@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 18.
+letzte Änderung: 19.
  Oktober 2008
 \end_layout
 
@@ -37961,7 +37961,7 @@ Hauptarbeitsbereich
 \begin_inset space ~
 \end_inset
 
-anschalten gibt Hinweise bei Einfügungen
+aktivieren gibt Hinweise bei Einfügungen
 \end_layout
 
 \end_deeper
@@ -37979,13 +37979,43 @@ Speichern/Wiederherstellen
 \begin_inset space ~
 \end_inset
 
-der
+des
 \begin_inset space ~
 \end_inset
 
-Fensterabmessungen Wenn dieser Parameter ange\SpecialChar \-
-kreuzt ist, wird das LyX-Fenster
- dort geöffnet, wo es beim letzten Mal war.
+Aussehens
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+der 
+\family sans
+\series bold
+Abmessun-
+\begin_inset Newline linebreak
+\end_inset
+
+gen
+\begin_inset space \space{}
+\end_inset
+
+von
+\begin_inset space \space{}
+\end_inset
+
+Fenstern
+\family default
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+Wenn dieser Parameter ange\SpecialChar \-
+kreuzt ist, wird das LyX-Fenster dort geöffnet,
+ wo es beim letzten Mal war.
 \end_layout
 
 \begin_layout Description
@@ -37993,14 +38023,10 @@ Cursor-Positionen
 \begin_inset space ~
 \end_inset
 
-wieder
-\begin_inset space ~
-\end_inset
-
-herstellen Wenn dieser Parameter an\SpecialChar \-
+wiederherstellen Wenn dieser Parameter an\SpecialChar \-
 ge\SpecialChar \-
-kreuzt ist, wird der Cursor dort positionie
-rt, wo er beim letzten Mal war.
+kreuzt ist, wird der Cursor dort
+ positioniert, wo er beim letzten Mal war.
 \end_layout
 
 \begin_layout Description
@@ -38031,6 +38057,18 @@ laden ist selbsterklärend und
 hilfreich, wenn man längere Zeit mit denselben Dateien arbeitet.
 \end_layout
 
+\begin_layout Description
+Lösche
+\begin_inset space ~
+\end_inset
+
+alle
+\begin_inset space ~
+\end_inset
+
+Sitzungsinformationen ???
+\end_layout
+
 \end_deeper
 \begin_layout Description
 Dokumente 
@@ -38046,14 +38084,21 @@ der
 \begin_inset space ~
 \end_inset
 
-Dokumente,
+Dokumente
 \begin_inset space ~
 \end_inset
 
-alle\SpecialChar \ldots{}
-Minuten Hier können Sie die automatische Datensicherung während einer
- Sitzung (de)aktivieren und das Zeitintervall festlegen, in dem das passieren
- soll.
+alle
+\begin_inset space ~
+\end_inset
+
+\SpecialChar \ldots{}
+
+\begin_inset space ~
+\end_inset
+
+Minuten Hier können Sie die automatische Datensicherung während einer Sitzung
+ (de)aktivieren und das Zeitintervall festlegen, in dem das passieren soll.
 \end_layout
 
 \begin_layout Description
@@ -38128,6 +38173,14 @@ Schreibmaschine Auswahl einer Schrift mit festen Abständen.
 \end_layout
 
 \begin_layout Description
+Vergrößerung
+\begin_inset space ~
+\end_inset
+
+% Hiermit können Sie die Standargröße der Bildschirmschriften verändern.
+\end_layout
+
+\begin_layout Description
 Bildschirm-DPI Hiermit können Sie die Auflösung der Bildschirmschriften
  festlegen.
 \end_layout
@@ -38183,11 +38236,11 @@ Zeichen
 zu
 \family sans
 \series bold
-
+ be-
 \begin_inset Newline linebreak
 \end_inset
 
-beschleunigen
+schleunigen
 \family default
 \series default
  Wenn diese Option verwendet wird, muss LyX die Bildschirmanzeige nicht
@@ -38216,12 +38269,11 @@ Hier können Sie die Farben der verschiedenen LyX-Elemente ändern.
  In der Dokumentation wird aber immer auf die Standardfarben Bezug genommen.
 \end_layout
 
-\begin_layout Description
-Farben In diesem Unterfenster werden die von LyX verwendeten Farben für
- folgende Elemente definiert:
+\begin_layout Standard
+Im Fenster rechts werden die von LyX verwendeten Farben für folgende Elemente
+ definiert:
 \end_layout
 
-\begin_deeper
 \begin_layout Description
 Abstandsmarkierungen ist die Farbe, in der zum Beispiel ein variabler horizontal
 er Abstand dargestellt wird, siehe Abschnitt
@@ -38252,6 +38304,14 @@ reference "Danksagung"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Description
+Ausgewählter
+\begin_inset space ~
+\end_inset
+
+Text ???
 \end_layout
 
 \begin_layout Description
@@ -38370,11 +38430,11 @@ Fußnote
 \end_layout
 
 \begin_layout Description
-Fußnoten
+Fußnote
 \begin_inset space ~
 \end_inset
 
-Marke ist die Farbe der Fußnotenmarke.
+(Marke) ist die Farbe der Fußnotenmarke.
 \end_layout
 
 \begin_layout Description
@@ -38382,21 +38442,32 @@ Gelöschter
 \begin_inset space ~
 \end_inset
 
-Text ist die Farbe, mit der gelöschter Text angezeigt wird, wenn Sie unter
- 
-\family sans
-Dokument\SpecialChar \menuseparator
-Änderungsverfolgung
-\family default
- 
-\family sans
-Änderungen
-\begin_inset space \space{}
+Text ???
+\end_layout
+
+\begin_layout Description
+Geänderter
+\begin_inset space ~
 \end_inset
 
-verfolgen
-\family default
- angekreuzt haben.
+Text
+\begin_inset space ~
+\end_inset
+
+1.
+\begin_inset space ~
+\end_inset
+
+\SpecialChar \ldots{}
+
+\begin_inset space ~
+\end_inset
+
+5.
+\begin_inset space ~
+\end_inset
+
+Autor ???
 \end_layout
 
 \begin_layout Description
@@ -38406,14 +38477,6 @@ Grafik
 
 (Hintergrund) ist die Farbe, mit der zum Beispiel der Hintergrund von Schaltknöp
 fen in LyX dargestellt wird.
-\end_layout
-
-\begin_layout Description
-Grauschrift-Einfügung ist die Farbe, mit der das Wort 
-\emph on
-Grauschrift
-\emph default
- bei einer Grauschrift-Notiz geschrieben wird.
 \end_layout
 
 \begin_layout Description
@@ -38433,7 +38496,7 @@ Grauschrift-Einfügung
 \begin_inset space ~
 \end_inset
 
-Marke ist die Farbe der Grauschrift-Marke.
+(Marke) ist die Farbe der Grauschrift-Marke.
 \end_layout
 
 \begin_layout Description
@@ -38445,20 +38508,7 @@ Hinzugefügter
 \begin_inset space ~
 \end_inset
 
-Text ist die Farbe, mit der neuer Text angezeigt wird, wenn Sie unter 
-\family sans
-Dokument\SpecialChar \menuseparator
-Änderungsverfolgung
-\family default
- 
-\family sans
-Änderungen
-\begin_inset space \space{}
-\end_inset
-
-verfolgen
-\family default
- angekreuzt haben.
+Text ???
 \end_layout
 
 \begin_layout Description
@@ -38513,7 +38563,7 @@ Kommentar
 \begin_inset space ~
 \end_inset
 
-Marke ist die Farbe, mit der das Wort 
+(Marke) ist die Farbe, mit der das Wort 
 \emph on
 Kommentar
 \emph default
@@ -38637,6 +38687,26 @@ Mathe-Makro
 \begin_inset space ~
 \end_inset
 
+(Alter
+\begin_inset space ~
+\end_inset
+
+Parameter) ???
+\end_layout
+
+\begin_layout Description
+Mathe-Makro
+\begin_inset space ~
+\end_inset
+
+(Ausgeblendet) ???
+\end_layout
+
+\begin_layout Description
+Mathe-Makro
+\begin_inset space ~
+\end_inset
+
 (Hintergrund) ???
 \end_layout
 
@@ -38645,59 +38715,39 @@ Mathe-Makro
 \begin_inset space ~
 \end_inset
 
-(schwebender
+(Marke) ???
+\end_layout
+
+\begin_layout Description
+Mathe-Makro
+\begin_inset space ~
+\end_inset
+
+(Neuer
+\begin_inset space ~
+\end_inset
+
+Parameter) ???
+\end_layout
+
+\begin_layout Description
+Mathe-Makro
+\begin_inset space ~
+\end_inset
+
+(Rahmen) ???
+\end_layout
+
+\begin_layout Description
+Mathe-Makro
+\begin_inset space ~
+\end_inset
+
+(Schwebender
 \begin_inset space ~
 \end_inset
 
 Hintergrund) ???
-\end_layout
-
-\begin_layout Description
-Mathe-Makro
-\begin_inset space ~
-\end_inset
-
-Marke ???
-\end_layout
-
-\begin_layout Description
-Mathe-Makro
-\begin_inset space ~
-\end_inset
-
-Rahmen ???
-\end_layout
-
-\begin_layout Description
-Mathe-Makro
-\begin_inset space ~
-\end_inset
-
-alter
-\begin_inset space ~
-\end_inset
-
-Parameter ???
-\end_layout
-
-\begin_layout Description
-Mathe-Makro
-\begin_inset space ~
-\end_inset
-
-ausgeblendet ???
-\end_layout
-
-\begin_layout Description
-Mathe-Makro
-\begin_inset space ~
-\end_inset
-
-neuer
-\begin_inset space ~
-\end_inset
-
-Parameter ???
 \end_layout
 
 \begin_layout Description
@@ -38721,7 +38771,7 @@ Notiz
 \begin_inset space ~
 \end_inset
 
-Marke ist die Farbe, mit der das Wort 
+(Marke) ist die Farbe, mit der das Wort 
 \emph on
 Notiz
 \emph default
@@ -38748,11 +38798,19 @@ reference "Horizontale-Linien"
 \end_layout
 
 \begin_layout Description
+Progammlistings
+\begin_inset space ~
+\end_inset
+
+(Hintergrund) ???
+\end_layout
+
+\begin_layout Description
 Randnotiz
 \begin_inset space ~
 \end_inset
 
-Marke ist die Farbe, mit der die Marke der Randnotiz beschriftet ist.
+(Marke) ist die Farbe, mit der die Marke der Randnotiz beschriftet ist.
 \end_layout
 
 \begin_layout Description
@@ -38764,7 +38822,15 @@ Box ist die Hintergrundfarbe für die schattierte Box.
 \end_layout
 
 \begin_layout Description
-Seitenumbruch ist die Farbe für die Trennlinie zwischen zwei Seiten.
+Seitenumbruch
+\begin_inset space ~
+\end_inset
+
+/
+\begin_inset space ~
+\end_inset
+
+Zeilenumbruch ist die Farbe für die Trennlinie zwischen zwei Seiten.
 \end_layout
 
 \begin_layout Description
@@ -38814,7 +38880,7 @@ URL
 \begin_inset space ~
 \end_inset
 
-Marke ist die Farbe, mit der die URL-Marke beschriftet wird.
+(Marke) ist die Farbe, mit der die URL-Marke beschriftet wird.
 \end_layout
 
 \begin_layout Description
@@ -38822,7 +38888,7 @@ URL
 \begin_inset space ~
 \end_inset
 
-Text ist die Farbe, in der die URL geschrieben wird.
+(Text) ist die Farbe, in der die URL geschrieben wird.
 \end_layout
 
 \begin_layout Description
@@ -38865,16 +38931,15 @@ Zweig
 \begin_inset space ~
 \end_inset
 
-Marke ???
+(Marke) ???
 \end_layout
 
-\end_deeper
 \begin_layout Subsection
 Grafik
 \end_layout
 
 \begin_layout Description
-Grafik
+Grafiken
 \begin_inset space ~
 \end_inset
 
@@ -38920,13 +38985,13 @@ folgt
 \begin_inset space ~
 \end_inset
 
-Rollbalken Wenn der Cursor aus dem Fenster zu verschwinden droht, wird er
+Scrollbar Wenn der Cursor aus dem Fenster zu verschwinden droht, wird er
  nachgeführt.
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-Umgebungen
+Absatzlayouts
 \begin_inset space ~
 \end_inset
 
@@ -38938,7 +39003,7 @@ sortieren wie der Name sagt
 \end_layout
 
 \begin_layout Description
-Umgebungen
+Absatzlayouts
 \begin_inset space ~
 \end_inset
 
@@ -38970,50 +39035,30 @@ Im Auswahlfenster:
 \end_layout
 
 \begin_layout Description
-Mathe-Makros
+Box
 \begin_inset space ~
 \end_inset
 
-inline
+anzeigen
 \begin_inset space ~
 \end_inset
 
-bearbeiten
+bei
 \begin_inset space ~
 \end_inset
 
-in
+Bearbeitung
 \begin_inset space ~
 \end_inset
 
-einer
+von
 \begin_inset space ~
 \end_inset
 
-Box ???
+Mathe-Makros ???
 \end_layout
 
 \begin_layout Description
-Mathe-Makros
-\begin_inset space ~
-\end_inset
-
-inline
-\begin_inset space ~
-\end_inset
-
-bearbeiten
-\begin_inset space ~
-\end_inset
-
-mit
-\begin_inset space ~
-\end_inset
-
-dem
-\begin_inset space ~
-\end_inset
-
 Namen
 \begin_inset space ~
 \end_inset
@@ -39022,48 +39067,58 @@ in
 \begin_inset space ~
 \end_inset
 
-der
+Statuszeile
 \begin_inset space ~
 \end_inset
 
-Statuszeile ???
+anzeigen
+\begin_inset space ~
+\end_inset
+
+bei
+\begin_inset space ~
+\end_inset
+
+Bearbeitung
+\begin_inset space ~
+\end_inset
+
+von
+\begin_inset space ~
+\end_inset
+
+Mathe-Makros ???
 \end_layout
 
 \begin_layout Description
-Mathe-Makros
-\begin_inset space ~
-\end_inset
-
-inline
-\begin_inset space ~
-\end_inset
-
-bearbeiten
-\begin_inset space ~
-\end_inset
-
-mit
-\begin_inset space ~
-\end_inset
-
-einer
-\begin_inset space ~
-\end_inset
-
 Parameterliste
 \begin_inset space ~
 \end_inset
 
-(wie
+anzeigen
 \begin_inset space ~
 \end_inset
 
-LyX
-\series medium
- 
+bei
+\begin_inset space ~
+\end_inset
+
+Bearbeitung
+\begin_inset space ~
+\end_inset
+
+von
+\begin_inset space ~
+\end_inset
+
+Mathe-Makros 
 \family sans
 \series bold
-< 1.6)
+(wie
+\begin_inset Newline linebreak
+\end_inset
+
+LyX < 1.6)
 \family default
 \series default
  ???
@@ -39080,23 +39135,23 @@ Werkzeugleisten
 \begin_inset space ~
 \end_inset
 
-weglassen
+verstecken
 \end_layout
 
 \begin_layout Description
-Scrollleisten
+Scrollbar
 \begin_inset space ~
 \end_inset
 
-weglassen
+verstecken
 \end_layout
 
 \begin_layout Description
-Tableiste
+Tabenleiste
 \begin_inset space ~
 \end_inset
 
-weglassen
+verstecken
 \end_layout
 
 \begin_layout Standard
@@ -39354,16 +39409,13 @@ Im
 \begin_inset space ~
 \end_inset
 
-Text
+Textmodus
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-Automatische
-\begin_inset space ~
-\end_inset
-
-Inline-Vervollständigung hiermit versucht LyX, Worte zu vervollständigen.
+AutomatischeWortvervollständigung hiermit versucht LyX, Worte zu vervollständige
+n.
  Die Vervollständigung wird grau angezeigt und kann mit der Tab-Taste übernommen
  werden.
  
@@ -39378,13 +39430,17 @@ Popup hier werden die möglichen Vervollständigungen in einem Fenster angezeigt
  Mit den Pfeiltasten kann die gewünschte Vervollständigung ausgewählt werden.
 \end_layout
 
+\begin_layout Description
+Cursor-Markierung ???
+\end_layout
+
 \end_deeper
 \begin_layout Description
-In
+Im
 \begin_inset space ~
 \end_inset
 
-Mathe
+Mathemodus
 \end_layout
 
 \begin_deeper
@@ -39423,15 +39479,15 @@ Allgemein
 
 \begin_deeper
 \begin_layout Description
-s:
+Sek.
 \begin_inset space ~
 \end_inset
 
-Inline-Vervollständigungsverzögerung
+Vervollständigungsverzögerung
 \end_layout
 
 \begin_layout Description
-s:
+Sek.
 \begin_inset space ~
 \end_inset
 
@@ -39439,8 +39495,8 @@ Popup-Verzögerung
 \end_layout
 
 \begin_layout Standard
-Verzögerungszeit in s, nach der die möglichen Vervollständigungen oder das
- Popup-Fenster erscheinen.
+Verzögerungszeit in Sekunden, nach der die möglichen Vervollständigungen
+ oder das Popup-Fenster erscheinen.
 \end_layout
 
 \begin_layout Description
@@ -39476,8 +39532,8 @@ Benutze
 \begin_inset space ~
 \end_inset
 
-\SpecialChar \ldots{}
-,
+"\SpecialChar \ldots{}
+",
 \begin_inset space ~
 \end_inset
 
@@ -39541,7 +39597,7 @@ Vorlage\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Description
-Beispiel-Dateien Dieses Verzeichnis öffnet LyX, wenn Sie im Menü 
+Beispieldateien Dieses Verzeichnis öffnet LyX, wenn Sie im Menü 
 \family sans
 Datei\SpecialChar \menuseparator
 Öffnen
@@ -39690,6 +39746,18 @@ Sprache
 \end_layout
 
 \begin_layout Description
+Sprache
+\begin_inset space ~
+\end_inset
+
+der
+\begin_inset space ~
+\end_inset
+
+Programmmenüs Hier wählen Sie die Sprache für die Menüs aus.
+\end_layout
+
+\begin_layout Description
 Standard-Sprache Hier wählen Sie die Standard-Sprache für alle Dokumente
  aus.
 \end_layout
@@ -39833,12 +39901,8 @@ babel
 \end_layout
 
 \begin_layout Description
-Auto
-\begin_inset space ~
-\end_inset
-
-Beginn Wenn diese Option gesetzt wird, starten die Dokumente mit der gewählten
- Dokumentsprache.
+Auto-Beginn Wenn diese Option gesetzt wird, starten die Dokumente mit der
+ gewählten Dokumentsprache.
  Wenn nicht, wird der Befehl 
 \family sans
 \series bold
@@ -39865,11 +39929,7 @@ nicht die Standardeinstellung benutzen.
 \end_layout
 
 \begin_layout Description
-Auto
-\begin_inset space ~
-\end_inset
-
-Ende ist das Gegenstück zu 
+Auto-Ende ist das Gegenstück zu 
 \family sans
 \series bold
 Auto
@@ -39925,7 +39985,7 @@ Logisch
 \end_layout
 
 \begin_layout Description
-Sichtbar
+Visuell
 \end_layout
 
 \end_deeper
@@ -40077,7 +40137,7 @@ Zeilenlänge ist selbsterklärend.
 \end_layout
 
 \begin_layout Description
-roff-Befehl Der roff-Befehl ist eine Möglichkeit, mit den Befehlen 
+Roff-Befehl Der roff-Befehl ist eine Möglichkeit, mit den Befehlen 
 \family typewriter
 groff
 \family default
@@ -40167,15 +40227,27 @@ für
 \begin_inset space ~
 \end_inset
 
+das
+\begin_inset space ~
+\end_inset
+
 Stichwortverzeichnis ist selbsterklärend.
 \end_layout
 
 \begin_layout Description
-DVI-Betrachter
+Nomenklarturbefehl ist selbsterklärend.
+\end_layout
+
+\begin_layout Description
+Papiergrößen-Optionen
 \begin_inset space ~
 \end_inset
 
-Papiergrößen-Optionen bezieht sich auf xdvi.
+des
+\begin_inset space ~
+\end_inset
+
+DVI-Betrachters bezieht sich auf xdvi.
 \end_layout
 
 \begin_layout Description
@@ -40267,7 +40339,7 @@ Format
  und 
 \family sans
 \series bold
-Nach
+In
 \begin_inset space \space{}
 \end_inset
 
@@ -40325,6 +40397,16 @@ Tagen)
  Das bedeutet zum Beispiel, dass Grafiken nicht jedesmal konvertiert werden
  müssen, wenn Sie ein Dokument öffnen.
  Sie werden einfach aus dem Cache gelesen.
+\begin_inset Newline newline
+\end_inset
+
+Für Linux ist dieser Zwischenspeicher das Verzeichnis 
+\family typewriter
+~/.lyx[Version]/cache
+\family default
+.
+ Sie sollten hin und wieder hineinschauen, weil es bei vielen Grafiken sehr
+ schnell anwachsen kann, und den Inhalt wieder löschen.
 \end_layout
 
 \begin_layout Description
@@ -40367,7 +40449,7 @@ name "Dateiformate"
 Im Unterfenster 
 \family sans
 \series bold
-Dateiformate
+Format
 \family default
 \series default
  finden Sie eine Liste der Dateitypen, die LyX verwenden kann.
@@ -40376,7 +40458,7 @@ Dateiformate
 \end_layout
 
 \begin_layout Description
-Hinzufügen Wenn Sie die Einträge in 
+Neu Wenn Sie die Einträge in 
 \family sans
 Format
 \family default
@@ -40386,25 +40468,6 @@ GUI-Name
 \family default
  auf Werte setzen, die LyX nicht kennt, können Sie dieses neue Element hiermit
  zur Liste hinzufügen.
-\end_layout
-
-\begin_layout Description
-
-\family sans
-Ä
-\family default
-ndern Wenn Sie eins der obigen Felder geändert haben, müssen Sie auf 
-\family sans
-Ändern
-\family default
- klicken, damit die Änderungen wirksam werden.
-\begin_inset CommandInset label
-LatexCommand label
-name "Dateiformat-Ändern"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
@@ -40421,19 +40484,6 @@ Vektorgrafik-Format Wenn dies angekreuzt ist, kann der Typ Vektorgrafiken
 \end_layout
 
 \begin_layout Description
-Format ist das Kürzel für das Dateiformat und oft mit 
-\family sans
-\series bold
-Dateiendung
-\family default
-\emph on
- 
-\series default
-\emph default
-identisch.
-\end_layout
-
-\begin_layout Description
 Einsortieren
 \begin_inset space ~
 \end_inset
@@ -40446,27 +40496,8 @@ Dateiendung ist selbsterklärend
 \end_layout
 
 \begin_layout Description
-GUI-Name ist der Name, der in den Menüs 
-\family sans
-Datei\SpecialChar \menuseparator
-Exportieren
-\family default
-, 
-\family sans
-Ansicht\SpecialChar \menuseparator
-\SpecialChar \ldots{}
-
-\family default
- usw.
-\begin_inset space \space{}
-\end_inset
-
-zu sehen ist.
-\end_layout
-
-\begin_layout Description
-Kürzel ist der Buchstabe, mit der der zugehörige Befehl in den entsprechenden
- Menüs gestartet werden kann -- zum Beispiel 
+Tastaturkürzekürzel ist der Buchstabe, mit der der zugehörige Befehl in
+ den entsprechenden Menüs gestartet werden kann -- zum Beispiel 
 \family sans
 Datei\SpecialChar \menuseparator
 Exportieren\SpecialChar \menuseparator
@@ -40476,16 +40507,8 @@ H
 \end_layout
 
 \begin_layout Description
-Dateiendung wie üblich das, was nach dem Komma steht (zum Beispiel Datei.
-\family typewriter
-lyx
-\family default
-).
-\end_layout
-
-\begin_layout Description
-Bearbeiter ist der Name des Programms, mit dem Sie dieses Dateiformat aus
- LyX heraus bearbeiten können.
+Bearbeitungsprogramm ist der Name des Programms, mit dem Sie dieses Dateiformat
+ aus LyX heraus bearbeiten können.
  Dies gilt auch für 
 \family sans
 \series bold
@@ -40496,7 +40519,7 @@ Betrachter
 \end_layout
 
 \begin_layout Description
-Betrachter siehe auch 
+Anzeigeprogramm siehe auch 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Tipp-für-xdvi"
