@@ -898,6 +898,7 @@ src_frontends_qt4_ui_files = Split('''
     MarginsUi.ui
     MathMatrixUi.ui
     MathsUi.ui
+    ModulesUi.ui
     NomenclUi.ui
     NoteUi.ui
     NumberingUi.ui
