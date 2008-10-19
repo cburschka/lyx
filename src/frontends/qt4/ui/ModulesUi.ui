@@ -6,105 +6,162 @@
     <x>0</x>
     <y>0</y>
     <width>368</width>
-    <height>381</height>
+    <height>348</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout" >
-   <item row="0" column="0" >
-    <widget class="QGroupBox" name="modulesGB" >
-     <property name="title" >
-      <string>Modules</string>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="1" column="0" >
+    <widget class="QTextBrowser" name="infoML" />
+   </item>
+   <item row="2" column="0" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="6" column="0" colspan="3" >
-       <widget class="QTextBrowser" name="infoML" />
-      </item>
-      <item row="5" column="1" >
-       <spacer>
-        <property name="orientation" >
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0" >
-         <size>
-          <width>80</width>
-          <height>16</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="4" column="1" >
-       <widget class="QPushButton" name="downPB" >
-        <property name="text" >
-         <string>Do&amp;wn</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1" >
-       <widget class="QPushButton" name="upPB" >
-        <property name="text" >
-         <string>&amp;Up</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1" >
-       <widget class="QPushButton" name="deletePB" >
-        <property name="text" >
-         <string>De&amp;lete</string>
-        </property>
-       </widget>
-      </item>
-      <item rowspan="5" row="1" column="2" >
-       <widget class="QListView" name="selectedLV" >
-        <property name="editTriggers" >
-         <set>QAbstractItemView::NoEditTriggers</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" >
-       <widget class="QPushButton" name="addPB" >
-        <property name="text" >
-         <string>A&amp;dd</string>
-        </property>
-       </widget>
-      </item>
-      <item rowspan="5" row="1" column="0" >
-       <widget class="QListView" name="availableLV" >
-        <property name="editTriggers" >
-         <set>QAbstractItemView::NoEditTriggers</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2" >
-       <widget class="QLabel" name="selmodL" >
-        <property name="text" >
-         <string>S&amp;elected:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>selectedLV</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="availmodL" >
-        <property name="text" >
-         <string>A&amp;vailable:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>availableLV</cstring>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="availmodL" >
+         <property name="text" >
+          <string>A&amp;vailable:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>availableLV</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListView" name="availableLV" >
+         <property name="editTriggers" >
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>51</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="addPB" >
+         <property name="text" >
+          <string>A&amp;dd</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="deletePB" >
+         <property name="text" >
+          <string>De&amp;lete</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="upPB" >
+         <property name="text" >
+          <string>&amp;Up</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="downPB" >
+         <property name="text" >
+          <string>Do&amp;wn</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>60</width>
+           <height>16</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="selmodL" >
+         <property name="text" >
+          <string>S&amp;elected:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>selectedLV</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListView" name="selectedLV" >
+         <property name="editTriggers" >
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
