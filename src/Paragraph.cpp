@@ -1178,7 +1178,7 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 			break;
 
 		// Write font changes
-		Font font2 = getFontSettings(bparams, i);
+		Font const & font2 = getFontSettings(bparams, i);
 		if (font2 != font1) {
 			font2.lyxWriteChanges(font1, os);
 			column = 0;
@@ -1413,13 +1413,14 @@ Font const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 	Font font = getFontSettings(bparams, pos);
 
 	pos_type const body_pos = beginOfBody();
+	FontInfo & fi = font.fontInfo();
 	if (pos < body_pos)
-		font.fontInfo().realize(d->layout_->labelfont);
+		fi.realize(d->layout_->labelfont);
 	else
-		font.fontInfo().realize(d->layout_->font);
+		fi.realize(d->layout_->font);
 
-	font.fontInfo().realize(outerfont.fontInfo());
-	font.fontInfo().realize(bparams.getFont().fontInfo());
+	fi.realize(outerfont.fontInfo());
+	fi.realize(bparams.getFont().fontInfo());
 
 	return font;
 }
