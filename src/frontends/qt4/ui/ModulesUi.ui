@@ -70,7 +70,7 @@
           </size>
          </property>
          <property name="horizontalScrollBarPolicy" >
-          <enum>Qt::ScrollBarAlwaysOff</enum>
+          <enum>Qt::ScrollBarAsNeeded</enum>
          </property>
          <property name="editTriggers" >
           <set>QAbstractItemView::NoEditTriggers</set>
