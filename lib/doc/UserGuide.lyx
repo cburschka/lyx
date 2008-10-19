@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 342
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass scrbook
@@ -49,6 +49,7 @@
  {\textcolor{blue}\bgroup}{\egroup}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
+\use_default_options false
 \language english
 \inputencoding auto
 \font_roman default
@@ -76,7 +77,6 @@
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
-\pdf_pagebackref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels,pdftex"
 \papersize default
@@ -381,6 +381,8 @@ There are several features of LyX that can be configured from inside LyX,
  It uses this knowledge to give reasonable defaults to several 
 \family sans
 Preferences
+\family default
+
 \begin_inset Index
 status collapsed
 
@@ -390,8 +392,6 @@ Preferences
 
 \end_inset
 
-
-\family default
  settings.
  Although this configuration has already been done when LyX was installed
  on your system, you might have some items that you installed locally, e.g.
@@ -2466,6 +2466,8 @@ Document Class
 \family sans
 Document\SpecialChar \menuseparator
 Settings
+\family default
+
 \begin_inset Index
 status collapsed
 
@@ -2475,8 +2477,6 @@ Document ! Settings
 
 \end_inset
 
-
-\family default
  dialog.
  Highlighting a module in the dialog will bring up a description of the
  module.
@@ -3063,19 +3063,19 @@ reference "sub:Headings"
 
 \begin_layout Subsection
 Document Layout
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Document !  Layout
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Document-Layout"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Document-Layout"
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Document ! Layout
+\end_layout
 
 \end_inset
 
@@ -3382,19 +3382,19 @@ document
 
 \begin_layout Subsection
 Margins
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Margins"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
 Document ! Margins
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Margins"
 
 \end_inset
 
@@ -3418,8 +3418,6 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
 .
-\family sans
-
 \begin_inset Index
 status collapsed
 
@@ -3575,6 +3573,8 @@ Layout
 \family sans
 Document\SpecialChar \menuseparator
 Settings
+\family default
+
 \begin_inset Index
 status collapsed
 
@@ -3584,8 +3584,6 @@ Document ! Settings
 
 \end_inset
 
-
-\family default
  to indent paragraphs or add extra space between paragraphs, respectively.
  The size of the skips can be defined in the dialog, for the indentation
  you have to add this line to your document preamble:
@@ -3674,6 +3672,8 @@ In the
 \family sans
 Document\SpecialChar \menuseparator
 Settings
+\noun on
+
 \begin_inset Index
 status collapsed
 
@@ -3685,6 +3685,7 @@ Document ! Settings
 
 
 \family default
+\noun default
  dialog you can set the line spacing in the submenu 
 \family sans
 Text
@@ -3722,19 +3723,19 @@ LaTeX-packages ! setspace
 
 \begin_layout Section
 Paragraph Environments
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Paragraph-Environments"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
 Paragraph ! Environments
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Paragraph-Environments"
 
 \end_inset
 
@@ -9814,6 +9815,8 @@ DefSkip
 \family sans
 Document\SpecialChar \menuseparator
 Settings
+\family default
+
 \begin_inset Index
 status collapsed
 
@@ -9823,8 +9826,6 @@ Document ! Settings
 
 \end_inset
 
-
-\family default
  for the paragraph separation.
  If you use indentation to separate paragraphs 
 \family sans
@@ -10553,9 +10554,9 @@ Document ! Font
 \end_layout
 
 \begin_layout Standard
-You can set the document fonts in the
+You can set the document fonts in the 
 \family sans
- Document\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Settings
 \family default
 
@@ -27525,7 +27526,8 @@ Hyperlinks
  how the links will look like and if links for bibliographical backreferences
  are created.
  The backreferences will appear in the bibliography behind the different
- entries, showing where in the document the entry is referenced.
+ entries, showing the number of the section, slide, or page where the entry
+ is referenced.
 \end_layout
 
 \begin_layout Standard
@@ -35122,7 +35124,7 @@ Phonetic
 \begin_inset space ~
 \end_inset
 
-Symbols
+Symbols 
 \begin_inset Index
 status collapsed
 
@@ -35142,7 +35144,7 @@ Language ! Phonetic symbols
 
 \end_inset
 
- Creates a formula with a so called tipa inset.
+Creates a formula with a so called tipa inset.
  Here you can insert commands to create IPA phonetic symbols.
  For this feature you must have the LaTeX-package 
 \series bold
