@@ -52,7 +52,7 @@ int InsetIndex::latex(odocstream & os,
 {
 	os << "\\index";
 	os << '{';
-	int i = 7;
+	int i = 0;
 
 	// get contents of InsetText as LaTeX and plaintext
 	odocstringstream ourlatex;
@@ -95,10 +95,9 @@ int InsetIndex::latex(odocstream & os,
 	bool first = true;
 	for (; it != end; ++it) {
 		// write the separator except the first time
-		if (!first) {
+		if (!first)
 			os << '!';
-			i += 1;
-		} else
+		else
 			first = false;
 
 		// correctly sort macros and formatted strings
@@ -136,21 +135,16 @@ int InsetIndex::latex(odocstream & os,
 				subst(spart2, from_ascii("\\"), docstring());
 			os << ppart;
 			os << '@';
-			i += ppart.size() + 1;
 		}
 		docstring const tpart = *it;
 		os << tpart;
-		i += tpart.size();
 		if (it2 < levels_plain.end())
 			++it2;
 	}
 	// write the bit that followed "|"
-	if (!cmd.empty()) {
+	if (!cmd.empty())
 		os << "|" << cmd;
-		i += cmd.size() + 1;
-	}
 	os << '}';
-	i += 1;
 	return i;
 }
 
