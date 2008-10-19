@@ -801,7 +801,7 @@ void clearCutStack()
 docstring selection(size_t sel_index)
 {
 	return sel_index < theCuts.size()
-		? theCuts[sel_index].first.back().asString(AS_STR_INSETS)
+		? theCuts[sel_index].first.back().asString(AS_STR_INSETS | AS_STR_NEWLINES)
 		: docstring();
 }
 

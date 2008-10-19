@@ -78,7 +78,8 @@ enum AsStringParameter
 {
 	AS_STR_NONE = 0, ///< No option, only printable characters.
 	AS_STR_LABEL = 1, ///< Prefix with paragraph label.
-	AS_STR_INSETS = 2 ///< Go into insets.
+	AS_STR_INSETS = 2, ///< Go into insets.
+	AS_STR_NEWLINES = 4 ///< Get also newline characters.
 };
 
 
