@@ -10,7 +10,6 @@ uic BranchUi.ui -o BranchUi.h
 uic BulletsUi.ui -o BulletsUi.h
 uic ChangesUi.ui -o ChangesUi.h
 uic CharacterUi.ui -o CharacterUi.h
-uic CitationFindUi.ui -o CitationFindUi.h
 uic CitationUi.ui -o CitationUi.h
 uic DelimiterUi.ui -o DelimiterUi.h
 uic DocumentUi.ui -o DocumentUi.h
@@ -21,7 +20,6 @@ uic FloatUi.ui -o FloatUi.h
 uic FontUi.ui -o FontUi.h
 uic GraphicsUi.ui -o GraphicsUi.h
 uic IncludeUi.ui -o IncludeUi.h
-uic IndexUi.ui -o IndexUi.h
 uic LanguageUi.ui -o LanguageUi.h
 uic LaTeXUi.ui -o LaTeXUi.h
 uic LogUi.ui -o LogUi.h
@@ -40,7 +38,6 @@ uic PrefDateUi.ui -o PrefDateUi.h
 uic PrefDisplayUi.ui -o PrefDisplayUi.h
 uic PrefFileformatsUi.ui -o PrefFileformatsUi.h
 uic PrefIdentityUi.ui -o PrefIdentityUi.h
-uic PrefKeyboardUi.ui -o PrefKeyboardUi.h
 uic PrefLanguageUi.ui -o PrefLanguageUi.h
 uic PrefLatexUi.ui -o PrefLatexUi.h
 uic PrefPathsUi.ui -o PrefPathsUi.h
@@ -62,7 +59,6 @@ uic TexinfoUi.ui -o TexinfoUi.h
 uic TextLayoutUi.ui -o TextLayoutUi.h
 uic ThesaurusUi.ui -o ThesaurusUi.h
 uic TocUi.ui -o TocUi.h
-uic URLUi.ui -o URLUi.h
 uic VSpaceUi.ui -o VSpaceUi.h
 uic WrapUi.ui -o WrapUi.h
 
