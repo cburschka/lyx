@@ -67,7 +67,6 @@
 
 #include "mathed/InsetMathHull.h"
 #include "mathed/MathMacroTemplate.h"
-#include "mathed/MathParser.h"
 
 #include <boost/next_prior.hpp>
 
