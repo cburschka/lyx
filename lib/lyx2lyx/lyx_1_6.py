@@ -1536,6 +1536,22 @@ def convert_usorbian(document):
         j = j + 1
 
 
+def convert_macro_global(document):
+    "Remove TeX code command \global when it is in front of a macro"
+    # math macros are nowadays already defined \global, so that an additional
+    # \global would make the document uncompilable, see
+    # http://bugzilla.lyx.org/show_bug.cgi?id=5371
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset FormulaMacro", i)
+        if i != -1 and i > 13:
+            if document.body[i-6] == "global":
+                del document.body[i-13 : i]
+        else:
+            return
+        i = i - 12
+
+
 def revert_macro_optional_params(document):
     "Convert macro definitions with optional parameters into ERTs"
     # Stub to convert macro definitions with one or more optional parameters
@@ -3037,7 +3053,7 @@ convert = [[277, [fix_wrong_tables]],
            [295, [convert_htmlurl, convert_url]],
            [296, [convert_include]],
            [297, [convert_usorbian]],
-           [298, []],
+           [298, [convert_macro_global]],
            [299, []],
            [300, []],
            [301, []],
