@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass scrbook
@@ -169,6 +169,7 @@
 \renewcommand{\lstlistingname}{Listado}
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
 \language spanish
 \inputencoding auto
 \font_roman default
@@ -196,7 +197,6 @@
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
-\pdf_pagebackref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize default
@@ -19207,7 +19207,7 @@ Ecuaciones
 \end_layout
 
 \begin_layout Subsection
-Envoltorios flotantes
+Flotantes envueltos
 \begin_inset Index
 status collapsed
 
@@ -19265,27 +19265,19 @@ Figura envuelta en el texto
 \family sans
 Insertar\SpecialChar \menuseparator
 Flotante\SpecialChar \menuseparator
-Envoltorio
+Figura
 \begin_inset space ~
 \end_inset
 
-de
-\begin_inset space ~
-\end_inset
-
-figura
+envuelta
 \family default
  o 
 \family sans
-Envoltorio
+Tabla
 \begin_inset space ~
 \end_inset
 
-de
-\begin_inset space ~
-\end_inset
-
-tabla
+envuelta
 \family default
  si está instalado el paquete LaTeX 
 \series bold
@@ -19341,7 +19333,7 @@ Anchura
 .
  Son opcionales 
 \family sans
-Overhang
+Extensión al margen
 \family default
 , que especifica la anchura de invasión del margen, y 
 \family sans
@@ -19349,9 +19341,13 @@ Extender
 \begin_inset space ~
 \end_inset
 
+a
+\begin_inset space ~
+\end_inset
+
 líneas
 \family default
-, que indica cuántas líneas de texto necesitará aproximadamente el flotante.
+:, que indica cuántas líneas de texto necesitará aproximadamente el flotante.
  Como suele ser difícil estimar el número de líneas, lo mejor es usar esta
  opción sólo si encuentras problemas en la colocación del flotante.
  Además puedes decidir si permitir que LaTeX deje flotar el flotante dentro
@@ -19408,7 +19404,7 @@ status open
 \series bold
 Nota:
 \series default
- ¡Los envoltorios flotantes son frágiles! P.
+ ¡Los flotantes envueltos son frágiles! P.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -31242,10 +31238,8 @@ LaTeX-paquetes ! listings
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Right-clicking on a listings inset opens the context menu containing where
- you can set the listings format.
+Al hacer clic-derecho sobre un recuadro de listado surge un cuadro de diálogo
+ en el que puedes establecer el formato del mismo.
 \end_layout
 
 \begin_layout Standard
@@ -31465,11 +31459,8 @@ status open
 \series bold
 Nota:
 \series default
- Si no consigues caracteres en negrita cuando usas fuentes 
-\family typewriter
-typewriter
-\family default
-, se debe probablemente a que dicha fuente no suministra negritas.
+ Si no consigues caracteres en negrita cuando usas fuentes typewriter, se
+ debe probablemente a que dicha fuente no suministra negritas.
  En este caso selecciona una fuente distinta en el menú 
 \family sans
 Documento
