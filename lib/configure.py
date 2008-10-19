@@ -408,9 +408,12 @@ def checkConverterEntries():
     #
     checkProg('an OpenDocument -> LaTeX converter', ['w2l -clean $$i'],
         rc_entry = [ r'\converter odt        latex      "%%"	""' ])
+    # According to http://www.tug.org/applications/tex4ht/mn-commands.html
+    # the command mk4ht oolatex $$i has to be used as default,
+    # but as this would require to have Perl installed, in MiKTeX oolatex is
+    # directly available as application.
     # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
     # Both SuSE and debian have oolatex
-    # TeXLive does not have oolatex, mk4ht has to be used.
     checkProg('a LaTeX -> Open Document converter', [
         'oolatex $$i', 'mk4ht oolatex $$i', 'oolatex.sh $$i', '/usr/share/tex4ht/oolatex $$i',
         'htlatex $$i \'xhtml,ooffice\' \'ooffice/! -cmozhtf\' \'-coo\' \'-cvalidate\''],
