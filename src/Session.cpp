@@ -14,6 +14,7 @@
 #include "Session.h"
 
 #include "support/debug.h"
+#include "support/FileNameList.h"
 #include "support/filetools.h"
 #include "support/Package.h"
 
@@ -102,31 +103,23 @@ void LastFilesSection::setNumberOfLastFiles(unsigned int no)
 }
 
 
-void LastOpenedSection::read(istream & is)
+void LastOpenedSection::read(istream & /*is*/)
 {
-	string tmp;
-	do {
-		char c = is.peek();
-		if (c == '[')
-			break;
-		getline(is, tmp);
-		FileName const file(tmp);
-		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ' || !file.isAbsolute())
-			continue;
-
-		if (file.exists() && !file.isDirectory())
-			lastopened.push_back(file);
+	lastopened.clear();
+	FileNameList list;// = theApp()->fileNameListFromSession("last_opened");
+	for (size_t i = 0; i != list.size(); ++i) {
+		FileName const & file = list[i];
+		if (!file.isAbsolute() || !file.exists() || file.isDirectory())
+			LYXERR(Debug::INIT, "Warning: invalid last opened file: " << file);
 		else
-			LYXERR(Debug::INIT, "LyX: Warning: Ignore last opened file: " << tmp);
-	} while (is.good());
+			lastopened.push_back(file);
+	}
 }
 
 
-void LastOpenedSection::write(ostream & os) const
+void LastOpenedSection::write(ostream & /*os*/) const
 {
-	os << '\n' << sec_lastopened << '\n';
-	copy(lastopened.begin(), lastopened.end(),
-	     ostream_iterator<FileName>(os, "\n"));
+	//theApp()->toSession(lastopened);
 }
 
 

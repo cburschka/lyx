@@ -455,7 +455,7 @@ void GuiCompleter::updateModel(Cursor & cur, bool popupUpdate, bool inlineUpdate
 	bool rtl = false;
 	if (cur.inTexted()) {
 		Paragraph const & par = cur.paragraph();
-		Font const font =
+		Font const & font =
 			par.getFontSettings(cur.bv().buffer().params(), cur.pos());
 		rtl = font.isVisibleRightToLeft();
 	}

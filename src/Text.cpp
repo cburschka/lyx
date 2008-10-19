@@ -1541,11 +1541,11 @@ void Text::charsTranspose(Cursor & cur)
 
 	// Store the characters to be transposed (including font information).
 	char_type char1 = par.getChar(pos1);
-	Font const font1 =
+	Font const & font1 =
 		par.getFontSettings(cur.buffer().params(), pos1);
 
 	char_type char2 = par.getChar(pos2);
-	Font const font2 =
+	Font const & font2 =
 		par.getFontSettings(cur.buffer().params(), pos2);
 
 	// And finally, we are ready to perform the transposition.

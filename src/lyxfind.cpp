@@ -158,7 +158,7 @@ int replaceAll(BufferView * bv,
 	cur.setCursor(doc_iterator_begin(buf.inset()));
 	while (findForward(cur, match, false)) {
 		pos_type pos = cur.pos();
-		Font const font
+		Font const & font
 			= cur.paragraph().getFontSettings(buf.params(), pos);
 		cur.recordUndo();
 		int striked = ssize - cur.paragraph().eraseChars(pos, pos + ssize,

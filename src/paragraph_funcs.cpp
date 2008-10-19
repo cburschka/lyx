@@ -36,7 +36,7 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 	// Note: moveItem() does not honour change tracking!
 	// Therefore, it should only be used for breaking and merging paragraphs
 
-	Font const tmpFont = fromPar.getFontSettings(params, fromPos);
+	Font const & tmpFont = fromPar.getFontSettings(params, fromPos);
 	Change const & tmpChange = fromPar.lookupChange(fromPos);
 
 	if (Inset * tmpInset = fromPar.getInset(fromPos)) {
@@ -123,7 +123,7 @@ void breakParagraph(BufferParams const & bparams,
 		// breaking paragraph.
 		if (tmp->empty()) {
 			Font changed = tmp->getFirstFontSettings(bparams);
-			Font old = par.getFontSettings(bparams, par.size());
+			Font const & old = par.getFontSettings(bparams, par.size());
 			changed.setLanguage(old.language());
 			tmp->setFont(0, changed);
 		}

@@ -109,7 +109,7 @@ public:
 	/// specified by the latex macro \p ltx, to \p os starting from \p i.
 	/// \return the number of characters written.
 	int writeScriptChars(odocstream & os, docstring const & ltx,
-			   Change &, Encoding const &, pos_type & i);
+			   Change const &, Encoding const &, pos_type & i);
 
 	/// This could go to ParagraphParameters if we want to.
 	int startTeXParParams(BufferParams const &, odocstream &, TexRow &,
@@ -135,9 +135,9 @@ public:
 	///
 	void latexSpecialChar(
 				   odocstream & os,
-				   OutputParams & runparams,
-				   Font & running_font,
-				   Change & running_change,
+				   OutputParams const & runparams,
+				   Font const & running_font,
+				   Change const & running_change,
 				   Layout const & style,
 				   pos_type & i,
 				   unsigned int & column);
@@ -146,20 +146,20 @@ public:
 	bool latexSpecialT1(
 		char_type const c,
 		odocstream & os,
-		pos_type & i,
+		pos_type i,
 		unsigned int & column);
 	///
 	bool latexSpecialTypewriter(
 		char_type const c,
 		odocstream & os,
-		pos_type & i,
+		pos_type i,
 		unsigned int & column);
 	///
 	bool latexSpecialPhrase(
 		odocstream & os,
 		pos_type & i,
 		unsigned int & column,
-		OutputParams & runparams);
+		OutputParams const & runparams);
 
 	///
 	void validate(LaTeXFeatures & features,
@@ -603,7 +603,7 @@ bool Paragraph::Private::simpleTeXBlanks(OutputParams const & runparams,
 
 int Paragraph::Private::writeScriptChars(odocstream & os,
 					 docstring const & ltx,
-					 Change & runningChange,
+					 Change const & runningChange,
 					 Encoding const & encoding,
 					 pos_type & i)
 {
@@ -840,9 +840,9 @@ void Paragraph::Private::latexInset(
 
 void Paragraph::Private::latexSpecialChar(
 					     odocstream & os,
-					     OutputParams & runparams,
-					     Font & running_font,
-					     Change & running_change,
+					     OutputParams const & runparams,
+					     Font const & running_font,
+					     Change const & running_change,
 					     Layout const & style,
 					     pos_type & i,
 					     unsigned int & column)
@@ -970,7 +970,7 @@ void Paragraph::Private::latexSpecialChar(
 
 
 bool Paragraph::Private::latexSpecialT1(char_type const c, odocstream & os,
-	pos_type & i, unsigned int & column)
+	pos_type i, unsigned int & column)
 {
 	switch (c) {
 	case '>':
@@ -998,7 +998,7 @@ bool Paragraph::Private::latexSpecialT1(char_type const c, odocstream & os,
 
 
 bool Paragraph::Private::latexSpecialTypewriter(char_type const c, odocstream & os,
-	pos_type & i, unsigned int & column)
+	pos_type i, unsigned int & column)
 {
 	switch (c) {
 	case '-':
@@ -1020,7 +1020,7 @@ bool Paragraph::Private::latexSpecialTypewriter(char_type const c, odocstream & 
 
 
 bool Paragraph::Private::latexSpecialPhrase(odocstream & os, pos_type & i,
-	unsigned int & column, OutputParams & runparams)
+	unsigned int & column, OutputParams const & runparams)
 {
 	// FIXME: if we have "LaTeX" with a font
 	// change in the middle (before the 'T', then
@@ -1327,7 +1327,7 @@ void Paragraph::resetFonts(Font const & font)
 }
 
 // Gets uninstantiated font setting at position.
-Font const Paragraph::getFontSettings(BufferParams const & bparams,
+Font const & Paragraph::getFontSettings(BufferParams const & bparams,
 					 pos_type pos) const
 {
 	if (pos > size()) {
@@ -1342,7 +1342,16 @@ Font const Paragraph::getFontSettings(BufferParams const & bparams,
 	if (pos == size() && !empty())
 		return getFontSettings(bparams, pos - 1);
 
-	return Font(inherit_font, getParLanguage(bparams));
+	// Optimisation: avoid a full font instantiation if there is no
+	// language change from previous call.
+	static Font previous_font;
+	static Language const * previous_lang = 0;
+	Language const * lang = getParLanguage(bparams);
+	if (lang != previous_lang) {
+		previous_lang = lang;
+		previous_font = Font(inherit_font, lang);
+	}
+	return previous_font;
 }
 
 
@@ -1373,12 +1382,21 @@ FontSpan Paragraph::fontSpan(pos_type pos) const
 
 
 // Gets uninstantiated font setting at position 0
-Font const Paragraph::getFirstFontSettings(BufferParams const & bparams) const
+Font const & Paragraph::getFirstFontSettings(BufferParams const & bparams) const
 {
 	if (!empty() && !d->fontlist_.empty())
 		return d->fontlist_.begin()->font();
 
-	return Font(inherit_font, bparams.language);
+	// Optimisation: avoid a full font instantiation if there is no
+	// language change from previous call.
+	static Font previous_font;
+	static Language const * previous_lang = 0;
+	if (bparams.language != previous_lang) {
+		previous_lang = bparams.language;
+		previous_font = Font(inherit_font, bparams.language);
+	}
+
+	return previous_font;
 }
 
 

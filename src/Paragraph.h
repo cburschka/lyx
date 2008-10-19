@@ -253,10 +253,10 @@ public:
 	    between the characters font and the layoutfont.
 	    This is what is stored in the fonttable
 	*/
-	Font const
+	Font const &
 	getFontSettings(BufferParams const &, pos_type pos) const;
 	///
-	Font const getFirstFontSettings(BufferParams const &) const;
+	Font const & getFirstFontSettings(BufferParams const &) const;
 
 	/** Get fully instantiated font. If pos == -1, use the layout
 	    font attached to this paragraph.
