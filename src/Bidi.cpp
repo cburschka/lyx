@@ -109,17 +109,18 @@ void Bidi::computeTables(Paragraph const & par,
 			 !par.isLineSeparator(lpos + 1) &&
 			 !par.isNewline(lpos + 1))
 			? lpos + 1 : lpos;
-		Font font = par.getFontSettings(bufparams, pos);
-		if (pos != lpos && 0 < lpos && rtl0 && font.isRightToLeft() &&
-		    font.fontInfo().number() == FONT_ON &&
+
+		Font const * font = &(par.getFontSettings(bufparams, pos));
+		if (pos != lpos && 0 < lpos && rtl0 && font->isRightToLeft() &&
+		    font->fontInfo().number() == FONT_ON &&
 		    par.getFontSettings(bufparams, lpos - 1).fontInfo().number()
 		    == FONT_ON) {
-			font = par.getFontSettings(bufparams, lpos);
+			font = &(par.getFontSettings(bufparams, lpos));
 			is_space = false;
 		}
+		bool new_rtl = font->isVisibleRightToLeft();
+		bool new_rtl0 = font->isRightToLeft();
 
-		bool new_rtl = font.isVisibleRightToLeft();
-		bool new_rtl0 = font.isRightToLeft();
 		int new_level;
 
 		if (lpos == body_pos - 1
