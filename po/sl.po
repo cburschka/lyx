@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-10-15 00:35+0200\n"
+"POT-Creation-Date: 2008-10-19 14:20+0200\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -85,14 +85,14 @@ msgstr "&V redu"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:639 src/Buffer.cpp:840
-#: src/Buffer.cpp:2541 src/Buffer.cpp:2565 src/Buffer.cpp:2600
+#: src/Buffer.cpp:2542 src/Buffer.cpp:2566 src/Buffer.cpp:2601
 #: src/LyXFunc.cpp:683 src/LyXFunc.cpp:821 src/LyXFunc.cpp:999
 #: src/LyXVC.cpp:181 src/frontends/qt4/GuiClipboard.cpp:208
-#: src/frontends/qt4/GuiDocument.cpp:1274
+#: src/frontends/qt4/GuiDocument.cpp:1277
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1503
 #: src/frontends/qt4/GuiView.cpp:1681 src/frontends/qt4/GuiView.cpp:1726
-#: src/frontends/qt4/GuiView.cpp:1779 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiView.cpp:1783 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
 msgstr "&Prekliči"
 
@@ -190,7 +190,7 @@ msgstr "Zbirka podatkov BibTeX za rabo"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:126
 #: src/frontends/qt4/ui/BibtexUi.ui:106 src/frontends/qt4/ui/ExternalUi.ui:78
 #: src/frontends/qt4/ui/GraphicsUi.ui:151
-#: src/frontends/qt4/ui/IncludeUi.ui:329 src/frontends/qt4/ui/LaTeXUi.ui:149
+#: src/frontends/qt4/ui/IncludeUi.ui:329 src/frontends/qt4/ui/LaTeXUi.ui:173
 #: src/frontends/qt4/ui/PrintUi.ui:313
 msgid "&Browse..."
 msgstr "&Brskaj..."
@@ -272,7 +272,7 @@ msgid "Move the selected database upwards in the list"
 msgstr "Odstrani izbrano zbirko podatkov"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:265 src/frontends/qt4/ui/CitationUi.ui:597
-#: src/frontends/qt4/ui/LaTeXUi.ui:60
+#: src/frontends/qt4/ui/ModulesUi.ui:111
 #, fuzzy
 msgid "&Up"
 msgstr "&Osveži"
@@ -282,7 +282,7 @@ msgstr "&Osveži"
 msgid "Move the selected database downwards in the list"
 msgstr "Odstrani izbrano zbirko podatkov"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:275 src/frontends/qt4/ui/LaTeXUi.ui:53
+#: src/frontends/qt4/ui/BibtexUi.ui:275 src/frontends/qt4/ui/ModulesUi.ui:118
 #, fuzzy
 msgid "Do&wn"
 msgstr "Opravljeno"
@@ -393,8 +393,8 @@ msgstr "&Obnovi"
 #: src/frontends/qt4/ui/ParagraphUi.ui:92 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/VSpaceUi.ui:49
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1349
-#: src/frontends/qt4/GuiDocument.cpp:2219
+#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1352
+#: src/frontends/qt4/GuiDocument.cpp:2222
 msgid "&Apply"
 msgstr "&Uporabi"
 
@@ -526,11 +526,11 @@ msgstr "Ve&likost:"
 #: src/frontends/qt4/ui/TabularUi.ui:975 lib/ui/stdtoolbars.inc:85
 #: src/Font.cpp:182 src/frontends/qt4/GuiDocument.cpp:85
 #: src/frontends/qt4/GuiDocument.cpp:103 src/frontends/qt4/GuiDocument.cpp:119
-#: src/frontends/qt4/GuiDocument.cpp:132 src/frontends/qt4/GuiDocument.cpp:657
-#: src/frontends/qt4/GuiDocument.cpp:694 src/frontends/qt4/GuiDocument.cpp:706
-#: src/frontends/qt4/GuiDocument.cpp:1184
-#: src/frontends/qt4/GuiDocument.cpp:1229
-#: src/frontends/qt4/GuiDocument.cpp:2260 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:132 src/frontends/qt4/GuiDocument.cpp:655
+#: src/frontends/qt4/GuiDocument.cpp:692 src/frontends/qt4/GuiDocument.cpp:704
+#: src/frontends/qt4/GuiDocument.cpp:1187
+#: src/frontends/qt4/GuiDocument.cpp:1232
+#: src/frontends/qt4/GuiDocument.cpp:2263 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiListings.cpp:152
 #: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1712
 msgid "Default"
@@ -656,7 +656,7 @@ msgstr "Vrste pisav"
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:226 lib/layouts/europecv.layout:118
-#: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:1007
+#: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:1010
 #: src/frontends/qt4/GuiPrefs.cpp:1670
 msgid "Language"
 msgstr "Jezik"
@@ -1459,8 +1459,8 @@ msgstr "Vodoravna poravnava:|#r"
 #: src/frontends/qt4/ui/ParagraphUi.ui:261
 #: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
 #: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
-#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:604
-#: src/frontends/qt4/GuiDocument.cpp:707
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:602
+#: src/frontends/qt4/GuiDocument.cpp:705
 msgid "Custom"
 msgstr "Po meri"
 
@@ -1643,93 +1643,68 @@ msgstr "Podatki za TeX|X"
 msgid "&New"
 msgstr "&Novo"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:25
+#: src/frontends/qt4/ui/LaTeXUi.ui:19
 #, fuzzy
-msgid "Modules"
-msgstr "Sredina"
+msgid "Document &class"
+msgstr "&Razred spisa:"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:67
-#, fuzzy
-msgid "De&lete"
-msgstr "&Zbriši"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:81
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:187
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:58
-msgid "A&dd"
-msgstr "&Dodaj"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:95
-#, fuzzy
-msgid "S&elected:"
-msgstr "&Zbriši"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:105
-#, fuzzy
-msgid "A&vailable:"
-msgstr "Dostopni sklici"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:118
-msgid "Select if the current document is included to a master file"
-msgstr ""
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:124
-#, fuzzy
-msgid "Select de&fault master document"
-msgstr "Ponastavi privzete parametre trenutnega razreda"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:139
-#, fuzzy
-msgid "&Master:"
-msgstr "&Zunanji:"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:156
-#, fuzzy
-msgid "Enter the name of the default master document"
-msgstr "Ime privzetega tiskalnika"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:173
-#, fuzzy
-msgid "&Postscript driver:"
-msgstr "&Gonilnik za postscript:"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:211
+#: src/frontends/qt4/ui/LaTeXUi.ui:38
 msgid "Click to select a local document class definition file"
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:214
+#: src/frontends/qt4/ui/LaTeXUi.ui:41
 #, fuzzy
 msgid "&Local Layout..."
 msgstr "Videz "
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:221
-msgid "Document &class:"
-msgstr "&Razred spisa:"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:231
+#: src/frontends/qt4/ui/LaTeXUi.ui:51
 #, fuzzy
 msgid "Class options"
 msgstr "Nastavitve plovke"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:251
+#: src/frontends/qt4/ui/LaTeXUi.ui:71
 msgid ""
 "The options that are predefined in the layout file. Click to the left to "
 "select/deselect."
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:266
+#: src/frontends/qt4/ui/LaTeXUi.ui:86
 msgid "Enable to use the options that are predefined in the layout file"
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:269
+#: src/frontends/qt4/ui/LaTeXUi.ui:89
 #, fuzzy
 msgid "P&redefined:"
 msgstr "Tiskalnik"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:276
+#: src/frontends/qt4/ui/LaTeXUi.ui:96
 #, fuzzy
 msgid "Cust&om:"
 msgstr "Po meri"
+
+#: src/frontends/qt4/ui/LaTeXUi.ui:112
+#, fuzzy
+msgid "&Postscript driver:"
+msgstr "&Gonilnik za postscript:"
+
+#: src/frontends/qt4/ui/LaTeXUi.ui:142
+msgid "Select if the current document is included to a master file"
+msgstr ""
+
+#: src/frontends/qt4/ui/LaTeXUi.ui:148
+#, fuzzy
+msgid "Select de&fault master document"
+msgstr "Ponastavi privzete parametre trenutnega razreda"
+
+#: src/frontends/qt4/ui/LaTeXUi.ui:163
+#, fuzzy
+msgid "&Master:"
+msgstr "&Zunanji:"
+
+#: src/frontends/qt4/ui/LaTeXUi.ui:180
+#, fuzzy
+msgid "Enter the name of the default master document"
+msgstr "Ime privzetega tiskalnika"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:25
 #, fuzzy
@@ -2069,6 +2044,27 @@ msgstr "Samodejni uporabi vsako spremembo"
 msgid "Use &esint package"
 msgstr "Uporabi &matematiko AMS"
 
+#: src/frontends/qt4/ui/ModulesUi.ui:57
+#, fuzzy
+msgid "A&vailable:"
+msgstr "Dostopni sklici"
+
+#: src/frontends/qt4/ui/ModulesUi.ui:97
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:187
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:58
+msgid "A&dd"
+msgstr "&Dodaj"
+
+#: src/frontends/qt4/ui/ModulesUi.ui:104
+#, fuzzy
+msgid "De&lete"
+msgstr "&Zbriši"
+
+#: src/frontends/qt4/ui/ModulesUi.ui:148
+#, fuzzy
+msgid "S&elected:"
+msgstr "&Zbriši"
+
 #: src/frontends/qt4/ui/NomenclUi.ui:31
 #, fuzzy
 msgid "Sort &as:"
@@ -2127,7 +2123,7 @@ msgid "&Numbering"
 msgstr "Številčenje"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:33
-#: src/frontends/qt4/GuiDocument.cpp:1005
+#: src/frontends/qt4/GuiDocument.cpp:1008
 #, fuzzy
 msgid "Page Layout"
 msgstr "Videz odstavka"
@@ -2235,7 +2231,7 @@ msgid "Line &spacing"
 msgstr "Presledki med &vrsticami:"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:246 src/Text.cpp:1378
-#: src/frontends/qt4/GuiDocument.cpp:598
+#: src/frontends/qt4/GuiDocument.cpp:596
 msgid "Single"
 msgstr "Enojni"
 
@@ -2244,7 +2240,7 @@ msgid "1.5"
 msgstr "1,5"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:256 src/Text.cpp:1384
-#: src/frontends/qt4/GuiDocument.cpp:602
+#: src/frontends/qt4/GuiDocument.cpp:600
 msgid "Double"
 msgstr "Dvojni"
 
@@ -2874,37 +2870,37 @@ msgid "&Reset class options when document class changes"
 msgstr "&Ponastavi izbire razreda, ko se razred spisa spremeni"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:127
-#: src/frontends/qt4/GuiDocument.cpp:708
+#: src/frontends/qt4/GuiDocument.cpp:706
 msgid "US letter"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:132
-#: src/frontends/qt4/GuiDocument.cpp:709
+#: src/frontends/qt4/GuiDocument.cpp:707
 msgid "US legal"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:137
-#: src/frontends/qt4/GuiDocument.cpp:710
+#: src/frontends/qt4/GuiDocument.cpp:708
 msgid "US executive"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:142
-#: src/frontends/qt4/GuiDocument.cpp:711
+#: src/frontends/qt4/GuiDocument.cpp:709
 msgid "A3"
 msgstr "A3"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:147
-#: src/frontends/qt4/GuiDocument.cpp:712
+#: src/frontends/qt4/GuiDocument.cpp:710
 msgid "A4"
 msgstr "A4"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:152
-#: src/frontends/qt4/GuiDocument.cpp:713
+#: src/frontends/qt4/GuiDocument.cpp:711
 msgid "A5"
 msgstr "A5"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:157
-#: src/frontends/qt4/GuiDocument.cpp:716
+#: src/frontends/qt4/GuiDocument.cpp:714
 msgid "B5"
 msgstr "B5"
 
@@ -3330,7 +3326,7 @@ msgid "&User interface file:"
 msgstr "Datoteka z &uporabniškim vmesnikom:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:682
-#: src/frontends/qt4/GuiView.cpp:1779
+#: src/frontends/qt4/GuiView.cpp:1783
 msgid "&Save"
 msgstr "&Shrani"
 
@@ -4100,15 +4096,15 @@ msgstr "Vstavi sliko"
 msgid "DefSkip"
 msgstr "Privzeti razmak"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:136 src/frontends/qt4/GuiDocument.cpp:591
+#: src/frontends/qt4/ui/VSpaceUi.ui:136 src/frontends/qt4/GuiDocument.cpp:589
 msgid "SmallSkip"
 msgstr "Mali razmak"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:141 src/frontends/qt4/GuiDocument.cpp:592
+#: src/frontends/qt4/ui/VSpaceUi.ui:141 src/frontends/qt4/GuiDocument.cpp:590
 msgid "MedSkip"
 msgstr "Srednji razmak"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:146 src/frontends/qt4/GuiDocument.cpp:593
+#: src/frontends/qt4/ui/VSpaceUi.ui:146 src/frontends/qt4/GuiDocument.cpp:591
 msgid "BigSkip"
 msgstr "Velik razmak"
 
@@ -4456,7 +4452,7 @@ msgstr "Priznanje"
 #: lib/layouts/aguplus.inc:167 lib/layouts/aguplus.inc:169
 #: lib/layouts/amsdefs.inc:201 lib/layouts/scrclass.inc:223
 #: lib/layouts/stdstruct.inc:39 lib/layouts/svjour.inc:323
-#: src/frontends/qt4/GuiDocument.cpp:1009
+#: src/frontends/qt4/GuiDocument.cpp:1012
 msgid "Bibliography"
 msgstr "Literatura"
 
@@ -4620,10 +4616,10 @@ msgstr "GlavaProsojnice"
 msgid "[Acknowledgements]"
 msgstr "Priznanja"
 
-#: lib/layouts/aastex.layout:350 src/frontends/qt4/GuiDocument.cpp:1392
-#: src/frontends/qt4/GuiDocument.cpp:1403
-#: src/frontends/qt4/GuiDocument.cpp:1443
-#: src/frontends/qt4/GuiDocument.cpp:1462
+#: lib/layouts/aastex.layout:350 src/frontends/qt4/GuiDocument.cpp:1395
+#: src/frontends/qt4/GuiDocument.cpp:1406
+#: src/frontends/qt4/GuiDocument.cpp:1446
+#: src/frontends/qt4/GuiDocument.cpp:1465
 #, fuzzy
 msgid "and"
 msgstr "Dežela"
@@ -4853,15 +4849,15 @@ msgstr "Lokacija"
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:116
 #: lib/layouts/beamer.layout:131 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:40 lib/layouts/scrartcl.layout:20
-#: lib/layouts/seminar.layout:24 lib/layouts/agu_stdsections.inc:12
-#: lib/layouts/db_stdsections.inc:12 lib/layouts/numreport.inc:6
-#: lib/layouts/scrclass.inc:47 lib/layouts/stdsections.inc:11
+#: lib/layouts/agu_stdsections.inc:12 lib/layouts/db_stdsections.inc:12
+#: lib/layouts/numreport.inc:6 lib/layouts/scrclass.inc:47
+#: lib/layouts/stdsections.inc:11
 msgid "Part"
 msgstr "Del"
 
 #: lib/layouts/article.layout:29 lib/layouts/mwart.layout:33
-#: lib/layouts/scrartcl.layout:29 lib/layouts/seminar.layout:34
-#: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
+#: lib/layouts/scrartcl.layout:29 lib/layouts/db_stdstarsections.inc:13
+#: lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Del*"
 
@@ -5175,7 +5171,7 @@ msgstr "Definicija"
 #: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:132
 #: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:48
-#: src/frontends/qt4/GuiDocument.cpp:846
+#: src/frontends/qt4/GuiDocument.cpp:844
 msgid "Example"
 msgstr "Zgled"
 
@@ -7591,7 +7587,7 @@ msgstr "PodNaslov"
 msgid "Institution"
 msgstr "Ustanova"
 
-#: lib/layouts/powerdot.layout:119 lib/layouts/seminar.layout:65
+#: lib/layouts/powerdot.layout:119 lib/layouts/seminar.layout:36
 #: lib/layouts/slides.layout:89 src/frontends/qt4/GuiDocument.cpp:146
 msgid "Slide"
 msgstr "Prosojnica"
@@ -7809,7 +7805,7 @@ msgstr "NaslovPošiljatelja"
 msgid "Sender Phone:"
 msgstr ""
 
-#: lib/layouts/scrlttr2.layout:189 lib/configure.py:335
+#: lib/layouts/scrlttr2.layout:189 lib/configure.py:334
 msgid "Fax"
 msgstr "Faks"
 
@@ -7850,61 +7846,66 @@ msgstr "Pismo"
 msgid "End of letter"
 msgstr "Konec stavka|K"
 
-#: lib/layouts/seminar.layout:44
+#: lib/layouts/seminar.layout:24
 msgid "LandscapeSlide"
 msgstr "PrečnaProsojnica"
 
-#: lib/layouts/seminar.layout:50
+#: lib/layouts/seminar.layout:34
 #, fuzzy
-msgid "Landscape Slide"
+msgid "Landscape Slide:"
 msgstr "PrečnaProsojnica"
 
-#: lib/layouts/seminar.layout:55
+#: lib/layouts/seminar.layout:40
 msgid "PortraitSlide"
 msgstr "PokončnaProsojnica"
 
-#: lib/layouts/seminar.layout:61
+#: lib/layouts/seminar.layout:43
 #, fuzzy
-msgid "Portrait Slide"
+msgid "Portrait Slide:"
 msgstr "PokončnaProsojnica"
 
-#: lib/layouts/seminar.layout:70
+#: lib/layouts/seminar.layout:45
 msgid "Slide*"
 msgstr "Prosojnica*"
 
-#: lib/layouts/seminar.layout:75
+#: lib/layouts/seminar.layout:52
+#, fuzzy
+msgid "EndOfSlide"
+msgstr "Prosojnica"
+
+#: lib/layouts/seminar.layout:57
 msgid "SlideHeading"
 msgstr "GlavaProsojnice"
 
-#: lib/layouts/seminar.layout:81
+#: lib/layouts/seminar.layout:64
 msgid "SlideSubHeading"
 msgstr "PodGlavaProsojnice"
 
-#: lib/layouts/seminar.layout:87
+#: lib/layouts/seminar.layout:70
 msgid "ListOfSlides"
 msgstr "SeznamProsojnic"
 
-#: lib/layouts/seminar.layout:93
+#: lib/layouts/seminar.layout:78
 #, fuzzy
-msgid "List Of Slides"
+msgid "[List Of Slides]"
 msgstr "SeznamProsojnic"
 
-#: lib/layouts/seminar.layout:97
+#: lib/layouts/seminar.layout:81
 msgid "SlideContents"
 msgstr "VsebinaProsojnice"
 
-#: lib/layouts/seminar.layout:103
+#: lib/layouts/seminar.layout:84
 #, fuzzy
-msgid "Slidecontents"
+msgid "[Slide Contents]"
 msgstr "VsebinaProsojnice"
 
-#: lib/layouts/seminar.layout:107
+#: lib/layouts/seminar.layout:87
 msgid "ProgressContents"
 msgstr "VsebinaNapredka"
 
-#: lib/layouts/seminar.layout:113
+#: lib/layouts/seminar.layout:90
 #, fuzzy
-msgid "Progress Contents"
+msgid "[Progress Contents]"
 msgstr "VsebinaNapredka"
 
 #: lib/layouts/siamltex.layout:105 lib/layouts/theorems-order.inc:34
@@ -8922,7 +8923,7 @@ msgid "Branch"
 msgstr "Pot za varnostne kopije:|#P"
 
 #: lib/layouts/stdinsets.inc:189 lib/layouts/minimalistic.module:8
-#: src/insets/InsetIndex.cpp:214
+#: src/insets/InsetIndex.cpp:208
 msgid "Index"
 msgstr "Stvarno kazalo"
 
@@ -11450,19 +11451,19 @@ msgstr "Prelom vrstice|P"
 
 #: lib/ui/stdcontext.inc:242 lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:88
 #: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:991
-#: src/mathed/InsetMathNest.cpp:545
+#: src/mathed/InsetMathNest.cpp:547
 msgid "Cut"
 msgstr "Izreži"
 
 #: lib/ui/stdcontext.inc:243 lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:89
 #: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:996
-#: src/mathed/InsetMathNest.cpp:553
+#: src/mathed/InsetMathNest.cpp:555
 msgid "Copy"
 msgstr "Prepiši"
 
 #: lib/ui/stdcontext.inc:244 lib/ui/stdcontext.inc:290 lib/ui/stdmenus.inc:90
 #: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:950
-#: src/mathed/InsetMathGrid.cpp:1255 src/mathed/InsetMathNest.cpp:525
+#: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:527
 msgid "Paste"
 msgstr "Prilepi"
 
@@ -12646,7 +12647,7 @@ msgid "Fractions"
 msgstr "LyX: Matematična plošča"
 
 #: lib/ui/stdtoolbars.inc:225 lib/ui/stdtoolbars.inc:317
-#: src/frontends/qt4/GuiDocument.cpp:1003
+#: src/frontends/qt4/GuiDocument.cpp:1006
 #, fuzzy
 msgid "Fonts"
 msgstr "Pisava: "
@@ -15242,218 +15243,210 @@ msgid "LaTeX (plain)|L"
 msgstr "Dnevnik LaTeXa"
 
 #: lib/configure.py:290
-msgid "LinuxDoc"
-msgstr ""
-
-#: lib/configure.py:290
-msgid "LinuxDoc|x"
-msgstr ""
-
-#: lib/configure.py:291
 #, fuzzy
 msgid "LaTeX (pdflatex)"
 msgstr "Besedilo za LaTeX"
 
-#: lib/configure.py:292 src/frontends/qt4/GuiPrefs.cpp:333
+#: lib/configure.py:291 src/frontends/qt4/GuiPrefs.cpp:333
 #, fuzzy
 msgid "Plain text"
 msgstr "Umesti"
 
-#: lib/configure.py:292
+#: lib/configure.py:291
 #, fuzzy
 msgid "Plain text|a"
 msgstr "Umesti"
 
-#: lib/configure.py:293
+#: lib/configure.py:292
 #, fuzzy
 msgid "Plain text (pstotext)"
 msgstr "Umesti"
 
-#: lib/configure.py:294
+#: lib/configure.py:293
 #, fuzzy
 msgid "Plain text (ps2ascii)"
 msgstr "Umesti"
 
-#: lib/configure.py:295
+#: lib/configure.py:294
 #, fuzzy
 msgid "Plain text (catdvi)"
 msgstr "Umesti"
 
-#: lib/configure.py:296
+#: lib/configure.py:295
 #, fuzzy
 msgid "Plain Text, Join Lines"
 msgstr "Besedilo ASCII kot vrstice"
 
-#: lib/configure.py:303
+#: lib/configure.py:302
 #, fuzzy
 msgid "BibTeX"
 msgstr "LaTeX"
 
-#: lib/configure.py:308
+#: lib/configure.py:307
 #, fuzzy
 msgid "EPS"
 msgstr "PS"
 
-#: lib/configure.py:309
+#: lib/configure.py:308
 #, fuzzy
 msgid "Postscript"
 msgstr "&Gonilnik za postscript:"
 
-#: lib/configure.py:309
+#: lib/configure.py:308
 #, fuzzy
 msgid "Postscript|t"
 msgstr "&Gonilnik za postscript:"
 
-#: lib/configure.py:313
+#: lib/configure.py:312
 msgid "PDF (ps2pdf)"
 msgstr ""
 
-#: lib/configure.py:313
+#: lib/configure.py:312
 msgid "PDF (ps2pdf)|P"
 msgstr ""
 
-#: lib/configure.py:314
+#: lib/configure.py:313
 msgid "PDF (pdflatex)"
 msgstr ""
 
-#: lib/configure.py:314
+#: lib/configure.py:313
 msgid "PDF (pdflatex)|F"
 msgstr ""
 
-#: lib/configure.py:315
+#: lib/configure.py:314
 msgid "PDF (dvipdfm)"
 msgstr ""
 
-#: lib/configure.py:315
+#: lib/configure.py:314
 msgid "PDF (dvipdfm)|m"
 msgstr ""
 
-#: lib/configure.py:318
+#: lib/configure.py:317
 msgid "DVI"
 msgstr ""
 
-#: lib/configure.py:318
+#: lib/configure.py:317
 msgid "DVI|D"
 msgstr ""
 
-#: lib/configure.py:321
+#: lib/configure.py:320
 #, fuzzy
 msgid "DraftDVI"
 msgstr "Način &osnutka"
 
-#: lib/configure.py:324
+#: lib/configure.py:323
 msgid "HTML"
 msgstr ""
 
-#: lib/configure.py:324
+#: lib/configure.py:323
 msgid "HTML|H"
 msgstr ""
 
-#: lib/configure.py:327
+#: lib/configure.py:326
 #, fuzzy
 msgid "Noteedit"
 msgstr "OpombaUredniku"
 
-#: lib/configure.py:330
+#: lib/configure.py:329
 #, fuzzy
 msgid "OpenDocument"
 msgstr "Odpira se spis "
 
-#: lib/configure.py:333
+#: lib/configure.py:332
 #, fuzzy
 msgid "date command"
 msgstr "Naslednji ukaz"
 
-#: lib/configure.py:334
+#: lib/configure.py:333
 #, fuzzy
 msgid "Table (CSV)"
 msgstr "Tabela"
 
-#: lib/configure.py:336 src/frontends/qt4/GuiView.cpp:823
+#: lib/configure.py:335 src/frontends/qt4/GuiView.cpp:823
 #: src/frontends/qt4/GuiView.cpp:824 src/mathed/MathMacroTemplate.cpp:536
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:337
+#: lib/configure.py:336
 msgid "LyX 1.3.x"
 msgstr ""
 
-#: lib/configure.py:338
+#: lib/configure.py:337
 msgid "LyX 1.4.x"
 msgstr ""
 
-#: lib/configure.py:339
+#: lib/configure.py:338
 msgid "LyX 1.5.x"
 msgstr ""
 
-#: lib/configure.py:340
+#: lib/configure.py:339
 msgid "CJK LyX 1.4.x (big5)"
 msgstr ""
 
-#: lib/configure.py:341
+#: lib/configure.py:340
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr ""
 
-#: lib/configure.py:342
+#: lib/configure.py:341
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr ""
 
-#: lib/configure.py:343
+#: lib/configure.py:342
 #, fuzzy
 msgid "LyX Preview"
 msgstr "Predogled|#P"
 
-#: lib/configure.py:344
+#: lib/configure.py:343
 #, fuzzy
 msgid "LyX Preview (pLaTeX)"
 msgstr "Predogled|#P"
 
-#: lib/configure.py:345
+#: lib/configure.py:344
 msgid "PDFTEX"
 msgstr ""
 
-#: lib/configure.py:346
+#: lib/configure.py:345
 #, fuzzy
 msgid "Program"
 msgstr "Inicializacija programa"
 
-#: lib/configure.py:347
+#: lib/configure.py:346
 msgid "PSTEX"
 msgstr ""
 
-#: lib/configure.py:348
+#: lib/configure.py:347
 #, fuzzy
 msgid "Rich Text Format"
 msgstr "Besedilo po"
 
-#: lib/configure.py:349
+#: lib/configure.py:348
 msgid "OpenOffice.Org (sxw)"
 msgstr ""
 
-#: lib/configure.py:350 src/frontends/qt4/GuiClipboard.cpp:134
+#: lib/configure.py:349 src/frontends/qt4/GuiClipboard.cpp:134
 #, fuzzy
 msgid "Windows Metafile"
 msgstr "Tiskaj na"
 
-#: lib/configure.py:351 src/frontends/qt4/GuiClipboard.cpp:133
+#: lib/configure.py:350 src/frontends/qt4/GuiClipboard.cpp:133
 msgid "Enhanced Metafile"
 msgstr ""
 
-#: lib/configure.py:352
+#: lib/configure.py:351
 #, fuzzy
 msgid "MS Word"
 msgstr "Meje"
 
-#: lib/configure.py:352
+#: lib/configure.py:351
 #, fuzzy
 msgid "MS Word|W"
 msgstr "Trenutna beseda"
 
-#: lib/configure.py:353
+#: lib/configure.py:352
 msgid "HTML (MS Word)"
 msgstr ""
 
-#: src/BiblioInfo.cpp:118 src/frontends/qt4/GuiDocument.cpp:1391
+#: src/BiblioInfo.cpp:118 src/frontends/qt4/GuiDocument.cpp:1394
 #, c-format
 msgid "%1$s and %2$s"
 msgstr ""
@@ -15693,65 +15686,65 @@ msgstr "Chktex uspešno zagnan"
 msgid "Preview source code"
 msgstr "Predogled|#P"
 
-#: src/Buffer.cpp:2133
+#: src/Buffer.cpp:2134
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Predogled|#P"
 
-#: src/Buffer.cpp:2137
+#: src/Buffer.cpp:2138
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr ""
 
-#: src/Buffer.cpp:2244
+#: src/Buffer.cpp:2245
 #, fuzzy, c-format
 msgid "Auto-saving %1$s"
 msgstr "Sámoshranjevanje"
 
-#: src/Buffer.cpp:2288
+#: src/Buffer.cpp:2289
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Sámoshranjevanje spodletelo!"
 
-#: src/Buffer.cpp:2311
+#: src/Buffer.cpp:2312
 msgid "Autosaving current document..."
 msgstr "Trenutni spis se samodejno shranjuje..."
 
-#: src/Buffer.cpp:2361
+#: src/Buffer.cpp:2362
 #, fuzzy
 msgid "Couldn't export file"
 msgstr "Datoteke ni moč izvoziti"
 
-#: src/Buffer.cpp:2362
+#: src/Buffer.cpp:2363
 #, fuzzy, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Ni podatkov za pretvarjanje iz "
 
-#: src/Buffer.cpp:2399
+#: src/Buffer.cpp:2400
 #, fuzzy
 msgid "File name error"
 msgstr "Ime datoteke"
 
-#: src/Buffer.cpp:2400
+#: src/Buffer.cpp:2401
 msgid "The directory path to the document cannot contain spaces."
 msgstr ""
 
-#: src/Buffer.cpp:2442
+#: src/Buffer.cpp:2443
 #, fuzzy
 msgid "Document export cancelled."
 msgstr "Dokument izvožen kot "
 
-#: src/Buffer.cpp:2448
+#: src/Buffer.cpp:2449
 #, fuzzy, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument izvožen kot "
 
-#: src/Buffer.cpp:2454
+#: src/Buffer.cpp:2455
 #, fuzzy, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument izvožen kot "
 
-#: src/Buffer.cpp:2524
+#: src/Buffer.cpp:2525
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15759,12 +15752,12 @@ msgid ""
 "could not be read."
 msgstr ""
 
-#: src/Buffer.cpp:2526
+#: src/Buffer.cpp:2527
 #, fuzzy
 msgid "Could not read document"
 msgstr "Spisa ni moč odpreti"
 
-#: src/Buffer.cpp:2536
+#: src/Buffer.cpp:2537
 #, fuzzy, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15772,20 +15765,20 @@ msgid ""
 "Recover emergency save?"
 msgstr "Obstaja zasilni izvod tega spisa!"
 
-#: src/Buffer.cpp:2539
+#: src/Buffer.cpp:2540
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:2540
+#: src/Buffer.cpp:2541
 #, fuzzy
 msgid "&Recover"
 msgstr "&Odstrani"
 
-#: src/Buffer.cpp:2540
+#: src/Buffer.cpp:2541
 msgid "&Load Original"
 msgstr ""
 
-#: src/Buffer.cpp:2560
+#: src/Buffer.cpp:2561
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15793,31 +15786,31 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/Buffer.cpp:2563
+#: src/Buffer.cpp:2564
 #, fuzzy
 msgid "Load backup?"
 msgstr "Vrni se"
 
-#: src/Buffer.cpp:2564
+#: src/Buffer.cpp:2565
 #, fuzzy
 msgid "&Load backup"
 msgstr "&Vrni se"
 
-#: src/Buffer.cpp:2564
+#: src/Buffer.cpp:2565
 msgid "Load &original"
 msgstr ""
 
-#: src/Buffer.cpp:2597
+#: src/Buffer.cpp:2598
 #, fuzzy, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Ali želite odpreti spis pod nadzorom različic?"
 
-#: src/Buffer.cpp:2599
+#: src/Buffer.cpp:2600
 #, fuzzy
 msgid "Retrieve from version control?"
 msgstr "Ali želite odpreti spis pod nadzorom različic?"
 
-#: src/Buffer.cpp:2600
+#: src/Buffer.cpp:2601
 #, fuzzy
 msgid "&Retrieve"
 msgstr "&Obnovi"
@@ -15866,7 +15859,7 @@ msgstr "Nastavitev videza spisa"
 msgid "LyX will not be able to produce output."
 msgstr ""
 
-#: src/BufferParams.cpp:1477
+#: src/BufferParams.cpp:1557
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
@@ -15874,22 +15867,22 @@ msgid ""
 "correct textclass is selected from the document settings dialog."
 msgstr ""
 
-#: src/BufferParams.cpp:1482
+#: src/BufferParams.cpp:1562
 #, fuzzy
 msgid "Document class not found"
 msgstr "Nastavitev videza spisa"
 
-#: src/BufferParams.cpp:1489 src/LyXFunc.cpp:714
+#: src/BufferParams.cpp:1569 src/LyXFunc.cpp:714
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "Nastavitev videza spisa"
 
-#: src/BufferParams.cpp:1491 src/LyXFunc.cpp:716
+#: src/BufferParams.cpp:1571 src/LyXFunc.cpp:716
 #, fuzzy
 msgid "Could not load class"
 msgstr "Ni moč pognati z datoteko:"
 
-#: src/BufferParams.cpp:1577
+#: src/BufferParams.cpp:1613
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -15898,17 +15891,17 @@ msgid ""
 "probably need to reconfigure LyX.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1581
+#: src/BufferParams.cpp:1617
 #, fuzzy
 msgid "Module not available"
 msgstr "Nastavitev videza spisa"
 
-#: src/BufferParams.cpp:1582
+#: src/BufferParams.cpp:1618
 #, fuzzy
 msgid "Some layouts may not be available."
 msgstr "Nastavitev videza spisa"
 
-#: src/BufferParams.cpp:1589
+#: src/BufferParams.cpp:1625
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -15916,22 +15909,22 @@ msgid ""
 "may not be possible.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1592
+#: src/BufferParams.cpp:1628
 #, fuzzy
 msgid "Package not available"
 msgstr "Nastavitev videza spisa"
 
-#: src/BufferParams.cpp:1597
+#: src/BufferParams.cpp:1633
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1598 src/BufferParams.cpp:1604
+#: src/BufferParams.cpp:1634 src/BufferParams.cpp:1640
 #, fuzzy
 msgid "Read Error"
 msgstr "Išči"
 
-#: src/BufferParams.cpp:1603
+#: src/BufferParams.cpp:1639
 #, fuzzy
 msgid "Error reading internal layout information"
 msgstr "Splošni podatki"
@@ -16561,19 +16554,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr ""
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:118
-#: src/frontends/qt4/GuiDocument.cpp:2260
+#: src/frontends/qt4/GuiDocument.cpp:2263
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "pokončna"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:119
-#: src/frontends/qt4/GuiDocument.cpp:2260
+#: src/frontends/qt4/GuiDocument.cpp:2263
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr "brez serifov"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:120
-#: src/frontends/qt4/GuiDocument.cpp:2260
+#: src/frontends/qt4/GuiDocument.cpp:2263
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr "pisalni stroj"
@@ -17043,7 +17036,7 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:681 src/frontends/qt4/GuiView.cpp:1778
+#: src/LyXFunc.cpp:681 src/frontends/qt4/GuiView.cpp:1782
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Želite shraniti spis?"
@@ -17077,7 +17070,7 @@ msgstr "Vrni se k shranjenemu"
 msgid "&Revert"
 msgstr "Obnovi|O"
 
-#: src/LyXFunc.cpp:1035 src/Text3.cpp:1494
+#: src/LyXFunc.cpp:1035 src/Text3.cpp:1493
 msgid "Missing argument"
 msgstr "Manjkajoči argument"
 
@@ -17621,38 +17614,38 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Izberi do konca spisa"
 
-#: src/Paragraph.cpp:1558 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1577 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Brez pomena s tem videzom!"
 
-#: src/Paragraph.cpp:1624
+#: src/Paragraph.cpp:1643
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1625
+#: src/Paragraph.cpp:1644
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2101 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2120 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:183 src/insets/InsetListings.cpp:191
 #: src/insets/InsetListings.cpp:215 src/mathed/InsetMathString.cpp:165
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "Različica LyXa "
 
-#: src/Paragraph.cpp:2102 src/insets/InsetListings.cpp:184
+#: src/Paragraph.cpp:2121 src/insets/InsetListings.cpp:184
 #: src/insets/InsetListings.cpp:192 src/mathed/InsetMathString.cpp:166
 #, fuzzy
 msgid "uncodable character"
 msgstr "Posebni znak|z"
 
-#: src/Paragraph.cpp:2452
+#: src/Paragraph.cpp:2471
 msgid "Memory problem"
 msgstr ""
 
-#: src/Paragraph.cpp:2452
+#: src/Paragraph.cpp:2471
 msgid "Paragraph not properly initiliazed"
 msgstr ""
 
@@ -17728,7 +17721,7 @@ msgstr ", globina: "
 msgid ", Spacing: "
 msgstr ", Presledki: "
 
-#: src/Text.cpp:1381 src/frontends/qt4/GuiDocument.cpp:600
+#: src/Text.cpp:1381 src/frontends/qt4/GuiDocument.cpp:598
 #, fuzzy
 msgid "OneHalf"
 msgstr "Polovični"
@@ -17800,12 +17793,12 @@ msgstr "Videz "
 msgid " not known"
 msgstr " ni znan"
 
-#: src/Text3.cpp:1611 src/Text3.cpp:1623
+#: src/Text3.cpp:1610 src/Text3.cpp:1622
 #, fuzzy
 msgid "Character set"
 msgstr "Znakovni nabor:|#Z"
 
-#: src/Text3.cpp:1771 src/Text3.cpp:1782
+#: src/Text3.cpp:1770 src/Text3.cpp:1781
 msgid "Paragraph layout set"
 msgstr "Nastavljen videz odstavka"
 
@@ -18167,7 +18160,7 @@ msgid "BibTeX Bibliography"
 msgstr "Literatura"
 
 #: src/frontends/qt4/GuiBibtex.cpp:424 src/frontends/qt4/GuiBibtex.cpp:434
-#: src/frontends/qt4/GuiDocument.cpp:1316
+#: src/frontends/qt4/GuiDocument.cpp:1319
 #: src/frontends/qt4/GuiExternal.cpp:661 src/frontends/qt4/GuiGraphics.cpp:738
 #: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1249
 #: src/frontends/qt4/GuiView.cpp:1307 src/frontends/qt4/GuiView.cpp:1453
@@ -18268,11 +18261,11 @@ msgid "Color"
 msgstr "barve"
 
 #: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiBranches.cpp:146
-#: src/frontends/qt4/GuiDocument.cpp:1488
+#: src/frontends/qt4/GuiDocument.cpp:1491
 msgid "Yes"
 msgstr ""
 
-#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1487
+#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1490
 #, fuzzy
 msgid "No"
 msgstr "velike črke "
@@ -18569,182 +18562,187 @@ msgstr "Strani"
 msgid "Module not found!"
 msgstr "Niza ni moč najti!"
 
-#: src/frontends/qt4/GuiDocument.cpp:531
+#: src/frontends/qt4/GuiDocument.cpp:529
 #, fuzzy
 msgid "Document Settings"
 msgstr "Spisi"
 
-#: src/frontends/qt4/GuiDocument.cpp:585
-#: src/frontends/qt4/GuiDocument.cpp:1078
+#: src/frontends/qt4/GuiDocument.cpp:583
+#: src/frontends/qt4/GuiDocument.cpp:1081
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:594
+#: src/frontends/qt4/GuiDocument.cpp:592
 msgid "Length"
 msgstr "Dolžina"
 
-#: src/frontends/qt4/GuiDocument.cpp:641 src/frontends/qt4/GuiDocument.cpp:647
-#: src/frontends/qt4/GuiDocument.cpp:653
+#: src/frontends/qt4/GuiDocument.cpp:639 src/frontends/qt4/GuiDocument.cpp:645
+#: src/frontends/qt4/GuiDocument.cpp:651
 msgid " (not installed)"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:658
+#: src/frontends/qt4/GuiDocument.cpp:656
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt4/GuiDocument.cpp:659
+#: src/frontends/qt4/GuiDocument.cpp:657
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt4/GuiDocument.cpp:660
+#: src/frontends/qt4/GuiDocument.cpp:658
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/GuiDocument.cpp:695
+#: src/frontends/qt4/GuiDocument.cpp:693
 #, fuzzy
 msgid "empty"
 msgstr "Globina"
 
-#: src/frontends/qt4/GuiDocument.cpp:696
+#: src/frontends/qt4/GuiDocument.cpp:694
 #, fuzzy
 msgid "plain"
 msgstr "Dejstvo-navadno"
 
-#: src/frontends/qt4/GuiDocument.cpp:697
+#: src/frontends/qt4/GuiDocument.cpp:695
 #, fuzzy
 msgid "headings"
 msgstr "GlavaProsojnice"
 
-#: src/frontends/qt4/GuiDocument.cpp:698
+#: src/frontends/qt4/GuiDocument.cpp:696
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:714
+#: src/frontends/qt4/GuiDocument.cpp:712
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/GuiDocument.cpp:715
+#: src/frontends/qt4/GuiDocument.cpp:713
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/GuiDocument.cpp:818
+#: src/frontends/qt4/GuiDocument.cpp:816
 #, fuzzy
 msgid "Language Default (no inputenc)"
 msgstr "Glava"
 
-#: src/frontends/qt4/GuiDocument.cpp:827
+#: src/frontends/qt4/GuiDocument.cpp:825
 msgid "``text''"
 msgstr "``besedilo''"
 
-#: src/frontends/qt4/GuiDocument.cpp:828
+#: src/frontends/qt4/GuiDocument.cpp:826
 msgid "''text''"
 msgstr "''besedilo''"
 
-#: src/frontends/qt4/GuiDocument.cpp:829
+#: src/frontends/qt4/GuiDocument.cpp:827
 msgid ",,text``"
 msgstr ",,besedilo``"
 
-#: src/frontends/qt4/GuiDocument.cpp:830
+#: src/frontends/qt4/GuiDocument.cpp:828
 msgid ",,text''"
 msgstr ",,besedilo''"
 
-#: src/frontends/qt4/GuiDocument.cpp:831
+#: src/frontends/qt4/GuiDocument.cpp:829
 msgid "<<text>>"
 msgstr "<<besedilo>>"
 
-#: src/frontends/qt4/GuiDocument.cpp:832
+#: src/frontends/qt4/GuiDocument.cpp:830
 msgid ">>text<<"
 msgstr ">>besedilo<<"
 
-#: src/frontends/qt4/GuiDocument.cpp:847
+#: src/frontends/qt4/GuiDocument.cpp:845
 #, fuzzy
 msgid "Numbered"
 msgstr "Številčenje"
 
-#: src/frontends/qt4/GuiDocument.cpp:848
+#: src/frontends/qt4/GuiDocument.cpp:846
 msgid "Appears in TOC"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:868
+#: src/frontends/qt4/GuiDocument.cpp:866
 msgid "Author-year"
 msgstr "Avtor-leto"
 
-#: src/frontends/qt4/GuiDocument.cpp:869
+#: src/frontends/qt4/GuiDocument.cpp:867
 #, fuzzy
 msgid "Numerical"
 msgstr "ameriško"
 
-#: src/frontends/qt4/GuiDocument.cpp:939
+#: src/frontends/qt4/GuiDocument.cpp:926
 #, fuzzy, c-format
 msgid "Unavailable: %1$s"
 msgstr "Dostopni"
 
-#: src/frontends/qt4/GuiDocument.cpp:1002
-#: src/frontends/qt4/GuiDocument.cpp:1016
+#: src/frontends/qt4/GuiDocument.cpp:1004
+#: src/frontends/qt4/GuiDocument.cpp:1019
 #, fuzzy
 msgid "Document Class"
 msgstr "&Razred spisa:"
 
-#: src/frontends/qt4/GuiDocument.cpp:1004
+#: src/frontends/qt4/GuiDocument.cpp:1005
+#, fuzzy
+msgid "Modules"
+msgstr "Sredina"
+
+#: src/frontends/qt4/GuiDocument.cpp:1007
 #, fuzzy
 msgid "Text Layout"
 msgstr "Videz "
 
-#: src/frontends/qt4/GuiDocument.cpp:1006
+#: src/frontends/qt4/GuiDocument.cpp:1009
 #, fuzzy
 msgid "Page Margins"
 msgstr "Robovi"
 
-#: src/frontends/qt4/GuiDocument.cpp:1008
+#: src/frontends/qt4/GuiDocument.cpp:1011
 #, fuzzy
 msgid "Numbering & TOC"
 msgstr "Številčenje"
 
-#: src/frontends/qt4/GuiDocument.cpp:1010
+#: src/frontends/qt4/GuiDocument.cpp:1013
 #, fuzzy
 msgid "PDF Properties"
 msgstr "Lastnost"
 
-#: src/frontends/qt4/GuiDocument.cpp:1011
+#: src/frontends/qt4/GuiDocument.cpp:1014
 #, fuzzy
 msgid "Math Options"
 msgstr "Izbire za plovke"
 
-#: src/frontends/qt4/GuiDocument.cpp:1012
+#: src/frontends/qt4/GuiDocument.cpp:1015
 #, fuzzy
 msgid "Float Placement"
 msgstr "Postavitev plovk:|#l"
 
-#: src/frontends/qt4/GuiDocument.cpp:1013
+#: src/frontends/qt4/GuiDocument.cpp:1016
 msgid "Bullets"
 msgstr "Pike"
 
-#: src/frontends/qt4/GuiDocument.cpp:1014
+#: src/frontends/qt4/GuiDocument.cpp:1017
 msgid "Branches"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1015
-#: src/frontends/qt4/GuiDocument.cpp:1027
+#: src/frontends/qt4/GuiDocument.cpp:1018
+#: src/frontends/qt4/GuiDocument.cpp:1030
 msgid "LaTeX Preamble"
 msgstr "Vzglavje LaTeXa"
 
-#: src/frontends/qt4/GuiDocument.cpp:1256
+#: src/frontends/qt4/GuiDocument.cpp:1259
 #, fuzzy
 msgid "Layouts|#o#O"
 msgstr "Videz|I"
 
-#: src/frontends/qt4/GuiDocument.cpp:1258
+#: src/frontends/qt4/GuiDocument.cpp:1261
 #, fuzzy
 msgid "LyX Layout (*.layout)"
 msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1260
-#: src/frontends/qt4/GuiDocument.cpp:1269
+#: src/frontends/qt4/GuiDocument.cpp:1263
+#: src/frontends/qt4/GuiDocument.cpp:1272
 msgid "Local layout file"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1270
+#: src/frontends/qt4/GuiDocument.cpp:1273
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory. Your\n"
@@ -18752,107 +18750,107 @@ msgid ""
 "keep the layout file in the document directory."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1274
+#: src/frontends/qt4/GuiDocument.cpp:1277
 #, fuzzy
 msgid "&Set Layout"
 msgstr "Videz "
 
-#: src/frontends/qt4/GuiDocument.cpp:1287
-#: src/frontends/qt4/GuiDocument.cpp:1361
-#: src/frontends/qt4/GuiDocument.cpp:2227
+#: src/frontends/qt4/GuiDocument.cpp:1290
+#: src/frontends/qt4/GuiDocument.cpp:1364
+#: src/frontends/qt4/GuiDocument.cpp:2230
 #, fuzzy
 msgid "Error"
 msgstr "Puščica"
 
-#: src/frontends/qt4/GuiDocument.cpp:1288
+#: src/frontends/qt4/GuiDocument.cpp:1291
 #, fuzzy
 msgid "Unable to read local layout file."
 msgstr "Shrani kot privzeto za spis"
 
-#: src/frontends/qt4/GuiDocument.cpp:1310
+#: src/frontends/qt4/GuiDocument.cpp:1313
 #, fuzzy
 msgid "Select master document"
 msgstr "Želite shraniti spis?"
 
-#: src/frontends/qt4/GuiDocument.cpp:1314
+#: src/frontends/qt4/GuiDocument.cpp:1317
 #, fuzzy
 msgid "LyX Files (*.lyx)"
 msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1346
-#: src/frontends/qt4/GuiDocument.cpp:2216
+#: src/frontends/qt4/GuiDocument.cpp:1349
+#: src/frontends/qt4/GuiDocument.cpp:2219
 #, fuzzy
 msgid "Unapplied changes"
 msgstr "Zapiši spremembe...|Z"
 
-#: src/frontends/qt4/GuiDocument.cpp:1347
-#: src/frontends/qt4/GuiDocument.cpp:2217
+#: src/frontends/qt4/GuiDocument.cpp:1350
+#: src/frontends/qt4/GuiDocument.cpp:2220
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1349
-#: src/frontends/qt4/GuiDocument.cpp:2219
+#: src/frontends/qt4/GuiDocument.cpp:1352
+#: src/frontends/qt4/GuiDocument.cpp:2222
 msgid "&Dismiss"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1361
-#: src/frontends/qt4/GuiDocument.cpp:2227
+#: src/frontends/qt4/GuiDocument.cpp:1364
+#: src/frontends/qt4/GuiDocument.cpp:2230
 #, fuzzy
 msgid "Unable to set document class."
 msgstr "Shrani kot privzeto za spis"
 
-#: src/frontends/qt4/GuiDocument.cpp:1397
+#: src/frontends/qt4/GuiDocument.cpp:1400
 #, c-format
 msgid "%1$s, %2$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1402
+#: src/frontends/qt4/GuiDocument.cpp:1405
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1447
+#: src/frontends/qt4/GuiDocument.cpp:1450
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1453
+#: src/frontends/qt4/GuiDocument.cpp:1456
 #, fuzzy
 msgid "or"
 msgstr "Formati"
 
-#: src/frontends/qt4/GuiDocument.cpp:1456
+#: src/frontends/qt4/GuiDocument.cpp:1459
 #, c-format
 msgid "Module required: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1465
+#: src/frontends/qt4/GuiDocument.cpp:1468
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1471
-msgid "WARNING: Some packages are unavailable!"
+#: src/frontends/qt4/GuiDocument.cpp:1474
+msgid "WARNING: Some required packages are unavailable!"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2029
+#: src/frontends/qt4/GuiDocument.cpp:2032
 #, fuzzy
 msgid "[No options predefined]"
 msgstr "Pojdi k naslednji napaki"
 
-#: src/frontends/qt4/GuiDocument.cpp:2239
+#: src/frontends/qt4/GuiDocument.cpp:2242
 #, fuzzy
 msgid "Can't set layout!"
 msgstr "Znakovni slog"
 
-#: src/frontends/qt4/GuiDocument.cpp:2240
+#: src/frontends/qt4/GuiDocument.cpp:2243
 #, fuzzy, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Shrani kot privzeto za spis"
 
-#: src/frontends/qt4/GuiDocument.cpp:2317
+#: src/frontends/qt4/GuiDocument.cpp:2320
 #, fuzzy
 msgid "Not Found"
 msgstr " ni znan"
@@ -20124,7 +20122,7 @@ msgstr ""
 msgid "&Retry"
 msgstr "&Obnovi"
 
-#: src/frontends/qt4/GuiView.cpp:1776
+#: src/frontends/qt4/GuiView.cpp:1780
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -20132,36 +20130,36 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1779
+#: src/frontends/qt4/GuiView.cpp:1783
 msgid "&Discard"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1883
+#: src/frontends/qt4/GuiView.cpp:1887
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "Spis se shranjuje"
 
-#: src/frontends/qt4/GuiView.cpp:1893
+#: src/frontends/qt4/GuiView.cpp:1897
 #, fuzzy
 msgid "All documents saved."
 msgstr "Nastavitev videza spisa"
 
-#: src/frontends/qt4/GuiView.cpp:2116
+#: src/frontends/qt4/GuiView.cpp:2120
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
 
-#: src/frontends/qt4/GuiViewSource.cpp:94
-#: src/frontends/qt4/GuiViewSource.cpp:176
+#: src/frontends/qt4/GuiViewSource.cpp:155
+#: src/frontends/qt4/GuiViewSource.cpp:199
 #, fuzzy
 msgid "LaTeX Source"
 msgstr "Vidni presledek|#s"
 
-#: src/frontends/qt4/GuiViewSource.cpp:178
+#: src/frontends/qt4/GuiViewSource.cpp:201
 msgid "DocBook Source"
 msgstr ""
 
-#: src/frontends/qt4/GuiViewSource.cpp:180
+#: src/frontends/qt4/GuiViewSource.cpp:203
 #, fuzzy
 msgid "Literate Source"
 msgstr "Vidni presledek|#s"
@@ -20672,12 +20670,12 @@ msgstr ""
 msgid "Module not found"
 msgstr "Niza ni moč najti!"
 
-#: src/insets/InsetIndex.cpp:128
+#: src/insets/InsetIndex.cpp:127
 #, fuzzy
 msgid "Index sorting failed"
 msgstr "Pretvorba"
 
-#: src/insets/InsetIndex.cpp:129
+#: src/insets/InsetIndex.cpp:128
 #, c-format
 msgid ""
 "LyX's automatic index sorting algorithm faced\n"
@@ -21346,11 +21344,11 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:956
+#: src/mathed/InsetMathNest.cpp:958
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:959
+#: src/mathed/InsetMathNest.cpp:961
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -21614,6 +21612,14 @@ msgid "Unknown user"
 msgstr "Neznana beseda:"
 
 #, fuzzy
+#~ msgid "Slidecontents"
+#~ msgstr "VsebinaProsojnice"
+
+#, fuzzy
+#~ msgid "Progress Contents"
+#~ msgstr "VsebinaNapredka"
+
+#, fuzzy
 #~ msgid "&Options:"
 #~ msgstr "&Izbire:"
 
@@ -21672,18 +21678,6 @@ msgstr "Neznana beseda:"
 #, fuzzy
 #~ msgid "Unterschrift\t# g-brief-de"
 #~ msgstr "Podpis"
-
-#, fuzzy
-#~ msgid "EndOfSlide"
-#~ msgstr "Prosojnica"
-
-#, fuzzy
-#~ msgid "[Slide Contents]"
-#~ msgstr "VsebinaProsojnice"
-
-#, fuzzy
-#~ msgid "[Progress Contents]"
-#~ msgstr "VsebinaNapredka"
 
 #, fuzzy
 #~ msgid "Stadt:"
