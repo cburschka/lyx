@@ -1313,10 +1313,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cutSelection(cur, false, false);
 
 		cur.clearSelection();
-		Font const old_font = cur.real_current_font;
 
 		docstring::const_iterator cit = cmd.argument().begin();
-		docstring::const_iterator end = cmd.argument().end();
+		docstring::const_iterator const end = cmd.argument().end();
 		for (; cit != end; ++cit)
 			bv->translateAndInsert(*cit, this, cur);
 
@@ -1873,8 +1872,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	LASSERT(cur.text() == this, /**/);
 
-	Font const & font = cur.real_current_font;
-	FontInfo const & fontinfo = font.fontInfo();
+	FontInfo const & fontinfo = cur.real_current_font.fontInfo();
 	bool enable = true;
 	InsetCode code = NO_CODE;
 
