@@ -1481,13 +1481,6 @@ void BufferParams::addDefaultModules()
 
 	for (; mit != men; mit++) {
 		string const & modName = *mit;
-		// see if we're already in use
-		if (find(layoutModules_.begin(), layoutModules_.end(), modName) !=
-		    layoutModules_.end()) {
-			LYXERR(Debug::TCLASS, "Default module `" << modName << 
-					"' not added because already used.");
-			continue;
-		}
 		// make sure the user hasn't removed it
 		if (find(removedModules_.begin(), removedModules_.end(), modName) !=
 		    removedModules_.end()) {
@@ -1496,50 +1489,12 @@ void BufferParams::addDefaultModules()
 			continue;
 		}
 
-		// Now we want to check the list of selected modules to see if any of them
-		// excludes this one, or if we exclude one of them.
-		LyXModule * thismod = moduleList[modName];
-		if (!thismod) {
-			LYXERR0("Adding default module " << modName << 
-					" even though it is unavailable.");
-			modulesToAdd.push_back(modName);
-			continue;
-		}
-
-		bool foundit = false;
-		vector<string> const ourExcMods = thismod->getExcludedModules();
-		vector<string>::const_iterator const eit = ourExcMods.begin();
-		vector<string>::const_iterator const een = ourExcMods.end();
-
-		// so iterate over the selected modules...
-		LayoutModuleList::const_iterator lit = layoutModules_.begin();
-		LayoutModuleList::const_iterator const len = layoutModules_.end();
-		for (; lit != len; lit++) {
-			LyXModule * lm = moduleList[*lit];
-			if (!lm)
-				continue;
-			vector<string> const & exc = lm->getExcludedModules();
-			// ...and see if this one excludes us.
-			if (find(exc.begin(), exc.end(), modName) != exc.end()) {
-				foundit = true;
-				LYXERR(Debug::TCLASS, "Default module `" << modName << 
-						"' not added because excluded by loaded module `" << 
-						*lit << "'.");
-				break;
-			}
-			if (find(eit, een, *lit) != een) {
-				foundit = true;
-				LYXERR(Debug::TCLASS, "Default module `" << modName << 
-						"' not added because it excludes loaded module `" << 
-						*lit << "'.");
-				break;
-			}
-		}
-
-		if (!foundit) {
+		if (moduleCanBeAdded(modName)) {
 			LYXERR(Debug::TCLASS, "Default module `" << modName << "' added.");
 			modulesToAdd.push_back(modName);
-		}
+		} else
+			LYXERR(Debug::TCLASS, 
+					"Default module `" << modName << "' could not be added.");
 	}
 
 	// OK, now we can add the default modules.
@@ -1643,7 +1598,47 @@ void BufferParams::makeDocumentClass()
 }
 
 
-bool BufferParams::addLayoutModule(string const & modName) 
+bool BufferParams::moduleCanBeAdded(string const & modName) const
+{
+	// Is the module already present?
+	LayoutModuleList::const_iterator it = layoutModules_.begin();
+	LayoutModuleList::const_iterator end = layoutModules_.end();
+	for (; it != end; it++)
+		if (*it == modName) 
+			return false;
+
+	LyXModule const * const lm = moduleList[modName];
+	if (!lm)
+		return true;
+
+	LayoutModuleList::const_iterator mit = getModules().begin();
+	LayoutModuleList::const_iterator const men = getModules().end();
+	// Check for conflicts with used modules
+	for (; mit != men; ++mit)
+		if (!LyXModule::areCompatible(modName, *mit))
+			return false;
+
+	// Check whether some required module is available
+	vector<string> const reqs = lm->getRequiredModules();
+	if (reqs.empty())
+		return true;
+
+	mit = getModules().begin(); // reset
+	vector<string>::const_iterator rit = reqs.begin();
+	vector<string>::const_iterator ren = reqs.end();
+	bool foundOne = false;
+	for (; rit != ren; ++rit) {
+		if (find(mit, men, *rit) != men) {
+			foundOne = true;
+			break;
+		}
+	}
+
+	return foundOne;
+}
+
+
+bool BufferParams::addLayoutModule(string const & modName)
 {
 	LayoutModuleList::const_iterator it = layoutModules_.begin();
 	LayoutModuleList::const_iterator end = layoutModules_.end();

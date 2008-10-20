@@ -133,13 +133,14 @@ public:
 	std::set<std::string> const & getRemovedModules() const 
 			{ return removedModules_; }
 	///
-	/// Add a module to the list of modules in use.
-	/// Returns true if module was successfully added.
-	/// The makeClass variable signals whether to call makeDocumentClass. This
-	/// need not be done if we know this isn't the final time through, or if
-	/// the BufferParams do not represent the parameters for an actual buffer
-	/// (as in GuiDocument).
+	/// Add a module to the list of modules in use. This checks only that the
+	/// module is not already in the list, so use moduleIsCompatible first if
+	/// you want to check for compatibility.
+	/// \return true if module was successfully added.
 	bool addLayoutModule(std::string const & modName);
+	/// checks to make sure module's requriements are satisfied, that it does
+	/// not conflict with already-present modules, isn't already loaded, etc.
+	bool moduleCanBeAdded(std::string const & modName) const;
 	///
 	void addRemovedModule(std::string const & modName) 
 			{ removedModules_.insert(modName); }

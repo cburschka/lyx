@@ -1499,7 +1499,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_LAYOUT_MODULE_ADD: {
 			LASSERT(lyx_view_, /**/);
 			Buffer * buffer = lyx_view_->buffer();
-			DocumentClass const * const oldClass = buffer->params().documentClassPtr();
+			BufferParams const & params = buffer->params();
+			if (!params.moduleCanBeAdded(argument)) {
+				LYXERR0("Module `" << argument << 
+						"' cannot be added due to failed requirements or "
+						"conflicts with installed modules.");
+				break;
+			}
+			DocumentClass const * const oldClass = params.documentClassPtr();
 			view()->cursor().recordUndoFullDocument();
 			buffer->params().addLayoutModule(argument);
 			buffer->params().makeDocumentClass();
