@@ -275,21 +275,21 @@ private:
 void ModuleSelectionManager::updateAddPB() 
 {
 	int const arows = availableModel->rowCount();
-	QModelIndexList const availSels = 
+	QModelIndexList const avail_sels = 
 			availableLV->selectionModel()->selectedIndexes();
 
 	// disable if there aren't any modules (?), if none of them is chosen
 	// in the dialog, or if the chosen one is already selected for use.
-	if (arows == 0 || availSels.isEmpty() || isSelected(availSels.first())) {
+	if (arows == 0 || avail_sels.isEmpty() || isSelected(avail_sels.first())) {
 		addPB->setEnabled(false);
 		return;
 	}
 
 	QModelIndex const & idx = availableLV->selectionModel()->currentIndex();
-	string const modName = getAvailableModel()->getIDString(idx.row());
+	string const modname = getAvailableModel()->getIDString(idx.row());
 
 	bool const enable = 
-		container_->params().moduleCanBeAdded(modName);
+		container_->params().moduleCanBeAdded(modname);
 	addPB->setEnabled(enable);
 }
 
@@ -301,18 +301,18 @@ void ModuleSelectionManager::updateDownPB()
 		downPB->setEnabled(false);
 		return;
 	}
-	QModelIndex const & curIdx = selectedLV->selectionModel()->currentIndex();
-	int const curRow = curIdx.row();
+	QModelIndex const & curidx = selectedLV->selectionModel()->currentIndex();
+	int const curRow = curidx.row();
 	if (curRow < 0 || curRow >= srows - 1) { // invalid or last item
 		downPB->setEnabled(false);
 		return;
 	}
 
 	// determine whether immediately succeding element requires this one
-	string const curModName = getSelectedModel()->getIDString(curRow);
-	string const nextModName = getSelectedModel()->getIDString(curRow + 1);
+	string const curmodname = getSelectedModel()->getIDString(curRow);
+	string const nextmodname = getSelectedModel()->getIDString(curRow + 1);
 
-	vector<string> reqs = getRequiredList(nextModName);
+	vector<string> reqs = getRequiredList(nextmodname);
 
 	// if it doesn't require anything....
 	if (reqs.empty()) {
@@ -324,7 +324,7 @@ void ModuleSelectionManager::updateDownPB()
 	// FIXME This should perhaps be more flexible and check whether, even 
 	// if the next one is required, there is also an earlier one that will do.
 	downPB->setEnabled(
-			find(reqs.begin(), reqs.end(), curModName) == reqs.end());
+			find(reqs.begin(), reqs.end(), curmodname) == reqs.end());
 }
 
 void ModuleSelectionManager::updateUpPB() 
@@ -341,10 +341,10 @@ void ModuleSelectionManager::updateUpPB()
 		upPB->setEnabled(false);
 		return;
 	}
-	string const curModName = getSelectedModel()->getIDString(curRow);
+	string const curmodname = getSelectedModel()->getIDString(curRow);
 
 	// determine whether immediately preceding element is required by this one
-	vector<string> reqs = getRequiredList(curModName);
+	vector<string> reqs = getRequiredList(curmodname);
 
 	// if this one doesn't require anything....
 	if (reqs.empty()) {
@@ -356,8 +356,8 @@ void ModuleSelectionManager::updateUpPB()
 	// Enable it if the preceding module isn't required.
 	// NOTE This is less flexible than it might be. We could check whether, even 
 	// if the previous one is required, there is an earlier one that would do.
-	string const preModName = getSelectedModel()->getIDString(curRow - 1);
-	upPB->setEnabled(find(reqs.begin(), reqs.end(), preModName) == reqs.end());
+	string const premod = getSelectedModel()->getIDString(curRow - 1);
+	upPB->setEnabled(find(reqs.begin(), reqs.end(), premod) == reqs.end());
 }
 
 void ModuleSelectionManager::updateDelPB() 
@@ -368,15 +368,15 @@ void ModuleSelectionManager::updateDelPB()
 		return;
 	}
 
-	QModelIndex const & curIdx = 
+	QModelIndex const & curidx = 
 		selectedLV->selectionModel()->currentIndex();
-	int const curRow = curIdx.row();
+	int const curRow = curidx.row();
 	if (curRow < 0 || curRow >= srows) { // invalid index?
 		deletePB->setEnabled(false);
 		return;
 	}
 
-	string const curModName = getSelectedModel()->getIDString(curRow);
+	string const curmodname = getSelectedModel()->getIDString(curRow);
 
 	// We're looking here for a reason NOT to enable the button. If we
 	// find one, we disable it and return. If we don't, we'll end up at
@@ -385,7 +385,7 @@ void ModuleSelectionManager::updateDelPB()
 		string const thisMod = getSelectedModel()->getIDString(i);
 		vector<string> reqs = getRequiredList(thisMod);
 		//does this one require us?
-		if (find(reqs.begin(), reqs.end(), curModName) == reqs.end())
+		if (find(reqs.begin(), reqs.end(), curmodname) == reqs.end())
 			//no...
 			continue;
 
@@ -397,19 +397,19 @@ void ModuleSelectionManager::updateDelPB()
 		// but that would be a lot more complicated, and the logic here is
 		// already complicated. (That's why I've left the debugging code.)
 		// lyxerr << "Testing " << thisMod << std::endl;
-		bool foundOne = false;
+		bool foundone = false;
 		for (int j = 0; j < curRow; ++j) {
 			string const mod = getSelectedModel()->getIDString(j);
 			// lyxerr << "In loop: Testing " << mod << std::endl;
 			// do we satisfy the require? 
 			if (find(reqs.begin(), reqs.end(), mod) != reqs.end()) {
 				// lyxerr << mod << " does the trick." << std::endl;
-				foundOne = true;
+				foundone = true;
 				break;
 			}
 		}
 		// did we find a module to satisfy the require?
-		if (!foundOne) {
+		if (!foundone) {
 			// lyxerr << "No matching module found." << std::endl;
 			deletePB->setEnabled(false);
 			return;
@@ -1295,21 +1295,21 @@ void GuiDocument::classChanged()
 	string const classname = classes_model_.getIDString(idx);
 
 	// check whether the selected modules have changed.
-	bool modulesChanged = false;
+	bool modules_changed = false;
 	unsigned int const srows = selectedModel()->rowCount();
 	if (srows != bp_.getModules().size())
-		modulesChanged = true;
+		modules_changed = true;
 	else {
 		list<string>::const_iterator mit = bp_.getModules().begin();
 		list<string>::const_iterator men = bp_.getModules().end();
 		for (unsigned int i = 0; i < srows && mit != men; ++i, ++mit)
 			if (selectedModel()->getIDString(i) != *mit) {
-				modulesChanged = true;
+				modules_changed = true;
 				break;
 			}
 	}
 
-	if (modulesChanged || lyxrc.auto_reset_options) {
+	if (modules_changed || lyxrc.auto_reset_options) {
 		if (applyPB->isEnabled()) {
 			int const ret = Alert::prompt(_("Unapplied changes"),
 					_("Some changes in the dialog were not yet applied.\n"
@@ -1394,7 +1394,6 @@ void GuiDocument::modulesChanged()
 	// update list of loaded modules
 	bp_.clearLayoutModules();
 	int const srows = modules_sel_model_.rowCount();
-	vector<string> selModList;
 	for (int i = 0; i < srows; ++i)
 		bp_.addLayoutModule(modules_sel_model_.getIDString(i));
 
@@ -1430,40 +1429,40 @@ void GuiDocument::updateModuleInfo()
 	selectionManager->update();
 	
 	//Module description
-	bool const focusOnSelected = selectionManager->selectedFocused();
+	bool const focus_on_selected = selectionManager->selectedFocused();
 	QListView const * const lv = 
-			focusOnSelected ? modulesModule->selectedLV : modulesModule->availableLV;
+			focus_on_selected ? modulesModule->selectedLV : modulesModule->availableLV;
 	if (lv->selectionModel()->selectedIndexes().isEmpty()) {
 		modulesModule->infoML->document()->clear();
 		return;
 	}
 	QModelIndex const & idx = lv->selectionModel()->currentIndex();
-	GuiIdListModel const & idModel = 
-			focusOnSelected  ? modules_sel_model_ : modules_av_model_;
-	string const modName = idModel.getIDString(idx.row());
+	GuiIdListModel const & id_model = 
+			focus_on_selected  ? modules_sel_model_ : modules_av_model_;
+	string const modName = id_model.getIDString(idx.row());
 	docstring desc = getModuleDescription(modName);
 
-	vector<string> pkgList = getPackageList(modName);
-	docstring pkgdesc = formatStrVec(pkgList, _("and"));
+	vector<string> pkglist = getPackageList(modName);
+	docstring pkgdesc = formatStrVec(pkglist, _("and"));
 	if (!pkgdesc.empty()) {
 		if (!desc.empty())
 			desc += "\n";
 		desc += bformat(_("Package(s) required: %1$s."), pkgdesc);
 	}
 
-	pkgList = getRequiredList(modName);
-	if (!pkgList.empty()) {
-		vector<string> const reqDescs = idsToNames(pkgList);
-		pkgdesc = formatStrVec(reqDescs, _("or"));
+	pkglist = getRequiredList(modName);
+	if (!pkglist.empty()) {
+		vector<string> const reqdescs = idsToNames(pkglist);
+		pkgdesc = formatStrVec(reqdescs, _("or"));
 		if (!desc.empty())
 			desc += "\n";
 		desc += bformat(_("Module required: %1$s."), pkgdesc);
 	}
 
-	pkgList = getExcludedList(modName);
-	if (!pkgList.empty()) {
-		vector<string> const reqDescs = idsToNames(pkgList);
-		pkgdesc = formatStrVec(reqDescs, _( "and"));
+	pkglist = getExcludedList(modName);
+	if (!pkglist.empty()) {
+		vector<string> const reqdescs = idsToNames(pkglist);
+		pkgdesc = formatStrVec(reqdescs, _( "and"));
 		if (!desc.empty())
 			desc += "\n";
 		desc += bformat(_("Modules excluded: %1$s."), pkgdesc);
