@@ -688,7 +688,7 @@ docstring asString(MathData const & ar)
 void asArray(docstring const & str, MathData & ar, Parse::flags pf)
 {
 	bool quiet = pf & Parse::QUIET;
-	if ((str.size() == 1 || !mathed_parse_cell(ar, str, pf)) && quiet)
+	if ((str.size() == 1 && quiet) || (!mathed_parse_cell(ar, str, pf) && quiet))
 		mathed_parse_cell(ar, str, pf | Parse::VERBATIM);
 }
 
