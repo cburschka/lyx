@@ -20,7 +20,7 @@
 \font_sf_scale 100
 \font_tt_scale 100
 
-\graphics default
+\graphics dvips
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -56,12 +56,12 @@ status open
 \series bold
 Note:
 \series default
- You must not use the view PDF button to preview this file! For viewing
- and exporting this as PDF use in the menus only the method 
+ It turned out that the method 
 \family sans
 PDF (dvipdfm)
 \family default
-.
+ works on all LaTeX systems as expected when viewing/exporting this file
+ as PDF.
  Viewing and exporting seminar documents to DVI and PS can result in an
  unwanted output, depending on your LaTeX system and the DVI or PostScript
  viewer.
@@ -76,14 +76,14 @@ Note:
 \family sans
 seminar
 \family default
- class is designed to produce transparencies, not presentations.
- For presentations, use a presentation document class like 
+ class is designed to produce transparencies, not powerpoint-like presentations.
+ For such presentations, use a presentation document class like
 \family sans
-beamer
+ beame
 \family default
- or 
+r or
 \family sans
-powerdot
+ powerdot
 \family default
 .
 \end_layout
@@ -116,6 +116,14 @@ written by Günter Milde
 \end_inset
 
 
+\end_layout
+
+\begin_layout Author
+Harry Testman
+\end_layout
+
+\begin_layout Date
+10/10/2010
 \end_layout
 
 \end_deeper
