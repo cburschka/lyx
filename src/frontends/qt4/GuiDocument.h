@@ -95,6 +95,7 @@ private Q_SLOTS:
 	void browseMaster();
 	void classChanged();
 	void updateModuleInfo();
+	void modulesChanged();
 
 private:
 	/// validate listings parameters and return an error message, if any

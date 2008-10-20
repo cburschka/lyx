@@ -955,7 +955,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(updateModuleInfo()));
 	connect(selectionManager, SIGNAL(updateHook()),
 		this, SLOT(change_adaptor()));
-
+	connect(selectionManager, SIGNAL(selectionChanged()),
+		this, SLOT(modulesChanged()));
 
 	// PDF support
 	pdfSupportModule = new UiWidget<Ui::PDFSupportUi>;
@@ -1421,6 +1422,42 @@ namespace {
 		}
 		return retval;
 	}
+}
+
+
+void GuiDocument::modulesChanged()
+{
+	// update list of loaded modules
+	bp_.clearLayoutModules();
+	int const srows = modules_sel_model_.rowCount();
+	vector<string> selModList;
+	for (int i = 0; i < srows; ++i)
+		bp_.addLayoutModule(modules_sel_model_.getIDString(i));
+
+	// update the list of removed modules
+	bp_.clearRemovedModules();
+	list<string> const & reqmods = bp_.baseClass()->defaultModules();
+	list<string>::const_iterator rit = reqmods.begin();
+	list<string>::const_iterator ren = reqmods.end();
+
+	// check each of the default modules
+	for (; rit != ren; rit++) {
+		list<string>::const_iterator mit = bp_.getModules().begin();
+		list<string>::const_iterator men = bp_.getModules().end();
+		bool found = false;
+		for (; mit != men; mit++) {
+			if (*rit == *mit) {
+				found = true;
+				break;
+			}
+		}
+		if (!found) {
+			// the module isn't present so must have been removed by the user
+			bp_.addRemovedModule(*rit);
+		}
+	}
+	bp_.makeDocumentClass();
+	paramsToDialog();
 }
 
 
