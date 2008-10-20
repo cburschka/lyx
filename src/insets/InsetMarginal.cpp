@@ -56,7 +56,10 @@ docstring const InsetMarginal::editMessage() const
 int InsetMarginal::latex(Buffer const & buf, odocstream & os,
 			 OutputParams const & runparams) const
 {
-	os << "%\n\\marginpar{";
+	os << "%\n";
+	if (runparams.moving_arg)
+		os << "\\protect";
+	os << "\\marginpar{";
 	int const i = InsetText::latex(buf, os, runparams);
 	os << "%\n}";
 	return i + 2;

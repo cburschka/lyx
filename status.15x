@@ -128,7 +128,7 @@ What's new
   of the IOP publishing group.
 
 - Fix some problems in the layout file and template of the DIN-Brief class.
- 
+
 - Fix LaTeX errors triggered by the external chess template (bug 5320).
 
 - Fix LaTeX errors in Latvian and Lithuanian documents (bug 5323, bug 5324).
@@ -137,6 +137,8 @@ What's new
   not use it (bug 5350).
 
 - Fix the output of IPA symbols with the encoding "utf8".
+
+- Fix LaTeX errors with marginal notes in section headings (bug 2790).
 
 
 * USER INTERFACE
