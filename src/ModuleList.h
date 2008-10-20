@@ -21,7 +21,25 @@ namespace lyx {
 /**
  *  This struct represents a particular LyX "module", which is a like a layout
  *  file, except that it does not stand alone. In that sense, it is more like 
- *  a LaTeX package, where a layout file corresponds to a LaTeX class.
+ *  a LaTeX package, where a layout file corresponds to a LaTeX class. Or, in 
+ *  LyX's own terms, a module is more like an included file that can be used
+ *  with various document classes. The difference is that using a module only
+ *  means selecting it in the Document>Settings dialog, whereas including a 
+ *  layout file means layout file editing.
+ *
+ *  In general, a given module can be used with any document class. That said,
+ *  one module may `require' another, or it may `exclude' some other module.
+ *  The requires and excludes are given in comments within the module file,
+ *  which must begin roughly so:
+ *   #\DeclareLyXModule{Theorems (By Section)}
+ *   #DescriptionBegin
+ *   #Numbers theorems and the like by section.
+ *   #DescriptionEnd
+ *   #Requires: theorems-std | theorems-ams
+ *   #Excludes: theorems-chap
+ *  The description is used in the gui to give information to the user. The
+ *  Requires and Excludes lines are read by the configuration script and
+ *  written to a file lyxmodules.lst in the user configuration directory.
  */
 
 class LyXModule {
