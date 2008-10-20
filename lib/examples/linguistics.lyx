@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass article
@@ -8,6 +8,7 @@
 %\floatstyle{plaintop}
 %\restylefloat{tableau}
 \end_preamble
+\use_default_options false
 \begin_modules
 linguistics
 \end_modules
@@ -107,7 +108,7 @@ Modules
 \family sans
 Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
-Class
+Modules
 \family default
 , select 
 \begin_inset Quotes eld
@@ -980,6 +981,52 @@ Preferences\SpecialChar \menuseparator
 Graphics
 \family default
 ), you'll get a nice preview as soon as the cursor leaves the frame.
+\end_layout
+
+\begin_layout Standard
+Furthermore, most IPA glyphs can also be inserted (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ via 
+\family sans
+Insert\SpecialChar \menuseparator
+Special characters\SpecialChar \menuseparator
+Symbols\SpecialChar \ldots{}
+
+\family default
+) or pasted directly into LyX: [ɛkspləˈneɪʃən].
+ In the output, they will be automatically transformed into the correct
+ 
+\emph on
+tipa
+\emph default
+ macro (if not, please inform me).
+ However, please note that the former method produces better output quality
+ for two reasons:
+\end_layout
+
+\begin_layout Enumerate
+direct input might result in a mix of fonts (in the above example, the latin
+ characters are taken from the base font, the IPA glyphs from the IPA font,
+ whereas 
+\family sans
+Insert\SpecialChar \menuseparator
+Special characters\SpecialChar \menuseparator
+Phonetic symbol
+\family default
+s uses the IPA font for all characters)
+\end_layout
+
+\begin_layout Enumerate
+the letter kerning is not preserved
+\end_layout
+
+\begin_layout Standard
+So unless you only need to insert single IPA characters, the former method
+ is recommended, and it's worth learning the (pretty intuitive) IPA shortcut
+ notation.
 \end_layout
 
 \begin_layout Section
