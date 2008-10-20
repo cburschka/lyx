@@ -1626,15 +1626,15 @@ bool BufferParams::moduleCanBeAdded(string const & modName) const
 	mit = getModules().begin(); // reset
 	vector<string>::const_iterator rit = reqs.begin();
 	vector<string>::const_iterator ren = reqs.end();
-	bool foundOne = false;
+	bool foundone = false;
 	for (; rit != ren; ++rit) {
 		if (find(mit, men, *rit) != men) {
-			foundOne = true;
+			foundone = true;
 			break;
 		}
 	}
 
-	return foundOne;
+	return foundone;
 }
 
 
