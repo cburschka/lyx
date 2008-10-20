@@ -244,9 +244,10 @@ public:
 		QPushButton * upPB, 
 		QPushButton * downPB,
 		GuiIdListModel * availableModel,
-		GuiIdListModel * selectedModel)
+		GuiIdListModel * selectedModel,
+		GuiDocument const * container)
 	: GuiSelectionManager(availableLV, selectedLV, addPB, delPB,
-                        upPB, downPB, availableModel, selectedModel)
+				upPB, downPB, availableModel, selectedModel), container_(container)
 		{}
 private:
 	///
@@ -267,6 +268,8 @@ private:
 	{
 		return dynamic_cast<GuiIdListModel *>(selectedModel);
 	}
+	/// 
+	GuiDocument const * container_;
 };
 
 void ModuleSelectionManager::updateAddPB() 
@@ -285,48 +288,9 @@ void ModuleSelectionManager::updateAddPB()
 	QModelIndex const & idx = availableLV->selectionModel()->currentIndex();
 	string const modName = getAvailableModel()->getIDString(idx.row());
 
-	int const srows = selectedModel->rowCount();
-	// if no modules are yet selected, there is no more to check.
-	if (srows == 0) {
- 		addPB->setEnabled(true);
- 		return;
- 	}
-
-	vector<string> selModList;
-	for (int i = 0; i < srows; ++i)
-		selModList.push_back(getSelectedModel()->getIDString(i));
-
-	vector<string>::const_iterator const selModStart = selModList.begin();
-	vector<string>::const_iterator const selModEnd   = selModList.end();
-
-	// Check whether some required module is available
-	vector<string> const reqs = getRequiredList(modName);
-	if (!reqs.empty()) {
-		bool foundOne = false;
-		vector<string>::const_iterator it = reqs.begin();
-		vector<string>::const_iterator en = reqs.end();
-		for (; it != en; ++it) {
-			if (find(selModStart, selModEnd, *it) != selModEnd) {
-				foundOne = true;
-				break;
-			}
-		}
-		if (!foundOne) {
-			addPB->setEnabled(false);
-			return;
-		}
-	}
-
-	// Check for conflicts with used modules
- 	vector<string>::const_iterator selModIt = selModStart;
- 	for (; selModIt != selModEnd; ++selModIt) {
-		if (!LyXModule::areCompatible(modName, *selModIt)) {
-			addPB->setEnabled(false);
-			return;
-		}
-	}
-
-	addPB->setEnabled(true);
+	bool const enable = 
+		container_->params().moduleCanBeAdded(modName);
+	addPB->setEnabled(enable);
 }
 
 
@@ -403,7 +367,7 @@ void ModuleSelectionManager::updateDelPB()
 		deletePB->setEnabled(false);
 		return;
 	}
-	
+
 	QModelIndex const & curIdx = 
 		selectedLV->selectionModel()->currentIndex();
 	int const curRow = curIdx.row();
@@ -905,7 +869,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(latexModule->childDocPB, SIGNAL(clicked()),
 		this, SLOT(browseMaster()));
-	
+
 	// postscript drivers
 	for (int n = 0; tex_graphics[n][0]; ++n) {
 		QString enc = qt_(tex_graphics_gui[n]);
@@ -950,7 +914,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 			modulesModule->selectedLV,
 			modulesModule->addPB, modulesModule->deletePB,
 			modulesModule->upPB, modulesModule->downPB,
-			availableModel(), selectedModel());
+			availableModel(), selectedModel(), this);
 	connect(selectionManager, SIGNAL(updateHook()),
 		this, SLOT(updateModuleInfo()));
 	connect(selectionManager, SIGNAL(updateHook()),

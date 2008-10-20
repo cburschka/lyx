@@ -73,6 +73,8 @@ public:
 	void updatePagestyle(std::string const &, std::string const &);
 
 	void showPreamble();
+	///
+	BufferParams const & params() const { return bp_; }
 
 private Q_SLOTS:
 	void updateNumbering();
@@ -170,8 +172,6 @@ private:
 	DocumentClass const & documentClass() const;
 	///
 	BufferParams & params() { return bp_; }
-	///
-	BufferParams const & params() const { return bp_; }
 	///
 	BufferId id() const;
 	///
