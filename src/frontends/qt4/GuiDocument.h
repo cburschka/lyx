@@ -165,6 +165,8 @@ private:
 	///
 	void dispatchParams();
 	///
+	void modulesToParams(BufferParams &);
+	///
 	bool isBufferDependent() const { return true; }
 	/// always true since we don't manipulate document contents
 	bool canApply() const { return true; }

@@ -1389,24 +1389,24 @@ namespace {
 }
 
 
-void GuiDocument::modulesChanged()
+void GuiDocument::modulesToParams(BufferParams & bp)
 {
 	// update list of loaded modules
-	bp_.clearLayoutModules();
+	bp.clearLayoutModules();
 	int const srows = modules_sel_model_.rowCount();
 	for (int i = 0; i < srows; ++i)
-		bp_.addLayoutModule(modules_sel_model_.getIDString(i));
+		bp.addLayoutModule(modules_sel_model_.getIDString(i));
 
 	// update the list of removed modules
-	bp_.clearRemovedModules();
-	list<string> const & reqmods = bp_.baseClass()->defaultModules();
+	bp.clearRemovedModules();
+	list<string> const & reqmods = bp.baseClass()->defaultModules();
 	list<string>::const_iterator rit = reqmods.begin();
 	list<string>::const_iterator ren = reqmods.end();
 
 	// check each of the default modules
 	for (; rit != ren; rit++) {
-		list<string>::const_iterator mit = bp_.getModules().begin();
-		list<string>::const_iterator men = bp_.getModules().end();
+		list<string>::const_iterator mit = bp.getModules().begin();
+		list<string>::const_iterator men = bp.getModules().end();
 		bool found = false;
 		for (; mit != men; mit++) {
 			if (*rit == *mit) {
@@ -1416,9 +1416,14 @@ void GuiDocument::modulesChanged()
 		}
 		if (!found) {
 			// the module isn't present so must have been removed by the user
-			bp_.addRemovedModule(*rit);
+			bp.addRemovedModule(*rit);
 		}
 	}
+}
+
+void GuiDocument::modulesChanged()
+{
+	modulesToParams(bp_);
 	bp_.makeDocumentClass();
 	paramsToDialog();
 }
@@ -1609,32 +1614,7 @@ void GuiDocument::apply(BufferParams & params)
 	}
 
 	// Modules
-	params.clearLayoutModules();
-	int const srows = modules_sel_model_.rowCount();
-	vector<string> selModList;
-	for (int i = 0; i < srows; ++i)
-		params.addLayoutModule(modules_sel_model_.getIDString(i));
-	// update the list of removed modules
-	params.clearRemovedModules();
-	list<string> const & reqmods = params.baseClass()->defaultModules();
-	list<string>::const_iterator rit = reqmods.begin();
-	list<string>::const_iterator ren = reqmods.end();
-	// check each of the required modules
-	for (; rit != ren; rit++) {
-		list<string>::const_iterator mit = params.getModules().begin();
-		list<string>::const_iterator men = params.getModules().end();
-		bool found = false;
-		for (; mit != men; mit++) {
-			if (*rit == *mit) {
-				found = true;
-				break;
-			}
-		}
-		if (!found) {
-			// the module isn't present so must have been removed by the user
-			params.addRemovedModule(*rit);
-		}
-	}
+	modulesToParams(params);
 
 	if (mathsModule->amsautoCB->isChecked()) {
 		params.use_amsmath = BufferParams::package_auto;
