@@ -26,7 +26,16 @@ linguistics
 \graphics default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -967,20 +976,38 @@ Phonetic symbols.
  
 \family default
 You get a little frame, where you can insert the symbols using the shortcut
- notation which is described in the tipa manual.
+ notation which is described in the 
+\emph on
+tipa
+\emph default
+ manual.
  Example: 
 \begin_inset Formula $\text{\textipa{[Ekspl@"neIS@n]}}$
 \end_inset
 
-.
- Given that preview-latex is installed and you have switched on instant
- preview (in 
-\family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-Graphics
+ (
+\emph on
+tipa
+\emph default
+ shortcut notation: 
+\family typewriter
+[Ekspl@"neIS@n
 \family default
-), you'll get a nice preview as soon as the cursor leaves the frame.
+]).
+ Given that
+\emph on
+ preview-lat
+\family sans
+\emph default
+e
+\family default
+x is installed and you have switched on instant preview (in
+\family sans
+ Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Graphi
+\family default
+cs), you'll get a nice preview as soon as the cursor leaves the frame.
 \end_layout
 
 \begin_layout Standard
@@ -1140,7 +1167,7 @@ Maria Gouskova, Stacia Hartleben and Jürgen Spitzmüller: Using LyX for Linguis
 c Papers.
  
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
