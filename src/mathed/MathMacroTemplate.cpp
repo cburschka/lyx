@@ -1158,8 +1158,10 @@ void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) cons
 			}
 			os << "]";
 		} else {
-			// macros without optionals use standard _global_ \def macros:
-			// \global\def\foo#1#2{#1,#2}
+			// Macros without optionals use standard _global_ \def macros:
+			//   \global\def\long\foo#1#2{#1,#2}
+			// We use the \long prefix as this is the equivalent to \newcommand.
+			// We cannot use \newcommand directly because \global does not work with it.
 			os << "\\global\\long\\def\\" << name();
 			docstring param = from_ascii("#0");
 			for (int i = 1; i <= numargs_; ++i) { 
