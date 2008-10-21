@@ -1850,7 +1850,7 @@ void LyXAction::init()
  * \li Origin: JSpitzm, 27 Apr 2006
  * \endvar
  */
-		{ LFUN_INSET_EDIT, "inset-edit", Noop, Edit },
+		{ LFUN_INSET_EDIT, "inset-edit", ReadOnly, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_TABULAR_INSERT
