@@ -51,7 +51,6 @@ GuiErrorList::GuiErrorList(GuiView & lv)
 
 void GuiErrorList::showEvent(QShowEvent * e)
 {
-	errorsLW->setCurrentRow(0);
 	select();
 	e->accept();
 }
@@ -78,6 +77,7 @@ void GuiErrorList::updateContents()
 	ErrorList::const_iterator end = errorList().end();
 	for (; it != end; ++it)
 		errorsLW->addItem(toqstr(it->error));
+	errorsLW->setCurrentRow(0);
 }
 
 

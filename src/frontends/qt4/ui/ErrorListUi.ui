@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>ErrorListUi</class>
  <widget class="QDialog" name="ErrorListUi" >
   <property name="geometry" >
@@ -18,29 +15,43 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
+  <layout class="QGridLayout" name="gridLayout" >
+   <item row="0" column="0" >
+    <widget class="QLabel" name="errorsLabel" >
+     <property name="text" >
+      <string>&amp;Errors:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>errorsLW</cstring>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="0" colspan="2" >
+    <widget class="QListWidget" name="errorsLW" >
+     <property name="toolTip" >
+      <string>Selecting an error will show the error message in the panel below, 
+and jump the cursor to the location in the document where the error occured.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QLabel" name="descriptionLabel" >
+     <property name="text" >
+      <string>Description:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2" >
     <widget class="QTextBrowser" name="descriptionTB" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>5</vsizetype>
+      <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="2" >
-    <widget class="QListWidget" name="errorsLW" />
-   </item>
-   <item row="2" column="0" >
+   <item row="4" column="0" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
@@ -48,7 +59,7 @@
      <property name="sizeType" >
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0" >
       <size>
        <width>20</width>
        <height>20</height>
@@ -56,7 +67,7 @@
      </property>
     </spacer>
    </item>
-   <item row="2" column="1" >
+   <item row="4" column="1" >
     <widget class="QPushButton" name="closePB" >
      <property name="text" >
       <string>&amp;Close</string>
@@ -65,15 +76,14 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_i18n.h</include>
- </includes>
  <tabstops>
   <tabstop>errorsLW</tabstop>
   <tabstop>descriptionTB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_i18n.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>
