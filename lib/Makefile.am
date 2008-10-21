@@ -71,8 +71,8 @@ dist_commands_DATA = \
 
 caexamplesdir = $(pkgdatadir)/examples/ca
 dist_caexamples_DATA = \
-	examples/ca/ItemizeBullets.lyx
-	examples/ca/mathed.lyx
+	examples/ca/ItemizeBullets.lyx \
+	examples/ca/mathed.lyx \
 	examples/ca/splash.lyx
 
 csexamplesdir = $(pkgdatadir)/examples/cs
