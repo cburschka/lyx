@@ -512,7 +512,6 @@ void parse_preamble(Parser & p, ostream & os,
 			static regex const usercommands("User specified LaTeX commands");
 			
 			string const comment = t.asInput();
-			//cerr << "Seen comment: " << comment << std::endl;
 			
 			// magically switch encoding default if it looks like XeLaTeX
 			static string const magicXeLaTeX =
@@ -532,8 +531,6 @@ void parse_preamble(Parser & p, ostream & os,
 				in_lyx_preamble = false;
 			else if (!in_lyx_preamble)
 				h_preamble << t.asInput();
-			cerr << "lyx_file: " << is_lyx_file << ", lyx_preamble "
-			     << in_lyx_preamble << std::endl;
 		}
 
 		else if (t.cs() == "pagestyle")
