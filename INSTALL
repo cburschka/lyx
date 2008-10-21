@@ -49,9 +49,10 @@ LyX 1.6.x makes great use of C++ Standard Template Library (STL).
 This means that gcc users will have to install the relevant libstdc++
 library to be able to compile this version of LyX. 
 
-LyX has been tested with Qt 4.2.x and Qt 4.3.x. The only special point
-to make is that you must ensure that both LyX and the Qt libraries are
-compiled with the same C++ compiler.
+LyX has been tested with Qt 4.2/3/4.x. For compilation you need to compile
+against at least Qt 4.2.2. The only special point to make is that you must
+ensure that both LyX and the Qt libraries are compiled with the same C++
+compiler.
 
 Note that if Qt is using Xft2/fontconfig, you may need to install the
 latex-xft-fonts package (at ftp://ftp.lyx.org/pub/lyx/contrib/) to get
