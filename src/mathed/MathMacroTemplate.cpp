@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author André Pönitz
+ * \author Stefan Schimanski
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -1136,6 +1137,7 @@ void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) cons
 		if (optionals_ > 0) {
 			// macros with optionals use the xargs package, e.g.:
 			// \newcommandx{\foo}[2][usedefault, addprefix=\global,1=default]{#1,#2}
+			// \long is implicit by xargs
 			if (redefinition_ && !overwriteRedefinition)
 				os << "\\renewcommandx";
 			else
@@ -1158,7 +1160,7 @@ void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) cons
 		} else {
 			// macros without optionals use standard _global_ \def macros:
 			// \global\def\foo#1#2{#1,#2}
-			os << "\\global\\def\\" << name();
+			os << "\\global\\long\\def\\" << name();
 			docstring param = from_ascii("#0");
 			for (int i = 1; i <= numargs_; ++i) { 
 				param[1] = '0' + i;
