@@ -674,6 +674,9 @@ TeXOnePar(Buffer const & buf,
 	if (nextpit == paragraphs.end() && !style.isEnvironment()) {
 		switch (open_encoding_) {
 			case CJK: {
+				// do nothing at the end of child documents
+				if (maintext && buf.masterBuffer() != &buf)
+					break;
 				// end of main text
 				if (maintext) {
 					os << '\n';
@@ -761,10 +764,13 @@ void latexParagraphs(Buffer const & buf,
 	}
 
 	bool const maintext = text.isMainText(buf);
+	bool const is_child = buf.masterBuffer() != &buf;
 
 	// Open a CJK environment at the beginning of the main buffer
 	// if the document's language is a CJK language
-	if (maintext && bparams.encoding().package() == Encoding::CJK) {
+	// (but not in child documents)
+	if (maintext && !is_child
+	    && bparams.encoding().package() == Encoding::CJK) {
 		os << "\\begin{CJK}{" << from_ascii(bparams.encoding().latexName())
 		<< "}{" << from_ascii(bparams.fontsCJK) << "}%\n";
 		texrow.newline();
@@ -856,7 +862,7 @@ void latexParagraphs(Buffer const & buf,
 
 	// If the last paragraph is an environment, we'll have to close
 	// CJK at the very end to do proper nesting.
-	if (maintext && open_encoding_ == CJK) {
+	if (maintext && !is_child && open_encoding_ == CJK) {
 		os << "\\end{CJK}\n";
 		texrow.newline();
 		open_encoding_ = none;
