@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 19.
+letzte Änderung: 23.
  Oktober 2008
 \end_layout
 
@@ -29259,56 +29259,9 @@ reference "Makro-erzeugen"
  verwenden Sie bitte einen anderen oder formulieren Sie den Text mit dem
  Querverweis etwas anders.
  Am ehesten kommt es vor, dass der Querverweis über das Zeilenende hinaus
- gedruckt wird:
+ gedruckt wird.
 \end_layout
 
-\begin_deeper
-\begin_layout Description
-Voreinstellungung
-\begin_inset space ~
-\end_inset
-
-der
-\begin_inset space ~
-\end_inset
-
-gewählten
-\begin_inset space ~
-\end_inset
-
-Sprache siehe Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Zeichentabellen"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Das Beispiel ist aus Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Sprache"
-
-\end_inset
-
-.
- Dort wurde der Querverweis auf zwei aufgeteilt, um das Problem zu beheben.
- Etwas schwieriger wird es, wenn der Querverweis in einen Seitenumbruch
- gerät.
-\end_layout
-
-\end_deeper
 \begin_layout Enumerate
 Formatierter Querverweis sieht aus wie 1.
 \end_layout
@@ -32224,7 +32177,7 @@ Eine weitere mögliche Anwendung wäre eine Lehrerversion, in der die Antworten
 
 \begin_layout Standard
 \begin_inset Branch Frage
-status collapsed
+status open
 
 \begin_layout Standard
 Frage: Wer war der erste Physik-Nobelpreis-Gewinner?
@@ -32323,7 +32276,7 @@ Antwort}[1]{#1}
 
 \lang english
 \begin_inset Branch Frage
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -38066,7 +38019,9 @@ alle
 \begin_inset space ~
 \end_inset
 
-Sitzungsinformationen ???
+Sitzungsinformationen löscht Informationen wie z.B.
+ die zuletzt geöffneten Dokumente, die letzte Cursorposition, Lesezeichen,
+ Änderungen in den Werkzeugleitenpositionen, u.Ä..
 \end_layout
 
 \end_deeper
@@ -38442,7 +38397,8 @@ Gelöschter
 \begin_inset space ~
 \end_inset
 
-Text ???
+Text is die Farbe des gelöschten Texts der von der Änderungsverfolgung aufgezeic
+hnet wurde.
 \end_layout
 
 \begin_layout Description
@@ -38467,7 +38423,8 @@ Text
 \begin_inset space ~
 \end_inset
 
-Autor ???
+Autor is die Farbe des geänderten Texts der von der Änderungsverfolgung
+ aufgezeichnet wurde.
 \end_layout
 
 \begin_layout Description
@@ -38508,7 +38465,8 @@ Hinzugefügter
 \begin_inset space ~
 \end_inset
 
-Text ???
+Text is die Farbe des hinzugefügten Texts der von der Änderungsverfolgung
+ aufgezeichnet wurde.
 \end_layout
 
 \begin_layout Description
@@ -38582,7 +38540,8 @@ status collapsed
 
 \end_inset
 
-X-Fehler ???
+X-Fehler ist die Farbe der Hervorhebung von Bereichen, die einen LaTeX-Fehler
+ verursachen.
 \end_layout
 
 \begin_layout Description
@@ -38802,7 +38761,7 @@ Progammlistings
 \begin_inset space ~
 \end_inset
 
-(Hintergrund) ???
+(Hintergrund) ist die Hintergrundfarbe von Programmlistings.
 \end_layout
 
 \begin_layout Description
@@ -38931,7 +38890,7 @@ Zweig
 \begin_inset space ~
 \end_inset
 
-(Marke) ???
+(Marke) ist die Farbe, mit der die Zweig-Marke beschriftet wird.
 \end_layout
 
 \begin_layout Subsection
@@ -40634,6 +40593,49 @@ reference "Dokumentklasse"
 \end_layout
 
 \begin_layout Section
+Module
+\end_layout
+
+\begin_layout Description
+Verfügbar listet alle Module auf, die Sie in Ihrem Dokument zusätzlich verwenden
+ können.
+ Wenn Sie auf ein Modul klicken, sehen Sie im unteren Fenster Erklärungen,
+ manchmal auch Benutzungshinweise.
+\end_layout
+
+\begin_layout Description
+Ausgewählt listet alle Module auf, die Sie Ihrem Dokument hinzugefügt haben.
+\end_layout
+
+\begin_layout Standard
+Mit 
+\family sans
+\series bold
+Hinzufügen
+\family default
+\series default
+, 
+\family sans
+\series bold
+Löschen
+\family default
+\series default
+, 
+\family sans
+\series bold
+Rauf
+\family default
+\series default
+ und 
+\family sans
+\series bold
+Runter
+\family default
+\series default
+ können Sie die rechte Liste bearbeiten.
+\end_layout
+
+\begin_layout Section
 Schriften
 \end_layout
 
@@ -40765,7 +40767,7 @@ reference "Zeichentabellen"
 
 \begin_deeper
 \begin_layout Description
-Voreinstellungung
+Voreinstellung
 \begin_inset space ~
 \end_inset
 
@@ -40783,14 +40785,7 @@ Sprache siehe Abschnitt
 
 
 \begin_inset CommandInset ref
-LatexCommand ref
-reference "Zeichentabellen"
-
-\end_inset
-
- auf Seite 
-\begin_inset CommandInset ref
-LatexCommand pageref
+LatexCommand vref
 reference "Zeichentabellen"
 
 \end_inset
@@ -40823,11 +40818,7 @@ X
 default ist dasselbe wie 
 \family sans
 \series bold
-Voreinstellungung
-\begin_inset space ~
-\end_inset
-
-
+Voreinstellung
 \begin_inset space \space{}
 \end_inset
 
@@ -41131,14 +41122,6 @@ Vollbildmodus
 öffnen ist selbsterklärend.
 \end_layout
 
-\begin_layout Description
-Zusätzliche
-\begin_inset space ~
-\end_inset
-
-Optionen ist etwas für LaTeX-Spezialisten.
-\end_layout
-
 \end_deeper
 \end_deeper
 \begin_layout Description
@@ -41187,24 +41170,8 @@ einfärben ist selbsterklärend.
 \end_layout
 
 \begin_layout Description
-Bibliografische
-\begin_inset space ~
-\end_inset
-
 Rückverweise zeigt im Literaturverzeichnis hinter dem jeweiligen Eintrag
- an, wo auf ihn verwiesen wurde.
-\end_layout
-
-\begin_layout Description
-Rückverweis
-\begin_inset space ~
-\end_inset
-
-auf
-\begin_inset space ~
-\end_inset
-
-Seitennummer ???
+ das Kapitel, die Folie, oder die Seite an, wo auf ihn verwiesen wurde.
 \end_layout
 
 \end_deeper
@@ -41235,7 +41202,7 @@ Lesezeichen
 \begin_inset space ~
 \end_inset
 
-öffnen öffnet die Lesezeichen in der DVI-Ausgabe automatisch
+öffnen öffnet die Lesezeichen in der DVI-Ausgabe automatisch.
 \end_layout
 
 \begin_layout Description
@@ -41247,6 +41214,14 @@ Ebene legt fest, bis zu welcher Ebene (Kapitel, Abschnitt\SpecialChar \ldots{}
 \end_deeper
 \end_deeper
 \end_deeper
+\begin_layout Description
+Zusätzliche
+\begin_inset space ~
+\end_inset
+
+Optionen ist etwas für LaTeX-Spezialisten.
+\end_layout
+
 \begin_layout Standard
 Siehe auch Abschnitt
 \begin_inset space \space{}
@@ -41408,16 +41383,16 @@ Entfernen,
 \begin_inset space ~
 \end_inset
 
-(De)aktivieren,
-\begin_inset space ~
-\end_inset
-
 Farbe
 \begin_inset space ~
 \end_inset
 
 ändern\SpecialChar \ldots{}
- ist selbsterklärend.
+,
+\begin_inset space ~
+\end_inset
+
+(De)aktivieren ist selbsterklärend.
 \end_layout
 
 \end_deeper
