@@ -20,7 +20,6 @@ theorems-ams
 
 \graphics default
 \paperfontsize default
-\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry true
@@ -50,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 25.09.2008.
+LFUNs documentation automatically generated 23.10.2008.
 \end_layout
 
 \begin_layout Standard
@@ -570,6 +569,53 @@ Syntax listing-insert
 
 \begin_layout Description
 Origin Herbert, 10 Nov 2001; bpeng, 2 May 2007 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_TAB_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Insert a tab into a listings inset.
+  
+\end_layout
+
+\begin_layout Description
+Notion It also works on a selection.
+  
+\end_layout
+
+\begin_layout Description
+Syntax tab-insert 
+\end_layout
+
+\begin_layout Description
+Origin vfvanravesteijn, Sep 30 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_TAB_DELETE 
+\end_layout
+
+\begin_layout Description
+Action Delete a tab or up to an equivalent amount of spaces from a listings
+ inset.
+  
+\end_layout
+
+\begin_layout Description
+Notion It also works on a selection - it removes a tab or spaces from the
+ beginning of each line spanned by the selection.
+ This is useful if you want to indent/unindent multiple lines in one action.
+  
+\end_layout
+
+\begin_layout Description
+Syntax tab-delete 
+\end_layout
+
+\begin_layout Description
+Origin vfvanravesteijn, Sep 30 2008 
 \end_layout
 
 \begin_layout Subsection*
@@ -5297,6 +5343,7 @@ Action Sends notify message about the last key-sequence to client.
 
 \begin_layout Description
 Notion This can be used to grab last key-sequence used inside the LyX window.
+ See also Debug extensions section in Extended features manual.
   
 \end_layout
 
