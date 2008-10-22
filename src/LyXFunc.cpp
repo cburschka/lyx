@@ -1029,7 +1029,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_HELP_OPEN: {
-			LASSERT(lyx_view_, /**/);
+			if (lyx_view_ == 0)
+				theApp()->dispatch(FuncRequest(LFUN_WINDOW_NEW));
 			string const arg = argument;
 			if (arg.empty()) {
 				setErrorMessage(from_ascii(N_("Missing argument")));
