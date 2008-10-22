@@ -627,7 +627,7 @@ def processLayoutFile(file, bool_docbook):
             if opt == None:
                 opt = classname
             return '"%s" "%s" "%s" "%s"\n' % (classname, opt, desc, avai)
-    print "Layout file without \DeclareXXClass line. "
+    print "Layout file " + file + " has no \DeclareXXClass line. "
     sys.exit(2)
 
     
