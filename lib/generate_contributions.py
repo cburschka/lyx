@@ -1507,10 +1507,10 @@ contributers = [
      contributer(u"Peter Gumm",
                  "gumm () mathematik ! uni-marburg ! de",
                  "GPL",
-                 "copyleft",
+                 "Re: xy-pic manual",
                  "m=122469079629276",
                  "22 October 2008",
-                 u"Re: xy-pic manual"),
+                 u"XY-pic manual"),
 
      contributer(u"Xiaokun Zhu",
                  "xiaokun () aero ! gla ! ac ! uk",
