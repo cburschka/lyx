@@ -76,6 +76,9 @@ MathWordList theWordList;
 
 bool isMathFontAvailable(docstring & name)
 {
+	if (!use_gui)
+		return false;
+
 	FontInfo f;
 	augmentFont(f, name);
 
@@ -97,9 +100,6 @@ bool isMathFontAvailable(docstring & name)
 
 void initSymbols()
 {
-	if (!use_gui)
-		return;
-
 	FileName const filename = libFileSearch(string(), "symbols");
 	LYXERR(Debug::MATHED, "read symbols from " << filename);
 	if (filename.empty()) {
