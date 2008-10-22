@@ -2235,7 +2235,7 @@ void GuiView::resetDialogs()
 	saveLayout();
 	menuBar()->clear();
 	constructToolbars();
-	guiApp->menus().fillMenuBar(menuBar(), this, true);
+	guiApp->menus().fillMenuBar(menuBar(), this, false);
 	if (d.layout_)
 		d.layout_->updateContents(true);
 	// Now update controls with current buffer.

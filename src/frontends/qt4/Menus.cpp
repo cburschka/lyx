@@ -1225,9 +1225,14 @@ struct Menus::Impl {
 	/// Mac special menu.
 	/** This defines a menu whose entries list the FuncRequests
 	    that will be removed by expand() in other menus. This is
-	    used by the Qt/Mac code
+	    used by the Qt/Mac code.
+
+	    NOTE: Qt does not remove the menu items when clearing a QMenuBar,
+	    such that the items will keep accessing the FuncRequests in
+	    the MenuDefinition. While Menus::Impl might be recreated,
+	    we keep mac_special_menu_ in memory by making it static.
 	*/
-	MenuDefinition specialmenu_;
+	static MenuDefinition mac_special_menu_;
 
 	///
 	MenuList menulist_;
@@ -1239,6 +1244,10 @@ struct Menus::Impl {
 	/// name to menu for \c menu() method.
 	NameMap name_map_;
 };
+
+
+MenuDefinition Menus::Impl::mac_special_menu_;
+
 
 /*
   Here is what the Qt documentation says about how a menubar is chosen:
@@ -1296,11 +1305,11 @@ void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 	const size_t num_entries = sizeof(entries) / sizeof(entries[0]);
 
 	// the special menu for Menus. Fill it up only once.
-	if (specialmenu_.size() == 0) {
+	if (mac_special_menu_.size() == 0) {
 		for (size_t i = 0 ; i < num_entries ; ++i) {
 			FuncRequest const func(entries[i].action,
 				from_utf8(entries[i].arg));
-			specialmenu_.add(MenuItem(MenuItem::Command, 
+			mac_special_menu_.add(MenuItem(MenuItem::Command,
 				entries[i].label, func));
 		}
 	}
@@ -1308,8 +1317,8 @@ void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 	// add the entries to a QMenu that will eventually be empty
 	// and therefore invisible.
 	QMenu * qMenu = qmb->addMenu("special");
-	MenuDefinition::const_iterator cit = specialmenu_.begin();
-	MenuDefinition::const_iterator end = specialmenu_.end();
+	MenuDefinition::const_iterator cit = mac_special_menu_.begin();
+	MenuDefinition::const_iterator end = mac_special_menu_.end();
 	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
 		Action * action = new Action(view, QIcon(), cit->label(),
 			cit->func(), QString(), qMenu);
@@ -1405,7 +1414,7 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 			break;
 
 		case MenuItem::Command:
-			if (!specialmenu_.hasFunc(cit->func()))
+			if (!mac_special_menu_.hasFunc(cit->func()))
 				tomenu.addWithStatusCheck(*cit);
 		}
 	}
@@ -1535,7 +1544,11 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 {
 	if (initial) {
 #ifdef Q_WS_MACX
-		// setup special mac specific menu item
+		// setup special mac specific menu items, but only do this
+		// the first time a QMenuBar is created. Otherwise Qt will
+		// create duplicate items in the application menu. It seems
+		// that Qt does not remove them when the QMenubar is cleared.
+		LYXERR(Debug::GUI, "Creating Mac OS X special menu bar");
 		d->macxMenuBarInit(view, qmb);
 #endif
 	} else {
