@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-10-20 23:37+0200\n"
+"POT-Creation-Date: 2008-10-22 23:12+0200\n"
 "PO-Revision-Date: 2008-08-04 23:57+0100\n"
 "Last-Translator: Andrey V. Panov <panov@canopus.iacp.dvo.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -39,7 +39,7 @@ msgstr "Авторское право"
 #: src/frontends/qt4/ui/AboutUi.ui:131 src/frontends/qt4/ui/BibitemUi.ui:121
 #: src/frontends/qt4/ui/BoxUi.ui:260 src/frontends/qt4/ui/BranchUi.ui:41
 #: src/frontends/qt4/ui/DelimiterUi.ui:268
-#: src/frontends/qt4/ui/ErrorListUi.ui:62
+#: src/frontends/qt4/ui/ErrorListUi.ui:73
 #: src/frontends/qt4/ui/ExternalUi.ui:625 src/frontends/qt4/ui/FloatUi.ui:85
 #: src/frontends/qt4/ui/HSpaceUi.ui:214
 #: src/frontends/qt4/ui/HyperlinkUi.ui:150
@@ -888,6 +888,16 @@ msgstr "Показывать содержимое ERT"
 #: src/frontends/qt4/ui/ERTUi.ui:56
 msgid "O&pen"
 msgstr "&Открыть"
+
+#: src/frontends/qt4/ui/ErrorListUi.ui:22
+#, fuzzy
+msgid "&Errors:"
+msgstr "Стрелки"
+
+#: src/frontends/qt4/ui/ErrorListUi.ui:40
+#, fuzzy
+msgid "Description:"
+msgstr "Описание:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:43
 #, fuzzy
@@ -6142,7 +6152,7 @@ msgstr "Текст"
 #: lib/layouts/g-brief-de.layout:35 lib/layouts/g-brief-en.layout:35
 #: lib/layouts/g-brief2.layout:58 lib/layouts/scrlettr.layout:112
 #: lib/layouts/scrlttr2.layout:143 lib/layouts/agu_stdtitle.inc:184
-#: src/mathed/MathMacroTemplate.cpp:481
+#: src/mathed/MathMacroTemplate.cpp:482
 msgid "Name"
 msgstr "Название"
 
@@ -9235,7 +9245,7 @@ msgid ""
 "Defines theorem environments and the proof environment using the extended "
 "AMS machinery. Both numbered and unnumbered types are provided. By default, "
 "the theorems are numbered consecutively throughout the document. This can be "
-"changed by loading one of the Theorems (Ordered By ...) modules."
+"changed by loading one of the Theorems (By ...) modules."
 msgstr ""
 
 #: lib/layouts/theorems-chap.module:2
@@ -14717,7 +14727,7 @@ msgid "Table (CSV)"
 msgstr "Таблица"
 
 #: lib/configure.py:335 src/frontends/qt4/GuiView.cpp:823
-#: src/frontends/qt4/GuiView.cpp:824 src/mathed/MathMacroTemplate.cpp:536
+#: src/frontends/qt4/GuiView.cpp:824 src/mathed/MathMacroTemplate.cpp:537
 msgid "LyX"
 msgstr "LyX"
 
@@ -16090,7 +16100,7 @@ msgstr "Выполняю MakeIndex."
 msgid "Could not read configuration file"
 msgstr "Не удаётся прочитать файл конфигурации"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1411
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1397
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16394,44 +16404,44 @@ msgstr "Вернуться к сохранённой версии докумен
 msgid "&Revert"
 msgstr "Вернуться к сохранённому"
 
-#: src/LyXFunc.cpp:1035 src/Text3.cpp:1492
+#: src/LyXFunc.cpp:1036 src/Text3.cpp:1492
 msgid "Missing argument"
 msgstr "Отсутствует аргумент"
 
-#: src/LyXFunc.cpp:1044
+#: src/LyXFunc.cpp:1045
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Открываем файл помощи %1$s..."
 
-#: src/LyXFunc.cpp:1291
+#: src/LyXFunc.cpp:1292
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Открывается документ-потомок %1$s..."
 
-#: src/LyXFunc.cpp:1450
+#: src/LyXFunc.cpp:1451
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "По умолчанию для документа|#Д"
 
-#: src/LyXFunc.cpp:1453
+#: src/LyXFunc.cpp:1454
 msgid "Unable to save document defaults"
 msgstr "Невозможно сохранить как документ по умолчанию"
 
-#: src/LyXFunc.cpp:1750
+#: src/LyXFunc.cpp:1751
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Документ %1$s перезагружен."
 
-#: src/LyXFunc.cpp:1752
+#: src/LyXFunc.cpp:1753
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "Невозможно открыть документ "
 
-#: src/LyXFunc.cpp:1789
+#: src/LyXFunc.cpp:1790
 msgid "Welcome to LyX!"
 msgstr "Добро пожаловать в LyX!"
 
-#: src/LyXFunc.cpp:1810
+#: src/LyXFunc.cpp:1811
 msgid "Converting document to new document class..."
 msgstr "Преобразую документ к новому классу документа..."
 
@@ -17512,27 +17522,27 @@ msgstr "Переконфигурировать"
 msgid "Quit %1"
 msgstr "Выйти из %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:803
+#: src/frontends/qt4/GuiApplication.cpp:795
 msgid "Exiting."
 msgstr "Выхожу."
 
-#: src/frontends/qt4/GuiApplication.cpp:870
+#: src/frontends/qt4/GuiApplication.cpp:862
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Синтаксис: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:886
+#: src/frontends/qt4/GuiApplication.cpp:878
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Установка цвета не удалась \"%1$s\" - цвет не определён или не может быть "
 "переопределён"
 
-#: src/frontends/qt4/GuiApplication.cpp:1235
+#: src/frontends/qt4/GuiApplication.cpp:1221
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Печатать в файл"
 
-#: src/frontends/qt4/GuiApplication.cpp:1245
+#: src/frontends/qt4/GuiApplication.cpp:1231
 #, fuzzy
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
@@ -17545,13 +17555,13 @@ msgstr ""
 "\n"
 "Ошибка: "
 
-#: src/frontends/qt4/GuiApplication.cpp:1249
-#: src/frontends/qt4/GuiApplication.cpp:1255
+#: src/frontends/qt4/GuiApplication.cpp:1235
+#: src/frontends/qt4/GuiApplication.cpp:1241
 #, fuzzy
 msgid "Software exception Detected"
 msgstr "Обнаружено исключение программы iconv"
 
-#: src/frontends/qt4/GuiApplication.cpp:1253
+#: src/frontends/qt4/GuiApplication.cpp:1239
 #, fuzzy
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
@@ -17560,7 +17570,7 @@ msgstr ""
 "LyX получил сообщение о серьёзной ошибке, сейчас он попытается сохранить все "
 "документы и выйти."
 
-#: src/frontends/qt4/GuiApplication.cpp:1410
+#: src/frontends/qt4/GuiApplication.cpp:1396
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Не удаётся прочитать файл конфигурации"
@@ -19580,7 +19590,7 @@ msgstr "Документ"
 msgid "No Citation in Scope!"
 msgstr "Перейти к следующей ошибке"
 
-#: src/frontends/qt4/Menus.cpp:1602
+#: src/frontends/qt4/Menus.cpp:1615
 #, fuzzy
 msgid "No action defined!"
 msgstr "Перейти к следующей ошибке"
@@ -20630,16 +20640,16 @@ msgstr "текстовый режим внутри формулы (textrm)"
 msgid "Standard[[mathref]]"
 msgstr ""
 
-#: src/mathed/MathMacroTemplate.cpp:488
+#: src/mathed/MathMacroTemplate.cpp:489
 #, fuzzy
 msgid "optional"
 msgstr "Горизонтальное"
 
-#: src/mathed/MathMacroTemplate.cpp:531
+#: src/mathed/MathMacroTemplate.cpp:532
 msgid "TeX"
 msgstr "TeX"
 
-#: src/mathed/MathMacroTemplate.cpp:1205
+#: src/mathed/MathMacroTemplate.cpp:1209
 msgid "math macro"
 msgstr "матемематическая макрокоманда"
 

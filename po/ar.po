@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-10-20 23:37+0200\n"
+"POT-Creation-Date: 2008-10-22 23:12+0200\n"
 "PO-Revision-Date: 2008-09-29 03:28+0300\n"
 "Last-Translator: Hatim Alahmadi <Dr.Hatim@hotmail.com>\n"
 "Language-Team: LyX team <Dr.Hatim@hotmail.com>\n"
@@ -38,7 +38,7 @@ msgstr "حقوق النشر"
 #: src/frontends/qt4/ui/AboutUi.ui:131 src/frontends/qt4/ui/BibitemUi.ui:121
 #: src/frontends/qt4/ui/BoxUi.ui:260 src/frontends/qt4/ui/BranchUi.ui:41
 #: src/frontends/qt4/ui/DelimiterUi.ui:268
-#: src/frontends/qt4/ui/ErrorListUi.ui:62
+#: src/frontends/qt4/ui/ErrorListUi.ui:73
 #: src/frontends/qt4/ui/ExternalUi.ui:625 src/frontends/qt4/ui/FloatUi.ui:85
 #: src/frontends/qt4/ui/HSpaceUi.ui:214
 #: src/frontends/qt4/ui/HyperlinkUi.ui:150
@@ -869,6 +869,16 @@ msgstr ""
 #: src/frontends/qt4/ui/ERTUi.ui:56
 msgid "O&pen"
 msgstr "فتح"
+
+#: src/frontends/qt4/ui/ErrorListUi.ui:22
+#, fuzzy
+msgid "&Errors:"
+msgstr "خطأ"
+
+#: src/frontends/qt4/ui/ErrorListUi.ui:40
+#, fuzzy
+msgid "Description:"
+msgstr "وصف:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:43
 msgid "F&ile"
@@ -5896,7 +5906,7 @@ msgstr "النص:"
 #: lib/layouts/g-brief-de.layout:35 lib/layouts/g-brief-en.layout:35
 #: lib/layouts/g-brief2.layout:58 lib/layouts/scrlettr.layout:112
 #: lib/layouts/scrlttr2.layout:143 lib/layouts/agu_stdtitle.inc:184
-#: src/mathed/MathMacroTemplate.cpp:481
+#: src/mathed/MathMacroTemplate.cpp:482
 msgid "Name"
 msgstr "الاسم"
 
@@ -8651,7 +8661,7 @@ msgid ""
 "Defines theorem environments and the proof environment using the extended "
 "AMS machinery. Both numbered and unnumbered types are provided. By default, "
 "the theorems are numbered consecutively throughout the document. This can be "
-"changed by loading one of the Theorems (Ordered By ...) modules."
+"changed by loading one of the Theorems (By ...) modules."
 msgstr ""
 
 #: lib/layouts/theorems-chap.module:2
@@ -13861,7 +13871,7 @@ msgid "Table (CSV)"
 msgstr "جدول (CSV)"
 
 #: lib/configure.py:335 src/frontends/qt4/GuiView.cpp:823
-#: src/frontends/qt4/GuiView.cpp:824 src/mathed/MathMacroTemplate.cpp:536
+#: src/frontends/qt4/GuiView.cpp:824 src/mathed/MathMacroTemplate.cpp:537
 msgid "LyX"
 msgstr "ليك"
 
@@ -15149,7 +15159,7 @@ msgstr ""
 msgid "Could not read configuration file"
 msgstr ""
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1411
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1397
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -15419,44 +15429,44 @@ msgstr "عودة للمستند المحفوظ؟"
 msgid "&Revert"
 msgstr "عودة"
 
-#: src/LyXFunc.cpp:1035 src/Text3.cpp:1492
+#: src/LyXFunc.cpp:1036 src/Text3.cpp:1492
 msgid "Missing argument"
 msgstr ""
 
-#: src/LyXFunc.cpp:1044
+#: src/LyXFunc.cpp:1045
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "فتح ملف المساعدة %1$s..."
 
-#: src/LyXFunc.cpp:1291
+#: src/LyXFunc.cpp:1292
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr ""
 
-#: src/LyXFunc.cpp:1450
+#: src/LyXFunc.cpp:1451
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "المستند يحفظ افتراضياً في %1$s"
 
-#: src/LyXFunc.cpp:1453
+#: src/LyXFunc.cpp:1454
 msgid "Unable to save document defaults"
 msgstr ""
 
-#: src/LyXFunc.cpp:1750
+#: src/LyXFunc.cpp:1751
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "المستند %1$s حمل"
 
-#: src/LyXFunc.cpp:1752
+#: src/LyXFunc.cpp:1753
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "لم يعد تحميل المستند %1$s"
 
-#: src/LyXFunc.cpp:1789
+#: src/LyXFunc.cpp:1790
 msgid "Welcome to LyX!"
 msgstr "أهلاً بك في ليك"
 
-#: src/LyXFunc.cpp:1810
+#: src/LyXFunc.cpp:1811
 msgid "Converting document to new document class..."
 msgstr ""
 
@@ -16388,24 +16398,24 @@ msgstr "اعادة الاعداد"
 msgid "Quit %1"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:803
+#: src/frontends/qt4/GuiApplication.cpp:795
 msgid "Exiting."
 msgstr "خروج."
 
-#: src/frontends/qt4/GuiApplication.cpp:870
+#: src/frontends/qt4/GuiApplication.cpp:862
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:886
+#: src/frontends/qt4/GuiApplication.cpp:878
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1235
+#: src/frontends/qt4/GuiApplication.cpp:1221
 msgid "The current document was closed."
 msgstr "المستند الحالي اغلق"
 
-#: src/frontends/qt4/GuiApplication.cpp:1245
+#: src/frontends/qt4/GuiApplication.cpp:1231
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -16413,18 +16423,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1249
-#: src/frontends/qt4/GuiApplication.cpp:1255
+#: src/frontends/qt4/GuiApplication.cpp:1235
+#: src/frontends/qt4/GuiApplication.cpp:1241
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1253
+#: src/frontends/qt4/GuiApplication.cpp:1239
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1410
+#: src/frontends/qt4/GuiApplication.cpp:1396
 msgid "Could not find UI definition file"
 msgstr ""
 
@@ -18309,7 +18319,7 @@ msgstr "لا فرع في المستند!"
 msgid "No Citation in Scope!"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1602
+#: src/frontends/qt4/Menus.cpp:1615
 msgid "No action defined!"
 msgstr "لا اجراء محدد"
 
@@ -19296,15 +19306,15 @@ msgstr ""
 msgid "Standard[[mathref]]"
 msgstr ""
 
-#: src/mathed/MathMacroTemplate.cpp:488
+#: src/mathed/MathMacroTemplate.cpp:489
 msgid "optional"
 msgstr ""
 
-#: src/mathed/MathMacroTemplate.cpp:531
+#: src/mathed/MathMacroTemplate.cpp:532
 msgid "TeX"
 msgstr "تيك"
 
-#: src/mathed/MathMacroTemplate.cpp:1205
+#: src/mathed/MathMacroTemplate.cpp:1209
 msgid "math macro"
 msgstr "ماكرو رياضيات"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-10-20 23:37+0200\n"
+"POT-Creation-Date: 2008-10-22 23:12+0200\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -36,7 +36,7 @@ msgstr "Pravice razširjanja"
 #: src/frontends/qt4/ui/AboutUi.ui:131 src/frontends/qt4/ui/BibitemUi.ui:121
 #: src/frontends/qt4/ui/BoxUi.ui:260 src/frontends/qt4/ui/BranchUi.ui:41
 #: src/frontends/qt4/ui/DelimiterUi.ui:268
-#: src/frontends/qt4/ui/ErrorListUi.ui:62
+#: src/frontends/qt4/ui/ErrorListUi.ui:73
 #: src/frontends/qt4/ui/ExternalUi.ui:625 src/frontends/qt4/ui/FloatUi.ui:85
 #: src/frontends/qt4/ui/HSpaceUi.ui:214
 #: src/frontends/qt4/ui/HyperlinkUi.ui:150
@@ -944,6 +944,16 @@ msgstr "Prikaži vsebino ERT"
 #, fuzzy
 msgid "O&pen"
 msgstr "&Odpri"
+
+#: src/frontends/qt4/ui/ErrorListUi.ui:22
+#, fuzzy
+msgid "&Errors:"
+msgstr "Puščica"
+
+#: src/frontends/qt4/ui/ErrorListUi.ui:40
+#, fuzzy
+msgid "Description:"
+msgstr "Opis"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:43
 #, fuzzy
@@ -6390,7 +6400,7 @@ msgstr "Besedilo"
 #: lib/layouts/g-brief-de.layout:35 lib/layouts/g-brief-en.layout:35
 #: lib/layouts/g-brief2.layout:58 lib/layouts/scrlettr.layout:112
 #: lib/layouts/scrlttr2.layout:143 lib/layouts/agu_stdtitle.inc:184
-#: src/mathed/MathMacroTemplate.cpp:481
+#: src/mathed/MathMacroTemplate.cpp:482
 msgid "Name"
 msgstr "Ime"
 
@@ -9550,7 +9560,7 @@ msgid ""
 "Defines theorem environments and the proof environment using the extended "
 "AMS machinery. Both numbered and unnumbered types are provided. By default, "
 "the theorems are numbered consecutively throughout the document. This can be "
-"changed by loading one of the Theorems (Ordered By ...) modules."
+"changed by loading one of the Theorems (By ...) modules."
 msgstr ""
 
 #: lib/layouts/theorems-chap.module:2
@@ -15365,7 +15375,7 @@ msgid "Table (CSV)"
 msgstr "Tabela"
 
 #: lib/configure.py:335 src/frontends/qt4/GuiView.cpp:823
-#: src/frontends/qt4/GuiView.cpp:824 src/mathed/MathMacroTemplate.cpp:536
+#: src/frontends/qt4/GuiView.cpp:824 src/mathed/MathMacroTemplate.cpp:537
 msgid "LyX"
 msgstr "LyX"
 
@@ -16756,7 +16766,7 @@ msgstr "Izvaja se MakeIndex."
 msgid "Could not read configuration file"
 msgstr "Ni moč pognati z datoteko:"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1411
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1397
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -17072,45 +17082,45 @@ msgstr "Vrni se k shranjenemu"
 msgid "&Revert"
 msgstr "Obnovi|O"
 
-#: src/LyXFunc.cpp:1035 src/Text3.cpp:1492
+#: src/LyXFunc.cpp:1036 src/Text3.cpp:1492
 msgid "Missing argument"
 msgstr "Manjkajoči argument"
 
-#: src/LyXFunc.cpp:1044
+#: src/LyXFunc.cpp:1045
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Odpira se datoteko s pomočjo"
 
-#: src/LyXFunc.cpp:1291
+#: src/LyXFunc.cpp:1292
 #, fuzzy, c-format
 msgid "Opening child document %1$s..."
 msgstr "Odpira se spis %1$s..."
 
-#: src/LyXFunc.cpp:1450
+#: src/LyXFunc.cpp:1451
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Videz spisa"
 
-#: src/LyXFunc.cpp:1453
+#: src/LyXFunc.cpp:1454
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Shrani kot privzeto za spis"
 
-#: src/LyXFunc.cpp:1750
+#: src/LyXFunc.cpp:1751
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s je odprt."
 
-#: src/LyXFunc.cpp:1752
+#: src/LyXFunc.cpp:1753
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "Spisa ni moč odpreti"
 
-#: src/LyXFunc.cpp:1789
+#: src/LyXFunc.cpp:1790
 msgid "Welcome to LyX!"
 msgstr "Dobrodošli v LyXu!"
 
-#: src/LyXFunc.cpp:1810
+#: src/LyXFunc.cpp:1811
 msgid "Converting document to new document class..."
 msgstr "Spis se spreminja v nov razred spisa..."
 
@@ -18108,26 +18118,26 @@ msgstr "Vnovično ukroji|V"
 msgid "Quit %1"
 msgstr "O programu LyX"
 
-#: src/frontends/qt4/GuiApplication.cpp:803
+#: src/frontends/qt4/GuiApplication.cpp:795
 #, fuzzy
 msgid "Exiting."
 msgstr "Izhod|I"
 
-#: src/frontends/qt4/GuiApplication.cpp:870
+#: src/frontends/qt4/GuiApplication.cpp:862
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:886
+#: src/frontends/qt4/GuiApplication.cpp:878
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1235
+#: src/frontends/qt4/GuiApplication.cpp:1221
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Tiskaj na"
 
-#: src/frontends/qt4/GuiApplication.cpp:1245
+#: src/frontends/qt4/GuiApplication.cpp:1231
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -18135,18 +18145,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1249
-#: src/frontends/qt4/GuiApplication.cpp:1255
+#: src/frontends/qt4/GuiApplication.cpp:1235
+#: src/frontends/qt4/GuiApplication.cpp:1241
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1253
+#: src/frontends/qt4/GuiApplication.cpp:1239
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1410
+#: src/frontends/qt4/GuiApplication.cpp:1396
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Ni moč pognati z datoteko:"
@@ -20257,7 +20267,7 @@ msgstr "Spis"
 msgid "No Citation in Scope!"
 msgstr "Pojdi k naslednji napaki"
 
-#: src/frontends/qt4/Menus.cpp:1602
+#: src/frontends/qt4/Menus.cpp:1615
 #, fuzzy
 msgid "No action defined!"
 msgstr "Pojdi k naslednji napaki"
@@ -21356,17 +21366,17 @@ msgstr ""
 msgid "Standard[[mathref]]"
 msgstr ""
 
-#: src/mathed/MathMacroTemplate.cpp:488
+#: src/mathed/MathMacroTemplate.cpp:489
 #, fuzzy
 msgid "optional"
 msgstr "&Vodoravno:"
 
-#: src/mathed/MathMacroTemplate.cpp:531
+#: src/mathed/MathMacroTemplate.cpp:532
 #, fuzzy
 msgid "TeX"
 msgstr "LaTeX"
 
-#: src/mathed/MathMacroTemplate.cpp:1205
+#: src/mathed/MathMacroTemplate.cpp:1209
 #, fuzzy
 msgid "math macro"
 msgstr "ozadje matematike"

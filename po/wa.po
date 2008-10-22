@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-10-20 23:37+0200\n"
+"POT-Creation-Date: 2008-10-22 23:12+0200\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -41,7 +41,7 @@ msgstr "Droetes"
 #: src/frontends/qt4/ui/AboutUi.ui:131 src/frontends/qt4/ui/BibitemUi.ui:121
 #: src/frontends/qt4/ui/BoxUi.ui:260 src/frontends/qt4/ui/BranchUi.ui:41
 #: src/frontends/qt4/ui/DelimiterUi.ui:268
-#: src/frontends/qt4/ui/ErrorListUi.ui:62
+#: src/frontends/qt4/ui/ErrorListUi.ui:73
 #: src/frontends/qt4/ui/ExternalUi.ui:625 src/frontends/qt4/ui/FloatUi.ui:85
 #: src/frontends/qt4/ui/HSpaceUi.ui:214
 #: src/frontends/qt4/ui/HyperlinkUi.ui:150
@@ -992,6 +992,16 @@ msgstr "Ådvins"
 #, fuzzy
 msgid "O&pen"
 msgstr "Drovi"
+
+#: src/frontends/qt4/ui/ErrorListUi.ui:22
+#, fuzzy
+msgid "&Errors:"
+msgstr "Aroke"
+
+#: src/frontends/qt4/ui/ErrorListUi.ui:40
+#, fuzzy
+msgid "Description:"
+msgstr "Gåliotaedje"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:43
 #, fuzzy
@@ -6657,7 +6667,7 @@ msgstr "LaTeX "
 #: lib/layouts/g-brief-de.layout:35 lib/layouts/g-brief-en.layout:35
 #: lib/layouts/g-brief2.layout:58 lib/layouts/scrlettr.layout:112
 #: lib/layouts/scrlttr2.layout:143 lib/layouts/agu_stdtitle.inc:184
-#: src/mathed/MathMacroTemplate.cpp:481
+#: src/mathed/MathMacroTemplate.cpp:482
 #, fuzzy
 msgid "Name"
 msgstr "No:|#N"
@@ -9817,7 +9827,7 @@ msgid ""
 "Defines theorem environments and the proof environment using the extended "
 "AMS machinery. Both numbered and unnumbered types are provided. By default, "
 "the theorems are numbered consecutively throughout the document. This can be "
-"changed by loading one of the Theorems (Ordered By ...) modules."
+"changed by loading one of the Theorems (By ...) modules."
 msgstr ""
 
 #: lib/layouts/theorems-chap.module:2
@@ -15700,7 +15710,7 @@ msgid "Table (CSV)"
 msgstr "Tåvlea%t"
 
 #: lib/configure.py:335 src/frontends/qt4/GuiView.cpp:823
-#: src/frontends/qt4/GuiView.cpp:824 src/mathed/MathMacroTemplate.cpp:536
+#: src/frontends/qt4/GuiView.cpp:824 src/mathed/MathMacroTemplate.cpp:537
 #, fuzzy
 msgid "LyX"
 msgstr "Rexhe"
@@ -17118,7 +17128,7 @@ msgstr "Enondaedje di MakeIndex"
 msgid "Could not read configuration file"
 msgstr "Dji n' a nén parvinu a-z enonder ci fitchî ci:"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1411
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1397
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -17415,45 +17425,45 @@ msgstr "Rivni å doc. come il esteut li dierin côp k' il a stî schapé"
 msgid "&Revert"
 msgstr "Schaper"
 
-#: src/LyXFunc.cpp:1035 src/Text3.cpp:1492
+#: src/LyXFunc.cpp:1036 src/Text3.cpp:1492
 msgid "Missing argument"
 msgstr "I manke èn årgumint"
 
-#: src/LyXFunc.cpp:1044
+#: src/LyXFunc.cpp:1045
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Drovi li fitchî d' aidance"
 
-#: src/LyXFunc.cpp:1291
+#: src/LyXFunc.cpp:1292
 #, fuzzy, c-format
 msgid "Opening child document %1$s..."
 msgstr "Dji drove li documint"
 
-#: src/LyXFunc.cpp:1450
+#: src/LyXFunc.cpp:1451
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/LyXFunc.cpp:1453
+#: src/LyXFunc.cpp:1454
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Ké papî"
 
-#: src/LyXFunc.cpp:1750
+#: src/LyXFunc.cpp:1751
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "I gn a nou documint di drovu!%t"
 
-#: src/LyXFunc.cpp:1752
+#: src/LyXFunc.cpp:1753
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "Dji n' sai drovi li documint"
 
-#: src/LyXFunc.cpp:1789
+#: src/LyXFunc.cpp:1790
 msgid "Welcome to LyX!"
 msgstr "Wilicome dins LyX !"
 
-#: src/LyXFunc.cpp:1810
+#: src/LyXFunc.cpp:1811
 msgid "Converting document to new document class..."
 msgstr "Dji ratoûne li documint dins si novele classe..."
 
@@ -18447,26 +18457,26 @@ msgstr "Rapontyî"
 msgid "Quit %1"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:803
+#: src/frontends/qt4/GuiApplication.cpp:795
 #, fuzzy
 msgid "Exiting."
 msgstr "Moussî foû"
 
-#: src/frontends/qt4/GuiApplication.cpp:870
+#: src/frontends/qt4/GuiApplication.cpp:862
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:886
+#: src/frontends/qt4/GuiApplication.cpp:878
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1235
+#: src/frontends/qt4/GuiApplication.cpp:1221
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Rexhe so"
 
-#: src/frontends/qt4/GuiApplication.cpp:1245
+#: src/frontends/qt4/GuiApplication.cpp:1231
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -18474,18 +18484,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1249
-#: src/frontends/qt4/GuiApplication.cpp:1255
+#: src/frontends/qt4/GuiApplication.cpp:1235
+#: src/frontends/qt4/GuiApplication.cpp:1241
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1253
+#: src/frontends/qt4/GuiApplication.cpp:1239
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1410
+#: src/frontends/qt4/GuiApplication.cpp:1396
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Dji n' a nén parvinu a-z enonder ci fitchî ci:"
@@ -20639,7 +20649,7 @@ msgstr "Documint"
 msgid "No Citation in Scope!"
 msgstr "Potchî a l' aroke shûvante"
 
-#: src/frontends/qt4/Menus.cpp:1602
+#: src/frontends/qt4/Menus.cpp:1615
 #, fuzzy
 msgid "No action defined!"
 msgstr "Potchî a l' aroke shûvante"
@@ -21745,17 +21755,17 @@ msgstr ""
 msgid "Standard[[mathref]]"
 msgstr ""
 
-#: src/mathed/MathMacroTemplate.cpp:488
+#: src/mathed/MathMacroTemplate.cpp:489
 #, fuzzy
 msgid "optional"
 msgstr "Aroymint di coûtchî|#c"
 
-#: src/mathed/MathMacroTemplate.cpp:531
+#: src/mathed/MathMacroTemplate.cpp:532
 #, fuzzy
 msgid "TeX"
 msgstr "LaTeX|#L"
 
-#: src/mathed/MathMacroTemplate.cpp:1205
+#: src/mathed/MathMacroTemplate.cpp:1209
 #, fuzzy
 msgid "math macro"
 msgstr "Sititchî ene etikete"
