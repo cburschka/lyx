@@ -13,7 +13,6 @@ dist_doc_DATA = \
 	DummyDocument2.lyx \
 	EmbeddedObjects.lyx \
 	Extended.lyx \
-	FAQ.lyx \
 	Formula-numbering.lyx \
 	Intro.lyx \
 	LaTeXConfig.lyx \
@@ -79,7 +78,6 @@ dist_dedoc_DATA = \
 	de/DummyTextDocument.txt \
 	de/EmbeddedObjects.lyx \
 	de/Extended.lyx \
-	de/FAQ.lyx \
 	de/Formelnummerierung.lyx \
 	de/Intro.lyx \
 	de/Math.lyx \
@@ -108,7 +106,6 @@ dist_esdoc_DATA = \
 	es/DocumentoTextoPostizo.txt \
 	es/EmbeddedObjects.lyx \
 	es/Extended.lyx \
-	es/FAQ.lyx \
 	es/Formula-numbering.lyx \
 	es/Intro.lyx \
 	es/Math.lyx \
@@ -136,7 +133,6 @@ eudocdir = $(docdir)/eu
 dist_eudoc_DATA = \
 	eu/Customization.lyx \
 	eu/Extended.lyx \
-	eu/FAQ.lyx \
 	eu/Intro.lyx \
 	eu/Tutorial.lyx \
 	eu/UserGuide.lyx
@@ -149,7 +145,6 @@ dist_frdoc_DATA = \
 	fr/DocumentTexteBidon.txt \
 	fr/EmbeddedObjects.lyx \
 	fr/Extended.lyx \
-	fr/FAQ.lyx \
 	fr/Formula-numbering.lyx \
 	fr/Intro.lyx \
 	fr/Math.lyx \
@@ -196,7 +191,6 @@ dist_itclipartdoc_DATA = \
 
 jadocdir = $(docdir)/ja
 dist_jadoc_DATA = \
-	ja/FAQ.lyx \
 	ja/Intro.lyx \
 	ja/LaTeXConfig.lyx \
 	ja/Shortcuts.lyx \
@@ -237,7 +231,6 @@ dist_rodoc_DATA = \
 
 rudocdir = $(docdir)/ru
 dist_rudoc_DATA = \
-	ru/FAQ.lyx \
 	ru/Intro.lyx \
 	ru/Tutorial.lyx
 
