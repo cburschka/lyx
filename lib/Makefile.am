@@ -230,7 +230,9 @@ dist_examples_DATA = \
 	examples/serial_letter2.lyx \
 	examples/serial_letter3.lyx \
 	examples/simplecv.lyx \
-	examples/splash.lyx
+	examples/splash.lyx \
+	examples/xyfigure.png \
+	examples/xypic.lyx
 
 fontsdir = $(pkgdatadir)/fonts
 dist_fonts_DATA = \
