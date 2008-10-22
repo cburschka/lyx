@@ -593,15 +593,7 @@ public:
 
 struct GuiApplication::Private
 {
-	Private()
-		: language_model_(0), global_menubar_(0)
-	{
-#ifdef Q_WS_MACX
-		// Create the global default menubar which is shown for the dialogs
-		// and if no GuiView is visible.
-		global_menubar_ = new GlobalMenuBar();
-#endif
-	}
+	Private(): language_model_(0), global_menubar_(0) {}
 
 	///
 	QSortFilterProxyModel * language_model_;
@@ -1090,10 +1082,13 @@ void GuiApplication::execBatchCommands()
 		// Gives some error box here.
 		return;
 
-	// init the global menubar on Mac. This must be done after the session
-	// was recovered to know the "last files".
-	if (d->global_menubar_)
-		d->menus_.fillMenuBar(d->global_menubar_, 0, true);
+#ifdef Q_WS_MACX
+	// Create the global default menubar which is shown for the dialogs
+	// and if no GuiView is visible.
+	// This must be done after the session was recovered to know the "last files".
+	d->global_menubar_ = new GlobalMenuBar();
+	d->menus_.fillMenuBar(d->global_menubar_, 0, true);
+#endif
 
 	lyx::execBatchCommands();
 }
