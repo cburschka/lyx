@@ -1504,6 +1504,14 @@ contributers = [
                  "14 October 2008",
                  u"Unicode and layout file fixes"),
 
+     contributer(u"Peter Gumm",
+                 "gumm () mathematik ! uni-marburg ! de",
+                 "GPL",
+                 "copyleft",
+                 "m=122469079629276",
+                 "22 October 2008",
+                 u"Re: xy-pic manual"),
+
      contributer(u"Xiaokun Zhu",
                  "xiaokun () aero ! gla ! ac ! uk",
                  "",
