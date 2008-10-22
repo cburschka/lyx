@@ -1,0 +1,97 @@
+#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
+\lyxformat 335
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage[all]{xy}
+\end_preamble
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Editing 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-Pic figures in LyX
+\end_layout
+
+\begin_layout Standard
+Below you see an 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-Pic diagram inside LyX being edited and to the right you see how the diagram
+ appears as soon as the cursor leaves the editing area.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \xymatrix{A\ar [d]\ar [r]  &  B\ar [d]\ar @{-->}[dl] \\
+C\ar @{_{(}->}[r]  &  D\ar @/{}_{1pc}/[u]}
+
+
+\end_inset
+
+ 
+\begin_inset Formula $\xymatrix{\, & \, & \mbox{}A\ar [r]\ar [d] & B\ar [d]\ar @{-->}[dl]\\
+\, &  & C\ar @{_{(}->}[r] & D\ar @/_{1pc}/[u]}
+$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,3273 @@
+#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
+\lyxformat 335
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage[all]{xy}
+
+
+\makeatletter
+\newcommand{\xyR}[1]{
+  \makeatletter
+  \xydef@\xymatrixrowsep@{#1}
+  \makeatother
+}
+\makeatletter
+\newcommand{\xyC}[1]{
+  \makeatletter
+  \xydef@\xymatrixcolsep@{#1}
+  \makeatother
+}
+
+\newdir{|>}{!/4.5pt/@{|}*:(1,-.2)@^{>}*:(1,+.2)@_{>}}
+\end_preamble
+\language english
+\inputencoding auto
+\font_roman ae
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Using 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-pic in LyX
+\end_layout
+
+\begin_layout Author
+H.
+ Peter Gumm
+\end_layout
+
+\begin_layout Abstract
+With the recent versions of LyX and with the 
+\family typewriter
+preview
+\family default
+-style installed in the LaTeX-System, the graph drawing package 
+\family typewriter
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+
+\family default
+-Pic can be conveniently used inside LyX.
+ Diagrams can be edited and displayed inside the main LyX editing window.
+ Here, we shall describe how to use the 
+\family typewriter
+
+\backslash
+xymatrix
+\family default
+ command from 
+\family typewriter
+xypic
+\family default
+ inside LyX in order to draw, to edit and to preview diagrams as typically
+ used in category theory, algebra, and related fields.
+ 
+\end_layout
+
+\begin_layout Abstract
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction 
+\end_layout
+
+\begin_layout Standard
+The 
+\family typewriter
+xypic
+\family default
+-package has long served as a convenient tool for easily constructing graphs
+ and diagrams in LaTeX.
+ Unfortunately, its use in LyX had long been restricted to the infamous
+ ERT-boxes, meaning that the LyX editor could only display the LaTeX-source
+ and not the finished diagram.
+ The new 
+\family typewriter
+preview
+\family default
+-style of LaTeX which is part of the AUCTeX project
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AUCTeX"
+
+\end_inset
+
+, finally enables the editing and displaying of 
+\family typewriter
+xypic
+\family default
+-diagrams, constructed, displayed and interactively edited inside LyX.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename xyfigure.png
+	scale 50
+	BoundingBox 0bp 0bp 580bp 440bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this note, we describe how 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-pic can be used from inside LyX, how diagrams can be created and edited.
+ We have tested the following using LyX versions 1.3.7 up to 1.6, running under
+ WindowsXP and under Windows Vista.
+ 
+\end_layout
+
+\begin_layout Standard
+There are two modes of operations: For a start, and for some first tests,
+ it may be easiest to first enter the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-Pic code inside the LyX-window, select it all and convert it to a graphical
+ representation by pressing 
+\family sans
+Ctrl-m
+\family default
+ or 
+\family sans
+Ctrl-M
+\family default
+.
+ If you use 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-Pic more frequently, or if you want to modify your initial figure, you
+ will want to assemble and modify your figures using LyX's math editor.
+ 
+\end_layout
+
+\begin_layout Standard
+Once the cursor is moved over a diagram, this is displayed as an array of
+ nodes and arrow-commands.
+ These can be changed interactively.
+ When the cursor leaves the editing area, the diagram reappears.
+ 
+\end_layout
+
+\begin_layout Standard
+In the first two sections of this documentation, we explain how to use LyX
+ in the first mentioned mode and we introduce all 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-Pic features that might be of use for drawing commutative diagrams, graphs
+ or automata.
+ Section 3 explains how to use the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-Pic commands inside a math-editing area.
+ 
+\end_layout
+
+\begin_layout Standard
+It is not our intention to write another introduction to 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-Pic, rather our motivation is to give an introduction how the most important
+ commands work inside LyX, since the keystrokes as explained in the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-Pic manual
+\begin_inset CommandInset citation
+LatexCommand cite
+key "xypic manual"
+
+\end_inset
+
+ will not always function correctly inside LyX.
+ 
+\end_layout
+
+\begin_layout Section
+Preparation
+\end_layout
+
+\begin_layout Standard
+The following requires that the LaTeX-packages 
+\family typewriter
+xypic
+\family default
+ and 
+\family typewriter
+preview
+\family default
+ are installed in the LaTeX system.
+ They are available from CTAN, see at 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "instant-preview"
+
+\end_inset
+
+, resp.
+ at 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "xypic"
+
+\end_inset
+
+.
+ After freshly installing them, it may be necessary, to run 
+\family sans
+Edit\SpecialChar \menuseparator
+Reconfigure
+\family default
+ from the main LyX menu.
+ The steps to a first diagram output in LyX are then:
+\end_layout
+
+\begin_layout Enumerate
+Activate and test 
+\family typewriter
+preview
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Open LyX, choose 
+\family sans
+Edit\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Look and Feel\SpecialChar \menuseparator
+Graphics
+\family default
+ and place a check-mark at 
+\emph on
+Instant Preview
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Test, if 
+\family typewriter
+instant-preview
+\family default
+ works by opening a LyX-document and entering any math-formula, e.g.
+ 
+\begin_inset Formula $a+b=c$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Move the cursor out of the formula, and watch it change its appearance to
+ look just like in the finished dvi- or postscript document.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Activate and test 
+\family typewriter
+xypic
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Choose 
+\family sans
+Layout\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
+Preamble
+\family default
+ and type 
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+usepackage[all]{xy}.
+\end_layout
+
+\begin_layout Enumerate
+Inside your LyX-Document, enter the text 
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+xymatrix{A 
+\backslash
+ar[r] & B}
+\family default
+ .
+\end_layout
+
+\begin_layout Enumerate
+Select the whole text and choose 
+\family sans
+Insert\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Display Formula
+\family default
+, or use the corresponding keyboard shortcut 
+\family sans
+Ctrl-M
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Move the mouse cursor out of the editing box and wait for a split second
+ to see an arrow appear: 
+\begin_inset Formula $\xymatrix{A\ar [r] & B}
+$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Commutative diagrams
+\end_layout
+
+\begin_layout Standard
+The following diagram, which is taken from the documentation of 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-Pic
+\begin_inset CommandInset citation
+LatexCommand cite
+key "xypic manual"
+
+\end_inset
+
+ by its creator Kristoffer H.
+ Rose, will provide an example for many of the features available with that
+ package.
+ Its source code is: 
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+xymatrix{
+\begin_inset Newline newline
+\end_inset
+
+  U     
+\backslash
+ar@/_{1pc}/[ddr]_
+\backslash
+psi
+\backslash
+ar@/^{1pc}/[drr]^
+\backslash
+varphi
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+ar@{.>}[dr]|-{(x,y)}
+\backslash
+
+\backslash
+
+\begin_inset Newline newline
+\end_inset
+
+    & X 
+\backslash
+times_Z Y 
+\backslash
+ar[d]^q 
+\backslash
+ar[r]_p  &  X 
+\backslash
+ar[d]_f
+\backslash
+
+\backslash
+
+\begin_inset Newline newline
+\end_inset
+
+    & Y 
+\backslash
+ar[r]^g                      &  Z }
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+Again, to turn this code into a graphical output, select it all at once
+ starting from the 
+\family typewriter
+
+\backslash
+xymatrix{
+\family default
+ \SpecialChar \ldots{}
+ up to the closing brace \SpecialChar \ldots{}
+ 
+\family typewriter
+}
+\family default
+ and turn it into display-math as explained above.
+ A moment after the cursor leaves the math-area, you should see the diagram
+ in its full graphical glory as shown below.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\xymatrix{U\ar @/_{1pc}/[ddr]_{\psi}\ar @/{}^{1pc}/[drr]^{\varphi}\ar @{.>}[dr]|-{(x,y)}\\
+ & X\times_{Z}Y\ar [d]^{q}\ar [r]_{p} & X\ar [d]_{f}\\
+ & Y\ar [r]^{g} & Z}
+$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+The matrix layout of diagrams
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+xymatrix
+\family default
+ uses a matrix to define the layout of the vertices of a diagram.
+ For the above example, we need a 
+\begin_inset Formula $3\times3$
+\end_inset
+
+-matrix of which 5 entries are used for the vertices 
+\begin_inset Formula $U$
+\end_inset
+
+, 
+\begin_inset Formula $X\times_{Z}Y$
+\end_inset
+
+, 
+\begin_inset Formula $X$
+\end_inset
+
+, 
+\begin_inset Formula $Y$
+\end_inset
+
+, 
+\begin_inset Formula $Z$
+\end_inset
+
+, the other positions remaining empty.
+ In this case, the following matrix determines the layout:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+xymatrix{
+\begin_inset Newline newline
+\end_inset
+
+    U                       
+\backslash
+
+\backslash
+ 
+\begin_inset Newline newline
+\end_inset
+
+       & X
+\backslash
+times_Z Y   & X  
+\backslash
+
+\backslash
+ 
+\begin_inset Newline newline
+\end_inset
+
+       & Y             & Z    } 
+\end_layout
+
+\begin_layout Standard
+The pattern should be familiar from LaTeX: We see three rows, the first
+ two being terminated by the end-of-line-marker 
+\family typewriter
+
+\backslash
+
+\backslash
+
+\family default
+ .
+ Each line consists of entries, separated by the ampersand 
+\family typewriter
+&
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Arrows
+\end_layout
+
+\begin_layout Standard
+Having entered the vertices, we add arrows between them.
+ The basic 
+\family typewriter
+xypic
+\family default
+-command to produce an arrow is 
+\family typewriter
+
+\backslash
+ar
+\family default
+ , it is entered into the cell of the matrix where the arrow is to start.
+ The target of the arrow is defined by direction commands 
+\family typewriter
+u
+\family default
+ (up) 
+\family typewriter
+d
+\family default
+ (down) 
+\family typewriter
+l
+\family default
+ (left), or 
+\family typewriter
+r
+\family default
+ (right).
+ These can be combined to a path and enclosed in square brackets.
+ As an example, the arrows from the vertex 
+\begin_inset Formula $U$
+\end_inset
+
+ in the upper left corner down and right to the vertices 
+\begin_inset Formula $X\times_{Z}Y$
+\end_inset
+
+, 
+\begin_inset Formula $Y$
+\end_inset
+
+, and 
+\begin_inset Formula $X$
+\end_inset
+
+ are, respectively, defined as 
+\family typewriter
+
+\backslash
+ar[dr]
+\family default
+, 
+\family typewriter
+
+\backslash
+ar[ddr]
+\family default
+ and 
+\family typewriter
+
+\backslash
+ar[drr]
+\family default
+.
+ Thus the above diagram with all arrows added becomes:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+xymatrix{
+\begin_inset Newline newline
+\end_inset
+
+    U 
+\backslash
+ar[ddr] 
+\backslash
+ar[drr] 
+\backslash
+ar[dr]
+\backslash
+
+\backslash
+
+\begin_inset Newline newline
+\end_inset
+
+    & X 
+\backslash
+times_Z Y 
+\backslash
+ar[d] 
+\backslash
+ar[r]& X 
+\backslash
+ar[d]
+\backslash
+
+\backslash
+
+\begin_inset Newline newline
+\end_inset
+
+    & Y 
+\backslash
+ar[r] & Z }
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \xymatrix{ U \ar [ddr] \ar [drr] \ar [dr]\\
+ &  X \times_{Z} Y \ar [d] \ar [r]  &  X \ar [d]\\
+ &  Y \ar [r]  &  Z }
+
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Subsection
+Labels
+\end_layout
+
+\begin_layout Standard
+Labels are attached to arrows by affixing them as upper or lower indices
+ to the 
+\family typewriter
+
+\backslash
+ar
+\family default
+-command.
+ Thus, 
+\family typewriter
+
+\backslash
+ar[drr]^
+\backslash
+varphi
+\family default
+ defines an arrow going one cell down, two to the right and having the label
+ 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ attached above.
+ To attach a label below the arrow, make it a lower index as in 
+\family typewriter
+
+\backslash
+ar[ddr]_
+\backslash
+psi
+\family default
+.
+ This explanation is correct only for arrows pointing to the right.
+ More precisely, imagine looking along the arrow in the direction it is
+ pointing.
+ Then an upper index places a label to the left and a lower index places
+ it to the right.
+ Consequently, an arrow pointing from right to left, such as 
+\family typewriter
+
+\backslash
+ar[l]^
+\backslash
+alpha_
+\backslash
+beta
+\family default
+ will have label 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ below and label 
+\begin_inset Formula $\beta$
+\end_inset
+
+ above the arrow, i.e.
+\begin_inset Formula $\xymatrix{\  & \ \ar [l]_{\beta}^{\alpha}.}
+$
+\end_inset
+
+Using the character | instead of ^ or _ , it is even possible to place the
+ label right onto the arrow, obscuring part of its shaft.
+ 
+\end_layout
+
+\begin_layout Standard
+Normally, a label is placed halfway between an arrow's start and target
+ objects.
+ In the first diagram, the central arrow starting in 
+\begin_inset Formula $U$
+\end_inset
+
+ has the label 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ in the middle of the arrow's shaft, rather than in the middle between the
+ two objects it connects.
+ This is achieved by prefixing the label with a minus sign, here: 
+\family typewriter
+
+\backslash
+ar[dr]|-{(x,y)}
+\family default
+.
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+xymatrix{
+\begin_inset Newline newline
+\end_inset
+
+    U 
+\backslash
+ar[ddr]_
+\backslash
+psi 
+\backslash
+ar[drr]^
+\backslash
+varphi
+\backslash
+ar[dr]|-{(x,y)}
+\backslash
+
+\backslash
+
+\begin_inset Newline newline
+\end_inset
+
+    & X 
+\backslash
+times_Z Y 
+\backslash
+ar[d]^q 
+\backslash
+ar[r]_p& X 
+\backslash
+ar[d]_f
+\backslash
+
+\backslash
+
+\begin_inset Newline newline
+\end_inset
+
+    & Y 
+\backslash
+ar[r]^g & Z }
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Formula \xymatrix{ U \ar [ddr]_{\psi}\ar [drr]^{\varphi}\ar [dr]|-{(x,y)}\\
+ &  X \times_{Z} Y \ar [d]^{q} \ar [r]_{p}  &  X \ar [d]_{f}\\
+ &  Y \ar [r]^{g}  &  Z }
+
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-pic normally permits labels to be shifted towards the tip or towards the
+ start of an arrow by prefixing the label with a ratio, such as e.g.
+ 
+\family typewriter
+(.3)
+\family default
+.
+ In LyX this works only for labels which are placed on top of the arrow,
+ such as 
+\family typewriter
+
+\backslash
+ar[r]|(0.3){
+\backslash
+phi}
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+For labels placed to the left or to the right of the arrow this does not
+ work.
+ The corresponding 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-pic code such as e.g.
+ 
+\family typewriter
+
+\backslash
+ar[r]^(.3)
+\backslash
+phi
+\family default
+ or 
+\family typewriter
+
+\backslash
+ar[r]_(.3)
+\backslash
+psi
+\family default
+ is not correctly interpreted by LyX's math editor.
+ Two workarounds are suggested in the last section of this note.
+\end_layout
+
+\begin_layout Subsection
+Arrow modification 
+\end_layout
+
+\begin_layout Standard
+Modification of the design, the form or the positioning of arrows are introduced
+ by the 
+\family typewriter
+@
+\family default
+-character.
+ This is followed by a pair of matching brackets, where the form of the
+ bracket pair, 
+\family typewriter
+{ }
+\family default
+ or 
+\family typewriter
+< >
+\family default
+ or 
+\family typewriter
+/ /
+\family default
+ indicates, whether we want to modify the design, the or the curvature of
+ the arrow.
+ Various modifactions can be applied to an arrow at the same time.
+\end_layout
+
+\begin_layout Subsubsection
+Arrow design 
+\end_layout
+
+\begin_layout Standard
+Various designs such as 
+\emph on
+solid
+\emph default
+, 
+\emph on
+dotted
+\emph default
+, 
+\emph on
+dashed
+\emph default
+ or 
+\emph on
+double
+\emph default
+ are possible for the shaft of an arrow.
+ These can be combined with various ends and various tips.
+ In general, the design of an arrow is described by following the command
+ 
+\family typewriter
+
+\backslash
+ar
+\family default
+ immediately by an 
+\family typewriter
+@
+\family default
+-sign and a pair of braces {\SpecialChar \ldots{}
+} containing characters describing the end,
+ the shaft and the tip of the arrow.
+ These characters are chosen to give some form of ASCII-rendering of the
+ real thing.
+ For instance 
+\family typewriter
+
+\backslash
+ar@{>..>>}
+\family default
+ produces an arrow with split end, a dotted shaft and double head.
+ A number of other arrow designs is given in the table below.
+ Note that the ends of embedding arrows 
+\begin_inset Formula $\xymatrix{A\ar @{^{(}->}[r] & B}
+$
+\end_inset
+
+ are described by raising or lowering opening parentheses, such as in 
+\family typewriter
+
+\backslash
+ar@{^(->}[r].
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="2">
+<features islongtable="true">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Result
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Source code in LyX
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar [r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar @{-->}[r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar@{-->}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar @{..>}[r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar@{..>}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar @{~>}[r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar@{~>}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar @{->>}[r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar@{->>}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar @{-->>}[r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar@{-->>}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar @{>->>}[r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar@{>->>}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar @{_{(}->}[r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar@{_(->}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar @{^{(}->}[r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar@{^(->}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar @{|-|}[r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar@{|-|}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ Following the @-character by either a 2, 3, _,or a ^, we can produce arrows
+ with double, triple shaft or arrows showing only the lower or upper half
+ of their tips and ends.
+ Arrows need not have tips nor ends, as the last example shows :
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features islongtable="true">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Result
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Source code for LyX
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar @2[r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar@2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar @3[r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar@3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar @_{->}[r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar@_{->}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar @^{->}[r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar@^{->}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar @^{>>->>}[r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar@^{>>->>}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar @{^{<}-_{>}}[r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar@{^<-_>}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula \xymatrix{\ \ar @2{--}[r]  &  \ }
+
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+ar@2{--}
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Designing your own arrows
+\end_layout
+
+\begin_layout Standard
+Within certain limits there is even a way to design your own arrows.
+ Using some the characters 
+\family typewriter
+><|ox+/()[
+\family default
+ one can even design one's own arrow tips using the 
+\family typewriter
+
+\backslash
+newdir
+\family default
+ command in the preample.
+ For explanations, we refer to the 
+\family typewriter
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+
+\family default
+-manual, from which we take the example: 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+newdir{|>}{!/4.5pt/@{|}*:(1,-.2)@^{>}*:(1,+.2)@_{>}}
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent 
+\end_layout
+
+\end_inset
+
+This defines a new arrow tip, referred to as 
+\family typewriter
+|>
+\family default
+ in 
+\family typewriter
+
+\backslash
+ar@{-|>}[r]
+\family default
+ and which displays correctly in LyX as:
+\begin_inset Formula \[
+\xymatrix{A\ar @{-|>}[r] & \ \  B}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Arrow positioning
+\end_layout
+
+\begin_layout Standard
+Arrows are shifted sideways with the modifier 
+\family typewriter
+@<
+\family default
+
+\begin_inset Formula $\ldots$
+\end_inset
+
+ 
+\family typewriter
+>
+\family default
+ where the ellipsis is replaced by a positive or negative measure.
+ For instance, to design a pair of mutually opposing arrows between two
+ nodes, we shift them to see them apart.
+ Note that the direction of the shift (positive) is to the left if one looks
+ along the arrow.
+ Thus
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+xymatrix{
+\backslash
+circ 
+\backslash
+ar@<1ex>[r]& 
+\backslash
+circ 
+\backslash
+ar@<1ex>[l]}
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ produces
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula \[
+\xymatrix{\circ\ar @<1ex>[r] & \circ\ar @<1ex>[l]}
+\]
+ 
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Inline or centered diagrams
+\end_layout
+
+\begin_layout Standard
+Arrows and diagrams can be used inline, such as this one: 
+\begin_inset Formula $\xymatrix{\circ\ar @<1ex>[r] & \circ\ar @<1ex>[l]}
+$
+\end_inset
+
+.
+ When their code is written inside LyX as above, select it and choose either
+ 
+\family sans
+Ctrl-m
+\family default
+ for inline appearence or 
+\family sans
+Ctrl-M
+\family default
+ for displaystyle.
+ Diagrams constructed inline can later be centered, or, conversely, centered
+ diagrams can be changed to inline formulas with 
+\family sans
+Edit\SpecialChar \menuseparator
+Math
+\family default
+ 
+\family sans
+\SpecialChar \menuseparator
+Alignment.
+\end_layout
+
+\begin_layout Subsection
+Bending arrows 
+\end_layout
+
+\begin_layout Standard
+There are two simple methods to make arrows bend.
+ The first is giving an explicit value by which the midpoint of the arrow's
+ shaft is raised or depressed, the other is by forcing the arrow to leave
+ its origin in a prescribed compass direction and to make him enter the
+ target at another direction.
+ The necessary bending of the arrow is determined automatically.
+ We describe both methods.
+\end_layout
+
+\begin_layout Subsubsection
+Raising the shaft
+\end_layout
+
+\begin_layout Standard
+For bending arrows we use the modifier @/
+\begin_inset Formula $\ldots$
+\end_inset
+
+/ .
+ The ellipsis stands for a TeX-measure which needs to be entered as a lower
+ or upper index.
+ Whereas in 
+\family typewriter
+xypic
+\family default
+, we could simply write, e.g.
+ 
+\family typewriter
+
+\backslash
+ar@/_1pc/
+\family default
+ for an arrow bending 
+\family typewriter
+1pc
+\family default
+ downwards, this cannot directly be done in LyX.
+ It is necessary, to enclose the measure in a pair of braces, such as e.g.
+ 
+\family typewriter
+
+\backslash
+ar@/_{1pc}/
+\family default
+.
+ As an example, here are two opposing arrows between 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+, each bending by .5 pica, given by the following source code: 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+xymatrix{A 
+\backslash
+ar@/_{.5pc}/[r] & B 
+\backslash
+ar@/_{.5pc}/[l]}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\xymatrix{A\ar @/{}_{.5pc}/[r] & B\ar @/{}_{.5pc}/[l]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Specifying exit- and entrance directions.
+ 
+\end_layout
+
+\begin_layout Standard
+An alternative for making arrows bend is by specifying their compass direction
+ as they are leaving their source and their direction from which they enter
+ their target.
+ Instead of north, north-east, east, etc., the directions are named 
+\family typewriter
+u
+\family default
+, 
+\family typewriter
+ur
+\family default
+, 
+\family typewriter
+r
+\family default
+, 
+\family typewriter
+dr
+\family default
+, 
+\family typewriter
+d
+\family default
+, 
+\family typewriter
+dl
+\family default
+, 
+\family typewriter
+l
+\family default
+, 
+\family typewriter
+ul
+\family default
+, standing for up, up-right, right, down-right, etc..
+ A direction is specified as @(
+\emph on
+out
+\emph default
+,
+\emph on
+in
+\emph default
+) where 
+\emph on
+out
+\emph default
+ stands for the direction the first object is left and 
+\emph on
+in
+\emph default
+ stands for the direction from which the target is entered.
+ As an example, we show some bending arrows and a loop, which arises when
+ we do not specify a target for an arrow, just its incoming and outgoing
+ direction:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\xymatrix{A\ar @(dr,dl)[r]\ar @(dr,dl)[rr] & B\ar @(d,r)[dl] & C\\
+E\ar @(ul,ur)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+xymatrix{A 
+\backslash
+ar@(dr,dl)[r]
+\backslash
+ar@(dr,dl)[rr] 
+\begin_inset Newline newline
+\end_inset
+
+                    &B
+\backslash
+ar@(d,r)[dl]  &C 
+\backslash
+
+\backslash
+ 
+\begin_inset Newline newline
+\end_inset
+
+            E 
+\backslash
+ar@(ul,ur)}
+\end_layout
+
+\begin_layout Subsection
+Modifying vertices
+\end_layout
+
+\begin_layout Standard
+The above example is reminiscent of an automata diagram, except that in
+ such a diagram states would be enclosed in small circles, with double circles
+ denoting final states.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Framing objects 
+\end_layout
+
+\begin_layout Standard
+With 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-Pic, entries can obtain a single or a double frame, such as 
+\begin_inset Formula $\xymatrix{*+[F]{A}}
+$
+\end_inset
+
+ or 
+\begin_inset Formula $\xymatrix{*+[F=]{B}}
+$
+\end_inset
+
+ by prefixing an entry with 
+\family typewriter
+*[F-]
+\family default
+ or 
+\family typewriter
+*[F=]
+\family default
+ and enclosing the portion of the entry to be framed in braces.
+ Normally, the frame will be very tight so that it must be widened by prefixing
+ with 
+\family typewriter
++
+\family default
+ or with 
+\family typewriter
+++
+\family default
+.
+ Round frames, such as 
+\begin_inset Formula $\xymatrix{*++[o][F]{A}}
+$
+\end_inset
+
+ and 
+\begin_inset Formula $\xymatrix{*++[o][F=]{B}}
+$
+\end_inset
+
+ are obtained by specifying the shape as 
+\family typewriter
+[o].
+
+\family default
+ So the latter figure was constructed as *++[o][F=]{B}.
+ This way, the following automaton 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\xymatrix{\txt {start}\ar [r] & *++[o][F]{1}\ar [r] & *++[o][F=]{2}\ar @(ur,dr)\ar @(ur,ul)[l]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ can be typeset as
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+xymatrix{
+\backslash
+txt{start}
+\backslash
+ar[r]
+\end_layout
+
+\begin_layout LyX-Code
+            & *++[o][F]{1}
+\backslash
+ar[r]
+\end_layout
+
+\begin_layout LyX-Code
+            & *++[o][F=]{2}
+\backslash
+ar@(ur,dr)
+\backslash
+ar@(ur,ul)[l]
+\end_layout
+
+\begin_layout LyX-Code
+           }.
+\end_layout
+
+\begin_layout Standard
+The LaTeX command 
+\family typewriter
+
+\backslash
+entrymodifiers={
+\family default
+\SpecialChar \ldots{}
+
+\family typewriter
+}
+\family default
+ will make a certain entry style the default, that can, of course be overridden
+ for individual entries.
+ Thus, after 
+\family typewriter
+
+\backslash
+entrymodifiers={++[o][F-]}
+\family default
+, all following entries inside 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-matrices would be encircled.
+\end_layout
+
+\begin_layout Subsubsection
+Framing rectangles
+\end_layout
+
+\begin_layout Standard
+Framing a whole rectangle inside an xymatrix is done with the macro pair
+ 
+\family typewriter
+
+\backslash
+save ...
+ 
+\backslash
+restore
+\family default
+.
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+The dimension of the rectangle is given as a dotted pair 
+\begin_inset Formula $P_{0}.P_{1}$
+\end_inset
+
+ of points denoting the top left and lower right corners of the rectangle.
+ Each point, in turn,is given as a doubly quoted comma separated pair 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $x,y$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ specifying row 
+\begin_inset Formula $x$
+\end_inset
+
+ and column 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ These are followed by the framing commands, to produce figures such as
+ the following: 
+\begin_inset Formula \[
+\xymatrix{A & B\ar @(d,r)[dl]\sp (0.2)\phi\sp (0.7)\psi\save "1,1"."2,1"*+[F=]\frm {}\restore \,\\
+C & \save "1,1"."1,2"*++[F]\frm {}\restore }
+\]
+
+\end_inset
+
+ Here, the code 
+\family typewriter
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\backslash
+save"1,1"."2,1"*+[F=]
+\backslash
+frm{}
+\backslash
+restore
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ produces the doubly framed rectangle, and the code for the extra wide horizonta
+l rectangle is 
+\family typewriter
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\backslash
+save"1,1"."1,2"*++[F]
+\backslash
+frm{}
+\backslash
+restore
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+.
+ This code can be placed in arbitrary cells of the xymatrix.
+ 
+\end_layout
+
+\begin_layout Section
+Using LyX's math editor
+\end_layout
+
+\begin_layout Standard
+As an alternative to writing the 
+\family typewriter
+xypic
+\family default
+ code, then transforming it into a math-editing environment by marking it
+ and applying 
+\family sans
+Ctrl-m
+\family default
+, or 
+\family sans
+Ctrl-M
+\family default
+, one may construct and modify the whole xypic-diagram inside LyX's math
+ editor.
+ We describe the editing steps for a figure just like the one above.
+ 
+\end_layout
+
+\begin_layout Subsection
+Caveat - how to enter braces
+\end_layout
+
+\begin_layout Standard
+Recall that in LyX's math-editor any pair of braces 
+\family typewriter
+{
+\family default
+ and 
+\family typewriter
+}
+\family default
+ that are to enclose a macro-parameter must be entered by typing just 
+\family typewriter
+
+\backslash
+{
+\family default
+ .
+ The closing brace is automatically supplied and in between a box into which
+ to the parameter is entered.
+ In connection with 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-diagrams, this applies in particular to arrow modifications that are normally
+ given in the form 
+\family typewriter
+@{
+\family default
+ \SpecialChar \ldots{}
+ 
+\family typewriter
+}
+\family default
+ with the ellipsis standing for the description of end, shaft and tip of
+ the arrow.
+ Inside the math-editor, enter just 
+\family typewriter
+@
+\backslash
+{
+\family default
+ and let LyX provide the closing brace and the box into which to enter the
+ description of the arrow.
+\end_layout
+
+\begin_layout Standard
+Braces that are entered without the backslash 
+\family typewriter
+
+\backslash
+
+\family default
+ will just appear as typed, but cannot be used to receive a macro parameter.
+ They are useful, for instance to denote sets, e.g.
+ 
+\family typewriter
+{x
+\backslash
+in X 
+\backslash
+mid x
+\backslash
+notin x}
+\family default
+ will display as 
+\begin_inset Formula $\{x\in X\mid x\notin x\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Setting up the matrix
+\end_layout
+
+\begin_layout Standard
+With 
+\family sans
+Ctrl-m
+\family default
+ or 
+\family sans
+Ctrl-M
+\family default
+ open a formula environment and enter: 
+\family typewriter
+
+\backslash
+xymatrix
+\family default
+.
+ This produces a 1
+\begin_inset Formula $\times$
+\end_inset
+
+1- 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-matrix.
+ Add extra rows by typing 
+\family sans
+Ctrl-Enter
+\family default
+ and add columns by typing 
+\family sans
+Alt-m c i.
+ 
+\end_layout
+
+\begin_layout Standard
+At any time, further rows or columns can be entered or deleted using commands
+ available from 
+\family sans
+Edit\SpecialChar \menuseparator
+Math,
+\family default
+ resp.
+ their shortcuts, beginning with 
+\family sans
+Alt-m c
+\family default
+ for the column commands or 
+\family sans
+Alt-m w
+\family default
+ for the row commands.
+ 
+\end_layout
+
+\begin_layout Subsection
+Entering nodes, arrows and labels
+\end_layout
+
+\begin_layout Standard
+Type the nodes into the correct positions of the matrix.
+ If you move the cursor out of the matrix, you should see a first rendering
+ of the node layout.
+ Next, add the arrows at the nodes from where they should emanate by typing
+ 
+\family typewriter
+
+\backslash
+ar[
+\family default
+\emph on
+p
+\family typewriter
+\emph default
+]
+\family default
+, where 
+\emph on
+p
+\emph default
+ can be any path made up from the characters 
+\family typewriter
+u
+\family default
+, 
+\family typewriter
+d
+\family default
+, 
+\family typewriter
+l
+\family default
+, 
+\family typewriter
+r
+\family default
+.
+ Make sure that the path indeed leads to an existing node within the matrix.
+ Otherwise, the figure will not display when the cursor leaves the editing
+ area.
+\end_layout
+
+\begin_layout Standard
+Next, label the arrows by attaching a label text as upper or lower indices
+ to the end of the arrow's path.
+ As always in LyX's math editor, an underscore 
+\family typewriter
+_
+\family default
+ opens a box for a lower index and a 
+\family typewriter
+^
+\family default
+ followed by a space opens a box for an upper index.
+ You can enter any LaTeX-code as a label.
+ 
+\end_layout
+
+\begin_layout Subsection
+Modifying arrows 
+\end_layout
+
+\begin_layout Standard
+Finally, modify the appearance of the arrows by entering @-modifiers @{\SpecialChar \ldots{}
+},
+ @<\SpecialChar \ldots{}
+>, @(\SpecialChar \ldots{}
+,\SpecialChar \ldots{}
+) or @/\SpecialChar \ldots{}
+/.
+ The above caveat applies to the first form only.
+ It must be entered as 
+\family typewriter
+@
+\backslash
+{
+\family default
+ with the arrow description entered inside the LyX-supplied box.
+ If this box remains empty, you have specified an empty arrow.
+ This is a useful construction, too, as you will see in the next section.
+ 
+\end_layout
+
+\begin_layout Standard
+The other modifiers, @<\SpecialChar \ldots{}
+>, @(\SpecialChar \ldots{}
+,\SpecialChar \ldots{}
+) and @/\SpecialChar \ldots{}
+/ are typed as shown with the arrow
+ description replacing the ellipsis.
+ The code for bending arrows, which in 
+\family typewriter
+xypic
+\family default
+ is @/_
+\emph on
+measure
+\emph default
+/ or @/
+\emph on
+^measure
+\emph default
+/ where 
+\emph on
+measure
+\emph default
+ is any valid TeX-measure, should be entered as upper or lower index to
+ the first slash / .
+ Make sure that the ending slash does not end up being part of the upper
+ or lower index.
+\end_layout
+
+\begin_layout Subsection
+What if something goes wrong
+\end_layout
+
+\begin_layout Standard
+When constructing a diagram, you should at times check it by just moving
+ the cursor out of the editing area to see whether instant preview can successfu
+lly convert it into graphical output.
+ If this does not happen, it may either be that instant preview for some
+ reason is not aware that it should retranslate the graphics.
+ Moving the cursor into the editing area and out again sometimes wakes up
+ instant preview.
+\end_layout
+
+\begin_layout Standard
+A more serious reason could be a syntactical error in your input.
+ If necessary, redo the last editing steps, using Ctrl-z, or try to translate
+ the LyX-file into dvi using Ctrl-d or 
+\family sans
+View\SpecialChar \menuseparator
+Dvi
+\family default
+.
+ There should be some error generated, which hopefully gives you a hint
+ as to the source of the mistake.
+\end_layout
+
+\begin_layout Section
+Hacks
+\end_layout
+
+\begin_layout Standard
+Certain things do not work correctly inside LyX.
+ The ones that we (used to) miss most are the horizontal and vertical scaling
+ of diagrams, and the correct positioning of arrows.
+ There are some workarounds that we are explaining here.
+ 
+\end_layout
+
+\begin_layout Subsection
+Horizontal and vertical scaling
+\end_layout
+
+\begin_layout Standard
+It is often convenient to stretch the horizontal or the vertical dimensions
+ of an entire diagram by using spacing commands for rows and/or columns.
+ According to the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-manual, for instance, 
+\family typewriter
+
+\backslash
+xymatrix@R=1pc{
+\family default
+\SpecialChar \ldots{}
+
+\family typewriter
+}
+\family default
+ defines an 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-matrix with row spacing of 1 pica.
+ Similarly, 
+\family typewriter
+
+\backslash
+xymatrix@C=
+\family default
+\SpecialChar \ldots{}
+
+\family typewriter
+{
+\family default
+\SpecialChar \ldots{}
+
+\family typewriter
+}
+\family default
+ allows to modify the space between columns.
+ Unfortunately, these commands do currently not work inside LyX, as the
+ @-character is interpreted by LyX as ending the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-matrix-macro.
+ 
+\end_layout
+
+\begin_layout Standard
+Knowing that 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ stores the values for row-spacing and column-spacing in the variables 
+\family typewriter
+
+\backslash
+xymatrixrowsep@
+\family default
+ and 
+\family typewriter
+
+\backslash
+xymatrixrowsep@
+\family default
+, add the following macro to the preamble (
+\family sans
+Layout\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
+Preamble)
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+makeatletter
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+newcommand{
+\backslash
+xyR}[1]{% 
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+makeatletter
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+xydef@
+\backslash
+xymatrixrowsep@{#1}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+makeatother
+\end_layout
+
+\begin_layout LyX-Code
+} % end of 
+\backslash
+xyR
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+A macro 
+\family typewriter
+
+\backslash
+xyC
+\family default
+ can be defined correspondingly by replacing 
+\family typewriter
+
+\backslash
+xymatrixrowsep@
+\family default
+ with 
+\family typewriter
+
+\backslash
+xymatrixcolsep@
+\family default
+.
+ Now, a figure can be scaled by entering 
+\backslash
+xyR{...} into the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-matrix.
+ Place the cursor inside the matrix, just before the first entry.
+ Then enter 
+\family typewriter
+
+\backslash
+xyR
+\backslash
+{
+\family default
+ or 
+\family typewriter
+
+\backslash
+xyC
+\backslash
+{
+\family default
+ or both.
+ Dont't forget the backslashes and remember, that the closing brace is automatic
+ally supplied by LyX.
+ Inside the braces enter the dimensions.
+ The default is 
+\family typewriter
+2pt
+\family default
+.
+ Here you see a diagram which is squashed vertically and stretched horizontally
+ with 
+\family typewriter
+
+\backslash
+xyR{9pc}
+\backslash
+xyC{.5pc}
+\family default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\xyC {.5pc}\xyC {9pc}\xymatrix{A\ar [r]\ar [d] & B\\
+C\ar @{}[ur]|{\text{{horizontal stretch}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Label positioning
+\end_layout
+
+\begin_layout Standard
+Another useful 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-vcommand allows the correct positioning of labels along the shaft of arrows.
+ This feature is sometimes necessary, when the default position of a label
+ would otherwise clutter the picture, or would even coincide with other
+ items, such as the intersection of the arrows in the figure below.
+ In order to shift a label position alongside the shaft of an arrow, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ allows to prefix the label by a decimal number in parentheses, specifying
+ the fraction of distance alongside the arrow where the label is to be placed.
+ For instance, the code 
+\family typewriter
+
+\backslash
+ar[r]|(0.3)
+\backslash
+varphi
+\family default
+, will place the label on the shaft, but only about one third of the way.
+ 
+\end_layout
+
+\begin_layout Standard
+Doing the same with labels above or below arrows as 
+\family typewriter
+
+\backslash
+ar[dr]^(0.3)
+\backslash
+varphi,
+\family default
+ respectively 
+\family typewriter
+
+\backslash
+ar[ur]_(0.3)
+\backslash
+phi
+\family default
+, does not work from inside LyX.
+ Instead, one has to replace the hat-symbol ^, resp.
+ the underscore _ , by the macros 
+\family typewriter
+
+\backslash
+sp
+\family default
+, resp.
+ 
+\family typewriter
+
+\backslash
+sb
+\family default
+, obtaining 
+\family typewriter
+
+\backslash
+ar[dr]
+\backslash
+sp(0.3)
+\backslash
+varphi 
+\family default
+and
+\family typewriter
+ 
+\backslash
+ar[ur]
+\backslash
+sb(0.3)
+\backslash
+phi.
+ 
+\family default
+It is, in fact, possible to enter several labels this way and those labels
+ are placed correctly, even if the arrow bends.
+ In the following figure, the bending arrow with its four labels has been
+ produced with 
+\family typewriter
+
+\backslash
+ar@(r,r)[d] 
+\backslash
+sp(0.2){
+\backslash
+phi_{1}} 
+\backslash
+sp(0.4){
+\backslash
+phi_{2}} 
+\backslash
+sb(0.6){
+\backslash
+phi_{3}} 
+\backslash
+sp(0.8){
+\backslash
+phi_{4}}.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\xyC {4pc}\xymatrix{\bullet\ar [dr]\sp (0.3)\varphi & \circ\ar @{}[d]|\vdots\ar @(r,r)[d]\sp (0.2){\phi_{1}}\sp (0.4){\phi_{2}}\sb (0.6){\phi_{3}}\sp (0.8){\phi_{4}}\\
+\circ\ar [ur]\sb (0.3)\phi & \bullet}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Invisible stretched arrows
+\end_layout
+
+\begin_layout Standard
+A more general trick uses invisible arrows to place any object almost anywhere
+ inside a diagram.
+ Produce an invisible arrow, shorten (or prolong) it past its goal by adding
+ a decimal stretching ratio, e.g.
+ 
+\family typewriter
+(0.6)
+\family default
+ or 
+\family typewriter
+(1.4)
+\family default
+ to its path.
+ Attach a label to this invisible arrow.
+ 
+\end_layout
+
+\begin_layout Standard
+Thus, the down pointing arrow with its label 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ at (0.3) of its way along the shaft might as well have been produced by
+ adding to the regular arrow 
+\family typewriter
+
+\backslash
+ar[dr] 
+\family default
+an invisible 
+\begin_inset Formula $\varphi$
+\end_inset
+
+-labelled arrow 
+\family typewriter
+
+\backslash
+ar@{}[dr(0.6)]^
+\backslash
+varphi
+\family default
+, reaching only 0.6 of the way.
+ Its label will now appear at 0.3 of the way of the original visible arrow.
+ 
+\end_layout
+
+\begin_layout Standard
+This workaround has two minor drawbacks: First, it does not work with bending
+ arrows.
+ Secondly, prolonging an invisible arrow beyond the normal dimension of
+ the figure will invisibly extend the figure box, and thereby cause too
+ much vertical space between the figure and the preceding or the following
+ paragraph.
+ 
+\end_layout
+
+\begin_layout Standard
+Nevertheless, invisible arrows are an important tool, since they can, in
+ principle, be used to place information at any chosen place in a diagram.
+ In the above figure, for instance, we have used an invisible arrow to carry
+ the 
+\family typewriter
+
+\backslash
+vdots
+\family default
+ as label and at the earlier figure we had used an invisible arrow to carry
+ the text 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+horizontal stretch
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ into the center of the figure.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "1"
+key "xypic manual"
+
+\end_inset
+
+Kristoffer H.
+ Rose: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+
+\emph on
+-Pic User's Guide
+\emph default
+.
+ Version 3.7, Feb.
+ 16, 1999.
+ Available as part of the 
+\family typewriter
+xypic
+\family default
+ LaTeX package.
+ 
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "2"
+key "instant-preview"
+
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.tug.org/tex-archive/help/Catalogue/entries/preview-latex.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "3"
+key "xypic"
+
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.tug.org/tex-archive/help/Catalogue/entries/xypic.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "4"
+key "AUCTeX"
+
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.gnu.org/software/auctex/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
