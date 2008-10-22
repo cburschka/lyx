@@ -142,8 +142,7 @@
 
 # math-macros
 \bind "C-plus"         "math-macro-unfold"
-# FIXME: this accelerator is already taken by
-# specialspecialchar-insert hyphenation in cua.bind
+# Defined in cua.bind as command-alternative to specialchar-insert hyphenation
 #\bind "C-minus"        "math-macro-fold"
 
 # This should be handled properly by some "get the next key" method

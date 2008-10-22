@@ -85,7 +85,7 @@
 \bind "C-S-E"			"changes-track"  # it's what MS Word uses
 \bind "~S-M-quotedbl"		"quote-insert single"
 \bind "~S-C-quotedbl"		"self-insert \""
-\bind "C-minus"			"specialchar-insert hyphenation"
+\bind "C-minus"			"command-alternatives math-macro-fold;specialchar-insert hyphenation"
 \bind "C-M-minus"		"specialchar-insert nobreakdash"
 \bind "M-S-Right"		"depth-increment"
 \bind "M-S-Left"		"depth-decrement"
