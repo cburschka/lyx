@@ -61,7 +61,6 @@ Style Title
 	BottomSep		1
 	ParSep			1
 	Align			Center
-	AlignPossible		None
 	LabelType		No_Label
 	Font
 	  Size			Largest
@@ -143,7 +142,7 @@ End
 Style Email
 	CopyStyle		Address
 	LatexName		ead
-	AlignPossible		None
+	AlignPossible		Block
 	Font
 	  Shape			Up
 	EndFont

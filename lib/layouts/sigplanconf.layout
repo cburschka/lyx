@@ -100,7 +100,7 @@ Input stdstruct.inc
 
 Style Title
 	CopyStyle		Title
-	AlignPossible		None
+	AlignPossible		Block
 End
 
 
@@ -126,7 +126,6 @@ Style Author
 	BottomSep		0.7
 	ParSep			0.7
 	Align			Center
-	AlignPossible		None
 	LabelType		No_Label
 	Font
 	  Size			Large
