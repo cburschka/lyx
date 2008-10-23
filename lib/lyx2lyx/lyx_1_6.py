@@ -2133,13 +2133,13 @@ def convert_subfig(document):
             continue
         l = find_token(document.body, '\tsubcaptionText', i, endInset)
         if l == -1:
-            caption = ""
-        else: 
-            caption = document.body[l][16:].strip('"')
-            del document.body[l]
-            addedLine = -1
+            document.warning("Malformed lyx document: Can't find subcaptionText!")
+            i = endInset
+            continue
+        caption = document.body[l][16:].strip('"')
+        del document.body[l]
         del document.body[k]
-        addedLines -= 1
+        addedLines = -2
         subst = ['\\begin_inset Float figure', 'wide false', 'sideways false',
                  'status open', '', '\\begin_layout Plain Layout', '\\begin_inset Caption',
                  '', '\\begin_layout Plain Layout'] + latex2lyx(caption) + \
