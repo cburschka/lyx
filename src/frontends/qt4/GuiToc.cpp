@@ -49,18 +49,21 @@ GuiToc::~GuiToc()
 void GuiToc::updateView()
 {
 #ifndef Q_WS_MACX
-		widget_->updateView();
-		return;
+	widget_->updateView();
+	return;
 #endif
 
 	widget_->updateView();
-	// Special code for Mac drawer.
-	if (windowFlags() & Qt::Drawer && lyxview().isFullScreen()) {
+
+	// For Mac: switch to a docked TOC in fullscreen mode.
+	// We use the features() here instead of WindowFlags because
+	// the latter are not reliable (always returns Qt::Drawer).
+	if (!(features() & DockWidgetClosable) && lyxview().isFullScreen()) {
 		setWindowFlags(Qt::Widget);
 		setFeatures(DockWidgetClosable);
 		// Setting features hides the dialog, see Qt's doc.
 		show();
-	} else if (!(windowFlags() & Qt::Drawer)) {
+	} else if ((features() & DockWidgetClosable) && !lyxview().isFullScreen()) {
 		setWindowFlags(Qt::Drawer);
 		setFeatures(NoDockWidgetFeatures);
 		// Setting features hides the dialog, see Qt's doc.
