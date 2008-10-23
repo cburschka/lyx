@@ -518,8 +518,8 @@ void MathMacro::validate(LaTeXFeatures & features) const
 	if (!requires_.empty())
 		features.require(requires_);
 
-	if (name() == "binom" || name() == "mathcircumflex")
-		features.require(to_utf8(name()));
+	if (name() == "binom")
+		features.require("binom");
 	
 	// validate the cells and the definition
 	if (displayMode() == DISPLAY_NORMAL) {

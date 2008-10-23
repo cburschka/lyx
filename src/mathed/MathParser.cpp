@@ -100,11 +100,16 @@ bool stared(docstring const & s)
 }
 
 
-docstring escapeSpecialChars(docstring const & str)
+docstring escapeSpecialChars(docstring const & str, bool textmode)
 {
+	docstring const backslash = textmode ? from_ascii("\\textbackslash ")
+					     : from_ascii("\\backslash ");
+	docstring const caret = textmode ? from_ascii("\\textasciicircum ")
+					 : from_ascii("\\mathcircumflex ");
+
 	return subst(subst(subst(subst(subst(subst(subst(subst(subst(str,
-			from_ascii("\\"), from_ascii("\\backslash ")),
-			from_ascii("^"), from_ascii("\\mathcircumflex ")),
+			from_ascii("\\"), backslash),
+			from_ascii("^"), caret),
 			from_ascii("_"), from_ascii("\\_")),
 			from_ascii("$"), from_ascii("\\$")),
 			from_ascii("#"), from_ascii("\\#")),
@@ -540,8 +545,9 @@ void Parser::tokenize(istream & is)
 
 void Parser::tokenize(docstring const & buffer)
 {
-	idocstringstream is(mode_ & Parse::VERBATIM ?
-		escapeSpecialChars(buffer) : buffer, ios::in | ios::binary);
+	idocstringstream is(mode_ & Parse::VERBATIM
+			? escapeSpecialChars(buffer, mode_ & Parse::TEXTMODE)
+			: buffer, ios::in | ios::binary);
 
 	char_type c;
 	while (is.get(c)) {

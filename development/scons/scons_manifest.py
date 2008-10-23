@@ -462,6 +462,7 @@ src_mathed_header_files = Split('''
     InsetMathScript.h
     InsetMathSize.h
     InsetMathSpace.h
+    InsetMathSpecialChar.h
     InsetMathSplit.h
     InsetMathSqrt.h
     InsetMathStackrel.h
@@ -533,6 +534,7 @@ src_mathed_files = Split('''
     InsetMathScript.cpp
     InsetMathSize.cpp
     InsetMathSpace.cpp
+    InsetMathSpecialChar.cpp
     InsetMathSplit.cpp
     InsetMathSqrt.cpp
     InsetMathStackrel.cpp

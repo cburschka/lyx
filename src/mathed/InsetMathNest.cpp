@@ -1435,6 +1435,9 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 					cur.niceInsert(createInsetMath("textbackslash"));
 				else
 					cur.niceInsert(createInsetMath("backslash"));
+			} else if (c == '^' && currentMode() == InsetMath::MATH_MODE) {
+				cur.backspace();
+				cur.niceInsert(createInsetMath("mathcircumflex"));
 			} else if (c == '{') {
 				cur.backspace();
 				cur.niceInsert(MathAtom(new InsetMathBrace));
@@ -1564,7 +1567,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 		return cur.pos() != cur.lastpos();
 	}
 
-	// These shouldn't work in text mode:
+	// These should be treated differently when not in text mode:
 	if (currentMode() != InsetMath::TEXT_MODE) {
 		if (c == '_') {
 			script(cur, false, save_selection);
@@ -1578,10 +1581,19 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 			cur.niceInsert(createInsetMath("sim"));
 			return true;
 		}
+	} else {
+		if (c == '^') {
+			cur.niceInsert(createInsetMath("textasciicircum"));
+			return true;
+		}
+		if (c == '~') {
+			cur.niceInsert(createInsetMath("textasciitilde"));
+			return true;
+		}
 	}
 
 	if (c == '{' || c == '}' || c == '&' || c == '$' || c == '#' ||
-	    c == '%' || c == '_' || c == '^') {
+	    c == '%' || c == '_') {
 		cur.niceInsert(createInsetMath(docstring(1, c)));
 		return true;
 	}

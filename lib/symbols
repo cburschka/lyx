@@ -865,14 +865,6 @@ gcd                lyxblacktext  0   0 funclim  x
 deg                lyxblacktext  0   0 func     x
 bmod               lyxblacktext  0   0 func     x
 
-{                  mathrm        0   0 special  x
-}                  mathrm        0   0 special  x
-$                  mathrm        0   0 special  x
-%                  mathrm        0   0 special  x
-&                  mathrm        0   0 special  x
-## don't remove the space from the beginning of the next line
- #                 mathrm        0   0 special  x
-
 
 
 #
@@ -912,7 +904,6 @@ endif
 iffont msb
 \def\Join{\ltimes\kern-18.5mu\rtimes}
 endif
-\def\mathcircumflex{\mbox{\^{}}}{\^}
 # Fixme: latin-1 chars in text file
 \def\AA{\AA}{Å}
 \def\O{\O}{Ø}

@@ -32,6 +32,7 @@
 #include "InsetMathRoot.h"
 #include "InsetMathSize.h"
 #include "InsetMathSpace.h"
+#include "InsetMathSpecialChar.h"
 #include "InsetMathSplit.h"
 #include "InsetMathSqrt.h"
 #include "InsetMathStackrel.h"
@@ -215,6 +216,20 @@ void initSymbols()
 	docstring tmp = from_ascii("cmm");
 	docstring tmp2 = from_ascii("cmsy");
 	has_math_fonts = isMathFontAvailable(tmp) && isMathFontAvailable(tmp2);
+}
+
+
+bool isSpecialChar(docstring name)
+{
+	if (name.size() != 1) {
+		string const s = to_ascii(name);
+		return  s == "textasciicircum" || s == "mathcircumflex" ||
+			s == "textasciitilde"  || s == "textbackslash";
+	} else {
+		char_type const c = name.at(0);
+		return  c == '{' || c == '}' || c == '&' || c == '$' ||
+			c == '#' || c == '%' || c == '_';
+	}
 }
 
 
@@ -446,6 +461,8 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathPhantom(InsetMathPhantom::vphantom));
 	if (s == "ensuremath")
 		return MathAtom(new InsetMathEnsureMath);
+	if (isSpecialChar(s))
+		return MathAtom(new InsetMathSpecialChar(s));
 
 	return MathAtom(new MathMacro(s));
 }

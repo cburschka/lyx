@@ -361,6 +361,7 @@ SOURCEFILESMATHED = \
 	mathed/InsetMathScript.cpp \
 	mathed/InsetMathSize.cpp \
 	mathed/InsetMathSpace.cpp \
+	mathed/InsetMathSpecialChar.cpp \
 	mathed/InsetMathSplit.cpp \
 	mathed/InsetMathSqrt.cpp \
 	mathed/InsetMathStackrel.cpp \
@@ -425,6 +426,7 @@ HEADERFILESMATHED = \
 	mathed/InsetMathScript.h \
 	mathed/InsetMathSize.h \
 	mathed/InsetMathSpace.h \
+	mathed/InsetMathSpecialChar.h \
 	mathed/InsetMathSplit.h \
 	mathed/InsetMathSqrt.h \
 	mathed/InsetMathStackrel.h \

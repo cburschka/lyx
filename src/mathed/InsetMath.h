@@ -66,6 +66,7 @@ class InsetMathNest;
 class InsetMathScript;
 class InsetMathString;
 class InsetMathSpace;
+class InsetMathSpecialChar;
 class InsetMathSymbol;
 class InsetMathUnknown;
 
@@ -142,6 +143,7 @@ public:
 	virtual InsetMathUnknown        * asUnknownInset()        { return 0; }
 	virtual InsetMathUnknown const  * asUnknownInset() const  { return 0; }
 	virtual InsetMathRef            * asRefInset()            { return 0; }
+	virtual InsetMathSpecialChar const * asSpecialCharInset() const { return 0; }
 
 	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }
