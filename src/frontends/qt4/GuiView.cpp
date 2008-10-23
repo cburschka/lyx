@@ -2149,6 +2149,9 @@ void GuiView::toggleFullScreen()
 				it->second->hide();
 		}
 	}
+
+	// give dialogs like the TOC a chance to adapt
+	updateDialogs();
 }
 
 
