@@ -751,6 +751,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		if (lyx_view_)
 			lyx_view_->restartCursor();
 	} else {
+		Buffer * buffer = lyx_view_ ? lyx_view_->buffer() : 0;
 		switch (action) {
 
 		case LFUN_WORD_FIND_FORWARD:
@@ -1607,14 +1608,15 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			// Start an undo group. This may be needed for
 			// some stuff like inset-apply on labels.
-			if (lyx_view_->view())
-				view()->cursor().beginUndoGroup();
+			if (theBufferList().isLoaded(buffer))
+				buffer->undo().beginUndoGroup();
 				
 			// Let the current LyXView dispatch its own actions.
 			if (lyx_view_->dispatch(cmd)) {
 				if (lyx_view_->view()) {
 					updateFlags = lyx_view_->view()->cursor().result().update();
-					view()->cursor().endUndoGroup();
+					if (theBufferList().isLoaded(buffer))
+						buffer->undo().endUndoGroup();
 				}
 				break;
 			}
@@ -1625,7 +1627,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (view()->dispatch(cmd)) {
 				// The BufferView took care of its own updates if needed.
 				updateFlags = Update::None;
-				view()->cursor().endUndoGroup();
+				if (theBufferList().isLoaded(buffer))
+					buffer->undo().endUndoGroup();
 				break;
 			}
 
@@ -1643,9 +1646,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					view()->cursor().fixIfBroken();
 			}
 
-			// we assume here that the buffer view has not
-			// changed since the beginUndoGroup.
-			view()->cursor().endUndoGroup();
+			if (theBufferList().isLoaded(buffer))
+				buffer->undo().endUndoGroup();
 
 			// update completion. We do it here and not in
 			// processKeySym to avoid another redraw just for a
@@ -1662,18 +1664,18 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			updateFlags = view()->cursor().result().update();
 		}
 
+		// if we executed a mutating lfun, mark the buffer as dirty
+		if (theBufferList().isLoaded(buffer) && flag.enabled()
+		    && !lyxaction.funcHasFlag(action, LyXAction::NoBuffer)
+		    && !lyxaction.funcHasFlag(action, LyXAction::ReadOnly))
+			buffer->markDirty();			
+
 		if (lyx_view_ && lyx_view_->buffer()) {
 			// BufferView::update() updates the ViewMetricsInfo and
 			// also initializes the position cache for all insets in
 			// (at least partially) visible top-level paragraphs.
 			// We will redraw the screen only if needed.
 			view()->processUpdateFlags(updateFlags);
-
-			// if we executed a mutating lfun, mark the buffer as dirty
-			if (flag.enabled()
-			    && !lyxaction.funcHasFlag(action, LyXAction::NoBuffer)
-			    && !lyxaction.funcHasFlag(action, LyXAction::ReadOnly))
-				lyx_view_->buffer()->markDirty();			
 
 			// Do we have a selection?
 			theSelection().haveSelection(view()->cursor().selection());
