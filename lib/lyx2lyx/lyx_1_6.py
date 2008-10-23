@@ -1574,7 +1574,6 @@ def convert_macro_global(document):
             i = i - 12
         else:
             i += 1
-        print i
 
 
 def revert_macro_optional_params(document):
