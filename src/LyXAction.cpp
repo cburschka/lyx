@@ -1913,7 +1913,8 @@ void LyXAction::init()
  * \li Action: Register the document as an file inside version control system (RCS, CVS).
  * \li Notion: File is registered inside cvs, svn or rcs repository acording to the existence
                of cvs/svn/rcs entries in the document's directory. \n
-	       See LyX Extended Manual (Version Control Chapter) for additional information.
+	       See LyX Additional Features Manual (Version Control Chapter) for additional
+	       information.
  * \li Syntax: vc-register
  * \li Origin: Lgb, 1 Jul 1997
  * \endvar
@@ -2533,7 +2534,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_SERVER_NOTIFY
  * \li Action: Sends notify message about the last key-sequence to client.
  * \li Notion: This can be used to grab last key-sequence used inside the LyX window.
-               See also Debug extensions section in Extended features manual.
+               See also Debug extensions section in Additional features manual.
  * \li Syntax: server-notify
  * \endvar
  */
