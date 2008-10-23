@@ -252,6 +252,8 @@ def latex2lyx(data):
     converting LaTeX constructs into LyX constructs. Returns a list of
     lines, suitable for insertion into document.body.'''
 
+    if not data:
+        return []
     retval = []
 
     # Convert LaTeX to Unicode
@@ -1541,15 +1543,37 @@ def convert_macro_global(document):
     # math macros are nowadays already defined \global, so that an additional
     # \global would make the document uncompilable, see
     # http://bugzilla.lyx.org/show_bug.cgi?id=5371
+    # We're looking for something like this:
+    # \begin_inset ERT
+    # status collapsed
+    #
+    # \begin_layout Plain Layout
+    # 
+    # 
+    # \backslash
+    # global
+    # \end_layout
+    # 
+    # \end_inset
+    # 
+    # 
+    # \begin_inset FormulaMacro
+    # \renewcommand{\foo}{123}
+    # \end_inset
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset FormulaMacro", i)
-        if i != -1 and i > 13:
-            if document.body[i-6] == "global":
-                del document.body[i-13 : i]
-        else:
+        if i != -1:
             return
-        i = i - 12
+        # if i <= 13, then there isn't enough room for the ERT
+        if i <= 12:
+            i += 1
+            continue
+        if document.body[i-6] == "global":
+            del document.body[i-13 : i]
+            i = i - 12
+        else:
+            i += 1
 
 
 def revert_macro_optional_params(document):
@@ -2109,13 +2133,13 @@ def convert_subfig(document):
             continue
         l = find_token(document.body, '\tsubcaptionText', i, endInset)
         if l == -1:
-            document.warning("Malformed lyx document: Can't find subcaptionText!")
-            i = endInset
-            continue
-        caption = document.body[l][16:].strip('"')
-        del document.body[l]
+            caption = ""
+        else: 
+            caption = document.body[l][16:].strip('"')
+            del document.body[l]
+            addedLine = -1
         del document.body[k]
-        addedLines = -2
+        addedLines -= 1
         subst = ['\\begin_inset Float figure', 'wide false', 'sideways false',
                  'status open', '', '\\begin_layout Plain Layout', '\\begin_inset Caption',
                  '', '\\begin_layout Plain Layout'] + latex2lyx(caption) + \
