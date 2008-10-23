@@ -1652,8 +1652,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		// if we executed a mutating lfun, mark the buffer as dirty
-		if (buffer 
-		    && theBufferList().isLoaded(buffer) && flag.enabled()
+		if (theBufferList().isLoaded(buffer) && flag.enabled()
 		    && !lyxaction.funcHasFlag(action, LyXAction::NoBuffer)
 		    && !lyxaction.funcHasFlag(action, LyXAction::ReadOnly))
 			buffer->markDirty();			
