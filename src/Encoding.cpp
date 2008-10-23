@@ -422,7 +422,7 @@ char_type Encodings::fromLaTeXCommand(docstring const & cmd, bool & combining)
 {
 	CharInfoMap::const_iterator const end = unicodesymbols.end();
 	CharInfoMap::const_iterator it = unicodesymbols.begin();
-	for (; it != end; ++it) {
+	for (combining = false; it != end; ++it) {
 		docstring const math = it->second.mathcommand;
 		docstring const text = it->second.textcommand;
 		if (math == cmd || text == cmd) {
