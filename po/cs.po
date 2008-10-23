@@ -868,14 +868,12 @@ msgid "O&pen"
 msgstr "O&tevřít"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:22
-#, fuzzy
 msgid "&Errors:"
-msgstr "Chyba"
+msgstr "&Chyby:"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:40
-#, fuzzy
 msgid "Description:"
-msgstr "&Popis:"
+msgstr "Popis:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:43
 msgid "F&ile"
@@ -8685,7 +8683,6 @@ msgid "Theorems (AMS)"
 msgstr "Theorems (AMS)"
 
 #: lib/layouts/theorems-ams.module:8
-#, fuzzy
 msgid ""
 "Defines theorem environments and the proof environment using the extended "
 "AMS machinery. Both numbered and unnumbered types are provided. By default, "
@@ -8694,13 +8691,12 @@ msgid ""
 msgstr ""
 "Definuje prostředí mat. vět a důkazů za použití rošíření AMS. K dispozici "
 "jsou oba číslované a neočíslované typy. Implicitně jsou věty číslovány "
-"postupně bez ohledu na strukturu dokumentu.To lze změnit volbou dalších "
+"postupně bez ohledu na strukturu dokumentu. To lze změnit volbou dalších "
 "teorém. modulů."
 
 #: lib/layouts/theorems-chap.module:2
-#, fuzzy
 msgid "Theorems (By Chapter)"
-msgstr "Teorémy (pořadí dle kapitol)"
+msgstr "Teorémy (dle kapitol)"
 
 #: lib/layouts/theorems-chap.module:6
 msgid ""
@@ -8711,9 +8707,8 @@ msgstr ""
 "ježpodporuje prostředí Věty."
 
 #: lib/layouts/theorems-sec.module:2
-#, fuzzy
 msgid "Theorems (By Section)"
-msgstr "Teorémy (pořadí dle sekcí)"
+msgstr "Teorémy (dle sekcí)"
 
 #: lib/layouts/theorems-sec.module:5
 msgid "Numbers theorems and the like by section."
