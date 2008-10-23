@@ -32,12 +32,11 @@ InsetMathSpecialChar::InsetMathSpecialChar(docstring name)
 	: name_(name), kerning_(0)
 {
 	if (name.size() != 1) {
-		if (name == from_ascii("textasciicircum")
-		    || name == from_ascii("mathcircumflex"))
+		if (name == "textasciicircum" || name == "mathcircumflex")
 			char_ = '^';
-		else if (name == from_ascii("textasciitilde"))
+		else if (name == "textasciitilde")
 			char_ = '~';
-		else if (name == from_ascii("textbackslash"))
+		else if (name == "textbackslash")
 			char_ = '\\';
 		else
 			LASSERT(false, /**/);

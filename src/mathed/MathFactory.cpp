@@ -219,17 +219,15 @@ void initSymbols()
 }
 
 
-bool isSpecialChar(docstring name)
+bool isSpecialChar(docstring const & name)
 {
-	if (name.size() != 1) {
-		string const s = to_ascii(name);
-		return  s == "textasciicircum" || s == "mathcircumflex" ||
-			s == "textasciitilde"  || s == "textbackslash";
-	} else {
-		char_type const c = name.at(0);
-		return  c == '{' || c == '}' || c == '&' || c == '$' ||
-			c == '#' || c == '%' || c == '_';
-	}
+	if (name.size() != 1)
+		return  name == "textasciicircum" || name == "mathcircumflex" ||
+			name == "textasciitilde"  || name == "textbackslash";
+
+	char_type const c = name.at(0);
+	return  c == '{' || c == '}' || c == '&' || c == '$' ||
+		c == '#' || c == '%' || c == '_';
 }
 
 
