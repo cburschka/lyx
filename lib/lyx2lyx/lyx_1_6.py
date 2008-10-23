@@ -1563,7 +1563,7 @@ def convert_macro_global(document):
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset FormulaMacro", i)
-        if i != -1:
+        if i == -1:
             return
         # if i <= 13, then there isn't enough room for the ERT
         if i <= 12:
@@ -1574,6 +1574,7 @@ def convert_macro_global(document):
             i = i - 12
         else:
             i += 1
+        print i
 
 
 def revert_macro_optional_params(document):
