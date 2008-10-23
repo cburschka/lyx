@@ -129,7 +129,7 @@ void InsetInfo::read(Lexer & lex)
 			token = lex.getString();
 			type_ = nameTranslator().find(token);
 		} else if (token == "arg") {
-			lex.next();
+			lex.next(true);
 			name_ = lex.getString();
 		} else if (token == "\\end_inset")
 			break;
@@ -147,7 +147,8 @@ void InsetInfo::read(Lexer & lex)
 
 void InsetInfo::write(ostream & os) const
 {
-	os << "Info\ntype  \"" << infoType() << "\"\narg   \"" << name_ << '\"';
+	os << "Info\ntype  \"" << infoType() 
+	   << "\"\narg   " << Lexer::quoteString(name_);
 }
 
 
