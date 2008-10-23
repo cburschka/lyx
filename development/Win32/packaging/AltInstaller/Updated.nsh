@@ -8,7 +8,6 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\python.exe"
  File "${PRODUCT_SOURCEDIR}\bin\python25.dll"
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
- File "${PRODUCT_SOURCEDIR}\bin\zip.exe"
  SetOutPath "$INSTDIR\Resources"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
