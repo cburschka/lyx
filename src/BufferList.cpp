@@ -294,7 +294,6 @@ bool BufferList::exists(FileName const & fname) const
 
 bool BufferList::isLoaded(Buffer const * b) const
 {
-	LASSERT(b, /**/);
 	BufferStorage::const_iterator cit =
 		find(bstore.begin(), bstore.end(), b);
 	return cit != bstore.end();
