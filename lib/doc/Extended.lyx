@@ -119,7 +119,7 @@ End
 \begin_body
 
 \begin_layout Title
-Extended LyX Features
+Additional LyX Features
 \end_layout
 
 \begin_layout Author
@@ -168,11 +168,7 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-The 
-\emph on
-Extended LyX Features
-\emph default
- manual, which you are now reading, is essentially Part II of the 
+This manual is essentially Part II of the 
 \emph on
 User's Guide\SpecialChar \@.
 
@@ -181,15 +177,15 @@ User's Guide\SpecialChar \@.
 \emph on
 User's Guide
 \emph default
- is already huge, and it contains all of the basic features one needs to
- know in order to prepare most documents.
- However, the LyX Team has a long-term goal of making LyX extensible through
- various configuration files and external packages.
+ is already quite lengthy, and it contains information on all of the basic
+ features one needs to know in order to prepare most documents.
+ However, the LyX Team has worked to LyX extensible through various configuratio
+n files and external packages.
  That means that if you want to support the Fizzwizzle LaTeX package, you
  can create a layout file (or module) for it without having to alter LyX
  itself.
  We've already had contributions of several new features this way.
- This is the place where all of that gets documented.
+ This is the place where all of those get documented.
 \end_layout
 
 \begin_layout Standard
@@ -2138,7 +2134,7 @@ perhaps
 \end_layout
 
 \begin_layout Chapter
-Supplemental Toopullls
+Supplemental Tools
 \end_layout
 
 \begin_layout Section
@@ -4627,559 +4623,6 @@ Special Document Classes
 \end_layout
 
 \begin_layout Section
-AMS LaTeX
-\end_layout
-
-\begin_layout Standard
-by 
-\noun on
-David Johnson; updated by Richard Heck
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-The AMS LaTeX layouts are set up to conform to suggested styles for mathematical
- papers to be submitted to American Mathematical Society publications.
- The layouts are not tailored to a specific journal, but easily can be.
- You should refer to the AMS documentation for specific instructions for
- each journal (usually it will entail only changing a single line in the
- TeX output).
- That documentation is available on the Web at 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://www.ams.org
-\end_layout
-
-\end_inset
-
- or by ftp at 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-ftp://ftp.ams.org/pub/tex/amslatex/
-\end_layout
-
-\end_inset
-
-.
- These layouts are appropriate, and useful, for any mathematical writing.
- 
-\end_layout
-
-\begin_layout Standard
-There are two basic AMS LaTeX layouts: 
-\end_layout
-
-\begin_layout Itemize
-amsart: The standard AMS article format.
-\end_layout
-
-\begin_layout Itemize
-amsbook: the standard AMS book (really, monograph) format.
- 
-\end_layout
-
-\begin_layout Standard
-The layouts themselves contain only the minimum necessary to use the AMS
- classes.
- They do not, in particular, contain any of the `theorem' environments used
- for setting theorems, lemmas, and the like.
- These are contained, instead, in the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (AMS)
-\end_layout
-
-\end_inset
-
- module, which is loaded by default when when you select one of the AMS
- classes.
- (It can also be used with other classes and can be removed, if you would
- rather use something else.) Less commonly used environments are in the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (AMS-Extended)
-\end_layout
-
-\end_inset
-
- module, which must be loaded manually.
-\end_layout
-
-\begin_layout Standard
-By default, theorems and the like are numbered consecutively throughout
- the document, but this may be modified by loading the module 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (Order by Section)
-\end_layout
-
-\end_inset
-
- or, if you are using 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-book (AMS)
-\end_layout
-
-\end_inset
-
-, the module 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (Order by Chapter)
-\end_layout
-
-\end_inset
-
-.
- These will number the results as 
-\begin_inset Formula $n.m$
-\end_inset
-
-, where the first number refers to the section (or chapter) and the second
- refers to the total number of results so far in that section (or chapter).
- Many environments are also available unnumbered.
- These are indicated by an asterisk at the end.
- If you happen to want 
-\emph on
-only
-\emph default
- unnumbered results, the the module 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (Starred)
-\end_layout
-
-\end_inset
-
- provides that option.
-\end_layout
-
-\begin_layout Standard
-Note that these modules do not 
-\emph on
-have
-\emph default
- to be used with the AMS classes.
- It is perfectly possible to use the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (AMS)
-\end_layout
-
-\end_inset
-
- module, and the others mentioned, with other classes, such as 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-article
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-report
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-book (KOMA-script)
-\end_layout
-
-\end_inset
-
-, and so forth.
-\end_layout
-
-\begin_layout Subsection
-What these layouts provide
-\end_layout
-
-\begin_layout Standard
-There is a long list of included environments provided by these layouts.
- In AMS-LaTeX, there is, in fact, an opportunity to define an unlimited
- variety of `theorem' environments.
- However, the AMS recommends the environments that are available in LyX.
- 
-\end_layout
-
-\begin_layout Standard
-The following environments---as well as the standard environments, such
- as 
-\begin_inset Flex CharStyle:Noun
-status collapsed
-
-\begin_layout Plain Layout
-section
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex CharStyle:Noun
-status collapsed
-
-\begin_layout Plain Layout
-bibliography
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex CharStyle:Noun
-status collapsed
-
-\begin_layout Plain Layout
-title
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex CharStyle:Noun
-status collapsed
-
-\begin_layout Plain Layout
-author
-\end_layout
-
-\end_inset
-
-, and 
-\begin_inset Flex CharStyle:Noun
-status collapsed
-
-\begin_layout Plain Layout
-date
-\end_layout
-
-\end_inset
-
----are provided by 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-article (AMS)
-\end_layout
-
-\end_inset
-
- and 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-book (AMS)
-\end_layout
-
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Description
-Address This should be the author's permanent address.
-\end_layout
-
-\begin_layout Description
-Current
-\begin_inset space ~
-\end_inset
-
-Address This should be the author's temporary address at the time of submission,
- if different from the Address.
-\end_layout
-
-\begin_layout Description
-Email Author's e-mail address
-\end_layout
-
-\begin_layout Description
-URL Author's Web address, if desired.
-\end_layout
-
-\begin_layout Description
-Keywords Key words or phrases used to identify specific topics discussed
- in the paper.
-\end_layout
-
-\begin_layout Description
-Subjectclass These refer to the AMS Subject Classifications, published and
- described in 
-\emph on
-Mathematical Reviews
-\emph default
-.
- These are also available online at the AMS cites listed above.
-\end_layout
-
-\begin_layout Description
-Thanks
-\end_layout
-
-\begin_layout Description
-Dedicatory
-\end_layout
-
-\begin_layout Description
-Translator
-\end_layout
-
-\begin_layout Standard
-The following environments are provided by both the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems
-\end_layout
-
-\end_inset
-
- and 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (AMS)
-\end_layout
-
-\end_inset
-
- modules, in the latter case in both starred (unnumbered) and unstarred
- (numbered) versions.
- These same environments are provided only in the starred versions by the
- 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (Starred)
-\end_layout
-
-\end_inset
-
- module:
-\end_layout
-
-\begin_layout Theorem
-This is typically used for the statements of major results.
- 
-\end_layout
-
-\begin_layout Corollary*
-This is used for statements which follow fairly directly from previous statement
-s.
- Again, these can be major results.
- 
-\end_layout
-
-\begin_layout Lemma
-These are smaller results needed to prove other statements.
-\end_layout
-
-\begin_layout Proposition
-These are less major results which (hopefully) add to the general theory
- being discussed.
-\end_layout
-
-\begin_layout Conjecture
-These are statements provided without justification, which the author does
- not know how to prove, but which seem to be true (to the author, at least).
-\end_layout
-
-\begin_layout Definition*
-Guess what this is for.
- The font is different for this environment than for the previous ones.
- 
-\end_layout
-
-\begin_layout Example*
-Used for examples illustrating proven results.
-\end_layout
-
-\begin_layout Problem
-It's not really known what this is for.
- You should figure it out.
-\end_layout
-
-\begin_layout Exercise*
-Write a description for this one.
-\end_layout
-
-\begin_layout Remark
-This environment is also a type of theorem, usually a lesser sort of observation.
-\end_layout
-
-\begin_layout Claim*
-Often used in the course of giving a proof of a larger result.
-\end_layout
-
-\begin_layout Case
-Generally, these are used to break up long arguments, using specific instances
- of some condition.
- 
-\end_layout
-
-\begin_layout Case
-The numbering scheme for cases is on its own, not together with other numbered
- statements.
- 
-\end_layout
-
-\begin_layout Proof
-At the end of this environment, a QED symbol (usually a square, but it can
- vary with different styles) is placed.
- If you want to have other environments within this one---for example, Case
- environments---and have the QED symbol appear only after them, then the
- other environments need to be nested within the proof environment.
- See the section 
-\emph on
-Nesting Environments
-\emph default
- of the 
-\emph on
-User's Guide
-\emph default
- for information on nesting.
-\end_layout
-
-\begin_layout Standard
-And these environments are provided by 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Theorems (AMS-Extended)
-\end_layout
-
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Criterion*
-A required condition.
-\end_layout
-
-\begin_layout Algorithm*
-A general procedure to be used.
-\end_layout
-
-\begin_layout Axiom*
-This is a property or statement taken as true within the system being discussed.
-\end_layout
-
-\begin_layout Condition*
-Sometimes used to state a condition assumed within the present context of
- discussion.
-\end_layout
-
-\begin_layout Note*
-Similar to a Remark.
-\end_layout
-
-\begin_layout Notation*
-Used for the explanation of, yes, notation.
-\end_layout
-
-\begin_layout Summary
-Do we really need to tell you? 
-\end_layout
-
-\begin_layout Acknowledgement*
-Acknowledgement.
-\end_layout
-
-\begin_layout Conclusion*
-Sometimes used at the end of a long train of argument.
-\end_layout
-
-\begin_layout Fact
-Used in a way similar to Proposition, though perhaps lower on the scale.
-\end_layout
-
-\begin_layout Standard
-In addition, the AMS classes automatically provide the AMS LaTeX and AMS
- fonts packages.
- They need to be available on your system in order to use these environments.
-\end_layout
-
-\begin_layout Section
-Dinbrief
-\end_layout
-
-\begin_layout Standard
-The document class 
-\family sans
-dinbrief
-\family default
- can be used to type letters according to German conventions.
- A template file is included in 
-\family typewriter
-.../lyx/share/templates
-\family default
- for you to use as a starting point.
-\end_layout
-
-\begin_layout Section
-Paper
-\end_layout
-
-\begin_layout Standard
-The document class 
-\family sans
-paper
-\family default
- provides an alternative to the standard 
-\family sans
-article
-\family default
- class.
- It provides similar functionality, but you might prefer this layout with
- sans serif sections, headings, and more.
-\end_layout
-
-\begin_layout Section
 A&A Paper
 \end_layout
 
@@ -7042,6 +6485,3027 @@ Your mileage may vary.
  I have had no trouble with the submission process, and I'm sure the journals
  were never aware that there might be a difference.
  So, go forth and publish!
+\end_layout
+
+\begin_layout Section
+AMS LaTeX
+\end_layout
+
+\begin_layout Standard
+by 
+\noun on
+David Johnson; updated by Richard Heck
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The AMS LaTeX layouts are set up to conform to suggested styles for mathematical
+ papers to be submitted to American Mathematical Society publications.
+ The layouts are not tailored to a specific journal, but easily can be.
+ You should refer to the AMS documentation for specific instructions for
+ each journal (usually it will entail only changing a single line in the
+ TeX output).
+ That documentation is available on the Web at 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.ams.org
+\end_layout
+
+\end_inset
+
+ or by ftp at 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+ftp://ftp.ams.org/pub/tex/amslatex/
+\end_layout
+
+\end_inset
+
+.
+ These layouts are appropriate, and useful, for any mathematical writing.
+ 
+\end_layout
+
+\begin_layout Standard
+There are two basic AMS LaTeX layouts: 
+\end_layout
+
+\begin_layout Itemize
+amsart: The standard AMS article format.
+\end_layout
+
+\begin_layout Itemize
+amsbook: the standard AMS book (really, monograph) format.
+ 
+\end_layout
+
+\begin_layout Standard
+The layouts themselves contain only the minimum necessary to use the AMS
+ classes.
+ They do not, in particular, contain any of the `theorem' environments used
+ for setting theorems, lemmas, and the like.
+ These are contained, instead, in the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (AMS)
+\end_layout
+
+\end_inset
+
+ module, which is loaded by default when when you select one of the AMS
+ classes.
+ (It can also be used with other classes and can be removed, if you would
+ rather use something else.) Less commonly used environments are in the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (AMS-Extended)
+\end_layout
+
+\end_inset
+
+ module, which must be loaded manually.
+\end_layout
+
+\begin_layout Standard
+By default, theorems and the like are numbered consecutively throughout
+ the document, but this may be modified by loading the module 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (Order by Section)
+\end_layout
+
+\end_inset
+
+ or, if you are using 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+book (AMS)
+\end_layout
+
+\end_inset
+
+, the module 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (Order by Chapter)
+\end_layout
+
+\end_inset
+
+.
+ These will number the results as 
+\begin_inset Formula $n.m$
+\end_inset
+
+, where the first number refers to the section (or chapter) and the second
+ refers to the total number of results so far in that section (or chapter).
+ Many environments are also available unnumbered.
+ These are indicated by an asterisk at the end.
+ If you happen to want 
+\emph on
+only
+\emph default
+ unnumbered results, the the module 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (Starred)
+\end_layout
+
+\end_inset
+
+ provides that option.
+\end_layout
+
+\begin_layout Standard
+Note that these modules do not 
+\emph on
+have
+\emph default
+ to be used with the AMS classes.
+ It is perfectly possible to use the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (AMS)
+\end_layout
+
+\end_inset
+
+ module, and the others mentioned, with other classes, such as 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+article
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+report
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+book (KOMA-script)
+\end_layout
+
+\end_inset
+
+, and so forth.
+\end_layout
+
+\begin_layout Subsection
+What these layouts provide
+\end_layout
+
+\begin_layout Standard
+There is a long list of included environments provided by these layouts.
+ In AMS-LaTeX, there is, in fact, an opportunity to define an unlimited
+ variety of `theorem' environments.
+ However, the AMS recommends the environments that are available in LyX.
+ 
+\end_layout
+
+\begin_layout Standard
+The following environments---as well as the standard environments, such
+ as 
+\begin_inset Flex CharStyle:Noun
+status collapsed
+
+\begin_layout Plain Layout
+section
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Noun
+status collapsed
+
+\begin_layout Plain Layout
+bibliography
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Noun
+status collapsed
+
+\begin_layout Plain Layout
+title
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Noun
+status collapsed
+
+\begin_layout Plain Layout
+author
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset Flex CharStyle:Noun
+status collapsed
+
+\begin_layout Plain Layout
+date
+\end_layout
+
+\end_inset
+
+---are provided by 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+article (AMS)
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+book (AMS)
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Description
+Address This should be the author's permanent address.
+\end_layout
+
+\begin_layout Description
+Current
+\begin_inset space ~
+\end_inset
+
+Address This should be the author's temporary address at the time of submission,
+ if different from the Address.
+\end_layout
+
+\begin_layout Description
+Email Author's e-mail address
+\end_layout
+
+\begin_layout Description
+URL Author's Web address, if desired.
+\end_layout
+
+\begin_layout Description
+Keywords Key words or phrases used to identify specific topics discussed
+ in the paper.
+\end_layout
+
+\begin_layout Description
+Subjectclass These refer to the AMS Subject Classifications, published and
+ described in 
+\emph on
+Mathematical Reviews
+\emph default
+.
+ These are also available online at the AMS cites listed above.
+\end_layout
+
+\begin_layout Description
+Thanks
+\end_layout
+
+\begin_layout Description
+Dedicatory
+\end_layout
+
+\begin_layout Description
+Translator
+\end_layout
+
+\begin_layout Standard
+The following environments are provided by both the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (AMS)
+\end_layout
+
+\end_inset
+
+ modules, in the latter case in both starred (unnumbered) and unstarred
+ (numbered) versions.
+ These same environments are provided only in the starred versions by the
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (Starred)
+\end_layout
+
+\end_inset
+
+ module:
+\end_layout
+
+\begin_layout Theorem
+This is typically used for the statements of major results.
+ 
+\end_layout
+
+\begin_layout Corollary*
+This is used for statements which follow fairly directly from previous statement
+s.
+ Again, these can be major results.
+ 
+\end_layout
+
+\begin_layout Lemma
+These are smaller results needed to prove other statements.
+\end_layout
+
+\begin_layout Proposition
+These are less major results which (hopefully) add to the general theory
+ being discussed.
+\end_layout
+
+\begin_layout Conjecture
+These are statements provided without justification, which the author does
+ not know how to prove, but which seem to be true (to the author, at least).
+\end_layout
+
+\begin_layout Definition*
+Guess what this is for.
+ The font is different for this environment than for the previous ones.
+ 
+\end_layout
+
+\begin_layout Example*
+Used for examples illustrating proven results.
+\end_layout
+
+\begin_layout Problem
+It's not really known what this is for.
+ You should figure it out.
+\end_layout
+
+\begin_layout Exercise*
+Write a description for this one.
+\end_layout
+
+\begin_layout Remark
+This environment is also a type of theorem, usually a lesser sort of observation.
+\end_layout
+
+\begin_layout Claim*
+Often used in the course of giving a proof of a larger result.
+\end_layout
+
+\begin_layout Case
+Generally, these are used to break up long arguments, using specific instances
+ of some condition.
+ 
+\end_layout
+
+\begin_layout Case
+The numbering scheme for cases is on its own, not together with other numbered
+ statements.
+ 
+\end_layout
+
+\begin_layout Proof
+At the end of this environment, a QED symbol (usually a square, but it can
+ vary with different styles) is placed.
+ If you want to have other environments within this one---for example, Case
+ environments---and have the QED symbol appear only after them, then the
+ other environments need to be nested within the proof environment.
+ See the section 
+\emph on
+Nesting Environments
+\emph default
+ of the 
+\emph on
+User's Guide
+\emph default
+ for information on nesting.
+\end_layout
+
+\begin_layout Standard
+And these environments are provided by 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Theorems (AMS-Extended)
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Criterion*
+A required condition.
+\end_layout
+
+\begin_layout Algorithm*
+A general procedure to be used.
+\end_layout
+
+\begin_layout Axiom*
+This is a property or statement taken as true within the system being discussed.
+\end_layout
+
+\begin_layout Condition*
+Sometimes used to state a condition assumed within the present context of
+ discussion.
+\end_layout
+
+\begin_layout Note*
+Similar to a Remark.
+\end_layout
+
+\begin_layout Notation*
+Used for the explanation of, yes, notation.
+\end_layout
+
+\begin_layout Summary
+Do we really need to tell you? 
+\end_layout
+
+\begin_layout Acknowledgement*
+Acknowledgement.
+\end_layout
+
+\begin_layout Conclusion*
+Sometimes used at the end of a long train of argument.
+\end_layout
+
+\begin_layout Fact
+Used in a way similar to Proposition, though perhaps lower on the scale.
+\end_layout
+
+\begin_layout Standard
+In addition, the AMS classes automatically provide the AMS LaTeX and AMS
+ fonts packages.
+ They need to be available on your system in order to use these environments.
+\end_layout
+
+\begin_layout Section
+AGU journals (
+\family sans
+aguplus
+\family default
+)
+\end_layout
+
+\begin_layout Standard
+by 
+\shape smallcaps
+Martin Vermeer
+\end_layout
+
+\begin_layout Subsection
+Description
+\end_layout
+
+\begin_layout Standard
+These are the layout files for some of the journals of the American Geophysical
+ Society.
+ It is assumed that you have both the AGU's own class files and AGUplus
+ installed (everything to be found at
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ftp://ftp.agu.org/journals/latex/journals
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+New styles
+\end_layout
+
+\begin_layout Standard
+Redefined are 
+\family sans
+Paragraph
+\family default
+, 
+\family sans
+Paragraph*
+\family default
+.
+ They are still called this in the LyX GUI, though their LaTeX equivalents
+ in the AGU classes are 
+\family sans
+Subsubsubsection
+\family default
+ and 
+\family sans
+Subsubsubsection*
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Newly defined styles are 
+\family sans
+Left_Header
+\family default
+, 
+\family sans
+Right_Header
+\family default
+, 
+\family sans
+Received
+\family default
+, 
+\family sans
+Revised
+\family default
+, 
+\family sans
+Accepted
+\family default
+, 
+\family sans
+CCC
+\family default
+, 
+\family sans
+PaperId
+\family default
+, 
+\family sans
+AuthorAddr
+\family default
+, 
+\family sans
+SlugComment
+\family default
+.
+ These are mostly manuscript attributes and defined in the AGU class documentati
+on.
+\end_layout
+
+\begin_layout Standard
+I suspect this is still badly incomplete.
+\end_layout
+
+\begin_layout Subsection
+New floats
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Planotable
+\family default
+ and 
+\family sans
+Plate
+\family default
+.
+ We also have a new 
+\family sans
+Table_Caption
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Supported journals
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Journal of Geophysical Research
+\emph default
+: 
+\family typewriter
+jgrga.layout
+\family default
+ --- Martin Vermeer
+\end_layout
+
+\begin_layout Standard
+Add your own, it isn't so hard! Look at the 
+\family typewriter
+jgrga.layout
+\family default
+ example and 
+\family typewriter
+aguplus.inc
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Bugs and things to remember
+\end_layout
+
+\begin_layout Standard
+In order to use the new layouts, you must remember to do the following for
+ a new document:
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Turn off babel
+\emph default
+.
+ This can be done in the 
+\family sans
+layout\SpecialChar \menuseparator
+document
+\family default
+ or 
+\family sans
+document\SpecialChar \menuseparator
+settings
+\family default
+ menu item.
+ (AGU articles are always in English, right? So 
+\emph on
+don't
+\emph default
+ choose a language.)
+\end_layout
+
+\begin_layout Enumerate
+Enter 
+\family typewriter
+jgrga
+\family default
+ into the document's 
+\family sans
+Extra Options
+\family default
+ field.
+ (Yes, this is a bug.)
+\end_layout
+
+\begin_layout Enumerate
+Make sure you use the 
+\family typewriter
+agu.bst
+\family default
+ bibliography style, by entering 
+\family sans
+agu
+\family default
+ into the second field of the BibTeX inset.
+ None of the standard styles will do.
+\end_layout
+
+\begin_layout Section
+Broadway
+\end_layout
+
+\begin_layout Standard
+by 
+\shape smallcaps
+Garst Reese
+\end_layout
+
+\begin_layout Subsection
+Introduction
+\end_layout
+
+\begin_layout Standard
+Broadway is for writing plays.
+ The format is more decorative than Hollywood, and much less standardized.
+ This format should be suitable for workshops.
+\end_layout
+
+\begin_layout Subsection
+Special problems
+\end_layout
+
+\begin_layout Standard
+The same as in Hollywood.
+\end_layout
+
+\begin_layout Subsection
+Special features
+\end_layout
+
+\begin_layout Standard
+Insert the 
+\family sans
+Speaker
+\family default
+ names as labels then cross-reference the label to insert the name.
+ The cross-reference dialog will show the current cast of characters.
+\end_layout
+
+\begin_layout Subsection
+Paper size and Margins
+\end_layout
+
+\begin_layout Standard
+USLetter, left 1.6in, right 0.75in, top 0.5in, bottom 0.75in
+\end_layout
+
+\begin_layout Subsection
+Environments
+\end_layout
+
+\begin_layout Standard
+The following environments are available.
+ You can use broadway.bind to get the bind keys shown at the right.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Standard
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+You should not have to use this, but it is here for anything that does not
+ fit otherwise.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Narrative
+\begin_inset space \hfill{}
+\end_inset
+
+M-z n
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Used to describe stage setting and the action.
+ First use of speaker names in all CAPs.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+ACT
+\begin_inset space \hfill{}
+\end_inset
+
+M-z a
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Automatically numbered.
+ On screen it will be arabic, but will print as Roman.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+ACT*
+\begin_inset space \hfill{}
+\end_inset
+
+M-z S at
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Subtitle for 
+\family sans
+ACT.
+
+\family default
+ It is just centered text.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+SCENE
+\begin_inset space \hfill{}
+\end_inset
+
+M-z S-S
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Not automatically numbered.
+ You supply the number.
+ This is because I couldn't figure out how.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+AT_RISE:
+\begin_inset space \hfill{}
+\end_inset
+
+M-z S-R
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+A special case of Narrative to describe the setting and action as the curtain
+ rises.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Speaker
+\begin_inset space \hfill{}
+\end_inset
+
+M-z s
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+The speaker's (actor's) title, centered in all CAPS.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Parenthetical
+\begin_inset space \hfill{}
+\end_inset
+
+M-z p
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Instructions to the speaker.
+ The parentheses are automatically inserted.
+ The ( will appear on screen, but both will be in the printed play.
+ This environment is only used within 
+\family sans
+Dialogue
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Dialogue
+\begin_inset space \hfill{}
+\end_inset
+
+M-z d
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+What the Speaker says.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+CURTAIN
+\begin_inset space \hfill{}
+\end_inset
+
+M-z S-C
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+The curtain comes down.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Title
+\begin_inset space \hfill{}
+\end_inset
+
+M-z S-T
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Author
+\begin_inset space \hfill{}
+\end_inset
+
+M-z S-A
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Right_Address
+\begin_inset space \hfill{}
+\end_inset
+
+M-z r
+\end_layout
+
+\begin_layout Standard
+Hello there.
+\end_layout
+
+\begin_layout Section
+Dinbrief
+\end_layout
+
+\begin_layout Standard
+The document class 
+\family sans
+dinbrief
+\family default
+ can be used to type letters according to German conventions.
+ A template file is included in 
+\family typewriter
+.../lyx/share/templates
+\family default
+ for you to use as a starting point.
+\end_layout
+
+\begin_layout Section
+EGS journals (
+\family sans
+egs
+\family default
+)
+\end_layout
+
+\begin_layout Standard
+by 
+\shape smallcaps
+Martin Vermeer
+\end_layout
+
+\begin_layout Subsection
+Description
+\end_layout
+
+\begin_layout Standard
+This is the layout file for the European Geophysical Society journals.
+ The needed 
+\family typewriter
+egs.cls
+\family default
+ can be downloaded from the web site of the EGS under 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.copernicus.org
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+New styles
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Right_address, Latex_Title, Affil, Journal, msnumber, FirstAuthor, Received,
+ Accepted
+\family default
+, 
+\family sans
+Offsets
+\family default
+.
+ The current layout file is unfortunately very unmodular and would benefit
+ from using the various 
+\family typewriter
+std*.inc
+\family default
+ file inclusions.
+\end_layout
+
+\begin_layout Section
+Elsevier Journals
+\end_layout
+
+\begin_layout Standard
+By 
+\noun on
+Rod Pinna
+\end_layout
+
+\begin_layout Standard
+Elsevier Science Publishers B.V.
+ provides a standard LaTeX document class (
+\family typewriter
+elsart.cls
+\family default
+) for submitting articles to their various journals.
+ The style file can be downloaded directly from their web site: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://authors.elsevier.com/
+\end_layout
+
+\end_inset
+
+.
+ Instructions are supplied along with the class file, which details the
+ requirements of the publishers.
+ LyX includes package that allows for the use of this class, by a layout
+ and a template file.
+ Installation of the class file is the same as for any other LaTeX package;
+ instructions are provided in the Elsevier documentation.
+\end_layout
+
+\begin_layout Standard
+To make use of 
+\family typewriter
+elsart.cls
+\family default
+, a file 
+\family typewriter
+elsart.layout
+\family default
+ is supplied.
+ As the Elsevier class file is based mainly on the standard article class,
+ most of the normal functionality is provided.
+ The Elsevier class defines a number of mathematical environments, which
+ are similar to the AMS environments.
+ These commands are all described in the Elsevier documentation, and are
+ available in LyX.
+\end_layout
+
+\begin_layout Standard
+The easiest way to use the Elsevier style is to base documents on the included
+ template file.
+ It is best not to use options such as fancy headings or the geometry package,
+ as elements such as these are defined by Elsevier in their style file.
+ Ideally, no extra packages except those mentioned in the Elsevier documentation
+ should be used.
+ Essentially, Elsevier require as 
+\begin_inset Quotes eld
+\end_inset
+
+clean
+\begin_inset Quotes erd
+\end_inset
+
+ a LaTeX file as possible, as their intention is to take the supplied file
+ and replace the class file with one for the particular journal to which
+ the paper has been submitted.
+ This also means that not too much time should be spent on the formating
+ of the document.
+ When it comes to be published, this will change anyway.
+ The rest of the usage for this layout is substantially the same as for
+ the normal article class.
+ For details of what Elsevier do and don't allow, refer to their documentation.
+\end_layout
+
+\begin_layout Section
+Foils [aka 
+\family sans
+Foil
+\family default
+\noun on
+TeX
+\noun default
+]
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:foiltex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+by 
+\noun on
+Allan Rae
+\end_layout
+
+\begin_layout Subsection
+Introduction
+\end_layout
+
+\begin_layout Standard
+This section describes how to use LyX to make slides for overhead projectors.
+ There are two document classes that can do this: the default slides class
+ and the 
+\family sans
+Foil
+\family default
+TeX slides class.
+ This section documents the latter.
+\end_layout
+
+\begin_layout Standard
+I'm going to say this again, nice and clear, so that there's no misunderstanding
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+This section documents the class 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+slides (FoilTeX)
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph on
+only.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you're looking for the documentation for 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+slides (default)
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+, check out section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:slitex"
+
+\end_inset
+
+.
+ If your machine doesn't have the 
+\family sans
+foils
+\family default
+ class [
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+slides (FoilTeX)
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+] installed, you'll probably have to use the default 
+\family sans
+slides
+\family default
+ class, which isn't quite as good as 
+\family sans
+foils.
+\end_layout
+
+\begin_layout Standard
+The 
+\family sans
+foils
+\family default
+ class is designed for use with version 2.1 of the 
+\family sans
+foils.cls
+\family default
+ LaTeX class file which is now an integral part of LaTeX2e.
+\end_layout
+
+\begin_layout Subsection
+Getting Started
+\end_layout
+
+\begin_layout Standard
+Obviously, to use this document class, you need to select 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+slides (FoilTeX)
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ from the 
+\family sans
+\bar under
+C
+\bar default
+lass
+\family default
+ entry in the 
+\family sans
+Document
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+ dialog.
+ There are some settings in the 
+\family sans
+Document
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+ dialog that you should know about that are specific to this class:
+\end_layout
+
+\begin_layout Itemize
+Don't change the options 
+\family sans
+Sides
+\family default
+ and 
+\family sans
+Columns
+\family default
+ on the 
+\family sans
+Document
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+ dialog.
+ They're ignored by the 
+\family sans
+foils
+\family default
+ class.
+\end_layout
+
+\begin_layout Itemize
+The default font size is 20pt with the other options being 17pt, 25pt and
+ 30pt.
+\end_layout
+
+\begin_layout Itemize
+The default font is 
+\family sans
+sans
+\family default
+ 
+\family sans
+serif
+\family default
+ but all math equations are still typeset in the usual roman font.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Foil
+\family default
+TeX supports A4 and Letter paper sizes as well as a special size for working
+ with 35mm slides.
+ It doesn't support A5, B5, legal or executive paper sizes.
+\end_layout
+
+\begin_layout Itemize
+Don't bother changing the 
+\family sans
+Float Placement
+\family default
+ settings because they are ignored anyway.
+ All floats appear where they are defined in the text.
+\end_layout
+
+\begin_layout Itemize
+The 
+\family sans
+\bar under
+P
+\bar default
+agestyle
+\family default
+ setting behaves a bit differently for this class.
+ 
+\family sans
+Foil
+\family default
+TeX provides extensive footer and header capabilities including a user-defined
+ logo.
+ See section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:foilfoot"
+
+\end_inset
+
+ for more details.
+ The title page is treated differently to all other pages in the document
+ and is 
+\emph on
+always
+\emph default
+ unnumbered and 
+\emph on
+always
+\emph default
+ has the logo centered at the bottom of the page (if one is defined).
+ The possible page style choices and what they do are as follows:
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring MMMMMMM
+
+\family sans
+\series bold
+empty
+\family default
+\series default
+ The final output contains no page numbers, or other headers or footers
+ (except footnotes of course).
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMM
+
+\family sans
+\series bold
+plain
+\family default
+\series default
+ The final output contains page numbers centered at the bottom of the page.
+ No other headings or footers (other than footnotes).
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMM
+
+\series bold
+foilheadings
+\series default
+ Page numbers in lower right corner.
+ Additional headers and footers are also shown.
+ This is also the default.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMM
+
+\series bold
+fancy
+\series default
+ Gives you access to the 
+\family sans
+fancyheadings
+\family default
+ package although its use with 
+\family sans
+Foil
+\family default
+TeX is discouraged by the writer of the 
+\family sans
+Foil
+\family default
+TeX package because of some potential page layout clashes.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Extra Options
+\end_layout
+
+\begin_layout Standard
+The following options may be used in the extra class options in the 
+\family sans
+\bar under
+D
+\bar default
+ocument\SpecialChar \menuseparator
+
+\bar under
+S
+\bar default
+ettings
+\family default
+ dialog.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMx
+
+\series bold
+35mmSlide
+\series default
+ This sets up the page layout for 7.33in by 11in paper, which is about the
+ same aspect ratio as a 35mm slide, making it a bit easier to work with
+ this medium.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMx
+
+\series bold
+headrule
+\series default
+ Places a rule across the page below the header on every page except the
+ title page.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMx
+
+\series bold
+footrule
+\series default
+ Places a rule across the page above the footer on every page except the
+ title page.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMx
+
+\series bold
+dvips
+\series default
+ This is automatically set each time you create a new 
+\family sans
+foils
+\family default
+ document.
+ This option tells 
+\family sans
+Foil
+\family default
+TeX to use the dvips driver to rotate those pages that are set as landscape
+ foils.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMx
+
+\series bold
+landscape
+\series default
+ Simply changes the page dimensions to those of a landscape page but doesn't
+ do any rotation.
+ Thus if you use this option you need to use an external program to rotate
+ each page or feed your paper through your printer as landscape.
+ Note that this option effectively reverses the roles of the 
+\family sans
+Foilhead
+\family default
+ and 
+\family sans
+Rotatefoilhead
+\family default
+ environments (don't worry these are described in the next section).
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMx
+
+\series bold
+leqno
+\series default
+ Equation numbers on the left.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMx
+
+\series bold
+fleqn
+\series default
+ Flush-left equations.
+\end_layout
+
+\begin_layout Subsection
+Supported Environments
+\end_layout
+
+\begin_layout Standard
+Most of the environments commonly supported in other classes are also supported
+ by the 
+\family sans
+foils
+\family default
+ class.
+ There are several additional environments provided by 
+\family sans
+Foil
+\family default
+TeX as well as a couple added by LyX.
+ The following environments are shared with other classes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Standard
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Itemize
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Enumerate
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Description
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+List
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+LyX-Code
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Verse
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Quote
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Quotation
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Title
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Author
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Date
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Abstract
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Bibliography
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Address
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+RightAddress
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Caption
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Comment
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+That is, all the major environments apart from the sectioning environments.
+ Since foils are essentially self-contained sections, with a title and body,
+ 
+\family sans
+Foil
+\family default
+TeX provides specific commands for starting new foils and these are:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Foilhead
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Rotatefoilhead
+\end_layout
+
+\begin_layout Standard
+LyX also provides slightly modified versions of these two environments called:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+ShortFoilhead
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+ShortRotatefoilhead
+\end_layout
+
+\begin_layout Standard
+and the differences will be explained in the next section.
+\end_layout
+
+\begin_layout Standard
+Since foils are often used in presenting ideas or new theorems and such
+ 
+\family sans
+Foil
+\family default
+TeX also provides a comprehensive box of goodies for presenting them:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Theorem
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Lemma
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Corollary
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Proposition
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Definition
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Proof
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Theorem*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Lemma*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Corollary*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Proposition*
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Definition*
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The starred versions are unnumbered while the unstarred versions are numbered.
+ There are also two list environments added by LyX and these are:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+TickList
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+CrossList
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Foil
+\family default
+TeX provides some powerful header and footer capabilities that are best
+ set in the preamble although they may be set at any point in a document.
+ If you want to change these settings in your document the best place to
+ do so is at the very top of a foil, 
+\emph on
+i.e.
+
+\emph default
+ straight after the foilhead.
+\end_layout
+
+\begin_layout Standard
+For this purpose, the following command styles are provided [
+\shape smallcaps
+Martin Vermeer
+\shape default
+]:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+My
+\begin_inset space ~
+\end_inset
+
+Logo
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Restriction
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Right
+\begin_inset space ~
+\end_inset
+
+Footer
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Right
+\begin_inset space ~
+\end_inset
+
+Header
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Left
+\begin_inset space ~
+\end_inset
+
+Header
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are also a few commands provided by 
+\family sans
+Foil
+\family default
+TeX that aren't directly supported by LyX but I'll tell you what they do
+ and how to use them in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:unsuppfoils"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Building a Set of Foils
+\end_layout
+
+\begin_layout Standard
+This section will give a simple introduction to using the different environments
+ to build a set of foils.
+ If you want to see an example set of foils, take a look at the 
+\family typewriter
+Foils.lyx
+\family default
+ file you find in LyX's 
+\family typewriter
+examples
+\family default
+ folder.
+\end_layout
+
+\begin_layout Subsubsection
+Give It a Title Page
+\end_layout
+
+\begin_layout Standard
+Unlike other classes that provide 
+\family sans
+Title
+\family default
+, 
+\family sans
+Author
+\family default
+, 
+\family sans
+Date
+\family default
+ and 
+\family sans
+Abstract
+\family default
+ environments, 
+\family sans
+foils
+\family default
+ creates the title on a page of its own.
+ If you leave out the 
+\family sans
+Date
+\family default
+ environment LaTeX will substitute the current date (every time you regenerate
+ the output).
+\end_layout
+
+\begin_layout Subsubsection
+Start a New Foil
+\end_layout
+
+\begin_layout Standard
+As I mentioned earlier, there are four ways of starting a new foil.
+ For portrait foils you should use 
+\family sans
+Foilhead
+\family default
+ or 
+\family sans
+ShortFoilhead.
+
+\family default
+ The difference between these two environments is the amount of space between
+ the title of the foil (the foilhead) and the body of the foil.
+\end_layout
+
+\begin_layout Standard
+Landscape foils are generated using the 
+\family sans
+Rotatefoilhead
+\family default
+ and 
+\family sans
+ShortRotatefoilhead
+\family default
+ environments.
+ Again the only difference is the spacing between foilhead and body.
+ Both of the short versions have 0.5 inches less separation between the foilhead
+ and the body.
+ 
+\end_layout
+
+\begin_layout Standard
+One problem with the support for landscape foils is the requirement that
+ you have to use the 
+\family typewriter
+dvips
+\family default
+ driver to generate the PostScript output otherwise the foils won't be rotated.
+ It is possible to get landscape foils even if you haven't got the 
+\family typewriter
+dvips
+\family default
+ driver provided you can feed your foils sideways through your printer ;-)
+\end_layout
+
+\begin_layout Subsubsection
+Theorems, Lemmas, Proofs and more
+\end_layout
+
+\begin_layout Standard
+Due to a small bug in LyX you can't have two of the same type of these environme
+nts directly following each other.
+ They must be separated by something.
+ If you try, you will just be extending the previous environment as if you
+ had merged the two environments together.
+ So, how do you get around this problem? The simplest option is to insert
+ some text between the two environments or add a 
+\family sans
+LaTeX
+\family default
+ environment between the two with just a 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+%
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ in it.
+ This will force LyX to produce two separate environments and hence the
+ correct LaTeX output.
+ An example is provided in the example file included with the LyX distribution.
+ Remember, this problem only occurs if you are trying to place two of the
+ same type of theorem-like environments one directly after the other.
+\end_layout
+
+\begin_layout Subsubsection
+Lists
+\end_layout
+
+\begin_layout Standard
+You get all the commonly supported list styles found in other classes as
+ well as two new ones.
+ I'll only describe the new ones here.
+ If you want to find out more about the other list environments check out
+ the 
+\emph on
+User's Guide.
+
+\emph default
+ If you intend to use itemized lists you might also want to read about the
+ 
+\family sans
+Itemize
+\begin_inset space ~
+\end_inset
+
+Bullet
+\begin_inset space ~
+\end_inset
+
+Selection
+\family default
+ dialog described above in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:bullet"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The two new list styles, 
+\family sans
+TickList
+\family default
+ and 
+\family sans
+CrossList
+\family default
+, are designed to make it easier for you to create lists of do's and don'ts
+ or right and wrong by providing dedicated environments that use a tick
+ or a cross as the label of the list.
+ These lists are in fact dedicated variants of the 
+\family sans
+Itemize
+\family default
+ environment.
+ They do however require that you have the 
+\family typewriter
+psnfss
+\family default
+ packages installed.
+\end_layout
+
+\begin_layout Subsubsection
+Figures and Tables
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Foil
+\family default
+TeX redefines the floating tables and figures so that they appear exactly
+ where they are in the text rather than pushing them to the top of the page
+ or to some user specified location.
+ In fact if you change the float placement settings they are simply ignored.
+\end_layout
+
+\begin_layout Subsubsection
+Page Headers and Footers
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:foilfoot"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+My
+\begin_inset space ~
+\end_inset
+
+Logo
+\family default
+ and 
+\family sans
+Restriction
+\family default
+ are two commands used to control the left-footer text string.
+ The first is meant to allow you to include a graphic logo on your foils
+ and defaults to 
+\begin_inset Quotes eld
+\end_inset
+
+-Typeset by 
+\family sans
+Foil
+\family default
+TeX-
+\begin_inset Quotes erd
+\end_inset
+
+.
+ While the second is meant to provide a classification for the audience,
+ 
+\emph on
+e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\emph default
+
+\begin_inset space ~
+\end_inset
+
+Confidential.
+ It is empty by default.
+\end_layout
+
+\begin_layout Standard
+The remaining page corners can be filled by 
+\family sans
+Right
+\begin_inset space ~
+\end_inset
+
+Footer
+\family default
+ (which defaults to page numbers), 
+\family sans
+Right
+\begin_inset space ~
+\end_inset
+
+Header
+\family default
+ (top right) and 
+\family sans
+Left
+\begin_inset space ~
+\end_inset
+
+Header
+\family default
+ (top left).
+\end_layout
+
+\begin_layout Subsection
+Unsupported 
+\family sans
+Foil
+\family default
+TeX Goodies
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:unsuppfoils"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All the commands mentioned below need to be set in a 
+\family sans
+LaTeX
+\family default
+ environment or as 
+\family sans
+TeX
+\family default
+ within another environment.
+\end_layout
+
+\begin_layout Subsubsection
+Lengths
+\end_layout
+
+\begin_layout Standard
+All lengths are adjusted using the 
+\family typewriter
+
+\backslash
+setlength{
+\family default
+\emph on
+lengthname
+\family typewriter
+\emph default
+}{
+\family default
+\emph on
+newlength
+\family typewriter
+\emph default
+}
+\family default
+ command.
+ Where 
+\emph on
+lengthname
+\emph default
+ should be replaced by the name given to the length you want to change and
+ 
+\emph on
+newlength
+\emph default
+ is the length value.
+ All lengths should be specified in units of length such as inches (
+\family typewriter
+in
+\family default
+), millimeters (
+\family typewriter
+mm
+\family default
+) or points (
+\family typewriter
+pt
+\family default
+) or relative to some document or font-based length such as 
+\family typewriter
+
+\backslash
+textwidth
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+It's possible to change the spacing between a foilhead and the body of the
+ foil by adjusting the length specified by 
+\family typewriter
+
+\backslash
+foilheadskip
+\family default
+.
+ For example, to make 
+\emph on
+all
+\emph default
+ foilheads 0.5 inches closer to their bodies put the following in the preamble:
+ 
+\family typewriter
+
+\backslash
+setlength{
+\backslash
+foilheadskip}{-0.5in}
+\end_layout
+
+\begin_layout Standard
+The spacings around floats can be adjusted by setting these lengths:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+abovefloatskip
+\family default
+ Separation between the text and the top of the float
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+abovecaptionskip
+\family default
+ Separation between the float and the caption
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+belowcaptionskip
+\family default
+ Separation between the caption and the following text
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+captionwidth
+\family default
+ You can make the captions narrower than the surrounding text by adjusting
+ this length.
+ Best done relative to 
+\family typewriter
+
+\backslash
+textwidth
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+There are also several title page related lengths that you may find useful
+ if you have a long title or several authors:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+abovetitleskip
+\family default
+ Separation from headers to 
+\family sans
+Title
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+titleauthorskip
+\family default
+ between 
+\family sans
+Title
+\family default
+ and 
+\family sans
+Author
+\family default
+ environments
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+authorauthorskip
+\family default
+ between multiple 
+\family sans
+Author
+\family default
+ lines
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+authordateskip
+\family default
+ between the 
+\family sans
+Author
+\family default
+ and the 
+\family sans
+Date
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring MMMMMMMMMMM
+
+\family typewriter
+
+\backslash
+dateabstractskip
+\family default
+ between the 
+\family sans
+Date
+\family default
+ and the 
+\family sans
+Abstract
+\end_layout
+
+\begin_layout Standard
+The last length related command affects all the list environments.
+ If you place 
+\family typewriter
+
+\backslash
+zerolistvertdimens
+\family default
+ 
+\emph on
+inside
+\emph default
+ a list environment then all the vertical spacing between the list items
+ is removed.
+ Note that this is a command not a length so it doesn't require 
+\family typewriter
+
+\backslash
+setlength
+\family default
+ like the stuff mentioned above.
+\end_layout
+
+\begin_layout Subsubsection
+Headers and Footers
+\end_layout
+
+\begin_layout Standard
+The 
+\family typewriter
+
+\backslash
+LogoOn
+\family default
+ and 
+\family typewriter
+
+\backslash
+LogoOff
+\family default
+ commands control whether the logo in the 
+\family sans
+MyLogo
+\family default
+ definition appear on a given page.
+ If you put 
+\family typewriter
+
+\backslash
+LogoOff
+\family default
+ in the preamble then none of the foils will have the logo on them.
+ If you don't want the logo on a particular page place the 
+\family typewriter
+
+\backslash
+LogoOff
+\family default
+ directly after the foilhead of that page and the 
+\family typewriter
+
+\backslash
+LogoOn
+\family default
+ directly after the next foilhead.
+\end_layout
+
+\begin_layout Standard
+If you decide to use the 
+\family sans
+fancy
+\family default
+ page style setting in the 
+\family sans
+Document
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+ dialog you should probably add 
+\family typewriter
+
+\backslash
+let
+\backslash
+headwidth
+\backslash
+textwidth
+\family default
+ to your preamble so headers and footers on landscape pages are correctly
+ placed when rotated.
+ This is due to some clashes between the page layouts provided by the 
+\family sans
+fancyheadings
+\family default
+ package and the 
+\family sans
+foils
+\family default
+ class.
+\end_layout
+
+\begin_layout Section
+Hollywood (Hollywood spec scripts)
+\end_layout
+
+\begin_layout Standard
+by 
+\shape smallcaps
+Garst Reese
+\end_layout
+
+\begin_layout Subsection
+Introduction
+\end_layout
+
+\begin_layout Standard
+Getting the format of a Hollywood script right is a 
+\begin_inset Quotes eld
+\end_inset
+
+rite of passage.
+\begin_inset Quotes erd
+\end_inset
+
+ It is designed to make the readers focus on content and to be easy and
+ familiar for the actors to read.
+ Each page of a script should be one minute of film.
+ Nothing goes in a script that you cannot see or hear on screen.
+ The courier 12 pt font should be used throughout.
+ No italics.
+\end_layout
+
+\begin_layout Subsection
+Special problems
+\end_layout
+
+\begin_layout Standard
+Speakers' lines should NEVER break in mid-sentence.
+ If a speaker's lines continue over a page break, repeat the 
+\family sans
+Speaker
+\family default
+ title followed by (Cont'd).
+\end_layout
+
+\begin_layout Subsection
+Special features
+\end_layout
+
+\begin_layout Standard
+Insert the 
+\family sans
+Speaker
+\family default
+ names as labels then cross-reference the label to insert the name.
+ The cross-reference dialog will show the current cast of characters.
+ You can use this to insert the speaker name in narratives also.
+\end_layout
+
+\begin_layout Subsection
+Paper size and Margins
+\end_layout
+
+\begin_layout Standard
+USLetter, left 1.6in, right 0.75in, top 0.5in, bottom 0.75in
+\end_layout
+
+\begin_layout Subsection
+Environments
+\end_layout
+
+\begin_layout Standard
+The following environments are available.
+ You can use hollywood.bind to get the bind keys shown at the right.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Standard
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Used where nothing else works.
+ Try to avoid it.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+FADE_IN
+\family default
+:
+\begin_inset space \hfill{}
+\end_inset
+
+
+\family sans
+M-z S-I
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+Usually followed by something like 
+\begin_inset Quotes eld
+\end_inset
+
+on Sally waking up.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+INT:
+\begin_inset space \hfill{}
+\end_inset
+
+M-z i
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Introduces a new INTERIOR camera set-up.
+ Always followed by DAY or NIGHT, or something similar to define the lighting
+ required.
+ Everthing on this line in CAPS.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+EXT:
+\begin_inset space \hfill{}
+\end_inset
+
+M-z e
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Introduces a new EXTERIOR camera set-up.
+ Everthing on this line in CAPS.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Speaker
+\begin_inset space \hfill{}
+\end_inset
+
+M-z s
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+The character speaking.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Parenthetical
+\begin_inset space \hfill{}
+\end_inset
+
+M-z p
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Instructions to the speaker.
+ The () are automatically inserted, but only the ( will show in LyX.
+ Both will be printed.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Dialogue
+\begin_inset space \hfill{}
+\end_inset
+
+M-z d
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+What the 
+\family sans
+Speaker
+\family default
+ says.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Transition
+\begin_inset space \hfill{}
+\end_inset
+
+M-z t
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Camera movement instruction.
+ e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+CUT TO:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+FADE OUT:
+\begin_inset space \hfill{}
+\end_inset
+
+M-z S-I
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Author
+\begin_inset space \hfill{}
+\end_inset
+
+M-z S-A
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Title
+\begin_inset space \hfill{}
+\end_inset
+
+M-z S-T
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Right_Address
+\begin_inset space \hfill{}
+\end_inset
+
+M-z r
+\end_layout
+
+\begin_layout Subsection
+Script jargon
+\end_layout
+
+\begin_layout Itemize
+(O.S) --- off screen
+\end_layout
+
+\begin_layout Itemize
+(V.0) --- voice over
+\end_layout
+
+\begin_layout Itemize
+b.g.
+ --- background
+\end_layout
+
+\begin_layout Itemize
+C.U.
+ --- close-up
+\end_layout
+
+\begin_layout Itemize
+PAN --- camera movement
+\end_layout
+
+\begin_layout Itemize
+INSERT --- cut to close-up of
 \end_layout
 
 \begin_layout Section
@@ -9927,6 +12391,1068 @@ ip
 \end_layout
 
 \begin_layout Section
+Latex8 (IEEE Conference Papers)
+\end_layout
+
+\begin_layout Standard
+by 
+\noun on
+Allan Rae
+\end_layout
+
+\begin_layout Subsection
+Introduction
+\end_layout
+
+\begin_layout Standard
+Since this class is specifically for writing submissions to IEEE sponsored
+ conferences I strongly recommend that you get a copy of their Authors Kit.
+ The 
+\family sans
+latex.sty
+\family default
+ package and associated bibliography style file is included in the kit.
+ The Authors Kit is usually sent out by email once your initial submission
+ has been accepted.
+ There is a lot of useful information in the Authors Kit explaining formatting
+ restrictions and so on and I will assume you have read this since that
+ means I don't have to repeat it all here.
+\end_layout
+
+\begin_layout Subsection
+Getting Started
+\end_layout
+
+\begin_layout Standard
+[AR\SpecialChar \@.
+ more to come]
+\end_layout
+
+\begin_layout Subsection
+Supported Environments
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Standard
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Title
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Author
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+E-mail
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Affiliation
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Abstract
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Section
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+SubSection
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Caption
+\end_layout
+
+\begin_layout Subsection
+Differences Between Screen and Paper
+\end_layout
+
+\begin_layout Standard
+There are slight differences in appearance mainly with the presentation
+ of section counters.
+ On screen the trailing period of the section counter is missing but it
+ will appear in the output so don't let this worry you.
+\end_layout
+
+\begin_layout Section
+Memoir
+\end_layout
+
+\begin_layout Standard
+By 
+\noun on
+Jürgen Spitzmüller
+\end_layout
+
+\begin_layout Subsection
+Overview
+\end_layout
+
+\begin_layout Standard
+Memoir is a very powerful and constantly evolving class.
+ It has been designed with regard to fictional and non-fictional literature.
+ Its aim is to let the user have maximum control over the typesetting of
+ his document.
+ Memoir is based on the standard book class, but it can also emulate the
+ article class (see below).
+\end_layout
+
+\begin_layout Standard
+Peter Wilson, the developer of Memoir, is known as the author of lots of
+ useful packages in the LaTeX world.
+ Most of them have been merged with Memoir.
+ Therefore, it is much easier to layout the table of contents, appendices,
+ chapter designs and such.
+ LyX, though, does not support all of these goodies natively.
+ Some of them might be added to forthcoming releases
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+You are invited to send suggestions to 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+lyx-devel@lists.lyx.org
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+, lots will probably never, due to the limitations of LyX's framework.
+ Of course you can still use all features with the help of some native LaTeX
+ commands (ERT
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Cf.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Inserting-TeX-Code"
+
+\end_inset
+
+ for details.
+\end_layout
+
+\end_inset
+
+).
+ In this section, we can only list those features which are natively supported
+ by LyX.
+ For detailed descriptions (and for the rest of features) we are recommending
+ to have a look at the detailed manual of the Memoir class
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Cf.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+CTAN:/macros/latex/memoir/memman.pdf
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+, which is not only a user guide for the class, but also both a comprehensive
+ description on good typesetting and a superb example for good typesetting
+ itself.
+\end_layout
+
+\begin_layout Subsection
+Basic features and restrictions
+\end_layout
+
+\begin_layout Standard
+Memoir supports basically all features of the standard book classes.
+ There are, however, some differences, as follows:
+\end_layout
+
+\begin_layout Description
+Font
+\begin_inset space ~
+\end_inset
+
+sizes: Memoir has a broader range of font sizes: 9, 10, 11, 12, 14, 17
+\end_layout
+
+\begin_layout Description
+Page
+\begin_inset space ~
+\end_inset
+
+style: The fancy page style is not supported, due to a command clash between
+ Memoir and the fancyhdr package (they are both defining a command with
+ the same name, which confuses LaTeX).
+ Instead, Memoir comes with a bunch of own page styles (see 
+\family sans
+Layout\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
+Page
+\begin_inset space ~
+\end_inset
+
+Style
+\family default
+).
+ If you want to use these for the chapter pages, you have to use the command
+ 
+\family typewriter
+
+\backslash
+chapterstyle
+\family default
+ in the main text or in preamble (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+
+\family typewriter
+
+\backslash
+chapterstyle{companion}
+\family default
+).
+\end_layout
+
+\begin_layout Description
+Sectioning: Sectionings (chapter, section, subsection etc.) are coming with
+ an optional argument in the standard classes.
+ With this, you can specify an alternative version of the title for the
+ table of contents and the headers (for instance, if the title is too long).
+ In LyX, you can do this via 
+\family sans
+Insert\SpecialChar \menuseparator
+Short
+\begin_inset space ~
+\end_inset
+
+Title
+\family default
+ at the beginning of a chapter/section.
+ Memoir features a second optional argument and thus separates the table
+ of contents from the header.
+ You can define three variants of a title with this: one for the main text,
+ one for the table of contents, and one for the headers.
+ Simply insert two optional arguments if you need this feature, the first
+ one containing the short title for the Table of Contents, the second one
+ containing an alternative short title for the headers.
+\end_layout
+
+\begin_layout Description
+TOC/LOT/LOF: In the standard classes (and in many other classes), the table
+ of contents, the list of figures and the list of table start a new page
+ automatically.
+ Memoir does not follow this route.
+ You have to insert a page break yourself, if you want to have one.
+\end_layout
+
+\begin_layout Description
+Titlepage: For some unknown reason, Memoir uses pagination on the title
+ page (in the standard classes, title pages are 
+\begin_inset Quotes eld
+\end_inset
+
+empty
+\begin_inset Quotes erd
+\end_inset
+
+, i
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+without pagina).
+ If you want an empty title page, type 
+\family typewriter
+
+\backslash
+aliaspagestyle{title}{empty}
+\family default
+ in the preamble.
+\end_layout
+
+\begin_layout Description
+Article: With the class option 
+\emph on
+article
+\emph default
+ (to be inserted in 
+\family sans
+Layout\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
+Extra
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+), you can emulate article style.
+ That is, counters (footnotes, figures, tables etc.) will not be reset on
+ new chapters, chapters don't start a new page (but are---in contrary to
+ 
+\begin_inset Quotes eld
+\end_inset
+
+real
+\begin_inset Quotes erd
+\end_inset
+
+ article classes---still allowed), parts, though, use their own page, as
+ in book.
+\end_layout
+
+\begin_layout Description
+Oldfontcommands: By default, Memoir does not allow the use of the deprecated
+ font commands, which have been used in the old LaTeX version 2.09 (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+
+\family typewriter
+
+\backslash
+rm
+\family default
+, 
+\family typewriter
+
+\backslash
+it
+\family default
+).
+ It produces an error and stops LaTeX whenever such a command appears.
+ The class option 
+\emph on
+oldfontcommands
+\emph default
+ reallows the commands and spits out warnings instead (which does at least
+ not stop LaTeX).
+ Since a lot of packages and particularly BibTeX style files are still using
+ those commands, we have decided to use this option by default.
+\end_layout
+
+\begin_layout Subsection
+Extra features
+\end_layout
+
+\begin_layout Standard
+We will only describe the features supported by LyX (which is not much currently
+).
+ Please consult the Memoir manual
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Cf.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+CTAN:/macros/latex/memoir/memman.pdf
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ for details.
+\end_layout
+
+\begin_layout Description
+Abstract: You may wonder why an abstract is an extra feature.
+ Well, it is in book class.
+ Usually books don't have abstracts.
+ Memoir, however, has.
+ You can use it wherever and how often you like.
+\end_layout
+
+\begin_layout Description
+Chapterprecis: You may know this from belletristic: The contents of a chapter
+ is shortly described below the title and also in the table of contents
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space ~
+\end_inset
+
+
+\emph on
+Our hero arrives in Troia; he loses some friends; he finds others
+\emph default
+).
+ Chapterprecis does exactly this.
+ It is therefore only sensible below a chapter.
+\end_layout
+
+\begin_layout Description
+Epigraph: An epigraph is a smart slogan or motto at the beginning of a chapter.
+ The epigraph environment provides an elegant way of typesetting such a
+ motto.
+ The motto itself (text) and its author (source) are divided by a short
+ line.
+ Unfortunately, we have to fool LyX a bit here again, since the environment
+ needs two arguments (text and source).
+ In this case, we have to use curly brackets (in TeX mode) between the two
+ arguments: 
+\emph on
+<smart slogan>
+\emph default
+ 
+\family typewriter
+}{
+\family default
+ 
+\emph on
+<author of the slogan>.
+\end_layout
+
+\begin_layout Description
+Poemtitle: Memoir has lots of possibilities to typeset poetry (up to very
+ complex figurative poems).
+ LyX can only support a few of them.
+ One is poemtitle, which is a centered title for poems, which will also
+ be added to the table of contents (verse is the standard environment for
+ poems.
+ Memoir has some enhanced versions of verse, but you need to use ERT, because
+ they have to be nested inside regular verse environments, which is not
+ possible with LyX).
+\end_layout
+
+\begin_layout Description
+Poemtitle*: Same as poemtitle, but it adds no entry to the table of contents.
+\end_layout
+
+\begin_layout Section
+Article (mwart), book (mwbk) and report (mwrep)
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+The 
+\family typewriter
+mw
+\family default
+ Classes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+by 
+\noun on
+Tomasz Luczak
+\end_layout
+
+\begin_layout Standard
+The LyX document classes 
+\emph on
+article (mwart)
+\emph default
+, 
+\emph on
+report (mwrep)
+\emph default
+ and 
+\emph on
+book
+\emph default
+ 
+\emph on
+(mwbk)
+\emph default
+ correspond to the LaTeX document classes 
+\family typewriter
+mwart.cls
+\family default
+, 
+\family typewriter
+mwrep.cls
+\family default
+ and 
+\family typewriter
+mwbk.cls
+\family default
+, resp.
+ They are replacements for the standard document classes 
+\family typewriter
+article.cls
+\family default
+, 
+\family typewriter
+report.cls
+\family default
+ and 
+\family typewriter
+book.cls
+\family default
+, resp., and fit better to Polish typography conventions in a number of points.
+ 
+\end_layout
+
+\begin_layout Standard
+Basic differences:
+\end_layout
+
+\begin_layout Itemize
+Unnumbered titles (with star, eg.
+ 
+\family sans
+Section*
+\family default
+) are added into table of contents,
+\end_layout
+
+\begin_layout Itemize
+Additional page styles:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+uheadings header with separated lines,
+\end_layout
+
+\begin_layout Description
+myheadings custom header, contents headers via commands: 
+\family typewriter
+
+\backslash
+markright
+\family default
+ and 
+\family typewriter
+
+\backslash
+markboth
+\family default
+,
+\end_layout
+
+\begin_layout Description
+myuheadings custom header with separated lines,
+\end_layout
+
+\begin_layout Description
+outer page number is placed on outer side of page
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Options 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+rmheadings serif titles --- default,
+\end_layout
+
+\begin_layout Description
+sfheadings sansserif titles,
+\end_layout
+
+\begin_layout Description
+authortitle on title page first placed is author next title --- default,
+\end_layout
+
+\begin_layout Description
+titleauthor on title page first placed is title next author,
+\end_layout
+
+\begin_layout Description
+withmarginpar reserve place on page for margins.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Paper
+\end_layout
+
+\begin_layout Standard
+The document class 
+\family sans
+paper
+\family default
+ provides an alternative to the standard 
+\family sans
+article
+\family default
+ class.
+ It provides similar functionality, but you might prefer this layout with
+ sans serif sections, headings, and more.
+\end_layout
+
+\begin_layout Section
+RevTeX4
+\end_layout
+
+\begin_layout Standard
+by 
+\noun on
+Amir Karger
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The 
+\family sans
+Revtex
+\begin_inset space ~
+\end_inset
+
+4
+\family default
+ textclass works with the American Physical Sociey's RevTeX 4.0 (the 
+\begin_inset Formula $\beta$
+\end_inset
+
+ release of May, 1999) class.
+\end_layout
+
+\begin_layout Standard
+LyX has a 
+\family sans
+Revtex
+\family default
+ textclass, which works with RevTeX 3.1.
+ However, v3.1 is basically obsolete, as it works with LaTeX 2.09.
+ That means that it doesn't interact very well with LyX, which requires
+ LaTeX2e, although it has been kludged to work.
+ Since RevTeX 4.0 has been designed to work much more cleanly with LaTeX2e,
+ LyX with the 
+\family sans
+RevTeX
+\begin_inset space ~
+\end_inset
+
+4
+\family default
+ textclass should also be pretty easy to use.
+\end_layout
+
+\begin_layout Standard
+These documents are supposed to be used in 
+\emph on
+addition
+\emph default
+ to the RevTeX 4.0 documents, so we don't describe any of the special RevTeX
+ macros, and assume you'll know what to put in the preamble if necessary.
+\end_layout
+
+\begin_layout Subsection
+Installation
+\end_layout
+
+\begin_layout Standard
+All you need to do is install RevTeX 4, as described in the package's README
+ file.
+ The package can be found at The RevTeX 4 Web Site 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://publish.aps.org/revtex4/
+\end_layout
+
+\end_inset
+
+.
+ Install it somewhere that LaTeX can see it.
+ Test it by trying to LaTeX a short RevTeX 4 document in some random directory
+ (i.e., not the directory where you installed the class file.) Then, if you
+ reconfigure LyX, it will find the class file and let you use the RevTeX4
+ textclass.
+\end_layout
+
+\begin_layout Standard
+Probably the easiest way to get started is either to import a RevTeX 4 document
+ using 
+\family typewriter
+tex2lyx
+\family default
+, or to use the 
+\family sans
+Revtex
+\begin_inset space ~
+\end_inset
+
+4
+\family default
+ template, found in the templates directory.
+\end_layout
+
+\begin_layout Subsection
+Preamble Matter
+\end_layout
+
+\begin_layout Standard
+Optional arguments to 
+\family typewriter
+
+\backslash
+documentclass
+\family default
+, like 
+\begin_inset Quotes eld
+\end_inset
+
+preprint
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+aps
+\begin_inset Quotes erd
+\end_inset
+
+, go in the 
+\family sans
+E
+\bar under
+x
+\bar default
+tra
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+ field in the 
+\family sans
+Document
+\begin_inset space ~
+\end_inset
+
+Layout
+\family default
+ dialog, as usual.
+ Remember that in RevTeX, at least one optional argument is required! 
+\end_layout
+
+\begin_layout Standard
+Other preamble matter, like 
+\family typewriter
+
+\backslash
+draft
+\family default
+ etc.
+\begin_inset space ~
+\end_inset
+
+goes in the 
+\family sans
+La
+\family default
+T
+\family sans
+eX
+\begin_inset space ~
+\end_inset
+
+Preamble
+\family default
+ dialog, also as usual.
+\end_layout
+
+\begin_layout Subsection
+Layouts
+\end_layout
+
+\begin_layout Standard
+The layouts basically correspond to the commands in RevTeX4.0.
+ For example, the Email layout corresponds to 
+\family typewriter
+
+\backslash
+email{}
+\family default
+.
+ Note that (at least as of RevTeX 4.0 Beta), the 
+\family sans
+Address
+\family default
+ and 
+\family sans
+Affiliation
+\family default
+ layouts are exactly equivalent, so you shouldn't need to use both.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In case you're curious, both were included so that 
+\family typewriter
+tex2lyx
+\family default
+ would be able to translate both 
+\family typewriter
+
+\backslash
+address
+\family default
+ and 
+\family typewriter
+
+\backslash
+affiliation
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Important Notes
+\end_layout
+
+\begin_layout Standard
+There are a couple of important unique aspects of RevTeX 4 which might cause
+ bugs that will be even more confusing in LyX.
+\end_layout
+
+\begin_layout Standard
+In RevTeX, the 
+\family typewriter
+
+\backslash
+thanks
+\family default
+ command goes 
+\emph on
+outside
+\emph default
+ the 
+\family typewriter
+
+\backslash
+author
+\family default
+ command.
+ The LyX equivalent is that there is a separate Thanks layout.
+ Do 
+\emph on
+not
+\emph default
+ write footnotes in the 
+\family sans
+Author
+\family default
+ layout, or weird things may happen.
+ See the RevTeX 4 documentation for more details.
+\end_layout
+
+\begin_layout Standard
+Also, the 
+\family sans
+Author
+\begin_inset space ~
+\end_inset
+
+Email
+\family default
+, 
+\family sans
+Author
+\begin_inset space ~
+\end_inset
+
+URL
+\family default
+, and 
+\family sans
+Thanks
+\family default
+ layouts must be placed 
+\emph on
+in between
+\emph default
+ the 
+\family sans
+Author
+\family default
+ layout and the corresponding 
+\family sans
+Address
+\family default
+ (or equivalent 
+\family sans
+Affiliation
+\family default
+) layout.
+ If you put the 
+\family sans
+Thanks
+\family default
+ after the 
+\family sans
+Address
+\family default
+, the LaTeX won't compile.
+\end_layout
+
+\begin_layout Subsection
+Drawbacks
+\end_layout
+
+\begin_layout Standard
+The main problem with this layout is that you can't use the optional arguments
+ to layouts like Email and Title.
+ (The problem is not unique to this layout; you can't use optional arguments
+ to the Section layouts either.) This means that after you export that file
+ to LaTeX (which you'll need to do eventually to send it in to APS), you'll
+ need to edit the LaTeX file with a text editor to add the optional arguments
+ to set, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., the running title for the page headers.
+ Lacking these layouts makes the 
+\family typewriter
+
+\backslash
+altaffiliation
+\family default
+ (and the equivalent 
+\family typewriter
+
+\backslash
+altaddress
+\family default
+) useless, so the corresponding layouts don't exist, and will have to be
+ added by hand.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+Note from JMarc:
+\emph default
+ actually, LyX 1.3.0 supports some forms of optional arguments, but this layout
+ has not been updated yet to take advantage of it.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section
 Springer Journals (
 \family sans
 svjour
@@ -10111,283 +13637,6 @@ Limitations e.
 \end_inset
 
 g.: does not display the number for theorem-like layouts, just #.
-\end_layout
-
-\begin_layout Section
-AGU journals (
-\family sans
-aguplus
-\family default
-)
-\end_layout
-
-\begin_layout Standard
-by 
-\shape smallcaps
-Martin Vermeer
-\end_layout
-
-\begin_layout Subsection
-Description
-\end_layout
-
-\begin_layout Standard
-These are the layout files for some of the journals of the American Geophysical
- Society.
- It is assumed that you have both the AGU's own class files and AGUplus
- installed (everything to be found at
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-ftp://ftp.agu.org/journals/latex/journals
-\end_layout
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Subsection
-New styles
-\end_layout
-
-\begin_layout Standard
-Redefined are 
-\family sans
-Paragraph
-\family default
-, 
-\family sans
-Paragraph*
-\family default
-.
- They are still called this in the LyX GUI, though their LaTeX equivalents
- in the AGU classes are 
-\family sans
-Subsubsubsection
-\family default
- and 
-\family sans
-Subsubsubsection*
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-Newly defined styles are 
-\family sans
-Left_Header
-\family default
-, 
-\family sans
-Right_Header
-\family default
-, 
-\family sans
-Received
-\family default
-, 
-\family sans
-Revised
-\family default
-, 
-\family sans
-Accepted
-\family default
-, 
-\family sans
-CCC
-\family default
-, 
-\family sans
-PaperId
-\family default
-, 
-\family sans
-AuthorAddr
-\family default
-, 
-\family sans
-SlugComment
-\family default
-.
- These are mostly manuscript attributes and defined in the AGU class documentati
-on.
-\end_layout
-
-\begin_layout Standard
-I suspect this is still badly incomplete.
-\end_layout
-
-\begin_layout Subsection
-New floats
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-Planotable
-\family default
- and 
-\family sans
-Plate
-\family default
-.
- We also have a new 
-\family sans
-Table_Caption
-\family default
-.
-\end_layout
-
-\begin_layout Subsection
-Supported journals
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Journal of Geophysical Research
-\emph default
-: 
-\family typewriter
-jgrga.layout
-\family default
- --- Martin Vermeer
-\end_layout
-
-\begin_layout Standard
-Add your own, it isn't so hard! Look at the 
-\family typewriter
-jgrga.layout
-\family default
- example and 
-\family typewriter
-aguplus.inc
-\family default
-.
-\end_layout
-
-\begin_layout Subsection
-Bugs and things to remember
-\end_layout
-
-\begin_layout Standard
-In order to use the new layouts, you must remember to do the following for
- a new document:
-\end_layout
-
-\begin_layout Enumerate
-
-\emph on
-Turn off babel
-\emph default
-.
- This can be done in the 
-\family sans
-layout\SpecialChar \menuseparator
-document
-\family default
- or 
-\family sans
-document\SpecialChar \menuseparator
-settings
-\family default
- menu item.
- (AGU articles are always in English, right? So 
-\emph on
-don't
-\emph default
- choose a language.)
-\end_layout
-
-\begin_layout Enumerate
-Enter 
-\family typewriter
-jgrga
-\family default
- into the document's 
-\family sans
-Extra Options
-\family default
- field.
- (Yes, this is a bug.)
-\end_layout
-
-\begin_layout Enumerate
-Make sure you use the 
-\family typewriter
-agu.bst
-\family default
- bibliography style, by entering 
-\family sans
-agu
-\family default
- into the second field of the BibTeX inset.
- None of the standard styles will do.
-\end_layout
-
-\begin_layout Section
-EGS journals (
-\family sans
-egs
-\family default
-)
-\end_layout
-
-\begin_layout Standard
-by 
-\shape smallcaps
-Martin Vermeer
-\end_layout
-
-\begin_layout Subsection
-Description
-\end_layout
-
-\begin_layout Standard
-This is the layout file for the European Geophysical Society journals.
- The needed 
-\family typewriter
-egs.cls
-\family default
- can be downloaded from the web site of the EGS under 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-www.copernicus.org
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
-New styles
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-Right_address, Latex_Title, Affil, Journal, msnumber, FirstAuthor, Received,
- Accepted
-\family default
-, 
-\family sans
-Offsets
-\family default
-.
- The current layout file is unfortunately very unmodular and would benefit
- from using the various 
-\family typewriter
-std*.inc
-\family default
- file inclusions.
 \end_layout
 
 \begin_layout Section
@@ -12463,3259 +15712,6 @@ Perhaps you can take on the task\SpecialChar \ldots{}
 
  I know nothing about these other classes.
  Try them out to see what sort of alternative they provide.
-\end_layout
-
-\begin_layout Section
-Foils [aka 
-\family sans
-Foil
-\family default
-\noun on
-TeX
-\noun default
-]
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:foiltex"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-by 
-\noun on
-Allan Rae
-\end_layout
-
-\begin_layout Subsection
-Introduction
-\end_layout
-
-\begin_layout Standard
-This section describes how to use LyX to make slides for overhead projectors.
- There are two document classes that can do this: the default slides class
- and the 
-\family sans
-Foil
-\family default
-TeX slides class.
- This section documents the latter.
-\end_layout
-
-\begin_layout Standard
-I'm going to say this again, nice and clear, so that there's no misunderstanding
-:
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-
-\size large
-This section documents the class 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-slides (FoilTeX)
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- 
-\emph on
-only.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-If you're looking for the documentation for 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-slides (default)
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-, check out section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:slitex"
-
-\end_inset
-
-.
- If your machine doesn't have the 
-\family sans
-foils
-\family default
- class [
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-slides (FoilTeX)
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-] installed, you'll probably have to use the default 
-\family sans
-slides
-\family default
- class, which isn't quite as good as 
-\family sans
-foils.
-\end_layout
-
-\begin_layout Standard
-The 
-\family sans
-foils
-\family default
- class is designed for use with version 2.1 of the 
-\family sans
-foils.cls
-\family default
- LaTeX class file which is now an integral part of LaTeX2e.
-\end_layout
-
-\begin_layout Subsection
-Getting Started
-\end_layout
-
-\begin_layout Standard
-Obviously, to use this document class, you need to select 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-slides (FoilTeX)
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- from the 
-\family sans
-\bar under
-C
-\bar default
-lass
-\family default
- entry in the 
-\family sans
-Document
-\begin_inset space ~
-\end_inset
-
-Layout
-\family default
- dialog.
- There are some settings in the 
-\family sans
-Document
-\begin_inset space ~
-\end_inset
-
-Layout
-\family default
- dialog that you should know about that are specific to this class:
-\end_layout
-
-\begin_layout Itemize
-Don't change the options 
-\family sans
-Sides
-\family default
- and 
-\family sans
-Columns
-\family default
- on the 
-\family sans
-Document
-\begin_inset space ~
-\end_inset
-
-Layout
-\family default
- dialog.
- They're ignored by the 
-\family sans
-foils
-\family default
- class.
-\end_layout
-
-\begin_layout Itemize
-The default font size is 20pt with the other options being 17pt, 25pt and
- 30pt.
-\end_layout
-
-\begin_layout Itemize
-The default font is 
-\family sans
-sans
-\family default
- 
-\family sans
-serif
-\family default
- but all math equations are still typeset in the usual roman font.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Foil
-\family default
-TeX supports A4 and Letter paper sizes as well as a special size for working
- with 35mm slides.
- It doesn't support A5, B5, legal or executive paper sizes.
-\end_layout
-
-\begin_layout Itemize
-Don't bother changing the 
-\family sans
-Float Placement
-\family default
- settings because they are ignored anyway.
- All floats appear where they are defined in the text.
-\end_layout
-
-\begin_layout Itemize
-The 
-\family sans
-\bar under
-P
-\bar default
-agestyle
-\family default
- setting behaves a bit differently for this class.
- 
-\family sans
-Foil
-\family default
-TeX provides extensive footer and header capabilities including a user-defined
- logo.
- See section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:foilfoot"
-
-\end_inset
-
- for more details.
- The title page is treated differently to all other pages in the document
- and is 
-\emph on
-always
-\emph default
- unnumbered and 
-\emph on
-always
-\emph default
- has the logo centered at the bottom of the page (if one is defined).
- The possible page style choices and what they do are as follows:
-\end_layout
-
-\begin_deeper
-\begin_layout Labeling
-\labelwidthstring MMMMMMM
-
-\family sans
-\series bold
-empty
-\family default
-\series default
- The final output contains no page numbers, or other headers or footers
- (except footnotes of course).
- 
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMM
-
-\family sans
-\series bold
-plain
-\family default
-\series default
- The final output contains page numbers centered at the bottom of the page.
- No other headings or footers (other than footnotes).
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMM
-
-\series bold
-foilheadings
-\series default
- Page numbers in lower right corner.
- Additional headers and footers are also shown.
- This is also the default.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMM
-
-\series bold
-fancy
-\series default
- Gives you access to the 
-\family sans
-fancyheadings
-\family default
- package although its use with 
-\family sans
-Foil
-\family default
-TeX is discouraged by the writer of the 
-\family sans
-Foil
-\family default
-TeX package because of some potential page layout clashes.
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection
-Extra Options
-\end_layout
-
-\begin_layout Standard
-The following options may be used in the extra class options in the 
-\family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
-\family default
- dialog.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMx
-
-\series bold
-35mmSlide
-\series default
- This sets up the page layout for 7.33in by 11in paper, which is about the
- same aspect ratio as a 35mm slide, making it a bit easier to work with
- this medium.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMx
-
-\series bold
-headrule
-\series default
- Places a rule across the page below the header on every page except the
- title page.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMx
-
-\series bold
-footrule
-\series default
- Places a rule across the page above the footer on every page except the
- title page.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMx
-
-\series bold
-dvips
-\series default
- This is automatically set each time you create a new 
-\family sans
-foils
-\family default
- document.
- This option tells 
-\family sans
-Foil
-\family default
-TeX to use the dvips driver to rotate those pages that are set as landscape
- foils.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMx
-
-\series bold
-landscape
-\series default
- Simply changes the page dimensions to those of a landscape page but doesn't
- do any rotation.
- Thus if you use this option you need to use an external program to rotate
- each page or feed your paper through your printer as landscape.
- Note that this option effectively reverses the roles of the 
-\family sans
-Foilhead
-\family default
- and 
-\family sans
-Rotatefoilhead
-\family default
- environments (don't worry these are described in the next section).
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMx
-
-\series bold
-leqno
-\series default
- Equation numbers on the left.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMx
-
-\series bold
-fleqn
-\series default
- Flush-left equations.
-\end_layout
-
-\begin_layout Subsection
-Supported Environments
-\end_layout
-
-\begin_layout Standard
-Most of the environments commonly supported in other classes are also supported
- by the 
-\family sans
-foils
-\family default
- class.
- There are several additional environments provided by 
-\family sans
-Foil
-\family default
-TeX as well as a couple added by LyX.
- The following environments are shared with other classes:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Standard
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Itemize
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Enumerate
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Description
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-List
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-LyX-Code
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Verse
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Quote
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Quotation
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Title
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Author
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Date
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Abstract
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Bibliography
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Address
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-RightAddress
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Caption
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Comment
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-That is, all the major environments apart from the sectioning environments.
- Since foils are essentially self-contained sections, with a title and body,
- 
-\family sans
-Foil
-\family default
-TeX provides specific commands for starting new foils and these are:
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Foilhead
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Rotatefoilhead
-\end_layout
-
-\begin_layout Standard
-LyX also provides slightly modified versions of these two environments called:
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-ShortFoilhead
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-ShortRotatefoilhead
-\end_layout
-
-\begin_layout Standard
-and the differences will be explained in the next section.
-\end_layout
-
-\begin_layout Standard
-Since foils are often used in presenting ideas or new theorems and such
- 
-\family sans
-Foil
-\family default
-TeX also provides a comprehensive box of goodies for presenting them:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Theorem
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Lemma
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Corollary
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Proposition
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Definition
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Proof
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Theorem*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Lemma*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Corollary*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Proposition*
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Definition*
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The starred versions are unnumbered while the unstarred versions are numbered.
- There are also two list environments added by LyX and these are:
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-TickList
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-CrossList
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-Foil
-\family default
-TeX provides some powerful header and footer capabilities that are best
- set in the preamble although they may be set at any point in a document.
- If you want to change these settings in your document the best place to
- do so is at the very top of a foil, 
-\emph on
-i.e.
-
-\emph default
- straight after the foilhead.
-\end_layout
-
-\begin_layout Standard
-For this purpose, the following command styles are provided [
-\shape smallcaps
-Martin Vermeer
-\shape default
-]:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-My
-\begin_inset space ~
-\end_inset
-
-Logo
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Restriction
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Right
-\begin_inset space ~
-\end_inset
-
-Footer
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Right
-\begin_inset space ~
-\end_inset
-
-Header
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Left
-\begin_inset space ~
-\end_inset
-
-Header
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-There are also a few commands provided by 
-\family sans
-Foil
-\family default
-TeX that aren't directly supported by LyX but I'll tell you what they do
- and how to use them in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:unsuppfoils"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
-Building a Set of Foils
-\end_layout
-
-\begin_layout Standard
-This section will give a simple introduction to using the different environments
- to build a set of foils.
- If you want to see an example set of foils, take a look at the 
-\family typewriter
-Foils.lyx
-\family default
- file you find in LyX's 
-\family typewriter
-examples
-\family default
- folder.
-\end_layout
-
-\begin_layout Subsubsection
-Give It a Title Page
-\end_layout
-
-\begin_layout Standard
-Unlike other classes that provide 
-\family sans
-Title
-\family default
-, 
-\family sans
-Author
-\family default
-, 
-\family sans
-Date
-\family default
- and 
-\family sans
-Abstract
-\family default
- environments, 
-\family sans
-foils
-\family default
- creates the title on a page of its own.
- If you leave out the 
-\family sans
-Date
-\family default
- environment LaTeX will substitute the current date (every time you regenerate
- the output).
-\end_layout
-
-\begin_layout Subsubsection
-Start a New Foil
-\end_layout
-
-\begin_layout Standard
-As I mentioned earlier, there are four ways of starting a new foil.
- For portrait foils you should use 
-\family sans
-Foilhead
-\family default
- or 
-\family sans
-ShortFoilhead.
-
-\family default
- The difference between these two environments is the amount of space between
- the title of the foil (the foilhead) and the body of the foil.
-\end_layout
-
-\begin_layout Standard
-Landscape foils are generated using the 
-\family sans
-Rotatefoilhead
-\family default
- and 
-\family sans
-ShortRotatefoilhead
-\family default
- environments.
- Again the only difference is the spacing between foilhead and body.
- Both of the short versions have 0.5 inches less separation between the foilhead
- and the body.
- 
-\end_layout
-
-\begin_layout Standard
-One problem with the support for landscape foils is the requirement that
- you have to use the 
-\family typewriter
-dvips
-\family default
- driver to generate the PostScript output otherwise the foils won't be rotated.
- It is possible to get landscape foils even if you haven't got the 
-\family typewriter
-dvips
-\family default
- driver provided you can feed your foils sideways through your printer ;-)
-\end_layout
-
-\begin_layout Subsubsection
-Theorems, Lemmas, Proofs and more
-\end_layout
-
-\begin_layout Standard
-Due to a small bug in LyX you can't have two of the same type of these environme
-nts directly following each other.
- They must be separated by something.
- If you try, you will just be extending the previous environment as if you
- had merged the two environments together.
- So, how do you get around this problem? The simplest option is to insert
- some text between the two environments or add a 
-\family sans
-LaTeX
-\family default
- environment between the two with just a 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-%
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- in it.
- This will force LyX to produce two separate environments and hence the
- correct LaTeX output.
- An example is provided in the example file included with the LyX distribution.
- Remember, this problem only occurs if you are trying to place two of the
- same type of theorem-like environments one directly after the other.
-\end_layout
-
-\begin_layout Subsubsection
-Lists
-\end_layout
-
-\begin_layout Standard
-You get all the commonly supported list styles found in other classes as
- well as two new ones.
- I'll only describe the new ones here.
- If you want to find out more about the other list environments check out
- the 
-\emph on
-User's Guide.
-
-\emph default
- If you intend to use itemized lists you might also want to read about the
- 
-\family sans
-Itemize
-\begin_inset space ~
-\end_inset
-
-Bullet
-\begin_inset space ~
-\end_inset
-
-Selection
-\family default
- dialog described above in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:bullet"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-The two new list styles, 
-\family sans
-TickList
-\family default
- and 
-\family sans
-CrossList
-\family default
-, are designed to make it easier for you to create lists of do's and don'ts
- or right and wrong by providing dedicated environments that use a tick
- or a cross as the label of the list.
- These lists are in fact dedicated variants of the 
-\family sans
-Itemize
-\family default
- environment.
- They do however require that you have the 
-\family typewriter
-psnfss
-\family default
- packages installed.
-\end_layout
-
-\begin_layout Subsubsection
-Figures and Tables
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-Foil
-\family default
-TeX redefines the floating tables and figures so that they appear exactly
- where they are in the text rather than pushing them to the top of the page
- or to some user specified location.
- In fact if you change the float placement settings they are simply ignored.
-\end_layout
-
-\begin_layout Subsubsection
-Page Headers and Footers
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:foilfoot"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-My
-\begin_inset space ~
-\end_inset
-
-Logo
-\family default
- and 
-\family sans
-Restriction
-\family default
- are two commands used to control the left-footer text string.
- The first is meant to allow you to include a graphic logo on your foils
- and defaults to 
-\begin_inset Quotes eld
-\end_inset
-
--Typeset by 
-\family sans
-Foil
-\family default
-TeX-
-\begin_inset Quotes erd
-\end_inset
-
-.
- While the second is meant to provide a classification for the audience,
- 
-\emph on
-e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\emph default
-
-\begin_inset space ~
-\end_inset
-
-Confidential.
- It is empty by default.
-\end_layout
-
-\begin_layout Standard
-The remaining page corners can be filled by 
-\family sans
-Right
-\begin_inset space ~
-\end_inset
-
-Footer
-\family default
- (which defaults to page numbers), 
-\family sans
-Right
-\begin_inset space ~
-\end_inset
-
-Header
-\family default
- (top right) and 
-\family sans
-Left
-\begin_inset space ~
-\end_inset
-
-Header
-\family default
- (top left).
-\end_layout
-
-\begin_layout Subsection
-Unsupported 
-\family sans
-Foil
-\family default
-TeX Goodies
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:unsuppfoils"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-All the commands mentioned below need to be set in a 
-\family sans
-LaTeX
-\family default
- environment or as 
-\family sans
-TeX
-\family default
- within another environment.
-\end_layout
-
-\begin_layout Subsubsection
-Lengths
-\end_layout
-
-\begin_layout Standard
-All lengths are adjusted using the 
-\family typewriter
-
-\backslash
-setlength{
-\family default
-\emph on
-lengthname
-\family typewriter
-\emph default
-}{
-\family default
-\emph on
-newlength
-\family typewriter
-\emph default
-}
-\family default
- command.
- Where 
-\emph on
-lengthname
-\emph default
- should be replaced by the name given to the length you want to change and
- 
-\emph on
-newlength
-\emph default
- is the length value.
- All lengths should be specified in units of length such as inches (
-\family typewriter
-in
-\family default
-), millimeters (
-\family typewriter
-mm
-\family default
-) or points (
-\family typewriter
-pt
-\family default
-) or relative to some document or font-based length such as 
-\family typewriter
-
-\backslash
-textwidth
-\family default
-.
- 
-\end_layout
-
-\begin_layout Standard
-It's possible to change the spacing between a foilhead and the body of the
- foil by adjusting the length specified by 
-\family typewriter
-
-\backslash
-foilheadskip
-\family default
-.
- For example, to make 
-\emph on
-all
-\emph default
- foilheads 0.5 inches closer to their bodies put the following in the preamble:
- 
-\family typewriter
-
-\backslash
-setlength{
-\backslash
-foilheadskip}{-0.5in}
-\end_layout
-
-\begin_layout Standard
-The spacings around floats can be adjusted by setting these lengths:
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-abovefloatskip
-\family default
- Separation between the text and the top of the float
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-abovecaptionskip
-\family default
- Separation between the float and the caption
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-belowcaptionskip
-\family default
- Separation between the caption and the following text
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-captionwidth
-\family default
- You can make the captions narrower than the surrounding text by adjusting
- this length.
- Best done relative to 
-\family typewriter
-
-\backslash
-textwidth
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-There are also several title page related lengths that you may find useful
- if you have a long title or several authors:
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-abovetitleskip
-\family default
- Separation from headers to 
-\family sans
-Title
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-titleauthorskip
-\family default
- between 
-\family sans
-Title
-\family default
- and 
-\family sans
-Author
-\family default
- environments
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-authorauthorskip
-\family default
- between multiple 
-\family sans
-Author
-\family default
- lines
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-authordateskip
-\family default
- between the 
-\family sans
-Author
-\family default
- and the 
-\family sans
-Date
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring MMMMMMMMMMM
-
-\family typewriter
-
-\backslash
-dateabstractskip
-\family default
- between the 
-\family sans
-Date
-\family default
- and the 
-\family sans
-Abstract
-\end_layout
-
-\begin_layout Standard
-The last length related command affects all the list environments.
- If you place 
-\family typewriter
-
-\backslash
-zerolistvertdimens
-\family default
- 
-\emph on
-inside
-\emph default
- a list environment then all the vertical spacing between the list items
- is removed.
- Note that this is a command not a length so it doesn't require 
-\family typewriter
-
-\backslash
-setlength
-\family default
- like the stuff mentioned above.
-\end_layout
-
-\begin_layout Subsubsection
-Headers and Footers
-\end_layout
-
-\begin_layout Standard
-The 
-\family typewriter
-
-\backslash
-LogoOn
-\family default
- and 
-\family typewriter
-
-\backslash
-LogoOff
-\family default
- commands control whether the logo in the 
-\family sans
-MyLogo
-\family default
- definition appear on a given page.
- If you put 
-\family typewriter
-
-\backslash
-LogoOff
-\family default
- in the preamble then none of the foils will have the logo on them.
- If you don't want the logo on a particular page place the 
-\family typewriter
-
-\backslash
-LogoOff
-\family default
- directly after the foilhead of that page and the 
-\family typewriter
-
-\backslash
-LogoOn
-\family default
- directly after the next foilhead.
-\end_layout
-
-\begin_layout Standard
-If you decide to use the 
-\family sans
-fancy
-\family default
- page style setting in the 
-\family sans
-Document
-\begin_inset space ~
-\end_inset
-
-Layout
-\family default
- dialog you should probably add 
-\family typewriter
-
-\backslash
-let
-\backslash
-headwidth
-\backslash
-textwidth
-\family default
- to your preamble so headers and footers on landscape pages are correctly
- placed when rotated.
- This is due to some clashes between the page layouts provided by the 
-\family sans
-fancyheadings
-\family default
- package and the 
-\family sans
-foils
-\family default
- class.
-\end_layout
-
-\begin_layout Section
-Latex8 (IEEE Conference Papers)
-\end_layout
-
-\begin_layout Standard
-by 
-\noun on
-Allan Rae
-\end_layout
-
-\begin_layout Subsection
-Introduction
-\end_layout
-
-\begin_layout Standard
-Since this class is specifically for writing submissions to IEEE sponsored
- conferences I strongly recommend that you get a copy of their Authors Kit.
- The 
-\family sans
-latex.sty
-\family default
- package and associated bibliography style file is included in the kit.
- The Authors Kit is usually sent out by email once your initial submission
- has been accepted.
- There is a lot of useful information in the Authors Kit explaining formatting
- restrictions and so on and I will assume you have read this since that
- means I don't have to repeat it all here.
-\end_layout
-
-\begin_layout Subsection
-Getting Started
-\end_layout
-
-\begin_layout Standard
-[AR\SpecialChar \@.
- more to come]
-\end_layout
-
-\begin_layout Subsection
-Supported Environments
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Standard
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Title
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Author
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-E-mail
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Affiliation
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Abstract
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Section
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-SubSection
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Caption
-\end_layout
-
-\begin_layout Subsection
-Differences Between Screen and Paper
-\end_layout
-
-\begin_layout Standard
-There are slight differences in appearance mainly with the presentation
- of section counters.
- On screen the trailing period of the section counter is missing but it
- will appear in the output so don't let this worry you.
-\end_layout
-
-\begin_layout Section
-Hollywood (Hollywood spec scripts)
-\end_layout
-
-\begin_layout Standard
-by 
-\shape smallcaps
-Garst Reese
-\end_layout
-
-\begin_layout Subsection
-Introduction
-\end_layout
-
-\begin_layout Standard
-Getting the format of a Hollywood script right is a 
-\begin_inset Quotes eld
-\end_inset
-
-rite of passage.
-\begin_inset Quotes erd
-\end_inset
-
- It is designed to make the readers focus on content and to be easy and
- familiar for the actors to read.
- Each page of a script should be one minute of film.
- Nothing goes in a script that you cannot see or hear on screen.
- The courier 12 pt font should be used throughout.
- No italics.
-\end_layout
-
-\begin_layout Subsection
-Special problems
-\end_layout
-
-\begin_layout Standard
-Speakers' lines should NEVER break in mid-sentence.
- If a speaker's lines continue over a page break, repeat the 
-\family sans
-Speaker
-\family default
- title followed by (Cont'd).
-\end_layout
-
-\begin_layout Subsection
-Special features
-\end_layout
-
-\begin_layout Standard
-Insert the 
-\family sans
-Speaker
-\family default
- names as labels then cross-reference the label to insert the name.
- The cross-reference dialog will show the current cast of characters.
- You can use this to insert the speaker name in narratives also.
-\end_layout
-
-\begin_layout Subsection
-Paper size and Margins
-\end_layout
-
-\begin_layout Standard
-USLetter, left 1.6in, right 0.75in, top 0.5in, bottom 0.75in
-\end_layout
-
-\begin_layout Subsection
-Environments
-\end_layout
-
-\begin_layout Standard
-The following environments are available.
- You can use hollywood.bind to get the bind keys shown at the right.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Standard
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Used where nothing else works.
- Try to avoid it.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-FADE_IN
-\family default
-:
-\begin_inset space \hfill{}
-\end_inset
-
-
-\family sans
-M-z S-I
-\family default
-
-\begin_inset Newline newline
-\end_inset
-
-Usually followed by something like 
-\begin_inset Quotes eld
-\end_inset
-
-on Sally waking up.
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-INT:
-\begin_inset space \hfill{}
-\end_inset
-
-M-z i
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Introduces a new INTERIOR camera set-up.
- Always followed by DAY or NIGHT, or something similar to define the lighting
- required.
- Everthing on this line in CAPS.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-EXT:
-\begin_inset space \hfill{}
-\end_inset
-
-M-z e
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Introduces a new EXTERIOR camera set-up.
- Everthing on this line in CAPS.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Speaker
-\begin_inset space \hfill{}
-\end_inset
-
-M-z s
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-The character speaking.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Parenthetical
-\begin_inset space \hfill{}
-\end_inset
-
-M-z p
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Instructions to the speaker.
- The () are automatically inserted, but only the ( will show in LyX.
- Both will be printed.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Dialogue
-\begin_inset space \hfill{}
-\end_inset
-
-M-z d
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-What the 
-\family sans
-Speaker
-\family default
- says.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Transition
-\begin_inset space \hfill{}
-\end_inset
-
-M-z t
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Camera movement instruction.
- e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
-\end_inset
-
-CUT TO:
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-FADE OUT:
-\begin_inset space \hfill{}
-\end_inset
-
-M-z S-I
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Author
-\begin_inset space \hfill{}
-\end_inset
-
-M-z S-A
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Title
-\begin_inset space \hfill{}
-\end_inset
-
-M-z S-T
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Right_Address
-\begin_inset space \hfill{}
-\end_inset
-
-M-z r
-\end_layout
-
-\begin_layout Subsection
-Script jargon
-\end_layout
-
-\begin_layout Itemize
-(O.S) --- off screen
-\end_layout
-
-\begin_layout Itemize
-(V.0) --- voice over
-\end_layout
-
-\begin_layout Itemize
-b.g.
- --- background
-\end_layout
-
-\begin_layout Itemize
-C.U.
- --- close-up
-\end_layout
-
-\begin_layout Itemize
-PAN --- camera movement
-\end_layout
-
-\begin_layout Itemize
-INSERT --- cut to close-up of
-\end_layout
-
-\begin_layout Section
-Broadway
-\end_layout
-
-\begin_layout Standard
-by 
-\shape smallcaps
-Garst Reese
-\end_layout
-
-\begin_layout Subsection
-Introduction
-\end_layout
-
-\begin_layout Standard
-Broadway is for writing plays.
- The format is more decorative than Hollywood, and much less standardized.
- This format should be suitable for workshops.
-\end_layout
-
-\begin_layout Subsection
-Special problems
-\end_layout
-
-\begin_layout Standard
-The same as in Hollywood.
-\end_layout
-
-\begin_layout Subsection
-Special features
-\end_layout
-
-\begin_layout Standard
-Insert the 
-\family sans
-Speaker
-\family default
- names as labels then cross-reference the label to insert the name.
- The cross-reference dialog will show the current cast of characters.
-\end_layout
-
-\begin_layout Subsection
-Paper size and Margins
-\end_layout
-
-\begin_layout Standard
-USLetter, left 1.6in, right 0.75in, top 0.5in, bottom 0.75in
-\end_layout
-
-\begin_layout Subsection
-Environments
-\end_layout
-
-\begin_layout Standard
-The following environments are available.
- You can use broadway.bind to get the bind keys shown at the right.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Standard
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-You should not have to use this, but it is here for anything that does not
- fit otherwise.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Narrative
-\begin_inset space \hfill{}
-\end_inset
-
-M-z n
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Used to describe stage setting and the action.
- First use of speaker names in all CAPs.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-ACT
-\begin_inset space \hfill{}
-\end_inset
-
-M-z a
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Automatically numbered.
- On screen it will be arabic, but will print as Roman.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-ACT*
-\begin_inset space \hfill{}
-\end_inset
-
-M-z S at
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Subtitle for 
-\family sans
-ACT.
-
-\family default
- It is just centered text.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-SCENE
-\begin_inset space \hfill{}
-\end_inset
-
-M-z S-S
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Not automatically numbered.
- You supply the number.
- This is because I couldn't figure out how.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-AT_RISE:
-\begin_inset space \hfill{}
-\end_inset
-
-M-z S-R
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-A special case of Narrative to describe the setting and action as the curtain
- rises.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Speaker
-\begin_inset space \hfill{}
-\end_inset
-
-M-z s
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-The speaker's (actor's) title, centered in all CAPS.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Parenthetical
-\begin_inset space \hfill{}
-\end_inset
-
-M-z p
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Instructions to the speaker.
- The parentheses are automatically inserted.
- The ( will appear on screen, but both will be in the printed play.
- This environment is only used within 
-\family sans
-Dialogue
-\family default
-.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Dialogue
-\begin_inset space \hfill{}
-\end_inset
-
-M-z d
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-What the Speaker says.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-CURTAIN
-\begin_inset space \hfill{}
-\end_inset
-
-M-z S-C
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-The curtain comes down.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Title
-\begin_inset space \hfill{}
-\end_inset
-
-M-z S-T
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Author
-\begin_inset space \hfill{}
-\end_inset
-
-M-z S-A
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Right_Address
-\begin_inset space \hfill{}
-\end_inset
-
-M-z r
-\end_layout
-
-\begin_layout Standard
-Hello there.
-\end_layout
-
-\begin_layout Section
-RevTeX4
-\end_layout
-
-\begin_layout Standard
-by 
-\noun on
-Amir Karger
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-The 
-\family sans
-Revtex
-\begin_inset space ~
-\end_inset
-
-4
-\family default
- textclass works with the American Physical Sociey's RevTeX 4.0 (the 
-\begin_inset Formula $\beta$
-\end_inset
-
- release of May, 1999) class.
-\end_layout
-
-\begin_layout Standard
-LyX has a 
-\family sans
-Revtex
-\family default
- textclass, which works with RevTeX 3.1.
- However, v3.1 is basically obsolete, as it works with LaTeX 2.09.
- That means that it doesn't interact very well with LyX, which requires
- LaTeX2e, although it has been kludged to work.
- Since RevTeX 4.0 has been designed to work much more cleanly with LaTeX2e,
- LyX with the 
-\family sans
-RevTeX
-\begin_inset space ~
-\end_inset
-
-4
-\family default
- textclass should also be pretty easy to use.
-\end_layout
-
-\begin_layout Standard
-These documents are supposed to be used in 
-\emph on
-addition
-\emph default
- to the RevTeX 4.0 documents, so we don't describe any of the special RevTeX
- macros, and assume you'll know what to put in the preamble if necessary.
-\end_layout
-
-\begin_layout Subsection
-Installation
-\end_layout
-
-\begin_layout Standard
-All you need to do is install RevTeX 4, as described in the package's README
- file.
- The package can be found at The RevTeX 4 Web Site 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://publish.aps.org/revtex4/
-\end_layout
-
-\end_inset
-
-.
- Install it somewhere that LaTeX can see it.
- Test it by trying to LaTeX a short RevTeX 4 document in some random directory
- (i.e., not the directory where you installed the class file.) Then, if you
- reconfigure LyX, it will find the class file and let you use the RevTeX4
- textclass.
-\end_layout
-
-\begin_layout Standard
-Probably the easiest way to get started is either to import a RevTeX 4 document
- using 
-\family typewriter
-tex2lyx
-\family default
-, or to use the 
-\family sans
-Revtex
-\begin_inset space ~
-\end_inset
-
-4
-\family default
- template, found in the templates directory.
-\end_layout
-
-\begin_layout Subsection
-Preamble Matter
-\end_layout
-
-\begin_layout Standard
-Optional arguments to 
-\family typewriter
-
-\backslash
-documentclass
-\family default
-, like 
-\begin_inset Quotes eld
-\end_inset
-
-preprint
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
-aps
-\begin_inset Quotes erd
-\end_inset
-
-, go in the 
-\family sans
-E
-\bar under
-x
-\bar default
-tra
-\begin_inset space ~
-\end_inset
-
-Options
-\family default
- field in the 
-\family sans
-Document
-\begin_inset space ~
-\end_inset
-
-Layout
-\family default
- dialog, as usual.
- Remember that in RevTeX, at least one optional argument is required! 
-\end_layout
-
-\begin_layout Standard
-Other preamble matter, like 
-\family typewriter
-
-\backslash
-draft
-\family default
- etc.
-\begin_inset space ~
-\end_inset
-
-goes in the 
-\family sans
-La
-\family default
-T
-\family sans
-eX
-\begin_inset space ~
-\end_inset
-
-Preamble
-\family default
- dialog, also as usual.
-\end_layout
-
-\begin_layout Subsection
-Layouts
-\end_layout
-
-\begin_layout Standard
-The layouts basically correspond to the commands in RevTeX4.0.
- For example, the Email layout corresponds to 
-\family typewriter
-
-\backslash
-email{}
-\family default
-.
- Note that (at least as of RevTeX 4.0 Beta), the 
-\family sans
-Address
-\family default
- and 
-\family sans
-Affiliation
-\family default
- layouts are exactly equivalent, so you shouldn't need to use both.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-In case you're curious, both were included so that 
-\family typewriter
-tex2lyx
-\family default
- would be able to translate both 
-\family typewriter
-
-\backslash
-address
-\family default
- and 
-\family typewriter
-
-\backslash
-affiliation
-\family default
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Important Notes
-\end_layout
-
-\begin_layout Standard
-There are a couple of important unique aspects of RevTeX 4 which might cause
- bugs that will be even more confusing in LyX.
-\end_layout
-
-\begin_layout Standard
-In RevTeX, the 
-\family typewriter
-
-\backslash
-thanks
-\family default
- command goes 
-\emph on
-outside
-\emph default
- the 
-\family typewriter
-
-\backslash
-author
-\family default
- command.
- The LyX equivalent is that there is a separate Thanks layout.
- Do 
-\emph on
-not
-\emph default
- write footnotes in the 
-\family sans
-Author
-\family default
- layout, or weird things may happen.
- See the RevTeX 4 documentation for more details.
-\end_layout
-
-\begin_layout Standard
-Also, the 
-\family sans
-Author
-\begin_inset space ~
-\end_inset
-
-Email
-\family default
-, 
-\family sans
-Author
-\begin_inset space ~
-\end_inset
-
-URL
-\family default
-, and 
-\family sans
-Thanks
-\family default
- layouts must be placed 
-\emph on
-in between
-\emph default
- the 
-\family sans
-Author
-\family default
- layout and the corresponding 
-\family sans
-Address
-\family default
- (or equivalent 
-\family sans
-Affiliation
-\family default
-) layout.
- If you put the 
-\family sans
-Thanks
-\family default
- after the 
-\family sans
-Address
-\family default
-, the LaTeX won't compile.
-\end_layout
-
-\begin_layout Subsection
-Drawbacks
-\end_layout
-
-\begin_layout Standard
-The main problem with this layout is that you can't use the optional arguments
- to layouts like Email and Title.
- (The problem is not unique to this layout; you can't use optional arguments
- to the Section layouts either.) This means that after you export that file
- to LaTeX (which you'll need to do eventually to send it in to APS), you'll
- need to edit the LaTeX file with a text editor to add the optional arguments
- to set, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., the running title for the page headers.
- Lacking these layouts makes the 
-\family typewriter
-
-\backslash
-altaffiliation
-\family default
- (and the equivalent 
-\family typewriter
-
-\backslash
-altaddress
-\family default
-) useless, so the corresponding layouts don't exist, and will have to be
- added by hand.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-Note from JMarc:
-\emph default
- actually, LyX 1.3.0 supports some forms of optional arguments, but this layout
- has not been updated yet to take advantage of it.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Section
-Article (mwart), book (mwbk) and report (mwrep)
-\begin_inset OptArg
-status collapsed
-
-\begin_layout Plain Layout
-The 
-\family typewriter
-mw
-\family default
- Classes
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-by 
-\noun on
-Tomasz Luczak
-\end_layout
-
-\begin_layout Standard
-The LyX document classes 
-\emph on
-article (mwart)
-\emph default
-, 
-\emph on
-report (mwrep)
-\emph default
- and 
-\emph on
-book
-\emph default
- 
-\emph on
-(mwbk)
-\emph default
- correspond to the LaTeX document classes 
-\family typewriter
-mwart.cls
-\family default
-, 
-\family typewriter
-mwrep.cls
-\family default
- and 
-\family typewriter
-mwbk.cls
-\family default
-, resp.
- They are replacements for the standard document classes 
-\family typewriter
-article.cls
-\family default
-, 
-\family typewriter
-report.cls
-\family default
- and 
-\family typewriter
-book.cls
-\family default
-, resp., and fit better to Polish typography conventions in a number of points.
- 
-\end_layout
-
-\begin_layout Standard
-Basic differences:
-\end_layout
-
-\begin_layout Itemize
-Unnumbered titles (with star, eg.
- 
-\family sans
-Section*
-\family default
-) are added into table of contents,
-\end_layout
-
-\begin_layout Itemize
-Additional page styles:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-uheadings header with separated lines,
-\end_layout
-
-\begin_layout Description
-myheadings custom header, contents headers via commands: 
-\family typewriter
-
-\backslash
-markright
-\family default
- and 
-\family typewriter
-
-\backslash
-markboth
-\family default
-,
-\end_layout
-
-\begin_layout Description
-myuheadings custom header with separated lines,
-\end_layout
-
-\begin_layout Description
-outer page number is placed on outer side of page
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Options 
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-rmheadings serif titles --- default,
-\end_layout
-
-\begin_layout Description
-sfheadings sansserif titles,
-\end_layout
-
-\begin_layout Description
-authortitle on title page first placed is author next title --- default,
-\end_layout
-
-\begin_layout Description
-titleauthor on title page first placed is title next author,
-\end_layout
-
-\begin_layout Description
-withmarginpar reserve place on page for margins.
-\end_layout
-
-\end_deeper
-\begin_layout Section
-Elsevier Journals
-\end_layout
-
-\begin_layout Standard
-By 
-\noun on
-Rod Pinna
-\end_layout
-
-\begin_layout Standard
-Elsevier Science Publishers B.V.
- provides a standard LaTeX document class (
-\family typewriter
-elsart.cls
-\family default
-) for submitting articles to their various journals.
- The style file can be downloaded directly from their web site: 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://authors.elsevier.com/
-\end_layout
-
-\end_inset
-
-.
- Instructions are supplied along with the class file, which details the
- requirements of the publishers.
- LyX includes package that allows for the use of this class, by a layout
- and a template file.
- Installation of the class file is the same as for any other LaTeX package;
- instructions are provided in the Elsevier documentation.
-\end_layout
-
-\begin_layout Standard
-To make use of 
-\family typewriter
-elsart.cls
-\family default
-, a file 
-\family typewriter
-elsart.layout
-\family default
- is supplied.
- As the Elsevier class file is based mainly on the standard article class,
- most of the normal functionality is provided.
- The Elsevier class defines a number of mathematical environments, which
- are similar to the AMS environments.
- These commands are all described in the Elsevier documentation, and are
- available in LyX.
-\end_layout
-
-\begin_layout Standard
-The easiest way to use the Elsevier style is to base documents on the included
- template file.
- It is best not to use options such as fancy headings or the geometry package,
- as elements such as these are defined by Elsevier in their style file.
- Ideally, no extra packages except those mentioned in the Elsevier documentation
- should be used.
- Essentially, Elsevier require as 
-\begin_inset Quotes eld
-\end_inset
-
-clean
-\begin_inset Quotes erd
-\end_inset
-
- a LaTeX file as possible, as their intention is to take the supplied file
- and replace the class file with one for the particular journal to which
- the paper has been submitted.
- This also means that not too much time should be spent on the formating
- of the document.
- When it comes to be published, this will change anyway.
- The rest of the usage for this layout is substantially the same as for
- the normal article class.
- For details of what Elsevier do and don't allow, refer to their documentation.
-\end_layout
-
-\begin_layout Section
-Memoir
-\end_layout
-
-\begin_layout Standard
-By 
-\noun on
-Jürgen Spitzmüller
-\end_layout
-
-\begin_layout Subsection
-Overview
-\end_layout
-
-\begin_layout Standard
-Memoir is a very powerful and constantly evolving class.
- It has been designed with regard to fictional and non-fictional literature.
- Its aim is to let the user have maximum control over the typesetting of
- his document.
- Memoir is based on the standard book class, but it can also emulate the
- article class (see below).
-\end_layout
-
-\begin_layout Standard
-Peter Wilson, the developer of Memoir, is known as the author of lots of
- useful packages in the LaTeX world.
- Most of them have been merged with Memoir.
- Therefore, it is much easier to layout the table of contents, appendices,
- chapter designs and such.
- LyX, though, does not support all of these goodies natively.
- Some of them might be added to forthcoming releases
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-You are invited to send suggestions to 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-lyx-devel@lists.lyx.org
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-, lots will probably never, due to the limitations of LyX's framework.
- Of course you can still use all features with the help of some native LaTeX
- commands (ERT
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Cf.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Inserting-TeX-Code"
-
-\end_inset
-
- for details.
-\end_layout
-
-\end_inset
-
-).
- In this section, we can only list those features which are natively supported
- by LyX.
- For detailed descriptions (and for the rest of features) we are recommending
- to have a look at the detailed manual of the Memoir class
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Cf.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-CTAN:/macros/latex/memoir/memman.pdf
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-, which is not only a user guide for the class, but also both a comprehensive
- description on good typesetting and a superb example for good typesetting
- itself.
-\end_layout
-
-\begin_layout Subsection
-Basic features and restrictions
-\end_layout
-
-\begin_layout Standard
-Memoir supports basically all features of the standard book classes.
- There are, however, some differences, as follows:
-\end_layout
-
-\begin_layout Description
-Font
-\begin_inset space ~
-\end_inset
-
-sizes: Memoir has a broader range of font sizes: 9, 10, 11, 12, 14, 17
-\end_layout
-
-\begin_layout Description
-Page
-\begin_inset space ~
-\end_inset
-
-style: The fancy page style is not supported, due to a command clash between
- Memoir and the fancyhdr package (they are both defining a command with
- the same name, which confuses LaTeX).
- Instead, Memoir comes with a bunch of own page styles (see 
-\family sans
-Layout\SpecialChar \menuseparator
-Document\SpecialChar \menuseparator
-Page
-\begin_inset space ~
-\end_inset
-
-Style
-\family default
-).
- If you want to use these for the chapter pages, you have to use the command
- 
-\family typewriter
-
-\backslash
-chapterstyle
-\family default
- in the main text or in preamble (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
-\end_inset
-
-
-\family typewriter
-
-\backslash
-chapterstyle{companion}
-\family default
-).
-\end_layout
-
-\begin_layout Description
-Sectioning: Sectionings (chapter, section, subsection etc.) are coming with
- an optional argument in the standard classes.
- With this, you can specify an alternative version of the title for the
- table of contents and the headers (for instance, if the title is too long).
- In LyX, you can do this via 
-\family sans
-Insert\SpecialChar \menuseparator
-Short
-\begin_inset space ~
-\end_inset
-
-Title
-\family default
- at the beginning of a chapter/section.
- Memoir features a second optional argument and thus separates the table
- of contents from the header.
- You can define three variants of a title with this: one for the main text,
- one for the table of contents, and one for the headers.
- Simply insert two optional arguments if you need this feature, the first
- one containing the short title for the Table of Contents, the second one
- containing an alternative short title for the headers.
-\end_layout
-
-\begin_layout Description
-TOC/LOT/LOF: In the standard classes (and in many other classes), the table
- of contents, the list of figures and the list of table start a new page
- automatically.
- Memoir does not follow this route.
- You have to insert a page break yourself, if you want to have one.
-\end_layout
-
-\begin_layout Description
-Titlepage: For some unknown reason, Memoir uses pagination on the title
- page (in the standard classes, title pages are 
-\begin_inset Quotes eld
-\end_inset
-
-empty
-\begin_inset Quotes erd
-\end_inset
-
-, i
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space ~
-\end_inset
-
-without pagina).
- If you want an empty title page, type 
-\family typewriter
-
-\backslash
-aliaspagestyle{title}{empty}
-\family default
- in the preamble.
-\end_layout
-
-\begin_layout Description
-Article: With the class option 
-\emph on
-article
-\emph default
- (to be inserted in 
-\family sans
-Layout\SpecialChar \menuseparator
-Document\SpecialChar \menuseparator
-Extra
-\begin_inset space ~
-\end_inset
-
-Options
-\family default
-), you can emulate article style.
- That is, counters (footnotes, figures, tables etc.) will not be reset on
- new chapters, chapters don't start a new page (but are---in contrary to
- 
-\begin_inset Quotes eld
-\end_inset
-
-real
-\begin_inset Quotes erd
-\end_inset
-
- article classes---still allowed), parts, though, use their own page, as
- in book.
-\end_layout
-
-\begin_layout Description
-Oldfontcommands: By default, Memoir does not allow the use of the deprecated
- font commands, which have been used in the old LaTeX version 2.09 (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
-\end_inset
-
-
-\family typewriter
-
-\backslash
-rm
-\family default
-, 
-\family typewriter
-
-\backslash
-it
-\family default
-).
- It produces an error and stops LaTeX whenever such a command appears.
- The class option 
-\emph on
-oldfontcommands
-\emph default
- reallows the commands and spits out warnings instead (which does at least
- not stop LaTeX).
- Since a lot of packages and particularly BibTeX style files are still using
- those commands, we have decided to use this option by default.
-\end_layout
-
-\begin_layout Subsection
-Extra features
-\end_layout
-
-\begin_layout Standard
-We will only describe the features supported by LyX (which is not much currently
-).
- Please consult the Memoir manual
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Cf.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-CTAN:/macros/latex/memoir/memman.pdf
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- for details.
-\end_layout
-
-\begin_layout Description
-Abstract: You may wonder why an abstract is an extra feature.
- Well, it is in book class.
- Usually books don't have abstracts.
- Memoir, however, has.
- You can use it wherever and how often you like.
-\end_layout
-
-\begin_layout Description
-Chapterprecis: You may know this from belletristic: The contents of a chapter
- is shortly described below the title and also in the table of contents
- (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
-\end_inset
-
-
-\emph on
-Our hero arrives in Troia; he loses some friends; he finds others
-\emph default
-).
- Chapterprecis does exactly this.
- It is therefore only sensible below a chapter.
-\end_layout
-
-\begin_layout Description
-Epigraph: An epigraph is a smart slogan or motto at the beginning of a chapter.
- The epigraph environment provides an elegant way of typesetting such a
- motto.
- The motto itself (text) and its author (source) are divided by a short
- line.
- Unfortunately, we have to fool LyX a bit here again, since the environment
- needs two arguments (text and source).
- In this case, we have to use curly brackets (in TeX mode) between the two
- arguments: 
-\emph on
-<smart slogan>
-\emph default
- 
-\family typewriter
-}{
-\family default
- 
-\emph on
-<author of the slogan>.
-\end_layout
-
-\begin_layout Description
-Poemtitle: Memoir has lots of possibilities to typeset poetry (up to very
- complex figurative poems).
- LyX can only support a few of them.
- One is poemtitle, which is a centered title for poems, which will also
- be added to the table of contents (verse is the standard environment for
- poems.
- Memoir has some enhanced versions of verse, but you need to use ERT, because
- they have to be nested inside regular verse environments, which is not
- possible with LyX).
-\end_layout
-
-\begin_layout Description
-Poemtitle*: Same as poemtitle, but it adds no entry to the table of contents.
 \end_layout
 
 \begin_layout Chapter
