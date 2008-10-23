@@ -184,6 +184,11 @@ private:
 	std::list<modInfoStruct> const & getModuleInfo();
 	/// Modules in use in current buffer
 	std::list<modInfoStruct> const getSelectedModules();
+ 	///
+	std::list<modInfoStruct> const getProvidedModules();
+	///
+	std::list<modInfoStruct> const 
+			makeModuleInfo(std::list<std::string> const & mods);
 	///
 	void setLanguage() const;
 	///

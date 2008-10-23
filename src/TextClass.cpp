@@ -61,7 +61,7 @@ private:
 };
 
 
-int const FORMAT = 10;
+int const FORMAT = 11;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)
@@ -183,7 +183,9 @@ enum TextClassTags {
 	TC_TITLELATEXTYPE,
 	TC_FORMAT,
 	TC_ADDTOPREAMBLE,
-	TC_USEMODULE
+	TC_DEFAULTMODULE,
+	TC_PROVIDESMODULE,
+	TC_EXCLUDESMODULE
 };
 
 
@@ -195,7 +197,9 @@ namespace {
 		{ "columns",         TC_COLUMNS },
 		{ "counter",         TC_COUNTER },
 		{ "defaultfont",     TC_DEFAULTFONT },
+		{ "defaultmodule",   TC_DEFAULTMODULE },
 		{ "defaultstyle",    TC_DEFAULTSTYLE },
+		{ "excludesmodule",  TC_EXCLUDESMODULE },
 		{ "float",           TC_FLOAT },
 		{ "format",          TC_FORMAT },
 		{ "input",           TC_INPUT },
@@ -207,6 +211,7 @@ namespace {
 		{ "pagestyle",       TC_PAGESTYLE },
 		{ "preamble",        TC_PREAMBLE },
 		{ "provides",        TC_PROVIDES },
+		{ "providesmodule",  TC_PROVIDESMODULE },
 		{ "requires",        TC_REQUIRES },
 		{ "rightmargin",     TC_RIGHTMARGIN },
 		{ "secnumdepth",     TC_SECNUMDEPTH },
@@ -214,8 +219,7 @@ namespace {
 		{ "style",           TC_STYLE },
 		{ "titlelatexname",  TC_TITLELATEXNAME },
 		{ "titlelatextype",  TC_TITLELATEXTYPE },
-		{ "tocdepth",        TC_TOCDEPTH },
-		{ "usemodule",       TC_USEMODULE }
+		{ "tocdepth",        TC_TOCDEPTH }
 	};
 	
 } //namespace anon
@@ -489,11 +493,32 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			break;
 		}
 
-		case TC_USEMODULE: {
+		case TC_DEFAULTMODULE: {
 			lexrc.next();
 			string const module = lexrc.getString();
-			if (find(usemod_.begin(), usemod_.end(), module) == usemod_.end())
-				usemod_.push_back(module);
+			if (find(default_modules_.begin(), default_modules_.end(), module) == default_modules_.end())
+				default_modules_.push_back(module);
+			break;
+		}
+
+		case TC_PROVIDESMODULE: {
+			lexrc.next();
+			string const module = lexrc.getString();
+			if (find(provided_modules_.begin(), provided_modules_.end(), module) == provided_modules_.end())
+				provided_modules_.push_back(module);
+			break;
+		}
+
+		case TC_EXCLUDESMODULE: {
+			lexrc.next();
+			string const module = lexrc.getString();
+			// modules already have their own way to exclude other modules
+			if (rt == MODULE) {
+				LYXERR0("ExcludesModule tag cannot be used in a module!");
+				break;
+			}
+			if (find(excluded_modules_.begin(), excluded_modules_.end(), module) == excluded_modules_.end())
+				excluded_modules_.push_back(module);
 			break;
 		}
 

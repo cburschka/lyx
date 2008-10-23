@@ -249,6 +249,12 @@ public:
 	: GuiSelectionManager(availableLV, selectedLV, addPB, delPB,
 				upPB, downPB, availableModel, selectedModel), container_(container)
 		{}
+	///
+	void updateProvidedModules(std::list<std::string> const & pm) 
+			{ provided_modules_ = pm; }
+	///
+	void updateExcludedModules(std::list<std::string> const & em) 
+			{ excluded_modules_ = em; }
 private:
 	///
 	virtual void updateAddPB();
@@ -268,6 +274,10 @@ private:
 	{
 		return dynamic_cast<GuiIdListModel *>(selectedModel);
 	}
+	/// keeps a list of the modules the text class provides
+	std::list<std::string> provided_modules_;
+	/// similarly...
+	std::list<std::string> excluded_modules_;
 	/// 
 	GuiDocument const * container_;
 };
@@ -1339,8 +1349,6 @@ void GuiDocument::classChanged()
 	// class. So when we set the base class, we also need to recreate the document 
 	// class. Otherwise, we still have the old one.
 	bp_.makeDocumentClass();
-	// the new class may require some default modules.
-	updateSelectedModules();
 	paramsToDialog();
 }
 
@@ -1446,6 +1454,13 @@ void GuiDocument::updateModuleInfo()
 			focus_on_selected  ? modules_sel_model_ : modules_av_model_;
 	string const modName = id_model.getIDString(idx.row());
 	docstring desc = getModuleDescription(modName);
+
+	list<string> const & provmods = bp_.baseClass()->providedModules();
+	if (std::find(provmods.begin(), provmods.end(), modName) != provmods.end()) {
+		if (!desc.empty())
+			desc += "\n";
+		desc += _("Module provided by document class.");
+	}
 
 	vector<string> pkglist = getPackageList(modName);
 	docstring pkgdesc = formatStrVec(pkglist, _("and"));
@@ -2003,6 +2018,11 @@ void GuiDocument::paramsToDialog()
 	// latex
 	latexModule->defaultOptionsCB->setChecked(
 			bp_.use_default_options);
+	updateSelectedModules();
+	selectionManager->updateProvidedModules(
+			bp_.baseClass()->providedModules());
+	selectionManager->updateExcludedModules(
+			bp_.baseClass()->excludedModules());
 
 	if (!documentClass().options().empty()) {
 		latexModule->defaultOptionsLE->setText(
@@ -2249,7 +2269,6 @@ bool GuiDocument::initialiseParams(string const &)
 	bp_ = view->buffer().params();
 	loadModuleInfo();
 	updateAvailableModules();
-	updateSelectedModules();
 	//FIXME It'd be nice to make sure here that the selected
 	//modules are consistent: That required modules are actually
 	//selected, and that we don't have conflicts. If so, we could
@@ -2278,9 +2297,9 @@ list<GuiDocument::modInfoStruct> const & GuiDocument::getModuleInfo()
 }
 
 
-list<GuiDocument::modInfoStruct> const GuiDocument::getSelectedModules()
+list<GuiDocument::modInfoStruct> const 
+		GuiDocument::makeModuleInfo(list<string> const & mods)
 {
-	list<string> const & mods = params().getModules();
 	list<string>::const_iterator it =  mods.begin();
 	list<string>::const_iterator end = mods.end();
 	list<modInfoStruct> mInfo;
@@ -2295,6 +2314,18 @@ list<GuiDocument::modInfoStruct> const GuiDocument::getSelectedModules()
 		mInfo.push_back(m);
 	}
 	return mInfo;
+}
+
+
+list<GuiDocument::modInfoStruct> const GuiDocument::getSelectedModules()
+{
+	return makeModuleInfo(params().getModules());
+}
+
+
+list<GuiDocument::modInfoStruct> const GuiDocument::getProvidedModules()
+{
+	return makeModuleInfo(params().baseClass()->providedModules());
 }
 
 

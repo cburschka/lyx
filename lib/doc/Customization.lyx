@@ -5994,6 +5994,12 @@ default
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Layout-modules"
+
+\end_inset
+
 Layout modules
 \end_layout
 
@@ -7123,6 +7129,43 @@ EndFont
 status collapsed
 
 \begin_layout Plain Layout
+DefaultModule
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+string]
+\end_layout
+
+\end_inset
+
+ Specifies a module to be included by default with this document class,
+ which should be specified by filename without the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+.module
+\end_layout
+
+\end_inset
+
+ extension.
+ The user can still remove the module, but it will be active at the outset.
+ (This applies only when new files are created, or when this class is chosen
+ for an existing document.)
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 DefaultStyle
 \end_layout
 
@@ -7151,6 +7194,65 @@ Standard
 .
  This will default to the first defined style if not given, but you are
  highly encouraged to use this directive.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+ExcludesModule
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Indicates that the module in question---which should be specified by filename
+ without the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+.module
+\end_layout
+
+\end_inset
+
+ extension---cannot be used with this document class.
+ This might be used in a journal-specific layout file to prevent, say, the
+ use of the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+theorems-sec
+\end_layout
+
+\end_inset
+
+ module that numbers theorems by section.
+ This tag may 
+\emph on
+not
+\emph default
+ be used in a module.
+ Modules have their own way of excluding other modules (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Layout-modules"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Description
@@ -7593,6 +7695,55 @@ aTeX Configuration
 status collapsed
 
 \begin_layout Plain Layout
+ProvidesModule
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Indicates that this layout provides the functionality of the module mentioned,
+ which should be specified by filename, which should be specified by filename
+ without the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+.module
+\end_layout
+
+\end_inset
+
+ extension.
+ This will typically be used if the layout includes the module directly,
+ rather than using the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+DefaultModule
+\end_layout
+
+\end_inset
+
+ tag to indicate that it ought to be used.
+ It could be used in a module that that provided an alternate implementation
+ of the same functionality.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 Requires
 \end_layout
 
@@ -7942,32 +8093,6 @@ tocdepth
 \end_inset
 
  counter in LaTeX.
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-UseModule
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-string]
-\end_layout
-
-\end_inset
-
- Specifies a module to be included by default with this document class.
- The user can still remove the module, but it will be active at the outset.
- (This applies only when new files are created, or when this class is chosen
- for an existing document.)
 \end_layout
 
 \begin_layout Subsection

@@ -36,7 +36,10 @@ import os, re, string, sys
 # Incremented to format 10, 6 October 2008 by rgh
 # Change format of counters
 
-currentFormat = 10
+# Incremented to format 11, 14 October 2008 by rgh
+# Add ProvidesModule, ExcludesModule tags
+
+currentFormat = 11
 
 
 def usage(prog_name):
@@ -98,6 +101,7 @@ def convert(lines):
     re_Comment = re.compile(r'^(\s*)#')
     re_Counter = re.compile(r'\s*Counter\s*', re.IGNORECASE)
     re_Name = re.compile(r'\s*Name\s+(\S+)\s*', re.IGNORECASE)
+    re_UseMod = re.compile(r'^\s*UseModule\s+(.*)', re.IGNORECASE)
     re_Empty = re.compile(r'^(\s*)$')
     re_Format = re.compile(r'^(\s*)(Format)(\s+)(\S+)', re.IGNORECASE)
     re_Preamble = re.compile(r'^(\s*)Preamble', re.IGNORECASE)
@@ -191,6 +195,14 @@ def convert(lines):
             i += 1
             while i < len(lines) and not re_EndPreamble.match(lines[i]):
                 i += 1
+            continue
+
+        if format == 10:
+            match = re_UseMod.match(lines[i])
+            if match:
+                module = match.group(1)
+                lines[i] = "DefaultModule " + module
+            i += 1
             continue
 
         if format == 9:

@@ -10,7 +10,7 @@
 # Modified from  amsart.layout May '08 by Andrew Corrigan <acorriga@gmu.edu>
 
 
-Format 10
+Format 11
 Columns                 1
 Sides                   2
 PageStyle               Headers
@@ -21,10 +21,11 @@ ClassOptions
 	FontSize   8|9|10|11|12
 End
 
-# FIXME: this is not ideal, but we cannot
-# load the module regularly, because we 
-# have to disable some layouts (see below)
+# We need to load the module this way 
+# so we can disable some layouts below.
 Input theorems-ams.module
+ProvidesModule theorems-ams
+ExcludesModule theorems-ams-extended
 
 Style Standard
 	Category              MainText

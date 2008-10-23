@@ -1503,6 +1503,105 @@ void BufferParams::addDefaultModules()
 }
 
 
+bool BufferParams::checkModuleConsistency() {
+	bool consistent = true;
+	// Perform a consistency check on the set of modules.
+	// In particular, we need to check that modules provided by this class
+	// do not conflict with modules chosen by the user.
+	list<string> oldModules = getModules();
+	clearLayoutModules();
+	list<string>::const_iterator oit = oldModules.begin();
+	list<string>::const_iterator oen = oldModules.end();
+	list<string> const & provmods = baseClass()->providedModules();
+	list<string> const & exclmods = baseClass()->excludedModules();
+	for (; oit != oen; ++oit) {
+		string const & modname = *oit;
+		// skip modules that the class provides
+		if (find(provmods.begin(), provmods.end(), modname) != provmods.end()) {
+			consistent = false;
+			LYXERR0("Module " << modname << " dropped because provided by document class.");
+			continue;
+		}
+		// are we excluded by the document class?
+		if (find(exclmods.begin(), exclmods.end(), modname) != exclmods.end()) {
+			consistent = false;
+			LYXERR0("Module " << modname << " dropped because excluded by document class.");
+			continue;
+		}
+
+		// determine whether some provided module excludes us or we exclude it
+		list<string>::const_iterator pit = provmods.begin();
+		list<string>::const_iterator pen = provmods.end();
+		bool excluded = false;
+		for (; !excluded && pit != pen; ++pit) {
+			if (!LyXModule::areCompatible(modname, *pit)) {
+				consistent = false;
+				LYXERR0("Module " << modname << 
+						" dropped becuase it conflicts with provided module " << *pit);
+				excluded = true;
+			}
+		}
+
+		if (excluded)
+			continue;
+
+		// Determine whether some prior module excludes us, or we exclude it
+		list<string>::const_iterator lit = layoutModules_.begin();
+		list<string>::const_iterator len = layoutModules_.end();
+		for (; !excluded && lit != len; ++lit) {
+			if (!LyXModule::areCompatible(modname, *lit)) {
+				consistent = false;
+				LYXERR0("Module " << modname << 
+						" dropped because it is excluded by prior module " << *lit);
+				excluded = true;
+			}
+		}
+
+		if (excluded)
+			continue;
+
+		// determine whether some provided module or some prior module
+		// satisfies our requirements
+		LyXModule const * const oldmod = moduleList[modname];
+		if (!oldmod) {
+			LYXERR0("Default module " << modname << 
+					" added although it is unavailable and can't check requirements.");
+			continue;
+		}
+			
+		vector<string> const & reqs = oldmod->getRequiredModules();
+		if (!reqs.empty()) {
+			// we now set excluded to true, meaning that we haven't
+			// yet found a required module.
+			excluded = true;
+			vector<string>::const_iterator rit  = reqs.begin();
+			vector<string>::const_iterator ren = reqs.end();
+			for (; rit != ren; ++rit) {
+				string const reqmod = *rit;
+				if (find(provmods.begin(), provmods.end(), reqmod) != 
+						provmods.end()) {
+					excluded = false;
+					break;
+				}
+				if (find(layoutModules_.begin(), layoutModules_.end(), reqmod) != 
+						layoutModules_.end()) {
+					excluded = false;
+					break;
+				}
+			}
+		}
+		if (excluded) {
+			consistent = false;
+			LYXERR0("Module " << modname << " dropped because requirements not met.");
+		} else {
+			LYXERR(Debug::TCLASS, "Module " << modname << " passed consistency check.");
+			layoutModules_.push_back(modname);
+		}
+	}
+	return consistent;
+}
+
+
 bool BufferParams::setBaseClass(string const & classname)
 {
 	LYXERR(Debug::TCLASS, "setBaseClass: " << classname);
@@ -1529,6 +1628,7 @@ bool BufferParams::setBaseClass(string const & classname)
 
 	pimpl_->baseClass_ = classname;
 	addDefaultModules();
+	checkModuleConsistency();
 
 	return true;
 }
@@ -1611,9 +1711,32 @@ bool BufferParams::moduleCanBeAdded(string const & modName) const
 	if (!lm)
 		return true;
 
+	// Is this module explicitly excluded by the document class?
+	list<string>::const_iterator const exclmodstart = 
+			baseClass()->excludedModules().begin();
+	list<string>::const_iterator const exclmodend = 
+			baseClass()->excludedModules().end();
+	if (find(exclmodstart, exclmodend, modName) != exclmodend)
+		return false;
+
+	// Is this module already provided by the document class?
+	list<string>::const_iterator const provmodstart = 
+			baseClass()->providedModules().begin();
+	list<string>::const_iterator const provmodend = 
+			baseClass()->providedModules().end();
+	if (find(provmodstart, provmodend, modName) != provmodend)
+		return false;
+
+	// Check for conflicts with used modules
+	// first the provided modules...
+	list<string>::const_iterator provmodit = provmodstart;
+	for (; provmodit != provmodend; ++provmodit) {
+		if (!LyXModule::areCompatible(modName, *provmodit))
+			return false;
+	}
+	// and then the selected modules
 	LayoutModuleList::const_iterator mit = getModules().begin();
 	LayoutModuleList::const_iterator const men = getModules().end();
-	// Check for conflicts with used modules
 	for (; mit != men; ++mit)
 		if (!LyXModule::areCompatible(modName, *mit))
 			return false;
@@ -1628,7 +1751,8 @@ bool BufferParams::moduleCanBeAdded(string const & modName) const
 	vector<string>::const_iterator ren = reqs.end();
 	bool foundone = false;
 	for (; rit != ren; ++rit) {
-		if (find(mit, men, *rit) != men) {
+		if (find(mit, men, *rit) != men || 
+		    find(provmodstart, provmodend, *rit) != provmodend) {
 			foundone = true;
 			break;
 		}

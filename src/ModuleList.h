@@ -40,6 +40,9 @@ namespace lyx {
  *  The description is used in the gui to give information to the user. The
  *  Requires and Excludes lines are read by the configuration script and
  *  written to a file lyxmodules.lst in the user configuration directory.
+ *
+ *  Modules can also be "provided" or "excluded" by document classes, using
+ *  the ProvidesModule and ExcludesModule tags.
  */
 
 class LyXModule {
