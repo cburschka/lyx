@@ -100,7 +100,7 @@ Input stdstruct.inc
 
 Style Title
 	CopyStyle		Title
-	AlignPossible		None
+	AlignPossible		Block
 End
 
 
@@ -108,27 +108,26 @@ Style Subtitle
 	CopyStyle		Title
 	LatexName		subtitle
 	Font
-	  Size                Larger
+	  Size			Larger
 	EndFont
 End
 
 
 # overwrite the Author definition from stdtitle.inc
 Style Author
-	Margin                Static
-	LatexType             Command
-	InTitle               1
-	LatexName             authorinfo
-	LabelSep              xxx
-	ParSkip               0.4
-	TopSep                1.3
-	BottomSep             0.7
-	ParSep                0.7
-	Align                 Center
-	AlignPossible         None
-	LabelType             No_Label
+	Margin			Static
+	LatexType		Command
+	InTitle			1
+	LatexName		authorinfo
+	LabelSep		xxx
+	ParSkip			0.4
+	TopSep			1.3
+	BottomSep		0.7
+	ParSep			0.7
+	Align			Center
+	LabelType		No_Label
 	Font
-	  Size                Large
+	  Size			Large
 	EndFont
 End
 
