@@ -398,6 +398,11 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		int const w = textwidth + rb - lb;
 		int const mD = fm.maxDescent();
 		int const h = mA + mD;
+		if (w <= 0 || h <= 0) {
+			LYXERR(Debug::PAINTING, "Invalid pixmap cache image for '" << s << "' h=" << h << " w=" << w);
+			return textwidth;
+		}
+
 		pm = QPixmap(w, h);
 		pm.fill(Qt::transparent);
 		GuiPainter p(&pm);
