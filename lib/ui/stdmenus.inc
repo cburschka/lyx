@@ -525,9 +525,17 @@ Menuset
 		Item "LyX Functions|y" "help-open LFUNs"
 		Item "Table of Contents|a" "help-open TOC"
 		Item "LaTeX Configuration|L" "help-open LaTeXConfig"
+		Submenu "Specific Manuals|p" "examples"
 		Separator
 		Item "About LyX|X" "dialog-show aboutlyx"
 	End
+
+	Menu "examples"
+		Item "Linguistics manual|L" "help-open ../examples/linguistics.lyx"
+		Item "Braille manual|B" "help-open ../examples/Braille.lyx"
+		Item "XY-pic manual|X" "help-open ../examples/xypic.lyx"
+	End
+
 
 End
 
