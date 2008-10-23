@@ -628,9 +628,9 @@ def processLayoutFile(file, bool_docbook):
                 opt = classname
             return '"%s" "%s" "%s" "%s"\n' % (classname, opt, desc, avai)
     print "Layout file " + file + " has no \DeclareXXClass line. "
-    sys.exit(2)
+    return ""
 
-    
+
 def checkLatexConfig(check_config, bool_docbook):
     ''' Explore the LaTeX configuration 
         Return None (will be passed to sys.exit()) for success.
@@ -670,7 +670,9 @@ def checkLatexConfig(check_config, bool_docbook):
             # make sure the same class is not considered twice
             if foundClasses.count(cleanclass) == 0: # not found before
                 foundClasses.append(cleanclass)
-                tx.write(processLayoutFile(file, bool_docbook))
+                retval = processLayoutFile(file, bool_docbook)
+                if retval != "":
+                    tx.write(retval)
         tx.close()
         print '\tdone'
     if not check_config:
@@ -762,7 +764,9 @@ def checkModulesConfig():
       print file
       if not os.path.isfile(file): 
           continue
-      tx.write(processModuleFile(file, bool_docbook))
+      retval = processModuleFile(file, bool_docbook)
+      if retval != "":
+          tx.write(retval)
   tx.close()
   print '\tdone'
 
@@ -830,7 +834,7 @@ def processModuleFile(file, bool_docbook):
     if modname != "":
         return '"%s" "%s" "%s" "%s" "%s" "%s"\n' % (modname, filename, desc, pkgs, req, excl)
     print "Module file without \DeclareLyXModule line. "
-    sys.exit(2)
+    return ""
 
 
 def checkTeXAllowSpaces():
