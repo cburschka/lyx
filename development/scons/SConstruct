@@ -700,7 +700,7 @@ if platform_name == 'cygwin':
 #
 # install customized builders
 env['BUILDERS']['substFile'] = Builder(action = utils.env_subst)
-env['BUILDERS']['installTOC'] = Builder(action = utils.env_toc)
+#env['BUILDERS']['installTOC'] = Builder(action = utils.env_toc)
 env['BUILDERS']['potfiles'] = Builder(action = utils.env_potfiles)
 
 
@@ -2000,20 +2000,6 @@ if 'install' in BUILD_TARGETS or 'installer' in BUILD_TARGETS:
         '$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in')
     Alias('install', share_dest_dir + '/lyx2lyx/lyx2lyx_version.py')
     sys.path.append(share_dest_dir + '/lyx2lyx')
-    
-    # generate TOC files for each doc
-    languages = depend.all_documents(env.Dir('$TOP_SRCDIR/lib/doc').abspath)
-    tocs = []
-    for lang in languages.keys():
-        if os.path.isdir(os.path.join(env.Dir('$TOP_SRCDIR/lib/doc').abspath, lang)):
-            toc = env.installTOC(os.path.join(share_dest_dir, 'doc', lang, 'TOC.lyx'),
-                languages[lang])
-        else:
-            # this is for English
-            toc = env.installTOC(os.path.join(share_dest_dir, 'doc', 'TOC.lyx'),
-                languages[lang])
-        tocs.append(toc)
-    Alias('install', tocs)
     
     if platform_name == 'cygwin':
         # cygwin packaging requires a file /usr/share/doc/Cygwin/foot-vendor-suffix.README
