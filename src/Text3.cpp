@@ -1414,6 +1414,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		doInsertInset(cur, this, cmd, true, true);
 		cur.posForward();
 
+		// If some text is moved into the inset, doInsertInset 
+		// puts the cursor outside the inset. To insert the
+		// caption we put it back into the inset.
 		if (content)
 			cur.backwardPos();
 
