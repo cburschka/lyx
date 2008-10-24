@@ -366,31 +366,24 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		return textwidth;
 	}
 
-	if (!use_pixmap_cache_) {
-		// don't use the pixmap cache,
-		// draw directly onto the painting device
-		setQPainterPen(computeColor(f.realColor()));
-		if (font() != ff)
-			setFont(ff);
-		// We need to draw the text as LTR as we use our own bidi code.
-		QPainter::setLayoutDirection(Qt::LeftToRight);
-		drawText(x, y, str);
-		//LYXERR(Debug::PAINTING, "draw " << string(str.toUtf8())
-		//	<< " at " << x << "," << y);
-		return textwidth;
-	}
+	if (use_pixmap_cache_) {
+		QPixmap pm;
+		QString key = generateStringSignature(str, f);
 
-	QPixmap pm;
-	QString key = generateStringSignature(str, f);
-	// Warning: Left bearing is in general negative! Only the case
-	// where left bearing is negative is of interest WRT the the 
-	// pixmap width and the text x-position.
-	// Only the left bearing of the first character is important
-	// as we always write from left to right, even for
-	// right-to-left languages.
-	int const lb = min(fm.lbearing(s[0]), 0);
-	int const mA = fm.maxAscent();
-	if (!QPixmapCache::find(key, pm)) {
+		// Warning: Left bearing is in general negative! Only the case
+		// where left bearing is negative is of interest WRT the
+		// pixmap width and the text x-position.
+		// Only the left bearing of the first character is important
+		// as we always write from left to right, even for
+		// right-to-left languages.
+		int const lb = min(fm.lbearing(s[0]), 0);
+		int const mA = fm.maxAscent();
+		if (QPixmapCache::find(key, pm)) {
+			// Draw the cached pixmap.
+			drawPixmap(x + lb, y - mA, pm);
+			return textwidth;
+		}
+
 		// Only the right bearing of the last character is
 		// important as we always write from left to right,
 		// even for right-to-left languages.
@@ -398,28 +391,34 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		int const w = textwidth + rb - lb;
 		int const mD = fm.maxDescent();
 		int const h = mA + mD;
-		if (w <= 0 || h <= 0) {
-			LYXERR(Debug::PAINTING, "Invalid pixmap cache image for '" << s << "' h=" << h << " w=" << w);
+		if (w > 0 && h > 0) {
+			pm = QPixmap(w, h);
+			pm.fill(Qt::transparent);
+			GuiPainter p(&pm);
+			p.setQPainterPen(computeColor(f.realColor()));
+			if (p.font() != ff)
+				p.setFont(ff);
+			// We need to draw the text as LTR as we use our own bidi code.
+			p.setLayoutDirection(Qt::LeftToRight);
+			p.drawText(-lb, mA, str);
+			QPixmapCache::insert(key, pm);
+			//LYXERR(Debug::PAINTING, "h=" << h << "  mA=" << mA << "  mD=" << mD
+			//	<< "  w=" << w << "  lb=" << lb << "  tw=" << textwidth
+			//	<< "  rb=" << rb);
 			return textwidth;
 		}
-
-		pm = QPixmap(w, h);
-		pm.fill(Qt::transparent);
-		GuiPainter p(&pm);
-		p.setQPainterPen(computeColor(f.realColor()));
-		if (p.font() != ff)
-			p.setFont(ff);
-		// We need to draw the text as LTR as we use our own bidi code.
-		p.setLayoutDirection(Qt::LeftToRight);
-		p.drawText(-lb, mA, str);
-		QPixmapCache::insert(key, pm);
-		//LYXERR(Debug::PAINTING, "h=" << h << "  mA=" << mA << "  mD=" << mD
-		//	<< "  w=" << w << "  lb=" << lb << "  tw=" << textwidth 
-		//	<< "  rb=" << rb);
 	}
-	// Draw the cached pixmap.
-	drawPixmap(x + lb, y - mA, pm);
 
+	// don't use the pixmap cache,
+	// draw directly onto the painting device
+	setQPainterPen(computeColor(f.realColor()));
+	if (font() != ff)
+		setFont(ff);
+	// We need to draw the text as LTR as we use our own bidi code.
+	QPainter::setLayoutDirection(Qt::LeftToRight);
+	drawText(x, y, str);
+	//LYXERR(Debug::PAINTING, "draw " << string(str.toUtf8())
+	//	<< " at " << x << "," << y);
 	return textwidth;
 }
 
