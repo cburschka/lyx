@@ -2075,10 +2075,7 @@ lib_doc_clipart_files = Split('''
 
 lib_doc_extra_files = Split('''
     Makefile.am
-    Makefile.depend
     README.Documentation
-    depend.py
-    doc_toc.py
 ''')
 
 

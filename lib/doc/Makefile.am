@@ -1,8 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-DISTCLEANFILES += $(tocfiles)
-
-EXTRA_DIST = depend.py doc_toc.py README.Documentation $(DEPENDFILE)
+EXTRA_DIST = README.Documentation
 
 docdir = $(pkgdatadir)/doc
 dist_doc_DATA = \
@@ -282,37 +280,7 @@ doc_files = \
 	    $(dist_svdoc_DATA) \
 	    $(dist_ukdoc_DATA)
 
-DEPENDFILE = $(srcdir)/Makefile.depend
-# include $(DEPENDFILE) does not work because automake is too limited.
-include $(srcdir)/Makefile.depend
-
-TOCs : $(DEPENDFILE) $(tocfiles)
-	@echo Made TOCs succesfully.
-
-# Force regeneration of $(DEPENDFILE) when Makefile.am changes because
-# new doc files might have been added
-$(DEPENDFILE): $(srcdir)/Makefile.am $(srcdir)/depend.py
-	python $(srcdir)/depend.py > $(DEPENDFILE)
-
-# The TOCs are not built for the install and dist targets if they don't exist
-# for some weird reason.
-# Make complains although we have rules for them in $(DEPENDFILE), so we
-# must not include the TOCs in $(docfiles) and have to use the install and
-# dist hooks below.
-dist-hook: $(tocfiles)
-	for i in $(tocfiles); \
-	do \
-		if test -f "$(srcdir)/$$i"; then file="$(srcdir)/$$i"; \
-		else file="$$i"; fi; \
-		cp -p "$$file" "$(distdir)"; \
-	done
-install-data-hook: $(tocfiles)
-	for i in $(tocfiles); \
-	do \
-		if test -f "$(srcdir)/$$i"; then file="$(srcdir)/$$i"; \
-		else file="$$i"; fi; \
-		$(INSTALL_DATA) "$$file" "$(DESTDIR)$(docdir)/$$i"; \
-	done
+install-data-hook:
 	for i in $(doc_files); \
 	do \
 		if $(EGREP) -q "LYX_DIR_VER|LYX_USERDIR_VER" "$(DESTDIR)$(docdir)/$$i"; then \
@@ -323,11 +291,3 @@ install-data-hook: $(tocfiles)
 			chmod 644 "$(DESTDIR)$(docdir)/$$i"; \
 		fi; \
 	done
-
-uninstall-local:
-	for i in $(tocfiles); \
-	do \
-		$(RM) "$(DESTDIR)$(docdir)/$$i" ; \
-	done
-
-.PHONY: TOCs
