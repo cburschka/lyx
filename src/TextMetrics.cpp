@@ -1317,7 +1317,8 @@ void TextMetrics::newParMetricsUp()
 // y is screen coordinate
 pit_type TextMetrics::getPitNearY(int y)
 {
-	LASSERT(!text_->paragraphs().empty(), /**/);
+	LASSERT(!text_->paragraphs().empty(), return -1);
+	LASSERT(!par_metrics_.empty(), return -1);
 	LYXERR(Debug::DEBUG, "y: " << y << " cache size: " << par_metrics_.size());
 
 	// look for highest numbered paragraph with y coordinate less than given y
@@ -1400,7 +1401,7 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y)
 		cur.bv().coordCache().dump();
 	}
 	pit_type pit = getPitNearY(y);
-	LASSERT(pit != -1, /**/);
+	LASSERT(pit != -1, return 0);
 
 	Row const & row = getRowNearY(y, pit);
 	bool bound = false;
@@ -1454,6 +1455,7 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const 
 {
 	LASSERT(text_ == cur.text(), /**/);
 	pit_type pit = getPitNearY(y);
+	LASSERT(pit != -1, return);
 
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
@@ -1490,7 +1492,7 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const 
 Inset * TextMetrics::checkInsetHit(int x, int y)
 {
 	pit_type pit = getPitNearY(y);
-	LASSERT(pit != -1, /**/);
+	LASSERT(pit != -1, return 0);
 
 	Paragraph const & par = text_->paragraphs()[pit];
 	ParagraphMetrics const & pm = par_metrics_[pit];
