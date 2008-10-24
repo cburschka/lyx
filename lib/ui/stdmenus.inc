@@ -531,9 +531,10 @@ Menuset
 	End
 
 	Menu "examples"
-		Item "Linguistics manual|L" "help-open ../examples/linguistics.lyx"
-		Item "Braille manual|B" "help-open ../examples/Braille.lyx"
-		Item "XY-pic manual|X" "help-open ../examples/xypic.lyx"
+		Item "Linguistics Manual|L" "help-open ../examples/linguistics.lyx"
+		Item "Braille Manual|B" "help-open ../examples/Braille.lyx"
+		Item "XY-pic Manual|X" "help-open ../examples/xypic.lyx"
+		Item "Multicolumn Manual|M" "help-open ../examples/multicol.lyx"
 	End
 
 
