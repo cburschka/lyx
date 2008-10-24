@@ -1350,6 +1350,21 @@ docstring Cursor::selectionAsString(bool label) const
 		return docstring();
 
 	if (inTexted()) {
+		idx_type const startidx = selBegin().idx();
+		idx_type const endidx = selEnd().idx();
+		if (startidx != endidx) {
+			// multicell selection
+#if 0
+// FIXME: we do not have table->asString, thus we have to return docstring() here.
+			InsetTabular * table = static_cast<InsetTabular*>(&inset());
+			BOOST_ASSERT(table);
+			if (!table)
+				return docstring();
+			table->asString(startidx, endidx);
+#endif
+			return docstring();
+		}
+
 		Buffer const & buffer = *bv().buffer();
 		ParagraphList const & pars = text()->paragraphs();
 
