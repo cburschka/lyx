@@ -333,10 +333,6 @@ bool findNextChange(BufferView * bv)
 		if (change != orig_change)
 			break;
 	}
-	// avoid crash (assertion violation) if the imaginary end-of-par
-	// character of the last paragraph of the document is marked as changed
-	if (tip.at_end())
-		tip.backwardPos();
 
 	// Now put cursor to end of selection:
 	bv->cursor().setCursor(cur);

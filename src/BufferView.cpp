@@ -1154,11 +1154,15 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_CHANGE_NEXT:
 		findNextChange(this);
+		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
+		processUpdateFlags(Update::Force | Update::FitCursor);
 		break;
 
 	case LFUN_CHANGES_MERGE:
-		if (findNextChange(this))
+		if (findNextChange(this)) {
+			processUpdateFlags(Update::Force | Update::FitCursor);
 			showDialog("changes");
+		}
 		break;
 
 	case LFUN_ALL_CHANGES_ACCEPT:
