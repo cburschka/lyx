@@ -1408,10 +1408,15 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_FLOAT_INSERT:
 	case LFUN_FLOAT_WIDE_INSERT:
 	case LFUN_WRAP_INSERT: {
-		bool content = cur.selection();  // will some text be moved into the inset?
+		// will some text be moved into the inset?
+		bool content = cur.selection();
 
 		doInsertInset(cur, this, cmd, true, true);
 		cur.posForward();
+
+		if (content)
+			cur.backwardPos();
+
 		ParagraphList & pars = cur.text()->paragraphs();
 
 		DocumentClass const & tclass = bv->buffer().params().documentClass();
@@ -1438,7 +1443,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// We cannot use Cursor::dispatch here it needs access to up to
 		// date metrics.
 		FuncRequest cmd_caption(LFUN_CAPTION_INSERT);
-		cur.text()->dispatch(cur, cmd_caption);
+		doInsertInset(cur, cur.text(), cmd_caption, true, false);
+		updateLabels(bv->buffer());
 		cur.updateFlags(Update::Force);
 		// FIXME: When leaving the Float (or Wrap) inset we should
 		// delete any empty paragraph left above or below the
