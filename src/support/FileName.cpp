@@ -321,13 +321,13 @@ string FileName::onlyFileName() const
 
 string FileName::onlyFileNameWithoutExt() const
 {
-       return fromqstr(d->fi.baseName());
+	return fromqstr(d->fi.completeBaseName());
 }
 
 
 string FileName::extension() const
 {
-       return fromqstr(d->fi.suffix());
+	return fromqstr(d->fi.suffix());
 }
 
 
