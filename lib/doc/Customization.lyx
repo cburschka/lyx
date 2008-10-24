@@ -11449,7 +11449,7 @@ type
 \end_layout
 
 \begin_layout Subsection
-Inset layouts and Flex insets
+Flex insets and InsetLayout
 \end_layout
 
 \begin_layout Standard
@@ -11459,18 +11459,8 @@ name "sec:charstyle"
 
 \end_inset
 
-LyX has supported character styles since version 1.4.0; since version 1.6.0
+LyX has supported character styles since version 1.4.0; as of version 1.6.0,
  these are called Flex insets.
- 
-\end_layout
-
-\begin_layout Standard
-Furthermore, it is possible to define the general layout of many different
- types of insets.
- Currently, InsetLayout can be used to customize the layout parameters for
- footnotes, marginal notes, note insets, ERT insets, branches, listings,
- indexes, boxes, tables, algorithms, URLs, and optional arguments, as well
- as Flex insets.
  
 \end_layout
 
@@ -11530,6 +11520,17 @@ Custom
 
 ): These can be used to define custom collapsable insets, similar to ERT,
  footnote, and the like.
+ An obvious example is an endnote inset, which is defined in the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+endnote
+\end_layout
+
+\end_inset
+
+ module.
 \end_layout
 
 \begin_layout Itemize
@@ -11547,6 +11548,20 @@ Element
 \end_layout
 
 \begin_layout Standard
+Flex insets are defined using the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+InsetLayout
+\end_layout
+
+\end_inset
+
+ tag, which shall be explained in a moment.
+\end_layout
+
+\begin_layout Standard
 The 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -11557,15 +11572,43 @@ InsetLayout
 
 \end_inset
 
- definition starting line is of the form
+ tag also serves another function: It can be used to customize the general
+ layout of many different types of insets.
+ Currently, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+InsetLayout
 \end_layout
 
-\begin_layout LyX-Code
-InsetLayout <Type> <Name>
+\end_inset
+
+ can be used to customize the layout parameters for footnotes, marginal
+ notes, note insets, ERT insets, branches, listings, indexes, boxes, tables,
+ algorithms, URLs, and optional arguments, as well as to define Flex insets.
 \end_layout
 
 \begin_layout Standard
-where 
+The 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+InsetLayout
+\end_layout
+
+\end_inset
+
+ definition must begin with a line of the form:
+\end_layout
+
+\begin_layout LyX-Code
+InsetLayout <Type>
+\end_layout
+
+\begin_layout Standard
+Here 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -11575,7 +11618,23 @@ status collapsed
 
 \end_inset
 
- can be 
+ indicates the inset whose layout is being defined, and here there are two
+ cases.
+\end_layout
+
+\begin_layout Enumerate
+The layout for a pre-existing inset is being modified.
+ In this case, can be 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+<Type>
+\end_layout
+
+\end_inset
+
+ any one of the following: 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -11601,6 +11660,16 @@ status collapsed
 
 \begin_layout Plain Layout
 Box
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Box:shaded
 \end_layout
 
 \end_inset
@@ -11641,6 +11710,46 @@ status collapsed
 
 \begin_layout Plain Layout
 Index
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Info
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Info:menu
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Info:shortcut
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Info:shortcuts
 \end_layout
 
 \end_inset
@@ -11715,7 +11824,7 @@ Table
 
 \end_inset
 
-, 
+, or 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -11725,18 +11834,13 @@ URL
 
 \end_inset
 
-, or 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Flex
+.
+ 
 \end_layout
 
-\end_inset
-
-.
- If 
+\begin_layout Enumerate
+The layout for a Flex inset is being defined.
+ In this case, 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -11746,32 +11850,12 @@ status collapsed
 
 \end_inset
 
- is 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Flex
-\end_layout
-
-\end_inset
-
-, then 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-<Name>
-\end_layout
-
-\end_inset
-
  should have the form 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-SubType:StyleName
+FlexType:StyleName
 \end_layout
 
 \end_inset
@@ -11781,7 +11865,7 @@ SubType:StyleName
 status collapsed
 
 \begin_layout Plain Layout
-SubType
+FlexType
 \end_layout
 
 \end_inset
@@ -11827,11 +11911,98 @@ StyleName
 \end_inset
 
  is any valid identifier.
+ The 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+FlexType
+\end_layout
+
+\end_inset
+
+ indicates on which menu the inset should appear: In the default menu structure,
  
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+CharStyle
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Element
+\end_layout
+
+\end_inset
+
+ insets appear under 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Edit\SpecialChar \menuseparator
+Text Style
+\end_layout
+
+\end_inset
+
+; 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Custom
+\end_layout
+
+\end_inset
+
+ insets appear under 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar \menuseparator
+Custom insets
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Note that the definition of a flex inset must 
+\emph on
+also
+\emph default
+ include a 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+LyXType
+\end_layout
+
+\end_inset
+
+ tag.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-The following 
+The 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -11841,7 +12012,7 @@ InsetLayout
 
 \end_inset
 
- section can contain the following entries:
+ definition can contain the following entries:
 \end_layout
 
 \begin_layout Description
@@ -11855,7 +12026,7 @@ BgColor
 \end_inset
 
  The color for the inset's background.
- These valid colors are defined in 
+ The valid colors are defined in 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -12063,7 +12234,7 @@ LabelFont
 
 \begin_layout Description
 \begin_inset Flex CharStyle:Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 ForceLTR
@@ -12071,7 +12242,16 @@ ForceLTR
 
 \end_inset
 
- [[FIXME]]
+ Force the 
+\begin_inset Quotes eld
+\end_inset
+
+latex
+\begin_inset Quotes erd
+\end_inset
+
+ language, leading to Left-to-Right (latin) output, e.g., in ERT or URL.
+ A kludge.
 \end_layout
 
 \begin_layout Description
@@ -12308,7 +12488,7 @@ element
 
 \end_inset
 
-, 
+, or 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -12318,8 +12498,8 @@ end
 
 \end_inset
 
- (indicating a dummy definition ending definitions of charstyles etc.).
- This entry is only meaningful for Flex (user definable) insets.
+ (indicating a dummy definition ending definitions of charstyles, etc).
+ This entry is required in and is only meaningful for Flex insets.
 \end_layout
 
 \begin_layout Description
@@ -12413,7 +12593,7 @@ protect
 \emph on
 not
 \emph default
- whether this command should itself be protected.)
+ whether the command should itself be protected.)
 \end_layout
 
 \begin_layout Description
