@@ -395,7 +395,10 @@ Preferences
  settings.
  Although this configuration has already been done when LyX was installed
  on your system, you might have some items that you installed locally, e.g.
- new LaTeX classes, and which are not seen by LyX.
+\begin_inset space \space{}
+\end_inset
+
+new LaTeX classes, and which are not seen by LyX.
  To force LyX to re-inspect your system, you should use 
 \family sans
 Tools\SpecialChar \menuseparator
@@ -1153,11 +1156,8 @@ test
 \family sans
 Match whole words only
 \family default
- option can be used to force LyX to only find complete words, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e., searching for 
+ option can be used to force LyX to only find complete words, i.e., searching
+ for 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1481,12 +1481,8 @@ Sort
 Keep
 \family default
  option keeps it in the current view state.
- Keeping means that when you have e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ Keeping means that when you have e.g.
+\begin_inset space \space{}
 \end_inset
 
 the subsections of section
@@ -6441,11 +6437,7 @@ type  "shortcut"
 arg   "newline-insert newline"
 \end_inset
 
- at the beginning of a new paragraph (i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
+ at the beginning of a new paragraph (i.e.
 \begin_inset space ~
 \end_inset
 
@@ -6997,12 +6989,8 @@ Section
 \begin_inset space ~
 \end_inset
 
-to e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+to e.g.
+\begin_inset space \space{}
 \end_inset
 
 lists, it is highly recommended not to do this.
@@ -8820,11 +8808,7 @@ Spaces ! Inter-word
 \end_layout
 
 \begin_layout Standard
-Some languages (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+Some languages (e.g.
 \begin_inset space \space{}
 \end_inset
 
@@ -8901,15 +8885,7 @@ D.
 \end_inset
 
 E.
- Knuth has developed our beloved typesetting program, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space \space{}
-\end_inset
-
-TeX.
+ Knuth has developed our beloved typesetting program.
 \end_layout
 
 \begin_layout Standard
@@ -9593,7 +9569,10 @@ Spacing ! Phantom
 \begin_layout Standard
 Sometimes you want to insert space with exactly the length of a phrase.
  E.g.
- you want to create the following multiple choice question:
+\begin_inset space \space{}
+\end_inset
+
+you want to create the following multiple choice question:
 \end_layout
 
 \begin_layout Standard
@@ -10236,7 +10215,10 @@ You shouldn't use forced line breaks to correct LaTeX's line breaking, as
  LaTeX is very good at line breaking.
  There are, however, a number of situations where it is necessary to actively
  set a line break, e.g.
- in a poem or for an address (see sections
+\begin_inset space \space{}
+\end_inset
+
+in a poem or for an address (see sections
 \begin_inset space ~
 \end_inset
 
@@ -10310,12 +10292,8 @@ Characters and Symbols
 
 \begin_layout Standard
 You can directly enter all characters that are available on your keyboard.
- You can also use special keyboard maps to be able to enter e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ You can also use special keyboard maps to be able to enter e.g.
+\begin_inset space \space{}
 \end_inset
 
 characters needed for French with an English keyboard.
@@ -13559,8 +13537,7 @@ And here's an example of the algorithm going wrong:
 \end_layout
 
 \begin_layout Itemize
-e.
- g.
+e.g.
  this is too much space!
 \end_layout
 
@@ -13684,11 +13661,7 @@ With the corrections, our earlier examples look like this:
 \end_layout
 
 \begin_layout Itemize
-e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+e.g.
 \begin_inset space \space{}
 \end_inset
 
@@ -14395,7 +14368,10 @@ TeX-3.14159
 
 \begin_layout Standard
 If you don't want to use proper names, e.g.
- in section headings, you can insert two empty braces in TeX Code in the
+\begin_inset space \space{}
+\end_inset
+
+in section headings, you can insert two empty braces in TeX Code in the
  word.
  This will look in LyX like: 
 \begin_inset Graphics
@@ -18892,12 +18868,8 @@ Insert\SpecialChar \menuseparator
 Floats
 \family default
 .
- A box with a caption that has e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ A box with a caption that has e.g.
+\begin_inset space \space{}
 \end_inset
 
 the label 
@@ -19858,8 +19830,11 @@ status open
 Note:
 \series default
  Wrap floats might be fragile! E.g.
- having a figure too close to the bottom of the page can mess things up
- in the way that the float doesn't appear in the output or that it is placed
+\begin_inset space \space{}
+\end_inset
+
+having a figure too close to the bottom of the page can mess things up in
+ the way that the float doesn't appear in the output or that it is placed
  over some other text.
 \end_layout
 
@@ -20666,7 +20641,10 @@ You can only number and reference displayed formulas.
 \begin_layout Standard
 LyX supports also many LaTeX math commands.
  E.g.
- typing 
+\begin_inset space \space{}
+\end_inset
+
+typing 
 \begin_inset Quotes eld
 \end_inset
 
@@ -20992,7 +20970,10 @@ Space
 \family default
  to separate the hat and the character.
  E.g.
- if you want 
+\begin_inset space \space{}
+\end_inset
+
+if you want 
 \begin_inset Formula $x^{a}$
 \end_inset
 
@@ -21582,7 +21563,10 @@ In a formula you can insert accented characters in the same way as in text
  mode.
  This may depend on your keyboard, or the bindings file you use.
  You can also use LaTeX commands to e.g.
- enter 
+\begin_inset space \space{}
+\end_inset
+
+enter 
 \begin_inset Formula $\hat{a}$
 \end_inset
 
@@ -23150,7 +23134,10 @@ The first blue box is for the definition, where you insert the formula via
  the math panel or commands.
  The placeholder for the arguments are inserted as a backslash and sharp
  followed by the argument number, e.g.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -23736,7 +23723,10 @@ f(x)=\sqrt{x}\:;\: x\in\mathbb{N}\]
 \begin_layout Standard
 The typefaces are nestable, which can cause confusion.
  You can e.g.
- put a character in 
+\begin_inset space \space{}
+\end_inset
+
+put a character in 
 \family sans
 Fraktur
 \family default
@@ -24263,7 +24253,10 @@ enumerate
 
 .
  The prefix depends on the document part where the label is inserted, e.g.
- if you insert a label to a section heading, the prefix will be 
+\begin_inset space \space{}
+\end_inset
+
+if you insert a label to a section heading, the prefix will be 
 \begin_inset Quotes eld
 \end_inset
 
@@ -24497,12 +24490,8 @@ LaTeX-packages ! prettyref
 \begin_layout Standard
 Note that the style <page> won't print the page number if the label is on
  the previous, the same, or the next page.
- You will e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ You will e.g.
+\begin_inset space \space{}
 \end_inset
 
 see the text 
@@ -26265,12 +26254,8 @@ Dummy entries ! my entry|IndexDef
 
 \begin_layout Standard
 You can also change the layout for the whole index.
- E.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ E.g.
+\begin_inset space \space{}
 \end_inset
 
 we marked the index list box of this document as bold to get a bold font
@@ -27560,12 +27545,8 @@ The header informations in the dialog tab
 General
 \family default
  are saved together with the PDF as file properties.
- Many programs are able to extract these informations to e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ Many programs are able to extract these informations to e.g.
+\begin_inset space \space{}
 \end_inset
 
 automatically recognize who is the author and what is the PDF about.
@@ -27801,7 +27782,10 @@ program
  This has the advantage that the layout of the document can be changed at
  every time if you know the right commands.
  E.g.
- imagine you have to write a manual for a product and the deadline is at
+\begin_inset space \space{}
+\end_inset
+
+imagine you have to write a manual for a product and the deadline is at
  the end of the day.
  Your boss just has complimented you for your good work but wants to have
  all caption labels bold.
@@ -28318,7 +28302,10 @@ Escape
 
 characters Allows you to add non-standard characters that the spell checker
  should consider, e.g.
- German umlauts although you spell check English document.
+\begin_inset space \space{}
+\end_inset
+
+German umlauts although you spell check English document.
  This should not normally be needed.
 \end_layout
 
@@ -36049,7 +36036,10 @@ Bookmarks
 With this menu you are able to define your own bookmarks.
  This is useful when you are working on a large documents and often have
  to jump e.g.
- between section
+\begin_inset space \space{}
+\end_inset
+
+between section
 \begin_inset space ~
 \end_inset
 
@@ -36316,6 +36306,14 @@ reference "sub:Modules"
 \end_inset
 
 .
+ Some classes use some class options by default.
+ If this is the case, they are listed in the field 
+\family sans
+Predefined
+\family default
+ and you can decide to use them or not.
+ If you don't exactly know what the default class options are for, it is
+ recommended not to touch them.
  The Postscript driver is used for LaTeX's color and graphics packages.
  When using 
 \family sans
@@ -36351,8 +36349,15 @@ target "http://tug.ctan.org/get/macros/latex/required/graphics/grfguide.pdf"
 
 \end_inset
 
- Specifying a master document is necessary when the current document is
- a child or subdocument.
+
+\end_layout
+
+\begin_layout Standard
+Specifying a master document is necessary when the current document is a
+ child or subdocument.
+ This master document will be used by LyX when the child document is opened
+ without its master.
+ This way child documents are always compileable.
  More about master and child documents is explained in the section 
 \emph on
 Child Documents
@@ -40239,7 +40244,10 @@ broadway.bind
 \shape default
 , and bind files for special languages.
  The name of language bind-files begin with a language code, e.g.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -40327,12 +40335,8 @@ Help
 \end_layout
 
 \begin_layout Standard
-To add e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+To add e.g.
+\begin_inset space \space{}
 \end_inset
 
 the shortcut 
@@ -40435,12 +40439,8 @@ Settings ! Keyboard Map
 \begin_layout Standard
 Normally keyboard settings have to be done in a menu of your operating system.
  For the case that this is not possible, LyX provides keyboard maps.
- If you have e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ If you have e.g.
+\begin_inset space \space{}
 \end_inset
 
 a Czech keyboard but want to write with it like with a Romanian one, you
