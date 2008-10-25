@@ -1,5 +1,5 @@
-#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
-\lyxformat 335
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass article
@@ -22,6 +22,7 @@
 
 \newdir{|>}{!/4.5pt/@{|}*:(1,-.2)@^{>}*:(1,+.2)@_{>}}
 \end_preamble
+\use_default_options false
 \language english
 \inputencoding auto
 \font_roman ae
@@ -32,6 +33,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -473,7 +475,7 @@ Ctrl-M
 \begin_layout Enumerate
 Move the mouse cursor out of the editing box and wait for a split second
  to see an arrow appear: 
-\begin_inset Formula $\xymatrix{A\ar [r] & B}
+\begin_inset Formula $\xymatrix{A\ar[r] & B}
 $
 \end_inset
 
@@ -588,9 +590,9 @@ xymatrix{
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\xymatrix{U\ar @/_{1pc}/[ddr]_{\psi}\ar @/{}^{1pc}/[drr]^{\varphi}\ar @{.>}[dr]|-{(x,y)}\\
- & X\times_{Z}Y\ar [d]^{q}\ar [r]_{p} & X\ar [d]_{f}\\
- & Y\ar [r]^{g} & Z}
+\begin_inset Formula $\xymatrix{U\ar@/_{1pc}/[ddr]_{\psi}\ar@/{}^{1pc}/[drr]^{\varphi}\ar@{.>}[dr]|-{(x,y)}\\
+ & X\times_{Z}Y\ar[d]^{q}\ar[r]_{p} & X\ar[d]_{f}\\
+ & Y\ar[r]^{g} & Z}
 $
 \end_inset
 
@@ -798,9 +800,9 @@ ar[r] & Z }
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \xymatrix{ U \ar [ddr] \ar [drr] \ar [dr]\\
- &  X \times_{Z} Y \ar [d] \ar [r]  &  X \ar [d]\\
- &  Y \ar [r]  &  Z }
+\begin_inset Formula \xymatrix{ U \ar[ddr] \ar[drr] \ar[dr]\\
+ &  X \times_{Z} Y \ar[d] \ar[r]  &  X \ar[d]\\
+ &  Y \ar[r]  &  Z }
 
 
 \end_inset
@@ -876,7 +878,11 @@ beta
 \end_inset
 
  above the arrow, i.e.
-\begin_inset Formula $\xymatrix{\  & \ \ar [l]_{\beta}^{\alpha}.}
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Formula $\xymatrix{\  & \ \ar[l]_{\beta}^{\alpha}.}
 $
 \end_inset
 
@@ -954,9 +960,9 @@ ar[r]^g & Z }
 \end_layout
 
 \begin_layout LyX-Code
-\begin_inset Formula \xymatrix{ U \ar [ddr]_{\psi}\ar [drr]^{\varphi}\ar [dr]|-{(x,y)}\\
- &  X \times_{Z} Y \ar [d]^{q} \ar [r]_{p}  &  X \ar [d]_{f}\\
- &  Y \ar [r]^{g}  &  Z }
+\begin_inset Formula \xymatrix{ U \ar[ddr]_{\psi}\ar[drr]^{\varphi}\ar[dr]|-{(x,y)}\\
+ &  X \times_{Z} Y \ar[d]^{q} \ar[r]_{p}  &  X \ar[d]_{f}\\
+ &  Y \ar[r]^{g}  &  Z }
 
 
 \end_inset
@@ -1111,7 +1117,7 @@ ar@{>..>>}
  produces an arrow with split end, a dotted shaft and double head.
  A number of other arrow designs is given in the table below.
  Note that the ends of embedding arrows 
-\begin_inset Formula $\xymatrix{A\ar @{^{(}->}[r] & B}
+\begin_inset Formula $\xymatrix{A\ar@{^{(}->}[r] & B}
 $
 \end_inset
 
@@ -1157,7 +1163,7 @@ Source code in LyX
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar [r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar[r]  &  \ }
 
 
 \end_inset
@@ -1186,7 +1192,7 @@ ar
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar @{-->}[r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar@{-->}[r]  &  \ }
 
 
 \end_inset
@@ -1215,7 +1221,7 @@ ar@{-->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar @{..>}[r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar@{..>}[r]  &  \ }
 
 
 \end_inset
@@ -1244,7 +1250,7 @@ ar@{..>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar @{~>}[r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar@{~>}[r]  &  \ }
 
 
 \end_inset
@@ -1273,7 +1279,7 @@ ar@{~>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar @{->>}[r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar@{->>}[r]  &  \ }
 
 
 \end_inset
@@ -1302,7 +1308,7 @@ ar@{->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar @{-->>}[r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar@{-->>}[r]  &  \ }
 
 
 \end_inset
@@ -1331,7 +1337,7 @@ ar@{-->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar @{>->>}[r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar@{>->>}[r]  &  \ }
 
 
 \end_inset
@@ -1360,7 +1366,7 @@ ar@{>->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar @{_{(}->}[r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar@{_{(}->}[r]  &  \ }
 
 
 \end_inset
@@ -1389,7 +1395,7 @@ ar@{_(->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar @{^{(}->}[r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar@{^{(}->}[r]  &  \ }
 
 
 \end_inset
@@ -1418,7 +1424,7 @@ ar@{^(->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar @{|-|}[r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar@{|-|}[r]  &  \ }
 
 
 \end_inset
@@ -1450,19 +1456,8 @@ ar@{|-|}
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-noindent
-\end_layout
-
-\end_inset
-
- Following the @-character by either a 2, 3, _,or a ^, we can produce arrows
+\noindent
+Following the @-character by either a 2, 3, _,or a ^, we can produce arrows
  with double, triple shaft or arrows showing only the lower or upper half
  of their tips and ends.
  Arrows need not have tips nor ends, as the last example shows :
@@ -1503,7 +1498,7 @@ Source code for LyX
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar @2[r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar@2[r]  &  \ }
 
 
 \end_inset
@@ -1532,7 +1527,7 @@ ar@2
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar @3[r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar@3[r]  &  \ }
 
 
 \end_inset
@@ -1561,7 +1556,7 @@ ar@3
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar @_{->}[r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar@_{->}[r]  &  \ }
 
 
 \end_inset
@@ -1590,7 +1585,7 @@ ar@_{->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar @^{->}[r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar@^{->}[r]  &  \ }
 
 
 \end_inset
@@ -1619,7 +1614,7 @@ ar@^{->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar @^{>>->>}[r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar@^{>>->>}[r]  &  \ }
 
 
 \end_inset
@@ -1648,7 +1643,7 @@ ar@^{>>->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar @{^{<}-_{>}}[r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar@{^{<}-_{>}}[r]  &  \ }
 
 
 \end_inset
@@ -1677,7 +1672,7 @@ ar@{^<-_>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar @2{--}[r]  &  \ }
+\begin_inset Formula \xymatrix{\ \ar@2{--}[r]  &  \ }
 
 
 \end_inset
@@ -1756,18 +1751,7 @@ newdir{|>}{!/4.5pt/@{|}*:(1,-.2)@^{>}*:(1,+.2)@_{>}}
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-noindent 
-\end_layout
-
-\end_inset
-
+\noindent
 This defines a new arrow tip, referred to as 
 \family typewriter
 |>
@@ -1780,7 +1764,7 @@ ar@{-|>}[r]
 \family default
  and which displays correctly in LyX as:
 \begin_inset Formula \[
-\xymatrix{A\ar @{-|>}[r] & \ \  B}
+\xymatrix{A\ar@{-|>}[r] & \ \ B}
 \]
 
 \end_inset
@@ -1830,19 +1814,8 @@ ar@<1ex>[l]}
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-noindent
-\end_layout
-
-\end_inset
-
- produces
+\noindent
+produces
 \begin_inset space ~
 \end_inset
 
@@ -1852,7 +1825,7 @@ noindent
 
 
 \begin_inset Formula \[
-\xymatrix{\circ\ar @<1ex>[r] & \circ\ar @<1ex>[l]}
+\xymatrix{\circ\ar@<1ex>[r] & \circ\ar@<1ex>[l]}
 \]
  
 
@@ -1867,7 +1840,7 @@ Inline or centered diagrams
 
 \begin_layout Standard
 Arrows and diagrams can be used inline, such as this one: 
-\begin_inset Formula $\xymatrix{\circ\ar @<1ex>[r] & \circ\ar @<1ex>[l]}
+\begin_inset Formula $\xymatrix{\circ\ar@<1ex>[r] & \circ\ar@<1ex>[l]}
 $
 \end_inset
 
@@ -1969,7 +1942,7 @@ ar@/_{.5pc}/[l]}
 
 \begin_layout Standard
 \begin_inset Formula \[
-\xymatrix{A\ar @/{}_{.5pc}/[r] & B\ar @/{}_{.5pc}/[l]}
+\xymatrix{A\ar@/{}_{.5pc}/[r] & B\ar@/{}_{.5pc}/[l]}
 \]
 
 \end_inset
@@ -2043,8 +2016,8 @@ in
 
 \begin_layout Standard
 \begin_inset Formula \[
-\xymatrix{A\ar @(dr,dl)[r]\ar @(dr,dl)[rr] & B\ar @(d,r)[dl] & C\\
-E\ar @(ul,ur)}
+\xymatrix{A\ar@(dr,dl)[r]\ar@(dr,dl)[rr] & B\ar@(d,r)[dl] & C\\
+E\ar@(ul,ur)}
 \]
 
 \end_inset
@@ -2157,7 +2130,7 @@ $
 
 \begin_layout Standard
 \begin_inset Formula \[
-\xymatrix{\txt {start}\ar [r] & *++[o][F]{1}\ar [r] & *++[o][F=]{2}\ar @(ur,dr)\ar @(ur,ul)[l]}
+\xymatrix{\txt{start}\ar[r] & *++[o][F]{1}\ar[r] & *++[o][F=]{2}\ar@(ur,dr)\ar@(ur,ul)[l]}
 \]
 
 \end_inset
@@ -2299,8 +2272,8 @@ The dimension of the rectangle is given as a dotted pair
  These are followed by the framing commands, to produce figures such as
  the following: 
 \begin_inset Formula \[
-\xymatrix{A & B\ar @(d,r)[dl]\sp (0.2)\phi\sp (0.7)\psi\save "1,1"."2,1"*+[F=]\frm {}\restore \,\\
-C & \save "1,1"."1,2"*++[F]\frm {}\restore }
+\xymatrix{A & B\ar@(d,r)[dl]\sp(0.2)\phi\sp(0.7)\psi\save"1,1"."2,1"*+[F=]\frm{}\restore\,\\
+C & \save"1,1"."1,2"*++[F]\frm{}\restore}
 \]
 
 \end_inset
@@ -2927,8 +2900,8 @@ xyC{.5pc}
 
 \begin_layout Standard
 \begin_inset Formula \[
-\xyC {.5pc}\xyC {9pc}\xymatrix{A\ar [r]\ar [d] & B\\
-C\ar @{}[ur]|{\text{{horizontal stretch}}}}
+\xyC{.5pc}\xyC{9pc}\xymatrix{A\ar[r]\ar[d] & B\\
+C\ar@{}[ur]|{\text{{horizontal stretch}}}}
 \]
 
 \end_inset
@@ -2960,7 +2933,7 @@ Xy
  items, such as the intersection of the arrows in the figure below.
  In order to shift a label position alongside the shaft of an arrow, 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3070,8 +3043,8 @@ phi_{4}}.
 
 \begin_layout Standard
 \begin_inset Formula \[
-\xyC {4pc}\xymatrix{\bullet\ar [dr]\sp (0.3)\varphi & \circ\ar @{}[d]|\vdots\ar @(r,r)[d]\sp (0.2){\phi_{1}}\sp (0.4){\phi_{2}}\sb (0.6){\phi_{3}}\sp (0.8){\phi_{4}}\\
-\circ\ar [ur]\sb (0.3)\phi & \bullet}
+\xyC{4pc}\xymatrix{\bullet\ar[dr]\sp(0.3)\varphi & \circ\ar@{}[d]|\vdots\ar@(r,r)[d]\sp(0.2){\phi_{1}}\sp(0.4){\phi_{2}}\sb(0.6){\phi_{3}}\sp(0.8){\phi_{4}}\\
+\circ\ar[ur]\sb(0.3)\phi & \bullet}
 \]
 
 \end_inset

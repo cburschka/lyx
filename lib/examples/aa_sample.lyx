@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass aa
@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 %
 \end_preamble
+\use_default_options false
 \language english
 \inputencoding auto
 \font_roman default
@@ -39,6 +40,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \author "" 
 \end_header
 
@@ -234,11 +236,7 @@ key "baker"
 
 -mechanism is widespread under `cool' conditions.
 \begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
+status open
 
 \begin_layout Plain Layout
 
@@ -266,19 +264,6 @@ Introduction
 In the 
 \emph on
 nucleated instability
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/{}
-\end_layout
-
-\end_inset
-
-
 \emph default
  (also called core instability) hypothesis of giant planet formation, a
  critical mass for static core envelope protoplanets has been found.
@@ -338,9 +323,12 @@ key "balluch"
 \end_inset
 
 ), whereas earlier studies found quasi-steady collapse flows.
- The similarities in the (micro)physics, i.e., constitutive relations of protostel
-lar cores and protogiant planets serve as a further motivation for this
- study.
+ The similarities in the (micro)physics, i.e.
+\begin_inset space \space{}
+\end_inset
+
+constitutive relations of protostellar cores and protogiant planets serve
+ as a further motivation for this study.
 \end_layout
 
 \begin_layout Section
@@ -444,42 +432,15 @@ energy transport by grey radiation diffusion.
 \noindent
 For the one-zone-model Baker obtains necessary conditions for dynamical,
  secular and vibrational (or pulsational) stability (Eqs.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
+\begin_inset space \space{}
 \end_inset
 
 (34a,
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-,
-\end_layout
-
+\begin_inset space \thinspace{}
 \end_inset
 
 b,
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-,
-\end_layout
-
+\begin_inset space \thinspace{}
 \end_inset
 
 c) in Baker 
@@ -514,19 +475,6 @@ E_{\textrm{th}} &  & \textrm{thermal energy of the zone}\end{eqnarray*}
 and with the definitions of the 
 \emph on
 local cooling time
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/{}
-\end_layout
-
-\end_inset
-
-
 \emph default
  (see Fig.
 \begin_inset space ~
@@ -626,19 +574,6 @@ e=mc^{2}\end{array}\end{equation}
  one obtains, after some pages of algebra, the conditions for 
 \emph on
 stability
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/{}
-\end_layout
-
-\end_inset
-
-
 \emph default
  given below: 
 \begin_inset Formula \begin{eqnarray}
@@ -717,16 +652,7 @@ reference "ZSVibSta"
  The one-zone stability can therefore be determined from a simple equation
  of state, given for example, as a function of density and temperature.
  Once the microphysics, i.e.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
+\begin_inset space \space{}
 \end_inset
 
 the thermodynamics and opacities (see Table
@@ -1142,19 +1068,6 @@ schungs\SpecialChar \-
 ge\SpecialChar \-
 mein\SpecialChar \-
 schaft, DFG
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/{}
-\end_layout
-
-\end_inset
-
-
 \emph default
  project number Ts
 \begin_inset space ~

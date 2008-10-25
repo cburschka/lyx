@@ -1,8 +1,9 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass docbook
+\use_default_options false
 \language english
 \inputencoding default
 \font_roman default
@@ -260,7 +261,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../doc/platypus.eps
+	filename ../doc/clipart/platypus.eps
 	width 2cm
 	height 3cm
 	scaleBeforeRotation
@@ -302,7 +303,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../doc/platypus.eps
+	filename ../doc/clipart/platypus.eps
 	width 2cm
 	height 3cm
 	scaleBeforeRotation
@@ -318,7 +319,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-long, very long...
+long, very long\SpecialChar \ldots{}
  :-)
 \end_layout
 
@@ -551,16 +552,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\begin_inset Marginal
-status collapsed
-
-\begin_layout Plain Layout
-margin note
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -605,16 +596,6 @@ These environments are easily added to the docbook layout.
 status collapsed
 
 \begin_layout Plain Layout
-
-\begin_inset Marginal
-status collapsed
-
-\begin_layout Plain Layout
-too marginal ;-)
-\end_layout
-
-\end_inset
-
 
 \end_layout
 

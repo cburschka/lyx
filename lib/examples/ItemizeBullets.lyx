@@ -1,11 +1,12 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass article
 \begin_preamble
 \usepackage{latexsym,pifont,amssymb}
 \end_preamble
+\use_default_options false
 \language english
 \inputencoding default
 \font_roman default
@@ -42,6 +43,7 @@
 \bullet 3 0 8 -1
 \tracking_changes false
 \output_changes false
+\author "" 
 \author "" 
 \end_header
 
@@ -2062,7 +2064,7 @@ textbf{\SpecialChar \ldots{}
 }
 \family default
 , although the real changes are inside the guts).
- PS stands for PostScript®.
+ PS stands for PostScript.
  PSNFSS is a set of LaTeX files which provide NFSS support for the basic
  set of 35 PS fonts present in many postscript printers.
  

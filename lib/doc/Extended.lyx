@@ -293,11 +293,7 @@ LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-F
-\bar default
-ile
+File
 \end_layout
 
 \end_inset
@@ -335,19 +331,11 @@ There are several commands that automatically invoke LaTeX.
 \end_layout
 
 \begin_layout Itemize
-
-\bar under
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-V
-\bar default
-iew\SpecialChar \menuseparator
-
-\emph on
+View\SpecialChar \menuseparator
 Format
 \end_layout
 
@@ -357,24 +345,12 @@ Format
 \end_layout
 
 \begin_layout Itemize
-
-\bar under
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-V
-\bar default
-iew\SpecialChar \menuseparator
-
-\bar under
-U
-\bar default
-pdate\SpecialChar \menuseparator
-
-\emph on
+View\SpecialChar \menuseparator
+Update\SpecialChar \menuseparator
 Format
 \end_layout
 
@@ -384,22 +360,12 @@ Format
 \end_layout
 
 \begin_layout Itemize
-
-\bar under
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-F
-\bar default
-ile
-\bar under
-\SpecialChar \menuseparator
-P
-\bar default
-rint
+File\SpecialChar \menuseparator
+Print
 \end_layout
 
 \end_inset
@@ -408,22 +374,12 @@ rint
 \end_layout
 
 \begin_layout Itemize
-
-\bar under
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-F
-\bar default
-ile
-\bar under
-\SpecialChar \menuseparator
-F
-\bar default
-ax
+File\SpecialChar \menuseparator
+Fax
 \end_layout
 
 \end_inset
@@ -549,11 +505,11 @@ dvips
 
 \end_inset
 
- to convert the DVI file to PostScript®.
+ to convert the DVI file to PostScript.
 \end_layout
 
 \begin_layout Itemize
-Run a PostScript® viewer, such as 
+Run a PostScript viewer, such as 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -563,7 +519,7 @@ ghostview
 
 \end_inset
 
-, to display the PostScript® file.
+, to display the PostScript file.
 \end_layout
 
 \begin_layout Standard
@@ -580,21 +536,9 @@ You can import a LaTeX file into LyX by using the
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-mport\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTeX
+File\SpecialChar \menuseparator
+Import\SpecialChar \menuseparator
+LaTeX
 \end_layout
 
 \end_inset
@@ -1173,19 +1117,11 @@ The commands which LyX adds to the preamble of a LaTeX file are fixed; you
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-L
-\bar default
-aTeX
+LaTeX
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-P
-\bar default
-reamble
+Preamble
 \end_layout
 
 \end_inset
@@ -1195,16 +1131,8 @@ reamble
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \end_layout
 
 \end_inset
@@ -1348,7 +1276,15 @@ voffset
 
 \end_inset
 
- are both 0 points, i.e., the page isn't shifted.
+ are both 0
+\begin_inset space \thinspace{}
+\end_inset
+
+points, i.e.
+\begin_inset space \space{}
+\end_inset
+
+the page isn't shifted.
  Unfortunately, some DVI drivers always seem to shift the page.
  We have no idea why, or why the sysadmin hasn't fixed such behavior.
  If you're using LyX on a system that you don't personally maintain, and
@@ -1377,7 +1313,11 @@ voffset
 \end_inset
 
  can save the day.
- Suppose you're left and top margins are always 0.5 inches too big.
+ Suppose you're left and top margins are always 0.5
+\begin_inset space \thinspace{}
+\end_inset
+
+inches too big.
  You can add this to the preamble:
 \end_layout
 
@@ -1485,7 +1425,7 @@ BottomBorder=2mm
 \end_layout
 
 \begin_layout Standard
-This sets things up for Avery® label sheets, stock #5360.
+This sets things up for Avery label sheets, stock #5360.
  You're now ready to print labels, but you'll need to insert LaTeX code,
  placing the commands 
 \begin_inset Flex CharStyle:Code
@@ -2160,7 +2100,11 @@ Alternative Citation Styles
 \end_layout
 
 \begin_layout Standard
-Standard BibTeX uses numbers (e.g., 
+Standard BibTeX uses numbers (e.g.
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -2170,7 +2114,11 @@ Standard BibTeX uses numbers (e.g.,
 
 ) to refer to a cited work.
  However, in many scientific disciplines, other citation styles are in use.
- The most common one is the author-year style (e.g., 
+ The most common one is the author-year style (e.g.
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -2422,7 +2370,11 @@ Scientific works
 \begin_inset Quotes erd
 \end_inset
 
-, you first need to create two bibliographic databases, e.g., 
+, you first need to create two bibliographic databases, e.g.
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -2575,8 +2527,12 @@ Multiple Bibliographies
 \end_layout
 
 \begin_layout Standard
-Multiple bibliographies, e.g., a bibliography for each section or chapter
- of the document, are not supported by BibTeX itself.
+Multiple bibliographies, e.g.
+\begin_inset space \space{}
+\end_inset
+
+a bibliography for each section or chapter of the document, are not supported
+ by BibTeX itself.
  But the 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -2776,12 +2732,11 @@ master
  Each of these files must have the same document class, however---don't
  attempt to mix book classes with article classes.
  You may also include LaTeX files; however, these files must not have their
- own preamble 
-\emph on
-(i.e.
+ own preamble (i.e.
+\begin_inset space \space{}
+\end_inset
 
-\emph default
- everything up to and including the 
+everything up to and including the 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -2912,7 +2867,11 @@ verbatim
 \end_inset
 
  included file allows you to include a file typeset exactly as it appears
- in the file, i.e., in 
+ in the file, i.e.
+\begin_inset space \space{}
+\end_inset
+
+in 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -3236,8 +3195,16 @@ Section
 \begin_inset Quotes erd
 \end_inset
 
- (e.g., Section 3) in the upper left, the page number (e.g., Page 4) in the
- upper right, your name in the lower left, and the date in the lower right.
+ (e.g.
+\begin_inset space \space{}
+\end_inset
+
+Section 3) in the upper left, the page number (e.g.
+\begin_inset space \space{}
+\end_inset
+
+Page 4) in the upper right, your name in the lower left, and the date in
+ the lower right.
  The following commands should now appear in the preamble:
 \end_layout
 
@@ -4119,13 +4086,13 @@ Please note that, at present,
 \emph on
 the server does not work on Windows
 \emph default
-®.
+.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 There is no reason it cannot do so.
- But none of the developers on Windows® have yet implemented this functionality
+ But none of the developers on Windows have yet implemented this functionality
  there.
 \end_layout
 
@@ -4845,25 +4812,15 @@ maketitle
 \end_layout
 
 \begin_layout Standard
-If you want to place footnotes in the header block, e.
-\begin_inset space \thinspace{}
+If you want to place footnotes in the header block, e.g.
+\begin_inset space \space{}
 \end_inset
 
-g.
-\begin_inset space ~
-\end_inset
-
-to state your present address, just use the standard footnote via 
+to state your present address, just use the standard footnote via the menu
+ 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
-
-\bar under
-F
-\bar default
-ootnote.
+Insert\SpecialChar \menuseparator
+Footnote.
 
 \family default
  LyX will automagically use the term 
@@ -5288,15 +5245,8 @@ referee
  to the documentclass.
  This must be done using the extra class options field in the 
 \family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \family default
  dialog.
  Just enter the string 
@@ -6373,12 +6323,8 @@ no
  space between the last author and the parenthesis setting off the year;
  
 \emph on
-e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+e.g.
+\begin_inset space \space{}
 \end_inset
 
 
@@ -7806,10 +7752,7 @@ slides (FoilTeX)
 
  from the 
 \family sans
-\bar under
-C
-\bar default
-lass
+Class
 \family default
  entry in the 
 \family sans
@@ -7857,8 +7800,23 @@ foils
 \end_layout
 
 \begin_layout Itemize
-The default font size is 20pt with the other options being 17pt, 25pt and
- 30pt.
+The default font size is 20
+\begin_inset space \thinspace{}
+\end_inset
+
+pt with the other options being 17
+\begin_inset space \thinspace{}
+\end_inset
+
+pt, 25
+\begin_inset space \thinspace{}
+\end_inset
+
+pt and 30
+\begin_inset space \thinspace{}
+\end_inset
+
+pt.
 \end_layout
 
 \begin_layout Itemize
@@ -7879,7 +7837,11 @@ serif
 Foil
 \family default
 TeX supports A4 and Letter paper sizes as well as a special size for working
- with 35mm slides.
+ with 35
+\begin_inset space \thinspace{}
+\end_inset
+
+mm slides.
  It doesn't support A5, B5, legal or executive paper sizes.
 \end_layout
 
@@ -7895,10 +7857,7 @@ Float Placement
 \begin_layout Itemize
 The 
 \family sans
-\bar under
-P
-\bar default
-agestyle
+Pagestyle
 \family default
  setting behaves a bit differently for this class.
  
@@ -7998,15 +7957,8 @@ Extra Options
 \begin_layout Standard
 The following options may be used in the extra class options in the 
 \family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \family default
  dialog.
 \end_layout
@@ -8017,9 +7969,19 @@ ettings
 \series bold
 35mmSlide
 \series default
- This sets up the page layout for 7.33in by 11in paper, which is about the
- same aspect ratio as a 35mm slide, making it a bit easier to work with
- this medium.
+ This sets up the page layout for 7.33
+\begin_inset space \thinspace{}
+\end_inset
+
+in by 11
+\begin_inset space \thinspace{}
+\end_inset
+
+in paper, which is about the same aspect ratio as a 35
+\begin_inset space \thinspace{}
+\end_inset
+
+mm slide, making it a bit easier to work with this medium.
 \end_layout
 
 \begin_layout Labeling
@@ -8433,12 +8395,15 @@ Foil
 TeX provides some powerful header and footer capabilities that are best
  set in the preamble although they may be set at any point in a document.
  If you want to change these settings in your document the best place to
- do so is at the very top of a foil, 
+ do so is at the very top of a foil, i.e.
 \emph on
-i.e.
+
+\begin_inset space \space{}
+\end_inset
+
 
 \emph default
- straight after the foilhead.
+straight after the foilhead.
 \end_layout
 
 \begin_layout Standard
@@ -8814,14 +8779,10 @@ TeX-
  While the second is meant to provide a classification for the audience,
  
 \emph on
-e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+e.g.
 \emph default
 
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 Confidential.
@@ -8952,8 +8913,11 @@ foilheadskip
 \emph on
 all
 \emph default
- foilheads 0.5 inches closer to their bodies put the following in the preamble:
- 
+ foilheads 0.5
+\begin_inset space \space{}
+\end_inset
+
+in closer to their bodies put the following in the preamble: 
 \family typewriter
 
 \backslash
@@ -9427,12 +9391,8 @@ M-z t
 
 \family default
 Camera movement instruction.
- e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ e.g.
+\begin_inset space \space{}
 \end_inset
 
 CUT TO:
@@ -9820,16 +9780,16 @@ Both packages use basic citations; the natbib package should not be used.
 \family typewriter
 refcite
 \family default
- command, e.
-\begin_inset space \thinspace{}
+ command, e.g.
+\begin_inset space \space{}
 \end_inset
 
-g., 
+
 \begin_inset Quotes eld
 \end_inset
 
 See Ref.
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 
@@ -10376,10 +10336,7 @@ New from
 \family default
  
 \family sans
-\bar under
-T
-\bar default
-emplate
+Template
 \family default
 , then choose the 
 \family typewriter
@@ -10417,20 +10374,9 @@ postprocess
 Export your paper as a LaTeX file.
  To do this, click on 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xport\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTeX
+File\SpecialChar \menuseparator
+Export\SpecialChar \menuseparator
+LaTeX
 \family default
 .
  
@@ -10493,11 +10439,11 @@ View the resulting
 \family typewriter
 .dvi
 \family default
- document using, e.
-\begin_inset space \thinspace{}
+ document using, e.g.
+\begin_inset space \space{}
 \end_inset
 
-g., 
+
 \family sans
 xdvi
 \family default
@@ -10585,9 +10531,12 @@ ERT
 \end_layout
 
 \begin_layout Enumerate
-Information given at the beginning of the article (i.e., title, subtitle,
- author, institution, running title, running author, abstract and keywords)
- must be included in an environment called 
+Information given at the beginning of the article (i.e.
+\begin_inset space \space{}
+\end_inset
+
+title, subtitle, author, institution, running title, running author, abstract
+ and keywords) must be included in an environment called 
 \begin_inset Quotes eld
 \end_inset
 
@@ -10829,15 +10778,8 @@ Options
 \family default
  of the dialog 
 \family sans
-\bar under
-L
-\bar default
-ayout\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-ocument
+Layout\SpecialChar \menuseparator
+Document
 \family default
 ).
  A detailed German description of these options can be found in the Koma-Script
@@ -10860,29 +10802,15 @@ DIV
 \family default
  (in LyX to be entered in the extra class options field in the dialog 
 \family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \family default
 ).
  They make a clearer modification of page margins possible as do the options
  of the dialog 
 \family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \family default
 .
  A detailed German description of these and other type area options can
@@ -11132,21 +11060,14 @@ captionbelow
 \family sans
 Dictum
 \family default
-: can be used to set a bonmot, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+: can be used to set a bonmot, e.g.
+\begin_inset space \space{}
 \end_inset
 
 at the beginning of a chapter.
  If you use the optional argument (
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
+Insert\SpecialChar \menuseparator
 Short
 \begin_inset space ~
 \end_inset
@@ -11791,12 +11712,8 @@ Telephone
 
 \begin_layout Standard
 The input types can also be used as empty paragraphs.
- This makes sense e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ This makes sense e.g.
+\begin_inset space \space{}
 \end_inset
 
 for the 
@@ -12177,12 +12094,8 @@ Closing
 \family sans
 NextAddress
 \family default
- will start a new letter (i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space ~
+ will start a new letter (i.e.
+\begin_inset space \space{}
 \end_inset
 
 you can write several letters per document).
@@ -12208,15 +12121,8 @@ Logo
 \family default
  (via 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
-
-\bar under
-G
-\bar default
-raphics
+Insert\SpecialChar \menuseparator
+Graphics
 \family default
 ) in the header.
 \end_layout
@@ -12329,15 +12235,8 @@ true
 
  LaTeX table of contents, but not in the LyX table of contents (
 \family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-T
-\bar default
-able
+Document\SpecialChar \menuseparator
+Table
 \begin_inset space ~
 \end_inset
 
@@ -12360,31 +12259,17 @@ letter
  that.
  But in the 
 \family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \family default
  dialog the corresponding radio button indicates 
 \family sans
-\bar under
-I
-\bar default
-ndent
+Indent
 \family default
 .
  A 
 \family sans
-S
-\bar under
-k
-\bar default
-ip
+Skip
 \family default
  value always has the effect that extra LaTeX commands are inserted in the
  document to produce the gap, which is not what is wanted in this case.
@@ -12670,12 +12555,8 @@ Style
 \backslash
 chapterstyle
 \family default
- in the main text or in preamble (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ in the main text or in preamble (e.g.
+\begin_inset space \space{}
 \end_inset
 
 
@@ -12729,12 +12610,8 @@ empty
 \begin_inset Quotes erd
 \end_inset
 
-, i
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space ~
+, i.e.
+\begin_inset space \space{}
 \end_inset
 
 without pagina).
@@ -12779,12 +12656,8 @@ real
 
 \begin_layout Description
 Oldfontcommands: By default, Memoir does not allow the use of the deprecated
- font commands, which have been used in the old LaTeX version 2.09 (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ font commands, which have been used in the old LaTeX version 2.09 (e.g.
+\begin_inset space \space{}
 \end_inset
 
 
@@ -12866,12 +12739,8 @@ Abstract: You may wonder why an abstract is an extra feature.
 \begin_layout Description
 Chapterprecis: You may know this from belletristic: The contents of a chapter
  is shortly described below the title and also in the table of contents
- (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ (e.g.
+\begin_inset space \space{}
 \end_inset
 
 
@@ -12996,8 +12865,11 @@ Basic differences:
 \end_layout
 
 \begin_layout Itemize
-Unnumbered titles (with star, eg.
- 
+Unnumbered titles (with star, e.g.
+\begin_inset space \space{}
+\end_inset
+
+
 \family sans
 Section*
 \family default
@@ -13167,9 +13039,12 @@ http://publish.aps.org/revtex4/
 .
  Install it somewhere that LaTeX can see it.
  Test it by trying to LaTeX a short RevTeX 4 document in some random directory
- (i.e., not the directory where you installed the class file.) Then, if you
- reconfigure LyX, it will find the class file and let you use the RevTeX4
- textclass.
+ (i.e.
+\begin_inset space \space{}
+\end_inset
+
+not the directory where you installed the class file.) Then, if you reconfigure
+ LyX, it will find the class file and let you use the RevTeX4 textclass.
 \end_layout
 
 \begin_layout Standard
@@ -13416,11 +13291,11 @@ The main problem with this layout is that you can't use the optional arguments
  to the Section layouts either.) This means that after you export that file
  to LaTeX (which you'll need to do eventually to send it in to APS), you'll
  need to edit the LaTeX file with a text editor to add the optional arguments
- to set, e.
-\begin_inset space \thinspace{}
+ to set, e.g.
+\begin_inset space \space{}
 \end_inset
 
-g., the running title for the page headers.
+the running title for the page headers.
  Lacking these layouts makes the 
 \family typewriter
 
@@ -13490,11 +13365,11 @@ http://www.springer.de/author/tex/help-journals.html
 \family typewriter
 svjour.inc
 \family default
-, which journal-specific layout files (such as, e.
-\begin_inset space \thinspace{}
+, which journal-specific layout files (such as, e.g.
+\begin_inset space \space{}
 \end_inset
 
-g., 
+
 \family typewriter
 svjog.layout
 \family default
@@ -13632,11 +13507,8 @@ ejour2
 \end_layout
 
 \begin_layout Standard
-Limitations e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.: does not display the number for theorem-like layouts, just #.
+Limitations e.g.: does not display the number for theorem-like layouts, just
+ #.
 \end_layout
 
 \begin_layout Section
@@ -13837,15 +13709,8 @@ slides (default)
 
  from the class list in the 
 \family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \family default
  dialog.
  There are some other special things you should know about this class:
@@ -13867,10 +13732,7 @@ slides
 \begin_layout Itemize
 The option 
 \family sans
-\bar under
-P
-\bar default
-age
+Page
 \begin_inset space ~
 \end_inset
 
@@ -13977,10 +13839,7 @@ slides
 \family default
  class [using 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
+File\SpecialChar \menuseparator
 New
 \begin_inset space ~
 \end_inset
@@ -13989,11 +13848,7 @@ from
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-T
-\bar default
-emplate
+Template
 \family default
  to open your new document].
  The template file also contains some examples of the special paragraph
@@ -15846,9 +15701,11 @@ Enforcement of normal space after common abbreviations:
 \begin_inset Newline newline
 \end_inset
 
-e.
- g.
- is too wide spacing.
+e.g.
+\begin_inset space \space{}
+\end_inset
+
+is too wide spacing.
 \end_layout
 
 \begin_layout Itemize
@@ -15950,15 +15807,8 @@ How to use it
 \begin_layout Standard
 If you have the program installed, usage is as simple as choosing 
 \family sans
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-C
-\bar default
-heck
+Tools\SpecialChar \menuseparator
+Check
 \begin_inset space ~
 \end_inset
 
@@ -15985,15 +15835,8 @@ ChkTeX
  The warnings will be placed close to the point of the mistake, and you
  can quickly find them by using the 
 \family sans
-\bar under
-N
-\bar default
-avigate\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-rror
+Navigate\SpecialChar \menuseparator
+Error
 \family default
  menu item, or the shortcut key 
 \family sans
@@ -16059,15 +15902,8 @@ ChkTeX
  to get better along with you.
  Another choice in the most desperate situations is to use 
 \family sans
-\bar under
-V
-\bar default
-iew\SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-emove
+View\SpecialChar \menuseparator
+Remove
 \begin_inset space ~
 \end_inset
 
@@ -16174,20 +16010,9 @@ chktexrc
 \begin_layout Itemize
 Export your document as a raw LaTeX file using 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xport\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTeX
+File\SpecialChar \menuseparator
+Export\SpecialChar \menuseparator
+LaTeX
 \family default
  and run 
 \family typewriter
@@ -17607,8 +17432,12 @@ It can generate the documentation either in LaTeX or HTML.
 \end_layout
 
 \begin_layout Itemize
-It has a open architecture, i.e., it is easy to plug in new filters and to
- perform special processing that you may need.
+It has a open architecture, i.e.
+\begin_inset space \space{}
+\end_inset
+
+it is easy to plug in new filters and to perform special processing that
+ you may need.
  
 \end_layout
 
@@ -17660,8 +17489,12 @@ Noweb independent
 \begin_inset Quotes erd
 \end_inset
 
- way, i.e., you will be able to use this new LyX feature with some other literate
- programming tool of your choice by just changing your LyX preferences.
+ way, i.e.
+\begin_inset space \space{}
+\end_inset
+
+you will be able to use this new LyX feature with some other literate programmin
+g tool of your choice by just changing your LyX preferences.
 \end_layout
 
 \begin_layout Subsubsection
@@ -17781,8 +17614,12 @@ The problem is that whatever is written in between the << and the
 \family typewriter
 @
 \family default
- must be taken literally, i.e., LyX should be prevented from making any special
- interpretation of what has been written.
+ must be taken literally, i.e.
+\begin_inset space \space{}
+\end_inset
+
+LyX should be prevented from making any special interpretation of what has
+ been written.
  This is handled by a special layout named Scrap, that works like a normal
  paragraph but has a free spacing capability.
 \end_layout

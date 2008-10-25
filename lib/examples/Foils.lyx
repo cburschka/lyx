@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass foils
@@ -8,6 +8,7 @@
 \MyLogo{-\LyX{} and \FoilTeX{}: What a team!-}
 \end_preamble
 \options dvips
+\use_default_options false
 \language english
 \inputencoding default
 \font_roman default
@@ -53,6 +54,7 @@
 \bullet 3 1 3 -1
 \tracking_changes false
 \output_changes false
+\author "" 
 \author "" 
 \end_header
 
@@ -767,8 +769,11 @@ Restriction{}
 
 .
  While the second is meant to provide a classification for the audience
- eg.
- Confidential.
+ e.g.
+\begin_inset space \space{}
+\end_inset
+
+Confidential.
 \end_layout
 
 \begin_layout Standard

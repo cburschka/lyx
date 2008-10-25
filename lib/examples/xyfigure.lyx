@@ -1,11 +1,12 @@
-#LyX 1.6.0beta3 created this file. For more info see http://www.lyx.org/
-\lyxformat 335
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass article
 \begin_preamble
 \usepackage[all]{xy}
 \end_preamble
+\use_default_options false
 \language english
 \inputencoding auto
 \font_roman default
@@ -16,6 +17,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -37,6 +39,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \author "" 
 \end_header
 
@@ -78,15 +81,15 @@ Xy
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \xymatrix{A\ar [d]\ar [r]  &  B\ar [d]\ar @{-->}[dl] \\
-C\ar @{_{(}->}[r]  &  D\ar @/{}_{1pc}/[u]}
+\begin_inset Formula \xymatrix{A\ar[d]\ar[r]  &  B\ar[d]\ar@{-->}[dl] \\
+C\ar@{_{(}->}[r]  &  D\ar@/{}_{1pc}/[u]}
 
 
 \end_inset
 
  
-\begin_inset Formula $\xymatrix{\, & \, & \mbox{}A\ar [r]\ar [d] & B\ar [d]\ar @{-->}[dl]\\
-\, &  & C\ar @{_{(}->}[r] & D\ar @/_{1pc}/[u]}
+\begin_inset Formula $\xymatrix{\, & \, & \mbox{}A\ar[r]\ar[d] & B\ar[d]\ar@{-->}[dl]\\
+\, &  & C\ar@{_{(}->}[r] & D\ar@/_{1pc}/[u]}
 $
 \end_inset
 

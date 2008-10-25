@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass article
@@ -8,6 +8,7 @@
 \renewenvironment{lyxgreyedout}
  {\textcolor{blue}\bgroup}{\egroup}
 \end_preamble
+\use_default_options false
 \begin_modules
 braille
 \end_modules
@@ -36,7 +37,6 @@ braille
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
-\pdf_pagebackref false
 \pdf_pdfusetitle false
 \papersize default
 \use_geometry true
@@ -474,12 +474,8 @@ brailleunit
 \end_inset
 
 mm.
- To get e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ To get e.g.
+\begin_inset space \space{}
 \end_inset
 
 double-sized Braille where also the tiny dots have the double size, use
