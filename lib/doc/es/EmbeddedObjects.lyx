@@ -257,7 +257,7 @@ type "mailto:"
 status collapsed
 
 \begin_layout Plain Layout
-autor original: Uwe Stöhr
+Autor original: Uwe Stöhr
 \end_layout
 
 \end_inset
@@ -31238,8 +31238,8 @@ LaTeX-paquetes ! listings
 \end_layout
 
 \begin_layout Standard
-Al hacer clic-derecho sobre un recuadro de listado surge un cuadro de diálogo
- en el que puedes establecer el formato del mismo.
+Al hacer clic-derecho sobre un recuadro de listado surge una ventana de
+ diálogo en la que puedes establecer el formato del mismo.
 \end_layout
 
 \begin_layout Standard
@@ -31250,7 +31250,11 @@ Listado
 \begin_inset space ~
 \end_inset
 
-insertado
+en
+\begin_inset space ~
+\end_inset
+
+línea
 \family default
  lo imprime en la línea, como este ejemplo: 
 \begin_inset listings

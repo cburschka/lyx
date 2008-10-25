@@ -1273,7 +1273,7 @@ Tablas
 
 \begin_deeper
 \begin_layout Standard
-Clic-derecha
+CliCtrl-derecha
 \emph on
  
 \emph default
@@ -1422,17 +1422,13 @@ Con los botones
 
 \end_inset
 
- o 
-\lang english
-the corresponding key bindings
-\lang spanish
- 
+ o los correspondientes atajos de teclado 
 \family sans
 Tab
 \family default
  y 
 \family sans
-Shift-Tab
+Mayúsculas-Tab
 \family default
  puedes cambiar el nivel de anidamiento.
  Por ejemplo, puedes convertir la sección
@@ -1675,12 +1671,12 @@ Mayúsculas
 \family default
  (Representada por «
 \family sans
-Shift
+Mayúsculas
 \family default
 »
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "Shift"
+symbol "Mayúsculas"
 description "Tecla Mayúsculas"
 
 \end_inset
@@ -1789,10 +1785,10 @@ Aprenderás más y más combinaciones de teclas y atajos de teclado conforme
  la acción a realizar y sus correspondientes atajos de teclado.
  La notación de las acciones de teclado es muy similar a la usada en esta
  documentación, así que no deberías tener problemas en entenderlas.
- Sin embargo, ten en cuenta que las teclas modificadoras.
- Mayúsculas se mencionan de forma explícita, así 
+ Sin embargo, ten en cuenta que la tecla modificadora «Mayúsculas» se menciona
+ de forma explícita, así 
 \family sans
-«Alt-p Shift-a
+«Alt-p Mayúsculas-A
 \family default
 »
 \family sans
@@ -1807,7 +1803,7 @@ Alt-p
 
 \begin_layout Standard
 Puedes ver la lista de atajos de teclado o cambiarlos en las preferencias
- de LyX, menú 
+ de LyX, menú
 \family sans
 Herramientas\SpecialChar \menuseparator
 Preferencias,
@@ -6557,7 +6553,7 @@ reales
 .
  Puedes ponerlas con 
 \family sans
-Ctrl-Shift-"
+Ctrl-Mayúsculas-"
 \family default
  (o 
 \family sans
@@ -6746,15 +6742,15 @@ Tab
 \family default
  y 
 \family sans
-Shift-Tab 
+Mayúsculas-Tab
 \family default
-o 
+o
 \family sans
-Shift-Alt-Derecha
+Mayúsculas-Alt-Derecha
 \family default
- y 
+y
 \family sans
-Shift-Alt-Izquierda
+Mayúsculas-Alt-Izquierda
 \family default
 .
  El cambio de profundidad funcionará para el párrafo actual y también para
@@ -7694,7 +7690,7 @@ Alt-Retorno
 \family default
  seguido de 
 \family sans
-Shift-Alt-Derecha
+Mayúsculas-Alt-Derecha
 \family default
 .
 \end_layout
@@ -7709,7 +7705,7 @@ Retorno
 \family default
 , luego 
 \family sans
-Shift-Alt-Derecha
+Mayúsculas-Alt-Derecha
 \family default
  dos veces en una fila.
  También podríamos haber hecho como en el nivel anterior, pulsando 
@@ -7718,7 +7714,7 @@ Alt-Retorno
 \family default
  seguido de 
 \family sans
-Shift-Alt-Derecha
+Mayúsculas-Alt-Derecha
 \family default
 .
 \end_layout
@@ -7745,7 +7741,7 @@ Alt-Retorno
 \family default
 , luego 
 \family sans
-Shift-Alt-Derecha
+Mayúsculas-Alt-Derecha
 \family default
 , luego cambiando el párrafo a 
 \family sans
@@ -7837,7 +7833,7 @@ Alt-Retorno
 \family default
  seguido de 
 \family sans
-Shift-Alt-Izquierda
+Mayúsculas-Alt-Izquierda
 \family default
 .
 \end_layout
@@ -7851,7 +7847,7 @@ Alt-Retorno
 \family default
  seguido de 
 \family sans
-Shift-Alt-Izquierda
+Mayúsculas-Alt-Izquierda
 \family default
 .
 \end_layout
@@ -7925,7 +7921,7 @@ Retorno
 \family default
 , luego 
 \family sans
-Shift-Alt-Derecha
+Mayúsculas-Alt-Derecha
 \family default
 ,
 \end_layout
@@ -7972,7 +7968,7 @@ Normal
 \family default
  y reiniciar la profundidad de anidación con 
 \family sans
-Shift-Alt-Izquierda
+Mayúsculas-Alt-Izquierda
 \family default
  una vez.
 \end_layout
@@ -8017,7 +8013,7 @@ Alt-Retorno
 \family default
  seguido de 
 \family sans
-Shift-Alt-Derecha
+Mayúsculas-Alt-Derecha
 \family default
 .
  Ahora, ¿qué sucede si anidamos un entorno 
@@ -8117,7 +8113,7 @@ Alt-Retorno
 \family default
 , luego 
 \family sans
-Shift-Alt-Derecha
+Mayúsculas-Alt-Derecha
 \family default
 , luego cambiando a entorno 
 \family sans
@@ -8134,7 +8130,7 @@ Alt-Retorno
 \family default
 , luego 
 \family sans
-Shift-Alt-Derecha
+Mayúsculas-Alt-Derecha
 \family default
 .
  Haremos esto otra vez\SpecialChar \ldots{}
@@ -8220,7 +8216,7 @@ Alt-Retorno
 \begin_layout Enumerate
 Usemos 
 \family sans
-Shift-Alt-Izquierda
+Mayúsculas-Alt-Izquierda
 \family default
  para disminuir la profundidad después del siguiente 
 \family sans
@@ -8289,7 +8285,7 @@ Alt-Retorno
 \family default
  
 \family sans
-Shift-Alt-Izquierda
+Mayúsculas-Alt-Izquierda
 \family default
 , y volvemos al nivel #2.
  Esta vez, no sólo hemos cambiado la profundidad de anidación, también hemos
@@ -8308,7 +8304,7 @@ Alt-Retorno
 \family default
  
 \family sans
-Shift-Alt-Izquierda
+Mayúsculas-Alt-Izquierda
 \family default
  y volvemos al nivel #1, el más externo.
 \end_layout
@@ -8369,7 +8365,7 @@ Enumeración
 \begin_layout Standard
 (
 \family sans
-Retorno, Shift-Alt-Derecha, Normal
+Retorno, Mayúsculas-Alt-Derecha, Normal
 \family default
 : nivel #2) En algunos sitios pondremos entre paréntesis una descripción
  de cómo se ha hecho.
@@ -8399,7 +8395,7 @@ Será mucho peor.
 
 (
 \family sans
-Retorno, Shift-Alt-Derecha, Verso
+Retorno, Mayúsculas-Alt-Derecha, Verso
 \family default
 : nivel #2)
 \end_layout
@@ -8515,11 +8511,11 @@ pez-azul
 \begin_layout Verse
 (
 \family sans
-Alt-Retorno, Tabla, Shift-Alt-Derecha
+Alt-Retorno, Tabla, Mayúsculas-Alt-Derecha
 \family default
  3 veces, 
 \family sans
-Alt-Retorno, Verso, Shift-Alt-Izquierda
+Alt-Retorno, Verso, Mayúsculas-Alt-Izquierda
 \family default
 )
 \end_layout
@@ -8855,7 +8851,7 @@ name "sub:Espacio-entre-palabra"
 status collapsed
 
 \begin_layout Plain Layout
-Espacios ! Entre-palabra
+Espacios ! Entre palabras
 \end_layout
 
 \end_inset
@@ -8894,7 +8890,11 @@ Espacio
 \begin_inset space ~
 \end_inset
 
-entre-palabra (atajo Ctrl-Alt-Espacio).
+entre
+\begin_inset space ~
+\end_inset
+
+palabras (atajo Ctrl-Alt-Espacio).
 \end_layout
 
 \begin_layout Subsubsection
@@ -8965,7 +8965,7 @@ delgado
 \family default
  (atajo 
 \family sans
-Ctrl-Shift-Espacio
+Ctrl-Mayúsculas-Espacio
 \family default
 ).
 \end_layout
@@ -9584,12 +9584,12 @@ Proteger
 \end_layout
 
 \begin_layout Subsubsection
-Espacio fantasma
+Espacio reservado
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Espacios ! Fantasma
+Espacios ! Reservado
 \end_layout
 
 \end_inset
@@ -9723,7 +9723,7 @@ Edge
 
 ) al principio de ambas líneas.
  El comando imprime la frase entre llaves pero de manera invisible.
- De ahí el nombre, 
+ De ahí el nombre del comando, 
 \begin_inset Quotes fld
 \end_inset
 
@@ -12272,7 +12272,7 @@ Alt-s
 \begin_inset space ~
 \end_inset
 
-Shift-l
+Mayúsculas-L
 \family default
 
 \begin_inset ERT
@@ -12908,7 +12908,13 @@ texto en typewriter
 status collapsed
 
 \begin_layout Plain Layout
-Más sobre fantasmas en la sección 
+Más sobre 
+\series bold
+
+\backslash
+phantom
+\series default
+ en la sección 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Otros-espacios"
@@ -14786,7 +14792,7 @@ Estas opciones afectan al carácter generado por la tecla
 Por otra parte, si quieres generar un carácter comillas en texto simple,
  teclea 
 \family sans
-Ctrl-Shift-"
+Ctrl-Mayúsculas-"
 \family default
 .
  Esto genera 
@@ -15231,7 +15237,7 @@ delgado
 \family default
  (atajo 
 \family sans
-Ctrl-Shift-Espacio
+Ctrl-Mayúsculas-Espacio
 \family default
 ).
 \end_layout
@@ -15631,7 +15637,7 @@ verás un cuadro como este
 \family default
 \series default
 \bar default
- clic-izquierdo sobre 
+ cliCtrl-izquierdo sobre 
 \family roman
 \series medium
 \bar no
@@ -19746,7 +19752,7 @@ Flotantes ! Títulos
  La imagen o la tabla se inserta encima o debajo del título en un párrafo
  separado dentro del flotante.
  Para mantener legible el documento LyX, puedes abrir y cerrar el cuadro
- del flotante haciendo clic-izquierdo sobre él.
+ del flotante haciendo cliCtrl-izquierdo sobre él.
  Un cuadro cerrado se muestra así: 
 \begin_inset Graphics
 	filename clipart/flotanteQt4.png
@@ -21360,8 +21366,8 @@ Minipágina con un poco de texto estúpido.
 \end_layout
 
 \begin_layout Standard
-Haciendo clic-derecha en el cuadro de una minipágina puedes cambiar el tipo
- de cuadro y la decoración del marco.
+Haciendo cliCtrl-derecha en el cuadro de una minipágina puedes cambiar el
+ tipo de cuadro y la decoración del marco.
  En el capítulo 
 \emph on
 Cuadros
@@ -21512,11 +21518,11 @@ Línea de texto con una ecuación,
 \end_layout
 
 \begin_layout Standard
-Las ecuaciones en modo 
+Las ecuaciones 
 \begin_inset Quotes fld
 \end_inset
 
-presentación
+presentadas
 \begin_inset Quotes frd
 \end_inset
 
@@ -21527,7 +21533,7 @@ A=B\]
 
 \end_inset
 
-Sólo se pueden numerar y referenciar las ecuaciones en modo presentación.
+Sólo se pueden numerar y referenciar las ecuaciones presentadas.
 \end_layout
 
 \begin_layout Standard
@@ -22192,7 +22198,7 @@ lím
 \begin_inset Quotes frd
 \end_inset
 
- en modo presentación.
+ en estilo presentación.
  En fórmulas en línea se ve así: 
 \begin_inset Formula $\lim_{x\rightarrow\infty}\lyxlock f(x)$
 \end_inset
@@ -23797,7 +23803,7 @@ Alt-m
 n
 \family default
  en una ecuación numerada quita la numeración.
- Sólo se pueden numerar ecuaciones en modo presentación.
+ Sólo se pueden numerar ecuaciones presentadas.
 \end_layout
 
 \begin_layout Standard
@@ -23849,8 +23855,7 @@ n
 \end_layout
 
 \begin_layout Standard
-Cada ecuación en presentación puede ser referida a su número mediante una
- etiqueta.
+Toda ecuación presentada puede ser referida a su número mediante una etiqueta.
  La etiqueta se inserta con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -25009,11 +25014,11 @@ presentación
 \end_inset
 
 , 
-\begin_inset Formula ${\scriptstyle \acute{i}ndice\, peque\tilde{n}o}$
+\begin_inset Formula ${\scriptstyle \acute{\dotlessi}ndice\, peque\tilde{n}o}$
 \end_inset
 
 , 
-\begin_inset Formula ${\scriptscriptstyle \acute{i}ndice\, más\, peque\tilde{n}o}$
+\begin_inset Formula ${\scriptscriptstyle \acute{\dotlessi}ndice\, m\acute{a}s\, peque\tilde{n}o}$
 \end_inset
 
 .
@@ -36004,7 +36009,7 @@ Menú ! Insertar
 \end_layout
 
 \begin_layout Subsection
-Ecuaciones
+Ecuación
 \end_layout
 
 \begin_layout Standard
@@ -42549,7 +42554,7 @@ Formato
 \family default
  y 
 \family sans
-Nombre GUI
+Nombre corto
 \family default
  y pulsa el botón 
 \family sans

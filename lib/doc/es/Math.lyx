@@ -475,7 +475,7 @@ Para crear una ecuación en estilo presentación
 status collapsed
 
 \begin_layout Plain Layout
-Ecuación ! en presentación
+Ecuación ! presentada
 \end_layout
 
 \end_inset
@@ -488,8 +488,8 @@ Ecuación ! en presentación
 \end_layout
 
 \begin_layout Standard
-Para cambiar una ecuación en estilo presentación a estilo en línea, pon
- el cursor dentro de la ecuación y teclea 
+Para cambiar una ecuación presentada a ecuación en línea, pon el cursor
+ dentro de la ecuación y teclea 
 \family sans
 Ctrl-M
 \family default
@@ -504,8 +504,8 @@ Cambiar tipo de ecuación
 \end_layout
 
 \begin_layout Standard
-Para mostrar partes de una ecuación en línea en el tamaño del estilo presentació
-n, escribe el comando 
+Para mostrar partes de una ecuación en línea en el tamaño de una ecuación
+ presentada, escribe el comando 
 \series bold
 
 \backslash
@@ -3312,10 +3312,10 @@ reference "sec:Relaciones"
 \end_layout
 
 \begin_layout Subsection
-Espaciadores fantasma 
+Espacios reservados 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Espaciadores-fantasma"
+name "sub:Espacios-reservados"
 
 \end_inset
 
@@ -3324,7 +3324,7 @@ name "sub:Espaciadores-fantasma"
 status collapsed
 
 \begin_layout Plain Layout
-Espaciadores fantasma
+Espacios reservados
 \end_layout
 
 \end_inset
@@ -3375,7 +3375,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-En la presentación de isótopos,
+En la presentación de, p.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., isótopos,
 \begin_inset Foot
 status collapsed
 
@@ -3392,11 +3396,7 @@ reference "sub:Símbolos-y-ecuaciones-químicas"
 
 \end_inset
 
- p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e., surge el problema siguiente:
+ surge el problema siguiente:
 \end_layout
 
 \begin_layout Standard
@@ -3525,7 +3525,7 @@ Botón
 
 \end_inset
 
-, que genera uno o más caracteres fantasma.
+, que genera uno o más espacios reservados.
  Al insertar 
 \series bold
 
@@ -3537,9 +3537,9 @@ phantom
 \end_inset
 
 .
- Las flechas indican que se utilizarán como espaciador la anchura y altura
- totales del contenido del marco.
- Los caracteres fantasmas son espaciadores adecuados al tamaño de los caracteres.
+ Las flechas indican que se reservará un espacio equivalente a la anchura
+ y altura totales del contenido del marco.
+ Los espacios reservados son correspondientes al tamaño de los caracteres.
 \end_layout
 
 \begin_layout Standard
@@ -7704,7 +7704,7 @@ hphantom
  en 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Espaciadores-fantasma"
+reference "sub:Espacios-reservados"
 
 \end_inset
 
@@ -12553,7 +12553,7 @@ fbox
 fboxed
 \series default
  no es adecuada para enmarcar ecuaciones en línea porque la ecuación tendría
- siempre el tamaño de una ecuación en modo presentación.
+ siempre el tamaño de una ecuación presentada.
 \end_layout
 
 \begin_layout Standard
@@ -27853,8 +27853,8 @@ leqno
 \end_layout
 
 \begin_layout Standard
-Los estilos escogidos se aplican a todas las ecuaciones en presentación
- del documento.
+Los estilos escogidos se aplican a todas las ecuaciones presentadas del
+ documento.
  Si un documento debe tener ecuaciones centradas y sangradas, se usa el
  estilo 
 \series bold
@@ -29470,8 +29470,8 @@ Los tres primeros tienen las mismas propiedades que los correspondientes
 
 \end_inset
 
-Para componer esta expresión se inserta una ecuación en presentación y en
- ella se introduce el comando 
+Para componer esta expresión se inserta una ecuación presentada y en ella
+ se introduce el comando 
 \series bold
 
 \backslash
@@ -29499,8 +29499,8 @@ aligned
 \begin_layout Standard
 El entorno aligned también es apropiado para ecuaciones largas cuyas líneas
  se alinean horizontalmente.
- Usar aligned en una ecuación en presentación tiene la ventaja de que el
- número de ecuación se centra verticalmente con las líneas.
+ Usar aligned en una ecuación presentada tiene la ventaja de que el número
+ de ecuación se centra verticalmente con las líneas.
  Como ejemplo, la ecuación 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -29850,7 +29850,7 @@ Etiqueta
 \end_inset
 
  de la barra de herramientas.
- El cursor debe estar dentro de una ecuación en presentación.
+ El cursor debe estar dentro de una ecuación en modo presentación.
  Surge un diálogo con el prefijo 
 \series bold
 eq:
@@ -30298,7 +30298,7 @@ begin{subequations}
 
 \begin_inset Formula \begin{eqnarray}
 A & = & (B-Z)^{2}=(B-Z)(B-Z)\label{eq:d}\\
- & = & B^{2}-ZB-BZ+Z^{²}\nonumber \\
+ & = & B^{2}-ZB-BZ+Z^{2}\nonumber \\
  & = & B^{2}-2BZ+Z^{2}\label{eq:f}\end{eqnarray}
 
 \end_inset
@@ -33420,7 +33420,7 @@ Estilo (tamaño)
 \begin_inset Text
 
 \begin_layout Plain Layout
-ecuación en presentación
+ecuación presentada
 \end_layout
 
 \end_inset
