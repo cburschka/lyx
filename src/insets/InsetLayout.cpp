@@ -119,7 +119,7 @@ bool InsetLayout::read(Lexer & lex, TextClass & tclass)
 
 	FontInfo font = inherit_font;
 	labelfont_ = inherit_font;
-	bgcolor_ = Color_background;
+	bgcolor_ = Color_none;
 	bool getout = false;
 	// whether we've read the CustomPars or ForcePlain tag
 	// for issuing a warning in case MultiPars comes later

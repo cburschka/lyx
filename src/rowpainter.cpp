@@ -109,6 +109,7 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 	pi_.erased_ = erased_ || par_.isDeleted(pos);
 	pi_.base.bv->coordCache().insets().add(inset, int(x_), yo_);
 	// insets are painted completely. Recursive
+	inset->drawBackground(pi_, int(x_), yo_);
 	inset->drawSelection(pi_, int(x_), yo_);
 	inset->draw(pi_, int(x_), yo_);
 
@@ -683,7 +684,14 @@ void RowPainter::paintOnlyInsets()
 		if (x_ > pi_.base.bv->workWidth())
 			continue;
 		x_ = pi_.base.bv->coordCache().getInsets().x(inset);
+
+		bool const pi_selected = pi_.selected;
+		Cursor const & cur = pi_.base.bv->cursor();
+		if (cur.selection() && cur.text() == &text_ 
+			  && cur.anchor().text() == &text_)
+			pi_.selected = row_.sel_beg <= pos && row_.sel_end > pos; 
 		paintInset(inset, pos);
+		pi_.selected = pi_selected;
 	}
 }
 
@@ -818,7 +826,14 @@ void RowPainter::paintText()
 		} else if (inset) {
 			// If outer row has changed, nested insets are repaint completely.
 			pi_.base.bv->coordCache().insets().add(inset, int(x_), yo_);
+			
+			bool const pi_selected = pi_.selected;
+			Cursor const & cur = pi_.base.bv->cursor();
+			if (cur.selection() && cur.text() == &text_ 
+				  && cur.anchor().text() == &text_)
+				pi_.selected = row_.sel_beg <= pos && row_.sel_end > pos; 
 			paintInset(inset, pos);
+			pi_.selected = pi_selected;
 			++vpos;
 
 		} else {

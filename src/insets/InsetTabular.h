@@ -834,6 +834,8 @@ public:
 	/// descending into the insets
 	docstring asString(idx_type stidx, idx_type enidx, bool intoInsets = true);
 
+	/// Returns whether the cell in the specified row and column is selected.
+	bool isCellSelected(Cursor & cur, row_type row, col_type col) const;
 	//
 	// Public structures and variables
 	///

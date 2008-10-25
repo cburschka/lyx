@@ -2224,7 +2224,7 @@ void BufferView::draw(frontend::Painter & pain)
 
 		// Clear background.
 		pain.fillRectangle(0, 0, width_, height_,
-			buffer_.inset().backgroundColor());
+			pi.backgroundColor(&buffer_.inset()));
 
 		// Draw everything.
 		tm.draw(pi, 0, y);

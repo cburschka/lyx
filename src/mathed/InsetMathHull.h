@@ -45,6 +45,8 @@ public:
 	mode_type currentMode() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	/// 
+	void drawBackground(PainterInfo & pi, int x, int y) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
@@ -55,6 +57,8 @@ public:
 	docstring label(row_type row) const;
 	///
 	void label(row_type row, docstring const & label);
+	///
+	ColorCode backgroundColor() const { return Color_mathbg; }
 	///
 	void numbered(row_type row, bool num);
 	///

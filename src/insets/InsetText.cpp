@@ -200,11 +200,18 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 		int const h = tm.height() + 2 * TEXT_TO_INSET_OFFSET;
 		int const xframe = x + TEXT_TO_INSET_OFFSET / 2;
 		if (pi.full_repaint)
-			pi.pain.fillRectangle(xframe, yframe, w, h, backgroundColor());
+			pi.pain.fillRectangle(xframe, yframe, w, h,
+				pi.backgroundColor(this));
+
 		if (drawFrame_)
 			pi.pain.rectangle(xframe, yframe, w, h, frameColor());
 	}
+	ColorCode const old_color = pi.background_color;
+	pi.background_color = pi.backgroundColor(this, false);
+
 	tm.draw(pi, x + TEXT_TO_INSET_OFFSET, y);
+
+	pi.background_color = old_color;
 }
 
 

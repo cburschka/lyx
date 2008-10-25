@@ -2996,11 +2996,37 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = tabular.width() + 2 * ADD_TO_TABULAR_WIDTH;
 }
 
+bool InsetTabular::isCellSelected(Cursor & cur, row_type row, col_type col) 
+	const
+{
+	if (&cur.inset() == this && cur.selection()) {
+		if (cur.selIsMultiCell()) {
+			row_type rs, re;
+			col_type cs, ce;
+			getSelection(cur, rs, re, cs, ce);
+			
+			if (col >= cs && col <= ce && row >= rs && row <= re)
+				return true;
+		} else 
+			if (col == tabular.cellColumn(cur.idx()) 
+				&& row == tabular.cellRow(cur.idx())) {
+			CursorSlice const & beg = cur.selBegin();
+			CursorSlice const & end = cur.selEnd();
+
+			if (end.lastpos() > 0 && end.pos() == end.lastpos() 
+				  && beg.pos() == 0)
+				return true;
+		}
+	}
+	return false;
+}
+
 
 void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "InsetTabular::draw: " << x << " " << y << endl;
 	BufferView * bv = pi.base.bv;
+	Cursor & cur = pi.base.bv->cursor();
 
 	// FIXME: As the full backrgound is painted in drawSelection(),
 	// we have no choice but to do a full repaint for the Text cells.
@@ -3012,6 +3038,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	x += ADD_TO_TABULAR_WIDTH;
 
 	bool const original_drawing_state = pi.pain.isDrawingEnabled();
+	bool const original_selection_state = pi.selected;
 
 	idx_type idx = 0;
 	first_visible_cell = Tabular::npos;
@@ -3026,6 +3053,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 			if (first_visible_cell == Tabular::npos)
 				first_visible_cell = idx;
 
+			pi.selected |= isCellSelected(cur, i, j);
 			int const cx = nx + tabular.getBeginningOfTextInCell(idx);
 			// Cache the Inset position.
 			bv->coordCache().insets().add(cell(idx).get(), cx, y);
@@ -3043,6 +3071,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 			}
 			nx += tabular.columnWidth(idx);
 			++idx;
+			pi.selected = original_selection_state;
 		}
 
 		if (i + 1 < tabular.row_info.size())
@@ -3065,7 +3094,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 	int const w = tabular.width();
 	int const h = tabular.height();
 	int yy = y - tabular.rowAscent(0);
-	pi.pain.fillRectangle(x, yy, w, h, backgroundColor());
+	pi.pain.fillRectangle(x, yy, w, h, pi.backgroundColor(this));
 
 	if (!cur.selection())
 		return;
@@ -3076,9 +3105,6 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 
 
 	if (cur.selIsMultiCell()) {
-		row_type rs, re;
-		col_type cs, ce;
-		getSelection(cur, rs, re, cs, ce);
 		y -= tabular.rowAscent(0);
 		for (row_type j = 0; j < tabular.row_info.size(); ++j) {
 			int const a = tabular.rowAscent(j);
@@ -3091,7 +3117,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 				idx_type const cell =
 					tabular.cellIndex(j, i);
 				int const w = tabular.columnWidth(cell);
-				if (i >= cs && i <= ce && j >= rs && j <= re)
+				if (isCellSelected(cur, j, i))
 					pi.pain.fillRectangle(xx, y, w, h,
 							      Color_selection);
 				xx += w;

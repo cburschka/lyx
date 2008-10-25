@@ -266,8 +266,6 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 	LASSERT(layout_, /**/);
 
 	autoOpen_ = pi.base.bv->cursor().isInside(this);
-	ColorCode const old_color = pi.background_color;
-	pi.background_color = backgroundColor();
 
 	FontInfo tmpfont = pi.base.font;
 	pi.base.font = layout_->font();
@@ -377,7 +375,6 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		}
 		break;
 	}
-	pi.background_color = old_color;
 
 	pi.base.font = tmpfont;
 }

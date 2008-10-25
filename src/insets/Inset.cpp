@@ -430,7 +430,7 @@ void Inset::dump() const
 
 ColorCode Inset::backgroundColor() const
 {
-	return Color_background;
+	return Color_none;
 }
 
 

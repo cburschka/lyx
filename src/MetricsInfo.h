@@ -26,6 +26,7 @@ class BufferView;
 namespace lyx {
 
 namespace frontend { class Painter; }
+class Inset;
 class MacroContext;
 
 
@@ -95,6 +96,11 @@ public:
 	void draw(int x, int y, char_type c);
 	///
 	void draw(int x, int y, docstring const & str);
+	/// Determines the background color for the specified inset based on the
+	/// selection state, the background color inherited from the parent inset 
+	/// and the inset's own background color.
+	/// \param sel whether to take the selection state into account
+	ColorCode backgroundColor(Inset const * inset, bool sel = true) const;
 
 	///
 	MetricsBase base;
@@ -104,9 +110,11 @@ public:
 	bool ltr_pos;
 	/// Whether the parent is deleted (change tracking)
 	bool erased_;
+	/// Whether the parent is selected as a whole
+	bool selected;
 	///
 	bool full_repaint;
-	///
+	/// Current background color
 	ColorCode background_color;
 };
 

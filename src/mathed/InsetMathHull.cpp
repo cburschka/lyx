@@ -380,16 +380,17 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
+void InsetMathHull::drawBackground(PainterInfo & pi, int x, int y) const
+{
+	Dimension const dim = dimension(*pi.base.bv);
+	pi.pain.fillRectangle(x + 1, y - dim.asc + 1, dim.wid - 2,
+		dim.asc + dim.des - 1, pi.backgroundColor(this));
+}
+
+
 void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 {
 	use_preview_ = previewState(pi.base.bv);
-	Dimension const dim = dimension(*pi.base.bv);
-
-	// background of mathed under focus is not painted because
-	// selection at the top level of nested inset is difficult to handle.
-	if (!editing(pi.base.bv))
-		pi.pain.fillRectangle(x + 1, y - dim.asc + 1, dim.wid - 2,
-				dim.asc + dim.des - 1, Color_mathbg);
 
 	if (use_preview_) {
 		// one pixel gap in front
