@@ -148,6 +148,10 @@ bool InsetLayout::read(Lexer & lex, TextClass & tclass)
 			break;
 		}
 		switch (le) {
+		// FIXME
+		// Perhaps a mroe elegant way to deal with the next two would be the
+		// way this sort of thing is handled in Layout::read(), namely, by
+		// using the Lexer.
 		case IL_LYXTYPE: {
 			string lt;
 			lex >> lt;
