@@ -46,11 +46,11 @@ namespace {
 
 InsetLayout::InsetDecoration translateDecoration(std::string const & str) 
 {
-	if (str == "classic" || str == "Classic")
+	if (support::compare_ascii_no_case(str, "classic") == 0)
 		return InsetLayout::Classic;
-	if (str == "minimalistic" || str == "Minimalistic")
+	if (support::compare_ascii_no_case(str, "minimalistic") == 0)
 		return InsetLayout::Minimalistic;
-	if (str == "conglomerate" || str == "Conglomerate")
+	if (support::compare_ascii_no_case(str, "conglomerate") == 0)
 		return InsetLayout::Conglomerate;
 	return InsetLayout::Default;
 }
