@@ -785,7 +785,7 @@ int InsetCollapsable::latex(odocstream & os,
 	// collapsable insets should not redefine this, non-standard ones may
 	// call this.
 	if (!layout_->latexname().empty()) {
-		if (layout_->latextype() == "command") {
+		if (layout_->latextype() == InsetLayout::COMMAND) {
 			// FIXME UNICODE
 			if (runparams.moving_arg)
 				os << "\\protect";
@@ -793,7 +793,7 @@ int InsetCollapsable::latex(odocstream & os,
 			if (!layout_->latexparam().empty())
 				os << from_utf8(layout_->latexparam());
 			os << '{';
-		} else if (layout_->latextype() == "environment") {
+		} else if (layout_->latextype() == InsetLayout::ENVIRONMENT) {
 			os << "%\n\\begin{" << from_utf8(layout_->latexname()) << "}\n";
 			if (!layout_->latexparam().empty())
 				os << from_utf8(layout_->latexparam());
@@ -806,9 +806,9 @@ int InsetCollapsable::latex(odocstream & os,
 		rp.moving_arg = true;
 	int i = InsetText::latex(os, rp);
 	if (!layout_->latexname().empty()) {
-		if (layout_->latextype() == "command") {
+		if (layout_->latextype() == InsetLayout::COMMAND) {
 			os << "}";
-		} else if (layout_->latextype() == "environment") {
+		} else if (layout_->latextype() == InsetLayout::ENVIRONMENT) {
 			os << "\n\\end{" << from_utf8(layout_->latexname()) << "}\n";
 			i += 4;
 		}

@@ -32,8 +32,9 @@ namespace lyx {
 
 InsetLayout::InsetLayout() :
 	name_(from_ascii("undefined")), lyxtype_(STANDARD),
-	labelstring_(from_ascii("UNDEFINED")), decoration_(InsetLayout::DEFAULT),
-	font_(sane_font), labelfont_(sane_font), bgcolor_(Color_error), 
+	labelstring_(from_ascii("UNDEFINED")), decoration_(DEFAULT),
+	latextype_(NOLATEXTYPE), font_(sane_font), 
+	labelfont_(sane_font), bgcolor_(Color_error), 
 	multipar_(false), custompars_(false), forceplain_(true), 
 	passthru_(false), needprotect_(false), freespacing_(false), 
 	keepempty_(false), forceltr_(false)
@@ -53,6 +54,17 @@ InsetLayout::InsetDecoration translateDecoration(std::string const & str)
 	if (support::compare_ascii_no_case(str, "conglomerate") == 0)
 		return InsetLayout::CONGLOMERATE;
 	return InsetLayout::DEFAULT;
+}
+
+InsetLayout::InsetLaTeXType translateLaTeXType(std::string const & str)
+{
+	if (support::compare_ascii_no_case(str, "command") == 0)
+		return InsetLayout::COMMAND;
+	if (support::compare_ascii_no_case(str, "environment") == 0)
+		return InsetLayout::ENVIRONMENT;
+	if (support::compare_ascii_no_case(str, "none") == 0)
+		return InsetLayout::NOLATEXTYPE;
+	return InsetLayout::ILT_ERROR;
 }
 
 }
@@ -144,9 +156,14 @@ bool InsetLayout::read(Lexer & lex, TextClass & tclass)
 				LYXERR0("Unknown LyXType `" << lt << "'.");
 			break;
 		}
-		case IL_LATEXTYPE:
-			lex >> latextype_;
+		case IL_LATEXTYPE:  {
+			string lt;
+			lex >> lt;
+			latextype_ = translateLaTeXType(lt);
+			if (latextype_  == ILT_ERROR)
+				LYXERR0("Unknown LaTeXType `" << lt << "'.");
 			break;
+		}
 		case IL_LABELSTRING:
 			lex >> labelstring_;
 			break;

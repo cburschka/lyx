@@ -46,6 +46,12 @@ public:
 		END,
 		STANDARD
 	};
+	enum InsetLaTeXType {
+		NOLATEXTYPE,
+		COMMAND,
+		ENVIRONMENT,
+		ILT_ERROR
+	};
 	///
 	bool read(Lexer & lexrc, TextClass & tclass);
 	///
@@ -57,7 +63,7 @@ public:
 	///
 	InsetDecoration decoration() const { return decoration_; };
 	///
-	std::string latextype() const { return latextype_; };
+	InsetLaTeXType latextype() const { return latextype_; };
 	///
 	std::string latexname() const { return latexname_; };
 	///
@@ -102,7 +108,7 @@ private:
 	///
 	InsetDecoration decoration_;
 	///
-	std::string latextype_;
+	InsetLaTeXType latextype_;
 	///
 	std::string latexname_;
 	///
