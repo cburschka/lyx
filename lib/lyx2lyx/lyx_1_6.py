@@ -253,7 +253,7 @@ def latex2lyx(data):
     lines, suitable for insertion into document.body.'''
 
     if not data:
-        return []
+        return [""]
     retval = []
 
     # Convert LaTeX to Unicode
@@ -2119,6 +2119,7 @@ def convert_subfig(document):
     " Convert subfigures to subfloats. "
     i = 0
     while 1:
+        addedLines = 0
         i = find_token(document.body, '\\begin_inset Graphics', i)
         if i == -1:
             return
@@ -2133,13 +2134,13 @@ def convert_subfig(document):
             continue
         l = find_token(document.body, '\tsubcaptionText', i, endInset)
         if l == -1:
-            document.warning("Malformed lyx document: Can't find subcaptionText!")
-            i = endInset
-            continue
-        caption = document.body[l][16:].strip('"')
-        del document.body[l]
+            caption = ""
+        else: 
+            caption = document.body[l][16:].strip('"')
+            del document.body[l]
+            addedLines -= 1
         del document.body[k]
-        addedLines = -2
+        addedLines -= 1
         subst = ['\\begin_inset Float figure', 'wide false', 'sideways false',
                  'status open', '', '\\begin_layout Plain Layout', '\\begin_inset Caption',
                  '', '\\begin_layout Plain Layout'] + latex2lyx(caption) + \
