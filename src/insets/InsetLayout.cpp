@@ -32,7 +32,7 @@ namespace lyx {
 
 InsetLayout::InsetLayout() :
 	name_(from_ascii("undefined")), lyxtype_(STANDARD),
-	labelstring_(from_ascii("UNDEFINED")), decoration_(InsetLayout::Default),
+	labelstring_(from_ascii("UNDEFINED")), decoration_(InsetLayout::DEFAULT),
 	font_(sane_font), labelfont_(sane_font), bgcolor_(Color_error), 
 	multipar_(false), custompars_(false), forceplain_(true), 
 	passthru_(false), needprotect_(false), freespacing_(false), 
@@ -47,12 +47,12 @@ namespace {
 InsetLayout::InsetDecoration translateDecoration(std::string const & str) 
 {
 	if (support::compare_ascii_no_case(str, "classic") == 0)
-		return InsetLayout::Classic;
+		return InsetLayout::CLASSIC;
 	if (support::compare_ascii_no_case(str, "minimalistic") == 0)
-		return InsetLayout::Minimalistic;
+		return InsetLayout::MINIMALISTIC;
 	if (support::compare_ascii_no_case(str, "conglomerate") == 0)
-		return InsetLayout::Conglomerate;
-	return InsetLayout::Default;
+		return InsetLayout::CONGLOMERATE;
+	return InsetLayout::DEFAULT;
 }
 
 }

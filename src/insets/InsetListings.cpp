@@ -398,7 +398,7 @@ bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 void InsetListings::setButtonLabel()
 {
 	// FIXME UNICODE
-	if (decoration() == InsetLayout::Classic)
+	if (decoration() == InsetLayout::CLASSIC)
 		setLabel(isOpen() ?  _("Listing") : getNewLabel(_("Listing")));
 	else
 		setLabel(getNewLabel(_("Listing")));

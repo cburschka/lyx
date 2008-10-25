@@ -85,7 +85,7 @@ void InsetBranch::setButtonLabel()
 		if (c == Color_none)
 			s = _("Undef: ") + s;
 	}
-	if (decoration() == InsetLayout::Classic)
+	if (decoration() == InsetLayout::CLASSIC)
 		setLabel(isOpen() ? s : getNewLabel(s) );
 	else
 		setLabel(params_.branch + ": " + getNewLabel(s));

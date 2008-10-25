@@ -46,7 +46,7 @@ namespace lyx {
 
 InsetCollapsable::CollapseStatus InsetCollapsable::status() const
 {
-	if (decoration() == InsetLayout::Conglomerate)
+	if (decoration() == InsetLayout::CONGLOMERATE)
 		return status_;
 	return autoOpen_ ? Open : status_;
 }
@@ -55,18 +55,18 @@ InsetCollapsable::CollapseStatus InsetCollapsable::status() const
 InsetCollapsable::Geometry InsetCollapsable::geometry() const
 {
 	switch (decoration()) {
-	case InsetLayout::Classic:
+	case InsetLayout::CLASSIC:
 		if (status() == Open)
 			return openinlined_ ? LeftButton : TopButton;
 		return ButtonOnly;
 
-	case InsetLayout::Minimalistic:
+	case InsetLayout::MINIMALISTIC:
 		return status() == Open ? NoButton : ButtonOnly ;
 
-	case InsetLayout::Conglomerate:
+	case InsetLayout::CONGLOMERATE:
 		return status() == Open ? SubLabel : Corners ;
 
-	case InsetLayout::Default:
+	case InsetLayout::DEFAULT:
 		break; // this shouldn't happen
 	}
 
@@ -755,19 +755,19 @@ docstring InsetCollapsable::floatName(
 InsetLayout::InsetDecoration InsetCollapsable::decoration() const
 {
 	if (!layout_)
-		return InsetLayout::Classic;
+		return InsetLayout::CLASSIC;
 	InsetLayout::InsetDecoration const dec = layout_->decoration();
 	switch (dec) {
-	case InsetLayout::Classic:
-	case InsetLayout::Minimalistic:
-	case InsetLayout::Conglomerate:
+	case InsetLayout::CLASSIC:
+	case InsetLayout::MINIMALISTIC:
+	case InsetLayout::CONGLOMERATE:
 		return dec;
-	case InsetLayout::Default:
+	case InsetLayout::DEFAULT:
 		break;
 	}
 	if (lyxCode() == FLEX_CODE)
-		return InsetLayout::Conglomerate;
-	return InsetLayout::Classic;
+		return InsetLayout::CONGLOMERATE;
+	return InsetLayout::CLASSIC;
 }
 
 
@@ -837,7 +837,7 @@ bool InsetCollapsable::undefined() const
 docstring InsetCollapsable::contextMenu(BufferView const & bv, int x,
 	int y) const
 {
-	if (decoration() == InsetLayout::Conglomerate)
+	if (decoration() == InsetLayout::CONGLOMERATE)
 		return from_ascii("context-conglomerate");
 
 	if (geometry() == NoButton)

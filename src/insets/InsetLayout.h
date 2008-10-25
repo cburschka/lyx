@@ -33,10 +33,10 @@ public:
 	InsetLayout();
 	///
 	enum InsetDecoration {
-		Classic,
-		Minimalistic,
-		Conglomerate,
-		Default
+		CLASSIC,
+		MINIMALISTIC,
+		CONGLOMERATE,
+		DEFAULT
 	};
 	enum InsetLyXType {
 		NOLYXTYPE,
