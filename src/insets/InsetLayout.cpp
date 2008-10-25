@@ -46,11 +46,11 @@ namespace {
 
 InsetLayout::InsetDecoration translateDecoration(std::string const & str) 
 {
-	if (str == "classic")
+	if (str == "classic" || str == "Classic")
 		return InsetLayout::Classic;
-	if (str == "minimalistic")
+	if (str == "minimalistic" || str == "Minimalistic")
 		return InsetLayout::Minimalistic;
-	if (str == "conglomerate")
+	if (str == "conglomerate" || str == "Conglomerate")
 		return InsetLayout::Conglomerate;
 	return InsetLayout::Default;
 }
