@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 340
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass book
@@ -35,6 +35,7 @@
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
 \end_preamble
+\use_default_options false
 \language english
 \inputencoding auto
 \font_roman default
@@ -62,7 +63,6 @@
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
-\pdf_pagebackref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize default
@@ -3131,12 +3131,8 @@ This math editor is another example of the WYSIWYM philosophy.
 sqrt
 \family default
 ; this can be frustrating, because you can't see what an expression looks
- like until you LaTeX the file, and may have to spend time to find e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ like until you LaTeX the file, and may have to spend time to find e.g.
+\begin_inset space \space{}
 \end_inset
 
 missing brackets.
@@ -3602,12 +3598,8 @@ Delimiter
  However, those parentheses will be the same size as regular text, which
  will look bad if you have a big fraction or matrix inside the parentheses.
  So better use in this case one of the three delimiter buttons that insert
- directly e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ directly e.g.
+\begin_inset space \space{}
 \end_inset
 
 a (
@@ -4175,7 +4167,11 @@ Multi-line equations
 \end_layout
 
 \begin_layout Itemize
-Change typefaces, e.g., to write bold-face text in an expression.
+Change typefaces, e.g.
+\begin_inset space \space{}
+\end_inset
+
+to write bold-face text in an expression.
 \end_layout
 
 \begin_layout Itemize

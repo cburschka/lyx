@@ -1,5 +1,5 @@
-#LyX 1.6.0rc3 created this file. For more info see http://www.lyx.org/
-\lyxformat 340
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -152,6 +152,7 @@
  {\usepackage{icomma}}{}
 \end_preamble
 \options bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -179,7 +180,6 @@
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
-\pdf_pagebackref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize a4paper
@@ -5109,7 +5109,7 @@ Um nachträglich Zeilen und Spalten hinzuzufügen oder zu entfernen, kann
 \end_inset
 
 , usw.
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 oder das Menü 

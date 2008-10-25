@@ -1,4 +1,4 @@
-#LyX 1.6.0rc4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 344
 \begin_document
 \begin_header
@@ -270,16 +270,8 @@ LyXDir
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-references
+Tools\SpecialChar \menuseparator
+Preferences
 \end_layout
 
 \end_inset
@@ -1122,16 +1114,8 @@ UserDir/layouts
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \end_layout
 
 \end_inset
@@ -1385,10 +1369,16 @@ Preferences
  Most things in the dialog have associated `tool tips': hover your mouse
  pointer over something for more information.
  Before we highlight a few of the more important commands below, however,
- a word of warning: Applying some of your changes (e.g., screen fonts) will
- have an instant effect.
+ a word of warning: Applying some of your changes (e.g.
+\begin_inset space \space{}
+\end_inset
+
+screen fonts) will have an instant effect.
  Others (e.g.
- changing the bind file) will not.
+\begin_inset space \space{}
+\end_inset
+
+changing the bind file) will not.
  If nothing appears to have changed, just 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
@@ -1812,12 +1802,8 @@ $$s
 
 \end_inset
 
- The LyX system directory (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ The LyX system directory (e.g.
+\begin_inset space \space{}
 \end_inset
 
 
@@ -2134,11 +2120,7 @@ format
 
 \end_inset
 
- and
-\begin_inset space \thinspace{}
-\end_inset
-
- 
+ and 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -2863,7 +2845,10 @@ lyx.mo
 \end_inset
 
  (e.g.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -5346,16 +5331,8 @@ You can edit your preferences so that your desired language environment
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-E
-\bar default
-dit\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-references
+Edit\SpecialChar \menuseparator
+Preferences
 \end_layout
 
 \end_inset
@@ -6359,16 +6336,8 @@ Start LyX and select
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-econfigure
+Tools\SpecialChar \menuseparator
+Reconfigure
 \end_layout
 
 \end_inset
@@ -6390,16 +6359,8 @@ report (myclass)
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \end_layout
 
 \end_inset
@@ -6628,16 +6589,8 @@ article
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \end_layout
 
 \end_inset
@@ -7019,16 +6972,8 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \end_layout
 
 \end_inset
@@ -7336,7 +7281,11 @@ InsetLayout
 
  This section (re-)defines the layout of an inset.
  It can be applied to an existing inset of to a new, user-defined inset,
- e.g., a new character style.
+ e.g.
+\begin_inset space \space{}
+\end_inset
+
+a new character style.
  See Section
 \begin_inset space ~
 \end_inset
@@ -7491,16 +7440,8 @@ headings
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \end_layout
 
 \end_inset
@@ -7863,16 +7804,8 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \end_layout
 
 \end_inset
@@ -8793,16 +8726,8 @@ Vertical space above
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-E
-\bar default
-dit\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-aragraph
+Edit\SpecialChar \menuseparator
+Paragraph
 \begin_inset space ~
 \end_inset
 
@@ -10104,16 +10029,8 @@ Manual
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-E
-\bar default
-dit\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-aragraph
+Edit\SpecialChar \menuseparator
+Paragraph
 \begin_inset space ~
 \end_inset
 
@@ -12241,7 +12158,11 @@ latex
 \begin_inset Quotes erd
 \end_inset
 
- language, leading to Left-to-Right (latin) output, e.g., in ERT or URL.
+ language, leading to Left-to-Right (latin) output, e.g.
+\begin_inset space \space{}
+\end_inset
+
+in ERT or URL.
  A kludge.
 \end_layout
 
@@ -13733,19 +13654,8 @@ LyXDir/templates/
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-T
-\family sans
-\bar default
-ools
-\family default
-\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-references\SpecialChar \menuseparator
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
 Paths
 \end_layout
 
@@ -13771,26 +13681,8 @@ defaults.lyx
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-F
-\bar default
-ile
-\end_layout
-
-\end_inset
-
-\SpecialChar \menuseparator
-
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\bar under
-N
-\bar default
-ew
+File\SpecialChar \menuseparator
+New
 \end_layout
 
 \end_inset
@@ -13802,11 +13694,7 @@ ew
 status collapsed
 
 \begin_layout Plain Layout
-Sa
-\bar under
-v
-\bar default
-e as Document Defaults
+Save as Document Defaults
 \end_layout
 
 \end_inset
@@ -14343,7 +14231,7 @@ FileFilter
  A glob pattern that is used in the file dialog to filter out the desired
  files.
  If there is more than one possible file extension (e.g.
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 tgif has 
@@ -15228,7 +15116,10 @@ $$Tempname
 \begin_layout Standard
 All path macros contain a trailing directory separator, so you can construct
  e.g.
- the absolute filename with 
+\begin_inset space \space{}
+\end_inset
+
+the absolute filename with 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -15493,7 +15384,7 @@ $$AbsOrRelPathParent
 
 \begin_layout Standard
 There are special cases where this rule does not work and e.g.
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 relative names are needed, but normally it will work just fine.
