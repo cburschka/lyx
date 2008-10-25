@@ -577,12 +577,8 @@ on
 
 export
 \family default
- option only affects zipped EPS-graphics, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ option only affects zipped EPS-graphics, e.g.
+\begin_inset space \space{}
 \end_inset
 
 
@@ -6067,7 +6063,10 @@ Note:
  The table number is increased for every longtable, also if you didn't set
  a caption for it.
  For this reason you could have the case that e.g.
- Table
+\begin_inset space \space{}
+\end_inset
+
+Table
 \begin_inset space ~
 \end_inset
 
@@ -7310,7 +7309,10 @@ in wide caption, you can either use a value slightly different from 4.0
 \end_inset
 
 in, e.g.
- 3.99
+\begin_inset space \space{}
+\end_inset
+
+3.99
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -14866,12 +14868,8 @@ and the color values are comma separated numbers between 0 and 1 describing
 \end_layout
 
 \begin_layout Standard
-You can e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+You can e.g.
+\begin_inset space \space{}
 \end_inset
 
 define the color "
@@ -16363,12 +16361,8 @@ Table Customization ! Special Cell Alignment
 
 \begin_layout Standard
 Sometimes it looks better when the cell entries of a column are aligned
- with a special character, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ with a special character, e.g.
+\begin_inset space \space{}
 \end_inset
 
 with the decimal separator as in Table
@@ -19608,12 +19602,8 @@ Note:
 \begin_inset space ~
 \end_inset
 
-wrap float floats are fragile! E.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+wrap float floats are fragile! E.g.
+\begin_inset space \space{}
 \end_inset
 
 having a figure too close to the bottom of the page can mess things up in
@@ -19853,12 +19843,8 @@ Label
 
  will be inserted and the label window pops up asking for the label text.
  LyX offers as text the first words of the caption with a prefix.
- The prefix depends on the float type, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ The prefix depends on the float type, e.g.
+\begin_inset space \space{}
 \end_inset
 
 for figure floats the prefix will be "
@@ -20082,12 +20068,8 @@ prettyref
 \begin_layout Standard
 Note that the style <page> won't print the page number if the label is on
  the previous, the same, or the next page.
- You will e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ You will e.g.
+\begin_inset space \space{}
 \end_inset
 
 see the text 
@@ -20159,12 +20141,8 @@ Document Settings
 section
 \emph default
 ).
- So you will save to write e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ So you will save to write e.g.
+\begin_inset space \space{}
 \end_inset
 
 the name 
@@ -21494,12 +21472,8 @@ Caption
 Floats
 \family default
 .
- On the LyX screen captions appear as label, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ On the LyX screen captions appear as label, e.g.
+\begin_inset space \space{}
 \end_inset
 
 
@@ -21719,7 +21693,10 @@ key "caption"
 
 \begin_layout Standard
 To change the label name from e.g.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -24319,12 +24296,8 @@ Footnotes ! Placement
 \begin_layout Standard
 If you have several footnotes in one page, they appear without vertical
  space between them at the bottom of the page.
- To make them better readable you can e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ To make them better readable you can e.g.
+\begin_inset space \space{}
 \end_inset
 
 add 1.5
@@ -26083,12 +26056,8 @@ Depth
 
 \begin_layout Description
 Height This is the heigth of the text that is inside the box.
- A value of e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ A value of e.g.
+\begin_inset space \space{}
 \end_inset
 
 2 for this size will set the box heigth to 2 times the text height: 
@@ -26301,12 +26270,8 @@ status open
 Note:
 \series default
  The vertical box aligment can be lost in the output when you have two boxes
- in a line and one has e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ in a line and one has e.g.
+\begin_inset space \space{}
 \end_inset
 
 a shadow and the other one not.
@@ -26957,12 +26922,8 @@ fboxrule
 \end_inset
 
 pt.
- It can be changed with the following command in TeX-Code to e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ It can be changed with the following command in TeX-Code to e.g.
+\begin_inset space \space{}
 \end_inset
 
 2
@@ -28195,12 +28156,8 @@ h
 
 The document-wide paragraph settings are ignored within minipages.
  That means that there will be no space between paragraphs in minipages
- although you set it to e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ although you set it to e.g.
+\begin_inset space \space{}
 \end_inset
 
 
@@ -29080,12 +29037,8 @@ reference "sec:Colored-Tables"
 \end_layout
 
 \begin_layout Standard
-To have e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+To have e.g.
+\begin_inset space \space{}
 \end_inset
 
 a red background for a word, insert the command
@@ -30409,12 +30362,8 @@ resizebox
 
 \begin_layout Standard
 The boxes can be combined in any order.
- E.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ E.g.
+\begin_inset space \space{}
 \end_inset
 
 the command
@@ -31223,6 +31172,25 @@ Child documents are used when you have a long document consisting of several
  the document in several files that can be revised separately.
  The different documents are then the so called child documents and a master
  document connects them to print the full document or parts of it.
+ A child documents inherits contents of its master, for example the bibliography
+ and the labels for cross-references.
+\end_layout
+
+\begin_layout Standard
+To be able to work on child documents without the need to open its master,
+ specify in the child document the master in the menu
+\family sans
+ Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Document
+\begin_inset space ~
+\end_inset
+
+Class
+\family default
+.
+ This master file will then be used in the background by LyX when you edit
+ the child document.
 \end_layout
 
 \begin_layout Standard
@@ -31742,12 +31710,8 @@ reference "sec:Float-Placement"
 
 .
  The placement options can be mixed and are inserted without any separation,
- e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space ~
+ e.g.
+\begin_inset space \space{}
 \end_inset
 
 
@@ -31913,7 +31877,10 @@ Step
 \family default
 .
  When you insert e.g.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 

@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass scrbook
@@ -163,6 +163,7 @@
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -190,7 +191,6 @@
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
-\pdf_pagebackref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize a4paper
@@ -31672,6 +31672,26 @@ Unterdokumente benutzt man bei größeren Dokumenten, die aus mehreren Kapiteln
  oder Abschnitten bestehen.
  Für die Pflege ist das oft hilfreich und manchmal auch gefordert.
  Ein Hauptdokument fügt dann die einzelnen Unterdokumente zusammen.
+ Ein Unterdokument übernimmt und benutzt Inhalte seines Hauptdokuments,
+ z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ das Literaturverzeichnis und Querverweismarken.
+\end_layout
+
+\begin_layout Standard
+Um Unterdokumente bearbeiten zu können ohne ihr Hauptdokument öffnen zu
+ müssen, geben Sie im Unterdokument im Menü
+\family sans
+ Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Dokumentklasse
+\family default
+ das Hauptdokument an.
+ Dieses wird dann von LyX im Hintergrund benutzt, wenn Sie das Unterdokment
+ bearbeiten.
 \end_layout
 
 \begin_layout Standard
