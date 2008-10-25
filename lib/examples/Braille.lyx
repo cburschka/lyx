@@ -387,36 +387,65 @@ This is Braille.
 \begin_inset VSpace bigskip
 \end_inset
 
-Computer Braille that uses 8 dots can be turned on with the command 
-\series bold
+Braille characters can alternatively be created by writing a number to a
+ Braille box.
+ A Braille box is inserted with the menu
+\family sans
+ Insert\SpecialChar \menuseparator
+Custom
+\begin_inset space ~
+\end_inset
 
+insets
+\family default
+.
+ Every number that is in this box, turns on the corresponding Braille dot,
+ for example the number
+\series bold
+ 6145
+\series default
+ box leads to:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Braillebox
+status open
+
+\begin_layout Plain Layout
+6145
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Computer Braille that uses 8
+\begin_inset space \thinspace{}
+\end_inset
+
+dots can be turned on with the command
+\series bold
+ 
 \backslash
 brailleeightdotstrue
 \series default
 .
- But the two extra dots are only used when they are accessed with the command
- 
+ But the two extra dots are only used when using a Braille box.
+ For example the number
 \series bold
-
-\backslash
-braillebox
+ 8175
 \series default
-.
- For example the command
+ in a Braille box leads to:
 \begin_inset Newline newline
 \end_inset
 
 
-\series bold
-
-\backslash
-braillebox{8175}
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-leads to: 
 \begin_inset ERT
 status collapsed
 
@@ -424,7 +453,17 @@ status collapsed
 
 
 \backslash
-brailleeightdotstrue
+brailleeightdotstrue 
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Braillebox
+status open
+
+\begin_layout Plain Layout
+8175
 \end_layout
 
 \end_inset
@@ -437,20 +476,7 @@ status collapsed
 
 
 \backslash
-braillebox{8175}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-brailleeightdotsfalse
+brailleeightdotsfalse 
 \end_layout
 
 \end_inset
@@ -479,7 +505,7 @@ mm.
 \end_inset
 
 double-sized Braille where also the tiny dots have the double size, use
- this command in ERT in your document:
+ this command in TeX code in your document:
 \end_layout
 
 \begin_layout Standard
