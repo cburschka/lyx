@@ -1992,10 +1992,10 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		string s = cmd.getArg(0);
 		InsetLayout il =
 			cur.buffer().params().documentClass().insetLayout(from_utf8(s));
-		if (il.lyxtype() != "charstyle" &&
-		    il.lyxtype() != "custom" &&
-		    il.lyxtype() != "element" &&
-		    il.lyxtype ()!= "standard")
+		if (il.lyxtype() != InsetLayout::CHARSTYLE &&
+		    il.lyxtype() != InsetLayout::CUSTOM &&
+		    il.lyxtype() != InsetLayout::ELEMENT &&
+		    il.lyxtype ()!= InsetLayout::STANDARD)
 			enable = false;
 		break;
 		}
@@ -2145,9 +2145,11 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_INSET_DISSOLVE:
 		if (!cmd.argument().empty()) {
-			InsetLayout il = cur.inset().getLayout(cur.buffer().params());
+			InsetLayout const & il = cur.inset().getLayout(cur.buffer().params());
+			InsetLayout::InsetLyXType const type = 
+					translateLyXType(to_utf8(cmd.argument()));
 			enable = cur.inset().lyxCode() == FLEX_CODE
-			         && il.lyxtype() == to_utf8(cmd.argument());
+			         && il.lyxtype() == type;
 		} else {
 			enable = !isMainText(cur.bv().buffer())
 			         && cur.inset().nargs() == 1;

@@ -38,12 +38,20 @@ public:
 		Conglomerate,
 		Default
 	};
+	enum InsetLyXType {
+		NOLYXTYPE,
+		CHARSTYLE,
+		CUSTOM,
+		ELEMENT,
+		END,
+		STANDARD
+	};
 	///
 	bool read(Lexer & lexrc, TextClass & tclass);
 	///
 	docstring name() const { return name_; };
 	///
-	std::string lyxtype() const { return lyxtype_; };
+	InsetLyXType lyxtype() const { return lyxtype_; };
 	///
 	docstring labelstring() const { return labelstring_; };
 	///
@@ -88,7 +96,7 @@ private:
 		* Values are 'charstyle', 'custom' (things that by default look like a
 		* footnote), 'element' (docbook), 'standard'.
 		*/
-	std::string lyxtype_;
+	InsetLyXType lyxtype_;
 	///
 	docstring labelstring_;
 	///
@@ -126,6 +134,9 @@ private:
 	///
 	bool forceltr_;
 };
+
+///
+InsetLayout::InsetLyXType translateLyXType(std::string const & str);
 
 } // namespace lyx
 

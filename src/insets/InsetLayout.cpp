@@ -31,8 +31,8 @@ using std::vector;
 namespace lyx {
 
 InsetLayout::InsetLayout() :
-	name_(from_ascii("undefined")), labelstring_(from_ascii("UNDEFINED")),
-	decoration_(InsetLayout::Default),
+	name_(from_ascii("undefined")), lyxtype_(STANDARD),
+	labelstring_(from_ascii("UNDEFINED")), decoration_(InsetLayout::Default),
 	font_(sane_font), labelfont_(sane_font), bgcolor_(Color_error), 
 	multipar_(false), custompars_(false), forceplain_(true), 
 	passthru_(false), needprotect_(false), freespacing_(false), 
@@ -136,9 +136,14 @@ bool InsetLayout::read(Lexer & lex, TextClass & tclass)
 			break;
 		}
 		switch (le) {
-		case IL_LYXTYPE:
-			lex >> lyxtype_;
+		case IL_LYXTYPE: {
+			string lt;
+			lex >> lt;
+			lyxtype_ = translateLyXType(lt);
+			if (lyxtype_  == NOLYXTYPE)
+				LYXERR0("Unknown LyXType `" << lt << "'.");
 			break;
+		}
 		case IL_LATEXTYPE:
 			lex >> latextype_;
 			break;
@@ -256,6 +261,23 @@ bool InsetLayout::read(Lexer & lex, TextClass & tclass)
 
 	lex.popTable();
 	return true;
+}
+
+
+InsetLayout::InsetLyXType translateLyXType(std::string const & str) 
+{
+	
+	if (support::compare_ascii_no_case(str, "charstyle") == 0)
+		return InsetLayout::CHARSTYLE;
+	if (support::compare_ascii_no_case(str, "custom") == 0)
+		return InsetLayout::CUSTOM;
+	if (support::compare_ascii_no_case(str, "element") == 0)
+		return InsetLayout::ELEMENT;
+	if (support::compare_ascii_no_case(str, "end") == 0)
+		return InsetLayout::END;
+	if (support::compare_ascii_no_case(str, "standard") == 0)
+		return InsetLayout::STANDARD;
+	return InsetLayout::NOLYXTYPE;
 }
 
 } //namespace lyx

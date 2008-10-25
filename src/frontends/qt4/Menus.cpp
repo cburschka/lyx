@@ -288,7 +288,7 @@ public:
 	void expandFormats(MenuItem::Kind kind, Buffer const * buf);
 	void expandFloatListInsert(Buffer const * buf);
 	void expandFloatInsert(Buffer const * buf);
-	void expandFlexInsert(Buffer const * buf, std::string s);
+	void expandFlexInsert(Buffer const * buf, InsetLayout::InsetLyXType type);
 	void expandToc2(Toc const & toc_list, size_t from, size_t to, int depth);
 	void expandToc(Buffer const * buf);
 	void expandPasteRecent(Buffer const * buf);
@@ -834,7 +834,8 @@ void MenuDefinition::expandFloatInsert(Buffer const * buf)
 }
 
 
-void MenuDefinition::expandFlexInsert(Buffer const * buf, string s)
+void MenuDefinition::expandFlexInsert(
+		Buffer const * buf, InsetLayout::InsetLyXType type)
 {
 	if (!buf) {
 		add(MenuItem(MenuItem::Command, qt_("No Document Open!"),
@@ -847,13 +848,13 @@ void MenuDefinition::expandFlexInsert(Buffer const * buf, string s)
 	TextClass::InsetLayouts::const_iterator end = insetLayouts.end();
 	for (; cit != end; ++cit) {
 		docstring const label = cit->first;
-		if (cit->second.lyxtype() == s)
+		if (cit->second.lyxtype() == type)
 			addWithStatusCheck(MenuItem(MenuItem::Command, 
 				toqstr(translateIfPossible(label)),
 				FuncRequest(LFUN_FLEX_INSERT, label)));
 	}
 	// FIXME This is a little clunky.
-	if (items_.empty() && s == "custom")
+	if (items_.empty() && type == InsetLayout::CUSTOM)
 		add(MenuItem(MenuItem::Command,
 				    qt_("No custom insets defined!"),
 				    FuncRequest(LFUN_NOACTION)));
@@ -1358,15 +1359,15 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 			break;
 
 		case MenuItem::CharStyles:
-			tomenu.expandFlexInsert(buf, "charstyle");
+			tomenu.expandFlexInsert(buf, InsetLayout::CHARSTYLE);
 			break;
 
 		case MenuItem::Custom:
-			tomenu.expandFlexInsert(buf, "custom");
+			tomenu.expandFlexInsert(buf, InsetLayout::CUSTOM);
 			break;
 
 		case MenuItem::Elements:
-			tomenu.expandFlexInsert(buf, "element");
+			tomenu.expandFlexInsert(buf, InsetLayout::ELEMENT);
 			break;
 
 		case MenuItem::FloatListInsert:
