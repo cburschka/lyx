@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.7svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -33,7 +33,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "Jose' Matos"
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -258,23 +259,23 @@ status open
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename ../doc/platypus.eps
+	filename ../doc/clipart/platypus.eps
 	display grayscale
 	width 2cm
 	height 3cm
+	scaleBeforeRotation
 	rotateAngle 45
 	rotateOrigin center
 
-scaleBeforeRotation
 \end_inset
 
 
 \end_layout
 
-\begin_layout 
+\begin_layout Standard
 \begin_inset Caption
 
-\begin_layout 
+\begin_layout Standard
 Nice platypus
 \end_layout
 
@@ -301,24 +302,24 @@ status open
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename ../doc/platypus.eps
+	filename ../doc/clipart/platypus.eps
 	display grayscale
 	width 2cm
 	height 3cm
+	scaleBeforeRotation
 	rotateAngle 45
 	rotateOrigin center
 
-scaleBeforeRotation
 \end_inset
 
 
 \end_layout
 
-\begin_layout 
+\begin_layout Standard
 \begin_inset Caption
 
-\begin_layout 
-long, very long...
+\begin_layout Standard
+long, very long\SpecialChar \ldots{}
  :-)
 \end_layout
 
@@ -502,10 +503,10 @@ Plataform 2
 
 \end_layout
 
-\begin_layout 
+\begin_layout Standard
 \begin_inset Caption
 
-\begin_layout 
+\begin_layout Standard
 Nice Formal Table
 \end_layout
 
