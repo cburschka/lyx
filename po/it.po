@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-10-25 20:35+0200\n"
-"PO-Revision-Date: 2008-10-22 10:40+0200\n"
+"PO-Revision-Date: 2008-10-25 23:40+0200\n"
 "Last-Translator: Enrico Forestieri <forenr@tlc.unipr.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -10085,11 +10085,11 @@ msgstr "Tutorial|T"
 
 #: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:519
 msgid "User's Guide|U"
-msgstr "Guida utente|u"
+msgstr "Guida utente|G"
 
 #: lib/ui/classic.ui:412
 msgid "Extended Features|E"
-msgstr "Caratteristiche estese|C"
+msgstr "Caratteristiche avanzate|C"
 
 #: lib/ui/classic.ui:413
 msgid "Embedded Objects|m"
@@ -11031,9 +11031,8 @@ msgid "TeX Information|I"
 msgstr "Informazioni TeX|X"
 
 #: lib/ui/stdmenus.inc:520
-#, fuzzy
 msgid "Additional Features|F"
-msgstr "Spazio addizionale"
+msgstr "Caratteristiche avanzate|C"
 
 #: lib/ui/stdmenus.inc:521
 msgid "Embedded Objects|O"
@@ -11045,32 +11044,27 @@ msgstr "Scorciatoie|S"
 
 #: lib/ui/stdmenus.inc:525
 msgid "LyX Functions|y"
-msgstr "Funzioni LyX|y"
+msgstr "Funzioni LyX|F"
 
 #: lib/ui/stdmenus.inc:527
-#, fuzzy
 msgid "Specific Manuals|p"
-msgstr "Speciali"
+msgstr "Manuali specifici|a"
 
 #: lib/ui/stdmenus.inc:533
-#, fuzzy
 msgid "Linguistics Manual|L"
-msgstr "Linguistica"
+msgstr "Linguistica|L"
 
 #: lib/ui/stdmenus.inc:534
-#, fuzzy
 msgid "Braille Manual|B"
-msgstr "Braille (default)"
+msgstr "Braille|B"
 
 #: lib/ui/stdmenus.inc:535
-#, fuzzy
 msgid "XY-pic Manual|X"
-msgstr "Speciali"
+msgstr "XY-pic|X"
 
 #: lib/ui/stdmenus.inc:536
-#, fuzzy
 msgid "Multicolumn Manual|M"
-msgstr "Multicolonna|M"
+msgstr "Multicolonne|M"
 
 #: lib/ui/stdtoolbars.inc:57
 msgid "New document"
@@ -17448,9 +17442,8 @@ msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s, %2$s, e %3$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:1462
-#, fuzzy
 msgid "Module provided by document class."
-msgstr "Non è possibile impostare la classe del documento."
+msgstr "Modulo fornito dalla classe del documento."
 
 #: src/frontends/qt4/GuiDocument.cpp:1470
 #, c-format
