@@ -25,14 +25,14 @@ enum CiteEngine {
 
 enum CiteStyle {
 	CITE,
-	NOCITE,
 	CITET,
 	CITEP,
 	CITEALT,
 	CITEALP,
 	CITEAUTHOR,
 	CITEYEAR,
-	CITEYEARPAR
+	CITEYEARPAR,
+	NOCITE
 };
 
 

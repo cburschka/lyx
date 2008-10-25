@@ -427,8 +427,8 @@ namespace {
 
 
 char const * const citeCommands[] = {
-	"cite", "nocite", "citet", "citep", "citealt", "citealp",
-	"citeauthor", "citeyear", "citeyearpar" };
+	"cite", "citet", "citep", "citealt", "citealp",
+	"citeauthor", "citeyear", "citeyearpar", "nocite" };
 
 unsigned int const nCiteCommands =
 		sizeof(citeCommands) / sizeof(char *);
