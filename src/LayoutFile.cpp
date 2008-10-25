@@ -275,7 +275,7 @@ LayoutFileIndex
 				// There will be only one textclass with this name, even if different
 				// layout files are loaded from different directories.
 				if (haveClass(textclass)) {
-					LYXERR0("Exisint textclass " << textclass << " is redefined by " << fullName);
+					LYXERR0("Existing textclass " << textclass << " is redefined by " << fullName);
 					delete classmap_[textclass];
 				}
 				classmap_[textclass] = tmpl;
