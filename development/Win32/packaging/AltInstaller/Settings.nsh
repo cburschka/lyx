@@ -40,9 +40,9 @@ BrandingText "LyXWinInstaller v3.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 
 # definitions for the Update installer
 !if ${INSTALLER_VERSION} == "Update"
- !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX155"
- !define PRODUCT_VERSION_OLD "LyX 1.5.6"
  !define PRODUCT_VERSION_SHORT_OLD "156"
+ !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX${PRODUCT_VERSION_SHORT_OLD}"
+ !define PRODUCT_VERSION_OLD "LyX 1.5.6"
  !define JabRefVersion "2.3.1" # could be an older version
  !define ImageMagickVersion_Old "6.4.2" # could be an older version
  !define GhostscriptVersion_Old "8.62" # could be an older version
