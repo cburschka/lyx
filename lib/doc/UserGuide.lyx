@@ -6519,9 +6519,11 @@ real
 \emph default
  quotes.
  You get the typewriter double quotes with 
-\family sans
-Ctrl+"
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "self-insert \""
+\end_inset
+
 .
 \end_layout
 
