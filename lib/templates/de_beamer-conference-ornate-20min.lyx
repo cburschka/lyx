@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass beamer
@@ -10,6 +10,7 @@
 \setbeamercovered{transparent}
 % oder auch nicht
 \end_preamble
+\use_default_options false
 \language ngerman
 \inputencoding auto
 \font_roman times
@@ -42,6 +43,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \author "" 
 \end_header
 
@@ -139,14 +141,11 @@ F.
 \end_inset
 
 Autor
-\begin_inset ERT
-status collapsed
+\begin_inset Flex InstituteMark
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-inst{1}
+1
 \end_layout
 
 \end_inset
@@ -169,14 +168,11 @@ and
 \end_inset
 
 Anders
-\begin_inset ERT
+\begin_inset Flex InstituteMark
 status collapsed
 
 \begin_layout Plain Layout
-
-
-\backslash
-inst{2}
+2
 \end_layout
 
 \end_inset
@@ -235,14 +231,11 @@ Autor et al.
 \end_layout
 
 \begin_layout Institute
-\begin_inset ERT
+\begin_inset Flex InstituteMark
 status collapsed
 
 \begin_layout Plain Layout
-
-
-\backslash
-inst{1}
+1
 \end_layout
 
 \end_inset
@@ -265,14 +258,11 @@ and
 \end_inset
 
  
-\begin_inset ERT
+\begin_inset Flex InstituteMark
 status collapsed
 
 \begin_layout Plain Layout
-
-
-\backslash
-inst{2}
+2
 \end_layout
 
 \end_inset
