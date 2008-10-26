@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass elsarticle
@@ -7,6 +7,7 @@
 % specify here the journal
 \journal{Example: Nuclear Physics B}
 \end_preamble
+\use_default_options false
 \language english
 \inputencoding auto
 \font_roman default
@@ -99,14 +100,11 @@ starts the front matter
 
 \begin_layout Title
 This is a specimen title
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Titlenotemark
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-tnoteref{t1,t2}
+t1,t2
 \end_layout
 
 \end_inset
@@ -275,40 +273,31 @@ C.V.
 \end_inset
 
 Radhakrishnan
-\begin_inset ERT
+\begin_inset Flex Authormark
 status collapsed
 
 \begin_layout Plain Layout
-
-
-\backslash
-corref{cor1}
+fn1
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex CorAuthormark
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-corref{cor2}
+cor1
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
+\begin_inset Flex CorAuthormark
 status collapsed
 
 \begin_layout Plain Layout
-
-
-\backslash
-fnref{fn1}
+cor2
 \end_layout
 
 \end_inset
@@ -356,14 +345,11 @@ K.
 \end_inset
 
 Bazargan
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Authormark
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-fnref{fn2}
+fn2
 \end_layout
 
 \end_inset

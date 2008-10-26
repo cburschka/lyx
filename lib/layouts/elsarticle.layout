@@ -68,6 +68,28 @@ Style Title
 End
 
 
+InsetLayout Titlenotemark
+	LyxType			custom
+	LatexType		command
+	LatexName		tnoteref
+	LabelString		"Titlenote mark"
+	Font
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
+	EndFont
+	LabelFont
+	  Color			green
+	  Size			Small
+	EndFont
+End
+
+
 Style "Title footnote"
 	Margin			Dynamic
 	LatexType		Command
@@ -108,10 +130,54 @@ Style Author
 End
 
 
+InsetLayout Authormark
+	LyxType			custom
+	LatexType		command
+	LatexName		fnref
+	LabelString		"Author mark"
+	Font
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
+	EndFont
+	LabelFont
+	  Color			latex
+	  Size			Small
+	EndFont
+End
+
+
 Style "Author footnote"
 	CopyStyle		"Title footnote"
 	LatexName		fntext
 	LabelString		"Author footnote:"
+End
+
+
+InsetLayout CorAuthormark
+	LyxType			custom
+	LatexType		command
+	LatexName		corref
+	LabelString		"CorAuthor mark"
+	Font
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
+	EndFont
+	LabelFont
+	  Color			blue
+	  Size			Small
+	EndFont
 End
 
 
