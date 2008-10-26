@@ -21,6 +21,7 @@
 #include "TextPainter.h"
 
 #include "frontends/FontMetrics.h"
+#include "frontends/Painter.h"
 
 #include "support/lassert.h"
 
@@ -54,7 +55,11 @@ Inset * InsetMathSpecialChar::clone() const
 
 void InsetMathSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	if (mi.base.fontname == "mathnormal") {
+	if (char_ == ' ') {
+		dim.asc = 4;
+		dim.des = 0;
+		dim.wid = 10;
+	} else if (mi.base.fontname == "mathnormal") {
 		ShapeChanger dummy(mi.base.font, UP_SHAPE);
 		dim = theFontMetrics(mi.base.font).dimension(char_);
 	} else {
@@ -67,7 +72,18 @@ void InsetMathSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathSpecialChar::draw(PainterInfo & pi, int x, int y) const
 {
-	if (pi.base.fontname == "mathnormal") {
+	if (char_ == ' ') {
+		int xp[4];
+		int yp[4];
+		int w = 10;
+
+		xp[0] = ++x;        yp[0] = y - 3;
+		xp[1] = x;          yp[1] = y;
+		xp[2] = x + w - 2;  yp[2] = y;
+		xp[3] = x + w - 2;  yp[3] = y - 3;
+
+		pi.pain.lines(xp, yp, 4, Color_special);
+	} else if (pi.base.fontname == "mathnormal") {
 		ShapeChanger dummy(pi.base.font, UP_SHAPE);
 		pi.draw(x, y, char_);
 	} else {

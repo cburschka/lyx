@@ -227,7 +227,7 @@ bool isSpecialChar(docstring const & name)
 
 	char_type const c = name.at(0);
 	return  c == '{' || c == '}' || c == '&' || c == '$' ||
-		c == '#' || c == '%' || c == '_';
+		c == '#' || c == '%' || c == '_' || c == ' ';
 }
 
 
