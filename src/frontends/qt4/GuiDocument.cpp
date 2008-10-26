@@ -169,7 +169,8 @@ public:
 		LayoutFile const & tc2 = LayoutFileList::get()[rhs];
 		return (tc1.isTeXClassAvailable() && !tc2.isTeXClassAvailable()) ||
 			(tc1.isTeXClassAvailable() == tc2.isTeXClassAvailable() &&
-			 _(tc1.description()) < _(tc2.description()));
+			 translateIfPossible(from_utf8(tc1.description()))
+			 < translateIfPossible(from_utf8(tc2.description())));
 	}
 };
 
