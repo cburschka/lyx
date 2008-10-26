@@ -169,7 +169,7 @@ public:
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	///
-	void initParagraphs(BufferParams const &);
+	void initParagraphs();
 	///
 	void setParagraphOwner();
 	///
