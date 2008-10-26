@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass aastex
@@ -8,6 +8,7 @@
 \shorttitle{}
 \shortauthors{}
 \end_preamble
+\use_default_options false
 \language english
 \inputencoding default
 \font_roman default
@@ -41,6 +42,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -51,14 +53,11 @@
 
 \begin_layout Author
 <Author 1>
-\begin_inset ERT
-status collapsed
+\begin_inset Flex altaffilmark
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-altaffilmark{1}
+1
 \end_layout
 
 \end_inset
@@ -76,14 +75,13 @@ altaffilmark{1}
 
 \begin_layout Author
 <Author 2>
-\begin_inset ERT
+
+\begin_inset Flex altaffilmark
 status collapsed
 
 \begin_layout Plain Layout
 
-
-\backslash
-altaffilmark{2,3}
+2,3
 \end_layout
 
 \end_inset
@@ -101,14 +99,11 @@ altaffilmark{2,3}
 
 \begin_layout Author
 <Author 3>
-\begin_inset ERT
+\begin_inset Flex altaffilmark
 status collapsed
 
 \begin_layout Plain Layout
-
-
-\backslash
-altaffilmark{3}
+3
 \end_layout
 
 \end_inset
@@ -120,41 +115,46 @@ altaffilmark{3}
 <Institution and Address>
 \end_layout
 
-\begin_layout Standard
+\begin_layout Altaffilation
+1
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
-
-\backslash
-altaffiltext{1}{Visiting Astronomer, etc.}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-altaffiltext{2}{Current Address, etc.}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-altaffiltext{3}{Visiting Astronomer, etc.}
+}{
 \end_layout
 
 \end_inset
 
+Visiting Astronomer, etc.
+\end_layout
+
+\begin_layout Altaffilation
+2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}{
+\end_layout
+
+\end_inset
+
+Current Address, etc.
+\end_layout
+
+\begin_layout Altaffilation
+3
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}{
+\end_layout
+
+\end_inset
+
+Visiting Astronomer, etc.
  
 \end_layout
 
@@ -261,16 +261,7 @@ apj
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-clearpage
-\end_layout
-
+\begin_inset Newpage clearpage
 \end_inset
 
 

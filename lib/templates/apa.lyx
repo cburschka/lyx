@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass apa
@@ -24,6 +24,7 @@
 \acknowledgements{Author notes, acknowledgements, contact information go here \ldots}
 \end_preamble
 \options jou
+\use_default_options false
 \language english
 \inputencoding auto
 \font_roman default
@@ -204,12 +205,11 @@ status collapsed
 
 \end_inset
 
- in TeX mode, e.
-\begin_inset space \thinspace{}
+ in TeX mode, e.g.
+\begin_inset space \space{}
 \end_inset
 
-g.
- 
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -229,12 +229,11 @@ My colleague's name
 \end_inset
 
 .
- Note further that you must use the corresponding Affiliation style, i.
-\begin_inset space \thinspace{}
+ Note further that you must use the corresponding Affiliation style, i.e.
+\begin_inset space \space{}
 \end_inset
 
-e.
- 
+
 \emph on
 TwoAffiliations
 \emph default

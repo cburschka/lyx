@@ -1,9 +1,10 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass sigplanconf
 \options natbib
+\use_default_options false
 \language english
 \inputencoding default
 \font_roman default
@@ -90,25 +91,11 @@ The Conference expects 2 infos that are separated by
 
 \begin_layout Title
 Example ACM Paper
-\begin_inset ERT
-status collapsed
+\begin_inset Foot
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-thanks{
-\end_layout
-
-\end_inset
-
 This work was supported by ...
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
