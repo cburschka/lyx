@@ -76,9 +76,8 @@ InsetCollapsable::Geometry InsetCollapsable::geometry() const
 }
 
 
-InsetCollapsable::InsetCollapsable(Buffer const & buf,
-		CollapseStatus status)
-	: InsetText(buf), status_(status),
+InsetCollapsable::InsetCollapsable(Buffer const & buf)
+	: InsetText(buf), status_(Inset::Open),
 	  openinlined_(false), autoOpen_(false), mouse_hover_(false)
 {
 	DocumentClass const & dc = buf.params().documentClass();

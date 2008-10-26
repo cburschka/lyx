@@ -53,8 +53,10 @@ char const lstinline_delimiters[] =
 	"!*()-=+|;:'\"`,<.>/?QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
 
 InsetListings::InsetListings(Buffer const & buf, InsetListingsParams const & par)
-	: InsetCollapsable(buf, par.status())
-{}
+	: InsetCollapsable(buf)
+{
+	status_ = par.status();
+}
 
 
 InsetListings::~InsetListings()

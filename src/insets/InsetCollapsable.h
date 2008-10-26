@@ -33,7 +33,7 @@ namespace frontend { class Painter; }
 class InsetCollapsable : public InsetText {
 public:
 	///
-	InsetCollapsable(Buffer const &, CollapseStatus status = Inset::Open);
+	InsetCollapsable(Buffer const &);
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);
 	///
@@ -164,7 +164,8 @@ protected:
 	docstring floatName(std::string const & type, BufferParams const &) const;
 	///
 	virtual void resetParagraphsFont();
-
+	///
+	mutable CollapseStatus status_;
 private:
 	/// cache for the layout_. Make sure it is in sync with the document class!
 	InsetLayout const * layout_;
@@ -174,8 +175,6 @@ private:
 	docstring labelstring_;
 	///
 	mutable Box button_dim;
-	///
-	mutable CollapseStatus status_;
 	/// a substatus of the Open status, determined automatically in metrics
 	mutable bool openinlined_;
 	/// the inset will automatically open when the cursor is inside

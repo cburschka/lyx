@@ -83,10 +83,11 @@ NameTranslator const & nameTranslator()
 
 	
 InsetInfo::InsetInfo(Buffer const & buf, string const & name) 
-	: InsetCollapsable(buf, Collapsed), type_(UNKNOWN_INFO), name_()
+	: InsetCollapsable(buf), type_(UNKNOWN_INFO), name_()
 {
 	setAutoBreakRows(true);
 	setInfo(name);
+	status_ = Collapsed;
 }
 
 
