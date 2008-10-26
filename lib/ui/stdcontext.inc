@@ -41,7 +41,7 @@ Menuset
 		Item "Inline Formula|I" "math-mutate simple"
 		Item "Displayed Formula|D" "math-mutate equation"
 		Item "Eqnarray Environment|E" "math-mutate eqnarray"
-		SubMenu "AMS Environment|A" "ams_environment"
+		Submenu "AMS Environment|A" "ams_environment"
 		Separator		
 		OptItem "Equation Label|L" "label-insert"
 		OptItem "Toggle Labeling/Numbering|T" "math-number-toggle"
