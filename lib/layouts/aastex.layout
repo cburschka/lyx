@@ -1,7 +1,9 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass[aastex]{article (AASTeX)}
 #
-# Author: Mike Ressler <mike.ressler@alum.mit.edu>
+# Authors:
+#  Mike Ressler <mike.ressler@alum.mit.edu>
+#  Uwe Stöhr <uwestoehr@web.de>
 #
 # Disclaimer: Though I am an astronomer at the Jet Propulsion Laboratory, this
 # package was prepared on my own time on my own machine. Neither the United
@@ -28,6 +30,8 @@
 # Version 1.1   7/25/99 - Changed \url to take advantage of new layout option.
 # Version 1.2   4/18/02 - Updated for natbib in 1.2.0
 # Version 1.3   5/7/04  - Updated for AASTeX 5.2
+# Version 1.4   26-10-2008  - new custom insets for \altaffilmark, \tablenotemark
+#                           - new environments for \altaffiltext and \tablenotetext
 
 
 Format 11
@@ -202,156 +206,198 @@ End
 
 
 Style Title
-	TopSep                2
-	BottomSep             1.3
-	Align                 Center
-	InTitle               0
+	TopSep			2
+	BottomSep		1.3
+	Align			Center
+	InTitle			0
 	Font
-	  Series              Bold
-	  Size                Large
+	  Series		Bold
+	  Size			Large
 	EndFont
 End
 
 
 Style Author
-	Align                 Center
-	LabelType             No_Label
-	InTitle               0
+	Align			Center
+	LabelType		No_Label
+	InTitle			0
 	Font
-	  Size                Normal
-	  Series              Medium
-	  Shape               SmallCaps
+	  Size			Normal
+	  Series		Medium
+	  Shape			SmallCaps
 	EndFont
 End
 
 
 Style Date
-	LabelSep              ""
-	TopSep                1.2
-	Align                 Center
-	InTitle               0
+	InTitle			0
+	LabelSep		""
+	TopSep			1.2
+	Align			Center
 	Font
-	  Size                Small
+	  Size			Small
 	EndFont
 End
 
 
 Style Abstract
-	LeftMargin            "MMM"
-	RightMargin           "MMM"
-	ParIndent             "MM"
-	TopSep                1.4
-	BottomSep             0.7
-	LabelType             Centered_Top_Environment
-	Align                 Block
-	AlignPossible         Block, Left, Right, Center
+	LeftMargin		"MMM"
+	RightMargin		"MMM"
+	ParIndent		"MM"
+	InTitle			0
+	TopSep			1.4
+	BottomSep		0.7
+	LabelType		Centered_Top_Environment
+	Align			Block
+	AlignPossible		Block, Left, Right, Center
 	Font
-	  Size                Normal
+	  Size			Normal
 	EndFont
 	LabelFont
-	  Series              Bold
-	  Size                Normal
+	  Series		Bold
+	  Size			Normal
 	EndFont
 End
 
 
 Style Affiliation
-	Margin                Static
-	LatexType             Command
-	InTitle               0
-	LatexName             affil
-	ParSkip               0.4
-	BottomSep             0.4
-	Align                 Center
-	AlignPossible         Block, Left, Right, Center
-	LabelType             No_Label
-
+	Margin			Static
+	LatexType		Command
+	LatexName		affil
+	Category		FrontMatter
+	ParSkip			0.4
+	BottomSep		0.4
+	Align			Center
+	AlignPossible		Block, Left, Right, Center
+	LabelType		No_Label
 	Font
-	  Family              Roman
-	  Size                Normal
+	  Family		Roman
+	  Size			Normal
 	EndFont
 End
 
 
-Style Keywords
-	LeftMargin            MMM
-	Margin                Dynamic
-	LatexType             Command
-	InTitle               0
-	LatexName             keywords
-	ParSkip               0.4
-	BottomSep             0.4
-	Align                 Block
-	AlignPossible         Block, Left, Right, Center
-	LabelType             Static
-	LabelSep              M
-	LabelString           "Subject headings:"
+Style Altaffilation
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		altaffiltext
+	Category		FrontMatter
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Alternative affiliation:"
+	LabelFont
+	  Color			green
+	EndFont
+End
+
+
+InsetLayout altaffilmark
+	LyxType			custom
+	LatexType		command
+	LatexName		altaffilmark
+	LabelString		"altaffiliation mark"
 	Font
-	  Family              Roman
-	  Shape               Up
-	  Size                Normal
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
 	EndFont
 	LabelFont
-	  Family              Roman
-	  Shape               Italic
-	  Size                Normal
+	  Color			green
+	  Size			Small
+	EndFont
+	MultiPar		true
+End
+
+
+Style Keywords
+	LeftMargin		MMM
+	Margin			Dynamic
+	LatexType		Command
+	InTitle			0
+	LatexName		keywords
+	Category		FrontMatter
+	ParSkip			0.4
+	BottomSep		0.4
+	Align			Block
+	AlignPossible		Block, Left, Right, Center
+	LabelType		Static
+	LabelSep		M
+	LabelString		"Subject headings:"
+	Font
+	  Family		Roman
+	  Shape			Up
+	  Size			Normal
+	EndFont
+	LabelFont
+	  Family		Roman
+	  Shape			Italic
+	  Size			Normal
 	EndFont
 End
 
 
 Style Email
-	Margin                Static
-	LatexType             Command
-	InTitle               0
-	LatexName             email
-	ParSkip               0.4
-	BottomSep             0.4
-	Align                 Center
-	AlignPossible         Block, Left, Right, Center
-	LabelType             No_Label
+	Margin			Static
+	LatexType		Command
+	InTitle			0
+	LatexName		email
+	Category		FrontMatter
+	ParSkip			0.4
+	BottomSep		0.4
+	Align			Center
+	AlignPossible		Block, Left, Right, Center
+	LabelType		No_Label
 	Font
-	  Family              Roman
-	  Size                Normal
-	  Shape               Italic
+	  Family		Roman
+	  Size			Normal
+	  Shape			Italic
 	EndFont
 End
 
 
 Style Acknowledgements
-	Margin                Dynamic
-	LatexType             Command
-	InTitle               0
-	LatexName             acknowledgements
-	TopSep                1.2
-	ParSkip               0.4
-	BottomSep             0.8
-	Align                 Left
-	LabelType             Static
-	LabelString           "[Acknowledgements]"
-	KeepEmpty             1
+	Margin			Dynamic
+	LatexType		Command
+	InTitle			0
+	LatexName		acknowledgements
+	TopSep			1.2
+	ParSkip			0.4
+	BottomSep		0.8
+	Align			Left
+	LabelType		Static
+	LabelString		"[Acknowledgements]"
+	KeepEmpty		1
 	Font
-	  Family              Roman
-	  Size                Normal
-	  Shape               Italic
+	  Family		Roman
+	  Size			Normal
+	  Shape			Italic
 	EndFont
 End
 
 
 Style And
-	Margin                Dynamic
-	LatexType             Command
-	InTitle               0
-	LatexName             and
-	TopSep                1.2
-	ParSkip               0.4
-	BottomSep             1.2
-	Align                 Center
-	LabelType             Static
-	LabelString           "and"
-	KeepEmpty             1
+	Margin			Dynamic
+	LatexType		Command
+	InTitle			0
+	LatexName		and
+	Category		FrontMatter
+	TopSep			1.2
+	ParSkip			0.4
+	BottomSep		1.2
+	Align			Center
+	LabelType		Static
+	LabelString		"and"
+	KeepEmpty		1
 	Font
-	  Family              Roman
-	  Size                Normal
+	  Family		Roman
+	  Size			Normal
 	EndFont
 End
 
@@ -399,8 +445,8 @@ End
 Style Appendix
 	Margin                Dynamic
 	LatexType             Command
-	InTitle               0
 	LatexName             appendix
+	Category		BackMatter
 	TopSep                1.2
 	ParSkip               0.4
 	BottomSep             0.8
@@ -432,6 +478,7 @@ Style References
 	Margin                First_Dynamic
 	LatexType             Bib_Environment
 	LatexName             thebibliography
+	Category		BackMatter
 	NextNoIndent          1
 	LeftMargin            MM
 	ParSkip               0.4
@@ -515,6 +562,42 @@ Style TableComments
 End
 
 
+Style "Table note"
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		tablenotetext
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Table note:"
+	LabelFont
+	  Color			magenta
+	EndFont
+End
+
+
+InsetLayout tablenotemark
+	LyxType			custom
+	LatexType		command
+	LatexName		tablenotemark
+	LabelString		"tablenote mark"
+	Font
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
+	EndFont
+	LabelFont
+	  Color			magenta
+	  Size			Small
+	EndFont
+	MultiPar		true
+End
 
 
 Style FigCaption
