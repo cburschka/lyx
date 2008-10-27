@@ -102,7 +102,7 @@ void RCS::retrieve(FileName const & file)
 
 void RCS::scanMaster()
 {
-	LYXERR(Debug::LYXVC, "LyXVC::RCS: scanMaster.");
+	LYXERR(Debug::LYXVC, "LyXVC::RCS: scanMaster: " << master_);
 
 	ifstream ifs(master_.toFilesystemEncoding().c_str());
 
