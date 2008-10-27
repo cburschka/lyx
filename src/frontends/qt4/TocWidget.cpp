@@ -65,6 +65,8 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 	// Make sure the buttons are disabled when first shown without a loaded
 	// Buffer.
 	enableControls(false);
+
+	init(QString());
 }
 
 
