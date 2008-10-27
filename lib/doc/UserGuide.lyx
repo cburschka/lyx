@@ -28369,7 +28369,7 @@ The encodings are explained in section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Settings"
+reference "cha:The-Document-Settings"
 
 \end_inset
 
@@ -29184,7 +29184,7 @@ use language's default encoding
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Settings"
+reference "cha:The-Document-Settings"
 
 \end_inset
 
@@ -36237,1196 +36237,17 @@ Un/compresses the actual document.
 
 \begin_layout Subsection
 Settings
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Settings"
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Document ! Settings
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-This menu dialog contains some submenus to set properties for the whole
- document.
- You can save your document settings as default with the 
-\family sans
-Save as Document Defaults
-\family default
- button in the dialog.
- This will create a template named 
-\family typewriter
-default.lyx
-\family default
- which is automatically loaded by LyX when you create a new document without
- using a template.
-\end_layout
-
-\begin_layout Standard
-The different submenus of the dialog are explained in the following:
-\end_layout
-
-\begin_layout Subsubsection
-Document Class
-\end_layout
-
-\begin_layout Standard
-Here you set the document class, class options, a Postscript driver, a master
- document, and modules.
- Document classes are described in section
+The document settings are described in appendix
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Document-Classes"
-
-\end_inset
-
-, modules in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Modules"
-
-\end_inset
-
-.
- Some classes use some class options by default.
- If this is the case, they are listed in the field 
-\family sans
-Predefined
-\family default
- and you can decide to use them or not.
- If you don't exactly know what the default class options are for, it is
- recommended not to touch them.
- The Postscript driver is used for LaTeX's color and graphics packages.
- When using 
-\family sans
-Default
-\family default
-, the default driver for the LaTeX-packages are used.
- It is recommended to use the default unless your know what you are doing.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-When you want one of the following drivers
-\begin_inset Newline newline
-\end_inset
-
-dvi2ps, dvialw, dvilaser, dvitops, psprint, pubps, ln
-\begin_inset Newline newline
-\end_inset
-
-you first have to activate them in your LaTeX distribution, see sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-2 in 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://tug.ctan.org/get/macros/latex/required/graphics/grfguide.pdf"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Specifying a master document is necessary when the current document is a
- child or subdocument.
- This master document will be used by LyX when the child document is opened
- without its master.
- This way child documents are always compileable.
- More about master and child documents is explained in the section 
-\emph on
-Child Documents
-\emph default
- of the 
-\emph on
-Embedded Objects
-\emph default
- manual.
-\end_layout
-
-\begin_layout Subsubsection
-Fonts
-\end_layout
-
-\begin_layout Standard
-The document font settings are described in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Fonts-and-Text"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsubsection
-Text Layout
-\end_layout
-
-\begin_layout Standard
-You can specify if paragraphs should be separated by indentations or vertical
- skips.
- The line spacing and the number of text columns can here also be specified.
- 
-\end_layout
-
-\begin_layout Standard
-Note that LyX won't show two columns or the set up line spacing on screen.
- That's impractical, often unreadable, and not part of the WYSIWYM concept.
- However, it will be as you specified it in the output.
-\end_layout
-
-\begin_layout Standard
-The listings settings are explained in the corresponding section in the
- 
-\emph on
-Embedded Objects
-\emph default
- manual.
-\end_layout
-
-\begin_layout Subsubsection
-Page Layout
-\end_layout
-
-\begin_layout Standard
-A description of this menu is given in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Paper-Size,-Orientation,"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Document-Layout"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsubsection
-Page Margins
-\end_layout
-
-\begin_layout Standard
-Here you can adjust the paper margins, see section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Margins"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsubsection
-Language
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Language ! Encoding
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The document language and quote styles are set here.
- The encoding specifies how the document content is exported to LaTeX (the
- LyX file is always encoded in utf8).
- All characters that cannot be encoded using the specified encoding will
- be exported as LaTeX-commands (this can fail if a LaTeX-command is not
- known for a particular character).
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-The known commands are defined in a text file.
- You can add commands for unknown symbols to that file yourself, see the
- 
-\emph on
-Customization
-\emph default
- manual for details.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-If you use the option 
-\family sans
-Language Default
-\family default
-, LyX determines the encoding of a text part from the language of this text.
- If the document contains text in more than one language you may get more
- than one encoding in the LaTeX file.
- If you do not use this option then the complete document will always use
- exactly one encoding.
- Checking this option is the preferred setting unless you use 
-\family sans
-XeTeX
-\family default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-XeTeX is a TeX typesetting engine, an alternative for LaTeX.
- It natively supports Unicode while its input file is assumed to be in UTF-8
- encoding.
- More about using LyX with XeTeX can be found in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "XeTeX"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- (see below).
-\end_layout
-
-\begin_layout Standard
-LyX also supports Unicode output, which is particularly useful if you need
- lots of special symbols or non-alphabetic scripts, respectively.
- If you want to use this (and your LaTeX installation supports Unicode,
- for that matter), choose one of the four utf8 variants from the list below.
- Unfortunately the Unicode support of standard LaTeX is quite incomplete,
- so it is not uncommon that a file with lots of Unicode symbols works fine
- with 
-\family sans
-Language Default
-\family default
- (when LyX uses it's list of known LaTeX-commands), but does not work with
- a fixed utf8 encoding (when the list of known LaTeX-commands is not used,
- because all Unicode symbols can be encoded in utf8).
-\end_layout
-
-\begin_layout Standard
-Here is a list with the important encodings:
-\end_layout
-
-\begin_layout Description
-Language
-\begin_inset space ~
-\end_inset
-
-Default
-\begin_inset space ~
-\end_inset
-
-(no
-\begin_inset space ~
-\end_inset
-
-inputenc) Same as 
-\family sans
-Language Default
-\family default
-, but the LaTeX-package 
-\series bold
-inputenc
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! inputenc
-\end_layout
-
-\end_inset
-
- is not used.
- When using this, you probably need to load some additional packages manually
- in the preamble and specify the used encoding for text parts in foreign
- languages in TeX code.
-\end_layout
-
-\begin_layout Description
-ASCII the ASCII encoding, covers only plain English (7-bit ASCII).
- LyX converts all other characters into LaTeX commands, which may result
- in a big file when lots of LaTeX-commands are needed.
-\end_layout
-
-\begin_layout Description
-Arabic
-\begin_inset space ~
-\end_inset
-
-(CP
-\begin_inset space ~
-\end_inset
-
-1256) MS Windows code page for Arabic and Farsi
-\end_layout
-
-\begin_layout Description
-Arabic
-\begin_inset space ~
-\end_inset
-
-(ISO
-\begin_inset space ~
-\end_inset
-
-8859-6) for Arabic and Farsi
-\end_layout
-
-\begin_layout Description
-Armenian
-\begin_inset space ~
-\end_inset
-
-(ArmSCII8) for Armenian
-\end_layout
-
-\begin_layout Description
-Baltic
-\begin_inset space ~
-\end_inset
-
-(CP
-\begin_inset space ~
-\end_inset
-
-1257) MS Windows code page for Estonian, Latvian, and Lithuanian, the same
- as the ISO-8859-13 encoding
-\end_layout
-
-\begin_layout Description
-Baltic
-\begin_inset space ~
-\end_inset
-
-(ISO
-\begin_inset space ~
-\end_inset
-
-8859-13) for Estonian, Latvian, and Lithuanian, a superset of the ISO-8859-4
- encoding
-\end_layout
-
-\begin_layout Description
-Baltic
-\begin_inset space ~
-\end_inset
-
-(ISO
-\begin_inset space ~
-\end_inset
-
-8859-4) (latin 4) for Estonian, Latvian, and Lithuanian, a subset of the
- ISO-8859-13 encoding
-\end_layout
-
-\begin_layout Description
-Central
-\begin_inset space ~
-\end_inset
-
-European
-\begin_inset space ~
-\end_inset
-
-(CP
-\begin_inset space ~
-\end_inset
-
-1250) MS Windows code page for ISO
-\begin_inset space ~
-\end_inset
-
-8859-2 (latin2)
-\end_layout
-
-\begin_layout Description
-Central
-\begin_inset space ~
-\end_inset
-
-European
-\begin_inset space ~
-\end_inset
-
-(ISO
-\begin_inset space ~
-\end_inset
-
-8859-2) (latin 2) covers Albanian, Croatian, Czech, German, Hungarian, Polish,
- Romanian, Slovak, and Slovenian
-\end_layout
-
-\begin_layout Description
-Chinese
-\begin_inset space ~
-\end_inset
-
-(simplified)
-\begin_inset space ~
-\end_inset
-
-(EUC-CN) for simplified Chinese, used especially on UNIX OSes, since 2001
- this encoding is officially replaced by the encoding GB18030, as GB18030
- is not available for LaTeX you should try to use the encoding Unicode
-\begin_inset space ~
-\end_inset
-
-(CJK)
-\begin_inset space ~
-\end_inset
-
-(utf8)
-\end_layout
-
-\begin_layout Description
-Chinese
-\begin_inset space ~
-\end_inset
-
-(simplified)
-\begin_inset space ~
-\end_inset
-
-(GBK) for simplified Chinese, is the same as the Windows code page CP 936
- except of the Euro currency sign, since 2001 this encoding is officially
- replaced by the encoding GB18030, as GB18030 is not available for LaTeX
- you should try to use the encoding Unicode
-\begin_inset space ~
-\end_inset
-
-(CJK)
-\begin_inset space ~
-\end_inset
-
-(utf8)
-\end_layout
-
-\begin_layout Description
-Chinese
-\begin_inset space ~
-\end_inset
-
-(traditional)
-\begin_inset space ~
-\end_inset
-
-(EUC-TW) for traditional Chinese
-\end_layout
-
-\begin_layout Description
-Cyrillic
-\begin_inset space ~
-\end_inset
-
-(CP
-\begin_inset space ~
-\end_inset
-
-1251) MS Windows code page for Cyrillic
-\end_layout
-
-\begin_layout Description
-Cyrillic
-\begin_inset space ~
-\end_inset
-
-(ISO
-\begin_inset space ~
-\end_inset
-
-8859-5) covers Belorussian, Bulgarian, Macedonian, Serbian, and Ukrainian
-\end_layout
-
-\begin_layout Description
-Cyrillic
-\begin_inset space ~
-\end_inset
-
-(KOI8-R) standard Cyrillic especially for Russian
-\end_layout
-
-\begin_layout Description
-Cyrillic
-\begin_inset space ~
-\end_inset
-
-(KOI8-U) Cyrillic for Ukrainian
-\end_layout
-
-\begin_layout Description
-Cyrillic
-\begin_inset space ~
-\end_inset
-
-(pt
-\begin_inset space ~
-\end_inset
-
-154) Cyrillic for Kazakh
-\end_layout
-
-\begin_layout Description
-Greek
-\begin_inset space ~
-\end_inset
-
-(ISO
-\begin_inset space ~
-\end_inset
-
-8859-7) for Greek
-\end_layout
-
-\begin_layout Description
-Hebrew
-\begin_inset space ~
-\end_inset
-
-(CP
-\begin_inset space ~
-\end_inset
-
-1255) MS Windows code page for Hebrew, a superset of the ISO-8859-8 encoding
-\end_layout
-
-\begin_layout Description
-Hebrew
-\begin_inset space ~
-\end_inset
-
-(ISO
-\begin_inset space ~
-\end_inset
-
-8859-8) for Hebrew
-\end_layout
-
-\begin_layout Description
-Japanese
-\begin_inset space ~
-\end_inset
-
-(CJK)
-\begin_inset space ~
-\end_inset
-
-(EUC-JP) EUC-JP encoding for Japanese, uses the LaTeX-package 
-\series bold
-CJK
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! CJK
-\end_layout
-
-\end_inset
-
-, when using this, set the document language to 
-\family sans
-Japanese (CJK)
-\end_layout
-
-\begin_layout Description
-Japanese
-\begin_inset space ~
-\end_inset
-
-(CJK)
-\begin_inset space ~
-\end_inset
-
-(JIS) JIS encoding for Japanese, uses the LaTeX-package 
-\series bold
-CJK
-\series default
-, when using this, set the document language to 
-\family sans
-Japanese (CJK)
-\end_layout
-
-\begin_layout Description
-Japanese
-\begin_inset space ~
-\end_inset
-
-(non-CJK)
-\begin_inset space ~
-\end_inset
-
-(EUC-JP) EUC-JP encoding for Japanese, uses the LaTeX-package 
-\series bold
-japanese
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! japanese
-\end_layout
-
-\end_inset
-
-, when using this, set the document language to 
-\family sans
-Japanese
-\end_layout
-
-\begin_layout Description
-Japanese
-\begin_inset space ~
-\end_inset
-
-(non-CJK)
-\begin_inset space ~
-\end_inset
-
-(JIS) JIS encoding for Japanese, uses the LaTeX-package 
-\series bold
-japanese
-\series default
-, when using this, set the document language to 
-\family sans
-Japanese
-\end_layout
-
-\begin_layout Description
-Japanese
-\begin_inset space ~
-\end_inset
-
-(non-CJK)
-\begin_inset space ~
-\end_inset
-
-(SJIS) SJIS encoding for Japanese, uses the LaTeX-package 
-\series bold
-japanese
-\series default
-, when using this, set the document language to 
-\family sans
-Japanese
-\end_layout
-
-\begin_layout Description
-Korean
-\begin_inset space ~
-\end_inset
-
-(EUC-KR) for Korean
-\end_layout
-
-\begin_layout Description
-Southern
-\begin_inset space ~
-\end_inset
-
-European
-\begin_inset space ~
-\end_inset
-
-(ISO
-\begin_inset space ~
-\end_inset
-
-8859-3) (latin 3) covers Esperanto, Galician, Maltese, and Turkish
-\end_layout
-
-\begin_layout Description
-South-Eastern
-\begin_inset space ~
-\end_inset
-
-European
-\begin_inset space ~
-\end_inset
-
-(ISO
-\begin_inset space ~
-\end_inset
-
-8859-16) (latin 10) covers Albanian, Croatian, Finnish, French, German,
- Hungarian, Irish Gaelic, Italian, Polish, Romanian, Slovenian, is designed
- to cover many languages and characters with diacritics
-\end_layout
-
-\begin_layout Description
-Thai
-\begin_inset space ~
-\end_inset
-
-(TIS
-\begin_inset space ~
-\end_inset
-
-620-0) for Thai
-\end_layout
-
-\begin_layout Description
-Turkish
-\begin_inset space ~
-\end_inset
-
-(ISO
-\begin_inset space ~
-\end_inset
-
-8859-9) (latin 5) for Turkish, is like the ISO-8859-1 encoding where the
- Icelandic letters are replaced by Turkish ones
-\end_layout
-
-\begin_layout Description
-Unicode
-\begin_inset space ~
-\end_inset
-
-(CJK)
-\begin_inset space ~
-\end_inset
-
-(utf8) Unicode utf8 with the LaTeX-package 
-\series bold
-CJK
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! CJK
-\end_layout
-
-\end_inset
-
- (for the languages Chinese, Japanese and Korean)
-\end_layout
-
-\begin_layout Description
-Unicode
-\begin_inset space ~
-\end_inset
-
-(XeTeX)
-\begin_inset space ~
-\end_inset
-
-(utf8) Unicode utf8 to be used with 
-\family sans
-XeTeX
-\family default
-, which uses Unicode directly, without the help of the LaTeX-package 
-\series bold
-inputenc
-\series default
- 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-More about using LyX with XeTeX can be found in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "XeTeX"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-Unicode
-\begin_inset space ~
-\end_inset
-
-(ucs-extended)
-\begin_inset space ~
-\end_inset
-
-(utf8x) Unicode utf8 based on the LaTeX package 
-\series bold
-ucs
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! ucs
-\end_layout
-
-\end_inset
-
- (comprehensive, including Latin, Greek, Cyrillic and CJK scripts).
-\end_layout
-
-\begin_layout Description
-Unicode
-\begin_inset space ~
-\end_inset
-
-(utf8) Unicode utf8 based on the LaTeX-package 
-\series bold
-inputenc
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! inputenc
-\end_layout
-
-\end_inset
-
-.
- Currently only a limited range of characters (mainly for Latin scripts)
- is supported.
-\end_layout
-
-\begin_layout Description
-Western
-\begin_inset space ~
-\end_inset
-
-European
-\begin_inset space ~
-\end_inset
-
-(CP
-\begin_inset space ~
-\end_inset
-
-1252) MS Windows code page for ISO
-\begin_inset space ~
-\end_inset
-
-8859-1 (latin1)
-\end_layout
-
-\begin_layout Description
-Western
-\begin_inset space ~
-\end_inset
-
-European
-\begin_inset space ~
-\end_inset
-
-(ISO
-\begin_inset space ~
-\end_inset
-
-8859-1) (latin 1) covers the languages Albanian, Catalan, Danish, Dutch,
- English, Faroese, Finnish, French, Galician, German, Icelandic, Irish,
- Italian, Norwegian, Portuguese, Spanish, and Swedish; better use the ISO-8859-1
-5 encoding instead
-\end_layout
-
-\begin_layout Description
-Western
-\begin_inset space ~
-\end_inset
-
-European
-\begin_inset space ~
-\end_inset
-
-(ISO
-\begin_inset space ~
-\end_inset
-
-8859-15) (latin 9) like the ISO-8859-1 encoding, but with the Euro currency
- sign, the œ-ligature and some characters used for French and Finnish
-\end_layout
-
-\begin_layout Subsubsection
-Numbering & TOC
-\end_layout
-
-\begin_layout Standard
-You can adjust here the numbering depth of sections headings as described
- in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Numbering-depth"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsubsection
-Bibliography
-\end_layout
-
-\begin_layout Standard
-You can specify here a citation style using the LaTeX-packages 
-\series bold
-natbib
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! natbib
-\end_layout
-
-\end_inset
-
- or 
-\series bold
-jurabib
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! jurabib
-\end_layout
-
-\end_inset
-
-.
- For a further description see section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Bibliography"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsubsection
-PDF Properties
-\end_layout
-
-\begin_layout Standard
-The PDF properties are explained in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:PDF-Properties"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsubsection
-Math Options
-\end_layout
-
-\begin_layout Standard
-These options will force LyX to use the LaTeX-packages 
-\series bold
-amsmath
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! amsmath
-\end_layout
-
-\end_inset
-
- and 
-\series bold
-esint
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! esint
-\end_layout
-
-\end_inset
-
- or to use them automatically when they are needed.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-amsmath
-\series default
- is needed for many constructs, so when you get LaTeX-errors in formulas,
- assure that you have enabled AMS.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-esint
-\series default
- is used for special integral characters.
-\end_layout
-
-\begin_layout Subsubsection
-Float Placement
-\end_layout
-
-\begin_layout Standard
-The float placement options are described in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Float-Placement"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsubsection
-Bullets
-\end_layout
-
-\begin_layout Standard
-Here you can adjust the characters for the itemize levels.
- The itemize environment is described in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Itemize"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsubsection
-Branches
-\end_layout
-
-\begin_layout Standard
-Branches are described in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Branches"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsubsection
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX Preamble
-\end_layout
-
-\begin_layout Standard
-In this text field are entered commands to load special LaTeX-packages or
- to define LaTeX-commands.
- The preamble is a thing for LaTeX-experts.
- You shouldn't enter commands here until you don't exactly know what you
- do.
-\end_layout
-
-\begin_layout Standard
-An introduction in the LaTeX-syntax is given in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:LaTeX-Syntax"
+reference "cha:The-Document-Settings"
 
 \end_inset
 
@@ -37599,7 +36420,7 @@ Preferences
 \end_layout
 
 \begin_layout Standard
-The preferences dialog is described in detail in chapter
+The preferences dialog is described in detail in appendix
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -39551,6 +38372,1221 @@ Embedded Objects
 Math
 \emph default
  manual.
+\end_layout
+
+\begin_layout Chapter
+The Document Settings
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:The-Document-Settings"
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Document ! Settings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The document settings dialog contains submenus to set properties for the
+ whole document and is called with the menu
+\family sans
+ Document\SpecialChar \menuseparator
+Settings
+\family default
+.
+ You can save your document settings as default with th
+\family sans
+e Save as Document Defaults
+\family default
+ button in the dialog.
+ This will create a template name
+\family typewriter
+d
+\family default
+ 
+\family typewriter
+default.lyx
+\family default
+ which is automatically loaded by LyX when you create a new document without
+ using a template.
+\end_layout
+
+\begin_layout Standard
+The different submenus of the dialog are explained in the following.
+\end_layout
+
+\begin_layout Section
+Document Class
+\end_layout
+
+\begin_layout Standard
+Here you set the document class, class options, a Postscript driver, and
+ a master document.
+ Document classes are described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Document-Classes"
+
+\end_inset
+
+.
+ Some classes use some class options by default.
+ If this is the case, they are listed in the field 
+\family sans
+Predefined
+\family default
+ and you can decide to use them or not.
+ If you don't exactly know what the default class options are for, it is
+ recommended not to touch them.
+ The Postscript driver is used for LaTeX's color and graphics packages.
+ When using 
+\family sans
+Default
+\family default
+, the default driver for the LaTeX-packages are used.
+ It is recommended to use the default unless your know what you are doing.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+When you want one of the following drivers
+\begin_inset Newline newline
+\end_inset
+
+dvi2ps, dvialw, dvilaser, dvitops, psprint, pubps, ln
+\begin_inset Newline newline
+\end_inset
+
+you first have to activate them in your LaTeX distribution, see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+2 in 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://tug.ctan.org/get/macros/latex/required/graphics/grfguide.pdf"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Specifying a master document is necessary when the current document is a
+ child or subdocument.
+ This master document will be used by LyX when the child document is opened
+ without its master.
+ This way child documents are always compileable.
+ More about master and child documents is explained in the section 
+\emph on
+Child Documents
+\emph default
+ of the 
+\emph on
+Embedded Objects
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Section
+Modules
+\end_layout
+
+\begin_layout Standard
+Modules are explained in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Modules"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Fonts
+\end_layout
+
+\begin_layout Standard
+The document font settings are described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Fonts-and-Text"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Text Layout
+\end_layout
+
+\begin_layout Standard
+You can specify if paragraphs should be separated by indentations or vertical
+ skips.
+ The line spacing and the number of text columns can here also be specified.
+ 
+\end_layout
+
+\begin_layout Standard
+Note that LyX won't show two columns or the set up line spacing on screen.
+ That's impractical, often unreadable, and not part of the WYSIWYM concept.
+ However, it will be as you specified it in the output.
+\end_layout
+
+\begin_layout Standard
+The listings settings are explained in the corresponding section in the
+ 
+\emph on
+Embedded Objects
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Section
+Page Layout
+\end_layout
+
+\begin_layout Standard
+A description of this menu is given in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Paper-Size,-Orientation,"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Document-Layout"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Page Margins
+\end_layout
+
+\begin_layout Standard
+Here you can adjust the paper margins, see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Margins"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Language
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Language ! Encoding
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The document language and quote styles are set here.
+ The encoding specifies how the document content is exported to LaTeX (the
+ LyX file is always encoded in utf8).
+ All characters that cannot be encoded using the specified encoding will
+ be exported as LaTeX-commands (this can fail if a LaTeX-command is not
+ known for a particular character).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The known commands are defined in a text file.
+ You can add commands for unknown symbols to that file yourself, see the
+ 
+\emph on
+Customization
+\emph default
+ manual for details.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you use the option 
+\family sans
+Language Default
+\family default
+, LyX determines the encoding of a text part from the language of this text.
+ If the document contains text in more than one language you may get more
+ than one encoding in the LaTeX file.
+ If you do not use this option then the complete document will always use
+ exactly one encoding.
+ Checking this option is the preferred setting unless you use 
+\family sans
+XeTeX
+\family default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+XeTeX is a TeX typesetting engine, an alternative for LaTeX.
+ It natively supports Unicode while its input file is assumed to be in UTF-8
+ encoding.
+ More about using LyX with XeTeX can be found in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "XeTeX"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ (see below).
+\end_layout
+
+\begin_layout Standard
+LyX also supports Unicode output, which is particularly useful if you need
+ lots of special symbols or non-alphabetic scripts, respectively.
+ If you want to use this (and your LaTeX installation supports Unicode,
+ for that matter), choose one of the four utf8 variants from the list below.
+ Unfortunately the Unicode support of standard LaTeX is quite incomplete,
+ so it is not uncommon that a file with lots of Unicode symbols works fine
+ with 
+\family sans
+Language Default
+\family default
+ (when LyX uses it's list of known LaTeX-commands), but does not work with
+ a fixed utf8 encoding (when the list of known LaTeX-commands is not used,
+ because all Unicode symbols can be encoded in utf8).
+\end_layout
+
+\begin_layout Standard
+Here is a list with the important encodings:
+\end_layout
+
+\begin_layout Description
+Language
+\begin_inset space ~
+\end_inset
+
+Default
+\begin_inset space ~
+\end_inset
+
+(no
+\begin_inset space ~
+\end_inset
+
+inputenc) Same as 
+\family sans
+Language Default
+\family default
+, but the LaTeX-package 
+\series bold
+inputenc
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! inputenc
+\end_layout
+
+\end_inset
+
+ is not used.
+ When using this, you probably need to load some additional packages manually
+ in the preamble and specify the used encoding for text parts in foreign
+ languages in TeX code.
+\end_layout
+
+\begin_layout Description
+ASCII the ASCII encoding, covers only plain English (7-bit ASCII).
+ LyX converts all other characters into LaTeX commands, which may result
+ in a big file when lots of LaTeX-commands are needed.
+\end_layout
+
+\begin_layout Description
+Arabic
+\begin_inset space ~
+\end_inset
+
+(CP
+\begin_inset space ~
+\end_inset
+
+1256) MS Windows code page for Arabic and Farsi
+\end_layout
+
+\begin_layout Description
+Arabic
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-6) for Arabic and Farsi
+\end_layout
+
+\begin_layout Description
+Armenian
+\begin_inset space ~
+\end_inset
+
+(ArmSCII8) for Armenian
+\end_layout
+
+\begin_layout Description
+Baltic
+\begin_inset space ~
+\end_inset
+
+(CP
+\begin_inset space ~
+\end_inset
+
+1257) MS Windows code page for Estonian, Latvian, and Lithuanian, the same
+ as the ISO-8859-13 encoding
+\end_layout
+
+\begin_layout Description
+Baltic
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-13) for Estonian, Latvian, and Lithuanian, a superset of the ISO-8859-4
+ encoding
+\end_layout
+
+\begin_layout Description
+Baltic
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-4) (latin 4) for Estonian, Latvian, and Lithuanian, a subset of the
+ ISO-8859-13 encoding
+\end_layout
+
+\begin_layout Description
+Central
+\begin_inset space ~
+\end_inset
+
+European
+\begin_inset space ~
+\end_inset
+
+(CP
+\begin_inset space ~
+\end_inset
+
+1250) MS Windows code page for ISO
+\begin_inset space ~
+\end_inset
+
+8859-2 (latin2)
+\end_layout
+
+\begin_layout Description
+Central
+\begin_inset space ~
+\end_inset
+
+European
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-2) (latin 2) covers Albanian, Croatian, Czech, German, Hungarian, Polish,
+ Romanian, Slovak, and Slovenian
+\end_layout
+
+\begin_layout Description
+Chinese
+\begin_inset space ~
+\end_inset
+
+(simplified)
+\begin_inset space ~
+\end_inset
+
+(EUC-CN) for simplified Chinese, used especially on UNIX OSes, since 2001
+ this encoding is officially replaced by the encoding GB18030, as GB18030
+ is not available for LaTeX you should try to use the encoding Unicode
+\begin_inset space ~
+\end_inset
+
+(CJK)
+\begin_inset space ~
+\end_inset
+
+(utf8)
+\end_layout
+
+\begin_layout Description
+Chinese
+\begin_inset space ~
+\end_inset
+
+(simplified)
+\begin_inset space ~
+\end_inset
+
+(GBK) for simplified Chinese, is the same as the Windows code page CP 936
+ except of the Euro currency sign, since 2001 this encoding is officially
+ replaced by the encoding GB18030, as GB18030 is not available for LaTeX
+ you should try to use the encoding Unicode
+\begin_inset space ~
+\end_inset
+
+(CJK)
+\begin_inset space ~
+\end_inset
+
+(utf8)
+\end_layout
+
+\begin_layout Description
+Chinese
+\begin_inset space ~
+\end_inset
+
+(traditional)
+\begin_inset space ~
+\end_inset
+
+(EUC-TW) for traditional Chinese
+\end_layout
+
+\begin_layout Description
+Cyrillic
+\begin_inset space ~
+\end_inset
+
+(CP
+\begin_inset space ~
+\end_inset
+
+1251) MS Windows code page for Cyrillic
+\end_layout
+
+\begin_layout Description
+Cyrillic
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-5) covers Belorussian, Bulgarian, Macedonian, Serbian, and Ukrainian
+\end_layout
+
+\begin_layout Description
+Cyrillic
+\begin_inset space ~
+\end_inset
+
+(KOI8-R) standard Cyrillic especially for Russian
+\end_layout
+
+\begin_layout Description
+Cyrillic
+\begin_inset space ~
+\end_inset
+
+(KOI8-U) Cyrillic for Ukrainian
+\end_layout
+
+\begin_layout Description
+Cyrillic
+\begin_inset space ~
+\end_inset
+
+(pt
+\begin_inset space ~
+\end_inset
+
+154) Cyrillic for Kazakh
+\end_layout
+
+\begin_layout Description
+Greek
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-7) for Greek
+\end_layout
+
+\begin_layout Description
+Hebrew
+\begin_inset space ~
+\end_inset
+
+(CP
+\begin_inset space ~
+\end_inset
+
+1255) MS Windows code page for Hebrew, a superset of the ISO-8859-8 encoding
+\end_layout
+
+\begin_layout Description
+Hebrew
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-8) for Hebrew
+\end_layout
+
+\begin_layout Description
+Japanese
+\begin_inset space ~
+\end_inset
+
+(CJK)
+\begin_inset space ~
+\end_inset
+
+(EUC-JP) EUC-JP encoding for Japanese, uses the LaTeX-package 
+\series bold
+CJK
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! CJK
+\end_layout
+
+\end_inset
+
+, when using this, set the document language to 
+\family sans
+Japanese (CJK)
+\end_layout
+
+\begin_layout Description
+Japanese
+\begin_inset space ~
+\end_inset
+
+(CJK)
+\begin_inset space ~
+\end_inset
+
+(JIS) JIS encoding for Japanese, uses the LaTeX-package 
+\series bold
+CJK
+\series default
+, when using this, set the document language to 
+\family sans
+Japanese (CJK)
+\end_layout
+
+\begin_layout Description
+Japanese
+\begin_inset space ~
+\end_inset
+
+(non-CJK)
+\begin_inset space ~
+\end_inset
+
+(EUC-JP) EUC-JP encoding for Japanese, uses the LaTeX-package 
+\series bold
+japanese
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! japanese
+\end_layout
+
+\end_inset
+
+, when using this, set the document language to 
+\family sans
+Japanese
+\end_layout
+
+\begin_layout Description
+Japanese
+\begin_inset space ~
+\end_inset
+
+(non-CJK)
+\begin_inset space ~
+\end_inset
+
+(JIS) JIS encoding for Japanese, uses the LaTeX-package 
+\series bold
+japanese
+\series default
+, when using this, set the document language to 
+\family sans
+Japanese
+\end_layout
+
+\begin_layout Description
+Japanese
+\begin_inset space ~
+\end_inset
+
+(non-CJK)
+\begin_inset space ~
+\end_inset
+
+(SJIS) SJIS encoding for Japanese, uses the LaTeX-package 
+\series bold
+japanese
+\series default
+, when using this, set the document language to 
+\family sans
+Japanese
+\end_layout
+
+\begin_layout Description
+Korean
+\begin_inset space ~
+\end_inset
+
+(EUC-KR) for Korean
+\end_layout
+
+\begin_layout Description
+Southern
+\begin_inset space ~
+\end_inset
+
+European
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-3) (latin 3) covers Esperanto, Galician, Maltese, and Turkish
+\end_layout
+
+\begin_layout Description
+South-Eastern
+\begin_inset space ~
+\end_inset
+
+European
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-16) (latin 10) covers Albanian, Croatian, Finnish, French, German,
+ Hungarian, Irish Gaelic, Italian, Polish, Romanian, Slovenian, is designed
+ to cover many languages and characters with diacritics
+\end_layout
+
+\begin_layout Description
+Thai
+\begin_inset space ~
+\end_inset
+
+(TIS
+\begin_inset space ~
+\end_inset
+
+620-0) for Thai
+\end_layout
+
+\begin_layout Description
+Turkish
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-9) (latin 5) for Turkish, is like the ISO-8859-1 encoding where the
+ Icelandic letters are replaced by Turkish ones
+\end_layout
+
+\begin_layout Description
+Unicode
+\begin_inset space ~
+\end_inset
+
+(CJK)
+\begin_inset space ~
+\end_inset
+
+(utf8) Unicode utf8 with the LaTeX-package 
+\series bold
+CJK
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! CJK
+\end_layout
+
+\end_inset
+
+ (for the languages Chinese, Japanese and Korean)
+\end_layout
+
+\begin_layout Description
+Unicode
+\begin_inset space ~
+\end_inset
+
+(XeTeX)
+\begin_inset space ~
+\end_inset
+
+(utf8) Unicode utf8 to be used with 
+\family sans
+XeTeX
+\family default
+, which uses Unicode directly, without the help of the LaTeX-package 
+\series bold
+inputenc
+\series default
+ 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+More about using LyX with XeTeX can be found in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "XeTeX"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Unicode
+\begin_inset space ~
+\end_inset
+
+(ucs-extended)
+\begin_inset space ~
+\end_inset
+
+(utf8x) Unicode utf8 based on the LaTeX package 
+\series bold
+ucs
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! ucs
+\end_layout
+
+\end_inset
+
+ (comprehensive, including Latin, Greek, Cyrillic and CJK scripts).
+\end_layout
+
+\begin_layout Description
+Unicode
+\begin_inset space ~
+\end_inset
+
+(utf8) Unicode utf8 based on the LaTeX-package 
+\series bold
+inputenc
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! inputenc
+\end_layout
+
+\end_inset
+
+.
+ Currently only a limited range of characters (mainly for Latin scripts)
+ is supported.
+\end_layout
+
+\begin_layout Description
+Western
+\begin_inset space ~
+\end_inset
+
+European
+\begin_inset space ~
+\end_inset
+
+(CP
+\begin_inset space ~
+\end_inset
+
+1252) MS Windows code page for ISO
+\begin_inset space ~
+\end_inset
+
+8859-1 (latin1)
+\end_layout
+
+\begin_layout Description
+Western
+\begin_inset space ~
+\end_inset
+
+European
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-1) (latin 1) covers the languages Albanian, Catalan, Danish, Dutch,
+ English, Faroese, Finnish, French, Galician, German, Icelandic, Irish,
+ Italian, Norwegian, Portuguese, Spanish, and Swedish; better use the ISO-8859-1
+5 encoding instead
+\end_layout
+
+\begin_layout Description
+Western
+\begin_inset space ~
+\end_inset
+
+European
+\begin_inset space ~
+\end_inset
+
+(ISO
+\begin_inset space ~
+\end_inset
+
+8859-15) (latin 9) like the ISO-8859-1 encoding, but with the Euro currency
+ sign, the œ-ligature and some characters used for French and Finnish
+\end_layout
+
+\begin_layout Section
+Numbering & TOC
+\end_layout
+
+\begin_layout Standard
+You can adjust here the numbering depth of sections headings as described
+ in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Numbering-depth"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Bibliography
+\end_layout
+
+\begin_layout Standard
+You can specify here a citation style using the LaTeX-packages 
+\series bold
+natbib
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! natbib
+\end_layout
+
+\end_inset
+
+ or 
+\series bold
+jurabib
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! jurabib
+\end_layout
+
+\end_inset
+
+.
+ For a further description see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Bibliography"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+PDF Properties
+\end_layout
+
+\begin_layout Standard
+The PDF properties are explained in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:PDF-Properties"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Math Options
+\end_layout
+
+\begin_layout Standard
+These options will force LyX to use the LaTeX-packages 
+\series bold
+amsmath
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! amsmath
+\end_layout
+
+\end_inset
+
+ and 
+\series bold
+esint
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! esint
+\end_layout
+
+\end_inset
+
+ or to use them automatically when they are needed.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+amsmath
+\series default
+ is needed for many constructs, so when you get LaTeX-errors in formulas,
+ assure that you have enabled AMS.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+esint
+\series default
+ is used for special integral characters.
+\end_layout
+
+\begin_layout Section
+Float Placement
+\end_layout
+
+\begin_layout Standard
+The float placement options are described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Float-Placement"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Bullets
+\end_layout
+
+\begin_layout Standard
+Here you can adjust the characters for the itemize levels.
+ The itemize environment is described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Itemize"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Branches
+\end_layout
+
+\begin_layout Standard
+Branches are described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Branches"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX Preamble
+\end_layout
+
+\begin_layout Standard
+In this text field are entered commands to load special LaTeX-packages or
+ to define LaTeX-commands.
+ The preamble is a thing for LaTeX-experts.
+ You shouldn't enter commands here until you don't exactly know what you
+ do.
+\end_layout
+
+\begin_layout Standard
+An introduction in the LaTeX-syntax is given in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-Syntax"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Chapter
