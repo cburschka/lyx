@@ -122,7 +122,7 @@ void LyXVC::registrer()
 		} else {
 			LYXERR(Debug::LYXVC, "LyXVC: registering "
 				<< to_utf8(filename.displayName()) << " with RCS");
-			vcs.reset(new RCS(filename));
+			vcs.reset(new RCS(FileName()));
 		}
 
 		vcs->owner(owner_);
