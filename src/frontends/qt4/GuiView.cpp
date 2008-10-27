@@ -284,6 +284,7 @@ GuiView::GuiView(int id)
 	: d(*new GuiViewPrivate), id_(id), closing_(false)
 {
 	// GuiToolbars *must* be initialised before the menu bar.
+	normalSizedIcons(); // at least on Mac the default is 32 otherwise, which is huge
 	constructToolbars();
 
 	// set ourself as the current view. This is needed for the menu bar
