@@ -91,14 +91,14 @@ InsetCollapsable::InsetCollapsable(Buffer const & buf)
 
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 	: InsetText(rhs),
-		layout_(rhs.layout_),
-		labelstring_(rhs.labelstring_),
-		button_dim(rhs.button_dim),
-		status_(rhs.status_),
-		openinlined_(rhs.openinlined_),
-		autoOpen_(rhs.autoOpen_),
-		// the sole purpose of this copy constructor
-		mouse_hover_(false)
+	  status_(rhs.status_),
+	  layout_(rhs.layout_),
+	  labelstring_(rhs.labelstring_),
+	  button_dim(rhs.button_dim),
+	  openinlined_(rhs.openinlined_),
+	  autoOpen_(rhs.autoOpen_),
+	  // the sole purpose of this copy constructor
+	  mouse_hover_(false)
 {
 }
 
