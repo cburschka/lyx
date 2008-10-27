@@ -11767,131 +11767,7 @@ status collapsed
 
 \end_inset
 
- should have the form 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-FlexType:StyleName
-\end_layout
-
-\end_inset
-
-, where 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-FlexType
-\end_layout
-
-\end_inset
-
- is either 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-CharStyle
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Custom
-\end_layout
-
-\end_inset
-
-, or 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Element
-\end_layout
-
-\end_inset
-
-, and 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-StyleName
-\end_layout
-
-\end_inset
-
- is any valid identifier.
- The 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-FlexType
-\end_layout
-
-\end_inset
-
- indicates on which menu the inset should appear: In the default menu structure,
- 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-CharStyle
-\end_layout
-
-\end_inset
-
- and 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Element
-\end_layout
-
-\end_inset
-
- insets appear under 
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Edit\SpecialChar \menuseparator
-Text Style
-\end_layout
-
-\end_inset
-
-; 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Custom
-\end_layout
-
-\end_inset
-
- insets appear under 
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Insert\SpecialChar \menuseparator
-Custom insets
-\end_layout
-
-\end_inset
-
-.
+ can be any valid identifier not used by a pre-existing inset.
  Note that the definition of a flex inset must
 \emph on
  als
@@ -12412,6 +12288,7 @@ end
 
  (indicating a dummy definition ending definitions of charstyles, etc).
  This entry is required in and is only meaningful for Flex insets.
+ Among other things, it determines on which menu this inset will appear.
 \end_layout
 
 \begin_layout Description
