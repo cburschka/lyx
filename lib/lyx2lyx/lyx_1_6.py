@@ -1548,15 +1548,15 @@ def convert_macro_global(document):
     # status collapsed
     #
     # \begin_layout Plain Layout
-    # 
-    # 
+    #
+    #
     # \backslash
     # global
     # \end_layout
-    # 
+    #
     # \end_inset
-    # 
-    # 
+    #
+    #
     # \begin_inset FormulaMacro
     # \renewcommand{\foo}{123}
     # \end_inset
@@ -2135,7 +2135,7 @@ def convert_subfig(document):
         l = find_token(document.body, '\tsubcaptionText', i, endInset)
         if l == -1:
             caption = ""
-        else: 
+        else:
             caption = document.body[l][16:].strip('"')
             del document.body[l]
             addedLines -= 1
