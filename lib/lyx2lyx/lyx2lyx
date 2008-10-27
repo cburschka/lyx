@@ -22,7 +22,7 @@ import optparse
 import sys
 import LyX
 
-if __name__ == "__main__":
+def main():
     args = {}
     args["usage"] = "usage: %prog [options] [file]"
 
@@ -78,3 +78,6 @@ Copyright (C) 2007 José Matos and Dekel Tsur""" % LyX.version__
     doc.write()
 
     sys.exit(doc.status)
+
+if __name__ == "__main__":
+    main()

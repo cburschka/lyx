@@ -35,11 +35,10 @@ Example:
         ./profiling.py -ou.lyx ../doc/UserGuide.lyx
 """
 
-def main(argv):
+def main():
     # This will only work with python >= 2.2, the version where this module was added
     prof = hotshot.Profile("lyx2lyx.prof") # Use temporary file, here?
-    benchtime = prof.runcall(
-        lambda : lyx2lyx.main(argv))
+    benchtime = prof.runcall(lyx2lyx.main)
     prof.close()
 
     # After the tests, show the profile analysis.
@@ -52,4 +51,4 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    main(sys.argv)
+    main()
