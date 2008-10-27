@@ -48,7 +48,7 @@ AC_ARG_WITH(version-suffix,
   [if test "x$withval" = "xyes";
    then
      withval="-"AC_PACKAGE_VERSION
-     ac_configure_args=`echo $ac_configure_args | sed "s,--with-version-suffix,--with-version-suffix=$withval,"`
+     ac_configure_args=`echo "$ac_configure_args" | sed "s,--with-version-suffix,--with-version-suffix=$withval,"`
    fi
    AC_SUBST(version_suffix,$withval)
    RPM_VERSION_SUFFIX="--with-version-suffix=$withval"])
