@@ -1593,7 +1593,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 	}
 
 	if (c == '{' || c == '}' || c == '&' || c == '$' || c == '#' ||
-	    c == '%' || c == '_' || c == ' ') {
+	    c == '%' || c == '_') {
 		cur.niceInsert(createInsetMath(docstring(1, c)));
 		return true;
 	}
