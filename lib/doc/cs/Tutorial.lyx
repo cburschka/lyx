@@ -1,8 +1,9 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 340
+#LyX 1.6.0rc4 created this file. For more info see http://www.lyx.org/
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass article
+\use_default_options false
 \language czech
 \inputencoding auto
 \font_roman default
@@ -1024,7 +1025,7 @@ Pokud toto není příčina, zkuste nastavit jiné fonty na obrazovce, viz Nást
 \end_layout
 
 \begin_layout Standard
-Nezapomeňte hned zpočátku také nastavit typ používaných uvozovek.
+Nezapomeňte hned zpočátku také nastavit typ používaných uvozovek (,,text”).
 \end_layout
 
 \begin_layout Subsubsection
@@ -1097,7 +1098,11 @@ pdf
 \begin_inset Quotes grd
 \end_inset
 
-, 
+,
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 Prohlížeč
 \family default
