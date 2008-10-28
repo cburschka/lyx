@@ -313,7 +313,11 @@ The
 --Separator--
 \family default
  paragraph after a slide is needed because LyX will normally merge two environme
-nts if they come immediately one after the other (i.e.
+nts if they come immediately one after the other (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -540,7 +544,11 @@ Preamble commands
 \begin_layout Description
 
 \backslash
-onlyslides{8,9,11} print only slides number 8, 9 and 11 (e.g.
+onlyslides{8,9,11} print only slides number 8, 9 and 11 (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -569,11 +577,19 @@ Fancier formatting
 
 \begin_layout Standard
 The LaTeX preamble is the right place for many many options to get fancier
- formatting, e.g.:
+ formatting, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.:
 \end_layout
 
 \begin_layout Itemize
-different font sets, e.g.
+different font sets, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 

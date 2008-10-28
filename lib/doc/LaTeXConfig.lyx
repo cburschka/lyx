@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0rc5 created this file. For more info see http://www.lyx.org/
 \lyxformat 344
 \begin_document
 \begin_header
@@ -1194,7 +1194,11 @@ agums
 agums.layout
 \family default
 ) can be used to write articles for first-time submission to AGU editors
- (e.g., for review and copy editing)
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., for review and copy editing)
 \end_layout
 
 \end_deeper
@@ -2928,8 +2932,12 @@ Notes:
 Svglobal
 \family default
  is a format suitable for publication in a Springer journal for which a
- specific style is not provided; i.e., if the journal author guidelines at
- the above Springer site suggest using the 
+ specific style is not provided; i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., if the journal author guidelines at the above Springer site suggest using
+ the 
 \family sans
 svglobal
 \family default

@@ -400,7 +400,11 @@ Test, if
 \family typewriter
 instant-preview
 \family default
- works by opening a LyX-document and entering any math-formula, e.g.
+ works by opening a LyX-document and entering any math-formula, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  
 \begin_inset Formula $a+b=c$
 \end_inset
@@ -877,7 +881,11 @@ beta
 \begin_inset Formula $\beta$
 \end_inset
 
- above the arrow, i.e.
+ above the arrow, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -984,7 +992,11 @@ Xy
 \end_inset
 
 -pic normally permits labels to be shifted towards the tip or towards the
- start of an arrow by prefixing the label with a ratio, such as e.g.
+ start of an arrow by prefixing the label with a ratio, such as e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  
 \family typewriter
 (.3)
@@ -1019,7 +1031,11 @@ Xy
 
 \end_inset
 
--pic code such as e.g.
+-pic code such as e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  
 \family typewriter
 
@@ -1897,7 +1913,11 @@ For bending arrows we use the modifier @/
 \family typewriter
 xypic
 \family default
-, we could simply write, e.g.
+, we could simply write, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  
 \family typewriter
 
@@ -1909,7 +1929,11 @@ ar@/_1pc/
 1pc
 \family default
  downwards, this cannot directly be done in LyX.
- It is necessary, to enclose the measure in a pair of braces, such as e.g.
+ It is necessary, to enclose the measure in a pair of braces, such as e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  
 \family typewriter
 
@@ -2421,7 +2445,11 @@ Braces that are entered without the backslash
 
 \family default
  will just appear as typed, but cannot be used to receive a macro parameter.
- They are useful, for instance to denote sets, e.g.
+ They are useful, for instance to denote sets, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  
 \family typewriter
 {x
@@ -3060,7 +3088,11 @@ Invisible stretched arrows
 A more general trick uses invisible arrows to place any object almost anywhere
  inside a diagram.
  Produce an invisible arrow, shorten (or prolong) it past its goal by adding
- a decimal stretching ratio, e.g.
+ a decimal stretching ratio, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  
 \family typewriter
 (0.6)

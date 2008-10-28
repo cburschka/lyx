@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0rc5 created this file. For more info see http://www.lyx.org/
 \lyxformat 344
 \begin_document
 \begin_header
@@ -3131,7 +3131,11 @@ This math editor is another example of the WYSIWYM philosophy.
 sqrt
 \family default
 ; this can be frustrating, because you can't see what an expression looks
- like until you LaTeX the file, and may have to spend time to find e.g.
+ like until you LaTeX the file, and may have to spend time to find e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -3598,7 +3602,11 @@ Delimiter
  However, those parentheses will be the same size as regular text, which
  will look bad if you have a big fraction or matrix inside the parentheses.
  So better use in this case one of the three delimiter buttons that insert
- directly e.g.
+ directly e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -4167,7 +4175,11 @@ Multi-line equations
 \end_layout
 
 \begin_layout Itemize
-Change typefaces, e.g.
+Change typefaces, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 

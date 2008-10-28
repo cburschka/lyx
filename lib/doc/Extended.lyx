@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0rc5 created this file. For more info see http://www.lyx.org/
 \lyxformat 344
 \begin_document
 \begin_header
@@ -1280,7 +1280,11 @@ voffset
 \begin_inset space \thinspace{}
 \end_inset
 
-points, i.e.
+points, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -2100,7 +2104,11 @@ Alternative Citation Styles
 \end_layout
 
 \begin_layout Standard
-Standard BibTeX uses numbers (e.g.
+Standard BibTeX uses numbers (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -2114,7 +2122,11 @@ Standard BibTeX uses numbers (e.g.
 
 ) to refer to a cited work.
  However, in many scientific disciplines, other citation styles are in use.
- The most common one is the author-year style (e.g.
+ The most common one is the author-year style (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -2370,7 +2382,11 @@ Scientific works
 \begin_inset Quotes erd
 \end_inset
 
-, you first need to create two bibliographic databases, e.g.
+, you first need to create two bibliographic databases, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -2527,7 +2543,11 @@ Multiple Bibliographies
 \end_layout
 
 \begin_layout Standard
-Multiple bibliographies, e.g.
+Multiple bibliographies, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -2732,7 +2752,11 @@ master
  Each of these files must have the same document class, however---don't
  attempt to mix book classes with article classes.
  You may also include LaTeX files; however, these files must not have their
- own preamble (i.e.
+ own preamble (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -2867,7 +2891,11 @@ verbatim
 \end_inset
 
  included file allows you to include a file typeset exactly as it appears
- in the file, i.e.
+ in the file, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -3175,7 +3203,11 @@ lhead{John Q.
 You will now see your name in the upper left.
  If a field has a default entry that you would like to get rid of (often
  the page number appears in the central footer, simply include a command
- with a blank argument, e.g.:
+ with a blank argument, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.:
 \end_layout
 
 \begin_layout Standard
@@ -3195,11 +3227,19 @@ Section
 \begin_inset Quotes erd
 \end_inset
 
- (e.g.
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
-Section 3) in the upper left, the page number (e.g.
+Section 3) in the upper left, the page number (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -4812,7 +4852,11 @@ maketitle
 \end_layout
 
 \begin_layout Standard
-If you want to place footnotes in the header block, e.g.
+If you want to place footnotes in the header block, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -6323,7 +6367,11 @@ no
  space between the last author and the parenthesis setting off the year;
  
 \emph on
-e.g.
+e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -8395,7 +8443,11 @@ Foil
 TeX provides some powerful header and footer capabilities that are best
  set in the preamble although they may be set at any point in a document.
  If you want to change these settings in your document the best place to
- do so is at the very top of a foil, i.e.
+ do so is at the very top of a foil, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \emph on
 
 \begin_inset space \space{}
@@ -8779,7 +8831,11 @@ TeX-
  While the second is meant to provide a classification for the audience,
  
 \emph on
-e.g.
+e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \emph default
 
 \begin_inset space \space{}
@@ -9391,7 +9447,11 @@ M-z t
 
 \family default
 Camera movement instruction.
- e.g.
+ e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -9451,7 +9511,11 @@ Script jargon
 \end_layout
 
 \begin_layout Itemize
-b.g.
+b.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  --- background
 \end_layout
 
@@ -9780,7 +9844,11 @@ Both packages use basic citations; the natbib package should not be used.
 \family typewriter
 refcite
 \family default
- command, e.g.
+ command, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -10439,7 +10507,11 @@ View the resulting
 \family typewriter
 .dvi
 \family default
- document using, e.g.
+ document using, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -10531,7 +10603,11 @@ ERT
 \end_layout
 
 \begin_layout Enumerate
-Information given at the beginning of the article (i.e.
+Information given at the beginning of the article (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -11060,7 +11136,11 @@ captionbelow
 \family sans
 Dictum
 \family default
-: can be used to set a bonmot, e.g.
+: can be used to set a bonmot, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -11712,7 +11792,11 @@ Telephone
 
 \begin_layout Standard
 The input types can also be used as empty paragraphs.
- This makes sense e.g.
+ This makes sense e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -12094,7 +12178,11 @@ Closing
 \family sans
 NextAddress
 \family default
- will start a new letter (i.e.
+ will start a new letter (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -12555,7 +12643,11 @@ Style
 \backslash
 chapterstyle
 \family default
- in the main text or in preamble (e.g.
+ in the main text or in preamble (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -12610,7 +12702,11 @@ empty
 \begin_inset Quotes erd
 \end_inset
 
-, i.e.
+, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -12656,7 +12752,11 @@ real
 
 \begin_layout Description
 Oldfontcommands: By default, Memoir does not allow the use of the deprecated
- font commands, which have been used in the old LaTeX version 2.09 (e.g.
+ font commands, which have been used in the old LaTeX version 2.09 (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -12739,7 +12839,11 @@ Abstract: You may wonder why an abstract is an extra feature.
 \begin_layout Description
 Chapterprecis: You may know this from belletristic: The contents of a chapter
  is shortly described below the title and also in the table of contents
- (e.g.
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -12865,7 +12969,11 @@ Basic differences:
 \end_layout
 
 \begin_layout Itemize
-Unnumbered titles (with star, e.g.
+Unnumbered titles (with star, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -13039,7 +13147,11 @@ http://publish.aps.org/revtex4/
 .
  Install it somewhere that LaTeX can see it.
  Test it by trying to LaTeX a short RevTeX 4 document in some random directory
- (i.e.
+ (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -13291,7 +13403,11 @@ The main problem with this layout is that you can't use the optional arguments
  to the Section layouts either.) This means that after you export that file
  to LaTeX (which you'll need to do eventually to send it in to APS), you'll
  need to edit the LaTeX file with a text editor to add the optional arguments
- to set, e.g.
+ to set, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -13365,7 +13481,11 @@ http://www.springer.de/author/tex/help-journals.html
 \family typewriter
 svjour.inc
 \family default
-, which journal-specific layout files (such as, e.g.
+, which journal-specific layout files (such as, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -13507,8 +13627,11 @@ ejour2
 \end_layout
 
 \begin_layout Standard
-Limitations e.g.: does not display the number for theorem-like layouts, just
- #.
+Limitations e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.: does not display the number for theorem-like layouts, just #.
 \end_layout
 
 \begin_layout Section
@@ -15701,7 +15824,11 @@ Enforcement of normal space after common abbreviations:
 \begin_inset Newline newline
 \end_inset
 
-e.g.
+e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -17348,7 +17475,11 @@ Literate programming is the combination of documentation and source together
  and documentation in a single file.
  Literate programming tools then parse the file to produce either readable
  documentation or compilable source.
- The WEB style of literate programming was created by D.E.
+ The WEB style of literate programming was created by D.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  Knuth during the development of his TeX typesetting software.
  
 \end_layout
@@ -17432,7 +17563,11 @@ It can generate the documentation either in LaTeX or HTML.
 \end_layout
 
 \begin_layout Itemize
-It has a open architecture, i.e.
+It has a open architecture, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -17489,7 +17624,11 @@ Noweb independent
 \begin_inset Quotes erd
 \end_inset
 
- way, i.e.
+ way, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
@@ -17614,7 +17753,11 @@ The problem is that whatever is written in between the << and the
 \family typewriter
 @
 \family default
- must be taken literally, i.e.
+ must be taken literally, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 

@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0rc5 created this file. For more info see http://www.lyx.org/
 \lyxformat 344
 \begin_document
 \begin_header
@@ -659,7 +659,11 @@ Notion Apart from lfun arguments you can use the following method:
 \end_inset
 
  1.
- input the type and argument of this inset, e.g.
+ input the type and argument of this inset, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  "menu paste", in the work area.
  
 \begin_inset Newline newline
@@ -1557,7 +1561,11 @@ Syntax word-find [<DATA>]
 \begin_layout Description
 Params <DATA>: data encoded from Find dialog (see lyx::find2string()).
  If no parameter is given, search with last find-dialog data is used for
- search (i.e.
+ search (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  find-next).
   
 \end_layout
@@ -1645,8 +1653,11 @@ Action Moves the cursor to the next beginning of a word "on the left".
 \end_layout
 
 \begin_layout Description
-Notion This is the action which should be taken when the (e.g., ctrl-) "left"
- key is pressed.
+Notion This is the action which should be taken when the (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., ctrl-) "left" key is pressed.
  Generally, it moves the cursor to the next beginning of a word on the left.
  However, in Bidi text this become slightly more complicated, and there
  are different modes of cursor movement.
@@ -1697,8 +1708,11 @@ Action Moves the cursor to the next beginning of a word "on the right".
 \end_layout
 
 \begin_layout Description
-Notion This is the action which should be taken when the (e.g., ctrl-) "right"
- key is pressed.
+Notion This is the action which should be taken when the (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., ctrl-) "right" key is pressed.
  Generally, it moves the cursor to the next beginning of a word on the right.
  However, in Bidi text this become slightly more complicated, and there
  are different modes of cursor movement.
@@ -1761,7 +1775,11 @@ LFUN_WORD_CAPITALIZE
 \end_layout
 
 \begin_layout Description
-Action Capitalizes the words in the selection (i.e.
+Action Capitalizes the words in the selection (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  the first letters) or the letter on the cursor position.
   
 \end_layout
@@ -1994,7 +2012,11 @@ Syntax clipboard-paste [<ARG>]
 \end_layout
 
 \begin_layout Description
-Params <ARG>: "paragraph" will cause pasting as one paragraph, i.e.
+Params <ARG>: "paragraph" will cause pasting as one paragraph, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  "Join lines".
   
 \end_layout
@@ -2022,7 +2044,11 @@ Syntax primary-selection-paste [<ARG>]
 \end_layout
 
 \begin_layout Description
-Params <ARG>: "paragraph" will cause pasting as one paragraph, i.e.
+Params <ARG>: "paragraph" will cause pasting as one paragraph, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  "Join lines".
   
 \end_layout
@@ -2325,7 +2351,11 @@ Syntax textstyle-update <FONT_INFO>
 \end_layout
 
 \begin_layout Description
-Params <FONT_INFO>: specifies font atributes, e.g.
+Params <FONT_INFO>: specifies font atributes, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  family, series, shape, size, emph, noun, underbar, number, color, language,
  toggleall.
  
@@ -2679,7 +2709,11 @@ LFUN_MATH_DELIM
 \end_layout
 
 \begin_layout Description
-Action Inserts math delimiters (e.g.
+Action Inserts math delimiters (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  parentheses, brackets) enclosing expression.
   
 \end_layout
@@ -2708,7 +2742,11 @@ LFUN_MATH_BIGDELIM
 \end_layout
 
 \begin_layout Description
-Action Inserts math fixed size delimiters (e.g.
+Action Inserts math fixed size delimiters (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  parentheses, brackets) enclosing expression.
   
 \end_layout
@@ -2849,7 +2887,11 @@ Syntax math-macro <NAME> [<NARGS>] [def]
 \end_layout
 
 \begin_layout Description
-Params <NAME>: The name of the macro, e.g.
+Params <NAME>: The name of the macro, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  "mymacro".
  <NARGS>: The number of parameters of the macro.
  Default is 0.
@@ -2933,8 +2975,16 @@ Syntax math-matrix <COLS> <ROWS> [<ALIGN>]
 
 \begin_layout Description
 Params <ALIGN>: Alignment is a word composed of the vertical alignment (b,
- c or t) (i.e.
- 1 char) and the horizontal alignments (l, c or r) (i.e.
+ c or t) (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ 1 char) and the horizontal alignments (l, c or r) (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  <COL> chars).
   
 \end_layout
@@ -2948,7 +2998,11 @@ LFUN_MATH_MODE
 \end_layout
 
 \begin_layout Description
-Action In text mode enters math mode (i.e.
+Action In text mode enters math mode (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  puts math insets on the current cursor position), in math mode enters text
  mode inside math expression.
   
@@ -3097,7 +3151,11 @@ Action Unfold a Math Macro.
 \end_layout
 
 \begin_layout Description
-Notion Unfold the Math Macro the cursor is in, i.e.
+Notion Unfold the Math Macro the cursor is in, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  display it as foo.
   
 \end_layout
@@ -3120,7 +3178,11 @@ Action Fold a Math Macro.
 \end_layout
 
 \begin_layout Description
-Notion Fold the Math Macro the cursor is in if it was unfolded, i.e.
+Notion Fold the Math Macro the cursor is in if it was unfolded, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  displayed as foo before.
   
 \end_layout
@@ -3149,7 +3211,11 @@ Notion Add a parameter to a Math Macro.
 
 \begin_layout Description
 Params <NUM>: The number of the parameter behind which the new one will
- be added (1 for the first, i.e.
+ be added (1 for the first, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  use 0 for add a parameter at the left), defaults to the last one.
   
 \end_layout
@@ -3815,7 +3881,11 @@ Action Sets various features to the table/cell on the current cursor position.
 \end_layout
 
 \begin_layout Description
-Notion Various math-environment features are handled here as well, e.g.
+Notion Various math-environment features are handled here as well, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  add-vline-left/right for Grid/Cases environment  
 \end_layout
 
@@ -5802,7 +5872,11 @@ Action Exports the current document and put the result into the temporary
 \begin_layout Description
 Notion In case you are already viewing the exported document (see LFUN_BUFFER_VI
 EW) the output will be rewriten - updated.
- This is useful in case your viewer is able to detect such changes (e.g.
+ This is useful in case your viewer is able to detect such changes (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  ghostview for postscript).
   
 \end_layout
@@ -6065,7 +6139,11 @@ LFUN_FILE_INSERT_PLAINTEXT_PARA
 \end_layout
 
 \begin_layout Description
-Action Inserts plain text file as paragraph (i.e.
+Action Inserts plain text file as paragraph (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  join lines).
   
 \end_layout
@@ -6119,7 +6197,11 @@ Notion The definitions are by default read from lib/commands/default.def.
  A .def file allows to define a command with 
 \backslash
 define "<NAME>" "<LFUN>" where <NAME> is the name of the new command and
- <LFUN> is the lfun code to be executed (see e.g.
+ <LFUN> is the lfun code to be executed (see e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
  LFUN_COMMAND_SEQUENCE).
  
 \backslash
