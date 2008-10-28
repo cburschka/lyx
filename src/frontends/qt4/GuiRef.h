@@ -94,6 +94,8 @@ private:
 	QString last_reference_;
 	/// store the buffer settings
 	int restored_buffer_;
+	/// store the last active buffer
+	int active_buffer_;
 	/// the references
 	std::vector<docstring> refs_;
 };
