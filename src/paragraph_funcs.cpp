@@ -36,8 +36,9 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 	// Note: moveItem() does not honour change tracking!
 	// Therefore, it should only be used for breaking and merging paragraphs
 
-	Font const & tmpFont = fromPar.getFontSettings(params, fromPos);
-	Change const & tmpChange = fromPar.lookupChange(fromPos);
+	// We need a copy here because the character at fromPos is going to be erased.
+	Font const tmpFont = fromPar.getFontSettings(params, fromPos);
+	Change const tmpChange = fromPar.lookupChange(fromPos);
 
 	if (Inset * tmpInset = fromPar.getInset(fromPos)) {
 		fromPar.releaseInset(fromPos);
