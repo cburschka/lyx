@@ -231,13 +231,13 @@ void GuiRef::updateContents()
 		bufferCO->addItem(toqstr(makeDisplayPath(it->absFilename())));
 	}
 
-	int thebuffer = theBufferList().bufferNum(buffer().fileName());
+	int const thebuffer = theBufferList().bufferNum(buffer().fileName());
 	// restore the buffer combo setting for new insets
 	if (params_["reference"].empty() && restored_buffer_ != -1
 	    && restored_buffer_ < bufferCO->count() && thebuffer == active_buffer_)
 		bufferCO->setCurrentIndex(restored_buffer_);
 	else {
-		int num = theBufferList().bufferNum(buffer().fileName());
+		int const num = theBufferList().bufferNum(buffer().fileName());
 		bufferCO->setCurrentIndex(num);
 		if (thebuffer != active_buffer_)
 			restored_buffer_ = num;
