@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.7svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 %
 \end_preamble
+\options traditabstract
 \language english
 \inputencoding auto
 \font_roman default
@@ -37,33 +38,33 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 Hydrodynamics of giant planet formation
 \end_layout
 
 \begin_layout Subtitle
-
 I.
  Overviewing the 
-\begin_inset Formula \( \kappa  \)
+\begin_inset Formula $\kappa$
 \end_inset
 
 -mechanism
 \end_layout
 
 \begin_layout Author
-
 G.
  Wuchterl 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 inst{1} 
@@ -72,6 +73,7 @@ and
 \end_layout
 
 \begin_layout Standard
+
           
 \end_layout
 
@@ -83,6 +85,7 @@ C.
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 inst{2}
@@ -97,26 +100,21 @@ fnmsep
 status collapsed
 
 \begin_layout Standard
-
 Just to show the usage of the elements in the author field
 \end_layout
 
 \end_inset
 
-
  
 \end_layout
 
 \begin_layout Offprint
-
 G.
  Wuchterl
 \end_layout
 
 \begin_layout Address
-
-Institute for Astronomy (IfA), University of Vienna, Tü
-rkenschanzstrasse
+Institute for Astronomy (IfA), University of Vienna, Türkenschanzstrasse
  17, A-1180 Vienna
 \newline
 
@@ -124,6 +122,7 @@ rkenschanzstrasse
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 email{wuchterl@amok.ast.univie.ac.at} 
@@ -145,6 +144,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 email{c.ptolemy@hipparch.uheaven.space}
 \end_layout
@@ -156,48 +156,34 @@ email{c.ptolemy@hipparch.uheaven.space}
 status collapsed
 
 \begin_layout Standard
-
 The university of heaven temporarily does not accept e-mails
 \end_layout
 
 \end_inset
 
-
  
 \end_layout
 
 \begin_layout Date
-
 Received September 15, 1996; accepted March 16, 1997
 \end_layout
 
 \begin_layout Abstract
-
 To investigate the physical nature of the `nuc\SpecialChar \-
 leated instability' of proto
- giant planets (Mizuno 
-\begin_inset LatexCommand cite
-key "mizuno"
-\end_inset
-
-), the stability of layers in static, radiative gas spheres is analysed
- on the basis of Baker's 
-\begin_inset LatexCommand cite
-key "baker"
-\end_inset
-
- standard one-zone model.
+ giant planets, the stability of layers in static, radiative gas spheres
+ is analysed on the basis of Baker's standard one-zone model.
  It is shown that stability depends only upon the equations of state, the
  opacities and the local thermodynamic state in the layer.
  Stability and instability can therefore be expressed in the form of stability
  equations of state which are universal for a given composition.
  The stability equations of state are calculated for solar composition and
  are displayed in the domain 
-\begin_inset Formula \( -14\leq \lg \rho /[\mathrm{g}\, \mathrm{cm}^{-3}]\leq 0 \)
+\begin_inset Formula $-14\leq\lg\rho/[\mathrm{g}\,\mathrm{cm}^{-3}]\leq0$
 \end_inset
 
 , 
-\begin_inset Formula \( 8.8\leq \lg e/[\mathrm{erg}\, \mathrm{g}^{-1}]\leq 17.7 \)
+\begin_inset Formula $8.8\leq\lg e/[\mathrm{erg}\,\mathrm{g}^{-1}]\leq17.7$
 \end_inset
 
 .
@@ -205,92 +191,84 @@ key "baker"
  in stellar or planetary structure models by directly reading off the value
  of the stability equations for the thermodynamic state of these layers,
  specified by state quantities as density 
-\begin_inset Formula \( \rho  \)
+\begin_inset Formula $\rho$
 \end_inset
 
 , temperature 
-\begin_inset Formula \( T \)
+\begin_inset Formula $T$
 \end_inset
 
  or specific internal energy 
-\begin_inset Formula \( e \)
+\begin_inset Formula $e$
 \end_inset
 
 .
  Regions of instability in the 
-\begin_inset Formula \( (\rho ,e) \)
+\begin_inset Formula $(\rho,e)$
 \end_inset
 
 -plane are described and related to the underlying microphysical processes.
  Vibrational instability is found to be a common phenomenon at temperatures
  lower than the second He ionisation zone.
  The 
-\begin_inset Formula \( \kappa  \)
+\begin_inset Formula $\kappa$
 \end_inset
 
 -mechanism is widespread under `cool' conditions.
-\begin_inset ERT
-status collapsed
+\begin_inset Note Note
+status open
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-
-\backslash
-keywords{giant planet formation -- 
-\backslash
-(
-\backslash
-kappa
-\backslash
-)-mechanism -- stability of gas spheres }
+Citations are not allowed in A&A abstracts.
 \end_layout
 
 \end_inset
 
- 
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+This is the unstructured abstract type, an example for the structured abstract
+ is in the aa.lyx template file that comes with LyX.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Keywords
+giant planet formation -- 
+\begin_inset Formula $\kappa$
+\end_inset
+
+-mechanism -- stability of gas spheres
 \end_layout
 
 \begin_layout Section
-
 Introduction
 \end_layout
 
 \begin_layout Standard
-
-In the
-\emph default
- 
+In the 
 \emph on
 nucleated instability
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-\backslash
-/{}
-\end_layout
-
-\end_inset
-
-
 \emph default
  (also called core instability) hypothesis of giant planet formation, a
  critical mass for static core envelope protoplanets has been found.
  Mizuno (
 \begin_inset LatexCommand cite
 key "mizuno"
+
 \end_inset
 
 ) determined the critical mass of the core to be about 
-\begin_inset Formula \( 12\, M_{\oplus } \)
+\begin_inset Formula $12\, M_{\oplus}$
 \end_inset
 
  (
-\begin_inset Formula \( M_{\oplus }=5.975\, 10^{27}\, \mathrm{g} \)
+\begin_inset Formula $M_{\oplus}=5.975\,10^{27}\,\mathrm{g}$
 \end_inset
 
  is the Earth mass), which is independent of the outer boundary conditions
@@ -300,7 +278,6 @@ key "mizuno"
 \end_layout
 
 \begin_layout Standard
-
 Although no hydrodynamical study has been available many workers conjectured
  that a collapse or rapid contraction will ensue after accumulating the
  critical mass.
@@ -310,23 +287,25 @@ Although no hydrodynamical study has been available many workers conjectured
  is investigated on the basis of Baker's (
 \begin_inset LatexCommand cite
 key "baker"
+
 \end_inset
 
 ) standard one-zone model.
 \end_layout
 
 \begin_layout Standard
-
 Phenomena similar to the ones described above for giant planet formation
  have been found in hydrodynamical models concerning star formation where
  protostellar cores explode (Tscharnuter 
 \begin_inset LatexCommand cite
 key "tscharnuter"
+
 \end_inset
 
 , Balluch 
 \begin_inset LatexCommand cite
 key "balluch"
+
 \end_inset
 
 ), whereas earlier studies found quasi-steady collapse flows.
@@ -336,45 +315,42 @@ lar cores and protogiant planets serve as a further motivation for this
 \end_layout
 
 \begin_layout Section
-
 Baker's standard one-zone model
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Float figure
 wide true
 sideways false
 status open
 
-\begin_layout 
+\begin_layout Standard
 \begin_inset Caption
 
-\begin_layout 
-
+\begin_layout Standard
 Adiabatic exponent 
-\begin_inset Formula \( \Gamma _{1} \)
+\begin_inset Formula $\Gamma_{1}$
 \end_inset
 
 .
  
-\begin_inset Formula \( \Gamma _{1} \)
+\begin_inset Formula $\Gamma_{1}$
 \end_inset
 
  is plotted as a function of 
-\begin_inset Formula \( \lg  \)
+\begin_inset Formula $\lg$
 \end_inset
 
  internal energy 
-\begin_inset Formula \( [\mathrm{erg}\, \mathrm{g}^{-1}] \)
+\begin_inset Formula $[\mathrm{erg}\,\mathrm{g}^{-1}]$
 \end_inset
 
  and 
-\begin_inset Formula \( \lg  \)
+\begin_inset Formula $\lg$
 \end_inset
 
  density 
-\begin_inset Formula \( [\mathrm{g}\, \mathrm{cm}^{-3}] \)
+\begin_inset Formula $[\mathrm{g}\,\mathrm{cm}^{-3}]$
 \end_inset
 
 
@@ -386,10 +362,9 @@ Adiabatic exponent
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand label
 name "FigGam"
+
 \end_inset
 
 
@@ -400,20 +375,20 @@ name "FigGam"
  In this section the one-zone model of Baker (
 \begin_inset LatexCommand cite
 key "baker"
+
 \end_inset
 
-), originally used to study the Cepheı̈
-d pulsation mechanism, will be briefly
+), originally used to study the Cepheı̈d pulsation mechanism, will be briefly
  reviewed.
  The resulting stability criteria will be rewritten in terms of local state
  variables, local timescales and constitutive relations.
 \end_layout
 
 \begin_layout Standard
-
 Baker (
 \begin_inset LatexCommand cite
 key "baker"
+
 \end_inset
 
 ) investigates the stability of thin layers in self-gravitating, spherical
@@ -421,17 +396,14 @@ key "baker"
 \end_layout
 
 \begin_layout Itemize
-
 hydrostatic equilibrium, 
 \end_layout
 
 \begin_layout Itemize
-
 thermal equilibrium, 
 \end_layout
 
 \begin_layout Itemize
-
 energy transport by grey radiation diffusion.
  
 \end_layout
@@ -445,6 +417,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
  
 \end_layout
@@ -456,6 +429,7 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 ,
@@ -469,6 +443,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 ,
 \end_layout
@@ -478,6 +453,7 @@ status collapsed
 c) in Baker 
 \begin_inset LatexCommand cite
 key "baker"
+
 \end_inset
 
 ).
@@ -486,16 +462,14 @@ key "baker"
 
 \begin_layout Standard
 \align left
-
 \begin_inset Formula \begin{eqnarray*}
 M_{r} &  & \textrm{mass internal to the radius }r\\
 m &  & \textrm{mass of the zone}\\
 r_{0} &  & \textrm{unperturbed zone radius}\\
-\rho _{0} &  & \textrm{unperturbed density in the zone}\\
+\rho_{0} &  & \textrm{unperturbed density in the zone}\\
 T_{0} &  & \textrm{unperturbed temperature in the zone}\\
 L_{r0} &  & \textrm{unperturbed luminosity}\\
-E_{\textrm{th}} &  & \textrm{thermal energy of the zone}
-\end{eqnarray*}
+E_{\textrm{th}} &  & \textrm{thermal energy of the zone}\end{eqnarray*}
 
 \end_inset
 
@@ -504,130 +478,109 @@ E_{\textrm{th}} &  & \textrm{thermal energy of the zone}
 
 \begin_layout Standard
 \noindent
-and with the definitions of the
-\emph default
- 
+and with the definitions of the 
 \emph on
 local cooling time
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-\backslash
-/{}
-\end_layout
-
-\end_inset
-
-
 \emph default
  (see Fig.\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "FigGam"
+
 \end_inset
 
 ) 
 \begin_inset Formula \begin{equation}
-\tau _{\mathrm{co}}=\frac{E_{\mathrm{th}}}{L_{r0}}\, ,
-\end{equation}
+\tau_{\mathrm{co}}=\frac{E_{\mathrm{th}}}{L_{r0}}\,,\end{equation}
 
 \end_inset
 
- and the
-\emph default
- 
+ and the 
 \emph on
 local free-fall time
 \emph default
 
 \begin_inset Formula \begin{equation}
-\tau _{\mathrm{ff}}=\sqrt{\frac{3\pi }{32G}\frac{4\pi r_{0}^{3}}{3M_{\mathrm{r}}}}\, ,
-\end{equation}
+\tau_{\mathrm{ff}}=\sqrt{\frac{3\pi}{32G}\frac{4\pi r_{0}^{3}}{3M_{\mathrm{r}}}}\,,\end{equation}
 
 \end_inset
 
  Baker's 
-\begin_inset Formula \( K \)
+\begin_inset Formula $K$
 \end_inset
 
  and 
-\begin_inset Formula \( \sigma _{0} \)
+\begin_inset Formula $\sigma_{0}$
 \end_inset
 
  have the following form: 
 \begin_inset Formula \begin{eqnarray}
-\sigma _{0} & = & \frac{\pi }{\sqrt{8}}\frac{1}{\tau _{\mathrm{ff}}}\\
-K & = & \frac{\sqrt{32}}{\pi }\frac{1}{\delta }\frac{\tau _{\mathrm{ff}}}{\tau _{\mathrm{co}}}\, ;
-\end{eqnarray}
+\sigma_{0} & = & \frac{\pi}{\sqrt{8}}\frac{1}{\tau_{\mathrm{ff}}}\\
+K & = & \frac{\sqrt{32}}{\pi}\frac{1}{\delta}\frac{\tau_{\mathrm{ff}}}{\tau_{\mathrm{co}}}\,;\end{eqnarray}
 
 \end_inset
 
  where 
-\begin_inset Formula \( E_{\mathrm{th}}\approx m(P_{0}/{\rho _{0}}) \)
+\begin_inset Formula $E_{\mathrm{th}}\approx m(P_{0}/{\rho_{0}})$
 \end_inset
 
  has been used and 
 \begin_inset Formula \begin{equation}
 \begin{array}{l}
-\delta =-\left( \frac{\partial \ln \rho }{\partial \ln T}\right) _{P}\\
-e=mc^{2}
-\end{array}
-\end{equation}
+\delta=-\left(\frac{\partial\ln\rho}{\partial\ln T}\right)_{P}\\
+e=mc^{2}\end{array}\end{equation}
 
 \end_inset
 
  is a thermodynamical quantity which is of order 
-\begin_inset Formula \( 1 \)
+\begin_inset Formula $1$
 \end_inset
 
  and equal to 
-\begin_inset Formula \( 1 \)
+\begin_inset Formula $1$
 \end_inset
 
  for nonreacting mixtures of classical perfect gases.
  The physical meaning of 
-\begin_inset Formula \( \sigma _{0} \)
+\begin_inset Formula $\sigma_{0}$
 \end_inset
 
  and 
-\begin_inset Formula \( K \)
+\begin_inset Formula $K$
 \end_inset
 
  is clearly visible in the equations above.
  
-\begin_inset Formula \( \sigma _{0} \)
+\begin_inset Formula $\sigma_{0}$
 \end_inset
 
  represents a frequency of the order one per free-fall time.
  
-\begin_inset Formula \( K \)
+\begin_inset Formula $K$
 \end_inset
 
  is proportional to the ratio of the free-fall time and the cooling time.
  Substituting into Baker's criteria, using thermodynamic identities and
  definitions of thermodynamic quantities, 
 \begin_inset Formula \[
-\Gamma _{1}=\left( \frac{\partial \ln P}{\partial \ln \rho }\right) _{S}\, ,\; \chi ^{}_{\rho }=\left( \frac{\partial \ln P}{\partial \ln \rho }\right) _{T}\, ,\; \kappa ^{}_{P}=\left( \frac{\partial \ln \kappa }{\partial \ln P}\right) _{T}\]
+\Gamma_{1}=\left(\frac{\partial\ln P}{\partial\ln\rho}\right)_{S}\,,\;\chi_{\rho}^{}=\left(\frac{\partial\ln P}{\partial\ln\rho}\right)_{T}\,,\;\kappa_{P}^{}=\left(\frac{\partial\ln\kappa}{\partial\ln P}\right)_{T}\]
 
 \end_inset
 
 
 \begin_inset Formula \[
-\nabla _{\mathrm{ad}}=\left( \frac{\partial \ln T}{\partial \ln P}\right) _{S}\, ,\; \chi ^{}_{T}=\left( \frac{\partial \ln P}{\partial \ln T}\right) _{\rho }\, ,\; \kappa ^{}_{T}=\left( \frac{\partial \ln \kappa }{\partial \ln T}\right) _{T}\]
+\nabla_{\mathrm{ad}}=\left(\frac{\partial\ln T}{\partial\ln P}\right)_{S}\,,\;\chi_{T}^{}=\left(\frac{\partial\ln P}{\partial\ln T}\right)_{\rho}\,,\;\kappa_{T}^{}=\left(\frac{\partial\ln\kappa}{\partial\ln T}\right)_{T}\]
 
 \end_inset
 
- one obtains, after some pages of algebra, the conditions for
-\emph default
- 
+ one obtains, after some pages of algebra, the conditions for 
 \emph on
 stability
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 /{}
@@ -639,68 +592,66 @@ status collapsed
 \emph default
  given below: 
 \begin_inset Formula \begin{eqnarray}
-\frac{\pi ^{2}}{8}\frac{1}{\tau _{\mathrm{ff}}^{2}}(3\Gamma _{1}-4) & > & 0\label{ZSDynSta} \\
-\frac{\pi ^{2}}{\tau _{\mathrm{co}}\tau _{\mathrm{ff}}^{2}}\Gamma _{1}\nabla _{\mathrm{ad}}\left[ \frac{1-3/4\chi ^{}_{\rho }}{\chi ^{}_{T}}(\kappa ^{}_{T}-4)+\kappa ^{}_{P}+1\right]  & > & 0\label{ZSSecSta} \\
-\frac{\pi ^{2}}{4}\frac{3}{\tau _{\mathrm{co}}\tau _{\mathrm{ff}}^{2}}\Gamma _{1}^{2}\, \nabla _{\mathrm{ad}}\left[ 4\nabla _{\mathrm{ad}}-(\nabla _{\mathrm{ad}}\kappa ^{}_{T}+\kappa ^{}_{P})-\frac{4}{3\Gamma _{1}}\right]  & > & 0\label{ZSVibSta}
-\end{eqnarray}
+\frac{\pi^{2}}{8}\frac{1}{\tau_{\mathrm{ff}}^{2}}(3\Gamma_{1}-4) & > & 0\label{ZSDynSta}\\
+\frac{\pi^{2}}{\tau_{\mathrm{co}}\tau_{\mathrm{ff}}^{2}}\Gamma_{1}\nabla_{\mathrm{ad}}\left[\frac{1-3/4\chi_{\rho}^{}}{\chi_{T}^{}}(\kappa_{T}^{}-4)+\kappa_{P}^{}+1\right] & > & 0\label{ZSSecSta}\\
+\frac{\pi^{2}}{4}\frac{3}{\tau_{\mathrm{co}}\tau_{\mathrm{ff}}^{2}}\Gamma_{1}^{2}\,\nabla_{\mathrm{ad}}\left[4\nabla_{\mathrm{ad}}-(\nabla_{\mathrm{ad}}\kappa_{T}^{}+\kappa_{P}^{})-\frac{4}{3\Gamma_{1}}\right] & > & 0\label{ZSVibSta}\end{eqnarray}
 
 \end_inset
 
  For a physical discussion of the stability criteria see Baker (
 \begin_inset LatexCommand cite
 key "baker"
+
 \end_inset
 
 ) or Cox (
 \begin_inset LatexCommand cite
 key "cox"
+
 \end_inset
 
 ).
 \end_layout
 
 \begin_layout Standard
-
 We observe that these criteria for dynamical, secular and vibrational stability,
  respectively, can be factorized into 
 \end_layout
 
 \begin_layout Enumerate
-
 a factor containing local timescales only, 
 \end_layout
 
 \begin_layout Enumerate
-
 a factor containing only constitutive relations and their derivatives.
  
 \end_layout
 
 \begin_layout Standard
-
 The first factors, depending on only timescales, are positive by definition.
  The signs of the left hand sides of the inequalities\InsetSpace ~
 (
 \begin_inset LatexCommand ref
 reference "ZSDynSta"
+
 \end_inset
 
 ), (
 \begin_inset LatexCommand ref
 reference "ZSSecSta"
+
 \end_inset
 
 ) and (
 \begin_inset LatexCommand ref
 reference "ZSVibSta"
+
 \end_inset
 
 ) therefore depend exclusively on the second factors containing the constitutive
  relations.
  Since they depend only on state variables, the stability criteria themselves
- are
-\emph default
- 
+ are 
 \emph on
  functions of the thermodynamic state in the local zone
 \emph default
@@ -713,6 +664,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
  
 \end_layout
@@ -723,6 +675,7 @@ the thermodynamics and opacities (see Table\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "KapSou"
+
 \end_inset
 
 ), are specified (in practice by specifying a chemical composition) the
@@ -735,20 +688,18 @@ reference "KapSou"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Float table
 wide false
 sideways false
 status open
 
-\begin_layout 
+\begin_layout Standard
 \begin_inset Caption
 
-\begin_layout 
-
-
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "KapSou"
+
 \end_inset
 
 Opacity sources
@@ -760,9 +711,7 @@ Opacity sources
 \end_layout
 
 \begin_layout Standard
-
-
-\begin_inset  Tabular
+\begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
 <features>
 <column alignment="left" valignment="top" width="0pt">
@@ -772,7 +721,6 @@ Opacity sources
 \begin_inset Text
 
 \begin_layout Standard
-
 Source
 \end_layout
 
@@ -782,9 +730,7 @@ Source
 \begin_inset Text
 
 \begin_layout Standard
-
-
-\begin_inset Formula \( T/[\textrm{K}] \)
+\begin_inset Formula $T/[\textrm{K}]$
 \end_inset
 
 
@@ -798,7 +744,6 @@ Source
 \begin_inset Text
 
 \begin_layout Standard
-
 Yorke 1979, Yorke 1980a
 \end_layout
 
@@ -808,9 +753,7 @@ Yorke 1979, Yorke 1980a
 \begin_inset Text
 
 \begin_layout Standard
-
-
-\begin_inset Formula \( \leq 1700^{\textrm{a}} \)
+\begin_inset Formula $\leq1700^{\textrm{a}}$
 \end_inset
 
 
@@ -824,7 +767,6 @@ Yorke 1979, Yorke 1980a
 \begin_inset Text
 
 \begin_layout Standard
-
 Krügel 1971
 \end_layout
 
@@ -834,9 +776,7 @@ Krügel 1971
 \begin_inset Text
 
 \begin_layout Standard
-
-
-\begin_inset Formula \( 1700\leq T\leq 5000 \)
+\begin_inset Formula $1700\leq T\leq5000$
 \end_inset
 
  
@@ -850,7 +790,6 @@ Krügel 1971
 \begin_inset Text
 
 \begin_layout Standard
-
 Cox & Stewart 1969
 \end_layout
 
@@ -860,9 +799,7 @@ Cox & Stewart 1969
 \begin_inset Text
 
 \begin_layout Standard
-
-
-\begin_inset Formula \( 5000\leq  \)
+\begin_inset Formula $5000\leq$
 \end_inset
 
 
@@ -879,9 +816,7 @@ Cox & Stewart 1969
 \end_layout
 
 \begin_layout Standard
-
-
-\begin_inset Formula \( ^{\textrm{a}} \)
+\begin_inset Formula $^{\textrm{a}}$
 \end_inset
 
 This is footnote a
@@ -893,21 +828,22 @@ This is footnote a
  of the left-hand sides of the inequalities (
 \begin_inset LatexCommand ref
 reference "ZSDynSta"
+
 \end_inset
 
 ), (
 \begin_inset LatexCommand ref
 reference "ZSSecSta"
+
 \end_inset
 
 ) and (
 \begin_inset LatexCommand ref
 reference "ZSVibSta"
+
 \end_inset
 
-) and thereby obtain
-\emph default
- 
+) and thereby obtain 
 \emph on
 stability equations of state
 \emph default
@@ -915,45 +851,41 @@ stability equations of state
 \end_layout
 
 \begin_layout Standard
-
 The sign determining part of inequality\InsetSpace ~
 (
 \begin_inset LatexCommand ref
 reference "ZSDynSta"
+
 \end_inset
 
 ) is 
-\begin_inset Formula \( 3\Gamma _{1}-4 \)
+\begin_inset Formula $3\Gamma_{1}-4$
 \end_inset
 
  and it reduces to the criterion for dynamical stability 
 \begin_inset Formula \begin{equation}
-\Gamma _{1}>\frac{4}{3}\, \cdot
-\end{equation}
+\Gamma_{1}>\frac{4}{3}\,\cdot\end{equation}
 
 \end_inset
 
  Stability of the thermodynamical equilibrium demands 
 \begin_inset Formula \begin{equation}
-\chi ^{}_{\rho }>0,\; \; c_{v}>0\, ,
-\end{equation}
+\chi_{\rho}^{}>0,\;\; c_{v}>0\,,\end{equation}
 
 \end_inset
 
  and 
 \begin_inset Formula \begin{equation}
-\chi ^{}_{T}>0
-\end{equation}
+\chi_{T}^{}>0\end{equation}
 
 \end_inset
 
  holds for a wide range of physical situations.
  With 
 \begin_inset Formula \begin{eqnarray}
-\Gamma _{3}-1=\frac{P}{\rho T}\frac{\chi ^{}_{T}}{c_{v}} & > & 0\\
-\Gamma _{1}=\chi _{\rho }^{}+\chi _{T}^{}(\Gamma _{3}-1) & > & 0\\
-\nabla _{\mathrm{ad}}=\frac{\Gamma _{3}-1}{\Gamma _{1}} & > & 0
-\end{eqnarray}
+\Gamma_{3}-1=\frac{P}{\rho T}\frac{\chi_{T}^{}}{c_{v}} & > & 0\\
+\Gamma_{1}=\chi_{\rho}^{}+\chi_{T}^{}(\Gamma_{3}-1) & > & 0\\
+\nabla_{\mathrm{ad}}=\frac{\Gamma_{3}-1}{\Gamma_{1}} & > & 0\end{eqnarray}
 
 \end_inset
 
@@ -961,61 +893,60 @@ reference "ZSDynSta"
 (
 \begin_inset LatexCommand ref
 reference "ZSSecSta"
+
 \end_inset
 
 ) and (
 \begin_inset LatexCommand ref
 reference "ZSVibSta"
+
 \end_inset
 
 ) respectively and obtain the following form of the criteria for dynamical,
- secular and vibrational
-\emph default
- 
+ secular and vibrational 
 \emph on
 stability
 \emph default
 , respectively: 
 \begin_inset Formula \begin{eqnarray}
-3\Gamma _{1}-4=:S_{\mathrm{dyn}}> & 0 & \label{DynSta} \\
-\frac{1-3/4\chi ^{}_{\rho }}{\chi ^{}_{T}}(\kappa ^{}_{T}-4)+\kappa ^{}_{P}+1=:S_{\mathrm{sec}}> & 0 & \label{SecSta} \\
-4\nabla _{\mathrm{ad}}-(\nabla _{\mathrm{ad}}\kappa ^{}_{T}+\kappa ^{}_{P})-\frac{4}{3\Gamma _{1}}=:S_{\mathrm{vib}}> & 0\, . & \label{VibSta} 
-\end{eqnarray}
+3\Gamma_{1}-4=:S_{\mathrm{dyn}}> & 0\label{DynSta}\\
+\frac{1-3/4\chi_{\rho}^{}}{\chi_{T}^{}}(\kappa_{T}^{}-4)+\kappa_{P}^{}+1=:S_{\mathrm{sec}}> & 0\label{SecSta}\\
+4\nabla_{\mathrm{ad}}-(\nabla_{\mathrm{ad}}\kappa_{T}^{}+\kappa_{P}^{})-\frac{4}{3\Gamma_{1}}=:S_{\mathrm{vib}}> & 0\,.\label{VibSta}\end{eqnarray}
 
 \end_inset
 
  The constitutive relations are to be evaluated for the unperturbed thermodynami
 c state (say 
-\begin_inset Formula \( (\rho _{0},T_{0}) \)
+\begin_inset Formula $(\rho_{0},T_{0})$
 \end_inset
 
 ) of the zone.
  We see that the one-zone stability of the layer depends only on the constitutiv
 e relations 
-\begin_inset Formula \( \Gamma _{1} \)
+\begin_inset Formula $\Gamma_{1}$
 \end_inset
 
 , 
-\begin_inset Formula \( \nabla _{\mathrm{ad}} \)
+\begin_inset Formula $\nabla_{\mathrm{ad}}$
 \end_inset
 
 , 
-\begin_inset Formula \( \chi _{T}^{},\, \chi _{\rho }^{} \)
+\begin_inset Formula $\chi_{T}^{},\,\chi_{\rho}^{}$
 \end_inset
 
 , 
-\begin_inset Formula \( \kappa _{P}^{},\, \kappa _{T}^{} \)
+\begin_inset Formula $\kappa_{P}^{},\,\kappa_{T}^{}$
 \end_inset
 
 .
  These depend only on the unperturbed thermodynamical state of the layer.
  Therefore the above relations define the one-zone-stability equations of
  state 
-\begin_inset Formula \( S_{\mathrm{dyn}},\, S_{\mathrm{sec}} \)
+\begin_inset Formula $S_{\mathrm{dyn}},\, S_{\mathrm{sec}}$
 \end_inset
 
  and 
-\begin_inset Formula \( S_{\mathrm{vib}} \)
+\begin_inset Formula $S_{\mathrm{vib}}$
 \end_inset
 
 .
@@ -1023,10 +954,11 @@ e relations
 
 \begin_inset LatexCommand ref
 reference "FigVibStab"
+
 \end_inset
 
  for a picture of 
-\begin_inset Formula \( S_{\mathrm{vib}} \)
+\begin_inset Formula $S_{\mathrm{vib}}$
 \end_inset
 
 .
@@ -1035,24 +967,22 @@ reference "FigVibStab"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
-\begin_layout 
+\begin_layout Standard
 \begin_inset Caption
 
-\begin_layout 
-
+\begin_layout Standard
 Vibrational stability equation of state 
-\begin_inset Formula \( S_{\mathrm{vib}}(\lg e,\lg \rho ) \)
+\begin_inset Formula $S_{\mathrm{vib}}(\lg e,\lg\rho)$
 \end_inset
 
 .
  
-\begin_inset Formula \( >0 \)
+\begin_inset Formula $>0$
 \end_inset
 
  means vibrational stability 
@@ -1064,30 +994,29 @@ Vibrational stability equation of state
 \end_layout
 
 \begin_layout Standard
-
-
 \begin_inset LatexCommand label
 name "FigVibStab"
+
 \end_inset
 
 
 \end_layout
 
 \end_inset
+
 
 \end_layout
 
 \begin_layout Section
-
 Conclusions
 \end_layout
 
 \begin_layout Enumerate
-
 The conditions for the stability of static, radiative layers in gas spheres,
  as described by Baker's (
 \begin_inset LatexCommand cite
 key "baker"
+
 \end_inset
 
 ) standard one-zone model, can be expressed as stability equations of state.
@@ -1097,7 +1026,6 @@ key "baker"
 \end_layout
 
 \begin_layout Enumerate
-
 If the constitutive relations -- equations of state and Rosseland mean opacities
  -- are specified, the stability equations of state can be evaluated without
  specifying properties of the layer.
@@ -1105,29 +1033,24 @@ If the constitutive relations -- equations of state and Rosseland mean opacities
 \end_layout
 
 \begin_layout Enumerate
-
 For solar composition gas the 
-\begin_inset Formula \( \kappa  \)
+\begin_inset Formula $\kappa$
 \end_inset
 
 -mechanism is working in the regions of the ice and dust features in the
  opacities, the 
-\begin_inset Formula \( \mathrm{H}_{2} \)
+\begin_inset Formula $\mathrm{H}_{2}$
 \end_inset
 
  dissociation and the combined H, first He ionization zone, as indicated
  by vibrational instability.
  These regions of instability are much larger in extent and degree of instabilit
-y than the second He ionization zone that drives the Cepheı̈
-d pulsations.
+y than the second He ionization zone that drives the Cepheı̈d pulsations.
  
 \end_layout
 
 \begin_layout Acknowledgement
-
-Part of this work was supported by the German
-\emph default
- 
+Part of this work was supported by the German 
 \emph on
 Deut\SpecialChar \-
 sche For\SpecialChar \-
@@ -1135,18 +1058,6 @@ schungs\SpecialChar \-
 ge\SpecialChar \-
 mein\SpecialChar \-
 schaft, DFG
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-\backslash
-/{}
-\end_layout
-
-\end_inset
-
-
 \emph default
  project number Ts\InsetSpace ~
 17/2--1.
@@ -1161,18 +1072,7 @@ key "baker"
 \end_inset
 
  Baker, N.
- 1966, in Stellar Evolution, ed.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
+ 1966, in Stellar Evolution, ed.\InsetSpace \space{}
 R.
  F.
  Stein,& A.
