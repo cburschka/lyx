@@ -325,11 +325,14 @@ void TocWidget::init(QString const & str)
 	if (new_index == -1) {
 		current_type_ = "tableofcontents";
 		new_index = typeCO->findData(current_type_);
+	} else {
+		current_type_ = typeCO->itemData(new_index).toString();
 	}
 
 	typeCO->blockSignals(true);
 	typeCO->setCurrentIndex(new_index);
 	typeCO->blockSignals(false);
+	updateView();
 }
 
 } // namespace frontend
