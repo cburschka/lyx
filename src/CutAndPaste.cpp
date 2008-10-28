@@ -914,8 +914,8 @@ void replaceSelectionWithString(Cursor & cur, docstring const & str, bool backwa
 	cur.recordUndo();
 	DocIterator selbeg = cur.selectionBegin();
 
-	// Get font setting before we cut
-	Font const & font =
+	// Get font setting before we cut, we need a copy here, not a bare reference.
+	Font const font =
 		selbeg.paragraph().getFontSettings(cur.buffer().params(), selbeg.pos());
 
 	// Insert the new string
