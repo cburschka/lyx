@@ -242,6 +242,8 @@ def latex2ert(line):
     return retval
 
 
+unicode_reps = read_unicodesymbols()
+
 #Bug 5022....
 #Might should do latex2ert first, then deal with stuff that DOESN'T
 #end up inside ERT. That routine could be modified so that it returned
@@ -257,12 +259,11 @@ def latex2lyx(data):
     retval = []
 
     # Convert LaTeX to Unicode
-    reps = read_unicodesymbols()
     # Commands of this sort need to be checked to make sure they are
     # followed by a non-alpha character, lest we replace too much.
     hardone = re.compile(r'^\\\\[a-zA-Z]+$')
 
-    for rep in reps:
+    for rep in unicode_reps:
         if hardone.match(rep[0]):
             pos = 0
             while True:
@@ -315,7 +316,6 @@ def lyx2latex(document, lines):
     # clean up multiline stuff
     content = ""
     ert_end = 0
-    reps = read_unicodesymbols()
 
     for curline in range(len(lines)):
       line = lines[curline]
@@ -372,7 +372,7 @@ def lyx2latex(document, lines):
           line = line.replace('$', '\\${}')
 
           # Do the LyX text --> LaTeX conversion
-          for rep in reps:
+          for rep in unicode_reps:
             line = line.replace(rep[1], rep[0] + "{}")
           line = line.replace(r'\backslash', r'\textbackslash{}')
           line = line.replace(r'\series bold', r'\bfseries{}').replace(r'\series default', r'\mdseries{}')
