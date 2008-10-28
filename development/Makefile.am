@@ -85,7 +85,7 @@ Win32/packaging/AltInstaller/icons/lyx.svg \
 Win32/packaging/AltInstaller/icons/lyx_32x32.ico \
 Win32/packaging/AltInstaller/icons/lyx_doc.svg \
 Win32/packaging/AltInstaller/icons/lyx_logo_hi.bmp \
-Win32/packaging/AltInstaller/icons/lyx_logo_vert16svn.bmp \
+Win32/packaging/AltInstaller/icons/lyx_logo_vert16rc4.bmp \
 Win32/packaging/AltInstaller/informations/InstallerStructure.odg \
 Win32/packaging/AltInstaller/informations/InstallerStructure.pdf \
 Win32/packaging/AltInstaller/informations/ISO_3166.html \
@@ -127,7 +127,6 @@ Win32/packaging/AltInstaller/specials/PDFViewWin/PDFViewWin.res \
 Win32/packaging/AltInstaller/specials/AspellRepositories.txt \
 Win32/packaging/AltInstaller/specials/AspellDictionaryNames.txt \
 Win32/packaging/AltInstaller/specials/preferences \
-Win32/packaging/AltInstaller/specials/session \
 Win32/packaging/build_msvs_debug.bat \
 Win32/packaging/build_msvc.bat \
 Win32/packaging/Microsoft.VC90.CRT.manifest \
