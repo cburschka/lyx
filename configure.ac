@@ -1,7 +1,7 @@
 dnl Process with autoconf to generate configure script   -*- sh -*-
 
-AC_INIT(LyX,1.6.0svn,[lyx-devel@lists.lyx.org],[lyx])
-AC_SUBST(LYX_DATE, ["Thu, Oct 23, 2008"])
+AC_INIT(LyX,1.6.0rc5,[lyx-devel@lists.lyx.org],[lyx])
+AC_SUBST(LYX_DATE, ["Tue, Oct 28, 2008"])
 AC_PREREQ(2.52)
 AC_CONFIG_SRCDIR(src/main.cpp)
 AC_CONFIG_HEADERS([config.h])
