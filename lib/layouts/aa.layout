@@ -3,6 +3,7 @@
 #
 # Author: Peter Sütterlin <pit@uni-sw.gwdg.de>
 # Author: Jürgen Spitzmüller <spitz@lyx.org>
+# Author: Uwe Stöhr <uwestoehr@web.de>
 #
 # 2001-05-17  take out include of stdlayouts; merge aapaper.inc
 #             remove LaTeX style, rename to aa
@@ -12,6 +13,7 @@
 #             abstract is command
 # 2008-06-09  Implement \inst and \email as char styles,
 #             implement paragraph style keywords
+# 2008-10-26  Updated for aa.cls version 6.1
 
 
 Format 11
@@ -108,260 +110,312 @@ NoStyle Part
 
 
 Style Subtitle
-	Margin                Static
-	LatexType             Command
-	InTitle               1
-	LatexName             subtitle
-	NextNoIndent          1
-	ParSkip               0.4
-	ItemSep               0
-	TopSep                1.3
-	BottomSep             1.3
-	ParSep                1
-	Align                 Center
-	LabelType             No_Label
+	Margin			Static
+	LatexType		Command
+	InTitle			1
+	LatexName		subtitle
+	Category		FrontMatter
+	NextNoIndent		1
+	ParSkip			0.4
+	ItemSep			0
+	TopSep			1.3
+	BottomSep		1.3
+	ParSep			1
+	Align			Center
+	LabelType		No_Label
 	Font
-	  Family              Sans
-	  Size                Larger
-	  Series              Bold
+	  Family		Sans
+	  Size			Larger
+	  Series		Bold
 	EndFont
 End
 
 
 Style Address
-	LeftMargin            MMM
-	Margin                Static
-	LatexType             Command
-	InTitle               1
-	LatexName             institute
-	ParSkip               0.4
-#  BottomSep            0.4
-	Align                 Left
-	LabelType             No_Label
+	LeftMargin		MMM
+	Margin			Static
+	LatexType		Command
+	InTitle			1
+	LatexName		institute
+	Category		FrontMatter
+	ParSkip			0.4
+	#BottomSep		0.4
+	Align			Left
+	LabelType		No_Label
 	Font
-	  Family              Roman
-	  Size                Small
+	  Family		Roman
+	  Size			Small
 	EndFont
 End
 
 
 Style Offprint
-	Margin                Static
-	LatexType             Command
-	InTitle               1
-	LatexName             offprints
-	Align                 Left
-	LeftMargin            "Offprint Requests to:M"
-	LabelType             Static
-	LabelString           "Offprint Requests to:"
-	LabelSep              M
+	Margin			Static
+	LatexType		Command
+	Category		FrontMatter
+	InTitle			1
+	LatexName		offprints
+	Align			Left
+	LeftMargin		"Offprint Requests to:M"
+	LabelType		Static
+	LabelString		"Offprint Requests to:"
+	LabelSep		M
 	Font
-	  Family              Roman
-	  Size                Small
+	  Family		Roman
+	  Size			Small
 	EndFont
 	LabelFont
-	  Family              Roman
-	  Size                Small
-	  Shape               Slanted
+	  Family		Roman
+	  Size			Small
+	  Shape			Slanted
 	EndFont
 End
 
 
 Style Mail
-	Margin                Static
-	LatexType             Command
-	InTitle               1
-	LatexName             mail
-	Align                 Left
-	LeftMargin            "Correspondence to:M"
-	LabelType             Static
-	LabelString           "Correspondence to:"
-	LabelSep              M
+	Margin			Static
+	LatexType		Command
+	InTitle			1
+	Category		FrontMatter
+	LatexName		mail
+	Align			Left
+	LeftMargin		"Correspondence to:M"
+	LabelType		Static
+	LabelString		"Correspondence to:"
+	LabelSep		M
 	Font
-	  Family              Roman
-	  Size                Small
+	  Family		Roman
+	  Size			Small
 	EndFont
 	LabelFont
-	  Family              Roman
-	  Size                Small
-	  Shape               Slanted
+	  Family		Roman
+	  Size			Small
+	  Shape			Slanted
 	EndFont
 End
 
 
 Style Acknowledgement
-	Margin                First_Dynamic
-	LatexType             Environment
-	LatexName             acknowledgements
-	NextNoIndent          0
-	ItemSep               0
-	TopSep                1.2
-	BottomSep             0
-	ParSep                0
-	Align                 Block
-	LabelType             Static
-	LabelString           "Acknowledgements."
-	LabelSep              M
+	Margin			First_Dynamic
+	LatexType		Environment
+	LatexName		acknowledgements
+	Category		BackMatter
+	NextNoIndent		0
+	ItemSep			0
+	TopSep			1.2
+	BottomSep		0
+	ParSep			0
+	Align			Block
+	LabelType		Static
+	LabelString		"Acknowledgements."
+	LabelSep		M
 	Font
-	  Size                Small
+	  Size			Small
 	EndFont
 	LabelFont
-	  Size                Small
-	  Shape               Italic
+	  Size			Small
+	  Shape			Italic
 	EndFont
 End
 
 
-
-
 Style Section
-	TopSep                2.0
-	BottomSep             1.3
+	TopSep			2.0
+	BottomSep		1.3
 	Font
-	  Family              Sans
-	  Size                Large
+	  Family		Sans
+	  Size			Large
 	EndFont
 End
 
 
 Style Subsection
-	TopSep                1.7
-	BottomSep             1.1
+	TopSep			1.7
+	BottomSep		1.1
 	Font
-	  Family              Sans
-	  Series              Medium
-	  Size                Large
-	  Shape               Slanted
+	  Family		Sans
+	  Series		Medium
+	  Size			Large
+	  Shape			Slanted
 	EndFont
 End
 
 
 Style Subsubsection
-	TopSep                1.7
-	BottomSep             1.1
+	TopSep			1.7
+	BottomSep		1.1
 	Font
-	  Series              Medium
-	  Size                Normal
+	  Series		Medium
+	  Size			Normal
 	EndFont
 End
 
 
 Style Title
-	TopSep                2
-	BottomSep             1.3
-	Align                 Center
-	AlignPossible         Left
+	TopSep			2
+	BottomSep		1.3
+	Align			Center
+	AlignPossible		Left
 	Font
-	  Family              Sans
-	  Series              Bold
+	  Family		Sans
+	  Series		Bold
 	EndFont
 End
 
 
 Style Author
-	Align                 Center
-	LabelType             No_Label
-	BottomSep             1.5
+	Align			Center
+	LabelType		No_Label
+	BottomSep		1.5
 	Font
-	  Size                Large
-	  Series              Medium
+	  Size			Large
+	  Series		Medium
 	EndFont
 End
 
 
 Style Date
-	LeftMargin            MMM
-	LabelSep              ""
-	TopSep                1.2
-	Align                 Left
+	InTitle			1
+	LeftMargin		MMM
+	LabelSep		""
+	TopSep			1.2
+	Align			Left
 	Font
-	  Size                Small
+	  Size			Small
 	EndFont
 End
 
 
-Style Abstract
-	Margin                First_Dynamic
-	LatexType             Command
-	LatexName             abstract
-	InTitle               1
-	NextNoIndent          1
-	LeftMargin            MMM
-	RightMargin           MMM
-	ParIndent             ""
-	ItemSep               0
-	TopSep                1.2
-	BottomSep             0.7
-	ParSep                0
-	Align                 Block
-	LabelType             static
-	LabelString           "Abstract"
-	LabelSep              M
-	LabelBottomSep        0
+InsetLayout institutemark
+	LyxType			custom
+	LatexType		command
+	LatexName		inst
+	LabelString		"institute mark"
 	Font
-	  Size                Small
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
 	EndFont
 	LabelFont
-	  Family              Sans
-	  Series              Bold
-	  Size                Small
+	  Color			green
+	  Size			Small
+	EndFont
+	MultiPar		true
+End
+
+
+Style Abstract
+	Margin			First_Dynamic
+	LatexType		Command
+	LatexName		abstract
+	Category		FrontMatter
+	InTitle			1
+	NextNoIndent		1
+	LeftMargin		MMM
+	RightMargin		MMM
+	ParIndent		""
+	ItemSep			0
+	TopSep			1.2
+	BottomSep		0.7
+	ParSep			0
+	Align			Block
+	LabelType		static
+	LabelString		"Abstract"
+	LabelSep		M
+	LabelBottomSep		0
+	Font
+	  Size			Small
+	EndFont
+	LabelFont
+	  Family		Sans
+	  Series		Bold
+	  Size			Small
 	EndFont
 End
 
 
 Style Keywords
-	Margin                First_Dynamic
-	LatexType             Command
-	LatexName             keywords
-	InTitle               1
-	NextNoIndent          1
-	LeftMargin            MMM
-	RightMargin           MMM
-	ParIndent             ""
-	ItemSep               0
-	TopSep                1.2
-	BottomSep             0.7
-	ParSep                0
-	Align                 Block
-	LabelType             static
-	LabelString           "Key words."
-	LabelSep              M
-	LabelBottomSep        0
+	Margin			First_Dynamic
+	LatexType		Command
+	LatexName		keywords
+	InTitle			1
+	NextNoIndent		1
+	LeftMargin		MMM
+	RightMargin		MMM
+	ParIndent		""
+	ItemSep			0
+	TopSep			1.2
+	BottomSep		0.7
+	ParSep			0
+	Align			Block
+	LabelType		static
+	LabelString		"Key words."
+	LabelSep		M
+	LabelBottomSep		0
 	Font
-	  Size                Small
+	  Size			Small
 	EndFont
 	LabelFont
-	  Family              Sans
-	  Series              Bold
-	  Size                Small
+	  Family		Sans
+	  Series		Bold
+	  Size			Small
 	EndFont
 End
 
 
 Style Bibliography
-	Align                 Left
+	Align			Left
 	LabelFont
-	  Series              Bold
+	  Series		Bold
 	EndFont
 End
 
 
 InsetLayout CharStyle:Institute
-  LyXType          charstyle
-  LatexType        command
-  LatexName        inst
+  LyXType			charstyle
+  LatexType			command
+  LatexName			inst
   Font
-    Color          blue
+    Color			blue
   EndFont
 End
 
 
 InsetLayout CharStyle:E-Mail
-  LyXType          charstyle
-  LatexType        command
-  LatexName        email
+  LyXType			charstyle
+  LatexType			command
+  LatexName			email
   Font
-    Family         Typewriter
-    Color          blue
+    Family			Typewriter
+    Color			blue
   EndFont
 End
+
+
+InsetLayout Email
+	LyxType			custom
+	LatexType		command
+	LatexName		email
+	LabelString		"email"
+	Font
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
+	EndFont
+	LabelFont
+	  Color			urllabel
+	  Size			Small
+	EndFont
+	MultiPar		true
+End
+

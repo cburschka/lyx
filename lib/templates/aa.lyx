@@ -1,8 +1,10 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+#LyX 1.6.0rc5 created this file. For more info see http://www.lyx.org/
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass aa
+\options structabstract
+\use_default_options false
 \language english
 \inputencoding auto
 \font_roman times
@@ -50,9 +52,9 @@ your subtitle
 \end_layout
 
 \begin_layout Author
-Me
-\begin_inset Flex CharStyle:Institute
-status collapsed
+first author
+\begin_inset Flex institutemark
+status open
 
 \begin_layout Plain Layout
 1
@@ -73,8 +75,8 @@ and
 
 \end_inset
 
-You
-\begin_inset Flex CharStyle:Institute
+second author
+\begin_inset Flex institutemark
 status collapsed
 
 \begin_layout Plain Layout
@@ -87,16 +89,16 @@ status collapsed
 \end_layout
 
 \begin_layout Address
-Here 
+Address of first author 
 \begin_inset Newline newline
 \end_inset
 
 
-\begin_inset Flex CharStyle:E-Mail
-status collapsed
+\begin_inset Flex Email
+status open
 
 \begin_layout Plain Layout
-myaddress
+email of first author
 \end_layout
 
 \end_inset
@@ -109,21 +111,21 @@ status collapsed
 
 
 \backslash
-and
+and 
 \end_layout
 
 \end_inset
 
- There
+Address of second author
 \begin_inset Newline newline
 \end_inset
 
 
-\begin_inset Flex CharStyle:E-Mail
+\begin_inset Flex Email
 status collapsed
 
 \begin_layout Plain Layout
-youraddress
+email of second author
 \end_layout
 
 \end_inset
@@ -144,17 +146,9 @@ Received ...; Accepted...
 status open
 
 \begin_layout Plain Layout
-This template uses the new 
-\begin_inset Quotes eld
-\end_inset
-
-Structured Abstract
-\begin_inset Quotes erd
-\end_inset
-
- approach that is implemented and recommended as of A&A version 6.0.
+This template uses the structured abstract style.
  If you want to use the traditional, unstructured abstract, you have to
- insert the 
+ add 
 \begin_inset Quotes eld
 \end_inset
 
@@ -162,12 +156,12 @@ traditabstract
 \begin_inset Quotes erd
 \end_inset
 
- document option into 
+ to the document options in 
 \family sans
 Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
 Document Class\SpecialChar \menuseparator
- Options
+Options
 \family default
  and remove the red braces (
 \begin_inset ERT
@@ -181,6 +175,11 @@ status collapsed
 \end_inset
 
 ).
+ See the 
+\family sans
+aa_sample.lyx
+\family default
+ example file that comes with LyX.
 \end_layout
 
 \end_inset

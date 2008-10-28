@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0rc5 created this file. For more info see http://www.lyx.org/
 \lyxformat 344
 \begin_document
 \begin_header
@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 %
 \end_preamble
+\options traditabstract
 \use_default_options false
 \language english
 \inputencoding auto
@@ -46,6 +47,24 @@
 
 \begin_body
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Depending on the submission state and the abstract layout, you need to use
+ different document class options that are listed in the aa manual 
+\family sans
+aadoc.pdf
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Title
 Hydrodynamics of giant planet formation
 \end_layout
@@ -61,28 +80,17 @@ I.
 
 \begin_layout Author
 G.
- Wuchterl 
-\begin_inset ERT
-status collapsed
+ Wuchterl
+\begin_inset Flex institutemark
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-inst{1} 
-\backslash
-and
-\end_layout
-
-\begin_layout Plain Layout
-
-          
+1
 \end_layout
 
 \end_inset
 
-C.
- Ptolemy
+
 \begin_inset ERT
 status collapsed
 
@@ -90,9 +98,31 @@ status collapsed
 
 
 \backslash
-inst{2}
+and 
+\end_layout
+
+\end_inset
+
+ C.
+ Ptolemy
+\begin_inset Flex institutemark
+status collapsed
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
 \backslash
-fnmsep
+fnmsep 
 \end_layout
 
 \end_inset
@@ -108,6 +138,18 @@ Just to show the usage of the elements in the author field
 \end_inset
 
  
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+fnmsep is only needed for more than one consecutive notes/marks
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Offprint
@@ -122,6 +164,16 @@ Institute for Astronomy (IfA), University of Vienna, Türkenschanzstrasse
 \end_inset
 
 
+\begin_inset Flex Email
+status open
+
+\begin_layout Plain Layout
+wuchterl@amok.ast.univie.ac.at
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -129,13 +181,7 @@ status collapsed
 
 
 \backslash
-email{wuchterl@amok.ast.univie.ac.at} 
-\backslash
-and
-\end_layout
-
-\begin_layout Plain Layout
-
+and 
 \end_layout
 
 \end_inset
@@ -145,19 +191,16 @@ University of Alexandria, Department of Geography, ...
 \end_inset
 
 
-\begin_inset ERT
+\begin_inset Flex Email
 status collapsed
 
 \begin_layout Plain Layout
-
-
-\backslash
-email{c.ptolemy@hipparch.uheaven.space}
+c.ptolemy@hipparch.uheaven.space
 \end_layout
 
 \end_inset
 
- 
+
 \begin_inset Foot
 status collapsed
 
@@ -177,22 +220,8 @@ Received September 15, 1996; accepted March 16, 1997
 \begin_layout Abstract
 To investigate the physical nature of the `nuc\SpecialChar \-
 leated instability' of proto
- giant planets (Mizuno 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "mizuno"
-
-\end_inset
-
-), the stability of layers in static, radiative gas spheres is analysed
- on the basis of Baker's 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "baker"
-
-\end_inset
-
- standard one-zone model.
+ giant planets, the stability of layers in static, radiative gas spheres
+ is analysed on the basis of Baker's standard one-zone model.
  It is shown that stability depends only upon the equations of state, the
  opacities and the local thermodynamic state in the layer.
  Stability and instability can therefore be expressed in the form of stability
@@ -235,25 +264,39 @@ key "baker"
 \end_inset
 
 -mechanism is widespread under `cool' conditions.
-\begin_inset ERT
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-keywords{giant planet formation -- 
-\backslash
-(
-\backslash
-kappa
-\backslash
-)-mechanism -- stability of gas spheres }
+Citations are not allowed in A&A abstracts.
 \end_layout
 
 \end_inset
 
- 
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This is the unstructured abstract type, an example for the structured abstract
+ is in the 
+\family sans
+aa.lyx
+\family default
+ template file that comes with LyX.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Keywords
+giant planet formation -- 
+\begin_inset Formula $\kappa$
+\end_inset
+
+-mechanism -- stability of gas spheres
 \end_layout
 
 \begin_layout Section
@@ -1074,7 +1117,24 @@ schaft, DFG
 \end_inset
 
 17/2--1.
- 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+You can alternatively use BibTeX.
+ You must then use the BibTeX style 
+\family sans
+aa.bst
+\family default
+ that is part of the A&A LaTeX-package.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
