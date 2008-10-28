@@ -97,10 +97,7 @@ BoxTranslatorLoc const & boxtranslator_loc()
 
 InsetBox::InsetBox(Buffer const & buffer, string const & label)
 	: InsetCollapsable(buffer), params_(label)
-{
-	if (forcePlainLayout())
-		paragraphs().back().setLayout(buffer.params().documentClass().plainLayout());
-}
+{}
 
 
 InsetBox::~InsetBox()

@@ -32,7 +32,10 @@ namespace frontend { class Painter; }
 */
 class InsetCollapsable : public InsetText {
 public:
-	///
+	///	By default, InsetCollapsable uses the plain layout. If you 
+	/// want to override this in a subclass, you'll need to call 
+	/// Paragraph::setDefaultLayout() in its constructor. See
+	/// InsetBranch for an example.
 	InsetCollapsable(Buffer const &);
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);

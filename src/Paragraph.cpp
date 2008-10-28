@@ -2457,12 +2457,24 @@ void Paragraph::setLayout(Layout const & layout)
 }
 
 
+void Paragraph::setDefaultLayout(DocumentClass const & tc)
+{ 
+	setLayout(tc.defaultLayout()); 
+}
+
+
+void Paragraph::setPlainLayout(DocumentClass const & tc)
+{ 
+	setLayout(tc.plainLayout()); 
+}
+
+
 void Paragraph::setPlainOrDefaultLayout(DocumentClass const & tclass)
 {
 	if (usePlainLayout())
-		setLayout(tclass.plainLayout());
+		setPlainLayout(tclass);
 	else
-		setLayout(tclass.defaultLayout());
+		setDefaultLayout(tclass);
 }
 
 

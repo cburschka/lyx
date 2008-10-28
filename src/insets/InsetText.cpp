@@ -105,7 +105,7 @@ void InsetText::initParagraphs()
 	paragraphs().push_back(Paragraph());
 	Paragraph & ourpar = paragraphs().back();
 	ourpar.setInsetOwner(this);
-	ourpar.setPlainOrDefaultLayout(buffer_->params().documentClass());
+	ourpar.setDefaultLayout(buffer_->params().documentClass());
 }
 
 

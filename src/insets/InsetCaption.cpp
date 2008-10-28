@@ -53,8 +53,8 @@ InsetCaption::InsetCaption(Buffer const & buf)
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_captionframe);
-	// There will always be only one
-	paragraphs().back().setLayout(buf.params().documentClass().plainLayout());
+	// caption insets should use the plain layout
+	paragraphs().back().setPlainLayout(buf.params().documentClass());
 }
 
 

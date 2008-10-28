@@ -179,6 +179,10 @@ public:
 	void setLayout(Layout const & layout);
 	///
 	void setPlainOrDefaultLayout(DocumentClass const & tc);
+	///
+	void setDefaultLayout(DocumentClass const & tc);
+	///
+	void setPlainLayout(DocumentClass const & tc);
 
 	/// This is the item depth, only used by enumerate and itemize
 	signed char itemdepth;
