@@ -1,9 +1,8 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass[aastex]{article (AASTeX)}
 #
-# Authors:
-#  Mike Ressler <mike.ressler@alum.mit.edu>
-#  Uwe Stöhr <uwestoehr@web.de>
+# Author: Mike Ressler <mike.ressler@alum.mit.edu>
+# Author: Uwe Stöhr <uwestoehr@web.de>
 #
 # Disclaimer: Though I am an astronomer at the Jet Propulsion Laboratory, this
 # package was prepared on my own time on my own machine. Neither the United
@@ -14,24 +13,24 @@
 # license which is found in the file COPYING in the root directory of the LyX
 # distribution.
 #
-# Version 0.0   5/27/99 - Initial submission, basic LaTeX equivalents
-# Version 0.1   6/04/99 - Most everything in sections 2.1-2.11 of AASTeX guide
-#                         works. References work with some ERT. Regular tables
-#                         (2.14) okay, deluxetable will never be supported.
-#                         Figures (2.13) not even attempted yet. Misc (2.15)
-#                         partially supported, but much will remain ERT.
-#                         Style options (section 3) can be typed into Extra
-#                         Document options.
-#                         Much cleaning of this file needs to be done.
-# Version 1.0   6/09/99 - Implemented remaining commands as well as possible.
-#                         There is little more I can do unless LyX source code
-#                         is changed. (Not by me!) Documentation, template, and
-#                         example files are available.
-# Version 1.1   7/25/99 - Changed \url to take advantage of new layout option.
-# Version 1.2   4/18/02 - Updated for natbib in 1.2.0
-# Version 1.3   5/7/04  - Updated for AASTeX 5.2
-# Version 1.4   26-10-2008  - new custom insets for \altaffilmark, \tablenotemark
-#                           - new environments for \altaffiltext and \tablenotetext
+# Version 0.0   5/27/99  - Initial submission, basic LaTeX equivalents
+# Version 0.1   6/04/99  - Most everything in sections 2.1-2.11 of AASTeX guide
+#                          works. References work with some ERT. Regular tables
+#                          (2.14) okay, deluxetable will never be supported.
+#                          Figures (2.13) not even attempted yet. Misc (2.15)
+#                          partially supported, but much will remain ERT.
+#                          Style options (section 3) can be typed into Extra
+#                          Document options.
+#                          Much cleaning of this file needs to be done.
+# Version 1.0   6/09/99  - Implemented remaining commands as well as possible.
+#                          There is little more I can do unless LyX source code
+#                          is changed. (Not by me!) Documentation, template, and
+#                          example files are available.
+# Version 1.1   7/25/99  - Changed \url to take advantage of new layout option.
+# Version 1.2   4/18/02  - Updated for natbib in 1.2.0
+# Version 1.3   5/7/04   - Updated for AASTeX 5.2
+# Version 1.4   26/10/08 - new custom insets for \altaffilmark, \tablenotemark
+#                        - new environments for \altaffiltext and \tablenotetext
 
 
 Format 11
