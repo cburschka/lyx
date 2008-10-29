@@ -2123,9 +2123,9 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 		d->texrow.newline();
 		if (isDocBook())
 			writeDocBookSource(os, absFileName(), runparams, false);
-		else 
+		else
 			// latex or literate
-			writeLaTeXSource(os, filePath(), runparams, true, true);
+			writeLaTeXSource(os, string(), runparams, true, true);
 	} else {
 		runparams.par_begin = par_begin;
 		runparams.par_end = par_end;
