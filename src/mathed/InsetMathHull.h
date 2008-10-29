@@ -231,8 +231,6 @@ protected:
 	void handleFont2(Cursor & cur, docstring const & arg);
 	///
 	bool previewState(BufferView * bv) const;
-	///
-	void leavePreview(Cursor & cur) const;
 };
 
 
