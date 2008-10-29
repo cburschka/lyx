@@ -242,7 +242,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		// otherwise do a manual metrics call
 		CoordCache & coords = mi.base.bv->coordCache();
 		for (idx_type i = 0; i < nargs(); ++i) {
-			if (!coords.arrays().has(&cell(i))) {
+			if (!coords.getArrays().has(&cell(i))) {
 				Dimension tdim;
 				cell(i).metrics(mi, tdim);
 			}
@@ -354,7 +354,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		   && editing_[pi.base.bv]) {
 		// Macro will be edited in a old-style list mode here:
 		
-		CoordCache & coords = pi.base.bv->coordCache();
+		CoordCache const & coords = pi.base.bv->coordCache();
 		FontInfo const & labelFont = sane_font;
 		
 		// markers and box needs two pixels
@@ -371,8 +371,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 
 		// draw definition
 		definition_.draw(pi, x, y);
-		Dimension defDim
-		= coords.arrays().dim(&definition_);
+		Dimension const & defDim = coords.getArrays().dim(&definition_);
 		y += max(fontDim.des, defDim.des);
 				
 		// draw parameters
@@ -382,8 +381,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		
 		for (idx_type i = 0; i < nargs(); ++i) {
 			// position of label
-			Dimension cdim
-			= coords.arrays().dim(&cell(i));
+			Dimension const & cdim = coords.getArrays().dim(&cell(i));
 			x = expx + 2;
 			y += max(fontDim.asc, cdim.asc) + 1;
 			
