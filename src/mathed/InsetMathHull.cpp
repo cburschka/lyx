@@ -277,10 +277,22 @@ InsetMath::mode_type InsetMathHull::currentMode() const
 }
 
 
+void InsetMathHull::leavePreview(Cursor & cur) const
+{
+	if (!use_preview_)
+		return;
+	use_preview_ = false;
+	Update::flags flags = cur.result().update();
+	if (flags & Update::FitCursor)
+		cur.updateFlags(flags | Update::Force);
+}
+
+
 bool InsetMathHull::idxFirst(Cursor & cur) const
 {
 	cur.idx() = 0;
 	cur.pos() = 0;
+	leavePreview(cur);
 	return true;
 }
 
@@ -289,6 +301,7 @@ bool InsetMathHull::idxLast(Cursor & cur) const
 {
 	cur.idx() = nargs() - 1;
 	cur.pos() = cur.lastpos();
+	leavePreview(cur);
 	return true;
 }
 
