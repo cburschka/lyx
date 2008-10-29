@@ -678,8 +678,6 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 
 void PreviewLoader::Impl::dumpPreamble(odocstream & os) const
 {
-	// Why on earth is Buffer::makeLaTeXFile a non-const method?
-	Buffer & tmp = const_cast<Buffer &>(buffer_);
 	// Dump the preamble only.
 	// We don't need an encoding for runparams since it is not used by
 	// the preamble.
@@ -688,7 +686,7 @@ void PreviewLoader::Impl::dumpPreamble(odocstream & os) const
 	runparams.nice = true;
 	runparams.moving_arg = true;
 	runparams.free_spacing = true;
-	tmp.writeLaTeXSource(os, buffer_.filePath(), runparams, true, false);
+	buffer_.writeLaTeXSource(os, buffer_.filePath(), runparams, true, false);
 
 	// FIXME! This is a HACK! The proper fix is to control the 'true'
 	// passed to WriteStream below:
