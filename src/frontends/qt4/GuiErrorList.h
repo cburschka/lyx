@@ -45,6 +45,8 @@ private:
 	void clearParams() {}
 	///
 	void dispatchParams() {}
+	///
+	bool canApply() const { return true; }
 
 	/// goto this error in the parent bv. Returns success.
 	bool goTo(int item);
