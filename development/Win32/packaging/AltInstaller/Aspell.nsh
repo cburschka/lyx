@@ -15,7 +15,12 @@ Function InstallAspell
    # this assures that every user can have its own word list
    StrCpy $AppSubfolder "Aspell"
    StrCpy $AppFiles "$APPDATA\Aspell\Personal"
-   Call CreateAppPathSub # function from LyXUtils.nsh
+   ${if} $ProductRootKey == "HKLM" # if install for all users
+    Call CreateAppPathSub # function from LyXUtils.nsh
+   ${else}
+    CreateDirectory "$APPDATA\$AppSubfolder"
+    CopyFiles "$AppFiles" "$APPDATA\$AppSubfolder"
+   ${endif}
    
    WriteRegStr HKLM "SOFTWARE\Aspell" "Base Path" "${AspellDir}"
    WriteRegStr HKLM "SOFTWARE\Aspell" "Dictionary Path" "${AspellDictPath}"

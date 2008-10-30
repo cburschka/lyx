@@ -120,18 +120,10 @@ Function ConfigureLyX
    System::Call 'shell32.dll::SHChangeNotify(i, i, i, i) (${SHCNE_ASSOCCHANGED}, ${SHCNF_IDLIST}, 0, 0)'
   ${endif}
 
-  # create the LyX Application Data folder for all users
-  # this folder is automatically created by LyX when it is first started but we want to start LyX with a specific session file,
-  # so we create this folder before LyX starts and copy there the session file
-  StrCpy $AppSubfolder ${PRODUCT_SUBFOLDER}
-  StrCpy $AppFiles "$INSTDIR\Resources\session"
-  Call CreateAppPathSub # function from LyXUtils.nsh
-  Delete "$INSTDIR\Resources\session" # delete the session file in the INSTDIR because it is unneeded there
-  
   # delete unnecessary files
   ${if} $DelPythonFiles == "True"
    Delete $INSTDIR\bin\python.exe
-   Delete $INSTDIR\bin\python25.dll
+   Delete $INSTDIR\bin\python26.dll
    Delete $INSTDIR\bin\Python-License.txt
    RMDir /r $INSTDIR\bin\Lib
    RMDir /r $INSTDIR\bin\DLLs
