@@ -1,8 +1,9 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass agu-dtd
+\use_default_options false
 \language english
 \inputencoding auto
 \font_roman default
@@ -36,6 +37,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -45,7 +47,7 @@
 \end_layout
 
 \begin_layout AGU-journal
-\begin_inset Flex CharStyle:ISSN
+\begin_inset Flex Element:ISSN
 status collapsed
 
 \begin_layout Plain Layout
@@ -55,7 +57,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:CODEN
+\begin_inset Flex Element:CODEN
 status collapsed
 
 \begin_layout Plain Layout
@@ -68,7 +70,7 @@ GGGGFR
 \end_layout
 
 \begin_layout Special-section
-\begin_inset Flex CharStyle:SS-Code
+\begin_inset Flex Element:SS-Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -78,7 +80,7 @@ INPUT1
 \end_inset
 
 
-\begin_inset Flex CharStyle:SS-Title
+\begin_inset Flex Element:SS-Title
 status collapsed
 
 \begin_layout Plain Layout
@@ -91,7 +93,7 @@ Special section for data
 \end_layout
 
 \begin_layout AGU-volume
-\begin_inset Flex CharStyle:Volume
+\begin_inset Flex Element:Volume
 status collapsed
 
 \begin_layout Plain Layout
@@ -101,7 +103,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:Year
+\begin_inset Flex Element:Year
 status collapsed
 
 \begin_layout Plain Layout
@@ -114,7 +116,7 @@ status collapsed
 \end_layout
 
 \begin_layout AGU-issue
-\begin_inset Flex CharStyle:Issue-number
+\begin_inset Flex Element:Issue-number
 status collapsed
 
 \begin_layout Plain Layout
@@ -124,7 +126,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:Issue-day
+\begin_inset Flex Element:Issue-day
 status collapsed
 
 \begin_layout Plain Layout
@@ -134,7 +136,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:Issue-months
+\begin_inset Flex Element:Issue-months
 status collapsed
 
 \begin_layout Plain Layout
@@ -147,7 +149,7 @@ Sep-Oct
 \end_layout
 
 \begin_layout Received
-\begin_inset Flex CharStyle:Day
+\begin_inset Flex Element:Day
 status collapsed
 
 \begin_layout Plain Layout
@@ -157,7 +159,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:Month
+\begin_inset Flex Element:Month
 status collapsed
 
 \begin_layout Plain Layout
@@ -167,7 +169,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:Year
+\begin_inset Flex Element:Year
 status collapsed
 
 \begin_layout Plain Layout
@@ -180,7 +182,7 @@ status collapsed
 \end_layout
 
 \begin_layout Revised
-\begin_inset Flex CharStyle:Day
+\begin_inset Flex Element:Day
 status collapsed
 
 \begin_layout Plain Layout
@@ -190,7 +192,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:Month
+\begin_inset Flex Element:Month
 status collapsed
 
 \begin_layout Plain Layout
@@ -200,7 +202,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:Year
+\begin_inset Flex Element:Year
 status collapsed
 
 \begin_layout Plain Layout
@@ -213,7 +215,7 @@ status collapsed
 \end_layout
 
 \begin_layout Accepted
-\begin_inset Flex CharStyle:Day
+\begin_inset Flex Element:Day
 status collapsed
 
 \begin_layout Plain Layout
@@ -223,7 +225,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:Month
+\begin_inset Flex Element:Month
 status collapsed
 
 \begin_layout Plain Layout
@@ -233,7 +235,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:Year
+\begin_inset Flex Element:Year
 status collapsed
 
 \begin_layout Plain Layout
@@ -270,7 +272,7 @@ status collapsed
 \end_layout
 
 \begin_layout Copyright
-\begin_inset Flex CharStyle:CCC-Code
+\begin_inset Flex Element:CCC-Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -280,7 +282,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:Year
+\begin_inset Flex Element:Year
 status collapsed
 
 \begin_layout Plain Layout
@@ -305,7 +307,7 @@ Vermeer at al.: AGU journal sample file
 \end_layout
 
 \begin_layout Index-term
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Element:Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -315,7 +317,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:Dscr
+\begin_inset Flex Element:Dscr
 status collapsed
 
 \begin_layout Plain Layout
@@ -328,7 +330,7 @@ Geodesy: crustal motion
 \end_layout
 
 \begin_layout Index-term
-\begin_inset Flex CharStyle:Code
+\begin_inset Flex Element:Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -338,7 +340,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:Dscr
+\begin_inset Flex Element:Dscr
 status collapsed
 
 \begin_layout Plain Layout
@@ -351,7 +353,7 @@ status collapsed
 \end_layout
 
 \begin_layout Keywords
-\begin_inset Flex CharStyle:Keyword
+\begin_inset Flex Element:Keyword
 status collapsed
 
 \begin_layout Plain Layout
@@ -361,7 +363,7 @@ Crust
 \end_inset
 
 
-\begin_inset Flex CharStyle:Keyword
+\begin_inset Flex Element:Keyword
 status collapsed
 
 \begin_layout Plain Layout
@@ -402,7 +404,7 @@ another note, no link
 \end_layout
 
 \begin_layout Affiliation
-\begin_inset Flex CharStyle:Orgdiv
+\begin_inset Flex Element:Orgdiv
 status collapsed
 
 \begin_layout Plain Layout
@@ -413,125 +415,12 @@ Dept.
 \end_inset
 
 
-\begin_inset Flex CharStyle:Orgname
+\begin_inset Flex Element:Orgname
 status collapsed
 
 \begin_layout Plain Layout
 Helsinki U.
  Tech
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex CharStyle:Street
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex CharStyle:City
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex CharStyle:State
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex CharStyle:Postcode
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex CharStyle:Country
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Affiliation
-\begin_inset Flex CharStyle:Orgdiv
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex CharStyle:Orgname
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex CharStyle:Street
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex CharStyle:City
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex CharStyle:Postcode
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Flex CharStyle:Country
-status collapsed
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -544,7 +433,7 @@ Title of the article
 \end_layout
 
 \begin_layout Citation
-\begin_inset Flex CharStyle:Abbrev
+\begin_inset Flex Element:Abbrev
 status collapsed
 
 \begin_layout Plain Layout
@@ -556,7 +445,7 @@ J.
 \end_inset
 
 
-\begin_inset Flex CharStyle:Volume
+\begin_inset Flex Element:Volume
 status collapsed
 
 \begin_layout Plain Layout
@@ -566,7 +455,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:Issue-number
+\begin_inset Flex Element:Issue-number
 status collapsed
 
 \begin_layout Plain Layout
@@ -576,7 +465,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:Citation-number
+\begin_inset Flex Element:Citation-number
 status collapsed
 
 \begin_layout Plain Layout
@@ -586,21 +475,11 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:Year
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Date
 \noindent
-\begin_inset Flex CharStyle:Day
+\begin_inset Flex Element:Day
 status collapsed
 
 \begin_layout Plain Layout
@@ -610,7 +489,7 @@ status collapsed
 \end_inset
 
  
-\begin_inset Flex CharStyle:Month
+\begin_inset Flex Element:Month
 status collapsed
 
 \begin_layout Plain Layout
@@ -620,7 +499,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex CharStyle:Year
+\begin_inset Flex Element:Year
 status collapsed
 
 \begin_layout Plain Layout
@@ -634,7 +513,7 @@ status collapsed
 
 \begin_layout Author
 \noindent
-\begin_inset Flex CharStyle:Firstname
+\begin_inset Flex Element:Firstname
 status collapsed
 
 \begin_layout Plain Layout
@@ -644,7 +523,7 @@ Joe
 \end_inset
 
 
-\begin_inset Flex CharStyle:Surname
+\begin_inset Flex Element:Surname
 status collapsed
 
 \begin_layout Plain Layout
