@@ -1,8 +1,9 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass docbook
+\use_default_options false
 \language english
 \inputencoding auto
 \font_roman default
@@ -35,6 +36,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -48,7 +50,7 @@ Date
 \end_layout
 
 \begin_layout Author
-\begin_inset Flex CharStyle:Firstname
+\begin_inset Flex Element:Firstname
 status collapsed
 
 \begin_layout Plain Layout
@@ -58,7 +60,7 @@ Joe
 \end_inset
 
 
-\begin_inset Flex CharStyle:Surname
+\begin_inset Flex Element:Surname
 status collapsed
 
 \begin_layout Plain Layout
