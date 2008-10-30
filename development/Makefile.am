@@ -126,7 +126,6 @@ Win32/packaging/AltInstaller/specials/PDFViewWin/PDFViewWin.exe \
 Win32/packaging/AltInstaller/specials/PDFViewWin/PDFViewWin.res \
 Win32/packaging/AltInstaller/specials/AspellRepositories.txt \
 Win32/packaging/AltInstaller/specials/AspellDictionaryNames.txt \
-Win32/packaging/AltInstaller/specials/preferences \
 Win32/packaging/build_msvs_debug.bat \
 Win32/packaging/build_msvc.bat \
 Win32/packaging/Microsoft.VC90.CRT.manifest \
