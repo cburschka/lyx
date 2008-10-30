@@ -236,7 +236,7 @@ bool askForText(docstring & response, docstring const & msg,
 		QLineEdit::Normal,
 		toqstr(dflt), &ok);
 
-	if (ok && !text.isEmpty()) {
+	if (ok) {
 		response = qstring_to_ucs4(text);
 		return true;
 	}

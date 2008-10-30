@@ -132,12 +132,12 @@ void LyXVC::registrer()
 	docstring response;
 	bool ok = Alert::askForText(response, _("LyX VC: Initial description"),
 			_("(no initial description)"));
-	if (!ok || response.empty()) {
-		// should we insist on checking response.empty()?
+	if (!ok) {
 		LYXERR(Debug::LYXVC, "LyXVC: user cancelled");
 		return;
 	}
-
+	if (response.empty())
+		response = _("(no initial description)");
 	vcs->registrer(to_utf8(response));
 }
 

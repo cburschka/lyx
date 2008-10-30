@@ -54,7 +54,10 @@ void error(docstring const & title, docstring const & message);
  */
 void information(docstring const & title, docstring const & message);
 
-/// Asks for a text. DO NOT USE !!
+/**
+ * Asks for a text. Returns true for OK. Obtained message is in response
+ * (even empty string). dflt stands for default message in the dialog.
+ */
 bool askForText(docstring & response, docstring const & msg,
 	docstring const & dflt = docstring());
 
