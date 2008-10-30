@@ -29,7 +29,6 @@ if os.path.exists(os.path.join(scons_dir, 'development', 'scons', 'scons_manifes
 top_src_dir = os.path.split(os.path.split(scons_absdir)[0])[0]
 
 sys.path.extend([scons_absdir, os.path.join(top_src_dir, 'lib', 'doc')])
-import depend
 
 # scons_utils.py defines a few utility function
 import scons_utils as utils
