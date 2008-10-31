@@ -21,7 +21,7 @@ namespace lyx {
 
 
 /// Represents the correspondence between paragraphs and the generated
-//LaTeX file
+/// LaTeX file
 
 class TexRow {
 public:
