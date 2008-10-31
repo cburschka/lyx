@@ -1913,7 +1913,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 
 	bool return_value = false;
 
-	bool asdefault = forcePlainLayout();
+	bool const asdefault = forcePlainLayout();
 
 	Layout const & style = asdefault ?
 		bparams.documentClass().plainLayout() :
