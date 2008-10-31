@@ -626,9 +626,9 @@ TeXOnePar(Buffer const & buf,
 		// are we about to close the language?
 		((nextpit != paragraphs.end() &&
 		  par_language->babel() !=
-		  	(nextpit->getParLanguage(bparams))->babel()) ||
-		 (nextpit == paragraphs.end() &&
-		  par_language->babel() != outer_language->babel()));
+		    (nextpit->getParLanguage(bparams))->babel()) ||
+		  (nextpit == paragraphs.end() &&
+		    par_language->babel() != outer_language->babel()));
 
 	if (closing_rtl_ltr_environment || (nextpit == paragraphs.end()
 	    && par_language->babel() != outer_language->babel())) {
