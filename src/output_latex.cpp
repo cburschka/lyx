@@ -157,8 +157,7 @@ TeXEnvironment(Buffer const & buf,
 	}
 
 	if (style.isEnvironment()) {
-		// \begin must start on a new line
-		os << "\n\\begin{" << from_ascii(style.latexname()) << '}';
+		os << "\\begin{" << from_ascii(style.latexname()) << '}';
 		if (style.optionalargs > 0) {
 			int ret = latexOptArgInsets(*pit, os, runparams,
 						    style.optionalargs);
