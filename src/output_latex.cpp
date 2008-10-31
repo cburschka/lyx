@@ -82,9 +82,14 @@ TeXDeeper(Buffer const & buf,
 
 	ParagraphList const & paragraphs = text.paragraphs();
 
+	// FIXME This test should not be necessary.
+	// We should perhaps issue an error if it is.
+	Layout const & style = par->forcePlainLayout() ?
+		buf.params().documentClass().plainLayout() : par->layout();
+
 	while (par != paragraphs.end() &&
 		     par->params().depth() == pit->params().depth()) {
-		if (par->layout().isEnvironment()) {
+		if (style.isEnvironment()) {
 			par = TeXEnvironment(buf, text, par,
 					     os, texrow, runparams);
 		} else {
