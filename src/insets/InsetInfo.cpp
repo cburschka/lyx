@@ -288,7 +288,7 @@ void InsetInfo::updateInfo()
 			setText(bindings.rbegin()->print(KeySequence::Portable),
 				Font(getLayout().font()), false);
 		else
-			setText(theTopLevelKeymap().printBindings(func), 
+			setText(theTopLevelKeymap().printBindings(func, KeySequence::Portable), 
 				Font(getLayout().font()), false);
 		break;
 	}

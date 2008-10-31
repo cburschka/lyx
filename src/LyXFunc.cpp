@@ -1706,7 +1706,7 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 		}
 	}
 
-	docstring const shortcuts = theTopLevelKeymap().printBindings(cmd);
+	docstring const shortcuts = theTopLevelKeymap().printBindings(cmd, KeySequence::ForGui);
 
 	if (!shortcuts.empty())
 		comname += ": " + shortcuts;

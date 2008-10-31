@@ -106,7 +106,8 @@ public:
 	Bindings findBindings(FuncRequest const & func) const;
 
 	/// Given an action, print the keybindings.
-	docstring printBindings(FuncRequest const & func) const;
+	docstring printBindings(FuncRequest const & func,
+				KeySequence::outputFormat format) const;
 
 	struct Binding {
 		Binding(FuncRequest const & r, KeySequence const & s, ItemType t)

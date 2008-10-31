@@ -397,7 +397,8 @@ void KeyMap::unbind(KeySequence * seq, FuncRequest const & func, unsigned int r)
 }
 
 
-docstring KeyMap::printBindings(FuncRequest const & func) const
+docstring KeyMap::printBindings(FuncRequest const & func,
+				KeySequence::outputFormat format) const
 {
 	Bindings bindings = findBindings(func);
 	if (bindings.empty())
@@ -406,11 +407,11 @@ docstring KeyMap::printBindings(FuncRequest const & func) const
 	odocstringstream res;
 	Bindings::const_iterator cit = bindings.begin();
 	Bindings::const_iterator cit_end = bindings.end();
-	// prin the first item
-	res << cit->print(KeySequence::ForGui);
+	// print the first item
+	res << cit->print(format);
 	// more than one shortcuts?
 	for (++cit; cit != cit_end; ++cit)
-		res << ", " << cit->print(KeySequence::ForGui);
+		res << ", " << cit->print(format);
 	return res.str();
 }
 
