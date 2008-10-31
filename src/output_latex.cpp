@@ -294,12 +294,10 @@ TeXOnePar(Buffer const & buf,
 	BufferParams const & bparams = buf.params();
 	ParagraphList const & paragraphs = text.paragraphs();
 
-	ParagraphList::const_iterator priorpit = pit;
-	if (priorpit != paragraphs.begin())
-		--priorpit;
-	ParagraphList::const_iterator nextpit = pit;
-	if (nextpit != paragraphs.end())
-		++nextpit;
+	ParagraphList::const_iterator const priorpit = 
+		pit == paragraphs.begin() ? pit : boost::prior(pit);
+	ParagraphList::const_iterator const nextpit = 
+		pit == paragraphs.end() ? pit : boost::next(pit);
 
 	OutputParams runparams = runparams_in;
 	runparams.isLastPar = nextpit == paragraphs.end();
@@ -586,10 +584,9 @@ TeXOnePar(Buffer const & buf,
 	case LATEX_ENVIRONMENT: {
 		// if its the last paragraph of the current environment
 		// skip it otherwise fall through
-		ParagraphList::const_iterator next = nextpit;
-
-		if (next != paragraphs.end() && (next->layout() != pit->layout()
-			|| next->params().depth() != pit->params().depth()))
+		if (nextpit != paragraphs.end() && 
+		    (nextpit->layout() != pit->layout()
+		     || nextpit->params().depth() != pit->params().depth()))
 			break;
 	}
 
