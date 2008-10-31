@@ -109,6 +109,8 @@ TeXEnvironment(Buffer const & buf,
 
 	BufferParams const & bparams = buf.params();
 
+	// FIXME This test should not be necessary.
+	// We should perhaps issue an error if it is.
 	Layout const & style = pit->forcePlainLayout() ?
 		bparams.documentClass().plainLayout() : pit->layout();
 
@@ -312,6 +314,8 @@ TeXOnePar(Buffer const & buf,
 		return nextpit;
 	}
 
+	// FIXME This check should not really be needed.
+	// Perhaps we should issue an error if it is.
 	Layout const style = pit->forcePlainLayout() ?
 		bparams.documentClass().plainLayout() : pit->layout();
 
@@ -553,7 +557,7 @@ TeXOnePar(Buffer const & buf,
 		 ? pit->getLayoutFont(bparams, outerfont)
 		 : pit->getFont(bparams, pit->size() - 1, outerfont);
 
-	bool is_command = style.isCommand();
+	bool const is_command = style.isCommand();
 
 	if (style.resfont.size() != font.fontInfo().size()
 	    && nextpit != paragraphs.end()
@@ -792,6 +796,8 @@ void latexParagraphs(Buffer const & buf,
 	// if only_body
 	while (par != endpar) {
 		lastpar = par;
+		// FIXME This check should not be needed. We should
+		// perhaps issue an error if it is.
 		Layout const & layout = par->forcePlainLayout() ?
 				tclass.plainLayout() :
 				par->layout();

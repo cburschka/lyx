@@ -95,9 +95,6 @@ public:
 	/// write out the parameters to a stream
 	void write(std::ostream & os) const;
 
-	//friend bool operator==(ParameterStruct const & ps1,
-	//ParameterStruct const & ps2);
-
 private:
 	///
 	Spacing spacing_;
