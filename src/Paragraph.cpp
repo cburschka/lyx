@@ -1913,11 +1913,12 @@ bool Paragraph::latex(BufferParams const & bparams,
 
 	bool return_value = false;
 
-	bool const asdefault = forcePlainLayout();
+	bool const allowcust = allowParagraphCustomization();
 
-	Layout const & style = asdefault ?
-		bparams.documentClass().plainLayout() :
-		*d->layout_;
+	// FIXME This check should not be needed. Perhaps issue an
+	// error if it triggers.
+	Layout const & style = forcePlainLayout() ?
+		bparams.documentClass().plainLayout() : *d->layout_;
 
 	// Current base font for all inherited font changes, without any
 	// change caused by an individual character, except for the language:
@@ -1956,7 +1957,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 			os << '{';
 			++column;
 		}
-		if (!asdefault)
+		if (allowcust)
 			column += d->startTeXParParams(bparams, os, texrow,
 						    runparams);
 	}
@@ -1986,7 +1987,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 				++column;
 			}
 
-			if (!asdefault)
+			if (allowcust)
 				column += d->startTeXParParams(bparams, os,
 							    texrow,
 							    runparams);
@@ -2164,7 +2165,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 		return_value = false;
 	}
 
-	if (!asdefault) {
+	if (allowcust) {
 		column += d->endTeXParParams(bparams, os, texrow,
 					  runparams);
 	}
