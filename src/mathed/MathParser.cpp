@@ -653,10 +653,10 @@ bool Parser::parse(MathAtom & at)
 		//	at.nucleus()->cell(0) = ar;
 		//else
 		//	lyxerr << "unusual contents found: " << ar << endl;
-		return false;
-	}
-	at = ar[0];
-	return true;
+		success_ = false;
+	} else
+		at = ar[0];
+	return success_;
 }
 
 
@@ -1125,11 +1125,19 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "(") {
+			if (mode == InsetMath::MATH_MODE) {
+				error("bad math environment");
+				break;
+			}
 			cell->push_back(MathAtom(new InsetMathHull(hullSimple)));
 			parse2(cell->back(), FLAG_SIMPLE2, InsetMath::MATH_MODE, false);
 		}
 
 		else if (t.cs() == "[") {
+			if (mode != InsetMath::UNDECIDED_MODE) {
+				error("bad math environment");
+				break;
+			}
 			cell->push_back(MathAtom(new InsetMathHull(hullEquation)));
 			parse2(cell->back(), FLAG_EQUATION, InsetMath::MATH_MODE, false);
 		}
@@ -1365,32 +1373,56 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 
 			else if (name == "math") {
+				if (mode == InsetMath::MATH_MODE) {
+					error("bad math environment");
+					break;
+				}
 				cell->push_back(MathAtom(new InsetMathHull(hullSimple)));
 				parse2(cell->back(), FLAG_END, InsetMath::MATH_MODE, true);
 			}
 
 			else if (name == "equation" || name == "equation*"
 					|| name == "displaymath") {
+				if (mode != InsetMath::UNDECIDED_MODE) {
+					error("bad math environment");
+					break;
+				}
 				cell->push_back(MathAtom(new InsetMathHull(hullEquation)));
 				parse2(cell->back(), FLAG_END, InsetMath::MATH_MODE, (name == "equation"));
 			}
 
 			else if (name == "eqnarray" || name == "eqnarray*") {
+				if (mode != InsetMath::UNDECIDED_MODE) {
+					error("bad math environment");
+					break;
+				}
 				cell->push_back(MathAtom(new InsetMathHull(hullEqnArray)));
 				parse2(cell->back(), FLAG_END, InsetMath::MATH_MODE, !stared(name));
 			}
 
 			else if (name == "align" || name == "align*") {
+				if (mode != InsetMath::UNDECIDED_MODE) {
+					error("bad math environment");
+					break;
+				}
 				cell->push_back(MathAtom(new InsetMathHull(hullAlign)));
 				parse2(cell->back(), FLAG_END, InsetMath::MATH_MODE, !stared(name));
 			}
 
 			else if (name == "flalign" || name == "flalign*") {
+				if (mode != InsetMath::UNDECIDED_MODE) {
+					error("bad math environment");
+					break;
+				}
 				cell->push_back(MathAtom(new InsetMathHull(hullFlAlign)));
 				parse2(cell->back(), FLAG_END, InsetMath::MATH_MODE, !stared(name));
 			}
 
 			else if (name == "alignat" || name == "alignat*") {
+				if (mode != InsetMath::UNDECIDED_MODE) {
+					error("bad math environment");
+					break;
+				}
 				// ignore this for a while
 				getArg('{', '}');
 				cell->push_back(MathAtom(new InsetMathHull(hullAlignAt)));
@@ -1398,6 +1430,10 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 
 			else if (name == "xalignat" || name == "xalignat*") {
+				if (mode != InsetMath::UNDECIDED_MODE) {
+					error("bad math environment");
+					break;
+				}
 				// ignore this for a while
 				getArg('{', '}');
 				cell->push_back(MathAtom(new InsetMathHull(hullXAlignAt)));
@@ -1405,6 +1441,10 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 
 			else if (name == "xxalignat") {
+				if (mode != InsetMath::UNDECIDED_MODE) {
+					error("bad math environment");
+					break;
+				}
 				// ignore this for a while
 				getArg('{', '}');
 				cell->push_back(MathAtom(new InsetMathHull(hullXXAlignAt)));
@@ -1412,11 +1452,19 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 
 			else if (name == "multline" || name == "multline*") {
+				if (mode != InsetMath::UNDECIDED_MODE) {
+					error("bad math environment");
+					break;
+				}
 				cell->push_back(MathAtom(new InsetMathHull(hullMultline)));
 				parse2(cell->back(), FLAG_END, InsetMath::MATH_MODE, !stared(name));
 			}
 
 			else if (name == "gather" || name == "gather*") {
+				if (mode != InsetMath::UNDECIDED_MODE) {
+					error("bad math environment");
+					break;
+				}
 				cell->push_back(MathAtom(new InsetMathHull(hullGather)));
 				parse2(cell->back(), FLAG_END, InsetMath::MATH_MODE, !stared(name));
 			}

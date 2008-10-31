@@ -113,7 +113,7 @@ public:
 	///
 	void read(Lexer & lex);
 	///
-	void readQuiet(Lexer & lex);
+	bool readQuiet(Lexer & lex);
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///

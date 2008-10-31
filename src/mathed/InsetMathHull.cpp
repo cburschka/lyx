@@ -1585,11 +1585,12 @@ void InsetMathHull::read(Lexer & lex)
 }
 
 
-void InsetMathHull::readQuiet(Lexer & lex)
+bool InsetMathHull::readQuiet(Lexer & lex)
 {
 	MathAtom at;
-	mathed_parse_normal(at, lex, Parse::QUIET);
+	bool result = mathed_parse_normal(at, lex, Parse::QUIET);
 	operator=(*at->asHullInset());
+	return result;
 }
 
 

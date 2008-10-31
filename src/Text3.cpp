@@ -163,13 +163,11 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 			istringstream is(selstr);
 			Lexer lex;
 			lex.setStream(is);
-			formula->readQuiet(lex);
-			if (formula->getType() == hullNone) {
+			if (!formula->readQuiet(lex)) {
 				// No valid formula, let's try with delims
 				is.str("$" + selstr + "$");
 				lex.setStream(is);
-				formula->readQuiet(lex);
-				if (formula->getType() == hullNone) {
+				if (!formula->readQuiet(lex)) {
 					// Still not valid, leave it as is
 					valid = false;
 					delete formula;
