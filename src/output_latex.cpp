@@ -724,8 +724,8 @@ TeXOnePar(Buffer const & buf,
 		runparams_in.encoding = runparams.encoding;
 
 
-	// we don't need it for the last paragraph!!!
-	// Note from JMarc: we will re-add a \n explicitely in
+	// we don't need a newline for the last paragraph!!!
+	// Note from JMarc: we will re-add a \n explicitly in
 	// TeXEnvironment, because it is needed in this case
 	if (nextpit != paragraphs.end()) {
 		Layout const & next_layout = nextpit->layout();
