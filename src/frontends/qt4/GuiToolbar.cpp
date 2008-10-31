@@ -365,8 +365,9 @@ void GuiLayoutBox::setFilter(QString const & s)
 		filterModel_->triggerLayoutChange();
 		
 		if (!s.isEmpty())
-			owner_.message(_("Filtering layouts with \"" + fromqstr(s) + "\". "
-					 "Press ESC to remove filter."));
+			owner_.message(bformat(_("Filtering layouts with \"%1$s\". "
+						 "Press ESC to remove filter."),
+					       qstring_to_ucs4(s)));
 		else
 			owner_.message(_("Enter characters to filter the layout list."));
 	}
