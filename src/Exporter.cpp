@@ -197,7 +197,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		buffer->makeDocBookFile(FileName(filename), runparams);
 	}
 	// LaTeX backend
-	else if (backend_format == format) {
+	else if (!put_in_tempdir) {
 		runparams.nice = true;
 		if (!buffer->makeLaTeXFile(FileName(filename), string(), runparams))
 			return false;
