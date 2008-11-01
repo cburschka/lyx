@@ -2410,9 +2410,10 @@ lib_examples_fr_files = Split('''
 
 
 lib_examples_es_files = Split('''
-    ItemizeBullets.lyx
     ejemplo_con_lyx.lyx
     ejemplo_sin_lyx.lyx
+    ItemizeBullets.lyx
+    multicol.lyx
     splash.lyx
 ''')
 
