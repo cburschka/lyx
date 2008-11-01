@@ -189,6 +189,7 @@ dist_itclipartdoc_DATA = \
 
 jadocdir = $(docdir)/ja
 dist_jadoc_DATA = \
+	ja/Extended.lyx \
 	ja/Intro.lyx \
 	ja/LaTeXConfig.lyx \
 	ja/Shortcuts.lyx \
