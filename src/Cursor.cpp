@@ -507,10 +507,11 @@ bool Cursor::posVisRight(bool skip_inset)
 			new_cur.pos() = right_pos + 1;
 			// set the boundary to true in two situations:
 			if (
-			// 1. if new_pos is now lastpos (which means that we're moving 
-			// right to the end of an LTR chunk which is at the end of an
-			// RTL paragraph);
-				new_cur.pos() == lastpos()
+			// 1. if new_pos is now lastpos, and we're in an RTL paragraph
+			// (this means that we're moving right to the end of an LTR chunk
+			// which is at the end of an RTL paragraph);
+				(new_cur.pos() == lastpos()
+				 && paragraph().isRTL(buffer().params()))
 			// 2. if the position *after* right_pos is RTL (we want to be 
 			// *after* right_pos, not before right_pos + 1!)
 				|| paragraph().getFontSettings(bv().buffer().params(),
@@ -598,10 +599,11 @@ bool Cursor::posVisLeft(bool skip_inset)
 			new_cur.pos() = left_pos + 1;
 			// set the boundary to true in two situations:
 			if (
-			// 1. if new_pos is now lastpos (which means that we're moving left
-			// to the end of an RTL chunk which is at the end of an LTR 
-			// paragraph);
-				new_cur.pos() == lastpos()
+			// 1. if new_pos is now lastpos and we're in an LTR paragraph
+			// (this means that we're moving left to the end of an RTL chunk
+			// which is at the end of an LTR paragraph);
+				(new_cur.pos() == lastpos()
+				 && !paragraph().isRTL(buffer().params()))
 			// 2. if the position *after* left_pos is not RTL (we want to be 
 			// *after* left_pos, not before left_pos + 1!)
 				|| !paragraph().getFontSettings(bv().buffer().params(),
