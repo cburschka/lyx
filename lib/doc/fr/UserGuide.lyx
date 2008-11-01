@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 341
+\lyxformat 344
 \begin_document
 \begin_header
 \textclass scrbook
@@ -52,6 +52,7 @@
 \StandardLayout
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
+\use_default_options false
 \language french
 \inputencoding auto
 \font_roman default
@@ -79,7 +80,6 @@
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
-\pdf_pagebackref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels,pdftex"
 \papersize default
@@ -17292,11 +17292,11 @@ La version actuelle de LyX ne gère pas les cellules multi-lignes.
  Ces derniers sont indispensables pour certaines mise en forme spéciales,
  comme les cellules multi-lignes, ils sont expliqués dans le manuel  
 \emph on
-Options
+Objets
 \begin_inset space ~
 \end_inset
 
-Avancées
+insérés
 \emph default
 .
  Vous pouvez aussi faire tourner la cellule courante ou même tout le tableau
