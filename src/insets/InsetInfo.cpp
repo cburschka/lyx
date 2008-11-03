@@ -285,11 +285,11 @@ void InsetInfo::updateInfo()
 			break;
 		}
 		if (type_ == SHORTCUT_INFO)
-			setText(bindings.rbegin()->print(KeySequence::Portable),
-				Font(getLayout().font()), false);
+			setText(bindings.begin()->print(KeySequence::Portable),
+				Font(inherit_font), false);
 		else
 			setText(theTopLevelKeymap().printBindings(func, KeySequence::Portable), 
-				Font(getLayout().font()), false);
+				Font(inherit_font), false);
 		break;
 	}
 	case LYXRC_INFO: {
