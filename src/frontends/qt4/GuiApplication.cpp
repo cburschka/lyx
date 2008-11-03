@@ -848,7 +848,7 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 			crc = for_each(fname.begin(), fname.end(), crc);
 			createView(crc.checksum());
 			current_view_->openDocument(fname);
-			if (!current_view_->buffer())
+			if (current_view_ && !current_view_->buffer())
 				current_view_->close();
 		} else
 			current_view_->openDocument(to_utf8(cmd.argument()));
