@@ -757,16 +757,16 @@ void Paragraph::Private::latexInset(
 	}
 
 	bool close = false;
-	odocstream::pos_type const len = os.tellp();
+	odocstringstream ods;
 
 	if (inset->forceLTR() 
 	    && running_font.isRightToLeft()
 		// ERT is an exception, it should be output with no decorations at all
 		&& inset->lyxCode() != ERT_CODE) {
 	    	if (running_font.language()->lang() == "farsi")
-			os << "\\beginL{}";
+			ods << "\\beginL{}";
 		else
-			os << "\\L{";
+			ods << "\\L{";
 		close = true;
 	}
 
@@ -785,7 +785,7 @@ void Paragraph::Private::latexInset(
 	if (open_font && inset->noFontChange()) {
 		bool closeLanguage = arabtex
 			|| basefont.isRightToLeft() == running_font.isRightToLeft();
-		unsigned int count = running_font.latexWriteEndChanges(os,
+		unsigned int count = running_font.latexWriteEndChanges(ods,
 			bparams, runparams, basefont, basefont, closeLanguage);
 		column += count;
 		// if any font properties were closed, update the running_font, 
@@ -808,7 +808,7 @@ void Paragraph::Private::latexInset(
 	int tmp;
 
 	try {
-		tmp = inset->latex(os, runparams);
+		tmp = inset->latex(ods, runparams);
 	} catch (EncodingException & e) {
 		// add location information and throw again.
 		e.par_id = id_;
@@ -817,11 +817,13 @@ void Paragraph::Private::latexInset(
 	}
 
 	if (close) {
-    	if (running_font.language()->lang() == "farsi")
-			os << "\\endL{}";
-		else
-			os << '}';
+		if (running_font.language()->lang() == "farsi")
+				ods << "\\endL{}";
+			else
+				ods << '}';
 	}
+
+	os << ods.str();
 
 	if (tmp) {
 		for (int j = 0; j < tmp; ++j)
@@ -830,7 +832,7 @@ void Paragraph::Private::latexInset(
 		texrow.start(owner_->id(), i + 1);
 		column = 0;
 	} else {
-		column += os.tellp() - len;
+		column += ods.str().size();
 	}
 
 	if (owner_->lookupChange(i).type == Change::DELETED)
