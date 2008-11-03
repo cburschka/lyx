@@ -224,6 +224,7 @@
 \bind "C-S-Return"		"newline-insert linebreak"
 \bind "C-S-L"			"specialchar-insert ligature-break"
 \bind "C-space"			"space-insert protected"
+\bind "nobreakspace"		"space-insert protected"
 \bind "C-M-space"		"space-insert normal"
 \bind "S-C-space"		"space-insert thin"
 \bind "M-~S-slash"		"specialchar-insert slash"
