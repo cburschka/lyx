@@ -2050,8 +2050,10 @@ bool Paragraph::latex(BufferParams const & bparams,
 		if (!runparams.verbatim && 
 		    runparams.encoding->package() != Encoding::none &&
 		    font.language()->encoding()->package() != Encoding::none) {
-			pair<bool, int> const enc_switch = switchEncoding(os, bparams,
+			odocstringstream ods;
+			pair<bool, int> const enc_switch = switchEncoding(ods, bparams,
 					runparams, *(font.language()->encoding()));
+			os << ods.str();
 			if (enc_switch.first) {
 				column += enc_switch.second;
 				runparams.encoding = font.language()->encoding();
