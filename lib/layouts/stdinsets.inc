@@ -228,26 +228,7 @@ InsetLayout Box:Shaded
 	MultiPar              true
 End
 
-InsetLayout figure
-	LabelString           Figure
-	LabelFont
-	  Color               collapsable
-	  Size                Small
-	EndFont
-	MultiPar              true
-End
-
-InsetLayout table
-	LabelString           Table
-	LabelFont
-	  Color               collapsable
-	  Size                Small
-	EndFont
-	MultiPar              true
-End
-
-InsetLayout algorithm
-	LabelString           Algorithm
+InsetLayout Float
 	LabelFont
 	  Color               collapsable
 	  Size                Small
