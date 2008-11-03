@@ -135,9 +135,6 @@ What's new
 
 - Fix LaTeX errors in Latvian and Lithuanian documents (bug 5323, bug 5324).
 
-- When exporting a literate document as LaTeX, make sure that the code
-  needed for running LaTeX is not output.
-
 - If "Do not use amsmath" is selected in the document settings, really do 
   not use it (bug 5350).
 
@@ -179,7 +176,7 @@ What's new
 
 - Fix the behaviour of the ErrorList dialog.
 
-- When viewing full LaTeX source, make sure that the code needed for 
+- When viewing full LaTeX source, make sure that the code needed for
   running LaTeX  is not added.
 
 
