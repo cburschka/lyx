@@ -694,25 +694,9 @@ docstring const KeySymbol::print(KeyModifier mod, bool forgui) const
 		tmpkey += Qt::AltModifier;
 
 	QKeySequence seq(tmpkey);
-	QString str;
-	
-	if (forgui)
-		str = seq.toString(QKeySequence::NativeText);
-	else {
-#ifdef Q_WS_MACX
-		// Qt/Mac does not use Command and friends in the
-		// portable case, but the windows-like Control+x (bug 5421).
-		str = seq.toString(QKeySequence::NativeText);
-		str.replace(QChar(0x21E7), qt_("Shift-"));
-		str.replace(QChar(0x2303), qt_("Control-"));
-		str.replace(QChar(0x2325), qt_("Option-"));
-		str.replace(QChar(0x2318), qt_("Command-"));
-#else
-		str = seq.toString(QKeySequence::PortableText);	
-#endif
-	}
 
-	return qstring_to_ucs4(str);
+	return qstring_to_ucs4(seq.toString(forgui ? QKeySequence::NativeText
+					    : QKeySequence::PortableText));
 }
 
 

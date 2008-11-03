@@ -127,12 +127,6 @@ InsetFloat::~InsetFloat()
 }
 
 
-docstring InsetFloat::name() const 
-{ 
-	return "Float:" + name_; 
-}
-
-
 docstring InsetFloat::toolTip(BufferView const & bv, int x, int y) const
 {
 	if (InsetCollapsable::toolTip(bv, x, y).empty() || isOpen())
