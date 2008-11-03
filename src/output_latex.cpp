@@ -724,9 +724,17 @@ TeXOnePar(Buffer const & buf,
 	// Note from JMarc: we will re-add a \n explicitly in
 	// TeXEnvironment, because it is needed in this case
 	if (nextpit != paragraphs.end()) {
+		// FIXME What we really want to do here is output a newline only if
+		// we have not just output a newline. But in the present state of play,
+		// we don't have access to that information. For some ideas about how
+		// to fix this, see this thread:
+		// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg145787.html
 		Layout const & next_layout = nextpit->layout();
-		// no blank lines before environments!
-		if (!next_layout.isEnvironment() || style == next_layout) {
+		if (style == next_layout 
+	      // no blank lines before environments!
+		    || !next_layout.isEnvironment() 
+		    // unless there's a depth change
+		    || nextpit->params().depth() != pit->params().depth()) {
 			os << '\n';
 			texrow.newline();
 		}
