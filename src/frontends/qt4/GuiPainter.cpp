@@ -405,6 +405,10 @@ int GuiPainter::text(int x, int y, docstring const & s,
 			//LYXERR(Debug::PAINTING, "h=" << h << "  mA=" << mA << "  mD=" << mD
 			//	<< "  w=" << w << "  lb=" << lb << "  tw=" << textwidth
 			//	<< "  rb=" << rb);
+
+			// Draw the new cached pixmap.
+			drawPixmap(x + lb, y - mA, pm);
+
 			return textwidth;
 		}
 	}
