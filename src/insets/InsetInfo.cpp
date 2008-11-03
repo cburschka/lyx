@@ -112,10 +112,8 @@ docstring InsetInfo::name() const
 
 docstring InsetInfo::toolTip(BufferView const &, int, int) const
 {
-	odocstringstream os;
-	os << _("Information regarding ")
-	   << _(infoType()) << " " << from_utf8(name_);
-	return os.str();
+	return bformat(_("Information regarding %1$s '%2$s'"),
+			_(infoType()), from_utf8(name_));
 }
 
 
