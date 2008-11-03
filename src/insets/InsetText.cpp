@@ -504,7 +504,7 @@ void InsetText::addToToc(DocIterator const & cdit)
 					*static_cast<InsetOptArg&>(inset).paragraphs().begin();
 				if (!par.labelString().empty())
 					tocstring = par.labelString() + ' ';
-				tocstring += insetpar.asString();
+				tocstring += insetpar.asString(AS_STR_INSETS);
 				break;
 			}
 			default:
@@ -517,7 +517,7 @@ void InsetText::addToToc(DocIterator const & cdit)
 			dit.pos() = 0;
 			// insert this into the table of contents
 			if (tocstring.empty())
-				tocstring = par.asString(AS_STR_LABEL);
+				tocstring = par.asString(AS_STR_LABEL | AS_STR_INSETS);
 			toc.push_back(TocItem(dit, toclevel - min_toclevel, tocstring));
 		}
 		
