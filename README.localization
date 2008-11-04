@@ -103,12 +103,7 @@ files run make update-po.
 
 7) HOW TO CONTRIBUTE MY WORK?
 
-You can manually use diff utility to make patch; usually the most comfortable
-way is to run something like (after you edit xx.po):
-
-	svn diff xx.po > xx.po.patch
-
-This file should be sent to po-updates@lyx.org.
+Send your edited xx.po file to po-updates@lyx.org.
 
 Also you can check http://www.lyx.org/trac/browser/lyx-devel/trunk to track
 changes or watch updates.
