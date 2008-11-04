@@ -62,6 +62,7 @@ What's new
 - Configure automatically a converter to LaTeX (pdflatex) when noweave is
   present.
 
+
 * USER INTERFACE
 
 - The nomenclature insets now indicate their content (bug 5183).
@@ -180,7 +181,7 @@ What's new
 - Fix the behaviour of the ErrorList dialog.
 
 - When viewing full LaTeX source, make sure that the code needed for
-  running LaTeX  is not added.
+  running LaTeX is not added.
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -198,4 +199,4 @@ What's new
 
 - Fix the building on Mac OS X 10.5 of a binary compatible with OS X 10.4.
 
-- Fix bug where config.status fails to run after using --with-verion-suffix.
+- Fix bug where config.status fails to run after using --with-version-suffix.
