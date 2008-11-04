@@ -202,6 +202,7 @@ docstring getModuleDescription(string const & modName)
 	LyXModule const * const mod = moduleList[modName];
 	if (!mod)
 		return _("Module not found!");
+	// FIXME Unicode
 	return translateIfPossible(from_utf8(mod->getDescription()));
 }
 
@@ -2309,6 +2310,7 @@ list<GuiDocument::modInfoStruct> const
 		m.id = *it;
 		LyXModule * mod = moduleList[*it];
 		if (mod)
+			// FIXME Unicode
 			m.name = toqstr(translateIfPossible(from_utf8(mod->getName())));
 		else 
 			m.name = toqstr(*it) + toqstr(" (") + qt_("Not Found") + toqstr(")");
@@ -2464,9 +2466,12 @@ void GuiDocument::loadModuleInfo()
 	for (; it != end; ++it) {
 		modInfoStruct m;
 		m.id = it->getID();
+		// FIXME Unicode
 		m.name = toqstr(translateIfPossible(from_utf8(it->getName())));
 		// this is supposed to give us the first sentence of the description
-		QString desc = toqstr(translateIfPossible(from_utf8(it->getDescription())));
+		// FIXME Unicode
+		QString desc =
+			toqstr(translateIfPossible(from_utf8(it->getDescription())));
 		int const pos = desc.indexOf(".");
 		if (pos > 0)
 			desc.truncate(pos + 1);
