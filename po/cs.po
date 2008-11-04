@@ -1,6 +1,6 @@
 # Czech translation of LyX
-# Copyright (C) 2006 LyX Developers
-# Pavel Sanda <sanda@lyx.org>, 2008.
+# Copyright (C) 2008 LyX Developers
+# Pavel Sanda <sanda@lyx.org>, 2006-2008.
 #
 msgid ""
 msgstr ""
@@ -913,7 +913,7 @@ msgstr "Parametry pro LaTe&X a LyX"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:154
 msgid "LaTeX Options"
-msgstr "Parametry pro LaTe&X:"
+msgstr "Parametry pro LaTeX"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:172
 msgid "O&ption:"
@@ -1419,7 +1419,7 @@ msgstr "Odkaz na soubor"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:66
 msgid "&File"
-msgstr "&Soubor:"
+msgstr "&Soubor"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:76
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90 lib/layouts/scrlttr2.layout:205
@@ -1530,7 +1530,7 @@ msgstr "Jméno informace:"
 
 #: src/frontends/qt4/ui/InfoUi.ui:64
 msgid "&New"
-msgstr "&Nová:"
+msgstr "&Nová"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:19
 msgid "Document &class"
@@ -1566,7 +1566,7 @@ msgstr "Pøed&definováno:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:96
 msgid "Cust&om:"
-msgstr "V&lastní"
+msgstr "V&lastní:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:112
 msgid "&Postscript driver:"
@@ -1591,7 +1591,7 @@ msgstr "Jméno implicitního hlavního dokumentu"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:25
 msgid "Encoding"
-msgstr "Kódování:"
+msgstr "Kódování"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:40
 msgid "Language &Default"
@@ -1962,7 +1962,7 @@ msgstr "Èí&slování"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:28
 msgid "&Use hyperref support"
-msgstr "Pou¾ít balíèek hyperref"
+msgstr "Po&u¾ít balíèek hyperref"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:53
 msgid "&General"
@@ -2034,9 +2034,9 @@ msgstr "Bibliografické zpìtné reference"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:252
 msgid "B&ackreferences:"
-msgstr "Zpìtné reference"
+msgstr "Zpì&tné reference:"
 
-#: src/frontends/qt4/ui/PDFSupportUi.ui:281
+#: src/frontends/qt6/ui/PDFSupportUi.ui:281
 msgid "&Bookmarks"
 msgstr "&Zálo¾ky"
 
@@ -2058,7 +2058,7 @@ msgstr "Rozbalit zálo¾&ky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:388
 msgid "Additional o&ptions"
-msgstr "&Doplòkové parametry pro LaTeX:"
+msgstr "&Doplòkové parametry pro LaTeX"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:415
 msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
@@ -2393,7 +2393,7 @@ msgstr "&Omezit ¹íøku textu"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:143
 msgid "Screen us&ed (pixels):"
-msgstr "©íøka v pixelech:"
+msgstr "©íøka v pi&xelech:"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:169
 msgid "Hide tabba&r"
@@ -2733,7 +2733,7 @@ msgstr "©ablony &dokumentu:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:65
 msgid "&Example files:"
-msgstr "Dokumenty s pøíklady:"
+msgstr "Dokumenty s pøík&lady:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:88
 msgid "&Backup directory:"
@@ -2833,7 +2833,7 @@ msgstr "Na ¹íø&ku:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:182
 msgid "Number of Co&pies:"
-msgstr "Poèet kopií:"
+msgstr "Poèet kop&ií:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:192
 msgid "Option used to set number of copies."
@@ -3066,7 +3066,7 @@ msgstr "minut"
 
 #: src/frontends/qt4/ui/PrefUi.ui:168
 msgid "B&ackup documents, every"
-msgstr "Zá&lohovat dokumenty, ka¾dých "
+msgstr "Zá&lohovat dokumenty, ka¾dých"
 
 #: src/frontends/qt4/ui/PrefUi.ui:175
 msgid "Open documents in &tabs"
@@ -3283,7 +3283,7 @@ msgstr "&Pøíkaz:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:13
 msgid "Edit shortcut"
-msgstr "Editovat &zkratku"
+msgstr "Editovat zkratku"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:77
 msgid "Enter LyX function or command sequence"
@@ -3853,7 +3853,7 @@ msgstr "pou¾it pøesah"
 
 #: src/frontends/qt4/ui/WrapUi.ui:225
 msgid "Over&hang:"
-msgstr "Pøesa&h"
+msgstr "Pøesa&h:"
 
 #: src/frontends/qt4/ui/WrapUi.ui:246
 msgid "Overhang value"
@@ -10591,7 +10591,7 @@ msgstr "Zmìnit první povinný parametr na volitelný"
 #: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:220
 #: lib/ui/stdtoolbars.inc:174
 msgid "Make Last Optional into Non-Optional Parameter"
-msgstr "Zmìnit poslední volitelný parametr na povinný "
+msgstr "Zmìnit poslední volitelný parametr na povinný"
 
 #: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:221
 #: lib/ui/stdtoolbars.inc:177
