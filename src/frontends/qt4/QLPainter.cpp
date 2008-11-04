@@ -307,33 +307,23 @@ int QLPainter::text(int x, int y, docstring const & s,
 		return textwidth;
 	}
 
-	if (!use_pixmap_cache_) {
-		// don't use the pixmap cache,
-		// draw directly onto the painting device
-		setQPainterPen(f.realColor());
-		if (font() != fi.font)
-			setFont(fi.font);
-		// We need to draw the text as LTR as we use our own bidi code.
-		setLayoutDirection(Qt::LeftToRight);
-		// We need to draw the text as LTR as we use our own bidi code.
-		setLayoutDirection(Qt::LeftToRight);
-		drawText(x, y, str);
-		//LYXERR(Debug::PAINTING) << "draw " << std::string(str.toUtf8())
-		//	<< " at " << x << "," << y << std::endl;
-		return textwidth;
-	}
+	if (use_pixmap_cache_) {
+		QPixmap pm;
+		QString key = generateStringSignature(str, f);
+		// Warning: Left bearing is in general negative! Only the case
+		// where left bearing is negative is of interest WRT the the 
+		// pixmap width and the text x-position.
+		// Only the left bearing of the first character is important
+		// as we always write from left to right, even for
+		// right-to-left languages.
+		int const lb = std::min(fi.metrics->lbearing(s[0]), 0);
+		int const mA = fi.metrics->maxAscent();
+		if (QPixmapCache::find(key, pm)) {
+                        // Draw the cached pixmap.
+			drawPixmap(x + lb, y - mA, pm);
+			return textwidth;
+		}
 
-	QPixmap pm;
-	QString key = generateStringSignature(str, f);
-	// Warning: Left bearing is in general negative! Only the case
-	// where left bearing is negative is of interest WRT the the 
-	// pixmap width and the text x-position.
-	// Only the left bearing of the first character is important
-	// as we always write from left to right, even for
-	// right-to-left languages.
-	int const lb = std::min(fi.metrics->lbearing(s[0]), 0);
-	int const mA = fi.metrics->maxAscent();
-	if (!QPixmapCache::find(key, pm)) {
 		// Only the right bearing of the last character is
 		// important as we always write from left to right,
 		// even for right-to-left languages.
@@ -341,25 +331,38 @@ int QLPainter::text(int x, int y, docstring const & s,
 		int const w = textwidth + rb - lb;
 		int const mD = fi.metrics->maxDescent();
 		int const h = mA + mD;
-		pm = QPixmap(w, h);
-		pm.fill(Qt::transparent);
-		QLPainter p(&pm);
-		p.setQPainterPen(f.realColor());
-		if (p.font() != fi.font)
-			p.setFont(fi.font);
-		// We need to draw the text as LTR as we use our own bidi code.
-		p.setLayoutDirection(Qt::LeftToRight);
-		p.drawText(-lb, mA, str);
-		QPixmapCache::insert(key, pm);
-		/*
-		LYXERR(Debug::PAINTING) << "h=" << h << "  mA=" << mA << "  mD=" << mD
-			<< "  w=" << w << "  lb=" << lb << "  tw=" << textwidth 
-			<< "  rb=" << rb << endl;
-		*/
+		if (w > 0 && h > 0) {
+			pm = QPixmap(w, h);
+			pm.fill(Qt::transparent);
+			QLPainter p(&pm);
+			p.setQPainterPen(f.realColor());
+			if (p.font() != fi.font)
+				p.setFont(fi.font);
+			// We need to draw the text as LTR as we use our own bidi code.
+			p.setLayoutDirection(Qt::LeftToRight);
+			p.drawText(-lb, mA, str);
+			QPixmapCache::insert(key, pm);
+			/*
+			LYXERR(Debug::PAINTING) << "h=" << h << "  mA=" << mA << "  mD=" << mD
+				<< "  w=" << w << "  lb=" << lb << "  tw=" << textwidth
+				<< "  rb=" << rb << endl;
+			*/
+			// Draw the new cached pixmap.
+			drawPixmap(x + lb, y - mA, pm);
+			return textwidth;
+		}
 	}
-	// Draw the cached pixmap.
-	drawPixmap(x + lb, y - mA, pm);
 
+	// don't use the pixmap cache,
+	// draw directly onto the painting device
+	setQPainterPen(f.realColor());
+	if (font() != fi.font)
+		setFont(fi.font);
+	// We need to draw the text as LTR as we use our own bidi code.
+	QPainter::setLayoutDirection(Qt::LeftToRight);
+	drawText(x, y, str);
+	//LYXERR(Debug::PAINTING) << "draw " << std::string(str.toUtf8())
+	//	<< " at " << x << "," << y << std::endl;
 	return textwidth;
 }
 

@@ -154,6 +154,9 @@ What's new
 - Fix the input behaviour when multiple cells of a table were selected,
   including a possible assertion (bug 5225).
 
+- Fix a crash on the Mac when using the pixmap cache with combining
+  characters (bug 5327).
+
 - Empty lines are correctly removed when the cursor moves due to the
   "cursor follows scrollbar" feature (bug 5065).
 
