@@ -77,7 +77,7 @@ bool LyXModule::isCompatible(string const & modName) const
 
 	// does it exclude us?
 	vector<string> const excMods = lm->getExcludedModules();
-	if (find(excMods.begin(), excMods.end(), name) != excMods.end())
+	if (find(excMods.begin(), excMods.end(), id) != excMods.end())
 		return false;
 
 	return true;
