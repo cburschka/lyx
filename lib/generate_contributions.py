@@ -1512,6 +1512,15 @@ contributers = [
                  "22 October 2008",
                  u"XY-pic manual"),
 
+     contributer(u"İbrahim Güngör",
+                 "h.ibrahim.gungor () gmail ! com",
+                 "GPL",
+                 "Update Turkish Translation",
+                 "m=122583550732670",
+                 "4 Nov 2008",
+                 u"Turkish translation"),
+
+
      contributer(u"Xiaokun Zhu",
                  "xiaokun () aero ! gla ! ac ! uk",
                  "",
