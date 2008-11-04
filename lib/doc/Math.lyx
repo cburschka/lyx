@@ -1,4 +1,4 @@
-#LyX 1.6.0rc5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 344
 \begin_document
 \begin_header
@@ -908,9 +908,11 @@ always
 
 \begin_layout Standard
 A protected space is inserted with 
-\family sans
-Ctrl+Space
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "space-insert protected"
+\end_inset
+
 .
 \end_layout
 
@@ -10928,9 +10930,11 @@ Space ! horizontal ! predefined
 \begin_layout Standard
 Sometimes it is necessary to insert horizontal space to a formula.
  This is done by inserting a protected space (shortcut 
-\family sans
-Ctrl+Space
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "space-insert protected"
+\end_inset
+
 ).
  A blue 
 \begin_inset Quotes eld

@@ -5433,9 +5433,11 @@ Protected Blank
 \family default
 .
  (Use either 
-\family sans
-Ctrl+Space
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "space-insert protected"
+\end_inset
+
  or the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -6498,9 +6500,11 @@ Space
 
 \begin_layout Itemize
 Or: use 
-\family sans
-Ctrl+Space
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "space-insert protected"
+\end_inset
+
  instead.
 \end_layout
 
@@ -8760,9 +8764,11 @@ Protected
 Space
 \family default
  (shortcut 
-\family sans
-Ctrl+Space
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "space-insert protected"
+\end_inset
+
 ).
 \end_layout
 
@@ -21444,9 +21450,11 @@ Math ! Spaces
 You may want to create spaces that differs from the standard spacing that
  LaTeX provides.
  To do this, type 
-\family sans
-Ctrl+Space
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "space-insert protected"
+\end_inset
+
  or to use the 
 \family sans
 Math
