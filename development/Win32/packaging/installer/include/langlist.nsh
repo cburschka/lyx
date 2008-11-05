@@ -38,6 +38,7 @@ List of langauges supported by the LyX
   ${COMMAND} "Suomi" fi_FI 1035
   # ${COMMAND} "Svenska" sv_SE 1053
   # ${COMMAND} "Türkçe" tr_TR 1055
+  ${COMMAND} "Ukrainian" uk_UK 1058
   # ${COMMAND} "Walon" wa_BE 1055
 
 !macroend

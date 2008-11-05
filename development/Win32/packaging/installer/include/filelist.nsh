@@ -291,14 +291,7 @@ Lists of files to include in the installer
 !macro FileListMetaFile2EPS COMMAND DIRECTORY
 
   ${FILE}metafile2eps.exe"
-
-!macroend
-
-!macro FileListPSPrinter COMMAND DIRECTORY
-
-  ${FILE}metafile2eps.inf"
-  ${FILE}metafile2eps.ppd"
-  ${FILE}metafile2eps.dat"
+  ${FILE}metafile2eps.dat"  
 
 !macroend
 
