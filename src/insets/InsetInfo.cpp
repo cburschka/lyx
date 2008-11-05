@@ -251,13 +251,14 @@ void InsetInfo::setInfo(string const & name)
 
 void InsetInfo::error(string const & err)
 {
-	setText(bformat(_(err), from_utf8(name_)), Font(inherit_font), false);
+	setText(bformat(_(err), from_utf8(name_)), 
+		Font(inherit_font, buffer().params().language), false);
 }
 
 
 void InsetInfo::setText(docstring const & str)
 {
-	setText(str, Font(inherit_font), false);
+	setText(str, Font(inherit_font, buffer().params().language), false);
 }
 
 
@@ -283,11 +284,9 @@ void InsetInfo::updateInfo()
 			break;
 		}
 		if (type_ == SHORTCUT_INFO)
-			setText(bindings.begin()->print(KeySequence::Portable),
-				Font(inherit_font), false);
+			setText(bindings.begin()->print(KeySequence::Portable));
 		else
-			setText(theTopLevelKeymap().printBindings(func, KeySequence::Portable), 
-				Font(inherit_font), false);
+			setText(theTopLevelKeymap().printBindings(func, KeySequence::Portable));
 		break;
 	}
 	case LYXRC_INFO: {
@@ -326,7 +325,7 @@ void InsetInfo::updateInfo()
 		// if found, return its path.
 		clear();
 		Paragraph & par = paragraphs().front();
-		Font const f = Font(getLayout().font());
+		Font const f(inherit_font, buffer().params().language);
 		//Font fu = f;
 		//fu.fontInfo().setUnderbar(FONT_ON);
 		docstring_list::const_iterator beg = names.begin();
