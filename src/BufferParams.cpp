@@ -1564,7 +1564,7 @@ bool BufferParams::checkModuleConsistency() {
 			LYXERR0("WARNING: Module " << modname << " should already have been dropped!");
 			continue;
 		}
-
+		// FIXME This test can probably also be dropped, for the same reason.
 		// determine whether some provided module excludes us or we exclude it
 		list<string>::const_iterator pit = provmods.begin();
 		list<string>::const_iterator pen = provmods.end();
@@ -1572,8 +1572,7 @@ bool BufferParams::checkModuleConsistency() {
 		for (; !excluded && pit != pen; ++pit) {
 			if (!LyXModule::areCompatible(modname, *pit)) {
 				consistent = false;
-				LYXERR0("Module " << modname << 
-						" dropped becuase it conflicts with provided module " << *pit);
+				LYXERR0("WARNING: Module " << modname << " should already have been dropped!");
 				excluded = true;
 			}
 		}
