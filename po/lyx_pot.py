@@ -180,7 +180,7 @@ def languages_l10n(input_files, output, base):
     '''Generate pot file from lib/language'''
     output = open(output, 'w')
     # assuming only one language file
-    reg = re.compile('[\w-]+\s+[\w"]+\s+"([\w \-\(\)]+)"\s+(true|false)\s+[\w-]+\s+\w+\s+"[^"]*"')
+    reg = re.compile('[\w-]+\s+[\w"]+\s+"([\w \-\(\),]+)"\s+(true|false)\s+[\w-]+\s+\w+\s+"[^"]*"')
     input = open(input_files[0])
     for lineno, line in enumerate(input.readlines()):
         if line[0] == '#':
