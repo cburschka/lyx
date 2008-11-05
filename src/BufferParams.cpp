@@ -1542,6 +1542,8 @@ bool BufferParams::checkModuleConsistency() {
 			continue;
 		}
 		// are we excluded by the document class?
+		// FIXME This can probably be removed, since removeExcludedModules ought
+		// already to have done this test.
 		if (find(exclmods.begin(), exclmods.end(), modname) != exclmods.end()) {
 			consistent = false;
 			LYXERR0("WARNING: Module " << modname << " should already have been dropped!");
@@ -1646,8 +1648,20 @@ bool BufferParams::setBaseClass(string const & classname)
 	}
 
 	pimpl_->baseClass_ = classname;
+	// the previous document class may have loaded some modules that the
+	// new one excludes, and the new class may provide, etc, some that
+	// conflict with ones that were already loaded. So we need to go 
+	// through the list and fix everything. I suppose there are various
+	// ways this could be done, but the following seems to work at the 
+	// moment. (Thanks to Philippe Charpentier for helping work out all 
+	// the bugs---rgh.)
+	// 
+	// first, we remove any modules the new document class excludes
 	removeExcludedModules();
+	// next, we add any default modules the new class provides
 	addDefaultModules();
+	// finally, we perform a general consistency check on the set of
+	// loaded modules
 	checkModuleConsistency();
 
 	return true;
