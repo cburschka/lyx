@@ -176,7 +176,18 @@ vector<string> loadableImageFormats()
 
 	return fmts;
 }
-	
+
+
+class FuncRequestEvent : public QEvent
+{
+public:
+       FuncRequestEvent(FuncRequest const & req) 
+       : QEvent(QEvent::User), request(req) {}
+
+       FuncRequest const request;
+};
+
+
 ////////////////////////////////////////////////////////////////////////
 // Icon loading support code.
 ////////////////////////////////////////////////////////////////////////
@@ -1023,7 +1034,11 @@ ColorCache & GuiApplication::colorCache()
 
 int GuiApplication::exec()
 {
-	QTimer::singleShot(1, this, SLOT(execBatchCommands()));
+	// asynchronously handle batch commands. This event will be in
+	// the event queue in front of other asynchronous events. Hence,
+	// we can assume in the latter that the gui is setup already.
+	QTimer::singleShot(0, this, SLOT(execBatchCommands()));
+
 	return QApplication::exec();
 }
 
@@ -1177,14 +1192,25 @@ void GuiApplication::handleRegularEvents()
 }
 
 
+void GuiApplication::customEvent(QEvent * event)
+{
+       FuncRequestEvent * reqEv = static_cast<FuncRequestEvent *>(event);
+       lyx::dispatch(reqEv->request);
+}
+
+
 bool GuiApplication::event(QEvent * e)
 {
 	switch(e->type()) {
 	case QEvent::FileOpen: {
-		// Open a file; this happens only on Mac OS X for now
+		// Open a file; this happens only on Mac OS X for now.
+		//
+		// We do this asynchronously because on startup the batch
+		// commands are not executed here yet and the gui is not ready
+		// therefore.
 		QFileOpenEvent * foe = static_cast<QFileOpenEvent *>(e);
-		lyx::dispatch(FuncRequest(LFUN_FILE_OPEN,
-			qstring_to_ucs4(foe->file())));
+		postEvent(this, new FuncRequestEvent(FuncRequest(LFUN_FILE_OPEN,
+			qstring_to_ucs4(foe->file()))));
 		e->accept();
 		return true;
 	}

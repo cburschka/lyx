@@ -330,10 +330,11 @@ GuiView::GuiView(int id)
 			return;
 	}
 
-	// No session handling, default to a sane size.
+	// no session handling, default to a sane size.
 	setGeometry(50, 50, 690, 510);
 	initToolbars();
-	// This enables to clear session data if any.
+
+	// clear session data if any.
 	QSettings settings;
 	settings.remove("views");
 }

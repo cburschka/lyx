@@ -66,6 +66,7 @@ public:
 	FontLoader & fontLoader();
 	int exec();
 	void exit(int status);
+	void customEvent(QEvent * event);
 	bool event(QEvent * e);
 	bool getRgbColor(ColorCode col, RGBColor & rgbcol);
 	std::string const hexName(ColorCode col);
