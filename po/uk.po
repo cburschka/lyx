@@ -8,15 +8,14 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-11-05 00:36+0100\n"
-"PO-Revision-Date: 2008-10-12 16:46+0300\n"
+"PO-Revision-Date: 2008-11-05 21:44+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -871,14 +870,12 @@ msgid "O&pen"
 msgstr "&Розкрите"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:22
-#, fuzzy
 msgid "&Errors:"
-msgstr "Помилка"
+msgstr "&Помилки:"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:40
-#, fuzzy
 msgid "Description:"
-msgstr "&Опис:"
+msgstr "Опис:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:43
 msgid "F&ile"
@@ -1108,8 +1105,7 @@ msgstr "Використовувати рисунки &старого стилю
 
 #: src/frontends/qt4/ui/FontUi.ui:81
 msgid "Use a real small caps shape, if the font provides one"
-msgstr ""
-"Використовувати справжню форму малих прописних літер, якщо такі є у шрифті"
+msgstr "Використовувати справжню форму малих прописних літер, якщо такі є у шрифті"
 
 #: src/frontends/qt4/ui/FontUi.ui:84
 msgid "Use true S&mall Caps"
@@ -1141,8 +1137,7 @@ msgstr "М&асштаб (%):"
 
 #: src/frontends/qt4/ui/FontUi.ui:165
 msgid "Scale the Sans Serif font to match the base font's dimensions"
-msgstr ""
-"Змінювати розміри рубленого шрифту для відповідності розмірам базового шрифту"
+msgstr "Змінювати розміри рубленого шрифту для відповідності розмірам базового шрифту"
 
 #: src/frontends/qt4/ui/FontUi.ui:178
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:117
@@ -1185,8 +1180,7 @@ msgstr "Розмір виведення"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:230
 msgid "Sets height of graphic. Leave unchecked to set automatically."
-msgstr ""
-"Встановлює висоту графіки. Залиште незмінним для автоматичного визначення."
+msgstr "Встановлює висоту графіки. Залиште незмінним для автоматичного визначення."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:233
 msgid "Set &height:"
@@ -1198,8 +1192,7 @@ msgstr "&Масштабувати графіку (%):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:250
 msgid "Sets width of graphic. Leave unchecked to set automatically."
-msgstr ""
-"Встановлює ширину графіки. Залиште незмінним для автоматичного визначення."
+msgstr "Встановлює ширину графіки. Залиште незмінним для автоматичного визначення."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:253
 msgid "Set &width:"
@@ -1531,9 +1524,8 @@ msgid "&New"
 msgstr "&Створити"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:19
-#, fuzzy
 msgid "Document &class"
-msgstr "Клас &документа:"
+msgstr "Клас &документа"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:38
 msgid "Click to select a local document class definition file"
@@ -1544,29 +1536,26 @@ msgid "&Local Layout..."
 msgstr "&Локальний формат..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:51
-#, fuzzy
 msgid "Class options"
-msgstr "Підпис"
+msgstr "Параметри класу"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:71
 msgid ""
 "The options that are predefined in the layout file. Click to the left to "
 "select/deselect."
-msgstr ""
+msgstr "Параметри, які попередньо визначено у файлі формату. Натисніть ліворуч, щоб обрати або скасувати вибір."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:86
 msgid "Enable to use the options that are predefined in the layout file"
-msgstr ""
+msgstr "Увімкнути використання параметрів, які попередньо визначено у файлі формату"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:89
-#, fuzzy
 msgid "P&redefined:"
-msgstr "Д&рукарка:"
+msgstr "&Визначені:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:96
-#, fuzzy
 msgid "Cust&om:"
-msgstr "Користувацький"
+msgstr "&Нетипові:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:112
 msgid "&Postscript driver:"
@@ -1777,8 +1766,7 @@ msgstr "Вікно зворотної реакції"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:489
 msgid "Input listing parameters here. Enter ? for a list of parameters."
-msgstr ""
-"Тут слід ввести параметри тексту програм. Введіть «?», щоб побачити список."
+msgstr "Тут слід ввести параметри тексту програм. Введіть «?», щоб побачити список."
 
 #: src/frontends/qt4/ui/LogUi.ui:31
 msgid "Copy to Clip&board"
@@ -2012,8 +2000,7 @@ msgstr "&Застосувати негайно"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:129
 msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr ""
-"Використовувати типове вирівнювання для цього абзацу, яким би воно не було."
+msgstr "Використовувати типове вирівнювання для цього абзацу, яким би воно не було."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:132
 msgid "Paragraph's &Default"
@@ -2079,8 +2066,7 @@ msgid "&General"
 msgstr "&Загальне"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:99
-msgid ""
-"If not stated explicitly, fill title and author from appropriate environments"
+msgid "If not stated explicitly, fill title and author from appropriate environments"
 msgstr ""
 "Якщо не вказано явно, заповнювати поля заголовка і автора з відповідних "
 "середовищ"
@@ -2138,14 +2124,12 @@ msgid "C&olor links"
 msgstr "Роз&фарбовані посилання"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:249
-#, fuzzy
 msgid "Bibliographical backreferences"
-msgstr "&Зворотні посилання у бібліографії"
+msgstr "Зворотні посилання у бібліографії"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:252
-#, fuzzy
 msgid "B&ackreferences:"
-msgstr "Налаштування"
+msgstr "Зворотні п&осилання:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:281
 msgid "&Bookmarks"
@@ -2221,8 +2205,7 @@ msgstr "Автоматичне &завершення у рядку"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:88
 msgid "Show the popup after the set delay in text mode."
-msgstr ""
-"Показувати з встановленою затримкою вікно підказки у текстовому режимі."
+msgstr "Показувати з встановленою затримкою вікно підказки у текстовому режимі."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:91
 msgid "Automatic &popup"
@@ -2387,8 +2370,7 @@ msgstr "Змінювати макроси математики за допомо
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:83
 msgid "Edit Math Macros with a parameter list (like in LyX < 1.6)"
-msgstr ""
-"Змінювати макрос математики за допомогою списку параметрів (як у LyX < 1.6)"
+msgstr "Змінювати макрос математики за допомогою списку параметрів (як у LyX < 1.6)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:94
 msgid "Fullscreen"
@@ -2600,8 +2582,7 @@ msgid "Right-to-left language support"
 msgstr "Підтримка мови зі зворотним записом"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:197 src/LyXRC.cpp:2760
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Позначте для увімкнення підтримки мов \"з права ліворуч\" (зокрема, іврит, "
 "арабська)."
@@ -2640,8 +2621,7 @@ msgstr "Команди індексації та параметри (makeindex, 
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:59
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr ""
-"Додатковий прапорець розміру паперу (-paper) для деяких переглядачів DVI"
+msgstr "Додатковий прапорець розміру паперу (-paper) для деяких переглядачів DVI"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:66
 msgid "&DVI viewer paper size options:"
@@ -2891,8 +2871,7 @@ msgstr "Розмір &паперу:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:279
 msgid "Any other options you'd like to use with the printer command."
-msgstr ""
-"Будь-які інші параметри, які Ви бажали б використати у команді друкарці."
+msgstr "Будь-які інші параметри, які Ви бажали б використати у команді друкарці."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:282
 msgid "E&xtra options:"
@@ -3056,8 +3035,7 @@ msgstr "Сесія"
 
 #: src/frontends/qt4/ui/PrefUi.ui:49
 msgid "Restore to cursor position when the file was last closed"
-msgstr ""
-"Відновлювати розташування курсора, яке було під час останнього закриття файла"
+msgstr "Відновлювати розташування курсора, яке було під час останнього закриття файла"
 
 #: src/frontends/qt4/ui/PrefUi.ui:52
 msgid "Allow saving/restoring of window layouts and geometries"
@@ -3296,8 +3274,7 @@ msgstr "Зворотній &пошук"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:42
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-"Обробити перетворений файл за допомогою команди ($$FName = назва файла)"
+msgstr "Обробити перетворений файл за допомогою команди ($$FName = назва файла)"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:101
 msgid "&Export formats:"
@@ -3677,8 +3654,7 @@ msgid "&Rescan"
 msgstr "&Оновити"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Показує вміст відміченого файла. Це можливо тільки в том випадку, якщо файли "
 "показано з повним шляхом."
@@ -4226,14 +4202,12 @@ msgid "Acknowledgements."
 msgstr "Подяки."
 
 #: lib/layouts/aa.layout:289
-#, fuzzy
 msgid "institutemark"
-msgstr "Інститут"
+msgstr "позначкаустанови"
 
 #: lib/layouts/aa.layout:293
-#, fuzzy
 msgid "institute mark"
-msgstr "Інститут"
+msgstr "позначка установи"
 
 #: lib/layouts/aa.layout:342 lib/layouts/aastex.layout:112
 #: lib/layouts/aastex.layout:317 lib/layouts/elsart.layout:62
@@ -4270,9 +4244,8 @@ msgid "Email"
 msgstr "Email"
 
 #: lib/layouts/aa.layout:404
-#, fuzzy
 msgid "email"
-msgstr "email:"
+msgstr "електронна пошта"
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612
 #: src/frontends/qt4/GuiPrefs.cpp:528
@@ -4372,23 +4345,20 @@ msgid "Dataset"
 msgstr "Набір даних"
 
 #: lib/layouts/aastex.layout:279
-#, fuzzy
 msgid "Altaffilation"
 msgstr "Додмісцероботи"
 
 #: lib/layouts/aastex.layout:288
-#, fuzzy
 msgid "Alternative affiliation:"
-msgstr "&Інша мова:"
+msgstr "Альтернативне місце роботи:"
 
 #: lib/layouts/aastex.layout:295
 msgid "altaffilmark"
-msgstr ""
+msgstr "altaffilmark"
 
 #: lib/layouts/aastex.layout:299
-#, fuzzy
 msgid "altaffiliation mark"
-msgstr "Додмісцероботи"
+msgstr "позначка альтернативного місця роботи"
 
 #: lib/layouts/aastex.layout:330
 msgid "Subject headings:"
@@ -4430,23 +4400,20 @@ msgid "Note. ---"
 msgstr "Примітка. ---"
 
 #: lib/layouts/aastex.layout:563
-#, fuzzy
 msgid "Table note"
-msgstr "лінія таблиці"
+msgstr "Примітка до таблиці"
 
 #: lib/layouts/aastex.layout:571
-#, fuzzy
 msgid "Table note:"
-msgstr "Примітка заголовка:"
+msgstr "Примітка до таблиці:"
 
 #: lib/layouts/aastex.layout:578
-#, fuzzy
 msgid "tablenotemark"
-msgstr "лінія таблиці"
+msgstr "позначкаприміткидотаблиці"
 
 #: lib/layouts/aastex.layout:582
 msgid "tablenote mark"
-msgstr ""
+msgstr "позначка примітки до таблиці"
 
 #: lib/layouts/aastex.layout:600
 msgid "FigCaption"
@@ -4846,14 +4813,12 @@ msgid "Institute"
 msgstr "Інститут"
 
 #: lib/layouts/beamer.layout:845
-#, fuzzy
 msgid "InstituteMark"
-msgstr "Інститут"
+msgstr "ПозначкаІнституту"
 
 #: lib/layouts/beamer.layout:849
-#, fuzzy
 msgid "Institute mark"
-msgstr "Інститут"
+msgstr "Позначка інституту"
 
 #: lib/layouts/beamer.layout:914 lib/layouts/egs.layout:94
 #: lib/layouts/powerdot.layout:312 lib/layouts/db_stdlayouts.inc:18
@@ -5779,14 +5744,12 @@ msgid "Case \\arabic{case}"
 msgstr "Варіант \\arabic{case}"
 
 #: lib/layouts/elsarticle.layout:71
-#, fuzzy
 msgid "Titlenotemark"
-msgstr "Примітка заголовка"
+msgstr "ПозначкаПриміткиЗаголовка"
 
 #: lib/layouts/elsarticle.layout:75
-#, fuzzy
 msgid "Titlenote mark"
-msgstr "Примітка заголовка"
+msgstr "Позначка примітки заголовка"
 
 #: lib/layouts/elsarticle.layout:93
 msgid "Title footnote"
@@ -5797,14 +5760,12 @@ msgid "Title footnote:"
 msgstr "Примітка заголовка:"
 
 #: lib/layouts/elsarticle.layout:133
-#, fuzzy
 msgid "Authormark"
-msgstr "Автор-рік"
+msgstr "Позначкаавтора"
 
 #: lib/layouts/elsarticle.layout:137
-#, fuzzy
 msgid "Author mark"
-msgstr "Email автора"
+msgstr "Позначка автора"
 
 #: lib/layouts/elsarticle.layout:155
 msgid "Author footnote"
@@ -5815,14 +5776,12 @@ msgid "Author footnote:"
 msgstr "Примітка про автора:"
 
 #: lib/layouts/elsarticle.layout:162
-#, fuzzy
 msgid "CorAuthormark"
-msgstr "Corr Author:"
+msgstr "CorAuthormark"
 
 #: lib/layouts/elsarticle.layout:166
-#, fuzzy
 msgid "CorAuthor mark"
-msgstr "Email автора"
+msgstr "Позначка автора для кореспонденції"
 
 #: lib/layouts/elsarticle.layout:184
 msgid "Corresponding author"
@@ -7325,25 +7284,22 @@ msgid "LandscapeSlide"
 msgstr "LandscapeSlide"
 
 #: lib/layouts/seminar.layout:34
-#, fuzzy
 msgid "Landscape Slide:"
-msgstr "Альбомний слайд"
+msgstr "Альбомний слайд:"
 
 #: lib/layouts/seminar.layout:40
 msgid "PortraitSlide"
 msgstr "Слайд портрет"
 
 #: lib/layouts/seminar.layout:43
-#, fuzzy
 msgid "Portrait Slide:"
-msgstr "Портретний слайд"
+msgstr "Портретний слайд:"
 
 #: lib/layouts/seminar.layout:45
 msgid "Slide*"
 msgstr "Слайд*"
 
 #: lib/layouts/seminar.layout:52
-#, fuzzy
 msgid "EndOfSlide"
 msgstr "КінецьСлайда"
 
@@ -7360,27 +7316,24 @@ msgid "ListOfSlides"
 msgstr "Перелік слайдів"
 
 #: lib/layouts/seminar.layout:78
-#, fuzzy
 msgid "[List Of Slides]"
-msgstr "Список слайдів"
+msgstr "[Список слайдів]"
 
 #: lib/layouts/seminar.layout:81
 msgid "SlideContents"
 msgstr "Вміст слайда"
 
 #: lib/layouts/seminar.layout:84
-#, fuzzy
 msgid "[Slide Contents]"
-msgstr "Вміст слайда"
+msgstr "[Вміст слайда]"
 
 #: lib/layouts/seminar.layout:87
 msgid "ProgressContents"
 msgstr "ProgressContents"
 
 #: lib/layouts/seminar.layout:90
-#, fuzzy
 msgid "[Progress Contents]"
-msgstr "Вміст поступу"
+msgstr "[Вміст поступу]"
 
 #: lib/layouts/siamltex.layout:106 lib/layouts/theorems-order.inc:34
 #: lib/layouts/theorems-starred.inc:93
@@ -7400,9 +7353,8 @@ msgid "Subjectclass"
 msgstr "Subjectclass"
 
 #: lib/layouts/siamltex.layout:307
-#, fuzzy
 msgid "AMS subject classifications:"
-msgstr "AMS класифікація документів."
+msgstr "AMS-класифікація тем:"
 
 #: lib/layouts/sigplanconf.layout:64
 msgid "Conference"
@@ -8492,14 +8444,12 @@ msgid "Braille_mirror_off"
 msgstr "Braille_mirror_off"
 
 #: lib/layouts/braille.module:163
-#, fuzzy
 msgid "Braillebox"
-msgstr "Шрифт Брайля"
+msgstr "Панель Брайля"
 
 #: lib/layouts/braille.module:167
-#, fuzzy
 msgid "Braille box"
-msgstr "Шрифт Брайля"
+msgstr "Панель Брайля"
 
 #: lib/layouts/endnotes.module:2
 msgid "Endnote"
@@ -8688,8 +8638,7 @@ msgstr "Minimalistic"
 
 #: lib/layouts/minimalistic.module:5
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
-msgstr ""
-"Перевизначає декілька вкладок (Index, Branch, URL) у стилі Minimalistic."
+msgstr "Перевизначає декілька вкладок (Index, Branch, URL) у стилі Minimalistic."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
@@ -8832,7 +8781,6 @@ msgid "Theorems (AMS)"
 msgstr "Теореми (AMS)"
 
 #: lib/layouts/theorems-ams.module:8
-#, fuzzy
 msgid ""
 "Defines theorem environments and the proof environment using the extended "
 "AMS machinery. Both numbered and unnumbered types are provided. By default, "
@@ -8845,7 +8793,6 @@ msgstr ""
 "завантаженням одного з модулів «Теореми (впорядковані за ...)»."
 
 #: lib/layouts/theorems-chap.module:2
-#, fuzzy
 msgid "Theorems (By Chapter)"
 msgstr "Теореми (впорядковані за главами)"
 
@@ -8858,7 +8805,6 @@ msgstr ""
 "лише для форматів з середовищем глав."
 
 #: lib/layouts/theorems-sec.module:2
-#, fuzzy
 msgid "Theorems (By Section)"
 msgstr "Теореми (впорядковані за розділами)"
 
@@ -8907,9 +8853,8 @@ msgid "Albanian"
 msgstr "Албанська"
 
 #: lib/languages:8
-#, fuzzy
 msgid "English (USA)"
-msgstr "Англійська"
+msgstr "Англійська (США)"
 
 #: lib/languages:10
 msgid "Arabic (ArabTeX)"
@@ -8925,17 +8870,15 @@ msgstr "Вірменська"
 
 #: lib/languages:14
 msgid "German (Austria)"
-msgstr ""
+msgstr "Німецька (Австрія)"
 
 #: lib/languages:15
-#, fuzzy
 msgid "Indonesian"
 msgstr "Індонезійська"
 
 #: lib/languages:16
-#, fuzzy
 msgid "Malay"
-msgstr "Малаялам"
+msgstr "Малайська"
 
 #: lib/languages:17
 msgid "Basque"
@@ -8954,23 +8897,20 @@ msgid "Breton"
 msgstr "Бретонська"
 
 #: lib/languages:21
-#, fuzzy
 msgid "English (UK)"
-msgstr "Англійська"
+msgstr "Англійська (Великобританія)"
 
 #: lib/languages:22
 msgid "Bulgarian"
 msgstr "Болгарська"
 
 #: lib/languages:23
-#, fuzzy
 msgid "English (Canada)"
-msgstr "Англійська"
+msgstr "Англійська (Канада)"
 
 #: lib/languages:24
-#, fuzzy
 msgid "French (Canada)"
-msgstr "Канадська французька"
+msgstr "Французька (Канада)"
 
 #: lib/languages:25
 msgid "Catalan"
@@ -9103,7 +9043,7 @@ msgstr "Угорська"
 
 #: lib/languages:66
 msgid "Mongolian"
-msgstr ""
+msgstr "Монгольська"
 
 #: lib/languages:67
 msgid "Norsk"
@@ -10269,9 +10209,8 @@ msgid "Macro|o"
 msgstr "Макрос|о"
 
 #: lib/ui/stdcontext.inc:44
-#, fuzzy
 msgid "AMS Environment|A"
-msgstr "Оточення з вирівнюванням|ю"
+msgstr "Середовище AMS|о"
 
 #: lib/ui/stdcontext.inc:46
 msgid "Equation Label|L"
@@ -11161,9 +11100,8 @@ msgid "TeX Information|I"
 msgstr "Інформація про TeX|X"
 
 #: lib/ui/stdmenus.inc:520
-#, fuzzy
 msgid "Additional Features|F"
-msgstr "Додатковий пробіл"
+msgstr "Додаткові можливості|м"
 
 #: lib/ui/stdmenus.inc:521
 msgid "Embedded Objects|O"
@@ -11178,29 +11116,24 @@ msgid "LyX Functions|y"
 msgstr "Функції LyX|Ф"
 
 #: lib/ui/stdmenus.inc:527
-#, fuzzy
 msgid "Specific Manuals|p"
-msgstr "Спеціальні"
+msgstr "Спеціальні підручники|ц"
 
 #: lib/ui/stdmenus.inc:533
-#, fuzzy
 msgid "Linguistics Manual|L"
-msgstr "Лінгвістика"
+msgstr "Лінгвістичні підручники|Л"
 
 #: lib/ui/stdmenus.inc:534
-#, fuzzy
 msgid "Braille Manual|B"
-msgstr "Брайль (типовий)"
+msgstr "Підручники з Брайля|Б"
 
 #: lib/ui/stdmenus.inc:535
-#, fuzzy
 msgid "XY-pic Manual|X"
-msgstr "Спеціальні"
+msgstr "Підручник з XY-pic|X"
 
 #: lib/ui/stdmenus.inc:536
-#, fuzzy
 msgid "Multicolumn Manual|M"
-msgstr "Багатоколонковість|Б"
+msgstr "Підручник з багатоколонковості|к"
 
 #: lib/ui/stdtoolbars.inc:57
 msgid "New document"
@@ -14212,8 +14145,7 @@ msgstr "Дискова помилка: "
 
 #: src/Buffer.cpp:240
 #, c-format
-msgid ""
-"LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
+msgid "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr ""
 "LyX не вдалося створити тимчасовий каталог `%1$s' (Можливо, немає місця на "
 "диску?)"
@@ -15197,8 +15129,7 @@ msgstr "Запуск LaTeX..."
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
-msgstr ""
-"Не вдалося успішно запустити LaTeX. Крім того, LyX не знайшов LaTeX log %1$s."
+msgstr "Не вдалося успішно запустити LaTeX. Крім того, LyX не знайшов LaTeX log %1$s."
 
 #: src/Converter.cpp:594
 msgid "LaTeX failed"
@@ -15861,8 +15792,7 @@ msgstr ""
 "типово після зміни класу."
 
 #: src/LyXRC.cpp:2454
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Проміжок часу між автозбереженнями (в секундах). 0 означає не виконувати "
 "автозбереження."
@@ -16028,12 +15958,10 @@ msgstr "Максимальне число слів в ініціалізації
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
-msgstr ""
-"Позначте, якщо на початку документу потрібна команда переключення мови."
+msgstr "Позначте, якщо на початку документу потрібна команда переключення мови."
 
 #: src/LyXRC.cpp:2575
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "Позначте, якщо в кінці документа потрібна команда перемикання мови."
 
 #: src/LyXRC.cpp:2579
@@ -16057,8 +15985,7 @@ msgstr "Команда LaTeX для локальної зміни мови."
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr ""
-"Зніміть позначку щоб мова(и) використовувалася як аргумент в \\documentclass."
+msgstr "Зніміть позначку щоб мова(и) використовувалася як аргумент в \\documentclass."
 
 #: src/LyXRC.cpp:2595
 msgid ""
@@ -16078,8 +16005,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2603
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr ""
-"Не позначайте, якщо ви не бажаєте щоб LyX гортав до збереженої позиції."
+msgstr "Не позначайте, якщо ви не бажаєте щоб LyX гортав до збереженої позиції."
 
 #: src/LyXRC.cpp:2607
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -16116,10 +16042,8 @@ msgid "Select to display the completion popup in text mode."
 msgstr "Позначте для показу підказки-доповнення у текстовому режимі."
 
 #: src/LyXRC.cpp:2636
-msgid ""
-"Show the completion popup without delay after non-unique completion attempt."
-msgstr ""
-"Показувати підказку без затримки після неоднозначної спроби доповнення."
+msgid "Show the completion popup without delay after non-unique completion attempt."
+msgstr "Показувати підказку без затримки після неоднозначної спроби доповнення."
 
 #: src/LyXRC.cpp:2640
 msgid ""
@@ -16159,10 +16083,8 @@ msgstr ""
 "тому вигляді, як прийнято в Вашій операційній системі."
 
 #: src/LyXRC.cpp:2672
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
-msgstr ""
-"Вкажіть додатковий особистий словниковий файл. Наприклад \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgstr "Вкажіть додатковий особистий словниковий файл. Наприклад \".ispell_english\"."
 
 #: src/LyXRC.cpp:2676
 msgid "Shows a typeset preview of things such as math"
@@ -16269,8 +16191,7 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Програма друку, якою ви користуєтесь, наприклад \"dvips\", \"dvilj4\"."
 
 #: src/LyXRC.cpp:2764
-msgid ""
-"Select to have visual bidi cursor movement, unselect for logical movement."
+msgid "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 "Позначте для візуального перескакування курсора, зніміть позначку для "
 "логічного пересування."
@@ -16299,8 +16220,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2787
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr ""
-"Розміри шрифтів, що використовуються для обчислення розміру екранних шрифтів."
+msgstr "Розміри шрифтів, що використовуються для обчислення розміру екранних шрифтів."
 
 #: src/LyXRC.cpp:2792
 #, no-c-format
@@ -16313,8 +16233,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2796
 msgid "Allow session manager to save and restore windows geometry."
-msgstr ""
-"Дозволити менеджеру сеансів зберігати та відновлювати розташування вікна."
+msgstr "Дозволити менеджеру сеансів зберігати та відновлювати розташування вікна."
 
 #: src/LyXRC.cpp:2800
 msgid ""
@@ -16371,8 +16290,7 @@ msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "Увімкнути автоматичну появу підказок у робочій області."
 
 #: src/LyXRC.cpp:2850
-msgid ""
-"Enable the pixmap cache that might improve performance on Mac and Windows."
+msgid "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "Увімкнути кешування растрових зображень, що може підвищити швидкодію на  Mac "
 "і Windows."
@@ -16606,8 +16524,7 @@ msgstr "Немає файла"
 
 #: src/TextClass.cpp:619
 msgid "Could not find stdinsets.inc! This may lead to data loss!"
-msgstr ""
-"Не вдалося знайти файл stdinsets.inc! Це може призвести до втрати даних!"
+msgstr "Не вдалося знайти файл stdinsets.inc! Це може призвести до втрати даних!"
 
 #: src/TextClass.cpp:622
 msgid "Corrupt File"
@@ -16615,8 +16532,7 @@ msgstr "Файл пошкоджено"
 
 #: src/TextClass.cpp:623
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
-msgstr ""
-"Не вдалося прочитати файл stdinsets.inc! Це може призвести до втрати даних!"
+msgstr "Не вдалося прочитати файл stdinsets.inc! Це може призвести до втрати даних!"
 
 #: src/Thesaurus.cpp:60
 msgid "Thesaurus failure"
@@ -16723,8 +16639,7 @@ msgstr "&Зберегти зміни"
 #: src/buffer_funcs.cpp:83
 #, c-format
 msgid "The file %1$s exists but is not readable by the current user."
-msgstr ""
-"Файл %1$s існує, але він недоступний для читання поточним користувачем."
+msgstr "Файл %1$s існує, але він недоступний для читання поточним користувачем."
 
 #: src/buffer_funcs.cpp:86
 msgid "File not readable!"
@@ -17306,9 +17221,8 @@ msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/GuiDocument.cpp:146
-#, fuzzy
 msgid "Page"
-msgstr "Сторінок"
+msgstr "Сторінка"
 
 #: src/frontends/qt4/GuiDocument.cpp:204
 msgid "Module not found!"
@@ -17320,8 +17234,7 @@ msgstr "Налаштування документа"
 
 #: src/frontends/qt4/GuiDocument.cpp:559
 #: src/frontends/qt4/GuiDocument.cpp:1058
-msgid ""
-"Input listings parameters on the right. Enter ? for a list of parameters."
+msgid "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Введіть параметри текстів програм праворуч. Введіть «?», щоб побачити список "
 "команд."
@@ -17548,9 +17461,8 @@ msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s, %2$s і %3$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:1464
-#, fuzzy
 msgid "Module provided by document class."
-msgstr "Неможливо встановити клас документів"
+msgstr "Модуль, який містить клас документа."
 
 #: src/frontends/qt4/GuiDocument.cpp:1472
 #, c-format
@@ -17572,14 +17484,12 @@ msgid "Modules excluded: %1$s."
 msgstr "Виключено модулі: %1$s."
 
 #: src/frontends/qt4/GuiDocument.cpp:1496
-#, fuzzy
 msgid "WARNING: Some required packages are unavailable!"
-msgstr "УВАГА: Деякі з пакунків недоступні!"
+msgstr "УВАГА: Деякі з потрібних пакунків недоступні!"
 
 #: src/frontends/qt4/GuiDocument.cpp:2034
-#, fuzzy
 msgid "[No options predefined]"
-msgstr "Дію не визначено!"
+msgstr "[Немає попередньо визначених параметрів]"
 
 #: src/frontends/qt4/GuiDocument.cpp:2238
 msgid "Can't set layout!"
@@ -17697,8 +17607,7 @@ msgstr "Спадковий документ"
 #: src/frontends/qt4/GuiInclude.cpp:120 src/frontends/qt4/GuiInclude.cpp:182
 #: src/frontends/qt4/GuiListings.cpp:239 src/frontends/qt4/GuiListings.cpp:375
 #: src/frontends/qt4/GuiListings.cpp:450
-msgid ""
-"Input listing parameters on the right. Enter ? for a list of parameters."
+msgid "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Введіть параметри текстів програм праворуч. Введіть «?», щоб побачити список "
 "команд."
@@ -17749,22 +17658,19 @@ msgstr "буфер"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:706
 msgid "Shift-"
-msgstr ""
+msgstr "Shift-"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:707
-#, fuzzy
 msgid "Control-"
-msgstr "Керування"
+msgstr "Ctrl-"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:708
-#, fuzzy
 msgid "Option-"
-msgstr "Ви&бір:"
+msgstr "Option-"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:709
-#, fuzzy
 msgid "Command-"
-msgstr "&Команда:"
+msgstr "Command-"
 
 #: src/frontends/qt4/GuiLabel.cpp:37
 msgid "Label"
@@ -17967,8 +17873,7 @@ msgstr "LyX слід перезапустити!"
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
-msgstr ""
-"Зміна інтерфейсу користувача повністю набуде чинності лише після перезапуску."
+msgstr "Зміна інтерфейсу користувача повністю набуде чинності лише після перезапуску."
 
 #: src/frontends/qt4/GuiPrefs.cpp:1783
 msgid "Printer"
@@ -18564,7 +18469,7 @@ msgstr "Контур"
 #: src/frontends/qt4/GuiToolbar.cpp:368
 #, c-format
 msgid "Filtering layouts with \"%1$s\". Press ESC to remove filter."
-msgstr ""
+msgstr "Фільтрування форматів за \"%1$s\". Натисніть ESC, щоб вилучити фільтр."
 
 #: src/frontends/qt4/GuiToolbar.cpp:372 src/frontends/qt4/GuiToolbar.cpp:421
 msgid "Enter characters to filter the layout list."
@@ -18856,9 +18761,8 @@ msgid "No Document Open!"
 msgstr "Не відкрито жодного документа!"
 
 #: src/frontends/qt4/Menus.cpp:859
-#, fuzzy
 msgid "No custom insets defined!"
-msgstr "Дію не визначено!"
+msgstr "Нетиповий вкладок не визначено!"
 
 #: src/frontends/qt4/Menus.cpp:939
 msgid "Master Document"
@@ -19291,9 +19195,9 @@ msgstr ""
 "описаний у «Підручнику користувача»."
 
 #: src/insets/InsetInfo.cpp:115
-#, fuzzy, c-format
+#, c-format
 msgid "Information regarding %1$s '%2$s'"
-msgstr "Відомості щодо "
+msgstr "Відомості щодо %1$s '%2$s'"
 
 #: src/insets/InsetInfo.cpp:282
 msgid "undefined"
@@ -19432,10 +19336,8 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "Слід створити з одного або більше з %1$s."
 
 #: src/insets/InsetListingsParams.cpp:284
-msgid ""
-"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
-msgstr ""
-"Використайте \\footnotesize, \\small, \\itshape, \\ttfamily або щось подібне"
+msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgstr "Використайте \\footnotesize, \\small, \\itshape, \\ttfamily або щось подібне"
 
 #: src/insets/InsetListingsParams.cpp:286
 msgid ""
@@ -19951,8 +19853,7 @@ msgstr "Не знайдено виконуваний файл LyX"
 
 #: src/support/Package.cpp:436
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
+msgid "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr "Неможливо визначити шлях до програми LyX з командного рядка %1$s"
 
 #: src/support/Package.cpp:555
@@ -20172,58 +20073,3 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Невідомий користувач"
 
-#~ msgid "Filtering layouts with \""
-#~ msgstr "Фільтрування форматів за допомогою \""
-
-#, fuzzy
-#~ msgid " Macro: %1$s: "
-#~ msgstr "Параметр %1$s: "
-
-#, fuzzy
-#~ msgid "keywords"
-#~ msgstr "Ключові слова"
-
-#~ msgid "Table of Contents|a"
-#~ msgstr "Зміст|З"
-
-#~ msgid "FAQ|F"
-#~ msgstr "Питання і відповіді|в"
-
-#~ msgid "Slidecontents"
-#~ msgstr "Вміст слайда"
-
-#~ msgid "LinuxDoc"
-#~ msgstr "LinuxDoc"
-
-#~ msgid "LinuxDoc|x"
-#~ msgstr "LinuxDoc|x"
-
-#~ msgid "&Options:"
-#~ msgstr "&Параметри:"
-
-#~ msgid "Adds \"backlink\" text to the end of each item in the bibliography"
-#~ msgstr "Додає рядок «backlink» в кінець кожного з елементів у бібліографії"
-
-#~ msgid "Backreference by pa&ge number"
-#~ msgstr "Зворотне посилання на номер с&торінки"
-
-#~ msgid "."
-#~ msgstr "."
-
-#~ msgid "American"
-#~ msgstr "Американська"
-
-#~ msgid "Austrian (old spelling)"
-#~ msgstr "Австрійська (старий правопис)"
-
-#~ msgid "Austrian"
-#~ msgstr "Австрійська"
-
-#~ msgid "Bahasa Malaysia"
-#~ msgstr "Малайзійська"
-
-#~ msgid "British"
-#~ msgstr "Британська"
-
-#~ msgid "Canadian"
-#~ msgstr "Канадська"
