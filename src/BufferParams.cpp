@@ -1468,40 +1468,6 @@ void BufferParams::setDocumentClass(DocumentClass const * const tc) {
 }
 
 
-void BufferParams::removeExcludedModules()
-{
-	// remove any modules the new base class excludes
-	list<string> oldModules = getModules();
-	clearLayoutModules();
-	list<string>::const_iterator oit = oldModules.begin();
-	list<string>::const_iterator oen = oldModules.end();
-	list<string> const & provmods = baseClass()->providedModules();
-	list<string> const & exclmods = baseClass()->excludedModules();
-	for (; oit != oen; ++oit) {
-		string const & modname = *oit;
-		// are we excluded by the document class?
-		if (find(exclmods.begin(), exclmods.end(), modname) != exclmods.end()) {
-			LYXERR0("Module " << modname << " dropped because excluded by document class.");
-			continue;
-		}
-		// determine whether some provided module excludes us or we exclude it
-		list<string>::const_iterator pit = provmods.begin();
-		list<string>::const_iterator pen = provmods.end();
-		bool excluded = false;
-		for (; !excluded && pit != pen; ++pit) {
-			if (!LyXModule::areCompatible(modname, *pit)) {
-				LYXERR0("Module " << modname << 
-						" dropped becuase it conflicts with provided module " << *pit);
-				excluded = true;
-			}
-		}
-		if (excluded)
-			continue;
-		layoutModules_.push_back(*oit);
-	}
-}
-
-
 void BufferParams::addDefaultModules()
 {
 	// add any default modules not already in use
@@ -1557,14 +1523,12 @@ bool BufferParams::checkModuleConsistency() {
 			continue;
 		}
 		// are we excluded by the document class?
-		// FIXME This can probably be removed, since removeExcludedModules ought
-		// already to have done this test.
 		if (find(exclmods.begin(), exclmods.end(), modname) != exclmods.end()) {
 			consistent = false;
-			LYXERR0("WARNING: Module " << modname << " should already have been dropped!");
+			LYXERR0("Module " << modname << " dropped because excluded by document class.");
 			continue;
 		}
-		// FIXME This test can probably also be dropped, for the same reason.
+
 		// determine whether some provided module excludes us or we exclude it
 		list<string>::const_iterator pit = provmods.begin();
 		list<string>::const_iterator pen = provmods.end();
@@ -1572,7 +1536,8 @@ bool BufferParams::checkModuleConsistency() {
 		for (; !excluded && pit != pen; ++pit) {
 			if (!LyXModule::areCompatible(modname, *pit)) {
 				consistent = false;
-				LYXERR0("WARNING: Module " << modname << " should already have been dropped!");
+				LYXERR0("Module " << modname << 
+						" dropped becuase it conflicts with provided module " << *pit);
 				excluded = true;
 			}
 		}
@@ -1662,20 +1627,7 @@ bool BufferParams::setBaseClass(string const & classname)
 	}
 
 	pimpl_->baseClass_ = classname;
-	// the previous document class may have loaded some modules that the
-	// new one excludes, and the new class may provide, etc, some that
-	// conflict with ones that were already loaded. So we need to go 
-	// through the list and fix everything. I suppose there are various
-	// ways this could be done, but the following seems to work at the 
-	// moment. (Thanks to Philippe Charpentier for helping work out all 
-	// the bugs---rgh.)
-	// 
-	// first, we remove any modules the new document class excludes
-	removeExcludedModules();
-	// next, we add any default modules the new class provides
 	addDefaultModules();
-	// finally, we perform a general consistency check on the set of
-	// loaded modules
 	checkModuleConsistency();
 
 	return true;

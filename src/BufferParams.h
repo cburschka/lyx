@@ -346,8 +346,6 @@ private:
 	///
 	void readRemovedModules(Lexer &);
 	///
-	void removeExcludedModules();
-	///
 	void addDefaultModules();
 	/// checks for consistency among modules: makes sure requirements
 	/// are met, no modules exclude one another, etc, and resolves any
