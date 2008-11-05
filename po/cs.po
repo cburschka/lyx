@@ -11650,24 +11650,20 @@ msgid "XPM"
 msgstr ""
 
 #: lib/configure.py:263
-#, fuzzy
 msgid "Plain text (chess output)"
-msgstr "Prostý text"
+msgstr "Prostý text (¹achový výstup)"
 
 #: lib/configure.py:264
-#, fuzzy
 msgid "Plain text (image)"
-msgstr "Prostý text"
+msgstr "Prostý text (obrázek)"
 
 #: lib/configure.py:265
-#, fuzzy
 msgid "Plain text (Xfig output)"
-msgstr "Prostý text"
+msgstr "Prostý text (výstup Xfig)"
 
 #: lib/configure.py:266
-#, fuzzy
 msgid "date (output)"
-msgstr "Pøizpùsobit výst&up"
+msgstr "datum (výstup)"
 
 #: lib/configure.py:267
 #, fuzzy
@@ -11827,14 +11823,12 @@ msgid "OpenDocument"
 msgstr "Otevøít dokument"
 
 #: lib/configure.py:309
-#, fuzzy
 msgid "date command"
-msgstr "Pøíkaz &rejstøíku:"
+msgstr "pøíkaz datumu"
 
 #: lib/configure.py:310
-#, fuzzy
 msgid "Table (CSV)"
-msgstr "Tabulka"
+msgstr "Tabulka (CSV)"
 
 #: lib/configure.py:312 src/frontends/qt4/GuiView.cpp:733
 msgid "LyX"
@@ -13284,24 +13278,20 @@ msgid "Select document to open"
 msgstr "Vybrat dokument k otevøení"
 
 #: src/LyXFunc.cpp:2045
-#, fuzzy
 msgid "LyX Documents (*.lyx);;"
-msgstr "Dokumenty LyX-u (*.lyx)"
+msgstr "Dokumenty LyX-u (*.lyx);;"
 
 #: src/LyXFunc.cpp:2046
-#, fuzzy
 msgid "LyX-1.3.x Documents (*.lyx13);;"
-msgstr "Dokumenty LyX-u (*.lyx)"
+msgstr "Dokumenty LyX-u 1.3 (*.lyx13);;"
 
 #: src/LyXFunc.cpp:2047
-#, fuzzy
 msgid "LyX-1.4.x Documents (*.lyx14);;"
-msgstr "Dokumenty LyX-u (*.lyx)"
+msgstr "Dokumenty LyX-u 1.4 (*.lyx14);;"
 
 #: src/LyXFunc.cpp:2048
-#, fuzzy
 msgid "LyX-1.5.x Documents (*.lyx15)"
-msgstr "Dokumenty LyX-u (*.lyx)"
+msgstr "Dokumenty LyX-u 1.5 (*.lyx15)"
 
 #: src/LyXFunc.cpp:2090
 #, c-format
@@ -13434,7 +13424,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2193
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
-msgstr ""
+msgstr "Pou¾ít konvence Mac OS X pro pohyb kurzoru po slovech"
 
 #: src/LyXRC.cpp:2204
 #, no-c-format
@@ -13500,6 +13490,8 @@ msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
 msgstr ""
+"Definuje volby programu makeindex pou¾ívané pro nomenklatury. Ty se mohou "
+"li¹it od voleb pro generování rejstøíku."
 
 #: src/LyXRC.cpp:2253
 msgid ""
