@@ -51,6 +51,7 @@ Section -InstallData
 
   # Start Menu shortcut
   # There is only one shortcut to the application, so it should be in the main group
+  SetOutPath "$INSTDIR\bin"
   CreateShortCut "$SMPROGRAMS\${SHORTCUT}
     
   # Uninstaller information
@@ -163,15 +164,10 @@ Section -PSPrinter
 
     # Delete printer
     ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'
-
-    # Delete printer driver
-    ExecWait '$PrinterConf /q /dd /m "Metafile to EPS Converter"'
-
     # Install printer and driver
-    ExecWait '$PrinterConf /if /f "$INSTDIR\PSPrinter\metafile2eps.inf" /r "FILE:" /m "Metafile to EPS Converter"'
-
+    ExecWait '$PrinterConf /if /b "Metafile to EPS Converter" /r "FILE:" /m "MS Publisher Imagesetter"'
     # Restore DEVMODE with proper settings
-    ExecWait '$PrinterConf /q /Sr /n "Metafile to EPS Converter" /a "$INSTDIR\PSPrinter\metafile2eps.dat" g'
+    ExecWait '$PrinterConf /q /Sr /n "Metafile to EPS Converter" /a "$INSTDIR\bin\metafile2eps.dat" g'
 
   ${EndIf}
 
@@ -208,7 +204,7 @@ FunctionEnd
 Function CreateDesktopShortcut
 
   # Desktop icon creation is an option on the finish page
-
+  SetOutPath "$INSTDIR\bin"
   CreateShortCut "$DESKTOP\${SHORTCUT}
 
 FunctionEnd

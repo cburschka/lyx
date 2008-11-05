@@ -72,10 +72,6 @@ Section "un.Program Files" un.SecProgramFiles
   !insertmacro FileListAiksaurusData Delete "$INSTDIR\aiksaurus\"
   RMDir "$INSTDIR\aiksaurus"
   
-  # Postscript printer for metafile to EPS converter
-  !insertmacro FileListPSPrinter Delete "$INSTDIR\PSPrinter\"
-  RMDir "$INSTDIR\PsPrinter"
-  
   # Shortcuts
   Delete "$SMPROGRAMS\${APP_NAME} ${APP_SERIES_NAME}.lnk"
   Delete "$DESKTOP\${APP_NAME} ${APP_SERIES_NAME}.lnk"
@@ -102,14 +98,11 @@ Section "un.Program Files" un.SecProgramFiles
   ${EndIf}
   
   ${If} $MultiUser.Privileges != "Admin"
-    ${OrIf} $MultiUser.Privileges != "Power"  
-  
-    # Delete Postscript printer for metafile o EPS conversion
+    ${OrIf} $MultiUser.Privileges != "Power"
+
+    # Delete Postscript printer for metafile to EPS conversion
     ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'
-    
-    # Also delete printer driver
-    ExecWait '$PrinterConf /q /dd /m "Metafile to EPS Converter"'
-    
+
   ${EndIf}
 
 SectionEnd

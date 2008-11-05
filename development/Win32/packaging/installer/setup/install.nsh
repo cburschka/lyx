@@ -120,10 +120,6 @@ Section -ProgramFiles SecProgramFiles
   SetOutPath "$INSTDIR\aiksaurus"
   !insertmacro FileListAiksaurusData File "${FILES_AIKSAURUS}\"
   
-  # Postscript printer for metafile to EPS converter
-  SetOutPath "$INSTDIR\PSPrinter"
-  !insertmacro FileListPSPrinter File "${FILES_PSPRINTER}\"
-  
   # Create uninstaller
   WriteUninstaller "$INSTDIR\${SETUP_UNINSTALLER}"
 
