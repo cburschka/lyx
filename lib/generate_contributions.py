@@ -625,6 +625,14 @@ contributers = [
                  "30 March 2005",
                  u"Improvements to Koma-Script classes"),
 
+     contributer(u"İbrahim Güngör",
+                 "h.ibrahim.gungor () gmail ! com",
+                 "GPL",
+                 "Update Turkish Translation",
+                 "m=122583550732670",
+                 "4 Nov 2008",
+                 u"Turkish translation"),
+
      contributer(u"Hartmut Haase",
                  "hha4491 () web ! de",
                  "GPL",
