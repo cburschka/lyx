@@ -17644,22 +17644,19 @@ msgstr "dokument"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:706
 msgid "Shift-"
-msgstr ""
+msgstr "Shift-"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:707
-#, fuzzy
 msgid "Control-"
-msgstr "Ovládání"
+msgstr "Control-"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:708
-#, fuzzy
 msgid "Option-"
-msgstr "Mo¾nosti"
+msgstr "Option-"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:709
-#, fuzzy
 msgid "Command-"
-msgstr "&Pøíkaz:"
+msgstr "Command-"
 
 #: src/frontends/qt4/GuiLabel.cpp:37
 msgid "Label"
@@ -18459,7 +18456,7 @@ msgstr "Osnova"
 #: src/frontends/qt4/GuiToolbar.cpp:368
 #, c-format
 msgid "Filtering layouts with \"%1$s\". Press ESC to remove filter."
-msgstr ""
+msgstr "Filtrování prostøedí pomocí \"%1$s\". Pou¾ijte ESC pro smazání filtru."
 
 #: src/frontends/qt4/GuiToolbar.cpp:372 src/frontends/qt4/GuiToolbar.cpp:421
 msgid "Enter characters to filter the layout list."
@@ -19187,9 +19184,9 @@ msgstr ""
 "popisu v u¾ivatelské pøíruèce."
 
 #: src/insets/InsetInfo.cpp:115
-#, fuzzy, c-format
+#, c-format
 msgid "Information regarding %1$s '%2$s'"
-msgstr "Informace ohlednì "
+msgstr "Informace ohlednì %1$s '%2$s"
 
 #: src/insets/InsetInfo.cpp:282
 msgid "undefined"
