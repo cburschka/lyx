@@ -38,7 +38,7 @@ lyx_LDADD = \
 if LYX_WIN_RESOURCE
 .rc.o:
 	cp $(top_srcdir)/development/Win32/packaging/icons/lyx_*32x32.ico .
-	windres -I. --preprocessor "$(CPP) -xc-header -DRC_INVOKED" $< -o $@
+	windres -I$(top_builddir) --preprocessor "$(CPP) -xc-header -DRC_INVOKED" $< -o $@
 endif
 
 #lyx_LDFLAGS=-Wl,-O1
