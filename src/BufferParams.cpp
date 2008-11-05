@@ -1475,13 +1475,28 @@ void BufferParams::removeExcludedModules()
 	clearLayoutModules();
 	list<string>::const_iterator oit = oldModules.begin();
 	list<string>::const_iterator oen = oldModules.end();
+	list<string> const & provmods = baseClass()->providedModules();
 	list<string> const & exclmods = baseClass()->excludedModules();
 	for (; oit != oen; ++oit) {
+		string const & modname = *oit;
 		// are we excluded by the document class?
-		if (find(exclmods.begin(), exclmods.end(), *oit) != exclmods.end()) {
-			LYXERR0("Module " << *oit << " dropped because excluded by document class.");
+		if (find(exclmods.begin(), exclmods.end(), modname) != exclmods.end()) {
+			LYXERR0("Module " << modname << " dropped because excluded by document class.");
 			continue;
 		}
+		// determine whether some provided module excludes us or we exclude it
+		list<string>::const_iterator pit = provmods.begin();
+		list<string>::const_iterator pen = provmods.end();
+		bool excluded = false;
+		for (; !excluded && pit != pen; ++pit) {
+			if (!LyXModule::areCompatible(modname, *pit)) {
+				LYXERR0("Module " << modname << 
+						" dropped becuase it conflicts with provided module " << *pit);
+				excluded = true;
+			}
+		}
+		if (excluded)
+			continue;
 		layoutModules_.push_back(*oit);
 	}
 }
