@@ -520,8 +520,7 @@ void LyX::execCommands()
 		}
 		// clear this list to save a few bytes of RAM
 		pimpl_->files_to_load_.clear();
-	}
-	else
+	} else
 		pimpl_->application_->restoreGuiSession();
 
 	// Execute batch commands if available
