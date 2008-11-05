@@ -1468,6 +1468,25 @@ void BufferParams::setDocumentClass(DocumentClass const * const tc) {
 }
 
 
+void BufferParams::removeExcludedModules()
+{
+	// remove any modules the new base class excludes
+	list<string> oldModules = getModules();
+	clearLayoutModules();
+	list<string>::const_iterator oit = oldModules.begin();
+	list<string>::const_iterator oen = oldModules.end();
+	list<string> const & exclmods = baseClass()->excludedModules();
+	for (; oit != oen; ++oit) {
+		// are we excluded by the document class?
+		if (find(exclmods.begin(), exclmods.end(), *oit) != exclmods.end()) {
+			LYXERR0("Module " << *oit << " dropped because excluded by document class.");
+			continue;
+		}
+		layoutModules_.push_back(*oit);
+	}
+}
+
+
 void BufferParams::addDefaultModules()
 {
 	// add any default modules not already in use
@@ -1525,7 +1544,7 @@ bool BufferParams::checkModuleConsistency() {
 		// are we excluded by the document class?
 		if (find(exclmods.begin(), exclmods.end(), modname) != exclmods.end()) {
 			consistent = false;
-			LYXERR0("Module " << modname << " dropped because excluded by document class.");
+			LYXERR0("WARNING: Module " << modname << " should already have been dropped!");
 			continue;
 		}
 
@@ -1627,6 +1646,7 @@ bool BufferParams::setBaseClass(string const & classname)
 	}
 
 	pimpl_->baseClass_ = classname;
+	removeExcludedModules();
 	addDefaultModules();
 	checkModuleConsistency();
 
