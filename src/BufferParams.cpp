@@ -1509,7 +1509,7 @@ bool BufferParams::removeBadModules()
 		}
 		if (excluded)
 			continue;
-		layoutModules_.push_back(*oit);
+		layoutModules_.push_back(modname);
 	}
 	return consistent;
 }
