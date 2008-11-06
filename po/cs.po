@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-11-05 00:36+0100\n"
+"POT-Creation-Date: 2008-11-06 01:02+0100\n"
 "PO-Revision-Date: 2008-11-05 02:01+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -88,9 +88,9 @@ msgstr "&OK"
 #: src/LyXVC.cpp:181 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1254
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1504
-#: src/frontends/qt4/GuiView.cpp:1682 src/frontends/qt4/GuiView.cpp:1727
-#: src/frontends/qt4/GuiView.cpp:1784 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1505
+#: src/frontends/qt4/GuiView.cpp:1683 src/frontends/qt4/GuiView.cpp:1728
+#: src/frontends/qt4/GuiView.cpp:1785 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
 msgstr "&Zru¹it"
 
@@ -1423,8 +1423,8 @@ msgstr "&Soubor"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:76
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90 lib/layouts/scrlttr2.layout:205
-#: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:258
-#: lib/layouts/stdinsets.inc:263 lib/layouts/minimalistic.module:34
+#: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:239
+#: lib/layouts/stdinsets.inc:244 lib/layouts/minimalistic.module:34
 #: lib/layouts/minimalistic.module:39 lib/ui/stdmenus.inc:340
 msgid "URL"
 msgstr "URL"
@@ -3095,7 +3095,7 @@ msgid "&User interface file:"
 msgstr "Soubor s u¾&ivatelským rozhraním:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:682
-#: src/frontends/qt4/GuiView.cpp:1784
+#: src/frontends/qt4/GuiView.cpp:1785
 msgid "&Save"
 msgstr "&Ulo¾it"
 
@@ -5000,8 +5000,7 @@ msgid "Presentation"
 msgstr "Presentation"
 
 #: lib/layouts/beamer.layout:1206 lib/layouts/powerdot.layout:377
-#: lib/layouts/stdfloats.inc:10 lib/layouts/stdinsets.inc:241
-#: lib/ui/stdtoolbars.inc:115
+#: lib/layouts/stdfloats.inc:10 lib/ui/stdtoolbars.inc:115
 msgid "Table"
 msgstr "Tabulka"
 
@@ -5011,7 +5010,7 @@ msgid "List of Tables"
 msgstr "Seznam tabulek"
 
 #: lib/layouts/beamer.layout:1218 lib/layouts/powerdot.layout:387
-#: lib/layouts/stdfloats.inc:22 lib/layouts/stdinsets.inc:232
+#: lib/layouts/stdfloats.inc:22
 msgid "Figure"
 msgstr "Obrázek"
 
@@ -5647,7 +5646,7 @@ msgstr "Criterion \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:340 lib/layouts/powerdot.layout:397
 #: lib/layouts/siamltex.layout:110 lib/layouts/stdfloats.inc:34
-#: lib/layouts/stdinsets.inc:250 lib/layouts/theorems-ams-extended.module:55
+#: lib/layouts/theorems-ams-extended.module:55
 msgid "Algorithm"
 msgstr "Algoritmus"
 
@@ -8221,38 +8220,31 @@ msgid "Box:Shaded"
 msgstr "Stínovanì"
 
 #: lib/layouts/stdinsets.inc:231
-msgid "figure"
-msgstr "obrázek"
+#, fuzzy
+msgid "Float"
+msgstr "P&lovoucí"
 
-#: lib/layouts/stdinsets.inc:240
-msgid "table"
-msgstr "tabulka"
-
-#: lib/layouts/stdinsets.inc:249
-msgid "algorithm"
-msgstr "algoritmus"
-
-#: lib/layouts/stdinsets.inc:278
+#: lib/layouts/stdinsets.inc:259
 msgid "OptArg"
 msgstr "OptArg"
 
-#: lib/layouts/stdinsets.inc:279
+#: lib/layouts/stdinsets.inc:260
 msgid "opt"
 msgstr "opt"
 
-#: lib/layouts/stdinsets.inc:287 src/frontends/qt4/GuiInfo.cpp:51
+#: lib/layouts/stdinsets.inc:268 src/frontends/qt4/GuiInfo.cpp:51
 msgid "Info"
 msgstr "Info"
 
-#: lib/layouts/stdinsets.inc:291
+#: lib/layouts/stdinsets.inc:272
 msgid "Info:menu"
 msgstr "Info:menu"
 
-#: lib/layouts/stdinsets.inc:303
+#: lib/layouts/stdinsets.inc:284
 msgid "Info:shortcut"
 msgstr "Info:zkratka"
 
-#: lib/layouts/stdinsets.inc:315
+#: lib/layouts/stdinsets.inc:296
 msgid "Info:shortcuts"
 msgstr "Info:zkratky"
 
@@ -8570,17 +8562,13 @@ msgstr "Styl znaku: Význam"
 msgid "meaning"
 msgstr "význam"
 
-#: lib/layouts/linguistics.module:163 lib/layouts/linguistics.module:173
+#: lib/layouts/linguistics.module:163
 msgid "Tableau"
 msgstr "Tablo"
 
 #: lib/layouts/linguistics.module:168
 msgid "List of Tableaux"
 msgstr "Seznam tabel"
-
-#: lib/layouts/linguistics.module:172
-msgid "tableau"
-msgstr "tablo"
 
 #: lib/layouts/logicalmkup.module:2
 msgid "Logical Markup"
@@ -14036,8 +14024,8 @@ msgstr "pøíkaz pro datum"
 msgid "Table (CSV)"
 msgstr "Tabulka (CSV)"
 
-#: lib/configure.py:335 src/frontends/qt4/GuiView.cpp:824
-#: src/frontends/qt4/GuiView.cpp:825 src/mathed/MathMacroTemplate.cpp:537
+#: lib/configure.py:335 src/frontends/qt4/GuiView.cpp:825
+#: src/frontends/qt4/GuiView.cpp:826 src/mathed/MathMacroTemplate.cpp:537
 msgid "LyX"
 msgstr "LyX"
 
@@ -14285,8 +14273,8 @@ msgid "Overwrite modified file?"
 msgstr "Pøepsat modifikovaný soubor?"
 
 #: src/Buffer.cpp:840 src/Exporter.cpp:49 src/LyXFunc.cpp:996
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1504
-#: src/frontends/qt4/GuiView.cpp:1682
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1505
+#: src/frontends/qt4/GuiView.cpp:1683
 msgid "&Overwrite"
 msgstr "&Pøepsat"
 
@@ -14529,7 +14517,7 @@ msgstr "Tøída dokumentu není dostupná"
 msgid "LyX will not be able to produce output."
 msgstr "LyX nebude schopen vytvoøit výstup."
 
-#: src/BufferParams.cpp:1611
+#: src/BufferParams.cpp:1630
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
@@ -14540,20 +14528,20 @@ msgstr ""
 "LyX mo¾ná nebude schopen vyrobit výstup dokud nezvolíte správnou tøídu v "
 "nastaveních dokumentu."
 
-#: src/BufferParams.cpp:1616
+#: src/BufferParams.cpp:1635
 msgid "Document class not found"
 msgstr "Tøída dokumentu nenalezena"
 
-#: src/BufferParams.cpp:1623 src/LyXFunc.cpp:714
+#: src/BufferParams.cpp:1642 src/LyXFunc.cpp:714
 #, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "Tøídu dokumentu (%1$s) se nepodaøilo naèíst."
 
-#: src/BufferParams.cpp:1625 src/LyXFunc.cpp:716
+#: src/BufferParams.cpp:1644 src/LyXFunc.cpp:716
 msgid "Could not load class"
 msgstr "Nelze naèíst tøídu"
 
-#: src/BufferParams.cpp:1668
+#: src/BufferParams.cpp:1706
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -14566,15 +14554,15 @@ msgstr ""
 "Pokud byl instalován teprve nedávno, budete\n"
 "pravdìpodobnì potøebovat rekonfiguraci LyX-u.\n"
 
-#: src/BufferParams.cpp:1672
+#: src/BufferParams.cpp:1710
 msgid "Module not available"
 msgstr "Modul není dostupný"
 
-#: src/BufferParams.cpp:1673
+#: src/BufferParams.cpp:1711
 msgid "Some layouts may not be available."
 msgstr "Nìkterá rozvr¾ení dokumentu nemusí být dostupná."
 
-#: src/BufferParams.cpp:1680
+#: src/BufferParams.cpp:1718
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -14584,20 +14572,20 @@ msgstr ""
 "Modul %1$s obsahuje balíèek, který není dostupný ve va¹í\n"
 "LaTeX-ové instalaci. Výstup do LaTeXu nemusí být umo¾nìn.\n"
 
-#: src/BufferParams.cpp:1683
+#: src/BufferParams.cpp:1721
 msgid "Package not available"
 msgstr "Balíèek není dostupný"
 
-#: src/BufferParams.cpp:1688
+#: src/BufferParams.cpp:1726
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "Chyba pøi ètení modulu %1$s\n"
 
-#: src/BufferParams.cpp:1689 src/BufferParams.cpp:1695
+#: src/BufferParams.cpp:1727 src/BufferParams.cpp:1733
 msgid "Read Error"
 msgstr "Chyba ètení"
 
-#: src/BufferParams.cpp:1694
+#: src/BufferParams.cpp:1732
 msgid "Error reading internal layout information"
 msgstr "Chyba pøi ètení informací o rozvr¾ení"
 
@@ -15381,7 +15369,7 @@ msgstr "Spou¹tím MakeIndex pro nomencl."
 msgid "Could not read configuration file"
 msgstr "Nelze pøeèíst konfiguraèní soubor"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1397
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1423
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -15444,19 +15432,19 @@ msgstr "&Rekonfigurovat"
 msgid "&Use Default"
 msgstr "Pou¾ij &Standardní"
 
-#: src/LyX.cpp:494 src/LyX.cpp:857
+#: src/LyX.cpp:494 src/LyX.cpp:856
 msgid "&Exit LyX"
 msgstr "&Ukonèit LyX"
 
-#: src/LyX.cpp:641 src/frontends/qt4/GuiView.cpp:658
+#: src/LyX.cpp:640 src/frontends/qt4/GuiView.cpp:659
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:766
+#: src/LyX.cpp:765
 msgid "Could not create temporary directory"
 msgstr "Nelze vytvoøit pomocný adresáø"
 
-#: src/LyX.cpp:767
+#: src/LyX.cpp:766
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -15467,11 +15455,11 @@ msgstr ""
 "\"%1$s\"\n"
 "Ujistìte se, ¾e tato cesta existuje a má práva na zápis. Poté zkuste znovu."
 
-#: src/LyX.cpp:850
+#: src/LyX.cpp:849
 msgid "Missing user LyX directory"
 msgstr "Chybí u¾ivatelský adresáø LyX-u"
 
-#: src/LyX.cpp:851
+#: src/LyX.cpp:850
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -15480,33 +15468,33 @@ msgstr ""
 "Zadal jste neexistující u¾ivatelský adresáø LyX-u, %1$s.\n"
 "Je potøebný k uchování va¹í konfigurace."
 
-#: src/LyX.cpp:856
+#: src/LyX.cpp:855
 msgid "&Create directory"
 msgstr "&ytvoøit adresáø"
 
-#: src/LyX.cpp:858
+#: src/LyX.cpp:857
 msgid "No user LyX directory. Exiting."
 msgstr "®ádný u¾ivatelský adresáø LyX-u. Konec."
 
-#: src/LyX.cpp:862
+#: src/LyX.cpp:861
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Vytváøím adresáø %1$s"
 
-#: src/LyX.cpp:867
+#: src/LyX.cpp:866
 msgid "Failed to create directory. Exiting."
 msgstr "Selhalo vytváøení adresáøe. Konec."
 
-#: src/LyX.cpp:939
+#: src/LyX.cpp:938
 msgid "List of supported debug flags:"
 msgstr "Seznam podporovaných ladících pøíznakù:"
 
-#: src/LyX.cpp:943
+#: src/LyX.cpp:942
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Ladící úroveò nastavena na %1$s"
 
-#: src/LyX.cpp:954
+#: src/LyX.cpp:953
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -15550,39 +15538,39 @@ msgstr ""
 "\t-version        shrnout verzi a informace o sestavení\n"
 "Prohlédnìte manuálovou stránku LyX-u pro detailnìj¹í informace."
 
-#: src/LyX.cpp:994 src/support/Package.cpp:554
+#: src/LyX.cpp:993 src/support/Package.cpp:554
 msgid "No system directory"
 msgstr "®ádný systémový adresáø"
 
-#: src/LyX.cpp:995
+#: src/LyX.cpp:994
 msgid "Missing directory for -sysdir switch"
 msgstr "Chybí adresáø pro pøepínaè -sysdir"
 
-#: src/LyX.cpp:1006
+#: src/LyX.cpp:1005
 msgid "No user directory"
 msgstr "®ádný u¾ivatelský adresáø"
 
-#: src/LyX.cpp:1007
+#: src/LyX.cpp:1006
 msgid "Missing directory for -userdir switch"
 msgstr "Chybí adresáø pro pøepínaè -userdir"
 
-#: src/LyX.cpp:1018
+#: src/LyX.cpp:1017
 msgid "Incomplete command"
 msgstr "Neúplný pøíkaz"
 
-#: src/LyX.cpp:1019
+#: src/LyX.cpp:1018
 msgid "Missing command string after --execute switch"
 msgstr "Chybí pøíkaz za pøepínaèem --execute"
 
-#: src/LyX.cpp:1030
+#: src/LyX.cpp:1029
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Chybí typ souboru [napø. latex, ps...] za pøepínaèem --export"
 
-#: src/LyX.cpp:1043
+#: src/LyX.cpp:1042
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Chybí typ souboru [napø. latex, ps...] za pøepínaèem --import"
 
-#: src/LyX.cpp:1048
+#: src/LyX.cpp:1047
 msgid "Missing filename for --import"
 msgstr "Chybí jméno souboru za pøepínaèem --import"
 
@@ -15662,7 +15650,7 @@ msgstr ""
 "\n"
 "Chcete jej ulo¾it ?"
 
-#: src/LyXFunc.cpp:681 src/frontends/qt4/GuiView.cpp:1783
+#: src/LyXFunc.cpp:681 src/frontends/qt4/GuiView.cpp:1784
 msgid "Save changed document?"
 msgstr "Ulo¾it zmìnìný soubor?"
 
@@ -16780,42 +16768,42 @@ msgstr "U¾ivatelský adresáø: "
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:403
+#: src/frontends/qt4/GuiApplication.cpp:414
 msgid "About %1"
 msgstr "O programu %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:403
+#: src/frontends/qt4/GuiApplication.cpp:414
 #: src/frontends/qt4/GuiPrefs.cpp:2540
 msgid "Preferences"
 msgstr "Nastavení"
 
-#: src/frontends/qt4/GuiApplication.cpp:404
+#: src/frontends/qt4/GuiApplication.cpp:415
 msgid "Reconfigure"
 msgstr "Rekonfigurovat"
 
-#: src/frontends/qt4/GuiApplication.cpp:404
+#: src/frontends/qt4/GuiApplication.cpp:415
 msgid "Quit %1"
 msgstr "Ukonèit %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:795
+#: src/frontends/qt4/GuiApplication.cpp:806
 msgid "Exiting."
 msgstr "Ukonèování."
 
-#: src/frontends/qt4/GuiApplication.cpp:862
+#: src/frontends/qt4/GuiApplication.cpp:873
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:878
+#: src/frontends/qt4/GuiApplication.cpp:889
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" selhalo - barva je nedefinována nebo nelze pøedefinovat"
 
-#: src/frontends/qt4/GuiApplication.cpp:1221
+#: src/frontends/qt4/GuiApplication.cpp:1247
 msgid "The current document was closed."
 msgstr "Aktuální dokukment byl uzavøen."
 
-#: src/frontends/qt4/GuiApplication.cpp:1231
+#: src/frontends/qt4/GuiApplication.cpp:1257
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -16827,12 +16815,12 @@ msgstr ""
 "\n"
 "Vyjímka: "
 
-#: src/frontends/qt4/GuiApplication.cpp:1235
-#: src/frontends/qt4/GuiApplication.cpp:1241
+#: src/frontends/qt4/GuiApplication.cpp:1261
+#: src/frontends/qt4/GuiApplication.cpp:1267
 msgid "Software exception Detected"
 msgstr "Detekována softwarová vyjímka"
 
-#: src/frontends/qt4/GuiApplication.cpp:1239
+#: src/frontends/qt4/GuiApplication.cpp:1265
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -16840,7 +16828,7 @@ msgstr ""
 "LyX zachytil neobvyklou vyjímku a nyní se pokusí ulo¾it v¹echny neulo¾ené "
 "dokumenty a skonèit."
 
-#: src/frontends/qt4/GuiApplication.cpp:1396
+#: src/frontends/qt4/GuiApplication.cpp:1422
 msgid "Could not find UI definition file"
 msgstr "Nelze pøeèíst definièní soubor u¾ivatelského rozhraní"
 
@@ -16855,9 +16843,9 @@ msgstr "Bibliografie BibTeX-u"
 #: src/frontends/qt4/GuiBibtex.cpp:424 src/frontends/qt4/GuiBibtex.cpp:434
 #: src/frontends/qt4/GuiDocument.cpp:1296
 #: src/frontends/qt4/GuiExternal.cpp:661 src/frontends/qt4/GuiGraphics.cpp:738
-#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1250
-#: src/frontends/qt4/GuiView.cpp:1308 src/frontends/qt4/GuiView.cpp:1454
-#: src/frontends/qt4/GuiView.cpp:1573 src/frontends/qt4/GuiView.cpp:1652
+#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1251
+#: src/frontends/qt4/GuiView.cpp:1309 src/frontends/qt4/GuiView.cpp:1455
+#: src/frontends/qt4/GuiView.cpp:1574 src/frontends/qt4/GuiView.cpp:1653
 msgid "Documents|#o#O"
 msgstr "Dokumenty|#o#O"
 
@@ -17062,10 +17050,10 @@ msgstr "%1$s souborù"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Zvolte jméno souboru pro ulo¾ení vkládaného obrázku"
 
-#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1326
-#: src/frontends/qt4/GuiView.cpp:1474 src/frontends/qt4/GuiView.cpp:1490
-#: src/frontends/qt4/GuiView.cpp:1507 src/frontends/qt4/GuiView.cpp:1590
-#: src/frontends/qt4/GuiView.cpp:1628
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1327
+#: src/frontends/qt4/GuiView.cpp:1475 src/frontends/qt4/GuiView.cpp:1491
+#: src/frontends/qt4/GuiView.cpp:1508 src/frontends/qt4/GuiView.cpp:1591
+#: src/frontends/qt4/GuiView.cpp:1629
 msgid "Canceled."
 msgstr "Zru¹eno."
 
@@ -18503,56 +18491,56 @@ msgstr "Normální ikony"
 msgid "Big-sized icons"
 msgstr "Velké ikony"
 
-#: src/frontends/qt4/GuiView.cpp:404
+#: src/frontends/qt4/GuiView.cpp:405
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Neznámý panel nástrojù \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1249
+#: src/frontends/qt4/GuiView.cpp:1250
 msgid "Select template file"
 msgstr "Vybrat soubor se ¹ablonou"
 
-#: src/frontends/qt4/GuiView.cpp:1251 src/frontends/qt4/GuiView.cpp:1653
+#: src/frontends/qt4/GuiView.cpp:1252 src/frontends/qt4/GuiView.cpp:1654
 msgid "Templates|#T#t"
 msgstr "©ablony|#A#a"
 
-#: src/frontends/qt4/GuiView.cpp:1254 src/frontends/qt4/GuiView.cpp:1312
-#: src/frontends/qt4/GuiView.cpp:1579 src/frontends/qt4/GuiView.cpp:1660
+#: src/frontends/qt4/GuiView.cpp:1255 src/frontends/qt4/GuiView.cpp:1313
+#: src/frontends/qt4/GuiView.cpp:1580 src/frontends/qt4/GuiView.cpp:1661
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokumenty LyX-u (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1271
+#: src/frontends/qt4/GuiView.cpp:1272
 msgid "Document not loaded."
 msgstr "Dokument nenaèten"
 
-#: src/frontends/qt4/GuiView.cpp:1307
+#: src/frontends/qt4/GuiView.cpp:1308
 msgid "Select document to open"
 msgstr "Vybrat dokument k otevøení"
 
-#: src/frontends/qt4/GuiView.cpp:1309 src/frontends/qt4/GuiView.cpp:1455
-#: src/frontends/qt4/GuiView.cpp:1574
+#: src/frontends/qt4/GuiView.cpp:1310 src/frontends/qt4/GuiView.cpp:1456
+#: src/frontends/qt4/GuiView.cpp:1575
 msgid "Examples|#E#e"
 msgstr "Pøíklady|#a#A"
 
-#: src/frontends/qt4/GuiView.cpp:1313
+#: src/frontends/qt4/GuiView.cpp:1314
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "Dokumenty LyX-u 1.3 (*.lyx13)"
 
-#: src/frontends/qt4/GuiView.cpp:1314
+#: src/frontends/qt4/GuiView.cpp:1315
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "Dokumenty LyX-u 1.4 (*.lyx14)"
 
-#: src/frontends/qt4/GuiView.cpp:1315
+#: src/frontends/qt4/GuiView.cpp:1316
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "Dokumenty LyX-u 1.5 (*.lyx15)"
 
-#: src/frontends/qt4/GuiView.cpp:1340 src/frontends/qt4/Validator.cpp:174
+#: src/frontends/qt4/GuiView.cpp:1341 src/frontends/qt4/Validator.cpp:174
 #: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
 #: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:453
 msgid "Invalid filename"
 msgstr "Neplatný název souboru"
 
-#: src/frontends/qt4/GuiView.cpp:1341
+#: src/frontends/qt4/GuiView.cpp:1342
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -18563,40 +18551,40 @@ msgstr ""
 "%1$s\n"
 "neexistuje."
 
-#: src/frontends/qt4/GuiView.cpp:1355
+#: src/frontends/qt4/GuiView.cpp:1356
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Otvírání dokumentu %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1364
+#: src/frontends/qt4/GuiView.cpp:1365
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s otevøen."
 
-#: src/frontends/qt4/GuiView.cpp:1367
+#: src/frontends/qt4/GuiView.cpp:1368
 msgid "Version control detected."
 msgstr "Detekována správa verzí."
 
-#: src/frontends/qt4/GuiView.cpp:1369
+#: src/frontends/qt4/GuiView.cpp:1370
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Nelze otevøít dokument %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1398
+#: src/frontends/qt4/GuiView.cpp:1399
 msgid "Couldn't import file"
 msgstr "Soubor nelze importovat"
 
-#: src/frontends/qt4/GuiView.cpp:1399
+#: src/frontends/qt4/GuiView.cpp:1400
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "®ádná informace pro import formátu %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:1450
+#: src/frontends/qt4/GuiView.cpp:1451
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vybrat soubor %1$s k importu"
 
-#: src/frontends/qt4/GuiView.cpp:1501 src/frontends/qt4/GuiView.cpp:1677
+#: src/frontends/qt4/GuiView.cpp:1502 src/frontends/qt4/GuiView.cpp:1678
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -18607,40 +18595,40 @@ msgstr ""
 "\n"
 "Chcete jej pøepsat ?"
 
-#: src/frontends/qt4/GuiView.cpp:1503 src/frontends/qt4/GuiView.cpp:1681
+#: src/frontends/qt4/GuiView.cpp:1504 src/frontends/qt4/GuiView.cpp:1682
 msgid "Overwrite document?"
 msgstr "Pøepsat dokument ?"
 
-#: src/frontends/qt4/GuiView.cpp:1512
+#: src/frontends/qt4/GuiView.cpp:1513
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Importování %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1515
+#: src/frontends/qt4/GuiView.cpp:1516
 msgid "imported."
 msgstr "importováno."
 
-#: src/frontends/qt4/GuiView.cpp:1517
+#: src/frontends/qt4/GuiView.cpp:1518
 msgid "file not imported!"
 msgstr "soubor nebyl importován!"
 
-#: src/frontends/qt4/GuiView.cpp:1572
+#: src/frontends/qt4/GuiView.cpp:1573
 msgid "Select LyX document to insert"
 msgstr "Vybrat dokument LyX-u ke vlo¾ení"
 
-#: src/frontends/qt4/GuiView.cpp:1613
+#: src/frontends/qt4/GuiView.cpp:1614
 msgid "Select file to insert"
 msgstr "Vyber soubor pro vlo¾ení"
 
-#: src/frontends/qt4/GuiView.cpp:1650
+#: src/frontends/qt4/GuiView.cpp:1651
 msgid "Choose a filename to save document as"
 msgstr "Vybrat nové jméno souboru pro dokument"
 
-#: src/frontends/qt4/GuiView.cpp:1682 src/frontends/qt4/GuiView.cpp:1727
+#: src/frontends/qt4/GuiView.cpp:1683 src/frontends/qt4/GuiView.cpp:1728
 msgid "&Rename"
 msgstr "Pøe&jmenovat"
 
-#: src/frontends/qt4/GuiView.cpp:1723
+#: src/frontends/qt4/GuiView.cpp:1724
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -18651,15 +18639,15 @@ msgstr ""
 "\n"
 "Chcete ho pøejmenovat a zkusit znovu ulo¾it ?"
 
-#: src/frontends/qt4/GuiView.cpp:1726
+#: src/frontends/qt4/GuiView.cpp:1727
 msgid "Rename and save?"
 msgstr "Pøejmenovat a ulo¾it ?"
 
-#: src/frontends/qt4/GuiView.cpp:1727
+#: src/frontends/qt4/GuiView.cpp:1728
 msgid "&Retry"
 msgstr "&Opakovat"
 
-#: src/frontends/qt4/GuiView.cpp:1781
+#: src/frontends/qt4/GuiView.cpp:1782
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -18670,19 +18658,19 @@ msgstr ""
 "\n"
 "Chcete zmìny v dokumentu ulo¾it?"
 
-#: src/frontends/qt4/GuiView.cpp:1784
+#: src/frontends/qt4/GuiView.cpp:1785
 msgid "&Discard"
 msgstr "&Neukládat"
 
-#: src/frontends/qt4/GuiView.cpp:1888
+#: src/frontends/qt4/GuiView.cpp:1889
 msgid "Saving all documents..."
 msgstr "Ukládají se v¹echny dokumenty..."
 
-#: src/frontends/qt4/GuiView.cpp:1898
+#: src/frontends/qt4/GuiView.cpp:1899
 msgid "All documents saved."
 msgstr "V¹echny dokumenty ulo¾eny."
 
-#: src/frontends/qt4/GuiView.cpp:2121
+#: src/frontends/qt4/GuiView.cpp:2122
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s neznámý pøíkaz!"
@@ -19060,23 +19048,23 @@ msgstr "Externí ¹ablona %1$s není instalovaná"
 msgid "Opened Flex Inset"
 msgstr "Flexibilní otevøená vlo¾ka"
 
-#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:413
+#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:419
 msgid "float: "
 msgstr "plovoucí objekt: "
 
-#: src/insets/InsetFloat.cpp:278
+#: src/insets/InsetFloat.cpp:284
 msgid "Opened Float Inset"
 msgstr "Plovoucí objekt - otevøená vlo¾ka"
 
-#: src/insets/InsetFloat.cpp:349
+#: src/insets/InsetFloat.cpp:355
 msgid "float"
 msgstr "plovoucí objekt"
 
-#: src/insets/InsetFloat.cpp:416
+#: src/insets/InsetFloat.cpp:422
 msgid "subfloat: "
 msgstr "pod-plovoucí objekt: "
 
-#: src/insets/InsetFloat.cpp:424
+#: src/insets/InsetFloat.cpp:430
 msgid " (sideways)"
 msgstr " (na bok)"
 
@@ -19188,19 +19176,19 @@ msgstr ""
 msgid "Information regarding %1$s '%2$s'"
 msgstr "Informace ohlednì %1$s '%2$s"
 
-#: src/insets/InsetInfo.cpp:282
+#: src/insets/InsetInfo.cpp:283
 msgid "undefined"
 msgstr "nedefinováno"
 
-#: src/insets/InsetInfo.cpp:307 src/insets/InsetInfo.cpp:311
+#: src/insets/InsetInfo.cpp:306 src/insets/InsetInfo.cpp:310
 msgid "yes"
 msgstr "ano"
 
-#: src/insets/InsetInfo.cpp:307 src/insets/InsetInfo.cpp:311
+#: src/insets/InsetInfo.cpp:306 src/insets/InsetInfo.cpp:310
 msgid "no"
 msgstr "ne"
 
-#: src/insets/InsetInfo.cpp:378
+#: src/insets/InsetInfo.cpp:377
 msgid "Unknown buffer info"
 msgstr "Neznámá informace dokumentu"
 
@@ -20068,6 +20056,18 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
+
+#~ msgid "figure"
+#~ msgstr "obrázek"
+
+#~ msgid "table"
+#~ msgstr "tabulka"
+
+#~ msgid "algorithm"
+#~ msgstr "algoritmus"
+
+#~ msgid "tableau"
+#~ msgstr "tablo"
 
 #~ msgid "Filtering layouts with \""
 #~ msgstr "Filtrovat rozvr¾ení s \""
