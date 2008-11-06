@@ -1,4 +1,4 @@
-#LyX 1.6.0rc5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 344
 \begin_document
 \begin_header
@@ -859,15 +859,6 @@ In the printed manuals, all cross-references appear as the actual numbers
 .
  If you click on that box with the left mouse button, a dialog box will
  appear containing a list of all the cross-references in the document.
- This introduction has only two, the first one is named 
-\begin_inset Quotes eld
-\end_inset
-
-sec:Contrib
-\begin_inset Quotes erd
-\end_inset
-
-.
  You can go to the referred section by right-clicking on the box or by clicking
  the button 
 \family sans
@@ -885,7 +876,11 @@ Label
  Going back to where you came from is just as easy.
  Clicking on 
 \family sans
-Go back
+Go
+\begin_inset space ~
+\end_inset
+
+Back
 \family default
  to go back to your earlier location.
 \end_layout
