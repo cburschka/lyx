@@ -3,10 +3,10 @@
 # Szõke Sándor <alex@lyx.hu>, 2005, 2006, 2007
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.5.4svn\n"
+"Project-Id-Version: 1.5.xsvn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-11-06 07:27+0100\n"
-"PO-Revision-Date: 2008-11-06 07:31+0100\n"
+"PO-Revision-Date: 2008-11-06 17:48+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
 "MIME-Version: 1.0\n"
@@ -2132,13 +2132,12 @@ msgid "External Applications"
 msgstr "Külsõ programok"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:53
-#, fuzzy
 msgid "&Nomenclature command:"
-msgstr "Szakkifejezés"
+msgstr "&Szakkifejezés parancs:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:63
 msgid "Command and options for nomencl processing (usually makeindex)"
-msgstr ""
+msgstr "Parancs és kapcsolók szakkif feldolgozáshoz (rendszerint makeindex)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:70
 msgid "Index command:"
@@ -5081,7 +5080,7 @@ msgstr "Király lépése:"
 
 #: lib/layouts/dinbrief.layout:24
 msgid "DinBrief"
-msgstr ""
+msgstr "DinBrief"
 
 #: lib/layouts/dinbrief.layout:43
 #: lib/layouts/heb-letter.layout:15
@@ -5090,9 +5089,8 @@ msgid "Send To Address"
 msgstr "Címzett"
 
 #: lib/layouts/dinbrief.layout:45
-#, fuzzy
 msgid "Anschrift:"
-msgstr "Aláírás:"
+msgstr "Címzés:"
 
 #: lib/layouts/dinbrief.layout:57
 #: lib/layouts/heb-letter.layout:10
@@ -5105,17 +5103,14 @@ msgid "Briefkopf:"
 msgstr "Levélfejléc:"
 
 #: lib/layouts/dinbrief.layout:67
-#, fuzzy
 msgid "Return address"
-msgstr "Feladó címe"
+msgstr "Válasz cím"
 
 #: lib/layouts/dinbrief.layout:69
-#, fuzzy
 msgid "Absender:"
-msgstr "Fejléc:"
+msgstr "Feladó:"
 
 #: lib/layouts/dinbrief.layout:77
-#, fuzzy
 msgid "Postal comment"
 msgstr "Postai megjegyzés"
 
@@ -5125,9 +5120,8 @@ msgid "Postvermerk:"
 msgstr "Postai megjegyzés:"
 
 #: lib/layouts/dinbrief.layout:84
-#, fuzzy
 msgid "Handling"
-msgstr "GUI handling"
+msgstr "Kezelés"
 
 #: lib/layouts/dinbrief.layout:86
 #: lib/layouts/g-brief-de.layout:70
@@ -5141,9 +5135,8 @@ msgid "YourRef"
 msgstr "Címzett hivatkozása"
 
 #: lib/layouts/dinbrief.layout:93
-#, fuzzy
 msgid "Ihre Zeichen:"
-msgstr "Önjele:"
+msgstr "Ön jele:"
 
 #: lib/layouts/dinbrief.layout:97
 #: lib/layouts/g-brief-en.layout:95
@@ -5152,18 +5145,16 @@ msgid "MyRef"
 msgstr "Küldõ hivatkozása"
 
 #: lib/layouts/dinbrief.layout:99
-#, fuzzy
 msgid "Unsere Zeichen:"
-msgstr "Önjele:"
+msgstr "Mi jelünk:"
 
 #: lib/layouts/dinbrief.layout:103
-#, fuzzy
 msgid "Writer"
-msgstr "Nyomtató"
+msgstr "Író"
 
 #: lib/layouts/dinbrief.layout:105
 msgid "Sachbearbeiter:"
-msgstr ""
+msgstr "Ügyintézõ:"
 
 #: lib/layouts/dinbrief.layout:109
 #: lib/layouts/g-brief-en.layout:53
@@ -5180,23 +5171,20 @@ msgid "Unterschrift:"
 msgstr "Aláírás:"
 
 #: lib/layouts/dinbrief.layout:116
-#, fuzzy
 msgid "Bottomtext"
-msgstr "Bal alsó sarok"
+msgstr "Alsó szöveg"
 
 #: lib/layouts/dinbrief.layout:118
 msgid "Fusszeile(n):"
-msgstr ""
+msgstr "Lábjegyzetsor(ok):"
 
 #: lib/layouts/dinbrief.layout:126
-#, fuzzy
 msgid "Area code"
-msgstr "Megszólítás"
+msgstr "Körzetszám"
 
 #: lib/layouts/dinbrief.layout:128
-#, fuzzy
 msgid "Vorwahl:"
-msgstr "Normál:"
+msgstr "Elõhívó:"
 
 #: lib/layouts/dinbrief.layout:132
 #: lib/layouts/scrlettr.layout:151
@@ -5273,9 +5261,8 @@ msgid "encl"
 msgstr "csatolva"
 
 #: lib/layouts/dinbrief.layout:198
-#, fuzzy
 msgid "Anlage(n):"
-msgstr "Megérkezik(?)"
+msgstr "Melléklet(ek):"
 
 #: lib/layouts/dinbrief.layout:211
 #: lib/layouts/g-brief-en.layout:221
@@ -5668,34 +5655,28 @@ msgid "Case \\arabic{case}"
 msgstr "\\arabic{case}. eset"
 
 #: lib/layouts/elsarticle.layout:71
-#, fuzzy
 msgid "Title footnote"
-msgstr "lábjegyzet"
+msgstr "Cím lábjegyzet"
 
 #: lib/layouts/elsarticle.layout:82
-#, fuzzy
 msgid "Title footnote:"
-msgstr "lábjegyzet"
+msgstr "Cím lábjegyzet:"
 
 #: lib/layouts/elsarticle.layout:109
-#, fuzzy
 msgid "Author footnote"
-msgstr "lábjegyzet"
+msgstr "Szerzõi lábjegyzet"
 
 #: lib/layouts/elsarticle.layout:112
-#, fuzzy
 msgid "Author footnote:"
-msgstr "Szerzõ infó:"
+msgstr "Szerzõi lábjegyzet:"
 
 #: lib/layouts/elsarticle.layout:116
-#, fuzzy
 msgid "Corresponding author"
-msgstr "Levelezés vele:"
+msgstr "Megfelelõ szerzõ"
 
 #: lib/layouts/elsarticle.layout:119
-#, fuzzy
 msgid "Corresponding author text:"
-msgstr "Levelezés vele:"
+msgstr "Megfelelõ szerzõ szövege:"
 
 #: lib/layouts/elsarticle.layout:189
 #: lib/layouts/ijmpc.layout:83
@@ -7323,49 +7304,40 @@ msgid "Subjectclass"
 msgstr "Tárgyosztály"
 
 #: lib/layouts/siamltex.layout:306
-#, fuzzy
 msgid "AMS subject classifications:"
 msgstr "AMS tárgy osztályozás:"
 
 #: lib/layouts/sigplanconf.layout:65
-#, fuzzy
 msgid "Conference"
-msgstr "Hivatkozások"
+msgstr "Konferencia"
 
 #: lib/layouts/sigplanconf.layout:75
-#, fuzzy
 msgid "Conference:"
-msgstr "Hivatkozás:"
+msgstr "Konferencia:"
 
 #: lib/layouts/sigplanconf.layout:83
-#, fuzzy
 msgid "CopyrightYear"
-msgstr "Copyright"
+msgstr "CopyrightÉv"
 
 #: lib/layouts/sigplanconf.layout:86
-#, fuzzy
 msgid "Copyright year:"
-msgstr "Copyright:"
+msgstr "Copyright év:"
 
 #: lib/layouts/sigplanconf.layout:90
-#, fuzzy
 msgid "Copyrightdata"
-msgstr "Copyright"
+msgstr "CopyrightAdat"
 
 #: lib/layouts/sigplanconf.layout:93
-#, fuzzy
 msgid "Copyright data:"
-msgstr "Copyright:"
+msgstr "Copyright adat:"
 
 #: lib/layouts/sigplanconf.layout:135
-#, fuzzy
 msgid "Terms"
-msgstr "Tétel"
+msgstr "Feltétel"
 
 #: lib/layouts/sigplanconf.layout:138
-#, fuzzy
 msgid "Terms:"
-msgstr "Tétel #:"
+msgstr "Feltétel:"
 
 #: lib/layouts/simplecv.layout:55
 msgid "Topic"
@@ -12569,16 +12541,15 @@ msgstr ""
 
 #: lib/configure.py:236
 msgid "Tgif"
-msgstr ""
+msgstr "Tgif"
 
 #: lib/configure.py:239
 msgid "FIG"
 msgstr "FIG"
 
 #: lib/configure.py:242
-#, fuzzy
 msgid "Grace"
-msgstr "Szürkeskála"
+msgstr "Grace"
 
 #: lib/configure.py:245
 msgid "FEN"
@@ -12625,24 +12596,20 @@ msgid "XPM"
 msgstr "XPM"
 
 #: lib/configure.py:263
-#, fuzzy
 msgid "Plain text (chess output)"
-msgstr "Sima szöveg"
+msgstr "Sima szöveg (sakk kimenet)"
 
 #: lib/configure.py:264
-#, fuzzy
 msgid "Plain text (image)"
-msgstr "Sima szöveg"
+msgstr "Sima szöveg (kép)"
 
 #: lib/configure.py:265
-#, fuzzy
 msgid "Plain text (Xfig output)"
-msgstr "Sima szöveg"
+msgstr "Sima szöveg (Xfig kimenet)"
 
 #: lib/configure.py:266
-#, fuzzy
 msgid "date (output)"
-msgstr "Kimenet illes&ztése"
+msgstr "date (kimenet)"
 
 #: lib/configure.py:267
 msgid "DocBook"
@@ -12657,9 +12624,8 @@ msgid "Docbook (XML)"
 msgstr "Docbook (XML)"
 
 #: lib/configure.py:269
-#, fuzzy
 msgid "Graphviz Dot"
-msgstr "Grafika"
+msgstr "Graphviz Dot"
 
 #: lib/configure.py:270
 msgid "NoWeb"
@@ -12670,9 +12636,8 @@ msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
 #: lib/configure.py:271
-#, fuzzy
 msgid "LilyPond music"
-msgstr "LilyPond"
+msgstr "LilyPond zene"
 
 #: lib/configure.py:272
 msgid "LaTeX (plain)"
@@ -12700,24 +12665,20 @@ msgid "Plain text"
 msgstr "Sima szöveg"
 
 #: lib/configure.py:275
-#, fuzzy
 msgid "Plain text|a"
-msgstr "Sima szöveg"
+msgstr "Sima szöveg|a"
 
 #: lib/configure.py:276
-#, fuzzy
 msgid "Plain text (pstotext)"
-msgstr "Sima szöveg"
+msgstr "Sima szöveg (pstotext)"
 
 #: lib/configure.py:277
-#, fuzzy
 msgid "Plain text (ps2ascii)"
-msgstr "Sima szöveg"
+msgstr "Sima szöveg (ps2ascii)"
 
 #: lib/configure.py:278
-#, fuzzy
 msgid "Plain text (catdvi)"
-msgstr "Sima szöveg"
+msgstr "Sima szöveg (catdvi)"
 
 #: lib/configure.py:279
 msgid "Plain Text, Join Lines"
@@ -12780,24 +12741,20 @@ msgid "HTML|H"
 msgstr "HTML|H"
 
 #: lib/configure.py:303
-#, fuzzy
 msgid "Noteedit"
-msgstr "Megjegyzés a szerkesztõnek"
+msgstr "Noteedit"
 
 #: lib/configure.py:306
-#, fuzzy
 msgid "OpenDocument"
-msgstr "Dokumentum megnyitása "
+msgstr "OpenDocument"
 
 #: lib/configure.py:309
-#, fuzzy
 msgid "date command"
-msgstr "Tárgymutató parancsa:"
+msgstr "date parancsa"
 
 #: lib/configure.py:310
-#, fuzzy
 msgid "Table (CSV)"
-msgstr "Táblázat"
+msgstr "Táblázat (CSV)"
 
 #: lib/configure.py:312
 #: src/frontends/qt4/GuiView.cpp:733
@@ -12833,18 +12790,16 @@ msgid "PDFTEX"
 msgstr "PDFTEX"
 
 #: lib/configure.py:320
-#, fuzzy
 msgid "Program"
-msgstr "Programlista"
+msgstr "Program"
 
 #: lib/configure.py:321
 msgid "PSTEX"
 msgstr "PSTEX"
 
 #: lib/configure.py:322
-#, fuzzy
 msgid "Rich Text Format"
-msgstr "Szöveg alap betûkészlet"
+msgstr "Rich Text formátum"
 
 #: lib/configure.py:323
 msgid "OpenOffice.Org (sxw)"
@@ -13907,7 +13862,7 @@ msgstr "BibTeX futtatása."
 
 #: src/LaTeX.cpp:462
 msgid "Running MakeIndex for nomencl."
-msgstr "MakeIndex futtatása nomencl-hez."
+msgstr "MakeIndex futtatása szakkif-hez."
 
 #: src/LyX.cpp:133
 msgid "Could not read configuration file"
@@ -14375,7 +14330,7 @@ msgstr "A LyX nem módosítja a kurzor pozícióját a görgetõsáv mozgatásakor. Állít
 
 #: src/LyXRC.cpp:2193
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
-msgstr ""
+msgstr "A Mac OS X konvenciót használja a szó-szintû kurzor mozgatásra"
 
 #: src/LyXRC.cpp:2204
 #, no-c-format
@@ -14416,7 +14371,7 @@ msgstr "Kérem adja meg a makeindex kapcsolóit (lásd. man makeindex) vagy válassz
 
 #: src/LyXRC.cpp:2244
 msgid "Define the options of makeindex (cf. man makeindex) to be used for nomenclatures. This might differ from the index processing options."
-msgstr ""
+msgstr "Adja meg a makeindex kapcsolóit (pl. man makeindex), amit a szakkifejezésekhez akar használni. Ez különbözhet a tárgymutató feldolgozás kapcsolóitól."
 
 #: src/LyXRC.cpp:2253
 msgid "Use this to set the correct mapping file for your keyboard. You'll need this if you for instance want to type German documents on an American keyboard."
