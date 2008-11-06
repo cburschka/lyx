@@ -1,10 +1,11 @@
+# translation of de.po to
 # Deutsche Übersetzung für LyX
 # Copyright (C) 2008, The LyX team.
 # Hartmut Haase <hha4491@atomstromfrei.de>
 # Peter Sütterlin <P.Suetterlin@astro.uu.nl>
 # Michael Gerz <Michael.Gerz@teststep.org>
 # Uwe Stöhr <uwestoehr@web.de>
-# Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+# Jürgen Spitzmüller <spitz@lyx.org>
 #
 # Ein paar generelle Richtlinien für eine einheitliche Übersetzung (Vorschlag von M. Gerz):
 #
@@ -87,11 +88,11 @@ msgstr ""
 "Project-Id-Version: LyX 1.5.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-11-05 18:29+0100\n"
-"PO-Revision-Date: 2008-10-04 16:10+0100\n"
-"Last-Translator: Hartmut Haase <hha4491@atomstromfrei.de>\n"
-"Language-Team: LyX-team <lyx-docs@lists.lyx.org>\n"
+"PO-Revision-Date: 2008-11-06 18:49+0100\n"
+"Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
+"Language-Team:  <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
@@ -1820,8 +1821,7 @@ msgstr "Längste &Marke"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:195
 msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr ""
-"Die Standardausrichtung für diesen Absatz verwenden, was immer sie ist."
+msgstr "Die Standardausrichtung für diesen Absatz verwenden, was immer sie ist."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:198
 msgid "Use Paragraph's &Default Alignment"
@@ -2109,8 +2109,7 @@ msgstr "Befehl für &Nomenklatur:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:63
 msgid "Command and options for nomencl processing (usually makeindex)"
-msgstr ""
-"Befehl und Optionen zur Erzeugung einer Nomenklatur (üblicherweise makeindex)"
+msgstr "Befehl und Optionen zur Erzeugung einer Nomenklatur (üblicherweise makeindex)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:70
 msgid "Index command:"
@@ -2994,8 +2993,7 @@ msgstr "Rahmen unten"
 
 #: src/frontends/qt4/ui/TabularUi.ui:905
 msgid "Repeat this row as header on every (except the first) page"
-msgstr ""
-"Wiederholen Sie diese Zeile als Kopfzeile auf jeder Seite (außer der ersten)"
+msgstr "Wiederholen Sie diese Zeile als Kopfzeile auf jeder Seite (außer der ersten)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
@@ -3009,8 +3007,7 @@ msgstr "Diese Zeile ist die Kopfzeile auf der ersten Seite"
 
 #: src/frontends/qt4/ui/TabularUi.ui:928
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr ""
-"Wiederholen Sie diese Zeile als Fußzeile auf jeder Seite (außer der ersten)"
+msgstr "Wiederholen Sie diese Zeile als Fußzeile auf jeder Seite (außer der ersten)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:938
 msgid "This row is the footer of the last page"
@@ -3070,8 +3067,7 @@ msgid "&Rescan"
 msgstr "&Neu lesen"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Zeige den Inhalt der markierten Datei. Nur möglich, wenn die Dateien mit "
 "Pfad angezeigt werden."
@@ -3243,8 +3239,7 @@ msgstr "Den Abstand auch nach einem Seitenumbruch einfügen"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:74
 msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr ""
-"Benutzerdefinierter Wert. Setzt Abstandsart \"Benutzerdefiniert\" voraus."
+msgstr "Benutzerdefinierter Wert. Setzt Abstandsart \"Benutzerdefiniert\" voraus."
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:81
 msgid "Supported spacing types"
@@ -4630,7 +4625,7 @@ msgstr "Springerzug:"
 
 #: lib/layouts/dinbrief.layout:24
 msgid "DinBrief"
-msgstr ""
+msgstr "DinBrief"
 
 #: lib/layouts/dinbrief.layout:43 lib/layouts/heb-letter.layout:15
 #: lib/layouts/stdletter.inc:36
@@ -4667,9 +4662,8 @@ msgid "Postvermerk:"
 msgstr "Postvermerk:"
 
 #: lib/layouts/dinbrief.layout:84
-#, fuzzy
 msgid "Handling"
-msgstr "GUI-Aufbau"
+msgstr "Zusatz"
 
 #: lib/layouts/dinbrief.layout:86 lib/layouts/g-brief-de.layout:70
 msgid "Zusatz:"
@@ -4694,9 +4688,8 @@ msgid "Unsere Zeichen:"
 msgstr "Unsere Zeichen:"
 
 #: lib/layouts/dinbrief.layout:103
-#, fuzzy
 msgid "Writer"
-msgstr "Drucker"
+msgstr "Sachbearbeiter"
 
 #: lib/layouts/dinbrief.layout:105
 msgid "Sachbearbeiter:"
@@ -4713,9 +4706,8 @@ msgid "Unterschrift:"
 msgstr "Unterschrift:"
 
 #: lib/layouts/dinbrief.layout:116
-#, fuzzy
 msgid "Bottomtext"
-msgstr "Unten links"
+msgstr "Fusszeile(n)"
 
 #: lib/layouts/dinbrief.layout:118
 msgid "Fusszeile(n):"
@@ -11977,8 +11969,7 @@ msgstr "Unbekannte Dokumentklasse"
 #: src/Buffer.cpp:411
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
-msgstr ""
-"Verwende die Standard-Dokumentklasse, da die Klasse %1$s unbekannt ist."
+msgstr "Verwende die Standard-Dokumentklasse, da die Klasse %1$s unbekannt ist."
 
 #: src/Buffer.cpp:471 src/Text.cpp:284
 #, c-format
@@ -12003,8 +11994,7 @@ msgstr "Die Dokumentklasse kann nicht geladen werden"
 
 #: src/Buffer.cpp:513
 #, c-format
-msgid ""
-"Using the default document class, because the class %1$s could not be loaded."
+msgid "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 "Verwende die Standard-Dokumentklasse, da die Klasse %1$s nicht geladen "
 "werden konnte."
@@ -12147,8 +12137,7 @@ msgstr ""
 #: src/Buffer.cpp:962
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
-msgstr ""
-"Kann keinen LaTeX-Befehl für das Zeichen '%1$s' (code point %2$s) finden"
+msgstr "Kann keinen LaTeX-Befehl für das Zeichen '%1$s' (code point %2$s) finden"
 
 #: src/Buffer.cpp:965
 msgid ""
@@ -12228,8 +12217,7 @@ msgstr "  Die Speicherung ist fehlgeschlagen! Versuche erneut..."
 
 #: src/BufferList.cpp:384
 msgid "  Save failed! Bummer. Document is lost."
-msgstr ""
-"  Die Speicherung ist endgültig fehlgeschlagen. Das Dokument ist verloren!"
+msgstr "  Die Speicherung ist endgültig fehlgeschlagen. Das Dokument ist verloren!"
 
 #: src/BufferParams.cpp:481
 #, c-format
@@ -12640,8 +12628,7 @@ msgstr ""
 #: src/Converter.cpp:502
 #, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
-msgstr ""
-"Ein temporäres Verzeichnis konnte nicht von %1$s nach %2$s verschoben werden."
+msgstr "Ein temporäres Verzeichnis konnte nicht von %1$s nach %2$s verschoben werden."
 
 #: src/Converter.cpp:548
 #, c-format
@@ -12651,8 +12638,7 @@ msgstr "Eine temporäre Datei konnte nicht von %1$s nach %2$s kopiert werden."
 #: src/Converter.cpp:549
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
-msgstr ""
-"Eine temporäre Datei konnte nicht von %1$s nach %2$s verschoben werden."
+msgstr "Eine temporäre Datei konnte nicht von %1$s nach %2$s verschoben werden."
 
 #: src/Converter.cpp:607
 msgid "Running LaTeX..."
@@ -12900,13 +12886,11 @@ msgstr "Das automatische Bearbeiten der Datei %1$s ist fehlgeschlagen"
 
 #: src/ISpell.cpp:237 src/ISpell.cpp:244 src/ISpell.cpp:253
 msgid "Can't create pipe for spellchecker."
-msgstr ""
-"Die Weiterleitung für die Rechtschreibprüfung kann nicht erzeugt werden."
+msgstr "Die Weiterleitung für die Rechtschreibprüfung kann nicht erzeugt werden."
 
 #: src/ISpell.cpp:258 src/ISpell.cpp:263 src/ISpell.cpp:268
 msgid "Can't open pipe for spellchecker."
-msgstr ""
-"Die Weiterleitung für die Rechtschreibprüfung kann nicht geöffnet werden."
+msgstr "Die Weiterleitung für die Rechtschreibprüfung kann nicht geöffnet werden."
 
 #: src/ISpell.cpp:277
 msgid ""
@@ -13185,13 +13169,11 @@ msgstr "Die Option --execute verlangt die Angabe eines Befehls"
 
 #: src/LyX.cpp:1422
 msgid "Missing file type [eg latex, ps...] after --export switch"
-msgstr ""
-"Die Option --export verlangt die Angabe eines Dateityps [z.B. latex, ps...]"
+msgstr "Die Option --export verlangt die Angabe eines Dateityps [z.B. latex, ps...]"
 
 #: src/LyX.cpp:1434
 msgid "Missing file type [eg latex, ps...] after --import switch"
-msgstr ""
-"Die Option --import verlangt die Angabe eines Dateityps [z.B. latex, ps...]"
+msgstr "Die Option --import verlangt die Angabe eines Dateityps [z.B. latex, ps...]"
 
 #: src/LyX.cpp:1439
 msgid "Missing filename for --import"
@@ -13463,8 +13445,7 @@ msgstr ""
 "werden."
 
 #: src/LyXRC.cpp:2156
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Das Zeitintervall zwischen automatischen Sicherungen (in Sekunden). 0 "
 "bedeutet kein automatisches Speichern."
@@ -13561,8 +13542,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2229
 msgid "Specify additional chars that can be part of a word."
-msgstr ""
-"Geben Sie zusätzliche Zeichen an, die als Teil eines Wortes erlaubt sind."
+msgstr "Geben Sie zusätzliche Zeichen an, die als Teil eines Wortes erlaubt sind."
 
 #: src/LyXRC.cpp:2233
 msgid ""
@@ -13615,8 +13595,7 @@ msgstr ""
 "benötigt wird, um die Sprache zu aktivieren."
 
 #: src/LyXRC.cpp:2265
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Bitte aktivieren, wenn am Ende des Dokuments ein besonderer Befehl benötigt "
 "wird, um die Sprache zu deaktivieren."
@@ -13706,8 +13685,7 @@ msgstr ""
 "Betriebssystems."
 
 #: src/LyXRC.cpp:2321
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Geben Sie eine alternative, persönliche Wörterbuchdatei an, z.B. \"."
 "ispell_deutsch\"."
@@ -13769,8 +13747,7 @@ msgstr "Die Option, um nur ungerade Seiten zu drucken."
 
 #: src/LyXRC.cpp:2369
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr ""
-"Die Option, um eine durch Kommata getrennte Liste von Seiten anzugeben."
+msgstr "Die Option, um eine durch Kommata getrennte Liste von Seiten anzugeben."
 
 #: src/LyXRC.cpp:2373
 msgid "Option to specify the dimensions of the print paper."
@@ -13823,8 +13800,7 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Ihr bevorzugtes Druckprogramm, z.B. \"dvips\", \"dvilj4\"."
 
 #: src/LyXRC.cpp:2409
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Bitte aktivieren, um Sprachen zu unterstützen, die von rechts nach links "
 "geschrieben werden, wie etwa Hebräisch oder Arabisch."
@@ -13941,8 +13917,7 @@ msgstr ""
 "nicht mit allen Wörterbüchern."
 
 #: src/LyXRC.cpp:2496
-msgid ""
-"Enable the pixmap cache that might improve performance on Mac and Windows."
+msgid "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "Aktivieren Sie den Pixmap-Cache, der die Geschwindigkeit unter Mac und "
 "Windows verbessert."
@@ -14841,8 +14816,7 @@ msgstr "Keine LaTeX-Protokolldatei gefunden."
 
 #: src/frontends/controllers/ControlLog.cpp:119
 msgid "No literate programming build log file found."
-msgstr ""
-"Keine Erstellungsprotokolldatei für die literarische Programmierung gefunden."
+msgstr "Keine Erstellungsprotokolldatei für die literarische Programmierung gefunden."
 
 #: src/frontends/controllers/ControlLog.cpp:122
 msgid "No lyx2lyx error log file found."
@@ -15343,8 +15317,7 @@ msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/QDocument.cpp:234 src/frontends/qt4/QDocument.cpp:657
-msgid ""
-"Input listings parameters on the right. Enter ? for a list of parameters."
+msgid "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Geben Sie rechts Listing-Parameter ein. Geben Sie '?' für eine Liste "
 "gültiger Parameter ein."
@@ -15528,8 +15501,7 @@ msgstr "Grafik"
 #: src/frontends/qt4/QInclude.cpp:115 src/frontends/qt4/QInclude.cpp:229
 #: src/frontends/qt4/QListings.cpp:350 src/frontends/qt4/QListings.cpp:427
 #: src/frontends/qt4/QListings.cpp:459
-msgid ""
-"Input listing parameters on the right. Enter ? for a list of parameters."
+msgid "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Geben Sie rechts Listing-Parameter ein. Geben Sie '?' für eine Liste "
 "gültiger Parameter ein."
@@ -16079,8 +16051,7 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "Es sollte aus einem oder mehreren aus %1$s bestehen."
 
 #: src/insets/InsetListingsParams.cpp:292
-msgid ""
-"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr ""
 "Verwenden Sie \\footnotesize, \\small, \\itshape, \\ttfamily oder etwas "
 "ähnliches"
@@ -16548,8 +16519,7 @@ msgstr "LyX-Applikation nicht gefunden"
 
 #: src/support/Package.cpp.in:449
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
+msgid "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 "Der Pfad zur LyX-Applikation kann von der Befehlszeile %1$s nicht bestimmt "
 "werden"
@@ -16635,11 +16605,3 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
 
-#~ msgid "Stadt:"
-#~ msgstr "Stadt:"
-
-#~ msgid "."
-#~ msgstr "."
-
-#~ msgid "Comma-separated values"
-#~ msgstr "Komma-separierte Werte"
