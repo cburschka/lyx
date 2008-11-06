@@ -1,17 +1,17 @@
-This file lists interface changes that might affect users in 1.5.6, some 
-known problems in LyX 1.5.6 and some things you have to take into account
+This file lists interface changes that might affect users in 1.5.7, some 
+known problems in LyX 1.5.7 and some things you have to take into account
 when upgrading from earlier versions to a version of the 1.5.x series.
 Note that fixes are available for some of these, but they have not yet
 been applied because of incomplete testing.
 
 
-Known issues in version 1.5.6
+Known issues in version 1.5.7
 ------------------------------------
 
 - Unicode characters are generally not yet supported in mathed. If you insert
   a special character to a math formula, the output of the document will
-  silently fail. Support for unicode in mathed will be introduced in the next
-  major release, LyX 1.6.0.
+  silently fail; on some systems, LyX might even crash. Support for unicode
+  in mathed has been introduced by our new major release, LyX 1.6.0.
 
 - If you are using a local layout file (i.e., a *.layout file that resides in
   the same directory as the document), and if you are saving the document to
@@ -35,7 +35,7 @@ Known issues in version 1.5.6
 
 - Cursor restoration problems with Multiple-View:
   When using multiple Windows to edit different parts of the same document,
-  the cursor position is sometimes not correctly restored when you switch 
+  the cursor position is sometimes not correctly restored when you switch
   from one view to the other.
 
 - RTL and keymaps:
