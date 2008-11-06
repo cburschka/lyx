@@ -1522,9 +1522,15 @@ void BufferParams::addDefaultModules()
 	list<string>::const_iterator mit = mods.begin();
 	list<string>::const_iterator men = mods.end();
 
-	// we want to add these to the front, but in the right order,
-	// so we collect them here first.
-	list<string> modulesToAdd;
+	// We want to insert the default modules at the beginning of
+	// the list, but also to insert them in the correct order.
+	// The obvious thing to do would be to collect them and then
+	// insert them, but that doesn't work because a later default
+	// module may require an earlier one, and then the test below
+	//     moduleCanBeAdded(modname)
+	// will fail. So we have to do it a more complicated way.
+	list<string>::iterator insertpos = layoutModules_.begin();
+	int numinserts = 0;
 
 	for (; mit != men; mit++) {
 		string const & modName = *mit;
@@ -1536,17 +1542,20 @@ void BufferParams::addDefaultModules()
 			continue;
 		}
 
-		if (moduleCanBeAdded(modName)) {
-			LYXERR(Debug::TCLASS, "Default module `" << modName << "' added.");
-			modulesToAdd.push_back(modName);
-		} else
-			LYXERR(Debug::TCLASS, 
-					"Default module `" << modName << "' could not be added.");
+		if (!moduleCanBeAdded(modName)) {
+			// FIXME This could be because it's already present, so we should
+			// probably return something indicating that.
+			LYXERR(Debug::TCLASS, "Default module `" << modName << 
+					"' could not be added.");
+			continue;
+		}
+		LYXERR(Debug::TCLASS, "Default module `" << modName << "' added.");
+		layoutModules_.insert(insertpos, modName);
+		// now we reset insertpos
+		++numinserts;
+		insertpos = layoutModules_.begin();
+		advance(insertpos, numinserts);
 	}
-
-	// OK, now we can add the default modules.
-	layoutModules_.insert(
-			layoutModules_.begin(), modulesToAdd.begin(), modulesToAdd.end());
 }
 
 
