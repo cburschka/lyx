@@ -1,30 +1,7 @@
-Public release of LyX version 1.6.0 (release candidate 5)
-=========================================================
+Public release of LyX version 1.6.0
+===================================
 
-We are pleased to announce the fifth release candidate of LyX 1.6.0.
-
-LyX 1.6.0 will be the culmination of 15 months of hard work since the
-release of the LyX 1.5 series. We sincerely hope you will enjoy the
-result.
-
-This is the last planned release candidate. In order to guarantee a
-stable release of LyX 1.6.0 there are very few changes when compared
-with the last release candidate (rc4).
-The changes committed refer to bug and performance fixes and there are
-no known regressions compared to any of the previous release
-candidates.
-
-As usual with a major release, a lot of work that is not directly
-visible has taken place. The core of LyX has seen more cleanups and
-some of the new features are the direct results of this work.
-
-The new features in LyX 1.6 are detailed in
-http://wiki.lyx.org/LyX/NewInLyX16
-
-The file RELEASE-NOTES lists some known issues with this release
-compared to the current stable release (LyX 1.5.6). An updated list of
-issues might later be found at http://wiki.lyx.org/LyX/ReleaseNotes
-
+We are pleased to announce the release of LyX 1.6.0.
 
 In case you are wondering what LyX is, here is what
 http://www.lyx.org/ has to say on the subject:
@@ -33,37 +10,28 @@ http://www.lyx.org/ has to say on the subject:
    based on the structure of your documents, not their appearance. It
    is released under a Free Software / Open Source license.
 
-   LyX is for people that write and want their writing to look great,
-   right out of the box. No more endless tinkering with formatting
-   details, 'finger painting' font attributes or futzing around with page
-   boundaries. You just write. In the background, Prof. Knuth's legendary
-   TeX typesetting engine makes you look good.
+LyX 1.6.0 is the culmination of 15 months of hard work since the
+release of the LyX 1.5.0. We sincerely hope you will enjoy the result.
 
-   On screen, LyX looks like any word processor; its printed output -- or
-   richly cross-referenced PDF, just as readily produced -- looks like
-   nothing else. Gone are the days of industrially bland .docs, all
-   looking similarly not-quite-right, yet coming out unpredictably
-   different on different printer drivers. Gone are the crashes 'eating'
-   your dissertation the evening before going to press.
+The new features in LyX 1.6 are detailed in
+http://wiki.lyx.org/LyX/NewInLyX16
 
-   LyX is stable and fully featured. It is a multi-platform, fully
-   internationalized application running natively on Unix/Linux and the
-   Macintosh and modern Windows platforms.
+The file RELEASE-NOTES lists some known issues with this release
+compared to the current stable release (LyX 1.5.6). An updated list of
+issues might later be found at http://wiki.lyx.org/LyX/ReleaseNotes
 
-You can download LyX 1.6.0rc5 here (the .bz2 are compressed with bzip2,
-which yields smaller files):
+You can download LyX 1.6.0 here:
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.6.0.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.0.tar.gz
 
-	ftp://ftp.devel.lyx.org/pub/lyx/devel/lyx-1.6.0rc5.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/devel/lyx-1.6.0rc5.tar.bz2
+Prebuilt binaries (for linux distributions, Mac OS X and Windows
+installers) should soon be available at
+	ftp://ftp.lyx.org/pub/lyx/bin/1.6.0/
 
 Note that due to the amount of change, no patch is provided to upgrade
 from version 1.5.6.
 
-Prebuilt binaries (rpms for linux distributions, Mac OS X and Windows
-installers) should soon be available at
-	ftp://ftp.devel.lyx.org/pub/lyx/devel/
-
-If you find what you think is a bug in LyX 1.6.0rc5, you may either
+If you find what you think is a bug in LyX 1.6.0, you may either
 e-mail the LyX developers' mailing list (lyx-devel at lists.lyx.org), or open
 a bug report at http://bugzilla.lyx.org
 
