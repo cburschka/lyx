@@ -1,19 +1,20 @@
+# translation of ja.po to Japanese
 # Japanese translation for LyX
-# Koji Yokota <yokota@res.otaru-uc.ac.jp>, 2007, 2008.
-# Copyright (C) 2008 LyX Developers
+# Copyright (C) 2007 LyX Developers
 # This file is distributed under the same license as the LyX package.
+# Koji Yokota <yokota@res.otaru-uc.ac.jp>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-11-06 00:42+0100\n"
-"PO-Revision-Date: 2008-10-28 17:12+0900\n"
+"POT-Creation-Date: 2008-11-07 03:34+0900\n"
+"PO-Revision-Date: 2008-11-07 03:42+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
-"Language-Team: Japanese\n"
+"Language-Team: Japanese <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 0.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
@@ -2227,8 +2228,7 @@ msgstr "一般"
 msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
-msgstr ""
-"これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
+msgstr "これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:147
 msgid "s inline completion dela&y"
@@ -2250,8 +2250,7 @@ msgstr "秒のポップアップ遅延(&E)"
 msgid ""
 "When the TAB completion is not unique, there won't be a delay of the popup. "
 "It will be shown right away."
-msgstr ""
-"タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
+msgstr "タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:221
 msgid "Sho&w popup without delay for non-unique completions"
@@ -2399,11 +2398,11 @@ msgstr "短縮名(&H):"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:85
 msgid "Vector graphi&cs format"
-msgstr "ベクターグラフィック書式である(&C)"
+msgstr "ベクターグラフィック書式(&C)"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:102
 msgid "&Document format"
-msgstr "文書書式である(&D)"
+msgstr "文書書式(&D)"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
 msgid "&Viewer:"
@@ -4490,12 +4489,10 @@ msgid "Acknowledgements."
 msgstr "謝辞."
 
 #: lib/layouts/aa.layout:289
-#, fuzzy
 msgid "institutemark"
 msgstr "所属機関マーク"
 
 #: lib/layouts/aa.layout:293
-#, fuzzy
 msgid "institute mark"
 msgstr "所属機関マーク"
 
@@ -4521,9 +4518,8 @@ msgid "Email"
 msgstr "電子メール"
 
 #: lib/layouts/aa.layout:404
-#, fuzzy
 msgid "email"
-msgstr "電子メール:"
+msgstr "電子メール"
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612
 #: src/frontends/qt4/GuiPrefs.cpp:528
@@ -8212,9 +8208,8 @@ msgid "Box:Shaded"
 msgstr "ボックス:影付き"
 
 #: lib/layouts/stdinsets.inc:231
-#, fuzzy
 msgid "Float"
-msgstr "フロート(&F)"
+msgstr "フロート"
 
 #: lib/layouts/stdinsets.inc:259
 msgid "OptArg"
@@ -8835,9 +8830,8 @@ msgid "Armenian"
 msgstr "アルメニア語"
 
 #: lib/languages:13
-#, fuzzy
 msgid "German (Austria, old spelling)"
-msgstr "ドイツ語(旧綴方)"
+msgstr "ドイツ語(オーストリア・旧綴方)"
 
 #: lib/languages:14
 msgid "German (Austria)"
@@ -9462,7 +9456,7 @@ msgstr "設定(P)...|P"
 
 #: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:509
 msgid "Reconfigure|R"
-msgstr "再設定(R)|R"
+msgstr "再初期設定(R)|R"
 
 #: lib/ui/classic.ui:115
 msgid "Selection as Lines|L"
@@ -9747,7 +9741,7 @@ msgstr "ファイルを挿入(E)|E"
 
 #: lib/ui/classic.ui:237
 msgid "External Material...|x"
-msgstr "外部マテリアル(X)...|X"
+msgstr "外部素材(X)...|X"
 
 #: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:351
 msgid "Symbols...|b"
@@ -11008,7 +11002,7 @@ msgstr "折返し表フロート(T)|T"
 
 #: lib/ui/stdmenus.inc:427
 msgid "External Material...|M"
-msgstr "外部マテリアル(M)...|M"
+msgstr "外部素材(M)...|M"
 
 #: lib/ui/stdmenus.inc:428
 msgid "Child Document...|d"
@@ -14509,7 +14503,7 @@ msgstr "文書クラスが利用不能です"
 msgid "LyX will not be able to produce output."
 msgstr "LyXは出力を生成することができません。"
 
-#: src/BufferParams.cpp:1630
+#: src/BufferParams.cpp:1639
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
@@ -14520,20 +14514,20 @@ msgstr ""
 "用します。文書設定ダイアログから正しいテキストクラスが選択されないかぎりは、"
 "出力することができないかもしれません。"
 
-#: src/BufferParams.cpp:1635
+#: src/BufferParams.cpp:1644
 msgid "Document class not found"
 msgstr "文書クラスが見つかりません"
 
-#: src/BufferParams.cpp:1642 src/LyXFunc.cpp:714
+#: src/BufferParams.cpp:1651 src/LyXFunc.cpp:714
 #, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "指定された文書クラス「%1$s」を読み込むことができませんでした。"
 
-#: src/BufferParams.cpp:1644 src/LyXFunc.cpp:716
+#: src/BufferParams.cpp:1653 src/LyXFunc.cpp:716
 msgid "Could not load class"
 msgstr "クラスを読み込むことができませんでした"
 
-#: src/BufferParams.cpp:1706
+#: src/BufferParams.cpp:1715
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -14544,17 +14538,17 @@ msgstr ""
 "この文書はモジュール「%1$s」を要求していますが、\n"
 "利用可能モジュール一覧の中にありません。\n"
 "もしモジュールを最近インストールしたのであれば、\n"
-"おそらくLyXにシステム再検出をさせる必要があります。\n"
+"おそらくLyXに再初期設定をさせる必要があります。\n"
 
-#: src/BufferParams.cpp:1710
+#: src/BufferParams.cpp:1719
 msgid "Module not available"
 msgstr "モジュールが利用不能です"
 
-#: src/BufferParams.cpp:1711
+#: src/BufferParams.cpp:1720
 msgid "Some layouts may not be available."
 msgstr "レイアウトの一部が利用不能です"
 
-#: src/BufferParams.cpp:1718
+#: src/BufferParams.cpp:1727
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -14565,20 +14559,20 @@ msgstr ""
 "ないパッケージを必要としています。LaTeXの出力は\n"
 "できない可能性があります。\n"
 
-#: src/BufferParams.cpp:1721
+#: src/BufferParams.cpp:1730
 msgid "Package not available"
 msgstr "パッケージが利用不能です"
 
-#: src/BufferParams.cpp:1726
+#: src/BufferParams.cpp:1735
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "モジュール「%1$s」を読むのに失敗しました\n"
 
-#: src/BufferParams.cpp:1727 src/BufferParams.cpp:1733
+#: src/BufferParams.cpp:1736 src/BufferParams.cpp:1742
 msgid "Read Error"
 msgstr "読み込みエラー"
 
-#: src/BufferParams.cpp:1732
+#: src/BufferParams.cpp:1741
 msgid "Error reading internal layout information"
 msgstr "内部レイアウト情報の読み込みエラーです"
 
@@ -15416,13 +15410,13 @@ msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
-"テキストクラスが見当たらないのでLyXは先に進むことができません。このままシステ"
-"ム再走査を行うか，既定のテキストクラスを使って再設定を行うか，あるいはLyXを終"
+"テキストクラスが見当たらないのでLyXは先に進むことができません。このまま再初期"
+"設定を行うか，既定のテキストクラスを使って再初期設定を行うか，あるいはLyXを終"
 "了するなどしてください。"
 
 #: src/LyX.cpp:492
 msgid "&Reconfigure"
-msgstr "再設定(&R)"
+msgstr "再初期設定(&R)"
 
 #: src/LyX.cpp:493
 msgid "&Use Default"
@@ -15572,7 +15566,7 @@ msgstr "--importのファイル名が指定されていません"
 
 #: src/LyXFunc.cpp:113
 msgid "Running configure..."
-msgstr "設定を検出しています,,,"
+msgstr "初期設定を実行しています,,,"
 
 #: src/LyXFunc.cpp:124
 msgid "Reloading configuration..."
@@ -15588,13 +15582,13 @@ msgid ""
 "Default textclass is used but LyX may not be able to work properly.\n"
 "Please reconfigure again if needed."
 msgstr ""
-"システムの再走査に失敗しました。\n"
+"再初期設定に失敗しました。\n"
 "既定のテキストクラスを使用しますが、LyXはうまく動かないかもしれません。\n"
-"必要ならば、再度、再走査を行ってください。"
+"必要ならば、再度、再初期設定を行ってください。"
 
 #: src/LyXFunc.cpp:137
 msgid "System reconfigured"
-msgstr "システムを再検出しました"
+msgstr "システムの再初期設定を行いました"
 
 #: src/LyXFunc.cpp:138
 msgid ""
@@ -15602,7 +15596,7 @@ msgid ""
 "You need to restart LyX to make use of any\n"
 "updated document class specifications."
 msgstr ""
-"システムの再検出を行いました。\n"
+"システムの再初期設定を行いました。\n"
 "更新された文書クラス設定を使うためには\n"
 "LyXを再起動する必要があります。"
 
@@ -15791,8 +15785,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2473
 msgid "Select to check whether the lastfiles still exist."
-msgstr ""
-"最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
+msgstr "最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
 
 #: src/LyXRC.cpp:2477
 msgid ""
@@ -15818,8 +15811,7 @@ msgstr "単語間のカーソル移動にMac OS X式の方法を使う。"
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
-msgstr ""
-"カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
+msgstr "カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
 
 #: src/LyXRC.cpp:2506
 #, no-c-format
@@ -15862,8 +15854,7 @@ msgstr "LyX が画像をどのように表示するかを選びます。"
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
-msgstr ""
-"文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
+msgstr "文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
 
 #: src/LyXRC.cpp:2535
 msgid "Specify additional chars that can be part of a word."
@@ -15970,8 +15961,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2603
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr ""
-"LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
+msgstr "LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
 
 #: src/LyXRC.cpp:2607
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -16018,8 +16008,7 @@ msgstr "複数の補完候補がある際、遅延なしに補完ポップアッ
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
-msgstr ""
-"補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
+msgstr "補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
 
 #: src/LyXRC.cpp:2644
 msgid "The inline completion delay."
@@ -16040,8 +16029,7 @@ msgstr "長い補完を短縮するのに\"...\"を使用する。"
 #: src/LyXRC.cpp:2660
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr ""
-"最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
+msgstr "最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
 
 #: src/LyXRC.cpp:2665
 msgid ""
@@ -16353,8 +16341,7 @@ msgid "Memory problem"
 msgstr "メモリ障害"
 
 #: src/Paragraph.cpp:2489
-#, fuzzy
-msgid "Paragraph not properly initialized"
+msgid "Paragraph not properly initiliazed"
 msgstr "段落が正しく初期化されていません"
 
 #: src/SpellBase.cpp:51
@@ -16387,8 +16374,7 @@ msgstr "未知のトークン"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr ""
-"空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
+msgstr "空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
 
 #: src/Text.cpp:533
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -16512,8 +16498,7 @@ msgstr "破損ファイル"
 
 #: src/TextClass.cpp:623
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
-msgstr ""
-"stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
+msgstr "stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
 
 #: src/Thesaurus.cpp:60
 msgid "Thesaurus failure"
@@ -16782,7 +16767,7 @@ msgstr "設定"
 
 #: src/frontends/qt4/GuiApplication.cpp:415
 msgid "Reconfigure"
-msgstr "再設定"
+msgstr "再初期設定"
 
 #: src/frontends/qt4/GuiApplication.cpp:415
 msgid "Quit %1"
@@ -17534,7 +17519,7 @@ msgstr "ベースライン右"
 
 #: src/frontends/qt4/GuiExternal.cpp:93
 msgid "External Material"
-msgstr "外部マテリアル"
+msgstr "外部素材"
 
 #: src/frontends/qt4/GuiExternal.cpp:207
 msgid "Scale%"
@@ -17637,22 +17622,19 @@ msgstr "バッファ"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:706
 msgid "Shift-"
-msgstr ""
+msgstr "シフト-"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:707
-#, fuzzy
 msgid "Control-"
-msgstr "制御"
+msgstr "コントロール-"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:708
-#, fuzzy
 msgid "Option-"
-msgstr "オプション(&P):"
+msgstr "オプション-"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:709
-#, fuzzy
 msgid "Command-"
-msgstr "コマンド(&C):"
+msgstr "コマンド-"
 
 #: src/frontends/qt4/GuiLabel.cpp:37
 msgid "Label"
@@ -18452,6 +18434,8 @@ msgstr "文書構造"
 #, c-format
 msgid "Filtering layouts with \"%1$s\". Press ESC to remove filter."
 msgstr ""
+"レイアウトを「%1$s」でフィルタにかけています。フィルタを解除するにはESCを押し"
+"てください。"
 
 #: src/frontends/qt4/GuiToolbar.cpp:372 src/frontends/qt4/GuiToolbar.cpp:421
 msgid "Enter characters to filter the layout list."
@@ -19179,9 +19163,9 @@ msgstr ""
 "述べられている方法で、手動で指定してください。"
 
 #: src/insets/InsetInfo.cpp:115
-#, fuzzy, c-format
+#, c-format
 msgid "Information regarding %1$s '%2$s'"
-msgstr "以下に関する情報 "
+msgstr "%1$s「%2$s」に関する情報"
 
 #: src/insets/InsetInfo.cpp:283
 msgid "undefined"
@@ -20008,18 +19992,6 @@ msgstr ""
 msgid "Unknown user"
 msgstr "未知の"
 
-#, fuzzy
-#~ msgid "LyX binary not found"
-#~ msgstr "文字列が見つかりません！"
-
-#, fuzzy
-#~ msgid "File not found"
-#~ msgstr "モジュールが見つかりません"
-
-#, fuzzy
-#~ msgid "Directory not found"
-#~ msgstr "文字列が見つかりません！"
-
 #~ msgid "figure"
 #~ msgstr "図"
 
@@ -20032,5 +20004,3 @@ msgstr "未知の"
 #~ msgid "tableau"
 #~ msgstr "絵画"
 
-#~ msgid "Filtering layouts with \""
-#~ msgstr "レイアウトを以下の条件でフィルタリング\""
