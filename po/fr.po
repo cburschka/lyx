@@ -213,7 +213,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-11-06 00:42+0100\n"
+"POT-Creation-Date: 2008-11-07 18:33+0000\n"
 "PO-Revision-Date: 2008-11-05 17:18+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
@@ -8475,7 +8475,7 @@ msgid "Branch"
 msgstr "Branche"
 
 #: lib/layouts/stdinsets.inc:189 lib/layouts/minimalistic.module:8
-#: src/insets/InsetIndex.cpp:208
+#: src/insets/InsetIndex.cpp:201
 msgid "Index"
 msgstr "Index"
 
@@ -14811,7 +14811,7 @@ msgstr "Classe de document non disponible"
 msgid "LyX will not be able to produce output."
 msgstr "LyX ne sera pas à même de produire correctement une sortie."
 
-#: src/BufferParams.cpp:1630
+#: src/BufferParams.cpp:1639
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
@@ -14823,20 +14823,20 @@ msgstr ""
 "fichiers de sortie tant qu'une classe correcte n'est pas sélectionnée dans "
 "le menu de paramètres du document."
 
-#: src/BufferParams.cpp:1635
+#: src/BufferParams.cpp:1644
 msgid "Document class not found"
 msgstr "Classe de document introuvable"
 
-#: src/BufferParams.cpp:1642 src/LyXFunc.cpp:714
+#: src/BufferParams.cpp:1651 src/LyXFunc.cpp:714
 #, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "La classe de document %1$s n'a pas pu être chargée."
 
-#: src/BufferParams.cpp:1644 src/LyXFunc.cpp:716
+#: src/BufferParams.cpp:1653 src/LyXFunc.cpp:716
 msgid "Could not load class"
 msgstr "Chargement de la classe impossible"
 
-#: src/BufferParams.cpp:1706
+#: src/BufferParams.cpp:1715
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -14849,15 +14849,15 @@ msgstr ""
 "Si vous l'avez installé récemment, vous devez probablement reconfigurer "
 "LyX.\n"
 
-#: src/BufferParams.cpp:1710
+#: src/BufferParams.cpp:1719
 msgid "Module not available"
 msgstr "Module non disponible"
 
-#: src/BufferParams.cpp:1711
+#: src/BufferParams.cpp:1720
 msgid "Some layouts may not be available."
 msgstr "Certains environnements peuvent ne pas être disponibles."
 
-#: src/BufferParams.cpp:1718
+#: src/BufferParams.cpp:1727
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -14867,20 +14867,20 @@ msgstr ""
 "Ce module %1$s requiert un paquetage qui n'est pas disponible dans votre\n"
 "installation LaTeX. La compilation LaTeX peut ne pas être possible.\n"
 
-#: src/BufferParams.cpp:1721
+#: src/BufferParams.cpp:1730
 msgid "Package not available"
 msgstr "Paquetage indisponible"
 
-#: src/BufferParams.cpp:1726
+#: src/BufferParams.cpp:1735
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "Erreur de lecture du module %1$s\n"
 
-#: src/BufferParams.cpp:1727 src/BufferParams.cpp:1733
+#: src/BufferParams.cpp:1736 src/BufferParams.cpp:1742
 msgid "Read Error"
 msgstr "Erreur de lecture"
 
-#: src/BufferParams.cpp:1732
+#: src/BufferParams.cpp:1741
 msgid "Error reading internal layout information"
 msgstr "Erreur de lecture du format interne"
 
@@ -16697,7 +16697,7 @@ msgstr "Problème mémoire"
 
 #: src/Paragraph.cpp:2489
 #, fuzzy
-msgid "Paragraph not properly initialized"
+msgid "Paragraph not properly initiliazed"
 msgstr "Initialisation du paragraphe incorrecte"
 
 #: src/SpellBase.cpp:51

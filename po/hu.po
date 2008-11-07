@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-11-06 16:15+0100\n"
+"POT-Creation-Date: 2008-11-07 18:33+0000\n"
 "PO-Revision-Date: 2008-11-06 07:25+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -157,7 +157,7 @@ msgstr "LyX: BibTeX fájl hozzáadása"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:70
 #: src/frontends/qt4/ui/BranchesUi.ui:50
-#: src/frontends/qt4/ui/CitationUi.ui:550 src/frontends/qt4/ui/pom.ui:50
+#: src/frontends/qt4/ui/CitationUi.ui:550
 msgid "&Add"
 msgstr "Hozzáa&dás"
 
@@ -428,40 +428,40 @@ msgstr "&Elérhető változatok"
 msgid "Select your branch"
 msgstr "Változat kiválasztása"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:47 src/frontends/qt4/ui/pom.ui:47
+#: src/frontends/qt4/ui/BranchesUi.ui:47
 msgid "Add a new branch to the list"
 msgstr "Új változat felvétele listára"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:57 src/frontends/qt4/ui/pom.ui:57
+#: src/frontends/qt4/ui/BranchesUi.ui:57
 msgid "A&vailable Branches:"
 msgstr "&Elérhető változatok:"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:67 src/frontends/qt4/ui/pom.ui:67
+#: src/frontends/qt4/ui/BranchesUi.ui:67
 msgid "&New:"
 msgstr "Ú&j:"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:80 src/frontends/qt4/ui/pom.ui:80
+#: src/frontends/qt4/ui/BranchesUi.ui:80
 msgid "Remove the selected branch"
 msgstr "Kiválasztott változat eltávolítása"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:83
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:38 src/frontends/qt4/ui/pom.ui:83
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:38
 msgid "&Remove"
 msgstr "E&ltávolít"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:90 src/frontends/qt4/ui/pom.ui:90
+#: src/frontends/qt4/ui/BranchesUi.ui:90
 msgid "Toggle the selected branch"
 msgstr "Kiválasztott változat (de)aktiválása"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:93 src/frontends/qt4/ui/pom.ui:93
+#: src/frontends/qt4/ui/BranchesUi.ui:93
 msgid "(&De)activate"
 msgstr "(De)a&ktivál"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:100 src/frontends/qt4/ui/pom.ui:100
+#: src/frontends/qt4/ui/BranchesUi.ui:100
 msgid "Define or change background color"
 msgstr "Háttérszín meghatározása vagy változtatása"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:103 src/frontends/qt4/ui/pom.ui:103
+#: src/frontends/qt4/ui/BranchesUi.ui:103
 msgid "Alter Co&lor..."
 msgstr "&Szín módosítása..."
 
@@ -8256,7 +8256,7 @@ msgid "Branch"
 msgstr "Változat"
 
 #: lib/layouts/stdinsets.inc:189 lib/layouts/minimalistic.module:8
-#: src/insets/InsetIndex.cpp:208
+#: src/insets/InsetIndex.cpp:201
 msgid "Index"
 msgstr "Tárgymutató"
 

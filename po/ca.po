@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-11-06 00:42+0100\n"
+"POT-Creation-Date: 2008-11-07 18:33+0000\n"
 "PO-Revision-Date: 2008-08-04 22:25+0100\n"
 "Last-Translator: joan <joan@montane.cat>\n"
 "Language-Team: Catalan\n"
@@ -8406,7 +8406,7 @@ msgid "Branch"
 msgstr "Branca"
 
 #: lib/layouts/stdinsets.inc:189 lib/layouts/minimalistic.module:8
-#: src/insets/InsetIndex.cpp:208
+#: src/insets/InsetIndex.cpp:201
 msgid "Index"
 msgstr "Índex"
 
@@ -14855,7 +14855,7 @@ msgstr "La classe del document no està disponible"
 msgid "LyX will not be able to produce output."
 msgstr "El LyX no serà capaç de generar cap tipus de sortida."
 
-#: src/BufferParams.cpp:1630
+#: src/BufferParams.cpp:1639
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
@@ -14863,20 +14863,20 @@ msgid ""
 "correct textclass is selected from the document settings dialog."
 msgstr ""
 
-#: src/BufferParams.cpp:1635
+#: src/BufferParams.cpp:1644
 msgid "Document class not found"
 msgstr "La classe del document no està disponible"
 
-#: src/BufferParams.cpp:1642 src/LyXFunc.cpp:714
+#: src/BufferParams.cpp:1651 src/LyXFunc.cpp:714
 #, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "No s'ha pogut obrir la classe del document %1$s."
 
-#: src/BufferParams.cpp:1644 src/LyXFunc.cpp:716
+#: src/BufferParams.cpp:1653 src/LyXFunc.cpp:716
 msgid "Could not load class"
 msgstr "No s'ha pogut obrir la classe"
 
-#: src/BufferParams.cpp:1706
+#: src/BufferParams.cpp:1715
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -14885,15 +14885,15 @@ msgid ""
 "probably need to reconfigure LyX.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1710
+#: src/BufferParams.cpp:1719
 msgid "Module not available"
 msgstr "Mòdul no disponible"
 
-#: src/BufferParams.cpp:1711
+#: src/BufferParams.cpp:1720
 msgid "Some layouts may not be available."
 msgstr ""
 
-#: src/BufferParams.cpp:1718
+#: src/BufferParams.cpp:1727
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -14901,20 +14901,20 @@ msgid ""
 "may not be possible.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1721
+#: src/BufferParams.cpp:1730
 msgid "Package not available"
 msgstr "Paquet no disponible"
 
-#: src/BufferParams.cpp:1726
+#: src/BufferParams.cpp:1735
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "S'ha produït un error en llegir el mòdul %1$s\n"
 
-#: src/BufferParams.cpp:1727 src/BufferParams.cpp:1733
+#: src/BufferParams.cpp:1736 src/BufferParams.cpp:1742
 msgid "Read Error"
 msgstr "Error de lectura"
 
-#: src/BufferParams.cpp:1732
+#: src/BufferParams.cpp:1741
 #, fuzzy
 msgid "Error reading internal layout information"
 msgstr "S'ha produït un error en llegir informació de disposició interna"
@@ -16630,7 +16630,7 @@ msgid "Memory problem"
 msgstr ""
 
 #: src/Paragraph.cpp:2489
-msgid "Paragraph not properly initialized"
+msgid "Paragraph not properly initiliazed"
 msgstr ""
 
 #: src/SpellBase.cpp:51

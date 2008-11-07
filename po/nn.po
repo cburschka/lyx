@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-11-06 00:42+0100\n"
+"POT-Creation-Date: 2008-11-07 18:33+0000\n"
 "PO-Revision-Date: 2008-08-05 00:05+0100\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -8487,7 +8487,7 @@ msgid "Branch"
 msgstr "Grein"
 
 #: lib/layouts/stdinsets.inc:189 lib/layouts/minimalistic.module:8
-#: src/insets/InsetIndex.cpp:208
+#: src/insets/InsetIndex.cpp:201
 msgid "Index"
 msgstr "Indeks"
 
@@ -14995,7 +14995,7 @@ msgstr "Dokumentklassa er ikkje tilgjengeleg"
 msgid "LyX will not be able to produce output."
 msgstr "LyX kan ikkje lage eit korrekt resultat."
 
-#: src/BufferParams.cpp:1630
+#: src/BufferParams.cpp:1639
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
@@ -15003,12 +15003,12 @@ msgid ""
 "correct textclass is selected from the document settings dialog."
 msgstr ""
 
-#: src/BufferParams.cpp:1635
+#: src/BufferParams.cpp:1644
 #, fuzzy
 msgid "Document class not found"
 msgstr "Dokumentklassa er ikkje tilgjengeleg"
 
-#: src/BufferParams.cpp:1642 src/LyXFunc.cpp:714
+#: src/BufferParams.cpp:1651 src/LyXFunc.cpp:714
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr ""
@@ -15016,12 +15016,12 @@ msgstr ""
 "%1$s\n"
 "kunne ikkje bli lest."
 
-#: src/BufferParams.cpp:1644 src/LyXFunc.cpp:716
+#: src/BufferParams.cpp:1653 src/LyXFunc.cpp:716
 #, fuzzy
 msgid "Could not load class"
 msgstr "Kan ikkje endra klassa"
 
-#: src/BufferParams.cpp:1706
+#: src/BufferParams.cpp:1715
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -15030,17 +15030,17 @@ msgid ""
 "probably need to reconfigure LyX.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1710
+#: src/BufferParams.cpp:1719
 #, fuzzy
 msgid "Module not available"
 msgstr "Dokumentklassa er ikkje tilgjengeleg"
 
-#: src/BufferParams.cpp:1711
+#: src/BufferParams.cpp:1720
 #, fuzzy
 msgid "Some layouts may not be available."
 msgstr "Dokumentklassa er ikkje tilgjengeleg"
 
-#: src/BufferParams.cpp:1718
+#: src/BufferParams.cpp:1727
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -15048,22 +15048,22 @@ msgid ""
 "may not be possible.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1721
+#: src/BufferParams.cpp:1730
 #, fuzzy
 msgid "Package not available"
 msgstr "Dokumentklassa er ikkje tilgjengeleg"
 
-#: src/BufferParams.cpp:1726
+#: src/BufferParams.cpp:1735
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1727 src/BufferParams.cpp:1733
+#: src/BufferParams.cpp:1736 src/BufferParams.cpp:1742
 #, fuzzy
 msgid "Read Error"
 msgstr "Søk feil"
 
-#: src/BufferParams.cpp:1732
+#: src/BufferParams.cpp:1741
 #, fuzzy
 msgid "Error reading internal layout information"
 msgstr "Generell informasjon"
@@ -16843,7 +16843,7 @@ msgid "Memory problem"
 msgstr ""
 
 #: src/Paragraph.cpp:2489
-msgid "Paragraph not properly initialized"
+msgid "Paragraph not properly initiliazed"
 msgstr ""
 
 #: src/SpellBase.cpp:51

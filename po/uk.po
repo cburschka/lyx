@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-11-06 00:42+0100\n"
+"POT-Creation-Date: 2008-11-07 18:33+0000\n"
 "PO-Revision-Date: 2008-11-05 21:44+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -8229,7 +8229,7 @@ msgid "Branch"
 msgstr "Версія"
 
 #: lib/layouts/stdinsets.inc:189 lib/layouts/minimalistic.module:8
-#: src/insets/InsetIndex.cpp:208
+#: src/insets/InsetIndex.cpp:201
 msgid "Index"
 msgstr "Предметний покажчик"
 
@@ -14552,7 +14552,7 @@ msgstr "Документ неможливо зберегти!"
 msgid "LyX will not be able to produce output."
 msgstr "LyX не зможе сформувати текст на виході."
 
-#: src/BufferParams.cpp:1630
+#: src/BufferParams.cpp:1639
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
@@ -14564,20 +14564,20 @@ msgstr ""
 "буде обрано коректного класу документа за допомогою діалогового вікна "
 "налаштування документа."
 
-#: src/BufferParams.cpp:1635
+#: src/BufferParams.cpp:1644
 msgid "Document class not found"
 msgstr "Клас документів не знайдено"
 
-#: src/BufferParams.cpp:1642 src/LyXFunc.cpp:714
+#: src/BufferParams.cpp:1651 src/LyXFunc.cpp:714
 #, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "Не вдалося завантажити клас документів %1$s."
 
-#: src/BufferParams.cpp:1644 src/LyXFunc.cpp:716
+#: src/BufferParams.cpp:1653 src/LyXFunc.cpp:716
 msgid "Could not load class"
 msgstr "Не вдалося завантажити клас"
 
-#: src/BufferParams.cpp:1706
+#: src/BufferParams.cpp:1715
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -14590,15 +14590,15 @@ msgstr ""
 "наявних модулів. Якщо ви встановили його нещодавно,\n"
 "вам, ймовірно, слід переконфігурувати LyX.\n"
 
-#: src/BufferParams.cpp:1710
+#: src/BufferParams.cpp:1719
 msgid "Module not available"
 msgstr "Модуль недоступний"
 
-#: src/BufferParams.cpp:1711
+#: src/BufferParams.cpp:1720
 msgid "Some layouts may not be available."
 msgstr "Деякі з форматів недоступні."
 
-#: src/BufferParams.cpp:1718
+#: src/BufferParams.cpp:1727
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -14609,20 +14609,20 @@ msgstr ""
 "у встановленому вами LaTeX. Ймовірно, вивести документLaTeX output\n"
 "у форматі LaTeX буде неможливо.\n"
 
-#: src/BufferParams.cpp:1721
+#: src/BufferParams.cpp:1730
 msgid "Package not available"
 msgstr "Пакунок недоступний"
 
-#: src/BufferParams.cpp:1726
+#: src/BufferParams.cpp:1735
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "Помилка під час читання модуля %1$s\n"
 
-#: src/BufferParams.cpp:1727 src/BufferParams.cpp:1733
+#: src/BufferParams.cpp:1736 src/BufferParams.cpp:1742
 msgid "Read Error"
 msgstr "Помилка читання"
 
-#: src/BufferParams.cpp:1732
+#: src/BufferParams.cpp:1741
 msgid "Error reading internal layout information"
 msgstr "Помилка під час читання внутрішньої інформації формату"
 
@@ -16402,7 +16402,7 @@ msgstr "Проблема з пам’яттю"
 
 #: src/Paragraph.cpp:2489
 #, fuzzy
-msgid "Paragraph not properly initialized"
+msgid "Paragraph not properly initiliazed"
 msgstr "Параграф не ініціалізовано належним чином"
 
 #: src/SpellBase.cpp:51
