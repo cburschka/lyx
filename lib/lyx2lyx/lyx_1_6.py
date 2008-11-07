@@ -3052,6 +3052,31 @@ def convert_backref_options(document):
     elif k != -1 and j != -1:
         document.header[k] = "\\pdf_backref section"
 
+
+def convert_charstyle_element(document):
+    "Convert CharStyle to Element for docbook backend"
+    if document.backend != "docbook":
+        return
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Flex CharStyle:", i)
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace('\\begin_inset Flex CharStyle:',
+                                                    '\\begin_inset Flex Element:')
+
+def revert_charstyle_element(document):
+    "Convert Element to CharStyle for docbook backend"
+    if document.backend != "docbook":
+        return
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Flex Element:", i)
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace('\\begin_inset Flex Element:',
+                                                    '\\begin_inset Flex CharStyle:')
+
 ##
 # Conversion hub
 #
@@ -3124,10 +3149,12 @@ convert = [[277, [fix_wrong_tables]],
            [341, []],
            [342, []],
            [343, [convert_default_options]],
-           [344, [convert_backref_options]]
+           [344, [convert_backref_options]],
+           [345, [convert_charstyle_element]]
           ]
 
-revert =  [[343, [revert_backref_options]],
+revert =  [[344, [revert_charstyle_element]],
+           [343, [revert_backref_options]],
            [342, [revert_default_options]],
            [341, [revert_mongolian]],
            [340, [revert_tabulators, revert_tabsize]],
