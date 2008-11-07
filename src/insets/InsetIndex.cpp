@@ -165,19 +165,12 @@ void InsetIndex::write(ostream & os) const
 }
 
 
-void InsetIndex::textString(odocstream & os) const
-{
-	os << text().asString(0, 1, AS_STR_LABEL | AS_STR_INSETS);
-}
-
-
 void InsetIndex::addToToc(DocIterator const & cpit)
 {
 	DocIterator pit = cpit;
 	pit.push_back(CursorSlice(*this));
-	odocstringstream ods;
-	textString(ods);
-	buffer().tocBackend().toc("index").push_back(TocItem(pit, 0, ods.str()));
+	docstring const item = text().asString(0, 1, AS_STR_LABEL | AS_STR_INSETS);
+	buffer().tocBackend().toc("index").push_back(TocItem(pit, 0, item));
 	// Proceed with the rest of the inset.
 	InsetCollapsable::addToToc(cpit);
 }

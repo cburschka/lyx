@@ -45,8 +45,6 @@ private:
 	/// should the user be allowed to customize alignment, etc.?
 	virtual bool allowParagraphCustomization(idx_type = 0) const { return false; }
 	///
-	void textString(odocstream &) const;
-	///
 	void addToToc(DocIterator const &);
 	///
 	Inset * clone() const { return new InsetIndex(*this); }
