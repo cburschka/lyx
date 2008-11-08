@@ -156,6 +156,27 @@ def get_value(lines, token, start, end = 0, default = ""):
         return default
 
 
+def get_value_string(lines, token, start, end = 0, trim = False, default = ""):
+    """ get_value_string(lines, token, start[[, end], trim, default]) -> string
+
+    Return tokens after token as string, in lines, where
+    token is the first element. When trim is used, the first and last character
+    of the string is trimmed."""
+
+    i = find_token_exact(lines, token, start, end)
+    if i == -1:
+        return default
+    if len(lines[i].split()) > 1:
+        for k in range (0, len(lines[i])):
+            if lines[i][k] == ' ':
+                if trim ==False:
+                    return lines[i][k+1:len(lines[i])]
+                else:
+                    return lines[i][k+2:len(lines[i])-1]
+    else:
+        return default
+
+
 def del_token(lines, token, start, end):
     """ del_token(lines, token, start, end) -> int
 

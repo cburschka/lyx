@@ -22,6 +22,12 @@ What's new
 ** Updates:
 ***********
 
+* IMPORTING LyX 1.6.x DOCUMENTS
+
+- The lyx2lyx framework has been updated to be the same as LyX 1.6.0.
+  This means that now all documents from version 1.6.x can be imported
+  directly.
+
 * DOCUMENTATION AND LOCALIZATION
 
 - Updated localization of the user interface for Catalan, Czech, French,
@@ -136,7 +142,7 @@ What's new
 
 - Fix LaTeX errors in Latvian and Lithuanian documents (bug 5323, bug 5324).
 
-- If "Do not use amsmath" is selected in the document settings, really do 
+- If "Do not use amsmath" is selected in the document settings, really do
   not use it (bug 5350).
 
 - Fix the output of IPA symbols with the encoding "utf8".

@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright (C) 2002-2004 José Matos <jamatos@lyx.org>
+# Copyright (C) 2002-2007 José Matos <jamatos@lyx.org>
+# Copyright (C) 2002-2004 Dekel Tsur <dekel@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,86 +17,67 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-import getopt
+" Program used to convert between different versions of the lyx file format."
+import optparse
 import sys
 import LyX
 
-def usage():
-    print """Usage: lyx2lyx [options] [file]
-Convert old lyx file <file> to newer format, files can be compressed with gzip.
-If there no file is specified then the standard input is assumed, in this case
-gziped files are not handled.
-Options:
-    -h, --help			this information
-    -v, --version		output version information and exit
-    -l, --list			list all available formats
-    -d, --debug level		level=0..2 (O_ no debug information, 2_verbose)
-				default: level=1
-    -e, --err error_file	name of the error file or else goes to stderr
-    -f, --from version		initial version (optional)
-    -t, --to version		final version (optional)
-    -o, --output name		name of the output file or else goes to stdout
-    -n, --try-hard		try hard (ignore any convertion errors)
-    -c, --cjk [encoding]	files in format 248 and lower are read and
-				written in the format of CJK-LyX.
-				If encoding is not given or 'auto' the encoding
-				is determined from the locale.
-    -q, --quiet			same as --debug=0"""
+def main():
+    args = {}
+    args["usage"] = "usage: %prog [options] [file]"
 
+    args["version"] = """lyx2lyx, version %s
+Copyright (C) 2007 José Matos and Dekel Tsur""" % LyX.version__
 
-def parse_options(argv):
-    _options =  ["help", "version", "list", "debug=", "err=", "from=", "to=", "output=", "try-hard", "cjk", "quiet"]
-    try:
-       opts, args = getopt.getopt(argv[1:], "c:d:e:f:hlno:qt:v", _options)
-    except getopt.error:
-        usage()
-        sys.exit(2)
+    args["description"] = """Convert old lyx file <file> to newer format,
+    files can be compressed with gzip.  If there no file is specified then
+    the standard input is assumed, in this case gziped files are not
+    handled."""
 
-    end_format, input, output, error, debug, try_hard = 0, "", "", "", LyX.default_debug_level, 0
-    cjk_encoding = ''
-    for o, a in opts:
-        if o in ("-h", "--help"):
-            usage()
-            sys.exit()
-        if o in ("-v", "--version"):
-            print "lyx2lyx, version %s" %(LyX.version_lyx2lyx)
-            print "Copyright (C) 2002-2004 José Matos and Dekel Tsur"
-            sys.exit()
-        if o in ("-d", "--debug"):
-            debug = int(a)
-        if o in ("-q", "--quiet"):
-            debug = 0
-        if o in ("-l", "--list"):
-            print LyX.formats_list()
-            sys.exit()
-        if o in ("-o", "--output"):
-            output = a
-        if o in ("-t", "--to"):
-            end_format = a
-        if o in ("-e","--err"):
-            error = a
-        if o in ("-n", "--try-hard"):
-            try_hard = 1
-        if o in ("-c", "--cjk"):
-            if a == '':
-                cjk_encoding = 'auto'
-            else:
-                cjk_encoding = a
+    parser = optparse.OptionParser(**args)
+
+    parser.set_defaults(debug=LyX.default_debug__, cjk_encoding = '')
+    parser.add_option("-d", "--debug", type="int",
+                      help="level=0..2 (O_ quiet, 2_verbose) default: 1")
+    parser.add_option("-q", "--quiet",
+                      action="store_const", const=0, dest="debug")
+    parser.add_option("-v", "--verbose",
+                      action="store_const", const=1, dest="debug")
+    parser.add_option("--noisy",
+                      action="store_const", const=2, dest="debug")
+    parser.add_option("-c", "--encoding", dest="cjk_encoding",
+                      help="files in format 248 and lower are read and"
+                           " written in the format of CJK-LyX."
+                           "If encoding is not given or 'auto' the encoding"
+                           "is determined from the locale.")
+    parser.add_option("-e", "--err", dest="error",
+                      help= "file name of the error file else goes to stderr")
+    parser.add_option("-o", "--output",
+                      help= "name of the output file else goes to stdout")
+    parser.add_option("-t", "--to", dest= "end_format",
+                      help= "destination file format, default (latest)")
+    parser.add_option("-l", "--list", action="store_true",
+                      help = "list all available formats")
+    parser.add_option("-n", "--try-hard", action="store_true",
+                      help = "try hard (ignore any convertion errors)")
+
+    (options, args) = parser.parse_args()
     if args:
-        input = args[0]
+        options.input = args[0]
+    else:
+        options.input = None
 
-    return end_format, input, output, error, debug, try_hard, cjk_encoding
+    if options.list:
+        print LyX.formats_list()
+        sys.exit()
+    else:
+        del options.list
 
+    doc = LyX.File(**options.__dict__)
+    doc.convert()
+    doc.write()
 
-def main(argv):
-    end_format, input, output, error, debug, try_hard, cjk_encoding = parse_options(argv)
-    file = LyX.File(end_format, input, output, error, debug, try_hard, cjk_encoding)
-
-    file.convert()
-    file.write()
-
-    return file.status
-
+    sys.exit(doc.status)
 
 if __name__ == "__main__":
-    sys.exit(main(sys.argv))
+    main()

@@ -2448,7 +2448,7 @@ def convert_sgml_paragraphs(document):
         i = i + 10
 
 ##
-# Convertion hub
+# Conversion hub
 #
 
 supported_versions = ["1.4.%d" % i for i in range(3)] + ["1.4"]
