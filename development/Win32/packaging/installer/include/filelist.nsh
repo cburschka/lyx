@@ -352,6 +352,7 @@ Lists of files to include in the installer
   ${FILE}IM_MOD_RL_html_.dll"
   ${FILE}IM_MOD_RL_icon_.dll"
   ${FILE}IM_MOD_RL_info_.dll"
+  ${FILE}IM_MOD_RL_inline_.dll"
   ${FILE}IM_MOD_RL_ipl_.dll"
   ${FILE}IM_MOD_RL_jbig_.dll"
   ${FILE}IM_MOD_RL_jp2_.dll"
