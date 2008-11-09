@@ -8,11 +8,13 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\python.exe"
  File "${PRODUCT_SOURCEDIR}\bin\python26.dll"
+ File "${PRODUCT_SOURCEDIR}\bin\Python-License.txt"
  File "${PRODUCT_SOURCEDIR}\bin\QtCore4.dll"
  File "${PRODUCT_SOURCEDIR}\bin\QtGui4.dll"
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  SetOutPath "$INSTDIR\Resources"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
+ File /r "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
@@ -66,8 +68,6 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\sigplanconf.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\singlecol.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\svglobal3.layout"
- SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
- File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  SetOutPath "$INSTDIR\Resources\scripts"
  File "${PRODUCT_SOURCEDIR}\Resources\scripts\convertDefault.py"
  File "${PRODUCT_SOURCEDIR}\Resources\scripts\csv2lyx.py"
