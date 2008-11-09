@@ -10,7 +10,10 @@ List of Aspell dictionaries supported by LyX
 
   ${DICT} af-0.50-0 "Afrikaans" af 915
   ${DICT} ar-1.2-0 "Arabic" ar 4352
+  ${DICT} ms-0.50-0 "Bahasa Melayu" ms 187
   ${DICT} bg-4.1-0 "Bulgarian" bg 5345
+  ${DICT} br-0.50-2 "Brezhoneg" br 375
+  ${DICT} be-0.01 "Byelaruskaya mova" be 9229
   ${DICT} ca-20040130-1 "Català" ca 1095
   ${DICT} cs-20040614-1 "Ceština" cs 2069
   ${DICT} da-1.4.42-1 "Dansk" da 3036
@@ -22,11 +25,15 @@ List of Aspell dictionaries supported by LyX
   ${DICT} fr-0.50-3 "Français" fr 4331
   ${DICT} gl-0.50-0 "Galego" gl 2974
   ${DICT} el-0.50-3 "Greek" el 3204
+  ${DICT} hy-0.10.0-0 "Hayeren" hy 850
   ${DICT} he-1.0-0 "Hebrew" he 2024
+  ${DICT} hsb-0.01-1 "Hornjoserbsce" hsb 385
   ${DICT} hr-0.51-0 "Hrvatski" hr 1967
   ${DICT} is-0.51.1-0 "Íslenska" is 1536
   ${DICT} it-2.2_20050523-0 "Italiano" it 696
+  ${DICT} lt-1.1+cvs20060103-0 "Lietuviu kalba" lt 628
   ${DICT} hu-0.99.4.2-0 "Magyar" hu 1608
+  ${DICT} mn-0.01-0 "Mongolian" mn 141
   ${DICT} nl-opentaal200711 "Nederlands" nl 1333
   ${DICT} nb-0.50.1-0 "Norsk (Bokmål)" nb 3031
   ${DICT} nn-0.50.1-1 "Norsk (Nynorsk)" nn 1930
@@ -44,6 +51,7 @@ List of Aspell dictionaries supported by LyX
   ${DICT} sv-0.51-0 "Svenska" sv 1029
   ${DICT} tr-0.50-0 "Türkçe" tr 547
   ${DICT} uk-1.4.0-0 "Ukrainian" uk 770
+  ${DICT} vi-0.01.1-1 "Vietnamese" vi 115
   ${DICT} cy-0.50-3 "Welsh" cy 1771
 
 !macroend
