@@ -29,8 +29,11 @@ List of Aspell dictionaries supported by LyX
   ${DICT} he-1.0-0 "Hebrew" he 2024
   ${DICT} hsb-0.01-1 "Hornjoserbsce" hsb 385
   ${DICT} hr-0.51-0 "Hrvatski" hr 1967
+  ${DICT} ia-0.50-1 "Interlingua" ia 610
   ${DICT} is-0.51.1-0 "Íslenska" is 1536
   ${DICT} it-2.2_20050523-0 "Italiano" it 696
+  ${DICT} la-20020503-0 "Latin" la 193
+  ${DICT} lv-0.5.5-1 "Latviešu Valoda" lv 256
   ${DICT} lt-1.1+cvs20060103-0 "Lietuviu kalba" lt 628
   ${DICT} hu-0.99.4.2-0 "Magyar" hu 1608
   ${DICT} mn-0.01-0 "Mongolian" mn 141
