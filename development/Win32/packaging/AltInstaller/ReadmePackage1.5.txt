@@ -47,14 +47,14 @@ ImageMagick
 
 License: ImageMagick license
 
-The folder ~\LyX\etc\ImageMagick contains all used files from ImageMagick 6.3.7
+The folder ~\LyX\etc\ImageMagick contains all used files from ImageMagick 6.4.5
 
 ---
 Ghostscript
 
 License: GPL
 
-The folder ~\LyX\etc\Ghostscript contains all used files from GPL Ghostscript 8.61
+The folder ~\LyX\etc\Ghostscript contains all used files from GPL Ghostscript 8.63
 
 ---
 Aspell
@@ -70,9 +70,9 @@ Python
 
 License: Python license
 
-The following files from Python 2.5.1 are used:
+The following files from Python 2.6 are used:
 
-python.exe and python25.dll are in the folder ~\LyX\bin.
+python.exe and python26.dll are in the folder ~\LyX\bin.
 
 The subfolders of ~\LyX\bin contain all other used python files.
 
