@@ -26,6 +26,8 @@ List of Aspell dictionaries supported by LyX
   ${DICT} hr-0.51-0 "Hrvatski" hr 1967
   ${DICT} is-0.51.1-0 "Íslenska" is 1536
   ${DICT} it-2.2_20050523-0 "Italiano" it 696
+  ${DICT} lv-0.5.5-1 "Latviešu Valoda" lv 256
+  ${DICT} lt-1.1+cvs20060103-0 "Lietuviu kalba" lt 628
   ${DICT} hu-0.99.4.2-0 "Magyar" hu 1608
   ${DICT} nl-opentaal200711 "Nederlands" nl 1333
   ${DICT} nb-0.50.1-0 "Norsk (Bokmål)" nb 3031
