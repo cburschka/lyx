@@ -165,7 +165,7 @@ Section -PSPrinter
     # Delete printer
     ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'
     # Install printer and driver
-    ExecWait '$PrinterConf /if /b "Metafile to EPS Converter" /r "FILE:" /m "MS Publisher Imagesetter"'
+    ExecWait '$PrinterConf /if /f "$WINDIR\inf\ntprint.inf" /b "Metafile to EPS Converter" /r "FILE:" /m "MS Publisher Imagesetter"'
     # Restore DEVMODE with proper settings
     ExecWait '$PrinterConf /q /Sr /n "Metafile to EPS Converter" /a "$INSTDIR\bin\metafile2eps.dat" g'
 
