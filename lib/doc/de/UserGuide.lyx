@@ -51,6 +51,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -94,8 +95,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -160,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 3.
+letzte Änderung: 9.
  November 2008
 \end_layout
 
@@ -11929,7 +11930,7 @@ HFills können sichtbar gemacht werden, wenn Sie ein
 \family sans
 Füllmuster
 \family default
- in den Abstand Einstellungen wählen.
+ in den Abstand-Einstellungen wählen.
  Folgende Füllmuster sind verfügbar:
 \end_layout
 
@@ -20202,7 +20203,7 @@ Rahmenlinien
 
 \begin_deeper
 \begin_layout Itemize
-Rahmen in einer Zeile oder Spalte ein- und ausschalten (
+Rahmen für eine Zelle ein- und ausschalten (
 \family sans
 
 \begin_inset Graphics
@@ -20308,8 +20309,6 @@ Rahmenlinien
 ein
 \family default
  die Rahmen dieser Zelle.
- Wenn Sie dann auf eine waagerecht Linie klicken, gilt das für die ganze
- Zeile, bei einer senkrechten für die Spalte.
  In 
 \family sans
 Alle
@@ -20328,6 +20327,15 @@ Festlegen
 Löschen
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+Wenn Sie eine Linie für die ganze Zeile haben wollen, klicken Sie an den
+ Anfang der Zeile.
+ Damit wird die gesamte Zeile ausgewählt, und die Linie wird für die gesamte
+ Zeile gesetzt oder gelöscht.
+ Entsprechend klicken Sie für eine Spalte auf den oberen Rand der Spalte
+ und (de)aktivieren die Linie.
 \end_layout
 
 \begin_layout Standard
