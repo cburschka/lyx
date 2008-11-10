@@ -115,7 +115,7 @@ int InsetRef::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-void InsetRef::textString(odocstream & os) const
+void InsetRef::tocString(odocstream & os) const
 {
 	plaintext(os, OutputParams(0));
 }

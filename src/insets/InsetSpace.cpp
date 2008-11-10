@@ -617,7 +617,7 @@ int InsetSpace::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-void InsetSpace::textString(odocstream & os) const
+void InsetSpace::tocString(odocstream & os) const
 {
 	plaintext(os, OutputParams(0));
 }

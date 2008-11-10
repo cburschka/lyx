@@ -232,7 +232,7 @@ int InsetBranch::docbook(odocstream & os,
 }
 
 
-void InsetBranch::textString(odocstream & os) const
+void InsetBranch::tocString(odocstream & os) const
 {
 	if (isBranchSelected())
 		os << text().asString(0, 1, AS_STR_LABEL | AS_STR_INSETS);

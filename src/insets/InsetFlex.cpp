@@ -108,7 +108,7 @@ int InsetFlex::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-void InsetFlex::textString(odocstream & os) const
+void InsetFlex::tocString(odocstream & os) const
 {
 	os << text().asString(0, 1, AS_STR_LABEL | AS_STR_INSETS);
 }

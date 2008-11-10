@@ -117,7 +117,7 @@ private:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	/// the string that is passed to the TOC
-	void textString(odocstream &) const;
+	void tocString(odocstream &) const;
 	///
 	void edit(Cursor & cur, bool front,
 		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);

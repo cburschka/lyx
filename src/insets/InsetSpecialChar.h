@@ -65,7 +65,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	/// the string that is passed to the TOC
-	void textString(odocstream &) const;
+	void tocString(odocstream &) const;
 	///
 	InsetCode lyxCode() const { return SPECIALCHAR_CODE; }
 	/// We don't need \begin_inset and \end_inset

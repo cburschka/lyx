@@ -55,7 +55,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	/// the string that is passed to the TOC
-	void textString(odocstream &) const;
+	void tocString(odocstream &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

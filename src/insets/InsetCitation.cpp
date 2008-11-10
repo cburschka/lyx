@@ -471,7 +471,7 @@ int InsetCitation::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-void InsetCitation::textString(odocstream & os) const
+void InsetCitation::tocString(odocstream & os) const
 {
 	plaintext(os, OutputParams(0));
 }

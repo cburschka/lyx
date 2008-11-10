@@ -287,7 +287,7 @@ int InsetSpecialChar::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-void InsetSpecialChar::textString(odocstream & os) const
+void InsetSpecialChar::tocString(odocstream & os) const
 {
 	plaintext(os, OutputParams(0));
 }

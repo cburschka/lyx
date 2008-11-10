@@ -312,7 +312,7 @@ int InsetQuotes::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-void InsetQuotes::textString(odocstream & os) const
+void InsetQuotes::tocString(odocstream & os) const
 {
 	os << displayString();
 }
