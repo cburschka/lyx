@@ -122,6 +122,8 @@ What's new
 
 - Speedup LaTeX export (part of bug 5347).
 
+- Fix an endless loop when importing an older LyX file (bug 5333).
+
 - Fix output of citation commands in the ReVTeX4 class (bug 5182).
 
 - Fix output of some Greek characters.
