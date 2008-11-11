@@ -996,6 +996,7 @@ def revert_inset_command(document):
         m = r.match(nextline)
         if not m:
             document.warning("Malformed LyX document: Missing LatexCommand in " + document.body[i] + ".")
+            i += 1
             continue
         cmdName = m.group(1)
         insertion = ["\\begin_inset LatexCommand " + cmdName]
