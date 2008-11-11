@@ -1569,7 +1569,6 @@ bool BufferParams::checkModuleConsistency() {
 	list<string>::const_iterator oit = oldModules.begin();
 	list<string>::const_iterator oen = oldModules.end();
 	list<string> const & provmods = baseClass()->providedModules();
-	list<string> const & exclmods = baseClass()->excludedModules();
 	for (; oit != oen; ++oit) {
 		string const & modname = *oit;
 		bool excluded = false;
