@@ -550,12 +550,14 @@ def checkConverterEntries():
 
 def checkDocBook():
     ''' Check docbook '''
-    path, DOCBOOK = checkProg('SGML-tools 2.x (DocBook) or db2x scripts', ['sgmltools', 'db2dvi'],
+    path, DOCBOOK = checkProg('SGML-tools 2.x (DocBook), db2x scripts or xsltproc', ['sgmltools', 'db2dvi', 'xsltproc'],
         rc_entry = [
             r'''\converter docbook    dvi        "sgmltools -b dvi $$i"	""
 \converter docbook    html       "sgmltools -b html $$i"	""''',
             r'''\converter docbook    dvi        "db2dvi $$i"	""
 \converter docbook    html       "db2html $$i"	""''',
+            r'''\converter docbook    dvi        ""	""
+\converter docbook    html       "" ""''',
             r'''\converter docbook    dvi        ""	""
 \converter docbook    html       ""	""'''])
     #
@@ -686,8 +688,7 @@ def checkLatexConfig(check_config, bool_docbook):
         if not os.path.isfile( 'chkconfig.ltx' ):
             shutil.copyfile( os.path.join(srcdir, 'chkconfig.ltx'), 'chkconfig.ltx' )
             rmcopy = True
-        writeToFile('wrap_chkconfig.ltx', '%s\n%s\n\\input{chkconfig.ltx}\n',
-            docbook_cmd)
+        writeToFile('wrap_chkconfig.ltx', '%s\n\\input{chkconfig.ltx}\n' % docbook_cmd)
         # Construct the list of classes to test for.
         # build the list of available layout files and convert it to commands
         # for chkconfig.ltx
