@@ -54,6 +54,9 @@ What's new
 - Removed "NoStyle Abstract" from AMS book class, which does have an
   abstract.
 
+- Fixed reversion of info insets to LyX format 1.5.x. This bug blocked the
+  reversion of the User Guide to LyX 1.5.
+
 
 * USER INTERFACE
 
@@ -61,6 +64,7 @@ What's new
 
 - Fix crash when undoing a math operation while the outline pane was open
   (bug 5491).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

@@ -1220,7 +1220,14 @@ def revert_inset_info(document):
         arg = ''
         for k in range(i, j+1):
             if document.body[k].startswith("arg"):
-                arg = document.body[k][3:].strip().strip('"')
+                arg = document.body[k][3:].strip()
+                # remove embracing quotation marks
+                if arg[0] == '"':
+                    arg = arg[1:]
+                if arg[len(arg) - 1] == '"':
+                    arg = arg[:len(arg) - 1]
+                # \" to straight quote
+                arg = arg.replace(r'\"','"')
             if document.body[k].startswith("type"):
                 type = document.body[k][4:].strip().strip('"')
         # I think there is a newline after \\end_inset, which should be removed.
