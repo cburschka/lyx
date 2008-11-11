@@ -332,7 +332,6 @@ void TocWidget::init(QString const & str)
 	typeCO->blockSignals(true);
 	typeCO->setCurrentIndex(new_index);
 	typeCO->blockSignals(false);
-	updateView();
 }
 
 } // namespace frontend
