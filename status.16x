@@ -59,6 +59,8 @@ What's new
 
 - Fix the -geometry command line option on Windows (bug 5467).
 
+- Fix crash when undoing a math operation while the outline pane was open
+  (bug 5491).
 
 * DOCUMENTATION AND LOCALIZATION
 
