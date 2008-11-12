@@ -130,7 +130,10 @@ def set_option(document, m, option, value):
 def read_unicodesymbols():
     " Read the unicodesymbols list of unicode characters and corresponding commands."
     pathname = os.path.abspath(os.path.dirname(sys.argv[0]))
-    fp = open(os.path.join(pathname.strip('lyx2lyx'), 'unicodesymbols'))
+    pathname = pathname.rstrip('lyx2lyx')
+    # from within doc_toc.py, we are in lib/doc
+    pathname = pathname.rstrip('doc')
+    fp = open(os.path.join(pathname, 'unicodesymbols'))
     spec_chars = []
     # Two backslashes, followed by some non-word character, and then a character
     # in brackets. The idea is to check for constructs like: \"{u}, which is how
