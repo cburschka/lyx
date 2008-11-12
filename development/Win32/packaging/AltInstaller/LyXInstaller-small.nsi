@@ -35,25 +35,30 @@ CRCCheck force
 #--------------------------------
 # variables only used in this installer version
 
-Var DelPythonFiles
+Var AppFiles
+
 Var GhostscriptPath
 Var AiksaurusPath
 Var AspellPath
 Var Acrobat
-Var PSVPath
+Var BibTeXEditorPath
 Var DelGSDir
+Var DelPythonFiles
+Var DelWMFDir
 Var EditorPath
 Var ImageEditorPath
-Var BibTeXEditorPath
 Var LangEncoding
 Var LangSysEncoding
-Var MissedProg
 Var LaTeXName
 Var MiKTeXVersion
 Var MiKTeXUser
+Var MissedProg
+Var PrinterConf
+Var PSVPath
 Var State
 Var SVGPath
-Var AppFiles
+Var WMFPath
+
 # Variables used by all installer versions
 !include "Variables.nsh"
 
@@ -64,6 +69,7 @@ Var AppFiles
 !include "FileFunc.nsh"
 !include "StrFunc.nsh"
 !include "TextFunc.nsh"
+!include "WinVer.nsh"
 
 # Set of various macros and functions
 !include "LyXUtils.nsh"
@@ -215,6 +221,9 @@ Function .onInit
    MessageBox MB_OK|MB_ICONSTOP "$(StillInstalled)"
    Abort
   ${endif}
+  
+  # printer settings, needed to install the Metafile2eps printer
+  !insertmacro PrinterInit
 
   # default settings
   # these can be reset to "all" in section SecAllUsers

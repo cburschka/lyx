@@ -27,6 +27,9 @@ Function ConfigureLyX
   ${if} $SVGPath != ""
    StrCpy $PathPrefix "$PathPrefix;$SVGPath"
   ${endif}
+  ${if} $WMFPath != ""
+   StrCpy $PathPrefix "$PathPrefix;$WMFPath"
+  ${endif}
   
   # Create a batch file to start LyX with the environment variables set
   ClearErrors

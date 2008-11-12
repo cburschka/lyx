@@ -149,6 +149,9 @@ Function MissingPrograms
   
   # test if Inkscape is installed
   ReadRegStr $SVGPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Inkscape" "InstallLocation"
+  
+  # test if metafile2eps is installed
+  ReadRegStr $WMFPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Metafile to EPS Converter" "InstallLocation"
 
 FunctionEnd
 

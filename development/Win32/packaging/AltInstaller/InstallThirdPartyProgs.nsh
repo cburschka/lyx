@@ -47,6 +47,7 @@ Function ImageMagick
    RMDir /r ${ImageMagickDir}
    # delete the "etc" folder when also the Ghostscript folder was deleted because it is then empty 
    ${if} $DelGSDir == "Yes"
+   ${andif} $DelWMFDir == "Yes"
     RMDir /r "$INSTDIR\etc"
    ${endif}
   ${endif}
@@ -66,6 +67,45 @@ Function Aiksaurus
    CopyFiles "$INSTDIR\${AiksaurusInstall}" "$APPDATA"
 #   WriteRegStr HKLM "Software\Aiksaurus" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" # special entry to tell the uninstaller that it was installed with LyX
 #   WriteRegStr HKLM "Software\Aiksaurus" "Data Path" "${AiksaurusDir}"
+  ${endif}
+
+FunctionEnd
+
+# -------------------------------------------
+
+!macro PrinterInit
+
+  ${if} ${AtLeastWinVista}
+    StrCpy $PrinterConf "printui.exe"
+  ${else}
+    StrCpy $PrinterConf "rundll32.exe printui.dll,PrintUIEntry"
+  ${endif}
+
+!macroend
+
+Function Metafile2eps
+
+  # if Metafile2eps is not installed
+  ${if} $WMFPath == ""
+   # delete printer
+   ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'
+   # install printer and driver
+   ExecWait '$PrinterConf /if /f "$WINDIR\inf\ntprint.inf" /b "Metafile to EPS Converter" /r "FILE:" /m "MS Publisher Imagesetter"'
+   # restore DEVMODE with proper settings
+   ExecWait '$PrinterConf /q /Sr /n "Metafile to EPS Converter" /a "$INSTDIR\metafile2eps.dat" g'
+   # register printer
+   WriteRegStr HKLM "Software\InkNote Selector" "" ${Metafile2epsDir}
+   # register Metafile2eps
+   Var /GLOBAL RegLocation
+   StrCpy $RegLocation "Software\Microsoft\Windows\CurrentVersion\Uninstall\Metafile to EPS Converter"
+   WriteRegStr HKLM "$RegLocation" "InstallLocation" "${Metafile2epsDir}"
+   WriteRegStr HKLM "$RegLocation" "DisplayName" "Metafile to EPS Converter"
+   WriteRegStr HKLM "$RegLocation" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" # special entry to tell the uninstaller that it was installed with LyX
+   StrCpy $WMFPath "${Metafile2epsDir}"
+  ${else}
+   # delete unnecessary files
+   RMDir /r "${Metafile2epsDir}"
+   StrCpy $DelWMFDir "Yes" # used later in function ImageMagick
   ${endif}
 
 FunctionEnd

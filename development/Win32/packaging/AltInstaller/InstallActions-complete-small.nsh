@@ -33,6 +33,9 @@
 
   # install Aiksaurus if not already installed
   Call Aiksaurus # function from InstallThirdPartyProgs.nsh
+  
+  # install Metafile2eps if not already installed
+  Call Metafile2eps # function from InstallThirdPartyProgs.nsh
 
   !if ${INSTALLER_VERSION} == "Complete"
    # install GSview if not already installed and the user selected it
