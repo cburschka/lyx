@@ -1804,40 +1804,45 @@ def revert_framed_notes(document):
 
 def revert_slash(document):
     'Revert \\SpecialChar \\slash{} to ERT'
-    r = re.compile(r'\\SpecialChar \\slash{}')
     i = 0
     while i < len(document.body):
-        m = r.match(document.body[i])
+        m = re.match(r'(.*)\\SpecialChar \\slash{}(.*)', document.body[i])
         if m:
-          subst = ['\\begin_inset ERT',
-                   'status collapsed', '',
-                   '\\begin_layout Standard',
-                   '', '', '\\backslash',
-                   'slash{}',
-                   '\\end_layout', '',
-                   '\\end_inset', '']
-          document.body[i: i+1] = subst
-          i = i + len(subst)
+            before = m.group(1)
+            after = m.group(2)
+            subst = [before,
+                     '\\begin_inset ERT',
+                     'status collapsed', '',
+                     '\\begin_layout Standard',
+                     '', '', '\\backslash',
+                     'slash{}',
+                     '\\end_layout', '',
+                     '\\end_inset', '',
+                     after]
+            document.body[i: i+1] = subst
+            i = i + len(subst)
         else:
-          i = i + 1
+            i = i + 1
 
 
 def revert_nobreakdash(document):
     'Revert \\SpecialChar \\nobreakdash- to ERT'
     i = 0
     while i < len(document.body):
-        line = document.body[i]
-        r = re.compile(r'\\SpecialChar \\nobreakdash-')
-        m = r.match(line)
+        m = re.match(r'(.*)\\SpecialChar \\nobreakdash-(.*)', document.body[i])
         if m:
-            subst = ['\\begin_inset ERT',
+            before = m.group(1)
+            after = m.group(2)
+            subst = [before,
+                     '\\begin_inset ERT',
                     'status collapsed', '',
                     '\\begin_layout Standard', '', '',
                     '\\backslash',
                     'nobreakdash-',
                     '\\end_layout', '',
-                    '\\end_inset', '']
-            document.body[i:i+1] = subst
+                    '\\end_inset', '',
+                     after]
+            document.body[i: i+1] = subst
             i = i + len(subst)
             j = find_token(document.header, "\\use_amsmath", 0)
             if j == -1:

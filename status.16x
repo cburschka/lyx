@@ -54,8 +54,12 @@ What's new
 - Removed "NoStyle Abstract" from AMS book class, which does have an
   abstract.
 
-- Fixed reversion of info insets to LyX format 1.5.x. This bug blocked the
+- Fix reversion of info insets to LyX format 1.5.x. This bug blocked the
   reversion of the User Guide to LyX 1.5.
+
+- Fix reversion of subfloats to version 1.5.x.
+
+- Fix reversion of \slash and \nobreakdash to version 1.5.x.
 
 
 * USER INTERFACE
