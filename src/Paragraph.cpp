@@ -2486,7 +2486,7 @@ void Paragraph::setPlainOrDefaultLayout(DocumentClass const & tclass)
 Inset const & Paragraph::inInset() const
 {
 	LASSERT(d->inset_owner_, throw ExceptionMessage(BufferException,
-		_("Memory problem"), _("Paragraph not properly initiliazed")));
+		_("Memory problem"), _("Paragraph not properly initialized")));
 	return *d->inset_owner_;
 }
 
