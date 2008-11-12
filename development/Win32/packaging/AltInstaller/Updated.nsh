@@ -58,6 +58,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\beispiel_roh.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\splash.lyx"
  SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsbook.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\beamer.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\dinbrief.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\elsart.layout"
@@ -81,9 +82,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\templates\hollywood.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\iop-article.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\seminar.lyx"
- SetOutPath "$INSTDIR\Resources\man\man1"
- File "${PRODUCT_SOURCEDIR}\Resources\man\man1\lyx.1"
- File "${PRODUCT_SOURCEDIR}\Resources\man\man1\tex2lyx.1"
+ SetOutPath "${PRODUCT_SOURCEDIR}\Resources\man"
+ File /r "${PRODUCT_SOURCEDIR}\Resources\man\man1"
 
 FunctionEnd
 
