@@ -146,7 +146,8 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.noUpdate();
 			break;
 		}
-		updateCommand(p["name"]);
+		if (p["name"] != params()["name"])
+			updateCommand(p["name"]);
 		break;
 	}
 
