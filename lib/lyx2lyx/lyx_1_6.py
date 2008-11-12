@@ -2186,7 +2186,7 @@ def revert_subfig(document):
             if k == -1:
                 break
             # is the subfloat aligned?
-            al = find_token(document.body, '\\align ', k - 1)
+            al = find_token(document.body, '\\align ', k - 1, j)
             alignment_beg = ""
             alignment_end = ""
             if al != -1:
