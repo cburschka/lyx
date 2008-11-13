@@ -2607,7 +2607,7 @@ lib_examples_eu_files = Split('''
 ''')
 
 
-lib_examples_gl_extra_files = Split('''
+lib_examples_gl_files = Split('''
     exemplo_bruto.lyx
     exemplo_lyxificado.lyx
     splash.lyx
