@@ -81,7 +81,6 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\templates\elsarticle.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\hollywood.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\iop-article.lyx"
- File "${PRODUCT_SOURCEDIR}\Resources\templates\seminar.lyx"
  SetOutPath "${PRODUCT_SOURCEDIR}\Resources\man"
  File /r "${PRODUCT_SOURCEDIR}\Resources\man\man1"
 
