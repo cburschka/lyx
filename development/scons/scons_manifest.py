@@ -2399,7 +2399,7 @@ lib_doc_fr_clipart_files = Split('''
 ''')
 
 
-lib_doc_gl_extra_files = Split('''
+lib_doc_gl_files = Split('''
     Intro.lyx
     Tutorial.lyx
 ''')
