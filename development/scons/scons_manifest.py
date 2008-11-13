@@ -2193,7 +2193,7 @@ lib_doc_fr_clipart_files = Split('''
 ''')
 
 
-lib_doc_gl_extra_files = Split('''
+lib_doc_gl_files = Split('''
     Intro.lyx
     Tutorial.lyx
 ''')
@@ -2425,7 +2425,7 @@ lib_examples_eu_files = Split('''
 ''')
 
 
-lib_examples_gl_extra_files = Split('''
+lib_examples_gl_files = Split('''
     exemplo_bruto.lyx
     exemplo_lyxificado.lyx
     splash.lyx
