@@ -472,7 +472,7 @@ int main(int argc, char * argv[])
 {
 	using namespace lyx;
 
-	setlocale(LC_CTYPE, "");
+	//setlocale(LC_CTYPE, "");
 
 	lyxerr.setStream(cerr);
 
