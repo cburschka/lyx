@@ -36,7 +36,7 @@ namespace lyx {
 
 
 InsetFormulaMacro::InsetFormulaMacro()
-	: InsetMathNest(2), name_("unknownA")
+	: InsetMathNest(2), name_(from_ascii("unknownA"))
 {}
 
 

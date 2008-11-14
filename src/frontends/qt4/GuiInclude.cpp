@@ -347,4 +347,4 @@ Dialog * createGuiInclude(GuiView & lv) { return new GuiInclude(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiInclude_moc.cpp"
+#include "moc_GuiInclude.cpp"

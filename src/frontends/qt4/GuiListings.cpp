@@ -647,4 +647,4 @@ Dialog * createGuiListings(GuiView & lv) { return new GuiListings(lv); }
 } // namespace lyx
 
 
-#include "GuiListings_moc.cpp"
+#include "moc_GuiListings.cpp"

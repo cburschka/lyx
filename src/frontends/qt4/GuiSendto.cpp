@@ -220,4 +220,4 @@ Dialog * createGuiSendTo(GuiView & lv) { return new GuiSendTo(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiSendto_moc.cpp"
+#include "moc_GuiSendto.cpp"

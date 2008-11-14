@@ -252,4 +252,4 @@ Dialog * createGuiPrint(GuiView & lv) { return new GuiPrint(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiPrint_moc.cpp"
+#include "moc_GuiPrint.cpp"

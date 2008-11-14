@@ -118,4 +118,4 @@ Dialog * createGuiNomenclature(GuiView & lv)
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiNomencl_moc.cpp"
+#include "moc_GuiNomencl.cpp"

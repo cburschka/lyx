@@ -240,4 +240,4 @@ Dialog * createGuiViewSource(GuiView & lv)
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiViewSource_moc.cpp"
+#include "moc_GuiViewSource.cpp"

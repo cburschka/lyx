@@ -327,4 +327,4 @@ void GuiCommandBuffer::dispatch(string const & str)
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiCommandBuffer_moc.cpp"
+#include "moc_GuiCommandBuffer.cpp"

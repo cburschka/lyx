@@ -236,4 +236,4 @@ Dialog * createGuiLog(GuiView & lv) { return new GuiLog(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiLog_moc.cpp"
+#include "moc_GuiLog.cpp"

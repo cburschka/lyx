@@ -17,12 +17,12 @@ BUILT_SOURCES = $(PCH_FILE)
 
 MOCHEADER = SignalSlotPrivate.h
 
-MOCEDFILES = $(MOCHEADER:%.h=%_moc.cpp)
+MOCEDFILES = $(MOCHEADER:%.h=moc_%.cpp)
 
 CLEANFILES += $(MOCEDFILES)
 BUILT_SOURCES += $(MOCEDFILES)
 
-%_moc.cpp: %.h
+moc_%.cpp: %.h
 	$(MOC4) -o $@ $<
 
 liblyxsupport_la_DEPENDENCIES = $(MOCEDFILES)

@@ -69,4 +69,4 @@ Dialog * createGuiShowFile(GuiView & lv) { return new GuiShowFile(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiShowFile_moc.cpp"
+#include "moc_GuiShowFile.cpp"

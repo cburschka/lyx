@@ -489,4 +489,4 @@ Dialog * createGuiBox(GuiView & lv) { return new GuiBox(lv); }
 } // namespace lyx
 
 
-#include "GuiBox_moc.cpp"
+#include "moc_GuiBox.cpp"

@@ -2509,4 +2509,4 @@ Dialog * GuiView::build(string const & name)
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiView_moc.cpp"
+#include "moc_GuiView.cpp"

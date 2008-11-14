@@ -192,4 +192,4 @@ Dialog * createGuiTexInfo(GuiView & lv) { return new GuiTexInfo(lv); }
 } // namespace lyx
 
 
-#include "GuiTexinfo_moc.cpp"
+#include "moc_GuiTexinfo.cpp"

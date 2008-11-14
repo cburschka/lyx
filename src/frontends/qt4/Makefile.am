@@ -13,9 +13,9 @@ UIC4FLAGS=-tr lyx::qt_
 ui_%.h: ui/%.ui
 	$(UIC4) $(UIC4FLAGS) $< -o $@
 
-MOCEDFILES = $(MOCHEADER:%.h=%_moc.cpp)
+MOCEDFILES = $(MOCHEADER:%.h=moc_%.cpp)
 
-%_moc.cpp: %.h
+moc_%.cpp: %.h
 	$(MOC4) -o $@ $<
 
 Resources.qrc: Makefile

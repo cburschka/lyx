@@ -194,4 +194,4 @@ Dialog * createGuiVSpace(GuiView & lv) { return new GuiVSpace(lv); }
 } // namespace lyx
 
 
-#include "GuiVSpace_moc.cpp"
+#include "moc_GuiVSpace.cpp"

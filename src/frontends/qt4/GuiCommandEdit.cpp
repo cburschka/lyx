@@ -78,4 +78,4 @@ bool GuiCommandEdit::event(QEvent * e)
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiCommandEdit_moc.cpp"
+#include "moc_GuiCommandEdit.cpp"

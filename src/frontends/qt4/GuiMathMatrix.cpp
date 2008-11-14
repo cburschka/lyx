@@ -109,4 +109,4 @@ Dialog * createGuiMathMatrix(GuiView & lv) { return new GuiMathMatrix(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiMathMatrix_moc.cpp"
+#include "moc_GuiMathMatrix.cpp"

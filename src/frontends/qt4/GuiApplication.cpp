@@ -1611,4 +1611,4 @@ frontend::Selection & theSelection()
 
 } // namespace lyx
 
-#include "GuiApplication_moc.cpp"
+#include "moc_GuiApplication.cpp"

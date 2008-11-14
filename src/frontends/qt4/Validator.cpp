@@ -203,4 +203,4 @@ PathValidator * getPathValidator(QLineEdit * ed)
 } // namespace frontend
 } // namespace lyx
 
-#include "Validator_moc.cpp"
+#include "moc_Validator.cpp"

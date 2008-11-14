@@ -971,4 +971,4 @@ void GuiToolbar::toggle()
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiToolbar_moc.cpp"
+#include "moc_GuiToolbar.cpp"

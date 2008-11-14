@@ -90,4 +90,4 @@ Dialog * createGuiERT(GuiView & lv) { return new GuiERT(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiERT_moc.cpp"
+#include "moc_GuiERT.cpp"

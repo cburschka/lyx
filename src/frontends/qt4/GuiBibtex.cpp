@@ -555,4 +555,4 @@ Dialog * createGuiBibtex(GuiView & lv) { return new GuiBibtex(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiBibtex_moc.cpp"
+#include "moc_GuiBibtex.cpp"

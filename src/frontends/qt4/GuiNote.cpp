@@ -98,4 +98,4 @@ Dialog * createGuiNote(GuiView & lv) { return new GuiNote(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiNote_moc.cpp"
+#include "moc_GuiNote.cpp"

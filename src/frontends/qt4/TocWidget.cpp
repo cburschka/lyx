@@ -337,4 +337,4 @@ void TocWidget::init(QString const & str)
 } // namespace frontend
 } // namespace lyx
 
-#include "TocWidget_moc.cpp"
+#include "moc_TocWidget.cpp"

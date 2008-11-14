@@ -107,4 +107,4 @@ Dialog * createGuiBranch(GuiView & lv) { return new GuiBranch(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiBranch_moc.cpp"
+#include "moc_GuiBranch.cpp"

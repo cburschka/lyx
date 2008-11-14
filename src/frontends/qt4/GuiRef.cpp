@@ -413,4 +413,4 @@ Dialog * createGuiRef(GuiView & lv) { return new GuiRef(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiRef_moc.cpp"
+#include "moc_GuiRef.cpp"

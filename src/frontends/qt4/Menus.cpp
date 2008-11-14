@@ -1645,4 +1645,4 @@ Menu * Menus::menu(QString const & name, GuiView & view)
 } // namespace frontend
 } // namespace lyx
 
-#include "Menus_moc.cpp"
+#include "moc_Menus.cpp"

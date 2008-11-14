@@ -105,4 +105,4 @@ Dialog * createGuiLabel(GuiView & lv) { return new GuiLabel(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiLabel_moc.cpp"
+#include "moc_GuiLabel.cpp"

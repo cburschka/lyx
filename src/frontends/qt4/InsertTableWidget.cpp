@@ -156,4 +156,4 @@ void InsertTableWidget::updateParent()
 } // namespace frontend
 } // namespace lyx
 
-#include "InsertTableWidget_moc.cpp"
+#include "moc_InsertTableWidget.cpp"

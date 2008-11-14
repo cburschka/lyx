@@ -73,4 +73,4 @@ void Action::action()
 } // namespace frontend
 } // namespace lyx
 
-#include "Action_moc.cpp"
+#include "moc_Action.cpp"

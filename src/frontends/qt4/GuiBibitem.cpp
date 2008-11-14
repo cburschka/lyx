@@ -94,4 +94,4 @@ Dialog * createGuiBibitem(GuiView & lv) { return new GuiBibitem(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiBibitem_moc.cpp"
+#include "moc_GuiBibitem.cpp"

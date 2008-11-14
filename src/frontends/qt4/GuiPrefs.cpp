@@ -2786,4 +2786,4 @@ Dialog * createGuiPreferences(GuiView & lv) { return new GuiPreferences(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiPrefs_moc.cpp"
+#include "moc_GuiPrefs.cpp"

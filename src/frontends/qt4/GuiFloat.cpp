@@ -95,4 +95,4 @@ Dialog * createGuiFloat(GuiView & lv) { return new GuiFloat(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiFloat_moc.cpp"
+#include "moc_GuiFloat.cpp"

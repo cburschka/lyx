@@ -144,4 +144,4 @@ QSize PanelStack::sizeHint() const
 } // namespace frontend
 } // namespace lyx
 
-#include "PanelStack_moc.cpp"
+#include "moc_PanelStack.cpp"

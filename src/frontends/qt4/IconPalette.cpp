@@ -266,4 +266,4 @@ void ButtonMenu::updateParent()
 } // namespace frontend
 } // namespace lyx
 
-#include "IconPalette_moc.cpp"
+#include "moc_IconPalette.cpp"

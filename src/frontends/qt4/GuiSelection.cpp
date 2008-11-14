@@ -113,4 +113,4 @@ bool GuiSelection::empty() const
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiSelection_moc.cpp"
+#include "moc_GuiSelection.cpp"

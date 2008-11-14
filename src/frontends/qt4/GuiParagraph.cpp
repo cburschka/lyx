@@ -380,4 +380,4 @@ Dialog * createGuiParagraph(GuiView & lv)
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiParagraph_moc.cpp"
+#include "moc_GuiParagraph.cpp"

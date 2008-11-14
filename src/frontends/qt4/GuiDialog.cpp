@@ -113,4 +113,4 @@ void GuiDialog::updateView()
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiDialog_moc.cpp"
+#include "moc_GuiDialog.cpp"

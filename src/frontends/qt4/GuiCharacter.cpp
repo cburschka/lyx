@@ -405,4 +405,4 @@ Dialog * createGuiCharacter(GuiView & lv) { return new GuiCharacter(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiCharacter_moc.cpp"
+#include "moc_GuiCharacter.cpp"

@@ -765,5 +765,5 @@ Dialog * createGuiCitation(GuiView & lv) { return new GuiCitation(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiCitation_moc.cpp"
+#include "moc_GuiCitation.cpp"
 

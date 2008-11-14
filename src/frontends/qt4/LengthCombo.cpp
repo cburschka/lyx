@@ -70,4 +70,4 @@ void LengthCombo::noPercents()
 	}
 }
 
-#include "LengthCombo_moc.cpp"
+#include "moc_LengthCombo.cpp"

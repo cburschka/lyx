@@ -1735,4 +1735,4 @@ void DragTabBar::dropEvent(QDropEvent * event)
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiWorkArea_moc.cpp"
+#include "moc_GuiWorkArea.cpp"

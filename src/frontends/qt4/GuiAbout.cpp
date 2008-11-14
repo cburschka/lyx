@@ -119,4 +119,4 @@ Dialog * createGuiAbout(GuiView & lv) { return new GuiAbout(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiAbout_moc.cpp"
+#include "moc_GuiAbout.cpp"

@@ -12,5 +12,6 @@
 #include <config.h>
 
 // trigger moc 
-#include "SignalSlotPrivate_moc.cpp"
+#include "SignalSlotPrivate.h"
+#include "moc_SignalSlotPrivate.cpp"
 

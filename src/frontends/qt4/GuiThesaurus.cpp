@@ -185,4 +185,4 @@ Dialog * createGuiThesaurus(GuiView & lv) { return new GuiThesaurus(lv); }
 } // namespace lyx
 
 
-#include "GuiThesaurus_moc.cpp"
+#include "moc_GuiThesaurus.cpp"

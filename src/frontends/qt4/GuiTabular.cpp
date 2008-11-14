@@ -1130,4 +1130,4 @@ Dialog * createGuiTabular(GuiView & lv) { return new GuiTabular(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiTabular_moc.cpp"
+#include "moc_GuiTabular.cpp"

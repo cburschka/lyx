@@ -477,4 +477,4 @@ Dialog * createGuiSymbols(GuiView & lv)
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiSymbols_moc.cpp"
+#include "moc_GuiSymbols.cpp"

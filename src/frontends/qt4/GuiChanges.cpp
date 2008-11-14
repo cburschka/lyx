@@ -122,4 +122,4 @@ Dialog * createGuiChanges(GuiView & lv) { return new GuiChanges(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiChanges_moc.cpp"
+#include "moc_GuiChanges.cpp"

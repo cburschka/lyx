@@ -157,4 +157,4 @@ void ShortcutWidget::removeFromSequence()
 } // namespace frontend
 } // namespace lyx
 
-#include "CustomizedWidgets_moc.cpp"
+#include "moc_CustomizedWidgets.cpp"

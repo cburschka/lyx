@@ -2487,4 +2487,4 @@ Dialog * createGuiDocument(GuiView & lv) { return new GuiDocument(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiDocument_moc.cpp"
+#include "moc_GuiDocument.cpp"

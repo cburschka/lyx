@@ -107,4 +107,4 @@ Dialog * createGuiToc(GuiView & lv)
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiToc_moc.cpp"
+#include "moc_GuiToc.cpp"

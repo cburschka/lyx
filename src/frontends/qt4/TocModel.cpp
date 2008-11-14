@@ -374,4 +374,4 @@ void TocModels::sort(QString const & type, bool sort_it)
 } // namespace frontend
 } // namespace lyx
 
-#include "TocModel_moc.cpp"
+#include "moc_TocModel.cpp"

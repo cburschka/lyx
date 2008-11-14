@@ -671,4 +671,4 @@ Dialog * createGuiExternal(GuiView & lv) { return new GuiExternal(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiExternal_moc.cpp"
+#include "moc_GuiExternal.cpp"

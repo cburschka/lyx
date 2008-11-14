@@ -241,4 +241,4 @@ void FloatPlacement::checkAllowed()
 
 } // namespace lyx
 
-#include "FloatPlacement_moc.cpp"
+#include "moc_FloatPlacement.cpp"

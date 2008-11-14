@@ -97,4 +97,4 @@ Dialog * createGuiTabularCreate(GuiView & lv)
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiTabularCreate_moc.cpp"
+#include "moc_GuiTabularCreate.cpp"

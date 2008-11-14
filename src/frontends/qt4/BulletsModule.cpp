@@ -195,4 +195,4 @@ Bullet const & BulletsModule::bullet(int level) const
 } // namespace lyx
 
 
-#include "BulletsModule_moc.cpp"
+#include "moc_BulletsModule.cpp"

@@ -215,4 +215,4 @@ Dialog * createGuiWrap(GuiView & lv) { return new GuiWrap(lv); }
 } // namespace lyx
 
 
-#include "GuiWrap_moc.cpp"
+#include "moc_GuiWrap.cpp"

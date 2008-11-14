@@ -171,6 +171,9 @@ void warning(docstring const & title0, docstring const & message)
 }
 
 
+int argc = 1;
+char * argv[1];
+
 void error(docstring const & title0, docstring const & message)
 {
 	lyxerr << "Error: " << title0 << '\n'
@@ -182,8 +185,6 @@ void error(docstring const & title0, docstring const & message)
 
 	docstring const title = bformat(_("LyX: %1$s"), title0);
 	if (theApp() == 0) {
-		int argc = 1;
-		char * argv[1];
 		QApplication app(argc, argv);
 		QMessageBox::critical(0,
 			toqstr(title),

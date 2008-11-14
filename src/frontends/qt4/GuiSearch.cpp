@@ -141,4 +141,4 @@ Dialog * createGuiSearch(GuiView & lv) { return new GuiSearch(lv); }
 } // namespace lyx
 
 
-#include "GuiSearch_moc.cpp"
+#include "moc_GuiSearch.cpp"

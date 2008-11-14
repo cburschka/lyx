@@ -780,4 +780,4 @@ Dialog * createGuiGraphics(GuiView & lv) { return new GuiGraphics(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiGraphics_moc.cpp"
+#include "moc_GuiGraphics.cpp"

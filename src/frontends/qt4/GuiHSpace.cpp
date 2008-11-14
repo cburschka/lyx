@@ -310,4 +310,4 @@ Dialog * createGuiHSpace(GuiView & lv) { return new GuiHSpace(lv); }
 } // namespace lyx
 
 
-#include "GuiHSpace_moc.cpp"
+#include "moc_GuiHSpace.cpp"

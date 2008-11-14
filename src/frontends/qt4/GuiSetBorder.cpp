@@ -239,4 +239,4 @@ bool GuiSetBorder::getBottom()
 	return bottom_.set;
 }
 
-#include "GuiSetBorder_moc.cpp"
+#include "moc_GuiSetBorder.cpp"

@@ -441,4 +441,4 @@ bool GuiClipboard::empty() const
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiClipboard_moc.cpp"
+#include "moc_GuiClipboard.cpp"

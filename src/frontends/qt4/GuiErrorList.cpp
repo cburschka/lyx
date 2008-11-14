@@ -135,4 +135,4 @@ Dialog * createGuiErrorList(GuiView & lv) { return new GuiErrorList(lv); }
 } // namespace lyx
 
 
-#include "GuiErrorList_moc.cpp"
+#include "moc_GuiErrorList.cpp"

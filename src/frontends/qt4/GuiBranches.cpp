@@ -186,4 +186,4 @@ void GuiBranches::toggleColor(QTreeWidgetItem * item)
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiBranches_moc.cpp"
+#include "moc_GuiBranches.cpp"

@@ -477,4 +477,4 @@ Dialog * createGuiSpellchecker(GuiView & lv) { return new GuiSpellchecker(lv); }
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiSpellchecker_moc.cpp"
+#include "moc_GuiSpellchecker.cpp"

@@ -120,4 +120,4 @@ Dialog * createGuiHyperlink(GuiView & lv) { return new GuiHyperlink(lv); }
 } // namespace lyx
 
 
-#include "GuiHyperlink_moc.cpp"
+#include "moc_GuiHyperlink.cpp"

@@ -880,4 +880,4 @@ void GuiCompleter::popupHighlighted(const QString & completion)
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiCompleter_moc.cpp"
+#include "moc_GuiCompleter.cpp"

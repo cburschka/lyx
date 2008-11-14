@@ -369,4 +369,4 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiSelectionManager_moc.cpp"
+#include "moc_GuiSelectionManager.cpp"
