@@ -1493,8 +1493,8 @@ if (included_gettext and not libExists('included_intl')) or 'intl' in BUILD_TARG
 #
 # src/support
 #
-frontend_env['QT4_MOCHPREFIX'] = ''
-frontend_env['QT4_MOCHSUFFIX'] = '_moc.cpp'
+frontend_env['QT4_MOCHPREFIX'] = 'moc_'
+frontend_env['QT4_MOCHSUFFIX'] = '.cpp'
 
 support_moced_files = [frontend_env.Moc4('$BUILDDIR/src/support/%s' % x)
     for x in src_support_header_files ]
