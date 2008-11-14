@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -60,6 +60,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -103,8 +104,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
 \end_header
 
 \begin_body
@@ -43275,6 +43275,105 @@ status collapsed
 \begin_layout Plain Layout
 
 http://wiki.lyx.org/Windows/Japanese
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Latvian"
+
+\end_inset
+
+Latvian
+\begin_inset CommandInset href
+LatexCommand href
+name "Wiki-page"
+target "http://wiki.lyx.org/Windows/Latvian"
+
+\end_inset
+
+ how to set up LyX for Latvian:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Windows/Latvian
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Lithuanian"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Wiki-page"
+target "http://wiki.lyx.org/Windows/Lithuanian"
+
+\end_inset
+
+ how to set up LyX for Lithuanian:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Windows/Lithuanian
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Mongolian"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Wiki-page"
+target "http://wiki.lyx.org/Windows/Mongolian"
+
+\end_inset
+
+ how to set up LyX for Mongolian:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Windows/Mongolian
 \end_layout
 
 \end_inset
