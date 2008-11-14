@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author André Pönitz
+ * \author AndrÃ© PÃ¶nitz
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -472,6 +472,8 @@ int main(int argc, char * argv[])
 {
 	using namespace lyx;
 
+	setlocale(LC_CTYPE, "");
+
 	lyxerr.setStream(cerr);
 
 	easyParse(argc, argv);
@@ -484,7 +486,8 @@ int main(int argc, char * argv[])
 
 	os::init(argc, argv);
 
-	try { init_package(internal_path(to_utf8(from_local8bit(argv[0]))),
+	try {
+		init_package(internal_path(to_utf8(from_local8bit(argv[0]))),
 		cl_system_support, cl_user_support,
 		top_build_dir_is_two_levels_up);
 	} catch (ExceptionMessage const & message) {

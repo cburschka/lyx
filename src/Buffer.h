@@ -4,7 +4,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik Bjønnes
+ * \author Lars Gullik BjÃ¸nnes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -73,7 +73,7 @@ class FileNameList;
  *
  * I am not sure if the class is complete or
  * minimal, probably not.
- * \author Lars Gullik Bjønnes
+ * \author Lars Gullik BjÃ¸nnes
  */
 class Buffer {
 public:

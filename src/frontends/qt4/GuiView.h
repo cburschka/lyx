@@ -7,7 +7,7 @@
  * \author Lars Gullik Bjornes
  * \author John Levon
  * \author Abdelrazak Younes
- * \author Peter Kümmel
+ * \author Peter KÃ¼mmel
  *
  * Full author contact details are available in file CREDITS.
  */

@@ -6,7 +6,7 @@
  *
  * \author Asger Alstrup Nielsen
  * \author Jean-Marc Lasgouttes
- * \author Lars Gullik Bjønnes
+ * \author Lars Gullik BjÃ¸nnes
  *
  * Full author contact details are available in file CREDITS.
  */

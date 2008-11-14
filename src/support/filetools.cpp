@@ -8,11 +8,11 @@
  * \author Ivan Schreter
  * \author Dirk Niggemann
  * \author Asger Alstrup
- * \author Lars Gullik Bj¯nnes
+ * \author Lars Gullik Bj√∏nnes
  * \author Jean-Marc Lasgouttes
  * \author Angus Leeming
  * \author John Levon
- * \author Herbert Voﬂ
+ * \author Herbert Vo√ü
  *
  * Full author contact details are available in file CREDITS.
  *

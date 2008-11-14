@@ -4,8 +4,8 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
- * \author Jürgen Spitzmüller
- * \author Herbert Voß
+ * \author JÃ¼rgen SpitzmÃ¼ller
+ * \author Herbert VoÃŸ
  *
  * Full author contact details are available in file CREDITS.
  */

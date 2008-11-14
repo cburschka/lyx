@@ -38,7 +38,7 @@ public:
 	bool inner_box;
 	///
 	Length width;
-	/// "special" widths, see usrguide.dvi ง3.5
+	/// "special" widths, see usrguide.dvi ยง3.5
 	std::string special;
 	///
 	char pos;

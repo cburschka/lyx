@@ -274,12 +274,12 @@ enum FuncCode
 	LFUN_ESCAPE,                    // Lgb 20010517
 	LFUN_THESAURUS_ENTRY,           // Levon 20010720
 	LFUN_OPTIONAL_INSERT,           // Martin 12 Aug 2002
-	LFUN_MOUSE_PRESS,               // André 9 Aug 2002
+	LFUN_MOUSE_PRESS,               // AndrÃ© 9 Aug 2002
 	// 205
-	LFUN_MOUSE_MOTION,              // André 9 Aug 2002
-	LFUN_MOUSE_RELEASE,             // André 9 Aug 2002
-	LFUN_MOUSE_DOUBLE,              // André 9 Aug 2002
-	LFUN_MOUSE_TRIPLE,              // André 9 Aug 2002
+	LFUN_MOUSE_MOTION,              // AndrÃ© 9 Aug 2002
+	LFUN_MOUSE_RELEASE,             // AndrÃ© 9 Aug 2002
+	LFUN_MOUSE_DOUBLE,              // AndrÃ© 9 Aug 2002
+	LFUN_MOUSE_TRIPLE,              // AndrÃ© 9 Aug 2002
 	LFUN_WRAP_INSERT,               // Dekel 7 Apr 2002
 	// 210
 	LFUN_CHANGES_TRACK,             // Levon 20021001 (cool date !)

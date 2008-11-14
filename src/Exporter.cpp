@@ -5,11 +5,11 @@
  *
  * \author unknown
  * \author Alfredo Braunstein
- * \author Lars Gullik Bjønnes
+ * \author Lars Gullik BjÃ¸nnes
  * \author Jean Marc Lasgouttes
  * \author Angus Leeming
  * \author John Levon
- * \author André Pönitz
+ * \author AndrÃ© PÃ¶nitz
  *
  * Full author contact details are available in file CREDITS.
  */

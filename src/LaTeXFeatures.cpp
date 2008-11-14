@@ -3,11 +3,11 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author José Matos
- * \author Lars Gullik Bjønnes
+ * \author JosÃ© Matos
+ * \author Lars Gullik BjÃ¸nnes
  * \author Jean-Marc Lasgouttes
- * \author Jürgen Vigna
- * \author André Pönitz
+ * \author JÃ¼rgen Vigna
+ * \author AndrÃ© PÃ¶nitz
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -625,7 +625,7 @@ string const LaTeXFeatures::getPackages() const
 	if (isRequired("framed") && mustProvide("color")) {
 		RGBColor c = rgbFromHexName(lcolor.getX11Name(Color_shadedbg));
 		//255.0 to force conversion to double
-		//NOTE As Jürgen Spitzmüller pointed out, an alternative would be
+		//NOTE As JÃ¼rgen SpitzmÃ¼ller pointed out, an alternative would be
 		//to use the xcolor package instead, and then we can do
 		// \define{shadcolor}{RGB}...
 		//and not do any conversion. We'd then need to require xcolor

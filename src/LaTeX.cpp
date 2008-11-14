@@ -4,11 +4,11 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Alfredo Braunstein
- * \author Lars Gullik Bjønnes
+ * \author Lars Gullik BjÃ¸nnes
  * \author Jean-Marc Lasgouttes
  * \author Angus Leeming
  * \author Dekel Tsur
- * \author Jürgen Spitzmüller
+ * \author JÃ¼rgen SpitzmÃ¼ller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -878,7 +878,7 @@ void LaTeX::deplog(DepTable & head)
 	string lastline;
 	while (ifs) {
 		// Ok, the scanning of files here is not sufficient.
-		// Sometimes files are named by "File: xxx" only
+		// Sometimes files are named by "File:Â xxx" only
 		// So I think we should use some regexps to find files instead.
 		// Note: all file names and paths might contains spaces.
 		bool found_file = false;

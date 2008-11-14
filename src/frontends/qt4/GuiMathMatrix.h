@@ -6,7 +6,7 @@
  *
  * \author John Levon
  * \author Edwin Leuven
- * \author Jürgen Spitzmüller
+ * \author JÃ¼rgen SpitzmÃ¼ller
  *
  * Full author contact details are available in file CREDITS.
  */

@@ -5,9 +5,9 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Alfredo Braustein
- * \author Lars Gullik Bjønnes
+ * \author Lars Gullik BjÃ¸nnes
  * \author John Levon
- * \author Jürgen Vigna
+ * \author JÃ¼rgen Vigna
  *
  * Full author contact details are available in file CREDITS.
  */

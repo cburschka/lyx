@@ -6,8 +6,8 @@
  *
  * \author John Levon
  * \author Kalle Dalheimer
- * \author Jürgen Spitzmüller
- * \author Herbert Voß
+ * \author JÃ¼rgen SpitzmÃ¼ller
+ * \author Herbert VoÃŸ
  *
  * Full author contact details are available in file CREDITS.
  */

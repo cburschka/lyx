@@ -3,8 +3,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author João Luis M. Assirati
- * \author Lars Gullik Bjønnes
+ * \author JoÃ£o Luis M. Assirati
+ * \author Lars Gullik BjÃ¸nnes
  *
  * Full author contact details are available in file CREDITS.
  */

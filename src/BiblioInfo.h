@@ -5,7 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Angus Leeming
- * \author Herbert Voﬂ
+ * \author Herbert Vo√ü
  * \author Richard Heck
  *
  * Full author contact details are available in file CREDITS.

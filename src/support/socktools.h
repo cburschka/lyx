@@ -4,7 +4,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Jo„o Luis M. Assirati
+ * \author Jo√£o Luis M. Assirati
  *
  * Full author contact details are available in file CREDITS.
  */

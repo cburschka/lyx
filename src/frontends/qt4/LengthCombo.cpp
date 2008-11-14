@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
- * \author Herbert Voﬂ
+ * \author Herbert Vo√ü
  *
  * Full author contact details are available in file CREDITS.
  */

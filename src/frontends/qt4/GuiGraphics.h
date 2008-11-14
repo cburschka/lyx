@@ -5,7 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
- * \author Herbert Voﬂ
+ * \author Herbert Vo√ü
  * \author Baruch Even
  * \author Angus Leeming
  *

@@ -8,7 +8,7 @@
  * indices wile trying to stay compatible with types used
  * by the standard containers.
  *
- * \author André Pönitz
+ * \author AndrÃ© PÃ¶nitz
  *
  * Full author contact details are available in file CREDITS.
  */

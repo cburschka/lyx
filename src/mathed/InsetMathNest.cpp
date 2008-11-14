@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author André Pönitz
+ * \author AndrÃ© PÃ¶nitz
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -1394,7 +1394,7 @@ void InsetMathNest::lfunMouseRelease(Cursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
+bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 {
 	//lyxerr << "interpret 2: '" << c << "'" << endl;
 	docstring save_selection;

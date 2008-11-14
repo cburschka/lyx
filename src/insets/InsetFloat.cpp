@@ -3,9 +3,9 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Jürgen Vigna
- * \author Lars Gullik Bjønnes
- * \author Jürgen Spitzmüller
+ * \author JÃ¼rgen Vigna
+ * \author Lars Gullik BjÃ¸nnes
+ * \author JÃ¼rgen SpitzmÃ¼ller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -51,7 +51,7 @@ namespace lyx {
 // (read DocBook).
 // By using float.sty we will have the same handling for all floats, both
 // for those already in existance (table and figure) and all user created
-// ones¹. So suddenly we give the users the possibility of creating new
+// onesÂ¹. So suddenly we give the users the possibility of creating new
 // kinds of floats on the fly. (and with a uniform look)
 //
 // API to float.sty:
@@ -88,7 +88,7 @@ namespace lyx {
 //   \listof{type}{title}
 //     title -
 
-// ¹ the algorithm float is defined using the float.sty package. Like this
+// Â¹ the algorithm float is defined using the float.sty package. Like this
 //   \floatstyle{ruled}
 //   \newfloat{algorithm}{htbp}{loa}[<sect>]
 //   \floatname{algorithm}{Algorithm}

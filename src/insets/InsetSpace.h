@@ -6,8 +6,8 @@
  *
  * \author Asger Alstrup Nielsen
  * \author Jean-Marc Lasgouttes
- * \author Lars Gullik Bjønnes
- * \author Jürgen Spitzmüller
+ * \author Lars Gullik BjÃ¸nnes
+ * \author JÃ¼rgen SpitzmÃ¼ller
  *
  * Full author contact details are available in file CREDITS.
  */

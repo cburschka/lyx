@@ -5,7 +5,7 @@
  *
  * \author Angus Leeming
  * \author Martin Vermeer
- * \author Jürgen Spitzmüller
+ * \author JÃ¼rgen SpitzmÃ¼ller
  *
  * Full author contact details are available in file CREDITS.
  */

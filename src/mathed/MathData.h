@@ -5,8 +5,8 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Alejandro Aguilar Sierra
- * \author André Pönitz
- * \author Lars Gullik Bjønnes
+ * \author AndrÃ© PÃ¶nitz
+ * \author Lars Gullik BjÃ¸nnes
  * \author Stefan Schimanski
  *
  * Full author contact details are available in file CREDITS.

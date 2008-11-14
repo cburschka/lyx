@@ -3,9 +3,9 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Andr� P�nitz
+ * \author André Pönitz
  * \author Jean-Marc Lasgouttes
- * \author Uwe St�hr
+ * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -2264,7 +2264,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// subset of LaTeX, so don't parse anything here,
 			// but use the raw argument.
 			// Otherwise we would convert \~{\i} wrongly.
-			// This will of course not translate \~{\ss} to \~{ß},
+			// This will of course not translate \~{\ss} to \~{Ã},
 			// but that does at least compile and does only look
 			// strange on screen.
 			context.check_layout(os);

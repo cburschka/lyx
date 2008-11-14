@@ -5,7 +5,7 @@
  *
  * \author Angus Leeming
  * \author Martin Vermeer
- * \author Jürgen Spitzmüller
+ * \author JÃ¼rgen SpitzmÃ¼ller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -305,7 +305,7 @@ int InsetBox::latex(odocstream & os, OutputParams const & runparams) const
 		os << "\\framebox";
 		if (!params_.inner_box) {
 			os << "{\\makebox";
-			// Special widths, see usrguide §3.5
+			// Special widths, see usrguide Â§3.5
 			// FIXME UNICODE
 			if (params_.special != "none") {
 				os << "[" << params_.width.value()

@@ -444,8 +444,8 @@ void callNext()
 	// Bind our chain caller
 	pro.second->connect(boost::bind(&ForkedCallQueue::callback, _1, _2));
 	ForkedCall call;
-	// If we fail to fork the process, then emit the signal
-	// to tell the outside world that it failed.
+	//Â IfÂ weÂ failÂ toÂ forkÂ theÂ process,Â thenÂ emitÂ theÂ signal
+	//Â toÂ tellÂ theÂ outsideÂ worldÂ thatÂ itÂ failed.
 	if (call.startScript(pro.first, pro.second) > 0)
 		pro.second->operator()(0,1);
 }

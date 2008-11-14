@@ -6,7 +6,7 @@
  * \author Alejandro Aguilar Sierra
  * \author Alfredo Braunstein
  * \author Dov Feldstern
- * \author André Pönitz
+ * \author AndrÃ© PÃ¶nitz
  * \author Stefan Schimanski
  *
  * Full author contact details are available in file CREDITS.

@@ -7,7 +7,7 @@
  * A selection of useful system functions made
  * handy for C++ usage.
  *
- * \author Lars Gullik Bjønnes
+ * \author Lars Gullik BjÃ¸nnes
  *
  * Full author contact details are available in file CREDITS.
  */

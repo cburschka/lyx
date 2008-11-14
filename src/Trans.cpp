@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik Bjønnes
+ * \author Lars Gullik BjÃ¸nnes
  * \author Matthias Ettrich
  *
  * Full author contact details are available in file CREDITS.
@@ -56,7 +56,7 @@ namespace lyx {
    |    cedilla       |    cedilla       |LFUN_ACCENT_CEDILLA      | cedilla
    |    underdot      |                  |LFUN_ACCENT_UNDERDOT     | underdot
    |    underbar      |                  |LFUN_ACCENT_UNDERBAR     | underbar
-   |    hácek         |    caron         |LFUN_ACCENT_CARON        | caron
+   |    hÃ¡cek         |    caron         |LFUN_ACCENT_CARON        | caron
    |    breve         |    breve         |LFUN_ACCENT_BREVE        | breve
    |    tie           |                  |LFUN_ACCENT_TIE          | tie
    | Hungarian umlaut |    doubleacute   |LFUN_ACCENT_HUNGARIAN_UMLAUT  | hungarian umlaut
