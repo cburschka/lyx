@@ -177,9 +177,9 @@ public:
 	///
 	void error(std::string const & msg);
 	/// Parses one token from \p is 
-	void tokenize_one(std::istream & is);
+	void tokenize_one();
 	/// Parses \p is into tokens
-	void tokenize(std::istream & is);
+	void tokenize();
 	///
 	void push_back(Token const & t);
 	/// The previous token.
