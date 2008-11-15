@@ -25,7 +25,6 @@
 #include "BufferView.h"
 #include "Changes.h"
 #include "FuncRequest.h"
-#include "lyxfind.h"
 #include "LyXRC.h"
 
 #include <QTextBrowser>
