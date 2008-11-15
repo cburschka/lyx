@@ -432,7 +432,7 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 		if (cat == QChar::Other_Control || cat == QChar::Separator_Space)
 			continue;
 		++numItem;
-		if (show_all || c >= range_start && c <= range_end)
+		if (show_all || (c >= range_start && c <= range_end))
 			s.append(c);
 		if (update_combo) {
 			QString block = getBlock(c);
