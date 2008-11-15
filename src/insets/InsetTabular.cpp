@@ -3211,7 +3211,7 @@ void InsetTabular::edit(Cursor & cur, bool front, EntryDirection)
 void InsetTabular::updateLabels(ParIterator const & it)
 {
 	// In a longtable, tell captions what the current float is
-	Counters & cnts = buffer().params().documentClass().counters();
+	Counters & cnts = buffer().masterBuffer()->params().documentClass().counters();
 	string const saveflt = cnts.current_float();
 	if (tabular.is_long_tabular)
 		cnts.current_float("table");
