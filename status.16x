@@ -71,6 +71,8 @@ What's new
 - Fix crash when undoing a math operation while the outline pane was open
   (bug 5491).
 
+- Fix crash on Mac when dropping a file on its own buffer (bug 5447)
+
 - Fix false duplicate warning for labels when just applying without
   changing (bug 5496).
 
