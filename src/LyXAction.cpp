@@ -846,6 +846,17 @@ void LyXAction::init()
  */
 		{ LFUN_WORD_REPLACE, "word-replace", Noop, Edit },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_FINDADV
+ * \li Action: Search for next occurence of a pattern.
+ * \li Syntax: word-findadv [<DATA>]
+ * \li Params: <DATA>: data encoded from FindAdv dialog (see #lyx::findadv2string()).
+                       If no parameter is given, search with last find-dialog
+		       data is used for search (i.e. find-next).
+ * \li Origin: Andre, Jan 7 2004
+ * \endvar
+ */
+		{ LFUN_WORD_FINDADV, "word-findadv", ReadOnly, Edit },
+/*!
  * \var lyx::FuncCode lyx::LFUN_WORD_FORWARD
  * \li Action: Moves the cursor to the logically next beginning of a word.
  * \li Notion: This is not the action which should be bound to the arrow keys,
@@ -1503,6 +1514,17 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_MATH_MODE, "math-mode", Noop, Math },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_REGEXP_MODE
+ * \li Action: Enters regexp mode (i.e. puts regexp insets on the current
+               cursor position).
+ * \li Notion: If there is some selected text, it puts the text inside created regexp box.
+ * \li Syntax: regexp-mode [<ARG>]
+ * \li Params: <ARG>: eventual argument (regular expression).
+ * \li Origin: Tommaso, 4 Ott 2008
+ * \endvar
+ */
+		{ LFUN_REGEXP_MODE, "regexp-mode", Noop, Math },
 /*!
  * \var lyx::FuncCode lyx::LFUN_MATH_NUMBER_LINE_TOGGLE
  * \li Action: Toggles numbering of the current formula line.
@@ -3120,7 +3142,7 @@ string const LyXAction::getActionName(FuncCode action) const
 }
 
 
-LyXAction::func_type const LyXAction::getActionType(FuncCode action) const
+LyXAction::func_type LyXAction::getActionType(FuncCode action) const
 {
 	info_map::const_iterator const it = lyx_info_map.find(action);
 	return it != lyx_info_map.end() ? it->second.type : Hidden;
