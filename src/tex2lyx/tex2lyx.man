@@ -480,48 +480,6 @@ http://www.lyx.org. If you are running \fBtex2lyx\fR on a huge file, please do n
 your bug report. Just include the last ten or twenty lines of output, along with 
 the piece of the LaTeX file it crashed on.  Or, even better, attach a small but 
 complete file which causes the same problem as your original file.
-.Sh "Implementation Details:"
-\fBtex2lyx\fR makes several \*(L"passes\*(R" in order to translate a TeX file. On each pass,
-it creates one or two files.
-.Ip "Pass 0" 4
-Before doing anything, read the syntax file (or files).
-.Ip "Pass 1a" 4
-Split preamble (anything before a \f(CW\ebegin{document}\fR command) off the rest
-of the file. It saves the two pieces in separate files. This is necessary
-because there may be very strange stuff in a preamble. It also ignores
-anything after the \f(CW\eend{document}\fR, on the assumption that it isn't LaTeX.
-.Ip "Pass 1b" 4
-Translate the preamble. Currently, that just means translating the
-\f(CW\edocumentclass\fR command and copying the rest exactly into the LyX preamble.
-.Sp
-Once you know what class the document is, read the LyX layout file for that
-class.
-.Ip "Pass 2" 4
-\*(L"Clean\*(R" the TeX file, generating slightly stricter LaTeX. This includes:
-.Ip "\(bu" 12
-Change, e.g., x^2 to the equivalent but clearer x^{2}
-.Ip "\(bu" 12
-Removing optional arguments that LyX can't handle (e.g., from \f(CW\echapter\fR)
-.Ip "\(bu" 12
-Changing \f(CW{\eem foo}\fR to \f(CW\eemph{foo}\fR, etc. This is necessary because LyX
-always writes out the non-local forms anyway. This should very rarely make a
-difference.
-.Ip "Pass 3" 4
-Translate LaTeX text, commands, and environments to LyX.
-.Ip "Pass 4" 4
-Put the two pieces back together, and do some final tweaking, to generate the
-LyX file
-.PP
-If there are any \f(CW\einput\fR or \f(CW\einclude\fR commands, \fBtex2lyx\fR will loop back to
-the beginning and translate those. It assumes that the included files are the
-same class as the main file, and that they have no preamble matter. (If you
-have an \f(CW\einput\fR command in the preamble of a file, the command will be
-copied exactly into the LaTeX preamble portion of the LyX file, so the
-included file won't be translated.) So when translating included files, it
-skips passes 0 and 1.
-.PP
-If \fBtex2lyx\fR doesn't find a file you wanted to include, it will give a warning,
-but will continue to translate any files it does find.
 .Sh "Layout Files"
 \fBtex2lyx\fR reads a LyX layout file to know how to handle LaTeX environments and
 commands which get translated to LyX layouts. This file will include all
@@ -590,14 +548,6 @@ whitespace-separated, between \f(CW\ebegin{tex2lyxre}\fR and \f(CW\eend{tex2lyxr
 statements in the syntax file. (If you have a regular environment which you
 won't use very often, you can use the \fB\-r\fR option rather than writing a
 syntax file.)
-.SH "DIAGNOSTICS"
-\fBtex2lyx\fR should always explain why it crashes, if it crashes. Some diagnostics
-may be very technical, though, if they come from the guts of the code.
-\fBtex2lyx\fR gives much more information while running if you use the \fB\-d\fR option,
-but you shouldn't need that unless something goes wrong.
-.PP
-When it's finished, \fBtex2lyx\fR will tell you if it finished successfully or
-died due to some error.
 .SH "WARNINGS"
 Always keep a copy of your original LaTeX files either under a different
 name or in a different directory. There are a couple ways in which using LyX
