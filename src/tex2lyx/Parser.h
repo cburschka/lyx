@@ -178,8 +178,6 @@ public:
 	void tokenize(std::istream & is);
 	///
 	void push_back(Token const & t);
-	///
-	void pop_back();
 	/// The previous token.
 	Token const & prev_token() const;
 	/// The current token.
