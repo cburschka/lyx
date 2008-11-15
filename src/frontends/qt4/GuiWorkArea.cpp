@@ -307,7 +307,7 @@ void GuiWorkArea::init()
 	// Must be set when creating custom text editing widgets.
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 
-	dialogMode_ = false;
+	dialog_mode_ = false;
 }
 
 
@@ -872,8 +872,8 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 
 void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 {
-	// Do not process here some keys if dialogMode_ is set
-	if (dialogMode_
+	// Do not process here some keys if dialog_mode_ is set
+	if (dialog_mode_
 		&& (ev->modifiers() == Qt::NoModifier
 		    || ev->modifiers() == Qt::ShiftModifier)
 		&& (ev->key() == Qt::Key_Escape

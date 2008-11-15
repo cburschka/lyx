@@ -136,15 +136,12 @@ public:
 	///
 	void resizeBufferView();
 
-	bool isInDialog() {
-		return dialogMode_;
-	}
+	bool inDialogMode() { return dialog_mode_; }
+	void setDialogMode(bool mode) { dialog_mode_ = mode; }
 
 	///
 	GuiCompleter & completer() { return *completer_; }
 
-	/// Return true if dialogMode is set
-	bool& dialogMode() { return dialogMode_; }
 
 	/// Return the GuiView this workArea belongs to
 	GuiView const & view() const { return *lyx_view_; }
@@ -263,7 +260,7 @@ private:
 
 	/// Special mode in which Esc and Enter (with or without Shift)
 	/// are ignored
-	bool dialogMode_;
+	bool dialog_mode_;
 }; // GuiWorkArea
 
 
