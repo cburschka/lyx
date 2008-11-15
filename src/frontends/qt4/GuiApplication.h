@@ -59,6 +59,7 @@ public:
 	//@{
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag) const;
 	bool dispatch(FuncRequest const &);
+	void dispatchDelayed(FuncRequest const &);
 	void resetGui();
 	void restoreGuiSession();
 	Clipboard & clipboard();
@@ -66,7 +67,6 @@ public:
 	FontLoader & fontLoader();
 	int exec();
 	void exit(int status);
-	void customEvent(QEvent * event);
 	bool event(QEvent * e);
 	bool getRgbColor(ColorCode col, RGBColor & rgbcol);
 	std::string const hexName(ColorCode col);
@@ -134,6 +134,9 @@ private Q_SLOTS:
 	void handleRegularEvents();
 	///
 	void onLastWindowClosed();
+
+	///
+	void processFuncRequestQueue();
 
 private:
 	///

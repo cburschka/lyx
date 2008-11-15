@@ -62,6 +62,8 @@
 #include "support/linkback/LinkBackProxy.h"
 #endif
 
+#include <queue>
+
 #include <QByteArray>
 #include <QClipboard>
 #include <QDateTime>
@@ -176,16 +178,6 @@ vector<string> loadableImageFormats()
 
 	return fmts;
 }
-
-
-class FuncRequestEvent : public QEvent
-{
-public:
-       FuncRequestEvent(FuncRequest const & req) 
-       : QEvent(QEvent::User), request(req) {}
-
-       FuncRequest const request;
-};
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -631,6 +623,9 @@ struct GuiApplication::Private
 	/// are done.
 	QTimer general_timer_;
 
+	/// delayed FuncRequests
+	std::queue<FuncRequest> func_request_queue_;
+
 	/// Multiple views container.
 	/**
 	* Warning: This must not be a smart pointer as the destruction of the
@@ -907,6 +902,13 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 }
 
 
+void GuiApplication::dispatchDelayed(FuncRequest const & func)
+{
+	d->func_request_queue_.push(func);
+	QTimer::singleShot(0, this, SLOT(processFuncRequestQueue()));
+}
+
+
 void GuiApplication::resetGui()
 {
 	// Set the language defined by the user.
@@ -1088,6 +1090,15 @@ void GuiApplication::setGuiLanguage()
 }
 
 
+void GuiApplication::processFuncRequestQueue()
+{
+	while (!d->func_request_queue_.empty()) {
+		lyx::dispatch(d->func_request_queue_.back());
+		d->func_request_queue_.pop();
+	}
+}
+
+
 void GuiApplication::execBatchCommands()
 {
 	setGuiLanguage();
@@ -1192,13 +1203,6 @@ void GuiApplication::handleRegularEvents()
 }
 
 
-void GuiApplication::customEvent(QEvent * event)
-{
-       FuncRequestEvent * reqEv = static_cast<FuncRequestEvent *>(event);
-       lyx::dispatch(reqEv->request);
-}
-
-
 bool GuiApplication::event(QEvent * e)
 {
 	switch(e->type()) {
@@ -1209,8 +1213,7 @@ bool GuiApplication::event(QEvent * e)
 		// commands are not executed here yet and the gui is not ready
 		// therefore.
 		QFileOpenEvent * foe = static_cast<QFileOpenEvent *>(e);
-		postEvent(this, new FuncRequestEvent(FuncRequest(LFUN_FILE_OPEN,
-			qstring_to_ucs4(foe->file()))));
+		dispatchDelayed(FuncRequest(LFUN_FILE_OPEN, qstring_to_ucs4(foe->file())));
 		e->accept();
 		return true;
 	}

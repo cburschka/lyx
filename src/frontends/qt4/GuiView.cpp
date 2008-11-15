@@ -142,6 +142,7 @@ private:
 	QPixmap splash_;
 };
 
+
 /// Toolbar store providing access to individual toolbars by name.
 typedef std::map<std::string, GuiToolbar *> ToolbarMap;
 
@@ -597,7 +598,7 @@ void GuiView::dragEnterEvent(QDragEnterEvent * event)
 }
 
 
-void GuiView::dropEvent(QDropEvent* event)
+void GuiView::dropEvent(QDropEvent * event)
 {
 	QList<QUrl> files = event->mimeData()->urls();
 	if (files.isEmpty())
@@ -607,8 +608,13 @@ void GuiView::dropEvent(QDropEvent* event)
 	for (int i = 0; i != files.size(); ++i) {
 		string const file = os::internal_path(fromqstr(
 			files.at(i).toLocalFile()));
-		if (!file.empty())
-			lyx::dispatch(FuncRequest(LFUN_FILE_OPEN, file));
+		if (!file.empty()) {
+			// Asynchronously post the event. DropEvent usually come
+			// from the BufferView. But reloading a file might close
+			// the BufferView from within its own event handler.
+			guiApp->dispatchDelayed(FuncRequest(LFUN_FILE_OPEN, file));
+			event->accept();
+		}
 	}
 }
 
