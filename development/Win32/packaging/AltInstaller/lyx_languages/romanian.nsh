@@ -130,7 +130,7 @@ LangString UnNotInRegistryLabel "${LYX_LANG}" "Nu am gãsit LyX în registri.$\r$\
 LangString UnInstallRunning "${LYX_LANG}" "Trebuie sã inchideþi LyX prima oarã!"
 LangString UnNotAdminLabel "${LYX_LANG}" "Trebuie sã aveþi drepturi de administrator pentru dezinstalarea programului LyX!"
 LangString UnReallyRemoveLabel "${LYX_LANG}" "Sunteþi sigur cã doriþi sã dezinstalaþi programul LyX ºi toate componentele lui?"
-LangString UnLyXPreferencesTitle "${LYX_LANG}" 'Preferinþele utilizatorului pentru LyX$'
+LangString UnLyXPreferencesTitle "${LYX_LANG}" 'Preferinþele utilizatorului pentru LyX'
 LangString UnGSview "${LYX_LANG}" 'Apãsaþi butonul "Uninstall" în urmatoarea fereastrã pentru a dezinstala  $\r$\n\
                                   vizualizatorul de documente tip Postscript ºi PDF  "GSview".'
 LangString UnRemoveSuccessLabel "${LYX_LANG}" "LyX a fost dezinstalat cu succes de pe calculatorul dumneavoastrã."
