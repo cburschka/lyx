@@ -38,7 +38,6 @@ public:
 	enum LyXRCTags {
 		RC_ACCEPT_COMPOUND = 1,
 		RC_ALT_LANG,
-		RC_PLAINTEXT_ROFF_COMMAND,
 		RC_PLAINTEXT_LINELEN,
 		RC_AUTOREGIONDELETE,
 		RC_AUTORESET_OPTIONS,
@@ -302,8 +301,6 @@ public:
 	std::string typewriter_font_foundry;
 	///
 	unsigned int autosave;
-	///
-	std::string plaintext_roff_command;
 	///
 	unsigned int plaintext_linelen;
 	/// use library instead of process

@@ -1825,7 +1825,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	switch (tag) {
 	case LyXRC::RC_ACCEPT_COMPOUND:
 	case LyXRC::RC_ALT_LANG:
-	case LyXRC::RC_PLAINTEXT_ROFF_COMMAND:
 	case LyXRC::RC_PLAINTEXT_LINELEN:
 	case LyXRC::RC_AUTOREGIONDELETE:
 	case LyXRC::RC_AUTORESET_OPTIONS:

@@ -66,7 +66,7 @@ void ASpell::addSpeller(string const & lang)
 	// platforms (cygwin, OS X). Therefore we use utf-8, that does
 	// always work.
 	aspell_config_replace(config, "encoding", "utf-8");
-	if (lyxrc.isp_accept_compound)
+	if (lyxrc.spellcheck_accept_compound)
 		// Consider run-together words as legal compounds
 		aspell_config_replace(config, "run-together", "true");
 	else

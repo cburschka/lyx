@@ -122,7 +122,6 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\path_prefix", LyXRC::RC_PATH_PREFIX },
 	{ "\\personal_dictionary", LyXRC::RC_PERS_DICT },
 	{ "\\plaintext_linelen", LyXRC::RC_PLAINTEXT_LINELEN },
-	{ "\\plaintext_roff_command", LyXRC::RC_PLAINTEXT_ROFF_COMMAND },
 	{ "\\preview", LyXRC::RC_PREVIEW },
 	{ "\\preview_hashed_labels", LyXRC::RC_PREVIEW_HASHED_LABELS },
 	{ "\\preview_scale_factor", LyXRC::RC_PREVIEW_SCALE_FACTOR },
@@ -828,11 +827,6 @@ int LyXRC::read(Lexer & lexrc)
 			lexrc >> dialogs_iconify_with_main;
 			break;
 
-		case RC_PLAINTEXT_ROFF_COMMAND:
-			if (lexrc.next(true)) {
-				plaintext_roff_command = lexrc.getString();
-			}
-			break;
 		case RC_PLAINTEXT_LINELEN:
 			lexrc >> plaintext_linelen;
 			break;
@@ -2074,15 +2068,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		os << "\n#\n"
 		   << "# PLAIN TEXT EXPORT SECTION ##############################\n"
 		   << "#\n\n";
-
-	case RC_PLAINTEXT_ROFF_COMMAND:
-		if (ignore_system_lyxrc ||
-		    plaintext_roff_command != system_lyxrc.plaintext_roff_command) {
-			os << "\\plaintext_roff_command \"" << escapeCommand(plaintext_roff_command)
-			   << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
 
 		os << "\n#\n"
 		   << "# SPELLCHECKER SECTION ##############################\n"

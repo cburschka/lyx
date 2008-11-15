@@ -335,22 +335,18 @@ PrefPlaintext::PrefPlaintext(GuiPreferences * form)
 	setupUi(this);
 	connect(plaintextLinelengthSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
-	connect(plaintextRoffED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
 }
 
 
 void PrefPlaintext::apply(LyXRC & rc) const
 {
 	rc.plaintext_linelen = plaintextLinelengthSB->value();
-	rc.plaintext_roff_command = fromqstr(plaintextRoffED->text());
 }
 
 
 void PrefPlaintext::update(LyXRC const & rc)
 {
 	plaintextLinelengthSB->setValue(rc.plaintext_linelen);
-	plaintextRoffED->setText(toqstr(rc.plaintext_roff_command));
 }
 
 
