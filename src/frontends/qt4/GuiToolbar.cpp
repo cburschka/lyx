@@ -892,10 +892,10 @@ void GuiToolbar::update(bool in_math, bool in_table, bool in_review,
 	bool in_mathmacrotemplate)
 {
 	if (visibility_ & Toolbars::AUTO) {
-		bool show_it = in_math && (visibility_ & Toolbars::MATH)
-			|| in_table && (visibility_ & Toolbars::TABLE)
-			|| in_review && (visibility_ & Toolbars::REVIEW)
-			|| in_mathmacrotemplate && (visibility_ & Toolbars::MATHMACROTEMPLATE);
+		bool show_it = (in_math && (visibility_ & Toolbars::MATH))
+			|| (in_table && (visibility_ & Toolbars::TABLE))
+			|| (in_review && (visibility_ & Toolbars::REVIEW))
+			|| (in_mathmacrotemplate && (visibility_ & Toolbars::MATHMACROTEMPLATE));
 		setVisible(show_it);
 	}
 
