@@ -1,4 +1,4 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -105,6 +105,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -142,7 +143,7 @@ type "mailto:"
 \begin_inset Newline newline
 \end_inset
 
-Version 1.6.0
+Version 1.6.x
 \begin_inset Note Note
 status open
 
@@ -10753,17 +10754,19 @@ LaTeX-packages ! aeguill
 \end_inset
 
  with the document preamble line
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Plain Layout
 
 \series bold
 
 \backslash
 usepackage[ec]{aeguill}
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Plain Layout
+
+\series default
 will fix the guillemet problem.
 \end_layout
 
@@ -43289,7 +43292,7 @@ key "Latvian"
 
 \end_inset
 
-Latvian
+
 \begin_inset CommandInset href
 LatexCommand href
 name "Wiki-page"
