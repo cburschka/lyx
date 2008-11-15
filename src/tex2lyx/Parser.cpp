@@ -351,6 +351,82 @@ string const Parser::verbatimEnvironment(string const & name)
 }
 
 
+void Parser::tokenize_one(istream & is)
+{
+	char c;
+	if (!is.get(c)) 
+		return;
+	//cerr << "reading c: " << c << "\n";
+
+	switch (catcode(c)) {
+	case catSpace: {
+		string s(1, c);
+		while (is.get(c) && catcode(c) == catSpace)
+			s += c;
+		if (catcode(c) != catSpace)
+			is.putback(c);
+		push_back(Token(s, catSpace));
+		break;
+	}
+		
+	case catNewline: {
+		++lineno_;
+		string s(1, getNewline(is, c));
+		while (is.get(c) && catcode(c) == catNewline) {
+			++lineno_;
+			s += getNewline(is, c);
+		}
+		if (catcode(c) != catNewline)
+			is.putback(c);
+		push_back(Token(s, catNewline));
+		break;
+	}
+		
+	case catComment: {
+		// We don't treat "%\n" combinations here specially because
+		// we want to preserve them in the preamble
+		string s;
+		while (is.get(c) && catcode(c) != catNewline)
+			s += c;
+		// handle possible DOS line ending
+		if (catcode(c) == catNewline)
+			c = getNewline(is, c);
+		// Note: The '%' at the beginning and the '\n' at the end
+		// of the comment are not stored.
+		++lineno_;
+		push_back(Token(s, catComment));
+		break;
+	}
+		
+	case catEscape: {
+		is.get(c);
+		if (!is) {
+			error("unexpected end of input");
+		} else {
+			string s(1, c);
+			if (catcode(c) == catLetter) {
+				// collect letters
+				while (is.get(c) && catcode(c) == catLetter)
+					s += c;
+				if (catcode(c) != catLetter)
+					is.putback(c);
+			}
+			push_back(Token(s, catEscape));
+		}
+		break;
+	}
+		
+	case catIgnore: {
+		cerr << "ignoring a char: " << int(c) << "\n";
+		break;
+	}
+		
+	default:
+		push_back(Token(c, catcode(c)));
+	}
+}
+
+
 void Parser::tokenize(istream & is)
 {
 	static bool init_done = false;
@@ -360,77 +436,8 @@ void Parser::tokenize(istream & is)
 		init_done = true;
 	}
 
-	char c;
-	while (is.get(c)) {
-		//cerr << "reading c: " << c << "\n";
-
-		switch (catcode(c)) {
-			case catSpace: {
-				string s(1, c);
-				while (is.get(c) && catcode(c) == catSpace)
-					s += c;
-				if (catcode(c) != catSpace)
-					is.putback(c);
-				push_back(Token(s, catSpace));
-				break;
-			}
-
-			case catNewline: {
-				++lineno_;
-				string s(1, getNewline(is, c));
-				while (is.get(c) && catcode(c) == catNewline) {
-					++lineno_;
-					s += getNewline(is, c);
-				}
-				if (catcode(c) != catNewline)
-					is.putback(c);
-				push_back(Token(s, catNewline));
-				break;
-			}
-
-			case catComment: {
-				// We don't treat "%\n" combinations here specially because
-				// we want to preserve them in the preamble
-				string s;
-				while (is.get(c) && catcode(c) != catNewline)
-					s += c;
-				// handle possible DOS line ending
-				if (catcode(c) == catNewline)
-					c = getNewline(is, c);
-				// Note: The '%' at the beginning and the '\n' at the end
-				// of the comment are not stored.
-				++lineno_;
-				push_back(Token(s, catComment));
-				break;
-			}
-
-			case catEscape: {
-				is.get(c);
-				if (!is) {
-					error("unexpected end of input");
-				} else {
-					string s(1, c);
-					if (catcode(c) == catLetter) {
-						// collect letters
-						while (is.get(c) && catcode(c) == catLetter)
-							s += c;
-						if (catcode(c) != catLetter)
-							is.putback(c);
-					}
-					push_back(Token(s, catEscape));
-				}
-				break;
-			}
-
-			case catIgnore: {
-				cerr << "ignoring a char: " << int(c) << "\n";
-				break;
-			}
-
-			default:
-				push_back(Token(c, catcode(c)));
-		}
-	}
+	while (is) 
+		tokenize_one(is);
 }
 
 
