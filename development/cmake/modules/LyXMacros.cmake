@@ -90,16 +90,16 @@ macro(LYX_AUTOMOC)
 
          get_filename_component(_abs_PATH ${_abs_FILE} PATH)
 
-         string(REGEX MATCHALL "#include +[^ ]+_moc\\.cpp[\">]" _match "${_contents}")
+         string(REGEX MATCHALL "#include +[\"<]moc_[^ ]+\\.cpp[\">]" _match "${_contents}")
          if (_match)
             foreach (_current_MOC_INC ${_match})
-               string(REGEX MATCH "[^ <\"]+_moc\\.cpp" _current_MOC "${_current_MOC_INC}")
+               string(REGEX MATCH "moc_[^ <\"]+\\.cpp" _current_MOC "${_current_MOC_INC}")
 
                get_filename_component(_basename ${_current_MOC} NAME_WE)               
 
                string(LENGTH ${_basename} _length)
                MATH(EXPR _mocless_length ${_length}-4)
-               STRING(SUBSTRING  ${_basename} 0 ${_mocless_length} _mocless_name )
+               STRING(SUBSTRING  ${_basename} 4 ${_mocless_length} _mocless_name )
 
                set(_header ${_abs_PATH}/${_mocless_name}.h)
 
