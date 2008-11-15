@@ -138,14 +138,12 @@ string Token::asInput() const
 Parser::Parser(istream & is)
 	: lineno_(0), pos_(0), iss_(0), is_(is)
 {
-	tokenize();
 }
 
 
 Parser::Parser(string const & s)
 	: lineno_(0), pos_(0), iss_(new istringstream(s)), is_(*iss_)
 {
-	tokenize();
 }
 
 
@@ -175,7 +173,7 @@ Token const & Parser::curr_token() const
 }
 
 
-Token const & Parser::next_token() const
+Token const & Parser::next_token()
 {
 	static const Token dummy;
 	return good() ? tokens_[pos_] : dummy;
@@ -190,7 +188,7 @@ Token const & Parser::get_token()
 }
 
 
-bool Parser::isParagraph() const
+bool Parser::isParagraph()
 {
 	// A new paragraph in TeX ist started
 	// - either by a newline, following any amount of whitespace
@@ -256,8 +254,11 @@ void Parser::putback()
 }
 
 
-bool Parser::good() const
+bool Parser::good()
 {
+	if (pos_ < tokens_.size())
+		return true;
+	tokenize_one();
 	return pos_ < tokens_.size();
 }
 
@@ -435,13 +436,6 @@ void Parser::tokenize_one()
 	default:
 		push_back(Token(c, catcode(c)));
 	}
-}
-
-
-void Parser::tokenize()
-{
-	while (is_) 
-		tokenize_one();
 }
 
 

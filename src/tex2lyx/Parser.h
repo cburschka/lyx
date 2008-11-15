@@ -178,8 +178,6 @@ public:
 	void error(std::string const & msg);
 	/// Parses one token from \p is 
 	void tokenize_one();
-	/// Parses \p is into tokens
-	void tokenize();
 	///
 	void push_back(Token const & t);
 	/// The previous token.
@@ -187,11 +185,11 @@ public:
 	/// The current token.
 	Token const & curr_token() const;
 	/// The next token.
-	Token const & next_token() const;
+	Token const & next_token();
 	/// Make the next token current and return that.
 	Token const & get_token();
 	/// \return whether the current token starts a new paragraph
-	bool isParagraph() const;
+	bool isParagraph();
 	/// skips spaces (and comments if \p skip_comments is true)
 	void skip_spaces(bool skip_comments = false);
 	/// puts back spaces (and comments if \p skip_comments is true)
@@ -199,7 +197,7 @@ public:
 	///
 	void lex(std::string const & s);
 	///
-	bool good() const;
+	bool good();
 	///
 	std::string verbatim_item();
 	///

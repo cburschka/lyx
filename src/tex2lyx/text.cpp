@@ -509,7 +509,7 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
  * The drawback is that the logic inside the function becomes
  * complicated, and that is the reason why it is not implemented.
  */
-void check_space(Parser const & p, ostream & os, Context & context)
+void check_space(Parser & p, ostream & os, Context & context)
 {
 	Token const next = p.next_token();
 	Token const curr = p.curr_token();
