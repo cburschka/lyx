@@ -1974,6 +1974,11 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				data = bv->cursor().getEncoding()->name();
 				if (!data.empty())
 					showDialog("symbols", data);
+			// bug 5274
+			} else if (name == "prefs" && isFullScreen()) {
+				FuncRequest fr(LFUN_INSET_INSERT, "fullscreen");
+				lfunUiToggle(fr);
+				showDialog("prefs", data);
 			} else
 				showDialog(name, data);
 			break;
@@ -2142,6 +2147,8 @@ void GuiView::toggleFullScreen()
 		menuBar()->show();
 		statusBar()->show();
 	} else {
+		// bug 5274
+		hideDialogs("prefs", 0);
 		for (int i = 0; i != d.splitter_->count(); ++i)
 			d.tabWorkArea(i)->setFullScreen(true);
 #if QT_VERSION >= 0x040300
