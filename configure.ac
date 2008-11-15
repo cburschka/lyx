@@ -137,16 +137,6 @@ LYX_USE_INCLUDED_BOOST
 # Needed for our char_type
 AC_CHECK_SIZEOF(wchar_t)
 
-### Setup libtool
-dnl Dirty trick ahead: disable libtool checking for a fortran compiler
-dnl see http://permalink.gmane.org/gmane.comp.gnu.libtool.general/6699
-dnl Note that this will reportedly not be needed with libtool 2.0
-m4_undefine([AC_PROG_F77])
-m4_defun([AC_PROG_F77],[])
-
-AC_DISABLE_SHARED
-#AC_DISABLE_STATIC
-
 ### We need iconv for unicode support (Qt4 frontend requires it too)
 AM_ICONV
 if test "$am_cv_func_iconv" = no; then
