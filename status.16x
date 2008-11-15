@@ -72,12 +72,14 @@ What's new
 - Fix crash when undoing a math operation while the outline pane was open
   (bug 5491).
 
-- Fix crash on Mac when dropping a file on its own buffer (bug 5447)
+- Fix crash on Mac when dropping a file on its own buffer (bug 5447).
 
 - Fix false duplicate warning for labels when just applying without
   changing (bug 5496).
 
-- scrolling speed increased by a factor of 2
+- Scrolling speed increased by a factor of 2.
+
+- Fix wrong size of the view source window (bug 4430).
 
 
 * DOCUMENTATION AND LOCALIZATION
