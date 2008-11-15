@@ -25,6 +25,11 @@ CatCode theCatcode[256];
 
 void catInit()
 {
+	static bool init_done = false;
+	if (init_done) 
+		return;
+	init_done = true;
+
 	fill(theCatcode, theCatcode + 256, catOther);
 	fill(theCatcode + 'a', theCatcode + 'z' + 1, catLetter);
 	fill(theCatcode + 'A', theCatcode + 'Z' + 1, catLetter);
@@ -358,6 +363,7 @@ string const Parser::verbatimEnvironment(string const & name)
 
 void Parser::tokenize_one()
 {
+	catInit();
 	char c;
 	if (!is_.get(c)) 
 		return;
@@ -434,13 +440,6 @@ void Parser::tokenize_one()
 
 void Parser::tokenize()
 {
-	static bool init_done = false;
-
-	if (!init_done) {
-		catInit();
-		init_done = true;
-	}
-
 	while (is_) 
 		tokenize_one();
 }
