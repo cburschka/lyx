@@ -2,13 +2,13 @@ include $(top_srcdir)/config/common.am
 
 EXTRA_DIST = $(TEST_FILES) pch.h
 
-#noinst_LTLIBRARIES = libtexparser.la
+#noinst_LIBRARIES = libtexparser.a
 #
-#libtexparser_la_SOURCES = \
+#libtexparser_a_SOURCES = \
 #	Parser.cpp \
 #	Parser.h
 #
-#tex2lyx_LDADD = libtexparser.la
+#tex2lyx_LDADD = libtexparser.a
 
 man_MANS = tex2lyx.1
 
@@ -63,5 +63,7 @@ tex2lyx_SOURCES = \
 	text.cpp
 
 tex2lyx_LDADD = \
-	$(top_builddir)/src/support/liblyxsupport.la \
-	$(LIBICONV) $(BOOST_LIBS) @LIBS@
+	$(top_builddir)/src/support/liblyxsupport.a \
+	$(LIBICONV) $(BOOST_LIBS) \
+	$(QT4_LIB) $(QT4_LDFLAGS) \
+	@LIBS@ 

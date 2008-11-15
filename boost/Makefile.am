@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-noinst_LTLIBRARIES = liblyxboost.la
+noinst_LIBRARIES = liblyxboost.a
 
 # Using precompiled headers makes compilation >10% slower
 #EXTRA_DIST = pch.h
@@ -16,7 +16,7 @@ AM_CPPFLAGS +=  $(BOOST_INCLUDES)
 
 if MONOLITHIC_BOOST
 
-liblyxboost_la_SOURCES = \
+liblyxboost_a_SOURCES = \
 	lyxboost.cpp \
 	libs/regex/src/instances.cpp \
 	libs/regex/src/cpp_regex_traits.cpp \
@@ -24,7 +24,7 @@ liblyxboost_la_SOURCES = \
 
 else
 
-liblyxboost_la_SOURCES = \
+liblyxboost_a_SOURCES = \
 	\
 	libs/regex/src/c_regex_traits.cpp \
 	libs/regex/src/cpp_regex_traits.cpp \

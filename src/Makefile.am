@@ -21,18 +21,19 @@ EXTRA_DIST = Section.h \
 
 OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(MYTHES_LIBS) $(AIKSAURUS_LIBS) @LIBS@ $(SOCKET_LIBS)
 
-noinst_LTLIBRARIES = liblyxcore.la
+noinst_LIBRARIES = liblyxcore.a
 bin_PROGRAMS = lyx
 
 lyx_LDADD = \
-	liblyxcore.la \
-	liblyxmathed.la \
-	liblyxinsets.la \
-	frontends/liblyxfrontends.la \
-	frontends/qt4/liblyxqt4.la \
-	liblyxgraphics.la \
-	support/liblyxsupport.la \
+	liblyxcore.a \
+	liblyxmathed.a \
+	liblyxinsets.a \
+	frontends/liblyxfrontends.a \
+	frontends/qt4/liblyxqt4.a \
+	liblyxgraphics.a \
+	support/liblyxsupport.a \
 	$(OTHERLIBS) \
+	$(QT4_LDFLAGS) \
 	$(QT4_LIB) 
 
 if LYX_WIN_RESOURCE
@@ -280,19 +281,19 @@ if MONOLITHIC_CORE
 BUILT_SOURCES += lyxcore.cpp $(STANDALONEFILES)
 CLEANFILES += lyxcore.cpp
 
-liblyxcore_la_SOURCES = lyxcore.cpp $(STANDALONEFILES) $(HEADERFILESCORE)
+liblyxcore_a_SOURCES = lyxcore.cpp $(STANDALONEFILES) $(HEADERFILESCORE)
 
 else
 
-liblyxcore_la_SOURCES = $(SOURCEFILESCORE) $(STANDALONEFILES) $(HEADERFILESCORE)
+liblyxcore_a_SOURCES = $(SOURCEFILESCORE) $(STANDALONEFILES) $(HEADERFILESCORE)
 
 endif
 
 ############################### Graphics ##############################
 
-noinst_LTLIBRARIES += liblyxgraphics.la
+noinst_LIBRARIES += liblyxgraphics.a
 
-liblyxgraphics_la_SOURCES = \
+liblyxgraphics_a_SOURCES = \
 	graphics/GraphicsCache.h \
 	graphics/GraphicsCache.cpp \
 	graphics/GraphicsCacheItem.h \
@@ -317,7 +318,7 @@ liblyxgraphics_la_SOURCES = \
 
 EXTRA_DIST += mathed/InsetFormulaMacro.cpp
 
-noinst_LTLIBRARIES += liblyxmathed.la
+noinst_LIBRARIES += liblyxmathed.a
 
 SOURCEFILESMATHED = \
 	mathed/InsetMathAMSArray.cpp \
@@ -463,17 +464,17 @@ if MONOLITHIC_MATHED
 BUILT_SOURCES += lyxmathed.cpp
 CLEANFILES += lyxmathed.cpp
 
-liblyxmathed_la_SOURCES = lyxmathed.cpp $(HEADERFILESMATHED)
+liblyxmathed_a_SOURCES = lyxmathed.cpp $(HEADERFILESMATHED)
 
 else
 
-liblyxmathed_la_SOURCES = $(SOURCEFILESMATHED) $(HEADERFILESMATHED) 
+liblyxmathed_a_SOURCES = $(SOURCEFILESMATHED) $(HEADERFILESMATHED) 
 
 endif
 
 ############################### Insets  ##############################
 
-noinst_LTLIBRARIES += liblyxinsets.la
+noinst_LIBRARIES += liblyxinsets.a
 
 SOURCEFILESINSETS = \
 	insets/ExternalSupport.cpp \
@@ -592,10 +593,10 @@ if MONOLITHIC_INSETS
 BUILT_SOURCES += lyxinsets.cpp
 CLEANFILES += lyxinsets.cpp
 
-liblyxinsets_la_SOURCES = lyxinsets.cpp $(HEADERFILESINSETS)
+liblyxinsets_a_SOURCES = lyxinsets.cpp $(HEADERFILESINSETS)
 
 else
 
-liblyxinsets_la_SOURCES = $(SOURCEFILESINSETS) $(HEADERFILESINSETS)
+liblyxinsets_a_SOURCES = $(SOURCEFILESINSETS) $(HEADERFILESINSETS)
 
 endif

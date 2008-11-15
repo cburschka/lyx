@@ -14,8 +14,9 @@ lyxclient.1:
 	cp -p $(srcdir)/lyxclient.man lyxclient.1
 
 lyxclient_LDADD = \
-	$(top_builddir)/src/support/liblyxsupport.la \
-	$(BOOST_LIBS) $(INTLLIBS) @LIBS@ $(SOCKET_LIBS)
+	$(top_builddir)/src/support/liblyxsupport.a \
+	$(BOOST_LIBS) $(INTLLIBS) @LIBS@ $(SOCKET_LIBS) \
+	$(QT4_LIB) $(QT4_LDFLAGS)
 
 # everything below the line containing the single backslashs
 # an ugly hack and needed because of the

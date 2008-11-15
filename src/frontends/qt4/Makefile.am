@@ -31,11 +31,10 @@ Resources.cpp: Resources.qrc
 
 #########################  LIBRARIES  #############################
 
-noinst_LTLIBRARIES = liblyxqt4.la
+noinst_LIBRARIES = liblyxqt4.a
 
-liblyxqt4_la_DEPENDENCIES = $(MOCEDFILES)
-liblyxqt4_la_LDFLAGS = $(QT4_LDFLAGS)
-liblyxqt4_la_LIBADD = $(QT4_LIB) 
+liblyxqt4_a_DEPENDENCIES = $(MOCEDFILES)
+#liblyxqt4_a_LIBADD = $(QT4_LIB) $(QT4_LDFLAGS)
 
 AM_CPPFLAGS += \
 	$(QT4_CPPFLAGS) \
@@ -311,7 +310,7 @@ liblyxqt4.cpp:
 
 if MONOLITHIC_FRONTEND_QT4
 
-liblyxqt4_la_SOURCES = \
+liblyxqt4_a_SOURCES = \
 	liblyxqt4.cpp \
 	$(MOCHEADER) \
 	$(NOMOCHEADER)
@@ -321,7 +320,7 @@ CLEANFILES += liblyxqt4.cpp
 
 else
 
-liblyxqt4_la_SOURCES = \
+liblyxqt4_a_SOURCES = \
 	$(SOURCEFILES) \
 	$(MOCHEADER) \
 	$(NOMOCHEADER)

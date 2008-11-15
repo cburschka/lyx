@@ -146,9 +146,6 @@ m4_defun([AC_PROG_F77],[])
 
 AC_DISABLE_SHARED
 #AC_DISABLE_STATIC
-AC_LIBTOOL_WIN32_DLL
-#AM_PROG_LIBTOOL
-LYX_PROG_LIBTOOL
 
 ### We need iconv for unicode support (Qt4 frontend requires it too)
 AM_ICONV

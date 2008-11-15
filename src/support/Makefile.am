@@ -5,10 +5,12 @@ CLEANFILES += $(BUILT_SOURCES)
 EXTRA_DIST = pch.h \
 	os_cygwin.cpp os_unix.cpp os_win32.cpp os_win32.h
 
-noinst_LTLIBRARIES = liblyxsupport.la
+noinst_LIBRARIES = liblyxsupport.a
 
-liblyxsupport_la_LIBADD = $(LIBSHLWAPI) $(QT4_CORE_LIB) $(BOOST_SIGNALS)
-liblyxsupport_la_LDFLAGS = $(QT4_CORE_LDFLAGS)
+liblyxsupport_a_LIBADD = $(LIBSHLWAPI) $(BOOST_SIGNALS)
+
+# $(QT4_CORE_LIB)
+# $(QT4_CORE_LDFLAGS)
 
 BUILT_SOURCES = $(PCH_FILE)
 
@@ -25,7 +27,7 @@ BUILT_SOURCES += $(MOCEDFILES)
 moc_%.cpp: %.h
 	$(MOC4) -o $@ $<
 
-liblyxsupport_la_DEPENDENCIES = $(MOCEDFILES)
+liblyxsupport_a_DEPENDENCIES = $(MOCEDFILES)
 
 #
 ##################################################################
@@ -33,7 +35,7 @@ liblyxsupport_la_DEPENDENCIES = $(MOCEDFILES)
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES) 
 
-liblyxsupport_la_SOURCES = \
+liblyxsupport_a_SOURCES = \
 	FileMonitor.h \
 	FileMonitor.cpp \
 	RandomAccessList.h \
@@ -103,7 +105,7 @@ liblyxsupport_la_SOURCES = \
 	weighted_btree.h
 
 if INSTALL_MACOSX
-liblyxsupport_la_SOURCES += \
+liblyxsupport_a_SOURCES += \
 	linkback/LinkBack.h \
 	linkback/LinkBack.m \
 	linkback/LinkBackProxy.h \
@@ -133,19 +135,19 @@ check_PROGRAMS = \
 	check_filetools \
 	check_lstrings
 
-check_convert_LDADD = liblyxsupport.la  \
+check_convert_LDADD = liblyxsupport.a  \
 	$(BOOST_LIBS) $(QT4_CORE_LIB)
 check_convert_LDFLAGS = $(QT4_CORE_LDFLAGS)
 check_convert_SOURCES = \
 	tests/check_convert.cpp \
 	tests/boost.cpp
 
-check_filetools_LDADD = liblyxsupport.la $(BOOST_LIBS)
+check_filetools_LDADD = liblyxsupport.a $(BOOST_LIBS)
 check_filetools_SOURCES = \
 	tests/check_filetools.cpp \
 	tests/boost.cpp
 
-check_lstrings_LDADD = liblyxsupport.la $(BOOST_LIBS) $(QT4_CORE_LIB)
+check_lstrings_LDADD = liblyxsupport.a $(BOOST_LIBS) $(QT4_CORE_LIB)
 check_lstrings_LDFLAGS = $(QT4_CORE_LDFLAGS)
 check_lstrings_SOURCES = \
 	tests/check_lstrings.cpp \

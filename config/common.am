@@ -30,7 +30,7 @@ SUFFIXES = .gch
 
 if USE_INCLUDED_BOOST
 BOOST_INCLUDES = -I$(top_srcdir)/boost
-BOOST_LIBS = $(top_builddir)/boost/liblyxboost.la
+BOOST_LIBS = $(top_builddir)/boost/liblyxboost.a
 else
 BOOST_INCLUDES =
 BOOST_FILESYSTEM = -lboost_filesystem
