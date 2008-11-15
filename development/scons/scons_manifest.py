@@ -621,10 +621,13 @@ src_tex2lyx_copied_files = Split('''
 src_tex2lyx_extra_files = Split('''
     Makefile.am
     pch.h
-    test-insets.tex
-    test-structure.tex
-    test.ltx
-    tex2lyx.man
+    tex2lyx.1
+    test/box-color-size-space-align.tex
+    test/foo.eps
+    test/foo.png
+    test/test-insets.tex
+    test/test.ltx
+    test/test-structure.tex
 ''')
 
 
