@@ -122,6 +122,8 @@ public:
 	Parser(std::istream & is);
 	///
 	Parser(std::string const & s);
+	///
+	~Parser();
 
 	///
 	int lineno() const { return lineno_; }
@@ -216,6 +218,10 @@ private:
 	std::vector<Token> tokens_;
 	///
 	unsigned pos_;
+	///
+	std::istringstream * iss_;
+	///
+	std::istream & is_;
 };
 
 

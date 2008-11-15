@@ -131,17 +131,22 @@ string Token::asInput() const
 
 
 Parser::Parser(istream & is)
-	: lineno_(0), pos_(0)
+	: lineno_(0), pos_(0), iss_(0), is_(is)
 {
-	tokenize(is);
+	tokenize();
 }
 
 
 Parser::Parser(string const & s)
-	: lineno_(0), pos_(0)
+	: lineno_(0), pos_(0), iss_(new istringstream(s)), is_(*iss_)
 {
-	istringstream is(s);
-	tokenize(is);
+	tokenize();
+}
+
+
+Parser::~Parser()
+{
+	delete iss_;
 }
 
 
@@ -351,33 +356,33 @@ string const Parser::verbatimEnvironment(string const & name)
 }
 
 
-void Parser::tokenize_one(istream & is)
+void Parser::tokenize_one()
 {
 	char c;
-	if (!is.get(c)) 
+	if (!is_.get(c)) 
 		return;
 	//cerr << "reading c: " << c << "\n";
 
 	switch (catcode(c)) {
 	case catSpace: {
 		string s(1, c);
-		while (is.get(c) && catcode(c) == catSpace)
+		while (is_.get(c) && catcode(c) == catSpace)
 			s += c;
 		if (catcode(c) != catSpace)
-			is.putback(c);
+			is_.putback(c);
 		push_back(Token(s, catSpace));
 		break;
 	}
 		
 	case catNewline: {
 		++lineno_;
-		string s(1, getNewline(is, c));
-		while (is.get(c) && catcode(c) == catNewline) {
+		string s(1, getNewline(is_, c));
+		while (is_.get(c) && catcode(c) == catNewline) {
 			++lineno_;
-			s += getNewline(is, c);
+			s += getNewline(is_, c);
 		}
 		if (catcode(c) != catNewline)
-			is.putback(c);
+			is_.putback(c);
 		push_back(Token(s, catNewline));
 		break;
 	}
@@ -386,11 +391,11 @@ void Parser::tokenize_one(istream & is)
 		// We don't treat "%\n" combinations here specially because
 		// we want to preserve them in the preamble
 		string s;
-		while (is.get(c) && catcode(c) != catNewline)
+		while (is_.get(c) && catcode(c) != catNewline)
 			s += c;
 		// handle possible DOS line ending
 		if (catcode(c) == catNewline)
-			c = getNewline(is, c);
+			c = getNewline(is_, c);
 		// Note: The '%' at the beginning and the '\n' at the end
 		// of the comment are not stored.
 		++lineno_;
@@ -399,17 +404,17 @@ void Parser::tokenize_one(istream & is)
 	}
 		
 	case catEscape: {
-		is.get(c);
-		if (!is) {
+		is_.get(c);
+		if (!is_) {
 			error("unexpected end of input");
 		} else {
 			string s(1, c);
 			if (catcode(c) == catLetter) {
 				// collect letters
-				while (is.get(c) && catcode(c) == catLetter)
+				while (is_.get(c) && catcode(c) == catLetter)
 					s += c;
 				if (catcode(c) != catLetter)
-					is.putback(c);
+					is_.putback(c);
 			}
 			push_back(Token(s, catEscape));
 		}
@@ -427,7 +432,7 @@ void Parser::tokenize_one(istream & is)
 }
 
 
-void Parser::tokenize(istream & is)
+void Parser::tokenize()
 {
 	static bool init_done = false;
 
@@ -436,8 +441,8 @@ void Parser::tokenize(istream & is)
 		init_done = true;
 	}
 
-	while (is) 
-		tokenize_one(is);
+	while (is_) 
+		tokenize_one();
 }
 
 
