@@ -34,15 +34,9 @@
 
 #if defined(USE_ASPELL)
 # include "ASpell_local.h"
-#elif defined(USE_PSPELL)
-# include "PSpell.h"
 #endif
 
-#if defined(USE_ISPELL)
-# include "ISpell.h"
-#else
-# include "SpellBase.h"
-#endif
+#include "SpellBase.h"
 
 #include "frontends/alert.h"
 
@@ -200,26 +194,15 @@ void GuiSpellchecker::partialUpdate(int state)
 
 static SpellBase * createSpeller(BufferParams const & bp)
 {
-	string lang = (lyxrc.isp_use_alt_lang)
-		      ? lyxrc.isp_alt_lang
+	string lang = lyxrc.spellchecker_use_alt_lang
+		      ? lyxrc.spellchecker_alt_lang
 		      : bp.language->code();
 
 #if defined(USE_ASPELL)
 	if (lyxrc.use_spell_lib)
 		return new ASpell(bp, lang);
-#elif defined(USE_PSPELL)
-	if (lyxrc.use_spell_lib)
-		return new PSpell(bp, lang);
 #endif
-
-#if defined(USE_ISPELL)
-	lang = lyxrc.isp_use_alt_lang ?
-		lyxrc.isp_alt_lang : bp.language->lang();
-
-	return new ISpell(bp, lang);
-#else
 	return new SpellBase;
-#endif
 }
 
 
@@ -265,7 +248,7 @@ static bool isLetter(DocIterator const & dit)
 		&& dit.pos() != dit.lastpos()
 		&& (dit.paragraph().isLetter(dit.pos())
 		    // We want to pass the ' and escape chars to ispell
-		    || contains(from_utf8(lyxrc.isp_esc_chars + '\''),
+		    || contains(from_utf8(lyxrc.spellchecker_esc_chars + '\''),
 				dit.paragraph().getChar(dit.pos())))
 		&& !dit.paragraph().isDeleted(dit.pos());
 }

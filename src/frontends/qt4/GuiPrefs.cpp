@@ -1039,12 +1039,8 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 	setupUi(this);
 
 	connect(persDictionaryPB, SIGNAL(clicked()), this, SLOT(select_dict()));
-#if defined (USE_ISPELL)
-	connect(spellCommandCO, SIGNAL(activated(int)),
-		this, SIGNAL(changed()));
-#else
 	spellCommandCO->setEnabled(false);
-#endif
+
 	connect(altLanguageED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(escapeCharactersED, SIGNAL(textChanged(QString)),
@@ -1056,15 +1052,9 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 	connect(inputEncodingCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 
-	spellCommandCO->addItem(qt_("ispell"));
 	spellCommandCO->addItem(qt_("aspell"));
-	spellCommandCO->addItem(qt_("hspell"));
-#ifdef USE_PSPELL
-	spellCommandCO->addItem(qt_("pspell (library)"));
-#else
 #ifdef USE_ASPELL
 	spellCommandCO->addItem(qt_("aspell (library)"));
-#endif
 #endif
 }
 
@@ -1073,27 +1063,25 @@ void PrefSpellchecker::apply(LyXRC & rc) const
 {
 	switch (spellCommandCO->currentIndex()) {
 		case 0:
-		case 1:
-		case 2:
 			rc.use_spell_lib = false;
-			rc.isp_command = fromqstr(spellCommandCO->currentText());
+			rc.spellchecker_command = fromqstr(spellCommandCO->currentText());
 			break;
-		case 3:
+		case 1:
 			rc.use_spell_lib = true;
 			break;
 	}
 
-	// FIXME: remove isp_use_alt_lang
-	rc.isp_alt_lang = fromqstr(altLanguageED->text());
-	rc.isp_use_alt_lang = !rc.isp_alt_lang.empty();
-	// FIXME: remove isp_use_esc_chars
-	rc.isp_esc_chars = fromqstr(escapeCharactersED->text());
-	rc.isp_use_esc_chars = !rc.isp_esc_chars.empty();
-	// FIXME: remove isp_use_pers_dict
-	rc.isp_pers_dict = internal_path(fromqstr(persDictionaryED->text()));
-	rc.isp_use_pers_dict = !rc.isp_pers_dict.empty();
-	rc.isp_accept_compound = compoundWordCB->isChecked();
-	rc.isp_use_input_encoding = inputEncodingCB->isChecked();
+	// FIXME: remove spellchecker_use_alt_lang
+	rc.spellchecker_alt_lang = fromqstr(altLanguageED->text());
+	rc.spellchecker_use_alt_lang = !rc.spellchecker_alt_lang.empty();
+	// FIXME: remove spellchecker_use_esc_chars
+	rc.spellchecker_esc_chars = fromqstr(escapeCharactersED->text());
+	rc.spellchecker_use_esc_chars = !rc.spellchecker_esc_chars.empty();
+	// FIXME: remove spellchecker_use_pers_dict
+	rc.spellchecker_pers_dict = internal_path(fromqstr(persDictionaryED->text()));
+	rc.spellchecker_use_pers_dict = !rc.spellchecker_pers_dict.empty();
+	rc.spellchecker_accept_compound = compoundWordCB->isChecked();
+	rc.spellchecker_use_input_encoding = inputEncodingCB->isChecked();
 }
 
 
@@ -1101,28 +1089,23 @@ void PrefSpellchecker::update(LyXRC const & rc)
 {
 	spellCommandCO->setCurrentIndex(0);
 
-	if (rc.isp_command == "ispell") {
+	if (rc.spellchecker_command == "aspell") 
 		spellCommandCO->setCurrentIndex(0);
-	} else if (rc.isp_command == "aspell") {
-		spellCommandCO->setCurrentIndex(1);
-	} else if (rc.isp_command == "hspell") {
-		spellCommandCO->setCurrentIndex(2);
-	}
 
 	if (rc.use_spell_lib) {
-#if defined(USE_ASPELL) || defined(USE_PSPELL)
-		spellCommandCO->setCurrentIndex(3);
+#if defined(USE_ASPELL)
+		spellCommandCO->setCurrentIndex(1);
 #endif
 	}
 
-	// FIXME: remove isp_use_alt_lang
-	altLanguageED->setText(toqstr(rc.isp_alt_lang));
-	// FIXME: remove isp_use_esc_chars
-	escapeCharactersED->setText(toqstr(rc.isp_esc_chars));
-	// FIXME: remove isp_use_pers_dict
-	persDictionaryED->setText(toqstr(external_path(rc.isp_pers_dict)));
-	compoundWordCB->setChecked(rc.isp_accept_compound);
-	inputEncodingCB->setChecked(rc.isp_use_input_encoding);
+	// FIXME: remove spellchecker_use_alt_lang
+	altLanguageED->setText(toqstr(rc.spellchecker_alt_lang));
+	// FIXME: remove spellchecker_use_esc_chars
+	escapeCharactersED->setText(toqstr(rc.spellchecker_esc_chars));
+	// FIXME: remove spellchecker_use_pers_dict
+	persDictionaryED->setText(toqstr(external_path(rc.spellchecker_pers_dict)));
+	compoundWordCB->setChecked(rc.spellchecker_accept_compound);
+	inputEncodingCB->setChecked(rc.spellchecker_use_input_encoding);
 }
 
 

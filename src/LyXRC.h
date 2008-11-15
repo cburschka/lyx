@@ -308,28 +308,28 @@ public:
 	unsigned int plaintext_linelen;
 	/// use library instead of process
 	bool use_spell_lib;
-	/// Ispell command
-	std::string isp_command;
+	/// spellchecker command
+	std::string spellchecker_command;
 	/// Accept compound words in spellchecker?
-	bool isp_accept_compound;
-	/// Pass input encoding switch to ispell?
-	bool isp_use_input_encoding;
+	bool spellchecker_accept_compound;
+	/// Pass input encoding switch to the spellchecker?
+	bool spellchecker_use_input_encoding;
 	/// Use alternate language?
-	bool isp_use_alt_lang;
+	bool spellchecker_use_alt_lang;
 	/// Use personal dictionary?
-	bool isp_use_pers_dict;
+	bool spellchecker_use_pers_dict;
 	/// Use tooltips?
 	bool use_tooltip;
 	/// Use pixmap cache?
 	bool use_pixmap_cache;
 	/// Use escape chars?
-	bool isp_use_esc_chars;
+	bool spellchecker_use_esc_chars;
 	/// Alternate language for ispell
-	std::string isp_alt_lang;
-	/// Alternate personal dictionary file for ispell
-	std::string isp_pers_dict;
+	std::string spellchecker_alt_lang;
+	/// Alternate personal dictionary file for the spellchecker
+	std::string spellchecker_pers_dict;
 	/// Escape characters
-	std::string isp_esc_chars;
+	std::string spellchecker_esc_chars;
 	///
 	bool use_kbmap;
 	///

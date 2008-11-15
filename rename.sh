@@ -437,8 +437,6 @@ src/insetiterator.C                                src/InsetIterator.cpp
 src/insetiterator.h                                src/InsetIterator.h
 src/InsetList.C                                    src/InsetList.cpp
 #src/InsetList.h
-src/ispell.C                                       src/ISpell.cpp
-src/ispell.h                                       src/ISpell.h
 src/kbmap.C                                        src/KbKeyMap.cpp
 src/kbmap.h                                        src/KbKeyMap.h
 src/kbsequence.C                                   src/KbSequence.cpp
@@ -531,8 +529,6 @@ src/pariterator.C                                  src/ParIterator.cpp
 src/pariterator.h                                  src/ParIterator.h
 src/PrinterParams.C                                src/PrinterParams.cpp
 #src/PrinterParams.h
-src/pspell.C                                       src/PSpell.cpp
-src/pspell.h                                       src/PSpell.h
 src/RowList_fwd.h                                  src/RowListFwd.h
 src/rowpainter.C                                   src/RowPainter.cpp
 src/rowpainter.h                                   src/RowPainter.h

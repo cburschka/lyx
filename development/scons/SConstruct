@@ -810,14 +810,8 @@ else:
 # determine headers to use
 spell_opt = ARGUMENTS.get('spell', 'auto')
 env['USE_ASPELL'] = False
-env['USE_PSPELL'] = False
-env['USE_ISPELL'] = False
 if spell_opt in ['auto', 'aspell'] and conf.CheckLib(aspell_lib):
     spell_engine = 'USE_ASPELL'
-elif spell_opt in ['auto', 'pspell'] and conf.CheckLib('pspell'):
-    spell_engine = 'USE_PSPELL'
-elif spell_opt in ['auto', 'ispell'] and conf.CheckLib('ispell'):
-    spell_engine = 'USE_ISPELL'
 else:
     spell_engine = None
 
@@ -1074,7 +1068,7 @@ char * strerror(int n);
 )
 
 # these keys are needed in env
-for key in ['USE_ASPELL', 'USE_PSPELL', 'USE_ISPELL', 'HAVE_FCNTL',\
+for key in ['USE_ASPELL', 'HAVE_FCNTL',\
     'HAVE_LIBGDI32', 'HAVE_LIBAIKSAURUS', 'AIKSAURUS_LIB']:
     # USE_ASPELL etc does not go through result
     if result.has_key(key):
@@ -1232,8 +1226,6 @@ libs = [
     ('HAVE_LIBGDI32', 'gdi32'),
     ('HAVE_LIBAIKSAURUS', env['AIKSAURUS_LIB']),
     ('USE_ASPELL', aspell_lib),
-    ('USE_ISPELL', 'ispell'),
-    ('USE_PSPELL', 'pspell'),
 ]
 
 for lib in libs:
@@ -1634,10 +1626,6 @@ Alias('tex2lyx', tex2lyx)
 #
 if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
     src_post_files.append('ASpell.cpp')
-elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
-    src_post_files.append('PSpell.cpp')
-elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
-    src_post_files.append('ISpell.cpp')
 
 # msvc requires at least one source file with main()
 # so I exclude main.cpp from lyxbase

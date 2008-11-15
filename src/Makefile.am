@@ -49,12 +49,6 @@ BUILT_SOURCES = $(PCH_FILE)
 if USE_ASPELL
 ASPELL = ASpell.cpp ASpell_local.h
 endif
-if USE_PSPELL
-PSPELL = PSpell.cpp PSpell.h
-endif
-if USE_ISPELL
-ISPELL = ISpell.cpp ISpell.h
-endif
 
 # These four objects are linked as object files as they are not
 # referenced within the core and therefore are not picked up

@@ -34,7 +34,6 @@ Resources.cpp: Resources.qrc
 noinst_LIBRARIES = liblyxqt4.a
 
 liblyxqt4_a_DEPENDENCIES = $(MOCEDFILES)
-#liblyxqt4_a_LIBADD = $(QT4_LIB) $(QT4_LDFLAGS)
 
 AM_CPPFLAGS += \
 	$(QT4_CPPFLAGS) \

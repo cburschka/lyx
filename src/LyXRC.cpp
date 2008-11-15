@@ -261,12 +261,12 @@ void LyXRC::setDefaults()
 	display_graphics = true;
 	// Spellchecker settings:
 	use_spell_lib = true;
-	isp_command = "ispell";
-	isp_accept_compound = false;
-	isp_use_input_encoding = false;
-	isp_use_alt_lang = false;
-	isp_use_pers_dict = false;
-	isp_use_esc_chars = false;
+	spellchecker_command = "aspell";
+	spellchecker_accept_compound = false;
+	spellchecker_use_input_encoding = false;
+	spellchecker_use_alt_lang = false;
+	spellchecker_use_pers_dict = false;
+	spellchecker_use_esc_chars = false;
 	use_kbmap = false;
 	rtl_support = true;
 	visual_cursor = false;
@@ -842,19 +842,19 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 		case RC_SPELL_COMMAND:
 			if (lexrc.next(true))
-				isp_command = lexrc.getString();
+				spellchecker_command = lexrc.getString();
 			break;
 		case RC_ACCEPT_COMPOUND:
-			lexrc >> isp_accept_compound;
+			lexrc >> spellchecker_accept_compound;
 			break;
 		case RC_USE_INP_ENC:
-			lexrc >> isp_use_input_encoding;
+			lexrc >> spellchecker_use_input_encoding;
 			break;
 		case RC_USE_ALT_LANG:
-			lexrc >> isp_use_alt_lang;
+			lexrc >> spellchecker_use_alt_lang;
 			break;
 		case RC_USE_PERS_DICT:
-			lexrc >> isp_use_pers_dict;
+			lexrc >> spellchecker_use_pers_dict;
 			break;
 		case RC_USE_TOOLTIP:
 			lexrc >> use_tooltip;
@@ -863,17 +863,17 @@ int LyXRC::read(Lexer & lexrc)
 			lexrc >> use_pixmap_cache;
 			break;
 		case RC_USE_ESC_CHARS:
-			lexrc >> isp_use_esc_chars;
+			lexrc >> spellchecker_use_esc_chars;
 			break;
 		case RC_ALT_LANG:
-			lexrc >> isp_alt_lang;
+			lexrc >> spellchecker_alt_lang;
 			break;
 		case RC_PERS_DICT:
 			if (lexrc.next())
-				isp_pers_dict = os::internal_path(lexrc.getString());
+				spellchecker_pers_dict = os::internal_path(lexrc.getString());
 			break;
 		case RC_ESC_CHARS:
-			lexrc >> isp_esc_chars;
+			lexrc >> spellchecker_esc_chars;
 			break;
 		case RC_MAKE_BACKUP:
 			lexrc >> make_backup;
@@ -2096,55 +2096,55 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			break;
 	case RC_SPELL_COMMAND:
 		if (ignore_system_lyxrc ||
-		    isp_command != system_lyxrc.isp_command) {
-			os << "\\spell_command \"" << escapeCommand(isp_command) << "\"\n";
+		    spellchecker_command != system_lyxrc.spellchecker_command) {
+			os << "\\spell_command \"" << escapeCommand(spellchecker_command) << "\"\n";
 		}
 		if (tag != RC_LAST)
 			break;
 	case RC_ACCEPT_COMPOUND:
 		if (ignore_system_lyxrc ||
-		    isp_accept_compound != system_lyxrc.isp_accept_compound) {
-			os << "\\accept_compound " << convert<string>(isp_accept_compound)
+		    spellchecker_accept_compound != system_lyxrc.spellchecker_accept_compound) {
+			os << "\\accept_compound " << convert<string>(spellchecker_accept_compound)
 			   << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
 	case RC_USE_ALT_LANG:
 		if (ignore_system_lyxrc ||
-		    isp_use_alt_lang != system_lyxrc.isp_use_alt_lang) {
-			os << "\\use_alt_language " << convert<string>(isp_use_alt_lang)
+		    spellchecker_use_alt_lang != system_lyxrc.spellchecker_use_alt_lang) {
+			os << "\\use_alt_language " << convert<string>(spellchecker_use_alt_lang)
 			   << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
 	case RC_ALT_LANG:
 		if (ignore_system_lyxrc ||
-		    isp_alt_lang != system_lyxrc.isp_alt_lang) {
-			os << "\\alternate_language \"" << isp_alt_lang
+		    spellchecker_alt_lang != system_lyxrc.spellchecker_alt_lang) {
+			os << "\\alternate_language \"" << spellchecker_alt_lang
 			   << "\"\n";
 		}
 		if (tag != RC_LAST)
 			break;
 	case RC_USE_ESC_CHARS:
 		if (ignore_system_lyxrc ||
-		    isp_use_esc_chars != system_lyxrc.isp_use_esc_chars) {
-			os << "\\use_escape_chars " << convert<string>(isp_use_esc_chars)
+		    spellchecker_use_esc_chars != system_lyxrc.spellchecker_use_esc_chars) {
+			os << "\\use_escape_chars " << convert<string>(spellchecker_use_esc_chars)
 			   << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
 	case RC_ESC_CHARS:
 		if (ignore_system_lyxrc ||
-		    isp_esc_chars != system_lyxrc.isp_esc_chars) {
-			os << "\\escape_chars \"" << isp_esc_chars << "\"\n";
+		    spellchecker_esc_chars != system_lyxrc.spellchecker_esc_chars) {
+			os << "\\escape_chars \"" << spellchecker_esc_chars << "\"\n";
 		}
 		if (tag != RC_LAST)
 			break;
 	case RC_USE_PERS_DICT:
 		if (ignore_system_lyxrc ||
-		    isp_use_pers_dict != system_lyxrc.isp_use_pers_dict) {
+		    spellchecker_use_pers_dict != system_lyxrc.spellchecker_use_pers_dict) {
 			os << "\\use_personal_dictionary "
-			   << convert<string>(isp_use_pers_dict)
+			   << convert<string>(spellchecker_use_pers_dict)
 			   << '\n';
 		}
 		if (tag != RC_LAST)
@@ -2164,18 +2164,18 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			   << '\n';
 		}
 	case RC_PERS_DICT:
-		if (isp_pers_dict != system_lyxrc.isp_pers_dict) {
-			string const path = os::external_path(isp_pers_dict);
+		if (spellchecker_pers_dict != system_lyxrc.spellchecker_pers_dict) {
+			string const path = os::external_path(spellchecker_pers_dict);
 			os << "\\personal_dictionary \"" << path << "\"\n";
 		}
 		if (tag != RC_LAST)
 			break;
 	case RC_USE_INP_ENC:
 		if (ignore_system_lyxrc ||
-		    isp_use_input_encoding
-		    != system_lyxrc.isp_use_input_encoding) {
+		    spellchecker_use_input_encoding
+		    != system_lyxrc.spellchecker_use_input_encoding) {
 			os << "\\use_input_encoding "
-			   << convert<string>(isp_use_input_encoding)
+			   << convert<string>(spellchecker_use_input_encoding)
 			   << '\n';
 		}
 		if (tag != RC_LAST)
