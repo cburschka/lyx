@@ -2026,7 +2026,7 @@ bool Cursor::fixIfBroken()
 }
 
 
-bool notifyCursorLeaves(Cursor const & old, Cursor & cur)
+bool notifyCursorLeavesOrEnters(Cursor const & old, Cursor & cur)
 {
 	// find inset in common
 	size_type i;
@@ -2041,15 +2041,21 @@ bool notifyCursorLeaves(Cursor const & old, Cursor & cur)
 	    && cur.inTexted() && old.inTexted()
 	    && cur.pit() != old.pit()) {
 		old.paragraph().updateWords(old.top());
-		return false;
 	}
-	
+
 	// notify everything on top of the common part in old cursor,
 	// but stop if the inset claims the cursor to be invalid now
-	for (; i < old.depth(); ++i) {
+	for (size_type j = i; j < old.depth(); ++j) {
 		Cursor insetPos = old;
-		insetPos.cutOff(i);
-		if (old[i].inset().notifyCursorLeaves(insetPos, cur))
+		insetPos.cutOff(j);
+		if (old[j].inset().notifyCursorLeaves(insetPos, cur))
+			return true;
+	}
+
+	// notify everything on top of the common part in new cursor,
+	// but stop if the inset claims the cursor to be invalid now
+	for (; i < cur.depth(); ++i) {
+		if (cur[i].inset().notifyCursorEnters(cur))
 			return true;
 	}
 	

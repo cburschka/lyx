@@ -1628,7 +1628,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// notify insets we just left
 			if (view()->cursor() != old) {
 				old.fixIfBroken();
-				bool badcursor = notifyCursorLeaves(old, view()->cursor());
+				bool badcursor = notifyCursorLeavesOrEnters(old, view()->cursor());
 				if (badcursor)
 					view()->cursor().fixIfBroken();
 			}

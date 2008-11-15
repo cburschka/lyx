@@ -430,11 +430,12 @@ public:
 
 
 /**
- * Notifies all insets which appear in old, but not in cur. Make
- * Sure that the cursor old is valid, i.e. all inset pointers
+ * Notifies all insets which appear in old, but not in cur. And then
+ * notify all insets which appear in cur, but not in old.
+ * Make sure that the cursor old is valid, i.e. all inset pointers
  * point to valid insets! Use Cursor::fixIfBroken if necessary.
  */
-bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
+bool notifyCursorLeavesOrEnters(Cursor const & old, Cursor & cur);
 
 
 } // namespace lyx

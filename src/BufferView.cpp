@@ -627,7 +627,14 @@ void BufferView::setCursorFromScrollbar()
 	Cursor cur(*this);
 	cur.reset(buffer_.inset());
 	tm.setCursorFromCoordinates(cur, 0, newy);
+
+	// update the bufferview cursor and notify insets
+	// FIXME: Care about the d->cursor_ flags to redraw if needed
+	Cursor old = d->cursor_;
 	mouseSetCursor(cur);
+	bool badcursor = notifyCursorLeavesOrEnters(old, d->cursor_);
+	if (badcursor)
+		d->cursor_.fixIfBroken();
 }
 
 
@@ -1635,7 +1642,7 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 	// Notify left insets
 	if (cur != old) {
 		old.fixIfBroken();
-		bool badcursor = notifyCursorLeaves(old, cur);
+		bool badcursor = notifyCursorLeavesOrEnters(old, cur);
 		if (badcursor)
 			cursor().fixIfBroken();
 	}
@@ -1854,14 +1861,9 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 		cap::saveSelection(cursor());
 
 	// Has the cursor just left the inset?
-	bool badcursor = false;
 	bool leftinset = (&d->cursor_.inset() != &cur.inset());
-	if (leftinset) {
+	if (leftinset)
 		d->cursor_.fixIfBroken();
-		badcursor = notifyCursorLeaves(d->cursor_, cur);
-		if (badcursor)
-			cur.fixIfBroken();
-	}
 
 	// FIXME: shift-mouse selection doesn't work well across insets.
 	bool do_selection = select && &d->cursor_.anchor().inset() == &cur.inset();
@@ -1871,7 +1873,7 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 	// FIXME: (2) if we had a working InsetText::notifyCursorLeaves,
 	// the leftinset bool would not be necessary (badcursor instead).
 	bool update = leftinset;
-	if (!do_selection && !badcursor && d->cursor_.inTexted())
+	if (!do_selection && d->cursor_.inTexted())
 		update |= checkDepm(cur, d->cursor_);
 
 	d->cursor_.setCursor(cur);

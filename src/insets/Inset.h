@@ -261,9 +261,16 @@ public:
 	/// Returns true if cursor is now invalid, e.g. if former 
 	/// insets in higher cursor slices of \c old do not exist 
 	/// anymore.
-	/// \c old is the old cursor, i.e. there is a slice pointing to this.
+	/// \c old is the old cursor, the last slice points to this.
 	/// \c cur is the new cursor. Use the update flags to cause a redraw.
 	virtual bool notifyCursorLeaves(Cursor const & /*old*/, Cursor & /*cur*/)
+		{ return false; }
+	/// Is called when the cursor enters this inset.
+	/// Returns true if cursor is now invalid, e.g. if former 
+	/// insets in higher cursor slices of \c old do not exist 
+	/// anymore.
+	/// \c cur is the new cursor, some slice points to this. Use the update flags to cause a redraw.
+	virtual bool notifyCursorEnters(Cursor & /*cur*/)
 		{ return false; }
 	/// is called when the mouse enter or leave this inset
 	/// return true if this inset needs repaint
