@@ -194,7 +194,7 @@ docstring complexLabel(Buffer const & buffer,
 
 	// One day, these might be tunable (as they are in BibTeX).
 	char op, cp;	// opening and closing parenthesis.
-	char * sep;	// punctuation mark separating citation entries.
+	const char * sep;	// punctuation mark separating citation entries.
 	if (engine == ENGINE_BASIC) {
 		op  = '[';
 		cp  = ']';
