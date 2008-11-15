@@ -83,7 +83,7 @@ public:
 	/// Return the name (and argument) associated with the given (pseudo) action
 	std::string const getActionName(FuncCode action) const;
 
-	func_type const getActionType(FuncCode action) const;
+        func_type getActionType(FuncCode action) const;
 
 	/// True if the command has `flag' set
 	bool funcHasFlag(FuncCode action, func_attrib flag) const;
