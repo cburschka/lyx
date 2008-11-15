@@ -32,7 +32,7 @@ try:
     import lyx2lyx_version
     version__ = lyx2lyx_version.version
 except: # we are running from build directory so assume the last version
-    version__ = '1.6.0svn'
+    version__ = '2.0.0svn'
 
 default_debug__ = 2
 
@@ -73,14 +73,16 @@ format_relation = [("0_06",    [200], minor_versions("0.6" , 4)),
                    ("0_12",    [215], minor_versions("0.12", 1) + ["0.11"]),
                    ("1_0",     [215], minor_versions("1.0" , 4)),
                    ("1_1",     [215], minor_versions("1.1" , 4)),
-                   ("1_1_5",   [216], ["1.1.5","1.1.5.1","1.1.5.2","1.1"]),
-                   ("1_1_6_0", [217], ["1.1.6","1.1.6.1","1.1.6.2","1.1"]),
-                   ("1_1_6_3", [218], ["1.1.6.3","1.1.6.4","1.1"]),
+                   ("1_1_5",   [216], ["1.1", "1.1.5","1.1.5.1","1.1.5.2"]),
+                   ("1_1_6_0", [217], ["1.1", "1.1.6","1.1.6.1","1.1.6.2"]),
+                   ("1_1_6_3", [218], ["1.1", "1.1.6.3","1.1.6.4"]),
                    ("1_2",     [220], minor_versions("1.2" , 4)),
                    ("1_3",     [221], minor_versions("1.3" , 7)),
                    ("1_4", range(222,246), minor_versions("1.4" , 5)),
-                   ("1_5", range(246,277), minor_versions("1.5" , 6)),
-                   ("1_6", range(277,346), minor_versions("1.6" , 0))]
+                   ("1_5", range(246,277), minor_versions("1.5" , 7)),
+                   ("1_6", range(277,346), minor_versions("1.6" , 0)),
+                   ]
+#                   ("2_0",     [],    minor_versions("2.0", 0))]
 
 ####################################################################
 # This is useful just for development versions                     #
@@ -102,6 +104,23 @@ def formats_list():
             if format not in formats:
                 formats.append(format)
     return formats
+
+
+def format_info():
+    " Returns a list with supported file formats."
+    out = """Major version:
+	minor versions
+	formats
+"""
+    for version in format_relation:
+        major = str(version[2][0])
+        versions = str(version[2][1:])
+        if len(version[1]) == 1:
+            formats = str(version[1][0])
+        else:
+            formats = "%s - %s" % (version[1][-1], version[1][0])
+        out += "%s\n\t%s\n\t%s\n\n" % (major, versions, formats)
+    return out + '\n'
 
 
 def get_end_format():
@@ -158,7 +177,7 @@ class LyX_base:
 
     def __init__(self, end_format = 0, input = "", output = "", error = "",
                  debug = default_debug__, try_hard = 0, cjk_encoding = '',
-                 language = "english", encoding = "auto"):
+                 final_version = "", language = "english", encoding = "auto"):
 
         """Arguments:
         end_format: final format that the file should be converted. (integer)
@@ -180,8 +199,36 @@ class LyX_base:
 
         if end_format:
             self.end_format = self.lyxformat(end_format)
+
+            # In case the target version and format are both specified
+            # verify that they are compatible. If not send a warning
+            # and ignore the version.
+            if final_version:
+                message = "Incompatible version %s for specified format %d" % (
+                    final_version, self.end_format)
+                for version in format_relation:
+                    if self.end_format in version[1]:
+                        if final_version not in version[2]:
+                            self.warning(message)
+                            final_version = ""
+        elif final_version:
+            for version in format_relation:
+                if final_version in version[2]:
+                    # set the last format for that version
+                    self.end_format = version[1][-1]
+                    break
+            else:
+                final_version = ""
         else:
             self.end_format = get_end_format()
+
+        if not final_version:
+            for step in format_relation:
+                if self.end_format in step[1]:
+                    final_version = step[2][1]
+        self.final_version = final_version
+        self.warning("Final version: %s" % self.final_version, 10)
+        self.warning("Final format: %d" % self.end_format, 10)
 
         self.backend = "latex"
         self.textclass = "article"
@@ -556,13 +603,14 @@ class LyX_base:
         steps = []
         if (initial_step, self.start) < (final_step, self.end_format):
             mode = "convert"
-            first_step = 1
+            full_steps = []
             for step in format_relation:
-                if  initial_step <= step[0] <= final_step:
-                    if first_step and len(step[1]) == 1:
-                        first_step = 0
-                        continue
-                    steps.append(step[0])
+                if  initial_step <= step[0] <= final_step and step[2][0] <= self.final_version:
+                    full_steps.append(step)
+            if full_steps[0][1][-1] == self.format:
+                full_steps = full_steps[1:]
+            for step in full_steps:
+                steps.append(step[0])
         else:
             mode = "revert"
             relation_format = format_relation[:]
@@ -646,9 +694,10 @@ class File(LyX_base):
     " This class reads existing LyX files."
 
     def __init__(self, end_format = 0, input = "", output = "", error = "",
-                 debug = default_debug__, try_hard = 0, cjk_encoding = ''):
+                 debug = default_debug__, try_hard = 0, cjk_encoding = '',
+                 final_version = ''):
         LyX_base.__init__(self, end_format, input, output, error,
-                          debug, try_hard, cjk_encoding)
+                          debug, try_hard, cjk_encoding, final_version)
         self.read()
 
 
