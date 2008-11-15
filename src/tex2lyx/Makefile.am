@@ -19,14 +19,16 @@ bin_PROGRAMS = tex2lyx
 
 DEFAULT_INCLUDES = 
 
-AM_CPPFLAGS += \
-	-DTEX2LYX \
-	$(PCH_FLAGS) \
-	-I$(top_srcdir)/src/tex2lyx \
-	-I$(top_srcdir)/src  \
-	-I$(top_builddir) \
-	$(BOOST_INCLUDES)
+AM_CPPFLAGS += -DTEX2LYX $(PCH_FLAGS) -I$(top_srcdir)/src/tex2lyx \
+	-I$(top_srcdir)/src -I$(top_builddir) $(BOOST_INCLUDES)
 
+TEST_FILES = \
+	test/box-color-size-space-align.tex \
+	test/foo.eps \
+	test/foo.png \
+	test/test-insets.tex \
+	test/test.ltx \
+	test/test-structure.tex
 
 LINKED_FILES = \
 	../FloatList.cpp \
