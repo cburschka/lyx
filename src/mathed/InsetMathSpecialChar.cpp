@@ -29,7 +29,7 @@
 namespace lyx {
 
 
-InsetMathSpecialChar::InsetMathSpecialChar(docstring name)
+InsetMathSpecialChar::InsetMathSpecialChar(docstring const & name)
 	: name_(name), kerning_(0)
 {
 	if (name.size() != 1) {

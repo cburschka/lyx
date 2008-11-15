@@ -17,10 +17,11 @@
 namespace lyx {
 
 /// The special character inset.
-class InsetMathSpecialChar : public InsetMath {
+class InsetMathSpecialChar : public InsetMath
+{
 public:
 	///
-	explicit InsetMathSpecialChar(docstring name);
+	explicit InsetMathSpecialChar(docstring const & name);
 	///
 	void setBuffer(Buffer &) {}
 	///
@@ -66,4 +67,4 @@ private:
 
 } // namespace lyx
 
-#endif
+#endif // MATH_SPECIALCHARINSET_H
