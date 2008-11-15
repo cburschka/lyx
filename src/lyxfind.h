@@ -8,6 +8,7 @@
  * \author John Levon
  * \author Jürgen Vigna
  * \author Alfredo Braunstein
+ * \author Tommaso Cucinotta
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -17,9 +18,16 @@
 
 #include "support/strfwd.h"
 
+// FIXME
+#include "support/docstring.h"
+
 namespace lyx {
 
+
+
+class Buffer;
 class BufferView;
+class DocIterator;
 class FuncRequest;
 class Text;
 
@@ -57,6 +65,48 @@ void replace(BufferView * bv, FuncRequest const &, bool has_deleted = false);
 
 /// find the next change in the buffer
 bool findNextChange(BufferView * bv);
+
+class FindAdvOptions {
+public:
+  FindAdvOptions(
+                 docstring const & search,
+                 bool casesensitive,
+                 bool matchword,
+                 bool forward,
+                 bool expandmacros,
+                 bool ignoreformat,
+                 bool regexp);
+  FindAdvOptions() {}
+  docstring search;
+  bool casesensitive;
+  bool matchword;
+  bool forward;
+  bool expandmacros;
+  bool ignoreformat;
+  bool regexp;
+};
+
+/// Write a FindAdvOptions instance to a stringstream
+std::ostringstream & operator<<(std::ostringstream & os, lyx::FindAdvOptions const & opt);
+
+/// Read a FindAdvOptions instance from a stringstream
+std::istringstream & operator>>(std::istringstream & is, lyx::FindAdvOptions & opt);
+
+/// Dispatch a LFUN_WORD_FINDADV command request
+void findAdv(BufferView * bv, FuncRequest const & ev);
+
+/// Perform a FindAdv operation.
+bool findAdv(BufferView * bv, FindAdvOptions const & opt);
+	
+/** Computes the simple-text or LaTeX export (depending on opt) of buf starting
+ ** from cur and ending len positions after cur, if len is positive, or at the
+ ** paragraph or innermost inset end if len is -1.
+ **
+ ** This is useful for computing opt.search from the SearchAdvDialog controller (ControlSearchAdv).
+ ** Ideally, this should not be needed, and the opt.search field should become a Text const &.
+ **/
+docstring stringifyFromForSearch(FindAdvOptions const & opt,
+    Buffer const & buf, DocIterator const & cur, int len = -1);
 
 } // namespace lyx
 
