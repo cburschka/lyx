@@ -233,14 +233,28 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 {}
 
 
-
-GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
-	: buffer_view_(new BufferView(buffer)), lyx_view_(&lv),
+GuiWorkArea::GuiWorkArea(QWidget *)
+	: buffer_view_(0), lyx_view_(0),
 	cursor_visible_(false),
 	need_resize_(false), schedule_redraw_(false),
 	preedit_lines_(1), completer_(new GuiCompleter(this))
 {
-	buffer.workAreaManager().add(this);
+}
+
+
+GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & gv)
+	: buffer_view_(0), lyx_view_(0),
+	cursor_visible_(false),
+	need_resize_(false), schedule_redraw_(false),
+	preedit_lines_(1), completer_(new GuiCompleter(this))
+{
+	setGuiView(gv);
+	setBuffer(buffer);
+}
+
+
+void GuiWorkArea::init()
+{
 	// Setup the signals
 	connect(&cursor_timeout_, SIGNAL(timeout()),
 		this, SLOT(toggleCursor()));
@@ -258,17 +272,6 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	cursor_ = new frontend::CursorWidget();
 	cursor_->hide();
 
-	// HACK: Prevents an additional redraw when the scrollbar pops up
-	// which regularily happens on documents with more than one page.
-	// The policy  should be set to "Qt::ScrollBarAsNeeded" soon.
-	// Since we have no geometry information yet, we assume that
-	// a document needs a scrollbar if there is more then four
-	// paragraph in the outermost text.
-	if (buffer.text().paragraphs().size() > 4)
-		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-	QTimer::singleShot(50, this, SLOT(fixVerticalScrollBar()));
-
-
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setAcceptDrops(true);
 	setMouseTracking(true);
@@ -285,7 +288,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	// the viewport because we have our own backing pixmap.
 	viewport()->setAttribute(Qt::WA_NoSystemBackground);
 
-	setFocusPolicy(Qt::WheelFocus);
+	setFocusPolicy(Qt::StrongFocus);
 
 	viewport()->setCursor(Qt::IBeamCursor);
 
@@ -303,6 +306,8 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	// Enables input methods for asian languages.
 	// Must be set when creating custom text editing widgets.
 	setAttribute(Qt::WA_InputMethodEnabled, true);
+
+	dialogMode_ = false;
 }
 
 
@@ -313,6 +318,31 @@ GuiWorkArea::~GuiWorkArea()
 	delete cursor_;
 	// Completer has a QObject parent and is thus automatically destroyed.
 	// delete completer_;
+}
+
+
+void GuiWorkArea::setGuiView(GuiView & gv)
+{
+	lyx_view_ = &gv;
+}
+
+
+void GuiWorkArea::setBuffer(Buffer & buffer)
+{
+	delete buffer_view_;
+	buffer_view_ = new BufferView(buffer),
+	buffer.workAreaManager().add(this);
+
+	// HACK: Prevents an additional redraw when the scrollbar pops up
+	// which regularily happens on documents with more than one page.
+	// The policy  should be set to "Qt::ScrollBarAsNeeded" soon.
+	// Since we have no geometry information yet, we assume that
+	// a document needs a scrollbar if there is more then four
+	// paragraph in the outermost text.
+	if (buffer.text().paragraphs().size() > 4)
+		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+	QTimer::singleShot(50, this, SLOT(fixVerticalScrollBar()));
+	init();
 }
 
 
@@ -660,8 +690,14 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 
 void GuiWorkArea::focusInEvent(QFocusEvent * e)
 {
-	if (lyx_view_->currentWorkArea() != this)
-		lyx_view_->setCurrentWorkArea(this);
+	LYXERR(Debug::DEBUG, "GuiWorkArea::focusInEvent(): " << this << std::endl);
+	GuiWorkArea * old_gwa = theGuiApp()->currentView()->currentWorkArea();
+	if (old_gwa)
+		old_gwa->stopBlinkingCursor();
+	lyx_view_->setCurrentWorkArea(this);
+
+	//if (lyx_view_->currentWorkArea() != this) {
+	//	lyx_view_->setCurrentWorkArea(this);
 
 	startBlinkingCursor();
 	QAbstractScrollArea::focusInEvent(e);
@@ -670,6 +706,7 @@ void GuiWorkArea::focusInEvent(QFocusEvent * e)
 
 void GuiWorkArea::focusOutEvent(QFocusEvent * e)
 {
+	LYXERR(Debug::DEBUG, "GuiWorkArea::focusOutEvent(): " << this << std::endl);
 	stopBlinkingCursor();
 	QAbstractScrollArea::focusOutEvent(e);
 }
@@ -835,6 +872,18 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 
 void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 {
+	// Do not process here some keys if dialogMode_ is set
+	if (dialogMode_
+		&& (ev->modifiers() == Qt::NoModifier
+		    || ev->modifiers() == Qt::ShiftModifier)
+		&& (ev->key() == Qt::Key_Escape
+		    || ev->key() == Qt::Key_Enter
+		    || ev->key() == Qt::Key_Return)
+	    ) {
+		ev->ignore();
+		return;
+	}
+
 	// intercept some keys if completion popup is visible
 	if (completer_->popupVisible()) {
 		switch (ev->key()) {

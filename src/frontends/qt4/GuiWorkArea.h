@@ -101,10 +101,19 @@ class GuiWorkArea : public QAbstractScrollArea, public WorkArea
 
 public:
 	///
-	GuiWorkArea(Buffer & buffer, GuiView & lv);
+	GuiWorkArea(QWidget *);
+	///
+	GuiWorkArea(Buffer & buffer, GuiView & gv);
 	///
 	~GuiWorkArea();
 
+	///
+	void setBuffer(Buffer &);
+	///
+	void setGuiView(GuiView &);
+	/// Dummy methods for Designer.
+	void setWidgetResizable(bool) {}
+	void setWidget(QWidget *) {}
 	///
 	void setFullScreen(bool full_screen);
 	/// is LyXView in fullscreen mode?
@@ -127,9 +136,20 @@ public:
 	///
 	void resizeBufferView();
 
+	bool isInDialog() {
+		return dialogMode_;
+	}
+
 	///
 	GuiCompleter & completer() { return *completer_; }
-	
+
+	/// Return true if dialogMode is set
+	bool& dialogMode() { return dialogMode_; }
+
+	/// Return the GuiView this workArea belongs to
+	GuiView const & view() const { return *lyx_view_; }
+	GuiView & view() { return *lyx_view_; }
+
 Q_SIGNALS:
 	///
 	void titleChanged(GuiWorkArea *);
@@ -153,6 +173,8 @@ private Q_SLOTS:
 
 private:
 	friend class GuiCompleter;
+	///
+	void init();
 
 	/// update the passed area.
 	void update(int x, int y, int w, int h);
@@ -238,6 +260,10 @@ private:
 
 	///
 	GuiCompleter * completer_;
+
+	/// Special mode in which Esc and Enter (with or without Shift)
+	/// are ignored
+	bool dialogMode_;
 }; // GuiWorkArea
 
 
