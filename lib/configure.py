@@ -73,7 +73,7 @@ def setEnviron():
         NLS nuisances.
         Only set these to C if already set.  These must not be set unconditionally
         because not all systems understand e.g. LANG=C (notably SCO).
-        Fixing LC_MESSAGES prevents Solaris sh from translating var values in `set'!
+        Fixing LC_MESSAGES prevents Solaris sh from translating var values in set!
         Non-C LC_CTYPE values break the ctype check.
     '''
     os.environ['LANG'] = os.getenv('LANG', 'C')
@@ -202,19 +202,20 @@ def checkLatex(dtl_tools):
     path, PPLATEX = checkProg('a DVI postprocessing program', ['pplatex $$i'])
     #-----------------------------------------------------------------
     path, PLATEX = checkProg('pLaTeX, the Japanese LaTeX', ['platex $$i'])
-    # check if PLATEX is pLaTeX2e
-    writeToFile('chklatex.ltx', '''
+    if PLATEX != '':
+        # check if PLATEX is pLaTeX2e
+        writeToFile('chklatex.ltx', '''
 \\nonstopmode
 \\@@end
 ''')
-    # run platex on chklatex.ltx and check result
-    if cmdOutput(PLATEX + ' chklatex.ltx').find('pLaTeX2e') != -1:
-        # We have the Japanese pLaTeX2e
-        addToRC(r'\converter platex   dvi       "%s"   "latex"' % PLATEX)
-        LATEX = PLATEX
-    else:
-        PLATEX = ''
-    removeFiles(['chklatex.ltx', 'chklatex.log'])
+        # run platex on chklatex.ltx and check result
+        if cmdOutput(PLATEX + ' chklatex.ltx').find('pLaTeX2e') != -1:
+            # We have the Japanese pLaTeX2e
+            addToRC(r'\converter platex   dvi       "%s"   "latex"' % PLATEX)
+            LATEX = PLATEX
+        else:
+            PLATEX = ''
+            removeFiles(['chklatex.ltx', 'chklatex.log'])
     #-----------------------------------------------------------------
     # use LATEX to convert from latex to dvi if PPLATEX is not available    
     if PPLATEX == '':
