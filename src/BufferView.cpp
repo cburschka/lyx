@@ -549,9 +549,14 @@ docstring BufferView::contextMenu(int x, int y) const
 void BufferView::scrollDocView(int value)
 {
 	int const offset = value - d->scrollbarParameters_.position;
+
+	// No scrolling at all? No need to redraw anything
+	if (offset == 0)
+		return;
+
 	// If the offset is less than 2 screen height, prefer to scroll instead.
 	if (abs(offset) <= 2 * height_) {
-		scroll(offset);
+		d->anchor_ypos_ -= offset;
 		updateMetrics();
 		buffer_.changed();
 		return;
@@ -2190,6 +2195,7 @@ void BufferView::draw(frontend::Painter & pain)
 	if (height_ == 0 || width_ == 0)
 		return;
 	LYXERR(Debug::PAINTING, "\t\t*** START DRAWING ***");
+
 	Text & text = buffer_.text();
 	TextMetrics const & tm = d->text_metrics_[&text];
 	int const y = tm.first().second->position();
