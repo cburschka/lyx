@@ -26,6 +26,7 @@ namespace lyx {
 
 class BiblioInfo;
 class BufferParams;
+class BufferSet;
 class DocIterator;
 class ErrorItem;
 class ErrorList;
@@ -272,7 +273,10 @@ public:
 
 	/// Set document's parent Buffer.
 	void setParent(Buffer const *);
-	Buffer const * parent();
+	Buffer const * parent() const;
+
+	// Collect all relative buffer
+	std::vector<Buffer const *> allRelatives() const;
 
 	/** Get the document's master (or \c this if this is not a
 	    child document)
@@ -358,6 +362,9 @@ public:
 	ParIterator par_iterator_end();
 	///
 	ParConstIterator par_iterator_end() const;
+
+	// Position of the child buffer where it appears first in the master.
+	DocIterator firstChildPosition(Buffer const * child);
 
 	/** \returns true only when the file is fully loaded.
 	 *  Used to prevent the premature generation of previews
@@ -481,6 +488,9 @@ private:
 	*/
 	void updateMacros(DocIterator & it,
 				     DocIterator & scope) const;
+
+	///
+	void collectRelatives(BufferSet & bufs) const;
 
 	///
 	bool readFileHelper(support::FileName const & s);

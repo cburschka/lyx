@@ -1074,16 +1074,14 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		docstring label = cmd.argument();
 		if (label.empty()) {
 			InsetRef * inset =
-				getInsetByCode<InsetRef>(d->cursor_,
-							 REF_CODE);
+				getInsetByCode<InsetRef>(d->cursor_, REF_CODE);
 			if (inset) {
 				label = inset->getParam("reference");
 				// persistent=false: use temp_bookmark
 				saveBookmark(0);
 			}
 		}
-
-		if (!label.empty())
+	        if (!label.empty())
 			gotoLabel(label);
 		break;
 	}
@@ -1809,15 +1807,22 @@ bool BufferView::setCursorFromInset(Inset const * inset)
 
 void BufferView::gotoLabel(docstring const & label)
 {
-	Toc & toc = buffer().tocBackend().toc("label");
-	TocIterator toc_it = toc.begin();
-	TocIterator end = toc.end();
-	for (; toc_it != end; ++toc_it) {
-		if (label == toc_it->str())
-			dispatch(toc_it->action());
+	std::vector<Buffer const *> bufs = buffer().allRelatives();
+	std::vector<Buffer const *>::iterator it = bufs.begin();
+	for (; it != bufs.end(); ++it) {
+		Buffer const * buf = *it;
+
+		// find label
+		Toc & toc = buf->tocBackend().toc("label");
+		TocIterator toc_it = toc.begin();
+		TocIterator end = toc.end();
+		for (; toc_it != end; ++toc_it) {
+			if (label == toc_it->str()) {
+				dispatch(toc_it->action());
+				return;
+			}
+		}
 	}
-	//FIXME: We could do a bit more searching thanks to this:
-	//InsetLabel const * inset = buffer_.insetLabel(label);
 }
 
 

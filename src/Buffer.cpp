@@ -101,6 +101,7 @@
 #include <fstream>
 #include <iomanip>
 #include <map>
+#include <set>
 #include <sstream>
 #include <stack>
 #include <vector>
@@ -123,6 +124,8 @@ typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
 
 } // namespace anon
+
+class BufferSet : public std::set<Buffer const *> {};
 
 class Buffer::Impl
 {
@@ -1682,9 +1685,35 @@ void Buffer::setParent(Buffer const * buffer)
 }
 
 
-Buffer const * Buffer::parent()
+Buffer const * Buffer::parent() const
 {
 	return d->parent_buffer;
+}
+
+
+void Buffer::collectRelatives(BufferSet & bufs) const
+{
+	bufs.insert(this);
+	if (parent())
+		parent()->collectRelatives(bufs);
+
+	// loop over children
+	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
+	Impl::BufferPositionMap::iterator end = d->children_positions.end();
+	for (; it != end; ++it)
+		bufs.insert(const_cast<Buffer *>(it->first));
+}
+
+
+std::vector<Buffer const *> Buffer::allRelatives() const
+{
+	BufferSet bufs;
+	collectRelatives(bufs);
+	BufferSet::iterator it = bufs.begin();
+	std::vector<Buffer const *> ret;
+	for (; it != bufs.end(); ++it)
+		ret.push_back(*it);
+	return ret;
 }
 
 
@@ -1700,6 +1729,16 @@ Buffer const * Buffer::masterBuffer() const
 bool Buffer::isChild(Buffer * child) const
 {
 	return d->children_positions.find(child) != d->children_positions.end();
+}
+
+
+DocIterator Buffer::firstChildPosition(Buffer const * child)
+{
+	Impl::BufferPositionMap::iterator it;
+	it = d->children_positions.find(child);
+	if (it == d->children_positions.end())
+		return DocIterator();
+	return it->second;
 }
 
 
