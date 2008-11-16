@@ -159,9 +159,9 @@ struct GuiView::GuiViewPrivate
 		in_show_(false)
 	{
 		// hardcode here the platform specific icon size
-		smallIconSize = 14;	// scaling problems
-		normalIconSize = 20;	// ok, default
-		bigIconSize = 26;		// better for some math icons
+		smallIconSize = 14;  // scaling problems
+		normalIconSize = 20; // ok, default
+		bigIconSize = 26;    // better for some math icons
 
 		splitter_ = new QSplitter;
 		bg_widget_ = new BackgroundWidget;
@@ -936,27 +936,28 @@ void GuiView::setCurrentWorkArea(GuiWorkArea * wa)
 		return;
 	}
 	GuiWorkArea * old_gwa = theGuiApp()->currentView()->currentWorkArea();
-	if (old_gwa != wa) {
-		theGuiApp()->setCurrentView(this);
-		d.current_work_area_ = wa;
-		for (int i = 0; i != d.splitter_->count(); ++i) {
-			if (d.tabWorkArea(i)->setCurrentWorkArea(wa)) {
-				if (d.current_main_work_area_)
-					d.current_main_work_area_->setFrameStyle(QFrame::NoFrame);
-				d.current_main_work_area_ = wa;
-				d.current_main_work_area_->setFrameStyle(QFrame::Box | QFrame::Plain);
-				//d.current_main_work_area_->setLineWidth(2);
-				LYXERR(Debug::DEBUG, "Current wa: " << currentWorkArea() << ", Current main wa: " << currentMainWorkArea());
-				return;
-			}
+	if (old_gwa == wa)
+		return;
+
+	theGuiApp()->setCurrentView(this);
+	d.current_work_area_ = wa;
+	for (int i = 0; i != d.splitter_->count(); ++i) {
+		if (d.tabWorkArea(i)->setCurrentWorkArea(wa)) {
+			//if (d.current_main_work_area_)
+			//	d.current_main_work_area_->setFrameStyle(QFrame::NoFrame);
+			d.current_main_work_area_ = wa;
+			//d.current_main_work_area_->setFrameStyle(QFrame::Box | QFrame::Plain);
+			//d.current_main_work_area_->setLineWidth(2);
+			LYXERR(Debug::DEBUG, "Current wa: " << currentWorkArea() << ", Current main wa: " << currentMainWorkArea());
+			return;
 		}
-		LYXERR(Debug::DEBUG, "This is not a tabbed wa");
-		on_currentWorkAreaChanged(wa);
-		BufferView & bv = wa->bufferView();
-		bv.cursor().fixIfBroken();
-		bv.updateMetrics();
-		wa->setUpdatesEnabled(true);
 	}
+	LYXERR(Debug::DEBUG, "This is not a tabbed wa");
+	on_currentWorkAreaChanged(wa);
+	BufferView & bv = wa->bufferView();
+	bv.cursor().fixIfBroken();
+	bv.updateMetrics();
+	wa->setUpdatesEnabled(true);
 	LYXERR(Debug::DEBUG, "Current wa: " << currentWorkArea() << ", Current main wa: " << currentMainWorkArea());
 }
 
