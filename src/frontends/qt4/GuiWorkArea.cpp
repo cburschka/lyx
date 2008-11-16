@@ -692,7 +692,7 @@ void GuiWorkArea::focusInEvent(QFocusEvent * e)
 {
 	/*
 	LYXERR(Debug::DEBUG, "GuiWorkArea::focusInEvent(): " << this << std::endl);
-	GuiWorkArea * old_gwa = const_cast<GuiWorkArea *>(guiApp->currentView()->currentWorkArea());
+	GuiWorkArea * old_gwa = theGuiApp()->currentView()->currentWorkArea();
 	if (old_gwa)
 		old_gwa->stopBlinkingCursor();
 	lyx_view_->setCurrentWorkArea(this);

@@ -95,8 +95,8 @@
 #include "support/types.h"
 
 #include <boost/bind.hpp>
+#include <boost/shared_ptr.hpp>
 
-#include <tr1/memory>
 #include <algorithm>
 #include <fstream>
 #include <iomanip>
@@ -106,7 +106,6 @@
 #include <vector>
 
 using namespace std;
-using namespace std::tr1;
 using namespace lyx::support;
 
 namespace lyx {
@@ -2236,8 +2235,7 @@ void Buffer::setGuiDelegate(frontend::GuiBufferDelegate * gui)
 
 namespace {
 
-class AutoSaveBuffer : public ForkedProcess
-{
+class AutoSaveBuffer : public ForkedProcess {
 public:
 	///
 	AutoSaveBuffer(Buffer const & buffer, FileName const & fname)

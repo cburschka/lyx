@@ -37,8 +37,9 @@
 #endif
 
 using namespace std;
-using namespace std::tr1;
 using namespace lyx::support;
+
+using boost::shared_ptr;
 
 namespace lyx {
 
