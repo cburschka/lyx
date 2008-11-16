@@ -234,6 +234,24 @@ bool GuiCompleter::inlinePossible(Cursor const & cur) const
 }
 
 
+bool GuiCompleter::uniqueCompletionAvailable() const
+{
+	if (!modelActive_)
+		return false;
+
+	size_t n = popup()->model()->rowCount();
+	if (n > 1 || n == 0)
+		return false;
+
+	// if there is exactly one, we have to check whether it is a 
+	// real completion, i.e. longer than the current prefix.
+	if (completionPrefix() == currentCompletion())
+		return false;
+
+	return true;
+}
+
+
 bool GuiCompleter::completionAvailable() const
 {
 	if (!modelActive_)
@@ -638,7 +656,7 @@ void GuiCompleter::tab()
 	cur.updateFlags(Update::None);
 	
 	// check that inline completion is active
-	if (!inlineVisible()) {
+	if (!inlineVisible() && !uniqueCompletionAvailable()) {
 		// try to activate the inline completion
 		if (cur.inset().inlineCompletionSupported(cur)) {
 			showInline();
@@ -660,6 +678,9 @@ void GuiCompleter::tab()
 		return;
 	}
 	
+	// Make undo possible
+	cur.recordUndo();
+
 	// If completion is active, at least complete by one character
 	docstring prefix = cur.inset().completionPrefix(cur);
 	docstring completion = qstring_to_ucs4(currentCompletion());
@@ -802,7 +823,7 @@ docstring GuiCompleter::longestUniqueCompletion() const
 	if (n == 0)
 		return docstring();
 	QString s = model.data(model.index(0, 0), Qt::EditRole).toString();
-	
+
 	if (modelSorting() == QCompleter::UnsortedModel) {
 		// For unsorted model we cannot do more than iteration.
 		// Iterate through the completions and cut off where s differs
@@ -851,6 +872,8 @@ void GuiCompleter::popupActivated(const QString & completion)
 	Cursor cur = gui_->bufferView().cursor();
 	cur.updateFlags(Update::None);
 	
+	cur.recordUndo();
+
 	docstring prefix = cur.inset().completionPrefix(cur);
 	docstring postfix = qstring_to_ucs4(completion.mid(prefix.length()));
 	cur.inset().insertCompletion(cur, postfix, true);

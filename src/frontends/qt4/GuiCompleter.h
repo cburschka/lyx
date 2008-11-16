@@ -70,6 +70,8 @@ public:
 	QString currentCompletion() const;
 	///
 	docstring longestUniqueCompletion() const;
+	///
+	bool uniqueCompletionAvailable() const;
 	
 public Q_SLOTS:
 	/// Show the popup.
