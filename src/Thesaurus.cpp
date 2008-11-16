@@ -110,7 +110,7 @@ Thesaurus::Meanings Thesaurus::lookup(docstring const & t, docstring const &)
 bool Thesaurus::thesaurusAvailable(docstring const & lang) const
 {
 	// we support English only
-	return prefixIs(lang, "en_");
+	return prefixIs(lang, from_ascii("en_"));
 }
 
 #endif // HAVE_LIBAIKSAURUS
