@@ -21,6 +21,7 @@ AM_CPPFLAGS += -DTEX2LYX $(PCH_FLAGS) -I$(top_srcdir)/src/tex2lyx \
 
 TEST_FILES = \
 	test/box-color-size-space-align.tex \
+	test/DummyDocument.tex \
 	test/foo.eps \
 	test/foo.png \
 	test/test-insets.tex \
