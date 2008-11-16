@@ -193,7 +193,7 @@ message("----- LYX_ABS_INSTALLED_LOCALEDIR : ${LYX_ABS_INSTALLED_LOCALEDIR}")
 message("")
 
 
-add_definitions(-DBOOST_USER_CONFIG="<config.h>")
+add_definitions(-DBOOST_USER_CONFIG=<config.h>)
 	
 if(MSVC AND NOT disable-pch AND NOT MERGE_FILES)
 	message("-----")
