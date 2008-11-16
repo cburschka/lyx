@@ -265,7 +265,7 @@ Thesaurus::Meanings Thesaurus::lookup(docstring const & t, docstring const & lan
 }
 
 #else
-
+#ifndef HAVE_AIKSAURUS
 Thesaurus::Thesaurus()
 {
 }
@@ -281,6 +281,7 @@ Thesaurus::Meanings Thesaurus::lookup(docstring const &, docstring const &)
 	return Meanings();
 }
 
+#endif
 #endif // HAVE_LIBMYTHES
 
 // Global instance
