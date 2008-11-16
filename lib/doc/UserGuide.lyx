@@ -39950,6 +39950,19 @@ to the navigate menu section in the .inc-file to have the sixth bookmark.
 \end_layout
 
 \begin_layout Subsubsection
+Automatic help
+\end_layout
+
+\begin_layout Standard
+The option 
+\family sans
+Enable tool tips in main work area
+\family default
+ enables tool tips showing the content of closed insets like index entries
+ or footnotes.
+\end_layout
+
+\begin_layout Subsubsection
 Session
 \end_layout
 
@@ -40032,6 +40045,15 @@ Open
 Recent
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+When the option 
+\family sans
+Open documents in tabs
+\family default
+ is not used, then every file will be opened in its own new instance of
+ LyX.
 \end_layout
 
 \begin_layout Subsection
@@ -40645,6 +40667,45 @@ Wheel scrolling speed
 .
  The standard value is 1.0, higher values speed up the scrolling, lower ones
  slow it down.
+\end_layout
+
+\begin_layout Subsection
+Input Completion
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Input Completion
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Word completion|see{Input Completion}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LyX provides the completion of words by scanning all documents that are
+ currently opened.
+ Every word it appears in these documents is added to a database that is
+ used to propose completions.
+\end_layout
+
+\begin_layout Standard
+By default 
+\end_layout
+
+\begin_layout Standard
+The option Automatic inline completion propose 
 \end_layout
 
 \begin_layout Section
