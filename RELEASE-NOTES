@@ -8,11 +8,10 @@ been applied because of incomplete testing.
 Interface changes
 -----------------
 
-Some lyxrc variables have been removed:
+The following variables are obsoleted in 2.0
 
-- \plaintext_roff_command was not used anymore, it is now removed.
-
-
+- \plaintext_roff_command (was not used anymore)
+- \spell_command and \use_spell_lib (ispell support has been removed)
 
 Known issues in version 2.0.0
 -----------------------------

@@ -382,15 +382,13 @@ int LyXRC::read(Lexer & lexrc)
 
 		int le = lexrc.lex();
 		switch (le) {
-			case Lexer::LEX_UNDEF:
-				// dro[ obsolete tag
-				if (lexrc.getString() != "\\plaintest_roff_command")
-					lexrc.printError("Unknown tag `$$Token'");
-				continue;
-			case Lexer::LEX_FEOF:
-				continue;
-			default:
-				break;
+		case Lexer::LEX_UNDEF:
+			lexrc.printError("Unknown tag `$$Token'");
+			continue;
+		case Lexer::LEX_FEOF:
+			continue;
+		default:
+			break;
 		}
 		switch (static_cast<LyXRCTags>(le)) {
 		case RC_INPUT: // Include file
@@ -828,7 +826,7 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 
 		case RC_PLAINTEXT_ROFF_COMMAND: 
-			(void) lexrc.getString(); // Obsoleted in 1.7
+			(void) lexrc.getString(); // Obsoleted in 2.0
 			break;
 		case RC_PLAINTEXT_LINELEN:
 			lexrc >> plaintext_linelen;
@@ -1077,11 +1075,8 @@ int LyXRC::read(Lexer & lexrc)
 			lexrc >> open_buffers_in_tabs;
 			break;
 
-		// Obsoleted in 1.7
+		// Obsoleted in 2.0
 		case RC_SPELL_COMMAND:
-			(void) lexrc.getString();
-			break;
-		// Obsoleted in 1.7
 		case RC_USE_SPELL_LIB:
 			(void) lexrc.getString();
 			break;
@@ -2048,7 +2043,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 		// Ignore it
-	case RC_PLAINTEXT_ROFF_COMMAND: // Obsoleted in 1.7
+	case RC_PLAINTEXT_ROFF_COMMAND: // Obsoleted in 2.0
 		if (tag != RC_LAST)
 			break;
 	case RC_PLAINTEXT_LINELEN:
@@ -2082,9 +2077,10 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		   << "# SPELLCHECKER SECTION ##############################\n"
 		   << "#\n\n";
 	case RC_SPELL_COMMAND:
-		// Obsoleted in 1.7
 	case RC_USE_SPELL_LIB:
-		// Obsoleted in 1.7
+		// Obsoleted in 2.0
+		if (tag != RC_LAST)
+			break;
 	case RC_ACCEPT_COMPOUND:
 		if (ignore_system_lyxrc ||
 		    spellchecker_accept_compound != system_lyxrc.spellchecker_accept_compound) {
