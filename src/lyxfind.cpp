@@ -20,7 +20,6 @@
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "BufferView.h"
 #include "Changes.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"

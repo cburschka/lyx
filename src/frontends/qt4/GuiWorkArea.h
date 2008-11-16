@@ -136,7 +136,7 @@ public:
 	///
 	void resizeBufferView();
 
-	bool inDialogMode() { return dialog_mode_; }
+	bool inDialogMode() const { return dialog_mode_; }
 	void setDialogMode(bool mode) { dialog_mode_ = mode; }
 
 	///
