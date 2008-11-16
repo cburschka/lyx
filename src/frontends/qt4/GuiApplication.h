@@ -162,8 +162,7 @@ QString iconName(FuncRequest const & f, bool unknown);
 /// \return an icon for the given action.
 QIcon getIcon(FuncRequest const & f, bool unknown);
 
-static GuiApplication * theGuiApp()
-{ return dynamic_cast<GuiApplication *>(theApp()); }
+GuiApplication * theGuiApp();
 
 } // namespace frontend
 } // namespace lyx

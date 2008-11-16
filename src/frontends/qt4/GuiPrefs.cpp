@@ -1035,7 +1035,6 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 	setupUi(this);
 
 	connect(persDictionaryPB, SIGNAL(clicked()), this, SLOT(select_dict()));
-	spellCommandCO->setEnabled(false);
 
 	connect(altLanguageED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
@@ -1047,26 +1046,11 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(inputEncodingCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-
-	spellCommandCO->addItem(qt_("aspell"));
-#ifdef USE_ASPELL
-	spellCommandCO->addItem(qt_("aspell (library)"));
-#endif
 }
 
 
 void PrefSpellchecker::apply(LyXRC & rc) const
 {
-	switch (spellCommandCO->currentIndex()) {
-		case 0:
-			rc.use_spell_lib = false;
-			rc.spellchecker_command = fromqstr(spellCommandCO->currentText());
-			break;
-		case 1:
-			rc.use_spell_lib = true;
-			break;
-	}
-
 	// FIXME: remove spellchecker_use_alt_lang
 	rc.spellchecker_alt_lang = fromqstr(altLanguageED->text());
 	rc.spellchecker_use_alt_lang = !rc.spellchecker_alt_lang.empty();
@@ -1083,17 +1067,6 @@ void PrefSpellchecker::apply(LyXRC & rc) const
 
 void PrefSpellchecker::update(LyXRC const & rc)
 {
-	spellCommandCO->setCurrentIndex(0);
-
-	if (rc.spellchecker_command == "aspell") 
-		spellCommandCO->setCurrentIndex(0);
-
-	if (rc.use_spell_lib) {
-#if defined(USE_ASPELL)
-		spellCommandCO->setCurrentIndex(1);
-#endif
-	}
-
 	// FIXME: remove spellchecker_use_alt_lang
 	altLanguageED->setText(toqstr(rc.spellchecker_alt_lang));
 	// FIXME: remove spellchecker_use_esc_chars
@@ -2572,7 +2545,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 
 void GuiPreferences::addModule(PrefModule * module)
 {
-	LASSERT(module, /**/);
+	LASSERT(module, return);
 	if (module->category().isEmpty())
 		prefsPS->addPanel(module, module->title());
 	else
@@ -2694,12 +2667,12 @@ QString GuiPreferences::browsekbmap(QString const & file) const
 QString GuiPreferences::browsedict(QString const & file) const
 {
 	return browseFile(file, qt_("Choose personal dictionary"),
-		QStringList(lyxrc.use_spell_lib ? qt_("*.pws") : qt_("*.ispell")));
+		QStringList(qt_("*.pws")));
 }
 
 
 QString GuiPreferences::browse(QString const & file,
-				  QString const & title) const
+	QString const & title) const
 {
 	return browseFile(file, title, QStringList(), true);
 }

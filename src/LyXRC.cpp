@@ -122,6 +122,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\path_prefix", LyXRC::RC_PATH_PREFIX },
 	{ "\\personal_dictionary", LyXRC::RC_PERS_DICT },
 	{ "\\plaintext_linelen", LyXRC::RC_PLAINTEXT_LINELEN },
+	{ "\\plaintext_roff_command", LyXRC::RC_PLAINTEXT_ROFF_COMMAND },
 	{ "\\preview", LyXRC::RC_PREVIEW },
 	{ "\\preview_hashed_labels", LyXRC::RC_PREVIEW_HASHED_LABELS },
 	{ "\\preview_scale_factor", LyXRC::RC_PREVIEW_SCALE_FACTOR },
@@ -173,7 +174,6 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\use_pixmap_cache", LyXRC::RC_USE_PIXMAP_CACHE },
 	// compatibility with versions older than 1.4.0 only
 	{ "\\use_pspell", LyXRC::RC_USE_SPELL_LIB },
-	{ "\\use_spell_lib", LyXRC::RC_USE_SPELL_LIB },
 	// compatibility with versions older than 1.4.0 only
 	{ "\\use_tempdir", LyXRC::RC_USETEMPDIR },
 	{ "\\use_tooltip", LyXRC::RC_USE_TOOLTIP },
@@ -259,8 +259,6 @@ void LyXRC::setDefaults()
 	backupdir_path.erase();
 	display_graphics = true;
 	// Spellchecker settings:
-	use_spell_lib = true;
-	spellchecker_command = "aspell";
 	spellchecker_accept_compound = false;
 	spellchecker_use_input_encoding = false;
 	spellchecker_use_alt_lang = false;
@@ -370,7 +368,8 @@ int LyXRC::read(istream & is)
 
 int LyXRC::read(Lexer & lexrc)
 {
-	if (!lexrc.isOK()) return -2;
+	if (!lexrc.isOK())
+		return -2;
 
 	while (lexrc.isOK()) {
 		// By using two switches we take advantage of the compiler
@@ -382,12 +381,15 @@ int LyXRC::read(Lexer & lexrc)
 
 		int le = lexrc.lex();
 		switch (le) {
-		case Lexer::LEX_UNDEF:
-			lexrc.printError("Unknown tag `$$Token'");
-			continue;
-		case Lexer::LEX_FEOF:
-			continue;
-		default: break;
+			case Lexer::LEX_UNDEF:
+				// dro[ obsolete tag
+				if (lexrc.getString() != "\\plaintest_roff_command")
+					lexrc.printError("Unknown tag `$$Token'");
+				continue;
+			case Lexer::LEX_FEOF:
+				continue;
+			default:
+				break;
 		}
 		switch (static_cast<LyXRCTags>(le)) {
 		case RC_INPUT: // Include file
@@ -402,21 +404,18 @@ int LyXRC::read(Lexer & lexrc)
 			}
 			break;
 		case RC_BINDFILE:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				bind_file = os::internal_path(lexrc.getString());
-			}
 			break;
 
 		case RC_DEFFILE:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				def_file = os::internal_path(lexrc.getString());
-			}
 			break;
 
 		case RC_UIFILE:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				ui_file = os::internal_path(lexrc.getString());
-			}
 			break;
 
 		case RC_AUTORESET_OPTIONS:
@@ -827,17 +826,13 @@ int LyXRC::read(Lexer & lexrc)
 			lexrc >> dialogs_iconify_with_main;
 			break;
 
+		case RC_PLAINTEXT_ROFF_COMMAND: 
+			(void) lexrc.getString(); // Obsoleted in 1.7
+			break;
 		case RC_PLAINTEXT_LINELEN:
 			lexrc >> plaintext_linelen;
 			break;
 			// Spellchecker settings:
-		case RC_USE_SPELL_LIB:
-			lexrc >> use_spell_lib;
-			break;
-		case RC_SPELL_COMMAND:
-			if (lexrc.next(true))
-				spellchecker_command = lexrc.getString();
-			break;
 		case RC_ACCEPT_COMPOUND:
 			lexrc >> spellchecker_accept_compound;
 			break;
@@ -1079,6 +1074,15 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 		case RC_OPEN_BUFFERS_IN_TABS:
 			lexrc >> open_buffers_in_tabs;
+			break;
+
+		// Obsoleted in 1.7
+		case RC_SPELL_COMMAND:
+			(void) lexrc.getString();
+			break;
+		// Obsoleted in 1.7
+		case RC_USE_SPELL_LIB:
+			(void) lexrc.getString();
 			break;
 
 		case RC_LAST:
@@ -2042,6 +2046,9 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 		// Ignore it
+	case RC_PLAINTEXT_ROFF_COMMAND: // Obsoleted in 1.7
+		if (tag != RC_LAST)
+			break;
 	case RC_PLAINTEXT_LINELEN:
 		if (ignore_system_lyxrc ||
 		    plaintext_linelen != system_lyxrc.plaintext_linelen) {
@@ -2072,20 +2079,10 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		os << "\n#\n"
 		   << "# SPELLCHECKER SECTION ##############################\n"
 		   << "#\n\n";
-	case RC_USE_SPELL_LIB:
-		if (ignore_system_lyxrc ||
-		    use_spell_lib != system_lyxrc.use_spell_lib) {
-			os << "\\use_spell_lib " << convert<string>(use_spell_lib) << '\n';
-		}
-		if (tag != RC_LAST)
-			break;
 	case RC_SPELL_COMMAND:
-		if (ignore_system_lyxrc ||
-		    spellchecker_command != system_lyxrc.spellchecker_command) {
-			os << "\\spell_command \"" << escapeCommand(spellchecker_command) << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
+		// Obsoleted in 1.7
+	case RC_USE_SPELL_LIB:
+		// Obsoleted in 1.7
 	case RC_ACCEPT_COMPOUND:
 		if (ignore_system_lyxrc ||
 		    spellchecker_accept_compound != system_lyxrc.spellchecker_accept_compound) {
@@ -2790,10 +2787,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_SHOW_BANNER:
 		str = _("De-select if you don't want the startup banner.");
-		break;
-
-	case RC_SPELL_COMMAND:
-		str = _("What command runs the spellchecker?");
 		break;
 
 	case RC_TEMPDIRPATH:

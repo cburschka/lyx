@@ -181,7 +181,9 @@ vector<string> loadableImageFormats()
 
 
 ////////////////////////////////////////////////////////////////////////
-// Icon loading support code.
+//
+// Icon loading support code
+//
 ////////////////////////////////////////////////////////////////////////
 
 namespace {
@@ -371,8 +373,11 @@ QIcon getIcon(FuncRequest const & f, bool unknown)
 
 
 ////////////////////////////////////////////////////////////////////////
+//
 // LyX server support code.
+//
 ////////////////////////////////////////////////////////////////////////
+
 class SocketNotifier : public QSocketNotifier
 {
 public:
@@ -388,7 +393,9 @@ public:
 
 
 ////////////////////////////////////////////////////////////////////////
+//
 // Mac specific stuff goes here...
+//
 ////////////////////////////////////////////////////////////////////////
 
 class MenuTranslator : public QTranslator
@@ -485,8 +492,9 @@ public:
 #endif
 
 ///////////////////////////////////////////////////////////////
-// You can find more platform specific stuff
-// at the end of this file...
+//
+// You can find more platform specific stuff at the end of this file...
+//
 ///////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////
@@ -731,6 +739,12 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	connect(&d->general_timer_, SIGNAL(timeout()),
 		this, SLOT(handleRegularEvents()));
 	d->general_timer_.start();
+}
+
+
+GuiApplication * theGuiApp()
+{
+	return dynamic_cast<GuiApplication *>(theApp());
 }
 
 
@@ -1611,6 +1625,7 @@ frontend::Selection & theSelection()
 	LASSERT(frontend::guiApp, /**/);
 	return frontend::guiApp->selection();
 }
+
 
 } // namespace lyx
 

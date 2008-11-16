@@ -199,8 +199,7 @@ static SpellBase * createSpeller(BufferParams const & bp)
 		      : bp.language->code();
 
 #if defined(USE_ASPELL)
-	if (lyxrc.use_spell_lib)
-		return new ASpell(bp, lang);
+	return new ASpell(bp, lang);
 #endif
 	return new SpellBase;
 }

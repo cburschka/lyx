@@ -39,6 +39,7 @@ public:
 		RC_ACCEPT_COMPOUND = 1,
 		RC_ALT_LANG,
 		RC_PLAINTEXT_LINELEN,
+		RC_PLAINTEXT_ROFF_COMMAND,
 		RC_AUTOREGIONDELETE,
 		RC_AUTORESET_OPTIONS,
 		RC_AUTOSAVE,
@@ -303,10 +304,6 @@ public:
 	unsigned int autosave;
 	///
 	unsigned int plaintext_linelen;
-	/// use library instead of process
-	bool use_spell_lib;
-	/// spellchecker command
-	std::string spellchecker_command;
 	/// Accept compound words in spellchecker?
 	bool spellchecker_accept_compound;
 	/// Pass input encoding switch to the spellchecker?
