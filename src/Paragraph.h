@@ -132,7 +132,8 @@ public:
 
 	///
 	bool latex(BufferParams const &, Font const & outerfont, odocstream &,
-		TexRow & texrow, OutputParams const &) const;
+		   TexRow & texrow, OutputParams const &,
+		   int start_pos = -1, int end_pos = -1) const;
 
 	/// Can we drop the standard paragraph wrapper?
 	bool emptyTag() const;

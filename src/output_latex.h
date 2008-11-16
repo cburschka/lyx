@@ -15,6 +15,9 @@
 #include <utility>
 
 #include "support/docstream.h"
+#include "Paragraph.h"
+#include "ParIterator.h"
+#include "ParagraphList.h"
 
 
 namespace lyx {
@@ -52,6 +55,15 @@ std::pair<bool, int> switchEncoding(odocstream & os,
 		     BufferParams const & bparams,
 		     OutputParams const &, Encoding const & newEnc,
 		     bool force = false);
+
+/// FIXME: this should not be visible.
+ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
+	              Text const & text,
+	              ParagraphList::const_iterator pit,
+	              odocstream & os, TexRow & texrow,
+	              OutputParams const & runparams,
+	              std::string const & everypar = std::string(),
+	              int start_pos = -1, int end_pos = -1);
 
 } // namespace lyx
 

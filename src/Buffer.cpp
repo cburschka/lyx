@@ -375,6 +375,12 @@ string const Buffer::temppath() const
 }
 
 
+TexRow & Buffer::texrow()
+{
+	return d->texrow;
+}
+
+
 TexRow const & Buffer::texrow() const
 {
 	return d->texrow;

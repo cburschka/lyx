@@ -568,6 +568,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	case LFUN_WORD_FIND_FORWARD:
 	case LFUN_WORD_FIND_BACKWARD:
+	case LFUN_WORD_FINDADV:
 	case LFUN_COMMAND_PREFIX:
 	case LFUN_COMMAND_EXECUTE:
 	case LFUN_CANCEL:

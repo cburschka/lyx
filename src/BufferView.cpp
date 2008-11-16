@@ -878,6 +878,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_NOTE_NEXT:
 	case LFUN_REFERENCE_NEXT:
 	case LFUN_WORD_FIND:
+	case LFUN_WORD_FINDADV:
 	case LFUN_WORD_REPLACE:
 	case LFUN_MARK_OFF:
 	case LFUN_MARK_ON:
@@ -889,6 +890,11 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_ALL_INSETS_TOGGLE:
 	case LFUN_STATISTICS:
 		flag.setEnabled(true);
+		break;
+
+	// @todo Test if current WorkArea is the search WorkArea
+	case LFUN_REGEXP_MODE:
+		flag.setEnabled(! this->cursor().inRegexped());
 		break;
 
 	case LFUN_NEXT_INSET_TOGGLE: 
@@ -1231,6 +1237,10 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		replace(this, cmd, has_deleted);
 		break;
 	}
+
+	case LFUN_WORD_FINDADV:
+		findAdv(this, cmd);
+		break;
 
 	case LFUN_MARK_OFF:
 		cur.clearSelection();

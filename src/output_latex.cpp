@@ -61,14 +61,6 @@ TeXEnvironment(Buffer const & buf,
 	       odocstream & os, TexRow & texrow,
 	       OutputParams const & runparams);
 
-ParagraphList::const_iterator
-TeXOnePar(Buffer const & buf,
-	  Text const & text,
-	  ParagraphList::const_iterator pit,
-	  odocstream & os, TexRow & texrow,
-	  OutputParams const & runparams,
-	  string const & everypar = string());
-
 
 ParagraphList::const_iterator
 TeXDeeper(Buffer const & buf,
@@ -277,16 +269,14 @@ int latexOptArgInsets(Paragraph const & par, odocstream & os,
 	return lines;
 }
 
-
-namespace {
-
-ParagraphList::const_iterator
-TeXOnePar(Buffer const & buf,
+// FIXME: this should be anonymous
+ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 	  Text const & text,
 	  ParagraphList::const_iterator const pit,
 	  odocstream & os, TexRow & texrow,
 	  OutputParams const & runparams_in,
-	  string const & everypar)
+	  string const & everypar,
+	  int start_pos, int end_pos)
 {
 	LYXERR(Debug::LATEX, "TeXOnePar...     " << &*pit << " '"
 		<< everypar << "'");
@@ -312,7 +302,7 @@ TeXOnePar(Buffer const & buf,
 		}
 
 		/*bool need_par = */ pit->latex(bparams, outerfont,
-			os, texrow, runparams);
+			os, texrow, runparams, start_pos, end_pos);
 		return nextpit;
 	}
 
@@ -543,7 +533,7 @@ TeXOnePar(Buffer const & buf,
 	// FIXME UNICODE
 	os << from_utf8(everypar);
 	bool need_par = pit->latex(bparams, outerfont,
-					     os, texrow, runparams);
+					     os, texrow, runparams, start_pos, end_pos);
 
 	// Make sure that \\par is done with the font of the last
 	// character if this has another size as the default.
@@ -747,8 +737,6 @@ TeXOnePar(Buffer const & buf,
 	return nextpit;
 }
 
-} // anon namespace
-
 
 // LaTeX all paragraphs
 void latexParagraphs(Buffer const & buf,
@@ -943,7 +931,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 				count += 7;
 			}
 			if (runparams.local_font != 0
-			    && oldEnc.package() == Encoding::CJK) {
+			    && 	oldEnc.package() == Encoding::CJK) {
 				// within insets, \inputenc switches need
 				// to be embraced within \bgroup...\egroup;
 				// else CJK fails.

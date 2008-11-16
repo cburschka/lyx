@@ -1907,9 +1907,10 @@ int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 
 // This one spits out the text of the paragraph
 bool Paragraph::latex(BufferParams const & bparams,
-				Font const & outerfont,
-				odocstream & os, TexRow & texrow,
-				OutputParams const & runparams) const
+	Font const & outerfont,
+	odocstream & os, TexRow & texrow,
+	OutputParams const & runparams,
+	int start_pos, int end_pos) const
 {
 	LYXERR(Debug::LATEX, "Paragraph::latex...     " << this);
 
@@ -2083,7 +2084,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 				os << fontchange;
 		}
 
-		if (c == ' ') {
+		if (c == ' ' && i >= start_pos && i < end_pos) {
 			// FIXME: integrate this case in latexSpecialChar
 			// Do not print the separation of the optional argument
 			// if style.pass_thru is false. This works because
@@ -2111,12 +2112,14 @@ bool Paragraph::latex(BufferParams const & bparams,
 		// Two major modes:  LaTeX or plain
 		// Handle here those cases common to both modes
 		// and then split to handle the two modes separately.
-		if (c == META_INSET)
+		if (c == META_INSET) {
+			if (i >= start_pos && i < end_pos)
 			d->latexInset(bparams, os,
 					texrow, rp, running_font,
 					basefont, outerfont, open_font,
 					runningChange, style, i, column);
-		else {
+		} else {
+			if (i >= start_pos && i < end_pos) {
 			try {
 				d->latexSpecialChar(os, rp, running_font, runningChange,
 					style, i, column);
@@ -2133,6 +2136,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 					throw(e);
 				}
 			}
+		}
 		}
 
 		// Set the encoding to that returned from latexSpecialChar (see

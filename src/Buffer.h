@@ -348,6 +348,7 @@ public:
 
 	/// Used when typesetting to place errorboxes.
 	TexRow const & texrow() const;
+	TexRow & texrow();
 
 	///
 	ParIterator par_iterator_begin();

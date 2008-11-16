@@ -20,6 +20,7 @@
 
 #include "mathed/MathData.h"
 #include "mathed/InsetMath.h"
+#include "mathed/InsetMathHull.h"
 
 #include "insets/InsetTabular.h"
 
@@ -57,6 +58,13 @@ DocIterator doc_iterator_begin(Inset & inset)
 DocIterator doc_iterator_end(Inset & inset)
 {
 	return DocIterator(inset);
+}
+
+
+bool DocIterator::inRegexped() const
+{
+	InsetMathHull * i = dynamic_cast<InsetMathHull *>(inset().asInsetMath());
+	return i && i->getType() == hullRegexp;
 }
 
 

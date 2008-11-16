@@ -735,8 +735,10 @@ docstring latexifyFromCursor(Buffer const & buf, DocIterator const & cur, int le
 //		ParagraphList::const_iterator pit_end = pit;
 //		++pit_end;
 //		lyx::latexParagraphs(buf, cur.innerText()->paragraphs(), ods, texrow, runparams, string(), pit, pit_end);
+		pos_type const endpos = (len == -1 || cur.pos() + len > int(pit->size()))
+			? pit->size() : cur.pos() + len;
 		TeXOnePar(buf, *cur.innerText(), pit, ods, texrow, runparams, string(),
-			cur.pos(), ( len == -1 || cur.pos() + len > int(pit->size()) ) ? -1 : cur.pos() + len);
+			cur.pos(), endpos);
 		LYXERR(Debug::DEBUG, "Latexified text: '" << lyx::to_utf8(ods.str()) << "'");
 	} else if (cur.inMathed()) {
 		// Retrieve the math environment type, and add '$' or '$[' or others (\begin{equation}) accordingly

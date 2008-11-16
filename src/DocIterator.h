@@ -124,6 +124,8 @@ public:
 	/// are we in texted?.
 	bool inTexted() const
 	{ return !empty() && !inset().inMathed(); }
+	/// are we in regexp-mode ?
+	bool inRegexped() const;
 
 	//
 	// math-specific part

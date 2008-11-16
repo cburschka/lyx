@@ -48,6 +48,9 @@
 
 #include "frontends/Clipboard.h"
 #include "frontends/Selection.h"
+#include "frontends/Application.h"
+#include "frontends/LyXView.h"
+#include "frontends/WorkArea.h"
 
 #include "insets/InsetCollapsable.h"
 #include "insets/InsetCommand.h"
@@ -84,6 +87,8 @@ using cap::pasteFromStack;
 using cap::pasteClipboardText;
 using cap::pasteClipboardGraphics;
 using cap::replaceSelection;
+using cap::grabAndEraseSelection;
+using cap::selClearOrDel;
 
 // globals...
 static Font freefont(ignore_font, ignore_language);
@@ -184,6 +189,26 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 		cur.message(from_utf8(N_("Math editor mode")));
 	else
 		cur.message(from_utf8(N_("No valid math formula")));
+}
+
+
+void regexpDispatch(Cursor & cur, FuncRequest const & cmd)
+{
+	BOOST_ASSERT(cmd.action == LFUN_REGEXP_MODE);
+	if (cur.inRegexped()) {
+		cur.message(_("Already in regexp mode"));
+		return;
+	}
+	cur.recordUndo();
+	docstring const save_selection = grabAndEraseSelection(cur);
+	selClearOrDel(cur);
+	// replaceSelection(cur);
+
+	cur.insert(new InsetMathHull(hullRegexp));
+	cur.nextInset()->edit(cur, true);
+	cur.niceInsert(save_selection);
+
+	cur.message(_("Regexp editor mode"));
 }
 
 
@@ -1485,6 +1510,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_DISPLAY:
 		mathDispatch(cur, cmd, true);
+		break;
+
+	case LFUN_REGEXP_MODE:
+		regexpDispatch(cur, cmd);
 		break;
 
 	case LFUN_MATH_MODE:
