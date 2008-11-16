@@ -945,7 +945,7 @@ void GuiView::setCurrentWorkArea(GuiWorkArea * wa)
 					d.current_main_work_area_->setFrameStyle(QFrame::NoFrame);
 				d.current_main_work_area_ = wa;
 				d.current_main_work_area_->setFrameStyle(QFrame::Box | QFrame::Plain);
-				d.current_main_work_area_->setLineWidth(2);
+				//d.current_main_work_area_->setLineWidth(2);
 				LYXERR(Debug::DEBUG, "Current wa: " << currentWorkArea() << ", Current main wa: " << currentMainWorkArea());
 				return;
 			}
