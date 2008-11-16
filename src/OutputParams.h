@@ -12,11 +12,12 @@
 #ifndef OUTPUTPARAMS_H
 #define OUTPUTPARAMS_H
 
-#include <string>
-
 #include "support/types.h"
-#include <boost/shared_ptr.hpp>
+
 #include "Changes.h"
+
+#include <string>
+#include <tr1/memory>
 
 
 namespace lyx {
@@ -121,7 +122,7 @@ public:
 	    This is a hack: Make it possible to add stuff to constant
 	    OutputParams instances.
 	*/
-	boost::shared_ptr<ExportData> exportdata;
+	std::tr1::shared_ptr<ExportData> exportdata;
 
 	/** Whether we are inside a comment inset. Insets that are including
 	 *  external files like InsetGraphics, InsetInclude and InsetExternal

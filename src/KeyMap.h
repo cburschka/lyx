@@ -19,8 +19,7 @@
 
 #include "support/strfwd.h"
 
-#include <boost/shared_ptr.hpp>
-
+#include <tr1/memory>
 #include <vector>
 
 
@@ -151,7 +150,7 @@ private:
 		/// Modifier masks
 		ModifierPair mod;
 		/// Keymap for prefix keys
-		boost::shared_ptr<KeyMap> table;
+		std::tr1::shared_ptr<KeyMap> table;
 		/// Action for !prefix keys
 		FuncRequest func;
 	};

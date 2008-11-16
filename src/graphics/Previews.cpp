@@ -19,7 +19,10 @@
 
 #include "insets/Inset.h"
 
+#include <tr1/memory>
+
 using namespace std;
+using namespace std::tr1;
 
 namespace lyx {
 
@@ -32,7 +35,7 @@ LyXRC_PreviewStatus Previews::status()
 
 
 namespace {
-typedef boost::shared_ptr<PreviewLoader> PreviewLoaderPtr;
+typedef shared_ptr<PreviewLoader> PreviewLoaderPtr;
 ///
 typedef map<Buffer const *, PreviewLoaderPtr> LyxCacheType;
 ///

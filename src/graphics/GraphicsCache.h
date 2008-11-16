@@ -20,8 +20,7 @@
 #ifndef GRAPHICSCACHE_H
 #define GRAPHICSCACHE_H
 
-#include <boost/shared_ptr.hpp>
-
+#include <tr1/memory>
 #include <vector>
 #include <string>
 
@@ -34,7 +33,8 @@ namespace graphics {
 
 class CacheItem;
 
-class Cache {
+class Cache
+{
 public:
 
 	/// This is a singleton class. Get the instance.
@@ -59,13 +59,13 @@ public:
 	 *  Returns an empty container if there is no such item.
 	 *
 	 *  IMPORTANT: whatever uses an image must make a local copy of this
-	 *  ItemPtr. The boost::shared_ptr<>::use_count() function is
+	 *  ItemPtr. The tr1::shared_ptr<>::use_count() function is
 	 *  used to ascertain whether or not to remove the item from the cache
 	 *  when remove(file) is called.
 	 *
 	 *  You have been warned!
 	 */
-	typedef boost::shared_ptr<CacheItem> ItemPtr;
+	typedef std::tr1::shared_ptr<CacheItem> ItemPtr;
 	///
 	ItemPtr const item(support::FileName const & file) const;
 

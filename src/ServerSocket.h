@@ -17,8 +17,7 @@
 #include "support/FileName.h"
 #include "support/socktools.h"
 
-#include <boost/shared_ptr.hpp>
-
+#include <tr1/memory>
 #include <string>
 #include <map>
 
@@ -64,7 +63,7 @@ private:
 		MAX_CLIENTS = 10
 	};
 	/// All connections
-	std::map<int, boost::shared_ptr<LyXDataSocket> > clients;
+	std::map<int, std::tr1::shared_ptr<LyXDataSocket> > clients;
 };
 
 
