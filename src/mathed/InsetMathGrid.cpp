@@ -1000,7 +1000,7 @@ void InsetMathGrid::write(WriteStream & os,
 				lastcol = col + 1;
 				emptyline = false;
 			}
-		for (col_type col = beg_col; col < end_col; ++col) {
+		for (col_type col = beg_col; col < last_col; ++col) {
 			os << cell(index(row, col));
 			if (os.pendingBrace())
 				ModeSpecifier specifier(os, TEXT_MODE);
