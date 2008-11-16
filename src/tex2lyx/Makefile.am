@@ -41,7 +41,8 @@ LINKED_FILES = \
 	../Lexer.cpp \
 	../lengthcommon.cpp \
 	../Color.cpp \
-	../Color.h
+	../Color.h \
+	../Encoding.cpp
 
 BUILT_SOURCES = $(PCH_FILE)
 

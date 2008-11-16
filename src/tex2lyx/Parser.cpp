@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "Encoding.h"
 #include "Parser.h"
 
 #include <iostream>
@@ -146,6 +147,14 @@ Parser::Parser(string const & s)
 Parser::~Parser()
 {
 	delete iss_;
+}
+
+
+void Parser::setEncoding(std::string const & e)
+{
+	Encoding const * enc = encodings.fromLaTeXName(e);
+	cerr << "setting encoding to " << enc->iconvName();
+	is_ << lyx::setEncoding(enc->iconvName());
 }
 
 

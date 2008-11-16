@@ -248,7 +248,7 @@ string const scale_as_percentage(string const & scale)
 }
 
 
-void handle_package(string const & name, string const & opts,
+void handle_package(Parser &p, string const & name, string const & opts,
 		    bool in_lyx_preamble)
 {
 	vector<string> options = split_options(opts);
@@ -326,9 +326,10 @@ void handle_package(string const & name, string const & opts,
 		; // ignore this
 
 	else if (name == "inputenc") {
-		// only set when there is not more than one inputenc option
-		// therefore check for the "," character
-		// also only set when there is not more then one babel language option
+		// only set when there is not more than one inputenc
+		// option therefore check for the "," character also
+		// only set when there is not more then one babel
+		// language option
 		if (opts.find(",") == string::npos && one_language == true) {
 			if (opts == "ascii")
 				//change ascii to auto to be in the unicode range, see
@@ -337,6 +338,8 @@ void handle_package(string const & name, string const & opts,
 			else if (!opts.empty())
 				h_inputencoding = opts;
 		}
+		if (!options.empty())
+			p.setEncoding(options.back());
 		options.clear();
 	}
 
@@ -663,21 +666,19 @@ void parse_preamble(Parser & p, ostream & os,
 		else if (t.cs() == "usepackage") {
 			string const options = p.getArg('[', ']');
 			string const name = p.getArg('{', '}');
-			if (options.empty() && name.find(',')) {
-				vector<string> vecnames;
-				split(name, vecnames, ',');
-				vector<string>::const_iterator it  = vecnames.begin();
-				vector<string>::const_iterator end = vecnames.end();
-				for (; it != end; ++it)
-					handle_package(trim(*it), string(), 
-						       in_lyx_preamble);
-			} else {
-				handle_package(name, options, in_lyx_preamble);
-			}
+			vector<string> vecnames;
+			split(name, vecnames, ',');
+			vector<string>::const_iterator it  = vecnames.begin();
+			vector<string>::const_iterator end = vecnames.end();
+			for (; it != end; ++it)
+				handle_package(p, trim(*it), options, 
+					       in_lyx_preamble);
 		}
 
 		else if (t.cs() == "inputencoding") {
-			h_inputencoding = p.getArg('{','}');
+			string const encoding = p.getArg('{','}');
+			h_inputencoding = encoding;
+			p.setEncoding(encoding);
 		}
 
 		else if (t.cs() == "newenvironment") {

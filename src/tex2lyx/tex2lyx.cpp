@@ -15,8 +15,9 @@
 #include "tex2lyx.h"
 
 #include "Context.h"
-#include "TextClass.h"
+#include "Encoding.h"
 #include "Layout.h"
+#include "TextClass.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -421,7 +422,10 @@ void tex2lyx(idocstream & is, ostream & os)
 /// convert TeX from \p infilename to LyX and write it to \p os
 bool tex2lyx(FileName const & infilename, ostream & os)
 {
-	ifdocstream is(infilename.toFilesystemEncoding().c_str());
+	ifdocstream is;
+	// forbid buffering on this stream
+	is.rdbuf()->pubsetbuf(0,0);
+	is.open(infilename.toFilesystemEncoding().c_str());
 	if (!is.good()) {
 		cerr << "Could not open input file \"" << infilename
 		     << "\" for reading." << endl;
@@ -487,11 +491,11 @@ int main(int argc, char * argv[])
 
 	try {
 		init_package(internal_path(to_utf8(from_local8bit(argv[0]))),
-		cl_system_support, cl_user_support,
-		top_build_dir_is_two_levels_up);
+			     cl_system_support, cl_user_support,
+			     top_build_dir_is_two_levels_up);
 	} catch (ExceptionMessage const & message) {
 		cerr << to_utf8(message.title_) << ":\n"
-			<< to_utf8(message.details_) << endl;
+		     << to_utf8(message.details_) << endl;
 		if (message.type_ == ErrorException)
 			exit(1);
 	}
@@ -509,6 +513,7 @@ int main(int argc, char * argv[])
 	} else
 		outfilename = changeExtension(infilename, ".lyx");
 
+	// Read the syntax tables
 	FileName const system_syntaxfile = libFileSearch("", "syntax.default");
 	if (system_syntaxfile.empty()) {
 		cerr << "Error: Could not find syntax file \"syntax.default\"." << endl;
@@ -518,9 +523,24 @@ int main(int argc, char * argv[])
 	if (!syntaxfile.empty())
 		read_syntaxfile(makeAbsPath(syntaxfile));
 
+	// Read the encodings table.
+	FileName const symbols_path = libFileSearch(string(), "unicodesymbols");
+	if (symbols_path.empty()) {
+		cerr << "Error: Could not find file \"unicodesymbols\"." 
+		     << endl;
+		exit(1);
+	}
+	FileName const enc_path = libFileSearch(string(), "encodings");
+	if (enc_path.empty()) {
+		cerr << "Error: Could not find file \"encodings\"." 
+		     << endl;
+		exit(1);
+	}
+	encodings.read(enc_path, symbols_path);
+
+	// The real work now.
 	masterFilePath = onlyPath(infilename);
 	parentFilePath = masterFilePath;
-
 	if (outfilename == "-") {
 		if (tex2lyx(FileName(infilename), cout))
 			return EXIT_SUCCESS;

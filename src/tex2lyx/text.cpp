@@ -1763,6 +1763,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			context.check_layout(os);
 			string const s = p.verbatim_item();
+			//FIXME: this never triggers in UTF8
 			if (s == "\xb1" || s == "\xb3" || s == "\xb2" || s == "\xb5")
 				os << s;
 			else
@@ -2238,6 +2239,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			handle_ert(os, oss.str(), context);
 		}
 
+#if 0
+//FIXME: rewrite this
 		else if (t.cs() == "\"") {
 			context.check_layout(os);
 			string const name = p.verbatim_item();
@@ -2249,6 +2252,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			else if (name == "U") os << '\xdc';
 			else handle_ert(os, "\"{" + name + "}", context);
 		}
+#endif
 
 		// Problem: \= creates a tabstop inside the tabbing environment
 		// and else an accent. In the latter case we really would want
@@ -2273,11 +2277,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			   << "}\n";
 		}
 
+#if 0
+//FIXME: rewrite this
 		else if (t.cs() == "ss") {
 			context.check_layout(os);
 			os << "\xdf";
 			skip_braces(p); // eat {}
 		}
+#endif
 
 		else if (t.cs() == "i" || t.cs() == "j" || t.cs() == "l" ||
 			 t.cs() == "L") {

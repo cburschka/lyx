@@ -119,6 +119,9 @@ public:
 	///
 	~Parser();
 
+	/// change the encoding of the input stream
+	void setEncoding(std::string const & encoding);
+
 	///
 	int lineno() const { return lineno_; }
 	///
