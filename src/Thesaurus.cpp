@@ -276,7 +276,7 @@ Thesaurus::~Thesaurus()
 }
 
 
-Thesaurus::Meanings Thesaurus::lookup(docstring const &)
+Thesaurus::Meanings Thesaurus::lookup(docstring const &, docstring const &)
 {
 	return Meanings();
 }
