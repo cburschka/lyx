@@ -15,6 +15,7 @@
 #define BASE_WORKAREA_H
 
 #include "frontends/KeyModifier.h"
+#include "frontends/LyXView.h"
 
 namespace lyx {
 
@@ -34,7 +35,7 @@ class WorkArea
 {
 public:
 	///
-	WorkArea() {}
+	WorkArea() : lyx_view_(0) {}
 	///
 	virtual ~WorkArea() {}
 
@@ -45,6 +46,10 @@ public:
 	/// This needs to be public because it is accessed externally by GuiView.
 	virtual void processKeySym(KeySymbol const & key, KeyModifier mod) = 0;
 
+	/// Return the LyXView this workArea belongs to
+	LyXView const & view() const { return *lyx_view_; }
+	LyXView & view() { return *lyx_view_; }
+
 	/// close this work area.
 	/// Slot for Buffer::closing signal.
 	virtual void close() = 0;
@@ -53,6 +58,10 @@ public:
 
 	/// Update window titles of all users.
 	virtual void updateWindowTitle() = 0;
+
+private:
+
+	LyXView * lyx_view_;
 };
 
 } // namespace frontend

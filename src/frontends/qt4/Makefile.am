@@ -57,6 +57,7 @@ SOURCEFILES = \
 	CustomizedWidgets.cpp \
 	EmptyTable.cpp \
 	FileDialog.cpp \
+	FindAndReplace.cpp \
 	FloatPlacement.cpp \
 	GuiAbout.cpp \
 	GuiAlert.cpp \
@@ -157,6 +158,7 @@ MOCHEADER = \
 	BulletsModule.h \
 	CustomizedWidgets.h \
 	EmptyTable.h \
+	FindAndReplace.h \
 	FloatPlacement.h \
 	GuiAbout.h \
 	GuiApplication.h \
@@ -242,6 +244,7 @@ UIFILES = \
 	ErrorListUi.ui \
 	ERTUi.ui \
 	ExternalUi.ui \
+	FindAndReplaceUi.ui \
 	FloatPlacementUi.ui \
 	FloatUi.ui \
 	FontUi.ui \

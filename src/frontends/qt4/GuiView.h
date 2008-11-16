@@ -139,6 +139,13 @@ public:
 	void removeWorkArea(GuiWorkArea * work_area);
 	/// return the current WorkArea (the one that has the focus).
 	GuiWorkArea const * currentWorkArea() const;
+	/// return the current WorkArea (the one that has the focus).
+	GuiWorkArea * currentWorkArea();
+
+	/// return the current document WorkArea (it may not have the focus).
+	GuiWorkArea const * currentMainWorkArea() const;
+	/// return the current document WorkArea (it may not have the focus).
+	GuiWorkArea * currentMainWorkArea();
 
 Q_SIGNALS:
 	void closing(int);

@@ -154,7 +154,8 @@ typedef boost::shared_ptr<Dialog> DialogPtr;
 struct GuiView::GuiViewPrivate
 {
 	GuiViewPrivate()
-		: current_work_area_(0), layout_(0), autosave_timeout_(5000),
+		: current_work_area_(0), current_main_work_area_(0),
+		layout_(0), autosave_timeout_(5000),
 		in_show_(false)
 	{
 		// hardcode here the platform specific icon size
@@ -234,7 +235,7 @@ struct GuiView::GuiViewPrivate
 
 		for (int i = 0; i != splitter_->count(); ++i) {
 			TabWorkArea * twa = tabWorkArea(i);
-			if (current_work_area_ == twa->currentWorkArea())
+			if (current_main_work_area_ == twa->currentWorkArea())
 				return twa;
 		}
 
@@ -244,6 +245,7 @@ struct GuiView::GuiViewPrivate
 
 public:
 	GuiWorkArea * current_work_area_;
+	GuiWorkArea * current_main_work_area_;
 	QSplitter * splitter_;
 	QStackedWidget * stack_widget_;
 	BackgroundWidget * bg_widget_;
@@ -482,6 +484,7 @@ TocModels & GuiView::tocModels()
 
 void GuiView::setFocus()
 {
+	LYXERR(Debug::DEBUG, "GuiView::setFocus()" << this);
 	// Make sure LyXFunc points to the correct view.
 	guiApp->setCurrentView(this);
 	theLyXFunc().setLyXView(this);
@@ -511,15 +514,20 @@ void GuiView::showEvent(QShowEvent * e)
 }
 
 
+/** Destroy only all tabbed WorkAreas. Destruction of other WorkAreas
+ ** is responsibility of the container (e.g., dialog)
+ **/
 void GuiView::closeEvent(QCloseEvent * close_event)
 {
+	LYXERR(Debug::DEBUG, "GuiView::closeEvent()");
 	closing_ = true;
 
 	// it can happen that this event arrives without selecting the view,
 	// e.g. when clicking the close button on a background window.
 	setFocus();
-
-	while (Buffer * b = buffer()) {
+	setCurrentWorkArea(currentMainWorkArea());
+	while (GuiWorkArea * wa = currentMainWorkArea()) {
+		Buffer * b = &wa->bufferView().buffer();
 		if (b->parent()) {
 			// This is a child document, just close the tab after saving
 			// but keep the file loaded.
@@ -528,7 +536,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 				close_event->ignore();
 				return;
 			}
-			removeWorkArea(d.current_work_area_);
+		removeWorkArea(wa);
 			continue;
 		}
 
@@ -544,12 +552,13 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 
 				// This buffer is also opened in another view, so
 				// close the associated work area...
-				removeWorkArea(d.current_work_area_);
+				removeWorkArea(wa);
 				// ... but don't close the buffer.
 				b = 0;
 				break;
 			}
 		}
+		// closeBuffer() needs buffer workArea still alive and set as currrent one, and destroys it
 		if (b && !closeBuffer(*b, true)) {
 			closing_ = false;
 			close_event->ignore();
@@ -858,6 +867,9 @@ void GuiView::setBusy(bool busy)
 
 GuiWorkArea * GuiView::workArea(Buffer & buffer)
 {
+	if (currentWorkArea()
+	    && &currentWorkArea()->bufferView().buffer() == &buffer)
+		return (GuiWorkArea *) currentWorkArea();
 	if (TabWorkArea * twa = d.currentTabWorkArea())
 		return twa->workArea(buffer);
 	return 0;
@@ -893,14 +905,59 @@ GuiWorkArea const * GuiView::currentWorkArea() const
 }
 
 
+GuiWorkArea * GuiView::currentWorkArea()
+{
+	return d.current_work_area_;
+}
+
+
+GuiWorkArea const * GuiView::currentMainWorkArea() const
+{
+	if (d.currentTabWorkArea() == NULL)
+		return NULL;
+	return d.currentTabWorkArea()->currentWorkArea();
+}
+
+
+GuiWorkArea * GuiView::currentMainWorkArea()
+{
+	if (d.currentTabWorkArea() == NULL)
+		return NULL;
+	return d.currentTabWorkArea()->currentWorkArea();
+}
+
+
 void GuiView::setCurrentWorkArea(GuiWorkArea * wa)
 {
-	LASSERT(wa, return);
-	d.current_work_area_ = wa;
-	for (int i = 0; i != d.splitter_->count(); ++i) {
-		if (d.tabWorkArea(i)->setCurrentWorkArea(wa))
-			return;
+	LYXERR(Debug::DEBUG, "Setting current wa: " << wa << endl);
+	if (wa == NULL) {
+		d.current_work_area_ = NULL;
+		d.setBackground();
+		return;
 	}
+	GuiWorkArea * old_gwa = theGuiApp()->currentView()->currentWorkArea();
+	if (old_gwa != wa) {
+		theGuiApp()->setCurrentView(this);
+		d.current_work_area_ = wa;
+		for (int i = 0; i != d.splitter_->count(); ++i) {
+			if (d.tabWorkArea(i)->setCurrentWorkArea(wa)) {
+				if (d.current_main_work_area_)
+					d.current_main_work_area_->setFrameStyle(QFrame::NoFrame);
+				d.current_main_work_area_ = wa;
+				d.current_main_work_area_->setFrameStyle(QFrame::Box | QFrame::Plain);
+				d.current_main_work_area_->setLineWidth(2);
+				LYXERR(Debug::DEBUG, "Current wa: " << currentWorkArea() << ", Current main wa: " << currentMainWorkArea());
+				return;
+			}
+		}
+		LYXERR(Debug::DEBUG, "This is not a tabbed wa");
+		on_currentWorkAreaChanged(wa);
+		BufferView & bv = wa->bufferView();
+		bv.cursor().fixIfBroken();
+		bv.updateMetrics();
+		wa->setUpdatesEnabled(true);
+	}
+	LYXERR(Debug::DEBUG, "Current wa: " << currentWorkArea() << ", Current main wa: " << currentMainWorkArea());
 }
 
 
@@ -911,33 +968,41 @@ void GuiView::removeWorkArea(GuiWorkArea * wa)
 		disconnectBuffer();
 		disconnectBufferView();
 		d.current_work_area_ = 0;
+		d.current_main_work_area_ = 0;
 	}
 
+	bool found_twa = false;
 	for (int i = 0; i != d.splitter_->count(); ++i) {
 		TabWorkArea * twa = d.tabWorkArea(i);
-		if (!twa->removeWorkArea(wa))
-			// Not found in this tab group.
-			continue;
-
-		// We found and removed the GuiWorkArea.
-		if (!twa->count()) {
-			// No more WorkAreas in this tab group, so delete it.
-			delete twa;
+		if (twa->removeWorkArea(wa)) {
+			// Found in this tab group, and deleted the GuiWorkArea.
+			found_twa = true;
+			if (twa->count() != 0) {
+				if (d.current_work_area_ == 0)
+					// This means that we are closing the current GuiWorkArea, so
+					// switch to the next GuiWorkArea in the found TabWorkArea.
+					setCurrentWorkArea(twa->currentWorkArea());
+			} else {
+				// No more WorkAreas in this tab group, so delete it.
+				delete twa;
+			}
 			break;
 		}
-
-		if (d.current_work_area_)
-			// This means that we are not closing the current GuiWorkArea;
-			break;
-
-		// Switch to the next GuiWorkArea in the found TabWorkArea.
-		d.current_work_area_ = twa->currentWorkArea();
-		break;
 	}
 
-	if (d.splitter_->count() == 0)
-		// No more work area, switch to the background widget.
-		d.setBackground();
+	// It is not a tabbed work area (i.e., the search work area), so it
+	// should be deleted by other means.
+	LASSERT(found_twa, /* */);
+
+	if (d.current_work_area_ == 0) {
+		if (d.splitter_->count() != 0) {
+			TabWorkArea * twa = d.currentTabWorkArea();
+			setCurrentWorkArea(twa->currentWorkArea());
+		} else {
+			// No more work areas, switch to the background widget.
+			setCurrentWorkArea(0);
+		}
+	}
 }
 
 
@@ -994,6 +1059,7 @@ Buffer const * GuiView::buffer() const
 
 void GuiView::setBuffer(Buffer * newBuffer)
 {
+	LYXERR(Debug::DEBUG, "Setting buffer: " << newBuffer << std::endl);
 	LASSERT(newBuffer, return);
 	setBusy(true);
 
@@ -1714,6 +1780,9 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 
 bool GuiView::saveBuffer(Buffer & b)
 {
+	if (workArea(b) && workArea(b)->inDialogMode())
+		return true;
+
 	if (b.isUnnamed())
 		return renameBuffer(b, docstring());
 
@@ -1758,6 +1827,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 {
 	// goto bookmark to update bookmark pit.
 	//FIXME: we should update only the bookmarks related to this buffer!
+	LYXERR(Debug::DEBUG, "GuiView::closeBuffer()");
 	for (size_t i = 0; i < theSession().bookmarks().size(); ++i)
 		theLyXFunc().gotoBookmark(i+1, false, false);
 
@@ -1766,7 +1836,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 			theSession().lastOpened().add(buf.fileName());
 		if (buf.parent())
 			// Don't close child documents.
-			removeWorkArea(d.current_work_area_);
+			removeWorkArea(currentMainWorkArea());
 		else
 			theBufferList().release(&buf);
 		return true;
@@ -1813,7 +1883,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 
 	if (buf.parent())
 		// Don't close child documents.
-		removeWorkArea(d.current_work_area_);
+		removeWorkArea(currentMainWorkArea());
 	else
 		theBufferList().release(&buf);
 
@@ -2028,15 +2098,11 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				twa = d.currentTabWorkArea();
 				// Switch to the next GuiWorkArea in the found TabWorkArea.
 				if (twa) {
-					d.current_work_area_ = twa->currentWorkArea();
 					// Make sure the work area is up to date.
-					twa->setCurrentWorkArea(d.current_work_area_);
+					setCurrentWorkArea(twa->currentWorkArea());
 				} else {
-					d.current_work_area_ = 0;
+					setCurrentWorkArea(0);
 				}
-				if (d.splitter_->count() == 0)
-					// No more work area, switch to the background widget.
-					d.setBackground();
 			}
 			break;
 			
@@ -2221,7 +2287,7 @@ char const * const dialognames[] = {
 "thesaurus",
 #endif
 
-"texinfo", "toc", "href", "view-source", "vspace", "wrap", "listings" };
+"texinfo", "toc", "href", "view-source", "vspace", "wrap", "listings", "findreplaceadv" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -2409,6 +2475,7 @@ Dialog * createGuiPreferences(GuiView & lv);
 Dialog * createGuiPrint(GuiView & lv);
 Dialog * createGuiRef(GuiView & lv);
 Dialog * createGuiSearch(GuiView & lv);
+Dialog * createGuiSearchAdv(GuiView & lv);
 Dialog * createGuiSendTo(GuiView & lv);
 Dialog * createGuiShowFile(GuiView & lv);
 Dialog * createGuiSpellchecker(GuiView & lv);
@@ -2456,6 +2523,8 @@ Dialog * GuiView::build(string const & name)
 		return createGuiShowFile(*this);
 	if (name == "findreplace")
 		return createGuiSearch(*this);
+	if (name == "findreplaceadv")
+		return createGuiSearchAdv(*this);
 	if (name == "float")
 		return createGuiFloat(*this);
 	if (name == "graphics")

@@ -94,6 +94,7 @@ Menuset
 		Item "Select All" "command-sequence buffer-begin ; buffer-end-select"
 		Separator
 		Item "Find & Replace...|F" "dialog-show findreplace"
+		Item "Find LyX...|X" "dialog-show findreplaceadv"
 		Separator
 		Item "Move Paragraph Up|o" "paragraph-move-up"
 		Item "Move Paragraph Down|v" "paragraph-move-down"
@@ -345,6 +346,7 @@ Menuset
 		Item "TeX Code|X" "ert-insert"
 		Item "Program Listing[[Menu]]" "listing-insert"
 		Item "Date" "date-insert"
+		Item "Regexp" "regexp-mode"
 	End
 
 	Menu "insert_special"
