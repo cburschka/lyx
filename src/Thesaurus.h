@@ -33,7 +33,8 @@ namespace lyx {
  * This class provides an interface to whatever thesauri we might support.
  */
 
-class Thesaurus {
+class Thesaurus
+{
 public:
 	///
 	Thesaurus();

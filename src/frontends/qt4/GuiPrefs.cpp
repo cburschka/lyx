@@ -1659,18 +1659,14 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(endCommandED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(defaultLanguageCO, SIGNAL(activated(int)),
-		this, SIGNAL(changed()));
 	connect(uiLanguageCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
 
-	defaultLanguageCO->clear();
 	uiLanguageCO->clear();
 
 	QAbstractItemModel * language_model = guiApp->languageModel();
 	// FIXME: it would be nice if sorting was enabled/disabled via a checkbox.
 	language_model->sort(0);
-	defaultLanguageCO->setModel(language_model);
 
 	// FIXME: This is wrong, we need filter this list based on the available
 	// translation.
@@ -1706,8 +1702,6 @@ void PrefLanguage::apply(LyXRC & rc) const
 	rc.language_package = fromqstr(languagePackageED->text());
 	rc.language_command_begin = fromqstr(startCommandED->text());
 	rc.language_command_end = fromqstr(endCommandED->text());
-	rc.default_language = fromqstr(
-		defaultLanguageCO->itemData(defaultLanguageCO->currentIndex()).toString());
 	rc.gui_language = fromqstr(
 		uiLanguageCO->itemData(uiLanguageCO->currentIndex()).toString());
 }
@@ -1730,9 +1724,7 @@ void PrefLanguage::update(LyXRC const & rc)
 	startCommandED->setText(toqstr(rc.language_command_begin));
 	endCommandED->setText(toqstr(rc.language_command_end));
 
-	int pos = defaultLanguageCO->findData(toqstr(rc.default_language));
-	defaultLanguageCO->setCurrentIndex(pos);
-	pos = uiLanguageCO->findData(toqstr(rc.gui_language));
+	int pos = uiLanguageCO->findData(toqstr(rc.gui_language));
 	uiLanguageCO->blockSignals(true);
 	uiLanguageCO->setCurrentIndex(pos);
 	uiLanguageCO->blockSignals(false);

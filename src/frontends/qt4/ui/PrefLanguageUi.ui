@@ -5,21 +5,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>410</width>
-    <height>424</height>
+    <width>326</width>
+    <height>411</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout" >
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
    <item row="0" column="0" colspan="2" >
     <widget class="QLabel" name="uiLanguageLA" >
      <property name="text" >
       <string>&amp;User Interface language:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>defaultLanguageCO</cstring>
      </property>
     </widget>
    </item>
@@ -34,26 +37,6 @@
     </widget>
    </item>
    <item row="1" column="0" colspan="2" >
-    <widget class="QLabel" name="defaultLanguageLA" >
-     <property name="text" >
-      <string>&amp;Default language:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>defaultLanguageCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2" >
-    <widget class="QComboBox" name="defaultLanguageCO" >
-     <property name="toolTip" >
-      <string>Select the default language of your documents</string>
-     </property>
-     <property name="maxVisibleItems" >
-      <number>20</number>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2" >
     <widget class="QLabel" name="languagePackageLA" >
      <property name="text" >
       <string>Language pac&amp;kage:</string>
@@ -63,14 +46,14 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="2" >
+   <item row="1" column="2" >
     <widget class="QLineEdit" name="languagePackageED" >
      <property name="toolTip" >
       <string>Enter the command to load the language package (default: babel)</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2" >
+   <item row="2" column="0" colspan="2" >
     <widget class="QLabel" name="startCommandLA" >
      <property name="text" >
       <string>Command s&amp;tart:</string>
@@ -80,14 +63,14 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="2" >
+   <item row="2" column="2" >
     <widget class="QLineEdit" name="startCommandED" >
      <property name="toolTip" >
       <string>The LaTeX command that starts a switch to a foreign language</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2" >
+   <item row="3" column="0" colspan="2" >
     <widget class="QLabel" name="endCommandLA" >
      <property name="text" >
       <string>Command e&amp;nd:</string>
@@ -97,14 +80,14 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="2" >
+   <item row="3" column="2" >
     <widget class="QLineEdit" name="endCommandED" >
      <property name="toolTip" >
       <string>The LaTeX command that ends a switch to a foreign language</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="0" colspan="3" >
+   <item row="4" column="0" colspan="3" >
     <widget class="QCheckBox" name="useBabelCB" >
      <property name="toolTip" >
       <string>Use the babel package for multilingual support</string>
@@ -114,7 +97,7 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="0" colspan="3" >
+   <item row="5" column="0" colspan="3" >
     <widget class="QCheckBox" name="globalCB" >
      <property name="toolTip" >
       <string>Check to pass the language globally (to the document class), not locally (to the language package)</string>
@@ -124,7 +107,7 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="0" colspan="3" >
+   <item row="6" column="0" colspan="3" >
     <widget class="QCheckBox" name="autoBeginCB" >
      <property name="toolTip" >
       <string>If checked, the document language is not explicitely set by a language switch command</string>
@@ -134,7 +117,7 @@
      </property>
     </widget>
    </item>
-   <item row="8" column="0" colspan="3" >
+   <item row="7" column="0" colspan="3" >
     <widget class="QCheckBox" name="autoEndCB" >
      <property name="toolTip" >
       <string>If checked, the document language is not explicitely closed by a language switch command</string>
@@ -144,7 +127,7 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="0" colspan="4" >
+   <item row="8" column="0" colspan="3" >
     <widget class="QCheckBox" name="markForeignCB" >
      <property name="toolTip" >
       <string>Check to highlight foreign languages visually in the work area</string>
@@ -154,7 +137,7 @@
      </property>
     </widget>
    </item>
-   <item row="10" column="0" >
+   <item row="9" column="0" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -162,7 +145,7 @@
      <property name="sizeType" >
       <enum>QSizePolicy::Fixed</enum>
      </property>
-     <property name="sizeHint" stdset="0" >
+     <property name="sizeHint" >
       <size>
        <width>20</width>
        <height>16</height>
@@ -170,7 +153,7 @@
      </property>
     </spacer>
    </item>
-   <item row="11" column="0" colspan="3" >
+   <item row="10" column="0" colspan="3" >
     <widget class="QGroupBox" name="rtlGB2" >
      <property name="toolTip" >
       <string/>
@@ -206,7 +189,7 @@
         <property name="orientation" >
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="sizeHint" stdset="0" >
+        <property name="sizeHint" >
          <size>
           <width>101</width>
           <height>20</height>
@@ -216,11 +199,11 @@
       </item>
       <item row="1" column="0" >
        <layout class="QHBoxLayout" >
-        <property name="spacing" >
-         <number>6</number>
-        </property>
         <property name="margin" >
          <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
         </property>
         <item>
          <widget class="QLabel" name="cursorMovementLA" >
@@ -254,7 +237,7 @@
      </layout>
     </widget>
    </item>
-   <item row="12" column="1" >
+   <item row="11" column="1" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -262,22 +245,9 @@
      <property name="sizeType" >
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" stdset="0" >
+     <property name="sizeHint" >
       <size>
        <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="2" column="3" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0" >
-      <size>
-       <width>40</width>
        <height>20</height>
       </size>
      </property>
@@ -286,7 +256,6 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>defaultLanguageCO</tabstop>
   <tabstop>languagePackageED</tabstop>
   <tabstop>startCommandED</tabstop>
   <tabstop>endCommandED</tabstop>
