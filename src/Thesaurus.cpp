@@ -266,6 +266,15 @@ Thesaurus::Meanings Thesaurus::lookup(docstring const & t, docstring const & lan
 
 #else
 
+Thesaurus::Thesaurus()
+{
+}
+
+
+Thesaurus::~Thesaurus()
+{
+}
+
 
 Thesaurus::Meanings Thesaurus::lookup(docstring const &, docstring const &)
 {
