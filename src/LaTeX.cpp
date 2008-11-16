@@ -75,16 +75,16 @@ void TeXErrors::insertError(int line, docstring const & error_desc,
 }
 
 
-bool operator==(Aux_Info const & a, Aux_Info const & o)
+bool operator==(AuxInfo const & a, AuxInfo const & o)
 {
-	return a.aux_file == o.aux_file &&
-		a.citations == o.citations &&
-		a.databases == o.databases &&
-		a.styles == o.styles;
+	return a.aux_file == o.aux_file
+		&& a.citations == o.citations
+		&& a.databases == o.databases
+		&& a.styles == o.styles;
 }
 
 
-bool operator!=(Aux_Info const & a, Aux_Info const & o)
+bool operator!=(AuxInfo const & a, AuxInfo const & o)
 {
 	return !(a == o);
 }
@@ -216,7 +216,7 @@ int LaTeX::run(TeXErrors & terr)
 	/// We scan the aux file even when had_depfile = false,
 	/// because we can run pdflatex on the file after running latex on it,
 	/// in which case we will not need to run bibtex again.
-	vector<Aux_Info> bibtex_info_old;
+	vector<AuxInfo> bibtex_info_old;
 	if (!run_bibtex)
 		bibtex_info_old = scanAuxFiles(aux_file);
 
@@ -237,7 +237,7 @@ int LaTeX::run(TeXErrors & terr)
 		return scanres; // return on error
 	}
 
-	vector<Aux_Info> const bibtex_info = scanAuxFiles(aux_file);
+	vector<AuxInfo> const bibtex_info = scanAuxFiles(aux_file);
 	if (!run_bibtex && bibtex_info_old != bibtex_info)
 		run_bibtex = true;
 
@@ -426,10 +426,10 @@ bool LaTeX::runMakeIndexNomencl(FileName const & file,
 }
 
 
-vector<Aux_Info> const
+vector<AuxInfo> const
 LaTeX::scanAuxFiles(FileName const & file)
 {
-	vector<Aux_Info> result;
+	vector<AuxInfo> result;
 
 	result.push_back(scanAuxFile(file));
 
@@ -446,16 +446,16 @@ LaTeX::scanAuxFiles(FileName const & file)
 }
 
 
-Aux_Info const LaTeX::scanAuxFile(FileName const & file)
+AuxInfo const LaTeX::scanAuxFile(FileName const & file)
 {
-	Aux_Info result;
+	AuxInfo result;
 	result.aux_file = file;
 	scanAuxFile(file, result);
 	return result;
 }
 
 
-void LaTeX::scanAuxFile(FileName const & file, Aux_Info & aux_info)
+void LaTeX::scanAuxFile(FileName const & file, AuxInfo & aux_info)
 {
 	LYXERR(Debug::LATEX, "Scanning aux file: " << file);
 
@@ -507,7 +507,7 @@ void LaTeX::scanAuxFile(FileName const & file, Aux_Info & aux_info)
 
 
 void LaTeX::updateBibtexDependencies(DepTable & dep,
-				     vector<Aux_Info> const & bibtex_info)
+				     vector<AuxInfo> const & bibtex_info)
 {
 	// Since a run of Bibtex mandates more latex runs it is ok to
 	// remove all ".bib" and ".bst" files.
@@ -515,7 +515,7 @@ void LaTeX::updateBibtexDependencies(DepTable & dep,
 	dep.remove_files_with_extension(".bst");
 	//string aux = OnlyFilename(ChangeExtension(file, ".aux"));
 
-	for (vector<Aux_Info>::const_iterator it = bibtex_info.begin();
+	for (vector<AuxInfo>::const_iterator it = bibtex_info.begin();
 	     it != bibtex_info.end(); ++it) {
 		for (set<string>::const_iterator it2 = it->databases.begin();
 		     it2 != it->databases.end(); ++it2) {
@@ -534,10 +534,10 @@ void LaTeX::updateBibtexDependencies(DepTable & dep,
 }
 
 
-bool LaTeX::runBibTeX(vector<Aux_Info> const & bibtex_info)
+bool LaTeX::runBibTeX(vector<AuxInfo> const & bibtex_info)
 {
 	bool result = false;
-	for (vector<Aux_Info>::const_iterator it = bibtex_info.begin();
+	for (vector<AuxInfo>::const_iterator it = bibtex_info.begin();
 	     it != bibtex_info.end(); ++it) {
 		if (it->databases.empty())
 			continue;
