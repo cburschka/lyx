@@ -1604,6 +1604,135 @@ Shift-Tab
 \end_layout
 
 \begin_layout Section
+Input
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+Word Completion
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Input-Completion"
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Input completion
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Word completion|see
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Input completion
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LyX provides completion of words by scanning all documents that are currently
+ opened.
+ Every word that appears in these documents is added to a database that
+ is used to propose completions.
+\end_layout
+
+\begin_layout Standard
+By default LyX shows a small triangle behind the cursor as indicator that
+ there are completions available.
+ You can then press the 
+\family sans
+Tab
+\family default
+ key to use this completion.
+ When several completions are possible, a popup is opened showing them.
+ You can select a completion in the popup using the mouse or the arrow keys,
+ and accept the chosen completion be pressing 
+\family sans
+Return
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+In the preferences dialog, that is opened with the menu 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences
+\family default
+, the cursor completion indicator can be turned off in the section 
+\family sans
+Editing\SpecialChar \menuseparator
+Input Completion
+\family default
+ by deselecting the option 
+\family sans
+Cursor indicator
+\family default
+.
+ With the option 
+\family sans
+Automatic inline completion
+\family default
+ the proposed completion is shown directly behind the cursor position.
+ To accept this proposal, use the 
+\family sans
+Tab
+\family default
+ key.
+ With the option 
+\family sans
+Automatic popup
+\family default
+ the completions are always shown in a popup.
+ LyX offers some more completion settings for experts that are described
+ in sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Input-Completion-Appendix"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
 Basic Key Bindings
 \begin_inset Index
 status collapsed
@@ -40671,12 +40800,9 @@ Wheel scrolling speed
 
 \begin_layout Subsection
 Input Completion
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Input Completion
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Input-Completion-Appendix"
 
 \end_inset
 
@@ -40685,7 +40811,7 @@ Input Completion
 status collapsed
 
 \begin_layout Plain Layout
-Word completion|see{Input Completion}
+Input completion
 \end_layout
 
 \end_inset
@@ -40694,18 +40820,23 @@ Word completion|see{Input Completion}
 \end_layout
 
 \begin_layout Standard
-LyX provides the completion of words by scanning all documents that are
- currently opened.
- Every word it appears in these documents is added to a database that is
- used to propose completions.
-\end_layout
+Input completion is described in sec.
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Standard
-By default 
-\end_layout
 
-\begin_layout Standard
-The option Automatic inline completion propose 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Input-Completion"
+
+\end_inset
+
+.
+ The completion options for math do the same as the corresponding options
+ for text.
+ With the general options you can define the delay time for the inline and
+ popup completion and choose if long completions should be abbreviated or
+ not.
 \end_layout
 
 \begin_layout Section
