@@ -13,7 +13,6 @@
 #include "Parser.h"
 
 #include <iostream>
-#include <sstream>
 
 using namespace std;
 
@@ -54,13 +53,12 @@ void catInit()
 	theCatcode[int('@')]  = catLetter;
 }
 
-
 /*!
  * Translate a line ending to '\n'.
  * \p c must have catcode catNewline, and it must be the last character read
  * from \p is.
  */
-char getNewline(istream & is, char c)
+char getNewline(idocstream & is, char c)
 {
 	// we have to handle 3 different line endings:
 	// - UNIX (\n)
@@ -68,9 +66,10 @@ char getNewline(istream & is, char c)
 	// - DOS  (\r\n)
 	if (c == '\r') {
 		// MAC or DOS
-		if (is.get(c) && c != '\n') {
+		char_type wc;
+		if (is.get(wc) && wc != '\n') {
 			// MAC
-			is.putback(c);
+			is.putback(wc);
 		}
 		return '\n';
 	}
@@ -78,18 +77,14 @@ char getNewline(istream & is, char c)
 	return c;
 }
 
-}
-
-
-//
-// catcodes
-//
-
-CatCode catcode(unsigned char c)
+CatCode catcode(char_type c)
 {
-	return theCatcode[c];
+	if (c < 256)
+		return theCatcode[(unsigned char)c];
+	return catOther;
 }
 
+}
 
 
 //
@@ -105,18 +100,18 @@ ostream & operator<<(ostream & os, Token const & t)
 	else if (t.cat() == catEscape)
 		os << '\\' << t.cs() << ' ';
 	else if (t.cat() == catLetter)
-		os << t.character();
+		os << t.cs();
 	else if (t.cat() == catNewline)
 		os << "[" << t.cs().size() << "\\n," << t.cat() << "]\n";
 	else
-		os << '[' << t.character() << ',' << t.cat() << ']';
+		os << '[' << t.cs() << ',' << t.cat() << ']';
 	return os;
 }
 
 
 string Token::asString() const
 {
-	return cs_.size() ? cs_ : string(1, char_);
+	return cs_;
 }
 
 
@@ -124,9 +119,9 @@ string Token::asInput() const
 {
 	if (cat_ == catComment)
 		return '%' + cs_ + '\n';
-	if (cat_ == catSpace || cat_ == catNewline)
-		return cs_;
-	return char_ ? string(1, char_) : '\\' + cs_;
+	if (cat_ == catEscape)
+		return '\\' + cs_;
+	return cs_;
 }
 
 
@@ -135,14 +130,15 @@ string Token::asInput() const
 //
 
 
-Parser::Parser(istream & is)
+Parser::Parser(idocstream & is)
 	: lineno_(0), pos_(0), iss_(0), is_(is)
 {
 }
 
 
 Parser::Parser(string const & s)
-	: lineno_(0), pos_(0), iss_(new istringstream(s)), is_(*iss_)
+	: lineno_(0), pos_(0), 
+	  iss_(new idocstringstream(from_utf8(s))), is_(*iss_)
 {
 }
 
@@ -267,7 +263,7 @@ char Parser::getChar()
 {
 	if (!good())
 		error("The input stream is not well...");
-	return tokens_[pos_++].character();
+	return get_token().character();
 }
 
 
@@ -365,14 +361,13 @@ string const Parser::verbatimEnvironment(string const & name)
 void Parser::tokenize_one()
 {
 	catInit();
-	char c;
+	char_type c;
 	if (!is_.get(c)) 
 		return;
-	//cerr << "reading c: " << c << "\n";
 
 	switch (catcode(c)) {
 	case catSpace: {
-		string s(1, c);
+		docstring s(1, c);
 		while (is_.get(c) && catcode(c) == catSpace)
 			s += c;
 		if (catcode(c) != catSpace)
@@ -383,7 +378,7 @@ void Parser::tokenize_one()
 		
 	case catNewline: {
 		++lineno_;
-		string s(1, getNewline(is_, c));
+		docstring s(1, getNewline(is_, c));
 		while (is_.get(c) && catcode(c) == catNewline) {
 			++lineno_;
 			s += getNewline(is_, c);
@@ -397,7 +392,7 @@ void Parser::tokenize_one()
 	case catComment: {
 		// We don't treat "%\n" combinations here specially because
 		// we want to preserve them in the preamble
-		string s;
+		docstring s;
 		while (is_.get(c) && catcode(c) != catNewline)
 			s += c;
 		// handle possible DOS line ending
@@ -415,7 +410,7 @@ void Parser::tokenize_one()
 		if (!is_) {
 			error("unexpected end of input");
 		} else {
-			string s(1, c);
+			docstring s(1, c);
 			if (catcode(c) == catLetter) {
 				// collect letters
 				while (is_.get(c) && catcode(c) == catLetter)
@@ -429,13 +424,14 @@ void Parser::tokenize_one()
 	}
 		
 	case catIgnore: {
-		cerr << "ignoring a char: " << int(c) << "\n";
+		cerr << "ignoring a char: " << c << "\n";
 		break;
 	}
 		
 	default:
-		push_back(Token(c, catcode(c)));
+		push_back(Token(docstring(1, c), catcode(c)));
 	}
+	//cerr << tokens_.back();
 }
 
 
@@ -464,7 +460,7 @@ string Parser::verbatimOption()
 	string res;
 	if (next_token().character() == '[') {
 		Token t = get_token();
-		for (Token t = get_token(); t.character() != ']' && good(); t = get_token()) {
+		for (t = get_token(); t.character() != ']' && good(); t = get_token()) {
 			if (t.cat() == catBegin) {
 				putback();
 				res += '{' + verbatim_item() + '}';

@@ -94,7 +94,7 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 			       t.cat() == catAlign ||
 			       t.cat() == catActive ||
 			       t.cat() == catParameter)
-			os << t.character();
+			os << t.cs();
 
 		else if (t.cat() == catBegin) {
 			os << '{';

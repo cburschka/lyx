@@ -18,17 +18,16 @@
 #include "TextClass.h"
 #include "Layout.h"
 
-#include "support/lassert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/filetools.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"
 
 #include <cstdlib>
-#include <fstream>
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -202,7 +201,7 @@ void read_environment(Parser & p, string const & begin,
  */
 void read_syntaxfile(FileName const & file_name)
 {
-	ifstream is(file_name.toFilesystemEncoding().c_str());
+	ifdocstream is(file_name.toFilesystemEncoding().c_str());
 	if (!is.good()) {
 		cerr << "Could not open syntax file \"" << file_name
 		     << "\" for reading." << endl;
@@ -389,7 +388,7 @@ namespace {
  *  You must ensure that \p parentFilePath is properly set before calling
  *  this function!
  */
-void tex2lyx(istream & is, ostream & os)
+void tex2lyx(idocstream & is, ostream & os)
 {
 	Parser p(is);
 	//p.dump();
@@ -411,7 +410,7 @@ void tex2lyx(istream & is, ostream & os)
 	os << ss.str();
 #ifdef TEST_PARSER
 	p.reset();
-	ofstream parsertest("parsertest.tex");
+	ofdocstream parsertest("parsertest.tex");
 	while (p.good())
 		parsertest << p.get_token().asInput();
 	// <origfile> and parsertest.tex should now have identical content
@@ -422,7 +421,7 @@ void tex2lyx(istream & is, ostream & os)
 /// convert TeX from \p infilename to LyX and write it to \p os
 bool tex2lyx(FileName const & infilename, ostream & os)
 {
-	ifstream is(infilename.toFilesystemEncoding().c_str());
+	ifdocstream is(infilename.toFilesystemEncoding().c_str());
 	if (!is.good()) {
 		cerr << "Could not open input file \"" << infilename
 		     << "\" for reading." << endl;

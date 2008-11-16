@@ -1262,7 +1262,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			       t.cat() == catParameter) {
 			// This translates "&" to "\\&" which may be wrong...
 			context.check_layout(os);
-			os << t.character();
+			os << t.cs();
 		}
 
 		else if (p.isParagraph()) {
@@ -1281,7 +1281,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				else
 					os << "\\InsetSpace ~\n";
 			} else
-				os << t.character();
+				os << t.cs();
 		}
 
 		else if (t.cat() == catBegin &&
@@ -1309,7 +1309,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			    next.character() == '*') {
 				p.get_token();
 				if (p.next_token().cat() == catEnd) {
-					os << next.character();
+					os << next.cs();
 					p.get_token();
 				} else {
 					p.putback();

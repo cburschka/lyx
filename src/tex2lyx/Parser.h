@@ -12,10 +12,11 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#include <vector>
 #include <string>
 #include <utility>
+#include <vector>
 
+#include "support/docstream.h"
 
 namespace lyx {
 
@@ -46,9 +47,6 @@ enum CatCode {
 };
 
 
-CatCode catcode(unsigned char c);
-
-
 enum {
 	FLAG_BRACE_LAST = 1 << 1,  //  last closing brace ends the parsing
 	FLAG_RIGHT      = 1 << 2,  //  next \\right ends the parsing process
@@ -75,18 +73,16 @@ enum {
 class Token {
 public:
 	///
-	Token() : cs_(), char_(0), cat_(catIgnore) {}
+	Token() : cs_(), cat_(catIgnore) {}
 	///
-	Token(char c, CatCode cat) : cs_(), char_(c), cat_(cat) {}
-	///
-	Token(std::string const & cs, CatCode cat) : cs_(cs), char_(0), cat_(cat) {}
+	Token(docstring const & cs, CatCode cat) : cs_(to_utf8(cs)), cat_(cat) {}
 
 	///
 	std::string const & cs() const { return cs_; }
 	/// Returns the catcode of the token
 	CatCode cat() const { return cat_; }
 	///
-	char character() const { return char_; }
+	char character() const { return cs_.empty() ? 0 : cs_[0]; }
 	/// Returns the token as string
 	std::string asString() const;
 	/// Returns the token verbatim
@@ -95,8 +91,6 @@ public:
 private:
 	///
 	std::string cs_;
-	///
-	char char_;
 	///
 	CatCode cat_;
 };
@@ -119,7 +113,7 @@ class Parser {
 
 public:
 	///
-	Parser(std::istream & is);
+	Parser(idocstream & is);
 	///
 	Parser(std::string const & s);
 	///
@@ -217,9 +211,9 @@ private:
 	///
 	unsigned pos_;
 	///
-	std::istringstream * iss_;
+	idocstringstream * iss_;
 	///
-	std::istream & is_;
+	idocstream & is_;
 };
 
 

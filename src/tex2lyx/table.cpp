@@ -661,16 +661,15 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 			}
 		}
 
-		else if (t.cat() == catSpace || t.cat() == catNewline)
-				os << t.cs();
-
-		else if (t.cat() == catLetter ||
-			       t.cat() == catSuper ||
-			       t.cat() == catSub ||
-			       t.cat() == catOther ||
-			       t.cat() == catActive ||
-			       t.cat() == catParameter)
-			os << t.character();
+		else if (t.cat() == catSpace 
+			 || t.cat() == catNewline
+			 || t.cat() == catLetter 
+			 || t.cat() == catSuper 
+			 || t.cat() == catSub 
+			 || t.cat() == catOther 
+			 || t.cat() == catActive 
+			 || t.cat() == catParameter)
+			os << t.cs();
 
 		else if (t.cat() == catBegin) {
 			os << '{';
