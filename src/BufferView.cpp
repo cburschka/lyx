@@ -1858,7 +1858,7 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 
 	d->cursor_ = cur;
 
-	updateLabels(buffer_);
+	buffer_.updateLabels();
 
 	updateMetrics();
 	buffer_.changed();

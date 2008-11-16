@@ -163,7 +163,7 @@ docstring Inset::name() const
 void Inset::initView()
 {
 	if (isLabeled())
-		lyx::updateLabels(buffer());
+		buffer().updateLabels();
 }
 
 

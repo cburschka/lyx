@@ -182,7 +182,7 @@ int replaceAll(BufferView * bv,
 		++num;
 	}
 
-	updateLabels(buf);
+	buf.updateLabels();
 	bv->putSelectionAt(doc_iterator_begin(buf.inset()), 0, false);
 	if (num)
 		buf.markDirty();

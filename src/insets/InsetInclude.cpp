@@ -911,7 +911,7 @@ void InsetInclude::updateLabels(ParIterator const & it)
 {
 	Buffer const * const childbuffer = getChildBuffer(buffer(), params());
 	if (childbuffer) {
-		lyx::updateLabels(*childbuffer, true);
+		childbuffer->updateLabels(true);
 		return;
 	}
 	if (!isListings(params()))

@@ -81,17 +81,16 @@ void InsetLabel::updateCommand(docstring const & new_label, bool updaterefs)
 	buffer().undo().endUndoGroup();
 
 	// We need an update of the Buffer reference cache. This is achieved by
-	// updateLabel().
-	lyx::updateLabels(buffer());
+	// updateLabels().
+	buffer().updateLabels();
 }
 
 
 ParamInfo const & InsetLabel::findInfo(string const & /* cmdName */)
 {
 	static ParamInfo param_info_;
-	if (param_info_.empty()) {
+	if (param_info_.empty())
 		param_info_.add("name", ParamInfo::LATEX_REQUIRED);
-	}
 	return param_info_;
 }
 

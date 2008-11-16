@@ -235,7 +235,7 @@ void Text::setLayout(Cursor & cur, docstring const & layout)
 	pit_type undopit = undoSpan(end - 1);
 	recUndo(cur, start, undopit - 1);
 	setLayout(cur.buffer(), start, end, layout);
-	updateLabels(cur.buffer());
+	cur.buffer().updateLabels();
 }
 
 
@@ -294,7 +294,7 @@ void Text::changeDepth(Cursor & cur, DEPTH_CHANGE type)
 	}
 	// this handles the counter labels, and also fixes up
 	// depth values for follow-on (child) paragraphs
-	updateLabels(cur.buffer());
+	cur.buffer().updateLabels();
 }
 
 

@@ -390,7 +390,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		LYXERR(Debug::INFO, "MacroContext not initialised!"
 			<< " Going through the buffer again and hope"
 			<< " the context is better then.");
-		updateLabels(bv_->buffer());
+		bv_->buffer().updateLabels();
 		parPos = text_->macrocontextPosition();
 		LASSERT(!parPos.empty(), /**/);
 		parPos.pit() = pit;

@@ -1044,7 +1044,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				makeDisplayPath(fname.absFilename())));
 			Buffer * buf = lyx_view_->loadDocument(fname, false);
 			if (buf) {
-				updateLabels(*buf);
+				buf->updateLabels();
 				lyx_view_->setBuffer(buf);
 				buf->errors("Parse");
 			}
@@ -1140,7 +1140,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 			}
 
-			updateLabels(*buf);
+			buf->updateLabels();
 			lyx_view_->setBuffer(buf);
 			view()->setCursorFromRow(row);
 			if (loaded)
@@ -1294,7 +1294,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				// This makes insertion of citations and references in the child work,
 				// when the target is in the parent or another child document.
 				child->setParent(buffer);
-				updateLabels(*child->masterBuffer());
+				child->masterBuffer()->updateLabels();
 				lyx_view_->setBuffer(child);
 				if (parsed)
 					child->errors("Parse");
@@ -1735,7 +1735,7 @@ void LyXFunc::reloadBuffer()
 	docstring const disp_fn = makeDisplayPath(filename.absFilename());
 	docstring str;
 	if (buf) {
-		updateLabels(*buf);
+		buf->updateLabels();
 		lyx_view_->setBuffer(buf);
 		buf->errors("Parse");
 		str = bformat(_("Document %1$s reloaded."), disp_fn);
@@ -1809,7 +1809,7 @@ void LyXFunc::updateLayout(DocumentClass const * const oldlayout, Buffer * buffe
 	view()->setCursor(backcur.asDocIterator(&(buffer->inset())));
 
 	buffer->errors("Class Switch");
-	updateLabels(*buffer);
+	buffer->updateLabels();
 }
 
 

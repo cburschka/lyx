@@ -1,5 +1,5 @@
 /**
- * \file text3.cpp
+ * \file Text3.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -473,7 +473,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		recUndo(cur, pit, pit + 1);
 		cur.finishUndo();
 		swap(pars_[pit], pars_[pit + 1]);
-		updateLabels(cur.buffer());
+		cur.buffer().updateLabels();
 		needsUpdate = true;
 		++cur.pit();
 		break;
@@ -484,7 +484,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		recUndo(cur, pit - 1, pit);
 		cur.finishUndo();
 		swap(pars_[pit], pars_[pit - 1]);
-		updateLabels(cur.buffer());
+		cur.buffer().updateLabels();
 		--cur.pit();
 		needsUpdate = true;
 		break;
@@ -510,14 +510,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		par.params().startOfAppendix(start);
 
 		// we can set the refreshing parameters now
-		updateLabels(cur.buffer());
+		cur.buffer().updateLabels();
 		break;
 	}
 
 	case LFUN_WORD_DELETE_FORWARD:
-		if (cur.selection()) {
+		if (cur.selection())
 			cutSelection(cur, true, false);
-		} else
+		else
 			deleteWordForward(cur);
 		finishChange(cur, false);
 		break;
@@ -1417,7 +1417,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cur.posForward();
 		// Some insets are numbered, others are shown in the outline pane so
 		// let's update the labels and the toc backend.
-		updateLabels(bv->buffer());
+		bv->buffer().updateLabels();
 		break;
 
 	case LFUN_TABULAR_INSERT:
@@ -1471,7 +1471,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// date metrics.
 		FuncRequest cmd_caption(LFUN_CAPTION_INSERT);
 		doInsertInset(cur, cur.text(), cmd_caption, true, false);
-		updateLabels(bv->buffer());
+		bv->buffer().updateLabels();
 		cur.updateFlags(Update::Force);
 		// FIXME: When leaving the Float (or Wrap) inset we should
 		// delete any empty paragraph left above or below the
@@ -1832,26 +1832,26 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_OUTLINE_UP:
 		outline(OutlineUp, cur);
 		setCursor(cur, cur.pit(), 0);
-		updateLabels(cur.buffer());
+		cur.buffer().updateLabels();
 		needsUpdate = true;
 		break;
 
 	case LFUN_OUTLINE_DOWN:
 		outline(OutlineDown, cur);
 		setCursor(cur, cur.pit(), 0);
-		updateLabels(cur.buffer());
+		cur.buffer().updateLabels();
 		needsUpdate = true;
 		break;
 
 	case LFUN_OUTLINE_IN:
 		outline(OutlineIn, cur);
-		updateLabels(cur.buffer());
+		cur.buffer().updateLabels();
 		needsUpdate = true;
 		break;
 
 	case LFUN_OUTLINE_OUT:
 		outline(OutlineOut, cur);
-		updateLabels(cur.buffer());
+		cur.buffer().updateLabels();
 		needsUpdate = true;
 		break;
 

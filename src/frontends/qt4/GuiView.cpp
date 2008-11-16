@@ -1066,7 +1066,7 @@ void GuiView::setBuffer(Buffer * newBuffer)
 
 	GuiWorkArea * wa = workArea(*newBuffer);
 	if (wa == 0) {
-		updateLabels(*newBuffer->masterBuffer());
+		newBuffer->masterBuffer()->updateLabels();
 		wa = addWorkArea(*newBuffer);
 	} else {
 		//Disconnect the old buffer...there's no new one.
@@ -1438,8 +1438,7 @@ void GuiView::openDocument(string const & fname)
 	docstring str2;
 	Buffer * buf = loadDocument(fullname);
 	if (buf) {
-		updateLabels(*buf);
-		
+		buf->updateLabels();
 		setBuffer(buf);
 		buf->errors("Parse");
 		str2 = bformat(_("Document %1$s opened."), disp_fn);
@@ -1488,7 +1487,7 @@ static bool import(GuiView * lv, FileName const & filename,
 		Buffer * buf = lv->loadDocument(lyxfile);
 		if (!buf)
 			return false;
-		updateLabels(*buf);
+		buf->updateLabels();
 		lv->setBuffer(buf);
 		buf->errors("Parse");
 	} else {

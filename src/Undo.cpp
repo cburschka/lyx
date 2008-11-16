@@ -427,7 +427,7 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 		doTextUndoOrRedo(cur, stack, otherstack);
 
 	// Addapt the new material to current buffer.
-	updateLabels(buffer_);
+	buffer_.updateLabels();
 	return true;
 }
 

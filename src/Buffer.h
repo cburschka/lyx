@@ -466,6 +466,10 @@ public:
 	void setInsetLabel(docstring const & label, InsetLabel const * il);
 	InsetLabel const * insetLabel(docstring const & label) const;
 
+	// FIXME: buf should should be const because updateLabels() modifies
+	// the contents of the paragraphs.
+	void updateLabels(bool childonly = false) const;
+
 private:
 	/// search for macro in local (buffer) table or in children
 	MacroData const * getBufferMacro(docstring const & name,

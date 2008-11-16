@@ -90,7 +90,7 @@ void InsetBibitem::updateCommand(docstring const & new_key, bool)
 	}
 	setParam("key", key);
 
-	lyx::updateLabels(buffer());
+	buffer().updateLabels();
 }
 
 

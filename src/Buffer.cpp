@@ -2643,4 +2643,56 @@ void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
 }
 
 
+// FIXME: buf should should be const because updateLabels() modifies
+// the contents of the paragraphs.
+void Buffer::updateLabels(bool childonly) const
+{
+	// Use the master text class also for child documents
+	Buffer const * const master = masterBuffer();
+	DocumentClass const & textclass = master->params().documentClass();
+
+	// keep the buffers to be children in this set. If the call from the
+	// master comes back we can see which of them were actually seen (i.e.
+	// via an InsetInclude). The remaining ones in the set need still be updated.
+	static std::set<Buffer const *> bufToUpdate;
+	if (!childonly) {
+		// If this is a child document start with the master
+		if (master != this) {
+			bufToUpdate.insert(this);
+			master->updateLabels(false);
+
+			// was buf referenced from the master (i.e. not in bufToUpdate anymore)?
+			if (bufToUpdate.find(this) == bufToUpdate.end())
+				return;
+		}
+
+		// start over the counters in the master
+		textclass.counters().reset();
+	}
+
+	// update will be done below for this buffer
+	bufToUpdate.erase(this);
+
+	// update all caches
+	clearReferenceCache();
+	inset().setBuffer(const_cast<Buffer &>(*this));
+	updateMacros();
+
+	Buffer & cbuf = const_cast<Buffer &>(*this);
+
+	LASSERT(!text().paragraphs().empty(), /**/);
+
+	// do the real work
+	ParIterator parit = cbuf.par_iterator_begin();
+	lyx::updateLabels(*this, parit);
+
+	if (master != this)
+		// TocBackend update will be done later.
+		return;
+
+	cbuf.tocBackend().update();
+	if (!childonly)
+		cbuf.structureChanged();
+}
+
 } // namespace lyx

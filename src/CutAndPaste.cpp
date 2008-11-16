@@ -658,7 +658,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 
 		// need a valid cursor. (Lgb)
 		cur.clearSelection();
-		updateLabels(cur.buffer());
+		cur.buffer().updateLabels();
 
 		// tell tabular that a recent copy happened
 		dirtyTabularStack(false);
@@ -818,7 +818,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 
 		boost::tie(ppp, endpit) =
 			pasteSelectionHelper(cur, parlist, docclass, errorList);
-		updateLabels(cur.buffer());
+		cur.buffer().updateLabels();
 		cur.clearSelection();
 		text->setCursor(cur, ppp.first, ppp.second);
 	}
