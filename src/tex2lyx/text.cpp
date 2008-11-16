@@ -2529,6 +2529,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					     << "+" << to_utf8(rem) << endl;
 				context.check_layout(os);
 				os << to_utf8(s);
+				p.skip_spaces();
 				skip_braces(p); // eat {}
 			}
 			//cerr << "#: " << t << " mode: " << mode << endl;
