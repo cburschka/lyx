@@ -545,21 +545,21 @@ bool InsetMathHull::numbered(row_type row) const
 
 bool InsetMathHull::ams() const
 {
-	return
-		type_ == hullAlign ||
-		type_ == hullFlAlign ||
-		type_ == hullMultline ||
-		type_ == hullGather ||
-		type_ == hullAlignAt ||
-		type_ == hullXAlignAt ||
-		type_ == hullXXAlignAt;
+	return type_ == hullAlign
+		|| type_ == hullFlAlign
+		|| type_ == hullMultline
+		|| type_ == hullGather
+		|| type_ == hullAlignAt
+		|| type_ == hullXAlignAt
+		|| type_ == hullXXAlignAt;
 }
 
 
 Inset::DisplayType InsetMathHull::display() const
 {
-	return (type_ != hullSimple && type_ != hullNone
-		&& type_ != hullRegexp) ? AlignCenter : Inline;
+	if (type_ == hullSimple || type_ == hullNone || type_ == hullRegexp)
+		return Inline;
+	return AlignCenter;
 }
 
 bool InsetMathHull::numberedType() const
