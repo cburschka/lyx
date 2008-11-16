@@ -851,12 +851,12 @@ void LyXAction::init()
  * \li Syntax: word-findadv [<DATA>]
  * \li Params: <DATA>: data encoded from FindAdv dialog (see #lyx::findadv2string()).
                        If no parameter is given, search with last find-dialog
-		       data is used for search (i.e. find-next).
+                       data is used for search (i.e. find-next).
  * \li Origin: Tommaso, Nov 15 2007
  * \endvar
  */
 		{ LFUN_WORD_FINDADV, "word-findadv", ReadOnly, Edit },
-/*! * \var lyx::FuncCode lyx::LFUN_WORD_FORWARD
+/*! \var lyx::FuncCode lyx::LFUN_WORD_FORWARD
  * \li Action: Moves the cursor to the logically next beginning of a word.
  * \li Notion: This is not the action which should be bound to the arrow keys,
                because forward may be left or right, depending on the language.
