@@ -40910,6 +40910,23 @@ Template
 \end_layout
 
 \begin_layout Description
+Example
+\begin_inset space ~
+\end_inset
+
+files This directory will be opened when you use the button 
+\family sans
+Examples
+\family default
+ in the 
+\family sans
+File\SpecialChar \menuseparator
+Open
+\family default
+ dialog.
+\end_layout
+
+\begin_layout Description
 Backup
 \begin_inset space ~
 \end_inset
@@ -41277,24 +41294,27 @@ languages Text marked formatted in a language different from the document
 \end_layout
 
 \begin_layout Description
-Right
+Enable
 \begin_inset space ~
 \end_inset
 
-to
+RTL
 \begin_inset space ~
 \end_inset
 
-left
+support Enables the use of languages, written from right to left (RTL),
+ like Arabic, Hebrew, Farsi.
+\end_layout
+
+\begin_layout Description
+Cursor
 \begin_inset space ~
 \end_inset
 
-language
-\begin_inset space ~
-\end_inset
-
-support Enables the use of languages, written from right to left, like Arabic,
- Hebrew, Farsi.
+movement When writing RTL, you can define if the left and right arrow keys
+ moves the cursor visually to the left or right, respectively, or logically.
+ Logical means that the cursor is moved to the left when pressing the right
+ arrow key and the cursor is inside text in an RTL language.
 \end_layout
 
 \begin_layout Subsection
@@ -41664,46 +41684,9 @@ Default
  value depends on your LaTeX-system setup.
 \end_layout
 
-\begin_layout Description
-Reset
-\begin_inset space ~
-\end_inset
-
-class
-\begin_inset space ~
-\end_inset
-
-options
-\begin_inset space ~
-\end_inset
-
-when
-\begin_inset space ~
-\end_inset
-
-document
-\begin_inset space ~
-\end_inset
-
-classes
-\begin_inset space ~
-\end_inset
-
-changes Removes all manually set document class options in the 
-\family sans
-Document\SpecialChar \menuseparator
-Settings
-\family default
- dialog when changing the document class.
-\end_layout
-
 \begin_layout Standard
-In the 
-\family sans
-External Applications
-\family default
- field you can specify commands with parameters for the listed applications.
- Before you change something here, it is strongly recommended to read the
+You can also specify here commands with parameters for the listed applications.
+ But before you change something, it is strongly recommended to read the
  manuals of the applications.
  Currently the following commands can be set:
 \end_layout
@@ -41793,6 +41776,18 @@ reference "sub:Index-Program"
 \end_layout
 
 \begin_layout Description
+Nomenclature
+\begin_inset space ~
+\end_inset
+
+command Command for the program that generates the nomenclature, see section
+\begin_inset space ~
+\end_inset
+
+??.
+\end_layout
+
+\begin_layout Description
 DVI
 \begin_inset space ~
 \end_inset
@@ -41816,8 +41811,51 @@ xdvi
  is used as DVI-viewer.
 \end_layout
 
-\begin_layout Subsection
-Paths
+\begin_layout Description
+There are additionally the following options:
+\end_layout
+
+\begin_layout Description
+Use
+\begin_inset space ~
+\end_inset
+
+Windows-style
+\begin_inset space ~
+\end_inset
+
+paths
+\begin_inset space ~
+\end_inset
+
+in
+\begin_inset space ~
+\end_inset
+
+LaTeX
+\begin_inset space ~
+\end_inset
+
+files Uses paths in the notation of Windows, that means that 
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+
+\begin_inset Quotes erd
+\end_inset
+
+ is used instead of 
+\begin_inset Quotes eld
+\end_inset
+
+/
+\begin_inset Quotes erd
+\end_inset
+
+ to separate folders.
+ This option is enabled by default when you use LyX on Windows.
 \begin_inset Index
 status collapsed
 
@@ -41840,36 +41878,58 @@ Settings ! Paths
 
 \end_layout
 
-\begin_layout Standard
-The submenu 
+\begin_layout Description
+Reset
+\begin_inset space ~
+\end_inset
+
+class
+\begin_inset space ~
+\end_inset
+
+options
+\begin_inset space ~
+\end_inset
+
+when
+\begin_inset space ~
+\end_inset
+
+document
+\begin_inset space ~
+\end_inset
+
+classes
+\begin_inset space ~
+\end_inset
+
+changes Removes all manually set document class options in the 
 \family sans
-Paths
+Document\SpecialChar \menuseparator
+Settings
 \family default
- is only available in the Windows version of LyX.
- The option 
-\family sans
-Use Windows-style paths in LaTeX files
-\family default
- uses the Windows path style:
-\end_layout
-
-\begin_layout Standard
-C:
-\backslash
-test
-\backslash
-hello
-\end_layout
-
-\begin_layout Standard
-instead of the Unix path style:
-\end_layout
-
-\begin_layout Standard
-C:/test/hello
+ dialog when changing the document class.
 \end_layout
 
 \begin_layout Section
+File
+\begin_inset space ~
+\end_inset
+
+Handling
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+File handling
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Converters
 \begin_inset Index
 status collapsed
@@ -41952,8 +42012,15 @@ Customization
  manual.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 File Formats
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:File-Formats"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
@@ -41964,9 +42031,12 @@ File formats
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:File-Formats"
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Copiers
+\end_layout
 
 \end_inset
 
@@ -42010,30 +42080,16 @@ Customization
  manual.
 \end_layout
 
-\begin_layout Section
-Copiers
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Copiers
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
-Here you find the list of defined copiers.
- Since all conversions from one format to another take place in LyX's temporary
+Since all conversions from one format to another take place in LyX's temporary
  directory, it is sometimes necessary to modify a file before copying it
  to the temporary directory in order that the conversion may be performed.
- This is done by a Copier.
-\end_layout
-
-\begin_layout Standard
-More about converters is described in section 
+ This is done by specifying a 
+\family sans
+Copier
+\family default
+.
+ More about this is described in section 
 \emph on
 Copiers
 \emph default
