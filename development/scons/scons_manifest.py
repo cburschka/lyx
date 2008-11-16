@@ -691,6 +691,7 @@ src_frontends_qt4_header_files = Split('''
     DockView.h
     EmptyTable.h
     FileDialog.h
+    FindAndReplace.h
     FloatPlacement.h
     GuiAbout.h
     GuiApplication.h
@@ -780,6 +781,7 @@ src_frontends_qt4_files = Split('''
     ColorCache.cpp
     CustomizedWidgets.cpp
     EmptyTable.cpp
+    FindAndReplace.cpp
     FileDialog.cpp
     FloatPlacement.cpp
     GuiAbout.cpp
@@ -887,6 +889,7 @@ src_frontends_qt4_ui_files = Split('''
     ERTUi.ui
     ErrorListUi.ui
     ExternalUi.ui
+    FindAndReplaceUI.ui
     FloatPlacementUi.ui
     FloatUi.ui
     FontUi.ui
