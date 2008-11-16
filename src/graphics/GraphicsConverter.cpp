@@ -345,10 +345,11 @@ static void build_script(FileName const & from_file,
 	}
 
 	// The conversion commands may contain these tokens that need to be
-	// changed to infile, infile_base, outfile respectively.
-	string const token_from = "$$i";
-	string const token_base = "$$b";
-	string const token_to   = "$$o";
+	// changed to infile, infile_base, outfile and output directory respectively.
+	string const token_from  = "$$i";
+	string const token_base  = "$$b";
+	string const token_to    = "$$o";
+	string const token_todir = "$$d";
 
 	EdgePath::const_iterator it  = edgepath.begin();
 	EdgePath::const_iterator end = edgepath.end();
@@ -367,14 +368,16 @@ static void build_script(FileName const & from_file,
 			  "infile_base = utf8ToDefaultEncoding("
 				<< quoteName(infile_base, quote_python) << ")\n"
 			  "outfile = utf8ToDefaultEncoding("
-				<< quoteName(outfile, quote_python) << ")\n";
+				<< quoteName(outfile, quote_python) << ")\n"
+			  "outdir  = os.path.dirname(outfile)\n" ;
 
 		// See comment about extra " quotes above (although that
 		// applies only for the first loop run here).
 		string command = conv.command;
-		command = subst(command, token_from, "' + '\"' + infile + '\"' + '");
-		command = subst(command, token_base, "' + '\"' + infile_base + '\"' + '");
-		command = subst(command, token_to,   "' + '\"' + outfile + '\"' + '");
+		command = subst(command, token_from,  "' + '\"' + infile + '\"' + '");
+		command = subst(command, token_base,  "' + '\"' + infile_base + '\"' + '");
+		command = subst(command, token_to,    "' + '\"' + outfile + '\"' + '");
+		command = subst(command, token_todir, "' + '\"' + outdir + '\"' + '");
 		command = libScriptSearch(command, quote_python);
 
 		build_conversion_command(command, script);
