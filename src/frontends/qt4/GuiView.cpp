@@ -1300,7 +1300,14 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_COMPLETION_ACCEPT:
-	case LFUN_COMPLETION_CANCEL:
+		if (!d.current_work_area_
+		    || (!d.current_work_area_->completer().popupVisible()
+			&& !d.current_work_area_->completer().inlineVisible()
+			&& !d.current_work_area_->completer().completionAvailable()))
+			enable = false;
+		break;
+
+		case LFUN_COMPLETION_CANCEL:
 		if (!d.current_work_area_
 		    || (!d.current_work_area_->completer().popupVisible()
 			&& !d.current_work_area_->completer().inlineVisible()))

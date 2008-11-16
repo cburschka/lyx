@@ -625,9 +625,9 @@ void GuiCompleter::hideInline()
 void GuiCompleter::activate()
 {
 	if (!popupVisible() && !inlineVisible())
-		return;
-
-	popupActivated(currentCompletion());
+		tab();
+	else
+		popupActivated(currentCompletion());
 }
 
 
