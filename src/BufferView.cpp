@@ -897,13 +897,14 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		flag.setEnabled(! this->cursor().inRegexped());
 		break;
 
-	case LFUN_COPY_LABEL_AS_REF:
+	case LFUN_COPY_LABEL_AS_REF: {
 		// if there is an inset at cursor, see whether it
 		// handles the lfun, other start from scratch
 		Inset * inset = cur.nextInset();
 		if (!inset || !inset->getStatus(cur, cmd, flag))
 			flag = lyx::getStatus(cmd);
 		break;
+	}
 
 	case LFUN_NEXT_INSET_TOGGLE: 
 	case LFUN_NEXT_INSET_MODIFY: {
