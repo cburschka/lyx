@@ -229,7 +229,7 @@ bool RCS::undoLastEnabled()
 void RCS::getLog(FileName const & tmpf)
 {
 	doVCCommand("rlog " + quoteName(onlyFilename(owner_->absFileName()))
-		    + " > " + tmpf.toFilesystemEncoding(),
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 }
 
@@ -398,7 +398,7 @@ bool CVS::undoLastEnabled()
 void CVS::getLog(FileName const & tmpf)
 {
 	doVCCommand("cvs log " + quoteName(onlyFilename(owner_->absFileName()))
-		    + " > " + tmpf.toFilesystemEncoding(),
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 }
 
@@ -473,7 +473,7 @@ string SVN::checkIn(string const & msg)
 
 	doVCCommand("svn commit -m \"" + msg + "\" "
 		    + quoteName(onlyFilename(owner_->absFileName()))
-		    + " > " + tmpf.toFilesystemEncoding(),
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 
 	string log;
@@ -524,7 +524,7 @@ string SVN::checkOut()
 	}
 
 	doVCCommand("svn update " + quoteName(onlyFilename(owner_->absFileName()))
-		    + " > " + tmpf.toFilesystemEncoding(),
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 
 	string log;
@@ -576,7 +576,7 @@ bool SVN::undoLastEnabled()
 void SVN::getLog(FileName const & tmpf)
 {
 	doVCCommand("svn log " + quoteName(onlyFilename(owner_->absFileName()))
-		    + " > " + tmpf.toFilesystemEncoding(),
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 }
 
