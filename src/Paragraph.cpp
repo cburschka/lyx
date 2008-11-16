@@ -1277,7 +1277,7 @@ void Paragraph::appendString(docstring const & s, Font const & font,
 	d->text_.append(s);
 
 	// FIXME: Optimize this!
-	for (pos_type i = oldsize; i != newsize; ++i) {
+	for (size_t i = oldsize; i != newsize; ++i) {
 		// track change
 		d->changes_.insert(change, i);
 	}
