@@ -223,7 +223,7 @@ Function .onInit
   ${endif}
   
   # printer settings, needed to install the Metafile2eps printer
-  !insertmacro PrinterInit
+  !insertmacro PrinterInit # macro from InstallThirdPartyProgs.nsh
 
   # default settings
   # these can be reset to "all" in section SecAllUsers

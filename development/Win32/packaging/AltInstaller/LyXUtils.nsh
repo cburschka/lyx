@@ -112,12 +112,20 @@ FunctionEnd
 #--------------------------------
 
 !macro AppPreSuff AppPre AppSuff
- # the APPDATA path has always the following structure:
+ # the APPDATA path for a local user has for WinXP and 2000 the following structure:
  # C:\Documents and Settings\username\Application Data
+ # for Win Vista the structure is:
+ # C:\Users\username\AppData\Roaming
  # this macro saves the "C:\Documents and Settings\" substring into the variable "AppPre"
  # and the "Application Data" substring into the variable "AppSuff"
   
+  SetShellVarContext current # switch temoprarily to local user
   StrCpy $String "$APPDATA"
+  Var /GLOBAL APPDATemp
+  StrCpy $APPDATemp "$APPDATA"
+  ${if} $ProductRootKey == "HKLM"
+   SetShellVarContext all # move back to all users
+  ${endif}
   StrCpy $Search "\"
   Call StrPoint # search for the first "\"
   IntOp $Pointer $Pointer + 1 # jump after the "\"
@@ -125,7 +133,7 @@ FunctionEnd
   StrCpy $0 $Pointer
   Call StrPoint # search for the second "\"
   IntOp $0 $0 + $Pointer # $0 is now the pointer to the second "\" in the APPDATA string
-  StrCpy ${AppPre} $APPDATA $0 # save the part before the second "\"
+  StrCpy ${AppPre} $APPDATemp $0 # save the part before the second "\"
   IntOp $Pointer $Pointer + 1 # jump after the "\"
   StrCpy $String $String "" $Pointer # cut off the part before the second "\"
   Call StrPoint # search for the third "\"
@@ -257,12 +265,19 @@ FunctionEnd
 #--------------------------------
 
 !macro UnAppPreSuff AppPre AppSuff
- # the APPDATA path has always the following structure:
+ # the APPDATA path for a local user has for WinXP and 2000 the following structure:
  # C:\Documents and Settings\username\Application Data
+ # for Win Vista the structure is:
+ # C:\Users\username\AppData\Roaming
  # this macro saves the "C:\Documents and Settings\" substring into the variable "AppPre"
  # and the "Application Data" substring into the variable "AppSuff"
   
+  SetShellVarContext current # switch temoprarily to local user
   StrCpy $String "$APPDATA"
+  StrCpy $APPDATemp "$APPDATA"
+  ${if} $Answer == "yes" # then user has admin priviledges
+   SetShellVarContext all # move back to all users
+  ${endif}
   StrCpy $Search "\"
   Call un.StrPoint # search for the first "\"
   IntOp $Pointer $Pointer + 1 # jump after the "\"
@@ -270,7 +285,7 @@ FunctionEnd
   StrCpy $0 $Pointer
   Call un.StrPoint # search for the second "\"
   IntOp $0 $0 + $Pointer # $0 is now the pointer to the second "\" in the APPDATA string
-  StrCpy ${AppPre} $APPDATA $0 # save the part before the second "\"
+  StrCpy ${AppPre} $APPDATemp $0 # save the part before the second "\"
   IntOp $Pointer $Pointer + 1 # jump after the "\"
   StrCpy $String $String "" $Pointer # cut off the part before the second "\"
   Call un.StrPoint # search for the third "\"

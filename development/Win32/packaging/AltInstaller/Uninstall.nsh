@@ -137,6 +137,9 @@ Section "un.LyX" un.SecUnProgramFiles
   ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
    ReadRegStr $R0 SHCTX "Software\Classes\${PRODUCT_EXT}" ""
    ${if} $R0 == "${PRODUCT_REGNAME}"
+    DeleteRegKey SHCTX "Software\Classes\${PRODUCT_EXT}13"
+    DeleteRegKey SHCTX "Software\Classes\${PRODUCT_EXT}14"
+    DeleteRegKey SHCTX "Software\Classes\${PRODUCT_EXT}15"
     DeleteRegKey SHCTX "Software\Classes\${PRODUCT_EXT}"
     DeleteRegKey SHCTX "Software\Classes\${PRODUCT_REGNAME}"
    ${endif}
