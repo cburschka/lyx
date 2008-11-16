@@ -359,6 +359,8 @@ public:
 	/// move the cursor up by sending an internal LFUN_DOWN,
 	/// return true if fullscreen update is needed
 	bool down();
+	/// whether the cursor is either at the first or last row
+	bool atFirstOrLastRow(bool up);
 	/// move up/down in a text inset, called for LFUN_UP/DOWN,
 	/// return true if successful, updateNeeded set to true if fullscreen
 	/// update is needed, otherwise it's not touched

@@ -1702,6 +1702,28 @@ bool Cursor::upDownInMath(bool up)
 }
 
 
+bool Cursor::atFirstOrLastRow(bool up)
+{
+	TextMetrics const & tm = bv_->textMetrics(text());
+	ParagraphMetrics const & pm = tm.parMetrics(pit());
+	
+	int row;
+	if (pos() && boundary())
+		row = pm.pos2row(pos() - 1);
+	else
+		row = pm.pos2row(pos());
+	
+	if (up) {
+		if (pit() == 0 && row == 0)
+			return true;
+	} else {
+		if (pit() + 1 >= int(text()->paragraphs().size()) &&
+				row + 1 >= int(pm.rows().size()))
+			return true;
+	}
+	return false;
+}
+
 bool Cursor::upDownInText(bool up, bool & updateNeeded)
 {
 	LASSERT(text(), /**/);
@@ -1755,15 +1777,8 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 	else
 		row = pm.pos2row(pos());
 		
-	// are we not at the start or end?
-	if (up) {
-		if (pit() == 0 && row == 0)
-			return false;
-	} else {
-		if (pit() + 1 >= int(text()->paragraphs().size()) &&
-				row + 1 >= int(pm.rows().size()))
-			return false;
-	}
+	if (atFirstOrLastRow(up))
+		return false;
 
 	// with and without selection are handled differently
 	if (!selection()) {
