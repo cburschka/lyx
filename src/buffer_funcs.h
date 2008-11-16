@@ -47,9 +47,6 @@ int countWords(DocIterator const & from, DocIterator const & to);
 /// Count the number of chars in the text between these two iterators
 int countChars(DocIterator const & from, DocIterator const & to, bool with_blanks);
 
-///
-void updateLabels(Buffer const &, ParIterator &);
-
 } // namespace lyx
 
 #endif // BUFFER_FUNCS_H

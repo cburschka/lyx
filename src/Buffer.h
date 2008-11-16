@@ -469,6 +469,8 @@ public:
 	// FIXME: buf should should be const because updateLabels() modifies
 	// the contents of the paragraphs.
 	void updateLabels(bool childonly = false) const;
+	///
+	void updateLabels(ParIterator & parit) const;
 
 private:
 	/// search for macro in local (buffer) table or in children

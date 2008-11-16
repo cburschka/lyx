@@ -458,13 +458,13 @@ void InsetText::updateLabels(ParIterator const & it)
 {
 	ParIterator it2 = it;
 	it2.forwardPos();
-	LASSERT(&it2.inset() == this && it2.pit() == 0, /**/);
-	if (producesOutput())
-		lyx::updateLabels(buffer(), it2);
-	else {
+	LASSERT(&it2.inset() == this && it2.pit() == 0, return);
+	if (producesOutput()) {
+		buffer().updateLabels(it2);
+	} else {
 		DocumentClass const & tclass = buffer().masterBuffer()->params().documentClass();
 		Counters const savecnt = tclass.counters();
-		lyx::updateLabels(buffer(), it2);
+		buffer().updateLabels(it2);
 		tclass.counters() = savecnt;
 	}
 }

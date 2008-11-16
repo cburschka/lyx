@@ -3220,7 +3220,7 @@ void InsetTabular::updateLabels(ParIterator const & it)
 	it2.forwardPos();
 	size_t const end = it2.nargs();
 	for ( ; it2.idx() < end; it2.top().forwardIdx())
-		lyx::updateLabels(buffer(), it2);
+		buffer().updateLabels(it2);
 
 	//reset afterwards
 	if (tabular.is_long_tabular)

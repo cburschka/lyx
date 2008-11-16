@@ -1796,20 +1796,20 @@ bool LyXFunc::wasMetaKey() const
 }
 
 
-void LyXFunc::updateLayout(DocumentClass const * const oldlayout, Buffer * buffer)
+void LyXFunc::updateLayout(DocumentClass const * const oldlayout, Buffer * buf)
 {
 	lyx_view_->message(_("Converting document to new document class..."));
 	
 	StableDocIterator backcur(view()->cursor());
-	ErrorList & el = buffer->errorList("Class Switch");
+	ErrorList & el = buf->errorList("Class Switch");
 	cap::switchBetweenClasses(
-			oldlayout, buffer->params().documentClassPtr(),
-			static_cast<InsetText &>(buffer->inset()), el);
+			oldlayout, buf->params().documentClassPtr(),
+			static_cast<InsetText &>(buf->inset()), el);
 
-	view()->setCursor(backcur.asDocIterator(&(buffer->inset())));
+	view()->setCursor(backcur.asDocIterator(&(buf->inset())));
 
-	buffer->errors("Class Switch");
-	buffer->updateLabels();
+	buf->errors("Class Switch");
+	buf->updateLabels();
 }
 
 
@@ -1827,6 +1827,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_ACCEPT_COMPOUND:
 	case LyXRC::RC_ALT_LANG:
 	case LyXRC::RC_PLAINTEXT_LINELEN:
+	case LyXRC::RC_PLAINTEXT_ROFF_COMMAND:
 	case LyXRC::RC_AUTOREGIONDELETE:
 	case LyXRC::RC_AUTORESET_OPTIONS:
 	case LyXRC::RC_AUTOSAVE:
@@ -1969,6 +1970,4 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 }
 
 } // namespace anon
-
-
 } // namespace lyx

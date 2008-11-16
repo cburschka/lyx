@@ -2684,7 +2684,7 @@ void Buffer::updateLabels(bool childonly) const
 
 	// do the real work
 	ParIterator parit = cbuf.par_iterator_begin();
-	lyx::updateLabels(*this, parit);
+	updateLabels(parit);
 
 	if (master != this)
 		// TocBackend update will be done later.
@@ -2693,6 +2693,258 @@ void Buffer::updateLabels(bool childonly) const
 	cbuf.tocBackend().update();
 	if (!childonly)
 		cbuf.structureChanged();
+}
+
+
+static depth_type getDepth(DocIterator const & it)
+{
+	depth_type depth = 0;
+	for (size_t i = 0 ; i < it.depth() ; ++i)
+		if (!it[i].inset().inMathed())
+			depth += it[i].paragraph().getDepth() + 1;
+	// remove 1 since the outer inset does not count
+	return depth - 1;
+}
+
+static depth_type getItemDepth(ParIterator const & it)
+{
+	Paragraph const & par = *it;
+	LabelType const labeltype = par.layout().labeltype;
+
+	if (labeltype != LABEL_ENUMERATE && labeltype != LABEL_ITEMIZE)
+		return 0;
+
+	// this will hold the lowest depth encountered up to now.
+	depth_type min_depth = getDepth(it);
+	ParIterator prev_it = it;
+	while (true) {
+		if (prev_it.pit())
+			--prev_it.top().pit();
+		else {
+			// start of nested inset: go to outer par
+			prev_it.pop_back();
+			if (prev_it.empty()) {
+				// start of document: nothing to do
+				return 0;
+			}
+		}
+
+		// We search for the first paragraph with same label
+		// that is not more deeply nested.
+		Paragraph & prev_par = *prev_it;
+		depth_type const prev_depth = getDepth(prev_it);
+		if (labeltype == prev_par.layout().labeltype) {
+			if (prev_depth < min_depth)
+				return prev_par.itemdepth + 1;
+			if (prev_depth == min_depth)
+				return prev_par.itemdepth;
+		}
+		min_depth = min(min_depth, prev_depth);
+		// small optimization: if we are at depth 0, we won't
+		// find anything else
+		if (prev_depth == 0)
+			return 0;
+	}
+}
+
+
+static bool needEnumCounterReset(ParIterator const & it)
+{
+	Paragraph const & par = *it;
+	LASSERT(par.layout().labeltype == LABEL_ENUMERATE, /**/);
+	depth_type const cur_depth = par.getDepth();
+	ParIterator prev_it = it;
+	while (prev_it.pit()) {
+		--prev_it.top().pit();
+		Paragraph const & prev_par = *prev_it;
+		if (prev_par.getDepth() <= cur_depth)
+			return  prev_par.layout().labeltype != LABEL_ENUMERATE;
+	}
+	// start of nested inset: reset
+	return true;
+}
+
+
+// set the label of a paragraph. This includes the counters.
+static void setLabel(Buffer const & buf, ParIterator & it)
+{
+	BufferParams const & bp = buf.masterBuffer()->params();
+	DocumentClass const & textclass = bp.documentClass();
+	Paragraph & par = it.paragraph();
+	Layout const & layout = par.layout();
+	Counters & counters = textclass.counters();
+
+	if (par.params().startOfAppendix()) {
+		// FIXME: only the counter corresponding to toplevel
+		// sectionning should be reset
+		counters.reset();
+		counters.appendix(true);
+	}
+	par.params().appendix(counters.appendix());
+
+	// Compute the item depth of the paragraph
+	par.itemdepth = getItemDepth(it);
+
+	if (layout.margintype == MARGIN_MANUAL) {
+		if (par.params().labelWidthString().empty())
+			par.params().labelWidthString(par.translateIfPossible(layout.labelstring(), bp));
+	} else {
+		par.params().labelWidthString(docstring());
+	}
+
+	switch(layout.labeltype) {
+	case LABEL_COUNTER:
+		if (layout.toclevel <= bp.secnumdepth
+		    && (layout.latextype != LATEX_ENVIRONMENT
+			|| isFirstInSequence(it.pit(), it.plist()))) {
+			counters.step(layout.counter);
+			par.params().labelString(
+				par.expandLabel(layout, bp));
+		} else
+			par.params().labelString(docstring());
+		break;
+
+	case LABEL_ITEMIZE: {
+		// At some point of time we should do something more
+		// clever here, like:
+		//   par.params().labelString(
+		//    bp.user_defined_bullet(par.itemdepth).getText());
+		// for now, use a simple hardcoded label
+		docstring itemlabel;
+		switch (par.itemdepth) {
+		case 0:
+			itemlabel = char_type(0x2022);
+			break;
+		case 1:
+			itemlabel = char_type(0x2013);
+			break;
+		case 2:
+			itemlabel = char_type(0x2217);
+			break;
+		case 3:
+			itemlabel = char_type(0x2219); // or 0x00b7
+			break;
+		}
+		par.params().labelString(itemlabel);
+		break;
+	}
+
+	case LABEL_ENUMERATE: {
+		// FIXME: Yes I know this is a really, really! bad solution
+		// (Lgb)
+		docstring enumcounter = from_ascii("enum");
+
+		switch (par.itemdepth) {
+		case 2:
+			enumcounter += 'i';
+		case 1:
+			enumcounter += 'i';
+		case 0:
+			enumcounter += 'i';
+			break;
+		case 3:
+			enumcounter += "iv";
+			break;
+		default:
+			// not a valid enumdepth...
+			break;
+		}
+
+		// Maybe we have to reset the enumeration counter.
+		if (needEnumCounterReset(it))
+			counters.reset(enumcounter);
+
+		counters.step(enumcounter);
+
+		string format;
+
+		switch (par.itemdepth) {
+		case 0:
+			format = N_("\\arabic{enumi}.");
+			break;
+		case 1:
+			format = N_("(\\alph{enumii})");
+			break;
+		case 2:
+			format = N_("\\roman{enumiii}.");
+			break;
+		case 3:
+			format = N_("\\Alph{enumiv}.");
+			break;
+		default:
+			// not a valid enumdepth...
+			break;
+		}
+
+		par.params().labelString(counters.counterLabel(
+			par.translateIfPossible(from_ascii(format), bp)));
+
+		break;
+	}
+
+	case LABEL_SENSITIVE: {
+		string const & type = counters.current_float();
+		docstring full_label;
+		if (type.empty())
+			full_label = buf.B_("Senseless!!! ");
+		else {
+			docstring name = buf.B_(textclass.floats().getType(type).name());
+			if (counters.hasCounter(from_utf8(type))) {
+				counters.step(from_utf8(type));
+				full_label = bformat(from_ascii("%1$s %2$s:"), 
+						     name, 
+						     counters.theCounter(from_utf8(type)));
+			} else
+				full_label = bformat(from_ascii("%1$s #:"), name);	
+		}
+		par.params().labelString(full_label);	
+		break;
+	}
+
+	case LABEL_NO_LABEL:
+		par.params().labelString(docstring());
+		break;
+
+	case LABEL_MANUAL:
+	case LABEL_TOP_ENVIRONMENT:
+	case LABEL_CENTERED_TOP_ENVIRONMENT:
+	case LABEL_STATIC:	
+	case LABEL_BIBLIO:
+		par.params().labelString(
+			par.translateIfPossible(layout.labelstring(), bp));
+		break;
+	}
+}
+
+
+void Buffer::updateLabels(ParIterator & parit) const
+{
+	LASSERT(parit.pit() == 0, /**/);
+
+	// set the position of the text in the buffer to be able
+	// to resolve macros in it. This has nothing to do with
+	// labels, but by putting it here we avoid implementing
+	// a whole bunch of traversal routines just for this call.
+	parit.text()->setMacrocontextPosition(parit);
+
+	depth_type maxdepth = 0;
+	pit_type const lastpit = parit.lastpit();
+	for ( ; parit.pit() <= lastpit ; ++parit.pit()) {
+		// reduce depth if necessary
+		parit->params().depth(min(parit->params().depth(), maxdepth));
+		maxdepth = parit->getMaxDepthAfter();
+
+		// set the counter for this paragraph
+		setLabel(*this, parit);
+
+		// Now the insets
+		InsetList::const_iterator iit = parit->insetList().begin();
+		InsetList::const_iterator end = parit->insetList().end();
+		for (; iit != end; ++iit) {
+			parit.pos() = iit->pos;
+			iit->inset->updateLabels(parit);
+		}
+	}
 }
 
 } // namespace lyx
