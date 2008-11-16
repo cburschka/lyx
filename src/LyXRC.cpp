@@ -23,11 +23,12 @@
 
 #include "Color.h"
 #include "Converter.h"
-#include "Format.h"
-#include "Session.h"
-#include "Lexer.h"
 #include "FontEnums.h"
+#include "Format.h"
+#include "Lexer.h"
 #include "Mover.h"
+#include "Session.h"
+#include "version.h"
 
 #include "graphics/GraphicsTypes.h"
 
@@ -1155,8 +1156,9 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 	}
 
 	if (tag == RC_LAST)
-		os << "# This file is written by LyX, if you want to make your own\n"
-		   << "# modifications you should do them from inside LyX and save\n"
+		os << "# LyX " << lyx_version
+		   << " generated this file. If you want to make your own\n"
+		   << "# modifications you should do them from inside LyX and save.\n"
 		   << "\n";
 
 	// Why the switch you might ask. It is a trick to ensure that all
