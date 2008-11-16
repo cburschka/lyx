@@ -395,7 +395,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	switch (cmd.action) {
 	case LFUN_UNKNOWN_ACTION:
-#ifndef HAVE_LIBAIKSAURUS
+#ifndef HAVE_THESAURUS
 	case LFUN_THESAURUS_ENTRY:
 #endif
 		flag.unknown(true);
@@ -1943,6 +1943,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 		if (lyxrc_orig.windows_style_tex_paths != lyxrc_new.windows_style_tex_paths) {
 			os::windows_style_tex_paths(lyxrc_new.windows_style_tex_paths);
 		}
+	case LyXRC::RC_THESAURUSDIRPATH:
 	case LyXRC::RC_UIFILE:
 	case LyXRC::RC_USER_EMAIL:
 	case LyXRC::RC_USER_NAME:

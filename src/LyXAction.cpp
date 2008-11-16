@@ -961,7 +961,9 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_THESAURUS_ENTRY
  * \li Action: Look up thesaurus entries with respect to the word under the cursor.
- * \li Syntax: thesaurus-entry
+ * \li Syntax: thesaurus-entry [<STRING>] [lang=<LANG>]
+ * \li Params: <STRING>: word to look up
+               <LANG>: language (see file languages)
  * \li Origin: Levon, 20 Jul 2001
  * \endvar
  */

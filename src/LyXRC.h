@@ -149,6 +149,7 @@ public:
 		RC_TEMPLATEPATH,
 		RC_TEX_ALLOWS_SPACES,
 		RC_TEX_EXPECTS_WINDOWS_PATHS,
+		RC_THESAURUSDIRPATH,
 		RC_UIFILE,
 		RC_USELASTFILEPOS,
 		RC_USER_EMAIL,
@@ -257,6 +258,8 @@ public:
 	std::string template_path;
 	///
 	std::string tempdir_path;
+	///
+	std::string thesaurusdir_path;
 	///
 	bool auto_region_delete;
 	/// flag telling whether lastfiles should be checked for existance

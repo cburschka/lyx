@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>310</width>
+    <width>313</width>
     <height>414</height>
    </rect>
   </property>
@@ -22,56 +22,57 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="1" column="0" >
-    <widget class="QTreeWidget" name="meaningsTV" />
-   </item>
-   <item row="0" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+   <item row="0" column="1" colspan="2" >
+    <widget class="QComboBox" name="languageCO" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>3</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <property name="spacing" >
-      <number>6</number>
+     <property name="toolTip" >
+      <string>Language of the thesaurus</string>
      </property>
-     <item>
-      <widget class="QLabel" name="entryLA" >
-       <property name="toolTip" >
-        <string>Index entry</string>
-       </property>
-       <property name="text" >
-        <string>&amp;Keyword:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>entryED</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="entryED" >
-       <property name="toolTip" >
-        <string>Entry</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
+    </widget>
    </item>
-   <item row="2" column="0" >
+   <item row="1" column="1" >
+    <widget class="QComboBox" name="entryCO" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>3</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip" >
+      <string>Word to look up</string>
+     </property>
+     <property name="editable" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" >
+    <widget class="QPushButton" name="lookupPB" >
+     <property name="toolTip" >
+      <string/>
+     </property>
+     <property name="text" >
+      <string>L&amp;ookup</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="3" >
+    <widget class="QTreeWidget" name="meaningsTV" >
+     <property name="toolTip" >
+      <string>Click to select a proposal, double click to look it up.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -111,7 +112,7 @@
      </item>
     </layout>
    </item>
-   <item row="3" column="0" >
+   <item row="4" column="0" colspan="3" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -144,19 +145,43 @@
      </item>
     </layout>
    </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="languageLA" >
+     <property name="text" >
+      <string>&amp;Language:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>languageCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLabel" name="entryLA" >
+     <property name="toolTip" >
+      <string>Index entry</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Keyword:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>entryCO</cstring>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
+ <tabstops>
+  <tabstop>languageCO</tabstop>
+  <tabstop>entryCO</tabstop>
+  <tabstop>lookupPB</tabstop>
+  <tabstop>replaceED</tabstop>
+  <tabstop>replacePB</tabstop>
+  <tabstop>meaningsTV</tabstop>
+  <tabstop>closePB</tabstop>
+ </tabstops>
  <includes>
   <include location="local" >qt_i18n.h</include>
  </includes>
- <tabstops>
-  <tabstop>entryED</tabstop>
-  <tabstop>meaningsTV</tabstop>
-  <tabstop>replaceED</tabstop>
-  <tabstop>replacePB</tabstop>
-  <tabstop>closePB</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>

@@ -165,6 +165,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\template_path", LyXRC::RC_TEMPLATEPATH },
 	{ "\\tex_allows_spaces", LyXRC::RC_TEX_ALLOWS_SPACES },
 	{ "\\tex_expects_windows_paths", LyXRC::RC_TEX_EXPECTS_WINDOWS_PATHS },
+	{ "\\thesaurusdir_path", LyXRC::RC_THESAURUSDIRPATH },
 	{ "\\ui_file", LyXRC::RC_UIFILE },
 	{ "\\use_alt_language", LyXRC::RC_USE_ALT_LANG },
 	{ "\\use_converter_cache", LyXRC::RC_USE_CONVERTER_CACHE },
@@ -667,6 +668,13 @@ int LyXRC::read(Lexer & lexrc)
 			if (lexrc.next()) {
 				tempdir_path = os::internal_path(lexrc.getString());
 				tempdir_path = expandPath(tempdir_path);
+			}
+			break;
+
+		case RC_THESAURUSDIRPATH:
+			if (lexrc.next()) {
+				thesaurusdir_path = os::internal_path(lexrc.getString());
+				thesaurusdir_path = expandPath(thesaurusdir_path);
 			}
 			break;
 
@@ -2039,6 +2047,14 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_THESAURUSDIRPATH:
+		if (ignore_system_lyxrc ||
+		    thesaurusdir_path != system_lyxrc.thesaurusdir_path) {
+			string const path = os::external_path(thesaurusdir_path);
+			os << "\\thesaurusdir_path \"" << path << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_USETEMPDIR:
 		if (tag != RC_LAST)
 			break;
@@ -2789,6 +2805,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_TEMPDIRPATH:
 		str = _("LyX will place its temporary directories in this path. They will be deleted when you quit LyX.");
+		break;
+
+	case RC_THESAURUSDIRPATH:
+		str = _("This is the place where the files of the thesaurus library reside.");
 		break;
 
 	case RC_TEMPLATEPATH:

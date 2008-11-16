@@ -1798,6 +1798,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				// Get word or selection
 				selectWordWhenUnderCursor(cur, WHOLE_WORD);
 				arg = cur.selectionAsString(false);
+				arg += " lang=" + from_ascii(cur.getFont().language()->lang());
 			}
 		}
 		bv->showDialog("thesaurus", to_utf8(arg));

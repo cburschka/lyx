@@ -926,6 +926,7 @@ PrefPaths::PrefPaths(GuiPreferences * form)
 	connect(backupDirPB, SIGNAL(clicked()), this, SLOT(select_backupdir()));
 	connect(workingDirPB, SIGNAL(clicked()), this, SLOT(select_workingdir()));
 	connect(lyxserverDirPB, SIGNAL(clicked()), this, SLOT(select_lyxpipe()));
+	connect(thesaurusDirPB, SIGNAL(clicked()), this, SLOT(select_thesaurusdir()));
 	connect(workingDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(exampleDirED, SIGNAL(textChanged(QString)),
@@ -937,6 +938,8 @@ PrefPaths::PrefPaths(GuiPreferences * form)
 	connect(tempDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(lyxserverDirED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
+	connect(thesaurusDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(pathPrefixED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
@@ -950,6 +953,7 @@ void PrefPaths::apply(LyXRC & rc) const
 	rc.template_path = internal_path(fromqstr(templateDirED->text()));
 	rc.backupdir_path = internal_path(fromqstr(backupDirED->text()));
 	rc.tempdir_path = internal_path(fromqstr(tempDirED->text()));
+	rc.thesaurusdir_path = internal_path(fromqstr(thesaurusDirED->text()));
 	rc.path_prefix = internal_path_list(fromqstr(pathPrefixED->text()));
 	// FIXME: should be a checkbox only
 	rc.lyxpipes = internal_path(fromqstr(lyxserverDirED->text()));
@@ -963,6 +967,7 @@ void PrefPaths::update(LyXRC const & rc)
 	templateDirED->setText(toqstr(external_path(rc.template_path)));
 	backupDirED->setText(toqstr(external_path(rc.backupdir_path)));
 	tempDirED->setText(toqstr(external_path(rc.tempdir_path)));
+	thesaurusDirED->setText(toqstr(external_path(rc.thesaurusdir_path)));
 	pathPrefixED->setText(toqstr(external_path_list(rc.path_prefix)));
 	// FIXME: should be a checkbox only
 	lyxserverDirED->setText(toqstr(external_path(rc.lyxpipes)));
@@ -1011,6 +1016,15 @@ void PrefPaths::select_workingdir()
 		qt_("Select a document directory"));
 	if (!file.isEmpty())
 		workingDirED->setText(file);
+}
+
+
+void PrefPaths::select_thesaurusdir()
+{
+	QString file = browseDir(internalPath(thesaurusDirED->text()),
+		qt_("Set the path to the thesaurus dictionaries"));
+	if (!file.isEmpty())
+		thesaurusDirED->setText(file);
 }
 
 

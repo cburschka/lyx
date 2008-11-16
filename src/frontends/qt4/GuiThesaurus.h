@@ -54,7 +54,8 @@ private:
 	void replace(docstring const & newstr);
 
 	/// get meanings
-	Thesaurus::Meanings const & getMeanings(docstring const & str);
+	Thesaurus::Meanings const & getMeanings(docstring const & str,
+		docstring const & lang);
 
 private:
 	/// last string looked up
@@ -65,6 +66,9 @@ private:
 
 	/// original string
 	docstring text_;
+
+	/// language
+	docstring lang_;
 
 	/// not needed.
 	void apply() {}
