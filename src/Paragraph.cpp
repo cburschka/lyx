@@ -2084,7 +2084,8 @@ bool Paragraph::latex(BufferParams const & bparams,
 				os << fontchange;
 		}
 
-		if (c == ' ' && i >= start_pos && i < end_pos) {
+		// FIXME: think about end_pos implementation...
+		if (c == ' ' && i >= start_pos && (end_pos == -1 || i < end_pos)) {
 			// FIXME: integrate this case in latexSpecialChar
 			// Do not print the separation of the optional argument
 			// if style.pass_thru is false. This works because
@@ -2113,17 +2114,18 @@ bool Paragraph::latex(BufferParams const & bparams,
 		// Handle here those cases common to both modes
 		// and then split to handle the two modes separately.
 		if (c == META_INSET) {
-			if (i >= start_pos && i < end_pos)
-			d->latexInset(bparams, os,
-					texrow, rp, running_font,
-					basefont, outerfont, open_font,
-					runningChange, style, i, column);
+			if (i >= start_pos && (end_pos == -1 || i < end_pos)) {
+				d->latexInset(bparams, os,
+						texrow, rp, running_font,
+						basefont, outerfont, open_font,
+						runningChange, style, i, column);
+			}
 		} else {
-			if (i >= start_pos && i < end_pos) {
-			try {
-				d->latexSpecialChar(os, rp, running_font, runningChange,
-					style, i, column);
-			} catch (EncodingException & e) {
+			if (i >= start_pos && (end_pos == -1 || i < end_pos)) {
+				try {
+					d->latexSpecialChar(os, rp, running_font, runningChange,
+						style, i, column);
+				} catch (EncodingException & e) {
 				if (runparams.dryrun) {
 					os << "<" << _("LyX Warning: ")
 					   << _("uncodable character") << " '";
