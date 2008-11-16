@@ -17,6 +17,7 @@
 #include "tex2lyx.h"
 
 #include "Context.h"
+#include "Encoding.h"
 #include "FloatList.h"
 #include "Layout.h"
 #include "Length.h"
@@ -2239,21 +2240,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			handle_ert(os, oss.str(), context);
 		}
 
-#if 0
-//FIXME: rewrite this
-		else if (t.cs() == "\"") {
-			context.check_layout(os);
-			string const name = p.verbatim_item();
-			     if (name == "a") os << '\xe4';
-			else if (name == "o") os << '\xf6';
-			else if (name == "u") os << '\xfc';
-			else if (name == "A") os << '\xc4';
-			else if (name == "O") os << '\xd6';
-			else if (name == "U") os << '\xdc';
-			else handle_ert(os, "\"{" + name + "}", context);
-		}
-#endif
-
 		// Problem: \= creates a tabstop inside the tabbing environment
 		// and else an accent. In the latter case we really would want
 		// \={o} instead of \= o.
@@ -2264,33 +2250,22 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			 || t.cs() == "'" || t.cs() == "`"
 			 || t.cs() == "~" || t.cs() == "." || t.cs() == "=") {
 			// we need the trim as the LyX parser chokes on such spaces
-			// The argument of InsetLatexAccent is parsed as a
-			// subset of LaTeX, so don't parse anything here,
-			// but use the raw argument.
-			// Otherwise we would convert \~{\i} wrongly.
-			// This will of course not translate \~{\ss} to \~{Ã},
-			// but that does at least compile and does only look
-			// strange on screen.
 			context.check_layout(os);
-			os << "\\i \\" << t.cs() << "{"
-			   << trim(p.verbatim_item(), " ")
-			   << "}\n";
-		}
-
-#if 0
-//FIXME: rewrite this
-		else if (t.cs() == "ss") {
-			context.check_layout(os);
-			os << "\xdf";
-			skip_braces(p); // eat {}
-		}
-#endif
-
-		else if (t.cs() == "i" || t.cs() == "j" || t.cs() == "l" ||
-			 t.cs() == "L") {
-			context.check_layout(os);
-			os << "\\i \\" << t.cs() << "{}\n";
-			skip_braces(p); // eat {}
+			// try to see whether the string is in unicodesymbols
+			docstring rem;
+			string command = t.asInput() + "{" 
+				+ trim(p.verbatim_item())
+				+ "}";
+			docstring s = encodings.fromLaTeXCommand(from_utf8(command), rem);
+			if (!s.empty()) {
+				if (!rem.empty())
+					cerr << "When parsing " << command 
+					     << ", result is " << to_utf8(s)
+					     << "+" << to_utf8(rem) << endl;
+				os << to_utf8(s);
+			} else
+				// we did not find a non-ert version
+				handle_ert(os, command, context);
 		}
 
 		else if (t.cs() == "\\") {
@@ -2544,6 +2519,18 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else {
+			// try to see whether the string is in unicodesymbols
+			docstring rem;
+			docstring s = encodings.fromLaTeXCommand(from_utf8(t.asInput()), rem);
+			if (!s.empty()) {
+				if (!rem.empty())
+					cerr << "When parsing " << t.cs() 
+					     << ", result is " << to_utf8(s)
+					     << "+" << to_utf8(rem) << endl;
+				context.check_layout(os);
+				os << to_utf8(s);
+				skip_braces(p); // eat {}
+			}
 			//cerr << "#: " << t << " mode: " << mode << endl;
 			// heuristic: read up to next non-nested space
 			/*
@@ -2557,14 +2544,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			cerr << "found ERT: " << s << endl;
 			handle_ert(os, s + ' ', context);
 			*/
-			string name = t.asInput();
-			if (p.next_token().asInput() == "*") {
-				// Starred commands like \vspace*{}
-				p.get_token();				// Eat '*'
-				name += '*';
+			else {
+				string name = t.asInput();
+				if (p.next_token().asInput() == "*") {
+					// Starred commands like \vspace*{}
+					p.get_token();	// Eat '*'
+					name += '*';
+				}
+				if (!parse_command(name, p, os, outer, context))
+					handle_ert(os, name, context);
 			}
-			if (! parse_command(name, p, os, outer, context))
-				handle_ert(os, name, context);
 		}
 
 		if (flags & FLAG_LEAVE) {
