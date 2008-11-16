@@ -1,0 +1,326 @@
+<ui version="4.0" >
+ <class>FindAndReplaceUi</class>
+ <widget class="QWidget" name="FindAndReplaceUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>338</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize" >
+   <size>
+    <width>240</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="baseSize" >
+   <size>
+    <width>300</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="windowTitle" >
+   <string>Find LyX Text</string>
+  </property>
+  <property name="toolTip" >
+   <string/>
+  </property>
+  <widget class="QWidget" name="" >
+   <property name="geometry" >
+    <rect>
+     <x>4</x>
+     <y>4</y>
+     <width>301</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout" >
+    <item row="0" column="0" colspan="2" >
+     <widget class="lyx::frontend::GuiWorkArea" name="find_work_area_" >
+      <property name="widgetResizable" >
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents" >
+       <property name="geometry" >
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>293</width>
+         <height>108</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="1" column="0" >
+     <widget class="QCheckBox" name="expandMacrosCB" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
+      <property name="text" >
+       <string>&amp;Expand macros</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1" >
+     <widget class="QCheckBox" name="caseCB" >
+      <property name="text" >
+       <string>Case &amp;sensitive</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" >
+     <widget class="QCheckBox" name="wordsCB" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
+      <property name="text" >
+       <string>Whole words onl&amp;y</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1" >
+     <widget class="QCheckBox" name="ignoreFormatCB" >
+      <property name="enabled" >
+       <bool>true</bool>
+      </property>
+      <property name="text" >
+       <string>Ignore For&amp;mat</string>
+      </property>
+      <property name="checked" >
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" >
+     <widget class="QPushButton" name="findNextPB" >
+      <property name="enabled" >
+       <bool>true</bool>
+      </property>
+      <property name="text" >
+       <string>Find &amp;Next</string>
+      </property>
+      <property name="default" >
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1" >
+     <widget class="QPushButton" name="findPrevPB" >
+      <property name="enabled" >
+       <bool>true</bool>
+      </property>
+      <property name="text" >
+       <string>Find &amp;Prev</string>
+      </property>
+      <property name="default" >
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0" >
+     <widget class="QPushButton" name="replacePB" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
+      <property name="text" >
+       <string>&amp;Replace</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0" >
+     <widget class="QPushButton" name="replaceallPB" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
+      <property name="text" >
+       <string>Replace &amp;All</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1" >
+     <widget class="QPushButton" name="closePB" >
+      <property name="text" >
+       <string>&amp;Close</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0" >
+     <widget class="QGroupBox" name="groupBox_2" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
+      <property name="sizePolicy" >
+       <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize" >
+       <size>
+        <width>0</width>
+        <height>111</height>
+       </size>
+      </property>
+      <property name="title" >
+       <string>Sco&amp;pe</string>
+      </property>
+      <widget class="QRadioButton" name="scopeRB" >
+       <property name="geometry" >
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>121</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="toolTip" >
+        <string>Current buffer only</string>
+       </property>
+       <property name="text" >
+        <string>Buffer</string>
+       </property>
+       <property name="checked" >
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="scopeRB_3" >
+       <property name="geometry" >
+        <rect>
+         <x>10</x>
+         <y>60</y>
+         <width>121</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="toolTip" >
+        <string>Current file and all included files</string>
+       </property>
+       <property name="text" >
+        <string>Document</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="scopeRB_2" >
+       <property name="geometry" >
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>121</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="toolTip" >
+        <string>Current paragraph only</string>
+       </property>
+       <property name="text" >
+        <string>Paragraph</string>
+       </property>
+       <property name="checked" >
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="scopeRB_4" >
+       <property name="geometry" >
+        <rect>
+         <x>10</x>
+         <y>80</y>
+         <width>121</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="toolTip" >
+        <string>All open buffers</string>
+       </property>
+       <property name="text" >
+        <string>Open buffers</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="6" column="1" >
+     <widget class="QGroupBox" name="groupBox_3" >
+      <property name="enabled" >
+       <bool>true</bool>
+      </property>
+      <property name="sizePolicy" >
+       <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize" >
+       <size>
+        <width>0</width>
+        <height>111</height>
+       </size>
+      </property>
+      <property name="title" >
+       <string>RegExp</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout" >
+       <item>
+        <widget class="QComboBox" name="regexpInsertCombo" >
+         <property name="enabled" >
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy" >
+          <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <item>
+          <property name="text" >
+           <string>Match...</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Anything</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Any non-empty</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Any word</string>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Any number</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>lyx::frontend::GuiWorkArea</class>
+   <extends>QScrollArea</extends>
+   <header>GuiWorkArea.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>
