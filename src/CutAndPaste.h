@@ -64,6 +64,8 @@ void replaceSelection(Cursor & cur);
 void cutSelection(Cursor & cur, bool doclear = true, bool realcut = true);
 /// Push the current selection to the cut buffer and the system clipboard.
 void copySelection(Cursor const & cur);
+///
+void copyInset(Cursor const & cur, Inset * inset, docstring const & plaintext);
 /**
  * Push the current selection to the cut buffer and the system clipboard.
  * \param plaintext plain text version of the selection for the system

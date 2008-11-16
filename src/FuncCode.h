@@ -412,6 +412,7 @@ enum FuncCode
 	LFUN_TAB_DELETE,
 	LFUN_WORD_FINDADV,               // Tommaso, 20081003
 	LFUN_REGEXP_MODE,                // Tommaso, 20081003
+	LFUN_COPY_LABEL_AS_REF,		 // sts, 20081116
 
 	LFUN_LASTACTION                  // end of the table
 };

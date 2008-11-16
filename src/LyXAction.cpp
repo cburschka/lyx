@@ -3089,6 +3089,15 @@ void LyXAction::init()
  */
 		{ LFUN_BRANCH_DEACTIVATE, "branch-deactivate", Argument, Buffer },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_COPY_LABEL_AS_REF
+ * \li Action: Copies the label at the cursor as a cross-reference to be paster elsewhere.
+ * \li Syntax: copy-label-as-reference
+ * \li Origin: sts, 16 Nov 2008
+ * \endvar
+ */
+		{ LFUN_COPY_LABEL_AS_REF, "copy-label-as-reference", ReadOnly | NoUpdate, Edit },
+
 		{ LFUN_NOACTION, "", Noop, Hidden }
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 	};
