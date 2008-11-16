@@ -16,20 +16,8 @@
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
    <item row="3" column="0" colspan="3" >
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
      <item>
       <widget class="QPushButton" name="okPB" >
        <property name="text" >
@@ -170,10 +158,11 @@
  <tabstops>
   <tabstop>spacingCO</tabstop>
   <tabstop>valueLE</tabstop>
+  <tabstop>unitCO</tabstop>
+  <tabstop>keepCB</tabstop>
   <tabstop>okPB</tabstop>
   <tabstop>applyPB</tabstop>
   <tabstop>closePB</tabstop>
-  <tabstop>keepCB</tabstop>
  </tabstops>
  <includes>
   <include location="local" >qt_i18n.h</include>
