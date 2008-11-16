@@ -5,6 +5,7 @@ include $(top_srcdir)/config/common.am
 DISTCLEANFILES += config.h libintl.h
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES)
+AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES) 
 
 if BUILD_CLIENT_SUBDIR
 CLIENT = client

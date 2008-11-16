@@ -9,9 +9,6 @@ noinst_LIBRARIES = liblyxsupport.a
 
 liblyxsupport_a_LIBADD = $(LIBSHLWAPI) $(BOOST_SIGNALS)
 
-# $(QT4_CORE_LIB)
-# $(QT4_CORE_LDFLAGS)
-
 BUILT_SOURCES = $(PCH_FILE)
 
 #########################  Qt stuff  #############################
