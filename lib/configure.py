@@ -473,10 +473,9 @@ def checkConverterEntries():
     #
     checkProg('a TGIF -> EPS/PPM converter', ['tgif'],
         rc_entry = [
-            r'''\converter tgif       eps        "tgif -stdout -print -color -eps $$i > $$o"	""
-\converter tgif       ppm        "tgif -stdout -print -color -ppm $$i > $$o"	""
-\converter tgif       png        "tgif -stdout -print -color -png $$i > $$o"	""
-\converter tgif       pdf        "tgif -stdout -print -color -pdf $$i > $$o"	""''',
+            r'''\converter tgif       eps        "tgif -print -color -eps -stdout $$i > $$o"	""
+\converter tgif       png        "tgif -print -color -png -o $$d $$i"	""
+\converter tgif       pdf        "tgif -print -color -pdf -stdout $$i > $$o"	""''',
             ''])
     #
     checkProg('a WMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i'],
