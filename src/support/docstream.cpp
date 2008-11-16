@@ -345,6 +345,28 @@ odocstream & operator<<(odocstream & os, SetEnc e)
 }
 
 
+//CHECKME: I just copied the code above, and have no idea whether it
+//is correct... (JMarc)
+idocstream & operator<<(idocstream & is, SetEnc e)
+{
+	if (has_facet<iconv_codecvt_facet>(is.rdbuf()->getloc())) {
+		// This stream must be a file stream, since we never imbue
+		// any other stream with a locale having a iconv_codecvt_facet.
+		// Flush the stream so that all pending output is written
+		// with the old encoding.
+		//is.flush();
+		locale locale(is.rdbuf()->getloc(),
+			new iconv_codecvt_facet(e.encoding, ios_base::in));
+		// FIXME Does changing the codecvt facet of an open file
+		// stream always work? It does with gcc 4.1, but I have read
+		// somewhere that it does not with MSVC.
+		// What does the standard say?
+		is.imbue(locale);
+	}
+	return is;
+}
+
+
 #if ! defined(USE_WCHAR_T)
 odocstream & operator<<(odocstream & os, char c)
 {
