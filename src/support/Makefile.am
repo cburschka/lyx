@@ -7,7 +7,7 @@ EXTRA_DIST = pch.h \
 
 noinst_LIBRARIES = liblyxsupport.a
 
-liblyxsupport_a_LIBADD = $(LIBSHLWAPI) $(BOOST_SIGNALS)
+liblyxsupport_a_LIBADD = $(BOOST_SIGNALS)
 
 BUILT_SOURCES = $(PCH_FILE)
 
