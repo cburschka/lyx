@@ -615,16 +615,24 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// stop/start the selection
 		bool select = cmd.action == LFUN_DOWN_SELECT ||
 			cmd.action == LFUN_UP_SELECT;
-		cur.selHandle(select);
 
 		// move cursor up/down
 		bool up = cmd.action == LFUN_UP_SELECT || cmd.action == LFUN_UP;
-		bool const successful = cur.upDownInText(up, needsUpdate);
-		if (successful) {
-			// redraw if you leave mathed (for the decorations)
+		bool const atFirstOrLastRow = cur.atFirstOrLastRow(up);
+
+		if (!atFirstOrLastRow) {
+			needsUpdate |= cur.selHandle(select);	
+			cur.selHandle(select);
+			cur.upDownInText(up, needsUpdate);
 			needsUpdate |= cur.beforeDispatchCursor().inMathed();
-		} else
+		} else {
+			// if the cursor cannot be moved up or down do not remove
+			// the selection right now, but wait for the next dispatch.
+			if (select)
+				needsUpdate |= cur.selHandle(select);	
+			cur.upDownInText(up, needsUpdate);
 			cur.undispatched();
+		}
 
 		break;
 	}
