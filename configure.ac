@@ -151,8 +151,6 @@ AC_DEFINE_UNQUOTED(AIKSAURUS_H_LOCATION,$lyx_cv_aiksaurus_h_location,[Location o
 fi
 AC_SUBST(AIKSAURUS_LIBS)
 
-AC_DEFINE(HAVE_THESAURUS, (HAVE_LIBMYTHES || HAVE_LIBAIKSAURUS),[Define this if you have a supported thesaurus library])
-
 LYX_USE_INCLUDED_BOOST
 
 # Needed for our char_type

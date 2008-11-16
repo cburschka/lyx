@@ -395,7 +395,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	switch (cmd.action) {
 	case LFUN_UNKNOWN_ACTION:
-#ifndef HAVE_THESAURUS
+#if !defined(HAVE_LIBMYTHES) && !defined(HAVE_LIBAIKSAURUS)
 	case LFUN_THESAURUS_ENTRY:
 #endif
 		flag.unknown(true);
