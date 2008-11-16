@@ -964,6 +964,23 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_REGEXP_MODE: {
+		InsetMathHull * i = dynamic_cast<InsetMathHull *>(cur.inset().asInsetMath());
+		if (i && i->getType() == hullRegexp) {
+			cur.message(_("Already in regexp mode"));
+			break;
+		}
+		cur.macroModeClose();
+		docstring const save_selection = grabAndEraseSelection(cur);
+		selClearOrDel(cur);
+		cur.plainInsert(MathAtom(new InsetMathHull(hullRegexp)));
+		cur.posBackward();
+		cur.pushBackward(*cur.nextInset());
+		cur.niceInsert(save_selection);
+		cur.message(_("Regexp editor mode"));
+		break;
+	}
+
 	case LFUN_MATH_SIZE: {
 		FuncRequest fr = FuncRequest(LFUN_MATH_INSERT, cmd.argument());
 		doDispatch(cur, fr);

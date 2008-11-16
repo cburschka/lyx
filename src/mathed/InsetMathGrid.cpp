@@ -981,19 +981,26 @@ void InsetMathGrid::mathmlize(MathStream & os) const
 
 void InsetMathGrid::write(WriteStream & os) const
 {
+	write(os, 0, 0, nrows(), ncols());
+}
+
+void InsetMathGrid::write(WriteStream & os,
+			  row_type beg_row, col_type beg_col,
+			  row_type end_row, col_type end_col) const
+{
 	MathEnsurer ensurer(os, false);
 	docstring eol;
-	for (row_type row = 0; row < nrows(); ++row) {
+	for (row_type row = beg_row; row < end_row; ++row) {
 		os << verboseHLine(rowinfo_[row].lines_);
 		// don't write & and empty cells at end of line
 		col_type lastcol = 0;
 		bool emptyline = true;
-		for (col_type col = 0; col < ncols(); ++col)
+		for (col_type col = beg_col; col < end_col; ++col)
 			if (!cell(index(row, col)).empty()) {
 				lastcol = col + 1;
 				emptyline = false;
 			}
-		for (col_type col = 0; col < lastcol; ++col) {
+		for (col_type col = beg_col; col < end_col; ++col) {
 			os << cell(index(row, col));
 			if (os.pendingBrace())
 				ModeSpecifier specifier(os, TEXT_MODE);
@@ -1003,9 +1010,10 @@ void InsetMathGrid::write(WriteStream & os) const
 		os << eol;
 		// append newline only if line wasn't completely empty
 		// and this was not the last line in the grid
-		if (!emptyline && row + 1 < nrows())
+		if (!emptyline && row + 1 < end_row)
 			os << "\n";
 	}
+	// @TODO use end_row instead of nrows() ?
 	docstring const s = verboseHLine(rowinfo_[nrows()].lines_);
 	if (!s.empty()) {
 		if (eol.empty()) {

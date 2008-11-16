@@ -118,7 +118,8 @@ HullType hullType(docstring const & s)
 	if (s == "multline")  return hullMultline;
 	if (s == "gather")    return hullGather;
 	if (s == "flalign")   return hullFlAlign;
-	lyxerr << "unknown hull type '" << to_utf8(s) << "'" << endl;
+	if (s == "regexp")    return hullRegexp;
+  	lyxerr << "unknown hull type '" << to_utf8(s) << "'" << endl;
 	return HullType(-1);
 }
 
@@ -137,7 +138,8 @@ docstring hullName(HullType type)
 		case hullMultline:   return from_ascii("multline");
 		case hullGather:     return from_ascii("gather");
 		case hullFlAlign:    return from_ascii("flalign");
-		default:
+		case hullRegexp:     return from_ascii("regexp");
+ 		default:
 			lyxerr << "unknown hull type '" << type << "'" << endl;
 			return from_ascii("none");
 	}
@@ -556,9 +558,9 @@ bool InsetMathHull::ams() const
 
 Inset::DisplayType InsetMathHull::display() const
 {
-	return (type_ != hullSimple && type_ != hullNone) ? AlignCenter : Inline;
+	return (type_ != hullSimple && type_ != hullNone
+		&& type_ != hullRegexp) ? AlignCenter : Inline;
 }
-
 
 bool InsetMathHull::numberedType() const
 {
@@ -567,6 +569,8 @@ bool InsetMathHull::numberedType() const
 	if (type_ == hullSimple)
 		return false;
 	if (type_ == hullXXAlignAt)
+		return false;
+	if (type_ == hullRegexp)
 		return false;
 	for (row_type row = 0; row < nrows(); ++row)
 		if (!nonum_[row])
@@ -631,6 +635,10 @@ void InsetMathHull::header_write(WriteStream & os) const
 		  << '{' << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
 		break;
 
+	case hullRegexp:
+		os << "\\regexp{";
+		break;
+
 	default:
 		os << "\\begin{unknown" << star(n) << '}';
 		break;
@@ -670,6 +678,10 @@ void InsetMathHull::footer_write(WriteStream & os) const
 
 	case hullXXAlignAt:
 		os << "\\end{" << hullName(type_) << "}\n";
+		break;
+
+	case hullRegexp:
+		os << "}";
 		break;
 
 	default:

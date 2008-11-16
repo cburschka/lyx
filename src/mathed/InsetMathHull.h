@@ -111,6 +111,10 @@ public:
 	///
 	void write(std::ostream & os) const;
 	///
+	void header_write(WriteStream &) const;
+	///
+	void footer_write(WriteStream &) const;
+	///
 	void read(Lexer & lex);
 	///
 	bool readQuiet(Lexer & lex);
@@ -156,10 +160,6 @@ private:
 	void setType(HullType type);
 	///
 	void validate1(LaTeXFeatures & features);
-	///
-	void header_write(WriteStream &) const;
-	///
-	void footer_write(WriteStream &) const;
 	///
 	docstring nicelabel(row_type row) const;
 	///

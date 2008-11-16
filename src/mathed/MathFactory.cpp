@@ -41,6 +41,7 @@
 #include "InsetMathTabular.h"
 #include "InsetMathUnderset.h"
 #include "InsetMathUnknown.h"
+#include "InsetMathHull.h"
 #include "InsetMathXArrow.h"
 #include "InsetMathXYMatrix.h"
 #include "MacroTable.h"
@@ -461,6 +462,9 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathEnsureMath);
 	if (isSpecialChar(s))
 		return MathAtom(new InsetMathSpecialChar(s));
+
+	if (s == "regexp")
+		return MathAtom(new InsetMathHull(hullRegexp));
 
 	return MathAtom(new MathMacro(s));
 }

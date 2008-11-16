@@ -210,6 +210,10 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
+	void write(WriteStream & os,
+		   row_type beg_row, col_type beg_col,
+		   row_type end_row, col_type end_col) const;
+	///
 	void normalize(NormalStream &) const;
 	///
 	//void maple(MapleStream &) const;

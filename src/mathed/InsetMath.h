@@ -31,7 +31,8 @@ enum HullType {
 	hullXXAlignAt,
 	hullFlAlign,
 	hullMultline,
-	hullGather
+	hullGather,
+	hullRegexp
 };
 
 HullType hullType(docstring const & name);
