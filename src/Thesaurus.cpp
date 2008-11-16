@@ -265,7 +265,7 @@ Thesaurus::Meanings Thesaurus::lookup(docstring const & t, docstring const & lan
 }
 
 #else
-#ifndef HAVE_AIKSAURUS
+#ifndef HAVE_LIBAIKSAURUS
 Thesaurus::Thesaurus()
 {
 }
