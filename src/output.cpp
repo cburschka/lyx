@@ -49,7 +49,7 @@ bool openFileWrite(ofstream & ofs, FileName const & fname)
 }
 
 
-bool openFileWrite(odocfstream & ofs, FileName const & fname)
+bool openFileWrite(ofdocstream & ofs, FileName const & fname)
 {
 	return doOpenFileWrite(ofs, fname);
 }

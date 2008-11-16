@@ -67,7 +67,7 @@ int Chktex::scanLogFile(TeXErrors & terr)
 	docstring token;
 	// FIXME UNICODE
 	// We have no idea what the encoding of the error file is
-	idocfstream ifs(tmp.toFilesystemEncoding().c_str());
+	ifdocstream ifs(tmp.toFilesystemEncoding().c_str());
 	while (getline(ifs, token)) {
 		docstring srcfile;
 		docstring line;
