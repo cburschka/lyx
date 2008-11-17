@@ -31,6 +31,8 @@
 #include <QListWidgetItem>
 #include <QString>
 
+#include <cstdio>
+
 using namespace std;
 
 namespace lyx {
