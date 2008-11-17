@@ -57,7 +57,6 @@ ViewSourceWidget::ViewSourceWidget()
 	// so we disable the signals here:
 	document_->blockSignals(true);
 	viewSourceTV->setDocument(document_);
-	viewSourceTV->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 	document_->blockSignals(false);
 	viewSourceTV->setReadOnly(true);
 	///dialog_->viewSourceTV->setAcceptRichText(false);
