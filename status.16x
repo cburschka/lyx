@@ -28,7 +28,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Updated localization of the user interface for German and Italian.
+- Updated localization of the user interface for German, Italian, and 
+  Turkish.
 
 - Updated English, French, German, and Spanish User's Guide manual.
 
@@ -68,6 +69,7 @@ What's new
 
 - Fix redirection to temporary files with spaces in path (RCS support).
 
+
 * USER INTERFACE
 
 - Fix the -geometry command line option on Windows (bug 5467).
@@ -82,11 +84,11 @@ What's new
 
 - Scrolling speed increased by a factor of 2.
 
-- Implement undo grouping for command sequences (part of bug 5531)
+- Implement undo grouping for command sequences (part of bug 5531).
 
 - Fix wrong size of the view source window (bug 4430).
 
-- Fix problem with display of footnote numbers, etc, in child documents.
+- Fix problem with display of footnote numbers, etc., in child documents.
 
 
 * DOCUMENTATION AND LOCALIZATION
