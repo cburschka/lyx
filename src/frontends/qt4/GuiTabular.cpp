@@ -91,7 +91,7 @@ GuiTabular::GuiTabular(GuiView & lv)
 	connect(lastfooterBorderBelowCB, SIGNAL(clicked()), this, SLOT(ltLastFooterBorderBelow_clicked()));
 	connect(lastfooterNoContentsCB, SIGNAL(clicked()), this, SLOT(ltLastFooterEmpty_clicked()));
 	connect(specialAlignmentED, SIGNAL(returnPressed()), this, SLOT(specialAlignment_changed()));
-	connect(widthED, SIGNAL(returnPressed()), this, SLOT(width_changed()));
+	connect(widthED, SIGNAL(editingFinished()), this, SLOT(width_changed()));
 	connect(widthUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)), this, SLOT(width_changed()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(close_clicked()));
 	connect(borders, SIGNAL(topSet(bool)), this, SLOT(topBorder_changed()));
@@ -102,9 +102,8 @@ GuiTabular::GuiTabular(GuiView & lv)
 	connect(rotateCellCB, SIGNAL(clicked()), this, SLOT(rotateCell()));
 	connect(longTabularCB, SIGNAL(clicked()), this, SLOT(longTabular()));
 
-	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-	bc().setCancel(closePB);
-
+	bc().setPolicy(ButtonPolicy::IgnorantPolicy);
+	
 	bc().addReadOnly(topspaceED);
 	bc().addReadOnly(topspaceUnit);
 	bc().addReadOnly(topspaceCO);
@@ -751,11 +750,11 @@ void GuiTabular::updateContents()
 		valign = 2;
 		break;
 	default:
-		valign = 1;
+		valign = 0;
 		break;
 	}
 	if (pwidth.zero())
-		valign = 1;
+		valign = 0;
 	vAlignCB->setCurrentIndex(valign);
 
 	hAlignCB->setEnabled(true);
