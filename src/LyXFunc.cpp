@@ -1348,6 +1348,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_COMMAND_SEQUENCE: {
 			// argument contains ';'-terminated commands
 			string arg = argument;
+			if (theBufferList().isLoaded(buffer))
+				buffer->undo().beginUndoGroup();
 			while (!arg.empty()) {
 				string first;
 				arg = split(arg, first, ';');
@@ -1355,6 +1357,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				func.origin = cmd.origin;
 				dispatch(func);
 			}
+			if (theBufferList().isLoaded(buffer))
+				buffer->undo().endUndoGroup();
 			break;
 		}
 
