@@ -110,10 +110,7 @@ public:
 		timestamp_method, ///< Use timestamp, and checksum if timestamp has changed
 	};
 
-	/** Constructor
-	    \param file
-	    \param b  optional \c false by default
-	*/
+	/// Constructor
 	explicit Buffer(std::string const & file, bool b = false);
 
 	/// Destructor

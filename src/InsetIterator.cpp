@@ -20,7 +20,7 @@ namespace lyx {
 
 
 InsetIterator::InsetIterator(Inset & inset)
-	: DocIterator(inset)
+	: DocIterator(&inset.buffer(), &inset)
 {
 }
 

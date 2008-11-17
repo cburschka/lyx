@@ -166,7 +166,7 @@ int replaceAll(BufferView * bv,
 	int const ssize = searchstr.size();
 
 	Cursor cur(*bv);
-	cur.setCursor(doc_iterator_begin(buf.inset()));
+	cur.setCursor(doc_iterator_begin(&buf));
 	while (findForward(cur, match, false)) {
 		// Backup current cursor position and font.
 		pos_type const pos = cur.pos();
@@ -183,7 +183,7 @@ int replaceAll(BufferView * bv,
 	}
 
 	buf.updateLabels();
-	bv->putSelectionAt(doc_iterator_begin(buf.inset()), 0, false);
+	bv->putSelectionAt(doc_iterator_begin(&buf), 0, false);
 	if (num)
 		buf.markDirty();
 	return num;
@@ -707,9 +707,11 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 	return docstring();
 }
 
-/** Computes the LaTeX export of buf starting from cur and ending len positions after cur,
- ** if len is positive, or at the paragraph or innermost inset end if len is -1.
- **/
+/** Computes the LaTeX export of buf starting from cur and ending len positions
+ * after cur, if len is positive, or at the paragraph or innermost inset end
+ * if len is -1.
+ */
+
 docstring latexifyFromCursor(Buffer const & buf, DocIterator const & cur, int len)
 {
 	LYXERR(Debug::DEBUG, "Latexifying with len=" << len << " from cursor at pos: " << cur);
@@ -757,20 +759,22 @@ docstring latexifyFromCursor(Buffer const & buf, DocIterator const & cur, int le
 		for (MathData::const_iterator it = md.begin() + cs.pos(); it != it_end; ++it)
 				ods << *it;
 
-//		MathData md = cur.cell();
-//		MathData::const_iterator it_end = ( ( len == -1 || cur.pos() + len > int(md.size()) ) ? md.end() : md.begin() + cur.pos() + len );
-//		for (MathData::const_iterator it = md.begin() + cur.pos(); it != it_end; ++it) {
-//			MathAtom const & ma = *it;
-//			ma.nucleus()->latex(buf, ods, runparams);
-//		}
+		// MathData md = cur.cell();
+		// MathData::const_iterator it_end = ( ( len == -1 || cur.pos() + len > int(md.size()) ) ? md.end() : md.begin() + cur.pos() + len );
+		// for (MathData::const_iterator it = md.begin() + cur.pos(); it != it_end; ++it) {
+		//	MathAtom const & ma = *it;
+		//	ma.nucleus()->latex(buf, ods, runparams);
+		// }
 
-		// Retrieve the math environment type, and add '$' or '$]' or others (\end{equation}) accordingly
+		// Retrieve the math environment type, and add '$' or '$]'
+		// or others (\end{equation}) accordingly
 		for (int s = cur.depth() - 1; s >= 0; --s) {
 			CursorSlice const & cs = cur[s];
-			if (cs.asInsetMath() && cs.asInsetMath() && cs.asInsetMath()->asHullInset()) {
-					WriteStream ws(ods);
-					cs.asInsetMath()->asHullInset()->footer_write(ws);
-					break;
+			InsetMath * inset = cs.asInsetMath();
+			if (inset && inset->asHullInset()) {
+				WriteStream ws(ods);
+				inset->asHullInset()->footer_write(ws);
+				break;
 			}
 		}
 		LYXERR(Debug::DEBUG, "Latexified math: '" << lyx::to_utf8(ods.str()) << "'");
@@ -786,9 +790,10 @@ docstring latexifyFromCursor(Buffer const & buf, DocIterator const & cur, int le
  **/
 int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 {
-	// Search the foremost position that matches (avoids find of entire math inset when match at start of it)
+	// Search the foremost position that matches (avoids find of entire math
+	// inset when match at start of it)
 	size_t d;
-	DocIterator old_cur;
+	DocIterator old_cur(cur.buffer());
 	do {
 	  LYXERR(Debug::DEBUG, "Forwarding one step (searching for innermost match)");
 		d = cur.depth();
@@ -806,7 +811,8 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 		++len;
 		LYXERR(Debug::DEBUG, "verifying unmatch with len = " << len);
 	}
-	int old_len = match(cur, len);		// Length of matched text (different from len param)
+	// Length of matched text (different from len param)
+	int old_len = match(cur, len);
 	int new_len;
 	// Greedy behaviour while matching regexps
 	while ((new_len = match(cur, len + 1)) > old_len) {
@@ -820,12 +826,13 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 /// Finds forward
 int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 {
-	if (! cur)
+	if (!cur)
 		return 0;
 	for (; cur; cur.forwardPos()) {
-//		odocstringstream ods;
-//		ods << _("Searching ... ") << (cur.bottom().lastpit() - cur.bottom().pit()) * 100 / total;
-//		cur.message(ods.str());
+		// odocstringstream ods;
+		// ods << _("Searching ... ")
+		//     << (cur.bottom().lastpit() - cur.bottom().pit()) * 100 / total;
+		// cur.message(ods.str());
 		if (match(cur))
 			return findAdvFinalize(cur, match);
 	}
@@ -833,19 +840,21 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 }
 
 /// Finds backwards
-int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
-//	if (cur.pos() > 0 || cur.depth() > 0)
-//		cur.backwardPos();
+int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match)
+{
+	//	if (cur.pos() > 0 || cur.depth() > 0)
+	//		cur.backwardPos();
 	DocIterator cur_orig(cur);
 	if (match(cur_orig))
 		findAdvFinalize(cur_orig, match);
-//	int total = cur.bottom().pit() + 1;
+	// int total = cur.bottom().pit() + 1;
 	for (; cur; cur.backwardPos()) {
-//		odocstringstream ods;
-//		ods << _("Searching ... ") << (total - cur.bottom().pit()) * 100 / total;
-//		cur.message(ods.str());
+		// odocstringstream ods;
+		// ods << _("Searching ... ") << (total - cur.bottom().pit()) * 100 / total;
+		// cur.message(ods.str());
 		if (match(cur)) {
-			// Find the most backward consecutive match within same paragraph while searching backwards.
+			// Find the most backward consecutive match within same
+			// paragraph while searching backwards.
 			int pit = cur.pit();
 			int old_len;
 			DocIterator old_cur;
@@ -854,7 +863,8 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 				old_cur = cur;
 				old_len = len;
 				cur.backwardPos();
-				LYXERR(Debug::DEBUG, "old_cur: " << old_cur << ", old_len=" << len << ", cur: " << cur);
+				LYXERR(Debug::DEBUG, "old_cur: " << old_cur
+						<< ", old_len: " << len << ", cur: " << cur);
 			} while (cur && cur.pit() == pit && match(cur)
 				 && (len = findAdvFinalize(cur, match)) > old_len);
 			cur = old_cur;
@@ -874,7 +884,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 docstring stringifyFromForSearch(FindAdvOptions const & opt, Buffer const & buf,
 	DocIterator const & cur, int len)
 {
-	if (! opt.ignoreformat)
+	if (!opt.ignoreformat)
 		return latexifyFromCursor(buf, cur, len);
 	else
 		return stringifyFromCursor(cur, len);

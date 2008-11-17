@@ -308,7 +308,7 @@ void GuiSpellchecker::check()
 
 	ptrdiff_t start = 0;
 	ptrdiff_t total = 0;
-	DocIterator it = doc_iterator_begin(buffer().inset());
+	DocIterator it = doc_iterator_begin(&buffer());
 	for (start = 1; it != cur; it.forwardPos())
 		++start;
 

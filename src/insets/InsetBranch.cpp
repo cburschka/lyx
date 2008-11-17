@@ -124,7 +124,7 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetBranchParams params;
 		InsetBranch::string2params(to_utf8(cmd.argument()), params);
 		params_.branch = params.branch;
-		setLayout(cur.buffer().params());
+		setLayout(cur.buffer()->params());
 		break;
 	}
 

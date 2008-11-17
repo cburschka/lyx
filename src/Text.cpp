@@ -293,7 +293,8 @@ class TextCompletionList : public CompletionList
 public:
 	///
 	TextCompletionList(Cursor const & cur)
-	: buf_(cur.buffer()), pos_(0) {}
+		: buffer_(cur.buffer()), pos_(0)
+	{}
 	///
 	virtual ~TextCompletionList() {}
 	
@@ -312,7 +313,7 @@ public:
 	
 private:
 	///
-	Buffer const & buf_;
+	Buffer const * buffer_;
 	///
 	size_t pos_;
 };
@@ -341,7 +342,7 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 	Paragraph & cpar = cur.paragraph();
 	pit_type cpit = cur.pit();
 
-	DocumentClass const & tclass = cur.buffer().params().documentClass();
+	DocumentClass const & tclass = cur.buffer()->params().documentClass();
 	Layout const & layout = cpar.layout();
 
 	// this is only allowed, if the current paragraph is not empty
@@ -356,7 +357,7 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 	// Always break behind a space
 	// It is better to erase the space (Dekel)
 	if (cur.pos() != cur.lastpos() && cpar.isLineSeparator(cur.pos()))
-		cpar.eraseChar(cur.pos(), cur.buffer().params().trackChanges);
+		cpar.eraseChar(cur.pos(), cur.buffer()->params().trackChanges);
 
 	// What should the layout for the new paragraph be?
 	bool keep_layout = inverse_logic ? 
@@ -370,7 +371,7 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 	// we need to set this before we insert the paragraph.
 	bool const isempty = cpar.allowEmpty() && cpar.empty();
 
-	lyx::breakParagraph(cur.buffer().params(), paragraphs(), cpit,
+	lyx::breakParagraph(cur.buffer()->params(), paragraphs(), cpit,
 			 cur.pos(), keep_layout);
 
 	// After this, neither paragraph contains any rows!
@@ -391,11 +392,11 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 	}
 
 	while (!pars_[next_par].empty() && pars_[next_par].isNewline(0)) {
-		if (!pars_[next_par].eraseChar(0, cur.buffer().params().trackChanges))
+		if (!pars_[next_par].eraseChar(0, cur.buffer()->params().trackChanges))
 			break; // the character couldn't be deleted physically due to change tracking
 	}
 
-	cur.buffer().updateLabels();
+	cur.buffer()->updateLabels();
 
 	// A singlePar update is not enough in this case.
 	cur.updateFlags(Update::Force);
@@ -418,7 +419,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 	cur.recordUndo(INSERT_UNDO);
 
 	TextMetrics const & tm = cur.bv().textMetrics(this);
-	Buffer const & buffer = cur.buffer();
+	Buffer const & buffer = *cur.buffer();
 	Paragraph & par = cur.paragraph();
 	// try to remove this
 	pit_type const pit = cur.pit();
@@ -538,7 +539,8 @@ void Text::insertChar(Cursor & cur, char_type c)
 		}
 	}
 
-	par.insertChar(cur.pos(), c, cur.current_font, cur.buffer().params().trackChanges);
+	par.insertChar(cur.pos(), c, cur.current_font,
+		cur.buffer()->params().trackChanges);
 	cur.checkBufferStructure();
 
 //		cur.updateFlags(Update::Force);
@@ -689,11 +691,9 @@ bool Text::cursorVisLeftOneWord(Cursor & cur)
 		// we should stop when we have an LTR word on our right or an RTL word
 		// on our left
 		if ((left_is_letter && temp_cur.paragraph().getFontSettings(
-				temp_cur.bv().buffer().params(), 
-				left_pos).isRightToLeft())
+				temp_cur.buffer()->params(), left_pos).isRightToLeft())
 			|| (right_is_letter && !temp_cur.paragraph().getFontSettings(
-				temp_cur.bv().buffer().params(), 
-				right_pos).isRightToLeft()))
+				temp_cur.buffer()->params(), right_pos).isRightToLeft()))
 			break;
 	}
 
@@ -728,10 +728,10 @@ bool Text::cursorVisRightOneWord(Cursor & cur)
 		// we should stop when we have an LTR word on our right or an RTL word
 		// on our left
 		if ((left_is_letter && temp_cur.paragraph().getFontSettings(
-				temp_cur.bv().buffer().params(), 
+				temp_cur.buffer()->params(), 
 				left_pos).isRightToLeft())
 			|| (right_is_letter && !temp_cur.paragraph().getFontSettings(
-				temp_cur.bv().buffer().params(), 
+				temp_cur.buffer()->params(), 
 				right_pos).isRightToLeft()))
 			break;
 	}
@@ -809,9 +809,9 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 		pos_type right = (pit == endPit ? endPos : parSize);
 
 		if (op == ACCEPT) {
-			pars_[pit].acceptChanges(cur.buffer().params(), left, right);
+			pars_[pit].acceptChanges(cur.buffer()->params(), left, right);
 		} else {
-			pars_[pit].rejectChanges(cur.buffer().params(), left, right);
+			pars_[pit].rejectChanges(cur.buffer()->params(), left, right);
 		}
 	}
 
@@ -838,7 +838,7 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 					// instead, we mark it unchanged
 					pars_[pit].setChange(pos, Change(Change::UNCHANGED));
 				} else {
-					mergeParagraph(cur.buffer().params(), pars_, pit);
+					mergeParagraph(cur.buffer()->params(), pars_, pit);
 					--endPit;
 					--pit;
 				}
@@ -851,7 +851,7 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 					// we mark the par break at the end of the last paragraph unchanged
 					pars_[pit].setChange(pos, Change(Change::UNCHANGED));
 				} else {
-					mergeParagraph(cur.buffer().params(), pars_, pit);
+					mergeParagraph(cur.buffer()->params(), pars_, pit);
 					--endPit;
 					--pit;
 				}
@@ -861,7 +861,7 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 
 	// finally, invoke the DEPM
 
-	deleteEmptyParagraphMechanism(begPit, endPit, cur.buffer().params().trackChanges);
+	deleteEmptyParagraphMechanism(begPit, endPit, cur.buffer()->params().trackChanges);
 
 	//
 
@@ -869,7 +869,7 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 	cur.clearSelection();
 	setCursorIntern(cur, begPit, begPos);
 	cur.updateFlags(Update::Force);
-	cur.buffer().updateLabels();
+	cur.buffer()->updateLabels();
 }
 
 
@@ -979,7 +979,7 @@ void Text::changeCase(Cursor & cur, TextCase action)
 		Paragraph & par = pars_[pit];
 		pos_type const pos = (pit == begPit ? begPos : 0);
 		right = (pit == endPit ? endPos : par.size());
-		par.changeCase(cur.buffer().params(), pos, right, action);
+		par.changeCase(cur.buffer()->params(), pos, right, action);
 	}
 
 	// the selection may have changed due to logically-only deleted chars
@@ -1003,7 +1003,7 @@ bool Text::handleBibitems(Cursor & cur)
 	if (cur.pos() != 0)
 		return false;
 
-	BufferParams const & bufparams = cur.buffer().params();
+	BufferParams const & bufparams = cur.buffer()->params();
 	Paragraph const & par = cur.paragraph();
 	Cursor prevcur = cur;
 	if (cur.pit() > 0) {
@@ -1018,7 +1018,7 @@ bool Text::handleBibitems(Cursor & cur)
 		cur.recordUndo(ATOMIC_UNDO, prevcur.pit());
 		mergeParagraph(bufparams, cur.text()->paragraphs(),
 							prevcur.pit());
-		cur.buffer().updateLabels();
+		cur.buffer()->updateLabels();
 		setCursorIntern(cur, prevcur.pit(), prevcur.pos());
 		cur.updateFlags(Update::Force);
 		return true;
@@ -1032,7 +1032,7 @@ bool Text::handleBibitems(Cursor & cur)
 
 bool Text::erase(Cursor & cur)
 {
-	LASSERT(this == cur.text(), /**/);
+	LASSERT(this == cur.text(), return false);
 	bool needsUpdate = false;
 	Paragraph & par = cur.paragraph();
 
@@ -1041,12 +1041,12 @@ bool Text::erase(Cursor & cur)
 		// any paragraphs
 		cur.recordUndo(DELETE_UNDO);
 		bool const was_inset = cur.paragraph().isInset(cur.pos());
-		if(!par.eraseChar(cur.pos(), cur.buffer().params().trackChanges))
+		if(!par.eraseChar(cur.pos(), cur.buffer()->params().trackChanges))
 			// the character has been logically deleted only => skip it
 			cur.top().forwardPos();
 
 		if (was_inset)
-			cur.buffer().updateLabels();
+			cur.buffer()->updateLabels();
 		else
 			cur.checkBufferStructure();
 		needsUpdate = true;
@@ -1054,7 +1054,7 @@ bool Text::erase(Cursor & cur)
 		if (cur.pit() == cur.lastpit())
 			return dissolveInset(cur);
 
-		if (!par.isMergedOnEndOfParDeletion(cur.buffer().params().trackChanges)) {
+		if (!par.isMergedOnEndOfParDeletion(cur.buffer()->params().trackChanges)) {
 			par.setChange(cur.pos(), Change(Change::DELETED));
 			cur.forwardPos();
 			needsUpdate = true;
@@ -1085,7 +1085,7 @@ bool Text::backspacePos0(Cursor & cur)
 
 	bool needsUpdate = false;
 
-	BufferParams const & bufparams = cur.buffer().params();
+	BufferParams const & bufparams = cur.buffer()->params();
 	DocumentClass const & tclass = bufparams.documentClass();
 	ParagraphList & plist = cur.text()->paragraphs();
 	Paragraph const & par = cur.paragraph();
@@ -1122,7 +1122,7 @@ bool Text::backspacePos0(Cursor & cur)
 	}
 
 	if (needsUpdate) {
-		cur.buffer().updateLabels();
+		cur.buffer()->updateLabels();
 		setCursorIntern(cur, prevcur.pit(), prevcur.pos());
 	}
 
@@ -1140,7 +1140,7 @@ bool Text::backspace(Cursor & cur)
 
 		Paragraph & prev_par = pars_[cur.pit() - 1];
 
-		if (!prev_par.isMergedOnEndOfParDeletion(cur.buffer().params().trackChanges)) {
+		if (!prev_par.isMergedOnEndOfParDeletion(cur.buffer()->params().trackChanges)) {
 			prev_par.setChange(prev_par.size(), Change(Change::DELETED));
 			setCursorIntern(cur, cur.pit() - 1, prev_par.size());
 			return true;
@@ -1160,9 +1160,9 @@ bool Text::backspace(Cursor & cur)
 		setCursorIntern(cur, cur.pit(), cur.pos() - 1,
 				false, cur.boundary());
 		bool const was_inset = cur.paragraph().isInset(cur.pos());
-		cur.paragraph().eraseChar(cur.pos(), cur.buffer().params().trackChanges);
+		cur.paragraph().eraseChar(cur.pos(), cur.buffer()->params().trackChanges);
 		if (was_inset)
-			cur.buffer().updateLabels();
+			cur.buffer()->updateLabels();
 		else
 			cur.checkBufferStructure();
 	}
@@ -1201,7 +1201,7 @@ bool Text::dissolveInset(Cursor & cur)
 	if (spit == 0)
 		spos += cur.pos();
 	spit += cur.pit();
-	Buffer & b = cur.buffer();
+	Buffer & b = *cur.buffer();
 	cur.paragraph().eraseChar(cur.pos(), b.params().trackChanges);
 	if (!plist.empty()) {
 		// ERT paragraphs have the Language latex_language.
@@ -1336,7 +1336,7 @@ bool Text::read(Buffer const & buf, Lexer & lex,
 docstring Text::currentState(Cursor const & cur) const
 {
 	LASSERT(this == cur.text(), /**/);
-	Buffer & buf = cur.buffer();
+	Buffer & buf = *cur.buffer();
 	Paragraph const & par = cur.paragraph();
 	odocstringstream os;
 
@@ -1542,15 +1542,15 @@ void Text::charsTranspose(Cursor & cur)
 	// Store the characters to be transposed (including font information).
 	char_type const char1 = par.getChar(pos1);
 	Font const font1 =
-		par.getFontSettings(cur.buffer().params(), pos1);
+		par.getFontSettings(cur.buffer()->params(), pos1);
 
 	char_type const char2 = par.getChar(pos2);
 	Font const font2 =
-		par.getFontSettings(cur.buffer().params(), pos2);
+		par.getFontSettings(cur.buffer()->params(), pos2);
 
 	// And finally, we are ready to perform the transposition.
 	// Track the changes if Change Tracking is enabled.
-	bool const trackChanges = cur.buffer().params().trackChanges;
+	bool const trackChanges = cur.buffer()->params().trackChanges;
 
 	cur.recordUndo();
 

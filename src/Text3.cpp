@@ -259,8 +259,8 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	if (!gotsel || !pastesel)
 		return true;
 
-	pasteFromStack(cur, cur.buffer().errorList("Paste"), 0);
-	cur.buffer().errors("Paste");
+	pasteFromStack(cur, cur.buffer()->errorList("Paste"), 0);
+	cur.buffer()->errors("Paste");
 	cur.clearSelection(); // bug 393
 	cur.finishUndo();
 	InsetText * insetText = dynamic_cast<InsetText *>(inset);
@@ -305,7 +305,7 @@ enum OutlineOp {
 
 static void outline(OutlineOp mode, Cursor & cur)
 {
-	Buffer & buf = cur.buffer();
+	Buffer & buf = *cur.buffer();
 	pit_type & pit = cur.pit();
 	ParagraphList & pars = buf.text().paragraphs();
 	ParagraphList::iterator bgn = pars.begin();
@@ -473,7 +473,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		recUndo(cur, pit, pit + 1);
 		cur.finishUndo();
 		swap(pars_[pit], pars_[pit + 1]);
-		cur.buffer().updateLabels();
+		cur.buffer()->updateLabels();
 		needsUpdate = true;
 		++cur.pit();
 		break;
@@ -484,7 +484,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		recUndo(cur, pit - 1, pit);
 		cur.finishUndo();
 		swap(pars_[pit], pars_[pit - 1]);
-		cur.buffer().updateLabels();
+		cur.buffer()->updateLabels();
 		--cur.pit();
 		needsUpdate = true;
 		break;
@@ -510,7 +510,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		par.params().startOfAppendix(start);
 
 		// we can set the refreshing parameters now
-		cur.buffer().updateLabels();
+		cur.buffer()->updateLabels();
 		break;
 	}
 
@@ -523,17 +523,17 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_WORD_DELETE_BACKWARD:
-		if (cur.selection()) {
+		if (cur.selection())
 			cutSelection(cur, true, false);
-		} else
+		else
 			deleteWordBackward(cur);
 		finishChange(cur, false);
 		break;
 
 	case LFUN_LINE_DELETE:
-		if (cur.selection()) {
+		if (cur.selection())
 			cutSelection(cur, true, false);
-		} else
+		else
 			tm.deleteLineForward(cur);
 		finishChange(cur, false);
 		break;
@@ -541,22 +541,20 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_BUFFER_BEGIN:
 	case LFUN_BUFFER_BEGIN_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_BUFFER_BEGIN_SELECT);
-		if (cur.depth() == 1) {
+		if (cur.depth() == 1)
 			needsUpdate |= cursorTop(cur);
-		} else {
+		else
 			cur.undispatched();
-		}
 		cur.updateFlags(Update::FitCursor);
 		break;
 
 	case LFUN_BUFFER_END:
 	case LFUN_BUFFER_END_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_BUFFER_END_SELECT);
-		if (cur.depth() == 1) {
+		if (cur.depth() == 1)
 			needsUpdate |= cursorBottom(cur);
-		} else {
+		else
 			cur.undispatched();
-		}
 		cur.updateFlags(Update::FitCursor);
 		break;
 
@@ -1841,26 +1839,26 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_OUTLINE_UP:
 		outline(OutlineUp, cur);
 		setCursor(cur, cur.pit(), 0);
-		cur.buffer().updateLabels();
+		cur.buffer()->updateLabels();
 		needsUpdate = true;
 		break;
 
 	case LFUN_OUTLINE_DOWN:
 		outline(OutlineDown, cur);
 		setCursor(cur, cur.pit(), 0);
-		cur.buffer().updateLabels();
+		cur.buffer()->updateLabels();
 		needsUpdate = true;
 		break;
 
 	case LFUN_OUTLINE_IN:
 		outline(OutlineIn, cur);
-		cur.buffer().updateLabels();
+		cur.buffer()->updateLabels();
 		needsUpdate = true;
 		break;
 
 	case LFUN_OUTLINE_OUT:
 		outline(OutlineOut, cur);
-		cur.buffer().updateLabels();
+		cur.buffer()->updateLabels();
 		needsUpdate = true;
 		break;
 
@@ -2028,7 +2026,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		code = FLEX_CODE;
 		string s = cmd.getArg(0);
 		InsetLayout il =
-			cur.buffer().params().documentClass().insetLayout(from_utf8(s));
+			cur.buffer()->params().documentClass().insetLayout(from_utf8(s));
 		if (il.lyxtype() != InsetLayout::CHARSTYLE &&
 		    il.lyxtype() != InsetLayout::CUSTOM &&
 		    il.lyxtype() != InsetLayout::ELEMENT &&
@@ -2041,7 +2039,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_BRANCH_INSERT:
 		code = BRANCH_CODE;
-		if (cur.buffer().masterBuffer()->params().branchlist().empty())
+		if (cur.buffer()->masterBuffer()->params().branchlist().empty())
 			enable = false;
 		break;
 	case LFUN_LABEL_INSERT:
@@ -2182,7 +2180,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_INSET_DISSOLVE:
 		if (!cmd.argument().empty()) {
-			InsetLayout const & il = cur.inset().getLayout(cur.buffer().params());
+			InsetLayout const & il = cur.inset().getLayout(cur.buffer()->params());
 			InsetLayout::InsetLyXType const type = 
 					translateLyXType(to_utf8(cmd.argument()));
 			enable = cur.inset().lyxCode() == FLEX_CODE

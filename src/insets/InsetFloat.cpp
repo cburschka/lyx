@@ -156,11 +156,11 @@ void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 			params_.placement = params.placement;
 			params_.wide      = params.wide;
 			params_.sideways  = params.sideways;
-			setWide(params_.wide, cur.buffer().params(), false);
-			setSideways(params_.sideways, cur.buffer().params(), false);
+			setWide(params_.wide, cur.buffer()->params(), false);
+			setSideways(params_.sideways, cur.buffer()->params(), false);
 		}
 
-		setNewLabel(cur.buffer().params());
+		setNewLabel(cur.buffer()->params());
 		break;
 	}
 

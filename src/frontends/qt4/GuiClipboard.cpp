@@ -138,7 +138,7 @@ FileName GuiClipboard::getPastedGraphicsFileName(Cursor const & cur,
 	typeNames[Clipboard::JpegGraphicsType] = _("JPEG");
 	
 	// find unused filename with primary extension
-	string document_path = cur.buffer().fileName().onlyPath().absFilename();
+	string document_path = cur.buffer()->fileName().onlyPath().absFilename();
 	unsigned newfile_number = 0;
 	FileName filename;
 	do {

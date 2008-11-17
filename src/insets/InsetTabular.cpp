@@ -4783,7 +4783,7 @@ bool InsetTabular::pasteClipboard(Cursor & cur)
 				new InsetTableCell(*paste_tabular->cellInset(r1, c1)));
 			tabular.setCellInset(r2, c2, inset);
 			// FIXME: change tracking (MG)
-			inset->setChange(Change(cur.buffer().params().trackChanges ?
+			inset->setChange(Change(buffer().params().trackChanges ?
 						Change::INSERTED : Change::UNCHANGED));
 			cur.pos() = 0;
 		}
@@ -4804,7 +4804,7 @@ void InsetTabular::cutSelection(Cursor & cur)
 		for (col_type j = cs; j <= ce; ++j) {
 			shared_ptr<InsetTableCell> t
 				= cell(tabular.cellIndex(i, j));
-			if (cur.buffer().params().trackChanges)
+			if (buffer().params().trackChanges)
 				// FIXME: Change tracking (MG)
 				t->setChange(Change(Change::DELETED));
 			else
@@ -4826,7 +4826,7 @@ bool InsetTabular::isRightToLeft(Cursor & cur) const
 	LASSERT(cur.depth() > 1, /**/);
 	Paragraph const & parentpar = cur[cur.depth() - 2].paragraph();
 	pos_type const parentpos = cur[cur.depth() - 2].pos();
-	return parentpar.getFontSettings(cur.bv().buffer().params(),
+	return parentpar.getFontSettings(buffer().params(),
 					 parentpos).language()->rightToLeft();
 }
 

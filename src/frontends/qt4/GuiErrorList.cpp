@@ -107,7 +107,7 @@ bool GuiErrorList::goTo(int item)
 	Buffer const & buf = buffer();
 	DocIterator dit = buf.getParFromID(err.par_id);
 
-	if (dit == doc_iterator_end(buf.inset())) {
+	if (dit == doc_iterator_end(&buf)) {
         // FIXME: Happens when loading a read-only doc with 
         // unknown layout. Should this be the case?
 		LYXERR0("par id " << err.par_id << " not found");

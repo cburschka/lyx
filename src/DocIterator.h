@@ -19,16 +19,18 @@
 
 namespace lyx {
 
+class DocIterator;
 class LyXErr;
 class MathAtom;
 class Paragraph;
 class Text;
 class InsetIterator;
 
+DocIterator doc_iterator_begin(Buffer const * buf, Inset const * inset = 0);
+DocIterator doc_iterator_end(Buffer const * buf, Inset const * inset = 0);
 
-// The public inheritance should go in favour of a suitable data member
-// (or maybe private inheritance) at some point of time.
-class DocIterator // : public std::vector<CursorSlice>
+
+class DocIterator
 {
 public:
 	/// type for cell number in inset
@@ -41,6 +43,13 @@ public:
 public:
 	///
 	DocIterator();
+	///
+	explicit DocIterator(Buffer *buf);
+
+	/// access to owning buffer
+	Buffer * buffer() const { return buffer_; }
+	/// access to owning buffer
+	void setBuffer(Buffer * buf) { buffer_ = buf; }
 
 	/// access slice at position \p i
 	CursorSlice const & operator[](size_t i) const { return slices_[i]; }
@@ -228,10 +237,10 @@ public:
 
 private:
 	friend class InsetIterator;
-	friend DocIterator doc_iterator_begin(Inset & inset);
-	friend DocIterator doc_iterator_end(Inset & inset);
+	friend DocIterator doc_iterator_begin(Buffer const * buf, Inset const * inset);
+	friend DocIterator doc_iterator_end(Buffer const * buf, Inset const * inset);
 	///
-	explicit DocIterator(Inset & inset);
+	explicit DocIterator(Buffer * buf, Inset * inset);
 	/**
 	 * Normally, when the cursor is at position i, it is painted *before*
 	 * the character at position i. However, what if we want the cursor 
@@ -259,18 +268,14 @@ private:
 	 */
 	bool boundary_;
 	///
-	std::vector<CursorSlice> const & internalData() const {
-		return slices_;
-	}
+	std::vector<CursorSlice> const & internalData() const { return slices_; }
 	///
 	std::vector<CursorSlice> slices_;
 	///
 	Inset * inset_;
+	///
+	Buffer * buffer_;
 };
-
-
-DocIterator doc_iterator_begin(Inset & inset);
-DocIterator doc_iterator_end(Inset & inset);
 
 
 inline bool operator==(DocIterator const & di1, DocIterator const & di2)
@@ -322,14 +327,15 @@ bool operator>=(DocIterator const & p, DocIterator const & q)
 // (overwritten by 0...) part of the CursorSlice data items. So this thing
 // is suitable for external storage, but not for iteration as such.
 
-class StableDocIterator {
+class StableDocIterator
+{
 public:
 	///
 	StableDocIterator() {}
 	/// non-explicit intended
 	StableDocIterator(const DocIterator & it);
 	///
-	DocIterator asDocIterator(Inset * start) const;
+	DocIterator asDocIterator(Buffer * buf) const;
 	///
 	size_t size() const { return data_.size(); }
 	///  return the position within the paragraph
@@ -352,4 +358,4 @@ private:
 
 } // namespace lyx
 
-#endif
+#endif // DOCITERATOR_H

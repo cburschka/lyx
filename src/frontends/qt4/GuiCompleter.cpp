@@ -157,7 +157,7 @@ private:
 
 
 GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
-	: QCompleter(parent), gui_(gui), updateLock_(0),
+	: QCompleter(parent), gui_(gui), old_cursor_(0), updateLock_(0),
 	  inlineVisible_(false), popupVisible_(false),
 	  modelActive_(false)
 {
@@ -564,7 +564,7 @@ void GuiCompleter::showInline(Cursor & cur)
 
 void GuiCompleter::hideInline(Cursor & cur)
 {
-	gui_->bufferView().setInlineCompletion(cur, DocIterator(), docstring());
+	gui_->bufferView().setInlineCompletion(cur, DocIterator(cur.buffer()), docstring());
 	inlineVisible_ = false;
 	
 	if (inline_timer_.isActive())

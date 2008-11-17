@@ -1437,7 +1437,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 		MathWordList const & mwl = mathedWordList();
 		bool star_macro = c == '*'
 			&& (mwl.find(name.substr(1) + "*") != mwl.end()
-			    || cur.buffer().getMacro(name.substr(1) + "*", cur, true));
+			    || cur.buffer()->getMacro(name.substr(1) + "*", cur, true));
 		if (isAlphaASCII(c) || star_macro) {
 			cur.activeMacro()->setName(name + docstring(1, c));
 			return true;
@@ -1844,10 +1844,10 @@ MathCompletionList::MathCompletionList(Cursor const & cur)
 {
 	// fill it with macros from the buffer
 	MacroNameSet macros;
-	cur.buffer().listMacroNames(macros);
+	cur.buffer()->listMacroNames(macros);
 	MacroNameSet::const_iterator it;
 	for (it = macros.begin(); it != macros.end(); ++it) {
-		if (cur.buffer().getMacro(*it, cur, false))
+		if (cur.buffer()->getMacro(*it, cur, false))
 			locals.push_back("\\" + *it);
 	}
 	sort(locals.begin(), locals.end());

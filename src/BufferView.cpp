@@ -150,11 +150,13 @@ bool findInset(DocIterator & dit, vector<InsetCode> const & codes,
 
 	if (!findNextInset(tmpdit, codes, contents)) {
 		if (dit.depth() != 1 || dit.pit() != 0 || dit.pos() != 0) {
-			tmpdit  = doc_iterator_begin(tmpdit.bottom().inset());
+			Inset * inset = &tmpdit.bottom().inset();
+			tmpdit = doc_iterator_begin(&inset->buffer(), inset);
 			if (!findNextInset(tmpdit, codes, contents))
 				return false;
-		} else
+		} else {
 			return false;
+		}
 	}
 
 	dit = tmpdit;
@@ -272,11 +274,13 @@ struct BufferView::Private
 
 
 BufferView::BufferView(Buffer & buf)
-	: width_(0), height_(0), full_screen_(false), buffer_(buf), d(new Private(*this))
+	: width_(0), height_(0), full_screen_(false), buffer_(buf),
+      d(new Private(*this))
 {
 	d->xsel_cache_.set = false;
 	d->intl_.initKeyMapper(lyxrc.use_kbmap);
 
+	d->cursor_.setBuffer(&buf);
 	d->cursor_.push(buffer_.inset());
 	d->cursor_.resetAnchor();
 	d->cursor_.setCurrentFont();
@@ -564,7 +568,7 @@ void BufferView::scrollDocView(int value)
 
 	// cut off at the top
 	if (value <= d->scrollbarParameters_.min) {
-		DocIterator dit = doc_iterator_begin(buffer_.inset());
+		DocIterator dit = doc_iterator_begin(&buffer_);
 		showCursor(dit);
 		LYXERR(Debug::SCROLLING, "scroll to top");
 		return;
@@ -572,7 +576,7 @@ void BufferView::scrollDocView(int value)
 
 	// cut off at the bottom
 	if (value >= d->scrollbarParameters_.max) {
-		DocIterator dit = doc_iterator_end(buffer_.inset());
+		DocIterator dit = doc_iterator_end(&buffer_);
 		dit.backwardPos();
 		showCursor(dit);
 		LYXERR(Debug::SCROLLING, "scroll to bottom");
@@ -596,7 +600,7 @@ void BufferView::scrollDocView(int value)
 		return;
 	}
 
-	DocIterator dit = doc_iterator_begin(buffer_.inset());
+	DocIterator dit = doc_iterator_begin(&buffer_);
 	dit.pit() = i;
 	LYXERR(Debug::SCROLLING, "value = " << value << " -> scroll to pit " << i);
 	showCursor(dit);
@@ -724,7 +728,7 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 	// it will be restored to the left of the outmost inset that contains
 	// the bookmark.
 	if (bottom_pit < int(buffer_.paragraphs().size())) {
-		dit = doc_iterator_begin(buffer_.inset());
+		dit = doc_iterator_begin(&buffer_);
 				
 		dit.pit() = bottom_pit;
 		dit.pos() = min(bottom_pos, dit.paragraph().size());
@@ -1308,8 +1312,8 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			from = cur.selectionBegin();
 			to = cur.selectionEnd();
 		} else {
-			from = doc_iterator_begin(buffer_.inset());
-			to = doc_iterator_end(buffer_.inset());
+			from = doc_iterator_begin(&buffer_);
+			to = doc_iterator_end(&buffer_);
 		}
 		int const words = countWords(from, to);
 		int const chars = countChars(from, to, false);
@@ -1495,7 +1499,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 		FuncRequest fr(LFUN_INSET_TOGGLE, action);
 
-		Inset & inset = cur.buffer().inset();
+		Inset & inset = cur.buffer()->inset();
 		InsetIterator it  = inset_iterator_begin(inset);
 		InsetIterator const end = inset_iterator_end(inset);
 		for (; it != end; ++it) {

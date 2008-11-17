@@ -67,12 +67,15 @@ void MacroData::expand(vector<MathData> const & args, MathData & to) const
 {
 	updateData();
 
-	InsetMathSqrt inset; // Hack. Any inset with a cell would do.
+	// Hack. Any inset with a cell would do.
+	static Buffer buffer("");
+	static InsetMathSqrt inset;
+
 	// FIXME UNICODE
 	asArray(display_.empty() ? definition_ : display_, inset.cell(0));
 	//lyxerr << "MathData::expand: args: " << args << endl;
 	//lyxerr << "MathData::expand: ar: " << inset.cell(0) << endl;
-	for (DocIterator it = doc_iterator_begin(inset); it; it.forwardChar()) {
+	for (DocIterator it = doc_iterator_begin(&buffer, &inset); it; it.forwardChar()) {
 		if (!it.nextInset())
 			continue;
 		if (it.nextInset()->lyxCode() != MATHMACROARG_CODE)

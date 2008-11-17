@@ -1806,7 +1806,7 @@ void LyXFunc::updateLayout(DocumentClass const * const oldlayout, Buffer * buf)
 			oldlayout, buf->params().documentClassPtr(),
 			static_cast<InsetText &>(buf->inset()), el);
 
-	view()->setCursor(backcur.asDocIterator(&(buf->inset())));
+	view()->setCursor(backcur.asDocIterator(buf));
 
 	buf->errors("Class Switch");
 	buf->updateLabels();

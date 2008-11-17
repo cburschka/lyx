@@ -205,10 +205,9 @@ bool bruteFind3(Cursor & cur, int x, int y, bool up)
 	//	<< " xlow: " << xlow << " xhigh: " << xhigh
 	//	<< " ylow: " << ylow << " yhigh: " << yhigh
 	//	<< endl;
-	Inset & inset = bv.buffer().inset();
-	DocIterator it = doc_iterator_begin(inset);
+	DocIterator it = doc_iterator_begin(cur.buffer());
 	it.pit() = from;
-	DocIterator et = doc_iterator_end(inset);
+	DocIterator et = doc_iterator_end(cur.buffer());
 
 	double best_dist = numeric_limits<double>::max();
 	DocIterator best_cursor = et;
@@ -252,8 +251,7 @@ docstring parbreak(Paragraph const & par)
 	odocstringstream os;
 	os << '\n';
 	// only add blank line if we're not in an ERT or Listings inset
-	if (par.ownerCode() != ERT_CODE
-			&& par.ownerCode() != LISTINGS_CODE)
+	if (par.ownerCode() != ERT_CODE && par.ownerCode() != LISTINGS_CODE)
 		os << '\n';
 	return os.str();
 }
@@ -264,7 +262,8 @@ docstring parbreak(Paragraph const & par)
 // be careful: this is called from the bv's constructor, too, so
 // bv functions are not yet available!
 Cursor::Cursor(BufferView & bv)
-	: DocIterator(), bv_(&bv), anchor_(), x_target_(-1), textTargetOffset_(0),
+	: DocIterator(&bv.buffer()), bv_(&bv), anchor_(),
+	  x_target_(-1), textTargetOffset_(0),
 	  selection_(false), mark_(false), logicalpos_(false),
 	  current_font(inherit_font)
 {}
@@ -274,7 +273,7 @@ void Cursor::reset(Inset & inset)
 {
 	clear();
 	push_back(CursorSlice(inset));
-	anchor_ = doc_iterator_begin(inset);
+	anchor_ = doc_iterator_begin(&inset.buffer(), &inset);
 	anchor_.clear();
 	clearTargetX();
 	selection_ = false;
@@ -346,13 +345,6 @@ BufferView & Cursor::bv() const
 }
 
 
-Buffer & Cursor::buffer() const
-{
-	LASSERT(bv_, /**/);
-	return bv_->buffer();
-}
-
-
 void Cursor::pop()
 {
 	LASSERT(depth() >= 1, /**/);
@@ -363,13 +355,13 @@ void Cursor::pop()
 void Cursor::push(Inset & p)
 {
 	push_back(CursorSlice(p));
-	p.setBuffer(bv_->buffer());
+	p.setBuffer(*buffer());
 }
 
 
 void Cursor::pushBackward(Inset & p)
 {
-	LASSERT(!empty(), /**/);
+	LASSERT(!empty(), return);
 	//lyxerr << "Entering inset " << t << " front" << endl;
 	push(p);
 	p.idxFirst(*this);
@@ -378,7 +370,7 @@ void Cursor::pushBackward(Inset & p)
 
 bool Cursor::popBackward()
 {
-	LASSERT(!empty(), /**/);
+	LASSERT(!empty(), return false);
 	if (depth() == 1)
 		return false;
 	pop();
@@ -388,7 +380,7 @@ bool Cursor::popBackward()
 
 bool Cursor::popForward()
 {
-	LASSERT(!empty(), /**/);
+	LASSERT(!empty(), return false);
 	//lyxerr << "Leaving inset from in back" << endl;
 	const pos_type lp = (depth() > 1) ? (*this)[depth() - 2].lastpos() : 0;
 	if (depth() == 1)
@@ -499,7 +491,7 @@ bool Cursor::posVisRight(bool skip_inset)
 		// currently to the left of 'right_pos'). In order to move to the 
 		// right, it depends whether or not the character at 'right_pos' is RTL.
 		new_pos_is_RTL = paragraph().getFontSettings(
-			bv().buffer().params(), right_pos).isVisibleRightToLeft();
+			buffer()->params(), right_pos).isVisibleRightToLeft();
 		// If the character at 'right_pos' *is* LTR, then in order to move to
 		// the right of it, we need to be *after* 'right_pos', i.e., move to
 		// position 'right_pos' + 1.
@@ -511,10 +503,10 @@ bool Cursor::posVisRight(bool skip_inset)
 			// (this means that we're moving right to the end of an LTR chunk
 			// which is at the end of an RTL paragraph);
 				(new_cur.pos() == lastpos()
-				 && paragraph().isRTL(buffer().params()))
+				 && paragraph().isRTL(buffer()->params()))
 			// 2. if the position *after* right_pos is RTL (we want to be 
 			// *after* right_pos, not before right_pos + 1!)
-				|| paragraph().getFontSettings(bv().buffer().params(),
+				|| paragraph().getFontSettings(buffer()->params(),
 						new_cur.pos()).isVisibleRightToLeft()
 			)
 				new_cur.boundary(true);
@@ -591,7 +583,7 @@ bool Cursor::posVisLeft(bool skip_inset)
 		// currently to the right of 'left_pos'). In order to move to the 
 		// left, it depends whether or not the character at 'left_pos' is RTL.
 		new_pos_is_RTL = paragraph().getFontSettings(
-			bv().buffer().params(), left_pos).isVisibleRightToLeft();
+			buffer()->params(), left_pos).isVisibleRightToLeft();
 		// If the character at 'left_pos' *is* RTL, then in order to move to
 		// the left of it, we need to be *after* 'left_pos', i.e., move to
 		// position 'left_pos' + 1.
@@ -603,10 +595,10 @@ bool Cursor::posVisLeft(bool skip_inset)
 			// (this means that we're moving left to the end of an RTL chunk
 			// which is at the end of an LTR paragraph);
 				(new_cur.pos() == lastpos()
-				 && !paragraph().isRTL(buffer().params()))
+				 && !paragraph().isRTL(buffer()->params()))
 			// 2. if the position *after* left_pos is not RTL (we want to be 
 			// *after* left_pos, not before left_pos + 1!)
-				|| !paragraph().getFontSettings(bv().buffer().params(),
+				|| !paragraph().getFontSettings(buffer()->params(),
 						new_cur.pos()).isVisibleRightToLeft()
 			)
 				new_cur.boundary(true);
@@ -641,7 +633,7 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 {
 	// preparing bidi tables
 	Paragraph const & par = paragraph();
-	Buffer const & buf = buffer();
+	Buffer const & buf = *buffer();
 	Row const & row = textRow();
 	Bidi bidi;
 	bidi.computeTables(par, buf, row);
@@ -748,7 +740,7 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 bool Cursor::posVisToNewRow(bool movingLeft)
 {
 	Paragraph const & par = paragraph();
-	Buffer const & buf = buffer();
+	Buffer const & buf = *buffer();
 	Row const & row = textRow();
 	bool par_is_LTR = !par.isRTL(buf.params());
 
@@ -802,7 +794,7 @@ void Cursor::posVisToRowExtremity(bool left)
 {
 	// prepare bidi tables
 	Paragraph const & par = paragraph();
-	Buffer const & buf = buffer();
+	Buffer const & buf = *buffer();
 	Row const & row = textRow();
 	Bidi bidi;
 	bidi.computeTables(par, buf, row);
@@ -1445,7 +1437,7 @@ bool Cursor::macroModeClose()
 		// macros here are still unfolded (in init mode in fact). So
 		// we have to resolve the macro here manually and check its arity
 		// to put the selection behind it if arity > 0.
-		MacroData const * data = buffer().getMacro(atomAsMacro->name());
+		MacroData const * data = buffer()->getMacro(atomAsMacro->name());
 		if (selection.size() > 0 && data && data->numargs() - data->optionals() > 0) {
 			macroArg = true;
 			atomAsMacro->setDisplayMode(MathMacro::DISPLAY_INTERACTIVE_INIT, 1);
@@ -2024,7 +2016,7 @@ Font Cursor::getFont() const
 	}
 	
 	// get font at the position
-	Font font = par.getFont(bv().buffer().params(), pos,
+	Font font = par.getFont(buffer()->params(), pos,
 		outerFont(sl.pit(), text.paragraphs()));
 
 	return font;
@@ -2052,7 +2044,7 @@ bool notifyCursorLeavesOrEnters(Cursor const & old, Cursor & cur)
 
 	// update words if we just moved to another paragraph
 	if (i == old.depth() && i == cur.depth()
-	    && !cur.buffer().isClean()
+	    && !cur.buffer()->isClean()
 	    && cur.inTexted() && old.inTexted()
 	    && cur.pit() != old.pit()) {
 		old.paragraph().updateWords(old.top());
@@ -2107,7 +2099,7 @@ void Cursor::setCurrentFont()
 	}
 
 	// get font
-	BufferParams const & bufparams = buffer().params();
+	BufferParams const & bufparams = buffer()->params();
 	current_font = par.getFontSettings(bufparams, cpos);
 	real_current_font = tm.displayFont(cpit, cpos);
 
@@ -2128,7 +2120,7 @@ bool Cursor::textUndo()
 {
 	DocIterator dit = *this;
 	// Undo::textUndo() will modify dit.
-	if (!bv_->buffer().undo().textUndo(dit))
+	if (!buffer()->undo().textUndo(dit))
 		return false;
 	// Set cursor
 	setCursor(dit);
@@ -2142,7 +2134,7 @@ bool Cursor::textRedo()
 {
 	DocIterator dit = *this;
 	// Undo::textRedo() will modify dit.
-	if (!bv_->buffer().undo().textRedo(dit))
+	if (!buffer()->undo().textRedo(dit))
 		return false;
 	// Set cursor
 	setCursor(dit);
@@ -2154,49 +2146,49 @@ bool Cursor::textRedo()
 
 void Cursor::finishUndo() const
 {
-	bv_->buffer().undo().finishUndo();
+	buffer()->undo().finishUndo();
 }
 
 
 void Cursor::beginUndoGroup() const
 {
-	bv_->buffer().undo().beginUndoGroup();
+	buffer()->undo().beginUndoGroup();
 }
 
 
 void Cursor::endUndoGroup() const
 {
-	bv_->buffer().undo().endUndoGroup();
+	buffer()->undo().endUndoGroup();
 }
 
 
 void Cursor::recordUndo(UndoKind kind, pit_type from, pit_type to) const
 {
-	bv_->buffer().undo().recordUndo(*this, kind, from, to);
+	buffer()->undo().recordUndo(*this, kind, from, to);
 }
 
 
 void Cursor::recordUndo(UndoKind kind, pit_type from) const
 {
-	bv_->buffer().undo().recordUndo(*this, kind, from);
+	buffer()->undo().recordUndo(*this, kind, from);
 }
 
 
 void Cursor::recordUndo(UndoKind kind) const
 {
-	bv_->buffer().undo().recordUndo(*this, kind);
+	buffer()->undo().recordUndo(*this, kind);
 }
 
 
 void Cursor::recordUndoInset(UndoKind kind) const
 {
-	bv_->buffer().undo().recordUndoInset(*this, kind);
+	buffer()->undo().recordUndoInset(*this, kind);
 }
 
 
 void Cursor::recordUndoFullDocument() const
 {
-	bv_->buffer().undo().recordUndoFullDocument(*this);
+	buffer()->undo().recordUndoFullDocument(*this);
 }
 
 
@@ -2207,15 +2199,16 @@ void Cursor::recordUndoSelection() const
 			recordUndoInset();
 		else
 			recordUndo();
-	} else
-		bv_->buffer().undo().recordUndo(*this, ATOMIC_UNDO,
+	} else {
+		buffer()->undo().recordUndo(*this, ATOMIC_UNDO,
 			selBegin().pit(), selEnd().pit());
+	}
 }
 
 
 void Cursor::checkBufferStructure()
 {
-	Buffer const * master = buffer().masterBuffer();
+	Buffer const * master = buffer()->masterBuffer();
 	master->tocBackend().updateItem(*this);
 }
 

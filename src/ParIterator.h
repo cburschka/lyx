@@ -21,6 +21,7 @@
 
 namespace lyx {
 
+class Buffer;
 class Inset;
 class Text;
 class ParagraphList;
@@ -38,10 +39,11 @@ public:
 	typedef StdIt::reference reference;
 
 	///
-	ParIterator() : DocIterator() {}
+	///
+	ParIterator(Buffer * buf) : DocIterator(buf) {}
 
 	///
-	ParIterator(Inset &, pit_type pit);
+	ParIterator(Buffer * buf, Inset &, pit_type pit);
 	///
 	ParIterator(ParIterator const &);
 	///
@@ -94,7 +96,7 @@ class ParConstIterator : public std::iterator<std::forward_iterator_tag,
 {
 public:
 	///
-	ParConstIterator() : DocIterator() {}
+	ParConstIterator(Buffer const * buf);
 	///
 	ParConstIterator(ParConstIterator const &);
 	///
@@ -116,12 +118,6 @@ public:
 //bool operator==(ParConstIterator const & it1, ParConstIterator const & it2);
 
 //bool operator!=(ParConstIterator const & it1, ParConstIterator const & it2);
-
-
-ParConstIterator par_const_iterator_begin(Inset const & inset);
-
-ParConstIterator par_const_iterator_end(Inset const & inset);
-
 
 
 } // namespace lyx

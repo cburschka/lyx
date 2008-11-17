@@ -20,30 +20,32 @@
 
 namespace lyx {
 
-///
-/// ParIterator
-///
+//////////////////////////////////////////////////////////////////////////
+//
+// ParIterator
+//
+//////////////////////////////////////////////////////////////////////////
 
-ParIterator::ParIterator(DocIterator const & cur)
-	: DocIterator(cur)
+ParIterator::ParIterator(DocIterator const & dit)
+	: DocIterator(dit)
 {}
-
-
-ParIterator par_iterator_begin(Inset & inset)
-{
-	return ParIterator(doc_iterator_begin(inset));
-}
-
-
-ParIterator par_iterator_end(Inset & inset)
-{
-	return ParIterator(doc_iterator_end(inset));
-}
 
 
 ParIterator::ParIterator(ParIterator const & pi)
 	: DocIterator(DocIterator(pi))
 {}
+
+
+ParIterator par_iterator_begin(Inset & inset)
+{
+	return ParIterator(doc_iterator_begin(&inset.buffer(), &inset));
+}
+
+
+ParIterator par_iterator_end(Inset & inset)
+{
+	return ParIterator(doc_iterator_end(&inset.buffer(), &inset));
+}
 
 
 ParIterator & ParIterator::operator++()
@@ -104,9 +106,16 @@ ParagraphList & ParIterator::plist() const
 }
 
 
-///
-/// ParConstIterator
-///
+//////////////////////////////////////////////////////////////////////////
+//
+// ParConstIterator
+//
+//////////////////////////////////////////////////////////////////////////
+
+
+ParConstIterator::ParConstIterator(Buffer const * buf)
+	: DocIterator(const_cast<Buffer *>(buf))
+{}
 
 
 ParConstIterator::ParConstIterator(DocIterator const & dit)
@@ -162,20 +171,6 @@ bool operator!=(ParConstIterator const & iter1, ParConstIterator const & iter2)
 	return !(iter1 == iter2);
 }
 #endif
-
-
-// FIXME: const correctness!
-
-ParConstIterator par_const_iterator_begin(Inset const & inset)
-{
-	return ParConstIterator(doc_iterator_begin(const_cast<Inset &>(inset)));
-}
-
-
-ParConstIterator par_const_iterator_end(Inset const & inset)
-{
-	return ParConstIterator(doc_iterator_end(const_cast<Inset &>(inset)));
-}
 
 
 } // namespace lyx

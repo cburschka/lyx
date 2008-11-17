@@ -234,8 +234,8 @@ void Text::setLayout(Cursor & cur, docstring const & layout)
 	pit_type end = cur.selEnd().pit() + 1;
 	pit_type undopit = undoSpan(end - 1);
 	recUndo(cur, start, undopit - 1);
-	setLayout(cur.buffer(), start, end, layout);
-	cur.buffer().updateLabels();
+	setLayout(*cur.buffer(), start, end, layout);
+	cur.buffer()->updateLabels();
 }
 
 
@@ -294,7 +294,7 @@ void Text::changeDepth(Cursor & cur, DEPTH_CHANGE type)
 	}
 	// this handles the counter labels, and also fixes up
 	// depth values for follow-on (child) paragraphs
-	cur.buffer().updateLabels();
+	cur.buffer()->updateLabels();
 }
 
 
@@ -306,13 +306,13 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 	FontInfo layoutfont;
 	pit_type pit = cur.pit();
 	if (cur.pos() < pars_[pit].beginOfBody())
-		layoutfont = labelFont(cur.buffer(), pars_[pit]);
+		layoutfont = labelFont(*cur.buffer(), pars_[pit]);
 	else
-		layoutfont = layoutFont(cur.buffer(), pit);
+		layoutfont = layoutFont(*cur.buffer(), pit);
 
 	// Update current font
 	cur.real_current_font.update(font,
-					cur.buffer().params().language,
+					cur.buffer()->params().language,
 					toggleall);
 
 	// Reduce to implicit settings
@@ -478,7 +478,7 @@ void Text::insertInset(Cursor & cur, Inset * inset)
 	LASSERT(this == cur.text(), /**/);
 	LASSERT(inset, /**/);
 	cur.paragraph().insertInset(cur.pos(), inset, cur.current_font,
-		Change(cur.buffer().params().trackChanges
+		Change(cur.buffer()->params().trackChanges
 		? Change::INSERTED : Change::UNCHANGED));
 }
 
@@ -486,7 +486,7 @@ void Text::insertInset(Cursor & cur, Inset * inset)
 // needed to insert the selection
 void Text::insertStringAsLines(Cursor & cur, docstring const & str)
 {
-	cur.buffer().insertStringAsLines(pars_, cur.pit(), cur.pos(),
+	cur.buffer()->insertStringAsLines(pars_, cur.pit(), cur.pos(),
 		cur.current_font, str, autoBreakRows_);
 }
 
@@ -815,7 +815,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		    && oldpar.isLineSeparator(old.pos() - 1)
 		    && !oldpar.isDeleted(old.pos() - 1)
 		    && !oldpar.isDeleted(old.pos())) {
-			oldpar.eraseChar(old.pos() - 1, cur.buffer().params().trackChanges);
+			oldpar.eraseChar(old.pos() - 1, cur.buffer()->params().trackChanges);
 // FIXME: This will not work anymore when we have multiple views of the same buffer
 // In this case, we will have to correct also the cursors held by
 // other bufferviews. It will probably be easier to do that in a more
@@ -870,7 +870,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		return true;
 	}
 
-	if (oldpar.stripLeadingSpaces(cur.buffer().params().trackChanges)) {
+	if (oldpar.stripLeadingSpaces(cur.buffer()->params().trackChanges)) {
 		need_anchor_change = true;
 		// We return true here because the Paragraph contents changed and
 		// we need a redraw before further action is processed.

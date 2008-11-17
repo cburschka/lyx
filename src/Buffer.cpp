@@ -1515,17 +1515,18 @@ bool Buffer::isMultiLingual() const
 
 DocIterator Buffer::getParFromID(int const id) const
 {
+	Buffer * buf = const_cast<Buffer *>(this);
 	if (id < 0) {
 		// John says this is called with id == -1 from undo
 		lyxerr << "getParFromID(), id: " << id << endl;
-		return doc_iterator_end(inset());
+		return doc_iterator_end(buf);
 	}
 
-	for (DocIterator it = doc_iterator_begin(inset()); !it.atEnd(); it.forwardPar())
+	for (DocIterator it = doc_iterator_begin(buf); !it.atEnd(); it.forwardPar())
 		if (it.paragraph().id() == id)
 			return it;
 
-	return doc_iterator_end(inset());
+	return doc_iterator_end(buf);
 }
 
 
@@ -1537,25 +1538,25 @@ bool Buffer::hasParWithID(int const id) const
 
 ParIterator Buffer::par_iterator_begin()
 {
-	return ParIterator(doc_iterator_begin(inset()));
+	return ParIterator(doc_iterator_begin(this));
 }
 
 
 ParIterator Buffer::par_iterator_end()
 {
-	return ParIterator(doc_iterator_end(inset()));
+	return ParIterator(doc_iterator_end(this));
 }
 
 
 ParConstIterator Buffer::par_iterator_begin() const
 {
-	return lyx::par_const_iterator_begin(inset());
+	return ParConstIterator(doc_iterator_begin(this));
 }
 
 
 ParConstIterator Buffer::par_iterator_end() const
 {
-	return lyx::par_const_iterator_end(inset());
+	return ParConstIterator(doc_iterator_end(this));
 }
 
 
@@ -1737,7 +1738,7 @@ DocIterator Buffer::firstChildPosition(Buffer const * child)
 	Impl::BufferPositionMap::iterator it;
 	it = d->children_positions.find(child);
 	if (it == d->children_positions.end())
-		return DocIterator();
+		return DocIterator(this);
 	return it->second;
 }
 
@@ -1772,11 +1773,11 @@ MacroData const * Buffer::getBufferMacro(docstring const & name,
 
 	// find macro definitions for name
 	Impl::NamePositionScopeMacroMap::iterator nameIt
-	= d->macros.find(name);
+		= d->macros.find(name);
 	if (nameIt != d->macros.end()) {
 		// find last definition in front of pos or at pos itself
 		Impl::PositionScopeMacroMap::const_iterator it
-		= greatest_below(nameIt->second, pos);
+			= greatest_below(nameIt->second, pos);
 		if (it != nameIt->second.end()) {
 			while (true) {
 				// scope ends behind pos?
@@ -1799,7 +1800,7 @@ MacroData const * Buffer::getBufferMacro(docstring const & name,
 
 	// find macros in included files
 	Impl::PositionScopeBufferMap::const_iterator it
-	= greatest_below(d->position_to_children, pos);
+		= greatest_below(d->position_to_children, pos);
 	if (it == d->position_to_children.end())
 		// no children before
 		return bestData;
@@ -2000,8 +2001,8 @@ void Buffer::updateMacroInstances() const
 {
 	LYXERR(Debug::MACROS, "updateMacroInstances for "
 		<< d->filename.onlyFileName());
-	DocIterator it = doc_iterator_begin(inset());
-	DocIterator end = doc_iterator_end(inset());
+	DocIterator it = doc_iterator_begin(this);
+	DocIterator end = doc_iterator_end(this);
 	for (; it != end; it.forwardPos()) {
 		// look for MathData cells in InsetMathNest insets
 		Inset * inset = it.nextInset();

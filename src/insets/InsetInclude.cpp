@@ -218,7 +218,7 @@ bool InsetInclude::isCompatibleCommand(string const & s)
 
 void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	LASSERT(&cur.buffer() == &buffer(), /**/);
+	LASSERT(cur.buffer() == &buffer(), return);
 	switch (cmd.action) {
 
 	case LFUN_INSET_EDIT: {

@@ -206,20 +206,18 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// if the inset is part of a graphics group, all the
 		// other members should be updated too.
 		if (!params_.groupId.empty())
-			graphics::unifyGraphicsGroups(cur.buffer(), 
+			graphics::unifyGraphicsGroups(buffer(), 
 						      to_utf8(cmd.argument()));
 		break;
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		cur.bv().updateDialog("graphics", params2string(params(),
-				      cur.bv().buffer()));
+		cur.bv().updateDialog("graphics", params2string(params(), buffer()));
 		break;
 
 	case LFUN_MOUSE_RELEASE:
 		if (!cur.selection() && cmd.button() == mouse_button::button1)
-			cur.bv().showDialog("graphics", params2string(params(),
-					    cur.bv().buffer()), this);
+			cur.bv().showDialog("graphics", params2string(params(), buffer()), this);
 		break;
 
 	default:

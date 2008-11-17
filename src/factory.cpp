@@ -320,7 +320,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 				return 0;
 			
 			}
-			} //end LFUN_INSET_INSERT
+		} //end LFUN_INSET_INSERT
 
 		case LFUN_SPACE_INSERT: {
 			string const name = cmd.getArg(0);

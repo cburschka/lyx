@@ -483,10 +483,10 @@ void InsetMathHull::addPreview(graphics::PreviewLoader & ploader) const
 bool InsetMathHull::notifyCursorLeaves(Cursor const & /*old*/, Cursor & cur)
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
-		Buffer const & buffer = cur.buffer();
+		Buffer const * buffer = cur.buffer();
 		docstring const snippet = latexString(*this);
-		preview_->addPreview(snippet, buffer);
-		preview_->startLoading(buffer);
+		preview_->addPreview(snippet, *buffer);
+		preview_->startLoading(*buffer);
 		cur.updateFlags(Update::Force);
 	}
 	return false;

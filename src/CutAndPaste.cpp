@@ -93,7 +93,7 @@ pair<PitPosPair, pit_type>
 pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 		     DocumentClass const * const oldDocClass, ErrorList & errorlist)
 {
-	Buffer const & buffer = cur.buffer();
+	Buffer const & buffer = *cur.buffer();
 	pit_type pit = cur.pit();
 	pos_type pos = cur.pos();
 	InsetText * target_inset = cur.inset().asInsetText();
@@ -623,9 +623,9 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 
 		int endpos = cur.selEnd().pos();
 
-		BufferParams const & bp = cur.buffer().params();
+		BufferParams const & bp = cur.buffer()->params();
 		if (realcut) {
-			copySelectionHelper(cur.buffer(),
+			copySelectionHelper(*cur.buffer(),
 				text->paragraphs(),
 				begpit, endpit,
 				cur.selBegin().pos(), endpos,
@@ -658,7 +658,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 
 		// need a valid cursor. (Lgb)
 		cur.clearSelection();
-		cur.buffer().updateLabels();
+		cur.buffer()->updateLabels();
 
 		// tell tabular that a recent copy happened
 		dirtyTabularStack(false);
@@ -691,7 +691,7 @@ void copyInset(Cursor const & cur, Inset * inset, docstring const & plaintext)
 {
 	ParagraphList pars;
 	Paragraph par;
-	BufferParams const & bp = cur.buffer().params();
+	BufferParams const & bp = cur.buffer()->params();
 	par.setLayout(bp.documentClass().plainLayout());
 	par.insertInset(0, inset, Change(Change::UNCHANGED));
 	pars.push_back(par);
@@ -728,9 +728,9 @@ void copySelectionToStack(Cursor const & cur, CutStack & cutstack)
 		       (par != cur.selEnd().pit() || pos < cur.selEnd().pos()))
 			++pos;
 
-		copySelectionHelper(cur.buffer(), pars, par, cur.selEnd().pit(),
+		copySelectionHelper(*cur.buffer(), pars, par, cur.selEnd().pit(),
 			pos, cur.selEnd().pos(), 
-			cur.buffer().params().documentClassPtr(), cutstack);
+			cur.buffer()->params().documentClassPtr(), cutstack);
 		dirtyTabularStack(false);
 	}
 
@@ -738,7 +738,7 @@ void copySelectionToStack(Cursor const & cur, CutStack & cutstack)
 		//lyxerr << "copySelection in mathed" << endl;
 		ParagraphList pars;
 		Paragraph par;
-		BufferParams const & bp = cur.buffer().params();
+		BufferParams const & bp = cur.buffer()->params();
 		// FIXME This should be the plain layout...right?
 		par.setLayout(bp.documentClass().plainLayout());
 		par.insert(0, grabSelection(cur), Font(), Change(Change::UNCHANGED));
@@ -766,7 +766,7 @@ void copySelection(Cursor const & cur, docstring const & plaintext)
 	if (cur.selBegin().idx() != cur.selEnd().idx()) {
 		ParagraphList pars;
 		Paragraph par;
-		BufferParams const & bp = cur.buffer().params();
+		BufferParams const & bp = cur.buffer()->params();
 		par.setLayout(bp.documentClass().plainLayout());
 		par.insert(0, plaintext, Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
@@ -832,7 +832,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 
 		boost::tie(ppp, endpit) =
 			pasteSelectionHelper(cur, parlist, docclass, errorList);
-		cur.buffer().updateLabels();
+		cur.buffer()->updateLabels();
 		cur.clearSelection();
 		text->setCursor(cur, ppp.first, ppp.second);
 	}
@@ -904,7 +904,7 @@ void pasteClipboardGraphics(Cursor & cur, ErrorList & /* errorList */,
 		return;
 
 	// create inset for graphic
-	InsetGraphics * inset = new InsetGraphics(cur.buffer());
+	InsetGraphics * inset = new InsetGraphics(*cur.buffer());
 	InsetGraphicsParams params;
 	params.filename = support::DocFileName(filename.absFilename());
 	inset->setParams(params);
@@ -930,7 +930,7 @@ void replaceSelectionWithString(Cursor & cur, docstring const & str, bool backwa
 
 	// Get font setting before we cut, we need a copy here, not a bare reference.
 	Font const font =
-		selbeg.paragraph().getFontSettings(cur.buffer().params(), selbeg.pos());
+		selbeg.paragraph().getFontSettings(cur.buffer()->params(), selbeg.pos());
 
 	// Insert the new string
 	pos_type pos = cur.selEnd().pos();
@@ -938,7 +938,7 @@ void replaceSelectionWithString(Cursor & cur, docstring const & str, bool backwa
 	docstring::const_iterator cit = str.begin();
 	docstring::const_iterator end = str.end();
 	for (; cit != end; ++cit, ++pos)
-		par.insertChar(pos, *cit, font, cur.buffer().params().trackChanges);
+		par.insertChar(pos, *cit, font, cur.buffer()->params().trackChanges);
 
 	// Cut the selection
 	cutSelection(cur, true, false);
@@ -1075,5 +1075,4 @@ bool tabularStackDirty()
 
 
 } // namespace cap
-
 } // namespace lyx

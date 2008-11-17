@@ -212,7 +212,7 @@ void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 			params_.type = cmd.getArg(1);
 		else
 			string2params(to_utf8(cmd.argument()), params_);
-		setLayout(cur.buffer().params());
+		setLayout(cur.buffer()->params());
 		break;
 	}
 

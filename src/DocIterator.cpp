@@ -14,6 +14,7 @@
 
 #include "DocIterator.h"
 
+#include "Buffer.h"
 #include "InsetList.h"
 #include "Paragraph.h"
 #include "Text.h"
@@ -25,7 +26,6 @@
 #include "insets/InsetTabular.h"
 
 #include "support/debug.h"
-
 #include "support/lassert.h"
 
 #include <ostream>
@@ -35,29 +35,37 @@ using namespace std;
 namespace lyx {
 
 
+DocIterator::DocIterator()
+	: boundary_(false), inset_(0), buffer_(0)
+{}
+
 // We could be able to get rid of this if only every BufferView were
 // associated to a buffer on construction.
-DocIterator::DocIterator()
-	: boundary_(false), inset_(0)
+DocIterator::DocIterator(Buffer * buf)
+	: boundary_(false), inset_(0), buffer_(buf)
 {}
 
 
-DocIterator::DocIterator(Inset & inset)
-	: boundary_(false), inset_(&inset)
+DocIterator::DocIterator(Buffer * buf, Inset * inset)
+	: boundary_(false), inset_(inset), buffer_(buf)
 {}
 
 
-DocIterator doc_iterator_begin(Inset & inset)
+DocIterator doc_iterator_begin(const Buffer * buf0, const Inset * inset0)
 {
-	DocIterator dit(inset);
+	Buffer * buf = const_cast<Buffer *>(buf0);	
+	Inset * inset = const_cast<Inset *>(inset0);
+	DocIterator dit(buf, inset ? inset : &buf->inset());
 	dit.forwardPos();
 	return dit;
 }
 
 
-DocIterator doc_iterator_end(Inset & inset)
+DocIterator doc_iterator_end(const Buffer * buf0, const Inset * inset0)
 {
-	return DocIterator(inset);
+	Buffer * buf = const_cast<Buffer *>(buf0);	
+	Inset * inset = const_cast<Inset *>(inset0);
+	return DocIterator(buf, inset ? inset : &buf->inset());
 }
 
 
@@ -77,7 +85,7 @@ LyXErr & operator<<(LyXErr & os, DocIterator const & it)
 
 Inset * DocIterator::nextInset() const
 {
-	LASSERT(!empty(), /**/);
+	LASSERT(!empty(), return 0);
 	if (pos() == lastpos())
 		return 0;
 	if (pos() > lastpos()) {
@@ -92,7 +100,7 @@ Inset * DocIterator::nextInset() const
 
 Inset * DocIterator::prevInset() const
 {
-	LASSERT(!empty(), /**/);
+	LASSERT(!empty(), return 0);
 	if (pos() == 0)
 		return 0;
 	if (inMathed()) {
@@ -556,11 +564,12 @@ StableDocIterator::StableDocIterator(DocIterator const & dit)
 }
 
 
-DocIterator StableDocIterator::asDocIterator(Inset * inset) const
+DocIterator StableDocIterator::asDocIterator(Buffer * buf) const
 {
 	// this function re-creates the cache of inset pointers
 	//lyxerr << "converting:\n" << *this << endl;
-	DocIterator dit = DocIterator(*inset);
+	Inset * inset = &buf->inset();
+	DocIterator dit = DocIterator(buf, inset);
 	for (size_t i = 0, n = data_.size(); i != n; ++i) {
 		if (inset == 0) {
 			// FIXME

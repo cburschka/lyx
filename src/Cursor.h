@@ -198,8 +198,6 @@ public:
 	void resetAnchor();
 	/// access to owning BufferView
 	BufferView & bv() const;
-	/// access to owning Buffer
-	Buffer & buffer() const;
 	/// get some interesting description of top position
 	void info(odocstream & os) const;
 	/// are we in math mode (2), text mode (1) or unsure (0)?

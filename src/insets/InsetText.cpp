@@ -529,7 +529,7 @@ void InsetText::addToToc(DocIterator const & cdit)
 
 bool InsetText::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
-	if (cur.buffer().isClean())
+	if (buffer().isClean())
 		return Inset::notifyCursorLeaves(old, cur);
 	
 	// find text inset in old cursor
@@ -548,9 +548,7 @@ bool InsetText::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 
 bool InsetText::completionSupported(Cursor const & cur) const
 {
-	Cursor const & bvCur = cur.bv().cursor();
-	if (&bvCur.inset() != this)
-		return false;
+	//LASSERT(&cur.bv().cursor().inset() != this, return false);
 	return text_.completionSupported(cur);
 }
 

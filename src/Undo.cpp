@@ -346,7 +346,7 @@ void Undo::Private::doTextUndoOrRedo(DocIterator & cur, UndoElementStack & stack
 	// try to return early.
 
 	// We will store in otherstack the part of the document under 'undo'
-	DocIterator cell_dit = undo.cell.asDocIterator(&buffer_.inset());
+	DocIterator cell_dit = undo.cell.asDocIterator(&buffer_);
 
 	doRecordUndo(ATOMIC_UNDO, cell_dit,
 		undo.from, cell_dit.lastpit() - undo.end, cur,
@@ -354,7 +354,7 @@ void Undo::Private::doTextUndoOrRedo(DocIterator & cur, UndoElementStack & stack
 
 	// This does the actual undo/redo.
 	//LYXERR0("undo, performing: " << undo);
-	DocIterator dit = undo.cell.asDocIterator(&buffer_.inset());
+	DocIterator dit = undo.cell.asDocIterator(&buffer_);
 	if (undo.isFullBuffer) {
 		LASSERT(undo.pars, /**/);
 		// This is a full document
@@ -404,7 +404,7 @@ void Undo::Private::doTextUndoOrRedo(DocIterator & cur, UndoElementStack & stack
 	LASSERT(undo.pars == 0, /**/);
 	LASSERT(undo.array == 0, /**/);
 
-	cur = undo.cursor.asDocIterator(&buffer_.inset());
+	cur = undo.cursor.asDocIterator(&buffer_);
 	// Now that we're done with undo, we pop it off the stack.
 	stack.pop();
 }
@@ -509,7 +509,7 @@ void Undo::recordUndoFullDocument(DocIterator const & cur)
 	beginUndoGroup();
 	d->doRecordUndo(
 		ATOMIC_UNDO,
-		doc_iterator_begin(d->buffer_.inset()),
+		doc_iterator_begin(&d->buffer_),
 		0, d->buffer_.paragraphs().size() - 1,
 		cur,
 		true,

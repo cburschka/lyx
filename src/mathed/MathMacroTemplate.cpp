@@ -630,8 +630,9 @@ bool MathMacroTemplate::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 }
 
 
-void MathMacroTemplate::removeArguments(Cursor & cur, int from, int to) {
-	for (DocIterator it = doc_iterator_begin(*this); it; it.forwardChar()) {
+void MathMacroTemplate::removeArguments(Cursor & cur, int from, int to)
+{
+	for (DocIterator it = doc_iterator_begin(&buffer(), this); it; it.forwardChar()) {
 		if (!it.nextInset())
 			continue;
 		if (it.nextInset()->lyxCode() != MATHMACROARG_CODE)
@@ -651,8 +652,9 @@ void MathMacroTemplate::removeArguments(Cursor & cur, int from, int to) {
 }
 
 
-void MathMacroTemplate::shiftArguments(size_t from, int by) {
-	for (DocIterator it = doc_iterator_begin(*this); it; it.forwardChar()) {
+void MathMacroTemplate::shiftArguments(size_t from, int by)
+{
+	for (DocIterator it = doc_iterator_begin(&buffer(), this); it; it.forwardChar()) {
 		if (!it.nextInset())
 			continue;
 		if (it.nextInset()->lyxCode() != MATHMACROARG_CODE)
@@ -669,8 +671,7 @@ void MathMacroTemplate::shiftArguments(size_t from, int by) {
 int MathMacroTemplate::maxArgumentInDefinition() const
 {
 	int maxArg = 0;
-	MathMacroTemplate * nonConst = const_cast<MathMacroTemplate *>(this);
-	DocIterator it = doc_iterator_begin(*nonConst);
+	DocIterator it = doc_iterator_begin(&buffer(), this);
 	it.idx() = defIdx();
 	for (; it; it.forwardChar()) {
 		if (!it.nextInset())
@@ -690,7 +691,7 @@ void MathMacroTemplate::insertMissingArguments(int maxArg)
 	idx_type idx = cell(displayIdx()).empty() ? defIdx() : displayIdx();
 
 	// search for #n macros arguments
-	DocIterator it = doc_iterator_begin(*this);
+	DocIterator it = doc_iterator_begin(&buffer(), this);
 	it.idx() = idx;
 	for (; it && it[0].idx() == idx; it.forwardChar()) {
 		if (!it.nextInset())
