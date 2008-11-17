@@ -105,15 +105,18 @@ void GuiThesaurus::selectionChanged()
 		return;
 
 	QString item = meaningsTV->currentItem()->text(col);
-	// cut out the classification in brackets
-	// (as in "hominid (generic term)")
-	// FIXME: not ideal yet. We need to cut off classifications
-	// at the beginning as well 
-	// (as in "(noun) man" and "(noun) male (generic term)")
+	// cut out the classification in brackets:
+	// "hominid (generic term)" -> "hominid"
 	QRegExp re("^([^\\(\\)]+)\\b\\(?.*\\)?.*$");
+	// This is for items with classifications at the beginning:
+	// "(noun) man" -> "man"; "(noun) male (generic term)" -> "male"
+	QRegExp rex("^(\\(.+\\))\\s*([^\\(\\)]+)\\s*\\(?.*\\)?.*$");
 	int pos = re.indexIn(item);
 	if (pos > -1)
 		item = re.cap(1).trimmed();
+	pos = rex.indexIn(item);
+	if (pos > -1)
+		item = rex.cap(2).trimmed();
 	replaceED->setText(item);
 	replacePB->setEnabled(true);
 	changed();
@@ -129,15 +132,18 @@ void GuiThesaurus::itemClicked(QTreeWidgetItem * /*item*/, int /*col*/)
 void GuiThesaurus::selectionClicked(QTreeWidgetItem * item, int col)
 {
 	QString str = item->text(col);
-	// cut out the classification in brackets
-	// (as in "hominid (generic term)")
-	// FIXME: not ideal yet. We need to cut off classifications
-	// at the beginning as well 
-	// (as in "(noun) man" and "(noun) male (generic term)")
+	// cut out the classification in brackets:
+	// "hominid (generic term)" -> "hominid"
 	QRegExp re("^([^\\(\\)]+)\\b\\(?.*\\)?.*$");
+	// This is for items with classifications at the beginning:
+	// "(noun) man" -> "man"; "(noun) male (generic term)" -> "male"
+	QRegExp rex("^(\\(.+\\))\\s*([^\\(\\)]+)\\s*\\(?.*\\)?.*$");
 	int pos = re.indexIn(str);
 	if (pos > -1)
 		str = re.cap(1).trimmed();
+	pos = rex.indexIn(str);
+	if (pos > -1)
+		str = rex.cap(2).trimmed();
 	entryCO->insertItem(0, str);
 	entryCO->setCurrentIndex(0);
 
