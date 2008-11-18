@@ -127,7 +127,7 @@ public:
 		font.setWeight(QFont::Bold);
 		font.setPointSize(int(toqstr(lyxrc.font_sizes[FONT_SIZE_LARGE]).toDouble()));
 		pain.setFont(font);
-		pain.drawText(190, 225, text);
+		pain.drawText(260, 15, text);
 	}
 
 	void paintEvent(QPaintEvent *)
