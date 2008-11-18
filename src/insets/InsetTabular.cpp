@@ -3013,8 +3013,9 @@ bool InsetTabular::isCellSelected(Cursor & cur, row_type row, col_type col)
 			CursorSlice const & beg = cur.selBegin();
 			CursorSlice const & end = cur.selEnd();
 
-			if (end.lastpos() > 0 && end.pos() == end.lastpos() 
-				  && beg.pos() == 0)
+			if ((end.lastpos() > 0 || end.lastpit() > 0)
+				  && end.pos() == end.lastpos() && beg.pos() == 0
+				  && end.pit() == end.lastpit() && beg.pit() == 0)
 				return true;
 		}
 	}
