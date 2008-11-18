@@ -817,10 +817,10 @@ void Paragraph::Private::latexInset(
 	}
 
 	if (close) {
-    	if (running_font.language()->lang() == "farsi")
-			os << "\\endL{}";
-		else
-			os << '}';
+		if (running_font.language()->lang() == "farsi")
+				os << "\\endL{}";
+			else
+				os << '}';
 	}
 
 	if (tmp) {
