@@ -179,40 +179,50 @@ static NSAutoreleasePool * pool = nil;
 
 static LyXLinkBackClient * linkBackClient = nil;
 
+void checkAutoReleasePool()
+{
+	if (pool == nil)
+		pool = [[NSAutoreleasePool alloc] init];
+}
+
 int isLinkBackDataInPasteboard()
 {
-	NSArray * linkBackType = [NSArray arrayWithObjects: LinkBackPboardType, nil];
-	NSString * ret = [[NSPasteboard generalPasteboard] availableTypeFromArray:linkBackType];
-	return ret != nil;
+	checkAutoReleasePool() ;
+	{
+		NSArray * linkBackType = [NSArray arrayWithObjects: LinkBackPboardType, nil];
+		NSString * ret = [[NSPasteboard generalPasteboard] availableTypeFromArray:linkBackType];
+		return ret != nil;
+	}
 }
 
 	
 void getLinkBackData(void const * * buf, unsigned * len)
 {
-	// get linkback data from pasteboard
-	NSPasteboard * pboard = [NSPasteboard generalPasteboard];
-	id linkBackData = [pboard propertyListForType:LinkBackPboardType];
-	
-	NSData * nsdata
-	= [NSArchiver archivedDataWithRootObject:linkBackData];
-	if (nsdata == nil) {
-		*buf = 0;
-		*len = 0;
-		return;
+	checkAutoReleasePool() ;
+	{
+		// get linkback data from pasteboard
+		NSPasteboard * pboard = [NSPasteboard generalPasteboard];
+		id linkBackData = [pboard propertyListForType:LinkBackPboardType];
+		
+		NSData * nsdata
+		= [NSArchiver archivedDataWithRootObject:linkBackData];
+		if (nsdata == nil) {
+			*buf = 0;
+			*len = 0;
+			return;
+		}
+
+		*buf = [nsdata bytes];
+		*len = [nsdata length];
 	}
-
-	*buf = [nsdata bytes];
-	*len = [nsdata length];
 }
-
 
 int editLinkBackFile(char const * docName)
 {
 	// setup Obj-C and our client
 	if (linkBackClient == nil)
 		linkBackClient = [[LyXLinkBackClient alloc] init];
-	if (pool == nil)
-		pool = [[NSAutoreleasePool alloc] init];
+	checkAutoReleasePool() ;
 	
 	// FIXME: really UTF8 here?
 	NSString * nsDocName = [NSString stringWithUTF8String:docName];

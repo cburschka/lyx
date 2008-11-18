@@ -67,11 +67,11 @@ id LinkBackGetAppData(id LinkBackData)
 
 NSString* LinkBackUniqueItemKey() 
 {
-    static int counter = 0 ;
-    
-    NSString* base = [[NSBundle mainBundle] bundleIdentifier] ;
-    unsigned long time = [NSDate timeIntervalSinceReferenceDate] ;
-    return [NSString stringWithFormat: @"%@%.8x.%.4x",base,time,counter++] ;
+	static int counter = 0 ;
+	
+	NSString* base = [[NSBundle mainBundle] bundleIdentifier] ;
+	unsigned long time = [NSDate timeIntervalSinceReferenceDate] ;
+	return [NSString stringWithFormat: @"%@%.8x.%.4x",base,time,counter++] ;
 }
 
 BOOL LinkBackDataBelongsToActiveApplication(id data) 
@@ -115,8 +115,8 @@ NSString* LinkBackEditNoneMenuTitle()
 {
 	NSDictionary* appInfo = [[NSBundle mainBundle] infoDictionary] ;
 
-    NSMutableDictionary* ret = [[NSMutableDictionary alloc] init] ;
-    NSString* bundleId = [[NSBundle mainBundle] bundleIdentifier] ;
+	NSMutableDictionary* ret = [[NSMutableDictionary alloc] init] ;
+	NSString* bundleId = [[NSBundle mainBundle] bundleIdentifier] ;
 	NSString* url = [appInfo objectForKey: @"LinkBackApplicationURL"] ;
 	NSString* appName = [[NSProcessInfo processInfo] processName] ;
 	id version = @"A" ;
@@ -125,24 +125,24 @@ NSString* LinkBackEditNoneMenuTitle()
 	
 	// callback information
 	[ret setObject: bundleId forKey: LinkBackServerBundleIdentifierKey]; 
-    [ret setObject: serverName forKey: LinkBackServerNameKey] ;
-    [ret setObject: version forKey: LinkBackVersionKey] ;
+	[ret setObject: serverName forKey: LinkBackServerNameKey] ;
+	[ret setObject: version forKey: LinkBackVersionKey] ;
 	
 	// additional information
 	if (appName) [ret setObject: appName forKey: LinkBackServerApplicationNameKey] ;
 	if (action) [ret setObject: action forKey: LinkBackServerActionKey] ;
-    if (appData) [ret setObject: appData forKey: LinkBackApplicationDataKey] ;
+	if (appData) [ret setObject: appData forKey: LinkBackApplicationDataKey] ;
 	if (url) [ret setObject: url forKey: LinkBackApplicationURLKey] ;
 	[ret setObject: [NSNumber numberWithFloat: rate] forKey: LinkBackSuggestedRefreshKey] ;
 	
-    return [ret autorelease] ;
+	return [ret autorelease] ;
 }
 
 - (BOOL)linkBackDataBelongsToActiveApplication 
 {
-    NSString* bundleId = [[NSBundle mainBundle] bundleIdentifier] ;
-    NSString* dataId = [self objectForKey: LinkBackServerBundleIdentifierKey] ;
-    return (dataId && [dataId isEqualToString: bundleId]) ;
+	NSString* bundleId = [[NSBundle mainBundle] bundleIdentifier] ;
+	NSString* dataId = [self objectForKey: LinkBackServerBundleIdentifierKey] ;
+	return (dataId && [dataId isEqualToString: bundleId]) ;
 }
 
 - (id)linkBackAppData 
@@ -210,58 +210,58 @@ NSMutableDictionary* keyedLinkBacks = nil ;
 
 + (void)initialize
 {
-    static BOOL inited = NO ;
-    if (inited) return ;
-    inited=YES; [super initialize] ;
-    keyedLinkBacks = [[NSMutableDictionary alloc] init] ;
+	static BOOL inited = NO ;
+	if (inited) return ;
+	inited=YES; [super initialize] ;
+	keyedLinkBacks = [[NSMutableDictionary alloc] init] ;
 }
 
 + (LinkBack*)activeLinkBackForItemKey:(id)aKey 
 {
-    return [keyedLinkBacks objectForKey: aKey] ;
+	return [keyedLinkBacks objectForKey: aKey] ;
 }
 
 - (id)initServerWithClient: (LinkBack*)aLinkBack delegate: (id<LinkBackServerDelegate>)aDel 
 {
-    if (self = [super init]) {
-        peer = [aLinkBack retain] ;
-        sourceName = [[peer sourceName] copy] ;
+	if ((self = [super init])) {
+		peer = [aLinkBack retain] ;
+		sourceName = [[peer sourceName] copy] ;
 		sourceApplicationName = [[peer sourceApplicationName] copy] ;
-        key = [[peer itemKey] copy] ;
-        isServer = YES ;
-        delegate = aDel ;
-        [keyedLinkBacks setObject: self forKey: key] ;
-    }
-    
-    return self ;
+		key = [[peer itemKey] copy] ;
+		isServer = YES ;
+		delegate = aDel ;
+		[keyedLinkBacks setObject: self forKey: key] ;
+	}
+	
+	return self ;
 }
 
 - (id)initClientWithSourceName:(NSString*)aName delegate:(id<LinkBackClientDelegate>)aDel itemKey:(NSString*)aKey ;
 {
-    if (self = [super init]) {
-        isServer = NO ;
-        delegate = aDel ;
-        sourceName = [aName copy] ;
+	if ((self = [super init])) {
+		isServer = NO ;
+		delegate = aDel ;
+		sourceName = [aName copy] ;
 		sourceApplicationName = [[NSProcessInfo processInfo] processName] ;
-        pboard = [[NSPasteboard pasteboardWithUniqueName] retain] ;
-        key = [aKey copy] ;
-    }
-    
-    return self ;
+		pboard = [[NSPasteboard pasteboardWithUniqueName] retain] ;
+		key = [aKey copy] ;
+	}
+	
+	return self ;
 }
 
 - (void)dealloc
 {
-    [repobj release] ;
-    [sourceName release] ;
-    
-    if (peer) [self closeLink] ;
-    [peer release] ;
-    
-    if (!isServer) [pboard releaseGlobally] ; // client owns the pboard.
-    [pboard release] ;
-    
-    [super dealloc] ;
+	[repobj release] ;
+	[sourceName release] ;
+	
+	if (peer) [self closeLink] ;
+	[peer release] ;
+	
+	if (!isServer) [pboard releaseGlobally] ; // client owns the pboard.
+	[pboard release] ;
+	
+	[super dealloc] ;
 }
 
 // ...........................................................................
@@ -269,24 +269,24 @@ NSMutableDictionary* keyedLinkBacks = nil ;
 
 - (NSPasteboard*)pasteboard 
 {
-    return pboard ;
+	return pboard ;
 }
 
 - (id)representedObject 
 {
-    return repobj ;
+	return repobj ;
 }
 
 - (void)setRepresentedObject:(id)obj 
 {
-    [obj retain] ;
-    [repobj release] ;
-    repobj = obj ;
+	[obj retain] ;
+	[repobj release] ;
+	repobj = obj ;
 }
 
 - (NSString*)sourceName
 {
-    return sourceName ;
+	return sourceName ;
 }
 
 - (NSString*)sourceApplicationName 
@@ -296,33 +296,33 @@ NSMutableDictionary* keyedLinkBacks = nil ;
 
 - (NSString*)itemKey
 {
-    return key ;
+	return key ;
 }
 
 // this method is called to initial a link closure from this side.
 - (void)closeLink 
 {
-    // inform peer of closure
-    if (peer) {
-        [peer remoteCloseLink] ; 
-        [peer release] ;
-        peer = nil ;
-        [self release] ;
-        [keyedLinkBacks removeObjectForKey: [self itemKey]]; 
-    }
+	// inform peer of closure
+	if (peer) {
+		[peer remoteCloseLink] ; 
+		[peer release] ;
+		peer = nil ;
+		[self release] ;
+		[keyedLinkBacks removeObjectForKey: [self itemKey]]; 
+	}
 }
 
 // this method is called whenever the link is about to be or has been closed by the other side.
 - (void)remoteCloseLink 
 {
-    if (peer) {
-        [peer release] ;
-        peer = nil ;
-        [self release] ;
-        [keyedLinkBacks removeObjectForKey: [self itemKey]]; 
-    }
+	if (peer) {
+		[peer release] ;
+		peer = nil ;
+		[self release] ;
+		[keyedLinkBacks removeObjectForKey: [self itemKey]]; 
+	}
 
-    if (delegate) [delegate linkBackDidClose: self] ;
+	if (delegate) [delegate linkBackDidClose: self] ;
 }
 
 // ...........................................................................
@@ -330,28 +330,28 @@ NSMutableDictionary* keyedLinkBacks = nil ;
 //
 + (BOOL)publishServerWithName:(NSString*)name delegate:(id<LinkBackServerDelegate>)del 
 {
-    return [LinkBackServer publishServerWithName: name delegate: del] ;
+	return [LinkBackServer publishServerWithName: name delegate: del] ;
 }
 
 + (void)retractServerWithName:(NSString*)name 
 {
-    LinkBackServer* server = [LinkBackServer LinkBackServerWithName: name] ;
-    if (server) [server retract] ;
+	LinkBackServer* server = [LinkBackServer LinkBackServerWithName: name] ;
+	if (server) [server retract] ;
 }
 
 - (void)sendEdit 
 {
-    if (!peer) [NSException raise: NSGenericException format: @"tried to request edit from a live link not connect to a server."] ;
-    [peer refreshEditWithPasteboardName: [pboard name]] ;
+	if (!peer) [NSException raise: NSGenericException format: @"tried to request edit from a live link not connect to a server."] ;
+	[peer refreshEditWithPasteboardName: [pboard name]] ;
 }
 
 // FROM CLIENT LinkBack
 - (void)requestEditWithPasteboardName:(bycopy NSString*)pboardName
 {
-    // get the new pasteboard, if needed
-    if ((!pboard) || ![pboardName isEqualToString: [pboard name]]) pboard = [[NSPasteboard pasteboardWithName: pboardName] retain] ;
+	// get the new pasteboard, if needed
+	if ((!pboard) || ![pboardName isEqualToString: [pboard name]]) pboard = [[NSPasteboard pasteboardWithName: pboardName] retain] ;
 
-    // pass onto delegate
+	// pass onto delegate
 	[delegate performSelectorOnMainThread: @selector(linkBackClientDidRequestEdit:) withObject: self waitUntilDone: NO] ;
 }
 
@@ -360,85 +360,86 @@ NSMutableDictionary* keyedLinkBacks = nil ;
 //
 + (LinkBack*)editLinkBackData:(id)data sourceName:(NSString*)aName delegate:(id<LinkBackClientDelegate>)del itemKey:(NSString*)aKey
 {
-    // if an active live link already exists, use that.  Otherwise, create a new one.
-    LinkBack* ret = [keyedLinkBacks objectForKey: aKey] ;
-    
-    if(nil==ret) {
-        BOOL ok ;
-        NSString* serverName ;
-        NSString* serverId ;
-        NSString* appName ;
-		NSURL* url ;
+	// if an active live link already exists, use that.  Otherwise, create a new one.
+	LinkBack* ret = [keyedLinkBacks objectForKey: aKey] ;
+	
+	if(nil==ret) {
+		BOOL ok ;
+		NSString* serverName = nil ;
+		NSString* serverId = nil ;
+		NSString* appName = nil ;
+		NSURL* url = nil ;
 		
-        // collect server contact information from data.
-        ok = [data isKindOfClass: [NSDictionary class]] ;
-        if (ok) {
-            serverName = [data objectForKey: LinkBackServerNameKey] ;
-            serverId = [data objectForKey: LinkBackServerBundleIdentifierKey];
+		// collect server contact information from data.
+		ok = [data isKindOfClass: [NSDictionary class]] ;
+		if (ok) {
+			serverName = [data objectForKey: LinkBackServerNameKey] ;
+			serverId = [data objectForKey: LinkBackServerBundleIdentifierKey];
 			appName = [data linkBackSourceApplicationName] ;
 			url = [data linkBackApplicationURL] ;
-        }
-        
-        if (!ok || !serverName || !serverId) [NSException raise: NSInvalidArgumentException format: @"LinkBackData is not of the correct format: %@", data] ;
-        
-        // create the live link object and try to connect to the server.
-        ret = [[LinkBack alloc] initClientWithSourceName: aName delegate: del itemKey: aKey] ;
-        
-        if (![ret connectToServerWithName: serverName inApplication: serverId fallbackURL: url appName: appName]) {
-            [ret release] ;
-            ret = nil ;
-        }
-    }
-    
-    // now with a live link in hand, request an edit
-    if (ret) {
-        // if connected to server, publish data and inform server.
-        NSPasteboard* my_pboard = [ret pasteboard] ;
-        [my_pboard declareTypes: [NSArray arrayWithObject: LinkBackPboardType] owner: ret] ;
-        [my_pboard setPropertyList: data forType: LinkBackPboardType] ;
-        
-        [ret requestEdit] ;
-        
-    // if connection to server failed, return nil.
-    } else {
-        [ret release] ;
-        ret = nil ;
-    }
-    
-    return ret ;
+		}
+		
+		if (!ok || !serverName || !serverId)
+			[NSException raise: NSInvalidArgumentException format: @"LinkBackData is not of the correct format: %@", data] ;
+
+		// create the live link object and try to connect to the server.
+		ret = [[LinkBack alloc] initClientWithSourceName: aName delegate: del itemKey: aKey] ;
+		
+		if (![ret connectToServerWithName: serverName inApplication: serverId fallbackURL: url appName: appName]) {
+			[ret release] ;
+			ret = nil ;
+		}
+	}
+	
+	// now with a live link in hand, request an edit
+	if (ret) {
+		// if connected to server, publish data and inform server.
+		NSPasteboard* my_pboard = [ret pasteboard] ;
+		[my_pboard declareTypes: [NSArray arrayWithObject: LinkBackPboardType] owner: ret] ;
+		[my_pboard setPropertyList: data forType: LinkBackPboardType] ;
+		
+		[ret requestEdit] ;
+		
+	// if connection to server failed, return nil.
+	} else {
+		[ret release] ;
+		ret = nil ;
+	}
+
+	return ret ;
 }
 
 - (BOOL)connectToServerWithName:(NSString*)aName inApplication:(NSString*)bundleIdentifier fallbackURL:(NSURL*)url appName:(NSString*)appName 
 {
-    // get the LinkBackServer.
-    LinkBackServer* server = [LinkBackServer LinkBackServerWithName: aName inApplication: bundleIdentifier launchIfNeeded: YES fallbackURL: url appName: appName] ;
-    if (!server) return NO ; // failed to get server
-    
-    peer = [[server initiateLinkBackFromClient: self] retain] ;
-    if (!peer) return NO ; // failed to initiate session
-    
-    // if we connected, then add to the list of active keys
-    [keyedLinkBacks setObject: self forKey: [self itemKey]] ;
-    
-    return YES ;
+	// get the LinkBackServer.
+	LinkBackServer* server = [LinkBackServer LinkBackServerWithName: aName inApplication: bundleIdentifier launchIfNeeded: YES fallbackURL: url appName: appName] ;
+	if (!server) return NO ; // failed to get server
+	
+	peer = [[server initiateLinkBackFromClient: self] retain] ;
+	if (!peer) return NO ; // failed to initiate session
+	
+	// if we connected, then add to the list of active keys
+	[keyedLinkBacks setObject: self forKey: [self itemKey]] ;
+	
+	return YES ;
 }
 
 - (void)requestEdit 
 {
-    if (!peer) [NSException raise: NSGenericException format: @"tried to request edit from a live link not connect to a server."] ;
-    [peer requestEditWithPasteboardName: [pboard name]] ;
+	if (!peer) [NSException raise: NSGenericException format: @"tried to request edit from a live link not connect to a server."] ;
+	[peer requestEditWithPasteboardName: [pboard name]] ;
 }
 
 // RECEIVED FROM SERVER
 - (void)refreshEditWithPasteboardName:(bycopy NSString*)pboardName
 {
-    // if pboard has changes, change to new pboard.
-    if (![pboardName isEqualToString: [pboard name]]) {
-        [pboard release] ;
-        pboard = [[NSPasteboard pasteboardWithName: pboardName] retain] ;
-    } 
-    
-    // inform delegate
+	// if pboard has changes, change to new pboard.
+	if (![pboardName isEqualToString: [pboard name]]) {
+		[pboard release] ;
+		pboard = [[NSPasteboard pasteboardWithName: pboardName] retain] ;
+	} 
+	
+	// inform delegate
 	[delegate performSelectorOnMainThread: @selector(linkBackServerDidSendEdit:) withObject: self waitUntilDone: NO] ;
 }
 
