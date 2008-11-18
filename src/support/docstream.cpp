@@ -84,6 +84,22 @@ protected:
 			extern_type * to, extern_type * to_end,
 			extern_type *& to_next) const
 	{
+#define WORKAROUND_ICONV_BUG 1
+#if WORKAROUND_ICONV_BUG
+		// Due to a bug in some iconv versions, when the last char in
+		// the buffer is a wide char, it gets truncated (see bugs 5216,
+		// 5280, and also 5489). As a workaround, we append a null
+		// char and then remove it from output after the conversion.
+		intern_type * from_new = 0;
+		if (*(from_end - 1) >= 0x80) {
+			size_t len = from_end - from;
+			from_new = new intern_type[len + 1];
+			memcpy(from_new, from, len * sizeof(intern_type));
+			from_new[len] = 0;
+			from_end = from_new + len + 1;
+			from = from_new;
+		}
+#endif
 		size_t inbytesleft = (from_end - from) * sizeof(intern_type);
 		size_t outbytesleft = (to_end - to) * sizeof(extern_type);
 		from_next = from;
@@ -91,6 +107,12 @@ protected:
 		result const retval = do_iconv(out_cd_,
 				reinterpret_cast<char const **>(&from_next),
 				&inbytesleft, &to_next, &outbytesleft);
+#if WORKAROUND_ICONV_BUG
+		// Remove from output the null char that we inserted at the end
+		// of the input buffer in order to circumvent an iconv bug.
+		if (from_new)
+			--to_next;
+#endif
 		if (retval == base::error) {
 			fprintf(stderr,
 				"Error %d returned from iconv when converting from %s to %s: %s\n",
@@ -119,6 +141,9 @@ protected:
 			fputc('\n', stderr);
 			fflush(stderr);
 		}
+#if WORKAROUND_ICONV_BUG
+		delete[] from_new;
+#endif
 		return retval;
 	}
 	virtual result do_unshift(state_type &, extern_type * to,
