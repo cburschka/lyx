@@ -32,17 +32,16 @@ class Buffer;
 std::vector<CiteStyle> citeStyles(CiteEngine);
 /// \param latex_str a LaTeX command, "cite", "Citep*", etc
 CitationStyle citationStyleFromString(std::string const & latex_str);
-/// the other way rounf
+/// the other way round
 std::string citationStyleToString(CitationStyle const &);
 
 
 /// Class to represent information about a BibTeX or
 /// bibliography entry.
-/// The keys are BibTeX fields (e.g., author, title, etc), 
-/// and the values are the associated field values.
 class BibTeXInfo {
 public:
-	///
+	/// The keys are BibTeX fields (e.g., author, title, etc), 
+	/// and the values are the associated field values.
 	typedef std::map<docstring, docstring>::const_iterator const_iterator;
 	///
 	BibTeXInfo() : is_bibtex_(true) {}
@@ -59,11 +58,11 @@ public:
 	docstring const & getValueForField(std::string const & field) const;
 	///
 	bool hasField(docstring const & field) const;
-	/// return the short form of an authorlist
+	/// \return the short form of an authorlist
 	docstring const getAbbreviatedAuthor() const;
 	/// 
 	docstring const getYear() const;
-	/// Returns formatted BibTeX data suitable for framing.
+	/// \return formatted BibTeX data suitable for framing.
 	docstring const getInfo() const;
 	///
 	int count(docstring const & f) const { return bimap_.count(f); }
@@ -100,20 +99,19 @@ class BiblioInfo {
 public:
 	/// bibliography key --> data for that key
 	typedef std::map<docstring, BibTeXInfo>::const_iterator const_iterator;
-	/// Returns a sorted vector of bibliography keys
+	/// \return a sorted vector of bibliography keys
 	std::vector<docstring> const getKeys() const;
-	/// Returns a sorted vector of present BibTeX fields
+	/// \return a sorted vector of present BibTeX fields
 	std::vector<docstring> const getFields() const;
-	/// Returns a sorted vector of BibTeX entry types in use
+	/// \return a sorted vector of BibTeX entry types in use
 	std::vector<docstring> const getEntries() const;
-	/// return the short form of an authorlist
+	/// \return the short form of an authorlist
 	docstring const getAbbreviatedAuthor(docstring const & key) const;
-	/// return the year from the bibtex data record
+	/// \return the year from the bibtex data record
 	docstring const getYear(docstring const & key) const;
-	/// Returns formatted BibTeX data associated with a given key.
+	/// \return formatted BibTeX data associated with a given key.
 	/// Empty if no info exists. 
 	docstring const getInfo(docstring const & key) const;
-	
 	/**
 	  * "Translates" the available Citation Styles into strings for a given key,
 	  * either numerical or author-year depending upon the active engine. (See
