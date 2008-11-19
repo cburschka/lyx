@@ -129,7 +129,7 @@ def set_option(document, m, option, value):
 
 def read_unicodesymbols():
     " Read the unicodesymbols list of unicode characters and corresponding commands."
-    pathname = os.path.abspath(os.path.dirname(sys.argv[0]))
+    pathname = os.path.dirname(os.path.realpath(__file__))
     pathname = pathname.rstrip('lyx2lyx')
     # from within doc_toc.py, we are in lib/doc
     pathname = pathname.rstrip('doc')
