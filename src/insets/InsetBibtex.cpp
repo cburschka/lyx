@@ -268,7 +268,6 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 
 		if (!runparams.inComment && !runparams.dryrun && !runparams.nice &&
 		    not_from_texmf) {
-
 			// mangledFilename() needs the extension
 			DocFileName const in_file = DocFileName(try_in_file);
 			database = removeExtension(in_file.mangledFilename());
@@ -303,7 +302,6 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 	if (!warned_about_spaces &&
 	    runparams.nice && db_out.find(' ') != docstring::npos) {
 		warned_about_spaces = true;
-
 		Alert::warning(_("Export Warning!"),
 			       _("There are spaces in the paths to your BibTeX databases.\n"
 					      "BibTeX will be unable to find them."));
@@ -316,7 +314,6 @@ int InsetBibtex::latex(odocstream & os, OutputParams const & runparams) const
 		if (contains(style, ','))
 			style = split(style, bibtotoc, ',');
 	}
-
 
 	// line count
 	int nlines = 0;
