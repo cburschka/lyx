@@ -1,6 +1,6 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 1.5.7
+This file describes what has been done after the release of LyX 1.5.7
 All comments are welcome.
 
 I'd be glad if some of you could take the time to check it out (or fix
@@ -24,60 +24,21 @@ What's new
 
 * IMPORTING LyX 1.6.x DOCUMENTS
 
-- The lyx2lyx framework has been updated to be the same as LyX 1.6.0.
-  This means that now all documents from version 1.6.x can be imported
-  directly.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Updated localization of the user interface for Catalan, Czech, French,
-  German, Hebrew, Hungarian, Italian, Japanese, Turkish, and Ukrainian.
 
-- New Catalan translations of the Intro manual and the example file
-  ItemizeBullets.lyx.
-
-- New Ukrainian translation of the Intro manual.
-
-- The Minipage.lyx and listings.lyx example files have been removed. Their
-  content is covered by the ExtendedObjects manual.
 
 
 * DOCUMENT INPUT/OUTPUT
 
-- New layout file for ACM SIGPLAN conference papers.
 
-- New layout file for journal articles of the Inderscience publishing
-  group.
-
-- New layout file and template for journal articles of the Elsevier
-  publishing group. The template file for the obsolete Elsevier layout has
-  been removed.
-
-- New layout file for the svjour3 class (journal articles of the Springer
-  publishing group) (bug 5154).
-
-- Completely rewritten layout file for the siamltex (SIAM) class.
-
-- Add support for quote, quotation and verse in the beamer class.
-
-- Support some more Greek characters without Greek language set.
-
-- The example file for modernCV curriculum vitae has been updated to
-  version 0.7 of the moderncv LaTeX package.
-
-- Configure automatically a converter to LaTeX (pdflatex) when noweave is
-  present.
 
 
 * USER INTERFACE
 
-- The nomenclature insets now indicate their content (bug 5183).
 
-- The nomenclature processor can be customized independently from the
-  index processor (bug 5184).
-
-- Fix View Source windows contents for documents with literate programming
-  support enabled.
 
 
 * WINDOWS INSTALLER
@@ -86,7 +47,7 @@ What's new
 
 * BUILD
 
-- Allow the use of newer versions of SCons such as SCons 1.0.0.
+
 
 
 ** Bug fixes:
@@ -94,123 +55,20 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix an assertion when non-ASCII characters are used in listings
-  parameters (bug 5221).
-
-- Fix instant preview when \usepackage[pdftex]{hyperref} is used in the
-  preamble (bug 2165).
-
-- Actually install Catalan mathed manual and splash document.
-
-- The LaTeX package amscd is now loaded automatically after math diagrams
-  have been created (bug 5090).
-
-- Load amsmath automatically for ams dots such as \dotsb (bug 5376).
-
-- Fix inputenc error with ligature glyphs in utf8 encoding (bug 5086).
-
-- Fix LaTeX error with deleted straight quotes in change tracking mode
-  (bug 5091; only fixed for T1 font encoding).
-
-- Produce better quality images on the LyX screen when using recent
-  versions of ImageMagick (bug 4749).
-
-- Do not delete special characters in free spacing mode (bug 5125).
-
-- Fix importing of LaTeX files that don't use the package inputenc
-  (bug 5181).
-
-- Speedup LaTeX export (part of bug 5347).
-
-- Fix an endless loop when importing an older LyX file (bug 5333).
-
-- Fix output of citation commands in the ReVTeX4 class (bug 5182).
-
-- Fix output of some Greek characters.
-
-- Fix some problems with CSV importation.
-
-- Fix LaTeX output if no graphic driver has been selected (part of bug
-  5294).
-
-- Fix lyxclient to read the whole command line as one command.
-
-- Fix some problems in the layout file and template for journal articles
-  of the IOP publishing group.
-
-- Fix some problems in the layout file and template of the DIN-Brief class.
-
-- Fix LaTeX errors triggered by the external chess template (bug 5320).
-
-- Fix LaTeX errors in Latvian and Lithuanian documents (bug 5323, bug 5324).
-
-- If "Do not use amsmath" is selected in the document settings, really do
-  not use it (bug 5350).
-
-- Fix the output of IPA symbols with the encoding "utf8".
-
-- Fix LaTeX errors with marginal notes in section headings (bug 2790).
-
-- Fix LaTeX export of included CJK documents (bug 5385).
-
-- Use a more suitable exporter configuration for OpenDocument (bug 4604).
-
-- Fix Metafile to EPS converter on 64bit Windows (bug 5404).
+- Fix error (unicodesymbols not found) when the working directory is not
+  the script directory (solves compilation problems with SCons).
 
 
 * USER INTERFACE
 
-- Fix a crash on some systems when using the math panel (bug 5189).
 
-- Fix a crash when selecting multiple cells of a tabular.
-
-- Fix the input behaviour when multiple cells of a table were selected,
-  including a possible assertion (bug 5225).
-
-- Fix a crash on the Mac when using the pixmap cache with combining
-  characters (bug 5327).
-
-- Empty lines are correctly removed when the cursor moves due to the
-  "cursor follows scrollbar" feature (bug 5065).
-
-- Fix undo when modifying the parameters of an inset (bug 2040).
-
-- Fix undo for "text in math mode" (bug 3407).
-
-- Fix undo for insertion of some math elements (e.g. delimiters)
-  directly from text mode (bug 2449).
-
-- Fix toggling of font and corresponding undo in mathed (bug 5246).
-
-- On Windows Vista, fix application association when a file type is not
-  registered (in this case the "Unknown" application would be used).
-
-- Remove confusing warning about 'server socket' under MS Windows.
-
-- Do not incorrectly reset the lyxpipe after dispatching certain
-  functions (bug 1784).
-
-- Fix the behaviour of the ErrorList dialog.
-
-- When viewing full LaTeX source, make sure that the code needed for
-  running LaTeX is not added.
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- The tex2lyx man page reflects the current state (bug 2770).
-
-- Fix wrong image paths in the example file "docbook_article.lyx".
-
-- Fix example file "aa_sample.lyx" so that it is compilable.
-
-- LyX man page: small formatting fix.
+- fix installation of Galician documentation with SCons.
 
 
 * BUILD/INSTALLATION
 
-- Very light Makefile cleanup. Now works with automake 10.1.
 
-- Fix the building on Mac OS X 10.5 of a binary compatible with OS X 10.4.
-
-- Fix bug where config.status fails to run after using --with-version-suffix.
