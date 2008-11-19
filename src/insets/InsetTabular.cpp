@@ -3418,12 +3418,15 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_DOWN_SELECT:
 	case LFUN_DOWN:
-		cell(cur.idx())->dispatch(cur, cmd);
+		if (!(cur.selection() && cur.selIsMultiCell()))
+			cell(cur.idx())->dispatch(cur, cmd);
+		
 		cur.dispatched(); // override the cell's decision
-		if (sl == cur.top())
+		if (sl == cur.top()) {
 			// if our Text didn't do anything to the cursor
 			// then we try to put the cursor into the cell below
 			// setting also the right targetX.
+			cur.selHandle(cmd.action == LFUN_DOWN_SELECT);
 			if (tabular.cellRow(cur.idx()) != tabular.row_info.size() - 1) {
 				cur.idx() = tabular.cellBelow(cur.idx());
 				cur.pit() = 0;
@@ -3431,6 +3434,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 					cur.bv().textMetrics(cell(cur.idx())->getText(0));
 				cur.pos() = tm.x2pos(cur.pit(), 0, cur.targetX());
 			}
+		}
 		if (sl == cur.top()) {
 			// we trick it to go to forward after leaving the
 			// tabular.
@@ -3446,12 +3450,14 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_UP_SELECT:
 	case LFUN_UP:
-		cell(cur.idx())->dispatch(cur, cmd);
+		if (!(cur.selection() && cur.selIsMultiCell()))
+			cell(cur.idx())->dispatch(cur, cmd);
 		cur.dispatched(); // override the cell's decision
-		if (sl == cur.top())
+		if (sl == cur.top()) {
 			// if our Text didn't do anything to the cursor
 			// then we try to put the cursor into the cell above
 			// setting also the right targetX.
+			cur.selHandle(cmd.action == LFUN_UP_SELECT);
 			if (tabular.cellRow(cur.idx()) != 0) {
 				cur.idx() = tabular.cellAbove(cur.idx());
 				cur.pit() = cur.lastpit();
@@ -3461,12 +3467,13 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 					tm.parMetrics(cur.lastpit());
 				cur.pos() = tm.x2pos(cur.pit(), pm.rows().size()-1, cur.targetX());
 			}
+		}
 		if (sl == cur.top()) {
 			cmd = FuncRequest(LFUN_UP);
 			cur.undispatched();
 		}
 		if (cur.selIsMultiCell()) {
-			cur.pit() = cur.lastpit();
+			cur.pit() = 0;
 			cur.pos() = cur.lastpos();
 			return;
 		}
