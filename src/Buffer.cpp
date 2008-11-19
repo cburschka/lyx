@@ -2683,8 +2683,6 @@ void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
 }
 
 
-// FIXME: buf should should be const because updateLabels() modifies
-// the contents of the paragraphs.
 void Buffer::updateLabels(bool childonly) const
 {
 	// Use the master text class also for child documents
