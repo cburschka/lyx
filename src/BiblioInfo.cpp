@@ -54,7 +54,7 @@ bool BibTeXInfo::hasField(docstring const & field) const
 }
 
 
-docstring const & BibTeXInfo::getValueForField(docstring const & field) const
+docstring const & BibTeXInfo::operator[](docstring const & field) const
 {
 	BibTeXInfo::const_iterator it = find(field);
 	if (it != end())
@@ -64,9 +64,9 @@ docstring const & BibTeXInfo::getValueForField(docstring const & field) const
 }
 	
 	
-docstring const & BibTeXInfo::getValueForField(string const & field) const
+docstring const & BibTeXInfo::operator[](string const & field) const
 {
-	return getValueForField(from_ascii(field));
+	return operator[](from_ascii(field));
 }
 
 
@@ -98,7 +98,7 @@ docstring familyName(docstring const & name)
 docstring const BibTeXInfo::getAbbreviatedAuthor() const
 {
 	if (!is_bibtex_) {
-		docstring const opt = trim(getValueForField("label"));
+		docstring const opt = trim(operator[]("label"));
 		if (opt.empty())
 			return docstring();
 
@@ -107,9 +107,9 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 		return authors;
 	}
 
-	docstring author = getValueForField("author");
+	docstring author = operator[]("author");
 	if (author.empty()) {
-		author = getValueForField("editor");
+		author = operator[]("editor");
 		if (author.empty())
 			return bib_key_;
 	}
@@ -133,7 +133,7 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 docstring const BibTeXInfo::getYear() const
 {
 	if (!is_bibtex_) {
-		docstring const opt = trim(getValueForField("label"));
+		docstring const opt = trim(operator[]("label"));
 		if (opt.empty())
 			return docstring();
 
@@ -144,7 +144,7 @@ docstring const BibTeXInfo::getYear() const
 		return year;
 	}
 
-	docstring year = getValueForField("year");
+	docstring year = operator[]("year");
 	if (year.empty())
 		year = _("No year");
 	return year;
@@ -163,31 +163,31 @@ docstring const BibTeXInfo::getInfo() const
 	// field to customize the output based upon entry type.
 	
 	// Search for all possible "required" fields
-	docstring author = getValueForField("author");
+	docstring author = operator[]("author");
 	if (author.empty())
-		author = getValueForField("editor");
+		author = operator[]("editor");
  
-	docstring year      = getValueForField("year");
-	docstring title     = getValueForField("title");
-	docstring docLoc    = getValueForField("pages");
+	docstring year   = operator[]("year");
+	docstring title  = operator[]("title");
+	docstring docLoc = operator[]("pages");
 	if (docLoc.empty()) {
-		docLoc = getValueForField("chapter");
+		docLoc = operator[]("chapter");
 		if (!docLoc.empty())
 			docLoc = from_ascii("Ch. ") + docLoc;
 	}	else {
 		docLoc = from_ascii("pp. ") + docLoc;
 	}
 
-	docstring media = getValueForField("journal");
+	docstring media = operator[]("journal");
 	if (media.empty()) {
-		media = getValueForField("publisher");
+		media = operator[]("publisher");
 		if (media.empty()) {
-			media = getValueForField("school");
+			media = operator[]("school");
 			if (media.empty())
-				media = getValueForField("institution");
+				media = operator[]("institution");
 		}
 	}
-	docstring volume = getValueForField("volume");
+	docstring volume = operator[]("volume");
 
 	odocstringstream result;
 	if (!author.empty())

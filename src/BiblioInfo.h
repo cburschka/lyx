@@ -38,6 +38,9 @@ std::string citationStyleToString(CitationStyle const &);
 
 /// Class to represent information about a BibTeX or
 /// bibliography entry.
+/// This class basically wraps a std::map, and many of its
+/// methods simply delegate to the corresponding methods of
+/// std::map.
 class BibTeXInfo {
 public:
 	/// The keys are BibTeX fields (e.g., author, title, etc), 
@@ -50,12 +53,6 @@ public:
 	BibTeXInfo(bool ib) : is_bibtex_(ib) {}
 	/// constructor that sets the entryType
 	BibTeXInfo(docstring const & key, docstring const & type);
-	/// Search for the given field and return the associated info.
-	/// The point of this is that BibTeXInfo::operator[] has no const
-	/// form.
-	docstring const & getValueForField(docstring const & field) const;
-	///
-	docstring const & getValueForField(std::string const & field) const;
 	///
 	bool hasField(docstring const & field) const;
 	/// \return the short form of an authorlist
@@ -70,9 +67,16 @@ public:
 	const_iterator find(docstring const & f) const { return bimap_.find(f); }
 	///
 	const_iterator end() const { return bimap_.end(); }
-	///
+	/// \return value for field f
+	/// note that this will create an empty field if it does not exist
 	docstring & operator[](docstring const & f) 
 		{ return bimap_[f]; }
+	/// \return value for field f
+	/// this one, since it is const, will simply return docstring() if
+	/// we don't have the field and will NOT create an empty field
+	docstring const & operator[](docstring const & field) const;
+	///
+	docstring const & operator[](std::string const & field) const;
 	///
 	docstring const & allData() const { return all_data_; }
 	///
