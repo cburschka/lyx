@@ -30,6 +30,7 @@
 #include <cctype>
 #include <cstdlib>
 
+#include <cstdio>
 #include <algorithm>
 #include <sstream>
 
