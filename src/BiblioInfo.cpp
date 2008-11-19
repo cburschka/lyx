@@ -24,9 +24,9 @@
 #include "insets/InsetBibtex.h"
 #include "insets/InsetInclude.h"
 
-#include "support/lassert.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 
 #include "boost/regex.hpp"
@@ -95,14 +95,19 @@ docstring familyName(docstring const & name)
 	return rtrim(fname);
 }
 
-
 docstring const BibTeXInfo::getAbbreviatedAuthor() const
 {
-	if (!is_bibtex_) 
-		return docstring();
- 
+	if (!is_bibtex_) {
+		docstring const opt = trim(getValueForField("label"));
+		if (opt.empty())
+			return docstring();
+
+		docstring authors;
+		split(opt, authors, '(');
+		return authors;
+	}
+
 	docstring author = getValueForField("author");
- 
 	if (author.empty()) {
 		author = getValueForField("editor");
 		if (author.empty())
@@ -113,7 +118,7 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 	// Try to split the author list on " and "
 	vector<docstring> const authors =
 		getVectorFromString(author, from_ascii(" and "));
-	
+
 	if (authors.size() == 2)
 		return bformat(_("%1$s and %2$s"),
 			familyName(authors[0]), familyName(authors[1]));
@@ -127,9 +132,18 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 
 docstring const BibTeXInfo::getYear() const
 {
-	if (!is_bibtex_) 
-		return docstring();
- 
+	if (!is_bibtex_) {
+		docstring const opt = trim(getValueForField("label"));
+		if (opt.empty())
+			return docstring();
+
+		docstring authors;
+		docstring const tmp = split(opt, authors, '(');
+		docstring year;
+		split(tmp, year, ')');
+		return year;
+	}
+
 	docstring year = getValueForField("year");
 	if (year.empty())
 		year = _("No year");

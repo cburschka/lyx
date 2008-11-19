@@ -96,11 +96,9 @@ private:
 
 /// Class to represent a collection of bibliographical data, whether
 /// from BibTeX or from bibliography environments.
-/// BiblioInfo.first is the bibliography key
-/// BiblioInfo.second is the data for that key
 class BiblioInfo {
 public:
-	///
+	/// bibliography key --> data for that key
 	typedef std::map<docstring, BibTeXInfo>::const_iterator const_iterator;
 	/// Returns a sorted vector of bibliography keys
 	std::vector<docstring> const getKeys() const;
