@@ -123,6 +123,7 @@ protected:
 		if (from_new) {
 			--to_next;
 			from_next = from_old + (from_next - from);
+			from = from_old;
 			delete[] from_new;
 		}
 #endif
