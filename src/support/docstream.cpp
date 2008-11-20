@@ -257,9 +257,10 @@ protected:
 		    encoding_ == "GB" ||
 		    encoding_ == "EUC-TW")
 			return 4;
-		else if (encoding_ == "EUC-JP" ||
-			 encoding_ == "ISO-2022-JP")
+		else if (encoding_ == "EUC-JP")
 			return 3;
+		else if (encoding_ == "ISO-2022-JP")
+			return 5;
 		else if (encoding_ == "BIG5" ||
 			 encoding_ == "EUC-KR" ||
 			 encoding_ == "EUC-CN" ||
