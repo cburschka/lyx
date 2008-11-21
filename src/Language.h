@@ -48,6 +48,8 @@ public:
 	///
 	std::string const & latex_options() const { return latex_options_; }
 	///
+	bool internalFontEncoding() const;
+	///
 	bool read(Lexer & lex);
 private:
 	///
