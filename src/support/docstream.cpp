@@ -86,32 +86,47 @@ protected:
 	{
 #define WORKAROUND_ICONV_BUG 1
 #if WORKAROUND_ICONV_BUG
-		// Due to a bug in some iconv versions, when the last char in
-		// the buffer is a wide char, it gets truncated (see bugs 5216,
-		// 5280, and also 5489). As a workaround, we append a null
-		// char and then remove it from output after the conversion.
+		// Due to a bug in some iconv versions, when the last char
+		// in the buffer is a wide char and the output encoding is
+		// ISO-2022-JP and we are going to switch to another encoding,
+		// the appropriate escape sequence for changing the character
+		// set is not output (see bugs 5216, 5280, and also 5489).
+		// As a workaround, we append a nul char in order to force
+		// a switch to ASCII, and then remove it from output after
+		// the conversion.
 		intern_type * from_new = 0;
-		if (*(from_end - 1) >= 0x80) {
+		intern_type const * from_old = from;
+		size_t extra = 0;
+		if (*(from_end - 1) >= 0x80 && encoding_ == "ISO-2022-JP") {
 			size_t len = from_end - from;
 			from_new = new intern_type[len + 1];
 			memcpy(from_new, from, len * sizeof(intern_type));
 			from_new[len] = 0;
 			from_end = from_new + len + 1;
 			from = from_new;
+			extra = 1;
 		}
 #endif
 		size_t inbytesleft = (from_end - from) * sizeof(intern_type);
 		size_t outbytesleft = (to_end - to) * sizeof(extern_type);
+#if WORKAROUND_ICONV_BUG
+		outbytesleft += extra * sizeof(extern_type);
+#endif
 		from_next = from;
 		to_next = to;
 		result const retval = do_iconv(out_cd_,
 				reinterpret_cast<char const **>(&from_next),
 				&inbytesleft, &to_next, &outbytesleft);
 #if WORKAROUND_ICONV_BUG
-		// Remove from output the null char that we inserted at the end
+		// Remove from output the nul char that we inserted at the end
 		// of the input buffer in order to circumvent an iconv bug.
-		if (from_new)
+		if (from_new) {
 			--to_next;
+			--from_next;
+			from_next = from_old + (from_next - from);
+			from = from_old;
+			delete[] from_new;
+		}
 #endif
 		if (retval == base::error) {
 			fprintf(stderr,
@@ -141,9 +156,6 @@ protected:
 			fputc('\n', stderr);
 			fflush(stderr);
 		}
-#if WORKAROUND_ICONV_BUG
-		delete[] from_new;
-#endif
 		return retval;
 	}
 	virtual result do_unshift(state_type &, extern_type * to,
@@ -245,9 +257,10 @@ protected:
 		    encoding_ == "GB" ||
 		    encoding_ == "EUC-TW")
 			return 4;
-		else if (encoding_ == "EUC-JP" ||
-			 encoding_ == "ISO-2022-JP")
+		else if (encoding_ == "EUC-JP")
 			return 3;
+		else if (encoding_ == "ISO-2022-JP")
+			return 5;
 		else if (encoding_ == "BIG5" ||
 			 encoding_ == "EUC-KR" ||
 			 encoding_ == "EUC-CN" ||
