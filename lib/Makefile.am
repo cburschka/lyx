@@ -376,12 +376,12 @@ dist_images_DATA = \
 	images/tabular-feature_set-rotate-cell.png \
 	images/tabular-feature_set-border-linelines
 	images/tabular-feature_set-rotate-tabular.png \
-	images/tabular-feature_toggle-rotate-cell.png \
-	images/tabular-feature_toggle-rotate-tabular.png \
 	images/tabular-feature_toggle-line-bottom.png \
 	images/tabular-feature_toggle-line-left.png \
 	images/tabular-feature_toggle-line-right.png \
 	images/tabular-feature_toggle-line-top.png \
+	images/tabular-feature_toggle-rotate-cell.png \
+	images/tabular-feature_toggle-rotate-tabular.png \
 	images/tabular-feature_unset-all-lines.png \
 	images/tabular-feature_valign-bottom.png \
 	images/tabular-feature_valign-middle.png \
