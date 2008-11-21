@@ -57,6 +57,16 @@ bool Language::read(Lexer & lex)
 	return true;
 }
 
+bool Language::internalFontEncoding() const
+{
+	// FIXME: list incomplete
+	// FIXME: instead of hardcoding, this
+	// should go to the languages file
+	return lang_ == "hebrew"
+		|| lang_ == "greek"
+		|| lang_ == "polutonikogreek";
+}
+
 
 void Languages::read(FileName const & filename)
 {

@@ -69,10 +69,10 @@ What's new
 
 - Fix export to latex in the presence of an encoding switch (bug 5489).
 
+- Fix export of straight quotes in Hebrew and Greek context.
+
 
 * USER INTERFACE
-
-- Fix the -geometry command line option on Windows (bug 5467).
 
 - Fix crash when undoing a math operation while the outline pane was open
   (bug 5491).
@@ -87,6 +87,8 @@ What's new
 - Implement undo grouping for command sequences (part of bug 5531).
 
 - Fix wrong size of the view source window (bug 4430).
+
+- Fix the -geometry command line option on Windows (bug 5467).
 
 - Fix problem with display of footnote numbers, etc., in child documents.
 

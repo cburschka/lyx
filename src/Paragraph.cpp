@@ -864,9 +864,15 @@ void Paragraph::Private::latexSpecialChar(
 		return;
 	}
 
-	if (lyxrc.fontenc == "T1" && latexSpecialT1(c, os, i, column))
+	// If T1 font encoding is used, use the special
+	// characters it provides.
+	// NOTE: some languages reset the font encoding
+	// internally
+	if (!running_font.language()->internalFontEncoding()
+	    && lyxrc.fontenc == "T1" && latexSpecialT1(c, os, i, column))
 		return;
 
+	// \tt font needs special treatment
 	if (running_font.fontInfo().family() == TYPEWRITER_FAMILY
 		&& latexSpecialTypewriter(c, os, i, column))
 		return;
