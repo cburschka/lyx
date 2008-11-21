@@ -1448,15 +1448,16 @@ lib_images_files = Split('''
     tabular-feature_delete-row.png
     tabular-feature_multicolumn.png
     tabular-feature_set-all-lines.png
+    tabular-feature_set-border-lines.png
     tabular-feature_set-longtabular.png
     tabular-feature_set-rotate-cell.png
-    tabular-feature_toggle-rotate-cell.png
     tabular-feature_set-rotate-tabular.png
-    tabular-feature_toggle-rotate-tabular.png
     tabular-feature_toggle-line-bottom.png
     tabular-feature_toggle-line-left.png
     tabular-feature_toggle-line-right.png
     tabular-feature_toggle-line-top.png
+    tabular-feature_toggle-rotate-cell.png
+    tabular-feature_toggle-rotate-tabular.png
     tabular-feature_unset-all-lines.png
     tabular-feature_valign-bottom.png
     tabular-feature_valign-middle.png
