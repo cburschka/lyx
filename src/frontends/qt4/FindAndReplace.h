@@ -65,10 +65,6 @@ private:
 			bool matchword, bool backwards,
 			bool expandmacros, bool ignoreformat);
 
-	GuiView & parent_view_;
-
-	GuiWorkArea * searchWorkArea_;	// The work area defining what to search
-
 private:
 	/// Apply changes
 	virtual void apply() {}

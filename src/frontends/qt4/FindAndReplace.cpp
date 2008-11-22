@@ -44,11 +44,10 @@ namespace lyx {
 namespace frontend {
 
 FindAndReplace::FindAndReplace(GuiView & parent)
-	: DockView(parent, "Find LyX", "Find LyX Dialog", Qt::RightDockWidgetArea),
-	parent_view_(parent)
+	: DockView(parent, "Find LyX", "Find LyX Dialog", Qt::RightDockWidgetArea)
 {
 	setupUi(this);
-	find_work_area_->setGuiView(parent_view_);
+	find_work_area_->setGuiView(parent);
 	find_work_area_->init();
 	setFocusProxy(find_work_area_);
 }
@@ -144,13 +143,16 @@ bool FindAndReplace::initialiseParams(std::string const &)
 
 void FindAndReplace::find(bool backwards)
 {
-	parent_view_.setCurrentWorkArea(parent_view_.currentMainWorkArea());
+	// FIXME: create a Dialog::returnFocus() or something instead of this:
+	GuiView & gv = const_cast<GuiView &>(lyxview());
+	gv.setCurrentWorkArea(gv.currentMainWorkArea());
+	// FIXME: This should be an LFUN.
 	findAdv(caseCB->isChecked(),
 			wordsCB->isChecked(),
 			backwards,
 			expandMacrosCB->isChecked(),
 			ignoreFormatCB->isChecked());
-	parent_view_.currentMainWorkArea()->redraw();
+	gv.currentMainWorkArea()->redraw();
 	find_work_area_->setFocus();
 }
 
@@ -174,9 +176,7 @@ void FindAndReplace::on_regexpInsertCombo_currentIndexChanged(int index)
 
 void FindAndReplace::on_closePB_clicked()
 {
-	find_work_area_->disable();
-	LYXERR(Debug::DEBUG, "Dispatching dialog-hide findreplaceadv" << std::endl);
-	parent_view_.dispatch(FuncRequest(LFUN_DIALOG_TOGGLE, "findreplaceadv"));
+	dispatch(FuncRequest(LFUN_DIALOG_TOGGLE, "findreplaceadv"));
 }
 
 
