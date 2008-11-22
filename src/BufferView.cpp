@@ -2179,14 +2179,24 @@ Point BufferView::coordOffset(DocIterator const & dit, bool boundary) const
 
 Point BufferView::getPos(DocIterator const & dit, bool boundary) const
 {
+	if (!paragraphVisible(dit))
+		return Point(-1, -1);
+
 	CursorSlice const & bot = dit.bottom();
 	TextMetrics const & tm = textMetrics(bot.text());
-	if (!tm.contains(bot.pit()))
-		return Point(-1, -1);
 
 	Point p = coordOffset(dit, boundary); // offset from outer paragraph
 	p.y_ += tm.parMetrics(bot.pit()).position();
 	return p;
+}
+
+
+bool BufferView::paragraphVisible(DocIterator const & dit) const
+{
+	CursorSlice const & bot = dit.bottom();
+	TextMetrics const & tm = textMetrics(bot.text());
+
+	return tm.contains(bot.pit());
 }
 
 

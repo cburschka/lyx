@@ -537,7 +537,8 @@ void GuiWorkArea::showCursor()
 
 	// if it doesn't touch the screen, don't try to show it
 	bool cursorInView = true;
-	if (y + h < 0 || y >= viewport()->height())
+	if (y + h < 0 || y >= viewport()->height()
+		|| !cur.bv().paragraphVisible(cur))
 		cursorInView = false;
 
 	// show cursor on screen

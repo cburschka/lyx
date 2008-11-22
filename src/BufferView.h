@@ -251,6 +251,8 @@ public:
 
 	///
 	Point getPos(DocIterator const & dit, bool boundary) const;
+	/// is the paragraph of the cursor visible ?
+	bool paragraphVisible(DocIterator const & dit) const;
 
 
 	///
