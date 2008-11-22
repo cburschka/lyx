@@ -69,6 +69,8 @@ What's new
 
 - Fix export to latex in the presence of an encoding switch (bug 5489).
 
+- Fix nesting of \begin{CJK} and \end{CJK} with other environments.
+
 - Fix export of straight quotes in Hebrew and Greek context.
 
 
