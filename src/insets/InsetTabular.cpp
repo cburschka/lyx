@@ -3103,8 +3103,10 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 
 	//resetPos(cur);
 
+	bool const full_cell_selected = isCellSelected(cur,
+		tabular.cellRow(cur.idx()), tabular.cellColumn(cur.idx()));
 
-	if (cur.selIsMultiCell()) {
+	if (cur.selIsMultiCell() || full_cell_selected) {
 		y -= tabular.rowAscent(0);
 		for (row_type j = 0; j < tabular.row_info.size(); ++j) {
 			int const a = tabular.rowAscent(j);
@@ -3118,8 +3120,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 					tabular.cellIndex(j, i);
 				int const w = tabular.columnWidth(cell);
 				if (isCellSelected(cur, j, i))
-					pi.pain.fillRectangle(xx, y, w, h,
-							      Color_selection);
+					pi.pain.fillRectangle(xx, y, w, h, Color_selection);
 				xx += w;
 			}
 			y += h;
