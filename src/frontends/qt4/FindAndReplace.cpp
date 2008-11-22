@@ -50,6 +50,7 @@ FindAndReplace::FindAndReplace(GuiView & parent)
 	setupUi(this);
 	find_work_area_->setGuiView(parent_view_);
 	find_work_area_->init();
+	setFocusProxy(find_work_area_);
 }
 
 
@@ -133,20 +134,11 @@ void FindAndReplace::findAdv(bool casesensitive,
 	// 			searchString, len, casesensitive, matchword, ! backwards, expandmacros);
 }
 
-
-void FindAndReplace::showEvent(QShowEvent *ev)
+bool FindAndReplace::initialiseParams(std::string const &)
 {
+	find_work_area_->setFocus();
 	selectAll();
-	QWidget::showEvent(ev);
-}
-
-
-void FindAndReplace::hideEvent(QHideEvent *ev)
-{
-	LYXERR(Debug::DEBUG, "FindAndReplace::hideEvent");
-	find_work_area_->removeEventFilter(this);
-	find_work_area_->disable();
-	this->QWidget::hideEvent(ev);
+	return true;
 }
 
 
@@ -159,7 +151,6 @@ void FindAndReplace::find(bool backwards)
 			expandMacrosCB->isChecked(),
 			ignoreFormatCB->isChecked());
 	parent_view_.currentMainWorkArea()->redraw();
-	parent_view_.setCurrentWorkArea(find_work_area_);
 	find_work_area_->setFocus();
 }
 

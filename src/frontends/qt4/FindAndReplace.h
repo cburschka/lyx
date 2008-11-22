@@ -36,14 +36,11 @@ class FindAndReplace : public DockView, public Ui::FindAndReplaceUi
 public:
 	FindAndReplace(GuiView & parent);
 
-	bool initialiseParams(std::string const &) { return true; }
+	bool initialiseParams(std::string const &);
 	void clearParams() {}
 	void dispatchParams() {}
 	bool isBufferDependent() const { return true; }
 	void selectAll();
-
-	void showEvent(QShowEvent * ev);
-	void hideEvent(QHideEvent * ev);
 
 	/// update
 	void updateView() {}

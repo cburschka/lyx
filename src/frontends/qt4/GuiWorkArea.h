@@ -278,17 +278,11 @@ public:
 
 protected:
 	///
-	void showEvent(QShowEvent * ev);
-	/// this happens when the dialog is simply closed/hidden
-	void closeEvent(QCloseEvent * e);
-
-private Q_SLOTS:
-	/// this happens 100ms after dialog showEvent()
-	void onDelayedFocus();
+	void closeEvent(QCloseEvent * ev);
+	///
+	void hideEvent(QHideEvent *ev);
 
 private:
-	/// @TODO: Investigate on focus issue and remove this ugly hack, please !
-	QTimer delayed_focus_timer_;
 	/// Embedded Buffer.
 	Buffer * buffer_;
 }; // EmbeddedWorkArea
