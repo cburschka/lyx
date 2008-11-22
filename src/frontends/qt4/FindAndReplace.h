@@ -72,10 +72,6 @@ private:
 
 	GuiWorkArea * searchWorkArea_;	// The work area defining what to search
 
-	/// @TODO: Investigate on focus issue and remove this ugly hack, please !
-	QTimer delayedFocusTimer_;
-	void disableSearchWorkArea();
-
 private:
 	/// Apply changes
 	virtual void apply() {}
@@ -87,12 +83,6 @@ private:
 		     docstring const & replacestr,
 		     bool casesens, bool words, bool backwards, bool expandmacros, bool all);
 	bool eventFilter(QObject *obj, QEvent *event);
-
-public Q_SLOTS:
-	/// this happens when the dialog is simply closed/hidden
-	void closeEvent(QCloseEvent * e);
-	/// this happens 100ms after dialog showEvent()
-	void onDelayedFocus();
 };
 
 

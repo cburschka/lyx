@@ -12,12 +12,11 @@
 
 #include "FindAndReplace.h"
 
-
-#include "GuiWorkArea.h"
-#include "GuiView.h"
+#include "GuiApplication.h"
 #include "qt_helpers.h"
+#include "GuiView.h"
+#include "GuiWorkArea.h"
 
-#include "Application.h"
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "Cursor.h"
@@ -27,14 +26,14 @@
 #include "output_latex.h"
 #include "TexRow.h"
 
-#include "support/FileName.h"
 #include "support/convert.h"
 #include "support/debug.h"
+#include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
 
-#include <QLineEdit>
 #include <QCloseEvent>
+#include <QLineEdit>
 
 #include <iostream>
 
@@ -44,11 +43,9 @@ using namespace lyx::support;
 namespace lyx {
 namespace frontend {
 
-
 FindAndReplace::FindAndReplace(GuiView & parent)
 	: DockView(parent, "Find LyX", "Find LyX Dialog", Qt::RightDockWidgetArea),
-	parent_view_(parent),
-	delayedFocusTimer_(this)
+	parent_view_(parent)
 {
 	setupUi(this);
 	find_work_area_->setGuiView(parent_view_);
@@ -74,19 +71,8 @@ bool FindAndReplace::eventFilter(QObject *obj, QEvent *event)
 			}
 		}
 	}
-
 	// standard event processing
 	return QObject::eventFilter(obj, event);
-}
-
-
-void FindAndReplace::closeEvent(QCloseEvent * close_event)
-{
-	LYXERR(Debug::DEBUG, "FindAndReplace::closeEvent()");
-	find_work_area_->removeEventFilter(this);
-	disableSearchWorkArea();
-
-	DockView::closeEvent(close_event);
 }
 
 
@@ -104,7 +90,7 @@ void FindAndReplace::findAdv(bool casesensitive,
 {
 	Buffer & buffer = find_work_area_->bufferView().buffer();
 	docstring searchString;
-	if (! ignoreformat) {
+	if (!ignoreformat) {
 		OutputParams runparams(&buffer.params().encoding());
 		odocstringstream os;
 		runparams.nice = true;
@@ -114,14 +100,18 @@ void FindAndReplace::findAdv(bool casesensitive,
 		runparams.dryrun = true;
 		buffer.texrow().reset();
 //		latexParagraphs(buffer, buffer.paragraphs(), os, buffer.texrow(), runparams);
-		for (ParagraphList::const_iterator pit = buffer.paragraphs().begin(); pit != buffer.paragraphs().end(); ++pit) {
+		ParagraphList::const_iterator pit = buffer.paragraphs().begin();
+		ParagraphList::const_iterator const end = buffer.paragraphs().end();
+		for (; pit != end; ++pit) {
 			TeXOnePar(buffer, buffer.text(), pit, os, buffer.texrow(), runparams);
-			lyxerr << "searchString up to here: " << to_utf8(os.str()) << std::endl;
+			LYXERR0("searchString up to here: " << os.str());
 		}
 		searchString = os.str();
 	} else {
-		for (ParIterator it = buffer.par_iterator_begin(); it != buffer.par_iterator_end(); ++it) {
-			lyxerr << "Adding to search string: '" << to_utf8(it->asString(false)) << "'" << std::endl;
+		ParIterator it = buffer.par_iterator_begin();
+		ParIterator end = buffer.par_iterator_end();
+		for (; it != end; ++it) {
+			LYXERR0("Adding to search string: '" << it->asString(false) << "'");
 			searchString += it->asString(AS_STR_INSETS);
 		}
 	}
@@ -130,8 +120,9 @@ void FindAndReplace::findAdv(bool casesensitive,
 		buffer.message(_("Nothing to search"));
 		return;
 	}
-	bool regexp = (to_utf8(searchString).find("\\regexp") != std::string::npos);
-	FindAdvOptions opt(searchString, casesensitive, matchword, ! backwards, expandmacros, ignoreformat, regexp);
+	bool const regexp = to_utf8(searchString).find("\\regexp") != std::string::npos;
+	FindAdvOptions opt(searchString, casesensitive, matchword, ! backwards,
+		expandmacros, ignoreformat, regexp);
 	std::cerr << "Dispatching LFUN_WORD_FINDADV" << std::endl;
 	std::ostringstream oss;
 	oss << opt;
@@ -143,40 +134,10 @@ void FindAndReplace::findAdv(bool casesensitive,
 }
 
 
-void FindAndReplace::onDelayedFocus()
-{
-	LYXERR(Debug::DEBUG, "Delayed Focus");
-	parent_view_.setCurrentWorkArea(find_work_area_);
-	find_work_area_->setFocus();
-}
-
-
 void FindAndReplace::showEvent(QShowEvent *ev)
 {
-	LYXERR(Debug::DEBUG, "FindAndReplace::showEvent");
-	parent_view_.setCurrentWorkArea(find_work_area_);
 	selectAll();
-	find_work_area_->redraw();
-	find_work_area_->setFocus();
-	find_work_area_->installEventFilter(this);
-	connect(&delayedFocusTimer_, SIGNAL(timeout()), this, SLOT(onDelayedFocus()));
-	delayedFocusTimer_.setSingleShot(true);
-	delayedFocusTimer_.start(100);
-
-	this->QWidget::showEvent(ev);
-}
-
-
-void FindAndReplace::disableSearchWorkArea()
-{
-	LYXERR(Debug::DEBUG, "FindAndReplace::disableSearchWorkArea()");
-	// Ok, closing the window before 100ms may be impossible, however...
-	delayedFocusTimer_.stop();
-	if (parent_view_.currentWorkArea() == find_work_area_) {
-		LASSERT(parent_view_.currentMainWorkArea(), /* */);
-		parent_view_.setCurrentWorkArea(parent_view_.currentMainWorkArea());
-	}
-	find_work_area_->stopBlinkingCursor();
+	QWidget::showEvent(ev);
 }
 
 
@@ -184,7 +145,7 @@ void FindAndReplace::hideEvent(QHideEvent *ev)
 {
 	LYXERR(Debug::DEBUG, "FindAndReplace::hideEvent");
 	find_work_area_->removeEventFilter(this);
-	disableSearchWorkArea();
+	find_work_area_->disable();
 	this->QWidget::hideEvent(ev);
 }
 
@@ -220,8 +181,9 @@ void FindAndReplace::on_regexpInsertCombo_currentIndexChanged(int index)
 }
 
 
-void FindAndReplace::on_closePB_clicked() {
-	disableSearchWorkArea();
+void FindAndReplace::on_closePB_clicked()
+{
+	find_work_area_->disable();
 	LYXERR(Debug::DEBUG, "Dispatching dialog-hide findreplaceadv" << std::endl);
 	parent_view_.dispatch(FuncRequest(LFUN_DIALOG_TOGGLE, "findreplaceadv"));
 }

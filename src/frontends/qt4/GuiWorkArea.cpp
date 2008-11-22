@@ -1223,7 +1223,8 @@ bool GuiWorkArea::isFullScreen()
 ////////////////////////////////////////////////////////////////////
 
 
-EmbeddedWorkArea::EmbeddedWorkArea(QWidget * w): GuiWorkArea(w)
+EmbeddedWorkArea::EmbeddedWorkArea(QWidget * w): GuiWorkArea(w),
+	delayed_focus_timer_(this)
 {
 	buffer_ = theBufferList().newBuffer(
 		support::FileName::tempName().absFilename() + "_embedded.internal");
@@ -1236,15 +1237,57 @@ EmbeddedWorkArea::EmbeddedWorkArea(QWidget * w): GuiWorkArea(w)
 	setDialogMode(true);
 }
 
+
 EmbeddedWorkArea::~EmbeddedWorkArea()
 {
 	// No need to destroy buffer and bufferview here, because it is done
 	// in theBuffeerList() destruction loop at application exit
-	LYXERR(Debug::DEBUG, "FindAndReplace::~FindAndReplace()");
 }
 
 
+void EmbeddedWorkArea::onDelayedFocus()
+{
+	LYXERR(Debug::DEBUG, "Delayed Focus");
+	view().setCurrentWorkArea(this);
+	setFocus();
+}
 
+
+void EmbeddedWorkArea::showEvent(QShowEvent *ev)
+{
+	view().setCurrentWorkArea(this);
+	redraw();
+	setFocus();
+	installEventFilter(this);
+	connect(&delayed_focus_timer_, SIGNAL(timeout()), this,
+		SLOT(onDelayedFocus()));
+	delayed_focus_timer_.setSingleShot(true);
+	delayed_focus_timer_.start(100);
+
+	GuiWorkArea::showEvent(ev);
+}
+
+
+void EmbeddedWorkArea::closeEvent(QCloseEvent * close_event)
+{
+	LYXERR(Debug::DEBUG, "FindAndReplace::closeEvent()");
+	removeEventFilter(this);
+	disable();
+
+	GuiWorkArea::closeEvent(close_event);
+}
+
+
+void EmbeddedWorkArea::disable()
+{
+	// Ok, closing the window before 100ms may be impossible, however...
+	delayed_focus_timer_.stop();
+	if (view().currentWorkArea() == this) {
+		LASSERT(view().currentMainWorkArea(), /* */);
+		view().setCurrentWorkArea(view().currentMainWorkArea());
+	}
+	stopBlinkingCursor();
+}
 
 ////////////////////////////////////////////////////////////////////
 //
