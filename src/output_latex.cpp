@@ -180,8 +180,9 @@ TeXEnvironment(Buffer const & buf,
 	bool cjk_nested = false;
 	if (par_language->encoding()->package() == Encoding::CJK &&
 	    open_encoding_ != CJK && pit->isMultiLingual(bparams)) {
-		os << "\\begin{CJK}{" << from_ascii(par_language->encoding()->latexName())
-		   << "}{" << from_ascii(bparams.fontsCJK) << "}%\n";
+		if (prev_par_language->encoding()->package() == Encoding::CJK)
+			os << "\\begin{CJK}{" << from_ascii(par_language->encoding()->latexName())
+			   << "}{" << from_ascii(bparams.fontsCJK) << "}%\n";
 		open_encoding_ = CJK;
 		cjk_nested = true;
 		texrow.newline();
@@ -658,8 +659,8 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 	if (nextpit != paragraphs.end() && open_encoding_ == CJK &&
 	    (nextpit->getParLanguage(bparams)->encoding()->package() != Encoding::CJK ||
 	     nextpit->layout().isEnvironment() && nextpit->isMultiLingual(bparams))
-	     // in environments, CJK has to be closed later (nesting!)
-	     && !style.isEnvironment()) {
+	     // inbetween environments, CJK has to be closed later (nesting!)
+	     && (!style.isEnvironment() || !nextpit->layout().isEnvironment())) {
 		os << "\\end{CJK}\n";
 		open_encoding_ = none;
 	}
