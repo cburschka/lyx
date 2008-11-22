@@ -18,6 +18,7 @@
 #include "Menus.h"
 
 #include "Buffer.h"
+#include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "CoordCache.h"
@@ -250,6 +251,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & gv)
 {
 	setGuiView(gv);
 	setBuffer(buffer);
+	init();
 }
 
 
@@ -342,7 +344,6 @@ void GuiWorkArea::setBuffer(Buffer & buffer)
 	if (buffer.text().paragraphs().size() > 4)
 		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	QTimer::singleShot(50, this, SLOT(fixVerticalScrollBar()));
-	init();
 }
 
 
@@ -1213,6 +1214,36 @@ bool GuiWorkArea::isFullScreen()
 {
 	return lyx_view_ && lyx_view_->isFullScreen();
 }
+
+
+////////////////////////////////////////////////////////////////////
+//
+// EmbeddedWorkArea
+//
+////////////////////////////////////////////////////////////////////
+
+
+EmbeddedWorkArea::EmbeddedWorkArea(QWidget * w): GuiWorkArea(w)
+{
+	buffer_ = theBufferList().newBuffer(
+		support::FileName::tempName().absFilename() + "_embedded.internal");
+	LASSERT(buffer_ != 0, /* */);
+
+	buffer_->setUnnamed(true);
+	buffer_->setFullyLoaded(true);
+	setBuffer(*buffer_);
+	setUpdatesEnabled(false);
+	setDialogMode(true);
+}
+
+EmbeddedWorkArea::~EmbeddedWorkArea()
+{
+	// No need to destroy buffer and bufferview here, because it is done
+	// in theBuffeerList() destruction loop at application exit
+	LYXERR(Debug::DEBUG, "FindAndReplace::~FindAndReplace()");
+}
+
+
 
 
 ////////////////////////////////////////////////////////////////////

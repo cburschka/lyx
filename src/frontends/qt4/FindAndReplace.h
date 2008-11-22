@@ -36,8 +36,6 @@ class FindAndReplace : public DockView, public Ui::FindAndReplaceUi
 public:
 	FindAndReplace(GuiView & parent);
 
-	~FindAndReplace();
-
 	bool initialiseParams(std::string const &) { return true; }
 	void clearParams() {}
 	void dispatchParams() {}
@@ -71,9 +69,6 @@ private:
 			bool expandmacros, bool ignoreformat);
 
 	GuiView & parent_view_;
-
-	Buffer *searchBuffer_;
-	BufferView *searchBufferView_;
 
 	GuiWorkArea * searchWorkArea_;	// The work area defining what to search
 

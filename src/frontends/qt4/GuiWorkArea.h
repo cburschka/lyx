@@ -108,12 +108,11 @@ public:
 	~GuiWorkArea();
 
 	///
+	void init();
+	///
 	void setBuffer(Buffer &);
 	///
 	void setGuiView(GuiView &);
-	/// Dummy methods for Designer.
-	void setWidgetResizable(bool) {}
-	void setWidget(QWidget *) {}
 	///
 	void setFullScreen(bool full_screen);
 	/// is LyXView in fullscreen mode?
@@ -170,8 +169,6 @@ private Q_SLOTS:
 
 private:
 	friend class GuiCompleter;
-	///
-	void init();
 
 	/// update the passed area.
 	void update(int x, int y, int w, int h);
@@ -262,6 +259,24 @@ private:
 	/// are ignored
 	bool dialog_mode_;
 }; // GuiWorkArea
+
+
+class EmbeddedWorkArea : public GuiWorkArea
+{
+	Q_OBJECT
+public:
+	///
+	EmbeddedWorkArea(QWidget *);
+	~EmbeddedWorkArea();
+
+	/// Dummy methods for Designer.
+	void setWidgetResizable(bool) {}
+	void setWidget(QWidget *) {}
+
+private:
+	/// Embedded Buffer.
+	Buffer * buffer_;
+}; // EmbeddedWorkArea
 
 
 /// A tabbed set of GuiWorkAreas.

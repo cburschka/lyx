@@ -18,7 +18,6 @@
 #include "qt_helpers.h"
 
 #include "Application.h"
-#include "BufferList.h"
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "Cursor.h"
@@ -51,26 +50,9 @@ FindAndReplace::FindAndReplace(GuiView & parent)
 	parent_view_(parent),
 	delayedFocusTimer_(this)
 {
-	searchBuffer_ = theBufferList().newBuffer(
-		support::FileName::tempName().absFilename() + "_searchadv.internal");
-	LASSERT(searchBuffer_ != 0, /* */);
-	searchBufferView_ = new BufferView(*searchBuffer_);
-	searchBuffer_->setUnnamed(true);
-	searchBuffer_->setFullyLoaded(true);
-
 	setupUi(this);
 	find_work_area_->setGuiView(parent_view_);
-	find_work_area_->setBuffer(*searchBuffer_);
-	find_work_area_->setUpdatesEnabled(false);
-	find_work_area_->setDialogMode(true);
-}
-
-
-FindAndReplace::~FindAndReplace()
-{
-	// No need to destroy buffer and bufferview here, because it is done
-	// in theBuffeerList() destruction loop at application exit
-	LYXERR(Debug::DEBUG, "FindAndReplace::~FindAndReplace()");
+	find_work_area_->init();
 }
 
 
@@ -120,31 +102,32 @@ void FindAndReplace::findAdv(bool casesensitive,
 		bool matchword, bool backwards,
 		bool expandmacros, bool ignoreformat)
 {
+	Buffer & buffer = find_work_area_->bufferView().buffer();
 	docstring searchString;
 	if (! ignoreformat) {
-		OutputParams runparams(&searchBuffer_->params().encoding());
+		OutputParams runparams(&buffer.params().encoding());
 		odocstringstream os;
 		runparams.nice = true;
 		runparams.flavor = OutputParams::LATEX;
 		runparams.linelen = 80; //lyxrc.plaintext_linelen;
 		// No side effect of file copying and image conversion
 		runparams.dryrun = true;
-		searchBuffer_->texrow().reset();
-//		latexParagraphs(searchBuffer_, searchBuffer_.paragraphs(), os, searchBuffer_.texrow(), runparams);
-		for (ParagraphList::const_iterator pit = searchBuffer_->paragraphs().begin(); pit != searchBuffer_->paragraphs().end(); ++pit) {
-			TeXOnePar(*searchBuffer_, searchBuffer_->text(), pit, os, searchBuffer_->texrow(), runparams);
+		buffer.texrow().reset();
+//		latexParagraphs(buffer, buffer.paragraphs(), os, buffer.texrow(), runparams);
+		for (ParagraphList::const_iterator pit = buffer.paragraphs().begin(); pit != buffer.paragraphs().end(); ++pit) {
+			TeXOnePar(buffer, buffer.text(), pit, os, buffer.texrow(), runparams);
 			lyxerr << "searchString up to here: " << to_utf8(os.str()) << std::endl;
 		}
 		searchString = os.str();
 	} else {
-		for (ParIterator it = searchBuffer_->par_iterator_begin(); it != searchBuffer_->par_iterator_end(); ++it) {
+		for (ParIterator it = buffer.par_iterator_begin(); it != buffer.par_iterator_end(); ++it) {
 			lyxerr << "Adding to search string: '" << to_utf8(it->asString(false)) << "'" << std::endl;
 			searchString += it->asString(AS_STR_INSETS);
 		}
 	}
 //	lyxerr << "Searching for '" << to_utf8(searchString) << "'" << std::endl;
 	if (to_utf8(searchString).empty()) {
-		searchBufferView_->message(_("Nothing to search"));
+		buffer.message(_("Nothing to search"));
 		return;
 	}
 	bool regexp = (to_utf8(searchString).find("\\regexp") != std::string::npos);
