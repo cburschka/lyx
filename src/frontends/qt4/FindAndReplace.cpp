@@ -50,6 +50,10 @@ FindAndReplace::FindAndReplace(GuiView & parent)
 	find_work_area_->setGuiView(parent);
 	find_work_area_->init();
 	setFocusProxy(find_work_area_);
+	replace_work_area_->setGuiView(parent);
+	replace_work_area_->init();
+	// We don't want two cursors blinking.
+	replace_work_area_->stopBlinkingCursor();
 }
 
 
@@ -73,14 +77,6 @@ bool FindAndReplace::eventFilter(QObject *obj, QEvent *event)
 	}
 	// standard event processing
 	return QObject::eventFilter(obj, event);
-}
-
-
-void FindAndReplace::selectAll()
-{
-	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
-	dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
-	find_work_area_->redraw();
 }
 
 
@@ -135,8 +131,12 @@ void FindAndReplace::findAdv(bool casesensitive,
 
 bool FindAndReplace::initialiseParams(std::string const &)
 {
+	find_work_area_->redraw();
+	replace_work_area_->setEnabled(true);
+	replace_work_area_->redraw();
 	find_work_area_->setFocus();
-	selectAll();
+	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
+	dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
 	return true;
 }
 

@@ -1230,7 +1230,6 @@ EmbeddedWorkArea::EmbeddedWorkArea(QWidget * w): GuiWorkArea(w)
 	buffer_->setUnnamed(true);
 	buffer_->setFullyLoaded(true);
 	setBuffer(*buffer_);
-	setUpdatesEnabled(false);
 	setDialogMode(true);
 }
 
