@@ -52,6 +52,7 @@ GuiErrorList::GuiErrorList(GuiView & lv)
 void GuiErrorList::showEvent(QShowEvent * e)
 {
 	select();
+	updateContents();
 	e->accept();
 }
 
