@@ -19,17 +19,19 @@
 #include "InsetMathNest.h"
 
 #include "Buffer.h"
+#include "BufferList.h"
 #include "DocIterator.h"
 #include "InsetList.h"
 #include "Text.h"
 
 #include "support/debug.h"
-
+#include "support/FileName.h"
 #include "support/lassert.h"
 
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -68,14 +70,19 @@ void MacroData::expand(vector<MathData> const & args, MathData & to) const
 	updateData();
 
 	// Hack. Any inset with a cell would do.
-	static Buffer buffer("");
+	static Buffer * buffer = 0;
+	if (!buffer) {
+		buffer = theBufferList().newBuffer(
+		FileName::tempName().absFilename() + "_macrodata.internal");
+		buffer->setUnnamed(true);
+	}
 	static InsetMathSqrt inset;
 
 	// FIXME UNICODE
 	asArray(display_.empty() ? definition_ : display_, inset.cell(0));
 	//lyxerr << "MathData::expand: args: " << args << endl;
 	//lyxerr << "MathData::expand: ar: " << inset.cell(0) << endl;
-	for (DocIterator it = doc_iterator_begin(&buffer, &inset); it; it.forwardChar()) {
+	for (DocIterator it = doc_iterator_begin(buffer, &inset); it; it.forwardChar()) {
 		if (!it.nextInset())
 			continue;
 		if (it.nextInset()->lyxCode() != MATHMACROARG_CODE)
