@@ -81,6 +81,9 @@ What's new
 
 - Fix crash on Mac when dropping a file on its own buffer (bug 5447).
 
+- Fix freeze when selecting after a large amount of text already was
+  selected (bug 5504).
+
 - Fix false duplicate warning for labels when just applying without
   changing (bug 5496).
 
@@ -94,7 +97,7 @@ What's new
 
 - Fix problem with display of footnote numbers, etc., in child documents.
 
-- Fix painting update rules after LFUN_UP or LFUN_DOWN in an inset or 
+- Fix painting update rules after LFUN_UP or LFUN_DOWN in an inset or
   tabular.
 
 - Fix some UI glitches in the table cell settings dialog.
@@ -103,7 +106,7 @@ What's new
 
 - Fix and improve the selection painting in a tabular (bug 5536).
 
-- Fix error dialog that didn't display some messages.
+- Fix error dialog, which didn't display some messages.
 
 
 * DOCUMENTATION AND LOCALIZATION
