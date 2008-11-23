@@ -167,6 +167,8 @@ cmake/modules/LyXPaths.cmake \
 cmake/modules/FindGNUWIN32.cmake \
 cmake/modules/LyXuic.cmake \
 cmake/modules/FindICONV.cmake \
+cmake/modules/MacroBoolTo01.cmake \
+cmake/modules/FindLibintl.cmake \
 cmake/ConfigureChecks.cmake \
 cmake/pcheaders.h \
 cmake/Install.cmake \
@@ -174,4 +176,7 @@ cmake/config.cpp.cmake \
 cmake/config.h.cmake \
 cmake/CMakeLists.txt \
 cmake/build.bat \
-cmake/build-debug.bat
+cmake/build-debug.bat \
+cmake/configCompiler.h.msvc \
+cmake/configCompiler.h.cmake
+
