@@ -418,7 +418,7 @@ void InsetFloat::setNewLabel(BufferParams const & bp)
 {
 	docstring lab = _("float: ");
 
-	if( params_.subfloat )
+	if (params_.subfloat)
 		lab = _("subfloat: ");
 
 	lab += floatName(params_.type, bp);
