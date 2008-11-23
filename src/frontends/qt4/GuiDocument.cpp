@@ -2167,6 +2167,8 @@ void GuiDocument::paramsToDialog()
 
 	pdfSupportModule->optionsLE->setText(
 		toqstr(pdf.quoted_options));
+	
+	bc().restore();
 }
 
 
