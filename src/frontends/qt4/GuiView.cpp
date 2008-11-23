@@ -1999,7 +1999,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				inset->dispatch(view()->cursor(), fr);
 			} else if (name == "paragraph") {
 				lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
-			} else if (name == "prefs") {
+			} else if (name == "prefs" || name == "document") {
 				updateDialog(name, string());
 			}
 			break;

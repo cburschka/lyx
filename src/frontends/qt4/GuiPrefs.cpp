@@ -2597,7 +2597,9 @@ bool GuiPreferences::initialiseParams(string const &)
 	movers_ = theMovers();
 	colors_.clear();
 	update_screen_font_ = false;
+	
 	updateRc(rc_);
+	bc().restore();
 
 	return true;
 }
