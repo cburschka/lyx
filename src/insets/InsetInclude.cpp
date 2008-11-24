@@ -160,7 +160,8 @@ InsetLabel * createLabel(docstring const & label_str)
 
 InsetInclude::InsetInclude(InsetCommandParams const & p)
 	: InsetCommand(p, "include"), include_label(uniqueID()),
-	  preview_(new RenderMonitoredPreview(this)), set_label_(false), label_(0)
+	  preview_(new RenderMonitoredPreview(this)), failedtoload_(false),
+	  set_label_(false), label_(0)
 {
 	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
 
@@ -173,7 +174,8 @@ InsetInclude::InsetInclude(InsetCommandParams const & p)
 
 InsetInclude::InsetInclude(InsetInclude const & other)
 	: InsetCommand(other), include_label(other.include_label),
-	  preview_(new RenderMonitoredPreview(this)), set_label_(false), label_(0)
+	  preview_(new RenderMonitoredPreview(this)), failedtoload_(false),
+	  set_label_(false), label_(0)
 {
 	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
 
@@ -371,6 +373,9 @@ Buffer * InsetInclude::getChildBuffer(Buffer const & buffer) const
 Buffer * InsetInclude::loadIfNeeded(Buffer const & parent) const
 {
 	InsetCommandParams const & p = params();
+	if (failedtoload_)
+		return 0;
+
 	if (isVerbatim(p) || isListings(p))
 		return 0;
 
@@ -393,6 +398,7 @@ Buffer * InsetInclude::loadIfNeeded(Buffer const & parent) const
 			return 0;
 
 		if (!child->loadLyXFile(included_file)) {
+			failedtoload_ = true;
 			//close the buffer we just opened
 			theBufferList().release(child);
 			return 0;

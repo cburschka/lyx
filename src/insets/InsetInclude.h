@@ -125,6 +125,8 @@ private:
 	/// The pointer never changes although *preview_'s contents may.
 	boost::scoped_ptr<RenderMonitoredPreview> const preview_;
 
+	/// 
+	mutable bool failedtoload_;
 	/// cache
 	mutable bool set_label_;
 	mutable RenderButton button_;
