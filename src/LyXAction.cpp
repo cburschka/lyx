@@ -3091,7 +3091,7 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_COPY_LABEL_AS_REF
- * \li Action: Copies the label at the cursor as a cross-reference to be paster elsewhere.
+ * \li Action: Copies the label at the cursor as a cross-reference to be pasted elsewhere.
  * \li Syntax: copy-label-as-reference
  * \li Origin: sts, 16 Nov 2008
  * \endvar
