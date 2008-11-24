@@ -58,6 +58,8 @@ What's new
 - Fix error (unicodesymbols not found) when the working directory is not
   the script directory (solves compilation problems with SCons).
 
+- Fix import of CVS data on Windows (official installer).
+
 
 * USER INTERFACE
 
