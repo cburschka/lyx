@@ -847,11 +847,12 @@ void MenuDefinition::expandFlexInsert(
 	TextClass::InsetLayouts::const_iterator cit = insetLayouts.begin();
 	TextClass::InsetLayouts::const_iterator end = insetLayouts.end();
 	for (; cit != end; ++cit) {
-		docstring const label = cit->first;
-		if (cit->second.lyxtype() == type)
+		if (cit->second.lyxtype() == type) {
+			docstring const label = cit->first;
 			addWithStatusCheck(MenuItem(MenuItem::Command, 
 				toqstr(translateIfPossible(label)),
-				FuncRequest(LFUN_FLEX_INSERT, label)));
+				FuncRequest(LFUN_FLEX_INSERT, '"' + label + '"')));
+		}
 	}
 	// FIXME This is a little clunky.
 	if (items_.empty() && type == InsetLayout::CUSTOM)
