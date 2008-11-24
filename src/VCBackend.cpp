@@ -52,7 +52,7 @@ int VCS::doVCCommand(string const & cmd, FileName const & path)
 		frontend::Alert::error(_("Revision control error."),
 			bformat(_("Some problem occured while running the command:\n"
 				  "'%1$s'."),
-			from_ascii(cmd)));
+			from_utf8(cmd)));
 	return ret;
 }
 
@@ -534,7 +534,7 @@ string SVN::checkOut()
 			bformat(_("Error when updating from repository.\n"
 				"You have to manually resolve the conflicts NOW!\n'%1$s'.\n\n"
 				"After pressing OK, LyX will try to reopen resolved document."),
-			from_ascii(res)));
+			from_local8bit(res)));
 	tmpf.erase();
 	return "SVN: " + log;
 }
