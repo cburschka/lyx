@@ -114,6 +114,7 @@ Lists of files to include in the installer
   ${FILE}codecs.py"
   ${FILE}compileall.py"  
   ${FILE}copy_reg.py"
+  ${FILE}csv.py"
   ${FILE}functools.py"  
   ${FILE}fnmatch.py"
   ${FILE}genericpath.py"  
