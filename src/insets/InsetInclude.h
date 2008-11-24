@@ -95,6 +95,10 @@ public:
 	static bool isCompatibleCommand(std::string const & s);
 	///
 	docstring contextMenu(BufferView const & bv, int x, int y) const;
+	/// \return the child buffer if the file is a LyX doc and is loaded
+	Buffer * getChildBuffer(Buffer const & buffer) const;
+	/// \return loaded Buffer or zero if the file loading did not proceed.
+	Buffer * loadIfNeeded(Buffer const & parent) const;
 protected:
 	InsetInclude(InsetInclude const &);
 	///
@@ -128,8 +132,6 @@ private:
 	InsetLabel * label_;
 };
 
-/// return loaded Buffer or zero if the file loading did not proceed.
-Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params);
 
 } // namespace lyx
 
