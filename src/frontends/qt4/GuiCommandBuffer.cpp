@@ -97,6 +97,7 @@ GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
 	down->setToolTip(qt_("Next command"));
 	down->setMaximumSize(24, 24);
 	connect(down, SIGNAL(clicked()), this, SLOT(down()));
+	connect(up, SIGNAL(clicked()), this, SLOT(up()));
 
 	edit_ = new GuiCommandEdit(this);
 	edit_->setMinimumSize(edit_->sizeHint());
