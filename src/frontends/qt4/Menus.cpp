@@ -851,7 +851,7 @@ void MenuDefinition::expandFlexInsert(
 			docstring const label = cit->first;
 			addWithStatusCheck(MenuItem(MenuItem::Command, 
 				toqstr(translateIfPossible(label)),
-				FuncRequest(LFUN_FLEX_INSERT, '"' + label + '"')));
+				FuncRequest(LFUN_FLEX_INSERT, Lexer::quoteString(label))));
 		}
 	}
 	// FIXME This is a little clunky.
