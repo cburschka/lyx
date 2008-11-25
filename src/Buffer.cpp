@@ -1879,11 +1879,10 @@ void Buffer::updateMacros(DocIterator & it, DocIterator & scope) const
 			// is it an external file?
 			if (iit->inset->lyxCode() == INCLUDE_CODE) {
 				// get buffer of external file
-				InsetCommand const & inset
-					= static_cast<InsetCommand const &>(*iit->inset);
-				InsetCommandParams const & ip = inset.params();
+				InsetInclude const & inset
+					= static_cast<InsetInclude const &>(*iit->inset);
 				d->macro_lock = true;
-				Buffer * child = loadIfNeeded(*this, ip);
+				Buffer * child = inset.loadIfNeeded(*this);
 				d->macro_lock = false;
 				if (!child)
 					continue;

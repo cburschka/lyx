@@ -75,6 +75,11 @@ What's new
 
 - Fix import of CVS data on Windows.
 
+- Fix freeze when child document fails to load due to a conversion error
+  or similar problem (bug 5539). Note that LyX will not try to reload the
+  file. If the problem should with the child be fixed, the master document
+  will need to be closed and reopened for the child to be loaded.
+
 
 * USER INTERFACE
 
