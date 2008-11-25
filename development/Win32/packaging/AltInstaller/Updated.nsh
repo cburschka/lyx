@@ -4,9 +4,21 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\bin" # always here
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
+ SetOutPath "${PRODUCT_SOURCEDIR}\bin\Lib"
+ File "${PRODUCT_SOURCEDIR}\bin\Lib\csv.py"
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
+ SetOutPath "$INSTDIR\Resources\bind"
+ File "${PRODUCT_SOURCEDIR}\Resources\bind\mac.bind"
+ SetOutPath "$INSTDIR\Resources\doc"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\UserGuide.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\de"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\UserGuide.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\es"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\es\UserGuide.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\fr"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsbook.layout"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
