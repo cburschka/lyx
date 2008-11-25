@@ -120,6 +120,10 @@ What's new
   
 - Enable the button up in the command buffer widget (bug 5567).
 
+- Make the character style and custom inset menus quote the arguments 
+  to flex-insert so that CharStyles, etc, with spaces in their names 
+  will work properly.
+
 - Fix crash on display of message string with utf8 encoding
   (bug 5389 related).
 

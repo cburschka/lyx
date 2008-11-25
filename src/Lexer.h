@@ -193,6 +193,9 @@ public:
 	/// Quotes a string so that reading it again with Lexer::next(true)
 	/// gets the original string
 	static std::string quoteString(std::string const &);
+	/// Quotes a docstring so that reading it again with Lexer::next(true)
+	/// gets the original string
+	static docstring quoteString(docstring const &);
 
 private:
 	/// noncopyable

@@ -901,6 +901,18 @@ string Lexer::quoteString(string const & arg)
 }
 
 
+// same for docstring
+docstring Lexer::quoteString(docstring const & arg)
+{
+	docstring res;
+	res += '"';
+	res += subst(subst(arg, from_ascii("\\"), from_ascii("\\\\")), 
+		     from_ascii("\""), from_ascii("\\\""));
+	res += '"';
+	return res;
+}
+
+
 Lexer & Lexer::operator>>(char const * required)
 {
 	string token;
