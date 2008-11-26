@@ -810,7 +810,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 
 	// Whether a common inset is found and whether the cursor is still in 
 	// the same paragraph (possibly nested).
-	bool same_par = depth < cur.depth() && old.pit() == cur[depth].pit();
+	bool const same_par = depth < cur.depth() && old.pit() == cur[depth].pit();
 	bool const same_par_pos = depth == cur.depth() - 1 && same_par 
 		&& old.pos() == cur[depth].pos();
 	
