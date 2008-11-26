@@ -256,9 +256,6 @@ void InsetFloat::write(ostream & os) const
 void InsetFloat::read(Lexer & lex)
 {
 	params_.read(lex);
-	setWide(params_.wide, buffer().params());
-	setSideways(params_.sideways, buffer().params());
-	setSubfloat(params_.subfloat, buffer().params());
 	InsetCollapsable::read(lex);
 }
 
