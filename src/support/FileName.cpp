@@ -556,6 +556,7 @@ unsigned long FileName::checksum() const
 bool FileName::removeFile() const
 {
 	bool const success = QFile::remove(d->fi.absoluteFilePath());
+	d->refresh();
 	if (!success && exists())
 		LYXERR0("Could not delete file " << *this);
 	return success;

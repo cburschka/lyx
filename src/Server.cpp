@@ -178,13 +178,39 @@ void LyXComm::closeConnection()
 
 int LyXComm::startPipe(string const & file, bool write)
 {
+	static bool stalepipe = false;
 	FileName const filename(file);
-	if (::access(filename.toFilesystemEncoding().c_str(), F_OK) == 0) {
-		lyxerr << "LyXComm: Pipe " << filename << " already exists.\n"
-		       << "If no other LyX program is active, please delete"
-			" the pipe by hand and try again." << endl;
-		pipename_.erase();
-		return -1;
+	if (filename.exists()) {
+		if (!write) {
+			// Let's see whether we have a stale pipe.
+			int fd = ::open(filename.toFilesystemEncoding().c_str(),
+					O_WRONLY | O_NONBLOCK);
+			if (fd >= 0) {
+				// Another LyX instance is using it.
+				::close(fd);
+			} else if (errno == ENXIO) {
+				// No process is reading from the other end.
+				stalepipe = true;
+				LYXERR(Debug::LYXSERVER,
+					"LyXComm: trying to remove "
+					<< filename);
+				filename.removeFile();
+			}
+		} else if (stalepipe) {
+			LYXERR(Debug::LYXSERVER, "LyXComm: trying to remove "
+				<< filename);
+			filename.removeFile();
+			stalepipe = false;
+		}
+		if (filename.exists()) {
+			lyxerr << "LyXComm: Pipe " << filename
+			       << " already exists.\nIf no other LyX program"
+			          " is active, please delete the pipe by hand"
+				  " and try again."
+			       << endl;
+			pipename_.erase();
+			return -1;
+		}
 	}
 
 	if (::mkfifo(filename.toFilesystemEncoding().c_str(), 0600) < 0) {

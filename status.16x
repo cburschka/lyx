@@ -127,6 +127,8 @@ What's new
   to flex-insert so that CharStyles, etc, with spaces in their names 
   will work properly.
 
+- Detect and remove stale lyxpipes on startup (bug 641).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
