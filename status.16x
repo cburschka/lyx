@@ -71,7 +71,7 @@ What's new
 
 - Fix nesting of \begin{CJK} and \end{CJK} with other environments.
 
-- Fix export of straight quotes in Hebrew and Greek context.
+- Fix export of straight quotes in Hebrew and Greek context (bug 5571).
 
 - Fix import of CVS data on Windows.
 
@@ -87,6 +87,9 @@ What's new
   (bug 5491).
 
 - Fix crash on Mac when dropping a file on its own buffer (bug 5447).
+
+- Fix crash on display of message string with utf8 encoding
+  (bug 5389 related).
 
 - Fix freeze when selecting after a large amount of text already was
   selected (bug 5504).
@@ -123,9 +126,6 @@ What's new
 - Make the character style and custom inset menus quote the arguments 
   to flex-insert so that CharStyles, etc, with spaces in their names 
   will work properly.
-
-- Fix crash on display of message string with utf8 encoding
-  (bug 5389 related).
 
 
 * DOCUMENTATION AND LOCALIZATION
