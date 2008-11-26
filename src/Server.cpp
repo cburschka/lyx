@@ -183,12 +183,11 @@ int LyXComm::startPipe(string const & file, bool write)
 	if (filename.exists()) {
 		if (!write) {
 			// Let's see whether we have a stale pipe.
-			errno = 0;
 			int fd = ::open(filename.toFilesystemEncoding().c_str(),
 					O_WRONLY | O_NONBLOCK);
 			if (fd >= 0) {
 				// Another LyX instance is using it.
-				close(fd);
+				::close(fd);
 			} else if (errno == ENXIO) {
 				// No process is reading from the other end.
 				stalepipe = true;
