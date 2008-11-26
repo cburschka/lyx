@@ -1582,6 +1582,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_FONT_ITAL: {
+		Font font(ignore_font, ignore_language);
+		font.fontInfo().setShape(ITALIC_SHAPE);
+		toggleAndShow(cur, this, font);
+		break;
+	}
+
 	case LFUN_FONT_BOLD:
 	case LFUN_FONT_BOLDSYMBOL: {
 		Font font(ignore_font, ignore_language);
@@ -2102,6 +2109,10 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_FONT_EMPH:
 		flag.setOnOff(fontinfo.emph() == FONT_ON);
+		break;
+
+	case LFUN_FONT_ITAL:
+		flag.setOnOff(fontinfo.shape() == ITALIC_SHAPE);
 		break;
 
 	case LFUN_FONT_NOUN:
