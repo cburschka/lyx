@@ -1069,7 +1069,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features,
 	InsetList::const_iterator icit = insetlist_.begin();
 	InsetList::const_iterator iend = insetlist_.end();
 	for (; icit != iend; ++icit) {
-		if (icit->inset) {
+		if (icit->inset && icit->inset->producesOutput()) {
 			icit->inset->validate(features);
 			if (layout.needprotect &&
 			    icit->inset->lyxCode() == FOOT_CODE)
