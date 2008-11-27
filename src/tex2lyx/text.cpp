@@ -1553,8 +1553,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			TeXFont const oldFont = context.font;
 			// save the current font size
 			string const size = oldFont.size;
-			// reset the font size to default, because the font size switches don't
-			// affect section headings and the like
+			// reset the font size to default, because the
+			// font size switches don't affect section
+			// headings and the like
 			context.font.size = known_coded_sizes[0];
 			output_font_change(os, oldFont, context.font);
 			// write the layout
@@ -2129,25 +2130,31 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "selectlanguage") {
 			context.check_layout(os);
-			// save the language for the case that a \foreignlanguage is used 
+			// save the language for the case that a
+			// \foreignlanguage is used 
+
+			//FIXME: this is wrong, the language should
+			// be saved in the context. (JMarc)
 			selectlang = subst(p.verbatim_item(), "\n", " ");
 			os << "\\lang " << selectlang << "\n";
-			
 		}
 
 		else if (t.cs() == "foreignlanguage") {
 			context.check_layout(os);
 			os << "\n\\lang " << subst(p.verbatim_item(), "\n", " ") << "\n";
 			os << subst(p.verbatim_item(), "\n", " ");
+			// FIXME: the second argument of selectlanguage
+			// has to be parsed (like for \textsf, for
+			// example). 
 			// set back to last selectlanguage
 			os << "\n\\lang " << selectlang << "\n";
 		}
 
-		else if (t.cs() == "inputencoding")
-			// write nothing because this is done by LyX using the "\lang"
-			// information given by selectlanguage and foreignlanguage
-			subst(p.verbatim_item(), "\n", " ");
-		
+		else if (t.cs() == "inputencoding") {
+			// nothing to write here
+			string const enc = subst(p.verbatim_item(), "\n", " ");
+			p.setEncoding(enc);
+		}
 		else if (t.cs() == "LyX" || t.cs() == "TeX"
 			 || t.cs() == "LaTeX") {
 			context.check_layout(os);
