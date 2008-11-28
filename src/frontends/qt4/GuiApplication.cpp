@@ -576,12 +576,12 @@ public:
 	}
 
 
-	QVector<FORMATETC> formatsForMime(QString const & mimeType,
-		QMimeData const * mimeData) const
+	QVector<FORMATETC> formatsForMime(QString const & mimetype,
+		QMimeData const * mimedata) const
 	{
 		QVector<FORMATETC> formats;
 		if (mimetype == emfMimeType() || mimetype == wmfMimeType())
-			formats += cfFromMime(mimeType);
+			formats += cfFromMime(mimetype);
 		return formats;
 	}
 
