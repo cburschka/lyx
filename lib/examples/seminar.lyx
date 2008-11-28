@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -7,7 +7,7 @@
 \renewcommand{\printlandscape}{\special{landscape}}
 %\sliderotation{right}
 \end_preamble
-\options a4, semrot, slidesec
+\options a4paper, semrot, slidesec
 \use_default_options false
 \language english
 \inputencoding auto
@@ -19,6 +19,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics dvips
 \paperfontsize default
 \spacing single
@@ -40,8 +41,8 @@
 \paperpagestyle empty
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -648,16 +649,12 @@ Troubleshooting
 \end_layout
 
 \begin_layout Itemize
-There is a bug in 
+
 \family typewriter
 seminar.cls
 \family default
- making it fail with the 
-\family typewriter
-a4paper
-\family default
- option.
- If you use A4 paper, set in the menu 
+ versions before 1.5 (2008-10-15) contained a bug regarding the a4paper option.
+ If you use A4 paper with such a version, set in the menu 
 \family sans
 Document\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
@@ -679,7 +676,7 @@ Size
 \family sans
 Default
 \family default
- and add 
+, add 
 \begin_inset Quotes eld
 \end_inset
 
@@ -691,7 +688,19 @@ a4
 \begin_inset Quotes erd
 \end_inset
 
- to the 
+, and delete the option 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+a4paper
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ if necessary, in the 
 \family sans
 Options
 \family default
