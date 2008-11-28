@@ -29,18 +29,32 @@ def find_end_of_inset(lines, i):
 
 ####################################################################
 
-def dummy(document):
-    pass
+
+def revert_swiss(document):
+    "Set language german-ch to ngerman"
+    i = 0
+    if document.language == "german-ch":
+        document.language = "ngerman"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language ngerman"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang german-ch", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang german-ch", "\\lang ngerman")
+        j = j + 1
 
 ##
 # Conversion hub
 #
 
 supported_versions = ["2.2.0","2.0"]
-convert = [[346, [dummy]]
+convert = [[346, []]
           ]
 
-revert =  [[345, []]
+revert =  [[345, [revert_swiss]]
           ]
 
 
