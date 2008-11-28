@@ -580,7 +580,8 @@ public:
 		QMimeData const * mimeData) const
 	{
 		QVector<FORMATETC> formats;
-		formats += cfFromMime(mimeType);
+		if (mimetype == emfMimeType() || mimetype == wmfMimeType())
+			formats += cfFromMime(mimeType);
 		return formats;
 	}
 
