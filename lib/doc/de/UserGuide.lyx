@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 28.
+letzte Änderung: 29.
  November 2008
 \end_layout
 
@@ -4376,7 +4376,7 @@ Kleinbuchstaben
 \emph on
 Kleinbuchstaben
 \emph default
- durch Herunterskalieren von Großbuchstaben zu simuliert, wodurch die sie
+ durch Herunterskalieren von Großbuchstaben simuliert, wodurch die sie
 \emph on
  
 \emph default
@@ -19740,9 +19740,11 @@ abgetrennt
 \end_layout
 
 \begin_layout Standard
+\noindent
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features islongtable="true">
+<features>
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -23487,6 +23489,36 @@ Margit
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{table}{-1}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+siehe 
+\series bold
+Beschriftungen langer Tabellen
+\series default
+ im Handbuch Eingebettete Objekte.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Tabellen in 
 \family sans
@@ -23574,7 +23606,7 @@ reference "Tab:Gleitende-Tabelle"
 placement htbp
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -23787,7 +23819,7 @@ reference "Tab:Gleitende-Tabelle"
 placement htbp
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
