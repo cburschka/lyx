@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 17.
+letzte Änderung: 28.
  November 2008
 \end_layout
 
@@ -4362,10 +4362,25 @@ Kapitälchen
 \begin_inset space ~
 \end_inset
 
-verwenden Manche Fonts erlauben auch, echte Kapitälchen (was auch der Unterschie
-d sein mag) zu verwenden.
- Sonst werden Kapitälchen durch Herunterskalieren von Großbuchstaben zu
- simuliert.
+verwenden Manche Fonts wie zum Beispiel 
+\family sans
+Palatino
+\family default
+ erlauben auch, echte Kapitälchen zu verwenden.
+ Das bedeutet, dass die 
+\emph on
+Kleinbuchstaben
+\emph default
+ eigene Zeichen sind.
+ Sonst werden die 
+\emph on
+Kleinbuchstaben
+\emph default
+ durch Herunterskalieren von Großbuchstaben zu simuliert, wodurch die sie
+\emph on
+ 
+\emph default
+dünner gedruckt werden.
 \end_layout
 
 \begin_layout Description
