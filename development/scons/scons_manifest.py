@@ -2309,14 +2309,9 @@ lib_doc_uk_clipart_files = Split('''
 
 
 lib_examples_files = Split('''
-    Braille.lyx
-    CV-image.eps
-    CV-image.png
-    Foils.lyx
-    ItemizeBullets.lyx
-    Literate.lyx
     aa_sample.lyx
     aas_sample.lyx
+    achemso.lyx
     addressExample.adr
     amsart-test.lyx
     amsbook-test.lyx
@@ -2334,18 +2329,24 @@ lib_examples_files = Split('''
     beamer-knight4.png
     beamerlyxexample1.lyx
     biblioExample.bib
+    Braille.lyx
     chess-article.lyx
     chessgame.lyx
+    CV-image.eps
+    CV-image.png
     docbook_article.lyx
     europeCV.lyx
     example_lyxified.lyx
     example_raw.lyx
+    Foils.lyx
     iecc05.fen
     iecc07.fen
     iecc12.fen
+    ItemizeBullets.lyx
     landslide.lyx
     linguistics.lyx
     listerrors.lyx
+    Literate.lyx
     modernCV.lyx
     multicol.lyx
     noweb2lyx.lyx
@@ -2529,6 +2530,7 @@ lib_layouts_files = Split('''
     aa.layout
     aapaper.layout
     aastex.layout
+    achemso.layout
     agu-dtd.layout
     agums.layout
     amsart.layout

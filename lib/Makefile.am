@@ -192,6 +192,7 @@ dist_examples_DATA = \
 	examples/Literate.lyx \
 	examples/aa_sample.lyx \
 	examples/aas_sample.lyx \
+	examples/achemso.lyx \
 	examples/addressExample.adr \
 	examples/amsart-test.lyx \
 	examples/amsbook-test.lyx \
@@ -942,6 +943,7 @@ dist_layouts_DATA =\
 	layouts/aapaper.inc \
 	layouts/aapaper.layout \
 	layouts/aastex.layout \
+	layouts/achemso.layout \
 	layouts/agu-dtd.layout \
 	layouts/agu_stdclass.inc \
 	layouts/agu_stdcounters.inc \
