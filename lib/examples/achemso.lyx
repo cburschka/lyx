@@ -1,0 +1,460 @@
+#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass achemso
+\begin_preamble
+ % Formula chemical sum formula subscripts using the command \ce
+\usepackage[version=3]{mhchem}
+
+%% Each author should be given as a separate \author command.
+%%
+%% Corresponding authors should have an e-mail given after the author
+%% name as an \email command.
+%%
+%% The affiliation of authors is given after the authors; each
+%% \affiliation command applies to all preceding authors not already
+%% assigned an affiliation.
+%%
+%% The affiliation takes an option argument for the short name.  This
+%% will typically be something like "University of Somewhere".
+%%
+%% The \altaffiliation macro should be used for new address, etc.
+\author{Andrew N. Other}
+\author{Fred T. Secondauthor}
+\altaffiliation{Current address: Some other place, Othertown,
+Germany}
+\author{I. Ken Groupleader}
+\email{i.k.groupleader@unknown.uu}
+\affiliation[Unknown University]
+{Department of Chemistry, Unknown University, Unknown Town}
+
+% A short title can be given as a *suggestion* for running headers.
+\title[\texttt{achemso} demonstration]
+{A demonstration of the \textsf{achemso} \LaTeX class}
+\end_preamble
+\options journal=jacsat,manuscript=article
+\use_default_options false
+\begin_modules
+theorems-ams
+\end_modules
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ The author, affiliation, email addresses, and the document title have to
+ set up in the LaTeX preamble of this document!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ The journal where you want to sumit is specified in the document class
+ options of this file.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+This is the abstract.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+This is a paragraph of text.
+\end_layout
+
+\begin_layout Section
+Results and discussion
+\end_layout
+
+\begin_layout Subsection
+Outline
+\end_layout
+
+\begin_layout Subsection
+References
+\end_layout
+
+\begin_layout Standard
+The class makes various changes to the way that references are handled.
+ The class loads 
+\family sans
+natbib
+\family default
+, and also the appropriate bibliography style.
+ References can be made using the normal method; the citation should be
+ placed before any punctuation, as the class will move it if using a superscript
+ citation style 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Mena2000,Abernethy2003"
+
+\end_inset
+
+.
+ The use of 
+\family sans
+natbib
+\family default
+ allows the use of the various citation commands of that package: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citeauthor{
+\end_layout
+
+\end_inset
+
+Abernethy2003
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ have shown something, or in 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citeyear{
+\end_layout
+
+\end_inset
+
+Cotton1999
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+.
+ Long lists of authors will be automatically truncated in most article formats,
+ but not in supplementary information or reviews 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pople2003"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Multiple citations to be combined into a list can be given as a single citation.
+ This uses the 
+\family sans
+mciteplus
+\family default
+ package 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Arduengo1992,*Eisenstein2005,*Arduengo1994"
+
+\end_inset
+
+.
+ Citations other than the first of the list should be indicated with a star.
+\end_layout
+
+\begin_layout Standard
+The class also handles notes to be added to the bibliography.
+ These should be given in place in the document
+\begin_inset Flex Bibnote
+status open
+
+\begin_layout Plain Layout
+This is a bibnote; its text will be moved the the references section.
+ Bibnotes are inserted with the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Custom Insets
+\family default
+.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+As with citations, the text should be placed before punctuation.
+ A note is also generated if a citation has an optional note.
+ This assumes that the whole work has already been cited: odd numbering
+ will result if this is not the case 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "p.~1"
+key "Cotton1999"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Some Infos
+\end_layout
+
+\begin_layout Standard
+Besides the standard figure and table floats, the achemso LaTeX-class profives
+ scheme, chart, and graph floats.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float scheme
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+An example scheme
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float chart
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+An example chart
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float graph
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+An example graph
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The example file also loads the 
+\family sans
+mhchem
+\family default
+ package, so that formulas are easy to input: 
+\family typewriter
+
+\backslash
+ce{H2SO4}
+\family default
+ gives 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ce{
+\end_layout
+
+\end_inset
+
+H2SO4
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+acknowledgement
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Acknowledgments go here.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+suppinfo
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Supplemental informations go here.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "achemso"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

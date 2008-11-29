@@ -1,0 +1,188 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[achemso]{article (ACS)}
+# achemso textclass definition file.
+# Author: Uwe Stöhr (uwestoehr@web.de)
+
+Format 11
+
+Columns                 1
+Sides                   1
+SecNumDepth             3
+TocDepth                3
+DefaultStyle            Standard
+
+ClassOptions
+	FontSize		10|11|12
+end
+
+
+# This is just to show how to declare the default font.
+# The defaults are exactly those shown here.
+DefaultFont
+	Family			Roman
+	Series			Medium
+	Shape			Up
+	Size			Normal
+	Color			None
+EndFont
+
+
+Style Standard
+	Margin			Static
+	LatexType		Paragraph
+	LatexName		dummy
+	ParIndent		MM
+	ParSkip			0.4
+	Align			Block
+	AlignPossible		Block, Left, Right, Center
+	LabelType		No_Label
+End
+
+
+Input stdcounters.inc
+Input stdfloats.inc
+Input stdlists.inc
+Input stdsections.inc
+Input stdstarsections.inc
+
+NoStyle Chapter
+NoStyle Chapter*
+
+
+Float
+	Type			scheme
+	GuiName			Scheme
+	Placement		tbp
+	Extension		los
+	NumberWithin		none
+	Style			plain
+	ListName		"List of Schemes"
+	LaTeXBuiltin		true
+End
+
+InsetLayout scheme
+	LabelString		Scheme
+	LabelFont
+	  Color			collapsable
+	  Size			Small
+	EndFont
+	MultiPar		true
+End
+
+
+Float
+	Type			chart
+	GuiName			Chart
+	Placement		tbp
+	Extension		loc
+	NumberWithin		none
+	Style			plain
+	ListName		"List of Charts"
+	LaTeXBuiltin		true
+End
+
+InsetLayout chart
+	LabelString		Chart
+	LabelFont
+	  Color			collapsable
+	  Size			Small
+	EndFont
+	MultiPar		true
+End
+
+
+Float
+	Type			graph
+	GuiName			Graph
+	Placement		tbp
+	Extension		loh
+	NumberWithin		none
+	Style			plain
+	ListName		"List of Graphs"
+	LaTeXBuiltin		true
+End
+
+InsetLayout graph
+	LabelString		Graph
+	LabelFont
+	  Color			collapsable
+	  Size			Small
+	EndFont
+	MultiPar		true
+End
+
+
+Style Abstract
+	Margin			Static
+	LatexType		Environment
+	LatexName		abstract
+	Category		FrontMatter
+	InTitle			1
+	NextNoIndent		1
+	LeftMargin		MMM
+	RightMargin		MMM
+	ParIndent		MM
+	ItemSep			0
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0
+	Align			Block
+	AlignPossible		Block
+	LabelType		Centered_Top_Environment
+	LabelString		"Abstract"
+	LabelBottomSep		0.5
+	Font
+	  Size			Small
+	EndFont
+	LabelFont
+	  Series		Bold
+	  Size			Large
+	EndFont
+End
+
+
+InsetLayout Bibnote
+	LyxType			custom
+	LatexType		command
+	LatexName		bibnote
+	LabelString		"bibnote"
+	Decoration		Classic
+	Font
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
+	EndFont
+	LabelFont
+	  Size			Small
+	EndFont
+	MultiPar		true
+End
+
+
+Style Bibliography
+	Margin			First_Dynamic
+	LatexType		Bib_Environment
+	LatexName		thebibliography
+	NextNoIndent		1
+	LeftMargin		MM
+	ParSkip			0.4
+	ItemSep			0
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0.5
+	Align			Block
+	AlignPossible		Block, Left
+	LabelType		Bibliography
+	LabelString		"References"
+	LabelBottomSep		1.2
+	LabelFont
+	  Series		Bold
+	  Size			Larger
+	EndFont
+End
+
