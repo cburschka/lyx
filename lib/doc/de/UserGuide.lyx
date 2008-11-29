@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 15.
+letzte Änderung: 28.
  November 2008
 \end_layout
 
@@ -4284,6 +4284,19 @@ Standard-Familie: Hier legen Sie die Schriftart fest, die im Dokument als
 \begin_deeper
 \begin_layout Description
 Grundgröße: Hier legen Sie die Standardgröße der verwendeten Schrift fest.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Wenn Sie nicht überall Standard verwenden, werden die Zeichen nicht immer
+ gleich groß gedruckt, weil (fast) jeder Font etwas Anderes unter Schriftgröße
+ versteht.
+ Zur Korrektur gibt es die Skalierung.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -4301,9 +4314,17 @@ Skalierung
 \begin_inset space ~
 \end_inset
 
-(%) Wenn Sie zum Beispiel den benutzten 11pt-Palatino-Font durch Helvetica
- ersetzen, sieht das Ergebnis wahrscheinlich zu groß aus.
- Wenn Sie es dann auf 95% herunterskalieren, wird es richtig aussehen.
+(%) Wenn Sie zum Beispiel den benutzten 11
+\begin_inset space \thinspace{}
+\end_inset
+
+pt-Palatino-Font durch Helvetica ersetzen, sieht das Ergebnis wahrscheinlich
+ zu groß aus.
+ Wenn Sie es dann auf 95
+\begin_inset space \thinspace{}
+\end_inset
+
+% herunterskalieren, wird es richtig aussehen.
 \end_layout
 
 \end_deeper
@@ -4341,10 +4362,25 @@ Kapitälchen
 \begin_inset space ~
 \end_inset
 
-verwenden Manche Fonts erlauben auch, echte Kapitälchen (was auch der Unterschie
-d sein mag) zu verwenden.
- Sonst werden Kapitälchen durch Herunterskalieren von Großbuchstaben zu
- simuliert.
+verwenden Manche Fonts wie zum Beispiel 
+\family sans
+Palatino
+\family default
+ erlauben auch, echte Kapitälchen zu verwenden.
+ Das bedeutet, dass die 
+\emph on
+Kleinbuchstaben
+\emph default
+ eigene Zeichen sind.
+ Sonst werden die 
+\emph on
+Kleinbuchstaben
+\emph default
+ durch Herunterskalieren von Großbuchstaben zu simuliert, wodurch die sie
+\emph on
+ 
+\emph default
+dünner gedruckt werden.
 \end_layout
 
 \begin_layout Description
@@ -19871,6 +19907,7 @@ C
 \end_layout
 
 \begin_layout Standard
+\noindent
 Die Tabelle wird dort eingefügt, wo der Cursor gerade ist.
  Wenn sie in einen neuen Absatz soll, müssen Sie vor der Tabelle auf 
 \family sans
