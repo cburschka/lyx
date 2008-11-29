@@ -76,6 +76,8 @@ What's new
   file. If the problem should with the child be fixed, the master document
   will need to be closed and reopened for the child to be loaded.
 
+- Perform an additional bibtex cycle if requested (e.g. by Biblatex).
+
 
 * USER INTERFACE
 
@@ -86,6 +88,9 @@ What's new
 
 - Fix crash on display of message string with utf8 encoding
   (bug 5389 related).
+
+- Fix the registration of mimetypes, which cures a crash when using
+  the clipboard and launching other applications on Windows (bug 5472).
 
 - Fix freeze when selecting after a large amount of text already was
   selected (bug 5504).
@@ -126,8 +131,6 @@ What's new
 - Detect and remove stale lyxpipes on startup (bug 641).
 
 - Fix Preferences dialog in fullscreen mode (bug 5274).
-
-- Fix the registration of mimetypes (bug 5472).
 
 
 * DOCUMENTATION AND LOCALIZATION
