@@ -803,9 +803,10 @@ bool GuiView::event(QEvent * e)
 			// Alt-P and Alt-M. Right now there is a hack in
 			// GuiWorkArea::processKeySym() that hides again the menubar for
 			// those cases.
-			if (ke->modifiers() & Qt::AltModifier && ke->key() != Qt::Key_Alt)
+			if (ke->modifiers() & Qt::AltModifier && ke->key() != Qt::Key_Alt) {
 				menuBar()->show();
-			return QMainWindow::event(e);
+				return QMainWindow::event(e);
+			}
 		}
 #endif
 
