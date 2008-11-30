@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -70,6 +70,7 @@ End
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -109,8 +110,8 @@ End
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -122,7 +123,7 @@ Customizing LyX: Features for the Advanced User
 \begin_layout Author
 by the LyX Team
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -150,7 +151,15 @@ type "mailto:"
 
 \end_inset
 
- 
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Version 1.6.x 
 \end_layout
 
 \begin_layout Standard
@@ -1437,15 +1446,24 @@ status collapsed
 
 \begin_layout Plain Layout
 Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-File Handling\SpecialChar \menuseparator
-File Formats
+Preferences
 \end_layout
 
 \end_inset
 
  dialog.
- Press the 
+ Under 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+File Handling\SpecialChar \menuseparator
+File formats
+\end_layout
+
+\end_inset
+
+ press the 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -1954,12 +1972,23 @@ status collapsed
 
 \begin_layout Plain Layout
 Tools\SpecialChar \menuseparator
-Preferences:Copiers
+Preferences
 \end_layout
 
 \end_inset
 
- dialog, select the 
+ dialog, select under 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+File Handling\SpecialChar \menuseparator
+File formats
+\end_layout
+
+\end_inset
+
+ the 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
