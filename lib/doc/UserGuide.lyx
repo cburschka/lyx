@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -143,7 +143,7 @@ type "mailto:"
 \begin_inset Newline newline
 \end_inset
 
-Version 2.0svn
+Version 1.6.1
 \begin_inset Note Note
 status open
 
@@ -1639,6 +1639,7 @@ Word completion|see
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -1649,6 +1650,7 @@ Input completion
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -27389,6 +27391,60 @@ reference "cha:Units-available-in"
 cm.
 \end_layout
 
+\begin_layout Subsection
+Nomenclature Program
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Nomenclature ! Program
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Nomenclature-Program"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LyX uses the program 
+\family sans
+makeindex
+\family default
+ to generate the nomenclature, that is part of every LaTeX distribution.
+ LyX's preferences dialog allows to specify another program or to control
+ 
+\family sans
+makeindex
+\family default
+ by adding options, see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-settings"
+
+\end_inset
+
+.
+ The available options are listed and explained in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nomencl,makeindex"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 Branches
 \begin_inset Index
@@ -41109,6 +41165,30 @@ Language
 \end_layout
 
 \begin_layout Description
+User
+\begin_inset space ~
+\end_inset
+
+Interface
+\begin_inset space ~
+\end_inset
+
+language Here you can select the language of LyX's menus.
+ Unfortunately this doesn't work on Mac and Windows.
+ It works so far on Linux, but not for every language you can select here
+ exists a translation of the LyX menus.
+ You find the actual translation status here: 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://www.lyx.org/I18n"
+target "http://www.lyx.org/I18n"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
 Default
 \begin_inset space ~
 \end_inset
@@ -41172,7 +41252,7 @@ Table
 \begin_inset Quotes erd
 \end_inset
 
- at the beginning of every table-caption.
+ at the beginning of every table caption.
 \end_layout
 
 \begin_layout Description
@@ -41806,7 +41886,14 @@ command Command for the program that generates the nomenclature, see section
 \begin_inset space ~
 \end_inset
 
-??.
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Nomenclature-Program"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -42069,24 +42156,6 @@ Copiers
 Here you find the list of defined file formats that LyX can handle.
  You can modify the viewer and editor program that should be used for certain
  formats.
- To create a new format, select an existing one, change the entry of the
- fields 
-\family sans
-Format
-\family default
- and 
-\family sans
-GUI
-\begin_inset space ~
-\end_inset
-
-name
-\family default
-, and press the 
-\family sans
-Add
-\family default
- button.
 \end_layout
 
 \begin_layout Standard
