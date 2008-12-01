@@ -83,7 +83,8 @@ What's new
   file. If the problem should with the child be fixed, the master document
   will need to be closed and reopened for the child to be loaded.
 
-- Perform an additional bibtex cycle if requested (e.g. by Biblatex).
+- Perform an additional bibtex cycle if requested, e.g. by biblatex
+  (bug 5583).
 
 
 * USER INTERFACE
