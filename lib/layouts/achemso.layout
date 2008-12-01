@@ -186,3 +186,16 @@ Style Bibliography
 	EndFont
 End
 
+
+InsetLayout Chemistry
+	CopyStyle		Bibnote
+	LatexName		ce
+	LabelString		"chemistry"
+	Preamble
+	  \usepackage[version=3]{mhchem}
+	EndPreamble
+	LabelFont
+	  Color			blue
+	EndFont
+	MultiPar		false
+End
