@@ -4,9 +4,6 @@
 \begin_header
 \textclass achemso
 \begin_preamble
- % Formula chemical sum formula subscripts using the command \ce
-\usepackage[version=3]{mhchem}
-
 %% Each author should be given as a separate \author command.
 %%
 %% Corresponding authors should have an e-mail given after the author
@@ -262,7 +259,6 @@ As with citations, the text should be placed before punctuation.
  will result if this is not the case 
 \begin_inset CommandInset citation
 LatexCommand cite
-after "p.~1"
 key "Cotton1999"
 
 \end_inset
@@ -275,7 +271,7 @@ Some Infos
 \end_layout
 
 \begin_layout Standard
-Besides the standard figure and table floats, the achemso LaTeX-class profives
+Besides the standard figure and table floats, the achemso LaTeX-class provides
  scheme, chart, and graph floats.
 \end_layout
 
@@ -349,41 +345,17 @@ An example graph
 \end_layout
 
 \begin_layout Standard
-The example file also loads the 
-\family sans
-mhchem
-\family default
- package, so that formulas are easy to input: 
-\family typewriter
-
-\backslash
-ce{H2SO4}
-\family default
- gives 
-\begin_inset ERT
-status collapsed
+Chemical symbols can easily be input: 
+\begin_inset Flex Chemistry
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-ce{
-\end_layout
-
-\end_inset
-
 H2SO4
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
