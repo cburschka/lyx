@@ -50,6 +50,8 @@ def wrap_into_ert(string, src, dst):
       + dst + '\n\\end_layout\n\\end_inset\n')
 
 def put_cmd_in_ert(string):
+    for rep in unicode_reps:
+        string = string.replace(rep[1], rep[0].replace('\\\\', '\\'))
     string = string.replace('\\', "\\backslash\n")
     string = "\\begin_inset ERT\nstatus collapsed\n\\begin_layout Standard\n" \
       + string + "\n\\end_layout\n\\end_inset"
@@ -135,7 +137,7 @@ def read_unicodesymbols():
     # Two backslashes, followed by some non-word character, and then a character
     # in brackets. The idea is to check for constructs like: \"{u}, which is how
     # they are written in the unicodesymbols file; but they can also be written
-    # as: \"u.
+    # as: \"u or even \" u.
     r = re.compile(r'\\\\(\W)\{(\w)\}')
     for line in fp.readlines():
         if line[0] != '#' and line.strip() != "":
@@ -156,8 +158,11 @@ def read_unicodesymbols():
                 # since it is done that way in the LyX file.
                 if m.group(1) == "\"":
                     command += "\\"
+                commandbl = command
                 command += m.group(1) + m.group(2)
+                commandbl += m.group(1) + ' ' + m.group(2)
                 spec_chars.append([command, unichr(eval(ucs4))])
+                spec_chars.append([commandbl, unichr(eval(ucs4))])
     fp.close()
     return spec_chars
 
@@ -238,6 +243,9 @@ def latex2ert(line):
         retval += "\n" + cmd + "\n"
         line = end
         m = labelre.match(line)
+    # put all remaining braces in ERT
+    line = wrap_into_ert(line, '}', '}')
+    line = wrap_into_ert(line, '{', '{')
     retval += line
     return retval
 
@@ -280,8 +288,11 @@ def latex2lyx(data):
         else:
             data = data.replace(rep[0], rep[1])
 
-    # Generic, \" -> ":
+    # Generic
+    # \" -> ":
     data = wrap_into_ert(data, r'\"', '"')
+    # \\ -> \:
+    data = data.replace('\\\\', '\\')
 
     # Math:
     mathre = re.compile('^(.*?)(\$.*?\$)(.*)')
