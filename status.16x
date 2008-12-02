@@ -59,6 +59,9 @@ What's new
 - Removed "NoStyle Abstract" from AMS book class, which does have an
   abstract.
 
+- Fix conversion of some more complex index insets from version 1.5.x
+  (bug 5579 a.o.).
+
 - Fix reversion of info insets to LyX format 1.5.x. This bug blocked the
   reversion of the User Guide to LyX 1.5.
 
