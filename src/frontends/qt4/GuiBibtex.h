@@ -54,6 +54,7 @@ private Q_SLOTS:
 	void databaseChanged();
 	void availableChanged();
 	void bibEDChanged();
+	void rescanClicked();
 
 private:
 	///
