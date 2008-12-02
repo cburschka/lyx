@@ -79,6 +79,8 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(addBibPB, SIGNAL(clicked()),
 		this, SLOT(addPressed()));
+	connect(rescanPB, SIGNAL(clicked()),
+		this, SLOT(rescanClicked()));
 
 	add_ = new GuiBibtexAddDialog(this);
 	add_bc_.setPolicy(ButtonPolicy::OkCancelPolicy);
@@ -92,6 +94,8 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 		this, SLOT(addDatabase()));
 	connect(add_->addPB, SIGNAL(clicked()),
 		add_, SLOT(accept()));
+	connect(add_->rescanPB, SIGNAL(clicked()),
+		this, SLOT(rescanClicked()));
 	connect(add_->bibLW, SIGNAL(itemActivated(QListWidgetItem *)),
 		this, SLOT(addDatabase()));
 	connect(add_->bibLW, SIGNAL(itemActivated(QListWidgetItem *)),
@@ -261,6 +265,13 @@ void GuiBibtex::downPressed()
 	databaseLW->insertItem(row + 1, cur);
 	databaseLW->setCurrentItem(cur);
 	changed();
+}
+
+
+void GuiBibtex::rescanClicked()
+{
+	rescanBibStyles();
+	updateContents();
 }
 
 
