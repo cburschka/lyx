@@ -2522,6 +2522,7 @@ lib_lyx2lyx_files = Split('''
     lyx_1_4.py
     lyx_1_5.py
     lyx_1_6.py
+    lyx_2_0.py
     parser_tools.py
     profiling.py
     test_parser_tools.py
