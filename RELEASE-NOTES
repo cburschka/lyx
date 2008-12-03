@@ -244,7 +244,12 @@ Known issues in version 1.6.0
 Caveats when upgrading from earlier versions to 1.6.x
 -------------------------------------------------------
 
-
+- Since several lyx functions have been renamed (see above), old
+  configuration files (*.ui, *.bind) may no longer work. If some
+  functions (such as Shift-right for selecting text) fail to work
+  after the upgrade from previous versions, make sure you do not
+  have any old configuration files in your LyX user directory, or
+  adapt these files to the new functions.
 
 
 Note: There may later be an updated list of known issues online at
