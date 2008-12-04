@@ -676,6 +676,8 @@ bool Buffer::readFile(FileName const & filename)
 {
 	FileName fname(filename);
 
+	params().compressed = fname.isZippedFile();
+
 	// remove dummy empty par
 	paragraphs().clear();
 	Lexer lex;
