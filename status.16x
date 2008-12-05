@@ -59,6 +59,14 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix a crash and generally improve the behaviour while loading an
+  emergency save of a master document from within a child (bug 5514).
+
+- Fix freeze when child document fails to load due to a conversion error
+  or similar problem (bug 5539). Note that LyX will not try to reload the
+  file. If the problem should with the child be fixed, the master document
+  will need to be closed and reopened for the child to be loaded.
+
 - Removed "NoStyle Abstract" from AMS book class, which does have an
   abstract.
 
@@ -83,11 +91,6 @@ What's new
 - Fix export of straight quotes in Hebrew and Greek context (bug 5571).
 
 - Fix import of CVS data on Windows.
-
-- Fix freeze when child document fails to load due to a conversion error
-  or similar problem (bug 5539). Note that LyX will not try to reload the
-  file. If the problem should with the child be fixed, the master document
-  will need to be closed and reopened for the child to be loaded.
 
 - Perform an additional bibtex cycle if requested, e.g. by biblatex
   (bug 5583).
