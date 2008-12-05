@@ -57,12 +57,15 @@ namespace lyx {
 namespace Alert = frontend::Alert;
 
 
-Buffer * checkAndLoadLyXFile(FileName const & filename)
+Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 {
 	// File already open?
 	Buffer * checkBuffer = theBufferList().getBuffer(filename);
 	if (checkBuffer) {
-		if (checkBuffer->isClean())
+		// sometimes (when setting the master buffer from a child)
+		// we accept a dirty buffer right away (otherwise we'd get
+		// an infinite loop (bug 5514)
+		if (checkBuffer->isClean() || acceptDirty)
 			return checkBuffer;
 		docstring const file = makeDisplayPath(filename.absFilename(), 20);
 		docstring text = bformat(_(
