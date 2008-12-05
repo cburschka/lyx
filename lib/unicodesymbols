@@ -1379,7 +1379,9 @@
 0x2115 ""                         "" "" "\\mathbb{N}" "amssymb" # DOUBLE-STUCK CAPITAL N
 0x2116 "\\textnumero"             "textcomp" "" # NUMERO SIGN
 0x2117 "\\textcircledP"           "textcomp" "" # SOUND RECORDING COYRIGHT
-0x2118 ""                         "" "" "\\mathscr{P}" "mathrsfs" # SCRIPT CAPITAL P
+# Weierstrass elliptic function, actually this has the form of a 
+# lowercase calligraphic p, despite its name  (Maybe use Zapf chancery?)
+#0x2118 ""                         "" "" "\\mathscr{P}" "mathrsfs" # SCRIPT CAPITAL P
 0x2119 ""                         "" "" "\\mathbb{P}" "amssymb"# DOUBLE-STUCK CAPITAL P
 0x211a ""                         "" "" "\\mathbb{Q}" "amssymb" # DOUBLE-STUCK CAPITAL Q
 0x211b ""                         "" "" "\\mathscr{R}" "mathrsfs" # SCRIPT CAPITAL R
@@ -1398,11 +1400,13 @@
 0x212c ""                         "" "" "\\mathscr{B}" "mathrsfs" # SCRIPT CAPITAL B
 0x212d ""                         "" "" "\\mathfrak{C}" "amssymb" # BLACK-LETTER CAPITAL C
 0x212e "\\textestimated"          "textcomp" "" # ESTIMATED SYMBOL
-0x212f ""                         "" "" "\\mathscr{e}" "mathrsfs" # SCRIPT SMALL E
+# mathrsfs has no small letters
+#0x212f ""                         "" "" "\\mathscr{e}" "mathrsfs" # SCRIPT SMALL E
 0x2130 ""                         "" "" "\\mathscr{E}" "mathrsfs" # SCRIPT CAPITAL E
 0x2131 ""                         "" "" "\\mathscr{F}" "mathrsfs" # SCRIPT CAPITAL F
 0x2133 ""                         "" "" "\\mathscr{M}" "mathrsfs" # SCRIPT CAPITAL M
-0x2134 ""                         "" "" "\\mathscr{o}" "mathrsfs" # SCRIPT SMALL O
+# mathrsfs has no small letters
+#0x2134 ""                         "" "" "\\mathscr{o}" "mathrsfs" # SCRIPT SMALL O
 0x2135 ""                         "" "" "\\aleph" "amssymb" # ALEF SYMBOL
 0x2136 ""                         "" "" "\\beth" "amssymb" # BET SYMBOL
 0x2137 ""                         "" "" "\\gimel" "amssymb" # GIMEL SYMBOL
@@ -1410,7 +1414,8 @@
 #0x2139 ""                         "" "" # INFORMATION SOURCE
 #0x213b ""                         "" "" # FACSIMILE SIGN
 # use the following macro for the character AKTIESELSKAB
-0x214e "\\LyXaktie" "\\newcommand*\\LyXaktie{\\mbox{\\raisebox{.8ex}{A}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{S}}}" ""
+0x214d "\\LyXaktieselskap"
+"\\newcommand*\\LyXaktieselskap{\\mbox{\\raisebox{.8ex}{\footnotesize A}\\kern-.18em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{\footnotesize S}}}" ""
 #
 # number forms
 #
