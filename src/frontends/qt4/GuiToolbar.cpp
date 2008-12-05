@@ -508,10 +508,15 @@ void GuiLayoutBox::set(docstring const & layout)
 		return;
 
 	Layout const & lay = (*text_class_)[layout];
-	QString const newLayout = toqstr(lay.name());
+	QString newLayout = toqstr(lay.name());
+
+	// If the layout is obsolete, use the new one instead.
+	docstring const & obs = lay.obsoleted_by();
+	if (!obs.empty())
+		newLayout = toqstr(obs);
 
 	int const curItem = currentIndex();
-	QModelIndex const mindex = 
+	QModelIndex const mindex =
 		filterModel_->mapToSource(filterModel_->index(curItem, 1));
 	QString const & currentLayout = model_->itemFromIndex(mindex)->text();
 	if (newLayout == currentLayout) {
