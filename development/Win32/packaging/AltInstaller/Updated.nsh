@@ -9,6 +9,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  SetOutPath "$INSTDIR\Resources\bind"
  File "${PRODUCT_SOURCEDIR}\Resources\bind\mac.bind"
  SetOutPath "$INSTDIR\Resources\doc"
