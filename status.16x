@@ -105,6 +105,9 @@ What's new
 - Fix crash on display of message string with utf8 encoding
   (bug 5389 related).
 
+- Fix crash when trying to access the replacements combo box in the spell
+  checker dialog.
+
 - Fix the registration of mimetypes, which cures a crash when using
   the clipboard and launching other applications on Windows (bug 5472).
 

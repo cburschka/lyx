@@ -98,7 +98,8 @@ void GuiSpellchecker::suggestionChanged(QListWidgetItem * item)
 
 void GuiSpellchecker::replaceChanged(const QString & str)
 {
-	if (suggestionsLW->currentItem()->text() == str)
+	if (suggestionsLW->currentItem()
+	    && suggestionsLW->currentItem()->text() == str)
 		return;
 
 	for (int i = 0; i != suggestionsLW->count(); ++i) {
