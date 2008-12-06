@@ -1735,6 +1735,9 @@ void LyXFunc::reloadBuffer()
 	// The user has already confirmed that the changes, if any, should
 	// be discarded. So we just release the Buffer and don't call closeBuffer();
 	theBufferList().release(lyx_view_->buffer());
+	// if the lyx_view_ has been destroyed, create a new one
+	if (!lyx_view_)
+		theApp()->dispatch(FuncRequest(LFUN_WINDOW_NEW));
 	Buffer * buf = lyx_view_->loadDocument(filename);
 	docstring const disp_fn = makeDisplayPath(filename.absFilename());
 	docstring str;
