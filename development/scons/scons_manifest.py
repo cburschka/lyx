@@ -1281,6 +1281,7 @@ lib_kbd_files = Split('''
 lib_templates_files = Split('''
     aa.lyx
     aastex.lyx
+    ACM-siggraph.lyx
     ACM-sigplan.lyx
     agu_article.lyx
     apa.lyx
@@ -2541,6 +2542,7 @@ lib_layouts_files = Split('''
     aapaper.layout
     aastex.layout
     achemso.layout
+    acmsiggraph.layout
     agu-dtd.layout
     agums.layout
     amsart.layout

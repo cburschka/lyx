@@ -945,6 +945,7 @@ dist_layouts_DATA =\
 	layouts/aapaper.layout \
 	layouts/aastex.layout \
 	layouts/achemso.layout \
+	layouts/acmsiggraph.layout \
 	layouts/agu-dtd.layout \
 	layouts/agu_stdclass.inc \
 	layouts/agu_stdcounters.inc \
@@ -1115,6 +1116,7 @@ templatesdir = $(pkgdatadir)/templates
 dist_templates_DATA = \
 	templates/aa.lyx \
 	templates/aastex.lyx \
+	templates/ACM-siggraph.lyx \
 	templates/ACM-sigplan.lyx \
 	templates/agu_article.lyx \
 	templates/apa.lyx \
