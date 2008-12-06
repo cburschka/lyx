@@ -2359,6 +2359,7 @@ lib_examples_files = Split('''
     multicol.lyx
     noweb2lyx.lyx
     powerdot-example.lyx
+    recipebook.lyx
     script_form.lyx
     seminar.lyx
     serial_letter1.lyx
@@ -2604,6 +2605,7 @@ lib_layouts_files = Split('''
     mwrep.layout
     paper.layout
     powerdot.layout
+    recipebook.layout
     report.layout
     revtex.layout
     revtex4.layout
