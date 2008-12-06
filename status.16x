@@ -113,6 +113,8 @@ What's new
 - Fix crash when trying to access the replacements combo box in the spell
   checker dialog.
 
+- Fix a crash when reloading a buffer on the Mac (bug 5389).
+
 - Fix the registration of mimetypes, which cures a crash when using
   the clipboard and launching other applications on Windows (bug 5472).
 

@@ -1730,14 +1730,14 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 
 void LyXFunc::reloadBuffer()
 {
-	FileName filename = lyx_view_->buffer()->fileName();
+	Buffer * buf = lyx_view_->buffer();
+	FileName filename = buf->fileName();
 	// The user has already confirmed that the changes, if any, should
-	// be discarded. So we just release the Buffer and don't call closeBuffer();
-	theBufferList().release(lyx_view_->buffer());
-	Buffer * buf = lyx_view_->loadDocument(filename);
+	// be discarded. So we just reread the file and don't call closeBuffer();
+	bool const success = buf->readFile(filename);
 	docstring const disp_fn = makeDisplayPath(filename.absFilename());
 	docstring str;
-	if (buf) {
+	if (buf && success) {
 		updateLabels(*buf);
 		lyx_view_->setBuffer(buf);
 		buf->errors("Parse");
