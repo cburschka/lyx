@@ -31,6 +31,8 @@ Invocation:
 # Note that an empty lyx_branch variable (ie svn trunk)
 # will "do the right thing".
 lyx_branch=""
+# these po-files will be skipped:
+ommitted = ('en.po')
 
 import os
 import sys
@@ -139,4 +141,4 @@ $branch_tag = "%s";
 // The data itself
 $podata = array (%s
 )?>
-""" % (sys.argv[1], branch_tag, ",".join([run_msgfmt(po) for po in sys.argv[2:]]))
+""" % (sys.argv[1], branch_tag, ",".join([run_msgfmt(po) for po in sys.argv[2:] if po not in ommitted]))
