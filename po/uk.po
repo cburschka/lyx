@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-12-07 18:06+0100\n"
+"POT-Creation-Date: 2008-12-07 19:48+0100\n"
 "PO-Revision-Date: 2008-11-05 21:44+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -10848,40 +10848,58 @@ msgstr "Налаштування абзацу...|а"
 msgid "Fullscreen Mode"
 msgstr "Повноекранний режим"
 
-#: lib/ui/stdcontext.inc:272
-msgid "Append Parameter"
+#: lib/ui/stdcontext.inc:272 lib/ui/stdmenus.inc:217
+#: lib/ui/stdtoolbars.inc:171
+#, fuzzy
+msgid "Append Argument"
 msgstr "Додати параметр"
 
-#: lib/ui/stdcontext.inc:273
-msgid "Remove Last Parameter"
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:218
+#: lib/ui/stdtoolbars.inc:170
+#, fuzzy
+msgid "Remove Last Argument"
 msgstr "Вилучити останній параметр"
 
-#: lib/ui/stdcontext.inc:275
-msgid "Make First Non-Optional into Optional Parameter"
+#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:220
+#: lib/ui/stdtoolbars.inc:173
+#, fuzzy
+msgid "Make First Non-Optional into Optional Argument"
 msgstr "Зробити перший необов’язковий параметр обов’язковим"
 
-#: lib/ui/stdcontext.inc:276
-msgid "Make Last Optional into Non-Optional Parameter"
+#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:221
+#: lib/ui/stdtoolbars.inc:174
+#, fuzzy
+msgid "Make Last Optional into Non-Optional Argument"
 msgstr "Зробити останній необов’язковий параметр обов’язковим"
 
-#: lib/ui/stdcontext.inc:277
-msgid "Insert Optional Parameter"
+#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:222
+#: lib/ui/stdtoolbars.inc:177
+#, fuzzy
+msgid "Insert Optional Argument"
 msgstr "Вставити необов’язковий параметр"
 
-#: lib/ui/stdcontext.inc:278
-msgid "Remove Optional Parameter"
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:223
+#: lib/ui/stdtoolbars.inc:176
+#, fuzzy
+msgid "Remove Optional Argument"
 msgstr "Вилучити необов’язковий параметр"
 
-#: lib/ui/stdcontext.inc:280
-msgid "Append Parameter Eating From The Right"
+#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:225
+#: lib/ui/stdtoolbars.inc:180
+#, fuzzy
+msgid "Append Argument Eating From The Right"
 msgstr "Додати усування параметрів справа"
 
-#: lib/ui/stdcontext.inc:281
-msgid "Append Optional Parameter Eating From The Right"
+#: lib/ui/stdcontext.inc:281 lib/ui/stdmenus.inc:226
+#: lib/ui/stdtoolbars.inc:181
+#, fuzzy
+msgid "Append Optional Argument Eating From The Right"
 msgstr "Додати усування необов’язкових параметрів справа"
 
-#: lib/ui/stdcontext.inc:282
-msgid "Remove Last Parameter Spitting Out To The Right"
+#: lib/ui/stdcontext.inc:282 lib/ui/stdmenus.inc:227
+#: lib/ui/stdtoolbars.inc:179
+#, fuzzy
+msgid "Remove Last Argument Spitting Out To The Right"
 msgstr "Вилучити останній параметр з посуванням праворуч"
 
 #: lib/ui/stdcontext.inc:309 lib/ui/stdcontext.inc:321
@@ -11079,51 +11097,6 @@ msgstr "Стиль тексту|С"
 #: lib/ui/stdmenus.inc:205
 msgid "Add Line Above|A"
 msgstr "Додати рядок вище|Д"
-
-#: lib/ui/stdmenus.inc:217 lib/ui/stdtoolbars.inc:171
-#, fuzzy
-msgid "Append Argument"
-msgstr "Додати параметр"
-
-#: lib/ui/stdmenus.inc:218 lib/ui/stdtoolbars.inc:170
-#, fuzzy
-msgid "Remove Last Argument"
-msgstr "Вилучити останній параметр"
-
-#: lib/ui/stdmenus.inc:220 lib/ui/stdtoolbars.inc:173
-#, fuzzy
-msgid "Make First Non-Optional into Optional Argument"
-msgstr "Зробити перший необов’язковий параметр обов’язковим"
-
-#: lib/ui/stdmenus.inc:221 lib/ui/stdtoolbars.inc:174
-#, fuzzy
-msgid "Make Last Optional into Non-Optional Argument"
-msgstr "Зробити останній необов’язковий параметр обов’язковим"
-
-#: lib/ui/stdmenus.inc:222 lib/ui/stdtoolbars.inc:177
-#, fuzzy
-msgid "Insert Optional Argument"
-msgstr "Вставити необов’язковий параметр"
-
-#: lib/ui/stdmenus.inc:223 lib/ui/stdtoolbars.inc:176
-#, fuzzy
-msgid "Remove Optional Argument"
-msgstr "Вилучити необов’язковий параметр"
-
-#: lib/ui/stdmenus.inc:225 lib/ui/stdtoolbars.inc:180
-#, fuzzy
-msgid "Append Argument Eating From The Right"
-msgstr "Додати усування параметрів справа"
-
-#: lib/ui/stdmenus.inc:226 lib/ui/stdtoolbars.inc:181
-#, fuzzy
-msgid "Append Optional Argument Eating From The Right"
-msgstr "Додати усування необов’язкових параметрів справа"
-
-#: lib/ui/stdmenus.inc:227 lib/ui/stdtoolbars.inc:179
-#, fuzzy
-msgid "Remove Last Argument Spitting Out To The Right"
-msgstr "Вилучити останній параметр з посуванням праворуч"
 
 #: lib/ui/stdmenus.inc:237
 msgid "Math Normal Font|N"
@@ -20030,22 +20003,22 @@ msgstr " рядків було замінено."
 
 #: src/lyxfind.cpp:910
 #, fuzzy
-msgid "Search text is empty !"
+msgid "Search text is empty!"
 msgstr "Файл на виході порожній"
 
 #: src/lyxfind.cpp:926
 #, fuzzy
-msgid "Invalid regular expression !"
+msgid "Invalid regular expression!"
 msgstr "Некоректний вираз довжини LaTeX."
 
 #: src/lyxfind.cpp:931
 #, fuzzy
-msgid "Match not found !"
+msgid "Match not found!"
 msgstr "Рядок не знайдено!"
 
 #: src/lyxfind.cpp:937
 #, fuzzy
-msgid "Match found !"
+msgid "Match found!"
 msgstr "Модуль не знайдено!"
 
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1403
@@ -20370,6 +20343,33 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Невідомий користувач"
+
+#~ msgid "Append Parameter"
+#~ msgstr "Додати параметр"
+
+#~ msgid "Remove Last Parameter"
+#~ msgstr "Вилучити останній параметр"
+
+#~ msgid "Make First Non-Optional into Optional Parameter"
+#~ msgstr "Зробити перший необов’язковий параметр обов’язковим"
+
+#~ msgid "Make Last Optional into Non-Optional Parameter"
+#~ msgstr "Зробити останній необов’язковий параметр обов’язковим"
+
+#~ msgid "Insert Optional Parameter"
+#~ msgstr "Вставити необов’язковий параметр"
+
+#~ msgid "Remove Optional Parameter"
+#~ msgstr "Вилучити необов’язковий параметр"
+
+#~ msgid "Append Parameter Eating From The Right"
+#~ msgstr "Додати усування параметрів справа"
+
+#~ msgid "Append Optional Parameter Eating From The Right"
+#~ msgstr "Додати усування необов’язкових параметрів справа"
+
+#~ msgid "Remove Last Parameter Spitting Out To The Right"
+#~ msgstr "Вилучити останній параметр з посуванням праворуч"
 
 #~ msgid "&Default language:"
 #~ msgstr "&Типова мова:"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-12-07 18:06+0100\n"
+"POT-Creation-Date: 2008-12-07 19:48+0100\n"
 "PO-Revision-Date: 2008-08-04 22:57+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -11184,44 +11184,54 @@ msgstr "段落設定值…|P"
 msgid "Fullscreen Mode"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:272
+#: lib/ui/stdcontext.inc:272 lib/ui/stdmenus.inc:217
+#: lib/ui/stdtoolbars.inc:171
 #, fuzzy
-msgid "Append Parameter"
+msgid "Append Argument"
 msgstr "更多參數"
 
-#: lib/ui/stdcontext.inc:273
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:218
+#: lib/ui/stdtoolbars.inc:170
 #, fuzzy
-msgid "Remove Last Parameter"
+msgid "Remove Last Argument"
 msgstr "列出參數"
 
-#: lib/ui/stdcontext.inc:275
-msgid "Make First Non-Optional into Optional Parameter"
+#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:220
+#: lib/ui/stdtoolbars.inc:173
+msgid "Make First Non-Optional into Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:276
-msgid "Make Last Optional into Non-Optional Parameter"
+#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:221
+#: lib/ui/stdtoolbars.inc:174
+msgid "Make Last Optional into Non-Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:277
+#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:222
+#: lib/ui/stdtoolbars.inc:177
 #, fuzzy
-msgid "Insert Optional Parameter"
+msgid "Insert Optional Argument"
 msgstr "列出參數"
 
-#: lib/ui/stdcontext.inc:278
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:223
+#: lib/ui/stdtoolbars.inc:176
 #, fuzzy
-msgid "Remove Optional Parameter"
+msgid "Remove Optional Argument"
 msgstr "開啟的選擇性引數內欄"
 
-#: lib/ui/stdcontext.inc:280
-msgid "Append Parameter Eating From The Right"
+#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:225
+#: lib/ui/stdtoolbars.inc:180
+msgid "Append Argument Eating From The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:281
-msgid "Append Optional Parameter Eating From The Right"
-msgstr ""
+#: lib/ui/stdcontext.inc:281 lib/ui/stdmenus.inc:226
+#: lib/ui/stdtoolbars.inc:181
+#, fuzzy
+msgid "Append Optional Argument Eating From The Right"
+msgstr "開啟的選擇性引數內欄"
 
-#: lib/ui/stdcontext.inc:282
-msgid "Remove Last Parameter Spitting Out To The Right"
+#: lib/ui/stdcontext.inc:282 lib/ui/stdmenus.inc:227
+#: lib/ui/stdtoolbars.inc:179
+msgid "Remove Last Argument Spitting Out To The Right"
 msgstr ""
 
 #: lib/ui/stdcontext.inc:309 lib/ui/stdcontext.inc:321
@@ -11424,47 +11434,6 @@ msgstr "文字樣式|T"
 #: lib/ui/stdmenus.inc:205
 msgid "Add Line Above|A"
 msgstr "加入以上列|A"
-
-#: lib/ui/stdmenus.inc:217 lib/ui/stdtoolbars.inc:171
-#, fuzzy
-msgid "Append Argument"
-msgstr "更多參數"
-
-#: lib/ui/stdmenus.inc:218 lib/ui/stdtoolbars.inc:170
-#, fuzzy
-msgid "Remove Last Argument"
-msgstr "列出參數"
-
-#: lib/ui/stdmenus.inc:220 lib/ui/stdtoolbars.inc:173
-msgid "Make First Non-Optional into Optional Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:221 lib/ui/stdtoolbars.inc:174
-msgid "Make Last Optional into Non-Optional Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:222 lib/ui/stdtoolbars.inc:177
-#, fuzzy
-msgid "Insert Optional Argument"
-msgstr "列出參數"
-
-#: lib/ui/stdmenus.inc:223 lib/ui/stdtoolbars.inc:176
-#, fuzzy
-msgid "Remove Optional Argument"
-msgstr "開啟的選擇性引數內欄"
-
-#: lib/ui/stdmenus.inc:225 lib/ui/stdtoolbars.inc:180
-msgid "Append Argument Eating From The Right"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:226 lib/ui/stdtoolbars.inc:181
-#, fuzzy
-msgid "Append Optional Argument Eating From The Right"
-msgstr "開啟的選擇性引數內欄"
-
-#: lib/ui/stdmenus.inc:227 lib/ui/stdtoolbars.inc:179
-msgid "Remove Last Argument Spitting Out To The Right"
-msgstr ""
 
 #: lib/ui/stdmenus.inc:237
 msgid "Math Normal Font|N"
@@ -20508,22 +20477,22 @@ msgstr " 已置換字串。"
 
 #: src/lyxfind.cpp:910
 #, fuzzy
-msgid "Search text is empty !"
+msgid "Search text is empty!"
 msgstr "搜尋字串為空"
 
 #: src/lyxfind.cpp:926
 #, fuzzy
-msgid "Invalid regular expression !"
+msgid "Invalid regular expression!"
 msgstr "無效的 LaTeX 長度運算式。"
 
 #: src/lyxfind.cpp:931
 #, fuzzy
-msgid "Match not found !"
+msgid "Match not found!"
 msgstr "找不到字串！"
 
 #: src/lyxfind.cpp:937
 #, fuzzy
-msgid "Match found !"
+msgid "Match found!"
 msgstr "找不到檔案"
 
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1403
@@ -20852,6 +20821,22 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "不明的使用者"
+
+#, fuzzy
+#~ msgid "Append Parameter"
+#~ msgstr "更多參數"
+
+#, fuzzy
+#~ msgid "Remove Last Parameter"
+#~ msgstr "列出參數"
+
+#, fuzzy
+#~ msgid "Insert Optional Parameter"
+#~ msgstr "列出參數"
+
+#, fuzzy
+#~ msgid "Remove Optional Parameter"
+#~ msgstr "開啟的選擇性引數內欄"
 
 #~ msgid "&Default language:"
 #~ msgstr "預設語言(&D)："

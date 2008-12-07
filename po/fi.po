@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-12-07 18:06+0100\n"
+"POT-Creation-Date: 2008-12-07 19:48+0100\n"
 "PO-Revision-Date: 2008-08-04 23:53+0100\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -11271,44 +11271,54 @@ msgstr "Kappaleasetukset...|K"
 msgid "Fullscreen Mode"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:272
+#: lib/ui/stdcontext.inc:272 lib/ui/stdmenus.inc:217
+#: lib/ui/stdtoolbars.inc:171
 #, fuzzy
-msgid "Append Parameter"
+msgid "Append Argument"
 msgstr "Lisäparametreja"
 
-#: lib/ui/stdcontext.inc:273
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:218
+#: lib/ui/stdtoolbars.inc:170
 #, fuzzy
-msgid "Remove Last Parameter"
+msgid "Remove Last Argument"
 msgstr "Listauksen parametrit"
 
-#: lib/ui/stdcontext.inc:275
-msgid "Make First Non-Optional into Optional Parameter"
+#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:220
+#: lib/ui/stdtoolbars.inc:173
+msgid "Make First Non-Optional into Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:276
-msgid "Make Last Optional into Non-Optional Parameter"
+#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:221
+#: lib/ui/stdtoolbars.inc:174
+msgid "Make Last Optional into Non-Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:277
+#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:222
+#: lib/ui/stdtoolbars.inc:177
 #, fuzzy
-msgid "Insert Optional Parameter"
+msgid "Insert Optional Argument"
 msgstr "Listauksen parametrit"
 
-#: lib/ui/stdcontext.inc:278
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:223
+#: lib/ui/stdtoolbars.inc:176
 #, fuzzy
-msgid "Remove Optional Parameter"
+msgid "Remove Optional Argument"
 msgstr "Valinnaisen parametrin upote avattu"
 
-#: lib/ui/stdcontext.inc:280
-msgid "Append Parameter Eating From The Right"
+#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:225
+#: lib/ui/stdtoolbars.inc:180
+msgid "Append Argument Eating From The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:281
-msgid "Append Optional Parameter Eating From The Right"
-msgstr ""
+#: lib/ui/stdcontext.inc:281 lib/ui/stdmenus.inc:226
+#: lib/ui/stdtoolbars.inc:181
+#, fuzzy
+msgid "Append Optional Argument Eating From The Right"
+msgstr "Valinnaisen parametrin upote avattu"
 
-#: lib/ui/stdcontext.inc:282
-msgid "Remove Last Parameter Spitting Out To The Right"
+#: lib/ui/stdcontext.inc:282 lib/ui/stdmenus.inc:227
+#: lib/ui/stdtoolbars.inc:179
+msgid "Remove Last Argument Spitting Out To The Right"
 msgstr ""
 
 #: lib/ui/stdcontext.inc:309 lib/ui/stdcontext.inc:321
@@ -11511,47 +11521,6 @@ msgstr "Tekstityyli"
 #: lib/ui/stdmenus.inc:205
 msgid "Add Line Above|A"
 msgstr "Viiva yllä"
-
-#: lib/ui/stdmenus.inc:217 lib/ui/stdtoolbars.inc:171
-#, fuzzy
-msgid "Append Argument"
-msgstr "Lisäparametreja"
-
-#: lib/ui/stdmenus.inc:218 lib/ui/stdtoolbars.inc:170
-#, fuzzy
-msgid "Remove Last Argument"
-msgstr "Listauksen parametrit"
-
-#: lib/ui/stdmenus.inc:220 lib/ui/stdtoolbars.inc:173
-msgid "Make First Non-Optional into Optional Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:221 lib/ui/stdtoolbars.inc:174
-msgid "Make Last Optional into Non-Optional Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:222 lib/ui/stdtoolbars.inc:177
-#, fuzzy
-msgid "Insert Optional Argument"
-msgstr "Listauksen parametrit"
-
-#: lib/ui/stdmenus.inc:223 lib/ui/stdtoolbars.inc:176
-#, fuzzy
-msgid "Remove Optional Argument"
-msgstr "Valinnaisen parametrin upote avattu"
-
-#: lib/ui/stdmenus.inc:225 lib/ui/stdtoolbars.inc:180
-msgid "Append Argument Eating From The Right"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:226 lib/ui/stdtoolbars.inc:181
-#, fuzzy
-msgid "Append Optional Argument Eating From The Right"
-msgstr "Valinnaisen parametrin upote avattu"
-
-#: lib/ui/stdmenus.inc:227 lib/ui/stdtoolbars.inc:179
-msgid "Remove Last Argument Spitting Out To The Right"
-msgstr ""
 
 #: lib/ui/stdmenus.inc:237
 msgid "Math Normal Font|N"
@@ -20639,22 +20608,22 @@ msgstr " merkkijonoa korvattu."
 
 #: src/lyxfind.cpp:910
 #, fuzzy
-msgid "Search text is empty !"
+msgid "Search text is empty!"
 msgstr "Etsimismerkkijono on tyhjä"
 
 #: src/lyxfind.cpp:926
 #, fuzzy
-msgid "Invalid regular expression !"
+msgid "Invalid regular expression!"
 msgstr "Epäkelpo LaTeX-tyyppinen pituusilmaisu."
 
 #: src/lyxfind.cpp:931
 #, fuzzy
-msgid "Match not found !"
+msgid "Match not found!"
 msgstr "Merkkijonoa ei löydy!"
 
 #: src/lyxfind.cpp:937
 #, fuzzy
-msgid "Match found !"
+msgid "Match found!"
 msgstr "Tiedostoa ei löydy"
 
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1403
@@ -20987,6 +20956,22 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Tuntematon käyttäjä"
+
+#, fuzzy
+#~ msgid "Append Parameter"
+#~ msgstr "Lisäparametreja"
+
+#, fuzzy
+#~ msgid "Remove Last Parameter"
+#~ msgstr "Listauksen parametrit"
+
+#, fuzzy
+#~ msgid "Insert Optional Parameter"
+#~ msgstr "Listauksen parametrit"
+
+#, fuzzy
+#~ msgid "Remove Optional Parameter"
+#~ msgstr "Valinnaisen parametrin upote avattu"
 
 #~ msgid "&Default language:"
 #~ msgstr "&Oletuskieli:"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-12-07 18:06+0100\n"
+"POT-Creation-Date: 2008-12-07 19:48+0100\n"
 "PO-Revision-Date: 2008-08-04 17:40+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -10688,40 +10688,49 @@ msgstr ""
 msgid "Fullscreen Mode"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:272
-msgid "Append Parameter"
+#: lib/ui/stdcontext.inc:272 lib/ui/stdmenus.inc:217
+#: lib/ui/stdtoolbars.inc:171
+msgid "Append Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:273
-msgid "Remove Last Parameter"
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:218
+#: lib/ui/stdtoolbars.inc:170
+msgid "Remove Last Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:275
-msgid "Make First Non-Optional into Optional Parameter"
+#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:220
+#: lib/ui/stdtoolbars.inc:173
+msgid "Make First Non-Optional into Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:276
-msgid "Make Last Optional into Non-Optional Parameter"
+#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:221
+#: lib/ui/stdtoolbars.inc:174
+msgid "Make Last Optional into Non-Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:277
-msgid "Insert Optional Parameter"
+#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:222
+#: lib/ui/stdtoolbars.inc:177
+msgid "Insert Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:278
-msgid "Remove Optional Parameter"
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:223
+#: lib/ui/stdtoolbars.inc:176
+msgid "Remove Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:280
-msgid "Append Parameter Eating From The Right"
+#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:225
+#: lib/ui/stdtoolbars.inc:180
+msgid "Append Argument Eating From The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:281
-msgid "Append Optional Parameter Eating From The Right"
+#: lib/ui/stdcontext.inc:281 lib/ui/stdmenus.inc:226
+#: lib/ui/stdtoolbars.inc:181
+msgid "Append Optional Argument Eating From The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:282
-msgid "Remove Last Parameter Spitting Out To The Right"
+#: lib/ui/stdcontext.inc:282 lib/ui/stdmenus.inc:227
+#: lib/ui/stdtoolbars.inc:179
+msgid "Remove Last Argument Spitting Out To The Right"
 msgstr ""
 
 #: lib/ui/stdcontext.inc:309 lib/ui/stdcontext.inc:321
@@ -10918,42 +10927,6 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:205
 msgid "Add Line Above|A"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:217 lib/ui/stdtoolbars.inc:171
-msgid "Append Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:218 lib/ui/stdtoolbars.inc:170
-msgid "Remove Last Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:220 lib/ui/stdtoolbars.inc:173
-msgid "Make First Non-Optional into Optional Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:221 lib/ui/stdtoolbars.inc:174
-msgid "Make Last Optional into Non-Optional Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:222 lib/ui/stdtoolbars.inc:177
-msgid "Insert Optional Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:223 lib/ui/stdtoolbars.inc:176
-msgid "Remove Optional Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:225 lib/ui/stdtoolbars.inc:180
-msgid "Append Argument Eating From The Right"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:226 lib/ui/stdtoolbars.inc:181
-msgid "Append Optional Argument Eating From The Right"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:227 lib/ui/stdtoolbars.inc:179
-msgid "Remove Last Argument Spitting Out To The Right"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:237
@@ -19459,19 +19432,19 @@ msgid " strings have been replaced."
 msgstr ""
 
 #: src/lyxfind.cpp:910
-msgid "Search text is empty !"
+msgid "Search text is empty!"
 msgstr ""
 
 #: src/lyxfind.cpp:926
-msgid "Invalid regular expression !"
+msgid "Invalid regular expression!"
 msgstr ""
 
 #: src/lyxfind.cpp:931
-msgid "Match not found !"
+msgid "Match not found!"
 msgstr ""
 
 #: src/lyxfind.cpp:937
-msgid "Match found !"
+msgid "Match found!"
 msgstr ""
 
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1403
