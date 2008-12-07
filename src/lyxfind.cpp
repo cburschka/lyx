@@ -907,7 +907,7 @@ bool findAdv(BufferView * bv, FindAdvOptions const & opt)
 	int match_len = 0;
 
 	if (opt.search.empty()) {
-			bv->message(_("Search text is empty !"));
+			bv->message(_("Search text is empty!"));
 			return false;
 	}
 // 	if (! bv->buffer()) {
@@ -923,18 +923,18 @@ bool findAdv(BufferView * bv, FindAdvOptions const & opt)
 				match_len = findBackwardsAdv(cur, matchAdv);
 	} catch (...) {
 		// This may only be raised by boost::regex()
-		bv->message(_("Invalid regular expression !"));
+		bv->message(_("Invalid regular expression!"));
 		return false;
 	}
 
 	if (match_len == 0) {
-		bv->message(_("Match not found !"));
+		bv->message(_("Match not found!"));
 		return false;
 	}
 
 	LYXERR(Debug::DEBUG, "Putting selection at " << cur << " with len: " << match_len);
 	bv->putSelectionAt(cur, match_len, ! opt.forward);
-	bv->message(_("Match found !"));
+	bv->message(_("Match found!"));
 	//bv->update();
 
 	return true;
