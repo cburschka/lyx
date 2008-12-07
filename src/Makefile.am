@@ -58,7 +58,7 @@ endif
 # and in fact libtools seems not able to do that.
 lyx_SOURCES = \
 	main.cpp \
-	$(ASPELL) $(PSPELL) $(ISPELL) SpellBase.cpp \
+	$(ASPELL) SpellBase.cpp \
 	BiblioInfo.h \
 	BiblioInfo.cpp \
 	Box.cpp \
