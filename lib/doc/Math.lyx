@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -154,6 +154,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -192,8 +193,8 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -27986,7 +27987,7 @@ medskip
  
 \begin_inset Formula \begin{eqnarray}
 H & = & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\nonumber \\
- &  & -\hspace{3pt}\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{2}|}+\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{R}_{1}-\mathbf{R}_{2}|}\label{eq:kurzlang}\end{eqnarray}
+ &  & -\hspace{3pt}\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{2}|}+\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{R}_{1}-\mathbf{R}_{2}|}\label{eq:shortlong}\end{eqnarray}
 
 \end_inset
 
@@ -29090,7 +29091,7 @@ The aligned environment is also suitable for long formulas whose lines are
  As example formula 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:kurzlang"
+reference "eq:shortlong"
 
 \end_inset
 
@@ -30641,7 +30642,7 @@ theequation
 \backslash
 roman{equation}
 \series default
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -30661,7 +30662,7 @@ newcommand
  that is described in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:User-defined-Commands"
+reference "sub:The-Command-newcommand"
 
 \end_inset
 
@@ -30670,7 +30671,6 @@ reference "sec:User-defined-Commands"
 
 \end_inset
 
-.
  
 \series bold
 equation
@@ -30997,9 +30997,43 @@ target "Formula-numbering.lyx"
 
 \begin_layout Section
 User-defined Commands
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+User-defined commands
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ The names of user-defined commands and macros may only consist of Latin
+ letters.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The Command 
+\backslash
+newcommand
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:User-defined-Commands"
+name "sub:The-Command-newcommand"
 
 \end_inset
 
@@ -31008,7 +31042,21 @@ name "sec:User-defined-Commands"
 status collapsed
 
 \begin_layout Plain Layout
-User-defined commands
+User-defined commands ! 
+\backslash
+newcommand
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Commands ! N ! 
+\backslash
+newcommand
 \end_layout
 
 \end_inset
@@ -31024,18 +31072,6 @@ Many LaTeX-commands are too long to be used frequently.
 \backslash
 newcommand
 \series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Commands ! N ! 
-\backslash
-newcommand
-\end_layout
-
-\end_inset
-
  new shorter commands.
 \end_layout
 
@@ -31133,23 +31169,6 @@ le
 \end_inset
 
 .
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- The names of user-defined commands may only consist of Latin letters.
 \end_layout
 
 \end_inset
@@ -31708,6 +31727,475 @@ A=B
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Math Macros
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+User-defined commands! Math Macros
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Macros
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+User-defined commands are especially convenient for complex expressions.
+ When you are for example dealing in a document with quadratic equations,
+ the same solution type occurs several times.
+ The general form of a quadratic equation is
+\begin_inset Formula \[
+0=\lambda^{2}+p\lambda+q\]
+
+\end_inset
+
+The general form of the solution is
+\begin_inset Formula \[
+\lambda_{1,2}=-\frac{p}{2}\pm\sqrt{\frac{p²}{4}-q}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To define a command for the solution formula where only the three parameters
+ 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $p$
+\end_inset
+
+, and 
+\begin_inset Formula $q$
+\end_inset
+
+ need to be specified and the index of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ can be given optionally, the LaTeX-preamble line is
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+qG}[4][1,
+\backslash
+,2]{#2_{#1}=-
+\backslash
+frac{#3}{2}
+\backslash
+pm
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+
+\backslash
+newcommand
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\backslash
+sqrt{
+\backslash
+frac{#3^{2}}{4}-#4}}
+\end_layout
+
+\begin_layout Standard
+To create with this the solution formula, the command
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+qG{
+\backslash
+lambda
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+{p
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+{q
+\series default
+ is inserted to a formula
+\series bold
+.
+\end_layout
+
+\begin_layout Standard
+The definition of the new command is unintuitive because one has to know
+ the schemes of all used LaTeX commands, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+that a fraction is inserted in LaTeX as 
+\series bold
+
+\backslash
+frac{numerator}{denominator}
+\series default
+.
+ Furthermore one can easily forget a brace in the definition and cannot
+ see in LyX what the new command is doing.
+ To avoid these problems LyX offers the possibility to use math macros instead
+ of the command 
+\series bold
+
+\backslash
+newcommand
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+A math macro is created by using the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Macro
+\family default
+ or the toolbar button 
+\begin_inset Graphics
+	filename ../images/math-macro_newmacroname_newcommand.png
+	scale 85
+
+\end_inset
+
+.
+ The math macro toolbar appears together with the following box where the
+ macro is defined:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+
+\begin_inset Graphics
+	filename clipart/macrobox.png
+	lyxscale 90
+	scale 90
+
+\end_inset
+
+
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\qG}[4][1,\,2]{#2_{#1}=-\frac{#3}{2}\pm\sqrt{\frac{#3^{2}}{4}-#4}}
+\end_inset
+
+
+\backslash
+newmacroname is the default name of the macro that should be changed to
+ something sensible.
+ The wanted formula is inserted in the first blue box.
+ An argument placeholder is inserted with the command 
+\series bold
+
+\backslash
+#argumentnumber
+\series default
+, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g
+\begin_inset space \space{}
+\end_inset
+
+
+\series bold
+
+\backslash
+#1
+\series default
+ or by using the macro toolbar button 
+\begin_inset Graphics
+	filename ../images/math-macro-add-param.png
+	scale 85
+
+\end_inset
+
+.
+ Argument placeholders are displayed red.
+ Maximum 9 arguments are possible.
+ Optional arguments are created with the toolbar button 
+\begin_inset Graphics
+	filename ../images/math-macro-add-optional-param.png
+	scale 85
+
+\end_inset
+
+.
+ The first non-optional argument can be transformed to an optional one with
+ the toolbar button 
+\begin_inset Graphics
+	filename ../images/math-macro-make-optional.png
+	scale 85
+
+\end_inset
+
+.
+ In the second blue box the appearance of the macro in LyX can be defined.
+ Normally you want to see it as it is defined, so the box is kept empty.
+ But when you have created a macro that needs lot of space on the screen,
+ you can insert in the box for example
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+qG: 
+\backslash
+#1
+\series default
+ 
+\series bold
+,
+\series default
+ 
+\series bold
+
+\backslash
+#2
+\series default
+ 
+\series bold
+,
+\series default
+ 
+\series bold
+
+\backslash
+#3, 
+\backslash
+#4
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+For the macro only the arguments with the macro name in front of them will
+ then be displayed in LyX, leading to a better overview.
+ The formula appears in the output as defined in the first box.
+\begin_inset Newline newline
+\end_inset
+
+The appearance of macros in formulas can furthermore be changed for single
+ macros by setting the cursor in the macro and using the menu 
+\family sans
+View\SpecialChar \menuseparator
+(Un)fold
+\begin_inset space ~
+\end_inset
+
+Math
+\begin_inset space ~
+\end_inset
+
+Macro
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+To use a macro, the macro name is inserted as command to a formula, in our
+ case 
+\series bold
+
+\backslash
+qG
+\series default
+.
+ Our macro looks in LyX like this:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+
+\begin_inset Graphics
+	filename clipart/macrouse.png
+	lyxscale 75
+	scale 75
+
+\end_inset
+
+
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Here is our macro example with the arguments 
+\begin_inset Formula $x$
+\end_inset
+
+, 
+\begin_inset Formula $\ln(x)$
+\end_inset
+
+, and 
+\begin_inset Formula $B$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\qG x{\ln(x)}B\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A math macro is transformed internally to a 
+\series bold
+
+\backslash
+newcommand
+\series default
+ command when exporting the document.
+ The created 
+\series bold
+
+\backslash
+newcommand
+\series default
+ command is not placed in the LaTeX-preamble, therefore macros can only
+ be used in formulas that are in the document below the macro definition
+ box.
+\end_layout
+
+\begin_layout Standard
+Math macros can also be directly be created from a 
+\series bold
+
+\backslash
+newcommand
+\series default
+ command.
+ When writing for example the command
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+newcommand{
+\backslash
+larrow}[2]{
+\backslash
+xleftarrow[#2]{#1}}
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+in LyX as normal text, highlighting it completely and using then the shortcut
+ 
+\family sans
+Ctrl-m
+\family default
+, the command will be transformed to a math macro.
+ Using this method you need to be careful that the 
+\series bold
+
+\backslash
+newcommand
+\series default
+ command is typed correctly, otherwise you get a faulty macro leading to
+ LaTeX errors.
+\end_layout
+
+\begin_layout Standard
+Math macros currently yet have the problem that further formulas in macro
+ definitions are handled wrongly.
+ Therefore the example 
+\series bold
+
+\backslash
+fb
+\series default
+ from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:The-Command-newcommand"
+
+\end_inset
+
+ cannot be created as macro.
 \end_layout
 
 \begin_layout Section
@@ -33836,7 +34324,7 @@ end{multicols}
 
 
 \begin_inset Formula \begin{equation}
-S(t)=S_{0}(t)\int_{-\infty}^{\infty}P(\phi,t)\mathrm{e}^{\mathrm{i}\phi}\,\mathrm{d}\phi\label{eq:fouriertrafo}\end{equation}
+S(t)=S_{0}(t)\int_{-\infty}^{\infty}P(\phi,t)\mathrm{e}^{\mathrm{i}\phi}\,\mathrm{d}\phi\end{equation}
 
 \end_inset
 
