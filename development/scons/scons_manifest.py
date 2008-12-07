@@ -2063,6 +2063,7 @@ lib_doc_clipart_files = Split('''
     footnoteQt4.png
     labelQt4.png
     macrobox.png
+    MacroToolbar.png
     macrouse.png
     mbox.png
     mobius.eps

@@ -20,6 +20,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\clipart"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\clipart\macrobox.png"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\clipart\MacroToolbar.png"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\clipart\macrouse.png"
  SetOutPath "$INSTDIR\Resources\doc\de"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\EmbeddedObjects.lyx"
