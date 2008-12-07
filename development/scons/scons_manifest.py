@@ -71,7 +71,6 @@ src_header_files = Split('''
     FuncRequest.h
     FuncStatus.h
     Graph.h
-    ISpell.h
     InsetIterator.h
     InsetList.h
     Intl.h
@@ -101,7 +100,6 @@ src_header_files = Split('''
     ParagraphParameters.h
     PDFOptions.h
     PrinterParams.h
-    PSpell.h
     Row.h
     Section.h
     Server.h
@@ -243,8 +241,6 @@ src_post_files = Split('''
 
 src_extra_src_files = Split('''
     ASpell.cpp
-    ISpell.cpp
-    PSpell.cpp
     Section.cpp
     Variables.cpp
     main.cpp
