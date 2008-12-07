@@ -108,7 +108,7 @@ Das LyX-Benutzerhandbuch
 
 
 \size large
-Version 2.0svn
+Version 1.6.x
 \end_layout
 
 \begin_layout Author
@@ -161,8 +161,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 29.
- November 2008
+letzte Änderung: 7.
+ Dezember 2008
 \end_layout
 
 \begin_layout Standard
@@ -27447,428 +27447,32 @@ reference "eq:fifth-eqn"
 \end_layout
 
 \begin_layout Section
-Benutzerdefinierte Makros
+Benutzerdefinierte Mathe-Makros
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Makro
+Makros
 \end_layout
 
 \end_inset
 
- im 
-\family typewriter
-Mathe-Modus
+
 \end_layout
 
 \begin_layout Standard
 LyX erlaubt dem Benutzer, Makros zu definieren.
- Wenn Sie wie in Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Makro-erzeugen"
-
-\end_inset
-
- ein Makro erzeugt haben, erscheint an der Cursorposition ein Makro-Definitionsk
-ästchen, das in etwa so aussieht:
-\end_layout
-
-\begin_layout Standard
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset Tabular
-<lyxtabular version="3" rows="1" columns="1">
-<features>
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Makro: Makroname: 
-\begin_inset Formula $\Box$
-\end_inset
-
-
-\begin_inset Formula $\Box$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-.
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset FormulaMacro
-\newcommand{\Makroname}{}
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-Dabei ist die die Umrandung rot, und die beiden 
-\begin_inset Formula $\Box$
-\end_inset
-
- sind doppelte blaue Rechtecke, die wie im Mathed editiert werden können.
- Wenn Sie dies in LyX lesen, probieren Sie es.
- Der Inhalt des ersten Rechtecks wird während des Exports nach LaTeX benutzt,
- der Inhalt des zweiten zur Makro-Expansion auf dem Bildschirm.
- Normalerweise sind beide Inhalte gleich, so dass man das zweite Rechteck
- leer lassen kann.
- LyX wird dann den Inhalt des ersten Rechtecks automatisch für Export und
- Expansion benutzen.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset FormulaMacro
-\newcommand{\macro}{a+b}
-\end_inset
-
-Wollen Sie das Makro 
-\begin_inset Tabular
-<lyxtabular version="3" rows="1" columns="1">
-<features>
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Makro: macro: a + b 
-\begin_inset Formula $\Box$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
- in anderen Mathed-Kästchen benutzen, müssen Sie nur seinen Namen im LaTeX-Modus
- schreiben, in diesem Fall 
-\family typewriter
-
-\backslash
-macro
-\family default
-, und er wird automatisch umgewandelt wie hier: 
-\begin_inset Formula $c=\macro$
-\end_inset
-
-.
- Wie Sie bemerken werden, können Sie den Cursor nicht ins Makro stellen,
- denn es wird als einzelnes Zeichen behandelt.
-\end_layout
-
-\begin_layout Standard
-Bei Makros mit 
+ Dies ist von großem Nutzen wenn man in einem Dokument mehrfach denselben
+ Formeltyp hat.
+ Mathe-Makros sind im Abschnitt 
 \emph on
-Argumenten
+Mathe-Makro
 \emph default
- aber kann man den Cursor in das Makro stellen.
- In einer Makrodefinition sieht ein Argument aus wie ein # mit einer Nummer
- dahinter: 
-\end_layout
-
-\begin_layout Standard
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset Tabular
-<lyxtabular version="3" rows="1" columns="1">
-<features>
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Makro: macrowarg: 2 + 
-\begin_inset Formula $\sqrt{\#1}$
-\end_inset
-
- 
-\begin_inset Formula $\Box$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-.
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset FormulaMacro
-\newcommand{\macrowarg}[1]{2+\sqrt{#1}}
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-Benutzt man das Makro, wird das bekannte blaue Rechteck erscheinen, in das
- Sie dann als Argument schreiben können, was immer Sie wollen: 
-\family typewriter
-
-\backslash
-macrowarg = 
-\begin_inset Formula $\macrowarg{\Box}$
-\end_inset
-
-
-\family default
-.
- Beispiel: 
-\begin_inset Formula $b=\macrowarg{x-2}$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-Wenn man das Dokument als LaTeX exportiert, wird eine Makrodefinition in
- den Befehl 
-\family typewriter
-
-\backslash
-newcommand
-\family default
- umgesetzt, im letzten Beispiel also 
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-newcommand{
-\backslash
-macrowarg}[1]{2+
-\backslash
-sqrt{#1}}.
-\end_layout
-
-\begin_layout Subsection
-Wie man Makros
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Makro!erzeugen
-\end_layout
-
-\end_inset
-
- erzeugt
-\begin_inset CommandInset label
-LatexCommand label
-name "Makro-erzeugen"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Um ein Makro zu definieren, schreiben Sie in as Befehlseingabefenster (
-\family sans
-Alt+X
-\family default
- oder 
-\family sans
-Ansicht\SpecialChar \menuseparator
-Werkzeugleisten\SpecialChar \menuseparator
-Befehlseingabefenster
-\family default
-) folgendes:
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\noun on
-HHa
-\noun default
-: Makros dürfen nicht in Überschriften definiert werden!
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-math-macro <Makroname> [Zahl der Argumente]
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-
-\backslash
-macro
-\family default
- zum Beispiel wurde mit 
-\begin_inset Quotes pld
-\end_inset
-
-
-\family typewriter
-math-macro macro
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- erzeugt und 
-\family typewriter
-
-\backslash
-macrowarg
-\family default
- mit 
-\begin_inset Quotes pld
-\end_inset
-
-
-\family typewriter
-math-macro macrowarg 1
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Wenn Sie den Cursor in das Makrokästchen stellen, können Sie eine Argumentmarke
- setzen, indem Sie 
-\family typewriter
-#<Zahl>
-\family default
- eingeben oder im Befehlspuffer folgendes schreiben:
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-math-macro-arg <Zahl>
-\end_layout
-
-\begin_layout Standard
-Die Argumentmarke in 
-\family typewriter
-
-\backslash
-macrowarg
-\family default
- wurde mit 
-\begin_inset Quotes pld
-\end_inset
-
-
-\family typewriter
-math-macro-arg 1
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- eingefügt.
-\end_layout
-
-\begin_layout Standard
-Sie dürfen höchstens 9 Argumente benutzen, nummeriert von 1 bis 9.
- Eine Argumentmarke kann mehrfach benutzt werden, aber natürlich nur einmal
- mit einem Argument versorgt werden.
- Eine Argumentnummer darf nicht größer sein als die bei der Makrodefinition
- festgelegte.
- 
-\end_layout
-
-\begin_layout Subsection
-Wie man sich im Makro
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Makro!sich darin bewegen
-\end_layout
-
-\end_inset
-
- bewegt
-\end_layout
-
-\begin_layout Description
-Mit
-\begin_inset space ~
-\end_inset
-
-den
-\begin_inset space ~
-\end_inset
-
-Pfeiltasten: Wenn man in ein Makro von links hineingeht, wird der Cursor
- im ersten Argument stehen.
- Mit der 
-\family sans
-Tab
-\family default
--Taste gelangt man zum nächsten.
- Mit der 
-\family sans
-Leertaste
-\family default
- verlässt man das Makro, und der Cursor steht dann rechts neben ihm.
-\end_layout
-
-\begin_layout Description
-Mit
-\begin_inset space ~
-\end_inset
-
-der
-\begin_inset space ~
-\end_inset
-
-Maus: Wie gewöhnlich klicken Sie auf das gewünschte Argumentkästchen.
- Manchmal, wenn das Kästchen leer oder zu klein ist, schlägt das fehl.
-\end_layout
-
-\begin_layout Standard
-Zur Zeit kann man nur Befehlsmakros schreiben, aber keine Umgebungsmakros.
+s des 
+\emph on
+Mathe
+\emph default
+ Handbuchs beschrieben.
 \end_layout
 
 \begin_layout Section

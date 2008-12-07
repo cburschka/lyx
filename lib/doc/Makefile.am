@@ -46,6 +46,7 @@ dist_clipartdoc_DATA = \
 	clipart/LaTeX.png \
 	clipart/LyXNoteImageQt4.png \
 	clipart/macrobox.png \
+	clipart/MacroToolbar.png \
 	clipart/macrouse.png \
 	clipart/mbox.png \
 	clipart/referenceQt4.png \

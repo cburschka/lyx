@@ -32511,7 +32511,7 @@ D@<<j<E@>k>>F@=C
 \begin_layout Subsection
 Diagramas xymatrix
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Diagramas ! xymatrix
@@ -32554,13 +32554,35 @@ reference "sec:Matrices"
 A diferencia de los diagramas amscd, las matrices xy soportan flechas diagonales
  y curvadas, y mucho más.
  Todas las posibilidades para generar diagamas conmutativos y decoraciones
- se explican en este manual: 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://wiki.lyx.org/LyX/XY-pic#xy-manual"
-
+ se explican en 
+\lang english
+the
+\lang spanish
+ 
+\emph on
+manual de XY-pic 
+\emph default
+\lang english
+that you find in the menu
+\lang spanish
+ 
+\family sans
+Ayuda\SpecialChar \menuseparator
+Manuales
+\begin_inset space ~
 \end_inset
 
+specíficos\SpecialChar \menuseparator
+Manual
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+XY-pic
+\family default
 .
 \end_layout
 
@@ -32758,7 +32780,7 @@ r
 \family default
  se cambia en redonda.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 véase estilos de fuentes en 

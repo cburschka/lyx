@@ -31735,7 +31735,7 @@ Math Macros
 status collapsed
 
 \begin_layout Plain Layout
-User-defined commands! Math Macros
+User-defined commands! Math macros
 \end_layout
 
 \end_inset
@@ -32198,6 +32198,574 @@ reference "sub:The-Command-newcommand"
  cannot be created as macro.
 \end_layout
 
+\begin_layout Standard
+When the cursor is in a macro definition box, you will see the macro toolbar
+ in LyX:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename clipart/MacroToolbar.png
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Macros ! Toolbar
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The macro toolbar contains from left to right the following buttons:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="2">
+<features islongtable="true">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="85col%">
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/math-macro-remove-param.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Macro
+\begin_inset space ~
+\end_inset
+
+Definition\SpecialChar \menuseparator
+Append Argument
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/math-macro-add-param.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Macro
+\begin_inset space ~
+\end_inset
+
+Definition\SpecialChar \menuseparator
+Remove Last Argument
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/math-macro-make-optional.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Macro
+\begin_inset space ~
+\end_inset
+
+Definition\SpecialChar \menuseparator
+Make First Non-Optional into
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Macro
+\begin_inset space ~
+\end_inset
+
+Definition\SpecialChar \menuseparator
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+Optional Argument
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/math-macro-make-nonoptional.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Macro
+\begin_inset space ~
+\end_inset
+
+Definition\SpecialChar \menuseparator
+Make Last Optional into
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Macro
+\begin_inset space ~
+\end_inset
+
+Definition\SpecialChar \menuseparator
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+Non-Optional Argument
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/math-macro-remove-optional-param.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Macro
+\begin_inset space ~
+\end_inset
+
+Definition\SpecialChar \menuseparator
+Insert Optional Argument
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/math-macro-add-optional-param.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Macro
+\begin_inset space ~
+\end_inset
+
+Definition\SpecialChar \menuseparator
+Remove Optional Argument
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/math-macro-remove-greedy-param.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Macro
+\begin_inset space ~
+\end_inset
+
+Definition\SpecialChar \menuseparator
+Append Argument Eating
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Macro
+\begin_inset space ~
+\end_inset
+
+Definition\SpecialChar \menuseparator
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+From The Right
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/math-macro-append-greedy-param.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Macro
+\begin_inset space ~
+\end_inset
+
+Definition\SpecialChar \menuseparator
+Append Optional Argument
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Macro
+\begin_inset space ~
+\end_inset
+
+Definition\SpecialChar \menuseparator
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+Eating From The Right
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/math-macro-add-greedy-optional-param.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Macro
+\begin_inset space ~
+\end_inset
+
+Definition\SpecialChar \menuseparator
+Remove Last Argument
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Macro
+\begin_inset space ~
+\end_inset
+
+Definition\SpecialChar \menuseparator
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+Spitting Out To The Right
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Diagrams
 \end_layout
@@ -32515,13 +33083,24 @@ reference "sec:Matrices"
 In contrary to amscd diagrams, xymatrices supports diagonal and curved arrows,
  and much more.
  All possibilities to create commutative diagrams and decorations are explained
- in detail in this manual: 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://wiki.lyx.org/LyX/XY-pic#xy-manual"
-
+ in detail in the 
+\emph on
+XY-pic manual
+\emph default
+ that you find in the menu 
+\family sans
+Help\SpecialChar \menuseparator
+Specific
+\begin_inset space ~
 \end_inset
 
+Manuals\SpecialChar \menuseparator
+XY-pic
+\begin_inset space ~
+\end_inset
+
+Manual
+\family default
 .
 \end_layout
 

@@ -31738,7 +31738,7 @@ D@<<j<E@>k>>F@=C
 \begin_layout Subsection
 Les diagrammes xymatrix
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Diagrammes ! xymatrix
@@ -31778,13 +31778,31 @@ reference "sec:Matrices"
 Contrairement aux diagrammes amscd, les xymatrices acceptent les flèches
  diagonales ou courbes et plus encore.
  Toutes les possibilités pour créer des diagrammes commutatifs et leurs
- décorations sont expliquées en détail dans ce manuel: 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://wiki.lyx.org/LyX/XY-pic#xy-manual"
-
+ décorations sont expliquées en détail dans ce 
+\emph on
+manuel pour XY-pic 
+\emph default
+\lang english
+that you find in the menu
+\lang french
+ 
+\family sans
+Aide\SpecialChar \menuseparator
+Manuels
+\begin_inset space ~
 \end_inset
 
+spécifiques\SpecialChar \menuseparator
+Manuel
+\begin_inset space ~
+\end_inset
+
+pour
+\begin_inset space ~
+\end_inset
+
+XY-pic
+\family default
 .
 \end_layout
 
