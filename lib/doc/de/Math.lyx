@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -163,6 +163,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -201,8 +202,8 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -30699,7 +30700,7 @@ theequation
 \backslash
 roman{equation}
 \series default
- zu
+ zu.
 \begin_inset Foot
 status collapsed
 
@@ -30713,7 +30714,7 @@ renewcommand
  besitzt dasselbe Schema wie der in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Benutzerdefinierte-Befehle"
+reference "sub:Der-Befehl-newcommand"
 
 \end_inset
 
@@ -30732,7 +30733,6 @@ newcommand
 
 \end_inset
 
-.
  
 \series bold
 equation
@@ -31071,13 +31071,45 @@ benutzerdefinierte Befehle
 \end_layout
 
 \begin_layout Standard
-Viele der LaTeX-Befehle sind für den ständigen Gebrauch viel zu lang.
- Man kann sich aber mit dem Befehl 
-\series bold
+\begin_inset Note Greyedout
+status open
 
+\begin_layout Plain Layout
+
+\series bold
+Achtung: 
+\series default
+Die Namen von benutzerdefinierten Befehlen und Makros dürfen nur aus lateinische
+n Buchstaben bestehen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Der Befehl 
 \backslash
 newcommand
-\series default
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Der-Befehl-newcommand"
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+benutzerdefinierte Befehle ! 
+\backslash
+newcommand
+\end_layout
+
+\end_inset
+
 
 \begin_inset Index
 status collapsed
@@ -31090,6 +31122,17 @@ newcommand
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+Viele der LaTeX-Befehle sind für den ständigen Gebrauch viel zu lang.
+ Man kann sich aber mit dem Befehl 
+\series bold
+
+\backslash
+newcommand
+\series default
  neue kürzere Befehle definieren.
 \end_layout
 
@@ -31187,24 +31230,6 @@ le
 \end_inset
 
  definiert.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Achtung: 
-\series default
-Die Namen von selbst definierten Befehlen dürfen nur aus lateinischen Buchstaben
- bestehen.
 \end_layout
 
 \end_inset
@@ -31758,6 +31783,502 @@ A=B
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Mathe-Makros
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+benutzerdefinierte Befehle ! Mathe-Makros
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Makros
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Besonders praktisch sind eigene Befehle für komplexe Ausdrücke.
+ Hat man es in einem Dokument z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ häufiger mit quadratischen Gleichungen zu tun, tritt immer derselbe Lösungstyp
+ auf.
+ Die allgemeine Form einer quadratischen Gleichung ist
+\begin_inset Formula \[
+0=\lambda^{2}+p\lambda+q\]
+
+\end_inset
+
+Die allgemeine Form der Lösung lautet
+\begin_inset Formula \[
+\lambda_{1,2}=-\frac{p}{2}\pm\sqrt{\frac{p²}{4}-q}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um für die Lösungsformel einen Befehl zu definieren, bei dem nur noch die
+ drei Parameter 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $p$
+\end_inset
+
+ und 
+\begin_inset Formula $q$
+\end_inset
+
+ angegeben werden müssen und der Index von 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ optional angeben werden kann, lautet die LaTeX-Vorspannzeile
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+qG}[4][1,
+\backslash
+,2]{#2_{#1}=-
+\backslash
+frac{#3}{2}
+\backslash
+pm
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+
+\backslash
+newcommand
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\backslash
+sqrt{
+\backslash
+frac{#3^{2}}{4}-#4}}
+\end_layout
+
+\begin_layout Standard
+Um damit die Lösungsformel zu erstellen, gibt man in einer Formel den Befehl
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+qG{
+\backslash
+lambda
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+{p
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+{q 
+\series default
+ein.
+\end_layout
+
+\begin_layout Standard
+Die Definition des neuen Befehls ist unintuitiv, denn man muss die Schemata
+ aller verwendeten LaTeX-Befehle kennen, z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ dass ein Bruch in LaTeX mit 
+\series bold
+
+\backslash
+frac{Zähler}
+\begin_inset Newline linebreak
+\end_inset
+
+{Nenner}
+\series default
+ eingegeben wird.
+ Außerdem kann man leicht eine geschweifte Klammer vergessen und man kann
+ in LyX nicht sehen, was der neue Befehl macht.
+ Um diesen Problemen aus dem Weg zu gehen, gibt es in LyX die Möglichkeit
+ Mathe-Makros statt den Befehl 
+\series bold
+
+\backslash
+newcommand
+\series default
+ zu verwenden.
+\end_layout
+
+\begin_layout Standard
+Ein Mathe-Makro wird erstellt, indem man das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Mathe\SpecialChar \menuseparator
+Makro
+\family default
+ oder den Werkzeugleistenknopf 
+\begin_inset Graphics
+	filename ../../images/math-macro_newmacroname_newcommand.png
+	scale 85
+
+\end_inset
+
+ verwendet.
+ Es erscheint die Mathe-Makro-Werkzeugleiste und folgende Box, in der das
+ Makro definiert wird:
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+
+\lang ngerman
+
+\begin_inset Graphics
+	filename ../clipart/macrobox.png
+	lyxscale 90
+	scale 90
+
+\end_inset
+
+
+\lang english
+
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+
+\lang ngerman
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\qG}[4][1,\,2]{#2_{#1}=-\frac{#3}{2}\pm\sqrt{\frac{#3^{2}}{4}-#4}}
+\end_inset
+
+
+\backslash
+newmacroname ist der voreingestellte Makroname, der auf etwas sinnvolles
+ geändert werden sollte.
+ In das erste blaue Kästchen gibt man die gewünschte Formel ein.
+ Einen Argumentplatzhalter fügt man mit dem Befehl 
+\series bold
+
+\backslash
+#Argumentnummer
+\series default
+ ein, z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\series bold
+
+\backslash
+#1
+\series default
+ oder man verwendet den Makro-Werkzeugleistenknopf 
+\begin_inset Graphics
+	filename ../../images/math-macro-add-param.png
+	scale 85
+
+\end_inset
+
+.
+ Argumentplatzhalter werden rot dargestellt.
+ Es sind maximal 9 Argumente möglich.
+ Optionale Argumente werden mit dem Werkzeugleistenknopf 
+\begin_inset Graphics
+	filename ../../images/math-macro-add-optional-param.png
+	scale 85
+
+\end_inset
+
+ erstellt.
+ Mit dem Werkzeugleistenknopf 
+\begin_inset Graphics
+	filename ../../images/math-macro-make-optional.png
+	scale 85
+
+\end_inset
+
+ kann das erste nicht-optionale Argument in ein optionales verwandelt werden.
+ Im zweiten Kästchen kann man definieren wie das Makro in LyX angezeigt
+ werden soll.
+ Normalerweise will man es so sehen, wie es definiert wurde, wozu man das
+ Kästchen leer lässt.
+ Hat man hingegen ein Makro erstellt, der auf dem Bildschirm viel Platz
+ einnimmt, kann man in das Kästchen z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+qG: 
+\backslash
+#1
+\series default
+ 
+\series bold
+,
+\series default
+ 
+\series bold
+
+\backslash
+#2
+\series default
+ 
+\series bold
+,
+\series default
+ 
+\series bold
+
+\backslash
+#3, 
+\backslash
+#4
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+eingeben.
+ Für das Makro werden dann in LyX nur die Argumente mit dem davor stehenden
+ Makronamen angezeigt, was für mehr Überblick im Dokument sorgt.
+ Im Ausdruck erscheint die Formel so, wie sie im ersten Kästchen definiert
+ wurde.
+\begin_inset Newline newline
+\end_inset
+
+Das Erscheinungsbild von Makros in Formeln lässt sich außerdem für einzelne
+ Makros ändern, indem man den Cursor in das Makro setzt und das Menü 
+\family sans
+Ansicht\SpecialChar \menuseparator
+Mathe-Makro
+\begin_inset space ~
+\end_inset
+
+auf/zuklappen
+\family default
+ verwendet.
+\end_layout
+
+\begin_layout Standard
+Um ein Makro zu verwenden, gibt man in eine Formel den Makronamen als Befehl
+ ein, in unserem Fall 
+\series bold
+
+\backslash
+qG
+\series default
+.
+ Unser Makro sieht in LyX folgendermaßen aus:
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+
+\lang ngerman
+
+\begin_inset Graphics
+	filename ../clipart/macrouse.png
+	lyxscale 75
+	scale 75
+
+\end_inset
+
+
+\lang english
+
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+
+\lang ngerman
+
+\begin_inset Newline newline
+\end_inset
+
+Hier ist unser Makro-Beispiel mit den Argumenten 
+\begin_inset Formula $x$
+\end_inset
+
+, 
+\begin_inset Formula $\ln(x)$
+\end_inset
+
+ und 
+\begin_inset Formula $B$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\qG x{\ln(x)}B\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ein Mathe-Makro wird beim Exportieren des Dokuments intern in einen 
+\series bold
+
+\backslash
+new\SpecialChar \-
+command
+\series default
+-Befehl umgewandelt.
+ Der 
+\series bold
+
+\backslash
+newcommand
+\series default
+-Befehl wird dabei nicht in den LaTeX-Vorspann gesetzt, so dass man daher
+ Makros nur in Formeln verwenden kann, die sich im Dokument unterhalb der
+ Makrodefinitionsbox befinden.
+\end_layout
+
+\begin_layout Standard
+Mathe-Makros können auch direkt aus einem 
+\series bold
+
+\backslash
+newcommand
+\series default
+-Befehl erstellt werden.
+ Schreibt man z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ den Befehl
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+newcommand{
+\backslash
+larrow}[2]{
+\backslash
+xleftarrow[#2]{#1}}
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+in LyX als normalen Text, markiert ihn komplett und verwendet dann das Tastenkür
+zel 
+\family sans
+Strg-m
+\family default
+, wird der Befehl in ein Mathe-Makro umgewandelt.
+ Bei dieser Methode muss man jedoch aufpassen, dass der 
+\series bold
+
+\backslash
+newcommand
+\series default
+-Befehl richtig geschrieben wurde, ansonsten wird ein fehlerhaftes Makro
+ erstellt, dass später LaTeX-Fehler hervorruft.
+\end_layout
+
+\begin_layout Standard
+Mathe-Makros haben im Moment noch das Problem, dass weitere Formeln in einer
+ Makrodefinition fehlerhaft behandelt werden.
+ Dadurch kann das Beispiel 
+\series bold
+
+\backslash
+fb
+\series default
+ aus 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Der-Befehl-newcommand"
+
+\end_inset
+
+ nicht als Makro erzeugt werden.
 \end_layout
 
 \begin_layout Section
@@ -33936,7 +34457,7 @@ end{multicols}
 
 
 \begin_inset Formula \begin{equation}
-S(t)=S_{0}(t)\int_{-\infty}^{\infty}P(\phi,t)\mathrm{e}^{\mathrm{i}\phi}\,\mathrm{d}\phi\label{eq:fouriertrafo}\end{equation}
+S(t)=S_{0}(t)\int_{-\infty}^{\infty}P(\phi,t)\mathrm{e}^{\mathrm{i}\phi}\,\mathrm{d}\phi\end{equation}
 
 \end_inset
 
