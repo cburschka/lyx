@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-12-07 17:51+0100\n"
+"POT-Creation-Date: 2008-12-07 19:43+0100\n"
 "PO-Revision-Date: 2008-11-07 03:42+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-docs@lists.lyx.org>\n"
@@ -10634,40 +10634,58 @@ msgstr "段落設定(P)...|P"
 msgid "Fullscreen Mode"
 msgstr "全画面表示"
 
-#: lib/ui/stdcontext.inc:270
-msgid "Append Parameter"
+#: lib/ui/stdcontext.inc:270 lib/ui/stdmenus.inc:216
+#: lib/ui/stdtoolbars.inc:171
+#, fuzzy
+msgid "Append Argument"
 msgstr "パラメーターを追加"
 
-#: lib/ui/stdcontext.inc:271
-msgid "Remove Last Parameter"
+#: lib/ui/stdcontext.inc:271 lib/ui/stdmenus.inc:217
+#: lib/ui/stdtoolbars.inc:170
+#, fuzzy
+msgid "Remove Last Argument"
 msgstr "最後のパラメーターを削除"
 
-#: lib/ui/stdcontext.inc:273
-msgid "Make First Non-Optional into Optional Parameter"
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:219
+#: lib/ui/stdtoolbars.inc:173
+#, fuzzy
+msgid "Make First Non-Optional into Optional Argument"
 msgstr "最初の必須パラメーターを非必須パラメーターにする"
 
-#: lib/ui/stdcontext.inc:274
-msgid "Make Last Optional into Non-Optional Parameter"
+#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:220
+#: lib/ui/stdtoolbars.inc:174
+#, fuzzy
+msgid "Make Last Optional into Non-Optional Argument"
 msgstr "最後の非必須パラメーターを必須パラメーターにする"
 
-#: lib/ui/stdcontext.inc:275
-msgid "Insert Optional Parameter"
+#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:221
+#: lib/ui/stdtoolbars.inc:177
+#, fuzzy
+msgid "Insert Optional Argument"
 msgstr "非必須パラメーターを挿入"
 
-#: lib/ui/stdcontext.inc:276
-msgid "Remove Optional Parameter"
+#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:222
+#: lib/ui/stdtoolbars.inc:176
+#, fuzzy
+msgid "Remove Optional Argument"
 msgstr "非必須パラメーターを削除"
 
-#: lib/ui/stdcontext.inc:278
-msgid "Append Parameter Eating From The Right"
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:224
+#: lib/ui/stdtoolbars.inc:180
+#, fuzzy
+msgid "Append Argument Eating From The Right"
 msgstr "右から喰う形でパラメーターを追加"
 
-#: lib/ui/stdcontext.inc:279
-msgid "Append Optional Parameter Eating From The Right"
+#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:225
+#: lib/ui/stdtoolbars.inc:181
+#, fuzzy
+msgid "Append Optional Argument Eating From The Right"
 msgstr "右から喰う形で非必須パラメーターを追加"
 
-#: lib/ui/stdcontext.inc:280
-msgid "Remove Last Parameter Spitting Out To The Right"
+#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:226
+#: lib/ui/stdtoolbars.inc:179
+#, fuzzy
+msgid "Remove Last Argument Spitting Out To The Right"
 msgstr "右に吐き出す形で最後のパラメーターを削除"
 
 #: lib/ui/stdcontext.inc:307 lib/ui/stdcontext.inc:319
@@ -10861,51 +10879,6 @@ msgstr "文字形式(T)|T"
 #: lib/ui/stdmenus.inc:204
 msgid "Add Line Above|A"
 msgstr "上に罫線を追加(A)|A"
-
-#: lib/ui/stdmenus.inc:216 lib/ui/stdtoolbars.inc:171
-#, fuzzy
-msgid "Append Argument"
-msgstr "パラメーターを追加"
-
-#: lib/ui/stdmenus.inc:217 lib/ui/stdtoolbars.inc:170
-#, fuzzy
-msgid "Remove Last Argument"
-msgstr "最後のパラメーターを削除"
-
-#: lib/ui/stdmenus.inc:219 lib/ui/stdtoolbars.inc:173
-#, fuzzy
-msgid "Make First Non-Optional into Optional Argument"
-msgstr "最初の必須パラメーターを非必須パラメーターにする"
-
-#: lib/ui/stdmenus.inc:220 lib/ui/stdtoolbars.inc:174
-#, fuzzy
-msgid "Make Last Optional into Non-Optional Argument"
-msgstr "最後の非必須パラメーターを必須パラメーターにする"
-
-#: lib/ui/stdmenus.inc:221 lib/ui/stdtoolbars.inc:177
-#, fuzzy
-msgid "Insert Optional Argument"
-msgstr "非必須パラメーターを挿入"
-
-#: lib/ui/stdmenus.inc:222 lib/ui/stdtoolbars.inc:176
-#, fuzzy
-msgid "Remove Optional Argument"
-msgstr "非必須パラメーターを削除"
-
-#: lib/ui/stdmenus.inc:224 lib/ui/stdtoolbars.inc:180
-#, fuzzy
-msgid "Append Argument Eating From The Right"
-msgstr "右から喰う形でパラメーターを追加"
-
-#: lib/ui/stdmenus.inc:225 lib/ui/stdtoolbars.inc:181
-#, fuzzy
-msgid "Append Optional Argument Eating From The Right"
-msgstr "右から喰う形で非必須パラメーターを追加"
-
-#: lib/ui/stdmenus.inc:226 lib/ui/stdtoolbars.inc:179
-#, fuzzy
-msgid "Remove Last Argument Spitting Out To The Right"
-msgstr "右に吐き出す形で最後のパラメーターを削除"
 
 #: lib/ui/stdmenus.inc:236
 msgid "Math Normal Font|N"
@@ -20157,6 +20130,33 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "未知の"
+
+#~ msgid "Append Parameter"
+#~ msgstr "パラメーターを追加"
+
+#~ msgid "Remove Last Parameter"
+#~ msgstr "最後のパラメーターを削除"
+
+#~ msgid "Make First Non-Optional into Optional Parameter"
+#~ msgstr "最初の必須パラメーターを非必須パラメーターにする"
+
+#~ msgid "Make Last Optional into Non-Optional Parameter"
+#~ msgstr "最後の非必須パラメーターを必須パラメーターにする"
+
+#~ msgid "Insert Optional Parameter"
+#~ msgstr "非必須パラメーターを挿入"
+
+#~ msgid "Remove Optional Parameter"
+#~ msgstr "非必須パラメーターを削除"
+
+#~ msgid "Append Parameter Eating From The Right"
+#~ msgstr "右から喰う形でパラメーターを追加"
+
+#~ msgid "Append Optional Parameter Eating From The Right"
+#~ msgstr "右から喰う形で非必須パラメーターを追加"
+
+#~ msgid "Remove Last Parameter Spitting Out To The Right"
+#~ msgstr "右に吐き出す形で最後のパラメーターを削除"
 
 #~ msgid " Macro: %1$s: "
 #~ msgstr " マクロ: %1$s: "

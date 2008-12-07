@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-12-07 17:51+0100\n"
+"POT-Creation-Date: 2008-12-07 19:43+0100\n"
 "PO-Revision-Date: 2006-06-29 20:19+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -11485,44 +11485,54 @@ msgstr "Nastavenie odstavca...|o"
 msgid "Fullscreen Mode"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:270
+#: lib/ui/stdcontext.inc:270 lib/ui/stdmenus.inc:216
+#: lib/ui/stdtoolbars.inc:171
 #, fuzzy
-msgid "Append Parameter"
+msgid "Append Argument"
 msgstr "Chýbajúci parameter"
 
-#: lib/ui/stdcontext.inc:271
+#: lib/ui/stdcontext.inc:271 lib/ui/stdmenus.inc:217
+#: lib/ui/stdtoolbars.inc:170
 #, fuzzy
-msgid "Remove Last Parameter"
+msgid "Remove Last Argument"
 msgstr "Chýbajúci parameter"
 
-#: lib/ui/stdcontext.inc:273
-msgid "Make First Non-Optional into Optional Parameter"
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:219
+#: lib/ui/stdtoolbars.inc:173
+msgid "Make First Non-Optional into Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:274
-msgid "Make Last Optional into Non-Optional Parameter"
+#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:220
+#: lib/ui/stdtoolbars.inc:174
+msgid "Make Last Optional into Non-Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:275
+#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:221
+#: lib/ui/stdtoolbars.inc:177
 #, fuzzy
-msgid "Insert Optional Parameter"
+msgid "Insert Optional Argument"
 msgstr "Chýbajúci parameter"
 
-#: lib/ui/stdcontext.inc:276
+#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:222
+#: lib/ui/stdtoolbars.inc:176
 #, fuzzy
-msgid "Remove Optional Parameter"
+msgid "Remove Optional Argument"
 msgstr "Otvorený nepovinný argument prílohy"
 
-#: lib/ui/stdcontext.inc:278
-msgid "Append Parameter Eating From The Right"
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:224
+#: lib/ui/stdtoolbars.inc:180
+msgid "Append Argument Eating From The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:279
-msgid "Append Optional Parameter Eating From The Right"
-msgstr ""
+#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:225
+#: lib/ui/stdtoolbars.inc:181
+#, fuzzy
+msgid "Append Optional Argument Eating From The Right"
+msgstr "Otvorený nepovinný argument prílohy"
 
-#: lib/ui/stdcontext.inc:280
-msgid "Remove Last Parameter Spitting Out To The Right"
+#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:226
+#: lib/ui/stdtoolbars.inc:179
+msgid "Remove Last Argument Spitting Out To The Right"
 msgstr ""
 
 #: lib/ui/stdcontext.inc:307 lib/ui/stdcontext.inc:319
@@ -11750,47 +11760,6 @@ msgstr "TeX štýl|X"
 #, fuzzy
 msgid "Add Line Above|A"
 msgstr "Ohraničenie nad"
-
-#: lib/ui/stdmenus.inc:216 lib/ui/stdtoolbars.inc:171
-#, fuzzy
-msgid "Append Argument"
-msgstr "Chýbajúci parameter"
-
-#: lib/ui/stdmenus.inc:217 lib/ui/stdtoolbars.inc:170
-#, fuzzy
-msgid "Remove Last Argument"
-msgstr "Chýbajúci parameter"
-
-#: lib/ui/stdmenus.inc:219 lib/ui/stdtoolbars.inc:173
-msgid "Make First Non-Optional into Optional Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:220 lib/ui/stdtoolbars.inc:174
-msgid "Make Last Optional into Non-Optional Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:221 lib/ui/stdtoolbars.inc:177
-#, fuzzy
-msgid "Insert Optional Argument"
-msgstr "Chýbajúci parameter"
-
-#: lib/ui/stdmenus.inc:222 lib/ui/stdtoolbars.inc:176
-#, fuzzy
-msgid "Remove Optional Argument"
-msgstr "Otvorený nepovinný argument prílohy"
-
-#: lib/ui/stdmenus.inc:224 lib/ui/stdtoolbars.inc:180
-msgid "Append Argument Eating From The Right"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:225 lib/ui/stdtoolbars.inc:181
-#, fuzzy
-msgid "Append Optional Argument Eating From The Right"
-msgstr "Otvorený nepovinný argument prílohy"
-
-#: lib/ui/stdmenus.inc:226 lib/ui/stdtoolbars.inc:179
-msgid "Remove Last Argument Spitting Out To The Right"
-msgstr ""
 
 #: lib/ui/stdmenus.inc:236
 msgid "Math Normal Font|N"
@@ -21547,6 +21516,22 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#, fuzzy
+#~ msgid "Append Parameter"
+#~ msgstr "Chýbajúci parameter"
+
+#, fuzzy
+#~ msgid "Remove Last Parameter"
+#~ msgstr "Chýbajúci parameter"
+
+#, fuzzy
+#~ msgid "Insert Optional Parameter"
+#~ msgstr "Chýbajúci parameter"
+
+#, fuzzy
+#~ msgid "Remove Optional Parameter"
+#~ msgstr "Otvorený nepovinný argument prílohy"
 
 #, fuzzy
 #~ msgid "figure"

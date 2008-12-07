@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-12-07 17:51+0100\n"
+"POT-Creation-Date: 2008-12-07 19:43+0100\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -14089,47 +14089,58 @@ msgid "Fullscreen Mode"
 msgstr ""
 
 # src/lyxfunc.C:1105 src/lyxfunc.C:2550
-#: lib/ui/stdcontext.inc:270
+#: lib/ui/stdcontext.inc:270 lib/ui/stdmenus.inc:216
+#: lib/ui/stdtoolbars.inc:171
 #, fuzzy
-msgid "Append Parameter"
+msgid "Append Argument"
 msgstr "Липсващ аргумент"
 
 # src/lyxfunc.C:1105 src/lyxfunc.C:2550
-#: lib/ui/stdcontext.inc:271
+#: lib/ui/stdcontext.inc:271 lib/ui/stdmenus.inc:217
+#: lib/ui/stdtoolbars.inc:170
 #, fuzzy
-msgid "Remove Last Parameter"
+msgid "Remove Last Argument"
 msgstr "Липсващ аргумент"
 
-#: lib/ui/stdcontext.inc:273
-msgid "Make First Non-Optional into Optional Parameter"
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:219
+#: lib/ui/stdtoolbars.inc:173
+msgid "Make First Non-Optional into Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:274
-msgid "Make Last Optional into Non-Optional Parameter"
+#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:220
+#: lib/ui/stdtoolbars.inc:174
+msgid "Make Last Optional into Non-Optional Argument"
 msgstr ""
 
 # src/lyxfunc.C:1105 src/lyxfunc.C:2550
-#: lib/ui/stdcontext.inc:275
+#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:221
+#: lib/ui/stdtoolbars.inc:177
 #, fuzzy
-msgid "Insert Optional Parameter"
+msgid "Insert Optional Argument"
 msgstr "Липсващ аргумент"
 
 # src/insets/insetfloat.C:150
-#: lib/ui/stdcontext.inc:276
+#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:222
+#: lib/ui/stdtoolbars.inc:176
 #, fuzzy
-msgid "Remove Optional Parameter"
+msgid "Remove Optional Argument"
 msgstr "Отворен Float Inset"
 
-#: lib/ui/stdcontext.inc:278
-msgid "Append Parameter Eating From The Right"
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:224
+#: lib/ui/stdtoolbars.inc:180
+msgid "Append Argument Eating From The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:279
-msgid "Append Optional Parameter Eating From The Right"
-msgstr ""
+# src/insets/insetfloat.C:150
+#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:225
+#: lib/ui/stdtoolbars.inc:181
+#, fuzzy
+msgid "Append Optional Argument Eating From The Right"
+msgstr "Отворен Float Inset"
 
-#: lib/ui/stdcontext.inc:280
-msgid "Remove Last Parameter Spitting Out To The Right"
+#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:226
+#: lib/ui/stdtoolbars.inc:179
+msgid "Remove Last Argument Spitting Out To The Right"
 msgstr ""
 
 # src/ext_l10n.h:94
@@ -14403,52 +14414,6 @@ msgstr "Стил TeX|X"
 #, fuzzy
 msgid "Add Line Above|A"
 msgstr "Рамки"
-
-# src/lyxfunc.C:1105 src/lyxfunc.C:2550
-#: lib/ui/stdmenus.inc:216 lib/ui/stdtoolbars.inc:171
-#, fuzzy
-msgid "Append Argument"
-msgstr "Липсващ аргумент"
-
-# src/lyxfunc.C:1105 src/lyxfunc.C:2550
-#: lib/ui/stdmenus.inc:217 lib/ui/stdtoolbars.inc:170
-#, fuzzy
-msgid "Remove Last Argument"
-msgstr "Липсващ аргумент"
-
-#: lib/ui/stdmenus.inc:219 lib/ui/stdtoolbars.inc:173
-msgid "Make First Non-Optional into Optional Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:220 lib/ui/stdtoolbars.inc:174
-msgid "Make Last Optional into Non-Optional Argument"
-msgstr ""
-
-# src/lyxfunc.C:1105 src/lyxfunc.C:2550
-#: lib/ui/stdmenus.inc:221 lib/ui/stdtoolbars.inc:177
-#, fuzzy
-msgid "Insert Optional Argument"
-msgstr "Липсващ аргумент"
-
-# src/insets/insetfloat.C:150
-#: lib/ui/stdmenus.inc:222 lib/ui/stdtoolbars.inc:176
-#, fuzzy
-msgid "Remove Optional Argument"
-msgstr "Отворен Float Inset"
-
-#: lib/ui/stdmenus.inc:224 lib/ui/stdtoolbars.inc:180
-msgid "Append Argument Eating From The Right"
-msgstr ""
-
-# src/insets/insetfloat.C:150
-#: lib/ui/stdmenus.inc:225 lib/ui/stdtoolbars.inc:181
-#, fuzzy
-msgid "Append Optional Argument Eating From The Right"
-msgstr "Отворен Float Inset"
-
-#: lib/ui/stdmenus.inc:226 lib/ui/stdtoolbars.inc:179
-msgid "Remove Last Argument Spitting Out To The Right"
-msgstr ""
 
 # src/ext_l10n.h:125
 #: lib/ui/stdmenus.inc:236
@@ -25821,6 +25786,26 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Непознато действие"
+
+# src/lyxfunc.C:1105 src/lyxfunc.C:2550
+#, fuzzy
+#~ msgid "Append Parameter"
+#~ msgstr "Липсващ аргумент"
+
+# src/lyxfunc.C:1105 src/lyxfunc.C:2550
+#, fuzzy
+#~ msgid "Remove Last Parameter"
+#~ msgstr "Липсващ аргумент"
+
+# src/lyxfunc.C:1105 src/lyxfunc.C:2550
+#, fuzzy
+#~ msgid "Insert Optional Parameter"
+#~ msgstr "Липсващ аргумент"
+
+# src/insets/insetfloat.C:150
+#, fuzzy
+#~ msgid "Remove Optional Parameter"
+#~ msgstr "Отворен Float Inset"
 
 # src/ext_l10n.h:244
 #, fuzzy

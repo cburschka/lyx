@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-12-07 17:51+0100\n"
+"POT-Creation-Date: 2008-12-07 19:43+0100\n"
 "PO-Revision-Date: 2007-05-15 16:13+0900\n"
 "Last-Translator: cghan <cghan@pusan.ac.kr>\n"
 "Language-Team: hangul <ko@li.org>\n"
@@ -10872,43 +10872,53 @@ msgstr "단락 구성(Paragraph Settings)...|P"
 msgid "Fullscreen Mode"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:270
+#: lib/ui/stdcontext.inc:270 lib/ui/stdmenus.inc:216
+#: lib/ui/stdtoolbars.inc:171
 #, fuzzy
-msgid "Append Parameter"
+msgid "Append Argument"
 msgstr "여기에서 부록을 시작하시오(Start Appendix Here)|S"
 
-#: lib/ui/stdcontext.inc:271
-msgid "Remove Last Parameter"
+#: lib/ui/stdcontext.inc:271 lib/ui/stdmenus.inc:217
+#: lib/ui/stdtoolbars.inc:170
+msgid "Remove Last Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:273
-msgid "Make First Non-Optional into Optional Parameter"
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:219
+#: lib/ui/stdtoolbars.inc:173
+msgid "Make First Non-Optional into Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:274
-msgid "Make Last Optional into Non-Optional Parameter"
+#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:220
+#: lib/ui/stdtoolbars.inc:174
+msgid "Make Last Optional into Non-Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:275
+#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:221
+#: lib/ui/stdtoolbars.inc:177
 #, fuzzy
-msgid "Insert Optional Parameter"
+msgid "Insert Optional Argument"
 msgstr "열려있는 선택적 인수 삽입구(Optional Argument Inset)"
 
-#: lib/ui/stdcontext.inc:276
+#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:222
+#: lib/ui/stdtoolbars.inc:176
 #, fuzzy
-msgid "Remove Optional Parameter"
+msgid "Remove Optional Argument"
 msgstr "열려있는 선택적 인수 삽입구(Optional Argument Inset)"
 
-#: lib/ui/stdcontext.inc:278
-msgid "Append Parameter Eating From The Right"
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:224
+#: lib/ui/stdtoolbars.inc:180
+msgid "Append Argument Eating From The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:279
-msgid "Append Optional Parameter Eating From The Right"
-msgstr ""
+#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:225
+#: lib/ui/stdtoolbars.inc:181
+#, fuzzy
+msgid "Append Optional Argument Eating From The Right"
+msgstr "열려있는 선택적 인수 삽입구(Optional Argument Inset)"
 
-#: lib/ui/stdcontext.inc:280
-msgid "Remove Last Parameter Spitting Out To The Right"
+#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:226
+#: lib/ui/stdtoolbars.inc:179
+msgid "Remove Last Argument Spitting Out To The Right"
 msgstr ""
 
 #: lib/ui/stdcontext.inc:307 lib/ui/stdcontext.inc:319
@@ -11106,46 +11116,6 @@ msgstr "본문 형식(Text Style)|T"
 
 #: lib/ui/stdmenus.inc:204
 msgid "Add Line Above|A"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:216 lib/ui/stdtoolbars.inc:171
-#, fuzzy
-msgid "Append Argument"
-msgstr "여기에서 부록을 시작하시오(Start Appendix Here)|S"
-
-#: lib/ui/stdmenus.inc:217 lib/ui/stdtoolbars.inc:170
-msgid "Remove Last Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:219 lib/ui/stdtoolbars.inc:173
-msgid "Make First Non-Optional into Optional Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:220 lib/ui/stdtoolbars.inc:174
-msgid "Make Last Optional into Non-Optional Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:221 lib/ui/stdtoolbars.inc:177
-#, fuzzy
-msgid "Insert Optional Argument"
-msgstr "열려있는 선택적 인수 삽입구(Optional Argument Inset)"
-
-#: lib/ui/stdmenus.inc:222 lib/ui/stdtoolbars.inc:176
-#, fuzzy
-msgid "Remove Optional Argument"
-msgstr "열려있는 선택적 인수 삽입구(Optional Argument Inset)"
-
-#: lib/ui/stdmenus.inc:224 lib/ui/stdtoolbars.inc:180
-msgid "Append Argument Eating From The Right"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:225 lib/ui/stdtoolbars.inc:181
-#, fuzzy
-msgid "Append Optional Argument Eating From The Right"
-msgstr "열려있는 선택적 인수 삽입구(Optional Argument Inset)"
-
-#: lib/ui/stdmenus.inc:226 lib/ui/stdtoolbars.inc:179
-msgid "Remove Last Argument Spitting Out To The Right"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:236
@@ -20597,6 +20567,18 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "모르는 사용자(user)"
+
+#, fuzzy
+#~ msgid "Append Parameter"
+#~ msgstr "여기에서 부록을 시작하시오(Start Appendix Here)|S"
+
+#, fuzzy
+#~ msgid "Insert Optional Parameter"
+#~ msgstr "열려있는 선택적 인수 삽입구(Optional Argument Inset)"
+
+#, fuzzy
+#~ msgid "Remove Optional Parameter"
+#~ msgstr "열려있는 선택적 인수 삽입구(Optional Argument Inset)"
 
 #, fuzzy
 #~ msgid "figure"

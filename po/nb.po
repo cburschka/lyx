@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-12-07 17:51+0100\n"
+"POT-Creation-Date: 2008-12-07 19:43+0100\n"
 "PO-Revision-Date: 2008-08-05 00:10+0100\n"
 "Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -11020,44 +11020,54 @@ msgstr "Avsnittsinnstillinger...|v"
 msgid "Fullscreen Mode"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:270
+#: lib/ui/stdcontext.inc:270 lib/ui/stdmenus.inc:216
+#: lib/ui/stdtoolbars.inc:171
 #, fuzzy
-msgid "Append Parameter"
+msgid "Append Argument"
 msgstr "Fler parametre"
 
-#: lib/ui/stdcontext.inc:271
+#: lib/ui/stdcontext.inc:271 lib/ui/stdmenus.inc:217
+#: lib/ui/stdtoolbars.inc:170
 #, fuzzy
-msgid "Remove Last Parameter"
+msgid "Remove Last Argument"
 msgstr "«Listing» parametre"
 
-#: lib/ui/stdcontext.inc:273
-msgid "Make First Non-Optional into Optional Parameter"
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:219
+#: lib/ui/stdtoolbars.inc:173
+msgid "Make First Non-Optional into Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:274
-msgid "Make Last Optional into Non-Optional Parameter"
+#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:220
+#: lib/ui/stdtoolbars.inc:174
+msgid "Make Last Optional into Non-Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:275
+#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:221
+#: lib/ui/stdtoolbars.inc:177
 #, fuzzy
-msgid "Insert Optional Parameter"
+msgid "Insert Optional Argument"
 msgstr "«Listing» parametre"
 
-#: lib/ui/stdcontext.inc:276
+#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:222
+#: lib/ui/stdtoolbars.inc:176
 #, fuzzy
-msgid "Remove Optional Parameter"
+msgid "Remove Optional Argument"
 msgstr "Åpen programlisting"
 
-#: lib/ui/stdcontext.inc:278
-msgid "Append Parameter Eating From The Right"
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:224
+#: lib/ui/stdtoolbars.inc:180
+msgid "Append Argument Eating From The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:279
-msgid "Append Optional Parameter Eating From The Right"
-msgstr ""
+#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:225
+#: lib/ui/stdtoolbars.inc:181
+#, fuzzy
+msgid "Append Optional Argument Eating From The Right"
+msgstr "Åpen programlisting"
 
-#: lib/ui/stdcontext.inc:280
-msgid "Remove Last Parameter Spitting Out To The Right"
+#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:226
+#: lib/ui/stdtoolbars.inc:179
+msgid "Remove Last Argument Spitting Out To The Right"
 msgstr ""
 
 #: lib/ui/stdcontext.inc:307 lib/ui/stdcontext.inc:319
@@ -11257,47 +11267,6 @@ msgstr "Tekststil|T"
 #: lib/ui/stdmenus.inc:204
 msgid "Add Line Above|A"
 msgstr "Ny linje over"
-
-#: lib/ui/stdmenus.inc:216 lib/ui/stdtoolbars.inc:171
-#, fuzzy
-msgid "Append Argument"
-msgstr "Fler parametre"
-
-#: lib/ui/stdmenus.inc:217 lib/ui/stdtoolbars.inc:170
-#, fuzzy
-msgid "Remove Last Argument"
-msgstr "«Listing» parametre"
-
-#: lib/ui/stdmenus.inc:219 lib/ui/stdtoolbars.inc:173
-msgid "Make First Non-Optional into Optional Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:220 lib/ui/stdtoolbars.inc:174
-msgid "Make Last Optional into Non-Optional Argument"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:221 lib/ui/stdtoolbars.inc:177
-#, fuzzy
-msgid "Insert Optional Argument"
-msgstr "«Listing» parametre"
-
-#: lib/ui/stdmenus.inc:222 lib/ui/stdtoolbars.inc:176
-#, fuzzy
-msgid "Remove Optional Argument"
-msgstr "Åpen programlisting"
-
-#: lib/ui/stdmenus.inc:224 lib/ui/stdtoolbars.inc:180
-msgid "Append Argument Eating From The Right"
-msgstr ""
-
-#: lib/ui/stdmenus.inc:225 lib/ui/stdtoolbars.inc:181
-#, fuzzy
-msgid "Append Optional Argument Eating From The Right"
-msgstr "Åpen programlisting"
-
-#: lib/ui/stdmenus.inc:226 lib/ui/stdtoolbars.inc:179
-msgid "Remove Last Argument Spitting Out To The Right"
-msgstr ""
 
 #: lib/ui/stdmenus.inc:236
 msgid "Math Normal Font|N"
@@ -20678,6 +20647,22 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Ukjent bruker"
+
+#, fuzzy
+#~ msgid "Append Parameter"
+#~ msgstr "Fler parametre"
+
+#, fuzzy
+#~ msgid "Remove Last Parameter"
+#~ msgstr "«Listing» parametre"
+
+#, fuzzy
+#~ msgid "Insert Optional Parameter"
+#~ msgstr "«Listing» parametre"
+
+#, fuzzy
+#~ msgid "Remove Optional Parameter"
+#~ msgstr "Åpen programlisting"
 
 #~ msgid " Macro: %1$s: "
 #~ msgstr " Makro: %1$s: "

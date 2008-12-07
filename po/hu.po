@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-12-07 17:51+0100\n"
+"POT-Creation-Date: 2008-12-07 19:43+0100\n"
 "PO-Revision-Date: 2008-11-06 07:25+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -10742,40 +10742,58 @@ msgstr "Bekezdés beállításai...|e"
 msgid "Fullscreen Mode"
 msgstr "Teljesképernyő mód"
 
-#: lib/ui/stdcontext.inc:270
-msgid "Append Parameter"
+#: lib/ui/stdcontext.inc:270 lib/ui/stdmenus.inc:216
+#: lib/ui/stdtoolbars.inc:171
+#, fuzzy
+msgid "Append Argument"
 msgstr "Paraméter hozzáfűzése"
 
-#: lib/ui/stdcontext.inc:271
-msgid "Remove Last Parameter"
+#: lib/ui/stdcontext.inc:271 lib/ui/stdmenus.inc:217
+#: lib/ui/stdtoolbars.inc:170
+#, fuzzy
+msgid "Remove Last Argument"
 msgstr "Utolsó paraméter eltávolítása"
 
-#: lib/ui/stdcontext.inc:273
-msgid "Make First Non-Optional into Optional Parameter"
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:219
+#: lib/ui/stdtoolbars.inc:173
+#, fuzzy
+msgid "Make First Non-Optional into Optional Argument"
 msgstr "Az első nem opcionális paraméter legyen opcionális"
 
-#: lib/ui/stdcontext.inc:274
-msgid "Make Last Optional into Non-Optional Parameter"
+#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:220
+#: lib/ui/stdtoolbars.inc:174
+#, fuzzy
+msgid "Make Last Optional into Non-Optional Argument"
 msgstr "Az utolsó opcionális paraméter legyen nem opcionális"
 
-#: lib/ui/stdcontext.inc:275
-msgid "Insert Optional Parameter"
+#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:221
+#: lib/ui/stdtoolbars.inc:177
+#, fuzzy
+msgid "Insert Optional Argument"
 msgstr "Opcionális paraméter beszúrása"
 
-#: lib/ui/stdcontext.inc:276
-msgid "Remove Optional Parameter"
+#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:222
+#: lib/ui/stdtoolbars.inc:176
+#, fuzzy
+msgid "Remove Optional Argument"
 msgstr "Opcionális paraméter eltávolítása"
 
-#: lib/ui/stdcontext.inc:278
-msgid "Append Parameter Eating From The Right"
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:224
+#: lib/ui/stdtoolbars.inc:180
+#, fuzzy
+msgid "Append Argument Eating From The Right"
 msgstr "Paraméter hozzáfűzése jobbról táplálkozva"
 
-#: lib/ui/stdcontext.inc:279
-msgid "Append Optional Parameter Eating From The Right"
+#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:225
+#: lib/ui/stdtoolbars.inc:181
+#, fuzzy
+msgid "Append Optional Argument Eating From The Right"
 msgstr "Opcionális paraméter hozzáfűzése jobbról táplálkozva"
 
-#: lib/ui/stdcontext.inc:280
-msgid "Remove Last Parameter Spitting Out To The Right"
+#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:226
+#: lib/ui/stdtoolbars.inc:179
+#, fuzzy
+msgid "Remove Last Argument Spitting Out To The Right"
 msgstr "Utolsó paraméter eltávolítása jobbról rakva azt"
 
 #: lib/ui/stdcontext.inc:307 lib/ui/stdcontext.inc:319
@@ -10970,51 +10988,6 @@ msgstr "Szöveg stílus|t"
 #: lib/ui/stdmenus.inc:204
 msgid "Add Line Above|A"
 msgstr "Szegély fent|f"
-
-#: lib/ui/stdmenus.inc:216 lib/ui/stdtoolbars.inc:171
-#, fuzzy
-msgid "Append Argument"
-msgstr "Paraméter hozzáfűzése"
-
-#: lib/ui/stdmenus.inc:217 lib/ui/stdtoolbars.inc:170
-#, fuzzy
-msgid "Remove Last Argument"
-msgstr "Utolsó paraméter eltávolítása"
-
-#: lib/ui/stdmenus.inc:219 lib/ui/stdtoolbars.inc:173
-#, fuzzy
-msgid "Make First Non-Optional into Optional Argument"
-msgstr "Az első nem opcionális paraméter legyen opcionális"
-
-#: lib/ui/stdmenus.inc:220 lib/ui/stdtoolbars.inc:174
-#, fuzzy
-msgid "Make Last Optional into Non-Optional Argument"
-msgstr "Az utolsó opcionális paraméter legyen nem opcionális"
-
-#: lib/ui/stdmenus.inc:221 lib/ui/stdtoolbars.inc:177
-#, fuzzy
-msgid "Insert Optional Argument"
-msgstr "Opcionális paraméter beszúrása"
-
-#: lib/ui/stdmenus.inc:222 lib/ui/stdtoolbars.inc:176
-#, fuzzy
-msgid "Remove Optional Argument"
-msgstr "Opcionális paraméter eltávolítása"
-
-#: lib/ui/stdmenus.inc:224 lib/ui/stdtoolbars.inc:180
-#, fuzzy
-msgid "Append Argument Eating From The Right"
-msgstr "Paraméter hozzáfűzése jobbról táplálkozva"
-
-#: lib/ui/stdmenus.inc:225 lib/ui/stdtoolbars.inc:181
-#, fuzzy
-msgid "Append Optional Argument Eating From The Right"
-msgstr "Opcionális paraméter hozzáfűzése jobbról táplálkozva"
-
-#: lib/ui/stdmenus.inc:226 lib/ui/stdtoolbars.inc:179
-#, fuzzy
-msgid "Remove Last Argument Spitting Out To The Right"
-msgstr "Utolsó paraméter eltávolítása jobbról rakva azt"
 
 #: lib/ui/stdmenus.inc:236
 msgid "Math Normal Font|N"
@@ -20289,6 +20262,33 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Ismeretlen felhasználó"
+
+#~ msgid "Append Parameter"
+#~ msgstr "Paraméter hozzáfűzése"
+
+#~ msgid "Remove Last Parameter"
+#~ msgstr "Utolsó paraméter eltávolítása"
+
+#~ msgid "Make First Non-Optional into Optional Parameter"
+#~ msgstr "Az első nem opcionális paraméter legyen opcionális"
+
+#~ msgid "Make Last Optional into Non-Optional Parameter"
+#~ msgstr "Az utolsó opcionális paraméter legyen nem opcionális"
+
+#~ msgid "Insert Optional Parameter"
+#~ msgstr "Opcionális paraméter beszúrása"
+
+#~ msgid "Remove Optional Parameter"
+#~ msgstr "Opcionális paraméter eltávolítása"
+
+#~ msgid "Append Parameter Eating From The Right"
+#~ msgstr "Paraméter hozzáfűzése jobbról táplálkozva"
+
+#~ msgid "Append Optional Parameter Eating From The Right"
+#~ msgstr "Opcionális paraméter hozzáfűzése jobbról táplálkozva"
+
+#~ msgid "Remove Last Parameter Spitting Out To The Right"
+#~ msgstr "Utolsó paraméter eltávolítása jobbról rakva azt"
 
 #~ msgid " Macro: %1$s: "
 #~ msgstr " Makró: %1$s: "
