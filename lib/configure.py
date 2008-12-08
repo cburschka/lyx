@@ -579,8 +579,6 @@ def checkOtherEntries():
         rc_entry = [ r'\index_command "%%"' ])
     checkProg('a nomenclature processor', ['makeindex'],
         rc_entry = [ r'\nomencl_command "makeindex -s nomencl.ist"' ])
-    checkProg('a spellchecker', ['ispell'],
-        rc_entry = [ r'\spell_command "%%"' ])
     ## FIXME: OCTAVE is not used anywhere
     # path, OCTAVE = checkProg('Octave', ['octave'])
     ## FIXME: MAPLE is not used anywhere
