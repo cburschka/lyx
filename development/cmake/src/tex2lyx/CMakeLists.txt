@@ -72,3 +72,5 @@ endif()
 
 project_source_group("${GROUP_CODE}" tex2lyx_sources tex2lyx_headers)
 
+install(TARGETS tex2lyx DESTINATION bin PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+
