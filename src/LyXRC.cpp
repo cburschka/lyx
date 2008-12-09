@@ -2665,7 +2665,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_PERS_DICT:
 	case RC_USE_PERS_DICT:
-		str = _("Specify an alternate personal dictionary file. E.g. \".ispell_english\".");
+		str = _("Specify an alternate personal dictionary file. E.g. \".aspell_english\".");
 		break;
 
 	case RC_PREVIEW:
@@ -2835,7 +2835,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_USE_INP_ENC:
-		str = _("Specify whether to pass the -T input encoding option to ispell. Enable this if you cannot check the spelling of words containing accented letters. This may not work with all dictionaries.");
+		str = _("Specify whether to pass the -T input encoding option to aspell. Enable this if you cannot check the spelling of words containing accented letters. This may not work with all dictionaries.");
 		break;
 
 	case RC_USE_TOOLTIP:

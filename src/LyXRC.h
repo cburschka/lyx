@@ -321,7 +321,7 @@ public:
 	bool use_pixmap_cache;
 	/// Use escape chars?
 	bool spellchecker_use_esc_chars;
-	/// Alternate language for ispell
+	/// Alternate language for spellchecker
 	std::string spellchecker_alt_lang;
 	/// Alternate personal dictionary file for the spellchecker
 	std::string spellchecker_pers_dict;
