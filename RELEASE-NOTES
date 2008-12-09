@@ -1,12 +1,12 @@
-This file lists interface changes that might affect users in 1.6.0, some 
-known problems in LyX 1.6.0 and some things you have to take into account
+This file lists interface changes that might affect users of 1.6.x, some 
+known problems in LyX 1.6.1 and some things you have to take into account
 when upgrading from earlier versions to a version of the 1.6.x series.
 Note that fixes are available for some of these, but they have not yet
 been applied because of incomplete testing.
 
 
-Interface changes
------------------
+Interface changes as of LyX 1.6.0
+---------------------------------
 
 The external template format recognize now a new tag: 'Preview'. This
 tag is used to define how an external material should be previewed in
@@ -228,7 +228,7 @@ The following LyX functions have been removed:
 For the detailed description of LyX functions look under the Help menu.
 
 
-Known issues in version 1.6.0
+Known issues in version 1.6.x
 ------------------------------------
 
 - New pLaTeX support for Japanese:

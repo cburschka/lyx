@@ -3,6 +3,13 @@ How do I upgrade my existing LyX system to version 1.6.x?
 
 * Upgrading from LyX 1.5.x:
 
+Since several lyx functions have been renamed (see RELEASE_NOTES), 
+old configuration files (*.ui, *.bind) may no longer work. If some
+functions (such as Shift-right for selecting text) fail to work
+after the upgrade from previous versions, make sure you do not
+have any old configuration files in your LyX user directory, or
+adapt these files to the new functions.
+
 The format of preference and session files has changed. LyX 1.6.x is
 able to read old files but will save them in the new format.
 

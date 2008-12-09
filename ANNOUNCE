@@ -1,32 +1,79 @@
-Public release of LyX version 1.6.0
+Public release of LyX version 1.6.1
 ===================================
 
-We are pleased to announce the release of LyX 1.6.0.
+We are pleased to announce the release of LyX 1.6.1. This is the first
+maintenance release in the brand-new 1.6.x series, and as such, it mainly
+focuses on bug fixes. We have ironed out some major problems that slipped 
+into the application in the wake of the new features.
 
-LyX is a document processor that encourages an approach to writing
-based on the structure of your documents, not their appearance. It
-is released under a Free Software / Open Source license.
+All users of LyX 1.6.0 are encouraged to upgrade to this version.
 
-You can download LyX 1.6.0 from http://www.lyx.org/Download
+A detailed list of changes is appended below, remaining known problems
+are listed in the file RELEASE-NOTES.
 
-LyX 1.6.0 is the culmination of 15 months of hard work and you can
-find an overview of the new features here:
+In case you are wondering what LyX is, here is what
+http://www.lyx.org/ has to say on the subject:
 
-http://wiki.lyx.org/LyX/NewInLyX16
+   LyX is a document processor that encourages an approach to writing
+   based on the structure of your documents, not their appearance. It
+   is released under a Free Software/Open Source license.
 
-We hope you will enjoy the result!
+   LyX is for people that write and want their writing to look great,
+   right out of the box. No more endless tinkering with formatting
+   details, 'finger painting' font attributes or futzing around with
+   page boundaries. You just write. In the background, Prof. Knuth's
+   legendary TeX typesetting engine makes you look good.
 
-Known issues with LyX 1.6 compared to the previous stable release
-(LyX 1.5.6) can be found at http://wiki.lyx.org/LyX/ReleaseNotes160
+   On screen, LyX looks like any word processor; its printed output --
+   or richly cross-referenced PDF, just as readily produced -- looks
+   like nothing else. Gone are the days of industrially bland .docs,
+   all looking similarly not-quite-right, yet coming out unpredictably
+   different on different printer drivers. Gone are the crashes
+   'eating' your dissertation the evening before going to press.
 
-If you think you found a bug in LyX 1.6.0, either e-mail the LyX
-developers' mailing list (lyx-devel at lists.lyx.org), or open a bug
-report at http://bugzilla.lyx.org
+   LyX is stable and fully featured. It is a multi-platform, fully
+   internationalized application running natively on Unix/Linux, the
+   Macintosh and modern Windows platforms.
 
-If you have trouble using LyX or have a question, consult the
-documentation that comes with lyx and http://wiki.lyx.org. If you
-can't find the answer there, e-mail the LyX users' list
-(lyx-users at lists.lyx.org).
+You can download LyX 1.6.1 here (the .bz2 are compressed with bzip2,
+which yields smaller files):
+
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.1.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.1.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.6.1.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.6.1.tar.bz2
+
+and it should propagate shortly to the following mirrors (which will
+also host the .bz2 versions):
+
+        ftp://ftp.lip6.fr/pub/lyx/stable/1.6.x/lyx-1.6.1.tar.gz
+	http://lyx.cybermirror.org/stable/1.6.x/lyx-1.6.1.tar.gz
+        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/1.6.x/lyx-1.6.1.tar.gz
+        ftp://ftp.ntua.gr/pub/X11/LyX/stable/1.6.x/lyx-1.6.1.tar.gz
+	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/1.6.x/lyx-1.6.1.tar.gz
+        http://lyx.mirror.fr/stable/1.6.x/lyx-1.6.1.tar.gz
+
+Prebuilt binaries (rpms for Linux distributions, Mac OS X and Windows
+installers) should soon be available at
+	ftp://ftp.lyx.org/pub/lyx/bin/1.6.1/
+
+If you already have the sources of the previous release, you may want to apply
+one of the following patches instead
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.1.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.1.bz2
+
+If you find what you think is a bug in LyX 1.6.1, you may either
+e-mail the LyX developers' mailing list (lyx-devel <at> lists.lyx.org),
+or open a bug report at http://bugzilla.lyx.org
+
+If you're having trouble using the new version of LyX, or have a
+question, first check out http://www.lyx.org/help/. If you can't find
+the answer there, e-mail the LyX users' list (lyx-users <at> lists.lyx.org).
+
+Enjoy!
 
 The LyX team.
-http://www.lyx.org
+
+
+What's new in version 1.6.1?
+----------------------------
