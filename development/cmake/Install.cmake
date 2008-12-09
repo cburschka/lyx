@@ -1,8 +1,10 @@
 # TODO: set correct path
 #set(CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX})
 
-# the macro scans the directories "_parent_src_dir/_dir/dir_item" for *._type files 
-# and installs the files in CMAKE_INSTALL_PREFIX/dir_item
+message(STATUS "installing to ${CMAKE_INSTALL_PREFIX}, defined by CMAKE_INSTALL_PREFIX")
+
+# the macro scans the directories "_parent_src_dir/_dir/_current_dir" for *._file_type files 
+# and installs the files in CMAKE_INSTALL_PREFIX/_current_dir
 # dir_item is on item of the remaining arguments
 macro(lyx_install _parent_src_dir _dir _file_type)
    	foreach(_current_dir ${ARGN})
@@ -30,9 +32,14 @@ lyx_install(${TOP_SRC_DIR}/lib scripts      *      .)
 lyx_install(${TOP_SRC_DIR}/lib templates    *      .)
 lyx_install(${TOP_SRC_DIR}/lib tex          *      .)
 lyx_install(${TOP_SRC_DIR}/lib ui           *      .)
+lyx_install(${TOP_SRC_DIR}/lib .            *      .)
 
+# TODO also get dot-less filenames in lyx_install
+foreach(_file unicodesymbols encodings languages lyx2lyx/lyx2lyx)
+	install(FILES ${TOP_SRC_DIR}/lib/${_file} DESTINATION .)
+endforeach(_file)
 
-
+ 
 
 
 #  
