@@ -24,15 +24,15 @@ set(EXECUTABLE_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_SUPPRESS_REGENERATION TRUE)
 
 set(PACKAGE lyx)
-set(PACKAGE_VERSION 1.6svn)
-set(LYX_DATE "2007/2008")
+set(PACKAGE_VERSION 2.0svn)
+set(LYX_DATE "2008/2009")
 #TODO
 set(VERSION_INFO "CMake Build")
 set(LYX_DIR_VER "LYX_DIR_16x")
 set(LYX_USERDIR_VER "LYX_USERDIR_16x")
 
 set(PROGRAM_SUFFIX "")
-set(LYX_ABS_INSTALLED_DATADIR "/usr/local/share/lyx")
+set(LYX_ABS_INSTALLED_DATADIR "/usr/local/share/lyx${PACKAGE_VERSION}")
 set(LYX_ABS_INSTALLED_LOCALEDIR "/usr/local/share/locale")
 set(LYX_ABS_TOP_SRCDIR "${CMAKE_SOURCE_DIR}")
 
@@ -182,7 +182,7 @@ endif()
 
 set(PROGRAM_SUFFIX "\"\"")
 set(LYX_ABS_TOP_SRCDIR "${CMAKE_SOURCE_DIR}")
-set(LYX_ABS_INSTALLED_DATADIR "/usr/local/share/lyx")
+set(LYX_ABS_INSTALLED_DATADIR "/usr/local/share/lyx${PACKAGE_VERSION}")
 set(LYX_ABS_INSTALLED_LOCALEDIR "/usr/local/share/locale")
 
 message("")
