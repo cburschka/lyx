@@ -44,4 +44,7 @@ foreach(_file unicodesymbols encodings languages lyx2lyx/lyx2lyx)
 	install(FILES ${TOP_SRC_DIR}/lib/${_file} DESTINATION .)
 endforeach(_file)
 
- 
+# TODO
+# DESTINATION/lyx2lyx
+# is mode 644 but it should be 755
+
