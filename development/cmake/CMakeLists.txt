@@ -1,7 +1,7 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
+# Copyright (c) 2006, Peter KÃ¼mmel, <syntheticpp@gmx.net>
 #
 
 cmake_minimum_required(VERSION 2.4)
@@ -193,7 +193,7 @@ message("----- LYX_ABS_INSTALLED_LOCALEDIR : ${LYX_ABS_INSTALLED_LOCALEDIR}")
 message("")
 
 
-add_definitions(-DBOOST_USER_CONFIG=<config.h>)
+add_definitions(-DBOOST_USER_CONFIG="<config.h>")
 	
 if(MSVC AND NOT disable-pch AND NOT MERGE_FILES)
 	message("-----")
