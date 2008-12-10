@@ -921,7 +921,9 @@ void Paragraph::Private::latexSpecialChar(
 		column += 17;
 		break;
 
-	case '*': case '[':
+	case '*':
+	case '[':
+	case ']':
 		// avoid being mistaken for optional arguments
 		os << '{';
 		os.put(c);
