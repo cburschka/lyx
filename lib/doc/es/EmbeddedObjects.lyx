@@ -186,8 +186,8 @@
 \spacing single
 \use_hyperref true
 \pdf_title "Manual detallado de Figuras, Tablas, Flotantes, Notas, Cuadros y Archivos en LyX"
-\pdf_author "LyX Team, Uwe Stöhr, Spanish translation: Ignacio Garcia"
-\pdf_subject "LyX-documentation about figures, tables, floats, notes, and boxe"
+\pdf_author "LyX Team, Uwe Stöhr, Spanish translation: Ignacio García"
+\pdf_subject "LyX-documentation about figures, tables, floats, notes, and boxes"
 \pdf_keywords "LyX, Tables, Figures, Floats, Boxes, Notes"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
@@ -5950,10 +5950,8 @@ addtocounter{table}{-1}
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
-This is not needed when none of your longtables have a caption and you add
- the following code to the document preamble:
+Esto no es necesario si ninguna de las tablas largas tiene leyenda y añades
+ el siguiente código en el preámbulo del documento:
 \end_layout
 
 \begin_layout Plain Layout
@@ -9340,7 +9338,7 @@ reference "tab:Saltos de Página Forzados"
 
  la celda que debería cortarse está en la segunda columna seguida de otra
  columna.
- Por eso el siguiente comando se inserta en la celda en código TeX detrás
+ Por eso, el siguiente comando se inserta en la celda en código TeX detrás
  de «
 \emph on
 Castelchiodato,
@@ -9366,17 +9364,14 @@ newpage
 
 \begin_layout Standard
 El «111» en la tercera columna de la fila se ha borrado.
- 
+
 \series bold
-\lang english
-
+ 
 \backslash
-newpage
+newpage 
 \series default
- is only needed when a page break should definitively occur at this position,
- otherwise it is only a possibility to break.
-
-\lang spanish
+es necesario solo si en esta posición debiera ir definitivamente un salto
+ de página, de otro modo es sólamente una posibilidad de salto.
  Si la fila más baja de la tabla larga no tiene, por alguna razón, línea
  superior pero quisieras una línea horizontal donde se corta la celda, usa
  este comando alternativo:
