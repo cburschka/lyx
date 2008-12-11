@@ -28739,7 +28739,7 @@ Breve introducción a la sintaxis de LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-La Sintaxis de LaTeX
+Sintaxis de LaTeX
 \end_layout
 
 \end_inset
@@ -29425,7 +29425,7 @@ ispell
 \end_layout
 
 \begin_layout Section
-Tesauro
+Thesaurus
 \begin_inset Index
 status collapsed
 
@@ -29438,7 +29438,7 @@ Thesaurus
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Tesauro"
+name "sec:Thesaurus"
 
 \end_inset
 
@@ -29446,14 +29446,14 @@ name "sec:Tesauro"
 \end_layout
 
 \begin_layout Standard
-Tesauro por ahora sólo funciona para el idioma inglés.
+Thesaurus por ahora sólo funciona para el idioma inglés.
 \end_layout
 
 \begin_layout Standard
 Para iniciar el diccionario de sinónimos usa el menú 
 \family sans
-Herramientas\SpecialChar \menuseparator
-Tesauro
+Tools\SpecialChar \menuseparator
+Thesaurus
 \family default
  o el botón 
 \begin_inset Graphics
@@ -29473,7 +29473,7 @@ Desplazando la lista de sinónimos puedes encontrar el más adecuado.
 \end_layout
 
 \begin_layout Standard
-Tesauro sólo funciona con palabras individuales y en singular.
+Thesaurus sólo funciona con palabras individuales y en singular.
  Por ejemplo, «reports» no da ningún resultado, pero «report» sí.
  Lo que puedes hacer en estos casos es seleccionar sólo una parte de la
  palabra, en este caso «report»s.
@@ -35829,11 +35829,7 @@ Despliega o pliega el macro de ecuación actual.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Math macros are described
-\lang spanish
- en el manual 
+Las macros de ecuaciones se describen en el manual 
 \emph on
 Ecuaciones.
 \end_layout
@@ -38208,7 +38204,7 @@ Se describe en la sección
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tesauro"
+reference "sec:Thesaurus"
 
 \end_inset
 
