@@ -120,6 +120,8 @@ What's new
 - Fix the registration of mimetypes, which cures a crash when using
   the clipboard and launching other applications on Windows (bug 5472).
 
+- Fix assertion when issueing a translated error message to help-open.
+
 - Fix freeze when selecting after a large amount of text already was
   selected (bug 5504).
 
