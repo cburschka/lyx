@@ -1031,7 +1031,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				theApp()->dispatch(FuncRequest(LFUN_WINDOW_NEW));
 			string const arg = argument;
 			if (arg.empty()) {
-				setErrorMessage(from_ascii(N_("Missing argument")));
+				setErrorMessage(from_utf8(N_("Missing argument")));
 				break;
 			}
 			FileName const fname = i18nLibFileSearch("doc", arg, "lyx");
