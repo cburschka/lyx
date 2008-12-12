@@ -5,7 +5,7 @@
 # Faucheux Olivier <olivier.faucheux@depinfo.enseeiht.fr> 2000
 # Adien Rebollo <adrien.rebollo@gmx.fr> 2000-2005
 # Siegfried Meunier-Guttin-Cluzel <meunier@coria.fr> 2007
-# 
+#
 # Création initiale par Emmanuel GUREGHIAN
 # point en suspens et choix effectués:
 # - utilisation du mot impossible pour unable et cannot : cela peut
@@ -49,7 +49,7 @@
 #     marginpar
 #     .....
 # (la question se pose pour verbatim, mot latin utilisable en français)
-# 
+#
 # - la cas particulier du contrôle de version (CV): vocabulaire à confirmer
 #     VC -> CV (RCS est spécifique)
 #     check-in   figer comme actuellement
@@ -60,7 +60,7 @@
 #  pour un fichier
 #     idem              modifiable/non modifiable consultable/non
 # pour un répertoire
-# 
+#
 # marquer en fuzzzy pour transmettre un doute sur la traduction
 # n'est pas possible, les messages marqués de la sorte sont ignorés
 # par le formatteur msgfmt
@@ -74,7 +74,7 @@
 # retour à Format plutôt que Style pour le Layout de la barre de menus
 # (manque la lettre r pour le raccourci et traduction aussi répandue
 # que Style)
-# 
+#
 # ------------------------------------------------------------------------
 # Reprise des corrections proposées par Olivier Faucheux
 # (olivier.faucheux@depinfo.enseeiht.fr) 29/2/00
@@ -217,8 +217,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-12-10 22:44+0100\n"
-"PO-Revision-Date: 2008-12-10 18:05+0100\n"
+"POT-Creation-Date: 2008-12-12 10:42+0100\n"
+"PO-Revision-Date: 2008-12-11 16:25+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -4135,7 +4135,7 @@ msgstr "Autoriser le &flottement"
 #: lib/layouts/beamer.layout:38 lib/layouts/broadway.layout:173
 #: lib/layouts/chess.layout:29 lib/layouts/cl2emult.layout:125
 #: lib/layouts/dtk.layout:31 lib/layouts/egs.layout:18
-#: lib/layouts/elsart.layout:47 lib/layouts/elsarticle.layout:30
+#: lib/layouts/elsart.layout:47 lib/layouts/elsarticle.layout:31
 #: lib/layouts/europecv.layout:16 lib/layouts/foils.layout:30
 #: lib/layouts/g-brief2.layout:31 lib/layouts/hollywood.layout:345
 #: lib/layouts/iopart.layout:34 lib/layouts/kluwer.layout:33
@@ -4482,7 +4482,7 @@ msgstr "SousSousSection*"
 #: lib/layouts/apa.layout:69 lib/layouts/cl2emult.layout:80
 #: lib/layouts/cl2emult.layout:91 lib/layouts/egs.layout:481
 #: lib/layouts/elsart.layout:202 lib/layouts/elsart.layout:217
-#: lib/layouts/elsarticle.layout:218 lib/layouts/elsarticle.layout:235
+#: lib/layouts/elsarticle.layout:219 lib/layouts/elsarticle.layout:236
 #: lib/layouts/entcs.layout:84 lib/layouts/foils.layout:147
 #: lib/layouts/ijmpc.layout:63 lib/layouts/ijmpd.layout:66
 #: lib/layouts/iopart.layout:168 lib/layouts/iopart.layout:185
@@ -4507,7 +4507,7 @@ msgstr "Résumé---"
 
 #: lib/layouts/IEEEtran.layout:351 lib/layouts/aa.layout:342
 #: lib/layouts/aastex.layout:112 lib/layouts/aastex.layout:317
-#: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:247
+#: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:248
 #: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
 #: lib/layouts/iopart.layout:197 lib/layouts/isprs.layout:51
 #: lib/layouts/kluwer.layout:274 lib/layouts/paper.layout:163
@@ -4527,7 +4527,7 @@ msgstr "Termes d'index---"
 #: lib/layouts/aapaper.layout:210 lib/layouts/achemso.layout:167
 #: lib/layouts/beamer.layout:890 lib/layouts/book.layout:21
 #: lib/layouts/book.layout:23 lib/layouts/cl2emult.layout:102
-#: lib/layouts/egs.layout:552 lib/layouts/elsarticle.layout:268
+#: lib/layouts/egs.layout:552 lib/layouts/elsarticle.layout:269
 #: lib/layouts/foils.layout:210 lib/layouts/ijmpc.layout:331
 #: lib/layouts/ijmpd.layout:342 lib/layouts/latex8.layout:118
 #: lib/layouts/llncs.layout:258 lib/layouts/memoir.layout:140
@@ -4620,7 +4620,7 @@ msgstr "Liste"
 #: lib/layouts/broadway.layout:185 lib/layouts/cl2emult.layout:40
 #: lib/layouts/docbook-book.layout:11 lib/layouts/docbook-chapter.layout:9
 #: lib/layouts/docbook-section.layout:9 lib/layouts/egs.layout:246
-#: lib/layouts/elsart.layout:91 lib/layouts/elsarticle.layout:51
+#: lib/layouts/elsart.layout:91 lib/layouts/elsarticle.layout:52
 #: lib/layouts/entcs.layout:39 lib/layouts/foils.layout:125
 #: lib/layouts/hollywood.layout:331 lib/layouts/ijmpc.layout:33
 #: lib/layouts/ijmpd.layout:36 lib/layouts/iopart.layout:55
@@ -4652,7 +4652,7 @@ msgstr "SousTitre"
 #: lib/layouts/apa.layout:113 lib/layouts/beamer.layout:802
 #: lib/layouts/broadway.layout:198 lib/layouts/cl2emult.layout:57
 #: lib/layouts/egs.layout:288 lib/layouts/elsart.layout:111
-#: lib/layouts/elsarticle.layout:113 lib/layouts/entcs.layout:49
+#: lib/layouts/elsarticle.layout:114 lib/layouts/entcs.layout:49
 #: lib/layouts/foils.layout:133 lib/layouts/hollywood.layout:318
 #: lib/layouts/ijmpc.layout:40 lib/layouts/ijmpd.layout:43
 #: lib/layouts/iopart.layout:124 lib/layouts/isprs.layout:75
@@ -4669,7 +4669,7 @@ msgstr "Auteur"
 
 #: lib/layouts/aa.layout:73 lib/layouts/aa.layout:134
 #: lib/layouts/aapaper.layout:82 lib/layouts/dinbrief.layout:247
-#: lib/layouts/egs.layout:233 lib/layouts/elsarticle.layout:191
+#: lib/layouts/egs.layout:233 lib/layouts/elsarticle.layout:192
 #: lib/layouts/entcs.layout:59 lib/layouts/g-brief-en.layout:180
 #: lib/layouts/g-brief2.layout:716 lib/layouts/ijmpc.layout:48
 #: lib/layouts/ijmpd.layout:51 lib/layouts/iopart.layout:143
@@ -4721,10 +4721,10 @@ msgstr "Remerciement"
 #: lib/layouts/aa.layout:316 lib/layouts/aastex.layout:266
 #: lib/layouts/aastex.layout:283 lib/layouts/aastex.layout:323
 #: lib/layouts/aastex.layout:349 lib/layouts/aastex.layout:388
-#: lib/layouts/achemso.layout:119 lib/layouts/elsarticle.layout:55
-#: lib/layouts/elsarticle.layout:97 lib/layouts/elsarticle.layout:116
-#: lib/layouts/elsarticle.layout:194 lib/layouts/elsarticle.layout:222
-#: lib/layouts/elsarticle.layout:251 lib/layouts/entcs.layout:73
+#: lib/layouts/achemso.layout:119 lib/layouts/elsarticle.layout:56
+#: lib/layouts/elsarticle.layout:98 lib/layouts/elsarticle.layout:117
+#: lib/layouts/elsarticle.layout:195 lib/layouts/elsarticle.layout:223
+#: lib/layouts/elsarticle.layout:252 lib/layouts/entcs.layout:73
 #: lib/layouts/iopart.layout:59 lib/layouts/iopart.layout:128
 #: lib/layouts/iopart.layout:147 lib/layouts/iopart.layout:172
 #: lib/layouts/iopart.layout:201 lib/layouts/siamltex.layout:273
@@ -4748,7 +4748,7 @@ msgstr "Correspondance pour :"
 
 #: lib/layouts/aa.layout:202 lib/layouts/aastex.layout:447
 #: lib/layouts/aastex.layout:479 lib/layouts/beamer.layout:891
-#: lib/layouts/elsarticle.layout:272 lib/layouts/iopart.layout:241
+#: lib/layouts/elsarticle.layout:273 lib/layouts/iopart.layout:241
 #: lib/layouts/iopart.layout:263 lib/layouts/iopart.layout:286
 #: lib/layouts/siamltex.layout:312 lib/layouts/sigplanconf.layout:181
 #: lib/layouts/stdstruct.inc:43
@@ -4782,7 +4782,7 @@ msgstr "Style de texte : e-mail"
 
 #: lib/layouts/aa.layout:400 lib/layouts/aapaper.layout:85
 #: lib/layouts/aastex.layout:100 lib/layouts/aastex.layout:344
-#: lib/layouts/elsarticle.layout:208 lib/layouts/iopart.layout:158
+#: lib/layouts/elsarticle.layout:209 lib/layouts/iopart.layout:158
 #: lib/layouts/latex8.layout:57 lib/layouts/llncs.layout:229
 #: lib/layouts/aapaper.inc:46 lib/layouts/amsdefs.inc:150
 #: lib/layouts/db_stdcharstyles.inc:73
@@ -4837,7 +4837,7 @@ msgstr "Remerciements"
 #: lib/layouts/aastex.layout:121 lib/layouts/aastex.layout:475
 #: lib/layouts/aastex.layout:488 lib/layouts/achemso.layout:181
 #: lib/layouts/beamer.layout:904 lib/layouts/cl2emult.layout:116
-#: lib/layouts/egs.layout:566 lib/layouts/elsarticle.layout:283
+#: lib/layouts/egs.layout:566 lib/layouts/elsarticle.layout:284
 #: lib/layouts/iopart.layout:274 lib/layouts/iopart.layout:289
 #: lib/layouts/kluwer.layout:334 lib/layouts/kluwer.layout:346
 #: lib/layouts/llncs.layout:272 lib/layouts/moderncv.layout:162
@@ -6202,55 +6202,55 @@ msgstr "Résumé \\arabic{summ}"
 msgid "Case \\arabic{case}"
 msgstr "Cas \\arabic{case}"
 
-#: lib/layouts/elsarticle.layout:71
+#: lib/layouts/elsarticle.layout:72
 msgid "Titlenotemark"
 msgstr "MarqueNoteTitre"
 
-#: lib/layouts/elsarticle.layout:75
+#: lib/layouts/elsarticle.layout:76
 msgid "Titlenote mark"
 msgstr "Marque de note de titre"
 
-#: lib/layouts/elsarticle.layout:93
+#: lib/layouts/elsarticle.layout:94
 msgid "Title footnote"
 msgstr "Note de bas de page (titre)"
 
-#: lib/layouts/elsarticle.layout:105
+#: lib/layouts/elsarticle.layout:106
 msgid "Title footnote:"
 msgstr "Note de bas de page (titre) :"
 
-#: lib/layouts/elsarticle.layout:133
+#: lib/layouts/elsarticle.layout:134
 msgid "Authormark"
 msgstr "MarqueAuteur"
 
-#: lib/layouts/elsarticle.layout:137
+#: lib/layouts/elsarticle.layout:138
 msgid "Author mark"
 msgstr "Marque d'auteur"
 
-#: lib/layouts/elsarticle.layout:155
+#: lib/layouts/elsarticle.layout:156
 msgid "Author footnote"
 msgstr "Note de bas de page (auteur)"
 
-#: lib/layouts/elsarticle.layout:158
+#: lib/layouts/elsarticle.layout:159
 msgid "Author footnote:"
 msgstr "Note de bas de page (auteur) :"
 
-#: lib/layouts/elsarticle.layout:162
+#: lib/layouts/elsarticle.layout:163
 msgid "CorAuthormark"
 msgstr "MarqueAuteurRéférent"
 
-#: lib/layouts/elsarticle.layout:166
+#: lib/layouts/elsarticle.layout:167
 msgid "CorAuthor mark"
 msgstr "Marque d'auteur référent"
 
-#: lib/layouts/elsarticle.layout:184
+#: lib/layouts/elsarticle.layout:185
 msgid "Corresponding author"
 msgstr "Auteur référent"
 
-#: lib/layouts/elsarticle.layout:187
+#: lib/layouts/elsarticle.layout:188
 msgid "Corresponding author text:"
 msgstr "Texte auteur référent :"
 
-#: lib/layouts/elsarticle.layout:260 lib/layouts/ijmpc.layout:79
+#: lib/layouts/elsarticle.layout:261 lib/layouts/ijmpc.layout:79
 #: lib/layouts/ijmpd.layout:82 lib/layouts/iopart.layout:208
 #: lib/layouts/kluwer.layout:281 lib/layouts/paper.layout:166
 #: lib/layouts/revtex4.layout:246 lib/layouts/sigplanconf.layout:146
@@ -16079,21 +16079,21 @@ msgstr "Les valeurs par défaut du document ont été enregistrées dans %1$s"
 msgid "Unable to save document defaults"
 msgstr "Impossible d'enregistrer les valeurs par défaut du document"
 
-#: src/LyXFunc.cpp:1744
+#: src/LyXFunc.cpp:1747
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Document %1$s rechargé."
 
-#: src/LyXFunc.cpp:1746
+#: src/LyXFunc.cpp:1749
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "Impossible de recharger le document %1$s"
 
-#: src/LyXFunc.cpp:1783
+#: src/LyXFunc.cpp:1786
 msgid "Welcome to LyX!"
 msgstr "Bienvenue dans LyX !"
 
-#: src/LyXFunc.cpp:1804
+#: src/LyXFunc.cpp:1807
 msgid "Converting document to new document class..."
 msgstr "Conversion du document vers sa nouvelle classe..."
 
@@ -20162,9 +20162,9 @@ msgid " strings have been replaced."
 msgstr " chaînes remplacées."
 
 #: src/mathed/InsetFormulaMacro.cpp:119
-#, fuzzy, c-format
+#, c-format
 msgid " Macro: %1$s: "
-msgstr "Paramètre  %1$s : "
+msgstr "Macro  %1$s : "
 
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1389
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
