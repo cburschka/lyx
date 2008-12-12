@@ -9,13 +9,6 @@ Format 11
 Input stdcounters.inc
 Input stdinsets.inc
 
-# local counters
-
-# Is this needed? Could probably go -- MV 16/05/2007
-Counter figure
-  Name                 lyxframeend{}\section
-End
-
 
 # General textclass parameters
 Columns            1
