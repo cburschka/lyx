@@ -1033,7 +1033,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				setErrorMessage(from_utf8(N_("Missing argument")));
 				break;
 			}
-			FileName const fname = i18nLibFileSearch("doc", arg, "lyx");
+			FileName fname = i18nLibFileSearch("doc", arg, "lyx");
+			if (fname.empty()) 
+				fname = i18nLibFileSearch("examples", arg, "lyx");
+
 			if (fname.empty()) {
 				lyxerr << "LyX: unable to find documentation file `"
 							 << arg << "'. Bad installation?" << endl;
