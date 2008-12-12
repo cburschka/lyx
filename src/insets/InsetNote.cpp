@@ -328,13 +328,18 @@ int InsetNote::docbook(odocstream & os, OutputParams const & runparams_in) const
 
 void InsetNote::validate(LaTeXFeatures & features) const
 {
-	if (params_.type == InsetNoteParams::Comment)
+	switch (params_.type) {
+	case InsetNoteParams::Comment:
 		features.require("verbatim");
-	if (params_.type == InsetNoteParams::Greyedout) {
+		break;
+	case InsetNoteParams::Greyedout:
 		features.require("color");
 		features.require("lyxgreyedout");
+		InsetCollapsable::validate(features);
+		break;
+	case InsetNoteParams::Note:
+		break;
 	}
-	InsetText::validate(features);
 }
 
 

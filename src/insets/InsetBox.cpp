@@ -508,7 +508,7 @@ void InsetBox::validate(LaTeXFeatures & features) const
 		features.require("framed");
 		break;
 	}
-	InsetText::validate(features);
+	InsetCollapsable::validate(features);
 }
 
 

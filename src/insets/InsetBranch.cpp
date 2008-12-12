@@ -241,7 +241,8 @@ void InsetBranch::tocString(odocstream & os) const
 
 void InsetBranch::validate(LaTeXFeatures & features) const
 {
-	InsetText::validate(features);
+	if (isBranchSelected())
+		InsetCollapsable::validate(features);
 }
 
 
