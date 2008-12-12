@@ -124,7 +124,7 @@ What's new
 - Fix the registration of mimetypes, which cures a crash when using
   the clipboard and launching other applications on Windows (bug 5472).
 
-- Fix assertion when issueing a translated error message to help-open.
+- Fix assertion when issuing a translated error message to help-open.
 
 - Fix freeze when selecting after a large amount of text already was
   selected (bug 5504).
@@ -155,7 +155,7 @@ What's new
 
 - Fix enabling and functioning of buttons of document settings and
   preferences dialogs (bug 5295).
-  
+
 - Enable the button up in the command buffer widget (bug 5567).
 
 - Make the character style and custom inset menus quote the arguments 
@@ -170,6 +170,9 @@ What's new
 
 - Correctly set the paragraph style combo for obsoleted styles (part of
   bug 2607).
+
+- beamer.layout: remove obsolete counter that triggered and error message
+  in the console.
 
 
 * DOCUMENTATION AND LOCALIZATION
