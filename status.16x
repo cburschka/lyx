@@ -1,6 +1,6 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 1.6.1
+This file describes what has been done in the preparation of LyX 1.6.2
 All comments are welcome.
 
 I'd be glad if some of you could take the time to check it out (or fix
@@ -24,30 +24,18 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Updated localization of the user interface for Czech, French, German,
-  Italian, Japanese, Romanian, Spanish, and Turkish.
-
-- Updated English, French, German, and Spanish User's Guide, Math,
-  and Embedded Objects manual.
-
-- Updated English and German Embedded Objects manual.
-
-- Updated English Customization manual.
 
 
 * DOCUMENT INPUT/OUTPUT
 
-- New layout file for journal articles published by the American Chemical
-  Society.
 
 
 * USER INTERFACE
 
-- The BibTeX dialog now has a button for rescanning *.bib and *.bst files
-  in the TEXMF tree.
 
 
 * WINDOWS INSTALLER
+
 
 
 * BUILD
@@ -59,146 +47,15 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix a crash and generally improve the behaviour while loading an
-  emergency save of a master document from within a child (bug 5514).
-
-- Fix freeze when child document fails to load due to a conversion error
-  or similar problem (bug 5539). Note that LyX will not try to reload the
-  file. If the problem should with the child be fixed, the master document
-  will need to be closed and reopened for the child to be loaded.
-
-- Removed "NoStyle Abstract" from AMS book class, which does have an
-  abstract.
-
-- Fix conversion of some more complex index insets from version 1.5.x
-  (bug 5579 a.o.).
-
-- Fix reversion of info insets to LyX format 1.5.x. This bug blocked the
-  reversion of the User Guide to LyX 1.5.
-
-- Fix reversion of subfloats to version 1.5.x.
-
-- Fix reversion of \slash and \nobreakdash to version 1.5.x.
-
-- Fix possible endless loop while running lyx2lyx.
-
-- Fix redirection to temporary files with spaces in path (RCS support).
-
-- Fix export to latex in the presence of an encoding switch (bug 5489).
-
-- Fix nesting of \begin{CJK} and \end{CJK} with other environments.
-
-- Fix export of straight quotes in Hebrew and Greek context (bug 5571).
-
-- Fix import of CVS data on Windows.
-
-- Perform an additional bibtex cycle if requested, e.g. by biblatex
-  (bug 5583).
-
-- Correctly set compressed status (bug 5589).
-
-- Correct the LaTeX output of some letterlike symbols (bug 5456).
-
-- Correct the LaTeX output of ']' inside list items (bug 5610).
-
-- Fix option clash when selecting natbib with the new elsarticle
-  class (bug 5617). Note that style changes (e.g. author-year)
-  need to be done via class options with this class.
 
 
 * USER INTERFACE
 
-- Fix crash when undoing a math operation while the outline pane was open
-  (bug 5491).
-
-- Fix crash on Mac when dropping a file on its own buffer (bug 5447).
-
-- Fix crash on display of message string with utf8 encoding
-  (bug 5389 related).
-
-- Fix crash when trying to access the replacements combo box in the spell
-  checker dialog.
-
-- Fix a crash when reloading a buffer on the Mac (bug 5389).
-
-- Fix the registration of mimetypes, which cures a crash when using
-  the clipboard and launching other applications on Windows (bug 5472).
-
-- Fix assertion when issuing a translated error message to help-open.
-
-- Fix freeze when selecting after a large amount of text already was
-  selected (bug 5504).
-
-- Fix false duplicate warning for labels when just applying without
-  changing (bug 5496).
-
-- Scrolling speed increased by a factor of 2.
-
-- Implement undo grouping for command sequences (part of bug 5531).
-
-- Fix wrong size of the view source window (bug 4430).
-
-- Fix the -geometry command line option on Windows (bug 5467).
-
-- Fix problem with display of footnote numbers, etc., in child documents.
-
-- Fix painting update rules after LFUN_UP or LFUN_DOWN in an inset or
-  tabular.
-
-- Fix some UI glitches in the table cell settings dialog.
-
-- Prevent the painting of an invisible cursor.
-
-- Fix and improve the selection painting in a tabular (bug 5536).
-
-- Fix error dialog, which didn't display some messages.
-
-- Fix enabling and functioning of buttons of document settings and
-  preferences dialogs (bug 5295).
-
-- Enable the button up in the command buffer widget (bug 5567).
-
-- Make the character style and custom inset menus quote the arguments 
-  to flex-insert so that CharStyles, etc, with spaces in their names 
-  will work properly.
-
-- Detect and remove stale lyxpipes on startup (bug 641).
-
-- Fix Preferences dialog in fullscreen mode (bug 5274).
-
-- Act on keys pressed in fullscreen mode with no buffer open (bug 5507).
-
-- Correctly set the paragraph style combo for obsoleted styles (part of
-  bug 2607).
-
-- beamer.layout: remove obsolete counter that triggered and error message
-  in the console.
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- LyX is now able to find the translated versions of the manuals in 
-  Help>Specific Manuals.
-
-- LyX man page: Small formatting fix.
-
-- Updated description of math macros (bug 3699).
 
 
 * BUILD/INSTALLATION
 
-- Fix configuration for docbook backend and add detection of xlstproc.
-
-- Fix bogus error message when reconfiguring with platex not installed.
-
-- Add missing Galician documentation and example files to the Windows build.
-
-- Add compilation fix for gcc 4.4.
-
-- cmake: add some missing files.
-
-- cmake: improve install rules.
-
-- Fix version number in Mac OS application bundle.
-
-- Add missing tabular icon.
