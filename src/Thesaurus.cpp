@@ -281,6 +281,12 @@ Thesaurus::Meanings Thesaurus::lookup(docstring const &, docstring const &)
 	return Meanings();
 }
 
+
+bool Thesaurus::thesaurusAvailable(docstring const & lang) const
+{
+	return false;
+}
+
 #endif
 #endif // HAVE_LIBMYTHES
 
