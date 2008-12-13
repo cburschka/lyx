@@ -85,7 +85,7 @@ Win32/packaging/AltInstaller/icons/lyx.svg \
 Win32/packaging/AltInstaller/icons/lyx_32x32.ico \
 Win32/packaging/AltInstaller/icons/lyx_doc.svg \
 Win32/packaging/AltInstaller/icons/lyx_logo_hi.bmp \
-Win32/packaging/AltInstaller/icons/lyx_logo_vert16rc4.bmp \
+Win32/packaging/AltInstaller/icons/lyx_logo_vert161.bmp \
 Win32/packaging/AltInstaller/informations/InstallerStructure.odg \
 Win32/packaging/AltInstaller/informations/InstallerStructure.pdf \
 Win32/packaging/AltInstaller/informations/ISO_3166.html \
