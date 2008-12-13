@@ -302,6 +302,14 @@ bool Converters::convert(Buffer const * buffer,
 				return true;
 			}
 		}
+
+		// only warn once per session and per file type
+		static std::map<string, string> warned;
+		if (warned.find(from_format) != warned.end() && warned.find(from_format)->second == to_format) {
+			return false;
+		}
+		warned.insert(make_pair(from_format, to_format));
+
 		Alert::error(_("Cannot convert file"),
 			     bformat(_("No information for converting %1$s "
 						    "format files to %2$s.\n"
