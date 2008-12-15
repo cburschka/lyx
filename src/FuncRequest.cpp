@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "FuncRequest.h"
+#include "LyXAction.h"
 
 #include <iostream>
 #include <sstream>
@@ -107,7 +108,8 @@ bool operator==(FuncRequest const & lhs, FuncRequest const & rhs)
 ostream & operator<<(ostream & os, FuncRequest const & cmd)
 {
 	return os
-		<< " action: " << cmd.action
+		<< " action: " << cmd.action 
+		<< " [" << lyxaction.getActionName(cmd.action) << "] " 
 		<< " arg: '" << to_utf8(cmd.argument()) << "'"
 		<< " x: " << cmd.x
 		<< " y: " << cmd.y;
