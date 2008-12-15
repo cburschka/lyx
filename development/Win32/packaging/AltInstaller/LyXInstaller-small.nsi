@@ -36,8 +36,6 @@ CRCCheck force
 # variables only used in this installer version
 
 Var AppFiles
-
-Var GhostscriptPath
 Var AiksaurusPath
 Var AspellPath
 Var Acrobat
@@ -46,6 +44,7 @@ Var DelGSDir
 Var DelPythonFiles
 Var DelWMFDir
 Var EditorPath
+Var GhostscriptPath
 Var ImageEditorPath
 Var LangEncoding
 Var LangSysEncoding
@@ -53,7 +52,6 @@ Var LaTeXName
 Var MiKTeXVersion
 Var MiKTeXUser
 Var MissedProg
-Var PrinterConf
 Var PSVPath
 Var State
 Var SVGPath

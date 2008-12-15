@@ -1,11 +1,11 @@
 # installer settings
 # You should need to change only these macros for new releases.
 
-!define INSTALLER_SUBVERSION "13"
+!define INSTALLER_SUBVERSION "16"
 !define PRODUCT_DIR "D:\LyXPackage1.6"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.6.0"
-!define PRODUCT_VERSION_SHORT "160"
+!define PRODUCT_VERSION "1.6.1"
+!define PRODUCT_VERSION_SHORT "161"
 !define PRODUCT_SUBFOLDER "lyx16"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
 !define PRODUCT_SOURCEDIR "${PRODUCT_DIR}\LyX"
@@ -59,14 +59,14 @@ BrandingText "LyXWinInstaller v4.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 !if ${INSTALLER_VERSION} == "Complete"
  !define GSviewInstall "external\gsv49w32.exe"
  !define JabRefInstall "external\JabRef-2.4.2-Setup.exe"
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.7.3224.exe"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.7.3248.exe"
  !define JabRefVersion "2.4.2"
  !define MiKTeXDeliveredVersion "2.7"
 !endif
 
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
-!define ImageMagickVersion "6.4.5"
+!define ImageMagickVersion "6.4.7"
 # for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
 !define ImageMagickDir "$INSTDIR\etc\ImageMagick"
 !define GhostscriptDir "$INSTDIR\etc\Ghostscript"
