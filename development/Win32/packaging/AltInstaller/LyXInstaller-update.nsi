@@ -48,6 +48,7 @@ Var AppPath
 !include "FileFunc.nsh"
 !include "StrFunc.nsh"
 !include "TextFunc.nsh"
+!include "WinVer.nsh"
 !insertmacro LineFind
 !include "WordFunc.nsh"
 !insertmacro WordReplace
@@ -175,6 +176,13 @@ Function .onInit
   ${if} $R0 == "1"
    MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)"
    Abort
+  ${endif}
+  
+  # printer settings, needed to install the Metafile2eps printer
+  ${if} ${AtLeastWinVista}
+    StrCpy $PrinterConf "printui.exe"
+  ${else}
+    StrCpy $PrinterConf "rundll32.exe printui.dll,PrintUIEntry"
   ${endif}
   
   # check where LyX is installed

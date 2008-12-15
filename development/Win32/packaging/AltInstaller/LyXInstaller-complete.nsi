@@ -55,7 +55,6 @@ Var MiKTeXVersion
 Var MiKTeXUser
 Var MiKTeXPath
 Var MissedProg
-Var PrinterConf
 Var PSVPath
 Var SVGPath
 Var WMFPath

@@ -36,7 +36,11 @@ Function un.onInit
   ${endif}
   
   # printer settings, needed to uninstall the Metafile2eps printer
-  !insertmacro PrinterInit
+  ${if} ${AtLeastWinVista}
+    StrCpy $PrinterConf "printui.exe"
+  ${else}
+    StrCpy $PrinterConf "rundll32.exe printui.dll,PrintUIEntry"
+  ${endif}
 
   # Macro to investigate name of LyX's preferences folders to be able remove them
   !insertmacro UnAppPreSuff $AppPre $AppSuff # macro from LyXUtils.nsh

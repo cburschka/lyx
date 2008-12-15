@@ -219,7 +219,7 @@ Function InstallAspellDictionary
  
  # show message about Aspell dictionaries
  # the code rule to display the correct message:
- # - when the englisch dictionary is already installed or couldn't be installed -> set a "1"
+ # - when the English dictionary is already installed or couldn't be installed -> set a "1"
  # - when the dictionary of the chosen LyX menu language is already installed or couldn't be installed -> set a "2"
  # - when the dictionary of the Windows system language is already installed or couldn't be installed -> set a "3"
  # - when the dictionary of the chosen LyX menu language is equal to the dictionary of the Windows system language -> set a "4"
@@ -256,11 +256,14 @@ Function InstallAspellDictionary
   ExecShell "open" "${AspellLocationExact}"
  DownloadLater:
 
- # finally copy the Aspell dictionary files to the Application folder of all users
- # this assures that every user can have its own word list
- StrCpy $AppSubfolder "Aspell"
- StrCpy $AppFiles "$APPDATA\Aspell\Dictionaries"
- Call CreateAppPathSub # function from LyXUtils.nsh
+ # when something was installed, copy the Aspell dictionary files to the Application
+ # folder of all users this assures that every user can have its own word list
+ ${if} $AspellInstallYes != "321"
+ ${andif} $AspellInstallYes != "421" 
+  StrCpy $AppSubfolder "Aspell"
+  StrCpy $AppFiles "$APPDATA\Aspell\Dictionaries"
+  Call CreateAppPathSub # function from LyXUtils.nsh
+ ${endif}
  
 FunctionEnd
 
