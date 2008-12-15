@@ -887,7 +887,7 @@ src_frontends_qt4_ui_files = Split('''
     ERTUi.ui
     ErrorListUi.ui
     ExternalUi.ui
-    FindAndReplaceUI.ui
+    FindAndReplaceUi.ui
     FloatPlacementUi.ui
     FloatUi.ui
     FontUi.ui
