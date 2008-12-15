@@ -27,13 +27,12 @@ Style Hanging
       \usepackage{hanging}
       \newenvironment{hangparagraphs}
         {%
-          \par
           \ifthenelse{\lengthtest{\parindent > 0pt}}%
             {\setlength{\lyxhang}{\parindent}}%
             {\setlength{\lyxhang}{2em}}%
-          \begin{hangparas}{\lyxhang}{1}%
+          \par\begin{hangparas}{\lyxhang}{1}%
         }
-        {\par\end{hangparas}}
+        {\end{hangparas}}
     }{%else
       \newenvironment{hangparagraphs}
         {%
