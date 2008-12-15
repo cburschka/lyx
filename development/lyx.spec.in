@@ -1,47 +1,47 @@
-%define frontend @RPM_FRONTEND@
 %define version_suffix @RPM_VERSION_SUFFIX@
 
-Summary: A WYSIWYM (What You See Is What You Mean) frontend to LaTeX
+Summary: A WYSIWYM (What You See Is What You Mean) document processor
 Name: @PACKAGE@
 Version: @VERSION@
-Release: 1_%{frontend}
-License: see COPYING file
+Release: 1
+License: GPL
 Group: Applications/Publishing
 URL: http://www.lyx.org/
-Packager: Kayvan A. Sylvan <kayvan@sylvan.com>
+Packager: The LyX Team <lyx-devel@lists.lyx.org>
 Source: ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
-Icon: %{name}.png
 Prefix: %{_prefix}
 Obsoletes: tetex-lyx
 
 %description
-LyX is a modern approach to writing documents which breaks with the
-obsolete "typewriter paradigm" of most other document preparation
-systems.
+LyX is a document processor that encourages an approach to writing
+based on the structure of your documents, not their appearance. It
+is released under a Free Software/Open Source license (GPL v.2).
 
-It is designed for people who want professional quality output
-with a minimum of time and effort, without becoming specialists in
-typesetting.
+LyX is for people that write and want their writing to look great,
+right out of the box. No more endless tinkering with formatting
+details, 'finger painting' font attributes or futzing around with
+page boundaries. You just write. In the background, Prof. Knuth's
+legendary TeX typesetting engine makes you look good.
 
-The major innovation in LyX is WYSIWYM (What You See Is What You Mean).
-That is, the author focuses on content, not on the details of formatting.
-This allows for greater productivity, and leaves the final typesetting
-to the backends (like LaTeX) that are specifically designed for the task.
+On screen, LyX looks like any word processor; its printed output --
+or richly cross-referenced PDF, just as readily produced -- looks
+like nothing else. Gone are the days of industrially bland .docs,
+all looking similarly not-quite-right, yet coming out unpredictably
+different on different printer drivers. Gone are the crashes
+'eating' your dissertation the evening before going to press.
 
-With LyX, the author can concentrate on the contents of his writing,
-and let the computer take care of the rest.
-
-This is LyX built with the %{frontend} frontend.
-
+LyX is stable and fully featured. It is a multi-platform, fully
+internationalized application running natively on Unix/Linux, the
+Macintosh and modern Windows platforms.
 %prep
 %setup
 
 %build
 unset LINGUAS || true
-./configure --with-frontend=%{frontend} --prefix=%{_prefix} \
+./configure --prefix=%{_prefix} \
 	--mandir=%{_mandir} --bindir=%{_bindir} --datadir=%{_datadir} \
- 	--without-warnings --disable-debug --enable-optimization=-O2 \
+	--enable-build-type=rel \
 	%{version_suffix}
 make
 
