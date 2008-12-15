@@ -985,8 +985,8 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	InsetList::const_iterator ii = par.insetList().begin();
 	InsetList::const_iterator iend = par.insetList().end();
 	for ( ; ii != iend; ++ii) {
-		Dimension const & dim = pm.insetDimension(ii->inset);
 		if (ii->pos >= first && ii->pos < end) {
+			Dimension const & dim = pm.insetDimension(ii->inset);
 			maxasc  = max(maxasc,  dim.ascent());
 			maxdesc = max(maxdesc, dim.descent());
 		}

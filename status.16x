@@ -54,7 +54,8 @@ What's new
 
 * USER INTERFACE
 
-
+- Speed up editing when the document contains paragraphs with many (>1000)
+  insets (bug 4443).
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -64,3 +65,4 @@ What's new
 
 - lyx.spec: remove "Icon" tag that triggered a build error; 
   general update.
+
