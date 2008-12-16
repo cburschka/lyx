@@ -372,40 +372,40 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			}
 			break;
 
-		case TC_STYLE:
-			if (lexrc.next()) {
-				docstring const name = from_utf8(subst(lexrc.getString(),
-						    '_', ' '));
-				if (name.empty()) {
-					string s = "Could not read name for style: `$$Token' "
-						+ lexrc.getString() + " is probably not valid UTF-8!";
-					lexrc.printError(s.c_str());
-					Layout lay;
-					// Since we couldn't read the name, we just scan the rest
-					// of the style and discard it.
-					error = !readStyle(lexrc, lay);
-				} else if (hasLayout(name)) {
-					Layout & lay = operator[](name);
-					error = !readStyle(lexrc, lay);
-				} else {
-					Layout layout;
-					layout.setName(name);
-					error = !readStyle(lexrc, layout);
-					if (!error)
-						layoutlist_.push_back(layout);
-
-					if (defaultlayout_.empty()) {
-						// We do not have a default layout yet, so we choose
-						// the first layout we encounter.
-						defaultlayout_ = name;
-					}
-				}
-			}
-			else {
+		case TC_STYLE: {
+			if (!lexrc.next()) {
 				lexrc.printError("No name given for style: `$$Token'.");
 				error = true;
+				break;
+			}
+			docstring const name = from_utf8(subst(lexrc.getString(),
+							'_', ' '));
+			if (name.empty()) {
+				string s = "Could not read name for style: `$$Token' "
+					+ lexrc.getString() + " is probably not valid UTF-8!";
+				lexrc.printError(s.c_str());
+				Layout lay;
+				// Since we couldn't read the name, we just scan the rest
+				// of the style and discard it.
+				error = !readStyle(lexrc, lay);
+			} else if (hasLayout(name)) {
+				Layout & lay = operator[](name);
+				error = !readStyle(lexrc, lay);
+			} else {
+				Layout layout;
+				layout.setName(name);
+				error = !readStyle(lexrc, layout);
+				if (!error)
+					layoutlist_.push_back(layout);
+
+				if (defaultlayout_.empty()) {
+					// We do not have a default layout yet, so we choose
+					// the first layout we encounter.
+					defaultlayout_ = name;
+				}
 			}
 			break;
+		}
 
 		case TC_NOSTYLE:
 			if (lexrc.next()) {
