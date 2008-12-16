@@ -6,49 +6,24 @@
 Format 11
 
 InsetLayout Index
-   Decoration   minimalistic
-   LabelString           Idx
-   LatexType             command
-   LatexName             index
-   Font
-     Color               Green
-     Size                Small
-   EndFont
-   LabelFont
-     Color               Green
-     Size                Small
-   EndFont
-   MultiPar              false
-   NeedProtect           true
+		Decoration   minimalistic
+		Font
+			Color               Green
+			Size                Small
+		EndFont
+		LabelFont
+			Color               Green
+			Size                Small
+		EndFont
 End
 
 InsetLayout Branch
   Decoration            minimalistic
-  LabelFont
-    Color               Red
-    Size                Small
-  EndFont
-  MultiPar              true
 End
 
 InsetLayout URL
-LyXType               standard
-LatexName             url
-LatexType             command
-Decoration            minimalistic
-LabelString           URL
-PassThru              true
-ForceLTR              true
-Font
-  Family              Typewriter
-  Color               Blue
-EndFont
-LabelFont
-  Family              Typewriter
-  Color               Blue
-  Size                Small
-EndFont
-Requires	      url
+	Decoration            minimalistic
+	LabelString           URL
 End
 
 

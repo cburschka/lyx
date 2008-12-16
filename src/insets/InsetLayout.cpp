@@ -72,12 +72,6 @@ InsetLayout::InsetLaTeXType translateLaTeXType(std::string const & str)
 
 bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 {
-	name_ = support::subst(lex.getDocString(), '_', ' ');
-	// FIXME We need to check for name_.empty() here, and
-	// take the same sort of action as in TextClass::read()
-	// if it is empty. Or, better, we could read name_ there,
-	// take action there, etc.
-
 	enum {
 		IL_BGCOLOR,
 		IL_COPYSTYLE,

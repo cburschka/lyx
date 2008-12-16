@@ -57,6 +57,8 @@ public:
 	///
 	docstring name() const { return name_; };
 	///
+	void setName(docstring const & n) { name_ = n; }
+	///
 	InsetLyXType lyxtype() const { return lyxtype_; };
 	///
 	docstring labelstring() const { return labelstring_; };
