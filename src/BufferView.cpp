@@ -1399,11 +1399,15 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		// if there is an inset at cursor, see whether it
 		// can be modified.
 		Inset * inset = cur.nextInset();
-		if (inset)
+		if (inset) {
+			cur.recordUndo();
 			inset->dispatch(cur, tmpcmd);
+		}
 		// if it did not work, try the underlying inset.
-		if (!inset || !cur.result().dispatched())
+		if (!inset || !cur.result().dispatched()) {
+			cur.recordUndo();
 			cur.dispatch(tmpcmd);
+		}
 
 		if (!cur.result().dispatched())
 			// It did not work too; no action needed.
