@@ -101,7 +101,7 @@ public:
 	typedef std::map<docstring, InsetLayout> InsetLayouts;
 	///
 	typedef LayoutList::const_iterator const_iterator;
-	
+
 	///////////////////////////////////////////////////////////////////
 	// Iterators
 	///////////////////////////////////////////////////////////////////
@@ -133,6 +133,8 @@ public:
 	size_t layoutCount() const { return layoutlist_.size(); }
 	///
 	bool hasLayout(docstring const & name) const;
+	///
+	bool hasInsetLayout(docstring const & name) const;
 	///
 	Layout const & operator[](docstring const & vname) const;
 	/// Inset layouts of this doc class
