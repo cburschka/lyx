@@ -255,6 +255,9 @@ def checkFormatEntries(dtl_tools):
     checkViewer('a FIG viewer and editor', ['xfig', 'jfig3-itext.jar', 'jfig3.jar'],
         rc_entry = [r'\Format fig        fig     FIG                    "" "%%"	"%%"	"vector"'])
     #
+    checkViewer('a Dia viewer and editor', ['dia'],
+        rc_entry = [r'\Format dia        dia     DIA                    "" "%%"	"%%"	"vector"'])
+    #
     checkViewer('a Grace viewer and editor', ['xmgrace'],
         rc_entry = [r'\Format agr        agr     Grace                  "" "%%"	"%%"	"vector"'])
     #
@@ -284,6 +287,7 @@ def checkFormatEntries(dtl_tools):
 \Format docbook    sgml    DocBook                B  ""	"%%"	"document"
 \Format docbook-xml xml   "Docbook (XML)"         "" ""	"%%"	"document"
 \Format dot        dot    "Graphviz Dot"          "" ""	"%%"	"vector"
+\Format dia        dia    "Dia"                   "" "" "%%"    "vector"
 \Format platex     tex    "LaTeX (pLaTeX)"        "" "" "%%"    "document"
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document"
 \Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
@@ -502,6 +506,12 @@ def checkConverterEntries():
     #
     checkProg('a Dot -> PDF converter', ['dot -Tpdf $$i -o $$o'],
         rc_entry = [ r'\converter dot        pdf        "%%"	""'])
+    #
+    checkProg('a Dia -> PNG converter', ['dia -e $$o -t png $$i'],
+        rc_entry = [ r'\converter dia        png        "%%"	""'])
+    #
+    checkProg('a Dia -> EPS converter', ['dia -e $$o -t eps $$i'],
+        rc_entry = [ r'\converter dia        eps        "%%"	""'])
     #
     #
     path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])
