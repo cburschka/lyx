@@ -64,6 +64,10 @@ What's new
 
 - Improve debug output when tracing what actions are triggered.
 
+- A re-declaration of an InsetLayout will now update the existing declaration
+  rather than completely over-writing it---agreeing with the behavior of our
+  normal Style declarations.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
