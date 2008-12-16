@@ -30,10 +30,5 @@ AC_DEFUN([LYX_CHECK_SPELL_ENGINES],
     lyx_use_aspell=false
     CHECK_WITH_ASPELL
 
-    dnl check for the ability to communicate through unix pipes
-    dnl with an external ispell process.
-    dnl Do this independent of the existence of the aspell libraries.
-    lyx_use_ispell=true
-
     AM_CONDITIONAL(USE_ASPELL, $lyx_use_aspell)
     ])
