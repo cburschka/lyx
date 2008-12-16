@@ -236,6 +236,14 @@ InsetLayout Float
 	MultiPar              true
 End
 
+InsetLayout Wrap
+	LabelFont
+	  Color               collapsable
+	  Size                Small
+	EndFont
+	MultiPar              true
+End
+
 InsetLayout URL
 	LyXType               standard
 	LatexName             url

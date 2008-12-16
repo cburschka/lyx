@@ -62,7 +62,7 @@ InsetWrap::~InsetWrap()
 
 docstring InsetWrap::name() const
 {
-	return from_utf8(params_.type);
+	return "Wrap:" + from_utf8(params_.type);
 }
 
 
