@@ -57,7 +57,11 @@ What's new
 - Speed up editing when the document contains paragraphs with many (>1000)
   insets (bug 4443).
 
+- Set buffer status to changed after modifying insets such as pagebreaks
+  or citations via context menu.
+
 - Improve debug output when tracing what actions are triggered.
+
 
 * DOCUMENTATION AND LOCALIZATION
 

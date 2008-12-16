@@ -2091,7 +2091,7 @@ void LyXAction::init()
  * \li Origin: JSpitzm, 23 Mar 2008
  * \endvar
  */
-		{ LFUN_NEXT_INSET_MODIFY, "next-inset-modify", ReadOnly, Edit },
+		{ LFUN_NEXT_INSET_MODIFY, "next-inset-modify", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_DIALOG_UPDATE
  * \li Action: Updates the values inside the dialog from the inset.
