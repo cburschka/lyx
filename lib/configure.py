@@ -287,7 +287,6 @@ def checkFormatEntries(dtl_tools):
 \Format docbook    sgml    DocBook                B  ""	"%%"	"document"
 \Format docbook-xml xml   "Docbook (XML)"         "" ""	"%%"	"document"
 \Format dot        dot    "Graphviz Dot"          "" ""	"%%"	"vector"
-\Format dia        dia    "Dia"                   "" "" "%%"    "vector"
 \Format platex     tex    "LaTeX (pLaTeX)"        "" "" "%%"    "document"
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document"
 \Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
