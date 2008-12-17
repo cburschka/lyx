@@ -624,7 +624,14 @@ src_tex2lyx_extra_files = Split('''
     test-insets.tex
     test-structure.tex
     test.ltx
-    tex2lyx.man
+    tex2lyx.1
+    test/box-color-size-space-align.tex
+    test/DummyDocument.tex
+    test/foo.eps
+    test/foo.png
+    test/test-insets.tex
+    test/test.ltx
+    test/test-structure.tex
 ''')
 
 
