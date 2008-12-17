@@ -1,4 +1,4 @@
-#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -210,9 +210,9 @@
 \bullet 1 1 34 -1
 \bullet 2 2 35 -1
 \bullet 3 2 7 -1
-\tracking_changes false
+\tracking_changes true
 \output_changes false
-\author "" 
+\author "pavel" 
 \author "" 
 \end_header
 
@@ -31384,6 +31384,26 @@ target "http://en.wikipedia.org/wiki/Xfig"
 
 \series default
 .
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 0 1229526929
+Dia This template supports diagrams created with the program 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Dia"
+target "http://en.wikipedia.org/wiki/Dia_(software)"
+
+\end_inset
+
+
+\series default
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
