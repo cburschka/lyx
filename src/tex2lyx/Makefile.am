@@ -1,9 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = tex2lyx.man $(TEST_FILES)
-EXTRA_DIST += pch.h
-
-DISTCLEANFILES += tex2lyx.1
+EXTRA_DIST = $(TEST_FILES) pch.h
 
 #noinst_LTLIBRARIES = libtexparser.la
 #
@@ -69,6 +66,3 @@ tex2lyx_SOURCES = \
 tex2lyx_LDADD = \
 	$(top_builddir)/src/support/liblyxsupport.la \
 	$(LIBICONV) $(BOOST_LIBS) @LIBS@
-
-tex2lyx.1:
-	cp -p $(srcdir)/tex2lyx.man tex2lyx.1
