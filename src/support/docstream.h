@@ -90,6 +90,7 @@ SetEnc setEncoding(std::string const & encoding);
     \endcode
  */
 odocstream & operator<<(odocstream & os, SetEnc e);
+idocstream & operator<<(idocstream & os, SetEnc e);
 
 }
 
