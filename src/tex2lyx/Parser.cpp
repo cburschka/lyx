@@ -151,12 +151,6 @@ void Parser::push_back(Token const & t)
 }
 
 
-void Parser::pop_back()
-{
-	tokens_.pop_back();
-}
-
-
 Token const & Parser::prev_token() const
 {
 	static const Token dummy;
