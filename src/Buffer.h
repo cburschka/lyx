@@ -185,14 +185,14 @@ public:
 	    encoding associated to \p os. Therefore you must not call this
 	    method with a string stream if the output is supposed to go to a
 	    file. \code
-	    odocfstream ofs;
+	    ofdocstream ofs;
 	    ofs.open("test.tex");
 	    writeLaTeXSource(ofs, ...);
 	    ofs.close();
 	    \endcode is NOT equivalent to \code
 	    odocstringstream oss;
 	    writeLaTeXSource(oss, ...);
-	    odocfstream ofs;
+	    ofdocstream ofs;
 	    ofs.open("test.tex");
 	    ofs << oss.str();
 	    ofs.close();

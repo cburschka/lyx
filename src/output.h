@@ -20,7 +20,7 @@ namespace lyx {
 namespace support { class FileName; }
 
 bool openFileWrite(std::ofstream & ofs, support::FileName const & fname);
-bool openFileWrite(odocfstream & ofs, support::FileName const & fname);
+bool openFileWrite(ofdocstream & ofs, support::FileName const & fname);
 
 
 } // namespace lyx

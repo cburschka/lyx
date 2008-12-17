@@ -320,13 +320,13 @@ const char * iconv_codecvt_facet_exception::what() const throw()
 }
 
 
-idocfstream::idocfstream(string const & encoding) : base()
+ifdocstream::ifdocstream(string const & encoding) : base()
 {
 	setEncoding(*this, encoding, in);
 }
 
 
-idocfstream::idocfstream(const char* s, ios_base::openmode mode,
+ifdocstream::ifdocstream(const char* s, ios_base::openmode mode,
 			 string const & encoding)
 	: base()
 {
@@ -335,13 +335,13 @@ idocfstream::idocfstream(const char* s, ios_base::openmode mode,
 }
 
 
-odocfstream::odocfstream(): base()
+ofdocstream::ofdocstream(): base()
 {
 	setEncoding(*this, "UTF-8", out);
 }
 
 
-odocfstream::odocfstream(const char* s, ios_base::openmode mode,
+ofdocstream::ofdocstream(const char* s, ios_base::openmode mode,
 			 string const & encoding)
 	: base()
 {
@@ -350,7 +350,7 @@ odocfstream::odocfstream(const char* s, ios_base::openmode mode,
 }
 
 
-void odocfstream::reset(string const & encoding)
+void ofdocstream::reset(string const & encoding)
 {
 	setEncoding(*this, encoding, out);
 }

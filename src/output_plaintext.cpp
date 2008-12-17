@@ -34,7 +34,7 @@ namespace lyx {
 void writePlaintextFile(Buffer const & buf, FileName const & fname,
 	OutputParams const & runparams)
 {
-	odocfstream ofs;
+	ofdocstream ofs;
 	if (!openFileWrite(ofs, fname))
 		return;
 	writePlaintextFile(buf, ofs, runparams);

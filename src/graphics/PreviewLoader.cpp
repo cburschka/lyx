@@ -556,7 +556,7 @@ void PreviewLoader::Impl::startLoading()
 
 	// we use the encoding of the buffer
 	Encoding const & enc = buffer_.params().encoding();
-	odocfstream of;
+	ofdocstream of;
 	try { of.reset(enc.iconvName()); }
 	catch (iconv_codecvt_facet_exception & e) {
 		LYXERR0("Caught iconv exception: " << e.what()

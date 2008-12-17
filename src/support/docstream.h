@@ -42,26 +42,26 @@ typedef std::basic_ostream<char_type> odocstream;
 
 /// File stream for reading UTF8-encoded files with automatic conversion to
 /// UCS4.
-class idocfstream : public std::basic_ifstream<char_type> {
+class ifdocstream : public std::basic_ifstream<char_type> {
 	typedef std::basic_ifstream<char_type> base;
 public:
-	idocfstream(std::string const & encoding = "UTF-8");
-	explicit idocfstream(const char* s,
+	ifdocstream(std::string const & encoding = "UTF-8");
+	explicit ifdocstream(const char* s,
 		std::ios_base::openmode mode = std::ios_base::in,
 		std::string const & encoding = "UTF-8");
-	~idocfstream() {}
+	~ifdocstream() {}
 };
 
 /// File stream for writing files in 8bit encoding \p encoding with automatic
 /// conversion from UCS4.
-class odocfstream : public std::basic_ofstream<char_type> {
+class ofdocstream : public std::basic_ofstream<char_type> {
 	typedef std::basic_ofstream<char_type> base;
 public:
-	odocfstream();
-	explicit odocfstream(const char* s,
+	ofdocstream();
+	explicit ofdocstream(const char* s,
 		std::ios_base::openmode mode = std::ios_base::out|std::ios_base::trunc,
 		std::string const & encoding = "UTF-8");
-	~odocfstream() {}
+	~ofdocstream() {}
 	///
 	void reset(std::string const & encoding);
 };

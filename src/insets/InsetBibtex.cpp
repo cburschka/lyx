@@ -434,7 +434,7 @@ namespace {
 	/// and further whitespace characters from the stream.
 	/// @return true if a comma was found, false otherwise
 	///
-	bool removeWSAndComma(idocfstream & ifs) {
+	bool removeWSAndComma(ifdocstream & ifs) {
 		char_type ch;
 
 		if (!ifs)
@@ -477,7 +477,7 @@ namespace {
 	///
 	/// @return true if a string of length > 0 could be read.
 	///
-	bool readTypeOrKey(docstring & val, idocfstream & ifs,
+	bool readTypeOrKey(docstring & val, ifdocstream & ifs,
 		docstring const & delimChars, docstring const &illegalChars, 
 		charCase chCase) {
 
@@ -532,7 +532,7 @@ namespace {
 	/// the variable strings.
 	/// @return true if reading was successfull (all single parts were delimited
 	/// correctly)
-	bool readValue(docstring & val, idocfstream & ifs, const VarMap & strings) {
+	bool readValue(docstring & val, ifdocstream & ifs, const VarMap & strings) {
 
 		char_type ch;
 
@@ -688,7 +688,7 @@ void InsetBibtex::fillWithBibKeys(BiblioInfo & keylist,
 	support::FileNameList::const_iterator it = files.begin();
 	support::FileNameList::const_iterator en = files.end();
 	for (; it != en; ++ it) {
-		idocfstream ifs(it->toFilesystemEncoding().c_str(),
+		ifdocstream ifs(it->toFilesystemEncoding().c_str(),
 			ios_base::in, buffer().params().encoding().iconvName());
 
 		char_type ch;
