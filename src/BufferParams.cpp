@@ -1129,71 +1129,71 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 	if (use_geometry || nonstandard_papersize) {
-		os << "\\usepackage{geometry}\n";
-		texrow.newline();
-		os << "\\geometry{verbose";
+		odocstringstream ods;
+		if (!getGraphicsDriver("geometry").empty())
+			ods << getGraphicsDriver("geometry");
 		if (orientation == ORIENTATION_LANDSCAPE)
-			os << ",landscape";
+			ods << ",landscape";
 		switch (papersize) {
 		case PAPER_CUSTOM:
 			if (!paperwidth.empty())
-				os << ",paperwidth="
+				ods << ",paperwidth="
 				   << from_ascii(paperwidth);
 			if (!paperheight.empty())
-				os << ",paperheight="
+				ods << ",paperheight="
 				   << from_ascii(paperheight);
 			break;
 		case PAPER_USLETTER:
-			os << ",letterpaper";
+			ods << ",letterpaper";
 			break;
 		case PAPER_USLEGAL:
-			os << ",legalpaper";
+			ods << ",legalpaper";
 			break;
 		case PAPER_USEXECUTIVE:
-			os << ",executivepaper";
+			ods << ",executivepaper";
 			break;
 		case PAPER_A3:
-			os << ",a3paper";
+			ods << ",a3paper";
 			break;
 		case PAPER_A4:
-			os << ",a4paper";
+			ods << ",a4paper";
 			break;
 		case PAPER_A5:
-			os << ",a5paper";
+			ods << ",a5paper";
 			break;
 		case PAPER_B3:
-			os << ",b3paper";
+			ods << ",b3paper";
 			break;
 		case PAPER_B4:
-			os << ",b4paper";
+			ods << ",b4paper";
 			break;
 		case PAPER_B5:
-			os << ",b5paper";
+			ods << ",b5paper";
 			break;
 		default:
 			// default papersize ie PAPER_DEFAULT
 			switch (lyxrc.default_papersize) {
 			case PAPER_DEFAULT: // keep compiler happy
 			case PAPER_USLETTER:
-				os << ",letterpaper";
+				ods << ",letterpaper";
 				break;
 			case PAPER_USLEGAL:
-				os << ",legalpaper";
+				ods << ",legalpaper";
 				break;
 			case PAPER_USEXECUTIVE:
-				os << ",executivepaper";
+				ods << ",executivepaper";
 				break;
 			case PAPER_A3:
-				os << ",a3paper";
+				ods << ",a3paper";
 				break;
 			case PAPER_A4:
-				os << ",a4paper";
+				ods << ",a4paper";
 				break;
 			case PAPER_A5:
-				os << ",a5paper";
+				ods << ",a5paper";
 				break;
 			case PAPER_B5:
-				os << ",b5paper";
+				ods << ",b5paper";
 				break;
 			case PAPER_B3:
 			case PAPER_B4:
@@ -1201,6 +1201,13 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 				break;
 			}
 		}
+		docstring const g_options = trim(ods.str(), ",");
+		os << "\\usepackage";
+		if (!g_options.empty())
+			os << '[' << g_options << ']';
+		os << "{geometry}\n";
+		texrow.newline();
+		os << "\\geometry{verbose";
 		if (!topmargin.empty())
 			os << ",tmargin=" << from_ascii(Length(topmargin).asLatexString());
 		if (!bottommargin.empty())
@@ -2100,6 +2107,24 @@ string BufferParams::babelCall(string const & lang_opts) const
 		|| lithu != string::npos || mongo != string::npos)
 		return "\\usepackage[" + lang_opts + "]{babel}";
 	return lang_pack;
+}
+
+
+docstring BufferParams::getGraphicsDriver(string const & package) const
+{
+	docstring result;
+
+	if (package == "geometry") {
+		if (graphicsDriver == "dvips"
+		    || graphicsDriver == "dvipdfm"
+		    || graphicsDriver == "pdftex"
+		    || graphicsDriver == "vtex")
+			result = from_ascii(graphicsDriver);
+		else if (graphicsDriver == "dvipdfmx")
+			result = from_ascii("dvipdfm");
+	}
+
+	return result;
 }
 
 
