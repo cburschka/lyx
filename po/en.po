@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2008-12-13 09:36+0100\n"
+"POT-Creation-Date: 2008-12-19 11:06+0100\n"
 "PO-Revision-Date: 2008-08-04 17:40+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -166,7 +166,7 @@ msgstr ""
 #: src/frontends/qt4/ui/BibtexAddUi.ui:46 src/frontends/qt4/ui/BibtexUi.ui:97
 #: src/frontends/qt4/ui/ExternalUi.ui:78
 #: src/frontends/qt4/ui/GraphicsUi.ui:151
-#: src/frontends/qt4/ui/IncludeUi.ui:329 src/frontends/qt4/ui/LaTeXUi.ui:173
+#: src/frontends/qt4/ui/IncludeUi.ui:329 src/frontends/qt4/ui/LaTeXUi.ui:184
 #: src/frontends/qt4/ui/PrintUi.ui:313
 msgid "&Browse..."
 msgstr ""
@@ -1414,9 +1414,9 @@ msgstr ""
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:76
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90 lib/layouts/scrlttr2.layout:205
-#: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:239
-#: lib/layouts/stdinsets.inc:244 lib/layouts/minimalistic.module:34
-#: lib/layouts/minimalistic.module:39 lib/ui/stdmenus.inc:340
+#: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:247
+#: lib/layouts/stdinsets.inc:252 lib/layouts/minimalistic.module:24
+#: lib/layouts/minimalistic.module:26 lib/ui/stdmenus.inc:340
 msgid "URL"
 msgstr ""
 
@@ -1521,57 +1521,57 @@ msgstr ""
 msgid "&New"
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:19
+#: src/frontends/qt4/ui/LaTeXUi.ui:25
 msgid "Document &class"
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:38
+#: src/frontends/qt4/ui/LaTeXUi.ui:52
 msgid "Click to select a local document class definition file"
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:41
+#: src/frontends/qt4/ui/LaTeXUi.ui:55
 msgid "&Local Layout..."
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:51
+#: src/frontends/qt4/ui/LaTeXUi.ui:65
 msgid "Class options"
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:71
+#: src/frontends/qt4/ui/LaTeXUi.ui:85
 msgid ""
 "The options that are predefined in the layout file. Click to the left to "
 "select/deselect."
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:86
+#: src/frontends/qt4/ui/LaTeXUi.ui:100
 msgid "Enable to use the options that are predefined in the layout file"
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:89
+#: src/frontends/qt4/ui/LaTeXUi.ui:103
 msgid "P&redefined:"
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:96
+#: src/frontends/qt4/ui/LaTeXUi.ui:110
 msgid "Cust&om:"
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:112
-msgid "&Postscript driver:"
+#: src/frontends/qt4/ui/LaTeXUi.ui:123
+msgid "&Graphics driver:"
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:142
+#: src/frontends/qt4/ui/LaTeXUi.ui:153
 msgid "Select if the current document is included to a master file"
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:148
+#: src/frontends/qt4/ui/LaTeXUi.ui:159
 msgid "Select de&fault master document"
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:163
+#: src/frontends/qt4/ui/LaTeXUi.ui:174
 msgid "&Master:"
 msgstr ""
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:180
+#: src/frontends/qt4/ui/LaTeXUi.ui:191
 msgid "Enter the name of the default master document"
 msgstr ""
 
@@ -7238,7 +7238,7 @@ msgstr ""
 msgid "Sender Phone:"
 msgstr ""
 
-#: lib/layouts/scrlttr2.layout:189 lib/configure.py:335
+#: lib/layouts/scrlttr2.layout:189 lib/configure.py:338
 msgid "Fax"
 msgstr ""
 
@@ -8200,7 +8200,7 @@ msgstr ""
 msgid "Listings"
 msgstr ""
 
-#: lib/layouts/stdinsets.inc:180 lib/layouts/minimalistic.module:25
+#: lib/layouts/stdinsets.inc:180 lib/layouts/minimalistic.module:20
 #: src/frontends/qt4/GuiBranches.cpp:42
 msgid "Branch"
 msgstr ""
@@ -8210,7 +8210,7 @@ msgstr ""
 msgid "Index"
 msgstr ""
 
-#: lib/layouts/stdinsets.inc:190 lib/layouts/minimalistic.module:10
+#: lib/layouts/stdinsets.inc:190
 msgid "Idx"
 msgstr ""
 
@@ -8226,27 +8226,31 @@ msgstr ""
 msgid "Float"
 msgstr ""
 
-#: lib/layouts/stdinsets.inc:259
+#: lib/layouts/stdinsets.inc:239
+msgid "Wrap"
+msgstr ""
+
+#: lib/layouts/stdinsets.inc:267
 msgid "OptArg"
 msgstr ""
 
-#: lib/layouts/stdinsets.inc:260
+#: lib/layouts/stdinsets.inc:268
 msgid "opt"
 msgstr ""
 
-#: lib/layouts/stdinsets.inc:268 src/frontends/qt4/GuiInfo.cpp:51
+#: lib/layouts/stdinsets.inc:276 src/frontends/qt4/GuiInfo.cpp:51
 msgid "Info"
 msgstr ""
 
-#: lib/layouts/stdinsets.inc:272
+#: lib/layouts/stdinsets.inc:280
 msgid "Info:menu"
 msgstr ""
 
-#: lib/layouts/stdinsets.inc:284
+#: lib/layouts/stdinsets.inc:292
 msgid "Info:shortcut"
 msgstr ""
 
-#: lib/layouts/stdinsets.inc:296
+#: lib/layouts/stdinsets.inc:304
 msgid "Info:shortcuts"
 msgstr ""
 
@@ -13748,6 +13752,18 @@ msgid ""
 "Read 'info date' for more information.\n"
 msgstr ""
 
+#: lib/external_templates:332
+msgid "Dia"
+msgstr ""
+
+#: lib/external_templates:333 lib/external_templates:336
+msgid "Dia: $$AbsOrRelPathParent$$Basename"
+msgstr ""
+
+#: lib/external_templates:335
+msgid "Dia diagram.\n"
+msgstr ""
+
 #: lib/configure.py:253
 msgid "Tgif"
 msgstr ""
@@ -13757,287 +13773,291 @@ msgid "FIG"
 msgstr ""
 
 #: lib/configure.py:259
-msgid "Grace"
+msgid "DIA"
 msgstr ""
 
 #: lib/configure.py:262
+msgid "Grace"
+msgstr ""
+
+#: lib/configure.py:265
 msgid "FEN"
 msgstr ""
 
-#: lib/configure.py:266
+#: lib/configure.py:269
 msgid "BMP"
 msgstr ""
 
-#: lib/configure.py:267
+#: lib/configure.py:270
 msgid "GIF"
 msgstr ""
 
-#: lib/configure.py:268 src/frontends/qt4/GuiClipboard.cpp:138
+#: lib/configure.py:271 src/frontends/qt4/GuiClipboard.cpp:138
 msgid "JPEG"
 msgstr ""
 
-#: lib/configure.py:269
+#: lib/configure.py:272
 msgid "PBM"
 msgstr ""
 
-#: lib/configure.py:270
+#: lib/configure.py:273
 msgid "PGM"
 msgstr ""
 
-#: lib/configure.py:271 src/frontends/qt4/GuiClipboard.cpp:137
+#: lib/configure.py:274 src/frontends/qt4/GuiClipboard.cpp:137
 msgid "PNG"
 msgstr ""
 
-#: lib/configure.py:272
+#: lib/configure.py:275
 msgid "PPM"
 msgstr ""
 
-#: lib/configure.py:273
+#: lib/configure.py:276
 msgid "TIFF"
 msgstr ""
 
-#: lib/configure.py:274
+#: lib/configure.py:277
 msgid "XBM"
 msgstr ""
 
-#: lib/configure.py:275
+#: lib/configure.py:278
 msgid "XPM"
 msgstr ""
 
-#: lib/configure.py:280
+#: lib/configure.py:283
 msgid "Plain text (chess output)"
 msgstr ""
 
-#: lib/configure.py:281
+#: lib/configure.py:284
 msgid "Plain text (image)"
 msgstr ""
 
-#: lib/configure.py:282
+#: lib/configure.py:285
 msgid "Plain text (Xfig output)"
 msgstr ""
 
-#: lib/configure.py:283
+#: lib/configure.py:286
 msgid "date (output)"
 msgstr ""
 
-#: lib/configure.py:284
+#: lib/configure.py:287
 msgid "DocBook"
 msgstr ""
 
-#: lib/configure.py:284
+#: lib/configure.py:287
 msgid "DocBook|B"
 msgstr ""
 
-#: lib/configure.py:285
+#: lib/configure.py:288
 msgid "Docbook (XML)"
 msgstr ""
 
-#: lib/configure.py:286
+#: lib/configure.py:289
 msgid "Graphviz Dot"
 msgstr ""
 
-#: lib/configure.py:287
+#: lib/configure.py:290
 msgid "LaTeX (pLaTeX)"
 msgstr ""
 
-#: lib/configure.py:288
+#: lib/configure.py:291
 msgid "NoWeb"
 msgstr ""
 
-#: lib/configure.py:288
+#: lib/configure.py:291
 msgid "NoWeb|N"
 msgstr ""
 
-#: lib/configure.py:289
+#: lib/configure.py:292
 msgid "LilyPond music"
 msgstr ""
 
-#: lib/configure.py:290
+#: lib/configure.py:293
 msgid "LaTeX (plain)"
 msgstr ""
 
-#: lib/configure.py:290
+#: lib/configure.py:293
 msgid "LaTeX (plain)|L"
 msgstr ""
 
-#: lib/configure.py:291
+#: lib/configure.py:294
 msgid "LaTeX (pdflatex)"
 msgstr ""
 
-#: lib/configure.py:292 src/frontends/qt4/GuiPrefs.cpp:333
+#: lib/configure.py:295 src/frontends/qt4/GuiPrefs.cpp:333
 msgid "Plain text"
 msgstr ""
 
-#: lib/configure.py:292
+#: lib/configure.py:295
 msgid "Plain text|a"
 msgstr ""
 
-#: lib/configure.py:293
+#: lib/configure.py:296
 msgid "Plain text (pstotext)"
 msgstr ""
 
-#: lib/configure.py:294
+#: lib/configure.py:297
 msgid "Plain text (ps2ascii)"
 msgstr ""
 
-#: lib/configure.py:295
+#: lib/configure.py:298
 msgid "Plain text (catdvi)"
 msgstr ""
 
-#: lib/configure.py:296
+#: lib/configure.py:299
 msgid "Plain Text, Join Lines"
 msgstr ""
 
-#: lib/configure.py:303
+#: lib/configure.py:306
 msgid "BibTeX"
 msgstr ""
 
-#: lib/configure.py:308
+#: lib/configure.py:311
 msgid "EPS"
 msgstr ""
 
-#: lib/configure.py:309
+#: lib/configure.py:312
 msgid "Postscript"
 msgstr ""
 
-#: lib/configure.py:309
+#: lib/configure.py:312
 msgid "Postscript|t"
 msgstr ""
 
-#: lib/configure.py:313
+#: lib/configure.py:316
 msgid "PDF (ps2pdf)"
 msgstr ""
 
-#: lib/configure.py:313
+#: lib/configure.py:316
 msgid "PDF (ps2pdf)|P"
 msgstr ""
 
-#: lib/configure.py:314
+#: lib/configure.py:317
 msgid "PDF (pdflatex)"
 msgstr ""
 
-#: lib/configure.py:314
+#: lib/configure.py:317
 msgid "PDF (pdflatex)|F"
 msgstr ""
 
-#: lib/configure.py:315
+#: lib/configure.py:318
 msgid "PDF (dvipdfm)"
 msgstr ""
 
-#: lib/configure.py:315
+#: lib/configure.py:318
 msgid "PDF (dvipdfm)|m"
 msgstr ""
 
-#: lib/configure.py:318
+#: lib/configure.py:321
 msgid "DVI"
 msgstr ""
 
-#: lib/configure.py:318
+#: lib/configure.py:321
 msgid "DVI|D"
 msgstr ""
 
-#: lib/configure.py:321
+#: lib/configure.py:324
 msgid "DraftDVI"
 msgstr ""
 
-#: lib/configure.py:324
+#: lib/configure.py:327
 msgid "HTML"
 msgstr ""
 
-#: lib/configure.py:324
+#: lib/configure.py:327
 msgid "HTML|H"
 msgstr ""
 
-#: lib/configure.py:327
+#: lib/configure.py:330
 msgid "Noteedit"
 msgstr ""
 
-#: lib/configure.py:330
+#: lib/configure.py:333
 msgid "OpenDocument"
 msgstr ""
 
-#: lib/configure.py:333
+#: lib/configure.py:336
 msgid "date command"
 msgstr ""
 
-#: lib/configure.py:334
+#: lib/configure.py:337
 msgid "Table (CSV)"
 msgstr ""
 
-#: lib/configure.py:336 src/frontends/qt4/GuiView.cpp:832
+#: lib/configure.py:339 src/frontends/qt4/GuiView.cpp:832
 #: src/frontends/qt4/GuiView.cpp:833 src/mathed/MathMacroTemplate.cpp:537
 msgid "LyX"
 msgstr ""
 
-#: lib/configure.py:337
+#: lib/configure.py:340
 msgid "LyX 1.3.x"
 msgstr ""
 
-#: lib/configure.py:338
+#: lib/configure.py:341
 msgid "LyX 1.4.x"
 msgstr ""
 
-#: lib/configure.py:339
+#: lib/configure.py:342
 msgid "LyX 1.5.x"
 msgstr ""
 
-#: lib/configure.py:340
+#: lib/configure.py:343
 msgid "CJK LyX 1.4.x (big5)"
 msgstr ""
 
-#: lib/configure.py:341
+#: lib/configure.py:344
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr ""
 
-#: lib/configure.py:342
+#: lib/configure.py:345
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr ""
 
-#: lib/configure.py:343
+#: lib/configure.py:346
 msgid "LyX Preview"
 msgstr ""
 
-#: lib/configure.py:344
+#: lib/configure.py:347
 msgid "LyX Preview (pLaTeX)"
 msgstr ""
 
-#: lib/configure.py:345
+#: lib/configure.py:348
 msgid "PDFTEX"
 msgstr ""
 
-#: lib/configure.py:346
+#: lib/configure.py:349
 msgid "Program"
 msgstr ""
 
-#: lib/configure.py:347
+#: lib/configure.py:350
 msgid "PSTEX"
 msgstr ""
 
-#: lib/configure.py:348
+#: lib/configure.py:351
 msgid "Rich Text Format"
 msgstr ""
 
-#: lib/configure.py:349
+#: lib/configure.py:352
 msgid "OpenOffice.Org (sxw)"
 msgstr ""
 
-#: lib/configure.py:350 src/frontends/qt4/GuiClipboard.cpp:134
+#: lib/configure.py:353 src/frontends/qt4/GuiClipboard.cpp:134
 msgid "Windows Metafile"
 msgstr ""
 
-#: lib/configure.py:351 src/frontends/qt4/GuiClipboard.cpp:133
+#: lib/configure.py:354 src/frontends/qt4/GuiClipboard.cpp:133
 msgid "Enhanced Metafile"
 msgstr ""
 
-#: lib/configure.py:352
+#: lib/configure.py:355
 msgid "MS Word"
 msgstr ""
 
-#: lib/configure.py:352
+#: lib/configure.py:355
 msgid "MS Word|W"
 msgstr ""
 
-#: lib/configure.py:353
+#: lib/configure.py:356
 msgid "HTML (MS Word)"
 msgstr ""
 
@@ -14423,7 +14443,7 @@ msgstr ""
 msgid "LyX will not be able to produce output."
 msgstr ""
 
-#: src/BufferParams.cpp:1638
+#: src/BufferParams.cpp:1645
 #, c-format
 msgid ""
 "The document class %1$s could not be found. A default textclass with default "
@@ -14431,20 +14451,20 @@ msgid ""
 "correct textclass is selected from the document settings dialog."
 msgstr ""
 
-#: src/BufferParams.cpp:1643
+#: src/BufferParams.cpp:1650
 msgid "Document class not found"
 msgstr ""
 
-#: src/BufferParams.cpp:1650 src/LyXFunc.cpp:714
+#: src/BufferParams.cpp:1657 src/LyXFunc.cpp:714
 #, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr ""
 
-#: src/BufferParams.cpp:1652 src/LyXFunc.cpp:716
+#: src/BufferParams.cpp:1659 src/LyXFunc.cpp:716
 msgid "Could not load class"
 msgstr ""
 
-#: src/BufferParams.cpp:1714
+#: src/BufferParams.cpp:1721
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -14453,15 +14473,15 @@ msgid ""
 "probably need to reconfigure LyX.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1718
+#: src/BufferParams.cpp:1725
 msgid "Module not available"
 msgstr ""
 
-#: src/BufferParams.cpp:1719
+#: src/BufferParams.cpp:1726
 msgid "Some layouts may not be available."
 msgstr ""
 
-#: src/BufferParams.cpp:1726
+#: src/BufferParams.cpp:1733
 #, c-format
 msgid ""
 "The module %1$s requires a package that is\n"
@@ -14469,20 +14489,20 @@ msgid ""
 "may not be possible.\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1729
+#: src/BufferParams.cpp:1736
 msgid "Package not available"
 msgstr ""
 
-#: src/BufferParams.cpp:1734
+#: src/BufferParams.cpp:1741
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr ""
 
-#: src/BufferParams.cpp:1735 src/BufferParams.cpp:1741
+#: src/BufferParams.cpp:1742 src/BufferParams.cpp:1748
 msgid "Read Error"
 msgstr ""
 
-#: src/BufferParams.cpp:1740
+#: src/BufferParams.cpp:1747
 msgid "Error reading internal layout information"
 msgstr ""
 
@@ -14561,22 +14581,22 @@ msgstr ""
 msgid "Statistics"
 msgstr ""
 
-#: src/BufferView.cpp:2066
+#: src/BufferView.cpp:2070
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr ""
 
-#: src/BufferView.cpp:2077
+#: src/BufferView.cpp:2081
 #, c-format
 msgid "Document %1$s inserted."
 msgstr ""
 
-#: src/BufferView.cpp:2079
+#: src/BufferView.cpp:2083
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr ""
 
-#: src/BufferView.cpp:2318
+#: src/BufferView.cpp:2322
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14584,26 +14604,26 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/BufferView.cpp:2320
+#: src/BufferView.cpp:2324
 msgid "Could not read file"
 msgstr ""
 
-#: src/BufferView.cpp:2327
+#: src/BufferView.cpp:2331
 #, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr ""
 
-#: src/BufferView.cpp:2328 src/output.cpp:39
+#: src/BufferView.cpp:2332 src/output.cpp:39
 msgid "Could not open file"
 msgstr ""
 
-#: src/BufferView.cpp:2335
+#: src/BufferView.cpp:2339
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2336
+#: src/BufferView.cpp:2340
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -16221,19 +16241,19 @@ msgstr ""
 msgid "Plain Layout"
 msgstr ""
 
-#: src/TextClass.cpp:618
+#: src/TextClass.cpp:638
 msgid "Missing File"
 msgstr ""
 
-#: src/TextClass.cpp:619
+#: src/TextClass.cpp:639
 msgid "Could not find stdinsets.inc! This may lead to data loss!"
 msgstr ""
 
-#: src/TextClass.cpp:622
+#: src/TextClass.cpp:642
 msgid "Corrupt File"
 msgstr ""
 
-#: src/TextClass.cpp:623
+#: src/TextClass.cpp:643
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr ""
 
