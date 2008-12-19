@@ -1,4 +1,4 @@
-#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -38398,8 +38398,8 @@ Document Class
 \end_layout
 
 \begin_layout Standard
-Here you set the document class, class options, a Postscript driver, and
- a master document.
+Here you set the document class, class options, a graphics driver, and a
+ master document.
  Document classes are described in section
 \begin_inset space ~
 \end_inset
@@ -38420,13 +38420,14 @@ Predefined
  and you can decide to use them or not.
  If you don't exactly know what the default class options are for, it is
  recommended not to touch them.
- The Postscript driver is used for LaTeX's color and graphics packages.
+ The graphics driver is used for LaTeX's graphics, color and page layout
+ packages.
  When using 
 \family sans
 Default
 \family default
 , the default driver for the LaTeX-packages are used.
- It is recommended to use the default unless your know what you are doing.
+ It is recommended to use the default unless you know what you are doing.
 \begin_inset Foot
 status collapsed
 
