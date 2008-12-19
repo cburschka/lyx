@@ -10,6 +10,8 @@
 
 #include <config.h>
 
+//#define AUTOCORRECT
+
 #include "InsetMathNest.h"
 
 #include "InsetMathArray.h"
@@ -25,6 +27,9 @@
 #include "InsetMathSpace.h"
 #include "InsetMathSymbol.h"
 #include "InsetMathUnknown.h"
+#ifdef AUTOCORRECT
+#include "MathAutoCorrect.h"
+#endif
 #include "MathCompletionList.h"
 #include "MathData.h"
 #include "MathFactory.h"
@@ -1513,10 +1518,10 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 	// This is annoying as one has to press <space> far too often.
 	// Disable it.
 
-#if 0
+#ifdef AUTOCORRECT
 		// leave autocorrect mode if necessary
-		if (autocorrect() && c == ' ') {
-			autocorrect() = false;
+		if (cur.autocorrect() && c == ' ') {
+			cur.autocorrect() = false;
 			return true;
 		}
 #endif
@@ -1616,9 +1621,11 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 	}
 
 
+#ifdef AUTOCORRECT
 	// try auto-correction
-	//if (autocorrect() && hasPrevAtom() && math_autocorrect(prevAtom(), c))
-	//	return true;
+	if (cur.autocorrect() && cur.pos() != 0 && math_autocorrect(cur.prevAtom(), c))
+		return true;
+#endif
 
 	// no special circumstances, so insert the character without any fuss
 	cur.insert(c);
