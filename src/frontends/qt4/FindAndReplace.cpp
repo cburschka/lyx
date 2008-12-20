@@ -106,9 +106,15 @@ void FindAndReplace::findAdv(bool casesensitive,
 	} else {
 		ParIterator it = buffer.par_iterator_begin();
 		ParIterator end = buffer.par_iterator_end();
+		OutputParams runparams(&buffer.params().encoding());
+		odocstringstream os;
+		runparams.nice = true;
+		runparams.flavor = OutputParams::LATEX;
+		runparams.linelen = 100000; //lyxrc.plaintext_linelen;
+		runparams.dryrun = true;
 		for (; it != end; ++it) {
 			LYXERR0("Adding to search string: '" << it->asString(false) << "'");
-			searchString += it->asString(AS_STR_INSETS);
+			searchString += it->stringify(pos_type(0), it->size(), AS_STR_INSETS, runparams);
 		}
 	}
 //	lyxerr << "Searching for '" << to_utf8(searchString) << "'" << std::endl;

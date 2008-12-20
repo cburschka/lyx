@@ -68,22 +68,23 @@ bool findNextChange(BufferView * bv);
 
 class FindAdvOptions {
 public:
-  FindAdvOptions(
-                 docstring const & search,
-                 bool casesensitive,
-                 bool matchword,
-                 bool forward,
-                 bool expandmacros,
-                 bool ignoreformat,
-                 bool regexp);
-  FindAdvOptions() {}
-  docstring search;
-  bool casesensitive;
-  bool matchword;
-  bool forward;
-  bool expandmacros;
-  bool ignoreformat;
-  bool regexp;
+	FindAdvOptions(
+		docstring const & search,
+		bool casesensitive,
+		bool matchword,
+		bool forward,
+		bool expandmacros,
+		bool ignoreformat,
+		bool regexp
+	);
+	FindAdvOptions() {  }
+	docstring search;
+	bool casesensitive;
+	bool matchword;
+	bool forward;
+	bool expandmacros;
+	bool ignoreformat;
+	bool regexp;
 };
 
 /// Write a FindAdvOptions instance to a stringstream
@@ -105,8 +106,10 @@ bool findAdv(BufferView * bv, FindAdvOptions const & opt);
  ** This is useful for computing opt.search from the SearchAdvDialog controller (ControlSearchAdv).
  ** Ideally, this should not be needed, and the opt.search field should become a Text const &.
  **/
-docstring stringifyFromForSearch(FindAdvOptions const & opt,
-    Buffer const & buf, DocIterator const & cur, int len = -1);
+docstring stringifyFromForSearch(
+	FindAdvOptions const & opt,
+	DocIterator const & cur,
+	int len = -1);
 
 } // namespace lyx
 

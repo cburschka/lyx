@@ -124,6 +124,10 @@ public:
 	docstring asString(pos_type beg, pos_type end,
 		int options = AS_STR_NONE) const;
 
+	/// Extract only the explicitly visible text (without any formatting),
+	/// descending into insets
+	docstring stringify(pos_type beg, pos_type end, int options, OutputParams & runparams) const;
+
 	///
 	void write(std::ostream &, BufferParams const &,
 		   depth_type & depth) const;

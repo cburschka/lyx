@@ -1,7 +1,7 @@
 /**
  * \file lyxfind.cpp
  * This file is part of LyX, the document processor.
- * Licence details can be found in the file COPYING.
+ * License details can be found in the file COPYING.
  *
  * \author Lars Gullik Bjønnes
  * \author John Levon
@@ -43,8 +43,10 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/lassert.h"
 
 #include <boost/regex.hpp>
+#include <boost/next_prior.hpp>
 
 using namespace std;
 using namespace lyx::support;
@@ -418,7 +420,7 @@ string apply_escapes(string s, Escapes const & escape_map)
  **/
 size_t find_matching_brace(string const & s, size_t pos)
 {
-	BOOST_ASSERT(s[pos] == '{');
+	LASSERT(s[pos] == '{', /* */);
 	int open_braces = 1;
 	for (++pos; pos < s.size(); ++pos) {
 		if (s[pos] == '\\')
@@ -534,10 +536,14 @@ public:
 	/** Tests if text starting at the supplied position matches with the one provided to the MatchStringAdv
 	 ** constructor as opt.search, under the opt.* options settings.
 	 **
+	 ** @param at_begin
+	 ** 	If set, then match is searched only against beginning of text starting at cur.
+	 ** 	If unset, then match is searched anywhere in text starting at cur.
+	 ** 
 	 ** @return
 	 ** The length of the matching text, or zero if no match was found.
 	 **/
-	int operator()(DocIterator const & cur, int len = -1) const;
+	int operator()(DocIterator const & cur, int len = -1, bool at_begin = true) const;
 
 public:
 	/// buffer
@@ -564,6 +570,8 @@ private:
 	string par_as_string;
 	// regular expression to use for searching
 	boost::regex regexp;
+	// same as regexp, but prefixed with a ".*"
+	boost::regex regexp2;
 	// unmatched open braces in the search string/regexp
 	int open_braces;
 	// number of (.*?) subexpressions added at end of search regexp for closing
@@ -599,7 +607,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer const & buf, FindAdvOptions const & o
 			break;
 		} while (true);
 		LYXERR(Debug::DEBUG, "Open braces: " << open_braces);
-		BOOST_ASSERT(braces_match(par_as_string.begin(), par_as_string.end(), open_braces));
+		LASSERT(braces_match(par_as_string.begin(), par_as_string.end(), open_braces), /* */);
 		LYXERR(Debug::DEBUG, "Built MatchStringAdv object: par_as_string = '" << par_as_string << "'");
 	} else {
 		par_as_string = escape_for_regex(par_as_string);
@@ -620,26 +628,35 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer const & buf, FindAdvOptions const & o
 		LYXERR(Debug::DEBUG, "par_as_string now is '" << par_as_string << "'");
 		LYXERR(Debug::DEBUG, "Open braces: " << open_braces);
 		LYXERR(Debug::DEBUG, "Close .*?  : " << close_wildcards);
-		BOOST_ASSERT(braces_match(par_as_string.begin(), par_as_string.end(), open_braces));
+		LASSERT(braces_match(par_as_string.begin(), par_as_string.end(), open_braces), /* */);
 		// Entered regexp must match at begin of searched string buffer
 		par_as_string = string("\\`") + par_as_string;
 		LYXERR(Debug::DEBUG, "Replaced text (to be used as regex): " << par_as_string);
 		regexp = boost::regex(par_as_string);
+		regexp2 = boost::regex(string(".*") + par_as_string);
 	}
 }
 
-int MatchStringAdv::operator()(DocIterator const & cur, int len) const
+
+int MatchStringAdv::operator()(DocIterator const & cur, int len, bool at_begin) const
 {
-	docstring docstr = stringifyFromForSearch(opt, buf, cur, len);
+	docstring docstr = stringifyFromForSearch(opt, cur, len);
 	LYXERR(Debug::DEBUG, "Matching against     '" << lyx::to_utf8(docstr) << "'");
 	string str = normalize(docstr);
 	LYXERR(Debug::DEBUG, "After normalization: '" << str << "'");
 	if (! opt.regexp) {
-		if (str.substr(0, par_as_string.size()) == par_as_string)
-			return par_as_string.size();
+		if (at_begin) {
+			if (str.substr(0, par_as_string.size()) == par_as_string)
+				return par_as_string.size();
+		} else {
+			size_t pos = str.find(par_as_string);
+			if (pos != string::npos)
+				return par_as_string.size();
+		}
 	} else {
 		// Try all possible regexp matches, until one that verifies the braces match test is found
-		boost::sregex_iterator re_it(str.begin(), str.end(), regexp);
+		boost::regex const *p_regexp = at_begin ? &regexp : &regexp2;
+		boost::sregex_iterator re_it(str.begin(), str.end(), *p_regexp);
 		boost::sregex_iterator re_it_end;
 		for (; re_it != re_it_end; ++re_it) {
 			boost::match_results<string::const_iterator> const & m = *re_it;
@@ -693,7 +710,16 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 			Paragraph const & par = cur.paragraph();
 			// TODO what about searching beyond/across paragraph breaks ?
 			// TODO Try adding a AS_STR_INSERTS as last arg
-			return par.asString(cur.pos(), ( len == -1 || cur.pos() + len > int(par.size()) ) ? int(par.size()) : cur.pos() + len, AS_STR_INSETS);
+			pos_type end = ( len == -1 || cur.pos() + len > int(par.size()) ) ? int(par.size()) : cur.pos() + len;
+			OutputParams runparams(&cur.buffer()->params().encoding());
+			odocstringstream os;
+			runparams.nice = true;
+			runparams.flavor = OutputParams::LATEX;
+			runparams.linelen = 100000; //lyxrc.plaintext_linelen;
+			// No side effect of file copying and image conversion
+			runparams.dryrun = true;
+			LYXERR(Debug::DEBUG, "Stringifying with cur: " << cur << ", from pos: " << cur.pos() << ", end: " << end);
+			return par.stringify(cur.pos(), end, AS_STR_INSETS, runparams);
 	} else if (cur.inMathed()) {
 			odocstringstream os;
 			CursorSlice cs = cur.top();
@@ -712,12 +738,13 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
  * if len is -1.
  */
 
-docstring latexifyFromCursor(Buffer const & buf, DocIterator const & cur, int len)
+docstring latexifyFromCursor(DocIterator const & cur, int len)
 {
 	LYXERR(Debug::DEBUG, "Latexifying with len=" << len << " from cursor at pos: " << cur);
 	LYXERR(Debug::DEBUG, "  with cur.lastpost=" << cur.lastpos() << ", cur.lastrow="
 		<< cur.lastrow() << ", cur.lastcol=" << cur.lastcol());
-	BOOST_ASSERT(buf.isLatex());
+	Buffer const & buf = *cur.buffer();
+	LASSERT(buf.isLatex(), /* */);
 
 	TexRow texrow;
 	odocstringstream ods;
@@ -795,13 +822,13 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 	size_t d;
 	DocIterator old_cur(cur.buffer());
 	do {
-	  LYXERR(Debug::DEBUG, "Forwarding one step (searching for innermost match)");
+		LYXERR(Debug::DEBUG, "Forwarding one step (searching for innermost match)");
 		d = cur.depth();
 		old_cur = cur;
 		cur.forwardPos();
 	} while (cur && cur.depth() > d && match(cur) > 0);
 	cur = old_cur;
-	BOOST_ASSERT(match(cur) > 0);
+	LASSERT(match(cur) > 0, /* */);
 	LYXERR(Debug::DEBUG, "Ok");
 
 	// Compute the match length
@@ -823,69 +850,104 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 	return len;
 }
 
+
 /// Finds forward
 int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 {
 	if (!cur)
 		return 0;
-	for (; cur; cur.forwardPos()) {
-		// odocstringstream ods;
-		// ods << _("Searching ... ")
-		//     << (cur.bottom().lastpit() - cur.bottom().pit()) * 100 / total;
-		// cur.message(ods.str());
-		if (match(cur))
-			return findAdvFinalize(cur, match);
-	}
+	int wrap_answer;
+	do {
+		while (cur && !match(cur, -1, false)) {
+			if (cur.pit() < cur.lastpit())
+				cur.forwardPar();
+			else {
+				cur.forwardPos();
+			}
+		}
+		for (; cur; cur.forwardPos()) {
+			if (match(cur))
+				return findAdvFinalize(cur, match);
+		}
+		wrap_answer = frontend::Alert::prompt(
+			_("Wrap search ?"),
+			_("End of document reached while searching forward\n"
+				"\n"
+				"Continue searching from beginning ?"),
+			0, 1, _("&Yes"), _("&No"));
+		cur.clear();
+		cur.push_back(CursorSlice(match.buf.inset()));
+	} while (wrap_answer == 0);
 	return 0;
 }
 
+
 /// Finds backwards
-int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match)
-{
+int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 	//	if (cur.pos() > 0 || cur.depth() > 0)
 	//		cur.backwardPos();
 	DocIterator cur_orig(cur);
 	if (match(cur_orig))
 		findAdvFinalize(cur_orig, match);
-	// int total = cur.bottom().pit() + 1;
-	for (; cur; cur.backwardPos()) {
-		// odocstringstream ods;
-		// ods << _("Searching ... ") << (total - cur.bottom().pit()) * 100 / total;
-		// cur.message(ods.str());
-		if (match(cur)) {
-			// Find the most backward consecutive match within same
-			// paragraph while searching backwards.
-			int pit = cur.pit();
-			int old_len;
-			DocIterator old_cur;
-			int len = findAdvFinalize(cur, match);
-			do {
-				old_cur = cur;
-				old_len = len;
+	//	int total = cur.bottom().pit() + 1;
+	int wrap_answer;
+	do {
+		// TODO No ! così non va.
+		bool pit_changed = false;
+		while (cur && !match(cur, -1, false)) {
+			if (cur.pit() > 0)
+				--cur.pit();
+			else {
 				cur.backwardPos();
-				LYXERR(Debug::DEBUG, "old_cur: " << old_cur
-						<< ", old_len: " << len << ", cur: " << cur);
-			} while (cur && cur.pit() == pit && match(cur)
-				 && (len = findAdvFinalize(cur, match)) > old_len);
-			cur = old_cur;
-			len = old_len;
-			LYXERR(Debug::DEBUG, "cur_orig    : " << cur_orig);
-			LYXERR(Debug::DEBUG, "cur         : " << cur);
-			if (cur != cur_orig)
-				return len;
+				if (cur)
+					cur.pos() = 0;
+			}
+			pit_changed = true;
 		}
-	}
+		if (cur && pit_changed)
+			cur.pos() = cur.lastpos();
+		for (; cur; cur.backwardPos()) {
+			if (match(cur)) {
+				// Find the most backward consecutive match within same paragraph while searching backwards.
+				int pit = cur.pit();
+				int old_len;
+				DocIterator old_cur;
+				int len = findAdvFinalize(cur, match);
+				do {
+					old_cur = cur;
+					old_len = len;
+					cur.backwardPos();
+					LYXERR(Debug::DEBUG, "old_cur: " << old_cur << ", old_len=" << len << ", cur: " << cur);
+				} while (cur && cur.pit() == pit && match(cur)
+					&& (len = findAdvFinalize(cur, match)) > old_len);
+				cur = old_cur;
+				len = old_len;
+				LYXERR(Debug::DEBUG, "cur_orig    : " << cur_orig);
+				LYXERR(Debug::DEBUG, "cur         : " << cur);
+				if (cur != cur_orig)
+					return len;
+			}
+		}
+		wrap_answer = frontend::Alert::prompt(
+			_("Wrap search ?"),
+			_("Beginning of document reached while searching backwards\n"
+				"\n"
+				"Continue searching from end ?"),
+			0, 1, _("&Yes"), _("&No"));
+		cur = doc_iterator_end(&match.buf);
+		cur.backwardPos();
+	} while (wrap_answer == 0);
 	return 0;
 }
 
 } // anonym namespace
 
 
-docstring stringifyFromForSearch(FindAdvOptions const & opt, Buffer const & buf,
+docstring stringifyFromForSearch(FindAdvOptions const & opt,
 	DocIterator const & cur, int len)
 {
 	if (!opt.ignoreformat)
-		return latexifyFromCursor(buf, cur, len);
+		return latexifyFromCursor(cur, len);
 	else
 		return stringifyFromCursor(cur, len);
 }

@@ -2448,6 +2448,29 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options) const
 }
 
 
+docstring Paragraph::stringify(pos_type beg, pos_type end, int options, OutputParams & runparams) const
+{
+	odocstringstream os;
+
+	if (beg == 0 
+		&& options & AS_STR_LABEL
+		&& !d->params_.labelString().empty())
+		os << d->params_.labelString() << ' ';
+
+	for (pos_type i = beg; i < end; ++i) {
+		char_type const c = d->text_[i];
+		if (isPrintable(c) || c == '\t'
+		    || (c == '\n' && options & AS_STR_NEWLINES))
+			os.put(c);
+		else if (c == META_INSET && options & AS_STR_INSETS) {
+			getInset(i)->plaintext(os, runparams);
+		}
+	}
+
+	return os.str();
+}
+
+
 void Paragraph::setInsetOwner(Inset const * inset)
 {
 	d->inset_owner_ = inset;
