@@ -28,8 +28,8 @@ set(PACKAGE_VERSION 2.0svn)
 set(LYX_DATE "2008/2009")
 #TODO
 set(VERSION_INFO "CMake Build")
-set(LYX_DIR_VER "LYX_DIR_16x")
-set(LYX_USERDIR_VER "LYX_USERDIR_16x")
+set(LYX_DIR_VER "LYX_DIR_20x")
+set(LYX_USERDIR_VER "LYX_USERDIR_20x")
 
 set(PROGRAM_SUFFIX "")
 set(LYX_ABS_INSTALLED_DATADIR "/usr/local/share/lyx${PACKAGE_VERSION}")
@@ -57,6 +57,7 @@ set(LYX_HPP_FILES *.h)
 include(LyXPaths)
 include(LyXMacros)
 include(ProjectSourceGroup)
+
 
 if(merge OR merge_rebuild)
 	set(merge 1 CACHE TYPE STRING FORCE)
@@ -317,6 +318,7 @@ configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 
 find_package(ICONV REQUIRED)
 add_definitions(-DHAVE_ICONV=1)
+find_package(Gettext)
 
 
 #TODO: insource is not the best place
