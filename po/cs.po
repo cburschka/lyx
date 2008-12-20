@@ -1579,9 +1579,8 @@ msgid "Cust&om:"
 msgstr "V&lastní:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:123
-#, fuzzy
 msgid "&Graphics driver:"
-msgstr "&Obrázek"
+msgstr "&Ovladaè pro obrázky:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:153
 msgid "Select if the current document is included to a master file"
@@ -8287,9 +8286,8 @@ msgid "Float"
 msgstr "Plovoucí"
 
 #: lib/layouts/stdinsets.inc:239
-#, fuzzy
 msgid "Wrap"
-msgstr "obtékání"
+msgstr "Obtékání"
 
 #: lib/layouts/stdinsets.inc:267
 msgid "OptArg"
@@ -13880,18 +13878,16 @@ msgstr ""
 "Pro dal¹í informace si pøeètìte manuálovou stránku ('info date').\n"
 
 #: lib/external_templates:332
-#, fuzzy
 msgid "Dia"
-msgstr "Day"
+msgstr "Dia"
 
 #: lib/external_templates:333 lib/external_templates:336
-#, fuzzy
 msgid "Dia: $$AbsOrRelPathParent$$Basename"
-msgstr "Bitmapa: $$AbsOrRelPathParent$$Basename"
+msgstr "Dia: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:335
 msgid "Dia diagram.\n"
-msgstr ""
+msgstr "Diagram programu Dia.\n"
 
 #: lib/configure.py:253
 msgid "Tgif"
@@ -13902,9 +13898,8 @@ msgid "FIG"
 msgstr "FIG"
 
 #: lib/configure.py:259
-#, fuzzy
 msgid "DIA"
-msgstr "DVI"
+msgstr "DIA"
 
 #: lib/configure.py:262
 msgid "Grace"
