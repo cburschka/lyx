@@ -213,6 +213,7 @@
 \tracking_changes true
 \output_changes false
 \author "pavel" 
+\author "pavel" 
 \author "" 
 \end_header
 
@@ -31201,6 +31202,13 @@ The external material feature allows you to insert files to your document
  document output format because LyX takes care of needed conversions.
  This is similar to images that can be inserted in various image formats
  to LyX documents.
+
+\change_inserted 0 1229737370
+ Note that when Instant Preview enables you to see some of the external
+ material directly in LyX window (e.g.
+ Xfig or Dia).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -31388,7 +31396,7 @@ target "http://en.wikipedia.org/wiki/Xfig"
 
 \begin_layout Description
 
-\change_inserted 0 1229526929
+\change_inserted 1 1229526929
 Dia This template supports diagrams created with the program 
 \series bold
 
