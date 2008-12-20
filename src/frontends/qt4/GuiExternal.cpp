@@ -513,7 +513,8 @@ void GuiExternal::updateContents()
 	displayGB->setChecked(params_.display);
 	displayscaleED->setEnabled(params_.display && !isBufferReadonly());
 	displayscaleED->setText(QString::number(params_.lyxscale));
-	displayGB->setEnabled(lyxrc.display_graphics);
+	displayGB->setEnabled(lyxrc.display_graphics &&
+				(params_.preview_mode != PREVIEW_INSTANT));
 
 	setRotation(*angleED, *originCO, params_.rotationdata);
 
