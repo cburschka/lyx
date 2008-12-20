@@ -556,6 +556,7 @@ void GuiExternal::updateTemplate()
 
 	found = std::find(tr_begin, tr_end, external::Extra) != tr_end;
 	optionsGB->setEnabled(found);
+	displayscaleED->setEnabled(templ.preview_mode != PREVIEW_INSTANT);
 
 	if (!found)
 		return;
