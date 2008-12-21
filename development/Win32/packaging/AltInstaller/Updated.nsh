@@ -6,13 +6,14 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
- #File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\external_templates"
  #File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
- #SetOutPath "$INSTDIR\Resources\doc"
+ SetOutPath "$INSTDIR\Resources\doc"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\UserGuide.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\UserGuide.lyx"
  #SetOutPath "$INSTDIR\Resources\doc\de"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\de\EmbeddedObjects.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Math.lyx"
@@ -34,6 +35,8 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_6.py"
+ SetOutPath "$INSTDIR\Resources\man"
+ File "${PRODUCT_SOURCEDIR}\Resources\man\tex2lyx.1"
 
 FunctionEnd
 
