@@ -1,4 +1,4 @@
-#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -31476,6 +31476,22 @@ La fonction d'insertion d'objets externes vous permet d'insérer le contenu
  qui va s'occuper des conversions.
  Ce mécanisme est semblable à celui qui permet d'insérer dans un document
  LyX des images dans des formats divers.
+ 
+\lang english
+When you have enabled Instant Preview in LyX's preferences under 
+\family sans
+Look
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+feel\SpecialChar \menuseparator
+Graphics
+\family default
+, the external material types Dia and Xfig is directly shown in LyX.
 \end_layout
 
 \begin_layout Standard
@@ -31583,6 +31599,24 @@ reference "tab:Comparaison-des-dates"
 
 \end_inset
 
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Dia This template supports diagrams created with the program 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Dia"
+target "http://en.wikipedia.org/wiki/Dia_(software)"
+
+\end_inset
+
+
+\series default
 .
 \end_layout
 
