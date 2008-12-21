@@ -210,10 +210,10 @@
 \bullet 1 1 34 -1
 \bullet 2 2 35 -1
 \bullet 3 2 7 -1
-\tracking_changes true
+\tracking_changes false
 \output_changes false
-\author "pavel" 
-\author "pavel" 
+\author "" 
+\author "" 
 \author "" 
 \end_header
 
@@ -31202,13 +31202,20 @@ The external material feature allows you to insert files to your document
  document output format because LyX takes care of needed conversions.
  This is similar to images that can be inserted in various image formats
  to LyX documents.
+ When you have enabled Instant Preview in LyX's preferences under 
+\family sans
+Look
+\begin_inset space ~
+\end_inset
 
-\change_inserted 0 1229737370
- Note that when Instant Preview enables you to see some of the external
- material directly in LyX window (e.g.
- Xfig or Dia).
-\change_unchanged
+and
+\begin_inset space ~
+\end_inset
 
+feel\SpecialChar \menuseparator
+Graphics
+\family default
+, the external material types Dia and Xfig is directly shown in LyX.
 \end_layout
 
 \begin_layout Standard
@@ -31310,6 +31317,22 @@ reference "tab:Comparison-of-the"
 \end_layout
 
 \begin_layout Description
+Dia This template supports diagrams created with the program 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Dia"
+target "http://en.wikipedia.org/wiki/Dia_(software)"
+
+\end_inset
+
+
+\series default
+.
+\end_layout
+
+\begin_layout Description
 LilyPond This template is used for music notation typeset with the program
 \begin_inset Newline linebreak
 \end_inset
@@ -31392,26 +31415,6 @@ target "http://en.wikipedia.org/wiki/Xfig"
 
 \series default
 .
-\end_layout
-
-\begin_layout Description
-
-\change_inserted 1 1229526929
-Dia This template supports diagrams created with the program 
-\series bold
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Dia"
-target "http://en.wikipedia.org/wiki/Dia_(software)"
-
-\end_inset
-
-
-\series default
-.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard

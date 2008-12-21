@@ -1,4 +1,4 @@
-#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -31630,6 +31630,20 @@ Datei\SpecialChar \menuseparator
  weil LyX sich darum kümmert.
  Das ist ähnlich wie bei Bildern, die in verschiedenen Formaten in LyX-Dokumente
  eingefügt werden können.
+ Wenn die Grafikvorschau in den LyX-Einstellungen unter
+\family sans
+ Aussehen
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
+Handhabung\SpecialChar \menuseparator
+Grafik
+\family default
+, werden die externen Materialtypen Dia und Xfig direkt in LyX angezeigt.
 \end_layout
 
 \begin_layout Standard
@@ -31715,6 +31729,22 @@ reference "tab:Vergleich-der-Datums-Eingaben"
 \end_inset
 
  verglichen.
+\end_layout
+
+\begin_layout Description
+Dia unterstützt Diagramme, die mit dem Programm 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Dia"
+target "http://en.wikipedia.org/wiki/Dia_(software)"
+
+\end_inset
+
+
+\series default
+ erzeugt wurden.
 \end_layout
 
 \begin_layout Description
@@ -32331,10 +32361,9 @@ Input
 
 anzeigen
 \family default
- angekreuzt wurde und in den LyX-
+ angekreuzt wurde und in den LyX-Einstellungen unter
 \family sans
-Einstellungen\SpecialChar \menuseparator
-Aussehen
+ Aussehen
 \begin_inset space ~
 \end_inset
 
@@ -32343,7 +32372,8 @@ Aussehen
 \end_inset
 
 Handhabung\SpecialChar \menuseparator
-Grafik Sofortige
+Grafik\SpecialChar \menuseparator
+Sofortige
 \begin_inset space ~
 \end_inset
 
