@@ -107,6 +107,8 @@ public:
 	InsetExternalParams const & params() const;
 	///
 	void setParams(InsetExternalParams const &);
+	/// Update not loaded previews
+	void updatePreview();
 	/// \returns the number of rows (\n's) of generated code.
 	int latex(odocstream &, OutputParams const &) const;
 	///

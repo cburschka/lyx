@@ -54,6 +54,7 @@
 
 #include "insets/InsetCollapsable.h"
 #include "insets/InsetCommand.h"
+#include "insets/InsetExternal.h"
 #include "insets/InsetFloatList.h"
 #include "insets/InsetNewline.h"
 #include "insets/InsetQuotes.h"
@@ -850,7 +851,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_INSERT: {
 		cur.recordUndo();
+
+		// We have to avoid triggering InstantPreview loading
+		// before inserting into the document. See bug #5626.
+		bool loaded = bv->buffer().isFullyLoaded();
+		bv->buffer().setFullyLoaded(false);
 		Inset * inset = createInset(bv->buffer(), cmd);
+		bv->buffer().setFullyLoaded(loaded);
+
 		if (inset) {
 			// FIXME (Abdel 01/02/2006):
 			// What follows would be a partial fix for bug 2154:
@@ -878,7 +886,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				cutSelection(cur, true, false);
 			cur.insert(inset);
 			cur.posForward();
+
+			// trigger InstantPreview now
+			if (inset->lyxCode() == EXTERNAL_CODE) {
+				InsetExternal & ins = static_cast<InsetExternal &>(*inset);
+				ins.updatePreview();
+			}
 		}
+
 		break;
 	}
 

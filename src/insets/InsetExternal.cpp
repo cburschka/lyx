@@ -539,6 +539,12 @@ InsetExternalParams const & InsetExternal::params() const
 }
 
 
+void InsetExternal::updatePreview()
+{
+	setParams(params_);
+}
+
+
 void InsetExternal::setParams(InsetExternalParams const & p)
 {
 	params_ = p;
