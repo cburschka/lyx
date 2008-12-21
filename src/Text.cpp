@@ -59,11 +59,11 @@
 #include "insets/InsetSpecialChar.h"
 #include "insets/InsetTabular.h"
 
-#include "support/lassert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
