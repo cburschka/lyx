@@ -889,7 +889,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 			// trigger InstantPreview now
 			if (inset->lyxCode() == EXTERNAL_CODE) {
-				InsetExternal & ins = static_cast<InsetExternal &>(*inset);
+				InsetExternal & ins =
+					static_cast<InsetExternal &>(*inset);
 				ins.updatePreview();
 			}
 		}
