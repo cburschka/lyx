@@ -2050,8 +2050,8 @@ void PrefShortcuts::apply(LyXRC & rc) const
 		return;
 	}
 	FileName user_bind_file(bind_dir.absFilename() + "/user.bind");
-	user_bind_.write(user_bind_file.toFilesystemEncoding(), false, false);
-	user_unbind_.write(user_bind_file.toFilesystemEncoding(), true, true);
+	user_unbind_.write(user_bind_file.toFilesystemEncoding(), false, true);
+	user_bind_.write(user_bind_file.toFilesystemEncoding(), true, false);
 	// immediately apply the keybindings. Why this is not done before?
 	// The good thing is that the menus are updated automatically.
 	theTopLevelKeymap().clear();
