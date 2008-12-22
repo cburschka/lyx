@@ -191,6 +191,24 @@ Menuset
 	End
 
 #
+# InsetMathSpace context menu
+#
+	Menu "context-mathspace"
+		Item "Thin Space|T" "next-inset-modify mathspace \thinspace{}"
+		Item "Medium Space|M" "next-inset-modify mathspace \medspace{}"
+		Item "Thick Space|h" "next-inset-modify mathspace \thickspace{}"
+		Item "Negative Thin Space|N" "next-inset-modify mathspace \negthinspace{}"
+		Item "Negative Medium Space|u" "next-inset-modify mathspace \negmedspace{}"
+		Item "Negative Thick Space|i" "next-inset-modify mathspace \negthickspace{}"
+		Item "Half Quad Space (Enskip)|k" "next-inset-modify mathspace \enskip{}"
+		Item "Quad Space|Q" "next-inset-modify mathspace \quad{}"
+		Item "Double Quad Space|u" "next-inset-modify mathspace \qquad{}"
+		Item "Custom Length|C" "command-sequence next-inset-modify mathspace \hspace{} \length 1in; next-inset-toggle"
+		Separator
+		Item "Settings...|S" "next-inset-toggle"
+	End
+
+#
 # InsetVSpace context menu
 #
 	Menu "context-vspace"

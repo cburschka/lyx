@@ -840,7 +840,6 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	//case LFUN_SERVER_GET_XY:
-	//	sprintf(dispatch_buffer, "%d %d",);
 	//	break;
 
 	case LFUN_SERVER_SET_XY: {
@@ -1055,15 +1054,15 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_SPACE_INSERT:
 		cur.recordUndoSelection();
-		cur.insert(MathAtom(new InsetMathSpace(from_ascii(","))));
+		cur.insert(MathAtom(new InsetMathSpace));
 		break;
 
 	case LFUN_MATH_SPACE:
 		cur.recordUndoSelection();
 		if (cmd.argument().empty())
-			cur.insert(MathAtom(new InsetMathSpace(from_ascii(","))));
+			cur.insert(MathAtom(new InsetMathSpace));
 		else
-			cur.insert(MathAtom(new InsetMathSpace(cmd.argument())));
+			cur.insert(MathAtom(new InsetMathSpace(to_utf8(cmd.argument()), "")));
 		break;
 
 	case LFUN_ERT_INSERT:
@@ -1131,6 +1130,9 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (name == "ref") {
 			InsetMathRef tmp(name);
 			data = tmp.createDialogStr(to_utf8(name));
+		} else if (name == "mathspace") {
+			InsetMathSpace tmp;
+			data = tmp.createDialogStr();
 		}
 		cur.bv().showDialog(to_utf8(name), data);
 		break;
@@ -1274,7 +1276,7 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// getStatus is not called with a valid reference and the
 		// dialog would not be applyable.
 		string const name = cmd.getArg(0);
-		flag.setEnabled(name == "ref");
+		flag.setEnabled(name == "ref" || name == "mathspace");
 		break;
 	}
 

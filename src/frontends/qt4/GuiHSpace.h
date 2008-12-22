@@ -24,7 +24,7 @@ class GuiHSpace : public GuiDialog, public Ui::HSpaceUi
 	Q_OBJECT
 
 public:
-	GuiHSpace(GuiView & lv);
+	GuiHSpace(GuiView & lv, bool math);
 
 private Q_SLOTS:
 	///
@@ -35,6 +35,8 @@ private Q_SLOTS:
 	void patternChanged();
 
 private:
+	///
+	void setMath(bool custom);
 	/// Apply from dialog
 	void applyView();
 	/// Update the dialog

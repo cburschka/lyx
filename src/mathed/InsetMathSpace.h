@@ -13,6 +13,7 @@
 #define MATH_SPACEINSET_H
 
 #include "InsetMath.h"
+#include "Length.h"
 
 
 namespace lyx {
@@ -22,9 +23,13 @@ namespace lyx {
 class InsetMathSpace : public InsetMath {
 public:
 	///
-	explicit InsetMathSpace(int sp);
+	explicit InsetMathSpace();
 	///
-	explicit InsetMathSpace(docstring const & name);
+	explicit InsetMathSpace(std::string const & name, std::string const & length);
+	///
+	explicit InsetMathSpace(Length const & length);
+	///
+	~InsetMathSpace();
 	///
 	InsetMathSpace const * asSpaceInset() const { return this; }
 	///
@@ -48,12 +53,25 @@ public:
 	void octave(OctaveStream &) const;
 	///
 	void write(WriteStream & os) const;
+	/// generate something that will be understood by the Dialogs.
+	std::string const createDialogStr() const;
+	///
+	EDITABLE editable() const { return IS_EDITABLE; }
+	///
+	docstring contextMenu(BufferView const &, int, int) const;
+	///
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+protected:
+	///
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
 	virtual Inset * clone() const;
 	///
-	int space_;
+	bool isNegative() const;
 	///
-	Dimension dim_;
+	int space_;
+	/// amount of space for \\hspace
+	Length length_;
 };
 
 

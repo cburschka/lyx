@@ -33,16 +33,24 @@ public:
 		PROTECTED,
 		/// Thin space ('\,')
 		THIN,
+		/// Medium space ('\:')
+		MEDIUM,
+		/// Thick space ('\;')
+		THICK,
 		/// \quad (1em)
 		QUAD,
 		/// \qquad (2em)
 		QQUAD,
-		/// \enspace (0.5em unbreakable)
+		/// \enskip (0.5em unbreakable)
 		ENSPACE,
 		/// \enspace (0.5em breakable)
 		ENSKIP,
 		/// Negative thin space ('\negthinspace')
 		NEGTHIN,
+		/// Negative medium space ('\negmedspace')
+		NEGMEDIUM,
+		/// Negative thick space ('\negthickspace')
+		NEGTHICK,
 		/// rubber length
 		HFILL,
 		/// \hspace*{\fill}
@@ -65,7 +73,7 @@ public:
 		CUSTOM_PROTECTED
 	};
 	///
-	InsetSpaceParams() : kind(NORMAL), length(Length()) {}
+	InsetSpaceParams(bool m = false) : kind(NORMAL), math(m) {}
 	///
 	void write(std::ostream & os) const;
 	///
@@ -74,6 +82,11 @@ public:
 	Kind kind;
 	///
 	Length length;
+	/**
+	 * Whether these params are to be used in mathed.
+	 * This determines the set of valid kinds.
+	 */
+	bool math;
 };
 
 
@@ -99,7 +112,6 @@ public:
 	///
 	Length length() const;
 
-private:
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
@@ -116,6 +128,8 @@ private:
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
+	///
+	void validate(LaTeXFeatures & features) const;
 	/// the string that is passed to the TOC
 	void tocString(odocstream &) const;
 	///
@@ -137,13 +151,16 @@ private:
 	bool isSpace() const { return true; }
 	///
 	docstring contextMenu(BufferView const & bv, int x, int y) const;
+protected:
 	///
 	Inset * clone() const { return new InsetSpace(*this); }
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
+public:
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 
+private:
 	///
 	InsetSpaceParams params_;
 };

@@ -52,6 +52,7 @@
 #include "MathSupport.h"
 
 #include "insets/InsetCommand.h"
+#include "insets/InsetSpace.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -61,7 +62,9 @@
 
 #include "frontends/FontLoader.h"
 
+#include "Encoding.h"
 #include "LyX.h" // use_gui
+#include "OutputParams.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -317,7 +320,7 @@ MathAtom createInsetMath(docstring const & s)
 		if (inset == "decoration")
 			return MathAtom(new InsetMathDecoration(l));
 		if (inset == "space")
-			return MathAtom(new InsetMathSpace(l->name));
+			return MathAtom(new InsetMathSpace(to_ascii(l->name), ""));
 		if (inset == "dots")
 			return MathAtom(new InsetMathDots(l));
 		if (inset == "mbox")
@@ -477,13 +480,28 @@ bool createInsetMath_fromDialogStr(docstring const & str, MathData & ar)
 	docstring name;
 	docstring body = split(str, name, ' ');
 
-	if (name != "ref" )
+	if (name == "ref") {
+		InsetCommandParams icp(REF_CODE);
+		// FIXME UNICODE
+		InsetCommand::string2params("ref", to_utf8(str), icp);
+		mathed_parse_cell(ar, icp.getCommand());
+	} else if (name == "mathspace") {
+		InsetSpaceParams isp(true);
+		InsetSpace::string2params(to_utf8(str), isp);
+		InsetSpace is(isp);
+		odocstringstream os;
+		Encoding const * const ascii = encodings.fromLyXName("ascii");
+		OutputParams op(ascii);
+		is.latex(os, op);
+		mathed_parse_cell(ar, os.str());
+		if (ar.size() == 2) {
+			// remove "{}"
+			if (ar[1].nucleus()->asBraceInset())
+				ar.pop_back();
+		}
+	} else
 		return false;
 
-	InsetCommandParams icp(REF_CODE);
-	// FIXME UNICODE
-	InsetCommand::string2params("ref", to_utf8(str), icp);
-	mathed_parse_cell(ar, icp.getCommand());
 	if (ar.size() != 1)
 		return false;
 

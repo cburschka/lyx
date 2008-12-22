@@ -35,9 +35,10 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-GuiHSpace::GuiHSpace(GuiView & lv)
-	: GuiDialog(lv, "space", qt_("Horizontal Space Settings"))
+GuiHSpace::GuiHSpace(GuiView & lv, bool math)
+	: GuiDialog(lv, math ? "mathspace" : "space", qt_("Horizontal Space Settings"))
 {
+	params_.math = math;
 	setupUi(this);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
@@ -86,8 +87,23 @@ void GuiHSpace::change_adaptor()
 }
 
 
+void GuiHSpace::setMath(bool custom)
+{
+	valueLE->setEnabled(custom);
+	unitCO->setEnabled(custom);
+	fillPatternCO->setEnabled(false);
+	keepCB->setToolTip(qt_("Insert the spacing even after a line break"));
+	keepCB->setEnabled(false);
+}
+
+
 void GuiHSpace::enableWidgets(int selection)
 {
+	if (params_.math) {
+		setMath(selection == 9);
+		changed();
+		return;
+	}
 	valueLE->setEnabled(selection == 7);
 	unitCO->setEnabled(selection == 7);
 	fillPatternCO->setEnabled(selection == 6);
@@ -120,6 +136,33 @@ static void setWidgetsFromHSpace(InsetSpaceParams const & params,
 			  QCheckBox * keep,
 			  QComboBox * fillPattern)
 {
+	spacing->clear();
+	if (params.math) {
+		spacing->addItem(qt_("Thin space"));
+		spacing->addItem(qt_("Medium space"));
+		spacing->addItem(qt_("Thick space"));
+		spacing->addItem(qt_("Negative thin space"));
+		spacing->addItem(qt_("Negative medium space"));
+		spacing->addItem(qt_("Negative thick space"));
+		spacing->addItem(qt_("Half Quad (0.5 em)"));
+		spacing->addItem(qt_("Quad (1 em)"));
+		spacing->addItem(qt_("Double Quad (2 em)"));
+		spacing->addItem(qt_("Custom"));
+		keep->setEnabled(false);
+		fillPattern->setEnabled(false);
+	} else {
+		spacing->addItem(qt_("Inter-word space"));
+		spacing->addItem(qt_("Thin space"));
+		spacing->addItem(qt_("Negative thin space"));
+		spacing->addItem(qt_("Half Quad (0.5 em)"));
+		spacing->addItem(qt_("Quad (1 em)"));
+		spacing->addItem(qt_("Double Quad (2 em)"));
+		spacing->addItem(qt_("Horizontal Fill"));
+		spacing->addItem(qt_("Custom"));
+		keep->setEnabled(true);
+		fillPattern->setEnabled(true);
+	}
+
 	int item = 0;
 	int pattern = 0;
 	bool protect = false;
@@ -129,64 +172,76 @@ static void setWidgetsFromHSpace(InsetSpaceParams const & params,
 			break;
 		case InsetSpaceParams::PROTECTED:
 			item = 0;
-			protect = true;
+			protect = !params.math;
 			break;
 		case InsetSpaceParams::THIN:
+			item = params.math ? 0 : 1;
+			break;
+		case InsetSpaceParams::MEDIUM:
 			item = 1;
 			break;
+		case InsetSpaceParams::THICK:
+			item = params.math ? 2 : 1;
+			break;
 		case InsetSpaceParams::NEGTHIN:
-			item = 2;
+			item = params.math ? 3 : 2;
+			break;
+		case InsetSpaceParams::NEGMEDIUM:
+			item = params.math ? 4 : 2;
+			break;
+		case InsetSpaceParams::NEGTHICK:
+			item = params.math ? 5 : 2;
 			break;
 		case InsetSpaceParams::ENSKIP:
-			item = 3;
+			item = params.math ? 6 : 3;
 			break;
 		case InsetSpaceParams::ENSPACE:
-			item = 3;
-			protect = true;
+			item = params.math ? 6 : 3;
+			protect = !params.math;
 			break;
 		case InsetSpaceParams::QUAD:
-			item = 4;
+			item = params.math ? 7 : 4;
 			break;
 		case InsetSpaceParams::QQUAD:
-			item = 5;
+			item = params.math ? 8 : 5;
 			break;
 		case InsetSpaceParams::HFILL:
-			item = 6;
+			item = params.math ? 3 : 6;
 			break;
 		case InsetSpaceParams::HFILL_PROTECTED:
-			item = 6;
-			protect = true;
+			item = params.math ? 3 : 6;
+			protect = !params.math;
 			break;
 		case InsetSpaceParams::DOTFILL:
-			item = 6;
+			item = params.math ? 3 : 6;
 			pattern = 1;
 			break;
 		case InsetSpaceParams::HRULEFILL:
-			item = 6;
+			item = params.math ? 3 : 6;
 			pattern = 2;
 			break;
 		case InsetSpaceParams::LEFTARROWFILL:
-			item = 6;
+			item = params.math ? 3 : 6;
 			pattern = 3;
 			break;
 		case InsetSpaceParams::RIGHTARROWFILL:
-			item = 6;
+			item = params.math ? 3 : 6;
 			pattern = 4;
 			break;
 		case InsetSpaceParams::UPBRACEFILL:
-			item = 6;
+			item = params.math ? 3 : 6;
 			pattern = 5;
 			break;
 		case InsetSpaceParams::DOWNBRACEFILL:
-			item = 6;
+			item = params.math ? 3 : 6;
 			pattern = 6;
 			break;
 		case InsetSpaceParams::CUSTOM:
-			item = 7;
+			item = params.math ? 9 : 7;
 			break;
 		case InsetSpaceParams::CUSTOM_PROTECTED:
-			item = 7;
-			protect = true;
+			item = params.math ? 9 : 7;
+			protect = !params.math;
 			break;
 	}
 	spacing->setCurrentIndex(item);
@@ -195,7 +250,7 @@ static void setWidgetsFromHSpace(InsetSpaceParams const & params,
 
 	Length::UNIT default_unit =
 			(lyxrc.default_papersize > 3) ? Length::CM : Length::IN;
-	if (item == 7)
+	if (item == (params.math ? 9 : 7))
 		lengthToWidgets(value, unit, params.length, default_unit);
 	else
 		lengthToWidgets(value, unit, "", default_unit);
@@ -203,9 +258,28 @@ static void setWidgetsFromHSpace(InsetSpaceParams const & params,
 
 
 static InsetSpaceParams setHSpaceFromWidgets(int spacing,
-	QLineEdit * value, LengthCombo * unit, bool keep, int fill)
+	QLineEdit * value, LengthCombo * unit, bool keep, int fill, bool math)
 {
-	InsetSpaceParams params;
+	InsetSpaceParams params(math);
+	if (math) {
+		switch (spacing) {
+		case 0: params.kind = InsetSpaceParams::THIN;      break;
+		case 1: params.kind = InsetSpaceParams::MEDIUM;    break;
+		case 2: params.kind = InsetSpaceParams::THICK;     break;
+		case 3: params.kind = InsetSpaceParams::NEGTHIN;   break;
+		case 4: params.kind = InsetSpaceParams::NEGMEDIUM; break;
+		case 5: params.kind = InsetSpaceParams::NEGTHICK;  break;
+		case 6: params.kind = InsetSpaceParams::ENSKIP;    break;
+		case 7: params.kind = InsetSpaceParams::QUAD;      break;
+		case 8: params.kind = InsetSpaceParams::QQUAD;     break;
+		case 9:
+			params.kind = InsetSpaceParams::CUSTOM;
+			params.length = Length(widgetsToLength(value, unit));
+			break;
+		}
+		return params;
+	}
+
 	switch (spacing) {
 		case 0:
 			if (keep)
@@ -265,7 +339,7 @@ void GuiHSpace::applyView()
 {
 	params_ = setHSpaceFromWidgets(spacingCO->currentIndex(),
 			valueLE, unitCO, keepCB->isChecked(),
-			fillPatternCO->currentIndex());
+			fillPatternCO->currentIndex(), params_.math);
 }
 
 
@@ -279,7 +353,11 @@ void GuiHSpace::updateContents()
 
 bool GuiHSpace::initialiseParams(string const & data)
 {
+	bool const math = params_.math;
 	InsetSpace::string2params(data, params_);
+	params_.math = math;
+	if (params_.math)
+		setMath(params_.kind == InsetSpaceParams::CUSTOM);
 	setButtonsValid(true);
 	return true;
 }
@@ -287,7 +365,7 @@ bool GuiHSpace::initialiseParams(string const & data)
 
 void GuiHSpace::clearParams()
 {
-	params_ = InsetSpaceParams();
+	params_ = InsetSpaceParams(params_.math);
 }
 
 
@@ -299,11 +377,15 @@ void GuiHSpace::dispatchParams()
 
 bool GuiHSpace::isValid()
 {
-	return spacingCO->currentIndex() != 7 || !valueLE->text().isEmpty();
+	return spacingCO->currentIndex() != (params_.math ? 9 : 7)
+		|| !valueLE->text().isEmpty();
 }
 
 
-Dialog * createGuiHSpace(GuiView & lv) { return new GuiHSpace(lv); }
+Dialog * createGuiMathHSpace(GuiView & lv) { return new GuiHSpace(lv, true); }
+
+
+Dialog * createGuiTextHSpace(GuiView & lv) { return new GuiHSpace(lv, false); }
 
 
 } // namespace frontend
