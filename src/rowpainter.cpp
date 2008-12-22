@@ -107,11 +107,12 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 		font.fontInfo();
 	pi_.ltr_pos = (bidi_.level(pos) % 2 == 0);
 	pi_.erased_ = erased_ || par_.isDeleted(pos);
-	pi_.base.bv->coordCache().insets().add(inset, int(x_), yo_);
+	int const x1 = int(x_);
+	pi_.base.bv->coordCache().insets().add(inset, x1, yo_);
 	// insets are painted completely. Recursive
-	inset->drawBackground(pi_, int(x_), yo_);
-	inset->drawSelection(pi_, int(x_), yo_);
-	inset->draw(pi_, int(x_), yo_);
+	inset->drawBackground(pi_, x1, yo_);
+	inset->drawSelection(pi_, x1, yo_);
+	inset->draw(pi_, x1, yo_);
 
 	Dimension const & dim = pm_.insetDimension(inset);
 
@@ -123,28 +124,6 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 	pi_.full_repaint = pi_full_repaint;
 
 #ifdef DEBUG_METRICS
-	int const x1 = int(x_ - dim.width());
-	Dimension dim2;
-	LASSERT(max_witdh_ > 0, /**/);
-	int right_margin = text_metrics_.rightMargin(pm_);
-	int const w = max_witdh_ - leftMargin() - right_margin;
-	MetricsInfo mi(pi_.base.bv, font.fontInfo(), w);
-	inset->metrics(mi, dim2);
-	if (dim.wid != dim2.wid)
-		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
-		       << " draw width " << dim.width()
-		       << "> metrics width " << dim2.wid << "." << endl;
-	if (dim->asc != dim2.asc)
-		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
-		       << " draw ascent " << dim.ascent()
-		       << "> metrics ascent " << dim2.asc << "." << endl;
-	if (dim2.descent() != dim.des)
-		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
-		       << " draw ascent " << dim.descent()
-		       << "> metrics descent " << dim2.des << "." << endl;
-	LASSERT(dim2.wid == dim.wid, /**/);
-	LASSERT(dim2.asc == dim.asc, /**/);
-	LASSERT(dim2.des == dim.des, /**/);
 	int const x2 = x1 + dim.wid;
 	int const y1 = yo_ + dim.des;
 	int const y2 = yo_ - dim.asc;
