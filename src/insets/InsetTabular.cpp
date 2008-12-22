@@ -1149,8 +1149,8 @@ bool Tabular::columnRightLine(col_type c) const
 		idx_type i = cellIndex(r, c);
 		if (c == cellColumn(i) + columnSpan(i) - 1) {
 			++total;
-			bool left = c + 1 < column_info.size() 
-				&& cellInfo(cellIndex(r, c + 1)).left_line
+			bool left = (c + 1 < column_info.size() 
+				&& cellInfo(cellIndex(r, c + 1)).left_line)
 				|| c + 1 == column_info.size();
 			if (cellInfo(i).right_line && left)
 				++nrows_right;
@@ -3617,7 +3617,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 		if (theClipboard().isInternal() ||
-		    !theClipboard().hasInternal() && theClipboard().hasLyXContents()) {
+		    (!theClipboard().hasInternal() && theClipboard().hasLyXContents())) {
 			cur.recordUndoInset(INSERT_UNDO);
 			pasteClipboard(cur);
 		}

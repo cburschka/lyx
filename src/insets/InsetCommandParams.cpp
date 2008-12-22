@@ -324,8 +324,9 @@ void InsetCommandParams::write(ostream & os) const
 
 bool InsetCommandParams::writeEmptyOptional(ParamInfo::const_iterator ci) const
 {
-	if (!ci->isOptional())
+	if (!ci->isOptional()) {
 		LASSERT(false, /**/);
+	}
 	++ci; // we want to start with the next one
 	ParamInfo::const_iterator end = info_.end();
 	for (; ci != end; ++ci) {
@@ -394,8 +395,9 @@ docstring InsetCommandParams::getFirstNonOptParam() const
 	ParamInfo::const_iterator it = 
 		find_if(info_.begin(), info_.end(), 
 			not1(mem_fun_ref(&ParamInfo::ParamData::isOptional)));
-	if (it == info_.end())
+	if (it == info_.end()) {
 		LASSERT(false, return docstring());
+	}
 	return (*this)[it->name()];
 }
 

@@ -658,7 +658,7 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 	// also if the next paragraph is a multilingual environment (because of nesting)
 	if (nextpit != paragraphs.end() && open_encoding_ == CJK &&
 	    (nextpit->getParLanguage(bparams)->encoding()->package() != Encoding::CJK ||
-	     nextpit->layout().isEnvironment() && nextpit->isMultiLingual(bparams))
+	     (nextpit->layout().isEnvironment() && nextpit->isMultiLingual(bparams)))
 	     // inbetween environments, CJK has to be closed later (nesting!)
 	     && (!style.isEnvironment() || !nextpit->layout().isEnvironment())) {
 		os << "\\end{CJK}\n";

@@ -227,10 +227,11 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 	// the last parameter to true will suppress a warning message about missing
 	// tex class.
 	LayoutFile * tc = new LayoutFile(textclass, textclass, "Unknown text class " + textclass, true);
-	if (!tc->load(tempLayout.absFilename()))
+	if (!tc->load(tempLayout.absFilename())) {
 		// The only way this happens is because the hardcoded layout file above
 		// is wrong.
 		LASSERT(false, /**/);
+	}
 	classmap_[textclass] = tc;
 	return textclass;
 }

@@ -87,7 +87,7 @@ void GuiInfo::on_nameLE_textChanged(QString const &)
 
 void GuiInfo::applyView()
 {
-	InsetInfo const * ii = static_cast<InsetInfo const *>(inset(INFO_CODE));
+	InsetInfo const * ii = dynamic_cast<InsetInfo const *>(inset(INFO_CODE));
 	if (!ii) {
 		return;
 	}
@@ -109,7 +109,7 @@ void GuiInfo::applyView()
 
 void GuiInfo::updateView()
 {
-	InsetInfo const * ii = static_cast<InsetInfo const *>(inset(INFO_CODE));
+	InsetInfo const * ii = dynamic_cast<InsetInfo const *>(inset(INFO_CODE));
 	if (!ii) {
 		enableView(false);
 		return;
