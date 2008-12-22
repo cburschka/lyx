@@ -897,9 +897,29 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_INSET_DISSOLVE:
-		needsUpdate |= dissolveInset(cur);
+	case LFUN_INSET_DISSOLVE: {
+		// first, try if there's an inset at cursor
+		// FIXME: this first part should be moved to
+		// a LFUN_NEXT_INSET_DISSOLVE, or be called via
+		// some generic "next-inset inset-dissolve"
+		Inset * inset = cur.nextInset();
+		if (inset && inset->isActive()) {
+			Cursor tmpcur = cur;
+			tmpcur.pushBackward(*inset);
+			inset->dispatch(tmpcur, cmd);
+			if (tmpcur.result().dispatched()) {
+				cur.dispatched();
+				break;
+			}
+		}
+		// if it did not work, try the underlying inset
+		if (dissolveInset(cur)) {
+			needsUpdate = true;
+			break;
+		}
+		// if it did not work, do nothing.
 		break;
+	}
 
 	case LFUN_INSET_SETTINGS: {
 		Inset & inset = cur.inset();
@@ -2212,8 +2232,10 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			enable = cur.inset().lyxCode() == FLEX_CODE
 			         && il.lyxtype() == type;
 		} else {
-			enable = !isMainText(cur.bv().buffer())
-			         && cur.inset().nargs() == 1;
+			enable = ((!isMainText(cur.bv().buffer())
+			              && cur.inset().nargs() == 1)
+				  || (cur.nextInset()
+				      && cur.nextInset()->nargs() == 1));
 		}
 		break;
 
