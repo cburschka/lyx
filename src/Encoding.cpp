@@ -23,6 +23,7 @@
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/lstrings.h"
+#include "support/textutils.h"
 #include "support/unicode.h"
 
 #include <boost/cstdint.hpp>
@@ -494,7 +495,9 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, docstring & rem)
 
 			// If this is an exact match, we found a (longer)
 			// matching command in the unicodesymbols file
-			if (math == tmp || text == tmp) {
+			if ((math == tmp || text == tmp)
+			    && ((tmp.size() == 1 && !isAlphaASCII(tmp[0]))
+				    || k == cmdend || !isAlphaASCII(cmd[k]))) {
 				c = it->first;
 				j = k - 1;
 				i = j + 1;
