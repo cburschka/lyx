@@ -1061,8 +1061,11 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.recordUndoSelection();
 		if (cmd.argument().empty())
 			cur.insert(MathAtom(new InsetMathSpace));
-		else
-			cur.insert(MathAtom(new InsetMathSpace(to_utf8(cmd.argument()), "")));
+		else {
+			string const name = cmd.getArg(0);
+			string const len = cmd.getArg(1);
+			cur.insert(MathAtom(new InsetMathSpace(name, len)));
+		}
 		break;
 
 	case LFUN_ERT_INSERT:
