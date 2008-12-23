@@ -23,6 +23,7 @@
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/lstrings.h"
+#include "support/textutils.h"
 #include "support/unicode.h"
 
 #include <boost/cstdint.hpp>
@@ -493,8 +494,19 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, docstring & rem)
 				tmp.resize(tmp.size() - 1);
 
 			// If this is an exact match, we found a (longer)
-			// matching command in the unicodesymbols file
-			if (math == tmp || text == tmp) {
+			// matching entry in the unicodesymbols file.
+			// If the entry doesn't start with '\', we take note
+			// of the match and continue (this is not a ultimate
+			// acceptance, as some other entry may match a longer
+			// portion of the cmd string). However, if the entry
+			// does start with '\', we accept the match only if
+			// this is a valid macro, i.e., either it is a single
+			// (nonletter) char macro, or nothing else follows,
+			// or what follows is a nonletter char.
+			if ((math == tmp || text == tmp)
+			    && (tmp[0] != '\\'
+				   || (tmp.size() == 2 && !isAlphaASCII(tmp[1]))
+				   || k == cmdend || !isAlphaASCII(cmd[k]))) {
 				c = it->first;
 				j = k - 1;
 				i = j + 1;
