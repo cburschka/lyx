@@ -30,11 +30,55 @@
 namespace lyx {
 namespace frontend {
 
-class FindAndReplace : public DockView, public Ui::FindAndReplaceUi
+class FindAndReplaceWidget : public QWidget, public Ui::FindAndReplaceUi
+{
+	Q_OBJECT
+
+public:
+	FindAndReplaceWidget(GuiView & view);
+	bool initialiseParams(std::string const & params);
+
+private:
+	///
+	GuiView & view_;
+
+	// add a string to the combo if needed
+	void remember(std::string const & find, QComboBox & combo);
+	void findAdv(bool casesensitive,
+			bool matchword, bool backwards,
+			bool expandmacros, bool ignoreformat);
+	void find(docstring const & str, int len, bool casesens,
+		  bool words, bool backwards, bool expandmacros);
+	void find(bool backwards);
+
+	void replace(docstring const & findstr,
+		     docstring const & replacestr,
+		     bool casesens, bool words, bool backwards, bool expandmacros, bool all);
+	bool eventFilter(QObject *obj, QEvent *event);
+
+	void virtual showEvent(QShowEvent *ev);
+	void virtual hideEvent(QHideEvent *ev);
+
+protected Q_SLOTS:
+	void on_findNextPB_clicked();
+	void on_findPrevPB_clicked();
+	void on_replacePB_clicked();
+	void on_replaceallPB_clicked();
+	void on_closePB_clicked();
+	void on_regexpInsertCombo_currentIndexChanged(int index);
+};
+
+
+class FindAndReplace : public DockView
 {
 	Q_OBJECT
 public:
-	FindAndReplace(GuiView & parent);
+	FindAndReplace(
+		GuiView & parent, ///< the main window where to dock.
+		Qt::DockWidgetArea area = Qt::RightDockWidgetArea, ///< Position of the dock (and also drawer)
+		Qt::WindowFlags flags = 0);
+
+	~FindAndReplace();
 
 	bool initialiseParams(std::string const &);
 	void clearParams() {}
@@ -46,36 +90,12 @@ public:
 	void updateView() {}
 	//virtual void update_contents() {}
 
-protected Q_SLOTS:
-	void on_findNextPB_clicked();
-	void on_findPrevPB_clicked();
-	void on_replacePB_clicked();
-	void on_replaceallPB_clicked();
-	void on_closePB_clicked();
-	void on_regexpInsertCombo_currentIndexChanged(int index);
-
 protected:
-	void find(bool backwards);
 	virtual bool wantInitialFocus() const { return true; }
 
 private:
-	// add a string to the combo if needed
-	void remember(std::string const & find, QComboBox & combo);
-	void findAdv(bool casesensitive,
-			bool matchword, bool backwards,
-			bool expandmacros, bool ignoreformat);
-
-private:
-	/// Apply changes
-	virtual void apply() {}
-
-	void find(docstring const & str, int len, bool casesens,
-		  bool words, bool backwards, bool expandmacros);
-
-	void replace(docstring const & findstr,
-		     docstring const & replacestr,
-		     bool casesens, bool words, bool backwards, bool expandmacros, bool all);
-	bool eventFilter(QObject *obj, QEvent *event);
+	/// The encapsulated widget.
+	FindAndReplaceWidget * widget_;
 };
 
 

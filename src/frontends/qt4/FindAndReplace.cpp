@@ -43,21 +43,22 @@ using namespace lyx::support;
 namespace lyx {
 namespace frontend {
 
-FindAndReplace::FindAndReplace(GuiView & parent)
-	: DockView(parent, "Find LyX", "Find LyX Dialog", Qt::RightDockWidgetArea)
+
+FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
+	:	view_(view)
 {
 	setupUi(this);
-	find_work_area_->setGuiView(parent);
+	find_work_area_->setGuiView(view_);
 	find_work_area_->init();
 	setFocusProxy(find_work_area_);
-	replace_work_area_->setGuiView(parent);
+	replace_work_area_->setGuiView(view_);
 	replace_work_area_->init();
 	// We don't want two cursors blinking.
 	replace_work_area_->stopBlinkingCursor();
 }
 
 
-bool FindAndReplace::eventFilter(QObject *obj, QEvent *event)
+bool FindAndReplaceWidget::eventFilter(QObject *obj, QEvent *event)
 {
 	LYXERR(Debug::DEBUG, "FindAndReplace::eventFilter()" << std::endl);
 	if (obj == find_work_area_ && event->type() == QEvent::KeyPress) {
@@ -76,11 +77,11 @@ bool FindAndReplace::eventFilter(QObject *obj, QEvent *event)
 		}
 	}
 	// standard event processing
-	return QObject::eventFilter(obj, event);
+	return QWidget::eventFilter(obj, event);
 }
 
 
-void FindAndReplace::findAdv(bool casesensitive,
+void FindAndReplaceWidget::findAdv(bool casesensitive,
 		bool matchword, bool backwards,
 		bool expandmacros, bool ignoreformat)
 {
@@ -113,7 +114,7 @@ void FindAndReplace::findAdv(bool casesensitive,
 		runparams.linelen = 100000; //lyxrc.plaintext_linelen;
 		runparams.dryrun = true;
 		for (; it != end; ++it) {
-			LYXERR0("Adding to search string: '" << it->asString(false) << "'");
+			LYXERR(Debug::DEBUG, "Adding to search string: '" << it->asString(false) << "'");
 			searchString += it->stringify(pos_type(0), it->size(), AS_STR_INSETS, runparams);
 		}
 	}
@@ -125,45 +126,33 @@ void FindAndReplace::findAdv(bool casesensitive,
 	bool const regexp = to_utf8(searchString).find("\\regexp") != std::string::npos;
 	FindAdvOptions opt(searchString, casesensitive, matchword, ! backwards,
 		expandmacros, ignoreformat, regexp);
-	std::cerr << "Dispatching LFUN_WORD_FINDADV" << std::endl;
+	LYXERR(Debug::DEBUG, "Dispatching LFUN_WORD_FINDADV" << std::endl);
 	std::ostringstream oss;
 	oss << opt;
-	std::cerr << "Dispatching LFUN_WORD_FINDADV" << std::endl;
+	LYXERR(Debug::DEBUG, "Dispatching LFUN_WORD_FINDADV" << std::endl);
 	dispatch(FuncRequest(LFUN_WORD_FINDADV, from_utf8(oss.str())));
 
 	//	findAdv(&theApp()->currentView()->currentWorkArea()->bufferView(),
 	// 			searchString, len, casesensitive, matchword, ! backwards, expandmacros);
 }
 
-bool FindAndReplace::initialiseParams(std::string const &)
-{
-	find_work_area_->redraw();
-	replace_work_area_->setEnabled(true);
-	replace_work_area_->redraw();
-	find_work_area_->setFocus();
-	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
-	dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
-	return true;
-}
 
-
-void FindAndReplace::find(bool backwards)
+void FindAndReplaceWidget::find(bool backwards)
 {
 	// FIXME: create a Dialog::returnFocus() or something instead of this:
-	GuiView & gv = const_cast<GuiView &>(lyxview());
-	gv.setCurrentWorkArea(gv.currentMainWorkArea());
+	view_.setCurrentWorkArea(view_.currentMainWorkArea());
 	// FIXME: This should be an LFUN.
 	findAdv(caseCB->isChecked(),
 			wordsCB->isChecked(),
 			backwards,
 			expandMacrosCB->isChecked(),
 			ignoreFormatCB->isChecked());
-	gv.currentMainWorkArea()->redraw();
+	view_.currentMainWorkArea()->redraw();
 	find_work_area_->setFocus();
 }
 
 
-void FindAndReplace::on_regexpInsertCombo_currentIndexChanged(int index)
+void FindAndReplaceWidget::on_regexpInsertCombo_currentIndexChanged(int index)
 {
 	static char const * regexps[] = {
 		".*", ".+", "[a-z]+", "[0-9]+"
@@ -180,34 +169,89 @@ void FindAndReplace::on_regexpInsertCombo_currentIndexChanged(int index)
 }
 
 
-void FindAndReplace::on_closePB_clicked()
+void FindAndReplaceWidget::on_closePB_clicked()
 {
 	dispatch(FuncRequest(LFUN_DIALOG_TOGGLE, "findreplaceadv"));
 }
 
 
-void FindAndReplace::on_findNextPB_clicked() {
+void FindAndReplaceWidget::on_findNextPB_clicked() {
 	find(false);
 }
 
 
-void FindAndReplace::on_findPrevPB_clicked() {
+void FindAndReplaceWidget::on_findPrevPB_clicked() {
 	find(true);
 }
 
 
-void FindAndReplace::on_replacePB_clicked()
+void FindAndReplaceWidget::on_replacePB_clicked()
 {
 }
 
 
-void FindAndReplace::on_replaceallPB_clicked()
+void FindAndReplaceWidget::on_replaceallPB_clicked()
 {
 }
+
+
+void FindAndReplaceWidget::showEvent(QShowEvent *ev)
+{
+	replace_work_area_->setEnabled(true);
+	replace_work_area_->redraw();
+	find_work_area_->setFocus();
+	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
+	dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
+	find_work_area_->redraw();
+	find_work_area_->installEventFilter(this);
+}
+
+
+void FindAndReplaceWidget::hideEvent(QHideEvent *ev)
+{
+	find_work_area_->removeEventFilter(this);
+	this->QWidget::hideEvent(ev);
+}
+
+
+bool FindAndReplaceWidget::initialiseParams(std::string const & params)
+{
+	find_work_area_->redraw();
+	replace_work_area_->setEnabled(true);
+	replace_work_area_->redraw();
+	find_work_area_->setFocus();
+	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
+	dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
+	return true;
+}
+
+
+FindAndReplace::FindAndReplace(GuiView & parent,
+		Qt::DockWidgetArea area, Qt::WindowFlags flags)
+	: DockView(parent, "Find LyX", qt_("Find LyX Dialog"), area, flags)
+{
+	widget_ = new FindAndReplaceWidget(parent);
+	setWidget(widget_);
+	setFocusProxy(widget_);
+}
+
+
+FindAndReplace::~FindAndReplace()
+{
+	setFocusProxy(0);
+	delete widget_;
+}
+
+
+bool FindAndReplace::initialiseParams(std::string const & params)
+{
+	return widget_->initialiseParams(params);
+}
+
 
 Dialog * createGuiSearchAdv(GuiView & lv)
 {
-	return new FindAndReplace(lv);
+	return new FindAndReplace(lv, Qt::RightDockWidgetArea);
 }
 
 
