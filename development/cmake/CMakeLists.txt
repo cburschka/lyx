@@ -31,10 +31,11 @@ set(VERSION_INFO "CMake Build")
 set(LYX_DIR_VER "LYX_DIR_20x")
 set(LYX_USERDIR_VER "LYX_USERDIR_20x")
 
-set(PROGRAM_SUFFIX "")
-set(LYX_ABS_INSTALLED_DATADIR "/usr/local/share/lyx${PACKAGE_VERSION}")
-set(LYX_ABS_INSTALLED_LOCALEDIR "/usr/local/share/locale")
-set(LYX_ABS_TOP_SRCDIR "${CMAKE_SOURCE_DIR}")
+set(PROGRAM_SUFFIX "\"\"")
+set(LYX_ABS_INSTALLED_DATADIR "${CMAKE_INSTALL_PREFIX}")
+set(LYX_LOCALEDIR "locale")
+set(LYX_ABS_INSTALLED_LOCALEDIR "${LYX_ABS_INSTALLED_DATADIR}/${LYX_LOCALEDIR}")
+set(LYX_ABS_TOP_SRCDIR "${TOP_SRC_DIR}")
 
 
 if(WIN32)
@@ -57,7 +58,6 @@ set(LYX_HPP_FILES *.h)
 include(LyXPaths)
 include(LyXMacros)
 include(ProjectSourceGroup)
-
 
 if(merge OR merge_rebuild)
 	set(merge 1 CACHE TYPE STRING FORCE)
@@ -133,7 +133,7 @@ find_package(ZLIB REQUIRED)
 
 if(all OR aspell)
 	set(aspell TRUE CACHE TYPE STRING)
-	find_package(ASPELL REQUIRED)	
+	find_package(ASPELL REQUIRED)
 else()
 	find_package(ASPELL)
 endif()
@@ -180,11 +180,6 @@ if(WIN32)
 		add_definitions(-DWINVER=0x0500)
 	endif()
 endif()
-
-set(PROGRAM_SUFFIX "\"\"")
-set(LYX_ABS_TOP_SRCDIR "${CMAKE_SOURCE_DIR}")
-set(LYX_ABS_INSTALLED_DATADIR "/usr/local/share/lyx${PACKAGE_VERSION}")
-set(LYX_ABS_INSTALLED_LOCALEDIR "/usr/local/share/locale")
 
 message("")
 message("----- PROGRAM_SUFFIX              : ${PROGRAM_SUFFIX}")
@@ -306,6 +301,13 @@ if(MSVC)
 	
 endif()
 
+
+if(nls OR all)
+  find_package(LyXGettext REQUIRED)
+  include_directories(${TOP_SRC_DIR}/po)
+  add_subdirectory(po)
+endif()
+
 # compiler tests, config.h generation
 if(MSVC AND NOT CONFIGURECHECKS)
 	configure_file(configCompiler.h.msvc ${CMAKE_BINARY_DIR}/configCompiler.h)
@@ -318,16 +320,14 @@ configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 
 find_package(ICONV REQUIRED)
 add_definitions(-DHAVE_ICONV=1)
-find_package(Gettext)
-
 
 #TODO: insource is not the best place
 configure_file(${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx_version.py.in 
                ${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx_version.py)
      
-include_directories( 
-	${CMAKE_BINARY_DIR} 
-	${TOP_SRC_DIR}/src 
+include_directories(
+	${CMAKE_BINARY_DIR}
+	${TOP_SRC_DIR}/src
 	${TOP_SRC_DIR}/boost)
 
 add_subdirectory(boost)
@@ -335,6 +335,9 @@ if(NOT use_external_libintl)
 	add_subdirectory(intl)
 endif()
 add_subdirectory(src)
+
+include_directories(man)
+add_subdirectory(man)
 
 include(../Install)
 

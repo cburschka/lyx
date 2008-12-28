@@ -99,10 +99,6 @@
 #endif
 
 #cmakedefine GETTEXT_FOUND 1
-#if GETTEXT_FOUND
-#define ENABLE_NLS 1
-#define HAVE_LC_MESSAGES 1
-#endif
 
 #cmakedefine HAVE_ALLOCA 1
 #cmakedefine HAVE_SYMBOL_ALLOCA 1
