@@ -295,8 +295,8 @@ void InsetCommandParams::read(Lexer & lex)
 		lex.printError("Missing \\end_inset at this point. "
 			       "Read: `$$Token'");
 		throw ExceptionMessage(WarningException,
-			_("Missing \\end_inset at this point."),
-			from_utf8(token));
+			_("InsetCommandParams Error: "),
+			_("Missing \\end_inset at this point: ") + from_utf8(token));
 	}
 }
 
