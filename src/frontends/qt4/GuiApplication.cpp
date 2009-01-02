@@ -319,6 +319,7 @@ QString iconName(FuncRequest const & f, bool unknown)
 		if (!f.argument().empty()) {
 			name1 = name2 + ' ' + toqstr(f.argument());
 			name1.replace(' ', '_');
+			name1.replace('\\', "backslash");
 		}
 	}
 
