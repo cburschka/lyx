@@ -336,8 +336,9 @@ if(NOT use_external_libintl)
 endif()
 add_subdirectory(src)
 
-include_directories(man)
+include_directories(man doc)
 add_subdirectory(man)
+add_subdirectory(doc)
 
 include(../Install)
 

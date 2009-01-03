@@ -9,7 +9,7 @@ macro(lyx_install _parent_src_dir _dir _file_type)
   foreach(_glob_dir ${ARGN})
     file(GLOB _dir_list ${_parent_src_dir}/${_dir}/${_glob_dir})
     foreach(_current_dir ${_dir_list})
-      file(GLOB files_list ${_current_dir}/*.${_file_type})
+      file(GLOB files_list ${_current_dir}/${_file_type})
       list(REMOVE_ITEM files_list "${_current_dir}/.svn")
       list(REMOVE_ITEM files_list "${_current_dir}/Makefile.in")
       list(REMOVE_ITEM files_list "${_current_dir}/Makefile.am")
@@ -22,10 +22,12 @@ macro(lyx_install _parent_src_dir _dir _file_type)
 endmacro(lyx_install)
 
 
-lyx_install(${TOP_SRC_DIR}/lib bind         bind   . [a-z][a-z])
-lyx_install(${TOP_SRC_DIR}/lib commands     def    .)
-lyx_install(${TOP_SRC_DIR}/lib doc          lyx    . [a-z][a-z])
-lyx_install(${TOP_SRC_DIR}/lib doc          *      clipart)
+lyx_install(${TOP_SRC_DIR}/lib bind         *.bind   . [a-z][a-z])
+lyx_install(${TOP_SRC_DIR}/lib commands     *.def    .)
+# this is handled in doc/CMakefile.txt
+#lyx_install(${TOP_SRC_DIR}/lib doc          *.lyx    . [a-z][a-z])
+#lyx_install(${TOP_SRC_DIR}/lib doc          *.txt    . [a-z][a-z])
+lyx_install(${TOP_SRC_DIR}/lib doc          *      biblio clipart)
 lyx_install(${TOP_SRC_DIR}/lib doc/de       *      clipart)
 lyx_install(${TOP_SRC_DIR}/lib doc/es       *      clipart)
 lyx_install(${TOP_SRC_DIR}/lib doc/fr       *      clipart)
@@ -44,11 +46,4 @@ lyx_install(${TOP_SRC_DIR}/lib tex          *      .)
 lyx_install(${TOP_SRC_DIR}/lib ui           *      .)
 lyx_install(${TOP_SRC_DIR}/lib .            *      .)
 
-# TODO also get dot-less filenames in lyx_install
-install(FILES ${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx DESTINATION lyx2lyx PERMISSIONS OWNER_EXECUTE  OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ)
-foreach(_file unicodesymbols encodings languages)
-	install(FILES ${TOP_SRC_DIR}/lib/${_file} DESTINATION .)
-endforeach(_file)
-
-# TODO
-
+install(PROGRAMS ${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx DESTINATION lyx2lyx)
