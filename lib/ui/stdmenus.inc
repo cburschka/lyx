@@ -122,6 +122,7 @@ Menuset
 		OptItem "Note Settings...|N" "inset-settings note"
 		OptItem "Branch Settings...|B" "inset-settings branch"
 		OptItem "Box Settings...|x" "inset-settings box"
+		OptItem "Listings Settings...|g" "inset-settings listings"
 # Hey, guess what's broken ? Surprise surprise, it's tabular stuff
 # This is in the Table submenu instead for now.
 #	OptItem "Table Settings...|a" "inset-settings tabular"
