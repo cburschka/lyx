@@ -166,6 +166,9 @@ Menuset
 		Item "Left Line|L" "tabular-feature toggle-line-left"
 		Item "Right Line|R" "tabular-feature toggle-line-right"
 		Separator
+		Item "Top|p" "tabular-feature tabular-valign-top"
+		Item "Middle|M" "tabular-feature tabular-valign-middle"
+		Item "Bottom|o" "tabular-feature tabular-valign-bottom"	
 	End
 
 	Menu "edit_tabular_features"

@@ -1894,7 +1894,8 @@ void LyXAction::init()
                        unset-lthead|set-ltfirsthead|unset-ltfirsthead|set-ltfoot|unset-ltfoot|
                        set-ltlastfoot|unset-ltlastfoot|set-ltnewpage|toggle-ltcaption|
                        set-special-column|set-special-multi|set-booktabs|unset-booktabs|
-                       set-top-space|set-bottom-space|set-interline-space|set-border-lines \n
+                       set-top-space|set-bottom-space|set-interline-space|set-border-lines|
+                       tabular-valign-top|tabular-valign-middle|tabular-valign-bottom \n
 		<ARG>: additional argument for some commands, use debug mode to explore its values.
  * \li Origin: Jug, 28 Jul 2000
  * \endvar

@@ -160,6 +160,9 @@ TabularFeature tabularFeature[] =
 	{ Tabular::SET_BOTTOM_SPACE, "set-bottom-space" },
 	{ Tabular::SET_INTERLINE_SPACE, "set-interline-space" },
 	{ Tabular::SET_BORDER_LINES, "set-border-lines" },
+	{ Tabular::TABULAR_VALIGN_TOP, "tabular-valign-top"},
+	{ Tabular::TABULAR_VALIGN_MIDDLE, "tabular-valign-middle"},
+	{ Tabular::TABULAR_VALIGN_BOTTOM, "tabular-valign-bottom"},
 	{ Tabular::LAST_ACTION, "" }
 };
 
@@ -595,6 +598,7 @@ void Tabular::init(Buffer & buf, row_type rows_arg,
 	cell_info.reserve(100);
 	updateIndexes();
 	is_long_tabular = false;
+	tabular_valignment = LYX_VALIGN_MIDDLE;
 	rotate = false;
 	use_booktabs = false;
 	size_t row_count = row_info.size();
@@ -1286,6 +1290,7 @@ void Tabular::write(ostream & os) const
 	   << write_attribute("rotate", rotate)
 	   << write_attribute("booktabs", use_booktabs)
 	   << write_attribute("islongtable", is_long_tabular)
+	   << write_attribute("tabularvalignment", tabular_valignment)
 	   << write_attribute("firstHeadTopDL", endfirsthead.topDL)
 	   << write_attribute("firstHeadBottomDL", endfirsthead.bottomDL)
 	   << write_attribute("firstHeadEmpty", endfirsthead.empty)
@@ -1384,6 +1389,7 @@ void Tabular::read(Lexer & lex)
 	getTokenValue(line, "rotate", rotate);
 	getTokenValue(line, "booktabs", use_booktabs);
 	getTokenValue(line, "islongtable", is_long_tabular);
+	getTokenValue(line, "tabularvalignment", tabular_valignment);
 	getTokenValue(line, "firstHeadTopDL", endfirsthead.topDL);
 	getTokenValue(line, "firstHeadBottomDL", endfirsthead.bottomDL);
 	getTokenValue(line, "firstHeadEmpty", endfirsthead.empty);
@@ -2286,9 +2292,22 @@ int Tabular::latex(odocstream & os, OutputParams const & runparams) const
 		++ret;
 	}
 	if (is_long_tabular)
-		os << "\\begin{longtable}{";
+		os << "\\begin{longtable}";
 	else
-		os << "\\begin{tabular}{";
+		os << "\\begin{tabular}";
+
+	switch (tabular_valignment) {
+		case LYX_VALIGN_TOP:
+			os << "[t]";
+			break;
+		case LYX_VALIGN_BOTTOM:
+			os << "[b]";
+			break;
+		case LYX_VALIGN_MIDDLE:
+			break;
+	}
+	
+	os << "{";
 
 	for (col_type i = 0; i < column_info.size(); ++i) {
 		if (columnLeftLine(i))
@@ -3813,6 +3832,19 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setOnOff(tabular.rotate);
 			break;
 
+		case Tabular::TABULAR_VALIGN_TOP:
+			status.setOnOff(tabular.tabular_valignment 
+				== Tabular::LYX_VALIGN_TOP);
+			break;
+		case Tabular::TABULAR_VALIGN_MIDDLE:
+			status.setOnOff(tabular.tabular_valignment 
+				== Tabular::LYX_VALIGN_MIDDLE);
+			break;
+		case Tabular::TABULAR_VALIGN_BOTTOM:
+			status.setOnOff(tabular.tabular_valignment 
+				== Tabular::LYX_VALIGN_BOTTOM);
+			break;
+
 		case Tabular::UNSET_ROTATE_TABULAR:
 			status.setOnOff(!tabular.rotate);
 			break;
@@ -4558,6 +4590,18 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::TOGGLE_ROTATE_TABULAR:
 		tabular.rotate = !tabular.rotate;
+		break;
+
+	case Tabular::TABULAR_VALIGN_TOP:
+		tabular.tabular_valignment = Tabular::LYX_VALIGN_TOP;
+		break;
+
+	case Tabular::TABULAR_VALIGN_MIDDLE:
+		tabular.tabular_valignment = Tabular::LYX_VALIGN_MIDDLE;
+		break;
+
+	case Tabular::TABULAR_VALIGN_BOTTOM:
+		tabular.tabular_valignment = Tabular::LYX_VALIGN_BOTTOM;
 		break;
 
 	case Tabular::SET_ROTATE_CELL:

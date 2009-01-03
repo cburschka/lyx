@@ -178,6 +178,12 @@ public:
 		///
 		SET_BORDER_LINES,
 		///
+		TABULAR_VALIGN_TOP,
+		///
+		TABULAR_VALIGN_MIDDLE,
+		///
+		TABULAR_VALIGN_BOTTOM,
+		///
 		LAST_ACTION
 	};
 	///
@@ -557,6 +563,8 @@ public:
 	bool use_booktabs;
 	///
 	bool rotate;
+	///
+	VAlignment tabular_valignment;
 	//
 	// for long tabulars
 	//
