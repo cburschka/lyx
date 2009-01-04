@@ -346,7 +346,7 @@ bool GuiClipboard::hasTextContents() const
 {
 	QMimeData const * const source =
 		qApp->clipboard()->mimeData(QClipboard::Clipboard);
-	return source->hasText();	
+	return source && source->hasText();	
 }
 
 
