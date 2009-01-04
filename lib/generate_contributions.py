@@ -400,6 +400,14 @@ contributers = [
                  "2 April 2005",
                  '"case insensitive" and "complete word" search'),
 
+     contributer(u"Kornel Benko",
+                 "Kornel.Benko () berlin ! de",
+                 "GPL",
+                 "The LyX licence",
+                 "m=123100818303101",
+                 "3 January 2009",
+                 u"small bugfixes"),
+
      contributer(u"Graham Biswell",
                  "graham () gbiswell ! com",
                  "GPL",
@@ -1447,6 +1455,14 @@ contributers = [
                  "m=110909031824764",
                  "22 February 2005",
                  u"support for page selection for printing support for number of copies"),
+
+     contributer(u"Russ Woodroofe",
+                 "paranoia () math ! cornell ! edu",
+                 "GPL",
+                 "Re: AMS math question environment",
+                 "m=123091448326090",
+                 "1 January 2009",
+                 u"question layout environment"),
 
      contributer(u"Huang Ying",
                  "huangy () sh ! necas ! nec ! com ! cn",
