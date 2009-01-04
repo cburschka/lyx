@@ -69,6 +69,8 @@ public:
 
 	/// Does the clipboard contain LyX contents?
 	virtual bool hasLyXContents() const = 0;
+	/// Does the clipboard contain text contents?
+	virtual bool hasTextContents() const = 0;
 	/// Does the clipboard contain graphics contents of a certain type?
 	virtual bool hasGraphicsContents(GraphicsType type = AnyGraphicsType) const = 0;
 	/// state of clipboard.
