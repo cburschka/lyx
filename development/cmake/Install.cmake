@@ -9,6 +9,7 @@ message(STATUS "installing to ${CMAKE_INSTALL_PREFIX}, defined by CMAKE_INSTALL_
 # dir_item is on item of the remaining arguments
 macro(lyx_install _parent_src_dir _gl_dir _file_type)
   file(GLOB _dirs RELATIVE "${_parent_src_dir}" ${_parent_src_dir}/${_gl_dir})
+  #cmake bug on Windows: if _gl_dir==. _dirs is empty but on linux _dirs==.
   if(NOT _dirs)
     set(_dirs .)
   endif() 
@@ -21,6 +22,7 @@ macro(lyx_install _parent_src_dir _gl_dir _file_type)
       #message(STATUS "${_dir}/${_glob_dir} -> ${_dir_list} ")
       foreach(_current_dir ${_dir_list})
         file(GLOB _item_list ${_current_dir}/${_file_type})
+        #cmake bug: globbing with * also returns directories on Windows
         set(files_list ${_item_list})
         foreach(_current_item ${_item_list})
           if(IS_DIRECTORY ${_current_item})
