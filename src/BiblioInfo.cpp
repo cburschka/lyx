@@ -28,6 +28,7 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 #include "boost/regex.hpp"
 
@@ -75,24 +76,45 @@ docstring familyName(docstring const & name)
 	if (name.empty())
 		return docstring();
 
-	// Very simple parser
-	docstring fname = name;
-
-	// possible authorname combinations are:
-	// "Surname, FirstName"
-	// "Surname, F."
-	// "FirstName Surname"
-	// "F. Surname"
-	docstring::size_type idx = fname.find(',');
+	// first we look for a comma, and take the last name to be everything
+	// preceding the right-most one, so that we also get the "jr" part.
+	docstring::size_type idx = name.rfind(',');
 	if (idx != docstring::npos)
-		return ltrim(fname.substr(0, idx));
-	idx = fname.rfind('.');
-	if (idx != docstring::npos && idx + 1 < fname.size())
-		fname = ltrim(fname.substr(idx + 1));
-	// test if we have a LaTeX Space in front
-	if (fname[0] == '\\')
-		return fname.substr(2);
-	return rtrim(fname);
+		return ltrim(name.substr(0, idx));
+
+	// OK, so now we want to look for the last name. We're going to
+	// include the "von" part. This isn't perfect.
+	// Split on spaces, to get various tokens.
+	vector<docstring> pieces = getVectorFromString(name, from_ascii(" "));
+	// If we only get two, assume the last one is the last name
+	if (pieces.size() <= 2)
+		return pieces.back();
+
+	// Now we look for the first token that begins with a lower case letter.
+	vector<docstring>::const_iterator it = pieces.begin();
+	vector<docstring>::const_iterator en = pieces.end();
+	for (; it != en; ++it) {
+		if ((*it).size() == 0)
+			continue;
+		char_type const c = (*it)[0];
+		if (isLower(c))
+			break;
+	}
+
+	if (it == en) // we never found a "von"
+		return pieces.back();
+
+	// reconstruct what we need to return
+	docstring retval;
+	bool first = true;
+	for (; it != en; ++it) {
+		if (!first)
+			retval += " ";
+		else 
+			first = false;
+		retval += *it;
+	}
+	return retval;
 }
 
 docstring const BibTeXInfo::getAbbreviatedAuthor() const

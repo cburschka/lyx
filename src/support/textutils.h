@@ -26,6 +26,9 @@ inline bool isLineSeparatorChar(char_type c) { return c == ' '; }
 /// return true if a char is alphabetical (including accented chars)
 bool isLetterChar(char_type c);
 
+/// return true if a char is lowercase
+bool isLower(char_type c);
+
 /// return whether \p c is an alphabetic character in the ASCII range
 bool isAlphaASCII(char_type c);
 
