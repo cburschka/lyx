@@ -3,7 +3,8 @@
 #Defines some additional theorem environments for use with the
 #AMS theorems packages. Includes Criterion, Algorithm, Axiom,
 #Condition, Note, Notation, Summary, Acknowledgement, Conclusion,
-#Fact, Assumption, and Case, in both starred and non-starred forms.
+#Fact, Assumption, Case, and Question, in both starred and non-starred
+#forms.
 #DescriptionEnd
 #Requires: theorems-ams
 
@@ -17,7 +18,7 @@ Format 11
 
 Requires	amsmath
 
-# The environnements defined (regular and starred) are :
+# The environments defined (regular and starred) are :
 # - Criterion
 # - Algorithm
 # - Axiom
@@ -29,6 +30,7 @@ Requires	amsmath
 # - Conclusion
 # - Fact
 # - Assumption
+# - Question
 
 Style Criterion
 	CopyStyle             Theorem
@@ -249,5 +251,26 @@ Style Assumption*
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem*{assumption*}{Assumption}
+	EndPreamble
+End
+
+Style Question
+	CopyStyle             Theorem
+	DependsOn             Theorem
+	LatexName             question
+	LabelString           "Question \thetheorem."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem{question}[thm]{Question}
+	EndPreamble
+End
+
+Style Question*
+	CopyStyle             Theorem*
+	LatexName             question*
+	LabelString           "Question."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem*{question*}{Question}
 	EndPreamble
 End
