@@ -502,11 +502,15 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, docstring & rem)
 			// does start with '\', we accept the match only if
 			// this is a valid macro, i.e., either it is a single
 			// (nonletter) char macro, or nothing else follows,
-			// or what follows is a nonletter char.
+			// or what follows is a nonletter char, or the last
+			// character is a }.
 			if ((math == tmp || text == tmp)
 			    && (tmp[0] != '\\'
 				   || (tmp.size() == 2 && !isAlphaASCII(tmp[1]))
-				   || k == cmdend || !isAlphaASCII(cmd[k]))) {
+				   || k == cmdend 
+				   || !isAlphaASCII(cmd[k])
+				   || tmp[tmp.size() - 1] == '}')
+				 ) {
 				c = it->first;
 				j = k - 1;
 				i = j + 1;
