@@ -345,7 +345,11 @@ QString iconName(FuncRequest const & f, bool unknown)
 	if (res.exists(name2))
 		return path + name2;
 
-	LYXERR(Debug::GUI, "Cannot find icon for command \""
+	LYXERR(Debug::GUI, "Cannot find icon with filename "
+			   << "\"" << name1 << "\""
+			   << " or filename "
+			   << "\"" << name2 << "\"" 
+			   << " for command \""
 			   << lyxaction.getActionName(f.action)
 			   << '(' << to_utf8(f.argument()) << ")\"");
 
