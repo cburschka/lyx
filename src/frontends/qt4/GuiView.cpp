@@ -1623,8 +1623,11 @@ void GuiView::newDocument(string const & filename, bool from_template)
 
 	if (b)
 		setBuffer(b);
-	// Ensure the cursor is correctly positionned on screen.
+
+	// If no new document could be created, it is unsure 
+	// whether there is a valid BufferView.
 	if (view())
+		// Ensure the cursor is correctly positioned on screen.
 		view()->showCursor();
 }
 
