@@ -342,6 +342,14 @@ bool GuiClipboard::hasLyXContents() const
 }
 
 
+bool GuiClipboard::hasTextContents() const
+{
+	QMimeData const * const source =
+		qApp->clipboard()->mimeData(QClipboard::Clipboard);
+	return source && source->hasText();	
+}
+
+
 bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 {
 	if (type == AnyGraphicsType) {

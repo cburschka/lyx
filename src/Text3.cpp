@@ -998,7 +998,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (arg.empty()) {
 			if (theClipboard().isInternal())
 				pasteFromStack(cur, bv->buffer().errorList("Paste"), 0);
-			else if (theClipboard().hasGraphicsContents())
+			else if (theClipboard().hasGraphicsContents() 
+				     && !theClipboard().hasTextContents())
 				pasteClipboardGraphics(cur, bv->buffer().errorList("Paste"));
 			else
 				pasteClipboardText(cur, bv->buffer().errorList("Paste"));
