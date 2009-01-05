@@ -757,7 +757,8 @@ namespace {
 struct ColorSorter
 {
 	bool operator()(ColorCode lhs, ColorCode rhs) const {
-		return lcolor.getGUIName(lhs) < lcolor.getGUIName(rhs);
+		return 
+			compare_no_case(lcolor.getGUIName(lhs), lcolor.getGUIName(rhs)) < 0;
 	}
 };
 
