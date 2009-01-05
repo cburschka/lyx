@@ -61,6 +61,9 @@ What's new
 
 - Fix LaTeX error with custom margins and the revtex4 class (bug 3838).
 
+- siamltex class: do not load amsthm package, since the SIAM class 
+  provides its own theorem-like environments.
+
 
 * USER INTERFACE
 
