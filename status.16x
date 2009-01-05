@@ -67,6 +67,8 @@ What's new
 
 * USER INTERFACE
 
+- Fix crash when no file is open and the creation of a new document fails.
+
 - Speed up editing when the document contains paragraphs with many (>1000)
   insets (bug 4443).
 
@@ -90,8 +92,6 @@ What's new
 
 - Fix instant preview of external material for the first insert in the
   document (bug 5626).
-
-- Fix crash when no file is open and the creation of a new document fails. 
 
 - Allow pasting of text from applications that set the clipboard mimetype to 
   both graphics and text (bug 5560).
