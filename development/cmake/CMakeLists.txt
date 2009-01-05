@@ -32,6 +32,20 @@ set(LYX_DIR_VER "LYX_DIR_20x")
 set(LYX_USERDIR_VER "LYX_USERDIR_20x")
 
 set(PROGRAM_SUFFIX "\"\"")
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  # see http://www.cmake.org/pipermail/cmake/2006-October/011559.html
+  if (UNIX)
+    # don't use the default "/usr/local"
+    # but respect the user-choice on the command-line
+    SET(CMAKE_INSTALL_PREFIX
+      "/usr/local/share/lyx2.0" CACHE PATH "LyX install prefix" FORCE)
+  endif()
+  if(WIN32)
+    SET(CMAKE_INSTALL_PREFIX
+      ${CMAKE_INSTALL_PREFIX}/2.0 CACHE PATH "LyX install prefix" FORCE)
+  endif()
+endif(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+
 set(LYX_ABS_INSTALLED_DATADIR "${CMAKE_INSTALL_PREFIX}")
 set(LYX_LOCALEDIR "locale")
 set(LYX_ABS_INSTALLED_LOCALEDIR "${LYX_ABS_INSTALLED_DATADIR}/${LYX_LOCALEDIR}")
@@ -336,9 +350,11 @@ if(NOT use_external_libintl)
 endif()
 add_subdirectory(src)
 
-include_directories(man doc)
 add_subdirectory(man)
 add_subdirectory(doc)
+if (UNIX)
+    add_subdirectory(lyx2lyx)
+endif()
 
 include(../Install)
 

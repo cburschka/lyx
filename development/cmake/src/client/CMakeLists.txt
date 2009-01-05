@@ -14,8 +14,7 @@ list(REMOVE_ITEM _lyxclient_headers "${TOP_SRC_DIR}/src/client/pch.h")
 include_directories(BEFORE "${TOP_SRC_DIR}/src/client"
   "${TOP_SRC_DIR}/boost" ${ZLIB_INCLUDE_DIR})
 
-add_executable(lyxclient ${_lyxclient_sources}}
-  ${_lyxclient_headers})
+add_executable(lyxclient ${_lyxclient_sources} ${_lyxclient_headers})
 
 
 target_link_libraries(lyxclient
