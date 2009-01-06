@@ -1,4 +1,4 @@
-#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -161,8 +161,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 7.
- Dezember 2008
+letzte Änderung: 2.
+ Januar 2009
 \end_layout
 
 \begin_layout Standard
@@ -4141,8 +4141,8 @@ documentclass
 \end_layout
 
 \begin_layout Description
-PostScript-Treiber: Hier können Sie einen anderen als den (wahrscheinlich)
- voreingestellten Treiber dvips auswählen.
+Grafiktreiber: Hier können Sie einen anderen Treiber wählen, wenn Ihnen
+ Standard nicht gefällt.
 \begin_inset Foot
 status collapsed
 
@@ -31757,6 +31757,69 @@ nomencl
 -Dokumentation nach.
 \end_layout
 
+\begin_layout Subsection
+Nomenklatur-Programm
+\end_layout
+
+\begin_layout Standard
+LyX benutzt standardmäßig 
+\family typewriter
+makeindex
+\family default
+, um die Nomenklatur zu erzeugen, weil es zu jeder LaTeX-Distribution gehört.
+ Im Feld 
+\family sans
+Nomenklaturbefehl
+\family default
+ von 
+\family sans
+Werkzeuge
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Einstellun\SpecialChar \-
+gen
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Ausgaben
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
+\family default
+ können Sie den Befehl modifizieren oder ein anderes Programm eintragen.
+ In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "makeindex"
+
+\end_inset
+
+ und 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nomencl"
+
+\end_inset
+
+ sind die möglichen Optionen beschrieben.
+\end_layout
+
 \begin_layout Section
 Zweige
 \begin_inset Index
@@ -32182,7 +32245,7 @@ Allgemein
 \family default
  werden zusammen mit der PDF-Ausgabe als Datei-Eigenschaften gespeichert.
  Viele PDF-Leseprogramme können diese Informationen verarbeiten.
- Das zum Verwalten von PDF-Dateien sehr hilfreich.
+ Das ist zum Verwalten von PDF-Dateien sehr hilfreich.
  Ist 
 \family sans
 Informationen
@@ -33990,6 +34053,29 @@ Nächste
 \end_inset
 
 Notiz
+\end_layout
+
+\begin_layout Standard
+Leider werden (noch) nicht alle Änderungen angezeigt, insbesondere keine
+ Formatänderungen wie zum Beispiel 
+\emph on
+normal
+\emph default
+ nach 
+\emph on
+fett
+\emph default
+ oder 
+\emph on
+Standardabsatz
+\emph default
+ nach 
+\emph on
+Beschreibung
+\emph default
+.
+ Das kann man umgehen, indem man den Text(teil) dupliziert, das Original
+ löscht und die Kopie ändert.
 \end_layout
 
 \begin_layout Standard
@@ -39838,6 +39924,13 @@ status collapsed
 \end_inset
 
 X
+\begin_inset CommandInset label
+LatexCommand label
+name "LaTeX"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -40311,6 +40404,11 @@ reference "Dokumentklasse"
 Module
 \end_layout
 
+\begin_layout Standard
+Hier können Sie zusätzliche Funktionen hinzufügen, die nicht zum Standard
+ der gewählten Dokumentklasse gehören.
+\end_layout
+
 \begin_layout Description
 Verfügbar listet alle Module auf, die Sie in Ihrem Dokument zusätzlich verwenden
  können.
@@ -40348,6 +40446,25 @@ Runter
 \family default
 \series default
  können Sie die rechte Liste bearbeiten.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Bemerkung 1
+\series default
+: Manche Module benötigen LaTeX-Pakete, die nicht immer standardmäßig installier
+t werden.
+ LyX warnt Sie, wenn Sie die benötigten Pakete nicht haben.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Bemerkung 2
+\series default
+: Manche Module benötigen weitere Module, und manche Module sind inkompatibel
+ mit anderen.
 \end_layout
 
 \begin_layout Section
