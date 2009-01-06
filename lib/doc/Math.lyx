@@ -1,4 +1,4 @@
-#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -12,7 +12,6 @@
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
-
 
 % if pdflatex is used
 \usepackage{ifpdf}
@@ -31944,7 +31943,7 @@ Macro
 
 
 \begin_inset FormulaMacro
-\newcommand{\qG}[4][1,\,2]{#2_{#1}=-\frac{#3}{2}\pm\sqrt{\frac{#3^{2}}{4}-#4}}
+\renewcommand{\qG}[4][1,\,2]{#2_{#1}=-\frac{#3}{2}\pm\sqrt{\frac{#3^{2}}{4}-#4}}
 \end_inset
 
 
@@ -32283,7 +32282,7 @@ Macro
 \end_inset
 
 Definition\SpecialChar \menuseparator
-Append Argument
+Remove Argument
 \end_layout
 
 \end_inset
@@ -32319,7 +32318,7 @@ Macro
 \end_inset
 
 Definition\SpecialChar \menuseparator
-Remove Last Argument
+Append Last Argument
 \end_layout
 
 \end_inset
@@ -32497,7 +32496,7 @@ Macro
 \end_inset
 
 Definition\SpecialChar \menuseparator
-Insert Optional Argument
+Remove Optional Argument
 \end_layout
 
 \end_inset
@@ -32533,7 +32532,7 @@ Macro
 \end_inset
 
 Definition\SpecialChar \menuseparator
-Remove Optional Argument
+Insert Optional Argument
 \end_layout
 
 \end_inset
@@ -32569,7 +32568,7 @@ Macro
 \end_inset
 
 Definition\SpecialChar \menuseparator
-Append Argument Eating
+Remove Last Argument
 \begin_inset Newline newline
 \end_inset
 
@@ -32604,7 +32603,7 @@ status collapsed
 
 \end_inset
 
-From The Right
+Spitting Out To The Right
 \end_layout
 
 \end_inset
@@ -32640,7 +32639,7 @@ Macro
 \end_inset
 
 Definition\SpecialChar \menuseparator
-Append Optional Argument
+Append Argument
 \begin_inset Newline newline
 \end_inset
 
@@ -32711,7 +32710,7 @@ Macro
 \end_inset
 
 Definition\SpecialChar \menuseparator
-Remove Last Argument
+Append Optional Argument
 \begin_inset Newline newline
 \end_inset
 
@@ -32746,7 +32745,7 @@ status collapsed
 
 \end_inset
 
-Spitting Out To The Right
+Eating From The Right
 \end_layout
 
 \end_inset
