@@ -100,6 +100,7 @@ dist_declipartdoc_DATA = \
 
 esdocdir = $(docdir)/es
 dist_esdoc_DATA = \
+	es/Customization.lyx \
 	es/DocumentoPostizo1.lyx \
 	es/DocumentoPostizo2.lyx \
 	es/DocumentoTextoPostizo.txt \
