@@ -633,7 +633,6 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		// Now that we know exactly what we want to do, let's do it!
 		cur.selHandle(select);
-		cur.autocorrect() = false;
 		cur.clearTargetX();
 		cur.macroModeClose();
 		// try moving forward or backwards as necessary...
@@ -1525,8 +1524,14 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 
 #ifdef AUTOCORRECT
 		// leave autocorrect mode if necessary
-		if (cur.autocorrect() && c == ' ') {
+		if (c == ' ' && cur.autocorrect()) {
 			cur.autocorrect() = false;
+			cur.message(_("Autocorrect Off ('!' to enter)"));
+			return true;
+		} 
+		if (c == '!' && !cur.autocorrect()) {
+			cur.autocorrect() = true;
+			cur.message(_("Autocorrect On (<space> to exit)"));
 			return true;
 		}
 #endif
@@ -1634,7 +1639,12 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 
 	// no special circumstances, so insert the character without any fuss
 	cur.insert(c);
-	cur.autocorrect() = true;
+#ifdef AUTOCORRECT
+	if (!cur.autocorrect())
+		cur.message(_("Autocorrect Off ('!' to enter)"));
+	else
+		cur.message(_("Autocorrect On (<space> to exit)"));
+#endif
 	return true;
 }
 
