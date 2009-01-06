@@ -1,5 +1,5 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 347
 \begin_document
 \begin_header
 \textclass scrbook
@@ -3881,7 +3881,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \shape up
-ksmod
+kxmod
 \end_layout
 
 \end_inset
@@ -4070,18 +4070,12 @@ This will make the cha
 racter
 \family default
  
-\family roman
 \emph on
-char
-\family default
+char 
 \emph default
- 
-\family roman
-\shape up
+be an 
 \emph on
-be an accent
-\family default
-\shape default
+accent
 \emph default
  
 \family roman
@@ -4193,13 +4187,10 @@ char
 \family default
 \emph default
  
-\begin_inset Flex CharStyle:MenuItem
+\begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\shape up
-\emph on
 Backspace
 \end_layout
 
@@ -4242,7 +4233,7 @@ kmod ' acute aeiouAEIOU
 status collapsed
 
 \begin_layout Plain Layout
-ksmod
+kxmod
 \end_layout
 
 \end_inset
@@ -4591,8 +4582,16 @@ greek.kmap
 
 \backslash
 kmod ; acute aeioyvhAEIOYVH 
+\end_layout
+
+\begin_layout LyX-Code
+
 \backslash
 kmod : umlaut iyIY 
+\end_layout
+
+\begin_layout LyX-Code
+
 \backslash
 kcomb acute umlaut iyIY
 \end_layout
@@ -7518,7 +7517,14 @@ Provides
 
 \end_inset
 
- [
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "des:Provides"
+
+\end_inset
+
+[
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -7710,6 +7716,24 @@ string
 .
  Multiple features must be separated by commas.
  Note that you can only request supported features.
+ (See the description of the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Provides
+\end_layout
+
+\end_inset
+
+ tag 
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "des:Provides"
+
+\end_inset
+
+ for details.) 
 \end_layout
 
 \begin_layout Description
@@ -10620,14 +10644,14 @@ Provides
 
 \end_inset
 
- above (page 
+ 
 \begin_inset CommandInset ref
-LatexCommand pageref
-reference "des:FreeSpacing"
+LatexCommand vpageref
+reference "des:Provides"
 
 \end_inset
 
-) for information on `features'.
+ for information on `features'.
  
 \end_layout
 
