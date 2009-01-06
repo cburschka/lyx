@@ -1,11 +1,14 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2008, Peter Kümmel, <syntheticpp@gmx.net>
-#                   , Kornel Benko, <Kornel.Benko@berlin.de>
+# Copyright (c) 2008, 2009 Peter Kümmel, <syntheticpp@gmx.net>
+# Copyright (c) 2008, 2009 Kornel Benko, <Kornel.Benko@berlin.de>
 #
 
-project(lyx)
+project(doc)
+
+#TODO: replace perl script with python, see scons:
+# http://www.lyx.org/trac/browser/lyx-devel/trunk/development/scons/scons_utils.py
 
 SET(_docs)
 file(GLOB_RECURSE _rel_lyx_docs RELATIVE "${TOP_SRC_DIR}/lib/doc" "${TOP_SRC_DIR}/lib/doc/*.lyx" "${TOP_SRC_DIR}/lib/doc/*.txt")
