@@ -2135,6 +2135,7 @@ lib_doc_da_files = Split('''
 
 
 lib_doc_es_files = Split('''
+    Customization.lyx
     DocumentoPostizo1.lyx
     DocumentoPostizo2.lyx
     DocumentoTextoPostizo.txt
