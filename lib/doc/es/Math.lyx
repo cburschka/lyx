@@ -1,4 +1,4 @@
-#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -12,7 +12,6 @@
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
-
 
 % if pdflatex is used
 \usepackage{ifpdf}
@@ -52,7 +51,7 @@
 % see first footnote in sec. 9.3
 \@ifundefined{textcolor}{\usepackage{color}}{}
 
-% the pages of the TOC is numbered roman
+% the pages of the TOC are numbered roman
 % and a PDF-bookmark for the TOC is added
 \pagenumbering{roman}
 \let\myTOC\tableofcontents
@@ -29827,7 +29826,7 @@ Referencias cruzadas
 status collapsed
 
 \begin_layout Plain Layout
-Referencias cruzadas ! a ecuaciones
+Ecuación ! referencias cruzadas a
 \end_layout
 
 \end_inset
@@ -31141,7 +31140,7 @@ newcommand
 , descrito en 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Comandos-de-usuario"
+reference "sub:El-comando-newcommand"
 
 \end_inset
 
@@ -31473,9 +31472,43 @@ target "Formula-numbering.lyx"
 
 \begin_layout Section
 Comandos definidos por el usuario
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Comandos personalizados
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota:
+\series default
+ Los nombres de los comandos definidos por el usuario y macros solo pueden
+ contener letras latinas.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+El comando 
+\backslash
+newcommand
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Comandos-de-usuario"
+name "sub:El-comando-newcommand"
 
 \end_inset
 
@@ -31484,7 +31517,21 @@ name "sec:Comandos-de-usuario"
 status collapsed
 
 \begin_layout Plain Layout
-Comandos personalizados
+Comandos de usuario ! 
+\backslash
+newcommand
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Comandos ! N ! 
+\backslash
+newcommand
 \end_layout
 
 \end_inset
@@ -31500,18 +31547,6 @@ Muchos comandos LaTeX son demasiado largos para usarlos con frecuencia.
 \backslash
 newcommand
 \series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Comandos ! N ! 
-\backslash
-newcommand
-\end_layout
-
-\end_inset
-
 .
  
 \end_layout
@@ -31566,7 +31601,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -31614,23 +31649,6 @@ le
 
 \series bold
  
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-Nota:
-\series default
- Los nombres de comandos personalizados sólo pueden tener letras latinas.
 \end_layout
 
 \end_inset
@@ -32168,6 +32186,979 @@ A=B
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Macros de ecuaciones
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Comandos de usuario ! Macros de ecuaciones
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Macros
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Los comandos definidos por el usuario son especialmente convenientes para
+ expresiones complejas.
+ Por ejemplo, si estás trabajando en un documento con ecuaciones cuadráticas,
+ el mismo tipo de solución se repite varias veces.
+ La forma general de una ecuación de segundo grado es:
+\begin_inset Formula \[
+0=\lambda^{2}+p\lambda+q\]
+
+\end_inset
+
+La forma general de la solución es:
+\begin_inset Formula \[
+\lambda_{1,2}=-\frac{p}{2}\pm\sqrt{\frac{p²}{4}-q}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para definir un comando para la ecuación de la solución, en donde solo hay
+ que especificar los tres parámetros 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $p$
+\end_inset
+
+, y 
+\begin_inset Formula $q$
+\end_inset
+
+, y el índice de 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ puede darse opcionalmente, la línea de preámbulo LaTeX es
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+qG}[4][1,
+\backslash
+,2]{#2_{#1}=-
+\backslash
+frac{#3}{2}
+\backslash
+pm
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+
+\backslash
+newcommand
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\backslash
+sqrt{
+\backslash
+frac{#3^{2}}{4}-#4}}
+\end_layout
+
+\begin_layout Standard
+Para generar la solución se inserta el comando
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+qG{
+\backslash
+lambda
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+{p
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+{q
+\series default
+ en una ecuación
+\series bold
+.
+\end_layout
+
+\begin_layout Standard
+La definición del nuevo comando no es intuitiva porque hay que conocer los
+ esquemas de todos los comandos LaTeX usados, p.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., que una fracción se inserta en LaTeX como
+\series bold
+ 
+\backslash
+frac{numerador}{denominador}
+\series default
+.
+ Además, uno puede olvidar fácilmente una llave en la definición y no puede
+ ver en LyX lo que el nuevo comando está haciendo.
+ Para evitar estos problemas, LyX ofrece la posibilidad de usar macros de
+ ecuación en vez del comando
+\series bold
+ 
+\backslash
+newcommand
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Una macro de ecuación se crea con el menú 
+\family sans
+Insertar\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
+Macro
+\family default
+ o con el botón 
+\begin_inset Graphics
+	filename ../../images/math-macro_newmacroname_newcommand.png
+	scale 85
+
+\end_inset
+
+ de la barra de herramientas.
+ Aparecen entonces la barra de herramientes de macros de ecuación y un recuadro
+ como el siguiente donde se define la macro:
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../clipart/macrobox.png
+	lyxscale 90
+	scale 90
+
+\end_inset
+
+
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\qG}[4][1,\,2]{#2_{#1}=-\frac{#3}{2}\pm\sqrt{\frac{#3^{2}}{4}-#4}}
+\end_inset
+
+
+\backslash
+newmacroname es el nombre por omisión y debería cambiarse por alguno sensato.
+ En el primer marco azul se inserta la ecuación buscada.
+ Con el comando 
+\series bold
+
+\backslash
+#númerodeargumento
+\series default
+, , o con el botón 
+\begin_inset Graphics
+	filename ../../images/math-macro-add-param.png
+	scale 85
+
+\end_inset
+
+ de la barra de herramientas de macros se inserta un colocador de argumento,
+ p.
+\begin_inset space \thinspace{}
+\end_inset
+
+e
+\begin_inset space \space{}
+\end_inset
+
+
+\series bold
+
+\backslash
+#1
+\series default
+.
+ Los colocadores de argumento se muestran en rojo.
+ Se pueden poner 9 argumentos como máximo.
+ Con el botón 
+\begin_inset Graphics
+	filename ../../images/math-macro-add-optional-param.png
+	scale 85
+
+\end_inset
+
+ se crean argumentos opcionales.
+ El primer argumento no opcional puede transformarse en opcional con el
+ botón 
+\begin_inset Graphics
+	filename ../../images/math-macro-make-optional.png
+	scale 85
+
+\end_inset
+
+.
+ En el segundo marco azul puede definirse el aspecto de la macro en LyX.
+ Normalmente quieres verlo tal como está definido, así que el recuadro se
+ deja vacío.
+ Pero si has creado una macro que necesita mucho espacio en la pantalla,
+ en dicho recuadro puedes insertar, por ejemplo
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+qG: 
+\backslash
+#1
+\series default
+ 
+\series bold
+,
+\series default
+ 
+\series bold
+
+\backslash
+#2
+\series default
+ 
+\series bold
+,
+\series default
+ 
+\series bold
+
+\backslash
+#3, 
+\backslash
+#4
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+Para la macro solo los argumentos con el nombre delante de ellos se mostrarán
+ en LyX, lo que conlleva una visualización mejor.
+ La ecuación aparece en la salida tal como se ha definido en el primer recuadro.
+\begin_inset Newline newline
+\end_inset
+
+Además, el aspecto de las macros en las ecuaciones puede cambiarse para
+ macros individuales situando el cursor en la macro y usando el menú 
+\family sans
+Ver\SpecialChar \menuseparator
+(Des)plegar macro de ecuación.
+\end_layout
+
+\begin_layout Standard
+Para usar una macro, se inserta el nombre de la misma como comando en una
+ ecuación, en nuestro caso 
+\series bold
+
+\backslash
+qG
+\series default
+.
+ Nuestra macro se muestra en LyX así:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../clipart/macrouse.png
+	lyxscale 75
+	scale 75
+
+\end_inset
+
+
+\begin_inset space \hspace*{\fill}
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Aquí tenemos nuestro ejemplo de macro con los argumentos 
+\begin_inset Formula $x$
+\end_inset
+
+, 
+\begin_inset Formula $\ln(x)$
+\end_inset
+
+, y 
+\begin_inset Formula $B$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\qG x{\ln(x)}B\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Una macro de ecuación se transforma internamente en un comando 
+\series bold
+
+\backslash
+newcommand
+\series default
+ cuando se exporta el documento.
+ El comando creado 
+\series bold
+
+\backslash
+newcommand
+\series default
+ no se coloca en el preámbulo LaTeX, por tanto las macros solo se pueden
+ usar en ecuaciones que estén en recuadros de definición de macros en el
+ documento.
+ 
+\end_layout
+
+\begin_layout Standard
+Las macros de ecuación también pueden crearse directamente a partir de un
+ comando
+\series bold
+ 
+\backslash
+newcommand
+\series default
+.
+ Por ejemplo, escribiendo el comando
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+larrow}[2]{
+\backslash
+xleftarrow[#2]{#1}}
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+como texto normal en LyX, seleccionándolo completamente y usando a continuación
+ el atajo 
+\family sans
+Ctrl-m
+\family default
+, el comando se transformará en una macro de ecuación.
+ Al emplear este método debes tener cuidado en escribir correctamente el
+ comando 
+\series bold
+
+\backslash
+newcommand
+\series default
+, de lo contrario la macro defectuosa lleva a obtener errores LaTeX.
+ 
+\end_layout
+
+\begin_layout Standard
+Las macros de ecuación todavía tienen el problema de que fórmulas adicionales
+ en definiciones de macros se manejan incorrectamente.
+ Por eso el ejemplo 
+\series bold
+
+\backslash
+fb
+\series default
+ de 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:El-comando-newcommand"
+
+\end_inset
+
+ no puede crearse como macro.
+\end_layout
+
+\begin_layout Standard
+Cuando el cursor está en un recuadro de definición de macro, verás en LyX
+ la barra de herramientas de macros:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../clipart/MacroToolbar.png
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Macros ! Barra de herramientas
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La barra de herramientas de macros contiene los siguientes botones:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="2">
+<features islongtable="true">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="85col%">
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../images/math-macro-remove-param.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Editar\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
+Definición de macro\SpecialChar \menuseparator
+Quitar último argumento
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../images/math-macro-add-param.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Editar\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
+Definición de macro\SpecialChar \menuseparator
+Añadir argumento
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../images/math-macro-make-optional.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Editar\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
+Definición de macro\SpecialChar \menuseparator
+Hacer opcional el primer
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+Editar\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
+Definición de macro\SpecialChar \menuseparator
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+argumento no opcional
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../images/math-macro-make-nonoptional.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Editar\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
+Definición de macro\SpecialChar \menuseparator
+Hacer no opcional el primer
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+Editar\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
+Definición de macro\SpecialChar \menuseparator
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+argumento opcional
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../images/math-macro-remove-optional-param.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Editar\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
+Definición de macro\SpecialChar \menuseparator
+Quitar argumento opcional
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../images/math-macro-add-optional-param.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Editar\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
+Definición de macro\SpecialChar \menuseparator
+Insertar argumento opcional
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../images/math-macro-remove-greedy-param.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Editar\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
+Definición de macro\SpecialChar \menuseparator
+Quitar último argumento
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+Editar\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
+Definición de macro\SpecialChar \menuseparator
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+yendo hacia la derecha
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../images/math-macro-append-greedy-param.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Editar\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
+Definición de macro\SpecialChar \menuseparator
+Añadir argumento comiendo
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+Editar\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
+Definición de macro\SpecialChar \menuseparator
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+desde la derecha
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../images/math-macro-add-greedy-optional-param.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Editar\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
+Definición de macro\SpecialChar \menuseparator
+Añadir argumento opcional
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+Editar\SpecialChar \menuseparator
+Ecuación\SpecialChar \menuseparator
+Definición de macro\SpecialChar \menuseparator
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+comiendo desde la derecha
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
 \begin_inset Newpage newpage
 \end_inset
 
@@ -32556,7 +33547,7 @@ A diferencia de los diagramas amscd, las matrices xy soportan flechas diagonales
  Todas las posibilidades para generar diagramas conmutativos y decoraciones
  se explican en el 
 \emph on
-manual de XY-pic
+Manual de XY-pic
 \emph default
  que se encuentra en el menú 
 \family sans
@@ -35164,13 +36155,18 @@ cm se usa el aspa de multiplicar
 \end_inset
 
 .
- Se puede insertar con el comando LaTeX 
-\series bold
+ Está disponible en el menú 
+\family sans
+Insertar\SpecialChar \menuseparator
+Carácter especial
+\family default
+\SpecialChar \menuseparator
 
-\backslash
-texttimes
-\series default
- o directamente con alguna combinación de teclas.
+\family sans
+Símbolos
+\family default
+.
+ Se puede insertar directamente con cierta combinación de teclas.
 \end_layout
 
 \begin_layout Itemize
