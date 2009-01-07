@@ -579,8 +579,17 @@ bool Buffer::readDocument(Lexer & lex)
 		FileName const master_file = makeAbsPath(params().master,
 			   onlyPath(absFileName()));
 		if (isLyXFilename(master_file.absFilename())) {
-			Buffer * master = checkAndLoadLyXFile(master_file, true);
-			d->parent_buffer = master;
+			Buffer * master = 
+				checkAndLoadLyXFile(master_file, true);
+			// set master as master buffer, but only if we are
+			// a real child
+			if (master->isChild(this))
+				d->parent_buffer = master;
+			else
+				LYXERR0("The master '" 
+				        << params().master 
+				        << "' assigned to this document does not include "
+				        "this document. Ignoring the master assignment.");
 		}
 	}
 

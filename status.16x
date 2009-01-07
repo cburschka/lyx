@@ -24,7 +24,8 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Update localization of the user interface for Czech, German, and Italian.
+- Update localization of the user interface for Czech, German, and 
+  Italian.
 
 - Updated English and Spanish Customization manual.
 
@@ -39,7 +40,8 @@ What's new
 
 - New external material template for Dia.
 
-- New layout file for submissions to ACM SIGGRAPH conferences and publications.
+- New layout file for submissions to ACM SIGGRAPH conferences and
+  publications.
 
 - New layout file to typeset recipes.
 
@@ -77,6 +79,10 @@ What's new
 
 - Fix crash when no file is open and the creation of a new document fails.
 
+- Ignore the master_buffer setting in Document>Settings if the current
+  document is no real child. This fixes a crash when using the outliner
+  in such files (bug 5653).
+
 - Speed up editing when the document contains paragraphs with many (>1000)
   insets (bug 4443).
 
@@ -87,12 +93,12 @@ What's new
 
 - Improve debug output when tracing what actions are triggered.
 
-- A re-declaration of an InsetLayout will now update the existing declaration
-  rather than completely over-writing it---agreeing with the behavior of our
-  normal Style declarations.
+- A re-declaration of an InsetLayout will now update the existing 
+  declaration rather than completely over-writing it---agreeing with the
+  behavior of our normal Style declarations.
 
-- Reflect external material template using Instant Preview in the dialog for
-  scaling property (bug 5628).
+- Reflect external material template using Instant Preview in the dialog
+  for scaling property (bug 5628).
   
 - Enable "dissolve" item in context menus of collapsable insets (bug 4985).
 
@@ -101,8 +107,8 @@ What's new
 - Fix instant preview of external material for the first insert in the
   document (bug 5626).
 
-- Allow pasting of text from applications that set the clipboard mimetype to 
-  both graphics and text (bug 5560).
+- Allow pasting of text from applications that set the clipboard mimetype
+  to both graphics and text (bug 5560).
 
 
 * DOCUMENTATION AND LOCALIZATION
