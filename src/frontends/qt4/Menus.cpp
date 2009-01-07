@@ -339,8 +339,8 @@ void MenuDefinition::addWithStatusCheck(MenuItem const & i)
 	}
 
 	case MenuItem::Submenu: {
+		bool enabled = false;
 		if (i.hasSubmenu()) {
-			bool enabled = false;
 			for (const_iterator cit = i.submenu().begin();
 			     cit != i.submenu().end(); ++cit) {
 				if ((cit->kind() == MenuItem::Command
@@ -350,13 +350,11 @@ void MenuDefinition::addWithStatusCheck(MenuItem const & i)
 					break;
 				}
 			}
-			if (enabled || !i.optional()) {
-				items_.push_back(i);
-				items_.back().status().setEnabled(enabled);
-			}
 		}
-		else
+		if (enabled || !i.optional()) {
 			items_.push_back(i);
+			items_.back().status().setEnabled(enabled);
+		}
 		break;
 	}
 
