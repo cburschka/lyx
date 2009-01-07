@@ -233,6 +233,9 @@ public:
 	/// does the given bookmark have a saved position ?
 	bool isValid(unsigned int i) const;
 
+	/// is there at least one bookmark that has a saved position ?
+	bool hasValid() const;
+
 	///
 	unsigned int size() const { return max_bookmarks; }
 

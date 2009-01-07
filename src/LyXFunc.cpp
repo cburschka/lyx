@@ -519,7 +519,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	case LFUN_BOOKMARK_CLEAR:
-		enable = theSession().bookmarks().size() > 0;
+		enable = theSession().bookmarks().hasValid();
 		break;
 
 	// this one is difficult to get right. As a half-baked

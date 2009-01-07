@@ -285,6 +285,16 @@ bool BookmarksSection::isValid(unsigned int i) const
 }
 
 
+bool BookmarksSection::hasValid() const
+{
+	for (size_t i = 1; i <= size(); ++i) {
+		if (isValid(i))
+			return true;
+	}
+	return false;
+}
+
+
 BookmarksSection::Bookmark const & BookmarksSection::bookmark(unsigned int i) const
 {
 	return bookmarks[i];
