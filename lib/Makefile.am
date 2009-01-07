@@ -944,6 +944,7 @@ dist_layouts_DATA =\
 	layouts/aapaper.layout \
 	layouts/aastex.layout \
 	layouts/achemso.layout \
+	layouts/acmsiggraph.layout \
 	layouts/agu-dtd.layout \
 	layouts/agu_stdclass.inc \
 	layouts/agu_stdcounters.inc \

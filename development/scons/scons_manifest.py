@@ -2541,6 +2541,7 @@ lib_layouts_files = Split('''
     aapaper.layout
     aastex.layout
     achemso.layout
+    acmsiggraph.layout
     agu-dtd.layout
     agums.layout
     amsart.layout
