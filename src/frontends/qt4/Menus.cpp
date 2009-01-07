@@ -1164,6 +1164,7 @@ void Menu::Impl::populate(QMenu & qMenu, MenuDefinition const & menu)
 		else if (m->kind() == MenuItem::Submenu) {
 			QMenu * subMenu = qMenu.addMenu(label(*m));
 			populate(*subMenu, m->submenu());
+			subMenu->setEnabled(m->status().enabled());
 		} else {
 			// we have a MenuItem::Command
 			qMenu.addAction(new Action(view, QIcon(), label(*m), 
