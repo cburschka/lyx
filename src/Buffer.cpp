@@ -583,7 +583,7 @@ bool Buffer::readDocument(Lexer & lex)
 				checkAndLoadLyXFile(master_file, true);
 			// set master as master buffer, but only if we are
 			// a real child
-			if (master->isChild(this))
+			if (master && master->isChild(this))
 				d->parent_buffer = master;
 			else
 				LYXERR0("The master '" 
