@@ -1,0 +1,139 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[scrbook]{book (recipes)}
+# Recipe textclass definition file.
+# Author: Sandor Szoke (alex@lyx.hu)
+#
+# The \part, \chapter, \section and \subsection commands
+# work as usual; \subsubsection commands are used for
+# ``recipes'' as units, and are not numbered but (by
+# default) entered in the .toc file.
+#
+# The recipe (a.k.a. subsubsection header) is typeset in
+# a style defined with the command \rechead; the default
+# is Large, horizontally centered, bold sans-serif: and
+# the user can change that setting with a suitable
+# \renewcommand{\rechead} .
+#
+# If e.g. \section and \subsection commands are not used
+# in the text, the large indentation of the \subsubsection
+# items in the Table of Contents may be ugly; for that case,
+# we redefine \l@subsubsection .
+#
+# A specific command \recipe{...} is defined as an alias
+# for a \subsubsection{...} followed by two rules across
+# the whole page and by a vertical space.
+#
+# Another command, \ingred{...}, is defined to typeset a
+# list of ingredients.
+
+Format 11
+Input scrclass.inc
+Input numreport.inc
+
+Sides			1
+Sides			2
+PageStyle		Headings
+
+# There is no abstract environment in scrbook.cls
+NoStyle Abstract
+
+# Global parameters.
+SecNumDepth		2
+TocDepth		3
+
+Style Chapter
+  LabelString		"\thechapter"
+End
+
+Style Bibliography
+  TopSep		4
+  LabelString		"Bibliography"
+  LabelFont
+    Series		Bold
+    Size		Largest
+  EndFont
+End
+
+Preamble
+
+\setcounter{secnumdepth}{2}	% subsubsections not numbered
+\setcounter{tocdepth}{3}	% subsubsections in the .toc file
+
+\newcommand{\rechead}
+    {\centering\normalfont\Large\sffamily\bfseries}
+
+\renewcommand{\subsubsection}
+    {\@startsection{subsubsection}{3}{\z@}%
+    {-5ex\@plus -1ex \@minus -.2ex}%
+    {1.5ex \@plus .2ex}%
+    {\rechead}}
+
+\newcommand{\recipe}[1]{\subsubsection{#1}%
+    \hrule height0.75pt width\hsize\vspace*{1\p@}%
+    \hrule height0.25pt width\hsize%
+    \nobreak
+    \vskip\parskip}
+
+\newcommand{\inghead}[1][]{\large\textbf{Ingredients#1}:}
+\newcommand{\ingred}[2][]
+    {{\list{}{\rightmargin 1em\leftmargin 1em}%
+    \item[]\textit{\inghead[#1]} #2\endlist}%
+    \hrule height0.25pt width\hsize}
+EndPreamble
+
+Style Recipe
+  LatexType		Command
+  LatexName		recipe
+  Margin		Static
+  LeftMargin		Ingredients_for_some:xx
+  LabelSep		xx
+  LabelType		Static
+  LabelString		"Recipe:"
+  Align			Center
+  LabelFont
+    Family		Sans
+    Size		Large
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+End
+
+# Subsubsection style definition
+Style Subsubsection
+  LatexType		Command
+  LatexName		subsubsection
+  ParSkip		0.4
+  TopSep		0.9
+  BottomSep		0.5
+  ParSep		0.5
+  Align			Block
+  AlignPossible		Block
+  Font
+    Size		Small
+  EndFont
+End
+
+# Inghead style definition
+Style Ingredients
+  LatexType		Command
+  LatexName		ingred
+  OptionalArgs		1
+  Margin		Static
+  LeftMargin		Ingredients_for_some:xx
+  LabelSep		xx
+  Align			Left
+  AlignPossible		Left, Block
+  LabelType		Static
+  LabelString		"Ingredients:"
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color		red
+  EndFont
+  Preamble
+   \renewcommand*\l@subsubsection{\@dottedtocline{3}{3em}{0em}}
+   \setlength\parindent{0pt}
+   \setlength\parskip{2ex plus 0.5ex}
+  EndPreamble
+End

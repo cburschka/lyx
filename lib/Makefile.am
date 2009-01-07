@@ -226,6 +226,7 @@ dist_examples_DATA = \
 	examples/multicol.lyx \
 	examples/noweb2lyx.lyx \
 	examples/powerdot-example.lyx \
+	examples/recipebook.lyx \
 	examples/script_form.lyx \
 	examples/seminar.lyx \
 	examples/serial_letter1.lyx \
@@ -1038,6 +1039,7 @@ dist_layouts_DATA =\
 	layouts/numrevtex.inc \
 	layouts/paper.layout \
 	layouts/powerdot.layout \
+	layouts/recipebook.layout \
 	layouts/report.layout \
 	layouts/revtex.layout \
 	layouts/revtex4.layout \
