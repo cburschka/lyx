@@ -1,0 +1,669 @@
+#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass acmsiggraph
+\begin_preamble
+% for the following cases use the listed document class option:
+% no option   for final
+% "annualconference"   for final (annual conference)
+% "review"   for review
+% "widereview"   for wide-spaced review
+% "preprint"   for preprint
+
+% Optional: the 'caption' package provides a nicer-looking replacement
+% for the standard caption environment. With 'labelfont=bf,'textfont=it',
+% caption labels are bold and caption text is italic.
+%\usepackage[labelfont=bf,textfont=it]{caption}
+
+% If you are submitting a paper to the annual conference, please replace 
+% the value ``0'' below with the numeric value of your OnlineID. 
+% If you are not submitting this paper to the annual conference, 
+% you may safely leave it at ``0'' -- it will not be included in the output.
+\onlineid{0}
+
+% Paper title.
+\title{Global Illumination for Fun and Profit}
+
+% Author and Affiliation (single author).
+%\author{Name \thanks{e-mail: name@unknown.uu}\\ Research Institute}
+
+% Author and Affiliation (multiple authors).
+\author{Andrew N. Other\thanks{e-mail:i.k.groupleader@unknown.uu}\\ Computer Research Institute
+\and Fred T. Secondauthor\thanks{i.k.groupleader@unknown.uu}\\ Another Institute}
+
+% Keywords that describe your work.
+\keywords{radiosity, global illumination, constant time}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans helvet
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 92
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The installation of the ACM-siggraph document class is explained in 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Examples/AcmSiggraph
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ The author, affiliation, email addresses, and the document title have to
+ set up in the LaTeX preamble of this document!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ The document type (review etc.) is specified by using one of the document
+ class options listed in the preamble of this file.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Teaser
+\begin_inset Graphics
+	filename ../examples/beamer-icsi-logo.pdf
+	width 40col%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+You can ignore that LyX writes here 
+\begin_inset Quotes eld
+\end_inset
+
+Senseless!!!
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+Lookit! Lookit!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The command 
+\series bold
+
+\backslash
+maketitle
+\series default
+ prepares and prints the title block.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+BlaBlaBla.
+\end_layout
+
+\begin_layout Abstract
+Citations can be done this way
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Jobs95"
+
+\end_inset
+
+ or this more concise way
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+shortcite
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Jobs95
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, depending upon the application.
+\end_layout
+
+\begin_layout Abstract
+Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+ lobortis nisl ut aliquip ex ea commodo consequat.
+ Duis autem vel eum iriure dolor in hendrerit
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pellacini:2005:LAH"
+
+\end_inset
+
+ in vulputate velit esse molestie
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "notes2002"
+
+\end_inset
+
+ consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
+ accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit
+ augue duis dolore te feugait nulla facilisi.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Park:2006:DSI"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+See 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.acm.org/class/1998/
+\end_layout
+
+\end_inset
+
+ for details about the ACM Computing Review categories.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout CR categories
+\begin_inset Flex CRcat
+status open
+
+\begin_layout Plain Layout
+K.6.1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Management of Computing and Information Systems
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Project and People Management
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Life Cycle
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The CR categories expects 4 infos that are separated by 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+}{
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ in TeX code.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout CRcat
+\begin_inset Flex CRcat
+status open
+
+\begin_layout Plain Layout
+K.7.m
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+The Computing Profession
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Miscellaneous
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Ethics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+keywordlist
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The command 
+\series bold
+
+\backslash
+keywordlist
+\series default
+ prints out the keywords.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+copyrightspace
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+When you use a copyright note, the 
+\series bold
+
+\backslash
+copyrightspace
+\series default
+ command must be the first command after the start of the first section
+ of the body of your paper.
+ It ensures the copyright space is left at the bottom of the first column
+ on the first page of your paper.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+bla
+\end_layout
+
+\begin_layout Section
+Exposition
+\end_layout
+
+\begin_layout Standard
+blabla
+\end_layout
+
+\begin_layout Section
+A New Section
+\end_layout
+
+\begin_layout Subsection
+A New Subsection
+\end_layout
+
+\begin_layout Standard
+Subsection test
+\end_layout
+
+\begin_layout Subsection
+A Second Subsection
+\end_layout
+
+\begin_layout Subsubsection
+A Subsubsection
+\end_layout
+
+\begin_layout Standard
+Bla.
+\end_layout
+
+\begin_layout Subsubsection
+Another Subsubsection
+\end_layout
+
+\begin_layout Standard
+Bla.
+\end_layout
+
+\begin_layout Subsection
+A Final Subsection
+\end_layout
+
+\begin_layout Standard
+Bla.
+\end_layout
+
+\begin_layout Section
+Back to the Section
+\end_layout
+
+\begin_layout Standard
+Bla.
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Standard
+Bla.
+\end_layout
+
+\begin_layout Section*
+Acknowledgements
+\end_layout
+
+\begin_layout Standard
+To Robert, for all the bagels.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "../examples/biblioExample"
+options "acmsiggraph"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_body
+\end_document

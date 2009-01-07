@@ -1,0 +1,158 @@
+#% Do not delete he line below; configure depends on this
+#  \DeclareLaTeXClass[acmsiggraph]{article (ACM SIGGRAPH)}
+# ACM SIGGRAPH acmsiggraph textclass definition file.
+# Author : Uwe Stöhr
+#
+# We use acmsiggraph.cls, the Sigplan class file that can be
+# downloaded from
+# http://www.siggraph.org/publications/instructions
+#
+# ACM style files can be obtained at
+# http://www.acm.org/sigs/pubs/proceed/template.html
+
+Format 11
+
+Columns                 1
+Sides                   1
+SecNumDepth		3
+TocDepth		3
+DefaultStyle            Standard
+
+ClassOptions
+  FontSize		9|10|11|12
+End  
+
+DefaultFont
+  Family		Roman
+  Series		Medium
+  Shape			Up
+  Size			Normal
+  Color			None
+EndFont
+
+
+Style Standard
+  Margin  		Static
+  LatexType 		Paragraph
+  LatexName 		dummy
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Block
+  AlignPossible 	Block, Left, Right, Center
+  LabelType 		No_Label
+End
+
+
+Input stdcounters.inc
+Input stdfloats.inc
+Input stdlists.inc
+Input stdsections.inc
+Input stdstarsections.inc
+
+# don't use the following styles
+NoStyle			Part
+NoStyle			Part*
+NoStyle			Chapter
+NoStyle			Chapter*
+NoStyle			Subparagraph
+NoStyle			Subparagraph*
+
+
+Style Teaser
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		teaser
+	Category		FrontMatter
+	InTitle			1
+	ParSkip			0.4
+	BottomSep		0.5
+	Align			Left
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Teaser image:"
+	LabelFont
+	  Color			Green
+	  Series		Bold
+	EndFont
+End
+
+
+Input stdtitle.inc
+Input stdstruct.inc
+
+
+InsetLayout CRcat
+	LyxType			custom
+	LatexType		command
+	LatexName		CRcat
+	Decoration		classic
+	LabelString		"CR category"
+	Font
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
+	EndFont
+	LabelFont
+	  Color			green
+	  Size			Small
+	EndFont
+End
+
+
+Style Abstract
+	Margin			Static
+	LatexType		Environment
+	LatexName		abstract
+	Category		FrontMatter
+	NextNoIndent		1
+	LeftMargin		MMM
+	RightMargin		MMM
+	ParIndent		MM
+	ItemSep			0
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0
+	Align			Block
+	AlignPossible		Block
+	LabelType		Centered_Top_Environment
+	LabelString		"Abstract"
+	LabelBottomSep		0.5
+	Font
+	  Size			Small
+	EndFont
+	LabelFont
+	  Series		Bold
+	  Size			Large
+	EndFont
+End
+
+
+Style "CR categories"
+	CopyStyle		Abstract
+	LatexName		CRcatlist
+	Category		FrontMatter
+	LeftMargin		M
+	LabelType		Top_Environment
+	LabelString		"Computing Review Categories"
+	LabelFont
+	  Series		Bold
+	  Size			Normal
+	EndFont
+End
+
+
+Style Acknowledgments
+	CopyStyle		Abstract
+	LatexName		acks
+	Category		BackMatter
+	InTitle			0
+	LabelBottomsep		0
+	LabelType		Top_Environment
+	LabelString		"Acknowledgments"
+End
+

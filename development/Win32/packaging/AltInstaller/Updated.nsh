@@ -28,8 +28,9 @@ Function UpdateModifiedFiles
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Math.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\examples"
- #File "${PRODUCT_SOURCEDIR}\Resources\examples\achemso.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\biblioExample.bib"
  SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\acmsiggraph.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\hanging.module"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\minimalistic.module"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\siamltex.layout"
@@ -39,6 +40,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_6.py"
  SetOutPath "$INSTDIR\Resources\man"
  File "${PRODUCT_SOURCEDIR}\Resources\man\tex2lyx.1"
+ SetOutPath "$INSTDIR\Resources\templates"
+ File "${PRODUCT_SOURCEDIR}\Resources\templates\ACM-siggraph.lyx"
 
 FunctionEnd
 
