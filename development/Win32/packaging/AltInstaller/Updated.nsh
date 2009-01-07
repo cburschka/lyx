@@ -34,6 +34,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\acmsiggraph.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\hanging.module"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\minimalistic.module"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\recipebook.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\siamltex.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\stdinsets.inc"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
