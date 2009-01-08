@@ -91,7 +91,7 @@ void LyXVC::setBuffer(Buffer * buf)
 }
 
 
-void LyXVC::registrer()
+bool LyXVC::registrer()
 {
 	FileName const filename = owner_->fileName();
 
@@ -100,7 +100,7 @@ void LyXVC::registrer()
 		Alert::error(_("Document not saved"),
 			     _("You must save the document "
 					    "before it can be registered."));
-		return;
+		return false;
 	}
 
 	// it is very likely here that the vcs is not created yet...
@@ -134,11 +134,12 @@ void LyXVC::registrer()
 			_("(no initial description)"));
 	if (!ok) {
 		LYXERR(Debug::LYXVC, "LyXVC: user cancelled");
-		return;
+		return false;
 	}
 	if (response.empty())
 		response = _("(no initial description)");
 	vcs->registrer(to_utf8(response));
+	return true;
 }
 
 
