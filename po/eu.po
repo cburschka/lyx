@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-07 06:49+0100\n"
+"POT-Creation-Date: 2009-01-08 09:02+0100\n"
 "PO-Revision-Date: 2008-08-04 23:16+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -84,8 +84,8 @@ msgstr "&Ados"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:549 src/Buffer.cpp:842
-#: src/Buffer.cpp:2543 src/Buffer.cpp:2567 src/Buffer.cpp:2602
+#: src/frontends/qt4/ui/ListingsUi.ui:549 src/Buffer.cpp:851
+#: src/Buffer.cpp:2552 src/Buffer.cpp:2576 src/Buffer.cpp:2611
 #: src/LyXFunc.cpp:683 src/LyXFunc.cpp:822 src/LyXFunc.cpp:996
 #: src/LyXVC.cpp:181 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1254
@@ -15018,20 +15018,20 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:711 src/Buffer.cpp:794
+#: src/Buffer.cpp:720 src/Buffer.cpp:803
 msgid "Document format failure"
 msgstr "Huts egitea dokumentu-formatuan"
 
-#: src/Buffer.cpp:712
+#: src/Buffer.cpp:721
 #, fuzzy, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s ez da LyX dokumentua."
 
-#: src/Buffer.cpp:749
+#: src/Buffer.cpp:758
 msgid "Conversion failed"
 msgstr "Bihurketak huts egin du"
 
-#: src/Buffer.cpp:750
+#: src/Buffer.cpp:759
 #, fuzzy, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -15040,11 +15040,11 @@ msgstr ""
 "%1$s LyX-en bertsio berriago batekoa da, baina ezin izan da aldi baterako "
 "fitxategia sortu bihurketa lantzeko."
 
-#: src/Buffer.cpp:759
+#: src/Buffer.cpp:768
 msgid "Conversion script not found"
 msgstr "Ez da bihurtzeko script-a aurkitu"
 
-#: src/Buffer.cpp:760
+#: src/Buffer.cpp:769
 #, fuzzy, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -15053,11 +15053,11 @@ msgstr ""
 "%1$s LyX-en bertsio berriago batekoa da, baina ezin izan da lyx2lyx script-a "
 "aurkitu."
 
-#: src/Buffer.cpp:779
+#: src/Buffer.cpp:788
 msgid "Conversion script failed"
 msgstr "Bihurtzeko script-ak huts egin du"
 
-#: src/Buffer.cpp:780
+#: src/Buffer.cpp:789
 #, fuzzy, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
@@ -15066,16 +15066,16 @@ msgstr ""
 "%1$s LyX-en bertsio berriago batekoa da, baina lyx2lyx script-ak huts egin "
 "du hau bihurtzean."
 
-#: src/Buffer.cpp:795
+#: src/Buffer.cpp:804
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s ustegabean amaitu da, hondatuta dagoela dirudi."
 
-#: src/Buffer.cpp:828
+#: src/Buffer.cpp:837
 msgid "Backup failure"
 msgstr "Babeskopiak huts egin du"
 
-#: src/Buffer.cpp:829
+#: src/Buffer.cpp:838
 #, fuzzy, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -15084,7 +15084,7 @@ msgstr ""
 "LyX-ek ezin izan du %1$s(r)en babeseko kopiarik egin.\n"
 "Egiaztatu direktorioa existitzen dela, eta bertan idatz daitekela."
 
-#: src/Buffer.cpp:839
+#: src/Buffer.cpp:848
 #, fuzzy, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -15094,49 +15094,49 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gainidaztea?"
 
-#: src/Buffer.cpp:841
+#: src/Buffer.cpp:850
 #, fuzzy
 msgid "Overwrite modified file?"
 msgstr "Gainidatzi fitxategia?"
 
-#: src/Buffer.cpp:842 src/Exporter.cpp:49 src/LyXFunc.cpp:996
+#: src/Buffer.cpp:851 src/Exporter.cpp:49 src/LyXFunc.cpp:996
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1512
 #: src/frontends/qt4/GuiView.cpp:1694
 #, fuzzy
 msgid "&Overwrite"
 msgstr "&Gainidatzi"
 
-#: src/Buffer.cpp:866
+#: src/Buffer.cpp:875
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "%1$s dokumentua gordetzen ..."
 
-#: src/Buffer.cpp:879
+#: src/Buffer.cpp:888
 #, fuzzy
 msgid " could not write file!"
 msgstr "Ezin izan da fitxategia irakurri"
 
-#: src/Buffer.cpp:886
+#: src/Buffer.cpp:895
 msgid " done."
 msgstr " eginda."
 
-#: src/Buffer.cpp:965
+#: src/Buffer.cpp:974
 msgid "Iconv software exception Detected"
 msgstr ""
 
-#: src/Buffer.cpp:965
+#: src/Buffer.cpp:974
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
 
-#: src/Buffer.cpp:987
+#: src/Buffer.cpp:996
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 
-#: src/Buffer.cpp:990
+#: src/Buffer.cpp:999
 #, fuzzy
 msgid ""
 "Some characters of your document are probably not representable in the "
@@ -15146,88 +15146,88 @@ msgstr ""
 "Dokumentuko zenbait karaktere ezin dira erabili aukeratutako kodeketarekin.\n"
 "Dokumentua UTF8 kodeketara bihurtzeak lagun dezake."
 
-#: src/Buffer.cpp:997
+#: src/Buffer.cpp:1006
 #, fuzzy
 msgid "iconv conversion failed"
 msgstr "Bihurketak huts egin du"
 
-#: src/Buffer.cpp:1002
+#: src/Buffer.cpp:1011
 #, fuzzy
 msgid "conversion failed"
 msgstr "Bihurketak huts egin du"
 
-#: src/Buffer.cpp:1279
+#: src/Buffer.cpp:1288
 msgid "Running chktex..."
 msgstr "chktex exekutatzen..."
 
-#: src/Buffer.cpp:1292
+#: src/Buffer.cpp:1301
 msgid "chktex failure"
 msgstr "chktex-ek huts egin du"
 
-#: src/Buffer.cpp:1293
+#: src/Buffer.cpp:1302
 msgid "Could not run chktex successfully."
 msgstr "Ezin izan da chktex exekutatu"
 
-#: src/Buffer.cpp:2122
+#: src/Buffer.cpp:2131
 #, fuzzy
 msgid "Preview source code"
 msgstr "Aurrebista prest"
 
-#: src/Buffer.cpp:2135
+#: src/Buffer.cpp:2144
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Aurrebista prest"
 
-#: src/Buffer.cpp:2139
+#: src/Buffer.cpp:2148
 #, fuzzy, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Aurrebista prest"
 
-#: src/Buffer.cpp:2246
+#: src/Buffer.cpp:2255
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Autogordetzea %1$s"
 
-#: src/Buffer.cpp:2290
+#: src/Buffer.cpp:2299
 msgid "Autosave failed!"
 msgstr "Huts egin du automatikoki gordetzean!"
 
-#: src/Buffer.cpp:2313
+#: src/Buffer.cpp:2322
 msgid "Autosaving current document..."
 msgstr "Uneko dokumentua autogordetzen..."
 
-#: src/Buffer.cpp:2363
+#: src/Buffer.cpp:2372
 msgid "Couldn't export file"
 msgstr "Ezin da fitxategia esportatu"
 
-#: src/Buffer.cpp:2364
+#: src/Buffer.cpp:2373
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Ez dago informaziorik %1$s formatua esportatzeko."
 
-#: src/Buffer.cpp:2401
+#: src/Buffer.cpp:2410
 msgid "File name error"
 msgstr "Fitxategi-izenean errorea"
 
-#: src/Buffer.cpp:2402
+#: src/Buffer.cpp:2411
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Dokumentuaren bide-izenak ezin du zuriunerik izan."
 
-#: src/Buffer.cpp:2444
+#: src/Buffer.cpp:2453
 msgid "Document export cancelled."
 msgstr "Dokumentua esportatzea bertan behera utzi da."
 
-#: src/Buffer.cpp:2450
+#: src/Buffer.cpp:2459
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokumentua %1$s gisa esportatuta '%2$s' fitxategira"
 
-#: src/Buffer.cpp:2456
+#: src/Buffer.cpp:2465
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokumentua %1$s gisa esportatuta"
 
-#: src/Buffer.cpp:2526
+#: src/Buffer.cpp:2535
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15238,11 +15238,11 @@ msgstr ""
 "%1$s\n"
 "ezin izan da irakurri."
 
-#: src/Buffer.cpp:2528
+#: src/Buffer.cpp:2537
 msgid "Could not read document"
 msgstr "Ezin izan da dokumentua irakurri"
 
-#: src/Buffer.cpp:2538
+#: src/Buffer.cpp:2547
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15253,19 +15253,19 @@ msgstr ""
 "\n"
 "Larrialdian gordetakoa berreskuratu?"
 
-#: src/Buffer.cpp:2541
+#: src/Buffer.cpp:2550
 msgid "Load emergency save?"
 msgstr "Larrialdian gordetakoa kargatu?"
 
-#: src/Buffer.cpp:2542
+#: src/Buffer.cpp:2551
 msgid "&Recover"
 msgstr "&Berreskuratu"
 
-#: src/Buffer.cpp:2542
+#: src/Buffer.cpp:2551
 msgid "&Load Original"
 msgstr "&Kargatu jatorrizkoa"
 
-#: src/Buffer.cpp:2562
+#: src/Buffer.cpp:2571
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15276,28 +15276,28 @@ msgstr ""
 "\n"
 "Kargatu babeskopia horren ordez?"
 
-#: src/Buffer.cpp:2565
+#: src/Buffer.cpp:2574
 msgid "Load backup?"
 msgstr "Kargatu babeskopia?"
 
-#: src/Buffer.cpp:2566
+#: src/Buffer.cpp:2575
 msgid "&Load backup"
 msgstr "&Kargatu babeskopia"
 
-#: src/Buffer.cpp:2566
+#: src/Buffer.cpp:2575
 msgid "Load &original"
 msgstr "Kargatu &jatorrizkoa"
 
-#: src/Buffer.cpp:2599
+#: src/Buffer.cpp:2608
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "%1$s dokumentuaren bertsio-kontrola erabiliz eskuratzea nahi?"
 
-#: src/Buffer.cpp:2601
+#: src/Buffer.cpp:2610
 msgid "Retrieve from version control?"
 msgstr "Berreskuratu bertsio-kontroletik?"
 
-#: src/Buffer.cpp:2602
+#: src/Buffer.cpp:2611
 msgid "&Retrieve"
 msgstr "&Berreskuratu"
 
@@ -18374,6 +18374,33 @@ msgstr "Ezin dira dokumentuaren lehenetsiak gorde"
 #, fuzzy
 msgid "Not Found"
 msgstr "Ez erakutsia."
+
+#: src/frontends/qt4/GuiDocument.cpp:2372
+msgid "Assigned master does not include this file"
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:2373
+#, c-format
+msgid ""
+"You must include this file in the document\n"
+"'%1$s' in order to use the master document\n"
+"feature."
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:2377
+#, fuzzy
+msgid "Could not load master"
+msgstr "Ezin izan da klasea aldatu"
+
+#: src/frontends/qt4/GuiDocument.cpp:2378
+#, fuzzy, c-format
+msgid ""
+"The master document '%1$s'\n"
+"could not be loaded."
+msgstr ""
+"Zehaztutako dokumentua\n"
+"%1$s\n"
+"ezin izan da irakurri."
 
 #: src/frontends/qt4/GuiERT.cpp:29
 msgid "TeX Code Settings"

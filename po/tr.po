@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-07 06:49+0100\n"
+"POT-Creation-Date: 2009-01-08 09:02+0100\n"
 "PO-Revision-Date: 2008-11-16 23:33+0200\n"
 "Last-Translator: H. İbrahim Güngör <h.ibrahim.gungor@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -83,8 +83,8 @@ msgstr "&Tamam"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:549 src/Buffer.cpp:842
-#: src/Buffer.cpp:2543 src/Buffer.cpp:2567 src/Buffer.cpp:2602
+#: src/frontends/qt4/ui/ListingsUi.ui:549 src/Buffer.cpp:851
+#: src/Buffer.cpp:2552 src/Buffer.cpp:2576 src/Buffer.cpp:2611
 #: src/LyXFunc.cpp:683 src/LyXFunc.cpp:822 src/LyXFunc.cpp:996
 #: src/LyXVC.cpp:181 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1254
@@ -14283,20 +14283,20 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:711 src/Buffer.cpp:794
+#: src/Buffer.cpp:720 src/Buffer.cpp:803
 msgid "Document format failure"
 msgstr "Belge biçimi hatası"
 
-#: src/Buffer.cpp:712
+#: src/Buffer.cpp:721
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s okunabilir bir LyX belgesi değil."
 
-#: src/Buffer.cpp:749
+#: src/Buffer.cpp:758
 msgid "Conversion failed"
 msgstr "Çevrim başarısız"
 
-#: src/Buffer.cpp:750
+#: src/Buffer.cpp:759
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -14305,22 +14305,22 @@ msgstr ""
 "%1$s farklı bir LyX sürümü fakat çevrim için geçici bir dosya "
 "oluşturulmayacak."
 
-#: src/Buffer.cpp:759
+#: src/Buffer.cpp:768
 msgid "Conversion script not found"
 msgstr "Çevrim betiği bulunamadı"
 
-#: src/Buffer.cpp:760
+#: src/Buffer.cpp:769
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr "%1$s farklı bir LyX sürümü fakat lyx2lyx çevrim betiği bulunamadı."
 
-#: src/Buffer.cpp:779
+#: src/Buffer.cpp:788
 msgid "Conversion script failed"
 msgstr "Çevrim betiği başarısız"
 
-#: src/Buffer.cpp:780
+#: src/Buffer.cpp:789
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
@@ -14329,16 +14329,16 @@ msgstr ""
 "%1$s farklı bir LyX sürümü fakat lyx2lyx çevrim betiği dönüşümü başarısız "
 "oldu."
 
-#: src/Buffer.cpp:795
+#: src/Buffer.cpp:804
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s beklenmeyen şekilde sonlandı, muhtemelen bozuldu."
 
-#: src/Buffer.cpp:828
+#: src/Buffer.cpp:837
 msgid "Backup failure"
 msgstr "Yedekleme başarısız"
 
-#: src/Buffer.cpp:829
+#: src/Buffer.cpp:838
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -14347,41 +14347,41 @@ msgstr ""
 "Yedek dosyası %1$s oluşturulamıyor.\n"
 "Dizinin mevcut ya da yazılabilir olduğu kontrol edin."
 
-#: src/Buffer.cpp:839
+#: src/Buffer.cpp:848
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr "%1$s belgesi dışarıdan değiştirilmiş. Üzerine yazma istiyor musunuz?"
 
-#: src/Buffer.cpp:841
+#: src/Buffer.cpp:850
 msgid "Overwrite modified file?"
 msgstr "Değiştirilmiş dosyanın üzerine yaz?"
 
-#: src/Buffer.cpp:842 src/Exporter.cpp:49 src/LyXFunc.cpp:996
+#: src/Buffer.cpp:851 src/Exporter.cpp:49 src/LyXFunc.cpp:996
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1512
 #: src/frontends/qt4/GuiView.cpp:1694
 msgid "&Overwrite"
 msgstr "&Üzerine Yaz"
 
-#: src/Buffer.cpp:866
+#: src/Buffer.cpp:875
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Belge %1$s kaydediliyor..."
 
-#: src/Buffer.cpp:879
+#: src/Buffer.cpp:888
 msgid " could not write file!"
 msgstr " dosyaya yazılamıyor!"
 
-#: src/Buffer.cpp:886
+#: src/Buffer.cpp:895
 msgid " done."
 msgstr " bitti."
 
-#: src/Buffer.cpp:965
+#: src/Buffer.cpp:974
 msgid "Iconv software exception Detected"
 msgstr "Iconv yazılımı kural dışı durum yakalandı"
 
-#: src/Buffer.cpp:965
+#: src/Buffer.cpp:974
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
@@ -14389,12 +14389,12 @@ msgid ""
 msgstr ""
 "Kodlamanız (%1$s) için gereken yazılımın düzgün kurulduğundan emin olun."
 
-#: src/Buffer.cpp:987
+#: src/Buffer.cpp:996
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr "'%1$s' karakterinin LaTeX komutu bulunamadı (kod noktası %2$s)"
 
-#: src/Buffer.cpp:990
+#: src/Buffer.cpp:999
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -14404,85 +14404,85 @@ msgstr ""
 "gösterilebilir değil.\n"
 "Belgenizin kodlamasını utf8 olarak değiştirmeniz yardımcı olabilir."
 
-#: src/Buffer.cpp:997
+#: src/Buffer.cpp:1006
 msgid "iconv conversion failed"
 msgstr "iconv çevrimi başarısız"
 
-#: src/Buffer.cpp:1002
+#: src/Buffer.cpp:1011
 msgid "conversion failed"
 msgstr "çevrim başarısız"
 
-#: src/Buffer.cpp:1279
+#: src/Buffer.cpp:1288
 msgid "Running chktex..."
 msgstr "chktex çalıştırılıyor..."
 
-#: src/Buffer.cpp:1292
+#: src/Buffer.cpp:1301
 msgid "chktex failure"
 msgstr "chktex hatası"
 
-#: src/Buffer.cpp:1293
+#: src/Buffer.cpp:1302
 msgid "Could not run chktex successfully."
 msgstr "chktex başarıyla çalıştırılamadı."
 
-#: src/Buffer.cpp:2122
+#: src/Buffer.cpp:2131
 msgid "Preview source code"
 msgstr "Kaynak kodu önizle"
 
-#: src/Buffer.cpp:2135
+#: src/Buffer.cpp:2144
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "%1$d paragrafının kaynak kodunu önizle"
 
-#: src/Buffer.cpp:2139
+#: src/Buffer.cpp:2148
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "%1$s ve %2$s paragrafları arasının kaynak kodunu önizle"
 
-#: src/Buffer.cpp:2246
+#: src/Buffer.cpp:2255
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$s otomatik kaydediliyor"
 
-#: src/Buffer.cpp:2290
+#: src/Buffer.cpp:2299
 msgid "Autosave failed!"
 msgstr "Otokayıt başarısız!"
 
-#: src/Buffer.cpp:2313
+#: src/Buffer.cpp:2322
 msgid "Autosaving current document..."
 msgstr "Belge otomatik kaydediliyor..."
 
-#: src/Buffer.cpp:2363
+#: src/Buffer.cpp:2372
 msgid "Couldn't export file"
 msgstr "Dosya dışarı aktarılamadı"
 
-#: src/Buffer.cpp:2364
+#: src/Buffer.cpp:2373
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "%1$s biçiminde dışa aktarım için bilgi mevcut değil."
 
-#: src/Buffer.cpp:2401
+#: src/Buffer.cpp:2410
 msgid "File name error"
 msgstr "Dosya adı hatası"
 
-#: src/Buffer.cpp:2402
+#: src/Buffer.cpp:2411
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Belge dosya yolu boşluk içeremez."
 
-#: src/Buffer.cpp:2444
+#: src/Buffer.cpp:2453
 msgid "Document export cancelled."
 msgstr "Belge dışarı aktarımı iptal edildi."
 
-#: src/Buffer.cpp:2450
+#: src/Buffer.cpp:2459
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "%1$s belgesi '%2$s' olarak dışarı aktarıldı"
 
-#: src/Buffer.cpp:2456
+#: src/Buffer.cpp:2465
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Belge %1$s olarak dışarı aktarıldı"
 
-#: src/Buffer.cpp:2526
+#: src/Buffer.cpp:2535
 #, c-format
 msgid ""
 "The specified document\n"
@@ -14493,11 +14493,11 @@ msgstr ""
 "belirtilen dosya\n"
 "okunamadı."
 
-#: src/Buffer.cpp:2528
+#: src/Buffer.cpp:2537
 msgid "Could not read document"
 msgstr "Belge okunamıyor"
 
-#: src/Buffer.cpp:2538
+#: src/Buffer.cpp:2547
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -14508,19 +14508,19 @@ msgstr ""
 "\n"
 "Acil durum kaydından kurtarılsın mı?"
 
-#: src/Buffer.cpp:2541
+#: src/Buffer.cpp:2550
 msgid "Load emergency save?"
 msgstr "Acil durum kaydı yüklensin mi?"
 
-#: src/Buffer.cpp:2542
+#: src/Buffer.cpp:2551
 msgid "&Recover"
 msgstr "&Kurtar"
 
-#: src/Buffer.cpp:2542
+#: src/Buffer.cpp:2551
 msgid "&Load Original"
 msgstr "&Aslını Yükle"
 
-#: src/Buffer.cpp:2562
+#: src/Buffer.cpp:2571
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -14531,28 +14531,28 @@ msgstr ""
 "\n"
 "Belge yerine yedek açılsın mı?"
 
-#: src/Buffer.cpp:2565
+#: src/Buffer.cpp:2574
 msgid "Load backup?"
 msgstr "Yedeği yükle?"
 
-#: src/Buffer.cpp:2566
+#: src/Buffer.cpp:2575
 msgid "&Load backup"
 msgstr "&Yedeği yükle"
 
-#: src/Buffer.cpp:2566
+#: src/Buffer.cpp:2575
 msgid "Load &original"
 msgstr "&Aslını yükle"
 
-#: src/Buffer.cpp:2599
+#: src/Buffer.cpp:2608
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "%1$s belgesini sürüm yönetiminden almak ister misiniz?"
 
-#: src/Buffer.cpp:2601
+#: src/Buffer.cpp:2610
 msgid "Retrieve from version control?"
 msgstr "Dosyayı sürüm yönetiminden geri almak ister misiniz?"
 
-#: src/Buffer.cpp:2602
+#: src/Buffer.cpp:2611
 msgid "&Retrieve"
 msgstr "&Geri al"
 
@@ -17514,6 +17514,30 @@ msgstr "Şu ID için yerleşim ayarlanamadı: %1$s"
 #: src/frontends/qt4/GuiDocument.cpp:2318
 msgid "Not Found"
 msgstr "Bulunamadı"
+
+#: src/frontends/qt4/GuiDocument.cpp:2372
+msgid "Assigned master does not include this file"
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:2373
+#, c-format
+msgid ""
+"You must include this file in the document\n"
+"'%1$s' in order to use the master document\n"
+"feature."
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:2377
+#, fuzzy
+msgid "Could not load master"
+msgstr "Sınıf yüklenemedi."
+
+#: src/frontends/qt4/GuiDocument.cpp:2378
+#, fuzzy, c-format
+msgid ""
+"The master document '%1$s'\n"
+"could not be loaded."
+msgstr "%1$s belge sınıfı yüklenemedi."
 
 #: src/frontends/qt4/GuiERT.cpp:29
 msgid "TeX Code Settings"

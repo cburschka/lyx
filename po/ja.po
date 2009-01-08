@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-07 06:49+0100\n"
+"POT-Creation-Date: 2009-01-08 09:02+0100\n"
 "PO-Revision-Date: 2008-12-09 18:27+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
@@ -84,8 +84,8 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:549 src/Buffer.cpp:842
-#: src/Buffer.cpp:2543 src/Buffer.cpp:2567 src/Buffer.cpp:2602
+#: src/frontends/qt4/ui/ListingsUi.ui:549 src/Buffer.cpp:851
+#: src/Buffer.cpp:2552 src/Buffer.cpp:2576 src/Buffer.cpp:2611
 #: src/LyXFunc.cpp:683 src/LyXFunc.cpp:822 src/LyXFunc.cpp:996
 #: src/LyXVC.cpp:181 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1254
@@ -14320,20 +14320,20 @@ msgstr ""
 "これらのパッケージをインストールするか，LaTeXプリアンブルの中で\\lyxaddedと"
 "\\lyxdeletedを再定義してください。"
 
-#: src/Buffer.cpp:711 src/Buffer.cpp:794
+#: src/Buffer.cpp:720 src/Buffer.cpp:803
 msgid "Document format failure"
 msgstr "文書フォーマットに失敗"
 
-#: src/Buffer.cpp:712
+#: src/Buffer.cpp:721
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s は読み取り可能なLyX文書ではありません。"
 
-#: src/Buffer.cpp:749
+#: src/Buffer.cpp:758
 msgid "Conversion failed"
 msgstr "変換に失敗しました"
 
-#: src/Buffer.cpp:750
+#: src/Buffer.cpp:759
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -14342,11 +14342,11 @@ msgstr ""
 "%1$s は違うバージョンのLyXファイルですが，これを変換するための作業ファイルを"
 "生成することができませんでした。"
 
-#: src/Buffer.cpp:759
+#: src/Buffer.cpp:768
 msgid "Conversion script not found"
 msgstr "変換スクリプトが見つかりません"
 
-#: src/Buffer.cpp:760
+#: src/Buffer.cpp:769
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -14355,11 +14355,11 @@ msgstr ""
 "%1$s は違うバージョンのLyXファイルですが，変換スクリプトlyx2lyxが見つかりませ"
 "んでした。"
 
-#: src/Buffer.cpp:779
+#: src/Buffer.cpp:788
 msgid "Conversion script failed"
 msgstr "変換スクリプトが失敗しました"
 
-#: src/Buffer.cpp:780
+#: src/Buffer.cpp:789
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
@@ -14368,16 +14368,16 @@ msgstr ""
 "%1$s は違うバージョンのLyXファイルですが，スクリプトlyx2lyxがその変換に失敗し"
 "ました。"
 
-#: src/Buffer.cpp:795
+#: src/Buffer.cpp:804
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s は予期せず終了しました。おそらく壊れているものと思われます。"
 
-#: src/Buffer.cpp:828
+#: src/Buffer.cpp:837
 msgid "Backup failure"
 msgstr "バックアップ失敗"
 
-#: src/Buffer.cpp:829
+#: src/Buffer.cpp:838
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -14386,7 +14386,7 @@ msgstr ""
 "LyXはバックアップファイル %1$s を生成することができませんでした。\n"
 "ディレクトリが存在して書込可能になっていることを確認してください。"
 
-#: src/Buffer.cpp:839
+#: src/Buffer.cpp:848
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -14395,34 +14395,34 @@ msgstr ""
 "文書 %1$s は他のプログラムによって修正されています。本当にこのファイルに上書"
 "きしますか？"
 
-#: src/Buffer.cpp:841
+#: src/Buffer.cpp:850
 msgid "Overwrite modified file?"
 msgstr "修正されているファイルに上書きしますか？"
 
-#: src/Buffer.cpp:842 src/Exporter.cpp:49 src/LyXFunc.cpp:996
+#: src/Buffer.cpp:851 src/Exporter.cpp:49 src/LyXFunc.cpp:996
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1512
 #: src/frontends/qt4/GuiView.cpp:1694
 msgid "&Overwrite"
 msgstr "上書き(&O)"
 
-#: src/Buffer.cpp:866
+#: src/Buffer.cpp:875
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "文書を保存中です: %1$s..."
 
-#: src/Buffer.cpp:879
+#: src/Buffer.cpp:888
 msgid " could not write file!"
 msgstr "はファイルを書き込めませんでした!"
 
-#: src/Buffer.cpp:886
+#: src/Buffer.cpp:895
 msgid " done."
 msgstr "終わりました。"
 
-#: src/Buffer.cpp:965
+#: src/Buffer.cpp:974
 msgid "Iconv software exception Detected"
 msgstr "Iconvソフトウェアで例外エラーが検出されました"
 
-#: src/Buffer.cpp:965
+#: src/Buffer.cpp:974
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
@@ -14431,14 +14431,14 @@ msgstr ""
 "お使いの文字コード(%1$s)向けのサポートソフトウェアが適切にインストールされて"
 "いることを確認してください。"
 
-#: src/Buffer.cpp:987
+#: src/Buffer.cpp:996
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 "文字「%1$s」を表すLaTeXコマンドを見つけることができませんでした(コードポイン"
 "ト%2$s)"
 
-#: src/Buffer.cpp:990
+#: src/Buffer.cpp:999
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -14448,85 +14448,85 @@ msgstr ""
 "す。\n"
 "文書文字コードをutf8に変更すると解決するかもしれません。"
 
-#: src/Buffer.cpp:997
+#: src/Buffer.cpp:1006
 msgid "iconv conversion failed"
 msgstr "iconvが変換に失敗しました"
 
-#: src/Buffer.cpp:1002
+#: src/Buffer.cpp:1011
 msgid "conversion failed"
 msgstr "変換に失敗しました"
 
-#: src/Buffer.cpp:1279
+#: src/Buffer.cpp:1288
 msgid "Running chktex..."
 msgstr "chktexを実行しています..."
 
-#: src/Buffer.cpp:1292
+#: src/Buffer.cpp:1301
 msgid "chktex failure"
 msgstr "chktexに失敗"
 
-#: src/Buffer.cpp:1293
+#: src/Buffer.cpp:1302
 msgid "Could not run chktex successfully."
 msgstr "Chktexをうまく実行することができませんでした。"
 
-#: src/Buffer.cpp:2122
+#: src/Buffer.cpp:2131
 msgid "Preview source code"
 msgstr "ソースコードをプレビューする"
 
-#: src/Buffer.cpp:2135
+#: src/Buffer.cpp:2144
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "段落%1$dのソースコードをプレビューする"
 
-#: src/Buffer.cpp:2139
+#: src/Buffer.cpp:2148
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "段落%1$sから%2$sまでのソースコードをプレビューする"
 
-#: src/Buffer.cpp:2246
+#: src/Buffer.cpp:2255
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$sを自動保存しています"
 
-#: src/Buffer.cpp:2290
+#: src/Buffer.cpp:2299
 msgid "Autosave failed!"
 msgstr "自動保存に失敗しました！"
 
-#: src/Buffer.cpp:2313
+#: src/Buffer.cpp:2322
 msgid "Autosaving current document..."
 msgstr "現在の文書を自動保存しています..."
 
-#: src/Buffer.cpp:2363
+#: src/Buffer.cpp:2372
 msgid "Couldn't export file"
 msgstr "ファイルをエクスポートすることができませんでした"
 
-#: src/Buffer.cpp:2364
+#: src/Buffer.cpp:2373
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "%1$sというフォーマットをエクスポートするのに必要な情報がありません"
 
-#: src/Buffer.cpp:2401
+#: src/Buffer.cpp:2410
 msgid "File name error"
 msgstr "ファイル名エラー"
 
-#: src/Buffer.cpp:2402
+#: src/Buffer.cpp:2411
 msgid "The directory path to the document cannot contain spaces."
 msgstr "文書のパスには空白が含まれていてはなりません。"
 
-#: src/Buffer.cpp:2444
+#: src/Buffer.cpp:2453
 msgid "Document export cancelled."
 msgstr "文書のエクスポートは取り消されました。"
 
-#: src/Buffer.cpp:2450
+#: src/Buffer.cpp:2459
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "文書は%1$sとしてファイル「%2$s」にエクスポートされました。"
 
-#: src/Buffer.cpp:2456
+#: src/Buffer.cpp:2465
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "文書は%1$sとしてエクスポートされました。"
 
-#: src/Buffer.cpp:2526
+#: src/Buffer.cpp:2535
 #, c-format
 msgid ""
 "The specified document\n"
@@ -14537,11 +14537,11 @@ msgstr ""
 "%1$s\n"
 "は，読むことができませんでした。"
 
-#: src/Buffer.cpp:2528
+#: src/Buffer.cpp:2537
 msgid "Could not read document"
 msgstr "文書を読むことができませんでした"
 
-#: src/Buffer.cpp:2538
+#: src/Buffer.cpp:2547
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -14552,19 +14552,19 @@ msgstr ""
 "\n"
 "緊急保存ファイルから復旧しますか？"
 
-#: src/Buffer.cpp:2541
+#: src/Buffer.cpp:2550
 msgid "Load emergency save?"
 msgstr "緊急保存ファイルを読みこみますか？"
 
-#: src/Buffer.cpp:2542
+#: src/Buffer.cpp:2551
 msgid "&Recover"
 msgstr "復旧(&R)"
 
-#: src/Buffer.cpp:2542
+#: src/Buffer.cpp:2551
 msgid "&Load Original"
 msgstr "オリジナルを読み込む(&L):"
 
-#: src/Buffer.cpp:2562
+#: src/Buffer.cpp:2571
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -14575,28 +14575,28 @@ msgstr ""
 "\n"
 "代わりにバックアップファイルを読み込みますか？"
 
-#: src/Buffer.cpp:2565
+#: src/Buffer.cpp:2574
 msgid "Load backup?"
 msgstr "バックアップを読み込みますか？"
 
-#: src/Buffer.cpp:2566
+#: src/Buffer.cpp:2575
 msgid "&Load backup"
 msgstr "バックアップを読み込む(&L)"
 
-#: src/Buffer.cpp:2566
+#: src/Buffer.cpp:2575
 msgid "Load &original"
 msgstr "オリジナルを読み込む(&O)"
 
-#: src/Buffer.cpp:2599
+#: src/Buffer.cpp:2608
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "バージョン管理から文書%1$sを復元しますか？"
 
-#: src/Buffer.cpp:2601
+#: src/Buffer.cpp:2610
 msgid "Retrieve from version control?"
 msgstr "バージョン管理から復元しますか？"
 
-#: src/Buffer.cpp:2602
+#: src/Buffer.cpp:2611
 msgid "&Retrieve"
 msgstr "復元(&R)"
 
@@ -17617,6 +17617,30 @@ msgstr "以下のIDのレイアウトを設定することができません: %1
 #: src/frontends/qt4/GuiDocument.cpp:2318
 msgid "Not Found"
 msgstr "見つかりません"
+
+#: src/frontends/qt4/GuiDocument.cpp:2372
+msgid "Assigned master does not include this file"
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:2373
+#, c-format
+msgid ""
+"You must include this file in the document\n"
+"'%1$s' in order to use the master document\n"
+"feature."
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:2377
+#, fuzzy
+msgid "Could not load master"
+msgstr "クラスを読み込むことができませんでした"
+
+#: src/frontends/qt4/GuiDocument.cpp:2378
+#, fuzzy, c-format
+msgid ""
+"The master document '%1$s'\n"
+"could not be loaded."
+msgstr "指定された文書クラス「%1$s」を読み込むことができませんでした。"
 
 #: src/frontends/qt4/GuiERT.cpp:29
 msgid "TeX Code Settings"
