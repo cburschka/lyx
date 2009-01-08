@@ -127,7 +127,7 @@ private:
 
 	///
 	void reloadBuffer();
-	///
+	/// make sure the document is saved
 	bool ensureBufferClean(BufferView * bv);
 	///
 	void updateLayout(DocumentClass const * const oldlayout, Buffer * buffer);
