@@ -1522,11 +1522,12 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_REGEXP_MODE
  * \li Action: Enters regexp mode (i.e., puts regexp insets on the current
-               cursor position).
- * \li Notion: If there is any selected text, then it is moved inside the created regexp inset.
+               cursor position). Used by the advanced search dialog.
+ * \li Notion: If there is any selected text, then it is moved inside the created
+               regexp inset.
  * \li Syntax: regexp-mode [<ARG>]
  * \li Params: <ARG>: eventual argument (regular expression).
- * \li Origin: Tommaso, 4 Ott 2008
+ * \li Origin: Tommaso, 4 Oct 2008
  * \endvar
  */
 		{ LFUN_REGEXP_MODE, "regexp-mode", Noop, Math },
