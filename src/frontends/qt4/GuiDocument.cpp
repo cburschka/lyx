@@ -2365,7 +2365,19 @@ void GuiDocument::dispatchParams()
 			   support::onlyPath(buffer().absFileName()));
 		if (isLyXFilename(master_file.absFilename())) {
 			Buffer * master = checkAndLoadLyXFile(master_file);
-			const_cast<Buffer &>(buffer()).setParent(master);
+			if (master) {
+				if (master->isChild(const_cast<Buffer *>(&buffer())))
+					const_cast<Buffer &>(buffer()).setParent(master);
+				else
+					Alert::warning(_("Assigned master does not include this file"), 
+						bformat(_("You must include this file in the document\n"
+							  "'%1$s' in order to use the master document\n"
+							  "feature."), from_utf8(params().master)));
+			} else
+				Alert::warning(_("Could not load master"), 
+						bformat(_("The master file '%1$s'\n"
+							   "could not be loaded."),
+							   from_utf8(params().master)));
 		}
 	}
 
