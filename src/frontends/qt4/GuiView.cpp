@@ -1613,8 +1613,13 @@ void GuiView::newDocument(string const & filename, bool from_template)
 			initpath = trypath;
 	}
 
-	string templatefile = from_template ?
-		selectTemplateFile().absFilename() : string();
+	string templatefile;
+	if (from_template) {
+		templatefile = selectTemplateFile().absFilename();
+		if (templatefile.empty())
+			return;
+	}
+	
 	Buffer * b;
 	if (filename.empty())
 		b = newUnnamedFile(templatefile, initpath);
