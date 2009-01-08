@@ -2375,7 +2375,7 @@ void GuiDocument::dispatchParams()
 							  "feature."), from_utf8(params().master)));
 			} else
 				Alert::warning(_("Could not load master"), 
-						bformat(_("The master file '%1$s'\n"
+						bformat(_("The master document '%1$s'\n"
 							   "could not be loaded."),
 							   from_utf8(params().master)));
 		}
