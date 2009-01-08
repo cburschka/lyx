@@ -1520,6 +1520,17 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MODE, "math-mode", Noop, Math },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_REGEXP_MODE
+ * \li Action: Enters regexp mode (i.e., puts regexp insets on the current
+               cursor position).
+ * \li Notion: If there is any selected text, then it is moved inside the created regexp inset.
+ * \li Syntax: regexp-mode [<ARG>]
+ * \li Params: <ARG>: eventual argument (regular expression).
+ * \li Origin: Tommaso, 4 Ott 2008
+ * \endvar
+ */
+		{ LFUN_REGEXP_MODE, "regexp-mode", Noop, Math },
+/*!
  * \var lyx::FuncCode lyx::LFUN_MATH_NUMBER_LINE_TOGGLE
  * \li Action: Toggles numbering of the current formula line.
  * \li Notion: Must be in display formula mode.
