@@ -32403,7 +32403,7 @@ Macro
 
 
 \begin_inset FormulaMacro
-\renewcommand{\qG}[4][1,\,2]{#2_{#1}=-\frac{#3}{2}\pm\sqrt{\frac{#3^{2}}{4}-#4}}
+\newcommand{\qG}[4][1,\,2]{#2_{#1}=-\frac{#3}{2}\pm\sqrt{\frac{#3^{2}}{4}-#4}}
 \end_inset
 
 

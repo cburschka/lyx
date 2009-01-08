@@ -1,4 +1,4 @@
-#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -24887,11 +24887,11 @@ matemáticas
 \family default
  (o bien el atajo 
 \family sans
-Alt-m
+Alt+M
 \begin_inset space ~
 \end_inset
 
-m
+M
 \family default
 ).
  En LyX, el texto normal dentro de una ecuación aparece en negro, no en
@@ -27959,13 +27959,9 @@ Documento\SpecialChar \menuseparator
 Configuración
 \family default
 .
- En este documento se han puesto las opciones 
+ En este documento se han puesto la opcion 
 \series bold
 intoc
-\series default
- y 
-\series bold
-refpage
 \series default
 .
 \end_layout
@@ -29181,7 +29177,7 @@ ispell
 \family default
 .
  
-\family sans
+\family typewriter
 hspell
 \family default
  es un corrector de hebreo.
@@ -29226,6 +29222,17 @@ Corrector
 
 ortográfico
 \family default
+ 
+\lang english
+or the toolbar button
+\lang spanish
+ 
+\begin_inset Graphics
+	filename ../../images/dialog-show_spellchecker.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
  inicia la revisión a partir de la posición del cursor.
  Se muestra una ventana en la que aparece un cuadro con cualquier palabra
  incorrecta o desconocida, que puedes reemplazar en el cuadro siguiente.
@@ -37350,7 +37357,7 @@ name "sub:Configuración"
 
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Documentos ! Configuración

@@ -2601,7 +2601,7 @@ Modules load additional features to a document that are not by default available
  This is of course not available in any document class, so you have to load
  the corresponding module in the 
 \family sans
-Document Class
+Modules
 \family default
  section of the 
 \family sans
@@ -5682,7 +5682,32 @@ The
 List
 \family default
  environment is a LyX extension to LaTeX.
- 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ When you are using a KOMA-Script document class, like in this document,
+ the 
+\family sans
+List
+\family default
+ environment is named 
+\family sans
+Labeling
+\family default
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5923,6 +5948,10 @@ reference "sub:Horizontal-Space"
 
 .
  Here are some examples:
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -6589,7 +6618,7 @@ arg   "newline-insert newline"
 \end_inset
 
 g.
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 you can't follow 
@@ -16107,7 +16136,7 @@ You can alter a table by clicking on it with the right mouse button, which
 \end_layout
 
 \begin_layout Standard
-Additionally to the table dialog the 
+Additionally to the table dialog, the 
 \family sans
 table
 \begin_inset space ~
@@ -16115,17 +16144,8 @@ table
 
 toolbar
 \family default
-, that appears when the cursor is inside a table, helps you in setting table
- properties.
- It is for example currently only possible to add
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-delete lines via the table toolbar.
+ helps you in setting table properties.
+ It appears when the cursor is inside a table.
 \end_layout
 
 \begin_layout Standard
@@ -23719,11 +23739,11 @@ Panel
 
  (shortcut 
 \family sans
-Alt+m
+Alt+M
 \begin_inset space ~
 \end_inset
 
-m
+M
 \family default
 ).
  Math text appears in LyX in black instead of blue.
@@ -26844,15 +26864,11 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
  dialog.
- In this document the options 
+ In this document the option 
 \series bold
 intoc
 \series default
- and 
-\series bold
-refpage
-\series default
- are used.
+ is used.
 \end_layout
 
 \begin_layout Standard
@@ -27189,7 +27205,7 @@ Question: Who was the first physics Nobel prize winner?
 
 \begin_layout Standard
 \begin_inset Branch Answer
-status open
+status collapsed
 
 \begin_layout Standard
 Answer: Wilhelm Conrad Röntgen
@@ -28117,7 +28133,7 @@ ispell
 hspell
 \family default
 , or 
-\family sans
+\family typewriter
 pspell
 \family default
  as backend.
@@ -28133,7 +28149,7 @@ ispell
 \family default
 , so that it is recommended to use aspell.
  
-\family sans
+\family typewriter
 hspell
 \family default
  is a Hebrew spell-checker.
@@ -28148,7 +28164,7 @@ Language Settings
 \begin_layout Standard
 For LyX on Windows, the selection box for the spell checking program is
  greyed out in the preferences dialog because only 
-\family sans
+\family typewriter
 aspell
 \family default
  can be used.
@@ -28160,6 +28176,13 @@ The menu
  Tools\SpecialChar \menuseparator
 Spellchecker
 \family default
+ or the toolbar button 
+\begin_inset Graphics
+	filename ../images/dialog-show_spellchecker.png
+	BoundingBox 0bp 5bp 20bp 20bp
+
+\end_inset
+
  starts the spell checking beginning from the current cursor position.
  A dialog window will appear showing any incorrect (or unknown) word found,
  allowing you to edit and replace it in a second line.
@@ -29120,15 +29143,14 @@ English
 \end_layout
 
 \begin_layout Standard
-The 
+Under 
 \family sans
 Encoding
 \family default
- box lets you choose the character encoding map you want to use for LaTeX
- export.
+ you can choose the character encoding map you want to use for LaTeX export.
  The option 
 \family sans
-use language's default encoding
+Language Default
 \family default
  is the preferred choice and works well in most cases.
  For details about the different encoding options see section
