@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-09 09:05+0100\n"
+"POT-Creation-Date: 2009-01-09 09:49+0100\n"
 "PO-Revision-Date: 2008-08-04 17:40+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -1280,14 +1280,17 @@ msgid "Sho&w in LyX"
 msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:644
+msgid "Graphics having the same group name will share the same parameters"
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:647
+msgid "Grou&p Name:"
+msgstr ""
+
 #: src/frontends/qt4/ui/GraphicsUi.ui:663
 msgid ""
 "Group Name to be set up from the current parameters. Use context menu to "
 "assign the existing one."
-msgstr ""
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:647
-msgid "&Initialize Group Name:"
 msgstr ""
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28

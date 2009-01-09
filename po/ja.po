@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-09 09:05+0100\n"
+"POT-Creation-Date: 2009-01-09 09:49+0100\n"
 "PO-Revision-Date: 2008-12-09 18:27+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
@@ -1289,16 +1289,20 @@ msgid "Sho&w in LyX"
 msgstr "LyX内に表示(&W)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:644
+msgid "Graphics having the same group name will share the same parameters"
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:647
+#, fuzzy
+msgid "Grou&p Name:"
+msgstr "名前(&N):"
+
 #: src/frontends/qt4/ui/GraphicsUi.ui:663
 #, fuzzy
 msgid ""
 "Group Name to be set up from the current parameters. Use context menu to "
 "assign the existing one."
 msgstr "現在のパラメータから設定されるグループ名"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:647
-msgid "&Initialize Group Name:"
-msgstr "グループ名を初期化(&I):"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"
@@ -20174,6 +20178,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "未知の"
+
+#~ msgid "&Initialize Group Name:"
+#~ msgstr "グループ名を初期化(&I):"
 
 #~ msgid "&Postscript driver:"
 #~ msgstr "PostScriptドライバ(&P):"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-09 09:05+0100\n"
+"POT-Creation-Date: 2009-01-09 09:49+0100\n"
 "PO-Revision-Date: 2008-12-10 20:28+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -1295,16 +1295,20 @@ msgid "Sho&w in LyX"
 msgstr "&Mostrar en LyX"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:644
+msgid "Graphics having the same group name will share the same parameters"
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:647
+#, fuzzy
+msgid "Grou&p Name:"
+msgstr "&Nombre:"
+
 #: src/frontends/qt4/ui/GraphicsUi.ui:663
 #, fuzzy
 msgid ""
 "Group Name to be set up from the current parameters. Use context menu to "
 "assign the existing one."
 msgstr "Nombre de grupo a crear a partir de los parámetros actuales"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:647
-msgid "&Initialize Group Name:"
-msgstr "&Iniciar nombre de grupo"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"
@@ -20248,6 +20252,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Usuario desconocido"
+
+#~ msgid "&Initialize Group Name:"
+#~ msgstr "&Iniciar nombre de grupo"
 
 #~ msgid "&Postscript driver:"
 #~ msgstr "Con&trolador postscript:"
