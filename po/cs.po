@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-08 09:02+0100\n"
+"POT-Creation-Date: 2009-01-09 08:41+0100\n"
 "PO-Revision-Date: 2008-11-05 02:01+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -17792,19 +17792,19 @@ msgstr "ikona"
 msgid "buffer"
 msgstr "dokument"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:706
+#: src/frontends/qt4/GuiKeySymbol.cpp:707
 msgid "Shift-"
 msgstr "Shift-"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:707
+#: src/frontends/qt4/GuiKeySymbol.cpp:708
 msgid "Control-"
 msgstr "Control-"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:708
+#: src/frontends/qt4/GuiKeySymbol.cpp:709
 msgid "Option-"
 msgstr "Option-"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:709
+#: src/frontends/qt4/GuiKeySymbol.cpp:710
 msgid "Command-"
 msgstr "Command-"
 
@@ -18781,6 +18781,11 @@ msgstr "Vybrat dokument LyX-u ke vlo¾ení"
 #: src/frontends/qt4/GuiView.cpp:1625
 msgid "Select file to insert"
 msgstr "Vyber soubor pro vlo¾ení"
+
+#: src/frontends/qt4/GuiView.cpp:1629
+#, fuzzy
+msgid "All Files (*)"
+msgstr "V¹echny soubory (*)"
 
 #: src/frontends/qt4/GuiView.cpp:1662
 msgid "Choose a filename to save document as"
@@ -20693,9 +20698,6 @@ msgstr "Neznámý u¾ivatel"
 
 #~ msgid "Can't find LatexCommand line."
 #~ msgstr "Nelze nalézt øádku LatexCommand."
-
-#~ msgid "All files (*)"
-#~ msgstr "V¹echny soubory (*)"
 
 #, fuzzy
 #~ msgid "Properties...|P"

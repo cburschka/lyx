@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-08 09:02+0100\n"
+"POT-Creation-Date: 2009-01-09 08:41+0100\n"
 "PO-Revision-Date: 2008-08-05 00:10+0100\n"
 "Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -18207,21 +18207,21 @@ msgstr "cong"
 msgid "buffer"
 msgstr "blå"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:706
+#: src/frontends/qt4/GuiKeySymbol.cpp:707
 msgid "Shift-"
 msgstr ""
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:707
+#: src/frontends/qt4/GuiKeySymbol.cpp:708
 #, fuzzy
 msgid "Control-"
 msgstr "Telle ord"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:708
+#: src/frontends/qt4/GuiKeySymbol.cpp:709
 #, fuzzy
 msgid "Option-"
 msgstr "Innstillinger"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:709
+#: src/frontends/qt4/GuiKeySymbol.cpp:710
 #, fuzzy
 msgid "Command-"
 msgstr "&Kommando:"
@@ -19258,6 +19258,11 @@ msgstr "Velg LyX dokument som skal settes inn"
 #: src/frontends/qt4/GuiView.cpp:1625
 msgid "Select file to insert"
 msgstr "Velg fil som skal settes inn"
+
+#: src/frontends/qt4/GuiView.cpp:1629
+#, fuzzy
+msgid "All Files (*)"
+msgstr "Alle filer (*)"
 
 #: src/frontends/qt4/GuiView.cpp:1662
 msgid "Choose a filename to save document as"
@@ -21110,9 +21115,6 @@ msgstr "Ukjent bruker"
 #, fuzzy
 #~ msgid "InsetCommandParams error: "
 #~ msgstr "Register-kommando:"
-
-#~ msgid "All files (*)"
-#~ msgstr "Alle filer (*)"
 
 #, fuzzy
 #~ msgid "Properties...|P"

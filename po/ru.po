@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-08 09:02+0100\n"
+"POT-Creation-Date: 2009-01-09 08:41+0100\n"
 "PO-Revision-Date: 2008-08-04 23:57+0100\n"
 "Last-Translator: Andrey V. Panov <panov@canopus.iacp.dvo.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -18715,21 +18715,21 @@ msgstr "вкл"
 msgid "buffer"
 msgstr "Синий"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:706
+#: src/frontends/qt4/GuiKeySymbol.cpp:707
 msgid "Shift-"
 msgstr ""
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:707
+#: src/frontends/qt4/GuiKeySymbol.cpp:708
 #, fuzzy
 msgid "Control-"
 msgstr "Вхождение"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:708
+#: src/frontends/qt4/GuiKeySymbol.cpp:709
 #, fuzzy
 msgid "Option-"
 msgstr "Параметры"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:709
+#: src/frontends/qt4/GuiKeySymbol.cpp:710
 #, fuzzy
 msgid "Command-"
 msgstr "&Команда:"
@@ -19761,6 +19761,11 @@ msgstr "Выберите документ LyX для вставки"
 #: src/frontends/qt4/GuiView.cpp:1625
 msgid "Select file to insert"
 msgstr "Выберите файл для вставки"
+
+#: src/frontends/qt4/GuiView.cpp:1629
+#, fuzzy
+msgid "All Files (*)"
+msgstr "Все файлы (*)"
 
 #: src/frontends/qt4/GuiView.cpp:1662
 msgid "Choose a filename to save document as"
@@ -21573,9 +21578,6 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "InsetCommandParams error: "
 #~ msgstr "Следующая команда"
-
-#~ msgid "All files (*)"
-#~ msgstr "Все файлы (*)"
 
 #, fuzzy
 #~ msgid "Properties...|P"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-08 09:02+0100\n"
+"POT-Creation-Date: 2009-01-09 08:41+0100\n"
 "PO-Revision-Date: 2008-12-23 03:20+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -17884,19 +17884,19 @@ msgstr "icona"
 msgid "buffer"
 msgstr "buffer"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:706
+#: src/frontends/qt4/GuiKeySymbol.cpp:707
 msgid "Shift-"
 msgstr "Shift-"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:707
+#: src/frontends/qt4/GuiKeySymbol.cpp:708
 msgid "Control-"
 msgstr "Control-"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:708
+#: src/frontends/qt4/GuiKeySymbol.cpp:709
 msgid "Option-"
 msgstr "Option-"
 
-#: src/frontends/qt4/GuiKeySymbol.cpp:709
+#: src/frontends/qt4/GuiKeySymbol.cpp:710
 msgid "Command-"
 msgstr "Command-"
 
@@ -18876,6 +18876,11 @@ msgstr "Scegliere il documento LyX da inserire"
 #: src/frontends/qt4/GuiView.cpp:1625
 msgid "Select file to insert"
 msgstr "Scegliere il documento da inserire"
+
+#: src/frontends/qt4/GuiView.cpp:1629
+#, fuzzy
+msgid "All Files (*)"
+msgstr "Tutti i file"
 
 #: src/frontends/qt4/GuiView.cpp:1662
 msgid "Choose a filename to save document as"
