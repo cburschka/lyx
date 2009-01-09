@@ -1626,7 +1626,7 @@ void GuiView::insertPlaintextFile(docstring const & fname,
 		LFUN_FILE_INSERT_PLAINTEXT_PARA : LFUN_FILE_INSERT_PLAINTEXT));
 
 	FileDialog::Result result = dlg.open(toqstr(bv->buffer().filePath()),
-		QStringList());
+		QStringList(qt_("All Files (*)")));
 
 	if (result.first == FileDialog::Later)
 		return;
