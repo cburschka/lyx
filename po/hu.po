@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-09 08:41+0100\n"
+"POT-Creation-Date: 2009-01-09 09:05+0100\n"
 "PO-Revision-Date: 2008-11-06 07:25+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -941,13 +941,13 @@ msgstr "&LyX mutassa"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:221
 #: src/frontends/qt4/ui/ExternalUi.ui:243
-#: src/frontends/qt4/ui/GraphicsUi.ui:676
-#: src/frontends/qt4/ui/GraphicsUi.ui:683
+#: src/frontends/qt4/ui/GraphicsUi.ui:679
+#: src/frontends/qt4/ui/GraphicsUi.ui:686
 msgid "Percentage to scale by in LyX"
 msgstr "A százalékos méretarány mértéke a LyX-ben"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:224
-#: src/frontends/qt4/ui/GraphicsUi.ui:686
+#: src/frontends/qt4/ui/GraphicsUi.ui:689
 msgid "Sca&le on Screen (%):"
 msgstr "Méret a képernyőn (%):"
 
@@ -1290,11 +1290,14 @@ msgid "Sho&w in LyX"
 msgstr "Megjelen&ítés LyX-ben"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:644
-msgid "&Initialize Group Name:"
+#: src/frontends/qt4/ui/GraphicsUi.ui:663
+msgid ""
+"Group Name to be set up from the current parameters. Use context menu to "
+"assign the existing one."
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:660
-msgid "Group Name to be set up from the current parameters"
+#: src/frontends/qt4/ui/GraphicsUi.ui:647
+msgid "&Initialize Group Name:"
 msgstr ""
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28

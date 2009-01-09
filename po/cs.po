@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-09 08:41+0100\n"
+"POT-Creation-Date: 2009-01-09 09:05+0100\n"
 "PO-Revision-Date: 2008-11-05 02:01+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -939,13 +939,13 @@ msgstr "&Zobrazit v LyX-u"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:221
 #: src/frontends/qt4/ui/ExternalUi.ui:243
-#: src/frontends/qt4/ui/GraphicsUi.ui:676
-#: src/frontends/qt4/ui/GraphicsUi.ui:683
+#: src/frontends/qt4/ui/GraphicsUi.ui:679
+#: src/frontends/qt4/ui/GraphicsUi.ui:686
 msgid "Percentage to scale by in LyX"
 msgstr "Mìøítko zvìt¹ení v procentech"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:224
-#: src/frontends/qt4/ui/GraphicsUi.ui:686
+#: src/frontends/qt4/ui/GraphicsUi.ui:689
 msgid "Sca&le on Screen (%):"
 msgstr "Mìøítko na o&brazovce (%):"
 
@@ -1299,12 +1299,16 @@ msgid "Sho&w in LyX"
 msgstr "&Zobrazit v LyX-u"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:644
+#: src/frontends/qt4/ui/GraphicsUi.ui:663
+#, fuzzy
+msgid ""
+"Group Name to be set up from the current parameters. Use context menu to "
+"assign the existing one."
+msgstr "Jméno skupiny obrázkù, která bude nastavena tìmito parametry"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:647
 msgid "&Initialize Group Name:"
 msgstr "Zalo¾ &jméno skupiny:"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:660
-msgid "Group Name to be set up from the current parameters"
-msgstr "Jméno skupiny obrázkù, která bude nastavena tìmito parametry"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"

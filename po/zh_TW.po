@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-09 08:41+0100\n"
+"POT-Creation-Date: 2009-01-09 09:05+0100\n"
 "PO-Revision-Date: 2008-08-04 22:57+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -957,13 +957,13 @@ msgstr "在 LyX 中顯示(&S)"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:221
 #: src/frontends/qt4/ui/ExternalUi.ui:243
-#: src/frontends/qt4/ui/GraphicsUi.ui:676
-#: src/frontends/qt4/ui/GraphicsUi.ui:683
+#: src/frontends/qt4/ui/GraphicsUi.ui:679
+#: src/frontends/qt4/ui/GraphicsUi.ui:686
 msgid "Percentage to scale by in LyX"
 msgstr "在 LyX 中縮放的百分比"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:224
-#: src/frontends/qt4/ui/GraphicsUi.ui:686
+#: src/frontends/qt4/ui/GraphicsUi.ui:689
 msgid "Sca&le on Screen (%):"
 msgstr "螢幕上的比例(%)(&L)："
 
@@ -1303,11 +1303,14 @@ msgid "Sho&w in LyX"
 msgstr "在 LyX 中顯示(&W)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:644
-msgid "&Initialize Group Name:"
+#: src/frontends/qt4/ui/GraphicsUi.ui:663
+msgid ""
+"Group Name to be set up from the current parameters. Use context menu to "
+"assign the existing one."
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:660
-msgid "Group Name to be set up from the current parameters"
+#: src/frontends/qt4/ui/GraphicsUi.ui:647
+msgid "&Initialize Group Name:"
 msgstr ""
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28

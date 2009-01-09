@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-09 08:41+0100\n"
+"POT-Creation-Date: 2009-01-09 09:05+0100\n"
 "PO-Revision-Date: 2008-12-09 18:27+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
@@ -941,13 +941,13 @@ msgstr "LyX内に表示(&S)"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:221
 #: src/frontends/qt4/ui/ExternalUi.ui:243
-#: src/frontends/qt4/ui/GraphicsUi.ui:676
-#: src/frontends/qt4/ui/GraphicsUi.ui:683
+#: src/frontends/qt4/ui/GraphicsUi.ui:679
+#: src/frontends/qt4/ui/GraphicsUi.ui:686
 msgid "Percentage to scale by in LyX"
 msgstr "LyX内での表示縮尺"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:224
-#: src/frontends/qt4/ui/GraphicsUi.ui:686
+#: src/frontends/qt4/ui/GraphicsUi.ui:689
 msgid "Sca&le on Screen (%):"
 msgstr "画面上の縮尺(&L) (％):"
 
@@ -1289,12 +1289,16 @@ msgid "Sho&w in LyX"
 msgstr "LyX内に表示(&W)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:644
+#: src/frontends/qt4/ui/GraphicsUi.ui:663
+#, fuzzy
+msgid ""
+"Group Name to be set up from the current parameters. Use context menu to "
+"assign the existing one."
+msgstr "現在のパラメータから設定されるグループ名"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:647
 msgid "&Initialize Group Name:"
 msgstr "グループ名を初期化(&I):"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:660
-msgid "Group Name to be set up from the current parameters"
-msgstr "現在のパラメータから設定されるグループ名"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-09 08:41+0100\n"
+"POT-Creation-Date: 2009-01-09 09:05+0100\n"
 "PO-Revision-Date: 2008-09-29 03:28+0300\n"
 "Last-Translator: Hatim Alahmadi <Dr.Hatim@hotmail.com>\n"
 "Language-Team: LyX team <Dr.Hatim@hotmail.com>\n"
@@ -944,13 +944,13 @@ msgstr "اظهار في ليك"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:221
 #: src/frontends/qt4/ui/ExternalUi.ui:243
-#: src/frontends/qt4/ui/GraphicsUi.ui:676
-#: src/frontends/qt4/ui/GraphicsUi.ui:683
+#: src/frontends/qt4/ui/GraphicsUi.ui:679
+#: src/frontends/qt4/ui/GraphicsUi.ui:686
 msgid "Percentage to scale by in LyX"
 msgstr "النسبة المئوية للمقياس في ليك"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:224
-#: src/frontends/qt4/ui/GraphicsUi.ui:686
+#: src/frontends/qt4/ui/GraphicsUi.ui:689
 msgid "Sca&le on Screen (%):"
 msgstr "مقياس على الشاشة (%):"
 
@@ -1286,12 +1286,16 @@ msgid "Sho&w in LyX"
 msgstr "اظهار في ليك"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:644
+#: src/frontends/qt4/ui/GraphicsUi.ui:663
+#, fuzzy
+msgid ""
+"Group Name to be set up from the current parameters. Use context menu to "
+"assign the existing one."
+msgstr "اسم المجموعة التي ستنشأ من المعطيات الحالية"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:647
 msgid "&Initialize Group Name:"
 msgstr ""
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:660
-msgid "Group Name to be set up from the current parameters"
-msgstr "اسم المجموعة التي ستنشأ من المعطيات الحالية"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"
