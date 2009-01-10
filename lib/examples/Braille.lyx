@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -22,6 +22,7 @@ braille
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -37,6 +38,7 @@ braille
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
+\pdf_quoted_options "pdfstartview=XYZ"
 \papersize default
 \use_geometry true
 \use_amsmath 1
@@ -56,8 +58,8 @@ braille
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -83,12 +85,12 @@ type "mailto:"
 \end_layout
 
 \begin_layout Standard
-First a general note: The Braille you can create with LaTeX is not a professiona
-l one! Professional Braille can be 6 or 8
+First a general note: The Braille you can create with LaTeX is not complete!
+ Braille can have 6 or 8
 \begin_inset space \thinspace{}
 \end_inset
 
-dot, while LaTeX only supports only 6
+dots, while LaTeX (and therefore LyX) only supports only 6
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -102,11 +104,7 @@ Braille
 \family default
  in the document settings under 
 \family sans
-Document
-\begin_inset space ~
-\end_inset
-
-Class
+Modules
 \family default
 .
  Now select the environment 
