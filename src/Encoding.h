@@ -220,7 +220,7 @@ public:
 	/**
 	 * Initialize mathcmd, textcmd, and mathsym sets.
 	 */
-	static void initUnicodeMath(Buffer const & buffer);
+	static void initUnicodeMath(Buffer const & buffer, bool clear_sets = true);
 	/**
 	 * If \p c cannot be encoded in the given \p encoding, convert
 	 * it to something that LaTeX can understand in mathmode.

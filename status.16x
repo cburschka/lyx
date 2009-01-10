@@ -74,6 +74,9 @@ What's new
 - siamltex class: do not load amsthm package, since the SIAM class 
   provides its own theorem-like environments.
 
+- Fix LaTeX export when using unicode symbols in math only in child
+  documents (bug 5665).
+
 
 * USER INTERFACE
 
