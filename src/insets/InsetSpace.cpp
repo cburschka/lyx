@@ -99,7 +99,7 @@ docstring InsetSpace::toolTip(BufferView const &, int, int) const
 		message = _("Negative Thin Space");
 		break;
 	case InsetSpaceParams::NEGMEDIUM:
-		message = _("Negative Mwedium Space");
+		message = _("Negative Medium Space");
 		break;
 	case InsetSpaceParams::NEGTHICK:
 		message = _("Negative Thick Space");
