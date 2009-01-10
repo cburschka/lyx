@@ -12,7 +12,7 @@
 \begin_modules
 braille
 \end_modules
-\language english
+\language ngerman
 \inputencoding utf8
 \font_roman default
 \font_sans default
@@ -52,7 +52,7 @@ braille
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\quotes_language german
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -65,7 +65,7 @@ braille
 \begin_body
 
 \begin_layout Title
-How to write Braille with LyX
+Schreiben von Braille mit LyX
 \end_layout
 
 \begin_layout Author
@@ -85,26 +85,26 @@ type "mailto:"
 \end_layout
 
 \begin_layout Standard
-First a general note: The Braille you can create with LaTeX is not complete!
- Braille can have 6 or 8
+Zuerst etwas Allgemeines: Die Braille die man mit LyX schreiben kann, ist
+ nicht komplett! Braille kann 6 oder 8
 \begin_inset space \thinspace{}
 \end_inset
 
-dots, while LaTeX (and therefore LyX) only supports only 6
+Punkte haben, während LaTeX (und damit LyX) nur 6
 \begin_inset space \thinspace{}
 \end_inset
 
-dot Braille without accented characters.
+Punkt Braille ohne akzentuierte Zeichen unterstützt.
 \end_layout
 
 \begin_layout Standard
-To write Braille with LyX, load the module 
+Um Braille mit LyX zu schreiben, laden Sie das Modul 
 \family sans
 Braille
 \family default
- in the document settings under 
+ in den Dokumenteinstellungen unter 
 \family sans
-Modules
+Module
 \family default
 .
  Now select the environment 
