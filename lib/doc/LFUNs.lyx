@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -17,6 +17,7 @@ theorems-ams
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \use_hyperref false
@@ -41,14 +42,14 @@ theorems-ams
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 23.10.2008.
+LFUNs documentation automatically generated 11.01.2009.
 \end_layout
 
 \begin_layout Standard
@@ -658,11 +659,7 @@ Notion Apart from lfun arguments you can use the following method:
 \end_inset
 
  1.
- input the type and argument of this inset, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+ input the type and argument of this inset, e.g.
  "menu paste", in the work area.
  
 \begin_inset Newline newline
@@ -1560,11 +1557,7 @@ Syntax word-find [<DATA>]
 \begin_layout Description
 Params <DATA>: data encoded from Find dialog (see lyx::find2string()).
  If no parameter is given, search with last find-dialog data is used for
- search (i.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+ search (i.e.
  find-next).
   
 \end_layout
@@ -1603,7 +1596,28 @@ Origin Andre, Jan 7 2004
 \end_layout
 
 \begin_layout Subsection*
-LFUN_WORD_FORWARD 
+LFUN_WORD_FINDADV 
+\end_layout
+
+\begin_layout Description
+Action Search for next occurence of a pattern.
+  
+\end_layout
+
+\begin_layout Description
+Syntax word-findadv [<DATA>] 
+\end_layout
+
+\begin_layout Description
+Params <DATA>: data encoded from FindAdv dialog (see lyx::findadv2string()).
+ If no parameter is given, search with last find-dialog data is used for
+ search (i.e.
+ find-next).
+  
+\end_layout
+
+\begin_layout Description
+Origin Tommaso, Nov 15 2007 
 \end_layout
 
 \begin_layout Description
@@ -1652,11 +1666,8 @@ Action Moves the cursor to the next beginning of a word "on the left".
 \end_layout
 
 \begin_layout Description
-Notion This is the action which should be taken when the (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., ctrl-) "left" key is pressed.
+Notion This is the action which should be taken when the (e.g., ctrl-) "left"
+ key is pressed.
  Generally, it moves the cursor to the next beginning of a word on the left.
  However, in Bidi text this become slightly more complicated, and there
  are different modes of cursor movement.
@@ -1707,11 +1718,8 @@ Action Moves the cursor to the next beginning of a word "on the right".
 \end_layout
 
 \begin_layout Description
-Notion This is the action which should be taken when the (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., ctrl-) "right" key is pressed.
+Notion This is the action which should be taken when the (e.g., ctrl-) "right"
+ key is pressed.
  Generally, it moves the cursor to the next beginning of a word on the right.
  However, in Bidi text this become slightly more complicated, and there
  are different modes of cursor movement.
@@ -1774,11 +1782,7 @@ LFUN_WORD_CAPITALIZE
 \end_layout
 
 \begin_layout Description
-Action Capitalizes the words in the selection (i.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+Action Capitalizes the words in the selection (i.e.
  the first letters) or the letter on the cursor position.
   
 \end_layout
@@ -1825,7 +1829,12 @@ Action Look up thesaurus entries with respect to the word under the cursor.
 \end_layout
 
 \begin_layout Description
-Syntax thesaurus-entry 
+Syntax thesaurus-entry [<STRING>] [lang=<LANG>] 
+\end_layout
+
+\begin_layout Description
+Params <STRING>: word to look up <LANG>: language (see file languages) 
+ 
 \end_layout
 
 \begin_layout Description
@@ -2011,11 +2020,7 @@ Syntax clipboard-paste [<ARG>]
 \end_layout
 
 \begin_layout Description
-Params <ARG>: "paragraph" will cause pasting as one paragraph, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+Params <ARG>: "paragraph" will cause pasting as one paragraph, i.e.
  "Join lines".
   
 \end_layout
@@ -2043,11 +2048,7 @@ Syntax primary-selection-paste [<ARG>]
 \end_layout
 
 \begin_layout Description
-Params <ARG>: "paragraph" will cause pasting as one paragraph, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+Params <ARG>: "paragraph" will cause pasting as one paragraph, i.e.
  "Join lines".
   
 \end_layout
@@ -2350,11 +2351,7 @@ Syntax textstyle-update <FONT_INFO>
 \end_layout
 
 \begin_layout Description
-Params <FONT_INFO>: specifies font atributes, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+Params <FONT_INFO>: specifies font atributes, e.g.
  family, series, shape, size, emph, noun, underbar, number, color, language,
  toggleall.
  
@@ -2708,11 +2705,7 @@ LFUN_MATH_DELIM
 \end_layout
 
 \begin_layout Description
-Action Inserts math delimiters (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+Action Inserts math delimiters (e.g.
  parentheses, brackets) enclosing expression.
   
 \end_layout
@@ -2741,11 +2734,7 @@ LFUN_MATH_BIGDELIM
 \end_layout
 
 \begin_layout Description
-Action Inserts math fixed size delimiters (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+Action Inserts math fixed size delimiters (e.g.
  parentheses, brackets) enclosing expression.
   
 \end_layout
@@ -2886,11 +2875,7 @@ Syntax math-macro <NAME> [<NARGS>] [def]
 \end_layout
 
 \begin_layout Description
-Params <NAME>: The name of the macro, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+Params <NAME>: The name of the macro, e.g.
  "mymacro".
  <NARGS>: The number of parameters of the macro.
  Default is 0.
@@ -2939,20 +2924,28 @@ Notion Use spacebar after entering this space to change type of space.
 \end_layout
 
 \begin_layout Description
-Syntax math-space [<TYPE>] 
+Syntax math-space [<TYPE>] [<LEN>] 
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: negative spaces: !|negmedspace|negthickspace  
+Params <TYPE>: negative spaces: !|negthinspace|negmedspace|negthickspace
+  
 \begin_inset Newline newline
 \end_inset
 
- positive spaces: ,|:|;|quad|qquad  
+ positive spaces: ,|thinspace|:|medspace|;|thickspace|enskip|quad|qquad
+  
+\begin_inset Newline newline
+\end_inset
+
+ custom space: hspace  
 \begin_inset Newline newline
 \end_inset
 
  "," used by default.
-  
+ Note that ! is equivalent to negthinspace, , = thinspace, : = medspace,
+ and ; = thickspace.
+ <LEN>: length for custom spaces (hspace)  
 \end_layout
 
 \begin_layout Description
@@ -2974,16 +2967,8 @@ Syntax math-matrix <COLS> <ROWS> [<ALIGN>]
 
 \begin_layout Description
 Params <ALIGN>: Alignment is a word composed of the vertical alignment (b,
- c or t) (i.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
- 1 char) and the horizontal alignments (l, c or r) (i.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+ c or t) (i.e.
+ 1 char) and the horizontal alignments (l, c or r) (i.e.
  <COL> chars).
   
 \end_layout
@@ -2997,11 +2982,7 @@ LFUN_MATH_MODE
 \end_layout
 
 \begin_layout Description
-Action In text mode enters math mode (i.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+Action In text mode enters math mode (i.e.
  puts math insets on the current cursor position), in math mode enters text
  mode inside math expression.
   
@@ -3025,6 +3006,36 @@ Params <ARG>: eventual argument (LaTeX code) is passed to LFUN_MATH_INSERT
 
 \begin_layout Description
 Origin Alejandro, 4 Jun 1996 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_REGEXP_MODE 
+\end_layout
+
+\begin_layout Description
+Action Enters regexp mode (i.e., puts regexp insets on the current cursor
+ position).
+ Used by the advanced search dialog.
+  
+\end_layout
+
+\begin_layout Description
+Notion If there is any selected text, then it is moved inside the created
+ regexp inset.
+  
+\end_layout
+
+\begin_layout Description
+Syntax regexp-mode [<ARG>] 
+\end_layout
+
+\begin_layout Description
+Params <ARG>: eventual argument (regular expression).
+  
+\end_layout
+
+\begin_layout Description
+Origin Tommaso, 4 Oct 2008 
 \end_layout
 
 \begin_layout Subsection*
@@ -3150,11 +3161,7 @@ Action Unfold a Math Macro.
 \end_layout
 
 \begin_layout Description
-Notion Unfold the Math Macro the cursor is in, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+Notion Unfold the Math Macro the cursor is in, i.e.
  display it as foo.
   
 \end_layout
@@ -3177,11 +3184,7 @@ Action Fold a Math Macro.
 \end_layout
 
 \begin_layout Description
-Notion Fold the Math Macro the cursor is in if it was unfolded, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+Notion Fold the Math Macro the cursor is in if it was unfolded, i.e.
  displayed as foo before.
   
 \end_layout
@@ -3210,11 +3213,7 @@ Notion Add a parameter to a Math Macro.
 
 \begin_layout Description
 Params <NUM>: The number of the parameter behind which the new one will
- be added (1 for the first, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+ be added (1 for the first, i.e.
  use 0 for add a parameter at the left), defaults to the last one.
   
 \end_layout
@@ -3880,11 +3879,7 @@ Action Sets various features to the table/cell on the current cursor position.
 \end_layout
 
 \begin_layout Description
-Notion Various math-environment features are handled here as well, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+Notion Various math-environment features are handled here as well, e.g.
  add-vline-left/right for Grid/Cases environment  
 \end_layout
 
@@ -3903,7 +3898,8 @@ lar|toggle-rotate-tabular| set-rotate-cell|unset-rotate-cell|toggle-rotate-cell|
 set-usebox|set-lthead| unset-lthead|set-ltfirsthead|unset-ltfirsthead|set-ltfoot
 |unset-ltfoot| set-ltlastfoot|unset-ltlastfoot|set-ltnewpage|toggle-ltcaption|
  set-special-column|set-special-multi|set-booktabs|unset-booktabs| set-top-space
-|set-bottom-space|set-interline-space|set-border-lines  
+|set-bottom-space|set-interline-space|set-border-lines| tabular-valign-top|tabul
+ar-valign-middle|tabular-valign-bottom  
 \begin_inset Newline newline
 \end_inset
 
@@ -3981,7 +3977,8 @@ Notion File is registered inside cvs, svn or rcs repository acording to
 \begin_inset Newline newline
 \end_inset
 
- See LyX Extended Manual (Version Control Chapter) for additional information.
+ See LyX Additional Features Manual (Version Control Chapter) for additional
+ information.
   
 \end_layout
 
@@ -5412,7 +5409,7 @@ Action Sends notify message about the last key-sequence to client.
 
 \begin_layout Description
 Notion This can be used to grab last key-sequence used inside the LyX window.
- See also Debug extensions section in Extended features manual.
+ See also Debug extensions section in Additional features manual.
   
 \end_layout
 
@@ -5871,11 +5868,7 @@ Action Exports the current document and put the result into the temporary
 \begin_layout Description
 Notion In case you are already viewing the exported document (see LFUN_BUFFER_VI
 EW) the output will be rewriten - updated.
- This is useful in case your viewer is able to detect such changes (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+ This is useful in case your viewer is able to detect such changes (e.g.
  ghostview for postscript).
   
 \end_layout
@@ -6138,11 +6131,7 @@ LFUN_FILE_INSERT_PLAINTEXT_PARA
 \end_layout
 
 \begin_layout Description
-Action Inserts plain text file as paragraph (i.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+Action Inserts plain text file as paragraph (i.e.
  join lines).
   
 \end_layout
@@ -6196,11 +6185,7 @@ Notion The definitions are by default read from lib/commands/default.def.
  A .def file allows to define a command with 
 \backslash
 define "<NAME>" "<LFUN>" where <NAME> is the name of the new command and
- <LFUN> is the lfun code to be executed (see e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+ <LFUN> is the lfun code to be executed (see e.g.
  LFUN_COMMAND_SEQUENCE).
  
 \backslash
@@ -6628,6 +6613,24 @@ Params <BRANCH>: The branch to deactivate
 
 \begin_layout Description
 Origin rgh, 27 May 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_COPY_LABEL_AS_REF 
+\end_layout
+
+\begin_layout Description
+Action Copies the label at the cursor as a cross-reference to be pasted
+ elsewhere.
+  
+\end_layout
+
+\begin_layout Description
+Syntax copy-label-as-reference 
+\end_layout
+
+\begin_layout Description
+Origin sts, 16 Nov 2008 
 \end_layout
 
 \end_body
