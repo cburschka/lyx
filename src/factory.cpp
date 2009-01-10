@@ -320,7 +320,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 				return 0;
 			
 			}
-			} //end LFUN_INSET_INSERT
+		} //end LFUN_INSET_INSERT
 
 		case LFUN_SPACE_INSERT: {
 			string const name = cmd.getArg(0);
@@ -330,12 +330,17 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 				break;
 			}
 			InsetSpaceParams isp;
+			// The tests for isp.math might be disabled after a file format change
 			if (name == "normal")
 				isp.kind = InsetSpaceParams::NORMAL;
 			else if (name == "protected")
 				isp.kind = InsetSpaceParams::PROTECTED;
 			else if (name == "thin")
 				isp.kind = InsetSpaceParams::THIN;
+			else if (isp.math && name == "med")
+				isp.kind = InsetSpaceParams::MEDIUM;
+			else if (isp.math && name == "thick")
+				isp.kind = InsetSpaceParams::THICK;
 			else if (name == "quad")
 				isp.kind = InsetSpaceParams::QUAD;
 			else if (name == "qquad")
@@ -346,6 +351,10 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 				isp.kind = InsetSpaceParams::ENSKIP;
 			else if (name == "negthinspace")
 				isp.kind = InsetSpaceParams::NEGTHIN;
+			else if (isp.math && name == "negmedspace")
+				isp.kind = InsetSpaceParams::NEGMEDIUM;
+			else if (isp.math && name == "negthickspace")
+				isp.kind = InsetSpaceParams::NEGTHICK;
 			else if (name == "hfill")
 				isp.kind = InsetSpaceParams::HFILL;
 			else if (name == "hfill*")

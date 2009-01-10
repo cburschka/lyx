@@ -8,7 +8,7 @@ Function UpdateModifiedFiles
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\external_templates"
- #File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
+ File "${PRODUCT_SOURCEDIR}\Resources\symbols"
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
@@ -44,6 +44,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\man\tex2lyx.1"
  SetOutPath "$INSTDIR\Resources\templates"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\ACM-siggraph.lyx"
+ SetOutPath "$INSTDIR\Resources\ui"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdcontext.inc"
 
 FunctionEnd
 

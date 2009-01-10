@@ -20,6 +20,7 @@
 #include "Dimension.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "LaTeXFeatures.h"
 #include "Length.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
@@ -28,6 +29,7 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 
 #include "frontends/Application.h"
@@ -75,6 +77,12 @@ docstring InsetSpace::toolTip(BufferView const &, int, int) const
 	case InsetSpaceParams::THIN:
 		message = _("Thin Space");
 		break;
+	case InsetSpaceParams::MEDIUM:
+		message = _("Medium Space");
+		break;
+	case InsetSpaceParams::THICK:
+		message = _("Thick Space");
+		break;
 	case InsetSpaceParams::QUAD:
 		message = _("Quad Space");
 		break;
@@ -89,6 +97,12 @@ docstring InsetSpace::toolTip(BufferView const &, int, int) const
 		break;
 	case InsetSpaceParams::NEGTHIN:
 		message = _("Negative Thin Space");
+		break;
+	case InsetSpaceParams::NEGMEDIUM:
+		message = _("Negative Mwedium Space");
+		break;
+	case InsetSpaceParams::NEGTHICK:
+		message = _("Negative Thick Space");
 		break;
 	case InsetSpaceParams::HFILL:
 		message = _("Horizontal Fill");
@@ -131,10 +145,13 @@ void InsetSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 
-	case LFUN_INSET_MODIFY: {
+	case LFUN_INSET_MODIFY:
 		string2params(to_utf8(cmd.argument()), params_);
 		break;
-	}
+
+	case LFUN_INSET_DIALOG_UPDATE:
+		cur.bv().updateDialog("space", params2string(params()));
+		break;
 
 	case LFUN_MOUSE_RELEASE:
 		if (!cur.selection() && cmd.button() == mouse_button::button1)
@@ -159,6 +176,8 @@ bool InsetSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 			string2params(to_utf8(cmd.argument()), params);
 			status.setOnOff(params_.kind == params.kind);
 		}
+		// fall through
+	case LFUN_INSET_DIALOG_UPDATE:
 		status.setEnabled(true);
 		return true;
 	default:
@@ -195,6 +214,14 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 		case InsetSpaceParams::THIN:
 		case InsetSpaceParams::NEGTHIN:
 			dim.wid = fm.width(char_type('M')) / 6;
+			break;
+		case InsetSpaceParams::MEDIUM:
+		case InsetSpaceParams::NEGMEDIUM:
+			dim.wid = fm.width(char_type('M')) / 4;
+			break;
+		case InsetSpaceParams::THICK:
+		case InsetSpaceParams::NEGTHICK:
+			dim.wid = fm.width(char_type('M')) / 2;
 			break;
 		case InsetSpaceParams::PROTECTED:
 		case InsetSpaceParams::NORMAL:
@@ -269,12 +296,12 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 
 		if (params_.kind == InsetSpaceParams::HFILL) {
 			pi.pain.line(x0, y1, x0, y0, Color_added_space);
-			pi.pain.line(x0, y2 , x1, y2, Color_added_space,
+			pi.pain.line(x0, y2, x1, y2, Color_added_space,
 				frontend::Painter::line_onoffdash);
 			pi.pain.line(x1, y1, x1, y0, Color_added_space);
 		} else if (params_.kind == InsetSpaceParams::HFILL_PROTECTED) {
 			pi.pain.line(x0, y1, x0, y0, Color_latex);
-			pi.pain.line(x0, y2 , x1, y2, Color_latex,
+			pi.pain.line(x0, y2, x1, y2, Color_latex,
 				frontend::Painter::line_onoffdash);
 			pi.pain.line(x1, y1, x1, y0, Color_latex);
 		} else if (params_.kind == InsetSpaceParams::DOTFILL) {
@@ -344,6 +371,8 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 	if (params_.kind == InsetSpaceParams::PROTECTED ||
 	    params_.kind == InsetSpaceParams::ENSPACE ||
 	    params_.kind == InsetSpaceParams::NEGTHIN ||
+	    params_.kind == InsetSpaceParams::NEGMEDIUM ||
+	    params_.kind == InsetSpaceParams::NEGTHICK ||
 	    params_.kind == InsetSpaceParams::CUSTOM_PROTECTED)
 		pi.pain.lines(xp, yp, 4, Color_latex);
 	else
@@ -364,6 +393,12 @@ void InsetSpaceParams::write(ostream & os) const
 	case InsetSpaceParams::THIN:
 		os <<  "\\thinspace{}";
 		break;
+	case InsetSpaceParams::MEDIUM:
+		os <<  "\\medspace{}";
+		break;
+	case InsetSpaceParams::THICK:
+		os <<  "\\thickspace{}";
+		break;
 	case InsetSpaceParams::QUAD:
 		os <<  "\\quad{}";
 		break;
@@ -378,6 +413,12 @@ void InsetSpaceParams::write(ostream & os) const
 		break;
 	case InsetSpaceParams::NEGTHIN:
 		os <<  "\\negthinspace{}";
+		break;
+	case InsetSpaceParams::NEGMEDIUM:
+		os <<  "\\negmedspace{}";
+		break;
+	case InsetSpaceParams::NEGTHICK:
+		os <<  "\\negthickspace{}";
 		break;
 	case InsetSpaceParams::HFILL:
 		os <<  "\\hfill{}";
@@ -422,12 +463,17 @@ void InsetSpaceParams::read(Lexer & lex)
 	string command;
 	lex >> command;
 
+	// The tests for math might be disabled after a file format change
 	if (command == "\\space{}")
 		kind = InsetSpaceParams::NORMAL;
 	else if (command == "~")
 		kind = InsetSpaceParams::PROTECTED;
 	else if (command == "\\thinspace{}")
 		kind = InsetSpaceParams::THIN;
+	else if (math && command == "\\medspace{}")
+		kind = InsetSpaceParams::MEDIUM;
+	else if (math && command == "\\thickspace{}")
+		kind = InsetSpaceParams::THICK;
 	else if (command == "\\quad{}")
 		kind = InsetSpaceParams::QUAD;
 	else if (command == "\\qquad{}")
@@ -438,6 +484,10 @@ void InsetSpaceParams::read(Lexer & lex)
 		kind = InsetSpaceParams::ENSKIP;
 	else if (command == "\\negthinspace{}")
 		kind = InsetSpaceParams::NEGTHIN;
+	else if (math && command == "\\negmedspace{}")
+		kind = InsetSpaceParams::NEGMEDIUM;
+	else if (math && command == "\\negthickspace{}")
+		kind = InsetSpaceParams::NEGTHICK;
 	else if (command == "\\hfill{}")
 		kind = InsetSpaceParams::HFILL;
 	else if (command == "\\hspace*{\\fill}")
@@ -492,6 +542,12 @@ int InsetSpace::latex(odocstream & os, OutputParams const & runparams) const
 	case InsetSpaceParams::THIN:
 		os << (runparams.free_spacing ? " " : "\\,");
 		break;
+	case InsetSpaceParams::MEDIUM:
+		os << (runparams.free_spacing ? " " : "\\:");
+		break;
+	case InsetSpaceParams::THICK:
+		os << (runparams.free_spacing ? " " : "\\;");
+		break;
 	case InsetSpaceParams::QUAD:
 		os << (runparams.free_spacing ? " " : "\\quad{}");
 		break;
@@ -506,6 +562,12 @@ int InsetSpace::latex(odocstream & os, OutputParams const & runparams) const
 		break;
 	case InsetSpaceParams::NEGTHIN:
 		os << (runparams.free_spacing ? " " : "\\negthinspace{}");
+		break;
+	case InsetSpaceParams::NEGMEDIUM:
+		os << (runparams.free_spacing ? " " : "\\negmedspace{}");
+		break;
+	case InsetSpaceParams::NEGTHICK:
+		os << (runparams.free_spacing ? " " : "\\negthickspace{}");
 		break;
 	case InsetSpaceParams::HFILL:
 		os << (runparams.free_spacing ? " " : "\\hfill{}");
@@ -592,7 +654,11 @@ int InsetSpace::docbook(odocstream & os, OutputParams const &) const
 	case InsetSpaceParams::PROTECTED:
 	case InsetSpaceParams::ENSPACE:
 	case InsetSpaceParams::THIN:
+	case InsetSpaceParams::MEDIUM:
+	case InsetSpaceParams::THICK:
 	case InsetSpaceParams::NEGTHIN:
+	case InsetSpaceParams::NEGMEDIUM:
+	case InsetSpaceParams::NEGTHICK:
 		os << "&nbsp;";
 		break;
 	case InsetSpaceParams::HFILL:
@@ -614,6 +680,14 @@ int InsetSpace::docbook(odocstream & os, OutputParams const &) const
 		os << '\n';
 	}
 	return 0;
+}
+
+
+void InsetSpace::validate(LaTeXFeatures & features) const
+{
+	if (params_.kind == InsetSpaceParams::NEGMEDIUM ||
+	    params_.kind == InsetSpaceParams::NEGTHICK) 
+		features.require("amsmath");
 }
 
 
@@ -652,7 +726,14 @@ void InsetSpace::string2params(string const & in, InsetSpaceParams & params)
 	Lexer lex;
 	lex.setStream(data);
 	lex.setContext("InsetSpace::string2params");
-	lex >> "space";
+	lex.next();
+	string const name = lex.getString();
+	if (name == "mathspace")
+		params.math = true;
+	else {
+		params.math = false;
+		LASSERT(name == "space", /**/);
+	}
 
 	// There are cases, such as when we are called via getStatus() from
 	// Dialog::canApply(), where we are just called with "space" rather
@@ -665,6 +746,8 @@ void InsetSpace::string2params(string const & in, InsetSpaceParams & params)
 string InsetSpace::params2string(InsetSpaceParams const & params)
 {
 	ostringstream data;
+	if (params.math)
+		data << "math";
 	data << "space" << ' ';
 	params.write(data);
 	return data.str();

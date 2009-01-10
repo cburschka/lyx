@@ -54,6 +54,7 @@ following hack as starting point to write some macros:
 #include "InsetMathRef.h"
 #include "InsetMathRoot.h"
 #include "InsetMathScript.h"
+#include "InsetMathSpace.h"
 #include "InsetMathSplit.h"
 #include "InsetMathSqrt.h"
 #include "InsetMathTabular.h"
@@ -671,7 +672,7 @@ docstring Parser::parse_verbatim_option()
 				putback();
 				res += '{' + parse_verbatim_item() + '}';
 			} else
-				res += t.asString();
+				res += t.asInput();
 		}
 	}
 	return res;
@@ -690,7 +691,7 @@ docstring Parser::parse_verbatim_item()
 				res += '{' + parse_verbatim_item() + '}';
 			}
 			else
-				res += t.asString();
+				res += t.asInput();
 		}
 	}
 	return res;
@@ -1592,6 +1593,22 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			} else
 				cell->push_back(createInsetMath(t.cs()));
 			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, InsetMath::TEXT_MODE);
+		}
+
+		else if (t.cs() == "hspace" && nextToken().character() != '*') {
+			docstring const name = t.cs();
+			docstring const arg = parse_verbatim_item();
+			Length length;
+			if (isValidLength(to_utf8(arg), &length))
+				cell->push_back(MathAtom(new InsetMathSpace(length)));
+			else {
+				// Since the Length class cannot use length variables
+				// we must not create an InsetMathSpace.
+				cell->push_back(MathAtom(new MathMacro(name)));
+				MathData ar;
+				mathed_parse_cell(ar, '{' + arg + '}');
+				cell->append(ar);
+			}
 		}
 
 #if 0

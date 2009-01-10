@@ -1473,10 +1473,14 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_MATH_SPACE
  * \li Action: Inserts space into math expression.
  * \li Notion: Use spacebar after entering this space to change type of space.
- * \li Syntax: math-space [<TYPE>]
- * \li Params: <TYPE>: negative spaces: !|negmedspace|negthickspace \n
-                       positive spaces: ,|:|;|quad|qquad \n
+ * \li Syntax: math-space [<TYPE>] [<LEN>]
+ * \li Params: <TYPE>: negative spaces: !|negthinspace|negmedspace|negthickspace \n
+                       positive spaces: ,|thinspace|:|medspace|;|thickspace|enskip|quad|qquad \n
+                       custom space: hspace \n
                        "," used by default.
+                       Note that ! is equivalent to negthinspace, , = thinspace,
+                       : = medspace, and ; = thickspace.
+               <LEN>: length for custom spaces (hspace)
  * \li Origin: Andre, 25 Jul 2001; sanda, 16 Jun 2008
  * \endvar
  */

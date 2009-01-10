@@ -1993,8 +1993,9 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			Inset * inset = getOpenInset(name);
 			if (inset) {
 				// put cursor in front of inset.
-				if (!view()->setCursorFromInset(inset))
+				if (!view()->setCursorFromInset(inset)) {
 					LASSERT(false, break);
+				}
 				
 				// useful if we are called from a dialog.
 				view()->cursor().beginUndoGroup();
@@ -2218,7 +2219,7 @@ char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
 "citation", "document", "errorlist", "ert", "external", "file",
 "findreplace", "float", "graphics", "include", "index", "info", "nomenclature", "label", "log",
-"mathdelimiter", "mathmatrix", "note", "paragraph", "prefs", "print", 
+"mathdelimiter", "mathmatrix", "mathspace", "note", "paragraph", "prefs", "print", 
 "ref", "sendto", "space", "spellchecker", "symbols", "tabular", "tabularcreate",
 
 #ifdef HAVE_LIBAIKSAURUS
@@ -2399,12 +2400,12 @@ Dialog * createGuiERT(GuiView & lv);
 Dialog * createGuiExternal(GuiView & lv);
 Dialog * createGuiFloat(GuiView & lv);
 Dialog * createGuiGraphics(GuiView & lv);
-Dialog * createGuiHSpace(GuiView & lv);
 Dialog * createGuiInclude(GuiView & lv);
 Dialog * createGuiInfo(GuiView & lv);
 Dialog * createGuiLabel(GuiView & lv);
 Dialog * createGuiListings(GuiView & lv);
 Dialog * createGuiLog(GuiView & lv);
+Dialog * createGuiMathHSpace(GuiView & lv);
 Dialog * createGuiMathMatrix(GuiView & lv);
 Dialog * createGuiNomenclature(GuiView & lv);
 Dialog * createGuiNote(GuiView & lv);
@@ -2420,6 +2421,7 @@ Dialog * createGuiSymbols(GuiView & lv);
 Dialog * createGuiTabularCreate(GuiView & lv);
 Dialog * createGuiTabular(GuiView & lv);
 Dialog * createGuiTexInfo(GuiView & lv);
+Dialog * createGuiTextHSpace(GuiView & lv);
 Dialog * createGuiToc(GuiView & lv);
 Dialog * createGuiThesaurus(GuiView & lv);
 Dialog * createGuiHyperlink(GuiView & lv);
@@ -2478,6 +2480,8 @@ Dialog * GuiView::build(string const & name)
 		return createGuiViewSource(*this);
 	if (name == "mathdelimiter")
 		return createGuiDelimiter(*this);
+	if (name == "mathspace")
+		return createGuiMathHSpace(*this);
 	if (name == "mathmatrix")
 		return createGuiMathMatrix(*this);
 	if (name == "note")
@@ -2493,7 +2497,7 @@ Dialog * GuiView::build(string const & name)
 	if (name == "sendto")
 		return createGuiSendTo(*this);
 	if (name == "space")
-		return createGuiHSpace(*this);
+		return createGuiTextHSpace(*this);
 	if (name == "spellchecker")
 		return createGuiSpellchecker(*this);
 	if (name == "symbols")
