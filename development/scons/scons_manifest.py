@@ -2392,11 +2392,12 @@ lib_examples_da_files = Split('''
 
 
 lib_examples_de_files = Split('''
+    beispiel_gelyxt.lyx
+    beispiel_roh.lyx
+    Braille.lyx
     Dezimal.lyx
     ItemizeBullets.lyx
     Lebenslauf.lyx
-    beispiel_gelyxt.lyx
-    beispiel_roh.lyx
     multicol.lyx
     serienbrief1.lyx
     serienbrief2.lyx

@@ -37,6 +37,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\Braile.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\recipebook.lyx"
  SetOutPath "$INSTDIR\Resources\examples\de"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\de\Braile.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\multicol.lyx"
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\acmsiggraph.layout"

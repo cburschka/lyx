@@ -87,6 +87,7 @@ deexamplesdir = $(pkgdatadir)/examples/de
 dist_deexamples_DATA = \
 	examples/de/beispiel_gelyxt.lyx \
 	examples/de/beispiel_roh.lyx \
+	examples/de/Braille.lyx \
 	examples/de/Dezimal.lyx \
 	examples/de/ItemizeBullets.lyx \
 	examples/de/Lebenslauf.lyx \
