@@ -1300,19 +1300,18 @@ msgstr "&Zobrazit v LyX-u"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:644
 msgid "Graphics having the same group name will share the same parameters"
-msgstr ""
+msgstr "Obrázky stejné skupiny budou sdílet nastavené parametry"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:647
-#, fuzzy
 msgid "Grou&p Name:"
-msgstr "J&méno:"
+msgstr "J&méno skupiny:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:663
-#, fuzzy
 msgid ""
 "Group Name to be set up from the current parameters. Use context menu to "
 "assign the existing one."
-msgstr "Jméno skupiny obrázkù, která bude nastavena tìmito parametry"
+msgstr "Jméno skupiny obrázkù, která bude nastavena tìmito parametry. Pou¾ijte "
+"kontextové menu pro pøiøazení obrázku do existující skupiny."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"
@@ -4760,33 +4759,28 @@ msgid "chemistry"
 msgstr "chemistry"
 
 #: lib/layouts/acmsiggraph.layout:61
-#, fuzzy
 msgid "Teaser"
-msgstr "Header"
+msgstr "Teaser"
 
 #: lib/layouts/acmsiggraph.layout:72
-#, fuzzy
 msgid "Teaser image:"
-msgstr "Rastrový obrázek"
+msgstr "Teaser image:"
 
 #: lib/layouts/acmsiggraph.layout:84
-#, fuzzy
 msgid "CRcat"
-msgstr "Chart"
+msgstr "CRcat"
 
 #: lib/layouts/acmsiggraph.layout:89
-#, fuzzy
 msgid "CR category"
-msgstr "K&ategorie:"
+msgstr "CR category"
 
 #: lib/layouts/acmsiggraph.layout:135
-#, fuzzy
 msgid "CR categories"
-msgstr "K&ategorie:"
+msgstr "CR categories"
 
 #: lib/layouts/acmsiggraph.layout:141
 msgid "Computing Review Categories"
-msgstr ""
+msgstr "Computing Review Categories"
 
 #: lib/layouts/acmsiggraph.layout:149 lib/layouts/acmsiggraph.layout:156
 #: lib/layouts/apa.layout:242 lib/layouts/iopart.layout:237
@@ -7169,24 +7163,20 @@ msgid "\\thechapter"
 msgstr "\\thechapter"
 
 #: lib/layouts/recipebook.layout:84
-#, fuzzy
 msgid "Recipe"
-msgstr "Received"
+msgstr "Recipe"
 
 #: lib/layouts/recipebook.layout:91
-#, fuzzy
 msgid "Recipe:"
-msgstr "Received:"
+msgstr "Recipe:"
 
 #: lib/layouts/recipebook.layout:118
-#, fuzzy
 msgid "Ingredients"
-msgstr "Spolupracovali"
+msgstr "Ingredients"
 
 #: lib/layouts/recipebook.layout:128
-#, fuzzy
 msgid "Ingredients:"
-msgstr "Spolupracovali"
+msgstr "Ingredients:"
 
 #: lib/layouts/revtex4.layout:95
 msgid "Preprint"
@@ -10534,24 +10524,20 @@ msgid "Custom Length|C"
 msgstr "Vlastní délka|V"
 
 #: lib/ui/stdcontext.inc:196
-#, fuzzy
 msgid "Medium Space|M"
-msgstr "Støední\t\\:"
+msgstr "Støední mezera|S"
 
 #: lib/ui/stdcontext.inc:197
-#, fuzzy
 msgid "Thick Space|h"
-msgstr "Tenká mezera|T"
+msgstr "Tlustá mezera|T"
 
 #: lib/ui/stdcontext.inc:199
-#, fuzzy
 msgid "Negative Medium Space|u"
-msgstr "Záporná tenká mezera|z"
+msgstr "Záporná støední mezera|e"
 
 #: lib/ui/stdcontext.inc:200
-#, fuzzy
 msgid "Negative Thick Space|i"
-msgstr "Záporná tenká mezera|z"
+msgstr "Záporná tlustá mezera|l"
 
 #: lib/ui/stdcontext.inc:213
 msgid "DefSkip|D"
@@ -17621,7 +17607,7 @@ msgstr "Nenalezeno"
 
 #: src/frontends/qt4/GuiDocument.cpp:2372
 msgid "Assigned master does not include this file"
-msgstr ""
+msgstr "Hlavní dokument nezahrnuje tento soubor"
 
 #: src/frontends/qt4/GuiDocument.cpp:2373
 #, c-format
@@ -17629,19 +17615,20 @@ msgid ""
 "You must include this file in the document\n"
 "'%1$s' in order to use the master document\n"
 "feature."
-msgstr ""
+msgstr "Musíte zahrnout tento soubor do dokumentu\n"
+"'%1$s' pokud chcete pou¾ívat vlasností hlavního dokumentu."
 
 #: src/frontends/qt4/GuiDocument.cpp:2377
-#, fuzzy
 msgid "Could not load master"
-msgstr "Nelze naèíst tøídu"
+msgstr "Nelze naèíst hlavní dokument"
 
 #: src/frontends/qt4/GuiDocument.cpp:2378
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The master document '%1$s'\n"
 "could not be loaded."
-msgstr "Tøídu dokumentu (%1$s) se nepodaøilo naèíst."
+msgstr "Hlavní dokument '%1$s'\n"
+"nelze naèíst."
 
 #: src/frontends/qt4/GuiERT.cpp:29
 msgid "TeX Code Settings"
@@ -17739,28 +17726,24 @@ msgid "Thin space"
 msgstr "Tenká mezera"
 
 #: src/frontends/qt4/GuiHSpace.cpp:142
-#, fuzzy
 msgid "Medium space"
-msgstr "Støední\t\\:"
+msgstr "Støední mezera"
 
 #: src/frontends/qt4/GuiHSpace.cpp:143
-#, fuzzy
 msgid "Thick space"
-msgstr "Tlustá\t\\;"
+msgstr "Tlustá mezera"
 
 #: src/frontends/qt4/GuiHSpace.cpp:144 src/frontends/qt4/GuiHSpace.cpp:156
 msgid "Negative thin space"
 msgstr "Záporná tenká mezera"
 
 #: src/frontends/qt4/GuiHSpace.cpp:145
-#, fuzzy
 msgid "Negative medium space"
-msgstr "Záporná tenká mezera"
+msgstr "Záporná støední mezera"
 
 #: src/frontends/qt4/GuiHSpace.cpp:146
-#, fuzzy
 msgid "Negative thick space"
-msgstr "Záporná tenká mezera"
+msgstr "Záporná tlustá mezera"
 
 #: src/frontends/qt4/GuiHSpace.cpp:147 src/frontends/qt4/GuiHSpace.cpp:157
 msgid "Half Quad (0.5 em)"
@@ -18833,7 +18816,6 @@ msgid "Select file to insert"
 msgstr "Vyber soubor pro vlo¾ení"
 
 #: src/frontends/qt4/GuiView.cpp:1629
-#, fuzzy
 msgid "All Files (*)"
 msgstr "V¹echny soubory (*)"
 
@@ -19723,14 +19705,12 @@ msgid "Thin Space"
 msgstr "Tenká mezera"
 
 #: src/insets/InsetSpace.cpp:81
-#, fuzzy
 msgid "Medium Space"
-msgstr "Støední\t\\:"
+msgstr "Støední mezera"
 
 #: src/insets/InsetSpace.cpp:84
-#, fuzzy
 msgid "Thick Space"
-msgstr "Tenká mezera"
+msgstr "Tlustá mezera"
 
 #: src/insets/InsetSpace.cpp:87
 msgid "Quad Space"
@@ -19753,14 +19733,12 @@ msgid "Negative Thin Space"
 msgstr "Záporná tenká mezera"
 
 #: src/insets/InsetSpace.cpp:102
-#, fuzzy
 msgid "Negative Medium Space"
-msgstr "Záporná tenká mezera"
+msgstr "Záporná støední mezera"
 
 #: src/insets/InsetSpace.cpp:105
-#, fuzzy
 msgid "Negative Thick Space"
-msgstr "Záporná tenká mezera"
+msgstr "Záporná tlustá mezera"
 
 #: src/insets/InsetSpace.cpp:111
 msgid "Protected Horizontal Fill"
