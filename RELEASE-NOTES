@@ -13,6 +13,15 @@ The following variables are obsoleted in 2.0
 - \plaintext_roff_command (was not used anymore)
 - \spell_command and \use_spell_lib (ispell support has been removed)
 
+
+The following new LyX functions have been introduced:
+
+- LFUN_WORD_FINDAD, "word-findadv".
+
+- LFUN_REGEXP_MODE, "regexp-mode".
+
+- LFUN_COPY_LABEL_AS_REF, "copy-label-as-reference"
+
 Known issues in version 2.0.0
 -----------------------------
 
