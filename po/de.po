@@ -95,7 +95,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2008-12-07 19:48+0100\n"
-"PO-Revision-Date: 2009-01-10 17:06+0100\n"
+"PO-Revision-Date: 2009-01-10 21:05+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1259,9 +1259,8 @@ msgid "y"
 msgstr "y"
 
 #: src/frontends/qt4/ui/FindAndReplaceUI.ui:31
-#, fuzzy
 msgid "Find LyX Text"
-msgstr "&Nächstes suchen"
+msgstr "Finde LyX Text"
 
 #: src/frontends/qt4/ui/FindAndReplaceUI.ui:69
 msgid "&Expand macros"
@@ -1279,9 +1278,8 @@ msgid "Whole words onl&y"
 msgstr "Nur ganze &Wörter"
 
 #: src/frontends/qt4/ui/FindAndReplaceUI.ui:96
-#, fuzzy
 msgid "Ignore For&mat"
-msgstr "Papierformat"
+msgstr "Ignoriere For&mat"
 
 #: src/frontends/qt4/ui/FindAndReplaceUI.ui:109
 #: src/frontends/qt4/ui/SearchUi.ui:170
@@ -1311,9 +1309,8 @@ msgid "Sco&pe"
 msgstr "Sch&nitt:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUI.ui:186
-#, fuzzy
 msgid "Current buffer only"
-msgstr "Aktuelle Zelle:"
+msgstr "Nur aktueller Speicher"
 
 #: src/frontends/qt4/ui/FindAndReplaceUI.ui:189
 msgid "Buffer"
@@ -1321,16 +1318,15 @@ msgstr "Speicher"
 
 #: src/frontends/qt4/ui/FindAndReplaceUI.ui:205
 msgid "Current file and all included files"
-msgstr ""
+msgstr "Aktuelle Datei und alle enthaltenen Dateien"
 
 #: src/frontends/qt4/ui/FindAndReplaceUI.ui:208
 msgid "Document"
 msgstr "Dokument"
 
 #: src/frontends/qt4/ui/FindAndReplaceUI.ui:221
-#, fuzzy
 msgid "Current paragraph only"
-msgstr "Absatz &einrücken"
+msgstr "Nur aktueller Absatz"
 
 #: src/frontends/qt4/ui/FindAndReplaceUI.ui:224
 #: lib/layouts/aastex.layout:76
@@ -1356,12 +1352,11 @@ msgstr "Paragraph"
 
 #: src/frontends/qt4/ui/FindAndReplaceUI.ui:240
 msgid "All open buffers"
-msgstr ""
+msgstr "Alle geöffnete Speicher"
 
 #: src/frontends/qt4/ui/FindAndReplaceUI.ui:243
-#, fuzzy
 msgid "Open buffers"
-msgstr "Speicher"
+msgstr "Offene Speicher"
 
 #: src/frontends/qt4/ui/FindAndReplaceUI.ui:266
 msgid "RegExp"
@@ -3310,9 +3305,8 @@ msgid "Use input encod&ing"
 msgstr "&Eingabekodierung verwenden"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:118
-#, fuzzy
 msgid "Accept words such as &quot;diskdrive&quot;"
-msgstr "Akzeptiere Wörter wie \"Verzeichnisname\""
+msgstr "Akzeptiere Wörter wie &quot;Verzeichnisname&quot;"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:121
 msgid "Accept compound &words"
@@ -5061,23 +5055,20 @@ msgid "Teaser image:"
 msgstr "Teaser Bild:"
 
 #: lib/layouts/acmsiggraph.layout:84
-#, fuzzy
 msgid "CRcat"
-msgstr "Zeichnung"
+msgstr "CRKat"
 
 #: lib/layouts/acmsiggraph.layout:89
-#, fuzzy
 msgid "CR category"
-msgstr "Ka&tegorie:"
+msgstr "CR Kategorie"
 
 #: lib/layouts/acmsiggraph.layout:135
-#, fuzzy
 msgid "CR categories"
-msgstr "Ka&tegorie:"
+msgstr "CR Kategorien"
 
 #: lib/layouts/acmsiggraph.layout:141
 msgid "Computing Review Categories"
-msgstr ""
+msgstr "EDV Review Kategorien"
 
 #: lib/layouts/acmsiggraph.layout:149
 #: lib/layouts/acmsiggraph.layout:156
@@ -8733,11 +8724,11 @@ msgstr "Stichwort:"
 
 #: lib/layouts/agu_stdtitle.inc:111
 msgid "Cross-term"
-msgstr ""
+msgstr "Kreuzterm"
 
 #: lib/layouts/agu_stdtitle.inc:115
 msgid "Cross-term:"
-msgstr ""
+msgstr "Kreuzterm:"
 
 #: lib/layouts/agu_stdtitle.inc:136
 msgid "Supplementary"
@@ -8749,19 +8740,19 @@ msgstr "Ergänzend..."
 
 #: lib/layouts/agu_stdtitle.inc:149
 msgid "Supp-note"
-msgstr ""
+msgstr "Erg. Notiz"
 
 #: lib/layouts/agu_stdtitle.inc:153
 msgid "Sup-mat-note:"
-msgstr ""
+msgstr "Erg. Notiz:"
 
 #: lib/layouts/agu_stdtitle.inc:158
 msgid "Cite-other"
-msgstr ""
+msgstr "Zitat (andere)"
 
 #: lib/layouts/agu_stdtitle.inc:162
 msgid "Cite-other:"
-msgstr ""
+msgstr "Zitat (andere):"
 
 #: lib/layouts/agu_stdtitle.inc:206
 #: lib/layouts/aguplus.inc:114
@@ -8804,11 +8795,11 @@ msgstr "Literaturverweis:"
 
 #: lib/layouts/agu_stdtitle.inc:271
 msgid "Posting-order"
-msgstr ""
+msgstr "Eingabereihenfolge"
 
 #: lib/layouts/agu_stdtitle.inc:274
 msgid "Posting-order:"
-msgstr ""
+msgstr "Eingabereihenfolge:"
 
 #: lib/layouts/agu_stdtitle.inc:279
 msgid "AGU-pages"
@@ -9567,7 +9558,7 @@ msgstr "Braillebox"
 
 #: lib/layouts/braille.module:167
 msgid "Braille box"
-msgstr "Braille box"
+msgstr "Braille Box"
 
 #: lib/layouts/endnotes.module:2
 msgid "Endnote"
@@ -19593,7 +19584,7 @@ msgstr "TeX-Informationen"
 
 #: src/frontends/qt4/GuiThesaurus.cpp:187
 msgid "No thesaurus available for this language!"
-msgstr ""
+msgstr "Kein Thesaurus für diese Sprache vorhanden!"
 
 #: src/frontends/qt4/GuiToc.cpp:36
 msgid "Outline"
@@ -20904,9 +20895,8 @@ msgid " strings have been replaced."
 msgstr " Zeichenketten wurden ersetzt."
 
 #: src/lyxfind.cpp:910
-#, fuzzy
 msgid "Search text is empty!"
-msgstr "Die Such-Zeichenkette ist leer!"
+msgstr "Der Suchtext ist leer!"
 
 #: src/lyxfind.cpp:926
 #, fuzzy
