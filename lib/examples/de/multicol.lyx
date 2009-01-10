@@ -1,12 +1,12 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
 \begin_preamble
 \usepackage{multicol}
 \end_preamble
+\use_default_options false
 \language ngerman
 \inputencoding latin1
 \font_roman default
@@ -17,12 +17,13 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
 \use_hyperref false
 \papersize a4paper
-\use_geometry true
+\use_geometry false
 \use_amsmath 0
 \use_esint 0
 \cite_engine basic
@@ -42,7 +43,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -66,8 +68,8 @@ Hartmut Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 2.
- November 2005
+letzte Änderung: 10.
+ Januar 2009
 \end_layout
 
 \begin_layout Standard
@@ -106,7 +108,7 @@ usepackage{multicol}
  eingefügt werden.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Einschränkungen
 \end_layout
 
@@ -125,11 +127,11 @@ multicol
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Beispiele
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Zwei Spalten
 \end_layout
 
@@ -283,7 +285,7 @@ end{multicols}
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Mehr als zwei Spalten
 \end_layout
 
@@ -388,7 +390,7 @@ Sie können zwar mehr als 3 Spalten verwenden, aber das ist meist für das
  Auge nicht sehr ansprechend.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Spalten innerhalb einer Spalte
 \end_layout
 
@@ -658,7 +660,7 @@ end{multicols}
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Fortgeschrittene Beispiele
 \end_layout
 
@@ -671,7 +673,7 @@ multicol
  Die folgenden Beispiele zeigen, wie sie in LyX benutzt werden können.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Vorwort und Umbruch
 \end_layout
 
@@ -947,7 +949,7 @@ end{multicols}
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Vorwort und Abschnitte
 \end_layout
 
@@ -1180,7 +1182,7 @@ end{multicols}
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Leerraum
 \end_layout
 
@@ -1389,7 +1391,7 @@ multicolsep}{13pt}
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Spaltenbreite und Trennung
 \end_layout
 
@@ -1540,7 +1542,7 @@ columnsep}{10pt}
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Vertikale Linien
 \end_layout
 
