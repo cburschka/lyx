@@ -161,7 +161,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 2.
+letzte Änderung: 10.
  Januar 2009
 \end_layout
 
@@ -404,18 +404,15 @@ Werkzeugleisten
 \family default
  auswählen.
  Dort können Sie LaTeX-Befehle schreiben, wie zum Beispiel eine Makro-Definition
- in Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vpageref
-reference "Makro-erzeugen"
-
-\end_inset
-
-.
+ in Abschnitt 
+\emph on
+Mathe-Makro
+\emph default
+s des 
+\emph on
+Mathe
+\emph default
+-Handbuchs beschrieben.
 \end_layout
 
 \begin_layout Standard
@@ -783,9 +780,35 @@ Zunächst die schlechte Nachricht: Das Hilfesystem ist nicht so umfangreich
 \end_layout
 
 \begin_layout Standard
-Doch nun zu den guten Nachrichten: Das Hilfesystem besteht aus den LyX-Hand\SpecialChar \-
-büche
-rn, die Sie alle direkt in LyX lesen können.
+Doch nun zu den guten Nachrichten: Das Hilfesystem besteht aus den LyX-Hand
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+büchern,
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Zusammengesetzte-Worte"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ die Sie alle direkt in LyX lesen können.
  Wählen Sie einfach das gewünschte Dokument aus dem Menü 
 \family sans
 Hilfe
@@ -28881,7 +28904,7 @@ Es gibt folgende Querverweistypen:
 \begin_layout Enumerate
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "Makro-erzeugen"
+reference "Werkzeugleisten"
 
 \end_inset
 
@@ -28902,7 +28925,7 @@ reference "eq:fifth-eqn"
 \begin_layout Enumerate
 \begin_inset CommandInset ref
 LatexCommand pageref
-reference "Makro-erzeugen"
+reference "Werkzeugleisten"
 
 \end_inset
 
@@ -28912,7 +28935,7 @@ reference "Makro-erzeugen"
 \begin_layout Enumerate
 \begin_inset CommandInset ref
 LatexCommand vpageref
-reference "Makro-erzeugen"
+reference "Werkzeugleisten"
 
 \end_inset
 
@@ -28930,7 +28953,7 @@ auf Seite
 \begin_layout Enumerate
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Makro-erzeugen"
+reference "Werkzeugleisten"
 
 \end_inset
 
@@ -32128,18 +32151,15 @@ x^{2}-2x-2\Rightarrow\Frage{x_{1}}\Antwort{x_{2}}=1\Frage{+\sqrt{3}}\Antwort{-\s
 
 \begin_layout Standard
 Innerhalb von Formeln, kann dasselbe auch mit Hilfe von Makros geschehen,
- siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Makro-erzeugen"
-
-\end_inset
-
-.
+ siehe Abschnitt 
+\emph on
+Mathe-Makro
+\emph default
+s des 
+\emph on
+Mathe
+\emph default
+ Handbuchs.
 \end_layout
 
 \begin_layout Section
@@ -35787,18 +35807,16 @@ Befehlseingabefenster
 \end_layout
 
 \begin_layout Standard
-Wie schon in Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "Makro-erzeugen"
-
-\end_inset
-
- beschrieben, kann dieses Fenster zum Eingeben von Befehlen benutzt werden.
+Wie in Abschnitt 
+\emph on
+Mathe-Makro
+\emph default
+s des 
+\emph on
+Mathe
+\emph default
+ Handbuchs beschrieben, kann dieses Fenster zum Eingeben von Befehlen benutzt
+ werden.
  Das ist besonders für die LFUNen,
 \begin_inset Index
 status collapsed
@@ -35809,9 +35827,27 @@ LFUN
 
 \end_inset
 
- die LyX-Funtionen, nützlich, die unter Hilfe\SpecialChar \menuseparator
-LyX-Funktionen detailliert
- beschrieben sind.
+ die LyX-Funtionen, nützlich, die unter 
+\family sans
+Hilfe
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Funktionen
+\family default
+ detailliert beschrieben sind.
 \end_layout
 
 \begin_layout Subsection
@@ -37462,15 +37498,7 @@ status collapsed
 \end_inset
 
 X\SpecialChar \menuseparator
-Ruhm
-\begin_inset space \space{}
-\end_inset
-
-und
-\begin_inset space \space{}
-\end_inset
-
-Ehre
+Mitwirkende
 \family default
 .
 \end_layout
@@ -40072,8 +40100,8 @@ Von
 \begin_layout Description
 Ändern siehe 
 \begin_inset CommandInset ref
-LatexCommand ref
-reference "Dateiformat-Ändern"
+LatexCommand vref
+reference "Dateiformate"
 
 \end_inset
 
