@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-09 09:49+0100\n"
+"POT-Creation-Date: 2009-01-10 18:08+0100\n"
 "PO-Revision-Date: 2008-11-05 02:01+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr "Autorská práva"
 #: src/frontends/qt4/ui/DelimiterUi.ui:268
 #: src/frontends/qt4/ui/ErrorListUi.ui:73
 #: src/frontends/qt4/ui/ExternalUi.ui:625 src/frontends/qt4/ui/FloatUi.ui:85
-#: src/frontends/qt4/ui/HSpaceUi.ui:214
+#: src/frontends/qt4/ui/HSpaceUi.ui:174
 #: src/frontends/qt4/ui/HyperlinkUi.ui:150
 #: src/frontends/qt4/ui/IncludeUi.ui:247 src/frontends/qt4/ui/InfoUi.ui:71
 #: src/frontends/qt4/ui/LogUi.ui:54 src/frontends/qt4/ui/ParagraphUi.ui:102
@@ -65,7 +65,7 @@ msgstr "&Dummy"
 #: src/frontends/qt4/ui/CitationUi.ui:438
 #: src/frontends/qt4/ui/DocumentUi.ui:135 src/frontends/qt4/ui/ERTUi.ui:90
 #: src/frontends/qt4/ui/ExternalUi.ui:605 src/frontends/qt4/ui/FloatUi.ui:68
-#: src/frontends/qt4/ui/GraphicsUi.ui:71 src/frontends/qt4/ui/HSpaceUi.ui:191
+#: src/frontends/qt4/ui/GraphicsUi.ui:71 src/frontends/qt4/ui/HSpaceUi.ui:151
 #: src/frontends/qt4/ui/HyperlinkUi.ui:140
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/LabelUi.ui:82
 #: src/frontends/qt4/ui/ListingsUi.ui:529
@@ -365,7 +365,7 @@ msgstr "&Obnovit"
 #: src/frontends/qt4/ui/BoxUi.ui:247 src/frontends/qt4/ui/CharacterUi.ui:380
 #: src/frontends/qt4/ui/DocumentUi.ui:145
 #: src/frontends/qt4/ui/ExternalUi.ui:615 src/frontends/qt4/ui/FloatUi.ui:78
-#: src/frontends/qt4/ui/GraphicsUi.ui:90 src/frontends/qt4/ui/HSpaceUi.ui:204
+#: src/frontends/qt4/ui/GraphicsUi.ui:90 src/frontends/qt4/ui/HSpaceUi.ui:164
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/ParagraphUi.ui:92 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
@@ -1350,60 +1350,24 @@ msgstr "&Mezera:"
 msgid "Supported spacing types"
 msgstr "Podporované typy mezer"
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:84
-msgid "Inter-word space"
-msgstr "Mezera uvnitø slova"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:89
-msgid "Thin space"
-msgstr "Tenká mezera"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:94
-msgid "Negative thin space"
-msgstr "Záporná tenká mezera"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:99
-msgid "Half Quad (0.5 em)"
-msgstr "0.5 em"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:104
-msgid "Quad (1 em)"
-msgstr "1 em"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:109
-msgid "Double Quad (2 em)"
-msgstr "2 em"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:114 src/insets/InsetSpace.cpp:94
-msgid "Horizontal Fill"
-msgstr "Horizontální výplò"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:119
-#: src/frontends/qt4/ui/ParagraphUi.ui:261
-#: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
-#: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
-#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:578
-#: src/frontends/qt4/GuiDocument.cpp:681
-msgid "Custom"
-msgstr "Vlastní"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:127 src/frontends/qt4/ui/VSpaceUi.ui:117
+#: src/frontends/qt4/ui/HSpaceUi.ui:87 src/frontends/qt4/ui/VSpaceUi.ui:117
 msgid "&Value:"
 msgstr "&Hodnota:"
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:140 src/frontends/qt4/ui/VSpaceUi.ui:110
+#: src/frontends/qt4/ui/HSpaceUi.ui:100 src/frontends/qt4/ui/VSpaceUi.ui:110
 msgid "Custom value. Needs spacing type \"Custom\"."
 msgstr "Vlastní hodnota. Nastavte typ mezery na \"Vlastní\"."
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:150
+#: src/frontends/qt4/ui/HSpaceUi.ui:110
 msgid "&Fill Pattern:"
 msgstr "&Vzorek výplnì:"
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:163 src/frontends/qt4/ui/VSpaceUi.ui:94
+#: src/frontends/qt4/ui/HSpaceUi.ui:123 src/frontends/qt4/ui/VSpaceUi.ui:94
 msgid "&Protect:"
 msgstr "&Chránit:"
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:173 src/frontends/qt4/GuiHSpace.cpp:104
+#: src/frontends/qt4/ui/HSpaceUi.ui:133 src/frontends/qt4/GuiHSpace.cpp:95
+#: src/frontends/qt4/GuiHSpace.cpp:120
 msgid "Insert the spacing even after a line break"
 msgstr "Vlo¾it mezeru i za zalomení øádku"
 
@@ -2191,6 +2155,15 @@ msgstr "1.5"
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "Dva"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:261
+#: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
+#: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:578
+#: src/frontends/qt4/GuiDocument.cpp:681 src/frontends/qt4/GuiHSpace.cpp:150
+#: src/frontends/qt4/GuiHSpace.cpp:161
+msgid "Custom"
+msgstr "Vlastní"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "&Alter..."
@@ -9612,7 +9585,7 @@ msgstr "Vlo¾it po øádkách|V"
 msgid "Selection as Paragraphs|P"
 msgstr "Vlo¾it po odstavcích|o"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:161
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:161
 msgid "Multicolumn|M"
 msgstr "Vícesloupcová buòka|b"
 
@@ -9636,7 +9609,7 @@ msgstr "Linka vpravo|r"
 msgid "Alignment|i"
 msgstr "Zarovnání|a"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:179
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:179
 msgid "Add Row|A"
 msgstr "Pøidat øádek|a"
 
@@ -9652,7 +9625,7 @@ msgstr "Zkopírovat øádek|k"
 msgid "Swap Rows"
 msgstr "Pøehodit øádky|h"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:184
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:184
 msgid "Add Column|u"
 msgstr "Pøidat sloupec|c"
 
@@ -9668,27 +9641,27 @@ msgstr "Zkopírovat sloupec|o"
 msgid "Swap Columns"
 msgstr "Pøehodit sloupce|i"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:334 lib/ui/stdmenus.inc:171
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:352 lib/ui/stdmenus.inc:171
 msgid "Left|L"
 msgstr "Nalevo|l"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:172
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:353 lib/ui/stdmenus.inc:172
 msgid "Center|C"
 msgstr "Na støed|s"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:336 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:354 lib/ui/stdmenus.inc:173
 msgid "Right|R"
 msgstr "Napravo|r"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:338 lib/ui/stdmenus.inc:175
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:175
 msgid "Top|T"
 msgstr "Nahoru|N"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:339 lib/ui/stdmenus.inc:176
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:357 lib/ui/stdmenus.inc:176
 msgid "Middle|M"
 msgstr "Doprostøed|p"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:340 lib/ui/stdmenus.inc:177
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:358 lib/ui/stdmenus.inc:177
 msgid "Bottom|B"
 msgstr "Dolù|D"
 
@@ -9720,7 +9693,7 @@ msgstr "Zarovnání|Z"
 msgid "Add Row|R"
 msgstr "Pøidat øádek|P"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:361 lib/ui/stdmenus.inc:180
 msgid "Delete Row|D"
 msgstr "Smazat øádek|t"
 
@@ -9728,7 +9701,7 @@ msgstr "Smazat øádek|t"
 msgid "Add Column|C"
 msgstr "Pøidat sloupec|c"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:185
 msgid "Delete Column|e"
 msgstr "Smazat sloupec|m"
 
@@ -9921,7 +9894,8 @@ msgstr "Chránìná mezera|r"
 msgid "Inter-word Space|w"
 msgstr "Mezislovní mezera|M"
 
-#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:172 lib/ui/stdmenus.inc:368
+#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:172 lib/ui/stdcontext.inc:195
+#: lib/ui/stdmenus.inc:368
 msgid "Thin Space|T"
 msgstr "Tenká mezera|T"
 
@@ -10418,10 +10392,10 @@ msgstr "Formátovaná reference|F"
 #: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:103
 #: lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:125
 #: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:150
-#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:215
-#: lib/ui/stdcontext.inc:297 lib/ui/stdcontext.inc:305
-#: lib/ui/stdcontext.inc:317 lib/ui/stdcontext.inc:352
-#: lib/ui/stdcontext.inc:361 lib/ui/stdmenus.inc:458
+#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:206
+#: lib/ui/stdcontext.inc:233 lib/ui/stdcontext.inc:315
+#: lib/ui/stdcontext.inc:323 lib/ui/stdcontext.inc:335
+#: lib/ui/stdcontext.inc:370 lib/ui/stdcontext.inc:379 lib/ui/stdmenus.inc:458
 msgid "Settings...|S"
 msgstr "Nastavení...|N"
 
@@ -10433,17 +10407,17 @@ msgstr "Jdi zpìt na referenci|r"
 msgid "Edit Database(s) externally...|x"
 msgstr "Editovat databázi(e) externì...|x"
 
-#: lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:293
+#: lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:311
 msgid "Open Inset|O"
 msgstr "Otevøi vlo¾ku|O"
 
-#: lib/ui/stdcontext.inc:122 lib/ui/stdcontext.inc:294
+#: lib/ui/stdcontext.inc:122 lib/ui/stdcontext.inc:312
 msgid "Close Inset|C"
 msgstr "Zavøi vlo¾ku|Z"
 
 #: lib/ui/stdcontext.inc:124 lib/ui/stdcontext.inc:130
 #: lib/ui/stdcontext.inc:149 lib/ui/stdcontext.inc:162
-#: lib/ui/stdcontext.inc:296
+#: lib/ui/stdcontext.inc:314
 msgid "Dissolve Inset|D"
 msgstr "Rozpustit vlo¾ku do textu|u"
 
@@ -10503,11 +10477,11 @@ msgstr "Mezislovní mezera|M"
 msgid "Protected Space|o"
 msgstr "Chránìná mezera|h"
 
-#: lib/ui/stdcontext.inc:173
+#: lib/ui/stdcontext.inc:173 lib/ui/stdcontext.inc:198
 msgid "Negative Thin Space|N"
 msgstr "Záporná tenká mezera|z"
 
-#: lib/ui/stdcontext.inc:174
+#: lib/ui/stdcontext.inc:174 lib/ui/stdcontext.inc:201
 msgid "Half Quad Space (Enskip)|k"
 msgstr "Polovina em mezery (Enskip)|e"
 
@@ -10515,11 +10489,11 @@ msgstr "Polovina em mezery (Enskip)|e"
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Chránìná Polovina em mezery (Enspace)"
 
-#: lib/ui/stdcontext.inc:176
+#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:202
 msgid "Quad Space|Q"
 msgstr "Em mezera|r"
 
-#: lib/ui/stdcontext.inc:177
+#: lib/ui/stdcontext.inc:177 lib/ui/stdcontext.inc:203
 msgid "Double Quad Space|u"
 msgstr "Polovièní em mezera|l"
 
@@ -10555,228 +10529,248 @@ msgstr "Horizontální výplò (dolní slo¾ená)"
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr "Horizontální výplò (horní slo¾ená)"
 
-#: lib/ui/stdcontext.inc:186
+#: lib/ui/stdcontext.inc:186 lib/ui/stdcontext.inc:204
 msgid "Custom Length|C"
 msgstr "Vlastní délka|V"
 
-#: lib/ui/stdcontext.inc:195
+#: lib/ui/stdcontext.inc:196
+#, fuzzy
+msgid "Medium Space|M"
+msgstr "Støední\t\\:"
+
+#: lib/ui/stdcontext.inc:197
+#, fuzzy
+msgid "Thick Space|h"
+msgstr "Tenká mezera|T"
+
+#: lib/ui/stdcontext.inc:199
+#, fuzzy
+msgid "Negative Medium Space|u"
+msgstr "Záporná tenká mezera|z"
+
+#: lib/ui/stdcontext.inc:200
+#, fuzzy
+msgid "Negative Thick Space|i"
+msgstr "Záporná tenká mezera|z"
+
+#: lib/ui/stdcontext.inc:213
 msgid "DefSkip|D"
 msgstr "Definovaná mezera|D"
 
-#: lib/ui/stdcontext.inc:196
+#: lib/ui/stdcontext.inc:214
 msgid "SmallSkip|S"
 msgstr "Malá mezera (SmallSkip)|M"
 
-#: lib/ui/stdcontext.inc:197
+#: lib/ui/stdcontext.inc:215
 msgid "MedSkip|M"
 msgstr "Støední mezera (MedSkip)|S"
 
-#: lib/ui/stdcontext.inc:198
+#: lib/ui/stdcontext.inc:216
 msgid "BigSkip|B"
 msgstr "Velká mezera (BigSkip)|V"
 
-#: lib/ui/stdcontext.inc:199
+#: lib/ui/stdcontext.inc:217
 msgid "VFill|F"
 msgstr "Výplò (VFill)|p"
 
-#: lib/ui/stdcontext.inc:200
+#: lib/ui/stdcontext.inc:218
 msgid "Custom|C"
 msgstr "Vlastní|l"
 
-#: lib/ui/stdcontext.inc:202
+#: lib/ui/stdcontext.inc:220
 msgid "Settings...|e"
 msgstr "Nastavení...|N"
 
 # TODO nova stranka; viz wiki
-#: lib/ui/stdcontext.inc:209
+#: lib/ui/stdcontext.inc:227
 msgid "Include|c"
 msgstr "Zahrnout (nová stránka)|Z"
 
 # TODO lze i rekurzivne
-#: lib/ui/stdcontext.inc:210
+#: lib/ui/stdcontext.inc:228
 msgid "Input|p"
 msgstr "Vstup (lze rekurzivnì)|r"
 
-#: lib/ui/stdcontext.inc:211
+#: lib/ui/stdcontext.inc:229
 msgid "Verbatim|V"
 msgstr "Doslovnì|D"
 
-#: lib/ui/stdcontext.inc:212
+#: lib/ui/stdcontext.inc:230
 msgid "Verbatim (marked blanks)|b"
 msgstr "Doslovnì (vyznaèené mezery)|m"
 
-#: lib/ui/stdcontext.inc:213
+#: lib/ui/stdcontext.inc:231
 msgid "Listing|L"
 msgstr "Výpis|p"
 
-#: lib/ui/stdcontext.inc:217
+#: lib/ui/stdcontext.inc:235
 msgid "Edit included file...|E"
 msgstr "Editovat zahrnutý soubor...|E"
 
-#: lib/ui/stdcontext.inc:224 lib/ui/stdmenus.inc:378
+#: lib/ui/stdcontext.inc:242 lib/ui/stdmenus.inc:378
 msgid "New Page|N"
 msgstr "Nová stránka|N"
 
-#: lib/ui/stdcontext.inc:225 lib/ui/stdmenus.inc:379
+#: lib/ui/stdcontext.inc:243 lib/ui/stdmenus.inc:379
 msgid "Page Break|a"
 msgstr "Tvrdý konec stránky|e"
 
-#: lib/ui/stdcontext.inc:226 lib/ui/stdmenus.inc:380
+#: lib/ui/stdcontext.inc:244 lib/ui/stdmenus.inc:380
 msgid "Clear Page|C"
 msgstr "Uzavøít stránku (\\clearpage)|U"
 
-#: lib/ui/stdcontext.inc:227 lib/ui/stdmenus.inc:381
+#: lib/ui/stdcontext.inc:245 lib/ui/stdmenus.inc:381
 msgid "Clear Double Page|D"
 msgstr "Uzavøít stránku v oboustraném dok. (\\cleardoublepage)|z"
 
-#: lib/ui/stdcontext.inc:234 lib/ui/stdmenus.inc:375
+#: lib/ui/stdcontext.inc:252 lib/ui/stdmenus.inc:375
 msgid "Ragged Line Break|R"
 msgstr "Konec øádku|K"
 
-#: lib/ui/stdcontext.inc:235 lib/ui/stdmenus.inc:376
+#: lib/ui/stdcontext.inc:253 lib/ui/stdmenus.inc:376
 msgid "Justified Line Break|J"
 msgstr "Konec øádku se zarovnáním"
 
-#: lib/ui/stdcontext.inc:242 lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:88
+#: lib/ui/stdcontext.inc:260 lib/ui/stdcontext.inc:306 lib/ui/stdmenus.inc:88
 #: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:1034
 #: src/mathed/InsetMathNest.cpp:547
 msgid "Cut"
 msgstr "Vyjmout"
 
-#: lib/ui/stdcontext.inc:243 lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:89
+#: lib/ui/stdcontext.inc:261 lib/ui/stdcontext.inc:307 lib/ui/stdmenus.inc:89
 #: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:1039
 #: src/mathed/InsetMathNest.cpp:555
 msgid "Copy"
 msgstr "Zkopírovat"
 
-#: lib/ui/stdcontext.inc:244 lib/ui/stdcontext.inc:290 lib/ui/stdmenus.inc:90
+#: lib/ui/stdcontext.inc:262 lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:90
 #: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:992
 #: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:527
 msgid "Paste"
 msgstr "Vlo¾it"
 
-#: lib/ui/stdcontext.inc:245 lib/ui/stdcontext.inc:291 lib/ui/stdmenus.inc:91
+#: lib/ui/stdcontext.inc:263 lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:91
 msgid "Paste Recent|e"
 msgstr "Vlo¾it poslední|p"
 
-#: lib/ui/stdcontext.inc:247
+#: lib/ui/stdcontext.inc:265
 msgid "Jump to Saved Bookmark|B"
 msgstr "Skok na ulo¾enou zálo¾ku|k"
 
-#: lib/ui/stdcontext.inc:249 lib/ui/stdmenus.inc:98
+#: lib/ui/stdcontext.inc:267 lib/ui/stdmenus.inc:98
 msgid "Move Paragraph Up|o"
 msgstr "Pøesunout odstavec nahoru|r"
 
-#: lib/ui/stdcontext.inc:250 lib/ui/stdmenus.inc:99
+#: lib/ui/stdcontext.inc:268 lib/ui/stdmenus.inc:99
 msgid "Move Paragraph Down|v"
 msgstr "Pøesunout odstavec dolù|o"
 
-#: lib/ui/stdcontext.inc:252
+#: lib/ui/stdcontext.inc:270
 msgid "Promote Section|r"
 msgstr "Zvý¹it úroveò sekce|Z"
 
-#: lib/ui/stdcontext.inc:253
+#: lib/ui/stdcontext.inc:271
 msgid "Demote Section|m"
 msgstr "Sní¾it úroveò sekce|S"
 
-#: lib/ui/stdcontext.inc:254
+#: lib/ui/stdcontext.inc:272
 msgid "Move Section down|d"
 msgstr "Pøesunout sekci dolù|d"
 
-#: lib/ui/stdcontext.inc:255
+#: lib/ui/stdcontext.inc:273
 msgid "Move Section up|u"
 msgstr "Pøesunout sekci nahorù|n"
 
-#: lib/ui/stdcontext.inc:256
+#: lib/ui/stdcontext.inc:274
 msgid "Insert Short Title|T"
 msgstr "Krátký titulek"
 
-#: lib/ui/stdcontext.inc:258
+#: lib/ui/stdcontext.inc:276
 msgid "Apply Last Text Style|A"
 msgstr "Pou¾ít poslední Styl textu|y"
 
-#: lib/ui/stdcontext.inc:259 lib/ui/stdmenus.inc:101
+#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:101
 msgid "Text Style|S"
 msgstr "Styl textu|t"
 
-#: lib/ui/stdcontext.inc:260 lib/ui/stdmenus.inc:102
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:102
 msgid "Paragraph Settings...|P"
 msgstr "Nastavení odstavce...|a"
 
-#: lib/ui/stdcontext.inc:262
+#: lib/ui/stdcontext.inc:280
 msgid "Fullscreen Mode"
 msgstr "Celoobrazovkový mód"
 
-#: lib/ui/stdcontext.inc:270 lib/ui/stdmenus.inc:216
+#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:216
 #: lib/ui/stdtoolbars.inc:171
 msgid "Append Argument"
 msgstr "Pøidej argument"
 
-#: lib/ui/stdcontext.inc:271 lib/ui/stdmenus.inc:217
+#: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:217
 #: lib/ui/stdtoolbars.inc:170
 msgid "Remove Last Argument"
 msgstr "Vyma¾ poslední argument"
 
-#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:219
+#: lib/ui/stdcontext.inc:291 lib/ui/stdmenus.inc:219
 #: lib/ui/stdtoolbars.inc:173
 msgid "Make First Non-Optional into Optional Argument"
 msgstr "Zmìnit první povinný argument na volitelný"
 
-#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:292 lib/ui/stdmenus.inc:220
 #: lib/ui/stdtoolbars.inc:174
 msgid "Make Last Optional into Non-Optional Argument"
 msgstr "Zmìnit poslední volitelný argument na povinný"
 
-#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:221
+#: lib/ui/stdcontext.inc:293 lib/ui/stdmenus.inc:221
 #: lib/ui/stdtoolbars.inc:177
 msgid "Insert Optional Argument"
 msgstr "Vlo¾it volitelný argument"
 
-#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:222
 #: lib/ui/stdtoolbars.inc:176
 msgid "Remove Optional Argument"
 msgstr "Smazat volitelný argument"
 
-#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:224
+#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:224
 #: lib/ui/stdtoolbars.inc:180
 msgid "Append Argument Eating From The Right"
 msgstr "Pøidat pohlcování argumentu zprava"
 
-#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:225
+#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:225
 #: lib/ui/stdtoolbars.inc:181
 msgid "Append Optional Argument Eating From The Right"
 msgstr "Pøidat pohlcování volitelného argumentu zprava"
 
-#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:226
+#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:226
 #: lib/ui/stdtoolbars.inc:179
 msgid "Remove Last Argument Spitting Out To The Right"
 msgstr "Odstranit vyplivnutí posledního argumentu doprava"
 
-#: lib/ui/stdcontext.inc:307 lib/ui/stdcontext.inc:319
+#: lib/ui/stdcontext.inc:325 lib/ui/stdcontext.inc:337
 msgid "Edit externally...|x"
 msgstr "Edituj externì...|x"
 
-#: lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:163
+#: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:163
 msgid "Top Line|T"
 msgstr "Linka nahoøe|n"
 
-#: lib/ui/stdcontext.inc:330 lib/ui/stdmenus.inc:164
+#: lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:164
 msgid "Bottom Line|B"
 msgstr "Linka dole|d"
 
-#: lib/ui/stdcontext.inc:331 lib/ui/stdmenus.inc:165
+#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:165
 msgid "Left Line|L"
 msgstr "Linka vlevo|l"
 
-#: lib/ui/stdcontext.inc:332 lib/ui/stdmenus.inc:166
+#: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:166
 msgid "Right Line|R"
 msgstr "Linka vpravo|r"
 
-#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:181
+#: lib/ui/stdcontext.inc:362 lib/ui/stdmenus.inc:181
 msgid "Copy Row|o"
 msgstr "Zkopírovat øádek|k"
 
-#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:186
+#: lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:186
 msgid "Copy Column|p"
 msgstr "Zkopírovat sloupec|o"
 
@@ -17730,7 +17724,7 @@ msgstr "Klipart|#K#k"
 msgid "Horizontal Space Settings"
 msgstr "Nastavení horizontální mezery"
 
-#: src/frontends/qt4/GuiHSpace.cpp:100
+#: src/frontends/qt4/GuiHSpace.cpp:116
 msgid ""
 "Insert the spacing even after a line break.\n"
 "Note that a protected Half Quad will be turned into\n"
@@ -17739,6 +17733,54 @@ msgstr ""
 "Vlo¾it mezeru i za konec øádky.\n"
 "Pozn. - chránìná polovièní em mezera se zmìní na\n"
 " vertikální mezeru, pokud bude pou¾ita na zaèátku odstavce!"
+
+#: src/frontends/qt4/GuiHSpace.cpp:141 src/frontends/qt4/GuiHSpace.cpp:155
+msgid "Thin space"
+msgstr "Tenká mezera"
+
+#: src/frontends/qt4/GuiHSpace.cpp:142
+#, fuzzy
+msgid "Medium space"
+msgstr "Støední\t\\:"
+
+#: src/frontends/qt4/GuiHSpace.cpp:143
+#, fuzzy
+msgid "Thick space"
+msgstr "Tlustá\t\\;"
+
+#: src/frontends/qt4/GuiHSpace.cpp:144 src/frontends/qt4/GuiHSpace.cpp:156
+msgid "Negative thin space"
+msgstr "Záporná tenká mezera"
+
+#: src/frontends/qt4/GuiHSpace.cpp:145
+#, fuzzy
+msgid "Negative medium space"
+msgstr "Záporná tenká mezera"
+
+#: src/frontends/qt4/GuiHSpace.cpp:146
+#, fuzzy
+msgid "Negative thick space"
+msgstr "Záporná tenká mezera"
+
+#: src/frontends/qt4/GuiHSpace.cpp:147 src/frontends/qt4/GuiHSpace.cpp:157
+msgid "Half Quad (0.5 em)"
+msgstr "0.5 em"
+
+#: src/frontends/qt4/GuiHSpace.cpp:148 src/frontends/qt4/GuiHSpace.cpp:158
+msgid "Quad (1 em)"
+msgstr "1 em"
+
+#: src/frontends/qt4/GuiHSpace.cpp:149 src/frontends/qt4/GuiHSpace.cpp:159
+msgid "Double Quad (2 em)"
+msgstr "2 em"
+
+#: src/frontends/qt4/GuiHSpace.cpp:154
+msgid "Inter-word space"
+msgstr "Mezera uvnitø slova"
+
+#: src/frontends/qt4/GuiHSpace.cpp:160 src/insets/InsetSpace.cpp:108
+msgid "Horizontal Fill"
+msgstr "Horizontální výplò"
 
 #: src/frontends/qt4/GuiHyperlink.cpp:29
 msgid "Hyperlink"
@@ -18845,7 +18887,7 @@ msgstr "Ukládají se v¹echny dokumenty..."
 msgid "All documents saved."
 msgstr "V¹echny dokumenty ulo¾eny."
 
-#: src/frontends/qt4/GuiView.cpp:2137
+#: src/frontends/qt4/GuiView.cpp:2138
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s neznámý pøíkaz!"
@@ -19668,72 +19710,92 @@ msgstr "PrettyRef"
 msgid "FormatRef: "
 msgstr "FormatRef: "
 
-#: src/insets/InsetSpace.cpp:70
+#: src/insets/InsetSpace.cpp:72
 msgid "Interword Space"
 msgstr "Mezislovní mezera"
 
-#: src/insets/InsetSpace.cpp:73
+#: src/insets/InsetSpace.cpp:75
 msgid "Protected Space"
 msgstr "Chránìná mezera"
 
-#: src/insets/InsetSpace.cpp:76
+#: src/insets/InsetSpace.cpp:78
 msgid "Thin Space"
 msgstr "Tenká mezera"
 
-#: src/insets/InsetSpace.cpp:79
+#: src/insets/InsetSpace.cpp:81
+#, fuzzy
+msgid "Medium Space"
+msgstr "Støední\t\\:"
+
+#: src/insets/InsetSpace.cpp:84
+#, fuzzy
+msgid "Thick Space"
+msgstr "Tenká mezera"
+
+#: src/insets/InsetSpace.cpp:87
 msgid "Quad Space"
 msgstr "Quad mezera"
 
-#: src/insets/InsetSpace.cpp:82
+#: src/insets/InsetSpace.cpp:90
 msgid "QQuad Space"
 msgstr "QQuad mezera"
 
-#: src/insets/InsetSpace.cpp:85
+#: src/insets/InsetSpace.cpp:93
 msgid "Enspace"
 msgstr "En-mezera (Enspace)"
 
-#: src/insets/InsetSpace.cpp:88
+#: src/insets/InsetSpace.cpp:96
 msgid "Enskip"
 msgstr "En-mezera (Enskip)"
 
-#: src/insets/InsetSpace.cpp:91
+#: src/insets/InsetSpace.cpp:99
 msgid "Negative Thin Space"
 msgstr "Záporná tenká mezera"
 
-#: src/insets/InsetSpace.cpp:97
+#: src/insets/InsetSpace.cpp:102
+#, fuzzy
+msgid "Negative Medium Space"
+msgstr "Záporná tenká mezera"
+
+#: src/insets/InsetSpace.cpp:105
+#, fuzzy
+msgid "Negative Thick Space"
+msgstr "Záporná tenká mezera"
+
+#: src/insets/InsetSpace.cpp:111
 msgid "Protected Horizontal Fill"
 msgstr "Chránìná horizontální výplò"
 
-#: src/insets/InsetSpace.cpp:100
+#: src/insets/InsetSpace.cpp:114
 msgid "Horizontal Fill (Dots)"
 msgstr "Horizontální výplò (teèky)"
 
-#: src/insets/InsetSpace.cpp:103
+#: src/insets/InsetSpace.cpp:117
 msgid "Horizontal Fill (Rule)"
 msgstr "Horizontální výplò (èára)"
 
-#: src/insets/InsetSpace.cpp:106
+#: src/insets/InsetSpace.cpp:120
 msgid "Horizontal Fill (Left Arrow)"
 msgstr "Horizontální výplò (levá ¹ipka)"
 
-#: src/insets/InsetSpace.cpp:109
+#: src/insets/InsetSpace.cpp:123
 msgid "Horizontal Fill (Right Arrow)"
 msgstr "Horizontální výplò (pravá ¹ipka)"
 
-#: src/insets/InsetSpace.cpp:112
+#: src/insets/InsetSpace.cpp:126
 msgid "Horizontal Fill (Up Brace)"
 msgstr "Horizontální výplò (horní slo¾ená)"
 
-#: src/insets/InsetSpace.cpp:115
+#: src/insets/InsetSpace.cpp:129
 msgid "Horizontal Fill (Down Brace)"
 msgstr "Horizontální výplò (dolní slo¾ená)"
 
-#: src/insets/InsetSpace.cpp:118
+#: src/insets/InsetSpace.cpp:132
 #, c-format
 msgid "Horizontal Space (%1$s)"
 msgstr "Horizontální mezera (%1$s)"
 
-#: src/insets/InsetSpace.cpp:122
+#: src/insets/InsetSpace.cpp:136
 #, c-format
 msgid "Protected Horizontal Space (%1$s)"
 msgstr "Chránìná horizontální mezera (%1$s)"
@@ -19966,11 +20028,11 @@ msgstr "Nelze zmìnit poèet sloupcù v '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nelze pøidat horizontální linky møí¾ky v '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:958
+#: src/mathed/InsetMathNest.cpp:957
 msgid "create new math text environment ($...$)"
 msgstr "vytvoøit textové prostøedí uvnitø matematického ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:961
+#: src/mathed/InsetMathNest.cpp:960
 msgid "entered math text mode (textrm)"
 msgstr "vstup do text. prostøedí uvnitø matem. (textrm)"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-09 09:49+0100\n"
+"POT-Creation-Date: 2009-01-10 18:08+0100\n"
 "PO-Revision-Date: 2008-12-10 20:28+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -42,7 +42,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/DelimiterUi.ui:268
 #: src/frontends/qt4/ui/ErrorListUi.ui:73
 #: src/frontends/qt4/ui/ExternalUi.ui:625 src/frontends/qt4/ui/FloatUi.ui:85
-#: src/frontends/qt4/ui/HSpaceUi.ui:214
+#: src/frontends/qt4/ui/HSpaceUi.ui:174
 #: src/frontends/qt4/ui/HyperlinkUi.ui:150
 #: src/frontends/qt4/ui/IncludeUi.ui:247 src/frontends/qt4/ui/InfoUi.ui:71
 #: src/frontends/qt4/ui/LogUi.ui:54 src/frontends/qt4/ui/ParagraphUi.ui:102
@@ -70,7 +70,7 @@ msgstr "&Postizo"
 #: src/frontends/qt4/ui/CitationUi.ui:438
 #: src/frontends/qt4/ui/DocumentUi.ui:135 src/frontends/qt4/ui/ERTUi.ui:90
 #: src/frontends/qt4/ui/ExternalUi.ui:605 src/frontends/qt4/ui/FloatUi.ui:68
-#: src/frontends/qt4/ui/GraphicsUi.ui:71 src/frontends/qt4/ui/HSpaceUi.ui:191
+#: src/frontends/qt4/ui/GraphicsUi.ui:71 src/frontends/qt4/ui/HSpaceUi.ui:151
 #: src/frontends/qt4/ui/HyperlinkUi.ui:140
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/LabelUi.ui:82
 #: src/frontends/qt4/ui/ListingsUi.ui:529
@@ -370,7 +370,7 @@ msgstr "&Restaurar"
 #: src/frontends/qt4/ui/BoxUi.ui:247 src/frontends/qt4/ui/CharacterUi.ui:380
 #: src/frontends/qt4/ui/DocumentUi.ui:145
 #: src/frontends/qt4/ui/ExternalUi.ui:615 src/frontends/qt4/ui/FloatUi.ui:78
-#: src/frontends/qt4/ui/GraphicsUi.ui:90 src/frontends/qt4/ui/HSpaceUi.ui:204
+#: src/frontends/qt4/ui/GraphicsUi.ui:90 src/frontends/qt4/ui/HSpaceUi.ui:164
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/ParagraphUi.ui:92 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
@@ -1346,60 +1346,24 @@ msgstr "&Espaciado:"
 msgid "Supported spacing types"
 msgstr "Tipos de espaciados implementados"
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:84
-msgid "Inter-word space"
-msgstr "Espacio entre palabras"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:89
-msgid "Thin space"
-msgstr "Espacio delgado"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:94
-msgid "Negative thin space"
-msgstr "Espacio delgado negativo"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:99
-msgid "Half Quad (0.5 em)"
-msgstr "Medio cuadratín (0.5 em)"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:104
-msgid "Quad (1 em)"
-msgstr "Cuadratín (1 em)"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:109
-msgid "Double Quad (2 em)"
-msgstr "Doble cuadratín (2 em)"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:114 src/insets/InsetSpace.cpp:94
-msgid "Horizontal Fill"
-msgstr "Relleno horizontal"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:119
-#: src/frontends/qt4/ui/ParagraphUi.ui:261
-#: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
-#: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
-#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:578
-#: src/frontends/qt4/GuiDocument.cpp:681
-msgid "Custom"
-msgstr "Personalizado"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:127 src/frontends/qt4/ui/VSpaceUi.ui:117
+#: src/frontends/qt4/ui/HSpaceUi.ui:87 src/frontends/qt4/ui/VSpaceUi.ui:117
 msgid "&Value:"
 msgstr "&Valor:"
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:140 src/frontends/qt4/ui/VSpaceUi.ui:110
+#: src/frontends/qt4/ui/HSpaceUi.ui:100 src/frontends/qt4/ui/VSpaceUi.ui:110
 msgid "Custom value. Needs spacing type \"Custom\"."
 msgstr "Valor personalizado. Necesita el tipo de espaciado \"Personalizado\"."
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:150
+#: src/frontends/qt4/ui/HSpaceUi.ui:110
 msgid "&Fill Pattern:"
 msgstr "Pa&trón de relleno:"
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:163 src/frontends/qt4/ui/VSpaceUi.ui:94
+#: src/frontends/qt4/ui/HSpaceUi.ui:123 src/frontends/qt4/ui/VSpaceUi.ui:94
 msgid "&Protect:"
 msgstr "&Proteger:"
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:173 src/frontends/qt4/GuiHSpace.cpp:104
+#: src/frontends/qt4/ui/HSpaceUi.ui:133 src/frontends/qt4/GuiHSpace.cpp:95
+#: src/frontends/qt4/GuiHSpace.cpp:120
 msgid "Insert the spacing even after a line break"
 msgstr "Insertar el espaciado incluso después de un salto de página"
 
@@ -2191,6 +2155,15 @@ msgstr "1.5"
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "Doble"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:261
+#: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
+#: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:578
+#: src/frontends/qt4/GuiDocument.cpp:681 src/frontends/qt4/GuiHSpace.cpp:150
+#: src/frontends/qt4/GuiHSpace.cpp:161
+msgid "Custom"
+msgstr "Personalizado"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "&Alter..."
@@ -9636,7 +9609,7 @@ msgstr "Selección como líneas|l"
 msgid "Selection as Paragraphs|P"
 msgstr "Selección como párrafos|p"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:161
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:161
 msgid "Multicolumn|M"
 msgstr "Multicolumna|M"
 
@@ -9660,7 +9633,7 @@ msgstr "Línea derecha|d"
 msgid "Alignment|i"
 msgstr "Alineación|A"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:179
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:179
 msgid "Add Row|A"
 msgstr "Añadir fila|A"
 
@@ -9676,7 +9649,7 @@ msgstr "Copiar fila"
 msgid "Swap Rows"
 msgstr "Intercambiar filas"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:184
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:184
 msgid "Add Column|u"
 msgstr "Añadir columna|l"
 
@@ -9692,27 +9665,27 @@ msgstr "Copiar columna"
 msgid "Swap Columns"
 msgstr "Intercambiar columnas"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:334 lib/ui/stdmenus.inc:171
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:352 lib/ui/stdmenus.inc:171
 msgid "Left|L"
 msgstr "Izquierda|z"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:172
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:353 lib/ui/stdmenus.inc:172
 msgid "Center|C"
 msgstr "Centro|C"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:336 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:354 lib/ui/stdmenus.inc:173
 msgid "Right|R"
 msgstr "Derecha|D"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:338 lib/ui/stdmenus.inc:175
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:175
 msgid "Top|T"
 msgstr "Superior|S"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:339 lib/ui/stdmenus.inc:176
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:357 lib/ui/stdmenus.inc:176
 msgid "Middle|M"
 msgstr "Medio"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:340 lib/ui/stdmenus.inc:177
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:358 lib/ui/stdmenus.inc:177
 msgid "Bottom|B"
 msgstr "Inferior|I"
 
@@ -9744,7 +9717,7 @@ msgstr "Alineación|A"
 msgid "Add Row|R"
 msgstr "Añadir fila|A"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:361 lib/ui/stdmenus.inc:180
 msgid "Delete Row|D"
 msgstr "Eliminar fila|E"
 
@@ -9752,7 +9725,7 @@ msgstr "Eliminar fila|E"
 msgid "Add Column|C"
 msgstr "Añadir columna|u"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:185
 msgid "Delete Column|e"
 msgstr "Eliminar columna|u"
 
@@ -9945,7 +9918,8 @@ msgstr "Espacio protegido|p"
 msgid "Inter-word Space|w"
 msgstr "Espacio entre palabras|r"
 
-#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:172 lib/ui/stdmenus.inc:368
+#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:172 lib/ui/stdcontext.inc:195
+#: lib/ui/stdmenus.inc:368
 msgid "Thin Space|T"
 msgstr "Espacio delgado|d"
 
@@ -10442,10 +10416,10 @@ msgstr "Referencia con formato|c"
 #: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:103
 #: lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:125
 #: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:150
-#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:215
-#: lib/ui/stdcontext.inc:297 lib/ui/stdcontext.inc:305
-#: lib/ui/stdcontext.inc:317 lib/ui/stdcontext.inc:352
-#: lib/ui/stdcontext.inc:361 lib/ui/stdmenus.inc:458
+#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:206
+#: lib/ui/stdcontext.inc:233 lib/ui/stdcontext.inc:315
+#: lib/ui/stdcontext.inc:323 lib/ui/stdcontext.inc:335
+#: lib/ui/stdcontext.inc:370 lib/ui/stdcontext.inc:379 lib/ui/stdmenus.inc:458
 msgid "Settings...|S"
 msgstr "Configuración...|o"
 
@@ -10457,17 +10431,17 @@ msgstr "Volver a referencia|V"
 msgid "Edit Database(s) externally...|x"
 msgstr "Editar base de datos externamente...|x"
 
-#: lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:293
+#: lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:311
 msgid "Open Inset|O"
 msgstr "Abrir cuadro|A"
 
-#: lib/ui/stdcontext.inc:122 lib/ui/stdcontext.inc:294
+#: lib/ui/stdcontext.inc:122 lib/ui/stdcontext.inc:312
 msgid "Close Inset|C"
 msgstr "Cerrar cuadro"
 
 #: lib/ui/stdcontext.inc:124 lib/ui/stdcontext.inc:130
 #: lib/ui/stdcontext.inc:149 lib/ui/stdcontext.inc:162
-#: lib/ui/stdcontext.inc:296
+#: lib/ui/stdcontext.inc:314
 msgid "Dissolve Inset|D"
 msgstr "Disolver cuadro|D"
 
@@ -10527,11 +10501,11 @@ msgstr "Espacio entre-palabras|E"
 msgid "Protected Space|o"
 msgstr "Espacio protegido|p"
 
-#: lib/ui/stdcontext.inc:173
+#: lib/ui/stdcontext.inc:173 lib/ui/stdcontext.inc:198
 msgid "Negative Thin Space|N"
 msgstr "Espacio delgado negativo|n"
 
-#: lib/ui/stdcontext.inc:174
+#: lib/ui/stdcontext.inc:174 lib/ui/stdcontext.inc:201
 msgid "Half Quad Space (Enskip)|k"
 msgstr "Medio cuadratín|e"
 
@@ -10539,11 +10513,11 @@ msgstr "Medio cuadratín|e"
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Medio cuadratín protegido|m"
 
-#: lib/ui/stdcontext.inc:176
+#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:202
 msgid "Quad Space|Q"
 msgstr "Cuadratín|C"
 
-#: lib/ui/stdcontext.inc:177
+#: lib/ui/stdcontext.inc:177 lib/ui/stdcontext.inc:203
 msgid "Double Quad Space|u"
 msgstr "Doble cuadratín|u"
 
@@ -10579,226 +10553,246 @@ msgstr "Relleno horizontal (corchete arriba)|t"
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr "Relleno horizontal (corchete abajo)|n"
 
-#: lib/ui/stdcontext.inc:186
+#: lib/ui/stdcontext.inc:186 lib/ui/stdcontext.inc:204
 msgid "Custom Length|C"
 msgstr "Personalizado|e"
 
-#: lib/ui/stdcontext.inc:195
+#: lib/ui/stdcontext.inc:196
+#, fuzzy
+msgid "Medium Space|M"
+msgstr "Espacio medio\t\\:"
+
+#: lib/ui/stdcontext.inc:197
+#, fuzzy
+msgid "Thick Space|h"
+msgstr "Espacio delgado|d"
+
+#: lib/ui/stdcontext.inc:199
+#, fuzzy
+msgid "Negative Medium Space|u"
+msgstr "Espacio delgado negativo|n"
+
+#: lib/ui/stdcontext.inc:200
+#, fuzzy
+msgid "Negative Thick Space|i"
+msgstr "Espacio delgado negativo|n"
+
+#: lib/ui/stdcontext.inc:213
 msgid "DefSkip|D"
 msgstr "Salto predeterminado|p"
 
-#: lib/ui/stdcontext.inc:196
+#: lib/ui/stdcontext.inc:214
 msgid "SmallSkip|S"
 msgstr "Salto pequeño|e"
 
-#: lib/ui/stdcontext.inc:197
+#: lib/ui/stdcontext.inc:215
 msgid "MedSkip|M"
 msgstr "Salto medio|d"
 
-#: lib/ui/stdcontext.inc:198
+#: lib/ui/stdcontext.inc:216
 msgid "BigSkip|B"
 msgstr "Salto grande|g"
 
-#: lib/ui/stdcontext.inc:199
+#: lib/ui/stdcontext.inc:217
 msgid "VFill|F"
 msgstr "Relleno vertical|v"
 
-#: lib/ui/stdcontext.inc:200
+#: lib/ui/stdcontext.inc:218
 msgid "Custom|C"
 msgstr "Personalizado|P"
 
-#: lib/ui/stdcontext.inc:202
+#: lib/ui/stdcontext.inc:220
 msgid "Settings...|e"
 msgstr "Configuración...|g"
 
-#: lib/ui/stdcontext.inc:209
+#: lib/ui/stdcontext.inc:227
 msgid "Include|c"
 msgstr "Adjuntar|A"
 
-#: lib/ui/stdcontext.inc:210
+#: lib/ui/stdcontext.inc:228
 msgid "Input|p"
 msgstr "Entrada|E"
 
-#: lib/ui/stdcontext.inc:211
+#: lib/ui/stdcontext.inc:229
 msgid "Verbatim|V"
 msgstr "Literal|L"
 
-#: lib/ui/stdcontext.inc:212
+#: lib/ui/stdcontext.inc:230
 msgid "Verbatim (marked blanks)|b"
 msgstr "Literal (espacios marcados)"
 
-#: lib/ui/stdcontext.inc:213
+#: lib/ui/stdcontext.inc:231
 msgid "Listing|L"
 msgstr "Listado|L"
 
-#: lib/ui/stdcontext.inc:217
+#: lib/ui/stdcontext.inc:235
 msgid "Edit included file...|E"
 msgstr "Editar archivo incluido...|E"
 
-#: lib/ui/stdcontext.inc:224 lib/ui/stdmenus.inc:378
+#: lib/ui/stdcontext.inc:242 lib/ui/stdmenus.inc:378
 msgid "New Page|N"
 msgstr "Página nueva|n"
 
-#: lib/ui/stdcontext.inc:225 lib/ui/stdmenus.inc:379
+#: lib/ui/stdcontext.inc:243 lib/ui/stdmenus.inc:379
 msgid "Page Break|a"
 msgstr "Salto de página|t"
 
-#: lib/ui/stdcontext.inc:226 lib/ui/stdmenus.inc:380
+#: lib/ui/stdcontext.inc:244 lib/ui/stdmenus.inc:380
 msgid "Clear Page|C"
 msgstr "Limpiar página|m"
 
-#: lib/ui/stdcontext.inc:227 lib/ui/stdmenus.inc:381
+#: lib/ui/stdcontext.inc:245 lib/ui/stdmenus.inc:381
 msgid "Clear Double Page|D"
 msgstr "Limpiar página doble|b"
 
-#: lib/ui/stdcontext.inc:234 lib/ui/stdmenus.inc:375
+#: lib/ui/stdcontext.inc:252 lib/ui/stdmenus.inc:375
 msgid "Ragged Line Break|R"
 msgstr "Salto de línea cortada|a"
 
-#: lib/ui/stdcontext.inc:235 lib/ui/stdmenus.inc:376
+#: lib/ui/stdcontext.inc:253 lib/ui/stdmenus.inc:376
 msgid "Justified Line Break|J"
 msgstr "Salto de línea justificada|j"
 
-#: lib/ui/stdcontext.inc:242 lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:88
+#: lib/ui/stdcontext.inc:260 lib/ui/stdcontext.inc:306 lib/ui/stdmenus.inc:88
 #: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:1034
 #: src/mathed/InsetMathNest.cpp:547
 msgid "Cut"
 msgstr "Cortar"
 
-#: lib/ui/stdcontext.inc:243 lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:89
+#: lib/ui/stdcontext.inc:261 lib/ui/stdcontext.inc:307 lib/ui/stdmenus.inc:89
 #: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:1039
 #: src/mathed/InsetMathNest.cpp:555
 msgid "Copy"
 msgstr "Copiar"
 
-#: lib/ui/stdcontext.inc:244 lib/ui/stdcontext.inc:290 lib/ui/stdmenus.inc:90
+#: lib/ui/stdcontext.inc:262 lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:90
 #: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:992
 #: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:527
 msgid "Paste"
 msgstr "Pegar"
 
-#: lib/ui/stdcontext.inc:245 lib/ui/stdcontext.inc:291 lib/ui/stdmenus.inc:91
+#: lib/ui/stdcontext.inc:263 lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:91
 msgid "Paste Recent|e"
 msgstr "Pegar reciente|P"
 
-#: lib/ui/stdcontext.inc:247
+#: lib/ui/stdcontext.inc:265
 msgid "Jump to Saved Bookmark|B"
 msgstr "Ir a marcador guardado|I"
 
-#: lib/ui/stdcontext.inc:249 lib/ui/stdmenus.inc:98
+#: lib/ui/stdcontext.inc:267 lib/ui/stdmenus.inc:98
 msgid "Move Paragraph Up|o"
 msgstr "Mover párrafo arriba|o"
 
-#: lib/ui/stdcontext.inc:250 lib/ui/stdmenus.inc:99
+#: lib/ui/stdcontext.inc:268 lib/ui/stdmenus.inc:99
 msgid "Move Paragraph Down|v"
 msgstr "Mover párrafo abajo|b"
 
-#: lib/ui/stdcontext.inc:252
+#: lib/ui/stdcontext.inc:270
 msgid "Promote Section|r"
 msgstr "Subir nivel de sección|u"
 
-#: lib/ui/stdcontext.inc:253
+#: lib/ui/stdcontext.inc:271
 msgid "Demote Section|m"
 msgstr "Bajar nivel de sección|j"
 
-#: lib/ui/stdcontext.inc:254
+#: lib/ui/stdcontext.inc:272
 msgid "Move Section down|d"
 msgstr "Mover sección abajo|v"
 
-#: lib/ui/stdcontext.inc:255
+#: lib/ui/stdcontext.inc:273
 msgid "Move Section up|u"
 msgstr "Mover sección arriba|r"
 
-#: lib/ui/stdcontext.inc:256
+#: lib/ui/stdcontext.inc:274
 msgid "Insert Short Title|T"
 msgstr "Insertar Título breve|T"
 
-#: lib/ui/stdcontext.inc:258
+#: lib/ui/stdcontext.inc:276
 msgid "Apply Last Text Style|A"
 msgstr "Aplicar último estilo de texto|A"
 
-#: lib/ui/stdcontext.inc:259 lib/ui/stdmenus.inc:101
+#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:101
 msgid "Text Style|S"
 msgstr "Estilo del texto|s"
 
-#: lib/ui/stdcontext.inc:260 lib/ui/stdmenus.inc:102
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:102
 msgid "Paragraph Settings...|P"
 msgstr "Configuración del párrafo...|f"
 
-#: lib/ui/stdcontext.inc:262
+#: lib/ui/stdcontext.inc:280
 msgid "Fullscreen Mode"
 msgstr "Modo pantalla completa"
 
-#: lib/ui/stdcontext.inc:270 lib/ui/stdmenus.inc:216
+#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:216
 #: lib/ui/stdtoolbars.inc:171
 msgid "Append Argument"
 msgstr "Añadir Argumento"
 
-#: lib/ui/stdcontext.inc:271 lib/ui/stdmenus.inc:217
+#: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:217
 #: lib/ui/stdtoolbars.inc:170
 msgid "Remove Last Argument"
 msgstr "Quitar último Argumento"
 
-#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:219
+#: lib/ui/stdcontext.inc:291 lib/ui/stdmenus.inc:219
 #: lib/ui/stdtoolbars.inc:173
 msgid "Make First Non-Optional into Optional Argument"
 msgstr "Hacer opcional el primer argumento no opcional"
 
-#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:292 lib/ui/stdmenus.inc:220
 #: lib/ui/stdtoolbars.inc:174
 msgid "Make Last Optional into Non-Optional Argument"
 msgstr "Hacer no opcional el último argumento opcional"
 
-#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:221
+#: lib/ui/stdcontext.inc:293 lib/ui/stdmenus.inc:221
 #: lib/ui/stdtoolbars.inc:177
 msgid "Insert Optional Argument"
 msgstr "Insertar argumento opcional"
 
-#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:222
 #: lib/ui/stdtoolbars.inc:176
 msgid "Remove Optional Argument"
 msgstr "Quitar argumento opcional"
 
-#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:224
+#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:224
 #: lib/ui/stdtoolbars.inc:180
 msgid "Append Argument Eating From The Right"
 msgstr "Añadir argumento comiendo desde la derecha"
 
-#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:225
+#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:225
 #: lib/ui/stdtoolbars.inc:181
 msgid "Append Optional Argument Eating From The Right"
 msgstr "Añadir argumento opcional comiendo desde la derecha"
 
-#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:226
+#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:226
 #: lib/ui/stdtoolbars.inc:179
 msgid "Remove Last Argument Spitting Out To The Right"
 msgstr "Quitar último argumento yendo hacia la derecha"
 
-#: lib/ui/stdcontext.inc:307 lib/ui/stdcontext.inc:319
+#: lib/ui/stdcontext.inc:325 lib/ui/stdcontext.inc:337
 msgid "Edit externally...|x"
 msgstr "Editar externamente...|x"
 
-#: lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:163
+#: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:163
 msgid "Top Line|T"
 msgstr "Línea superior|s"
 
-#: lib/ui/stdcontext.inc:330 lib/ui/stdmenus.inc:164
+#: lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:164
 msgid "Bottom Line|B"
 msgstr "Línea inferior|i"
 
-#: lib/ui/stdcontext.inc:331 lib/ui/stdmenus.inc:165
+#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:165
 msgid "Left Line|L"
 msgstr "Línea izquierda|z"
 
-#: lib/ui/stdcontext.inc:332 lib/ui/stdmenus.inc:166
+#: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:166
 msgid "Right Line|R"
 msgstr "Línea derecha|d"
 
-#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:181
+#: lib/ui/stdcontext.inc:362 lib/ui/stdmenus.inc:181
 msgid "Copy Row|o"
 msgstr "Copiar fila|f"
 
-#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:186
+#: lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:186
 msgid "Copy Column|p"
 msgstr "Copiar columna|p"
 
@@ -17808,7 +17802,7 @@ msgstr "Galería de imágenes|#G#g"
 msgid "Horizontal Space Settings"
 msgstr "Configuración de espacio horizontal"
 
-#: src/frontends/qt4/GuiHSpace.cpp:100
+#: src/frontends/qt4/GuiHSpace.cpp:116
 msgid ""
 "Insert the spacing even after a line break.\n"
 "Note that a protected Half Quad will be turned into\n"
@@ -17817,6 +17811,54 @@ msgstr ""
 "Insertar el espacio incluso después de un salto de línea.\n"
 "Ten en cuenta que medio cuadratín protegido se transformará\n"
 "en un espacio vertical si se usa al comienzo de un párrafo."
+
+#: src/frontends/qt4/GuiHSpace.cpp:141 src/frontends/qt4/GuiHSpace.cpp:155
+msgid "Thin space"
+msgstr "Espacio delgado"
+
+#: src/frontends/qt4/GuiHSpace.cpp:142
+#, fuzzy
+msgid "Medium space"
+msgstr "Espacio medio\t\\:"
+
+#: src/frontends/qt4/GuiHSpace.cpp:143
+#, fuzzy
+msgid "Thick space"
+msgstr "Espacio grueso\t\\;"
+
+#: src/frontends/qt4/GuiHSpace.cpp:144 src/frontends/qt4/GuiHSpace.cpp:156
+msgid "Negative thin space"
+msgstr "Espacio delgado negativo"
+
+#: src/frontends/qt4/GuiHSpace.cpp:145
+#, fuzzy
+msgid "Negative medium space"
+msgstr "Espacio delgado negativo"
+
+#: src/frontends/qt4/GuiHSpace.cpp:146
+#, fuzzy
+msgid "Negative thick space"
+msgstr "Espacio delgado negativo"
+
+#: src/frontends/qt4/GuiHSpace.cpp:147 src/frontends/qt4/GuiHSpace.cpp:157
+msgid "Half Quad (0.5 em)"
+msgstr "Medio cuadratín (0.5 em)"
+
+#: src/frontends/qt4/GuiHSpace.cpp:148 src/frontends/qt4/GuiHSpace.cpp:158
+msgid "Quad (1 em)"
+msgstr "Cuadratín (1 em)"
+
+#: src/frontends/qt4/GuiHSpace.cpp:149 src/frontends/qt4/GuiHSpace.cpp:159
+msgid "Double Quad (2 em)"
+msgstr "Doble cuadratín (2 em)"
+
+#: src/frontends/qt4/GuiHSpace.cpp:154
+msgid "Inter-word space"
+msgstr "Espacio entre palabras"
+
+#: src/frontends/qt4/GuiHSpace.cpp:160 src/insets/InsetSpace.cpp:108
+msgid "Horizontal Fill"
+msgstr "Relleno horizontal"
 
 #: src/frontends/qt4/GuiHyperlink.cpp:29
 msgid "Hyperlink"
@@ -18927,7 +18969,7 @@ msgstr "Guardando todos los documentos..."
 msgid "All documents saved."
 msgstr "Todos los documentos guardados."
 
-#: src/frontends/qt4/GuiView.cpp:2137
+#: src/frontends/qt4/GuiView.cpp:2138
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s ¡comando desconocido!"
@@ -19745,72 +19787,92 @@ msgstr "PrettyRef"
 msgid "FormatRef: "
 msgstr "RefFormato: "
 
-#: src/insets/InsetSpace.cpp:70
+#: src/insets/InsetSpace.cpp:72
 msgid "Interword Space"
 msgstr "Espacio entre palabras|r"
 
-#: src/insets/InsetSpace.cpp:73
+#: src/insets/InsetSpace.cpp:75
 msgid "Protected Space"
 msgstr "Espacio protegido|p"
 
-#: src/insets/InsetSpace.cpp:76
+#: src/insets/InsetSpace.cpp:78
 msgid "Thin Space"
 msgstr "Espacio delgado|d"
 
-#: src/insets/InsetSpace.cpp:79
+#: src/insets/InsetSpace.cpp:81
+#, fuzzy
+msgid "Medium Space"
+msgstr "Espacio medio\t\\:"
+
+#: src/insets/InsetSpace.cpp:84
+#, fuzzy
+msgid "Thick Space"
+msgstr "Espacio delgado|d"
+
+#: src/insets/InsetSpace.cpp:87
 msgid "Quad Space"
 msgstr "Cuadratín"
 
-#: src/insets/InsetSpace.cpp:82
+#: src/insets/InsetSpace.cpp:90
 msgid "QQuad Space"
 msgstr "Doble cuadratín"
 
-#: src/insets/InsetSpace.cpp:85
+#: src/insets/InsetSpace.cpp:93
 msgid "Enspace"
 msgstr "Medio cuadratín"
 
-#: src/insets/InsetSpace.cpp:88
+#: src/insets/InsetSpace.cpp:96
 msgid "Enskip"
 msgstr "Salto de medio cuadratín"
 
-#: src/insets/InsetSpace.cpp:91
+#: src/insets/InsetSpace.cpp:99
 msgid "Negative Thin Space"
 msgstr "Espacio delgado negativo"
 
-#: src/insets/InsetSpace.cpp:97
+#: src/insets/InsetSpace.cpp:102
+#, fuzzy
+msgid "Negative Medium Space"
+msgstr "Espacio delgado negativo"
+
+#: src/insets/InsetSpace.cpp:105
+#, fuzzy
+msgid "Negative Thick Space"
+msgstr "Espacio delgado negativo"
+
+#: src/insets/InsetSpace.cpp:111
 msgid "Protected Horizontal Fill"
 msgstr "Relleno horizontal protegido"
 
-#: src/insets/InsetSpace.cpp:100
+#: src/insets/InsetSpace.cpp:114
 msgid "Horizontal Fill (Dots)"
 msgstr "Relleno horizontal (puntos)"
 
-#: src/insets/InsetSpace.cpp:103
+#: src/insets/InsetSpace.cpp:117
 msgid "Horizontal Fill (Rule)"
 msgstr "Relleno horizontal (raya)"
 
-#: src/insets/InsetSpace.cpp:106
+#: src/insets/InsetSpace.cpp:120
 msgid "Horizontal Fill (Left Arrow)"
 msgstr "Relleno horizontal (flecha izquierda)"
 
-#: src/insets/InsetSpace.cpp:109
+#: src/insets/InsetSpace.cpp:123
 msgid "Horizontal Fill (Right Arrow)"
 msgstr "Relleno horizontal (flecha derecha)"
 
-#: src/insets/InsetSpace.cpp:112
+#: src/insets/InsetSpace.cpp:126
 msgid "Horizontal Fill (Up Brace)"
 msgstr "Relleno horizontal (corchete arriba)"
 
-#: src/insets/InsetSpace.cpp:115
+#: src/insets/InsetSpace.cpp:129
 msgid "Horizontal Fill (Down Brace)"
 msgstr "Relleno horizontal (corchete abajo)"
 
-#: src/insets/InsetSpace.cpp:118
+#: src/insets/InsetSpace.cpp:132
 #, c-format
 msgid "Horizontal Space (%1$s)"
 msgstr "Espacio horizontal (%1$s)"
 
-#: src/insets/InsetSpace.cpp:122
+#: src/insets/InsetSpace.cpp:136
 #, c-format
 msgid "Protected Horizontal Space (%1$s)"
 msgstr "Espacio protegido horizontal (%1$s)"
@@ -20043,11 +20105,11 @@ msgstr "No se puede cambiar el número de columnas en '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "No se pueden añadir líneas de cuadrícula horizontal en '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:958
+#: src/mathed/InsetMathNest.cpp:957
 msgid "create new math text environment ($...$)"
 msgstr "crear un nuevo entorno de texto de ecuaciones ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:961
+#: src/mathed/InsetMathNest.cpp:960
 msgid "entered math text mode (textrm)"
 msgstr "entrado modo de texto de ecuaciones (textrm)"
 

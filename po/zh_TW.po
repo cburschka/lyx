@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-09 09:49+0100\n"
+"POT-Creation-Date: 2009-01-10 18:08+0100\n"
 "PO-Revision-Date: 2008-08-04 22:57+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -38,7 +38,7 @@ msgstr "著作權"
 #: src/frontends/qt4/ui/DelimiterUi.ui:268
 #: src/frontends/qt4/ui/ErrorListUi.ui:73
 #: src/frontends/qt4/ui/ExternalUi.ui:625 src/frontends/qt4/ui/FloatUi.ui:85
-#: src/frontends/qt4/ui/HSpaceUi.ui:214
+#: src/frontends/qt4/ui/HSpaceUi.ui:174
 #: src/frontends/qt4/ui/HyperlinkUi.ui:150
 #: src/frontends/qt4/ui/IncludeUi.ui:247 src/frontends/qt4/ui/InfoUi.ui:71
 #: src/frontends/qt4/ui/LogUi.ui:54 src/frontends/qt4/ui/ParagraphUi.ui:102
@@ -66,7 +66,7 @@ msgstr "虛設(&D)"
 #: src/frontends/qt4/ui/CitationUi.ui:438
 #: src/frontends/qt4/ui/DocumentUi.ui:135 src/frontends/qt4/ui/ERTUi.ui:90
 #: src/frontends/qt4/ui/ExternalUi.ui:605 src/frontends/qt4/ui/FloatUi.ui:68
-#: src/frontends/qt4/ui/GraphicsUi.ui:71 src/frontends/qt4/ui/HSpaceUi.ui:191
+#: src/frontends/qt4/ui/GraphicsUi.ui:71 src/frontends/qt4/ui/HSpaceUi.ui:151
 #: src/frontends/qt4/ui/HyperlinkUi.ui:140
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/LabelUi.ui:82
 #: src/frontends/qt4/ui/ListingsUi.ui:529
@@ -370,7 +370,7 @@ msgstr "還原(&R)"
 #: src/frontends/qt4/ui/BoxUi.ui:247 src/frontends/qt4/ui/CharacterUi.ui:380
 #: src/frontends/qt4/ui/DocumentUi.ui:145
 #: src/frontends/qt4/ui/ExternalUi.ui:615 src/frontends/qt4/ui/FloatUi.ui:78
-#: src/frontends/qt4/ui/GraphicsUi.ui:90 src/frontends/qt4/ui/HSpaceUi.ui:204
+#: src/frontends/qt4/ui/GraphicsUi.ui:90 src/frontends/qt4/ui/HSpaceUi.ui:164
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/ParagraphUi.ui:92 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
@@ -1353,65 +1353,25 @@ msgstr "間隔(&S)："
 msgid "Supported spacing types"
 msgstr "支援的間隔類型"
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:84
-#, fuzzy
-msgid "Inter-word space"
-msgstr "字詞間空格|w"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:89
-#, fuzzy
-msgid "Thin space"
-msgstr "細薄空格\t\\,"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:94
-#, fuzzy
-msgid "Negative thin space"
-msgstr "負空格\t\\!"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:99
-msgid "Half Quad (0.5 em)"
-msgstr ""
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:104
-msgid "Quad (1 em)"
-msgstr ""
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:109
-#, fuzzy
-msgid "Double Quad (2 em)"
-msgstr "雙倍項目："
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:114 src/insets/InsetSpace.cpp:94
-msgid "Horizontal Fill"
-msgstr "水平填充"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:119
-#: src/frontends/qt4/ui/ParagraphUi.ui:261
-#: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
-#: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
-#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:578
-#: src/frontends/qt4/GuiDocument.cpp:681
-msgid "Custom"
-msgstr "自訂"
-
-#: src/frontends/qt4/ui/HSpaceUi.ui:127 src/frontends/qt4/ui/VSpaceUi.ui:117
+#: src/frontends/qt4/ui/HSpaceUi.ui:87 src/frontends/qt4/ui/VSpaceUi.ui:117
 msgid "&Value:"
 msgstr "值(&V)："
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:140 src/frontends/qt4/ui/VSpaceUi.ui:110
+#: src/frontends/qt4/ui/HSpaceUi.ui:100 src/frontends/qt4/ui/VSpaceUi.ui:110
 msgid "Custom value. Needs spacing type \"Custom\"."
 msgstr "自訂值。需要間隔型態「自訂」。"
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:150
+#: src/frontends/qt4/ui/HSpaceUi.ui:110
 #, fuzzy
 msgid "&Fill Pattern:"
 msgstr "檔案(&F)："
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:163 src/frontends/qt4/ui/VSpaceUi.ui:94
+#: src/frontends/qt4/ui/HSpaceUi.ui:123 src/frontends/qt4/ui/VSpaceUi.ui:94
 msgid "&Protect:"
 msgstr "保護(&P)："
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:173 src/frontends/qt4/GuiHSpace.cpp:104
+#: src/frontends/qt4/ui/HSpaceUi.ui:133 src/frontends/qt4/GuiHSpace.cpp:95
+#: src/frontends/qt4/GuiHSpace.cpp:120
 #, fuzzy
 msgid "Insert the spacing even after a line break"
 msgstr "甚至於分頁之後插入間隔"
@@ -2244,6 +2204,15 @@ msgstr "一倍半"
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "雙倍"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:261
+#: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
+#: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:578
+#: src/frontends/qt4/GuiDocument.cpp:681 src/frontends/qt4/GuiHSpace.cpp:150
+#: src/frontends/qt4/GuiHSpace.cpp:161
+msgid "Custom"
+msgstr "自訂"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "&Alter..."
@@ -9923,7 +9892,7 @@ msgstr "選擇多列|L"
 msgid "Selection as Paragraphs|P"
 msgstr "選擇段落|P"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:161
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:161
 msgid "Multicolumn|M"
 msgstr "多欄|M"
 
@@ -9947,7 +9916,7 @@ msgstr "列右|R"
 msgid "Alignment|i"
 msgstr "對齊|i"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:342 lib/ui/stdmenus.inc:179
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:179
 msgid "Add Row|A"
 msgstr "加入列|A"
 
@@ -9963,7 +9932,7 @@ msgstr "複製列"
 msgid "Swap Rows"
 msgstr "交換列"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:184
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:184
 msgid "Add Column|u"
 msgstr "加入欄|u"
 
@@ -9979,27 +9948,27 @@ msgstr "複製欄"
 msgid "Swap Columns"
 msgstr "交換欄"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:334 lib/ui/stdmenus.inc:171
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:352 lib/ui/stdmenus.inc:171
 msgid "Left|L"
 msgstr "左|L"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:172
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:353 lib/ui/stdmenus.inc:172
 msgid "Center|C"
 msgstr "中|C"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:336 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:354 lib/ui/stdmenus.inc:173
 msgid "Right|R"
 msgstr "右|R"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:338 lib/ui/stdmenus.inc:175
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:175
 msgid "Top|T"
 msgstr "頂|T"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:339 lib/ui/stdmenus.inc:176
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:357 lib/ui/stdmenus.inc:176
 msgid "Middle|M"
 msgstr "央|M"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:340 lib/ui/stdmenus.inc:177
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:358 lib/ui/stdmenus.inc:177
 msgid "Bottom|B"
 msgstr "底|B"
 
@@ -10031,7 +10000,7 @@ msgstr "對齊|A"
 msgid "Add Row|R"
 msgstr "加入列|R"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:361 lib/ui/stdmenus.inc:180
 msgid "Delete Row|D"
 msgstr "刪除列|D"
 
@@ -10039,7 +10008,7 @@ msgstr "刪除列|D"
 msgid "Add Column|C"
 msgstr "加入欄|C"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:185
 msgid "Delete Column|e"
 msgstr "刪除欄|e"
 
@@ -10234,7 +10203,8 @@ msgstr "保護的空格|r"
 msgid "Inter-word Space|w"
 msgstr "字詞間空格|w"
 
-#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:172 lib/ui/stdmenus.inc:368
+#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:172 lib/ui/stdcontext.inc:195
+#: lib/ui/stdmenus.inc:368
 msgid "Thin Space|T"
 msgstr "窄空格|T"
 
@@ -10749,10 +10719,10 @@ msgstr "格式化的參考"
 #: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:103
 #: lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:125
 #: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:150
-#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:215
-#: lib/ui/stdcontext.inc:297 lib/ui/stdcontext.inc:305
-#: lib/ui/stdcontext.inc:317 lib/ui/stdcontext.inc:352
-#: lib/ui/stdcontext.inc:361 lib/ui/stdmenus.inc:458
+#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:206
+#: lib/ui/stdcontext.inc:233 lib/ui/stdcontext.inc:315
+#: lib/ui/stdcontext.inc:323 lib/ui/stdcontext.inc:335
+#: lib/ui/stdcontext.inc:370 lib/ui/stdcontext.inc:379 lib/ui/stdmenus.inc:458
 msgid "Settings...|S"
 msgstr "設定值…|S"
 
@@ -10765,19 +10735,19 @@ msgstr ""
 msgid "Edit Database(s) externally...|x"
 msgstr "於外部編輯檔案"
 
-#: lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:293
+#: lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:311
 #, fuzzy
 msgid "Open Inset|O"
 msgstr "開啟所有內欄|O"
 
-#: lib/ui/stdcontext.inc:122 lib/ui/stdcontext.inc:294
+#: lib/ui/stdcontext.inc:122 lib/ui/stdcontext.inc:312
 #, fuzzy
 msgid "Close Inset|C"
 msgstr "關閉所有內欄|C"
 
 #: lib/ui/stdcontext.inc:124 lib/ui/stdcontext.inc:130
 #: lib/ui/stdcontext.inc:149 lib/ui/stdcontext.inc:162
-#: lib/ui/stdcontext.inc:296
+#: lib/ui/stdcontext.inc:314
 #, fuzzy
 msgid "Dissolve Inset|D"
 msgstr "拆解內欄|l"
@@ -10847,12 +10817,12 @@ msgstr "字詞間空格|w"
 msgid "Protected Space|o"
 msgstr "保護的空格|r"
 
-#: lib/ui/stdcontext.inc:173
+#: lib/ui/stdcontext.inc:173 lib/ui/stdcontext.inc:198
 #, fuzzy
 msgid "Negative Thin Space|N"
 msgstr "負空格\t\\!"
 
-#: lib/ui/stdcontext.inc:174
+#: lib/ui/stdcontext.inc:174 lib/ui/stdcontext.inc:201
 msgid "Half Quad Space (Enskip)|k"
 msgstr ""
 
@@ -10861,12 +10831,12 @@ msgstr ""
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "保護的空格|r"
 
-#: lib/ui/stdcontext.inc:176
+#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:202
 #, fuzzy
 msgid "Quad Space|Q"
 msgstr "空格"
 
-#: lib/ui/stdcontext.inc:177
+#: lib/ui/stdcontext.inc:177 lib/ui/stdcontext.inc:203
 #, fuzzy
 msgid "Double Quad Space|u"
 msgstr "空格"
@@ -10910,255 +10880,275 @@ msgstr "水平填充"
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr "水平填充"
 
-#: lib/ui/stdcontext.inc:186
+#: lib/ui/stdcontext.inc:186 lib/ui/stdcontext.inc:204
 #, fuzzy
 msgid "Custom Length|C"
 msgstr "註釋|C"
 
-#: lib/ui/stdcontext.inc:195
+#: lib/ui/stdcontext.inc:196
+#, fuzzy
+msgid "Medium Space|M"
+msgstr "中等空格\t\\:"
+
+#: lib/ui/stdcontext.inc:197
+#, fuzzy
+msgid "Thick Space|h"
+msgstr "窄空格|T"
+
+#: lib/ui/stdcontext.inc:199
+#, fuzzy
+msgid "Negative Medium Space|u"
+msgstr "負空格\t\\!"
+
+#: lib/ui/stdcontext.inc:200
+#, fuzzy
+msgid "Negative Thick Space|i"
+msgstr "負空格\t\\!"
+
+#: lib/ui/stdcontext.inc:213
 #, fuzzy
 msgid "DefSkip|D"
 msgstr "DefSkip"
 
-#: lib/ui/stdcontext.inc:196
+#: lib/ui/stdcontext.inc:214
 #, fuzzy
 msgid "SmallSkip|S"
 msgstr "SmallSkip"
 
-#: lib/ui/stdcontext.inc:197
+#: lib/ui/stdcontext.inc:215
 #, fuzzy
 msgid "MedSkip|M"
 msgstr "MedSkip"
 
-#: lib/ui/stdcontext.inc:198
+#: lib/ui/stdcontext.inc:216
 #, fuzzy
 msgid "BigSkip|B"
 msgstr "BigSkip"
 
-#: lib/ui/stdcontext.inc:199
+#: lib/ui/stdcontext.inc:217
 #, fuzzy
 msgid "VFill|F"
 msgstr "VFill"
 
-#: lib/ui/stdcontext.inc:200
+#: lib/ui/stdcontext.inc:218
 #, fuzzy
 msgid "Custom|C"
 msgstr "自訂"
 
-#: lib/ui/stdcontext.inc:202
+#: lib/ui/stdcontext.inc:220
 #, fuzzy
 msgid "Settings...|e"
 msgstr "設定值…|S"
 
-#: lib/ui/stdcontext.inc:209
+#: lib/ui/stdcontext.inc:227
 #, fuzzy
 msgid "Include|c"
 msgstr "包含"
 
-#: lib/ui/stdcontext.inc:210
+#: lib/ui/stdcontext.inc:228
 #, fuzzy
 msgid "Input|p"
 msgstr "輸入"
 
-#: lib/ui/stdcontext.inc:211
+#: lib/ui/stdcontext.inc:229
 #, fuzzy
 msgid "Verbatim|V"
 msgstr "逐字地"
 
-#: lib/ui/stdcontext.inc:212
+#: lib/ui/stdcontext.inc:230
 msgid "Verbatim (marked blanks)|b"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:213
+#: lib/ui/stdcontext.inc:231
 #, fuzzy
 msgid "Listing|L"
 msgstr "列表"
 
-#: lib/ui/stdcontext.inc:217
+#: lib/ui/stdcontext.inc:235
 #, fuzzy
 msgid "Edit included file...|E"
 msgstr "包含檔…|d"
 
-#: lib/ui/stdcontext.inc:224 lib/ui/stdmenus.inc:378
+#: lib/ui/stdcontext.inc:242 lib/ui/stdmenus.inc:378
 #, fuzzy
 msgid "New Page|N"
 msgstr "新增|N"
 
-#: lib/ui/stdcontext.inc:225 lib/ui/stdmenus.inc:379
+#: lib/ui/stdcontext.inc:243 lib/ui/stdmenus.inc:379
 msgid "Page Break|a"
 msgstr "分頁符號|a"
 
-#: lib/ui/stdcontext.inc:226 lib/ui/stdmenus.inc:380
+#: lib/ui/stdcontext.inc:244 lib/ui/stdmenus.inc:380
 msgid "Clear Page|C"
 msgstr "清空頁面|C"
 
-#: lib/ui/stdcontext.inc:227 lib/ui/stdmenus.inc:381
+#: lib/ui/stdcontext.inc:245 lib/ui/stdmenus.inc:381
 msgid "Clear Double Page|D"
 msgstr "清空雙頁|D"
 
-#: lib/ui/stdcontext.inc:234 lib/ui/stdmenus.inc:375
+#: lib/ui/stdcontext.inc:252 lib/ui/stdmenus.inc:375
 #, fuzzy
 msgid "Ragged Line Break|R"
 msgstr "分列符號|L"
 
-#: lib/ui/stdcontext.inc:235 lib/ui/stdmenus.inc:376
+#: lib/ui/stdcontext.inc:253 lib/ui/stdmenus.inc:376
 #, fuzzy
 msgid "Justified Line Break|J"
 msgstr "分列符號|L"
 
-#: lib/ui/stdcontext.inc:242 lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:88
+#: lib/ui/stdcontext.inc:260 lib/ui/stdcontext.inc:306 lib/ui/stdmenus.inc:88
 #: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:1034
 #: src/mathed/InsetMathNest.cpp:547
 msgid "Cut"
 msgstr "剪下"
 
-#: lib/ui/stdcontext.inc:243 lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:89
+#: lib/ui/stdcontext.inc:261 lib/ui/stdcontext.inc:307 lib/ui/stdmenus.inc:89
 #: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:1039
 #: src/mathed/InsetMathNest.cpp:555
 msgid "Copy"
 msgstr "複製"
 
-#: lib/ui/stdcontext.inc:244 lib/ui/stdcontext.inc:290 lib/ui/stdmenus.inc:90
+#: lib/ui/stdcontext.inc:262 lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:90
 #: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:992
 #: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:527
 msgid "Paste"
 msgstr "貼上"
 
-#: lib/ui/stdcontext.inc:245 lib/ui/stdcontext.inc:291 lib/ui/stdmenus.inc:91
+#: lib/ui/stdcontext.inc:263 lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:91
 msgid "Paste Recent|e"
 msgstr "貼上最近使用物件|e"
 
-#: lib/ui/stdcontext.inc:247
+#: lib/ui/stdcontext.inc:265
 #, fuzzy
 msgid "Jump to Saved Bookmark|B"
 msgstr "儲存書籤 1|S"
 
-#: lib/ui/stdcontext.inc:249 lib/ui/stdmenus.inc:98
+#: lib/ui/stdcontext.inc:267 lib/ui/stdmenus.inc:98
 msgid "Move Paragraph Up|o"
 msgstr "向上移動段落|o"
 
-#: lib/ui/stdcontext.inc:250 lib/ui/stdmenus.inc:99
+#: lib/ui/stdcontext.inc:268 lib/ui/stdmenus.inc:99
 msgid "Move Paragraph Down|v"
 msgstr "向下移動段落|v"
 
-#: lib/ui/stdcontext.inc:252
+#: lib/ui/stdcontext.inc:270
 #, fuzzy
 msgid "Promote Section|r"
 msgstr "清空區段"
 
-#: lib/ui/stdcontext.inc:253
+#: lib/ui/stdcontext.inc:271
 #, fuzzy
 msgid "Demote Section|m"
 msgstr "清空區段"
 
-#: lib/ui/stdcontext.inc:254
+#: lib/ui/stdcontext.inc:272
 #, fuzzy
 msgid "Move Section down|d"
 msgstr "關閉區段"
 
-#: lib/ui/stdcontext.inc:255
+#: lib/ui/stdcontext.inc:273
 #, fuzzy
 msgid "Move Section up|u"
 msgstr "關閉區段"
 
-#: lib/ui/stdcontext.inc:256
+#: lib/ui/stdcontext.inc:274
 #, fuzzy
 msgid "Insert Short Title|T"
 msgstr "短標題|S"
 
-#: lib/ui/stdcontext.inc:258
+#: lib/ui/stdcontext.inc:276
 #, fuzzy
 msgid "Apply Last Text Style|A"
 msgstr "文字樣式|S"
 
-#: lib/ui/stdcontext.inc:259 lib/ui/stdmenus.inc:101
+#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:101
 msgid "Text Style|S"
 msgstr "文字樣式|S"
 
-#: lib/ui/stdcontext.inc:260 lib/ui/stdmenus.inc:102
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:102
 msgid "Paragraph Settings...|P"
 msgstr "段落設定值…|P"
 
-#: lib/ui/stdcontext.inc:262
+#: lib/ui/stdcontext.inc:280
 msgid "Fullscreen Mode"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:270 lib/ui/stdmenus.inc:216
+#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:216
 #: lib/ui/stdtoolbars.inc:171
 #, fuzzy
 msgid "Append Argument"
 msgstr "更多參數"
 
-#: lib/ui/stdcontext.inc:271 lib/ui/stdmenus.inc:217
+#: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:217
 #: lib/ui/stdtoolbars.inc:170
 #, fuzzy
 msgid "Remove Last Argument"
 msgstr "列出參數"
 
-#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:219
+#: lib/ui/stdcontext.inc:291 lib/ui/stdmenus.inc:219
 #: lib/ui/stdtoolbars.inc:173
 msgid "Make First Non-Optional into Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:292 lib/ui/stdmenus.inc:220
 #: lib/ui/stdtoolbars.inc:174
 msgid "Make Last Optional into Non-Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:221
+#: lib/ui/stdcontext.inc:293 lib/ui/stdmenus.inc:221
 #: lib/ui/stdtoolbars.inc:177
 #, fuzzy
 msgid "Insert Optional Argument"
 msgstr "列出參數"
 
-#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:222
 #: lib/ui/stdtoolbars.inc:176
 #, fuzzy
 msgid "Remove Optional Argument"
 msgstr "開啟的選擇性引數內欄"
 
-#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:224
+#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:224
 #: lib/ui/stdtoolbars.inc:180
 msgid "Append Argument Eating From The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:225
+#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:225
 #: lib/ui/stdtoolbars.inc:181
 #, fuzzy
 msgid "Append Optional Argument Eating From The Right"
 msgstr "開啟的選擇性引數內欄"
 
-#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:226
+#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:226
 #: lib/ui/stdtoolbars.inc:179
 msgid "Remove Last Argument Spitting Out To The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:307 lib/ui/stdcontext.inc:319
+#: lib/ui/stdcontext.inc:325 lib/ui/stdcontext.inc:337
 #, fuzzy
 msgid "Edit externally...|x"
 msgstr "於外部編輯檔案"
 
-#: lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:163
+#: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:163
 msgid "Top Line|T"
 msgstr "頂列|T"
 
-#: lib/ui/stdcontext.inc:330 lib/ui/stdmenus.inc:164
+#: lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:164
 msgid "Bottom Line|B"
 msgstr "底列|B"
 
-#: lib/ui/stdcontext.inc:331 lib/ui/stdmenus.inc:165
+#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:165
 msgid "Left Line|L"
 msgstr "左列|L"
 
-#: lib/ui/stdcontext.inc:332 lib/ui/stdmenus.inc:166
+#: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:166
 msgid "Right Line|R"
 msgstr "右列|R"
 
-#: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:181
+#: lib/ui/stdcontext.inc:362 lib/ui/stdmenus.inc:181
 msgid "Copy Row|o"
 msgstr "複製列|o"
 
-#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:186
+#: lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:186
 msgid "Copy Column|p"
 msgstr "複製欄|p"
 
@@ -18169,12 +18159,64 @@ msgstr "美術圖形|#C#c"
 msgid "Horizontal Space Settings"
 msgstr "垂直空格設定值"
 
-#: src/frontends/qt4/GuiHSpace.cpp:100
+#: src/frontends/qt4/GuiHSpace.cpp:116
 msgid ""
 "Insert the spacing even after a line break.\n"
 "Note that a protected Half Quad will be turned into\n"
 "a vertical space if used at the beginning of a paragraph!"
 msgstr ""
+
+#: src/frontends/qt4/GuiHSpace.cpp:141 src/frontends/qt4/GuiHSpace.cpp:155
+#, fuzzy
+msgid "Thin space"
+msgstr "細薄空格\t\\,"
+
+#: src/frontends/qt4/GuiHSpace.cpp:142
+#, fuzzy
+msgid "Medium space"
+msgstr "中等空格\t\\:"
+
+#: src/frontends/qt4/GuiHSpace.cpp:143
+#, fuzzy
+msgid "Thick space"
+msgstr "粗寬空格\t\\;"
+
+#: src/frontends/qt4/GuiHSpace.cpp:144 src/frontends/qt4/GuiHSpace.cpp:156
+#, fuzzy
+msgid "Negative thin space"
+msgstr "負空格\t\\!"
+
+#: src/frontends/qt4/GuiHSpace.cpp:145
+#, fuzzy
+msgid "Negative medium space"
+msgstr "負空格\t\\!"
+
+#: src/frontends/qt4/GuiHSpace.cpp:146
+#, fuzzy
+msgid "Negative thick space"
+msgstr "負空格\t\\!"
+
+#: src/frontends/qt4/GuiHSpace.cpp:147 src/frontends/qt4/GuiHSpace.cpp:157
+msgid "Half Quad (0.5 em)"
+msgstr ""
+
+#: src/frontends/qt4/GuiHSpace.cpp:148 src/frontends/qt4/GuiHSpace.cpp:158
+msgid "Quad (1 em)"
+msgstr ""
+
+#: src/frontends/qt4/GuiHSpace.cpp:149 src/frontends/qt4/GuiHSpace.cpp:159
+#, fuzzy
+msgid "Double Quad (2 em)"
+msgstr "雙倍項目："
+
+#: src/frontends/qt4/GuiHSpace.cpp:154
+#, fuzzy
+msgid "Inter-word space"
+msgstr "字詞間空格|w"
+
+#: src/frontends/qt4/GuiHSpace.cpp:160 src/insets/InsetSpace.cpp:108
+msgid "Horizontal Fill"
+msgstr "水平填充"
 
 #: src/frontends/qt4/GuiHyperlink.cpp:29
 #, fuzzy
@@ -19355,7 +19397,7 @@ msgstr "正在儲存全部文件…"
 msgid "All documents saved."
 msgstr "所有文件已儲存"
 
-#: src/frontends/qt4/GuiView.cpp:2137
+#: src/frontends/qt4/GuiView.cpp:2138
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
@@ -20203,87 +20245,107 @@ msgstr "美化參照"
 msgid "FormatRef: "
 msgstr "格式化參照："
 
-#: src/insets/InsetSpace.cpp:70
+#: src/insets/InsetSpace.cpp:72
 #, fuzzy
 msgid "Interword Space"
 msgstr "字詞間空格|w"
 
-#: src/insets/InsetSpace.cpp:73
+#: src/insets/InsetSpace.cpp:75
 #, fuzzy
 msgid "Protected Space"
 msgstr "保護的空格|r"
 
-#: src/insets/InsetSpace.cpp:76
+#: src/insets/InsetSpace.cpp:78
 #, fuzzy
 msgid "Thin Space"
 msgstr "窄空格|T"
 
-#: src/insets/InsetSpace.cpp:79
+#: src/insets/InsetSpace.cpp:81
+#, fuzzy
+msgid "Medium Space"
+msgstr "中等空格\t\\:"
+
+#: src/insets/InsetSpace.cpp:84
+#, fuzzy
+msgid "Thick Space"
+msgstr "窄空格|T"
+
+#: src/insets/InsetSpace.cpp:87
 #, fuzzy
 msgid "Quad Space"
 msgstr "空格"
 
-#: src/insets/InsetSpace.cpp:82
+#: src/insets/InsetSpace.cpp:90
 #, fuzzy
 msgid "QQuad Space"
 msgstr "空格"
 
-#: src/insets/InsetSpace.cpp:85
+#: src/insets/InsetSpace.cpp:93
 #, fuzzy
 msgid "Enspace"
 msgstr "空格"
 
-#: src/insets/InsetSpace.cpp:88
+#: src/insets/InsetSpace.cpp:96
 #, fuzzy
 msgid "Enskip"
 msgstr "nsim"
 
-#: src/insets/InsetSpace.cpp:91
+#: src/insets/InsetSpace.cpp:99
 #, fuzzy
 msgid "Negative Thin Space"
 msgstr "負空格\t\\!"
 
-#: src/insets/InsetSpace.cpp:97
+#: src/insets/InsetSpace.cpp:102
+#, fuzzy
+msgid "Negative Medium Space"
+msgstr "負空格\t\\!"
+
+#: src/insets/InsetSpace.cpp:105
+#, fuzzy
+msgid "Negative Thick Space"
+msgstr "負空格\t\\!"
+
+#: src/insets/InsetSpace.cpp:111
 #, fuzzy
 msgid "Protected Horizontal Fill"
 msgstr "水平填充"
 
-#: src/insets/InsetSpace.cpp:100
+#: src/insets/InsetSpace.cpp:114
 #, fuzzy
 msgid "Horizontal Fill (Dots)"
 msgstr "水平填充"
 
-#: src/insets/InsetSpace.cpp:103
+#: src/insets/InsetSpace.cpp:117
 #, fuzzy
 msgid "Horizontal Fill (Rule)"
 msgstr "水平填充"
 
-#: src/insets/InsetSpace.cpp:106
+#: src/insets/InsetSpace.cpp:120
 #, fuzzy
 msgid "Horizontal Fill (Left Arrow)"
 msgstr "水平填充"
 
-#: src/insets/InsetSpace.cpp:109
+#: src/insets/InsetSpace.cpp:123
 #, fuzzy
 msgid "Horizontal Fill (Right Arrow)"
 msgstr "水平填充"
 
-#: src/insets/InsetSpace.cpp:112
+#: src/insets/InsetSpace.cpp:126
 #, fuzzy
 msgid "Horizontal Fill (Up Brace)"
 msgstr "水平填充"
 
-#: src/insets/InsetSpace.cpp:115
+#: src/insets/InsetSpace.cpp:129
 #, fuzzy
 msgid "Horizontal Fill (Down Brace)"
 msgstr "水平填充"
 
-#: src/insets/InsetSpace.cpp:118
+#: src/insets/InsetSpace.cpp:132
 #, fuzzy, c-format
 msgid "Horizontal Space (%1$s)"
 msgstr "水平線"
 
-#: src/insets/InsetSpace.cpp:122
+#: src/insets/InsetSpace.cpp:136
 #, fuzzy, c-format
 msgid "Protected Horizontal Space (%1$s)"
 msgstr "保護的空格|r"
@@ -20517,11 +20579,11 @@ msgstr "無法在「%1$s」中變更欄數"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "無法在「%1$s」中加入水平網格線"
 
-#: src/mathed/InsetMathNest.cpp:958
+#: src/mathed/InsetMathNest.cpp:957
 msgid "create new math text environment ($...$)"
 msgstr "建立新的數學文字環境 ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:961
+#: src/mathed/InsetMathNest.cpp:960
 msgid "entered math text mode (textrm)"
 msgstr "已進入數學文字模式 (textrm)"
 
