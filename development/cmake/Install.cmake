@@ -8,6 +8,7 @@ message(STATUS "installing to ${CMAKE_INSTALL_PREFIX}, defined by CMAKE_INSTALL_
 # and installs the files in CMAKE_INSTALL_PREFIX/_current_dir
 # dir_item is on item of the remaining arguments
 macro(lyx_install _parent_src_dir _gl_dir _file_type)
+  #message("checking parents ${_parent_src_dir}")
   file(GLOB _dirs RELATIVE "${_parent_src_dir}" ${_parent_src_dir}/${_gl_dir})
   #cmake bug on Windows: if _gl_dir==. _dirs is empty but on linux _dirs==.
   if(NOT _dirs)
