@@ -75,7 +75,9 @@
    <item row="0" column="0" >
     <widget class="QTextEdit" name="viewSourceTV" >
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Ignored" hsizetype="Expanding" >
+      <sizepolicy>
+       <hsizetype>3</hsizetype>
+       <vsizetype>13</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
