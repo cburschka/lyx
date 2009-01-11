@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
+\use_default_options false
 \language japanese
 \inputencoding auto
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -3215,6 +3216,39 @@ hyperref
 \end_layout
 
 \begin_layout Subsection
+japanese
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "japanese"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+language/japanese/japanese/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+babel japanese
+\family default
+オプションは、文書言語が日本語のときに、節見出し等を日本語で出力するために必要です。本オプションを使用するためには、日本語TeXシステムpTeX（CTAN:
+ 
+\family typewriter
+language/japanese/ptex/
+\family default
+）が必要です。
+\end_layout
+
+\begin_layout Subsection
 longtable
 \end_layout
 
@@ -3240,10 +3274,6 @@ macros/latex/required/tools/
 longtable
 \family default
 パッケージは、 LyXが複数ページにわたる表を正しく出力することができるようになるために必要です。
-\end_layout
-
-\begin_layout Description
-
 \end_layout
 
 \begin_layout Subsection
