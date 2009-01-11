@@ -22,6 +22,20 @@ ClassOptions
 	Other                 "aps,manuscript"
 End
 
+Preamble
+	\@ifundefined{textcolor}{}
+	{%
+	 \definecolor{BLACK}{gray}{0}
+	 \definecolor{WHITE}{gray}{1}
+	 \definecolor{RED}{rgb}{1,0,0}
+	 \definecolor{GREEN}{rgb}{0,1,0}
+	 \definecolor{BLUE}{rgb}{0,0,1}
+	 \definecolor{CYAN}{cmyk}{1,0,0,0}
+	 \definecolor{MAGENTA}{cmyk}{0,1,0,0}
+	 \definecolor{YELLOW}{cmyk}{0,0,1,0}
+	 }
+EndPreamble
+
 
 Style Standard
 	Margin                Static
