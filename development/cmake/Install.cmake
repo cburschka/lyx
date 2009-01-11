@@ -49,13 +49,14 @@ macro(lyx_install _parent_src_dir _gl_dir _file_type)
   endforeach(_dir)
 endmacro(lyx_install)
 
+
 # language-specific-directories (like ca, de, es ...) are now globbed as "[a-z][a-z]"
 set(_all_languages "[a-z][a-z]")
 
 lyx_install(${TOP_SRC_DIR}/lib bind         *.bind   . ${_all_languages})
 lyx_install(${TOP_SRC_DIR}/lib commands     *.def    .)
 
-# this is handled in doc/CMakefile.txt
+# this is handled in doc/CMakeLists.txt
 #lyx_install(${TOP_SRC_DIR}/lib doc          *.lyx    . ${_all_languages})
 #lyx_install(${TOP_SRC_DIR}/lib doc          *.txt    . ${_all_languages})
 lyx_install(${TOP_SRC_DIR}/lib doc          *      biblio clipart)
@@ -68,7 +69,7 @@ lyx_install(${TOP_SRC_DIR}/lib images       *      . math commands attic)
 lyx_install(${TOP_SRC_DIR}/lib kbd          *      .)
 lyx_install(${TOP_SRC_DIR}/lib layouts      *      .)
 lyx_install(${TOP_SRC_DIR}/lib lyx2lyx      *.py   .)
-lyx_install(${TOP_SRC_DIR}/lib scripts      *      .)
+lyx_install(${TOP_SRC_DIR}/lib scripts      *.py   .)
 lyx_install(${TOP_SRC_DIR}/lib templates    *      .)
 lyx_install(${TOP_SRC_DIR}/lib tex          *      .)
 lyx_install(${TOP_SRC_DIR}/lib ui           *      .)
