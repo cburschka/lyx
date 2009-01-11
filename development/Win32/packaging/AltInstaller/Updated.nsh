@@ -11,12 +11,14 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\Lib\optparse.py"
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
+ File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\external_templates"
  File "${PRODUCT_SOURCEDIR}\Resources\symbols"
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\LFUNs.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\UserGuide.lyx"
@@ -32,8 +34,9 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\fr"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\EmbeddedObjects.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Math.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\UserGuide.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\ja"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\ja\LaTeXConfig.lyx"
  SetOutPath "$INSTDIR\Resources\examples"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\biblioExample.bib"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\Braile.lyx"
@@ -46,6 +49,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\hanging.module"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\minimalistic.module"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\recipebook.layout"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\revtex4.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\siamltex.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\stdinsets.inc"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
