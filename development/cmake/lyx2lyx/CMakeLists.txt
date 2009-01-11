@@ -7,6 +7,9 @@
 
 project(lyx2lyx)
 
+set(_project "scripts")
+#include(../PyCompile)
+
 include(FindPythonInterp)
 
 file(GLOB _lyx2lyx_py_files ${TOP_SRC_DIR}/lib/lyx2lyx/*.py)
