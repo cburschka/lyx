@@ -7,7 +7,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\python26.dll"
  File "${PRODUCT_SOURCEDIR}\bin\python.exe"
  File /r "${PRODUCT_SOURCEDIR}\bin\DLLs"
- File /r "${PRODUCT_SOURCEDIR}\bin\Lib"
+ SetOutPath "$INSTDIR\bin\Lib"
+ File "${PRODUCT_SOURCEDIR}\bin\Lib\optparse.py"
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
@@ -16,6 +17,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\LFUNs.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\de"
