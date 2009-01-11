@@ -52,6 +52,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\revtex4.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\siamltex.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\stdinsets.inc"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\stdletter.inc"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_6.py"
@@ -59,6 +60,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\man\tex2lyx.1"
  SetOutPath "$INSTDIR\Resources\templates"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\ACM-siggraph.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\templates\letter.lyx"
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdcontext.inc"
 

@@ -92,49 +92,40 @@ End
 Style Closing
 	CopyStyle             Signature
 	LatexName             closing
-	LeftMargin            Signature:xx
 	LabelString           "Closing:"
 End
 
 
 Style cc
-	Margin                Static
-	LatexType             Command
+	CopyStyle             Signature
 	LatexName             cc
-	LeftMargin            cc:xx
-	LabelSep              xx
-	TopSep                0.4
-	BottomSep             0.4
-	ParSep                0.4
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Static
-	LeftMargin            Signature:xx
 	LabelString           "cc:"
+	LabelFont
+	  Series              Bold
+	  Shape               Italic
+	  Color               green
+	EndFont
 End
 
 
 Style encl
 	CopyStyle             cc
 	LatexName             encl
-	LeftMargin            Signature:xx
 	LabelString           "encl:"
 	Spacing               Other 1.5
 End
 
 
 Style Location
-	CopyStyle             encl
-	LatexName             location
-	LeftMargin            Signature:xx
+	CopyStyle             cc
+	LatexName             thispagestyle{firstpage}\location
 	LabelString           "Location:"
 End
 
 
 Style Telephone
-	CopyStyle             encl
-	LatexName             telephone
-	LeftMargin            Signature:xx
+	CopyStyle             cc
+	LatexName             thispagestyle{firstpage}\telephone
 	LabelString           "Telephone:"
 End
 
