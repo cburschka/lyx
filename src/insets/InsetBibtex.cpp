@@ -38,6 +38,8 @@
 #include "support/Path.h"
 #include "support/textutils.h"
 
+#include <boost/regex.hpp>
+
 #include <limits>
 
 using namespace std;
@@ -725,6 +727,14 @@ namespace {
 
 			// ok, could be a command of some sort
 			// let's see if it corresponds to some unicode
+			// unicodesymbols has things in the form: \"{u},
+			// whereas we may see things like: \"u. So we'll
+			// look for that and change it, if necessary.
+			static boost::regex const reg("^\\\\\\W\\w");
+			if (boost::regex_search(to_utf8(val), reg)) {
+				val.insert(3, from_ascii("}"));
+				val.insert(2, from_ascii("{"));
+			}
 			docstring rem;
 			docstring const cnvtd = Encodings::fromLaTeXCommand(val, rem);
 			if (!cnvtd.empty()) {
