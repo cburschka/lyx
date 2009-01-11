@@ -449,6 +449,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 	// write it to a file (so far the complete file)
 	string exportfile;
 	string mangled;
+	// bug 5681
 	if (type(params()) == LISTINGS) {
 		exportfile = incfile;
 		mangled = DocFileName(included_file).mangledFilename();
