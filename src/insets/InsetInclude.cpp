@@ -447,10 +447,17 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 	}
 
 	// write it to a file (so far the complete file)
-	string const exportfile = changeExtension(incfile, ".tex");
-	string const mangled =
-		DocFileName(changeExtension(included_file.absFilename(),".tex")).
+	string exportfile;
+	string mangled;
+	if (type(params()) == LISTINGS) {
+		exportfile = incfile;
+		mangled = DocFileName(included_file).mangledFilename();
+	} else {
+		exportfile = changeExtension(incfile, ".tex");
+		mangled = DocFileName(changeExtension(included_file.absFilename(), ".tex")).
 			mangledFilename();
+	}
+
 	FileName const writefile(makeAbsPath(mangled, masterBuffer->temppath()));
 
 	if (!runparams.nice)
