@@ -97,6 +97,8 @@ What's new
 - Fix bug that telephone number and location didn't appear in the output
   of letters (bug 5684).
 
+- Fix a LaTeX export error that prevents the inclusion of two program listings
+  that differ only by file extension (bug 5681).
 
 * USER INTERFACE
 
