@@ -15,6 +15,7 @@
 #include "InsetSpecialChar.h"
 
 #include "Dimension.h"
+#include "Font.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
@@ -220,7 +221,10 @@ int InsetSpecialChar::latex(odocstream & os,
 		os << "\\ldots{}";
 		break;
 	case MENU_SEPARATOR:
-		os << "\\lyxarrow{}";
+		if (rp.local_font->isRightToLeft())
+			os << "\\lyxarrow*{}";
+		else
+			os << "\\lyxarrow{}";
 		break;
 	case SLASH:
 		os << "\\slash{}";

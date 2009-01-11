@@ -60,7 +60,10 @@ static string const lyxline_def =
 static string const noun_def = "\\newcommand{\\noun}[1]{\\textsc{#1}}";
 
 static string const lyxarrow_def =
-	"\\newcommand{\\lyxarrow}{\\leavevmode\\,$\\triangleright$\\,\\allowbreak}";
+	"\\newcommand{\\lyxarrow}{%\n"
+	"\\@ifstar\n"
+	"{\\leavevmode\\,$\\triangleleft$\\,\\allowbreak}\n"
+	"{\\leavevmode\\,$\\triangleright$\\,\\allowbreak}}";
 
 // for quotes without babel. This does not give perfect results, but
 // anybody serious about non-english quotes should use babel (JMarc).
