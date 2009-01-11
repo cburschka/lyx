@@ -105,6 +105,9 @@ What's new
 - Ignore the master_buffer setting in Document>Settings if the current
   document is no real child. This fixes a crash when using the outliner
   in such files (bug 5653).
+  
+- Set a proper file filter in the file dialog for inserting plain text.
+  This fixes a crash when attempting to insert plain text (bug 5671).
 
 - Speed up editing when the document contains paragraphs with many (>1000)
   insets (bug 4443).
@@ -132,8 +135,6 @@ What's new
 
 - Allow pasting of text from applications that set the clipboard mimetype
   to both graphics and text (bug 5560).
-  
-- Set a proper file filter in the file dialog for inserting plain text.
 
 - Fix setting shortcuts with a Return key in the shortcuts dialog (bug 5648).
 
