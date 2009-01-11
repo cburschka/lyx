@@ -51,6 +51,9 @@ What's new
 
 - New layout file to typeset recipes.
 
+- The menu separator special symbol is now direction aware, i.e., it
+  points to the left in RTL-text (LaTeX output only) (bug 3560).
+
 
 * USER INTERFACE
 
