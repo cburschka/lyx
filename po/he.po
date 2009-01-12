@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-01-12 09:10+0100\n"
-"PO-Revision-Date: 2008-08-04 17:42+0100\n"
+"PO-Revision-Date: 2009-01-12 17:42+0100\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17049,15 +17049,15 @@ msgstr "לא יכול לקרוא את את התבנית"
 
 #: src/buffer_funcs.cpp:389
 msgid "\\arabic{enumi}."
-msgstr "\\arabic{enumi}."
+msgstr ".\\arabic{enumi}"
 
 #: src/buffer_funcs.cpp:395
 msgid "\\roman{enumiii}."
-msgstr "\\roman{enumiii}."
+msgstr ".\\roman{enumiii}"
 
 #: src/buffer_funcs.cpp:398
 msgid "\\Alph{enumiv}."
-msgstr "\\Alph{enumiv}."
+msgstr ".\\Alph{enumiv}"
 
 #: src/buffer_funcs.cpp:415 src/insets/InsetCaption.cpp:293
 msgid "Senseless!!! "
