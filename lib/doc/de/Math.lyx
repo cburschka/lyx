@@ -10918,12 +10918,11 @@ Leerraum ! horizontaler ! vordefiniert
 \begin_layout Standard
 Ab und an ist es notwendig in einer Formel horizontalen Leerraum einzufügen.
  Dazu gibt man ein geschütztes Leerzeichen ein.
- Es erscheint ein blaues 
+ Es erscheint ein 
 \begin_inset Quotes gld
 \end_inset
 
 
-\series bold
 \color blue
 
 \begin_inset ERT
@@ -10939,7 +10938,6 @@ leer
 \end_inset
 
 
-\series default
 \color inherit
 
 \begin_inset Quotes grd
@@ -11759,11 +11757,11 @@ Leerraum ! horizontaler ! variabel
 \end_layout
 
 \begin_layout Standard
-Leerraum mit vorgegebener Länge lässt sich in LyX mit dem Befehl 
+Leerraum mit vorgegebener Länge lässt sich mit dem Befehl 
 \series bold
 
 \backslash
-hspace{Länge}
+hspace
 \series default
 
 \begin_inset Index
@@ -11778,22 +11776,59 @@ hspace
 \end_inset
 
  einfügen.
- Dabei können alle Längeneinheiten verwendet werden, die in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Verfügbare-Einheiten"
-
-\end_inset
-
- aufgelistet sind, mit Ausnahme der Einheit 
+ Es erscheint ein langes 
 \begin_inset Quotes gld
 \end_inset
 
-mu
+
+\color blue
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leer 
+\end_layout
+
+\end_inset
+
+
+\color inherit
+
 \begin_inset Quotes grd
 \end_inset
 
 .
+ Die Länge kann eingestellt werden, indem man mit der linken Maustaste auf
+ das 
+\begin_inset Quotes gld
+\end_inset
+
+
+\color blue
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leer 
+\end_layout
+
+\end_inset
+
+
+\color inherit
+
+\begin_inset Quotes grd
+\end_inset
+
+ klickt.
  Die Länge darf auch negativ sein.
  Um so viel Leerraum einzufügen, dass die Formel allen verfügbaren Platz
  einnimmt, benutzt man den Befehl 
@@ -11836,7 +11871,9 @@ hfill
 \begin_inset Text
 
 \begin_layout Plain Layout
-Befehl
+Befehl (
+\backslash
+hspace Länge)
 \end_layout
 
 \end_inset
@@ -11864,7 +11901,11 @@ hspace{3cm
 
 A
 \backslash
-not=C
+not=C (3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm)
 \end_layout
 
 \end_inset
@@ -11895,7 +11936,11 @@ hspace{-1mm
 
 A
 \backslash
-not=A
+not=A (-1
+\begin_inset space \thinspace{}
+\end_inset
+
+mm)
 \end_layout
 
 \end_inset
@@ -12031,7 +12076,7 @@ Horizontaler
 
 Abstand
 \family default
- eingefügt werden, was in Formeln nicht möglich ist:
+ eingefügt werden:
 \end_layout
 
 \begin_layout Standard

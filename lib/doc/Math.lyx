@@ -10935,12 +10935,11 @@ arg   "space-insert protected"
 \end_inset
 
 ).
- A blue 
+ A 
 \begin_inset Quotes eld
 \end_inset
 
 
-\series bold
 \color blue
 
 \begin_inset ERT
@@ -10956,7 +10955,6 @@ spce
 \end_inset
 
 
-\series default
 \color inherit
 
 \begin_inset Quotes erd
@@ -11784,15 +11782,11 @@ Space ! horizontal ! variable
 \end_layout
 
 \begin_layout Standard
-Space with a defined length can be inserted in LyX with the command
-\begin_inset Newline newline
-\end_inset
-
-
+Space with a defined length can be inserted with the command 
 \series bold
 
 \backslash
-hspace{length}
+hspace
 \series default
 
 \begin_inset Index
@@ -11807,18 +11801,54 @@ hspace
 \end_inset
 
 .
- For the length all units listed in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Available-units"
-
-\end_inset
-
- are allowed, except of the unit 
+ Then a long 
 \begin_inset Quotes eld
 \end_inset
 
-mu
+
+\color blue
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\color inherit
+
+\begin_inset Quotes erd
+\end_inset
+
+ appears.
+ The length can be specified by left-clicking on the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\color blue
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\color inherit
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -11865,7 +11895,9 @@ hfill
 \begin_inset Text
 
 \begin_layout Plain Layout
-Command
+Command (
+\backslash
+hspace length)
 \end_layout
 
 \end_inset
@@ -11887,13 +11919,30 @@ Result
 \begin_layout Plain Layout
 A=B
 \backslash
-hspace{3cm
+hspace
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $\to$
 \end_inset
 
 A
 \backslash
-not=C
+not=C (3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm)
 \end_layout
 
 \end_inset
@@ -11918,13 +11967,30 @@ not=C
 \begin_layout Plain Layout
 A
 \backslash
-hspace{-1mm
+hspace
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $\to$
 \end_inset
 
 A
 \backslash
-not=A
+not=A (-1
+\begin_inset space \thinspace{}
+\end_inset
+
+mm)
 \end_layout
 
 \end_inset
@@ -12060,7 +12126,7 @@ Horizontal
 
 Space
 \family default
-, what is not possible in formulas:
+:
 \end_layout
 
 \begin_layout Standard

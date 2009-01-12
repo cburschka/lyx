@@ -1,4 +1,4 @@
-#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -10822,7 +10822,6 @@ Ctrl-Espace
 \end_inset
 
 
-\series bold
 \color blue
 
 \begin_inset ERT
@@ -10838,7 +10837,6 @@ spce
 \end_inset
 
 
-\series default
 \color inherit
 
 \begin_inset Quotes erd
@@ -11663,14 +11661,11 @@ Espace ! horizontal ! variable
 
 \begin_layout Standard
 Dans LyX, on peut insérer une espace de longueur définie avec la commande
-\begin_inset Newline newline
-\end_inset
-
-
+ 
 \series bold
 
 \backslash
-hspace{length}
+hspace
 \series default
 
 \begin_inset Index
@@ -11685,18 +11680,58 @@ hspace
 \end_inset
 
 .
- Pour la valeur de la longueur toutes les unités qui sont listées dans 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Unités-disponibles"
-
-\end_inset
-
- sont utilisables à l'exception de l'unité 
+ Un 
 \begin_inset Quotes eld
 \end_inset
 
-mu
+
+\color blue
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\color inherit
+
+\begin_inset Quotes erd
+\end_inset
+
+ long apparaît.
+ La longueur 
+\lang english
+can be specified by left-clicking on the
+\lang french
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\color blue
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\color inherit
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -11743,7 +11778,9 @@ hfill
 \begin_inset Text
 
 \begin_layout Plain Layout
-Commande
+Commande (
+\backslash
+hspace longueur)
 \end_layout
 
 \end_inset
@@ -11771,7 +11808,11 @@ hspace{3cm
 
 A
 \backslash
-not=C
+not=C (3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm)
 \end_layout
 
 \end_inset
@@ -11802,7 +11843,11 @@ hspace{-1mm
 
 A
 \backslash
-not=A
+not=A (-1
+\begin_inset space \thinspace{}
+\end_inset
+
+mm)
 \end_layout
 
 \end_inset
@@ -11938,9 +11983,9 @@ Typographie
 \end_inset
 
 spéciale\SpecialChar \menuseparator
-Espacement horizontal, 
+Espacement horizontal
 \family default
-ce qui n'est pas possible avec les formules:
+:
 \end_layout
 
 \begin_layout Standard

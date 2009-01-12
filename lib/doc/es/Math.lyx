@@ -11078,8 +11078,10 @@ Ctrl-Espacio
 \end_inset
 
 
+\color black
+
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -11091,10 +11093,12 @@ spce
 \end_inset
 
 
+\color inherit
+
 \begin_inset Quotes frd
 \end_inset
 
- azul, y pulsando 
+, y pulsando 
 \family sans
 Espacio
 \family default
@@ -11916,14 +11920,11 @@ Espacio ! horizontal ! variable
 
 \begin_layout Standard
 En LyX se puede insertar espacio con una longitud definida con el comando
-\begin_inset Newline newline
-\end_inset
-
-
+ 
 \series bold
 
 \backslash
-hspace{longitud}
+hspace
 \series default
 
 \begin_inset Index
@@ -11938,18 +11939,62 @@ hspace
 \end_inset
 
 .
- Para la longitud están permitidas todas las unidades de la 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Unidades-disponibles"
-
-\end_inset
-
-, excepto la unidad 
+ Aparece un 
+\lang english
+long
+\lang spanish
+ 
 \begin_inset Quotes fld
 \end_inset
 
-mu
+
+\color black
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\color inherit
+
+\begin_inset Quotes frd
+\end_inset
+
+.
+ La longitud 
+\lang english
+can be specified by left-clicking on the 
+\lang spanish
+
+\begin_inset Quotes fld
+\end_inset
+
+
+\color black
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\color inherit
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -11994,7 +12039,9 @@ hfill
 \begin_inset Text
 
 \begin_layout Plain Layout
-Comando
+Comando (
+\backslash
+hspace longitud)
 \end_layout
 
 \end_inset
@@ -12022,7 +12069,11 @@ hspace{3cm
 
 A
 \backslash
-not=C
+not=C (3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm)
 \end_layout
 
 \end_inset
@@ -12053,7 +12104,11 @@ hspace{-1mm
 
 A
 \backslash
-not=A
+not=A (-1
+\begin_inset space \thinspace{}
+\end_inset
+
+mm)
 \end_layout
 
 \end_inset
@@ -12173,10 +12228,6 @@ dotfill
 hrulefill
 \series default
  que llenan el espacio con un patrón, véase un ejemplo en 
-\begin_inset space ~
-\end_inset
-
-
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Puntos"
@@ -12195,7 +12246,9 @@ Espacio
 \begin_inset space ~
 \end_inset
 
-horizontal, lo que no es posible en ecuaciones.
+horizontal
+\family default
+:
 \end_layout
 
 \begin_layout Standard
