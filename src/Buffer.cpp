@@ -557,19 +557,19 @@ bool Buffer::readDocument(Lexer & lex)
 
 	if (params().outputChanges) {
 		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
-		bool xcolorsoul = LaTeXFeatures::isAvailable("soul") &&
+		bool xcolorulem = LaTeXFeatures::isAvailable("ulem") &&
 				  LaTeXFeatures::isAvailable("xcolor");
 
-		if (!dvipost && !xcolorsoul) {
+		if (!dvipost && !xcolorulem) {
 			Alert::warning(_("Changes not shown in LaTeX output"),
 				       _("Changes will not be highlighted in LaTeX output, "
-					 "because neither dvipost nor xcolor/soul are installed.\n"
+					 "because neither dvipost nor xcolor/ulem are installed.\n"
 					 "Please install these packages or redefine "
 					 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
-		} else if (!xcolorsoul) {
+		} else if (!xcolorulem) {
 			Alert::warning(_("Changes not shown in LaTeX output"),
 				       _("Changes will not be highlighted in LaTeX output "
-					 "when using pdflatex, because xcolor and soul are not installed.\n"
+					 "when using pdflatex, because xcolor and ulem are not installed.\n"
 					 "Please install both packages or redefine "
 					 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
 		}

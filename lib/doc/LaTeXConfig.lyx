@@ -1,5 +1,5 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 347
 \begin_document
 \begin_header
 \textclass article
@@ -3950,6 +3950,40 @@ bibtopic
 \end_layout
 
 \begin_layout Subsection
+CJKutf8
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "CJKutf8"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+language/chinese/CJK/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+CJKutf8
+\family default
+ (part of the
+\family sans
+ CJK
+\family default
+ bundle) merges base LaTeX's and CJK's UTF-8 support.
+ It is needed to produce proper output with the combination of CJK, utf-8
+ encoding, and hyperref.
+\end_layout
+
+\begin_layout Subsection
 dvipost
 \end_layout
 
@@ -4612,14 +4646,14 @@ setspace
 \end_layout
 
 \begin_layout Subsection
-soul
+ulem
 \end_layout
 
 \begin_layout Description
 Found: 
 \begin_inset Info
 type  "package"
-arg   "soul"
+arg   "ulem"
 \end_inset
 
 
@@ -4628,17 +4662,18 @@ arg   "soul"
 \begin_layout Description
 CTAN: 
 \family typewriter
-macros/latex/contrib/soul
+macros/latex/contrib/misc/
 \end_layout
 
 \begin_layout Description
 Notes: The package 
 \family sans
-soul
+ulem
 \family default
- provides hyphenatable letterspacing (spacing out), underlining, striking
- out, and some derivatives.
- It is needed by LyX to output struck out text in change tracked documents.
+ provides various types of underlining, striking through and emphasizing
+ that can stretch between words and be broken across lines.
+ It is needed by LyX to output struck out text in change tracked documents
+ to PDF.
 \end_layout
 
 \begin_layout Subsection
