@@ -35,8 +35,9 @@ int const num_units = int(sizeof(unit_name) / sizeof(unit_name[0]) - 1);
 // the LyX gui units
 char const * const unit_name_gui[] = {
 	N_("sp"), N_("pt"), N_("bp"), N_("dd"), N_("mm"), N_("pc"),
-	N_("cc[[unit of measure]]"), N_("cm"), N_("in"), N_("ex"), N_("em"), N_("mu[[unit of measure]]"),
-	N_("Text Width %"), N_("Column Width %"), N_("Page Width %"), N_("Line Width %"),
+	N_("cc[[unit of measure]]"), N_("cm"), N_("in"), N_("ex"), N_("em"),
+	N_("mu[[unit of measure]]"), N_("Text Width %"),
+	N_("Column Width %"), N_("Page Width %"), N_("Line Width %"),
 	N_("Text Height %"), N_("Page Height %"), "" };
 
 Length::UNIT unitFromString(string const & data)
