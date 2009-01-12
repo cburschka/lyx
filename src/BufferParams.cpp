@@ -858,7 +858,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 
 	if (outputChanges) {
 		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
-		bool xcolorsoul = LaTeXFeatures::isAvailable("soul") &&
+		bool xcolorulem = LaTeXFeatures::isAvailable("ulem") &&
 				  LaTeXFeatures::isAvailable("xcolor");
 
 		switch (features.runparams().flavor) {
@@ -866,18 +866,18 @@ void BufferParams::validate(LaTeXFeatures & features) const
 			if (dvipost) {
 				features.require("ct-dvipost");
 				features.require("dvipost");
-			} else if (xcolorsoul) {
-				features.require("ct-xcolor-soul");
-				features.require("soul");
+			} else if (xcolorulem) {
+				features.require("ct-xcolor-ulem");
+				features.require("ulem");
 				features.require("xcolor");
 			} else {
 				features.require("ct-none");
 			}
 			break;
 		case OutputParams::PDFLATEX:
-			if (xcolorsoul) {
-				features.require("ct-xcolor-soul");
-				features.require("soul");
+			if (xcolorulem) {
+				features.require("ct-xcolor-ulem");
+				features.require("ulem");
 				features.require("xcolor");
 				// improves color handling in PDF output
 				features.require("pdfcolmk"); 

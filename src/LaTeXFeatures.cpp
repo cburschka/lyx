@@ -174,15 +174,15 @@ static string const changetracking_dvipost_def =
 	"\\newcommand{\\lyxdeleted}[3]{%\n"
 	"\\changestart\\overstrikeon#3\\overstrikeoff\\changeend}\n";
 
-static string const changetracking_xcolor_soul_def =
-	"%% Change tracking with soul\n"
+static string const changetracking_xcolor_ulem_def =
+	"%% Change tracking with ulem\n"
 	"\\newcommand{\\lyxadded}[3]{{\\color{lyxadded}#3}}\n"
-	"\\newcommand{\\lyxdeleted}[3]{{\\color{lyxdeleted}\\st{#3}}}\n";
+	"\\newcommand{\\lyxdeleted}[3]{{\\color{lyxdeleted}\\sout{#3}}}\n";
 
-static string const changetracking_xcolor_soul_hyperref_def =
-	"%% Change tracking with soul\n"
+static string const changetracking_xcolor_ulem_hyperref_def =
+	"%% Change tracking with ulem\n"
 	"\\newcommand{\\lyxadded}[3]{{\\texorpdfstring{\\color{lyxadded}}{}#3}}\n"
-	"\\newcommand{\\lyxdeleted}[3]{{\\texorpdfstring{\\color{lyxdeleted}\\st{#3}}{}}}\n";
+	"\\newcommand{\\lyxdeleted}[3]{{\\texorpdfstring{\\color{lyxdeleted}\\sout{#3}}{}}}\n";
 
 static string const changetracking_none_def =
 	"\\newcommand{\\lyxadded}[3]{#3}\n"
@@ -687,6 +687,10 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("xy"))
 		packages << "\\usepackage[all]{xy}\n";
 
+	if (mustProvide("ulem"))
+		packages << "\\PassOptionsToPackage{normalem}{ulem}\n"
+			    "\\usepackage{ulem}\n";
+
 	if (mustProvide("nomencl")) {
 		// Make it work with the new and old version of the package,
 		// but don't use the compatibility option since it is
@@ -815,7 +819,7 @@ string const LaTeXFeatures::getMacros() const
 	if (mustProvide("ct-dvipost"))
 		macros << changetracking_dvipost_def;
 
-	if (mustProvide("ct-xcolor-soul")) {
+	if (mustProvide("ct-xcolor-ulem")) {
 		int const prec = macros.precision(2);
 	
 		RGBColor cadd = rgbFromHexName(lcolor.getX11Name(Color_addedtext));
@@ -829,9 +833,9 @@ string const LaTeXFeatures::getMacros() const
 		macros.precision(prec);
 		
 		if (isRequired("hyperref"))
-			macros << changetracking_xcolor_soul_hyperref_def;
+			macros << changetracking_xcolor_ulem_hyperref_def;
 		else
-			macros << changetracking_xcolor_soul_def;
+			macros << changetracking_xcolor_ulem_def;
 	}
 
 	if (mustProvide("ct-none"))
