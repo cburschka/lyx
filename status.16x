@@ -80,6 +80,10 @@ What's new
 
 - Fix the reversion of floating wrap floats to LyX 1.5.x (bug 5618).
 
+- Make the PDF output of change tracking markup more robust by using the
+  ulem package for struck out text instead of the package soul
+  (fixes bug 5480, 5647 and the remainders of bug 5091).
+
 - Fix hanging module.
 
 - Pass graphics driver to the geometry package (bug 5613).
