@@ -25,7 +25,8 @@ namespace support {
  * change to a directory as the cwd, for example :
  *
  * if (blah) {
- *	Path p("/tmp/blah");
+ *	FileName pp("/tmp/blah");
+ *	PathChanger p(pp);
  *	...
  * }
  *
