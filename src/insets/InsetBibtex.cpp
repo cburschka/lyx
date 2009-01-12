@@ -38,6 +38,8 @@
 #include "support/Path.h"
 #include "support/textutils.h"
 
+#include <boost/regex.hpp>
+
 #include <limits>
 
 using namespace std;
@@ -532,15 +534,16 @@ namespace {
 	/// the variable strings.
 	/// @return true if reading was successfull (all single parts were delimited
 	/// correctly)
-	bool readValue(docstring & val, ifdocstream & ifs, const VarMap & strings) {
+	bool readValue(docstring & value, ifdocstream & ifs, const VarMap & strings) {
 
 		char_type ch;
 
-		val.clear();
+		value.clear();
 
 		if (!ifs)
 			return false;
 
+		docstring val;
 		do {
 			// skip whitespace
 			do {
@@ -596,7 +599,7 @@ namespace {
 						lastWasWhiteSpace = false;
 						val += ' ';
 					}
-					
+
 					val += ch;
 
 					// update nesting level
@@ -656,6 +659,98 @@ namespace {
 		} while (ch == '#');
 
 		ifs.putback(ch);
+
+		// Ok, we now have the value. Now we are going to go
+		// through it and replace e.g. \"a with its unicode value.
+		// We'll also strip commands, like \emph, and the like, so 
+		// it will look nice in the UI.
+		bool scanning_cmd = false;
+		bool scanning_math = false;
+		bool escaped = false; // used to catch \$, etc.
+		while (val.size()) {
+			char_type const ch = val[0];
+
+			// if we're scanning math, we output everything until we
+			// find an unescaped $, at which point we break out.
+			if (scanning_math) {
+				if (escaped)
+					escaped = false;
+				else if (ch == '\\')
+					escaped = true;
+				else if (ch == '$') 
+					scanning_math = false;
+				value += ch;
+				val = val.substr(1);
+				continue;
+			}
+
+			// if we're scanning a command name, then we just
+			// discard characters until we hit something that
+			// isn't alpha.
+			if (scanning_cmd) {
+				if (isAlphaASCII(ch)) {
+					val = val.substr(1);
+					escaped = false;
+					continue;
+				}
+				// so we're done with this command.
+				// now we fall through and check this character.
+				scanning_cmd = false;
+			}
+
+			// was the last character a \? If so, then this is something like: \\,
+			// or \$, so we'll just output it. That's probably not always right...
+			if (escaped) {
+				value += ch;
+				val = val.substr(1);
+				escaped = false;
+				continue;
+			}
+
+			if (ch == '$') {
+				value += ch;
+				val = val.substr(1);
+				scanning_math = true;
+				continue;
+			}
+
+			// we just ignore braces
+			if (ch == '{' || ch == '}') {
+				val = val.substr(1);
+				continue;
+			}
+
+			// we're going to check things that look like commands, so if
+			// this doesn't, just output it.
+			if (ch != '\\') {
+				value += ch;
+				val = val.substr(1);
+				continue;
+			}
+
+			// ok, could be a command of some sort
+			// let's see if it corresponds to some unicode
+			// unicodesymbols has things in the form: \"{u},
+			// whereas we may see things like: \"u. So we'll
+			// look for that and change it, if necessary.
+			static boost::regex const reg("^\\\\\\W\\w");
+			if (boost::regex_search(to_utf8(val), reg)) {
+				val.insert(3, from_ascii("}"));
+				val.insert(2, from_ascii("{"));
+			}
+			docstring rem;
+			docstring const cnvtd = Encodings::fromLaTeXCommand(val, rem);
+			if (!cnvtd.empty()) {
+				// it did, so we'll take that bit and proceed with what's left
+				value += cnvtd;
+				val = rem;
+				continue;
+			}
+			// it's a command of some sort
+			scanning_cmd = true;
+			escaped = true;
+			val = val.substr(1);
+		}
 
 		return true;
 	}

@@ -94,6 +94,14 @@ bool isLetterChar(char_type c)
 }
 
 
+bool isLower(char_type c)
+{
+	if (!is_utf16(c))
+		return false;
+	return ucs4_to_qchar(c).isLower();
+}
+
+
 bool isAlphaASCII(char_type c)
 {
 	return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
