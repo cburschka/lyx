@@ -92,7 +92,14 @@ Length widgetsToLength(QLineEdit const * input, QComboBox const * combo)
 	if (isValidGlueLength(fromqstr(length)))
 		return Length(fromqstr(length));
 
-	Length::UNIT const unit = unitFromString(fromqstr(combo->currentText()));
+	Length::UNIT unit;
+	QString const item = combo->currentText();
+	for (int i = 0; i < num_units; i++) {
+		if (qt_(lyx::unit_name_gui[i]) == item) {
+			unit = unitFromString(unit_name[i]);
+			break;
+		}
+	}
 
 	return Length(length.toDouble(), unit);
 }
