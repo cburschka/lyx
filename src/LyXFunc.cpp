@@ -566,6 +566,15 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
+	case LFUN_VC_COMMAND: {
+		if (cmd.argument().empty())
+			enable = false;
+
+		if (!buf && contains(cmd.getArg(0), 'D'))
+			enable = false;
+		break;
+	}
+
 	case LFUN_WORD_FIND_FORWARD:
 	case LFUN_WORD_FIND_BACKWARD:
 	case LFUN_WORD_FINDADV:
@@ -1598,6 +1607,48 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_BOOKMARK_CLEAR:
 			theSession().bookmarks().clear();
 			break;
+
+		case LFUN_VC_COMMAND: {
+			string flag = cmd.getArg(0);
+			if (buffer && contains(flag, 'R') && !ensureBufferClean(view()))
+				break;
+			docstring message;
+			if (contains(flag, 'M'))
+				if (!Alert::askForText(message, _("LyX VC: Log Message")))
+					break;
+
+			string path = cmd.getArg(1);
+			if (contains(path, "$$p") && buffer)
+				path = subst(path, "$$p", buffer->filePath());
+			LYXERR(Debug::LYXVC, "Directory: " << path);
+			FileName pp(path);
+			if (!pp.isReadableDirectory()) {
+				lyxerr<< _("Directory is not readable.\n");
+				break;
+			}
+			support::PathChanger p(pp);
+
+			string command = cmd.getArg(2);
+			if (command.empty())
+				break;
+			if (buffer) {
+				command = subst(command, "$$i", buffer->absFileName());
+				command = subst(command, "$$p", buffer->filePath());
+			}
+			command = subst(command, "$$m", to_utf8(message));
+			LYXERR(Debug::LYXVC, "Command: " << command);
+			Systemcall one;
+			one.startscript(Systemcall::Wait, command);
+
+			if (!buffer)
+				break;
+			if (contains(flag, 'I'))
+				buffer->markDirty();
+			if (contains(flag, 'R'))
+				reloadBuffer();
+
+			break;
+		}
 
 		default:
 			LASSERT(theApp(), /**/);
