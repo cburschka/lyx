@@ -64,6 +64,11 @@ What's new
 
 - Support for customized horizontal space in math/formulas (bug 2558).
 
+- Improved the display of BibTeX information in the citation dialog.
+  LaTeX constructs such as: \"u, should now be displayed as unicode,
+  and we should now see "(Doe, 1998)" instead of "(John Doe, 1998)"
+  even when the name in the BibTeX file is "John Doe" rather than 
+  "Doe, John".
 
 * WINDOWS INSTALLER
 
