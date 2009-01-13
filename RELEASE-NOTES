@@ -249,7 +249,8 @@ Caveats when upgrading from earlier versions to 1.6.x
   functions (such as Shift-right for selecting text) fail to work
   after the upgrade from previous versions, make sure you do not
   have any old configuration files in your LyX user directory, or
-  adapt these files to the new functions.
+  adapt these files to the new functions. If anything else fails,
+  try if deleting your LyX user directory helps.
 
 
 Note: There may later be an updated list of known issues online at
