@@ -163,9 +163,9 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	//graphics pane
 	connect(filename, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
-	connect(WidthCB, SIGNAL( clicked()),
+	connect(WidthCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	connect(HeightCB, SIGNAL( clicked()),
+	connect(HeightCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(Width, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
