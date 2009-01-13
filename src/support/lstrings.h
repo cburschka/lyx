@@ -107,7 +107,7 @@ bool suffixIs(docstring const &, char_type);
 bool suffixIs(std::string const &, std::string const &);
 bool suffixIs(docstring const &, docstring const &);
 
-///
+/// Is b contained in a?
 inline bool contains(std::string const & a, std::string const & b)
 {
 	return a.find(b) != std::string::npos;
