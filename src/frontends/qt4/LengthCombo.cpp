@@ -54,10 +54,15 @@ void LengthCombo::has_activated(int)
 
 void LengthCombo::setCurrentItem(lyx::Length::UNIT unit)
 {
-	QString const val = lyx::toqstr(lyx::stringFromUnit(unit));
+	setCurrentItem(lyx::toqstr(lyx::stringFromUnit(unit)));
+}
+
+
+void LengthCombo::setCurrentItem(QString const item)
+{
 	int num = QComboBox::count();
 	for (int i = 0; i < num; i++) {
-		if (QComboBox::itemData(i).toString() == val) {
+		if (QComboBox::itemData(i).toString() == item) {
 			QComboBox::setCurrentIndex(i);
 			break;
 		}
@@ -90,7 +95,7 @@ void LengthCombo::noPercents()
 }
 
 
-void LengthCombo::removeItem(lyx::Length::UNIT unit)
+void LengthCombo::removeUnit(lyx::Length::UNIT unit)
 {
 	QString const val = lyx::toqstr(lyx::stringFromUnit(unit));
 	int num = QComboBox::count();
@@ -103,13 +108,7 @@ void LengthCombo::removeItem(lyx::Length::UNIT unit)
 }
 
 
-void LengthCombo::removeItem(int item)
-{
-	QComboBox::removeItem(item);
-}
-
-
-void LengthCombo::addItem(lyx::Length::UNIT unit)
+void LengthCombo::addUnit(lyx::Length::UNIT unit)
 {
 	QString const val = lyx::toqstr(lyx::stringFromUnit(unit));
 	int num = QComboBox::count();
@@ -123,10 +122,5 @@ void LengthCombo::addItem(lyx::Length::UNIT unit)
 		   lyx::toqstr(lyx::unit_name[int(unit)]));
 }
 
-
-void LengthCombo::addItem(QString const item)
-{
-	QComboBox::addItem(item);
-}
 
 #include "moc_LengthCombo.cpp"

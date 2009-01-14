@@ -89,8 +89,8 @@ GuiBox::GuiBox(GuiView & lv)
 	// width needs different handling
 	ids_spec_ = boxGuiSpecialLengthIds();
 	gui_names_spec_ = boxGuiSpecialLengthNames();
-	foreach (QString const & str, gui_names_spec_)
-		heightUnitsLC->addItem(str);
+	for (int i = 0; i != ids_spec_.size(); ++i)
+		heightUnitsLC->addItem(gui_names_spec_[i], ids_spec_[i]);
 
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
@@ -162,10 +162,8 @@ void GuiBox::innerBoxChanged(QString const & str)
 	halignCO->setEnabled(!ibox);
 	heightCB->setEnabled(ibox);
 	pagebreakCB->setEnabled(!ibox && typeCO->currentIndex() == 1);
-	if (heightCB->checkState() == Qt::Checked && ibox) {
-		heightED->setEnabled(true);
-		heightUnitsLC->setEnabled(true);
-	}
+	heightED->setEnabled(heightCB->checkState() == Qt::Checked && ibox);
+	heightUnitsLC->setEnabled(heightCB->checkState() == Qt::Checked && ibox);
 	setSpecial(ibox);
 }
 
@@ -178,8 +176,8 @@ void GuiBox::typeChanged(int index)
 		ialignCO->setEnabled(true);
 		halignCO->setEnabled(false);
 		heightCB->setEnabled(true);
-		heightED->setEnabled(true);
-		heightUnitsLC->setEnabled(true);
+		heightED->setEnabled(heightCB->checkState() == Qt::Checked);
+		heightUnitsLC->setEnabled(heightCB->checkState() == Qt::Checked);
 		setSpecial(true);
 	}
 	if (index != 1)
@@ -201,10 +199,7 @@ void GuiBox::restoreClicked()
 	widthUnitsLC->setCurrentItem(Length::PCW);
 	heightCB->setCheckState(Qt::Checked);
 	heightED->setText("1");
-	for (int i = 0; i != heightUnitsLC->count(); ++i) {
-		if (heightUnitsLC->itemText(i) == qt_("Total Height"))
-			heightUnitsLC->setCurrentItem(i);
-	}
+	heightUnitsLC->setCurrentItem("totalheight");
 }
 
 
@@ -277,36 +272,18 @@ void GuiBox::updateContents()
 		(params_.width).asString(), default_unit);
 
 	QString const special = toqstr(params_.special);
-	if (!special.isEmpty() && special != "none") {
-		QString spc;
-		for (int i = 0; i != gui_names_spec_.size(); ++i) {
-			if (special == ids_spec_[i])
-				spc = gui_names_spec_[i];
-		}
-		for (int i = 0; i != widthUnitsLC->count(); ++i) {
-			if (widthUnitsLC->itemText(i) == spc)
-				widthUnitsLC->setCurrentIndex(i);
-		}
-	}
+	if (!special.isEmpty() && special != "none")
+		widthUnitsLC->setCurrentItem(special);
 
 	lengthToWidgets(heightED, heightUnitsLC,
 		(params_.height).asString(), default_unit);
 	
 	QString const height_special = toqstr(params_.height_special);
-	if (!height_special.isEmpty() && height_special != "none") {
-		QString hspc;
-		for (int i = 0; i != gui_names_spec_.size(); ++i) {
-			if (height_special == ids_spec_[i])
-				hspc = gui_names_spec_[i];
-		}
-		for (int i = 0; i != heightUnitsLC->count(); ++i) {
-			if (heightUnitsLC->itemText(i) == hspc)
-				heightUnitsLC->setCurrentIndex(i);
-		}
-	}
-	// set no optional height when the value is the default "1\height"
+	if (!height_special.isEmpty() && height_special != "none")
+		heightUnitsLC->setCurrentItem(height_special);
+	// set no optional height if the value is the default "1\height"
 	// (special units like \height are handled as "in",
-	if (height_special == "totalheight" &&  params_.height == Length("1in"))
+	if (height_special == "totalheight" && params_.height == Length("1in"))
 		heightCB->setCheckState(Qt::Unchecked);
 	else
 		heightCB->setCheckState(Qt::Checked);
@@ -317,127 +294,78 @@ void GuiBox::updateContents()
 
 void GuiBox::applyView()
 {
-	bool pagebreak = pagebreakCB->isEnabled() && pagebreakCB->isChecked();
+	bool pagebreak =
+		pagebreakCB->isEnabled() && pagebreakCB->isChecked();
 	if (pagebreak)
 		params_.type = "Framed";
 	else
 		params_.type = fromqstr(ids_[typeCO->currentIndex()]);
 
-	params_.inner_box = (!pagebreak && innerBoxCO->currentText() != qt_("None"));
-	params_.use_parbox = (!pagebreak && innerBoxCO->currentText() == qt_("Parbox"));
+	params_.inner_box =
+		(!pagebreak && innerBoxCO->currentText() != qt_("None"));
+	params_.use_parbox =
+		(!pagebreak && innerBoxCO->currentText() == qt_("Parbox"));
 
 	params_.pos = "tcb"[valignCO->currentIndex()];
 	params_.inner_pos = "tcbs"[ialignCO->currentIndex()];
 	params_.hor_pos = "lcrs"[halignCO->currentIndex()];
 
-	int i = 0;
-	bool spec = false;
-	QString special = widthUnitsLC->currentText();
+	QString unit =
+		widthUnitsLC->itemData(widthUnitsLC->currentIndex()).toString();
 	QString value = widthED->text();
-	if (special == qt_("Height")) {
-		i = 1;
-		spec = true;
-	} else if (special == qt_("Depth")) {
-		i = 2;
-		spec = true;
-	} else if (special == qt_("Total Height")) {
-		i = 3;
-		spec = true;
-	} else if (special == qt_("Width")) {
-		i = 4;
-		spec = true;
-	}
-	// the user might insert a non-special value in the line edit
-	if (isValidLength(fromqstr(value))) {
-		i = 0;
-		spec = false;
-	}
-	params_.special = fromqstr(ids_spec_[i]);
-
-	string width;
-	if (spec) {
-		width = fromqstr(value);
-		// beware: bogosity! the unit is simply ignored in this case
-		width += "in";
+	if (ids_spec_.contains(unit) && !isValidLength(fromqstr(value))) {
+		params_.special = fromqstr(unit);
+		// Note: the unit is simply ignored in this case
+		params_.width = Length(value.toDouble(), Length::IN);
 	} else {
-		width = widgetsToLength(widthED, widthUnitsLC);
+		params_.special = "none";
+		params_.width = Length(widgetsToLength(widthED, widthUnitsLC));
 	}
 
-	params_.width = Length(width);
-
-	i = 0;
-	spec = false;
-	special = heightUnitsLC->currentText();
-	value = heightED->text();
-	if (special == qt_("Height")) {
-		i = 1;
-		spec = true;
-	} else if (special == qt_("Depth")) {
-		i = 2;
-		spec = true;
-	} else if (special == qt_("Total Height")) {
-		i = 3;
-		spec = true;
-	} else if (special == qt_("Width")) {
-		i = 4;
-		spec = true;
-	}
-	// the user might insert a non-special value in the line edit
-	if (isValidLength(fromqstr(value))) {
-		i = 0;
-		spec = false;
-	}
-	params_.height_special = fromqstr(ids_spec_[i]);
-
-	string height;
-	if (spec  && !isValidLength(fromqstr(heightED->text()))) {
-		height = fromqstr(value);
-		// beware: bogosity! the unit is simply ignored in this case
-		height += "in";
-	} else
-		height = widgetsToLength(heightED, heightUnitsLC);
-
-	// the height parameter is omitted in InsetBox.cpp when the value
+	// the height parameter is omitted in if the value
 	// is "1in" and "Total Height" is used as unit.
-	// 1in + "Total Height" means "1\height" which is the LaTeX default when
-	// no height is given
-	if (heightCB->checkState() == Qt::Checked)
-		params_.height = Length(height);
-	else {
+	// 1in + "Total Height" means "1\height" which is the LaTeX default
+	// if no height is given
+	if (heightCB->checkState() == Qt::Unchecked) {
 		params_.height = Length("1in");
-		params_.height_special = fromqstr(ids_spec_[3]);
+		params_.height_special = "totalheight";
+	} else {
+		unit = heightUnitsLC->itemData(heightUnitsLC->currentIndex()).toString();
+		value = heightED->text();
+		if (ids_spec_.contains(unit) && !isValidLength(fromqstr(value))) {
+			params_.height_special = fromqstr(unit);
+			// Note: the unit is simply ignored in this case
+			params_.height = Length(value.toDouble(), Length::IN);
+		} else {
+			params_.height_special = "none";
+			params_.height =
+				Length(widgetsToLength(heightED, heightUnitsLC));
+		}
 	}
 }
 
 
 void GuiBox::setSpecial(bool ibox)
 {
-	// FIXME: Needed? Already done in the constructor
-	ids_spec_ = boxGuiSpecialLengthIds();
-	gui_names_spec_ = boxGuiSpecialLengthNames();
-
-	QString const current_text = widthUnitsLC->currentText();
+	QString const last_item =
+		widthUnitsLC->itemData(heightUnitsLC->currentIndex()).toString();
 
 	// check if the widget contains the special units
-	int const count = widthUnitsLC->count();
-	bool has_special = false;
-	for (int i = 0; i != count; ++i)
-		if (widthUnitsLC->itemText(i).contains(qt_("Total Height")) > 0)
-			has_special = true;
+	bool const has_special = (widthUnitsLC->findData("totalheight") != -1);
 	// insert 'em if needed...
 	if (!ibox && !has_special) {
-		for (int i = 1; i < gui_names_spec_.size(); ++i)
-			widthUnitsLC->addItem(gui_names_spec_[i]);
+		for (int i = 1; i < ids_spec_.size(); ++i)
+			widthUnitsLC->addItem(gui_names_spec_[i], ids_spec_[i]);
 	// ... or remove 'em if needed
 	} else if (ibox && has_special) {
-		widthUnitsLC->clear();
-		for (int i = 0; i != num_units; ++i)
-			widthUnitsLC->addItem(qt_(unit_name_gui[i]));
+		for (int i = 1; i < ids_spec_.size(); ++i) {
+			int n = widthUnitsLC->findData(ids_spec_[i]);
+			if (n != -1)
+				widthUnitsLC->removeItem(n);
+		}
 	}
 	// restore selected text, if possible
-	int const idx = widthUnitsLC->findText(current_text);
-	if (idx != -1)
-		widthUnitsLC->setCurrentIndex(idx);
+	widthUnitsLC->setCurrentItem(last_item);
 }
 
 
@@ -466,7 +394,6 @@ bool GuiBox::initialiseParams(string const & data)
 {
 	InsetBox::string2params(data, params_);
 	return true;
-
 }
 
 

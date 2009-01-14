@@ -30,6 +30,8 @@ public:
 
 	/// set the current item from unit
 	virtual void setCurrentItem(lyx::Length::UNIT unit);
+	/// set the current item from length string
+	virtual void setCurrentItem(QString const item);
 	/// set the current item from int
 	virtual void setCurrentItem(int item);
 	/// get the current item
@@ -39,13 +41,9 @@ public:
 	/// use the %-items?
 	virtual void noPercents();
 	/// remove a unit from the combo
-	virtual void removeItem(lyx::Length::UNIT unit);
-	/// remove an item to the combo
-	virtual void removeItem(int item);
+	virtual void removeUnit(lyx::Length::UNIT unit);
 	/// add a unit to the combo
-	virtual void addItem(lyx::Length::UNIT unit);
-	/// add an item to the combo
-	virtual void addItem(QString const item);
+	virtual void addUnit(lyx::Length::UNIT unit);
 
 protected Q_SLOTS:
 	virtual void has_activated(int index);
