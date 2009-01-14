@@ -410,6 +410,7 @@ enum FuncCode
 	// 315
 	LFUN_TAB_INSERT,
 	LFUN_TAB_DELETE,
+	LFUN_VC_COMMAND,
 	LFUN_LASTACTION                  // end of the table
 };
 

@@ -1959,6 +1959,24 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_VC_UNDO_LAST, "vc-undo-last", ReadOnly, System },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_VC_COMMAND
+ * \li Action: Executes external command. This command is intended to support
+               additional VCS commands.
+ * \li Syntax: vc-command <FLAG> <PATH> <COMMAND>
+ * \li Params:  <FLAG>: Flags for the command can be combined together.\n
+			U - dUmmy - no flags \n
+			D - Doc - need document loaded to proceed \n
+			I - dIrty - mark document dirty \n
+			R - Reload - reload the document after command execution \n
+			M - Message - ask for input string (commit message)\n
+		<PATH>: path where to start. $$p will be replaced by the current document path.\n
+		<COMMAND>: command to execute. $$i/$$p/$$m will be replaced by the current document/path/message.
+ * \li Sample: vc-command DR $$p "svn up"
+ * \li Origin: sanda, 13 Jan 2009
+ * \endvar
+ */
+		{ LFUN_VC_COMMAND, "vc-command", NoBuffer | ReadOnly, System },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_CHANGES_TRACK

@@ -1,4 +1,4 @@
-#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -49,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 11.01.2009.
+LFUNs documentation automatically generated 14.01.2009.
 \end_layout
 
 \begin_layout Standard
@@ -4014,6 +4014,65 @@ Syntax vc-check-out
 
 \begin_layout Description
 Origin Lgb, 1 Jul 1997 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_VC_COMMAND 
+\end_layout
+
+\begin_layout Description
+Action Executes external command.
+ This command is intended to support additional VCS commands.
+  
+\end_layout
+
+\begin_layout Description
+Syntax vc-command <FLAG> <PATH> <COMMAND> 
+\end_layout
+
+\begin_layout Description
+Params  <FLAG>: Flags for the command can be combined together.
+ 
+\begin_inset Newline newline
+\end_inset
+
+ U - dUmmy - no flags  
+\begin_inset Newline newline
+\end_inset
+
+ D - Doc - need document loaded to proceed  
+\begin_inset Newline newline
+\end_inset
+
+ I - dIrty - mark document dirty  
+\begin_inset Newline newline
+\end_inset
+
+ R - Reload - reload the document after command execution  
+\begin_inset Newline newline
+\end_inset
+
+ M - Message - ask for input string (commit message) 
+\begin_inset Newline newline
+\end_inset
+
+ <PATH>: path where to start.
+ $$p will be replaced by the current document path.
+ 
+\begin_inset Newline newline
+\end_inset
+
+ <COMMAND>: command to execute.
+ $$i/$$p/$$m will be replaced by the current document/path/message.
+  
+\end_layout
+
+\begin_layout Description
+Sample vc-command DR $$p "svn up" 
+\end_layout
+
+\begin_layout Description
+Origin sanda, 13 Jan 2009 
 \end_layout
 
 \begin_layout Subsection*
