@@ -203,16 +203,14 @@ GuiExternal::GuiExternal(GuiView & lv)
 	for (size_t i = 0; i != sizeof(origins) / sizeof(origins[0]); ++i)
 		originCO->addItem(qt_(origin_gui_strs[i]));
 
-	// Fill the width combo
-	widthUnitCO->addItem(qt_("Scale%"));
-	for (int i = 0; i < num_units; i++)
-		widthUnitCO->addItem(qt_(unit_name_gui[i]));
+	// add scale item
+	widthUnitCO->insertItem(0, qt_("Scale%"), "scale");
 }
 
 
 bool GuiExternal::activateAspectratio() const
 {
-	if (widthUnitCO->currentIndex() == 0)
+	if (usingScale())
 		return false;
 
 	string const wstr = fromqstr(widthED->text());
@@ -235,6 +233,13 @@ bool GuiExternal::activateAspectratio() const
 		return false;
 
 	return true;
+}
+
+
+bool GuiExternal::usingScale() const
+{
+	return (widthUnitCO->itemData(
+		widthUnitCO->currentIndex()).toString() == "scale");
 }
 
 
@@ -333,15 +338,13 @@ void GuiExternal::templateChanged()
 
 void GuiExternal::widthUnitChanged()
 {
-	bool useHeight = (widthUnitCO->currentIndex() > 0);
-
-	if (useHeight)
-		widthED->setValidator(unsignedLengthValidator(widthED));
-	else
+	if (usingScale())
 		widthED->setValidator(new QDoubleValidator(0, 1000, 2, widthED));
+	else
+		widthED->setValidator(unsignedLengthValidator(widthED));
 
-	heightED->setEnabled(useHeight);
-	heightUnitCO->setEnabled(useHeight);
+	heightED->setEnabled(!usingScale());
+	heightUnitCO->setEnabled(!usingScale());
 	changed();
 }
 
@@ -380,7 +383,7 @@ static void getRotation(external::RotationData & data,
 }
 
 
-static void setSize(QLineEdit & widthED, QComboBox & widthUnitCO,
+static void setSize(QLineEdit & widthED, LengthCombo & widthUnitCO,
 	QLineEdit & heightED, LengthCombo & heightUnitCO,
 	QCheckBox & aspectratioCB,
 	external::ResizeData const & data)
@@ -395,14 +398,10 @@ static void setSize(QLineEdit & widthED, QComboBox & widthUnitCO,
 
 	if (using_scale) {
 		widthED.setText(toqstr(scale));
-		widthUnitCO.setCurrentIndex(0);
-	} else {
-		widthED.setText(QString::number(data.width.value()));
-		// Because 'Scale' is position 0...
-		// Note also that width cannot be zero here, so
-		// we don't need to worry about the default unit.
-		widthUnitCO.setCurrentIndex(data.width.unit() + 1);
-	}
+		widthUnitCO.setCurrentItem("scale");
+	} else
+		lengthToWidgets(&widthED, &widthUnitCO,
+			data.width.asString(), defaultUnit());
 
 	string const h = data.height.zero() ? string() : data.height.asString();
 	Length::UNIT default_unit = data.width.zero() ?
@@ -423,33 +422,19 @@ static void setSize(QLineEdit & widthED, QComboBox & widthUnitCO,
 static void getSize(external::ResizeData & data,
 	QLineEdit const & widthED, QComboBox const & widthUnitCO,
 	QLineEdit const & heightED, LengthCombo const & heightUnitCO,
-	QCheckBox const & aspectratioCB)
+	QCheckBox const & aspectratioCB, bool const scaling)
 {
 	string const width = fromqstr(widthED.text());
 
-	if (widthUnitCO.currentIndex() > 0) {
-		// Subtract one, because scale is 0.
-		int const unit = widthUnitCO.currentIndex() - 1;
-
-		Length w;
-		if (isValidLength(width, &w))
-			data.width = w;
-		else if (isStrDbl(width))
-			data.width = Length(convert<double>(width),
-					   static_cast<Length::UNIT>(unit));
-		else
-			data.width = Length();
-
-		data.scale = string();
-
-	} else {
+	if (scaling) {
 		// scaling instead of a width
 		data.scale = width;
 		data.width = Length();
+	} else {
+		data.width = Length(widgetsToLength(&widthED, &widthUnitCO));
+		data.scale = string();
 	}
-
 	data.height = Length(widgetsToLength(&heightED, &heightUnitCO));
-
 	data.keepAspectRatio = aspectratioCB.isChecked();
 }
 
@@ -488,8 +473,6 @@ static void getCrop(external::ClipData & data,
 
 void GuiExternal::updateContents()
 {
-	tab->setCurrentIndex(0);
-
 	string const name =
 		params_.filename.outputFilename(fromqstr(bufferFilepath()));
 	fileED->setText(toqstr(name));
@@ -613,7 +596,7 @@ void GuiExternal::applyView()
 
 	if (scaleGB->isEnabled())
 		getSize(params_.resizedata, *widthED, *widthUnitCO,
-			*heightED, *heightUnitCO, *aspectratioCB);
+			*heightED, *heightUnitCO, *aspectratioCB, usingScale());
 
 	if (cropGB->isEnabled())
 		getCrop(params_.clipdata, *clipCB, *xlED, *ybED,

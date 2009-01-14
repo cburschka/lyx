@@ -54,6 +54,8 @@ private:
 	void updateContents();
 	/// Helper function called when the template is changed.
 	void updateTemplate();
+	///
+	bool usingScale() const;
 
 	///
 	bool initialiseParams(std::string const & data);
