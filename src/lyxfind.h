@@ -66,18 +66,22 @@ void replace(BufferView * bv, FuncRequest const &, bool has_deleted = false);
 /// find the next change in the buffer
 bool findNextChange(BufferView * bv);
 
-class FindAdvOptions {
+// Hopefully, nobody will ever replace with something like this
+#define LYX_FR_NULL_STRING "__LYX__F&R__NULL__STRING__"
+
+class FindAndReplaceOptions {
 public:
-	FindAdvOptions(
+	FindAndReplaceOptions(
 		docstring const & search,
 		bool casesensitive,
 		bool matchword,
 		bool forward,
 		bool expandmacros,
 		bool ignoreformat,
-		bool regexp
+		bool regexp,
+		docstring const & replace
 	);
-	FindAdvOptions() {  }
+	FindAndReplaceOptions() {  }
 	docstring search;
 	bool casesensitive;
 	bool matchword;
@@ -85,19 +89,20 @@ public:
 	bool expandmacros;
 	bool ignoreformat;
 	bool regexp;
+	docstring replace;
 };
 
 /// Write a FindAdvOptions instance to a stringstream
-std::ostringstream & operator<<(std::ostringstream & os, lyx::FindAdvOptions const & opt);
+std::ostringstream & operator<<(std::ostringstream & os, lyx::FindAndReplaceOptions const & opt);
 
 /// Read a FindAdvOptions instance from a stringstream
-std::istringstream & operator>>(std::istringstream & is, lyx::FindAdvOptions & opt);
+std::istringstream & operator>>(std::istringstream & is, lyx::FindAndReplaceOptions & opt);
 
 /// Dispatch a LFUN_WORD_FINDADV command request
 void findAdv(BufferView * bv, FuncRequest const & ev);
 
 /// Perform a FindAdv operation.
-bool findAdv(BufferView * bv, FindAdvOptions const & opt);
+bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt);
 	
 /** Computes the simple-text or LaTeX export (depending on opt) of buf starting
  ** from cur and ending len positions after cur, if len is positive, or at the
@@ -107,7 +112,7 @@ bool findAdv(BufferView * bv, FindAdvOptions const & opt);
  ** Ideally, this should not be needed, and the opt.search field should become a Text const &.
  **/
 docstring stringifyFromForSearch(
-	FindAdvOptions const & opt,
+	FindAndReplaceOptions const & opt,
 	DocIterator const & cur,
 	int len = -1);
 

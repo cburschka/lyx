@@ -30,6 +30,8 @@
 #include "ParIterator.h"
 #include "TexRow.h"
 #include "Text.h"
+#include "FuncRequest.h"
+#include "LyXFunc.h"
 
 #include "mathed/InsetMath.h"
 #include "mathed/InsetMathGrid.h"
@@ -531,7 +533,7 @@ bool braces_match(string::const_iterator const & beg,
  **/
 class MatchStringAdv {
 public:
-	MatchStringAdv(lyx::Buffer const & buf, FindAdvOptions const & opt);
+	MatchStringAdv(lyx::Buffer const & buf, FindAndReplaceOptions const & opt);
 
 	/** Tests if text starting at the supplied position matches with the one provided to the MatchStringAdv
 	 ** constructor as opt.search, under the opt.* options settings.
@@ -549,7 +551,7 @@ public:
 	/// buffer
 	lyx::Buffer const & buf;
 	/// options
-	FindAdvOptions const & opt;
+	FindAndReplaceOptions const & opt;
 
 private:
 	/** Normalize a stringified or latexified LyX paragraph.
@@ -580,7 +582,7 @@ private:
 };
 
 
-MatchStringAdv::MatchStringAdv(lyx::Buffer const & buf, FindAdvOptions const & opt)
+MatchStringAdv::MatchStringAdv(lyx::Buffer const & buf, FindAndReplaceOptions const & opt)
   : buf(buf), opt(opt)
 {
 	par_as_string = normalize(opt.search);
@@ -943,7 +945,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 } // anonym namespace
 
 
-docstring stringifyFromForSearch(FindAdvOptions const & opt,
+docstring stringifyFromForSearch(FindAndReplaceOptions const & opt,
 	DocIterator const & cur, int len)
 {
 	if (!opt.ignoreformat)
@@ -953,17 +955,17 @@ docstring stringifyFromForSearch(FindAdvOptions const & opt,
 }
 
 
-lyx::FindAdvOptions::FindAdvOptions(docstring const & search, bool casesensitive,
+lyx::FindAndReplaceOptions::FindAndReplaceOptions(docstring const & search, bool casesensitive,
 	bool matchword, bool forward, bool expandmacros, bool ignoreformat,
-	bool regexp)
+	bool regexp, docstring const & replace)
 	: search(search), casesensitive(casesensitive), matchword(matchword),
 	forward(forward), expandmacros(expandmacros), ignoreformat(ignoreformat),
-	regexp(regexp)
+	regexp(regexp), replace(replace)
 {
 }
 
 /// Perform a FindAdv operation.
-bool findAdv(BufferView * bv, FindAdvOptions const & opt)
+bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 {
 	DocIterator cur = bv->cursor();
 	int match_len = 0;
@@ -997,7 +999,9 @@ bool findAdv(BufferView * bv, FindAdvOptions const & opt)
 	LYXERR(Debug::DEBUG, "Putting selection at " << cur << " with len: " << match_len);
 	bv->putSelectionAt(cur, match_len, ! opt.forward);
 	bv->message(_("Match found!"));
-	//bv->update();
+	if (opt.replace != docstring(from_utf8(LYX_FR_NULL_STRING))) {
+		dispatch(FuncRequest(LFUN_SELF_INSERT, opt.replace));
+	}
 
 	return true;
 }
@@ -1008,14 +1012,14 @@ void findAdv(BufferView * bv, FuncRequest const & ev)
 	if (!bv || ev.action != LFUN_WORD_FINDADV)
 		return;
 
-	FindAdvOptions opt;
+	FindAndReplaceOptions opt;
 	istringstream iss(to_utf8(ev.argument()));
 	iss >> opt;
 	findAdv(bv, opt);
 }
 
 
-ostringstream & operator<<(ostringstream & os, lyx::FindAdvOptions const & opt)
+ostringstream & operator<<(ostringstream & os, lyx::FindAndReplaceOptions const & opt)
 {
 	os << to_utf8(opt.search) << "\nEOSS\n"
 	   << opt.casesensitive << ' '
@@ -1023,14 +1027,15 @@ ostringstream & operator<<(ostringstream & os, lyx::FindAdvOptions const & opt)
 	   << opt.forward << ' '
 	   << opt.expandmacros << ' '
 	   << opt.ignoreformat << ' '
-	   << opt.regexp;
+	   << opt.regexp << ' '
+	   << to_utf8(opt.replace) << "\nEOSS\n";
 
 	LYXERR(Debug::DEBUG, "built: " << os.str());
 
 	return os;
 }
 
-istringstream & operator>>(istringstream & is, lyx::FindAdvOptions & opt)
+istringstream & operator>>(istringstream & is, lyx::FindAndReplaceOptions & opt)
 {
 	LYXERR(Debug::DEBUG, "parsing");
 	string s;
@@ -1047,8 +1052,21 @@ istringstream & operator>>(istringstream & is, lyx::FindAdvOptions & opt)
 	LYXERR(Debug::DEBUG, "searching for: '" << s << "'");
 	opt.search = from_utf8(s);
 	is >> opt.casesensitive >> opt.matchword >> opt.forward >> opt.expandmacros >> opt.ignoreformat >> opt.regexp;
+	is.get();	// Waste space before replace string
+	s = "";
+	getline(is, line);
+	while (line != "EOSS") {
+		if (! s.empty())
+				s = s + "\n";
+		s = s + line;
+		if (is.eof())	// Tolerate malformed request
+				break;
+		getline(is, line);
+	}
 	LYXERR(Debug::DEBUG, "parsed: " << opt.casesensitive << ' ' << opt.matchword << ' ' << opt.forward << ' '
 		   << opt.expandmacros << ' ' << opt.ignoreformat << ' ' << opt.regexp);
+	LYXERR(Debug::DEBUG, "replacing with: '" << s << "'");
+	opt.replace = from_utf8(s);
 	return is;
 }
 

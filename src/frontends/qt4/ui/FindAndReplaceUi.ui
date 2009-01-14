@@ -66,7 +66,7 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>227</width>
+       <width>221</width>
        <height>351</height>
       </rect>
      </property>
@@ -90,8 +90,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>221</width>
-           <height>85</height>
+           <width>215</width>
+           <height>89</height>
           </rect>
          </property>
         </widget>
@@ -123,7 +123,7 @@
       <item row="5" column="0" >
        <widget class="QPushButton" name="replaceNextPB" >
         <property name="enabled" >
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="text" >
          <string>Replace Ne&amp;xt</string>
@@ -163,8 +163,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>221</width>
-           <height>85</height>
+           <width>215</width>
+           <height>89</height>
           </rect>
          </property>
         </widget>
@@ -186,7 +186,7 @@
       <item row="5" column="1" >
        <widget class="QPushButton" name="replacePrevPB" >
         <property name="enabled" >
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="text" >
          <string>Replace P&amp;rev</string>

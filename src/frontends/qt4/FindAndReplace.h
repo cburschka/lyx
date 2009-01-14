@@ -44,16 +44,14 @@ private:
 
 	// add a string to the combo if needed
 	void remember(std::string const & find, QComboBox & combo);
-	void findAdv(bool casesensitive,
-			bool matchword, bool backwards,
-			bool expandmacros, bool ignoreformat);
+	void findAndReplace(
+		bool casesensitive, bool matchword, bool backwards,
+		bool expandmacros, bool ignoreformat, bool replace
+	);
 	void find(docstring const & str, int len, bool casesens,
 		  bool words, bool backwards, bool expandmacros);
-	void find(bool backwards);
+	void findAndReplace(bool backwards, bool replace);
 
-	void replace(docstring const & findstr,
-		     docstring const & replacestr,
-		     bool casesens, bool words, bool backwards, bool expandmacros, bool all);
 	bool eventFilter(QObject *obj, QEvent *event);
 
 	void virtual showEvent(QShowEvent *ev);
@@ -62,7 +60,8 @@ private:
 protected Q_SLOTS:
 	void on_findNextPB_clicked();
 	void on_findPrevPB_clicked();
-	void on_replacePB_clicked();
+	void on_replaceNextPB_clicked();
+	void on_replacePrevPB_clicked();
 	void on_replaceallPB_clicked();
 	void on_closePB_clicked();
 	void on_regexpInsertCombo_currentIndexChanged(int index);

@@ -80,30 +80,32 @@ bool FindAndReplaceWidget::eventFilter(QObject *obj, QEvent *event)
 	return QWidget::eventFilter(obj, event);
 }
 
+static docstring buffer_to_latex(Buffer & buffer) {
+	OutputParams runparams(&buffer.params().encoding());
+	odocstringstream os;
+	runparams.nice = true;
+	runparams.flavor = OutputParams::LATEX;
+	runparams.linelen = 80; //lyxrc.plaintext_linelen;
+	// No side effect of file copying and image conversion
+	runparams.dryrun = true;
+	buffer.texrow().reset();
+	ParagraphList::const_iterator pit = buffer.paragraphs().begin();
+	ParagraphList::const_iterator const end = buffer.paragraphs().end();
+	for (; pit != end; ++pit) {
+		TeXOnePar(buffer, buffer.text(), pit, os, buffer.texrow(), runparams);
+		LYXERR(Debug::DEBUG, "searchString up to here: " << os.str());
+	}
+	return os.str();
+}
 
-void FindAndReplaceWidget::findAdv(bool casesensitive,
-		bool matchword, bool backwards,
-		bool expandmacros, bool ignoreformat)
+void FindAndReplaceWidget::findAndReplace(
+	bool casesensitive, bool matchword, bool backwards,
+	bool expandmacros, bool ignoreformat, bool replace)
 {
 	Buffer & buffer = find_work_area_->bufferView().buffer();
 	docstring searchString;
 	if (!ignoreformat) {
-		OutputParams runparams(&buffer.params().encoding());
-		odocstringstream os;
-		runparams.nice = true;
-		runparams.flavor = OutputParams::LATEX;
-		runparams.linelen = 80; //lyxrc.plaintext_linelen;
-		// No side effect of file copying and image conversion
-		runparams.dryrun = true;
-		buffer.texrow().reset();
-//		latexParagraphs(buffer, buffer.paragraphs(), os, buffer.texrow(), runparams);
-		ParagraphList::const_iterator pit = buffer.paragraphs().begin();
-		ParagraphList::const_iterator const end = buffer.paragraphs().end();
-		for (; pit != end; ++pit) {
-			TeXOnePar(buffer, buffer.text(), pit, os, buffer.texrow(), runparams);
-			LYXERR0("searchString up to here: " << os.str());
-		}
-		searchString = os.str();
+		searchString = buffer_to_latex(buffer);
 	} else {
 		ParIterator it = buffer.par_iterator_begin();
 		ParIterator end = buffer.par_iterator_end();
@@ -124,8 +126,15 @@ void FindAndReplaceWidget::findAdv(bool casesensitive,
 		return;
 	}
 	bool const regexp = to_utf8(searchString).find("\\regexp") != std::string::npos;
-	FindAdvOptions opt(searchString, casesensitive, matchword, ! backwards,
-		expandmacros, ignoreformat, regexp);
+	docstring replaceString;
+	if (replace) {
+		Buffer & replace_buffer = replace_work_area_->bufferView().buffer();
+		replaceString = buffer_to_latex(replace_buffer);
+	} else {
+		replaceString = from_utf8(LYX_FR_NULL_STRING);
+	}
+	FindAndReplaceOptions opt(searchString, casesensitive, matchword, ! backwards,
+		expandmacros, ignoreformat, regexp, replaceString);
 	LYXERR(Debug::DEBUG, "Dispatching LFUN_WORD_FINDADV" << std::endl);
 	std::ostringstream oss;
 	oss << opt;
@@ -137,16 +146,17 @@ void FindAndReplaceWidget::findAdv(bool casesensitive,
 }
 
 
-void FindAndReplaceWidget::find(bool backwards)
+void FindAndReplaceWidget::findAndReplace(bool backwards, bool replace)
 {
 	// FIXME: create a Dialog::returnFocus() or something instead of this:
 	view_.setCurrentWorkArea(view_.currentMainWorkArea());
 	// FIXME: This should be an LFUN.
-	findAdv(caseCB->isChecked(),
-			wordsCB->isChecked(),
-			backwards,
-			expandMacrosCB->isChecked(),
-			ignoreFormatCB->isChecked());
+	findAndReplace(caseCB->isChecked(),
+		wordsCB->isChecked(),
+		backwards,
+		expandMacrosCB->isChecked(),
+		ignoreFormatCB->isChecked(),
+		replace);
 	view_.currentMainWorkArea()->redraw();
 	find_work_area_->setFocus();
 }
@@ -176,17 +186,24 @@ void FindAndReplaceWidget::on_closePB_clicked()
 
 
 void FindAndReplaceWidget::on_findNextPB_clicked() {
-	find(false);
+	findAndReplace(false, false);
 }
 
 
 void FindAndReplaceWidget::on_findPrevPB_clicked() {
-	find(true);
+	findAndReplace(true, false);
 }
 
 
-void FindAndReplaceWidget::on_replacePB_clicked()
+void FindAndReplaceWidget::on_replaceNextPB_clicked()
 {
+	findAndReplace(false, true);
+}
+
+
+void FindAndReplaceWidget::on_replacePrevPB_clicked()
+{
+	findAndReplace(true, true);
 }
 
 
