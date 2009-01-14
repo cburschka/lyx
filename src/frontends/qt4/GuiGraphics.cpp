@@ -243,7 +243,9 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	connect(displayGB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(displayscale, SIGNAL(textChanged(const QString&)),
 		this, SLOT(change_adaptor()));
-	connect(groupId, SIGNAL(textChanged(const QString&)),
+	connect(groupId, SIGNAL(currentIndexChanged (const QString&)),
+		this, SLOT(change_group(const QString&)));
+	connect(groupId, SIGNAL(editTextChanged(const QString&)),
 		this, SLOT(change_adaptor()));
 	displayscale->setValidator(new QIntValidator(displayscale));
 
@@ -286,6 +288,24 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 void GuiGraphics::change_adaptor()
 {
 	changed();
+}
+
+
+void GuiGraphics::change_group(const QString &text)
+{
+	if (text.isEmpty())
+		return;
+
+	groupId->blockSignals(true);
+
+	string grp = graphics::getGroupParams(buffer(), fromqstr(text));
+	InsetGraphicsParams par;
+	InsetGraphics::string2params(grp, buffer(), par);
+	par.filename = params_.filename;
+	params_ = par;
+	paramsToDialog(par);
+
+	groupId->blockSignals(false);
 }
 
 
@@ -530,7 +550,20 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	Scale->setEnabled(scaleChecked);
 	displayGB->setEnabled(lyxrc.display_graphics);
 
-	groupId->setText(toqstr(igp.groupId));
+	set<string> grp;
+	graphics::getGraphicsGroups(buffer(), grp);
+	set<string>::const_iterator it = grp.begin();
+	set<string>::const_iterator end = grp.end();
+	groupId->blockSignals(true);
+	groupId->clear();
+	groupId->addItem("");
+	for (; it != end; it++)
+		groupId->addItem(toqstr(*it));
+	if (igp.groupId.empty())
+		groupId->setCurrentIndex(-1);
+	else
+		groupId->setCurrentIndex(groupId->findText(toqstr(igp.groupId), Qt::MatchExactly));
+	groupId->blockSignals(false);
 
 	lengthAutoToWidgets(Width, widthUnit, igp.width,
 		unitDefault);
@@ -666,7 +699,7 @@ void GuiGraphics::applyView()
 	// more latex options
 	igp.special = fromqstr(latexoptions->text());
 
-	igp.groupId = fromqstr(groupId->text());
+	igp.groupId = fromqstr(groupId->currentText());
 }
 
 

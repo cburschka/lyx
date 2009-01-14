@@ -40,6 +40,7 @@ public:
 
 private Q_SLOTS:
 	void change_adaptor();
+	void change_group(const QString &);
 	void change_bb();
 	void on_browsePB_clicked();
 	void on_getPB_clicked();

@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>480</width>
-    <height>348</height>
+    <width>482</width>
+    <height>383</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -124,14 +124,6 @@
       <number>0</number>
      </property>
      <widget class="QWidget" name="Graphics" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>458</width>
-        <height>272</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>&amp;Graphics</string>
       </attribute>
@@ -367,14 +359,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="Clipping" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>458</width>
-        <height>272</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>&amp;Clipping</string>
       </attribute>
@@ -537,14 +521,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="ExtraOptions" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>458</width>
-        <height>272</height>
-       </rect>
-      </property>
       <attribute name="title" >
        <string>LaTe&amp;X and LyX options</string>
       </attribute>
@@ -647,20 +623,7 @@
              <string>Grou&amp;p Name:</string>
             </property>
             <property name="buddy" >
-             <cstring>groupId</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1" >
-           <widget class="QLineEdit" name="groupId" >
-            <property name="minimumSize" >
-             <size>
-              <width>87</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="toolTip" >
-             <string>Group Name to be set up from the current parameters. Use context menu to assign the existing one.</string>
+             <cstring>grouId</cstring>
             </property>
            </widget>
           </item>
@@ -693,10 +656,20 @@
             </property>
            </widget>
           </item>
+          <item row="1" column="1" >
+           <widget class="QComboBox" name="groupId" >
+            <property name="toolTip" >
+             <string>Group Name to be set up from the current parameters. Use context menu to assign the existing one.</string>
+            </property>
+            <property name="editable" >
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
-       <item row="4" column="1" >
+       <item row="5" column="1" >
         <spacer>
          <property name="orientation" >
           <enum>Qt::Vertical</enum>
