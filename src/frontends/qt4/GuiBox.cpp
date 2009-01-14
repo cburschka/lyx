@@ -62,14 +62,14 @@ static QStringList boxGuiNames()
 
 static QStringList boxGuiSpecialLengthIds()
 {
-	return QStringList() << "none" << "height" << "depth"
+	return QStringList() << "height" << "depth"
 		<< "totalheight" << "width";
 }
 
 
 static QStringList boxGuiSpecialLengthNames()
 {
-	return QStringList() << qt_("None") << qt_("Height") << qt_("Depth")
+	return QStringList() << qt_("Height") << qt_("Depth")
 		<< qt_("Total Height") << qt_("Width");
 }
 
@@ -328,29 +328,29 @@ void GuiBox::applyView()
 	params_.inner_pos = "tcbs"[ialignCO->currentIndex()];
 	params_.hor_pos = "lcrs"[halignCO->currentIndex()];
 
-	int i = 0;
+	int i = -1;
 	bool spec = false;
 	QString special = widthUnitsLC->currentText();
 	QString value = widthED->text();
 	if (special == qt_("Height")) {
-		i = 1;
+		i = 0;
 		spec = true;
 	} else if (special == qt_("Depth")) {
-		i = 2;
+		i = 1;
 		spec = true;
 	} else if (special == qt_("Total Height")) {
-		i = 3;
+		i = 2;
 		spec = true;
 	} else if (special == qt_("Width")) {
-		i = 4;
+		i = 3;
 		spec = true;
 	}
 	// the user might insert a non-special value in the line edit
-	if (isValidLength(fromqstr(value))) {
-		i = 0;
+	if (isValidLength(fromqstr(value)) || i == -1) {
+		params_.special = "none";
 		spec = false;
-	}
-	params_.special = fromqstr(ids_spec_[i]);
+	} else
+		params_.special = fromqstr(ids_spec_[i]);
 
 	string width;
 	if (spec) {
@@ -363,29 +363,29 @@ void GuiBox::applyView()
 
 	params_.width = Length(width);
 
-	i = 0;
+	i = -1;
 	spec = false;
 	special = heightUnitsLC->currentText();
 	value = heightED->text();
 	if (special == qt_("Height")) {
-		i = 1;
+		i = 0;
 		spec = true;
 	} else if (special == qt_("Depth")) {
-		i = 2;
+		i = 1;
 		spec = true;
 	} else if (special == qt_("Total Height")) {
-		i = 3;
+		i = 2;
 		spec = true;
 	} else if (special == qt_("Width")) {
-		i = 4;
+		i = 3;
 		spec = true;
 	}
 	// the user might insert a non-special value in the line edit
-	if (isValidLength(fromqstr(value))) {
-		i = 0;
+	if (isValidLength(fromqstr(value)) || i == -1) {
+		params_.height_special = "none";
 		spec = false;
-	}
-	params_.height_special = fromqstr(ids_spec_[i]);
+	} else
+		params_.height_special = fromqstr(ids_spec_[i]);
 
 	string height;
 	if (spec  && !isValidLength(fromqstr(heightED->text()))) {
@@ -403,17 +403,13 @@ void GuiBox::applyView()
 		params_.height = Length(height);
 	else {
 		params_.height = Length("1in");
-		params_.height_special = fromqstr(ids_spec_[3]);
+		params_.height_special = "totalheight";
 	}
 }
 
 
 void GuiBox::setSpecial(bool ibox)
 {
-	// FIXME: Needed? Already done in the constructor
-	ids_spec_ = boxGuiSpecialLengthIds();
-	gui_names_spec_ = boxGuiSpecialLengthNames();
-
 	QString const current_text = widthUnitsLC->currentText();
 
 	// check if the widget contains the special units
