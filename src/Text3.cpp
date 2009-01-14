@@ -1135,6 +1135,15 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			    cmd.argument() == "paragraph");
 		break;
 
+	case LFUN_SELECTION_PASTE:
+		// Copy the selection buffer to the clipboard stack,
+		// because we want it to appear in the "Edit->Paste
+		// recent" menu.
+		cap::copySelectionToStack();
+		cap::pasteSelection(bv->cursor(), bv->buffer().errorList("Paste"));
+		bv->buffer().errors("Paste");
+		break;
+
 	case LFUN_UNICODE_INSERT: {
 		if (cmd.argument().empty())
 			break;
@@ -1219,23 +1228,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		case mouse_button::button2:
 			// Middle mouse pasting.
 			bv->mouseSetCursor(cur);
-			if (!cap::selection()) {
-				// There is no local selection in the current buffer, so try to
-				// paste primary selection instead.
-				lyx::dispatch(FuncRequest(LFUN_PRIMARY_SELECTION_PASTE,
-					"paragraph"));
-				// Nothing else to do.
-				cur.noUpdate();
-				return;
-			}
-			// Copy the selection buffer to the clipboard stack, because we want it
-			// to appear in the "Edit->Paste recent" menu.
-			cap::copySelectionToStack();
-			cap::pasteSelection(bv->cursor(), bv->buffer().errorList("Paste"));
-			cur.updateFlags(Update::Force | Update::FitCursor);
-			bv->buffer().errors("Paste");
-			bv->buffer().markDirty();
-			bv->cursor().finishUndo();
+			lyx::dispatch(
+				FuncRequest(LFUN_COMMAND_ALTERNATIVES,
+					    "selection-paste ; primary-selection-paste paragraph"));
+			cur.noUpdate();
 			break;
 
 		case mouse_button::button3: {
@@ -2177,6 +2173,10 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_PRIMARY_SELECTION_PASTE:
 		enable = cur.selection() || !theSelection().empty();
+		break;
+
+	case LFUN_SELECTION_PASTE:
+		enable = cap::selection();
 		break;
 
 	case LFUN_PARAGRAPH_MOVE_UP:

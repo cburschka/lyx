@@ -1066,6 +1066,13 @@ void LyXAction::init()
  */
 		{ LFUN_PRIMARY_SELECTION_PASTE, "primary-selection-paste", Noop, Edit },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_SELECTION_PASTE
+ * \li Action: Pastes the text in permanent selection.
+ * \li Syntax: selection-paste
+ * \endvar
+ */
+		{ LFUN_SELECTION_PASTE, "selection-paste", Noop, Edit },
+/*!
  * \var lyx::FuncCode lyx::LFUN_UNDO
  * \li Action: Undoes the last edit.
  * \li Syntax: undo
