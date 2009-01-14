@@ -2168,7 +2168,11 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 			texrow.newline();
 		}
 		if (package == Encoding::CJK || features.mustProvide("CJK")) {
-			os << "\\usepackage{CJK}\n";
+			if (language->encoding()->name() == "utf8-cjk"
+			    && features.isAvailable("CJKutf8"))
+				os << "\\usepackage{CJKutf8}\n";
+			else
+				os << "\\usepackage{CJK}\n";
 			texrow.newline();
 		}
 	} else if (inputenc != "default") {
@@ -2185,7 +2189,11 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 			texrow.newline();
 			break;
 		case Encoding::CJK:
-			os << "\\usepackage{CJK}\n";
+			if (encoding().name() == "utf8-cjk"
+			    && features.isAvailable("CJKutf8"))
+				os << "\\usepackage{CJKutf8}\n";
+			else
+				os << "\\usepackage{CJK}\n";
 			texrow.newline();
 			break;
 		}
