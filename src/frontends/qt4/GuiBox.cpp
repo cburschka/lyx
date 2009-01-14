@@ -162,10 +162,8 @@ void GuiBox::innerBoxChanged(QString const & str)
 	halignCO->setEnabled(!ibox);
 	heightCB->setEnabled(ibox);
 	pagebreakCB->setEnabled(!ibox && typeCO->currentIndex() == 1);
-	if (heightCB->checkState() == Qt::Checked && ibox) {
-		heightED->setEnabled(true);
-		heightUnitsLC->setEnabled(true);
-	}
+	heightED->setEnabled(heightCB->checkState() == Qt::Checked && ibox);
+	heightUnitsLC->setEnabled(heightCB->checkState() == Qt::Checked && ibox);
 	setSpecial(ibox);
 }
 
@@ -178,8 +176,8 @@ void GuiBox::typeChanged(int index)
 		ialignCO->setEnabled(true);
 		halignCO->setEnabled(false);
 		heightCB->setEnabled(true);
-		heightED->setEnabled(true);
-		heightUnitsLC->setEnabled(true);
+		heightED->setEnabled(heightCB->checkState() == Qt::Checked);
+		heightUnitsLC->setEnabled(heightCB->checkState() == Qt::Checked);
 		setSpecial(true);
 	}
 	if (index != 1)
