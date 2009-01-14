@@ -153,13 +153,16 @@ What's new
 - Allow pasting of text from applications that set the clipboard mimetype
   to both graphics and text (bug 5560).
 
-- Fix setting shortcuts with a Return key in the shortcuts dialog (bug 5648).
+- Fix setting shortcuts with a Return key in the shortcuts dialog 
+  (bug 5648).
 
 - Change tooltip for graphics group parameters.
 
 - Fix layout of the View Source window when using Qt 4.2.
 
-- Fix numbering symbol direction in Hebrew and Arabic documents. 
+- Fix numbering symbol direction in Hebrew and Arabic documents.
+
+- Remove the non-functional unit "mu" from the unit comboboxes (bug 5682).
 
 
 * DOCUMENTATION AND LOCALIZATION
