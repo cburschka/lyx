@@ -109,7 +109,10 @@ What's new
 - Fix a LaTeX export error that prevents the inclusion of two program
   listings that differ only by file extension (bug 5681).
 
-- Fix hyphenation and punctuation rules for Mexican Spanish (bug 4736). 
+- Fix hyphenation and punctuation rules for Mexican Spanish (bug 4736).
+
+- For CJK documents using utf8 encoding, load the CJKutf8 package, if
+  available (part of bug 5386).
 
 
 * USER INTERFACE
