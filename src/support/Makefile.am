@@ -132,14 +132,14 @@ check_PROGRAMS = \
 	check_filetools \
 	check_lstrings
 
-check_convert_LDADD = liblyxsupport.a  \
-	$(BOOST_LIBS) $(QT4_CORE_LIB)
+check_convert_LDADD = liblyxsupport.a $(BOOST_LIBS) $(QT4_CORE_LIB)
 check_convert_LDFLAGS = $(QT4_CORE_LDFLAGS)
 check_convert_SOURCES = \
 	tests/check_convert.cpp \
 	tests/boost.cpp
 
-check_filetools_LDADD = liblyxsupport.a $(BOOST_LIBS)
+check_filetools_LDADD = liblyxsupport.a $(BOOST_LIBS) $(QT4_CORE_LIB)
+check_filetools_LDFLAGS = $(QT4_CORE_LDFLAGS)
 check_filetools_SOURCES = \
 	tests/check_filetools.cpp \
 	tests/boost.cpp
