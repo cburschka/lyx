@@ -156,6 +156,9 @@ What's new
 - Allow pasting of text from applications that set the clipboard mimetype
   to both graphics and text (bug 5560).
 
+- Disable pasting with middle mouse button when the document is read-only
+  (bug 4741).
+
 - Fix setting shortcuts with a Return key in the shortcuts dialog 
   (bug 5648).
 
