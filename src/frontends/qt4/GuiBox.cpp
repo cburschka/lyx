@@ -62,14 +62,14 @@ static QStringList boxGuiNames()
 
 static QStringList boxGuiSpecialLengthIds()
 {
-	return QStringList() << "none" << "height" << "depth"
+	return QStringList() << "height" << "depth"
 		<< "totalheight" << "width";
 }
 
 
 static QStringList boxGuiSpecialLengthNames()
 {
-	return QStringList() << qt_("None") << qt_("Height") << qt_("Depth")
+	return QStringList() << qt_("Height") << qt_("Depth")
 		<< qt_("Total Height") << qt_("Width");
 }
 
