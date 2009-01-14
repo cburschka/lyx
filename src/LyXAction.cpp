@@ -1987,7 +1987,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_VC_COMMAND
  * \li Action: Executes external command. This command is intended to support
-               additonal VCS commands.
+               additional VCS commands.
  * \li Syntax: vc-command <FLAG> <PATH> <COMMAND>
  * \li Params:  <FLAG>: Flags for the command can be combined together.\n
 			U - dUmmy - no flags \n
