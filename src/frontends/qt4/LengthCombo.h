@@ -38,6 +38,14 @@ public:
 	virtual void setEnabled(bool b);
 	/// use the %-items?
 	virtual void noPercents();
+	/// remove a unit from the combo
+	virtual void removeItem(lyx::Length::UNIT unit);
+	/// remove an item to the combo
+	virtual void removeItem(int item);
+	/// add a unit to the combo
+	virtual void addItem(lyx::Length::UNIT unit);
+	/// add an item to the combo
+	virtual void addItem(QString const item);
 
 protected Q_SLOTS:
 	virtual void has_activated(int index);
