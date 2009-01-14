@@ -22,7 +22,10 @@
    <item row="0" column="0" colspan="2" >
     <widget class="QLabel" name="uiLanguageLA" >
      <property name="text" >
-      <string>&amp;User Interface language:</string>
+      <string>&amp;User interface language:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>uiLanguageCO</cstring>
      </property>
     </widget>
    </item>
