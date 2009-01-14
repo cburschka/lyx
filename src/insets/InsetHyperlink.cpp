@@ -84,6 +84,16 @@ int InsetHyperlink::latex(odocstream & os, OutputParams const & runparams) const
 				url.replace(pos, 1, backslash + chars_url[k]);
 			}
 		}
+		// Replace the "\" character with a "/" because "\" is not allowed in
+		// URLs and by \href. Only do this when the following character
+		// is not also a "\", because "\\" is valid code
+		docstring const slash = from_ascii("/");
+		for (size_t i = 0, pos;
+			(pos = url.find('\\', i)) != string::npos;
+			i = pos + 2) {
+			if (url[pos + 1] != '\\')
+				url.replace(pos, 1, slash);
+		}
 
 		// add "http://" when the type is web (type = empty)
 		// and no "://" or "run:" is given
@@ -100,7 +110,6 @@ int InsetHyperlink::latex(odocstream & os, OutputParams const & runparams) const
 	// The characters in chars_name[] need to be changed to a command when
 	// they are in the name field.
 	if (!name.empty()) {
-
 		// handle the "\" character, but only when the following character
 		// is not also a "\", because "\\" is valid code
 		docstring const textbackslash = from_ascii("\\textbackslash{}");
@@ -110,6 +119,8 @@ int InsetHyperlink::latex(odocstream & os, OutputParams const & runparams) const
 			if (name[pos + 1] != '\\')
 				name.replace(pos, 1, textbackslash);
 		}
+		// The characters in chars_name[] need to be changed to a command when
+		// they are in the name field.
 		for (int k = 0;	k < 6; k++) {
 			for (size_t i = 0, pos;
 				(pos = name.find(chars_name[k], i)) != string::npos;
