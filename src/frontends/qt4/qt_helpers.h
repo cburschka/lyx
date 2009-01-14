@@ -48,9 +48,9 @@ Length const & len, Length::UNIT default_unit);
 /// method to set widgets from a string
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 std::string const & len, Length::UNIT default_unit);
-/// method to set widgets from a Length with optional "auto" if zero
-void lengthAutoToWidgets(QLineEdit * input, LengthCombo * combo,
-Length const & len, Length::UNIT defaultUnit);
+/// method to set widgets from a docstring
+void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
+docstring const & len, Length::UNIT default_unit);
 
 /// colors a widget red if invalid
 void setValid(QWidget * widget, bool valid);

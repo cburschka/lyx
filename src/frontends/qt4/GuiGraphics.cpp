@@ -74,6 +74,8 @@ char const * const rorigin_gui_strs[] = {
 
 size_t const rorigin_size = sizeof(rorigin_lyx_strs) / sizeof(char *);
 
+static string autostr = N_("automatically");
+
 } // namespace anon
 
 
@@ -99,8 +101,8 @@ static void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit,
 {
 	if (!checkBox->isChecked())
 		lengthToWidgets(lineEdit, lengthCombo,
-				"auto", lengthCombo->currentLengthItem());
-	else if (lineEdit->text() == "auto")
+				_(autostr), lengthCombo->currentLengthItem());
+	else if (lineEdit->text() == qt_(autostr))
 		lengthToWidgets(lineEdit, lengthCombo, string(),
 				lengthCombo->currentLengthItem());
 }
@@ -191,12 +193,13 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	filename->setValidator(new PathValidator(true, filename));
 	setFocusProxy(filename);
 
-	QDoubleValidator * scaleValidator = new DoubleAutoValidator(Scale);
+	QDoubleValidator * scaleValidator = 
+		new DoubleAutoValidator(Scale, qt_(autostr));
 	scaleValidator->setBottom(0);
 	scaleValidator->setDecimals(256); //I guess that will do
 	Scale->setValidator(scaleValidator);
-	Height->setValidator(unsignedLengthAutoValidator(Height));
-	Width->setValidator(unsignedLengthAutoValidator(Width));
+	Height->setValidator(unsignedLengthAutoValidator(Height, qt_(autostr)));
+	Width->setValidator(unsignedLengthAutoValidator(Width, qt_(autostr)));
 	angle->setValidator(new QDoubleValidator(-360, 360, 2, angle));
 
 	//clipping pane
@@ -338,7 +341,7 @@ void GuiGraphics::setAutoText()
 	if (scaleCB->isChecked())
 		return;
 	if (!Scale->isEnabled() && Scale->text() != "100")
-		Scale->setText(QString("auto"));
+		Scale->setText(qt_(autostr));
 
 	setAutoTextCB(WidthCB, Width, widthUnit);
 	setAutoTextCB(HeightCB, Height, heightUnit);
@@ -565,20 +568,26 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 		groupId->setCurrentIndex(groupId->findText(toqstr(igp.groupId), Qt::MatchExactly));
 	groupId->blockSignals(false);
 
-	lengthAutoToWidgets(Width, widthUnit, igp.width,
-		unitDefault);
+	if (igp.width.value() == 0)
+		lengthToWidgets(Width, widthUnit, _(autostr), unitDefault);
+	else
+		lengthToWidgets(Width, widthUnit, igp.width, unitDefault);
+
 	bool const widthChecked = !Width->text().isEmpty() &&
-		Width->text() != "auto";
+		Width->text() != qt_(autostr);
 	WidthCB->blockSignals(true);
 	WidthCB->setChecked(widthChecked);
 	WidthCB->blockSignals(false);
 	Width->setEnabled(widthChecked);
 	widthUnit->setEnabled(widthChecked);
 
-	lengthAutoToWidgets(Height, heightUnit, igp.height,
-		unitDefault);
+	if (igp.height.value() == 0)
+		lengthToWidgets(Height, heightUnit, _(autostr), unitDefault);
+	else
+		lengthToWidgets(Height, heightUnit, igp.height, unitDefault);
+
 	bool const heightChecked = !Height->text().isEmpty()
-		&& Height->text() != "auto";
+		&& Height->text() != qt_(autostr);
 	HeightCB->blockSignals(true);
 	HeightCB->setChecked(heightChecked);
 	HeightCB->blockSignals(false);

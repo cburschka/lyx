@@ -85,29 +85,31 @@ LengthValidator * unsignedLengthValidator(QLineEdit * ed)
 }
 
 
-LengthAutoValidator::LengthAutoValidator(QWidget * parent)
-	: LengthValidator(parent)
+LengthAutoValidator::LengthAutoValidator(QWidget * parent, QString const autotext)
+	: LengthValidator(parent),
+	  autotext_(autotext)
 {}
 
 
 QValidator::State LengthAutoValidator::validate(QString & qtext, int & dummy) const
 {
-	if (qtext == "auto")
+	if (qtext == autotext_)
 		return QValidator::Acceptable;
 	return LengthValidator::validate(qtext, dummy);
 }
 
 
-LengthAutoValidator * unsignedLengthAutoValidator(QLineEdit * ed)
+LengthAutoValidator * unsignedLengthAutoValidator(QLineEdit * ed, QString const autotext)
 {
-	LengthAutoValidator * v = new LengthAutoValidator(ed);
+	LengthAutoValidator * v = new LengthAutoValidator(ed, autotext);
 	v->setBottom(Length());
 	return v;
 }
 
 
-DoubleAutoValidator::DoubleAutoValidator(QWidget * parent)
-	: QDoubleValidator(parent)
+DoubleAutoValidator::DoubleAutoValidator(QWidget * parent, QString const autotext)
+	: QDoubleValidator(parent),
+	  autotext_(autotext)
 {}
 
 
@@ -118,7 +120,7 @@ DoubleAutoValidator::DoubleAutoValidator(double bottom,
 
 
 QValidator::State DoubleAutoValidator::validate(QString & input, int & pos) const {
-	if (input == "auto")
+	if (input == autotext_)
 		return QValidator::Acceptable;
 	return QDoubleValidator::validate(input, pos);
 }

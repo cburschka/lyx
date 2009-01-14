@@ -130,13 +130,10 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 }
 
 
-void lengthAutoToWidgets(QLineEdit * input, LengthCombo * combo,
-	Length const & len, Length::UNIT defaultUnit)
+void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
+	docstring const & len, Length::UNIT defaultUnit)
 {
-	if (len.value() == 0)
-		lengthToWidgets(input, combo, "auto", defaultUnit);
-	else
-		lengthToWidgets(input, combo, len, defaultUnit);
+	lengthToWidgets(input, combo, to_utf8(len), defaultUnit);
 }
 
 
