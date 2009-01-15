@@ -84,7 +84,7 @@ void convert_string()
 
 	     << convert<string>('a') << '\n'
 	     << convert<string>(1.0) << '\n'
-	     << convert<string>(1.1) << endl;
+	     << convert<string>(1.5) << endl;
 }
 
 int main()
