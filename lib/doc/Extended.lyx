@@ -1,4 +1,4 @@
-#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -110,9 +110,9 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
-\author "pavel" 
+\author "" 
 \author "" 
 \end_header
 
@@ -16882,17 +16882,11 @@ Later basic CVS/SVN support was added.
 \begin_layout Standard
 The implementation in LyX assumes a recent version of the GNU RCS or CVS/SVN
  package---no guarantees are made for older versions.
-\change_inserted 0 1231929523
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1231929529
 For introducing your own external commands consult vc-command in the manual
  of LyX functions.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
@@ -16903,15 +16897,8 @@ RCS commands in LyX
 The following sections describe the RCS commands supported by LyX.
  You can find them in the 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-V
-\bar default
-ersion
+File\SpecialChar \menuseparator
+Version
 \begin_inset space ~
 \end_inset
 
@@ -17095,15 +17082,8 @@ CVS commands in LyX
 CVS is now partially supported by LyX.
  You can find the commands in the 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-V
-\bar default
-ersion
+File\SpecialChar \menuseparator
+Version
 \begin_inset space ~
 \end_inset
 
@@ -17252,15 +17232,8 @@ SVN commands in LyX
 SVN is now partially supported by LyX.
  You can find the commands in the 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-V
-\bar default
-ersion
+File\SpecialChar \menuseparator
+Version
 \begin_inset space ~
 \end_inset
 
@@ -18365,15 +18338,8 @@ Configuring LyX
 \begin_layout Standard
 All the Literate Programming support is configured by the 
 \family sans
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-references
+Tools\SpecialChar \menuseparator
+Preferences
 \family default
  panel in the 
 \begin_inset Quotes eld
@@ -18541,20 +18507,9 @@ When debugging code with ddd/gdb, it is possible to invoke a text editor
  It happens that you can define the editor command line invocation in ddd
  by accessing the 
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-references\SpecialChar \menuseparator
-
-\bar under
-H
-\bar default
-elpers
+Edit\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Helpers
 \family default
  dialog and changing the "Edit Sources" entry.
 \end_layout
@@ -18672,38 +18627,22 @@ LyX has a range of buttons that are available for tool bar customization.
  In my toolbar I like to combine the six short cuts above with two more:
  One for 
 \family sans
-\bar under
-V
-\bar default
-iew
+View
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-U
-\bar default
-pdate
+Update
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-D
-\bar default
-VI
+DVI
 \family default
  and the other for 
 \family sans
-\bar under
-V
-\bar default
-iew\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+View\SpecialChar \menuseparator
+DVI
 \family default
  File menu entries.
  Here is how it looks like:
