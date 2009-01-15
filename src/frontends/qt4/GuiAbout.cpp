@@ -97,8 +97,12 @@ static QString version()
 	QLocale loc;
 	QString loc_release_date =
 		loc.toString(release_date(), QLocale::LongFormat);
-	if (lyx_release_date == "not released yet")
-		loc_release_date = qt_("not released yet");
+	if (loc_release_date.isEmpty()) {
+		if (lyx_release_date == "not released yet")
+			loc_release_date = qt_("not released yet");
+		else
+			loc_release_date = toqstr(lyx_release_date);
+	}
 	docstring version_date =
 		bformat(_("LyX Version %1$s\n(%2$s)\n\n"),
 			from_ascii(lyx_version),
