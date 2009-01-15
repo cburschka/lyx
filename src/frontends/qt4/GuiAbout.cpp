@@ -16,17 +16,28 @@
 #include "version.h"
 
 #include "support/filetools.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
 #include "support/Package.h"
 
+#include <QDate>
 #include <QtCore>
 #include <QtGui>
 
+using namespace lyx::support;
 using lyx::support::package;
 using lyx::support::makeDisplayPath;
 
 
 namespace lyx {
 namespace frontend {
+
+
+static QDate release_date()
+{
+	return QDate::fromString(QString(lyx_release_date), Qt::ISODate);
+}
+
 
 static QString credits()
 {
@@ -61,7 +72,11 @@ static QString credits()
 
 static QString copyright()
 {
-	return qt_("LyX is Copyright (C) 1995 by Matthias Ettrich,\n1995-2008 LyX Team");
+	QString release_year = release_date().toString("yyyy");
+	docstring copy_message =
+		bformat(_("LyX is Copyright (C) 1995 by Matthias Ettrich,\n1995--%1$s LyX Team"),
+			qstring_to_ucs4(release_year));
+	return toqstr(copy_message);
 }
 
 
@@ -79,13 +94,22 @@ static QString disclaimer()
 
 static QString version()
 {
+	QLocale loc;
+	QString loc_release_date =
+		loc.toString(release_date(), QLocale::LongFormat);
+	if (loc_release_date.isEmpty()) {
+		if (lyx_release_date == "not released yet")
+			loc_release_date = qt_("not released yet");
+		else
+			loc_release_date = toqstr(lyx_release_date);
+	}
+	docstring version_date =
+		bformat(_("LyX Version %1$s\n(%2$s)\n\n"),
+			from_ascii(lyx_version),
+			qstring_to_ucs4(loc_release_date));
 	QString res;
 	QTextStream out(&res);
-	out << qt_("LyX Version ");
-	out << lyx_version;
-	out << " (";
-	out << lyx_release_date;
-	out << ")\n";
+	out << toqstr(version_date);
 	out << qt_("Library directory: ");
 	out << toqstr(makeDisplayPath(package().system_support().absFilename()));
 	out << "\n";
