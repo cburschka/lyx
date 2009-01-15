@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-12 09:10+0100\n"
+"POT-Creation-Date: 2009-01-15 15:01+0100\n"
 "PO-Revision-Date: 2008-12-09 21:42-0500\n"
 "Last-Translator: Liviu Andronic <landronimirc@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -87,13 +87,13 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:549 src/Buffer.cpp:851
 #: src/Buffer.cpp:2552 src/Buffer.cpp:2576 src/Buffer.cpp:2611
-#: src/LyXFunc.cpp:683 src/LyXFunc.cpp:822 src/LyXFunc.cpp:996
+#: src/LyXFunc.cpp:692 src/LyXFunc.cpp:831 src/LyXFunc.cpp:1005
 #: src/LyXVC.cpp:181 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1254
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1512
 #: src/frontends/qt4/GuiView.cpp:1694 src/frontends/qt4/GuiView.cpp:1739
-#: src/frontends/qt4/GuiView.cpp:1796 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiView.cpp:1796 src/insets/InsetBibtex.cpp:145
 msgid "&Cancel"
 msgstr "&Renunţă"
 
@@ -189,7 +189,7 @@ msgstr "&Adaugă"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:78
 #: src/frontends/qt4/ui/LabelUi.ui:92 src/frontends/qt4/ui/NomenclUi.ui:105
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
-#: src/LyXFunc.cpp:792 src/buffer_funcs.cpp:107
+#: src/LyXFunc.cpp:801 src/buffer_funcs.cpp:107
 #: src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
 msgstr "Renunţă"
@@ -214,16 +214,16 @@ msgstr "Partea de bibliografie conţine..."
 msgid "&Content:"
 msgstr "Conţinut"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:207
+#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:209
 msgid "all cited references"
 msgstr "Toate referinţele citate"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:153 src/frontends/qt4/GuiBibtex.cpp:328
-#: src/insets/InsetBibtex.cpp:205
+#: src/insets/InsetBibtex.cpp:207
 msgid "all uncited references"
 msgstr "Toate referinţele necitate"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:203
+#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:205
 msgid "all references"
 msgstr "Toate referinţele disponibile"
 
@@ -413,20 +413,19 @@ msgstr ""
 #: src/frontends/qt4/ui/BoxUi.ui:361 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98 src/frontends/qt4/ui/TabularUi.ui:903
 #: src/frontends/qt4/ui/TabularUi.ui:922 src/frontends/qt4/ui/TabularUi.ui:970
-#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:159
-#: src/frontends/qt4/GuiBox.cpp:326 src/frontends/qt4/GuiBox.cpp:458
-#: src/frontends/qt4/GuiDocument.cpp:89
+#: src/frontends/qt4/GuiBox.cpp:159 src/frontends/qt4/GuiBox.cpp:324
+#: src/frontends/qt4/GuiBox.cpp:452 src/frontends/qt4/GuiDocument.cpp:89
 msgid "None"
 msgstr "Nimic"
 
-#: src/frontends/qt4/ui/BoxUi.ui:366 src/frontends/qt4/GuiBox.cpp:327
-#: src/frontends/qt4/GuiBox.cpp:450 src/frontends/qt4/GuiBox.cpp:459
+#: src/frontends/qt4/ui/BoxUi.ui:366 src/frontends/qt4/GuiBox.cpp:325
+#: src/frontends/qt4/GuiBox.cpp:444 src/frontends/qt4/GuiBox.cpp:453
 #: src/insets/InsetBox.cpp:148
 msgid "Parbox"
 msgstr "Parbox"
 
-#: src/frontends/qt4/ui/BoxUi.ui:371 src/frontends/qt4/GuiBox.cpp:451
-#: src/frontends/qt4/GuiBox.cpp:460 src/insets/InsetBox.cpp:150
+#: src/frontends/qt4/ui/BoxUi.ui:371 src/frontends/qt4/GuiBox.cpp:445
+#: src/frontends/qt4/GuiBox.cpp:454 src/insets/InsetBox.cpp:150
 msgid "Minipage"
 msgstr "Minipagină|p"
 
@@ -3117,7 +3116,7 @@ msgstr "Răsf&oieşte..."
 msgid "&User interface file:"
 msgstr "&Fişier interfaţă utilizator:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:682
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:691
 #: src/frontends/qt4/GuiView.cpp:1796
 msgid "&Save"
 msgstr "&Salvează"
@@ -10471,7 +10470,7 @@ msgstr "Configurare LaTeX|L"
 msgid "About LyX|X"
 msgstr "Despre LyX|X"
 
-#: lib/ui/classic.ui:425 src/frontends/qt4/GuiAbout.cpp:99
+#: lib/ui/classic.ui:425 src/frontends/qt4/GuiAbout.cpp:123
 msgid "About LyX"
 msgstr "Despre LyX"
 
@@ -14733,27 +14732,27 @@ msgstr "MS Word|W"
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: src/BiblioInfo.cpp:123 src/frontends/qt4/GuiDocument.cpp:1369
+#: src/BiblioInfo.cpp:145 src/frontends/qt4/GuiDocument.cpp:1369
 #, fuzzy, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s şi %2$s"
 
-#: src/BiblioInfo.cpp:127
+#: src/BiblioInfo.cpp:149
 #, c-format
 msgid "%1$s et al."
 msgstr ""
 
-#: src/BiblioInfo.cpp:149
+#: src/BiblioInfo.cpp:171
 #, fuzzy
 msgid "No year"
 msgstr "msnumber"
 
-#: src/BiblioInfo.cpp:331 src/BiblioInfo.cpp:391
+#: src/BiblioInfo.cpp:353 src/BiblioInfo.cpp:413
 #, fuzzy
 msgid "Add to bibliography only."
 msgstr "Adaugă bibliografia la &Cuprins"
 
-#: src/BiblioInfo.cpp:387
+#: src/BiblioInfo.cpp:409
 #, fuzzy
 msgid "before"
 msgstr "Text înainte:"
@@ -14902,7 +14901,7 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Vizualizează fişierul"
 
-#: src/Buffer.cpp:851 src/Exporter.cpp:49 src/LyXFunc.cpp:996
+#: src/Buffer.cpp:851 src/Exporter.cpp:49 src/LyXFunc.cpp:1005
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1512
 #: src/frontends/qt4/GuiView.cpp:1694
 #, fuzzy
@@ -15163,12 +15162,12 @@ msgstr ""
 msgid "Document class not found"
 msgstr "Documentul nu poate fi citit"
 
-#: src/BufferParams.cpp:1657 src/LyXFunc.cpp:714
+#: src/BufferParams.cpp:1657 src/LyXFunc.cpp:723
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "Documentul nu poate fi citit"
 
-#: src/BufferParams.cpp:1659 src/LyXFunc.cpp:716
+#: src/BufferParams.cpp:1659 src/LyXFunc.cpp:725
 #, fuzzy
 msgid "Could not load class"
 msgstr "Listă de slide-uri"
@@ -15362,8 +15361,8 @@ msgstr "Avertizare ChkTeX cu identificatorul nr. %1$d"
 msgid "ChkTeX warning id # "
 msgstr "Avertizare ChkTeX cu identificatorul nr. "
 
-#: src/Color.cpp:95 src/insets/InsetBibtex.cpp:173
-#: src/insets/InsetBibtex.cpp:198
+#: src/Color.cpp:95 src/insets/InsetBibtex.cpp:175
+#: src/insets/InsetBibtex.cpp:200
 msgid "none"
 msgstr "nimic"
 
@@ -15790,7 +15789,7 @@ msgstr ""
 msgid "Undefined flex inset"
 msgstr "Deschidere"
 
-#: src/Exporter.cpp:44 src/LyXFunc.cpp:992
+#: src/Exporter.cpp:44 src/LyXFunc.cpp:1001
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -15798,7 +15797,7 @@ msgid ""
 "Do you want to overwrite that file?"
 msgstr ""
 
-#: src/Exporter.cpp:47 src/LyXFunc.cpp:995
+#: src/Exporter.cpp:47 src/LyXFunc.cpp:1004
 #, fuzzy
 msgid "Overwrite file?"
 msgstr ""
@@ -16274,7 +16273,7 @@ msgstr "Nimic de indexat"
 msgid "Unknown action"
 msgstr "necunoscut"
 
-#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:665
+#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:674
 #, fuzzy
 msgid "Command disabled"
 msgstr "S&fîrşit comandă:"
@@ -16283,16 +16282,16 @@ msgstr "S&fîrşit comandă:"
 msgid "Command not allowed without any document open"
 msgstr ""
 
-#: src/LyXFunc.cpp:650
+#: src/LyXFunc.cpp:659
 #, fuzzy
 msgid "Document is read-only"
 msgstr "Documente"
 
-#: src/LyXFunc.cpp:659
+#: src/LyXFunc.cpp:668
 msgid "This portion of the document is deleted."
 msgstr ""
 
-#: src/LyXFunc.cpp:678
+#: src/LyXFunc.cpp:687
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -16300,80 +16299,89 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:681 src/frontends/qt4/GuiView.cpp:1795
+#: src/LyXFunc.cpp:690 src/frontends/qt4/GuiView.cpp:1795
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Salvare &documente"
 
-#: src/LyXFunc.cpp:696
+#: src/LyXFunc.cpp:705
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/LyXFunc.cpp:699
+#: src/LyXFunc.cpp:708
 #, fuzzy
 msgid "Print document failed"
 msgstr "Verteiler"
 
-#: src/LyXFunc.cpp:819
+#: src/LyXFunc.cpp:828
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/LyXFunc.cpp:821
+#: src/LyXFunc.cpp:830
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Revine la ultima versiune salvată"
 
-#: src/LyXFunc.cpp:822 src/LyXVC.cpp:181
+#: src/LyXFunc.cpp:831 src/LyXVC.cpp:181
 #, fuzzy
 msgid "&Revert"
 msgstr "Reface documentul original|r"
 
-#: src/LyXFunc.cpp:1033 src/Text3.cpp:1545
+#: src/LyXFunc.cpp:1042 src/Text3.cpp:1541
 #, fuzzy
 msgid "Missing argument"
 msgstr "Parametrii listă"
 
-#: src/LyXFunc.cpp:1045
+#: src/LyXFunc.cpp:1054
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Inserez documentul %1$s..."
 
-#: src/LyXFunc.cpp:1289
+#: src/LyXFunc.cpp:1298
 #, fuzzy, c-format
 msgid "Opening child document %1$s..."
 msgstr "Inserez documentul %1$s..."
 
-#: src/LyXFunc.cpp:1451
+#: src/LyXFunc.cpp:1460
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Document implicit|#D"
 
-#: src/LyXFunc.cpp:1454
+#: src/LyXFunc.cpp:1463
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Salvează valorile ca implicite pentru document"
 
-#: src/LyXFunc.cpp:1747
+#: src/LyXFunc.cpp:1607 src/LyXVC.cpp:150
+msgid "LyX VC: Log Message"
+msgstr ""
+
+#: src/LyXFunc.cpp:1616
+#, fuzzy
+msgid "Directory is not readable.\n"
+msgstr "Documentul nu poate fi citit"
+
+#: src/LyXFunc.cpp:1798
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "Documente"
 
-#: src/LyXFunc.cpp:1749
+#: src/LyXFunc.cpp:1800
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "Nu pot insera documentul"
 
-#: src/LyXFunc.cpp:1786
+#: src/LyXFunc.cpp:1837
 msgid "Welcome to LyX!"
 msgstr ""
 
-#: src/LyXFunc.cpp:1807
+#: src/LyXFunc.cpp:1858
 #, fuzzy
 msgid "Converting document to new document class..."
 msgstr "Inserez documentul %1$s..."
@@ -16872,10 +16880,6 @@ msgstr "LyX VC: Descriere iniţială"
 msgid "(no initial description)"
 msgstr "(nici o descriere iniţială)"
 
-#: src/LyXVC.cpp:150
-msgid "LyX VC: Log Message"
-msgstr ""
-
 #: src/LyXVC.cpp:153
 msgid "(no log message)"
 msgstr "(nu există mesaje)"
@@ -17074,12 +17078,12 @@ msgstr "Format|F"
 msgid " not known"
 msgstr "necunoscut"
 
-#: src/Text3.cpp:1662 src/Text3.cpp:1674
+#: src/Text3.cpp:1658 src/Text3.cpp:1670
 #, fuzzy
 msgid "Character set"
 msgstr "Caracter"
 
-#: src/Text3.cpp:1822 src/Text3.cpp:1833
+#: src/Text3.cpp:1818 src/Text3.cpp:1829
 #, fuzzy
 msgid "Paragraph layout set"
 msgstr "Paragraf"
@@ -17298,25 +17302,26 @@ msgstr "Ding 4|#g"
 msgid "Directories"
 msgstr "Director:|#D"
 
-#: src/frontends/qt4/GuiAbout.cpp:38
+#: src/frontends/qt4/GuiAbout.cpp:49
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
 msgstr ""
 
-#: src/frontends/qt4/GuiAbout.cpp:39
+#: src/frontends/qt4/GuiAbout.cpp:50
 msgid "Please install correctly to estimate the great\n"
 msgstr ""
 
-#: src/frontends/qt4/GuiAbout.cpp:40
+#: src/frontends/qt4/GuiAbout.cpp:51
 msgid "amount of work other people have done for the LyX project."
 msgstr ""
 
-#: src/frontends/qt4/GuiAbout.cpp:64
+#: src/frontends/qt4/GuiAbout.cpp:77
+#, c-format
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
-"1995-2008 LyX Team"
+"1995--%1$s LyX Team"
 msgstr ""
 
-#: src/frontends/qt4/GuiAbout.cpp:70
+#: src/frontends/qt4/GuiAbout.cpp:85
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -17324,7 +17329,7 @@ msgid ""
 "any later version."
 msgstr ""
 
-#: src/frontends/qt4/GuiAbout.cpp:76
+#: src/frontends/qt4/GuiAbout.cpp:91
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -17335,17 +17340,25 @@ msgid ""
 "Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 msgstr ""
 
-#: src/frontends/qt4/GuiAbout.cpp:84
+#: src/frontends/qt4/GuiAbout.cpp:102
 #, fuzzy
-msgid "LyX Version "
+msgid "not released yet"
+msgstr "Creşte adîncimea cadrului|C"
+
+#: src/frontends/qt4/GuiAbout.cpp:107
+#, fuzzy, c-format
+msgid ""
+"LyX Version %1$s\n"
+"(%2$s)\n"
+"\n"
 msgstr "Versiune...|V"
 
-#: src/frontends/qt4/GuiAbout.cpp:89
+#: src/frontends/qt4/GuiAbout.cpp:113
 #, fuzzy
 msgid "Library directory: "
 msgstr "&Utilizează director temporar"
 
-#: src/frontends/qt4/GuiAbout.cpp:92
+#: src/frontends/qt4/GuiAbout.cpp:116
 #, fuzzy
 msgid "User directory: "
 msgstr "&Utilizează director temporar"
@@ -17489,26 +17502,26 @@ msgstr "fundal notă"
 msgid "Double rectangular frame"
 msgstr ""
 
-#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:337
-#: src/frontends/qt4/GuiBox.cpp:372
+#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:335
+#: src/frontends/qt4/GuiBox.cpp:370
 msgid "Height"
 msgstr "Î&nălţime"
 
-#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:340
-#: src/frontends/qt4/GuiBox.cpp:375
+#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:338
+#: src/frontends/qt4/GuiBox.cpp:373
 #, fuzzy
 msgid "Depth"
 msgstr "Adîncime"
 
-#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:205
-#: src/frontends/qt4/GuiBox.cpp:343 src/frontends/qt4/GuiBox.cpp:378
-#: src/frontends/qt4/GuiBox.cpp:425
+#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:203
+#: src/frontends/qt4/GuiBox.cpp:341 src/frontends/qt4/GuiBox.cpp:376
+#: src/frontends/qt4/GuiBox.cpp:419
 #, fuzzy
 msgid "Total Height"
 msgstr "Copyright"
 
-#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:346
-#: src/frontends/qt4/GuiBox.cpp:381
+#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:344
+#: src/frontends/qt4/GuiBox.cpp:379
 msgid "Width"
 msgstr "Lăţime"
 
@@ -19394,7 +19407,7 @@ msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "*.lyx| Documente LyX (*.lyx)"
 
 #: src/frontends/qt4/GuiView.cpp:1348 src/frontends/qt4/Validator.cpp:174
-#: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
+#: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:288
 #: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:466
 #, fuzzy
 msgid "Invalid filename"
@@ -19742,7 +19755,7 @@ msgstr "Listă de tabele"
 msgid "List of Changes"
 msgstr "Listă de tabele"
 
-#: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:287
+#: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:289
 #: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:467
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
@@ -19765,58 +19778,58 @@ msgid ""
 "it will be changed to %2$s."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:139
+#: src/insets/InsetBibtex.cpp:141
 #, c-format
 msgid ""
 "The BibTeX inset includes %1$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:142
+#: src/insets/InsetBibtex.cpp:144
 #, fuzzy
 msgid "Open Databases?"
 msgstr "&Baze de date"
 
-#: src/insets/InsetBibtex.cpp:143
+#: src/insets/InsetBibtex.cpp:145
 msgid "&Proceed"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:161
+#: src/insets/InsetBibtex.cpp:163
 #, fuzzy
 msgid "BibTeX Generated Bibliography"
 msgstr "Referinţă BibTeX...|B"
 
-#: src/insets/InsetBibtex.cpp:168
+#: src/insets/InsetBibtex.cpp:170
 #, fuzzy
 msgid "Databases:"
 msgstr "&Baze de date"
 
-#: src/insets/InsetBibtex.cpp:193
+#: src/insets/InsetBibtex.cpp:195
 #, fuzzy
 msgid "Style File:"
 msgstr "Închide"
 
-#: src/insets/InsetBibtex.cpp:200
+#: src/insets/InsetBibtex.cpp:202
 #, fuzzy
 msgid "Lists:"
 msgstr "Listă"
 
-#: src/insets/InsetBibtex.cpp:211
+#: src/insets/InsetBibtex.cpp:213
 msgid "included in TOC"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:307 src/insets/InsetBibtex.cpp:358
+#: src/insets/InsetBibtex.cpp:309 src/insets/InsetBibtex.cpp:360
 #, fuzzy
 msgid "Export Warning!"
 msgstr "Atenţie!"
 
-#: src/insets/InsetBibtex.cpp:308
+#: src/insets/InsetBibtex.cpp:310
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:359
+#: src/insets/InsetBibtex.cpp:361
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -20653,7 +20666,7 @@ msgstr "ex"
 msgid "em"
 msgstr "em"
 
-#: src/lengthcommon.cpp:38
+#: src/lengthcommon.cpp:39
 msgid "mu[[unit of measure]]"
 msgstr ""
 
@@ -20662,27 +20675,27 @@ msgstr ""
 msgid "Text Width %"
 msgstr "Lăţime fixă"
 
-#: src/lengthcommon.cpp:39
+#: src/lengthcommon.cpp:40
 #, fuzzy
 msgid "Column Width %"
 msgstr "Lăţime coloană"
 
-#: src/lengthcommon.cpp:39
+#: src/lengthcommon.cpp:40
 #, fuzzy
 msgid "Page Width %"
 msgstr "Etichetează cu"
 
-#: src/lengthcommon.cpp:39
+#: src/lengthcommon.cpp:40
 #, fuzzy
 msgid "Line Width %"
 msgstr "Etichetează cu"
 
-#: src/lengthcommon.cpp:40
+#: src/lengthcommon.cpp:41
 #, fuzzy
 msgid "Text Height %"
 msgstr "Copyright"
 
-#: src/lengthcommon.cpp:40
+#: src/lengthcommon.cpp:41
 #, fuzzy
 msgid "Page Height %"
 msgstr "Copyright"

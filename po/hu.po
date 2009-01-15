@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-12 09:10+0100\n"
+"POT-Creation-Date: 2009-01-15 15:01+0100\n"
 "PO-Revision-Date: 2008-11-06 07:25+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -84,13 +84,13 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:549 src/Buffer.cpp:851
 #: src/Buffer.cpp:2552 src/Buffer.cpp:2576 src/Buffer.cpp:2611
-#: src/LyXFunc.cpp:683 src/LyXFunc.cpp:822 src/LyXFunc.cpp:996
+#: src/LyXFunc.cpp:692 src/LyXFunc.cpp:831 src/LyXFunc.cpp:1005
 #: src/LyXVC.cpp:181 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1254
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1512
 #: src/frontends/qt4/GuiView.cpp:1694 src/frontends/qt4/GuiView.cpp:1739
-#: src/frontends/qt4/GuiView.cpp:1796 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiView.cpp:1796 src/insets/InsetBibtex.cpp:145
 msgid "&Cancel"
 msgstr "&Mégsem"
 
@@ -186,7 +186,7 @@ msgstr "Hozzáa&dás"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:78
 #: src/frontends/qt4/ui/LabelUi.ui:92 src/frontends/qt4/ui/NomenclUi.ui:105
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
-#: src/LyXFunc.cpp:792 src/buffer_funcs.cpp:107
+#: src/LyXFunc.cpp:801 src/buffer_funcs.cpp:107
 #: src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
 msgstr "Mégse"
@@ -211,16 +211,16 @@ msgstr "Ez az irodalomjegyzék szakasz tartalmaz..."
 msgid "&Content:"
 msgstr "&Tartalom:"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:207
+#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:209
 msgid "all cited references"
 msgstr "felhasznált hivatkozások"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:153 src/frontends/qt4/GuiBibtex.cpp:328
-#: src/insets/InsetBibtex.cpp:205
+#: src/insets/InsetBibtex.cpp:207
 msgid "all uncited references"
 msgstr "a használatlan hivatkozások"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:203
+#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:205
 msgid "all references"
 msgstr "minden hivatkozás"
 
@@ -409,20 +409,19 @@ msgstr "Inner box -- needed for fixed width & line breaks"
 #: src/frontends/qt4/ui/BoxUi.ui:361 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98 src/frontends/qt4/ui/TabularUi.ui:903
 #: src/frontends/qt4/ui/TabularUi.ui:922 src/frontends/qt4/ui/TabularUi.ui:970
-#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:159
-#: src/frontends/qt4/GuiBox.cpp:326 src/frontends/qt4/GuiBox.cpp:458
-#: src/frontends/qt4/GuiDocument.cpp:89
+#: src/frontends/qt4/GuiBox.cpp:159 src/frontends/qt4/GuiBox.cpp:324
+#: src/frontends/qt4/GuiBox.cpp:452 src/frontends/qt4/GuiDocument.cpp:89
 msgid "None"
 msgstr "Nincs"
 
-#: src/frontends/qt4/ui/BoxUi.ui:366 src/frontends/qt4/GuiBox.cpp:327
-#: src/frontends/qt4/GuiBox.cpp:450 src/frontends/qt4/GuiBox.cpp:459
+#: src/frontends/qt4/ui/BoxUi.ui:366 src/frontends/qt4/GuiBox.cpp:325
+#: src/frontends/qt4/GuiBox.cpp:444 src/frontends/qt4/GuiBox.cpp:453
 #: src/insets/InsetBox.cpp:148
 msgid "Parbox"
 msgstr "Parbox"
 
-#: src/frontends/qt4/ui/BoxUi.ui:371 src/frontends/qt4/GuiBox.cpp:451
-#: src/frontends/qt4/GuiBox.cpp:460 src/insets/InsetBox.cpp:150
+#: src/frontends/qt4/ui/BoxUi.ui:371 src/frontends/qt4/GuiBox.cpp:445
+#: src/frontends/qt4/GuiBox.cpp:454 src/insets/InsetBox.cpp:150
 msgid "Minipage"
 msgstr "Minilap"
 
@@ -3092,7 +3091,7 @@ msgstr "Talló&zás..."
 msgid "&User interface file:"
 msgstr "&Felhasználóifelület-fájl:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:682
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:691
 #: src/frontends/qt4/GuiView.cpp:1796
 msgid "&Save"
 msgstr "Menté&s"
@@ -10342,7 +10341,7 @@ msgstr "LaTeX információ|L"
 msgid "About LyX|X"
 msgstr "LyX névjegy|X"
 
-#: lib/ui/classic.ui:425 src/frontends/qt4/GuiAbout.cpp:99
+#: lib/ui/classic.ui:425 src/frontends/qt4/GuiAbout.cpp:123
 msgid "About LyX"
 msgstr "LyX névjegy"
 
@@ -14357,25 +14356,25 @@ msgstr "MS Word|W"
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: src/BiblioInfo.cpp:123 src/frontends/qt4/GuiDocument.cpp:1369
+#: src/BiblioInfo.cpp:145 src/frontends/qt4/GuiDocument.cpp:1369
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s és %2$s"
 
-#: src/BiblioInfo.cpp:127
+#: src/BiblioInfo.cpp:149
 #, c-format
 msgid "%1$s et al."
 msgstr "%1$s éa munkatársai."
 
-#: src/BiblioInfo.cpp:149
+#: src/BiblioInfo.cpp:171
 msgid "No year"
 msgstr "Nincs év"
 
-#: src/BiblioInfo.cpp:331 src/BiblioInfo.cpp:391
+#: src/BiblioInfo.cpp:353 src/BiblioInfo.cpp:413
 msgid "Add to bibliography only."
 msgstr "Csak Irod.jegyzékhez adás."
 
-#: src/BiblioInfo.cpp:387
+#: src/BiblioInfo.cpp:409
 msgid "before"
 msgstr "előtte"
 
@@ -14538,7 +14537,7 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Módosított fájl felülírása?"
 
-#: src/Buffer.cpp:851 src/Exporter.cpp:49 src/LyXFunc.cpp:996
+#: src/Buffer.cpp:851 src/Exporter.cpp:49 src/LyXFunc.cpp:1005
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1512
 #: src/frontends/qt4/GuiView.cpp:1694
 msgid "&Overwrite"
@@ -14797,12 +14796,12 @@ msgstr ""
 msgid "Document class not found"
 msgstr "Dokumentum-osztály nem elérhető"
 
-#: src/BufferParams.cpp:1657 src/LyXFunc.cpp:714
+#: src/BufferParams.cpp:1657 src/LyXFunc.cpp:723
 #, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "A %1$s dokumentum-osztályt nem lehet betölteni."
 
-#: src/BufferParams.cpp:1659 src/LyXFunc.cpp:716
+#: src/BufferParams.cpp:1659 src/LyXFunc.cpp:725
 msgid "Could not load class"
 msgstr "Osztály nem tölthető be"
 
@@ -15000,8 +14999,8 @@ msgstr "ChkTeX figyelmeztetési azonosító # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX figyelmeztetési azonosító # "
 
-#: src/Color.cpp:95 src/insets/InsetBibtex.cpp:173
-#: src/insets/InsetBibtex.cpp:198
+#: src/Color.cpp:95 src/insets/InsetBibtex.cpp:175
+#: src/insets/InsetBibtex.cpp:200
 msgid "none"
 msgstr "színtelen"
 
@@ -15403,7 +15402,7 @@ msgstr ""
 msgid "Undefined flex inset"
 msgstr "Szövegbetét kinyitva"
 
-#: src/Exporter.cpp:44 src/LyXFunc.cpp:992
+#: src/Exporter.cpp:44 src/LyXFunc.cpp:1001
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -15414,7 +15413,7 @@ msgstr ""
 "\n"
 "Szeretné a fájlt felülírni?"
 
-#: src/Exporter.cpp:47 src/LyXFunc.cpp:995
+#: src/Exporter.cpp:47 src/LyXFunc.cpp:1004
 msgid "Overwrite file?"
 msgstr "Felülírjam a fájlt?"
 
@@ -15894,7 +15893,7 @@ msgstr "Nincs mit tenni"
 msgid "Unknown action"
 msgstr "Ismeretlen művelet"
 
-#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:665
+#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:674
 msgid "Command disabled"
 msgstr "Letiltott parancs"
 
@@ -15902,15 +15901,15 @@ msgstr "Letiltott parancs"
 msgid "Command not allowed without any document open"
 msgstr "A parancsot csak nyitott dokumentum mellett használhatja"
 
-#: src/LyXFunc.cpp:650
+#: src/LyXFunc.cpp:659
 msgid "Document is read-only"
 msgstr "Csak olvasható dokumentum"
 
-#: src/LyXFunc.cpp:659
+#: src/LyXFunc.cpp:668
 msgid "This portion of the document is deleted."
 msgstr "A dokumentum ezen része törölve lett."
 
-#: src/LyXFunc.cpp:678
+#: src/LyXFunc.cpp:687
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -15921,11 +15920,11 @@ msgstr ""
 "\n"
 "Akarja menteni a dokumentumot vagy a módosítások elvetése?"
 
-#: src/LyXFunc.cpp:681 src/frontends/qt4/GuiView.cpp:1795
+#: src/LyXFunc.cpp:690 src/frontends/qt4/GuiView.cpp:1795
 msgid "Save changed document?"
 msgstr "Mentsem a megváltozott dokumentumot?"
 
-#: src/LyXFunc.cpp:696
+#: src/LyXFunc.cpp:705
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -15934,11 +15933,11 @@ msgstr ""
 "A %1$s dokumentum nem nyomtatható.\n"
 "Kérem ellenőrizze a nyomtató beállításait."
 
-#: src/LyXFunc.cpp:699
+#: src/LyXFunc.cpp:708
 msgid "Print document failed"
 msgstr "Nyomtatás sikertelen"
 
-#: src/LyXFunc.cpp:819
+#: src/LyXFunc.cpp:828
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -15947,52 +15946,63 @@ msgstr ""
 "A változtatások el fognak veszni. Biztos benne, hogy visszatér a %1$s "
 "dokumentum mentett változatához?"
 
-#: src/LyXFunc.cpp:821
+#: src/LyXFunc.cpp:830
 msgid "Revert to saved document?"
 msgstr "Mentett dokumentum visszaállítása?"
 
-#: src/LyXFunc.cpp:822 src/LyXVC.cpp:181
+#: src/LyXFunc.cpp:831 src/LyXVC.cpp:181
 msgid "&Revert"
 msgstr "&Visszatér"
 
-#: src/LyXFunc.cpp:1033 src/Text3.cpp:1545
+#: src/LyXFunc.cpp:1042 src/Text3.cpp:1541
 msgid "Missing argument"
 msgstr "Hiányzó paraméter"
 
-#: src/LyXFunc.cpp:1045
+#: src/LyXFunc.cpp:1054
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Súgófájl megnyitása %1$s..."
 
-#: src/LyXFunc.cpp:1289
+#: src/LyXFunc.cpp:1298
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Aldokumentum megnyitása %1$s..."
 
-#: src/LyXFunc.cpp:1451
+#: src/LyXFunc.cpp:1460
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokumentum alapértékek mentése %1$s-ban."
 
-#: src/LyXFunc.cpp:1454
+#: src/LyXFunc.cpp:1463
 msgid "Unable to save document defaults"
 msgstr "Sikertelen mentése a dokumentum alapértékeknek"
 
-#: src/LyXFunc.cpp:1747
+#: src/LyXFunc.cpp:1607 src/LyXVC.cpp:150
+msgid "LyX VC: Log Message"
+msgstr "LyX VK: Napló üzenet"
+
+#: src/LyXFunc.cpp:1616
+#, fuzzy
+msgid "Directory is not readable.\n"
+msgstr ""
+"%1$s\n"
+" nem olvasható.."
+
+#: src/LyXFunc.cpp:1798
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "%1$s dokumentum újratöltve."
 
-#: src/LyXFunc.cpp:1749
+#: src/LyXFunc.cpp:1800
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "A(z) %1$s dokumentum nem olvasható"
 
-#: src/LyXFunc.cpp:1786
+#: src/LyXFunc.cpp:1837
 msgid "Welcome to LyX!"
 msgstr "Üdvözli a LyX!"
 
-#: src/LyXFunc.cpp:1807
+#: src/LyXFunc.cpp:1858
 msgid "Converting document to new document class..."
 msgstr "Dokumentum átalakítása másik dokumentumosztályra..."
 
@@ -16570,10 +16580,6 @@ msgstr "LyX VK: Kezdő megjegyzés"
 msgid "(no initial description)"
 msgstr "(nincs kezdő megjegyzés)"
 
-#: src/LyXVC.cpp:150
-msgid "LyX VC: Log Message"
-msgstr "LyX VK: Napló üzenet"
-
 #: src/LyXVC.cpp:153
 msgid "(no log message)"
 msgstr "(nincs naplóbejegyzés)"
@@ -16757,11 +16763,11 @@ msgstr "Elrendezés "
 msgid " not known"
 msgstr " ismeretlen"
 
-#: src/Text3.cpp:1662 src/Text3.cpp:1674
+#: src/Text3.cpp:1658 src/Text3.cpp:1670
 msgid "Character set"
 msgstr "Betűkészlet"
 
-#: src/Text3.cpp:1822 src/Text3.cpp:1833
+#: src/Text3.cpp:1818 src/Text3.cpp:1829
 msgid "Paragraph layout set"
 msgstr "Bekezdés kinézetének beállítása"
 
@@ -16967,27 +16973,28 @@ msgstr "4. csoport"
 msgid "Directories"
 msgstr "Könyvtárak"
 
-#: src/frontends/qt4/GuiAbout.cpp:38
+#: src/frontends/qt4/GuiAbout.cpp:49
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
 msgstr "HIBA: A LyX nem tudta olvasni a CREDITS fájlt\n"
 
-#: src/frontends/qt4/GuiAbout.cpp:39
+#: src/frontends/qt4/GuiAbout.cpp:50
 msgid "Please install correctly to estimate the great\n"
 msgstr "Kérem, telepítse megfelelően, és becsülje meg\n"
 
-#: src/frontends/qt4/GuiAbout.cpp:40
+#: src/frontends/qt4/GuiAbout.cpp:51
 msgid "amount of work other people have done for the LyX project."
 msgstr "azt a sok munkát, amit rengetegen elvégeztek a LyX projektben."
 
-#: src/frontends/qt4/GuiAbout.cpp:64
+#: src/frontends/qt4/GuiAbout.cpp:77
+#, fuzzy, c-format
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
-"1995-2008 LyX Team"
+"1995--%1$s LyX Team"
 msgstr ""
 "LyX Copyright (C) 1995 Matthias Ettrich által,\n"
 "1995-2008 a LyX csapat"
 
-#: src/frontends/qt4/GuiAbout.cpp:70
+#: src/frontends/qt4/GuiAbout.cpp:85
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -16998,7 +17005,7 @@ msgstr ""
 "Alapítvány által publikált: GNU General Public Licence második kiadása "
 "általi szabályoknak megfelelően, vagy a későbbi változatoknak megfelelően."
 
-#: src/frontends/qt4/GuiAbout.cpp:76
+#: src/frontends/qt4/GuiAbout.cpp:91
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -17016,15 +17023,24 @@ msgstr ""
 "mégsem, írjon a Free Software Foundation-nek, 51 Franklin Street, Fifth "
 "Floor, Boston, MA 02110-1301, USA."
 
-#: src/frontends/qt4/GuiAbout.cpp:84
-msgid "LyX Version "
+#: src/frontends/qt4/GuiAbout.cpp:102
+#, fuzzy
+msgid "not released yet"
+msgstr "Környezeti mélység növelése"
+
+#: src/frontends/qt4/GuiAbout.cpp:107
+#, fuzzy, c-format
+msgid ""
+"LyX Version %1$s\n"
+"(%2$s)\n"
+"\n"
 msgstr "LyX verzió "
 
-#: src/frontends/qt4/GuiAbout.cpp:89
+#: src/frontends/qt4/GuiAbout.cpp:113
 msgid "Library directory: "
 msgstr "Library könyvtár: "
 
-#: src/frontends/qt4/GuiAbout.cpp:92
+#: src/frontends/qt4/GuiAbout.cpp:116
 msgid "User directory: "
 msgstr "Felhasználói könyvtár: "
 
@@ -17161,24 +17177,24 @@ msgstr "Árnyékolt háttere"
 msgid "Double rectangular frame"
 msgstr "Dupla téglalap alakú keret"
 
-#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:337
-#: src/frontends/qt4/GuiBox.cpp:372
+#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:335
+#: src/frontends/qt4/GuiBox.cpp:370
 msgid "Height"
 msgstr "Magasság"
 
-#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:340
-#: src/frontends/qt4/GuiBox.cpp:375
+#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:338
+#: src/frontends/qt4/GuiBox.cpp:373
 msgid "Depth"
 msgstr "Mélység"
 
-#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:205
-#: src/frontends/qt4/GuiBox.cpp:343 src/frontends/qt4/GuiBox.cpp:378
-#: src/frontends/qt4/GuiBox.cpp:425
+#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:203
+#: src/frontends/qt4/GuiBox.cpp:341 src/frontends/qt4/GuiBox.cpp:376
+#: src/frontends/qt4/GuiBox.cpp:419
 msgid "Total Height"
 msgstr "Teljes magasság"
 
-#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:346
-#: src/frontends/qt4/GuiBox.cpp:381
+#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:344
+#: src/frontends/qt4/GuiBox.cpp:379
 msgid "Width"
 msgstr "Szélesség"
 
@@ -18891,7 +18907,7 @@ msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "LyX-1.5.x dokumentumok (*.lyx15)"
 
 #: src/frontends/qt4/GuiView.cpp:1348 src/frontends/qt4/Validator.cpp:174
-#: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
+#: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:288
 #: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:466
 msgid "Invalid filename"
 msgstr "Érvénytelen fájlnév"
@@ -19211,7 +19227,7 @@ msgstr "Változatok listája"
 msgid "List of Changes"
 msgstr "Változások listája"
 
-#: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:287
+#: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:289
 #: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:467
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
@@ -19237,46 +19253,46 @@ msgstr ""
 "A %1$s kulcs már létezik,\n"
 "Meg fog változni erre: %2$s ."
 
-#: src/insets/InsetBibtex.cpp:139
+#: src/insets/InsetBibtex.cpp:141
 #, c-format
 msgid ""
 "The BibTeX inset includes %1$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:142
+#: src/insets/InsetBibtex.cpp:144
 msgid "Open Databases?"
 msgstr "Adatbázisok megnyitása?"
 
-#: src/insets/InsetBibtex.cpp:143
+#: src/insets/InsetBibtex.cpp:145
 msgid "&Proceed"
 msgstr "&Tovább"
 
-#: src/insets/InsetBibtex.cpp:161
+#: src/insets/InsetBibtex.cpp:163
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX által készített irodalomjegyzék"
 
-#: src/insets/InsetBibtex.cpp:168
+#: src/insets/InsetBibtex.cpp:170
 msgid "Databases:"
 msgstr "Adatbázisok:"
 
-#: src/insets/InsetBibtex.cpp:193
+#: src/insets/InsetBibtex.cpp:195
 msgid "Style File:"
 msgstr "Stílus fájl:"
 
-#: src/insets/InsetBibtex.cpp:200
+#: src/insets/InsetBibtex.cpp:202
 msgid "Lists:"
 msgstr "Listák:"
 
-#: src/insets/InsetBibtex.cpp:211
+#: src/insets/InsetBibtex.cpp:213
 msgid "included in TOC"
 msgstr "TOC-ban szerepel"
 
-#: src/insets/InsetBibtex.cpp:307 src/insets/InsetBibtex.cpp:358
+#: src/insets/InsetBibtex.cpp:309 src/insets/InsetBibtex.cpp:360
 msgid "Export Warning!"
 msgstr "Exportálási Figyelmeztetés!"
 
-#: src/insets/InsetBibtex.cpp:308
+#: src/insets/InsetBibtex.cpp:310
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -19284,7 +19300,7 @@ msgstr ""
 "Szóközök vannak a BibTeX adatbázis elérési útjában.\n"
 "A BibTeX nem fogja tudni megtalálni őket."
 
-#: src/insets/InsetBibtex.cpp:359
+#: src/insets/InsetBibtex.cpp:361
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -20073,7 +20089,7 @@ msgstr "ex"
 msgid "em"
 msgstr "em"
 
-#: src/lengthcommon.cpp:38
+#: src/lengthcommon.cpp:39
 #, fuzzy
 msgid "mu[[unit of measure]]"
 msgstr "cc[[mérés mértékegysége]]"
@@ -20082,23 +20098,23 @@ msgstr "cc[[mérés mértékegysége]]"
 msgid "Text Width %"
 msgstr "Szöveg szélesség %"
 
-#: src/lengthcommon.cpp:39
+#: src/lengthcommon.cpp:40
 msgid "Column Width %"
 msgstr "Oszlopszélesség %"
 
-#: src/lengthcommon.cpp:39
+#: src/lengthcommon.cpp:40
 msgid "Page Width %"
 msgstr "Oldal szélesség %"
 
-#: src/lengthcommon.cpp:39
+#: src/lengthcommon.cpp:40
 msgid "Line Width %"
 msgstr "Sorszélesség %"
 
-#: src/lengthcommon.cpp:40
+#: src/lengthcommon.cpp:41
 msgid "Text Height %"
 msgstr "Szöveg magasság %"
 
-#: src/lengthcommon.cpp:40
+#: src/lengthcommon.cpp:41
 msgid "Page Height %"
 msgstr "Oldal magasság %"
 

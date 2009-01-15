@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-12 09:10+0100\n"
+"POT-Creation-Date: 2009-01-15 15:01+0100\n"
 "PO-Revision-Date: 2008-08-04 22:57+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -85,13 +85,13 @@ msgstr "確定(&O)"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:549 src/Buffer.cpp:851
 #: src/Buffer.cpp:2552 src/Buffer.cpp:2576 src/Buffer.cpp:2611
-#: src/LyXFunc.cpp:683 src/LyXFunc.cpp:822 src/LyXFunc.cpp:996
+#: src/LyXFunc.cpp:692 src/LyXFunc.cpp:831 src/LyXFunc.cpp:1005
 #: src/LyXVC.cpp:181 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1254
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1512
 #: src/frontends/qt4/GuiView.cpp:1694 src/frontends/qt4/GuiView.cpp:1739
-#: src/frontends/qt4/GuiView.cpp:1796 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiView.cpp:1796 src/insets/InsetBibtex.cpp:145
 msgid "&Cancel"
 msgstr "取消(&C)"
 
@@ -187,7 +187,7 @@ msgstr "加入(&A)"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:78
 #: src/frontends/qt4/ui/LabelUi.ui:92 src/frontends/qt4/ui/NomenclUi.ui:105
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
-#: src/LyXFunc.cpp:792 src/buffer_funcs.cpp:107
+#: src/LyXFunc.cpp:801 src/buffer_funcs.cpp:107
 #: src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
 msgstr "取消"
@@ -212,16 +212,16 @@ msgstr "此文獻目錄區段含有…"
 msgid "&Content:"
 msgstr "內容(&C)："
 
-#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:207
+#: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:209
 msgid "all cited references"
 msgstr "所有被引用的參考"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:153 src/frontends/qt4/GuiBibtex.cpp:328
-#: src/insets/InsetBibtex.cpp:205
+#: src/insets/InsetBibtex.cpp:207
 msgid "all uncited references"
 msgstr "所有未被引用的參考資料"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:203
+#: src/frontends/qt4/ui/BibtexUi.ui:158 src/insets/InsetBibtex.cpp:205
 msgid "all references"
 msgstr "所有參考資料"
 
@@ -414,20 +414,19 @@ msgstr "內框 -- 固定寬度 & 分列符號所需"
 #: src/frontends/qt4/ui/BoxUi.ui:361 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98 src/frontends/qt4/ui/TabularUi.ui:903
 #: src/frontends/qt4/ui/TabularUi.ui:922 src/frontends/qt4/ui/TabularUi.ui:970
-#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:159
-#: src/frontends/qt4/GuiBox.cpp:326 src/frontends/qt4/GuiBox.cpp:458
-#: src/frontends/qt4/GuiDocument.cpp:89
+#: src/frontends/qt4/GuiBox.cpp:159 src/frontends/qt4/GuiBox.cpp:324
+#: src/frontends/qt4/GuiBox.cpp:452 src/frontends/qt4/GuiDocument.cpp:89
 msgid "None"
 msgstr "無"
 
-#: src/frontends/qt4/ui/BoxUi.ui:366 src/frontends/qt4/GuiBox.cpp:327
-#: src/frontends/qt4/GuiBox.cpp:450 src/frontends/qt4/GuiBox.cpp:459
+#: src/frontends/qt4/ui/BoxUi.ui:366 src/frontends/qt4/GuiBox.cpp:325
+#: src/frontends/qt4/GuiBox.cpp:444 src/frontends/qt4/GuiBox.cpp:453
 #: src/insets/InsetBox.cpp:148
 msgid "Parbox"
 msgstr "段落框"
 
-#: src/frontends/qt4/ui/BoxUi.ui:371 src/frontends/qt4/GuiBox.cpp:451
-#: src/frontends/qt4/GuiBox.cpp:460 src/insets/InsetBox.cpp:150
+#: src/frontends/qt4/ui/BoxUi.ui:371 src/frontends/qt4/GuiBox.cpp:445
+#: src/frontends/qt4/GuiBox.cpp:454 src/insets/InsetBox.cpp:150
 msgid "Minipage"
 msgstr "迷你頁面"
 
@@ -3150,7 +3149,7 @@ msgstr "瀏覽(&W)…"
 msgid "&User interface file:"
 msgstr "使用者介面檔案(&U)："
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:682
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:691
 #: src/frontends/qt4/GuiView.cpp:1796
 msgid "&Save"
 msgstr "儲存(&S)"
@@ -10569,7 +10568,7 @@ msgstr "LaTeX 配置|L"
 msgid "About LyX|X"
 msgstr "關於 LyX|X"
 
-#: lib/ui/classic.ui:425 src/frontends/qt4/GuiAbout.cpp:99
+#: lib/ui/classic.ui:425 src/frontends/qt4/GuiAbout.cpp:123
 msgid "About LyX"
 msgstr "關於 LyX"
 
@@ -14686,26 +14685,26 @@ msgstr "計數字詞|W"
 msgid "HTML (MS Word)"
 msgstr ""
 
-#: src/BiblioInfo.cpp:123 src/frontends/qt4/GuiDocument.cpp:1369
+#: src/BiblioInfo.cpp:145 src/frontends/qt4/GuiDocument.cpp:1369
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s 和 %2$s"
 
-#: src/BiblioInfo.cpp:127
+#: src/BiblioInfo.cpp:149
 #, c-format
 msgid "%1$s et al."
 msgstr "%1$s 等人。"
 
-#: src/BiblioInfo.cpp:149
+#: src/BiblioInfo.cpp:171
 msgid "No year"
 msgstr "沒有年份"
 
-#: src/BiblioInfo.cpp:331 src/BiblioInfo.cpp:391
+#: src/BiblioInfo.cpp:353 src/BiblioInfo.cpp:413
 #, fuzzy
 msgid "Add to bibliography only."
 msgstr "加入文獻目錄到內容表(&T)"
 
-#: src/BiblioInfo.cpp:387
+#: src/BiblioInfo.cpp:409
 msgid "before"
 msgstr "之前"
 
@@ -14854,7 +14853,7 @@ msgstr "文件 %1$s 已經由外部修改過。您確定要覆寫該檔案嗎？
 msgid "Overwrite modified file?"
 msgstr "覆寫已修改檔案？"
 
-#: src/Buffer.cpp:851 src/Exporter.cpp:49 src/LyXFunc.cpp:996
+#: src/Buffer.cpp:851 src/Exporter.cpp:49 src/LyXFunc.cpp:1005
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1512
 #: src/frontends/qt4/GuiView.cpp:1694
 msgid "&Overwrite"
@@ -15115,7 +15114,7 @@ msgstr ""
 msgid "Document class not found"
 msgstr "文件類別無法使用"
 
-#: src/BufferParams.cpp:1657 src/LyXFunc.cpp:714
+#: src/BufferParams.cpp:1657 src/LyXFunc.cpp:723
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr ""
@@ -15123,7 +15122,7 @@ msgstr ""
 "%1$s\n"
 "無法讀取。"
 
-#: src/BufferParams.cpp:1659 src/LyXFunc.cpp:716
+#: src/BufferParams.cpp:1659 src/LyXFunc.cpp:725
 #, fuzzy
 msgid "Could not load class"
 msgstr "無法變更類別"
@@ -15322,8 +15321,8 @@ msgstr "ChkTeX 警告識別號 # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX 警告識別號 # "
 
-#: src/Color.cpp:95 src/insets/InsetBibtex.cpp:173
-#: src/insets/InsetBibtex.cpp:198
+#: src/Color.cpp:95 src/insets/InsetBibtex.cpp:175
+#: src/insets/InsetBibtex.cpp:200
 msgid "none"
 msgstr "無"
 
@@ -15746,7 +15745,7 @@ msgstr ""
 msgid "Undefined flex inset"
 msgstr "開啟的文字內欄"
 
-#: src/Exporter.cpp:44 src/LyXFunc.cpp:992
+#: src/Exporter.cpp:44 src/LyXFunc.cpp:1001
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -15757,7 +15756,7 @@ msgstr ""
 "\n"
 "您要覆寫該檔案嗎？"
 
-#: src/Exporter.cpp:47 src/LyXFunc.cpp:995
+#: src/Exporter.cpp:47 src/LyXFunc.cpp:1004
 msgid "Overwrite file?"
 msgstr "覆寫檔案？"
 
@@ -16229,7 +16228,7 @@ msgstr "無事可做"
 msgid "Unknown action"
 msgstr "不明的動作"
 
-#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:665
+#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:674
 msgid "Command disabled"
 msgstr "命令停用"
 
@@ -16237,15 +16236,15 @@ msgstr "命令停用"
 msgid "Command not allowed without any document open"
 msgstr "沒有任何文件開啟就無法允許命令"
 
-#: src/LyXFunc.cpp:650
+#: src/LyXFunc.cpp:659
 msgid "Document is read-only"
 msgstr "文件為唯讀"
 
-#: src/LyXFunc.cpp:659
+#: src/LyXFunc.cpp:668
 msgid "This portion of the document is deleted."
 msgstr "此部份的文件已刪除。"
 
-#: src/LyXFunc.cpp:678
+#: src/LyXFunc.cpp:687
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -16256,11 +16255,11 @@ msgstr ""
 "\n"
 "您要儲存文件嗎？"
 
-#: src/LyXFunc.cpp:681 src/frontends/qt4/GuiView.cpp:1795
+#: src/LyXFunc.cpp:690 src/frontends/qt4/GuiView.cpp:1795
 msgid "Save changed document?"
 msgstr "儲存變更的文件？"
 
-#: src/LyXFunc.cpp:696
+#: src/LyXFunc.cpp:705
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -16269,63 +16268,72 @@ msgstr ""
 "無法列印文件 %1$s。\n"
 "檢查您的印表機是否設置正確。"
 
-#: src/LyXFunc.cpp:699
+#: src/LyXFunc.cpp:708
 msgid "Print document failed"
 msgstr "列印文件失敗"
 
-#: src/LyXFunc.cpp:819
+#: src/LyXFunc.cpp:828
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr "任何變更將會失去。確定要還原成儲存的文件版本 %1$s？"
 
-#: src/LyXFunc.cpp:821
+#: src/LyXFunc.cpp:830
 msgid "Revert to saved document?"
 msgstr "恢復原儲存文件？"
 
-#: src/LyXFunc.cpp:822 src/LyXVC.cpp:181
+#: src/LyXFunc.cpp:831 src/LyXVC.cpp:181
 msgid "&Revert"
 msgstr "回復(&R)"
 
-#: src/LyXFunc.cpp:1033 src/Text3.cpp:1545
+#: src/LyXFunc.cpp:1042 src/Text3.cpp:1541
 msgid "Missing argument"
 msgstr "缺少引數"
 
-#: src/LyXFunc.cpp:1045
+#: src/LyXFunc.cpp:1054
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "開啟說明檔案 %1$s…"
 
-#: src/LyXFunc.cpp:1289
+#: src/LyXFunc.cpp:1298
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "開啟子文件 %1$s…"
 
-#: src/LyXFunc.cpp:1451
+#: src/LyXFunc.cpp:1460
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "文件預設儲存在 %1$s 中"
 
-#: src/LyXFunc.cpp:1454
+#: src/LyXFunc.cpp:1463
 msgid "Unable to save document defaults"
 msgstr "無法儲存文件預設值"
 
-#: src/LyXFunc.cpp:1747
+#: src/LyXFunc.cpp:1607 src/LyXVC.cpp:150
+msgid "LyX VC: Log Message"
+msgstr "LyX VC：記錄檔訊息"
+
+#: src/LyXFunc.cpp:1616
+#, fuzzy
+msgid "Directory is not readable.\n"
+msgstr "%1$s 無法讀取。"
+
+#: src/LyXFunc.cpp:1798
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "文件 %1$s 已開啟。"
 
-#: src/LyXFunc.cpp:1749
+#: src/LyXFunc.cpp:1800
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "無法讀取文件"
 
-#: src/LyXFunc.cpp:1786
+#: src/LyXFunc.cpp:1837
 msgid "Welcome to LyX!"
 msgstr "歡迎使用 LyX！"
 
-#: src/LyXFunc.cpp:1807
+#: src/LyXFunc.cpp:1858
 msgid "Converting document to new document class..."
 msgstr "轉換文件到新文件類別…"
 
@@ -16850,10 +16858,6 @@ msgstr "LyX VC：初始描述"
 msgid "(no initial description)"
 msgstr "(無初始描述)"
 
-#: src/LyXVC.cpp:150
-msgid "LyX VC: Log Message"
-msgstr "LyX VC：記錄檔訊息"
-
 #: src/LyXVC.cpp:153
 msgid "(no log message)"
 msgstr "(無記錄檔訊息)"
@@ -17037,11 +17041,11 @@ msgstr "版面配置 "
 msgid " not known"
 msgstr " 未知"
 
-#: src/Text3.cpp:1662 src/Text3.cpp:1674
+#: src/Text3.cpp:1658 src/Text3.cpp:1670
 msgid "Character set"
 msgstr "字元集"
 
-#: src/Text3.cpp:1822 src/Text3.cpp:1833
+#: src/Text3.cpp:1818 src/Text3.cpp:1829
 msgid "Paragraph layout set"
 msgstr "段落版面配置設定"
 
@@ -17254,28 +17258,28 @@ msgstr "Dings 4"
 msgid "Directories"
 msgstr "目錄"
 
-#: src/frontends/qt4/GuiAbout.cpp:38
+#: src/frontends/qt4/GuiAbout.cpp:49
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
 msgstr "錯誤：LyX 無法讀取 CREDITS 檔案\n"
 
-#: src/frontends/qt4/GuiAbout.cpp:39
+#: src/frontends/qt4/GuiAbout.cpp:50
 msgid "Please install correctly to estimate the great\n"
 msgstr "請正確地安裝以評估其他人\n"
 
-#: src/frontends/qt4/GuiAbout.cpp:40
+#: src/frontends/qt4/GuiAbout.cpp:51
 msgid "amount of work other people have done for the LyX project."
 msgstr "對於 LyX 專案所完成的大量成果。"
 
-#: src/frontends/qt4/GuiAbout.cpp:64
-#, fuzzy
+#: src/frontends/qt4/GuiAbout.cpp:77
+#, fuzzy, c-format
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
-"1995-2008 LyX Team"
+"1995--%1$s LyX Team"
 msgstr ""
 "LyX 著作權 (C) 1995 Matthias Ettrich 所有，\n"
 "1995-2006 LyX 團隊"
 
-#: src/frontends/qt4/GuiAbout.cpp:70
+#: src/frontends/qt4/GuiAbout.cpp:85
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -17285,7 +17289,7 @@ msgstr ""
 "這個程式為自由軟體；您可以依據由自由軟體基金會發布的GNU 通用公共許可條件下，"
 "再次散布它和/或修改它；適用於版本 2 的授權，或是 (依您所選) 任何後續版本。"
 
-#: src/frontends/qt4/GuiAbout.cpp:76
+#: src/frontends/qt4/GuiAbout.cpp:91
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -17302,15 +17306,24 @@ msgstr ""
 "(Free Software Foundation, Inc.)，51 Franklin Street, Fifth Floor, Boston, "
 "MA 02110-1301, USA."
 
-#: src/frontends/qt4/GuiAbout.cpp:84
-msgid "LyX Version "
+#: src/frontends/qt4/GuiAbout.cpp:102
+#, fuzzy
+msgid "not released yet"
+msgstr "增加深度"
+
+#: src/frontends/qt4/GuiAbout.cpp:107
+#, fuzzy, c-format
+msgid ""
+"LyX Version %1$s\n"
+"(%2$s)\n"
+"\n"
 msgstr "LyX 版本 "
 
-#: src/frontends/qt4/GuiAbout.cpp:89
+#: src/frontends/qt4/GuiAbout.cpp:113
 msgid "Library directory: "
 msgstr "函式庫目錄："
 
-#: src/frontends/qt4/GuiAbout.cpp:92
+#: src/frontends/qt4/GuiAbout.cpp:116
 msgid "User directory: "
 msgstr "使用者目錄："
 
@@ -17447,24 +17460,24 @@ msgstr "註記背景"
 msgid "Double rectangular frame"
 msgstr "雙倍"
 
-#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:337
-#: src/frontends/qt4/GuiBox.cpp:372
+#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:335
+#: src/frontends/qt4/GuiBox.cpp:370
 msgid "Height"
 msgstr "高度"
 
-#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:340
-#: src/frontends/qt4/GuiBox.cpp:375
+#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:338
+#: src/frontends/qt4/GuiBox.cpp:373
 msgid "Depth"
 msgstr "深度"
 
-#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:205
-#: src/frontends/qt4/GuiBox.cpp:343 src/frontends/qt4/GuiBox.cpp:378
-#: src/frontends/qt4/GuiBox.cpp:425
+#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:203
+#: src/frontends/qt4/GuiBox.cpp:341 src/frontends/qt4/GuiBox.cpp:376
+#: src/frontends/qt4/GuiBox.cpp:419
 msgid "Total Height"
 msgstr "總計高度"
 
-#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:346
-#: src/frontends/qt4/GuiBox.cpp:381
+#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:344
+#: src/frontends/qt4/GuiBox.cpp:379
 msgid "Width"
 msgstr "寬度"
 
@@ -19260,7 +19273,7 @@ msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "LyX 文件 (*.lyx)"
 
 #: src/frontends/qt4/GuiView.cpp:1348 src/frontends/qt4/Validator.cpp:174
-#: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
+#: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:288
 #: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:466
 msgid "Invalid filename"
 msgstr "無效檔名"
@@ -19601,7 +19614,7 @@ msgstr "表格列表"
 msgid "List of Changes"
 msgstr "表格列表"
 
-#: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:287
+#: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:289
 #: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:467
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
@@ -19623,50 +19636,50 @@ msgid ""
 "it will be changed to %2$s."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:139
+#: src/insets/InsetBibtex.cpp:141
 #, c-format
 msgid ""
 "The BibTeX inset includes %1$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:142
+#: src/insets/InsetBibtex.cpp:144
 #, fuzzy
 msgid "Open Databases?"
 msgstr "資料庫(&S)"
 
-#: src/insets/InsetBibtex.cpp:143
+#: src/insets/InsetBibtex.cpp:145
 msgid "&Proceed"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:161
+#: src/insets/InsetBibtex.cpp:163
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX 產生的文獻目錄"
 
-#: src/insets/InsetBibtex.cpp:168
+#: src/insets/InsetBibtex.cpp:170
 #, fuzzy
 msgid "Databases:"
 msgstr "資料庫(&S)"
 
-#: src/insets/InsetBibtex.cpp:193
+#: src/insets/InsetBibtex.cpp:195
 #, fuzzy
 msgid "Style File:"
 msgstr "關閉"
 
-#: src/insets/InsetBibtex.cpp:200
+#: src/insets/InsetBibtex.cpp:202
 #, fuzzy
 msgid "Lists:"
 msgstr "清單"
 
-#: src/insets/InsetBibtex.cpp:211
+#: src/insets/InsetBibtex.cpp:213
 msgid "included in TOC"
 msgstr ""
 
-#: src/insets/InsetBibtex.cpp:307 src/insets/InsetBibtex.cpp:358
+#: src/insets/InsetBibtex.cpp:309 src/insets/InsetBibtex.cpp:360
 msgid "Export Warning!"
 msgstr "匯出警告！"
 
-#: src/insets/InsetBibtex.cpp:308
+#: src/insets/InsetBibtex.cpp:310
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -19674,7 +19687,7 @@ msgstr ""
 "在到您的 BibTeX 資料庫路徑中有些空格。\n"
 "BibTeX 將無法找到它們。"
 
-#: src/insets/InsetBibtex.cpp:359
+#: src/insets/InsetBibtex.cpp:361
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -20482,7 +20495,7 @@ msgstr "ex"
 msgid "em"
 msgstr "em"
 
-#: src/lengthcommon.cpp:38
+#: src/lengthcommon.cpp:39
 msgid "mu[[unit of measure]]"
 msgstr ""
 
@@ -20490,23 +20503,23 @@ msgstr ""
 msgid "Text Width %"
 msgstr "文字寬度 %"
 
-#: src/lengthcommon.cpp:39
+#: src/lengthcommon.cpp:40
 msgid "Column Width %"
 msgstr "欄寬 %"
 
-#: src/lengthcommon.cpp:39
+#: src/lengthcommon.cpp:40
 msgid "Page Width %"
 msgstr "頁面寬度 %"
 
-#: src/lengthcommon.cpp:39
+#: src/lengthcommon.cpp:40
 msgid "Line Width %"
 msgstr "列寬度 %"
 
-#: src/lengthcommon.cpp:40
+#: src/lengthcommon.cpp:41
 msgid "Text Height %"
 msgstr "文字高度 %"
 
-#: src/lengthcommon.cpp:40
+#: src/lengthcommon.cpp:41
 msgid "Page Height %"
 msgstr "頁面高度 %"
 
