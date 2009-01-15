@@ -67,34 +67,39 @@ docstring InsetHyperlink::screenLabel() const
 int InsetHyperlink::latex(odocstream & os, OutputParams const & runparams) const
 {
 	docstring url = getParam("target");
+	docstring name = getParam("name");
 	static docstring const backslash = from_ascii("\\");
 	static docstring const braces = from_ascii("{}");
-	static char_type const chars_url[2] = {'%', '#'};
 	static char_type const chars_name[6] = {
 		'&', '_', '$', '%', '#', '^'};
+
+	// For the case there is no name given, the target is set as name.
+	// Do this before !url.empty() and !name.empty() to handle characters
+	// like the "%" correctly.
+	if (name.empty())
+		name = url;
 
 	// The characters in chars_url[] need to be changed to a command when
 	// they are in the url field.
 	if (!url.empty()) {
-		// the chars_url[] characters must be handled for both, url and href
-		for (int k = 0;	k < 2; k++) {
-			for (size_t i = 0, pos;
-				(pos = url.find(chars_url[k], i)) != string::npos;
-				i = pos + 2) {
-				url.replace(pos, 1, backslash + chars_url[k]);
-			}
-		}
-		// Replace the "\" character with a "/" because "\" is not allowed in
-		// URLs and by \href. Only do this when the following character
-		// is not also a "\", because "\\" is valid code
-		docstring const slash = from_ascii("/");
+		// Replace the "\" character by its ASCII code according to the URL specifications
+		// because "\" is not allowed in URLs and by \href. Only do this when the
+		// following character is not also a "\", because "\\" is valid code
 		for (size_t i = 0, pos;
 			(pos = url.find('\\', i)) != string::npos;
 			i = pos + 2) {
 			if (url[pos + 1] != '\\')
-				url.replace(pos, 1, slash);
+				url.replace(pos, 1, from_ascii("%5C"));
 		}
-
+		// "#" needs to be escapes to "\#", therefore the treatment
+		// of "\" must be done before
+		for (size_t i = 0, pos;
+			(pos = url.find('#', i)) != string::npos;
+			i = pos + 2) {
+			if (url[pos + 1] != '\\')
+				url.replace(pos, 1, from_ascii("\\#"));
+		}
+		
 		// add "http://" when the type is web (type = empty)
 		// and no "://" or "run:" is given
 		docstring type = getParam("type");
@@ -104,8 +109,6 @@ int InsetHyperlink::latex(odocstream & os, OutputParams const & runparams) const
 			url = from_ascii("http://") + url;
 
 	} // end if (!url.empty())
-
-	docstring name = getParam("name");
 
 	// The characters in chars_name[] need to be changed to a command when
 	// they are in the name field.
@@ -121,6 +124,7 @@ int InsetHyperlink::latex(odocstream & os, OutputParams const & runparams) const
 		}
 		// The characters in chars_name[] need to be changed to a command when
 		// they are in the name field.
+		// Therefore the treatment of "\" must be the first thing
 		for (int k = 0;	k < 6; k++) {
 			for (size_t i = 0, pos;
 				(pos = name.find(chars_name[k], i)) != string::npos;
@@ -141,9 +145,8 @@ int InsetHyperlink::latex(odocstream & os, OutputParams const & runparams) const
 	if (runparams.moving_arg)
 		os << "\\protect";
 
-	//for the case there is no name given, the target is set as name
-	os << "\\href{" << getParam("type") << url << "}{"
-		<< (name.empty()? url : name) << '}';
+	// output the ready \href command
+	os << "\\href{" << getParam("type") << url << "}{" << name << '}';
 
 	return 0;
 }
