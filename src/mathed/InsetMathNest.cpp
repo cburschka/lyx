@@ -10,8 +10,6 @@
 
 #include <config.h>
 
-//#define AUTOCORRECT
-
 #include "InsetMathNest.h"
 
 #include "InsetMathArray.h"
@@ -27,9 +25,7 @@
 #include "InsetMathSpace.h"
 #include "InsetMathSymbol.h"
 #include "InsetMathUnknown.h"
-#ifdef AUTOCORRECT
 #include "MathAutoCorrect.h"
-#endif
 #include "MathCompletionList.h"
 #include "MathData.h"
 #include "MathFactory.h"
@@ -1519,22 +1515,18 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 		return true;
 	}
 
-	// This is annoying as one has to press <space> far too often.
-	// Disable it.
 
-#ifdef AUTOCORRECT
-		// leave autocorrect mode if necessary
-		if (c == ' ' && cur.autocorrect()) {
-			cur.autocorrect() = false;
-			cur.message(_("Autocorrect Off ('!' to enter)"));
-			return true;
-		} 
-		if (c == '!' && !cur.autocorrect()) {
-			cur.autocorrect() = true;
-			cur.message(_("Autocorrect On (<space> to exit)"));
-			return true;
-		}
-#endif
+	// leave autocorrect mode if necessary
+	if (lyxrc.autocorrection_math && c == ' ' && cur.autocorrect()) {
+		cur.autocorrect() = false;
+		cur.message(_("Autocorrect Off ('!' to enter)"));
+		return true;
+	} 
+	if (lyxrc.autocorrection_math && c == '!' && !cur.autocorrect()) {
+		cur.autocorrect() = true;
+		cur.message(_("Autocorrect On (<space> to exit)"));
+		return true;
+	}
 
 	// just clear selection on pressing the space bar
 	if (cur.selection() && c == ' ') {
@@ -1631,20 +1623,18 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 	}
 
 
-#ifdef AUTOCORRECT
 	// try auto-correction
-	if (cur.autocorrect() && cur.pos() != 0 && math_autocorrect(cur.prevAtom(), c))
+	if (lyxrc.autocorrection_math && cur.autocorrect() && cur.pos() != 0 && math_autocorrect(cur.prevAtom(), c))
 		return true;
-#endif
 
 	// no special circumstances, so insert the character without any fuss
 	cur.insert(c);
-#ifdef AUTOCORRECT
-	if (!cur.autocorrect())
-		cur.message(_("Autocorrect Off ('!' to enter)"));
-	else
-		cur.message(_("Autocorrect On (<space> to exit)"));
-#endif
+	if (lyxrc.autocorrection_math) {
+		if (!cur.autocorrect())
+			cur.message(_("Autocorrect Off ('!' to enter)"));
+		else
+			cur.message(_("Autocorrect On (<space> to exit)"));
+	}
 	return true;
 }
 

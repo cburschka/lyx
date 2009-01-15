@@ -58,6 +58,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\auto_number", LyXRC::RC_AUTO_NUMBER },
 	{ "\\auto_region_delete", LyXRC::RC_AUTOREGIONDELETE },
 	{ "\\auto_reset_options", LyXRC::RC_AUTORESET_OPTIONS },
+	{ "\\autocorrection_math", LyXRC::RC_AUTOCORRECTION_MATH },
 	{ "\\autosave", LyXRC::RC_AUTOSAVE },
 	{ "\\backupdir_path", LyXRC::RC_BACKUPDIR_PATH },
 	{ "\\bibtex_command", LyXRC::RC_BIBTEX_COMMAND },
@@ -314,6 +315,7 @@ void LyXRC::setDefaults()
 	completion_popup_text = false;
 	completion_popup_delay = 2.0;
 	completion_popup_after_complete = true;
+	autocorrection_math = false;
 	completion_inline_math = true;
 	completion_inline_text = false;
 	completion_inline_dots = -1;
@@ -709,6 +711,10 @@ int LyXRC::read(Lexer & lexrc)
 
 		case RC_COMPLETION_INLINE_DOTS:
 			lexrc >> completion_inline_dots;
+			break;
+
+		case RC_AUTOCORRECTION_MATH:
+			lexrc >> autocorrection_math;
 			break;
 
 		case RC_COMPLETION_POPUP_DELAY:
@@ -1968,6 +1974,14 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_AUTOCORRECTION_MATH:
+		if (ignore_system_lyxrc ||
+		    autocorrection_math != system_lyxrc.autocorrection_math) {
+			os << "\\autocorrection_math "
+				<< convert<string>(autocorrection_math) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_COMPLETION_POPUP_DELAY:
 		if (ignore_system_lyxrc ||
 		    completion_popup_delay != system_lyxrc.completion_popup_delay) {
@@ -2650,6 +2664,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_COMPLETION_INLINE_DOTS:
 		str = _("Use \"...\" to shorten long completions.");
+		break;
+
+	case RC_AUTOCORRECTION_MATH:
+		str = _("Allow TeXMacs shorthand, like => converting to \Rightarrow.");
 		break;
 
 	case RC_NUMLASTFILES:

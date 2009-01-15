@@ -38,6 +38,7 @@ public:
 	enum LyXRCTags {
 		RC_ACCEPT_COMPOUND = 1,
 		RC_ALT_LANG,
+		RC_AUTOCORRECTION_MATH,
 		RC_PLAINTEXT_LINELEN,
 		RC_PLAINTEXT_ROFF_COMMAND,
 		RC_AUTOREGIONDELETE,
@@ -437,6 +438,8 @@ public:
 	bool completion_inline_text;
 	///
 	int completion_inline_dots;
+	///
+	bool autocorrection_math;
 	///
 	double completion_popup_delay;
 	///
