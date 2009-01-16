@@ -1582,6 +1582,17 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_SIZE, "math-size", Noop, Math },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_MATH_FONT_STYLE
+ * \li Action: Changes the text style used in math.
+ * \li Syntax: math-font-style <STYLE>
+ * \li Params: <STYLE>: mathnormal|mathcal|mathfrak|mathrm|mathsf|mathbf
+               |textnormal|textrm|textsf|texttt|textbf|textmd|textit
+               |textsc|textsl|textup
+ * \li Origin: vfr, 9 jan 2009
+ * \endvar
+ */
+		{ LFUN_MATH_FONT_STYLE, "math-font-style", Noop, Math },
+/*!
  * \var lyx::FuncCode lyx::LFUN_MATH_MACRO_UNFOLD
  * \li Action: Unfold a Math Macro.
  * \li Notion: Unfold the Math Macro the cursor is in, i.e.

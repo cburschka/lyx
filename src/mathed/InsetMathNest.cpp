@@ -980,6 +980,12 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_MATH_FONT_STYLE: {
+		FuncRequest fr = FuncRequest(LFUN_MATH_INSERT, '\\' + cmd.argument());
+		doDispatch(cur, fr);
+		break;
+	}
+
 	case LFUN_MATH_SIZE: {
 		FuncRequest fr = FuncRequest(LFUN_MATH_INSERT, cmd.argument());
 		doDispatch(cur, fr);
@@ -1253,17 +1259,21 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 		flag.setEnabled(currentMode() != TEXT_MODE);
 		break;
 
-	case LFUN_MATH_INSERT: {
+	case LFUN_MATH_FONT_STYLE: {
 		bool const textarg =
-			arg == "\\textbf"   || arg == "\\textsf" ||
-			arg == "\\textrm"   || arg == "\\textmd" ||
-			arg == "\\textit"   || arg == "\\textsc" ||
-			arg == "\\textsl"   || arg == "\\textup" ||
-			arg == "\\texttt"   || arg == "\\textbb" ||
-			arg == "\\textnormal";
+			arg == "textbf"   || arg == "textsf" ||
+			arg == "textrm"   || arg == "textmd" ||
+			arg == "textit"   || arg == "textsc" ||
+			arg == "textsl"   || arg == "textup" ||
+			arg == "texttt"   || arg == "textbb" ||
+			arg == "textnormal";
 		flag.setEnabled(currentMode() != TEXT_MODE || textarg);
 		break;
 	}
+
+	case LFUN_MATH_INSERT:
+		flag.setEnabled(currentMode() != TEXT_MODE);
+		break;
 
 	case LFUN_MATH_MATRIX:
 		flag.setEnabled(currentMode() == MATH_MODE);
