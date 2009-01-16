@@ -95,6 +95,15 @@ public:
 		Submenu,
 		///
 		Separator,
+		/** This type of item explains why something is unavailable. If this
+		    menuitem is in a submenu, the submenu is enabled to make sure the
+		    user sees the information. */
+		Help,
+		/** This type of item merely shows that there might be a list or 
+		    something alike at this position, but the list is still empty.
+		    If this item is in a submenu, the submenu will not always be 
+		    enabled. */
+		Info,
 		/** This is the list of last opened file,
 		    typically for the File menu. */
 		Lastfiles,
@@ -153,7 +162,7 @@ public:
 		 bool optional = false)
 		: kind_(kind), label_(label), submenuname_(submenu), optional_(optional)
 	{
-		LASSERT(kind == Submenu, /**/);
+		LASSERT(kind == Submenu || kind == Help || kind == Info, /**/);
 	}
 
 	MenuItem(Kind kind,
@@ -342,9 +351,11 @@ void MenuDefinition::addWithStatusCheck(MenuItem const & i)
 		bool enabled = false;
 		if (i.hasSubmenu()) {
 			for (const_iterator cit = i.submenu().begin();
-			     cit != i.submenu().end(); ++cit) {
+				  cit != i.submenu().end(); ++cit) {
+				// Only these kind of items affect the status of the submenu
 				if ((cit->kind() == MenuItem::Command
-				     || cit->kind() == MenuItem::Submenu)
+					|| cit->kind() == MenuItem::Submenu
+					|| cit->kind() == MenuItem::Help)
 				    && cit->status().enabled()) {
 					enabled = true;
 					break;
@@ -688,10 +699,8 @@ void MenuDefinition::expandDocuments()
 			b = theBufferList().next(b);
 			++ii;
 		} while (b != first); 
-	} else {
-		add(MenuItem(MenuItem::Command, qt_("No Documents Open!"),
-		           FuncRequest(LFUN_NOACTION)));
-	}
+	} else
+		add(MenuItem(MenuItem::Info, qt_("<No documents open>")));
 }
 
 
@@ -699,6 +708,7 @@ void MenuDefinition::expandBookmarks()
 {
 	lyx::BookmarksSection const & bm = theSession().bookmarks();
 
+	bool empty = true;
 	for (size_t i = 1; i <= bm.size(); ++i) {
 		if (bm.isValid(i)) {
 			string const file = bm.bookmark(i).filename.absFilename();
@@ -706,19 +716,18 @@ void MenuDefinition::expandBookmarks()
 				.arg(toqstr(makeDisplayPath(file, 20))).arg(i);
 			add(MenuItem(MenuItem::Command, label,
 				FuncRequest(LFUN_BOOKMARK_GOTO, convert<docstring>(i))));
+			empty = false;
 		}
 	}
+	if (empty)
+		add(MenuItem(MenuItem::Info, qt_("<No bookmarks saved yet>")));
 }
 
 
 void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 {
-	if (!buf && kind != MenuItem::ImportFormats) {
-		add(MenuItem(MenuItem::Command,
-				    qt_("No Document Open!"),
-				    FuncRequest(LFUN_NOACTION)));
+	if (!buf && kind != MenuItem::ImportFormats)
 		return;
-	}
 
 	typedef vector<Format const *> Formats;
 	Formats formats;
@@ -793,11 +802,8 @@ void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 
 void MenuDefinition::expandFloatListInsert(Buffer const * buf)
 {
-	if (!buf) {
-		add(MenuItem(MenuItem::Command, qt_("No Document Open!"),
-				    FuncRequest(LFUN_NOACTION)));
+	if (!buf)
 		return;
-	}
 
 	FloatList const & floats = buf->params().documentClass().floats();
 	FloatList::const_iterator cit = floats.begin();
@@ -813,11 +819,8 @@ void MenuDefinition::expandFloatListInsert(Buffer const * buf)
 
 void MenuDefinition::expandFloatInsert(Buffer const * buf)
 {
-	if (!buf) {
-		add(MenuItem(MenuItem::Command, qt_("No Document Open!"),
-				    FuncRequest(LFUN_NOACTION)));
+	if (!buf)
 		return;
-	}
 
 	FloatList const & floats = buf->params().documentClass().floats();
 	FloatList::const_iterator cit = floats.begin();
@@ -835,11 +838,9 @@ void MenuDefinition::expandFloatInsert(Buffer const * buf)
 void MenuDefinition::expandFlexInsert(
 		Buffer const * buf, InsetLayout::InsetLyXType type)
 {
-	if (!buf) {
-		add(MenuItem(MenuItem::Command, qt_("No Document Open!"),
-				    FuncRequest(LFUN_NOACTION)));
+	if (!buf)
 		return;
-	}
+
 	TextClass::InsetLayouts const & insetLayouts =
 		buf->params().documentClass().insetLayouts();
 	TextClass::InsetLayouts::const_iterator cit = insetLayouts.begin();
@@ -854,9 +855,7 @@ void MenuDefinition::expandFlexInsert(
 	}
 	// FIXME This is a little clunky.
 	if (items_.empty() && type == InsetLayout::CUSTOM)
-		add(MenuItem(MenuItem::Command,
-				    qt_("No custom insets defined!"),
-				    FuncRequest(LFUN_NOACTION)));
+		add(MenuItem(MenuItem::Help, qt_("No custom insets defined!")));
 }
 
 
@@ -924,8 +923,7 @@ void MenuDefinition::expandToc(Buffer const * buf)
 	// OK, so we avoid this unnecessary overhead (JMarc)
 
 	if (!buf) {
-		add(MenuItem(MenuItem::Command, qt_("No Document Open!"),
-				    FuncRequest(LFUN_NOACTION)));
+		add(MenuItem(MenuItem::Info, qt_("<No document open>")));
 		return;
 	}
 
@@ -980,12 +978,14 @@ void MenuDefinition::expandToc(Buffer const * buf)
 
 	// Handle normal TOC
 	cit = toc_list.find("tableofcontents");
-	if (cit == end) {
-		addWithStatusCheck(MenuItem(MenuItem::Command,
-				    qt_("No Table of contents"),
-				    FuncRequest()));
-	} else
-		expandToc2(cit->second, 0, cit->second.size(), 0);
+	if (cit == end)
+		LYXERR(Debug::GUI, "No table of contents.");
+	else {
+		if (cit->second.size() > 0 ) 
+			expandToc2(cit->second, 0, cit->second.size(), 0);
+		else
+			add(MenuItem(MenuItem::Info, qt_("<Empty table of contents>")));
+	}
 }
 
 
@@ -1028,18 +1028,12 @@ void MenuDefinition::expandToolbars()
 
 void MenuDefinition::expandBranches(Buffer const * buf)
 {
-	if (!buf) {
-		add(MenuItem(MenuItem::Command,
-				    qt_("No Document Open!"),
-				    FuncRequest(LFUN_NOACTION)));
+	if (!buf)
 		return;
-	}
 
 	BufferParams const & params = buf->masterBuffer()->params();
 	if (params.branchlist().empty()) {
-		add(MenuItem(MenuItem::Command,
-				    qt_("No Branch in Document!"),
-				    FuncRequest(LFUN_NOACTION)));
+		add(MenuItem(MenuItem::Help, qt_("No branches set for document!")));
 		return;
 	}
 
@@ -1061,12 +1055,8 @@ void MenuDefinition::expandBranches(Buffer const * buf)
 
 void MenuDefinition::expandCiteStyles(BufferView const * bv)
 {
-	if (!bv) {
-		add(MenuItem(MenuItem::Command,
-				    qt_("No Document Open!"),
-				    FuncRequest(LFUN_NOACTION)));
+	if (!bv)
 		return;
-	}
 
 	Inset const * inset = bv->cursor().nextInset();
 	if (!inset || inset->lyxCode() != CITE_CODE) {
@@ -1410,6 +1400,8 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 		}
 		break;
 
+		case MenuItem::Info:
+		case MenuItem::Help:
 		case MenuItem::Separator:
 			tomenu.addWithStatusCheck(*cit);
 			break;
