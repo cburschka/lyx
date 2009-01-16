@@ -2011,7 +2011,7 @@ void LyXAction::init()
 			U - dUmmy - no flags \n
 			D - Doc - need document loaded to proceed \n
 			I - dIrty - mark document dirty \n
-			R - Reload - reload the document after command execution \n
+			R - Reload - save the document before and reload the document after command execution \n			         
 			M - Message - ask for input string (commit message)\n
 		<PATH>: path where to start. $$p will be replaced by the current document path.\n
 		<COMMAND>: command to execute. $$i/$$p/$$m will be replaced by the current document/path/message.
