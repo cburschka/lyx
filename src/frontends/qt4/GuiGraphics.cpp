@@ -318,7 +318,6 @@ void GuiGraphics::change_group(int index)
 	groupCO->blockSignals(true);
 	InsetGraphicsParams par;
 	InsetGraphics::string2params(grp, buffer(), par);
-	par.filename = params_.filename;
 	params_ = par;
 	paramsToDialog(par);
 	groupCO->blockSignals(false);
