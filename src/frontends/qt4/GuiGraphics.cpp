@@ -15,6 +15,7 @@
 #include <config.h>
 
 #include "GuiGraphics.h"
+#include "frontends/alert.h"
 #include "qt_helpers.h"
 #include "Validator.h"
 
@@ -246,10 +247,9 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	connect(displayGB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(displayscale, SIGNAL(textChanged(const QString&)),
 		this, SLOT(change_adaptor()));
-	connect(groupId, SIGNAL(currentIndexChanged (const QString&)),
-		this, SLOT(change_group(const QString&)));
-	connect(groupId, SIGNAL(editTextChanged(const QString&)),
-		this, SLOT(change_adaptor()));
+	connect(groupCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(change_group(int)));
+
 	displayscale->setValidator(new QIntValidator(displayscale));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
@@ -294,21 +294,58 @@ void GuiGraphics::change_adaptor()
 }
 
 
-void GuiGraphics::change_group(const QString &text)
+void GuiGraphics::change_group(int index)
 {
-	if (text.isEmpty())
+	QString const group = groupCO->itemData(
+		groupCO->currentIndex()).toString();
+
+	if (group.isEmpty()) {
+		changed();
 		return;
+	}
 
-	groupId->blockSignals(true);
+	string grp = graphics::getGroupParams(buffer(), fromqstr(group));
+	if (grp.empty()) {
+		// group does not exist yet
+		changed();
+		return;
+	}
+	
+	// filename might have been changed
+	QString current_filename = filename->text();
 
-	string grp = graphics::getGroupParams(buffer(), fromqstr(text));
+	// group exists: load params into the dialog
+	groupCO->blockSignals(true);
 	InsetGraphicsParams par;
 	InsetGraphics::string2params(grp, buffer(), par);
 	par.filename = params_.filename;
 	params_ = par;
 	paramsToDialog(par);
+	groupCO->blockSignals(false);
+	
+	// reset filename
+	filename->setText(current_filename);
 
-	groupId->blockSignals(false);
+	changed();
+}
+
+
+void GuiGraphics::on_newGroupPB_clicked()
+{
+	docstring newgroup;
+	if (!Alert::askForText(newgroup, _("Enter unique group name:")))
+		return;
+	if (newgroup.empty())
+		return;
+	if (groupCO->findData(toqstr(newgroup), Qt::MatchExactly) != -1) {
+		Alert::warning(_("Group already defined!"), 
+			bformat(_("A graphics group with the name '%1$s' already exists."),
+				newgroup));
+		return;
+	}
+	groupCO->addItem(toqstr(newgroup), toqstr(newgroup));
+	groupCO->setCurrentIndex(
+		groupCO->findData(toqstr(newgroup), Qt::MatchExactly));
 }
 
 
@@ -557,16 +594,17 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	graphics::getGraphicsGroups(buffer(), grp);
 	set<string>::const_iterator it = grp.begin();
 	set<string>::const_iterator end = grp.end();
-	groupId->blockSignals(true);
-	groupId->clear();
-	groupId->addItem("");
+	groupCO->blockSignals(true);
+	groupCO->clear();
 	for (; it != end; it++)
-		groupId->addItem(toqstr(*it));
+		groupCO->addItem(toqstr(*it), toqstr(*it));
+	groupCO->insertItem(0, qt_("None"), QString());
 	if (igp.groupId.empty())
-		groupId->setCurrentIndex(-1);
+		groupCO->setCurrentIndex(0);
 	else
-		groupId->setCurrentIndex(groupId->findText(toqstr(igp.groupId), Qt::MatchExactly));
-	groupId->blockSignals(false);
+		groupCO->setCurrentIndex(
+			groupCO->findData(toqstr(igp.groupId), Qt::MatchExactly));
+	groupCO->blockSignals(false);
 
 	if (igp.width.value() == 0)
 		lengthToWidgets(Width, widthUnit, _(autostr), unitDefault);
@@ -708,7 +746,8 @@ void GuiGraphics::applyView()
 	// more latex options
 	igp.special = fromqstr(latexoptions->text());
 
-	igp.groupId = fromqstr(groupId->currentText());
+	igp.groupId = fromqstr(groupCO->itemData(
+		groupCO->currentIndex()).toString());
 }
 
 
