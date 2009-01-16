@@ -175,9 +175,13 @@ docstring const BibTeXInfo::getYear() const
 
 docstring const BibTeXInfo::getInfo() const
 {
+	if (!info_.empty())
+		return info_;
+
 	if (!is_bibtex_) {
 		BibTeXInfo::const_iterator it = find(from_ascii("ref"));
-		return it->second;
+		info_ = it->second;
+		return info_;
 	}
  
 	// FIXME
@@ -224,8 +228,10 @@ docstring const BibTeXInfo::getInfo() const
 		result << ", " << docLoc;
 
 	docstring const result_str = rtrim(result.str());
-	if (!result_str.empty())
-		return result_str;
+	if (!result_str.empty()) {
+		info_ = result_str;
+		return info_;
+	}
 
 	// This should never happen (or at least be very unusual!)
 	return docstring();
