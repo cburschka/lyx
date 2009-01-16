@@ -316,10 +316,8 @@ void GuiGraphics::change_group(int index)
 
 	// group exists: load params into the dialog
 	groupCO->blockSignals(true);
-	InsetGraphicsParams par;
-	InsetGraphics::string2params(grp, buffer(), par);
-	params_ = par;
-	paramsToDialog(par);
+	InsetGraphics::string2params(grp, buffer(), params_);
+	paramsToDialog(params_);
 	groupCO->blockSignals(false);
 	
 	// reset filename
