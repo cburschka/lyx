@@ -62,7 +62,7 @@ bool setEnv(string const & name, string const & value)
 
 	string const encoded = to_local8bit(from_utf8(value));
 #if defined (HAVE_SETENV)
-	return ::setenv(name.c_str(), encoded.c_str(), true);
+	return ::setenv(name.c_str(), encoded.c_str(), 1) == 0;
 #elif defined (HAVE_PUTENV)
 	static map<string, string> varmap;
 	varmap[name] = name + '=' + encoded;
