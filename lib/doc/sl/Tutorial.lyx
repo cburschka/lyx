@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
+\use_default_options false
 \language slovene
 \inputencoding latin2
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics none
 \paperfontsize default
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -103,14 +104,14 @@ Dobrodošli v LyX!
 \begin_layout Standard
 Ta datoteka je namenjena vsem vam, ki niste še nikoli slišali za LaTeX ali
  pa ga ne znate prav dobro uporabljati.
- No, le brez panike -- za to, da bi lahko uporabljali LyX, se vam ne bo
- treba učiti LaTeXa.
+ No, le brez panike – za to, da bi lahko uporabljali LyX, se vam ne bo treba
+ učiti LaTeXa.
  To je, navsezadnje, poglavitna poanta LyXa: ponuditi skoraj WYSIWYG
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-What You See Is What You Get -- 
+What You See Is What You Get – 
 \begin_inset Quotes gld
 \end_inset
 
@@ -499,7 +500,7 @@ Uvod
 
 \begin_layout Standard
 Da, to je vse.
- Če izrežete in prilepite razdelek, se bo samodejno preštevilčil -- kjerkoli.
+ Če izrežete in prilepite razdelek, se bo samodejno preštevilčil – kjerkoli.
  Mogoče je, da LyX celo samodejno osveži vsa sklicevanja v datoteki na ta
  razdelek.
  
@@ -972,7 +973,7 @@ zakaj
 \emph default
  LyX deluje nekako drugače od drugih urejevalnikov besedil.
  Razlog je preprost: LyX uporablja LaTeX za tiskanje.
- Prav tako kot LaTeX se tudi LyX osredotoča na vsebino vašega pisanja --
+ Prav tako kot LaTeX se tudi LyX osredotoča na vsebino vašega pisanja –
  na to, 
 \emph on
 kaj
@@ -1119,7 +1120,7 @@ Učbenik
 \emph default
  ostal kratek.
  Poleg tega se boste tako tudi navadili uporabljati druge priročnike, to
- pa vam bo -- dolgoročno -- prihranilo veliko časa.
+ pa vam bo – dolgoročno – prihranilo veliko časa.
 \end_layout
 
 \begin_layout Standard
@@ -1503,7 +1504,7 @@ status collapsed
 \begin_layout Plain Layout
 Zaprite okno, ko končate.
  Ali pa ga pustite odprtega, če se vam zdi tako bolj pripravno.
- Večino dvižnih oken v LyXu -- vštevši z okni 
+ Večino dvižnih oken v LyXu – vštevši z okni 
 \family sans
 Poišči
 \begin_inset space ~
@@ -1523,8 +1524,8 @@ Kazalo vsebine
 \family sans
 Videz
 \family default
-, ter različnimi matematičnimi dvižnimi okni -- lahko pomanjšate, ne da
- bi jih zaprli.
+, ter različnimi matematičnimi dvižnimi okni – lahko pomanjšate, ne da bi
+ jih zaprli.
  Malo je dvižnih oken, kot je 
 \family sans
 Datoteka\SpecialChar \menuseparator
@@ -1710,9 +1711,9 @@ Uporabniškem vodniku
 \family sans
 HFill
 \family default
-e in navpične razmike -- ki so močnejši in izrecnejši od več presledkov
- ali praznih vrstic -- ter načine za ročno spreminjanje velikosti pisave,
- oblike znakov in poravnavanja odstavkov.
+e in navpične razmike – ki so močnejši in izrecnejši od več presledkov ali
+ praznih vrstic – ter načine za ročno spreminjanje velikosti pisave, oblike
+ znakov in poravnavanja odstavkov.
  Spis lahko napišete od začetka do konca in se pri tem osredotočite na vsebino,
  z drobnimi popravki oblike pa se ukvarjate šele na koncu.
  Pri standardnih urejevalnikih besedil vas bo med pisanjem zmedlo urejanje
@@ -2295,7 +2296,7 @@ okolje
 \family sans
 List
 \family default
- -- v LaTeXu ga ni -- je malce drugačna oblika okolja 
+ – v LaTeXu ga ni – je malce drugačna oblika okolja 
 \family sans
 Description
 \family default
@@ -2441,7 +2442,7 @@ List
 .
  Tako boste videli, kakšni sta.
  Pri teh dveh okoljih je vsaka postavka seznama sestavljena iz izraza, vsebujoče
-ga prvo besedo postavke, ki mu sledi definicija -- ostanek odstavka (dokler
+ga prvo besedo postavke, ki mu sledi definicija – ostanek odstavka (dokler
  ne pritisnete 
 \family sans
 Return
@@ -2661,8 +2662,8 @@ name "sec:textclasses"
 Različne vrste spisov morajo biti različno stavljene.
  Knjige, denimo, so na splošno natisnjene na obeh straneh papirja, članki
  pa le na eni strani.
- Številni spisi imajo še dodatna posebna okolja: pisma, denimo, taka --
- kot sta naslov in podpis pošiljatelja -- ki v knjigi ali članku ne bi imela
+ Številni spisi imajo še dodatna posebna okolja: pisma, denimo, taka – kot
+ sta naslov in podpis pošiljatelja – ki v knjigi ali članku ne bi imela
  smisla.
  
 \emph on
@@ -3104,7 +3105,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Opozorilo, če pišete po vzorcu.
- Če zbrišete vse besedilo v okolju -- če, denimo, zbrišete celotno polje
+ Če zbrišete vse besedilo v okolju – če, denimo, zbrišete celotno polje
  
 \family sans
 My
@@ -3113,7 +3114,7 @@ My
 
 Address
 \family default
-, da bi ga nadomestili s svojim -- in potem premaknete kazalec, lahko okolje
+, da bi ga nadomestili s svojim – in potem premaknete kazalec, lahko okolje
  izgine.
  To se zgodi, ker okolja ne more biti brez vsebovanega besedila.
  Le vnovič izberite okolje z menuja 
@@ -3133,8 +3134,8 @@ Naslovi spisov
 \end_layout
 
 \begin_layout Standard
-LyX (kot LaTeX) upošteva naslov -- ki lahko vsebuje pravi naslov, ime avtorja,
- datum in celo povzetek članka -- kot ločeni del spisa.
+LyX (kot LaTeX) upošteva naslov – ki lahko vsebuje pravi naslov, ime avtorja,
+ datum in celo povzetek članka – kot ločeni del spisa.
 \end_layout
 
 \begin_layout Standard
@@ -3278,7 +3279,7 @@ Mimogrede, oznako bi lahko postavili tudi kamorkoli drugam v razdelek; sklici
 \end_layout
 
 \begin_layout Standard
-Zaenkrat niste naredili še ničesar -- datoteka 
+Zaenkrat niste naredili še ničesar – datoteka 
 \family typewriter
 dvi
 \family default
@@ -3306,7 +3307,7 @@ razdelek , ki ga najdete na strani .
 \end_layout
 
 \begin_layout Standard
-Zdaj -- s kazalcem za besedo 
+Zdaj – s kazalcem za besedo 
 \begin_inset Quotes gld
 \end_inset
 
@@ -3314,7 +3315,7 @@ razdelek
 \begin_inset Quotes grd
 \end_inset
 
- -- izberite 
+ – izberite 
 \family sans
 \bar under
 V
@@ -3658,8 +3659,8 @@ zvijanje
 \end_inset
 
  opombe v nogi.
- Opombo v nogi lahko kadarkoli razvijete -- in preuredite njeno besedilo,
- če želite -- s klikom rdeče oznake 
+ Opombo v nogi lahko kadarkoli razvijete – in preuredite njeno besedilo,
+ če želite – s klikom rdeče oznake 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4567,11 +4568,11 @@ reference "sec:whitespace"
 
 ).
  Če niste zadovoljni, lahko uporabite tudi katerega od načinov za fino stavljenj
-e razmikov -- več o tem izveste v 
+e razmikov – več o tem izveste v 
 \emph on
 Uporabniškem vodniku
 \emph default
- -- vendar se ne ukvarjajte s finim stavljenjem, dokler spisa ne dokončate.
+ – vendar se ne ukvarjajte s finim stavljenjem, dokler spisa ne dokončate.
 \end_layout
 
 \end_inset
@@ -4665,8 +4666,8 @@ Esc
 \end_layout
 
 \begin_layout Standard
-Tudi pisanje indeksov je enako preprosto -- pisanje pod ravnijo začnete
- s pritiskom na podčrtaj, 
+Tudi pisanje indeksov je enako preprosto – pisanje pod ravnijo začnete s
+ pritiskom na podčrtaj, 
 \begin_inset Quotes gld
 \end_inset
 
@@ -5280,7 +5281,7 @@ Za vodoravno premikanje iz enega stolpca matrike v drugega lahko uporabljate
 \family sans
 Tab
 \family default
-, lahko pa uporabljate tudi tipke s puščicami -- pritisk na 
+, lahko pa uporabljate tudi tipke s puščicami – pritisk na 
 \family sans
 Desno
 \family default
@@ -5309,7 +5310,7 @@ Prikazni način
 
 \begin_layout Standard
 Vsi izrazi, ki smo jih napisali doslej, so bili v isti vrstici kot besedilo
- pred njimi in za njimi -- takšni izrazi so znani kot 
+ pred njimi in za njimi – takšni izrazi so znani kot 
 \begin_inset Quotes gld
 \end_inset
 
@@ -5955,12 +5956,12 @@ reference "sec:preamble"
 
 \end_inset
 
-) lahko uporabite katerikoli paket, ki ga želite -- čeprav ne boste imeli
+) lahko uporabite katerikoli paket, ki ga želite – čeprav ne boste imeli
  podpore WYSIWYG za vse odlike tega paketa.
 \end_layout
 
 \begin_layout Subsection
-Uvoz spisov v LaTeXu -- 
+Uvoz spisov v LaTeXu – 
 \family typewriter
 tex2lyx
 \begin_inset CommandInset label
@@ -6005,7 +6006,7 @@ foo.lyx
 \family typewriter
 foo.tex
 \family default
- --- and then open that file.
+ — and then open that file.
  If the translation doesn't work, you can try calling 
 \family typewriter
 tex2lyx

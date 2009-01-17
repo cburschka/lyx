@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -37,6 +36,7 @@
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
 \end_preamble
+\use_default_options false
 \language spanish
 \inputencoding auto
 \font_roman default
@@ -47,6 +47,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -82,8 +83,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -320,8 +321,8 @@ Introducción
 
 .
  Eso es todo.
- Si cortas y pegas la sección, será renumerada automáticamente ---en todas
- partes---.
+ Si cortas y pegas la sección, será renumerada automáticamente —en todas
+ partes—.
  Y si introduces correctamente referencias a esa sección (insertando una
  etiqueta de referencia cruzada), LyX las actualizará automáticamente a
  través de todo el documento, de manera que nunca tendrás que escribir un
@@ -384,15 +385,15 @@ lo que ves es lo que quieres decir
  Es una idea poderosa que simplifica mucho los mecanismos de la escritura
  de documentos.
  Y por esto es por lo que LyX no es idóneo para crear posters y volantes
- ---en estos casos 
+ —en estos casos 
 \emph on
 sí
 \emph default
  quieres especificar exactamente dónde va cada cosa porque no hay unidades
- funcionales como párrafos, secciones, etc---.
+ funcionales como párrafos, secciones, etc—.
  Esto no significa que LyX ha perdido funcionalidad, significa simplemente
- que no es la herramienta adecuada para esas tareas ---para clavar un clavo
- no usas un destornillador---.
+ que no es la herramienta adecuada para esas tareas —para clavar un clavo
+ no usas un destornillador—.
  
 \end_layout
 
@@ -2115,7 +2116,7 @@ http://www.lyx.org/
 \begin_layout Standard
 Un informe de errores válido debe incluir como mínimo la versión de LyX
  con la que has tenido el problema.
- Se prefieren descripciones precisas y detalladas -- cuanto más tiempo invierten
+ Se prefieren descripciones precisas y detalladas – cuanto más tiempo invierten
  los desarrolladores en encontrar la fuente del error, menos tiempo tienen
  para las mejoras.
  Menciona sistema y versión en el que ejecutas LyX.

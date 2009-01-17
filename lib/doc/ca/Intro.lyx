@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -37,6 +36,7 @@
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
 \end_preamble
+\use_default_options false
 \language catalan
 \inputencoding auto
 \font_roman default
@@ -47,6 +47,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -82,8 +83,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -320,8 +321,8 @@ Introducció
 
 .
  Això és tot.
- Si retalleu i enganxeu la secció, serà numerada automàticament ---a qualsevol
- part---.
+ Si retalleu i enganxeu la secció, serà numerada automàticament —a qualsevol
+ part—.
  I si introduïu correctament referències a aquesta secció (inserint una
  etiqueta de referència creuada), el LyX les actualitzarà automàticament
  a través de tot el document, de manera que mai no haureu d'escriure un
@@ -383,16 +384,16 @@ Això que veus és allò que vols dir
  (WYSIWIM).
  És una idea poderosa que simplifica molt els mecanismes de l'escriptura
  de documents.
- I per això el LyX no és idoni per crear pòsters i fulls de propaganda ---en
+ I per això el LyX no és idoni per crear pòsters i fulls de propaganda —en
  aquesta casos 
 \emph on
 sí
 \emph default
  voleu especificar exactament on va cada cosa perquè no hi ha unitats funcionals
- com paràgrafs, seccions, etc---.
+ com paràgrafs, seccions, etc—.
  Això significa que el LyX ha perdut funcionalitat, significa simplement
- que no és l'eina adient per aquestes tasques ---per clavar un clau no empreu
- un tornavís---.
+ que no és l'eina adient per aquestes tasques —per clavar un clau no empreu
+ un tornavís—.
  
 \end_layout
 
@@ -2186,8 +2187,8 @@ http://www.lyx.org/
 \begin_layout Standard
 Un informe d'errors vàlid ha d'incloure com a mínim la versió de LyX amb
  la que heu tingut el problema.
- Es prefereixen descripcions precises i detallades -- quant més temps inverteixe
-n els desenvolupadors en trobar l'origen de l'error, menys temps tenen per
+ Es prefereixen descripcions precises i detallades – quant més temps inverteixen
+ els desenvolupadors en trobar l'origen de l'error, menys temps tenen per
  a les millores.
  Mencioneu el sistema i versió en el que executeu el LyX.
  Doneu les versions de les biblioteques instal·lades en el vostre sistema

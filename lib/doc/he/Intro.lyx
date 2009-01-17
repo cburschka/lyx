@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
 \begin_preamble
 % These are fancyhdr commands that makes the heading "fancy"
@@ -19,6 +18,7 @@
 
 \frenchspacing
 \end_preamble
+\use_default_options false
 \language hebrew
 \inputencoding auto
 \font_roman default
@@ -29,6 +29,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -50,8 +51,8 @@
 \paperpagestyle fancy
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -310,7 +311,7 @@ LyX
 \emph on
 הערת המתרגם: הדבר נכון בלועזית.
  בעברית הבעיה ארעה כאשר הכותב רצה ליישר את הטקסט משמאל לימין במקום מימין
- לשמאל -- ר.ר
+ לשמאל – ר.ר
 \emph default
 [.
  מיקוף 
@@ -478,7 +479,7 @@ LyX
 
 \begin_layout Standard
 כן, זה הכל.
- אם תגזור ותדביק את החלק, הוא ימוספר אוטומטית -- בכל מקום.
+ אם תגזור ותדביק את החלק, הוא ימוספר אוטומטית – בכל מקום.
  אם תכניס במסמך הפניות לחלק זה בצורה נכונה )ע"י הכנסת תגיות הפנייה(, 
 \lang english
 LyX
@@ -580,7 +581,7 @@ What You See Is What You Mean
 \lang english
 LyX
 \lang hebrew
- אינו כל-כך טוב ליצירת עלונים ופוסטרים -- במקרה זה אתה 
+ אינו כל-כך טוב ליצירת עלונים ופוסטרים – במקרה זה אתה 
 \emph on
 כן
 \emph default
@@ -612,8 +613,8 @@ LyX
 \lang english
 LyX
 \lang hebrew
- אינו הכלי הנכון לעבודה -- אינך משתמש במברג כדי לדפוק מסמרים )אלא אם כן
- המברג בא עם אחריות לכל החיים(.
+ אינו הכלי הנכון לעבודה – אינך משתמש במברג כדי לדפוק מסמרים )אלא אם כן המברג
+ בא עם אחריות לכל החיים(.
 \end_layout
 
 \begin_layout Section
@@ -1202,11 +1203,7 @@ LaTeX
 \lang english
 LyX
 \lang hebrew
- מתמקד על ההקשר של כתביך 
-\lang english
---
-\lang hebrew
- 
+ מתמקד על ההקשר של כתביך – 
 \emph on
 על מה
 \emph default
@@ -1277,9 +1274,9 @@ reference "פרק:תרומה"
 \end_layout
 
 \begin_layout Standard
-כמו כן, עשה לנו טובה -- אם משהו בקבצי הדרכה מבלבל, לא ברור, או שגוי, אל
- תהסס ליידע אותנו על כך! ניתן להשיג את מתחזקי התיעוד הנוכחיים ע"י שליחת
- דוא"ל ל- 
+כמו כן, עשה לנו טובה – אם משהו בקבצי הדרכה מבלבל, לא ברור, או שגוי, אל תהסס
+ ליידע אותנו על כך! ניתן להשיג את מתחזקי התיעוד הנוכחיים ע"י שליחת דוא"ל
+ ל- 
 \family typewriter
 \lang english
 lyx-docs@lists.lyx.org
@@ -1415,7 +1412,7 @@ status collapsed
 \emph on
 הערת המתרגם: 
 \emph default
-שמות של ספרים ושל מדריכים בעברית יכתבו כמקובל בטקסט רגיל המוקף מרכאות --
+שמות של ספרים ושל מדריכים בעברית יכתבו כמקובל בטקסט רגיל המוקף מרכאות –
  ר.ר.
 \end_layout
 
@@ -1678,7 +1675,7 @@ Down
 
  
 \lang english
---
+–
 \lang hebrew
  מקשי החיצים שמאלה, ימינה, מעלה ומטה בהתאמה.
 \end_layout
@@ -1820,7 +1817,7 @@ LyX
 \begin_layout Standard
 מידי פעם תראה משהו בסגנון ")ראה 'נוספות'(".
  כל ברירות המחדל של מקשי הקיצור לאפשרות מסויימת נרשמו ב"מדריך התכונות הנוספות"
- -- אז בדוק גם שם.
+ – אז בדוק גם שם.
  שים לב שישנן שתי מערכות של מקשי קיצור בשימוש קהילת 
 \lang english
 LyX
@@ -3048,7 +3045,7 @@ http://www.lyx.org
 דיווח טוב )שימושי( על תקלה יכיל לכל הפחות את הגרסה של ליקס בה נתגלתה הבעיה.
  תיאורים מדוייקים ומפורטים עדיפים 
 \lang english
---
+–
 \lang hebrew
  ככל שהמפתחים משקיעים זמן רב יותר בלזהות את מקור התקלה, כך נותר להם פחות
  זמן לשיפורים אחרים.
@@ -3283,7 +3280,7 @@ CVS
 \lang hebrew
  של ליקס באופן אנונימי 
 \lang english
---
+–
 \lang hebrew
  התיעוד נמצא במודול ה- 
 \family typewriter

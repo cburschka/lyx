@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
+\use_default_options false
 \language swedish
 \inputencoding latin1
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics none
 \paperfontsize 12
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -390,7 +391,7 @@ avsnitt
 \begin_layout Standard
 Japp, det var allt.
  Om du klipper och klistrar avsnittet så ändras numreringen automatiskt
- -- överallt.
+ – överallt.
  Det finns rent av ett sätt att få LyX att uppdatera hänvisningar inom dokumente
 t automatiskt.
 \end_layout
@@ -717,9 +718,9 @@ klass
 \emph default
  är en uppsättning makron skrivna i LaTeX [och TeX] vilka beskriver en ny
  typ av dokument, som en bok eller en artikel.
- Det finns klasser för fysik-- och matematiktidskrifter, för brev\SpecialChar \ldots{}
- vissa
- universitet har rent av helt egna klasser för avhandlingar! En 
+ Det finns klasser för fysik– och matematiktidskrifter, för brev\SpecialChar \ldots{}
+ vissa universit
+et har rent av helt egna klasser för avhandlingar! En 
 \emph on
 stil
 \emph default
@@ -776,7 +777,7 @@ varför
 \emph default
  LyX fungerar något annorlunda än andra ordbehandlare.
  Orsaken är enkel: LyX använder LaTeX för grovjobbet och precis som LaTeX
- så fokuserar LyX på strukturen av det du skriver -- 
+ så fokuserar LyX på strukturen av det du skriver – 
 \emph on
 vad
 \emph default
@@ -889,7 +890,7 @@ Nybörjarkursen
 \emph default
  kort.
  Detta vänjer dig dock redan från början till den goda vanan att använda
- de andra handböckerna vilket -- i längden -- sparar mycket av din tid.
+ de andra handböckerna vilket – i längden – sparar mycket av din tid.
 \end_layout
 
 \begin_layout Standard
@@ -1253,7 +1254,7 @@ status collapsed
 \begin_layout Plain Layout
 Stäng fönstret när du är klar.
  Eller lämna det öppet om du föredrar det.
- De flesta dialogrutor i LyX --- som 
+ De flesta dialogrutor i LyX — som 
 \family sans
 \bar under
 S
@@ -1272,7 +1273,7 @@ Byt, Innehållsförteckning
 \family sans
 Stil
 \family default
--dialogerna samt ett antal matematikdialoger --- är fönster som kan förminskas
+-dialogerna samt ett antal matematikdialoger — är fönster som kan förminskas
  i stället för att stängas.
  Några få dialoger som 
 \family sans
@@ -1492,8 +1493,8 @@ Handboken
 \family sans
 H-fyllningar
 \family default
- och vertikala tomrum -- vilka är kraftfullare än en radda mellanslag eller
- tomrader -- och sätt att ändra storlek och stil på typsnitt och finjusteringar
+ och vertikala tomrum – vilka är kraftfullare än en radda mellanslag eller
+ tomrader – och sätt att ändra storlek och stil på typsnitt och finjusteringar
  av stycken för hand.
  Huvudtanken är dock att du kan skriva hela dokument, koncentrera dig på
  innehållet och göra finjusteringarna efteråt.
@@ -1638,7 +1639,7 @@ markera
 \family typewriter
 dvi
 \family default
---filen eller det utskrivna dokumentet.) Tryck nu på 
+–filen eller det utskrivna dokumentet.) Tryck nu på 
 \family sans
 Retur
 \family default
@@ -2055,7 +2056,7 @@ Miljön
 \family sans
 List
 \family default
- -- vilken inte finns i LaTeX -- är en variant på 
+ – vilken inte finns i LaTeX – är en variant på 
 \family sans
 Description
 \family default
@@ -2093,8 +2094,8 @@ bomb
 \begin_inset Quotes srd
 \end_inset
 
- (nåja, det blir bara en asterisk, vilken blir en liten prick -- en bomb
- -- i slutresultatet) i början på raden.
+ (nåja, det blir bara en asterisk, vilken blir en liten prick – en bomb
+ – i slutresultatet) i början på raden.
  Mata in några anledningar att LyX är trevligt:
 \end_layout
 
@@ -2835,7 +2836,7 @@ status collapsed
 
 \begin_layout Plain Layout
 En varning om du skriver från en mall.
- Om du raderar hela texten i en miljö -- säg att du raderar hela 
+ Om du raderar hela texten i en miljö – säg att du raderar hela 
 \family sans
 My
 \begin_inset space ~
@@ -2843,7 +2844,7 @@ My
 
 Address
 \family default
- för att lägga in din egen -- och sedan flyttar markören utan att skriva
+ för att lägga in din egen – och sedan flyttar markören utan att skriva
  in någon ny text så försvinner miljön.
  Det blir så för att en miljö inte kan vara tom.
  För att få tillbaka miljön igen väljer du den helt enkelt från 
@@ -2863,8 +2864,8 @@ Dokumenttitlar
 \end_layout
 
 \begin_layout Standard
-På samma vis som LaTeX betraktar LyX titeln -- vilken kan innehålla själva
- namnet på dokumentet, författaren, datum och rent av sammanfattningen --
+På samma vis som LaTeX betraktar LyX titeln – vilken kan innehålla själva
+ namnet på dokumentet, författaren, datum och rent av sammanfattningen –
  som något separat från själva dokumentet.
 \end_layout
 
@@ -3014,7 +3015,7 @@ Förresten kunde du ha satt märket var som helst inom avsnittet; hänvisningar
 \end_layout
 
 \begin_layout Standard
-Så långt har du inte gjort särskilt mycket -- 
+Så långt har du inte gjort särskilt mycket – 
 \family typewriter
 dvi
 \family default
@@ -3151,8 +3152,8 @@ Mer kul med märken
 \begin_layout Standard
 Vi sa tidigare att LyX sköter om numrerandet för hänvisningar; nu kan du
  testa det.
- Lägg till ett nytt avsnitt före avsnitt 2 och kör LaTeX igen -- simsalabim!
- -- hänvisningen hänvisar till avsnitt 3! Ändra 
+ Lägg till ett nytt avsnitt före avsnitt 2 och kör LaTeX igen – simsalabim!
+ – hänvisningen hänvisar till avsnitt 3! Ändra 
 \begin_inset Quotes sld
 \end_inset
 
@@ -3328,8 +3329,8 @@ stänga
 \end_inset
 
  fotnoten.
- Du kan öppna fotnoten när du vill -- och ändra dess innehåll om du vill
- -- genom att klicka på den röda markören 
+ Du kan öppna fotnoten när du vill – och ändra dess innehåll om du vill
+ – genom att klicka på den röda markören 
 \begin_inset Quotes sld
 \end_inset
 
@@ -3895,9 +3896,9 @@ sqrt
 ; detta kan bli frustrerande eftersom du inte kan se hur uttrycket ser ut
  förrän du kört LaTeX på filen, och kanske måste ödsla tid på att leta efter
  missade klammerparenteser eller andra småfel.
- LyX försöker å andra sidan inte typsätta uttrycken perfekt (WYSIWYG) --
+ LyX försöker å andra sidan inte typsätta uttrycken perfekt (WYSIWYG) –
  detta skulle ta för mycket datorkraft för att vara praktiskt användbart
- -- utan ger dig en hyfsad bild av hur uttrycket kommer att se ut i färdigt
+ – utan ger dig en hyfsad bild av hur uttrycket kommer att se ut i färdigt
  skick.
  LaTeX sköter om den slutgiltiga typsättningen.
  I regel behöver du inte ändra på den typstorlek eller kägel som LaTeX sätter.
@@ -4138,8 +4139,8 @@ a det.
 \emph on
 Handboken
 \emph default
- -- men ett gott råd är att att inte bekymra sig om sådant förrän du är
- klar med innehållet i dokumentet.
+ – men ett gott råd är att att inte bekymra sig om sådant förrän du är klar
+ med innehållet i dokumentet.
 \end_layout
 
 \end_inset
@@ -4207,8 +4208,8 @@ Esc
 \end_layout
 
 \begin_layout Standard
-Att mata in nedsänkt liten text (ett index) är lika enkelt -- du börjar
- med att trycka understrykningstecknet, 
+Att mata in nedsänkt liten text (ett index) är lika enkelt – du börjar med
+ att trycka understrykningstecknet, 
 \begin_inset Quotes sld
 \end_inset
 
@@ -4487,7 +4488,7 @@ Du kan också sätta skiljetecken eller kvadratrotstecken eller dekorationer
  på redan inlagd text.
  Markera den delen av formeln som du vill ha inom parenteser, under kvadratrot
  etc, och klicka på den önskade funktionen i matematikpanelen.
- Pröva till exempel att ändra Newtons andra lag från skalär-- till vektorform
+ Pröva till exempel att ändra Newtons andra lag från skalär– till vektorform
  (
 \begin_inset Formula $f=ma$
 \end_inset
@@ -5521,12 +5522,12 @@ Hjälp!!
 
 \end_inset
 
- kan du använda vilket paket du vill -- du får bara inte WYSIWYG-stöd för
+ kan du använda vilket paket du vill – du får bara inte WYSIWYG-stöd för
  funktionerna i paketet.
 \end_layout
 
 \begin_layout Subsection
-Att konvertera LaTeX-dokument till LyX -- tex2lyx
+Att konvertera LaTeX-dokument till LyX – tex2lyx
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Att-konvertera-LaTeX-dokument"
@@ -5569,7 +5570,7 @@ foo.lyx
 \family typewriter
 foo.tex
 \family default
- --- and then open that file.
+ — and then open that file.
  If the translation doesn't work, you can try calling 
 \family typewriter
 tex2lyx

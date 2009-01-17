@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -778,7 +779,7 @@ proč
 \emph default
  LyX pracuje trochu jinak než ostatní textové procesory.
  Důvod je jednoduchý: LyX používá LaTeX jako jeho tiskový výstup.
- Tak jako LaTeX se LyX soustřeďuje na kontext vašeho dokumentu --- 
+ Tak jako LaTeX se LyX soustřeďuje na kontext vašeho dokumentu — 
 \emph on
 co
 \emph default
@@ -787,7 +788,7 @@ co
 \end_layout
 
 \begin_layout Standard
-Oh --- ještě jedna věc.
+Oh — ještě jedna věc.
  LaTeX se vyslovuje stejně jako TeX.
  Rýmuje se to na 
 \begin_inset Quotes gld
@@ -898,8 +899,8 @@ Průvodce
 Průvodce.
 
 \emph default
- Také vás to naučí používat jiné manuály, což vám --- v delším časovém horizontu
- --- ušetří mnoho času.
+ Také vás to naučí používat jiné manuály, což vám — v delším časovém horizontu
+ — ušetří mnoho času.
 \end_layout
 
 \begin_layout Standard
@@ -1448,11 +1449,11 @@ status collapsed
 \begin_layout Plain Layout
 Zavřete dialog po ukončení hledání.
  Nebo jej nechte otevřený, vyhovuje-li vám to více.
- Většina dialogů v LyXu --- včetně 
+ Většina dialogů v LyXu — včetně 
 \family sans
 Najít/Zaměnit
 \family default
-, stejně jako různé matematické dialogy --- mohou být zmenšeny stejně jako
+, stejně jako různé matematické dialogy — mohou být zmenšeny stejně jako
  zavřeny.
  Některé dialogy jako 
 \family sans
@@ -1546,7 +1547,7 @@ Mnoho komerčních textových procesorů je založeno na principu WYSIWYG:
 \begin_inset Quotes gld
 \end_inset
 
-What You See Is What You Get --- Co vidíš, to dostaneš
+What You See Is What You Get — Co vidíš, to dostaneš
 \begin_inset Quotes erd
 \end_inset
 
@@ -1618,9 +1619,9 @@ Uživatelská příručka
 \family sans
 horizontálních a vertikálních
 \family default
- mezerách --- které jsou mnohem univerzálnější než několik mezer či prázdných
- řádků --- a o cestě, jak ručně změnit velikost písma, jeho řezy, stejně
- tak jako zarovnání odstavců.
+ mezerách — které jsou mnohem univerzálnější než několik mezer či prázdných
+ řádků — a o cestě, jak ručně změnit velikost písma, jeho řezy, stejně tak
+ jako zarovnání odstavců.
  Ale základem je, že v době psaní dokumentu se zaměřujete na obsah a toto
  dolaďování provádíte až nakonec.
  Běžný textový procesor vás nutí starat se o tyto detaily v průběhu psaní.
@@ -2052,7 +2053,7 @@ Styl
 \family sans
 Seznam
 \family default
- --- není obsažen v LaTeXu --- je jinou formou stylu 
+ — není obsažen v LaTeXu — je jinou formou stylu 
 \family sans
 Popis
 \family default
@@ -2367,8 +2368,8 @@ Různé typy dokumentů je třeba vysázet různě.
  Například, knihy jsou většinou sázeny na obě strany papíru, zatímco zprávy
  pouze jednostranně.
  Navíc některé dokumenty obsahují speciální části: dopisy vyžadují speciální
- styly --- jako odesilatelova adresa a podpis --- které nejsou v knize či
- článku potřeba.
+ styly — jako odesilatelova adresa a podpis — které nejsou v knize či článku
+ potřeba.
  
 \emph on
 Třídy dokumentu
@@ -2770,7 +2771,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Jedno varování, pokud měníte šablonu.
- Jestliže smažete celý text dokumentu --- například, smažete-li celé pole
+ Jestliže smažete celý text dokumentu — například, smažete-li celé pole
  
 \family sans
 My
@@ -2779,7 +2780,7 @@ My
 
 Address
 \family default
-, abyste jej mohli nahradit svým --- a pak posunete kurzor bez psaní textu,
+, abyste jej mohli nahradit svým — a pak posunete kurzor bez psaní textu,
  styl může zmizet.
  To proto, že styl nemůže existovat bez napojení na text.
  Obnovíte jej ručním znovunastavením z nabídky 
@@ -2799,8 +2800,8 @@ Nadpisy dokumentu
 \end_layout
 
 \begin_layout Standard
-LyX (stejně jako LaTeX) odděluje titulek --- který může obsahovat nadpis,
- autora, datum a dokonce shrnutí obsahu --- a vlastní text dokumentu.
+LyX (stejně jako LaTeX) odděluje titulek — který může obsahovat nadpis,
+ autora, datum a dokonce shrnutí obsahu — a vlastní text dokumentu.
 \end_layout
 
 \begin_layout Standard
@@ -2926,7 +2927,7 @@ Mimochodem, značku můžete umístit kdekoli uvnitř sekce, odkazy pak budou
 \end_layout
 
 \begin_layout Standard
-Zatím jste však nevytvořili nic --- soubor 
+Zatím jste však nevytvořili nic — soubor 
 \family typewriter
 dvi
 \family default
@@ -2954,7 +2955,7 @@ tak se podívejte na sekci, která je na straně .
 \end_layout
 
 \begin_layout Standard
-Nyní --- s kurzorem za slovem 
+Nyní — s kurzorem za slovem 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2962,7 +2963,7 @@ sekce
 \begin_inset Quotes grd
 \end_inset
 
- --- zvolte 
+ — zvolte 
 \family sans
 Vložit->Křížový
 \begin_inset space ~
@@ -2981,7 +2982,7 @@ odkaz
 \family default
 .
  V něm se objeví seznam všech značek, na které se můžete odkázat.
- V tuto chvíli je zde jen jeden --- sec:aboutdocument.
+ V tuto chvíli je zde jen jeden — sec:aboutdocument.
  Označte jej (není-li již označen) a klikněte na 
 \family sans
 Formát
@@ -3012,8 +3013,8 @@ Další možnosti značek
 \begin_layout Standard
 Již jsme řekli, že LyX se stará o číslování odkazů; vyzkoušejme si to.
  Přidejte novou sekci před sekci 2.
- Nyní nechte proběhnout LaTeX, a --- kupodivu --- číslo sekce se změnilo
- na 3! Změňte O tomto dokumentu na subsekci, a odkaz bude nyní na 2.1 místo
+ Nyní nechte proběhnout LaTeX, a — kupodivu — číslo sekce se změnilo na
+ 3! Změňte O tomto dokumentu na subsekci, a odkaz bude nyní na 2.1 místo
  3.
  Číslo stránky se nezmění (samozřejmě pokud jste nepřidali celou stranu
  textu).
@@ -3106,8 +3107,8 @@ Nyní klikněte na slovo patička.
  Obdélník s poznámkou byl nahrazena slovem patička, napsaným červeně v horním
  indexu na místě, kde se bude na poznámku odkazovat; toto se nazývá zabalením
  poznámky.
- Tuto poznámku je možno rozbalit --- a opravit, je-li třeba --- kliknutím
- na červený nápis patička.
+ Tuto poznámku je možno rozbalit — a opravit, je-li třeba — kliknutím na
+ červený nápis patička.
 \end_layout
 
 \begin_layout Standard
@@ -3731,7 +3732,7 @@ reference "sec:whitespace"
 \emph on
 Uživatelské příručce
 \emph default
- --- nestarejte se o to, dokud nedopíšete celý dokument.
+ — nestarejte se o to, dokud nedopíšete celý dokument.
 \end_layout
 
 \end_inset
@@ -3807,7 +3808,7 @@ Mezery
 Esc
 \family default
  pro úplné opuštění mathedu).
- Psaní indexů je také tak jednoduché --- napište podtržítko, 
+ Psaní indexů je také tak jednoduché — napište podtržítko, 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4946,7 +4947,7 @@ reference "sec:preamble"
 
 \end_inset
 
-) --- nebudete pro něj mít k dispozici WYSIWYG podporu.
+) — nebudete pro něj mít k dispozici WYSIWYG podporu.
 \end_layout
 
 \begin_layout Subsection
@@ -4973,7 +4974,7 @@ cokoli.tex
 \family typewriter
 cokoli.lyx
 \family default
- --- ze souboru, který máte právě otevřený.
+ — ze souboru, který máte právě otevřený.
  LyX vždy vytváří dočasné soubory v LaTeXu pro náhled a tisk, takže umí
  generovat LaTeX docela dobře.
 \end_layout

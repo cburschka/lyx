@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -36,6 +35,7 @@
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
 \end_preamble
+\use_default_options false
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -46,6 +46,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -57,7 +58,7 @@
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
-\pdf_bookmarksopenlevel 2
+\pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
 \pdf_pdfborder false
 \pdf_colorlinks true
@@ -85,8 +86,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -147,8 +148,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 25.
- September 2008
+letzte Änderung: 17.
+ Januar 2009
 \end_layout
 
 \begin_layout Standard
@@ -171,7 +172,7 @@ Willkommen bei LyX
 \begin_layout Standard
 Zielgruppe für dieses Dokument sind alle diejenigen, die noch niemals etwas
  von LaTeX gehört haben oder es nicht sehr gut beherrschen.
- Doch nur keine Panik -- Sie müssen kein LaTeX lernen, um LyX zu benutzen.
+ Doch nur keine Panik – Sie müssen kein LaTeX lernen, um LyX zu benutzen.
  Denn das ist die Absicht, die hinter LyX steckt: Eine Beinahe-WYSIWYG-Schnittst
 elle zu LaTeX zu bieten.
  Einige Dinge müssen Sie aber trotzdem lernen, um LyX effizient nutzen zu
@@ -201,7 +202,7 @@ beitungen her gewohnt sind, funktionieren in LyX nicht.
  eines Schriftsetzers übernehmen.
  LyX übernimmt nun den Schriftsatz für Sie, und zwar in einer konsistenten
  Art und Weise, und lässt Sie sich dadurch auf die wichtigen Dinge konzentrieren
- -- etwa den Inhalt Ihres Textes.
+ – etwa den Inhalt Ihres Textes.
 \end_layout
 
 \begin_layout Standard
@@ -296,7 +297,7 @@ Tutorium
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Latexnutzer"
+reference "sec:Latexnutzer"
 
 \end_inset
 
@@ -614,7 +615,7 @@ DVI
 )\SpecialChar \@.
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Von jetzt an wird 
@@ -633,7 +634,7 @@ oder klicken Sie auf den Werkzeugleistenknopf
  LyX wird einen DVI-Betrachter starten, der dann ein eigenes Fenster öffnet,
  in dem Sie den Text so sehen können, wie er später gedruckt aussehen wird.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Sie können Zeit sparen, wenn Sie den DVI-Betrachter nicht jedes Mal neu
@@ -737,7 +738,7 @@ Rückgängig
 \end_inset
 
  alles, was Sie seit dem Öffnen des Dokumentes verändert haben, zurücknehmen.
- Falls Sie dabei einen oder mehrere Schritte zuviel tun -- kein Problem.
+ Falls Sie dabei einen oder mehrere Schritte zuviel tun – kein Problem.
  
 \family sans
 Bearbeiten\SpecialChar \menuseparator
@@ -912,15 +913,16 @@ n nutzbringend einzusetzen.
 
 \begin_layout Subsection
 WYSIWYM: Leerzeichen in LyX
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "Leerzeichen"
+name "sub:Leerzeichen"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Die Art und Weise, wie LyX mit Leerzeichen umgeht, gehört für Neulinge mit
  Sicherheit zu den gewöhnungsbedürftigsten Punkten.
  Egal, wie oft Sie die 
@@ -928,13 +930,13 @@ Die Art und Weise, wie LyX mit Leerzeichen umgeht, gehört für Neulinge mit
 Eingabe
 \family default
 -Taste betätigen, es bleibt bei genau einer leeren Zeile.
- Dasselbe mit der Leertaste -- maximal ein Leerzeichen erscheint auf dem
+ Dasselbe mit der Leertaste – maximal ein Leerzeichen erscheint auf dem
  Bildschirm, und in einer leeren Zeile erscheint noch nicht einmal das!
  Die Tabulator-Taste 
 \family sans
 Tab
 \family default
- setzt den Cursor nicht auf den nächsten Tabulatorstop -- ja, es 
+ setzt den Cursor nicht auf den nächsten Tabulatorstop – ja, es 
 \emph on
 gibt
 \emph default
@@ -1110,7 +1112,7 @@ Im
 \emph on
 Tutorium
 \emph default
- werden Sie außerdem in Namen von Menüs und Sonderzeichen verwendet -- wie
+ werden Sie außerdem in Namen von Menüs und Sonderzeichen verwendet – wie
  eben das 
 \family sans
 Geschützte
@@ -1254,7 +1256,7 @@ Standard
  Die verschiedenen Aufzählungsumgebungen (siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Listen-und-Teillisten"
+reference "sub:Listen-und-Teillisten"
 
 \end_inset
 
@@ -1453,7 +1455,7 @@ Unterabschnitt
 \end_inset
 
  fortgesetzt.
- Und wenn Sie nun einen neuen Abschnitt vor Abschnitt zwei einfügen -- genau,
+ Und wenn Sie nun einen neuen Abschnitt vor Abschnitt zwei einfügen – genau,
  Sie haben es erraten: LyX nimmt automatisch die Umnummerierung vor, das
  heißt aus Abschnitt
 \begin_inset space ~
@@ -1521,14 +1523,14 @@ Abschnitt
 \family default
  steht.
  Er kann allerdings nur in einigen bestimmten Dokumentklassen verwendet
- werden -- siehe dazu Abschnitt
+ werden – siehe dazu Abschnitt
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Textklassen"
+reference "sec:Textklassen"
 
 \end_inset
 
@@ -1543,7 +1545,7 @@ Möglicherweise wollen Sie aber gar keine nummerierten Unterabschnitte? Nun,
 Abschnitt*
 \family default
 .
- LyX setzt die Überschrift in genau demselben Zeichensatz wie zuvor -- nur
+ LyX setzt die Überschrift in genau demselben Zeichensatz wie zuvor – nur
  eben ohne Abschnittsnummern.
  Entsprechende 
 \emph on
@@ -1584,15 +1586,16 @@ beispiel_roh.lyx
 
 \begin_layout Subsection
 Listen und Teillisten
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "Listen-und-Teillisten"
+name "sub:Listen-und-Teillisten"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 LyX bietet mehrere Umgebungstypen, um Listen zu erstellen.
  Diese unterschiedlichen Listentypen ersparen es Ihnen, tausende von 
 \family sans
@@ -1603,7 +1606,7 @@ Tab
 führen.
  Dadurch können Sie sich voll auf den Inhalt der Liste konzentrieren.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Auf diesen Punkt wird sehr häufig in diesem 
@@ -1653,8 +1656,7 @@ Der Umgebungstyp
 \family sans
 Liste
 \family default
- -- den es in LaTeX so nicht gibt -- ist eine leichte Abwandlung des Typs
- 
+ ist eine leichte Abwandlung des Typs 
 \family sans
 Beschreibung
 \family default
@@ -1749,7 +1751,7 @@ LyX wird es Ihnen nicht ermöglichen, den Stern vor dem ersten Listenelement
  mit auszuwählen, wenn Sie nicht den vorangehenden Absatz mit auswählen,
  was Sie vermutlich nicht wollen.
  Gleiches gilt für die Zahlen von nummerierten Abschnittsüberschriften.
- LyX macht aber dennoch alles richtig -- machen Sie sich deswegen also keine
+ LyX macht aber dennoch alles richtig – machen Sie sich deswegen also keine
  Sorgen.
 \end_layout
 
@@ -1796,7 +1798,7 @@ Beschreibung
 \family default
 ) oder durch einen Tabulatorstop
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Es handelt sich dabei aber nicht um den üblichen, festen Schreibmaschinentabulat
@@ -1893,7 +1895,7 @@ Gedicht
 \family default
  können Sie sogar Gedichte schreiben.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar \ldots{}
@@ -1978,15 +1980,16 @@ che Arten von Dokumenten einfach erstellt werden können.
 
 \begin_layout Section
 Dokumentklassen und Vorlagen
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "Textklassen"
+name "sec:Textklassen"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Unterschiedliche Dokumentarten sollten verschieden gesetzt werden.
  So werden Bücher im allgemeinen zweiseitig gedruckt, wohingegen Artikel
  meist einseitig sind.
@@ -2026,7 +2029,7 @@ Ihr (erstes) Dokument entstand vermutlich in der Dokumentklasse
 \family sans
 article.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dies ist normalerweise die Standardeinstellung von LyX, Sie können das aber
@@ -2313,7 +2316,7 @@ Dokumentklasse
 \family sans
 letter
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Außer 
@@ -2407,7 +2410,7 @@ Unterschrift:
  Dieses Wort wird im ausgedruckten Brief nicht erscheinen.
  Es dient Ihnen nur als Erinnerungshilfe, dass der entsprechende Text nach
  der Grußformel erscheint.
- Sie können den Eintrag übrigens hinschreiben, wo Sie wollen -- auch vor
+ Sie können den Eintrag übrigens hinschreiben, wo Sie wollen – auch vor
  den eigentlichen Brieftext.
  Denn durch das WYSIWYM-Prinzip weiß LyX, 
 \emph on
@@ -2422,7 +2425,7 @@ Eine Vorlage ist eine ganz normale LyX-Datei.
  indem Sie die von Ihnen gewünschten Änderungen an der Vorlage durchführen
  und die Datei dann als Ihre Vorlage abspeichern.
  Für alle folgenden Briefe können Sie dann diese Version als Vorlage verwenden.
- Sie sollten das alles jetzt vielleicht einfach mal ausprobieren -- schreiben
+ Sie sollten das alles jetzt vielleicht einfach mal ausprobieren – schreiben
  Sie doch als Übung einen kleinen Brief an jemanden!
 \end_layout
 
@@ -2432,14 +2435,13 @@ Eine Vorlage ist eine ganz normale LyX-Datei.
 Eine kleine Warnung
 \series default
 , wenn Sie mit einer Vorlage arbeiten: Wenn Sie den kompletten Text in einer
- Umgebung entfernen -- also etwa alle Zeilen in der 
+ Umgebung entfernen – also etwa alle Zeilen in der 
 \family sans
 Absender-Adresse
 \family default
--Umgebung, um sie durch Ihre eigene Adresse zu ersetzen -- und dann aus
- Versehen den Cursor bewegen, ohne Text eingegeben zu haben, wird in manchen
- Umgebungstypen der Absatz komplett entfernt, denn er kann ohne Text nicht
- existieren.
+-Umgebung, um sie durch Ihre eigene Adresse zu ersetzen – und dann aus Versehen
+ den Cursor bewegen, ohne Text eingegeben zu haben, wird in manchen Umgebungstyp
+en der Absatz komplett entfernt, denn er kann ohne Text nicht existieren.
  In diesem Fall müssen Sie die entsprechende Umgebung wie gewohnt über das
  Menü wieder auswählen.
 \end_layout
@@ -2464,10 +2466,10 @@ Dokumenttitel
 \end_layout
 
 \begin_layout Standard
-Wie auch LaTeX betrachtet LyX den Titelblock -- der aus der eigentlichen
+Wie auch LaTeX betrachtet LyX den Titelblock – der aus der eigentlichen
  Überschrift, dem Namen des Autors, dem Datum und eventuell sogar der Kurzzusamm
-enfassung eines Artikels bestehen kann -- als einen eigenständigen Teil
- des Dokumentes.
+enfassung eines Artikels bestehen kann – als einen eigenständigen Teil des
+ Dokumentes.
 \end_layout
 
 \begin_layout Standard
@@ -2482,7 +2484,7 @@ article
 \family default
  verwenden.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Sie sollten hierfür 
@@ -2554,7 +2556,7 @@ Sie können jedes Kapitel, Unterkapitel (oder, wenn auch seltener benötigt,
 \end_layout
 
 \begin_layout Subsection
-Ihre erste Textmarke
+Ihre erste Marke
 \end_layout
 
 \begin_layout Standard
@@ -2582,7 +2584,6 @@ Marke\SpecialChar \ldots{}
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 4bp 20bp 20bp
-	clip
 
 \end_inset
 
@@ -2635,7 +2636,7 @@ sein.
 
 
 \family typewriter
-ec:
+sec:
 \family default
 
 \begin_inset Quotes grd
@@ -2691,7 +2692,7 @@ Wenn Sie mehr über dieses Dokument erfahren wollen,
 \begin_inset Newline newline
 \end_inset
 
-lesen Sie Abschnitt .
+lesen Sie Abschnitt.
 \end_layout
 
 \begin_layout Standard
@@ -2754,6 +2755,22 @@ Seite
 OK
 \family default
 .
+\end_layout
+
+\begin_layout Standard
+Alternativ dazu können Sie mit der rechten Maustaste auf eine Marke klicken
+ und im erscheinenden Kontextmenü 
+\family sans
+Als Querverweis kopieren
+\family default
+ verwenden.
+ Der Querverweis zu dieser Marke befindet sich dann im Zwischenspeicher
+ und kann anschließend mit dem Menü 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Einfügen
+\family default
+ (Tastenkürzel Strg+V) an die aktuelle Stelle des Cursors eingefügt werden.
 \end_layout
 
 \begin_layout Standard
@@ -2846,10 +2863,10 @@ dvi
 \begin_inset Quotes grd
 \end_inset
 
- -- ganz ohne Ihr Zutun.
- Die Seitennummer wird sich vermutlich nicht ändern -- es sei denn, Sie
- fügen soviel Text vor dem Kapitel ein, dass sich die Marke auf die nächste
- Seite verschiebt.
+ – ganz ohne Ihr Zutun.
+ Die Seitennummer wird sich vermutlich nicht ändern – es sei denn, Sie fügen
+ soviel Text vor dem Kapitel ein, dass sich die Marke auf die nächste Seite
+ verschiebt.
  
 \end_layout
 
@@ -2962,7 +2979,7 @@ Eine Fußnote kann man übrigens auch auswählen und wie gewöhnlichen Text
  kopieren.
  Sie müssen dazu lediglich die Fußnoten-Markierung selektieren
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Es ist wahrscheinlich einfacher, dies über die Tastatur zu tun, da sich
@@ -3072,15 +3089,16 @@ beispiel_roh.lyx
 
 \begin_layout Section
 Literaturverzeichnisse
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "Literaturverzeichnisse"
+name "sec:Literaturverzeichnisse"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Zumindest in den exakten Wissenschaften ist ein Literaturverzeichnis in
  gewisser Weise so etwas wie ein Querverweis.
  Das Literaturverzeichnis besteht aus einer Liste von Referenzen am Ende
@@ -3169,7 +3187,7 @@ OK
 \family default
  eingefügt.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Aus diesem Grund ist es eine gute Idee, anstelle der Zahlen eindeutige und
@@ -3363,7 +3381,7 @@ LaTeX wird von vielen Wissenschaftlern benutzt, weil es den Druck erstklassig
  dass man professionell aussehende mathematische Ausdrücke schnell und leicht
  schreiben kann, auch wenn man noch nie LaTeX benutzt hat.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LyX kann leider nicht prüfen, ob die Formeln, die man schreibt, wirklich
@@ -3738,7 +3756,7 @@ Geben Sie am Ende des Exponenten einfach ein Leerzeichen ein, und der Cursor
  In Fällen, wo diese Aktion keinen Sinn macht, bewirkt das Leerzeichen rein
  gar nichts.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3762,7 +3780,7 @@ nicht
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Leerzeichen"
+reference "sub:Leerzeichen"
 
 \end_inset
 
@@ -4205,7 +4223,7 @@ tik-Modus.
 \begin_layout Subsection
 TeX-Modus: Grenzwerte, Logarithmen, Trigonometrische Funktionen und anderes
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Plain Layout
 TeX-Modus
@@ -4253,7 +4271,7 @@ x
 \begin_inset Quotes grd
 \end_inset
 
- -- Sie erinnern sich, wenn Sie versuchen, ein Leerzeichen einzugeben, verlassen
+ – Sie erinnern sich, wenn Sie versuchen, ein Leerzeichen einzugeben, verlassen
  Sie den Mathematik-Modus.
  Aber wie bekommt man dann 
 \begin_inset Quotes gld
@@ -4385,15 +4403,16 @@ tik-Modus.
 
 \begin_layout Subsection
 Matrizen
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Matrizen"
+name "sub:Matrizen"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Um eine Matrix zu erstellen, klicken Sie auf den Schalter 
 \begin_inset Graphics
 	filename ../../images/math-matrix.png
@@ -4433,7 +4452,7 @@ Tab-
 \family default
 Taste benutzen.
  Alternativ können Sie auch die Pfeiltasten verwenden, um sich in der ganzen
- Matrix zu bewegen -- ein Druck auf die 
+ Matrix zu bewegen – ein Druck auf die 
 \begin_inset Formula $\rightarrow$
 \end_inset
 
@@ -4548,7 +4567,7 @@ Benutzerhandbuch
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Gleichungssysteme"
+reference "sec:Gleichungssysteme"
 
 \end_inset
 
@@ -4675,15 +4694,16 @@ f(x)=\left\{ \begin{array}{cc}
 
 \begin_layout Section
 Mehrzeilige Gleichungen
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "Gleichungssysteme"
+name "sec:Gleichungssysteme"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Versuchen Sie doch einmal, zwei zusammengehörende Gleichungen wie die folgenden
  zu schreiben, und sehen Sie sich das Ergebnis in der 
 \family typewriter
@@ -4785,7 +4805,7 @@ n können.
  Dies kann sowohl bei dem obigen Beispiel als auch bei einer aufgeteilten,
  sehr langen Gleichung sinnvoll sein:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Wenn Sie sich das Ergebnis ansehen, werden Sie feststellen, dass der Abstand
@@ -4823,7 +4843,7 @@ LyX bringt das zweite (zentrale) Feld jeder Reihe in eine Linie, so dass
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:Matrizen"
+reference "sub:Matrizen"
 
 \end_inset
 
@@ -4870,7 +4890,7 @@ E & = & mc^{2}\\
 
 umzuschreiben.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 KDE-Benutzer können diese Übung leider nicht nachvollziehen, da mit 
@@ -4934,8 +4954,8 @@ Strg+K
 \family sans
 Strg+K
 \family default
- ist übrigens nicht spezifisch für den Mathematiksatz -- dieses Löschen
- bis zum Zeilenende funktioniert in allen Umgebungen.
+ ist übrigens nicht spezifisch für den Mathematiksatz – dieses Löschen bis
+ zum Zeilenende funktioniert in allen Umgebungen.
 \end_layout
 
 \begin_layout Standard
@@ -5191,7 +5211,7 @@ LyX kann LaTeX-Dokumente importieren.
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "tex2lyx"
+reference "sub:tex2lyx"
 
 \end_inset
 
@@ -5211,7 +5231,7 @@ F7
 \family default
  können Sie Ihre Texte auf korrekte Rechtschreibung prüfen lassen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Beachten Sie dabei, dass die Rechtschreibprüfung an der momentanen Position
@@ -5225,15 +5245,16 @@ Beachten Sie dabei, dass die Rechtschreibprüfung an der momentanen Position
 
 \begin_layout Section
 LyX für LaTeX-Benutzer
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "Latexnutzer"
+name "sec:Latexnutzer"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Wenn Sie nichts über LaTeX wissen, können Sie diesen Abschnitt überspringen.
  Oder besser, lernen Sie ein wenig über LaTeX und lesen 
 \emph on
@@ -5377,7 +5398,7 @@ gamma
 \backslash
 sin
 \family default
- in roter Schrift -- sie sind ja schon WYSIWYM.
+ in roter Schrift – sie sind ja schon WYSIWYM.
  Diese Art der Eingabe ist vor allem für diejenigen, die bereits mit LaTeX
  vertraut sind, eine große Erleichterung.
 \end_layout
@@ -5409,7 +5430,7 @@ en wie WYSIWYG-Tabellen und -Abbildungen bieten.
  Indem Sie im LaTeX-Vorspann (siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "LaTeX-Vorspann"
+reference "sub:LaTeX-Vorspann"
 
 \end_inset
 
@@ -5419,23 +5440,26 @@ reference "LaTeX-Vorspann"
 \backslash
 usepackage{foo}
 \family default
- eingeben, können Sie aber auch solche Pakete verwenden -- wenn auch nicht
+ eingeben, können Sie aber auch solche Pakete verwenden – wenn auch nicht
  mit Unterstützung von WYSIWYM.
 \end_layout
 
 \begin_layout Subsection
-LaTeX-Dokumente importieren -- 
+LaTeX-Dokumente importieren – 
 \family typewriter
 tex2lyx
-\end_layout
+\family default
 
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "tex2lyx"
+name "sub:tex2lyx"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Über den Menüpunkt 
 \family sans
 Datei\SpecialChar \menuseparator
@@ -5585,15 +5609,16 @@ Optionen
 
 \begin_layout Subsubsection
 Andere Einträge im Vorspann
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "LaTeX-Vorspann"
+name "sub:LaTeX-Vorspann"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Wenn Sie besondere Befehle im Vorspann Ihrer LaTeX-Dateien benötigen, können
  Sie diese auch für LyX verwenden.
  Öffnen Sie dazu den Dialog 
@@ -5611,7 +5636,7 @@ Einstellungen
 \SpecialChar \menuseparator
 LaTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -5652,7 +5677,7 @@ Liste
 Inhaltsverzeichnis\SpecialChar \menuseparator
 BibTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -5690,7 +5715,7 @@ bibliography{}
 \family default
  verwenden würden.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Wie bei normalem LaTeX können auch mehrere Bibliographien, durch Kommas
@@ -5723,7 +5748,7 @@ Zitat
  werden, verwenden (siehe auch Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Literaturverzeichnisse"
+reference "sec:Literaturverzeichnisse"
 
 \end_inset
 

@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -37,6 +36,7 @@
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
 \end_preamble
+\use_default_options false
 \language japanese
 \inputencoding auto
 \font_roman default
@@ -47,6 +47,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -82,8 +83,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -156,10 +157,10 @@ LyX
 \noun off
 \color none
 を使う上での最初の戸惑いは、おもにユーザーとして必要とされる思考法を変えなくてはならないことから来ます。かつて、文書を作成するのに使うことのできるものはタイプラ
-イターだけでしたから、われわれはみな、タイプライターの制約を乗り越えるための、様々な小技を身につけたものでした。下線を引くのは---これは単に「＿」を文字の上に
-打ち直すことに他ならなかったわけですが---文章を強調する方法として定着しました。表をつくるには、前もって各列の幅とタブストップをどうすべきかを計算してから、設
-定することを強いられました。同じようなことが、書簡や、その他右揃えを必要とする文章を書く際には要求されました。行末でのハイフネーションには、よく見て慎重に先を予
-測することが要求されたものでした。
+イターだけでしたから、われわれはみな、タイプライターの制約を乗り越えるための、様々な小技を身につけたものでした。下線を引くのは—これは単に「＿」を文字の上に打ち
+直すことに他ならなかったわけですが—文章を強調する方法として定着しました。表をつくるには、前もって各列の幅とタブストップをどうすべきかを計算してから、設定するこ
+とを強いられました。同じようなことが、書簡や、その他右揃えを必要とする文章を書く際には要求されました。行末でのハイフネーションには、よく見て慎重に先を予測するこ
+とが要求されたものでした。
 \end_layout
 
 \begin_layout Standard
@@ -404,8 +405,8 @@ status collapsed
 \bar no
 \noun off
 \color none
-そう。それだけなのです。もし、節の切り貼りを行ったとしても、節番号は自動的に---すべての箇所で---振り直されます。さらに、この節に対する参照が正しく（内部参
-照タグを挿入することによって）入れられていれば
+そう。それだけなのです。もし、節の切り貼りを行ったとしても、節番号は自動的に—すべての箇所で—振り直されます。さらに、この節に対する参照が正しく（内部参照タグを
+挿入することによって）入れられていれば
 \family default
 \series default
 \shape default
@@ -586,7 +587,7 @@ Mean
 \noun off
 \color none
 からです。これは、LyXがなにか洗練された機能を備えていないということを意味するものではありません。これは単に、LyXはそのような仕事を行うのにはふさわしいツー
-ルではないというだけです。------ 釘を打つのにネジ回しは使わないではありませんか。
+ルではないというだけです。—— 釘を打つのにネジ回しは使わないではありませんか。
 \end_layout
 
 \begin_layout Subsection
@@ -2003,8 +2004,8 @@ reference "sec:貢献"
 \bar no
 \noun off
 \color none
-それともうひとつお願いがあります ------ もしこの取扱説明書の中で、混乱を招く箇所や、よくわからないあるいは間違っている箇所があったら、躊躇することなく私
-たちにお知らせ下さい。
+それともうひとつお願いがあります —— もしこの取扱説明書の中で、混乱を招く箇所や、よくわからないあるいは間違っている箇所があったら、躊躇することなく私たちにお
+知らせ下さい。
 \family default
 \series default
 \shape default

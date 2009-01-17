@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -37,6 +36,7 @@
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
 \end_preamble
+\use_default_options false
 \language galician
 \inputencoding auto
 \font_roman default
@@ -47,6 +47,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -86,8 +87,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -187,7 +188,7 @@ Tio Cosmo, por que lle chaman a isto procesador de texto?
 \begin_inset space \hfill{}
 \end_inset
 
---- Jeff MacNelly en 
+— Jeff MacNelly en 
 \begin_inset Quotes eld
 \end_inset
 
@@ -369,7 +370,7 @@ Introdución
 \begin_layout Standard
 Isto é canto precisa.
  Se posteriormente trocar de lugar a sección, ela será renumerada automaticament
-e --- en calquer lado.
+e — en calquer lado.
  E se nalgun momento fixo unha referéncia á sección correctamente (inserindo
  unha etiqueta), o LyX actualizará automaticamente as referéncias en todo
  o documento, sen ter que dixitar un simples número.
@@ -467,12 +468,12 @@ ean
 \end_layout
 
 \begin_layout Standard
-Esta é a razón pola que o LyX non é bon para elaborar cartaces e anúncios---nese
+Esta é a razón pola que o LyX non é bon para elaborar cartaces e anúncios—nese
  caso, o usuário quer especificar exactamente onde vai cada cousa, e non
  ha unidades funcionais como parágrafos, seccións, etc.
  Isto no significa que no LyX falte algunha función fundamental, simplesmente
- que non é a ferramenta certa para o traballo ---- non se usa un martelo
- para apertar un parafuso, non si?.
+ que non é a ferramenta certa para o traballo —- non se usa un martelo para
+ apertar un parafuso, non si?.
 \end_layout
 
 \begin_layout Subsection
@@ -846,7 +847,7 @@ LyX: Procesador de texto WYSIWYM, que emprega o LaTeX, en toda a sua gloria,
 A idea desta sección é tentar explicar porqué o LyX funciona de forma un
  tanto diferente dos outros procesadores de texto.
  A razón é simples: o LyX basea-se no LaTeX para compor o texto impreso,
- e tal como o LaTeX, o LyX foca-se no contexto da sua escrita -- 
+ e tal como o LaTeX, o LyX foca-se no contexto da sua escrita – 
 \emph on
 o que
 \emph default

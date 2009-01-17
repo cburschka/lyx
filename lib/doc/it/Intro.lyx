@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -37,6 +36,7 @@
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
 \end_preamble
+\use_default_options false
 \language italian
 \inputencoding latin1
 \font_roman default
@@ -47,6 +47,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -82,8 +83,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -147,12 +148,12 @@ me\SpecialChar \-
 ra\SpecialChar \-
 zio\SpecialChar \-
 ne automatica di sezioni e pagine, controllo
- ortografico, e così via -- a prescindere dalla lunghezza del documento.
+ ortografico, e così via – a prescindere dalla lunghezza del documento.
  Può essere anche usato per scrivere una lettera alla vostra mamma, ma sicuramen
 te esistono programmi più semplici per tale scopo.
  In definitiva, non è lo strumento migliore per creare striscioni, loghi,
- annunci pubblicitari (più avanti spiegheremo il perché), anche se -- con
- qualche sforzo -- può essere realizzato pure tutto questo.
+ annunci pubblicitari (più avanti spiegheremo il perché), anche se – con
+ qualche sforzo – può essere realizzato pure tutto questo.
  Ecco alcuni esempi relativi a ciò per cui LyX viene impiegato: memo, lettere,
  dissertazioni e tesi, estratti di conferenze, appunti da seminari, atti
  di congressi, documentazione di software, libri, articoli per pubblicazioni
@@ -197,7 +198,7 @@ _
 
 , diventò un sistema per enfatizzare il testo.
  Eravamo costretti a calcolare la dimensione di colonne e tabulazioni, e
- a impostarle -- prima di creare una tabella.
+ a impostarle – prima di creare una tabella.
  Idem dicasi per le lettere, o altro testo allineato a destra.
  La sillabazione al termine della riga richiedeva un occhio circospetto,
  e tanta premonizione.
@@ -310,7 +311,7 @@ Introduzione
 .
  Logicamente, se più tardi decidete che questa sezione appartiene ad un
  altro punto del documento, o se ne inserite un'altra prima, dovrete cambiare
- la numerazione; per essa, e per tutte quelle che seguono -- così come i
+ la numerazione; per essa, e per tutte quelle che seguono – così come i
  rispettivi riferimenti nell'indice.
 \end_layout
 
@@ -334,7 +335,7 @@ Introduzione
 \begin_layout Standard
 Sì, è tutto qui.
  Se tagliate la sezione e la incollate in qualche altro punto, sarà automaticame
-nte ri-numerata -- ovunque essa sia.
+nte ri-numerata – ovunque essa sia.
  E se inserite dei riferimenti a quella sezione in modo corretto (aggiungendo
  le etichette per i riferimenti incrociati), LyX li aggiornerà automaticamente
  per tutto il documento, sì che voi non abbiate mai e poi a scriverli manualment
@@ -349,7 +350,7 @@ Affrontiamo ora il problema della coerenza.
  18, quindi scrivete il titolo della Sezione 4 in un font diverso (diciamo
  a dimensione 16) rispetto a quello che avevate usato nella Sezione 1.
  Ebbene, questo problema in LyX non esiste assolutamente.
- E' il computer -- e non voi -- a farsi carico di questa sciocca contabilità
+ E' il computer – e non voi – a farsi carico di questa sciocca contabilità
  in merito a quale dimensione di font si debba avere per quel determinato
  elemento.
  Del resto, è ciò per cui i computer sono stati creati.
@@ -402,8 +403,8 @@ Ciò che vedi è ciò che intendi
  E' un'idea potente, che semplifica moltissimo il meccanismo della scrittura
  di documenti.
  Peraltro, questo è anche il motivo per cui LyX non è così adatto alla creazione
- di poster e loghi: in questo caso -- e dal momento che non esistono elementi
- funzionali come paragrafi, sezioni, eccetera -- voi 
+ di poster e loghi: in questo caso – e dal momento che non esistono elementi
+ funzionali come paragrafi, sezioni, eccetera – voi 
 \emph on
 volete proprio
 \emph default
@@ -685,7 +686,7 @@ ni o articoli per riviste di matematica e così via.
  Alcuni utilizzavano la struttura di TeX per raggiungere un risultato, mentre
  altri cominciarono a modificare LaTeX.
  Per testare e unificare questo caos, un team di LaTeX-isti cominciò a lavorare
- su LaTeX2e -- l'attuale versione di LaTeX -- nel corso dei tardi anni '80.
+ su LaTeX2e – l'attuale versione di LaTeX – nel corso dei tardi anni '80.
  Questa nuova versione di LaTeX dispone di istruzioni che forniscono un'interfac
 cia agevole da usare per i comandi di creazione delle macro di TeX, agevolano
  l'utilizzo di nuovi font, e così via.
@@ -755,7 +756,7 @@ LyX: Word processor visuale di tipo WYSIWYM, che utilizza LaTeX per la sua
 In questa sezione abbiamo quindi cercato di spiegare le differenze tra LyX
  e gli altri word processor.
  In breve, la differenza è LaTeX.
- LyX -- utillizzando LaTeX come substrato -- vi aiuta a pensare maggiormente
+ LyX – utillizzando LaTeX come substrato – vi aiuta a pensare maggiormente
  a ciò che scrivete, e con quali parole scriverlo.
  Il computer poi si occupa della forma con la quale il vostro testo deve
  apparire.
@@ -1248,7 +1249,7 @@ PagGiù
 \begin_inset Quotes erd
 \end_inset
 
- sono -- in alcune tastiere -- denominati 
+ sono – in alcune tastiere – denominati 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2145,7 +2146,7 @@ bug tracker
 
  prima di segnalare qualunque errore, perché potrebbe essere già stato segnalato
  da qualcuno prima di voi.
- Alternativamente -- o anche per segnalare un commento su un 
+ Alternativamente – o anche per segnalare un commento su un 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2153,7 +2154,7 @@ bug
 \begin_inset Quotes erd
 \end_inset
 
- esistente -- potete scrivere alla mailing list degli sviluppatori, 
+ esistente – potete scrivere alla mailing list degli sviluppatori, 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-devel@lists.lyx.org"
@@ -2274,8 +2275,8 @@ Partecipare al Team della Documentazione
 \end_layout
 
 \begin_layout Standard
-Il Progetto Documentazione LyX -- come qualunque cosa nell'ambito del progetto
- LyX -- ha sempre bisogno di aiuto.
+Il Progetto Documentazione LyX – come qualunque cosa nell'ambito del progetto
+ LyX – ha sempre bisogno di aiuto.
  Se vuoi contribuire, devi:
 \end_layout
 

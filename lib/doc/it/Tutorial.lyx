@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
+\use_default_options false
 \language italian
 \inputencoding latin1
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,7 +36,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -706,7 +708,7 @@ Una volta finito potete chiudere la finestra oppure lasciarla aperta se
  vi fa più comodo.
  Molte delle finestre di dialogo
 \color none
-che compaiono in LyX --- comprese quelle di 
+che compaiono in LyX — comprese quelle di 
 \family sans
 Trova
 \begin_inset space ~
@@ -972,8 +974,8 @@ Riempimento
 
 orizzontale
 \family default
- e spazi verticali --- molto più potenti e versatili che gli spazi multipli
- o linee vuote --- nonché dei metodi per cambiare manualmente la dimensione
+ e spazi verticali — molto più potenti e versatili che gli spazi multipli
+ o linee vuote — nonché dei metodi per cambiare manualmente la dimensione
  dei font, il tipo di carattere, e l'allineamento dei paragrafi.
  L'idea di fondo, comunque, è quella di scrivere l'intero documento, concentrand
 osi sul contenuto, e preoccuparsi solo alla fine di migliorare i dettagli.
@@ -1533,7 +1535,7 @@ L'ambiente
 \family sans
 Elenco
 \family default
- --- non presente in LaTeX --- che si discosta leggermente dal 
+ — non presente in LaTeX — che si discosta leggermente dal 
 \family sans
 Descrizione
 \family default
@@ -2299,8 +2301,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Un avvertimento, qualora stiate ricorrendo al modello.
- Se cancellate tutto il testo relativo ad un ambiente --- ad esempio, se
- cancellate l'intero campo 
+ Se cancellate tutto il testo relativo ad un ambiente — ad esempio, se cancellat
+e l'intero campo 
 \family sans
 Mio
 \begin_inset space ~
@@ -2308,7 +2310,7 @@ Mio
 
 indirizzo
 \family default
- per sostituirlo con il vostro indirizzo --- e quindi spostate il cursore
+ per sostituirlo con il vostro indirizzo — e quindi spostate il cursore
  senza
 \color none
  scrivere nulla, l'ambiente potrebbe sparire.
@@ -2343,9 +2345,9 @@ I Titoli di un Documento
 \end_layout
 
 \begin_layout Standard
-LyX (similmente al LaTeX) ritiene che il titolo --- che potrebbe comprendere
+LyX (similmente al LaTeX) ritiene che il titolo — che potrebbe comprendere
  il titolo reale, il nome dell'autore, la data ed eventualmente anche un
- estratto del testo --- costituisca una parte del documento a sé stante.
+ estratto del testo — costituisca una parte del documento a sé stante.
 \end_layout
 
 \begin_layout Standard
@@ -2471,7 +2473,7 @@ i di pagina rimanderanno all'inizio della sezione.
 \end_layout
 
 \begin_layout Standard
-Fin qui non avete fatto nulla --- il file 
+Fin qui non avete fatto nulla — il file 
 \family typewriter
 dvi
 \family default
@@ -2503,7 +2505,7 @@ una occhiata alla Sezione , che si trova a pagina .
 \end_layout
 
 \begin_layout Standard
-Adesso --- con il cursore posto dopo la parola 
+Adesso — con il cursore posto dopo la parola 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2511,7 +2513,7 @@ sezione
 \begin_inset Quotes erd
 \end_inset
 
- --- scegliete 
+ — scegliete 
 \family sans
 \bar under
 I
@@ -2659,8 +2661,8 @@ Vi abbiamo prima detto che LyX si preoccupa di gestire la numerazione dei
 \begin_inset space ~
 \end_inset
 
-2, rilanciate LaTeX, e --- sorpresa! --- il riferimento incrociato alla
- sezione è stato cambiato in 
+2, rilanciate LaTeX, e — sorpresa! — il riferimento incrociato alla sezione
+ è stato cambiato in 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2897,8 +2899,8 @@ apertura
 \begin_inset Quotes erd
 \end_inset
 
- potrà essere eseguita in qualunque momento --- con la possibilità di rieditare
- il testo, se lo si desidera --- cliccando nuovamente sul tasto 
+ potrà essere eseguita in qualunque momento — con la possibilità di rieditare
+ il testo, se lo si desidera — cliccando nuovamente sul tasto 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3706,7 +3708,7 @@ Esc
 \end_layout
 
 \begin_layout Standard
-Scrivere un pedice (indice) è davvero semplice --- iniziatene uno mediante
+Scrivere un pedice (indice) è davvero semplice — iniziatene uno mediante
  il tasto di sottolineatura, 
 \begin_inset Quotes eld
 \end_inset
@@ -4902,12 +4904,12 @@ reference "sec:preamble"
 
 \end_inset
 
-), siete in grado di far uso di qualunque pacchetto desideriate --- sebbene
+), siete in grado di far uso di qualunque pacchetto desideriate — sebbene
  non avrete disponibile il supporto WYSIWYM per le peculiarità del pacchetto.
 \end_layout
 
 \begin_layout Subsection
-Importazione di Documenti LaTeX --- tex2lyx
+Importazione di Documenti LaTeX — tex2lyx
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:tex2lyx"

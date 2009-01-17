@@ -1,12 +1,12 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass scrbook
 \begin_preamble
 \usepackage{multicol}
 \end_preamble
+\use_default_options false
 \language basque
 \inputencoding latin1
 \font_roman times
@@ -17,6 +17,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -38,7 +39,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -101,7 +103,7 @@ LyX-en filosofia
 \begin_inset space \hfill{}
 \end_inset
 
---- Jeff MacNelly, "Shoe" 
+— Jeff MacNelly, "Shoe" 
 \end_layout
 
 \begin_layout Section
@@ -348,11 +350,11 @@ n du.
 \end_layout
 
 \begin_layout Standard
-Horregatik irudi edo iragarkiak sortzeko LyX ez da erabilgarria -- kasu
- horietan, gauza bakoitza zein lekutan kokatu behar den zehaztu behar duzu,
- hemen ez baitago paragrafo, atal eta bestelako unitate funtzionalik.
+Horregatik irudi edo iragarkiak sortzeko LyX ez da erabilgarria – kasu horietan,
+ gauza bakoitza zein lekutan kokatu behar den zehaztu behar duzu, hemen
+ ez baitago paragrafo, atal eta bestelako unitate funtzionalik.
  Ez du esan nahi LyX-i zenbait funtzio falta zaizkiola.
- Esan nahi du lan horretarako ez dela tresna egokia -- marrazkiak ukitzeko
+ Esan nahi du lan horretarako ez dela tresna egokia – marrazkiak ukitzeko
  tresna egokiak dauden bezala, dokumentuak idazteko tresnen artean LyX daukagu.
 \end_layout
 

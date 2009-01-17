@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -65,6 +64,7 @@
 %\frenchspacing
 %\sloppypar
 \end_preamble
+\use_default_options false
 \language magyar
 \inputencoding auto
 \font_roman default
@@ -75,6 +75,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics none
 \paperfontsize default
 \spacing single
@@ -103,8 +104,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -185,7 +186,7 @@ What You See Is What You Get
 \begin_inset Quotes prd
 \end_inset
 
- -- 
+ – 
 \begin_inset Quotes pld
 \end_inset
 
@@ -193,7 +194,7 @@ azt kap amit lát
 \begin_inset Quotes prd
 \end_inset
 
- -- a továbbiakban röviden WYSIWYG
+ – a továbbiakban röviden WYSIWYG
 \end_layout
 
 \end_inset
@@ -957,7 +958,7 @@ status collapsed
 
 Becsukhatja a dialógusablakot amint befejezte a keresést, de nyitva is hagyhatja
  ha az kényelmesebb.
- A legtöbb dialógusablak -- beleértve a 
+ A legtöbb dialógusablak – beleértve a 
 \family sans
 Keresés
 \begin_inset space ~
@@ -1759,7 +1760,7 @@ A
 \family sans
 Lista
 \family default
- környezet -- nincs a LaTeX-ben -- egy kicsit különbözik a 
+ környezet – nincs a LaTeX-ben – egy kicsit különbözik a 
 \family sans
 Leírás
 \family default
@@ -2682,11 +2683,11 @@ status collapsed
 \end_inset
 
 Egy figyelmeztetés, arra az esetre ha sablonból dolgozik.
- Amennyiben egy környezet minden szövegét kitörli -- például a 
+ Amennyiben egy környezet minden szövegét kitörli – például a 
 \family sans
 Címem
 \family default
- mező teljes tartalmát kitörli, hogy beleírja a sajátját -- és a kurzort
+ mező teljes tartalmát kitörli, hogy beleírja a sajátját – és a kurzort
  elmozdítja szöveg beírása néllkül, a környezet eltünhet.
  Ez azért van, mert egyes környezetek létének feltétele a tartalmuk.
  A visszaállításhoz csak válassza ki a környezetet a 
@@ -2718,8 +2719,8 @@ Dokumentum címek
 \end_layout
 
 \begin_layout Standard
-A LyX (mint a LaTeX) a címet -- ami a dokumentum címét, a szerző nevét,
- a dátumot és még a kivonatot is tartalmazza -- a dokumentum egy különálló
+A LyX (mint a LaTeX) a címet – ami a dokumentum címét, a szerző nevét, a
+ dátumot és még a kivonatot is tartalmazza – a dokumentum egy különálló
  részének tekinti.
 \end_layout
 
@@ -2853,7 +2854,7 @@ k mindig az utolsó szakaszra vagy alszakaszra fognak hivatkozni.
 \end_layout
 
 \begin_layout Standard
-Mivel gyakorlatilag semmit sem tett -- a 
+Mivel gyakorlatilag semmit sem tett – a 
 \family typewriter
 dvi
 \family default
@@ -2883,7 +2884,7 @@ nézze meg a .
 \end_layout
 
 \begin_layout Standard
-Most -- helyezze a kurzort közvetlen a 
+Most – helyezze a kurzort közvetlen a 
 \begin_inset Quotes pld
 \end_inset
 
@@ -2895,7 +2896,7 @@ szakasz
 \begin_inset Quotes prd
 \end_inset
 
- szó elé -- válassza a 
+ szó elé – válassza a 
 \family sans
 \bar under
 B
@@ -3079,7 +3080,7 @@ D
 \bar default
 VI
 \family default
-) és -- lám! -- és a hivatkozás megváltozott 
+) és – lám! – és a hivatkozás megváltozott 
 \begin_inset Quotes pld
 \end_inset
 
@@ -3275,8 +3276,8 @@ lábjegyzet
 \end_inset
 
  becsukásának.
- Bármikor ki tudja nyitni a lábjegyzetet, azzal ha rákattint a gombra --
- ekkor átírhatja a szövegét -- majd amennyiben újra rákattint, becsukhatja
+ Bármikor ki tudja nyitni a lábjegyzetet, azzal ha rákattint a gombra –
+ ekkor átírhatja a szövegét – majd amennyiben újra rákattint, becsukhatja
  azt.
 \end_layout
 
@@ -4053,7 +4054,7 @@ Esc
 \end_layout
 
 \begin_layout Standard
-Alsó index készítése szintén ilyen egyszerű -- az elkezdéséhez az aláhúzás
+Alsó index készítése szintén ilyen egyszerű – az elkezdéséhez az aláhúzás
  jelet 
 \begin_inset Quotes pld
 \end_inset
@@ -5170,8 +5171,8 @@ tanulni
  A rövid válasz az, hogy a LyX meglehetősen sokmindenre képes amit a LaTeX
  ilyen vagy olyan formában.
  Valamint minden bizonnyal egyszerüsíti egy LaTeX dokumentum elkészítését.
- A segédeszközt -- aminek segítségével a LaTeX dokumentumokat átalakíthatjuk
- LyX által feldolgozható formára -- teljesen újraírtuk a LyX 1.4 változatához.
+ A segédeszközt – aminek segítségével a LaTeX dokumentumokat átalakíthatjuk
+ LyX által feldolgozható formára – teljesen újraírtuk a LyX 1.4 változatához.
  Mostmár képesnek kell lennie a könnyedén lekezelni a LaTeX nagy részét.
  
 \end_layout
@@ -5312,12 +5313,12 @@ reference "sec:preamble"
 \begin_inset space ~
 \end_inset
 
-szakaszt), olyan csomagot használ, amilyet csak akar -- azonban nem lesz
+szakaszt), olyan csomagot használ, amilyet csak akar – azonban nem lesz
  WYSIWYM támogatás a csomag jellemzőihez.
 \end_layout
 
 \begin_layout Subsection
-LaTeX dokumentumok importálása -- 
+LaTeX dokumentumok importálása – 
 \family typewriter
 tex2lyx
 \end_layout
@@ -5483,7 +5484,7 @@ apcsolók
 \end_layout
 
 \begin_layout Subsubsection
-Egyéb szedési beállítások -- Other Preamble Matter
+Egyéb szedési beállítások – Other Preamble Matter
 \end_layout
 
 \begin_layout Standard

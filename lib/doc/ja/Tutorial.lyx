@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -37,6 +36,7 @@
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
 \end_preamble
+\use_default_options false
 \language japanese
 \inputencoding EUC-JP-pLaTeX
 \font_roman default
@@ -47,6 +47,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics dvips
 \paperfontsize default
 \spacing single
@@ -82,8 +83,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -727,9 +728,9 @@ LyXには、文書の体裁を微調整する（多くの）手段がありま�
 \family sans
 水平フィル
 \family default
-や縦方向の空白---複数の空白や空行を使うよりもずっと強力で多機能です---をはじめ、フォントの大きさや文字様式、段落の配置を手動で変更する方法が説明してありま
-す。しかし重要なことは、文書を書くにあたって、最初から最後まで内容に集中することができ、最後にちょっとだけ微調整の心配をしてやるだけでいいという点です。標準的な
-ワードプロセッサでは、文章を書いているあいだを通じて、たえず文書の整形に気を取られてしまいます。
+や縦方向の空白—複数の空白や空行を使うよりもずっと強力で多機能です—をはじめ、フォントの大きさや文字様式、段落の配置を手動で変更する方法が説明してあります。しか
+し重要なことは、文書を書くにあたって、最初から最後まで内容に集中することができ、最後にちょっとだけ微調整の心配をしてやるだけでいいという点です。標準的なワードプ
+ロセッサでは、文章を書いているあいだを通じて、たえず文書の整形に気を取られてしまいます。
 \end_layout
 
 \begin_layout Section
@@ -1018,7 +1019,7 @@ LyXは、箇条書きを組版するための環境をいくつか持ってい�
 \family sans
 箇条書き（一覧）
 \family default
-環境は --- これはLaTeXにはないのですが ---、
+環境は — これはLaTeXにはないのですが —、
 \family sans
 箇条書き（記述）
 \family default
@@ -1623,12 +1624,12 @@ letter.lyx
 status collapsed
 
 \begin_layout Plain Layout
-ひな型を使ってものを書くときに注意すべきことがあります。ある環境の中の本文をすべて消した後に --- 例えば、自分の本当の住所で置き換えるために
+ひな型を使ってものを書くときに注意すべきことがあります。ある環境の中の本文をすべて消した後に — 例えば、自分の本当の住所で置き換えるために
 \family sans
 自分の住所
 \family default
-フィールドを全部消した後に ---、何も書かないで他の場所にカーソルを移動すると、環境自体が消えてしまうことがあります。これは、ほとんどの環境は中に本文がない状
-態では存在できないためです。消えてしまった環境を戻すには、
+フィールドを全部消した後に —、何も書かないで他の場所にカーソルを移動すると、環境自体が消えてしまうことがあります。これは、ほとんどの環境は中に本文がない状態で
+は存在できないためです。消えてしまった環境を戻すには、
 \family sans
 環境
 \family default
@@ -1651,8 +1652,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-（LaTeXと同様）LyXは、文章のタイトル --- これには狭義のタイトル・著者名・日付、場合によっては論文の概要を含みます --- を文書の他の部分とは独立
-の存在として扱います。
+（LaTeXと同様）LyXは、文章のタイトル — これには狭義のタイトル・著者名・日付、場合によっては論文の概要を含みます — を文書の他の部分とは独立の存在と
+して扱います。
 \end_layout
 
 \begin_layout Standard
@@ -1763,8 +1764,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ここまででは、まだ何も成し遂げていません --- ラベルは印刷文書には表れないので、DVI出力は以前とまったく変わりません。しかしながら、いまやラベルをつけたの
-で、相互参照でラベルを参照することができます。次はそれをやってみましょう。
+ここまででは、まだ何も成し遂げていません — ラベルは印刷文書には表れないので、DVI出力は以前とまったく変わりません。しかしながら、いまやラベルをつけたので、
+相互参照でラベルを参照することができます。次はそれをやってみましょう。
 \end_layout
 
 \begin_layout Subsection*
@@ -1784,9 +1785,9 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ここで --- カーソルを「第」という漢字の後ろに合わせて
+ここで — カーソルを「第」という漢字の後ろに合わせて
 \family sans
- --- 挿入\SpecialChar \menuseparator
+ — 挿入\SpecialChar \menuseparator
 相互参照
 \family default
 かツールバーボタン
@@ -1847,8 +1848,8 @@ LyXは、ちょうどカーソルがある場所に参照ボックスを挿入�
 
 \begin_layout Standard
 以前、相互参照の番号付けはLyXが管理すると書きましたが、それをこれから確認してみましょう。第2節の前に新しい節を加えてください。DVI表示を更新すると
- --- ほら！ --- 節への相互参照が「3」に変わっています！次に「この文書について」の節を小節に変更してみると、相互参照は第3節の代わりに第2.1小節を参照
-するようになります。もちろんページ参照は、ラベルの前にまるまる1ページ分の文章を追加しない限り変化しません。
+ — ほら！ — 節への相互参照が「3」に変わっています！次に「この文書について」の節を小節に変更してみると、相互参照は第3節の代わりに第2.1小節を参照するよう
+になります。もちろんページ参照は、ラベルの前にまるまる1ページ分の文章を追加しない限り変化しません。
 \end_layout
 
 \begin_layout Standard
@@ -3117,11 +3118,11 @@ reference "sec:preamble"
 \backslash
 usepackage{foo}
 \family default
-と書けば、お望みのどんなパッケージでも使うことができます---ただしそのパッケージの機能に関しては、WYSIWYMサポートは与えられません。
+と書けば、お望みのどんなパッケージでも使うことができます—ただしそのパッケージの機能に関しては、WYSIWYMサポートは与えられません。
 \end_layout
 
 \begin_layout Subsection
-LaTeXの文章の読み込み---
+LaTeXの文章の読み込み—
 \family typewriter
 tex2lyx
 \family default
