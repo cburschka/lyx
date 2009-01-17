@@ -15,6 +15,7 @@
 #include <config.h>
 
 #include "GuiGraphics.h"
+#include "frontends/alert.h"
 #include "qt_helpers.h"
 #include "Validator.h"
 
@@ -163,9 +164,9 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	//graphics pane
 	connect(filename, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
-	connect(WidthCB, SIGNAL( clicked()),
+	connect(WidthCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	connect(HeightCB, SIGNAL( clicked()),
+	connect(HeightCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(Width, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
@@ -243,8 +244,9 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	connect(displayGB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(displayscale, SIGNAL(textChanged(const QString&)),
 		this, SLOT(change_adaptor()));
-	connect(groupId, SIGNAL(textChanged(const QString&)),
-		this, SLOT(change_adaptor()));
+	connect(groupCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(change_group(int)));
+
 	displayscale->setValidator(new QIntValidator(displayscale));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
@@ -286,6 +288,96 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 void GuiGraphics::change_adaptor()
 {
 	changed();
+}
+
+
+void GuiGraphics::change_group(int index)
+{
+	QString const new_group = groupCO->itemData(
+		groupCO->currentIndex()).toString();
+	
+	// check if the old group consisted only of this member
+	if (current_group_ != fromqstr(new_group)
+	    && graphics::countGroupMembers(buffer(), current_group_) == 1) {
+		if (!new_group.isEmpty()) {
+			if (Alert::prompt(_("Dissolve previous group?"), 
+				bformat(_("If you assign this graphic to group '%2$s',\n"
+					  "the previously assigned group '%1$s' will be dissolved,\n"
+					  "because this graphic was its only member.\n"
+					  "How do you want to proceed?"),
+					from_utf8(current_group_), qstring_to_ucs4(new_group)),
+					0, 0,
+					bformat(_("Stick with group '%1$s'"),
+						from_utf8(current_group_)),
+					bformat(_("Assign to group '%1$s' anyway"),
+						qstring_to_ucs4(new_group))) == 0) {
+				groupCO->setCurrentIndex(
+					groupCO->findData(toqstr(current_group_), Qt::MatchExactly));
+				return;
+			}
+		} else {
+			if (Alert::prompt(_("Dissolve previous group?"), 
+			bformat(_("If you sign off this graphic from group '%1$s',\n"
+				  "the group will be dissolved,\n"
+				  "because this graphic was its only member.\n"
+				  "How do you want to proceed?"),
+				from_utf8(current_group_)),
+				0, 0,
+				bformat(_("Stick with group '%1$s'"),
+				from_utf8(current_group_)),
+				bformat(_("Sign off from group '%1$s'"),
+				from_utf8(current_group_))) == 0) {
+			groupCO->setCurrentIndex(
+				groupCO->findData(toqstr(current_group_), Qt::MatchExactly));
+			return;
+			}
+		}
+	} 
+
+	if (new_group.isEmpty()) {
+		changed();
+		return;
+	}
+
+	string grp = graphics::getGroupParams(buffer(), fromqstr(new_group));
+	if (grp.empty()) {
+		// group does not exist yet
+		changed();
+		return;
+	}
+	
+	// filename might have been changed
+	QString current_filename = filename->text();
+
+	// group exists: load params into the dialog
+	groupCO->blockSignals(true);
+	InsetGraphics::string2params(grp, buffer(), params_);
+	paramsToDialog(params_);
+	groupCO->blockSignals(false);
+	
+	// reset filename
+	filename->setText(current_filename);
+
+	changed();
+}
+
+
+void GuiGraphics::on_newGroupPB_clicked()
+{
+	docstring newgroup;
+	if (!Alert::askForText(newgroup, _("Enter unique group name:")))
+		return;
+	if (newgroup.empty())
+		return;
+	if (groupCO->findData(toqstr(newgroup), Qt::MatchExactly) != -1) {
+		Alert::warning(_("Group already defined!"), 
+			bformat(_("A graphics group with the name '%1$s' already exists."),
+				newgroup));
+		return;
+	}
+	groupCO->addItem(toqstr(newgroup), toqstr(newgroup));
+	groupCO->setCurrentIndex(
+		groupCO->findData(toqstr(newgroup), Qt::MatchExactly));
 }
 
 
@@ -530,7 +622,21 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	Scale->setEnabled(scaleChecked);
 	displayGB->setEnabled(lyxrc.display_graphics);
 
-	groupId->setText(toqstr(igp.groupId));
+	set<string> grp;
+	graphics::getGraphicsGroups(buffer(), grp);
+	set<string>::const_iterator it = grp.begin();
+	set<string>::const_iterator end = grp.end();
+	groupCO->blockSignals(true);
+	groupCO->clear();
+	for (; it != end; it++)
+		groupCO->addItem(toqstr(*it), toqstr(*it));
+	groupCO->insertItem(0, qt_("None"), QString());
+	if (igp.groupId.empty())
+		groupCO->setCurrentIndex(0);
+	else
+		groupCO->setCurrentIndex(
+			groupCO->findData(toqstr(igp.groupId), Qt::MatchExactly));
+	groupCO->blockSignals(false);
 
 	lengthAutoToWidgets(Width, widthUnit, igp.width,
 		unitDefault);
@@ -666,7 +772,9 @@ void GuiGraphics::applyView()
 	// more latex options
 	igp.special = fromqstr(latexoptions->text());
 
-	igp.groupId = fromqstr(groupId->text());
+	igp.groupId = fromqstr(groupCO->itemData(
+		groupCO->currentIndex()).toString());
+	current_group_ = igp.groupId;
 }
 
 
@@ -702,6 +810,7 @@ bool GuiGraphics::initialiseParams(string const & data)
 {
 	InsetGraphics::string2params(data, buffer(), params_);
 	paramsToDialog(params_);
+	current_group_ = params_.groupId;
 	return true;
 }
 

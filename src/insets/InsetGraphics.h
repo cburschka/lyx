@@ -124,6 +124,9 @@ namespace graphics {
 	/// Saves the list of currently used groups in the document.
 	void getGraphicsGroups(Buffer const &, std::set<std::string> &);
 
+	/// how many members has the current group?
+	int countGroupMembers(Buffer const &, std::string const &);
+
 	/// Returns parameters of a given graphics group (except filename).
 	std::string getGroupParams(Buffer const &, std::string const &);
 

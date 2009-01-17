@@ -40,7 +40,9 @@ public:
 
 private Q_SLOTS:
 	void change_adaptor();
+	void change_group(int);
 	void change_bb();
+	void on_newGroupPB_clicked();
 	void on_browsePB_clicked();
 	void on_getPB_clicked();
 	void on_scaleCB_toggled(bool);
@@ -79,6 +81,8 @@ private:
 	std::vector<std::string> origin_ltx;
 	///
 	InsetGraphicsParams params_;
+	/// the current graphics group
+	std::string current_group_;
 };
 
 } // namespace frontend
