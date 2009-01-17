@@ -118,6 +118,9 @@ What's new
 - For CJK documents using utf8 encoding, load the CJKutf8 package, if
   available (part of bug 5386).
 
+- Fix bugs when entering hyperlink paths containing special characters
+  (bug 5686).
+
 
 * USER INTERFACE
 
