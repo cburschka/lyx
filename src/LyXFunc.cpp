@@ -1613,7 +1613,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			LYXERR(Debug::LYXVC, "Directory: " << path);
 			FileName pp(path);
 			if (!pp.isReadableDirectory()) {
-				lyxerr<< _("Directory is not readable.\n");
+				lyxerr << _("Directory is not accessible.") << endl;
 				break;
 			}
 			support::PathChanger p(pp);
