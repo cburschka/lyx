@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
+\use_default_options false
 \language swedish
 \inputencoding latin1
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -35,7 +36,8 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -121,7 +123,7 @@ Den engelska då förstås.
 \end_layout
 
 \begin_layout Standard
-Gör oss alla en tjänst -- om något i dokumentationen verkar förvirrande,
+Gör oss alla en tjänst – om något i dokumentationen verkar förvirrande,
  är oklart, eller fel, tveka inte att tala om det för oss! Du kan nå LyX-folket
  på utvecklarnas epostlista 
 \family typewriter
@@ -1099,8 +1101,8 @@ citat
 \end_layout
 
 \begin_layout Itemize
---- (helfyrkants talstreck) används inte i svensk typografi.
- Använd -- (
+— (helfyrkants talstreck) används inte i svensk typografi.
+ Använd – (
 \begin_inset Quotes sld
 \end_inset
 

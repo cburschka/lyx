@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
+\use_default_options false
 \language danish
 \inputencoding default
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,7 +36,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -125,7 +127,7 @@ _
 
 -tegnet, blev en måde at lægge tryk på ord og sætninger\SpecialChar \@.
  Du var nødt til
- at lære dig søjlebredder og tabulatorstop --- og sætte disse inden du lavede
+ at lære dig søjlebredder og tabulatorstop — og sætte disse inden du lavede
  en tabel\SpecialChar \@.
  Det samme gjaldt for breve og andre højrejusterede tekster\SpecialChar \@.
  Orddeling
@@ -254,7 +256,7 @@ Introduktion
 \begin_layout Standard
 Det er det hele\SpecialChar \@.
  Hvis du flytter rundt på afsnittene vil de automatisk få
- nye numre --- overalt\SpecialChar \@.
+ nye numre — overalt\SpecialChar \@.
  Og hvis du indsætter referencer til afsnittet korrekt
  (ved at indsætte krydsreference-mærker), vil LyX automatisk opdatere dem
  i hele filen, så du altid nogensinde skal skrive et afsnitsnummer selv\SpecialChar \@.
@@ -335,7 +337,7 @@ mener
  Den gør det meget simplere at
  skrive dokumenter\SpecialChar \@.
  Det er også derfor LyX ikke er ret godt til at lave plakater
- og flyers --- i disse tilfælde vil du netop 
+ og flyers — i disse tilfælde vil du netop 
 \emph on
 gerne
 \emph default
@@ -343,8 +345,8 @@ gerne
  enheder som afsnit, sektioner o.s.v\SpecialChar \@.
  Det betyder ikke at LyX mangler en bestemt
  funktion, snarere at det ganske enkelt ikke er det rigtigt værktøj til
- dette --- du bruger heller ikke en skruetrækker til at hamre søm i med
- (medmindre din skruetrækker har livsvarig garanti)\SpecialChar \@.
+ dette — du bruger heller ikke en skruetrækker til at hamre søm i med (medmindre
+ din skruetrækker har livsvarig garanti)\SpecialChar \@.
 
 \end_layout
 
@@ -499,8 +501,8 @@ Krydsreferencer
 
 \begin_layout Standard
 Godt nok kan mange nyere tekstbehandlingsprogrammer håndtere matematiske
- symboler, tabeller og orddeling --- og mange har bevæget sig mod stildefinition
-er og WYSIWYM-filosofien.
+ symboler, tabeller og orddeling — og mange har bevæget sig mod stildefinitioner
+ og WYSIWYM-filosofien.
  Det er dog først for nylig at dette er sket, hvorimod LyX bygger på do
  kuementudviklingssystemet-LaTeX, der har eksisteret i mere end 15 år og
  
@@ -730,7 +732,7 @@ hvorfor
  Forklaringen er
  enkel: LyX bruger LaTeX til sine udskrifter\SpecialChar \@.
  Ligesom LaTeX fokuserer LyX
- på konteksten af det, du skriver --- 
+ på konteksten af det, du skriver — 
 \emph on
 hvad
 \emph default
@@ -794,7 +796,7 @@ reference "kap:Bidrag"
 \end_layout
 
 \begin_layout Standard
-Gør os i øvrigt en tjeneste --- hvis der er noget i manualerne, der forvirrer
+Gør os i øvrigt en tjeneste — hvis der er noget i manualerne, der forvirrer
  dig, er uklart eller forkert, må du endelig lade os det vide! Du kan kontakte
  de nuværende vedligeholdere af manualerne ved at skrive på engelsk til
  
@@ -1414,7 +1416,7 @@ Selvstudium
 \emph on
 Selvstudium
 \emph default
- muligvis stadig vil tro, at LaTeX er et elastisk materiale --- men du vil
+ muligvis stadig vil tro, at LaTeX er et elastisk materiale — men du vil
  vide, hvordan du bruger LyX\SpecialChar \@.
 
 \end_layout
@@ -1501,7 +1503,7 @@ Brugermanual
 \emph default
 \SpecialChar \@.
  Dokumenterer hvordan du bruger de gå LaTeX-kommandoer, yderligere layout,
- redigeringsfunktioner til bestemte formål --- og viser nogle af de (noget
+ redigeringsfunktioner til bestemte formål — og viser nogle af de (noget
  bizarre men snedige) trick, LaTeX-kendere har adgang til\SpecialChar \@.
 
 \end_layout
@@ -1683,7 +1685,7 @@ http://www.lyx.org/
 \begin_layout Standard
 En god (brugbar) fejlrapport fortæller som minimum hvilken udgave af LyX,
  du har problemer med\SpecialChar \@.
- Nøjagtige, detaljerede beskrivelser foretrækkes ---
+ Nøjagtige, detaljerede beskrivelser foretrækkes —
  jo mere tid udviklerne skal bruge på at udpege kilden til en fejl, des
  mindre tid har de til andre forbedringer\SpecialChar \@.
  Nævn hvilket system du kører LyX
@@ -1877,7 +1879,7 @@ status open
 
 \begin_layout Plain Layout
 De mere eventyrlystne kan hente den seneste kildtekst fra LyX's CVS-arkiv
- --- den ligger i modulet 
+ — den ligger i modulet 
 \family typewriter
 lyxdoc
 \family default

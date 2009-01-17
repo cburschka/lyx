@@ -1,13 +1,13 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
 \begin_preamble
 \usepackage{footnote}
 \makesavenoteenv{tabular}
 \end_preamble
+\use_default_options false
 \language galician
 \inputencoding latin1
 \font_roman default
@@ -18,6 +18,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -39,7 +40,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -340,8 +342,8 @@ Tutorial
 Tutorial
 \emph default
  breve.
- Ademais afará-se a utilizar outros manuais do LyX, o cal --- a longo prazo
- --- aforrará-lle moito tempo.
+ Ademais afará-se a utilizar outros manuais do LyX, o cal — a longo prazo
+ — aforrará-lle moito tempo.
 \end_layout
 
 \begin_layout Standard
@@ -801,8 +803,8 @@ status open
 \begin_layout Plain Layout
 Cando rematar pode fechar a xanela, ou deixa-la aberta, segundo lle resulte
  mais cómodo.
- A maioria das caixas de diálogo no LyX --- incluindo as correspondentes
- a 
+ A maioria das caixas de diálogo no LyX — incluindo as correspondentes a
+ 
 \family sans
 \bar under
 P
@@ -839,8 +841,8 @@ C
 \bar default
 onfiguración
 \family default
- (do documento), asi como os vários diálogos matemáticos --- son xanelas
- que poden deixar-se abertas, ou minimizadas, en vez de fechadas.
+ (do documento), asi como os vários diálogos matemáticos — son xanelas que
+ poden deixar-se abertas, ou minimizadas, en vez de fechadas.
  Uns poucos diálogos, como o 
 \family sans
 \bar under
@@ -1081,7 +1083,7 @@ Contodo, no LyX tamén existen (moitas) maneiras de afinar manualmente o
 Guia do Usuário
 \emph default
 , incluindo entre outras espazados horizontal e vertical máis potentes e
- versáteis que os espazos ou as liñas en branco --- e formas para especificar
+ versáteis que os espazos ou as liñas en branco — e formas para especificar
  manualmente o tamaño e o tipo de fonte, e o aliñamentos dos parágrafos.
  Agora ben, o que pretenden os autores do LyX é que o usuário poda despreocupar-
 se do formato, prestando-lle atención só ao final.
@@ -2583,7 +2585,7 @@ Unha adverténcia: se estiver a escreber a partir dun
 \family sans
 modelo
 \family default
- e eliminar todo o texto dun ambiente dado--- por exemplo, se eliminar todo
+ e eliminar todo o texto dun ambiente dado— por exemplo, se eliminar todo
  o campo 
 \family sans
 Meu
@@ -2592,7 +2594,7 @@ Meu
 
 Enderezo
 \family default
- para o substituir co seu próprio texto --- e entón move o cursor sen escreber
+ para o substituir co seu próprio texto — e entón move o cursor sen escreber
  algo, o ambiente pode desaparecer, xa que a maior parte dos ambientes non
  poden existir sen texto.
  Para recuperar o ambiente basta seleccioná-lo do menu 
@@ -2625,9 +2627,9 @@ Títulos dos documentos
 \end_layout
 
 \begin_layout Standard
-O LyX (tal como o LaTeX) considera o título --- que pode conter o próprio
- título, o autor, a data e mesmo o resumo dun artigo --- como unha parte
- separada do documento.
+O LyX (tal como o LaTeX) considera o título — que pode conter o próprio
+ título, o autor, a data e mesmo o resumo dun artigo — como unha parte separada
+ do documento.
  
 \end_layout
 
@@ -2971,8 +2973,8 @@ Dixemos anteriormente que o LyX se encarrega do manexo das referéncias cruzadas
 \begin_inset space ~
 \end_inset
 
-2, volte a visualizar como vai sair o documento impreso, e --- voilà! ---
- a referéncia cruzada da sección pasou a: 
+2, volte a visualizar como vai sair o documento impreso, e — voilà! — a
+ referéncia cruzada da sección pasou a: 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5107,7 +5109,7 @@ reference "sec:preambulo"
 \end_layout
 
 \begin_layout Subsection
-Importando de LaTeX --- 
+Importando de LaTeX — 
 \family typewriter
 tex2lyx
 \end_layout

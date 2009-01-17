@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -37,6 +36,7 @@
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
 \end_preamble
+\use_default_options false
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -47,6 +47,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -86,8 +87,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -141,8 +142,8 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 26.
- September 2008
+letzte Änderung: 17.
+ Januar 2009
 \end_layout
 
 \begin_layout Standard
@@ -282,8 +283,7 @@ In anderen Worten, wir haben gelernt und geübt, uns darum zu kümmern, welcher
 \begin_inset Quotes gld
 \end_inset
 
-What you see is what you get --- Was man sieht, ist (genau das), was man
- bekommt
+What you see is what you get — Was man sieht, ist (genau das), was man bekommt
 \begin_inset Quotes grd
 \end_inset
 
@@ -387,7 +387,7 @@ Einleitung
 \begin_layout Standard
 Ja, das ist wirklich alles.
  Wenn Sie diesen Abschnitt später an eine andere Stelle verschieben, wird
- die Nummerierung automatisch angepasst --- egal wohin Sie ihn verschieben.
+ die Nummerierung automatisch angepasst — egal wohin Sie ihn verschieben.
  Wenn Sie in Ihrem Text Querverweise auf diesen Abschnitt haben und diese
  korrekt über das LyX-eigene System getan haben, werden auch all diese Verweise
  (Kapitel- und Seitennummern) automatisch aktualisiert.
@@ -440,7 +440,7 @@ What you see is what you
 \emph on
 mean
 \emph default
- --- Was man sieht, ist was man 
+ — Was man sieht, ist was man 
 \emph on
 meint
 \emph default
@@ -458,7 +458,7 @@ wollen
 \emph default
  Sie genau angeben, wo welches Textelement erscheint, denn es gibt keine
  funktionellen Elemente wie Absätze, Abschnitte usw.
- Das bedeutet nicht, dass in LyX irgendwelche tollen Funktionen fehlen --
+ Das bedeutet nicht, dass in LyX irgendwelche tollen Funktionen fehlen –
  es ist einfach nicht das richtige Programm für diesen Zweck.
  Sie verwenden ja auch keinen Schraubendreher, um damit Nägel einzuschlagen
  (außer Ihr Schraubendreher hat vielleicht eine lebenslängliche Garantie).
@@ -884,7 +884,7 @@ warum
  LyX etwas anders arbeitet als andere Textverarbeitungen.
  Der Grund ist einfach: LyX verwendet LaTeX als Formatierprogramm für den
  Ausdruck.
- Wie auch LaTeX konzentriert sich LyX auf den Inhalt Ihres Textes --- also
+ Wie auch LaTeX konzentriert sich LyX auf den Inhalt Ihres Textes — also
  
 \emph on
 was
@@ -894,7 +894,7 @@ was
 \end_layout
 
 \begin_layout Standard
-Ach ja --- eine letzte Bemerkung.
+Ach ja — eine letzte Bemerkung.
  LaTeX spricht man aus wie TeX, das sich auf das Wort Blech reimt.
  Laut Lamport kann man LaTeX auch 
 \begin_inset Quotes gld
@@ -924,9 +924,9 @@ Licks
 \begin_inset Quotes grd
 \end_inset
 
- --- je nachdem, aus welchem Land man stammt, aber über die Aussprache wurden
+ — je nachdem, aus welchem Land man stammt, aber über die Aussprache wurden
  auf der Mailing-Liste schon endlose Diskussionen geführt, also sprechen
- Sie es einfach so aus, wie es Ihnen gefällt --- nur nicht 
+ Sie es einfach so aus, wie es Ihnen gefällt — nur nicht 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1066,8 +1066,8 @@ Fußnote
 \family sans
 Navigieren
 \family default
-, dort wird der Inhalt ebenfalls automatisch angezeigt -- Versuchen Sie
- es einmal! Wenn Sie auf den Werkzezugleistenknopf
+, dort wird der Inhalt ebenfalls automatisch angezeigt – Versuchen Sie es
+ einmal! Wenn Sie auf den Werkzezugleistenknopf
 \begin_inset Marginal
 status open
 
@@ -1869,7 +1869,7 @@ bt
 \begin_inset Quotes grd
 \end_inset
 
- einen Backtrace und schicken diesen zusammen mit dem Fehlerbericht ein,
+ einen Backtrace und schicken diesen zusammen mit dem Fehlerbericht ein.
 \begin_inset Foot
 status collapsed
 
@@ -1904,7 +1904,6 @@ up
 
 \end_inset
 
-.
  Im Zweifelsfall ist es aber wichtiger, einen reproduzierbaren Weg anzugeben,
  wie der Absturz verursacht werden kann, da die Entwickler dann die Möglichkeit
  haben, selbst einen solchen Backtrace zu erstellen.
@@ -1974,13 +1973,13 @@ Wie alle anderen Bereiche von LyX kann auch das Dokumentationsteam Hilfe
 
 \begin_layout Enumerate
 Besorgen Sie sich die neueste Version der LyX-Quellen.
- Packen Sie das Archiv aus
+ Packen Sie das Archiv aus.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 Sie können sich die aktuellste Version auch aus dem LyX-SVN-Archiv besorgen
- -- sie befindet sich im Modul 
+ – sie befindet sich im Modul 
 \family typewriter
 lyxdoc
 \family default
@@ -1989,7 +1988,6 @@ lyxdoc
 
 \end_inset
 
-.
  Im Hauptverzeichnis finden Sie das Unterverzeichnis 
 \family typewriter
 lib/doc
@@ -2055,8 +2053,8 @@ type "mailto:"
 
 \begin_layout Standard
 Dabei ist alles an Änderungen möglich, angefangen von Verbesserungen der
- Verständlichkeit bis hin zu einer kompletten Umstrukturierung --- alles
- was die Dokumentation verbessert, ist herzlich willkommen.
+ Verständlichkeit bis hin zu einer kompletten Umstrukturierung — alles was
+ die Dokumentation verbessert, ist herzlich willkommen.
 \end_layout
 
 \end_body

@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
+\use_default_options false
 \language dutch
 \inputencoding latin1
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics none
 \paperfontsize default
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -459,7 +460,7 @@ Introductie
 
 \begin_layout Standard
 Dat is alles.
- Als je de sectie verplaatst zal het automatisch hernummerd worden--- overal.
+ Als je de sectie verplaatst zal het automatisch hernummerd worden— overal.
  Er is zelfs een manier om automatisch elke referentie in het document naar
  de betreffende sectie, door LyX te laten bijwerken.
 \end_layout
@@ -930,7 +931,7 @@ waarom
 \emph default
  LyX ietwat anders werkt dan andere tekstverwerkers.
  Het antwoord is eenvoudig: LyX gebruikt LaTeX als basis om te printen.
- Evenals LaTeX, concentreert LyX zich op de inhoud van je teksten---
+ Evenals LaTeX, concentreert LyX zich op de inhoud van je teksten—
 \emph on
 wat
 \emph default
@@ -939,7 +940,7 @@ wat
 \end_layout
 
 \begin_layout Standard
-Oja --- nog een laatste opmerking.
+Oja — nog een laatste opmerking.
  LaTeX wordt net zo uitgesproken als TeX.
  Het rijmt op 
 \begin_inset Quotes eld
@@ -1567,7 +1568,7 @@ status collapsed
 \begin_layout Plain Layout
 Sluit het zoekscherm als je klaar bent.
  Of laat het staan als je dat makkelijker vindt.
- De meeste popup-schermen in LyX --- inclusief de 
+ De meeste popup-schermen in LyX — inclusief de 
 \family sans
 \bar under
 F
@@ -1598,7 +1599,7 @@ Contents
 \family sans
 Layout
 \family default
- popups, als ook de verschillende wiskunde popups --- kunnen evengoed worden
+ popups, als ook de verschillende wiskunde popups — kunnen evengoed worden
  geminimaliseerd als afgesloten.
  Daarentegen blokkeren andere popup-schermen zoals 
 \family sans
@@ -1783,9 +1784,9 @@ Gebruikersgids
 \emph default
  bevat hierover informatie.
  Onder andere vind je hier informatie over HFills en verticale witruimte
- --- dat krachtiger is, en veelzijdiger dan meerdere spaties of nieuwe regels
- achter elkaar --- en manieren om lettertypen, fontstijlen, en paragraaf
- uitlijning handmatig te veranderen.
+ — dat krachtiger is, en veelzijdiger dan meerdere spaties of nieuwe regels
+ achter elkaar — en manieren om lettertypen, fontstijlen, en paragraaf uitlijnin
+g handmatig te veranderen.
  De idee is dat je je hele document kunt schrijven, gefocusseerd op de inhoud,
  en pas hoeft na te denken over het fijnstellen van de vorm als je klaar
  bent.
@@ -2299,8 +2300,8 @@ Het omgevingstype
 \family sans
 List
 \family default
- --- welke in LaTeX niet voorkomt --- is een iets andere vorm van het omgevingst
-ype 
+ — welke in LaTeX niet voorkomt — is een iets andere vorm van het omgevingstype
+ 
 \family sans
 Description
 \family default
@@ -2648,7 +2649,7 @@ Verschillende soorten documenten moeten ook op een verschillende wijze worden
  Bijvoorbeeld: boeken worden gewoonlijk tweezijdig afgedrukt, terwijl artikelen
  meestal enkelzijdig zijn.
  Daarnaast bevatten veel documenten speciale omgevingen: brieven bevatten
- omgevingen --- zoals het adres van de afzender en de handtekening--- welke
+ omgevingen — zoals het adres van de afzender en de handtekening— welke
  in een boek of artikel zinloos zijn.
  De 
 \emph on
@@ -3256,7 +3257,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Een waarschuwing als je een vanaf een sjabloon schrijft: als je alle tekst
- in een omgeving verwijdert--- bijvoorbeeld als je het gehele 
+ in een omgeving verwijdert— bijvoorbeeld als je het gehele 
 \family sans
 My
 \begin_inset space ~
@@ -3264,7 +3265,7 @@ My
 
 Address
 \family default
- veld verwijdert zodat je het met je eigen tekst kunt vervangen--- en dan
+ veld verwijdert zodat je het met je eigen tekst kunt vervangen— en dan
  de cursor beweegt zonder ook maar iets te schrijven, zou de omgeving kunnen
  verdwijnen.
  Dit gebeurt omdat de meeste omgevingen niet kunnen bestaan zonder een tekst
@@ -3298,9 +3299,9 @@ Document titels
 \end_layout
 
 \begin_layout Standard
-LyX (net als LaTeX) beschouwt de titel --- die de feitelijke titel, de auteur,
- de datum, en zelfs een samenvatting van een artikel kan bevatten--- als
- een apart gedeelte van het document.
+LyX (net als LaTeX) beschouwt de titel — die de feitelijke titel, de auteur,
+ de datum, en zelfs een samenvatting van een artikel kan bevatten— als een
+ apart gedeelte van het document.
 \end_layout
 
 \begin_layout Standard
@@ -3648,8 +3649,7 @@ We vertelden je dat LyX het nummeren van kruisverwijzingen regelt; je kunt
 \end_inset
 
 2.
- Doe nu een nieuwe LaTeX run, en --- voilà! --- de kruisverwijzing naar
- Sectie
+ Doe nu een nieuwe LaTeX run, en — voilà! — de kruisverwijzing naar Sectie
 \begin_inset space ~
 \end_inset
 
@@ -3845,8 +3845,8 @@ opvouwen
 \end_inset
 
  van de voetnoot genoemd.
- Je kunt de voetnoot altijd uitvouwen --- en als je wilt, de inhoud bewerken
- --- door op de rode 
+ Je kunt de voetnoot altijd uitvouwen — en als je wilt, de inhoud bewerken
+ — door op de rode 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4793,8 +4793,8 @@ Tab
 \emph on
 Gebruikshandleiding
 \emph default
- --- maar wacht met het aanpassen van de witruimte tot de inhoud van je
- document afgewerkt is.
+ — maar wacht met het aanpassen van de witruimte tot de inhoud van je document
+ afgewerkt is.
 \end_layout
 
 \end_inset
@@ -6214,7 +6214,7 @@ reference "sec:preambule"
 \end_layout
 
 \begin_layout Subsection
-LaTeX Documenten Importeren--- 
+LaTeX Documenten Importeren— 
 \family typewriter
 tex2lyx
 \begin_inset CommandInset label
@@ -6259,7 +6259,7 @@ foo.lyx
 \family typewriter
 foo.tex
 \family default
- --- and then open that file.
+ — and then open that file.
  If the translation doesn't work, you can try calling 
 \family typewriter
 tex2lyx

@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -29,6 +28,7 @@
 \fancyhead[LO]{\rightmark}
 \fancyfoot[C]{}
 \end_preamble
+\use_default_options false
 \language hebrew
 \inputencoding auto
 \font_roman default
@@ -39,6 +39,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -60,8 +61,8 @@
 \paperpagestyle fancy
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -167,7 +168,7 @@ status collapsed
 \begin_layout Plain Layout
 מנהג מקובל באנגלית 
 \lang english
----
+—
 \lang hebrew
  ג.ק.
 \end_layout
@@ -182,7 +183,7 @@ status collapsed
  וכו', כך שבפועל אתה לא רק כותב את המסמך אלא באותו זמן גם מכין אותו להדפסה.
  ליקס מבצעת בשבילך את פעולת העריכה הגרפית ומשחררת אותך להתרכז בעיקר 
 \lang english
----
+—
 \lang hebrew
  תוכן הכתיבה שלך.
 \end_layout
@@ -264,11 +265,11 @@ do it yourself
 \begin_layout Standard
 עם זאת, אנחנו מבינים שאם הגעת לתעוד 
 \lang english
----
+—
 \lang hebrew
  במיוחד למסמך הזה 
 \lang english
----
+—
 \lang hebrew
  אתה מין הסתם אבוד.
  לא טיפש.
@@ -468,7 +469,7 @@ User's Guide
 (.
  שם יש הפניות למסמכים נוספים 
 \lang english
----
+—
 \lang hebrew
  ג
 \begin_inset Quotes erd
@@ -556,7 +557,7 @@ example_lyxified.lyx
 \lang hebrew
  הרגיל 
 \lang english
----
+—
 \lang hebrew
  ג
 \begin_inset Quotes erd
@@ -663,7 +664,7 @@ status collapsed
  לא, אל תלך לשם עכשיו.
  קודם עדיף שתתאמן קצת על האנגלית 
 \lang english
----
+—
 \lang hebrew
  ג
 \begin_inset Quotes erd
@@ -877,7 +878,7 @@ OK
 מזל טוב! כתבת והדפסת את מסמך הליקס הראשון שלך.
  כל השאר זה רק פרטים 
 \lang english
----
+—
 \lang hebrew
  ראה במדריך למשתמש, "תכונות נוספות" ו- "התאמה".
 \end_layout
@@ -966,7 +967,7 @@ edo
  צעדים.
  בנוסף אי אפשר לבטל כל דבר ודבר 
 \lang english
----
+—
 \lang hebrew
  לדוגמא החלפת מחלקת המסמך )ראה בהמשך([
 \end_layout
@@ -1260,7 +1261,7 @@ tab stop
 \lang hebrew
 ( הבאה 
 \lang english
----
+—
 \lang hebrew
  למעשה אין דבר כזה נקודות 
 \family sans
@@ -1750,7 +1751,7 @@ WYSIWYM
 \lang hebrew
 : אתה צריך להגיד לליקס איזה טקסט הוא כותרת 
 \lang english
----
+—
 \lang hebrew
  ליקס דואגת למיספור ולעריכה.
 \end_layout
@@ -1960,7 +1961,7 @@ status collapsed
 הכוונה כאן למסמך מהסוג שבו הרבה מאוד מספרי סעיפים וסעיפי משנה ומעט מאוד
  תוכן 
 \lang english
----
+—
 \lang hebrew
  ג
 \begin_inset Quotes erd
@@ -1996,7 +1997,7 @@ Itemize
 \lang hebrew
  מיצרת רשימה עם עיגולים או כוכביות בצד )כמו רשימה זו( 
 \lang english
----
+—
 \lang hebrew
  מעולה למצגת שקופיות.
 \end_layout
@@ -2075,7 +2076,7 @@ Itemize
  מתפריט הסביבה.
  ליקס רושם עיגול 
 \lang english
----
+—
 \lang hebrew
  למעשה על המסך מופיעה כוכבית, אבל בפלט תראה עיגול.
  עכשיו הקלד את הסיבות:
@@ -2119,7 +2120,7 @@ Return
 \family default
  
 \lang english
----
+—
 \lang hebrew
  הקש 
 \family sans
@@ -2198,7 +2199,7 @@ List
 \lang hebrew
  לא עובדת כראוי בעברית 
 \lang english
----
+—
 \lang hebrew
  ג
 \begin_inset Quotes erd
@@ -2342,7 +2343,7 @@ monospace
 \lang hebrew
 , כלומר לכל האותיות רוחב קבוע 
 \lang english
----
+—
 \lang hebrew
  ג
 \begin_inset Quotes erd
@@ -2426,7 +2427,7 @@ Verse
 , הדרך של ליקס לערוך את המסמך.
  בפרק זה נעזור לך לגשר את הפער בין טקסט סתם לבין מסמך שלם 
 \lang english
----
+—
 \lang hebrew
  עבודה, מאמר, ספר, חוברת או מכתב.
  פה תלמד על 
@@ -2458,7 +2459,7 @@ status collapsed
  השוליים, מיקום מספרי הדפים, מיקום הערות צד, ולעיתים חוקים כמו "פרק חייב
  להתחיל בדף אי-זוגי", כמו במסמך זה, לדוגמא 
 \lang english
----
+—
 \lang hebrew
  ג
 \begin_inset Quotes erd
@@ -3045,7 +3046,7 @@ status collapsed
 אזהרה אחת, אם את כותבת תבנית חדשה.
  אם את מוחקת את כל הטקסט בסביבה נתונה 
 \lang english
----
+—
 \lang hebrew
  למשל אם מחקת את כל הסביבה 
 \family sans
@@ -3059,7 +3060,7 @@ Address
 \lang hebrew
  כדי להחליף אותך בכתובתך שלך 
 \lang english
----
+—
 \lang hebrew
  ואז תזיזי את הסמן בלי לרשום כלום, הסביבה תעלם.
  רוב הסביבות לא יכולות להתקיים בלי טקסט בתוכן.
@@ -3090,11 +3091,11 @@ LaTeX
 \lang hebrew
 (, מתייחסת לשער 
 \lang english
----
+—
 \lang hebrew
  שיכול להכיל את שם המסמך, המחבר, התאריך ואפילו תקציר 
 \lang english
----
+—
 \lang hebrew
  כלחלק נפרד מהמסמך.
 \end_layout
@@ -3250,7 +3251,7 @@ status collapsed
 \begin_layout Plain Layout
 אפשר להשתמש בטקסט בעברית בתוית בלי בעיה 
 \lang english
----
+—
 \lang hebrew
  ג
 \begin_inset Quotes erd
@@ -3308,12 +3309,12 @@ status collapsed
 \begin_layout Plain Layout
 זה לא ממש נכון 
 \lang english
----
+—
 \lang hebrew
  ההפניה מתייחסת למספר ה"משהו" שהיה לפניה, ומשהו יכול להיות הרבה דברים חוץ
  מסעיף 
 \lang english
----
+—
 \lang hebrew
  ג
 \begin_inset Quotes erd
@@ -3332,7 +3333,7 @@ status collapsed
 \begin_layout Standard
 עד עכשיו לא עשינו כלום 
 \lang english
----
+—
 \lang hebrew
  קובץ ה-
 \lang english
@@ -3420,11 +3421,11 @@ sec:aboutdocument
 .
  בחר אותה 
 \lang english
----
+—
 \lang hebrew
  היא מן הסתם תהיה כבר מסומנת 
 \lang english
----
+—
 \lang hebrew
  ושנה את סוג ההפניה )
 \family sans
@@ -3444,11 +3445,11 @@ Standard
 
 
 \lang english
----
+—
 \lang hebrew
  שוב ברירת המחדל 
 \lang english
----
+—
 \lang hebrew
  ולחץ על 
 \family sans
@@ -3763,7 +3764,7 @@ foot
  באדום.
  הסמן נמצא כעת בהתחלת השורה בתוך הריבוע האדום 
 \lang english
----
+—
 \lang hebrew
  זה המקום שבו יש להקליד את תוכן הערת השוליים.
  הקלד
@@ -3789,11 +3790,11 @@ foot
  לזה אנו קוראים "לקפל" את הערת השוליים.
  אתה יכול לפתוח אותה בכל עת 
 \lang english
----
+—
 \lang hebrew
  ולשנות את הטקסט, אם ברצונך 
 \lang english
----
+—
 \lang hebrew
  בעזרת לחיצה על המסמן 
 \lang english
@@ -3812,7 +3813,7 @@ dvi
 , או בהדפסה.
  אם תוסיף עוד הערות שוליים, ליקס ימספר את כולן 
 \lang english
----
+—
 \lang hebrew
  חדשות וישנות.
  מכיוון שליקס )למעשה 
@@ -4358,7 +4359,7 @@ status collapsed
 \family default
 , בו מופיע תוכן העניינים בצורה אוטומטית 
 \lang english
----
+—
 \lang hebrew
  ג
 \begin_inset Quotes erd
@@ -4889,7 +4890,7 @@ l
  לחץ והן יופיעו אחרי הסמן.
  שים לב שלחלק מהאותיות 
 \lang english
----
+—
 \lang hebrew
  אפסילון, פיי )
 \begin_inset Formula $\pi$
@@ -4909,7 +4910,7 @@ l
 
 (, סיגמה ותטה 
 \lang english
----
+—
 \lang hebrew
  יש שתי גירסאות.
  וקיצור שעובד באופן כללי: אם תלחץ על כפתור כלשהו בפאנל הנוסחאות מחוץ למצב
@@ -5969,7 +5970,7 @@ table
 \lang hebrew
  כדי לציין את המכלול של טבלה+כותרת שיכול "לצוף" במסמך 
 \lang english
----
+—
 \lang hebrew
  מונחים מבלבלים משהו אלה לקוחים מעולם ה-
 \lang english
@@ -6047,11 +6048,11 @@ man rcsintro
 יש לך שליטה בלתי רגילה בהתנהגות של ליקס.
  כל דבר 
 \lang english
----
+—
 \lang hebrew
  החל מאיך שהחלון נראה וכלה בפקודות שמשמשות ליצירת הפלט 
 \lang english
----
+—
 \lang hebrew
  ניתן להתאים במספר דרכים.
  את הרוב הגדול אפשר לבצע בנוחות בעזרת 
@@ -6110,7 +6111,7 @@ LaTeX
 \lang hebrew
 , שהתמיכה שלו ככלל בשפות "קשות" אינה כה מפותחת 
 \lang english
----
+—
 \lang hebrew
  ג
 \begin_inset Quotes erd
@@ -6154,7 +6155,7 @@ status collapsed
 בעברית מקשי הפקודה לא מודגשים באלגנטיות בקו תחתי אלא מופיעים משמאל לפקודה,
  לפעמים עם קו תחתי ולפעמים בלי )אם יש חוקיות, אני לא גיליתי אותה( 
 \lang english
----
+—
 \lang hebrew
  ג
 \begin_inset Quotes erd
@@ -6211,7 +6212,7 @@ status collapsed
 \family default
 ( כך שהוא לא מאוד מועיל גם למסמכים משולבים עברית/אנגלית 
 \lang english
----
+—
 \lang hebrew
  ג.ק.
 \end_layout
@@ -6562,7 +6563,7 @@ foo.lyx
 \family typewriter
 foo.tex
 \family default
- --- and then open that file.
+ — and then open that file.
  If the translation doesn't work, you can try calling 
 \family typewriter
 tex2lyx
@@ -7031,7 +7032,7 @@ LaTeX
 \lang hebrew
  תגלה שגיאות 
 \lang english
----
+—
 \lang hebrew
  דברים שליקס או 
 \lang english

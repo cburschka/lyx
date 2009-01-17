@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -47,6 +47,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -82,8 +83,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -303,7 +304,7 @@ Introduction\SpecialChar \@.
 
 \begin_layout Standard
 Yes, that's all.
- If you cut and paste the section, it will automatically be renumbered ---
+ If you cut and paste the section, it will automatically be renumbered —
  everywhere.
  And if you enter references to that section correctly (by inserting cross-refer
 ence tags), LyX will automatically update them all throughout the file so
@@ -384,16 +385,16 @@ WYSIWYM.
 \end_inset
 
  It's a powerful idea that greatly simplifies the mechanics of writing documents.
- This is also why LyX isn't so good for creating posters and flyers---in
- this case, you 
+ This is also why LyX isn't so good for creating posters and flyers.
+ In this case, you 
 \emph on
 do
 \emph default
  want to specify exactly where everything goes, because there are no functional
  units like paragraphs, sections, etc.
  This doesn't mean LyX is missing some cool function.
- It simply means that it isn't the right tool for the job --- you don't
- use a screwdriver to drive in nails.
+ It simply means that it isn't the right tool for the job — you don't use
+ a screwdriver to drive in nails.
 \end_layout
 
 \begin_layout Subsection
@@ -792,7 +793,7 @@ reference "sec:Contrib"
 \end_layout
 
 \begin_layout Standard
-Also, please do us a favor -- if anything in these manuals confuses you,
+Also, please do us a favor – if anything in these manuals confuses you,
  is unclear, or wrong, don't hesitate to let us know! You can reach the
  current document maintainers by mailing to 
 \begin_inset CommandInset href

@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
+\use_default_options false
 \language portuguese
 \inputencoding latin1
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics none
 \paperfontsize default
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -557,8 +558,8 @@ Introdução
 
 \begin_layout Standard
 Sim, é tudo o que precisa.
- Se cortar e colar a secção, esta será renumerada automaticamente --- em
- qualquer lado.
+ Se cortar e colar a secção, esta será renumerada automaticamente — em qualquer
+ lado.
  Até existe uma forma de fazer o LyX actualizar automaticamente qualquer
  referência a esta secção no ficheiro.
 \end_layout
@@ -1117,7 +1118,7 @@ LyX: Processador de texto WYSIWYM, que utiliza o LaTeX em toda a sua gloria
 A ideia desta secção foi tentar explicar porquê o LyX funciona de forma
  diferente dos outros processadores de texto.
  A razão é simples: o LyX usa o LaTeX na retaguarda para imprimir.
- Tal como o LaTeX, o LyX foca-se no contexto da sua escrita -- 
+ Tal como o LaTeX, o LyX foca-se no contexto da sua escrita – 
 \emph on
 o que
 \emph default
@@ -1126,7 +1127,7 @@ o que
 \end_layout
 
 \begin_layout Standard
-Oh --- uma última questão.
+Oh — uma última questão.
  LaTeX pronuncia-se como TeX.
  Rima com 
 \begin_inset Quotes eld
@@ -1285,8 +1286,8 @@ Tutorial
 Tutorial
 \emph default
 .
- Também irá criar o hábito de utilizar outros manuais do LyX, que --- a
- longo prazo --- poupar-lhe-ão imenso tempo.
+ Também irá criar o hábito de utilizar outros manuais do LyX, que — a longo
+ prazo — poupar-lhe-ão imenso tempo.
 \end_layout
 
 \begin_layout Standard
@@ -1811,7 +1812,7 @@ status collapsed
 \begin_layout Plain Layout
 Feche a janela quando terminar.
  Ou deixe-a aberta, se achar mais conveniente.
- A maioria das caixas de diálogo no LyX --- incluindo as 
+ A maioria das caixas de diálogo no LyX — incluindo as 
 \family sans
 \bar under
 F
@@ -1842,8 +1843,8 @@ Contents
 \family sans
 Layout
 \family default
-, assim como as várias caixas de diálogo para caracteres matemáticos ---
- são janelas que podem ser minimizadas, em vez de fechadas.
+, assim como as várias caixas de diálogo para caracteres matemáticos — são
+ janelas que podem ser minimizadas, em vez de fechadas.
  Algumas caixas de diálogo como o 
 \family sans
 \bar under
@@ -2784,7 +2785,7 @@ O ambiente
 \family sans
 List
 \family default
- --- não encontrado em LaTeX --- é uma forma ligeiramente diferente do ambiente
+ — não encontrado em LaTeX — é uma forma ligeiramente diferente do ambiente
  
 \family sans
 Description
@@ -3644,7 +3645,7 @@ Um pequeno aviso, se estiver a escrever a partir de um
 \family sans
 template
 \family default
- e apagar todo o texto de um dado ambiente --- por exemplo, se apagar todo
+ e apagar todo o texto de um dado ambiente — por exemplo, se apagar todo
  o campo 
 \family sans
 My
@@ -3653,7 +3654,7 @@ My
 
 Address
 \family default
- para o substituir com o seu próprio texto --- e depois mover o cursor sem
+ para o substituir com o seu próprio texto — e depois mover o cursor sem
  que escreva efectivamente o texto, o ambiente pode desaparecer.
  Isto deve-se ao facto de muitos ambientes não poderem existir sem texto.
  Para recuperar a situação inicial, basta que volte a selecionar o ambiente
@@ -3702,9 +3703,9 @@ Títulos de Documentos
 \end_layout
 
 \begin_layout Standard
-O LyX assim como o LaTeX considera os títulos --- os quais podem conter
- o próprio título o autor, a data e mesmo o resumo de um artigo --- como
- uma parte separada do documento.
+O LyX assim como o LaTeX considera os títulos — os quais podem conter o
+ próprio título o autor, a data e mesmo o resumo de um artigo — como uma
+ parte separada do documento.
  
 \end_layout
 
@@ -4073,8 +4074,8 @@ Como já foi antes referido, o LyX preocupa-se com a numeração das referência
 \end_inset
 
 2.
- Agora volte a correr o LaTeX, e --- voilà ! --- a referência cruzada da
- secção passou a 
+ Agora volte a correr o LaTeX, e — voilà ! — a referência cruzada da secção
+ passou a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5221,8 +5222,8 @@ reference "sec:whitespace"
 \emph on
 Manual do Utilizador
 \emph default
- --- mas não se preocupe com pormenores até ter acabado de inserir todo
- o conteúdo no seu documento.
+ — mas não se preocupe com pormenores até ter acabado de inserir todo o
+ conteúdo no seu documento.
  
 \end_layout
 
@@ -5312,7 +5313,7 @@ Mathed
 \end_layout
 
 \begin_layout Standard
-Escrever um subescrito (índice) é igualmente fácil --- comece por inserir
+Escrever um subescrito (índice) é igualmente fácil — comece por inserir
  um 
 \family sans
 underscore
@@ -6724,7 +6725,7 @@ reference "sec:preamble"
 \end_layout
 
 \begin_layout Subsection
-Importação De Documentos LaTeX -- 
+Importação De Documentos LaTeX – 
 \family typewriter
 tex2lyx
 \family default
@@ -6771,7 +6772,7 @@ foo.lyx
 \family typewriter
 foo.tex
 \family default
- --- and then open that file.
+ — and then open that file.
  If the translation doesn't work, you can try calling 
 \family typewriter
 tex2lyx

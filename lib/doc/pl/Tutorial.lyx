@@ -1,12 +1,12 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
 \begin_preamble
 \sloppy
 \end_preamble
+\use_default_options false
 \language polish
 \inputencoding latin2
 \font_roman default
@@ -17,6 +17,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics none
 \paperfontsize 12
 \spacing single
@@ -38,8 +39,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -1049,7 +1050,7 @@ LyX działa trochę inaczej od innych edytorów.
 
 \begin_layout Standard
 I jeszcze jedno.
- LaTeX wymawia się jak TeX --- czyli 
+ LaTeX wymawia się jak TeX — czyli 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1563,7 +1564,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Po zakończeniu zamknij okno, lub jeśli to wygodniejsze, zostaw je otwarte.
- Większość okien w LyX-ie --- włącznie z 
+ Większość okien w LyX-ie — włącznie z 
 \family sans
 \bar under
 Z
@@ -1593,7 +1594,7 @@ U
 \bar default
 kładem
 \family default
-, jak również różnymi oknami fromuł---daje się wysłać w tło bez konieczności
+, jak również różnymi oknami fromuł—daje się wysłać w tło bez konieczności
  zamykania.
  Klika okien, jak 
 \family sans
@@ -1684,7 +1685,7 @@ name "sec:whitespace"
 \begin_layout Standard
 Wiele komercyjnych edytorów bazuje na zasadzie 
 \emph toggle
-WYSIWYG --- What You See Is What You Get (Dostajesz to, co widzisz).
+WYSIWYG — What You See Is What You Get (Dostajesz to, co widzisz).
  LyX z kolei spełnia zasadę 
 \begin_inset Quotes eld
 \end_inset
@@ -1730,8 +1731,8 @@ dokładnie
 \emph toggle
 to, o co chodzi.
  Podręcznik użytkownika opisuje szczegółowo te metody.
- Należą do nich wypełnienia poziome i pionowe --- bardziej skuteczne i wszechstr
-onne niż grupy spacji czy pustych linijek --- i ręczne sposoby zmiany wielkości
+ Należą do nich wypełnienia poziome i pionowe — bardziej skuteczne i wszechstron
+ne niż grupy spacji czy pustych linijek — i ręczne sposoby zmiany wielkości
  i stylu czcionki, jak i wyrównywania akapitów.
  Zasadą jednakże jest pisanie treści dokumentu i wprowadzanie zmian formatu
  na końcu.
@@ -2038,7 +2039,7 @@ i Subparagraph
 Podręcznik użytkownika
 \emph toggle
 .
- Tytuły rozdziałów --- środowisko Chapter --- są najwyższym poziomem, powyżej
+ Tytuły rozdziałów — środowisko Chapter — są najwyższym poziomem, powyżej
  podrozdziałów, ale można ich używać tylko w niektórych typach (klasach)
  dokumentów LyX-a (patrz podrozdział
 \emph default
@@ -2137,7 +2138,7 @@ Elementarzu
 \end_layout
 
 \begin_layout Itemize
-Lista z wierszami rozpoczynanymi znaczkiem --- środowisko Itemize --- nadaje
+Lista z wierszami rozpoczynanymi znaczkiem — środowisko Itemize — nadaje
  się do prezentacji celem opisania poszczególnych punktów.
 \end_layout
 
@@ -2162,7 +2163,7 @@ Description
 \family sans
 List
 \family default
- --- nieobecne w LaTeX-u --- to trochę inna forma środowiska 
+ — nieobecne w LaTeX-u — to trochę inna forma środowiska 
 \family sans
 Description
 \family default
@@ -2271,8 +2272,8 @@ Description
 List
 \family default
 .
- W obu lista składa się z hasła -- pierwszego słowa danej pozycji oraz następują
-cej po nim definicji, która tworzy resztę akapitu (aż do naciśnięcia 
+ W obu lista składa się z hasła – pierwszego słowa danej pozycji oraz następując
+ej po nim definicji, która tworzy resztę akapitu (aż do naciśnięcia 
 \family sans
 Return
 \family default
@@ -2698,7 +2699,7 @@ letter
 \begin_inset Text
 
 \begin_layout Plain Layout
-list---mnóstwo dodatkowych środowisk dla adresu, podpisu\SpecialChar \ldots{}
+list—mnóstwo dodatkowych środowisk dla adresu, podpisu\SpecialChar \ldots{}
 
 \end_layout
 
@@ -2949,7 +2950,7 @@ Skądinąd etykieta mogłaby być wstawiona w dowolnym miejscu w środku podrozd
 \end_layout
 
 \begin_layout Standard
-Jak dotąd niewiele się zmieniło --- plik 
+Jak dotąd niewiele się zmieniło — plik 
 \family typewriter
 dvi
 \family default
@@ -2975,7 +2976,7 @@ Jeśli chcesz zasięgnąć więcej informacji o tym dokumencie,zobacz podrozdzia
 \end_layout
 
 \begin_layout Standard
-Następnie --- z kursorem po słowie podrozdział --- użyj polecenia 
+Następnie — z kursorem po słowie podrozdział — użyj polecenia 
 \family sans
 Wstaw->Odnośnik
 \family default
@@ -3092,7 +3093,7 @@ Więcej o etykietach
 Wspomniano o obsłudze numerowania odnośników przez LyX-a; teraz można ją
  przetestować.
  Dodaj nowy podrozdział przed podrozdziałem 2.
- Uaktualnij podgląd --- voilŕ! --- odnośnik zmienił numer na 3! Zmień środowisko
+ Uaktualnij podgląd — voilŕ! — odnośnik zmienił numer na 3! Zmień środowisko
  
 \begin_inset Quotes pld
 \end_inset
@@ -3948,7 +3949,7 @@ reference "sec:whitespace"
 \end_inset
 
 ) Jeśli nie satysfakcjonuje Cię efekt składu LyX-a, istnieją sposoby zmiany
- odstępów, o czym więcej pisze Podręcznik użytkownika --- ale odłóż poprawki
+ odstępów, o czym więcej pisze Podręcznik użytkownika — ale odłóż poprawki
  dopóki nie ukończysz pisania treści dokumentu.
 \end_layout
 
@@ -4016,8 +4017,8 @@ Wykładnik może być wprowadzony z paska narzędzi, ale prościej jest użyć
 \end_layout
 
 \begin_layout Standard
-Pisanie indeksów dolnych jest równie proste --- zaczyna się naciśnięciem
- klawisza podkreślenia, 
+Pisanie indeksów dolnych jest równie proste — zaczyna się naciśnięciem klawisza
+ podkreślenia, 
 \begin_inset Quotes pld
 \end_inset
 
@@ -4207,7 +4208,7 @@ lewym
 \emph toggle
 klawiszem myszy.) Wybrane ograniczniki pokazane są w ramce u szczytu okna.
  Domyślnie jest to para nawiasów okrągłych, ale w opisany powyżej sposób
- można je zmienić na kwadratowe, parę kwadratowy -- okrągły a nawet wybrać
+ można je zmienić na kwadratowe, parę kwadratowy – okrągły a nawet wybrać
  nawias 
 \begin_inset Quotes pld
 \end_inset
@@ -5162,7 +5163,7 @@ reference "sec:preamble"
 \end_layout
 
 \begin_layout Subsection
-Konwersja dokumentów LaTeX-a do LyX-a -- tex2lyx
+Konwersja dokumentów LaTeX-a do LyX-a – tex2lyx
 \end_layout
 
 \begin_layout Standard
@@ -5198,7 +5199,7 @@ foo.lyx
 \family typewriter
 foo.tex
 \family default
- --- and then open that file.
+ — and then open that file.
  If the translation doesn't work, you can try calling 
 \family typewriter
 tex2lyx

@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -37,6 +36,7 @@
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
 \end_preamble
+\use_default_options false
 \language french
 \inputencoding auto
 \font_roman default
@@ -47,6 +47,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -82,8 +83,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -444,7 +445,7 @@ Introduction
 \begin_layout Standard
 Eh oui, c'est tout.
  Si vous coupez-collez la section, la numérotation sera automatiquement
- remise à jour -- partout.
+ remise à jour – partout.
  Et si vous entrez correctement des références à cette section (en insérant
  des balises de références croisées), LyX les mettra à jour automatiquement
  tout au long du document, de sorte que vous n'aurez jamais à taper de numéro
@@ -543,7 +544,7 @@ WYSIWYM
  C'est une idée puissante qui simplifie grandement le processus d'écriture
  de documents.
  C'est aussi pour ça que LyX n'est pas très adapté pour créer des affiches
- et des tracts -- dans ce cas, vous 
+ et des tracts – dans ce cas, vous 
 \emph on
 voulez
 \emph default
@@ -551,7 +552,7 @@ voulez
 elles comme des paragraphes, des sections, etc\SpecialChar \ldots{}
  Ça ne veut pas dire qu'il
  manque à LyX des fonctions utiles.
- Ça signifie simplement que ce n'est pas l'outil adapté -- vous n'utilisez
+ Ça signifie simplement que ce n'est pas l'outil adapté – vous n'utilisez
  pas un tournevis pour enfoncer des clous (sauf si votre tournevis est garanti
  à vie).
 \end_layout
@@ -976,7 +977,7 @@ el que LaTeX.
 \end_layout
 
 \begin_layout Standard
-Exactement comme LaTeX, LyX se focalise sur le contexte de vos écrits --
+Exactement comme LaTeX, LyX se focalise sur le contexte de vos écrits –
  le 
 \shape italic
 quoi.
@@ -1033,8 +1034,8 @@ reference "sec:Contrib"
 \end_layout
 
 \begin_layout Standard
-D'autre part, faites-nous une faveur -- s'il arrivait que dans cette documentati
-on quelque chose vous embrouille, ne soit pas bien clair, ou carrément faux,
+D'autre part, faites-nous une faveur – s'il arrivait que dans cette documentatio
+n quelque chose vous embrouille, ne soit pas bien clair, ou carrément faux,
  faites-le nous savoir ! Vous pouvez contacter les préposés à la mise à
  jour de la documentation à l'adresse email 
 \begin_inset CommandInset href
@@ -2285,7 +2286,7 @@ d'Apprentissage
 \emph default
 .
  Après sa lecture, vous penserez encore que le LaTeX est une substance extensibl
-e -- mais au moins, vous 
+e – mais au moins, vous 
 \emph on
 saurez
 \emph default

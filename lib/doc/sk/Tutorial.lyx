@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
+\use_default_options false
 \language slovak
 \inputencoding latin2
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -589,7 +590,7 @@ Section
 \begin_layout Standard
 Áno.
  To je všetko.
- Ak vystrihnete a vložite sekciu (časť), automaticky bude prečíslovaná ---
+ Ak vystrihnete a vložite sekciu (časť), automaticky bude prečíslovaná —
  všade.
  Je aj spôsob, aby LyX automaticky aktualizoval všetky referencie v súbore
  na danú časť.
@@ -1001,7 +1002,7 @@ prečo
 \emph toggle
 LyX pracuje trochu odlišne od iných textových procesoroch.
  Dôvod je jednoduchý: LyX používa LaTeX ako svoj formátovací backend.
- Tak ako LaTeX, LyX sa zameriava na kontext vášho textu ---
+ Tak ako LaTeX, LyX sa zameriava na kontext vášho textu —
 \emph default
  
 \emph on
@@ -1014,7 +1015,7 @@ píšete.
 \end_layout
 
 \begin_layout Standard
-Ou --- posledná vec.
+Ou — posledná vec.
  LaTeX sa vyslovuje ako TeX.
  Rýmuje sa to s 
 \begin_inset Quotes gld
@@ -1169,8 +1170,8 @@ Sprievodca
  
 \emph toggle
 ostane krátky.
- Taktiež si zvyknete používať iné manuály, ktoré --- v dlhom období ---
- vám ušetria veľa času.
+ Taktiež si zvyknete používať iné manuály, ktoré — v dlhom období — vám
+ ušetria veľa času.
 \end_layout
 
 \begin_layout Standard
@@ -1562,7 +1563,7 @@ status collapsed
 \begin_layout Plain Layout
 Ak ste skončili okno zatvorte, lebo ho nechajte otvorené, ak vám to viac
  vyhovuje.
- Väčšina okien v LyXe --- vrátane 
+ Väčšina okien v LyXe — vrátane 
 \family sans
 \bar under
 F
@@ -1596,7 +1597,7 @@ R
 \bar default
 ozloženia
 \family default
-, tak isto aj rôzne matematické okná --- môže byť znížená namiesto zatvorená.
+, tak isto aj rôzne matematické okná — môže byť znížená namiesto zatvorená.
  Niektoré, napríklad 
 \family sans
 \bar under
@@ -1824,9 +1825,9 @@ HFills
 \emph default
  
 \emph toggle
-a vertikálne medzery --- ktoré sú silnejšie a univerzálnejšie ako viacero
- medzier alebo prázdnych riadkov --- a spôsoby, ako zmeniť veľkoť písma,
- štýl znakov a zarovnanie odsekov.
+a vertikálne medzery — ktoré sú silnejšie a univerzálnejšie ako viacero
+ medzier alebo prázdnych riadkov — a spôsoby, ako zmeniť veľkoť písma, štýl
+ znakov a zarovnanie odsekov.
  Hlavnou myšlienkou je, aby ste napísali celý svoj dokument, sústreďujúc
  sa na jeho obsah, a nakoniec sa postarali o toto jemné formátovanie.
  Pri štandardných textových procesoroch by ste sa rozptyľovali formátovaním
@@ -2301,7 +2302,7 @@ Prostredie
 \family sans
 List
 \family default
- --- nenachádzajúce sa v LaTeXe --- je trochu odlišné od 
+ — nenachádzajúce sa v LaTeXe — je trochu odlišné od 
 \family sans
 Description
 \family default
@@ -5355,7 +5356,7 @@ reference "sec: preamble"
 \end_layout
 
 \begin_layout Subsection
-Konvertovanie LaTeXových dokumentov do LyXu -- tex2lyx
+Konvertovanie LaTeXových dokumentov do LyXu – tex2lyx
 \end_layout
 
 \begin_layout Standard
@@ -5391,7 +5392,7 @@ foo.lyx
 \family typewriter
 foo.tex
 \family default
- --- and then open that file.
+ — and then open that file.
  If the translation doesn't work, you can try calling 
 \family typewriter
 tex2lyx

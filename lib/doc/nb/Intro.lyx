@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
+\use_default_options false
 \language norsk
 \inputencoding default
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,7 +36,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -322,7 +324,7 @@ mener
  (What You See Is What You Mean, WYSIWYM).
  Den gjør det mye enklere å skrive dokumenter.
  Dette er også grunnen til at LyX ikke er så godt egnet til plakater og
- brosjyrer --- i slike tilfeller 
+ brosjyrer — i slike tilfeller 
 \emph on
 ønsker
 \emph default
@@ -698,7 +700,7 @@ hvorfor
 \emph default
  LyX er anderledes enn andre tekstbehandlere.
  Forklaringen er enkel: LyX bruker LaTeX for å skrive ut.
- Som LaTeX fokuserer LyX på konteksten i det du skriver --- 
+ Som LaTeX fokuserer LyX på konteksten i det du skriver — 
 \emph on
 hva
 \emph default
@@ -753,7 +755,7 @@ reference "cha:Bidra"
 \end_layout
 
 \begin_layout Standard
-Og gjør oss en tjeneste --- hvis noe i manualene forvirrer deg, er uklart
+Og gjør oss en tjeneste — hvis noe i manualene forvirrer deg, er uklart
  eller feil, la oss få vite det! Du kan kontakte oss ved å skrive til 
 \family typewriter
 lyx-docs@lists.lyx.org
@@ -1353,8 +1355,7 @@ begynnermanualen
 \emph on
 Begynnermanualen,
 \emph default
- vil du muligens fremdeles tro LaTeX er et elastisk materiale --- men du
- 
+ vil du muligens fremdeles tro LaTeX er et elastisk materiale — men du 
 \emph on
 vil
 \emph default
@@ -1791,7 +1792,7 @@ status open
 
 \begin_layout Plain Layout
 De mer eventyrlystne kan hente den nyeste dokumentasjonen fra LyX's CVS-arkiv
- -- den ligger i 
+ – den ligger i 
 \family typewriter
 lyxdoc
 \family default
