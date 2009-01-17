@@ -300,9 +300,9 @@ docstring const BibTeXInfo::getInfo() const
 	if (docLoc.empty()) {
 		docLoc = getValueForField("chapter");
 		if (!docLoc.empty())
-			docLoc = from_ascii("Ch. ") + docLoc;
+			docLoc = _("Ch. ") + docLoc;
 	}	else {
-		docLoc = from_ascii("pp. ") + docLoc;
+		docLoc = _("pp. ") + docLoc;
 	}
 
 	docstring media = getValueForField("journal");
