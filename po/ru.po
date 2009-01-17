@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-17 09:08+0100\n"
+"POT-Creation-Date: 2009-01-17 15:01+0100\n"
 "PO-Revision-Date: 2008-08-04 23:57+0100\n"
 "Last-Translator: Andrey V. Panov <panov@canopus.iacp.dvo.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -10199,7 +10199,7 @@ msgstr "Отмеченное как строки|с"
 msgid "Selection as Paragraphs|P"
 msgstr "Отмеченное как абзацы|а"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:161
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:161
 msgid "Multicolumn|M"
 msgstr "Многоколоночная|М"
 
@@ -10223,7 +10223,7 @@ msgstr "Линия справа|п"
 msgid "Alignment|i"
 msgstr "Выравнивание|В"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:179
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:362 lib/ui/stdmenus.inc:179
 msgid "Add Row|A"
 msgstr "Добавить строку|Д"
 
@@ -10239,7 +10239,7 @@ msgstr "Скопировать строку"
 msgid "Swap Rows"
 msgstr "Поменять местами строки"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:184
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:184
 msgid "Add Column|u"
 msgstr "Добавить столбец|т"
 
@@ -10255,27 +10255,27 @@ msgstr "Скопировать столбец"
 msgid "Swap Columns"
 msgstr "Поменять местами столбцы"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:352 lib/ui/stdmenus.inc:171
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:354 lib/ui/stdmenus.inc:171
 msgid "Left|L"
 msgstr "Слева|л"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:353 lib/ui/stdmenus.inc:172
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:355 lib/ui/stdmenus.inc:172
 msgid "Center|C"
 msgstr "По центру|ц"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:354 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:173
 msgid "Right|R"
 msgstr "Справа|п"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:175
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:358 lib/ui/stdmenus.inc:175
 msgid "Top|T"
 msgstr "Сверху|в"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:357 lib/ui/stdmenus.inc:176
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:359 lib/ui/stdmenus.inc:176
 msgid "Middle|M"
 msgstr "По середине|с"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:358 lib/ui/stdmenus.inc:177
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:177
 msgid "Bottom|B"
 msgstr "Снизу|н"
 
@@ -10307,7 +10307,7 @@ msgstr "Выровнять|В"
 msgid "Add Row|R"
 msgstr "Добавить строку|с"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:361 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:363 lib/ui/stdmenus.inc:180
 msgid "Delete Row|D"
 msgstr "Удалить строку|У"
 
@@ -10315,7 +10315,7 @@ msgstr "Удалить строку|У"
 msgid "Add Column|C"
 msgstr "Добавить столбец|о"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:185
 msgid "Delete Column|e"
 msgstr "Удалить столбец|б"
 
@@ -10509,7 +10509,7 @@ msgstr "Неразрывный пробел|п"
 msgid "Inter-word Space|w"
 msgstr "Пробел (\\ )|б"
 
-#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:172 lib/ui/stdcontext.inc:195
+#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:174 lib/ui/stdcontext.inc:197
 #: lib/ui/stdmenus.inc:368
 msgid "Thin Space|T"
 msgstr "Тонкий пробел|Т"
@@ -11021,13 +11021,13 @@ msgstr "<ссылка> на странице <номер>"
 msgid "Formatted reference|t"
 msgstr "форматированная ссылка"
 
-#: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:103
-#: lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:125
-#: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:150
-#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:206
-#: lib/ui/stdcontext.inc:233 lib/ui/stdcontext.inc:315
-#: lib/ui/stdcontext.inc:323 lib/ui/stdcontext.inc:335
-#: lib/ui/stdcontext.inc:370 lib/ui/stdcontext.inc:379 lib/ui/stdmenus.inc:458
+#: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:95 lib/ui/stdcontext.inc:105
+#: lib/ui/stdcontext.inc:113 lib/ui/stdcontext.inc:127
+#: lib/ui/stdcontext.inc:134 lib/ui/stdcontext.inc:152
+#: lib/ui/stdcontext.inc:190 lib/ui/stdcontext.inc:208
+#: lib/ui/stdcontext.inc:235 lib/ui/stdcontext.inc:317
+#: lib/ui/stdcontext.inc:325 lib/ui/stdcontext.inc:337
+#: lib/ui/stdcontext.inc:372 lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:458
 msgid "Settings...|S"
 msgstr "Настройки...|Н"
 
@@ -11035,430 +11035,435 @@ msgstr "Настройки...|Н"
 msgid "Go back to Reference|G"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:113
+#: lib/ui/stdcontext.inc:93
+#, fuzzy
+msgid "Copy as Reference|C"
+msgstr "Перекрёстную ссылку...|к"
+
+#: lib/ui/stdcontext.inc:115
 #, fuzzy
 msgid "Edit Database(s) externally...|x"
 msgstr "Редактировать файл внешне"
 
-#: lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:311
+#: lib/ui/stdcontext.inc:123 lib/ui/stdcontext.inc:313
 #, fuzzy
 msgid "Open Inset|O"
 msgstr "Открыть все вклейки"
 
-#: lib/ui/stdcontext.inc:122 lib/ui/stdcontext.inc:312
+#: lib/ui/stdcontext.inc:124 lib/ui/stdcontext.inc:314
 #, fuzzy
 msgid "Close Inset|C"
 msgstr "Закрыть все вклейки"
 
-#: lib/ui/stdcontext.inc:124 lib/ui/stdcontext.inc:130
-#: lib/ui/stdcontext.inc:149 lib/ui/stdcontext.inc:162
-#: lib/ui/stdcontext.inc:314
+#: lib/ui/stdcontext.inc:126 lib/ui/stdcontext.inc:132
+#: lib/ui/stdcontext.inc:151 lib/ui/stdcontext.inc:164
+#: lib/ui/stdcontext.inc:316
 #, fuzzy
 msgid "Dissolve Inset|D"
 msgstr "Разложить вклейку|Р"
 
-#: lib/ui/stdcontext.inc:129
+#: lib/ui/stdcontext.inc:131
 #, fuzzy
 msgid "Toggle Label|L"
 msgstr "&Переключить всё"
 
-#: lib/ui/stdcontext.inc:140
+#: lib/ui/stdcontext.inc:142
 #, fuzzy
 msgid "Frameless|l"
 msgstr "без рамки"
 
-#: lib/ui/stdcontext.inc:141
+#: lib/ui/stdcontext.inc:143
 #, fuzzy
 msgid "Simple frame|f"
 msgstr "простая рамка"
 
-#: lib/ui/stdcontext.inc:142
+#: lib/ui/stdcontext.inc:144
 #, fuzzy
 msgid "Simple frame, page breaks|p"
 msgstr "простая рамка"
 
-#: lib/ui/stdcontext.inc:143
+#: lib/ui/stdcontext.inc:145
 #, fuzzy
 msgid "Oval, thin|O"
 msgstr "тонкий овал"
 
-#: lib/ui/stdcontext.inc:144
+#: lib/ui/stdcontext.inc:146
 #, fuzzy
 msgid "Oval, thick|v"
 msgstr "толстый овал"
 
-#: lib/ui/stdcontext.inc:145
+#: lib/ui/stdcontext.inc:147
 msgid "Drop Shadow|w"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:146
+#: lib/ui/stdcontext.inc:148
 #, fuzzy
 msgid "Shaded background|b"
 msgstr "Затенённый фон"
 
-#: lib/ui/stdcontext.inc:147
+#: lib/ui/stdcontext.inc:149
 #, fuzzy
 msgid "Double frame|D"
 msgstr "двойная рамка"
 
-#: lib/ui/stdcontext.inc:158 lib/ui/stdmenus.inc:432
+#: lib/ui/stdcontext.inc:160 lib/ui/stdmenus.inc:432
 msgid "LyX Note|N"
 msgstr "Заметка LyX"
 
-#: lib/ui/stdcontext.inc:159 lib/ui/stdmenus.inc:433
+#: lib/ui/stdcontext.inc:161 lib/ui/stdmenus.inc:433
 msgid "Comment|C"
 msgstr "Комментарий|К"
 
-#: lib/ui/stdcontext.inc:160 lib/ui/stdmenus.inc:434
+#: lib/ui/stdcontext.inc:162 lib/ui/stdmenus.inc:434
 msgid "Greyed Out|G"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:170
+#: lib/ui/stdcontext.inc:172
 #, fuzzy
 msgid "Interword Space|w"
 msgstr "Пробел (\\ )|б"
 
-#: lib/ui/stdcontext.inc:171
+#: lib/ui/stdcontext.inc:173
 #, fuzzy
 msgid "Protected Space|o"
 msgstr "Неразрывный пробел|п"
 
-#: lib/ui/stdcontext.inc:173 lib/ui/stdcontext.inc:198
+#: lib/ui/stdcontext.inc:175 lib/ui/stdcontext.inc:200
 #, fuzzy
 msgid "Negative Thin Space|N"
 msgstr "Отрицательный промежуток\t\\!"
 
-#: lib/ui/stdcontext.inc:174 lib/ui/stdcontext.inc:201
+#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:203
 msgid "Half Quad Space (Enskip)|k"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:175
+#: lib/ui/stdcontext.inc:177
 #, fuzzy
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Неразрывный пробел|п"
 
-#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:202
+#: lib/ui/stdcontext.inc:178 lib/ui/stdcontext.inc:204
 #, fuzzy
 msgid "Quad Space|Q"
 msgstr "&Заменить"
 
-#: lib/ui/stdcontext.inc:177 lib/ui/stdcontext.inc:203
+#: lib/ui/stdcontext.inc:179 lib/ui/stdcontext.inc:205
 #, fuzzy
 msgid "Double Quad Space|u"
 msgstr "&Заменить"
 
-#: lib/ui/stdcontext.inc:178
+#: lib/ui/stdcontext.inc:180
 msgid "Horizontal Fill|F"
 msgstr "Гор. заполнение:|Г"
 
-#: lib/ui/stdcontext.inc:179
+#: lib/ui/stdcontext.inc:181
 #, fuzzy
 msgid "Protected Horizontal Fill|i"
 msgstr "Горизонтальное пробельное заполнениие"
 
-#: lib/ui/stdcontext.inc:180
+#: lib/ui/stdcontext.inc:182
 #, fuzzy
 msgid "Horizontal Fill (Dots)|D"
 msgstr "Горизонтальное пробельное заполнениие"
 
-#: lib/ui/stdcontext.inc:181
+#: lib/ui/stdcontext.inc:183
 #, fuzzy
 msgid "Horizontal Fill (Rule)|R"
 msgstr "Горизонтальное пробельное заполнениие"
 
-#: lib/ui/stdcontext.inc:182
+#: lib/ui/stdcontext.inc:184
 #, fuzzy
 msgid "Horizontal Fill (Left Arrow)|L"
 msgstr "Горизонтальное пробельное заполнениие"
 
-#: lib/ui/stdcontext.inc:183
+#: lib/ui/stdcontext.inc:185
 #, fuzzy
 msgid "Horizontal Fill (Right Arrow)|g"
 msgstr "Горизонтальное пробельное заполнениие"
 
-#: lib/ui/stdcontext.inc:184
+#: lib/ui/stdcontext.inc:186
 #, fuzzy
 msgid "Horizontal Fill (Up Brace)|p"
 msgstr "Горизонтальное пробельное заполнениие"
 
-#: lib/ui/stdcontext.inc:185
+#: lib/ui/stdcontext.inc:187
 #, fuzzy
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr "Горизонтальное пробельное заполнениие"
 
-#: lib/ui/stdcontext.inc:186 lib/ui/stdcontext.inc:204
+#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:206
 #, fuzzy
 msgid "Custom Length|C"
 msgstr "Комментарий|К"
 
-#: lib/ui/stdcontext.inc:196
+#: lib/ui/stdcontext.inc:198
 #, fuzzy
 msgid "Medium Space|M"
 msgstr "Нормальный пробел\t\\:"
 
-#: lib/ui/stdcontext.inc:197
+#: lib/ui/stdcontext.inc:199
 #, fuzzy
 msgid "Thick Space|h"
 msgstr "Тонкий пробел|Т"
 
-#: lib/ui/stdcontext.inc:199
+#: lib/ui/stdcontext.inc:201
 #, fuzzy
 msgid "Negative Medium Space|u"
 msgstr "Отрицательный промежуток\t\\!"
 
-#: lib/ui/stdcontext.inc:200
+#: lib/ui/stdcontext.inc:202
 #, fuzzy
 msgid "Negative Thick Space|i"
 msgstr "Отрицательный промежуток\t\\!"
 
-#: lib/ui/stdcontext.inc:213
+#: lib/ui/stdcontext.inc:215
 #, fuzzy
 msgid "DefSkip|D"
 msgstr "По умолчанию"
 
-#: lib/ui/stdcontext.inc:214
+#: lib/ui/stdcontext.inc:216
 #, fuzzy
 msgid "SmallSkip|S"
 msgstr "Маленький"
 
-#: lib/ui/stdcontext.inc:215
+#: lib/ui/stdcontext.inc:217
 #, fuzzy
 msgid "MedSkip|M"
 msgstr "Средний"
 
-#: lib/ui/stdcontext.inc:216
+#: lib/ui/stdcontext.inc:218
 #, fuzzy
 msgid "BigSkip|B"
 msgstr "Большой"
 
-#: lib/ui/stdcontext.inc:217
+#: lib/ui/stdcontext.inc:219
 #, fuzzy
 msgid "VFill|F"
 msgstr "Вертикальный клей"
 
-#: lib/ui/stdcontext.inc:218
+#: lib/ui/stdcontext.inc:220
 #, fuzzy
 msgid "Custom|C"
 msgstr "Пользовательский"
 
-#: lib/ui/stdcontext.inc:220
+#: lib/ui/stdcontext.inc:222
 #, fuzzy
 msgid "Settings...|e"
 msgstr "Настройки...|Н"
 
-#: lib/ui/stdcontext.inc:227
+#: lib/ui/stdcontext.inc:229
 #, fuzzy
 msgid "Include|c"
 msgstr "Включить файл"
 
-#: lib/ui/stdcontext.inc:228
+#: lib/ui/stdcontext.inc:230
 #, fuzzy
 msgid "Input|p"
 msgstr "Вставить файл"
 
-#: lib/ui/stdcontext.inc:229
+#: lib/ui/stdcontext.inc:231
 #, fuzzy
 msgid "Verbatim|V"
 msgstr "Дословно"
 
-#: lib/ui/stdcontext.inc:230
+#: lib/ui/stdcontext.inc:232
 msgid "Verbatim (marked blanks)|b"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:231
+#: lib/ui/stdcontext.inc:233
 #, fuzzy
 msgid "Listing|L"
 msgstr "Листинг"
 
-#: lib/ui/stdcontext.inc:235
+#: lib/ui/stdcontext.inc:237
 #, fuzzy
 msgid "Edit included file...|E"
 msgstr "Файл по ссылке...|с"
 
-#: lib/ui/stdcontext.inc:242 lib/ui/stdmenus.inc:378
+#: lib/ui/stdcontext.inc:244 lib/ui/stdmenus.inc:378
 msgid "New Page|N"
 msgstr "Новую страницу|с"
 
-#: lib/ui/stdcontext.inc:243 lib/ui/stdmenus.inc:379
+#: lib/ui/stdcontext.inc:245 lib/ui/stdmenus.inc:379
 msgid "Page Break|a"
 msgstr "Разрыв страницы"
 
-#: lib/ui/stdcontext.inc:244 lib/ui/stdmenus.inc:380
+#: lib/ui/stdcontext.inc:246 lib/ui/stdmenus.inc:380
 msgid "Clear Page|C"
 msgstr "Новую страницу (\\clearpage)"
 
-#: lib/ui/stdcontext.inc:245 lib/ui/stdmenus.inc:381
+#: lib/ui/stdcontext.inc:247 lib/ui/stdmenus.inc:381
 msgid "Clear Double Page|D"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:252 lib/ui/stdmenus.inc:375
+#: lib/ui/stdcontext.inc:254 lib/ui/stdmenus.inc:375
 #, fuzzy
 msgid "Ragged Line Break|R"
 msgstr "Разрыв строки|Р"
 
-#: lib/ui/stdcontext.inc:253 lib/ui/stdmenus.inc:376
+#: lib/ui/stdcontext.inc:255 lib/ui/stdmenus.inc:376
 #, fuzzy
 msgid "Justified Line Break|J"
 msgstr "Разрыв строки|Р"
 
-#: lib/ui/stdcontext.inc:260 lib/ui/stdcontext.inc:306 lib/ui/stdmenus.inc:88
+#: lib/ui/stdcontext.inc:262 lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:88
 #: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:1034
 #: src/mathed/InsetMathNest.cpp:547
 msgid "Cut"
 msgstr "Вырезать"
 
-#: lib/ui/stdcontext.inc:261 lib/ui/stdcontext.inc:307 lib/ui/stdmenus.inc:89
+#: lib/ui/stdcontext.inc:263 lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:89
 #: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:1039
 #: src/mathed/InsetMathNest.cpp:555
 msgid "Copy"
 msgstr "Запомнить"
 
-#: lib/ui/stdcontext.inc:262 lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:90
+#: lib/ui/stdcontext.inc:264 lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:90
 #: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:992
 #: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:527
 msgid "Paste"
 msgstr "Вставить"
 
-#: lib/ui/stdcontext.inc:263 lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:91
+#: lib/ui/stdcontext.inc:265 lib/ui/stdcontext.inc:311 lib/ui/stdmenus.inc:91
 msgid "Paste Recent|e"
 msgstr "Вставить недавнее|е"
 
-#: lib/ui/stdcontext.inc:265
+#: lib/ui/stdcontext.inc:267
 #, fuzzy
 msgid "Jump to Saved Bookmark|B"
 msgstr "Заложить закладку 1|З"
 
-#: lib/ui/stdcontext.inc:267 lib/ui/stdmenus.inc:98
+#: lib/ui/stdcontext.inc:269 lib/ui/stdmenus.inc:98
 msgid "Move Paragraph Up|o"
 msgstr "Переместить абзац вверх|х"
 
-#: lib/ui/stdcontext.inc:268 lib/ui/stdmenus.inc:99
+#: lib/ui/stdcontext.inc:270 lib/ui/stdmenus.inc:99
 msgid "Move Paragraph Down|v"
 msgstr "Переместить абзац вниз|з"
 
-#: lib/ui/stdcontext.inc:270
+#: lib/ui/stdcontext.inc:272
 #, fuzzy
 msgid "Promote Section|r"
 msgstr "Раздел"
 
-#: lib/ui/stdcontext.inc:271
+#: lib/ui/stdcontext.inc:273
 #, fuzzy
 msgid "Demote Section|m"
 msgstr "Раздел"
 
-#: lib/ui/stdcontext.inc:272
+#: lib/ui/stdcontext.inc:274
 #, fuzzy
 msgid "Move Section down|d"
 msgstr "Выделенная область"
 
-#: lib/ui/stdcontext.inc:273
+#: lib/ui/stdcontext.inc:275
 #, fuzzy
 msgid "Move Section up|u"
 msgstr "Выделенная область"
 
-#: lib/ui/stdcontext.inc:274
+#: lib/ui/stdcontext.inc:276
 #, fuzzy
 msgid "Insert Short Title|T"
 msgstr "Короткое заглавие"
 
-#: lib/ui/stdcontext.inc:276
+#: lib/ui/stdcontext.inc:278
 #, fuzzy
 msgid "Apply Last Text Style|A"
 msgstr "Стиль текста|С"
 
-#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:101
+#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:101
 msgid "Text Style|S"
 msgstr "Стиль текста|С"
 
-#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:102
+#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:102
 msgid "Paragraph Settings...|P"
 msgstr "Настройки абзаца...|а"
 
-#: lib/ui/stdcontext.inc:280
+#: lib/ui/stdcontext.inc:282
 #, fuzzy
 msgid "Fullscreen Mode"
 msgstr " Запуск в полноэкранном режиме"
 
-#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:216
+#: lib/ui/stdcontext.inc:290 lib/ui/stdmenus.inc:216
 #: lib/ui/stdtoolbars.inc:171
 #, fuzzy
 msgid "Append Argument"
 msgstr "Добавить параметр"
 
-#: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:217
+#: lib/ui/stdcontext.inc:291 lib/ui/stdmenus.inc:217
 #: lib/ui/stdtoolbars.inc:170
 #, fuzzy
 msgid "Remove Last Argument"
 msgstr "Убрать последний параметр"
 
-#: lib/ui/stdcontext.inc:291 lib/ui/stdmenus.inc:219
+#: lib/ui/stdcontext.inc:293 lib/ui/stdmenus.inc:219
 #: lib/ui/stdtoolbars.inc:173
 #, fuzzy
 msgid "Make First Non-Optional into Optional Argument"
 msgstr "Вставить необязательный параметр"
 
-#: lib/ui/stdcontext.inc:292 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:220
 #: lib/ui/stdtoolbars.inc:174
 #, fuzzy
 msgid "Make Last Optional into Non-Optional Argument"
 msgstr "Вставить необязательный параметр"
 
-#: lib/ui/stdcontext.inc:293 lib/ui/stdmenus.inc:221
+#: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:221
 #: lib/ui/stdtoolbars.inc:177
 #, fuzzy
 msgid "Insert Optional Argument"
 msgstr "Вставить необязательный параметр"
 
-#: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:222
 #: lib/ui/stdtoolbars.inc:176
 #, fuzzy
 msgid "Remove Optional Argument"
 msgstr "Убрать необязательный параметр"
 
-#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:224
+#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:224
 #: lib/ui/stdtoolbars.inc:180
 #, fuzzy
 msgid "Append Argument Eating From The Right"
 msgstr "Убрать последний параметр"
 
-#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:225
+#: lib/ui/stdcontext.inc:299 lib/ui/stdmenus.inc:225
 #: lib/ui/stdtoolbars.inc:181
 #, fuzzy
 msgid "Append Optional Argument Eating From The Right"
 msgstr "Убрать последний параметр"
 
-#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:226
+#: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:226
 #: lib/ui/stdtoolbars.inc:179
 #, fuzzy
 msgid "Remove Last Argument Spitting Out To The Right"
 msgstr "Убрать последний параметр"
 
-#: lib/ui/stdcontext.inc:325 lib/ui/stdcontext.inc:337
+#: lib/ui/stdcontext.inc:327 lib/ui/stdcontext.inc:339
 #, fuzzy
 msgid "Edit externally...|x"
 msgstr "Редактировать файл внешне"
 
-#: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:163
+#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:163
 msgid "Top Line|T"
 msgstr "Линия сверху|в"
 
-#: lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:164
+#: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:164
 msgid "Bottom Line|B"
 msgstr "Линия снизу|н"
 
-#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:165
+#: lib/ui/stdcontext.inc:351 lib/ui/stdmenus.inc:165
 msgid "Left Line|L"
 msgstr "Линия слева|л"
 
-#: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:166
+#: lib/ui/stdcontext.inc:352 lib/ui/stdmenus.inc:166
 msgid "Right Line|R"
 msgstr "Линия справа|п"
 
-#: lib/ui/stdcontext.inc:362 lib/ui/stdmenus.inc:181
+#: lib/ui/stdcontext.inc:364 lib/ui/stdmenus.inc:181
 msgid "Copy Row|o"
 msgstr "Скопировать строку"
 
-#: lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:186
+#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:186
 msgid "Copy Column|p"
 msgstr "Скопировать столбец"
 
@@ -11965,11 +11970,11 @@ msgstr "Печатать документ"
 msgid "Check spelling"
 msgstr "Проверить орфографию"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1026
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1034
 msgid "Undo"
 msgstr "Отменить"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1035
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1043
 msgid "Redo"
 msgstr "Вернуть"
 
@@ -15163,12 +15168,12 @@ msgstr "\\begin_header отсутствует"
 msgid "\\begin_document is missing"
 msgstr "\\begin_documen отсутствует"
 
-#: src/Buffer.cpp:564 src/Buffer.cpp:570 src/BufferView.cpp:1145
-#: src/BufferView.cpp:1151
+#: src/Buffer.cpp:564 src/Buffer.cpp:570 src/BufferView.cpp:1153
+#: src/BufferView.cpp:1159
 msgid "Changes not shown in LaTeX output"
 msgstr "Изменения не показаны в выводе LaTeX"
 
-#: src/Buffer.cpp:565 src/BufferView.cpp:1146
+#: src/Buffer.cpp:565 src/BufferView.cpp:1154
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -15176,7 +15181,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:571 src/BufferView.cpp:1152
+#: src/Buffer.cpp:571 src/BufferView.cpp:1160
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -15580,95 +15585,95 @@ msgstr "Больше нет вкладок"
 msgid "Save bookmark"
 msgstr "Заложить закладку"
 
-#: src/BufferView.cpp:1029
+#: src/BufferView.cpp:1037
 msgid "No further undo information"
 msgstr "Больше нет информации для отмены"
 
-#: src/BufferView.cpp:1038
+#: src/BufferView.cpp:1046
 msgid "No further redo information"
 msgstr "Нет дальнейшей информации для повторения отменённого действия"
 
-#: src/BufferView.cpp:1207 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1215 src/lyxfind.cpp:295 src/lyxfind.cpp:313
 msgid "String not found!"
 msgstr "Строка не найдена!"
 
-#: src/BufferView.cpp:1231
+#: src/BufferView.cpp:1239
 msgid "Mark off"
 msgstr "Метка выключена"
 
-#: src/BufferView.cpp:1238
+#: src/BufferView.cpp:1246
 msgid "Mark on"
 msgstr "Метка включена"
 
-#: src/BufferView.cpp:1245
+#: src/BufferView.cpp:1253
 msgid "Mark removed"
 msgstr "Метка удалена"
 
-#: src/BufferView.cpp:1248
+#: src/BufferView.cpp:1256
 msgid "Mark set"
 msgstr "Метка установлена"
 
-#: src/BufferView.cpp:1295
+#: src/BufferView.cpp:1303
 #, fuzzy
 msgid "Statistics for the selection:"
 msgstr "Печатать документ"
 
-#: src/BufferView.cpp:1297
+#: src/BufferView.cpp:1305
 #, fuzzy
 msgid "Statistics for the document:"
 msgstr "Печатать документ"
 
-#: src/BufferView.cpp:1300
+#: src/BufferView.cpp:1308
 #, fuzzy, c-format
 msgid "%1$d words"
 msgstr "%1$d слов проверено."
 
-#: src/BufferView.cpp:1302
+#: src/BufferView.cpp:1310
 #, fuzzy
 msgid "One word"
 msgstr "Ключевое слово"
 
-#: src/BufferView.cpp:1305
+#: src/BufferView.cpp:1313
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1308
+#: src/BufferView.cpp:1316
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1311
+#: src/BufferView.cpp:1319
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1314
+#: src/BufferView.cpp:1322
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1316
+#: src/BufferView.cpp:1324
 #, fuzzy
 msgid "Statistics"
 msgstr "Состояние"
 
 # c-format
-#: src/BufferView.cpp:2070
+#: src/BufferView.cpp:2091
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Документ вставляется %1$s..."
 
-#: src/BufferView.cpp:2081
+#: src/BufferView.cpp:2102
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Документ %1$s вставлен."
 
 # c-format
-#: src/BufferView.cpp:2083
+#: src/BufferView.cpp:2104
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Невозможно вставить документ %1$s"
 
-#: src/BufferView.cpp:2322
+#: src/BufferView.cpp:2343
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15678,11 +15683,11 @@ msgstr ""
 "Невозможно открыть указанный документ\n"
 "%1$s."
 
-#: src/BufferView.cpp:2324
+#: src/BufferView.cpp:2345
 msgid "Could not read file"
 msgstr "Нельзя прочесть файл"
 
-#: src/BufferView.cpp:2331
+#: src/BufferView.cpp:2352
 #, c-format
 msgid ""
 "%1$s\n"
@@ -15691,15 +15696,15 @@ msgstr ""
 "%1$s\n"
 " невозможно прочесть."
 
-#: src/BufferView.cpp:2332 src/output.cpp:39
+#: src/BufferView.cpp:2353 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Невозможно открыть файл"
 
-#: src/BufferView.cpp:2339
+#: src/BufferView.cpp:2360
 msgid "Reading not UTF-8 encoded file"
 msgstr "Считывается файл не в кодировке UTF-8"
 
-#: src/BufferView.cpp:2340
+#: src/BufferView.cpp:2361
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -16719,7 +16724,7 @@ msgstr "LyX VC: Сообщение для журнала сообщений"
 
 #: src/LyXFunc.cpp:1616
 #, fuzzy
-msgid "Directory is not readable.\n"
+msgid "Directory is not accessible."
 msgstr ""
 "%1$s\n"
 " невозможно прочесть."
@@ -17788,8 +17793,7 @@ msgstr "Увеличить вложенность"
 #, fuzzy, c-format
 msgid ""
 "LyX Version %1$s\n"
-"(%2$s)\n"
-"\n"
+"(%2$s)"
 msgstr "LyX версии "
 
 #: src/frontends/qt4/GuiAbout.cpp:113
@@ -20490,18 +20494,18 @@ msgstr "нет"
 msgid "Unknown buffer info"
 msgstr "Неизвестный пользователь"
 
-#: src/insets/InsetLabel.cpp:64
+#: src/insets/InsetLabel.cpp:66
 msgid "Label names must be unique!"
 msgstr ""
 
-#: src/insets/InsetLabel.cpp:65
+#: src/insets/InsetLabel.cpp:67
 #, c-format
 msgid ""
 "The label %1$s already exists,\n"
 "it will be changed to %2$s."
 msgstr ""
 
-#: src/insets/InsetLabel.cpp:110
+#: src/insets/InsetLabel.cpp:112
 msgid "DUPLICATE: "
 msgstr ""
 

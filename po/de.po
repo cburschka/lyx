@@ -94,7 +94,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-17 09:08+0100\n"
+"POT-Creation-Date: 2009-01-17 15:01+0100\n"
 "PO-Revision-Date: 2009-01-15 02:56+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -9711,7 +9711,7 @@ msgstr "Auswahl als Zeilen|e"
 msgid "Selection as Paragraphs|P"
 msgstr "Auswahl als Absätze|b"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:161
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:161
 msgid "Multicolumn|M"
 msgstr "Mehrfachspalte|h"
 
@@ -9735,7 +9735,7 @@ msgstr "Linie rechts|c"
 msgid "Alignment|i"
 msgstr "Ausrichtung|A"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:179
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:362 lib/ui/stdmenus.inc:179
 msgid "Add Row|A"
 msgstr "Zeile anfügen|a"
 
@@ -9751,7 +9751,7 @@ msgstr "Zeile kopieren"
 msgid "Swap Rows"
 msgstr "Zeilen vertauschen"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:184
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:184
 msgid "Add Column|u"
 msgstr "Spalte anfügen|S"
 
@@ -9767,27 +9767,27 @@ msgstr "Spalte kopieren"
 msgid "Swap Columns"
 msgstr "Spalten vertauschen"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:352 lib/ui/stdmenus.inc:171
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:354 lib/ui/stdmenus.inc:171
 msgid "Left|L"
 msgstr "Links|L"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:353 lib/ui/stdmenus.inc:172
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:355 lib/ui/stdmenus.inc:172
 msgid "Center|C"
 msgstr "Zentriert|Z"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:354 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:173
 msgid "Right|R"
 msgstr "Rechts|R"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:175
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:358 lib/ui/stdmenus.inc:175
 msgid "Top|T"
 msgstr "Oben|O"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:357 lib/ui/stdmenus.inc:176
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:359 lib/ui/stdmenus.inc:176
 msgid "Middle|M"
 msgstr "Mitte|M"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:358 lib/ui/stdmenus.inc:177
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:177
 msgid "Bottom|B"
 msgstr "Unten|U"
 
@@ -9819,7 +9819,7 @@ msgstr "Ausrichtung|A"
 msgid "Add Row|R"
 msgstr "Zeile anfügen|Z"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:361 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:363 lib/ui/stdmenus.inc:180
 msgid "Delete Row|D"
 msgstr "Zeile löschen|ö"
 
@@ -9827,7 +9827,7 @@ msgstr "Zeile löschen|ö"
 msgid "Add Column|C"
 msgstr "Spalte anfügen|S"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:185
 msgid "Delete Column|e"
 msgstr "Spalte löschen|p"
 
@@ -10020,7 +10020,7 @@ msgstr "Geschütztes Leerzeichen|G"
 msgid "Inter-word Space|w"
 msgstr "Normales Leerzeichen|N"
 
-#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:172 lib/ui/stdcontext.inc:195
+#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:174 lib/ui/stdcontext.inc:197
 #: lib/ui/stdmenus.inc:368
 msgid "Thin Space|T"
 msgstr "Halbes Leerzeichen|a"
@@ -10517,13 +10517,13 @@ msgstr "<Querverweis> auf Seite <Seite>|v"
 msgid "Formatted reference|t"
 msgstr "Formatierter Querverweis|t"
 
-#: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:103
-#: lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:125
-#: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:150
-#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:206
-#: lib/ui/stdcontext.inc:233 lib/ui/stdcontext.inc:315
-#: lib/ui/stdcontext.inc:323 lib/ui/stdcontext.inc:335
-#: lib/ui/stdcontext.inc:370 lib/ui/stdcontext.inc:379 lib/ui/stdmenus.inc:458
+#: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:95 lib/ui/stdcontext.inc:105
+#: lib/ui/stdcontext.inc:113 lib/ui/stdcontext.inc:127
+#: lib/ui/stdcontext.inc:134 lib/ui/stdcontext.inc:152
+#: lib/ui/stdcontext.inc:190 lib/ui/stdcontext.inc:208
+#: lib/ui/stdcontext.inc:235 lib/ui/stdcontext.inc:317
+#: lib/ui/stdcontext.inc:325 lib/ui/stdcontext.inc:337
+#: lib/ui/stdcontext.inc:372 lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:458
 msgid "Settings...|S"
 msgstr "Einstellungen...|n"
 
@@ -10531,368 +10531,373 @@ msgstr "Einstellungen...|n"
 msgid "Go back to Reference|G"
 msgstr "Gehe zurück zum Verweis|h"
 
-#: lib/ui/stdcontext.inc:113
+#: lib/ui/stdcontext.inc:93
+#, fuzzy
+msgid "Copy as Reference|C"
+msgstr "Gehe zurück zum Verweis|h"
+
+#: lib/ui/stdcontext.inc:115
 msgid "Edit Database(s) externally...|x"
 msgstr "Datenbanken extern bearbeiten...|x"
 
-#: lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:311
+#: lib/ui/stdcontext.inc:123 lib/ui/stdcontext.inc:313
 msgid "Open Inset|O"
 msgstr "Einfügung öffnen|ö"
 
-#: lib/ui/stdcontext.inc:122 lib/ui/stdcontext.inc:312
+#: lib/ui/stdcontext.inc:124 lib/ui/stdcontext.inc:314
 msgid "Close Inset|C"
 msgstr "Einfügung schließen|s"
 
-#: lib/ui/stdcontext.inc:124 lib/ui/stdcontext.inc:130
-#: lib/ui/stdcontext.inc:149 lib/ui/stdcontext.inc:162
-#: lib/ui/stdcontext.inc:314
+#: lib/ui/stdcontext.inc:126 lib/ui/stdcontext.inc:132
+#: lib/ui/stdcontext.inc:151 lib/ui/stdcontext.inc:164
+#: lib/ui/stdcontext.inc:316
 msgid "Dissolve Inset|D"
 msgstr "Einfügung auflösen|E"
 
-#: lib/ui/stdcontext.inc:129
+#: lib/ui/stdcontext.inc:131
 msgid "Toggle Label|L"
 msgstr "Marke umschalten|l"
 
-#: lib/ui/stdcontext.inc:140
+#: lib/ui/stdcontext.inc:142
 msgid "Frameless|l"
 msgstr "Rahmenlos|l"
 
-#: lib/ui/stdcontext.inc:141
+#: lib/ui/stdcontext.inc:143
 msgid "Simple frame|f"
 msgstr "Einfacher Rahmen|f"
 
-#: lib/ui/stdcontext.inc:142
+#: lib/ui/stdcontext.inc:144
 msgid "Simple frame, page breaks|p"
 msgstr "einfacher Rahmen, Seitenumbrüche|b"
 
-#: lib/ui/stdcontext.inc:143
+#: lib/ui/stdcontext.inc:145
 msgid "Oval, thin|O"
 msgstr "Oval, dünn|O"
 
-#: lib/ui/stdcontext.inc:144
+#: lib/ui/stdcontext.inc:146
 msgid "Oval, thick|v"
 msgstr "Oval, dick|v"
 
-#: lib/ui/stdcontext.inc:145
+#: lib/ui/stdcontext.inc:147
 msgid "Drop Shadow|w"
 msgstr "Schattiert|c"
 
-#: lib/ui/stdcontext.inc:146
+#: lib/ui/stdcontext.inc:148
 msgid "Shaded background|b"
 msgstr "Schattierter Hintergrund|H"
 
-#: lib/ui/stdcontext.inc:147
+#: lib/ui/stdcontext.inc:149
 msgid "Double frame|D"
 msgstr "Doppelter Rahmen|D"
 
-#: lib/ui/stdcontext.inc:158 lib/ui/stdmenus.inc:432
+#: lib/ui/stdcontext.inc:160 lib/ui/stdmenus.inc:432
 msgid "LyX Note|N"
 msgstr "LyX-Notiz|N"
 
-#: lib/ui/stdcontext.inc:159 lib/ui/stdmenus.inc:433
+#: lib/ui/stdcontext.inc:161 lib/ui/stdmenus.inc:433
 msgid "Comment|C"
 msgstr "Kommentar|K"
 
-#: lib/ui/stdcontext.inc:160 lib/ui/stdmenus.inc:434
+#: lib/ui/stdcontext.inc:162 lib/ui/stdmenus.inc:434
 msgid "Greyed Out|G"
 msgstr "Grauschrift|G"
 
-#: lib/ui/stdcontext.inc:170
+#: lib/ui/stdcontext.inc:172
 msgid "Interword Space|w"
 msgstr "Zwischenwort-Abstand|w"
 
-#: lib/ui/stdcontext.inc:171
+#: lib/ui/stdcontext.inc:173
 msgid "Protected Space|o"
 msgstr "Geschütztes Leerzeichen|G"
 
-#: lib/ui/stdcontext.inc:173 lib/ui/stdcontext.inc:198
+#: lib/ui/stdcontext.inc:175 lib/ui/stdcontext.inc:200
 msgid "Negative Thin Space|N"
 msgstr "Negatives Halbes Leerzeichen|H"
 
-#: lib/ui/stdcontext.inc:174 lib/ui/stdcontext.inc:201
+#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:203
 msgid "Half Quad Space (Enskip)|k"
 msgstr "Halbgeviert-Abstand (Enskip)|k"
 
-#: lib/ui/stdcontext.inc:175
+#: lib/ui/stdcontext.inc:177
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Geschützter Halbgeviert-Abstand (Enpace)|E"
 
-#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:202
+#: lib/ui/stdcontext.inc:178 lib/ui/stdcontext.inc:204
 msgid "Quad Space|Q"
 msgstr "Geviert-Abstand|v"
 
-#: lib/ui/stdcontext.inc:177 lib/ui/stdcontext.inc:203
+#: lib/ui/stdcontext.inc:179 lib/ui/stdcontext.inc:205
 msgid "Double Quad Space|u"
 msgstr "Doppelgeviert-Abstand|D"
 
-#: lib/ui/stdcontext.inc:178
+#: lib/ui/stdcontext.inc:180
 msgid "Horizontal Fill|F"
 msgstr "Variabler horiz. Abstand|z"
 
-#: lib/ui/stdcontext.inc:179
+#: lib/ui/stdcontext.inc:181
 msgid "Protected Horizontal Fill|i"
 msgstr "Geschützter variabler horiz. Abstand|i"
 
-#: lib/ui/stdcontext.inc:180
+#: lib/ui/stdcontext.inc:182
 msgid "Horizontal Fill (Dots)|D"
 msgstr "Variabler horiz. Abstand (Punkte)|P"
 
-#: lib/ui/stdcontext.inc:181
+#: lib/ui/stdcontext.inc:183
 msgid "Horizontal Fill (Rule)|R"
 msgstr "Variabler horiz. Abstand (Linie)|L"
 
-#: lib/ui/stdcontext.inc:182
+#: lib/ui/stdcontext.inc:184
 msgid "Horizontal Fill (Left Arrow)|L"
 msgstr "Variabler horiz. Abstand (Linkspfeil)|f"
 
-#: lib/ui/stdcontext.inc:183
+#: lib/ui/stdcontext.inc:185
 msgid "Horizontal Fill (Right Arrow)|g"
 msgstr "Variabler horiz. Abstand (Rechtspfeil)|c"
 
-#: lib/ui/stdcontext.inc:184
+#: lib/ui/stdcontext.inc:186
 msgid "Horizontal Fill (Up Brace)|p"
 msgstr "Variabler horiz. Abstand (Klammer oben)|r"
 
-#: lib/ui/stdcontext.inc:185
+#: lib/ui/stdcontext.inc:187
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr "Variabler horiz. Abstand (Klammer unten)|m"
 
-#: lib/ui/stdcontext.inc:186 lib/ui/stdcontext.inc:204
+#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:206
 msgid "Custom Length|C"
 msgstr "Benutzerdefinierte Länge|B"
 
-#: lib/ui/stdcontext.inc:196
+#: lib/ui/stdcontext.inc:198
 msgid "Medium Space|M"
 msgstr "Mittlerer Abstand|M"
 
-#: lib/ui/stdcontext.inc:197
+#: lib/ui/stdcontext.inc:199
 msgid "Thick Space|h"
 msgstr "Großer Abstand|G"
 
-#: lib/ui/stdcontext.inc:199
+#: lib/ui/stdcontext.inc:201
 msgid "Negative Medium Space|u"
 msgstr "Negativer mittlerer Abstand|i"
 
-#: lib/ui/stdcontext.inc:200
+#: lib/ui/stdcontext.inc:202
 msgid "Negative Thick Space|i"
 msgstr "Negativer großer Abstand|r"
 
-#: lib/ui/stdcontext.inc:213
+#: lib/ui/stdcontext.inc:215
 msgid "DefSkip|D"
 msgstr "Standard|S"
 
-#: lib/ui/stdcontext.inc:214
+#: lib/ui/stdcontext.inc:216
 msgid "SmallSkip|S"
 msgstr "Klein|K"
 
-#: lib/ui/stdcontext.inc:215
+#: lib/ui/stdcontext.inc:217
 msgid "MedSkip|M"
 msgstr "Mittel|M"
 
-#: lib/ui/stdcontext.inc:216
+#: lib/ui/stdcontext.inc:218
 msgid "BigSkip|B"
 msgstr "Groß|G"
 
-#: lib/ui/stdcontext.inc:217
+#: lib/ui/stdcontext.inc:219
 msgid "VFill|F"
 msgstr "Variabler vertik. Abstand|F"
 
-#: lib/ui/stdcontext.inc:218
+#: lib/ui/stdcontext.inc:220
 msgid "Custom|C"
 msgstr "Benutzerdefiniert|t"
 
-#: lib/ui/stdcontext.inc:220
+#: lib/ui/stdcontext.inc:222
 msgid "Settings...|e"
 msgstr "Einstellungen...|n"
 
-#: lib/ui/stdcontext.inc:227
+#: lib/ui/stdcontext.inc:229
 msgid "Include|c"
 msgstr "Include|c"
 
-#: lib/ui/stdcontext.inc:228
+#: lib/ui/stdcontext.inc:230
 msgid "Input|p"
 msgstr "Input|p"
 
-#: lib/ui/stdcontext.inc:229
+#: lib/ui/stdcontext.inc:231
 msgid "Verbatim|V"
 msgstr "Unformatiert|U"
 
-#: lib/ui/stdcontext.inc:230
+#: lib/ui/stdcontext.inc:232
 msgid "Verbatim (marked blanks)|b"
 msgstr "Unformatiert (Leerzeichen markiert)|m"
 
-#: lib/ui/stdcontext.inc:231
+#: lib/ui/stdcontext.inc:233
 msgid "Listing|L"
 msgstr "Programmlisting|l"
 
-#: lib/ui/stdcontext.inc:235
+#: lib/ui/stdcontext.inc:237
 msgid "Edit included file...|E"
 msgstr "Eingebettete Datei bearbeiten...|b"
 
-#: lib/ui/stdcontext.inc:242 lib/ui/stdmenus.inc:378
+#: lib/ui/stdcontext.inc:244 lib/ui/stdmenus.inc:378
 msgid "New Page|N"
 msgstr "Neue Seite|i"
 
-#: lib/ui/stdcontext.inc:243 lib/ui/stdmenus.inc:379
+#: lib/ui/stdcontext.inc:245 lib/ui/stdmenus.inc:379
 msgid "Page Break|a"
 msgstr "Seitenumbruch|u"
 
-#: lib/ui/stdcontext.inc:244 lib/ui/stdmenus.inc:380
+#: lib/ui/stdcontext.inc:246 lib/ui/stdmenus.inc:380
 msgid "Clear Page|C"
 msgstr "Seite leeren|S"
 
-#: lib/ui/stdcontext.inc:245 lib/ui/stdmenus.inc:381
+#: lib/ui/stdcontext.inc:247 lib/ui/stdmenus.inc:381
 msgid "Clear Double Page|D"
 msgstr "Doppelseite leeren|D"
 
-#: lib/ui/stdcontext.inc:252 lib/ui/stdmenus.inc:375
+#: lib/ui/stdcontext.inc:254 lib/ui/stdmenus.inc:375
 msgid "Ragged Line Break|R"
 msgstr "Normaler Zeilenumbruch|Z"
 
-#: lib/ui/stdcontext.inc:253 lib/ui/stdmenus.inc:376
+#: lib/ui/stdcontext.inc:255 lib/ui/stdmenus.inc:376
 msgid "Justified Line Break|J"
 msgstr "Rechtsbündiger Zeilenumbruch|b"
 
-#: lib/ui/stdcontext.inc:260 lib/ui/stdcontext.inc:306 lib/ui/stdmenus.inc:88
+#: lib/ui/stdcontext.inc:262 lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:88
 #: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:1034
 #: src/mathed/InsetMathNest.cpp:547
 msgid "Cut"
 msgstr "Ausschneiden"
 
-#: lib/ui/stdcontext.inc:261 lib/ui/stdcontext.inc:307 lib/ui/stdmenus.inc:89
+#: lib/ui/stdcontext.inc:263 lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:89
 #: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:1039
 #: src/mathed/InsetMathNest.cpp:555
 msgid "Copy"
 msgstr "Kopieren"
 
-#: lib/ui/stdcontext.inc:262 lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:90
+#: lib/ui/stdcontext.inc:264 lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:90
 #: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:992
 #: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:527
 msgid "Paste"
 msgstr "Einfügen"
 
-#: lib/ui/stdcontext.inc:263 lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:91
+#: lib/ui/stdcontext.inc:265 lib/ui/stdcontext.inc:311 lib/ui/stdmenus.inc:91
 msgid "Paste Recent|e"
 msgstr "Einfügen (vorherige Auswahl)|v"
 
-#: lib/ui/stdcontext.inc:265
+#: lib/ui/stdcontext.inc:267
 msgid "Jump to Saved Bookmark|B"
 msgstr "Zum gespeicherten Lesezeichen springen|z"
 
-#: lib/ui/stdcontext.inc:267 lib/ui/stdmenus.inc:98
+#: lib/ui/stdcontext.inc:269 lib/ui/stdmenus.inc:98
 msgid "Move Paragraph Up|o"
 msgstr "Absatz nach oben verschieben|o"
 
-#: lib/ui/stdcontext.inc:268 lib/ui/stdmenus.inc:99
+#: lib/ui/stdcontext.inc:270 lib/ui/stdmenus.inc:99
 msgid "Move Paragraph Down|v"
 msgstr "Absatz nach unten verschieben|u"
 
-#: lib/ui/stdcontext.inc:270
+#: lib/ui/stdcontext.inc:272
 msgid "Promote Section|r"
 msgstr "Verschachtelungstiefe des Abschnitts verringern|r"
 
-#: lib/ui/stdcontext.inc:271
+#: lib/ui/stdcontext.inc:273
 msgid "Demote Section|m"
 msgstr "Verschachtelungstiefe des Abschnitts erhöhen|s"
 
-#: lib/ui/stdcontext.inc:272
+#: lib/ui/stdcontext.inc:274
 msgid "Move Section down|d"
 msgstr "Abschnitt nach unten verschieben|n"
 
-#: lib/ui/stdcontext.inc:273
+#: lib/ui/stdcontext.inc:275
 msgid "Move Section up|u"
 msgstr "Abschnitt nach oben verschieben|b"
 
-#: lib/ui/stdcontext.inc:274
+#: lib/ui/stdcontext.inc:276
 msgid "Insert Short Title|T"
 msgstr "Kurztitel einfügen|z"
 
-#: lib/ui/stdcontext.inc:276
+#: lib/ui/stdcontext.inc:278
 msgid "Apply Last Text Style|A"
 msgstr "Zuletzt verwendeten Textstil verwenden|x"
 
-#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:101
+#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:101
 msgid "Text Style|S"
 msgstr "Textstil|T"
 
-#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:102
+#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:102
 msgid "Paragraph Settings...|P"
 msgstr "Absatz-Einstellungen...|A"
 
-#: lib/ui/stdcontext.inc:280
+#: lib/ui/stdcontext.inc:282
 msgid "Fullscreen Mode"
 msgstr "Vollbildmodus"
 
-#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:216
+#: lib/ui/stdcontext.inc:290 lib/ui/stdmenus.inc:216
 #: lib/ui/stdtoolbars.inc:171
 msgid "Append Argument"
 msgstr "Argument hinzufügen"
 
-#: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:217
+#: lib/ui/stdcontext.inc:291 lib/ui/stdmenus.inc:217
 #: lib/ui/stdtoolbars.inc:170
 msgid "Remove Last Argument"
 msgstr "Letztes Argument entfernen"
 
-#: lib/ui/stdcontext.inc:291 lib/ui/stdmenus.inc:219
+#: lib/ui/stdcontext.inc:293 lib/ui/stdmenus.inc:219
 #: lib/ui/stdtoolbars.inc:173
 msgid "Make First Non-Optional into Optional Argument"
 msgstr "Das erste nicht-optionale Argument in einen optionales ändern"
 
-#: lib/ui/stdcontext.inc:292 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:220
 #: lib/ui/stdtoolbars.inc:174
 msgid "Make Last Optional into Non-Optional Argument"
 msgstr "Das letzte optionale Argument in einen nicht-optionales ändern"
 
-#: lib/ui/stdcontext.inc:293 lib/ui/stdmenus.inc:221
+#: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:221
 #: lib/ui/stdtoolbars.inc:177
 msgid "Insert Optional Argument"
 msgstr "Optionales Argument einfügen"
 
-#: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:222
 #: lib/ui/stdtoolbars.inc:176
 msgid "Remove Optional Argument"
 msgstr "Optionales Argument entfernen"
 
-#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:224
+#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:224
 #: lib/ui/stdtoolbars.inc:180
 msgid "Append Argument Eating From The Right"
 msgstr "Argument von rechts hinzufügen"
 
-#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:225
+#: lib/ui/stdcontext.inc:299 lib/ui/stdmenus.inc:225
 #: lib/ui/stdtoolbars.inc:181
 msgid "Append Optional Argument Eating From The Right"
 msgstr "Optionales Argument von rechts hinzufügen"
 
-#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:226
+#: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:226
 #: lib/ui/stdtoolbars.inc:179
 msgid "Remove Last Argument Spitting Out To The Right"
 msgstr "Letztes Argument rechts entfernen"
 
-#: lib/ui/stdcontext.inc:325 lib/ui/stdcontext.inc:337
+#: lib/ui/stdcontext.inc:327 lib/ui/stdcontext.inc:339
 msgid "Edit externally...|x"
 msgstr "Datei extern bearbeiten|x"
 
-#: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:163
+#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:163
 msgid "Top Line|T"
 msgstr "Obere Linie|b"
 
-#: lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:164
+#: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:164
 msgid "Bottom Line|B"
 msgstr "Untere Linie|e"
 
-#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:165
+#: lib/ui/stdcontext.inc:351 lib/ui/stdmenus.inc:165
 msgid "Left Line|L"
 msgstr "Linke Linie|i"
 
-#: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:166
+#: lib/ui/stdcontext.inc:352 lib/ui/stdmenus.inc:166
 msgid "Right Line|R"
 msgstr "Rechte Linie|c"
 
-#: lib/ui/stdcontext.inc:362 lib/ui/stdmenus.inc:181
+#: lib/ui/stdcontext.inc:364 lib/ui/stdmenus.inc:181
 msgid "Copy Row|o"
 msgstr "Zeile kopieren|k"
 
-#: lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:186
+#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:186
 msgid "Copy Column|p"
 msgstr "Spalte kopieren|t"
 
@@ -11384,11 +11389,11 @@ msgstr "Dokument drucken"
 msgid "Check spelling"
 msgstr "Rechtschreibung prüfen"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1026
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1034
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1035
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1043
 msgid "Redo"
 msgstr "Wiederholen"
 
@@ -14435,12 +14440,12 @@ msgstr "\\begin_header fehlt"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document fehlt"
 
-#: src/Buffer.cpp:564 src/Buffer.cpp:570 src/BufferView.cpp:1145
-#: src/BufferView.cpp:1151
+#: src/Buffer.cpp:564 src/Buffer.cpp:570 src/BufferView.cpp:1153
+#: src/BufferView.cpp:1159
 msgid "Changes not shown in LaTeX output"
 msgstr "Änderungen nicht in der LaTeX-Ausgabe angezeigt"
 
-#: src/Buffer.cpp:565 src/BufferView.cpp:1146
+#: src/Buffer.cpp:565 src/BufferView.cpp:1154
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -14452,7 +14457,7 @@ msgstr ""
 "Bitte installieren Sie diese Pakete oder definieren Sie \\lyxadded und "
 "\\lyxdeleted im LaTeX-Vorspann neu."
 
-#: src/Buffer.cpp:571 src/BufferView.cpp:1152
+#: src/Buffer.cpp:571 src/BufferView.cpp:1160
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -14874,89 +14879,89 @@ msgstr "Keine weiteren Einfügungen"
 msgid "Save bookmark"
 msgstr "Lesezeichen speichern"
 
-#: src/BufferView.cpp:1029
+#: src/BufferView.cpp:1037
 msgid "No further undo information"
 msgstr "Nichts mehr rückgängig zu machen"
 
-#: src/BufferView.cpp:1038
+#: src/BufferView.cpp:1046
 msgid "No further redo information"
 msgstr "Nichts mehr zu wiederholen"
 
-#: src/BufferView.cpp:1207 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1215 src/lyxfind.cpp:295 src/lyxfind.cpp:313
 msgid "String not found!"
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/BufferView.cpp:1231
+#: src/BufferView.cpp:1239
 msgid "Mark off"
 msgstr "Marke aus"
 
-#: src/BufferView.cpp:1238
+#: src/BufferView.cpp:1246
 msgid "Mark on"
 msgstr "Marke ein"
 
-#: src/BufferView.cpp:1245
+#: src/BufferView.cpp:1253
 msgid "Mark removed"
 msgstr "Marke entfernt"
 
-#: src/BufferView.cpp:1248
+#: src/BufferView.cpp:1256
 msgid "Mark set"
 msgstr "Marke gesetzt"
 
-#: src/BufferView.cpp:1295
+#: src/BufferView.cpp:1303
 msgid "Statistics for the selection:"
 msgstr "Statistik für die Auswahl:"
 
-#: src/BufferView.cpp:1297
+#: src/BufferView.cpp:1305
 msgid "Statistics for the document:"
 msgstr "Statistik für das Dokument:"
 
-#: src/BufferView.cpp:1300
+#: src/BufferView.cpp:1308
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d Wörter"
 
-#: src/BufferView.cpp:1302
+#: src/BufferView.cpp:1310
 msgid "One word"
 msgstr "Ein Wort"
 
-#: src/BufferView.cpp:1305
+#: src/BufferView.cpp:1313
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d Zeichen (inklusive Leerzeichen)"
 
-#: src/BufferView.cpp:1308
+#: src/BufferView.cpp:1316
 msgid "One character (including blanks)"
 msgstr "Ein Zeichen (inklusive Leerzeichen)"
 
-#: src/BufferView.cpp:1311
+#: src/BufferView.cpp:1319
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d Zeichen (ohne Leerzeichen)"
 
-#: src/BufferView.cpp:1314
+#: src/BufferView.cpp:1322
 msgid "One character (excluding blanks)"
 msgstr "Ein Zeichen (ohne Leerzeichen)"
 
-#: src/BufferView.cpp:1316
+#: src/BufferView.cpp:1324
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/BufferView.cpp:2070
+#: src/BufferView.cpp:2091
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView.cpp:2081
+#: src/BufferView.cpp:2102
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView.cpp:2083
+#: src/BufferView.cpp:2104
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView.cpp:2322
+#: src/BufferView.cpp:2343
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14967,26 +14972,26 @@ msgstr ""
 "konnte aufgrund des folgenden Fehlers\n"
 "nicht gelesen werden: %2$s"
 
-#: src/BufferView.cpp:2324
+#: src/BufferView.cpp:2345
 msgid "Could not read file"
 msgstr "Die Datei konnte nicht gelesen werden"
 
-#: src/BufferView.cpp:2331
+#: src/BufferView.cpp:2352
 #, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s ist nicht lesbar."
 
-#: src/BufferView.cpp:2332 src/output.cpp:39
+#: src/BufferView.cpp:2353 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Die Datei konnte nicht geöffnet werden"
 
-#: src/BufferView.cpp:2339
+#: src/BufferView.cpp:2360
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lese nicht-UTF-8-kodierte Datei"
 
-#: src/BufferView.cpp:2340
+#: src/BufferView.cpp:2361
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -16001,7 +16006,8 @@ msgid "LyX VC: Log Message"
 msgstr "LyX VK: Protokollmeldung"
 
 #: src/LyXFunc.cpp:1616
-msgid "Directory is not readable.\n"
+#, fuzzy
+msgid "Directory is not accessible."
 msgstr "Das Verzeichnis ist nicht lesbar.\n"
 
 #: src/LyXFunc.cpp:1798
@@ -17105,11 +17111,10 @@ msgid "not released yet"
 msgstr "noch nicht veröffentlicht"
 
 #: src/frontends/qt4/GuiAbout.cpp:107
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "LyX Version %1$s\n"
-"(%2$s)\n"
-"\n"
+"(%2$s)"
 msgstr ""
 "LyX Version %1$s\n"
 "(%2$s)\n"
@@ -19693,11 +19698,11 @@ msgstr "nein"
 msgid "Unknown buffer info"
 msgstr "Unbekannte Speicherinformation"
 
-#: src/insets/InsetLabel.cpp:64
+#: src/insets/InsetLabel.cpp:66
 msgid "Label names must be unique!"
 msgstr "Markennamen müssen eindeutig sein!"
 
-#: src/insets/InsetLabel.cpp:65
+#: src/insets/InsetLabel.cpp:67
 #, c-format
 msgid ""
 "The label %1$s already exists,\n"
@@ -19706,7 +19711,7 @@ msgstr ""
 "Die Marke %1$s existiert bereits,\n"
 "sie wird zu %2$s geändert."
 
-#: src/insets/InsetLabel.cpp:110
+#: src/insets/InsetLabel.cpp:112
 msgid "DUPLICATE: "
 msgstr "DUPLIKAT: "
 
