@@ -81,6 +81,8 @@ private:
 	std::vector<std::string> origin_ltx;
 	///
 	InsetGraphicsParams params_;
+	/// the current graphics group
+	std::string current_group_;
 };
 
 } // namespace frontend

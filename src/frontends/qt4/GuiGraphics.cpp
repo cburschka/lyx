@@ -296,15 +296,53 @@ void GuiGraphics::change_adaptor()
 
 void GuiGraphics::change_group(int index)
 {
-	QString const group = groupCO->itemData(
+	QString const new_group = groupCO->itemData(
 		groupCO->currentIndex()).toString();
+	
+	// check if the old group consisted only of this member
+	if (current_group_ != fromqstr(new_group)
+	    && graphics::countGroupMembers(buffer(), current_group_) == 1) {
+		if (!new_group.isEmpty()) {
+			if (Alert::prompt(_("Dissolve previous group?"), 
+				bformat(_("If you assign this graphic to group '%2$s',\n"
+					  "the previously assigned group '%1$s' will be dissolved,\n"
+					  "because this graphic was its only member.\n"
+					  "How do you want to proceed?"),
+					from_utf8(current_group_), qstring_to_ucs4(new_group)),
+					0, 0,
+					bformat(_("Stick with group '%1$s'"),
+						from_utf8(current_group_)),
+					bformat(_("Assign to group '%1$s' anyway"),
+						qstring_to_ucs4(new_group))) == 0) {
+				groupCO->setCurrentIndex(
+					groupCO->findData(toqstr(current_group_), Qt::MatchExactly));
+				return;
+			}
+		} else {
+			if (Alert::prompt(_("Dissolve previous group?"), 
+			bformat(_("If you sign off this graphic from group '%1$s',\n"
+				  "the group will be dissolved,\n"
+				  "because this graphic was its only member.\n"
+				  "How do you want to proceed?"),
+				from_utf8(current_group_)),
+				0, 0,
+				bformat(_("Stick with group '%1$s'"),
+				from_utf8(current_group_)),
+				bformat(_("Sign off from group '%1$s'"),
+				from_utf8(current_group_))) == 0) {
+			groupCO->setCurrentIndex(
+				groupCO->findData(toqstr(current_group_), Qt::MatchExactly));
+			return;
+			}
+		}
+	} 
 
-	if (group.isEmpty()) {
+	if (new_group.isEmpty()) {
 		changed();
 		return;
 	}
 
-	string grp = graphics::getGroupParams(buffer(), fromqstr(group));
+	string grp = graphics::getGroupParams(buffer(), fromqstr(new_group));
 	if (grp.empty()) {
 		// group does not exist yet
 		changed();
@@ -745,6 +783,7 @@ void GuiGraphics::applyView()
 
 	igp.groupId = fromqstr(groupCO->itemData(
 		groupCO->currentIndex()).toString());
+	current_group_ = igp.groupId;
 }
 
 
@@ -780,6 +819,7 @@ bool GuiGraphics::initialiseParams(string const & data)
 {
 	InsetGraphics::string2params(data, buffer(), params_);
 	paramsToDialog(params_);
+	current_group_ = params_.groupId;
 	return true;
 }
 

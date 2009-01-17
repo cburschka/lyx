@@ -970,6 +970,24 @@ void getGraphicsGroups(Buffer const & b, set<string> & ids)
 }
 
 
+int countGroupMembers(Buffer const & b, string const & groupId)
+{
+	int n = 0;
+	if (groupId.empty())
+		return n;
+	Inset & inset = b.inset();
+	InsetIterator it = inset_iterator_begin(inset);
+	InsetIterator const end = inset_iterator_end(inset);
+	for (; it != end; ++it)
+		if (it->lyxCode() == GRAPHICS_CODE) {
+			InsetGraphics & ins = static_cast<InsetGraphics &>(*it);
+			if (ins.getParams().groupId == groupId)
+				++n;
+		}
+	return n;
+}
+
+
 string getGroupParams(Buffer const & b, string const & groupId)
 {
 	if (groupId.empty())
