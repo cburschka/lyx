@@ -1291,28 +1291,27 @@ msgstr "&Zobrazit v LyX-u"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:595
 msgid "Assign the graphic to a group of graphics that share the same settings"
-msgstr ""
+msgstr "Pøiøaï obrázek do skupiny obrázkù sdílející svá nastavení"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:598
-#, fuzzy
 msgid "Graphics Group"
-msgstr "Obrázky"
+msgstr "Skupiny obrázkù"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:637
 msgid "A&ssigned to group:"
-msgstr ""
+msgstr "&Pøiøadit ke skupinì:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:647
 msgid "Click to define a new graphics group."
-msgstr ""
+msgstr "Definice nové skupiny obrázkù."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:650
 msgid "O&pen new group..."
-msgstr ""
+msgstr "&Zalo¾it novou skupinu..."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:657
 msgid "Select an existing group for the current graphics."
-msgstr ""
+msgstr "Zvolit existující skupinu pro tentobrázek."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:670
 msgid "Draft mode"
@@ -9000,7 +8999,6 @@ msgid "Catalan"
 msgstr "Katalán¹tina"
 
 #: lib/languages:26
-#, fuzzy
 msgid "Chinese (simplified)"
 msgstr "Èín¹tina (zjednodu¹ená)"
 
@@ -14310,7 +14308,6 @@ msgid "Changes not shown in LaTeX output"
 msgstr "Zmìny nezobrazeny v LaTeX-ovém výstupu"
 
 #: src/Buffer.cpp:565 src/BufferView.cpp:1146
-#, fuzzy
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -14318,12 +14315,11 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 "Zmìny nebudou zvýraznìny v LaTeX-ovém výstupu, jeliko¾ není nainstalován "
-"anidvipost ani xcolor/soul.\n"
+"ani dvipost ani xcolor/ulem.\n"
 "Prosím naistalujte tyto balíèky nebo pøedefinujte \\lyxadded a \\lyxdeletedv "
 "LaTeX-ové preambuli."
 
 #: src/Buffer.cpp:571 src/BufferView.cpp:1152
-#, fuzzy
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -14331,7 +14327,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 "Zmìny nebudou zvýraznìny v LaTeX-ovém výstupu pøi konverzi pdflatex-em,"
-"jeliko¾ nejsou nainstalovány balíèky xcolor a soul.\n"
+"jeliko¾ nejsou nainstalovány balíèky xcolor a ulem.\n"
 "Prosím naistalujte tyto balíèky nebo pøedefinujte \\lyxadded a \\lyxdeletedv "
 "LaTeX-ové preambuli."
 
@@ -15850,11 +15846,8 @@ msgid "LyX VC: Log Message"
 msgstr "LyX SV: Zpráva Log-u"
 
 #: src/LyXFunc.cpp:1616
-#, fuzzy
-msgid "Directory is not readable.\n"
-msgstr ""
-"%1$s\n"
-" nelze pøeèíst."
+msgid "Directory is not accessible."
+msgstr "Adresáø není pøístupný."
 
 #: src/LyXFunc.cpp:1798
 #, c-format
@@ -16858,13 +16851,13 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "mno¾ství práce dal¹ích lidí na projektu LyX."
 
 #: src/frontends/qt4/GuiAbout.cpp:77
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995--%1$s LyX Team"
 msgstr ""
 "LyX --- Copyright (C) 1995 Matthias Ettrich,\n"
-"1995-2008 LyX Team"
+"1995-%1$s LyX Team"
 
 #: src/frontends/qt4/GuiAbout.cpp:85
 msgid ""
@@ -16896,17 +16889,37 @@ msgstr ""
 "Street, Fifth Floor, Boston, MA 02110-1301, USA."
 
 #: src/frontends/qt4/GuiAbout.cpp:102
-#, fuzzy
 msgid "not released yet"
-msgstr "Zvìt¹it hloubku"
+msgstr "zatím nevydán"
 
 #: src/frontends/qt4/GuiAbout.cpp:107
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "LyX Version %1$s\n"
-"(%2$s)\n"
-"\n"
+"(%2$s)"
 msgstr "Verze LyX-u "
+"Verze LyX-u %1$s\n"
+"(%2$s)"
+
+#: src/frontends/qt4/GuiAbout.cpp:113
+msgid "Library directory: "
+msgstr "Adresáø s knihovnami: "
+
+#: src/frontends/qt4/GuiAbout.cpp:116
+msgid "User directory: "
+msgstr "U¾ivatelský adresáø: "
+
+#: src/frontends/qt4/GuiAlert.cpp:124 src/frontends/qt4/GuiAlert.cpp:157
+#: src/frontends/qt4/GuiAlert.cpp:183 src/frontends/qt4/GuiAlert.cpp:209
+#: src/frontends/qt4/GuiAlert.cpp:230
+#, c-format
+msgid "LyX: %1$s"
+msgstr "LyX: %1$s"
+
+#: src/frontends/qt4/GuiApplication.cpp:406
+msgid "About %1"
+msgstr "O programu %1"
+
 
 #: src/frontends/qt4/GuiAbout.cpp:113
 msgid "Library directory: "
@@ -17732,7 +17745,7 @@ msgstr "Obrázky"
 
 #: src/frontends/qt4/GuiGraphics.cpp:303 src/frontends/qt4/GuiGraphics.cpp:319
 msgid "Dissolve previous group?"
-msgstr ""
+msgstr "Rozpustit pøedchozí skupinu?"
 
 #: src/frontends/qt4/GuiGraphics.cpp:304
 #, c-format
@@ -17742,16 +17755,20 @@ msgid ""
 "because this graphic was its only member.\n"
 "How do you want to proceed?"
 msgstr ""
+"Pokud pøiøadíte tento obrázek ke skupinì '%2$s',\n"
+"pøedchozí skupina '%1$s' bude rozpu¹tìna,\n"
+"proto¾e tento obrázek byl jejím posledním èlenem.\n" 
+"Jak chcete pokraèovat?"
 
 #: src/frontends/qt4/GuiGraphics.cpp:310 src/frontends/qt4/GuiGraphics.cpp:326
 #, c-format
 msgid "Stick with group '%1$s'"
-msgstr ""
+msgstr "Ponech ve skupinì '%1$s'"
 
 #: src/frontends/qt4/GuiGraphics.cpp:312
 #, c-format
 msgid "Assign to group '%1$s' anyway"
-msgstr ""
+msgstr "Pøiøadit ke skupinì '%1$s'"
 
 #: src/frontends/qt4/GuiGraphics.cpp:320
 #, c-format
@@ -17761,25 +17778,28 @@ msgid ""
 "because this graphic was its only member.\n"
 "How do you want to proceed?"
 msgstr ""
+"Pokud odlouèíte tento obrázek ze skupiny '%1$s',\n"
+"skupina bude zru¹ena,\n"
+"proto¾e tento obrázek byl jejím posledním èlenem.\n"
+"Jak chcete pokraèovat?"
 
 #: src/frontends/qt4/GuiGraphics.cpp:328
 #, c-format
 msgid "Sign off from group '%1$s'"
-msgstr ""
+msgstr "Odlouèit od skupiny '%1$s'"
 
 #: src/frontends/qt4/GuiGraphics.cpp:368
 msgid "Enter unique group name:"
-msgstr ""
+msgstr "Vlo¾te unikátní jméno skupiny:"
 
 #: src/frontends/qt4/GuiGraphics.cpp:373
-#, fuzzy
 msgid "Group already defined!"
-msgstr "®ádná akce není definována!"
+msgstr "Skupina je ji¾ definována!"
 
 #: src/frontends/qt4/GuiGraphics.cpp:374
 #, c-format
 msgid "A graphics group with the name '%1$s' already exists."
-msgstr ""
+msgstr "Skupina obrázkù se jménem '%1$s' ji¾ existuje."
 
 #: src/frontends/qt4/GuiGraphics.cpp:834
 msgid "Select graphics file"
@@ -19989,9 +20009,8 @@ msgid "em"
 msgstr "em"
 
 #: src/lengthcommon.cpp:39
-#, fuzzy
 msgid "mu[[unit of measure]]"
-msgstr "cc"
+msgstr "mu"
 
 #: src/lengthcommon.cpp:39
 msgid "Text Width %"
