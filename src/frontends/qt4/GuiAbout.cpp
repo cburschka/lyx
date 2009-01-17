@@ -104,9 +104,9 @@ static QString version()
 			loc_release_date = toqstr(lyx_release_date);
 	}
 	docstring version_date =
-		bformat(_("LyX Version %1$s\n(%2$s)\n\n"),
+		bformat(_("LyX Version %1$s\n(%2$s)"),
 			from_ascii(lyx_version),
-			qstring_to_ucs4(loc_release_date));
+			qstring_to_ucs4(loc_release_date))+"\n\n";
 	QString res;
 	QTextStream out(&res);
 	out << toqstr(version_date);
