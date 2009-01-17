@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -36,6 +35,7 @@
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
 \end_preamble
+\use_default_options false
 \language french
 \inputencoding auto
 \font_roman default
@@ -46,6 +46,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -57,7 +58,7 @@
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
-\pdf_bookmarksopenlevel 2
+\pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
 \pdf_pdfborder false
 \pdf_colorlinks true
@@ -81,8 +82,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -186,7 +187,7 @@ Bienvenue dans l'univers de LyX !
 \begin_layout Standard
 Ce document est destiné à tous ceux qui n'ont jamais entendu parler de LaTeX,
  ou qui ne le connaissent pas bien.
- Surtout, pas de panique -- vous ne devrez pas apprendre LaTeX pour utiliser
+ Surtout, pas de panique – vous ne devrez pas apprendre LaTeX pour utiliser
  LyX.
  C'est précisément le but de LyX : fournir une interface quasi-WYSIWYG pour
  LaTeX.
@@ -468,7 +469,7 @@ d'Apprentissage
 \emph default
  (si vous n'êtes pas déjà en train de le lire dans LyX).
  De cette façon, vous pourrez les lire en même temps que vous tapez votre
- propre fichier
+ propre fichier.
 \begin_inset Foot
 status collapsed
 
@@ -478,7 +479,6 @@ Ce sont aussi de bons exemples pour l'emploi d'un tas de fonctions de LyX.
 
 \end_inset
 
-.
  Notez qu'une fois que vous avez ouvert plusieurs documents, vous pouvez
  basculer de l'un à l'autre dans le menu 
 \family sans
@@ -638,9 +638,9 @@ DVI
 
  de la barre d'outils\SpecialChar \@.
  LyX lancera un programme de visualisation DVI qui
- affichera l'aspect de votre document une fois imprimé
+ affichera l'aspect de votre document une fois imprimé.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Vous pouvez gagner du temps en laissant tourner la visionneuse DVI en tâche
@@ -672,7 +672,7 @@ DVI
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Itemize
@@ -847,9 +847,9 @@ Rechercher
 \family sans
 Remplacer
 \family default
- pour remplacer le mot une fois trouvé
+ pour remplacer le mot une fois trouvé.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Quand vous avez terminé, vous pouvez, à votre guise, fermer la fenêtre ou
@@ -862,7 +862,6 @@ Quand vous avez terminé, vous pouvez, à votre guise, fermer la fenêtre ou
 
 \end_inset
 
-.
  Si vous voulez, vous pouvez rendre la recherche sensible à la casse, ou
  ne rechercher que des mots complets.
  Vous pouvez aussi rechercher en arrière dans le document.
@@ -977,7 +976,7 @@ What You See Is What You Get
 \begin_inset Quotes frd
 \end_inset
 
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -987,7 +986,6 @@ NdT : Vous voyez ce que vous obtiendrez.
 
 \end_inset
 
-.
  De son côté, LyX se fonde sur le principe de 
 \begin_inset Quotes fld
 \end_inset
@@ -1000,7 +998,7 @@ Mean
 \begin_inset Quotes frd
 \end_inset
 
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -1010,7 +1008,6 @@ NdT : Vous voyez ce que vous voulez dire.
 
 \end_inset
 
-.
  Vous tapez ce que vous voulez dire, et LyX se chargera d'en faire la compositio
 n pour vous, avec un joli résultat.
  Sur le plan grammatical, un retour chariot (
@@ -1069,8 +1066,8 @@ Ressorts Horizontaux
 \family sans
 Ressorts Verticaux
 \family default
- -- plus puissants et plus souples que des blancs ou retours chariot multiples
- -- ainsi que les méthodes pour modifier la taille de police, le style de
+ – plus puissants et plus souples que des blancs ou retours chariot multiples
+ – ainsi que les méthodes pour modifier la taille de police, le style de
  caractère et l'alignement des paragraphes à la main.
  L'idée, cependant, est d'écrire le document en entier, en ne se consacrant
  qu'au contenu, et de ne se soucier de la présentation qu'une fois la frappe
@@ -1177,15 +1174,13 @@ Section
  dans la liste de choix d'
 \family sans
 Environnement
+\family default
+.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Il n'est pas nécessaire de 
-\emph on
-sélectionner
-\emph default
- la ligne au préalable.
+Il n'est pas nécessaire de sélectionner la ligne au préalable.
  Si rien n'est sélectionné, LyX fera passer le paragraphe courant dans l'environ
 nement que vous choisissez.
  D'un autre côté, vous pouvez faire basculer plusieurs paragraphes simultanément
@@ -1194,9 +1189,6 @@ nement que vous choisissez.
 
 \end_inset
 
-
-\family default
-.
  Il s'agit bien de 
 \family sans
 Section
@@ -1623,7 +1615,7 @@ l'environnement
 \family sans
 Liste
 \family default
- -- inconnu dans LaTeX -- est une variante de l'environnement 
+ est une variante de l'environnement 
 \family sans
 Description
 \family default
@@ -1813,7 +1805,7 @@ tabulation
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Mais une tabulation de typographe, dont la taille s'adaptera à la largeur
@@ -2019,8 +2011,8 @@ Qui dit documents de types différents, dit typographies différentes.
  Par exemple, un livre est imprimé en recto-verso, et les articles en simple
  face.
  En plus, de nombreux documents contiennent des environnements spéciaux
- : les lettres ont des environnements -- comme l'adresse de l'expéditeur
- et sa signature -- qui n'ont aucun sens dans un livre ou un article.
+ : les lettres ont des environnements – comme l'adresse de l'expéditeur
+ et sa signature – qui n'ont aucun sens dans un livre ou un article.
  Les 
 \emph on
 classes
@@ -2075,6 +2067,8 @@ book
 Votre document est sans doute écrit en classe de document 
 \family sans
 Article
+\family default
+.
 \begin_inset Foot
 status collapsed
 
@@ -2084,9 +2078,6 @@ C'est habituellement la classe de document par défaut.
 
 \end_inset
 
-
-\family default
-.
  Essayez de basculer vers d'autres classes (dans la fenêtre 
 \family sans
 Document\SpecialChar \menuseparator
@@ -2400,9 +2391,9 @@ Description
 \family default
  vous sont déjà familiers.
  Vous pouvez vous entraîner un moment pour vous rendre compte du comportement
- des nouveaux environnements
+ des nouveaux environnements.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 NdT : il est intéressant de noter ici que les environnements ont parfois
@@ -2428,7 +2419,6 @@ PDF
 
 \end_inset
 
-.
  L'environnement 
 \family sans
 Signature
@@ -2466,13 +2456,13 @@ Un modèle est un fichier LyX comme les autres.
  À partir de là, vous pouvez reprendre ce fichier pour écrire de nouvelles
  lettres, et gagner du temps.
  Inutile de vous proposer un exercice à ce sujet ; faites donc une lettre
- pour quelqu'un
+ pour quelqu'un !
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 Attention, lorsque vous écrivez une lettre à partir d'un modèle, si vous
- effacez tout le texte d'un environnement -- par exemple, si vous effacez
+ effacez tout le texte d'un environnement – par exemple, si vous effacez
  tout le champ 
 \family sans
 Mon
@@ -2481,7 +2471,7 @@ Mon
 
 Adresse
 \family default
- pour écrire la vôtre -- et que vous déplacez le curseur sans taper aucun
+ pour écrire la vôtre – et que vous déplacez le curseur sans taper aucun
  texte, l'environnement peut disparaître.
  En effet, la plupart des environnements ne peuvent exister sans texte.
  Dans ce cas, récupérez-le simplement à partir de la boîte d'
@@ -2494,7 +2484,7 @@ Environnement
 
 \end_inset
 
- !
+
 \end_layout
 
 \begin_layout Standard
@@ -2514,31 +2504,27 @@ Titres des documents
 \end_layout
 
 \begin_layout Standard
-LyX (comme LaTeX) considère le titre -- qui peut contenir le vrai titre
- du document, l'auteur, la date, et même un résumé d'une publication --
- comme une partie séparée du document.
+LyX (comme LaTeX) considère le titre – qui peut contenir le vrai titre du
+ document, l'auteur, la date, et même un résumé d'une publication – comme
+ une partie séparée du document.
 \end_layout
 
 \begin_layout Standard
 Retournons à votre document LyX et assurez-vous qu'il est en classe 
 \family sans
 Article
+\family default
+.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-La classe 
-\family sans
-Lettre
-\family default
- ne permettant pas les titres, il ne faut pas l'utiliser pour la suite.
+La classe Lettre ne permettant pas les titres, il ne faut pas l'utiliser
+ pour la suite.
 \end_layout
 
 \end_inset
 
-
-\family default
-.
  Tapez un titre sur la première ligne, et passez la ligne en environnement
  
 \family sans
@@ -2613,7 +2599,7 @@ Objets insérés
  
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Votre première étiquette
 \end_layout
 
@@ -2659,14 +2645,14 @@ En tout état de cause, vous auriez pu placer l'étiquette n'importe où dans
 \end_layout
 
 \begin_layout Standard
-Pour l'instant, vous n'avez encore rien fait -- le fichier DVI n'aura pas
+Pour l'instant, vous n'avez encore rien fait – le fichier DVI n'aura pas
  changé, car les étiquettes n'apparaissent pas à l'impression.
  Maintenant que vous avez une étiquette, vous pouvez vous y référer avec
  les références croisées.
  C'est ce que nous allons faire maintenant.
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Votre première référence croisée
 \end_layout
 
@@ -2684,11 +2670,11 @@ Pour en savoir plus à propos de ce document,
 \end_layout
 
 \begin_layout LyX-Code
-consultez la section , page .
+consultez la section, page.
 \end_layout
 
 \begin_layout Standard
-Maintenant -- avec le curseur juste après le mot 
+Maintenant mise le curseur juste après le mot 
 \begin_inset Quotes fld
 \end_inset
 
@@ -2696,7 +2682,7 @@ section
 \begin_inset Quotes frd
 \end_inset
 
- -- faites 
+ et faites 
 \family sans
 Insérer\SpecialChar \menuseparator
 Référence
@@ -2780,6 +2766,24 @@ section
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+Alternatively to that method, you can right-click on a label and use in
+ the appearing context menu 
+\family sans
+Copy as Reference
+\family default
+.
+ The cross-reference to this label is now in the clipboard and can be copied
+ to the actual cursor position via the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Paste
+\family default
+ (shortcut Ctrl+V).
+\end_layout
+
+\begin_layout Standard
 LyX place les références dans une boîte juste après le curseur.
  Dans la version papier du document, chacun de ces marqueurs est remplacé
  par le numéro de page ou de section (en fonction de ce que vous avez choisi
@@ -2854,7 +2858,7 @@ Référence
  déplace le curseur jusqu'à l'étiquette correspondante.
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 En faire davantage avec les étiquettes
 \end_layout
 
@@ -2868,7 +2872,7 @@ Nous disions que LyX prenait en charge la numérotation des références croisé
 2.
  Relancez LaTeX
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 NdT : en faisant 
@@ -2902,7 +2906,7 @@ PDF
 
 \end_inset
 
-, et -- voilà !
+, et – voilà !
 \begin_inset Foot
 status collapsed
 
@@ -2912,7 +2916,7 @@ NdT : en français dans le texte.
 
 \end_inset
 
- -- la référence croisée à la section est passée maintenant à
+ – la référence croisée à la section est passée maintenant à
 \begin_inset space ~
 \end_inset
 
@@ -2976,9 +2980,9 @@ l'Utilisateur
 \family sans
 Coller
 \family default
- dans votre document
+ dans votre document.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Comme les environnements de chapitre ne sont pas autorisés dans les classes
@@ -3002,7 +3006,7 @@ reference "sec:classes-de-documents"
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -3108,8 +3112,8 @@ refermer
 \end_inset
 
  la note.
- Vous pouvez réouvrir la note à tout moment -- et la modifier si nécessaire
- -- en cliquant de nouveau sur le bouton 
+ Vous pouvez réouvrir la note à tout moment – et la modifier si nécessaire
+ – en cliquant de nouveau sur le bouton 
 \begin_inset Quotes fld
 \end_inset
 
@@ -3621,9 +3625,9 @@ Palette
 Mathématique
 \family default
  vous permettra d'obtenir, facilement et rapidement, des écrits mathématiques
- d'aspect professionnel
+ d'aspect professionnel.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LyX ne peut pas vérifier si vos mathématiques sont 
@@ -3637,7 +3641,7 @@ s.
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Section
@@ -4008,7 +4012,7 @@ Esc
 \end_layout
 
 \begin_layout Standard
-Écrire en indice est tout aussi facile -- la touche 
+Écrire en indice est tout aussi facile – la touche 
 \begin_inset Quotes fld
 \end_inset
 
@@ -4909,8 +4913,9 @@ Exercice
 \series default
  : En utilisant les différents outils dont vous avez appris le maniement
  dans cette section, vous devriez pouvoir écrire une équation comme celle-ci
+ :
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Après avoir sué sur cet exercice, essayez 
@@ -4926,7 +4931,7 @@ Cas.
 
 \end_inset
 
- :
+
 \begin_inset Formula \[
 f(x)=\left\{ \begin{array}{cc}
 \log_{8}x & x>0\\
@@ -5049,7 +5054,7 @@ Tableau
 
 \end_inset
 
- de la barre d'outils) pour obtenir un tableau
+ de la barre d'outils) pour obtenir un tableau.
 \begin_inset Foot
 status collapsed
 
@@ -5077,7 +5082,6 @@ n.
 
 \end_inset
 
-.
  Cliquez sur le tableau avec le 
 \emph on
 bouton droit
@@ -5454,12 +5458,12 @@ reference "sec:preambule-latex"
 
 \end_inset
 
-), vous pouvez utiliser n'importe quel paquetage -- sans avoir de support
+), vous pouvez utiliser n'importe quel paquetage – sans avoir de support
  WYSIWYM pour ses fonctions.
 \end_layout
 
 \begin_layout Subsection
-Importer des documents LaTeX --- 
+Importer des documents LaTeX — 
 \family typewriter
 tex2lyx
 \family default
@@ -5819,9 +5823,9 @@ oe{} en mode TeX, ou bien en utilisant l'encodage
 \family typewriter
 latin9
 \family default
- avec un clavier correctement configuré
+ avec un clavier correctement configuré.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Sous Windows vous pouvez utiliser la touche 
@@ -5837,7 +5841,6 @@ Alt-0156
 
 \end_inset
 
-.
  Dans ce dernier cas, pour qu'il apparaisse à l'écran, il faut aller dans
  
 \family sans
@@ -5937,7 +5940,7 @@ texte
 
 \begin_layout Standard
 Les points de suspension s'obtiennent quant à eux avec trois points ordinaires
- successifs, et les tirets longs -- comme ici -- avec deux tirets juxtaposés.
+ successifs, et les tirets longs – comme ici – avec deux tirets juxtaposés.
 \end_layout
 
 \end_body

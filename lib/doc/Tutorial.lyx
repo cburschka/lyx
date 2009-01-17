@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -46,6 +46,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -57,7 +58,7 @@
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
-\pdf_bookmarksopenlevel 2
+\pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
 \pdf_pdfborder false
 \pdf_colorlinks true
@@ -81,8 +82,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -390,7 +391,7 @@ subtle
 \begin_inset Quotes erd
 \end_inset
 
- hints about how to fix things
+ hints about how to fix things.
 \begin_inset Foot
 status collapsed
 
@@ -409,7 +410,6 @@ Notes
 
 \end_inset
 
-.
  If you want to cheat, or check what you've done, there's also a file called
  
 \family typewriter
@@ -670,7 +670,7 @@ Next
 \family sans
 Replace
 \family default
- button to replace a word you've found
+ button to replace a word you've found.
 \begin_inset Foot
 status collapsed
 
@@ -684,7 +684,6 @@ t.
 
 \end_inset
 
-.
  If you like, you can specify whether to make the search case-sensitive,
  or to search for only complete words; you can also search backwards through
  the document.
@@ -845,8 +844,8 @@ User's Guide
 \family sans
 HFill
 \family default
-s and vertical space --- which are more powerful and versatile than multiple
- spaces or blank lines --- and ways to change font sizes, character styles,
+s and vertical space — which are more powerful and versatile than multiple
+ spaces or blank lines — and ways to change font sizes, character styles,
  and paragraph alignments by hand.
  The idea, though, is that you can write your whole document, focusing on
  content, and just worry about that fine-tuning at the end.
@@ -1361,8 +1360,7 @@ The
 \family sans
 List
 \family default
- environment --- not found in LaTeX --- is a slightly different form of
- the 
+ environment is a slightly different form of the 
 \family sans
 Description
 \family default
@@ -1689,8 +1687,8 @@ Different sorts of documents should be typeset differently.
  For example, books are generally printed double-sided, while articles are
  single-sided.
  In addition, many documents contain special environments: letters contain
- some environments --- such as the sender's address and the signature ---
- which do not make sense in a book or article.
+ some environments — such as the sender's address and the signature — which
+ do not make sense in a book or article.
  The LyX 
 \emph on
 document class
@@ -2078,8 +2076,8 @@ status collapsed
 
 \begin_layout Plain Layout
 One warning, if you're writing from a template.
- If you erase all of the text in an environment --- for example, if you
- erase the whole 
+ If you erase all of the text in an environment — for example, if you erase
+ the whole 
 \family sans
 My
 \begin_inset space ~
@@ -2087,7 +2085,7 @@ My
 
 Address
 \family default
- field so that you can replace it with your own --- and then you move the
+ field so that you can replace it with your own — and then you move the
  cursor without writing any text, the environment may disappear.
  This is because most environments cannot exist without any text in them.
  Just reselect the environment from the 
@@ -2118,8 +2116,8 @@ Document Titles
 \end_layout
 
 \begin_layout Standard
-LyX (like LaTeX) considers the title --- which may contain the actual title,
- the author, the date, and even an abstract of a paper --- to be a separate
+LyX (like LaTeX) considers the title — which may contain the actual title,
+ the author, the date, and even an abstract of a paper — to be a separate
  part of the document.
 \end_layout
 
@@ -2211,7 +2209,7 @@ Embedded Objects
  LyX (and LaTeX) over conventional word processors.
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Your first label
 \end_layout
 
@@ -2257,19 +2255,19 @@ By the way, you could have put the label right anywhere within the section
 \end_layout
 
 \begin_layout Standard
-So far you haven't done anything --- the DVI output will look exactly the
+So far you haven't done anything — the DVI output will look exactly the
  same, since labels don't show up in the printed document.
  However, now that you have added a label, you can refer to that label with
  cross-references.
  We'll do that next.
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Your first cross-reference
 \end_layout
 
 \begin_layout Standard
-Place the cursor somewhere in Section
+Place the cursor somewhere in section
 \begin_inset space ~
 \end_inset
 
@@ -2282,11 +2280,11 @@ If you want to know more about this document, then see
 \begin_inset Newline newline
 \end_inset
 
-Section , which can be found on page .
+section, which can be found on page.
 \end_layout
 
 \begin_layout Standard
-Now --- with the cursor after the word 
+Now set the cursor after the word 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2294,7 +2292,7 @@ section
 \begin_inset Quotes erd
 \end_inset
 
- --- choose 
+ and choose 
 \family sans
 Insert\SpecialChar \menuseparator
 Cross
@@ -2366,6 +2364,22 @@ Section
 \end_layout
 
 \begin_layout Standard
+Alternatively to that method, you can right-click on a label and use in
+ the appearing context menu 
+\family sans
+Copy as Reference
+\family default
+.
+ The cross-reference to this label is now in the clipboard and can be copied
+ to the actual cursor position via the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Paste
+\family default
+ (shortcut Ctrl+V).
+\end_layout
+
+\begin_layout Standard
 LyX puts the references in a box right where the cursor was.
  In the printed document, this reference marker will be replaced with either
  the page or section number (depending on what you selected in the 
@@ -2426,7 +2440,7 @@ Label
  will move the cursor to the referenced label.
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 More fun with labels
 \end_layout
 
@@ -2438,7 +2452,7 @@ We told you that LyX takes care about numbering cross-references; now you
 \end_inset
 
 2.
- Update the DVI view, and --- voilà! --- the section cross reference changed
+ Update the DVI view, and — voilà! — the section cross reference changed
  to 
 \begin_inset Quotes eld
 \end_inset
@@ -2596,8 +2610,8 @@ folding
 \end_inset
 
  the footnote.
- You can unfold the footnote at any time --- and re-edit its text, if you
- want --- by clicking again on the 
+ You can unfold the footnote at any time and re-edit its text by clicking
+ again on the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3336,8 +3350,8 @@ Esc
 \end_layout
 
 \begin_layout Standard
-Writing a subscript (index) is just as easy --- start one by typing the
- underscore key, 
+Writing a subscript (index) is just as easy — start one by typing the underscore
+ key, 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4537,12 +4551,12 @@ reference "sec:preamble"
 
 \end_inset
 
-), you can use any package you want --- although you won't have WYSIWYM
- support for that package's features.
+), you can use any package you want — although you won't have WYSIWYM support
+ for that package's features.
 \end_layout
 
 \begin_layout Subsection
-Importing LaTeX Documents --- 
+Importing LaTeX Documents — 
 \family typewriter
 tex2lyx
 \family default
@@ -4721,10 +4735,7 @@ LyX has support for BibTeX, which allows you to build databases of bibliographic
 al references to be used in multiple documents.
  Select 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
+Insert\SpecialChar \menuseparator
 List
 \begin_inset space ~
 \end_inset
@@ -4733,16 +4744,8 @@ List
 \begin_inset space ~
 \end_inset
 
-T
-\bar under
-O
-\bar default
-C\SpecialChar \menuseparator
-
-\bar under
-B
-\bar default
-ibTeX
+TOC\SpecialChar \menuseparator
+BibTeX
 \begin_inset space ~
 \end_inset
 
