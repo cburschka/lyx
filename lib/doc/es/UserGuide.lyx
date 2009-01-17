@@ -37,7 +37,7 @@
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX }}
+  {LyX}}
 
 % define a short command for \textvisiblespace
 \newcommand{\spce}{\textvisiblespace}
@@ -676,7 +676,7 @@ reference "sec:Clases-de-documento"
 \begin_layout Standard
 Nota: No hay «archivo predeterminado» ni documento «Sin título» ni «de inicio».
  A menos que indiques a LyX abrir un archivo o crear uno nuevo, este gran
- espacio en blanco es sólo eso --un gran espacio en blanco--.
+ espacio en blanco es sólo eso –un gran espacio en blanco–.
 \end_layout
 
 \begin_layout Standard
@@ -1681,7 +1681,7 @@ description "Tecla Mayúsculas"
 
 \end_inset
 
- --«shift»-- en los archivos de documentación).
+ –«shift»– en los archivos de documentación).
  Usada con cualquiera de las teclas de movimiento selecciona el texto entre
  las posiciones inicial y final del cursor.
 \end_layout
@@ -3281,7 +3281,7 @@ no
 
 \begin_layout Standard
 El espacio entre párrafos, así como el espacio entre líneas, entre encabezado
- y texto ---en definitiva, cada uno de los espacios para cada cosa--- están
+ y texto —en definitiva, cada uno de los espacios para cada cosa— están
  precodificados en LyX.
  Como ya hemos dicho, no debes preocuparte por el espaciado que hay que
  añadir en cada caso.
@@ -13850,18 +13850,43 @@ semirraya
 raya
 \emph default
  (longitud triple):
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 guión
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 -
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-hecho con 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+un 
 \begin_inset Quotes fld
 \end_inset
 
@@ -13876,106 +13901,129 @@ hecho con
 
 \end_layout
 
-\begin_layout Enumerate
+\end_inset
+</cell>
+</row>
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 semirraya
-\begin_inset space \hfill{}
+\end_layout
+
 \end_inset
-
---
-\begin_inset space \hfill{}
-\end_inset
-
-hecho con 
-\begin_inset Quotes fld
-\end_inset
-
-
-\family typewriter
--
-\begin_inset ERT
-status collapsed
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
+–
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
-\backslash
-/
+\begin_layout Plain Layout
+inserted
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+translate
 \end_layout
 
 \end_inset
 
--
-\family default
-
-\begin_inset Quotes frd
+ via
+\family sans
+ Insertar\SpecialChar \menuseparator
+Charácter
+\begin_inset space ~
 \end_inset
 
-
+especial\SpecialChar \menuseparator
+Símbolos
 \end_layout
 
-\begin_layout Enumerate
+\end_inset
+</cell>
+</row>
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 raya
-\begin_inset space \hfill{}
+\end_layout
+
 \end_inset
-
----
-\begin_inset space \hfill{}
-\end_inset
-
-hecho con 
-\begin_inset Quotes fld
-\end_inset
-
-
-\family typewriter
--
-\begin_inset ERT
-status collapsed
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-
-
-\backslash
-/
+—
 \end_layout
 
 \end_inset
-
--
-\begin_inset ERT
-status collapsed
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
+inserted
+\begin_inset Note Note
+status open
 
-
-\backslash
-/
+\begin_layout Plain Layout
+translate
 \end_layout
 
 \end_inset
 
--
-\family default
-
-\begin_inset Quotes frd
+ via 
+\family sans
+Insertar\SpecialChar \menuseparator
+Charácter
+\begin_inset space ~
 \end_inset
 
-
+especial\SpecialChar \menuseparator
+Símbolos
 \end_layout
 
-\begin_layout Enumerate
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 signo menos
-\begin_inset space \hfill{}
+\end_layout
+
 \end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
-
+\begin_layout Plain Layout
 \begin_inset Formula $-$
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 un 
 \begin_inset Quotes fld
 \end_inset
@@ -13991,8 +14039,30 @@ un
  en modo matemático
 \end_layout
 
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-Se generan insertando el carácter 
+
+\lang english
+You can alternatively generate the 
+\lang spanish
+semirraya y raya 
+\lang english
+by inserting
+\lang spanish
+ el carácter 
 \begin_inset Quotes fld
 \end_inset
 
@@ -14007,6 +14077,39 @@ Se generan insertando el carácter
  una, dos o tres veces.
  Automáticamente se convierten a una línea de longitud apropiada en la salida,
  aunque no se ve en LyX.
+ 
+\begin_inset Quotes fld
+\end_inset
+
+-
+\begin_inset space \thinspace{}
+\end_inset
+
+-
+\begin_inset Quotes frd
+\end_inset
+
+ 
+\lang english
+gives
+\lang spanish
+ una semirraya, 
+\begin_inset Quotes fld
+\end_inset
+
+-
+\begin_inset space \thinspace{}
+\end_inset
+
+-
+\begin_inset space \thinspace{}
+\end_inset
+
+-
+\begin_inset Quotes frd
+\end_inset
+
+ una raya.
 \end_layout
 
 \begin_layout Standard
@@ -14040,7 +14143,7 @@ guión
 \end_layout
 
 \begin_layout Enumerate
-De A--Z
+De A–Z
 \begin_inset space \hfill{}
 \end_inset
 
@@ -14053,7 +14156,7 @@ semirraya
 
 \begin_layout Enumerate
 Incisos y diálogos.
- ¡Oh! ---aquí hay rayas---.
+ ¡Oh! —aquí hay rayas—.
 \begin_inset space \hfill{}
 \end_inset
 
@@ -14245,7 +14348,7 @@ reference "sec:Código-TeX"
 \begin_layout Subsection
 Signos de puntuación
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Signos de puntuación
@@ -15769,8 +15872,8 @@ Esto es una nota al margen.
 
 \begin_layout Standard
 Estas notas salen en el margen derecho en documentos a una cara.
- En documentos a doble cara se muestran en el margen externo ---izquierdo
- en páginas pares, derecho en páginas impares---.
+ En documentos a doble cara se muestran en el margen externo —izquierdo
+ en páginas pares, derecho en páginas impares—.
  
 \end_layout
 
@@ -19766,7 +19869,7 @@ Flotantes ! Títulos
 
 \end_inset
 
- ---un cuadro gris con etiqueta en rojo---.
+ —un cuadro gris con etiqueta en rojo—.
 \end_layout
 
 \begin_layout Standard
@@ -34823,7 +34926,7 @@ ISO8859-2
 \begin_layout Itemize
 De 
 \family typewriter
-ISO8859--1
+ISO8859–1
 \family default
 :
 \end_layout
@@ -34889,7 +34992,7 @@ guión superior
 \begin_layout Itemize
 De 
 \family typewriter
-ISO8859--2
+ISO8859–2
 \family default
  a 
 \family typewriter
@@ -35740,7 +35843,7 @@ Ver
  contiene una lista de formatos en los que puedes ver el documento abierto
  con un programa externo.
  Las opciones de este menú no son las mismas en todas las instalaciones
- ---depende de los programas LaTeX que LyX encontró durante su configuración---.
+ —depende de los programas LaTeX que LyX encontró durante su configuración—.
  Todos los formatos posibles se describen en la sección
 \begin_inset space ~
 \end_inset
