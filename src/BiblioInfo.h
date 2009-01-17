@@ -89,6 +89,8 @@ private:
 	docstring all_data_;
 	/// the BibTeX entry type (article, book, incollection, ...)
 	docstring entry_type_;
+	/// a cache for getInfo()
+	mutable docstring info_;
 	/// our map: <field, value>
 	std::map <docstring, docstring> bimap_;
 };
