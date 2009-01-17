@@ -5,6 +5,5 @@
 # Copyright (c) 2008, 2009 Kornel Benko, <Kornel.Benko@berlin.de>
 #
 
-set(_project "lyx2lyx")
+set(_project "scripts")
 include(../PyCompile)
-

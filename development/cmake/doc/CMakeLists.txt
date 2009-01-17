@@ -38,5 +38,3 @@ endforeach(_rel_doc)
 
 ADD_CUSTOM_TARGET(doc ALL DEPENDS ${_docs})
 
-
-
