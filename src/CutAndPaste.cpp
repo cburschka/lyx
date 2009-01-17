@@ -687,6 +687,20 @@ void copySelection(Cursor const & cur)
 }
 
 
+void copyInset(Cursor const & cur, Inset * inset, docstring const & plaintext)
+{
+	ParagraphList pars;
+	Paragraph par;
+	BufferParams const & bp = cur.buffer().params();
+	par.setLayout(bp.documentClass().plainLayout());
+	par.insertInset(0, inset, Change(Change::UNCHANGED));
+	pars.push_back(par);
+	theCuts.push(make_pair(pars, bp.documentClassPtr()));
+
+	// stuff the selection onto the X clipboard, from an explicit copy request
+	putClipboard(theCuts[0].first, theCuts[0].second, plaintext);
+}
+
 namespace {
 
 void copySelectionToStack(Cursor const & cur, CutStack & cutstack)

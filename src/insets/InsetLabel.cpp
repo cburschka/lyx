@@ -17,8 +17,10 @@
 #include "buffer_funcs.h"
 #include "Buffer.h"
 #include "BufferView.h"
+#include "CutAndPaste.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "InsetIterator.h"
 #include "ParIterator.h"
 #include "sgml.h"
@@ -134,6 +136,23 @@ void InsetLabel::addToToc(DocIterator const & cpit)
 }
 
 
+bool InsetLabel::getStatus(Cursor & cur, FuncRequest const & cmd,
+			   FuncStatus & status) const
+{
+	bool enabled;
+	switch (cmd.action) {
+	case LFUN_COPY_LABEL_AS_REF:
+		enabled = true;
+		break;
+	default:
+		return InsetCommand::getStatus(cur, cmd, status);
+	}
+
+	status.setEnabled(enabled);
+	return true;
+}
+
+
 void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
@@ -148,6 +167,14 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		if (p["name"] != params()["name"])
 			updateCommand(p["name"]);
+		break;
+	}
+
+	case LFUN_COPY_LABEL_AS_REF: {
+		InsetCommandParams p(REF_CODE, "ref");
+		p["reference"] = getParam("name");
+		cap::clearSelection();
+		cap::copyInset(cur, new InsetRef(cur.buffer(), p), getParam("name"));
 		break;
 	}
 

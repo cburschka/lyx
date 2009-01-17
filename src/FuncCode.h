@@ -412,6 +412,8 @@ enum FuncCode
 	LFUN_TAB_INSERT,
 	LFUN_TAB_DELETE,
 	LFUN_VC_COMMAND,
+	LFUN_COPY_LABEL_AS_REF,
+
 	LFUN_LASTACTION                  // end of the table
 };
 

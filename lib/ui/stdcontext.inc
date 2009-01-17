@@ -90,6 +90,8 @@ Menuset
 		Item "Next Cross-Reference|N" "reference-next"
 		Item "Go back to Reference|G" "bookmark-goto 0"
 		Separator
+		Item "Copy as Reference|C" "copy-label-as-reference"
+		Separator
 		Item "Settings...|S" "next-inset-toggle"
 	End
 

@@ -56,6 +56,8 @@ public:
 	void addToToc(DocIterator const &);
 	///
 	void updateCommand(docstring const & new_label, bool updaterefs = true);
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus & status) const;
 protected:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
