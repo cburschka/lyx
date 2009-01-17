@@ -892,6 +892,10 @@ string FileName::guessFormatFromContents() const
 			format = "fits";
 	}
 
+	// Dia knows also compressed form
+	if ((format == "gzip") && (!compare_ascii_no_case(extension(), "dia")))
+		format="dia";
+
 	if (!format.empty()) {
 		LYXERR(Debug::GRAPHICS, "Recognised Fileformat: " << format);
 		return format;
