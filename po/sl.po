@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-12 02:55+0100\n"
+"POT-Creation-Date: 2009-01-17 19:38+0100\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -67,7 +67,7 @@ msgstr "Povzetek"
 #: src/frontends/qt4/ui/CitationUi.ui:438
 #: src/frontends/qt4/ui/DocumentUi.ui:135 src/frontends/qt4/ui/ERTUi.ui:90
 #: src/frontends/qt4/ui/ExternalUi.ui:605 src/frontends/qt4/ui/FloatUi.ui:68
-#: src/frontends/qt4/ui/GraphicsUi.ui:71 src/frontends/qt4/ui/HSpaceUi.ui:151
+#: src/frontends/qt4/ui/GraphicsUi.ui:721 src/frontends/qt4/ui/HSpaceUi.ui:151
 #: src/frontends/qt4/ui/HyperlinkUi.ui:140
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/LabelUi.ui:82
 #: src/frontends/qt4/ui/ListingsUi.ui:529
@@ -86,7 +86,7 @@ msgstr "&V redu"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:549 src/Buffer.cpp:851
 #: src/Buffer.cpp:2552 src/Buffer.cpp:2576 src/Buffer.cpp:2611
-#: src/LyXFunc.cpp:683 src/LyXFunc.cpp:822 src/LyXFunc.cpp:996
+#: src/LyXFunc.cpp:692 src/LyXFunc.cpp:831 src/LyXFunc.cpp:1005
 #: src/LyXVC.cpp:181 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1254
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -178,8 +178,7 @@ msgid "&Rescan"
 msgstr ""
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:46 src/frontends/qt4/ui/BibtexUi.ui:97
-#: src/frontends/qt4/ui/ExternalUi.ui:78
-#: src/frontends/qt4/ui/GraphicsUi.ui:151
+#: src/frontends/qt4/ui/ExternalUi.ui:78 src/frontends/qt4/ui/GraphicsUi.ui:58
 #: src/frontends/qt4/ui/IncludeUi.ui:329 src/frontends/qt4/ui/LaTeXUi.ui:184
 #: src/frontends/qt4/ui/PrintUi.ui:313
 msgid "&Browse..."
@@ -200,7 +199,7 @@ msgstr "&Dodaj"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:78
 #: src/frontends/qt4/ui/LabelUi.ui:92 src/frontends/qt4/ui/NomenclUi.ui:105
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
-#: src/LyXFunc.cpp:792 src/buffer_funcs.cpp:107
+#: src/LyXFunc.cpp:801 src/buffer_funcs.cpp:107
 #: src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
 msgstr "Prekliči"
@@ -323,7 +322,7 @@ msgid "Left"
 msgstr "Levo"
 
 #: src/frontends/qt4/ui/BoxUi.ui:70 src/frontends/qt4/ui/TabularUi.ui:147
-#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
+#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
 #: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:713
 msgid "Center"
 msgstr "Sredina"
@@ -389,7 +388,7 @@ msgstr "&Vodoravno:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:202 src/frontends/qt4/ui/CitationUi.ui:415
 #: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
-#: src/frontends/qt4/ui/GraphicsUi.ui:42
+#: src/frontends/qt4/ui/GraphicsUi.ui:692
 #: src/frontends/qt4/ui/ParagraphUi.ui:59 src/frontends/qt4/ui/PrefsUi.ui:47
 #: src/frontends/qt4/ui/WrapUi.ui:121
 msgid "&Restore"
@@ -398,7 +397,7 @@ msgstr "&Obnovi"
 #: src/frontends/qt4/ui/BoxUi.ui:247 src/frontends/qt4/ui/CharacterUi.ui:380
 #: src/frontends/qt4/ui/DocumentUi.ui:145
 #: src/frontends/qt4/ui/ExternalUi.ui:615 src/frontends/qt4/ui/FloatUi.ui:78
-#: src/frontends/qt4/ui/GraphicsUi.ui:90 src/frontends/qt4/ui/HSpaceUi.ui:164
+#: src/frontends/qt4/ui/GraphicsUi.ui:742 src/frontends/qt4/ui/HSpaceUi.ui:164
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/ParagraphUi.ui:92 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
@@ -445,21 +444,21 @@ msgstr ""
 #: src/frontends/qt4/ui/BoxUi.ui:361 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98 src/frontends/qt4/ui/TabularUi.ui:903
 #: src/frontends/qt4/ui/TabularUi.ui:922 src/frontends/qt4/ui/TabularUi.ui:970
-#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:159
-#: src/frontends/qt4/GuiBox.cpp:326 src/frontends/qt4/GuiBox.cpp:458
-#: src/frontends/qt4/GuiDocument.cpp:89
+#: src/frontends/qt4/GuiBox.cpp:159 src/frontends/qt4/GuiBox.cpp:324
+#: src/frontends/qt4/GuiBox.cpp:452 src/frontends/qt4/GuiDocument.cpp:89
+#: src/frontends/qt4/GuiGraphics.cpp:633
 msgid "None"
 msgstr "Nič"
 
-#: src/frontends/qt4/ui/BoxUi.ui:366 src/frontends/qt4/GuiBox.cpp:327
-#: src/frontends/qt4/GuiBox.cpp:450 src/frontends/qt4/GuiBox.cpp:459
+#: src/frontends/qt4/ui/BoxUi.ui:366 src/frontends/qt4/GuiBox.cpp:325
+#: src/frontends/qt4/GuiBox.cpp:444 src/frontends/qt4/GuiBox.cpp:453
 #: src/insets/InsetBox.cpp:148
 #, fuzzy
 msgid "Parbox"
 msgstr "Del"
 
-#: src/frontends/qt4/ui/BoxUi.ui:371 src/frontends/qt4/GuiBox.cpp:451
-#: src/frontends/qt4/GuiBox.cpp:460 src/insets/InsetBox.cpp:150
+#: src/frontends/qt4/ui/BoxUi.ui:371 src/frontends/qt4/GuiBox.cpp:445
+#: src/frontends/qt4/GuiBox.cpp:454 src/insets/InsetBox.cpp:150
 msgid "Minipage"
 msgstr "Ministran"
 
@@ -541,7 +540,7 @@ msgstr "Ve&likost:"
 #: src/frontends/qt4/GuiDocument.cpp:1164
 #: src/frontends/qt4/GuiDocument.cpp:1209
 #: src/frontends/qt4/GuiDocument.cpp:2261 src/frontends/qt4/GuiExternal.cpp:75
-#: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiListings.cpp:152
+#: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiListings.cpp:152
 #: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1712
 msgid "Default"
 msgstr "privzeta"
@@ -731,7 +730,7 @@ msgid "Apply changes immediately"
 msgstr "Samodejni uporabi vsako spremembo"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:390 src/frontends/qt4/ui/ERTUi.ui:100
-#: src/frontends/qt4/ui/GraphicsUi.ui:109
+#: src/frontends/qt4/ui/GraphicsUi.ui:763
 #: src/frontends/qt4/ui/MathMatrixUi.ui:174 src/frontends/qt4/ui/NoteUi.ui:28
 #: src/frontends/qt4/ui/PrintUi.ui:243
 #: src/frontends/qt4/ui/TabularCreateUi.ui:72
@@ -976,7 +975,7 @@ msgid "Filename"
 msgstr "Ime datoteke"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:65
-#: src/frontends/qt4/ui/GraphicsUi.ui:353
+#: src/frontends/qt4/ui/GraphicsUi.ui:266
 #: src/frontends/qt4/ui/IncludeUi.ui:259 src/frontends/qt4/ui/PrintUi.ui:293
 msgid "&File:"
 msgstr "&Datoteka:"
@@ -1000,7 +999,7 @@ msgid "Available templates"
 msgstr "Dostopni vzorci"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:148
-#: src/frontends/qt4/ui/GraphicsUi.ui:549
+#: src/frontends/qt4/ui/GraphicsUi.ui:448
 #, fuzzy
 msgid "LaTe&X and LyX options"
 msgstr "&Izbire za LaTeX"
@@ -1026,13 +1025,13 @@ msgstr "&Prikaži v LyXu"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:221
 #: src/frontends/qt4/ui/ExternalUi.ui:243
-#: src/frontends/qt4/ui/GraphicsUi.ui:679
-#: src/frontends/qt4/ui/GraphicsUi.ui:686
+#: src/frontends/qt4/ui/GraphicsUi.ui:559
+#: src/frontends/qt4/ui/GraphicsUi.ui:566
 msgid "Percentage to scale by in LyX"
 msgstr "Odstotek raztega v LyXu"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:224
-#: src/frontends/qt4/ui/GraphicsUi.ui:689
+#: src/frontends/qt4/ui/GraphicsUi.ui:569
 #, fuzzy
 msgid "Sca&le on Screen (%):"
 msgstr "&brez serifov:"
@@ -1049,15 +1048,15 @@ msgstr "Država"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:345
 #: src/frontends/qt4/ui/ExternalUi.ui:375
-#: src/frontends/qt4/ui/GraphicsUi.ui:327
-#: src/frontends/qt4/ui/GraphicsUi.ui:334
+#: src/frontends/qt4/ui/GraphicsUi.ui:240
+#: src/frontends/qt4/ui/GraphicsUi.ui:247
 msgid "Angle to rotate image by"
 msgstr "Kot zasuka slike"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:355
 #: src/frontends/qt4/ui/ExternalUi.ui:368
-#: src/frontends/qt4/ui/GraphicsUi.ui:301
-#: src/frontends/qt4/ui/GraphicsUi.ui:308
+#: src/frontends/qt4/ui/GraphicsUi.ui:212
+#: src/frontends/qt4/ui/GraphicsUi.ui:219
 msgid "The origin of the rotation"
 msgstr "Izhodišče zasuka"
 
@@ -1076,12 +1075,12 @@ msgid "Scale"
 msgstr "Razteg%"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:417
-#: src/frontends/qt4/ui/GraphicsUi.ui:220
+#: src/frontends/qt4/ui/GraphicsUi.ui:131
 msgid "Height of image in output"
 msgstr "Višina slike na izhodu"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:427
-#: src/frontends/qt4/ui/GraphicsUi.ui:188
+#: src/frontends/qt4/ui/GraphicsUi.ui:97
 msgid "Width of image in output"
 msgstr "Širina slike na izhodu"
 
@@ -1090,7 +1089,7 @@ msgid "Maintain aspect ratio with largest dimension"
 msgstr "Ohrani pojavno razmerje pri večjih dimenzijah"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:453
-#: src/frontends/qt4/ui/GraphicsUi.ui:266
+#: src/frontends/qt4/ui/GraphicsUi.ui:177
 msgid "&Maintain aspect ratio"
 msgstr "&Ohrani pojavno razmerje"
 
@@ -1100,17 +1099,17 @@ msgid "Crop"
 msgstr "Prepiši"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:491
-#: src/frontends/qt4/ui/GraphicsUi.ui:404
+#: src/frontends/qt4/ui/GraphicsUi.ui:309
 msgid "Clip to bounding box values"
 msgstr "Obreži v vrednosti okvirne škatle"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:494
-#: src/frontends/qt4/ui/GraphicsUi.ui:407
+#: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
 msgstr "Obreži v &okvirno škatlo"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:501
-#: src/frontends/qt4/ui/GraphicsUi.ui:438
+#: src/frontends/qt4/ui/GraphicsUi.ui:345
 msgid "&Left bottom:"
 msgstr "&Levo dno:"
 
@@ -1119,17 +1118,17 @@ msgid "x"
 msgstr "x"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:521
-#: src/frontends/qt4/ui/GraphicsUi.ui:476
+#: src/frontends/qt4/ui/GraphicsUi.ui:383
 msgid "Right &top:"
 msgstr "Desni &vrh:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:531
-#: src/frontends/qt4/ui/GraphicsUi.ui:530
+#: src/frontends/qt4/ui/GraphicsUi.ui:437
 msgid "Get bounding box from the (EPS) file"
 msgstr "Okvirno škatlo vzemi iz datoteke (EPS)"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:534
-#: src/frontends/qt4/ui/GraphicsUi.ui:533
+#: src/frontends/qt4/ui/GraphicsUi.ui:440
 #, fuzzy
 msgid "&Get from File"
 msgstr "&Vzemi iz datoteke"
@@ -1277,140 +1276,150 @@ msgstr "Razteg%"
 msgid "Scale the Typewriter font to match the base font's dimensions"
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:136
+#: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
 msgstr "&Grafika"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:148
+#: src/frontends/qt4/ui/GraphicsUi.ui:55
 msgid "Select an image file"
 msgstr "Izberite ime datoteke s sliko"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:158
+#: src/frontends/qt4/ui/GraphicsUi.ui:65
 #, fuzzy
 msgid "Output Size"
 msgstr "Izhod"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:230
+#: src/frontends/qt4/ui/GraphicsUi.ui:141
 msgid "Sets height of graphic. Leave unchecked to set automatically."
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:233
+#: src/frontends/qt4/ui/GraphicsUi.ui:144
 #, fuzzy
 msgid "Set &height:"
 msgstr "&Višina glave:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:240
+#: src/frontends/qt4/ui/GraphicsUi.ui:151
 #, fuzzy
 msgid "&Scale Graphics (%):"
 msgstr "&Grafika"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:250
+#: src/frontends/qt4/ui/GraphicsUi.ui:161
 msgid "Sets width of graphic. Leave unchecked to set automatically."
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:253
+#: src/frontends/qt4/ui/GraphicsUi.ui:164
 #, fuzzy
 msgid "Set &width:"
 msgstr "Ši&rina:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:263
+#: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Scale image to maximum size not exceeding width and height"
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:276
+#: src/frontends/qt4/ui/GraphicsUi.ui:187
 #, fuzzy
 msgid "Rotate Graphics"
 msgstr "Grafika"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:291
+#: src/frontends/qt4/ui/GraphicsUi.ui:202
 msgid "Check to change the order of rotating and scaling"
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:294
+#: src/frontends/qt4/ui/GraphicsUi.ui:205
 #, fuzzy
 msgid "Ro&tate after scaling"
 msgstr "&Zavrti tabelo"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:311
+#: src/frontends/qt4/ui/GraphicsUi.ui:222
 #, fuzzy
 msgid "Or&igin:"
 msgstr "&Izhodišče:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:337
+#: src/frontends/qt4/ui/GraphicsUi.ui:250
 msgid "A&ngle (Degrees):"
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:350
-#: src/frontends/qt4/ui/GraphicsUi.ui:363
+#: src/frontends/qt4/ui/GraphicsUi.ui:263
+#: src/frontends/qt4/ui/GraphicsUi.ui:276
 msgid "File name of image"
 msgstr "Ime datoteke s sliko"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:379
+#: src/frontends/qt4/ui/GraphicsUi.ui:284
 msgid "&Clipping"
 msgstr "&Obrezovanje"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:486
-#: src/frontends/qt4/ui/GraphicsUi.ui:493
+#: src/frontends/qt4/ui/GraphicsUi.ui:393
+#: src/frontends/qt4/ui/GraphicsUi.ui:400
 #, fuzzy
 msgid "y:"
 msgstr "y"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:500
-#: src/frontends/qt4/ui/GraphicsUi.ui:507
+#: src/frontends/qt4/ui/GraphicsUi.ui:407
+#: src/frontends/qt4/ui/GraphicsUi.ui:414
 #, fuzzy
 msgid "x:"
 msgstr "x"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:555
-#: src/frontends/qt4/ui/GraphicsUi.ui:574
-msgid "Additional LaTeX options"
-msgstr "Dodatne izbire za LaTeX"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:558
-msgid "LaTeX &options:"
-msgstr "&Izbire za LaTeX"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:581
-msgid "Draft mode"
-msgstr "Način osnutka"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:584
-msgid "&Draft mode"
-msgstr "Način &osnutka"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:591
+#: src/frontends/qt4/ui/GraphicsUi.ui:460
 msgid "Don't uncompress image before exporting to LaTeX"
 msgstr "Ne odkomprimiraj slike preden se izvozi v LaTeX"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:594
+#: src/frontends/qt4/ui/GraphicsUi.ui:463
 msgid "Don't un&zip on export"
 msgstr "Ne od&zipaj pri izvozu"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:604
+#: src/frontends/qt4/ui/GraphicsUi.ui:491
+#: src/frontends/qt4/ui/GraphicsUi.ui:498
+msgid "Additional LaTeX options"
+msgstr "Dodatne izbire za LaTeX"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:501
+msgid "LaTeX &options:"
+msgstr "&Izbire za LaTeX"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:527
 msgid ""
 "Enable LyX to preview this graphics, only if graphics previewing is not "
 "disabled at application level (see Preference dialog)."
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:607
+#: src/frontends/qt4/ui/GraphicsUi.ui:530
 #, fuzzy
 msgid "Sho&w in LyX"
 msgstr "&Prikaži v LyXu"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:644
-msgid "Graphics having the same group name will share the same parameters"
+#: src/frontends/qt4/ui/GraphicsUi.ui:595
+msgid "Assign the graphic to a group of graphics that share the same settings"
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:598
+#, fuzzy
+msgid "Graphics Group"
+msgstr "Grafika"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:637
+msgid "A&ssigned to group:"
 msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:647
-#, fuzzy
-msgid "Grou&p Name:"
-msgstr "&Ime:"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:663
-msgid ""
-"Group Name to be set up from the current parameters. Use context menu to "
-"assign the existing one."
+msgid "Click to define a new graphics group."
 msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:650
+msgid "O&pen new group..."
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:657
+msgid "Select an existing group for the current graphics."
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:670
+msgid "Draft mode"
+msgstr "Način osnutka"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:673
+msgid "&Draft mode"
+msgstr "Način &osnutka"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"
@@ -1467,8 +1476,8 @@ msgstr "&Datoteka:"
 msgid "&Protect:"
 msgstr "&Bližnjica:"
 
-#: src/frontends/qt4/ui/HSpaceUi.ui:133 src/frontends/qt4/GuiHSpace.cpp:97
-#: src/frontends/qt4/GuiHSpace.cpp:122
+#: src/frontends/qt4/ui/HSpaceUi.ui:133 src/frontends/qt4/GuiHSpace.cpp:95
+#: src/frontends/qt4/GuiHSpace.cpp:120
 #, fuzzy
 msgid "Insert the spacing even after a line break"
 msgstr "Vstavi sliko"
@@ -1598,8 +1607,8 @@ msgstr "Vhod"
 msgid "Verbatim"
 msgstr "Dobesedno"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:931
-#: src/insets/InsetInclude.cpp:937
+#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:938
+#: src/insets/InsetInclude.cpp:944
 #, fuzzy
 msgid "Program Listing"
 msgstr "Inicializacija programa"
@@ -2234,8 +2243,8 @@ msgstr "Dvojni"
 #: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
 #: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
 #: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:578
-#: src/frontends/qt4/GuiDocument.cpp:681 src/frontends/qt4/GuiHSpace.cpp:152
-#: src/frontends/qt4/GuiHSpace.cpp:163
+#: src/frontends/qt4/GuiDocument.cpp:681 src/frontends/qt4/GuiHSpace.cpp:150
+#: src/frontends/qt4/GuiHSpace.cpp:161
 msgid "Custom"
 msgstr "Po meri"
 
@@ -3320,7 +3329,7 @@ msgstr "Br&skaj..."
 msgid "&User interface file:"
 msgstr "Datoteka z &uporabniškim vmesnikom:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:682
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:691
 #: src/frontends/qt4/GuiView.cpp:1796
 msgid "&Save"
 msgstr "&Shrani"
@@ -10501,7 +10510,7 @@ msgstr "kot črte|k"
 msgid "Selection as Paragraphs|P"
 msgstr "kot odstavke|o"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:345 lib/ui/stdmenus.inc:161
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:161
 msgid "Multicolumn|M"
 msgstr "Večstolpčna|s"
 
@@ -10526,7 +10535,7 @@ msgstr "Črta desno|d"
 msgid "Alignment|i"
 msgstr "Poravnava|P"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:179
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:362 lib/ui/stdmenus.inc:179
 #, fuzzy
 msgid "Add Row|A"
 msgstr "Dodaj vrsto|D"
@@ -10543,7 +10552,7 @@ msgstr "Prepiši vrstico"
 msgid "Swap Rows"
 msgstr "Zamenjaj vrstici"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:184
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:184
 msgid "Add Column|u"
 msgstr "Dodaj stolpec|o"
 
@@ -10559,32 +10568,32 @@ msgstr "Prepiši stolpec"
 msgid "Swap Columns"
 msgstr "Zamenjaj stolpca"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:352 lib/ui/stdmenus.inc:171
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:354 lib/ui/stdmenus.inc:171
 #, fuzzy
 msgid "Left|L"
 msgstr "Levo|#L"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:353 lib/ui/stdmenus.inc:172
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:355 lib/ui/stdmenus.inc:172
 #, fuzzy
 msgid "Center|C"
 msgstr "Sredina"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:354 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:173
 #, fuzzy
 msgid "Right|R"
 msgstr "Desno|#D"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:175
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:358 lib/ui/stdmenus.inc:175
 #, fuzzy
 msgid "Top|T"
 msgstr "Vrh|#V"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:357 lib/ui/stdmenus.inc:176
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:359 lib/ui/stdmenus.inc:176
 #, fuzzy
 msgid "Middle|M"
 msgstr "Sredina"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:358 lib/ui/stdmenus.inc:177
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:177
 #, fuzzy
 msgid "Bottom|B"
 msgstr "Dno|#D"
@@ -10617,7 +10626,7 @@ msgstr "Poravnava|P"
 msgid "Add Row|R"
 msgstr "Dodaj vrsto|D"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:361 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:363 lib/ui/stdmenus.inc:180
 msgid "Delete Row|D"
 msgstr "Odstrani vrsto|d"
 
@@ -10625,7 +10634,7 @@ msgstr "Odstrani vrsto|d"
 msgid "Add Column|C"
 msgstr "Dodaj stolpec|o"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:185
 msgid "Delete Column|e"
 msgstr "Odstrani stolpec|r"
 
@@ -10831,7 +10840,7 @@ msgstr "Zaščiten presledek|Z"
 msgid "Inter-word Space|w"
 msgstr ""
 
-#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:172 lib/ui/stdcontext.inc:195
+#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:174 lib/ui/stdcontext.inc:197
 #: lib/ui/stdmenus.inc:368
 msgid "Thin Space|T"
 msgstr ""
@@ -11238,7 +11247,7 @@ msgstr "Prikrojitev LaTeXa|L"
 msgid "About LyX|X"
 msgstr "O LyXu|X"
 
-#: lib/ui/classic.ui:425 src/frontends/qt4/GuiAbout.cpp:99
+#: lib/ui/classic.ui:425 src/frontends/qt4/GuiAbout.cpp:123
 msgid "About LyX"
 msgstr "O programu LyX"
 
@@ -11401,13 +11410,13 @@ msgstr "<sklic> na strani <stran>"
 msgid "Formatted reference|t"
 msgstr "Formatiran sklic"
 
-#: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:103
-#: lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:125
-#: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:150
-#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:206
-#: lib/ui/stdcontext.inc:233 lib/ui/stdcontext.inc:315
-#: lib/ui/stdcontext.inc:323 lib/ui/stdcontext.inc:335
-#: lib/ui/stdcontext.inc:370 lib/ui/stdcontext.inc:379 lib/ui/stdmenus.inc:458
+#: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:95 lib/ui/stdcontext.inc:105
+#: lib/ui/stdcontext.inc:113 lib/ui/stdcontext.inc:127
+#: lib/ui/stdcontext.inc:134 lib/ui/stdcontext.inc:152
+#: lib/ui/stdcontext.inc:190 lib/ui/stdcontext.inc:208
+#: lib/ui/stdcontext.inc:235 lib/ui/stdcontext.inc:317
+#: lib/ui/stdcontext.inc:325 lib/ui/stdcontext.inc:337
+#: lib/ui/stdcontext.inc:372 lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:458
 #, fuzzy
 msgid "Settings...|S"
 msgstr "Nastavitve"
@@ -11416,437 +11425,442 @@ msgstr "Nastavitve"
 msgid "Go back to Reference|G"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:113
+#: lib/ui/stdcontext.inc:93
+#, fuzzy
+msgid "Copy as Reference|C"
+msgstr "Navzkrižni sklic...|s"
+
+#: lib/ui/stdcontext.inc:115
 #, fuzzy
 msgid "Edit Database(s) externally...|x"
 msgstr "Uredi datoteko zunanje"
 
-#: lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:311
+#: lib/ui/stdcontext.inc:123 lib/ui/stdcontext.inc:313
 #, fuzzy
 msgid "Open Inset|O"
 msgstr "Odprta zabeležka"
 
-#: lib/ui/stdcontext.inc:122 lib/ui/stdcontext.inc:312
+#: lib/ui/stdcontext.inc:124 lib/ui/stdcontext.inc:314
 #, fuzzy
 msgid "Close Inset|C"
 msgstr "Zapri|Z"
 
-#: lib/ui/stdcontext.inc:124 lib/ui/stdcontext.inc:130
-#: lib/ui/stdcontext.inc:149 lib/ui/stdcontext.inc:162
-#: lib/ui/stdcontext.inc:314
+#: lib/ui/stdcontext.inc:126 lib/ui/stdcontext.inc:132
+#: lib/ui/stdcontext.inc:151 lib/ui/stdcontext.inc:164
+#: lib/ui/stdcontext.inc:316
 msgid "Dissolve Inset|D"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:129
+#: lib/ui/stdcontext.inc:131
 #, fuzzy
 msgid "Toggle Label|L"
 msgstr "&Spremeni vse"
 
-#: lib/ui/stdcontext.inc:140
+#: lib/ui/stdcontext.inc:142
 #, fuzzy
 msgid "Frameless|l"
 msgstr "Parametri"
 
-#: lib/ui/stdcontext.inc:141
+#: lib/ui/stdcontext.inc:143
 #, fuzzy
 msgid "Simple frame|f"
 msgstr "Vstavi oznako"
 
-#: lib/ui/stdcontext.inc:142
+#: lib/ui/stdcontext.inc:144
 msgid "Simple frame, page breaks|p"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:143
+#: lib/ui/stdcontext.inc:145
 msgid "Oval, thin|O"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:144
+#: lib/ui/stdcontext.inc:146
 msgid "Oval, thick|v"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:145
+#: lib/ui/stdcontext.inc:147
 msgid "Drop Shadow|w"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:146
+#: lib/ui/stdcontext.inc:148
 #, fuzzy
 msgid "Shaded background|b"
 msgstr "ozadje opombe"
 
-#: lib/ui/stdcontext.inc:147
+#: lib/ui/stdcontext.inc:149
 #, fuzzy
 msgid "Double frame|D"
 msgstr "dvojni"
 
-#: lib/ui/stdcontext.inc:158 lib/ui/stdmenus.inc:432
+#: lib/ui/stdcontext.inc:160 lib/ui/stdmenus.inc:432
 #, fuzzy
 msgid "LyX Note|N"
 msgstr "Opomba|O"
 
-#: lib/ui/stdcontext.inc:159 lib/ui/stdmenus.inc:433
+#: lib/ui/stdcontext.inc:161 lib/ui/stdmenus.inc:433
 #, fuzzy
 msgid "Comment|C"
 msgstr "Komentar"
 
-#: lib/ui/stdcontext.inc:160 lib/ui/stdmenus.inc:434
+#: lib/ui/stdcontext.inc:162 lib/ui/stdmenus.inc:434
 msgid "Greyed Out|G"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:170
+#: lib/ui/stdcontext.inc:172
 #, fuzzy
 msgid "Interword Space|w"
 msgstr "na strani <stran>"
 
-#: lib/ui/stdcontext.inc:171
+#: lib/ui/stdcontext.inc:173
 #, fuzzy
 msgid "Protected Space|o"
 msgstr "Zaščiten presledek|Z"
 
-#: lib/ui/stdcontext.inc:173 lib/ui/stdcontext.inc:198
+#: lib/ui/stdcontext.inc:175 lib/ui/stdcontext.inc:200
 #, fuzzy
 msgid "Negative Thin Space|N"
 msgstr "navadna"
 
-#: lib/ui/stdcontext.inc:174 lib/ui/stdcontext.inc:201
+#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:203
 msgid "Half Quad Space (Enskip)|k"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:175
+#: lib/ui/stdcontext.inc:177
 #, fuzzy
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Zaščiten presledek|Z"
 
-#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:202
+#: lib/ui/stdcontext.inc:178 lib/ui/stdcontext.inc:204
 #, fuzzy
 msgid "Quad Space|Q"
 msgstr "&Nadomesti"
 
-#: lib/ui/stdcontext.inc:177 lib/ui/stdcontext.inc:203
+#: lib/ui/stdcontext.inc:179 lib/ui/stdcontext.inc:205
 #, fuzzy
 msgid "Double Quad Space|u"
 msgstr "&Nadomesti"
 
-#: lib/ui/stdcontext.inc:178
+#: lib/ui/stdcontext.inc:180
 #, fuzzy
 msgid "Horizontal Fill|F"
 msgstr "Vodoravna poravnava:|#r"
 
-#: lib/ui/stdcontext.inc:179
+#: lib/ui/stdcontext.inc:181
 #, fuzzy
 msgid "Protected Horizontal Fill|i"
 msgstr "Vodoravna poravnava:|#r"
 
-#: lib/ui/stdcontext.inc:180
+#: lib/ui/stdcontext.inc:182
 #, fuzzy
 msgid "Horizontal Fill (Dots)|D"
 msgstr "Vodoravna poravnava:|#r"
 
-#: lib/ui/stdcontext.inc:181
+#: lib/ui/stdcontext.inc:183
 #, fuzzy
 msgid "Horizontal Fill (Rule)|R"
 msgstr "Vodoravna poravnava:|#r"
 
-#: lib/ui/stdcontext.inc:182
+#: lib/ui/stdcontext.inc:184
 #, fuzzy
 msgid "Horizontal Fill (Left Arrow)|L"
 msgstr "Vodoravna poravnava:|#r"
 
-#: lib/ui/stdcontext.inc:183
+#: lib/ui/stdcontext.inc:185
 #, fuzzy
 msgid "Horizontal Fill (Right Arrow)|g"
 msgstr "Vodoravna poravnava:|#r"
 
-#: lib/ui/stdcontext.inc:184
+#: lib/ui/stdcontext.inc:186
 #, fuzzy
 msgid "Horizontal Fill (Up Brace)|p"
 msgstr "Vodoravna poravnava:|#r"
 
-#: lib/ui/stdcontext.inc:185
+#: lib/ui/stdcontext.inc:187
 #, fuzzy
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr "Vodoravna poravnava:|#r"
 
-#: lib/ui/stdcontext.inc:186 lib/ui/stdcontext.inc:204
+#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:206
 #, fuzzy
 msgid "Custom Length|C"
 msgstr "Komentar"
 
-#: lib/ui/stdcontext.inc:196
+#: lib/ui/stdcontext.inc:198
 #, fuzzy
 msgid "Medium Space|M"
 msgstr "navadna"
 
-#: lib/ui/stdcontext.inc:197
+#: lib/ui/stdcontext.inc:199
 #, fuzzy
 msgid "Thick Space|h"
 msgstr "navadna"
 
-#: lib/ui/stdcontext.inc:199
+#: lib/ui/stdcontext.inc:201
 #, fuzzy
 msgid "Negative Medium Space|u"
 msgstr "navadna"
 
-#: lib/ui/stdcontext.inc:200
+#: lib/ui/stdcontext.inc:202
 #, fuzzy
 msgid "Negative Thick Space|i"
 msgstr "navadna"
 
-#: lib/ui/stdcontext.inc:213
+#: lib/ui/stdcontext.inc:215
 #, fuzzy
 msgid "DefSkip|D"
 msgstr "Privzeti razmak"
 
-#: lib/ui/stdcontext.inc:214
+#: lib/ui/stdcontext.inc:216
 #, fuzzy
 msgid "SmallSkip|S"
 msgstr "Mali razmak"
 
-#: lib/ui/stdcontext.inc:215
+#: lib/ui/stdcontext.inc:217
 #, fuzzy
 msgid "MedSkip|M"
 msgstr "Srednji razmak"
 
-#: lib/ui/stdcontext.inc:216
+#: lib/ui/stdcontext.inc:218
 #, fuzzy
 msgid "BigSkip|B"
 msgstr "Velik razmak"
 
-#: lib/ui/stdcontext.inc:217
+#: lib/ui/stdcontext.inc:219
 #, fuzzy
 msgid "VFill|F"
 msgstr "VFill"
 
-#: lib/ui/stdcontext.inc:218
+#: lib/ui/stdcontext.inc:220
 #, fuzzy
 msgid "Custom|C"
 msgstr "Po meri"
 
-#: lib/ui/stdcontext.inc:220
+#: lib/ui/stdcontext.inc:222
 #, fuzzy
 msgid "Settings...|e"
 msgstr "Nastavitve"
 
-#: lib/ui/stdcontext.inc:227
+#: lib/ui/stdcontext.inc:229
 #, fuzzy
 msgid "Include|c"
 msgstr "Vključi"
 
-#: lib/ui/stdcontext.inc:228
+#: lib/ui/stdcontext.inc:230
 #, fuzzy
 msgid "Input|p"
 msgstr "Vhod"
 
-#: lib/ui/stdcontext.inc:229
+#: lib/ui/stdcontext.inc:231
 #, fuzzy
 msgid "Verbatim|V"
 msgstr "Dobesedno"
 
-#: lib/ui/stdcontext.inc:230
+#: lib/ui/stdcontext.inc:232
 msgid "Verbatim (marked blanks)|b"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:231
+#: lib/ui/stdcontext.inc:233
 #, fuzzy
 msgid "Listing|L"
 msgstr "Seznam"
 
-#: lib/ui/stdcontext.inc:235
+#: lib/ui/stdcontext.inc:237
 #, fuzzy
 msgid "Edit included file...|E"
 msgstr "Vključi datoteko...|V"
 
-#: lib/ui/stdcontext.inc:242 lib/ui/stdmenus.inc:378
+#: lib/ui/stdcontext.inc:244 lib/ui/stdmenus.inc:378
 #, fuzzy
 msgid "New Page|N"
 msgstr "Nova|N"
 
-#: lib/ui/stdcontext.inc:243 lib/ui/stdmenus.inc:379
+#: lib/ui/stdcontext.inc:245 lib/ui/stdmenus.inc:379
 #, fuzzy
 msgid "Page Break|a"
 msgstr "Prelomi &strani"
 
-#: lib/ui/stdcontext.inc:244 lib/ui/stdmenus.inc:380
+#: lib/ui/stdcontext.inc:246 lib/ui/stdmenus.inc:380
 #, fuzzy
 msgid "Clear Page|C"
 msgstr "Zaznamki|Z"
 
-#: lib/ui/stdcontext.inc:245 lib/ui/stdmenus.inc:381
+#: lib/ui/stdcontext.inc:247 lib/ui/stdmenus.inc:381
 msgid "Clear Double Page|D"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:252 lib/ui/stdmenus.inc:375
+#: lib/ui/stdcontext.inc:254 lib/ui/stdmenus.inc:375
 #, fuzzy
 msgid "Ragged Line Break|R"
 msgstr "Prelom vrstice|P"
 
-#: lib/ui/stdcontext.inc:253 lib/ui/stdmenus.inc:376
+#: lib/ui/stdcontext.inc:255 lib/ui/stdmenus.inc:376
 #, fuzzy
 msgid "Justified Line Break|J"
 msgstr "Prelom vrstice|P"
 
-#: lib/ui/stdcontext.inc:260 lib/ui/stdcontext.inc:306 lib/ui/stdmenus.inc:88
+#: lib/ui/stdcontext.inc:262 lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:88
 #: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:1034
 #: src/mathed/InsetMathNest.cpp:547
 msgid "Cut"
 msgstr "Izreži"
 
-#: lib/ui/stdcontext.inc:261 lib/ui/stdcontext.inc:307 lib/ui/stdmenus.inc:89
+#: lib/ui/stdcontext.inc:263 lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:89
 #: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:1039
 #: src/mathed/InsetMathNest.cpp:555
 msgid "Copy"
 msgstr "Prepiši"
 
-#: lib/ui/stdcontext.inc:262 lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:90
+#: lib/ui/stdcontext.inc:264 lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:90
 #: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:992
 #: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:527
 msgid "Paste"
 msgstr "Prilepi"
 
-#: lib/ui/stdcontext.inc:263 lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:91
+#: lib/ui/stdcontext.inc:265 lib/ui/stdcontext.inc:311 lib/ui/stdmenus.inc:91
 #, fuzzy
 msgid "Paste Recent|e"
 msgstr "Usredini|U"
 
-#: lib/ui/stdcontext.inc:265
+#: lib/ui/stdcontext.inc:267
 #, fuzzy
 msgid "Jump to Saved Bookmark|B"
 msgstr "Shrani zaznamek 1|S"
 
-#: lib/ui/stdcontext.inc:267 lib/ui/stdmenus.inc:98
+#: lib/ui/stdcontext.inc:269 lib/ui/stdmenus.inc:98
 #, fuzzy
 msgid "Move Paragraph Up|o"
 msgstr "Odstavek"
 
-#: lib/ui/stdcontext.inc:268 lib/ui/stdmenus.inc:99
+#: lib/ui/stdcontext.inc:270 lib/ui/stdmenus.inc:99
 #, fuzzy
 msgid "Move Paragraph Down|v"
 msgstr "Odstavek"
 
-#: lib/ui/stdcontext.inc:270
+#: lib/ui/stdcontext.inc:272
 #, fuzzy
 msgid "Promote Section|r"
 msgstr "Razdelek"
 
-#: lib/ui/stdcontext.inc:271
+#: lib/ui/stdcontext.inc:273
 #, fuzzy
 msgid "Demote Section|m"
 msgstr "Razdelek"
 
-#: lib/ui/stdcontext.inc:272
+#: lib/ui/stdcontext.inc:274
 #, fuzzy
 msgid "Move Section down|d"
 msgstr "Pomakni izbrani citat navzdol"
 
-#: lib/ui/stdcontext.inc:273
+#: lib/ui/stdcontext.inc:275
 #, fuzzy
 msgid "Move Section up|u"
 msgstr "izbor"
 
-#: lib/ui/stdcontext.inc:274
+#: lib/ui/stdcontext.inc:276
 #, fuzzy
 msgid "Insert Short Title|T"
 msgstr "Kratek naslov"
 
-#: lib/ui/stdcontext.inc:276
+#: lib/ui/stdcontext.inc:278
 #, fuzzy
 msgid "Apply Last Text Style|A"
 msgstr "Slog spisa"
 
-#: lib/ui/stdcontext.inc:277 lib/ui/stdmenus.inc:101
+#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:101
 #, fuzzy
 msgid "Text Style|S"
 msgstr "Slog spisa"
 
-#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:102
+#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:102
 #, fuzzy
 msgid "Paragraph Settings...|P"
 msgstr "Odstavek...|O"
 
-#: lib/ui/stdcontext.inc:280
+#: lib/ui/stdcontext.inc:282
 msgid "Fullscreen Mode"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:216
+#: lib/ui/stdcontext.inc:290 lib/ui/stdmenus.inc:216
 #: lib/ui/stdtoolbars.inc:171
 #, fuzzy
 msgid "Append Argument"
 msgstr "Manjkajoči argument"
 
-#: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:217
+#: lib/ui/stdcontext.inc:291 lib/ui/stdmenus.inc:217
 #: lib/ui/stdtoolbars.inc:170
 #, fuzzy
 msgid "Remove Last Argument"
 msgstr "Manjkajoči argument"
 
-#: lib/ui/stdcontext.inc:291 lib/ui/stdmenus.inc:219
+#: lib/ui/stdcontext.inc:293 lib/ui/stdmenus.inc:219
 #: lib/ui/stdtoolbars.inc:173
 msgid "Make First Non-Optional into Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:292 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:220
 #: lib/ui/stdtoolbars.inc:174
 msgid "Make Last Optional into Non-Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:293 lib/ui/stdmenus.inc:221
+#: lib/ui/stdcontext.inc:295 lib/ui/stdmenus.inc:221
 #: lib/ui/stdtoolbars.inc:177
 #, fuzzy
 msgid "Insert Optional Argument"
 msgstr "Manjkajoči argument"
 
-#: lib/ui/stdcontext.inc:294 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:222
 #: lib/ui/stdtoolbars.inc:176
 #, fuzzy
 msgid "Remove Optional Argument"
 msgstr "Odprta zabeležka"
 
-#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:224
+#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:224
 #: lib/ui/stdtoolbars.inc:180
 msgid "Append Argument Eating From The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:225
+#: lib/ui/stdcontext.inc:299 lib/ui/stdmenus.inc:225
 #: lib/ui/stdtoolbars.inc:181
 #, fuzzy
 msgid "Append Optional Argument Eating From The Right"
 msgstr "Odprta zabeležka"
 
-#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:226
+#: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:226
 #: lib/ui/stdtoolbars.inc:179
 msgid "Remove Last Argument Spitting Out To The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:325 lib/ui/stdcontext.inc:337
+#: lib/ui/stdcontext.inc:327 lib/ui/stdcontext.inc:339
 #, fuzzy
 msgid "Edit externally...|x"
 msgstr "Uredi datoteko zunanje"
 
-#: lib/ui/stdcontext.inc:347 lib/ui/stdmenus.inc:163
+#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:163
 #, fuzzy
 msgid "Top Line|T"
 msgstr "Vrh|#V"
 
-#: lib/ui/stdcontext.inc:348 lib/ui/stdmenus.inc:164
+#: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:164
 #, fuzzy
 msgid "Bottom Line|B"
 msgstr "Dno|#D"
 
-#: lib/ui/stdcontext.inc:349 lib/ui/stdmenus.inc:165
+#: lib/ui/stdcontext.inc:351 lib/ui/stdmenus.inc:165
 #, fuzzy
 msgid "Left Line|L"
 msgstr "Izberi naslednjo vrstico"
 
-#: lib/ui/stdcontext.inc:350 lib/ui/stdmenus.inc:166
+#: lib/ui/stdcontext.inc:352 lib/ui/stdmenus.inc:166
 #, fuzzy
 msgid "Right Line|R"
 msgstr "Desno|#D"
 
-#: lib/ui/stdcontext.inc:362 lib/ui/stdmenus.inc:181
+#: lib/ui/stdcontext.inc:364 lib/ui/stdmenus.inc:181
 #, fuzzy
 msgid "Copy Row|o"
 msgstr "Prepiši vrstico"
 
-#: lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:186
+#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:186
 #, fuzzy
 msgid "Copy Column|p"
 msgstr "Prepiši stolpec"
@@ -12433,11 +12447,11 @@ msgstr "Uvozi spis"
 msgid "Check spelling"
 msgstr "Preveri TeX"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1026
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1034
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1035
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1043
 msgid "Redo"
 msgstr "Ponovi"
 
@@ -15728,27 +15742,35 @@ msgstr "Trenutna beseda"
 msgid "HTML (MS Word)"
 msgstr ""
 
-#: src/BiblioInfo.cpp:123 src/frontends/qt4/GuiDocument.cpp:1369
+#: src/BiblioInfo.cpp:146 src/frontends/qt4/GuiDocument.cpp:1369
 #, c-format
 msgid "%1$s and %2$s"
 msgstr ""
 
-#: src/BiblioInfo.cpp:127
+#: src/BiblioInfo.cpp:150
 #, c-format
 msgid "%1$s et al."
 msgstr ""
 
-#: src/BiblioInfo.cpp:149
+#: src/BiblioInfo.cpp:172
 #, fuzzy
 msgid "No year"
 msgstr "Brez številke"
 
-#: src/BiblioInfo.cpp:331 src/BiblioInfo.cpp:391
+#: src/BiblioInfo.cpp:303
+msgid "Ch. "
+msgstr ""
+
+#: src/BiblioInfo.cpp:305
+msgid "pp. "
+msgstr ""
+
+#: src/BiblioInfo.cpp:460 src/BiblioInfo.cpp:520
 #, fuzzy
 msgid "Add to bibliography only."
 msgstr "Dodaj bibliografijo v &kazalo"
 
-#: src/BiblioInfo.cpp:387
+#: src/BiblioInfo.cpp:516
 #, fuzzy
 msgid "before"
 msgstr "Besedilo pred:"
@@ -15801,23 +15823,23 @@ msgstr ""
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/Buffer.cpp:564 src/Buffer.cpp:570 src/BufferView.cpp:1145
-#: src/BufferView.cpp:1151
+#: src/Buffer.cpp:564 src/Buffer.cpp:570 src/BufferView.cpp:1153
+#: src/BufferView.cpp:1159
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:565 src/BufferView.cpp:1146
+#: src/Buffer.cpp:565 src/BufferView.cpp:1154
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
-"xcolor/soul are installed.\n"
+"xcolor/ulem are installed.\n"
 "Please install these packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:571 src/BufferView.cpp:1152
+#: src/Buffer.cpp:571 src/BufferView.cpp:1160
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
-"xcolor and soul are not installed.\n"
+"xcolor and ulem are not installed.\n"
 "Please install both packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 msgstr ""
@@ -15896,7 +15918,7 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Poglej datoteko"
 
-#: src/Buffer.cpp:851 src/Exporter.cpp:49 src/LyXFunc.cpp:996
+#: src/Buffer.cpp:851 src/Exporter.cpp:49 src/LyXFunc.cpp:1005
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1512
 #: src/frontends/qt4/GuiView.cpp:1694
 #, fuzzy
@@ -16154,12 +16176,12 @@ msgstr ""
 msgid "Document class not found"
 msgstr "Nastavitev videza spisa"
 
-#: src/BufferParams.cpp:1657 src/LyXFunc.cpp:714
+#: src/BufferParams.cpp:1657 src/LyXFunc.cpp:723
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "Nastavitev videza spisa"
 
-#: src/BufferParams.cpp:1659 src/LyXFunc.cpp:716
+#: src/BufferParams.cpp:1659 src/LyXFunc.cpp:725
 #, fuzzy
 msgid "Could not load class"
 msgstr "Ni moč pognati z datoteko:"
@@ -16221,93 +16243,93 @@ msgstr "Ni več opomb"
 msgid "Save bookmark"
 msgstr "Shrani zaznamek 2"
 
-#: src/BufferView.cpp:1029
+#: src/BufferView.cpp:1037
 #, fuzzy
 msgid "No further undo information"
 msgstr "Ni nadaljnjih razveljavitvenih podatkov"
 
-#: src/BufferView.cpp:1038
+#: src/BufferView.cpp:1046
 msgid "No further redo information"
 msgstr "Ni nadaljnjih ponovitvenih podatkov"
 
-#: src/BufferView.cpp:1207 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1215 src/lyxfind.cpp:295 src/lyxfind.cpp:313
 msgid "String not found!"
 msgstr "Niza ni moč najti!"
 
-#: src/BufferView.cpp:1231
+#: src/BufferView.cpp:1239
 msgid "Mark off"
 msgstr "Znak izključen"
 
-#: src/BufferView.cpp:1238
+#: src/BufferView.cpp:1246
 msgid "Mark on"
 msgstr "Znak vključen"
 
-#: src/BufferView.cpp:1245
+#: src/BufferView.cpp:1253
 msgid "Mark removed"
 msgstr "Znak odstranjen"
 
-#: src/BufferView.cpp:1248
+#: src/BufferView.cpp:1256
 msgid "Mark set"
 msgstr "Znak postavljen"
 
-#: src/BufferView.cpp:1295
+#: src/BufferView.cpp:1303
 msgid "Statistics for the selection:"
 msgstr ""
 
-#: src/BufferView.cpp:1297
+#: src/BufferView.cpp:1305
 #, fuzzy
 msgid "Statistics for the document:"
 msgstr "Zamenjaj s prejšnjim spisom"
 
-#: src/BufferView.cpp:1300
+#: src/BufferView.cpp:1308
 #, fuzzy, c-format
 msgid "%1$d words"
 msgstr "%1$d words checked."
 
-#: src/BufferView.cpp:1302
+#: src/BufferView.cpp:1310
 #, fuzzy
 msgid "One word"
 msgstr "Ključna beseda"
 
-#: src/BufferView.cpp:1305
+#: src/BufferView.cpp:1313
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1308
+#: src/BufferView.cpp:1316
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1311
+#: src/BufferView.cpp:1319
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1314
+#: src/BufferView.cpp:1322
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1316
+#: src/BufferView.cpp:1324
 #, fuzzy
 msgid "Statistics"
 msgstr "Mesto"
 
-#: src/BufferView.cpp:2070
+#: src/BufferView.cpp:2091
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vstavlja se spis %1$s..."
 
-#: src/BufferView.cpp:2081
+#: src/BufferView.cpp:2102
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument izvožen kot "
 
-#: src/BufferView.cpp:2083
+#: src/BufferView.cpp:2104
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Spisa ni moč vstaviti"
 
-#: src/BufferView.cpp:2322
+#: src/BufferView.cpp:2343
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -16315,28 +16337,28 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/BufferView.cpp:2324
+#: src/BufferView.cpp:2345
 #, fuzzy
 msgid "Could not read file"
 msgstr "Ni moč pognati z datoteko:"
 
-#: src/BufferView.cpp:2331
+#: src/BufferView.cpp:2352
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr " odstavkov ni moč spremeniti"
 
-#: src/BufferView.cpp:2332 src/output.cpp:39
+#: src/BufferView.cpp:2353 src/output.cpp:39
 #, fuzzy
 msgid "Could not open file"
 msgstr "Ni moč pogledati datoteke"
 
-#: src/BufferView.cpp:2339
+#: src/BufferView.cpp:2360
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2340
+#: src/BufferView.cpp:2361
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -16802,7 +16824,7 @@ msgstr ""
 msgid "Undefined flex inset"
 msgstr "Odprt vstavek"
 
-#: src/Exporter.cpp:44 src/LyXFunc.cpp:992
+#: src/Exporter.cpp:44 src/LyXFunc.cpp:1001
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -16810,7 +16832,7 @@ msgid ""
 "Do you want to overwrite that file?"
 msgstr ""
 
-#: src/Exporter.cpp:47 src/LyXFunc.cpp:995
+#: src/Exporter.cpp:47 src/LyXFunc.cpp:1004
 #, fuzzy
 msgid "Overwrite file?"
 msgstr "Poglej datoteko"
@@ -17293,7 +17315,7 @@ msgstr "Ničesar ni moč storiti"
 msgid "Unknown action"
 msgstr "Neznana akcija"
 
-#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:665
+#: src/LyXFunc.cpp:416 src/LyXFunc.cpp:674
 #, fuzzy
 msgid "Command disabled"
 msgstr "ukaz"
@@ -17302,15 +17324,15 @@ msgstr "ukaz"
 msgid "Command not allowed without any document open"
 msgstr "Ukaz ni dovoljen brez odprtega spisa"
 
-#: src/LyXFunc.cpp:650
+#: src/LyXFunc.cpp:659
 msgid "Document is read-only"
 msgstr "Spis je le za branje"
 
-#: src/LyXFunc.cpp:659
+#: src/LyXFunc.cpp:668
 msgid "This portion of the document is deleted."
 msgstr ""
 
-#: src/LyXFunc.cpp:678
+#: src/LyXFunc.cpp:687
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -17318,79 +17340,87 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:681 src/frontends/qt4/GuiView.cpp:1795
+#: src/LyXFunc.cpp:690 src/frontends/qt4/GuiView.cpp:1795
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Želite shraniti spis?"
 
-#: src/LyXFunc.cpp:696
+#: src/LyXFunc.cpp:705
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/LyXFunc.cpp:699
+#: src/LyXFunc.cpp:708
 #, fuzzy
 msgid "Print document failed"
 msgstr "Tiskaj na"
 
-#: src/LyXFunc.cpp:819
+#: src/LyXFunc.cpp:828
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/LyXFunc.cpp:821
+#: src/LyXFunc.cpp:830
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Vrni se k shranjenemu"
 
-#: src/LyXFunc.cpp:822 src/LyXVC.cpp:181
+#: src/LyXFunc.cpp:831 src/LyXVC.cpp:181
 #, fuzzy
 msgid "&Revert"
 msgstr "Obnovi|O"
 
-#: src/LyXFunc.cpp:1033 src/Text3.cpp:1545
+#: src/LyXFunc.cpp:1042 src/Text3.cpp:1541
 msgid "Missing argument"
 msgstr "Manjkajoči argument"
 
-#: src/LyXFunc.cpp:1045
+#: src/LyXFunc.cpp:1054
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Odpira se datoteko s pomočjo"
 
-#: src/LyXFunc.cpp:1289
+#: src/LyXFunc.cpp:1298
 #, fuzzy, c-format
 msgid "Opening child document %1$s..."
 msgstr "Odpira se spis %1$s..."
 
-#: src/LyXFunc.cpp:1451
+#: src/LyXFunc.cpp:1460
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Videz spisa"
 
-#: src/LyXFunc.cpp:1454
+#: src/LyXFunc.cpp:1463
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Shrani kot privzeto za spis"
 
-#: src/LyXFunc.cpp:1747
+#: src/LyXFunc.cpp:1607 src/LyXVC.cpp:150
+msgid "LyX VC: Log Message"
+msgstr "LyX VC: Zapiši sporočilo"
+
+#: src/LyXFunc.cpp:1616
+msgid "Directory is not accessible."
+msgstr ""
+
+#: src/LyXFunc.cpp:1798
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s je odprt."
 
-#: src/LyXFunc.cpp:1749
+#: src/LyXFunc.cpp:1800
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "Spisa ni moč odpreti"
 
-#: src/LyXFunc.cpp:1786
+#: src/LyXFunc.cpp:1837
 msgid "Welcome to LyX!"
 msgstr "Dobrodošli v LyXu!"
 
-#: src/LyXFunc.cpp:1807
+#: src/LyXFunc.cpp:1858
 msgid "Converting document to new document class..."
 msgstr "Spis se spreminja v nov razred spisa..."
 
@@ -17874,10 +17904,6 @@ msgstr "LyX VC: Uvodni opis"
 msgid "(no initial description)"
 msgstr "(ni uvodnega opisa)"
 
-#: src/LyXVC.cpp:150
-msgid "LyX VC: Log Message"
-msgstr "LyX VC: Zapiši sporočilo"
-
 #: src/LyXVC.cpp:153
 msgid "(no log message)"
 msgstr "(ni dnevniškega sporočila)"
@@ -18075,12 +18101,12 @@ msgstr "Videz "
 msgid " not known"
 msgstr " ni znan"
 
-#: src/Text3.cpp:1662 src/Text3.cpp:1674
+#: src/Text3.cpp:1658 src/Text3.cpp:1670
 #, fuzzy
 msgid "Character set"
 msgstr "Znakovni nabor:|#Z"
 
-#: src/Text3.cpp:1822 src/Text3.cpp:1833
+#: src/Text3.cpp:1818 src/Text3.cpp:1829
 msgid "Paragraph layout set"
 msgstr "Nastavljen videz odstavka"
 
@@ -18298,30 +18324,30 @@ msgstr "Ding 4|#g"
 msgid "Directories"
 msgstr "Uporabniški imenik: "
 
-#: src/frontends/qt4/GuiAbout.cpp:38
+#: src/frontends/qt4/GuiAbout.cpp:49
 #, fuzzy
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
 msgstr "NAPAKA: LyX ni mogel prebrati datoteke CREDITS"
 
-#: src/frontends/qt4/GuiAbout.cpp:39
+#: src/frontends/qt4/GuiAbout.cpp:50
 #, fuzzy
 msgid "Please install correctly to estimate the great\n"
 msgstr "Prosimo, namestite ga pravilno, da boste ocenili veliko"
 
-#: src/frontends/qt4/GuiAbout.cpp:40
+#: src/frontends/qt4/GuiAbout.cpp:51
 msgid "amount of work other people have done for the LyX project."
 msgstr "količino dela, ki so ga drugi vložili v projekt LyX."
 
-#: src/frontends/qt4/GuiAbout.cpp:64
-#, fuzzy
+#: src/frontends/qt4/GuiAbout.cpp:77
+#, fuzzy, c-format
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
-"1995-2008 LyX Team"
+"1995--%1$s LyX Team"
 msgstr ""
 "LyX je zaščitil (C) 1995 Matthias Ettrich, \n"
 "1995-2001 LyX Team"
 
-#: src/frontends/qt4/GuiAbout.cpp:70
+#: src/frontends/qt4/GuiAbout.cpp:85
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -18329,7 +18355,7 @@ msgid ""
 "any later version."
 msgstr ""
 
-#: src/frontends/qt4/GuiAbout.cpp:76
+#: src/frontends/qt4/GuiAbout.cpp:91
 #, fuzzy
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
@@ -18348,16 +18374,24 @@ msgstr ""
 "naslov: Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, "
 "USA."
 
-#: src/frontends/qt4/GuiAbout.cpp:84
-msgid "LyX Version "
+#: src/frontends/qt4/GuiAbout.cpp:102
+#, fuzzy
+msgid "not released yet"
+msgstr "Povečaj"
+
+#: src/frontends/qt4/GuiAbout.cpp:107
+#, fuzzy, c-format
+msgid ""
+"LyX Version %1$s\n"
+"(%2$s)"
 msgstr "Različica LyXa "
 
-#: src/frontends/qt4/GuiAbout.cpp:89
+#: src/frontends/qt4/GuiAbout.cpp:113
 #, fuzzy
 msgid "Library directory: "
 msgstr "Uporabniški imenik: "
 
-#: src/frontends/qt4/GuiAbout.cpp:92
+#: src/frontends/qt4/GuiAbout.cpp:116
 msgid "User directory: "
 msgstr "Uporabniški imenik: "
 
@@ -18443,7 +18477,7 @@ msgstr "Literatura"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiDocument.cpp:1296
-#: src/frontends/qt4/GuiExternal.cpp:670 src/frontends/qt4/GuiGraphics.cpp:738
+#: src/frontends/qt4/GuiExternal.cpp:670 src/frontends/qt4/GuiGraphics.cpp:847
 #: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1258
 #: src/frontends/qt4/GuiView.cpp:1316 src/frontends/qt4/GuiView.cpp:1462
 #: src/frontends/qt4/GuiView.cpp:1585 src/frontends/qt4/GuiView.cpp:1664
@@ -18500,27 +18534,27 @@ msgstr "ozadje opombe"
 msgid "Double rectangular frame"
 msgstr ""
 
-#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:337
-#: src/frontends/qt4/GuiBox.cpp:372
+#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:335
+#: src/frontends/qt4/GuiBox.cpp:370
 #, fuzzy
 msgid "Height"
 msgstr "&Višina"
 
-#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:340
-#: src/frontends/qt4/GuiBox.cpp:375
+#: src/frontends/qt4/GuiBox.cpp:72 src/frontends/qt4/GuiBox.cpp:338
+#: src/frontends/qt4/GuiBox.cpp:373
 #, fuzzy
 msgid "Depth"
 msgstr ", globina: "
 
-#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:205
-#: src/frontends/qt4/GuiBox.cpp:343 src/frontends/qt4/GuiBox.cpp:378
-#: src/frontends/qt4/GuiBox.cpp:425
+#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:203
+#: src/frontends/qt4/GuiBox.cpp:341 src/frontends/qt4/GuiBox.cpp:376
+#: src/frontends/qt4/GuiBox.cpp:419
 #, fuzzy
 msgid "Total Height"
 msgstr "Copyright"
 
-#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:346
-#: src/frontends/qt4/GuiBox.cpp:381
+#: src/frontends/qt4/GuiBox.cpp:73 src/frontends/qt4/GuiBox.cpp:344
+#: src/frontends/qt4/GuiBox.cpp:379
 msgid "Width"
 msgstr "Širina"
 
@@ -19180,45 +19214,45 @@ msgstr "Inicializacija programa"
 msgid "%1$s Errors (%2$s)"
 msgstr ""
 
-#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:71
+#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Top left"
 msgstr ""
 
-#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:71
+#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:72
 #, fuzzy
 msgid "Bottom left"
 msgstr "Spodaj|#B"
 
-#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:71
+#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Baseline left"
 msgstr ""
 
-#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
+#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
 #, fuzzy
 msgid "Top center"
 msgstr "Sredina"
 
-#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
+#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
 #, fuzzy
 msgid "Bottom center"
 msgstr "Sredina"
 
-#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
+#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
 #, fuzzy
 msgid "Baseline center"
 msgstr "Usredini|U"
 
-#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:73
+#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:74
 #, fuzzy
 msgid "Top right"
 msgstr "Copyright"
 
-#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:73
+#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:74
 #, fuzzy
 msgid "Bottom right"
 msgstr "&Dno"
 
-#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:73
+#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:74
 #, fuzzy
 msgid "Baseline right"
 msgstr "Črta desno|d"
@@ -19240,16 +19274,67 @@ msgstr "Izberi naslednjo vrstico"
 msgid "Float Settings"
 msgstr "Nastavitve plovke"
 
-#: src/frontends/qt4/GuiGraphics.cpp:153 src/frontends/qt4/GuiPrefs.cpp:870
+#: src/frontends/qt4/GuiGraphics.cpp:154 src/frontends/qt4/GuiPrefs.cpp:870
 msgid "Graphics"
 msgstr "Grafika"
 
-#: src/frontends/qt4/GuiGraphics.cpp:725
+#: src/frontends/qt4/GuiGraphics.cpp:303 src/frontends/qt4/GuiGraphics.cpp:319
+msgid "Dissolve previous group?"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:304
+#, c-format
+msgid ""
+"If you assign this graphic to group '%2$s',\n"
+"the previously assigned group '%1$s' will be dissolved,\n"
+"because this graphic was its only member.\n"
+"How do you want to proceed?"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:310 src/frontends/qt4/GuiGraphics.cpp:326
+#, c-format
+msgid "Stick with group '%1$s'"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:312
+#, c-format
+msgid "Assign to group '%1$s' anyway"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:320
+#, c-format
+msgid ""
+"If you sign off this graphic from group '%1$s',\n"
+"the group will be dissolved,\n"
+"because this graphic was its only member.\n"
+"How do you want to proceed?"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:328
+#, c-format
+msgid "Sign off from group '%1$s'"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:368
+msgid "Enter unique group name:"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:373
+#, fuzzy
+msgid "Group already defined!"
+msgstr "Pojdi k naslednji napaki"
+
+#: src/frontends/qt4/GuiGraphics.cpp:374
+#, c-format
+msgid "A graphics group with the name '%1$s' already exists."
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:834
 #, fuzzy
 msgid "Select graphics file"
 msgstr "Izberi naslednjo vrstico"
 
-#: src/frontends/qt4/GuiGraphics.cpp:737
+#: src/frontends/qt4/GuiGraphics.cpp:846
 #, fuzzy
 msgid "Clipart|#C#c"
 msgstr "Izrezek"
@@ -19259,62 +19344,62 @@ msgstr "Izrezek"
 msgid "Horizontal Space Settings"
 msgstr "Navpični presledek:|#p"
 
-#: src/frontends/qt4/GuiHSpace.cpp:118
+#: src/frontends/qt4/GuiHSpace.cpp:116
 msgid ""
 "Insert the spacing even after a line break.\n"
 "Note that a protected Half Quad will be turned into\n"
 "a vertical space if used at the beginning of a paragraph!"
 msgstr ""
 
-#: src/frontends/qt4/GuiHSpace.cpp:143 src/frontends/qt4/GuiHSpace.cpp:157
+#: src/frontends/qt4/GuiHSpace.cpp:141 src/frontends/qt4/GuiHSpace.cpp:155
 #, fuzzy
 msgid "Thin space"
 msgstr "navadna"
 
-#: src/frontends/qt4/GuiHSpace.cpp:144
+#: src/frontends/qt4/GuiHSpace.cpp:142
 #, fuzzy
 msgid "Medium space"
 msgstr "navadna"
 
-#: src/frontends/qt4/GuiHSpace.cpp:145
+#: src/frontends/qt4/GuiHSpace.cpp:143
 #, fuzzy
 msgid "Thick space"
 msgstr "navadna"
 
-#: src/frontends/qt4/GuiHSpace.cpp:146 src/frontends/qt4/GuiHSpace.cpp:158
+#: src/frontends/qt4/GuiHSpace.cpp:144 src/frontends/qt4/GuiHSpace.cpp:156
 #, fuzzy
 msgid "Negative thin space"
 msgstr "navadna"
 
-#: src/frontends/qt4/GuiHSpace.cpp:147
+#: src/frontends/qt4/GuiHSpace.cpp:145
 #, fuzzy
 msgid "Negative medium space"
 msgstr "navadna"
 
-#: src/frontends/qt4/GuiHSpace.cpp:148
+#: src/frontends/qt4/GuiHSpace.cpp:146
 #, fuzzy
 msgid "Negative thick space"
 msgstr "navadna"
 
-#: src/frontends/qt4/GuiHSpace.cpp:149 src/frontends/qt4/GuiHSpace.cpp:159
+#: src/frontends/qt4/GuiHSpace.cpp:147 src/frontends/qt4/GuiHSpace.cpp:157
 msgid "Half Quad (0.5 em)"
 msgstr ""
 
-#: src/frontends/qt4/GuiHSpace.cpp:150 src/frontends/qt4/GuiHSpace.cpp:160
+#: src/frontends/qt4/GuiHSpace.cpp:148 src/frontends/qt4/GuiHSpace.cpp:158
 msgid "Quad (1 em)"
 msgstr ""
 
-#: src/frontends/qt4/GuiHSpace.cpp:151 src/frontends/qt4/GuiHSpace.cpp:161
+#: src/frontends/qt4/GuiHSpace.cpp:149 src/frontends/qt4/GuiHSpace.cpp:159
 #, fuzzy
 msgid "Double Quad (2 em)"
 msgstr "Dvojni"
 
-#: src/frontends/qt4/GuiHSpace.cpp:156
+#: src/frontends/qt4/GuiHSpace.cpp:154
 #, fuzzy
 msgid "Inter-word space"
 msgstr "Vstavi presledke"
 
-#: src/frontends/qt4/GuiHSpace.cpp:162 src/insets/InsetSpace.cpp:108
+#: src/frontends/qt4/GuiHSpace.cpp:160 src/insets/InsetSpace.cpp:108
 #, fuzzy
 msgid "Horizontal Fill"
 msgstr "Vodoravna poravnava:|#r"
@@ -20395,7 +20480,7 @@ msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
 #: src/frontends/qt4/GuiView.cpp:1348 src/frontends/qt4/Validator.cpp:174
 #: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
-#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:459
+#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:466
 #, fuzzy
 msgid "Invalid filename"
 msgstr "Neveljavna dolžina!"
@@ -20662,87 +20747,87 @@ msgid ""
 "characters:\n"
 msgstr "V imenu datoteke ne sme biti teh znakov:"
 
-#: src/frontends/qt4/qt_helpers.cpp:173
+#: src/frontends/qt4/qt_helpers.cpp:180
 #, fuzzy
 msgid "Could not update TeX information"
 msgstr "Ni nadaljnjih ponovitvenih podatkov"
 
-#: src/frontends/qt4/qt_helpers.cpp:174
+#: src/frontends/qt4/qt_helpers.cpp:181
 #, fuzzy, c-format
 msgid "The script `%s' failed."
 msgstr "Črkovalniku je spodletelo."
 
-#: src/frontends/qt4/qt_helpers.cpp:426
+#: src/frontends/qt4/qt_helpers.cpp:433
 #, fuzzy
 msgid "All Files "
 msgstr " v datoteko ,"
 
-#: src/frontends/qt4/qt_helpers.cpp:499 src/insets/InsetTOC.cpp:49
+#: src/frontends/qt4/qt_helpers.cpp:506 src/insets/InsetTOC.cpp:49
 msgid "Table of Contents"
 msgstr "Vsebinsko kazalo"
 
-#: src/frontends/qt4/qt_helpers.cpp:501
+#: src/frontends/qt4/qt_helpers.cpp:508
 #, fuzzy
 msgid "Child Documents"
 msgstr "Spis"
 
-#: src/frontends/qt4/qt_helpers.cpp:503
+#: src/frontends/qt4/qt_helpers.cpp:510
 #, fuzzy
 msgid "List of Graphics"
 msgstr "Seznam tabel"
 
-#: src/frontends/qt4/qt_helpers.cpp:505
+#: src/frontends/qt4/qt_helpers.cpp:512
 #, fuzzy
 msgid "List of Equations"
 msgstr "Seznam tabel"
 
-#: src/frontends/qt4/qt_helpers.cpp:507
+#: src/frontends/qt4/qt_helpers.cpp:514
 #, fuzzy
 msgid "List of Footnotes"
 msgstr "Seznam tabel"
 
-#: src/frontends/qt4/qt_helpers.cpp:509
+#: src/frontends/qt4/qt_helpers.cpp:516
 #, fuzzy
 msgid "List of Listings"
 msgstr "Seznam tabel"
 
-#: src/frontends/qt4/qt_helpers.cpp:511
+#: src/frontends/qt4/qt_helpers.cpp:518
 #, fuzzy
 msgid "List of Indexes"
 msgstr "Seznam tabel"
 
-#: src/frontends/qt4/qt_helpers.cpp:513
+#: src/frontends/qt4/qt_helpers.cpp:520
 #, fuzzy
 msgid "List of Marginal notes"
 msgstr "Seznam tabel"
 
-#: src/frontends/qt4/qt_helpers.cpp:515
+#: src/frontends/qt4/qt_helpers.cpp:522
 #, fuzzy
 msgid "List of Notes"
 msgstr "Seznam tabel"
 
-#: src/frontends/qt4/qt_helpers.cpp:517
+#: src/frontends/qt4/qt_helpers.cpp:524
 #, fuzzy
 msgid "List of Citations"
 msgstr "Seznam tabel"
 
-#: src/frontends/qt4/qt_helpers.cpp:519
+#: src/frontends/qt4/qt_helpers.cpp:526
 #, fuzzy
 msgid "Labels and References"
 msgstr "Dostopni sklici"
 
-#: src/frontends/qt4/qt_helpers.cpp:521
+#: src/frontends/qt4/qt_helpers.cpp:528
 #, fuzzy
 msgid "List of Branches"
 msgstr "Seznam tabel"
 
-#: src/frontends/qt4/qt_helpers.cpp:523
+#: src/frontends/qt4/qt_helpers.cpp:530
 #, fuzzy
 msgid "List of Changes"
 msgstr "Seznam tabel"
 
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:287
-#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:460
+#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:467
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -20997,7 +21082,7 @@ msgstr "Odprta zabeležka"
 msgid "footnote"
 msgstr "OpombaPodČrto"
 
-#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:537
+#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:544
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -21024,16 +21109,16 @@ msgstr "Dobesedni vhod"
 msgid "Verbatim Input*"
 msgstr "Dobesedni vhod"
 
-#: src/insets/InsetInclude.cpp:433 src/insets/InsetInclude.cpp:625
+#: src/insets/InsetInclude.cpp:433 src/insets/InsetInclude.cpp:632
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:434 src/insets/InsetInclude.cpp:626
+#: src/insets/InsetInclude.cpp:434 src/insets/InsetInclude.cpp:633
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:482
+#: src/insets/InsetInclude.cpp:489
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -21041,11 +21126,11 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:488
+#: src/insets/InsetInclude.cpp:495
 msgid "Different textclasses"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:503
+#: src/insets/InsetInclude.cpp:510
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -21053,7 +21138,7 @@ msgid ""
 "which is not used in parent file."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:507
+#: src/insets/InsetInclude.cpp:514
 #, fuzzy
 msgid "Module not found"
 msgstr "Niza ni moč najti!"
@@ -21097,18 +21182,18 @@ msgstr "Razveljavi"
 msgid "Unknown buffer info"
 msgstr "Neznana beseda:"
 
-#: src/insets/InsetLabel.cpp:64
+#: src/insets/InsetLabel.cpp:66
 msgid "Label names must be unique!"
 msgstr ""
 
-#: src/insets/InsetLabel.cpp:65
+#: src/insets/InsetLabel.cpp:67
 #, c-format
 msgid ""
 "The label %1$s already exists,\n"
 "it will be changed to %2$s."
 msgstr ""
 
-#: src/insets/InsetLabel.cpp:110
+#: src/insets/InsetLabel.cpp:112
 msgid "DUPLICATE: "
 msgstr ""
 
@@ -21645,7 +21730,7 @@ msgstr "besedilo"
 msgid "em"
 msgstr ""
 
-#: src/lengthcommon.cpp:38
+#: src/lengthcommon.cpp:39
 msgid "mu[[unit of measure]]"
 msgstr ""
 
@@ -21654,27 +21739,27 @@ msgstr ""
 msgid "Text Width %"
 msgstr "Stalna širina"
 
-#: src/lengthcommon.cpp:39
+#: src/lengthcommon.cpp:40
 #, fuzzy
 msgid "Column Width %"
 msgstr "Širina stolpcev "
 
-#: src/lengthcommon.cpp:39
+#: src/lengthcommon.cpp:40
 #, fuzzy
 msgid "Page Width %"
 msgstr "Širina oznake"
 
-#: src/lengthcommon.cpp:39
+#: src/lengthcommon.cpp:40
 #, fuzzy
 msgid "Line Width %"
 msgstr "Širina oznake"
 
-#: src/lengthcommon.cpp:40
+#: src/lengthcommon.cpp:41
 #, fuzzy
 msgid "Text Height %"
 msgstr "Copyright"
 
-#: src/lengthcommon.cpp:40
+#: src/lengthcommon.cpp:41
 #, fuzzy
 msgid "Page Height %"
 msgstr "Copyright"
@@ -22022,6 +22107,10 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Neznana beseda:"
+
+#, fuzzy
+#~ msgid "Grou&p Name:"
+#~ msgstr "&Ime:"
 
 #, fuzzy
 #~ msgid "&Postscript driver:"
