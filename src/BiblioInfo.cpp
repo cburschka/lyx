@@ -76,7 +76,7 @@ docstring BibTeXInfo::getValueForKey(string const & key,
 		BibTeXInfo const * const xref) const
 {
 	docstring const ret = operator[](key);
-	if (!ret.empty() or !xref)
+	if (!ret.empty() || !xref)
 		return ret;
 	return (*xref)[key];
 }
