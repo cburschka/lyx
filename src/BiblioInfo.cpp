@@ -318,9 +318,9 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref) const
 	if (docLoc.empty()) {
 		docLoc = getValueForKey("chapter", xref);
 		if (!docLoc.empty())
-			docLoc = from_ascii("Ch. ") + docLoc;
+			docLoc = _("Ch. ") + docLoc;
 	}	else {
-		docLoc = from_ascii("pp. ") + docLoc;
+		docLoc = _("pp. ") + docLoc;
 	}
 
 	docstring media = getValueForKey("journal", xref);
