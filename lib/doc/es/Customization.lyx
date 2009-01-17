@@ -34,7 +34,7 @@
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX }}
+  {LyX}}
 
 % used for multi-column text
 \usepackage{multicol}
@@ -182,10 +182,10 @@ Este manual trata de las características de LyX que pueden ser modificadas
  en pantalla, opciones de impresora, envío de comandos mediante LyX Server,
  internacionalización, instalación de nuevas clases de LaTeX y de formatos
  de LyX, etc.
- Seguro que no podemos aspirar a tratar todo lo que se puede cambiar, ---nuestro
-s desarrolladores añaden características nuevas más deprisa de lo que las
- podemos documentar--- pero explicaremos las modificaciones más comunes
- y esperamos orientarte en la dirección correcta para algunas más desconocidas.
+ Seguro que no podemos aspirar a tratar todo lo que se puede cambiar, —nuestros
+ desarrolladores añaden características nuevas más deprisa de lo que las
+ podemos documentar— pero explicaremos las modificaciones más comunes y
+ esperamos orientarte en la dirección correcta para algunas más desconocidas.
 \end_layout
 
 \begin_layout Standard
@@ -1744,8 +1744,8 @@ Puesto que todas las conversiones de un formato a otro tienen lugar en el
 status collapsed
 
 \begin_layout Plain Layout
-Por ejemplo, el archivo puede hacer referencia a otros archivos ---imágenes,
- por ejemplo--- mediante nombres de archivo relativos, y estos pueden resultar
+Por ejemplo, el archivo puede hacer referencia a otros archivos —imágenes,
+ por ejemplo— mediante nombres de archivo relativos, y estos pueden resultar
  inválidos cuando el archivo se copia en el directorio temporal.
 \end_layout
 
@@ -1900,7 +1900,7 @@ cp $FROMFILE /home/you/pdf/$TOFILE
 
 \end_inset
 
-Guárdalo en tu directorio local, ---
+Guárdalo en tu directorio local, —
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -1910,7 +1910,7 @@ status collapsed
 
 \end_inset
 
-, supongamos--- y hazlo ejecutable si ello es necesario en tu sistema.
+, supongamos— y hazlo ejecutable si ello es necesario en tu sistema.
  Después, en el diálogo 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
@@ -1943,7 +1943,7 @@ PDF(pdflatex)
 
 \end_inset
 
- ---u otro de los formatos pdf--- e introduce 
+ —u otro de los formatos pdf— e introduce 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -5152,8 +5152,8 @@ clase de texto
  como el formato, y al chisme que merodea en los entresijos de LyX como
  la clase de texto.
  Un archivo de plantilla es simplemente un documento LyX que contiene un
- conjunto de entradas predefinidas para una clase de documento dada ---entradas
- que son generalmente requeridas por esa clase---.
+ conjunto de entradas predefinidas para una clase de documento dada —entradas
+ que son generalmente requeridas por esa clase—.
  Las plantillas son especialmente útiles para cosas como escritos para publicaci
 ones que han de presentarse electrónicamente.
 \end_layout
@@ -5540,7 +5540,7 @@ Reconfigurar
 \end_inset
 
 ) y reiniciar LyX.
- Ahora deberías ver tu nuevo paquete ---por ejemplo 
+ Ahora deberías ver tu nuevo paquete —por ejemplo 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -5550,7 +5550,7 @@ slides (FoilTeX)
 
 \end_inset
 
---- en la lista desplegable 
+— en la lista desplegable 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -5725,10 +5725,10 @@ módulos
 \emph default
  de formato, nuevos en LyX 1.6, son similares a los archivos de formato.
  Los módulos son a los paquetes LaTeX lo que los formatos a las clases LaTeX,
- y algunos módulos ---como el módulo Nota final--- dan soporte a un paquete
+ y algunos módulos —como el módulo Nota final— dan soporte a un paquete
  determinado.
  En cierto sentido, los módulos de formato son similares a los archivos
- incluidos ---archivos como 
+ incluidos —archivos como 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -5738,8 +5738,8 @@ stdsections.inc
 
 \end_inset
 
----, ya que esos módulos no son específicos para una clase de documento
- dada, sino que se pueden usar con muchos formatos diferentes.
+—, ya que esos módulos no son específicos para una clase de documento dada,
+ sino que se pueden usar con muchos formatos diferentes.
  La diferencia es que el uso de un módulo de formato no requiere editar
  el archivo de formato, mejor aún, los módulos se seleccionan en el diálogo
  
@@ -6010,8 +6010,8 @@ sty
 \begin_layout Standard
 Si la nueva clase de documento se suministra como archivo de estilo que
  se usa conjuntamente con una existente, para dar soporte a la clase de
- documento ---para nuestro ejemplo supondremos que el archivo de estilo
- se llama 
+ documento —para nuestro ejemplo supondremos que el archivo de estilo se
+ llama 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -6031,7 +6031,7 @@ report.cls
 
 \end_inset
 
-, que es una clase estándar--- se empieza por copiar al directorio personal
+, que es una clase estándar— se empieza por copiar al directorio personal
  el archivo de formato de la clase existente:
 \end_layout
 
@@ -6129,7 +6129,7 @@ report (myclass)
 " en la lista de clases de documento.
  Es probable que algunos de los comandos de secciones y demás en tu nueva
  clase funcionen de distinta manera a como lo hacen en la clase estándar
- ---
+ —
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -6139,7 +6139,7 @@ report
 
 \end_inset
 
- en este ejemplo---, de modo que si quieres, ahora puedes enredar un rato
+ en este ejemplo—, de modo que si quieres, ahora puedes enredar un rato
  con los ajustes de las distintas secciones.
 \end_layout
 
@@ -6559,8 +6559,8 @@ layout-reload
 \end_inset
 
 .
- No hay atajo predeterminado para esta función ---aunque por supuesto, puedes
- asociarle tú mismo una secuencia de teclas---.
+ No hay atajo predeterminado para esta función —aunque por supuesto, puedes
+ asociarle tú mismo una secuencia de teclas—.
  Para usar esta función solo tienes que introducirla en el minibúfer.
  
 \emph on
@@ -6935,7 +6935,7 @@ string
 
 \end_inset
 
-] Indica que el módulo en cuestión ---que debería especificarse por el nombre
+] Indica que el módulo en cuestión —que debería especificarse por el nombre
  de archivo sin la extensión 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -6946,7 +6946,7 @@ status collapsed
 
 \end_inset
 
---- no puede utilizarse con esta clase de documento.
+— no puede utilizarse con esta clase de documento.
  Esto podría usarse en un archivo de formato específico de una publicación
  para, digamos, impedir el empleo del módulo 
 \begin_inset Flex CharStyle:Code
@@ -7383,7 +7383,7 @@ boldsymbol
 
 ,\SpecialChar \ldots{}
 ); la lista completa de características soportadas no está documentada,
- desafortunadamente, fuera del código fuente de LyX ---véase 
+ desafortunadamente, fuera del código fuente de LyX —véase 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -7393,7 +7393,7 @@ LaTeXFeatures.cpp
 
 \end_inset
 
- si hay interés---.
+ si hay interés—.
  
 \begin_inset Flex CharStyle:MenuItem
 status collapsed

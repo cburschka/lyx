@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -36,7 +35,7 @@
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX }}
+  {LyX}}
 
 % used for multi-column text
 \usepackage{multicol}
@@ -45,6 +44,7 @@
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
 \language spanish
 \inputencoding latin1
 \font_roman default
@@ -55,6 +55,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -90,8 +91,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -288,10 +289,7 @@ LaTeX
 \family default
 desde el menú 
 \family sans
-\bar under
-A
-\bar default
-rchivo
+Archivo
 \family default
 , y luego mira el preámbulo del archivo
 \family sans
@@ -313,15 +311,8 @@ Hay varios comandos que ejecutan LaTeX automáticamente.
 \begin_layout Itemize
 
 \family sans
-\bar under
-V
-\bar default
-er\SpecialChar \menuseparator
-
-\bar under
-V
-\bar default
-er
+Ver\SpecialChar \menuseparator
+Ver
 \family default
 \emph on
 
@@ -336,15 +327,8 @@ Formato
 \begin_layout Itemize
 
 \family sans
-\bar under
-V
-\bar default
-er\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-ctualizar
+Ver\SpecialChar \menuseparator
+Actualizar
 \family default
 \emph on
 
@@ -359,25 +343,8 @@ Formato
 \begin_layout Itemize
 
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar \menuseparator
-I
-\bar under
-m
-\bar default
-primir
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar \menuseparator
-Fax
+Archivo\SpecialChar \menuseparator
+Imprimir
 \end_layout
 
 \begin_layout Standard
@@ -431,11 +398,7 @@ PostScript
 \family default
  o 
 \family sans
-I
-\bar under
-m
-\bar default
-primir
+Imprimir
 \family default
 , LyX hace dos pasos más:
 \end_layout
@@ -452,10 +415,7 @@ dvips
 \begin_layout Itemize
 Con 
 \family sans
-\bar under
-V
-\bar default
-er
+Ver
 \begin_inset space ~
 \end_inset
 
@@ -469,11 +429,7 @@ PostScript
 \begin_layout Itemize
 Con 
 \family sans
-I
-\bar under
-m
-\bar default
-primir
+Imprimir
 \family default
 , el archivo de salida tiene la extensión 
 \family typewriter
@@ -523,15 +479,8 @@ Vamos a dejar las cosas claras.
 \family default
  para enviar a un colega, utiliza 
 \family sans
-\bar under
-E
-\bar default
-xportar\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTeX
+Exportar\SpecialChar \menuseparator
+LaTeX
 \family default
  desde el menú 
 \family sans
@@ -547,24 +496,13 @@ Traducir archivos LaTeX en LyX
 \begin_layout Standard
 Se pueden importar archivos LaTeX en LyX con el menú 
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-mport
+Archivo\SpecialChar \menuseparator
+Import
 \family default
 ar
 \family sans
 \SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTeX
+LaTeX
 \family default
 .
  Esto iniciará un programa llamado 
@@ -637,19 +575,9 @@ Este punto es bastante importante: en cualquier momento puedes insertar
  Si necesitas incluir comandos LaTeX en tu documento, puedes usar los cuadros
  ERT, con el menú 
 \family sans
-\bar under
-I
-\bar default
-nsert
+Insertar\SpecialChar \menuseparator
+TeX
 \family default
-ar
-\family sans
-\SpecialChar \menuseparator
-Te
-\bar under
-X
-\family default
-\bar default
 .
  El cuadro ERT se puede mostrar de tres formas: plegado, abierto e insertado.
  Los dos primeros se usan igual que cualquier otro cuadro plegable (como
@@ -1005,8 +933,8 @@ Sobre el preámbulo LaTeX
 
 \begin_layout Standard
 Si conoces LaTeX, no es necesario explicar para qué sirve el preámbulo.
- Si no lo sabes, lo que sigue te dará algunas ideas ---de nuevo recomendamos
- consultar un libro sobre LaTeX para información adicional---.
+ Si no lo sabes, lo que sigue te dará algunas ideas —de nuevo recomendamos
+ consultar un libro sobre LaTeX para información adicional—.
  En cualquier caso, deberías leer los puntos siguientes porque detallan
  lo que puedes hacer y lo que no necesitas hacer en el preámbulo LaTeX de
  un documento LyX.
@@ -1133,17 +1061,11 @@ LaTeX
 \family default
  en el menú 
 \family sans
-\bar under
-D
-\bar default
-ocument
+Document
 \family default
 o, o en el diálogo 
 \family sans
-\bar under
-D
-\bar default
-ocument
+Document
 \family default
 o\SpecialChar \menuseparator
 
@@ -1175,10 +1097,7 @@ Guía del Usuario
 \begin_layout Standard
 LyX incorpora a su propio preámbulo todo lo añadido en el diálogo 
 \family sans
-\bar under
-P
-\bar default
-reámbulo
+Preámbulo
 \family default
 
 \begin_inset space ~
@@ -1441,7 +1360,7 @@ Igual que con otras de sus peculiares manías, casi todos ellos se lamentarán
  y gimotearán hasta que no consigan hacerlo a su manera y puedan sangrar
  la primera línea de todos los párrafos.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Nota de 
@@ -1589,10 +1508,7 @@ log
 \family default
 , que es accesible con el menú 
 \family sans
-\bar under
-D
-\bar default
-ocument
+Document
 \family default
 o
 \family sans
@@ -1851,15 +1767,8 @@ Latex
 para obtener una lista de los paquetes reconocidos por LyX.
  Este archivo se actualiza cada vez que reconfiguras LyX (con 
 \family sans
-\bar under
-H
-\bar default
-erramientas\SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-econfigurar
+Herramientas\SpecialChar \menuseparator
+Reconfigurar
 \family default
 ) y te informa de los paquetes que han sido detectados y de lo que hacen.
 \end_layout
@@ -2268,29 +2177,15 @@ Para introducir cada cita, suponiendo que la fuente está en el archivo
 \family default
 , usa 
 \family sans
-\bar under
-I
-\bar default
-nsertar\SpecialChar \menuseparator
-
-\bar under
-C
-\bar default
-ita\SpecialChar \ldots{}
+Insertar\SpecialChar \menuseparator
+Cita\SpecialChar \ldots{}
 
 \family default
  en el lugar deseado del texto, e introduce la clave de la referencia adecuada.
  No hace falta más; al ejecutar 
 \family sans
-\bar under
-V
-\bar default
-er\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+Ver\SpecialChar \menuseparator
+DVI
 \family default
 , por ejemplo, verás que BibTeX y LaTeX hacen su tarea, incluyendo múltiples
  ejecuciones de LaTeX.
@@ -2373,18 +2268,12 @@ jurabib
 En LyX, el manejo de ambos paquetes es básicamente el mismo.
  Ve al submenú 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar \menuseparator
+Documento\SpecialChar \menuseparator
 
 \family default
 C
 \family sans
-\bar under
-o
-\bar default
-nfiguración
+onfiguración
 \family default
  y selecciona el panel 
 \family sans
@@ -2563,10 +2452,7 @@ científicos.bib
 \begin_layout Standard
 En LyX, ve a 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar \menuseparator
+Documento\SpecialChar \menuseparator
 Configuración
 \family default
  y selecciona el panel 
@@ -2745,18 +2631,12 @@ bibunits
 \begin_layout Standard
 En primer lugar, en 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar \menuseparator
+Documento\SpecialChar \menuseparator
 
 \family default
 C
 \family sans
-\bar under
-o
-\bar default
-nfiguración
+onfiguración
 \family default
  selecciona el panel 
 \family sans
@@ -2938,10 +2818,7 @@ xindy
 \begin_layout Standard
 En primer lugar, sitúate al final del documento y selecciona 
 \family sans
-\bar under
-I
-\bar default
-nsertar\SpecialChar \menuseparator
+Insertar\SpecialChar \menuseparator
 List
 \family default
 a/
@@ -2957,10 +2834,7 @@ alfabético
  Después, para cada palabra que quieras incluir en el índice, coloca el
  cursor al final de la misma y marca 
 \family sans
-\bar under
-I
-\bar default
-nsertar\SpecialChar \menuseparator
+Insertar\SpecialChar \menuseparator
 Entrada
 \begin_inset space ~
 \end_inset
@@ -2985,8 +2859,8 @@ makeindex
  que genera por ti el índice.
  El campo de texto de la ventana de entrada de índice acepta LaTeX, así
  que debes ser cuidadoso y evitar usar caracteres especiales.
- El lado positivo es que puedes usar opciones avanzadas ---mira en la documentac
-ión de LaTeX cómo hacer cosas como 
+ El lado positivo es que puedes usar opciones avanzadas —mira en la documentació
+n de LaTeX cómo hacer cosas como 
 \begin_inset Quotes fld
 \end_inset
 
@@ -2994,7 +2868,7 @@ entradas anidadas
 \begin_inset Quotes frd
 \end_inset
 
-, etc---.
+, etc—.
 \end_layout
 
 \begin_layout Standard
@@ -3036,12 +2910,12 @@ maestro
  Es importante tener en cuenta que cada uno de estos es un completo archivo
  LyX que puede ser diseñado e impreso de forma independiente, además de
  estar incluido en el maestro.
- Sin embargo, todos deben ser de la misma clase de documento ---no intentes
+ Sin embargo, todos deben ser de la misma clase de documento —no intentes
  mezclar, p.
 \begin_inset space \thinspace{}
 \end_inset
 
-ej., libro y artículo---.
+ej., libro y artículo—.
  También puedes incluir archivos LaTeX; pero no deben tener su propio preámbulo
  (es decir, debe eliminarse todo lo que precede a 
 \family typewriter
@@ -3061,24 +2935,13 @@ end{document}
 \begin_layout Standard
 LyX facilita la inclusión de archivos con la opción de menú 
 \family sans
-\bar under
-I
-\bar default
-nsertar\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-rchivo\SpecialChar \menuseparator
+Insertar\SpecialChar \menuseparator
+Archivo\SpecialChar \menuseparator
 Documento
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-h
-\bar default
-ijo
+hijo
 \family default
 .
  Surge entonces una ventana que permite seleccionar el archivo a incluir
@@ -3200,14 +3063,7 @@ typewriter
  de los espacios en LyX.
  Sin embargo, si se marca en 
 \family sans
-\bar under
-M
-\bar default
-ar
-\family default
-car
-\family sans
-
+Marcar
 \begin_inset space ~
 \end_inset
 
@@ -3355,7 +3211,7 @@ Con este comando el nombre saldrá en la parte superior izquierda.
 \end_inset
 
 ej.
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 el número de página en el pie central), pon un comando con el argumento
@@ -3389,7 +3245,7 @@ Sección
 \end_inset
 
 ej.
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 Sección
@@ -3401,7 +3257,7 @@ Sección
 \end_inset
 
 ej.
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
 Página
@@ -3670,20 +3526,15 @@ Cómo se ve
 \begin_layout Standard
 Abre el diálogo siguiendo el camino de menú 
 \family sans
-\bar under
-D
-\bar default
-ocument
+Document
 \family default
 o
 \family sans
 \SpecialChar \menuseparator
 C
 \family default
-\bar under
 o
 \family sans
-\bar default
 nfiguración\SpecialChar \menuseparator
 Marcas
 \family default
@@ -4362,15 +4213,8 @@ s, Proposiciones, Definiciones y Observaciones, etc.).
 En cualquier archivo AMS LyX se pueden cambiar los esquemas de numeración
  cambiando simplemente la clase de documento en el diálogo 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar \menuseparator
-C
-\bar under
-o
-\bar default
-nfiguración
+Documento\SpecialChar \menuseparator
+Configuración
 \family default
 .
  
@@ -4759,15 +4603,8 @@ article (A&A)
 \family default
  en el diálogo 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar \menuseparator
-C
-\bar under
-o
-\bar default
-nfiguración
+Documento\SpecialChar \menuseparator
+Configuración
 \family default
  (vale, esto era obvio).
 \end_layout
@@ -5161,10 +4998,7 @@ Guía del Usuario
  Solo recordaremos que las tablas deben alinearse a la izquierda.
  Para eso selecciona la tabla y cambia la alineación en 
 \family sans
-\bar under
-E
-\bar default
-ditar\SpecialChar \menuseparator
+Editar\SpecialChar \menuseparator
 Configuración
 \begin_inset space ~
 \end_inset
@@ -5189,23 +5023,13 @@ Crea un flotante de figura ancha:
 \family default
 selecciona 
 \family sans
-\bar under
-I
-\bar default
-nsertar\SpecialChar \menuseparator
-
-\bar under
-F
-\bar default
-lotante\SpecialChar \menuseparator
+Insertar\SpecialChar \menuseparator
+Flotante\SpecialChar \menuseparator
 Figura
 \family default
 , después haz clic derecho en la figura y selecciona 
 \family sans
-\bar under
-E
-\bar default
-xtender
+Extender
 \begin_inset space ~
 \end_inset
 
@@ -5233,19 +5057,12 @@ Inserta la figura.
 \begin_layout Enumerate
 Coloca el cursor tras la figura e inserta un relleno horizontal: 
 \family sans
-\bar under
-I
-\bar default
-nsertar\SpecialChar \menuseparator
+Insertar\SpecialChar \menuseparator
 Formato
 \begin_inset space ~
 \end_inset
 
-especial
-\bar under
-\SpecialChar \menuseparator
-
-\bar default
+especial\SpecialChar \menuseparator
 Relleno
 \begin_inset space ~
 \end_inset
@@ -5333,10 +5150,7 @@ clase
 \family default
 , submenú 
 \family sans
-\bar under
-D
-\bar default
-ocumento
+Documento
 \family default
 \SpecialChar \menuseparator
 
@@ -5455,10 +5269,7 @@ Recomiendo encarecidamente que comiences con el archivo de plantilla modelo
  de AASTeX.
  Clic en 
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar \menuseparator
+Archivo\SpecialChar \menuseparator
 Nuevo
 \begin_inset space ~
 \end_inset
@@ -5524,20 +5335,9 @@ posprocesamiento
 \begin_layout Enumerate
 Exporta el documento a archivo LaTeX (
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xportar\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTeX
+Archivo\SpecialChar \menuseparator
+Exportar\SpecialChar \menuseparator
+LaTeX
 \family default
  (
 \family sans
@@ -6285,10 +6085,7 @@ deluxetable
 , sugiero editar un archivo aparte con un editor de textos, y luego incluirlo
  en el documento LyX con 
 \family sans
-\bar under
-I
-\bar default
-nsertar\SpecialChar \menuseparator
+Insertar\SpecialChar \menuseparator
 Documento
 \family default
 
@@ -6362,15 +6159,8 @@ aastex.layout
 \begin_layout Enumerate
 Ejecuta 
 \family sans
-\bar under
-H
-\bar default
-erramientas\SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-econfigurar
+Herramientas\SpecialChar \menuseparator
+Reconfigurar
 \family default
  en LyX, y reinicia LyX.
 \end_layout
@@ -6379,15 +6169,8 @@ econfigurar
 Abre un archivo nuevo normal, no desde plantilla.
  ¿Aparece AASTeX en la lista desplegable de clases en 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar \menuseparator
-C
-\bar under
-o
-\bar default
-nfiguración
+Documento\SpecialChar \menuseparator
+Configuración
 \family default
 ?
 \end_layout
@@ -6672,10 +6455,7 @@ Como es habitual, la forma más fácil de escribir un artículo es partiendo
  de una plantilla.
  Clic en 
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar \menuseparator
+Archivo\SpecialChar \menuseparator
 Nuevo desde plantilla
 \family default
 , y elige una plantilla 
@@ -7033,7 +6813,7 @@ encabezado de la tabla
 \emph default
 }{
 \family default
- en ERT ---atención a la llave de apertura 
+ en ERT —atención a la llave de apertura 
 \begin_inset Quotes fld
 \end_inset
 
@@ -7041,7 +6821,7 @@ encabezado de la tabla
 \begin_inset Quotes frd
 \end_inset
 
----, y cierra inmediatamente detrás del contenido de la tabla con 
+—, y cierra inmediatamente detrás del contenido de la tabla con 
 \family typewriter
 }
 \family default
@@ -7082,20 +6862,9 @@ Preparar un artículo para su remisión
 \begin_layout Standard
 Antes de remitir un artículo debes exportarlo a LaTeX (
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xportar\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-a
+Archivo\SpecialChar \menuseparator
+Exportar\SpecialChar \menuseparator
+La
 \family default
 T
 \family sans
@@ -7103,7 +6872,7 @@ eX
 \family default
 )
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Realmente dispones de las opciones LaTeX (simple) y pdflatex.
@@ -7500,20 +7269,9 @@ Como en el paquete AASTeX, antes de remitir tu trabajo a una publicación
 \begin_layout Enumerate
 Exporta tu documento a LaTeX, 
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xportar\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTeX
+Archivo\SpecialChar \menuseparator
+Exportar\SpecialChar \menuseparator
+LaTeX
 \family default
 .
  
@@ -7612,7 +7370,7 @@ peculiaridades
 \end_layout
 
 \begin_layout Enumerate
-Es posible escribir artículos múltiples en el mismo archivo LaTeX
+Es posible escribir artículos múltiples en el mismo archivo LaTeX.
 \begin_inset Foot
 status collapsed
 
@@ -7622,7 +7380,6 @@ No puedo imaginar una buena razón para hacer esto.
 
 \end_inset
 
-.
  Cada artículo debe estar incluido en un entorno 
 \begin_inset Quotes fld
 \end_inset
@@ -7938,10 +7695,7 @@ DIV
 \family default
  (en LyX se introducen en el campo de opciones de clase del diálogo 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar \menuseparator
+Documento\SpecialChar \menuseparator
 Configuración
 \family default
 ).
@@ -8773,7 +8527,7 @@ Tema
  son entradas provistas de una etiqueta para introducir información que
  será procesada por la clase de documento.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Podría ser inconsecuente que 
@@ -9278,15 +9032,8 @@ Logotipo
 \family default
  (vía 
 \family sans
-\bar under
-I
-\bar default
-nsertar\SpecialChar \menuseparator
-Ima
-\bar under
-g
-\bar default
-en
+Insertar\SpecialChar \menuseparator
+Imagen
 \family default
 ) en el encabezado.
 \end_layout
@@ -9403,20 +9150,14 @@ Añadir_Sec
 \family default
  solo se ponen en el índice generado por LaTeX, no en el índice de LyX (
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar \menuseparator
+Documento\SpecialChar \menuseparator
 Índice
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-g
+general
 \family default
-\bar default
-eneral).
+).
 \end_layout
 
 \begin_layout Itemize
@@ -9428,22 +9169,12 @@ letter
  Este es el comportamiento normal, no hacen falta comandos LaTeX para eso.
  Sin embargo, en el diálogo 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar \menuseparator
-C
-\bar under
-o
-\bar default
-nfiguración
+Documento\SpecialChar \menuseparator
+Configuración
 \family default
  el botón que aparece marcado es 
 \family sans
-\bar under
-S
-\bar default
-angrado
+Sangrado
 \family default
 .
  Si se introduce un valor de 
@@ -9556,13 +9287,13 @@ svjog
 \emph on
 Springer
 \emph default
-) en un directorio adecuado, reconfigura LaTeX ---en el caso de teTeX ejecutando
+) en un directorio adecuado, reconfigura LaTeX —en el caso de teTeX ejecutando
  
 \family typewriter
 texhash
 \family default
 , como root si es necesario.
- (¿LyX no se ocupa de esto?)---; reconfigura LyX y ya debería funcionar.
+ (¿LyX no se ocupa de esto?)—; reconfigura LyX y ya debería funcionar.
 \end_layout
 
 \begin_layout Subsection
@@ -9570,7 +9301,7 @@ Estilos nuevos
 \end_layout
 
 \begin_layout Standard
-Un gran número de estilos tipo teorema --
+Un gran número de estilos tipo teorema –
 \family sans
 Afirmación, Conjetura,
 \family default
@@ -9579,7 +9310,7 @@ Afirmación, Conjetura,
 \SpecialChar \ldots{}
 Teorem
 \family default
-a--.
+a–.
 \end_layout
 
 \begin_layout Standard
@@ -9605,7 +9336,7 @@ Journal of Geodesy
 \family typewriter
 svjog.layout
 \family default
- --- Martin Vermeer
+ — Martin Vermeer
 \end_layout
 
 \begin_layout Itemize
@@ -9617,7 +9348,7 @@ Probability Theory and Related Fields
 \family typewriter
 svprobth.layout
 \family default
- --- Jean-Marc Lasgouttes
+ — Jean-Marc Lasgouttes
 \end_layout
 
 \begin_layout Standard
@@ -9814,7 +9545,7 @@ Journal of Geophysical Research
 \family typewriter
 jgrga.layout
 \family default
- --- Martin Vermeer
+ — Martin Vermeer
 \end_layout
 
 \begin_layout Standard
@@ -10147,10 +9878,7 @@ slides (default)
 
  en el diálogo 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar \menuseparator
+Documento\SpecialChar \menuseparator
 Configuración
 \family default
 .
@@ -10587,8 +10315,8 @@ TextoInvisible
 TextoVisible
 \family default
 , es una etiqueta más bien larga.
- El texto que sigue a la etiqueta ---generalmente los contenidos del entorno
- de párrafo--- no es tenido en cuenta.
+ El texto que sigue a la etiqueta —generalmente los contenidos del entorno
+ de párrafo— no es tenido en cuenta.
  LyX lo ignora completamente.
  De hecho, puedes dejar estos cinco entornos totalmente vacíos.
  
@@ -11800,10 +11528,7 @@ slides
 .
  Para empezar tu presentación con él abrelo con 
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar \menuseparator
+Archivo\SpecialChar \menuseparator
 Nuevo
 \begin_inset space ~
 \end_inset
@@ -11819,11 +11544,11 @@ plantilla
 \family sans
 Transparencia
 \family default
- -- 
+ – 
 \family sans
 Superpuesto
 \family default
- -- 
+ – 
 \family sans
 Nota
 \family default
@@ -12889,15 +12614,8 @@ Ejemplos
 \family default
  del diálogo 
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-brir\SpecialChar \ldots{}
+Archivo\SpecialChar \menuseparator
+Abrir\SpecialChar \ldots{}
 
 \end_layout
 
@@ -14014,29 +13732,29 @@ Jerga usada en un guión
 \end_layout
 
 \begin_layout Itemize
-(O.S) --- off screen (fuera de pantalla)
+(O.S) — off screen (fuera de pantalla)
 \end_layout
 
 \begin_layout Itemize
-(V.0) --- voice over (voz en off)
+(V.0) — voice over (voz en off)
 \end_layout
 
 \begin_layout Itemize
 b.g.
- --- background
+ — background
 \end_layout
 
 \begin_layout Itemize
 C.U.
- --- close-up (primer plano)
+ — close-up (primer plano)
 \end_layout
 
 \begin_layout Itemize
-PAN --- movimiento de cámara
+PAN — movimiento de cámara
 \end_layout
 
 \begin_layout Itemize
-INSERT --- pasa a primer plano
+INSERT — pasa a primer plano
 \end_layout
 
 \begin_layout Section
@@ -14750,7 +14468,7 @@ Nota de JMarc:
 \begin_layout Section
 Article (mwart), book (mwbk) y report (mwrep)
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Las clases 
@@ -15427,7 +15145,7 @@ belletristic
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Estilo de escritura en que se da más importancia a la bella apariencia que
@@ -15560,17 +15278,11 @@ Introducción
 \begin_layout Standard
 Bajo el menú 
 \family sans
-\bar under
-H
-\bar default
-erramientas
+Herramientas
 \family default
 , encontrarás la opción 
 \family sans
-\bar under
-C
-\bar default
-omprobar
+Comprobar
 \begin_inset space ~
 \end_inset
 
@@ -15765,15 +15477,8 @@ Modo de empleo
 \begin_layout Standard
 Si el programa está instalado, se ejecuta con 
 \family sans
-\bar under
-H
-\bar default
-erramientas\SpecialChar \menuseparator
-
-\bar under
-C
-\bar default
-omprobar
+Herramientas\SpecialChar \menuseparator
+Comprobar
 \begin_inset space ~
 \end_inset
 
@@ -15800,15 +15505,8 @@ ChkTeX
  Las advertencias se situarán cerca del error, y puedes navegar entre ellas
  con la opción de menú 
 \family sans
-\bar under
-N
-\bar default
-avegar\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-rror
+Navegar\SpecialChar \menuseparator
+Error
 \family default
 , o con el atajo de teclado 
 \family sans
@@ -15870,23 +15568,12 @@ ChkTeX
  para adaptarlo a tus necesidades.
  En las situaciones más desesperadas está la opción 
 \family sans
-\bar under
-V
-\bar default
-er\SpecialChar \menuseparator
-
-\bar under
-C
-\bar default
-errar
+Ver\SpecialChar \menuseparator
+Cerrar
 \begin_inset space ~
 \end_inset
 
-
-\family default
 todos
-\family sans
-
 \begin_inset space ~
 \end_inset
 
@@ -15985,20 +15672,9 @@ ChkTeX
 \begin_layout Itemize
 Exporta tu documento a un archivo LaTeX simple con 
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xportar\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTeX
+Archivo\SpecialChar \menuseparator
+Exportar\SpecialChar \menuseparator
+LaTeX
 \family default
  y ejecuta 
 \family typewriter
@@ -17036,7 +16712,7 @@ man rcsintro
 
 \begin_layout Standard
 La implementación en LyX asume una reciente versión del paquete GNU RCS
- ---no hay garantías para versiones antiguas---.
+ —no hay garantías para versiones antiguas—.
 \end_layout
 
 \begin_layout Subsection
@@ -17879,15 +17555,8 @@ Para aclarar las cosas explicaré lo que sucede en el interior de LyX:
 \begin_layout Enumerate
 Al escoger la opción 
 \family sans
-\bar under
-V
-\bar default
-er\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-ctualizar\SpecialChar \menuseparator
+Ver\SpecialChar \menuseparator
+Actualizar\SpecialChar \menuseparator
 DVI
 \family default
 , se genera un archivo LaTeX.
@@ -17947,20 +17616,13 @@ literate
 , un convertidor interno se encarga de convertir el archivo LyX a Noweb
  y luego otro convertidor
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Definido en 
 \family sans
-\bar under
-H
-\bar default
-erramientas\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-referencias
+Herramientas\SpecialChar \menuseparator
+Preferencias
 \family default
 , apartado
 \family sans
@@ -18298,15 +17960,8 @@ Configurar LyX
 Todo el soporte de Programación Literaria se configura en el panel del menú
  
 \family sans
-\bar under
-H
-\bar default
-erramientas\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-referencias
+Herramientas\SpecialChar \menuseparator
+Preferencias
 \family default
  en las solapas 
 \family sans
@@ -18567,20 +18222,9 @@ ddd
 \family default
  se puede definir accediendo al diálogo 
 \family sans
-\bar under
-E
-\bar default
-ditar\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-referencias\SpecialChar \menuseparator
-
-\bar under
-H
-\bar default
-elpers
+Editar\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Helpers
 \family default
  cambiando la entrada 
 \family sans
@@ -18730,38 +18374,22 @@ as.
  En mi barra de herramientas personal me gusta combinar los seis botones
  mencionados con otros dos para las entradas de menú 
 \family sans
-\bar under
-V
-\bar default
-er
+Ver
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-A
-\bar default
-ctualizar
+Actualizar
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-D
-\bar default
-VI
+DVI
 \family default
  y 
 \family sans
-\bar under
-V
-\bar default
-er\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+Ver\SpecialChar \menuseparator
+DVI
 \family default
 .
  Así es como queda:
@@ -18952,7 +18580,7 @@ multicol
 examples/multicol.lyx
 \family default
 .
- ---mer
+ —mer
 \end_layout
 
 \end_inset
@@ -19211,7 +18839,7 @@ begin{multicols}{2}
 \begin_layout Standard
 
 \size footnotesize
-The youth moved in the best society--had, so far as was known, no enemies
+The youth moved in the best society–had, so far as was known, no enemies
  and no particular vices.
  He had been engaged to Miss Edith Woodley, of Carstairs, but the engagement
  had been broken off by mutual consent some months before, and there was
@@ -19242,8 +18870,8 @@ end{multicols}
 \begin_layout Standard
 
 \size footnotesize
-Ronald Adair was fond of cards--playing continually, but never for such
- stakes as would hurt him.
+Ronald Adair was fond of cards–playing continually, but never for such stakes
+ as would hurt him.
  He was a member of the Baldwin, the Cavendish, and the Bagatelle card clubs.
  It was shown that, after dinner on the day of his death, he had played
  a rubber of whist at the latter club.
@@ -19252,8 +18880,8 @@ Ronald Adair was fond of cards--playing continually, but never for such
 \size default
  
 \size footnotesize
-The evidence of those who had played with him-- Mr.
- Murray, Sir John Hardy, and Colonel Moran--showed that the game was whist,
+The evidence of those who had played with him– Mr.
+ Murray, Sir John Hardy, and Colonel Moran–showed that the game was whist,
  and that there was a fairly equal fall of the cards.
  Adair might have lost five pounds, but not more.
  His fortune was a considerable one, and such a loss could not in any way

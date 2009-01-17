@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -34,12 +33,13 @@
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX }}
+  {LyX}}
 
 % used for multi-column text
 \usepackage{multicol}
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
 \language french
 \inputencoding auto
 \font_roman default
@@ -50,6 +50,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -85,8 +86,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -183,9 +184,9 @@ Ce manuel couvre les fonctions de personnalisation de LyX.
  à l'écran, les options d'impression, l'envoi de commandes à LyX via le
  Serveur LyX, l'internationalisation, l'installation de nouvelles classes
  LaTeX et de nouveaux formats LyX, etc.
- Nous n'espérons pas aborder tout ce que vous pouvez modifier -- nos développeur
-s ajoutent de nouvelles fonctions plus vite que nous n'en écrivons la documentat
-ion -- mais nous allons expliquer les personnalisations les plus courantes
+ Nous n'espérons pas aborder tout ce que vous pouvez modifier – nos développeurs
+ ajoutent de nouvelles fonctions plus vite que nous n'en écrivons la documentati
+on – mais nous allons expliquer les personnalisations les plus courantes
  et au moins vous indiquer la bonne direction pour les plus obscures d'entre
  elles.
 \end_layout
@@ -1169,7 +1170,7 @@ Normalement, vous allez mettre la ligne appropriée dans
 \begin_inset Quotes fld
 \end_inset
 
---disable-nls
+–disable-nls
 \begin_inset Quotes frd
 \end_inset
 
@@ -1374,7 +1375,7 @@ distribution
 \family typewriter
 gettext
 \family default
-, vous n'avez pas besoin du code source de LyX pour le traduire -- il vous
+, vous n'avez pas besoin du code source de LyX pour le traduire – il vous
  suffit d'avoir 
 \family typewriter
 lyx.pot
@@ -2996,9 +2997,9 @@ Dans ce chapitre, nous décrivons comment créer et installer de nouveaux
 \family typewriter
 .sty
 \family default
-) qui décrit la mise en page d'un document -- par exemple un article, un
+) qui décrit la mise en page d'un document – par exemple un article, un
  rapport, un preprint de publication, etc.
- -- et toutes les commandes nécessaires pour réaliser cette mise en page.
+ – et toutes les commandes nécessaires pour réaliser cette mise en page.
  Un fichier de format
 \begin_inset Foot
 status collapsed
@@ -3239,7 +3240,7 @@ Reconfigurer
 \end_layout
 
 \begin_layout Standard
-Maintenant vous devriez voir votre nouveau paquetage -- par exemple 
+Maintenant vous devriez voir votre nouveau paquetage – par exemple 
 \family sans
 slides
 \begin_inset space ~
@@ -3247,7 +3248,7 @@ slides
 
 (FoilTeX)
 \family default
- -- dans le champ 
+ – dans le champ 
 \family sans
 Classe
 \family default
@@ -7208,7 +7209,7 @@ nom_client
 \family default
 \emph default
  est un nom que le client peut choisir arbitrairement.
- LyX rappelle ce nom s'il envoie une réponse -- un client peut donc répartir
+ LyX rappelle ce nom s'il envoie une réponse – un client peut donc répartir
  les réponses aux différentes requêtes.
 \end_layout
 
@@ -12503,7 +12504,7 @@ C-c
 \family typewriter
 copy
 \family default
- -- Copier.
+ – Copier.
  Copier, couper, coller sont comme dans Sciword, 
 \family sans
 C-c
@@ -12529,7 +12530,7 @@ C-d
 \family typewriter
 math-display
 \family default
- -- (Dés)active l'équation hors ligne : tapez 
+ – (Dés)active l'équation hors ligne : tapez 
 \family sans
 C-d
 \family default
@@ -12591,7 +12592,7 @@ math-insert
 \backslash
 frac
 \family default
- -- Fractions : tapez 
+ – Fractions : tapez 
 \family sans
 C-f
 \family default
@@ -12638,7 +12639,7 @@ math-insert
 \backslash
 int
 \family default
- -- Insère 
+ – Insère 
 \begin_inset Formula $\int$
 \end_inset
 
@@ -12667,7 +12668,7 @@ C-k
 \family typewriter
 line-delete-forward
 \family default
- -- Raccourci type Emacs : efface tout ce qu'il y a devant le curseur jusqu'à
+ – Raccourci type Emacs : efface tout ce qu'il y a devant le curseur jusqu'à
  la fin de la ligne.
 \end_layout
 
@@ -12681,7 +12682,7 @@ C-m
 \family typewriter
 math-mode
 \family default
- -- Une bascule Texte/Math (
+ – Une bascule Texte/Math (
 \family typewriter
 m
 \family default
@@ -12724,7 +12725,7 @@ C-n
 \family typewriter
 math-number-toggle
 \family default
- -- Ajoute/enlève le numéro d'une formule.
+ – Ajoute/enlève le numéro d'une formule.
 \end_layout
 
 \begin_layout Labeling
@@ -12737,7 +12738,7 @@ S-C-N
 \family typewriter
 math-number-line-toggle
 \family default
- -- Ajoute/enlève le numéro d'une ligne dans un tableau d'équations.
+ – Ajoute/enlève le numéro d'une ligne dans un tableau d'équations.
 \end_layout
 
 \begin_layout Standard
@@ -12785,7 +12786,7 @@ C-o
 \family typewriter
 file-open
 \family default
- -- Ouvre un nouveau document.
+ – Ouvre un nouveau document.
  (W*ndows)
 \end_layout
 
@@ -12799,7 +12800,7 @@ C-q
 \family typewriter
 quote-insert
 \family default
- -- Insère un guillemet droit " (
+ – Insère un guillemet droit " (
 \family typewriter
 q
 \family default
@@ -12853,7 +12854,7 @@ math-insert
 \backslash
 sqrt
 \family default
- -- Signe racine carrée 
+ – Signe racine carrée 
 \begin_inset Formula $\sqrt{x}$
 \end_inset
 
@@ -12884,7 +12885,7 @@ math-insert
 \backslash
 root
 \family default
- -- Signe racine 
+ – Signe racine 
 \begin_inset Formula $\sqrt[n]{x}$
 \end_inset
 
@@ -12901,7 +12902,7 @@ C-t
 \family typewriter
 math-mode
 \family default
- -- Autre raccourci pour basculer du texte au mode mathématique (
+ – Autre raccourci pour basculer du texte au mode mathématique (
 \family typewriter
 t
 \family default
@@ -12927,7 +12928,7 @@ C-u
 \family typewriter
 font-underline
 \family default
- -- 
+ – 
 \bar under
 Souligne
 \bar default
@@ -12956,7 +12957,7 @@ C-v
 \family typewriter
 paste
 \family default
- -- Coller.
+ – Coller.
  Héritage de W*ndows.
 \end_layout
 
@@ -12970,7 +12971,7 @@ C-w
 \family typewriter
 buffer-close
 \family default
- -- Ferme le document courant (un autre héritage de W*ndows).
+ – Ferme le document courant (un autre héritage de W*ndows).
 \end_layout
 
 \begin_layout Labeling
@@ -12983,7 +12984,7 @@ C-x
 \family typewriter
 cut
 \family default
- -- Couper.
+ – Couper.
 \end_layout
 
 \begin_layout Labeling
@@ -12996,7 +12997,7 @@ C-z
 \family typewriter
 undo
 \family default
- -- Annuler.
+ – Annuler.
 \end_layout
 
 \begin_layout Labeling
@@ -13009,7 +13010,7 @@ S-C-z
 \family typewriter
 redo
 \family default
- -- 
+ – 
 \begin_inset Quotes fld
 \end_inset
 
@@ -13117,7 +13118,7 @@ C-9
 \family typewriter
 math-delim ( )
 \family default
- -- Par commodité, 
+ – Par commodité, 
 \family sans
 Ctrl-9
 \family default
@@ -13195,7 +13196,7 @@ C-S-less
 \family typewriter
 math-delim langle rangle
 \family default
- -- délimiteurs anguleux 
+ – délimiteurs anguleux 
 \begin_inset Formula $\left\langle \right\rangle $
 \end_inset
 
@@ -13345,7 +13346,7 @@ C-period
 \family typewriter
 accent-dot
 \family default
- -- Point au-dessus, ȧ (mode texte seulement).
+ – Point au-dessus, ȧ (mode texte seulement).
 \end_layout
 
 \begin_layout Labeling
@@ -13360,11 +13361,11 @@ math-insert
 \backslash
 dot
 \family default
- -- Point au-dessus, 
+ – Point au-dessus, 
 \begin_inset Formula $\dot{a}$
 \end_inset
 
- (mode maths seulement -- en physique c'est la dérivée première).
+ (mode maths seulement – en physique c'est la dérivée première).
 \end_layout
 
 \begin_layout Labeling
@@ -13379,7 +13380,7 @@ math-insert
 \backslash
 overrightarrow
 \family default
- -- Vecteur en maths 
+ – Vecteur en maths 
 \begin_inset Formula $\overrightarrow{x}$
 \end_inset
 
@@ -13396,7 +13397,7 @@ S-C-quotedbl
 \family typewriter
 accent-umlaut
 \family default
- -- Umlaut, ä (mode texte seulement).
+ – Umlaut, ä (mode texte seulement).
 \end_layout
 
 \begin_layout Labeling
@@ -13411,11 +13412,11 @@ math-insert
 \backslash
 ddot
 \family default
- -- Double point au-dessus, 
+ – Double point au-dessus, 
 \begin_inset Formula $\ddot{a}$
 \end_inset
 
- (mode maths seulement -- en physique c'est la dérivée seconde).
+ (mode maths seulement – en physique c'est la dérivée seconde).
  Pour avoir un triple point en mode maths, tapez 
 \family typewriter
 
@@ -13435,7 +13436,7 @@ C-quoteleft
 \family typewriter
 accent-grave
 \family default
- -- Accent grave à (mode texte seulement, tapez 
+ – Accent grave à (mode texte seulement, tapez 
 \family typewriter
 
 \backslash
@@ -13454,7 +13455,7 @@ S-C-asciitilde
 \family typewriter
 accent-tilde
 \family default
- -- Tilde ã (mode texte seulement, tapez 
+ – Tilde ã (mode texte seulement, tapez 
 \family typewriter
 
 \backslash
@@ -13473,7 +13474,7 @@ C-apostrophe
 \family typewriter
 accent-acute
 \family default
- -- Accent aigu á (mode texte seulement, tapez 
+ – Accent aigu á (mode texte seulement, tapez 
 \family typewriter
 
 \backslash
@@ -13492,7 +13493,7 @@ S-C-asciicircum
 \family typewriter
 accent-circumflex
 \family default
- -- Accent circonflexe â (mode texte seulement, tapez 
+ – Accent circonflexe â (mode texte seulement, tapez 
 \family typewriter
 
 \backslash
@@ -13520,7 +13521,7 @@ F2
 \family typewriter
 buffer-write
 \family default
- -- Enregistre le document courant.
+ – Enregistre le document courant.
 \end_layout
 
 \begin_layout Labeling
@@ -13533,7 +13534,7 @@ S-F2
 \family typewriter
 buffer-export latex
 \family default
- -- Écrit un fichier LaTeX à partir du document courant.
+ – Écrit un fichier LaTeX à partir du document courant.
 \end_layout
 
 \begin_layout Labeling
@@ -13546,7 +13547,7 @@ F3
 \family typewriter
 find-replace
 \family default
- -- Ouvre la fenêtre 
+ – Ouvre la fenêtre 
 \family sans
 Rechercher
 \begin_inset space ~
@@ -13571,7 +13572,7 @@ C-F4
 \family typewriter
 buffer-close
 \family default
- -- Même effet que 
+ – Même effet que 
 \family sans
 C-w
 \family default
@@ -13588,7 +13589,7 @@ M-F4
 \family typewriter
 lyx-quit
 \family default
- -- 
+ – 
 \family sans
 Alt-F4
 \family default
@@ -13633,7 +13634,7 @@ F4
 \family typewriter
 font-default
 \family default
- -- Retour à la police normale.
+ – Retour à la police normale.
 \end_layout
 
 \begin_layout Labeling
@@ -13646,7 +13647,7 @@ F5
 \family typewriter
 font-bold
 \family default
- -- Texte en 
+ – Texte en 
 \series bold
 gras
 \series default
@@ -13663,7 +13664,7 @@ F6
 \family typewriter
 font-emph
 \family default
- -- Texte en 
+ – Texte en 
 \emph on
 évidence
 \emph default
@@ -13680,7 +13681,7 @@ F7
 \family typewriter
 font-code
 \family default
- -- Texte en 
+ – Texte en 
 \family typewriter
 chasse fixe
 \family default
@@ -13697,7 +13698,7 @@ F8
 \family typewriter
 font-noun
 \family default
- -- Texte en 
+ – Texte en 
 \noun on
 Petites capitales
 \noun default
@@ -13751,7 +13752,7 @@ math-insert
 \backslash
 prime
 \family default
- -- Le symbole 
+ – Le symbole 
 \begin_inset Quotes fld
 \end_inset
 
@@ -13797,7 +13798,7 @@ command-sequence math-superscipt; math-insert
 \backslash
 prime;
 \family default
- -- Insère un prime en exposant (voir l'exemple ci-dessus).
+ – Insère un prime en exposant (voir l'exemple ci-dessus).
 \end_layout
 
 \begin_layout Labeling
@@ -13810,7 +13811,7 @@ C-Up
 \family typewriter
 math-insert ^
 \family default
- -- Insère un exposant.
+ – Insère un exposant.
  Même effet que 
 \family sans
 ^
@@ -13828,7 +13829,7 @@ C-Down
 \family typewriter
 math-insert _
 \family default
- -- Insère un indice.
+ – Insère un indice.
  Même effet que 
 \family sans
 _
@@ -13852,7 +13853,7 @@ math-insert
 \backslash
 partial
 \family default
- -- Symbole de dérivée partielle 
+ – Symbole de dérivée partielle 
 \begin_inset Formula $\partial$
 \end_inset
 
@@ -13875,7 +13876,7 @@ math-insert
 \backslash
 sum
 \family default
- -- Signe somme 
+ – Signe somme 
 \begin_inset Formula $\sum$
 \end_inset
 
@@ -13903,7 +13904,7 @@ math-insert
 \backslash
 prod
 \family default
- -- Signe produit 
+ – Signe produit 
 \begin_inset Formula $\prod$
 \end_inset
 
@@ -13930,7 +13931,7 @@ math-insert
 \backslash
 infty
 \family default
- -- Infini 
+ – Infini 
 \begin_inset Formula $\infty$
 \end_inset
 
@@ -13953,7 +13954,7 @@ math-insert
 \backslash
 times
 \family default
- -- Produit cartésien 
+ – Produit cartésien 
 \begin_inset Formula $\times$
 \end_inset
 
@@ -13974,7 +13975,7 @@ v
 \family typewriter
 math-matrix 1 2
 \family default
- -- Insère un vecteur colonne 
+ – Insère un vecteur colonne 
 \begin_inset Formula $\begin{array}{c}
 \end{array}$
 \end_inset
@@ -13996,7 +13997,7 @@ m
 \family typewriter
 math-matrix 3 3
 \family default
- -- Insère une matrice 
+ – Insère une matrice 
 \begin_inset Formula $3\times3$
 \end_inset
 
@@ -14030,7 +14031,7 @@ math-insert
 \backslash
 dagger
 \family default
- -- Le symbole 
+ – Le symbole 
 \begin_inset Quotes fld
 \end_inset
 
@@ -14061,7 +14062,7 @@ math-insert
 \backslash
 equiv
 \family default
- -- Le signe de 
+ – Le signe de 
 \begin_inset Quotes fld
 \end_inset
 
@@ -14088,7 +14089,7 @@ math-insert
 \backslash
 approx
 \family default
- -- Le signe 
+ – Le signe 
 \begin_inset Quotes fld
 \end_inset
 
@@ -14115,7 +14116,7 @@ math-insert
 \backslash
 sim
 \family default
- -- Le signe 
+ – Le signe 
 \begin_inset Quotes fld
 \end_inset
 
@@ -14142,7 +14143,7 @@ math-insert
 \backslash
 rightarrow
 \family default
- -- La flèche 
+ – La flèche 
 \begin_inset Formula $\rightarrow$
 \end_inset
 
@@ -14165,7 +14166,7 @@ math-insert
 \backslash
 leq
 \family default
- -- Le signe 
+ – Le signe 
 \begin_inset Quotes fld
 \end_inset
 
@@ -14192,7 +14193,7 @@ math-insert
 \backslash
 geq
 \family default
- -- Le signe 
+ – Le signe 
 \begin_inset Quotes fld
 \end_inset
 
@@ -14223,7 +14224,7 @@ math-insert
 \backslash
 ll
 \family default
- -- Le signe 
+ – Le signe 
 \begin_inset Quotes fld
 \end_inset
 
@@ -14254,7 +14255,7 @@ math-insert
 \backslash
 gg
 \family default
- -- Le signe 
+ – Le signe 
 \begin_inset Quotes fld
 \end_inset
 

@@ -1,4 +1,4 @@
-#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -159,7 +159,7 @@
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX }}
+  {LyX}}
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \use_default_options false
@@ -212,7 +212,6 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes false
-\author "" 
 \author "" 
 \author "" 
 \end_header
@@ -19539,7 +19538,7 @@ reference "sec:Caption-Placement"
 
 \end_inset
 
- -- a gray button with a red label.
+ – a gray button with a red label.
 \end_layout
 
 \begin_layout Standard
@@ -22681,7 +22680,7 @@ usepackage[option]{sidecap}
 
 \begin_layout Standard
 If you set no option, the caption is placed on the side of the outer page
- margin -- to the right on odd pages, to the left on even pages.
+ margin – to the right on odd pages, to the left on even pages.
  You can change the placement to inner margin with the option 
 \series bold
 innercaption
@@ -25140,8 +25139,8 @@ name "fig:Endnotes----footnotes"
 
 \end_inset
 
-Endnotes -- footnotes are printed in a separate paragraph at the end of
- sections or chapters.
+Endnotes – footnotes are printed in a separate paragraph at the end of sections
+ or chapters.
 \end_layout
 
 \end_inset
@@ -25388,10 +25387,10 @@ This is a margin note.
 
 \begin_layout Standard
 Margin notes appear at the right side in single-sided documents.
- In double-sided documents they appear in the outer margin -- left on even
+ In double-sided documents they appear in the outer margin – left on even
  pages, right on odd pages.
- The text of margin notes is aligned opposite to the outer margin -- right-align
-ed when the note appears in the left margin.
+ The text of margin notes is aligned opposite to the outer margin – right-aligne
+d when the note appears in the left margin.
  The first line of the margin note is placed at the position of the text
  line where it is inserted in the document.
 \end_layout

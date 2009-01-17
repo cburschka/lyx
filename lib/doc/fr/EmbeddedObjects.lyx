@@ -1,4 +1,4 @@
-#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -159,7 +159,7 @@
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX }}
+  {LyX}}
 
 % use normal list environments also in French documents
 \StandardLayout
@@ -19539,7 +19539,7 @@ reference "sec:Placement-légende"
 
 \end_inset
 
- -- une case grise avec un texte rouge.
+ – une case grise avec un texte rouge.
 \end_layout
 
 \begin_layout Standard
@@ -22798,7 +22798,7 @@ usepackage[option]{sidecap}
 
 \begin_layout Standard
 Si vous ne mettez aucune option, la légende sera placée du côté de la marge
- extérieure -- à droite sur les pages impaires et à gauche sur les pages
+ extérieure – à droite sur les pages impaires et à gauche sur les pages
  paires.
  Vous pouvez mettre la légende dans la marge interne en utilisant l'option
  
@@ -25276,7 +25276,7 @@ name "fig:Notes-de-fin---notes-de-bas-de-page"
 
 \end_inset
 
-Les notes de fin -- notes de bas de page sont imprimées dans un paragraphe
+Les notes de fin – notes de bas de page sont imprimées dans un paragraphe
  séparé à la fin des sections ou des chapitres.
 \end_layout
 
@@ -25543,9 +25543,9 @@ extérieure
 \begin_inset Quotes erd
 \end_inset
 
- -- la gauche sur les pages paires et la droite sur les pages impaires.
+ – la gauche sur les pages paires et la droite sur les pages impaires.
  Le texte de la note en marge est aligné à l'opposé de la marge externe
- -- aligné à droite quand la note apparaît dans la marge de gauche.
+ – aligné à droite quand la note apparaît dans la marge de gauche.
  La première ligne de la note apparaît à la hauteur de la ligne de texte
  où la note a été insérée dans le document.
 \end_layout

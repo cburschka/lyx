@@ -37,7 +37,12 @@
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX }}
+  {LyX}}
+
+% redefine the \lyxarrow macro for PDF bookmarks
+\def\lyxarrow{\texorpdfstring{%
+  \leavevmode\,$\triangleright$\,\allowbreak}
+  {>}}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
 \use_default_options false
@@ -161,7 +166,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 10.
+letzte Änderung: 17.
  Januar 2009
 \end_layout
 
@@ -1232,7 +1237,7 @@ unbenannt
 \emph default
 , das automatisch geladen wird.
  Solange Sie nicht selber eine Datei öffnen oder neu anlegen, ist der leere
- Bereich auf dem Bildschirm genau das -- ein großer, leerer Bereich.
+ Bereich auf dem Bildschirm genau das – ein großer, leerer Bereich.
 \end_layout
 
 \begin_layout Standard
@@ -4853,7 +4858,7 @@ Das heißt beide Seiten eines Blattes werden bedruckt.
  sein, und der innere Rand wird genug Platz zum Binden lassen.
  Duplexdruck kann man aber auch per Hand erreichen, indem man zuerst die
  ungeraden Seiten druckt, den Papierstapel umgekehrt wieder einlegt, und
- dann die geraden Seiten druckt -- oder umgekehrt.
+ dann die geraden Seiten druckt – oder umgekehrt.
  Näheres zum Drucken finden Sie in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
@@ -5247,7 +5252,7 @@ n.
 Andere machen das nicht, sondern fügen stattdessen einen größeren Abstand
  zwischen zwei Absätzen ein.
  Der Abstand zwischen zwei Absätzen, der Zeilenabstand, der Abstand zwischen
- Überschrift und Text -- alle Abstände zwischen irgendwelchen Objekten sind
+ Überschrift und Text – alle Abstände zwischen irgendwelchen Objekten sind
  in LyX in der Tat vordefiniert.
  Wie wir sagten, Sie müssen sich nicht um Zwischenräume kümmern, LyX passt
  darauf auf.
@@ -5742,7 +5747,7 @@ Zitat!(kurz)
 
 \end_inset
 
- -- LaTeX-Bezeichnung: Quote
+ – LaTeX-Bezeichnung: Quote
 \begin_inset Index
 status collapsed
 
@@ -5770,7 +5775,7 @@ Zitat!(lang)
 
 \end_inset
 
- -- LaTeX-Bezeichnung: Quotation
+ – LaTeX-Bezeichnung: Quotation
 \begin_inset Index
 status collapsed
 
@@ -5798,7 +5803,7 @@ Gedicht
 
 
 \family default
- -- LaTeX-Bezeichnung: Verse
+ – LaTeX-Bezeichnung: Verse
 \begin_inset Index
 status collapsed
 
@@ -5832,7 +5837,7 @@ listung
 
 
 \family default
- -- LaTeX-Bezeichnung: Itemize 
+ – LaTeX-Bezeichnung: Itemize 
 \family sans
 
 \begin_inset Index
@@ -5862,7 +5867,7 @@ Aufzahlung@Aufzählung
 
 
 \family default
- -- LaTeX-Bezeichnung: Enumerate
+ – LaTeX-Bezeichnung: Enumerate
 \begin_inset Index
 status collapsed
 
@@ -5890,7 +5895,7 @@ Beschreibung
 
 
 \family default
- -- LaTeX-Bezeichnung: Description
+ – LaTeX-Bezeichnung: Description
 \begin_inset Index
 status collapsed
 
@@ -5918,7 +5923,7 @@ Liste
 
 
 \family default
- -- LaTeX-Bezeichnung: List
+ – LaTeX-Bezeichnung: List
 \begin_inset Index
 status collapsed
 
@@ -6005,7 +6010,7 @@ Standard
 .
  Sie hat keine besonderen Eigenschaften.
  Wenn LyX eine Absatzumgebung zurücksetzt, wird diese genommen.
- Der Absatz, den Sie gerade lesen -- und die meisten dieses Handbuches --
+ Der Absatz, den Sie gerade lesen – und die meisten dieses Handbuches –
  haben die 
 \family sans
 Standard
@@ -6223,7 +6228,7 @@ Kapitel
 
 
 \family default
- -- LaTeX-Bezeichnung: Chapter
+ – LaTeX-Bezeichnung: Chapter
 \begin_inset Index
 status collapsed
 
@@ -6251,7 +6256,7 @@ Abschnitt
 
 
 \family default
- -- LaTeX-Bezeichnung: Section
+ – LaTeX-Bezeichnung: Section
 \begin_inset Index
 status collapsed
 
@@ -6279,7 +6284,7 @@ Unterabschnitt
 
 
 \family default
- -- LaTeX-Bezeichnung: Subsection
+ – LaTeX-Bezeichnung: Subsection
 \begin_inset Index
 status collapsed
 
@@ -6307,7 +6312,7 @@ Unterunterabschn.
 
 
 \family default
- -- LaTeX-Bezeichnung: Subsubsection
+ – LaTeX-Bezeichnung: Subsubsection
 \begin_inset Index
 status collapsed
 
@@ -6335,7 +6340,7 @@ Paragraph
 
 
 \family default
- -- LaTeX-Bezeichnung: Paragraph
+ – LaTeX-Bezeichnung: Paragraph
 \end_layout
 
 \begin_layout Enumerate
@@ -6353,7 +6358,7 @@ Unterparagraph
 
 
 \family default
- -- LaTeX-Bezeichnung: Subparagraph
+ – LaTeX-Bezeichnung: Subparagraph
 \begin_inset Index
 status collapsed
 
@@ -6516,7 +6521,7 @@ Abschnitt*
 
 \end_inset
 
--- LaTeX-Bezeichnung: Section*
+– LaTeX-Bezeichnung: Section*
 \begin_inset Index
 status collapsed
 
@@ -6544,7 +6549,7 @@ Unterabschnitt*
 
 
 \family default
- -- LaTeX-Bezeichnung: Subsection*
+ – LaTeX-Bezeichnung: Subsection*
 \begin_inset Index
 status collapsed
 
@@ -6572,7 +6577,7 @@ Unterunterabschn.*
 
 
 \family default
- -- LaTeX-Bezeichnung: Subsubsection*
+ – LaTeX-Bezeichnung: Subsubsection*
 \begin_inset Index
 status collapsed
 
@@ -6922,7 +6927,7 @@ Zitat
 
 (kurz)
 \family default
- -- LaTeX-Bezeichnung: quote
+ – LaTeX-Bezeichnung: quote
 \family sans
 
 \begin_inset Index
@@ -6936,7 +6941,7 @@ Quote
 
 
 \family default
- -- und 
+ – und 
 \family sans
 Zitat
 \begin_inset space \space{}
@@ -6944,7 +6949,7 @@ Zitat
 
 (lang)
 \family default
- -- LaTeX-Bezeichnung: quotation
+ – LaTeX-Bezeichnung: quotation
 \family sans
 
 \begin_inset Index
@@ -6958,7 +6963,7 @@ Quotation
 
 
 \family default
- -- besitzen nur einen Unterschied: 
+ – besitzen nur einen Unterschied: 
 \family sans
 Zitat
 \begin_inset space \space{}
@@ -7002,7 +7007,7 @@ Zitat
 \family default
 -Umgebung.
  Wenn ich schreibe, wird die Zeile immer länger, bis sie umgebrochen wird.
- Sehen Sie -- keine Einrückung!
+ Sehen Sie – keine Einrückung!
 \end_layout
 
 \begin_layout Quote
@@ -8269,7 +8274,7 @@ Liste
 
 \begin_layout Standard
 Das ist alles über die vier Absatzumgebungen zum Erstellen von Listen.
- Augenblick -- haben wir erwähnt, dass Sie Abschnitt 
+ Augenblick – haben wir erwähnt, dass Sie Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Umgebungen-schachteln"
@@ -9404,7 +9409,7 @@ Datum
 \family default
  in andere Umgebungen schachteln.
  Wir bitten Sie dringend, das nicht zu tun.
- LaTeX könnte meckern -- oder auch nicht.
+ LaTeX könnte meckern – oder auch nicht.
  Wir wissen es nicht genau.
  Aber da es vom Kontext her keinen Sinn macht, diese Umgebungen in andere
  zu schachteln, warum sollten Sie es dann tun?
@@ -10581,7 +10586,7 @@ Standard
 \end_layout
 
 \begin_layout Standard
-So erhalten Sie Listeneinträge mit mehr als einem Absatz -- es funktioniert
+So erhalten Sie Listeneinträge mit mehr als einem Absatz – es funktioniert
  auch mit den 
 \family sans
 Beschreibung
@@ -10624,7 +10629,7 @@ umgebung auf
 Liste
 \family default
  zurückgesetzt.
- Denken Sie daran -- innerhalb einer 
+ Denken Sie daran – innerhalb einer 
 \family sans
 Standard
 \family default
@@ -10745,7 +10750,7 @@ end{sloppypar}
 
 \end_inset
 
-Das war's! Übrigens -- wir hätten auch die 
+Das war's! Übrigens – wir hätten auch die 
 \family sans
 Beschreibung
 \family default
@@ -13509,7 +13514,7 @@ Type
 
 Postscript
 \family default
-® sind Vektorfonts.
+ sind Vektorfonts.
 \end_layout
 
 \begin_layout Description
@@ -13533,7 +13538,7 @@ hrt werden müssen.
 \begin_inset Newline newline
 \end_inset
 
-In Postscript®- und PDF-Dokumenten sind 
+In Postscript- und PDF-Dokumenten sind 
 \family typewriter
 Type
 \begin_inset space ~
@@ -13813,7 +13818,7 @@ Roman
 \family sans
 Helvetica
 \family default
- -- skaliert auf 92
+ – skaliert auf 92
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -13821,7 +13826,7 @@ Helvetica
 \begin_inset space \thinspace{}
 \end_inset
 
-95% -- als serifenfreien Font und 
+95% – als serifenfreien Font und 
 \family sans
 Courier
 \family default
@@ -14118,7 +14123,7 @@ sstil wird häufiger benutzt.
  Man kann ihn folgendermaßen (de)ak\SpecialChar \-
 ti\SpecialChar \-
 vie\SpecialChar \-
-ren -- es sind ebenfalls Umschalter:
+ren – es sind ebenfalls Umschalter:
 \end_layout
 
 \begin_layout Itemize
@@ -14243,7 +14248,7 @@ mit Kanonen auf Spatzen schießen
 .
  Außerdem sieht ein Dokument, das sehr viele Fonts und Größen benutzt, wirklich
  so aus, als hätte jemand Löcher hineingeschossen.
- -- Aber genug gejammert.
+ – Aber genug gejammert.
 \end_layout
 
 \begin_layout Standard
@@ -15211,7 +15216,7 @@ Funktion
  nicht verrückt.
  Die Fontgröße müssen Sie so gut wie nie ändern.
  LyX ändert die Fontgröße für verschiedene Absatzumgebungen automatisch
- -- das sollten Sie benutzen.
+ – das sollten Sie benutzen.
  Dies ist 
 \emph on
 nur
@@ -15518,14 +15523,14 @@ dvi
 \end_layout
 
 \begin_layout Enumerate
-Heutzutage verstehen die meisten Drucker das PostScript®-Format.
+Heutzutage verstehen die meisten Drucker das PostScript-Format.
  LyX konvertiert die 
 \family typewriter
 dvi
 \family default
--Datei automatisch in eine PostScript®-Datei für Sie, wenn Sie Ihr Dokument
+-Datei automatisch in eine PostScript-Datei für Sie, wenn Sie Ihr Dokument
  drucken wollen.
- LyX ermöglicht Ihnen auch, die PostScript®-Version Ihres Dokumentes mit
+ LyX ermöglicht Ihnen auch, die PostScript-Version Ihres Dokumentes mit
  
 \family typewriter
 gv
@@ -15535,17 +15540,17 @@ gv
 
 \begin_deeper
 \begin_layout Standard
-Ein Vorteil beim Benutzen von PostScript® ist, dass das Konvertierungs\SpecialChar \-
+Ein Vorteil beim Benutzen von PostScript ist, dass das Konvertierungs\SpecialChar \-
 programm
  
 \family typewriter
 dvips
 \family default
  auch alle Bilder in Ihrem Dokument be\SpecialChar \-
-arbeiten kann und sie in die PostScript®-V
-ersion Ihres Dokumentes einfügt.
+arbeiten kann und sie in die PostScript-Ve
+rsion Ihres Dokumentes einfügt.
  Es fügt auch alle Spezialfonts, die Sie benutzt haben, ein.
- Dadurch ist die PostScript®-Version viel leichter zu übertragen als die
+ Dadurch ist die PostScript-Version viel leichter zu übertragen als die
  DVI-Version.
 \end_layout
 
@@ -15798,7 +15803,7 @@ kdvi
 \end_layout
 
 \begin_layout Subsubsection
-Die PostScript®-Version anschauen
+Die PostScript-Version anschauen
 \begin_inset CommandInset label
 LatexCommand label
 name "PostScript-Version-anschauen"
@@ -15815,9 +15820,9 @@ Im allgemeinen geht es am leichtesten und schnellsten, wenn Sie Ihr Dokument
 dvi
 \family default
 -Betrachter anschauen.
- Manchmal jedoch möchten Sie die PostScript®-Version sehen.
+ Manchmal jedoch möchten Sie die PostScript-Version sehen.
  Ein Grund sind Fonts.
- Man kann PostScript®-Fonts in einem LaTeX-Dokument benutzen, aber ein 
+ Man kann PostScript-Fonts in einem LaTeX-Dokument benutzen, aber ein 
 \family typewriter
 dvi
 \family default
@@ -15826,13 +15831,13 @@ dvi
 \family typewriter
 gv
 \family default
- oder einen anderen PostScript®-Dateibetrachter benutzen, um die Ergebnisse
+ oder einen anderen PostScript-Dateibetrachter benutzen, um die Ergebnisse
  zu sehen.
 \end_layout
 
 \begin_layout Standard
 Um die Post\SpecialChar \-
-Script®-Version Ihres Dokumentes anzusehen, wählen Sie 
+Script-Version Ihres Dokumentes anzusehen, wählen Sie 
 \family sans
 Ansicht\SpecialChar \menuseparator
 Postscript
@@ -15852,8 +15857,8 @@ Strg+T
 \end_inset
 
 .
- Nachdem all die Arbeit im Hintergrund erledigt ist, ruft LyX Ihr PostScript®-Da
-teibetrachter-Programm auf.
+ Nachdem all die Arbeit im Hintergrund erledigt ist, ruft LyX Ihr PostScript-Dat
+eibetrachter-Programm auf.
  Jetzt können Sie sich die Ergebnisse ansehen.
  Sie raten sicher, was der Befehl 
 \family sans
@@ -15883,11 +15888,11 @@ gv
 \end_layout
 
 \begin_layout Standard
-PostScript® kann nur 
+PostScript kann nur 
 \family typewriter
 .eps
 \family default
--Grafiken (Encapsulated PostScript®) enthalten.
+-Grafiken (Encapsulated PostScript) enthalten.
  Deshalb muss LyX andere Grafikformate zunächst konvertieren, was bei vielen
  Abbildungen natürlich lange dauern kann.
  Es empfiehlt sich in diesem Fall, die Abbildungen vorher zu konvertieren
@@ -16117,7 +16122,7 @@ lyxrc
 \family default
  definiert werden.
  Der Drucker sollte Post\SpecialChar \-
-Script®-fähig sein.
+Script-fähig sein.
 \end_layout
 
 \begin_layout Description
@@ -16126,8 +16131,7 @@ Script®-fähig sein.
 Datei
 \family default
  Der Name der Datei, in die gedruckt werden soll.
- Die Ausgabe wird im Post\SpecialChar \-
-Script®-Format sein.
+ Die Ausgabe wird im PostScript-Format sein.
  LyX speichert die Datei normalerweise im aktuellen Verzeichnis, außer Sie
  haben einen anderen Pfad angegeben.
 \end_layout
@@ -16209,8 +16213,7 @@ Beachten Sie, dass das Drucken etwas Zeit kostet, weil LaTeX,
 \family typewriter
 dvips
 \family default
- und, falls Sie keinen Post\SpecialChar \-
-Script®-Drucker haben, 
+ und, falls Sie keinen PostScript-Drucker haben, 
 \family typewriter
 ghostscript
 \family default
@@ -16265,10 +16268,43 @@ langer Gedankenstrich
 Minuszeichen
 \emph default
 :
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
-\begin_layout Enumerate
-der Bindestrich - besteht aus 
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bindestrich
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ein 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16283,107 +16319,102 @@ der Bindestrich - besteht aus
 
 \end_layout
 
-\begin_layout Enumerate
-der Gedankenstrich -- besteht aus 
-\begin_inset Quotes gld
 \end_inset
-
-
-\family typewriter
--
-\family default
-
-\begin_inset ERT
-status collapsed
+</cell>
+</row>
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-
-
-\backslash
-/
+Gedankenstrich
 \end_layout
 
 \end_inset
-
-
-\family typewriter
--
-\family default
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-Der TeX-Code 
-\backslash
-/ verhindert, dass die Striche als ein Gedankenstrich gedruckt werden.
+–
 \end_layout
 
 \end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-der lange Gedankenstrich --- besteht aus 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
--
-\family default
-
-\begin_inset ERT
-status collapsed
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-
-
-\backslash
-/
+eingefügt mit 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Sonderzeichen\SpecialChar \menuseparator
+Symbole
 \end_layout
 
 \end_inset
-
-
-\family typewriter
--
-\family default
-
-\begin_inset ERT
-status collapsed
+</cell>
+</row>
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-
-
-\backslash
-/
+langer Gedankenstrich
 \end_layout
 
 \end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
-
-\family typewriter
--
-\family default
-
-\begin_inset Quotes eld
-\end_inset
-
-
+\begin_layout Plain Layout
+—
 \end_layout
 
-\begin_layout Enumerate
-das Minuszeichen 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+eingefügt mit 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Sonderzeichen\SpecialChar \menuseparator
+Symbole
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Minuszeichen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 \begin_inset Formula $-$
 \end_inset
 
- ist ein 
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ein 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16398,8 +16429,22 @@ das Minuszeichen
  im Mathematikmodus
 \end_layout
 
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-Sie erzeugen diese Zeichen, indem Sie das 
+Alternativ können Sie die Gedankenstriche erzeugen, indem Sie das 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16413,6 +16458,35 @@ Sie erzeugen diese Zeichen, indem Sie das
 
 -Zeichen mehrmals hintereinander schreiben.
  LyX konvertiert sie automatisch in die richtige Länge.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+-
+\begin_inset space \thinspace{}
+\end_inset
+
+-
+\begin_inset Quotes grd
+\end_inset
+
+ gibt einen Gedankenstrich, 
+\begin_inset Quotes gld
+\end_inset
+
+-
+\begin_inset space \thinspace{}
+\end_inset
+
+-
+\begin_inset space \thinspace{}
+\end_inset
+
+-
+\begin_inset Quotes grd
+\end_inset
+
+ einen langen Gedankenstrich.
 \end_layout
 
 \begin_layout Standard
@@ -16442,7 +16516,7 @@ Bindestrich
 \end_layout
 
 \begin_layout Enumerate
-Von A -- Z (
+Von A – Z (
 \emph on
 Gedankenstrich
 \emph default
@@ -16450,7 +16524,7 @@ Gedankenstrich
 \end_layout
 
 \begin_layout Enumerate
-Oh --- da ist ein 
+Oh — da ist ein 
 \emph on
 langer Gedankenstrich.
 \end_layout
@@ -17818,7 +17892,7 @@ Entf
 Was LyX im Zusammenhang mit Fußnoten derzeit noch nicht beherrscht, sind
  Dinge wie die Änderung des Stils der Fußnoten (zum Beispiel arabische oder
  römische Zahlen usw.).
- Dazu müssen Sie -- wie im Abschnitt 
+ Dazu müssen Sie – wie im Abschnitt 
 \begin_inset Quotes gld
 \end_inset
 
@@ -17830,7 +17904,7 @@ Tricks für Fußnoten und Randnotizen
 \emph on
 Handbuchergänzungen
 \emph default
- beschrieben -- einige LaTeX-Befehle verwenden.
+ beschrieben – einige LaTeX-Befehle verwenden.
 \end_layout
 
 \begin_layout Description
@@ -18920,7 +18994,7 @@ Pixelbilder
 \end_inset
 
 (Bitmaps) bestehen aus einzelnen Pixeln, oft in komprimierter Form.
- Bei starker Vergrößerung sind diese Pixel sichtbar -- man spricht vom 
+ Bei starker Vergrößerung sind diese Pixel sichtbar – man spricht vom 
 \emph on
 Treppeneffekt
 \emph default
@@ -19677,7 +19751,7 @@ status collapsed
 X-Regeln
 \family default
  ankreuzen.
- Ihre Reihenfolge ist nicht maßgeblich -- LaTeX gibt intern die Suchreihenfolge
+ Ihre Reihenfolge ist nicht maßgeblich – LaTeX gibt intern die Suchreihenfolge
  
 \family typewriter
 htbp
@@ -20037,7 +20111,7 @@ Einstellungen
 \family default
 .
  Ein Klick darauf öffnet ein Dialogfenster, in dem Sie Eigenschaften der
- Tabelle ändern können, unter anderem die folgenden -- die Symbole in Klammern
+ Tabelle ändern können, unter anderem die folgenden – die Symbole in Klammern
  sind die entsprechenden aus der Tabellen-Werkzeugleiste:
 \end_layout
 
@@ -20647,7 +20721,7 @@ rechts
 \emph default
  vom Cursor eingefügt.
  Aus diesem Grund ist es ziemlich schwierig, eine Spalte auf der linken
- Seite der Tabelle oder über der ersten Zeile hinzuzufügen -- es ist eine
+ Seite der Tabelle oder über der ersten Zeile hinzuzufügen – es ist eine
  Menge Ausschneide- und Kopierarbeit notwendig.
  Gelöscht wird immer die Zeile oder Spalte, in der sich der Cursor befindet.
 \end_layout
@@ -21742,11 +21816,11 @@ Hinweis
 \family typewriter
 xdvi
 \family default
- angezeigt -- aber mit 
+ angezeigt – aber mit 
 \family typewriter
 kdvi
 \family default
- und auch in der PostScript®-Ausgabe.
+ und auch in der PostScript-Ausgabe.
  Verwenden Sie also 
 \family sans
 Ansicht\SpecialChar \menuseparator
@@ -21803,7 +21877,7 @@ Abschnitt*
 \family default
  usw.) verwenden.
  LyX würde dann versuchen, die gesamte Tabelle in diesem Umgebungstyp zu
- setzen -- mit unvorhersehbaren Auswirkungen.
+ setzen – mit unvorhersehbaren Auswirkungen.
 \end_layout
 
 \begin_layout Subsection
@@ -26668,7 +26742,7 @@ bar
 \begin_inset Text
 
 \begin_layout Plain Layout
----
+—
 \end_layout
 
 \end_inset
@@ -27620,7 +27694,7 @@ reference "Tab:Mathematik-Schriftstile"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -28805,14 +28879,14 @@ reference "Querverweise"
 
 .
  In LyX ist das auch ein graues Kästchen mit Text darin.
- Im gedruckten Dokument ist es eine Zahl -- in diesem Fall die Nummer dieses
+ Im gedruckten Dokument ist es eine Zahl – in diesem Fall die Nummer dieses
  Abschnittes.
 \end_layout
 
 \begin_layout Standard
 Mit Querverweisen können Sie andere Teile Ihres Dokumentes zitieren.
- Sie müssen sich die Abschnittsnummer nicht merken -- LyX macht das für
- Sie! Alles, was Sie brauchen, ist eine 
+ Sie müssen sich die Abschnittsnummer nicht merken – LyX macht das für Sie!
+ Alles, was Sie brauchen, ist eine 
 \family sans
 Marke
 \family default
@@ -34100,8 +34174,8 @@ Beschreibung
 
 \begin_layout Standard
 Die Änderungsverfolgungs-Werkzeugleiste hilft Ihnen beim Bearbeiten der
- Änderungen -- Sie müssen nur die Änderungen auswählen und einen der Schaltknöpf
-e anklicken.
+ Änderungen – Sie müssen nur die Änderungen auswählen und einen der Schaltknöpfe
+ anklicken.
  Wenn Sie Änderungen zusammenfassen, erscheint ein Fenster, das Ihnen Informatio
 nen über die nächste Änderung nach der momentanen Cursorposition anzeigt.
  Sie brauchen dann keine bestimmte Änderung zu markieren.
@@ -35893,7 +35967,9 @@ Versions
 \family default
 k
 \family sans
-ontrolle
+ontrolle\SpecialChar \menuseparator
+Registrieren\SpecialChar \ldots{}
+
 \begin_inset Index
 status collapsed
 
@@ -35903,8 +35979,6 @@ Versionskontrolle
 
 \end_inset
 
-\SpecialChar \menuseparator
-Registrieren\SpecialChar \ldots{}
 
 \end_layout
 
@@ -35940,8 +36014,7 @@ Handbuchergänzungen.
 \begin_layout Subsection
 
 \family sans
-Exportieren\SpecialChar \menuseparator
-\SpecialChar \ldots{}
+Exportieren\SpecialChar \ldots{}
 
 \begin_inset Index
 status collapsed
@@ -35963,47 +36036,6 @@ Handbuchergänzungen.
 \emph default
  Welche Typen in der Liste auftauchen, hängt davon ab, welche Pakete zusätzlich
  zu LyX und LaTeX geladen wurden.
-\end_layout
-
-\begin_layout Subsection
-
-\family sans
-Faxen
-\family default
-\SpecialChar \ldots{}
-
-\end_layout
-
-\begin_layout Standard
-Das bearbeitete Dokument wird zunächst in eine PostScript®-Datei formatiert
- und zwischengespeichert.
- Dann wird ein Programm aufgerufen, mit dem diese zwischengespeicherte PostScrip
-t®-Datei gefaxt werden kann.
- Das Programm haben Sie
-\family sans
- 
-\family default
-oder LyX
-\family sans
- 
-\family default
-unter 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
-Konverter\SpecialChar \menuseparator
-Postscript
-\begin_inset space ~
-\end_inset
-
-->
-\begin_inset space ~
-\end_inset
-
-Fax
-\family default
- festgelegt.
 \end_layout
 
 \begin_layout Subsection
@@ -38164,8 +38196,8 @@ Einfügung
 \begin_inset space ~
 \end_inset
 
-(Rahmen) ist die Farbe, mit der der Text einer einklappbaren Einfügung --
- zum Beispiel eine Fußnote -- umrahmt wird.
+(Rahmen) ist die Farbe, mit der der Text einer einklappbaren Einfügung –
+ zum Beispiel eine Fußnote – umrahmt wird.
 \end_layout
 
 \begin_layout Description
@@ -38177,12 +38209,12 @@ Einfügung
 \begin_inset space ~
 \end_inset
 
-(Text) ist die Farbe, mit der der Name einer einklappbaren Einfügung --
- zum Beispiel eine 
+(Text) ist die Farbe, mit der der Name einer einklappbaren Einfügung – zum
+ Beispiel eine 
 \family sans
 Fußnote
 \family default
- -- geschrieben wird.
+ – geschrieben wird.
 \end_layout
 
 \begin_layout Description
@@ -40292,7 +40324,7 @@ Dateiendung ist selbsterklärend
 
 \begin_layout Description
 Tastaturkürzekürzel ist der Buchstabe, mit der der zugehörige Befehl in
- den entsprechenden Menüs gestartet werden kann -- zum Beispiel 
+ den entsprechenden Menüs gestartet werden kann – zum Beispiel 
 \family sans
 Datei\SpecialChar \menuseparator
 Exportieren\SpecialChar \menuseparator
@@ -41954,7 +41986,7 @@ key "latex-einführung"
 
 Helmut Kopka: 
 \emph on
-LaTeX, Band 1 -- Einführung, 2., überarbeitete Auf\SpecialChar \textcompwordmark{}
+LaTeX, Band 1 – Einführung, 2., überarbeitete Auf\SpecialChar \textcompwordmark{}
 lage
 \emph default
 .

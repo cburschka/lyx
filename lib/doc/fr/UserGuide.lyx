@@ -36,7 +36,7 @@
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX }}
+  {LyX}}
 
 % define a short command for \textvisiblespace
 \newcommand{\spce}{\textvisiblespace}
@@ -802,7 +802,7 @@ Vide
 
 .
  À moins que vous ne disiez à LyX d'ouvrir un fichier ou d'en créer un nouveau,
- l'espace vide n'est que cela -- un grand espace vide.
+ l'espace vide n'est que cela – un grand espace vide.
 \end_layout
 
 \begin_layout Standard
@@ -3475,7 +3475,7 @@ n'est pas
 
 \begin_layout Standard
 L'espacement entre les paragraphes, comme l'interligne, l'espacement entre
- les en-têtes et le texte -- en fait, l'espacement entre quoi que ce soit
+ les en-têtes et le texte – en fait, l'espacement entre quoi que ce soit
  est prédéfini dans LyX.
  Comme nous l'avons dit, vous n'avez pas à vous préoccuper de la quantité
  d'espace libre à ajouter entre ça et ça.
@@ -8133,7 +8133,7 @@ Standard
 \family default
 .
  C'est ce qu'il faut faire pour créer des éléments de liste avec plus d'un
- paragraphe -- ça marche aussi avec les environnements 
+ paragraphe – ça marche aussi avec les environnements 
 \family sans
 Description
 \family default
@@ -8271,7 +8271,7 @@ Standard
 \end_layout
 
 \begin_layout Standard
-Voilà c'est fait ! Oh -- nous aurions aussi pu utiliser les environnements
+Voilà c'est fait ! Oh – nous aurions aussi pu utiliser les environnements
  
 \family sans
 Description
@@ -14058,6 +14058,10 @@ tiret
 \end_inset
 
 em
+\emph default
+ :
+\emph on
+
 \begin_inset Foot
 status collapsed
 
@@ -14087,114 +14091,257 @@ dash
 
 \end_inset
 
- :
+
+\emph default
+
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 trait
 \begin_inset space ~
 \end_inset
 
 d'union
-\begin_inset space \hfill{}
-\end_inset
-
--
-\begin_inset space \hfill{}
-\end_inset
-
-obtenu avec -
 \end_layout
 
-\begin_layout Enumerate
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+un 
+\begin_inset Quotes eld
+\end_inset
+
+ - 
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 tiret
 \begin_inset space ~
 \end_inset
 
 en
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
---
-\begin_inset space \hfill{}
 \end_inset
-
-obtenu avec -
-\begin_inset ERT
-status collapsed
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-
-
-\backslash
-/
+–
 \end_layout
 
 \end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
--
+\begin_layout Plain Layout
+inseré par 
+\family sans
+Insérer\SpecialChar \menuseparator
+Charactère
+\begin_inset space ~
+\end_inset
+
+spécial\SpecialChar \menuseparator
+Symboles
 \end_layout
 
-\begin_layout Enumerate
+\end_inset
+</cell>
+</row>
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 tiret
 \begin_inset space ~
 \end_inset
 
 em
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
----
-\begin_inset space \hfill{}
 \end_inset
-
-obtenu avec -
-\begin_inset ERT
-status collapsed
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-
-
-\backslash
-/
+—
 \end_layout
 
 \end_inset
-
--
-\begin_inset ERT
-status collapsed
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
+inseré par 
+\family sans
+Insérer\SpecialChar \menuseparator
+Charactère
+\begin_inset space ~
+\end_inset
 
-
-\backslash
-/
+spécial\SpecialChar \menuseparator
+Symboles
 \end_layout
 
 \end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
--
-\end_layout
-
-\begin_layout Enumerate
+\begin_layout Plain Layout
 signe moins
-\begin_inset space \hfill{}
+\end_layout
+
 \end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
-
+\begin_layout Plain Layout
 \begin_inset Formula $-$
 \end_inset
 
 
-\begin_inset space \hfill{}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+un 
+\begin_inset Quotes eld
 \end_inset
 
-un - en mode math
+ - 
+\begin_inset Quotes erd
+\end_inset
+
+ en mode math
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Vous créez ces éléments en utilisant le caractère 
+Vous pouvez créez le tiret
+\begin_inset space ~
+\end_inset
+
+en et tiret
+\begin_inset space ~
+\end_inset
+
+em elternativement en utilisant le caractère 
+\begin_inset Quotes eld
+\end_inset
+
+-
+\begin_inset Quotes erd
+\end_inset
+
+ plusieurs fois de suite.
+ LyX les convertit automatiquement en un tiret de longueur appropriée dans
+ le rendu final.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+-
+\begin_inset space \thinspace{}
+\end_inset
+
+- 
+\begin_inset Quotes erd
+\end_inset
+
+ engendre un tiret
+\begin_inset space ~
+\end_inset
+
+en, 
+\begin_inset Quotes eld
+\end_inset
+
+ -
+\begin_inset space \thinspace{}
+\end_inset
+
+-
+\begin_inset space \thinspace{}
+\end_inset
+
+- 
+\begin_inset Quotes erd
+\end_inset
+
+ un tiret
+\begin_inset space ~
+\end_inset
+
+em.
+\end_layout
+
+\begin_layout Standard
+Vous pouvez créez ces éléments en utilisant le caractère 
 \begin_inset Quotes eld
 \end_inset
 
@@ -14230,7 +14377,7 @@ d'union
 \end_layout
 
 \begin_layout Enumerate
-Je crois que les tirets sont utiles -- surtout ici.
+Je crois que les tirets sont utiles – surtout ici.
 \begin_inset space \hfill{}
 \end_inset
 
@@ -14246,7 +14393,7 @@ en
 \end_layout
 
 \begin_layout Enumerate
---- Pour les dialogues.
+— Pour les dialogues.
 \begin_inset space \hfill{}
 \end_inset
 
@@ -16049,7 +16196,7 @@ extérieure
 \begin_inset Quotes erd
 \end_inset
 
- -- la gauche sur les pages paires et la droite sur les pages impaires.
+ – la gauche sur les pages paires et la droite sur les pages impaires.
 \end_layout
 
 \begin_layout Section
@@ -20022,7 +20169,7 @@ Flottants ! Légendes
 
 \end_inset
 
- -- une case grise avec un texte rouge.
+ – une case grise avec un texte rouge.
 \end_layout
 
 \begin_layout Standard
@@ -27694,7 +27841,7 @@ Quand le programme de génération d'index
 \family sans
 xindy
 \family default
- est installé-- il n'est disponible que sous Linux-- LyX l'utilise par défaut,
+ est installé– il n'est disponible que sous Linux– LyX l'utilise par défaut,
  sinon il utilise le programme 
 \family sans
 makeindex
@@ -27798,8 +27945,8 @@ status collapsed
 \begin_layout Standard
 On a parfois besoin de compiler une liste de tous les symboles utilisés
  dans un document avec une brève description pour chacun.
- -- on appelle cela un glossaire ou une nomenclature ou encore la liste
- des symboles.
+ – on appelle cela un glossaire ou une nomenclature ou encore la liste des
+ symboles.
 \end_layout
 
 \begin_layout Standard
@@ -28157,7 +28304,7 @@ sigma$
 \begin_inset Quotes erd
 \end_inset
 
- -- le 
+ – le 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -31003,7 +31150,7 @@ T1
 T1
 \family default
 , mais ne les utilisent pas, ne vont pas pouvoir utiliser certains caractères:
- D0, F0, DE, FE, AB, et BB -- les caractères eth et thorn, majuscules et
+ D0, F0, DE, FE, AB, et BB – les caractères eth et thorn, majuscules et
  minuscules et les guillemets français.
 \end_layout
 
@@ -33784,7 +33931,7 @@ reference "cap:Alphabet-latin1"
 
 , mais aussi tous les caractères des pages de codes 
 \family typewriter
-ISO8859--2
+ISO8859–2
 \family default
  à 
 \family typewriter
@@ -33797,7 +33944,7 @@ ISO8859--2
 \begin_layout Itemize
 Issus de l'
 \family typewriter
-ISO8859--1
+ISO8859–1
 \family default
 :
 \end_layout
@@ -33863,7 +34010,7 @@ macron
 \begin_layout Itemize
 Issus des 
 \family typewriter
-ISO8859--2
+ISO8859–2
 \family default
  jusqu'à 
 \family typewriter

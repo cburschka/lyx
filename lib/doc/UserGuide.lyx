@@ -36,7 +36,7 @@
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX }}
+  {LyX}}
 
 % define a short command for \textvisiblespace
 \newcommand{\spce}{\textvisiblespace}
@@ -758,7 +758,7 @@ scratch.
 \end_inset
 
  Unless you tell LyX to open a file or create a new one, that big, blank
- space is just that --- a big, blank space.
+ space is just that — a big, blank space.
 \end_layout
 
 \begin_layout Standard
@@ -3652,8 +3652,8 @@ not
 
 \begin_layout Standard
 The space between paragraphs, like the line spacing, the space between headings
- and text --- in fact, all of the spacings for just about everything are
- pre-coded into LyX.
+ and text — in fact, all of the spacings for just about everything are pre-coded
+ into LyX.
  As we said, you don't worry about how much space to add between what.
  LyX takes care of that.
  In fact, these pre-coded vertical spacings aren't a single number but a
@@ -4856,7 +4856,7 @@ Quote
  environment.
  I can keep writing, extending this line out further and further until it
  wraps.
- See -- no indentation!
+ See – no indentation!
 \end_layout
 
 \begin_layout Quote
@@ -13259,7 +13259,7 @@ In LyX, the
 \begin_inset Quotes eld
 \end_inset
 
- character comes in three lengths, often called the 
+ character comes in four lengths: the 
 \emph on
 hyphen
 \emph default
@@ -13267,23 +13267,48 @@ hyphen
 \emph on
 en dash
 \emph default
-, and the 
+, the 
 \emph on
 em dash
 \emph default
-:
+, and the minus sign:
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 hyphen
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 -
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-made with 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13298,106 +13323,109 @@ made with
 
 \end_layout
 
-\begin_layout Enumerate
+\end_inset
+</cell>
+</row>
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 en dash
-\begin_inset space \hfill{}
+\end_layout
+
 \end_inset
-
---
-\begin_inset space \hfill{}
-\end_inset
-
-made with 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
--
-\begin_inset ERT
-status collapsed
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-
-
-\backslash
-/
+–
 \end_layout
 
 \end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
--
-\family default
-
-\begin_inset Quotes eld
+\begin_layout Plain Layout
+inserted via 
+\family sans
+Insert\SpecialChar \menuseparator
+Special
+\begin_inset space ~
 \end_inset
 
-
+Character\SpecialChar \menuseparator
+Symbols
 \end_layout
 
-\begin_layout Enumerate
+\end_inset
+</cell>
+</row>
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 em dash
-\begin_inset space \hfill{}
+\end_layout
+
 \end_inset
-
----
-\begin_inset space \hfill{}
-\end_inset
-
-made with 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
--
-\begin_inset ERT
-status collapsed
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-
-
-\backslash
-/
+—
 \end_layout
 
 \end_inset
-
--
-\begin_inset ERT
-status collapsed
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
+inserted via 
+\family sans
+Insert\SpecialChar \menuseparator
+Special
+\begin_inset space ~
+\end_inset
 
-
-\backslash
-/
+Character\SpecialChar \menuseparator
+Symbols
 \end_layout
 
 \end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
--
-\family default
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
+\begin_layout Plain Layout
 minus sign
-\begin_inset space \hfill{}
+\end_layout
+
 \end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
-
+\begin_layout Plain Layout
 \begin_inset Formula $-$
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 a 
 \begin_inset Quotes eld
 \end_inset
@@ -13413,8 +13441,22 @@ a
  in math mode
 \end_layout
 
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-You generate them by inserting the 
+You can alternatively generate the en and em dash by inserting the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13427,8 +13469,37 @@ You generate them by inserting the
 \end_inset
 
  character multiple times in a row.
- They are automatically converted to the appropriate length dash in the
- final output, but not in LyX.
+ They will automatically be converted to the appropriate length dash in
+ the final output, but not in LyX.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+-
+\begin_inset space \thinspace{}
+\end_inset
+
+-
+\begin_inset Quotes erd
+\end_inset
+
+ gives a en dash, 
+\begin_inset Quotes eld
+\end_inset
+
+-
+\begin_inset space \thinspace{}
+\end_inset
+
+-
+\begin_inset space \thinspace{}
+\end_inset
+
+-
+\begin_inset Quotes erd
+\end_inset
+
+ a em dash.
 \end_layout
 
 \begin_layout Standard
@@ -13462,7 +13533,7 @@ hyphen
 \end_layout
 
 \begin_layout Enumerate
-From A--Z
+From A–Z
 \begin_inset space \hfill{}
 \end_inset
 
@@ -13474,7 +13545,7 @@ en dash
 \end_layout
 
 \begin_layout Enumerate
-Oh --- there's a dash.
+Oh — there's a dash.
 \begin_inset space \hfill{}
 \end_inset
 
@@ -15219,7 +15290,7 @@ This is a marginal note.
 
 \begin_layout Standard
 Marginal notes appear at the right side in single-sided documents.
- In double-sided documents they appear in the outer margin -- left on even
+ In double-sided documents they appear in the outer margin – left on even
  pages, right on odd pages.
 \end_layout
 
@@ -19125,7 +19196,7 @@ Floats ! Captions
 
 \end_inset
 
- -- a gray button with a red label.
+ – a gray button with a red label.
 \end_layout
 
 \begin_layout Standard
@@ -26322,7 +26393,7 @@ name "sec:Nomenclature"
 
 \begin_layout Standard
 Sometimes you need to compile a list of symbols that are mentioned in your
- document with a brief explanation of them -- a so called nomenclature or
+ document with a brief explanation of them – a so called nomenclature or
  glossary.
 \end_layout
 
@@ -26659,7 +26730,7 @@ sigma$
 \begin_inset Quotes erd
 \end_inset
 
- -- the 
+ – the 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -28996,7 +29067,7 @@ Note
 \end_layout
 
 \begin_layout Standard
-The review toolbar helps you to accept, reject, or merge changes -- highlight
+The review toolbar helps you to accept, reject, or merge changes – highlight
  the change and press one of the desired toolbar buttons.
  When you merge changes, a window pops up showing you informations about
  the next change behind the current cursor position.
@@ -29264,7 +29335,7 @@ T1
 T1
 \family default
 -fonts but aren't using them] will still miss a few characters: D0, F0,
- DE, FE, AB, and BB -- the uppercase and lowercase eth and thorn, and the
+ DE, FE, AB, and BB – the uppercase and lowercase eth and thorn, and the
  french quotes won't show up.
 \end_layout
 
@@ -33736,7 +33807,7 @@ The following is a full list of all of the accented characters LyX can display
  It includes not only the accented characters from the previous table, but
  also the characters from 
 \family typewriter
-ISO8859--2
+ISO8859–2
 \family default
  through 
 \family typewriter
@@ -33749,7 +33820,7 @@ ISO8859--2
 \begin_layout Itemize
 From 
 \family typewriter
-ISO8859--1
+ISO8859–1
 \family default
 :
 \end_layout
@@ -33815,7 +33886,7 @@ macron
 \begin_layout Itemize
 From 
 \family typewriter
-ISO8859--2
+ISO8859–2
 \family default
  through 
 \family typewriter
