@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -36,7 +36,7 @@
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX }}
+  {LyX}}
 
 % used for multi-column text
 \usepackage{multicol}
@@ -78,6 +78,7 @@ End
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -113,8 +114,8 @@ End
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -3164,7 +3165,7 @@ Undefined control sequence
 \bar no
 \noun off
 \color none
-文書のもっともはじめの部分にエラーボックスが多数積み上がった場合には---特に
+文書のもっともはじめの部分にエラーボックスが多数積み上がった場合には—特に
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -3185,7 +3186,7 @@ begin{document}
 
 \end_inset
 
-が表示されているならば---、プリアンブルにエラーがあることを意味します。プリアンブルのデバックを行ってください。
+が表示されているならば—、プリアンブルにエラーがあることを意味します。プリアンブルのデバックを行ってください。
 \end_layout
 
 \begin_layout Enumerate
@@ -5933,15 +5934,8 @@ figure、figure*、table、table*
 をサポートしています。そのため、ここでは詳しい説明はしません。ユーザーの手引きを見てください。ただし、表は左揃にしなければならないのを忘れないで下さい。そのため
 には 
 \family sans
-\bar under
-L
-\bar default
-ayout\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-aragraph
+Layout\SpecialChar \menuseparator
+Paragraph
 \family default
 を選択して、alignmentを変えてください。
 \end_layout
@@ -5953,23 +5947,13 @@ aragraph
 \begin_layout Enumerate
 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
-Fl
-\bar under
-o
-\bar default
-ats\SpecialChar \menuseparator
+Insert\SpecialChar \menuseparator
+Floats\SpecialChar \menuseparator
 Figure
 \family default
  を使って wide figureフロートをつくります。そして図を右クリックして 
 \family sans
-\bar under
-S
-\bar default
-pan columns
+Span columns
 \family default
  を選びます。
 \end_layout
@@ -5998,26 +5982,15 @@ H
 \bar default
 Fill
 \family default
-を挿入 -- 
+を挿入 – 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-pecial
+Insert\SpecialChar \menuseparator
+Special
 \begin_inset space ~
 \end_inset
 
-Character
-\bar under
-\SpecialChar \menuseparator
-H
-\bar default
-Fill。
+Character\SpecialChar \menuseparator
+HFill。
 \end_layout
 
 \begin_layout Enumerate
@@ -6184,20 +6157,9 @@ altaffiltext
 \begin_layout Enumerate
 論文を LaTeXファイルとして出力します。(
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xport\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-ateX
+File\SpecialChar \menuseparator
+Export\SpecialChar \menuseparator
+LateX
 \family default
 )
 \end_layout
@@ -6682,7 +6644,7 @@ appendix
 \backslash
 figcaption
 \family default
- (2.13.2) -- 最終的な LaTeXファイルで追加的な引数を手で編集しなければなりません。
+ (2.13.2) – 最終的な LaTeXファイルで追加的な引数を手で編集しなければなりません。
 \end_layout
 
 \begin_layout Subsubsection
@@ -7547,7 +7509,7 @@ Journal of Geophysical Research
 \family typewriter
 jgrga.layout
 \family default
- --- Martin Vermeer
+ — Martin Vermeer
 \end_layout
 
 \begin_layout Standard
@@ -9631,29 +9593,29 @@ M-z r
 \end_layout
 
 \begin_layout Itemize
-(O.S) --- off screen
+(O.S) — off screen
 \end_layout
 
 \begin_layout Itemize
-(V.0) --- voice over
+(V.0) — voice over
 \end_layout
 
 \begin_layout Itemize
 b.g.
- --- background
+ — background
 \end_layout
 
 \begin_layout Itemize
 C.U.
- --- close-up
+ — close-up
 \end_layout
 
 \begin_layout Itemize
-PAN --- camera movement
+PAN — camera movement
 \end_layout
 
 \begin_layout Itemize
-INSERT --- cut to close-up of
+INSERT — cut to close-up of
 \end_layout
 
 \begin_layout Section
@@ -12361,7 +12323,7 @@ outer ページ番号がページの外側に付きます
 
 \begin_deeper
 \begin_layout Description
-rmheadings serif のタイトル --- 既定
+rmheadings serif のタイトル — 既定
 \end_layout
 
 \begin_layout Description
@@ -12369,7 +12331,7 @@ sfheadings sans serif のタイトル
 \end_layout
 
 \begin_layout Description
-authortitle タイトルページにまず著者名、その次にタイトルが配置される --- 既定
+authortitle タイトルページにまず著者名、その次にタイトルが配置される — 既定
 \end_layout
 
 \begin_layout Description
@@ -12771,7 +12733,7 @@ svjog
 \end_layout
 
 \begin_layout Standard
-多くの定理型の環境 --- 
+多くの定理型の環境 — 
 \family sans
 Claim、Conjecture、
 \family default
@@ -12805,7 +12767,7 @@ Journal of Geodesy
 \family typewriter
 svjog.layout
 \family default
- --- Martin Vermeer
+ — Martin Vermeer
 \end_layout
 
 \begin_layout Itemize
@@ -12817,7 +12779,7 @@ Probability Theory and Related Fields
 \family typewriter
 svprobth.layout
 \family default
- --- Jean-Marc Lasgouttes
+ — Jean-Marc Lasgouttes
 \end_layout
 
 \begin_layout Standard
@@ -13367,7 +13329,7 @@ Note
 \family sans
 InvisibleText、VisibleText
 \family default
-の5つの環境に共通の機能は長いラベルです。このラベルに続くテキスト --- 通常の段落環境なら段落の内容にあたります ---は、
+の5つの環境に共通の機能は長いラベルです。このラベルに続くテキスト — 通常の段落環境なら段落の内容にあたります —は、
 \family sans
 Slide
 \family default
@@ -16841,7 +16803,7 @@ begin{multicols}{2}
 \begin_layout Standard
 
 \size footnotesize
-The youth moved in the best society--had, so far as was known, no enemies
+The youth moved in the best society–had, so far as was known, no enemies
  and no particular vices.
  He had been engaged to Miss Edith Woodley, of Carstairs, but the engagement
  had been broken off by mutual consent some months before, and there was
@@ -16872,8 +16834,8 @@ end{multicols}
 \begin_layout Standard
 
 \size footnotesize
-Ronald Adair was fond of cards--playing continually, but never for such
- stakes as would hurt him.
+Ronald Adair was fond of cards–playing continually, but never for such stakes
+ as would hurt him.
  He was a member of the Baldwin, the Cavendish, and the Bagatelle card clubs.
  It was shown that, after dinner on the day of his death, he had played
  a rubber of whist at the latter club.
@@ -16882,8 +16844,8 @@ Ronald Adair was fond of cards--playing continually, but never for such
 \size default
  
 \size footnotesize
-The evidence of those who had played with him-- Mr.
- Murray, Sir John Hardy, and Colonel Moran--showed that the game was whist,
+The evidence of those who had played with him– Mr.
+ Murray, Sir John Hardy, and Colonel Moran–showed that the game was whist,
  and that there was a fairly equal fall of the cards.
  Adair might have lost five pounds, but not more.
  His fortune was a considerable one, and such a loss could not in any way
@@ -17288,7 +17250,7 @@ dropped capitals
 \begin_inset Quotes erd
 \end_inset
 
----those large capital letters which begin each new chapter or section.
+—those large capital letters which begin each new chapter or section.
  
 \end_layout
 

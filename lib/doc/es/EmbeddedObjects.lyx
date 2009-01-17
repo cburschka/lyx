@@ -1,4 +1,4 @@
-#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -162,7 +162,7 @@
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX }}
+  {LyX}}
 
 % to translate the listing label
 % para traducir la etiqueta listing
@@ -19021,7 +19021,7 @@ reference "sec:Colocación-de-leyendas"
 
 \end_inset
 
- ---un cuadro gris con etiqueta en rojo---.
+ —un cuadro gris con etiqueta en rojo—.
 \end_layout
 
 \begin_layout Standard
@@ -22058,8 +22058,7 @@ usepackage[option]{sidecap}
 
 \begin_layout Standard
 Si no se especifica opción, la leyenda se ubica del lado del margen externo
- de la página ---a la derecha en páginas impares, a la izquierda en las
- pares---.
+ de la página —a la derecha en páginas impares, a la izquierda en las pares—.
  Puedes cambiar la colocación al margen interno con la opción 
 \series bold
 innercaption
@@ -24730,10 +24729,10 @@ Esto es una nota al margen.
 
 \begin_layout Standard
 Estas notas salen en el margen derecho en documentos a una cara.
- En documentos a doble cara se muestran en el margen externo ---margen izquierdo
- en páginas pares, derecho en páginas impares---.
- El texto de las notas se ajusta a la parte opuesta al margen ---se ajusta
- a la derecha si la nota aparece en el margen izquierdo---.
+ En documentos a doble cara se muestran en el margen externo —margen izquierdo
+ en páginas pares, derecho en páginas impares—.
+ El texto de las notas se ajusta a la parte opuesta al margen —se ajusta
+ a la derecha si la nota aparece en el margen izquierdo—.
  La primera línea de la nota se sitúa en la posición de la línea del texto
  en la que se inserta en el documento.
 \end_layout

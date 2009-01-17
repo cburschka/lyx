@@ -50,7 +50,7 @@
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX }}
+  {LyX}}
 
 % Prüfung auf benötigte LaTeXPakete
 \usepackage{ifthen}
@@ -124,7 +124,7 @@ Handbuchergänzungen
 \begin_inset Newline newline
 \end_inset
 
---- erweiterte Textbearbeitung mit LyX
+— erweiterte Textbearbeitung mit LyX
 \begin_inset Newline newline
 \end_inset
 
@@ -281,7 +281,7 @@ s-Team verfasst.
 \end_layout
 
 \begin_layout Standard
-Weil alle Themen dieses Handbuchs stark vom Zusammenspiel LyX--LaTeX abhängen,
+Weil alle Themen dieses Handbuchs stark vom Zusammenspiel LyX–LaTeX abhängen,
  beschreibt das erste Kapitel die innere Arbeitsweise von LyX und wie man
  LyX dazu bringt, den gewünschten LaTeX-Code zu erzeugen.
  Es ist offensichtlich für erfahrenere LyX-Benutzer gedacht.
@@ -1464,7 +1464,7 @@ John Weiss
 : Ich scheine das schrecklich oft zu tun.
  Ich setzte mich hin und fing fröhlich an zu kodieren, um Marken auszudrucken,
  bis ich merkte, dass es bereits 2 verschiedene LaTeX-Pakete dafür gab.
- Noch schlimmer -- ich hatte sie bereits!
+ Noch schlimmer – ich hatte sie bereits!
 \end_layout
 
 \end_inset
@@ -1499,7 +1499,7 @@ LyX und der LaTeX-Vorspann
 \begin_layout Standard
 Wenn Sie LaTeX bereits kennen, müssen wir Ihnen hier nicht erklären, wofür
  der Vorspann da ist.
- Wenn nicht, wird das Folgende Ihnen einige Ideen geben --- wir empfehlen
+ Wenn nicht, wird das Folgende Ihnen einige Ideen geben — wir empfehlen
  nochmals, ein LaTeX-Buch für weitere Informationen heranzuziehen.
  In jedem Fall sollten Sie die untenstehenden Punkte lesen, weil sie erklären,
  was Sie im LaTeX-Vorspann eines LyX-Dokumentes tun können und was Sie nicht
@@ -1857,7 +1857,7 @@ BottomBorder=x6mm
 \end_layout
 
 \begin_layout Standard
-Die Werte für x1 -- x6 hängen von Ihren Adressaufklebern ab.
+Die Werte für x1 – x6 hängen von Ihren Adressaufklebern ab.
  Sie können jetzt Adressaufkleber drucken, aber Sie müssen TeX-Code einfügen,
  wobei die Befehle 
 \family typewriter
@@ -2491,7 +2491,7 @@ Wenn mit der Ausgabe etwas Anderes falsch ging und Sie nichts Ausgefallenes
 
 \end_deeper
 \begin_layout Standard
-Wenn all das nicht hilft --- nun, dann haben Sie 
+Wenn all das nicht hilft — nun, dann haben Sie 
 \emph on
 vielleicht
 \emph default
@@ -2564,7 +2564,7 @@ status collapsed
 \begin_layout Plain Layout
 oder Helmut Kopka: 
 \emph on
-LaTeX, Band 1 -- Einführung, 2., überarbeitete Auf\SpecialChar \textcompwordmark{}
+LaTeX, Band 1 – Einführung, 2., überarbeitete Auf\SpecialChar \textcompwordmark{}
 lage
 \emph default
 .
@@ -2922,11 +2922,11 @@ ftp://ctan.tug.org/tex-archive/macros/latex/contrib/bibtopic/
 
 \end_inset
 
- Der Vorteil dieses Paketes -- verglichen mit anderen wie 
+ Der Vorteil dieses Paketes – verglichen mit anderen wie 
 \family typewriter
 multibib
 \family default
- -- ist, dass Sie keine neuen Li\SpecialChar \-
+ – ist, dass Sie keine neuen Li\SpecialChar \-
 te\SpecialChar \-
 ra\SpecialChar \-
 tur\SpecialChar \-
@@ -3256,7 +3256,7 @@ enthält und die fünf eingefügten Dateien.
 \end_layout
 
 \begin_layout Standard
-Jede dieser Dateien muss aber dieselbe Dokumentklasse haben -- versuchen
+Jede dieser Dateien muss aber dieselbe Dokumentklasse haben – versuchen
  Sie nicht, Buch- und Artikelklassen zu mischen.
  Sie können auch LaTeX-Dateien einbinden, diese dürfen dann aber keinen
  eigenen Vorspann haben (das heißt der Teil bis einschließlich der Zeile
@@ -6028,7 +6028,7 @@ chktex
 \size small
 \emph on
 Command terminated with space.
- --- Befehl endete mit einem Leerzeichen.
+ — Befehl endete mit einem Leerzeichen.
 \end_layout
 
 \begin_layout Enumerate
@@ -6047,7 +6047,7 @@ Non-breaking space (
 \end_inset
 
 ) should have been used.
- --- Geschütztes Leerzeichen (
+ — Geschütztes Leerzeichen (
 \begin_inset Quotes gld
 \end_inset
 
@@ -6094,7 +6094,7 @@ You should enclose the previous parenthesis with
 \end_inset
 
 .
- --- Sie sollten die vorigen Klammern in 
+ — Sie sollten die vorigen Klammern in 
 \begin_inset Quotes gld
 \end_inset
 
@@ -6123,7 +6123,7 @@ Italic correction (
 \end_inset
 
 ) found in non-italic buffer.
- --- Kursiv-Korrektur (
+ — Kursiv-Korrektur (
 \begin_inset Quotes gld
 \end_inset
 
@@ -6162,7 +6162,7 @@ Italic correction (
 \end_inset
 
 ) found more than once.
- --- Kursiv-Korrektur (
+ — Kursiv-Korrektur (
 \begin_inset Quotes gld
 \end_inset
 
@@ -6202,7 +6202,7 @@ No italic correction (
 \end_inset
 
 ) found.
- --- Keine Kursiv-Korrektur (
+ — Keine Kursiv-Korrektur (
 \begin_inset Quotes gld
 \end_inset
 
@@ -6255,7 +6255,7 @@ cmd
 \end_inset
 
 .
- --- Der Akzent-Befehl 
+ — Der Akzent-Befehl 
 \begin_inset Quotes gld
 \end_inset
 
@@ -6290,7 +6290,7 @@ cmd
 
 \size small
 Wrong length of dash may have been used.
- --- Eventuell verkehrte Länge des Gedankenstrichs.
+ — Eventuell verkehrte Länge des Gedankenstrichs.
 \end_layout
 
 \begin_layout Enumerate
@@ -6325,7 +6325,7 @@ Wrong length of dash may have been used.
 \end_inset
 
 .
- --- 
+ — 
 \begin_inset Quotes gld
 \end_inset
 
@@ -6375,7 +6375,7 @@ Solo
 \end_inset
 
  found.
- --- Einzelnes 
+ — Einzelnes 
 \emph on
 
 \begin_inset Quotes gld
@@ -6410,7 +6410,7 @@ You should use
 \end_inset
 
  to achieve an ellipsis.
- --- Sie sollten 
+ — Sie sollten 
 \begin_inset Quotes gld
 \end_inset
 
@@ -6443,7 +6443,7 @@ Inter-word spacing (
 \end_inset
 
 ) should perhaps be used.
- --- Vielleicht sollten Sie ein normales Leerzeichen (
+ — Vielleicht sollten Sie ein normales Leerzeichen (
 \begin_inset Quotes gld
 \end_inset
 
@@ -6478,7 +6478,7 @@ Inter-sentence spacing (
 \end_inset
 
 ) should perhaps be used.
- --- Vielleicht sollten Sie einen Satz\SpecialChar \-
+ — Vielleicht sollten Sie einen Satz\SpecialChar \-
 endepunkt (
 \begin_inset Quotes gld
 \end_inset
@@ -6500,7 +6500,7 @@ endepunkt (
 
 \size small
 Could not find argument for command.
- --- Konnte kein Befehlsargument finden.
+ — Konnte kein Befehlsargument finden.
 \end_layout
 
 \begin_layout Enumerate
@@ -6519,7 +6519,7 @@ No match found for
 \end_inset
 
 .
- --- Konnte nichts Passendes zu 
+ — Konnte nichts Passendes zu 
 \begin_inset Quotes gld
 \end_inset
 
@@ -6538,7 +6538,7 @@ No match found for
 
 \size small
 Math mode still on at end of LaTeX file.
- --- Der Mathe-Modus ist am Ende der LaTeX-Datei immer noch an.
+ — Der Mathe-Modus ist am Ende der LaTeX-Datei immer noch an.
 \end_layout
 
 \begin_layout Enumerate
@@ -6569,7 +6569,7 @@ char
 \end_inset
 
 .
- --- Die Anzahl der 
+ — Die Anzahl der 
 \begin_inset Quotes gld
 \end_inset
 
@@ -6629,7 +6629,7 @@ You should use either
 \end_inset
 
 .
- --- Sie sollten 
+ — Sie sollten 
 \family typewriter
 
 \begin_inset Quotes gld
@@ -6668,7 +6668,7 @@ oder
 
 \size small
 You should use "'" (ASCII 39) instead of "´" (ASCII 180).
- --- Sie sollten 
+ — Sie sollten 
 \begin_inset Quotes gld
 \end_inset
 
@@ -6695,14 +6695,14 @@ You should use "'" (ASCII 39) instead of "´" (ASCII 180).
 
 \size small
 User-specified pattern found.
- --- Benutzerdefiniertes Muster gefunden.
+ — Benutzerdefiniertes Muster gefunden.
 \end_layout
 
 \begin_layout Enumerate
 
 \size small
 This command might not be intended.
- --- Dieser Befehl war vielleicht nicht gewollt.
+ — Dieser Befehl war vielleicht nicht gewollt.
 \end_layout
 
 \begin_layout Enumerate
@@ -6710,7 +6710,7 @@ This command might not be intended.
 \size small
 \emph on
 Comment displayed.
- --- Kommentar angezeigt.
+ — Kommentar angezeigt.
 \end_layout
 
 \begin_layout Enumerate
@@ -6737,7 +6737,7 @@ or
 \end_inset
 
 will look better.
- --- Ein kleiner Abstand sieht besser aus.
+ — Ein kleiner Abstand sieht besser aus.
  In LyX: 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -6763,7 +6763,7 @@ Strg+Umschalt+Leertaste
 
 \size small
 Delete this space to maintain correct page references.
- --- Löschen Sie dieses Leerzeichen, um korrekte Seitenverweise zu erhalten.
+ — Löschen Sie dieses Leerzeichen, um korrekte Seitenverweise zu erhalten.
 \end_layout
 
 \begin_layout Enumerate
@@ -6783,7 +6783,7 @@ You might wish to put this between a pair of
 \end_inset
 
 .
- --- Sie sollten dies in 
+ — Sie sollten dies in 
 \begin_inset Quotes gld
 \end_inset
 
@@ -6798,14 +6798,14 @@ You might wish to put this between a pair of
 
 \size small
 You ought to remove spaces in front of punctuation.
- --- Sie sollten Leer- vor Satzzeichen entfernen.
+ — Sie sollten Leer- vor Satzzeichen entfernen.
 \end_layout
 
 \begin_layout Enumerate
 
 \size small
 Could not execute LaTeX command.
- --- LaTeX-Befehl konnte nicht ausgeführt werden.
+ — LaTeX-Befehl konnte nicht ausgeführt werden.
 \end_layout
 
 \begin_layout Enumerate
@@ -6818,7 +6818,7 @@ Don't use
 /
 \family default
  in front of small punctuation.
- --- Benutzen Sie keine Kursiv-Korrektur 
+ — Benutzen Sie keine Kursiv-Korrektur 
 \begin_inset Quotes gld
 \end_inset
 
@@ -6845,7 +6845,7 @@ $
 times$
 \family default
  may look prettier here.
- --- 
+ — 
 \family typewriter
 $
 \backslash
@@ -6878,7 +6878,7 @@ sieht hier wahrscheinlich besser aus.
 \size small
 \emph on
 Multiple spaces detected in output.
- --- Mehrfache Leerzeichen in der Ausgabe entdeckt.
+ — Mehrfache Leerzeichen in der Ausgabe entdeckt.
  
 \emph default
 Das sollte in LyX nicht passieren.
@@ -6888,7 +6888,7 @@ Das sollte in LyX nicht passieren.
 
 \size small
 This text may be ignored.
- --- Dieser Text wird wahrscheinlich ignoriert.
+ — Dieser Text wird wahrscheinlich ignoriert.
  Das sollte in LyX nicht passieren.
 \end_layout
 
@@ -6912,7 +6912,7 @@ to begin quotation, not
 '
 \family default
 .
- --- Benutzen Sie 
+ — Benutzen Sie 
 \family typewriter
 
 \begin_inset Quotes gld
@@ -6956,7 +6956,7 @@ to end quotation, not
 
 \family default
 .
- --- Benutzen Sie 
+ — Benutzen Sie 
 \family typewriter
 
 \begin_inset Quotes grs
@@ -6985,7 +6985,7 @@ am Ende eines Zitats, nicht
 
 \size small
 Don't mix quotes.
- --- Mischen Sie keine Anführungszeichen.
+ — Mischen Sie keine Anführungszeichen.
 \end_layout
 
 \begin_layout Enumerate
@@ -7004,7 +7004,7 @@ cmd
 \end_inset
 
  instead.
- --- Vielleicht sollten Sie besser 
+ — Vielleicht sollten Sie besser 
 \begin_inset Quotes gld
 \end_inset
 
@@ -7024,14 +7024,14 @@ cmd
 
 \size small
 You should put a space in front of/after parenthesis.
- --- Vor/nach Klammern sollten Sie ein Leerzeichen einfügen.
+ — Vor/nach Klammern sollten Sie ein Leerzeichen einfügen.
 \end_layout
 
 \begin_layout Enumerate
 
 \size small
 You should avoid spaces in front of/after parenthesis.
- --- Vor/nach Klammern sollten Sie mehrfache Leerzeichen vermeiden.
+ — Vor/nach Klammern sollten Sie mehrfache Leerzeichen vermeiden.
  Das sollte in LyX nicht passieren.
 \end_layout
 
@@ -7040,14 +7040,14 @@ You should avoid spaces in front of/after parenthesis.
 \size small
 \emph on
 You should not use punctuation in front of/after quotes.
- --- Vor/nach Anführungszeichen sollten Sie keine Satzzeichen verwenden.
+ — Vor/nach Anführungszeichen sollten Sie keine Satzzeichen verwenden.
 \end_layout
 
 \begin_layout Enumerate
 
 \size small
 Double space found.
- --- Doppeltes Leerzeichen gefunden.
+ — Doppeltes Leerzeichen gefunden.
  Das sollte in LyX nicht passieren.
 \end_layout
 
@@ -7055,8 +7055,8 @@ Double space found.
 
 \size small
 You should put punctuation outside inner/inside display math mode.
- --- Sie sollten Satzzeichen außerhalb des inneren und innerhalb des Anzeige-Mat
-he-Modus verwenden.
+ — Sie sollten Satzzeichen außerhalb des inneren und innerhalb des Anzeige-Mathe
+-Modus verwenden.
  (???)
 \end_layout
 
@@ -7064,7 +7064,7 @@ he-Modus verwenden.
 
 \size small
 You ought to not use primitive TeX in LaTeX code.
- --- Im LaTeX-Code sollten Sie keinen TeX-Code verwenden.
+ — Im LaTeX-Code sollten Sie keinen TeX-Code verwenden.
 \end_layout
 
 \begin_layout Enumerate
@@ -7083,7 +7083,7 @@ You should remove spaces in front of
 \end_inset
 
 .
- --- Vor 
+ — Vor 
 \begin_inset Quotes gld
 \end_inset
 
@@ -7126,7 +7126,7 @@ You should remove spaces in front of
 \end_inset
 
 .
- --- Auf 
+ — Auf 
 \begin_inset Quotes gld
 \end_inset
 
@@ -7248,7 +7248,7 @@ man rcsintro
 
 \begin_layout Standard
 Die Implementation in LyX setzt eine aktuelle Version des GNU-RCS-Paketes
- voraus --- für ältere Versionen wird keine Garantie gegeben.
+ voraus — für ältere Versionen wird keine Garantie gegeben.
 \end_layout
 
 \begin_layout Subsection
@@ -7549,8 +7549,8 @@ weben
 \emph default
  (weaving) gemeint ist.
  Wenn das nicht der Fall ist, sollten Sie dieses Kapitel überspringen oder
- sich anhand der weiter unten angegebenen Links im Web schlau machen --
- es gibt sehr viel gute Literatur zu diesem Thema, die von der geschichtlichen
+ sich anhand der weiter unten angegebenen Links im Web schlau machen – es
+ gibt sehr viel gute Literatur zu diesem Thema, die von der geschichtlichen
  Entwicklung bis zu den aktuellsten Hinweisen für Hilfsprogramme reicht.
 \end_layout
 
@@ -9559,7 +9559,7 @@ Mike Ressler
 \noun default
  kann als Vorlage dienen, wenn man ohne die oben genannten Pakete arbeiten
  will, weil es sie nicht benötigt.
- Mit etwas Kenntnis von LaTeX ist dies durchaus möglich -- allerdings etwas
+ Mit etwas Kenntnis von LaTeX ist dies durchaus möglich – allerdings etwas
  aufwendig, wie das Beispiel am Anfang dieses Absatzes zeigt.
 \begin_inset Foot
 status open
@@ -10911,7 +10911,7 @@ ftp://ftp.ams.org/pub/tex/amslatex/
 \end_layout
 
 \begin_layout Enumerate
-amsart -- Das AMS-Standardformat für Artikel.
+amsart – Das AMS-Standardformat für Artikel.
  Alle Ergebnisse und gleichwertige Aussagen werden in der Form 
 \begin_inset Formula $(n,m)$
 \end_inset
@@ -10926,7 +10926,7 @@ amsart -- Das AMS-Standardformat für Artikel.
 \end_layout
 
 \begin_layout Enumerate
-amsart-seq -- Hier ist die Nummerierung unabhängig vom Abschnitt und wird
+amsart-seq – Hier ist die Nummerierung unabhängig vom Abschnitt und wird
  für jeden Typ von Aussage getrennt geführt.
  Einige öfters benötigte Typen (nicht alle) stehen ebenfalls in einer nichtnumme
 rierten Form zur Verfügung, die durch einen Stern am Ende des Namens gekennzeich
@@ -10934,7 +10934,7 @@ net ist.
 \end_layout
 
 \begin_layout Enumerate
-amsbook -- Das AMS-Standardformat für Bücher (oder besser Monographien).
+amsbook – Das AMS-Standardformat für Bücher (oder besser Monographien).
  Die Nummerierung erfolgt ähnlich wie bei amsart, allerdings umfasst die
  Nummerierung drei Ziffern, 
 \begin_inset Formula $(n,m,p)$
@@ -12942,7 +12942,7 @@ shortauthors
 \backslash
 email
 \family default
- (2.3) -- Dieser Befehl kann nur in einer eigenen Absatzumgebung verwendet
+ (2.3) – Dieser Befehl kann nur in einer eigenen Absatzumgebung verwendet
  werden.
  Verwenden Sie TeX-Code, um ihn einzufügen.
 \end_layout
@@ -12954,7 +12954,7 @@ email
 \backslash
 and
 \family default
- (2.3) -- Es wird ein zusätzliches Klammerpaar 
+ (2.3) – Es wird ein zusätzliches Klammerpaar 
 \family typewriter
 {}
 \family default
@@ -12968,7 +12968,7 @@ and
 \backslash
 notetoeditor
 \family default
- (2.6) -- Dieser Befehl kann nur in einer eigenen Absatzumgebung verwendet
+ (2.6) – Dieser Befehl kann nur in einer eigenen Absatzumgebung verwendet
  werden.
  Verwenden Sie TeX-Code, um ihn einzufügen.
 \end_layout
@@ -12991,7 +12991,7 @@ placetable
 \backslash
 placefigure
 \family default
- (2.8) -- Es gilt das zu 
+ (2.8) – Es gilt das zu 
 \family typewriter
 
 \backslash
@@ -13007,7 +13007,7 @@ placetable
 \backslash
 acknowledgements
 \family default
- (2.9) -- Es wird ein zusätzliches Klammerpaar 
+ (2.9) – Es wird ein zusätzliches Klammerpaar 
 \family typewriter
 {}
 \family default
@@ -13021,7 +13021,7 @@ acknowledgements
 \backslash
 appendix
 \family default
- (2.11) -- Es wird ein zusätzliches Klammerpaar 
+ (2.11) – Es wird ein zusätzliches Klammerpaar 
 \family typewriter
 {}
 \family default
@@ -13035,7 +13035,7 @@ appendix
 \backslash
 figcaption
 \family default
- (2.14.2) -- Sie können ein optionales Dateinamen-Argument einfügen, indem
+ (2.14.2) – Sie können ein optionales Dateinamen-Argument einfügen, indem
  Sie den Cursor am Textanfang platzieren und 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -13064,7 +13064,7 @@ caption
 \backslash
 objectname
 \family default
- (2.17.1) -- wie 
+ (2.17.1) – wie 
 \family typewriter
 
 \backslash
@@ -13080,7 +13080,7 @@ figcaption
 \backslash
 dataset
 \family default
- (2.17.1) -- wie 
+ (2.17.1) – wie 
 \family typewriter
 
 \backslash
@@ -16281,7 +16281,7 @@ scrlettr
 \family default
 -Klasse, welche (von den KOMA-Entwicklern) nun nicht mehr offiziell unterstützt
  wird.
- Die neue Briefklasse hat -- was die LaTeX-Umsetzung betrifft -- ein komplett
+ Die neue Briefklasse hat – was die LaTeX-Umsetzung betrifft – ein komplett
  neues Konzept und ist daher nicht kompatibel mit dem Vorgänger.
  Deshalb unterstützt LyX beide Klassen.
  Wir empfehlen jedoch den Umstieg auf die neue Briefklasse.
@@ -16610,7 +16610,7 @@ Neue Stile
 \end_layout
 
 \begin_layout Standard
-Eine große Zahl an theoremähnlichen Stilen -- 
+Eine große Zahl an theoremähnlichen Stilen – 
 \family sans
 Claim
 \family default
@@ -16661,7 +16661,7 @@ Journal of Geodesy
 \family typewriter
 svjog.layout
 \family default
- -- Martin Vermeer
+ – Martin Vermeer
 \end_layout
 
 \begin_layout Itemize
@@ -16673,7 +16673,7 @@ Probability Theory and Related Fields
 \family typewriter
 svprobth.layout
 \family default
- -- Jean-Marc Lasgouttes
+ – Jean-Marc Lasgouttes
 \end_layout
 
 \begin_layout Standard
@@ -16871,7 +16871,7 @@ Journal of Geophysical Research
 \family typewriter
 jgrga.layout
 \family default
- --- Martin Vermeer
+ — Martin Vermeer
 \end_layout
 
 \begin_layout Standard
@@ -17662,8 +17662,8 @@ Pseudo-Befehl
 \begin_layout Standard
 Eine Gemeinsamkeit dieser fünf Umgebungstypen ist, dass sie sehr lange Marken
  besitzen.
- Der Text nach dieser Marke --- normalerweise der Inhalt der Absatzumgebung
- --- ist für die Typen 
+ Der Text nach dieser Marke — normalerweise der Inhalt der Absatzumgebung
+ — ist für die Typen 
 \family sans
 Folie
 \family default
@@ -17838,7 +17838,7 @@ Overlay
 Notiz
 \family default
  automatisch auf eine neue Seite umgebrochen, falls er zu lang wird.
- Aber auch hier sollten Sie das vermeiden -- es macht die Wirkung von 
+ Aber auch hier sollten Sie das vermeiden – es macht die Wirkung von 
 \family sans
 Overlay
 \family default
@@ -18906,7 +18906,7 @@ immer
 \emph on
 immer
 \emph default
- das Logo -- falls eines definiert ist -- zentriert unten auf der Seite.
+ das Logo – falls eines definiert ist – zentriert unten auf der Seite.
  Mögliche Einstellungen für das Seitenformat sind:
 \end_layout
 
@@ -20480,7 +20480,7 @@ Erste Schritte
 \end_layout
 
 \begin_layout Standard
-[Hier kommt später mehr -- 
+[Hier kommt später mehr – 
 \emph on
 AR
 \emph default
@@ -20934,29 +20934,29 @@ Skript Jargon
 \end_layout
 
 \begin_layout Itemize
-(O.S) --- off screen
+(O.S) — off screen
 \end_layout
 
 \begin_layout Itemize
-(V.0) --- voice over
+(V.0) — voice over
 \end_layout
 
 \begin_layout Itemize
 b.g.
- --- background
+ — background
 \end_layout
 
 \begin_layout Itemize
 C.U.
- --- close-up
+ — close-up
 \end_layout
 
 \begin_layout Itemize
-PAN --- camera movement
+PAN — camera movement
 \end_layout
 
 \begin_layout Itemize
-INSERT --- cut to close-up of
+INSERT — cut to close-up of
 \end_layout
 
 \begin_layout Section
@@ -21506,11 +21506,11 @@ Sie können nun Dokumente in dieser Klasse erstellen, entweder indem Sie
 \family typewriter
 tex2lyx
 \family default
- importieren oder eines -- ausgehend von der Datei 
+ importieren oder eines – ausgehend von der Datei 
 \family typewriter
 revtex4.lyx
 \family default
- im Verzeichnis mit den Beispielen -- neu anlegen.
+ im Verzeichnis mit den Beispielen – neu anlegen.
 \end_layout
 
 \begin_layout Subsection
@@ -21908,7 +21908,7 @@ Optionen
 
 \begin_deeper
 \begin_layout Description
-rmheadings Titel in serif --- default,
+rmheadings Titel in serif — default,
 \end_layout
 
 \begin_layout Description
@@ -21916,8 +21916,7 @@ sfheadings Titel in sans serif,
 \end_layout
 
 \begin_layout Description
-authortitle auf der Titelseite kommt erst der Autor, dann der Titel ---
- default,
+authortitle auf der Titelseite kommt erst der Autor, dann der Titel — default,
 \end_layout
 
 \begin_layout Description
@@ -22313,8 +22312,7 @@ Options
 \family default
 ), you can emulate article style.
  That is, counters (footnotes, figures, tables etc.) will not be reset on
- new chapters, chapters don't start a new page (but are---in contrary to
- 
+ new chapters, chapters don't start a new page (but are—in contrary to 
 \begin_inset Quotes eld
 \end_inset
 
@@ -22322,8 +22320,8 @@ real
 \begin_inset Quotes erd
 \end_inset
 
- article classes---still allowed), parts, though, use their own page, as
- in book.
+ article classes—still allowed), parts, though, use their own page, as in
+ book.
 \end_layout
 
 \begin_layout Description

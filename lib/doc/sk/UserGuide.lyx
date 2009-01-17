@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -37,12 +36,13 @@
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX }}
+  {LyX}}
 
 %remove this line when bug 5291 is fixed
 \@ifundefined{textcolor}{\usepackage{color}}{}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
+\use_default_options false
 \language slovak
 \inputencoding auto
 \font_roman default
@@ -53,6 +53,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -88,8 +89,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -1195,7 +1196,7 @@ Nadol
  robia presne to, čo od nich očakávate, Ďalšie nie:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -1239,7 +1240,7 @@ Základy práce
 ).
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -1258,7 +1259,7 @@ rušiaca klávesa
  V ďalších častiach manuálu sa na to pozrieme detailnejšie.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -1275,7 +1276,7 @@ End
  Presúvajú kurzor na začiatok a koniec riadku.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -1321,7 +1322,7 @@ reference "sec: x-win-kbd"
 Ďalej nasleduje zoznam modifikačných klávesov:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -1368,7 +1369,7 @@ End
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -1377,7 +1378,7 @@ Shift
  Spolu s kurzorovými šípkami označí text.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -3991,7 +3992,7 @@ preddefinovaných hodnôt
  Toto popisuje táto sekcia.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4016,7 +4017,7 @@ O toto sa stará LaTeX.
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4025,7 +4026,7 @@ Default
  Používa štandardný štýl strany pre danú triedu.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4034,7 +4035,7 @@ Empty
  Žiadne titulky a čísla strán.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4043,7 +4044,7 @@ Plain
  Iba čísla strán
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4054,7 +4055,7 @@ Headings
  úroveň sekcie.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4076,7 +4077,7 @@ fancyhdr
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4101,7 +4102,7 @@ Sú tu dva prepínače:
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4125,7 +4126,7 @@ dva stĺpce.
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4185,7 +4186,7 @@ apier
 :
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4202,7 +4203,7 @@ Krajinka
  (na šírku).
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -6306,7 +6307,7 @@ List
  a ostatnými troma prostrediami sú nejaké rozdiely:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMM
 popisky
 \begin_inset space ~
@@ -6336,7 +6337,7 @@ C-Mezera
 ).
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMM
 okraje Ako môžete vidieť, LyX používa rôzne okraje na popisok položky a
  text položky.
@@ -6344,7 +6345,7 @@ okraje Ako môžete vidieť, LyX používa rôzne okraje na popisok položky a
  nejaká medzera naviac.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMM
 šírka
 \begin_inset space ~
@@ -6365,7 +6366,7 @@ pretiahne
  textu.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMM
 štandardná
 \begin_inset space ~
@@ -6383,7 +6384,7 @@ List
  mal rovnaký ľavý okraj.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMM
 použitie Toto prostredie by ste mali používať tak, ako by ste používali
  prostredie 
@@ -6399,7 +6400,7 @@ List
  vám na toto poskytuje iný formát.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMMM
 vnáranie Prostredia List môžete do seba vnárať, takisto ich môžte vnárať
  do iných typov zoznamov, atď.
@@ -6531,7 +6532,7 @@ y aby ste zmenili zarovnanie popisku.
  Tu je príkald:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 Naľavo Šatndardné zarovnanie pre položky prostredia 
 \family sans
@@ -6540,7 +6541,7 @@ List
 .
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 \begin_inset space \hfill{}
 \end_inset
@@ -6552,7 +6553,7 @@ HFill
  na začiatku popisku ho vycentruje.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 \begin_inset space ~
 \end_inset
@@ -6618,7 +6619,7 @@ Na obrazovke to nevyzerá zarovnané napravo, ale vo výstupe to bolo OK.
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 \begin_inset space \hfill{}
 \end_inset
@@ -8768,7 +8769,7 @@ Príklad č.
  1: Šesť úrovní a zmiešané vnáranie
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMM
 č.
 \begin_inset space ~
@@ -8783,7 +8784,7 @@ List
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMM
 č.
 \begin_inset space ~
@@ -8798,7 +8799,7 @@ M-Enter
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMM
 č.
 \begin_inset space ~
@@ -8875,7 +8876,7 @@ M-Enter
 .
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMM
 č.
 \begin_inset space ~
@@ -8901,7 +8902,7 @@ Standard
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMM
 č.
 \begin_inset space ~
@@ -8913,7 +8914,7 @@ Standard
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMM
 č.
 \begin_inset space ~
@@ -8926,7 +8927,7 @@ a toto je úroveň č.
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMM
 č.
 \begin_inset space ~
@@ -8938,7 +8939,7 @@ a toto je úroveň č.
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMM
 č.
 \begin_inset space ~
@@ -8949,7 +8950,7 @@ a toto je úroveň č.
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMM
 č.
 \begin_inset space ~
@@ -8960,7 +8961,7 @@ a toto je úroveň č.
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMM
 č.
 \begin_inset space ~
@@ -8971,7 +8972,7 @@ a toto je úroveň č.
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMM
 č.
 \begin_inset space ~
@@ -10011,7 +10012,7 @@ Nulovať
 ) sú:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10022,7 +10023,7 @@ Rodina
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10046,7 +10047,7 @@ r
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10075,7 +10076,7 @@ s
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10109,7 +10110,7 @@ p
 
 \end_deeper
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10128,7 +10129,7 @@ tučnosť
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10143,7 +10144,7 @@ Tiež je to štandardná séria.
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10177,7 +10178,7 @@ b
 
 \end_deeper
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10188,7 +10189,7 @@ Tvar
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10203,7 +10204,7 @@ Je to tiež štandardný tvar.
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10215,7 +10216,7 @@ Je to tiež štandardný tvar.
 Toto je šikmý tvar písma.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10230,7 +10231,7 @@ Toto je tvar písma Kurzíva
  (aj keď to na obrazovke nemusí byť vidieť, je to odlišné od šikmého tvaru).
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10247,7 +10248,7 @@ Toto je tvar písma Malé veľké.
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10265,7 +10266,7 @@ Veľkosť
 Možnosti (a ich skratky) sú:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10306,7 +10307,7 @@ M-s
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10339,7 +10340,7 @@ M-s
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10380,7 +10381,7 @@ M-s
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10421,7 +10422,7 @@ M-s
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10461,7 +10462,7 @@ M-s
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10502,7 +10503,7 @@ M-s
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10543,7 +10544,7 @@ M-s
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10576,7 +10577,7 @@ M-s
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10618,7 +10619,7 @@ M-s
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10714,7 +10715,7 @@ pre dolaďovanie niektorých drobností!
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10725,7 +10726,7 @@ Rôzne
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10755,7 +10756,7 @@ vlastnosti.
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10801,7 +10802,7 @@ u
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10831,7 +10832,7 @@ veľké
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -10875,7 +10876,7 @@ skutočne potrebovať.
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -11365,7 +11366,7 @@ User`s Guide
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -11397,7 +11398,7 @@ Toto jediné bolo popísané v anglickej dokumentácii.
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -11454,7 +11455,7 @@ lyxrc
  Tlačiareň by mala rozumieť PostScriptu.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -11485,7 +11486,7 @@ y, takže by ste mohli o svoj výsledok prísť.
 
 \end_deeper
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -11495,7 +11496,7 @@ Options
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -11508,7 +11509,7 @@ all
  Vytlačí celý dokument.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -11538,7 +11539,7 @@ page
 .
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -11559,7 +11560,7 @@ first
  Začne tlačiť od prvej stránky.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -11580,7 +11581,7 @@ first
  Najprv vytlačí poslednú stránku, až potom ostatné.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -11605,7 +11606,7 @@ available
  Farebná tlač (ak je farebná tlačiareň samozrejme).
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -11622,7 +11623,7 @@ grayscale
  Čiernobiela tlač.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -11640,7 +11641,7 @@ copies
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -11654,7 +11655,7 @@ format
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -11663,7 +11664,7 @@ Portrait
  Portrét -- papier na výšku.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -12186,7 +12187,7 @@ Rozloženie->Úvodzovky
 Tu sú príklady možností:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Quotes eld
 \end_inset
@@ -12214,7 +12215,7 @@ jednoduché
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Quotes sld
 \end_inset
@@ -12242,7 +12243,7 @@ jednoduché
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Quotes gld
 \end_inset
@@ -12270,7 +12271,7 @@ jednoduché
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Quotes pld
 \end_inset
@@ -12298,7 +12299,7 @@ jednoduché
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Quotes fld
 \end_inset
@@ -12326,7 +12327,7 @@ jednoduché
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Quotes ald
 \end_inset
@@ -12865,7 +12866,7 @@ Vložiť
 Zobrazí sa vám okienko s dvoma možnosťami:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -12904,7 +12905,7 @@ PostScript:
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -12937,7 +12938,7 @@ Druhým krokom manipulácie s obrázkom je kliknutie na obrázku ľavým tlačí
 Jednotlivé parametre si preberieme jeden po druhom:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -12958,7 +12959,7 @@ dzať
  súboru.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 Šírka: Umožní vám nastaviť si šírku obrázku.
  
@@ -13033,7 +13034,7 @@ stĺpca
  a následným zadaním hodnoty do poľa pod nimi.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -13060,7 +13061,7 @@ Normálna
 , potom pomer výšky a šírky bude zachovaný ako v origináli.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -13076,7 +13077,7 @@ Nezobraziť tento obrázok
  Ten jednoducho namiesto obrázku zobrazí prázdny obdĺžnik.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -13094,7 +13095,7 @@ Robiť prepočty
  Ale nemám ani šajn čo to je.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -13108,7 +13109,7 @@ Uhol
  hodinových ručičiek).
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -15836,7 +15837,7 @@ Tabuľka tiež môže byť vložená v insete, ako je to popísané nižšie, č
  TeXu umiestniť ju tak dobre, ako to len bude možné.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 Poznámka: 
 \family sans
@@ -15863,7 +15864,7 @@ Pomocník
 , či váš systém toto podporuje.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \emph on
@@ -19865,7 +19866,7 @@ List
 .
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 jeden
 \begin_inset space \hfill{}

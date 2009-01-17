@@ -36,7 +36,7 @@
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX }}
+  {LyX}}
 
 % used for multi-column text
 \usepackage{multicol}
@@ -608,7 +608,7 @@ tex2lyx
 \end_inset
 
  will translate most legal LaTeX, but not everything.
- It will put things it doesn't understand into ERT, so after translating
+ It will put things it doesn't understand into TeX code, so after translating
  a file with 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -619,11 +619,11 @@ tex2lyx
 
 \end_inset
 
-, you can look for ERT and hand-edit it until it looks right.
+, you can look for TeX code and hand-edit it until it looks right.
 \end_layout
 
 \begin_layout Standard
-If you don't know what ERT is, read the next section.
+If you don't know what TeX code is, read the next section.
 \end_layout
 
 \begin_layout Section
@@ -769,7 +769,7 @@ TeX Code
 \end_inset
 
  box containing this text is directly after this paragraph.
- Those of you reading the manual in LyX will only see the ERT inset.
+ Those of you reading the manual in LyX will only see the TeX code inset.
  Those reading a printed version of the manuals will see the actual results:
 \end_layout
 
@@ -871,7 +871,7 @@ end{tabular}
 \end_layout
 
 \begin_layout Standard
-In addition to using ERT, you can also create a separate file containing
+In addition to using TeX code, you can also create a separate file containing
  some complex LaTeX structure and then use 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
@@ -978,7 +978,7 @@ About the LaTeX Preamble
 \begin_layout Standard
 If you already know LaTeX, there is no need to explain here what the preamble
  is good for.
- If you don't, the following will give you some ideas---we recommend again
+ If you don't, the following will give you some ideas—we recommend again
  that you consult a LaTeX book for further information.
  In any case, you should read the points below, because they explain what
  you can do and what you don't need to do in the LaTeX preamble of a LyX
@@ -1503,8 +1503,8 @@ if
  it follows another one.
  The idea behind indenting the first line of a paragraph is to distinguish
  neighboring paragraphs from one another.
- If there is no previous paragraph---for example, if it follows a figure
- or is the first paragraph in a section---then there is no need for indentation.
+ If there is no previous paragraph—for example, if it follows a figure or
+ is the first paragraph in a section—then there is no need for indentation.
  
 \end_layout
 
@@ -1933,7 +1933,7 @@ If there are no typos, check that you used the command(s) correctly.
 \end_layout
 
 \begin_layout Enumerate
-If you get a bunch of error boxes piled up at the very top of the document---and
+If you get a bunch of error boxes piled up at the very top of the document—and
  especially if you see a 
 \begin_inset Quotes eld
 \end_inset
@@ -1954,7 +1954,7 @@ begin{document}
 \begin_inset Quotes erd
 \end_inset
 
- error---it means that there are errors in the preamble.
+ error—it means that there are errors in the preamble.
  Start debugging your preamble.
 \end_layout
 
@@ -2069,7 +2069,7 @@ If something else is wrong with the output, and you didn't try to pull anything
 \end_layout
 
 \begin_layout Standard
-If all this doesn't help---well, then 
+If all this doesn't help—well, then 
 \emph on
 perhaps
 \emph default
@@ -2678,7 +2678,7 @@ end{btUnit}
 
 \end_inset
 
- (those commands have to be inserted as ERT).
+ (those commands have to be inserted as TeX code).
  The bibliography will contain all references which have been cited in the
  current 
 \begin_inset Flex CharStyle:Code
@@ -2749,8 +2749,8 @@ master
  It is important to note that each of these files is a full LyX file which
  can be formatted and printed on its own, as well as included in a master
  file.
- Each of these files must have the same document class, however---don't
- attempt to mix book classes with article classes.
+ Each of these files must have the same document class, however—don't attempt
+ to mix book classes with article classes.
  You may also include LaTeX files; however, these files must not have their
  own preamble (i.
 \begin_inset space \thinspace{}
@@ -3897,7 +3897,7 @@ If you
 really
 \emph default
  want to have multiple sets of paragraphs with different sets of bullets
- in each, then you're going to have to get your hands dirty with ERT.
+ in each, then you're going to have to get your hands dirty with TeX code.
  The bullet selection dialog can help though because it provides you with
  the LaTeX code for a wide range of bullet shapes.
  To make your own custom paragraphs you have the following options:
@@ -4220,16 +4220,8 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-references
+Tools\SpecialChar \menuseparator
+Preferences
 \end_layout
 
 \end_inset
@@ -4391,7 +4383,7 @@ argument
 
 \begin_layout Description
 clientname is a name that the client can choose arbitrarily.
- Its only use is that LyX will echo it if it sends an answer---so a client
+ Its only use is that LyX will echo it if it sends an answer—so a client
  can dispatch results from different requesters.
 \end_layout
 
@@ -4739,15 +4731,8 @@ article (A&A)
 \family default
  in the 
 \family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \family default
  dialog (OK, that one was obvious).
 \end_layout
@@ -5136,15 +5121,8 @@ Guide
  Just remember that tables should be left-aligned.
  For that, select the table and change the alignment in 
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-aragraph
+Edit\SpecialChar \menuseparator
+Paragraph
 \begin_inset space ~
 \end_inset
 
@@ -5159,15 +5137,8 @@ There is only one special thing: the figures with caption besides the figure.
 \begin_layout Enumerate
 Create a wide figure float: 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
-Flo
-\bar under
-a
-\bar default
-t\SpecialChar \menuseparator
+Insert\SpecialChar \menuseparator
+Float\SpecialChar \menuseparator
 Figure
 \family default
 , then right click in the figure and select 
@@ -5203,24 +5174,13 @@ Insert your figure
 \begin_layout Enumerate
 Position the cursor behind the figure and insert a horizontal fill: 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-pecial
+Insert\SpecialChar \menuseparator
+Special
 \begin_inset space ~
 \end_inset
 
-Character
-\bar under
-\SpecialChar \menuseparator
-H
-\bar default
-orizontal
+Character\SpecialChar \menuseparator
+Horizontal
 \begin_inset space ~
 \end_inset
 
@@ -5392,18 +5352,12 @@ Starting a New Paper
 I strongly suggest that you start with the AASTeX template file.
  Click on 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
+File\SpecialChar \menuseparator
 New from
 \family default
  
 \family sans
-\bar under
-T
-\bar default
-emplate
+Template
 \family default
 , enter the new file name, then choose the 
 \family typewriter
@@ -5433,9 +5387,9 @@ altaffiltext
  template file.
  For commands such as these, the LaTeX code must be entered directly and
  marked as such.
- Such commands are referred to as ERT, or Evil Red Text.
- I tried to minimize the amount of ERT needed in an AASTeX document, but
- there is still a bit more required than any of us would like.
+ Such commands are referred to as TeX code, or Evil Red Text.
+ I tried to minimize the amount of TeX code needed in an AASTeX document,
+ but there is still a bit more required than any of us would like.
 \end_layout
 
 \begin_layout Subsection
@@ -5459,20 +5413,9 @@ postprocessing
 \begin_layout Enumerate
 Export your paper as a LaTeX file (
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xport\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTeX
+File\SpecialChar \menuseparator
+Export\SpecialChar \menuseparator
+LaTeX
 \family default
 ).
  
@@ -5884,7 +5827,7 @@ shortauthors
 \backslash
 email
 \family default
- (2.3) -- can only be used 
+ (2.3) – can only be used 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5893,7 +5836,7 @@ standalone
 \end_inset
 
 , not in the middle of a paragraph.
- Use ERT if you need to embed it.
+ Use TeX code if you need to embed it.
 \end_layout
 
 \begin_layout Itemize
@@ -5903,7 +5846,7 @@ standalone
 \backslash
 and
 \family default
- (2.3) -- will have extra {} after it.
+ (2.3) – will have extra {} after it.
  This should not cause an error.
 \end_layout
 
@@ -5914,7 +5857,7 @@ and
 \backslash
 notetoeditor
 \family default
- (2.6) -- can only be used 
+ (2.6) – can only be used 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5923,7 +5866,7 @@ standalone
 \end_inset
 
 , not in the middle of a paragraph.
- Use ERT if you need to embed it.
+ Use TeX code if you need to embed it.
 \end_layout
 
 \begin_layout Itemize
@@ -5933,8 +5876,8 @@ standalone
 \backslash
 placetable
 \family default
- (2.8) -- can't insert a cross-reference tag, you must type the tag name
- by hand
+ (2.8) – can't insert a cross-reference tag, you must type the tag name by
+ hand
 \end_layout
 
 \begin_layout Itemize
@@ -5944,7 +5887,7 @@ placetable
 \backslash
 placefigure
 \family default
- (2.8) -- same as for 
+ (2.8) – same as for 
 \family typewriter
 
 \backslash
@@ -5958,7 +5901,7 @@ placetable
 \backslash
 acknowledgements
 \family default
- (2.9) -- will have extra {} after it.
+ (2.9) – will have extra {} after it.
  This should not cause an error.
 \end_layout
 
@@ -5969,7 +5912,7 @@ acknowledgements
 \backslash
 appendix
 \family default
- (2.11) -- will have extra {} after it.
+ (2.11) – will have extra {} after it.
  This should not cause an error.
 \end_layout
 
@@ -5980,7 +5923,7 @@ appendix
 \backslash
 figcaption
 \family default
- (2.14.2) -- you can insert an optional filename argument by placing the cursor
+ (2.14.2) – you can insert an optional filename argument by placing the cursor
  at the beginning of the text and selecting 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -6012,7 +5955,7 @@ figcaption
 \backslash
 objectname
 \family default
- (2.17.1) -- same as 
+ (2.17.1) – same as 
 \family typewriter
 
 \backslash
@@ -6028,7 +5971,7 @@ figcaption
 \backslash
 dataset
 \family default
- (2.17.1) -- same as 
+ (2.17.1) – same as 
 \family typewriter
 
 \backslash
@@ -6038,7 +5981,7 @@ figcaption
 \end_layout
 
 \begin_layout Subsubsection
-Things not implemented, use ERT
+Things not implemented, use TeX code
 \end_layout
 
 \begin_layout Standard
@@ -6211,15 +6154,8 @@ Things that cannot be implemented
  If you really, really need to use deluxetable, I suggest editing it in
  a separate file with a text editor, then using 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
-Chil
-\bar under
-d
-\bar default
-
+Insert\SpecialChar \menuseparator
+Child
 \begin_inset space ~
 \end_inset
 
@@ -6272,15 +6208,8 @@ layouts
 \begin_layout Enumerate
 Rerun 
 \family sans
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-econfigure
+Tools\SpecialChar \menuseparator
+Reconfigure
 \family default
  in LyX, then restart LyX.
 \end_layout
@@ -6289,15 +6218,8 @@ econfigure
 Open a regular new file, not from a template.
  Does AASTeX appear in the class list in 
 \family sans
-\bar under
-D
-\bar default
-ocument\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-ettings
+Document\SpecialChar \menuseparator
+Settings
 \family default
 ?
 \end_layout
@@ -6324,15 +6246,8 @@ LyX, by default, attempts to center the table caption/title.
  This seems to produce a bad interaction in AASTeX so you should click somewhere
  in the caption/title, then select 
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-aragraph
+Edit\SpecialChar \menuseparator
+Paragraph
 \begin_inset space ~
 \end_inset
 
@@ -6344,10 +6259,7 @@ Alignment
 \family default
  to 
 \family sans
-\bar under
-B
-\bar default
-lock
+Block
 \family default
 .
  This took care of it for me.
@@ -6422,8 +6334,8 @@ plotone
 \begin_inset space ~
 \end_inset
 
-commands as ERT into a Figure Float box if you desire, but I never have
- much luck getting the layout right.
+commands as TeX code into a Figure Float box if you desire, but I never
+ have much luck getting the layout right.
  With the standard graphics, LyX will insert a 
 \family typewriter
 
@@ -6697,8 +6609,8 @@ There is a long list of included environments provided by these layouts.
 \end_layout
 
 \begin_layout Standard
-The following environments---as well as the standard environments, such
- as 
+The following environments—as well as the standard environments, such as
+ 
 \begin_inset Flex CharStyle:Noun
 status collapsed
 
@@ -6748,7 +6660,7 @@ date
 
 \end_inset
 
----are provided by 
+—are provided by 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -6924,9 +6836,9 @@ The numbering scheme for cases is on its own, not together with other numbered
 \begin_layout Proof
 At the end of this environment, a QED symbol (usually a square, but it can
  vary with different styles) is placed.
- If you want to have other environments within this one---for example, Case
- environments---and have the QED symbol appear only after them, then the
- other environments need to be nested within the proof environment.
+ If you want to have other environments within this one—for example, Case
+ environments—and have the QED symbol appear only after them, then the other
+ environments need to be nested within the proof environment.
  See the section 
 \emph on
 Nesting Environments
@@ -7141,7 +7053,7 @@ Journal of Geophysical Research
 \family typewriter
 jgrga.layout
 \family default
- --- Martin Vermeer
+ — Martin Vermeer
 \end_layout
 
 \begin_layout Standard
@@ -7173,13 +7085,13 @@ Turn off babel
 .
  This can be done in the 
 \family sans
-layout\SpecialChar \menuseparator
-document
+Layout\SpecialChar \menuseparator
+Document
 \family default
  or 
 \family sans
-document\SpecialChar \menuseparator
-settings
+Document\SpecialChar \menuseparator
+Settings
 \family default
  menu item.
  (AGU articles are always in English, right? So 
@@ -9503,11 +9415,11 @@ Script jargon
 \end_layout
 
 \begin_layout Itemize
-(O.S) --- off screen
+(O.S) — off screen
 \end_layout
 
 \begin_layout Itemize
-(V.0) --- voice over
+(V.0) — voice over
 \end_layout
 
 \begin_layout Itemize
@@ -9516,20 +9428,20 @@ b.
 \end_inset
 
 g.
- --- background
+ — background
 \end_layout
 
 \begin_layout Itemize
 C.U.
- --- close-up
+ — close-up
 \end_layout
 
 \begin_layout Itemize
-PAN --- camera movement
+PAN — camera movement
 \end_layout
 
 \begin_layout Itemize
-INSERT --- cut to close-up of
+INSERT — cut to close-up of
 \end_layout
 
 \begin_layout Section
@@ -9615,10 +9527,7 @@ Writing a paper
 As usual, the easiest way to write a paper is to start with a template.
  Click on 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
+File\SpecialChar \menuseparator
 New from
 \family default
  
@@ -9657,15 +9566,8 @@ The language of the document should not be changed.
  Before previewing your paper, be sure that the babel package is not used.
  To do this, click on 
 \family sans
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-references
+Tools\SpecialChar \menuseparator
+Preferences
 \family default
 , select the 
 \family sans
@@ -9673,17 +9575,11 @@ Lang Opts
 \family default
  tab, deselect the 
 \family sans
-\bar under
-U
-\bar default
-se babel
+Use babel
 \family default
  checkbox in the language settings, and click on 
 \family sans
-\bar under
-A
-\bar default
-pply
+Apply
 \family default
  (or 
 \family sans
@@ -9960,10 +9856,10 @@ tbl
  command to implement table captions.
  As a result, a table created by LyX is printed correctly, but its caption
  is ignored.
- However, you can use some ERT to overpass this problem, so that captions
+ However, you can use some TeX code to overpass this problem, so that captions
  are printed as expected.
  To do so, create a float table as usual, remove the caption, and replace
- it with the ERT 
+ it with the TeX code 
 \family typewriter
 
 \backslash
@@ -9973,7 +9869,7 @@ your table caption
 \emph default
 }{
 \family default
- (sic); you must also the ERT 
+ (sic); you must also the TeX code 
 \family typewriter
 }
 \family default
@@ -9987,20 +9883,9 @@ your table caption
 \family default
  file, then include this file to the LyX document (
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
-Fil
-\bar under
-e
-\bar default
-\SpecialChar \menuseparator
-Chil
-\bar under
-d
-\bar default
-
+Insert\SpecialChar \menuseparator
+File\SpecialChar \menuseparator
+Child
 \begin_inset space ~
 \end_inset
 
@@ -10026,20 +9911,9 @@ Preparing a paper for submission
 Before you submit your paper you must export the LyX document as a LaTeX
  file (
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xport\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-a
+File\SpecialChar \menuseparator
+Export\SpecialChar \menuseparator
+La
 \family default
 T
 \family sans
@@ -10105,12 +9979,12 @@ The modified
 \end_layout
 
 \begin_layout Subsection
-Use of ERT
+Use of TeX code
 \end_layout
 
 \begin_layout Standard
-The use of ERT is reduced to two commands, which must be placed at the top
- of the document.
+The use of TeX code is reduced to two commands, which must be placed at
+ the top of the document.
  If you started writing your paper by using the 
 \family typewriter
 ijmpc.lyx
@@ -10119,12 +9993,12 @@ ijmpc.lyx
 \family typewriter
 ijmpd.lyx
 \family default
- template, the ERT needed is already in its place; you usually don't need
- to delete it.
- You may only modify the first ERT to specify the information printed to
- the top of odd and even pages (authors' names and short paper's title,
+ template, the TeX code needed is already in its place; you usually don't
+ need to delete it.
+ You may only modify the first TeX code to specify the information printed
+ to the top of odd and even pages (authors' names and short paper's title,
  respectively).
- This ERT must have the form 
+ This TeX code must have the form 
 \family typewriter
 
 \backslash
@@ -10299,8 +10173,8 @@ There is a general title environment
 Article
 \family default
  which is not directly supported by the LyX.
- This can be used as ERT when your document doesn't fit into one of the
- other title types.
+ This can be used as TeX code when your document doesn't fit into one of
+ the other title types.
 \end_layout
 
 \begin_layout Standard
@@ -10364,7 +10238,7 @@ http://www.wkap.nl/kaphtml.htm/STYLEFILES
 
 \begin_layout Standard
 LyX supports many features of the package but not everything.
- However, the ERT needed is reduced to some 
+ However, the TeX code needed is reduced to some 
 \begin_inset Quotes eld
 \end_inset
 
@@ -10595,7 +10469,7 @@ end{article}
 \begin_inset Quotes eld
 \end_inset
 
-ERT
+TeX code
 \begin_inset Quotes erd
 \end_inset
 
@@ -10625,7 +10499,7 @@ opening
 \begin_inset space ~
 \end_inset
 
-between two ERT lines (
+between two TeX code lines (
 \family typewriter
 
 \backslash
@@ -10685,7 +10559,7 @@ peculiarities
 \end_layout
 
 \begin_layout Enumerate
-don't delete the ERT included in the template, and
+don't delete the TeX code included in the template, and
 \end_layout
 
 \begin_layout Enumerate
@@ -10842,11 +10716,7 @@ Chapter\SpecialChar \ldots{}
  In addition, the appearance of the headings can be modified by using a
  number of options (in LyX to be entered in the field 
 \family sans
-E
-\bar under
-x
-\bar default
-tra
+Extra
 \begin_inset space ~
 \end_inset
 
@@ -12146,8 +12016,8 @@ scrlttr2
 scrlettr
 \family default
 .
- It has --- on the LaTeX side --- a completely new interface and is not
- compatible with the old class.
+ It has — on the LaTeX side — a completely new interface and is not compatible
+ with the old class.
  Therefore, LyX supports both, though it is recommended to use the new class.
 \end_layout
 
@@ -12523,7 +12393,7 @@ lyx-devel@lists.lyx.org
 
 , lots will probably never, due to the limitations of LyX's framework.
  Of course you can still use all features with the help of some native LaTeX
- commands (ERT
+ commands (TeX code
 \begin_inset Foot
 status collapsed
 
@@ -12737,8 +12607,7 @@ Options
 \family default
 ), you can emulate article style.
  That is, counters (footnotes, figures, tables etc.) will not be reset on
- new chapters, chapters don't start a new page (but are---in contrary to
- 
+ new chapters, chapters don't start a new page (but are—in contrary to 
 \begin_inset Quotes eld
 \end_inset
 
@@ -12746,8 +12615,8 @@ real
 \begin_inset Quotes erd
 \end_inset
 
- article classes---still allowed), parts, though, use their own page, as
- in book.
+ article classes—still allowed), parts, though, use their own page, as in
+ book.
 \end_layout
 
 \begin_layout Description
@@ -12885,9 +12754,9 @@ Poemtitle: Memoir has lots of possibilities to typeset poetry (up to very
  One is poemtitle, which is a centered title for poems, which will also
  be added to the table of contents (verse is the standard environment for
  poems.
- Memoir has some enhanced versions of verse, but you need to use ERT, because
- they have to be nested inside regular verse environments, which is not
- possible with LyX).
+ Memoir has some enhanced versions of verse, but you need to use TeX code,
+ because they have to be nested inside regular verse environments, which
+ is not possible with LyX).
 \end_layout
 
 \begin_layout Description
@@ -13024,7 +12893,7 @@ Options
 
 \begin_deeper
 \begin_layout Description
-rmheadings serif titles --- default,
+rmheadings serif titles — default,
 \end_layout
 
 \begin_layout Description
@@ -13032,7 +12901,7 @@ sfheadings sansserif titles,
 \end_layout
 
 \begin_layout Description
-authortitle on title page first placed is author next title --- default,
+authortitle on title page first placed is author next title — default,
 \end_layout
 
 \begin_layout Description
@@ -13530,8 +13399,8 @@ svjog
 \family typewriter
 texhash
 \family default
-, as root if necessary --- doesn't LyX take care of this?), reconfigure
- LyX and it should work.
+, as root if necessary — doesn't LyX take care of this?), reconfigure LyX
+ and it should work.
 \end_layout
 
 \begin_layout Subsection
@@ -13539,7 +13408,7 @@ New styles
 \end_layout
 
 \begin_layout Standard
-A large number of theorem-like styles --- 
+A large number of theorem-like styles — 
 \family sans
 Claim, Conjecture,
 \family default
@@ -13574,7 +13443,7 @@ Journal of Geodesy
 \family typewriter
 svjog.layout
 \family default
- --- Martin Vermeer
+ — Martin Vermeer
 \end_layout
 
 \begin_layout Itemize
@@ -13586,7 +13455,7 @@ Probability Theory and Related Fields
 \family typewriter
 svprobth.layout
 \family default
- --- Jean-Marc Lasgouttes
+ — Jean-Marc Lasgouttes
 \end_layout
 
 \begin_layout Standard
@@ -14276,8 +14145,8 @@ InvisibleText
 VisibleText
 \family default
 , is a rather long-ish label.
- The text following this label --- ordinarily the contents of the paragraph
- environment --- is utterly irrelevant for 
+ The text following this label — ordinarily the contents of the paragraph
+ environment — is utterly irrelevant for 
 \family sans
 Slide
 \family default
@@ -15566,11 +15435,11 @@ emplate
 \family sans
 Slide
 \family default
- -- 
+ – 
 \family sans
 Overlay
 \family default
- -- 
+ – 
 \family sans
 Note
 \family default
@@ -15717,7 +15586,7 @@ chktex
 \family default
  program installed
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -16881,7 +16750,7 @@ Later basic CVS/SVN support was added.
 
 \begin_layout Standard
 The implementation in LyX assumes a recent version of the GNU RCS or CVS/SVN
- package---no guarantees are made for older versions.
+ package—no guarantees are made for older versions.
 \end_layout
 
 \begin_layout Standard
@@ -16918,10 +16787,7 @@ If your document is not under revision control, this is the only item shown
  in the menu.
  And if it is under revision control, the 
 \family sans
-\bar under
-R
-\bar default
-egister
+Register
 \family default
  item is not visible.
  
@@ -17880,15 +17746,8 @@ At this point you already have a new document file with a proper document
  class, and with some code and text on it.
  How do I print it? The answer is simple, you select 
 \family sans
-\bar under
-V
-\bar default
-iew\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI,
+View\SpecialChar \menuseparator
+DVI,
 \family default
  etc.
  Just like you would do for a plain document.
@@ -18824,7 +18683,7 @@ multicol
 examples/multicol.lyx
 \family default
 .
- --- mer
+ — mer
 \end_layout
 
 \end_inset
@@ -19083,7 +18942,7 @@ begin{multicols}{2}
 \begin_layout Standard
 
 \size footnotesize
-The youth moved in the best society--had, so far as was known, no enemies
+The youth moved in the best society–had, so far as was known, no enemies
  and no particular vices.
  He had been engaged to Miss Edith Woodley, of Carstairs, but the engagement
  had been broken off by mutual consent some months before, and there was
@@ -19114,8 +18973,8 @@ end{multicols}
 \begin_layout Standard
 
 \size footnotesize
-Ronald Adair was fond of cards--playing continually, but never for such
- stakes as would hurt him.
+Ronald Adair was fond of cards–playing continually, but never for such stakes
+ as would hurt him.
  He was a member of the Baldwin, the Cavendish, and the Bagatelle card clubs.
  It was shown that, after dinner on the day of his death, he had played
  a rubber of whist at the latter club.
@@ -19124,8 +18983,8 @@ Ronald Adair was fond of cards--playing continually, but never for such
 \size default
  
 \size footnotesize
-The evidence of those who had played with him-- Mr.
- Murray, Sir John Hardy, and Colonel Moran--showed that the game was whist,
+The evidence of those who had played with him– Mr.
+ Murray, Sir John Hardy, and Colonel Moran–showed that the game was whist,
  and that there was a fairly equal fall of the cards.
  Adair might have lost five pounds, but not more.
  His fortune was a considerable one, and such a loss could not in any way
@@ -19549,7 +19408,7 @@ dropped capitals
 \begin_inset Quotes erd
 \end_inset
 
----those large capital letters which begin each new chapter or section.
+—those large capital letters which begin each new chapter or section.
  Implementing them with plain LyX/LaTeX is straightforward (assuming you
  know some plain TeX!) but does require a lot of work and many iterations,
  as you can see by all the ugly TeX-mode stuff at the beginning of this

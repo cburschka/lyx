@@ -34,7 +34,7 @@
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX }}
+  {LyX}}
 
 % used for multi-column text
 \usepackage{multicol}
@@ -180,9 +180,9 @@ This manual covers the customization features present in LyX.
  In it, we discuss issues like keyboard shortcuts, screen previewing options,
  printer options, sending commands to LyX via the LyX Server, internationalizati
 on, installing new LaTeX classes and LyX layouts, etc.
- We can't possibly hope to touch on everything you can change---our developers
- add new features faster than we can document them---but we will explain
- the most common customizations and hopefully point you in the right direction
+ We can't possibly hope to touch on everything you can change—our developers
+ add new features faster than we can document them—but we will explain the
+ most common customizations and hopefully point you in the right direction
  for some of the more obscure ones.
 \end_layout
 
@@ -1768,7 +1768,7 @@ Since all conversions from one format to another take place in LyX's temporary
 status collapsed
 
 \begin_layout Plain Layout
-For example, the file may refer to other files---images, for example---using
+For example, the file may refer to other files—images, for example—using
  relative file names, and these may become invalid when the file is copied
  to the temporary directory.
 \end_layout
@@ -1912,7 +1912,7 @@ cp $FROMFILE /home/you/pdf/$TOFILE
 
 \end_inset
 
-Save that in your local LyX directory---say, 
+Save that in your local LyX directory—say, 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -1922,7 +1922,7 @@ status collapsed
 
 \end_inset
 
----and make it executable, if you need to do so on your platform.
+—and make it executable, if you need to do so on your platform.
  Then, in the 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
@@ -1955,7 +1955,7 @@ PDF(pdflatex)
 
 \end_inset
 
- format---or one of the other pdf formats---and enter 
+ format—or one of the other pdf formats—and enter 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -5432,7 +5432,7 @@ text class
  can be used somewhat interchangeably, but it is better to refer to the
  file as the layout, and the thing living in LyX's memory as the text class.
  A template file is simply a LyX document that contains a set of predefined
- entries for a given document class---entries that are generally required
+ entries for a given document class—entries that are generally required
  for that class.
  Templates are especially useful for things like journal manuscripts that
  are to be submitted electronically.
@@ -5812,7 +5812,7 @@ Reconfigure
 \end_inset
 
 ) and then restart LyX.
- You should then see your new package---for example 
+ You should then see your new package—for example 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -5822,7 +5822,7 @@ slides (FoilTeX)
 
 \end_inset
 
----under 
+—under 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -5997,9 +5997,9 @@ modules
 \emph default
 .
  Modules are to LaTeX packages much as layouts are to LaTeX classes, and
- some modules---such as the endnotes module---provide support for just such
+ some modules—such as the endnotes module—provide support for just such
  a package.
- In a sense, layout modules are similar to included files---files like 
+ In a sense, layout modules are similar to included files—files like 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -6009,7 +6009,7 @@ stdsections.inc
 
 \end_inset
 
----in that modules are not specific to a given document layout but may be
+—in that modules are not specific to a given document layout but may be
  used with many different layouts.
  The difference is that using a layout module does not require editing the
  layout file.
@@ -6259,7 +6259,7 @@ sty
 
 \begin_layout Standard
 If your new document class is provided as a style file that is used in conjuncti
-on with an existing, supported document class---for the sake of the example,
+on with an existing, supported document class—for the sake of the example,
  we'll assume that the style file is called 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
@@ -6280,7 +6280,7 @@ report.cls
 
 \end_inset
 
-, which is a standard class---start by copying the existing class's layout
+, which is a standard class—start by copying the existing class's layout
  file into your local directory:
 \end_layout
 
@@ -6377,7 +6377,7 @@ Settings
 
  dialog.
  It is likely that some of the sectioning commands and such in your new
- class will work differently from how they worked in the base class---
+ class will work differently from how they worked in the base class—
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -6387,7 +6387,7 @@ report
 
 \end_inset
 
- in this example---so you can fiddle around with the settings for the different
+ in this example—so you can fiddle around with the settings for the different
  sections if you wish.
 \end_layout
 
@@ -6791,8 +6791,8 @@ layout-reload
 \end_inset
 
 .
- There is no default binding for this function---though, of course, you
- can bind it to a key yourself.
+ There is no default binding for this function—though, of course, you can
+ bind it to a key yourself.
  If you want to use this function, then, you should simply enter it in the
  mini-buffer.
  
@@ -7163,7 +7163,7 @@ string
 
 \end_inset
 
-] Indicates that the module in question---which should be specified by filename
+] Indicates that the module in question—which should be specified by filename
  without the 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -7174,7 +7174,7 @@ status collapsed
 
 \end_inset
 
- extension---cannot be used with this document class.
+ extension—cannot be used with this document class.
  This might be used in a journal-specific layout file to prevent, say, the
  use of the 
 \begin_inset Flex CharStyle:Code
@@ -7604,7 +7604,7 @@ boldsymbol
 
 ,\SpecialChar \ldots{}
 ); the complete list of supported features is unfortunately not documented
- outside the LyX source code---but see 
+ outside the LyX source code—but see 
 \begin_inset Flex CharStyle:Code
 status collapsed
 

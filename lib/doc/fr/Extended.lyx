@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -36,7 +35,7 @@
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-  {LyX }}
+  {LyX}}
 
 % used for multi-column text
 \usepackage{multicol}
@@ -45,6 +44,7 @@
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
 \language french
 \inputencoding auto
 \font_roman default
@@ -55,6 +55,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -91,8 +92,8 @@
 \bullet 0 5 9 -1
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -604,7 +605,7 @@ LaTeX de LyX.
 \family typewriter
 tex2lyx
 \family default
----qui va créer un fichier 
+—qui va créer un fichier 
 \family typewriter
 toto.lyx
 \family default
@@ -612,7 +613,7 @@ toto.lyx
 \family typewriter
 toto.tex
 \family default
----et ensuite ouvrir ce fichier.
+—et ensuite ouvrir ce fichier.
 \end_layout
 
 \begin_layout Standard
@@ -1022,7 +1023,7 @@ LyX et le préambule LaTeX
 \begin_layout Standard
 Si vous connaissez déjà LaTeX, il n'y a pas besoin d'expliquer ici à quoi
  sert le préambule.
- Si vous ne le connaissez pas, ce qui suit vous en donnera une idée -- nous
+ Si vous ne le connaissez pas, ce qui suit vous en donnera une idée – nous
  vous recommandons encore de consulter un livre sur LaTeX pour plus d'informatio
 n.
  Dans tous les cas, il vaut mieux lire les points ci-dessous, parce qu'ils
@@ -1452,7 +1453,7 @@ Note de
 \noun on
 John Weiss
 \noun default
- : C'est écrit par un Américain -- 
+ : C'est écrit par un Américain – 
 \emph on
 moi
 \emph default
@@ -2041,7 +2042,7 @@ Si quelque chose d'autre ne va pas avec le rendu, et que vous n'avez rien
 
 \end_deeper
 \begin_layout Standard
-Si vous n'êtes pas plus avancé avec tout ceci -- et bien, 
+Si vous n'êtes pas plus avancé avec tout ceci – et bien, 
 \emph on
 peut-être
 \emph default
@@ -2737,7 +2738,7 @@ maître
  Il convient de noter que chacun des fichiers est un fichier LyX en lui-même,
  qui peut aussi bien être mis en page et imprimé seul, qu'être inclus dans
  le document maître.
- Tous ces fichiers doivent cependant avoir la même classe de document --
+ Tous ces fichiers doivent cependant avoir la même classe de document –
  n'essayez pas de mélanger la classe 
 \family sans
 book
@@ -6336,7 +6337,7 @@ shortauthors
 \backslash
 email
 \family default
- (2.3) -- peut seulement être utilisé seul, pas au milieu d'un paragraphe.
+ (2.3) – peut seulement être utilisé seul, pas au milieu d'un paragraphe.
  Utilisez du Vilain Texte Rouge si vous devez l'insérer.
 \end_layout
 
@@ -6347,7 +6348,7 @@ email
 \backslash
 and
 \family default
- (2.3) -- aura un 
+ (2.3) – aura un 
 \family typewriter
 {}
 \family default
@@ -6362,7 +6363,7 @@ and
 \backslash
 notetoeditor
 \family default
- (2.6) -- peut seulement être utilisé seul, pas au milieu d'un paragraphe.
+ (2.6) – peut seulement être utilisé seul, pas au milieu d'un paragraphe.
  Utilisez du Vilain Texte Rouge si vous devez l'insérer.
 \end_layout
 
@@ -6373,7 +6374,7 @@ notetoeditor
 \backslash
 placetable
 \family default
- (2.8) -- ne peut pas insérer une marque de référence croisée, vous devez
+ (2.8) – ne peut pas insérer une marque de référence croisée, vous devez
  la placer à la main
 \end_layout
 
@@ -6384,7 +6385,7 @@ placetable
 \backslash
 placefigure
 \family default
- (2.8) -- même chose que pour 
+ (2.8) – même chose que pour 
 \family typewriter
 
 \backslash
@@ -6398,7 +6399,7 @@ placetable
 \backslash
 acknowledgements
 \family default
- (2.9) -- aura un 
+ (2.9) – aura un 
 \family typewriter
 {}
 \family default
@@ -6413,7 +6414,7 @@ acknowledgements
 \backslash
 appendix
 \family default
- (2.10) -- aura un 
+ (2.10) – aura un 
 \family typewriter
 {}
 \family default
@@ -6428,7 +6429,7 @@ appendix
 \backslash
 figcaption
 \family default
- (2.13.2) -- vous devrez éditer le paramètre optionnel à la main dans le fichier
+ (2.13.2) – vous devrez éditer le paramètre optionnel à la main dans le fichier
  LaTeX final.
 \end_layout
 
@@ -9827,8 +9828,8 @@ scrlttr2
 scrlettr
 \family default
 , désormais périmée.
- Elle a -- du côté LaTeX -- une interface complètement nouvelle et n'est
- pas compatible avec l'ancienne classe.
+ Elle a – du côté LaTeX – une interface complètement nouvelle et n'est pas
+ compatible avec l'ancienne classe.
  LyX supporte les deux, mais il est recommandé d'utiliser la nouvelle.
 \end_layout
 
@@ -10133,7 +10134,7 @@ svjog
 \family typewriter
 texhash
 \family default
- dans le cas de teTeX, en tant que super-utilisateur si nécessaire -- LyX
+ dans le cas de teTeX, en tant que super-utilisateur si nécessaire – LyX
  ne s'occupe-t-il pas tout seul de ça ?), reconfigurez LyX et ça devrait
  marcher.
 \end_layout
@@ -10143,7 +10144,7 @@ Nouveaux styles
 \end_layout
 
 \begin_layout Standard
-Un grand nombre de styles de type théorème -- 
+Un grand nombre de styles de type théorème – 
 \family sans
 Affirmation
 \family default
@@ -10233,7 +10234,7 @@ Journal of Geodesy
 \family typewriter
 svjog.layout
 \family default
- -- 
+ – 
 \noun on
 Martin Vermeer
 \end_layout
@@ -10247,7 +10248,7 @@ Probability Theory and Related Fields
 \family typewriter
 svprobth.layout
 \family default
- -- 
+ – 
 \noun on
 Jean-Marc Lasgouttes
 \end_layout
@@ -10460,7 +10461,7 @@ Journal of Geophysical Research
 \family typewriter
 jgrga.layout
 \family default
- -- Martin Vermeer
+ – Martin Vermeer
 \end_layout
 
 \begin_layout Standard
@@ -11337,8 +11338,8 @@ Texte_Invisible
 Texte_Visible
 \family default
  est un marqueur plutôt longuet.
- Le texte suivant ce marqueur -- d'ordinaire le contenu de l'environnement
- de paragraphe -- n'est pas pris en compte par 
+ Le texte suivant ce marqueur – d'ordinaire le contenu de l'environnement
+ de paragraphe – n'est pas pris en compte par 
 \family sans
 Diapo
 \family default
@@ -12610,7 +12611,7 @@ modèle
 .
  Votre fichier de présentation LyX contiendra un exemple du triplet 
 \family sans
-Diapo -- Surcouche -- Note
+Diapo – Surcouche – Note
 \family default
 .
  De plus, la 
@@ -14945,29 +14946,29 @@ Jargon de script
 \end_layout
 
 \begin_layout Itemize
-(O.S) -- off screen (hors écran)
+(O.S) – off screen (hors écran)
 \end_layout
 
 \begin_layout Itemize
-(V.O) -- voice over (voix off)
+(V.O) – voice over (voix off)
 \end_layout
 
 \begin_layout Itemize
 b.g.
- -- background (arrière-plan)
+ – background (arrière-plan)
 \end_layout
 
 \begin_layout Itemize
 C.U.
- -- close-up (plan rapproché)
+ – close-up (plan rapproché)
 \end_layout
 
 \begin_layout Itemize
-PAN -- mouvement de caméra
+PAN – mouvement de caméra
 \end_layout
 
 \begin_layout Itemize
-INSERT -- insérez un plan rapproché
+INSERT – insérez un plan rapproché
 \end_layout
 
 \begin_layout Section
@@ -15812,7 +15813,7 @@ Options
 
 \begin_deeper
 \begin_layout Description
-rmheadings titres avec empattement -- par défaut,
+rmheadings titres avec empattement – par défaut,
 \end_layout
 
 \begin_layout Description
@@ -15820,8 +15821,7 @@ sfheadings titres sans empattement,
 \end_layout
 
 \begin_layout Description
-authortitle sur la page de titre, d'abord l'auteur puis le titre -- par
- défaut,
+authortitle sur la page de titre, d'abord l'auteur puis le titre – par défaut,
 \end_layout
 
 \begin_layout Description
@@ -16282,7 +16282,7 @@ article
 .
  C'est-à-dire que les compteurs (notes de bas de page, figures, tableaux
  etc.) ne seront pas réinitialisés à chaque nouveau chapitre, les chapitres
- ne commenceront pas sur une nouvelle page (mais--contrairement à la 
+ ne commenceront pas sur une nouvelle page (mais–contrairement à la 
 \begin_inset Quotes fld
 \end_inset
 
@@ -16294,7 +16294,7 @@ vraie
 \family sans
 article
 \family default
----ils sont encore autorisés), les parties cependant utilisent leur propre
+—ils sont encore autorisés), les parties cependant utilisent leur propre
  page comme dans 
 \family sans
 book
@@ -16584,7 +16584,7 @@ NdT : Certaines de ces règles me sont totalement inconnues.
  Il est possible qu'elles ne s'appliquent pas à la langue française.
  
 \emph on
--- of
+– of
 \end_layout
 
 \end_inset
@@ -18363,7 +18363,7 @@ status collapsed
 
 \begin_layout Plain Layout
 NdT : Respectivement la génération du code et de la documentation.
- -- ar
+ – ar
 \end_layout
 
 \end_inset
@@ -19996,7 +19996,7 @@ Voici deux exemples de ce que vous pouvez faire avec les commandes LaTeX
 
 \begin_layout Standard
 La commande suivante fait apparaître une ligne verticale le long du texte
- -- idéal pour pointer quelque chose du doigt : 
+ – idéal pour pointer quelque chose du doigt : 
 \family typewriter
 
 \backslash
@@ -20106,7 +20106,7 @@ multicol
 examples/fr/MultiColonnes.lyx
 \family default
 .
- -- mer
+ – mer
 \end_layout
 
 \end_inset
@@ -20170,7 +20170,7 @@ status collapsed
 \begin_layout Plain Layout
 NdT : Les lecteurs anglophobes me pardonneront, mais je ne me lance pas
  à traduire des passages de Sherlock Holmes.
- :-) -- of
+ :-) – of
 \end_layout
 
 \end_inset
@@ -20376,7 +20376,7 @@ begin{multicols}{2}
 \begin_layout Standard
 
 \size footnotesize
-The youth moved in the best society--had, so far as was known, no enemies
+The youth moved in the best society–had, so far as was known, no enemies
  and no particular vices.
  He had been engaged to Miss Edith Woodley, of Carstairs, but the engagement
  had been broken off by mutual consent some months before, and there was
@@ -20407,8 +20407,8 @@ end{multicols}
 \begin_layout Standard
 
 \size footnotesize
-Ronald Adair was fond of cards--playing continually, but never for such
- stakes as would hurt him.
+Ronald Adair was fond of cards–playing continually, but never for such stakes
+ as would hurt him.
  He was a member of the Baldwin, the Cavendish, and the Bagatelle card clubs.
  It was shown that, after dinner on the day of his death, he had played
  a rubber of whist at the latter club.
@@ -20417,8 +20417,8 @@ Ronald Adair was fond of cards--playing continually, but never for such
 \size default
  
 \size footnotesize
-The evidence of those who had played with him-- Mr.
- Murray, Sir John Hardy, and Colonel Moran--showed that the game was whist,
+The evidence of those who had played with him– Mr.
+ Murray, Sir John Hardy, and Colonel Moran–showed that the game was whist,
  and that there was a fairly equal fall of the cards.
  Adair might have lost five pounds, but not more.
  His fortune was a considerable one, and such a loss could not in any way
