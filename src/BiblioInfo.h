@@ -63,7 +63,7 @@ public:
 	docstring const getXRef() const;
 	/// \return formatted BibTeX data suitable for framing.
 	/// \param pointer to crossref information
-	docstring const getInfo(BibTeXInfo const * const xref = 0) const;
+	docstring const & getInfo(BibTeXInfo const * const xref = 0) const;
 	///
 	int count(docstring const & f) const { return bimap_.count(f); }
 	///

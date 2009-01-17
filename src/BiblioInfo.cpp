@@ -292,7 +292,7 @@ namespace {
 } // anon namespace
 
 
-docstring const BibTeXInfo::getInfo(BibTeXInfo const * const xref) const
+docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref) const
 {
 	if (!info_.empty())
 		return info_;
@@ -304,7 +304,7 @@ docstring const BibTeXInfo::getInfo(BibTeXInfo const * const xref) const
 	}
  
 	// FIXME
-	// This could be made a lot better using the entryType
+	// This could be made a lot better using the entry_type_
 	// field to customize the output based upon entry type.
 	
 	// Search for all possible "required" fields
@@ -353,7 +353,8 @@ docstring const BibTeXInfo::getInfo(BibTeXInfo const * const xref) const
 	}
 
 	// This should never happen (or at least be very unusual!)
-	return docstring();
+	static docstring e = docstring();
+	return e;
 }
 
 
