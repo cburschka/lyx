@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-15 15:01+0100\n"
+"POT-Creation-Date: 2009-01-17 09:08+0100\n"
 "PO-Revision-Date: 2008-08-05 00:10+0100\n"
 "Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -64,7 +64,7 @@ msgstr "&Dummy"
 #: src/frontends/qt4/ui/CitationUi.ui:438
 #: src/frontends/qt4/ui/DocumentUi.ui:135 src/frontends/qt4/ui/ERTUi.ui:90
 #: src/frontends/qt4/ui/ExternalUi.ui:605 src/frontends/qt4/ui/FloatUi.ui:68
-#: src/frontends/qt4/ui/GraphicsUi.ui:71 src/frontends/qt4/ui/HSpaceUi.ui:151
+#: src/frontends/qt4/ui/GraphicsUi.ui:721 src/frontends/qt4/ui/HSpaceUi.ui:151
 #: src/frontends/qt4/ui/HyperlinkUi.ui:140
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/LabelUi.ui:82
 #: src/frontends/qt4/ui/ListingsUi.ui:529
@@ -164,8 +164,7 @@ msgid "&Rescan"
 msgstr ""
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:46 src/frontends/qt4/ui/BibtexUi.ui:97
-#: src/frontends/qt4/ui/ExternalUi.ui:78
-#: src/frontends/qt4/ui/GraphicsUi.ui:151
+#: src/frontends/qt4/ui/ExternalUi.ui:78 src/frontends/qt4/ui/GraphicsUi.ui:58
 #: src/frontends/qt4/ui/IncludeUi.ui:329 src/frontends/qt4/ui/LaTeXUi.ui:184
 #: src/frontends/qt4/ui/PrintUi.ui:313
 msgid "&Browse..."
@@ -300,7 +299,7 @@ msgid "Left"
 msgstr "Venstre"
 
 #: src/frontends/qt4/ui/BoxUi.ui:70 src/frontends/qt4/ui/TabularUi.ui:147
-#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
+#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
 #: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:713
 msgid "Center"
 msgstr "Midten"
@@ -359,7 +358,7 @@ msgstr "Vannrett"
 
 #: src/frontends/qt4/ui/BoxUi.ui:202 src/frontends/qt4/ui/CitationUi.ui:415
 #: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
-#: src/frontends/qt4/ui/GraphicsUi.ui:42
+#: src/frontends/qt4/ui/GraphicsUi.ui:692
 #: src/frontends/qt4/ui/ParagraphUi.ui:59 src/frontends/qt4/ui/PrefsUi.ui:47
 #: src/frontends/qt4/ui/WrapUi.ui:121
 msgid "&Restore"
@@ -368,7 +367,7 @@ msgstr "&Tilbakestill"
 #: src/frontends/qt4/ui/BoxUi.ui:247 src/frontends/qt4/ui/CharacterUi.ui:380
 #: src/frontends/qt4/ui/DocumentUi.ui:145
 #: src/frontends/qt4/ui/ExternalUi.ui:615 src/frontends/qt4/ui/FloatUi.ui:78
-#: src/frontends/qt4/ui/GraphicsUi.ui:90 src/frontends/qt4/ui/HSpaceUi.ui:164
+#: src/frontends/qt4/ui/GraphicsUi.ui:742 src/frontends/qt4/ui/HSpaceUi.ui:164
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/ParagraphUi.ui:92 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
@@ -414,6 +413,7 @@ msgstr "Indre boks -- nødvendig for fast bredde og linjeskift"
 #: src/frontends/qt4/ui/TabularUi.ui:922 src/frontends/qt4/ui/TabularUi.ui:970
 #: src/frontends/qt4/GuiBox.cpp:159 src/frontends/qt4/GuiBox.cpp:324
 #: src/frontends/qt4/GuiBox.cpp:452 src/frontends/qt4/GuiDocument.cpp:89
+#: src/frontends/qt4/GuiGraphics.cpp:633
 msgid "None"
 msgstr "Ingen"
 
@@ -498,7 +498,7 @@ msgstr "Størrelse:"
 #: src/frontends/qt4/GuiDocument.cpp:1164
 #: src/frontends/qt4/GuiDocument.cpp:1209
 #: src/frontends/qt4/GuiDocument.cpp:2261 src/frontends/qt4/GuiExternal.cpp:75
-#: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiListings.cpp:152
+#: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiListings.cpp:152
 #: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1712
 msgid "Default"
 msgstr "Standard"
@@ -678,7 +678,7 @@ msgid "Apply changes immediately"
 msgstr "Gjør endringer øyeblikkelig"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:390 src/frontends/qt4/ui/ERTUi.ui:100
-#: src/frontends/qt4/ui/GraphicsUi.ui:109
+#: src/frontends/qt4/ui/GraphicsUi.ui:763
 #: src/frontends/qt4/ui/MathMatrixUi.ui:174 src/frontends/qt4/ui/NoteUi.ui:28
 #: src/frontends/qt4/ui/PrintUi.ui:243
 #: src/frontends/qt4/ui/TabularCreateUi.ui:72
@@ -907,7 +907,7 @@ msgid "Filename"
 msgstr "Filnavn"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:65
-#: src/frontends/qt4/ui/GraphicsUi.ui:353
+#: src/frontends/qt4/ui/GraphicsUi.ui:266
 #: src/frontends/qt4/ui/IncludeUi.ui:259 src/frontends/qt4/ui/PrintUi.ui:293
 msgid "&File:"
 msgstr "&Fil:"
@@ -930,7 +930,7 @@ msgid "Available templates"
 msgstr "Tilgjengelige maler"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:148
-#: src/frontends/qt4/ui/GraphicsUi.ui:549
+#: src/frontends/qt4/ui/GraphicsUi.ui:448
 msgid "LaTe&X and LyX options"
 msgstr "LaTeX og LyX opsjoner"
 
@@ -953,13 +953,13 @@ msgstr "&Vis i LyX"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:221
 #: src/frontends/qt4/ui/ExternalUi.ui:243
-#: src/frontends/qt4/ui/GraphicsUi.ui:679
-#: src/frontends/qt4/ui/GraphicsUi.ui:686
+#: src/frontends/qt4/ui/GraphicsUi.ui:559
+#: src/frontends/qt4/ui/GraphicsUi.ui:566
 msgid "Percentage to scale by in LyX"
 msgstr "Prosentvis skalering for visning i LyX"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:224
-#: src/frontends/qt4/ui/GraphicsUi.ui:689
+#: src/frontends/qt4/ui/GraphicsUi.ui:569
 msgid "Sca&le on Screen (%):"
 msgstr "Størrelse på skjermen (%):"
 
@@ -974,15 +974,15 @@ msgstr "Rotasjon"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:345
 #: src/frontends/qt4/ui/ExternalUi.ui:375
-#: src/frontends/qt4/ui/GraphicsUi.ui:327
-#: src/frontends/qt4/ui/GraphicsUi.ui:334
+#: src/frontends/qt4/ui/GraphicsUi.ui:240
+#: src/frontends/qt4/ui/GraphicsUi.ui:247
 msgid "Angle to rotate image by"
 msgstr "Vinkel for å vri bildet"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:355
 #: src/frontends/qt4/ui/ExternalUi.ui:368
-#: src/frontends/qt4/ui/GraphicsUi.ui:301
-#: src/frontends/qt4/ui/GraphicsUi.ui:308
+#: src/frontends/qt4/ui/GraphicsUi.ui:212
+#: src/frontends/qt4/ui/GraphicsUi.ui:219
 msgid "The origin of the rotation"
 msgstr "Punktet bildet roteres rundt"
 
@@ -1000,12 +1000,12 @@ msgid "Scale"
 msgstr "Skaler"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:417
-#: src/frontends/qt4/ui/GraphicsUi.ui:220
+#: src/frontends/qt4/ui/GraphicsUi.ui:131
 msgid "Height of image in output"
 msgstr "Bildehøyde i utskrift"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:427
-#: src/frontends/qt4/ui/GraphicsUi.ui:188
+#: src/frontends/qt4/ui/GraphicsUi.ui:97
 msgid "Width of image in output"
 msgstr "Bildebredde i utskrift"
 
@@ -1014,7 +1014,7 @@ msgid "Maintain aspect ratio with largest dimension"
 msgstr "Korrekt bredde/høydeforhold, etter største dimensjon"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:453
-#: src/frontends/qt4/ui/GraphicsUi.ui:266
+#: src/frontends/qt4/ui/GraphicsUi.ui:177
 msgid "&Maintain aspect ratio"
 msgstr "&Korrekt forhold mellom bredde og høyde"
 
@@ -1023,17 +1023,17 @@ msgid "Crop"
 msgstr "Klipp"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:491
-#: src/frontends/qt4/ui/GraphicsUi.ui:404
+#: src/frontends/qt4/ui/GraphicsUi.ui:309
 msgid "Clip to bounding box values"
 msgstr "Klipp til rammestørrelsen"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:494
-#: src/frontends/qt4/ui/GraphicsUi.ui:407
+#: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
 msgstr "Klipp til ramma"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:501
-#: src/frontends/qt4/ui/GraphicsUi.ui:438
+#: src/frontends/qt4/ui/GraphicsUi.ui:345
 msgid "&Left bottom:"
 msgstr "Venstre nederst"
 
@@ -1042,17 +1042,17 @@ msgid "x"
 msgstr "x"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:521
-#: src/frontends/qt4/ui/GraphicsUi.ui:476
+#: src/frontends/qt4/ui/GraphicsUi.ui:383
 msgid "Right &top:"
 msgstr "Høyre øverst"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:531
-#: src/frontends/qt4/ui/GraphicsUi.ui:530
+#: src/frontends/qt4/ui/GraphicsUi.ui:437
 msgid "Get bounding box from the (EPS) file"
 msgstr "Hent størrelse fra (EPS)-fil"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:534
-#: src/frontends/qt4/ui/GraphicsUi.ui:533
+#: src/frontends/qt4/ui/GraphicsUi.ui:440
 msgid "&Get from File"
 msgstr "&Les fra fil"
 
@@ -1188,130 +1188,140 @@ msgstr "Sk&alert (%):"
 msgid "Scale the Typewriter font to match the base font's dimensions"
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:136
+#: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
 msgstr "&Grafikk"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:148
+#: src/frontends/qt4/ui/GraphicsUi.ui:55
 msgid "Select an image file"
 msgstr "Velg en bildefil"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:158
+#: src/frontends/qt4/ui/GraphicsUi.ui:65
 msgid "Output Size"
 msgstr "Størrelse på trykk"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:230
+#: src/frontends/qt4/ui/GraphicsUi.ui:141
 msgid "Sets height of graphic. Leave unchecked to set automatically."
 msgstr "Sett bildehøyde. Automatisk om du ikke krysser av."
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:233
+#: src/frontends/qt4/ui/GraphicsUi.ui:144
 msgid "Set &height:"
 msgstr "Sett &høyde:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:240
+#: src/frontends/qt4/ui/GraphicsUi.ui:151
 msgid "&Scale Graphics (%):"
 msgstr "&Skalér grafikk (%):"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:250
+#: src/frontends/qt4/ui/GraphicsUi.ui:161
 msgid "Sets width of graphic. Leave unchecked to set automatically."
 msgstr "Sett bildebredde. Automatisk om du ikke krysser av."
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:253
+#: src/frontends/qt4/ui/GraphicsUi.ui:164
 msgid "Set &width:"
 msgstr "Sett &bredde:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:263
+#: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Scale image to maximum size not exceeding width and height"
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:276
+#: src/frontends/qt4/ui/GraphicsUi.ui:187
 msgid "Rotate Graphics"
 msgstr "Snu grafikk"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:291
+#: src/frontends/qt4/ui/GraphicsUi.ui:202
 msgid "Check to change the order of rotating and scaling"
 msgstr "Kryss av for å forandre rekkefølgen for vridning og skalering"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:294
+#: src/frontends/qt4/ui/GraphicsUi.ui:205
 msgid "Ro&tate after scaling"
 msgstr "Vri etter skalering"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:311
+#: src/frontends/qt4/ui/GraphicsUi.ui:222
 msgid "Or&igin:"
 msgstr "Or&igo"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:337
+#: src/frontends/qt4/ui/GraphicsUi.ui:250
 msgid "A&ngle (Degrees):"
 msgstr "&Vinkel (grader):"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:350
-#: src/frontends/qt4/ui/GraphicsUi.ui:363
+#: src/frontends/qt4/ui/GraphicsUi.ui:263
+#: src/frontends/qt4/ui/GraphicsUi.ui:276
 msgid "File name of image"
 msgstr "Filnavn for bildet"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:379
+#: src/frontends/qt4/ui/GraphicsUi.ui:284
 msgid "&Clipping"
 msgstr "&Klipp"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:486
-#: src/frontends/qt4/ui/GraphicsUi.ui:493
+#: src/frontends/qt4/ui/GraphicsUi.ui:393
+#: src/frontends/qt4/ui/GraphicsUi.ui:400
 msgid "y:"
 msgstr "y:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:500
-#: src/frontends/qt4/ui/GraphicsUi.ui:507
+#: src/frontends/qt4/ui/GraphicsUi.ui:407
+#: src/frontends/qt4/ui/GraphicsUi.ui:414
 msgid "x:"
 msgstr "x:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:555
-#: src/frontends/qt4/ui/GraphicsUi.ui:574
-msgid "Additional LaTeX options"
-msgstr "Ekstra opsjoner for LaTeX"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:558
-msgid "LaTeX &options:"
-msgstr "LaTeX-opsjoner"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:581
-msgid "Draft mode"
-msgstr "Kladdemodus"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:584
-msgid "&Draft mode"
-msgstr "&Kladd"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:591
+#: src/frontends/qt4/ui/GraphicsUi.ui:460
 msgid "Don't uncompress image before exporting to LaTeX"
 msgstr "Ikke pakk ut bildefil før eksport til LaTeX"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:594
+#: src/frontends/qt4/ui/GraphicsUi.ui:463
 msgid "Don't un&zip on export"
 msgstr "Ikke un&zip før eksport"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:604
+#: src/frontends/qt4/ui/GraphicsUi.ui:491
+#: src/frontends/qt4/ui/GraphicsUi.ui:498
+msgid "Additional LaTeX options"
+msgstr "Ekstra opsjoner for LaTeX"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:501
+msgid "LaTeX &options:"
+msgstr "LaTeX-opsjoner"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:527
 msgid ""
 "Enable LyX to preview this graphics, only if graphics previewing is not "
 "disabled at application level (see Preference dialog)."
 msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:607
+#: src/frontends/qt4/ui/GraphicsUi.ui:530
 msgid "Sho&w in LyX"
 msgstr "&Vis i LyX"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:644
-msgid "Graphics having the same group name will share the same parameters"
+#: src/frontends/qt4/ui/GraphicsUi.ui:595
+msgid "Assign the graphic to a group of graphics that share the same settings"
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:598
+#, fuzzy
+msgid "Graphics Group"
+msgstr "Grafikk"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:637
+msgid "A&ssigned to group:"
 msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:647
-#, fuzzy
-msgid "Grou&p Name:"
-msgstr "&Navn:"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:663
-msgid ""
-"Group Name to be set up from the current parameters. Use context menu to "
-"assign the existing one."
+msgid "Click to define a new graphics group."
 msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:650
+msgid "O&pen new group..."
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:657
+msgid "Select an existing group for the current graphics."
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:670
+msgid "Draft mode"
+msgstr "Kladdemodus"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:673
+msgid "&Draft mode"
+msgstr "&Kladd"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"
@@ -17366,7 +17376,7 @@ msgstr "BibTeX referanseliste"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiDocument.cpp:1296
-#: src/frontends/qt4/GuiExternal.cpp:670 src/frontends/qt4/GuiGraphics.cpp:738
+#: src/frontends/qt4/GuiExternal.cpp:670 src/frontends/qt4/GuiGraphics.cpp:847
 #: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1258
 #: src/frontends/qt4/GuiView.cpp:1316 src/frontends/qt4/GuiView.cpp:1462
 #: src/frontends/qt4/GuiView.cpp:1585 src/frontends/qt4/GuiView.cpp:1664
@@ -18073,39 +18083,39 @@ msgstr "Programlisting"
 msgid "%1$s Errors (%2$s)"
 msgstr "%1$s feil (%2$s)"
 
-#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:71
+#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Top left"
 msgstr "Øverst til venstre"
 
-#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:71
+#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Bottom left"
 msgstr "Nederst til venstre"
 
-#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:71
+#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Baseline left"
 msgstr "Grunnlinje, venstre ende"
 
-#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
+#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
 msgid "Top center"
 msgstr "Midt på øverst"
 
-#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
+#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
 msgid "Bottom center"
 msgstr "Midt på nederst"
 
-#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
+#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
 msgid "Baseline center"
 msgstr "Midt på grunnlinjen"
 
-#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:73
+#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:74
 msgid "Top right"
 msgstr "Øverst til høyre"
 
-#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:73
+#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:74
 msgid "Bottom right"
 msgstr "Nederst til høyre"
 
-#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:73
+#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:74
 msgid "Baseline right"
 msgstr "Grunnlinje, høyre ende"
 
@@ -18125,15 +18135,66 @@ msgstr "Velg ekstern fil"
 msgid "Float Settings"
 msgstr "\"Float\" innstillinger"
 
-#: src/frontends/qt4/GuiGraphics.cpp:153 src/frontends/qt4/GuiPrefs.cpp:870
+#: src/frontends/qt4/GuiGraphics.cpp:154 src/frontends/qt4/GuiPrefs.cpp:870
 msgid "Graphics"
 msgstr "Grafikk"
 
-#: src/frontends/qt4/GuiGraphics.cpp:725
+#: src/frontends/qt4/GuiGraphics.cpp:303 src/frontends/qt4/GuiGraphics.cpp:319
+msgid "Dissolve previous group?"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:304
+#, c-format
+msgid ""
+"If you assign this graphic to group '%2$s',\n"
+"the previously assigned group '%1$s' will be dissolved,\n"
+"because this graphic was its only member.\n"
+"How do you want to proceed?"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:310 src/frontends/qt4/GuiGraphics.cpp:326
+#, c-format
+msgid "Stick with group '%1$s'"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:312
+#, c-format
+msgid "Assign to group '%1$s' anyway"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:320
+#, c-format
+msgid ""
+"If you sign off this graphic from group '%1$s',\n"
+"the group will be dissolved,\n"
+"because this graphic was its only member.\n"
+"How do you want to proceed?"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:328
+#, c-format
+msgid "Sign off from group '%1$s'"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:368
+msgid "Enter unique group name:"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:373
+#, fuzzy
+msgid "Group already defined!"
+msgstr "Gå til neste endring"
+
+#: src/frontends/qt4/GuiGraphics.cpp:374
+#, c-format
+msgid "A graphics group with the name '%1$s' already exists."
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:834
 msgid "Select graphics file"
 msgstr "Velg grafikkfil"
 
-#: src/frontends/qt4/GuiGraphics.cpp:737
+#: src/frontends/qt4/GuiGraphics.cpp:846
 msgid "Clipart|#C#c"
 msgstr ""
 
@@ -20798,6 +20859,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Ukjent bruker"
+
+#, fuzzy
+#~ msgid "Grou&p Name:"
+#~ msgstr "&Navn:"
 
 #~ msgid "LyX binary not found"
 #~ msgstr "LyX binærfil ikke funnet"

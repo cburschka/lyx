@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-01-15 15:01+0100\n"
+"POT-Creation-Date: 2009-01-17 09:08+0100\n"
 "PO-Revision-Date: 2008-12-09 18:27+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
@@ -67,7 +67,7 @@ msgstr "ダミー(&D)"
 #: src/frontends/qt4/ui/CitationUi.ui:438
 #: src/frontends/qt4/ui/DocumentUi.ui:135 src/frontends/qt4/ui/ERTUi.ui:90
 #: src/frontends/qt4/ui/ExternalUi.ui:605 src/frontends/qt4/ui/FloatUi.ui:68
-#: src/frontends/qt4/ui/GraphicsUi.ui:71 src/frontends/qt4/ui/HSpaceUi.ui:151
+#: src/frontends/qt4/ui/GraphicsUi.ui:721 src/frontends/qt4/ui/HSpaceUi.ui:151
 #: src/frontends/qt4/ui/HyperlinkUi.ui:140
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/LabelUi.ui:82
 #: src/frontends/qt4/ui/ListingsUi.ui:529
@@ -167,8 +167,7 @@ msgid "&Rescan"
 msgstr "再走査(&R)"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:46 src/frontends/qt4/ui/BibtexUi.ui:97
-#: src/frontends/qt4/ui/ExternalUi.ui:78
-#: src/frontends/qt4/ui/GraphicsUi.ui:151
+#: src/frontends/qt4/ui/ExternalUi.ui:78 src/frontends/qt4/ui/GraphicsUi.ui:58
 #: src/frontends/qt4/ui/IncludeUi.ui:329 src/frontends/qt4/ui/LaTeXUi.ui:184
 #: src/frontends/qt4/ui/PrintUi.ui:313
 msgid "&Browse..."
@@ -299,7 +298,7 @@ msgid "Left"
 msgstr "左揃え"
 
 #: src/frontends/qt4/ui/BoxUi.ui:70 src/frontends/qt4/ui/TabularUi.ui:147
-#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
+#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
 #: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:713
 msgid "Center"
 msgstr "中央揃え"
@@ -358,7 +357,7 @@ msgstr "水平"
 
 #: src/frontends/qt4/ui/BoxUi.ui:202 src/frontends/qt4/ui/CitationUi.ui:415
 #: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
-#: src/frontends/qt4/ui/GraphicsUi.ui:42
+#: src/frontends/qt4/ui/GraphicsUi.ui:692
 #: src/frontends/qt4/ui/ParagraphUi.ui:59 src/frontends/qt4/ui/PrefsUi.ui:47
 #: src/frontends/qt4/ui/WrapUi.ui:121
 msgid "&Restore"
@@ -367,7 +366,7 @@ msgstr "復元(&R)"
 #: src/frontends/qt4/ui/BoxUi.ui:247 src/frontends/qt4/ui/CharacterUi.ui:380
 #: src/frontends/qt4/ui/DocumentUi.ui:145
 #: src/frontends/qt4/ui/ExternalUi.ui:615 src/frontends/qt4/ui/FloatUi.ui:78
-#: src/frontends/qt4/ui/GraphicsUi.ui:90 src/frontends/qt4/ui/HSpaceUi.ui:164
+#: src/frontends/qt4/ui/GraphicsUi.ui:742 src/frontends/qt4/ui/HSpaceUi.ui:164
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/ParagraphUi.ui:92 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
@@ -413,6 +412,7 @@ msgstr "ボックス内部 － 固定幅と改行のために必要"
 #: src/frontends/qt4/ui/TabularUi.ui:922 src/frontends/qt4/ui/TabularUi.ui:970
 #: src/frontends/qt4/GuiBox.cpp:159 src/frontends/qt4/GuiBox.cpp:324
 #: src/frontends/qt4/GuiBox.cpp:452 src/frontends/qt4/GuiDocument.cpp:89
+#: src/frontends/qt4/GuiGraphics.cpp:633
 msgid "None"
 msgstr "なし"
 
@@ -497,7 +497,7 @@ msgstr "大きさ(&Z):"
 #: src/frontends/qt4/GuiDocument.cpp:1164
 #: src/frontends/qt4/GuiDocument.cpp:1209
 #: src/frontends/qt4/GuiDocument.cpp:2261 src/frontends/qt4/GuiExternal.cpp:75
-#: src/frontends/qt4/GuiGraphics.cpp:70 src/frontends/qt4/GuiListings.cpp:152
+#: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiListings.cpp:152
 #: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1712
 msgid "Default"
 msgstr "既定値"
@@ -677,7 +677,7 @@ msgid "Apply changes immediately"
 msgstr "変更をすぐに適用"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:390 src/frontends/qt4/ui/ERTUi.ui:100
-#: src/frontends/qt4/ui/GraphicsUi.ui:109
+#: src/frontends/qt4/ui/GraphicsUi.ui:763
 #: src/frontends/qt4/ui/MathMatrixUi.ui:174 src/frontends/qt4/ui/NoteUi.ui:28
 #: src/frontends/qt4/ui/PrintUi.ui:243
 #: src/frontends/qt4/ui/TabularCreateUi.ui:72
@@ -896,7 +896,7 @@ msgid "Filename"
 msgstr "ファイル名"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:65
-#: src/frontends/qt4/ui/GraphicsUi.ui:353
+#: src/frontends/qt4/ui/GraphicsUi.ui:266
 #: src/frontends/qt4/ui/IncludeUi.ui:259 src/frontends/qt4/ui/PrintUi.ui:293
 msgid "&File:"
 msgstr "ファイル(&F):"
@@ -918,7 +918,7 @@ msgid "Available templates"
 msgstr "使うことのできるひな型"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:148
-#: src/frontends/qt4/ui/GraphicsUi.ui:549
+#: src/frontends/qt4/ui/GraphicsUi.ui:448
 msgid "LaTe&X and LyX options"
 msgstr "LaTe&XとLyXのオプション"
 
@@ -940,13 +940,13 @@ msgstr "LyX内に表示(&S)"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:221
 #: src/frontends/qt4/ui/ExternalUi.ui:243
-#: src/frontends/qt4/ui/GraphicsUi.ui:679
-#: src/frontends/qt4/ui/GraphicsUi.ui:686
+#: src/frontends/qt4/ui/GraphicsUi.ui:559
+#: src/frontends/qt4/ui/GraphicsUi.ui:566
 msgid "Percentage to scale by in LyX"
 msgstr "LyX内での表示縮尺"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:224
-#: src/frontends/qt4/ui/GraphicsUi.ui:689
+#: src/frontends/qt4/ui/GraphicsUi.ui:569
 msgid "Sca&le on Screen (%):"
 msgstr "画面上の縮尺(&L) (％):"
 
@@ -960,15 +960,15 @@ msgstr "回転"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:345
 #: src/frontends/qt4/ui/ExternalUi.ui:375
-#: src/frontends/qt4/ui/GraphicsUi.ui:327
-#: src/frontends/qt4/ui/GraphicsUi.ui:334
+#: src/frontends/qt4/ui/GraphicsUi.ui:240
+#: src/frontends/qt4/ui/GraphicsUi.ui:247
 msgid "Angle to rotate image by"
 msgstr "画像を回転させる角度"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:355
 #: src/frontends/qt4/ui/ExternalUi.ui:368
-#: src/frontends/qt4/ui/GraphicsUi.ui:301
-#: src/frontends/qt4/ui/GraphicsUi.ui:308
+#: src/frontends/qt4/ui/GraphicsUi.ui:212
+#: src/frontends/qt4/ui/GraphicsUi.ui:219
 msgid "The origin of the rotation"
 msgstr "回転の原点"
 
@@ -985,12 +985,12 @@ msgid "Scale"
 msgstr "縮尺"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:417
-#: src/frontends/qt4/ui/GraphicsUi.ui:220
+#: src/frontends/qt4/ui/GraphicsUi.ui:131
 msgid "Height of image in output"
 msgstr "出力画像の高さ"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:427
-#: src/frontends/qt4/ui/GraphicsUi.ui:188
+#: src/frontends/qt4/ui/GraphicsUi.ui:97
 msgid "Width of image in output"
 msgstr "出力画像の幅"
 
@@ -999,7 +999,7 @@ msgid "Maintain aspect ratio with largest dimension"
 msgstr "縦横比を維持しつつ最大化する"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:453
-#: src/frontends/qt4/ui/GraphicsUi.ui:266
+#: src/frontends/qt4/ui/GraphicsUi.ui:177
 msgid "&Maintain aspect ratio"
 msgstr "縦横比を維持する(&M)"
 
@@ -1008,17 +1008,17 @@ msgid "Crop"
 msgstr "クロップ"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:491
-#: src/frontends/qt4/ui/GraphicsUi.ui:404
+#: src/frontends/qt4/ui/GraphicsUi.ui:309
 msgid "Clip to bounding box values"
 msgstr "境界枠の値で切り抜く"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:494
-#: src/frontends/qt4/ui/GraphicsUi.ui:407
+#: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
 msgstr "境界枠で切り抜く(&B)"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:501
-#: src/frontends/qt4/ui/GraphicsUi.ui:438
+#: src/frontends/qt4/ui/GraphicsUi.ui:345
 msgid "&Left bottom:"
 msgstr "左下(&L):"
 
@@ -1027,17 +1027,17 @@ msgid "x"
 msgstr "X"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:521
-#: src/frontends/qt4/ui/GraphicsUi.ui:476
+#: src/frontends/qt4/ui/GraphicsUi.ui:383
 msgid "Right &top:"
 msgstr "右上(&T):"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:531
-#: src/frontends/qt4/ui/GraphicsUi.ui:530
+#: src/frontends/qt4/ui/GraphicsUi.ui:437
 msgid "Get bounding box from the (EPS) file"
 msgstr "(EPS)ファイルから境界線を取得する"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:534
-#: src/frontends/qt4/ui/GraphicsUi.ui:533
+#: src/frontends/qt4/ui/GraphicsUi.ui:440
 msgid "&Get from File"
 msgstr "ファイルから取得(&G)"
 
@@ -1171,111 +1171,103 @@ msgstr "縮尺(&A) (％):"
 msgid "Scale the Typewriter font to match the base font's dimensions"
 msgstr "基本フォントの寸法に一致するようにタイプライタ体フォントを調整する"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:136
+#: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
 msgstr "図(&G)"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:148
+#: src/frontends/qt4/ui/GraphicsUi.ui:55
 msgid "Select an image file"
 msgstr "図表ファイルを選んでください"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:158
+#: src/frontends/qt4/ui/GraphicsUi.ui:65
 msgid "Output Size"
 msgstr "出力寸法"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:230
+#: src/frontends/qt4/ui/GraphicsUi.ui:141
 msgid "Sets height of graphic. Leave unchecked to set automatically."
 msgstr ""
 "図の高さを設定します。自動的に設定させるには、チェックを外したままにしてくだ"
 "さい。"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:233
+#: src/frontends/qt4/ui/GraphicsUi.ui:144
 msgid "Set &height:"
 msgstr "高さを設定(&H):"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:240
+#: src/frontends/qt4/ui/GraphicsUi.ui:151
 msgid "&Scale Graphics (%):"
 msgstr "図の縮尺(&S) (％):"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:250
+#: src/frontends/qt4/ui/GraphicsUi.ui:161
 msgid "Sets width of graphic. Leave unchecked to set automatically."
 msgstr ""
 "図の幅を設定します。自動的に設定させるには、チェックをはずしたままにしてくだ"
 "さい。"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:253
+#: src/frontends/qt4/ui/GraphicsUi.ui:164
 msgid "Set &width:"
 msgstr "幅を設定(&W):"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:263
+#: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Scale image to maximum size not exceeding width and height"
 msgstr "幅や高さがはみ出ないように画像を最大化する"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:276
+#: src/frontends/qt4/ui/GraphicsUi.ui:187
 msgid "Rotate Graphics"
 msgstr "図を回転する"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:291
+#: src/frontends/qt4/ui/GraphicsUi.ui:202
 msgid "Check to change the order of rotating and scaling"
 msgstr "回転と縮尺変更の順序を変更するときにチェックしてください"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:294
+#: src/frontends/qt4/ui/GraphicsUi.ui:205
 msgid "Ro&tate after scaling"
 msgstr "縮尺を変更した後に回転(&T)"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:311
+#: src/frontends/qt4/ui/GraphicsUi.ui:222
 msgid "Or&igin:"
 msgstr "原点(&I):"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:337
+#: src/frontends/qt4/ui/GraphicsUi.ui:250
 msgid "A&ngle (Degrees):"
 msgstr "角度(&N):"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:350
-#: src/frontends/qt4/ui/GraphicsUi.ui:363
+#: src/frontends/qt4/ui/GraphicsUi.ui:263
+#: src/frontends/qt4/ui/GraphicsUi.ui:276
 msgid "File name of image"
 msgstr "図のファイル名"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:379
+#: src/frontends/qt4/ui/GraphicsUi.ui:284
 msgid "&Clipping"
 msgstr "切り抜き(&C)"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:486
-#: src/frontends/qt4/ui/GraphicsUi.ui:493
+#: src/frontends/qt4/ui/GraphicsUi.ui:393
+#: src/frontends/qt4/ui/GraphicsUi.ui:400
 msgid "y:"
 msgstr "Y:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:500
-#: src/frontends/qt4/ui/GraphicsUi.ui:507
+#: src/frontends/qt4/ui/GraphicsUi.ui:407
+#: src/frontends/qt4/ui/GraphicsUi.ui:414
 msgid "x:"
 msgstr "X:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:555
-#: src/frontends/qt4/ui/GraphicsUi.ui:574
-msgid "Additional LaTeX options"
-msgstr "LaTeX追加オプション"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:558
-msgid "LaTeX &options:"
-msgstr "LaTeXオプション(&O):"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:581
-msgid "Draft mode"
-msgstr "下書きモード"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:584
-msgid "&Draft mode"
-msgstr "下書きモード(&D)"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:591
+#: src/frontends/qt4/ui/GraphicsUi.ui:460
 msgid "Don't uncompress image before exporting to LaTeX"
 msgstr "LaTeXにエクスポートする前に画像を解凍しない"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:594
+#: src/frontends/qt4/ui/GraphicsUi.ui:463
 msgid "Don't un&zip on export"
 msgstr "エクスポートする際に解凍しない(&Z)"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:604
+#: src/frontends/qt4/ui/GraphicsUi.ui:491
+#: src/frontends/qt4/ui/GraphicsUi.ui:498
+msgid "Additional LaTeX options"
+msgstr "LaTeX追加オプション"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:501
+msgid "LaTeX &options:"
+msgstr "LaTeXオプション(&O):"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:527
 msgid ""
 "Enable LyX to preview this graphics, only if graphics previewing is not "
 "disabled at application level (see Preference dialog)."
@@ -1283,25 +1275,42 @@ msgstr ""
 "LyXでこの図をプレビューすることを有効にする。ただし、アプリケーションレベルで"
 "図のプレビューが無効にされていない場合に限る（設定ダイアログを参照）。"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:607
+#: src/frontends/qt4/ui/GraphicsUi.ui:530
 msgid "Sho&w in LyX"
 msgstr "LyX内に表示(&W)"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:644
-msgid "Graphics having the same group name will share the same parameters"
+#: src/frontends/qt4/ui/GraphicsUi.ui:595
+msgid "Assign the graphic to a group of graphics that share the same settings"
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:598
+#, fuzzy
+msgid "Graphics Group"
+msgstr "図"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:637
+msgid "A&ssigned to group:"
 msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:647
-#, fuzzy
-msgid "Grou&p Name:"
-msgstr "名前(&N):"
+msgid "Click to define a new graphics group."
+msgstr ""
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:663
-#, fuzzy
-msgid ""
-"Group Name to be set up from the current parameters. Use context menu to "
-"assign the existing one."
-msgstr "現在のパラメータから設定されるグループ名"
+#: src/frontends/qt4/ui/GraphicsUi.ui:650
+msgid "O&pen new group..."
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:657
+msgid "Select an existing group for the current graphics."
+msgstr ""
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:670
+msgid "Draft mode"
+msgstr "下書きモード"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:673
+msgid "&Draft mode"
+msgstr "下書きモード(&D)"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"
@@ -17002,7 +17011,7 @@ msgstr "BibTeX 参考文献"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiDocument.cpp:1296
-#: src/frontends/qt4/GuiExternal.cpp:670 src/frontends/qt4/GuiGraphics.cpp:738
+#: src/frontends/qt4/GuiExternal.cpp:670 src/frontends/qt4/GuiGraphics.cpp:847
 #: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1258
 #: src/frontends/qt4/GuiView.cpp:1316 src/frontends/qt4/GuiView.cpp:1462
 #: src/frontends/qt4/GuiView.cpp:1585 src/frontends/qt4/GuiView.cpp:1664
@@ -17676,39 +17685,39 @@ msgstr "エラーリスト"
 msgid "%1$s Errors (%2$s)"
 msgstr "%1$s エラー (%2$s)"
 
-#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:71
+#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Top left"
 msgstr "左上"
 
-#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:71
+#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Bottom left"
 msgstr "左下"
 
-#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:71
+#: src/frontends/qt4/GuiExternal.cpp:76 src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Baseline left"
 msgstr "ベースライン左"
 
-#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
+#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
 msgid "Top center"
 msgstr "中央上"
 
-#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
+#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
 msgid "Bottom center"
 msgstr "中央下"
 
-#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
+#: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
 msgid "Baseline center"
 msgstr "ベースライン中央"
 
-#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:73
+#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:74
 msgid "Top right"
 msgstr "右上"
 
-#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:73
+#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:74
 msgid "Bottom right"
 msgstr "右下"
 
-#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:73
+#: src/frontends/qt4/GuiExternal.cpp:78 src/frontends/qt4/GuiGraphics.cpp:74
 msgid "Baseline right"
 msgstr "ベースライン右"
 
@@ -17728,15 +17737,66 @@ msgstr "外部ファイルを選択する"
 msgid "Float Settings"
 msgstr "フロートの設定"
 
-#: src/frontends/qt4/GuiGraphics.cpp:153 src/frontends/qt4/GuiPrefs.cpp:870
+#: src/frontends/qt4/GuiGraphics.cpp:154 src/frontends/qt4/GuiPrefs.cpp:870
 msgid "Graphics"
 msgstr "図"
 
-#: src/frontends/qt4/GuiGraphics.cpp:725
+#: src/frontends/qt4/GuiGraphics.cpp:303 src/frontends/qt4/GuiGraphics.cpp:319
+msgid "Dissolve previous group?"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:304
+#, c-format
+msgid ""
+"If you assign this graphic to group '%2$s',\n"
+"the previously assigned group '%1$s' will be dissolved,\n"
+"because this graphic was its only member.\n"
+"How do you want to proceed?"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:310 src/frontends/qt4/GuiGraphics.cpp:326
+#, c-format
+msgid "Stick with group '%1$s'"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:312
+#, c-format
+msgid "Assign to group '%1$s' anyway"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:320
+#, c-format
+msgid ""
+"If you sign off this graphic from group '%1$s',\n"
+"the group will be dissolved,\n"
+"because this graphic was its only member.\n"
+"How do you want to proceed?"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:328
+#, c-format
+msgid "Sign off from group '%1$s'"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:368
+msgid "Enter unique group name:"
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:373
+#, fuzzy
+msgid "Group already defined!"
+msgstr "動作が定義されていません！"
+
+#: src/frontends/qt4/GuiGraphics.cpp:374
+#, c-format
+msgid "A graphics group with the name '%1$s' already exists."
+msgstr ""
+
+#: src/frontends/qt4/GuiGraphics.cpp:834
 msgid "Select graphics file"
 msgstr "画像ファイルを選択"
 
-#: src/frontends/qt4/GuiGraphics.cpp:737
+#: src/frontends/qt4/GuiGraphics.cpp:846
 msgid "Clipart|#C#c"
 msgstr "クリップアート(C)|#C#c"
 
@@ -20264,6 +20324,16 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "未知の"
+
+#, fuzzy
+#~ msgid "Grou&p Name:"
+#~ msgstr "名前(&N):"
+
+#, fuzzy
+#~ msgid ""
+#~ "Group Name to be set up from the current parameters. Use context menu to "
+#~ "assign the existing one."
+#~ msgstr "現在のパラメータから設定されるグループ名"
 
 #, fuzzy
 #~ msgid "LyX binary not found"
