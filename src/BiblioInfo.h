@@ -59,8 +59,11 @@ public:
 	docstring const getAbbreviatedAuthor() const;
 	/// 
 	docstring const getYear() const;
+	///
+	docstring const getXRef() const;
 	/// \return formatted BibTeX data suitable for framing.
-	docstring const getInfo() const;
+	/// \param pointer to crossref information
+	docstring const getInfo(BibTeXInfo const * const xref = 0) const;
 	///
 	int count(docstring const & f) const { return bimap_.count(f); }
 	///
@@ -84,6 +87,9 @@ public:
 	///
 	docstring entryType() const { return entry_type_; }
 private:
+	/// like operator[], except it will also check the given xref
+	docstring getValueForKey(std::string const & key, 
+			BibTeXInfo const * const xref = 0) const;
 	/// true if from BibTeX; false if from bibliography environment
 	bool is_bibtex_;
 	/// the BibTeX key for this entry
@@ -114,9 +120,12 @@ public:
 	/// \return the short form of an authorlist
 	docstring const getAbbreviatedAuthor(docstring const & key) const;
 	/// \return the year from the bibtex data record
+	/// Note that this will get the year from the crossref if it's
+	/// not present in the record itself
 	docstring const getYear(docstring const & key) const;
 	/// \return formatted BibTeX data associated with a given key.
 	/// Empty if no info exists. 
+	/// Note that this will retrieve data from the crossref as needed.
 	docstring const getInfo(docstring const & key) const;
 	/**
 	  * "Translates" the available Citation Styles into strings for a given key,

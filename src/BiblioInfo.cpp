@@ -72,6 +72,16 @@ docstring const & BibTeXInfo::operator[](string const & field) const
 }
 
 
+docstring BibTeXInfo::getValueForKey(string const & key, 
+		BibTeXInfo const * const xref) const
+{
+	docstring const ret = operator[](key);
+	if (!ret.empty() or !xref)
+		return ret;
+	return (*xref)[key];
+}
+
+
 docstring familyName(docstring const & name)
 {
 	if (name.empty())
@@ -171,6 +181,14 @@ docstring const BibTeXInfo::getYear() const
 	if (year.empty())
 		year = _("No year");
 	return year;
+}
+
+
+docstring const BibTeXInfo::getXRef() const
+{
+	if (!is_bibtex_)
+		return docstring();
+	return operator[]("crossref");
 }
 
 
@@ -274,7 +292,7 @@ namespace {
 } // anon namespace
 
 
-docstring const BibTeXInfo::getInfo() const
+docstring const BibTeXInfo::getInfo(BibTeXInfo const * const xref) const
 {
 	if (!info_.empty())
 		return info_;
@@ -290,31 +308,31 @@ docstring const BibTeXInfo::getInfo() const
 	// field to customize the output based upon entry type.
 	
 	// Search for all possible "required" fields
-	docstring author = operator[]("author");
+	docstring author = getValueForKey("author", xref);
 	if (author.empty())
-		author = operator[]("editor");
+		author = getValueForKey("editor", xref);
  
-	docstring year   = operator[]("year");
-	docstring title  = operator[]("title");
-	docstring docLoc = operator[]("pages");
+	docstring year   = getValueForKey("year", xref);
+	docstring title  = getValueForKey("title", xref);
+	docstring docLoc = getValueForKey("pages", xref);
 	if (docLoc.empty()) {
-		docLoc = operator[]("chapter");
+		docLoc = getValueForKey("chapter", xref);
 		if (!docLoc.empty())
 			docLoc = from_ascii("Ch. ") + docLoc;
 	}	else {
 		docLoc = from_ascii("pp. ") + docLoc;
 	}
 
-	docstring media = operator[]("journal");
+	docstring media = getValueForKey("journal", xref);
 	if (media.empty()) {
-		media = operator[]("publisher");
+		media = getValueForKey("publisher", xref);
 		if (media.empty()) {
-			media = operator[]("school");
+			media = getValueForKey("school", xref);
 			if (media.empty())
-				media = operator[]("institution");
+				media = getValueForKey("institution");
 		}
 	}
-	docstring volume = operator[]("volume");
+	docstring volume = getValueForKey("volume", xref);
 
 	odocstringstream result;
 	if (!author.empty())
@@ -324,7 +342,7 @@ docstring const BibTeXInfo::getInfo() const
 	if (!media.empty())
 		result << ", " << media;
 	if (!year.empty())
-		result << ", " << year;
+		result << " (" << year << ")";
 	if (!docLoc.empty())
 		result << ", " << docLoc;
 
@@ -408,6 +426,18 @@ docstring const BiblioInfo::getYear(docstring const & key) const
 	if (it == end())
 		return docstring();
 	BibTeXInfo const & data = it->second;
+	docstring year = data.getYear();
+	if (!year.empty())
+		return year;
+	// let's try the crossref
+	docstring const xref = data.getXRef();
+	if (xref.empty())
+		return year; // no luck
+	BiblioInfo::const_iterator const xrefit = find(xref);
+	if (xrefit == end())
+		return year; // no luck again
+	BibTeXInfo const & xref_data = xrefit->second;
+	return xref_data.getYear();
 	return data.getYear();
 }
 
@@ -418,7 +448,14 @@ docstring const BiblioInfo::getInfo(docstring const & key) const
 	if (it == end())
 		return docstring();
 	BibTeXInfo const & data = it->second;
-	return data.getInfo();
+	BibTeXInfo const * xrefptr = 0;
+	docstring const xref = data.getXRef();
+	if (!xref.empty()) {
+		BiblioInfo::const_iterator const xrefit = find(xref);
+		if (xrefit != end())
+			xrefptr = &(xrefit->second);
+	}
+	return data.getInfo(xrefptr);
 }
 
 
