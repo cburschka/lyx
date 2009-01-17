@@ -91,14 +91,6 @@ int InsetHyperlink::latex(odocstream & os, OutputParams const & runparams) const
 			if (url[pos + 1] != '\\')
 				url.replace(pos, 1, from_ascii("%5C"));
 		}
-		// "#" needs to be escapes to "\#", therefore the treatment
-		// of "\" must be done before
-		for (size_t i = 0, pos;
-			(pos = url.find('#', i)) != string::npos;
-			i = pos + 2) {
-			if (url[pos + 1] != '\\')
-				url.replace(pos, 1, from_ascii("\\#"));
-		}
 		
 		// add "http://" when the type is web (type = empty)
 		// and no "://" or "run:" is given
