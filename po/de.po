@@ -10532,9 +10532,8 @@ msgid "Go back to Reference|G"
 msgstr "Gehe zurück zum Verweis|h"
 
 #: lib/ui/stdcontext.inc:93
-#, fuzzy
 msgid "Copy as Reference|C"
-msgstr "Gehe zurück zum Verweis|h"
+msgstr "Als Querverweis kopieren|k"
 
 #: lib/ui/stdcontext.inc:115
 msgid "Edit Database(s) externally...|x"
@@ -16006,9 +16005,8 @@ msgid "LyX VC: Log Message"
 msgstr "LyX VK: Protokollmeldung"
 
 #: src/LyXFunc.cpp:1616
-#, fuzzy
 msgid "Directory is not accessible."
-msgstr "Das Verzeichnis ist nicht lesbar.\n"
+msgstr "Das Verzeichnis ist nicht lesbar."
 
 #: src/LyXFunc.cpp:1798
 #, c-format
@@ -17111,14 +17109,13 @@ msgid "not released yet"
 msgstr "noch nicht veröffentlicht"
 
 #: src/frontends/qt4/GuiAbout.cpp:107
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "LyX Version %1$s\n"
 "(%2$s)"
 msgstr ""
 "LyX Version %1$s\n"
-"(%2$s)\n"
-"\n"
+"(%2$s)"
 
 #: src/frontends/qt4/GuiAbout.cpp:113
 msgid "Library directory: "
