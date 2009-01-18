@@ -33,6 +33,7 @@ string const sec_lastopened = "[last opened files]";
 string const sec_bookmarks = "[bookmarks]";
 string const sec_session = "[session info]";
 string const sec_toolbars = "[toolbars]";
+string const sec_lastcommands = "[last commands]";
 
 } // anon namespace
 
@@ -301,8 +302,64 @@ BookmarksSection::Bookmark const & BookmarksSection::bookmark(unsigned int i) co
 }
 
 
-Session::Session(unsigned int num) :
-	last_files(num)
+LastCommandsSection::LastCommandsSection(unsigned int num) :
+	default_num_last_commands(30),
+	absolute_max_last_commands(100)
+{
+	setNumberOfLastCommands(num);
+}
+
+	
+void LastCommandsSection::read(istream & is)
+{
+	string tmp;
+	do {
+		char c = is.peek();
+		if (c == '[')
+			break;
+		getline(is, tmp);
+		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ')
+			continue;
+
+		lastcommands.push_back(tmp);
+	} while (is.good());
+}
+
+
+void LastCommandsSection::write(ostream & os) const
+{
+	os << '\n' << sec_lastcommands << '\n';
+	copy(lastcommands.begin(), lastcommands.end(),
+		ostream_iterator<std::string>(os, "\n"));
+}
+
+
+void LastCommandsSection::setNumberOfLastCommands(unsigned int no)
+{
+	if (0 < no && no <= absolute_max_last_commands)
+		num_lastcommands = no;
+	else {
+		LYXERR(Debug::INIT, "LyX: session: too many last commands\n"
+			<< "\tdefault (=" << default_num_last_commands << ") used.");
+		num_lastcommands = default_num_last_commands;
+	}
+}
+
+
+void LastCommandsSection::add(std::string const & string)
+{
+	lastcommands.push_back(string);
+}
+
+
+void LastCommandsSection::clear()
+{
+	lastcommands.clear();
+}
+
+
+Session::Session(unsigned int num_last_files, unsigned int num_last_commands) :
+	last_files(num_last_files), last_commands(num_last_commands)
 {
 	// locate the session file
 	// note that the session file name 'session' is hard-coded
@@ -333,6 +390,9 @@ void Session::readFile()
 			lastFilePos().read(is);
 		else if (tmp == sec_bookmarks)
 			bookmarks().read(is);
+		else if (tmp == sec_lastcommands)
+			lastCommands().read(is);
+
 		else
 			LYXERR(Debug::INIT, "LyX: Warning: unknown Session section: " << tmp);
 	}
@@ -349,6 +409,7 @@ void Session::writeFile() const
 		lastFiles().write(os);
 		lastOpened().write(os);
 		lastFilePos().write(os);
+		lastCommands().write(os);
 		bookmarks().write(os);
 	} else
 		LYXERR(Debug::INIT, "LyX: Warning: unable to save Session: "

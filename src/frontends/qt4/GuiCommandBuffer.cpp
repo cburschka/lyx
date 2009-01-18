@@ -23,6 +23,7 @@
 #include "LyXFunc.h"
 #include "LyXAction.h"
 #include "FuncRequest.h"
+#include "Session.h"
 
 #include "support/lyxalgo.h"
 #include "support/lstrings.h"
@@ -54,14 +55,15 @@ public:
 		setAttribute(Qt::WA_DeleteOnClose);
 	}
 protected:
-	void mouseReleaseEvent(QMouseEvent * ev) {
-		if (ev->x() < 0 || ev->y() < 0
-		    || ev->x() > width() || ev->y() > height()) {
-			hide();
-		} else {
-			// emit signal
-			itemPressed(currentItem());
+	bool event(QEvent * ev) {
+		if (ev->type() == QEvent::MouseButtonPress) {
+			QMouseEvent * me = static_cast<QMouseEvent *>(ev);
+			if (me->x() < 0 || me->y() < 0
+			    || me->x() > width() || me->y() > height())
+				hide();
+			return true;
 		}
+		return QListWidget::event(ev);
 	}
 
 	void keyPressEvent(QKeyEvent * ev) {
@@ -70,7 +72,7 @@ protected:
 			return;
 		} else if (ev->key() == Qt::Key_Return || ev->key() == Qt::Key_Space) {
 			// emit signal
-			itemPressed(currentItem());
+			itemClicked(currentItem());
 		} else
 			QListWidget::keyPressEvent(ev);
 	}
@@ -80,7 +82,7 @@ protected:
 
 
 GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
-	: view_(view), history_pos_(history_.end())
+	: view_(view)
 {
 	transform(lyxaction.func_begin(), lyxaction.func_end(),
 		back_inserter(commands_), firster());
@@ -91,13 +93,15 @@ GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
 	QVBoxLayout * top = new QVBoxLayout(this);
 	QHBoxLayout * layout = new QHBoxLayout(0);
 
-	QPushButton * up = new QPushButton(qpup, "", this);
-	up->setMaximumSize(24, 24);
-	QPushButton * down = new QPushButton(qpdown, "", this);
-	down->setToolTip(qt_("Next command"));
-	down->setMaximumSize(24, 24);
-	connect(down, SIGNAL(clicked()), this, SLOT(down()));
-	connect(up, SIGNAL(clicked()), this, SLOT(up()));
+	upPB = new QPushButton(qpup, "", this);
+	upPB->setToolTip(qt_("List of previous commands"));
+	upPB->setMaximumSize(24, 24);
+	downPB = new QPushButton(qpdown, "", this);
+	downPB->setToolTip(qt_("Next command"));
+	downPB->setMaximumSize(24, 24);
+	downPB->setEnabled(false);
+	connect(downPB, SIGNAL(clicked()), this, SLOT(down()));
+	connect(upPB, SIGNAL(pressed()), this, SLOT(listHistoryUp()));
 
 	edit_ = new GuiCommandEdit(this);
 	edit_->setMinimumSize(edit_->sizeHint());
@@ -110,13 +114,26 @@ GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
 	connect(edit_, SIGNAL(downPressed()), this, SLOT(down()));
 	connect(edit_, SIGNAL(hidePressed()), this, SLOT(hideParent()));
 
-	layout->addWidget(up, 0);
-	layout->addWidget(down, 0);
+	layout->addWidget(upPB, 0);
+	layout->addWidget(downPB, 0);
 	layout->addWidget(edit_, 10);
 	layout->setMargin(0);
 	top->addLayout(layout);
 	top->setMargin(0);
 	setFocusProxy(edit_);
+
+	LastCommandsSection::LastCommands last_commands 
+		= theSession().lastCommands().getcommands();
+	LastCommandsSection::LastCommands::const_iterator it 
+		= last_commands.begin();
+	LastCommandsSection::LastCommands::const_iterator end 
+		= last_commands.end();
+
+	upPB->setEnabled(it != end);
+
+	for(; it != end; ++it)
+		history_.push_back(*it);
+	history_pos_ = history_.end();
 }
 
 
@@ -133,7 +150,21 @@ void GuiCommandBuffer::dispatch()
 	view_->setFocus();
 	edit_->setText(QString());
 	edit_->clearFocus();
-	dispatch(fromqstr(cmd));
+	std::string const cmd_ = fromqstr(cmd);
+	theSession().lastCommands().add(cmd_);
+	dispatch(cmd_);
+}
+
+
+void GuiCommandBuffer::listHistoryUp()
+{
+	if (history_.size()==1) {
+		edit_->setText(toqstr(history_.back()));
+		upPB->setEnabled(false);
+		return;
+	}
+	QPoint const & pos = upPB->mapToGlobal(QPoint(0, 0));
+	showList(history_, pos, true);
 }
 
 
@@ -143,50 +174,54 @@ void GuiCommandBuffer::complete()
 	string new_input;
 	vector<string> comp = completions(input, new_input);
 
-	if (comp.empty() && new_input == input) {
-		// show_info_suffix(qt_("[no match]"), input);
-		return;
-	}
-
 	if (comp.empty()) {
-		edit_->setText(toqstr(new_input));
-	//	show_info_suffix(("[only completion]"), new_input + ' ');
+		if (new_input != input)
+			edit_->setText(toqstr(new_input));
 		return;
 	}
 
 	edit_->setText(toqstr(new_input));
+	QPoint const & pos = edit_->mapToGlobal(QPoint(0, 0));
+	showList(comp, pos);
+}
 
-	QTempListBox * list = new QTempListBox;
+void GuiCommandBuffer::showList(vector<string> const & list,
+	QPoint const & pos, bool reversed) const
+{
+	QTempListBox * listBox = new QTempListBox;
 
 	// For some reason the scrollview's contents are larger
 	// than the number of actual items...
-	vector<string>::const_iterator cit = comp.begin();
-	vector<string>::const_iterator end = comp.end();
-	for (; cit != end; ++cit)
-		list->addItem(toqstr(*cit));
+	vector<string>::const_iterator cit = list.begin();
+	vector<string>::const_iterator end = list.end();
+	if (!reversed) {
+		for (; cit != end; ++cit)
+			listBox ->addItem(toqstr(*cit));
+	} else {
+		for (--end; end != cit; --end)
+			listBox ->addItem(toqstr(*end));
+	}
 
-	list->resize(list->sizeHint());
-	QPoint const pos = edit_->mapToGlobal(QPoint(0, 0));
+	listBox->resize(listBox ->sizeHint());
 
-	int const y = max(0, pos.y() - list->height());
+	int const y = max(0, pos.y() - listBox->height());
+	listBox->move(pos.x(), y);
 
-	list->move(pos.x(), y);
+	connect(listBox, SIGNAL(itemClicked(QListWidgetItem *)),
+		this, SLOT(item_selected(QListWidgetItem *)));
+	connect(listBox, SIGNAL(itemActivated(QListWidgetItem *)),
+		this, SLOT(item_selected(QListWidgetItem *)));
 
-	connect(list, SIGNAL(itemPressed(QListWidgetItem *)),
-		this, SLOT(complete_selected(QListWidgetItem *)));
-	connect(list, SIGNAL(itemActivated(QListWidgetItem *)),
-		this, SLOT(complete_selected(QListWidgetItem *)));
-
-	list->show();
-	list->setFocus();
+	listBox->show();
+	listBox->setFocus();
 }
 
 
-void GuiCommandBuffer::complete_selected(QListWidgetItem * item)
+void GuiCommandBuffer::item_selected(QListWidgetItem * item)
 {
 	QWidget const * widget = static_cast<QWidget const *>(sender());
 	const_cast<QWidget *>(widget)->hide();
-	edit_->setText(item->text() + ' ');
+	edit_->setText(item->text()+ ' ');
 	edit_->activateWindow();
 	edit_->setFocus();
 }
@@ -197,11 +232,11 @@ void GuiCommandBuffer::up()
 	string const input = fromqstr(edit_->text());
 	string const h = historyUp();
 
-	if (h.empty()) {
-	//	show_info_suffix(qt_("[Beginning of history]"), input);
-	} else {
+	if (!h.empty())
 		edit_->setText(toqstr(h));
-	}
+
+	upPB->setEnabled(history_pos_ != history_.begin());
+	downPB->setEnabled(history_pos_ != history_.end());
 }
 
 
@@ -210,13 +245,13 @@ void GuiCommandBuffer::down()
 	string const input = fromqstr(edit_->text());
 	string const h = historyDown();
 
-	if (h.empty()) {
-	//	show_info_suffix(qt_("[End of history]"), input);
-	} else {
+	if (!h.empty())
 		edit_->setText(toqstr(h));
-	}
-}
 
+	downPB->setEnabled(history_pos_ != history_.end()-1);
+	upPB->setEnabled(history_pos_ != history_.begin());
+}
+	
 
 void GuiCommandBuffer::hideParent()
 {
@@ -317,8 +352,10 @@ void GuiCommandBuffer::dispatch(string const & str)
 	if (str.empty())
 		return;
 
-	history_.push_back(str);
+	history_.push_back(trim(str));
 	history_pos_ = history_.end();
+	upPB->setEnabled(history_pos_ != history_.begin());
+	downPB->setEnabled(history_pos_ != history_.end());
 	FuncRequest func = lyxaction.lookupFunc(str);
 	func.origin = FuncRequest::COMMANDBUFFER;
 	theLyXFunc().setLyXView(view_);

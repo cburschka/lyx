@@ -27,6 +27,7 @@
   3. opened files when a lyx session is closed (lastopened)
   4. bookmarks
   5. general purpose session info in the form of key/value pairs
+  6. the latest commands entered in the command buffer (lastcommands)
  */
 namespace lyx {
 
@@ -263,11 +264,59 @@ private:
 };
 
 
+class LastCommandsSection : SessionSection
+{
+public:
+	///
+	typedef std::vector<std::string> LastCommands;
+
+public:
+	///
+	LastCommandsSection(unsigned int num);
+	///
+	void read(std::istream & is);
+
+	///
+	void write(std::ostream & os) const;
+
+	/// Return lastcommands container (vector)
+	LastCommands const getcommands() const { return lastcommands; }
+
+	/** add command to lastcommands list
+	    @param command command to add
+	*/
+	void add(std::string const & command);
+
+	/** clear lastcommands list
+	 */
+	void clear();
+
+private:
+	/// number of commands in the lastcommands list.
+	unsigned int num_lastcommands;
+
+	/** Used by the constructor to set the number of stored last commands.
+	    @param num the number of lastcommands to set.
+	*/
+	void setNumberOfLastCommands(unsigned int num);
+
+	/// a list of lastopened commands
+	LastCommands lastcommands;
+
+	/// Default number of lastcommands.
+	unsigned int const default_num_last_commands;
+
+	/// Max number of lastcommands.
+	unsigned int const absolute_max_last_commands;
+};
+
+
 class Session
 {
 public:
 	/// Read the session file.  @param num length of lastfiles
-	explicit Session(unsigned int num = 4);
+	explicit Session(unsigned int num_last_files = 4,
+		unsigned int num_last_commands = 30);
 	/// Write the session file.
 	void writeFile() const;
 	///
@@ -286,6 +335,10 @@ public:
 	BookmarksSection & bookmarks() { return bookmarks_; }
 	///
 	BookmarksSection const & bookmarks() const { return bookmarks_; }
+	///
+	LastCommandsSection & lastCommands() { return last_commands; }
+	///
+	LastCommandsSection const & lastCommands() const { return last_commands; }
 
 private:
 	friend class LyX;
@@ -311,6 +364,8 @@ private:
 	LastFilePosSection last_file_pos;
 	///
 	BookmarksSection bookmarks_;
+	///
+	LastCommandsSection last_commands;
 };
 
 /// This is a singleton class. Get the instance.
