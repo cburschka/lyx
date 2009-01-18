@@ -1734,7 +1734,7 @@ status collapsed
 、LyX（およびLaTeX）が他のワードプロセッサをしのぐ最大の利点の一つです。
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 初めてのラベル
 \end_layout
 
@@ -1768,7 +1768,7 @@ status collapsed
 相互参照でラベルを参照することができます。次はそれをやってみましょう。
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 初めての相互参照
 \end_layout
 
@@ -1822,6 +1822,24 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+Alternatively to that method, you can right-click on a label and use in
+ the appearing context menu 
+\family sans
+Copy as Reference
+\family default
+.
+ The cross-reference to this label is now in the clipboard and can be copied
+ to the actual cursor position via the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Paste
+\family default
+ (shortcut Ctrl+V).
+\end_layout
+
+\begin_layout Standard
 LyXは、ちょうどカーソルがある場所に参照ボックスを挿入します。印刷した文書では、この参照マーカーは（
 \family sans
 相互参照
@@ -1842,7 +1860,7 @@ LyXは、ちょうどカーソルがある場所に参照ボックスを挿入�
 をクリックすれば、参照しているラベルにカーソルを移動することができるのです。
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 ラベルをもう少しいじってみましょう
 \end_layout
 

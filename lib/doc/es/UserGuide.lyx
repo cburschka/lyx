@@ -25488,11 +25488,44 @@ Aceptar
 .
  En el documento de salida, en vez de este cuadro se mostrará el número
  del ítem.
- A continuación ponemos nuestra referencia cruzada:
 \end_layout
 
 \begin_layout Standard
-Ítem
+
+\lang english
+Alternatively to
+\lang spanish
+ 
+\family sans
+Insertar\SpecialChar \menuseparator
+Referencia
+\begin_inset space ~
+\end_inset
+
+cruzada
+\family default
+, 
+\lang english
+you can right-click on a label and use in the appearing context menu 
+\family sans
+Copy as Reference
+\family default
+.
+ The cross-reference to this label is now in the clipboard and can be copied
+ to the actual cursor position via the
+\lang spanish
+ menú 
+\family sans
+Editar\SpecialChar \menuseparator
+Pegar
+\family default
+ 
+\lang english
+(shortcut Ctrl+V).
+\end_layout
+
+\begin_layout Standard
+A continuación ponemos nuestra referencia cruzada: Ítem
 \begin_inset space ~
 \end_inset
 
