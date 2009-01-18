@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -17262,6 +17262,233 @@ svn log
 
 \family default
  is shown in a browser.
+\end_layout
+
+\begin_layout Subsection
+SVN and Windows Environment
+\end_layout
+
+\begin_layout Quote
+My inclination is to say that if the user cannot figure out the command
+ line operations on their own fairly quickly, they would be well advised
+ to use TortoiseSVN.
+ ---P.
+ A.
+ Rubin
+\end_layout
+
+\begin_layout Subsubsection
+Preparation
+\end_layout
+
+\begin_layout Standard
+In addition to installing LyX, and having access to a Subversion repository,
+ the user will need to install the Subversion client program.
+ A Windows installer for the client program is available from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CollabNet"
+target "http://www.collab.net/nonav/downloads/subversion/"
+
+\end_inset
+
+.
+ The user may also want to install 
+\begin_inset CommandInset href
+LatexCommand href
+name "TortoiseSVN"
+target "http://tortoisesvn.tigris.org/"
+
+\end_inset
+
+, which integrates Subversion operations into the context (rightclick) menu
+ of Windows Explorer.
+ Operations done outside LyX will typically be more convenient using the
+ Explorer context menu.
+ Note that TortoiseSVN is not a replacement for the client program, which
+ is what LyX itself will use.
+\end_layout
+
+\begin_layout Subsubsection
+Bringing a document under Subversion control
+\end_layout
+
+\begin_layout Standard
+Before a LyX document can be brought under version control in Subversion,
+ its parent directory needs to be under version control.
+ If the document is being added to a project already in the repository,
+ this is accomplished by checking the project out to the directory where
+ the new document will be placed.
+ If the project itself is not yet under version control (for instance, if
+ this document starts a new project), the directory must be imported into
+ the repository.
+ This is done outside LyX.
+ Both import and checkout are easily accomplished from the Explorer context
+ menu using TortoiseSVN, or alternatively can be done using the command
+ line client at a DOS prompt.
+ The procedure for importing the project using TortoiseSVN is described
+ below, assuming an existing repository and a new project being started
+ in 
+\family typewriter
+C:
+\backslash
+new project
+\family default
+.
+ For information on using the Subversion client program, run 
+\family typewriter
+svn --help 
+\family default
+in a DOS shell.
+\end_layout
+
+\begin_layout Enumerate
+Locate 
+\family typewriter
+C:
+\backslash
+new project 
+\family default
+in Windows Explorer, right click it, and select 
+\family typewriter
+TortoiseSVN > Repo-browser
+\family default
+.
+ If necessary, adjust the URL for the repository, then click OK.
+\end_layout
+
+\begin_layout Enumerate
+Right click the level of the repository under which you want to place the
+ new project folder (typically the top level) and click 
+\family typewriter
+Create folder\SpecialChar \ldots{}
+
+\family default
+ Supply a name for the project folder and click OK.
+ Add a message for the log file if desired, then click OK again.
+ The new project folder should appear in the repository.
+ Finally, click OK again to exit the repository browser.
+\end_layout
+
+\begin_layout Enumerate
+Once again right click 
+\family typewriter
+C:
+\backslash
+new project
+\family default
+, this time selecting SVN Checkout\SpecialChar \ldots{}
+ Select the URL of the project folder
+ you just created in the repository, and set the checkout directory to 
+\family typewriter
+C:
+\backslash
+new project.
+
+\family default
+ Click OK.
+ You will be warned about a non-empty folder; click OK to proceed.
+ You should now have a 
+\family typewriter
+.svn
+\family default
+ directory under 
+\family typewriter
+C:
+\backslash
+new project.
+\end_layout
+
+\begin_layout Enumerate
+Create or open your document in LyX and click 
+\family sans
+\bar under
+F
+\bar default
+ile\SpecialChar \menuseparator
+
+\bar under
+V
+\bar default
+ersion
+\begin_inset space ~
+\end_inset
+
+Control\SpecialChar \menuseparator
+
+\bar under
+R
+\bar default
+egister.
+ 
+\family default
+Add a log message and click OK to commit the document to version control.
+\end_layout
+
+\begin_layout Standard
+From this point onward, you should have full functionality in the 
+\family sans
+\bar under
+F
+\bar default
+ile\SpecialChar \menuseparator
+
+\bar under
+V
+\bar default
+ersion
+\begin_inset space ~
+\end_inset
+
+Control
+\family default
+ menu.
+ You also have the option of checking the document in and out, viewing its
+ history, etc.
+ using the TortoiseSVN context menu in Windows Explorer or the Subversion
+ client program from a command prompt.
+\end_layout
+
+\begin_layout Subsection
+Further tuning
+\end_layout
+
+\begin_layout Standard
+With the recent addition of the vc-command function LyX power users are
+ allowed to create their own commands for revision control.
+\end_layout
+
+\begin_layout Standard
+As an example you can see how two TortoiseSVN commands could be integrated
+ directly:
+\end_layout
+
+\begin_layout Description
+Commit: 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+vc-command DS "." "TortoiseProc /command:commit /path:$$p"
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Revert: 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+vc-command DR "." "TortoiseProc /command:revert /path:$$p"
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
