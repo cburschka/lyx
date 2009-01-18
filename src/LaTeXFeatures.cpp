@@ -60,7 +60,7 @@ static string const lyxline_def =
 static string const noun_def = "\\newcommand{\\noun}[1]{\\textsc{#1}}";
 
 static string const lyxarrow_def =
-	"\\newcommand{\\lyxarrow}{%\n"
+	"\\DeclareRobustCommand*{\\lyxarrow}{%\n"
 	"\\@ifstar\n"
 	"{\\leavevmode\\,$\\triangleleft$\\,\\allowbreak}\n"
 	"{\\leavevmode\\,$\\triangleright$\\,\\allowbreak}}";
