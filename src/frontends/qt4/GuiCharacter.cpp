@@ -164,6 +164,8 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(autoapplyCB, SIGNAL(stateChanged(int)), this,
+		SLOT(slotAutoApply()));
 
 	connect(miscCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(sizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
@@ -173,8 +175,6 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	connect(colorCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(langCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(toggleallCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(autoapplyCB, SIGNAL(stateChanged(int)), this,
-		SLOT(change_adaptor()));
 
 	family = familyData();
 	series = seriesData();
@@ -195,10 +195,11 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	fillCombo(colorCO, color);
 	fillCombo(langCO, language);
 
-	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
+	bc().setPolicy(ButtonPolicy::OkApplyCancelAutoReadOnlyPolicy);
 	bc().setOK(okPB);
 	bc().setApply(applyPB);
 	bc().setCancel(closePB);
+	bc().setAutoApply(autoapplyCB);
 	bc().addReadOnly(familyCO);
 	bc().addReadOnly(seriesCO);
 	bc().addReadOnly(sizeCO);
