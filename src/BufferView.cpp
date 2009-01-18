@@ -906,7 +906,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		// handles the lfun, other start from scratch
 		Inset * inset = cur.nextInset();
 		if (!inset || !inset->getStatus(cur, cmd, flag))
-			flag = lyx::getStatus(cmd);
+			flag.setEnabled(false);
 		break;
 	}
 
