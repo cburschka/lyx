@@ -903,7 +903,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 
 	case LFUN_COPY_LABEL_AS_REF: {
 		// if there is an inset at cursor, see whether it
-		// handles the lfun, other start from scratch
+		// handles the lfun
 		Inset * inset = cur.nextInset();
 		if (!inset || !inset->getStatus(cur, cmd, flag))
 			flag.setEnabled(false);
