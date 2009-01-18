@@ -110,16 +110,16 @@ if os.path.isfile('config.py'):
     print "Getting options from config.py..."
     print open('config.py').read()
 
-opts = Options(['config.py'])
-opts.AddOptions(
+opts = Variables(['config.py'])
+opts.AddVariables(
     # frontend
-    EnumOption('frontend', 'Main GUI', 'qt4',
+    EnumVariable('frontend', 'Main GUI', 'qt4',
         allowed_values = ('qt4',) ),
     # debug or release build
-    EnumOption('mode', 'Building method', default_build_mode,
+    EnumVariable('mode', 'Building method', default_build_mode,
         allowed_values = ('debug', 'release') ),
     # boost libraries
-    EnumOption('boost',
+    EnumVariable('boost',
         'Use included, system boost library, or try sytem boost first.',
         'auto', allowed_values = (
             'auto',       # detect boost, if not found, use included
@@ -127,7 +127,7 @@ opts.AddOptions(
             'system',     # always use system boost, fail if can not find
             ) ),
     #
-    EnumOption('gettext',
+    EnumVariable('gettext',
         'Use included, system gettext library, or try sytem gettext first',
         'auto', allowed_values = (
             'auto',       # detect gettext, if not found, use included
@@ -135,46 +135,46 @@ opts.AddOptions(
             'system',     # always use system gettext, fail if can not find
             ) ),
     #
-    EnumOption('spell', 'Choose spell checker to use.', 'auto',
-        allowed_values = ('aspell', 'auto', 'no') ),
+    EnumVariable('spell', 'Choose spell checker to use.', 'auto',
+        allowed_values = ('aspell', 'pspell', 'ispell', 'auto', 'no') ),
     # packaging method
-    EnumOption('packaging', 'Packaging method to use.', default_packaging_method,
+    EnumVariable('packaging', 'Packaging method to use.', default_packaging_method,
         allowed_values = ('windows', 'posix', 'macosx')),
     #
-    BoolOption('fast_start', 'This option is obsolete.', False),
+    BoolVariable('fast_start', 'This option is obsolete.', False),
     # No precompiled header support (too troublesome to make it work for msvc)
-    # BoolOption('pch', 'Whether or not use pch', False),
+    # BoolVariable('pch', 'Whether or not use pch', False),
     # enable assertion, (config.h has ENABLE_ASSERTIOS
-    BoolOption('assertions', 'Use assertions', True),
+    BoolVariable('assertions', 'Use assertions', True),
     # config.h define _GLIBCXX_CONCEPT_CHECKS
     # Note: for earlier version of gcc (3.3) define _GLIBCPP_CONCEPT_CHECKS
-    BoolOption('concept_checks', 'Enable concept checks', True),
+    BoolVariable('concept_checks', 'Enable concept checks', True),
     #
-    BoolOption('nls', 'Whether or not use native language support', True),
+    BoolVariable('nls', 'Whether or not use native language support', True),
     #
-    BoolOption('profiling', 'Whether or not enable profiling', False),
+    BoolVariable('profiling', 'Whether or not enable profiling', False),
     # config.h define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC
-    BoolOption('stdlib_debug', 'Whether or not turn on stdlib debug', False),
+    BoolVariable('stdlib_debug', 'Whether or not turn on stdlib debug', False),
     # using x11?
-    BoolOption('X11', 'Use x11 windows system', default_with_x),
+    BoolVariable('X11', 'Use x11 windows system', default_with_x),
     # use MS VC++ to build lyx
-    BoolOption('use_vc', 'Use MS VC++ to build lyx (cl.exe will be probed)', None),
+    BoolVariable('use_vc', 'Use MS VC++ to build lyx (cl.exe will be probed)', None),
     #
-    PathOption('qt_dir', 'Path to qt directory', None),
+    PathVariable('qt_dir', 'Path to qt directory', None),
     #
-    PathOption('qt_inc_path', 'Path to qt include directory', None),
+    PathVariable('qt_inc_path', 'Path to qt include directory', None),
     #
-    PathOption('qt_lib_path', 'Path to qt library directory', None),
+    PathVariable('qt_lib_path', 'Path to qt library directory', None),
     # extra include and libpath
-    PathOption('extra_inc_path', 'Extra include path', None),
+    PathVariable('extra_inc_path', 'Extra include path', None),
     #
-    PathOption('extra_lib_path', 'Extra library path', None),
+    PathVariable('extra_lib_path', 'Extra library path', None),
     #
-    PathOption('extra_bin_path', 'A convenient way to add a path to $PATH', None),
+    PathVariable('extra_bin_path', 'A convenient way to add a path to $PATH', None),
     #
-    PathOption('extra_inc_path1', 'Extra include path', None),
+    PathVariable('extra_inc_path1', 'Extra include path', None),
     #
-    PathOption('extra_lib_path1', 'Extra library path', None),
+    PathVariable('extra_lib_path1', 'Extra library path', None),
     #
     ('rebuild', 'Obsolete option', None),
     # can be set to a non-existing directory
@@ -184,9 +184,9 @@ opts.AddOptions(
     # the deps package used to create minimal installer (qt and other libraries)
     ('deps_dir', 'path to the development depedency packages with zlib, iconv, zlib and qt libraries', None),
     # whether or not build bundle installer
-    BoolOption('bundle', 'Whether or not build bundle installer', False),
+    BoolVariable('bundle', 'Whether or not build bundle installer', False),
     # the bundle directory, containing bundled applications
-    PathOption('bundle_dir', 'path to the bundle dependency package with miktex setup.exe etc', None),
+    PathVariable('bundle_dir', 'path to the bundle dependency package with miktex setup.exe etc', None),
     # build directory, will use $mode if not set
     ('build_dir', 'Build directory', None),
     # version suffix
@@ -200,7 +200,7 @@ opts.AddOptions(
     #
     ('optimization', 'optimization CCFLAGS option.', None),
     #
-    PathOption('exec_prefix', 'install architecture-independent executable files in PREFIX', None),
+    PathVariable('exec_prefix', 'install architecture-independent executable files in PREFIX', None),
     # log file
     ('logfile', 'save commands (not outputs) to logfile', default_log_file),
     # provided for backward compatibility
@@ -220,7 +220,7 @@ opts.AddOptions(
 # allowed options
 all_options = [x.key for x in opts.options]
 
-# copied from SCons/Options/BoolOption.py
+# copied from SCons/Variables/BoolVariable.py
 # We need to use them before a boolean ARGUMENTS option is available
 # in env as bool.
 true_strings  = ('y', 'yes', 'true', 't', '1', 'on' , 'all' )

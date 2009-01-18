@@ -30,13 +30,13 @@ Prerequisites:
 --------------
 
 * Python:
-  Python >= 1.5.2 is required to run scons, but Python >= 2.3 is used by
+  Python >= 2.6.0 is required to run scons, but Python >= 2.3 is used by
   lyx itself so the newer version is needed. Python is widely
   available on non-windows systems. Windows users can download and install
   python from http://www.python.org.
 
 * SCons:
-  scons >= 0.96.92 is needed. You can either use a full system-wide scons
+  scons >= 1.1.0 is needed. You can either use a full system-wide scons
   distribution or a light-weight one (called scons-local) installed along
   with the lyx source tree. Both variants of scons are freely available
   from http://www.scons.org. Note that LyX source may ship with scons-base
