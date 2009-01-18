@@ -24282,11 +24282,30 @@ enu:Second-item
 .
  At the position of the cross-reference box the item number will appear
  in the output.
- Here is our cross-reference:
 \end_layout
 
 \begin_layout Standard
-Item
+Alternatively to 
+\family sans
+Insert\SpecialChar \menuseparator
+Cross-Reference
+\family default
+, you can right-click on a label and use in the appearing context menu 
+\family sans
+Copy as Reference
+\family default
+.
+ The cross-reference to this label is now in the clipboard and can be copied
+ to the actual cursor position via the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Paste
+\family default
+ (shortcut Ctrl+V).
+\end_layout
+
+\begin_layout Standard
+Here is our cross-reference: Item
 \begin_inset space ~
 \end_inset
 

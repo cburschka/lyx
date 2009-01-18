@@ -4733,10 +4733,10 @@ name "sec:段落の字下げと分け方"
 \bar no
 \noun off
 \color none
-行間や、ヘッダと本文の間の余白など、段落間の余白---実のところ、ほとんどすべてのことに関する余白---は、LyXに前もって組み込まれています。これまで述べてき
-たように、あれこれのあいだにどれだけ余白を空けるかといったことに、あなたが気を使う必要はまったくありません。それはLyXがやることです。実は、それらの組み込まれ
-た余白は、固定値ではなく範囲で与えられています。これによってLyXは、図がページの中で本文とうまく収まるようにしたり、節がページの最後から始まったりしないように
-するために、行間を伸ばしたり縮めたりすることができるのです
+行間や、ヘッダと本文の間の余白など、段落間の余白—実のところ、ほとんどすべてのことに関する余白—は、LyXに前もって組み込まれています。これまで述べてきたように
+、あれこれのあいだにどれだけ余白を空けるかといったことに、あなたが気を使う必要はまったくありません。それはLyXがやることです。実は、それらの組み込まれた余白は
+、固定値ではなく範囲で与えられています。これによってLyXは、図がページの中で本文とうまく収まるようにしたり、節がページの最後から始まったりしないようにするため
+に、行間を伸ばしたり縮めたりすることができるのです
 \begin_inset Foot
 status collapsed
 
@@ -19447,7 +19447,7 @@ status collapsed
 \family default
  
 \emph on
-This is text with emphasize on ---これは強調された文章です---。
+This is text with emphasize on —これは強調された文章です—。
 \family roman
 \series medium
 \shape up
@@ -20536,7 +20536,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-作成した文書の完成版---つまりすべての改頁が実際に行われ、脚注は正しく連番を振られ、その他諸々のことが完成しているもの---を画面で確認したい場合には、
+作成した文書の完成版—つまりすべての改頁が実際に行われ、脚注は正しく連番を振られ、その他諸々のことが完成しているもの—を画面で確認したい場合には、
 \family sans
 \series default
 \shape default
@@ -20927,119 +20927,7 @@ LyXには、
 \noun off
 \color none
 と呼ばれる、3つの長さのダッシュ（-）文字があります。
-\end_layout
-
-\begin_layout Enumerate
-ハイフン
-\begin_inset space \hfill{}
-\end_inset
-
--
-\begin_inset space \hfill{}
-\end_inset
-
- 「
-\family typewriter
--
 \family default
-」で作成
-\end_layout
-
-\begin_layout Enumerate
-エヌ・ダッシュ
-\begin_inset space \hfill{}
-\end_inset
-
---
-\begin_inset space \hfill{}
-\end_inset
-
-「
-\family typewriter
--
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
--
-\family default
-」で作成
-\end_layout
-
-\begin_layout Enumerate
-エム・ダッシュ
-\begin_inset space \hfill{}
-\end_inset
-
----
-\begin_inset space \hfill{}
-\end_inset
-
-「
-\family typewriter
--
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
--
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
--
-\family default
-」で作成
-\end_layout
-
-\begin_layout Enumerate
-マイナス記号
-\begin_inset space \hfill{}
-\end_inset
-
-
-\begin_inset Formula $-$
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-数式モードの「
-\family typewriter
 \series default
 \shape default
 \size default
@@ -21047,20 +20935,213 @@ status collapsed
 \bar default
 \noun default
 \color inherit
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ハイフン
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 -
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-」
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+-
+\family default
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+translate to Japanese
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+エヌ・ダッシュ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+–
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+inserted via 
+\family sans
+Insert\SpecialChar \menuseparator
+Special
+\begin_inset space ~
+\end_inset
+
+Character\SpecialChar \menuseparator
+Symbols
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+エム・ダッシュ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+—
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+inserted via 
+\family sans
+Insert\SpecialChar \menuseparator
+Special
+\begin_inset space ~
+\end_inset
+
+Character\SpecialChar \menuseparator
+Symbols
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+マイナス記号
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+-
+\family default
+
+\begin_inset Quotes eld
+\end_inset
+
+ in math mode
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 
+\lang english
+You can alternatively generate the en and em dash by inserting the
+\lang japanese
+ 「
+\family typewriter
+-
+\family default
+」 
+\lang english
+character multiple times in a row.
+
 \family roman
 \series medium
 \shape up
@@ -21069,8 +21150,38 @@ status collapsed
 \bar no
 \noun off
 \color none
-「-」文字を続けて複数入力することによって、これらを生成することができます。これらは、最終的な出力では、自動的に適切な長さのダッシュとして出力されますが、LyX
-の中ではそうなりません。
+\lang japanese
+ 「-」文字を続けて複数入力することによって、これらを生成することができます。これらは、最終的な出力では、自動的に適切な長さのダッシュとして出力されますが、Ly
+Xの中ではそうなりません。 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+「-
+\begin_inset space \thinspace{}
+\end_inset
+
+-」 
+\lang english
+gives a
+\lang japanese
+ エヌ・ダッシュ, 「-
+\begin_inset space \thinspace{}
+\end_inset
+
+-
+\begin_inset space \thinspace{}
+\end_inset
+
+-」 
+\lang english
+a
+\lang japanese
+ エム・ダッシュ.
 \end_layout
 
 \begin_layout Standard
@@ -21087,7 +21198,11 @@ status collapsed
 \end_layout
 
 \begin_layout Enumerate
+
+\lang english
 line- and page-breaks
+\lang japanese
+
 \begin_inset space \hfill{}
 \end_inset
 
@@ -21095,7 +21210,11 @@ line- and page-breaks
 \end_layout
 
 \begin_layout Enumerate
-From A--Z
+
+\lang english
+From A–Z
+\lang japanese
+
 \begin_inset space \hfill{}
 \end_inset
 
@@ -21103,7 +21222,11 @@ From A--Z
 \end_layout
 
 \begin_layout Enumerate
-Oh --- there's a dash.
+
+\lang english
+Oh — there's a dash.
+\lang japanese
+
 \begin_inset space \hfill{}
 \end_inset
 
@@ -23179,7 +23302,7 @@ name "sec:図"
 \end_layout
 
 \begin_layout Standard
-このダイアログには、ひじょうに多くの---しかしほとんど説明を要しない---パラメータがあります。
+このダイアログには、ひじょうに多くの—しかしほとんど説明を要しない—パラメータがあります。
 \family sans
 図
 \family default
@@ -28505,7 +28628,7 @@ Tab
 \bar no
 \noun off
 \color none
----本文書では「
+—本文書では「
 \family default
 \series default
 \shape default
@@ -28558,7 +28681,7 @@ status open
 
 \end_inset
 
-と印刷されます---は、数式中では何もしないように見えますが、実は入れ子構造から脱出するのに使われるのです。このため、
+と印刷されます—は、数式中では何もしないように見えますが、実は入れ子構造から脱出するのに使われるのです。このため、
 \family sans
 \series default
 \shape default
@@ -33068,6 +33191,28 @@ enu:第2項目
 
 \begin_layout Standard
 
+\lang english
+Alternatively to 
+\family sans
+Insert\SpecialChar \menuseparator
+Cross-Reference
+\family default
+, you can right-click on a label and use in the appearing context menu 
+\family sans
+Copy as Reference
+\family default
+.
+ The cross-reference to this label is now in the clipboard and can be copied
+ to the actual cursor position via the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Paste
+\family default
+ (shortcut Ctrl+V).
+\end_layout
+
+\begin_layout Standard
+
 \family roman
 \series medium
 \shape up
@@ -33083,7 +33228,27 @@ reference "enu:第2項目"
 
 \end_inset
 
-項目（英語例：Item
+項目（英語例：
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+Item
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\lang japanese
+
 \begin_inset space ~
 \end_inset
 
@@ -40619,7 +40784,7 @@ reference "cap:latin1文字セット"
 
 表のアクセント付き文字だけではなく、
 \family typewriter
-ISO8859--2
+ISO8859–2
 \family default
 から
 \family typewriter
@@ -40631,7 +40796,7 @@ ISO8859--2
 \begin_layout Itemize
 
 \family typewriter
-ISO8859--1
+ISO8859–1
 \family default
 より
 \end_layout
@@ -40725,7 +40890,7 @@ ISO8859--1
 \begin_layout Itemize
 
 \family typewriter
-ISO8859--2
+ISO8859–2
 \family default
 から
 \family typewriter

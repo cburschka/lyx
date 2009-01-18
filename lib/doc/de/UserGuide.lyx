@@ -40,9 +40,10 @@
   {LyX}}
 
 % redefine the \lyxarrow macro for PDF bookmarks
-\def\lyxarrow{\texorpdfstring{%
+\renewcommand{\lyxarrow}{%
+ \texorpdfstring{%
   \leavevmode\,$\triangleright$\,\allowbreak}
-  {>}}
+  {->}}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
 \use_default_options false
@@ -166,7 +167,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 17.
+letzte Änderung: 18.
  Januar 2009
 \end_layout
 
@@ -28904,7 +28905,6 @@ Um eine Marke zu definieren, benutzen Sie
 Einfügen\SpecialChar \menuseparator
 Marke
 \family default
-\SpecialChar \ldots{}
  oder 
 \begin_inset Graphics
 	filename ../../images/label-insert.png
@@ -28928,7 +28928,6 @@ Um auf eine Marke zu verweisen, wählen Sie
 Einfügen\SpecialChar \menuseparator
 Querverweis
 \family default
-\SpecialChar \ldots{}
  oder 
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.png
@@ -28969,6 +28968,27 @@ zur
 Marke
 \family default
  dorthin gehen, wo sie definiert wurde.
+\end_layout
+
+\begin_layout Standard
+Alternativ zu 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Querverweis
+\family default
+ können Sie mit der rechten Maustaste auf eine Marke klicken und im erscheinende
+n Kontextmenü 
+\family sans
+Als Querverweis kopieren
+\family default
+ verwenden.
+ Der Querverweis zu dieser Marke befindet sich dann im Zwischenspeicher
+ und kann anschließend mit dem Menü 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Einfügen
+\family default
+ (Tastenkürzel Strg+V) an die aktuelle Stelle des Cursors eingefügt werden.
 \end_layout
 
 \begin_layout Standard
@@ -35968,8 +35988,7 @@ Versions
 k
 \family sans
 ontrolle\SpecialChar \menuseparator
-Registrieren\SpecialChar \ldots{}
-
+Registrieren
 \begin_inset Index
 status collapsed
 
@@ -35991,8 +36010,7 @@ Handbuchergänzungen.
 \begin_layout Subsection
 
 \family sans
-Importieren\SpecialChar \ldots{}
-
+Importieren
 \begin_inset Index
 status collapsed
 
@@ -36014,8 +36032,7 @@ Handbuchergänzungen.
 \begin_layout Subsection
 
 \family sans
-Exportieren\SpecialChar \ldots{}
-
+Exportieren
 \begin_inset Index
 status collapsed
 
@@ -36779,12 +36796,6 @@ http://www.ams.org
 
 \begin_layout Subsection
 Sonderzeichen
-\family sans
-\SpecialChar \menuseparator
-
-\family default
- \SpecialChar \ldots{}
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -37396,8 +37407,7 @@ Werkzeuge
 \begin_layout Subsection
 
 \family sans
-Statistik\SpecialChar \ldots{}
-
+Statistik
 \end_layout
 
 \begin_layout Standard
