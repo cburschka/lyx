@@ -17,6 +17,7 @@
 class QWidget;
 class QPushButton;
 class QLineEdit;
+class QCheckBox;
 
 namespace lyx {
 namespace frontend {
@@ -61,6 +62,7 @@ public:
 	void apply();
 	void cancel();
 	void restore();
+	void autoApply();
 	//@}
 
 	/// Tell the BC that the dialog is being hidden
@@ -97,6 +99,7 @@ public:
 	void setApply(QPushButton * obj);
 	void setCancel(QPushButton * obj);
 	void setRestore(QPushButton * obj);
+	void setAutoApply(QCheckBox * obj);
 	//@}
 
 	/** Add a pointer to the list of widgets whose activation

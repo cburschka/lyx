@@ -23,7 +23,7 @@ namespace frontend {
     dialogs. Only the policy is implemented here.  Separate ButtonController
     classes are needed for each GUI implementation.
 
-		Policy                    | ReadOnly | Apply Button | Repeated Apply
+	Policy                    | ReadOnly | Apply Button | Repeated Apply
     ========================================================================
     OkCancel                  |     N    |      N        |      -
     OkCancelReadOnly          |     Y    |      N        |      -
@@ -31,6 +31,7 @@ namespace frontend {
     OkApplyCancelReadOnly     |     Y    |      Y        |      Y
     NoRepeatedApply           |     N    |      Y        |      N
     NoRepeatedApplyReadOnly   |     Y    |      Y        |      N
+    OkApplyCancelAutoReadOnly |     Y    |      Y        |      Y
     Preferences               |     N    |      Y        | No (Ok-Close)
     Ignorant                  |    N/A   |     N/A       |     N/A
     ========================================================================
@@ -72,7 +73,7 @@ public:
 			This is based on the value of the bool state of the Button::CANCEL.
 			true == Cancel, false == Close
 		 */
-    OkCancelPolicy,
+		OkCancelPolicy,
 
 
 		/** Ok and Cancel buttons for dialogs where read-only operation is blocked.
@@ -121,7 +122,7 @@ public:
 		OkApplyCancelReadOnlyPolicy,
 
 		/** Ok, Apply and Cancel buttons for dialogs where repeated
- *    Apply is allowed.
+			Apply is allowed.
 			Note: This scheme supports the relabelling of Cancel to Close
 			and vice versa.
 			This is based on the value of the bool state of the Button::CANCEL.
@@ -136,6 +137,14 @@ public:
 			true == Cancel, false == Close
 		 */
 		NoRepeatedApplyPolicy,
+
+		/** Ok, Apply and Cancel buttons and an AutoApply checkbox.
+			Note: This scheme supports the relabelling of Cancel to Close
+			and vice versa.
+			This is based on the value of the bool state of the Button::CANCEL.
+			true == Cancel, false == Close
+		 */
+		OkApplyCancelAutoReadOnlyPolicy,
 
 		/** Defines the policy used by the Preferences dialog.
 			Four buttons: Ok (Save), Apply, Cancel/Close, Restore.
@@ -176,6 +185,10 @@ public:
 		///
 		APPLIED,
 		///
+		AUTOAPPLY_INITIAL,
+		///
+		AUTOAPPLY_CHANGED,
+		///
 		RO_INITIAL,
 		///
 		RO_VALID,
@@ -184,25 +197,29 @@ public:
 		///
 		RO_APPLIED,
 		///
+		RO_AUTOAPPLY,
+		///
 		BOGUS = 55
 	};
 
 	/// The various button types.
 	enum Button {
 		///
-		CLOSE    = 0,  // Not a real button, but effectively !CANCEL
+		CLOSE     = 0,  // Not a real button, but effectively !CANCEL
 		///
-		OKAY     = 1,
+		OKAY      = 1,
 		///
-		APPLY    = 2,
+		APPLY     = 2,
 		///
-		CANCEL   = 4,
+		CANCEL    = 4,
 		///
-		RESTORE  = 8
+		RESTORE   = 8,
+		///
+		AUTOAPPLY = 16  // This is usually a checkbox
 	};
 	///
 	static const Button ALL_BUTTONS =
-		Button(OKAY | APPLY | CANCEL | RESTORE);
+		Button(OKAY | APPLY | CANCEL | RESTORE | AUTOAPPLY);
 
 	/** State machine inputs.
 	    All the policies so far have both CANCEL and HIDE always going to
@@ -225,6 +242,8 @@ public:
 		SMI_CANCEL,
 		/// a restore action has happened
 		SMI_RESTORE,
+		/// apply auto-apply
+		SMI_AUTOAPPLY,
 		/// the dialog has been hidden
 		SMI_HIDE,
 		/// the dialog contents are read-only

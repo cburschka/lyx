@@ -33,6 +33,10 @@ static char const * printState(ButtonPolicy::State const & state)
 			return "INVALID";
 		case ButtonPolicy::APPLIED:
 			return "APPLIED";
+		case ButtonPolicy::AUTOAPPLY_INITIAL:
+			return "AUTOAPPLY_INITIAL";
+		case ButtonPolicy::AUTOAPPLY_CHANGED:
+			return "AUTOAPPLY_CHANGED";
 		case ButtonPolicy::RO_INITIAL:
 			return "RO_INITIAL";
 		case ButtonPolicy::RO_VALID:
@@ -41,6 +45,8 @@ static char const * printState(ButtonPolicy::State const & state)
 			return "RO_INVALID";
 		case ButtonPolicy::RO_APPLIED:
 			return "RO_APPLIED";
+		case ButtonPolicy::RO_AUTOAPPLY:
+			return "RO_AUTOAPPLY";
 		case ButtonPolicy::BOGUS:
 			return "BOGUS";
 		default:
@@ -64,6 +70,8 @@ static char const * printInput(ButtonPolicy::SMInput const & input)
 			return "SMI_CANCEL";
 		case ButtonPolicy::SMI_RESTORE:
 			return "SMI_RESTORE";
+		case ButtonPolicy::SMI_AUTOAPPLY:
+			return "SMI_AUTOAPPLY";
 		case ButtonPolicy::SMI_HIDE:
 			return "SMI_HIDE";
 		case ButtonPolicy::SMI_READ_ONLY:
@@ -93,6 +101,8 @@ char const * functionName(ButtonPolicy::Policy policy)
 			return "OkApplyCancelPolicy";
 		case ButtonPolicy::OkApplyCancelReadOnlyPolicy:
 			return "OkApplyCancelReadOnlyPolicy";
+		case ButtonPolicy::OkApplyCancelAutoReadOnlyPolicy:
+			return "OkApplyCancelAutoReadOnlyPolicy";
 		case ButtonPolicy::NoRepeatedApplyPolicy:
 			return "NoRepeatedApplyPolicy";
 		case ButtonPolicy::NoRepeatedApplyReadOnlyPolicy:
@@ -138,6 +148,7 @@ public:
 	void initOkCancelReadOnly();
 	void initNoRepeatedApplyReadOnly();
 	void initOkApplyCancelReadOnly();
+	void initOkApplyCancelAutoReadOnly();
 	void initOkApplyCancel();
 	void initNoRepeatedApply();
 	void initPreferences();
@@ -179,6 +190,9 @@ ButtonPolicy::Private::Private(Policy policy)
 			break;
 		case OkApplyCancelReadOnlyPolicy:
 			initOkApplyCancelReadOnly();
+			break;
+		case OkApplyCancelAutoReadOnlyPolicy:
+			initOkApplyCancelAutoReadOnly();
 			break;
 		case NoRepeatedApplyPolicy:
 			initNoRepeatedApply();
@@ -538,6 +552,105 @@ void ButtonPolicy::Private::initOkApplyCancel()
 }
 
 
+void ButtonPolicy::Private::initOkApplyCancelAutoReadOnly()
+{
+	outputs_ = StateOutputs(RO_AUTOAPPLY + 1, ButtonPolicy::ALL_BUTTONS);
+	state_machine_ = StateMachine(RO_AUTOAPPLY + 1,
+			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS));
+
+	// Build the state output map
+	outputs_[INITIAL] = CLOSE | AUTOAPPLY;
+	outputs_[VALID] = RESTORE | OKAY | APPLY | CANCEL | AUTOAPPLY;
+	outputs_[INVALID] = RESTORE | CANCEL | AUTOAPPLY;
+	outputs_[APPLIED] = OKAY | CLOSE | AUTOAPPLY;
+	outputs_[AUTOAPPLY_INITIAL] = CLOSE | AUTOAPPLY | OKAY;
+	outputs_[AUTOAPPLY_CHANGED] = CLOSE | RESTORE | AUTOAPPLY | OKAY;
+	outputs_[RO_INITIAL] = CLOSE;
+	outputs_[RO_VALID] = RESTORE | CANCEL;
+	outputs_[RO_INVALID] = RESTORE | CANCEL;
+	outputs_[RO_APPLIED] = CLOSE;
+	outputs_[RO_AUTOAPPLY] = CLOSE;
+
+	// Build the state machine one state at a time
+	// NOTE:  Since CANCEL and HIDE always go to INITIAL they are
+	//        left out of the state machine and handled explicitly
+	//        in input()
+	//
+	// State::INITIAL
+	state_machine_[INITIAL][SMI_READ_WRITE] = INITIAL;
+	state_machine_[INITIAL][SMI_VALID] = VALID;
+	state_machine_[INITIAL][SMI_INVALID] = INVALID;
+	state_machine_[INITIAL][SMI_READ_ONLY] = RO_INITIAL;
+	state_machine_[INITIAL][SMI_AUTOAPPLY] = AUTOAPPLY_INITIAL;
+	// State::VALID
+	state_machine_[VALID][SMI_VALID] = VALID;
+	state_machine_[VALID][SMI_READ_WRITE] = VALID;
+	state_machine_[VALID][SMI_INVALID] = INVALID;
+	state_machine_[VALID][SMI_OKAY] = INITIAL;
+	state_machine_[VALID][SMI_RESTORE] = INITIAL;
+	state_machine_[VALID][SMI_APPLY] = APPLIED;
+	state_machine_[VALID][SMI_READ_ONLY] = RO_VALID;
+	state_machine_[VALID][SMI_AUTOAPPLY] = AUTOAPPLY_INITIAL;
+	// State::INVALID
+	state_machine_[INVALID][SMI_INVALID] = INVALID;
+	state_machine_[INVALID][SMI_READ_WRITE] = INVALID;
+	state_machine_[INVALID][SMI_VALID] = VALID;
+	state_machine_[INVALID][SMI_RESTORE] = INITIAL;
+	state_machine_[INVALID][SMI_READ_ONLY] = RO_INVALID;
+	state_machine_[INVALID][SMI_AUTOAPPLY] = AUTOAPPLY_CHANGED;
+	// State::APPLIED
+	state_machine_[APPLIED][SMI_APPLY] = APPLIED;
+	state_machine_[APPLIED][SMI_READ_WRITE] = APPLIED;
+	state_machine_[APPLIED][SMI_VALID] = VALID;
+	state_machine_[APPLIED][SMI_INVALID] = INVALID;
+	state_machine_[APPLIED][SMI_OKAY] = INITIAL;
+	state_machine_[APPLIED][SMI_READ_ONLY] = RO_APPLIED;
+	state_machine_[APPLIED][SMI_AUTOAPPLY] = AUTOAPPLY_INITIAL;
+	// State::AUTOAPPLY_INITIAL
+	state_machine_[AUTOAPPLY_INITIAL][SMI_AUTOAPPLY] = APPLIED;
+	state_machine_[AUTOAPPLY_INITIAL][SMI_READ_ONLY] = RO_AUTOAPPLY;
+	state_machine_[AUTOAPPLY_INITIAL][SMI_VALID] = AUTOAPPLY_CHANGED;
+	state_machine_[AUTOAPPLY_INITIAL][SMI_INVALID] = AUTOAPPLY_CHANGED;	
+	state_machine_[AUTOAPPLY_INITIAL][SMI_READ_WRITE] = AUTOAPPLY_INITIAL;	
+	// State::AUTOAPPLY_CHANGED
+	state_machine_[AUTOAPPLY_CHANGED][SMI_AUTOAPPLY] = APPLIED;
+	state_machine_[AUTOAPPLY_CHANGED][SMI_READ_ONLY] = RO_AUTOAPPLY;
+	state_machine_[AUTOAPPLY_CHANGED][SMI_RESTORE] = AUTOAPPLY_INITIAL;
+	state_machine_[AUTOAPPLY_CHANGED][SMI_VALID] = AUTOAPPLY_CHANGED;
+	state_machine_[AUTOAPPLY_CHANGED][SMI_INVALID] = AUTOAPPLY_CHANGED;
+	state_machine_[AUTOAPPLY_CHANGED][SMI_READ_WRITE] = AUTOAPPLY_CHANGED;
+	state_machine_[AUTOAPPLY_CHANGED][SMI_APPLY] = AUTOAPPLY_INITIAL;
+	// State::RO_INITIAL
+	state_machine_[RO_INITIAL][SMI_READ_ONLY] = RO_INITIAL;
+	state_machine_[RO_INITIAL][SMI_VALID] = RO_VALID;
+	state_machine_[RO_INITIAL][SMI_INVALID] = RO_INVALID;
+	state_machine_[RO_INITIAL][SMI_READ_WRITE] = INITIAL;
+	state_machine_[RO_INITIAL][SMI_AUTOAPPLY] = RO_AUTOAPPLY;
+	// State::RO_VALID
+	state_machine_[RO_VALID][SMI_VALID] = RO_VALID;
+	state_machine_[RO_VALID][SMI_READ_ONLY] = RO_VALID;
+	state_machine_[RO_VALID][SMI_INVALID] = RO_INVALID;
+	state_machine_[RO_VALID][SMI_READ_WRITE] = VALID;
+	state_machine_[RO_VALID][SMI_RESTORE] = RO_INITIAL;
+	state_machine_[RO_VALID][SMI_AUTOAPPLY] = RO_AUTOAPPLY;
+	// State::RO_INVALID
+	state_machine_[RO_INVALID][SMI_INVALID] = RO_INVALID;
+	state_machine_[RO_INVALID][SMI_READ_ONLY] = RO_INVALID;
+	state_machine_[RO_INVALID][SMI_VALID] = RO_VALID;
+	state_machine_[RO_INVALID][SMI_READ_WRITE] = INVALID;
+	state_machine_[RO_INVALID][SMI_RESTORE] = RO_INITIAL;
+	state_machine_[RO_INVALID][SMI_AUTOAPPLY] = RO_AUTOAPPLY;
+	// State::RO_APPLIED
+	state_machine_[RO_APPLIED][SMI_READ_ONLY] = RO_APPLIED;
+	state_machine_[RO_APPLIED][SMI_INVALID] = RO_INVALID;
+	state_machine_[RO_APPLIED][SMI_VALID] = RO_VALID;
+	state_machine_[RO_APPLIED][SMI_READ_WRITE] = APPLIED;
+	state_machine_[RO_APPLIED][SMI_AUTOAPPLY] = RO_AUTOAPPLY;
+	// State::RO_AUTOAPPLY
+	state_machine_[RO_AUTOAPPLY][SMI_READ_WRITE] = AUTOAPPLY_INITIAL;
+}
+
+
 void ButtonPolicy::Private::initNoRepeatedApply()
 {
 	outputs_ = StateOutputs(INVALID + 1, ButtonPolicy::ALL_BUTTONS);
@@ -616,9 +729,13 @@ void ButtonPolicy::input(SMInput input)
 			break;
 		default:
 			// CANCEL and HIDE always take us to INITIAL for all cases
-			if (SMI_CANCEL == input || SMI_HIDE == input)
-				d->state_ = INITIAL;
-			else
+			if (SMI_CANCEL == input || SMI_HIDE == input) {
+				if (d->state_ == AUTOAPPLY_INITIAL
+					  || d->state_ == AUTOAPPLY_CHANGED)
+					d->state_ = AUTOAPPLY_INITIAL;
+				else
+					d->state_ = INITIAL;
+			} else
 				d->nextState(input);
 			break;
 	}

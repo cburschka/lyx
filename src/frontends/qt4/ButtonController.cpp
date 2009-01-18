@@ -17,6 +17,7 @@
 #include "support/debug.h"
 #include "support/foreach.h"
 
+#include <QCheckBox>
 #include <QPushButton>
 #include <QLineEdit>
 #include <QLabel>
@@ -93,7 +94,7 @@ public:
 	typedef QList<CheckedLineEdit> CheckedWidgetList;
 
 	Private()
-		: okay_(0), apply_(0), cancel_(0), restore_(0),
+		: okay_(0), apply_(0), cancel_(0), restore_(0), auto_apply_(0),
 			policy_(ButtonPolicy::IgnorantPolicy)
 	{}
 
@@ -113,6 +114,7 @@ public:
 	QPushButton * apply_;
 	QPushButton * cancel_;
 	QPushButton * restore_;
+	QCheckBox * auto_apply_;
 
 	typedef QList<QWidget *> Widgets;
 	Widgets read_only_;
@@ -162,6 +164,12 @@ void ButtonController::input(ButtonPolicy::SMInput in)
 void ButtonController::apply()
 {
 	input(ButtonPolicy::SMI_APPLY);
+}
+
+
+void ButtonController::autoApply()
+{
+	input(ButtonPolicy::SMI_AUTOAPPLY);
 }
 
 
@@ -232,6 +240,11 @@ void ButtonController::refresh() const
 		else
 			d->cancel_->setText(qt_("Close"));
 	}
+	if (d->auto_apply_) {
+		bool const enabled = policy().buttonStatus(ButtonPolicy::AUTOAPPLY);
+		d->auto_apply_->setEnabled(enabled);
+	}
+
 }
 
 
@@ -262,6 +275,12 @@ void ButtonController::setOK(QPushButton * obj)
 void ButtonController::setApply(QPushButton * obj)
 {
 	d->apply_ = obj;
+}
+
+
+void ButtonController::setAutoApply(QCheckBox * obj)
+{
+	d->auto_apply_ = obj;
 }
 
 

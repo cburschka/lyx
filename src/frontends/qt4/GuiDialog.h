@@ -52,6 +52,8 @@ public Q_SLOTS:
 	void slotOK();
 	// Apply button clicked
 	void slotApply();
+	// AutoApply checkbox clicked
+	void slotAutoApply();
 	// Close button clicked or closed from WindowManager
 	void slotClose();
 	///

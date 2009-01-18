@@ -50,6 +50,13 @@ void GuiDialog::slotApply()
 }
 
 
+void GuiDialog::slotAutoApply()
+{
+	apply();
+	bc().autoApply();
+}
+
+
 void GuiDialog::slotOK()
 {
 	is_closing_ = true;
