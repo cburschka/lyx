@@ -5,5 +5,8 @@
 # Copyright (c) 2008, 2009 Kornel Benko, <Kornel.Benko@berlin.de>
 #
 
-set(_project "scripts")
-include(../PyCompile)
+if (UNIX)
+  set(_project "scripts")
+  include(../PyCompile)
+endif()
+

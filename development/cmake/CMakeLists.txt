@@ -335,10 +335,6 @@ configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 find_package(ICONV REQUIRED)
 add_definitions(-DHAVE_ICONV=1)
 
-#TODO: insource is not the best place
-configure_file(${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx_version.py.in 
-               ${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx_version.py)
-     
 include_directories(
 	${CMAKE_BINARY_DIR}
 	${TOP_SRC_DIR}/src
@@ -352,10 +348,8 @@ add_subdirectory(src)
 
 add_subdirectory(man)
 add_subdirectory(doc)
-if (UNIX)
-    add_subdirectory(lyx2lyx)
-    add_subdirectory(scripts)
-endif()
+add_subdirectory(lyx2lyx)
+add_subdirectory(scripts)
 
 include(../Install)
 
