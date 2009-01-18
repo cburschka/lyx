@@ -253,8 +253,10 @@ static int findPos2nd(QList<P> const & vec, B const & val)
 
 void GuiCharacter::updateContents()
 {
-	if (!autoapplyCB->isChecked())
+	if (!autoapplyCB->isChecked()) {
+		bc().setValid(true);
 		return;
+	}
 	if (bufferview()->cursor().selection()) {
 		//FIXME: it would be better to check if each font attribute is constant
 		// for the selection range.
