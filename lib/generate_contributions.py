@@ -258,8 +258,8 @@ $output=$output."
 <p>
      The following people hereby grant permission to license their
      contributions to LyX under the
-     [[http://www.opensource.org/licenses/artistic-license.php |
-     Artistic License]].
+     [[http://www.opensource.org/licenses/artistic-license-2.0.php |
+     Artistic License 2]].
 </p>
 
 <dl>";
@@ -1419,9 +1419,9 @@ contributers = [
      contributer(u"John P. Weiss",
                  "jpweiss () frontiernet ! net",
                  "Artistic",
-                 "Re: The LyX licence",
-                 "m=110913490414280",
-                 "23 February 2005",
+                 "Re: Small problem with BlanketPermission on the new site.",
+                 "m=123238170812776",
+                 "18 January 2009",
                  u"Bugreports and suggestions, slides class support, editor of the documentationproject, 6/96-9/97. Tutorial chapter 1"),
 
      contributer(u"Edmar Wienskoski",
