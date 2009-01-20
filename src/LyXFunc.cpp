@@ -692,7 +692,7 @@ bool LyXFunc::ensureBufferClean(BufferView * bv)
 				      _("&Cancel"));
 
 	if (ret == 0)
-		dispatch(FuncRequest(LFUN_BUFFER_WRITE));
+		lyx_view_->dispatch(FuncRequest(LFUN_BUFFER_WRITE));
 
 	return buf.isClean();
 }

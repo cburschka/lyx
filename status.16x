@@ -184,6 +184,9 @@ What's new
 - Fix reloading bug for RCS revision control introduced in 1.6.1, backport
   trunk fix for bug 5389 (bug 5697)
 
+- Fix RCS check-in when more windows are opened, wrong file could be saved
+  before commit.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
