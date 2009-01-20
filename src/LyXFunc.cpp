@@ -1189,7 +1189,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				InsetCommandParams p(code);
 				data = InsetCommand::params2string(name, p);
 				break;
-			} 
+			}
 			case INCLUDE_CODE: {
 				// data is the include type: one of "include",
 				// "input", "verbatiminput" or "verbatiminput*"
@@ -1199,62 +1199,62 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				InsetCommandParams p(INCLUDE_CODE, data);
 				data = InsetCommand::params2string("include", p);
 				break;
-			} 
+			}
 			case BOX_CODE: {
 				// \c data == "Boxed" || "Frameless" etc
 				InsetBoxParams p(data);
 				data = InsetBox::params2string(p);
 				break;
-			} 
+			}
 			case BRANCH_CODE: {
 				InsetBranchParams p;
 				data = InsetBranch::params2string(p);
 				break;
-			} 
+			}
 			case CITE_CODE: {
 				InsetCommandParams p(CITE_CODE);
 				data = InsetCommand::params2string(name, p);
 				break;
-			} 
+			}
 			case ERT_CODE: {
 				data = InsetERT::params2string(InsetCollapsable::Open);
 				break;
-			} 
+			}
 			case EXTERNAL_CODE: {
 				InsetExternalParams p;
 				data = InsetExternal::params2string(p, *buffer);
 				break;
-			} 
+			}
 			case FLOAT_CODE:  {
 				InsetFloatParams p;
 				data = InsetFloat::params2string(p);
 				break;
-			} 
+			}
 			case LISTINGS_CODE: {
 				InsetListingsParams p;
 				data = InsetListings::params2string(p);
 				break;
-			} 
+			}
 			case GRAPHICS_CODE: {
 				InsetGraphicsParams p;
 				data = InsetGraphics::params2string(p, *buffer);
 				break;
-			} 
+			}
 			case NOTE_CODE: {
 				InsetNoteParams p;
 				data = InsetNote::params2string(p);
 				break;
-			} 
+			}
 			case SPACE_CODE: {
 				InsetSpaceParams p;
 				data = InsetSpace::params2string(p);
 				break;
-			} 
+			}
 			case VSPACE_CODE: {
 				VSpace space;
 				data = InsetVSpace::params2string(space);
 				break;
-			} 
+			}
 			case WRAP_CODE: {
 				InsetWrapParams p;
 				data = InsetWrap::params2string(p);
