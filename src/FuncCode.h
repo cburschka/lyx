@@ -162,9 +162,9 @@ enum FuncCode
 	LFUN_MATH_SIZE,                 // Alejandro 150896
 	LFUN_MATH_MACRO,                // ale970510
 	// 110
-	LFUN_MATH_EXTERN,               // Andre' 20010424
-	LFUN_MATH_MUTATE,               // Andre' 20010523
-	LFUN_MATH_SPACE,                // Andre' 20010725
+	LFUN_MATH_EXTERN,               // André 20010424
+	LFUN_MATH_MUTATE,               // André 20010523
+	LFUN_MATH_SPACE,                // André 20010725
 	LFUN_WORD_DELETE_FORWARD,
 	LFUN_WORD_DELETE_BACKWARD,
 	// 115
