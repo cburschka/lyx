@@ -246,7 +246,7 @@ autor: Uwe Stöhr, traducción: Ignacio Garcia
 \begin_inset Newline newline
 \end_inset
 
-Versión 1.6svn
+Versión 1.6.x
 \end_layout
 
 \begin_layout Standard
@@ -260,7 +260,7 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Para exportar este documento a PDF, PS, o DVI deben estar instalados los
@@ -454,9 +454,9 @@ Ecuación ! en línea
 
 \end_inset
 
-, insertada en una línea de texto, teclea 
+ insertada en una línea de texto, teclea una de las combinaciones 
 \family sans
-Ctrl-m
+Ctrl+M, Alt+C M, Alt+M M
 \family default
  o pulsa el botón 
 \begin_inset Graphics
@@ -481,18 +481,20 @@ Ecuación ! presentada
 
 , que se verá más grande y en su propio párrafo, teclea
 \family sans
- Ctrl-M
+ 
 \family default
-.
+una de estas combinaciones: 
+\family sans
+Ctrl+Mayúsculas+M, Alt+M D.
 \end_layout
 
 \begin_layout Standard
 Para cambiar una ecuación presentada a ecuación en línea, pon el cursor
- dentro de la ecuación y teclea 
+ dentro de la ecuación y teclea
 \family sans
-Ctrl-M
+ Ctrl+M, Alt+C M, Alt+M M 
 \family default
- o usa el menú 
+o usa el menú 
 \family sans
 Editar\SpecialChar \menuseparator
 Ecuación\SpecialChar \menuseparator
@@ -630,11 +632,11 @@ X
 \family default
 , (atajo 
 \family sans
-Ctrl-l
+Ctrl+L
 \family default
 ).
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 En LyX hay tres 
@@ -759,11 +761,15 @@ reference "sub:Texto-en-multilínea"
 
  Este modo se invoca con el atajo 
 \family sans
-Alt-m
+Alt+M
 \begin_inset space ~
 \end_inset
 
-m
+M
+\family default
+ o
+\family sans
+ Ctrl+M
 \family default
  o insertando el comando 
 \series bold
@@ -809,11 +815,19 @@ nombre_del_comando[argumento opcional]{argumento requerido}
 
 \begin_layout Standard
 Un comando empieza siempre por una barra inversa, 
+\begin_inset Quotes fld
+\end_inset
+
+
 \series bold
 
 \backslash
 
 \series default
+
+\begin_inset Quotes frd
+\end_inset
+
 .
  Para omitir argumentos opcionales, quita también los corchetes asociados.
  En este documento, las llaves que encierran los argumentos requeridos se
@@ -859,7 +873,7 @@ siempre
 \begin_layout Standard
 Un espacio protegido se inserta con 
 \family sans
-Ctrl-espacio
+Ctrl+Espacio
 \family default
 .
 \begin_inset Newpage newpage
@@ -3065,7 +3079,9 @@ spce
 
 \end_inset
 
-Ctrl-Retorno
+
+\family sans
+Ctrl+Retorno
 \end_layout
 
 \end_inset
@@ -3108,7 +3124,7 @@ cases
 
  de la barra de ecuaciones puedes añadir líneas nuevas con el atajo 
 \family sans
-Ctrl-Retorno
+Ctrl+Retorno
 \family default
  o con el botón
 \family sans
@@ -4208,7 +4224,7 @@ rule
 \series default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Comandos ! R ! 
@@ -5070,7 +5086,7 @@ Filas y columnas
 .
  También se pueden añadir filas nuevas con 
 \family sans
-Ctrl-Retorno
+Ctrl+Retorno
 \family default
 .
 \end_layout
@@ -5121,11 +5137,11 @@ right
 
  (atajo 
 \family sans
-Alt-m
+Alt+M
 \begin_inset space ~
 \end_inset
 
-paréntesis
+Paréntesis
 \family default
 ), véase 
 \begin_inset CommandInset ref
@@ -7036,11 +7052,11 @@ right
 \series default
  se puede usar el atajo 
 \family sans
-Alt-m
+Alt+M
 \begin_inset space ~
 \end_inset
 
-delimitador
+Corchete
 \family default
 .
  Esto tiene la ventaja de que puedes ver inmediatamente en LyX el tamaño
@@ -7053,7 +7069,7 @@ El comando para el último ejemplo sería
 \series bold
 
 \backslash
-ln Alt-m
+ln Alt+M
 \series default
  
 \series bold
@@ -9283,7 +9299,7 @@ texorpdfstring{
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Para acentos en texto, véase 
@@ -9961,7 +9977,9 @@ A
 \end_layout
 
 \begin_layout Standard
-Para poner diéresis
+En ecuaciones se pueden insertar acentos como é directamente.
+ LyX los transformará al comando de acento correspondiente.
+ Para poner diéresis
 \begin_inset Index
 status collapsed
 
@@ -9971,12 +9989,12 @@ Dieresis@Diéresis
 
 \end_inset
 
- en una ecuación se insertan comillas antes de la vocal.
+ es mejor insertar comillas antes de la vocal.
  Estos dos caracteres son considerados por LaTeX como 
 \emph on
 un solo
 \emph default
- carácter si la parte de la ecuación con la diéresis se marca con idioma
+ carácter si la parte de la ecuación con la diéresis se marca en idioma
  alemán.
 \begin_inset Foot
 status collapsed
@@ -9988,7 +10006,7 @@ O algún otro idioma que use acentos, p.
 
 e.
  catalán.
- Sin embargo, en español no funciona por algún conflicto con el estilo 
+ Aunque esto no funciona en español por algún conflicto con el estilo 
 \series bold
 spanish
 \series default
@@ -9996,85 +10014,11 @@ spanish
 \series bold
 babel
 \series default
-.
- Dicho estilo suministra la orden 
-\series bold
-
-\backslash
-dotlessi
-\series default
- para generar una 
-\begin_inset Quotes fld
+, no es necesario: se puede escribir 
+\begin_inset Formula $ï$
 \end_inset
 
-i
-\begin_inset Quotes frd
-\end_inset
-
- sin punto en modo matemático, que se puede usar como alternativa al comando
- 
-\series bold
-
-\begin_inset Quotes eld
-\end_inset
-
-i
-\series default
-, p.e., el comando 
-\series bold
-
-\backslash
-ddot
-\series default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\series bold
-
-\backslash
-dotlessi
-\series default
- genera
-\series bold
- 
-\series default
-
-\begin_inset Formula $\ddot{\dotlessi}$
-\end_inset
-
-.
- Véase la documentación del estilo, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "spanish"
-
-\end_inset
-
-.
- También se puede usar 
-\series bold
-
-\backslash
-imath
-\series default
- en vez de 
-\series bold
-
-\backslash
-dotlessi
-\series default
-.
+ en una ecuación igual que se hace en texto normal, ï.
  (
 \emph on
 N.
@@ -10158,10 +10102,7 @@ raisebox
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes grd
-\end_inset
-
-i
+ï
 \end_layout
 
 \end_inset
@@ -10170,7 +10111,7 @@ i
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\ddot{\dotlessi}$
+\begin_inset Formula $ï$
 \end_inset
 
 
@@ -11070,7 +11011,7 @@ Espacio ! horizontal ! predefinido
 A veces es necesario insertar espacio horizontal en una ecuación.
  Esto se hace insertando un espacio protegido (atajo 
 \family sans
-Ctrl-Espacio
+Ctrl+Espacio
 \family default
 ).
  Aparece un 
@@ -11756,7 +11697,7 @@ delgado
 \family default
  (atajo 
 \family sans
-Ctrl-Mayúscula-Espacio
+Ctrl+Mayúscula+Espacio
 \family default
 ).
 \end_layout
@@ -11940,10 +11881,6 @@ hspace
 
 .
  Aparece un 
-\lang english
-long
-\lang spanish
- 
 \begin_inset Quotes fld
 \end_inset
 
@@ -11968,12 +11905,8 @@ spce
 \begin_inset Quotes frd
 \end_inset
 
-.
- La longitud 
-\lang english
-can be specified by left-clicking on the 
-\lang spanish
-
+ largo.
+ La longitud se puede ajustar haciendo clic izquierdo sobre el 
 \begin_inset Quotes fld
 \end_inset
 
@@ -12063,7 +11996,20 @@ Resultado
 \begin_layout Plain Layout
 A=B
 \backslash
-hspace{3cm
+hspace
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $\to$
 \end_inset
 
@@ -12098,7 +12044,20 @@ cm)
 \begin_layout Plain Layout
 A
 \backslash
-hspace{-1mm
+hspace
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula $\to$
 \end_inset
 
@@ -12227,7 +12186,11 @@ dotfill
 \backslash
 hrulefill
 \series default
- que llenan el espacio con un patrón, véase un ejemplo en 
+ que llenan el espacio con un patrón, véase un ejemplo en
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Puntos"
@@ -12555,7 +12518,7 @@ fbox
 \series default
  hay que generar una ecuación adicional con 
 \family sans
-Ctrl-m
+Ctrl+M
 \family default
  dentro del recuadro,
 \begin_inset Foot
@@ -12572,7 +12535,7 @@ target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
 
 , no es posible crear una nueva ecuación con 
 \family sans
-Ctrl-m
+Ctrl+M
 \family default
 .
 \end_layout
@@ -12708,7 +12671,7 @@ fbox
 \noindent
 \align center
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 La tabla se ha puesto en una minipágina para que aparezca la nota al pie.
@@ -12757,7 +12720,7 @@ target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
 
 , no es posible crear una nueva ecuación con 
 \family sans
-Ctrl-m
+Ctrl+M
 \family default
 .
  
@@ -12818,7 +12781,7 @@ spce
 
 
 \family sans
-Ctrl-m
+Ctrl+M
 \family default
  
 \backslash
@@ -12974,7 +12937,7 @@ spce
 
 
 \family sans
-Ctrl-m
+Ctrl+M
 \family default
  
 \backslash
@@ -13417,7 +13380,7 @@ raisebox{-2mm
 \backslash
 {
 \family sans
-Ctrl-m
+Ctrl+M
 \family default
  
 \backslash
@@ -13591,7 +13554,7 @@ color
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Para evitar que el paquete sea cargado dos veces se ha insertado una macro
@@ -14273,7 +14236,7 @@ Texto ! coloreado
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -15660,15 +15623,15 @@ d
 \emph default
  y usando el atajo de teclado 
 \family sans
-Alt-c
+Alt+C
 \begin_inset space ~
 \end_inset
 
-r
+R
 \family default
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 véase estilos de letras en 
@@ -16128,11 +16091,11 @@ Cambiar tipo de límites
 \family default
  (atajo 
 \family sans
-Alt-m
+Alt+M
 \begin_inset space ~
 \end_inset
 
-l
+L
 \family default
 ).
  Un ejemplo:
@@ -16286,7 +16249,7 @@ spce
  distintas.
  Cada línea nueva se crea con un salto de línea (
 \family sans
-Ctrl-Retorno
+Ctrl+Retorno
 \family default
 ).
  Si ahora se escribe en ella
@@ -16295,7 +16258,7 @@ Ctrl-Retorno
 
 
 \series bold
-0<k<1000 Ctrl-Retorno
+0<k<1000 Ctrl+Retorno
 \begin_inset Newline newline
 \end_inset
 
@@ -16485,7 +16448,7 @@ spce
 
 \end_inset
 
-0<k<1000 Ctrl-Retorno
+0<k<1000 Ctrl+Retorno
 \end_layout
 
 \begin_layout Standard
@@ -18038,7 +18001,9 @@ ABC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-c c
+
+\family sans
+Alt+C C
 \end_layout
 
 \end_inset
@@ -18089,7 +18054,9 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ctrl-b
+
+\family sans
+Ctrl+B
 \end_layout
 
 \end_inset
@@ -18140,7 +18107,9 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-c b o Ctrl-Alt-b
+
+\family sans
+Ctrl+Alt+B , Alt+C B
 \end_layout
 
 \end_inset
@@ -18191,7 +18160,9 @@ ABC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-c e
+
+\family sans
+Ctrl+E , Alt+C E
 \end_layout
 
 \end_inset
@@ -18388,7 +18359,9 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-c r
+
+\family sans
+Alt+C R
 \end_layout
 
 \end_inset
@@ -18439,7 +18412,9 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-c s
+
+\family sans
+Alt+C S
 \end_layout
 
 \end_inset
@@ -18490,7 +18465,9 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-c p
+
+\family sans
+Ctrl+Mayúsculas+P
 \end_layout
 
 \end_inset
@@ -18735,7 +18712,7 @@ unboldmath
 \begin_layout Subsection
 Ecuaciones coloreadas
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ecuación ! coloreada
@@ -18748,7 +18725,7 @@ Ecuación ! coloreada
 
 \begin_layout Standard
 Las ecuaciones se pueden colorear como texto normal: selecciona una ecuación
- o una parte de una ecuación y us el diálogo 
+ o una parte de una ecuación y usa el diálogo 
 \family sans
 Estilo del texto
 \family default
@@ -18779,7 +18756,7 @@ textcolor
 \series default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Comandos ! T ! 
@@ -18807,7 +18784,7 @@ e en rojo:
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -19094,7 +19071,7 @@ spce
 
 \end_inset
 
-A Alt-m m 
+A Alt+M M 
 \backslash
 Large
 \begin_inset ERT
@@ -19156,11 +19133,7 @@ A
 \length 1cm
 \end_inset
 
-Alt-m
-\series default
- 
-\series bold
-m 
+Alt+M M 
 \backslash
 tiny
 \begin_inset ERT
@@ -20718,7 +20691,7 @@ status collapsed
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -24393,6 +24366,16 @@ Funciones ! predefinidas
 \end_inset
 
 
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Funciones ! en español
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -24518,7 +24501,7 @@ sen(x)+B
 \begin_layout Standard
 Las funciones siguientes están predefinidas:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Se han añadido los comandos equivalentes suministrados por el estilo 
@@ -24797,8 +24780,6 @@ arccos
 
 \begin_layout Plain Layout
 
-\backslash
-arccos
 \end_layout
 
 \end_inset
@@ -25464,7 +25445,7 @@ sgn(x)+B
 A
 \backslash
 ,
-\begin_inset Formula $\underbrace{\textrm{sgn}}_{\textrm{Alt-m}\,\textrm{m}}$
+\begin_inset Formula $\underbrace{\textrm{sgn}}_{\mathsf{Alt+M\, M}}$
 \end_inset
 
 (x)+B
@@ -27494,12 +27475,12 @@ reference "sub:Cuadros-sin-marco"
 \end_layout
 
 \begin_layout Subsection
-Números minúsculos
+Números en estilo antiguo
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Numeros@Números ! minúsculos
+Numeros@Números ! en estilo antiguo
 \end_layout
 
 \end_inset
@@ -27508,7 +27489,8 @@ Numeros@Números ! minúsculos
 \end_layout
 
 \begin_layout Standard
-Los números minúsculos se componen con el comando 
+Los números en estilo antiguo o elzevirianos se componen con el comando
+ 
 \series bold
 
 \backslash
@@ -27798,7 +27780,7 @@ Centrado es el estándar predefinido
 \end_layout
 
 \begin_layout Description
-Sangrado para este estilo debe insertarse la opción 
+Sangrado para este estilo debe insertarse la opción de clase 
 \series bold
 fleqn
 \series default
@@ -27876,9 +27858,9 @@ Derecha es el estándar predefinido
 \end_layout
 
 \begin_layout Description
-Izquierda para este estilo debe insertarse la opción 
+Izquierda para este estilo debe insertarse la opción de clase 
 \series bold
-fleqn
+leqno
 \series default
  en el menú 
 \family sans
@@ -27951,7 +27933,7 @@ General
 En LyX se generan nuevas líneas en una ecuación con 
 \family sans
 \series bold
-Ctrl-Retorno
+Ctrl+Retorno
 \family default
 \series default
 .
@@ -28033,7 +28015,7 @@ Ecuación
 \begin_layout Standard
 En todos los entornos de ecuación multilínea la combinación 
 \family sans
-Ctrl-Retorno
+Ctrl+Retorno
 \family default
  genera una línea nueva.
  Para añadir o quitar líneas se pueden usar los botones 
@@ -28609,7 +28591,7 @@ medskip
 
 
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ten en cuenta lo siguiente si usas 
@@ -28706,7 +28688,7 @@ Delimitadores ! para varias líneas
 \begin_layout Standard
 Para poner delimitadores que cubran varias líneas hay un problema:
 \begin_inset Formula \begin{eqnarray*}
-A & = & \sin(x)\left[\prod_{R=1}^{\infty}\frac{1}{R}+\cdots\right.\\
+A & = & \sen(x)\left[\prod_{R=1}^{\infty}\frac{1}{R}+\cdots\right.\\
  &  & \left.\cdots+B-D\right]\end{eqnarray*}
 
 \end_inset
@@ -28876,7 +28858,7 @@ vphantom
 \begin_layout Standard
 El resultado es: 
 \begin_inset Formula \begin{eqnarray*}
-A & = & \sin(x)\left[\prod_{R=1}^{\infty}\frac{1}{R}+\cdots\right.\\
+A & = & \sen(x)\left[\prod_{R=1}^{\infty}\frac{1}{R}+\cdots\right.\\
  &  & \left.\vphantom{\prod_{R=1}^{\infty}}\cdots+B-D\right]\end{eqnarray*}
 
 \end_inset
@@ -28962,7 +28944,7 @@ Ecuación ! multilínea ! entorno align
 \begin_layout Standard
 Este entorno align se crea pulsando 
 \family sans
-Ctrl-Retorno
+Ctrl+Retorno
 \family default
  en una ecuación o con el menú 
 \family sans
@@ -29797,11 +29779,11 @@ numerada
 \family default
  (atajo 
 \family sans
-Ctrl-Alt
+Ctrl+Alt
 \begin_inset space ~
 \end_inset
 
-n
+N
 \family default
 ).
  Ecuaciones existentes se pueden numerar con el menú 
@@ -29816,11 +29798,11 @@ numeración
 \family default
  (atajo
 \family sans
- Alt-m
+ Alt+M
 \begin_inset space ~
 \end_inset
 
-n
+N
 \family default
 ).
  En LyX se muestra detrás de la ecuación el signo almohadilla entre paréntesis.
@@ -29835,7 +29817,6 @@ Si se activa la numeración en ecuaciones multilínea se numerarán todas las
 \family sans
 Editar\SpecialChar \menuseparator
 Ecuación\SpecialChar \menuseparator
-\SpecialChar \menuseparator
 Conmutar
 \begin_inset space ~
 \end_inset
@@ -29852,11 +29833,11 @@ línea
 \family default
  (atajo
 \family sans
- Alt-m
+ Alt+M
 \begin_inset space ~
 \end_inset
 
-N
+Mayúsculas+N
 \family default
 ).
 \end_layout
@@ -30310,7 +30291,7 @@ Sangrado
 \series default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 véase estilos de ecuación en 
@@ -30689,7 +30670,7 @@ remreset.sty
 \series default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -31529,7 +31510,7 @@ Comandos definidos por el usuario
 status collapsed
 
 \begin_layout Plain Layout
-Comandos personalizados
+Comandos de usuario
 \end_layout
 
 \end_inset
@@ -31539,7 +31520,7 @@ Comandos personalizados
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -31654,7 +31635,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -32671,7 +32652,7 @@ xleftarrow[#2]{#1}}
 como texto normal en LyX, seleccionándolo completamente y usando a continuación
  el atajo 
 \family sans
-Ctrl-m
+Ctrl+M
 \family default
 , el comando se transformará en una macro de ecuación.
  Al emplear este método debes tener cuidado en escribir correctamente el
@@ -33281,7 +33262,7 @@ CD
  continuación comandos.
  Con 
 \family sans
-Ctrl-Retorno
+Ctrl+Retorno
 \family default
  se inicia una nueva línea.
  En las líneas impares se insertan relaciones horizontales, en las pares
@@ -33301,13 +33282,21 @@ name "fn:sinónimos"
 \end_inset
 
 Los comandos con 
+\family sans
+'
 \series bold
 >
 \series default
+'
+\family default
  o 
+\family sans
+'
 \series bold
 <
 \series default
+'
+\family default
  pueden generar errores con el estilo 
 \series bold
 spanish
@@ -33318,13 +33307,21 @@ babel
 \series default
 .
  Para evitarlo se pueden sustituir por sus sinónimos 
+\family sans
+'
 \series bold
 )
 \series default
- o 
+'
+\family default
+ y 
+\family sans
+'
 \series bold
 (
 \series default
+'
+\family default
  respectivamente.
  Véase 
 \begin_inset CommandInset citation
@@ -33453,7 +33450,7 @@ spce
 
 \end_inset
 
-A@>j>>B@>>k>C@=F Ctrl-Retorno
+A@>j>>B@>>k>C@=F Ctrl+Retorno
 \begin_inset Newline newline
 \end_inset
 
@@ -33506,7 +33503,7 @@ status collapsed
 
 
 \series bold
-V@| Ctrl-Retorno
+V@| Ctrl+Retorno
 \begin_inset Newline newline
 \end_inset
 
@@ -33609,16 +33606,7 @@ Manuales
 \begin_inset space ~
 \end_inset
 
-específicos\SpecialChar \menuseparator
-Manual
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-XY-pic
+específicos
 \family default
 .
 \end_layout
@@ -33727,7 +33715,7 @@ Química ! símbolos
 status collapsed
 
 \begin_layout Plain Layout
-Ecuación química
+Química ! caracteres
 \end_layout
 
 \end_inset
@@ -33737,7 +33725,39 @@ Ecuación química
 status collapsed
 
 \begin_layout Plain Layout
-Química ! caracteres
+Ecuación ! química|see
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Química
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Química ! iones
 \end_layout
 
 \end_inset
@@ -33758,7 +33778,7 @@ status collapsed
 
 \end_inset
 
-Química ! caracteres
+Química
 \begin_inset ERT
 status collapsed
 
@@ -33770,6 +33790,16 @@ status collapsed
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Química ! reacción
 \end_layout
 
 \end_inset
@@ -33809,11 +33839,11 @@ Esta ecuación química puede componerse directamente en modo ecuación.
  Para evitar que los símbolos se impriman en cursiva, se selecciona todo
  y con el atajo 
 \family sans
-Alt-c
+Alt+C
 \begin_inset space ~
 \end_inset
 
-r
+R
 \family default
  se cambia en redonda.
 \begin_inset Foot
@@ -33971,11 +34001,7 @@ En LaTeX, de acuerdo con la convención inglesa, se usa la coma como separador
 Para evitarlo, se selecciona la coma y se cambia a texto matemático (atajo
  
 \family sans
-Alt-m
-\begin_inset space ~
-\end_inset
-
-m
+Ctrl+M
 \family default
 ).
 \end_layout
@@ -36236,7 +36262,7 @@ reference "sub:Funciones-predefinidas"
 
 \begin_layout Itemize
 Los índices que constan de varias letras se escriben en redonda: 
-\begin_inset Formula $E_{\mbox{cin}}$
+\begin_inset Formula $E_{\mathrm{cin}}$
 \end_inset
 
 
@@ -36998,7 +37024,7 @@ target "http://tug.org/TeXnik/"
 
 \end_inset
 
- sugerencias y consejos de LaTeX
+ con sugerencias y consejos de LaTeX
 \end_layout
 
 \begin_layout Bibliography
@@ -37151,8 +37177,8 @@ key "spanish"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentación"
-target "http://www.tex-tipografia.com/archive/spanish.pdf"
+name "Página web"
+target "http://www.tex-tipografia.com/spanish.html"
 
 \end_inset
 
