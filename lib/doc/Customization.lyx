@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -2227,6 +2227,21 @@ $$p
 \end_inset
 
  The path to the input file
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+$$r
+\end_layout
+
+\end_inset
+
+ The path to the original input file (this is different from $$p when chain
+ of converters is called).
 \end_layout
 
 \begin_layout Standard
