@@ -438,10 +438,7 @@ Abrir
 \family default
  y pulsando el botón 
 \family sans
-\bar under
-E
-\bar default
-jemplos
+Ejemplos
 \family default
 .
  Abre el documento sin procesar (
@@ -536,20 +533,9 @@ Puedes ahorrar tiempo dejando que el visor de DVI se siga ejecutando en
  segundo plano.
  De esta forma, puedes usar 
 \family sans
-\bar under
-V
-\bar default
-er\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-ctualizar\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+Ver\SpecialChar \menuseparator
+Actualizar\SpecialChar \menuseparator
+DVI
 \family default
  o el botón 
 \begin_inset Graphics
@@ -830,7 +816,7 @@ Una de las cosas más difíciles para los nuevos usuarios es acostumbrarse
  a la forma en que LyX maneja el espacio en blanco.
  Por mucho que pulses 
 \family sans
-Retorno de carro
+Retorno
 \family default
 , sólo conseguirás una única línea en blanco.
  Por mucho que pulses la 
@@ -871,7 +857,7 @@ lo que ves es lo que quieres decir
  ti para que el resultado final quede bien.
  Un 
 \family sans
-Retorno de carro
+Retorno
 \family default
  gramaticalmente separa párrafos, y de la misma forma un 
 \family sans
@@ -951,14 +937,14 @@ lo que ves es lo que quieres decir
 \end_layout
 
 \begin_layout Standard
-La caja de selección de 
+El recuadro de selección de 
 \family sans
 Entorno
 \family default
  se sitúa a la izquierda en la barra de herramientas, con un aspecto como
  este: 
 \begin_inset Graphics
-	filename ../clipart/ToolbarEnvBox.png
+	filename clipart/es_ToolbarEnvBox.png
 	scale 75
 	clip
 
@@ -970,7 +956,7 @@ Entorno
 \family sans
 Normal
 \family default
-, que es el entorno por defecto para texto.
+, que es el entorno por omisión para texto.
  Ahora vas a usar varios entornos en el nuevo documento para que puedas
  ver cómo funcionan.
  
@@ -1030,7 +1016,7 @@ Sección
  y escribe el encabezado (título ) en un tipo de letra mayor.
  Ahora pulsa 
 \family sans
-Retorno de carro.
+Retorno.
 
 \family default
  Observa que el entorno cambia de 
@@ -1051,9 +1037,9 @@ Normal
 
 .
  Se asume que los títulos de sección, como muchos entornos, terminan cuando
- introduces un 
+ pulsas la tecla 
 \family sans
-Retorno de carro.
+Retorno.
 
 \family default
  Escribe la introducción del documento:
@@ -1066,13 +1052,17 @@ Esto es una introducción a mi primer documento LyX.
 \begin_layout Standard
 Pulsa 
 \family sans
-Retorno de carro
+Retorno
 \family default
  otra vez, y elige de nuevo 
 \family sans
 Sección
 \family default
- en el menú entorno.
+ en el menú de 
+\family sans
+Entorno
+\family default
+.
  LyX escribe un 
 \begin_inset Quotes fld
 \end_inset
@@ -1101,13 +1091,13 @@ mi primer documento LyX
 
 ), pulsa 
 \family sans
-Retorno de carro
+Retorno
 \family default
 , y selecciona 
 \family sans
 Sección
 \family default
- en el menú 
+ en el menú desplegable de 
 \family sans
 Entorno
 \family default
@@ -1143,7 +1133,7 @@ Más cosas
 \begin_layout Standard
 Pulsa 
 \family sans
-Retorno de carro
+Retorno
 \family default
  para volver al entorno 
 \family sans
@@ -1366,7 +1356,7 @@ El entorno
 \family sans
 Lista
 \family default
- es ligeramente diferente al entorno 
+ (que no existe en LaTeX) es ligeramente diferente al entorno 
 \family sans
 Descripción
 \family default
@@ -1390,7 +1380,7 @@ LyX es mejor que otros procesadores de texto porque:
 \begin_layout Standard
 y pulsa 
 \family sans
-Retorno de carro
+Retorno
 \family default
 .
  Ahora elige 
@@ -1420,9 +1410,9 @@ Las matemáticas son WYSIWYG
 
 \begin_layout Standard
 Los entornos de listas, al contrario que los encabezados, no terminan cuando
- introduces un 
+ pulsas la tecla 
 \family sans
-Retorno de carro
+Retorno
 \family default
 .
  En vez de eso, LyX asume que vas a introducir el siguiente elemento de
@@ -1442,7 +1432,7 @@ protegido
 \family default
 , pulsando 
 \family sans
-C-Retorno de carro
+Ctrl+Retorno
 \family default
 .
  Para salir de la lista tienes que volver a seleccionar el entorno 
@@ -1451,11 +1441,11 @@ Normal
 \family default
  (o usar la combinación de teclas 
 \family sans
-M-p
+Alt+P
 \begin_inset space ~
 \end_inset
 
-s
+S
 \family default
 ).
 \end_layout
@@ -1502,7 +1492,7 @@ a, para ver cómo son.
  es la primera palabra del elemento, seguido de una definición, que es el
  resto del párrafo (hasta que pulses 
 \family sans
-Retorno de carro
+Retorno
 \family default
 ).
  El término se escribe en negrita (
@@ -1600,13 +1590,13 @@ máquina de escribir
 \family sans
 Verso
 \family default
-, usando 
+, usando la tecla 
 \family sans
-Retornos de carro
+Retorno
 \family default
  para separar estrofas, y 
 \family sans
-C-Retorno de carro
+Ctrl+Retorno
 \family default
  para separar líneas dentro de una estrofa.
  Véase la 
@@ -1711,7 +1701,7 @@ Article
 status collapsed
 
 \begin_layout Plain Layout
-Normalmente el artículo es la clase de texto por defecto.
+Normalmente el artículo es la clase de texto por omisión.
 \end_layout
 
 \end_inset
@@ -2295,15 +2285,11 @@ Si quieres saber más acerca de este documento, ve a mirar
 \begin_inset Newline newline
 \end_inset
 
-la sección, que se puede encontrar en la página.
+la sección , que se puede encontrar en la página .
 \end_layout
 
 \begin_layout Standard
-Ahora 
-\lang english
-set
-\lang spanish
- el cursor tras la palabra 
+Ahora —con el cursor tras la palabra 
 \begin_inset Quotes fld
 \end_inset
 
@@ -2311,7 +2297,7 @@ sección
 \begin_inset Quotes frd
 \end_inset
 
- y elige 
+— elige 
 \family sans
 Insertar\SpecialChar \menuseparator
 Referencia cruzada
@@ -2336,7 +2322,7 @@ sec:Acerca-de-este-documento
 \end_inset
 
 .
- Selecciónala (estará seleccionada por defecto) y pulsa 
+ Selecciónala (estará seleccionada por omisión) y pulsa 
 \family sans
 Aplicar
 \family default
@@ -2379,25 +2365,28 @@ Sección
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Alternatively to that method, you can right-click on a label and use in
- the appearing context menu 
+Como alternativa a 
 \family sans
-Copy as Reference
+Insertar\SpecialChar \menuseparator
+Referencia cruzada
+\family default
+ puedes hacer clic derecho sobre una etiqueta y, en el menú contextual que
+ aparece, marcar 
+\family sans
+Copiar como referencia
 \family default
 .
- The cross-reference to this label is now in the clipboard and can be copied
- to the actual cursor position via the
-\lang spanish
- menú 
+ La referencia cruzada a esta etiqueta está ahora en el portapapeles y puede
+ pegarse en la posición actual del cursor con el menú 
 \family sans
 Editar\SpecialChar \menuseparator
 Pegar
 \family default
- 
-\lang english
-(shortcut Ctrl+V).
+ (atajo 
+\family sans
+Ctrl+V
+\family default
+).
 \end_layout
 
 \begin_layout Standard
@@ -2530,11 +2519,7 @@ Referencia
 \begin_inset space ~
 \end_inset
 
-cru
-\bar under
-z
-\bar default
-ada
+cruzada
 \family default
  abierta.
 \end_layout
@@ -2551,10 +2536,7 @@ Guía del usuario
 \emph default
  al portapapeles, y usa 
 \family sans
-\bar under
-P
-\bar default
-egar
+Pegar
 \family default
  para insertar este texto en tu documento.
 \begin_inset Foot
@@ -2608,10 +2590,7 @@ Las notas a pie de página se pueden añadir usando el botón
 
  de la barra de herramientas o bien accediendo en el menú a 
 \family sans
-\bar under
-I
-\bar default
-nsertar\SpecialChar \menuseparator
+Insertar\SpecialChar \menuseparator
 Nota
 \begin_inset space ~
 \end_inset
@@ -2620,11 +2599,7 @@ al
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-p
-\bar default
-ie
+pie
 \family default
 \SpecialChar \@.
  Pincha al final de la palabra 
@@ -2727,13 +2702,13 @@ Puede ser más fácil seleccionarla con el teclado, ya que puedes abrir sin
 
 , 
 \family sans
-Cortarlo
+Cortar
 \family default
- y 
+lo y 
 \family sans
-Pegarlo
+Pegar
 \family default
-.
+lo.
  Además, puedes convertir texto normal en una nota, basta que lo selecciones
  y pulses el botón 
 \begin_inset Graphics
@@ -3038,7 +3013,15 @@ Intro
  y elige en el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Lista/IG\SpecialChar \menuseparator
+Lista
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+Índice\SpecialChar \menuseparator
 Índice
 \begin_inset space ~
 \end_inset
@@ -3315,10 +3298,7 @@ Retroceso
  Selecciona texto tanto con los cursores como con el ratón.
  
 \family sans
-\bar under
-E
-\bar default
-ditar\SpecialChar \menuseparator
+Editar\SpecialChar \menuseparator
 Deshacer
 \family default
  funciona de la misma forma, al igual que cortar y pegar.
@@ -3825,17 +3805,11 @@ iguales
 \begin_layout Standard
 Una vez que has elegido tus delimitadores, pulsa 
 \family sans
-\bar under
-I
-\bar default
-nsertar
+Insertar
 \family default
  para que aparezcan en la expresión (o pulsa 
 \family sans
-\bar under
-C
-\bar default
-errar
+Cerrar
 \family default
  si quieres cerrar la ventana).
  Si eres un poco vago, puedes escribir los paréntesis normales desde el
@@ -4251,10 +4225,7 @@ matemáticas
  que elijas cuántas filas y columnas quieres que tenga tu matriz.
  Selecciona 2 filas y 3 columnas y pulsa 
 \family sans
-\bar under
-A
-\bar default
-ceptar.
+Aceptar.
 
 \family default
  LyX imprime seis puntos de inserción formando una matriz 
@@ -4404,7 +4375,7 @@ Este modo tiene algunas diferencias con respecto al modo normal:
 \end_layout
 
 \begin_layout Itemize
-El tipo de letra por defecto es de mayor tamaño para unos pocos símbolos,
+El tipo de letra por omisión es de mayor tamaño para unos pocos símbolos,
  como 
 \begin_inset Formula $\sum$
 \end_inset
@@ -4464,7 +4435,7 @@ ejemplo_sin_lyx.lyx
 Ejercicio
 \series default
 : Utilizando las herramientas que has aprendido en esta sección, deberías
- de ser capaz de escribir una ecuación como ésta:
+ de ser capaz de escribir una ecuación como ésta
 \begin_inset Foot
 status collapsed
 
@@ -4484,7 +4455,7 @@ Casos
 
 \end_inset
 
- 
+: 
 \begin_inset Formula \[
 f(x)=\left\{ \begin{array}{cc}
 \log_{8}x & x>0\\
@@ -4664,7 +4635,7 @@ Abrir
 \family default
  tecleando 
 \family sans
-M-A
+Alt+A
 \family default
  seguido de 
 \family sans
@@ -4672,7 +4643,7 @@ A
 \family default
 , o mediante la combinación de teclas que figura en el menú, 
 \family sans
-C-O
+Ctrl+O
 \family default
  en este caso.
  Las asociaciones de teclas también son configurables.
@@ -5012,8 +4983,8 @@ Configuración
 documentclass
 \family default
 .
- Cambia aquí la clase del documento, el tamaño de letra por defecto y el
- tamaño del papel.
+ Cambia aquí la clase del documento, el tamaño de letra predeterminado y
+ el tamaño del papel.
  Pon cualquier opción adicional en la zona de 
 \family sans
 Opciones.
@@ -5058,7 +5029,15 @@ LyX tiene soporte para BibTeX, que te permite construir bases de datos de
  Selecciona en el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Lista/IG\SpecialChar \menuseparator
+Lista
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+Índice\SpecialChar \menuseparator
 Bibliografía
 \begin_inset space ~
 \end_inset
@@ -5102,11 +5081,7 @@ Estilo
 Después de hacer esto, puedes hacer referencia a cualquier entrada de las
  bibliografías que hayas incluido mediante 
 \family sans
-Inser
-\noun on
-tar\SpecialChar \menuseparator
-
-\noun default
+Insertar\SpecialChar \menuseparator
 Cita
 \family default
  (véase la sección
