@@ -187,6 +187,8 @@ What's new
 - Fix RCS check-in when more windows are opened, wrong file could be saved
   before commit.
 
+- Fix handling of $$p variable in converters configuration. Introduce $$r
+  variable for the original input file.
 
 * DOCUMENTATION AND LOCALIZATION
 

@@ -48,6 +48,7 @@ string const token_from("$$i");
 string const token_base("$$b");
 string const token_to("$$o");
 string const token_path("$$p");
+string const token_orig_path("$$r");
 
 
 
@@ -386,6 +387,8 @@ bool Converters::convert(Buffer const * buffer,
 			command = subst(command, token_from, quoteName(infile2));
 			command = subst(command, token_base, quoteName(from_base));
 			command = subst(command, token_to, quoteName(outfile2));
+			command = subst(command, token_path, quoteName(infile.onlyPath().absFilename()));
+			command = subst(command, token_orig_path, quoteName(orig_from.onlyPath().absFilename()));
 			command = libScriptSearch(command);
 
 			if (!conv.parselog.empty())
