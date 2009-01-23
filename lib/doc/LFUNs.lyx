@@ -49,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 14.01.2009.
+LFUNs documentation automatically generated 23.01.2009.
 \end_layout
 
 \begin_layout Standard
@@ -2025,6 +2025,19 @@ Syntax primary-selection-paste [<ARG>]
 Params <ARG>: "paragraph" will cause pasting as one paragraph, i.e.
  "Join lines".
   
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SELECTION_PASTE 
+\end_layout
+
+\begin_layout Description
+Action Pastes the text in permanent selection.
+  
+\end_layout
+
+\begin_layout Description
+Syntax selection-paste 
 \end_layout
 
 \begin_layout Subsection*
@@ -6615,6 +6628,24 @@ Params <BRANCH>: The branch to deactivate
 
 \begin_layout Description
 Origin rgh, 27 May 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_COPY_LABEL_AS_REF 
+\end_layout
+
+\begin_layout Description
+Action Copies the label at the cursor as a cross-reference to be paster
+ elsewhere.
+  
+\end_layout
+
+\begin_layout Description
+Syntax copy-label-as-reference 
+\end_layout
+
+\begin_layout Description
+Origin sts, 16 Nov 2008 
 \end_layout
 
 \end_body
