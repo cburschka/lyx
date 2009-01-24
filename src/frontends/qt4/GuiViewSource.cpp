@@ -125,6 +125,8 @@ void ViewSourceWidget::updateView()
 		setEnabled(false);
 		return;
 	}
+	
+	setEnabled(true);
 
 	QString content;
 	if (getContent(bv_, viewFullSourceCB->isChecked(), content))
@@ -176,12 +178,10 @@ void GuiViewSource::updateView()
 
 void GuiViewSource::enableView(bool enable)
 {
-	if (!enable) {
+	widget_->setBufferView(bufferview());
+	if (!enable)
 		// In the opposite case, updateView() will be called anyway.
-		widget_->setBufferView(bufferview());
 		widget_->updateView();
-	}
-	widget_->setEnabled(enable);
 }
 
 
@@ -228,6 +228,7 @@ void GuiViewSource::restoreSession()
 	QSettings settings;
 	widget_->autoUpdateCB->setChecked(
 		settings.value(sessionKey() + "/autoupdate", true).toBool());
+	widget_->updateView();
 }
 
 
