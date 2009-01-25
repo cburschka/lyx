@@ -729,7 +729,6 @@ src_frontends_qt4_header_files = Split('''
     GuiLog.h
     GuiMathMatrix.h
     GuiNomencl.h
-    GuiNote.h
     GuiPainter.h
     GuiParagraph.h
     GuiPrefs.h
@@ -820,7 +819,6 @@ src_frontends_qt4_files = Split('''
     GuiLog.cpp
     GuiMathMatrix.cpp
     GuiNomencl.cpp
-    GuiNote.cpp
     GuiPainter.cpp
     GuiParagraph.cpp
     GuiPrefs.cpp
@@ -906,7 +904,6 @@ src_frontends_qt4_ui_files = Split('''
     MathsUi.ui
     ModulesUi.ui
     NomenclUi.ui
-    NoteUi.ui
     NumberingUi.ui
     PageLayoutUi.ui
     ParagraphUi.ui

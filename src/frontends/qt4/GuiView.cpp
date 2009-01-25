@@ -2299,7 +2299,7 @@ char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
 "citation", "document", "errorlist", "ert", "external", "file",
 "findreplace", "float", "graphics", "include", "index", "info", "nomenclature", "label", "log",
-"mathdelimiter", "mathmatrix", "mathspace", "note", "paragraph", "prefs", "print", 
+"mathdelimiter", "mathmatrix", "mathspace", "paragraph", "prefs", "print", 
 "ref", "sendto", "space", "spellchecker", "symbols", "tabular", "tabularcreate",
 
 #ifdef HAVE_LIBAIKSAURUS
@@ -2488,7 +2488,6 @@ Dialog * createGuiLog(GuiView & lv);
 Dialog * createGuiMathHSpace(GuiView & lv);
 Dialog * createGuiMathMatrix(GuiView & lv);
 Dialog * createGuiNomenclature(GuiView & lv);
-Dialog * createGuiNote(GuiView & lv);
 Dialog * createGuiParagraph(GuiView & lv);
 Dialog * createGuiPreferences(GuiView & lv);
 Dialog * createGuiPrint(GuiView & lv);
@@ -2567,8 +2566,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiMathHSpace(*this);
 	if (name == "mathmatrix")
 		return createGuiMathMatrix(*this);
-	if (name == "note")
-		return createGuiNote(*this);
 	if (name == "paragraph")
 		return createGuiParagraph(*this);
 	if (name == "prefs")
