@@ -90,6 +90,9 @@ What's new
 
 - Fix conversion of documents that have index insets following an index
   list inset to LyX 1.6's format (bug 5713).
+  Affected files that have already been mis-converted can be repaired by
+  manually setting back the file format to 288 in a text editor before 
+  re-opening the document with LyX 1.6.x.
 
 - Fix the reversion of floating wrap floats to LyX 1.5.x (bug 5618).
 
