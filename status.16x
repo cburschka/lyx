@@ -88,6 +88,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix conversion of documents that have index insets following an index
+  list inset to LyX 1.6's format (bug 5713).
+
 - Fix the reversion of floating wrap floats to LyX 1.5.x (bug 5618).
 
 - Make the PDF output of change tracking markup more robust by using the
