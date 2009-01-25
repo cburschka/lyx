@@ -124,6 +124,8 @@ void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 		getPreviewImage(mi.base.bv->buffer());
 
 	if (pimage) {
+		// If prepared, load the picture before dim calculation. See bug #5627.
+		pimage->image();
 		dim = pimage->dim();
 	} else {
 		dim.asc = 50;
