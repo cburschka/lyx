@@ -27,6 +27,7 @@ uic MarginsUi.ui -o MarginsUi.h
 uic MathMatrixUi.ui -o MathMatrixUi.h
 uic MathsUi.ui -o MathsUi.h
 uic ModulesUi.ui -o ModulesUi.h
+uic NoteUi.ui -o NoteUi.h
 uic NumberingUi.ui -o NumberingUi.h
 uic PageLayoutUi.ui -o PageLayoutUi.h
 uic ParagraphUi.ui -o ParagraphUi.h

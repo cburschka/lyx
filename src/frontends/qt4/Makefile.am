@@ -97,6 +97,7 @@ SOURCEFILES = \
 	GuiLog.cpp \
 	GuiMathMatrix.cpp \
 	GuiNomencl.cpp \
+	GuiNote.cpp \
 	GuiPainter.cpp \
 	GuiParagraph.cpp \
 	GuiPrefs.cpp \
@@ -190,6 +191,7 @@ MOCHEADER = \
 	GuiLog.h \
 	GuiMathMatrix.h \
 	GuiNomencl.h \
+	GuiNote.h \
 	GuiParagraph.h \
 	GuiPrefs.h \
 	GuiPrint.h \
