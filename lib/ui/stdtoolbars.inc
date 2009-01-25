@@ -126,13 +126,13 @@ ToolbarSet
 		Item "Set all lines" "tabular-feature set-all-lines"
 		Item "Unset all lines" "tabular-feature unset-all-lines"
 		Separator
-		Item "Align left" "tabular-feature align-left"
-		Item "Align center" "tabular-feature align-center"
-		Item "Align right" "tabular-feature align-right"
+		Item "Align left" "command-alternatives tabular-feature m-align-left;tabular-feature align-left"
+		Item "Align center" "command-alternatives tabular-feature m-align-center;tabular-feature align-center"
+		Item "Align right" "command-alternatives tabular-feature m-align-right;tabular-feature align-right"
 		Separator
-		Item "Align top" "tabular-feature valign-top"
-		Item "Align middle" "tabular-feature valign-middle"
-		Item "Align bottom" "tabular-feature valign-bottom"
+		Item "Align top" "command-alternatives tabular-feature m-valign-top;tabular-feature valign-top"
+		Item "Align middle" "command-alternatives tabular-feature m-valign-middle;tabular-feature valign-middle"
+		Item "Align bottom" "command-alternatives tabular-feature m-valign-bottom;tabular-feature valign-bottom"
 		Separator
 		Item "Rotate cell" "tabular-feature toggle-rotate-cell"
 		Item "Rotate table" "tabular-feature toggle-rotate-tabular"

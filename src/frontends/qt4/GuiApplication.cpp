@@ -312,6 +312,14 @@ QString iconName(FuncRequest const & f, bool unknown)
 		path = "commands/";
 		name1 = toqstr(f.argument());
 		break;
+	case LFUN_COMMAND_ALTERNATIVES: {
+		// use the first of the alternative commands
+		docstring firstcom;
+		docstring dummy = split(f.argument(), firstcom, ';');
+		name1 = toqstr(firstcom);
+		name1.replace(' ', '_');
+		break;
+	}
 	default:
 		name2 = toqstr(lyxaction.getActionName(f.action));
 		name1 = name2;
