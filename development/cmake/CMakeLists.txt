@@ -23,13 +23,32 @@ set(EXECUTABLE_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/bin)
 # Supress regeneration
 set(CMAKE_SUPPRESS_REGENERATION TRUE)
 
-set(PACKAGE lyx)
-set(PACKAGE_VERSION 2.0svn)
-set(LYX_DATE "2008/2009")
-#TODO
 set(VERSION_INFO "CMake Build")
-set(LYX_DIR_VER "LYX_DIR_20x")
-set(LYX_USERDIR_VER "LYX_USERDIR_20x")
+
+# Try to get some informations from configure.ac
+
+include(LyXPaths)		#called here to define the needed TOP_SRC_DIR-variable
+file(STRINGS "${TOP_SRC_DIR}/configure.ac" _config_lines)
+
+macro(setstripped _varname _value)
+  string(STRIP ${_value} _v)
+  set(${_varname} ${_v})
+endmacro(setstripped)
+
+foreach(_c_l ${_config_lines} )
+  if(_c_l MATCHES "^AC_INIT\\(\([^,]+\),\([^,]+\),\([^,]+\)\(.*\)")
+    setstripped(PACKAGE ${CMAKE_MATCH_1})
+    setstripped(PACKAGE_VERSION ${CMAKE_MATCH_2})
+    if(PACKAGE_VERSION MATCHES "^\([0-9]+\)\\.\([0-9]+\).*$")
+      set(LYX_DIR_VER "LYX_DIR_${CMAKE_MATCH_1}${CMAKE_MATCH_2}x")
+      set(LYX_USERDIR_VER "LYX_USERDIR_${CMAKE_MATCH_1}${CMAKE_MATCH_2}x")
+      set(LYX_INSTALL_SUFFIX "${CMAKE_MATCH_1}.${CMAKE_MATCH_2}")
+    endif()
+  endif()
+  if(_c_l MATCHES "^AC_SUBST\\( *LYX_DATE *, *\\[\\\"(.*)\\\"\\].*")
+    set(LYX_DATE "${CMAKE_MATCH_1}")
+  endif()
+endforeach(_c_l)
 
 set(PROGRAM_SUFFIX "\"\"")
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
@@ -38,11 +57,11 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     # don't use the default "/usr/local"
     # but respect the user-choice on the command-line
     SET(CMAKE_INSTALL_PREFIX
-      "/usr/local/share/lyx2.0" CACHE PATH "LyX install prefix" FORCE)
+      "/usr/local/share/lyx${LYX_INSTALL_SUFFIX}" CACHE PATH "LyX install prefix" FORCE)
   endif()
   if(WIN32)
     SET(CMAKE_INSTALL_PREFIX
-      ${CMAKE_INSTALL_PREFIX}/2.0 CACHE PATH "LyX install prefix" FORCE)
+      ${CMAKE_INSTALL_PREFIX}/${LYX_INSTALL_SUFFIX} CACHE PATH "LyX install prefix" FORCE)
   endif()
 endif(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 
@@ -69,7 +88,6 @@ endif()
 set(LYX_CPP_FILES *.cpp)
 set(LYX_HPP_FILES *.h)
 
-include(LyXPaths)
 include(LyXMacros)
 include(ProjectSourceGroup)
 
@@ -196,10 +214,16 @@ if(WIN32)
 endif()
 
 message("")
-message("----- PROGRAM_SUFFIX              : ${PROGRAM_SUFFIX}")
-message("----- LYX_ABS_TOP_SRCDIR          : ${LYX_ABS_TOP_SRCDIR}")
-message("----- LYX_ABS_INSTALLED_DATADIR   : ${LYX_ABS_INSTALLED_DATADIR}")
-message("----- LYX_ABS_INSTALLED_LOCALEDIR : ${LYX_ABS_INSTALLED_LOCALEDIR}")
+foreach(_v PACKAGE PACKAGE_VERSION
+    PROGRAM_SUFFIX LYX_DATE LYX_DIR_VER LYX_USERDIR_VER
+    LYX_ABS_TOP_SRCDIR
+    LYX_ABS_INSTALLED_DATADIR LYX_ABS_INSTALLED_LOCALEDIR LYX_INSTALL_SUFFIX)
+  if(NOT DEFINED ${_v})
+    message(FATAL_ERROR "${_v} not defined")
+  endif()
+  string(SUBSTRING "${_v}                            " 0 28 _v1)
+  message("----- ${_v1}: ${${_v}}")
+endforeach(_v)
 message("")
 
 
