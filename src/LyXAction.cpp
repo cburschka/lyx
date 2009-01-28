@@ -408,6 +408,7 @@ void LyXAction::init()
  * \li Params: <TYPE>: shortcut|lyxrc|package|textclass|menu|buffer \n
                <ARG>: argument for a given type. Look into InsetInfo.h for detailed
 	              description.
+ * \li Sample: command-sequence info-insert buffer path; info-insert buffer name
  * \li Origin: bpeng, 7 Oct 2007
  * \endvar
  */
