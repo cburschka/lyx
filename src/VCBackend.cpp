@@ -423,14 +423,14 @@ SVN::SVN(FileName const & m, FileName const & f)
 
 FileName const SVN::findFile(FileName const & file)
 {
-	// First we look for the CVS/Entries in the same dir
+	// First we look for the .svn/entries in the same dir
 	// where we have file.
 	FileName const entries(onlyPath(file.absFilename()) + "/.svn/entries");
 	string const tmpf = onlyFilename(file.absFilename());
 	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under svn in `" << entries
 			     << "' for `" << tmpf << '\'');
 	if (entries.isReadableFile()) {
-		// Ok we are at least in a CVS dir. Parse the CVS/Entries
+		// Ok we are at least in a SVN dir. Parse the .svn/entries
 		// and see if we can find this file. We do a fast and
 		// dirty parse here.
 		ifstream ifs(entries.toFilesystemEncoding().c_str());
