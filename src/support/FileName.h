@@ -80,7 +80,7 @@ public:
 	std::time_t lastModified() const;
 	/// generates a checksum of a file
 	virtual unsigned long checksum() const;
-	/// return true when file is readable but not writabel
+	/// return true when file is readable but not writable
 	bool isReadOnly() const;
 	/// return true when it names a directory
 	bool isDirectory() const;
