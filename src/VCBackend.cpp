@@ -45,9 +45,13 @@ int VCS::doVCCommandCall(string const & cmd, FileName const & path){
 
 int VCS::doVCCommand(string const & cmd, FileName const & path)
 {
-	owner_->setBusy(true);
+	if (owner_)
+		owner_->setBusy(true);
+
 	int const ret = doVCCommandCall(cmd, path);
-	owner_->setBusy(false);
+
+	if (owner_)
+		owner_->setBusy(false);
 	if (ret)
 		frontend::Alert::error(_("Revision control error."),
 			bformat(_("Some problem occured while running the command:\n"
