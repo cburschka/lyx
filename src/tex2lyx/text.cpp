@@ -345,8 +345,6 @@ void translate_box_len(string const & length, string & value, string & unit, str
 string find_file(string const & name, string const & path,
 		 char const * const * extensions)
 {
-	// FIXME UNICODE encoding of name and path may be wrong (makeAbsPath
-	// expects utf8)
 	for (char const * const * what = extensions; *what; ++what) {
 		string const trial = addExtension(name, *what);
 		if (makeAbsPath(trial, path).exists())
@@ -1055,8 +1053,6 @@ void fix_relative_filename(string & name)
 	if (fname.isAbsolute())
 		return;
 
-	// FIXME UNICODE encoding of name may be wrong (makeAbsPath expects
-	// utf8)
 	name = to_utf8(makeRelPath(from_utf8(makeAbsPath(name, getMasterFilePath()).absFilename()),
 				   from_utf8(getParentFilePath())));
 }
@@ -1607,8 +1603,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const path = getMasterFilePath();
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
-			// FIXME UNICODE encoding of name and path may be
-			// wrong (makeAbsPath expects utf8)
 			if (!makeAbsPath(name, path).exists()) {
 				// The file extension is probably missing.
 				// Now try to find it out.
@@ -1639,8 +1633,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					name = pdftex_name;
 			}
 
-			// FIXME UNICODE encoding of name and path may be
-			// wrong (makeAbsPath expects utf8)
 			if (makeAbsPath(name, path).exists())
 				fix_relative_filename(name);
 			else
@@ -2308,8 +2300,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const path = getMasterFilePath();
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
-			// FIXME UNICODE encoding of filename and path may be
-			// wrong (makeAbsPath expects utf8)
 			if ((t.cs() == "include" || t.cs() == "input") &&
 			    !makeAbsPath(filename, path).exists()) {
 				// The file extension is probably missing.
@@ -2320,8 +2310,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				if (!tex_name.empty())
 					filename = tex_name;
 			}
-			// FIXME UNICODE encoding of filename and path may be
-			// wrong (makeAbsPath expects utf8)
 			if (makeAbsPath(filename, path).exists()) {
 				string const abstexname =
 					makeAbsPath(filename, path).absFilename();
