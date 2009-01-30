@@ -119,8 +119,10 @@ public:
 	///
 	~Parser();
 
-	/// change the encoding of the input stream
+	/// change the latex encoding of the input stream
 	void setEncoding(std::string const & encoding);
+	/// get the current latex encoding of the input stream
+	std::string getEncoding() const { return encoding_latex_; }
 
 	///
 	int lineno() const { return lineno_; }
@@ -217,6 +219,8 @@ private:
 	idocstringstream * iss_;
 	///
 	idocstream & is_;
+	/// latex name of the current encoding
+	std::string encoding_latex_;
 };
 
 

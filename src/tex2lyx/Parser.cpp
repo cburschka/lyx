@@ -132,14 +132,15 @@ string Token::asInput() const
 
 
 Parser::Parser(idocstream & is)
-	: lineno_(0), pos_(0), iss_(0), is_(is)
+	: lineno_(0), pos_(0), iss_(0), is_(is), encoding_latex_("utf8")
 {
 }
 
 
 Parser::Parser(string const & s)
 	: lineno_(0), pos_(0), 
-	  iss_(new idocstringstream(from_utf8(s))), is_(*iss_)
+	  iss_(new idocstringstream(from_utf8(s))), is_(*iss_), 
+	  encoding_latex_("utf8")
 {
 }
 
@@ -153,8 +154,9 @@ Parser::~Parser()
 void Parser::setEncoding(std::string const & e)
 {
 	Encoding const * enc = encodings.fromLaTeXName(e);
-	cerr << "setting encoding to " << enc->iconvName();
+	//cerr << "setting encoding to " << enc->iconvName()<<std::endl;
 	is_ << lyx::setEncoding(enc->iconvName());
+	encoding_latex_ = e;
 }
 
 

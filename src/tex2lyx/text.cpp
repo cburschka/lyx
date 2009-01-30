@@ -2319,7 +2319,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				string const lyxname =
 					changeExtension(filename, ".lyx");
 				if (t.cs() != "verbatiminput" &&
-				    tex2lyx(abstexname, FileName(abslyxname))) {
+				    tex2lyx(abstexname, FileName(abslyxname),
+					    p.getEncoding())) {
 					os << name << '{' << lyxname << "}\n";
 				} else {
 					os << name << '{' << filename << "}\n";

@@ -236,6 +236,7 @@ void read_syntaxfile(FileName const & file_name)
 
 
 string documentclass;
+string default_encoding;
 string syntaxfile;
 bool overwrite_files = false;
 
@@ -253,6 +254,7 @@ int parse_help(string const &, string const &)
 		"\t-userdir dir       try to set user directory to dir\n"
 		"\t-sysdir dir        try to set system directory to dir\n"
 		"\t-c textclass       declare the textclass\n"
+		"\t-e encoding        set the default encoding (latex name)\n"
 		"\t-n                 translate a noweb (aka literate programming) file.\n"
 		"\t-s syntaxfile      read additional syntax file" << endl;
 	exit(0);
@@ -266,6 +268,17 @@ int parse_class(string const & arg, string const &)
 		exit(1);
 	}
 	documentclass = arg;
+	return 1;
+}
+
+
+int parse_encoding(string const & arg, string const &)
+{
+	if (arg.empty()) {
+		cerr << "Missing encoding string after -e switch" << endl;
+		exit(1);
+	}
+	default_encoding = arg;
 	return 1;
 }
 
@@ -328,6 +341,7 @@ void easyParse(int & argc, char * argv[])
 	map<string, cmd_helper> cmdmap;
 
 	cmdmap["-c"] = parse_class;
+	cmdmap["-e"] = parse_encoding;
 	cmdmap["-f"] = parse_force;
 	cmdmap["-s"] = parse_syntaxfile;
 	cmdmap["-help"] = parse_help;
@@ -389,9 +403,11 @@ namespace {
  *  You must ensure that \p parentFilePath is properly set before calling
  *  this function!
  */
-void tex2lyx(idocstream & is, ostream & os)
+void tex2lyx(idocstream & is, ostream & os, string const & encoding)
 {
 	Parser p(is);
+	if (!encoding.empty())
+		p.setEncoding(encoding);
 	//p.dump();
 
 	stringstream ss;
@@ -420,7 +436,7 @@ void tex2lyx(idocstream & is, ostream & os)
 
 
 /// convert TeX from \p infilename to LyX and write it to \p os
-bool tex2lyx(FileName const & infilename, ostream & os)
+bool tex2lyx(FileName const & infilename, ostream & os, string const & encoding)
 {
 	ifdocstream is;
 	// forbid buffering on this stream
@@ -433,7 +449,7 @@ bool tex2lyx(FileName const & infilename, ostream & os)
 	}
 	string const oldParentFilePath = parentFilePath;
 	parentFilePath = onlyPath(infilename.absFilename());
-	tex2lyx(is, os);
+	tex2lyx(is, os, encoding);
 	parentFilePath = oldParentFilePath;
 	return true;
 }
@@ -441,7 +457,8 @@ bool tex2lyx(FileName const & infilename, ostream & os)
 } // anonymous namespace
 
 
-bool tex2lyx(string const & infilename, FileName const & outfilename)
+bool tex2lyx(string const & infilename, FileName const & outfilename, 
+	     string const & encoding)
 {
 	if (outfilename.isReadableFile()) {
 		if (overwrite_files) {
@@ -465,7 +482,7 @@ bool tex2lyx(string const & infilename, FileName const & outfilename)
 	cerr << "Input file: " << infilename << "\n";
 	cerr << "Output file: " << outfilename << "\n";
 #endif
-	return tex2lyx(FileName(infilename), os);
+	return tex2lyx(FileName(infilename), os, encoding);
 }
 
 } // namespace lyx
@@ -542,12 +559,12 @@ int main(int argc, char * argv[])
 	masterFilePath = onlyPath(infilename);
 	parentFilePath = masterFilePath;
 	if (outfilename == "-") {
-		if (tex2lyx(FileName(infilename), cout))
+		if (tex2lyx(FileName(infilename), cout, default_encoding))
 			return EXIT_SUCCESS;
 		else
 			return EXIT_FAILURE;
 	} else {
-		if (tex2lyx(infilename, FileName(outfilename)))
+		if (tex2lyx(infilename, FileName(outfilename), default_encoding))
 			return EXIT_SUCCESS;
 		else
 			return EXIT_FAILURE;
