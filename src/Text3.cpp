@@ -1445,6 +1445,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_FLEX_INSERT:
 	case LFUN_BOX_INSERT:
 	case LFUN_BRANCH_INSERT:
+	case LFUN_PHANTOM_INSERT:
 	case LFUN_ERT_INSERT:
 	case LFUN_LISTING_INSERT:
 	case LFUN_MARGINALNOTE_INSERT:
@@ -2004,6 +2005,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			code = LABEL_CODE;
 		else if (cmd.argument() == "note")
 			code = NOTE_CODE;
+		else if (cmd.argument() == "phantom")
+			code = PHANTOM_CODE;
 		else if (cmd.argument() == "ref")
 			code = REF_CODE;
 		else if (cmd.argument() == "space")
@@ -2081,6 +2084,9 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		code = BRANCH_CODE;
 		if (cur.buffer()->masterBuffer()->params().branchlist().empty())
 			enable = false;
+		break;
+	case LFUN_PHANTOM_INSERT:
+		code = PHANTOM_CODE;
 		break;
 	case LFUN_LABEL_INSERT:
 		code = LABEL_CODE;

@@ -3943,6 +3943,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_OPTIONAL_INSERT:
 	case LFUN_BOX_INSERT:
 	case LFUN_BRANCH_INSERT:
+	case LFUN_PHANTOM_INSERT:
 	case LFUN_WRAP_INSERT:
 	case LFUN_ERT_INSERT: {
 		if (cur.selIsMultiCell()) {

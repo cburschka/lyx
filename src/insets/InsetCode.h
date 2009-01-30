@@ -112,6 +112,8 @@ enum InsetCode {
 	INFO_CODE, // 45
 	///
 	COLLAPSABLE_CODE,
+	///
+	PHANTOM_CODE,
 };
 
 } // namespace lyx

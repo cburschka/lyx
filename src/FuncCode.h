@@ -417,6 +417,7 @@ enum FuncCode
 	LFUN_COPY_LABEL_AS_REF,		 // sts, 20081116
 	LFUN_VC_COMMAND,
 	LFUN_MATH_FONT_STYLE,
+	LFUN_PHANTOM_INSERT,             // uwestoehr, 20090130
 
 	LFUN_LASTACTION                  // end of the table
 };

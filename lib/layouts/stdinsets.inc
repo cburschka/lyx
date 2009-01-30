@@ -157,6 +157,27 @@ InsetLayout ERT
 	ForceLTR              true
 End
 
+InsetLayout Phantom:Phantom
+	LatexType		command
+	LatexName		phantom
+	Decoration		minimalistic
+	Font
+	  Color			phantomtext
+	EndFont
+	MultiPar		false
+End
+
+
+InsetLayout Phantom:HPhantom
+	CopyStyle		Phantom:Phantom
+	LatexName		hphantom
+End
+
+InsetLayout Phantom:VPhantom
+	CopyStyle		Phantom:Phantom
+	LatexName		vphantom
+End
+
 InsetLayout Listings
 	LabelString           Listings
 	LatexType             none

@@ -70,6 +70,7 @@ static TranslatorMap const build_translator()
 		InsetName("ending", ENDING_CODE),
 		InsetName("label", LABEL_CODE),
 		InsetName("note", NOTE_CODE),
+		InsetName("phantom", PHANTOM_CODE),
 		InsetName("accent", ACCENT_CODE),
 		InsetName("math", MATH_CODE),
 		InsetName("index", INDEX_CODE),

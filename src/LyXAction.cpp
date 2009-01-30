@@ -574,6 +574,16 @@ void LyXAction::init()
  */
 		{ LFUN_NOTES_MUTATE, "notes-mutate", Argument, Edit },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_PHANTOM_INSERT
+ * \li Action: Inserts phantom on the current cursor postion,
+               move selection inside the inset.
+ * \li Syntax: phantom-insert [<TYPE>]
+ * \li Params: <TYPE>: <Phantom|HPhantom|VPhantom> default: Phantom
+ * \li Origin: uwestoehr, 30 Jan 2009
+ * \endvar
+ */
+		{ LFUN_PHANTOM_INSERT, "phantom-insert", Noop, Edit },
+/*!
  * \var lyx::FuncCode lyx::LFUN_NEWLINE_INSERT
  * \li Action: Inserts a line break or new line.
  * \li Syntax: newline-insert [<ARG>]
@@ -582,7 +592,6 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_NEWLINE_INSERT, "newline-insert", Noop, Edit },
-
 /*!
  * \var lyx::FuncCode lyx::LFUN_ESCAPE
  * \li Action: Clears the selection. If no text is selected call #LFUN_FINISHED_FORWARD.

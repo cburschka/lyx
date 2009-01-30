@@ -44,6 +44,7 @@
 #include "insets/InsetNote.h"
 #include "insets/InsetBox.h"
 #include "insets/InsetBranch.h"
+#include "insets/InsetPhantom.h"
 #include "insets/InsetOptArg.h"
 #include "insets/InsetNewpage.h"
 #include "insets/InsetRef.h"
@@ -124,6 +125,13 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			if (arg.empty())
 				arg = from_ascii("none");
 			return new InsetBranch(buf, InsetBranchParams(arg));
+		}
+
+		case LFUN_PHANTOM_INSERT: {
+			string arg = cmd.getArg(0);
+			if (arg.empty())
+				arg = "Phantom";
+			return new InsetPhantom(buf, arg);
 		}
 
 		case LFUN_ERT_INSERT:
@@ -523,6 +531,8 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			inset.reset(new InsetFlex(buf, s));
 		} else if (tmptok == "Branch") {
 			inset.reset(new InsetBranch(buf, InsetBranchParams()));
+		} else if (tmptok == "Phantom") {
+			inset.reset(new InsetPhantom(buf, tmptok));
 		} else if (tmptok == "ERT") {
 			inset.reset(new InsetERT(buf));
 		} else if (tmptok == "listings") {

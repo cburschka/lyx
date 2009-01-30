@@ -683,6 +683,7 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_NOTE_INSERT:
 	case LFUN_NOTE_NEXT:
 	case LFUN_OPTIONAL_INSERT:
+	case LFUN_PHANTOM_INSERT:
 	case LFUN_REFERENCE_NEXT:
 	case LFUN_SERVER_GOTO_FILE_ROW:
 	case LFUN_SERVER_NOTIFY:

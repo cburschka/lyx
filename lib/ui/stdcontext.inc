@@ -164,6 +164,17 @@ Menuset
 		Item "Dissolve Inset|D" "inset-dissolve"
 	End
 
+#
+# InsetPhantom context menu
+#
+
+	Menu "context-phantom"
+		Item "Phantom" "next-inset-modify phantom Phantom Phantom"
+		Item "Horiz. Phantom" "next-inset-modify phantom Phantom HPhantom"
+		Item "Vert. Phantom" "next-inset-modify phantom Phantom VPhantom"
+		Separator
+		Item "Dissolve Inset|D" "inset-dissolve"
+	End
 
 #
 # InsetSpace context menu

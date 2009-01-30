@@ -119,6 +119,7 @@ ColorSet::ColorSet()
 	{ Color_commentbg, N_("comment background"), "commentbg", "linen", "commentbg" },
 	{ Color_greyedoutlabel, N_("greyedout inset label"), "greyedout", "#ff0080", "greyedout" },
 	{ Color_greyedoutbg, N_("greyedout inset background"), "greyedoutbg", "linen", "greyedoutbg" },
+	{ Color_phantomtext, N_("phantom inset text"), "phantomtext", grey80, "phantomtext" },
 	{ Color_shadedbg, N_("shaded box"), "shaded", "#ff0000", "shaded" },
 	{ Color_listingsbg, N_("listings background"), "listingsbg", "white", "listingsbg" },
 	{ Color_branchlabel, N_("branch label"), "branchlabel", "#c88000", "branchlabel" },

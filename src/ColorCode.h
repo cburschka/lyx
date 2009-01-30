@@ -80,6 +80,8 @@ enum ColorCode
 	Color_indexlabel,
 	/// Label color for margin notes
 	Color_marginlabel,
+	/// Text color for phantom insets
+	Color_phantomtext,
 	/// Label color for URL insets
 	Color_urllabel,
 

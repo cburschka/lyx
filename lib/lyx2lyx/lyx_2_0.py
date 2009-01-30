@@ -48,6 +48,7 @@ def revert_swiss(document):
         document.body[j] = document.body[j].replace("\\lang german-ch", "\\lang ngerman")
         j = j + 1
 
+
 def revert_tabularvalign(document):
    "Revert the tabular valign option"
    i = 0
@@ -91,7 +92,92 @@ def revert_tabularvalign(document):
            '',
            '\\begin_layout Plain Layout']
        document.body[i:i] = subst # this just inserts the array at i
-       i += len(subst) + 2 # adjust i to save a few cycles 
+       i += len(subst) + 2 # adjust i to save a few cycles
+
+
+def revert_phantom(document):
+    'Reverts phantom to ERT'
+    i = 0
+    j = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset Phantom Phantom", i)
+      if i == -1:
+          return
+      substi = document.body[i].replace('\\begin_inset Phantom Phantom', \
+                '\\begin_inset ERT\nstatus collapsed\n\n' \
+                '\\begin_layout Plain Layout\n\n\n\\backslash\n' \
+                'phantom{\n\\end_layout\n\n\\end_inset\n')
+      substi = substi.split('\n')
+      document.body[i : i+4] = substi
+      i += len(substi)
+      j = find_token(document.body, "\\end_layout", i)
+      if j == -1:
+          document.warning("Malformed LyX document: Could not find end of Phantom inset.")
+          return
+      substj = document.body[j].replace('\\end_layout', \
+                '\\size default\n\n\\begin_inset ERT\nstatus collapsed\n\n' \
+                '\\begin_layout Plain Layout\n\n' \
+                '}\n\\end_layout\n\n\\end_inset\n')
+      substj = substj.split('\n')
+      document.body[j : j+4] = substj
+      i += len(substj)
+
+
+def revert_hphantom(document):
+    'Reverts hphantom to ERT'
+    i = 0
+    j = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset Phantom HPhantom", i)
+      if i == -1:
+          return
+      substi = document.body[i].replace('\\begin_inset Phantom HPhantom', \
+                '\\begin_inset ERT\nstatus collapsed\n\n' \
+                '\\begin_layout Plain Layout\n\n\n\\backslash\n' \
+                'hphantom{\n\\end_layout\n\n\\end_inset\n')
+      substi = substi.split('\n')
+      document.body[i : i+4] = substi
+      i += len(substi)
+      j = find_token(document.body, "\\end_layout", i)
+      if j == -1:
+          document.warning("Malformed LyX document: Could not find end of HPhantom inset.")
+          return
+      substj = document.body[j].replace('\\end_layout', \
+                '\\size default\n\n\\begin_inset ERT\nstatus collapsed\n\n' \
+                '\\begin_layout Plain Layout\n\n' \
+                '}\n\\end_layout\n\n\\end_inset\n')
+      substj = substj.split('\n')
+      document.body[j : j+4] = substj
+      i += len(substj)
+
+
+def revert_vphantom(document):
+    'Reverts vphantom to ERT'
+    i = 0
+    j = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset Phantom VPhantom", i)
+      if i == -1:
+          return
+      substi = document.body[i].replace('\\begin_inset Phantom VPhantom', \
+                '\\begin_inset ERT\nstatus collapsed\n\n' \
+                '\\begin_layout Plain Layout\n\n\n\\backslash\n' \
+                'vphantom{\n\\end_layout\n\n\\end_inset\n')
+      substi = substi.split('\n')
+      document.body[i : i+4] = substi
+      i += len(substi)
+      j = find_token(document.body, "\\end_layout", i)
+      if j == -1:
+          document.warning("Malformed LyX document: Could not find end of VPhantom inset.")
+          return
+      substj = document.body[j].replace('\\end_layout', \
+                '\\size default\n\n\\begin_inset ERT\nstatus collapsed\n\n' \
+                '\\begin_layout Plain Layout\n\n' \
+                '}\n\\end_layout\n\n\\end_inset\n')
+      substj = substj.split('\n')
+      document.body[j : j+4] = substj
+      i += len(substj)
+
 
 ##
 # Conversion hub
@@ -99,10 +185,12 @@ def revert_tabularvalign(document):
 
 supported_versions = ["2.0.0","2.0"]
 convert = [[346, []],
-           [347, []]
+           [347, []],
+           [348, []]
           ]
 
-revert =  [[346, [revert_tabularvalign]],
+revert =  [[347, [revert_phantom, revert_hphantom, revert_vphantom]],
+           [346, [revert_tabularvalign]],
            [345, [revert_swiss]]
           ]
 
