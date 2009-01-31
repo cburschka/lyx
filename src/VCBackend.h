@@ -225,9 +225,17 @@ protected:
 	virtual void scanMaster();
 	/// Check for messages in svn output. Returns error.
 	std::string scanLogFile(support::FileName const & f, std::string & status);
+	/// checks locking policy and setup locked_mode_
+	bool checkLockMode();
+	/// is the loaded file locked?
+	bool isLocked();
+	/// acquire/release write lock for the current file
+	void fileLock(bool lock, support::FileName const & tmpf, std::string & status);
 
 private:
 	support::FileName file_;
+	/// is the loaded file under locking policy?
+	bool locked_mode_;
 };
 
 } // namespace lyx
