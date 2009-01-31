@@ -17038,7 +17038,7 @@ When you are finished editing a file, you commit your changes.
 \begin_layout Standard
 CVS command: 
 \family typewriter
-cvs -q commit -m"<description>" <file-name>
+cvs -q commit -m"<description>" "<file-name>"
 \end_layout
 
 \begin_layout Subsubsection
@@ -17185,7 +17185,25 @@ When you are finished editing a file, you commit your changes.
 \end_layout
 
 \begin_layout Standard
-SVN command: 
+SVN command:
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In case locking is not enabled.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:SVN-File-Locking"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
 \family typewriter
 svn commit -q -m"<description>" <file-name>
 \end_layout
@@ -17203,7 +17221,17 @@ Updates the changes of this file from the repository.
 \end_layout
 
 \begin_layout Standard
-SVN command: 
+SVN command:
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Ditto.
+\end_layout
+
+\end_inset
+
+ 
 \family typewriter
 svn update 
 \begin_inset Quotes eld
@@ -17264,6 +17292,106 @@ svn log
 
 \family default
  is shown in a browser.
+\end_layout
+
+\begin_layout Subsubsection
+File Locking
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:SVN-File-Locking"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The file exchange through various revision control systems brings the problem
+ of merge conflicts in case two different users try to edit the same (parts
+ of) document.
+ When such conflict happens it needs manual resolving and one reasonable
+ alternative is to provide some kind of locking mechanism, which guarantees
+ that only one user is allowed to edit file at the given time.
+\end_layout
+
+\begin_layout Standard
+SVN has two mechanisms to provide such kind of mutual exclusivity for file
+ access - locks and automatical setting of write permissions based on 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn:needs-lock
+\end_layout
+
+\end_inset
+
+ file svn property.
+ In a case this property is detected for a given document LyX starts to
+ use SVN locks for document editing automatically and the whole check-in/out
+ mechanism switches to the same regimen as for RCS.
+ This in particular means there are two different modes how file is used
+ in LyX:
+\end_layout
+
+\begin_layout Itemize
+Unlocked state.
+ The loaded file is in the read-only mode.
+ For editation on needs to check-out.
+ 
+\emph on
+Check-out
+\emph default
+ consists of update from repository and gaining write lock.
+ If the lock is not possible to obtain, we remain in unlocked state.
+\end_layout
+
+\begin_layout Itemize
+Locked state.
+ The loaded file is in the 'normal' edit mode.
+ No other user is allowed to edit the file.
+ 
+\emph on
+Check-in
+\emph default
+ consists of commiting changes and releasing write-lock.
+ If no changes have been made to the document, no commit will be produced
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Don't be puzzled by the fact that you will be asked for commit message anyway.
+\end_layout
+
+\end_inset
+
+ and only the write-lock will be released.
+\end_layout
+
+\begin_layout Standard
+SVN commands:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Check-in:
+\family typewriter
+ svn commit -q -m"<description>" "<file-name>"
+\begin_inset Newline newline
+\end_inset
+
+svn unlock "<file-name>"
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Check-out: 
+\family typewriter
+svn update "<file-name>"
+\begin_inset Newline newline
+\end_inset
+
+svn lock "<file-name>"
 \end_layout
 
 \begin_layout Subsection
