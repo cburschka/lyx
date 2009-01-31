@@ -27,7 +27,8 @@ public:
 	/// the status of the managed file
 	enum VCStatus {
 		UNLOCKED,
-		LOCKED
+		LOCKED,
+		NOLOCKING
 	};
 
 	virtual ~VCS() {}

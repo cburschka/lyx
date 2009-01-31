@@ -455,10 +455,17 @@ FileName const SVN::findFile(FileName const & file)
 
 void SVN::scanMaster()
 {
-	// if we want some locking under svn
-	// we need different infrastructure around
-	locker_ = "Unlocked";
-	vcstatus = UNLOCKED;
+	locker_.clear();
+	vcstatus = NOLOCKING;
+	if (checkLockMode()) {
+		if (isLocked()) {
+			locker_ = "Locked";
+			vcstatus = LOCKED;
+		} else {
+			locker_ = "Unlocked";
+			vcstatus = LOCKED;
+		}
+	}
 }
 
 
