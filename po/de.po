@@ -95,7 +95,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-02-01 18:30+0100\n"
-"PO-Revision-Date: 2009-02-01 19:30+0100\n"
+"PO-Revision-Date: 2009-02-01 20:25+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1268,9 +1268,8 @@ msgid "Basic"
 msgstr "Basis-Lateinisch"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:106
-#, fuzzy
 msgid "Whole &words"
-msgstr "Nur ganze &Wörter"
+msgstr "Ganze &Wörter"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:116
 #: src/frontends/qt4/ui/SearchUi.ui:170
@@ -1278,9 +1277,8 @@ msgid "Find &Next"
 msgstr "&Nächstes suchen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:129
-#, fuzzy
 msgid "Replace Ne&xt"
-msgstr "Ersetzen &durch:"
+msgstr "Nä&chstes Ersetzen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:139
 #: src/frontends/qt4/ui/SearchUi.ui:193
@@ -1288,14 +1286,12 @@ msgid "Replace &All"
 msgstr "&Alles ersetzen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:179
-#, fuzzy
 msgid "Find &Prev"
 msgstr "&Nächstes suchen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:192
-#, fuzzy
 msgid "Replace P&rev"
-msgstr "&Alles ersetzen"
+msgstr "&Voriges ersetzen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:199
 #: src/frontends/qt4/ui/SearchUi.ui:105
@@ -1333,9 +1329,8 @@ msgid "Advanced"
 msgstr "Erweitert"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:295
-#, fuzzy
 msgid "Sco&pe"
-msgstr "Sch&nitt:"
+msgstr "Bereic&h"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:307
 msgid "Current buffer only"
@@ -12071,7 +12066,7 @@ msgstr "Wiederholen|W"
 
 #: lib/ui/stdmenus.inc:92
 msgid "Paste Special"
-msgstr "Einfügen (speziell)|E"
+msgstr "Einfügen (speziell)|z"
 
 #: lib/ui/stdmenus.inc:94
 msgid "Select All"
@@ -12126,9 +12121,8 @@ msgid "Box Settings...|x"
 msgstr "Box-Einstellungen...|x"
 
 #: lib/ui/stdmenus.inc:125
-#, fuzzy
 msgid "Listings Settings...|g"
-msgstr "Listing-Einstellungen"
+msgstr "Listing-Einstellungen...|g"
 
 #: lib/ui/stdmenus.inc:129
 msgid "Table Settings...|a"
@@ -20936,9 +20930,8 @@ msgid "VPhantom"
 msgstr "VPhantom"
 
 #: src/insets/InsetPhantom.cpp:129
-#, fuzzy
 msgid "Opened Phantom Inset"
-msgstr "Legenden-Einfügung geöffnet"
+msgstr "Geöffnete Phantom Einfügung"
 
 #: src/insets/InsetPhantom.cpp:326
 msgid "phantom"
