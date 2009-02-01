@@ -60,13 +60,9 @@ private:
 	///
 	docstring editMessage() const;
 	///
-	InsetCode lyxCode() const { return PHANTOM_CODE; }
-	///
 	docstring name() const;
 	///
 	DisplayType display() const;
-	///
-	bool noFontChange() const { return params_.type != InsetPhantomParams::Phantom; }
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -90,7 +86,7 @@ private:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	Inset * clone() const { return new InsetPhantom(*this); }
+	docstring toolTip(BufferView const & bv, int x, int y) const;
 	/// used by the constructors
 	void init();
 	///

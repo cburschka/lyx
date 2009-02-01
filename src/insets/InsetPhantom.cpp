@@ -303,6 +303,24 @@ bool InsetPhantom::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
+docstring InsetPhantom::toolTip(BufferView const & bv, int x, int y) const
+{
+	OutputParams rp(&buffer().params().encoding());
+	odocstringstream ods;
+	InsetText::plaintext(ods, rp);
+	docstring content_tip = ods.str();
+	// shorten it if necessary
+	if (content_tip.size() > 200)
+		content_tip = content_tip.substr(0, 200) + "...";
+	if (params_.type == InsetPhantomParams::Phantom)
+		return from_ascii("Phantom: ") + content_tip;
+	if (params_.type == InsetPhantomParams::HPhantom)
+		return from_ascii("HPhantom: ") + content_tip;
+	if (params_.type == InsetPhantomParams::VPhantom)
+		return from_ascii("VPhantom: ") + content_tip;
+}
+
+
 int InsetPhantom::latex(odocstream & os, OutputParams const & runparams_in) const
 {
 	OutputParams runparams(runparams_in);
