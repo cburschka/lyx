@@ -155,6 +155,9 @@ void InsetPhantom::draw(PainterInfo & pi, int x, int y) const
 {
 	// draw the text
 	InsetText::draw(pi, x, y);
+
+	// draw the inset marker
+	drawMarkers(pi, x, y);
 	
 	// draw the arrow(s)
 	static int const arrow_size = 4;
@@ -208,9 +211,10 @@ void InsetPhantom::draw(PainterInfo & pi, int x, int y) const
 		//       |   |        |   |
 		//      x1  x2       x3  x4
 
+		x = x + TEXT_TO_INSET_OFFSET;
 		int const x1 = x;
 		int const x2 = x + arrow_size;
-		int const x4 = x + dim.wid;
+		int const x4 = x + dim.wid - 2 * TEXT_TO_INSET_OFFSET;
 		int const x3 = x4 - arrow_size;
 
 		int const y2 = y + (dim.des - dim.asc) / 2;
@@ -228,8 +232,6 @@ void InsetPhantom::draw(PainterInfo & pi, int x, int y) const
 		// joining line
 		pi.pain.line(x1, y2, x4, y2, Color_added_space);
 	}
-
-	drawMarkers(pi, x, y);
 }
 
 
