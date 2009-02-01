@@ -114,6 +114,7 @@ void InsetPhantomParams::read(Lexer & lex)
 InsetPhantom::InsetPhantom(Buffer const & buf, string const & label)
 	: InsetCollapsable(buf)
 {
+	setDrawFrame(false);
 	params_.type = phantomtranslator().find(label);
 }
 
