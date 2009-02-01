@@ -165,6 +165,7 @@ InsetLayout Phantom:Phantom
 	  Color			phantomtext
 	EndFont
 	MultiPar		false
+	CustomPars		false
 End
 
 
