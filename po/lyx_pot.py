@@ -84,9 +84,13 @@ def layouts_l10n(input_files, output, base):
     InsetLayout = re.compile(r'^InsetLayout\s+(.*)')
     DescBegin = re.compile(r'#+\s*DescriptionBegin\s*$')
     DescEnd = re.compile(r'#+\s*DescriptionEnd\s*$')
+    I18nPreamble = re.compile(r'\s*I18nPreamble\s*$')
+    EndI18nPreamble = re.compile(r'\s*EndI18nPreamble\s*$')
+    I18nString = re.compile(r'_\(([^\)]+)\)')
 
     for src in input_files:
         readingDescription = False
+        readingI18nPreamble = False
         descStartLine = -1
         descLines = []
         lineno = 0
@@ -105,6 +109,20 @@ def layouts_l10n(input_files, output, base):
             if res != None:
                 readingDescription = True
                 descStartLine = lineno
+                continue
+            if readingI18nPreamble:
+                res = EndI18nPreamble.search(line)
+                if res != None:
+                    readingI18nPreamble = False
+                    continue
+                res = I18nString.search(line)
+                if res != None:
+                    string = res.group(1)
+                    writeString(out, src, base, lineno, string)
+                continue
+            res = I18nPreamble.search(line)
+            if res != None:
+                readingI18nPreamble = True
                 continue
             res = NameRE.search(line)
             if res != None:
@@ -357,4 +375,5 @@ if __name__ == '__main__':
         encodings_l10n(args, output, base)
     else:
         languages_l10n(args, output, base)
+
 
