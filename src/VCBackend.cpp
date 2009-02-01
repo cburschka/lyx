@@ -501,7 +501,7 @@ bool SVN::checkLockMode()
 }
 
 
-bool SVN::isLocked()
+bool SVN::isLocked() const
 {
 	//refresh file info
 	FileName file(file_.absFilename());

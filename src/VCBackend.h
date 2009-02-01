@@ -229,7 +229,7 @@ protected:
 	/// checks locking policy and setup locked_mode_
 	bool checkLockMode();
 	/// is the loaded file locked?
-	bool isLocked();
+	bool isLocked() const;
 	/// acquire/release write lock for the current file
 	void fileLock(bool lock, support::FileName const & tmpf, std::string & status);
 
