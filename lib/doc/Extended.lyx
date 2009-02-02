@@ -1,4 +1,4 @@
-#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -4268,7 +4268,7 @@ status collapsed
 ' to create the pipes.
  If one of the pipes already exists, LyX will assume that another LyX process
  is already running and will not start the server.
- This means that if LyX crashes, or if for some other reason, a 
+ If for some other reason, an unused 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4276,10 +4276,10 @@ stale
 \begin_inset Quotes erd
 \end_inset
 
- pipe is left in existence when LyX closes, then LyX will not start the
- server.
- (This is bug 641.) You will need to delete the pipes manually and then restart
- LyX.
+ pipe is left in existence when LyX closes, then LyX will try to delete
+ it.
+ If this fails for some reason, you will need to delete the pipes manually
+ and then restart LyX.
 \end_layout
 
 \begin_layout Standard
@@ -4315,34 +4315,6 @@ lyx -dbg lyxserver
 \end_layout
 
 \begin_layout Standard
-Other than this, there are a few points to consider:
-\end_layout
-
-\begin_layout Itemize
-Both server and clients must run on UNIX or OS/2 machines.
- Communications between LyX on UNIX and clients on OS/2 or vice versa is
- not possible right now.
-\end_layout
-
-\begin_layout Itemize
-On OS/2, only one client can connect to LyXServer at a time.
-\end_layout
-
-\begin_layout Itemize
-On OS/2, clients must open the input pipe with 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-O_WRONLY
-\end_layout
-
-\end_inset
-
- mode.
-\end_layout
-
-\begin_layout Standard
 You can find a complete example client written in C in the source distribution
  as 
 \begin_inset Flex CharStyle:Code
@@ -4350,6 +4322,20 @@ status collapsed
 
 \begin_layout Plain Layout
 development/lyxserver/server_monitor.c
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Another useful tool is command-line based client you will find in 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+src/client/lyxclient
 \end_layout
 
 \end_inset
