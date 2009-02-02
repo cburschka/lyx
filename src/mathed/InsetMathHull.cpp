@@ -533,6 +533,11 @@ void InsetMathHull::numbered(row_type row, bool num)
 		label_[row] = 0;
 		// We need an update of the Buffer reference cache.
 		// This is achieved by updateLabels().
+		if (!buffer_) {
+			// The buffer is set at the end of readInset
+			// when parsing the inset, buffer_ is 0.
+			return;
+		}
 		buffer().updateLabels();
 	}
 }
