@@ -2286,6 +2286,14 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		enable = !inDescriptionItem(cur);
 		break;
 
+	case LFUN_MATH_INSERT:
+	case LFUN_MATH_MATRIX:
+	case LFUN_MATH_DELIM:
+	case LFUN_MATH_BIGDELIM:
+		// not allowed in ERT, for example.
+		enable = cur.inset().insetAllowed(MATH_CODE);
+		break;
+
 	case LFUN_WORD_DELETE_FORWARD:
 	case LFUN_WORD_DELETE_BACKWARD:
 	case LFUN_LINE_DELETE:
@@ -2337,10 +2345,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_DISPLAY:
 	case LFUN_MATH_MODE:
 	case LFUN_MATH_MACRO:
-	case LFUN_MATH_MATRIX:
-	case LFUN_MATH_DELIM:
-	case LFUN_MATH_BIGDELIM:
-	case LFUN_MATH_INSERT:
 	case LFUN_MATH_SUBSCRIPT:
 	case LFUN_MATH_SUPERSCRIPT:
 	case LFUN_FONT_DEFAULT:
