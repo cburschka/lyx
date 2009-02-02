@@ -135,6 +135,8 @@ What's new
 
 - Fix crash when no file is open and the creation of a new document fails.
 
+- Fix crash when using a math related function in an ERT inset (bug 5703).
+
 - Ignore the master_buffer setting in Document>Settings if the current
   document is no real child. This fixes a crash when using the outliner
   in such files (bug 5653).
