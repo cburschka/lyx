@@ -28470,23 +28470,23 @@ The
 \emph on
 AikSaurus
 \emph default
- library
+ library,
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
-target "http://aiksaurus.sourceforge.net/"
+target "http://aiksaurus.sourceforge.net"
 
 \end_inset
 
-.
+
 \end_layout
 
 \end_inset
 
-, which is also used by Abiword, but which is English only.
+ which is also used by Abiword, but which is English only.
 \end_layout
 
 \begin_layout Enumerate
@@ -28494,7 +28494,7 @@ The
 \emph on
 MyThes
 \emph default
- library
+ library,
 \begin_inset Foot
 status collapsed
 
@@ -28505,12 +28505,12 @@ target "http://lingucomponent.openoffice.org/thesaurus.html"
 
 \end_inset
 
-.
+
 \end_layout
 
 \end_inset
 
-, which is also used by OpenOffice, and which supports many languages.
+ which is also used by OpenOffice, and which supports many languages.
 \end_layout
 
 \begin_layout Standard
@@ -28556,10 +28556,24 @@ th_en_EN_v2.dat
 \begin_layout Standard
 If you have OpenOffice installed including its thesaurus, these files should
  be already on your system.
- If not, you can get dictionaries either from the site 
+ If not, you can get dictionaries either from the site
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.openthesaurus.org"
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+FIXME: Link is dead
+\end_layout
 
 \end_inset
 
@@ -28595,8 +28609,7 @@ Put the
 s), and the specify the path to this directory in 
 \family sans
 Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
 Paths
 \family default
 .
