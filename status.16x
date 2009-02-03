@@ -75,6 +75,7 @@ What's new
 - Added "Copy as Reference" to the context menu of labels to
   ease the insertion of references.
 
+
 * WINDOWS INSTALLER
 
 
@@ -203,6 +204,10 @@ What's new
 - Enable view-source widget for read-only documents.
 
 - Fix painting problems after load of instant preview image (bug 5627).
+
+- Limit workaround for Qt bug (bug 4513) that was fixed in Qt 4.3.4 to
+  older Qt versions. The workaround resulted in unwanted display of hidden
+  directories on UNIX.
 
 
 * DOCUMENTATION AND LOCALIZATION
