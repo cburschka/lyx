@@ -175,6 +175,12 @@ private:
 	///
 	Dimension dimensionCollapsed() const;
 	///
+	/// should paragraphs be forced to use the empty layout?
+	virtual bool forcePlainLayout(idx_type = 0) const 
+		{ return getLayout().forcePlainLayout(); }
+	/// should the user be allowed to customize alignment, etc.?
+	virtual bool allowParagraphCustomization(idx_type = 0) const 
+		{ return getLayout().allowParagraphCustomization(); }
 	docstring labelstring_;
 	///
 	mutable Box button_dim;

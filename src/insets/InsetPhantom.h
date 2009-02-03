@@ -76,10 +76,6 @@ private:
 	/// show the phantom dialog
 	bool showInsetDialog(BufferView * bv) const;
 	///
-	bool allowParagraphCustomization(idx_type = 0) const { return false; }
-	///
-	bool forcePlainLayout(idx_type = 0) const { return true; }
-	///
 	bool neverIndent() const { return true; }
 	///
 	int latex(odocstream &, OutputParams const &) const;
