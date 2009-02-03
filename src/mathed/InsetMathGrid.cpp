@@ -766,7 +766,7 @@ void InsetMathGrid::delCol(col_type col)
 
 void InsetMathGrid::copyCol(col_type col)
 {
-	addCol(col);
+	addCol(col+1);
 	for (row_type row = 0; row < nrows(); ++row)
 		cells_[row * ncols() + col + 1] = cells_[row * ncols() + col];
 }
