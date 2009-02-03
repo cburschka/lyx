@@ -304,7 +304,7 @@ bool InsetPhantom::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-docstring InsetPhantom::toolTip(BufferView const & bv, int x, int y) const
+docstring InsetPhantom::toolTip(BufferView const &, int, int) const
 {
 	OutputParams rp(&buffer().params().encoding());
 	odocstringstream ods;
@@ -313,12 +313,10 @@ docstring InsetPhantom::toolTip(BufferView const & bv, int x, int y) const
 	// shorten it if necessary
 	if (content_tip.size() > 200)
 		content_tip = content_tip.substr(0, 200) + "...";
-	if (params_.type == InsetPhantomParams::Phantom)
-		return from_ascii("Phantom: ") + content_tip;
-	if (params_.type == InsetPhantomParams::HPhantom)
-		return from_ascii("HPhantom: ") + content_tip;
-	if (params_.type == InsetPhantomParams::VPhantom)
-		return from_ascii("VPhantom: ") + content_tip;
+	docstring res = phantomtranslator_loc().find(params_.type);
+	if (!content_tip.empty())
+		res += from_ascii(": ") + content_tip;
+	return res;
 }
 
 
