@@ -1,5 +1,5 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 348
 \begin_document
 \begin_header
 \textclass scrbook
@@ -2668,7 +2668,7 @@ Each class has a default set of options.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -7301,7 +7301,7 @@ This is (a) and it's nested.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -7430,7 +7430,7 @@ This is (a) and it's nested.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -7568,7 +7568,7 @@ This is (a) and it's nested.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8518,7 +8518,7 @@ Here comes a table:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9311,7 +9311,7 @@ Width of the different horizontal spaces.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -13271,7 +13271,7 @@ em dash
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -14738,7 +14738,7 @@ Here's an example to show the differences:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row>
@@ -15974,7 +15974,7 @@ Table
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0in">
@@ -16256,7 +16256,7 @@ one
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features firstHeadTopDL="true" firstHeadBottomDL="true">
+<features tabularvalignment="middle" firstHeadTopDL="true" firstHeadBottomDL="true">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="middle" width="0">
 <column alignment="center" valignment="top" width="0in">
@@ -16609,7 +16609,7 @@ header.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="69" columns="3">
-<features islongtable="true">
+<features islongtable="true" tabularvalignment="middle">
 <column alignment="block" valignment="top" width="5cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -18806,7 +18806,7 @@ To have multi-line entries in table cells, you have to declare a fixed width
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="block" valignment="top" width="3cm">
 <column alignment="center" valignment="top" width="0pt">
@@ -19651,7 +19651,7 @@ A table float.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -20262,7 +20262,7 @@ name "cap:Rotated-table"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -21929,7 +21929,7 @@ Accent names and the corresponding commands.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="3">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -23350,7 +23350,7 @@ Typefaces and the corresponding commands.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -28462,12 +28462,153 @@ name "sec:Thesaurus"
 \end_layout
 
 \begin_layout Standard
-Thesaurus currently only works when you use the document language English.
+LyX provides support for two different thesaurus frameworks:
+\end_layout
+
+\begin_layout Enumerate
+The 
+\emph on
+AikSaurus
+\emph default
+ library
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://aiksaurus.sourceforge.net/"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+, which is also used by Abiword, but which is English only.
+\end_layout
+
+\begin_layout Enumerate
+The 
+\emph on
+MyThes
+\emph default
+ library
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://lingucomponent.openoffice.org/thesaurus.html"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+, which is also used by OpenOffice, and which supports many languages.
 \end_layout
 
 \begin_layout Standard
-To start the thesaurus, highlight one word or set the cursor behind it,
- and use the menu 
+You need to have one of these libraries installed in order to use the thesaurus
+ (if both are installed, 
+\emph on
+MyThes
+\emph default
+ will be chosen automatically).
+\end_layout
+
+\begin_layout Subsection
+Setting up the thesaurus
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+MyThes
+\emph default
+ library can directly access the OpenOffice thesauri, which consist of two
+ files per language: A file with the ending 
+\emph on
+*.dat
+\emph default
+ containing the data and an index file with the ending 
+\emph on
+*.idx
+\emph default
+.
+ The file names include the language code for the given language, so the
+ English files are named:
+\end_layout
+
+\begin_layout Itemize
+th_en_EN_v2.idx
+\end_layout
+
+\begin_layout Itemize
+th_en_EN_v2.dat
+\end_layout
+
+\begin_layout Standard
+If you have OpenOffice installed including its thesaurus, these files should
+ be already on your system.
+ If not, you can get dictionaries either from the site 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.openthesaurus.org"
+
+\end_inset
+
+ or from 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://extensions.services.openoffice.org"
+
+\end_inset
+
+.
+ Note that, as of OpenOffice 3.0, these files are usually packed in extension
+ archives (
+\emph on
+*.oxt
+\emph default
+) that contain other files such as spellchecker dictionaries besides the
+ thesauri.
+ These archives are simple zip files, so you can unpack them as you would
+ unpack a zip archive.
+\end_layout
+
+\begin_layout Standard
+Put the 
+\emph on
+*.idx
+\emph default
+ and 
+\emph on
+*.dat
+\emph default
+ files of all languages you want to use into one directory (do not use subfolder
+s), and the specify the path to this directory in 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Paths
+\family default
+.
+ Now the thesaurus should be ready to use.
+\end_layout
+
+\begin_layout Subsection
+Using the thesaurus
+\end_layout
+
+\begin_layout Standard
+To start the thesaurus, use the menu 
 \family sans
 Tools\SpecialChar \menuseparator
 Thesaurus
@@ -28480,54 +28621,83 @@ Thesaurus
 
 \end_inset
 
-.
+ while the cursor is at the word you want to look up or while a word is
+ selected.
  A dialog pops up showing you probably related words that you can use as
  replacement.
+ The proposals are grouped into categories.
+ Note that the thesaurus does not only show synonyms, but also hyperonyms
+ and hyponyms (such as 
+\emph on
+plant
+\emph default
+ for 
+\emph on
+tree
+\emph default
+), compounds (such as 
+\emph on
+tree diagram
+\emph default
+) and antonyms (such as 
+\emph on
+women
+\emph default
+ for 
+\emph on
+men
+\emph default
+), which are marked as such.
 \end_layout
 
 \begin_layout Standard
-The shown related words are in many cases not really related to the word
- you are currently checking, scrolling in the shown list might help in some
- cases to find related words.
+The language is automatically chosen from the language at the cursor, but
+ you can also switch it in the dialog, as you can enter new words to look
+ up directly there.
 \end_layout
 
 \begin_layout Standard
-The thesaurus only works for single words, and also only when it is in the
- singular form.
- For example starting the thesaurus with the word 
-\begin_inset Quotes eld
+Note that the thesaurus cannot handle phrases (only compounds that are in
+ the dictionary, such as the above 
+\emph on
+tree diagram
+\emph default
+), and you have to use the so called lemma form, i.
+\begin_inset space \thinspace{}
 \end_inset
 
+e.
+ the form that is used in the dictionaries (for many languages: first person
+ singular indicative active for nouns, infinitive for verbs).
+ For example looking up the word forms 
+\emph on
 reports
-\begin_inset Quotes erd
-\end_inset
-
- leads to no results, while results are shown for the word 
-\begin_inset Quotes eld
-\end_inset
-
+\emph default
+ or 
+\emph on
+reporting
+\emph default
+ yields no results, while results are shown for the word form 
+\emph on
 report
-\begin_inset Quotes erd
-\end_inset
-
+\emph default
 .
- To avoid this, you can highlight only the part 
-\begin_inset Quotes eld
+ Your best bet is to highlight only the relevant parts of such word (e.
+\begin_inset space \thinspace{}
 \end_inset
 
+g.
+ 
+\emph on
 report
-\begin_inset Quotes erd
-\end_inset
-
- of the word 
-\begin_inset Quotes eld
-\end_inset
-
-reports
-\begin_inset Quotes erd
-\end_inset
-
- to get results.
+\emph default
+ in 
+\emph on
+report
+\emph default
+s), then you get proposals without adjusting the query in the dialog, and
+ also the replacement will probably be correct (as only the highlighted
+ part will be replaced, thus the ending remains).
 \end_layout
 
 \begin_layout Section
@@ -28673,7 +28843,7 @@ The review toolbar as shown above contains from left to right the following
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features islongtable="true">
+<features islongtable="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -29380,7 +29550,7 @@ latin1
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="17">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -36644,7 +36814,7 @@ Embedded Objects
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="2">
-<features islongtable="true">
+<features islongtable="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -36691,7 +36861,7 @@ pull-down box for the paragraph environments
 \align left
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features islongtable="true">
+<features islongtable="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -37360,7 +37530,7 @@ The extra toolbar as shown above contains from left to right the following
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="25" columns="2">
-<features islongtable="true">
+<features islongtable="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -38200,7 +38370,7 @@ The view / update toolbar as shown above contains from left to right the
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features islongtable="true">
+<features islongtable="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -42020,7 +42190,7 @@ Units
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
