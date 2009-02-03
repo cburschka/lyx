@@ -776,7 +776,7 @@ int InsetCollapsable::latex(odocstream & os,
 {
 	// FIXME: What should we do layout_ is 0?
 	// 1) assert
-	// 2) through an error
+	// 2) throw an error
 	if (!layout_)
 		return 0;
 
