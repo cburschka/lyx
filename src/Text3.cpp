@@ -422,8 +422,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	BufferView * bv = &cur.bv();
 	TextMetrics & tm = bv->textMetrics(this);
-	if (!tm.contains(cur.pit()))
+	if (!tm.contains(cur.pit())) {
 		lyx::dispatch(FuncRequest(LFUN_SCREEN_RECENTER));
+		tm = bv->textMetrics(this);
+	}
 
 	// FIXME: We use the update flag to indicates wether a singlePar or a
 	// full screen update is needed. We reset it here but shall we restore it
