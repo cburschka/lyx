@@ -91,6 +91,9 @@ What's new
 
 - Fix crash when reading document with a numbered equation (bug 5688).
 
+- Fix crash when reading files created by tex2lyx in the presence of an
+  empty child document (bug 4859).
+
 - Fix conversion of documents that have index insets following an index
   list inset to LyX 1.6's format (bug 5713).
   Affected files that have already been mis-converted can be repaired by

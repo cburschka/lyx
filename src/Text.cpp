@@ -1281,6 +1281,7 @@ bool Text::read(Buffer const & buf, Lexer & lex,
 		ErrorList & errorList, InsetText * insetPtr)
 {
 	depth_type depth = 0;
+	bool res = true;
 
 	while (lex.isOK()) {
 		lex.nextToken();
@@ -1298,8 +1299,10 @@ bool Text::read(Buffer const & buf, Lexer & lex,
 		if (token == "\\begin_body")
 			continue;
 
-		if (token == "\\end_document")
-			return false;
+		if (token == "\\end_document") {
+			res = false;
+			break;
+		}
 
 		if (token == "\\begin_layout") {
 			lex.pushToken(token);
@@ -1329,7 +1332,19 @@ bool Text::read(Buffer const & buf, Lexer & lex,
 			LYXERR0("Handling unknown body token: `" << token << '\'');
 		}
 	}
-	return true;
+
+	// avoid a crash on weird documents (bug 4859)
+	if (pars_.empty()) {
+		Paragraph par;
+		par.setInsetOwner(insetPtr);
+		par.params().depth(depth);
+		par.setFont(0, Font(inherit_font, 
+				    buf.params().language));
+		par.setPlainOrDefaultLayout(buf.params().documentClass());
+		pars_.push_back(par);
+	}
+	
+	return res;
 }
 
 // Returns the current font and depth as a message.

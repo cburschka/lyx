@@ -276,7 +276,7 @@ public:
 
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
-	/// returns whether we've seen our usual 'end' marker
+	/// returns true if \end_document has not been read
 	/// insetPtr is the containing Inset
 	bool read(Buffer const & buf, Lexer & lex, ErrorList & errorList, 
 	          InsetText * insetPtr);

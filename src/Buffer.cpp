@@ -538,7 +538,7 @@ int Buffer::readHeader(Lexer & lex)
 
 // Uwe C. Schroeder
 // changed to be public and have one parameter
-// Returns false if "\end_document" is not read (Asger)
+// Returns true if "\end_document" is not read (Asger)
 bool Buffer::readDocument(Lexer & lex)
 {
 	ErrorList & errorList = d->errorLists["Parse"];
