@@ -89,6 +89,8 @@ private:
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
+	///
+	Inset * clone() const { return new InsetPhantom(*this); }
 	/// used by the constructors
 	void init();
 	///
