@@ -14868,7 +14868,7 @@ Options
 
 
 \begin_inset Tabular
-<lyxtabular version="3" rows="11" columns="2">
+<lyxtabular version="3" rows="12" columns="2">
 <features>
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -14973,31 +14973,6 @@ int
 \begin_layout Plain Layout
 
 \backslash
-intop
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\intop$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
 oint
 \end_layout
 
@@ -15008,31 +14983,6 @@ oint
 
 \begin_layout Plain Layout
 \begin_inset Formula $\oint$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-ointop
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ointop$
 \end_inset
 
 
@@ -15108,6 +15058,84 @@ sqint
 
 \begin_layout Plain Layout
 \begin_inset Formula $\sqint$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+fint
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ 
+\begin_inset Formula $\fint$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+landupint
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ 
+\begin_inset Formula $\landupint$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+landdownint
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ 
+\begin_inset Formula $\landdownint$
 \end_inset
 
 
@@ -15466,19 +15494,25 @@ The operators are called big because they are bigger than the sometimes
 \end_layout
 
 \begin_layout Standard
-The operators 
+For all integral operators there is a second version available, ending on
+ 
+\series bold
+op
+\series default
+: 
 \series bold
 
 \backslash
-intop
+intop,
 \series default
- and 
+ 
 \series bold
 
 \backslash
 ointop
 \series default
- are different from 
+ etc.
+ These operators are different from 
 \series bold
 
 \backslash
@@ -16006,7 +16040,11 @@ Inline
 
 \end_inset
 
-For integrals, except of 
+For integrals, except those ending with 
+\series bold
+op
+\series default
+ like 
 \series bold
 
 \backslash

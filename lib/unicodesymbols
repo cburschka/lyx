@@ -1503,8 +1503,21 @@
 0x221e ""                         "" "" "\\infty" # INFINITY
 # use the following macro for the character RIGHT ANGLE
 0x221f "\\LyXrightangle" "\\newcommand*\\LyXrightangle{{\\usefont{U}{msa}{m}{n}\\char120}}" ""
+0x2227 ""                         "" "" "\\bigwedge" "" # LOGICAL AND
+0x2228 ""                         "" "" "\\bigvee" "" # LOGICAL OR
 0x2229 ""                         "" "" "\\bigcap" # INTERSECTION
-0x222b ""                         "" "" "\\int" # INTEGRAL
+0x222a ""                         "" "" "\\bigcup" "" # UNION
+0x222b ""                         "" "" "\\int" "esint" # INTEGRAL
+0x222c ""                         "" "" "\\iint" "esintoramsmath" # DOUBLE INTEGRAL
+0x222d ""                         "" "" "\\iiint" "esintoramsmath" # TRIPLE INTEGRAL
+0x222e ""                         "" "" "\\oint" "esint" # CONTOUR INTEGRAL
+0x222f ""                         "" "" "\\oiint" "esint" # SURFACE INTEGRAL
+0x2230 ""                         "" "" "\\oiiint" "txfonts" # VOLUME INTEGRAL
+#0x2231 ""                         "" "" "" "" # CLOCKWISE INTEGRAL
+0x2232 ""                         "" "" "\\ointclockwise" "esint" # CLOCKWISE CONTOUR INTEGRAL
+0x2233 ""                         "" "" "\\ointctrclockwise" "esint" # ANTICLOCKWISE CONTOUR INTEGRAL
+0x2234 ""                         "" "" "\\therefore" "amssymb" # THEREFORE
+0x2235 ""                         "" "" "\\because" "amssymb" # BECAUSE
 0x2248 ""                         "" "" "\\approx" # ALMOST EQUAL TO
 0x2260 ""                         "" "" "\\neq" # NOT EQUAL TO
 0x2261 ""                         "" "" "\\equiv" # IDENTICAL TO
@@ -1785,6 +1798,20 @@
 #
 0x27e8 "\\textlangle"             "textcomp" "" # MATHEMATICAL LEFT ANGLE BRACKET
 0x27e9 "\\textrangle"             "textcomp" "" # MATHEMATICAL RIGHT ANGLE BRACKET
+#
+# supplemental mathematical operators
+#
+0x2a0c ""                         "" "" "\\iiiint" "esint" # QUADRUPLE INTEGRAL OPERATOR
+#0x2a0d ""                         "" "" "" "" # FINITE PART INTEGRAL
+#0x2a0e ""                         "" "" "" "" # INTEGRAL WITH DOUBLE STROKE
+0x2a0f ""                         "" "" "\\fint" "esint" # INTEGRAL AVERAGE WITH SLASH
+0x2a16 ""                         "" "" "\\sqint" "esint" # QUATERNION INTEGRAL OPERATOR
+#0x2a17 ""                         "" "" "" "" # INTEGRAL WITH LEFTWARDS ARROW WITH HOOK
+#0x2a18 ""                         "" "" "" "" # INTEGRAL WITH TIMES SIGN
+#0x2a19 ""                         "" "" "" "" # INTEGRAL WITH INTERSECTION
+#0x2a1a ""                         "" "" "" "" # INTEGRAL WITH UNION
+#0x2a1b ""                         "" "" "" "" # INTEGRAL WITH OVERBAR
+#0x2a1c ""                         "" "" "" "" # INTEGRAL WITH UNDERBAR
 #
 # ligatures
 #

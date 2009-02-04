@@ -49,6 +49,13 @@
       http://packages.qa.debian.org/l/latex-xft-fonts.html.
       The latex-xft bundle is published under the GPL.
 
+      In addition to the BaKoMa fonts, this font bundle contains the esint font
+      'esint10.ttf' from the esint package. It was converted from the type1
+      version available at http://www.ctan.org/tex-archive/fonts/ps-type1/esint/.
+      This PostScript Type 1 implementation of the font esint10, originally
+      created by Eddie Saudrais using METAFONT, is freely available for general
+      use.
+
 
       Ekkehart Schlicht
       schlicht@lmu.de

@@ -539,6 +539,8 @@ dist_imagesmath_DATA = \
 	images/math/eth.png \
 	images/math/exists.png \
 	images/math/fallingdotseq.png \
+	images/math/fint.png \
+	images/math/fintop.png \
 	images/math/flat.png \
 	images/math/forall.png \
 	images/math/frac.png \
@@ -589,6 +591,10 @@ dist_imagesmath_DATA = \
 	images/math/kappa.png \
 	images/math/lambda.png \
 	images/math/lambda2.png \
+	images/math/landdownint.png \
+	images/math/landdownintop.png \
+	images/math/landupint.png \
+	images/math/landupintop.png \
 	images/math/langle.png \
 	images/math/lbrace.png \
 	images/math/lbrace_rbrace.png \
