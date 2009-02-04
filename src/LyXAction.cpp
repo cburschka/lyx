@@ -2381,7 +2381,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_UI_TOGGLE
  * \li Action: Various UI visibility-toggling actions.
- * \li Syntax: ui-toggle <statusbar|menubar|frame|fullscreen>
+ * \li Syntax: ui-toggle <statusbar|menubar|scrollbar|frame|fullscreen>
  * \li Params: statusbar  : Toggle visibility of the statusbar.\n
                menubar    : Toggle visibility of the menubar.\n
 	       scrollbar  : Toggle visibility of the scrollbar.\n
