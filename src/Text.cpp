@@ -1340,6 +1340,7 @@ bool Text::read(Buffer const & buf, Lexer & lex,
 		par.params().depth(depth);
 		par.setFont(0, Font(inherit_font, 
 				    buf.params().language));
+		par.setPlainOrDefaultLayout(buf.params().documentClass());
 		pars_.push_back(par);
 	}
 	
