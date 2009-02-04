@@ -60,6 +60,7 @@ private:
 	docstring name_;
 };
 
+// Keep the changes documented in the Customization manual. 
 int const FORMAT = 12;
 
 
