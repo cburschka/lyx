@@ -1298,8 +1298,18 @@ bool Text::read(Buffer const & buf, Lexer & lex,
 		if (token == "\\begin_body")
 			continue;
 
-		if (token == "\\end_document")
+		if (token == "\\end_document") {
+			// avoid a crash on weird documents (bug 4859)
+			if (pars_.empty()) {
+				Paragraph par;
+				par.setInsetOwner(insetPtr);
+				par.params().depth(depth);
+				par.setFont(0, Font(inherit_font, 
+						    buf.params().language));
+				pars_.push_back(par);
+			}
 			return false;
+		}
 
 		if (token == "\\begin_layout") {
 			lex.pushToken(token);
