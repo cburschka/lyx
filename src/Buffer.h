@@ -137,7 +137,7 @@ public:
 
 	/** Reads a file without header.
 	    \param par if != 0 insert the file.
-	    \return \c false if file is not completely read.
+	    \return \c true if file is not completely read.
 	*/
 	bool readDocument(Lexer &);
 
