@@ -60,7 +60,7 @@ private:
 	docstring name_;
 };
 
-int const FORMAT = 11;
+int const FORMAT = 12;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)

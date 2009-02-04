@@ -8889,6 +8889,261 @@ FreeSpacing
 status collapsed
 
 \begin_layout Plain Layout
+I18NPreamble
+\end_layout
+
+\end_inset
+
+ Language dependent information to be included in the LaTeX preamble when
+ this style is used.
+ Note that this will completely override any prior 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+I18NPreamble
+\end_layout
+
+\end_inset
+
+ declarations.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+EndI18NPreamble
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The contents of this tag will occur once in the LaTeX preamble for each
+ language used by the document.
+ Each time, the following substitutions are made:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+$$lang
+\end_layout
+
+\end_inset
+
+ is replaced by the language name (as used by the babel package).
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Function
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+_()
+\end_layout
+
+\end_inset
+
+ replaces its argument by the translation of the argument to the current
+ language.
+\end_layout
+
+\begin_layout Standard
+If the style defines text that appears in the typeset document, it may use
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+I18NPreamble
+\end_layout
+
+\end_inset
+
+ to support non-english and even multilanguage documents correctly.
+ The following excerpt (from the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+theorems-ams.inc
+\end_layout
+
+\end_inset
+
+ file) shows how this works:
+\end_layout
+
+\begin_layout LyX-Code
+Preamble
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+providecommand{
+\backslash
+claimname}{Claim}
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+theoremstyle{remark}
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+newtheorem{claim}[thm]{
+\backslash
+protect
+\backslash
+claimname}
+\end_layout
+
+\begin_layout LyX-Code
+EndPreamble
+\end_layout
+
+\begin_layout LyX-Code
+I18nPreamble
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+AtBeginDocument{
+\backslash
+ifx
+\backslash
+LdfInit
+\backslash
+undefined
+\backslash
+relax
+\backslash
+else%
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+addto
+\backslash
+captions$$lang{
+\backslash
+renewcommand{
+\backslash
+claimname}{_(Claim)}}%
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+fi}
+\end_layout
+
+\begin_layout LyX-Code
+EndI18nPreamble
+\end_layout
+
+\begin_layout Standard
+The key to correct translation of the user visible text is the definition
+ of the command 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+claimname
+\end_layout
+
+\end_inset
+
+ in the standard preamble.
+ This command holds the name of the theorem that will appear in the output.
+ The 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+I18NPreamble
+\end_layout
+
+\end_inset
+
+ then uses the commands offered by the babel package to redefine 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+claimname
+\end_layout
+
+\end_inset
+
+ for each used language.
+ The 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+ifx
+\backslash
+LdfInit
+\end_layout
+
+\end_inset
+
+ test ensures that no LaTeX error occurs in documents that do not use babel.
+ Since LyX loads babel after the style-specific preamble, the whole command
+ is deferred to the actual start of the document with 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+AtBeginDocument
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 InnerTag
 \end_layout
 

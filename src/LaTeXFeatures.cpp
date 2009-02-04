@@ -16,6 +16,7 @@
 
 #include "LaTeXFeatures.h"
 
+#include "Buffer.h"
 #include "Color.h"
 #include "BufferParams.h"
 #include "Encoding.h"
@@ -869,10 +870,16 @@ docstring const LaTeXFeatures::getTClassPreamble() const
 
 	tcpreamble << tclass.preamble();
 
+	typedef LanguageList::const_iterator lang_it;
+	lang_it const lbeg = UsedLanguages_.begin();
+	lang_it const lend =  UsedLanguages_.end();
 	list<docstring>::const_iterator cit = usedLayouts_.begin();
 	list<docstring>::const_iterator end = usedLayouts_.end();
 	for (; cit != end; ++cit) {
 		tcpreamble << tclass[*cit].preamble();
+		tcpreamble << tclass[*cit].i18npreamble(buffer().language());
+		for (lang_it lit = lbeg; lit != lend; ++lit)
+			tcpreamble << tclass[*cit].i18npreamble(*lit);
 	}
 
 	return tcpreamble.str();

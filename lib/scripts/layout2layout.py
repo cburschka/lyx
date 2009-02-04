@@ -9,7 +9,7 @@
 
 # Full author contact details are available in file CREDITS
 
-# This script will update a .layout file to format 6
+# This script will update a .layout file to current format
 
 
 import os, re, string, sys
@@ -39,7 +39,10 @@ import os, re, string, sys
 # Incremented to format 11, 14 October 2008 by rgh
 # Add ProvidesModule, ExcludesModule tags
 
-currentFormat = 11
+# Incremented to format 12, 10 January 2009 by gb
+# Add I18NPreamble tag
+
+currentFormat = 12
 
 
 def usage(prog_name):
@@ -120,6 +123,7 @@ def convert(lines):
     re_AMSMaths = re.compile(r'^\s*Input amsmaths.inc\s*')
     re_AMSMathsPlain = re.compile(r'^\s*Input amsmaths-plain.inc\s*')
     re_AMSMathsSeq = re.compile(r'^\s*Input amsmaths-seq.inc\s*')
+    re_TocLevel = re.compile(r'^(\s*)(TocLevel)(\s+)(\S+)', re.IGNORECASE)
 
     # counters for sectioning styles (hardcoded in 1.3)
     counters = {"part"          : "\\Roman{part}",
@@ -150,6 +154,7 @@ def convert(lines):
     i = 0
     only_comment = 1
     counter = ""
+    toclevel = ""
     label = ""
     labelstring = ""
     labelstringappendix = ""
@@ -196,6 +201,11 @@ def convert(lines):
             while i < len(lines) and not re_EndPreamble.match(lines[i]):
                 i += 1
             continue
+
+        # This just involved new features, not any changes to old ones
+        if format == 11:
+          i += 1
+          continue
 
         if format == 10:
             match = re_UseMod.match(lines[i])
@@ -400,11 +410,17 @@ def convert(lines):
             latextype = string.lower(match.group(4))
             latextype_line = i
 
+        # Remember the TocLevel line
+        match = re_TocLevel.match(lines[i])
+        if match:
+            toclevel = string.lower(match.group(4))
+
         # Reset variables at the beginning of a style definition
         match = re_Style.match(lines[i])
         if match:
             style = string.lower(match.group(4))
             counter = ""
+            toclevel = ""
             label = ""
             space1 = ""
             labelstring = ""
@@ -472,7 +488,7 @@ def convert(lines):
                 i += 1
 
             # Add the TocLevel setting for sectioning styles
-            if toclevels.has_key(style) and maxcounter <= toclevels[style]:
+            if toclevel == "" and toclevels.has_key(style) and maxcounter <= toclevels[style]:
                 lines.insert(i, '%sTocLevel %d' % (space1, toclevels[style]))
                 i += 1
 

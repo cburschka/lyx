@@ -13,12 +13,17 @@
 #include <config.h>
 
 #include "Layout.h"
+#include "Language.h"
 #include "TextClass.h"
 #include "Lexer.h"
 #include "Font.h"
 
+#include "support/Messages.h"
 #include "support/debug.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
+
+#include <boost/regex.hpp>
 
 using namespace std;
 using namespace lyx::support;
@@ -51,6 +56,7 @@ enum LayoutTags {
 	LT_FREE_SPACING,
 	LT_PASS_THRU,
 	//LT_HEADINGS,
+	LT_I18NPREAMBLE,
 	LT_ITEMSEP,
 	LT_KEEPEMPTY,
 	LT_LABEL_BOTTOMSEP,
@@ -144,6 +150,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "fill_top",       LT_FILL_TOP },
 		{ "font",           LT_FONT },
 		{ "freespacing",    LT_FREE_SPACING },
+		{ "i18npreamble",   LT_I18NPREAMBLE },
 		{ "innertag",       LT_INNERTAG },
 		{ "intitle",        LT_INTITLE },
 		{ "itemsep",        LT_ITEMSEP },
@@ -329,6 +336,10 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			preamble_ = from_utf8(lex.getLongString("EndPreamble"));
 			break;
 
+		case LT_I18NPREAMBLE:
+			i18npreamble_ = from_utf8(lex.getLongString("EndI18NPreamble"));
+			break;
+
 		case LT_LABELTYPE:
 			readLabelType(lex);
 			break;
@@ -404,7 +415,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		case LT_LABELSTRING:	// label string definition
 			// FIXME: this means LT_ENDLABELSTRING may only
 			// occur after LT_LABELSTRING
-			lex >> labelstring_;	
+			lex >> labelstring_;
 			labelstring_ = trim(labelstring_);
 			labelstring_appendix_ = labelstring_;
 			break;
@@ -760,6 +771,38 @@ docstring const & Layout::obsoleted_by() const
 docstring const & Layout::depends_on() const
 {
 	return depends_on_;
+}
+
+
+docstring const Layout::i18npreamble(Language const * lang) const
+{
+	if (i18npreamble_.empty())
+		return i18npreamble_;
+	string preamble = subst(to_utf8(i18npreamble_), "$$lang",
+	                        lang->babel());
+#ifdef TEX2LYX
+	// tex2lyx does not have getMessages()
+	LASSERT(false, /**/);
+#else
+	// FIXME UNICODE
+	// boost::regex is not unicode-safe.
+	// Should use QRegExp or (boost::u32regex, but that requires ICU)
+	static boost::regex const reg("_\\(([^\\)]+)\\)");
+	boost::smatch sub;
+	while (boost::regex_search(preamble, sub, reg)) {
+		string const key = sub.str(1);
+		string translated;
+		if (isAscii(key))
+			translated = to_utf8(getMessages(lang->code()).get(key));
+		else {
+			lyxerr << "Warning: not translating `" << key
+			       << "' because it is not pure ASCII." << endl;
+			translated = key;
+		}
+		preamble = subst(preamble, sub.str(), translated);
+	}
+#endif
+	return from_utf8(preamble);
 }
 
 

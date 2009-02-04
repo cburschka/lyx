@@ -24,6 +24,7 @@
 
 namespace lyx {
 
+class Language;
 class Lexer;
 class TextClass;
 
@@ -89,6 +90,9 @@ public:
 	docstring const & category() const { return category_; }
 	///
 	docstring const & preamble() const { return preamble_; }
+	/// Get language dependent macro definitions needed for this layout
+	/// for language \p lang
+	docstring const i18npreamble(Language const * lang) const;
 	///
 	std::set<std::string> const & requires() const { return requires_; }
 	///
@@ -266,6 +270,8 @@ private:
 	docstring category_;
 	/// Macro definitions needed for this layout
 	docstring preamble_;
+	/// Language dependent macro definitions needed for this layout
+	docstring i18npreamble_;
 	/// Packages needed for this layout
 	std::set<std::string> requires_;
 };
