@@ -87,9 +87,9 @@ int InsetFlex::plaintext(odocstream & os, OutputParams const & runparams) const
 
 int InsetFlex::docbook(odocstream & os, OutputParams const & runparams) const
 {
-	ParagraphList::const_iterator beg = paragraphs().begin();
+	ParagraphList::const_iterator const beg = paragraphs().begin();
 	ParagraphList::const_iterator par = paragraphs().begin();
-	ParagraphList::const_iterator end = paragraphs().end();
+	ParagraphList::const_iterator const end = paragraphs().end();
 
 	if (!undefined())
 		sgml::openTag(os, getLayout().latexname(),
