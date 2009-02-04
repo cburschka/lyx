@@ -60,9 +60,9 @@ private:
 	///
 	docstring editMessage() const;
 	///
-	docstring name() const;
+	InsetCode lyxCode() const { return PHANTOM_CODE; }
 	///
-	DisplayType display() const;
+	docstring name() const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

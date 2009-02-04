@@ -137,15 +137,9 @@ docstring InsetPhantom::name() const
 }
 
 
-Inset::DisplayType InsetPhantom::display() const
-{
-	return Inline;
-}
-
-
 void InsetPhantom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	InsetText::metrics(mi, dim);
+	InsetCollapsable::metrics(mi, dim);
 
 	// cache the inset dimension
 	setDimCache(mi, dim);
@@ -155,7 +149,7 @@ void InsetPhantom::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetPhantom::draw(PainterInfo & pi, int x, int y) const
 {
 	// draw the text
-	InsetText::draw(pi, x, y);
+	InsetCollapsable::draw(pi, x, y);
 
 	// draw the inset marker
 	drawMarkers(pi, x, y);
@@ -308,7 +302,7 @@ docstring InsetPhantom::toolTip(BufferView const &, int, int) const
 {
 	OutputParams rp(&buffer().params().encoding());
 	odocstringstream ods;
-	InsetText::plaintext(ods, rp);
+	InsetCollapsable::plaintext(ods, rp);
 	docstring content_tip = ods.str();
 	// shorten it if necessary
 	if (content_tip.size() > 200)
@@ -320,43 +314,39 @@ docstring InsetPhantom::toolTip(BufferView const &, int, int) const
 }
 
 
-int InsetPhantom::latex(odocstream & os, OutputParams const & runparams_in) const
+int InsetPhantom::latex(odocstream & os, OutputParams const & runparams) const
 {
-	OutputParams runparams(runparams_in);
 	if (params_.type == InsetPhantomParams::Phantom)
 		os << "\\phantom{";
 	else if (params_.type == InsetPhantomParams::HPhantom)
 		os << "\\hphantom{";
 	else if (params_.type == InsetPhantomParams::VPhantom)
 		os << "\\vphantom{";
-	int const i = InsetText::latex(os, runparams);
+	int const i = InsetCollapsable::latex(os, runparams);
 	os << "}";
-	runparams_in.encoding = runparams.encoding;
 
-	return i + 2;
+	return i;
 }
 
 
 int InsetPhantom::plaintext(odocstream & os,
-			 OutputParams const & runparams_in) const
+			    OutputParams const & runparams) const
 {
-	OutputParams runparams(runparams_in);
 	if (params_.type == InsetPhantomParams::Phantom)
 		os << '[' << buffer().B_("phantom") << ":";
 	else if (params_.type == InsetPhantomParams::HPhantom)
 		os << '[' << buffer().B_("hphantom") << ":";
 	else if (params_.type == InsetPhantomParams::VPhantom)
 		os << '[' << buffer().B_("vphantom") << ":";
-	InsetText::plaintext(os, runparams);
+	InsetCollapsable::plaintext(os, runparams);
 	os << "]";
 
 	return PLAINTEXT_NEWLINE;
 }
 
 
-int InsetPhantom::docbook(odocstream & os, OutputParams const & runparams_in) const
+int InsetPhantom::docbook(odocstream & os, OutputParams const & runparams) const
 {
-	OutputParams runparams(runparams_in);
 	string cmdname;
 	if (params_.type == InsetPhantomParams::Phantom)
 		cmdname = "phantom";
@@ -365,7 +355,7 @@ int InsetPhantom::docbook(odocstream & os, OutputParams const & runparams_in) co
 	else if (params_.type == InsetPhantomParams::VPhantom)
 		cmdname = "phantom";
 	os << "<" + cmdname + ">";
-	int const i = InsetText::docbook(os, runparams);
+	int const i = InsetCollapsable::docbook(os, runparams);
 	os << "</" + cmdname + ">";
 
 	return i;
