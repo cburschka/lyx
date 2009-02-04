@@ -89,7 +89,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix crash when reading document with a numbered equation (bug 5688).
+- Fix crash when reading document with specific types of numbered equation
+  produced with tex2lyx (bug 5688).
 
 - Fix crash when reading files created by tex2lyx in the presence of an
   empty child document (bug 4859).
@@ -137,9 +138,16 @@ What's new
 
 * USER INTERFACE
 
-- Fix crash when no file is open and the creation of a new document fails.
+- Fix a crash when no file is open and the creation of a new document
+  fails.
 
-- Fix crash when using a math related function in an ERT inset (bug 5703).
+- Fix a crash when using a math related function in an ERT inset
+  (bug 5703).
+
+- Fix a crash when copying a matrix column (bug 5731).
+
+- Fix a crash when pressing the Home or End key while the cursor is not in
+  the current view (bug 5736).
 
 - Ignore the master_buffer setting in Document>Settings if the current
   document is no real child. This fixes a crash when using the outliner
@@ -211,10 +219,6 @@ What's new
 - Limit workaround for Qt bug (bug 4513) that was fixed in Qt 4.3.4 to
   older Qt versions. The workaround resulted in unwanted display of hidden
   directories on UNIX.
-
-- Fix bug that copying a matrix column could crash LyX (bug 5731).
-
-- Fix problem that pressing the Home or End key could crash LyX (bug 5736).
 
 
 * DOCUMENTATION AND LOCALIZATION
