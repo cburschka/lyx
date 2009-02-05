@@ -1374,7 +1374,7 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE: {
-		string const s = to_utf8(cmd.argument());
+		string const s = cmd.getArg(0);
 		if (nrows() <= 1 && (s == "delete-row" || s == "swap-row")) {
 			status.setEnabled(false);
 			status.message(from_utf8(N_("Only one row")));
