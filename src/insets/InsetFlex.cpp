@@ -61,12 +61,6 @@ void InsetFlex::write(ostream & os) const
 }
 
 
-int InsetFlex::plaintext(odocstream & os, OutputParams const & runparams) const
-{
-	return InsetText::plaintext(os, runparams);
-}
-
-
 int InsetFlex::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	ParagraphList::const_iterator const beg = paragraphs().begin();
