@@ -1,11 +1,11 @@
 # installer settings
 # You should need to change only these macros for new releases.
 
-!define INSTALLER_SUBVERSION "17"
+!define INSTALLER_SUBVERSION "18"
 !define PRODUCT_DIR "D:\LyXPackage1.6"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.6.1"
-!define PRODUCT_VERSION_SHORT "161"
+!define PRODUCT_VERSION "1.6.2"
+!define PRODUCT_VERSION_SHORT "162"
 !define PRODUCT_SUBFOLDER "lyx16"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
 !define PRODUCT_SOURCEDIR "${PRODUCT_DIR}\LyX"
@@ -40,11 +40,11 @@ BrandingText "LyXWinInstaller v4.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 
 # definitions for the Update installer
 !if ${INSTALLER_VERSION} == "Update"
- !define PRODUCT_VERSION_SHORT_OLD "160"
+ !define PRODUCT_VERSION_SHORT_OLD "161"
  !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX${PRODUCT_VERSION_SHORT_OLD}"
- !define PRODUCT_VERSION_OLD "LyX 1.6.0"
+ !define PRODUCT_VERSION_OLD "LyX 1.6.1"
  !define JabRefVersion "2.4.2" # could be an older version
- !define ImageMagickVersion_Old "6.4.5" # could be an older version
+ !define ImageMagickVersion_Old "6.4.7" # could be an older version
  !define GhostscriptVersion_Old "8.63" # could be an older version
  !define MiKTeXDeliveredVersion "2.7" # could be an older version
 !endif
@@ -66,11 +66,11 @@ BrandingText "LyXWinInstaller v4.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
-!define ImageMagickVersion "6.4.7"
+!define ImageMagickVersion "6.4.9"
 # for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
 !define ImageMagickDir "$INSTDIR\etc\ImageMagick"
 !define GhostscriptDir "$INSTDIR\etc\Ghostscript"
-!define GhostscriptVersion "8.63"
+!define GhostscriptVersion "8.64"
 !define Metafile2epsDir "$INSTDIR\etc\Metafile2eps"
 !define AiksaurusDir "$APPDATA\Aiksaurus"
 !define AiksaurusInstall "external\Aiksaurus"
