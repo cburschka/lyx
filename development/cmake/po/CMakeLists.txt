@@ -9,6 +9,7 @@ project(po)
 
 include_directories(${TOP_SRC_DIR}/po)
 
+SET(_lyxname ${PACKAGE})
 SET(_py_sources)
 macro(add_gettext_python  _par _dir)
   file(GLOB _sources ${TOP_SRC_DIR}/${_dir}/${ARGN})
@@ -24,9 +25,9 @@ macro(add_gettext_python  _par _dir)
   LIST(APPEND _py_sources "${_dst}")
 endmacro(add_gettext_python)
 
-SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/lyx.cat.pot" GENERATED)
-SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/lyx.fmt.pot" GENERATED)
-SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/lyx.pot" GENERATED)
+SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot" GENERATED)
+SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" GENERATED)
+SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot" GENERATED)
 
 add_gettext_python(encodings lib encodings)
 add_gettext_python(external lib external_templates)
@@ -46,36 +47,41 @@ FIND_PROGRAM(GETTEXT_MSGUNIQ_EXECUTABLE msguniq)
 # But maybe Jose knows?
 
 ADD_CUSTOM_COMMAND(
-    OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/lyx.cat.pot"
+    OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     COMMAND perl
-    ARGS -e "\"while(<>){print;}\"" ${_py_sources} > "${CMAKE_CURRENT_BINARY_DIR}/lyx.cat.pot"
+    ARGS -e "\"while(<>){print;}\"" ${_py_sources} > "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     DEPENDS ${_py_sources}
     )
 
 ADD_CUSTOM_COMMAND(
-    OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/lyx.fmt.pot"
+    OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot"
     COMMAND ${GETTEXT_MSGUNIQ_EXECUTABLE}
-    ARGS -o "${CMAKE_CURRENT_BINARY_DIR}/lyx.fmt.pot" "${CMAKE_CURRENT_BINARY_DIR}/lyx.cat.pot"
-    DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/lyx.cat.pot"
+    ARGS -o "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
+    DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     )
 
-file(STRINGS "${TOP_SRC_DIR}/po/POTFILES.in" _tmppotfiles_dep)
 SET(_potfiles_dep)
-foreach(_f ${_tmppotfiles_dep})
-  LIST(APPEND _potfiles_dep "${TOP_SRC_DIR}/${_f}")
-endforeach(_f)
+
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in "")
+foreach(_dir src src/frontends/qt4 src/insets src/mathed src/support src/tex2lyx)
+    file(GLOB _tmp_potfiles RELATIVE ${TOP_SRC_DIR} ${TOP_SRC_DIR}/${_dir}/*.cpp)
+    foreach(_f ${_tmp_potfiles})
+	LIST(APPEND _potfiles_dep "${TOP_SRC_DIR}/${_f}")
+	file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in "${_f}\n")
+    endforeach(_f)
+endforeach(_dir)
 
 ADD_CUSTOM_COMMAND(
-    OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/lyx.pot"
-    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/lyx.fmt.pot" "${CMAKE_CURRENT_BINARY_DIR}/lyx.pot"
+    OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
+    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
     COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE}
-    ARGS --default-domain=lyx --directory=${TOP_SRC_DIR} --add-comments=TRANSLATORS: --language=C++ --join-existing --keyword=_ --keyword=N_ --keyword=B_ --keyword=qt_ --files-from="${TOP_SRC_DIR}/po/POTFILES.in" --copyright-holder='LyX Developers' --msgid-bugs-address=lyx-devel@lists.lyx.org -o "${CMAKE_CURRENT_BINARY_DIR}/lyx.pot"
-    DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/lyx.fmt.pot" ${_potfiles_dep}
+    ARGS --default-domain=${_lyxname} --directory=${TOP_SRC_DIR} --add-comments=TRANSLATORS: --language=C++ --join-existing --keyword=_ --keyword=N_ --keyword=B_ --keyword=qt_ --files-from="${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in" --copyright-holder='LyX Developers' --msgid-bugs-address=lyx-devel@lists.lyx.org -o "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
+    DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" ${_potfiles_dep}
     )
 
 file(GLOB LYX_PO_FILES ${TOP_SRC_DIR}/po/*.po)
 
-GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/lyx.pot ALL ${LYX_PO_FILES})
+GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot ALL ${LYX_PO_FILES})
 
 # ADD_POFILES("lyx")
 
