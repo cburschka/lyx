@@ -2146,9 +2146,9 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_MODIFY
  * \li Action: Modify existing inset.
- * \li Notion: Used for label, floats, listings, box, branch, external, wrap
-               bibtex, ert, command, graphics, note, space, vspace, tabular,
-               bibitem, inlude, ref insets.
+ * \li Notion: Used for bibitem, bibtex, box, branch, command, ert, external,
+                        floats, graphics, include, label, listings, note,
+                        phantom, ref, space, tabular, vspace, wrap insets.
  * \li Syntax: inset-modify <INSET> <ARGS>
  * \li Params: See #LFUN_INSET_INSERT for further details.
  * \endvar
@@ -2157,9 +2157,9 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_NEXT_INSET_MODIFY
  * \li Action: Modify the inset at cursor position, if there is one.
- * \li Notion: Used for label, floats, listings, box, branch, external, wrap
-               bibtex, ert, command, graphics, note, space, vspace, tabular,
-               bibitem, inlude, ref insets.
+ * \li Notion: Used for bibitem, bibtex, box, branch, command, ert, external,
+                        floats, graphics, include, label, listings, note,
+                        phantom, ref, space, tabular, vspace, wrap insets.
  * \li Syntax: next-inset-modify <INSET> <ARGS>
  * \li Syntax: next-inset-modify changetype <TYPE>
  * \li Params: See #LFUN_INSET_INSERT for further details.
@@ -2182,7 +2182,7 @@ void LyXAction::init()
  * \li Action: Open the inset's properties dialog.
  * \li Notion: Used for box, branch, ert, float, listings, note, tabular, wrap insets.
  * \li Syntax: inset-settings <INSET>
- * \li Params: <INSET>: <box|branch|ert|float|listings|note|tabular|wrap>
+ * \li Params: <INSET>: <box|branch|ert|float|listings|note|phantom|tabular|wrap>
  * \endvar
  */
 		{ LFUN_INSET_SETTINGS, "inset-settings", ReadOnly, Edit },
@@ -2191,9 +2191,9 @@ void LyXAction::init()
  * \li Action: Toggles the inset at cursor position. For collapsables, this means it will
                be (un-)collapsed, in case of other insets, the editing widget (dialog) will
                be entered. Also cf. #LFUN_INSET_SETTINGS.
- * \li Notion: Used for label, floats, listings, box, branch, external, wrap
-               bibtex, ert, command, graphics, note, space, vspace, tabular,
-               bibitem, inlude, ref insets.
+ * \li Notion: Used for bibitem, bibtex, box, branch, command, ert, external,
+                        floats, graphics, include, label, listings, note,
+                        phantom, ref, space, tabular, vspace, wrap insets.
  * \li Syntax: next-inset-toggle <ARG>
  * \li Params: <ARG>: these are passed as arguments to #LFUN_INSET_TOGGLE .
  * \li Origin: leeming, 30 Mar 2004
@@ -2442,10 +2442,10 @@ void LyXAction::init()
  * \li Syntax: dialog-show <NAME> [<DATA>]
  * \li Params: <NAME>: aboutlyx|bibitem|bibtex|box|branch|changes|character|citation|\n
                document|errorlist|ert|external|file|findreplace|float|graphics|\n
-               include|index|info|nomenclature|label|log|mathdelimiter|mathmatrix|\n
-               note|paragraph|prefs|print|ref|sendto|space|spellchecker|symbols|\n
-               tabular|tabularcreate|thesaurus|texinfo|toc|href|view-source|vspace\n
-               wrap|listings|<SPECIAL> \n
+               include|index|info|nomenclature|label|listings|log|mathdelimiter|\n
+               mathmatrix|note|paragraph|phantom|prefs|print|ref|sendto|space|\n
+               spellchecker|symbols|tabular|tabularcreate|thesaurus|texinfo|toc|href|\n
+               view-source|vspace|wrap|<SPECIAL> \n
                <SPECIAL>: latexlog|vclog \n
                <DATA>: data, usually settings for the given dialog. Use debug mode for the
                        details.

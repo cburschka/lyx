@@ -2297,10 +2297,11 @@ namespace {
 
 char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
-"citation", "document", "errorlist", "ert", "external", "file",
-"findreplace", "float", "graphics", "include", "index", "info", "nomenclature", "label", "log",
-"mathdelimiter", "mathmatrix", "mathspace", "note", "paragraph", "prefs", "print", 
-"ref", "sendto", "space", "spellchecker", "symbols", "tabular", "tabularcreate",
+"citation", "document", "errorlist", "ert", "external", "file", "findreplace",
+"float", "graphics", "include", "index", "info", "nomenclature", "label",
+"log", "mathdelimiter", "mathmatrix", "mathspace", "note", "paragraph",
+"phantom", "prefs", "print", "ref", "sendto", "space", "spellchecker",
+"symbols", "tabular", "tabularcreate",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -2490,6 +2491,7 @@ Dialog * createGuiMathMatrix(GuiView & lv);
 Dialog * createGuiNomenclature(GuiView & lv);
 Dialog * createGuiNote(GuiView & lv);
 Dialog * createGuiParagraph(GuiView & lv);
+Dialog * createGuiPhantom(GuiView & lv);
 Dialog * createGuiPreferences(GuiView & lv);
 Dialog * createGuiPrint(GuiView & lv);
 Dialog * createGuiRef(GuiView & lv);
@@ -2559,8 +2561,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiLabel(*this);
 	if (name == "log")
 		return createGuiLog(*this);
-	if (name == "view-source")
-		return createGuiViewSource(*this);
 	if (name == "mathdelimiter")
 		return createGuiDelimiter(*this);
 	if (name == "mathspace")
@@ -2571,6 +2571,8 @@ Dialog * GuiView::build(string const & name)
 		return createGuiNote(*this);
 	if (name == "paragraph")
 		return createGuiParagraph(*this);
+	if (name == "phantom")
+		return createGuiPhantom(*this);
 	if (name == "prefs")
 		return createGuiPreferences(*this);
 	if (name == "print")
@@ -2591,20 +2593,22 @@ Dialog * GuiView::build(string const & name)
 		return createGuiTabularCreate(*this);
 	if (name == "texinfo")
 		return createGuiTexInfo(*this);
+	if (name == "view-source")
+		return createGuiViewSource(*this);
 #ifdef HAVE_LIBAIKSAURUS
 	if (name == "thesaurus")
 		return createGuiThesaurus(*this);
 #endif
-	if (name == "toc")
-		return createGuiToc(*this);
 	if (name == "href")
 		return createGuiHyperlink(*this);
+	if (name == "listings")
+		return createGuiListings(*this);
+	if (name == "toc")
+		return createGuiToc(*this);
 	if (name == "vspace")
 		return createGuiVSpace(*this);
 	if (name == "wrap")
 		return createGuiWrap(*this);
-	if (name == "listings")
-		return createGuiListings(*this);
 
 	return 0;
 }

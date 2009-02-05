@@ -100,6 +100,7 @@ SOURCEFILES = \
 	GuiNote.cpp \
 	GuiPainter.cpp \
 	GuiParagraph.cpp \
+	GuiPhantom.cpp \
 	GuiPrefs.cpp \
 	GuiPrint.cpp \
 	GuiRef.cpp \
@@ -193,6 +194,7 @@ MOCHEADER = \
 	GuiNomencl.h \
 	GuiNote.h \
 	GuiParagraph.h \
+	GuiPhantom.h \
 	GuiPrefs.h \
 	GuiPrint.h \
 	GuiRef.h \
@@ -268,6 +270,7 @@ UIFILES = \
 	PageLayoutUi.ui \
 	ParagraphUi.ui \
 	PDFSupportUi.ui \
+	PhantomUi.ui \
 	PreambleUi.ui \
 	PrefColorsUi.ui \
 	PrefCompletionUi.ui \

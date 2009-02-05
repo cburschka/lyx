@@ -1,0 +1,104 @@
+<ui version="4.0" >
+ <class>PhantomUi</class>
+ <widget class="QDialog" name="PhantomUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>202</width>
+    <height>184</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <property name="sizeGripEnabled" >
+   <bool>true</bool>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="1" column="1" >
+    <widget class="QPushButton" name="closePB" >
+     <property name="text" >
+      <string>Close</string>
+     </property>
+     <property name="default" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QPushButton" name="okPB" >
+     <property name="text" >
+      <string>&amp;OK</string>
+     </property>
+     <property name="default" >
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2" >
+    <widget class="QGroupBox" name="PhantomBG" >
+     <property name="title" >
+      <string>Type</string>
+     </property>
+     <layout class="QVBoxLayout" >
+      <property name="margin" >
+       <number>11</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QRadioButton" name="phantomRB" >
+        <property name="toolTip" >
+         <string>Horizontal and vertical space of the phantom content</string>
+        </property>
+        <property name="text" >
+         <string>&amp;Phantom</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="hphantomRB" >
+        <property name="toolTip" >
+         <string>Horizontal space of the phantom content</string>
+        </property>
+        <property name="text" >
+         <string>&amp;Horiz. Phantom</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="vphantomRB" >
+        <property name="toolTip" >
+         <string>Vertical space of the phantom content</string>
+        </property>
+        <property name="text" >
+         <string>&amp;Vert. Phantom</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>phantomRB</tabstop>
+  <tabstop>vphantomRB</tabstop>
+  <tabstop>vphantomRB</tabstop>
+  <tabstop>okPB</tabstop>
+  <tabstop>closePB</tabstop>
+ </tabstops>
+ <includes>
+  <include location="local" >qt_i18n.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>

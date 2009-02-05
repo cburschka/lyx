@@ -120,6 +120,7 @@ Menuset
 		OptItem "Float Settings...|a" "inset-settings float"
 		OptItem "Text Wrap Settings...|W" "inset-settings wrap"
 		OptItem "Note Settings...|N" "inset-settings note"
+		OptItem "Phantom Settings...|h" "inset-settings phantom"
 		OptItem "Branch Settings...|B" "inset-settings branch"
 		OptItem "Box Settings...|x" "inset-settings box"
 		OptItem "Listings Settings...|g" "inset-settings listings"
@@ -375,7 +376,7 @@ Menuset
 		Item "Horizontal Space...|o" "dialog-show-new-inset space"
 		Item "Horizontal Line|L" "line-insert"
 		Item "Vertical Space...|V" "dialog-show-new-inset vspace"
-		Submenu "Phantom Text" "insert_phantom"
+		Submenu "Phantom" "insert_phantom"
 		Separator
 		Item "Hyphenation Point|H" "specialchar-insert hyphenation"
 		Item "Ligature Break|k" "specialchar-insert ligature-break"
