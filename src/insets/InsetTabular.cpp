@@ -3391,18 +3391,14 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// LEFT or RIGHT commands --- the interpretation will depend on the 
 		// table's direction.
 		else {
-			bool right = (cmd.action == LFUN_CHAR_RIGHT
-							|| cmd.action == LFUN_CHAR_RIGHT_SELECT);
-			next_cell = (isRightToLeft(cur) != right);
+			bool const right = cmd.action == LFUN_CHAR_RIGHT
+				|| cmd.action == LFUN_CHAR_RIGHT_SELECT;
+			next_cell = isRightToLeft(cur) != right;
 			
-			if (lyxrc.visual_cursor) {
+			if (lyxrc.visual_cursor)
 				entry_from = right ? ENTRY_DIRECTION_LEFT:ENTRY_DIRECTION_RIGHT;
-			}
 
-			if (right)
-				finish_lfun = LFUN_FINISHED_RIGHT;
-			else
-				finish_lfun = LFUN_FINISHED_LEFT;
+			finish_lfun = right ? LFUN_FINISHED_RIGHT : LFUN_FINISHED_LEFT;
 		}
 
 		// if we don't have a multicell selection...
