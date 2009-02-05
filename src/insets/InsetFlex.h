@@ -33,8 +33,6 @@ public:
 	InsetCode lyxCode() const { return FLEX_CODE; }
 	///
 	void write(std::ostream &) const;
-	///
-	void read(Lexer & lex);
 
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
