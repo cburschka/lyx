@@ -254,7 +254,7 @@ Verfasser: Uwe Stöhr
 
 
 \family sans
-Version 1.6svn
+Version 1.6.x
 \end_layout
 
 \begin_layout Standard
@@ -14853,7 +14853,7 @@ Mathe-Optionen
 
 
 \begin_inset Tabular
-<lyxtabular version="3" rows="11" columns="2">
+<lyxtabular version="3" rows="9" columns="2">
 <features>
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -14958,31 +14958,6 @@ int
 \begin_layout Plain Layout
 
 \backslash
-intop
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\intop$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
 oint
 \end_layout
 
@@ -14993,31 +14968,6 @@ oint
 
 \begin_layout Plain Layout
 \begin_inset Formula $\oint$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-ointop
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ointop$
 \end_inset
 
 
@@ -15452,32 +15402,34 @@ Die Operatoren werden als groß bezeichnet, da sie größer sind als die zum
 \end_layout
 
 \begin_layout Standard
-Die Operatoren 
+Für alle Integrale gibt es Befehle, die auf 
+\series bold
+op
+\series default
+ enden: 
 \series bold
 
 \backslash
 intop
 \series default
- und 
+, 
 \series bold
 
 \backslash
 ointop
 \series default
- unterscheiden sich von 
+ usw..
+ Diese unterscheiden sich von 
 \series bold
 
 \backslash
 int
 \series default
- bzw.
- 
-\series bold
+ usw.
+\begin_inset space \space{}
+\end_inset
 
-\backslash
-oint
-\series default
- in der Art wie die Operatorgrenzen dargestellt werden, siehe 
+in der Art wie die Operatorgrenzen dargestellt werden, siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Operatorgrenzen"
@@ -15987,19 +15939,23 @@ So sieht die Formel aus, wenn man die Grenzen neben das Summenzeichen setzt:
 
 \end_inset
 
-Bei Integralen werden mit Ausnahme von 
+Bei Integralen werden mit Ausnahme von denen, die auf 
+\series bold
+op
+\series default
+ enden (
 \series bold
 
 \backslash
 intop
 \series default
- und 
+, 
 \series bold
 
 \backslash
 ointop
 \series default
- die Grenzen standardmäßig neben den Operator gesetzt.
+ usw.), die Grenzen standardmäßig neben den Operator gesetzt.
  Bei Mehrfachintegralen werden die Grenzen jedoch meistens unter den Operator
  gesetzt.
  Im folgenden Beispiel wurde die Grenze deswegen auf 

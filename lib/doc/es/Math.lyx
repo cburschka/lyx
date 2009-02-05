@@ -14970,7 +14970,7 @@ Ecuaciones
 
 
 \begin_inset Tabular
-<lyxtabular version="3" rows="11" columns="2">
+<lyxtabular version="3" rows="9" columns="2">
 <features>
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -15075,31 +15075,6 @@ int
 \begin_layout Plain Layout
 
 \backslash
-intop
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\intop$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
 oint
 \end_layout
 
@@ -15110,31 +15085,6 @@ oint
 
 \begin_layout Plain Layout
 \begin_inset Formula $\oint$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-ointop
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ointop$
 \end_inset
 
 
@@ -15569,31 +15519,43 @@ Estos operadores son llamados grandes porque son mayores que los operadores
 \end_layout
 
 \begin_layout Standard
-Los operadores 
+
+\lang english
+For all integral operators there is a second version available, ending on
+ 
+\series bold
+op
+\series default
+: 
 \series bold
 
 \backslash
 intop
 \series default
- y 
+, 
 \series bold
 
 \backslash
 ointop
 \series default
+ etc..
+ These
+\lang spanish
+ operadores 
+\lang english
+are
+\lang spanish
  difieren de 
 \series bold
 
 \backslash
 int
 \series default
- y 
-\series bold
+ etc.
+\begin_inset space \space{}
+\end_inset
 
-\backslash
-oint
-\series default
- en el estilo en que se presentan los límites, véase
+en el estilo en que se presentan los límites, véase
 \series bold
  
 \series default
@@ -16127,18 +16089,26 @@ Insertado
 
 \begin_layout Standard
 En integrales, excepto 
+\lang english
+those ending with 
+\series bold
+op
+\series default
+ like
+\lang spanish
+ 
 \series bold
 
 \backslash
 intop
 \series default
- y 
+, 
 \series bold
 
 \backslash
 ointop
 \series default
-, los límites se colocan por omisión junto al operador.
+ etc., los límites se colocan por omisión junto al operador.
  Pero en integrales múltiples los límites se ponen con frecuencia bajo el
  operador.
  Por tanto, en el siguiente ejemplo se ha elegido el tipo 

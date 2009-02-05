@@ -253,7 +253,7 @@ traducteur: Siegfried Meunier-Guttin-Cluzel
 
 
 \family sans
-Version 1.6svn
+Version 1.6.x
 \end_layout
 
 \begin_layout Standard
@@ -14712,16 +14712,12 @@ Options du mode math.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset space \hfill{}
 \end_inset
 
 
-\lang french
-
 \begin_inset Tabular
-<lyxtabular version="3" rows="11" columns="2">
+<lyxtabular version="3" rows="9" columns="2">
 <features>
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -14826,31 +14822,6 @@ int
 \begin_layout Plain Layout
 
 \backslash
-intop
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\intop$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
 oint
 \end_layout
 
@@ -14861,31 +14832,6 @@ oint
 
 \begin_layout Plain Layout
 \begin_inset Formula $\oint$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-ointop
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\ointop$
 \end_inset
 
 
@@ -15295,8 +15241,6 @@ biguplus
 \end_inset
 
 
-\lang english
-
 \begin_inset space \hfill{}
 \end_inset
 
@@ -15331,31 +15275,39 @@ grands
 \end_layout
 
 \begin_layout Standard
-Les opérateurs 
+
+\lang english
+For all integral operators there is a second version available, ending on
+ 
+\series bold
+op
+\series default
+: 
 \series bold
 
 \backslash
 intop
 \series default
- et 
+, 
 \series bold
 
 \backslash
 ointop
 \series default
- sont différents de respectivement
+ etc..
+ These operators
+\lang french
+ sont différents de
 \series bold
  
 \backslash
 int
 \series default
- et 
-\series bold
+ etc.
+\begin_inset space \space{}
+\end_inset
 
-\backslash
-oint
-\series default
-, dans la manière dont sont affichés les limites, voir 
+dans la manière dont sont affichés les limites, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Limites-des-opérateurs"
@@ -15883,18 +15835,26 @@ ligne
 \end_inset
 
 Pour les intégrales, à part pour 
+\lang english
+those ending with 
+\series bold
+op
+\series default
+ like
+\lang french
+ 
 \series bold
 
 \backslash
 intop
 \series default
- et 
+, 
 \series bold
 
 \backslash
 ointop
 \series default
-, les limites sont placées par défaut après l'opérateur.
+ etc., les limites sont placées par défaut après l'opérateur.
  Mais pour les intégrales multiples les limites sont souvent placées sous
  l'opérateur.
  Dans l'exemple suivant, le type de limites a donc été mis à 
