@@ -22,7 +22,6 @@
 
 #include <ostream>
 
-//#include "support/debug.h"
 using namespace std;
 
 namespace lyx {
