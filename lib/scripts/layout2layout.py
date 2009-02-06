@@ -42,7 +42,10 @@ import os, re, string, sys
 # Incremented to format 12, 10 January 2009 by gb
 # Add I18NPreamble tag
 
-currentFormat = 12
+# Incremented to format 13, 5 February 2009 by rgh
+# Add InToc tag for InsetLayout
+
+currentFormat = 13
 
 
 def usage(prog_name):
@@ -202,8 +205,8 @@ def convert(lines):
                 i += 1
             continue
 
-        # This just involved new features, not any changes to old ones
-        if format == 11:
+        # These just involved new features, not any changes to old ones
+        if format == 11 or format == 12:
           i += 1
           continue
 

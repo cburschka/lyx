@@ -96,6 +96,8 @@ public:
 	bool isKeepEmpty() const { return keepempty_; };
 	///
 	bool isForceLtr() const { return forceltr_; };
+	///
+	bool isInToc() const { return intoc_; };
 private:
 	///
 	docstring name_;
@@ -141,6 +143,8 @@ private:
 	bool keepempty_;
 	///
 	bool forceltr_;
+	/// should the contents be written to TOC strings?
+	bool intoc_;
 };
 
 ///

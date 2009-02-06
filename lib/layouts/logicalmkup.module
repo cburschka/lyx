@@ -16,6 +16,7 @@ InsetLayout CharStyle:Noun
 	  Shape               Smallcaps
 	EndFont
 	Requires              noun
+	InToc                 true
 End
 
 
@@ -27,6 +28,7 @@ InsetLayout CharStyle:Emph
 	Font
 	  Shape               Italic
 	EndFont
+	InToc                 true
 End
 
 
@@ -41,6 +43,7 @@ InsetLayout CharStyle:Strong
 	Preamble
 	\newcommand{\strong}[1]{\textbf{#1}}
 	EndPreamble
+	InToc                 true
 End
 
 
@@ -55,5 +58,5 @@ InsetLayout CharStyle:Code
 	Preamble
 	\newcommand{\code}[1]{\texttt{#1}}
 	EndPreamble
+	InToc                 true
 End
-

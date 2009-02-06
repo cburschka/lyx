@@ -37,7 +37,7 @@ InsetLayout::InsetLayout() :
 	labelfont_(sane_font), bgcolor_(Color_error), 
 	multipar_(false), custompars_(false), forceplain_(true), 
 	passthru_(false), needprotect_(false), freespacing_(false), 
-	keepempty_(false), forceltr_(false)
+	keepempty_(false), forceltr_(false), intoc_(false)
 { 
 	labelfont_.setColor(Color_error);
 }
@@ -81,6 +81,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_FORCELTR,
 		IL_FORCEPLAIN,
 		IL_FREESPACING,
+		IL_INTOC,
 		IL_LABELFONT,
 		IL_LABELSTRING,
 		IL_LATEXNAME,
@@ -107,6 +108,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "forceltr", IL_FORCELTR },
 		{ "forceplain", IL_FORCEPLAIN },
 		{ "freespacing", IL_FREESPACING },
+		{ "intoc", IL_INTOC },
 		{ "keepempty", IL_KEEPEMPTY },
 		{ "labelfont", IL_LABELFONT },
 		{ "labelstring", IL_LABELSTRING },
@@ -181,6 +183,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_FORCELTR:
 			lex >> forceltr_;
+			break;
+		case IL_INTOC:
+			lex >> intoc_;
 			break;
 		case IL_MULTIPAR:
 			lex >> multipar_;

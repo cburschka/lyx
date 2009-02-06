@@ -12396,6 +12396,46 @@ reference "des:FreeSpacing"
 status collapsed
 
 \begin_layout Plain Layout
+InToc
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Whether to include the contents of this inset in the strings generated
+ for the `Outline' pane.
+ One would not, for example, want the content of a footnote in a section
+ header to be included in the TOC displayed in the outline, but one would
+ normally want the content of a character style displayed.
+ Default is false: not to include.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 KeepEmpty
 \end_layout
 

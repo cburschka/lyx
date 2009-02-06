@@ -87,6 +87,7 @@ InsetLayout Custom:Glosse
 			\gll #1}
 		{\glend}}{}
 	EndPreamble
+	InToc                 true
 End
 
 
@@ -106,6 +107,7 @@ InsetLayout Custom:Tri-Glosse
 	ForcePlain            true
 	PassThru              true
 	FreeSpacing           true
+	InToc                 true
 	Requires	      covington
 	Preamble
 		\@ifundefined{lingglosss}{%
@@ -128,6 +130,7 @@ InsetLayout CharStyle:Expression
 	Preamble
 		\newcommand{\lingexpr}[1]{\emph{#1}}
 	EndPreamble
+	InToc                 true
 End
 
 
@@ -142,6 +145,7 @@ InsetLayout CharStyle:Concepts
 	Preamble
 		\newcommand{\lingconcept}[1]{\textsc{#1}}
 	EndPreamble
+	InToc                 true
 End
 
 
@@ -150,10 +154,11 @@ InsetLayout CharStyle:Meaning
 	LabelString           meaning
 	LatexType             command
 	LatexName             lingmeaning
-	Requires	      csquotes
+	Requires              csquotes
 	Preamble
 		\newcommand{\lingmeaning}[1]{\enquote*{#1}}
 	EndPreamble
+	InToc                 true
 End
 
 

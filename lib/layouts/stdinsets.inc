@@ -193,6 +193,7 @@ InsetLayout Branch
 	  Size                Small
 	EndFont
 	MultiPar              true
+	InToc                 true
 End
 
 InsetLayout Index
