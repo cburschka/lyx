@@ -91,8 +91,6 @@ private:
 
 	///
 	Tabular::idx_type getActiveCell() const;
-	/// return true if units should default to metric
-	bool useMetricUnits() const;
 	/// set a parameter
 	void set(Tabular::Feature, std::string const & arg = std::string());
 

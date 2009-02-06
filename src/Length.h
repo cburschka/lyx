@@ -92,6 +92,9 @@ public:
 	/// return the value in Big Postscript points.
 	int inBP() const;
 
+	/// return the default unit (centimeter or inch)
+	static UNIT defaultUnit();
+
 	friend bool isValidLength(std::string const & data, Length * result);
 
 private:

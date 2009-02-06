@@ -540,16 +540,7 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	}
 
 	// set the right default unit
-	Length::UNIT unitDefault = Length::CM;
-	switch (lyxrc.default_papersize) {
-		case PAPER_USLETTER:
-		case PAPER_USLEGAL:
-		case PAPER_USEXECUTIVE:
-			unitDefault = Length::IN;
-			break;
-		default:
-			break;
-	}
+	Length::UNIT const defaultUnit = Length::defaultUnit();
 
 	//lyxerr << bufferFilepath();
 	string const name =
@@ -642,9 +633,9 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	groupCO->blockSignals(false);
 
 	if (igp.width.value() == 0)
-		lengthToWidgets(Width, widthUnit, _(autostr), unitDefault);
+		lengthToWidgets(Width, widthUnit, _(autostr), defaultUnit);
 	else
-		lengthToWidgets(Width, widthUnit, igp.width, unitDefault);
+		lengthToWidgets(Width, widthUnit, igp.width, defaultUnit);
 
 	bool const widthChecked = !Width->text().isEmpty() &&
 		Width->text() != qt_(autostr);
@@ -655,9 +646,9 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	widthUnit->setEnabled(widthChecked);
 
 	if (igp.height.value() == 0)
-		lengthToWidgets(Height, heightUnit, _(autostr), unitDefault);
+		lengthToWidgets(Height, heightUnit, _(autostr), defaultUnit);
 	else
-		lengthToWidgets(Height, heightUnit, igp.height, unitDefault);
+		lengthToWidgets(Height, heightUnit, igp.height, defaultUnit);
 
 	bool const heightChecked = !Height->text().isEmpty()
 		&& Height->text() != qt_(autostr);

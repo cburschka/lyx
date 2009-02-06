@@ -349,22 +349,6 @@ void GuiExternal::widthUnitChanged()
 }
 
 
-static Length::UNIT defaultUnit()
-{
-	Length::UNIT default_unit = Length::CM;
-	switch (lyxrc.default_papersize) {
-	case PAPER_USLETTER:
-	case PAPER_USLEGAL:
-	case PAPER_USEXECUTIVE:
-		default_unit = Length::IN;
-		break;
-	default:
-		break;
-	}
-	return default_unit;
-}
-
-
 static void setRotation(QLineEdit & angleED, QComboBox & originCO,
 	external::RotationData const & data)
 {
@@ -401,11 +385,11 @@ static void setSize(QLineEdit & widthED, LengthCombo & widthUnitCO,
 		widthUnitCO.setCurrentItem("scale");
 	} else
 		lengthToWidgets(&widthED, &widthUnitCO,
-			data.width.asString(), defaultUnit());
+				data.width.asString(), Length::defaultUnit());
 
 	string const h = data.height.zero() ? string() : data.height.asString();
-	Length::UNIT default_unit = data.width.zero() ?
-		defaultUnit() : data.width.unit();
+	Length::UNIT const default_unit = data.width.zero() ?
+		Length::defaultUnit() : data.width.unit();
 	lengthToWidgets(&heightED, &heightUnitCO, h, default_unit);
 
 	heightED.setEnabled(!using_scale);

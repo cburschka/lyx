@@ -21,7 +21,6 @@
 #include "qt_helpers.h"
 #include "Validator.h"
 
-#include "LyXRC.h" // to set the default length values
 #include "Spacing.h"
 #include "FuncRequest.h"
 
@@ -114,8 +113,7 @@ static void setWidgetsFromVSpace(VSpace const & space,
 	spacing->setCurrentIndex(item);
 	keep->setChecked(space.keep());
 
-	Length::UNIT default_unit =
-			(lyxrc.default_papersize > 3) ? Length::CM : Length::IN;
+	Length::UNIT const default_unit = Length::defaultUnit();
 	bool const custom_vspace = space.kind() == VSpace::LENGTH;
 	if (custom_vspace) {
 		value->setEnabled(true);

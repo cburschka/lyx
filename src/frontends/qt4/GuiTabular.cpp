@@ -23,7 +23,6 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
-#include "LyXRC.h"
 
 #include "insets/InsetTabular.h"
 
@@ -639,8 +638,7 @@ void GuiTabular::updateContents()
 	bool const isReadonly = bc().policy().isReadOnly();
 	specialAlignmentED->setEnabled(!isReadonly);
 
-	Length::UNIT default_unit =
-		useMetricUnits() ? Length::CM : Length::IN;
+	Length::UNIT const default_unit = Length::defaultUnit();
 
 	borderDefaultRB->setChecked(!tabular_.use_booktabs);
 	booktabsRB->setChecked(tabular_.use_booktabs);
@@ -993,12 +991,6 @@ void GuiTabular::set(Tabular::Feature f, string const & arg)
 {
 	string const data = featureAsString(f) + ' ' + arg;
 	dispatch(FuncRequest(getLfun(), data));
-}
-
-
-bool GuiTabular::useMetricUnits() const
-{
-	return lyxrc.default_papersize > PAPER_USEXECUTIVE;
 }
 
 

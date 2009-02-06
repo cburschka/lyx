@@ -17,7 +17,6 @@
 #include "FuncRequest.h"
 #include "LengthCombo.h"
 #include "Length.h"
-#include "LyXRC.h" // to set the default length values
 #include "qt_helpers.h"
 #include "Validator.h"
 
@@ -265,8 +264,7 @@ void GuiBox::updateContents()
 	halignCO->setEnabled(!ibox);
 	setSpecial(ibox);
 
-	Length::UNIT default_unit =
-		(lyxrc.default_papersize > 3) ? Length::CM : Length::IN;
+	Length::UNIT const default_unit = Length::defaultUnit();
 
 	lengthToWidgets(widthED, widthUnitsLC,
 		(params_.width).asString(), default_unit);

@@ -16,7 +16,6 @@
 #include "qt_helpers.h"
 #include "Validator.h"
 
-#include "LyXRC.h"
 #include "Spacing.h"
 #include "FuncRequest.h"
 
@@ -248,8 +247,7 @@ static void setWidgetsFromHSpace(InsetSpaceParams const & params,
 	fillPattern->setCurrentIndex(pattern);
 	keep->setChecked(protect);
 
-	Length::UNIT default_unit =
-			(lyxrc.default_papersize > 3) ? Length::CM : Length::IN;
+	Length::UNIT const default_unit = Length::defaultUnit();
 	if (item == (params.math ? 9 : 7))
 		lengthToWidgets(value, unit, params.length, default_unit);
 	else
