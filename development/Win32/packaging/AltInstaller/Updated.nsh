@@ -9,8 +9,6 @@ Function UpdateModifiedFiles
  File /r "${PRODUCT_SOURCEDIR}\bin\DLLs"
  SetOutPath "$INSTDIR\bin\Lib"
  File "${PRODUCT_SOURCEDIR}\bin\Lib\optparse.py"
- SetOutPath "$INSTDIR\etc\Ghostscript"
- File /r "${PRODUCT_SOURCEDIR}\etc\Ghostscript"
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc"
@@ -19,6 +17,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\external_templates"
  File "${PRODUCT_SOURCEDIR}\Resources\languages"
  File "${PRODUCT_SOURCEDIR}\Resources\symbols"
+ File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  SetOutPath "$INSTDIR\Resources\examples"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\biblioExample.bib"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\Braille.lyx"
