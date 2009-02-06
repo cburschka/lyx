@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -49,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 23.01.2009.
+LFUNs documentation automatically generated 06.02.2009.
 \end_layout
 
 \begin_layout Standard
@@ -685,6 +685,11 @@ Params <TYPE>: shortcut|lyxrc|package|textclass|menu|buffer
 \end_layout
 
 \begin_layout Description
+Sample command-sequence info-insert buffer path; info-insert buffer name
+ 
+\end_layout
+
+\begin_layout Description
 Origin bpeng, 7 Oct 2007 
 \end_layout
 
@@ -1040,6 +1045,28 @@ Params <SOURCE/TARGET>: Note|Comment|Greyedout
 
 \begin_layout Description
 Origin sanda, 18 Jun 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_PHANTOM_INSERT 
+\end_layout
+
+\begin_layout Description
+Action Inserts phantom on the current cursor postion, move selection inside
+ the inset.
+  
+\end_layout
+
+\begin_layout Description
+Syntax phantom-insert [<TYPE>] 
+\end_layout
+
+\begin_layout Description
+Params <TYPE>: <Phantom|HPhantom|VPhantom> default: Phantom  
+\end_layout
+
+\begin_layout Description
+Origin uwestoehr, 30 Jan 2009 
 \end_layout
 
 \begin_layout Subsection*
@@ -4383,8 +4410,11 @@ Syntax inset-insert <INSET> <ARGS>
 \end_layout
 
 \begin_layout Description
-Params <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics| hyperlink|i
-nclude|index|label|nomencl|vspace|ref|toc> 
+Params <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics| 
+\begin_inset Newline newline
+\end_inset
+
+ hyperlink|include|index|label|nomencl|vspace|ref|toc> 
 \begin_inset Newline newline
 \end_inset
 
@@ -4438,9 +4468,9 @@ Action Modify existing inset.
 \end_layout
 
 \begin_layout Description
-Notion Used for label, floats, listings, box, branch, external, wrap bibtex,
- ert, command, graphics, note, space, vspace, tabular, bibitem, inlude,
- ref insets.
+Notion Used for bibitem, bibtex, box, branch, command, ert, external, floats,
+ graphics, include, label, listings, note, phantom, ref, space, tabular,
+ vspace, wrap insets.
   
 \end_layout
 
@@ -4463,9 +4493,9 @@ Action Modify the inset at cursor position, if there is one.
 \end_layout
 
 \begin_layout Description
-Notion Used for label, floats, listings, box, branch, external, wrap bibtex,
- ert, command, graphics, note, space, vspace, tabular, bibitem, inlude,
- ref insets.
+Notion Used for bibitem, bibtex, box, branch, command, ert, external, floats,
+ graphics, include, label, listings, note, phantom, ref, space, tabular,
+ vspace, wrap insets.
   
 \end_layout
 
@@ -4527,7 +4557,8 @@ Syntax inset-settings <INSET>
 \end_layout
 
 \begin_layout Description
-Params <INSET>: <box|branch|ert|float|listings|note|tabular|wrap>  
+Params <INSET>: <box|branch|ert|float|listings|note|phantom|tabular|wrap>
+  
 \end_layout
 
 \begin_layout Subsection*
@@ -4544,9 +4575,9 @@ Action Toggles the inset at cursor position.
 \end_layout
 
 \begin_layout Description
-Notion Used for label, floats, listings, box, branch, external, wrap bibtex,
- ert, command, graphics, note, space, vspace, tabular, bibitem, inlude,
- ref insets.
+Notion Used for bibitem, bibtex, box, branch, command, ert, external, floats,
+ graphics, include, label, listings, note, phantom, ref, space, tabular,
+ vspace, wrap insets.
   
 \end_layout
 
@@ -4967,7 +4998,7 @@ Action Various UI visibility-toggling actions.
 \end_layout
 
 \begin_layout Description
-Syntax ui-toggle <statusbar|menubar|frame|fullscreen> 
+Syntax ui-toggle <statusbar|menubar|scrollbar|frame|fullscreen> 
 \end_layout
 
 \begin_layout Description
@@ -5127,19 +5158,20 @@ Params <NAME>: aboutlyx|bibitem|bibtex|box|branch|changes|character|citation|
 \begin_inset Newline newline
 \end_inset
 
- include|index|info|nomenclature|label|log|mathdelimiter|mathmatrix| 
+ include|index|info|nomenclature|label|listings|log|mathdelimiter| 
 \begin_inset Newline newline
 \end_inset
 
- note|paragraph|prefs|print|ref|sendto|space|spellchecker|symbols| 
+ mathmatrix|note|paragraph|phantom|prefs|print|ref|sendto|space| 
 \begin_inset Newline newline
 \end_inset
 
- tabular|tabularcreate|thesaurus|texinfo|toc|href|view-source|vspace 
+ spellchecker|symbols|tabular|tabularcreate|thesaurus|texinfo|toc|href|
+ 
 \begin_inset Newline newline
 \end_inset
 
- wrap|listings|<SPECIAL>  
+ view-source|vspace|wrap|<SPECIAL>  
 \begin_inset Newline newline
 \end_inset
 
