@@ -138,6 +138,8 @@ public:
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
+	int docbook(odocstream &, OutputParams const &) const;
+	///
 	void validate(LaTeXFeatures &) const;
 	///
 	InsetCode lyxCode() const { return COLLAPSABLE_CODE; }
@@ -153,6 +155,8 @@ public:
 	/// Is this inset's layout defined in the document's textclass?
 	/// May be wrong after textclass change or paste from another document
 	bool undefined() const;
+	/// the string that is passed to the TOC
+	void tocString(odocstream &) const;
 	///
 	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
 protected:

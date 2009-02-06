@@ -28,7 +28,9 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
+#include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "sgml.h"
 #include "TextClass.h"
 
 #include "frontends/FontMetrics.h"
@@ -817,6 +819,31 @@ int InsetCollapsable::latex(odocstream & os,
 }
 
 
+// FIXME It seems as if it ought to be possible to do this more simply,
+// maybe by calling InsetText::docbook() in the middle there.
+int InsetCollapsable::docbook(odocstream & os, OutputParams const & runparams) const
+{
+	ParagraphList::const_iterator const beg = paragraphs().begin();
+	ParagraphList::const_iterator par = paragraphs().begin();
+	ParagraphList::const_iterator const end = paragraphs().end();
+
+	if (!undefined())
+		sgml::openTag(os, getLayout().latexname(),
+			      par->getID(buffer(), runparams) + getLayout().latexparam());
+
+	for (; par != end; ++par) {
+		par->simpleDocBookOnePar(buffer(), os, runparams,
+					 outerFont(distance(beg, par),
+						   paragraphs()));
+	}
+
+	if (!undefined())
+		sgml::closeTag(os, getLayout().latexname());
+
+	return 0;
+}
+
+
 void InsetCollapsable::validate(LaTeXFeatures & features) const
 {
 	string const preamble = getLayout().preamble();
@@ -849,5 +876,13 @@ docstring InsetCollapsable::contextMenu(BufferView const & bv, int x,
 
 	return InsetText::contextMenu(bv, x, y);
 }
+
+void InsetCollapsable::tocString(odocstream & os) const
+{
+	if (!getLayout().isInToc())
+		return;
+	os << text().asString(0, 1, AS_STR_LABEL | AS_STR_INSETS);
+}
+
 
 } // namespace lyx

@@ -26,19 +26,12 @@ public:
 	InsetFlex(Buffer const &, std::string const & layoutName);
 	///
 	docstring name() const { return from_utf8(name_); }
-
 	///
 	docstring editMessage() const;
 	///
 	InsetCode lyxCode() const { return FLEX_CODE; }
 	///
 	void write(std::ostream &) const;
-
-	///
-	int docbook(odocstream &, OutputParams const &) const;
-	/// the string that is passed to the TOC
-	void tocString(odocstream &) const;
-
 	/// should paragraph indendation be ommitted in any case?
 	bool neverIndent() const { return true; }
 

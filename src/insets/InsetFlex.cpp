@@ -16,18 +16,13 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "LaTeXFeatures.h"
 #include "Lexer.h"
-#include "MetricsInfo.h"
-#include "Paragraph.h"
-#include "paragraph_funcs.h"
-#include "sgml.h"
-#include "Text.h"
 
 #include "support/gettext.h"
 
 #include <ostream>
 
+//#include "support/debug.h"
 using namespace std;
 
 namespace lyx {
@@ -58,35 +53,6 @@ void InsetFlex::write(ostream & os) const
 	os << "Flex " <<
 		(name_.empty() ? "undefined" : name_) << "\n";
 	InsetCollapsable::write(os);
-}
-
-
-int InsetFlex::docbook(odocstream & os, OutputParams const & runparams) const
-{
-	ParagraphList::const_iterator const beg = paragraphs().begin();
-	ParagraphList::const_iterator par = paragraphs().begin();
-	ParagraphList::const_iterator const end = paragraphs().end();
-
-	if (!undefined())
-		sgml::openTag(os, getLayout().latexname(),
-			      par->getID(buffer(), runparams) + getLayout().latexparam());
-
-	for (; par != end; ++par) {
-		par->simpleDocBookOnePar(buffer(), os, runparams,
-					 outerFont(distance(beg, par),
-						   paragraphs()));
-	}
-
-	if (!undefined())
-		sgml::closeTag(os, getLayout().latexname());
-
-	return 0;
-}
-
-
-void InsetFlex::tocString(odocstream & os) const
-{
-	os << text().asString(0, 1, AS_STR_LABEL | AS_STR_INSETS);
 }
 
 
