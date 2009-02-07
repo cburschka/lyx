@@ -170,7 +170,9 @@ void InsetWrap::read(Lexer & lex)
 void InsetWrap::validate(LaTeXFeatures & features) const
 {
 	features.require("wrapfig");
+	features.inFloat(true);
 	InsetCollapsable::validate(features);
+	features.inFloat(false);
 }
 
 
@@ -180,8 +182,10 @@ docstring InsetWrap::editMessage() const
 }
 
 
-int InsetWrap::latex(odocstream & os, OutputParams const & runparams) const
+int InsetWrap::latex(odocstream & os, OutputParams const & runparams_in) const
 {
+	OutputParams runparams(runparams_in);
+	runparams.inFloat = OutputParams::MAINFLOAT;
 	os << "\\begin{wrap" << from_ascii(params_.type) << '}';
 	// no optional argument when lines are zero
 	if (params_.lines != 0)

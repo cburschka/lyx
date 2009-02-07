@@ -86,8 +86,6 @@ private:
 	///
 	std::string type_;
 	///
-	bool in_subfloat_;
-	///
 	docstring custom_label_;
 };
 

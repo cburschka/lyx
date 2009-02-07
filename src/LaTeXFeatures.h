@@ -103,6 +103,10 @@ public:
 	BufferParams const & bufferParams() const;
 	/// the return value is dependent upon both LyXRC and LaTeXFeatures.
 	bool useBabel() const;
+	/// are we in a float?
+	bool inFloat() const { return in_float_; }
+	/// are we in a float?
+	void inFloat(bool const b) { in_float_ = b; }
 	/// Runparams that will be used for exporting this file.
 	OutputParams const & runparams() const { return runparams_; }
 
@@ -145,6 +149,8 @@ private:
 	 *  in validate().
 	 */
 	OutputParams const & runparams_;
+	///
+	bool in_float_;
 };
 
 

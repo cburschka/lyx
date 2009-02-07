@@ -265,7 +265,7 @@ LaTeXFeatures::Packages LaTeXFeatures::packages_;
 
 LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p,
 			     OutputParams const & r)
-	: buffer_(&b), params_(p), runparams_(r)
+	: buffer_(&b), params_(p), runparams_(r), in_float_(false)
 {}
 
 

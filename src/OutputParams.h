@@ -41,6 +41,12 @@ public:
 		ALIGNED
 	};
 
+	enum Float {
+		NONFLOAT,
+		MAINFLOAT,
+		SUBFLOAT
+	};
+
 	OutputParams(Encoding const *);
 	~OutputParams();
 
@@ -135,6 +141,11 @@ public:
 	 *  For newline, it matters whether its content is aligned or not.
          */
 	TableCell inTableCell;
+
+	/** Whether we are inside a float or subfloat.
+	 *  Needed for subfloat detection on the command line.
+	 */
+	Float inFloat;
 
 	/** Whether we are inside an inset that is logically deleted.
 	 *  A value > 0 indicates a deleted inset.

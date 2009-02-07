@@ -194,7 +194,8 @@ bool InsetFloat::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetFloat::updateLabels(ParIterator const & it)
 {
-	Counters & cnts = buffer().masterBuffer()->params().documentClass().counters();
+	Counters & cnts =
+		buffer().masterBuffer()->params().documentClass().counters();
 	string const saveflt = cnts.current_float();
 	bool const savesubflt = cnts.isSubfloat();
 
@@ -258,7 +259,6 @@ void InsetFloat::read(Lexer & lex)
 	params_.read(lex);
 	setWide(params_.wide, buffer().params());
 	setSideways(params_.sideways, buffer().params());
-	setSubfloat(params_.subfloat, buffer().params());
 	InsetCollapsable::read(lex);
 }
 
@@ -271,11 +271,13 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 	if (params_.sideways)
 		features.require("rotfloat");
 
-	if (params_.subfloat)
+	if (features.inFloat())
 		features.require("subfig");
 
-	features.useFloat(params_.type, params_.subfloat);
+	features.useFloat(params_.type, features.inFloat());
+	features.inFloat(true);
 	InsetCollapsable::validate(features);
+	features.inFloat(false);
 }
 
 
@@ -285,24 +287,27 @@ docstring InsetFloat::editMessage() const
 }
 
 
-int InsetFloat::latex(odocstream & os, OutputParams const & runparams) const
+int InsetFloat::latex(odocstream & os, OutputParams const & runparams_in) const
 {
-	if (params_.subfloat) {
-		if (runparams.moving_arg)
+	if (runparams_in.inFloat != OutputParams::NONFLOAT) {
+		if (runparams_in.moving_arg)
 			os << "\\protect";
 		os << "\\subfloat";
 	
-		OutputParams rp = runparams;
+		OutputParams rp = runparams_in;
 		docstring const caption = getCaption(rp);
 		if (!caption.empty()) {
 			os << caption;
 		}
 		os << '{';
-		int const i = InsetText::latex(os, runparams);
+		rp.inFloat = OutputParams::SUBFLOAT;
+		int const i = InsetText::latex(os, rp);
 		os << "}";
 	
 		return i + 1;
 	}
+	OutputParams runparams(runparams_in);
+	runparams.inFloat = OutputParams::MAINFLOAT;
 
 	FloatList const & floats = buffer().params().documentClass().floats();
 	string tmptype = params_.type;
