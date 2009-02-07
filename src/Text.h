@@ -149,6 +149,8 @@ public:
 	void getWord(CursorSlice & from, CursorSlice & to, word_location const) const;
 	/// just selects the word the cursor is in
 	void selectWord(Cursor & cur, word_location loc);
+	/// select all text
+	void selectAll(Cursor & cur);
 	/// convenience function get the previous word or an empty string
 	docstring previousWord(CursorSlice const & sl) const;
 	

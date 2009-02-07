@@ -757,6 +757,25 @@ void Text::selectWord(Cursor & cur, word_location loc)
 }
 
 
+void Text::selectAll(Cursor & cur)
+{
+	LASSERT(this == cur.text(), /**/);
+	if (cur.lastpos() == 0 && cur.lastpit() == 0)
+		return;
+	// If the cursor is at the beginning, make sure the cursor ends there
+	if (cur.pit() == 0 && cur.pos() == 0) {
+		setCursor(cur, cur.lastpit(), getPar(cur.lastpit()).size());
+		cur.resetAnchor();
+		setCursor(cur, 0, 0);		
+	} else {
+		setCursor(cur, 0, 0);
+		cur.resetAnchor();
+		setCursor(cur, cur.lastpit(), getPar(cur.lastpit()).size());
+	}
+	cur.setSelection();
+}
+
+
 // Select the word currently under the cursor when no
 // selection is currently set
 bool Text::selectWordWhenUnderCursor(Cursor & cur, word_location loc)
