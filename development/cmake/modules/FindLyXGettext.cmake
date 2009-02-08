@@ -19,7 +19,17 @@ FIND_PROGRAM(GETTEXT_MSGFMT_EXECUTABLE msgfmt)
 MACRO(GETTEXT_CREATE_TRANSLATIONS _potFile _firstPoFile)
 
    SET(_gmoFiles)
-   GET_FILENAME_COMPONENT(_potBasename ${_potFile} NAME_WE)
+   # remove only the last extension e.g
+   # 	LyX2.0.pot ==> LyX2.0
+   # and not LyX2.0.pot ==> LyX2
+   # as it would be with NAME_WE
+   # GET_FILENAME_COMPONENT(_potBasename ${_potFile} NAME_WE)
+   GET_FILENAME_COMPONENT(_potname ${_potFile} NAME)
+   if (_potname MATCHES "^\(.+\)\\.[^\\.]+$")
+       set(_potBasename ${CMAKE_MATCH_1})
+   else()
+       set(_potBasename ${_potname})
+   endif()
    GET_FILENAME_COMPONENT(_absPotFile ${_potFile} ABSOLUTE)
 
    SET(_addToAll)
