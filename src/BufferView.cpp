@@ -808,7 +808,7 @@ void BufferView::showCursor(DocIterator const & dit)
 		if (ypos - row_dim.ascent() < 0)
 			scrolled = scrollUp(- ypos + row_dim.ascent());
 		else if (ypos + row_dim.descent() > height_)
-			scrolled = scrollDown(ypos - height_ + row_dim.descent());
+			scrolled = scrollDown(ypos - defaultRowHeight() );
 		// else, nothing to do, the cursor is already visible so we just return.
 		if (scrolled != 0) {
 			updateMetrics();
@@ -834,8 +834,10 @@ void BufferView::showCursor(DocIterator const & dit)
 		d->anchor_ypos_ = offset + pm.ascent();
 	else if (d->anchor_pit_ == max_pit)
 		d->anchor_ypos_ = height_ - offset - row_dim.descent();
+	else if (offset > height_ - defaultRowHeight() * 2)
+		d->anchor_ypos_ = height_ - offset - defaultRowHeight();
 	else
-		d->anchor_ypos_ = defaultRowHeight() * 2 - offset - row_dim.descent();
+		d->anchor_ypos_ = defaultRowHeight() * 2;
 
 	updateMetrics();
 	buffer_.changed();
