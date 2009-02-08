@@ -13,6 +13,8 @@
 #ifndef GUIPAINTER_H
 #define GUIPAINTER_H
 
+#include "Color.h"
+
 #include "frontends/Painter.h"
 
 #include <QPainter>
@@ -38,7 +40,7 @@ public:
 	virtual void line(
 		int x1, int y1,
 		int x2, int y2,
-		ColorCode,
+		Color,
 		line_style = line_solid,
 		line_width = line_thin);
 
@@ -52,7 +54,7 @@ public:
 		int const * xp,
 		int const * yp,
 		int np,
-		ColorCode,
+		Color,
 		line_style = line_solid,
 		line_width = line_thin);
 
@@ -60,7 +62,7 @@ public:
 	virtual void rectangle(
 		int x, int y,
 		int w, int h,
-		ColorCode,
+		Color,
 		line_style = line_solid,
 		line_width = line_thin);
 
@@ -68,17 +70,17 @@ public:
 	virtual void fillRectangle(
 		int x, int y,
 		int w, int h,
-		ColorCode);
+		Color);
 
 	/// draw an arc
 	virtual void arc(
 		int x, int y,
 		unsigned int w, unsigned int h,
 		int a1, int a2,
-		ColorCode);
+		Color);
 
 	/// draw a pixel
-	virtual void point(int x, int y, ColorCode);
+	virtual void point(int x, int y, Color);
 
 	/// draw an image from the image cache
 	virtual void image(int x, int y, int w, int h,
@@ -96,8 +98,8 @@ public:
 		FontInfo const & font, bool mouseHover);
 
 	/// start monochrome painting mode, i.e. map every color into [min,max]
-	virtual void enterMonochromeMode(ColorCode const & min, 
-		ColorCode const & max);
+	virtual void enterMonochromeMode(Color const & min, 
+		Color const & max);
 	/// leave monochrome painting mode
 	virtual void leaveMonochromeMode();
 	
@@ -108,7 +110,7 @@ public:
 	 * around the text with the given color.
 	 */
 	virtual void rectText(int x, int baseline, docstring const & str,
-		FontInfo const & font, ColorCode back, ColorCode frame);
+		FontInfo const & font, Color back, Color frame);
 
 	/// draw a filled rectangle with the shape of a 3D button
 	virtual void button(int x, int y, int w, int h, bool mouseHover);
@@ -150,7 +152,7 @@ private:
 	///
 	std::stack<QColor> monochrome_max_;
 	/// convert into Qt color, possibly applying the monochrome mode
-	QColor computeColor(ColorCode col);
+	QColor computeColor(Color col);
 	/// possibly apply monochrome mode
 	QColor filterColor(QColor const & col);
 	///

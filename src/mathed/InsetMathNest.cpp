@@ -1634,7 +1634,8 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 
 
 	// try auto-correction
-	if (lyxrc.autocorrection_math && cur.autocorrect() && cur.pos() != 0 && math_autocorrect(cur.prevAtom(), c))
+	if (lyxrc.autocorrection_math && cur.autocorrect() && cur.pos() != 0
+		  && math_autocorrect(cur.prevAtom(), c))
 		return true;
 
 	// no special circumstances, so insert the character without any fuss

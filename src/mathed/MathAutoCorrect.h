@@ -17,7 +17,7 @@ namespace lyx {
 class MathAtom;
 
 // make "corrections" according to file lib/autocorrect
-bool math_autocorrect(MathAtom & at, char c);
+bool math_autocorrect(MathAtom & at, char_type c);
 
 } // namespace lyx
 

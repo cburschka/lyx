@@ -15,7 +15,7 @@
 #ifndef CHANGES_H
 #define CHANGES_H
 
-#include "ColorCode.h"
+#include "Color.h"
 
 #include "support/strfwd.h"
 #include "support/types.h"
@@ -45,7 +45,7 @@ public:
 	/// is the change similar to the given change such that both can be merged?
 	bool isSimilarTo(Change const & change) const;
 	/// The color of this change on screen
-	ColorCode color() const;
+	Color color() const;
 	///
 	bool changed() const { return type != UNCHANGED; }
 	///

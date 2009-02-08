@@ -54,9 +54,9 @@ bool Change::isSimilarTo(Change const & change) const
 }
 
 
-ColorCode Change::color() const
+Color Change::color() const
 {
-	ColorCode color = Color_none;
+	Color color = Color_none;
 	switch (author % 5) {
 		case 0:
 			color = Color_changedtextauthor1;
@@ -74,6 +74,10 @@ ColorCode Change::color() const
 			color = Color_changedtextauthor5;
 			break;
 	}
+
+	if (deleted())
+		color.mergeColor = Color_white;
+
 	return color;
 }
 

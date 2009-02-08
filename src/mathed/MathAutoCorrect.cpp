@@ -170,7 +170,7 @@ void initAutoCorrect()
 } // namespace anon
 
 
-bool math_autocorrect(MathAtom & at, char c)
+bool math_autocorrect(MathAtom & at, char_type c)
 {
 	static bool initialized = false;
 
