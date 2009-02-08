@@ -12,7 +12,7 @@
 #ifndef COLORCACHE_H
 #define COLORCACHE_H
 
-#include "Color.h"
+#include "ColorCode.h"
 
 #include <QColor>
 
@@ -29,7 +29,7 @@ public:
 	ColorCache() : initialized_(false) {}
 
 	/// get the given color
-	QColor get(Color color) const;
+	QColor get(ColorCode color) const;
 
 	/// clear all colors
 	void clear() { initialized_ = false; }

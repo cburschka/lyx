@@ -19,7 +19,6 @@
 #include "tex2lyx/Font.h"
 #else
 
-#include "Color.h"
 #include "ColorCode.h"
 #include "FontEnums.h"
 
@@ -75,8 +74,6 @@ public:
 	void setColor(ColorCode c) { color_ = c; }
 	ColorCode background() const { return background_; }
 	void setBackground(ColorCode b) { background_ = b; }
-	Color drawColor() const { return draw_color_; }
-	void setDrawColor(Color c) { draw_color_ = c; }
 	///@}
 
 	///
@@ -92,7 +89,7 @@ public:
 	bool resolved() const;
 
 	///
-	Color realColor() const;
+	ColorCode realColor() const;
 
 	/// Converts logical attributes to concrete shape attribute
 	/// Try hard to inline this as it shows up with 4.6 % in the profiler.
@@ -137,8 +134,6 @@ private:
 	ColorCode color_;
 	///
 	ColorCode background_;
-	///
-	Color draw_color_;
 	///
 	FontState emph_;
 	///

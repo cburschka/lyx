@@ -84,45 +84,6 @@ RGBColor rgbFromHexName(string const & x11hexname)
 }
 
 
-Color::Color(ColorCode base_color) : baseColor(base_color), 
-	mergeColor(Color_ignore)
-{}
-
-
-bool Color::operator==(Color const & color) const
-{
-	return baseColor == color.baseColor;
-}
-
-
-bool Color::operator!=(Color const & color) const	
-{
-	return baseColor != color.baseColor;
-}
-
-
-bool Color::operator<(Color const & color) const
-{
-	return baseColor < color.baseColor;
-}
-
-
-bool Color::operator<=(Color const & color) const
-{
-	return baseColor <= color.baseColor;
-}
-
-
-std::ostream & operator<<(std::ostream & os, Color color)
-{
-	os << to_ascii(lcolor.getGUIName(color.baseColor));
-	if (color.mergeColor != Color_ignore)
-		os << "[merged with:"
-			<< to_ascii(lcolor.getGUIName(color.mergeColor)) << "]";
-	return os;
-}
-
-
 ColorSet::ColorSet()
 {
 	char const * grey40 = "#666666";

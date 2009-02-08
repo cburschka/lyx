@@ -278,10 +278,8 @@ bool FontInfo::resolved() const
 }
 
 
-Color FontInfo::realColor() const
+ColorCode FontInfo::realColor() const
 {
-	if (draw_color_ != Color_none)
-		return draw_color_;
 	if (color_ == Color_none)
 		return Color_foreground;
 	return color_;

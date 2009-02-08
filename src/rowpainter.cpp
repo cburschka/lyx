@@ -304,9 +304,9 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	
 	FontInfo copy = font;
 	if (change_running.changed())
-		copy.setDrawColor(change_running.color());
+		copy.setColor(change_running.color());
 	else if (selection)
-		copy.setDrawColor(Color_selectiontext);
+		copy.setColor(Color_selectiontext);
 
 	x_ += pi_.pain.text(int(x_), yo_, s, copy);
 }
@@ -595,7 +595,7 @@ void RowPainter::paintLast()
 		FontMetrics const & fm =
 			theFontMetrics(pi_.base.bv->buffer().params().getFont());
 		int const length = fm.maxAscent() / 2;
-		Color col = change.color();
+		ColorCode col = change.color();
 
 		pi_.pain.line(int(x_) + 1, yo_ + 2, int(x_) + 1, yo_ + 2 - length, col,
 			   Painter::line_solid, Painter::line_thick);
