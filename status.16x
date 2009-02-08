@@ -223,6 +223,9 @@ What's new
 - Limit workaround for Qt bug (bug 4513) that was fixed in Qt 4.3.4 to
   older Qt versions. The workaround resulted in unwanted display of hidden
   directories on UNIX.
+  
+- Add the LyX 1.6 file format (*.lyx16) to the file filter of the file
+  open dialog.
 
 
 * DOCUMENTATION AND LOCALIZATION
