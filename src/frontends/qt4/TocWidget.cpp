@@ -227,7 +227,6 @@ static bool canOutline(QString const & type)
 void TocWidget::enableControls(bool enable)
 {
 	updateTB->setEnabled(enable);
-	sortCB->setEnabled(enable);
 
 	if (!canOutline(current_type_))
 		enable = false;
@@ -236,7 +235,6 @@ void TocWidget::enableControls(bool enable)
 	moveDownTB->setEnabled(enable);
 	moveInTB->setEnabled(enable);
 	moveOutTB->setEnabled(enable);
-	persistentCB->setEnabled(enable);
 	if (!enable) {
 		depthSL->setMaximum(0);
 		depthSL->setValue(0);
