@@ -99,6 +99,7 @@ dist_deexamples_DATA = \
 
 esexamplesdir = $(pkgdatadir)/examples/es
 dist_esexamples_DATA = \
+	examples/es/Braille.lyx \
 	examples/es/ejemplo_con_lyx.lyx \
 	examples/es/ejemplo_sin_lyx.lyx \
 	examples/es/ItemizeBullets.lyx \

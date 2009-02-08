@@ -15597,10 +15597,8 @@ Estos operadores son llamados grandes porque son mayores que los operadores
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For all integral operators there is a second version available, ending on
- 
+Para todos los operadores de integral hay una segunda versión disponible,
+ terminando en 
 \series bold
 op
 \series default
@@ -15616,24 +15614,14 @@ intop
 \backslash
 ointop
 \series default
- etc..
- These
-\lang spanish
- operadores 
-\lang english
-are
-\lang spanish
- difieren de 
+ etc.
+ Estos operadores difieren de 
 \series bold
 
 \backslash
 int
 \series default
- etc.
-\begin_inset space \space{}
-\end_inset
-
-en el estilo en que se presentan los límites, véase
+, etc., en el estilo en que se presentan los límites, véase
 \series bold
  
 \series default
@@ -16142,7 +16130,7 @@ L
 \end_layout
 
 \begin_layout Standard
-Los límites por omisión son:
+El tipo de límites por omisión es:
 \begin_inset Formula \[
 \sum_{x=0}^{\infty}\frac{1}{x^{2}}\]
 
@@ -16154,7 +16142,7 @@ Los límites por omisión son:
 \begin_layout Standard
 Así se ven si se cambia el tipo de límites a 
 \series bold
-Insertado
+Alineado
 \series default
 :
 \begin_inset Formula \[
@@ -16166,15 +16154,11 @@ Insertado
 \end_layout
 
 \begin_layout Standard
-En integrales, excepto 
-\lang english
-those ending with 
+En integrales, excepto las que terminan en 
 \series bold
 op
 \series default
- like
-\lang spanish
- 
+ como 
 \series bold
 
 \backslash
@@ -16186,12 +16170,12 @@ intop
 \backslash
 ointop
 \series default
- etc., los límites se colocan por omisión junto al operador.
+, etc., los límites se colocan por omisión junto al operador.
  Pero en integrales múltiples los límites se ponen con frecuencia bajo el
  operador.
  Por tanto, en el siguiente ejemplo se ha elegido el tipo 
 \series bold
-Pantalla
+Presentado
 \series default
  para poner el límite debajo:
 \begin_inset Formula \begin{equation}
