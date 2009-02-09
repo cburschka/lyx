@@ -730,8 +730,7 @@ void Tabular::deleteColumn(col_type const column)
 	if (column_info.size() == 1)
 		return;
 
-	column_info.erase(column_info.begin() + column);
-	size_t row_count = row_info.size();
+	size_t const row_count = row_info.size();
 	for (row_type i = 0; i < row_count; ++i) {
 		// Care about multicolumn cells
 		if (column + 1 < column_info.size() &&
@@ -741,6 +740,7 @@ void Tabular::deleteColumn(col_type const column)
 		}
 		cell_info[i].erase(cell_info[i].begin() + column);
 	}
+	column_info.erase(column_info.begin() + column);
 	updateIndexes();
 }
 
