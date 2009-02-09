@@ -1018,12 +1018,10 @@ void Tabular::setColumnPWidth(Cursor & cur, idx_type cell,
 bool Tabular::setFixedWidth(row_type r, col_type c)
 {
 	bool const multicol = cell_info[r][c].multicolumn != CELL_NORMAL;
-	if ((!column_info[c].p_width.zero() && !multicol)
-	    || (multicol && !cell_info[r][c].p_width.zero())) {
-		cell_info[r][c].inset->toggleFixedWidth(true);
-		return true;
-	}
-	return false;
+	bool const fixed_width = (!column_info[c].p_width.zero() && !multicol)
+	      || (multicol && !cell_info[r][c].p_width.zero());
+	cell_info[r][c].inset->toggleFixedWidth(fixed_width);
+	return fixed_width;
 }
 
 

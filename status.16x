@@ -241,6 +241,9 @@ What's new
   
 - Enable the cursor to enter an inset at the very beginning of a document
   with visual cursor movement (bug 5764).
+  
+- Fix the painting of tables when a multicolumn is created of which the
+  the first column was a fixed width column (bug 5750).
 
 
 * DOCUMENTATION AND LOCALIZATION
