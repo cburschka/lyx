@@ -836,7 +836,7 @@ void GuiTabular::updateContents()
 	}
 
 	row_set = tabular_.getRowOfLTLastFoot(row, ltt);
-		lastfooterStatusCB->setChecked(row_set);
+	lastfooterStatusCB->setChecked(row_set);
 	if (ltt.set && (!ltt.empty || !use_empty)) {
 		lastfooterBorderAboveCB->setChecked(ltt.topDL);
 		lastfooterBorderBelowCB->setChecked(ltt.bottomDL);
