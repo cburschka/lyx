@@ -237,6 +237,9 @@ What's new
 
 - Fix the incorrect painting of part of a table that might hide other
   parts of the document after substantly changing the width a table.
+  
+- Enable the cursor to enter an inset at the very beginning of a document
+  with visual cursor movement (bug 5764).
 
 
 * DOCUMENTATION AND LOCALIZATION

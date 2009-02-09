@@ -533,7 +533,8 @@ bool Cursor::posVisRight(bool skip_inset)
 
 	bool moved = (new_cur.pos() != pos()
 				  || new_cur.pit() != pit()
-				  || new_cur.boundary() != boundary());
+				  || new_cur.boundary() != boundary()
+				  || &new_cur.inset() != &inset());
 	
 	if (moved) {
 		LYXERR(Debug::RTL, "moving to: " << new_cur.pos() 
