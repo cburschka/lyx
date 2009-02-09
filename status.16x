@@ -236,7 +236,8 @@ What's new
 - Enable Keep and Sort buttons in ToC when in readonly mode (bug 5767).
 
 - Fix the incorrect painting of part of a table that might hide other
-  parts of the document after substantly changing the width a table.
+  parts of the document after substantly changing the width a table
+  (bug 5604).
   
 - Enable the cursor to enter an inset at the very beginning of a document
   with visual cursor movement (bug 5764).
