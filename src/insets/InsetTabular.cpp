@@ -3085,6 +3085,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 {
 	Cursor & cur = pi.base.bv->cursor();
+	resetPos(cur);
 
 	x += scx_ + ADD_TO_TABULAR_WIDTH;
 
