@@ -975,6 +975,8 @@ bool GuiTabular::initialiseParams(string const & data)
 
 void GuiTabular::clearParams()
 {
+	// This function is also called when LyX is closing and the dialog is
+	// still open. At that time, the buffer might not be available anymore.
 	if (isBufferAvailable()) {
 		InsetTabular tmp(const_cast<Buffer &>(buffer()));
 		tabular_ = tmp.tabular;
