@@ -14,6 +14,8 @@
 #ifndef ROWPAINTER_H
 #define ROWPAINTER_H
 
+#include "Changes.h"
+
 #include "support/types.h"
 
 namespace lyx {
@@ -92,8 +94,8 @@ private:
 	/// one of them is active at a time.
 	Bidi & bidi_;
 
-	/// is row erased? (change tracking)
-	bool erased_;
+	/// row changed? (change tracking)
+	Change const change_;
 
 	// Looks ugly - is
 	double const xo_;

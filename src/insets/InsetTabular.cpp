@@ -3081,11 +3081,11 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 			    || y - a > bv->workHeight()) {
 				pi.pain.setDrawingEnabled(false);
 				cell(idx)->draw(pi, cx, y);
-				drawCellLines(pi.pain, nx, y, i, idx, pi.erased_);
+				drawCellLines(pi.pain, nx, y, i, idx, pi.change_);
 				pi.pain.setDrawingEnabled(original_drawing_state);
 			} else {
 				cell(idx)->draw(pi, cx, y);
-				drawCellLines(pi.pain, nx, y, i, idx, pi.erased_);
+				drawCellLines(pi.pain, nx, y, i, idx, pi.change_);
 			}
 			nx += tabular.columnWidth(idx);
 			++idx;
@@ -3154,16 +3154,16 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 
 
 void InsetTabular::drawCellLines(Painter & pain, int x, int y,
-				 row_type row, idx_type cell, bool erased) const
+				 row_type row, idx_type cell, Change const & change) const
 {
 	int x2 = x + tabular.columnWidth(cell);
 	bool on_off = false;
-	ColorCode col = Color_tabularline;
-	ColorCode onoffcol = Color_tabularonoffline;
+	Color col = Color_tabularline;
+	Color onoffcol = Color_tabularonoffline;
 
-	if (erased) {
-		col = Color_deletedtext;
-		onoffcol = Color_deletedtext;
+	if (change.changed()) {
+		col = change.color();
+		onoffcol = change.color();
 	}
 
 	if (!tabular.topAlreadyDrawn(cell)) {

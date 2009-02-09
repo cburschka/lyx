@@ -13,6 +13,7 @@
 #ifndef METRICSINFO_H
 #define METRICSINFO_H
 
+#include "Changes.h"
 #include "ColorCode.h"
 #include "FontInfo.h"
 
@@ -108,8 +109,8 @@ public:
 	frontend::Painter & pain;
 	/// Whether the text at this point is right-to-left (for InsetNewline)
 	bool ltr_pos;
-	/// Whether the parent is deleted (change tracking)
-	bool erased_;
+	/// The change the parent is part of (change tracking)
+	Change change_;
 	/// Whether the parent is selected as a whole
 	bool selected;
 	///

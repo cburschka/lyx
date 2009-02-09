@@ -863,7 +863,7 @@ private:
 
 	///
 	void drawCellLines(frontend::Painter &, int x, int y, row_type row,
-			   idx_type cell, bool erased) const;
+			   idx_type cell, Change const & change) const;
 	///
 	void setCursorFromCoordinates(Cursor & cur, int x, int y) const;
 

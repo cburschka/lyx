@@ -60,7 +60,7 @@ RowPainter::RowPainter(PainterInfo & pi,
 	  pars_(text.paragraphs()),
 	  row_(row), pit_(pit), par_(text.paragraphs()[pit]),
 	  pm_(text_metrics_.parMetrics(pit)),
-	  bidi_(bidi), erased_(pi_.erased_),
+	  bidi_(bidi), change_(pi_.change_),
 	  xo_(x), yo_(y), width_(text_metrics_.width())
 {
 	bidi_.computeTables(par_, pi_.base.bv->buffer(), row_);
@@ -106,7 +106,8 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 		pi_.base.bv->buffer().params().getFont().fontInfo() :
 		font.fontInfo();
 	pi_.ltr_pos = (bidi_.level(pos) % 2 == 0);
-	pi_.erased_ = erased_ || par_.isDeleted(pos);
+	pi_.change_ = change_.changed() ? change_ : par_.lookupChange(pos);
+
 	int const x1 = int(x_);
 	pi_.base.bv->coordCache().insets().add(inset, x1, yo_);
 	// insets are painted completely. Recursive
