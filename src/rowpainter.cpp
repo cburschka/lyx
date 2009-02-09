@@ -595,7 +595,7 @@ void RowPainter::paintLast()
 		FontMetrics const & fm =
 			theFontMetrics(pi_.base.bv->buffer().params().getFont());
 		int const length = fm.maxAscent() / 2;
-		ColorCode col = change.color();
+		Color col = change.color();
 
 		pi_.pain.line(int(x_) + 1, yo_ + 2, int(x_) + 1, yo_ + 2 - length, col,
 			   Painter::line_solid, Painter::line_thick);
