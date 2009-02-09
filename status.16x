@@ -153,6 +153,8 @@ What's new
 
 - Fix a crash when pressing the Home or End key while the cursor is not in
   the current view (bug 5736).
+  
+- Fix a crash when quitting with the Tabular dialog opened.
 
 - Ignore the master_buffer setting in Document>Settings if the current
   document is no real child. This fixes a crash when using the outliner
