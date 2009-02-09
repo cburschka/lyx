@@ -16,7 +16,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "BranchList.h"
-#include "Color.h"
+#include "ColorSet.h"
 #include "Counters.h"
 #include "Cursor.h"
 #include "DispatchResult.h"

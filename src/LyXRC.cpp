@@ -16,12 +16,9 @@
 
 #include <config.h>
 
-#include <fstream>
-#include <iostream>
-
 #include "LyXRC.h"
 
-#include "Color.h"
+#include "ColorSet.h"
 #include "Converter.h"
 #include "FontEnums.h"
 #include "Format.h"
@@ -40,6 +37,9 @@
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/userinfo.h"
+
+#include <fstream>
+#include <iostream>
 
 using namespace std;
 using namespace lyx::support;

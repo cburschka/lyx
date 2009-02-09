@@ -23,6 +23,7 @@
 
 #include "BufferList.h"
 #include "Color.h"
+#include "ColorSet.h"
 #include "ConverterCache.h"
 #include "FontEnums.h"
 #include "FuncRequest.h"

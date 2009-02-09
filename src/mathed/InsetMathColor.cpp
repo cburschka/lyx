@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "Color.h"
+#include "ColorSet.h"
 
 #include "InsetMathColor.h"
 #include "LaTeXFeatures.h"

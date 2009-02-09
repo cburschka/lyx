@@ -17,6 +17,7 @@
 #include <config.h>
 
 #include "Color.h"
+#include "ColorSet.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"

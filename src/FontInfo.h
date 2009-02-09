@@ -42,8 +42,8 @@ public:
 		FontState emph,
 		FontState underbar,
 		FontState noun,
-		FontState number
-		): family_(family), series_(series), shape_(shape), size_(size), 
+		FontState number)
+		: family_(family), series_(series), shape_(shape), size_(size), 
 		color_(color), background_(background), paint_color_(), emph_(emph),
 		underbar_(underbar), noun_(noun), number_(number)
 	{}
@@ -126,9 +126,6 @@ public:
 private:
 	friend bool operator==(FontInfo const & lhs, FontInfo const & rhs);
 
-	/// The color used for painting
-	Color paint_color_;
-
 	///
 	FontFamily family_;
 	///
@@ -141,6 +138,8 @@ private:
 	ColorCode color_;
 	///
 	ColorCode background_;
+	/// The color used for painting
+	Color paint_color_;
 	///
 	FontState emph_;
 	///

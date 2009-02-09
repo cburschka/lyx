@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "BufferView.h"
-#include "Color.h"
+#include "ColorSet.h"
 #include "MetricsInfo.h"
 
 #include "insets/Inset.h"
@@ -21,13 +21,18 @@
 #include "frontends/Painter.h"
 
 #include "support/docstring.h"
-
 #include "support/lassert.h"
 
 using namespace std;
 
+
 namespace lyx {
 
+/////////////////////////////////////////////////////////////////////////
+//
+// MetricsBase
+//
+/////////////////////////////////////////////////////////////////////////
 
 MetricsBase::MetricsBase()
 	: bv(0), font(), style(LM_ST_TEXT), fontname("mathnormal"),
@@ -41,11 +46,23 @@ MetricsBase::MetricsBase(BufferView * b, FontInfo const & f, int w)
 {}
 
 
+/////////////////////////////////////////////////////////////////////////
+//
+// MetricsInfo
+//
+/////////////////////////////////////////////////////////////////////////
+
 MetricsInfo::MetricsInfo(BufferView * bv, FontInfo const & font, int textwidth, 
 	MacroContext const & mc)
 	: base(bv, font, textwidth), macrocontext(mc)
 {}
 
+
+/////////////////////////////////////////////////////////////////////////
+//
+// PainterInfo
+//
+/////////////////////////////////////////////////////////////////////////
 
 PainterInfo::PainterInfo(BufferView * bv, lyx::frontend::Painter & painter)
 	: pain(painter), ltr_pos(false), change_(), selected(false),
@@ -90,6 +107,12 @@ ColorCode PainterInfo::backgroundColor(Inset const * inset, bool sel) const
 }
 
 
+/////////////////////////////////////////////////////////////////////////
+//
+// ScriptChanger
+//
+/////////////////////////////////////////////////////////////////////////
+
 Styles smallerScriptStyle(Styles st)
 {
 	switch (st) {
@@ -103,11 +126,17 @@ Styles smallerScriptStyle(Styles st)
 	}
 }
 
+
 ScriptChanger::ScriptChanger(MetricsBase & mb)
 	: StyleChanger(mb, smallerScriptStyle(mb.style))
 {}
 
 
+/////////////////////////////////////////////////////////////////////////
+//
+// FracChanger
+//
+/////////////////////////////////////////////////////////////////////////
 
 Styles smallerFracStyle(Styles st)
 {
@@ -129,11 +158,22 @@ FracChanger::FracChanger(MetricsBase & mb)
 {}
 
 
+/////////////////////////////////////////////////////////////////////////
+//
+// ArrayChanger
+//
+/////////////////////////////////////////////////////////////////////////
 
 ArrayChanger::ArrayChanger(MetricsBase & mb)
 	: StyleChanger(mb, mb.style == LM_ST_DISPLAY ? LM_ST_TEXT : mb.style)
 {}
 
+
+/////////////////////////////////////////////////////////////////////////
+//
+// ShapeChanger
+//
+/////////////////////////////////////////////////////////////////////////
 
 ShapeChanger::ShapeChanger(FontInfo & font, FontShape shape)
 	: Changer<FontInfo, FontShape>(font)
@@ -149,9 +189,14 @@ ShapeChanger::~ShapeChanger()
 }
 
 
+/////////////////////////////////////////////////////////////////////////
+//
+// StyleChanger
+//
+/////////////////////////////////////////////////////////////////////////
 
 StyleChanger::StyleChanger(MetricsBase & mb, Styles style)
-	:	Changer<MetricsBase>(mb)
+	: Changer<MetricsBase>(mb)
 {
 	static const int diff[4][4] =
 		{ { 0, 0, -3, -5 },
@@ -176,9 +221,14 @@ StyleChanger::~StyleChanger()
 }
 
 
+/////////////////////////////////////////////////////////////////////////
+//
+// FontSetChanger
+//
+/////////////////////////////////////////////////////////////////////////
 
 FontSetChanger::FontSetChanger(MetricsBase & mb, char const * name)
-	:	Changer<MetricsBase>(mb)
+	: Changer<MetricsBase>(mb)
 {
 	save_ = mb;
 	FontSize oldsize = save_.font.size();
@@ -190,7 +240,7 @@ FontSetChanger::FontSetChanger(MetricsBase & mb, char const * name)
 
 
 FontSetChanger::FontSetChanger(MetricsBase & mb, docstring const & name)
-	:	Changer<MetricsBase>(mb)
+	: Changer<MetricsBase>(mb)
 {
 	save_ = mb;
 	FontSize oldsize = save_.font.size();
@@ -207,8 +257,14 @@ FontSetChanger::~FontSetChanger()
 }
 
 
+/////////////////////////////////////////////////////////////////////////
+//
+// WidthChanger
+//
+/////////////////////////////////////////////////////////////////////////
+
 WidthChanger::WidthChanger(MetricsBase & mb, int w)
-	:	Changer<MetricsBase>(mb)
+	: Changer<MetricsBase>(mb)
 {
 	save_ = mb;
 	mb.textwidth = w;
@@ -221,7 +277,11 @@ WidthChanger::~WidthChanger()
 }
 
 
-
+/////////////////////////////////////////////////////////////////////////
+//
+// ColorChanger
+//
+/////////////////////////////////////////////////////////////////////////
 
 ColorChanger::ColorChanger(FontInfo & font, string const & color)
 	: Changer<FontInfo, string>(font)

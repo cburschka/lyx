@@ -17,7 +17,7 @@
 #include "Font.h"
 
 #include "BufferParams.h" // stateText
-#include "Color.h"
+#include "ColorSet.h"
 #include "Encoding.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
