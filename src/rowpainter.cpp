@@ -304,9 +304,9 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	
 	FontInfo copy = font;
 	if (change_running.changed())
-		copy.setColor(change_running.color());
+		copy.setPaintColor(change_running.color());
 	else if (selection)
-		copy.setColor(Color_selectiontext);
+		copy.setPaintColor(Color_selectiontext);
 
 	x_ += pi_.pain.text(int(x_), yo_, s, copy);
 }
