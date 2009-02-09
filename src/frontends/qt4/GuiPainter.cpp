@@ -112,7 +112,7 @@ QString GuiPainter::generateStringSignature(QString const & str, FontInfo const 
 }
 
 
-QColor GuiPainter::computeColor(ColorCode col)
+QColor GuiPainter::computeColor(Color col)
 {
 	return filterColor(guiApp->colorCache().get(col));
 }
@@ -144,7 +144,7 @@ QColor GuiPainter::filterColor(QColor const & col)
 }
 
 
-void GuiPainter::enterMonochromeMode(ColorCode const & min, ColorCode const & max)
+void GuiPainter::enterMonochromeMode(Color const & min, Color const & max)
 {
 	QColor qmin = filterColor(guiApp->colorCache().get(min));
 	QColor qmax = filterColor(guiApp->colorCache().get(max));
@@ -161,7 +161,7 @@ void GuiPainter::leaveMonochromeMode()
 }
 
 
-void GuiPainter::point(int x, int y, ColorCode col)
+void GuiPainter::point(int x, int y, Color col)
 {
 	if (!isDrawingEnabled())
 		return;
@@ -172,7 +172,7 @@ void GuiPainter::point(int x, int y, ColorCode col)
 
 
 void GuiPainter::line(int x1, int y1, int x2, int y2,
-	ColorCode col,
+	Color col,
 	line_style ls,
 	line_width lw)
 {
@@ -189,7 +189,7 @@ void GuiPainter::line(int x1, int y1, int x2, int y2,
 
 
 void GuiPainter::lines(int const * xp, int const * yp, int np,
-	ColorCode col,
+	Color col,
 	line_style ls,
 	line_width lw)
 {
@@ -217,7 +217,7 @@ void GuiPainter::lines(int const * xp, int const * yp, int np,
 
 
 void GuiPainter::rectangle(int x, int y, int w, int h,
-	ColorCode col,
+	Color col,
 	line_style ls,
 	line_width lw)
 {
@@ -229,7 +229,7 @@ void GuiPainter::rectangle(int x, int y, int w, int h,
 }
 
 
-void GuiPainter::fillRectangle(int x, int y, int w, int h, ColorCode col)
+void GuiPainter::fillRectangle(int x, int y, int w, int h, Color col)
 {
 	if (!isDrawingEnabled())
 		return;
@@ -239,7 +239,7 @@ void GuiPainter::fillRectangle(int x, int y, int w, int h, ColorCode col)
 
 
 void GuiPainter::arc(int x, int y, unsigned int w, unsigned int h,
-	int a1, int a2, ColorCode col)
+	int a1, int a2, Color col)
 {
 	if (!isDrawingEnabled())
 		return;
@@ -450,7 +450,7 @@ void GuiPainter::buttonFrame(int x, int y, int w, int h)
 
 
 void GuiPainter::rectText(int x, int y, docstring const & str,
-	FontInfo const & font, ColorCode back, ColorCode frame)
+	FontInfo const & font, Color back, Color frame)
 {
 	int width;
 	int ascent;

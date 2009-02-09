@@ -13,7 +13,7 @@
 #ifndef PAINTER_H
 #define PAINTER_H
 
-#include "ColorCode.h"
+#include "Color.h"
 
 #include "support/strfwd.h"
 
@@ -78,7 +78,7 @@ public:
 	virtual ~Painter() {}
 
 	/// draw a line from point to point
-	virtual void line(int x1, int y1, int x2, int y2, ColorCode,
+	virtual void line(int x1, int y1, int x2, int y2, Color,
 		line_style = line_solid, line_width = line_thin) = 0;
 
 	/**
@@ -87,22 +87,22 @@ public:
 	 * @param yp array of points' y co-ords
 	 * @param np size of the points array
 	 */
-	virtual void lines(int const * xp, int const * yp, int np, ColorCode,
+	virtual void lines(int const * xp, int const * yp, int np, Color,
 		line_style = line_solid, line_width = line_thin) = 0;
 
 	/// draw a rectangle
-	virtual void rectangle(int x, int y, int w, int h, ColorCode,
+	virtual void rectangle(int x, int y, int w, int h, Color,
 		line_style = line_solid, line_width = line_thin) = 0;
 
 	/// draw a filled rectangle
-	virtual void fillRectangle(int x, int y, int w, int h, ColorCode) = 0;
+	virtual void fillRectangle(int x, int y, int w, int h, Color) = 0;
 
 	/// draw an arc
 	virtual void arc(int x, int y, unsigned int w, unsigned int h,
-		int a1, int a2, ColorCode) = 0;
+		int a1, int a2, Color) = 0;
 
 	/// draw a pixel
-	virtual void point(int x, int y, ColorCode) = 0;
+	virtual void point(int x, int y, Color) = 0;
 
 	/// draw a filled rectangle with the shape of a 3D button
 	virtual void button(int x, int y, int w, int h, bool mouseHover) = 0;
@@ -136,7 +136,7 @@ public:
 	 * around the text with the given color.
 	 */
 	virtual void rectText(int x, int baseline, docstring const & str,
-		FontInfo const & font, ColorCode back, ColorCode frame) = 0;
+		FontInfo const & font, Color back, Color frame) = 0;
 
 	/// draw a string and enclose it inside a button frame
 	virtual void buttonText(int x, int baseline, docstring const & s,
@@ -147,8 +147,8 @@ public:
 		char_type c, FontInfo const & f, preedit_style style) = 0;
 
 	/// start monochrome painting mode, i.e. map every color into [min,max]
-	virtual void enterMonochromeMode(ColorCode const & min, 
-		ColorCode const & max) = 0;
+	virtual void enterMonochromeMode(Color const & min, 
+		Color const & max) = 0;
 	/// leave monochrome painting mode
 	virtual void leaveMonochromeMode() = 0;
 
