@@ -4,7 +4,8 @@
 # Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
 #
 
-project(tex2lyx)
+set(_tex2lyx tex2lyx${PROGRAM_SUFFIX})
+project(${_tex2lyx})
 
 set(LINKED_sources
 	${TOP_SRC_DIR}/src/insets/InsetLayout.cpp
@@ -47,16 +48,16 @@ include_directories(BEFORE ${TOP_SRC_DIR}/src/tex2lyx
 add_definitions(-DTEX2LYX)
 
 if(NOT MERGE_FILES)
-	add_executable(tex2lyx ${tex2lyx_sources} ${LINKED_sources}
+	add_executable(${_tex2lyx} ${tex2lyx_sources} ${LINKED_sources}
 		${tex2lyx_headers} ${LINKED_headers})
 else()
 	lyx_const_touched_files(_allinone  tex2lyx_sources)
 	lyx_const_touched_files(_allinone_linked  LINKED_sources)
-	add_executable(tex2lyx  ${_allinone_files} ${_allinone_linked_files})
+	add_executable(${_tex2lyx}  ${_allinone_files} ${_allinone_linked_files})
 endif()
 
 
-target_link_libraries(tex2lyx  
+target_link_libraries(${_tex2lyx}  
 	support
 	boost_regex
 	${QT_QTCORE_LIBRARY} 
@@ -64,14 +65,14 @@ target_link_libraries(tex2lyx
 	${ICONV_LIBRARY})
 	
 if(WIN32)
-	target_link_libraries(tex2lyx shlwapi ole32)
+	target_link_libraries(${_tex2lyx} shlwapi ole32)
 endif()
 
 if(APPLE)
-	target_link_libraries(tex2lyx "-framework Carbon")
+	target_link_libraries(${_tex2lyx} "-framework Carbon")
 endif()
 
 project_source_group("${GROUP_CODE}" tex2lyx_sources tex2lyx_headers)
 
-install(TARGETS tex2lyx DESTINATION bin PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+install(TARGETS ${_tex2lyx} DESTINATION bin PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
 

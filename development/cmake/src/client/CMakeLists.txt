@@ -5,7 +5,8 @@
 # Copyright (c) 2008, 2009 Kornel Benko, <Kornel.Benko@berlin.de>
 #
 
-project(lyxclient)
+set(_lyxclient lyxclient${PROGRAM_SUFFIX})
+project(${_lyxclient})
 
 file(GLOB _lyxclient_sources ${TOP_SRC_DIR}/src/client/*.cpp)
 file(GLOB _lyxclient_headers ${TOP_SRC_DIR}/src/client/*.h)
@@ -14,10 +15,10 @@ list(REMOVE_ITEM _lyxclient_headers "${TOP_SRC_DIR}/src/client/pch.h")
 include_directories(BEFORE "${TOP_SRC_DIR}/src/client"
   "${TOP_SRC_DIR}/boost" ${ZLIB_INCLUDE_DIR})
 
-add_executable(lyxclient ${_lyxclient_sources} ${_lyxclient_headers})
+add_executable(${_lyxclient} ${_lyxclient_sources} ${_lyxclient_headers})
 
 
-target_link_libraries(lyxclient
+target_link_libraries(${_lyxclient}
 	support
 	boost_regex
 	${LIBINTL_LIBRARIES}
@@ -27,12 +28,12 @@ target_link_libraries(lyxclient
 	)
 
 if (ASPELL_FOUND)
-        target_link_libraries(lyxclient ${ASPELL_LIBRARY})
+        target_link_libraries(${_lyxclient} ${ASPELL_LIBRARY})
 endif()
 
 if (APPLE)
-	target_link_libraries(lyxclient "-framework Carbon")
+	target_link_libraries(${_lyxclient} "-framework Carbon")
 endif()
 
-install(TARGETS lyxclient DESTINATION bin)
+install(TARGETS ${_lyxclient} DESTINATION bin)
 

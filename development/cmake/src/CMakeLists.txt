@@ -4,7 +4,8 @@
 # Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
 #
 
-project(lyx)
+set(_lyx ${PACKAGE_BASE}${PROGRAM_SUFFIX})
+project(${_lyx})
 
 include_directories(${TOP_SRC_DIR}/src)
 
@@ -52,14 +53,14 @@ if (LYX_LEAK_DETECTION)
 	set(vld_files ${CMAKE_CURRENT_BINARY_DIR}/vld.ini ${CMAKE_CURRENT_BINARY_DIR}/memory_leak_report.txt)
 endif()
 
-add_executable(lyx
+add_executable(${_lyx}
 	${WIN32_CONSOLE}
 	${lyx_sources}
 	${lyx_headers}
 	${vld_files}
 )
 
-target_link_libraries(lyx
+target_link_libraries(${_lyx}
 	mathed
 	insets
 	frontends
@@ -72,19 +73,19 @@ target_link_libraries(lyx
 	${vld_dll})
 
 if (ASPELL_FOUND)
-	target_link_libraries(lyx ${ASPELL_LIBRARY})
+	target_link_libraries(${_lyx} ${ASPELL_LIBRARY})
 endif()
 
 if (APPLE)
-  target_link_libraries(lyx "-bind_at_load")
-  target_link_libraries(lyx "-framework Carbon")
+  target_link_libraries(${_lyx} "-bind_at_load")
+  target_link_libraries(${_lyx} "-framework Carbon")
 endif()
 
 if (MINGW)
-  target_link_libraries(lyx ole32)
+  target_link_libraries(${_lyx} ole32)
 endif()
 
 project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)
 
-install(TARGETS lyx DESTINATION bin)
+install(TARGETS ${_lyx} DESTINATION bin)
 
