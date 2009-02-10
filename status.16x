@@ -159,6 +159,9 @@ What's new
   
 - Fix a crash when quitting with the Tabular dialog opened.
 
+- Fix a crash when deleting columns in a table with multicolumns
+  (bug 5766).
+
 - Ignore the master_buffer setting in Document>Settings if the current
   document is no real child. This fixes a crash when using the outliner
   in such files (bug 5653).
