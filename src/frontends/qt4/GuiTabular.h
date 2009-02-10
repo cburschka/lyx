@@ -115,6 +115,8 @@ private:
 
 	void longTabular(bool yes);
 
+	bool funcEnabled(Tabular::Feature f) const;
+
 	///
 	Tabular::idx_type active_cell_;
 	///

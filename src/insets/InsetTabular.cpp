@@ -1750,8 +1750,14 @@ Tabular::idx_type Tabular::setLTCaption(row_type row, bool what)
 		setBottomLine(i, false);
 		setLeftLine(i, false);
 		setRightLine(i, false);
-	} else
+		// FIXME: when a row is set as caption, then also insert a caption
+		// dispatch(FuncRequest(LFUN_CAPTION_INSERT));
+	} else {
 		unsetMultiColumn(i);
+		// FIXME: when unsetting a caption row, also all existing captions
+		// in this row must be dissolved, see (bug 5754)
+		// dispatch(FuncRequest(LFUN_INSET_DISSOLVE, "caption-insert"));
+	}
 	row_info[row].caption = what;
 	return i;
 }
@@ -1760,6 +1766,15 @@ Tabular::idx_type Tabular::setLTCaption(row_type row, bool what)
 bool Tabular::ltCaption(row_type row) const
 {
 	return row_info[row].caption;
+}
+
+
+bool Tabular::haveLTCaption() const
+{
+	for (row_type i = 0; i < row_info.size(); ++i)
+		if (row_info[i].caption)
+			return true;
+	return false;
 }
 
 
@@ -3884,7 +3899,17 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setOnOff(convert<int>(argument) == tabular.getUsebox(cur.idx()));
 			break;
 
-		case Tabular::SET_LTFIRSTHEAD:
+		// when a header/footer/caption is set, no other row can be the same
+		// furthermore, every row can only be one thing:
+		//		either a footer or header or caption
+		case Tabular::SET_LTFIRSTHEAD:			
+			status.setEnabled(sel_row_start == sel_row_end
+				&& !tabular.getRowOfLTHead(sel_row_start, dummyltt)
+				&& !tabular.getRowOfLTFoot(sel_row_start, dummyltt)
+				&& !tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)
+				&& !tabular.ltCaption(sel_row_start)
+				&& (!tabular.haveLTFirstHead()
+				|| tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)));
 			status.setOnOff(tabular.getRowOfLTHead(sel_row_start, dummyltt));
 			break;
 
@@ -3893,6 +3918,13 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::SET_LTHEAD:
+			status.setEnabled(sel_row_start == sel_row_end
+				&& !tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
+				&& !tabular.getRowOfLTFoot(sel_row_start, dummyltt)
+				&& !tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)
+				&& !tabular.ltCaption(sel_row_start)
+				&& (!tabular.haveLTHead()
+				|| tabular.getRowOfLTHead(sel_row_start, dummyltt)));
 			status.setOnOff(tabular.getRowOfLTHead(sel_row_start, dummyltt));
 			break;
 
@@ -3901,6 +3933,13 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::SET_LTFOOT:
+			status.setEnabled(sel_row_start == sel_row_end
+				&& !tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
+				&& !tabular.getRowOfLTHead(sel_row_start, dummyltt)
+				&& !tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)
+				&& !tabular.ltCaption(sel_row_start)
+				&& (!tabular.haveLTFoot()
+				|| tabular.getRowOfLTFoot(sel_row_start, dummyltt)));
 			status.setOnOff(tabular.getRowOfLTFoot(sel_row_start, dummyltt));
 			break;
 
@@ -3909,6 +3948,13 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::SET_LTLASTFOOT:
+			status.setEnabled(sel_row_start == sel_row_end
+				&& !tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
+				&& !tabular.getRowOfLTHead(sel_row_start, dummyltt)
+				&& !tabular.getRowOfLTFoot(sel_row_start, dummyltt)
+				&& !tabular.ltCaption(sel_row_start)
+				&& (!tabular.haveLTLastFoot()
+				|| tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)));
 			status.setOnOff(tabular.getRowOfLTFoot(sel_row_start, dummyltt));
 			break;
 
@@ -3921,7 +3967,15 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::TOGGLE_LTCAPTION:
-			status.setEnabled(sel_row_start == sel_row_end);
+			status.setEnabled(sel_row_start == sel_row_end
+				&& !tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
+				&& !tabular.getRowOfLTHead(sel_row_start, dummyltt)
+				&& !tabular.getRowOfLTFoot(sel_row_start, dummyltt)
+				&& !tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)
+				// Only the first row can be the caption.
+				&& sel_row_start == 0
+				&& (!tabular.haveLTCaption()
+				|| tabular.ltCaption(sel_row_start)));
 			status.setOnOff(tabular.ltCaption(sel_row_start));
 			break;
 

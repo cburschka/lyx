@@ -23,6 +23,8 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
+#include "LyXFunc.h"
 
 #include "insets/InsetTabular.h"
 
@@ -784,6 +786,37 @@ void GuiTabular::updateContents()
 	captionStatusCB->setChecked(tabular_.ltCaption(row));
 	captionStatusCB->blockSignals(false);
 
+	// FIXME: shouldn't this be handled by GuiDialog?
+	// FIXME: Some of them should be handled directly in TabularUI.ui
+	firstheaderBorderAboveCB->setEnabled(funcEnabled(Tabular::SET_LTFIRSTHEAD));
+	firstheaderBorderBelowCB->setEnabled(funcEnabled(Tabular::SET_LTFIRSTHEAD));
+	// first header can only be suppressed when there is a header
+	firstheaderNoContentsCB->setEnabled(tabular_.haveLTHead()
+		&& !tabular_.haveLTFirstHead());
+	// check if setting a first header is allowed
+	// additionally check firstheaderStatusCB because when this is the case
+	// a first header makes no sense
+	firstheaderStatusCB->setEnabled(funcEnabled(Tabular::SET_LTFIRSTHEAD)
+		&& !firstheaderNoContentsCB->isChecked());
+	//firstheaderStatusCB->setEnabled(!firstheaderNoContentsCB->isChecked());
+	headerBorderAboveCB->setEnabled(funcEnabled(Tabular::SET_LTHEAD));
+	headerBorderBelowCB->setEnabled(funcEnabled(Tabular::SET_LTHEAD));
+	headerStatusCB->setEnabled(funcEnabled(Tabular::SET_LTHEAD));
+	footerBorderAboveCB->setEnabled(funcEnabled(Tabular::SET_LTFOOT));
+	footerBorderBelowCB->setEnabled(funcEnabled(Tabular::SET_LTFOOT));
+	footerStatusCB->setEnabled(funcEnabled(Tabular::SET_LTFOOT));
+	lastfooterBorderAboveCB->setEnabled(funcEnabled(Tabular::SET_LTLASTFOOT));
+	lastfooterBorderBelowCB->setEnabled(funcEnabled(Tabular::SET_LTLASTFOOT));
+	// last footer can only be suppressed when there is a footer
+	lastfooterNoContentsCB->setEnabled(tabular_.haveLTFoot()
+		&& !tabular_.haveLTLastFoot());
+	// check if setting a last footer is allowed
+	// additionally check lastfooterNoContentsCB because when this is the case
+	// a last footer makes no sense
+	lastfooterStatusCB->setEnabled(funcEnabled(Tabular::SET_LTLASTFOOT)
+		&& !lastfooterNoContentsCB->isChecked());
+	captionStatusCB->setEnabled(funcEnabled(Tabular::TOGGLE_LTCAPTION));
+
 	Tabular::ltType ltt;
 	bool use_empty;
 	bool row_set = tabular_.getRowOfLTHead(row, ltt);
@@ -813,7 +846,6 @@ void GuiTabular::updateContents()
 		firstheaderBorderAboveCB->setChecked(false);
 		firstheaderBorderBelowCB->setChecked(false);
 		if (use_empty) {
-			firstheaderNoContentsCB->setChecked(ltt.empty);
 			if (ltt.empty)
 				firstheaderStatusCB->setEnabled(false);
 		}
@@ -846,7 +878,6 @@ void GuiTabular::updateContents()
 		lastfooterBorderAboveCB->setChecked(false);
 		lastfooterBorderBelowCB->setChecked(false);
 		if (use_empty) {
-			lastfooterNoContentsCB->setChecked(ltt.empty);
 			if (ltt.empty)
 				lastfooterStatusCB->setEnabled(false);
 		}
@@ -1116,6 +1147,13 @@ void GuiTabular::longTabular(bool yes)
 		set(Tabular::SET_LONGTABULAR);
 	else
 		set(Tabular::UNSET_LONGTABULAR);
+}
+
+
+// to get the status of the longtable row settings
+bool GuiTabular::funcEnabled(Tabular::Feature f) const
+{
+	return getStatus(FuncRequest(getLfun(), featureAsString(f))).enabled();
 }
 
 

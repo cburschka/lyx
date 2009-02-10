@@ -426,6 +426,8 @@ public:
 	///
 	bool haveLTLastFoot() const;
 	///
+	bool haveLTCaption() const;
+	///
 	// end longtable support
 	///
 	boost::shared_ptr<InsetTableCell> cellInset(idx_type cell) const;
