@@ -165,9 +165,13 @@ What's new
   
 - Set a proper file filter in the file dialog for inserting plain text.
   This fixes a crash when attempting to insert plain text (bug 5671).
+  
+- Speed up editing with Outliner open with Qt >= 4.3. This should 
+  especially pay off on the Mac, if the Outliner shows as a drawer
+  (part of bug 4443).
 
 - Speed up editing when the document contains paragraphs with many (>1000)
-  insets (bug 4443).
+  insets (part of bug 4443).
 
 - Set buffer status to changed and record UNDO after modifying insets such
   as pagebreaks or citations via context menu.

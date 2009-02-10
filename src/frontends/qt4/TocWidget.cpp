@@ -142,8 +142,15 @@ void TocWidget::setTreeDepth(int depth)
 	if (!tocTV->model())
 		return;
 
+#if QT_VERSION >= 0x040300
+	// this should be faster than our own code below
+	if (depth == 0)
+		tocTV->collapseAll();
+	else
+		tocTV->expandToDepth(depth - 1);
+#else
 	// expanding and then collapsing is probably better,
-	// but my qt 4.1.2 doesn't have expandAll()..
+	// but my qt 4.1.2 doesn't have expandAll().
 	//tocTV->expandAll();
 	QModelIndexList indices = tocTV->model()->match(
 		tocTV->model()->index(0, 0),
@@ -155,6 +162,7 @@ void TocWidget::setTreeDepth(int depth)
 		QModelIndex index = indices[i];
 		tocTV->setExpanded(index, indexDepth(index) < depth_);
 	}
+#endif
 }
 
 
