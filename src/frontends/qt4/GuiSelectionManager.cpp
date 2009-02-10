@@ -144,7 +144,7 @@ bool GuiSelectionManager::isSelected(const QModelIndex & idx)
 	QVariant const & str = availableModel->data(idx, Qt::DisplayRole);
 	QModelIndexList qmil = 
 			selectedModel->match(selectedModel->index(0), 
-			                     Qt::DisplayRole, str, 
+			                     Qt::DisplayRole, str, 1,
 			                     Qt::MatchExactly | Qt::MatchWrap);
 	return !qmil.empty();
 }
