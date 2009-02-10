@@ -1739,7 +1739,7 @@ Tabular::idx_type Tabular::setLTCaption(row_type row, bool what)
 {
 	idx_type i = getFirstCellInRow(row);
 	if (what) {
-		setMultiColumn(i, column_info.size());
+		setMultiColumn(i, numberOfCellsInRow(i));
 		setTopLine(i, false);
 		setBottomLine(i, false);
 		setLeftLine(i, false);

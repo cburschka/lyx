@@ -161,6 +161,9 @@ What's new
 
 - Fix a crash when deleting columns in a table with multicolumns
   (bug 5766).
+  
+- Fix a crash when setting a multicolumn row as the caption of a longtable
+  (bug 5753).
 
 - Ignore the master_buffer setting in Document>Settings if the current
   document is no real child. This fixes a crash when using the outliner
