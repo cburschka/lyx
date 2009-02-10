@@ -33,7 +33,10 @@ What's new
 - Updated English and Spanish Customization manual.
 
 - Updated English, French, German, and Spanish Embedded Objects, Math,
-  Tutorial, and User's guide manual.
+  and Tutorial manual.
+
+- Updated English, French, German, Japanese, and Spanish User's guide
+  manual.
 
 - Updated English specific manual how to write Braille.
 
@@ -235,9 +238,8 @@ What's new
 
 - Enable Keep and Sort buttons in ToC when in readonly mode (bug 5767).
 
-- Fix the incorrect painting of part of a table that might hide other
-  parts of the document after substantly changing the width a table
-  (bug 5604).
+- Fix the incorrect painting so that a table could hide other parts of
+  the document after changing the width of a table column (bug 5604).
   
 - Enable the cursor to enter an inset at the very beginning of a document
   with visual cursor movement (bug 5764).

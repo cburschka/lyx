@@ -2,7 +2,7 @@
 \lyxformat 345
 \begin_document
 \begin_header
-\textclass scrbook
+\textclass jbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
 %
@@ -22,7 +22,7 @@
 \fi % end if pdflatex is used
 
 % for correct jump positions whe clicking on a link to a float
-\usepackage[figure]{hypcap}
+%\usepackage[figure]{hypcap}
 
 % the pages of the TOC is numbered roman
 % and a pdf-bookmark for the TOC is added
@@ -50,6 +50,10 @@
 
 \usepackage{t1enc}
 \renewcommand{\seename}{→}
+
+\usepackage{subfig}
+\DeclareCaptionOption{large}[]{\def\captionfont{\large}}
+\DeclareCaptionOption{Large}[]{\def\captionfont{\Large}}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
 \use_default_options false
@@ -144,7 +148,7 @@ type "mailto:"
 \begin_inset Newline newline
 \end_inset
 
-第1.6版
+第1.6.1版
 \end_layout
 
 \begin_layout Standard
@@ -301,7 +305,13 @@ LyXの外観
 \color inherit
 ミニバッファにコマンドを入力する必要がある場合には、
 \family sans
-M-x
+
+\begin_inset Info
+type  "shortcut"
+arg   "command-execute"
+\end_inset
+
+
 \family default
 と打鍵してください。
 \end_layout
@@ -1576,25 +1586,7 @@ LyXは前のマウスの位置と新しいマウスの位置の間の文字を�
 \bar no
 \noun off
 \color none
-これらを開いたり閉じたりするには、左マウスボタンで
-\family default
-\series default
-\shape default
-\size default
-\emph on
-\bar default
-\noun default
-\color inherit
-シングルクリック
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-してください。これらの特性を設定するには、右クリックしてください。詳しくはこの取扱説明書の対応する節を見て下さい。
+これらの特性を設定するには、右クリックしてください。詳しくはこの取扱説明書の対応する節を見て下さい。
 \end_layout
 
 \end_deeper
@@ -1710,6 +1702,19 @@ reference "sec:図・表・アルゴリズム一覧"
 \end_inset
 
 節をご覧ください。
+\family sans
+整序
+\family default
+オプションは、表示されている一覧を整序するためのものであり、
+\family sans
+保持
+\family default
+オプションは、一覧を現在の表示状態を保持するためのものです。ここで保持するとは、例えば、第2節と第4節の小節が表示された状態から第3節をクリックしたときに、第2
+節と第4節の小節を表示されたままの状態に保持することです。もし
+\family sans
+保持
+\family default
+オプションが有効にされていなければ、クリックされた第3節を強調するために、第2節と第4節は閉じられるようになっています。
 \end_layout
 
 \begin_layout Standard
@@ -1735,7 +1740,8 @@ reference "sec:図・表・アルゴリズム一覧"
 \length -3mm
 \end_inset
 
-を使うと、例えば、第2.5節を第2.4節の前に持っていったりするなど、節の文書内での位置を変えることができます。
+を使うと、例えば、第2.5節を第2.4節の前に持っていったりするなど、節の文書内での位置を変えることができます。すると、LyXは、自動的に節番号を新しい順序に振り直
+してくれます。
 \begin_inset Graphics
 	filename ../../images/promote.png
 
@@ -1753,20 +1759,120 @@ Tab
 \family default
 ないし
 \family sans
-S-Tab
+Shift+Tab
 \family default
 を使うと、例えば、第2.5節を第3節にしたり第2.4.1節にしたりという風に、節の階層を変えることができます。
 \end_layout
 
 \begin_layout Section
-基本的なキー割り当て
+入力補完
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:基本的なキー割り当て"
+name "sec:入力補完"
 
 \end_inset
 
 
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+にゅうりょくほかん@入力補完
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+たんごほかん@単語補完|see
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+にゅうりょくほかん@入力補完
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LyXは、現在開かれている全ての文書を走査して、単語の補完案を提示してくれます。開かれている各文書に現れる単語は、全てデータベースに保管されて、補完案を提示する
+のに使用されるようになっています。
+\end_layout
+
+\begin_layout Standard
+既定では、補完案がある場合には、LyXのカーソルの後ろに、小さな三角形が表示器として表示されます。この補完案を使用したいときには、
+\family sans
+Tab
+\family default
+キーを押してください。複数の補完案がある場合には、ポップアップでそれらが表示されます。ポップアップ内の補完案をひとつ、マウスか矢印キーで選択した後、
+\family sans
+Return
+\family default
+を押して、選択した補完案を確定させます。
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+ツール\SpecialChar \menuseparator
+設定
+\family default
+メニューで開かれる設定ダイアログ内の、
+\family sans
+編集\SpecialChar \menuseparator
+入力補完
+\family default
+セクションで
+\family sans
+カーソル表示器
+\family default
+オプションを無効にすれば、カーソル補完表示器を切ることができます。
+\family sans
+自動補完入力
+\family default
+オプションを使うと、補完案がカーソル位置の後ろに直接表示されます。この提案を受け入れるには、
+\family sans
+Tab
+\family default
+キーを押してください。
+\family sans
+自動ポップアップ
+\family default
+オプションを使うと、補完案は、つねにポップアップとして表示されます。LyXには、熟練者向けに、他にも補完用の設定があり、それらは第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:入力補完-附録"
+
+\end_inset
+
+節に述べられています。
+\end_layout
+
+\begin_layout Section
+基本的なキー割り当て
 \begin_inset Index
 status collapsed
 
@@ -1790,6 +1896,102 @@ status collapsed
 \noun default
 \color inherit
 キー割り当て
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+わりあて@割り当て|see
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+きーわりあて@キー割り当て
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+たんらくきー@短絡キー|see
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+きーわりあて@キー割り当て
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+しょーとかっと@ショートカット|see
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+きーわりあて@キー割り当て
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1914,7 +2116,7 @@ Down
 のようないくつかのキーは、予想どおりの動作をしますが、そうでないキーもあります。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -2012,7 +2214,7 @@ reference "sec:箇条書き"
 \bar no
 \noun off
 \color none
-節を読んで下さい。それでもまだわからないときは
+節を読んで下さい。それでもまだわからないときは『
 \family default
 \series default
 \shape default
@@ -2030,10 +2232,10 @@ reference "sec:箇条書き"
 \bar no
 \noun off
 \color none
-を参照してください。
+』を参照してください。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -2059,7 +2261,7 @@ description "エスケープキー"
 これは「取り消しキー」です。これは、一般的に、操作を取り消す場合に使います。詳しくは、この取扱説明書の他の場所で説明されます。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -2095,7 +2297,8 @@ End
 これらはカーソルを行の先頭または最後に移動させます。ただし、Emacsキーバインドを使っている場合には、文章の先頭または最後にカーソルを移動させます。
 \end_layout
 
-\begin_layout Standard
+\begin_layout List
+\labelwidthstring 00.00.0000
 
 \family roman
 \series medium
@@ -2108,7 +2311,7 @@ End
 修飾キーは3つあります。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -2132,7 +2335,7 @@ Control
 \bar default
 \noun default
 \color inherit
-C
+Ctrl
 \family roman
 \series medium
 \shape up
@@ -2144,7 +2347,7 @@ C
 」
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "C"
+symbol "Ctrl"
 description "コントロールキー"
 
 \end_inset
@@ -2152,6 +2355,7 @@ description "コントロールキー"
 で表されます。）これはどのキーと組み合わせるかによって、いくつかの異なった使い方があります：
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 
 \family sans
@@ -2174,9 +2378,6 @@ Backspace
 \noun default
 \color inherit
 Delete
-\family default
-\color none
- 
 \family roman
 \series medium
 \shape up
@@ -2184,16 +2385,14 @@ Delete
 \emph off
 \bar no
 \noun off
+\color none
 と一緒に使うと、1文字ではなく一つの単語を削除します。
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
 \family sans
-Left
-\family default
- 
+←
 \family roman
 \series medium
 \shape up
@@ -2203,20 +2402,15 @@ Left
 \noun off
 \color none
 や
-\family default
+\family sans
 \series default
 \shape default
 \size default
 \emph default
 \bar default
 \noun default
- 
-\family sans
 \color inherit
-Right
-\family default
-\color none
- 
+→
 \family roman
 \series medium
 \shape up
@@ -2224,6 +2418,7 @@ Right
 \emph off
 \bar no
 \noun off
+\color none
 と使うと文字単位ではなく、単語単位で移動します。
 \end_layout
 
@@ -2231,8 +2426,6 @@ Right
 
 \family sans
 Home
-\family default
- 
 \family roman
 \series medium
 \shape up
@@ -2242,20 +2435,15 @@ Home
 \noun off
 \color none
 や
-\family default
+\family sans
 \series default
 \shape default
 \size default
 \emph default
 \bar default
 \noun default
- 
-\family sans
 \color inherit
 End
-\family default
-\color none
- 
 \family roman
 \series medium
 \shape up
@@ -2263,11 +2451,12 @@ End
 \emph off
 \bar no
 \noun off
+\color none
 と使うと文章の初め、または終りに移動します。
 \end_layout
 
 \end_deeper
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -2291,7 +2480,7 @@ Shift
 \bar default
 \noun default
 \color inherit
-S
+Shift
 \family roman
 \series medium
 \shape up
@@ -2303,7 +2492,7 @@ S
 」
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "S"
+symbol "Shift"
 description "シフトキー"
 
 \end_inset
@@ -2311,11 +2500,11 @@ description "シフトキー"
 で表されます。）これをどの移動キーと一緒に使っても、前のカーソルの位置と新しいカーソルの位置の間のテキストを選択できます。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
-Meta
+Alt
 \family default
  
 \family roman
@@ -2335,7 +2524,7 @@ Meta
 \bar default
 \noun default
 \color inherit
-M
+Alt
 \family roman
 \series medium
 \shape up
@@ -2347,13 +2536,13 @@ M
 」
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "M"
+symbol "Alt"
 description "メタキーまたはAltキー"
 
 \end_inset
 
-で表されます。）多くのキーボードでは、
-\family sans
+で表されます。）
+\family default
 \series default
 \shape default
 \size default
@@ -2361,7 +2550,7 @@ description "メタキーまたはAltキー"
 \bar default
 \noun default
 \color inherit
-Alt
+キーボードにAlt
 \family roman
 \series medium
 \shape up
@@ -2370,8 +2559,8 @@ Alt
 \bar no
 \noun off
 \color none
-キーと別にMetaキーがない限りは、これは
-\family sans
+キーと独立してMetaキーがない限りは、多くのキーボードにおいて、これは
+\family default
 \series default
 \shape default
 \size default
@@ -2397,7 +2586,7 @@ Alt
 \bar default
 \noun default
 \color inherit
-Meta
+Alt+
 \family roman
 \series medium
 \shape up
@@ -2406,7 +2595,7 @@ Meta
 \bar no
 \noun off
 \color none
-キー機能を果たしているのかを確かめる必要があります。このキーは多くのさまざまな役割を果たしますが、そのうちの一つに、
+機能を果たしているのかを確かめる必要があります。このキーは多くのさまざまな役割を果たしますが、そのうちの一つに、
 \family default
 \series default
 \shape default
@@ -2427,6 +2616,7 @@ Meta
 を有効にする役割があります。もしこのキーを、メニューやメニュー項目で下線が引いてある文字と一緒に押すと、そのメニュー項目を選ぶことができるのです。
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 
 \family roman
@@ -2446,7 +2636,7 @@ Meta
 \bar default
 \noun default
 \color inherit
-M
+Alt
 \begin_inset space ~
 \end_inset
 
@@ -2476,7 +2666,7 @@ c
 \bar default
 \noun default
 \color inherit
-M
+Alt
 \begin_inset space ~
 \end_inset
 
@@ -2513,7 +2703,7 @@ f
 \begin_layout Standard
 
 \family sans
-Meta
+Alt+
 \family roman
 \series medium
 \shape up
@@ -2549,6 +2739,7 @@ manual
 を参照してください。
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 
 \family roman
@@ -2578,8 +2769,8 @@ LyX
 \bar no
 \noun off
 \color none
-を使っていくにしたがって、次第にキー割り当てとショートカットキーを覚えていくことができるでしょう。LyXのメニューにも定義されているキー割り当てが表示されます。
-キー割り当ての表記は、この文書の表記とたいへん似ているので、理解するのに困難はないでしょう。ただ、
+を使っていくにしたがって、次第にキー割り当てと短絡キーを覚えていくことができるでしょう。LyXのメニューにも定義されているキー割り当てが表示されます。キー割り当
+ての表記は、この文書の表記とたいへん似ているので、理解するのに困難はないでしょう。ただ、
 \family default
 \series default
 \shape default
@@ -2606,7 +2797,7 @@ Shift
 \bar default
 \noun default
 \color inherit
-M-p S-A
+Alt+P Shift+A
 \family roman
 \series medium
 \shape up
@@ -2624,7 +2815,7 @@ M-p S-A
 \bar default
 \noun default
 \color inherit
-、Meta-p
+、Alt+P
 \family roman
 \series medium
 \shape up
@@ -2651,47 +2842,18 @@ A
 \bar no
 \noun off
 \color none
-を押すという意味です。「
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-S-C-s
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-」という表示ならば、
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-Shift-Control-s
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 を押すという意味です。
 \end_layout
 
 \begin_layout Standard
-キー割り当ての一覧や変更は、
+キー割り当ての一覧や変更は、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:短絡キーの編集"
+
+\end_inset
+
+節に説明があるように、
 \family sans
 ツール\SpecialChar \menuseparator
 設定
@@ -2699,7 +2861,7 @@ Shift-Control-s
 メニュー内の
 \family sans
 編集\SpecialChar \menuseparator
-ショートカット
+短絡キー
 \family default
 で行うことができます。
 \end_layout
@@ -3323,10 +3485,12 @@ TUGboat
 \series default
 \shape default
 \size default
-\emph on
+\emph default
 \bar default
 \noun default
 \color inherit
+『
+\emph on
 Extended Editing
 \family roman
 \series medium
@@ -3336,22 +3500,23 @@ Extended Editing
 \bar no
 \noun off
 \color none
-取扱説明書にこのような標準的でないクラスについての説明があります。ここでは次にすべての文書クラスに共通する性質を説明します。
+』取扱説明書にこのような標準的でないクラスについての説明があります。ここでは次にすべての文書クラスに共通する性質を説明します。
 \end_layout
 
 \begin_layout Subsubsection
+モジュール
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:モジュール"
 
 \end_inset
 
-モジュール
+
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-れいあうともじゅーる@レイアウトモジュール
+ぶんしょ@文書 ! もじゅーる@モジュール
 \end_layout
 
 \end_inset
@@ -3376,7 +3541,11 @@ status collapsed
 
 \end_inset
 
-ダイアログの文書クラス面で対応するモジュールを読み込ませなくてはなりません。ダイアログでモジュールを選択状態にすると、そのモジュールの説明が表示されます。
+ダイアログの
+\family sans
+モジュール
+\family default
+面で対応するモジュールを読み込ませなくてはなりません。ダイアログでモジュールを選択状態にすると、そのモジュールの説明が表示されます。
 \end_layout
 
 \begin_layout Standard
@@ -3925,7 +4094,15 @@ letter
 \color inherit
 章
 \family default
-を使うことができて、残りは章を使うことができず、そのかわりに節から始まります。letter
+を使うことができて、残りは
+\family sans
+章
+\family default
+を使うことができず、そのかわりに
+\family sans
+節
+\family default
+から始まります。letter
 \family roman
 \series medium
 \shape up
@@ -3952,7 +4129,25 @@ letter
 \bar no
 \noun off
 \color none
-と節に加えて、
+と
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+節
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+に加えて、
 \family sans
 \series default
 \shape default
@@ -4018,19 +4213,19 @@ reference "sub:見出し"
 
 \begin_layout Subsection
 文書レイアウト
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:文書レイアウト"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
 ぶんしょ@文書!れいあうと@------レイアウト
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:文書レイアウト"
 
 \end_inset
 
@@ -4143,7 +4338,7 @@ status collapsed
 以下の5つの選択肢があります。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4161,7 +4356,7 @@ status collapsed
 現在のクラスの既定のページ形式を使います。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4179,7 +4374,7 @@ status collapsed
 ページ番号もヘッダーもつけません。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4197,7 +4392,7 @@ status collapsed
 ページ番号だけつけます。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4233,7 +4428,7 @@ status collapsed
 に依存します。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4309,8 +4504,7 @@ key "fancyhdr"
 を見て下さい。
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 段落の分け方については、第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4381,7 +4575,7 @@ status collapsed
 
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4445,7 +4639,7 @@ USエグゼクティブ
 任意設定
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -4499,7 +4693,7 @@ USエグゼクティブ
 に印刷するかを選ぶ2つの切替ボタンです。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -5136,19 +5330,19 @@ status collapsed
 
 \begin_layout Section
 段落環境
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:段落環境"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
 だんらく@段落!かんきょう@------環境
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:段落環境"
 
 \end_inset
 
@@ -5220,24 +5414,10 @@ environment
 \bar default
 \noun default
 \color inherit
-、入門篇
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-を読んで下さい。
-\family default
-\series default
-\shape default
-\size default
+、
+\emph default
+『
 \emph on
-\bar default
-\noun default
-\color inherit
 入門篇
 \family roman
 \series medium
@@ -5247,7 +5427,27 @@ environment
 \bar no
 \noun off
 \color none
-にはこの節よりも多くの例も含まれています。
+』を読んで下さい。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+『
+\emph on
+入門篇
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+』にはこの節よりも多くの例も含まれています。
 \end_layout
 
 \begin_layout Standard
@@ -5260,10 +5460,10 @@ environment
 \bar no
 \noun off
 \color none
-段落環境は、段落の「入れもの」で、段落に特定の性質を与えます。例えば特定のスタイルのフォント、異なったマージン、異なった番号のつけ方などです。そのうえある段落環
-境を別の段落環境の中に入れて、入れ子にすることもできます。これによって別の段落環境からいくつかの性質を継承できます。色々な段落環境を使うことによって、やっかいな
-タブストップ等のタイプライター時代の名残を一掃することができ、マージンを変えるのも簡単にできるようになります。特定の文章タイプのみに含まれる段落環境もありますが
-、ここでは最も一般的なものだけを取り上げることにします。
+段落環境とは、その段落に特定の性質を与える、段落の「入れもの」に過ぎません。ここでいう性質には、特定の様式のフォントやいろいろな余白、連番の振り方、ラベルなどが
+含まれます。さらに、ある段落環境を別の段落環境の中に「入れ子」状に入れて、上位段落環境から性質の一部を継承させることができます。一連の段落環境を使うことによって
+、ややこしいタブストップや執筆作業中の余白調整や、その他タイプライタ時代からの遺物を一掃することができるようになります。特定の文章型にのみ使われる段落環境もあり
+ますが、ここでは最も一般的なものだけを取り上げることにします。
 \end_layout
 
 \begin_layout Standard
@@ -5283,7 +5483,7 @@ environment
 
 \end_inset
 
-を使って下さい。LyXはカーソルがある
+を使って下さい。LyXは、カーソル位置の
 \family default
 \series default
 \shape default
@@ -5301,13 +5501,13 @@ environment
 \bar no
 \noun off
 \color none
-の環境を変えます。またあらかじめいくつかの段落を選択しておくと、選択されている段落全部の環境を変えることもできます。
+の環境を変更します。また、新しい環境を選ぶ前に複数の段落を選択しておくと、選択した段落全ての環境を変えることができます。
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-リターン
+Return
 \family roman
 \series medium
 \shape up
@@ -5321,10 +5521,12 @@ environment
 \series default
 \shape default
 \size default
-\emph on
+\emph default
 \bar default
 \noun default
 \color inherit
+、
+\emph on
 一般的
 \family roman
 \series medium
@@ -5343,6 +5545,24 @@ environment
 \bar default
 \noun default
 \color inherit
+、
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+新しい段落は
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
 標準
 \family roman
 \series medium
@@ -5352,7 +5572,7 @@ environment
 \bar no
 \noun off
 \color none
-段落環境を使って新しい段落を作ります。「一般的には」と言ったのは、次のような環境にいる場合には、
+段落環境で作られます。「一般的には」と言うのは、以下の環境の中では、
 \family sans
 \series default
 \shape default
@@ -5361,7 +5581,7 @@ environment
 \bar default
 \noun default
 \color inherit
-リターン
+Return
 \family roman
 \series medium
 \shape up
@@ -5370,7 +5590,25 @@ environment
 \bar no
 \noun off
 \color none
-を押しても標準になるのではなく、元の環境のままでいるからです。
+を押すと、
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+標準
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+にリセットされずに、前の段落の環境が維持されるからです。
 \end_layout
 
 \begin_layout Itemize
@@ -5425,11 +5663,11 @@ environment
 \bar no
 \noun off
 \color none
-ただし、入れ子の深さは
+ただし、入れ子階層の深さは
 \size small
-再
+リセット
 \size normal
-設定されます。普通は、新しい段落をはじめると
+されることに注意してください。通常の場合は、新しい段落を開始すると
 \family default
 \series default
 \shape default
@@ -5438,7 +5676,7 @@ environment
 \bar default
 \noun default
 \color inherit
-（
+、
 \family roman
 \series medium
 \shape up
@@ -5447,25 +5685,7 @@ environment
 \bar no
 \noun off
 \color none
-段落環境も段落環境に別の段落環境が入った
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-）
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-入れ子の深さも再設定されます（入れ子になった段落環境については第
+段落環境も入れ子階層の深さもリセットされます（入れ子については第
 \family default
 \series default
 \shape default
@@ -5490,7 +5710,25 @@ reference "sec:入れ子"
 \bar no
 \noun off
 \color none
-節を参照してください）。文脈によりますが
+節を参照してください）。今のところ、これらは全て文脈に依存しますので、
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+Return
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を押すと、段落環境も入れ子の深さもリセットされると考えておいた方が安全でしょう。新規の段落に、現在の環境と階層を維持させたいときには
 \family default
 \series default
 \shape default
@@ -5501,7 +5739,13 @@ reference "sec:入れ子"
 \color inherit
 、
 \family sans
-リターン
+
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -5510,27 +5754,7 @@ reference "sec:入れ子"
 \bar no
 \noun off
 \color none
-を押すと段落環境も入れ子の深さもリセットされると考えていた方が安全です。もし今の環境と入れ子の深さのままで新しい段落を作りたい場合には
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-、
-\family sans
-M-リターン
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-を使って下さい
+をお使い下さい
 \family default
 \series default
 \shape default
@@ -6799,7 +7023,7 @@ LyXは詩を書いたり引用文を挿入するための、3つの段落環境�
 \bar default
 \noun default
 \color inherit
-リターン
+Return
 \family roman
 \series medium
 \shape up
@@ -7169,9 +7393,11 @@ name "sec:詩句"
 \end_inset
 
 
-\family sans
-C-リターン
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
 をつかうべし
 \end_layout
 
@@ -7204,7 +7430,7 @@ C-リターン
 \noun off
 \color none
 は段落を分けるのに字下げをしません。また詩の一連が一つの段落になっています。一連の中で行を分けるには、
-\family sans
+\family default
 \series default
 \shape default
 \size default
@@ -7212,7 +7438,13 @@ C-リターン
 \bar default
 \noun default
 \color inherit
-C-リターン
+
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -7365,7 +7597,7 @@ LyXは、箇条書きを作るために4つの段落環境を持っています�
 \bar default
 \noun default
 \color inherit
-リターン
+Return
 \family roman
 \series medium
 \shape up
@@ -7419,7 +7651,13 @@ LyXは、箇条書きを作るために4つの段落環境を持っています�
 \bar default
 \noun default
 \color inherit
-M-リターン
+
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -8569,7 +8807,7 @@ LyXはラベルをボールド体にして、ラベルと残りの部分の間�
 \bar default
 \noun default
 \color inherit
-スペース
+Space
 \family roman
 \series medium
 \shape up
@@ -8597,23 +8835,11 @@ LyXはラベルをボールド体にして、ラベルと残りの部分の間�
 \noun off
 \color none
 を使用します（
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-C-スペース
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "space-insert protected"
+\end_inset
+
 と入力するか、
 \family sans
 \series default
@@ -8963,7 +9189,7 @@ name "sec:LyXリスト"
 環境と他の3つの環境の違いを説明しましょう。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 項目ラベル 
 \family roman
@@ -8992,7 +9218,7 @@ LyXは項目の最初の「単語」をラベルに使います。最初の行�
 を使って下さい。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family roman
@@ -9023,7 +9249,7 @@ LyXは項目の最初の「単語」をラベルに使います。最初の行�
 のになっています。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family roman
@@ -9054,7 +9280,7 @@ LyXは項目の最初の「単語」をラベルに使います。最初の行�
 行目はそれ以降の行と異なる左余白になります。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family roman
@@ -9359,9 +9585,13 @@ reference "sub:水平方向の空白"
 \noun off
 \color none
 節で説明します。いくつかの例を見てみましょう。
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family roman
@@ -9409,7 +9639,7 @@ reference "sub:水平方向の空白"
 項目のラベルです。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 \begin_inset space \hfill{}
 \end_inset
@@ -9460,7 +9690,7 @@ reference "sub:水平方向の空白"
 を一つ入れると右揃えになります。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 \begin_inset space \hfill{}
 \end_inset
@@ -9958,7 +10188,7 @@ Leslieのような）書簡の書き出しや差出人のサインのための�
 \color inherit
 これらの環境の中で
 \family sans
-リターン
+Return
 \family roman
 \series medium
 \shape up
@@ -9994,7 +10224,7 @@ Leslieのような）書簡の書き出しや差出人のサインのための�
 \bar default
 \noun default
 \color inherit
-リターン
+Return
 \family roman
 \series medium
 \shape up
@@ -10076,23 +10306,11 @@ break-line
 \noun off
 \color none
 関数（
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-C-リターン
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
 か
 \family sans
 \series default
@@ -10235,7 +10453,7 @@ status collapsed
 \begin_layout Standard
 
 \family sans
-リターン
+Return
 \family roman
 \series medium
 \shape up
@@ -10512,7 +10730,7 @@ References
 \bar default
 \noun default
 \color inherit
-リターン
+Return
 \family roman
 \series medium
 \shape up
@@ -10712,7 +10930,7 @@ Blank
 \end_inset
 
 。この環境がLyXの中でいくつも空白を入れることのできる唯一の環境です。ただし空白行を入れたい場合には
-\family sans
+\family default
 \series default
 \shape default
 \size default
@@ -10720,9 +10938,15 @@ Blank
 \bar default
 \noun default
 \color inherit
-C-リターン
+
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+（
 \family typewriter
-（break-line
+break-line
 \family roman
 \series medium
 \shape up
@@ -10740,7 +10964,7 @@ C-リターン
 \bar default
 \noun default
 \color inherit
-リターン
+Return
 \family roman
 \series medium
 \shape up
@@ -10750,8 +10974,7 @@ C-リターン
 \noun off
 \color none
 では段落が終わってしまいます。
-\family sans
-けれども
+\family default
 \series default
 \shape default
 \size default
@@ -10759,7 +10982,9 @@ C-リターン
 \bar default
 \noun default
 \color inherit
-リターン
+けれども
+\family sans
+Return
 \family roman
 \series medium
 \shape up
@@ -10849,7 +11074,7 @@ LyXコード
 \noun off
 \color none
 新しい段落の初めでは
-\family sans
+\family default
 \series default
 \shape default
 \size default
@@ -10857,7 +11082,13 @@ LyXコード
 \bar default
 \noun default
 \color inherit
-C-リターン
+
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -10875,40 +11106,7 @@ C-リターン
 \bar default
 \noun default
 \color inherit
-リターン
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-のすぐ後に
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-C-リターン
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-を入れることができません。）
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-C-リターン
+Return
 \family roman
 \series medium
 \shape up
@@ -10925,10 +11123,50 @@ C-リターン
 \emph default
 \bar default
 \noun default
- 
-\family sans
 \color inherit
-スペース
+
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+を入れることができません。）
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+のすぐ後に
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+Space
 \family roman
 \series medium
 \shape up
@@ -10944,7 +11182,7 @@ C-リターン
 \begin_layout Itemize
 
 \family sans
-リターン
+Return
 \family roman
 \series medium
 \shape up
@@ -10954,17 +11192,15 @@ C-リターン
 \noun off
 \color none
 を使って新しい段落を始めて、それから
-\family default
+\family sans
 \series default
 \shape default
 \size default
 \emph default
 \bar default
 \noun default
- 
-\family sans
 \color inherit
-スペース
+Space
 \family roman
 \series medium
 \shape up
@@ -10995,7 +11231,7 @@ C-リターン
 \bar default
 \noun default
 \color inherit
-スペース
+Space
 \family roman
 \series medium
 \shape up
@@ -11005,25 +11241,11 @@ C-リターン
 \noun off
 \color none
 の代わりに
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
- 
-\family sans
-\color inherit
-C-スペース
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "space-insert protected"
+\end_inset
+
 を使って下さい。
 \end_layout
 
@@ -11047,7 +11269,7 @@ C-スペース
 \bar default
 \noun default
 \color inherit
-スペース
+Space
 \family roman
 \series medium
 \shape up
@@ -11076,7 +11298,13 @@ LaTeXがエラーを起こします。
 \end_layout
 
 \begin_layout Itemize
-"
+
+\family sans
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -11085,25 +11313,8 @@ LaTeXがエラーを起こします。
 \bar no
 \noun off
 \color none
-を入力してもタイプライターの二重引用符(
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-")
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-は入力されずに、
+\lang japanese
+を入力すると、
 \family default
 \series default
 \shape default
@@ -11121,71 +11332,13 @@ LaTeXがエラーを起こします。
 \bar no
 \noun off
 \color none
-二重引用符(
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-\lang english
-
-\begin_inset Quotes eld
+引用符が入力されてしまうので、タイプライタの二重引用符は入力できません。タイプライタの二重引用符を入力したい場合には
+\begin_inset Info
+type  "shortcut"
+arg   "self-insert \""
 \end_inset
 
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang japanese
-)が入力されます。タイプライターの二重引用符を入力したい場合には
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
- 
-\family sans
-\color inherit
-C-"
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-（Emacsキーバインドを使っているなら
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
- 
-\family sans
-\color inherit
-C-q
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-）を使って下さい。
+を使って下さい。
 \end_layout
 
 \begin_layout Standard
@@ -11266,7 +11419,7 @@ Hello world!
 \begin_layout Standard
 
 \family sans
-LyX-Code
+LyXコード
 \family roman
 \series medium
 \shape up
@@ -11423,7 +11576,6 @@ LyXは、本文を特定の文脈と性質をもった統合されたかたま�
 論点3
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 
 \family roman
@@ -11471,23 +11623,26 @@ LyXは、本文を特定の文脈と性質をもった統合されたかたま�
 \family sans
 Tab
 \family default
-・
+・ないし
 \family sans
-S-M-左矢印
+Shift-Tab
 \family default
+、あるいは
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
 ないし
-\family sans
-S-Tab
-\family default
-・
-\family sans
-S-M-右矢印
-\family default
-も使うことができます。この変更は、事前に選択した部分があれば、その部分に対して作用し（これによって複数の段落の入れ子の階層を一度に変えることができます）、そうで
-なければ現在の段落に対して働きます。
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
+\end_inset
+
+を使用することができます。この変更は、事前に選択した部分があれば、その部分に対して作用し（これによって複数の段落の入れ子の階層を一度に変えることができます）、そ
+うでなければ現在の段落に対して働きます。
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 LyXは、入れ子の階層を変えることが有効な場合にしか、変更を許さないことに注意してください。有効でない場合には、入れ子の階層を変えようとしても何も起こりません。
 また、ある段落の階層を変更すると、その段落に入れ子として入っているすべての段落の階層にも影響を与えます。
@@ -11785,9 +11940,16 @@ status open
 
 \series bold
 （註）
+\family sans
 \series default
-章や節などのように番号の振られた節見出しを箇条書きなどに入れ子にすることはできますが、それは行わないことを強く推奨します。通常の植字のガイドラインに従って、正し
-く構造化された文書を作成するのが目的ですから、節見出しを入れ子にすることはそれに反するのです。
+章
+\family default
+や
+\family sans
+節
+\family default
+などのように番号の振られた節見出しを箇条書きなどに入れ子にすることはできますが、それは行わないことを強く推奨します。通常の植字のガイドラインに従って、正しく構造
+化された文書を作成するのが目的ですから、節見出しを入れ子にすることはそれに反するのです。
 \end_layout
 
 \end_inset
@@ -12686,7 +12848,7 @@ status collapsed
 例1： 6段階の入れ子と異なった環境の入れ子
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 #1-a 
 \family roman
@@ -12706,7 +12868,7 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-リスト
+箇条書き（一覧）
 \family roman
 \series medium
 \shape up
@@ -12718,7 +12880,8 @@ status collapsed
 環境になっています。
 \end_layout
 
-\begin_layout Labeling
+\begin_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 #2-a 
 \family roman
@@ -12730,7 +12893,7 @@ status collapsed
 \noun off
 \color none
 ここは第2階層です。
-\family sans
+\family default
 \series default
 \shape default
 \size default
@@ -12738,7 +12901,13 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-M-リターン
+
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -12748,7 +12917,7 @@ M-リターン
 \noun off
 \color none
 を押してそれから
-\family sans
+\family default
 \series default
 \shape default
 \size default
@@ -12756,7 +12925,13 @@ M-リターン
 \bar default
 \noun default
 \color inherit
-S-M-右矢印
+
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -12768,7 +12943,8 @@ S-M-右矢印
 を使って作りました。
 \end_layout
 
-\begin_layout Labeling
+\begin_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 #3-a 
 \family roman
@@ -12788,7 +12964,7 @@ S-M-右矢印
 \bar default
 \noun default
 \color inherit
-リターン
+Return
 \family roman
 \series medium
 \shape up
@@ -12806,7 +12982,13 @@ S-M-右矢印
 \bar default
 \noun default
 \color inherit
-S-M-右矢印
+
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -12816,7 +12998,7 @@ S-M-右矢印
 \noun off
 \color none
 を2回続けて押しました。前の階層で行ったように、
-\family sans
+\family default
 \series default
 \shape default
 \size default
@@ -12824,7 +13006,13 @@ S-M-右矢印
 \bar default
 \noun default
 \color inherit
-M-リターン
+
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -12834,7 +13022,7 @@ M-リターン
 \noun off
 \color none
 を押してから
-\family sans
+\family default
 \series default
 \shape default
 \size default
@@ -12842,7 +13030,13 @@ M-リターン
 \bar default
 \noun default
 \color inherit
-S-M-右矢印
+
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -12854,6 +13048,7 @@ S-M-右矢印
 を使っても作ることができます。
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 
 \family roman
@@ -12883,7 +13078,7 @@ S-M-右矢印
 \noun off
 \color none
 環境です。つまり第4階層になります。私たちはこれを作るのに、
-\family sans
+\family default
 \series default
 \shape default
 \size default
@@ -12891,7 +13086,13 @@ S-M-右矢印
 \bar default
 \noun default
 \color inherit
-M-リターン
+
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -12901,7 +13102,7 @@ M-リターン
 \noun off
 \color none
 を押してから
-\family sans
+\family default
 \series default
 \shape default
 \size default
@@ -12909,7 +13110,13 @@ M-リターン
 \bar default
 \noun default
 \color inherit
-S-M-右矢印
+
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -12996,7 +13203,7 @@ S-M-右矢印
 \noun off
 \color none
 環境です。
-\family sans
+\family default
 \series default
 \shape default
 \size default
@@ -13004,7 +13211,13 @@ S-M-右矢印
 \bar default
 \noun default
 \color inherit
-M-リターン
+
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -13016,7 +13229,7 @@ M-リターン
 を押して作りました。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 #4-a 
 \family roman
@@ -13028,7 +13241,7 @@ M-リターン
 \noun off
 \color none
 ここは第4階層です。
-\family sans
+\family default
 \series default
 \shape default
 \size default
@@ -13036,7 +13249,13 @@ M-リターン
 \bar default
 \noun default
 \color inherit
-M-リターン
+
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -13054,7 +13273,7 @@ M-リターン
 \bar default
 \noun default
 \color inherit
-リスト
+箇条書き（一覧）
 \family roman
 \series medium
 \shape up
@@ -13105,7 +13324,8 @@ M-リターン
 です。
 \end_layout
 
-\begin_layout Labeling
+\begin_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 #5-a 
 \family roman
@@ -13129,7 +13349,8 @@ M-リターン
 
 \end_layout
 
-\begin_layout Labeling
+\begin_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 #6-a \SpecialChar \ldots{}
 
@@ -13144,7 +13365,8 @@ M-リターン
 そして第6階層です。もうこの2つをどうやって作ったかは、想像できるでしょう。
 \end_layout
 
-\begin_layout Labeling
+\end_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 #5-b 
 \family roman
@@ -13156,7 +13378,7 @@ M-リターン
 \noun off
 \color none
 第5階層に戻りました。
-\family sans
+\family default
 \series default
 \shape default
 \size default
@@ -13164,7 +13386,13 @@ M-リターン
 \bar default
 \noun default
 \color inherit
-M-リターン
+
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -13174,27 +13402,16 @@ M-リターン
 \noun off
 \color none
 を押した後に
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-S-M-左矢印
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
+\end_inset
+
 を押します。
 \end_layout
 
-\begin_layout Labeling
+\end_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 #4-b 
 \family roman
@@ -13206,7 +13423,7 @@ S-M-左矢印
 \noun off
 \color none
 もう一度
-\family sans
+\family default
 \series default
 \shape default
 \size default
@@ -13214,7 +13431,13 @@ S-M-左矢印
 \bar default
 \noun default
 \color inherit
-M-リターン
+
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
+
 \family roman
 \series medium
 \shape up
@@ -13224,27 +13447,16 @@ M-リターン
 \noun off
 \color none
 を押した後に
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-S-M-左矢印
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
+\end_inset
+
 を押して第4階層に戻りました。
 \end_layout
 
-\begin_layout Labeling
+\end_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 #3
 \family roman
@@ -13278,7 +13490,8 @@ S-M-左矢印
 第3階層に戻りました。もうこれをどうやって作ったかは、明らかでしょう。
 \end_layout
 
-\begin_layout Labeling
+\end_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 #2-b 
 \family roman
@@ -13292,7 +13505,8 @@ S-M-左矢印
 第2階層に戻りました。
 \end_layout
 
-\begin_layout Labeling
+\end_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 #1-b 
 \family roman
@@ -13312,7 +13526,7 @@ S-M-左矢印
 \bar default
 \noun default
 \color inherit
-リターン
+Return
 \family roman
 \series medium
 \shape up
@@ -13345,7 +13559,7 @@ S-M-左矢印
 \begin_layout Standard
 
 \family sans
-リスト
+箇条書き（一覧）
 \family roman
 \series medium
 \shape up
@@ -13438,13 +13652,19 @@ S-M-左矢印
 \begin_layout LyX-Code
 ここはLyX-Code環境で、第1階層すなわちもっとも外側の階層です。これから私たちは
 \family sans
-リターン
+Return
 \family default
 を押した後に
 \family sans
-S-M-右矢印
+
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
+を
 \family default
-を押して、それから
+押して、それから
 \family sans
 箇条書き（連番）
 \family default
@@ -13476,16 +13696,18 @@ LyXコード
 \begin_layout Standard
 最後に
 \family sans
-リターン
+Return
 \family default
 を押して上の例を終わりました。その後、段落環境を
 \family sans
 標準
 \family default
 にリセットして
-\family sans
-S-M-左矢印
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
+\end_inset
+
 を一回押して入れ子の階層をリセットする必要がありました。
 \end_layout
 
@@ -13546,41 +13768,17 @@ status collapsed
 \noun off
 \color none
 ここは第2階層です。
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-M-リターン
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
 の後に
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-S-M-右矢印
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
 を押して作りました。この中に
 \family sans
 \series default
@@ -13650,41 +13848,17 @@ S-M-右矢印
 \noun off
 \color none
 環境なので、ラベルが黒丸になるのです（ここに来るには、
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-M-リターン
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
 の後に
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-S-M-右矢印
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
 を押した後、環境を
 \family sans
 \series default
@@ -13718,41 +13892,17 @@ S-M-右矢印
 \noun off
 \color none
 ここは第4階層です。
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-M-リターン
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
 の後に
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-S-M-右矢印
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
 を押しました。また同じことをして…
 \end_layout
 
@@ -13897,16 +14047,6 @@ S-M-右矢印
 
 \begin_layout Enumerate
 おっと、その前に
-\family sans
-M-リターン
-\family default
-だけを押して現在の環境と階層を維持しながら新しい項目を作ってみましょう。
-\end_layout
-
-\begin_layout Enumerate
-次に
-\family sans
-M-リターン
 \family roman
 \series medium
 \shape up
@@ -13915,7 +14055,13 @@ M-リターン
 \bar no
 \noun off
 \color none
-と押してから
+
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
+
 \family default
 \series default
 \shape default
@@ -13923,10 +14069,12 @@ M-リターン
 \emph default
 \bar default
 \noun default
- 
-\family sans
 \color inherit
-S-M-左矢印
+だけを押して現在の環境と階層を維持しながら新しい項目を作ってみましょう。
+\end_layout
+
+\begin_layout Enumerate
+次に
 \family roman
 \series medium
 \shape up
@@ -13935,6 +14083,18 @@ S-M-左矢印
 \bar no
 \noun off
 \color none
+
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
+と押してから
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
 で階層を下げてみましょう。
 \end_layout
 
@@ -14030,41 +14190,17 @@ S-M-左矢印
 \noun off
 \color none
 もう一度
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-M-リターン
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
 と
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-S-M-左矢印
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
+\end_inset
+
 を使って第2階層に戻りました。今度は入れ子の階層を変更しただけでなく、2重めの
 \family sans
 \series default
@@ -14098,41 +14234,17 @@ S-M-左矢印
 \noun off
 \color none
 もう一度
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-M-リターン
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
 と
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-S-M-左矢印
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
+\end_inset
+
 を押してもっとも外側の第1階層に戻ると、同じことが起こります。
 \end_layout
 
@@ -14289,7 +14401,21 @@ S-M-左矢印
 \begin_layout Standard
 （
 \family sans
-リターン、S-M-右矢印、標準
+Return
+\family default
+、
+\family sans
+
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
+
+\family default
+、
+\family sans
+標準
 \family default
 ：第2階層）この例を
 \family roman
@@ -14308,7 +14434,7 @@ S-M-左矢印
 \begin_layout Enumerate
 （
 \family sans
-リターン, 箇条書き（連番）
+Return, 箇条書き（連番）
 \family default
 ：第1階層）
 \family roman
@@ -14334,7 +14460,17 @@ S-M-左矢印
 
 （
 \family sans
-リターン、S-M-右矢印、詩句
+Return
+\family default
+、
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
+、
+\family sans
+詩句
 \family default
 ：第2階層）
 \end_layout
@@ -14349,9 +14485,29 @@ S-M-左矢印
 \end_inset
 
 （
-\family sans
-M-リターン
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
+
 \family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
 ）
 \end_layout
 
@@ -14433,13 +14589,55 @@ M-リターン
 \end_deeper
 \begin_layout Verse
 （
-\family sans
-M-リターン、表、S-M-右矢印
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
+
 \family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+、
+\family sans
+表
+\family default
+、
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
 を3回、
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
+、
 \family sans
-M-リターン、詩句、S-M-左矢印
+詩句
 \family default
+、
+\begin_inset Info
+type  "shortcut"
+arg   "depth-decrement"
+\end_inset
+
 ）
 \end_layout
 
@@ -14447,7 +14645,11 @@ M-リターン、詩句、S-M-左矢印
 \begin_layout Enumerate
 （
 \family sans
-リターン、箇条書き（連番）
+Return
+\family default
+、
+\family sans
+箇条書き（連番）
 \family default
 ：第1階層）
 \family roman
@@ -14617,23 +14819,11 @@ M-リターン、詩句、S-M-左矢印
 \noun off
 \color none
 環境を使います。階層を保持するためには
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-M-リターン
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "break-paragraph inverse"
+\end_inset
+
 を使うことにします。
 \family sans
 \series default
@@ -14680,8 +14870,6 @@ M-リターン
 \noun default
 \color inherit
 、
-\family sans
-C-リターン
 \family roman
 \series medium
 \shape up
@@ -14690,6 +14878,12 @@ C-リターン
 \bar no
 \noun off
 \color none
+
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
 を使う必要があることを忘れないで下さい。
 \end_layout
 
@@ -14929,9 +15123,15 @@ reference "sec:参考文献"
 整形\SpecialChar \menuseparator
 保護された空白
 \family default
-（ショートカットは
+（短絡キーは
 \family sans
-C-スペース
+
+\begin_inset Info
+type  "shortcut"
+arg   "space-insert protected"
+\end_inset
+
+
 \family default
 ）で挿入することができます。
 \end_layout
@@ -15003,9 +15203,15 @@ reference "sub:略語"
 
 \end_inset
 
-節を参照）。しかしながら、ときによっては、このような場合にも通常の空白がほしい場合があるでしょう。その場合には、単語間の空白を挿入してください（ショートカットは
+節を参照）。しかしながら、ときによっては、このような場合にも通常の空白がほしい場合があるでしょう。その場合には、単語間の空白を挿入してください（短絡キーは
 \family sans
-C-M-スペース
+
+\begin_inset Info
+type  "shortcut"
+arg   "space-insert normal"
+\end_inset
+
+
 \family default
 ）。
 \end_layout
@@ -15042,15 +15248,7 @@ D.
 \end_inset
 
 E.
- Knuthは、我々の愛する組版プログラム − i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space \space{}
-\end_inset
-
-TeX − を開発しました。
+ Knuthは、我々の愛する組版プログラムを開発しました。
 \end_layout
 
 \begin_layout Standard
@@ -15076,10 +15274,12 @@ kg（小空白）
 整形\SpecialChar \menuseparator
 小空白
 \family default
-メニュー（ショートカットは
-\family sans
-C-S-スペース
-\family default
+メニュー（短絡キーは
+\begin_inset Info
+type  "shortcut"
+arg   "space-insert thin"
+\end_inset
+
 ）で挿入できます。
 \end_layout
 
@@ -16376,7 +16576,11 @@ name "sub:強制改頁"
 
 \begin_layout Standard
 もしLaTeXが決定する改頁の位置が気に入らなければ、希望の箇所で強制的に改頁することができます。たいていLaTeXの改頁は適切なので、これが必要になることは通
-常はありません。
+常はありません。ただし、
+\family sans
+フロート
+\family default
+を多用しすぎた場合に限っては、LaTeXの改頁アルゴリズムがうまく行かないことがあります。
 \end_layout
 
 \begin_layout Standard
@@ -16492,9 +16696,11 @@ name "sub:強制改行"
 整形なし改行
 \family default
 を選択するか、
-\family sans
-C-リターン
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
 を押すと、段落内でこの改行を強制することができます。もう一つの種類は、
 \family sans
 挿入\SpecialChar \menuseparator
@@ -17335,6 +17541,8 @@ reference "sub:文字微調整"
 
 \begin_layout Standard
 
+\family sans
+CJK
 \family roman
 \series medium
 \shape up
@@ -17343,7 +17551,7 @@ reference "sub:文字微調整"
 \bar no
 \noun off
 \color none
-CJKフィールドでは、日中韓言語ユーザーが文字を表示するのに使用するフォントを指定することができます
+フィールドでは、日中韓言語ユーザーが文字を表示するのに使用するフォントを指定することができます
 \begin_inset Foot
 status collapsed
 
@@ -17484,8 +17692,26 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-の考え方の一部なのです。LyXの画面フォントは、ツール\SpecialChar \menuseparator
-設定ダイアログで調整することができます。第
+の考え方の一部なのです。LyXの画面フォントは、
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+ツール\SpecialChar \menuseparator
+設定
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ダイアログで調整することができます。第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:画面フォント"
@@ -17636,27 +17862,11 @@ status collapsed
 \noun off
 \color none
 キー割り当て
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-M-c
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "font-noun"
 \end_inset
 
-c
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 を使う
 \end_layout
 
@@ -17849,27 +18059,11 @@ Matthias Ettrich
 \noun off
 \color none
 キー割り当て
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-M-c
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "font-emph"
 \end_inset
 
-e
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 を使う
 \end_layout
 
@@ -17981,12 +18175,6 @@ Don't overuse character styles!
 \noun default
 \color inherit
 キー割り当て
-\family sans
-M-c
-\begin_inset space ~
-\end_inset
-
-スペース
 \family roman
 \series medium
 \shape up
@@ -17995,6 +18183,12 @@ M-c
 \bar no
 \noun off
 \color none
+
+\begin_inset Info
+type  "shortcut"
+arg   "font-default"
+\end_inset
+
 を用いるか、
 \family sans
 \series default
@@ -18198,7 +18392,7 @@ status collapsed
 以外の）選択肢は以下の通りです。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18216,66 +18410,24 @@ status collapsed
 フォントの「概観」です。選択肢は
 \end_layout
 
-\begin_layout Labeling
+\begin_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
 ローマン体
 \family default
  This is the Roman font family.　これがローマン・フォント族です。 通常はセリフフォントです。またこれが既定のフォント族になっていま
-す。（キー割り当て 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-c
-\begin_inset space ~
-\end_inset
-
-r
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+す。（キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "font-roman"
 \end_inset
 
 ）
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-LaTeXコマンドは、行末での文章の改行を妨げます。この点については第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:ハイフネーション"
-
-\end_inset
-
-節を参照してください。
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18286,42 +18438,16 @@ reference "sub:ハイフネーション"
 This is the Sans Serif font family.
 
 \family default
- これがサンセリフ・フォント族です。（キー割り当て 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-c
-\begin_inset space ~
-\end_inset
-
-s
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+ これがサンセリフ・フォント族です。（キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "font-sans"
 \end_inset
 
 ）
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18332,42 +18458,17 @@ status collapsed
 This is the Typewriter font family.
 
 \family default
- これがタイプライタ・フォント族です。（キー割り当て 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-c
-\begin_inset space ~
-\end_inset
-
-p
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+ これがタイプライタ・フォント族です。（キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "font-typewriter"
 \end_inset
 
 ）
 \end_layout
 
-\begin_layout Labeling
+\end_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18385,7 +18486,8 @@ status collapsed
 これは印字の太さに対応しています。選択肢は
 \end_layout
 
-\begin_layout Labeling
+\begin_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18401,10 +18503,10 @@ status collapsed
 \bar no
 \noun off
 \color none
- これがミディアム体の太さです。デフォルトの太さです。
+ これがミディアム体の太さです。これが既定の太さです。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18413,49 +18515,19 @@ status collapsed
  
 \series bold
 This is the Bold font series.
- これがボールド体の太さです。
-\family sans
+ これがボールド体の太さです。（
 \series default
-\bar under
- 
-\family default
-\bar default
-（キー割り当て 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-c
-\begin_inset space ~
-\end_inset
-
-b
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "font-bold"
 \end_inset
 
 ）
 \end_layout
 
-\begin_layout Labeling
+\end_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18473,7 +18545,8 @@ status collapsed
 名の示す通りです。選択肢は
 \end_layout
 
-\begin_layout Labeling
+\begin_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18483,7 +18556,7 @@ status collapsed
  これがアップライト体の字形です。またこれが既定の字形になっています。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18504,7 +18577,7 @@ s the Italic font shape
  これがイタリック体の字形です。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18520,7 +18593,7 @@ This is the Slanted font shape.
 これが斜体の字形です。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18534,7 +18607,8 @@ This is the Small caps font shape
 .　これがスモールキャップ体の字形です。
 \end_layout
 
-\begin_layout Labeling
+\end_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18553,7 +18627,8 @@ This is the Small caps font shape
 yXに詳細な指定をわたすようにはなっておらず、何をしたいか一般的な意図をLyXに示すだけです。選択肢は以下の通りです。
 \end_layout
 
-\begin_layout Labeling
+\begin_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18577,74 +18652,16 @@ yXに詳細な指定をわたすようにはなっておらず、何をしたい
 \bar default
 \noun default
 \color inherit
-（キー割り当て 
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
+（キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "font-size tiny"
 \end_inset
 
-M-s
-\begin_inset space ~
-\end_inset
-
-t
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\family default
-または
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-s
-\begin_inset space ~
-\end_inset
-
-1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\family default
 ）
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18668,42 +18685,16 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-（キー割り当て 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+（キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "font-size scriptsize"
 \end_inset
 
 ）
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18727,74 +18718,16 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-（キー割り当て 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-s
-\begin_inset space ~
-\end_inset
-
-S
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\family default
- または
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-3
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+（キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "font-size footnotesize"
 \end_inset
 
 ）
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18818,74 +18751,16 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-（キー割り当て 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-s
-\begin_inset space ~
-\end_inset
-
-s
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\family default
-または
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-4
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+（キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "font-size small"
 \end_inset
 
 ）
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -18909,74 +18784,16 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-キー割り当て 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-s
-\begin_inset space ~
-\end_inset
-
-n
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-または
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-5
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "font-size normal"
 \end_inset
 
 ）
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19000,74 +18817,16 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-キー割り当て 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-s
-\begin_inset space ~
-\end_inset
-
-l
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-または
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-6
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "font-size large"
 \end_inset
 
 ）
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19093,74 +18852,16 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-キー割り当て 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-s
-\begin_inset space ~
-\end_inset
-
-S-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\family default
-または
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-M-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-7
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "font-size larger"
 \end_inset
 
 ）
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19186,42 +18887,16 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-キー割り当て 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-8
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "font-size largest"
 \end_inset
 
 ）
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19247,74 +18922,16 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-キー割り当て 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-s
-\begin_inset space ~
-\end_inset
-
-h
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-または
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-9
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "font-size huge"
 \end_inset
 
 ）
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19340,75 +18957,22 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-キー割り当て 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-s
-\begin_inset space ~
-\end_inset
-
-H
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-または
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-s
-\begin_inset space ~
-\end_inset
-
-
-\family default
-0
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "font-size giant"
 \end_inset
 
 ）
 \end_layout
 
+\end_deeper
 \begin_layout Standard
-繰り返し念を押しますが、
+
+\emph on
+繰り返し
+\emph default
+念を押しますが、
 \family roman
 \series medium
 \shape up
@@ -19421,7 +18985,7 @@ status collapsed
 ようにしてください。この機能は、微調整のためだけにあるにすぎません。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19439,7 +19003,8 @@ status collapsed
 これはその他、文字レベルで変更可能なものです。選択肢は以下の通りです。
 \end_layout
 
-\begin_layout Labeling
+\begin_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19496,7 +19061,7 @@ This is text with emphasize on —これは強調された文章です—。
 。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19520,36 +19085,10 @@ This is text with emphasize on —これは強調された文章です—。
 \bar default
 \noun default
 \color inherit
-（キー割り当て 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\family sans
-M-c
-\begin_inset space ~
-\end_inset
-
-u
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+（キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "font-underline"
 \end_inset
 
 ）
@@ -19564,7 +19103,7 @@ status collapsed
 しれないからです。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19607,7 +19146,8 @@ This is text with Noun on（これは名詞体の文章です）。
 に指定されています。
 \end_layout
 
-\begin_layout Labeling
+\end_deeper
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19622,7 +19162,7 @@ This is text with Noun on（これは名詞体の文章です）。
 \bar no
 \noun off
 \color none
-このスイッチで文字色を調整することができます。ただし、すべてのdviビューアがカラーを表示できるわけではないことに注意してください。
+このスイッチで文字色を調整することができます。ただし、すべてのDVIビューアがカラーを表示できるわけではないことに注意してください。
 \family sans
 \series default
 \shape default
@@ -19687,9 +19227,28 @@ This is text with Noun on（これは名詞体の文章です）。
 \noun off
 \color none
 が選べます。
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+からー@カラー ! てきすと@テキスト
 \end_layout
 
-\begin_layout Labeling
+\end_inset
+
+
+\end_layout
+
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -19735,12 +19294,6 @@ This is text with Noun on（これは名詞体の文章です）。
 \noun default
 \color inherit
 には、
-\family sans
-M-c
-\begin_inset space ~
-\end_inset
-
-スペース
 \family roman
 \series medium
 \shape up
@@ -19749,6 +19302,12 @@ M-c
 \bar no
 \noun off
 \color none
+
+\begin_inset Info
+type  "shortcut"
+arg   "font-default"
+\end_inset
+
 を用いてください。
 \family default
 \series default
@@ -20579,24 +20138,12 @@ DVI
 
 \end_inset
 
-（キー割り当て 
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-C-d
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+（キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "buffer-view dvi"
+\end_inset
+
 ）を使うこともできますし、
 \family sans
 \series default
@@ -20633,24 +20180,12 @@ PostScriptの代わりには、ツールバーボタン
 
 \end_inset
 
-（キー割り当て 
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-C-t
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+（キー割り当て
+\begin_inset Info
+type  "shortcut"
+arg   "buffer-view ps"
+\end_inset
+
 ）を使用します。
 \end_layout
 
@@ -20767,7 +20302,7 @@ Ghostscript
 ボックスのパラメータを以下のように設定することができます。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -20844,7 +20379,7 @@ reference "sub:プリンタ"
 。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -20926,7 +20461,25 @@ LyXには、
 \bar no
 \noun off
 \color none
-と呼ばれる、3つの長さのダッシュ（-）文字があります。
+と呼ばれる、3つの長さのダッシュ（
+\family typewriter
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+-
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+）文字があります。
 \family default
 \series default
 \shape default
@@ -20972,29 +20525,11 @@ LyXには、
 \begin_inset Text
 
 \begin_layout Plain Layout
-a 
-\begin_inset Quotes eld
-\end_inset
-
-
+『
 \family typewriter
 -
 \family default
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-translate to Japanese
-\end_layout
-
-\end_inset
-
-
+』
 \end_layout
 
 \end_inset
@@ -21023,15 +20558,13 @@ translate to Japanese
 \begin_inset Text
 
 \begin_layout Plain Layout
-inserted via 
-\family sans
-Insert\SpecialChar \menuseparator
-Special
-\begin_inset space ~
-\end_inset
 
-Character\SpecialChar \menuseparator
-Symbols
+\family sans
+挿入\SpecialChar \menuseparator
+特殊文字\SpecialChar \menuseparator
+記号
+\family default
+で挿入
 \end_layout
 
 \end_inset
@@ -21060,15 +20593,13 @@ Symbols
 \begin_inset Text
 
 \begin_layout Plain Layout
-inserted via 
-\family sans
-Insert\SpecialChar \menuseparator
-Special
-\begin_inset space ~
-\end_inset
 
-Character\SpecialChar \menuseparator
-Symbols
+\family sans
+挿入\SpecialChar \menuseparator
+特殊文字\SpecialChar \menuseparator
+記号
+\family default
+で挿入
 \end_layout
 
 \end_inset
@@ -21100,19 +20631,11 @@ Symbols
 \begin_inset Text
 
 \begin_layout Plain Layout
-a 
-\begin_inset Quotes eld
-\end_inset
-
-
+数式モードで『
 \family typewriter
 -
 \family default
-
-\begin_inset Quotes eld
-\end_inset
-
- in math mode
+』
 \end_layout
 
 \end_inset
@@ -21131,17 +20654,6 @@ a
 
 \begin_layout Standard
 
-\lang english
-You can alternatively generate the en and em dash by inserting the
-\lang japanese
- 「
-\family typewriter
--
-\family default
-」 
-\lang english
-character multiple times in a row.
-
 \family roman
 \series medium
 \shape up
@@ -21150,9 +20662,26 @@ character multiple times in a row.
 \bar no
 \noun off
 \color none
-\lang japanese
- 「-」文字を続けて複数入力することによって、これらを生成することができます。これらは、最終的な出力では、自動的に適切な長さのダッシュとして出力されますが、Ly
-Xの中ではそうなりません。 
+「
+\family typewriter
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+-
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」文字を続けて複数入力することによって、エヌ・ダッシュやエム・ダッシュを生成することもできます。これらは、最終的な出力では、自動的に適切な長さのダッシュとして出
+力されますが、LyXの中ではそうなりません。 
 \family default
 \series default
 \shape default
@@ -21165,11 +20694,7 @@ Xの中ではそうなりません。
 \begin_inset space \thinspace{}
 \end_inset
 
--」 
-\lang english
-gives a
-\lang japanese
- エヌ・ダッシュ, 「-
+-」 でエヌ・ダッシュ、 「-
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -21177,11 +20702,7 @@ gives a
 \begin_inset space \thinspace{}
 \end_inset
 
--」 
-\lang english
-a
-\lang japanese
- エム・ダッシュ.
+-」でエム・ダッシュが出力されます。
 \end_layout
 
 \begin_layout Standard
@@ -21194,7 +20715,25 @@ a
 \bar no
 \noun off
 \color none
-これら3つのダッシュは、独自の長さを持つ、数式モードのマイナス記号とは異なります。「-」が使われている例をご覧に入れましょう。
+これら3つのダッシュは、それ独自の長さを持つ、数式モードのマイナス記号とは異なります。「
+\family typewriter
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+-
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+」が使われている例をご覧に入れましょう。
 \end_layout
 
 \begin_layout Enumerate
@@ -21366,9 +20905,9 @@ LaTeXは、ハイフネーションをほとんど完璧にこなしますが、
 \end_layout
 
 \begin_layout Standard
-ときには、単語や複合語がハイフンで区切られることを避けたい場合があるかもしれません。この文書のキー割り当て／ショートカットは、「A-b c」のようにハイフンと空
-白を含む3文字で構成されています。LaTeXは、ハイフン「-」をハイフネーション位置の候補として考えます。しかし、この場所でのハイフネーションは醜悪です。このシ
-ョートカット表記がハイフンで区切られるのを避けるには、それをLaTeXのボックスコマンド
+ときには、単語や複合語がハイフンで区切られることを避けたい場合があるかもしれません。この文書のキー割り当て／短絡キーは、「A-b c」のようにハイフンと空白を含
+む3文字で構成されています。LaTeXは、ハイフン「-」をハイフネーション位置の候補として考えます。しかし、この場所でのハイフネーションは醜悪です。この短絡キー
+表記がハイフンで区切られるのを避けるには、それをLaTeXのボックスコマンド
 \backslash
 mboxの引数に入れると、LaTeXボックス内の字句はハイフンネーションの対象とならないので、うまく回避できます。LyXは
 \backslash
@@ -21705,23 +21244,11 @@ status collapsed
 \noun off
 \color none
 を使うようにしてください。この機能は、短絡のために
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-C-ピリオド
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "specialchar-insert end-of-sentence"
+\end_inset
+
 に割り当てられています。
 \end_layout
 
@@ -21975,7 +21502,7 @@ LyX
 つです。
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -22035,7 +21562,7 @@ single
 という引用符を用います
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -22063,7 +21590,7 @@ this
 という引用符を用います
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -22095,7 +21622,7 @@ this
 という引用符を用います
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -22127,7 +21654,7 @@ this
 という引用符を用います
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -22187,7 +21714,7 @@ this
 という引用符を用います
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 
 \family sans
@@ -22610,9 +22137,11 @@ status collapsed
 小空白
 \family default
 （短絡キーは
-\family sans
-C-S-スペース
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "space-insert thin"
+\end_inset
+
 ）メニューを使ってください。
 \end_layout
 
@@ -27149,7 +26678,7 @@ reference "fig:カモノハシ"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset space \hfill{}
@@ -27199,7 +26728,7 @@ name "fig:何かわからない"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -27745,8 +27274,8 @@ status open
 \series bold
 （註）
 \series default
-折返しフロートは脆弱です！例えば、図をページの下すぎる位置に置いてしまうと、ごちゃごちゃになって、フロートが出力に現れなかったり、他の本文の上に上書きされて出力
-されたりします。
+折返しフロートは壊れやすいことがあります！例えば、図をページの下すぎる位置に置いてしまうと、ごちゃごちゃになって、フロートが出力に現れなかったり、他の本文の上に
+上書きされて出力されたりします。
 \end_layout
 
 \end_inset
@@ -29491,23 +29020,11 @@ name "sub:範囲付き演算子"
 \color none
 となります。一方、積分記号の場合は、上限下限はどちらの数式型でも積分記号の横に配置されます。全ての範囲付き演算子は、別行建てモードでは自動的に大きさが調整されま
 す。上限下限の位置は、カーソルを記号の直後に置いて、
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-M-m l
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "math-limits"
+\end_inset
+
 と押すか、
 \family sans
 \series default
@@ -29793,8 +29310,8 @@ status collapsed
 \bar no
 \noun off
 \color none
-LaTeXの提供する標準的な余白取りとは異なる余白を使いたいことがあるかもしれません。この場合は、
-\family sans
+LaTeXの提供する標準的な余白取りとは異なる余白を使いたいことがあるかもしれません。この場合は
+\family default
 \series default
 \shape default
 \size default
@@ -29802,7 +29319,13 @@ LaTeXの提供する標準的な余白取りとは異なる余白を使いたい
 \bar default
 \noun default
 \color inherit
-C-スペース
+、
+\begin_inset Info
+type  "shortcut"
+arg   "space-insert protected"
+\end_inset
+
+を
 \family roman
 \series medium
 \shape up
@@ -29811,7 +29334,7 @@ C-スペース
 \bar no
 \noun off
 \color none
-を押すか、数式パネルのボタン
+押すか、数式パネルのボタン
 \begin_inset Graphics
 	filename ../../images/math/space.png
 
@@ -29826,7 +29349,7 @@ C-スペース
 \bar default
 \noun default
 \color inherit
-a C-スペース b
+a C+Space b
 \family roman
 \series medium
 \shape up
@@ -29870,11 +29393,11 @@ a C-スペース b
 \begin_layout Standard
 
 \series bold
-a C-スペース b
+a Ctrl+Space b
 \series default
 と入力した後に
 \family sans
-スペース
+Space
 \family default
 を3回入力：
 \begin_inset Formula $a\quad b$
@@ -29886,11 +29409,11 @@ a C-スペース b
 \begin_layout Standard
 
 \series bold
-a C-スペース b
+a Ctrl+Space b
 \series default
 と入力した後に
 \family sans
-スペース
+Space
 \family default
 を3回入力：
 \begin_inset Formula $a\! b$
@@ -31164,9 +30687,29 @@ lrc
 
 \begin_layout Standard
 既存の行列に行を追加するには、カーソルを行列内に置いて
-\family sans
-C-改行
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+
 \family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
 を押してください。列の追加や削除は
 \family sans
 編集\SpecialChar \menuseparator
@@ -31214,53 +30757,23 @@ f(x)=\begin{cases}
 \noun off
 \color none
 複数行数式は、数式内で
-\family sans
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-C-改行
-\family roman
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
 を押すことで作成することができます。空の数式では、各列を表す3つの青い枠が表示されます。空でない数式内で
-\family sans
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-C-改行
-\family roman
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
 を押すと、関係子（等号「＝」など）の前の部分は自動的に第1列に入れられ、関係子が第2列、残りが第3列に入れられます。新規の行は、さらに
-\family sans
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-C-改行
-\family roman
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
 を押すたびに追加されます。複数行数式は、つねに別行建てです。以下がその例です。
 \family default
 \series default
@@ -31295,7 +30808,7 @@ a & = & \sqrt{b^{4}-c^{4}}\label{eq:asquared}\end{eqnarray}
 \bar default
 \noun default
 \color inherit
-C-Tab
+Ctrl+Tab
 \family roman
 \series medium
 \shape up
@@ -31429,32 +30942,12 @@ name "sec:数式番号と参照"
 \bar no
 \noun off
 \color none
-メニューかショートカット
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-M-m
-\family default
-
-\begin_inset space ~
+メニューか短絡キー
+\begin_inset Info
+type  "shortcut"
+arg   "math-number-toggle"
 \end_inset
 
-
-\family sans
-n
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 を使用してください。LyX中で数式番号は、括弧に囲まれた「#」で表されます。「#」が意味するのは、番号が出力が生成される時に自動的に計算されるということです。出
 力における数式番号の配置と形式は、文書クラスに依存します。この文書では、数式番号は、章番号とともに、ピリオドのあとに印字されます。
 \family default
@@ -31481,31 +30974,11 @@ n
 \noun off
 \color none
 付番数式の中で
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-M-m
-\family default
-
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "math-number-toggle"
 \end_inset
 
-
-\family sans
-n
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 と押すと、番号を消すことができます。番号付けは別行建て数式でしかできません。
 \end_layout
 
@@ -31539,32 +31012,12 @@ n
 \bar no
 \noun off
 \color none
-メニューやショートカット
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-M-m
-\family default
-
-\begin_inset space ~
+メニューや短絡キー
+\begin_inset Info
+type  "shortcut"
+arg   "math-number-line-toggle"
 \end_inset
 
-
-\family sans
-N
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 を使用すると、以下のように、カーソルがある行の番号だけを付けたり消したりすることができます。
 \family default
 \series default
@@ -31593,31 +31046,11 @@ N
 \noun off
 \color none
 全てに行に番号をつけるには、
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-M-m
-\family default
-
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "math-number-toggle"
 \end_inset
 
-
-\family sans
-n
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 を使用します。
 \begin_inset VSpace bigskip
 \end_inset
@@ -31757,13 +31190,6 @@ status collapsed
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:数式マクロ"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -31776,28 +31202,16 @@ name "sec:数式マクロ"
 \bar no
 \noun off
 \color none
-LyXでは、数式用に自前のマクロを定義することができます。例えば、二次方程式の解が文章中にさまざまに形を変えて登場するので、それを印字させるためのマクロを作りた
-いものとしましょう。
-\begin_inset Newline newline
-\end_inset
-
-二次方程式の一般形は
-\begin_inset Formula \[
-0=\lambda^{2}+p\lambda+q\]
-
-\end_inset
-
-であり、その解の一般形は
-\begin_inset Formula \[
-\lambda_{1,2}=-\frac{p}{2}\pm\sqrt{\frac{p^{2}}{4}-q}\]
-
-\end_inset
-
-です。
-\end_layout
-
-\begin_layout Standard
-
+LyXでは、数式用に自前のマクロを定義することができるので、同じ形の数式が文書中に何度も現れるときには、たいへん便利です。数式マクロは、取扱説明書『
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+数式篇
 \family roman
 \series medium
 \shape up
@@ -31806,23 +31220,20 @@ LyXでは、数式用に自前のマクロを定義することができます�
 \bar no
 \noun off
 \color none
-マクロは、パラメータ
-\begin_inset Formula $\lambda$
+』の
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+Math
+\begin_inset space ~
 \end_inset
 
-、
-\begin_inset Formula $p$
-\end_inset
-
-、
-\begin_inset Formula $q$
-\end_inset
-
-を上記の式のように印字するものでなくてはなりません。
-\end_layout
-
-\begin_layout Standard
-
+Macros
 \family roman
 \series medium
 \shape up
@@ -31831,226 +31242,7 @@ LyXでは、数式用に自前のマクロを定義することができます�
 \bar no
 \noun off
 \color none
-マクロは、LyXの画面の下にあるミニバッファに
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\lang english
-math-macro 
-\lang japanese
-マクロ名
-\series default
-\lang english
- 
-\series bold
-\lang japanese
-引数の数
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-とコマンドを書き込めば生成されます。マクロ名は、新しく作るマクロの名称で、数字を含んではなりません。引数の数は、1から9のあいだの数字をとることができます。引数
-をとらないマクロを作成したい場合には、引数の数を宣言しないでください。
-\end_layout
-
-\begin_layout Standard
-マクロ名が「qE」で3つの変数をとるようにしたいとき、コマンドは
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\lang english
-math-macro
-\series default
- 
-\series bold
-qE
-\series default
- 
-\series bold
-3
-\end_layout
-
-\begin_layout Standard
-となります。
-\end_layout
-
-\begin_layout Standard
-このようにすると、
-\begin_inset Graphics
-	filename ../clipart/macrobox.png
-
-\end_inset
-
-のようなマクロ定義枠が現れます。
-\begin_inset FormulaMacro
-\newcommand{\qE}[3]{#1_{1,\,2}=-\frac{#2}{2}\pm\sqrt{\frac{#2^{2}}{4}-#3}}
-{\textrm{qE: }#1\textrm{ , }#2\textrm{ , }#3}
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-最初の枠は、出力の様子を示すための画像です。二番目の枠は、定義枠そのものですが、出力には現れません。
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-最初の青い枠が定義用の枠で、ここに数式パネルやコマンドを使って数式を挿入します。引数の位置取りは、例えば第1引数の場合は「
-\backslash
-#1」のように、バックスラッシュの後に引数番号を入れることで確保できます。位置取りは赤字で表示されます。二番目の枠は、LyX中の表示用のものです。これは、大きな
-数式要素が含まれていてLyX中にそのままの大きさで表示させたくないときに便利です。マクロを定義されたままで表示したい場合には、この枠は空のまま残してください。上
-の例では、
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-qE: 
-\backslash
-#1, 
-\backslash
-#2, 
-\backslash
-#3
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-という文字列が入れてありますので、マクロはマクロ名と3つの引数だけで表示されます。
-\end_layout
-
-\begin_layout Standard
-数式中でマクロを使用するには、上の例では「
-\series bold
-
-\backslash
-qE
-\series default
-」のように、マクロ名をコマンドと同じように入力してください。引数用の枠を伴ったマクロが以下のように挿入されます。
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename ../clipart/macrouse.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-引数は、青い枠に挿入します。カーソルがマクロの外にある場合は、引数はマクロの中に挿入します。引数を変更するには、カーソルを数式内のマクロの前に置いて右矢印を押す
-か、マクロの後に置いて左矢印を押します。引数が、マクロ定義の下に表示されます。
-\end_layout
-
-\begin_layout Standard
-もしマクロ定義が変更されると、すべてのマクロは自動的に新しい定義に変更されます。以下は、
-\begin_inset Formula $x$
-\end_inset
-
-と
-\begin_inset Formula $\ln(y)$
-\end_inset
-
-と
-\begin_inset Formula $B$
-\end_inset
-
-を引数にとるマクロの例です。
-\begin_inset Formula \[
-\qE x{\ln(y)}B\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-文書がLaTeXにエクスポートされると、マクロ定義は
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-newcommand{
-\backslash
-qE}[3]{#1_{1,
-\backslash
-,2}=-
-\backslash
-frac{#2}{2}
-\backslash
-pm
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hphantom{
-\end_layout
-
-\end_inset
-
-
-\backslash
-newcommand
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\backslash
-sqrt{
-\backslash
-frac{#2^{2}}{4}-#3}}
-\begin_inset Newline newline
-\end_inset
-
-
-\series default
-というコマンドとして挿入されます。
-\end_layout
-
-\begin_layout Standard
-このコマンドは、文書のプリアンブルに挿入されるわけではありません。つまり、マクロは文書中のマクロ定義枠よりも下の部分でのみ使用することができるのです。他にも以下
-のような若干の制約があります。まず、
-\backslash
-newcommandコマンドは、非必須の引数をとることが可能ですが、LyXのマクロではこの機能を使うことができないようになっています。また、マクロ名と引数の数を
-同時に変更することはできません。
+の節に説明があります。
 \end_layout
 
 \begin_layout Section
@@ -32596,13 +31788,13 @@ status collapsed
 \family sans
 標準テキストモード
 \family default
-」（あるいはショートカット
+」（あるいは短絡キー
 \family sans
-M-m
+Alt-M
 \begin_inset space ~
 \end_inset
 
-m
+M
 \family default
 ）を選択して得られる、数式内文章を使用してください。LyX内では、数式内文章は、青色ではなく黒色で表示されます。数式内文章では、通常の本文と同様に空白やアクセン
 トが使用できます。以下の例をご覧ください。
@@ -33186,29 +32378,25 @@ enu:第2項目
 \bar no
 \noun off
 \color none
-」という項目を見つけ選択してください。出力では、相互参照枠の位置に項目番号が印字されます。以下が相互参照の例です。
+」という項目を見つけ選択してください。出力では、相互参照枠の位置に項目番号が印字されます。
 \end_layout
 
 \begin_layout Standard
 
-\lang english
-Alternatively to 
 \family sans
-Insert\SpecialChar \menuseparator
-Cross-Reference
+挿入\SpecialChar \menuseparator
+相互参照
 \family default
-, you can right-click on a label and use in the appearing context menu 
+の代わりに、ラベルをクリックすると現れるコンテクストメニューにある
 \family sans
-Copy as Reference
+参照としてコピー
 \family default
-.
- The cross-reference to this label is now in the clipboard and can be copied
- to the actual cursor position via the menu 
+を使うこともできます。すると、このラベルに対する相互参照がクリップボードにコピーされるので、
 \family sans
-Edit\SpecialChar \menuseparator
-Paste
+編集\SpecialChar \menuseparator
+貼り付け
 \family default
- (shortcut Ctrl+V).
+（短絡キーCtrl+V）メニューを使って、現在のカーソル位置に貼り付けることができます。
 \end_layout
 
 \begin_layout Standard
@@ -33221,7 +32409,7 @@ Paste
 \bar no
 \noun off
 \color none
-第
+右が相互参照の例です：第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "enu:第2項目"
@@ -33715,7 +32903,7 @@ URL
 \begin_layout Standard
 右がURLの例です。（例）LyXのホームページは
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -33760,8 +32948,12 @@ name "sub:ハイパーリンク"
 \end_layout
 
 \begin_layout Standard
-ハイパーリンクは、挿入\SpecialChar \menuseparator
-ハイパーリンクメニューか、ツールバーボタン
+ハイパーリンクは、
+\family sans
+挿入\SpecialChar \menuseparator
+ハイパーリンク
+\family default
+メニューか、ツールバーボタン
 \begin_inset Graphics
 	filename ../../images/href-insert.png
 
@@ -34212,13 +33404,13 @@ key "BibTeX"
 \family sans
 節分けされた参考文献
 \family default
-オプションを選択すると、節分けされた複数の参考文献を入れることができます。この件に関しては、取扱説明書
+オプションを選択すると、節分けされた複数の参考文献を入れることができます。この件に関しては、取扱説明書『
 \emph on
 拡張機能篇
 \emph default
-の
+』の
 \emph on
-Customizing Bibliographies with BibTeX
+BibTeXによる参照文献のカスタマイズ
 \emph default
 の節に詳述されています。
 \end_layout
@@ -34323,8 +33515,12 @@ name "sec:索引"
 
 \end_inset
 
-を使用すると、索引項目が生成されます。「索引」というラベルがついた灰色の枠が挿入されるので、その中に索引に現れる文字列を入力します。そのとき、カーソル位置の単語
-あるいは現在選択されている文字列が、索引項目の候補として表示されているはずです。
+を使用すると、索引項目が生成されます。「
+\family sans
+索引
+\family default
+」というラベルがついた灰色の枠が挿入されるので、その中に索引に現れる文字列を入力します。そのとき、カーソル位置の単語あるいは現在選択されている文字列が、索引項目
+の候補として表示されているはずです。
 \end_layout
 
 \begin_layout Standard
@@ -34349,8 +33545,11 @@ key "latexcompanion,latexguide,latexbook"
 一覧／目次\SpecialChar \menuseparator
 索引一覧
 \family default
-メニューで文書に挿入します。「索引」というラベルのついた水色の枠が、出力中で索引が印字される位置を示します。索引一覧枠は、他のLyX枠とちがってクリック可能では
-ありません。
+メニューで文書に挿入します。「
+\family sans
+索引
+\family default
+」というラベルのついた水色の枠が、出力中で索引が印字される位置を示します。索引一覧枠は、他のLyX枠とちがってクリック可能ではありません。
 \end_layout
 
 \begin_layout Subsection
@@ -34550,7 +33749,7 @@ GIF|see{画像形式}
 という項目（中括弧はTeXコードとして挿入しなくてはなりません）を使用して、「画像形式」という索引項目を参照しています。中括弧に囲まれた文が参照される項目です。
 参照は、出力においてはページ番号なしで出力されます
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -34601,7 +33800,7 @@ name "sub:索引項目の整序"
 \begin_layout Standard
 索引項目にアクセント付き文字を使用することは可能ですが
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -34617,7 +33816,7 @@ status open
 
 、こうすると項目が索引順の規則に従わなくなる可能性があります。索引項目はアルファベット順に整序しますが、LaTeX
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 索引の生成は、バックグラウンドで追加プログラムによって実行されます。第
@@ -34660,7 +33859,7 @@ status collapsed
 
 itre」
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 だみーこうもく@ダミー項目 ! ma
@@ -34683,7 +33882,7 @@ is
 
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 だみーこうもく@ダミー項目 ! ma
@@ -34706,7 +33905,7 @@ itre
 
 
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 だみーこうもく@ダミー項目 ! mais@ma
@@ -34846,7 +34045,7 @@ status collapsed
 \begin_layout Standard
 索引項目の外観は、文字形式ダイアログを使用して変更することができます。
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 だみーこうもく@ダミー項目 ! これ@
@@ -34868,9 +34067,9 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-と書くとイタリック体のページ番号を得ることができます。
+と書くと、イタリック体のページ番号を得ることができます。
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 だみーこうもく@ダミー項目 ! いたりっくたいのぺーじばんごう@イタリック体のページ番号:|textit
@@ -34977,7 +34176,7 @@ textit{#1}}
 
 と書いてください。
 \begin_inset Index
-status collapsed
+status open
 
 \begin_layout Plain Layout
 だみーこうもく@ダミー項目 ! さくいんこうもく@索引項目|IndexDef
@@ -35757,6 +34956,53 @@ reference "cha:LyXで使用できる単位"
 cmです。
 \end_layout
 
+\begin_layout Subsection
+用語集プログラム
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+ようごしゅう@用語集 ! ぷろぐらむ@プログラム
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:用語集プログラム"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LyXは、すべてのLaTeX頒布版に含まれている
+\family sans
+makeindex
+\family default
+プログラムを、用語集を生成するのに使用します。LyXの設定ダイアログを使って、他のプログラムを指定したり、
+\family sans
+makeindex
+\family default
+にオプションを追加して制御したりすることができます。第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX-設定"
+
+\end_inset
+
+節を参照してください。使用できるオプションは、
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nomencl,makeindex"
+
+\end_inset
+
+に説明とともに列挙されています。
+\end_layout
+
 \begin_layout Section
 派生枝
 \begin_inset Index
@@ -36104,8 +35350,8 @@ hyperref
 \family sans
 ハイパーリンク
 \family default
-では、リンクの外観や参考文献の逆参照リンクを生成するかどうかを指定することができます。逆参照は、参考文献の各項目のうしろに、文書のどこで項目が引用されたかを表示
-するものです。
+では、リンクの外観や参考文献の逆参照リンクを生成するかどうかを指定することができます。逆参照は、参考文献の各項目のうしろに、項目が引用された節やスライド、ページ
+を表示するものです。
 \end_layout
 
 \begin_layout Standard
@@ -36114,12 +35360,8 @@ hyperref
 しおり
 \family default
 ダイアログタブでは、読者が文書内を動き回るのに便利なように、文書の各節のPDFしおりを設定するかどうかを指定することができます。しおりが、文書の節見出しと同様に
-番号を振るかどうかを指定することもできます。
-\family sans
-開くしおり
-\family default
-の階層では、PDFを開いたときにどの節階層まで表示するかを指定することができます。例えば、階層を2にしたときには、すべての節と小節が表示され、階層を１にすると節
-のみが表示されます。
+番号を振るかどうかを指定することもできます。開くしおりの階層では、PDFを開いたときにどの節階層まで表示するかを指定することができます。例えば、階層を2にしたと
+きには、すべての節と小節が表示され、階層を１にすると節のみが表示されます。
 \end_layout
 
 \begin_layout Standard
@@ -36808,7 +36050,7 @@ status collapsed
 文字コードは第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:設定"
+reference "cha:文書設定"
 
 \end_inset
 
@@ -41652,6 +40894,14 @@ reference "sec:ファイル形式"
 現在の数式マクロを展開したり、畳んだりします。
 \end_layout
 
+\begin_layout Standard
+数式マクロは、取扱説明書『
+\emph on
+数式篇
+\emph default
+』に記述があります。
+\end_layout
+
 \begin_layout Subsection
 ソースを閲覧
 \end_layout
@@ -42617,13 +41867,17 @@ status collapsed
 しおり
 \family default
 メニューを使うか、キー割り当て
-\family sans
-C-1
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "bookmark-goto 1"
+\end_inset
+
 ないし
-\family sans
-C-2
-\family default
+\begin_inset Info
+type  "shortcut"
+arg   "bookmark-goto 2"
+\end_inset
+
 を使用することによって、簡単に移動できるようになります。
 \end_layout
 
@@ -42782,833 +42036,17 @@ reference "sec:付録"
 
 \begin_layout Subsection
 設定
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:設定"
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-ぶんしょ@文書!せってい@------ 設定
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-このメニューには、文書全体の特性を設定する下位メニューがあります。ダイアログ中の
-\family sans
-文書の既定値として保存
-\family default
-ボタンを押せば、好みの文書設定を既定値として保存することができます。こうすると、
-\family typewriter
-default.lyx
-\family default
-という名前のひな形が生成されて、ひな形を使用せずに新規ファイルを作ると、LyXがこのファイルを自動的に読み込むようになります。
-\end_layout
-
-\begin_layout Standard
-ダイアログ中の下位メニューを以下に説明します。
-\end_layout
-
-\begin_layout Subsubsection
-文書クラス
-\end_layout
-
-\begin_layout Standard
-ここでは、文書クラス・クラスオプション・Postscriptドライバ・親文書・モジュールを設定することができます。文書クラスに関しては第
+文書設定は、付録
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:文書クラス"
+reference "cha:文書設定"
 
 \end_inset
 
-節、モジュールに関しては第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:モジュール"
-
-\end_inset
-
-節に説明されています。Postscriptドライバは、LaTeXのcolorおよびgraphicsパッケージに使用されます。
-\family sans
-既定値
-\family default
-を選ぶと、LaTeXパッケージの既定値が使用されます。よくわからないうちは、既定値を使用することをお勧めします。使用中の文書が子文書ないし下位文書である場合には
-、親文書を指定することが必要です。親文書・子文書に関して詳しくは、取扱説明書
-\emph on
-埋込オブジェクト篇
-\emph default
-の
-\emph on
-Child Documents
-\emph default
-の節に説明されています。
-\end_layout
-
-\begin_layout Subsubsection
-フォント
-\end_layout
-
-\begin_layout Standard
-文書フォント設定に関しては、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:フォントと文字形式"
-
-\end_inset
-
-節に説明されています。
-\end_layout
-
-\begin_layout Subsubsection
-本文レイアウト
-\end_layout
-
-\begin_layout Standard
-段落を字下げで区切るか行間を広げて区切るかを指定することができます。また、行間と本文の段組数もここで指定することができます。
-\end_layout
-
-\begin_layout Standard
-LyXは、二段組や行間を画面には反映しないことに注意してください。これは実用的ではなく、しばしば読み辛い上に、WYSIWYMの概念に反するのです。しかし、出力に
-おいては指定したとおりに反映されます。
-\end_layout
-
-\begin_layout Standard
-リスト設定に関しては、取扱説明書
-\emph on
-埋込オブジェクト篇
-\emph default
-の対応する節で説明されています。
-\end_layout
-
-\begin_layout Subsubsection
-ページレイアウト
-\end_layout
-
-\begin_layout Standard
-このメニューの説明は、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:用紙寸法と方向"
-
-\end_inset
-
-節および第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:文書レイアウト"
-
-\end_inset
-
-節に説明されています。
-\end_layout
-
-\begin_layout Subsubsection
-ページ余白
-\end_layout
-
-\begin_layout Standard
-ここでは、用紙の余白を調整することができます。第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:余白"
-
-\end_inset
-
-節を参照してください。
-\end_layout
-
-\begin_layout Subsubsection
-言語
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-げんご@言語 ! もじこーど@文字コード
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-文書言語と引用形式がここで設定できます。文字コードは、文書の内容がどのようにLaTeXにエクスポートされるかを指定します（LyXファイルはつねにUTF-8でコー
-ド化されています）。指定された文字コードにコード化できない文字は、すべてLaTeXコマンドとしてエクスポートされます（LaTeXコマンドが対応していない文字があ
-る場合には失敗します）
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-既知のコマンドは、テキストファイルで定義されていますから、ユーザー自身でこのファイルに未知の記号用のコマンドを加えることができます。詳細は、取扱説明書カスタマイ
-ズ篇をご覧ください。
-\end_layout
-
-\end_inset
-
-。
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-言語既定値
-\family default
-オプションを選択すると、本文の言語から本文部分の文字コードを決定します。このとき、文書が二つ以上の言語を含んでいると、LaTeXファイルに二つ以上の文字コードを
-含ませることになるかもしれません。このオプションを使用しないときには、文書全体はつねに一つの文字コードだけを使用することになります。
-\family sans
-XeTeX
-\family default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-XeTeXは、LaTeXに代わるTeX植字エンジンです。XeTeXはネイティブにUnicodeをサポートし、インプットファイルはUTF-8文字コードであるものと
-仮定します。LyXをXeTeXとともに使う詳しい方法は、
-\begin_inset CommandInset citation
-LatexCommand cite
-key "XeTeX"
-
-\end_inset
-
-に記載があります。
-\end_layout
-
-\end_inset
-
-を使っているとき以外は、このオプションを有効にすることが推奨されます（以下参照）。
-\end_layout
-
-\begin_layout Standard
-LyXは、Unicodeでの出力もサポートしているので、たくさんの特別な記号やアルファベット以外の文字が必要なときに、特に便利です。これを利用したい（そしてお使
-いのLaTeXシステムがUnicodeをサポートしている）場合には、以下の一覧から、四つのUTF-8関連選択肢のうち一つを選んでください。残念ながら、標準LaT
-eXのUnicodeサポートははなはだ不完全であるため、たくさんのUnicode記号を含むファイルが、
-\family sans
-言語既定値
-\family default
-の文字コードで動くものの（このとき、LyXは既知のLaTeXコマンド一覧を使用します）、UTF-8文字コード固定では動かないということは、珍しいことではありませ
-ん（このとき、LyXは既知のLaTeXコマンド一覧を使用しません。なぜならUnicode記号はすべてUTF-8でコード化できるからです）。
-\end_layout
-
-\begin_layout Standard
-以下は主要な文字コードの一覧です。
-\end_layout
-
-\begin_layout Description
-LaTeX既定値（inputenc不使用） 文字コードに
-\family sans
-言語既定値
-\family default
-を使用するのと同じですが、
-\series bold
-inputenc
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! inputenc
-\end_layout
-
-\end_inset
-
- LaTeXパッケージは使用されません。そのため、これを使用するときには、プリアンブルに他の適当なパッケージを読み込んで、外国語で書かれている部分の文字コードを
-TeXコードで指定する必要があるでしょう。
-\end_layout
-
-\begin_layout Description
-ASCII ASCII文字コード。通常の英語（7ビットASCII）しかカバーしていません。LyXはそれ以外の文字をすべてLaTeXコマンドに変換するので、多量の
-LaTeXコマンドが必要な場合には、ファイルが大きくなる可能性があります。
-\end_layout
-
-\begin_layout Description
-アラビア語（CP
-\begin_inset space ~
-\end_inset
-
-1256） アラビア語及びペルシア語用MS Windowsコードページ
-\end_layout
-
-\begin_layout Description
-アラビア語（ISO
-\begin_inset space ~
-\end_inset
-
-8859-6） アラビア語及びペルシア語用
-\end_layout
-
-\begin_layout Description
-アルメニア語（ArmSCII8） アルメニア語用
-\end_layout
-
-\begin_layout Description
-キリル文字（CP
-\begin_inset space ~
-\end_inset
-
-1251） キリル文字用MS Windowsコードページ
-\end_layout
-
-\begin_layout Description
-キリル文字（KOI8-R） 標準キリル文字。特にロシア語向け。
-\end_layout
-
-\begin_layout Description
-キリル文字（KOI8-U） ウクライナ語用キリル文字
-\end_layout
-
-\begin_layout Description
-キリル文字（pt
-\begin_inset space ~
-\end_inset
-
-154） カザフ語用キリル文字
-\end_layout
-
-\begin_layout Description
-ギリシア語（ISO
-\begin_inset space ~
-\end_inset
-
-8859-7） ギリシア語用
-\end_layout
-
-\begin_layout Description
-タイ語（TIS
-\begin_inset space ~
-\end_inset
-
-620-0） タイ語用
-\end_layout
-
-\begin_layout Description
-トルコ語（ISO
-\begin_inset space ~
-\end_inset
-
-8859-9） （latin 5）トルコ語用。ISO-8859-1に近いが、アイスランド文字をトルコ語に置き換えてある。
-\end_layout
-
-\begin_layout Description
-バルト語（CP
-\begin_inset space ~
-\end_inset
-
-1257） エストニア語・ラトビア語・リトアニア語用MS Windowsコードページ。ISO-8859-13文字コードと同等。 
-\end_layout
-
-\begin_layout Description
-バルト語（ISO
-\begin_inset space ~
-\end_inset
-
-8859-13） エストニア語・ラトビア語・リトアニア語用。ISO-8859-4文字コードの上位集合。 
-\end_layout
-
-\begin_layout Description
-バルト語（ISO
-\begin_inset space ~
-\end_inset
-
-8859-4） （latin 4）エストニア語・ラトビア語・リトアニア語用。ISO-8859-13文字コードの下位集合。 
-\end_layout
-
-\begin_layout Description
-ヘブライ語（CP
-\begin_inset space ~
-\end_inset
-
-1255） ヘブライ語用MS Windowsコードページ。ISO-8859-8文字コードの上位集合。
-\end_layout
-
-\begin_layout Description
-ヘブライ語（ISO
-\begin_inset space ~
-\end_inset
-
-8859-8） ヘブライ語用
-\end_layout
-
-\begin_layout Description
-ユニコード（CJK）（utf8）
-\series bold
- CJK
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! CJK
-\end_layout
-
-\end_inset
-
- LaTeXパッケージ（日中韓言語用）を使用したUnicode utf8
-\end_layout
-
-\begin_layout Description
-ユニコード（XeTeX）（utf8） 
-\family sans
-XeTeX
-\family default
-とともに使用することを意図したUnicode utf8。
-\series bold
-inputenc
-\series default
- LaTeXパッケージの助けを借りずにUnicodeを直接使用します 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-LyXをXeTeXと使う方法に関しては、
-\begin_inset CommandInset citation
-LatexCommand cite
-key "XeTeX"
-
-\end_inset
-
-に記載があります。
-\end_layout
-
-\end_inset
-
-。
-\end_layout
-
-\begin_layout Description
-ユニコード（UCS拡張版）（utf8x） 
-\series bold
-ucs
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! ucs
-\end_layout
-
-\end_inset
-
-LaTeXパッケージに基づいたUnicode utf8（包括的。ラテン文字・ギリシャ文字・キリル文字・日中韓文字を含む）。
-\end_layout
-
-\begin_layout Description
-ユニコード（utf8） 
-\series bold
-inputenc
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! inputenc
-\end_layout
-
-\end_inset
-
- LaTeXパッケージに基づいたUnicode utf8。いまのところ、限られた文字範囲（主にラテン文字）しかサポートしていません。
-\end_layout
-
-\begin_layout Description
-中国語（簡体字）（EUC-CN） 簡体字中国語用。ユーロ貨幣記号を除いては、WindowsコードページCP936と同じ。2001年以降、この文字コードは、正式に
-文字コードGB18030に取って代わられました。GB18030はLaTeXでは使用できないため、Unicode（CJK）（utf8）を使用するようにしてください
-。
-\end_layout
-
-\begin_layout Description
-中国語（簡体字）（GBK） 簡体字中国語用。特にUNIX OS向け。2001年以降、この文字コードは、正式に文字コードGB18030に取って代わられました。GB
-18030はLaTeXでは使用できないため、Unicode（CJK）（utf8）を使用するようにしてください。
-\end_layout
-
-\begin_layout Description
-中国語（繁体字）（EUC-TW） 繁体字中国語用。
-\end_layout
-
-\begin_layout Description
-中欧語（CP
-\begin_inset space ~
-\end_inset
-
-1250） ISO
-\begin_inset space ~
-\end_inset
-
-8859-2用のMS Windowsコードページ（latin 2）
-\end_layout
-
-\begin_layout Description
-中欧語（ISO
-\begin_inset space ~
-\end_inset
-
-8859-2） （latin 2）アルバニア語・クロアチア語・チェコ語・ドイツ語・ハンガリー語・ポーランド語・ルーマニア語・スロバキア語・スロベニア語を収録
-\end_layout
-
-\begin_layout Description
-南ヨーロッパ語（ISO
-\begin_inset space ~
-\end_inset
-
-8859-3） （latin 3）エスペラント語・ガリシア語・マルタ語・トルコ語を収録。
-\end_layout
-
-\begin_layout Description
-南東ヨーロッパ語（ISO
-\begin_inset space ~
-\end_inset
-
-8859-16） （latin 10）アルバニア語・クロアチア語・フィンランド語・フランス語・ドイツ語・ハンガリー語・アイルランドゲール語・イタリア語・ポーラン
-ド語・ルーマニア語・スロベニア語を含む。区分的発音符を持つ文字と言語の多くを収録。
-\end_layout
-
-\begin_layout Description
-日本語（CJK）（EUC-JP） 日本語用EUC-JP文字コード。LaTeXパッケージ
-\series bold
-CJK
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! CJK
-\end_layout
-
-\end_inset
-
-を使用。これを使用する際には、文書言語を
-\family sans
-日本語（CJK）
-\family default
-にしてください。
-\end_layout
-
-\begin_layout Description
-日本語（CJK）（JIS） 日本語用JIS文字コード。LaTeXパッケージ
-\series bold
-CJK
-\series default
-を使用。これを使用する際には、文書言語を
-\family sans
-日本語（CJK）
-\family default
-にしてください。
-\end_layout
-
-\begin_layout Description
-日本語（CJK不使用）（EUC-JP） 日本語用EUC-JP文字コード。LaTeXパッケージ
-\series bold
-japanese
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! japanese
-\end_layout
-
-\end_inset
-
-を使用。これを使用する際には、文書言語を
-\family sans
-日本語
-\family default
-にしてください。
-\end_layout
-
-\begin_layout Description
-日本語（CJK不使用）（JIS） 日本語用JIS文字コード。LaTeXパッケージ
-\series bold
-japanese
-\series default
-を使用。これを使用する際には、文書言語を
-\family sans
-日本語
-\family default
-にしてください。
-\end_layout
-
-\begin_layout Description
-日本語（CJK不使用）（SJIS） 日本語用SJIS文字コード。LaTeXパッケージ
-\series bold
-japanese
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! japanese
-\end_layout
-
-\end_inset
-
-を使用。これを使用する際には、文書言語を
-\family sans
-日本語
-\family default
-にしてください。
-\end_layout
-
-\begin_layout Description
-西欧語（CP
-\begin_inset space ~
-\end_inset
-
-1252） latin1用MS Windowsコードページ
-\end_layout
-
-\begin_layout Description
-西欧語（ISO
-\begin_inset space ~
-\end_inset
-
-8859-1） （latin 1） ISO-8859-1文字コード。アルバニア語・カタロニア語・デンマーク語・オランダ語・英語・フェロー語・フィンランド語・フラ
-ンス語・ガリシア語・ドイツ語・アイスランド語・アイルランド語・イタリア語・ノルウェー語・ポルトガル語・スペイン語・スウェーデン語を含む。latin9に移行すべき
-。
-\end_layout
-
-\begin_layout Description
-西欧語（ISO
-\begin_inset space ~
-\end_inset
-
-8859-15） （latin 9） ISO-8859-15文字コード。ISO-8859-1文字コードと同様だが、ユーロ記号や
-\lang english
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-oe
-\end_layout
-
-\end_inset
-
-
-\lang japanese
-合字、その他フランス語とフィンランド語で用いられる文字を含む。latin9はlatin1の後継。
-\end_layout
-
-\begin_layout Description
-韓国語（EUC-KR） 韓国語用
-\end_layout
-
-\begin_layout Subsubsection
-連番と目次
-\end_layout
-
-\begin_layout Standard
-第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:番号の付け方-深度"
-
-\end_inset
-
-節に述べられているように、ここでは連番をつける節見出しの階層を調整することができます。
-\end_layout
-
-\begin_layout Subsubsection
-参考文献
-\end_layout
-
-\begin_layout Standard
-ここでは、LaTeXパッケージの
-\series bold
-natbib
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! natbib
-\end_layout
-
-\end_inset
-
-または
-\series bold
-jurabib
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! jurabib
-\end_layout
-
-\end_inset
-
-を使用して引用形式を指定することができます。詳しくは、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:参考文献"
-
-\end_inset
-
-節をご覧ください。
-\end_layout
-
-\begin_layout Subsubsection
-PDF特性
-\end_layout
-
-\begin_layout Standard
-PDF特性に関しては、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:PDF特性"
-
-\end_inset
-
-節に説明があります。
-\end_layout
-
-\begin_layout Subsubsection
-数式オプション
-\end_layout
-
-\begin_layout Standard
-これらのオプションは、LaTeXパッケージの
-\series bold
-amsmath
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! amsmath
-\end_layout
-
-\end_inset
-
-および
-\series bold
-esint
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! esint
-\end_layout
-
-\end_inset
-
-を使用するようにするか、必要なときにこれらを自動的に使用するようにするかを、LyXに強制します。
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-amsmath
-\series default
-は、多くの数式要素に必要とされているので、数式中にLaTeXエラーがでるときには、AMSを有効にしていることを確認してください。
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-esint
-\series default
-は、特別な積分記号に使われます。
-\end_layout
-
-\begin_layout Subsubsection
-フロートの配置
-\end_layout
-
-\begin_layout Standard
-フロートの配置オプションに関しては、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:フロートの配置"
-
-\end_inset
-
-節に説明があります。
-\end_layout
-
-\begin_layout Subsubsection
-ブリット
-\end_layout
-
-\begin_layout Standard
-ここでは、記号付き箇条書きの各階層の記号を調整できます。箇条書き（記号）環境に関しては、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:箇条書き（記号）"
-
-\end_inset
-
-節に説明があります。
-\end_layout
-
-\begin_layout Subsubsection
-派生枝
-\end_layout
-
-\begin_layout Standard
-派生枝に関しては、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:派生枝"
-
-\end_inset
-
-節に説明があります。
-\end_layout
-
-\begin_layout Subsubsection
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXプリアンブル
-\end_layout
-
-\begin_layout Standard
-このテキストフィールドには、特別なLaTeXパッケージを読み込むコマンドや、LaTeXコマンドの定義が入れられます。プリアンブルは、LaTeX熟練者向けです。よ
-くわからないうちは、ここにコマンドを入れるべきではありません。
-\end_layout
-
-\begin_layout Standard
-LaTeXの文法の入門は、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:LaTeX文法"
-
-\end_inset
-
-節にあります。
+に述べられています。
 \end_layout
 
 \begin_layout Section
@@ -43829,11 +42267,11 @@ reference "sub:ツールバー"
 \end_layout
 
 \begin_layout Standard
-また、カスタム・ツールバーを定義することも可能です。この点は、取扱説明書
+また、カスタム・ツールバーを定義することも可能です。この点は、取扱説明書『
 \emph on
 拡張機能篇
 \emph default
-に説明があります。
+』に説明があります。
 \end_layout
 
 \begin_layout Subsection
@@ -43930,7 +42368,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset VSpace defskip
+\begin_inset VSpace -10mm
 \end_inset
 
 
@@ -45583,15 +44021,889 @@ status collapsed
 
 \end_inset
 
-に関しては、取扱説明書
+に関しては、取扱説明書『
 \emph on
 埋込オブジェクト篇
 \emph default
-に説明があります。数式マクロツールバーに関しては、取扱説明書
+』に説明があります。数式マクロツールバーに関しては、取扱説明書『
 \emph on
 数式篇
 \emph default
-に説明があります。
+』に説明があります。
+\end_layout
+
+\begin_layout Chapter
+文書設定
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:文書設定"
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+ぶんしょ@文書!せってい@------ 設定
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+文書設定ダイアログには、文書全体の特性を設定する下位メニューがあり、
+\family sans
+文書\SpecialChar \menuseparator
+設定
+\family default
+メニューで呼び出せます。ダイアログ中の
+\family sans
+文書の既定値として保存
+\family default
+ボタンを押せば、好みの文書設定を既定値として保存することができます。こうすると、
+\family typewriter
+default.lyx
+\family default
+という名前のひな形が生成されて、ひな形を使用せずに新規ファイルを作ると、LyXがこのファイルを自動的に読み込むようになります。
+\end_layout
+
+\begin_layout Standard
+ダイアログ中の各下位メニューを以下に説明します。
+\end_layout
+
+\begin_layout Section
+文書クラス
+\end_layout
+
+\begin_layout Standard
+ここでは、文書クラス・クラスオプション・グラフィックドライバ・親文書を設定することができます。文書クラスに関しては、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:文書クラス"
+
+\end_inset
+
+節に説明されています。クラスによっては、既定で特定のクラスオプションを使うものがあります。その場合には、
+\family sans
+事前定義
+\family default
+フィールドにこれらのクラスオプションが提示され、それらを使うかどうか決めることができます。既定のクラスオプションが何を意味するのか正確に理解していない場合には、
+いじらないことをお勧めします。グラフィックドライバは、LaTeXのcolorおよびgraphicsパッケージと、ページレイアウトパッケージに使用されます。
+\family sans
+既定値
+\family default
+を選ぶと、LaTeXパッケージの既定ドライバが使用されます。よくわからないうちは、既定値を使用することをお勧めします。
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+dvi2ps・dvialw・dvilaser・dvitops・psprint・pubps・ln
+\begin_inset Newline newline
+\end_inset
+
+のいずれかのドライバを使用したい場合には、まずお使いのLaTeX頒布版でこれらを有効にしなくてはなりません。
+\begin_inset CommandInset href
+LatexCommand href
+target "http://tug.ctan.org/get/macros/latex/required/graphics/grfguide.pdf"
+
+\end_inset
+
+の第2章をご覧下さい。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+使用中の文書が、子文書ないし下位文書である場合には、親文書を指定することが必要です。親文書を開かずに子文書が開かれた場合、LyXはここで指定した親文書を使用しま
+す。親文書・子文書に関して、詳しくは、取扱説明書『
+\emph on
+埋込オブジェクト篇
+\emph default
+』の
+\emph on
+Child Documents
+\emph default
+の節に説明されています。
+\end_layout
+
+\begin_layout Section
+モジュール
+\end_layout
+
+\begin_layout Standard
+モジュールに関しては第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:モジュール"
+
+\end_inset
+
+節に説明されています。
+\end_layout
+
+\begin_layout Section
+フォント
+\end_layout
+
+\begin_layout Standard
+文書フォント設定に関しては、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:フォントと文字形式"
+
+\end_inset
+
+節に説明されています。
+\end_layout
+
+\begin_layout Section
+本文レイアウト
+\end_layout
+
+\begin_layout Standard
+段落を字下げで区切るか行間を広げて区切るかを指定することができます。また、行間と本文の段組数もここで指定することができます。
+\end_layout
+
+\begin_layout Standard
+LyXは、二段組や行間を画面には反映しないことに注意してください。これは実用的ではなく、しばしば読み辛い上に、WYSIWYMの概念に反するのです。しかし、出力に
+おいては指定したとおりに反映されます。
+\end_layout
+
+\begin_layout Standard
+リスト設定に関しては、取扱説明書『
+\emph on
+埋込オブジェクト篇
+\emph default
+』の対応する節で説明されています。
+\end_layout
+
+\begin_layout Section
+ページレイアウト
+\end_layout
+
+\begin_layout Standard
+このメニューの説明は、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:用紙寸法と方向"
+
+\end_inset
+
+節および第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:文書レイアウト"
+
+\end_inset
+
+節に説明されています。
+\end_layout
+
+\begin_layout Section
+ページ余白
+\end_layout
+
+\begin_layout Standard
+ここでは、用紙の余白を調整することができます。第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:余白"
+
+\end_inset
+
+節を参照してください。
+\end_layout
+
+\begin_layout Section
+言語
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+げんご@言語 ! もじこーど@文字コード
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+文書言語と引用形式がここで設定できます。文字コードは、文書の内容がどのようにLaTeXにエクスポートされるかを指定します（LyXファイルはつねにUTF-8でコー
+ド化されています）。指定された文字コードにコード化できない文字は、すべてLaTeXコマンドとしてエクスポートされます（LaTeXコマンドが対応していない文字があ
+る場合には失敗します）
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+既知のコマンドは、テキストファイルで定義されていますから、ユーザー自身でこのファイルに未知の記号用のコマンドを加えることができます。詳細は、取扱説明書カスタマイ
+ズ篇をご覧ください。
+\end_layout
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+言語既定値
+\family default
+オプションを選択すると、本文の言語から本文部分の文字コードを決定します。このとき、文書が二つ以上の言語を含んでいると、LaTeXファイルに二つ以上の文字コードを
+含ませることになるかもしれません。このオプションを使用しないときには、文書全体はつねに一つの文字コードだけを使用することになります。
+\family sans
+XeTeX
+\family default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+XeTeXは、LaTeXに代わるTeX植字エンジンです。XeTeXはネイティブにUnicodeをサポートし、インプットファイルはUTF-8文字コードであるものと
+仮定します。LyXをXeTeXとともに使う詳しい方法は、
+\begin_inset CommandInset citation
+LatexCommand cite
+key "XeTeX"
+
+\end_inset
+
+に記載があります。
+\end_layout
+
+\end_inset
+
+を使っているとき以外は、このオプションを有効にすることが推奨されます（以下参照）。
+\end_layout
+
+\begin_layout Standard
+LyXは、Unicodeでの出力もサポートしているので、たくさんの特別な記号やアルファベット以外の文字が必要なときに、特に便利です。これを利用したい（そしてお使
+いのLaTeXシステムがUnicodeをサポートしている）場合には、以下の一覧から、四つのutf8関連選択肢のうち一つを選んでください。残念ながら、標準LaTe
+XのUnicodeサポートははなはだ不完全であるため、たくさんのUnicode記号を含むファイルが、
+\family sans
+言語既定値
+\family default
+の文字コードで動くものの（このとき、LyXは既知のLaTeXコマンド一覧を使用します）、utf8文字コード固定では動かないということは、珍しいことではありません
+（このとき、LyXは既知のLaTeXコマンド一覧を使用しません。なぜならUnicode記号はすべてutf8でコード化できるからです）。
+\end_layout
+
+\begin_layout Standard
+以下は主要な文字コードの一覧です。
+\end_layout
+
+\begin_layout Description
+LaTeX既定値（inputenc不使用） 文字コードに
+\family sans
+言語既定値
+\family default
+を使用するのと同じですが、
+\series bold
+inputenc
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! inputenc
+\end_layout
+
+\end_inset
+
+ LaTeXパッケージは使用されません。そのため、これを使用するときには、プリアンブルに他の適当なパッケージを読み込んで、外国語で書かれている部分の文字コードを
+TeXコードで指定する必要があるでしょう。
+\end_layout
+
+\begin_layout Description
+ASCII ASCII文字コード。通常の英語（7ビットASCII）しかカバーしていません。LyXはそれ以外の文字をすべてLaTeXコマンドに変換するので、多量の
+LaTeXコマンドが必要な場合には、ファイルが大きくなる可能性があります。
+\end_layout
+
+\begin_layout Description
+アラビア語（CP
+\begin_inset space ~
+\end_inset
+
+1256） アラビア語及びペルシア語用MS Windowsコードページ
+\end_layout
+
+\begin_layout Description
+アラビア語（ISO
+\begin_inset space ~
+\end_inset
+
+8859-6） アラビア語及びペルシア語用
+\end_layout
+
+\begin_layout Description
+アルメニア語（ArmSCII8） アルメニア語用
+\end_layout
+
+\begin_layout Description
+キリル文字（CP
+\begin_inset space ~
+\end_inset
+
+1251） キリル文字用MS Windowsコードページ
+\end_layout
+
+\begin_layout Description
+キリル文字（KOI8-R） 標準キリル文字。特にロシア語向け。
+\end_layout
+
+\begin_layout Description
+キリル文字（KOI8-U） ウクライナ語用キリル文字
+\end_layout
+
+\begin_layout Description
+キリル文字（pt
+\begin_inset space ~
+\end_inset
+
+154） カザフ語用キリル文字
+\end_layout
+
+\begin_layout Description
+ギリシア語（ISO
+\begin_inset space ~
+\end_inset
+
+8859-7） ギリシア語用
+\end_layout
+
+\begin_layout Description
+タイ語（TIS
+\begin_inset space ~
+\end_inset
+
+620-0） タイ語用
+\end_layout
+
+\begin_layout Description
+トルコ語（ISO
+\begin_inset space ~
+\end_inset
+
+8859-9） （latin 5）トルコ語用。ISO-8859-1に近いが、アイスランド文字をトルコ語に置き換えてある。
+\end_layout
+
+\begin_layout Description
+バルト語（CP
+\begin_inset space ~
+\end_inset
+
+1257） エストニア語・ラトビア語・リトアニア語用MS Windowsコードページ。ISO-8859-13文字コードと同等。 
+\end_layout
+
+\begin_layout Description
+バルト語（ISO
+\begin_inset space ~
+\end_inset
+
+8859-13） エストニア語・ラトビア語・リトアニア語用。ISO-8859-4文字コードの上位集合。 
+\end_layout
+
+\begin_layout Description
+バルト語（ISO
+\begin_inset space ~
+\end_inset
+
+8859-4） （latin 4）エストニア語・ラトビア語・リトアニア語用。ISO-8859-13文字コードの下位集合。 
+\end_layout
+
+\begin_layout Description
+ヘブライ語（CP
+\begin_inset space ~
+\end_inset
+
+1255） ヘブライ語用MS Windowsコードページ。ISO-8859-8文字コードの上位集合。
+\end_layout
+
+\begin_layout Description
+ヘブライ語（ISO
+\begin_inset space ~
+\end_inset
+
+8859-8） ヘブライ語用
+\end_layout
+
+\begin_layout Description
+ユニコード（CJK）（utf8）
+\series bold
+ CJK
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! CJK
+\end_layout
+
+\end_inset
+
+ LaTeXパッケージ（日中韓言語用）を使用したUnicode utf8
+\end_layout
+
+\begin_layout Description
+ユニコード（XeTeX）（utf8） 
+\family sans
+XeTeX
+\family default
+とともに使用することを意図したUnicode utf8。
+\series bold
+inputenc
+\series default
+ LaTeXパッケージの助けを借りずにUnicodeを直接使用します 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+LyXをXeTeXと使う方法に関しては、
+\begin_inset CommandInset citation
+LatexCommand cite
+key "XeTeX"
+
+\end_inset
+
+に記載があります。
+\end_layout
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Description
+ユニコード（UCS拡張版）（utf8x） 
+\series bold
+ucs
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! ucs
+\end_layout
+
+\end_inset
+
+LaTeXパッケージに基づいたUnicode utf8（包括的。ラテン文字・ギリシャ文字・キリル文字・日中韓文字を含む）。
+\end_layout
+
+\begin_layout Description
+ユニコード（utf8） 
+\series bold
+inputenc
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! inputenc
+\end_layout
+
+\end_inset
+
+ LaTeXパッケージに基づいたUnicode utf8。いまのところ、限られた文字範囲（主にラテン文字）しかサポートしていません。
+\end_layout
+
+\begin_layout Description
+中国語（簡体字）（EUC-CN） 簡体字中国語用。ユーロ貨幣記号を除いては、WindowsコードページCP936と同じ。2001年以降、この文字コードは、正式に
+文字コードGB18030に取って代わられました。GB18030はLaTeXでは使用できないため、Unicode（CJK）（utf8）を使用するようにしてください
+。
+\end_layout
+
+\begin_layout Description
+中国語（簡体字）（GBK） 簡体字中国語用。特にUNIX OS向け。2001年以降、この文字コードは、正式に文字コードGB18030に取って代わられました。GB
+18030はLaTeXでは使用できないため、Unicode（CJK）（utf8）を使用するようにしてください。
+\end_layout
+
+\begin_layout Description
+中国語（繁体字）（EUC-TW） 繁体字中国語用。
+\end_layout
+
+\begin_layout Description
+中欧語（CP
+\begin_inset space ~
+\end_inset
+
+1250） ISO
+\begin_inset space ~
+\end_inset
+
+8859-2用のMS Windowsコードページ（latin 2）
+\end_layout
+
+\begin_layout Description
+中欧語（ISO
+\begin_inset space ~
+\end_inset
+
+8859-2） （latin 2）アルバニア語・クロアチア語・チェコ語・ドイツ語・ハンガリー語・ポーランド語・ルーマニア語・スロバキア語・スロベニア語を収録
+\end_layout
+
+\begin_layout Description
+南ヨーロッパ語（ISO
+\begin_inset space ~
+\end_inset
+
+8859-3） （latin 3）エスペラント語・ガリシア語・マルタ語・トルコ語を収録。
+\end_layout
+
+\begin_layout Description
+南東ヨーロッパ語（ISO
+\begin_inset space ~
+\end_inset
+
+8859-16） （latin 10）アルバニア語・クロアチア語・フィンランド語・フランス語・ドイツ語・ハンガリー語・アイルランドゲール語・イタリア語・ポーラン
+ド語・ルーマニア語・スロベニア語を含む。区分的発音符を持つ文字と言語の多くを収録。
+\end_layout
+
+\begin_layout Description
+日本語（CJK）（EUC-JP） 日本語用EUC-JP文字コード。LaTeXパッケージ
+\series bold
+CJK
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! CJK
+\end_layout
+
+\end_inset
+
+を使用。これを使用する際には、文書言語を
+\family sans
+日本語（CJK）
+\family default
+にしてください。
+\end_layout
+
+\begin_layout Description
+日本語（CJK）（JIS） 日本語用JIS文字コード。LaTeXパッケージ
+\series bold
+CJK
+\series default
+を使用。これを使用する際には、文書言語を
+\family sans
+日本語（CJK）
+\family default
+にしてください。
+\end_layout
+
+\begin_layout Description
+日本語（CJK不使用）（EUC-JP） 日本語用EUC-JP文字コード。LaTeXパッケージ
+\series bold
+japanese
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! japanese
+\end_layout
+
+\end_inset
+
+を使用。これを使用する際には、文書言語を
+\family sans
+日本語
+\family default
+にしてください。
+\end_layout
+
+\begin_layout Description
+日本語（CJK不使用）（JIS） 日本語用JIS文字コード。LaTeXパッケージ
+\series bold
+japanese
+\series default
+を使用。これを使用する際には、文書言語を
+\family sans
+日本語
+\family default
+にしてください。
+\end_layout
+
+\begin_layout Description
+日本語（CJK不使用）（SJIS） 日本語用SJIS文字コード。LaTeXパッケージ
+\series bold
+japanese
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! japanese
+\end_layout
+
+\end_inset
+
+を使用。これを使用する際には、文書言語を
+\family sans
+日本語
+\family default
+にしてください。
+\end_layout
+
+\begin_layout Description
+西欧語（CP
+\begin_inset space ~
+\end_inset
+
+1252） latin1用MS Windowsコードページ
+\end_layout
+
+\begin_layout Description
+西欧語（ISO
+\begin_inset space ~
+\end_inset
+
+8859-1） （latin 1） ISO-8859-1文字コード。アルバニア語・カタロニア語・デンマーク語・オランダ語・英語・フェロー語・フィンランド語・フラ
+ンス語・ガリシア語・ドイツ語・アイスランド語・アイルランド語・イタリア語・ノルウェー語・ポルトガル語・スペイン語・スウェーデン語を含む。latin9に移行すべき
+。
+\end_layout
+
+\begin_layout Description
+西欧語（ISO
+\begin_inset space ~
+\end_inset
+
+8859-15） （latin 9） ISO-8859-15文字コード。ISO-8859-1文字コードと同様だが、ユーロ記号や
+\lang english
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+oe
+\end_layout
+
+\end_inset
+
+
+\lang japanese
+合字、その他フランス語とフィンランド語で用いられる文字を含む。latin9はlatin1の後継。
+\end_layout
+
+\begin_layout Description
+韓国語（EUC-KR） 韓国語用
+\end_layout
+
+\begin_layout Section
+連番と目次
+\end_layout
+
+\begin_layout Standard
+第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:番号の付け方-深度"
+
+\end_inset
+
+節に述べられているように、ここでは連番をつける節見出しの階層を調整することができます。
+\end_layout
+
+\begin_layout Section
+参考文献
+\end_layout
+
+\begin_layout Standard
+ここでは、LaTeXパッケージの
+\series bold
+natbib
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! natbib
+\end_layout
+
+\end_inset
+
+または
+\series bold
+jurabib
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! jurabib
+\end_layout
+
+\end_inset
+
+を使用して引用形式を指定することができます。詳しくは、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:参考文献"
+
+\end_inset
+
+節をご覧ください。
+\end_layout
+
+\begin_layout Section
+PDF特性
+\end_layout
+
+\begin_layout Standard
+PDF特性に関しては、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:PDF特性"
+
+\end_inset
+
+節に説明があります。
+\end_layout
+
+\begin_layout Section
+数式オプション
+\end_layout
+
+\begin_layout Standard
+これらのオプションは、LaTeXパッケージの
+\series bold
+amsmath
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! amsmath
+\end_layout
+
+\end_inset
+
+および
+\series bold
+esint
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Latexぱっけーじ@LaTeXパッケージ ! esint
+\end_layout
+
+\end_inset
+
+を使用するようにするか、必要なときにこれらを自動的に使用するようにするかを、LyXに強制します。
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+amsmath
+\series default
+は、多くの数式要素に必要とされているので、数式中にLaTeXエラーがでるときには、AMSを有効にしていることを確認してください。
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+esint
+\series default
+は、特別な積分記号に使われます。
+\end_layout
+
+\begin_layout Section
+フロートの配置
+\end_layout
+
+\begin_layout Standard
+フロートの配置オプションに関しては、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:フロートの配置"
+
+\end_inset
+
+節に説明があります。
+\end_layout
+
+\begin_layout Section
+ブリット
+\end_layout
+
+\begin_layout Standard
+ここでは、記号付き箇条書きの各階層の記号を調整できます。箇条書き（記号）環境に関しては、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:箇条書き（記号）"
+
+\end_inset
+
+節に説明があります。
+\end_layout
+
+\begin_layout Section
+派生枝
+\end_layout
+
+\begin_layout Standard
+派生枝に関しては、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:派生枝"
+
+\end_inset
+
+節に説明があります。
+\end_layout
+
+\begin_layout Section
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eXプリアンブル
+\end_layout
+
+\begin_layout Standard
+このテキストフィールドには、特別なLaTeXパッケージを読み込むコマンドや、LaTeXコマンドの定義が入れられます。プリアンブルは、LaTeX熟練者向けです。よ
+くわからないうちは、ここにコマンドを入れるべきではありません。
+\end_layout
+
+\begin_layout Standard
+LaTeXの文法の入門は、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:LaTeX文法"
+
+\end_inset
+
+節にあります。
 \end_layout
 
 \begin_layout Chapter
@@ -45843,6 +45155,18 @@ bookmark-save 6
 \end_layout
 
 \begin_layout Subsubsection
+自動ヘルプ
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+メイン作業領域でツールチップスを有効にする
+\family default
+オプションは、索引項目や脚注などの差込枠で、閉じられているものの中身を表示するツールチップスを有効にします。
+\end_layout
+
+\begin_layout Subsubsection
 セッション
 \end_layout
 
@@ -45906,6 +45230,14 @@ status collapsed
 直近のファイルを開く
 \family default
 メニューに表示する最後に開いたファイルの数です。
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+文書をタブ内に開く
+\family default
+オプションが有効になっていないときには、すべてのファイルは、LyXの新しいインスタンスの中に開かれます。
 \end_layout
 
 \begin_layout Subsection
@@ -46146,7 +45478,7 @@ reference "sec:文書の断片プレビュー"
 \end_layout
 
 \begin_layout Subsection
-ショートカット
+短絡キー
 \begin_inset Index
 status collapsed
 
@@ -46193,7 +45525,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-せってい@設定 ! しょーとかっと@ショートカット
+せってい@設定 ! たんらくきー@短絡キー
 \end_layout
 
 \end_inset
@@ -46210,7 +45542,7 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-cua.bind PCキーボードでの典型的なショートカットパターン
+cua.bind PCキーボードでの典型的な短絡キーパターン
 \end_layout
 
 \begin_layout Description
@@ -46263,10 +45595,10 @@ math.bind
 \end_layout
 
 \begin_layout Subsubsection
-ショートカットの編集
+短絡キーの編集
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:ショートカットの編集"
+name "sub:短絡キーの編集"
 
 \end_inset
 
@@ -46284,22 +45616,22 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-新しいキー設定を追加したり、既存のキー設定をご自分の好みに合うように修正するには、すべてのLyX関数とそれに結びつけられたショートカットを列挙したダイアログ中の
-表を使用することができます。関数を容易に見つけられるように、関数はカテゴリごとにまとめられ、
+新しいキー設定を追加したり、既存のキー設定をご自分の好みに合うように修正するには、すべてのLyX関数とそれに結びつけられた短絡キーを列挙したダイアログ中の表を使
+用することができます。関数を容易に見つけられるように、関数はカテゴリごとにまとめられ、
 \family sans
 以下を含むキー設定を表示する
 \family default
 フィールドがダイアログに備わっています。このフィールドに編集したい関数のキーワードを入力することができます。たとえば、ここに「paste」と入力すると、名称に「
-paste」を含む3つの関数に対するぜんぶで4つの既存のショートカットが表示されます。このように、一つの関数は二つ以上のショートカットを持つことができます。Ly
-X関数の全覧は、
+paste」を含む3つの関数に対するぜんぶで4つの既存の短絡キーが表示されます。このように、一つの関数は二つ以上の短絡キーを持つことができます。LyX関数の全覧
+は、
 \family sans
 ヘルプ
 \family default
-メニュー内の
+メニュー内の『
 \emph on
 LyX関数
 \emph default
-ファイルにもあります。
+』ファイルにもあります。
 \end_layout
 
 \begin_layout Standard
@@ -46309,15 +45641,15 @@ textstyle-apply
 \family default
 関数に
 \family sans
-M-q
+Alt+Q
 \family default
-というショートカットを加えるには、この関数を選択して、
+という短絡キーを加えるには、この関数を選択して、
 \family sans
 修正
 \family default
-ボタンを押します。ショートカットを追加するためのダイアログが現れますので、M-qを押してショートカットを定義します。既存のショートカットの修正も、これと同様に行
-います。既存のキー設定を修正して、セミコロンで区切られたリストとして他の関数を加えれば、一つのショートカットに複数の関数を割り当てることができます。するとLyX
-は、現在の文書部分で有効な関数のうち最初のものを使用します。関数
+ボタンを押します。短絡キーを追加するためのダイアログが現れますので、Alt+Qを押して短絡キーを定義します。既存の短絡キーの修正も、これと同様に行います。既存の
+キー設定を修正して、セミコロンで区切られたリストとして他の関数を加えれば、一つの短絡キーに複数の関数を割り当てることができます。するとLyXは、現在の文書部分で
+有効な関数のうち最初のものを使用します。関数
 \family sans
 command-after
 \family default
@@ -46325,7 +45657,7 @@ command-after
 \end_layout
 
 \begin_layout Standard
-他に、キー設定ファイルをテキストエディタで編集することによって、ショートカットを編集することもできます。。各項目の文法は
+他に、キー設定ファイルをテキストエディタで編集することによって、短絡キーを編集することもできます。。各項目の文法は
 \end_layout
 
 \begin_layout Standard
@@ -46423,6 +45755,39 @@ status open
 を指定することができます。標準の値は1.0となっており、数値を上げるとスクロール速度が上がり、数値を下げるとスクロール速度が下がります。
 \end_layout
 
+\begin_layout Subsection
+入力補完
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:入力補完-附録"
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+にゅうりょくほかん@入力補完
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+入力補完は、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:入力補完"
+
+\end_inset
+
+節に記述があります。数式向けの補完オプションは、テキスト向けのオプションのものと同様に機能します。一般オプションでは、補完入力とポップアップ補完の遅延時間を指定
+することができるほか、長い補完案を短縮表示するかどうか選ぶことができます。
+\end_layout
+
 \begin_layout Section
 パス
 \begin_inset Index
@@ -46470,6 +45835,37 @@ status collapsed
 新規（ひな形使用）
 \family default
 メニューを使用したときに開かれるディレクトリです。
+\end_layout
+
+\begin_layout Description
+用例ファイル 
+\family sans
+ファイル\SpecialChar \menuseparator
+開く
+\family default
+ダイアログで
+\family sans
+用例
+\family default
+ボタンを押すと、ここに指定したディレクトリが開かれます。
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+（註）
+\series default
+MacOSやWindowsシステムでLyXを使用しているときには、用例ボタンはありません。
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -46897,7 +46293,7 @@ status collapsed
 eX
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:LaTeX"
+name "sub:LaTeX-設定"
 
 \end_inset
 
@@ -46906,7 +46302,7 @@ name "sub:LaTeX"
 status collapsed
 
 \begin_layout Plain Layout
-せってい@設定 ! Latex@LaTeX
+せってい@設定 ! LaTeX
 \end_layout
 
 \end_inset
@@ -46962,22 +46358,9 @@ T1, T2B
 既定の用紙寸法 これは新規文書で使用される用紙寸法です。既定値はお使いのLaTeXシステムの設定に依存します。
 \end_layout
 
-\begin_layout Description
-文書クラス変更時にクラスオプションをリセットする これを有効にすると、文書クラスを変更するときに、
-\family sans
-文書\SpecialChar \menuseparator
-設定
-\family default
-ダイアログで手動で設定した文書クラスオプションは、すべて削除されます。
-\end_layout
-
 \begin_layout Standard
-
-\family sans
-外部アプリケーション
-\family default
-フィールドには、挙げられているアプリケーションのコマンドとパラメータを指定することができます。ここで何か変更をする前に、当該アプリケーションの取扱説明書を読むこ
-とを強くお進めします。現在以下のコマンドが設定されています。
+またここで、提示されているアプリケーションのコマンドとパラメータを指定することができます。しかし、ここで何かを変更する前に、当該アプリケーションの取扱説明書を読
+むことを強くお進めします。現在、以下のコマンドを設定することができます。
 \end_layout
 
 \begin_layout Description
@@ -46992,11 +46375,11 @@ status collapsed
 
 \end_inset
 
-Xコマンド 取扱説明書
+Xコマンド 取扱説明書『
 \emph on
 拡張機能篇
 \emph default
-の
+』の
 \emph on
 Checking TeX
 \emph default
@@ -47045,6 +46428,17 @@ reference "sub:索引プログラム"
 \end_layout
 
 \begin_layout Description
+用語集コマンド 用語集を生成するプログラムのコマンド。第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:用語集プログラム"
+
+\end_inset
+
+節を参照。
+\end_layout
+
+\begin_layout Description
 DVIビューア用紙寸法設定 これは
 \family sans
 xdvi
@@ -47052,7 +46446,60 @@ xdvi
 がDVIビューアとして使用されているときのみ有効です。
 \end_layout
 
+\begin_layout Standard
+さらに以下のオプションがあります。
+\end_layout
+
+\begin_layout Description
+LaTeXファイルでWindows流のパス表記を使う Windowsのパス記法を使用します。すなわち、フォルダを区切るのに「/」ではなく「
+\backslash
+」を使用します。このオプションは、LyXをWindows上で使用する際には、既定で有効化されています。
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+ぱす@パス
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+せってい@設定 ! ぱす@パス
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+文書クラス変更時にクラスオプションをリセットする これを有効にすると、文書クラスを変更するときに、
+\family sans
+文書\SpecialChar \menuseparator
+設定
+\family default
+ダイアログで手動で設定した文書クラスオプションは、すべて削除されます。
+\end_layout
+
 \begin_layout Section
+ファイル処理
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+ふぁいるしょり@ファイル処理
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 変換子
 \begin_inset Index
 status collapsed
@@ -47109,18 +46556,18 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-変換子定義で使うことのできる変数やフラグなど、変換子についての詳細は、取扱説明書
+変換子定義で使うことのできる変数やフラグなど、変換子についての詳細は、取扱説明書『
 \emph on
 カスタマイズ篇
 \emph default
-の
+』の
 \emph on
 Converters
 \emph default
 の節に記述があります。
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 ファイル形式
 \begin_inset Index
 status collapsed
@@ -47143,58 +46590,32 @@ name "sec:ファイル形式"
 
 \begin_layout Standard
 ここでは、LyXが扱うことのできる定義済みファイル形式が一覧表示されています。特定のファイル形式に使用する、閲覧プログラムや編集プログラムを変更することができま
-す。新しいファイル形式を作るには、既存のファイル形式を選択して、
-\family sans
-書式
-\family default
-と
-\family sans
-短縮名
-\family default
-フィールドの中身を変更し、
-\family sans
-追加
-\family default
-ボタンを押してください。
+す。
 \end_layout
 
 \begin_layout Standard
-形式定義で使うことのできるオプションなど、ファイル形式について詳しくは、取扱説明書
+形式定義で使うことのできるオプションなど、ファイル形式について詳しくは、取扱説明書『
 \emph on
 カスタマイズ篇
 \emph default
-の
+』の
 \emph on
 Formats
 \emph default
 の節に記述があります。
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+ある形式から他の形式への変換は、すべてLyXの一時ディレクトリで行われているので、変換がうまく行くためには、一時ディレクトリにファイルをコピー（複写）する前に、
+ファイルに変更を加える必要があることがあります。これは、
+\family sans
 複写子
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-ふくしゃし@複写子
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-ここには、定義されている複写子が一覧表示されています。ある形式から他の形式への変換は、すべてLyXの一時ディレクトリで行われているので、変換がうまく行くためには
-、一時ディレクトリにファイルをコピー（複写）する前に、ファイルに変更を加える必要があることがあります。これが複写子によってなされます。
-\end_layout
-
-\begin_layout Standard
-複写子について詳しく＜は、取扱説明書
+\family default
+を指定することによってなされます。複写子について詳しく＜は、取扱説明書『
 \emph on
 カスタマイズ篇
 \emph default
-の
+』の
 \emph on
 Copiers
 \emph default
