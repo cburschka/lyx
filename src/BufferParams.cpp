@@ -1567,11 +1567,11 @@ void BufferParams::addDefaultModules()
 }
 
 
+// Perform a consistency check on the set of modules. We need to make
+// sure that none of the modules exclude each other and that requires
+// are satisfied.
 bool BufferParams::checkModuleConsistency() {
 	bool consistent = true;
-	// Perform a consistency check on the set of modules. We need to make
-	// sure that none of the modules exclude each other and that requires
-	// are satisfied.
 	LayoutModuleList oldModules = layoutModules_;
 	clearLayoutModules();
 	LayoutModuleList::const_iterator oit = oldModules.begin();
