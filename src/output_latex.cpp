@@ -580,7 +580,7 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 			break;
 	}
 
-		// fall through possible
+	// fall through possible
 	default:
 		// we don't need it for the last paragraph!!!
 		if (nextpit != paragraphs.end())
@@ -798,8 +798,7 @@ void latexParagraphs(Buffer const & buf,
 		// FIXME This check should not be needed. We should
 		// perhaps issue an error if it is.
 		Layout const & layout = par->forcePlainLayout() ?
-				tclass.plainLayout() :
-				par->layout();
+				tclass.plainLayout() : par->layout();
 
 		if (layout.intitle) {
 			if (already_title) {
