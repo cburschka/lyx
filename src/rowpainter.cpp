@@ -675,15 +675,17 @@ void RowPainter::paintLast()
 
 void RowPainter::paintOnlyInsets()
 {
+	CoordCache const & cache = pi_.base.bv->coordCache();
 	pos_type const end = row_.endpos();
 	for (pos_type pos = row_.pos(); pos != end; ++pos) {
 		// If outer row has changed, nested insets are repaint completely.
 		Inset const * inset = par_.getInset(pos);
 		if (!inset)
 			continue;
-		if (x_ > pi_.base.bv->workWidth())
+		if (x_ > pi_.base.bv->workWidth() 
+		    || !cache.getInsets().has(inset))
 			continue;
-		x_ = pi_.base.bv->coordCache().getInsets().x(inset);
+		x_ = cache.getInsets().x(inset);
 
 		bool const pi_selected = pi_.selected;
 		Cursor const & cur = pi_.base.bv->cursor();
