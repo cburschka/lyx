@@ -598,7 +598,7 @@ bool Buffer::readDocument(Lexer & lex)
 				LYXERR0("The master '" 
 				        << params().master 
 				        << "' assigned to this document does not include "
-				        "this document. Ignoring the master assignment.");
+				        "this document `" << absFileName() << "'. Ignoring the master assignment.");
 		}
 	}
 
