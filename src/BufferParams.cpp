@@ -1480,15 +1480,15 @@ bool BufferParams::removeBadModules()
 {
 	// we'll write a new list of modules, since we can't just remove them,
 	// as that would invalidate our iterators
-	list<string> oldModules = getModules();
+	LayoutModuleList oldModules = getModules();
 	clearLayoutModules();
 
-	list<string> const & provmods = baseClass()->providedModules();
-	list<string> const & exclmods = baseClass()->excludedModules();
+	LayoutModuleList const & provmods = baseClass()->providedModules();
+	LayoutModuleList const & exclmods = baseClass()->excludedModules();
 	bool consistent = true; // set to false if we have to do anything
 
-	list<string>::const_iterator oit = oldModules.begin();
-	list<string>::const_iterator const oen = oldModules.end();
+	LayoutModuleList::const_iterator oit = oldModules.begin();
+	LayoutModuleList::const_iterator const oen = oldModules.end();
 	for (; oit != oen; ++oit) {
 		string const & modname = *oit;
 		// skip modules that the class provides
@@ -1504,8 +1504,8 @@ bool BufferParams::removeBadModules()
 			continue;
 		}
 		// determine whether some provided module excludes us or we exclude it
-		list<string>::const_iterator pit = provmods.begin();
-		list<string>::const_iterator const pen = provmods.end();
+		LayoutModuleList::const_iterator pit = provmods.begin();
+		LayoutModuleList::const_iterator const pen = provmods.end();
 		bool excluded = false;
 		for (; !excluded && pit != pen; ++pit) {
 			if (!LyXModule::areCompatible(modname, *pit)) {
@@ -1526,9 +1526,9 @@ bool BufferParams::removeBadModules()
 void BufferParams::addDefaultModules()
 {
 	// add any default modules not already in use
-	list<string> const & mods = baseClass()->defaultModules();
-	list<string>::const_iterator mit = mods.begin();
-	list<string>::const_iterator men = mods.end();
+	LayoutModuleList const & mods = baseClass()->defaultModules();
+	LayoutModuleList::const_iterator mit = mods.begin();
+	LayoutModuleList::const_iterator men = mods.end();
 
 	// We want to insert the default modules at the beginning of
 	// the list, but also to insert them in the correct order.
@@ -1537,7 +1537,7 @@ void BufferParams::addDefaultModules()
 	// module may require an earlier one, and then the test below
 	//     moduleCanBeAdded(modname)
 	// will fail. So we have to do it a more complicated way.
-	list<string>::iterator insertpos = layoutModules_.begin();
+	LayoutModuleList::iterator insertpos = layoutModules_.begin();
 	int numinserts = 0;
 
 	for (; mit != men; mit++) {
@@ -1572,17 +1572,17 @@ bool BufferParams::checkModuleConsistency() {
 	// Perform a consistency check on the set of modules. We need to make
 	// sure that none of the modules exclude each other and that requires
 	// are satisfied.
-	list<string> oldModules = getModules();
+	LayoutModuleList oldModules = getModules();
 	clearLayoutModules();
-	list<string>::const_iterator oit = oldModules.begin();
-	list<string>::const_iterator oen = oldModules.end();
-	list<string> const & provmods = baseClass()->providedModules();
+	LayoutModuleList::const_iterator oit = oldModules.begin();
+	LayoutModuleList::const_iterator oen = oldModules.end();
+	LayoutModuleList const & provmods = baseClass()->providedModules();
 	for (; oit != oen; ++oit) {
 		string const & modname = *oit;
 		bool excluded = false;
 		// Determine whether some prior module excludes us, or we exclude it
-		list<string>::const_iterator lit = layoutModules_.begin();
-		list<string>::const_iterator len = layoutModules_.end();
+		LayoutModuleList::const_iterator lit = layoutModules_.begin();
+		LayoutModuleList::const_iterator len = layoutModules_.end();
 		for (; !excluded && lit != len; ++lit) {
 			if (!LyXModule::areCompatible(modname, *lit)) {
 				consistent = false;
@@ -1766,24 +1766,24 @@ bool BufferParams::moduleCanBeAdded(string const & modName) const
 		return true;
 
 	// Is this module explicitly excluded by the document class?
-	list<string>::const_iterator const exclmodstart = 
+	LayoutModuleList::const_iterator const exclmodstart = 
 			baseClass()->excludedModules().begin();
-	list<string>::const_iterator const exclmodend = 
+	LayoutModuleList::const_iterator const exclmodend = 
 			baseClass()->excludedModules().end();
 	if (find(exclmodstart, exclmodend, modName) != exclmodend)
 		return false;
 
 	// Is this module already provided by the document class?
-	list<string>::const_iterator const provmodstart = 
+	LayoutModuleList::const_iterator const provmodstart = 
 			baseClass()->providedModules().begin();
-	list<string>::const_iterator const provmodend = 
+	LayoutModuleList::const_iterator const provmodend = 
 			baseClass()->providedModules().end();
 	if (find(provmodstart, provmodend, modName) != provmodend)
 		return false;
 
 	// Check for conflicts with used modules
 	// first the provided modules...
-	list<string>::const_iterator provmodit = provmodstart;
+	LayoutModuleList::const_iterator provmodit = provmodstart;
 	for (; provmodit != provmodend; ++provmodit) {
 		if (!LyXModule::areCompatible(modName, *provmodit))
 			return false;
