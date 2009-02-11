@@ -1750,8 +1750,9 @@ Tabular::idx_type Tabular::setLTCaption(row_type row, bool what)
 		setBottomLine(i, false);
 		setLeftLine(i, false);
 		setRightLine(i, false);
-		// FIXME: when a row is set as caption, then also insert a caption
-		// dispatch(FuncRequest(LFUN_CAPTION_INSERT));
+		// When a row is set as caption, then also insert a caption. Otherwise
+		// the LaTeX output is broken, when the user don't add a caption.
+		dispatch(FuncRequest(LFUN_CAPTION_INSERT));
 	} else {
 		unsetMultiColumn(i);
 		// FIXME: when unsetting a caption row, also all existing captions
