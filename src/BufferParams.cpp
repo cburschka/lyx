@@ -1708,41 +1708,8 @@ void BufferParams::makeDocumentClass()
 	if (!baseClass())
 		return;
 
-	doc_class_ = &(DocumentClassBundle::get().newClass(*baseClass()));
+	doc_class_ = &(DocumentClassBundle::get().makeDocumentClass(*baseClass(), layoutModules_));
 
-	// FIXME It might be worth loading the children's modules here,
-	// just as we load their bibliographies and such, instead of just 
-	// doing a check in InsetInclude.
-	LayoutModuleList::const_iterator it = layoutModules_.begin();
-	for (; it != layoutModules_.end(); it++) {
-		string const modName = *it;
-		LyXModule * lm = moduleList[modName];
-		if (!lm) {
-			docstring const msg =
-				bformat(_("The module %1$s has been requested by\n"
-					"this document but has not been found in the list of\n"
-					"available modules. If you recently installed it, you\n"
-					"probably need to reconfigure LyX.\n"), from_utf8(modName));
-			frontend::Alert::warning(_("Module not available"),
-					msg + _("Some layouts may not be available."));
-			LYXERR0("BufferParams::makeDocumentClass(): Module " <<
-					modName << " requested but not found in module list.");
-			continue;
-		}
-		if (!lm->isAvailable()) {
-			docstring const msg =
-						bformat(_("The module %1$s requires a package that is\n"
-						"not available in your LaTeX installation. LaTeX output\n"
-						"may not be possible.\n"), from_utf8(modName));
-			frontend::Alert::warning(_("Package not available"), msg);
-		}
-		FileName layout_file = libFileSearch("layouts", lm->getFilename());
-		if (!doc_class_->read(layout_file, TextClass::MODULE)) {
-			docstring const msg =
-				bformat(_("Error reading module %1$s\n"), from_utf8(modName));
-			frontend::Alert::warning(_("Read Error"), msg);
-		}
-	}
 	if (!local_layout.empty()) {
 		if (!doc_class_->read(local_layout, TextClass::MODULE)) {
 			docstring const msg = _("Error reading internal layout information");

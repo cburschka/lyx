@@ -45,6 +45,9 @@ LyXModule::LyXModule(string const & n, string const & i,
 
 
 bool LyXModule::isAvailable() {
+#ifdef TEX2LYX
+	return true;
+#else
 	if (packageList.empty())
 		return true;
 	if (checked)
@@ -61,6 +64,7 @@ bool LyXModule::isAvailable() {
 	}
 	available = true;
 	return available;
+#endif
 }
 
 

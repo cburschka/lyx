@@ -36,6 +36,9 @@ LINKED_FILES = \
 	../LayoutFile.h \
 	../Layout.h \
 	../Layout.cpp \
+	../LayoutModuleList.h \
+	../ModuleList.h \
+	../ModuleList.cpp \
 	../TextClass.cpp \
 	../TextClass.h \
 	../Lexer.cpp \

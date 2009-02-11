@@ -24,6 +24,7 @@
 #include "Layout.h"
 #include "Lexer.h"
 #include "Font.h"
+#include "ModuleList.h"
 
 #include "frontends/alert.h"
 
@@ -1102,6 +1103,45 @@ DocumentClassBundle & DocumentClassBundle::get()
 {
 	static DocumentClassBundle singleton; 
 	return singleton; 
+}
+
+
+DocumentClass & DocumentClassBundle::makeDocumentClass(
+		LayoutFile const & baseClass, LayoutModuleList const & modlist)
+{
+	DocumentClass & doc_class = newClass(baseClass);
+	LayoutModuleList::const_iterator it = modlist.begin();
+	LayoutModuleList::const_iterator en = modlist.end();
+	for (; it != en; it++) {
+		string const modName = *it;
+		LyXModule * lm = moduleList[modName];
+		if (!lm) {
+			docstring const msg =
+						bformat(_("The module %1$s has been requested by\n"
+						"this document but has not been found in the list of\n"
+						"available modules. If you recently installed it, you\n"
+						"probably need to reconfigure LyX.\n"), from_utf8(modName));
+			ExceptionMessage(WarningException,_("Module not available"),
+					msg + _("Some layouts may not be available."));
+			LYXERR0("DocumentClassBundle::makeDocumentClass(): Module " <<
+					modName << " requested but not found in module list.");
+			continue;
+		}
+		if (!lm->isAvailable()) {
+			docstring const msg =
+						bformat(_("The module %1$s requires a package that is\n"
+						"not available in your LaTeX installation. LaTeX output\n"
+						"may not be possible.\n"), from_utf8(modName));
+			ExceptionMessage(WarningException, _("Package not available"), msg);
+		}
+		FileName layout_file = libFileSearch("layouts", lm->getFilename());
+		if (!doc_class.read(layout_file, TextClass::MODULE)) {
+			docstring const msg =
+						bformat(_("Error reading module %1$s\n"), from_utf8(modName));
+			throw ExceptionMessage(WarningException, _("Read Error"), msg);
+		}
+	}
+	return doc_class;
 }
 
 

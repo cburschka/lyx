@@ -16,6 +16,7 @@
 #include "FontInfo.h"
 #include "Layout.h"
 #include "LayoutEnums.h"
+#include "LayoutModuleList.h"
 
 #include "insets/InsetLayout.h"
 
@@ -254,11 +255,11 @@ protected:
 	/// latex packages requested by document class.
 	std::set<std::string> requires_;
 	/// default modules wanted by document class
-	std::list<std::string> default_modules_;
+	LayoutModuleList default_modules_;
 	/// modules provided by document class
-	std::list<std::string> provided_modules_;
+	LayoutModuleList provided_modules_;
 	/// modules excluded by document class
-	std::list<std::string> excluded_modules_;
+	LayoutModuleList excluded_modules_;
 	///
 	unsigned int columns_;
 	///
@@ -429,15 +430,19 @@ private:
 /// DocumentClassBundle::get().
 class DocumentClassBundle : boost::noncopyable {
 public:
-	/// \return Pointer to a new class equal to baseClass
-	DocumentClass & newClass(LayoutFile const & baseClass);
 	/// \return The sole instance of this class.
 	static DocumentClassBundle & get();
+	/// \return A new DocumentClass based on baseClass, with info added
+	/// from the modules in modlist.
+	DocumentClass & makeDocumentClass(LayoutFile const & baseClass, 
+			LayoutModuleList const & modlist);
 private:
 	/// control instantiation
 	DocumentClassBundle() {}
 	/// clean up
 	~DocumentClassBundle();
+	/// \return Reference to a new DocumentClass equal to baseClass
+	DocumentClass & newClass(LayoutFile const & baseClass);
 	///
 	std::vector<DocumentClass *> documentClasses_;
 };

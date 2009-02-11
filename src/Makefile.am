@@ -219,6 +219,7 @@ HEADERFILESCORE = \
 	Layout.h \
 	LayoutEnums.h \
 	LayoutFile.h \
+	LayoutModuleList.h \
 	Length.h \
 	Lexer.h \
 	LyXAction.h \

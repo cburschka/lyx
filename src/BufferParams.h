@@ -15,8 +15,9 @@
 #ifndef BUFFERPARAMS_H
 #define BUFFERPARAMS_H
 
-#include "Font.h"
 #include "Citation.h"
+#include "Font.h"
+#include "LayoutModuleList.h"
 #include "paper.h"
 
 #include "insets/InsetQuotes.h"
@@ -53,8 +54,6 @@ class VSpace;
  */
 class BufferParams {
 public:
-	///
-	typedef std::list<std::string> LayoutModuleList;
 	///
 	enum ParagraphSeparation {
 		///
