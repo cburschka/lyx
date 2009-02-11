@@ -1480,7 +1480,7 @@ bool BufferParams::removeBadModules()
 {
 	// we'll write a new list of modules, since we can't just remove them,
 	// as that would invalidate our iterators
-	LayoutModuleList oldModules = getModules();
+	LayoutModuleList oldModules = layoutModules_;
 	clearLayoutModules();
 
 	LayoutModuleList const & provmods = baseClass()->providedModules();
@@ -1572,7 +1572,7 @@ bool BufferParams::checkModuleConsistency() {
 	// Perform a consistency check on the set of modules. We need to make
 	// sure that none of the modules exclude each other and that requires
 	// are satisfied.
-	LayoutModuleList oldModules = getModules();
+	LayoutModuleList oldModules = layoutModules_;
 	clearLayoutModules();
 	LayoutModuleList::const_iterator oit = oldModules.begin();
 	LayoutModuleList::const_iterator oen = oldModules.end();
@@ -1789,8 +1789,8 @@ bool BufferParams::moduleCanBeAdded(string const & modName) const
 			return false;
 	}
 	// and then the selected modules
-	LayoutModuleList::const_iterator mit = getModules().begin();
-	LayoutModuleList::const_iterator const men = getModules().end();
+	LayoutModuleList::const_iterator mit = layoutModules_.begin();
+	LayoutModuleList::const_iterator const men = layoutModules_.end();
 	for (; mit != men; ++mit)
 		if (!LyXModule::areCompatible(modName, *mit))
 			return false;
@@ -1800,7 +1800,7 @@ bool BufferParams::moduleCanBeAdded(string const & modName) const
 	if (reqs.empty())
 		return true;
 
-	mit = getModules().begin(); // reset
+	mit = layoutModules_.begin(); // reset
 	vector<string>::const_iterator rit = reqs.begin();
 	vector<string>::const_iterator ren = reqs.end();
 	bool foundone = false;
