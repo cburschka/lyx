@@ -282,4 +282,6 @@ What's new
 - lyx.spec: remove "Icon" tag that triggered a build error; 
   general update.
 
+- Fix compilation on OpenBSD (bug 5650).
+
 - Fix make check.
