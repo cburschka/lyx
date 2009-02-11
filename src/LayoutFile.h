@@ -67,8 +67,10 @@ public:
 	///
 	std::list<std::string> const & defaultModules() const 
 			{ return default_modules_; }
+	///
  	std::list<std::string> const & providedModules() const 
  			{ return provided_modules_; }
+	///
  	std::list<std::string> const & excludedModules() const 
  			{ return excluded_modules_; }
 private:
@@ -92,6 +94,7 @@ class LayoutFileList {
 public:
 	///
 	LayoutFileList() {}
+	///
 	~LayoutFileList();
 	/// \return The sole instance of this class.
 	static LayoutFileList & get();
@@ -99,9 +102,11 @@ public:
 	bool empty() const { return classmap_.empty(); }
 	///
 	bool haveClass(std::string const & classname) const;
-	///
+	/// Note that this will assert if we don't have classname, so
+	/// check via haveClass() first.
 	LayoutFile const & operator[](std::string const & classname) const;
-	///
+	/// Note that this will assert if we don't have classname, so
+	/// check via haveClass() first.
 	LayoutFile & operator[](std::string const & classname);
 	/// Read textclass list. Returns false if this fails.
 	bool read();

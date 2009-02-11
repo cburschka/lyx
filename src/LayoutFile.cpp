@@ -82,8 +82,7 @@ LayoutFile const & LayoutFileList::operator[](string const & classname) const
 }
 
 
-LayoutFile & 
-	LayoutFileList::operator[](string const & classname)
+LayoutFile & LayoutFileList::operator[](string const & classname)
 {
 	LASSERT(haveClass(classname), /**/);
 	return *classmap_[classname];
