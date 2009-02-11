@@ -99,6 +99,10 @@ What's new
 - Fix crash when reading files created by tex2lyx in the presence of an
   empty child document (bug 4859).
 
+- Fix assertion when an inset is hidden at the right of the edit
+  window, for example in Description or Right Address layout (bug
+  5666 and 5068).
+
 - Fix conversion of documents that have index insets following an index
   list inset to LyX 1.6's format (bug 5713).
   Affected files that have already been mis-converted can be repaired by
