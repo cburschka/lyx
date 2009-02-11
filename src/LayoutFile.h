@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Lars Gullik Bjønnes
+ * \author Richard Heck (typedefs and such)
  *
  * Full author contact details are available in file CREDITS.
  */
