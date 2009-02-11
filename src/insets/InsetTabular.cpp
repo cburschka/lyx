@@ -3847,22 +3847,19 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setOnOff(convert<int>(argument) == tabular.getUsebox(cur.idx()));
 			break;
 
-		// when a header/footer/caption is set, no other row can be the same
-		// furthermore, every row can only be one thing:
-		//		either a footer or header or caption
+		// every row can only be one thing:
+		// either a footer or header or caption
 		case Tabular::SET_LTFIRSTHEAD:			
 			status.setEnabled(sel_row_start == sel_row_end
 				&& !tabular.getRowOfLTHead(sel_row_start, dummyltt)
 				&& !tabular.getRowOfLTFoot(sel_row_start, dummyltt)
 				&& !tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)
-				&& !tabular.ltCaption(sel_row_start)
-				&& (!tabular.haveLTFirstHead()
-				|| tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)));
-			status.setOnOff(tabular.getRowOfLTHead(sel_row_start, dummyltt));
+				&& !tabular.ltCaption(sel_row_start));
+			status.setOnOff(tabular.getRowOfLTFirstHead(sel_row_start, dummyltt));
 			break;
 
 		case Tabular::UNSET_LTFIRSTHEAD:
-			status.setOnOff(!tabular.getRowOfLTHead(sel_row_start, dummyltt));
+			status.setOnOff(!tabular.getRowOfLTFirstHead(sel_row_start, dummyltt));
 			break;
 
 		case Tabular::SET_LTHEAD:
@@ -3870,9 +3867,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 				&& !tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
 				&& !tabular.getRowOfLTFoot(sel_row_start, dummyltt)
 				&& !tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)
-				&& !tabular.ltCaption(sel_row_start)
-				&& (!tabular.haveLTHead()
-				|| tabular.getRowOfLTHead(sel_row_start, dummyltt)));
+				&& !tabular.ltCaption(sel_row_start));
 			status.setOnOff(tabular.getRowOfLTHead(sel_row_start, dummyltt));
 			break;
 
@@ -3885,9 +3880,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 				&& !tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
 				&& !tabular.getRowOfLTHead(sel_row_start, dummyltt)
 				&& !tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)
-				&& !tabular.ltCaption(sel_row_start)
-				&& (!tabular.haveLTFoot()
-				|| tabular.getRowOfLTFoot(sel_row_start, dummyltt)));
+				&& !tabular.ltCaption(sel_row_start));
 			status.setOnOff(tabular.getRowOfLTFoot(sel_row_start, dummyltt));
 			break;
 
@@ -3900,14 +3893,12 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 				&& !tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
 				&& !tabular.getRowOfLTHead(sel_row_start, dummyltt)
 				&& !tabular.getRowOfLTFoot(sel_row_start, dummyltt)
-				&& !tabular.ltCaption(sel_row_start)
-				&& (!tabular.haveLTLastFoot()
-				|| tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)));
-			status.setOnOff(tabular.getRowOfLTFoot(sel_row_start, dummyltt));
+				&& !tabular.ltCaption(sel_row_start));
+			status.setOnOff(tabular.getRowOfLTLastFoot(sel_row_start, dummyltt));
 			break;
 
 		case Tabular::UNSET_LTLASTFOOT:
-			status.setOnOff(!tabular.getRowOfLTFoot(sel_row_start, dummyltt));
+			status.setOnOff(!tabular.getRowOfLTLastFoot(sel_row_start, dummyltt));
 			break;
 
 		case Tabular::SET_LTNEWPAGE:
@@ -3919,11 +3910,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 				&& !tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
 				&& !tabular.getRowOfLTHead(sel_row_start, dummyltt)
 				&& !tabular.getRowOfLTFoot(sel_row_start, dummyltt)
-				&& !tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)
-				// Only the first row can be the caption.
-				&& sel_row_start == 0
-				&& (!tabular.haveLTCaption()
-				|| tabular.ltCaption(sel_row_start)));
+				&& !tabular.getRowOfLTLastFoot(sel_row_start, dummyltt));
 			status.setOnOff(tabular.ltCaption(sel_row_start));
 			break;
 

@@ -179,6 +179,9 @@ What's new
 - Speed up editing when the document contains paragraphs with many (>1000)
   insets (part of bug 4443).
 
+- Fix the longtable dialog: Now only only one attribute can be set per
+  table row (bug 5752).
+
 - Set buffer status to changed and record UNDO after modifying insets such
   as pagebreaks or citations via context menu.
   
