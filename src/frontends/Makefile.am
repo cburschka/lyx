@@ -37,7 +37,7 @@ TESTS = \
 check_PROGRAMS = \
 	biblio
 
-biblio_LDADD = $(BOOST_LIBS) $(BOOST_REGEX)
+biblio_LDADD = $(BOOST_LIBS)
 biblio_SOURCES = \
 	tests/biblio.cpp \
 	tests/boost.cpp
