@@ -83,6 +83,7 @@ src_header_files = Split('''
     Layout.h
     LayoutEnums.h
     LayoutFile.h
+    LayoutModuleList.h
     Length.h
     Lexer.h
     LyX.h
