@@ -41,6 +41,7 @@ namespace lyx {
 
 class BufferParams;
 class FloatPlacement;
+class LayoutModuleList;
 class TextClass;
 
 namespace frontend {
@@ -188,7 +189,7 @@ private:
 	std::list<modInfoStruct> const getProvidedModules();
 	///
 	std::list<modInfoStruct> const 
-			makeModuleInfo(std::list<std::string> const & mods);
+			makeModuleInfo(LayoutModuleList const & mods);
 	///
 	void setLanguage() const;
 	///

@@ -34,6 +34,7 @@
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Layout.h"
+#include "LayoutModuleList.h"
 #include "LyXRC.h"
 #include "ModuleList.h"
 #include "OutputParams.h"
@@ -252,11 +253,11 @@ public:
 				upPB, downPB, availableModel, selectedModel), container_(container)
 		{}
 	///
-	void updateProvidedModules(std::list<std::string> const & pm) 
-			{ provided_modules_ = pm; }
+	void updateProvidedModules(LayoutModuleList const & pm) 
+			{ provided_modules_ = pm.list(); }
 	///
-	void updateExcludedModules(std::list<std::string> const & em) 
-			{ excluded_modules_ = em; }
+	void updateExcludedModules(LayoutModuleList const & em) 
+			{ excluded_modules_ = em.list(); }
 private:
 	///
 	virtual void updateAddPB();
@@ -1409,7 +1410,7 @@ void GuiDocument::modulesToParams(BufferParams & bp)
 
 	// update the list of removed modules
 	bp.clearRemovedModules();
-	list<string> const & reqmods = bp.baseClass()->defaultModules();
+	LayoutModuleList const & reqmods = bp.baseClass()->defaultModules();
 	list<string>::const_iterator rit = reqmods.begin();
 	list<string>::const_iterator ren = reqmods.end();
 
@@ -1457,7 +1458,7 @@ void GuiDocument::updateModuleInfo()
 	string const modName = id_model.getIDString(idx.row());
 	docstring desc = getModuleDescription(modName);
 
-	list<string> const & provmods = bp_.baseClass()->providedModules();
+	LayoutModuleList const & provmods = bp_.baseClass()->providedModules();
 	if (std::find(provmods.begin(), provmods.end(), modName) != provmods.end()) {
 		if (!desc.empty())
 			desc += "\n";
@@ -2282,10 +2283,10 @@ list<GuiDocument::modInfoStruct> const & GuiDocument::getModuleInfo()
 
 
 list<GuiDocument::modInfoStruct> const 
-		GuiDocument::makeModuleInfo(list<string> const & mods)
+		GuiDocument::makeModuleInfo(LayoutModuleList const & mods)
 {
-	list<string>::const_iterator it =  mods.begin();
-	list<string>::const_iterator end = mods.end();
+	LayoutModuleList::const_iterator it =  mods.begin();
+	LayoutModuleList::const_iterator end = mods.end();
 	list<modInfoStruct> mInfo;
 	for (; it != end; ++it) {
 		modInfoStruct m;

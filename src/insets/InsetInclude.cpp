@@ -27,6 +27,7 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "LayoutFile.h"
+#include "LayoutModuleList.h"
 #include "LyX.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
@@ -499,13 +500,13 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		// Make sure modules used in child are all included in master
 		//FIXME It might be worth loading the children's modules into the master
 		//over in BufferParams rather than doing this check.
-		list<string> const masterModules = masterBuffer->params().getModules();
-		list<string> const childModules = tmp->params().getModules();
-		list<string>::const_iterator it = childModules.begin();
-		list<string>::const_iterator end = childModules.end();
+		LayoutModuleList const masterModules = masterBuffer->params().getModules();
+		LayoutModuleList const childModules = tmp->params().getModules();
+		LayoutModuleList::const_iterator it = childModules.begin();
+		LayoutModuleList::const_iterator end = childModules.end();
 		for (; it != end; ++it) {
 			string const module = *it;
-			list<string>::const_iterator found =
+			LayoutModuleList::const_iterator found =
 				find(masterModules.begin(), masterModules.end(), module);
 			if (found == masterModules.end()) {
 				docstring text = bformat(_("Included file `%1$s'\n"

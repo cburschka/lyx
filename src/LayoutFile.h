@@ -13,6 +13,7 @@
 #ifndef BASECLASSLIST_H
 #define BASECLASSLIST_H
 
+#include "LayoutModuleList.h"
 #include "TextClass.h"
 
 #include "support/strfwd.h"
@@ -65,13 +66,13 @@ public:
 	/// check whether the TeX class is available
 	bool isTeXClassAvailable() const { return texClassAvail_; }
 	///
-	std::list<std::string> const & defaultModules() const 
+	LayoutModuleList const & defaultModules() const 
 			{ return default_modules_; }
 	///
- 	std::list<std::string> const & providedModules() const 
+ 	LayoutModuleList const & providedModules() const 
  			{ return provided_modules_; }
 	///
- 	std::list<std::string> const & excludedModules() const 
+ 	LayoutModuleList const & excludedModules() const 
  			{ return excluded_modules_; }
 private:
 	/// Construct a layout with default values. Actual values loaded later.
