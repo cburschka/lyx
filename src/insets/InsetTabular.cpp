@@ -2514,11 +2514,12 @@ int Tabular::docbook(odocstream & os, OutputParams const & runparams) const
 	//+---------------------------------------------------------------------
 
 	// output header info
-	if (haveLTHead() || haveLTFirstHead()) {
+	if (haveLTHead() || haveLTFirstHead()|| haveLTCaption()) {
 		os << "<thead>\n";
 		++ret;
 		for (row_type i = 0; i < row_info.size(); ++i) {
-			if (row_info[i].endhead || row_info[i].endfirsthead) {
+			if (row_info[i].endhead || row_info[i].endfirsthead
+				|| row_info[i].caption) {
 				ret += docbookRow(os, i, runparams);
 			}
 		}
