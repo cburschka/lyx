@@ -2513,13 +2513,24 @@ int Tabular::docbook(odocstream & os, OutputParams const & runparams) const
 	//+                      Long Tabular case                             +
 	//+---------------------------------------------------------------------
 
+	// output caption info
+	if (haveLTCaption()) {
+		os << "<caption>\n";
+		++ret;
+		for (row_type i = 0; i < row_info.size(); ++i) {
+			if (row_info[i].caption) {
+				ret += docbookRow(os, i, runparams);
+			}
+		}
+		os << "</caption>\n";
+		++ret;
+	}
 	// output header info
-	if (haveLTHead() || haveLTFirstHead()|| haveLTCaption()) {
+	if (haveLTHead() || haveLTFirstHead()) {
 		os << "<thead>\n";
 		++ret;
 		for (row_type i = 0; i < row_info.size(); ++i) {
-			if (row_info[i].endhead || row_info[i].endfirsthead
-				|| row_info[i].caption) {
+			if (row_info[i].endhead || row_info[i].endfirsthead) {
 				ret += docbookRow(os, i, runparams);
 			}
 		}
