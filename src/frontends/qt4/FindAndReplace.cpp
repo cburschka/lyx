@@ -212,7 +212,7 @@ void FindAndReplaceWidget::on_replaceallPB_clicked()
 }
 
 
-void FindAndReplaceWidget::showEvent(QShowEvent *ev)
+void FindAndReplaceWidget::showEvent(QShowEvent * /* ev */)
 {
 	replace_work_area_->setEnabled(true);
 	replace_work_area_->redraw();
@@ -231,7 +231,7 @@ void FindAndReplaceWidget::hideEvent(QHideEvent *ev)
 }
 
 
-bool FindAndReplaceWidget::initialiseParams(std::string const & params)
+bool FindAndReplaceWidget::initialiseParams(std::string const & /* params */)
 {
 	find_work_area_->redraw();
 	replace_work_area_->setEnabled(true);
