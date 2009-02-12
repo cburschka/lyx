@@ -2089,29 +2089,18 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os,
 		return 0;
 
 	int ret = 0;
-	// output header info
-	if (haveLTHead()) {
-		if (endhead.topDL) {
-			os << "\\hline\n";
-			++ret;
-		}
+	// caption handling
+	// the caption must be output befrore the headers
+	if (haveLTCaption()) {
 		for (row_type i = 0; i < row_info.size(); ++i) {
-			if (row_info[i].endhead) {
+			if (row_info[i].caption) {
 				ret += TeXRow(os, i, runparams);
 			}
 		}
-		if (endhead.bottomDL) {
-			os << "\\hline\n";
-			++ret;
-		}
-		os << "\\endhead\n";
-		++ret;
-		if (endfirsthead.empty) {
-			os << "\\endfirsthead\n";
-			++ret;
-		}
 	}
-	// output firstheader info
+	// output first header info
+	// first header must be output before the header, otherwise the
+	// correct caption placement becomes really wierd
 	if (haveLTFirstHead()) {
 		if (endfirsthead.topDL) {
 			os << "\\hline\n";
@@ -2127,6 +2116,28 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os,
 			++ret;
 		}
 		os << "\\endfirsthead\n";
+		++ret;
+	}
+	// output header info
+	if (haveLTHead()) {
+		if (!haveLTFirstHead()) {
+			os << "\\endfirsthead\n";
+			++ret;
+		}
+		if (endhead.topDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		for (row_type i = 0; i < row_info.size(); ++i) {
+			if (row_info[i].endhead) {
+				ret += TeXRow(os, i, runparams);
+			}
+		}
+		if (endhead.bottomDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		os << "\\endhead\n";
 		++ret;
 	}
 	// output footer info
@@ -2146,7 +2157,7 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os,
 		}
 		os << "\\endfoot\n";
 		++ret;
-		if (endlastfoot.empty) {
+		if (!haveLTLastFoot()) {
 			os << "\\endlastfoot\n";
 			++ret;
 		}
@@ -2177,8 +2188,9 @@ bool Tabular::isValidRow(row_type row) const
 {
 	if (!is_long_tabular)
 		return true;
-	return !row_info[row].endhead && !row_info[row].endfirsthead &&
-			!row_info[row].endfoot && !row_info[row].endlastfoot;
+	return !row_info[row].endhead && !row_info[row].endfirsthead
+		&& !row_info[row].endfoot && !row_info[row].endlastfoot
+		&& !row_info[row].caption;
 }
 
 
