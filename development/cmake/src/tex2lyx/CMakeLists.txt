@@ -17,7 +17,8 @@ set(LINKED_sources
 	${TOP_SRC_DIR}/src/TextClass.cpp
 	${TOP_SRC_DIR}/src/Lexer.cpp
 	${TOP_SRC_DIR}/src/lengthcommon.cpp
-	${TOP_SRC_DIR}/src/Color.cpp)
+	${TOP_SRC_DIR}/src/Color.cpp
+	${TOP_SRC_DIR}/src/ModuleList.cpp)
 
 set(LINKED_headers
 	${TOP_SRC_DIR}/src/Layout.h
