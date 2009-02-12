@@ -610,6 +610,7 @@ src_tex2lyx_copied_files = Split('''
     FloatList.cpp
     Floating.cpp
     Layout.cpp
+    ModuleList.cpp
     Lexer.cpp
     TextClass.cpp
     insets/InsetLayout.cpp
