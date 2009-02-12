@@ -3805,7 +3805,10 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return true;
 
 		case Tabular::MULTICOLUMN:
-			status.setEnabled(sel_row_start == sel_row_end);
+			// When a row is set as longtable caption, it must not be allowed
+			// to unset that this row is a multicolumn.
+			status.setEnabled(sel_row_start == sel_row_end
+				&& !tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.isMultiColumn(cur.idx()));
 			break;
 
