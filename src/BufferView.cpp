@@ -672,7 +672,7 @@ CursorStatus BufferView::cursorStatus(DocIterator const & dit) const
 
 void BufferView::saveBookmark(unsigned int idx)
 {
-	// tenatively save bookmark, id and pos will be used to
+	// tentatively save bookmark, id and pos will be used to
 	// acturately locate a bookmark in a 'live' lyx session.
 	// pit and pos will be updated with bottom level pit/pos
 	// when lyx exits.
