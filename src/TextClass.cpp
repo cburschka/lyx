@@ -1123,8 +1123,6 @@ DocumentClass & DocumentClassBundle::makeDocumentClass(
 						"probably need to reconfigure LyX.\n"), from_utf8(modName));
 			ExceptionMessage(WarningException,_("Module not available"),
 					msg + _("Some layouts may not be available."));
-			LYXERR0("DocumentClassBundle::makeDocumentClass(): Module " <<
-					modName << " requested but not found in module list.");
 			continue;
 		}
 		if (!lm->isAvailable()) {
