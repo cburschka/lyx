@@ -265,7 +265,7 @@ author: Uwe Stöhr
 
 
 \family sans
-Version 1.6.1
+Version 1.6.x
 \end_layout
 
 \begin_layout Standard
@@ -2974,13 +2974,8 @@ Longtable
 \end_layout
 
 \begin_layout Description
-
-\family sans
-Header
-\family default
-: The current row and all rows above, that don't have any special options
- defined, are defined to be the header rows of all pages of the longtable;
- except for the first page, if 
+Header: The current row is defined to be a header row that appears on all
+ pages of the longtable; except for the first page, if 
 \family sans
 First
 \begin_inset space ~
@@ -2993,26 +2988,17 @@ header
 \end_layout
 
 \begin_layout Description
-
-\family sans
 First
 \begin_inset space ~
 \end_inset
 
-header
-\family default
-: The current row and all rows above, that don't have any special options
- defined, are defined to be the header rows of the first page of the longtable.
+header: The current row is defined to be a header row that appears on the
+ first page of the longtable.
 \end_layout
 
 \begin_layout Description
-
-\family sans
-Footer
-\family default
-: The current row and all rows below, that don't have any special options
- defined, are defined to be the footer rows of all pages of the longtable;
- except for the last page, if 
+Footer: The current row is defined to be a footer row that appears on all
+ pages of the longtable; except for the last page, if 
 \family sans
 Last
 \begin_inset space ~
@@ -3024,26 +3010,17 @@ footer
 \end_layout
 
 \begin_layout Description
-
-\family sans
 Last
 \begin_inset space ~
 \end_inset
 
-footer
-\family default
-: The current row and all rows below, that don't have any special options
- defined, are defined to be the footer rows of the last page of the longtable.
+footer: The current row is defined to be a footer row that appear on the
+ last page of the longtable.
 \end_layout
 
 \begin_layout Description
-Caption: The first row is reset as single column.
- You can now insert there the table caption via the menu 
-\family sans
-Insert\SpecialChar \menuseparator
-Caption
-\family default
-.
+Caption: The current row contains the table caption.
+ The row is reset as single column and a caption is inserted.
  More about longtable captions is explained in sec.
 \begin_inset space \thinspace{}
 \end_inset
@@ -3059,31 +3036,7 @@ reference "sub:Longtable-Captions"
 \end_layout
 
 \begin_layout Standard
-You can also specify a row where the table is splitted.
- If you set more than one option in the same table row, you should be aware
- of the fact that only the first one is used in the given table row.
- The others will then be defined as 
-\emph on
-empty
-\emph default
-.
- In this context, first means first in this order: 
-\family sans
-Header,
-\family default
- 
-\family sans
-First
-\begin_inset space ~
-\end_inset
-
-header, Footer, Last
-\begin_inset space ~
-\end_inset
-
-footer.
-
-\family default
+You can also specify a row where the table is split.
  See the following longtable to see how it works:
 \end_layout
 
@@ -3224,7 +3177,7 @@ TEL.
 </cell>
 </row>
 <row endfoot="true">
-<cell multicolumn="1" alignment="right" valignment="top" topline="true" usebox="none">
+<cell multicolumn="1" alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5746,10 +5699,13 @@ name "sub:Longtable-Captions"
 
 \begin_layout Standard
 A longtable cannot be put into a table float because floats can only be
- on one page but the caption environment of floats can also be used for
- longtables.
- Therefore the caption is inserted as first row of the table, as explained
- in sec.
+ on one page.
+ But the caption environment of floats can also be used for longtables when
+ you use for a table row the longtable option 
+\family sans
+Caption
+\family default
+ as described in sec.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -5761,8 +5717,7 @@ reference "sec:Longtables"
 \end_inset
 
 .
- The first table row is then only a dummy row for the caption, the actual
- table starts with the second row.
+ Only one table row can contain the caption.
 \end_layout
 
 \begin_layout Standard
@@ -6206,13 +6161,6 @@ Document Settings
  point to the beginning of the document.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -7432,12 +7380,8 @@ Longtables ! Different Captions for Pages
 \end_layout
 
 \begin_layout Standard
-When the other captions should differ from the one of the first table page,
- insert a caption with a non-empty short title in a dummy caption row marked
- as first header.
- The caption used for the other table pages is inserted as caption without
- a short title in a dummy caption row that is marked as main header.
- When this caption shouldn't include the table number, use the command
+When the table captions for the following pages should differ from the one
+ of the first table page, insert a caption with the TeX code command
 \end_layout
 
 \begin_layout Standard
@@ -7446,12 +7390,14 @@ When the other captions should differ from the one of the first table page,
 
 \backslash
 caption*{caption text}
+\backslash
+
+\backslash
+%
 \end_layout
 
 \begin_layout Standard
-instead of LyX's caption box.
- The label to reference the table is inserted into the caption of the first
- header.
+in a dummy caption row that is marked as header.
  Table
 \begin_inset space ~
 \end_inset
@@ -7475,8 +7421,8 @@ reference "tab:DiffCaptions"
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
-<row endfirsthead="true" caption="true">
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<row caption="true">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7510,7 +7456,7 @@ Example Phone List
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" leftline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7519,7 +7465,7 @@ Example Phone List
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7541,7 +7487,7 @@ Example Phone List (ignore the names)
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7550,7 +7496,7 @@ Example Phone List (ignore the names)
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7593,8 +7539,8 @@ TEL.
 \end_inset
 </cell>
 </row>
-<row endhead="true" caption="true">
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<row endhead="true">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7619,7 +7565,7 @@ caption*{Continued Example Phone List}
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7628,7 +7574,7 @@ caption*{Continued Example Phone List}
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7670,7 +7616,7 @@ Example Phone List
 </cell>
 </row>
 <row endhead="true">
-<cell multicolumn="1" alignment="center" valignment="top" leftline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7690,7 +7636,7 @@ NAME
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9653,8 +9599,8 @@ must be inserted as TeX-Code at the beginning of the cell.
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="3cm">
 <column alignment="center" valignment="top" width="0pt">
-<row endfirsthead="true" caption="true">
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<row caption="true">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9688,7 +9634,7 @@ Table with forced page break in table cell
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9697,7 +9643,7 @@ Table with forced page break in table cell
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9719,7 +9665,7 @@ Example Phone List (ignore the names)
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9728,7 +9674,7 @@ Example Phone List (ignore the names)
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9771,8 +9717,8 @@ TEL.
 \end_inset
 </cell>
 </row>
-<row endhead="true" caption="true">
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<row endhead="true">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9783,7 +9729,7 @@ status collapsed
 
 
 \backslash
-caption*{Continued table with forced page break in table cell}
+caption*{Continued Example Phone List}
 \backslash
 
 \backslash
@@ -9797,7 +9743,7 @@ caption*{Continued table with forced page break in table cell}
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9806,7 +9752,7 @@ caption*{Continued table with forced page break in table cell}
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9817,11 +9763,11 @@ caption*{Continued table with forced page break in table cell}
 </cell>
 </row>
 <row endhead="true">
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
- 
+
 \series bold
 Example Phone List
 \end_layout

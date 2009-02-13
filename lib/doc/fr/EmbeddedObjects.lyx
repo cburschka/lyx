@@ -276,7 +276,7 @@ version 1.5.2 - novembre 2007
 
 
 \family sans
-Version 1.6svn
+Version 1.6.x
 \end_layout
 
 \begin_layout Standard
@@ -3148,8 +3148,8 @@ En-tête: La ligne courante et toutes celles situées au-dessus et qui n'ont
 \begin_layout Description
 Pied: La ligne courante et toutes celles situées au-dessous et qui n'ont
  pas d'attributs particuliers, sont définies comme faisant partie des lignes
- constituant les pieds de toutes les pages du tableau long ; sauf de la
- dernière page si 
+ constituant les pieds de toutes les pages du tableau long; sauf de la dernière
+ page si 
 \family sans
 Dernier
 \begin_inset space ~
@@ -3171,12 +3171,16 @@ pied: La ligne courante et toutes celles situées au-dessous et qui n'ont
 \end_layout
 
 \begin_layout Description
-Légende La première ligne est transformée en une colonne unique.
- Vous pouvez y insérer la légende du tableau avec le menu 
-\family sans
-Insérer\SpecialChar \menuseparator
-Légende
-\family default
+Légende La ligne courante 
+\lang english
+contains the table caption
+\lang french
+.
+ La première ligne est transformée en une colonne unique et une légende
+ 
+\lang english
+is inserted
+\lang french
 .
  Vous trouverez d'autres explications sur les légendes pour les tableaux
  longs dans la section
@@ -3195,30 +3199,6 @@ reference "sub:Tableaux-longs-légende"
 
 \begin_layout Standard
 Vous pouvez aussi préciser une ligne où la table devra être coupée.
- Si vous activez plusieurs options pour une même ligne, vous devez être
- conscients que seule la première sera prise en compte.
- Les autres options seront alors définies comme 
-\emph on
-vides
-\emph default
-.
- Dans ce contexte, première veut dire première en suivant l'ordre 
-\family sans
-Pied, Dernier
-\begin_inset space ~
-\end_inset
-
-Pied, 
-\family default
-et
-\family sans
- En-tête, Premier
-\begin_inset space ~
-\end_inset
-
-En-tête
-\family default
-.
  Voyez le tableau long qui suit pour voir comment ça marche :
 \end_layout
 
@@ -3229,7 +3209,7 @@ En-tête
 <features islongtable="true">
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="0pt">
-<column alignment="right" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
 <row endfirsthead="true">
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -3359,7 +3339,7 @@ TEL.
 </cell>
 </row>
 <row endfoot="true">
-<cell multicolumn="1" alignment="right" valignment="top" topline="true" usebox="none">
+<cell multicolumn="1" alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5891,8 +5871,15 @@ Vous ne pouvez pas placer un tableau long dans un flottant de tableau puisque
  les flottants ne peuvent pas être sur plusieurs pages, mais l'environnement
  de légende des flottants de tableau peut aussi être utilisé pour les Tableaux
  Longs.
- On insère donc la légende dans la première ligne du tableau, comme c'est
- expliqué dans la section
+ 
+\lang english
+But the caption environment of floats can also be used for longtables when
+ you use for a table row the longtable option 
+\family sans
+Caption
+\family default
+\lang french
+, comme c'est expliqué dans la section
 \begin_inset space ~
 \end_inset
 
@@ -5904,8 +5891,6 @@ reference "sec:Tableaux-longs"
 \end_inset
 
 .
- La première ligne du tableau est donc une ligne factice qui sert pour insérer
- la légende, le tableau commence réellement avec la deuxième ligne.
 \end_layout
 
 \begin_layout Standard
@@ -7580,15 +7565,12 @@ Tableaux longs ! Legendes@Légendes différentes par page
 \end_layout
 
 \begin_layout Standard
-Quand les légendes qui se trouvent sur les autres pages doivent être différentes
- de celle de la première page, insérez une légende avec un titre court non
- vide dans une fausse première ligne qui sera marquée comme étant le premier
- en-tête.
- La légende utilisée pour les autres pages est insérée comme une légende
- sans titre court dans une fausse ligne qui sera marquée comme étant l'entête
- principal.
- Si cet entête ne doit pas contenir le numéro du tableau, utilisez la commandes
- suivante à la place de la boîte de légende de LyX :
+
+\lang english
+When the table captions for the following pages should differ from the one
+ of the first table page, insert a caption with the TeX code
+\lang french
+ commande
 \end_layout
 
 \begin_layout Standard
@@ -7597,11 +7579,18 @@ Quand les légendes qui se trouvent sur les autres pages doivent être différen
 
 \backslash
 caption*{caption text}
+\backslash
+
+\backslash
+%
 \end_layout
 
 \begin_layout Standard
-L'étiquette utilisée pour faire référence à ce tableau est insérée dans
- la légende du premier en-tête.
+
+\lang english
+in a dummy caption row that is marked as header.
+
+\lang french
  Le tableau
 \begin_inset space ~
 \end_inset
@@ -7624,9 +7613,9 @@ reference "tab:Légendes-tableau-différentes"
 <features islongtable="true">
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="0pt">
-<column alignment="right" valignment="top" width="0pt">
-<row endfirsthead="true" caption="true">
-<cell multicolumn="1" alignment="right" valignment="top" usebox="none">
+<column alignment="center" valignment="top" width="0pt">
+<row caption="true">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7642,7 +7631,7 @@ name "tab:Légendes-tableau-différentes"
 
 
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Exemple Annuaire 
@@ -7660,7 +7649,7 @@ Exemple Annuaire
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7669,7 +7658,7 @@ Exemple Annuaire
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7691,7 +7680,7 @@ Exemple d'annuaire téléphonique (ne pas faire attention aux noms)
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7700,7 +7689,7 @@ Exemple d'annuaire téléphonique (ne pas faire attention aux noms)
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7743,8 +7732,8 @@ TÉL.
 \end_inset
 </cell>
 </row>
-<row endhead="true" caption="true">
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<row endhead="true">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7769,7 +7758,7 @@ caption*{Suite de l'exemple d'annuaire téléphonique}
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7778,7 +7767,7 @@ caption*{Suite de l'exemple d'annuaire téléphonique}
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7789,7 +7778,7 @@ caption*{Suite de l'exemple d'annuaire téléphonique}
 </cell>
 </row>
 <row endhead="true">
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7853,7 +7842,7 @@ TÉL.
 </cell>
 </row>
 <row endfoot="true">
-<cell multicolumn="1" alignment="right" valignment="top" topline="true" usebox="none">
+<cell multicolumn="1" alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9826,9 +9815,9 @@ au début de la cellule.
 <features islongtable="true">
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="3cm">
-<column alignment="right" valignment="top" width="0pt">
-<row endfirsthead="true" caption="true">
-<cell multicolumn="1" alignment="right" valignment="top" usebox="none">
+<column alignment="center" valignment="top" width="0pt">
+<row caption="true">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9862,7 +9851,7 @@ Tableau avec un saut de page forcé dans une cellule
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9871,7 +9860,7 @@ Tableau avec un saut de page forcé dans une cellule
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9893,7 +9882,7 @@ Exemple d'annuaire téléphonique (ne faites pas attention aux noms)
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9902,7 +9891,7 @@ Exemple d'annuaire téléphonique (ne faites pas attention aux noms)
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9945,8 +9934,8 @@ TÉL.
 \end_inset
 </cell>
 </row>
-<row endhead="true" caption="true">
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<row endhead="true">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9971,7 +9960,7 @@ caption*{Tableau sur deux pages avec un saut de page dans une cellule}
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9980,7 +9969,7 @@ caption*{Tableau sur deux pages avec un saut de page dans une cellule}
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9991,7 +9980,7 @@ caption*{Tableau sur deux pages avec un saut de page dans une cellule}
 </cell>
 </row>
 <row endhead="true">
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10055,7 +10044,7 @@ TÉL.
 </cell>
 </row>
 <row endfoot="true">
-<cell multicolumn="1" alignment="right" valignment="top" topline="true" usebox="none">
+<cell multicolumn="1" alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout

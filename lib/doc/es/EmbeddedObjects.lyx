@@ -283,7 +283,7 @@ Traducción de: Ignacio García
 
 
 \family sans
-Versión 1.6.1
+Versión 1.6.x
 \end_layout
 
 \begin_layout Standard
@@ -2807,13 +2807,8 @@ larga
 \end_layout
 
 \begin_layout Description
-
-\family sans
-Encabezado:
-\family default
- La fila actual y todas las de arriba, que no tienen ninguna opción especial
- definida, se definen como filas de encabezado para todas las páginas de
- la tabla, excepto para la primera página si 
+Encabezado: La fila actual se definen como una fila de encabezado para todas
+ las páginas de la tabla, excepto para la primera página si 
 \family sans
 Primer
 \begin_inset space ~
@@ -2826,26 +2821,17 @@ encabezado
 \end_layout
 
 \begin_layout Description
-
-\family sans
 Primer
 \begin_inset space ~
 \end_inset
 
-encabezado:
-\family default
- La fila actual y superiores, que no tienen ninguna opción especial definida,
- se definen como filas cabeceras de la primera página de la tabla.
+encabezado: La fila actual se definen como una fila cabeceras de la primera
+ página de la tabla.
 \end_layout
 
 \begin_layout Description
-
-\family sans
-Pie:
-\family default
- La fila actual y todas las siguientes, que no tienen ninguna opción especial
- definida, se definen como filas de pie de todas las páginas de la tabla,
- excepto para la última página si se define 
+Pie: La fila actual se definen como una fila de pie de todas las páginas
+ de la tabla, excepto para la última página si se define 
 \family sans
 Último
 \begin_inset space ~
@@ -2855,25 +2841,32 @@ pie.
 \end_layout
 
 \begin_layout Description
-
-\family sans
 Último
 \begin_inset space ~
 \end_inset
 
-pie: L
+pie:
+\family sans
+ L
 \family default
-a fila actual y siguientes, que no tienen ninguna opción especial definida,
- se definen como filas de pie de la última página de la tabla.
+a fila actual se definen como una fila de pie de la última página de la
+ tabla.
 \end_layout
 
 \begin_layout Description
-Leyenda: La primera fila se reajusta como columna simple.
- Ahora puedes insertar ahí la leyenda de la tabla con el menú 
+Leyenda: 
 \family sans
-Insertar\SpecialChar \menuseparator
-Leyenda
+L
 \family default
+a fila actual
+\lang english
+ contains the table caption.
+
+\lang spanish
+ La primera fila se reajusta como columna simple 
+\lang english
+and a caption is inserted
+\lang spanish
 .
  Más detalles sobre leyendas en tablas largas en la sec.
 \begin_inset space \thinspace{}
@@ -2891,30 +2884,6 @@ reference "sub:Leyendas-en-Tablas"
 
 \begin_layout Standard
 También se puede especificar en qué fila se ha de cortar la tabla.
- Si se establece más de una opción en la misma fila, habría que tener en
- cuenta que sólo la primera de ellas se usa en la fila dada.
- Las otras quedarán definidas como 
-\emph on
-vacías
-\emph default
-.
- En este contexto, primera significa primero en este orden: 
-\family sans
-Encabezado, Primer
-\begin_inset space ~
-\end_inset
-
-encabezado
-\family default
-, 
-\family sans
-Pie, Último
-\begin_inset space ~
-\end_inset
-
-pie
-\family default
-.
  La siguiente tabla muestra cómo funciona:
 \end_layout
 
@@ -3059,7 +3028,7 @@ TEL.
 </cell>
 </row>
 <row endfoot="true">
-<cell multicolumn="1" alignment="right" valignment="top" topline="true" usebox="none">
+<cell multicolumn="1" alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5555,10 +5524,6 @@ reference "sub:Leyendas-en-Tablas"
 \end_inset
 
 
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -5586,8 +5551,15 @@ name "sub:Leyendas-en-Tablas"
 Una tabla larga no se puede poner flotante porque los flotantes sólo pueden
  estar en una página, aunque el entorno leyenda de flotantes sí puede usarse
  para tablas largas.
- Por tanto la leyenda se inserta como primera fila de la tabla, como se
- explica en la sec.
+ 
+\lang english
+But the caption environment of floats can also be used for longtables when
+ you use for a table row the longtable option 
+\family sans
+Caption
+\family default
+\lang spanish
+, como se explica en la sec.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -5599,8 +5571,6 @@ reference "sec:Tablas-Largas"
 \end_inset
 
 .
- En este caso la primera fila de la tabla es sólo una fila postiza para
- la leyenda, la tabla se inicia realmente en la segunda fila.
 \end_layout
 
 \begin_layout Standard
@@ -7258,12 +7228,12 @@ Tablas largas ! Leyendas distintas para cada página
 \end_layout
 
 \begin_layout Standard
-Si otras leyendas debieran ser diferentes de la leyenda de la primera página,
- inserta una leyenda con un título breve no vacío en una fila postiza marcada
- como primer encabezado.
- La leyenda para las restantes páginas se inserta sin título breve en una
- fila postiza de leyenda marcada como primer encabezado.
- Si este encabezado no ha de incluir el número de tabla, usa el comando
+
+\lang english
+When the table captions for the following pages should differ from the one
+ of the first table page, insert a caption with the TeX code
+\lang spanish
+ comando
 \end_layout
 
 \begin_layout Standard
@@ -7272,11 +7242,18 @@ Si otras leyendas debieran ser diferentes de la leyenda de la primera página,
 
 \backslash
 caption*{texto de la leyenda}
+\backslash
+
+\backslash
+%
 \end_layout
 
 \begin_layout Standard
-en vez del recuadro de leyenda de LyX.
- La etiqueta para referenciar la tabla se inserta en el primer encabezado.
+
+\lang english
+in a dummy caption row that is marked as header.
+
+\lang spanish
  La tabla
 \begin_inset space ~
 \end_inset
@@ -7300,8 +7277,8 @@ reference "tab:DifLeyendas"
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
-<row endfirsthead="true" caption="true">
-<cell multicolumn="1" alignment="right" valignment="top" usebox="none">
+<row caption="true">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7335,7 +7312,7 @@ Ejemplo de lista telefónica
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7344,7 +7321,7 @@ Ejemplo de lista telefónica
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7366,7 +7343,7 @@ Ejemplo de lista telefónica (ignore los nombres)
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7375,7 +7352,7 @@ Ejemplo de lista telefónica (ignore los nombres)
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7418,13 +7395,13 @@ TEL.
 \end_inset
 </cell>
 </row>
-<row endhead="true" caption="true">
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<row endhead="true">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -7444,7 +7421,7 @@ caption*{continúa Ejemplo de lista telefónica}
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7453,7 +7430,7 @@ caption*{continúa Ejemplo de lista telefónica}
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7464,7 +7441,7 @@ caption*{continúa Ejemplo de lista telefónica}
 </cell>
 </row>
 <row endhead="true">
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7528,7 +7505,7 @@ TEL.
 </cell>
 </row>
 <row endfoot="true">
-<cell multicolumn="1" alignment="right" valignment="top" topline="true" usebox="none">
+<cell multicolumn="1" alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9439,8 +9416,8 @@ debe insertarse en código TeX al principio de la celda.
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="3cm">
 <column alignment="right" valignment="top" width="0pt">
-<row endfirsthead="true" caption="true">
-<cell multicolumn="1" alignment="right" valignment="top" usebox="none">
+<row caption="true">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9474,7 +9451,7 @@ Tabla con salto de página forzado en celda
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9483,7 +9460,7 @@ Tabla con salto de página forzado en celda
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9505,7 +9482,7 @@ Ejemplo de lista telefónica (ignore los nombres)
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9514,7 +9491,7 @@ Ejemplo de lista telefónica (ignore los nombres)
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9557,8 +9534,8 @@ TEL.
 \end_inset
 </cell>
 </row>
-<row endhead="true" caption="true">
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<row endhead="true">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9583,7 +9560,7 @@ caption*{continúa Tabla con salto de página forzado en celda}
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9592,7 +9569,7 @@ caption*{continúa Tabla con salto de página forzado en celda}
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9603,7 +9580,7 @@ caption*{continúa Tabla con salto de página forzado en celda}
 </cell>
 </row>
 <row endhead="true">
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9667,7 +9644,7 @@ TEL.
 </cell>
 </row>
 <row endfoot="true">
-<cell multicolumn="1" alignment="right" valignment="top" topline="true" usebox="none">
+<cell multicolumn="1" alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -16315,13 +16292,11 @@ name "Alineación-vertical"
 
 \begin_layout Standard
 \noindent
-
-\lang english
 \begin_inset Float table
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -16342,8 +16317,6 @@ Alineación vertical de texto con fuentes grandes
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset space \hfill{}
 \end_inset
 
@@ -16646,10 +16619,6 @@ Más enorme
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
