@@ -2083,6 +2083,35 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os,
 		return 0;
 
 	int ret = 0;
+	// caption handling
+	// the caption must be output befrore the headers
+	if (haveLTCaption()) {
+		for (row_type i = 0; i < row_info.size(); ++i) {
+			if (row_info[i].caption) {
+				ret += TeXRow(os, i, runparams);
+			}
+		}
+	}
+	// output first header info
+	// first header must be output before the header, otherwise the
+	// correct caption placement becomes really wierd
+	if (haveLTFirstHead()) {
+		if (endfirsthead.topDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		for (row_type i = 0; i < row_info.size(); ++i) {
+			if (row_info[i].endfirsthead) {
+				ret += TeXRow(os, i, runparams);
+			}
+		}
+		if (endfirsthead.bottomDL) {
+			os << "\\hline\n";
+			++ret;
+		}
+		os << "\\endfirsthead\n";
+		++ret;
+	}
 	// output header info
 	if (haveLTHead()) {
 		if (endhead.topDL) {
@@ -2099,28 +2128,6 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os,
 			++ret;
 		}
 		os << "\\endhead\n";
-		++ret;
-		if (endfirsthead.empty) {
-			os << "\\endfirsthead\n";
-			++ret;
-		}
-	}
-	// output firstheader info
-	if (haveLTFirstHead()) {
-		if (endfirsthead.topDL) {
-			os << "\\hline\n";
-			++ret;
-		}
-		for (row_type i = 0; i < row_info.size(); ++i) {
-			if (row_info[i].endfirsthead) {
-				ret += TeXRow(os, i, runparams);
-			}
-		}
-		if (endfirsthead.bottomDL) {
-			os << "\\hline\n";
-			++ret;
-		}
-		os << "\\endfirsthead\n";
 		++ret;
 	}
 	// output footer info
@@ -2140,10 +2147,6 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os,
 		}
 		os << "\\endfoot\n";
 		++ret;
-		if (endlastfoot.empty) {
-			os << "\\endlastfoot\n";
-			++ret;
-		}
 	}
 	// output lastfooter info
 	if (haveLTLastFoot()) {
@@ -2171,8 +2174,9 @@ bool Tabular::isValidRow(row_type row) const
 {
 	if (!is_long_tabular)
 		return true;
-	return !row_info[row].endhead && !row_info[row].endfirsthead &&
-			!row_info[row].endfoot && !row_info[row].endlastfoot;
+	return !row_info[row].endhead && !row_info[row].endfirsthead
+		&& !row_info[row].endfoot && !row_info[row].endlastfoot
+		&& !row_info[row].caption;
 }
 
 
@@ -3741,7 +3745,10 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return true;
 
 		case Tabular::MULTICOLUMN:
-			status.setEnabled(sel_row_start == sel_row_end);
+			// When a row is set as longtable caption, it must not be allowed
+			// to unset that this row is a multicolumn.
+			status.setEnabled(sel_row_start == sel_row_end
+				&& !tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.isMultiColumn(cur.idx()));
 			break;
 

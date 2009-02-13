@@ -818,6 +818,9 @@ void GuiTabular::updateContents()
 	lastfooterStatusCB->setEnabled(funcEnabled(Tabular::SET_LTLASTFOOT)
 		&& !lastfooterNoContentsCB->isChecked());
 	captionStatusCB->setEnabled(funcEnabled(Tabular::TOGGLE_LTCAPTION));
+	// When a row is set as longtable caption, it must not be allowed to unset
+	// that this row is a multicolumn.
+	multicolumnCB->setEnabled(funcEnabled(Tabular::MULTICOLUMN));
 
 	Tabular::ltType ltt;
 	bool use_empty;
