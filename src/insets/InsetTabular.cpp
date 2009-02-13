@@ -3977,12 +3977,15 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setOnOff(tabular.getLTNewPage(sel_row_start));
 			break;
 
+		// only one row can be the caption
 		case Tabular::TOGGLE_LTCAPTION:
 			status.setEnabled(sel_row_start == sel_row_end
 				&& !tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
 				&& !tabular.getRowOfLTHead(sel_row_start, dummyltt)
 				&& !tabular.getRowOfLTFoot(sel_row_start, dummyltt)
-				&& !tabular.getRowOfLTLastFoot(sel_row_start, dummyltt));
+				&& !tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)
+				&& (!tabular.haveLTCaption()
+					|| tabular.ltCaption(sel_row_start)));
 			status.setOnOff(tabular.ltCaption(sel_row_start));
 			break;
 
