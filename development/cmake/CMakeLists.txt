@@ -48,10 +48,13 @@ macro(setstripped _varname _value)
 endmacro(setstripped)
 
 foreach(_c_l ${_config_lines} )
-  if(_c_l MATCHES "^AC_INIT\\(\([^,]+\),\([^,]+\),\([^,]+\)\(.*\)")
+  if(_c_l MATCHES "^AC_INIT\\(\([^,]+\),\([^,]+\), *\\[\([^,]+\)\\] *,\(.*\)")
     setstripped(PACKAGE_BASE ${CMAKE_MATCH_1})
     setstripped(PACKAGE_VERSION ${CMAKE_MATCH_2})
+    setstripped(PACKAGE_BUGREPORT ${CMAKE_MATCH_3})
     if(PACKAGE_VERSION MATCHES "^\([0-9]+\)\\.\([0-9]+\).*$")
+      set(LYX_MAJOR_VERSION ${CMAKE_MATCH_1})
+      set(LYX_MINOR_VERSION ${CMAKE_MATCH_2})
       set(LYX_DIR_VER "LYX_DIR_${CMAKE_MATCH_1}${CMAKE_MATCH_2}x")
       set(LYX_USERDIR_VER "LYX_USERDIR_${CMAKE_MATCH_1}${CMAKE_MATCH_2}x")
       set(LYX_INSTALL_SUFFIX "${CMAKE_MATCH_1}.${CMAKE_MATCH_2}")
@@ -389,4 +392,46 @@ add_subdirectory(lyx2lyx)
 add_subdirectory(scripts)
 
 include(../Install)
+
+SET(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
+SET(CPACK_PACKAGE_VERSION_MINOR "${LYX_MINOR_VERSION}")
+SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A WYSIWYM (What You See Is What You Mean) document processor")
+
+SET(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${LYX_INSTALL_SUFFIX}")
+SET(CPACK_SET_DESTDIR "ON")			      # needed by rpm
+SET(CPACK_PACKAGE_CONTACT "${PACKAGE_BUGREPORT}") # needed by deb
+SET(CPACK_SOURCE_PACKAGE_FILE_NAME "lyx-${LYX_INSTALL_SUFFIX}")
+SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY
+"LyX is a document processor that encourages an approach to writing
+based on the structure of your documents, not their appearance. It
+is released under a Free Software/Open Source license (GPL v.2).
+
+LyX is for people that write and want their writing to look great,
+right out of the box. No more endless tinkering with formatting
+details, 'finger painting' font attributes or futzing around with
+page boundaries. You just write. In the background, Prof. Knuth's
+legendary TeX typesetting engine makes you look good.
+
+On screen, LyX looks like any word processor; its printed output --
+or richly cross-referenced PDF, just as readily produced -- looks
+like nothing else. Gone are the days of industrially bland .docs,
+all looking similarly not-quite-right, yet coming out unpredictably
+different on different printer drivers. Gone are the crashes
+'eating' your dissertation the evening before going to press.
+
+LyX is stable and fully featured. It is a multi-platform, fully
+internationalized application running natively on Unix/Linux, the
+Macintosh and modern Windows platforms.")
+
+include(CPack)
+#Now it is possible to create some packages
+# cd <BuildDir>
+# make package
+############################## rpm ################################### deb ##################
+# create    # cpack -G RPM --config CPackConfig.cmake   # cpack -G DEB --config CPackConfig.cmake
+# creates =># lyx-2.0.1-Linux.rpm                       #  ==> lyx-2.0.1-Linux.deb
+# list      # rpm -qlp lyx-2.0.1-Linux.rpm              # dpkg-deb -c lyx-2.0.1-Linux.deb
+# install   # rpm -U lyx-2.0.1-Linux.rpm                # dpkg -i lyx-2.0.1-Linux.deb
+#
+
 
