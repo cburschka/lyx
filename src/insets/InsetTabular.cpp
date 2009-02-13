@@ -2114,6 +2114,10 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os,
 	}
 	// output header info
 	if (haveLTHead()) {
+		if (endfirsthead.empty && !haveLTFirstHead()) {
+			os << "\\endfirsthead\n";
+			++ret;
+		}
 		if (endhead.topDL) {
 			os << "\\hline\n";
 			++ret;
@@ -2147,6 +2151,10 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os,
 		}
 		os << "\\endfoot\n";
 		++ret;
+		if (endlastfoot.empty && !haveLTLastFoot()) {
+			os << "\\endlastfoot\n";
+			++ret;
+		}
 	}
 	// output lastfooter info
 	if (haveLTLastFoot()) {
