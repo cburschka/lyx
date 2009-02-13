@@ -279,7 +279,7 @@ Autor: Uwe Stöhr <uwestoehr@web.de>
 
 
 \family sans
-Version 1.6.1
+Version 1.6.x
 \end_layout
 
 \begin_layout Standard
@@ -3018,13 +3018,8 @@ verwenden
 \end_layout
 
 \begin_layout Description
-
-\family sans
-Kopfzei
-\family default
-le: Die aktuelle Zeile sowie alle darüberliegenden, die keine Sonderoptionen
- aktiviert haben, werden als Überschrifts-Zeilen aller Seiten festgelegt;
- mit Ausnahme der ersten, wenn 
+Kopfzeile: Die aktuelle Zeile wird als eine Überschrifts-Zeile aller Seiten
+ festgelegt; mit Ausnahme der ersten, wenn 
 \family sans
 Erste
 \begin_inset space ~
@@ -3036,8 +3031,6 @@ Kopfzeile
 \end_layout
 
 \begin_layout Description
-
-\family sans
 Erste
 \lang english
 
@@ -3046,21 +3039,13 @@ Erste
 
 
 \lang ngerman
-Kopfz
-\family default
-eile: Die aktuelle Zeile sowie alle darüberliegenden, die keine Sonderoptionen
- aktiviert haben, werden als Überschrifts-Zeilen der ersten Seite einer
- mehrseitigen Tabelle definiert.
+Kopfzeile: Die aktuelle Zeile wird als eine Überschrifts-Zeile der ersten
+ Seite einer mehrseitigen Tabelle definiert.
 \end_layout
 
 \begin_layout Description
-
-\family sans
-Fußz
-\family default
-eile: Die aktuelle Zeile sowie alle darüberliegenden, die keine Sonderoptionen
- aktiviert haben, werden als Fußzeilen aller Seiten festgelegt; mit Ausnahme
- der letzten, wenn 
+Fußzeile: Die aktuelle Zeile wird als eine Fußzeile aller Seiten festgelegt;
+ mit Ausnahme der letzten, wenn 
 \family sans
 Letzte
 \begin_inset space ~
@@ -3072,27 +3057,17 @@ Fußzeile
 \end_layout
 
 \begin_layout Description
-
-\family sans
 Letzte
 \begin_inset space ~
 \end_inset
 
-Fußz
-\family default
-eile: Die aktuelle Zeile sowie alle darüberliegenden, die keine Sonderoptionen
- aktiviert haben, werden als die Fußzeilen der letzten Seite einer mehrseitigen
- Tabelle definiert.
+Fußzeile: Die aktuelle Zeile wird als eine die Fußzeile der letzten Seite
+ einer mehrseitigen Tabelle definiert.
 \end_layout
 
 \begin_layout Description
-Legende: Die erste Zeile wird als einzelne Spalte zurückgesetzt.
- Sie dort können nun die Tabellenbeschriftung (Legende) über das Menü 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Marke
-\family default
- einfügen.
+Legende: Die aktuelle Zeile enthält die Legende.
+ Sie wird als einzelne Spalte zurückgesetzt und eine Beschriftung wird eingefügt.
  Mehr über Beschriftungen langer Tabellen ist in Abschnitt
 \begin_inset space ~
 \end_inset
@@ -3248,7 +3223,7 @@ TEL.
 </cell>
 </row>
 <row endfoot="true">
-<cell multicolumn="1" alignment="right" valignment="top" topline="true" usebox="none">
+<cell multicolumn="1" alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5775,18 +5750,9 @@ Tabellen ! lange ! Titel
 \end_layout
 
 \begin_layout Standard
-Eine 
-\family sans
-lange
-\begin_inset space ~
-\end_inset
-
-Tabelle
-\family default
- kann man nicht in ein Gleitobjekt packen, weil Gleitobjekte nur auf eine
- Seite gedruckt werden können.
- Daher wird die Beschriftung als erste Zeile der Tabelle eingegeben, wie
- in Abschnitt
+Eine lange Tabelle kann man nicht in ein Gleitobjekt packen, weil Gleitobjekte
+ nur auf eine Seite gedruckt werden können.
+ Daher wird die Beschriftung in eine Tabellenzeile eingegeben, wie in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -5798,20 +5764,11 @@ reference "abs:Lange-Tabellen"
 \end_inset
 
  erklärt.
- Die erste Tabellenzeile ist dan nur ein Platzhalter für die Beschriftung,
- und die eigentliche Tabelle beginnt mit der zweiten Zeile.
+ Nur eine Tabellenzeile kann eine Beschriftung enthalten.
 \end_layout
 
 \begin_layout Standard
-Hier ist eine kurze 
-\family sans
-lange
-\begin_inset space ~
-\end_inset
-
-Tabelle
-\family default
-, die zeigt, wie das funktioniert:
+Hier ist eine kurze lange Tabelle, die zeigt, wie das funktioniert:
 \end_layout
 
 \begin_layout Standard
@@ -5831,15 +5788,7 @@ Tabelle
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Eine 
-\family sans
-lange
-\begin_inset space ~
-\end_inset
-
-Tabelle
-\family default
- mit Titel
+Eine lange Tabelle mit Titel
 \begin_inset OptArg
 status open
 
@@ -6248,14 +6197,7 @@ LaTeX-Pakete ! hyperref
 \family sans
 Dokument-Einstellungen
 \family default
- Dialog für Querverweise benutzen, wird der Verweis auf eine 
-\family sans
-lange
-\begin_inset space ~
-\end_inset
-
-Tabelle
-\family default
+ Dialog für Querverweise benutzen, wird der Verweis auf eine lange Tabelle
  immer auf den Anfang des Dokuments zeigen.
 \end_layout
 
@@ -6299,15 +6241,7 @@ Tabellen ! lange ! Querverweis
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\family sans
-Lange
-\begin_inset space ~
-\end_inset
-
-Tabelle
-\family default
- mit Marke
+Lange Tabelle mit Marke
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:LangeTabelle-mit-Marke"
@@ -6649,11 +6583,7 @@ reference "abs:Titel-Formatierung"
 
 \end_inset
 
-, können Sie alle anderen 
-\family sans
-Legende
-\family default
--Optionen benutzen.
+, können Sie alle anderen Beschriftungsoptionen benutzen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -7496,38 +7426,8 @@ Tabellen ! lange ! mehrere Titel
 
 \begin_layout Standard
 Wenn die anderen Tabellenseiten einen anderen Titel bekommen sollen als
- die erste, müssen Sie eine 
-\family sans
-Legende
-\family default
- mit einem nicht-leeren 
-\family sans
-Kurztitel
-\family default
- in eine leere Legende-Zeile, die als 
-\family sans
-Erste
-\begin_inset space ~
-\end_inset
-
-Kopfzeile
-\family default
- definiert wurde, einfügen.
- Der Titel für die anderen Tabellenseiten wird als 
-\family sans
-Legende
-\family default
- ohne 
-\family sans
-Kurztitel
-\family default
- in eine leere Legende-Zeile, die als 
-\family sans
-Kopfzeile
-\family default
- definiert wurde, eingefügt.
- Wenn dieser Titel nicht die Tabellennummer enthalten soll, müssen Sie den
- Befehl
+ die erste, müssen Sie die Beschriftung in eine leere Zeile, die als Kopfzeile
+ definiert wurde, mit diesem TeX-Code Befehl einfügen:
 \end_layout
 
 \begin_layout Standard
@@ -7535,26 +7435,15 @@ Kopfzeile
 \series bold
 
 \backslash
-caption*{caption text}
+caption*{Beschriftung}
+\backslash
+
+\backslash
+%
 \end_layout
 
 \begin_layout Standard
-anstatt der 
-\family sans
-Legende
-\family default
--Umgebung von LyX benutzen.
- Die Marke, die zum Verweis auf die Tabelle benutzt werden soll, muss in
- den Titel der 
-\family sans
-Ersten
-\begin_inset space ~
-\end_inset
-
-Kopfzeile
-\family default
- eingefügt werden.
- Tabelle
+Tabelle
 \begin_inset space ~
 \end_inset
 
@@ -7565,15 +7454,8 @@ reference "tab:DiffCaptions"
 
 \end_inset
 
- ist ein Beispiel für eine 
-\family sans
-lange
-\begin_inset space ~
-\end_inset
-
-Tabelle
-\family default
- mit unterschiedlichen Titeln und ohne Tabellennummer auf der zweiten Seite.
+ ist ein Beispiel für eine lange Tabelle mit unterschiedlichen Titeln und
+ ohne Tabellennummer auf der zweiten Seite.
 \end_layout
 
 \begin_layout Standard
@@ -7584,8 +7466,8 @@ Tabelle
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
-<row endfirsthead="true" caption="true">
-<cell multicolumn="1" alignment="right" valignment="top" usebox="none">
+<row caption="true">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7619,7 +7501,7 @@ Telefonliste
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7628,7 +7510,7 @@ Telefonliste
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7650,7 +7532,7 @@ Telefonliste (ignoriere die Namen)
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7659,7 +7541,7 @@ Telefonliste (ignoriere die Namen)
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7702,8 +7584,8 @@ TEL.
 \end_inset
 </cell>
 </row>
-<row endhead="true" caption="true">
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<row endhead="true">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7728,7 +7610,7 @@ caption*{Fortsetzung der Telefonliste}
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7737,7 +7619,7 @@ caption*{Fortsetzung der Telefonliste}
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7748,7 +7630,7 @@ caption*{Fortsetzung der Telefonliste}
 </cell>
 </row>
 <row endhead="true">
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7812,7 +7694,7 @@ TEL.
 </cell>
 </row>
 <row endfoot="true">
-<cell multicolumn="1" alignment="right" valignment="top" topline="true" usebox="none">
+<cell multicolumn="1" alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9842,8 +9724,8 @@ Damit wird sichergestellt, dass der Teil auf der neuen Seite in voller Breite
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="3cm">
 <column alignment="right" valignment="top" width="0pt">
-<row endfirsthead="true" caption="true">
-<cell multicolumn="1" alignment="right" valignment="top" usebox="none">
+<row caption="true">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9877,7 +9759,7 @@ Tabelle mit manuellem Seitenumbruch in einer Zelle
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9886,7 +9768,7 @@ Tabelle mit manuellem Seitenumbruch in einer Zelle
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9908,7 +9790,7 @@ Telefonliste (ignoriere die Namen)
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9917,7 +9799,7 @@ Telefonliste (ignoriere die Namen)
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9960,8 +9842,8 @@ TEL.
 \end_inset
 </cell>
 </row>
-<row endhead="true" caption="true">
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<row endhead="true">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9972,7 +9854,7 @@ status collapsed
 
 
 \backslash
-caption*{Fortsetzung der Tabelle mit manuellem Seitenumbruch in einer Zelle}
+caption*{Fortsetzung der Tabelle}
 \backslash
 
 \backslash
@@ -9986,7 +9868,7 @@ caption*{Fortsetzung der Tabelle mit manuellem Seitenumbruch in einer Zelle}
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9995,7 +9877,7 @@ caption*{Fortsetzung der Tabelle mit manuellem Seitenumbruch in einer Zelle}
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10006,7 +9888,7 @@ caption*{Fortsetzung der Tabelle mit manuellem Seitenumbruch in einer Zelle}
 </cell>
 </row>
 <row endhead="true">
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10070,7 +9952,7 @@ TEL.
 </cell>
 </row>
 <row endfoot="true">
-<cell multicolumn="1" alignment="right" valignment="top" topline="true" usebox="none">
+<cell multicolumn="1" alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
