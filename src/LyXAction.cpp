@@ -2283,7 +2283,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_LABEL_GOTO
  * \li Action: Goto a label.
  * \li Syntax: label-goto [<LABEL>]
- * \li Params: <LABEL>: Requested label. If no label is given and refernce
+ * \li Params: <LABEL>: Requested label. If no label is given and reference
 			is on cursor position, Bookmark 0 is saved and
 			cursor moves to the position of referenced label.
  * \li Origin: Ale, 6 Aug 1997
