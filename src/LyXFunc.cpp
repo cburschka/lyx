@@ -257,15 +257,27 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 	if (!theBufferList().exists(bm.filename))
 		return;
 
+	// bm can be changed when saving
+	BookmarksSection::Bookmark tmp = bm;
+
+	// Special case idx == 0 used for back-from-back jump navigation
+	if (idx == 0)
+		dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
+
 	// if the current buffer is not that one, switch to it.
-	if (lyx_view_->buffer()->fileName() != bm.filename) {
+	if (lyx_view_->buffer()->fileName() != tmp.filename) {
 		if (!switchToBuffer)
 			return;
 		dispatch(FuncRequest(LFUN_BUFFER_SWITCH, file));
 	}
+
 	// moveToPosition try paragraph id first and then paragraph (pit, pos).
-	if (!view()->moveToPosition(bm.bottom_pit, bm.bottom_pos,
-		bm.top_id, bm.top_pos))
+	if (!view()->moveToPosition(tmp.bottom_pit, tmp.bottom_pos,
+		tmp.top_id, tmp.top_pos))
+		return;
+
+	// bm changed
+	if (idx == 0)
 		return;
 
 	// Cursor jump succeeded!

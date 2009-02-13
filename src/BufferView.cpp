@@ -218,7 +218,7 @@ struct BufferView::Private
 	Private(BufferView & bv): wh_(0), cursor_(bv),
 		anchor_pit_(0), anchor_ypos_(0),
 		inlineCompletionUniqueChars_(0),
-		last_inset_(0), gui_(0)
+		last_inset_(0), bookmark_edit_position_(0), gui_(0)
 	{}
 
 	///
@@ -260,6 +260,9 @@ struct BufferView::Private
 	  * Not owned, so don't delete.
 	  */
 	Inset * last_inset_;
+
+	// cache for id of the paragraph which was edited the last time
+	int bookmark_edit_position_;
 
 	mutable TextMetricsCache text_metrics_;
 
@@ -667,6 +670,16 @@ CursorStatus BufferView::cursorStatus(DocIterator const & dit) const
 	if (p.y_ > workHeight())
 		return CUR_BELOW;
 	return CUR_INSIDE;
+}
+
+
+void BufferView::bookmarkEditPosition()
+{
+	// Don't eat cpu time for each keystroke
+	if (d->cursor_.paragraph().id() == d->bookmark_edit_position_)
+		return;
+	saveBookmark(0);
+	d->bookmark_edit_position_ = d->cursor_.paragraph().id();
 }
 
 

@@ -289,6 +289,8 @@ public:
 	void insertPlaintextFile(support::FileName const & f, bool asParagraph);
 	///
 	void insertLyXFile(support::FileName const & f);
+	/// save temporary bookmark for jump back navigation
+	void bookmarkEditPosition();
 
 private:
 	/// noncopyable
