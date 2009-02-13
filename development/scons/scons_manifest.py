@@ -1345,6 +1345,7 @@ lib_images_files = Split('''
     amssymb.png
     banner.png
     bookmark-goto.png
+    bookmark-goto_0.png
     bookmark-save.png
     box-insert.png
     break-line.png
