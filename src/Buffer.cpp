@@ -579,17 +579,24 @@ bool Buffer::readDocument(Lexer & lex)
 		FileName const master_file = makeAbsPath(params().master,
 			   onlyPath(absFileName()));
 		if (isLyXFilename(master_file.absFilename())) {
-			Buffer * master = 
+			Buffer * master =
 				checkAndLoadLyXFile(master_file, true);
-			// set master as master buffer, but only if we are
-			// a real child
-			if (master && master->isChild(this))
-				d->parent_buffer = master;
-			else
-				LYXERR0("The master '" 
-				        << params().master 
-				        << "' assigned to this document does not include "
-				        "this document. Ignoring the master assignment.");
+			if (master) {
+				// set master as master buffer, but only
+				// if we are a real child
+				if (master->isChild(this))
+					setParent(master);
+				// if the master is not fully loaded
+				// it is probably just loading this
+				// child. No warning needed then.
+				else if (master->isFullyLoaded())
+					LYXERR0("The master '"
+						<< params().master
+						<< "' assigned to this document '"
+						<< absFileName()
+						<< "' does not include "
+						"this document. Ignoring the master assignment.");
+			}
 		}
 	}
 
