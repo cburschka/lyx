@@ -166,7 +166,7 @@ public:
 	/// Write file. Returns \c false if unsuccesful.
 	bool writeFile(support::FileName const &) const;
 
-  /// Loads LyX file \c filename into buffer, *  and \return success
+	/// Loads LyX file \c filename into buffer, *  and \return success
 	bool loadLyXFile(support::FileName const & s);
 
 	/// Fill in the ErrorList with the TeXErrors
