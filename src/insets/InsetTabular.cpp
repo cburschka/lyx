@@ -2935,7 +2935,8 @@ void InsetTabular::setBuffer(Buffer & buf)
 
 bool InsetTabular::insetAllowed(InsetCode code) const
 {
-	if (code == MATHMACRO_CODE)
+	if (code == MATHMACRO_CODE
+		|| (code == CAPTION_CODE && !tabular.is_long_tabular))
 		return false;
 
 	return true;
