@@ -276,6 +276,9 @@ What's new
 - The table dialog no longer allows to set the multicolumn property of
   longtable caption rows (bug 5573).
 
+- It is no longer possible to accidentally insert a caption to a table
+  that is not a longtable (part of bug 5777).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
