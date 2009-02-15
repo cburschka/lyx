@@ -41,6 +41,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\man\man1\tex2lyx.1"
  SetOutPath "$INSTDIR\Resources\templates"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\ACM-siggraph.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\templates\elsarticle.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\letter.lyx"
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdcontext.inc"
