@@ -398,30 +398,17 @@ SET(CPACK_PACKAGE_VERSION_MINOR "${LYX_MINOR_VERSION}")
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A WYSIWYM (What You See Is What You Mean) document processor")
 
 SET(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${LYX_INSTALL_SUFFIX}")
-SET(CPACK_SET_DESTDIR "ON")			      # needed by rpm
-SET(CPACK_PACKAGE_CONTACT "${PACKAGE_BUGREPORT}") # needed by deb
+#
+# needed by rpm
+SET(CPACK_SET_DESTDIR "ON")
+SET(CPACK_RPM_PACKAGE_LICENSE "GPL")
+SET(CPACK_RPM_PACKAGE_GROUP "Applications/Publishing")
+SET(CPACK_RPM_PACKAGE_VENDOR "The LyX team")
+#
+# the next ones are needed by deb
+SET(CPACK_PACKAGE_CONTACT "${PACKAGE_BUGREPORT}")
 SET(CPACK_SOURCE_PACKAGE_FILE_NAME "lyx-${LYX_INSTALL_SUFFIX}")
-SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY
-"LyX is a document processor that encourages an approach to writing
-based on the structure of your documents, not their appearance. It
-is released under a Free Software/Open Source license (GPL v.2).
-
-LyX is for people that write and want their writing to look great,
-right out of the box. No more endless tinkering with formatting
-details, 'finger painting' font attributes or futzing around with
-page boundaries. You just write. In the background, Prof. Knuth's
-legendary TeX typesetting engine makes you look good.
-
-On screen, LyX looks like any word processor; its printed output --
-or richly cross-referenced PDF, just as readily produced -- looks
-like nothing else. Gone are the days of industrially bland .docs,
-all looking similarly not-quite-right, yet coming out unpredictably
-different on different printer drivers. Gone are the crashes
-'eating' your dissertation the evening before going to press.
-
-LyX is stable and fully featured. It is a multi-platform, fully
-internationalized application running natively on Unix/Linux, the
-Macintosh and modern Windows platforms.")
+SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "LyX is a document processor that encourages an approach to writing\n based on the structure of your documents, not their appearance. It\n is released under a Free Software/Open Source license (GPL v.2).\n \n LyX is for people that write and want their writing to look great,\n right out of the box. No more endless tinkering with formatting\n details, 'finger painting' font attributes or futzing around with\n page boundaries. You just write. In the background, Prof. Knuth's\n legendary TeX typesetting engine makes you look good.\n \n On screen, LyX looks like any word processor; its printed output --\n or richly cross-referenced PDF, just as readily produced -- looks\n like nothing else. Gone are the days of industrially bland .docs,\n all looking similarly not-quite-right, yet coming out unpredictably\n different on different printer drivers. Gone are the crashes\n 'eating' your dissertation the evening before going to press.\n \n LyX is stable and fully featured. It is a multi-platform, fully\n internationalized application running natively on Unix/Linux, the\n Macintosh and modern Windows platforms.")
 
 include(CPack)
 #Now it is possible to create some packages
