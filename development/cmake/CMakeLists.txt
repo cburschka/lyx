@@ -395,7 +395,8 @@ include(../Install)
 
 SET(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
 SET(CPACK_PACKAGE_VERSION_MINOR "${LYX_MINOR_VERSION}")
-SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A WYSIWYM (What You See Is What You Mean) document processor")
+FILE(STRINGS "${TOP_SRC_DIR}/development/cmake/LyX_summary.txt" CPACK_PACKAGE_DESCRIPTION_SUMMARY)
+#SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A WYSIWYM (What You See Is What You Mean) document processor")
 
 SET(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${LYX_INSTALL_SUFFIX}")
 #
@@ -408,7 +409,13 @@ SET(CPACK_RPM_PACKAGE_VENDOR "The LyX team")
 # the next ones are needed by deb
 SET(CPACK_PACKAGE_CONTACT "${PACKAGE_BUGREPORT}")
 SET(CPACK_SOURCE_PACKAGE_FILE_NAME "lyx-${LYX_INSTALL_SUFFIX}")
-SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "LyX is a document processor that encourages an approach to writing\n based on the structure of your documents, not their appearance. It\n is released under a Free Software/Open Source license (GPL v.2).\n \n LyX is for people that write and want their writing to look great,\n right out of the box. No more endless tinkering with formatting\n details, 'finger painting' font attributes or futzing around with\n page boundaries. You just write. In the background, Prof. Knuth's\n legendary TeX typesetting engine makes you look good.\n \n On screen, LyX looks like any word processor; its printed output --\n or richly cross-referenced PDF, just as readily produced -- looks\n like nothing else. Gone are the days of industrially bland .docs,\n all looking similarly not-quite-right, yet coming out unpredictably\n different on different printer drivers. Gone are the crashes\n 'eating' your dissertation the evening before going to press.\n \n LyX is stable and fully featured. It is a multi-platform, fully\n internationalized application running natively on Unix/Linux, the\n Macintosh and modern Windows platforms.")
+#
+# for the next ones, cmake insists on data  with values in some file
+SET(CPACK_PACKAGE_DESCRIPTION_FILE "${TOP_SRC_DIR}/development/cmake/LyX_description.txt")
+SET(CPACK_RESOURCE_FILE_LICENSE "${TOP_SRC_DIR}/development/cmake/LyX_license.txt")
+# we do not have a readme or welcome data,
+# so we do not provide infofiles for
+# CPACK_RESOURCE_FILE_README and CPACK_RESOURCE_FILE_WELCOME
 
 include(CPack)
 #Now it is possible to create some packages
@@ -420,5 +427,4 @@ include(CPack)
 # list      # rpm -qlp lyx-2.0.1-Linux.rpm              # dpkg-deb -c lyx-2.0.1-Linux.deb
 # install   # rpm -U lyx-2.0.1-Linux.rpm                # dpkg -i lyx-2.0.1-Linux.deb
 #
-
 
