@@ -1,6 +1,6 @@
-Here is what to do to make a binary packages using CMake.
+Here is what to do to make binary packages using CMake.
 
-Build LyX on your target system ad build the package with cpack:
+Build LyX on your target system and build the package with cpack:
 cpack -G <generator> --config CPackConfig.cmake 
 
 Choose <generator> dependent on your system:
