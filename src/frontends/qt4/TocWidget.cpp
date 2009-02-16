@@ -274,7 +274,8 @@ void TocWidget::updateView()
 	tocTV->setEnabled(false);
 	tocTV->setUpdatesEnabled(false);
 
-	QAbstractItemModel * toc_model = gui_view_.tocModels().model(current_type_);
+	QAbstractItemModel * toc_model =
+		gui_view_.tocModels().model(current_type_);
 	if (tocTV->model() != toc_model) {
 		tocTV->setModel(toc_model);
 		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
