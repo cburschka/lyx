@@ -1355,7 +1355,7 @@ Book
 \family default
 ボックスを見てみても、利用できる環境がほとんど同じであることがわかるはずです。ただし、新しく
 \family sans
-Chapter
+章（Chapter）
 \family default
 環境が使えるようになっています。このように、ある文書クラスでどの環境が使えるか不確かな場合は、
 \family sans
@@ -1822,21 +1822,22 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+この方法の代わりに、ラベルを右クリックして、現れるコンテクスト・メニューにある
+\family sans
+参照としてコピー
+\family default
+を使う方法もあります。こうすることによって、このラベルへの相互参照はクリップボードに移されるので、
+\family sans
+編集\SpecialChar \menuseparator
+貼り付け
+\family default
+メニュー（短絡キー
+\begin_inset Info
+type  "shortcut"
+arg   "paste"
+\end_inset
 
-\lang english
-Alternatively to that method, you can right-click on a label and use in
- the appearing context menu 
-\family sans
-Copy as Reference
-\family default
-.
- The cross-reference to this label is now in the clipboard and can be copied
- to the actual cursor position via the menu 
-\family sans
-Edit\SpecialChar \menuseparator
-Paste
-\family default
- (shortcut Ctrl+V).
+）を使って、現在のカーソル位置にコピーすることができます。
 \end_layout
 
 \begin_layout Standard
@@ -2875,7 +2876,7 @@ LyXの数式エディタは、もっとたくさんのことができます。�
 \end_layout
 
 \begin_layout Itemize
-Change typefaces, e.g., to write bold-face text in an expression.
+たとえば数式中でボールド体テキストを使用するなどの書体の変更
 \end_layout
 
 \begin_layout Itemize
@@ -3159,11 +3160,7 @@ name "sec:tex2lyx"
 \family sans
 ファイル\SpecialChar \menuseparator
 インポート\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTeX
+LaTeX
 \begin_inset space ~
 \end_inset
 
