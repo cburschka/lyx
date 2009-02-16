@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -33,6 +33,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -54,8 +55,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -170,8 +171,9 @@ xypic
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Graphics
-	filename xyfigure.png
+	filename /usr/share/lyx/examples/xyfigure.png
 	scale 50
 	BoundingBox 0bp 0bp 580bp 440bp
 	clip
@@ -276,7 +278,14 @@ Xy
 
 -Pic features that might be of use for drawing commutative diagrams, graphs
  or automata.
- Section 3 explains how to use the 
+ Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:math-editor"
+
+\end_inset
+
+ explains how to use the 
 \begin_inset ERT
 status collapsed
 
@@ -427,24 +436,6 @@ xypic
 
 \begin_deeper
 \begin_layout Enumerate
-Choose 
-\family sans
-Layout\SpecialChar \menuseparator
-Document\SpecialChar \menuseparator
-Preamble
-\family default
- and type 
-\family typewriter
-
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-usepackage[all]{xy}.
-\end_layout
-
-\begin_layout Enumerate
 Inside your LyX-Document, enter the text 
 \family typewriter
 
@@ -484,6 +475,34 @@ $
 
 .
  
+\end_layout
+
+\begin_layout Enumerate
+In some cases you need to change your document preamble (e.g.
+ when using 
+\backslash
+xy macro instead of 
+\backslash
+xymatrix macro).
+ Choose 
+\family sans
+Layout\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
+Preamble
+\family default
+ and type 
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+usepackage[all]{xy}.
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -2357,6 +2376,13 @@ restore
 
 \begin_layout Section
 Using LyX's math editor
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:math-editor"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3168,6 +3194,28 @@ horizontal stretch
 \end_inset
 
  into the center of the figure.
+\end_layout
+
+\begin_layout Subsection
+Another examples
+\end_layout
+
+\begin_layout Standard
+Advanced painting can be done when using the 
+\backslash
+xy macro.
+ Nice collection of examples from Aaron Lauda can be found at 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.dpmms.cam.ac.uk/~al366/xytutorial.html
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Bibliography
