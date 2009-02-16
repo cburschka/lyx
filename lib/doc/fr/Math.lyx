@@ -27714,41 +27714,11 @@ Les formules longues peuvent être mises en forme en utilisant une de ces
 \begin_layout Itemize
 Quand un des membres de l'équation est beaucoup plus court que la largeur
  de la ligne, c'est lui qui est choisi comme membre de gauche et le membre
- de droite est écrit sur deux lignes:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
-\end_inset
-
- 
+ de droite est écrit sur deux lignes: 
 \begin_inset Formula \begin{eqnarray}
 H & = & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\nonumber \\
  &  & -\hspace{3pt}\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{2}|}+\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{R}_{1}-\mathbf{R}_{2}|}\label{eq:courtlong}\end{eqnarray}
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-smallskip
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
 \end_inset
 
 Le signe moins au début de la deuxième ligne n'apparaît normalement pas
@@ -27823,41 +27793,11 @@ lefteqn
 .
  Elle est insérée dans la première colonne de la première ligne et a comme
  effet que tout ce qui sera inséré après va recouvrir les colonnes qui suivent:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
-\end_inset
-
-
 \begin_inset Formula \begin{eqnarray}
 \lefteqn{4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}}\nonumber \\
  &  & -\hspace{3pt}B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}\nonumber \\
  &  & =B^{2}+2\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)+\frac{\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)^{2}}{B^{2}}\label{eq:lefteqn}\end{eqnarray}
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-smallskip
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
 \end_inset
 
 Après l'insertion de la commande 
@@ -27869,35 +27809,13 @@ lefteqn
 , le curseur se trouve dans une boîte violette qui est légèrement décalée
  vers la gauche par rapport à la boîte bleue.
  C'est dans cette dernière que l'on insère la formule.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
-\end_inset
-
-
 \begin_inset Newline newline
 \end_inset
 
 Le contenu des lignes suivantes est inséré dans la deuxième colonne ou dans
  celles d'après.
  Plus le numéro de la colonne sera élevé, plus l'indentation sera importante.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -30966,24 +30884,15 @@ gr
 Longrightarrow
 \series default
 , la ligne à insérer dans le préambule LaTeX est:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
-
-\series bold
 
 \begin_inset Newline newline
 \end_inset
 
+
+\series bold
 
 \backslash
 newcommand{
@@ -31008,24 +30917,15 @@ underline
 \series default
 , l'argument (qui doit être souligné) doit être pris en compte.
  Pour cela, la ligne à insérer dans le préambule est:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
-
-\series bold
 
 \begin_inset Newline newline
 \end_inset
 
+
+\series bold
 
 \backslash
 newcommand{
@@ -31035,26 +30935,13 @@ us}[1]{
 underline{#1}}
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
-
-\series bold
 
 \begin_inset Newline newline
 \end_inset
 
-
-\series default
 Le caractère 
 \series bold
 #
@@ -31080,24 +30967,15 @@ framebox
 fb
 \series default
 :
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
-
-\series bold
 
 \begin_inset Newline newline
 \end_inset
 
+
+\series bold
 
 \backslash
 newcommand{
@@ -31107,26 +30985,13 @@ fb}[3]{
 framebox#1#2{$#3$}}
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
-
-\series bold
 
 \begin_inset Newline newline
 \end_inset
 
-
-\series default
 Les deux dollars créent une formule supplémentaire pour la commande 
 \series bold
 
@@ -31152,24 +31017,15 @@ fcolorbox
 \series default
  où la couleur de la boîte n'aurait pas besoin d'être précisée, l'argument
  pour la couleur est défini comme optionnel:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
-
-\series bold
 
 \begin_inset Newline newline
 \end_inset
 
+
+\series bold
 
 \backslash
 newcommand{
@@ -31179,16 +31035,7 @@ cb}[3][white]{
 fcolorbox{#2}{#1}{$#3$}}
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
 
