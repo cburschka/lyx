@@ -533,6 +533,7 @@ void Encodings::initUnicodeMath(Buffer const & buffer, bool clear_sets)
 #ifdef TEX2LYX
 	// The code below is not needed in tex2lyx and requires additional stuff
 	(void)buffer;
+	(void)clear_sets;
 #else
 	if (clear_sets) {
 		mathcmd.clear();
