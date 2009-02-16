@@ -165,7 +165,7 @@ bool GuiImage::scale(Params const & params)
 {
 	QImage const & image = is_transformed_ ? transformed_ : original_;
 
-	if (params.scale < 0 || params.scale == 100)
+	if (params.scale == 100)
 		return false;
 
 	qreal const scale = qreal(params.scale) / 100.0;
