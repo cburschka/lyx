@@ -28605,16 +28605,7 @@ lefteqn
 El contenido de las restantes líneas se inserta en la segunda columna o
  en otra.
  A mayor número de columna donde se inserte, mayor sangrado.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -31751,24 +31742,15 @@ gr
 Longrightarrow
 \series default
 , la línea de preámbulo LaTeX es:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
-
-\series bold
 
 \begin_inset Newline newline
 \end_inset
 
+
+\series bold
 
 \backslash
 newcommand{
@@ -31792,25 +31774,16 @@ us
 underline
 \series default
 , el argumento (que sería subrayado) debe tenerse en cuenta.
- Para esto la línea de preámbulo es: :
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+ Para esto la línea de preámbulo es:
+\begin_inset VSpace medskip
 \end_inset
 
-
-\series bold
 
 \begin_inset Newline newline
 \end_inset
 
+
+\series bold
 
 \backslash
 newcommand{
@@ -31820,16 +31793,7 @@ us}[1]{
 underline{#1}}
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -31866,24 +31830,15 @@ e.
 fb
 \series default
 :
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
-
-\series bold
 
 \begin_inset Newline newline
 \end_inset
 
+
+\series bold
 
 \backslash
 newcommand{
@@ -31893,16 +31848,7 @@ fb}[3]{
 framebox#1#2{$#3$}}
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -31934,24 +31880,15 @@ fcolorbox
 \series default
  donde no es necesario especificar el color para el cuadro, el argumento
  para el color se define opcional:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
-
-\series bold
 
 \begin_inset Newline newline
 \end_inset
 
+
+\series bold
 
 \backslash
 newcommand{
@@ -31961,16 +31898,7 @@ cb}[3][white]{
 fcolorbox{#2}{#1}{$#3$}}
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
 

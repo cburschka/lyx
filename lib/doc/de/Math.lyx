@@ -28061,40 +28061,11 @@ Lange Formeln kann man wie folgt setzen:
 \begin_layout Itemize
 Ist eine Seite der Gleichung deutlich kürzer als die Zeilenbreite, wählt
  man man diese als linke Seite und schreibt die rechte über zwei Zeilen:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
-\end_inset
-
  
 \begin_inset Formula \begin{eqnarray}
 H & = & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\nonumber \\
  &  & -\hspace{3pt}\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{2}|}+\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{R}_{1}-\mathbf{R}_{2}|}\label{eq:kurzlang}\end{eqnarray}
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-smallskip
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
 \end_inset
 
 Das Minuszeichen zu Beginn der zweiten Zeile erscheint eigentlich nicht
@@ -28167,41 +28138,11 @@ lefteqn
 .
  Dieser wird in die erste Spalte der ersten Zeile eingegeben und bewirkt,
  dass alle weiteren Eingaben die folgenden Spalten überschreiben:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
-\end_inset
-
-
 \begin_inset Formula \begin{eqnarray}
 \lefteqn{4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}}\nonumber \\
  &  & -\hspace{3pt}B^{2}-2B\sqrt{r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}}+r_{g}^{2}-x^{2}+2x_{0}x-x_{0}^{2}\nonumber \\
  &  & =B^{2}+2\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)+\frac{\left(r_{g}^{2}+2x_{0}x-x_{0}^{2}-r_{k}^{2}\right)^{2}}{B^{2}}\label{eq:lefteqn}\end{eqnarray}
 
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-smallskip
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
 \end_inset
 
 Nachdem man 
@@ -28213,19 +28154,6 @@ lefteqn
  eingegeben hat, befindet sich der Cursor in einem pinkfarbenen Kästchen,
  das gegenüber dem blauen leicht verschoben ist.
  In dieses wird die Formel eingegeben.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
-\end_inset
-
-
 \begin_inset Newline newline
 \end_inset
 
@@ -28233,16 +28161,7 @@ Der Inhalt der weiteren Zeilen wird in die zweite oder eine andere Formelspalte
  eingegeben.
  Je größer die Spaltennummer in die eingegeben wurde, desto größer ist die
  Einrückung.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -31352,24 +31271,15 @@ gr
 \series default
  definieren, lautet die LaTeX-Vor\SpecialChar \-
 spannzeile:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
-
-\series bold
 
 \begin_inset Newline newline
 \end_inset
 
+
+\series bold
 
 \backslash
 newcommand{
@@ -31395,24 +31305,15 @@ us
  zu definieren, muss das Argument (was unterstrichen werden soll) berücksichtigt
  werden.
  Dazu sieht die Vorspannzeile wie folgt aus:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
-
-\series bold
 
 \begin_inset Newline newline
 \end_inset
 
+
+\series bold
 
 \backslash
 newcommand{
@@ -31422,26 +31323,13 @@ us}[1]{
 underline{#1}}
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
-
-\series bold
 
 \begin_inset Newline newline
 \end_inset
 
-
-\series default
 Das Zeichen 
 \series bold
 #
@@ -31472,24 +31360,15 @@ B.
 fb
 \series default
  definieren:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
-
-\series bold
 
 \begin_inset Newline newline
 \end_inset
 
+
+\series bold
 
 \backslash
 newcommand{
@@ -31499,26 +31378,13 @@ fb}[3]{
 framebox#1#2{$#3$}}
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
-
-\series bold
 
 \begin_inset Newline newline
 \end_inset
 
-
-\series default
 Die beiden Dollarzeichen erstellen hierbei die für 
 \series bold
 
@@ -31544,24 +31410,15 @@ fcolorbox
 \series default
  zu erstellen, bei dem die Farbe der Box nicht mehr angegeben werden muss,
  definiert man das Argument für die Farbe als optional:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
-
-\series bold
 
 \begin_inset Newline newline
 \end_inset
 
+
+\series bold
 
 \backslash
 newcommand{
@@ -31571,16 +31428,7 @@ cb}[3][white]{
 fcolorbox{#2}{#1}{$#3$}}
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset VSpace medskip
 \end_inset
 
 
