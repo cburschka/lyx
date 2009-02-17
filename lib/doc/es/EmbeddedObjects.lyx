@@ -2807,7 +2807,7 @@ larga
 \end_layout
 
 \begin_layout Description
-Encabezado: La fila actual se definen como una fila de encabezado para todas
+Encabezado: La fila actual se define como encabezado que aparecerá en todas
  las páginas de la tabla, excepto para la primera página si 
 \family sans
 Primer
@@ -2825,12 +2825,12 @@ Primer
 \begin_inset space ~
 \end_inset
 
-encabezado: La fila actual se definen como una fila cabeceras de la primera
- página de la tabla.
+encabezado: La fila actual se define como encabezado de la primera página
+ de la tabla.
 \end_layout
 
 \begin_layout Description
-Pie: La fila actual se definen como una fila de pie de todas las páginas
+Pie: La fila actual se define como pie que aparecerá en todas las páginas
  de la tabla, excepto para la última página si se define 
 \family sans
 Último
@@ -2847,27 +2847,14 @@ pie.
 
 pie:
 \family sans
- L
+ 
 \family default
-a fila actual se definen como una fila de pie de la última página de la
- tabla.
+La fila actual se define como pie de la última página de la tabla.
 \end_layout
 
 \begin_layout Description
-Leyenda: 
-\family sans
-L
-\family default
-a fila actual
-\lang english
- contains the table caption.
-
-\lang spanish
- La primera fila se reajusta como columna simple 
-\lang english
-and a caption is inserted
-\lang spanish
-.
+Leyenda: La fila actual contiene la leyenda de la tabla.
+ La primera fila se reajusta como columna única y se inserta una leyenda.
  Más detalles sobre leyendas en tablas largas en la sec.
 \begin_inset space \thinspace{}
 \end_inset
@@ -2883,7 +2870,8 @@ reference "sub:Leyendas-en-Tablas"
 \end_layout
 
 \begin_layout Standard
-También se puede especificar en qué fila se ha de cortar la tabla.
+También se puede especificar en el diálogo en qué fila se ha de cortar la
+ tabla.
  La siguiente tabla muestra cómo funciona:
 \end_layout
 
@@ -5549,16 +5537,12 @@ name "sub:Leyendas-en-Tablas"
 
 \begin_layout Standard
 Una tabla larga no se puede poner flotante porque los flotantes sólo pueden
- estar en una página, aunque el entorno leyenda de flotantes sí puede usarse
- para tablas largas.
- 
-\lang english
-But the caption environment of floats can also be used for longtables when
- you use for a table row the longtable option 
+ estar en una página.
+ Pero el entorno leyenda de flotantes sí puede usarse para tablas largas
+ utilizando para una fila de una tabla larga la opción 
 \family sans
-Caption
+Leyenda
 \family default
-\lang spanish
 , como se explica en la sec.
 \begin_inset space \thinspace{}
 \end_inset
@@ -7228,12 +7212,9 @@ Tablas largas ! Leyendas distintas para cada página
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-When the table captions for the following pages should differ from the one
- of the first table page, insert a caption with the TeX code
-\lang spanish
- comando
+Cuando las leyendas para las páginas siguientes hayan de ser diferentes
+ de la leyenda de la primera página de la tabla, se insertan con el comando
+ en código TeX
 \end_layout
 
 \begin_layout Standard
@@ -7249,11 +7230,7 @@ caption*{texto de la leyenda}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-in a dummy caption row that is marked as header.
-
-\lang spanish
+en una fila postiza que se marca como encabezado.
  La tabla
 \begin_inset space ~
 \end_inset
@@ -7981,7 +7958,7 @@ Rizzardi
 status collapsed
 
 \begin_layout Plain Layout
-Ejemplo de nota al pie
+Ejemplo de nota a pie de página
 \end_layout
 
 \end_inset
