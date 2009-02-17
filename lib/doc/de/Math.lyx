@@ -25239,13 +25239,7 @@ Ergebnis
 status collapsed
 
 \begin_layout Plain Layout
-
-\series bold
-
-\backslash
-hspace
-\series default
- und 
+Der Leerraum und 
 \series bold
 
 \backslash
@@ -25649,13 +25643,11 @@ Befehl
 status collapsed
 
 \begin_layout Plain Layout
+Der Leerraum von 0
+\begin_inset space \thinspace{}
+\end_inset
 
-\series bold
-
-\backslash
-hspace{0mm}
-\series default
- dient nur zur Trennung,da sonst im Ausdruck ¡ bzw.
+mm dient nur zur Trennung,da sonst im Ausdruck ¡ bzw.
  ¿ erscheinen würde.
 \end_layout
 
@@ -27997,9 +27989,13 @@ Das Minuszeichen zu Beginn der zweiten Zeile erscheint eigentlich nicht
 \series bold
 
 \backslash
-hspace{3pt}
+hspace
 \series default
+ 3
+\begin_inset space \thinspace{}
+\end_inset
 
+pt Leerraum hinter das Minuszeichen eingefügt.
 \begin_inset Foot
 status collapsed
 
@@ -28034,7 +28030,7 @@ hspace
 
 \end_inset
 
- Leerraum hinter das Minuszeichen eingefügt.
+
 \end_layout
 
 \begin_layout Itemize
@@ -34122,13 +34118,7 @@ Ergebnis
 status collapsed
 
 \begin_layout Plain Layout
-
-\series bold
-
-\backslash
-hspace
-\series default
- und 
+Der Leerraum und 
 \series bold
 
 \backslash

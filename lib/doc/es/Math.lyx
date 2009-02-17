@@ -28440,24 +28440,16 @@ H & = & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{
 El signo menos al principio de la segunda línea normalmente no aparece como
  operador porque es el primer carácter de la línea.
  No se rodearía de espacio y podría no distinguirse de la raya de fracción.
- Para evitarlo se ha insertado espacio detrás del menos con el comando 
+ Para evitarlo se ha insertado 3
+\begin_inset space \thinspace{}
+\end_inset
+
+pt espacio detrás del menos con el comando 
 \series bold
 
 \backslash
-hspace{3pt}
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Comandos ! H ! 
-\backslash
 hspace
-\end_layout
-
-\end_inset
-
+\series default
 .
 \begin_inset Foot
 status collapsed
@@ -28477,6 +28469,18 @@ reference "sub:Espacio-variable"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Comandos ! H ! 
+\backslash
+hspace
 \end_layout
 
 \end_inset
@@ -34653,13 +34657,11 @@ Resultado
 status collapsed
 
 \begin_layout Plain Layout
-
+El
 \series bold
-
-\backslash
-hspace
+ 
 \series default
- y 
+espacio y 
 \series bold
 
 \backslash

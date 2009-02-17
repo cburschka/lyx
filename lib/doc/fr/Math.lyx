@@ -15278,6 +15278,7 @@ grands
 
 \lang english
 For all integral operators there is a second version available, ending on
+\lang french
  
 \series bold
 op
@@ -15295,9 +15296,7 @@ intop
 ointop
 \series default
  etc..
- These operators
-\lang french
- sont différents de
+ Ces opérateurs sont différents de
 \series bold
  
 \backslash
@@ -25047,20 +25046,17 @@ Résultat
 status collapsed
 
 \begin_layout Plain Layout
-
+L'espace
 \series bold
-
-\backslash
-hspace
-\series default
  
-\series bold
-et 
-\backslash
-raisebox sont seulement utilisées pour faire de la place
 \series default
-\lang english
-.
+et 
+\series bold
+
+\backslash
+raisebox
+\series default
+ sont seulement utilisées pour faire de la place.
 \end_layout
 
 \end_inset
@@ -25458,13 +25454,11 @@ commande
 status collapsed
 
 \begin_layout Plain Layout
-la commande
-\series bold
+L'espace de 0
+\begin_inset space \thinspace{}
+\end_inset
 
-\backslash
-hspace{0mm}
-\series default
- est utilisée pour faire une séparation invisible, sinon la sortie finale
+mm est utilisée pour faire une séparation invisible, sinon la sortie finale
  serait respectivement ¡ et ¿.
 \end_layout
 
@@ -27725,14 +27719,17 @@ Le signe moins au début de la deuxième ligne n'apparaît normalement pas
  comme un opérateur puisqu'il est le premier caractère de la ligne.
  À cause de cela, il ne devrait pas être entouré d'espace ce qui le rendrait
  difficile à distinguer de la barre de fraction.
- Pour éviter cela, une espace a été insérée après les signe moins avec la
- commande 
+ Pour éviter cela, une espace de 3
+\begin_inset space \thinspace{}
+\end_inset
+
+pt a été insérée après les signe moins avec la commande 
 \series bold
 
 \backslash
-hspace{3pt}
+hspace
 \series default
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -27767,7 +27764,7 @@ hspace
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Itemize
@@ -32693,13 +32690,7 @@ Résultat
 status collapsed
 
 \begin_layout Plain Layout
-
-\series bold
-
-\backslash
-hspace
-\series default
- et
+L'espace et
 \series bold
  
 \backslash

@@ -25254,13 +25254,7 @@ Result
 status collapsed
 
 \begin_layout Plain Layout
-
-\series bold
-
-\backslash
-hspace
-\series default
- and
+The space and
 \series bold
  
 \backslash
@@ -25662,14 +25656,12 @@ command
 status collapsed
 
 \begin_layout Plain Layout
+The space of 0
+\begin_inset space \thinspace{}
+\end_inset
 
-\series bold
-
-\backslash
-hspace{0mm}
-\series default
- is used for separation, because otherwise the output will be ¡ and ¿ respective
-ly.
+mm is used for separation, because otherwise the output will be ¡ and ¿
+ respectively.
 \end_layout
 
 \end_inset
@@ -28001,14 +27993,17 @@ The minus sign at the beginning of the second line does normally not appear
  as operator because it is the first character of the line.
  Thus it would not be surrounded by space and could not be distinguished
  from the fraction bar.
- To avoid this, space was inserted behind the minus sign with the command
- 
+ To avoid this, 3
+\begin_inset space \thinspace{}
+\end_inset
+
+pt space was inserted behind the minus sign with the command 
 \series bold
 
 \backslash
-hspace{3pt}
+hspace
 \series default
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -28043,7 +28038,7 @@ hspace
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Itemize
@@ -34101,13 +34096,7 @@ Result
 status collapsed
 
 \begin_layout Plain Layout
-
-\series bold
-
-\backslash
-hspace
-\series default
- and
+The space and
 \series bold
  
 \backslash
