@@ -170,6 +170,9 @@ What's new
   
 - Fix a crash when setting a multicolumn row as the caption of a longtable
   (bug 5753).
+  
+- Fix a crash when using the outliner in a child document, the master of
+  which is not opened (bug 5699).
 
 - Ignore the master_buffer setting in Document>Settings if the current
   document is no real child. This fixes a crash when using the outliner
@@ -185,7 +188,7 @@ What's new
 - Speed up editing when the document contains paragraphs with many (>1000)
   insets (part of bug 4443).
 
-- Fix the output of longtables when they have a caption (bug 5772).
+- Fix the output of longtables if they have a caption (bug 5772).
 
 - Fix the longtable dialog: Now only only one attribute can be set per
   table row (bug 5752).
