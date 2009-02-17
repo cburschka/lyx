@@ -870,18 +870,42 @@ docstring const LaTeXFeatures::getTClassPreamble() const
 
 	tcpreamble << tclass.preamble();
 
+	list<docstring>::const_iterator cit = usedLayouts_.begin();
+	list<docstring>::const_iterator end = usedLayouts_.end();
+	for (; cit != end; ++cit)
+		tcpreamble << tclass[*cit].preamble();
+
+	return tcpreamble.str();
+}
+
+
+docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel) const
+{
+	DocumentClass const & tclass = params_.documentClass();
+	// collect preamble snippets in a set to prevent multiple identical
+	// commands (would happen if e.g. both theorem and theorem* are used)
+	set<docstring> snippets;
 	typedef LanguageList::const_iterator lang_it;
 	lang_it const lbeg = UsedLanguages_.begin();
 	lang_it const lend =  UsedLanguages_.end();
 	list<docstring>::const_iterator cit = usedLayouts_.begin();
 	list<docstring>::const_iterator end = usedLayouts_.end();
 	for (; cit != end; ++cit) {
-		tcpreamble << tclass[*cit].preamble();
-		tcpreamble << tclass[*cit].i18npreamble(buffer().language());
-		for (lang_it lit = lbeg; lit != lend; ++lit)
-			tcpreamble << tclass[*cit].i18npreamble(*lit);
+		// language dependent commands (once per document)
+		snippets.insert(tclass[*cit].langpreamble(buffer().language()));
+		// commands for language changing (for multilanguage documents)
+		if (use_babel && !UsedLanguages_.empty()) {
+			snippets.insert(tclass[*cit].babelpreamble(buffer().language()));
+			for (lang_it lit = lbeg; lit != lend; ++lit)
+				snippets.insert(tclass[*cit].babelpreamble(*lit));
+		}
 	}
 
+	odocstringstream tcpreamble;
+	set<docstring>::const_iterator const send = snippets.end();
+	set<docstring>::const_iterator it = snippets.begin();
+	for (; it != send; ++it)
+		tcpreamble << *it;
 	return tcpreamble.str();
 }
 

@@ -56,7 +56,6 @@ enum LayoutTags {
 	LT_FREE_SPACING,
 	LT_PASS_THRU,
 	//LT_HEADINGS,
-	LT_I18NPREAMBLE,
 	LT_ITEMSEP,
 	LT_KEEPEMPTY,
 	LT_LABEL_BOTTOMSEP,
@@ -83,6 +82,8 @@ enum LayoutTags {
 	LT_PARSKIP,
 	//LT_PLAIN,
 	LT_PREAMBLE,
+	LT_LANGPREAMBLE,
+	LT_BABELPREAMBLE,
 	LT_REQUIRES,
 	LT_RIGHTMARGIN,
 	LT_SPACING,
@@ -138,6 +139,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 	LexerKeyword layoutTags[] = {
 		{ "align",          LT_ALIGN },
 		{ "alignpossible",  LT_ALIGNPOSSIBLE },
+		{ "babelpreamble",  LT_BABELPREAMBLE },
 		{ "bottomsep",      LT_BOTTOMSEP },
 		{ "category",       LT_CATEGORY },
 		{ "commanddepth",   LT_COMMANDDEPTH },
@@ -150,7 +152,6 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "fill_top",       LT_FILL_TOP },
 		{ "font",           LT_FONT },
 		{ "freespacing",    LT_FREE_SPACING },
-		{ "i18npreamble",   LT_I18NPREAMBLE },
 		{ "innertag",       LT_INNERTAG },
 		{ "intitle",        LT_INTITLE },
 		{ "itemsep",        LT_ITEMSEP },
@@ -165,6 +166,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "labelstringappendix", LT_LABELSTRING_APPENDIX },
 		{ "labeltag",       LT_LABELTAG },
 		{ "labeltype",      LT_LABELTYPE },
+		{ "langpreamble",   LT_LANGPREAMBLE },
 		{ "latexname",      LT_LATEXNAME },
 		{ "latexparam",     LT_LATEXPARAM },
 		{ "latextype",      LT_LATEXTYPE },
@@ -336,8 +338,12 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			preamble_ = from_utf8(lex.getLongString("EndPreamble"));
 			break;
 
-		case LT_I18NPREAMBLE:
-			i18npreamble_ = from_utf8(lex.getLongString("EndI18NPreamble"));
+		case LT_LANGPREAMBLE:
+			langpreamble_ = from_utf8(lex.getLongString("EndLangPreamble"));
+			break;
+
+		case LT_BABELPREAMBLE:
+			babelpreamble_ = from_utf8(lex.getLongString("EndBabelPreamble"));
 			break;
 
 		case LT_LABELTYPE:
@@ -774,12 +780,15 @@ docstring const & Layout::depends_on() const
 }
 
 
-docstring const Layout::i18npreamble(Language const * lang) const
+namespace {
+
+docstring const i18npreamble(Language const * lang, docstring const & templ)
 {
-	if (i18npreamble_.empty())
-		return i18npreamble_;
-	string preamble = subst(to_utf8(i18npreamble_), "$$lang",
-	                        lang->babel());
+	if (templ.empty())
+		return templ;
+
+	string preamble = subst(to_utf8(templ), "$$lang", lang->babel());
+
 #ifdef TEX2LYX
 	// tex2lyx does not have getMessages()
 	LASSERT(false, /**/);
@@ -803,6 +812,20 @@ docstring const Layout::i18npreamble(Language const * lang) const
 	}
 #endif
 	return from_utf8(preamble);
+}
+
+}
+
+
+docstring const Layout::langpreamble(Language const * lang) const
+{
+	return i18npreamble(lang, langpreamble_);
+}
+
+
+docstring const Layout::babelpreamble(Language const * lang) const
+{
+	return i18npreamble(lang, babelpreamble_);
 }
 
 

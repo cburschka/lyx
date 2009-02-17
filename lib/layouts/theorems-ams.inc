@@ -19,7 +19,7 @@
 # - Proof
 # - Case (regular only -- defined as an enumeration)
 
-Format 12
+Format 14
 
 Style Theorem
 	Category              Theorem
@@ -49,13 +49,15 @@ Style Theorem
 	  Series              Bold
 	EndFont
 	Preamble
-		\providecommand{\theoremname}{Theorem}
 		\theoremstyle{plain}
 		\newtheorem{thm}{\protect\theoremname}
 	EndPreamble
-	I18nPreamble
-	  \AtBeginDocument{\ifx\LdfInit\undefined\relax\else\addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}\fi}
-	EndI18nPreamble
+	LangPreamble
+		\providecommand{\theoremname}{_(Theorem)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
+	EndBabelPreamble
 	Requires              amsthm
 End
 
@@ -66,13 +68,15 @@ Style Corollary
 	LatexName             cor
 	LabelString           "Corollary \thetheorem."
 	Preamble
-	  \providecommand{\corollaryname}{Corollary}
 	  \theoremstyle{plain}
 	  \newtheorem{cor}[thm]{\protect\corollaryname}
 	EndPreamble
-	I18nPreamble
-	  \AtBeginDocument{\ifx\LdfInit\undefined\relax\else\addto\captions$$lang{\renewcommand{\corollaryname}{_(Corollary)}}\fi}
-	EndI18nPreamble
+	LangPreamble
+	  \providecommand{\corollaryname}{_(Corollary)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\corollaryname}{_(Corollary)}}
+	EndBabelPreamble
 End
 
 
@@ -82,13 +86,15 @@ Style Lemma
 	LatexName             lem
 	LabelString           "Lemma \thetheorem."
 	Preamble
-	  \providecommand{\lemmaname}{Lemma}
 	  \theoremstyle{plain}
 	  \newtheorem{lem}[thm]{\protect\lemmaname}
 	EndPreamble
-	I18nPreamble
-	  \AtBeginDocument{\ifx\LdfInit\undefined\relax\else\addto\captions$$lang{\renewcommand{\lemmaname}{_(Lemma)}}\fi}
-	EndI18nPreamble
+	LangPreamble
+	  \providecommand{\lemmaname}{_(Lemma)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\lemmaname}{_(Lemma)}}
+	EndBabelPreamble
 End
 
 
@@ -98,13 +104,15 @@ Style Proposition
 	LatexName             prop
 	LabelString           "Proposition \thetheorem."
 	Preamble
-	  \providecommand{\propositionname}{Proposition}
 	  \theoremstyle{plain}
 	  \newtheorem{prop}[thm]{\protect\propositionname}
 	EndPreamble
-	I18nPreamble
-	  \AtBeginDocument{\ifx\LdfInit\undefined\relax\else\addto\captions$$lang{\renewcommand{\propositionname}{_(Proposition)}}\fi}
-	EndI18nPreamble
+	LangPreamble
+	  \providecommand{\propositionname}{_(Proposition)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\propositionname}{_(Proposition)}}
+	EndBabelPreamble
 End
 
 
@@ -114,13 +122,15 @@ Style Conjecture
 	LatexName             conjecture
 	LabelString           "Conjecture \thetheorem."
 	Preamble
-	  \providecommand{\conjecturename}{Conjecture}
 	  \theoremstyle{plain}
 	  \newtheorem{conjecture}[thm]{\protect\conjecturename}
 	EndPreamble
-	I18nPreamble
-	  \AtBeginDocument{\ifx\LdfInit\undefined\relax\else\addto\captions$$lang{\renewcommand{\conjecturename}{_(Conjecture)}}\fi}
-	EndI18nPreamble
+	LangPreamble
+	  \providecommand{\conjecturename}{_(Conjecture)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\conjecturename}{_(Conjecture)}}
+	EndBabelPreamble
 End
 
 
@@ -130,13 +140,15 @@ Style Fact
 	LatexName             fact
 	LabelString           "Fact \thetheorem."
 	Preamble
-	  \providecommand{\factname}{Fact}
 	  \theoremstyle{plain}
 	  \newtheorem{fact}[thm]{\protect\factname}
 	EndPreamble
-	I18nPreamble
-	  \AtBeginDocument{\ifx\LdfInit\undefined\relax\else\addto\captions$$lang{\renewcommand{\factname}{_(Fact)}}\fi}
-	EndI18nPreamble
+	LangPreamble
+	  \providecommand{\factname}{_(Fact)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\factname}{_(Fact)}}
+	EndBabelPreamble
 End
 
 
@@ -153,13 +165,15 @@ Style Definition
 	  Series              Bold
 	EndFont
 	Preamble
-	  \providecommand{\definitionname}{Definition}
 	  \theoremstyle{definition}
 	  \newtheorem{defn}[thm]{\protect\definitionname}
 	EndPreamble
-	I18nPreamble
-	  \AtBeginDocument{\ifx\LdfInit\undefined\relax\else\addto\captions$$lang{\renewcommand{\definitionname}{_(Definition)}}\fi}
-	EndI18nPreamble
+	LangPreamble
+	  \providecommand{\definitionname}{_(Definition)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\definitionname}{_(Definition)}}
+	EndBabelPreamble
 End
 
 
@@ -168,13 +182,15 @@ Style Example
 	LatexName             example
 	LabelString           "Example \thetheorem."
 	Preamble
-	  \providecommand{\examplename}{Example}
 	  \theoremstyle{definition}
 	  \newtheorem{example}[thm]{\protect\examplename}
 	EndPreamble
-	I18nPreamble
-	  \AtBeginDocument{\ifx\LdfInit\undefined\relax\else\addto\captions$$lang{\renewcommand{\examplename}{_(Example)}}\fi}
-	EndI18nPreamble
+	LangPreamble
+	  \providecommand{\examplename}{_(Example)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\examplename}{_(Example)}}
+	EndBabelPreamble
 End
 
 
@@ -183,13 +199,15 @@ Style Problem
 	LatexName             problem
 	LabelString           "Problem \thetheorem."
 	Preamble
-	  \providecommand{\problemname}{Problem}
 	  \theoremstyle{definition}
 	  \newtheorem{problem}[thm]{\protect\problemname}
 	EndPreamble
-	I18nPreamble
-	  \AtBeginDocument{\ifx\LdfInit\undefined\relax\else\addto\captions$$lang{\renewcommand{\problemname}{_(Problem)}}\fi}
-	EndI18nPreamble
+	LangPreamble
+	  \providecommand{\problemname}{_(Problem)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\problemname}{_(Problem)}}
+	EndBabelPreamble
 End
 
 
@@ -198,13 +216,15 @@ Style Exercise
 	LatexName             xca
 	LabelString           "Exercise \thetheorem."
 	Preamble
-	  \providecommand{\exercisename}{Exercise}
 	  \theoremstyle{definition}
 	  \newtheorem{xca}[thm]{\protect\exercisename}
 	EndPreamble
-	I18nPreamble
-	  \AtBeginDocument{\ifx\LdfInit\undefined\relax\else\addto\captions$$lang{\renewcommand{\exercisename}{_(Exercise)}}\fi}
-	EndI18nPreamble
+	LangPreamble
+	  \providecommand{\exercisename}{_(Exercise)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\exercisename}{_(Exercise)}}
+	EndBabelPreamble
 End
 
 
@@ -222,13 +242,15 @@ Style Remark
 	  Shape               Italic
 	EndFont
 	Preamble
-	  \providecommand{\remarkname}{Remark}
 	  \theoremstyle{remark}
 	  \newtheorem{rem}[thm]{\protect\remarkname}
 	EndPreamble
-	I18nPreamble
-	  \AtBeginDocument{\ifx\LdfInit\undefined\relax\else\addto\captions$$lang{\renewcommand{\remarkname}{_(Remark)}}\fi}
-	EndI18nPreamble
+	LangPreamble
+	  \providecommand{\remarkname}{_(Remark)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\remarkname}{_(Remark)}}
+	EndBabelPreamble
 End
 
 
@@ -237,13 +259,15 @@ Style Claim
 	LatexName             claim
 	LabelString           "Claim \thetheorem."
 	Preamble
-	  \providecommand{\claimname}{Claim}
 	  \theoremstyle{remark}
 	  \newtheorem{claim}[thm]{\protect\claimname}
 	EndPreamble
-	I18nPreamble
-	  \AtBeginDocument{\ifx\LdfInit\undefined\relax\else\addto\captions$$lang{\renewcommand{\claimname}{_(Claim)}}\fi}
-	EndI18nPreamble
+	LangPreamble
+	  \providecommand{\claimname}{_(Claim)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\claimname}{_(Claim)}}
+	EndBabelPreamble
 End
 
 
@@ -270,7 +294,6 @@ Style Case
 	  Shape               Italic
 	EndFont
 	Preamble
-	  \providecommand{\casename}{Case}
 	  \newcounter{casectr}
 	  \newenvironment{caseenv}
 	  {\begin{list}{{\itshape\ \protect\casename} \arabic{casectr}.}{%
@@ -283,7 +306,10 @@ Style Case
 	   \usecounter{casectr}}
 	  {\end{list}}
 	EndPreamble
-	I18nPreamble
-	  \AtBeginDocument{\ifx\LdfInit\undefined\relax\else\addto\captions$$lang{\renewcommand{\casename}{_(Case)}}\fi}
-	EndI18nPreamble
+	LangPreamble
+	  \providecommand{\casename}{_(Case)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\casename}{_(Case)}}
+	EndBabelPreamble
 End

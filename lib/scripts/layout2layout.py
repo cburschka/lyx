@@ -45,7 +45,10 @@ import os, re, string, sys
 # Incremented to format 13, 5 February 2009 by rgh
 # Add InToc tag for InsetLayout
 
-currentFormat = 13
+# Incremented to format 14, 14 February 2009 by gb
+# Rename I18NPreamble to BabelPreamble and add LangPreamble
+
+currentFormat = 14
 
 
 def usage(prog_name):
@@ -112,6 +115,10 @@ def convert(lines):
     re_Format = re.compile(r'^(\s*)(Format)(\s+)(\S+)', re.IGNORECASE)
     re_Preamble = re.compile(r'^(\s*)Preamble', re.IGNORECASE)
     re_EndPreamble = re.compile(r'^(\s*)EndPreamble', re.IGNORECASE)
+    re_LangPreamble = re.compile(r'^(\s*)LangPreamble', re.IGNORECASE)
+    re_EndLangPreamble = re.compile(r'^(\s*)EndLangPreamble', re.IGNORECASE)
+    re_BabelPreamble = re.compile(r'^(\s*)BabelPreamble', re.IGNORECASE)
+    re_EndBabelPreamble = re.compile(r'^(\s*)EndBabelPreamble', re.IGNORECASE)
     re_MaxCounter = re.compile(r'^(\s*)(MaxCounter)(\s+)(\S+)', re.IGNORECASE)
     re_LabelType = re.compile(r'^(\s*)(LabelType)(\s+)(\S+)', re.IGNORECASE)
     re_LabelString = re.compile(r'^(\s*)(LabelString)(\s+)(("[^"]+")|(\S+))', re.IGNORECASE)
@@ -127,6 +134,8 @@ def convert(lines):
     re_AMSMathsPlain = re.compile(r'^\s*Input amsmaths-plain.inc\s*')
     re_AMSMathsSeq = re.compile(r'^\s*Input amsmaths-seq.inc\s*')
     re_TocLevel = re.compile(r'^(\s*)(TocLevel)(\s+)(\S+)', re.IGNORECASE)
+    re_I18nPreamble = re.compile(r'^(\s*)I18nPreamble', re.IGNORECASE)
+    re_EndI18nPreamble = re.compile(r'^(\s*)EndI18nPreamble', re.IGNORECASE)
 
     # counters for sectioning styles (hardcoded in 1.3)
     counters = {"part"          : "\\Roman{part}",
@@ -204,6 +213,30 @@ def convert(lines):
             while i < len(lines) and not re_EndPreamble.match(lines[i]):
                 i += 1
             continue
+        if re_LangPreamble.match(lines[i]):
+            i += 1
+            while i < len(lines) and not re_EndLangPreamble.match(lines[i]):
+                i += 1
+            continue
+        if re_BabelPreamble.match(lines[i]):
+            i += 1
+            while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
+                i += 1
+            continue
+
+        # Rename I18NPreamble to BabelPreamble
+        if format == 13:
+            match = re_I18nPreamble.match(lines[i])
+            if match:
+                lines[i] = match.group(1) + "BabelPreamble"
+                i += 1
+                match = re_EndI18nPreamble.match(lines[i])
+                while i < len(lines) and not match:
+                    i += 1
+                    match = re_EndI18nPreamble.match(lines[i])
+                lines[i] = match.group(1) + "EndBabelPreamble"
+                i += 1
+                continue
 
         # These just involved new features, not any changes to old ones
         if format == 11 or format == 12:

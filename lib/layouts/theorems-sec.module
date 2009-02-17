@@ -7,7 +7,7 @@
 
 # Author: Richard Heck <rgheck@comcast.net>
 
-Format 11
+Format 14
 
 Counter theorem
 	Within         section
@@ -15,6 +15,12 @@ End
 
 Style Theorem
 	Preamble
-		\newtheorem{thm}{Theorem}[section]
+		\newtheorem{thm}{\protect\theoremname}[section]
 	EndPreamble
+	LangPreamble
+		\providecommand{\theoremname}{_(Theorem)}
+	EndLangPreamble
+	BabelPreamble
+		\addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
+	EndBabelPreamble
 End

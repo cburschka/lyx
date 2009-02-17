@@ -14,7 +14,7 @@
 # Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 # Modularized Jan 08 by Richard Heck <rgheck@comcast.net>
 
-Format 11
+Format 14
 
 Requires	amsmath
 
@@ -39,8 +39,14 @@ Style Criterion
 	LabelString           "Criterion \thetheorem."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{criterion}[thm]{Criterion}
+	  \newtheorem{criterion}[thm]{\protect\criterionname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\criterionname}{_(Criterion)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\criterionname}{_(Criterion)}}
+	EndBabelPreamble
 End
 
 Style Criterion*
@@ -49,8 +55,14 @@ Style Criterion*
 	LabelString           "Criterion."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem*{criterion*}{Criterion}
+	  \newtheorem*{criterion*}{\protect\criterionname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\criterionname}{_(Criterion)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\criterionname}{_(Criterion)}}
+	EndBabelPreamble
 End
 
 
@@ -61,8 +73,14 @@ Style Algorithm
 	LabelString           "Algorithm \thetheorem."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{algorithm}[thm]{Algorithm}
+	  \newtheorem{algorithm}[thm]{\protect\algorithmname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\algorithmname}{_(Algorithm)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\algorithmname}{_(Algorithm)}}
+	EndBabelPreamble
 End
 
 
@@ -72,8 +90,14 @@ Style Algorithm*
 	LabelString           "Algorithm."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem*{algorithm*}{Algorithm}
+	  \newtheorem*{algorithm*}{\protect\algorithmname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\algorithmname}{_(Algorithm)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\algorithmname}{_(Algorithm)}}
+	EndBabelPreamble
 End
 
 
@@ -84,8 +108,14 @@ Style Axiom
 	LabelString           "Axiom \thetheorem."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{ax}[thm]{Axiom}
+	  \newtheorem{ax}[thm]{\protect\axiomname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\axiomname}{_(Axiom)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\axiomname}{_(Axiom)}}
+	EndBabelPreamble
 End
 
 
@@ -95,8 +125,14 @@ Style Axiom*
 	LabelString           "Axiom."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem*{ax*}{Axiom}
+	  \newtheorem*{ax*}{\protect\axiomname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\axiomname}{_(Axiom)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\axiomname}{_(Axiom)}}
+	EndBabelPreamble
 End
 
 
@@ -106,8 +142,14 @@ Style Condition
 	LabelString           "Condition \thetheorem."
 	Preamble
 	  \theoremstyle{definition}
-	  \newtheorem{condition}[thm]{Condition}
+	  \newtheorem{condition}[thm]{\protect\conditionname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\conditionname}{_(Condition)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\conditionname}{_(Condition)}}
+	EndBabelPreamble
 End
 
 
@@ -117,8 +159,14 @@ Style Condition*
 	LabelString           "Condition."
 	Preamble
 	  \theoremstyle{definition}
-	  \newtheorem*{condition*}{Condition}
+	  \newtheorem*{condition*}{\protect\conditionname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\conditionname}{_(Condition)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\conditionname}{_(Condition)}}
+	EndBabelPreamble
 End
 
 
@@ -128,8 +176,14 @@ Style Note
 	LabelString           "Note \thetheorem."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem{note}[thm]{Note}
+	  \newtheorem{note}[thm]{\protect\notename}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\notename}{_(Note)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\notename}{_(Note)}}
+	EndBabelPreamble
 End
 
 
@@ -139,8 +193,14 @@ Style Note*
 	LabelString           "Note."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem*{note*}{Note}
+	  \newtheorem*{note*}{\protect\notename}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\notename}{_(Note)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\notename}{_(Note)}}
+	EndBabelPreamble
 End
 
 
@@ -150,8 +210,14 @@ Style Notation
 	LabelString           "Notation \thetheorem."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem{notation}[thm]{Notation}
+	  \newtheorem{notation}[thm]{\protect\notationname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\notationname}{_(Notation)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\notationname}{_(Notation)}}
+	EndBabelPreamble
 End
 
 
@@ -161,8 +227,14 @@ Style Notation*
 	LabelString           "Notation."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem*{notation*}{Notation}
+	  \newtheorem*{notation*}{\protect\notationname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\notationname}{_(Notation)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\notationname}{_(Notation)}}
+	EndBabelPreamble
 End
 
 
@@ -172,8 +244,14 @@ Style Summary
 	LabelString           "Summary \thetheorem."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem{summary}[thm]{Summary}
+	  \newtheorem{summary}[thm]{\protect\summaryname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\summaryname}{_(Summary)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\summaryname}{_(Summary)}}
+	EndBabelPreamble
 End
 
 
@@ -183,8 +261,14 @@ Style Summary*
 	LabelString           "Summary."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem*{summary*}{Summary}
+	  \newtheorem*{summary*}{\protect\summaryname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\summaryname}{_(Summary)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\summaryname}{_(Summary)}}
+	EndBabelPreamble
 End
 
 
@@ -194,8 +278,14 @@ Style Acknowledgement
 	LabelString           "Acknowledgement \thetheorem."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem{acknowledgement}[thm]{Acknowledgement}
+	  \newtheorem{acknowledgement}[thm]{\protect\acknowledgementname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\acknowledgementname}{_(Acknowledgement)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}
+	EndBabelPreamble
 End
 
 
@@ -205,8 +295,14 @@ Style Acknowledgement*
 	LabelString           "Acknowledgement."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem*{acknowledgement*}{Acknowledgement}
+	  \newtheorem*{acknowledgement*}{\protect\acknowledgementname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\acknowledgementname}{_(Acknowledgement)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\acknowledgementname}{_(Acknowledgement)}}
+	EndBabelPreamble
 End
 
 
@@ -216,8 +312,14 @@ Style Conclusion
 	LabelString           "Conclusion \thetheorem."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem{conclusion}[thm]{Conclusion}
+	  \newtheorem{conclusion}[thm]{\protect\conclusionname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\conclusionname}{_(Conclusion)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\conclusionname}{_(Conclusion)}}
+	EndBabelPreamble
 End
 
 
@@ -227,8 +329,14 @@ Style Conclusion*
 	LabelString           "Conclusion."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem*{conclusion*}{Conclusion}
+	  \newtheorem*{conclusion*}{\protect\conclusionname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\conclusionname}{_(Conclusion)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\conclusionname}{_(Conclusion)}}
+	EndBabelPreamble
 End
 
 
@@ -239,8 +347,14 @@ Style Assumption
 	LabelString           "Assumption \thetheorem."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{assumption}[thm]{Assumption}
+	  \newtheorem{assumption}[thm]{\protect\assumptionname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\assumptionname}{_(Assumption)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\assumptionname}{_(Assumption)}}
+	EndBabelPreamble
 End
 
 
@@ -250,8 +364,14 @@ Style Assumption*
 	LabelString           "Assumption."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem*{assumption*}{Assumption}
+	  \newtheorem*{assumption*}{\protect\assumptionname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\assumptionname}{_(Assumption)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\assumptionname}{_(Assumption)}}
+	EndBabelPreamble
 End
 
 Style Question
@@ -261,8 +381,14 @@ Style Question
 	LabelString           "Question \thetheorem."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{question}[thm]{Question}
+	  \newtheorem{question}[thm]{\protect\questionname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\questionname}{_(Question)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\questionname}{_(Question)}}
+	EndBabelPreamble
 End
 
 Style Question*
@@ -271,6 +397,12 @@ Style Question*
 	LabelString           "Question."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem*{question*}{Question}
+	  \newtheorem*{question*}{\protect\questionname}
 	EndPreamble
+	LangPreamble
+	  \providecommand{\questionname}{_(Question)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\questionname}{_(Question)}}
+	EndBabelPreamble
 End

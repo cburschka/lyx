@@ -62,7 +62,7 @@ private:
 };
 
 // Keep the changes documented in the Customization manual. 
-int const FORMAT = 13;
+int const FORMAT = 14;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)
@@ -232,17 +232,18 @@ bool TextClass::convertLayoutFormat(support::FileName const & filename, ReadType
 	FileName const tempfile = FileName::tempName("convert_layout");
 	bool success = layout2layout(filename, tempfile);
 	if (success)
-		success = read(tempfile, rt);
+		success = readWithoutConv(tempfile, rt) == OK;
 	tempfile.removeFile();
 	return success;
 }
 
-bool TextClass::read(FileName const & filename, ReadType rt)
+
+TextClass::ReturnValues TextClass::readWithoutConv(FileName const & filename, ReadType rt)
 {
 	if (!filename.isReadableFile()) {
 		lyxerr << "Cannot read layout file `" << filename << "'."
 		       << endl;
-		return false;
+		return ERROR;
 	}
 
 	LYXERR(Debug::TCLASS, "Reading " + translateRT(rt) + ": " +
@@ -260,10 +261,17 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 	
 	LYXERR(Debug::TCLASS, "Finished reading " + translateRT(rt) + ": " +
 			to_utf8(makeDisplayPath(filename.absFilename())));
-	
-	if (retval != FORMAT_MISMATCH) 
+
+	return retval;
+}
+
+
+bool TextClass::read(FileName const & filename, ReadType rt)
+{
+	ReturnValues const retval = readWithoutConv(filename, rt);
+	if (retval != FORMAT_MISMATCH)
 		return retval == OK;
-	
+
 	bool const worx = convertLayoutFormat(filename, rt);
 	if (!worx) {
 		LYXERR0 ("Unable to convert " << filename << 

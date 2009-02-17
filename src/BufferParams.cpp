@@ -1419,6 +1419,10 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		lyxpreamble += from_utf8(features.getBabelOptions()) + '\n';
 	}
 
+	docstring const i18npreamble = features.getTClassI18nPreamble(use_babel);
+	if (!i18npreamble.empty())
+		lyxpreamble += i18npreamble + '\n';
+
 	int const nlines =
 		int(count(lyxpreamble.begin(), lyxpreamble.end(), '\n'));
 	for (int j = 0; j != nlines; ++j) {

@@ -8,7 +8,7 @@
 
 # Author: Richard Heck <rgheck@comcast.net>
 
-Format 11
+Format 14
 
 Counter theorem
 	Within         chapter
@@ -17,9 +17,15 @@ End
 Style Theorem
 	Preamble
 		\ifx\thechapter\undefined
-			\newtheorem{thm}{Theorem}
+			\newtheorem{thm}{\protect\theoremname}
 		\else
-			\newtheorem{thm}{Theorem}[chapter]
+			\newtheorem{thm}{\protect\theoremname}[chapter]
 		\fi
 	EndPreamble
+	LangPreamble
+		\providecommand{\theoremname}{_(Theorem)}
+	EndLangPreamble
+	BabelPreamble
+		\addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
+	EndBabelPreamble
 End

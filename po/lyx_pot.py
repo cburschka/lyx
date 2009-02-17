@@ -84,8 +84,8 @@ def layouts_l10n(input_files, output, base):
     InsetLayout = re.compile(r'^InsetLayout\s+(.*)')
     DescBegin = re.compile(r'#+\s*DescriptionBegin\s*$')
     DescEnd = re.compile(r'#+\s*DescriptionEnd\s*$')
-    I18nPreamble = re.compile(r'\s*I18nPreamble\s*$')
-    EndI18nPreamble = re.compile(r'\s*EndI18nPreamble\s*$')
+    I18nPreamble = re.compile(r'\s*(Lang)|(Babel)Preamble\s*$')
+    EndI18nPreamble = re.compile(r'\s*End(Lang)|(Babel)Preamble\s*$')
     I18nString = re.compile(r'_\(([^\)]+)\)')
 
     for src in input_files:

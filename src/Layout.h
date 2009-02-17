@@ -92,7 +92,10 @@ public:
 	docstring const & preamble() const { return preamble_; }
 	/// Get language dependent macro definitions needed for this layout
 	/// for language \p lang
-	docstring const i18npreamble(Language const * lang) const;
+	docstring const langpreamble(Language const * lang) const;
+	/// Get language and babel dependent macro definitions needed for
+	/// this layout for language \p lang
+	docstring const babelpreamble(Language const * lang) const;
 	///
 	std::set<std::string> const & requires() const { return requires_; }
 	///
@@ -271,7 +274,9 @@ private:
 	/// Macro definitions needed for this layout
 	docstring preamble_;
 	/// Language dependent macro definitions needed for this layout
-	docstring i18npreamble_;
+	docstring langpreamble_;
+	/// Language and babel dependent macro definitions needed for this layout
+	docstring babelpreamble_;
 	/// Packages needed for this layout
 	std::set<std::string> requires_;
 };

@@ -298,6 +298,8 @@ private:
 	bool deleteLayout(docstring const &);
 	///
 	bool convertLayoutFormat(support::FileName const &, ReadType);
+	/// Reads the layout file without running layout2layout.
+	ReturnValues readWithoutConv(support::FileName const & filename, ReadType rt);
 	/// \return true for success.
 	bool readStyle(Lexer &, Layout &) const;
 	///
