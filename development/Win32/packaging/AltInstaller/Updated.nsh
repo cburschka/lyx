@@ -22,6 +22,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\biblioExample.bib"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\Braille.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\recipebook.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\xypic.lyx"
  SetOutPath "$INSTDIR\Resources\examples\de"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\Braille.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\multicol.lyx"
