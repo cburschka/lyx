@@ -108,9 +108,10 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
-\author "Georg Baum,,," 
+\author "" 
+\author "" 
 \author "" 
 \end_header
 
@@ -6881,23 +6882,7 @@ int
 
 ] This tag was introduced with LyX 1.4.0 (layout files of LyX 1.3.x and earlier
  don't have an explicit file format).
- The file format that is documented here is format 1
-\change_deleted 0 1234611237
-2
-\change_inserted 0 1234611237
-4
-\change_unchanged
-.
-\change_inserted 0 1234613411
-
-\end_layout
-
-\begin_layout Description
-
-\change_inserted 0 1234613417
-FIXME: Format 13 is missing!
-\change_unchanged
-
+ The file format that is documented here is format 14.
 \end_layout
 
 \begin_layout Subsection
@@ -8922,13 +8907,7 @@ FreeSpacing
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 0 1234613251
-Babel
-\change_deleted 0 1234611266
-I18N
-\change_unchanged
-Preamble
+BabelPreamble
 \end_layout
 
 \end_inset
@@ -8940,13 +8919,7 @@ Preamble
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 0 1234613436
-Babel
-\change_deleted 0 1234611275
-I18N
-\change_unchanged
-Preamble
+BabelPreamble
 \end_layout
 
 \end_inset
@@ -8961,13 +8934,7 @@ Preamble
 status collapsed
 
 \begin_layout Plain Layout
-End
-\change_deleted 0 1234611280
-I18N
-\change_inserted 0 1234613262
-Babel
-\change_unchanged
-Preamble
+EndBabelPreamble
 \end_layout
 
 \end_inset
@@ -9017,29 +8984,19 @@ _()
 
  replaces its argument by the translation of the argument to the current
  language.
-\change_inserted 0 1234611470
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1234615134
 This preamble snippet will only be used if the document contains more than
  one language and the babel package is used.
-\change_unchanged
-
 \end_layout
 
 \end_deeper
 \begin_layout Description
-
-\change_inserted 0 1234614203
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 0 1234614202
 LangPreamble
 \end_layout
 
@@ -9050,8 +9007,6 @@ LangPreamble
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 0 1234614202
 BabelPreamble
 \end_layout
 
@@ -9068,8 +9023,6 @@ BabelPreamble
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 0 1234614202
 EndLangPreamble
 \end_layout
 
@@ -9090,38 +9043,22 @@ If the style defines text that appears in the typeset document, it may use
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 0 1234611302
-Lang
-\change_deleted 0 1234611306
-I18N
-\change_unchanged
-Preamble
+LangPreamble
 \end_layout
 
 \end_inset
 
-
-\change_inserted 0 1234611823
- and
-\change_unchanged
- 
-\change_inserted 0 1234611832
-
+ and 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 0 1234611838
 BabelPreamble
 \end_layout
 
 \end_inset
 
- 
-\change_unchanged
-to support non-english and even multilanguage documents correctly.
+ to support non-english and even multilanguage documents correctly.
  The following excerpt (from the 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -9137,16 +9074,6 @@ theorems-ams.inc
 
 \begin_layout LyX-Code
 Preamble
-\end_layout
-
-\begin_layout LyX-Code
-
-\change_deleted 0 1234612061
-  
-\backslash
-providecommand{
-\backslash
-claimname}{Claim}
 \end_layout
 
 \begin_layout LyX-Code
@@ -9170,14 +9097,10 @@ EndPreamble
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted 0 1234612037
 LangPreamble
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted 0 1234612045
   
 \backslash
 providecommand{
@@ -9187,46 +9110,18 @@ claimname}{_(Claim)}
 
 \begin_layout LyX-Code
 
-\change_inserted 0 1234611897
-
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted 0 1234612050
 EndLangPreamble
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted 0 1234611892
-Babel
-\change_deleted 0 1234611847
-I18n
-\change_unchanged
-Preamble
+BabelPreamble
 \end_layout
 
 \begin_layout LyX-Code
-  
-\change_deleted 0 1234612079
-
-\backslash
-AtBeginDocument{
-\backslash
-ifx
-\backslash
-LdfInit
-\backslash
-undefined
-\backslash
-relax
-\backslash
-else%
-\end_layout
-
-\begin_layout LyX-Code
-  
+    
 \backslash
 addto
 \backslash
@@ -9235,28 +9130,10 @@ captions$$lang{
 renewcommand{
 \backslash
 claimname}{_(Claim)}}
-\change_deleted 0 1234612086
-%
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_deleted 0 1234612089
-  
-\backslash
-fi}
-\change_unchanged
-
-\end_layout
-
-\begin_layout LyX-Code
-End
-\change_inserted 0 1234611859
-Babel
-\change_deleted 0 1234611856
-I18n
-\change_unchanged
-Preamble
+EndBabelPreamble
 \end_layout
 
 \begin_layout Standard
@@ -9273,26 +9150,14 @@ claimname
 
 \end_inset
 
- in the 
-\change_inserted 0 1234612144
-language
-\change_deleted 0 1234612146
-standard
-\change_unchanged
- preamble.
+ in the language preamble.
  This command holds the name of the theorem that will appear in the output.
  The 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 0 1234612157
-Babel
-\change_deleted 0 1234612155
-I18N
-\change_unchanged
-Preamble
+BabelPreamble
 \end_layout
 
 \end_inset
@@ -9309,44 +9174,7 @@ claimname
 
 \end_inset
 
- for each used language
-\change_inserted 0 1234622073
- in multilanguage documents
-\change_unchanged
-.
-
-\change_deleted 0 1234612171
- The 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-ifx
-\backslash
-LdfInit
-\end_layout
-
-\end_inset
-
- test ensures that no LaTeX error occurs in documents that do not use babel.
- Since LyX loads babel after the style-specific preamble, the whole command
- is deferred to the actual start of the document with 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-AtBeginDocument
-\end_layout
-
-\end_inset
-
-.
-\change_unchanged
-
+ for each used language in multilanguage documents.
 \end_layout
 
 \end_deeper
