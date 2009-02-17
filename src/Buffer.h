@@ -437,7 +437,10 @@ public:
 	///
 	void message(docstring const & msg) const;
 
+	///
 	void setGuiDelegate(frontend::GuiBufferDelegate * gui);
+	///
+	frontend::GuiBufferDelegate * guiDelegate() const { return gui_; }
 
 	///
 	void autoSave() const;
