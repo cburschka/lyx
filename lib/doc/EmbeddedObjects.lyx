@@ -475,11 +475,16 @@ Maintain aspect ratio
 \begin_inset Newline newline
 \end_inset
 
-Images can be opened in a program of your choice when pressing the 
+Images can be opened in a program of your choice by right-clicking on it
+ choosing the entry 
 \family sans
 Edit
+\begin_inset space ~
+\end_inset
+
+externally
 \family default
- button.
+ in the appearing context menu.
  The program can be set for every image format in the file format settings
  in LyX's preferences.
 \end_layout
@@ -1673,7 +1678,7 @@ can be
  In this cases only a header with the image properties is added to the original
  image
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 In the case of PDF, the original image is additionally compressed.
