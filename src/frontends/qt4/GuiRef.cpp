@@ -55,6 +55,12 @@ GuiRef::GuiRef(GuiView & lv)
 	bufferCO->setEnabled(false);
 	bufferCO->hide();
 
+	// Enabling is set in updateRefs. Disable for now in case no
+	// call to updateContents follows (e.g. read-only documents).
+	sortCB->setEnabled(false);
+	refsLW->setEnabled(false);
+	gotoPB->setEnabled(false);
+
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
@@ -81,8 +87,6 @@ GuiRef::GuiRef(GuiView & lv)
 		this, SLOT(updateClicked()));
 	connect(bufferCO, SIGNAL(activated(int)),
 		this, SLOT(updateClicked()));
-
-	setFocusProxy(refsLW);
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	bc().setOK(okPB);
@@ -361,9 +365,12 @@ void GuiRef::redoRefs()
 void GuiRef::updateRefs()
 {
 	refs_.clear();
-	FileName const & name = theBufferList().fileNames()[bufferCO->currentIndex()];
-	Buffer const * buf = theBufferList().getBuffer(name);
-	buf->getLabelList(refs_);
+	int const the_buffer = bufferCO->currentIndex();
+	if (the_buffer != -1) {
+		FileName const & name = theBufferList().fileNames()[the_buffer];
+		Buffer const * buf = theBufferList().getBuffer(name);
+		buf->getLabelList(refs_);
+	}	
 	sortCB->setEnabled(!refs_.empty());
 	refsLW->setEnabled(!refs_.empty());
 	// refsLW should only be the focus proxy when it is enabled
