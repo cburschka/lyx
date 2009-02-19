@@ -216,13 +216,11 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	}
 
 	// Prepare the paragraphs and insets for insertion.
-	// A couple of insets store buffer references so need updating.
 	insertion.swap(in.paragraphs());
 
 	InsetIterator const i_end = inset_iterator_end(in);
-
 	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
-
+	// Insets store buffer references so need updating.
 		it->setBuffer(const_cast<Buffer &>(buffer));
 
 		switch (it->lyxCode()) {
