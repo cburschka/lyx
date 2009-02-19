@@ -45,7 +45,6 @@ GuiRef::GuiRef(GuiView & lv)
 {
 	setupUi(this);
 
-	sort_ = false;
 	at_ref_ = false;
 
 	//FIXME: when/if we support the xr package for cross-reference
@@ -172,7 +171,6 @@ void GuiRef::refSelected(QListWidgetItem * sel)
 
 void GuiRef::sortToggled(bool on)
 {
-	sort_ = on;
 	redoRefs();
 }
 
@@ -224,8 +222,6 @@ void GuiRef::updateContents()
 	typeCO->setEnabled(typeAllowed() && !isBufferReadonly());
 	if (!typeAllowed())
 		typeCO->setCurrentIndex(0);
-
-	sortCB->setChecked(sort_);
 
 	// insert buffer list
 	bufferCO->clear();
@@ -330,7 +326,7 @@ void GuiRef::redoRefs()
 		refsLW->addItem(toqstr(*iter));
 	}
 
-	if (sort_)
+	if (sortCB->isEnabled() && sortCB->isChecked())
 		refsLW->sortItems();
 
 	referenceED->setText(oldSelection);

@@ -86,8 +86,6 @@ private:
 	///
 	InsetCommandParams params_;
 
-	/// sort or not persistent state
-	bool sort_;
 	/// went to a reference ?
 	bool at_ref_;
 	/// the last reference entered or examined
