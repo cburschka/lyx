@@ -708,8 +708,8 @@ void BufferParams::writeFile(ostream & os) const
 	// removed modules
 	if (!removedModules_.empty()) {
 		os << "\\begin_removed_modules" << '\n';
-		set<string>::const_iterator it = removedModules_.begin();
-		set<string>::const_iterator en = removedModules_.end();
+		list<string>::const_iterator it = removedModules_.begin();
+		list<string>::const_iterator en = removedModules_.end();
 		for (; it != en; it++)
 			os << *it << '\n';
 		os << "\\end_removed_modules" << '\n';
@@ -1937,15 +1937,15 @@ void BufferParams::readRemovedModules(Lexer & lex)
 		string mod = lex.getString();
 		if (mod == "\\end_removed_modules")
 			break;
-		removedModules_.insert(mod);
+		removedModules_.push_back(mod);
 		lex.eatLine();
 	}
 	// now we want to remove any removed modules that were previously 
 	// added. normally, that will be because default modules were added in 
 	// setBaseClass(), which gets called when \textclass is read at the 
 	// start of the read.
-	set<string>::const_iterator rit = removedModules_.begin();
-	set<string>::const_iterator const ren = removedModules_.end();
+	list<string>::const_iterator rit = removedModules_.begin();
+	list<string>::const_iterator const ren = removedModules_.end();
 	for (; rit != ren; rit++) {
 		LayoutModuleList::iterator const mit = layoutModules_.begin();
 		LayoutModuleList::iterator const men = layoutModules_.end();

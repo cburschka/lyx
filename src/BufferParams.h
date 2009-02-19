@@ -25,7 +25,6 @@
 #include "support/copied_ptr.h"
 
 #include <list>
-#include <set>
 #include <vector>
 
 namespace lyx {
@@ -129,7 +128,7 @@ public:
 	/// List of modules in use
 	LayoutModuleList const & getModules() const { return layoutModules_; }
 	/// List of default modules the user has removed
-	std::set<std::string> const & getRemovedModules() const 
+	std::list<std::string> const & getRemovedModules() const 
 			{ return removedModules_; }
 	///
 	/// Add a module to the list of modules in use. This checks only that the
@@ -142,7 +141,7 @@ public:
 	bool moduleCanBeAdded(std::string const & modName) const;
 	///
 	void addRemovedModule(std::string const & modName) 
-			{ removedModules_.insert(modName); }
+			{ removedModules_.push_back(modName); }
 	/// Clear the list
 	void clearLayoutModules() { layoutModules_.clear(); }
 	/// Clear the removed module list
@@ -368,7 +367,7 @@ private:
 	LayoutModuleList layoutModules_;
 	/// this is for modules that are required by the document class but that
 	/// the user has chosen not to use
-	std::set<std::string> removedModules_;
+	std::list<std::string> removedModules_;
 
 	/** Use the Pimpl idiom to hide those member variables that would otherwise
 	 *  drag in other header files.
