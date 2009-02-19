@@ -445,7 +445,7 @@ public:
 	///
 	void setGuiDelegate(frontend::GuiBufferDelegate * gui);
 	///
-	bool Buffer::hasGuiDelegate() const;
+	bool hasGuiDelegate() const;
 
 	///
 	void autoSave() const;
