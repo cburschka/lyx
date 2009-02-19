@@ -173,6 +173,8 @@ What's new
   
 - Fix a crash when using the outliner in a child document, the master of
   which is not opened (bug 5699).
+  
+- Fix a crash on exit when the child documents are already unloaded.
 
 - Ignore the master_buffer setting in Document>Settings if the current
   document is no real child. This fixes a crash when using the outliner

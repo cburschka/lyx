@@ -286,8 +286,12 @@ Buffer::~Buffer()
 	// loop over children
 	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
 	Impl::BufferPositionMap::iterator end = d->children_positions.end();
-	for (; it != end; ++it)
-		theBufferList().releaseChild(this, const_cast<Buffer *>(it->first));
+	for (; it != end; ++it) {
+		Buffer * child = const_cast<Buffer *>(it->first);
+		// The child buffer might have been closed already.
+		if (theBufferList().isLoaded(child))
+			theBufferList().releaseChild(this, child);	
+	}
 
 	// clear references to children in macro tables
 	d->children_positions.clear();
