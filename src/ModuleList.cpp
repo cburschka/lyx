@@ -112,7 +112,7 @@ public:
 
 
 //Much of this is borrowed from LayoutFileList::read()
-bool ModuleList::load()
+bool ModuleList::read()
 {
 	FileName const real_file = libFileSearch("", "lyxmodules.lst");
 	LYXERR(Debug::TCLASS, "Reading modules from `" << real_file << '\'');

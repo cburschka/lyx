@@ -732,7 +732,7 @@ bool LyX::init()
 	if (!LyXSetStyle())
 		return false;
 	//...and the modules
-	moduleList.load();
+	moduleList.read();
 
 	// read keymap and ui files in batch mode as well
 	// because InsetInfo needs to know these to produce
