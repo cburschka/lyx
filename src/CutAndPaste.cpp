@@ -41,6 +41,7 @@
 #include "insets/InsetCommand.h"
 #include "insets/InsetGraphics.h"
 #include "insets/InsetGraphicsParams.h"
+#include "insets/InsetInclude.h"
 #include "insets/InsetTabular.h"
 
 #include "mathed/MathData.h"
@@ -241,6 +242,12 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 					}
 				}
 			}
+			break;
+		}
+
+		case INCLUDE_CODE: {
+			InsetInclude & inc = static_cast<InsetInclude &>(*it);
+			inc.updateCommand();
 			break;
 		}
 

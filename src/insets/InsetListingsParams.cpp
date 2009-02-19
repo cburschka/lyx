@@ -741,14 +741,15 @@ string InsetListingsParams::params(string const & sep) const
 }
 
 
-void InsetListingsParams::addParam(string const & key, string const & value)
+void InsetListingsParams::addParam(string const & key, 
+		string const & value, bool replace)
 {
 	if (key.empty())
 		return;
 
 	// duplicate parameters!
 	string keyname = key;
-	if (params_.find(key) != params_.end())
+	if (!replace && params_.find(key) != params_.end())
 		// key=value,key=value1 is allowed in listings
 		// use key_, key__, key___ etc to avoid name conflict
 		while (params_.find(keyname += '_') != params_.end()) { }

@@ -37,8 +37,10 @@ public:
 	/// valid parameter string
 	std::string params(std::string const & sep=",") const;
 
-	/// add key=value to params_
-	void addParam(std::string const & key, std::string const & value);
+	/// add key=value to params_. key_=value will be used if key=value already exists
+	/// unless replace=true.
+	void addParam(std::string const & key, std::string const & value, 
+			bool replace = false);
 
 	/// add a few parameters
 	void addParams(std::string const & par);

@@ -922,6 +922,27 @@ void InsetInclude::addToToc(DocIterator const & cpit)
 }
 
 
+void InsetInclude::updateCommand()
+{
+	if (!label_)
+		return;
+
+	docstring old_label = label_->getParam("name");
+	label_->updateCommand(old_label, false);
+	// the label might have been adapted (duplicate)
+	docstring new_label = label_->getParam("name");
+	if (old_label == new_label)
+		return;
+
+	// update listings parameters...
+	InsetCommandParams p(INCLUDE_CODE);
+	p = params();
+	InsetListingsParams par(to_utf8(params()["lstparams"]));
+	par.addParam("label", "{" + to_utf8(new_label) + "}", true);
+	p["lstparams"] = from_utf8(par.params());
+	setParams(p);	
+}
+
 void InsetInclude::updateLabels(ParIterator const & it)
 {
 	Buffer const * const childbuffer = getChildBuffer(buffer());
