@@ -37,7 +37,7 @@ private Q_SLOTS:
 	void refHighlighted(QListWidgetItem *);
 	void selectionChanged();
 	void refSelected(QListWidgetItem *);
-	void sortToggled(bool);
+	void sortToggled();
 	void updateClicked();
 	void reset_dialog();
 	void dialog_rejected();

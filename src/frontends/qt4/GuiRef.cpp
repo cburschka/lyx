@@ -78,8 +78,8 @@ GuiRef::GuiRef(GuiView & lv)
 		this, SLOT(selectionChanged()));
 	connect(refsLW, SIGNAL(itemActivated(QListWidgetItem *)),
 		this, SLOT(refSelected(QListWidgetItem *)));
-	connect(sortCB, SIGNAL(clicked(bool)),
-		this, SLOT(sortToggled(bool)));
+	connect(sortCB, SIGNAL(clicked()),
+		this, SLOT(sortToggled()));
 	connect(gotoPB, SIGNAL(clicked()),
 		this, SLOT(gotoClicked()));
 	connect(updatePB, SIGNAL(clicked()),
@@ -169,7 +169,7 @@ void GuiRef::refSelected(QListWidgetItem * sel)
 }
 
 
-void GuiRef::sortToggled(bool on)
+void GuiRef::sortToggled()
 {
 	redoRefs();
 }
