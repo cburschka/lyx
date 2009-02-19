@@ -61,7 +61,6 @@ void InsetNewlineParams::read(Lexer & lex)
 		kind = InsetNewlineParams::LINEBREAK;
 	else
 		lex.printError("Unknown kind: `$$Token'");
-	lex >> "\\end_inset";
 }
 
 
@@ -75,6 +74,7 @@ void InsetNewline::write(ostream & os) const
 void InsetNewline::read(Lexer & lex)
 {
 	params_.read(lex);
+	lex >> "\\end_inset";
 }
 
 
