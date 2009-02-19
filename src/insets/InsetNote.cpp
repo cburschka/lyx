@@ -369,7 +369,13 @@ void InsetNote::string2params(string const & in, InsetNoteParams & params)
 	Lexer lex;
 	lex.setStream(data);
 	lex.setContext("InsetNote::string2params");
-	lex >> "note" >> "Note";
+	lex >> "note";
+	// There are cases, such as when we are called via getStatus() from
+	// Dialog::canApply(), where we are just called with "note" rather
+	// than a full "note Note TYPE".
+	if (!lex.isOK())
+		return;
+	lex >> "Note";
 
 	params.read(lex);
 }
