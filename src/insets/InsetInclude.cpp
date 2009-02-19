@@ -244,9 +244,10 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 				docstring old_label;
 				if (label_)
 					old_label = label_->getParam("name");
-				if (new_label.empty())
+				if (new_label.empty()) {
 					delete label_;
-				else if (label_ && old_label != new_label) {
+					label_ = 0;
+				} else if (label_ && old_label != new_label) {
 					label_->updateCommand(new_label);
 					// the label might have been adapted (duplicate)
 					if (new_label != label_->getParam("name")) {
