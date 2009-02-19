@@ -2287,6 +2287,12 @@ void Buffer::resetAutosaveTimers() const
 }
 
 
+bool Buffer::hasGuiDelegate() const
+{
+	return gui_;
+}
+
+
 void Buffer::setGuiDelegate(frontend::GuiBufferDelegate * gui)
 {
 	gui_ = gui;
@@ -2719,6 +2725,10 @@ void Buffer::updateLabels(bool childonly) const
 		if (master != this) {
 			bufToUpdate.insert(this);
 			master->updateLabels(false);
+			// Do this here in case the master has no gui associated with it. Then, 
+			// the TocModel is not updated and TocModel::toc_ is invalid (bug 5699).
+			if (!master->gui_)
+				structureChanged();	
 
 			// was buf referenced from the master (i.e. not in bufToUpdate anymore)?
 			if (bufToUpdate.find(this) == bufToUpdate.end())

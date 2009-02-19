@@ -2211,6 +2211,10 @@ void Cursor::checkBufferStructure()
 {
 	Buffer const * master = buffer()->masterBuffer();
 	master->tocBackend().updateItem(*this);
+	if (master != buffer() && !master->hasGuiDelegate())
+		// In case the master has no gui associated with it, 
+		// the TocItem is not updated (part of bug 5699).
+		buffer()->tocBackend().updateItem(*this);
 }
 
 

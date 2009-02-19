@@ -442,7 +442,10 @@ public:
 	///
 	void message(docstring const & msg) const;
 
+	///
 	void setGuiDelegate(frontend::GuiBufferDelegate * gui);
+	///
+	bool Buffer::hasGuiDelegate() const;
 
 	///
 	void autoSave() const;
