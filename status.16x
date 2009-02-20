@@ -108,8 +108,10 @@ What's new
   Affected files that have already been mis-converted can be repaired by
   manually setting back the file format to 288 in a text editor before 
   re-opening the document with LyX 1.6.x.
-  
-- Fix the LaTeX output of subfigures via the command line (bug 5562).
+
+- Fix the LaTeX export of subfigures via the command line (bug 5562).
+
+- Fix the LaTeX import of preamble code (bug 5788).
 
 - Fix the reversion of floating wrap floats to LyX 1.5.x (bug 5618).
 
