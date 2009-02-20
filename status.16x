@@ -180,6 +180,8 @@ What's new
 
 - Fix a crash when pressing the Update button of the Citation dialog
   for read-only documents (bug 5785).
+  
+- Fix a crash when removing the label of an included Program Listing. 
 
 - Ignore the master_buffer setting in Document>Settings if the current
   document is no real child. This fixes a crash when using the outliner
