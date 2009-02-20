@@ -394,10 +394,10 @@ void handle_package(string const & name, string const & opts,
 		h_cite_engine = "jurabib";
 	else if (!in_lyx_preamble) {
 		if (options.empty())
-			h_preamble << "\\usepackage{" << name << "}\n";
+			h_preamble << "\\usepackage{" << name << "}";
 		else {
 			h_preamble << "\\usepackage[" << opts << "]{" 
-				   << name << "}\n";
+				   << name << "}";
 			options.clear();
 		}
 	}
@@ -466,7 +466,7 @@ void parse_preamble(Parser & p, ostream & os,
 	special_columns['D'] = 3;
 	bool is_full_document = false;
 	bool is_lyx_file = false;
-	bool in_lyx_preamble = true;
+	bool in_lyx_preamble = false;
 
 	// determine whether this is a full document or a fragment for inclusion
 	while (p.good()) {
@@ -524,10 +524,11 @@ void parse_preamble(Parser & p, ostream & os,
 			}
 
 			smatch sub;
-			if (regex_search(comment, sub, islyxfile))
+			if (regex_search(comment, sub, islyxfile)) {
 				is_lyx_file = true;
-			else if (is_lyx_file
-				 && regex_search(comment, sub, usercommands))
+				in_lyx_preamble = true;
+			} else if (is_lyx_file
+				   && regex_search(comment, sub, usercommands))
 				in_lyx_preamble = false;
 			else if (!in_lyx_preamble)
 				h_preamble << t.asInput();
