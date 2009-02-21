@@ -35,7 +35,7 @@ namespace lyx {
 // moment. (Thanks to Philippe Charpentier for helping work out all 
 // the bugs---rgh.)
 bool LayoutModuleList::adaptToBaseClass(LayoutFile const * const lay,
-		std::list<string> removedModules)
+		std::list<string> const & removedModules)
 {
 	// first, we remove any modules the new document class itself provides,
 	// those it excludes, and those that conflict with ones it excludes.
@@ -48,7 +48,7 @@ bool LayoutModuleList::adaptToBaseClass(LayoutFile const * const lay,
 	// loaded modules. it's a hassle that we have to do this now, since
 	// we just went through them a bit ago, but things might have changed
 	// with the loading of the default modules.
-	retval |= checkModuleConsistency(lay);
+	retval = (checkModuleConsistency(lay) || retval);
 	return retval;
 }
 
@@ -208,7 +208,8 @@ bool LayoutModuleList::removeBadModules(LayoutFile const * const lay)
 // Perform a consistency check on the set of modules. We need to make
 // sure that none of the modules exclude each other and that requires
 // are satisfied.
-bool LayoutModuleList::checkModuleConsistency(LayoutFile const * const lay) {
+bool LayoutModuleList::checkModuleConsistency(LayoutFile const * const lay) 
+{
 	bool consistent = true;
 	LayoutModuleList oldModules = *this;
 	clear();

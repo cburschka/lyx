@@ -65,7 +65,7 @@ public:
 	/// \return true if no changes had to be made, false if some did have
 	/// to be made.
 	bool adaptToBaseClass(LayoutFile const * const lay,
-			std::list<std::string> removedModules);
+			std::list<std::string> const & removedModules);
 private:
 	/// Removes modules excluded by, provided by, etc, the base class.
 	/// \param lay The document class against which to check.
