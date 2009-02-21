@@ -182,6 +182,7 @@ src_pre_files = Split('''
     Language.cpp
     Layout.cpp
     LayoutFile.cpp
+    LayoutModuleList.cpp
     Length.cpp
     Lexer.cpp
     LyX.cpp
