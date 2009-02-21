@@ -120,6 +120,7 @@ SOURCEFILESCORE = \
 	LaTeX.cpp \
 	LaTeXFeatures.cpp \
 	LayoutFile.cpp \
+	LayoutModuleList.cpp \
 	Length.cpp \
 	lengthcommon.cpp \
 	Lexer.cpp \

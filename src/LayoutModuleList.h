@@ -17,6 +17,8 @@
 
 namespace lyx {
 
+class LayoutFile;
+
 class LayoutModuleList {
 public:
 	///
@@ -47,7 +49,42 @@ public:
 	/// This is needed in GuiDocument. It seems better than an
 	/// implicit conversion.
 	std::list<std::string> const & list() const { return lml_; }
+	/// Checks to make sure module's requriements are satisfied, that it does
+	/// not conflict with already-present modules, isn't already loaded, etc.
+	bool moduleCanBeAdded(std::string const & modName, 
+			LayoutFile const * const lay) const;
+	/// If the user changes the base class for a given document, then the
+	/// associated module list has to be updated. This just calls
+	/// (i)   removeBadModules()
+	/// (ii)  addDefaultModules()
+	/// (iii) checkModuleConsistency()
+	/// in that order, for which see below.
+	/// \param lay The new base class.
+	/// \param removedModules Modules the user explicitly removed and so
+	/// which should not be included.
+	/// \return true if no changes had to be made, false if some did have
+	/// to be made.
+	bool adaptToBaseClass(LayoutFile const * const lay,
+			std::list<std::string> removedModules);
 private:
+	/// Removes modules excluded by, provided by, etc, the base class.
+	/// \param lay The document class against which to check.
+	/// \return true, if modules were consistent, false if changes had
+	/// to be made.
+	bool removeBadModules(LayoutFile const * const lay);
+	/// Adds default modules, if they're addable.
+	/// \param lay The base class from which to get default modules.
+	/// \param removedModules Modules the user has explicitly removed.
+	void addDefaultModules(LayoutFile const * const lay,
+			std::list<std::string> removedModules);
+	/// Checks for consistency among modules: makes sure requirements
+	/// are met, no modules exclude one another, etc, and resolves any
+	/// such conflicts, leaving us with a consistent collection.
+	/// \param lay The base class against which to check.
+	/// \return true if modules were consistent, false if changes had
+	/// to be made.
+	bool checkModuleConsistency(LayoutFile const * const lay);
+	///
 	std::list<std::string> lml_;
 };
 }

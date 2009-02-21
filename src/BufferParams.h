@@ -345,20 +345,6 @@ private:
 	void readModules(Lexer &);
 	///
 	void readRemovedModules(Lexer &);
-	/// Called when the document class changes. Removes modules
-	/// excluded by, provided by, etc, the document class.
-	/// \return true if modules were consistent, false if changes had
-	/// to be made.
-	bool removeBadModules();
-	/// Adds default modules, if they're addable.
-	void addDefaultModules();
-	/// checks for consistency among modules: makes sure requirements
-	/// are met, no modules exclude one another, etc, and resolves any
-	/// such conflicts, leaving us with a consistent collection.
-	/// \return true if modules were consistent, false if changes had
-	/// to be made.
-	bool checkModuleConsistency();
-
 	/// for use with natbib
 	CiteEngine cite_engine_;
 	///
