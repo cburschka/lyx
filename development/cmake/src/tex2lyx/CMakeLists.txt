@@ -14,6 +14,7 @@ set(LINKED_sources
 	${TOP_SRC_DIR}/src/Floating.cpp
 	${TOP_SRC_DIR}/src/Counters.cpp
 	${TOP_SRC_DIR}/src/Layout.cpp
+	${TOP_SRC_DIR}/src/LayoutModuleList.cpp
 	${TOP_SRC_DIR}/src/TextClass.cpp
 	${TOP_SRC_DIR}/src/Lexer.cpp
 	${TOP_SRC_DIR}/src/lengthcommon.cpp
@@ -22,6 +23,7 @@ set(LINKED_sources
 
 set(LINKED_headers
 	${TOP_SRC_DIR}/src/Layout.h
+	${TOP_SRC_DIR}/src/LayoutModuleList.h
 	${TOP_SRC_DIR}/src/TextClass.h)
 
 set(tex2lyx_sources
