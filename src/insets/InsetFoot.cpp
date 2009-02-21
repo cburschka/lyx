@@ -81,7 +81,7 @@ void InsetFoot::addToToc(DocIterator const & cpit)
 docstring InsetFoot::toolTip(BufferView const & bv, int x, int y) const
 {
 	docstring default_tip = InsetCollapsable::toolTip(bv, x, y);
-	if (!isOpen())
+	if (!isOpen(bv))
 		return custom_label_ + ": " + default_tip;
 	return default_tip;
 }

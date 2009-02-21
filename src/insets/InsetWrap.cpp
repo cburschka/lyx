@@ -71,7 +71,7 @@ docstring InsetWrap::toolTip(BufferView const & bv, int x, int y) const
 	OutputParams rp(&buffer().params().encoding());
 	docstring default_tip = InsetCollapsable::toolTip(bv, x, y);
 	docstring caption_tip = getCaptionText(rp);
-	if (!isOpen() && !caption_tip.empty())
+	if (!isOpen(bv) && !caption_tip.empty())
 		return caption_tip + '\n' + default_tip;
 	return default_tip;
 }

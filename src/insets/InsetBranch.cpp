@@ -81,7 +81,7 @@ docstring InsetBranch::toolTip(BufferView const &, int, int) const
 }
 
 
-void InsetBranch::setButtonLabel()
+void InsetBranch::setButtonLabel(BufferView const & bv)
 {
 	docstring s = _("Branch: ") + params_.branch;
 	if (!params_.branch.empty()) {
@@ -91,7 +91,7 @@ void InsetBranch::setButtonLabel()
 			s = _("Undef: ") + s;
 	}
 	if (decoration() == InsetLayout::CLASSIC)
-		setLabel(isOpen() ? s : getNewLabel(s) );
+		setLabel(isOpen(bv) ? s : getNewLabel(s) );
 	else
 		setLabel(params_.branch + ": " + getNewLabel(s));
 }
@@ -143,12 +143,12 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cmd.argument() == "assign") {
 			// The branch inset uses "assign".
 			if (isBranchSelected()) {
-				if (status() != Open)
+				if (status(cur.bv()) != Open)
 					setStatus(cur, Open);
 				else
 					cur.undispatched();
 			} else {
-				if (status() != Collapsed)
+				if (status(cur.bv()) != Collapsed)
 					setStatus(cur, Collapsed);
 				else
 					cur.undispatched();
@@ -180,9 +180,9 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 			flag.setEnabled(true);
 		else if (cmd.argument() == "assign" || cmd.argument().empty()) {
 			if (isBranchSelected())
-				flag.setEnabled(status() != Open);
+				flag.setEnabled(status(cur.bv()) != Open);
 			else
-				flag.setEnabled(status() != Collapsed);
+				flag.setEnabled(status(cur.bv()) != Collapsed);
 		} else
 			flag.setEnabled(true);
 		break;

@@ -135,7 +135,7 @@ docstring InsetFloat::name() const
 
 docstring InsetFloat::toolTip(BufferView const & bv, int x, int y) const
 {
-	if (InsetCollapsable::toolTip(bv, x, y).empty() || isOpen())
+	if (InsetCollapsable::toolTip(bv, x, y).empty() || isOpen(bv))
 		return docstring();
 
 	OutputParams rp(&buffer().params().encoding());
