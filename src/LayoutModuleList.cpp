@@ -17,8 +17,8 @@
 #include "ModuleList.h"
 
 #include "support/debug.h"
-#include "support/lyxalgo.h"
 
+#include <algorithm>
 #include <string>
 #include <vector>
 
