@@ -2148,8 +2148,10 @@ void GuiDocument::paramsToDialog()
 
 	pdfSupportModule->optionsLE->setText(
 		toqstr(pdf.quoted_options));
-	
-	bc().restore();
+
+	// Make sure that the bc is in the INITIAL state
+	if (bc().policy().buttonStatus(ButtonPolicy::RESTORE))
+		bc().restore();
 }
 
 
