@@ -20105,8 +20105,19 @@ Gleitobjekt\SpecialChar \menuseparator
 Algorithmus
 \family default
  eingefügt.
- Es gibt hierfür (noch) keinen Werkzeugleisten-Knopf.
- Er wird für Programm-Code und Algorithmen-Beschreibungen verwendet.
+ Er wird für Programm-Code und Algorithmen-Beschreibungen verwendet und
+ stellt eine Alternative zu Programm-Code-Listen dar, die in Kapitel
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "kap:Programm-Code-Listen"
+
+\end_inset
+
+.
  Eine mögliche Absatz-Umgebung hier für ist 
 \family sans
 LyX-Code
@@ -20127,11 +20138,11 @@ reference "alg:Ein-Gleitobjekt-Algorithmus"
 
 \end_inset
 
- wurden am Ende -0.4
+ wurden am Ende -4
 \begin_inset space \thinspace{}
 \end_inset
 
-cm vertikaler Abstand eingefügt, damit die untere Linie direkt unter der
+mm vertikaler Abstand eingefügt, damit die untere Linie direkt unter der
  letzten Zeile gedruckt wird.
 \end_layout
 
@@ -20162,8 +20173,8 @@ floatname{algorithm}{Algorithmus}
 \end_layout
 
 \begin_layout Standard
-Um das Algorithmenverzeichnis einzufügen, kann für englische Dokumente das
- Menü 
+Um das Algorithmenverzeichnis einzufügen, kann für Dokumente, die dieselbe
+ Sprache wie die LyX Menünamen haben, das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
 Liste
@@ -20178,7 +20189,7 @@ Inhaltsverzeichnis\SpecialChar \menuseparator
 Algorithmenverzeichnis
 \family default
  verwendet werden.
- Für nicht englische Dokumente, muss stattdessen dieser Befehl als TeX-Code
+ Für Dokumente in anderen Sprachen muss stattdessen dieser Befehl als TeX-Code
  eingefügt werden:
 \end_layout
 
