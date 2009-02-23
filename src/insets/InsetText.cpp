@@ -271,7 +271,11 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 		status.setEnabled(allowParagraphCustomization());
 		return true;
 	default:
-		return text_.getStatus(cur, cmd, status);
+		// Dispatch only to text_ if the cursor is inside
+		// the text_. It is not for context menus (bug 5797).
+		if (cur.text() == &text_)
+			return text_.getStatus(cur, cmd, status);
+		return false;
 	}
 }
 
