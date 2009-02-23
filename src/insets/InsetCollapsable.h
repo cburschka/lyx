@@ -78,17 +78,18 @@ public:
 	///
 	docstring const getNewLabel(docstring const & l) const;
 	///
-	EDITABLE editable() const;
+	EDITABLE editable(BufferView const & bv) const;
 	/// can we go further down on mouse click?
-	bool descendable() const;
+	bool descendable(BufferView const & bv) const;
 	///
 	void setLabel(docstring const & l);
 	///
 	virtual void setButtonLabel() {}
 	///
-	bool isOpen() const { return geometry() != ButtonOnly; }
+	bool isOpen(BufferView const & bv) const 
+		{ return geometry(bv) != ButtonOnly; }
 	///
-	CollapseStatus status() const;
+	CollapseStatus status(BufferView const & bv) const;
 	/** Of the old CollapseStatus we only keep the values  
 	 *  Open and Collapsed.
 	 * We define a list of possible inset decoration
@@ -122,7 +123,7 @@ public:
 	/// Returns the geometry based on CollapseStatus
 	/// (status_), autoOpen_ and openinlined_, and of
 	/// course decoration().
-	Geometry geometry() const;
+	Geometry geometry(BufferView const & bv) const;
 	/// Allow spellchecking, except for insets with latex_language
 	bool allowSpellCheck() const { return !forceLTR(); }
 	///
@@ -180,8 +181,9 @@ private:
 	mutable Box button_dim;
 	/// a substatus of the Open status, determined automatically in metrics
 	mutable bool openinlined_;
-	/// the inset will automatically open when the cursor is inside
-	mutable bool autoOpen_;
+	/// the inset will automatically open when the cursor is inside. This is
+	/// dependent on the bufferview, compare with MathMacro::editing_.
+	mutable std::map<BufferView const *, bool> auto_open_;
 	/// changes color when mouse enters/leaves this inset
 	bool mouse_hover_;
 };

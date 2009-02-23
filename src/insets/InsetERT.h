@@ -73,7 +73,7 @@ private:
 	///
 	Inset * clone() const { return new InsetERT(*this); }
 	///
-	void setButtonLabel();
+	void setButtonLabel(BufferView const & bv);
 	///
 	bool allowSpellCheck() const { return false; }
 };
