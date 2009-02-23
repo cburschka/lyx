@@ -22,6 +22,12 @@ and name it after your language. German would be for example de.po and Polish
 pl.po. This file is generated in the "po" directory of the source tree during
 the compilation.
 
+There are basically two source trees you can start to work with - trunk
+(development version) and branch (stable version). Unless the development
+version is shortly before release it is better idea to start your translating
+work on the stable version. If you have no idea how to get those trees you
+can follow http://www.lyx.org/HowToUseSVN page.
+
 
 2) HOW DO I EDIT PO FILES?
 
