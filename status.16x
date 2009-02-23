@@ -190,6 +190,9 @@ What's new
 - Set a proper file filter in the file dialog for inserting plain text.
   This fixes a crash when attempting to insert plain text (bug 5671).
   
+- Fix the synchronisation of insets when they are shown in two different
+  views. This could also have lead to an assertion (bug 4346). 
+  
 - Speed up editing with Outliner open with Qt >= 4.3. This should 
   especially pay off on the Mac, if the Outliner shows as a drawer
   (part of bug 4443).
