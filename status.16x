@@ -191,7 +191,12 @@ What's new
   This fixes a crash when attempting to insert plain text (bug 5671).
   
 - Fix the synchronisation of insets when they are shown in two different
-  views. This could also have lead to an assertion (bug 4346). 
+  views. This could also have lead to an assertion (bug 4346).
+  
+- Fix an assertion when the status of a command in the context menu of
+  an InsetCollapsable is requested which is not handled by the inset.
+  This might happen when the user modifies the ui or when the right
+  mouse button is dragged (bug 5797).
   
 - Speed up editing with Outliner open with Qt >= 4.3. This should 
   especially pay off on the Mac, if the Outliner shows as a drawer
