@@ -57,6 +57,8 @@ GuiRef::GuiRef(GuiView & lv)
 	// Enabling is set in updateRefs. Disable for now in case no
 	// call to updateContents follows (e.g. read-only documents).
 	sortCB->setEnabled(false);
+	caseSensitiveCB->setEnabled(false);
+	caseSensitiveCB->setChecked(false);
 	refsLW->setEnabled(false);
 	gotoPB->setEnabled(false);
 
@@ -80,6 +82,8 @@ GuiRef::GuiRef(GuiView & lv)
 		this, SLOT(refSelected(QListWidgetItem *)));
 	connect(sortCB, SIGNAL(clicked()),
 		this, SLOT(sortToggled()));
+	connect(caseSensitiveCB, SIGNAL(clicked()),
+		this, SLOT(caseSensitiveToggled()));
 	connect(gotoPB, SIGNAL(clicked()),
 		this, SLOT(gotoClicked()));
 	connect(updatePB, SIGNAL(clicked()),
@@ -93,6 +97,7 @@ GuiRef::GuiRef(GuiView & lv)
 	bc().setCancel(closePB);
 	bc().addReadOnly(refsLW);
 	bc().addReadOnly(sortCB);
+	bc().addReadOnly(caseSensitiveCB);
 	bc().addReadOnly(nameED);
 	bc().addReadOnly(referenceED);
 	bc().addReadOnly(typeCO);
@@ -170,6 +175,13 @@ void GuiRef::refSelected(QListWidgetItem * sel)
 
 
 void GuiRef::sortToggled()
+{
+	caseSensitiveCB->setEnabled(sortCB->isChecked());
+	redoRefs();
+}
+
+
+void GuiRef::caseSensitiveToggled()
 {
 	redoRefs();
 }
@@ -306,6 +318,11 @@ void GuiRef::gotoRef()
 	at_ref_ = !at_ref_;
 }
 
+inline bool caseInsensitiveLessThan(QString const & s1, QString const & s2)
+{
+	return s1.toLower() < s2.toLower();
+}
+
 
 void GuiRef::redoRefs()
 {
@@ -321,13 +338,20 @@ void GuiRef::redoRefs()
 	// the first item inserted
 	QString const oldSelection(referenceED->text());
 
-	for (vector<docstring>::const_iterator iter = refs_.begin();
-		iter != refs_.end(); ++iter) {
-		refsLW->addItem(toqstr(*iter));
+	QStringList refsStrings;
+	vector<docstring>::const_iterator iter;
+	for (iter = refs_.begin(); iter != refs_.end(); ++iter)
+		refsStrings.append(toqstr(*iter));
+
+	if (sortCB->isEnabled() && sortCB->isChecked()) {
+		if(caseSensitiveCB->isEnabled() && caseSensitiveCB->isChecked())
+			qSort(refsStrings.begin(), refsStrings.end());
+		else
+			qSort(refsStrings.begin(), refsStrings.end(),
+			      caseInsensitiveLessThan /*defined above*/);
 	}
 
-	if (sortCB->isEnabled() && sortCB->isChecked())
-		refsLW->sortItems();
+	refsLW->addItems(refsStrings);
 
 	referenceED->setText(oldSelection);
 
@@ -368,6 +392,7 @@ void GuiRef::updateRefs()
 		buf->getLabelList(refs_);
 	}	
 	sortCB->setEnabled(!refs_.empty());
+	caseSensitiveCB->setEnabled(sortCB->isEnabled() && sortCB->isChecked());
 	refsLW->setEnabled(!refs_.empty());
 	// refsLW should only be the focus proxy when it is enabled
 	setFocusProxy(refs_.empty() ? 0 : refsLW);

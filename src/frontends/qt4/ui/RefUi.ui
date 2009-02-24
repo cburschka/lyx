@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>347</width>
+    <width>386</width>
     <height>423</height>
    </rect>
   </property>
@@ -16,27 +16,6 @@
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item row="1" column="0" colspan="3" >
-    <widget class="QListWidget" name="refsLW" />
-   </item>
-   <item row="0" column="2" >
-    <widget class="QComboBox" name="bufferCO" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0" colspan="2" >
     <widget class="QLabel" name="refsL" >
      <property name="text" >
@@ -47,94 +26,85 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="0" colspan="3" >
+   <item row="0" column="2" >
+    <widget class="QComboBox" name="bufferCO" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="3" >
+    <widget class="QListWidget" name="refsLW" />
+   </item>
+   <item row="2" column="0" colspan="3" >
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
      <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
+      <layout class="QHBoxLayout" >
+       <item>
+        <widget class="QCheckBox" name="sortCB" >
+         <property name="toolTip" >
+          <string>Sort labels in alphabetical order (case-insensitively unless the Case-sensitive option is checked)</string>
+         </property>
+         <property name="text" >
+          <string>&amp;Sort</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="caseSensitiveCB" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+         <property name="toolTip" >
+          <string>Sort labels case-sensitively in alphabetical order</string>
+         </property>
+         <property name="text" >
+          <string>Cas&amp;e-sensitive</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
      <item>
-      <widget class="QPushButton" name="okPB" >
-       <property name="text" >
-        <string>&amp;OK</string>
-       </property>
-       <property name="default" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="applyPB" >
-       <property name="text" >
-        <string>&amp;Apply</string>
-       </property>
-       <property name="default" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
-        <string>&amp;Close</string>
-       </property>
-      </widget>
+      <layout class="QHBoxLayout" >
+       <item>
+        <widget class="QPushButton" name="updatePB" >
+         <property name="sizePolicy" >
+          <sizepolicy vsizetype="Fixed" hsizetype="MinimumExpanding" >
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip" >
+          <string>Update the label list</string>
+         </property>
+         <property name="text" >
+          <string>&amp;Update</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="gotoPB" >
+         <property name="sizePolicy" >
+          <sizepolicy vsizetype="Fixed" hsizetype="MinimumExpanding" >
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip" >
+          <string>Jump to the label</string>
+         </property>
+         <property name="text" >
+          <string>&amp;Go to Label</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
-   </item>
-   <item row="5" column="1" colspan="2" >
-    <widget class="QLineEdit" name="nameED" >
-     <property name="enabled" >
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0" >
-    <widget class="QLabel" name="nameL" >
-     <property name="enabled" >
-      <bool>false</bool>
-     </property>
-     <property name="text" >
-      <string>&amp;Name:</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-     <property name="buddy" >
-      <cstring>nameED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" >
-    <widget class="QLabel" name="typeLA" >
-     <property name="text" >
-      <string>&amp;Format:</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-     <property name="buddy" >
-      <cstring>typeLA</cstring>
-     </property>
-    </widget>
    </item>
    <item row="3" column="0" >
     <widget class="QLabel" name="referenceL" >
@@ -149,12 +119,26 @@
      </property>
     </widget>
    </item>
+   <item row="3" column="1" colspan="2" >
+    <widget class="QLineEdit" name="referenceED" />
+   </item>
+   <item row="4" column="0" >
+    <widget class="QLabel" name="typeLA" >
+     <property name="text" >
+      <string>&amp;Format:</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+     <property name="buddy" >
+      <cstring>typeLA</cstring>
+     </property>
+    </widget>
+   </item>
    <item row="4" column="1" colspan="2" >
     <widget class="QComboBox" name="typeCO" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>1</hsizetype>
-       <vsizetype>0</vsizetype>
+      <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -194,60 +178,77 @@
      </item>
     </widget>
    </item>
-   <item row="3" column="1" colspan="2" >
-    <widget class="QLineEdit" name="referenceED" />
-   </item>
-   <item row="2" column="0" >
-    <widget class="QCheckBox" name="sortCB" >
-     <property name="toolTip" >
-      <string>Sort labels in alphabetical order</string>
+   <item row="5" column="0" >
+    <widget class="QLabel" name="nameL" >
+     <property name="enabled" >
+      <bool>false</bool>
      </property>
      <property name="text" >
-      <string>&amp;Sort</string>
+      <string>&amp;Name:</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+     <property name="buddy" >
+      <cstring>nameED</cstring>
      </property>
     </widget>
    </item>
-   <item row="2" column="1" colspan="2" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+   <item row="5" column="1" colspan="2" >
+    <widget class="QLineEdit" name="nameED" >
+     <property name="enabled" >
+      <bool>false</bool>
      </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="3" >
+    <layout class="QHBoxLayout" >
      <property name="spacing" >
       <number>6</number>
      </property>
+     <property name="margin" >
+      <number>0</number>
+     </property>
      <item>
-      <widget class="QPushButton" name="updatePB" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>3</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
        </property>
-       <property name="toolTip" >
-        <string>Update the label list</string>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
        </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okPB" >
        <property name="text" >
-        <string>&amp;Update</string>
+        <string>&amp;OK</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="gotoPB" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>3</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="toolTip" >
-        <string>Jump to the label</string>
-       </property>
+      <widget class="QPushButton" name="applyPB" >
        <property name="text" >
-        <string>&amp;Go to Label</string>
+        <string>&amp;Apply</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="text" >
+        <string>&amp;Close</string>
        </property>
       </widget>
      </item>
@@ -255,10 +256,6 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_i18n.h</include>
- </includes>
  <tabstops>
   <tabstop>bufferCO</tabstop>
   <tabstop>refsLW</tabstop>
@@ -272,6 +269,9 @@
   <tabstop>applyPB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_i18n.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>
