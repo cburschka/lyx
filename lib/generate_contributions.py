@@ -1536,6 +1536,13 @@ contributers = [
                  "4 Nov 2008",
                  u"Turkish translation"),
 
+     contributer(u"Manoj Rajagopalan",
+                 "rmanoj () umich ! edu",
+                 "GPL",
+                 "Re: patch for case-insensitive reference sorting",
+                 "m=123506398801004",
+                 "Feb 19 2009",
+                 u"reference dialog tweaks"),
 
      contributer(u"Xiaokun Zhu",
                  "xiaokun () aero ! gla ! ac ! uk",
