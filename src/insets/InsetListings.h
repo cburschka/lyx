@@ -73,7 +73,7 @@ private:
 	///
 	Inset * clone() const { return new InsetListings(*this); }
 	///
-	void setButtonLabel(BufferView const & bv);
+	docstring const buttonLabel(BufferView const & bv) const;
 	///
 	docstring getCaption(OutputParams const &) const;
 

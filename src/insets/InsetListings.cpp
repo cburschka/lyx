@@ -397,13 +397,12 @@ bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetListings::setButtonLabel(BufferView const & bv)
+docstring const InsetListings::buttonLabel(BufferView const & bv) const
 {
-	// FIXME UNICODE
 	if (decoration() == InsetLayout::CLASSIC)
-		setLabel(isOpen(bv) ?  _("Listing") : getNewLabel(_("Listing")));
+		return isOpen(bv) ? _("Listing") : getNewLabel(_("Listing"));
 	else
-		setLabel(getNewLabel(_("Listing")));
+		return getNewLabel(_("Listing"));
 }
 
 

@@ -69,7 +69,7 @@ private:
 	///
 	Inset * clone() const { return new InsetERT(*this); }
 	///
-	void setButtonLabel(BufferView const & bv);
+	docstring const buttonLabel(BufferView const & bv) const;
 	///
 	bool allowSpellCheck() const { return false; }
 };
