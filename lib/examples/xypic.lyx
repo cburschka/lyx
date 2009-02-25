@@ -2947,13 +2947,13 @@ xymatrixrowsep@
 \family sans
 Layout\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
-Preamble)
-\end_layout
+Preamble
+\family default
+):
+\begin_inset Newpage pagebreak
+\end_inset
 
-\begin_layout LyX-Code
 
-\backslash
-makeatletter
 \end_layout
 
 \begin_layout LyX-Code
@@ -2967,27 +2967,9 @@ xyR}[1]{%
 \begin_layout LyX-Code
 
 \backslash
-makeatletter
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
 xydef@
 \backslash
-xymatrixrowsep@{#1}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-makeatother
-\end_layout
-
-\begin_layout LyX-Code
-} % end of 
-\backslash
-xyR
+xymatrixrowsep@{#1}}
 \end_layout
 
 \begin_layout LyX-Code
