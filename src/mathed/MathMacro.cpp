@@ -133,7 +133,7 @@ Inset * MathMacro::clone() const
 
 docstring MathMacro::name() const
 {
-	if (displayMode_ == DISPLAY_UNFOLDED && name_.size() != 1)
+	if (displayMode_ == DISPLAY_UNFOLDED)
 		return asString(cell(0));
 
 	return name_;
