@@ -402,7 +402,7 @@ SET(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${LYX_INSTALL_SUFFIX}")
 #
 # needed by rpm
 SET(CPACK_SET_DESTDIR "ON")
-SET(CPACK_RPM_PACKAGE_LICENSE "GPL")
+FILE(READ "${TOP_SRC_DIR}/development/cmake/LyX_license.txt" CPACK_RPM_PACKAGE_LICENSE)
 SET(CPACK_RPM_PACKAGE_GROUP "Applications/Publishing")
 SET(CPACK_RPM_PACKAGE_VENDOR "The LyX team")
 #
@@ -413,6 +413,13 @@ SET(CPACK_SOURCE_PACKAGE_FILE_NAME "lyx-${LYX_INSTALL_SUFFIX}")
 # for the next ones, cmake insists on data  with values in some file
 SET(CPACK_PACKAGE_DESCRIPTION_FILE "${TOP_SRC_DIR}/development/cmake/LyX_description.txt")
 SET(CPACK_RESOURCE_FILE_LICENSE "${TOP_SRC_DIR}/development/cmake/LyX_license.txt")
+
+# Find the revision number and use it as the release in rpm-package-build.
+# This way we may omit the otherwise needed "--force" parameter when
+# installing from that rpm package.
+FIND_PROGRAM(_svnversion svnversion)
+EXECUTE_PROCESS(COMMAND ${_svnversion} WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE CPACK_RPM_PACKAGE_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
+
 # we do not have a readme or welcome data,
 # so we do not provide infofiles for
 # CPACK_RESOURCE_FILE_README and CPACK_RESOURCE_FILE_WELCOME
@@ -427,4 +434,3 @@ include(CPack)
 # list      # rpm -qlp lyx-2.0.1-Linux.rpm              # dpkg-deb -c lyx-2.0.1-Linux.deb
 # install   # rpm -U lyx-2.0.1-Linux.rpm                # dpkg -i lyx-2.0.1-Linux.deb
 #
-
