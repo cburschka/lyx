@@ -85,7 +85,7 @@ public:
 	///
 	virtual void setButtonLabel() {}
 	///
-	virtual docstring const buttonLabel(BufferView const & bv) const
+	virtual docstring const buttonLabel(BufferView const &) const
 		{ return labelstring_; }
 	///
 	bool isOpen(BufferView const & bv) const 
