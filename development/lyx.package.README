@@ -1,12 +1,37 @@
 Here is what to do to make binary packages using CMake.
 
-Build LyX on your target system and build the package with cpack:
-cpack -G <generator> --config CPackConfig.cmake 
+The string "_SRC_DIR_" represents the cmake-lyx-build-directory, e.g. /usr/src/lyx/lyx-devel/development/cmake.
+The string "_BUILD_DIR_" represents the cmake-lyx-build-directory, e.g. /usr/BUILD/BuildLyx.
+The string "_PKG_NAME_" represents the name of the package, like "lyx-2.0.1-Linux" on my Linux-system
 
-Choose <generator> dependent on your system:
-DEB, RPM, TGZ, NSIS, and others
+Using cmake-gui:
+    cd _BUILD_DIR_; cmake-gui _SRC_DIR_
+	select: Show Advanced Entries
+	Search: CPACK
+	Now select the package-type(s) you would like to be build
+	select: Configure
+
+Likewise you may call cmake directly. E.g. to create debian package
+    cd _BUILD_DIR_; cmake _SRC_DIR_ -DCPACK_BINARY_DEB:BOOL=ON
+The generators (dependent on your system) are
+    DEB, RPM, TGZ, NSIS, STGZ, TBZ2, TZ
+    
+Now it is possible to create the package
+    cd _BUILD_DIR_; make package
+    #The created packages will be something like
+    #_PKG_NAME_.tar.gz
+    #_PKG_NAME_.zip
+    #...
+
+
+In archives for TGZ, STGZ, TBZ2 or TZ the filenames are prepended with the package-name,
+therefore we have to get rid of it (e.g. for STGZ the parameter "--exclude-subdir").
+Some installation proceedings:
+    STGZ:	sudo _PKG_NAME_.sh --exclude-subdir
+    TGZ:	sudo tar -zxv --strip-components 1 --directory / -f _PKG_NAME_.tar.gz
+    DEB:	sudo dpkg -i _PKG_NAME_.deb
+    RPM:	sudo rpm -U _PKG_NAME_.rpm
 
 See also:
 http://www.cmake.org/Wiki/CMake:CPackPackageGenerators
 http://www.cmake.org/cmake/help/cpack2.6docs.html
-
