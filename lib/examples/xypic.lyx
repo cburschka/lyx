@@ -7,18 +7,12 @@
 \usepackage[all]{xy}
 
 
-\makeatletter
+% define new commands used in sec. 5.1
 \newcommand{\xyR}[1]{
   \makeatletter
-  \xydef@\xymatrixrowsep@{#1}
-  \makeatother
-}
-\makeatletter
+  \xydef@\xymatrixrowsep@{#1}}
 \newcommand{\xyC}[1]{
-  \makeatletter
-  \xydef@\xymatrixcolsep@{#1}
-  \makeatother
-}
+  \xydef@\xymatrixcolsep@{#1}}
 
 \newdir{|>}{!/4.5pt/@{|}*:(1,-.2)@^{>}*:(1,+.2)@_{>}}
 
