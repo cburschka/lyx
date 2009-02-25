@@ -6,12 +6,19 @@
 \begin_preamble
 \usepackage[all]{xy}
 
-% define new commands used in sec. 5.1
+
+\makeatletter
 \newcommand{\xyR}[1]{
   \makeatletter
-  \xydef@\xymatrixrowsep@{#1}}
+  \xydef@\xymatrixrowsep@{#1}
+  \makeatother
+}
+\makeatletter
 \newcommand{\xyC}[1]{
-  \xydef@\xymatrixcolsep@{#1}}
+  \makeatletter
+  \xydef@\xymatrixcolsep@{#1}
+  \makeatother
+}
 
 \newdir{|>}{!/4.5pt/@{|}*:(1,-.2)@^{>}*:(1,+.2)@_{>}}
 
@@ -449,8 +456,21 @@ Move the cursor out of the formula, and watch it change its appearance to
 \end_deeper
 \begin_layout Enumerate
 Activate and test 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-Pic
 \family typewriter
-xypic
+:
 \end_layout
 
 \begin_deeper
@@ -493,42 +513,10 @@ $
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Enumerate
-In some cases you need to change your document preamble (e.g.
- when using 
-\backslash
-xy macro instead of 
-\backslash
-xymatrix macro).
- Choose 
-\family sans
-Layout\SpecialChar \menuseparator
-Document\SpecialChar \menuseparator
-Preamble
-\family default
- and type 
-\family typewriter
-
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-usepackage[all]{xy}.
-\begin_inset Newline newline
-\end_inset
-
-
+ Commutative diagrams
 \end_layout
 
 \end_deeper
-\begin_layout Section
-Commutative diagrams
-\end_layout
-
 \begin_layout Standard
 The following diagram, which is taken from the documentation of 
 \begin_inset ERT
@@ -2647,13 +2635,37 @@ Modifying arrows
 \end_layout
 
 \begin_layout Standard
-Finally, modify the appearance of the arrows by entering @-modifiers @{\SpecialChar \ldots{}
-},
- @<\SpecialChar \ldots{}
->, @(\SpecialChar \ldots{}
+Finally, you can modify the appearance of the arrows by entering @-modifiers
+ 
+\family typewriter
+@{
+\family default
+\SpecialChar \ldots{}
+
+\family typewriter
+}
+\family default
+, 
+\family typewriter
+@<
+\family default
+\SpecialChar \ldots{}
+>, 
+\family typewriter
+@(
+\family default
+\SpecialChar \ldots{}
 ,\SpecialChar \ldots{}
-) or @/\SpecialChar \ldots{}
-/.
+) or 
+\family typewriter
+@/
+\family default
+\SpecialChar \ldots{}
+
+\family typewriter
+/
+\family default
+.
  The above caveat applies to the first form only.
  It must be entered as 
 \family typewriter
@@ -2668,30 +2680,79 @@ Finally, modify the appearance of the arrows by entering @-modifiers @{\SpecialC
 \end_layout
 
 \begin_layout Standard
-The other modifiers, @<\SpecialChar \ldots{}
->, @(\SpecialChar \ldots{}
+The other modifiers, 
+\family typewriter
+@<
+\family default
+\SpecialChar \ldots{}
+
+\family typewriter
+>
+\family default
+, 
+\family typewriter
+@(
+\family default
+\SpecialChar \ldots{}
 ,\SpecialChar \ldots{}
-) and @/\SpecialChar \ldots{}
-/ are typed as shown with the arrow
- description replacing the ellipsis.
+
+\family typewriter
+) 
+\family default
+and 
+\family typewriter
+@/
+\family default
+\SpecialChar \ldots{}
+
+\family typewriter
+/ 
+\family default
+are typed as shown with the arrow description replacing the ellipsis.
  The code for bending arrows, which in 
 \family typewriter
 xypic
 \family default
- is @/_
+ is 
+\family typewriter
+@/_
+\family default
+\emph on
+measure
+\family typewriter
+\emph default
+/ 
+\family default
+or 
+\family typewriter
+@/
+\emph on
+^
+\family default
+measure
+\family typewriter
+\emph default
+/ 
+\family default
+where 
 \emph on
 measure
 \emph default
-/ or @/
-\emph on
-^measure
-\emph default
-/ where 
-\emph on
-measure
-\emph default
- is any valid TeX-measure, should be entered as upper or lower index to
- the first slash / .
+ is any valid 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+TeX
+\end_layout
+
+\end_inset
+
+-measure that should be entered as upper or lower index to the first slash
+ /.
  Make sure that the ending slash does not end up being part of the upper
  or lower index.
 \end_layout
@@ -2712,8 +2773,32 @@ lly convert it into graphical output.
 
 \begin_layout Standard
 A more serious reason could be a syntactical error in your input.
- If necessary, redo the last editing steps, using Ctrl-z, or try to translate
- the LyX-file into dvi using Ctrl-d or 
+ If necessary, redo the last editing steps, using 
+\emph on
+Ctrl-z
+\emph default
+, or try to translate the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+LyX
+\end_layout
+
+\end_inset
+
+-file into 
+\emph on
+dvi
+\emph default
+ using 
+\emph on
+Ctrl-d
+\emph default
+ or 
 \family sans
 View\SpecialChar \menuseparator
 Dvi
@@ -2728,7 +2813,20 @@ Hacks
 \end_layout
 
 \begin_layout Standard
-Certain things do not work correctly inside LyX.
+Certain things do not work correctly inside 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+LyX
+\end_layout
+
+\end_inset
+
+.
  The ones that we (used to) miss most are the horizontal and vertical scaling
  of diagrams, and the correct positioning of arrows.
  There are some workarounds that we are explaining here.
@@ -2849,13 +2947,13 @@ xymatrixrowsep@
 \family sans
 Layout\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
-Preamble
-\family default
-):
-\begin_inset Newpage pagebreak
-\end_inset
+Preamble)
+\end_layout
 
+\begin_layout LyX-Code
 
+\backslash
+makeatletter
 \end_layout
 
 \begin_layout LyX-Code
@@ -2869,9 +2967,27 @@ xyR}[1]{%
 \begin_layout LyX-Code
 
 \backslash
+makeatletter
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
 xydef@
 \backslash
-xymatrixrowsep@{#1}}
+xymatrixrowsep@{#1}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+makeatother
+\end_layout
+
+\begin_layout LyX-Code
+} % end of 
+\backslash
+xyR
 \end_layout
 
 \begin_layout LyX-Code
@@ -3198,25 +3314,127 @@ horizontal stretch
 \end_layout
 
 \begin_layout Subsection
-Another examples
-\end_layout
+Further 
+\family typewriter
 
-\begin_layout Standard
-Advanced painting can be done when using the 
-\backslash
-xy macro.
- Nice collection of examples from Aaron Lauda can be found at 
-\begin_inset Flex URL
+\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-http://www.dpmms.cam.ac.uk/~al366/xytutorial.html
+
+\backslash
+Xy
 \end_layout
 
 \end_inset
 
+
+\family default
+-tricks
+\end_layout
+
+\begin_layout Standard
+Here we have focused only on the 
+\family typewriter
+
+\backslash
+xymatrix
+\family default
+ command, which is just one of the features available in Kris Rose's amazing
+\family typewriter
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+
+\family default
+-package.
+ The 
+\family typewriter
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+
+\family default
+-Pic manual 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "xypic manual"
+
+\end_inset
+
+ demonstrates many of the advanced possibilities of that package.
+ Beware, that its style is rather terse and you will likely need a lot of
+ experimenting and modifying the many worked examples.
+ Lauda 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lauda"
+
+\end_inset
+
+ explains how to use 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+-pic to make braids, cobordism, string diagrams, and much more.
+ A good and rather systematic introduction to 
+\family typewriter
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+
+\family default
+-matrix is 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ouvaton"
+
+\end_inset
+
 .
+ Even if you share with me the disadvantage of not being fluent in Esperanto,
+ you will be able to understand most of it.
+ 
 \end_layout
 
 \begin_layout Bibliography
@@ -3315,6 +3533,93 @@ status collapsed
 \begin_layout Plain Layout
 
 http://www.gnu.org/software/auctex/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "5"
+key "Lauda"
+
+\end_inset
+
+Aarlon Lauda: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+
+\emph on
+-Pic
+\emph default
+ 
+\emph on
+tutorial with an archive of examples
+\emph default
+.
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.dpmms.cam.ac.uk/~al366/xytutorial.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "6"
+key "Ouvaton"
+
+\end_inset
+
+Filipp Ouvaton: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
+\end_inset
+
+
+\emph on
+-Pic
+\emph default
+: 
+\emph on
+Enkonduko pri Xymatrix
+\emph default
+.
+ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://filip.ouvaton.org/xypic/xymatrix/index.html
 \end_layout
 
 \end_inset
