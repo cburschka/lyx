@@ -2417,6 +2417,8 @@ bool samePar(DocIterator const & a, DocIterator const & b)
 		return true;
 	if (a.empty() || b.empty())
 		return false;
+	if (a.depth() != b.depth())
+		return false;
 	return &a.innerParagraph() == &b.innerParagraph();
 }
 
