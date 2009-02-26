@@ -889,7 +889,7 @@ void Cursor::posVisToRowExtremity(bool left)
 			// as explained above, if at last pos in row, stay to the left,
 			// unless the last position is the same as the first.
 			bool const left_of_pos = row.endpos() > 0
-				&& pos() == row.endpos() - 1 && !par.isInset(pos()));
+				&& pos() == row.endpos() - 1 && !par.isInset(pos());
 
 			// Now we know if we want to be to the left or to the right of pos,
 			// let's make sure we are where we want to be.
