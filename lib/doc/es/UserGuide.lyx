@@ -1096,7 +1096,15 @@ mayúsculas
 \end_inset
 
 e.
- la palabra «Test» se ignorará la palabra «test».
+ la palabra «
+\family typewriter
+Test
+\family default
+» se ignorará la palabra «
+\family typewriter
+test
+\family default
+».
  La opción 
 \family sans
 Coincidir
@@ -1117,7 +1125,15 @@ hace que LyX busque solamente palabras completas, p.
 \begin_inset space \thinspace{}
 \end_inset
 
-e., si buscamos «estrella» se ignorarán palabras como «estrellado».
+e., si buscamos «
+\family typewriter
+estrella
+\family default
+» se ignorarán palabras como «
+\family typewriter
+estrellado
+\family default
+».
  
 \end_layout
 
@@ -1397,16 +1413,16 @@ reference "sec:IG"
 .
  Con un clic puedes saltar a la parte del documento correspondiente.
  En la parte superior hay un cuadro desplegable en el que puedes escoger
- entre varias listas de objetos, como notas al pie.
- Algunas de estas listas, de tablas, de figuras y de algoritmos se pueden
- añadir al documento, véase
+ entre varias listas e índices de objetos, como notas al pie.
+ Algunos de éstos, como los índices de tablas, de figuras y de algoritmos,
+ se pueden añadir al documento, véase
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Listas-de"
+reference "sub:Índices-de"
 
 \end_inset
 
@@ -2445,7 +2461,7 @@ Documentos ! Configuración
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -5509,7 +5525,7 @@ Configuración
 spanishdashitems 
 \series default
 hace que todas las listas no numeradas siguientes en el documento lleven
- como etiqueta una raya en todos los niveles.
+ como etiqueta una raya, —, en todos los niveles.
 \end_layout
 
 \begin_layout Standard
@@ -9206,7 +9222,7 @@ Knuth ha desarrollado nuestro querido programa de tipografía, TeX.
 \end_layout
 
 \begin_layout Standard
-o entre valores y unidades.
+O entre valores y unidades.
  Compara por ejemplo:
 \begin_inset Newline newline
 \end_inset
@@ -9827,6 +9843,10 @@ Llave abajo:
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \begin_inset Note Greyedout
 status collapsed
 
@@ -11523,11 +11543,11 @@ clic en el botón de la barra de herramientas
 \begin_layout Itemize
 teclea la combinación 
 \family sans
-Alt+c
+Alt+C
 \begin_inset space ~
 \end_inset
 
-c
+C
 \end_layout
 
 \begin_layout Standard
@@ -11582,11 +11602,15 @@ clic en el botón
 \begin_layout Itemize
 con la combinación de teclas 
 \family sans
-Alt+c
+Alt+C
 \begin_inset space ~
 \end_inset
 
-e
+E
+\family default
+, 
+\family sans
+Ctrl+E
 \end_layout
 
 \begin_layout Standard
@@ -11624,7 +11648,7 @@ Es un aviso además de un ejemplo.
 Siempre se puede restablecer la fuente predeterminada con la combinación
  
 \family sans
-Alt+c
+Alt+C
 \begin_inset space ~
 \end_inset
 
@@ -11747,56 +11771,14 @@ Roman
  Normalmente una fuente serif.
  Es la familia predeterminada.
  (combinación 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
 \family sans
-Alt+c
+Alt+C
 \begin_inset space ~
 \end_inset
 
-r
+R
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
 )
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-El comando LaTeX previene la rotura del texto al final de una línea.
- Se explica en la sección 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:División-con-guión"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Labeling
@@ -11815,37 +11797,13 @@ Sans Serif.
 
 \family default
  (combinación 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
 \family sans
-Alt+c
+Alt+C
 \begin_inset space ~
 \end_inset
 
-s
+S
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
 )
 \end_layout
 
@@ -11861,40 +11819,8 @@ Typewriter.
 
 \family default
  (combinación 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
 \family sans
-Alt+c
-\begin_inset space ~
-\end_inset
-
-p
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\family sans
-)
+Control+Mayúsculas+P)
 \end_layout
 
 \end_deeper
@@ -11930,38 +11856,18 @@ Negrita
 Esta es la serie Negrita.
 
 \series default
- (combinación 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+ (combinaciones 
 \family sans
-Alt+c
+Alt+C
 \begin_inset space ~
 \end_inset
 
-b
+B
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+, 
+\family sans
+Ctrl+B
+\family default
 )
 \end_layout
 
@@ -12062,52 +11968,15 @@ Diminuta
 .
 
 \size default
- (combinación 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+ (combinaciones 
 \family sans
 Alt+S
 \begin_inset space ~
 \end_inset
 
-t
+T
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- o 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+, 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -12115,17 +11984,6 @@ Alt+S
 
 1
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
 )
 \end_layout
 
@@ -12149,37 +12007,13 @@ Pequeñísima
 \size default
 .
  (combinación 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
 \family sans
 Alt+S
 \begin_inset space ~
 \end_inset
 
-
-\family default
 2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+\family default
 )
 \end_layout
 
@@ -12206,20 +12040,7 @@ Más Pequeña
 .
 
 \size default
- (combinación 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+ (combinaciones 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -12227,49 +12048,14 @@ Alt+S
 
 Mayúsculas+S
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- o 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+, 
 \family sans
 Alt+S
 \begin_inset space ~
 \end_inset
 
-
-\family default
 3
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+\family default
 )
 \end_layout
 
@@ -12292,20 +12078,7 @@ Pequeña
 .
 
 \size default
- (combinación 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+ (combinaciones 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -12313,49 +12086,14 @@ Alt+S
 
 S
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- o 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+, 
 \family sans
 Alt+S
 \begin_inset space ~
 \end_inset
 
-
-\family default
 4
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+\family default
 )
 \end_layout
 
@@ -12375,20 +12113,7 @@ Normal
 
 .
  Es el valor por omisión.
- (combinación 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+ (combinaciones 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -12396,49 +12121,14 @@ Alt+S
 
 N
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- o 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+, 
 \family sans
 Alt+S
 \begin_inset space ~
 \end_inset
 
-
-\family default
 5
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+\family default
 )
 \end_layout
 
@@ -12461,20 +12151,7 @@ Grande
 .
 
 \size default
- (combinación 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+ (combinaciones 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -12482,49 +12159,14 @@ Alt+S
 
 L
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- o 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+, 
 \family sans
 Alt+S
 \begin_inset space ~
 \end_inset
 
-
-\family default
 6
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+\family default
 )
 \end_layout
 
@@ -12551,20 +12193,7 @@ Más grande
 .
 
 \size default
- (combinación 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+ (combinaciones 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -12572,49 +12201,14 @@ Alt+S
 
 Mayúsculas+L
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- o 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+, 
 \family sans
 Alt+S
 \begin_inset space ~
 \end_inset
 
-
-\family default
 7
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+\family default
 )
 \end_layout
 
@@ -12638,37 +12232,13 @@ Grandísima
 
 \size default
  (combinación 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
 \family sans
 Alt+S
 \begin_inset space ~
 \end_inset
 
-
-\family default
 8
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+\family default
 )
 \end_layout
 
@@ -12691,70 +12261,22 @@ Enorme
 .
 
 \size default
- (combinación 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+ (combinaciones 
 \family sans
-Alt+S
+Alt+S Mayúsculas
 \begin_inset space ~
 \end_inset
 
 H
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- o 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+, 
 \family sans
 Alt+S
 \begin_inset space ~
 \end_inset
 
-
-\family default
 9
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+\family default
 )
 \end_layout
 
@@ -12781,20 +12303,7 @@ Más enorme
 .
 
 \size default
- (combinación 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+ (combinaciones 
 \family sans
 Alt+S
 \begin_inset space ~
@@ -12802,49 +12311,14 @@ Alt+S
 
 Mayúsculas+H
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- o 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+, 
 \family sans
 Alt+S
 \begin_inset space ~
 \end_inset
 
-
-\family default
 0
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+\family default
 )
 \end_layout
 
@@ -12912,41 +12386,13 @@ Subrayado
 Esto es un texto subrayado.
 
 \bar default
- (combinación 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
+ (combinaciones C
 \family sans
-Ctrl+U, Alt+C
+trl+U, Alt+C
 \begin_inset space ~
 \end_inset
 
-U
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\family sans
-)
+U)
 \begin_inset Newline newline
 \end_inset
 
@@ -12975,7 +12421,11 @@ Este texto está en Versalitas.
 Énfasis
 \family default
 , es un atributo lógico.
- Normalmente equivale a Mayúsculas pequeñas.
+ Normalmente equivale a 
+\family sans
+Mayúsculas pequeñas
+\family default
+.
 \end_layout
 
 \end_deeper
@@ -16135,7 +15585,6 @@ Este diálogo contiene numerosos parámetros, la mayoría autodefinidos.
 Gráficos
 \family default
  permite escoger el archivo de imagen.
- La apariencia de la imagen en LyX y en la salida se configuran por separado.
  La imagen se puede transformar poniendo un ángulo de rotación y un factor
  de escala.
  Las unidades de escala se explican en el Apéndice
@@ -16241,7 +15690,7 @@ borrador
 \family sans
 No descomprimir al exportar
 \family default
- se esplica en la sección 
+ se explica en la sección 
 \emph on
 Diálogo de gráficos
 \emph default
@@ -16402,7 +15851,7 @@ status collapsed
 
 \end_inset
 
-Formatos de Imagen
+Formatos de imagen
 \begin_inset ERT
 status collapsed
 
@@ -16450,7 +15899,7 @@ status collapsed
 
 \end_inset
 
-Formatos de Imagen
+Formatos de imagen
 \begin_inset ERT
 status collapsed
 
@@ -16506,7 +15955,7 @@ status collapsed
 
 \end_inset
 
-Formatos de Imagen
+Formatos de imagen
 \begin_inset ERT
 status collapsed
 
@@ -16575,7 +16024,7 @@ status collapsed
 
 \end_inset
 
-Formatos de Imagen
+Formatos de imagen
 \begin_inset ERT
 status collapsed
 
@@ -16627,7 +16076,7 @@ status collapsed
 
 \end_inset
 
-Formatos de Imagen
+Formatos de imagen
 \begin_inset ERT
 status collapsed
 
@@ -17038,8 +16487,12 @@ Una tabla se puede cambiar mediante el cuadro de diálogo que aparece al
 \end_layout
 
 \begin_layout Standard
-Además del diálogo, hay una barra de herramientas para tablas que aparece
- cuando el cursor se sitúa dentro de una tabla, que te permite
+Además del diálogo hay una 
+\family sans
+barra de herramientas
+\family default
+ para tablas, que aparece cuando el cursor se sitúa dentro de una tabla,
+ que te permite
 \family sans
  
 \family default
@@ -17316,7 +16769,7 @@ Tablas
 Objetos insertados
 \emph default
 .
- También puedes girar la celda actual o toda la tabla 90 
+ También puedes girar la celda actual o toda la tabla 90
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -19948,6 +19401,20 @@ Esto es una entrada multilínea en una celda.
 \begin_layout Standard
 Cortar y pegar entre tablas y celdas de tabla funciona razonablemente bien.
  Puedes cortar y pegar más de una fila.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+No se puede pegar en una selección multicelda porque no estaría claro cómo
+ proceder al pegar, p.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., una palabra en una selección 2×3.
+\end_layout
+
+\end_inset
+
  Seleccionar con el ratón o con 
 \family sans
 Shift+flecha
@@ -20291,7 +19758,7 @@ cruzada
 Normalmente sólo se inserta una imagen en un flotante, pero si quieres poner
  dos imágenes con leyendas separadas, esto es posible insertando una imagen
  flotante dentro de otro flotante.
- Ten en cuenta que sólo el título principal del flotante se añade a la lista
+ Ten en cuenta que sólo el título principal del flotante se añade al índice
  de figuras.
  La Figura
 \begin_inset space ~
@@ -20305,7 +19772,7 @@ reference "cap:Dos-imágenes"
 \end_inset
 
  es un ejemplo de flotante con dos imágenes adosadas.
- También se pueden poner una sobre otra.
+ También se puede poner una sobre otra.
  Las figuras 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -20441,9 +19908,9 @@ Dos imágenes distorsionadas.
 \end_layout
 
 \begin_layout Standard
-Observa que los títulos se añaden a la 
+Observa que las leyendas se añaden al 
 \family sans
-Lista
+Índice
 \begin_inset space ~
 \end_inset
 
@@ -20451,7 +19918,7 @@ de
 \begin_inset space ~
 \end_inset
 
-Figuras,
+figuras,
 \family default
  como se explica en la sección
 \begin_inset space ~
@@ -20460,7 +19927,7 @@ Figuras,
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Listas-de"
+reference "sub:Índices-de"
 
 \end_inset
 
@@ -20845,7 +20312,7 @@ lines 0
 placement l
 overhang 0col%
 width "40col%"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -20869,7 +20336,7 @@ name "fig:Figura-envuelta"
 \end_inset
 
 Una figura envuelta en el texto.
-\begin_inset VSpace 1cm
+\begin_inset VSpace medskip
 \end_inset
 
 
@@ -20930,8 +20397,8 @@ Configuración de LaTeX
 
 \end_inset
 
- La anchura y posición del flotante se ajusta con clic derecho sobre el
- cuadro del flotante.
+ La anchura y la posición del flotante se ajustan en el diálogo de configuración
+ al que se accede haciendo clic derecho sobre el cuadro del flotante.
  La figura
 \begin_inset space ~
 \end_inset
@@ -20947,7 +20414,7 @@ reference "fig:Figura-envuelta"
 \begin_inset space \thinspace{}
 \end_inset
 
-col%.
+% de la columna.
 \begin_inset Foot
 status collapsed
 
@@ -21044,15 +20511,15 @@ Flotantes ! Rotación
 \end_layout
 
 \begin_layout Standard
-Podrías necesitar girar flotantes, especialmente en tablas grandes.
- Para girar todo el flotante con su título, haz clic derecho en el cuadro
+Podrías necesitar girar flotantes, especialmente con tablas grandes.
+ Para girar todo el flotante con su leyenda, haz clic derecho en el cuadro
  y marca la opción 
 \family sans
 Girar
 \begin_inset space ~
 \end_inset
 
-a
+hacia
 \begin_inset space ~
 \end_inset
 
@@ -21062,7 +20529,7 @@ un
 
 lado
 \family default
-.
+ en el diálogo de configuración.
 \end_layout
 
 \begin_layout Standard
@@ -21073,8 +20540,7 @@ Los flotantes girados son puestos siempre en su propia página (o columna
 Extender columnas
 \family default
  de la configuración de flotantes.
- Normalmente se rotan de forma que puedes leerlos desde el margen externo
- (giran hacia la izquierda en páginas impares).
+ Normalmente se rotan de forma que puedes leerlos desde el margen externo.
  En el manual 
 \emph on
 Objetos insertados
@@ -21084,7 +20550,7 @@ Objetos insertados
 
 \begin_layout Standard
 Las referencias a flotantes girados se hacen como los flotantes normales,
- el formato del título también es igual.
+ el formato de la leyenda también es igual.
  La Tabla
 \begin_inset space ~
 \end_inset
@@ -21235,8 +20701,8 @@ Flotantes ! Colocación
 \end_layout
 
 \begin_layout Standard
-Un clic derecho sobre un cuadro de flotante abre un diálogo en el que pueden
- cambiarse las opciones de LaTeX para situar los flotantes.
+Un clic derecho sobre un cuadro de flotante permite abrir un diálogo en
+ el que pueden cambiarse las opciones LaTeX para situar los flotantes.
 \begin_inset Newline newline
 \end_inset
 
@@ -21259,7 +20725,7 @@ Girar
 \begin_inset space ~
 \end_inset
 
-a
+hacia
 \begin_inset space ~
 \end_inset
 
@@ -21592,7 +21058,7 @@ Las minipáginas se suelen usar para texto en otro idioma o que necesita
 \end_inset
 
 Si sitúas dos minipáginas adosadas, puedes usar 
-\family typewriter
+\family sans
 Relleno
 \begin_inset space ~
 \end_inset
@@ -21903,21 +21369,22 @@ La posición del cursor en una ecuación se controla mucho mejor con las teclas
 \family sans
 Espacio
 \family default
- se sale de la estructura matemática  (raíz cuadrada 
+ el cursor sale de la estructura matemática actual (raíz 
 \begin_inset Formula $\sqrt{2}$
 \end_inset
 
-, o paréntesis 
+, paréntesis 
 \begin_inset Formula $\left(f\right)$
 \end_inset
 
-, o una matriz 
+, matriz 
 \begin_inset Formula $\left[\begin{array}{cc}
 1 & 2\\
 3 & 4\end{array}\right]$
 \end_inset
 
-) y el cursor se sitúa tras ella.
+, \SpecialChar \ldots{}
+) sin abandonar la ecuación.
  Si se pulsa 
 \family sans
 Escape
@@ -21932,11 +21399,11 @@ Tab
 \end_layout
 
 \begin_layout Standard
-
+El 
 \family sans
 Espacio
 \family default
-, representada en este documento como 
+, representado en este documento como 
 \begin_inset Quotes fld
 \end_inset
 
@@ -21968,7 +21435,7 @@ En la salida, este comando aparece como su carácter correspondiente, el
 
 \end_inset
 
-, parece que no hace nada en una ecuación, puesto que no añade espacios,
+, parece que no hace nada en una ecuación, puesto que no añade espacio,
  pero sirve para salir de estructuras anidadas.
  Por esta razón debes tener cuidado con el uso de 
 \family sans
@@ -22299,16 +21766,20 @@ de
 \begin_inset space ~
 \end_inset
 
+herramientas
+\begin_inset space ~
+\end_inset
+
 matemáticas
 \family default
 .
  Se presenta una fracción vacía, con el cursor sobre la línea de fracción.
- Para moverlo abajo, sencillamente pulsa 
+ Para moverlo abajo, sencillamente pulsa la tecla 
 \family sans
 Abajo
 \family default
 .
- Para volver, flecha 
+ Para volver, 
 \family sans
 Arriba
 \family default
@@ -22352,6 +21823,10 @@ Barra
 \end_inset
 
 de
+\begin_inset space ~
+\end_inset
+
+herramientas
 \begin_inset space ~
 \end_inset
 
@@ -22458,7 +21933,7 @@ L
  o con el menú  
 \family sans
 Editar\SpecialChar \menuseparator
-Ecuación\SpecialChar \menuseparator
+Ecuaciones\SpecialChar \menuseparator
 Cambiar
 \begin_inset space ~
 \end_inset
@@ -22635,7 +22110,15 @@ Panel de ecuaciones
  Se genera un espacio señalado con un pequeño marcador en la pantalla.
  Por ejemplo, la secuencia 
 \series bold
-a Ctrl+Espacio b
+a
+\begin_inset space ~
+\end_inset
+
+Ctrl+Espacio
+\begin_inset space ~
+\end_inset
+
+b
 \series default
  da: 
 \begin_inset Formula $a\, b$
@@ -22790,7 +22273,7 @@ Funciones predefinidas
 \emph on
 Ecuaciones
 \emph default
- y en la página
+ y en la página web
 \begin_inset space ~
 \end_inset
 
@@ -23540,9 +23023,9 @@ Decoraciones
 
 \end_inset
 
- de los 
+ del 
 \family sans
-Paneles de ecuaciones
+Panel de ecuaciones
 \family default
 ; esto se aplicará también a cualquier selección que hayas hecho en una
  fórmula.
@@ -23728,11 +23211,10 @@ Para crear este agrupamiento tienes que usar la secuencia de teclas
 \begin_inset Quotes frd
 \end_inset
 
-, después espacio.
- En LyX, verás corchetes en rojo señalando el agrupamiento.
- Dentro de ellos insertas la estructura agrupada.
- Estos corchetes de agrupamiento no salen impresos, a diferencia de los
- normales.
+ y después teclea espacio.
+ En LyX, verás llaves en rojo señalando el agrupamiento.
+ Dentro de ellas insertas la estructura agrupada.
+ Estas llaves de agrupamiento no salen impresas, a diferencia de las normales.
 \end_layout
 
 \begin_layout Section
@@ -23804,7 +23286,7 @@ matemáticas
 \end_inset
 
 Los paréntesis no son automáticos, puedes añadirlos como se ha descrito
- en sec.
+ en la sec.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -23862,7 +23344,11 @@ c
 \begin_inset Quotes fld
 \end_inset
 
+
+\family sans
 c
+\family default
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -23902,7 +23388,7 @@ Ctrl+Retorno
  Puedes añadir o quitar filas y columnas con el menú 
 \family sans
 Editar\SpecialChar \menuseparator
-Ecuación
+Ecuaciones
 \family default
  o con los botones adecuados de la barra de herramientas matemáticas.
 \end_layout
@@ -23913,7 +23399,7 @@ Hay otros ordenamientos utilizados en ecuaciones, tales como una presentación
  Para ello se usa el submenú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Ecuación\SpecialChar \menuseparator
+Ecuaciones\SpecialChar \menuseparator
 Entorno
 \begin_inset space ~
 \end_inset
@@ -24014,15 +23500,9 @@ Ctrl+Tab.
 
 \begin_layout Standard
 La ecuación multilínea aquí descrita es del tipo 
-\family typewriter
-Entorno
 \family sans
-_
-\family typewriter
-\series medium
-EqnArray
+Entorno_EqnArray
 \family default
-\series default
 .
  Hay otros tipos de ecuaciones de varias líneas más apropiados para determinadas
  situaciones, por ejemplo si quieres un espacio entre líneas más adecuado
@@ -24087,7 +23567,7 @@ name "sec:Numeración-y-referencia"
 Para numerar una ecuación, pon el cursor en ella y usa el menú 
 \family sans
 Editar\SpecialChar \menuseparator
-Ecuación\SpecialChar \menuseparator
+Ecuaciones\SpecialChar \menuseparator
 Conmutar
 \begin_inset space ~
 \end_inset
@@ -24147,7 +23627,7 @@ Las ecuaciones multilínea se pueden numerar línea por línea, mediante el
  menú 
 \family sans
 Editar\SpecialChar \menuseparator
-Ecuación\SpecialChar \menuseparator
+Ecuaciones\SpecialChar \menuseparator
 Conmutar
 \begin_inset space ~
 \end_inset
@@ -24354,9 +23834,9 @@ La fuente estándar para el texto es cursiva, y para números es romana.
 
 \end_inset
 
- de los 
+ del 
 \family sans
-Paneles de ecuaciones
+Panel de ecuaciones
 \family default
 , o introduce directamente el comando adecuado, según el cuadro
 \begin_inset space ~
@@ -24883,39 +24363,47 @@ Matemáticas ! Tamaños de fuente
 \begin_layout Standard
 Hay cuatro estilos de fuente (tamaños relativos) disponibles en modo matemático,
  que son automáticamente escogidos en la mayoría de situaciones.
- Se llaman 
+ Son los estilos 
 \family sans
-modo
+presentación
+\family default
+, 
+\family sans
+texto
 \begin_inset space ~
 \end_inset
 
-texto (textstyle
+normal
 \family default
-), 
-\family sans
-presentación (displaystyle
-\family default
-), 
-\family sans
-índice
-\begin_inset space ~
-\end_inset
-
-pequeño (scriptstyle
-\family default
-), e 
+, 
 \family sans
 índice
 \begin_inset space ~
 \end_inset
 
-más
+(pequeño)
+\family default
+, e 
+\family sans
+índice
 \begin_inset space ~
 \end_inset
 
-pequeño (scriptscriptstyle
+de
+\begin_inset space ~
+\end_inset
+
+índice
+\begin_inset space ~
+\end_inset
+
+(más
+\begin_inset space ~
+\end_inset
+
+pequeño)
 \family default
-).
+.
  Para la mayoría de los caracteres
 \family sans
 , texto
@@ -24938,7 +24426,11 @@ presentación.
 
 \end_inset
 
- de los paneles de ecuaciones.
+ del 
+\family sans
+Panel de ecuaciones
+\family default
+.
  Aparece un rectángulo de tamaño adecuado al estilo elegido en el que puedes
  insertar la estructura matemática.
  Por ejemplo, puedes poner 
@@ -25709,7 +25201,7 @@ Objetos insertados
 \end_layout
 
 \begin_layout Section
-El índice general y otras listas
+El índice general y otros índices
 \begin_inset Index
 status collapsed
 
@@ -25839,10 +25331,10 @@ reference "sub:Profundidad-de-numeración"
 \end_layout
 
 \begin_layout Subsection
-Listas de figuras, tablas y algoritmos
+Índices de figuras, tablas y algoritmos
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Listas-de"
+name "sub:Índices-de"
 
 \end_inset
 
@@ -25850,7 +25342,8 @@ name "sub:Listas-de"
 \end_layout
 
 \begin_layout Standard
-Las listas de tablas, figuras y algoritmos son muy parecidas al índice general.
+Los índices de tablas, figuras y algoritmos son muy parecidos al índice
+ general.
  Se insertan mediante los submenús de 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -25865,8 +25358,8 @@ Lista
 Índice
 \family default
 .
- Las entradas de la lista son el número del flotante correspondiente y su
- título.
+ Las entradas del índice son el número del flotante correspondiente y su
+ leyenda.
 \end_layout
 
 \begin_layout Section
@@ -27899,13 +27392,9 @@ Ordenar
 \begin_inset space ~
 \end_inset
 
-como (Sort
-\begin_inset space ~
-\end_inset
-
-as)
+como 
 \family default
- en el diálogo de nomenclatura.
+en el diálogo de nomenclatura.
  Entonces el orden será establecido teniendo en cuenta el texto de dicho
  campo y no la definición del símbolo.
  Para nuestro ejemplo, puedes escribir 
@@ -28186,7 +27675,7 @@ nomname
  en el preámbulo.
  Por ejemplo, para titular como 
 \emph on
-Lista de símbolos
+Índice de símbolos
 \emph default
 , añade al preámbulo la línea:
 \end_layout
@@ -28199,7 +27688,7 @@ Lista de símbolos
 \backslash
 renewcommand{
 \backslash
-nomname}{Lista de símbolos}
+nomname}{Índice de símbolos}
 \end_layout
 
 \begin_layout Standard
@@ -35406,7 +34895,7 @@ eX
 \begin_inset space ~
 \end_inset
 
-(plain)
+(simple)
 \family default
  archivo de texto en código LaTeX, y todas las imágenes del documento se
  convierten al formato EPS, único legible por el programa 
@@ -36707,11 +36196,11 @@ Limpiar
 \begin_inset space ~
 \end_inset
 
-doble
+página
 \begin_inset space ~
 \end_inset
 
-página Inserta un salto de página limpia en documentos a dos caras, descrito
+doble Inserta un salto de página limpia en documentos a dos caras, descrito
  en la sección
 \begin_inset space ~
 \end_inset
@@ -36739,9 +36228,9 @@ Lista
 \end_layout
 
 \begin_layout Standard
-Con este menú se pueden insertar varios tipos de listas.
- El índice general, y las listas de algoritmos, figuras y tablas se describen
- en la sección
+Con este menú se pueden insertar varios tipos de listas e índices.
+ El índice general y los índices de algoritmos, de figuras y de tablas se
+ describen en la sección
 \begin_inset space ~
 \end_inset
 
@@ -37268,13 +36757,9 @@ Menú ! Navegar
 \end_layout
 
 \begin_layout Standard
-En este menú se muestran las listas existentes de figuras y tablas así como
- el índice general (IG) del documento abierto.
+En este menú se muestran los índices y listas existentes de figuras, tablas
+ y otros, así como el índice general (IG) del documento abierto.
  Esto permite navegar cómodamente a través del documento.
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Subsection
@@ -42408,7 +41893,7 @@ Cuadro
 \family typewriter
 spanish 
 \family default
-en el documento
+en la página web
 \begin_inset space ~
 \end_inset
 
