@@ -3140,7 +3140,7 @@ void LyXAction::init()
  * \li Action: Activate the branch
  * \li Syntax: branch-activate <BRANCH>
  * \li Params: <BRANCH>: The branch to activate
- * \li Sample: lyx -x "branch-activate answers" -e pdf2  finalexam.lyx \n
+ * \li Sample: lyx -x "branch-activate answers" -e pdf2 finalexam.lyx \n
                could be used to export a pdf with the answers branch included
                without one's having to open LyX and activate the branch manually.
  * \li Origin: rgh, 27 May 2008

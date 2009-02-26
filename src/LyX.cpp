@@ -300,6 +300,7 @@ int LyX::exec(int & argc, char * argv[])
 			vector<string>::const_iterator bcit  = pimpl_->batch_commands.begin();
 			vector<string>::const_iterator bcend = pimpl_->batch_commands.end();
 			for (; bcit != bcend; bcit++) {
+				LYXERR(Debug::ACTION, "Buffer::dispatch: cmd: " << *bcit);
 				buf->dispatch(*bcit, &success);
 				final_success |= success;
 			}
