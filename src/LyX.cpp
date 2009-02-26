@@ -966,6 +966,7 @@ int parse_help(string const &, string const &, string &)
 		  "                  where fmt is the export format of choice.\n"
 		  "                  Look on Tools->Preferences->File formats->Format\n"
 		  "                  to get an idea which parameters should be passed.\n"
+		  "                  Note that the order of -e and -x switches matters."
 		  "\t-i [--import] fmt file.xxx\n"
 		  "                  where fmt is the import format of choice\n"
 		  "                  and file.xxx is the file to be imported.\n"
