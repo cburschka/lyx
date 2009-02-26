@@ -297,7 +297,8 @@ void InsetBranchParams::write(ostream & os) const
 
 void InsetBranchParams::read(Lexer & lex)
 {
-	lex >> branch;
+	lex.eatLine();
+	branch = lex.getDocString();
 }
 
 } // namespace lyx

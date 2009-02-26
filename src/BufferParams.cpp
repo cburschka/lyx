@@ -565,7 +565,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\output_changes") {
 		lex >> outputChanges;
 	} else if (token == "\\branch") {
-		lex.next();
+		lex.eatLine();
 		docstring branch = lex.getDocString();
 		branchlist().add(branch);
 		while (true) {
