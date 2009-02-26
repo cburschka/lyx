@@ -105,7 +105,7 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 
 docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
 {
-	Dimension dim = dimensionCollapsed();
+	Dimension dim = dimensionCollapsed(bv);
 	if (geometry(bv) == NoButton)
 		return translateIfPossible(layout_->labelstring());
 	if (x > xo(bv) + dim.wid || y > yo(bv) + dim.des || isOpen(bv))
@@ -185,12 +185,12 @@ void InsetCollapsable::read(Lexer & lex)
 }
 
 
-Dimension InsetCollapsable::dimensionCollapsed() const
+Dimension InsetCollapsable::dimensionCollapsed(BufferView const & bv) const
 {
 	LASSERT(layout_, /**/);
 	Dimension dim;
 	theFontMetrics(layout_->labelfont()).buttonText(
-		labelstring_, dim.wid, dim.asc, dim.des);
+		buttonLabel(bv), dim.wid, dim.asc, dim.des);
 	return dim;
 }
 
@@ -205,7 +205,9 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	mi.base.font = layout_->font();
 	mi.base.font.realize(tmpfont);
 
-	switch (geometry(*mi.base.bv)) {
+	BufferView const & bv = *mi.base.bv;
+
+	switch (geometry(bv)) {
 	case NoButton:
 		InsetText::metrics(mi, dim);
 		break;
@@ -224,16 +226,16 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 		int w = 0;
 		int a = 0;
 		int d = 0;
-		theFontMetrics(font).rectText(labelstring_, w, a, d);
+		theFontMetrics(font).rectText(buttonLabel(bv), w, a, d);
 		dim.des += a + d;
 		break;
 		}
 	case TopButton:
 	case LeftButton:
 	case ButtonOnly:
-		dim = dimensionCollapsed();
-		if (geometry(*mi.base.bv) == TopButton 
-			  || geometry(*mi.base.bv) == LeftButton) {
+		dim = dimensionCollapsed(bv);
+		if (geometry(bv) == TopButton 
+			  || geometry(bv) == LeftButton) {
 			Dimension textdim;
 			InsetText::metrics(mi, textdim);
 			openinlined_ = (textdim.wid + dim.wid) < mi.base.textwidth;
@@ -264,15 +266,16 @@ bool InsetCollapsable::setMouseHover(bool mouse_hover)
 void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 {
 	LASSERT(layout_, /**/);
+	BufferView const & bv = *pi.base.bv;
 
-	auto_open_[pi.base.bv] =  pi.base.bv->cursor().isInside(this);
+	auto_open_[&bv] =  bv.cursor().isInside(this);
 
 	FontInfo tmpfont = pi.base.font;
 	pi.base.font = layout_->font();
 	pi.base.font.realize(tmpfont);
 
 	// Draw button first -- top, left or only
-	Dimension dimc = dimensionCollapsed();
+	Dimension dimc = dimensionCollapsed(bv);
 
 	if (geometry(*pi.base.bv) == TopButton ||
 	    geometry(*pi.base.bv) == LeftButton ||
@@ -282,7 +285,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		button_dim.y1 = y - dimc.asc;
 		button_dim.y2 = y + dimc.des;
 
-		pi.pain.buttonText(x, y, labelstring_, layout_->labelfont(),
+		pi.pain.buttonText(x, y, buttonLabel(bv), layout_->labelfont(),
 			mouse_hover_);
 	} else {
 		button_dim.x1 = 0;
@@ -291,10 +294,10 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		button_dim.y2 = 0;
 	}
 
-	Dimension const textdim = InsetText::dimension(*pi.base.bv);
+	Dimension const textdim = InsetText::dimension(bv);
 	int const baseline = y;
 	int textx, texty;
-	switch (geometry(*pi.base.bv)) {
+	switch (geometry(bv)) {
 	case LeftButton:
 		textx = x + dimc.width();
 		texty = baseline;
@@ -321,7 +324,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		const_cast<InsetCollapsable *>(this)->setDrawFrame(true);
 
 		int desc = textdim.descent();
-		if (geometry(*pi.base.bv) == Corners)
+		if (geometry(bv) == Corners)
 			desc -= 3;
 
 		const int xx1 = x + TEXT_TO_INSET_OFFSET - 1;
@@ -346,7 +349,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 			y + desc - 4, layout_->labelfont().color());
 
 		// the label below the text. Can be toggled.
-		if (geometry(*pi.base.bv) == SubLabel) {
+		if (geometry(bv) == SubLabel) {
 			FontInfo font(layout_->labelfont());
 			font.realize(sane_font);
 			font.decSize();
@@ -354,15 +357,15 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 			int w = 0;
 			int a = 0;
 			int d = 0;
-			theFontMetrics(font).rectText(labelstring_, w, a, d);
+			theFontMetrics(font).rectText(buttonLabel(bv), w, a, d);
 			int const ww = max(textdim.wid, w);
 			pi.pain.rectText(x + (ww - w) / 2, y + desc + a,
-				labelstring_, font, Color_none, Color_none);
+				buttonLabel(bv), font, Color_none, Color_none);
 			desc += d;
 		}
 
 		// a visual cue when the cursor is inside the inset
-		Cursor & cur = pi.base.bv->cursor();
+		Cursor const & cur = bv.cursor();
 		if (cur.isInside(this)) {
 			y -= textdim.asc;
 			y += 3;
@@ -392,10 +395,10 @@ void InsetCollapsable::cursorPos(BufferView const & bv,
 
 	switch (geometry(bv)) {
 	case LeftButton:
-		x += dimensionCollapsed().wid;
+		x += dimensionCollapsed(bv).wid;
 		break;
 	case TopButton: {
-		y += dimensionCollapsed().des + textdim.asc;
+		y += dimensionCollapsed(bv).des + textdim.asc;
 		break;
 	}
 	case NoButton:
@@ -843,7 +846,7 @@ docstring InsetCollapsable::contextMenu(BufferView const & bv, int x,
 	if (geometry(bv) == NoButton)
 		return from_ascii("context-collapsable");
 
-	Dimension dim = dimensionCollapsed();
+	Dimension dim = dimensionCollapsed(bv);
 	if (x < xo(bv) + dim.wid && y < yo(bv) + dim.des)
 		return from_ascii("context-collapsable");
 

@@ -69,8 +69,7 @@ public:
 
 	/// return x,y of given position relative to the inset's baseline
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
-	///
-	bool boundary, int & x, int & y) const;
+		bool boundary, int & x, int & y) const;
 	/// Returns true if (mouse) action is over the inset's button.
 	/// Always returns false when the inset does not have a
 	/// button.
@@ -85,6 +84,9 @@ public:
 	void setLabel(docstring const & l);
 	///
 	virtual void setButtonLabel() {}
+	///
+	virtual docstring const buttonLabel(BufferView const &) const
+		{ return labelstring_; }
 	///
 	bool isOpen(BufferView const & bv) const 
 		{ return geometry(bv) != ButtonOnly; }
@@ -174,7 +176,7 @@ private:
 	/// cache for the layout_. Make sure it is in sync with the document class!
 	InsetLayout const * layout_;
 	///
-	Dimension dimensionCollapsed() const;
+	Dimension dimensionCollapsed(BufferView const & bv) const;
 	///
 	docstring labelstring_;
 	///

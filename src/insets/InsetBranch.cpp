@@ -81,7 +81,7 @@ docstring InsetBranch::toolTip(BufferView const &, int, int) const
 }
 
 
-void InsetBranch::setButtonLabel(BufferView const & bv)
+docstring const InsetBranch::buttonLabel(BufferView const & bv) const
 {
 	docstring s = _("Branch: ") + params_.branch;
 	if (!params_.branch.empty()) {
@@ -91,9 +91,9 @@ void InsetBranch::setButtonLabel(BufferView const & bv)
 			s = _("Undef: ") + s;
 	}
 	if (decoration() == InsetLayout::CLASSIC)
-		setLabel(isOpen(bv) ? s : getNewLabel(s) );
+		return isOpen(bv) ? s : getNewLabel(s);
 	else
-		setLabel(params_.branch + ": " + getNewLabel(s));
+		return params_.branch + ": " + getNewLabel(s);
 }
 
 

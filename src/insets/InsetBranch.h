@@ -62,7 +62,7 @@ private:
 	///
 	void read(Lexer & lex);
 	///
-	void setButtonLabel(BufferView const & bv);
+	docstring const buttonLabel(BufferView const & bv) const;
 	///
 	ColorCode backgroundColor() const;
 	///
