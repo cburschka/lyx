@@ -9,7 +9,6 @@
 
 % define new commands used in sec. 5.1
 \newcommand{\xyR}[1]{
-  \makeatletter
   \xydef@\xymatrixrowsep@{#1}}
 \newcommand{\xyC}[1]{
   \xydef@\xymatrixcolsep@{#1}}
@@ -84,7 +83,7 @@
 \begin_layout Title
 Using 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -112,7 +111,7 @@ preview
 \family typewriter
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -163,7 +162,7 @@ xypic
 -package has long served as a convenient tool for easily constructing graphs
  and diagrams in LaTeX.
  Unfortunately, its use in LyX had long been restricted to the infamous
- ERT-boxes, meaning that the LyX editor could only display the LaTeX-source
+ TeX code boxes, meaning that the LyX editor could only display the LaTeX-source
  and not the finished diagram.
  The new 
 \family typewriter
@@ -213,7 +212,7 @@ xypic
 \begin_layout Standard
 In this note, we describe how 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -226,7 +225,11 @@ Xy
 
 -pic can be used from inside LyX, how diagrams can be created and edited.
  We have tested the following using LyX versions 1.3.7 up to 1.6, running under
- WindowsXP and under Windows Vista.
+ Windows
+\begin_inset space \thinspace{}
+\end_inset
+
+XP and under Windows Vista.
  
 \end_layout
 
@@ -234,7 +237,7 @@ Xy
 There are two modes of operations: For a start, and for some first tests,
  it may be easiest to first enter the 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -257,7 +260,7 @@ Ctrl-M
 .
  If you use 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -285,7 +288,7 @@ Once the cursor is moved over a diagram, this is displayed as an array of
 In the first two sections of this documentation, we explain how to use LyX
  in the first mentioned mode and we introduce all 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -307,7 +310,7 @@ reference "sec:math-editor"
 
  explains how to use the 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -325,7 +328,7 @@ Xy
 \begin_layout Standard
 It is not our intention to write another introduction to 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -339,7 +342,7 @@ Xy
 -Pic, rather our motivation is to give an introduction how the most important
  commands work inside LyX, since the keystrokes as explained in the 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -443,7 +446,7 @@ g.
 
 \begin_layout Enumerate
 Move the cursor out of the formula, and watch it change its appearance to
- look just like in the finished dvi- or postscript document.
+ look just like in the finished DVI- or PostScript document.
  
 \end_layout
 
@@ -451,7 +454,7 @@ Move the cursor out of the formula, and watch it change its appearance to
 \begin_layout Enumerate
 Activate and test 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -514,7 +517,7 @@ $
 \begin_layout Standard
 The following diagram, which is taken from the documentation of 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -999,7 +1002,7 @@ ar[r]^g & Z }
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1039,7 +1042,7 @@ For labels placed to the left or to the right of the arrow this does not
  work.
  The corresponding 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1076,7 +1079,7 @@ psi
 \end_layout
 
 \begin_layout Subsection
-Arrow modification 
+Arrow modification
 \end_layout
 
 \begin_layout Standard
@@ -1101,11 +1104,11 @@ Modification of the design, the form or the positioning of arrows are introduced
 \family default
  indicates, whether we want to modify the design, the or the curvature of
  the arrow.
- Various modifactions can be applied to an arrow at the same time.
+ Various modifications can be applied to an arrow at the same time.
 \end_layout
 
 \begin_layout Subsubsection
-Arrow design 
+Arrow design
 \end_layout
 
 \begin_layout Standard
@@ -1754,12 +1757,12 @@ Within certain limits there is even a way to design your own arrows.
 \backslash
 newdir
 \family default
- command in the preample.
+ command in the preamble.
  For explanations, we refer to the 
 \family typewriter
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1885,7 +1888,7 @@ $
 \family sans
 Ctrl-m
 \family default
- for inline appearence or 
+ for inline appearance or 
 \family sans
 Ctrl-M
 \family default
@@ -1903,7 +1906,7 @@ Alignment.
 \end_layout
 
 \begin_layout Subsection
-Bending arrows 
+Bending arrows
 \end_layout
 
 \begin_layout Standard
@@ -1994,8 +1997,7 @@ ar@/_{.5pc}/[l]}
 \end_layout
 
 \begin_layout Subsubsection
-Specifying exit- and entrance directions.
- 
+Specifying exit- and entrance directions
 \end_layout
 
 \begin_layout Standard
@@ -2106,13 +2108,13 @@ The above example is reminiscent of an automata diagram, except that in
 \end_layout
 
 \begin_layout Subsubsection
-Framing objects 
+Framing objects
 \end_layout
 
 \begin_layout Standard
 With 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2182,19 +2184,8 @@ $
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-noindent
-\end_layout
-
-\end_inset
-
- can be typeset as
+\noindent
+can be typeset as
 \end_layout
 
 \begin_layout LyX-Code
@@ -2247,7 +2238,7 @@ entrymodifiers={++[o][F-]}
 \family default
 , all following entries inside 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2430,7 +2421,7 @@ Recall that in LyX's math-editor any pair of braces
  to the parameter is entered.
  In connection with 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2519,7 +2510,7 @@ xymatrix
 
 1- 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2621,11 +2612,10 @@ _
 \family default
  followed by a space opens a box for an upper index.
  You can enter any LaTeX-code as a label.
- 
 \end_layout
 
 \begin_layout Subsection
-Modifying arrows 
+Modifying arrows
 \end_layout
 
 \begin_layout Standard
@@ -2732,21 +2722,8 @@ where
 \emph on
 measure
 \emph default
- is any valid 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-TeX
-\end_layout
-
-\end_inset
-
--measure that should be entered as upper or lower index to the first slash
- /.
+ is any valid TeX-measure that should be entered as upper or lower index
+ to the first slash /.
  Make sure that the ending slash does not end up being part of the upper
  or lower index.
 \end_layout
@@ -2769,33 +2746,20 @@ lly convert it into graphical output.
 A more serious reason could be a syntactical error in your input.
  If necessary, redo the last editing steps, using 
 \emph on
-Ctrl-z
+Ctrl+Z
 \emph default
-, or try to translate the 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-LyX
-\end_layout
-
-\end_inset
-
--file into 
+, or try to translate the LyX-file into 
 \emph on
-dvi
+DVI
 \emph default
  using 
 \emph on
-Ctrl-d
+Ctrl+D
 \emph default
  or 
 \family sans
 View\SpecialChar \menuseparator
-Dvi
+DVI
 \family default
 .
  There should be some error generated, which hopefully gives you a hint
@@ -2807,20 +2771,7 @@ Hacks
 \end_layout
 
 \begin_layout Standard
-Certain things do not work correctly inside 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-LyX
-\end_layout
-
-\end_inset
-
-.
+Certain things do not work correctly inside LyX.
  The ones that we (used to) miss most are the horizontal and vertical scaling
  of diagrams, and the correct positioning of arrows.
  There are some workarounds that we are explaining here.
@@ -2836,7 +2787,7 @@ It is often convenient to stretch the horizontal or the vertical dimensions
  of an entire diagram by using spacing commands for rows and/or columns.
  According to the 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2860,7 +2811,7 @@ xymatrix@R=1pc{
 \family default
  defines an 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2892,7 +2843,7 @@ xymatrix@C=
  Unfortunately, these commands do currently not work inside LyX, as the
  @-character is interpreted by LyX as ending the 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2910,7 +2861,7 @@ Xy
 \begin_layout Standard
 Knowing that 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2994,7 +2945,7 @@ xymatrixcolsep@
 \backslash
 xyR{...} into the 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3024,8 +2975,8 @@ xyC
 {
 \family default
  or both.
- Dont't forget the backslashes and remember, that the closing brace is automatic
-ally supplied by LyX.
+ Don't forget the backslashes and remember, that the closing brace is automatica
+lly supplied by LyX.
  Inside the braces enter the dimensions.
  The default is 
 \family typewriter
@@ -3062,7 +3013,7 @@ Label positioning
 \begin_layout Standard
 Another useful 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3073,13 +3024,13 @@ Xy
 
 \end_inset
 
--vcommand allows the correct positioning of labels along the shaft of arrows.
+-command allows the correct positioning of labels along the shaft of arrows.
  This feature is sometimes necessary, when the default position of a label
  would otherwise clutter the picture, or would even coincide with other
  items, such as the intersection of the arrows in the figure below.
  In order to shift a label position alongside the shaft of an arrow, 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3294,7 +3245,7 @@ Further
 \family typewriter
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3321,7 +3272,7 @@ xymatrix
 \family typewriter
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3339,7 +3290,7 @@ Xy
 \family typewriter
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3371,7 +3322,7 @@ key "Lauda"
 
  explains how to use 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3387,7 +3338,7 @@ Xy
 \family typewriter
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3424,7 +3375,7 @@ key "xypic manual"
 Kristoffer H.
  Rose: 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3526,7 +3477,7 @@ key "Lauda"
 
 Aarlon Lauda: 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3569,7 +3520,7 @@ key "Ouvaton"
 
 Filipp Ouvaton: 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
