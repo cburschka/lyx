@@ -2134,11 +2134,7 @@ c
 \begin_inset Quotes erd
 \end_inset
 
- 
-\family sans
-brings
-\family default
- up the 
+ brings up the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -23739,13 +23735,13 @@ boldsymbol
 \begin_layout Standard
 A number of other font options are available as well, in the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Edit\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
-Font
+Text
 \begin_inset space ~
 \end_inset
 
-Change
+Style
 \family default
 .
 \end_layout
@@ -34635,8 +34631,9 @@ Tabular and Math
 \end_layout
 
 \begin_layout Standard
-These two menus are only active when the cursor is inside a table or a formula.
- The properties of this table/formula can now be changed.
+These two menus are only fully active when the cursor is inside a table
+ or a formula.
+ Here you can change the properties of tables and formulas.
  The properties of tables are described in section
 \begin_inset space ~
 \end_inset
@@ -36288,7 +36285,7 @@ Compressed
 \end_layout
 
 \begin_layout Standard
-Un/compresses the actual document.
+Un/compresses the current document.
 \end_layout
 
 \begin_layout Subsection
