@@ -644,7 +644,7 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 	// The cursor is painted *before* the character at pos(), or, if 'boundary'
 	// is true, *after* the character at (pos() - 1). So we already have one
 	// known position around the cursor:
-	pos_type known_pos = boundary() && pos() > 0 ? pos() - 1 : pos();
+	pos_type const known_pos = boundary() && pos() > 0 ? pos() - 1 : pos();
 	
 	// edge case: if we're at the end of the paragraph, things are a little 
 	// different (because lastpos is a position which does not really "exist" 
@@ -653,8 +653,8 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 		if (par.isRTL(buf.params())) {
 			left_pos = -1;
 			right_pos = bidi.vis2log(row.pos());
-		}
-		else { // LTR paragraph
+		} else { 
+			// LTR paragraph
 			right_pos = -1;
 			left_pos = bidi.vis2log(row.endpos() - 1);
 		}
@@ -669,11 +669,10 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 	// For an RTL character, "before" means "to the right" and "after" means
 	// "to the left"; and for LTR, it's the reverse. So, 'known_pos' is to the
 	// right of the cursor if (RTL && boundary) or (!RTL && !boundary):
-	bool known_pos_on_right = (cur_is_RTL == boundary());
+	bool const known_pos_on_right = cur_is_RTL == boundary();
 
 	// So we now know one of the positions surrounding the cursor. Let's 
-	// determine the other one:
-	
+	// determine the other one:	
 	if (known_pos_on_right) {
 		right_pos = known_pos;
 		// *visual* position of 'left_pos':
@@ -687,9 +686,9 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 		if (bidi.inRange(v_left_pos) 
 				&& bidi.vis2log(v_left_pos) + 1 == row.endpos() 
 				&& row.endpos() < lastpos()
-				&& par.isSeparator(bidi.vis2log(v_left_pos))) {
+				&& par.isSeparator(bidi.vis2log(v_left_pos)))
 			--v_left_pos;
-		}
+
 		// calculate the logical position of 'left_pos', if in row
 		if (!bidi.inRange(v_left_pos))
 			left_pos = -1;
@@ -699,14 +698,14 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 		// separator", set 'right_pos' to the *next* position to the right.
 		if (right_pos + 1 == row.endpos() && row.endpos() < lastpos() 
 				&& par.isSeparator(right_pos)) {
-			pos_type v_right_pos = bidi.log2vis(right_pos) + 1;
+			pos_type const v_right_pos = bidi.log2vis(right_pos) + 1;
 			if (!bidi.inRange(v_right_pos))
 				right_pos = -1;
 			else
 				right_pos = bidi.vis2log(v_right_pos);
 		}
-	} 
-	else { // known_pos is on the left
+	} else { 
+		// known_pos is on the left
 		left_pos = known_pos;
 		// *visual* position of 'right_pos'
 		pos_type v_right_pos = bidi.log2vis(left_pos) + 1;
@@ -715,9 +714,9 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 		if (bidi.inRange(v_right_pos) 
 				&& bidi.vis2log(v_right_pos) + 1 == row.endpos() 
 				&& row.endpos() < lastpos()
-				&& par.isSeparator(bidi.vis2log(v_right_pos))) {
+				&& par.isSeparator(bidi.vis2log(v_right_pos)))
 			++v_right_pos;
-		}
+
 		// calculate the logical position of 'right_pos', if in row
 		if (!bidi.inRange(v_right_pos)) 
 			right_pos = -1;
@@ -727,7 +726,7 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 		// separator", set 'left_pos' to the *next* position to the left.
 		if (left_pos + 1 == row.endpos() && row.endpos() < lastpos() 
 				&& par.isSeparator(left_pos)) {
-			pos_type v_left_pos = bidi.log2vis(left_pos) - 1;
+			pos_type const v_left_pos = bidi.log2vis(left_pos) - 1;
 			if (!bidi.inRange(v_left_pos))
 				left_pos = -1;
 			else
