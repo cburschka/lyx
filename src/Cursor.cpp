@@ -836,35 +836,29 @@ void Cursor::posVisToRowExtremity(bool left)
 			// "boundary" which we simulate at insets.
 			// Another exception is when row.endpos() is 0.
 			
-			bool right_of_pos = false; // do we want to be to the right of pos?
-
+			// do we want to be to the right of pos?
 			// as explained above, if at last pos in row, stay to the right
-			if (row.endpos() > 0 && pos() == row.endpos() - 1
-				  && !par.isInset(pos()))
-				right_of_pos = true;
+			bool const right_of_pos = row.endpos() > 0
+				&& pos() == row.endpos() - 1 && !par.isInset(pos());
 
 			// Now we know if we want to be to the left or to the right of pos,
 			// let's make sure we are where we want to be.
-			bool new_pos_is_RTL = 
+			bool const new_pos_is_RTL = 
 				par.getFontSettings(buf.params(), pos()).isVisibleRightToLeft();
 
-			if (new_pos_is_RTL == !right_of_pos) {
+			if (new_pos_is_RTL != right_of_pos) {
 				++pos();
 				boundary(true);
 			}
-			
 		}
-	}
-	else { // move to rightmost position
+	} else { 
+		// move to rightmost position
 		// if this is an LTR paragraph, and we're at the last row in the
 		// paragraph, move to lastpos
 		if (!par.isRTL(buf.params()) && row.endpos() == lastpos())
 			pos() = lastpos();
 		else {
-			if (row.endpos() > 0)
-				pos() = bidi.vis2log(row.endpos() - 1);
-			else
-				pos() = 0;
+			pos() = row.endpos() > 0 ? bidi.vis2log(row.endpos() - 1) : 0;
 
 			// Moving to the rightmost position in the row, the cursor should
 			// normally be placed to the *right* of the rightmost position.
@@ -891,17 +885,15 @@ void Cursor::posVisToRowExtremity(bool left)
 			// "boundary" which we simulate at insets.
 			// Another exception is when row.endpos() is 0.
 			
-			bool left_of_pos = false; // do we want to be to the left of pos?
-
+			// do we want to be to the left of pos?
 			// as explained above, if at last pos in row, stay to the left,
 			// unless the last position is the same as the first.
-			if (row.endpos() > 0 && pos() == row.endpos() - 1 
-				  && !par.isInset(pos()))
-				left_of_pos = true;
+			bool const left_of_pos = row.endpos() > 0
+				&& pos() == row.endpos() - 1 && !par.isInset(pos()));
 
 			// Now we know if we want to be to the left or to the right of pos,
 			// let's make sure we are where we want to be.
-			bool new_pos_is_RTL = 
+			bool const new_pos_is_RTL = 
 				par.getFontSettings(buf.params(), pos()).isVisibleRightToLeft();
 
 			if (new_pos_is_RTL == left_of_pos) {
