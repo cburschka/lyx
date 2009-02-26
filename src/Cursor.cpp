@@ -834,11 +834,13 @@ void Cursor::posVisToRowExtremity(bool left)
 			// this non-separator-but-last-position-in-row is an inset, then
 			// we *do* want to stay to the left of it anyway: this is the 
 			// "boundary" which we simulate at insets.
+			// Another exception is when row.endpos() is 0.
 			
 			bool right_of_pos = false; // do we want to be to the right of pos?
 
 			// as explained above, if at last pos in row, stay to the right
-			if ((pos() == row.endpos() - 1) && !par.isInset(pos()))
+			if (row.endpos() > 0 && pos() == row.endpos() - 1
+				  && !par.isInset(pos()))
 				right_of_pos = true;
 
 			// Now we know if we want to be to the left or to the right of pos,
@@ -859,7 +861,10 @@ void Cursor::posVisToRowExtremity(bool left)
 		if (!par.isRTL(buf.params()) && row.endpos() == lastpos())
 			pos() = lastpos();
 		else {
-			pos() = bidi.vis2log(row.endpos() - 1);
+			if (row.endpos() > 0)
+				pos() = bidi.vis2log(row.endpos() - 1);
+			else
+				pos() = 0;
 
 			// Moving to the rightmost position in the row, the cursor should
 			// normally be placed to the *right* of the rightmost position.
@@ -884,11 +889,14 @@ void Cursor::posVisToRowExtremity(bool left)
 			// this non-separator-but-last-position-in-row is an inset, then
 			// we *do* want to stay to the right of it anyway: this is the 
 			// "boundary" which we simulate at insets.
+			// Another exception is when row.endpos() is 0.
 			
 			bool left_of_pos = false; // do we want to be to the left of pos?
 
-			// as explained above, if at last pos in row, stay to the left
-			if ((pos() == row.endpos() - 1) && !par.isInset(pos()))
+			// as explained above, if at last pos in row, stay to the left,
+			// unless the last position is the same as the first.
+			if (row.endpos() > 0 && pos() == row.endpos() - 1 
+				  && !par.isInset(pos()))
 				left_of_pos = true;
 
 			// Now we know if we want to be to the left or to the right of pos,
