@@ -77,9 +77,9 @@ public:
 	///
 	docstring const getNewLabel(docstring const & l) const;
 	///
-	EDITABLE editable(BufferView const & bv) const;
+	EDITABLE editable() const;
 	/// can we go further down on mouse click?
-	bool descendable(BufferView const & bv) const;
+	bool descendable() const;
 	///
 	void setLabel(docstring const & l);
 	///
@@ -108,7 +108,7 @@ public:
 	 *   Conglomerate | SubLabel            Corners
 	 *   ---------------------------------------------
 	 *   *) toggled by openinlined_
-	 *   x) toggled by autoOpen_
+	 *   x) toggled by auto_open_
 	 */
 
 	/// Default looks
@@ -123,9 +123,11 @@ public:
 		Corners
 	};
 	/// Returns the geometry based on CollapseStatus
-	/// (status_), autoOpen_ and openinlined_, and of
-	/// course decoration().
+	/// (status_), auto_open_[BufferView] and openinlined_,
+	/// and of course decoration().
 	Geometry geometry(BufferView const & bv) const;
+	/// Returns the geometry disregarding auto_open_
+	Geometry geometry() const;
 	/// Allow spellchecking, except for insets with latex_language
 	bool allowSpellCheck() const { return !forceLTR(); }
 	///

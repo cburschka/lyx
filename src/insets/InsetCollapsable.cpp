@@ -78,6 +78,30 @@ InsetCollapsable::Geometry InsetCollapsable::geometry(BufferView const & bv) con
 }
 
 
+InsetCollapsable::Geometry InsetCollapsable::geometry() const
+{
+	switch (decoration()) {
+	case InsetLayout::CLASSIC:
+		if (status_ == Open)
+			return openinlined_ ? LeftButton : TopButton;
+		return ButtonOnly;
+
+	case InsetLayout::MINIMALISTIC:
+		return status_ == Open ? NoButton : ButtonOnly ;
+
+	case InsetLayout::CONGLOMERATE:
+		return status_ == Open ? SubLabel : Corners ;
+
+	case InsetLayout::DEFAULT:
+		break; // this shouldn't happen
+	}
+
+	// dummy return value to shut down a warning,
+	// this is dead code.
+	return NoButton;
+}
+
+
 InsetCollapsable::InsetCollapsable(Buffer const & buf)
 	: InsetText(buf), status_(Inset::Open),
 	  openinlined_(false), mouse_hover_(false)
@@ -415,15 +439,15 @@ void InsetCollapsable::cursorPos(BufferView const & bv,
 }
 
 
-Inset::EDITABLE InsetCollapsable::editable(BufferView const & bv) const
+Inset::EDITABLE InsetCollapsable::editable() const
 {
-	return geometry(bv) != ButtonOnly ? HIGHLY_EDITABLE : IS_EDITABLE;
+	return geometry() != ButtonOnly ? HIGHLY_EDITABLE : IS_EDITABLE;
 }
 
 
-bool InsetCollapsable::descendable(BufferView const & bv) const
+bool InsetCollapsable::descendable() const
 {
-	return geometry(bv) != ButtonOnly;
+	return geometry() != ButtonOnly;
 }
 
 
