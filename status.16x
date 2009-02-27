@@ -185,6 +185,9 @@ What's new
   
 - Fix a crash when removing the label of an included Program Listing. 
 
+- Fix a few crashes that could occur with a 'visual' cursor (bugs 5762 
+  and 5765).
+
 - Fix a crash when an unfinished macro is edited and deleted in math 
   mode (bug 5744).
 
