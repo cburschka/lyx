@@ -652,7 +652,7 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 	// The cursor is painted *before* the character at pos(), or, if 'boundary'
 	// is true, *after* the character at (pos() - 1). So we already have one
 	// known position around the cursor:
-	pos_type known_pos = boundary() ? pos() - 1 : pos();
+	pos_type known_pos = boundary() && pos() > 0 ? pos() - 1 : pos();
 	
 	// edge case: if we're at the end of the paragraph, things are a little 
 	// different (because lastpos is a position which does not really "exist" 
