@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-02-08 10:18+0100\n"
+"POT-Creation-Date: 2009-02-28 17:48+0100\n"
 "PO-Revision-Date: 2008-08-04 23:53+0100\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -144,15 +144,15 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:549 src/Buffer.cpp:851
-#: src/Buffer.cpp:2552 src/Buffer.cpp:2576 src/Buffer.cpp:2611
+#: src/frontends/qt4/ui/ListingsUi.ui:549 src/Buffer.cpp:862
+#: src/Buffer.cpp:2563 src/Buffer.cpp:2587 src/Buffer.cpp:2622
 #: src/LyXFunc.cpp:692 src/LyXFunc.cpp:831 src/LyXFunc.cpp:1005
 #: src/LyXVC.cpp:181 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1254
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1513
-#: src/frontends/qt4/GuiView.cpp:1695 src/frontends/qt4/GuiView.cpp:1740
-#: src/frontends/qt4/GuiView.cpp:1797 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1517
+#: src/frontends/qt4/GuiView.cpp:1699 src/frontends/qt4/GuiView.cpp:1744
+#: src/frontends/qt4/GuiView.cpp:1801 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
 msgstr "&Peru"
 
@@ -357,19 +357,19 @@ msgstr "Laatikon sisällön vaakatasaus"
 
 #: src/frontends/qt4/ui/BoxUi.ui:65 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:209
-#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:712
+#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:714
 msgid "Left"
 msgstr "Vasen"
 
 #: src/frontends/qt4/ui/BoxUi.ui:70 src/frontends/qt4/ui/TabularUi.ui:147
 #: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
-#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:713
+#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:715
 msgid "Center"
 msgstr "Keskellä"
 
 #: src/frontends/qt4/ui/BoxUi.ui:75 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:214
-#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:714
+#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:716
 msgid "Right"
 msgstr "Oikea"
 
@@ -1556,11 +1556,11 @@ msgstr "Valitse sisällytettävä tiedosto"
 msgid "&Include Type:"
 msgstr "&Sisällytystyyppi:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:336
+#: src/frontends/qt4/ui/IncludeUi.ui:287 src/insets/InsetInclude.cpp:337
 msgid "Include"
 msgstr "Sisällytä"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:327
+#: src/frontends/qt4/ui/IncludeUi.ui:292 src/insets/InsetInclude.cpp:328
 msgid "Input"
 msgstr "Syötä"
 
@@ -1568,8 +1568,8 @@ msgstr "Syötä"
 msgid "Verbatim"
 msgstr "Sinänsä"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:938
-#: src/insets/InsetInclude.cpp:944
+#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:939
+#: src/insets/InsetInclude.cpp:945
 msgid "Program Listing"
 msgstr "Ohjelmalistaus"
 
@@ -1679,7 +1679,7 @@ msgid "&Quote Style:"
 msgstr "Lainausmerkkien tyyli"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:298
-#: src/insets/InsetListings.cpp:404 src/insets/InsetListings.cpp:406
+#: src/insets/InsetListings.cpp:403 src/insets/InsetListings.cpp:405
 msgid "Listing"
 msgstr "Listaus"
 
@@ -3227,7 +3227,7 @@ msgid "&User interface file:"
 msgstr "&Käyttöliittymätiedosto:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:691
-#: src/frontends/qt4/GuiView.cpp:1797
+#: src/frontends/qt4/GuiView.cpp:1801
 msgid "&Save"
 msgstr "Ta&llenna"
 
@@ -3365,7 +3365,7 @@ msgstr "Päivitä nimikeluettelo"
 msgid "Jump to the label"
 msgstr "Siirry nimikkeeseen"
 
-#: src/frontends/qt4/ui/RefUi.ui:250 src/frontends/qt4/GuiRef.cpp:287
+#: src/frontends/qt4/ui/RefUi.ui:250 src/frontends/qt4/GuiRef.cpp:291
 msgid "&Go to Label"
 msgstr "Siirry nimikkeeseen"
 
@@ -3557,7 +3557,7 @@ msgid "Horizontal alignment in column"
 msgstr "Sarakkeiden vaakatasaus"
 
 #: src/frontends/qt4/ui/TabularUi.ui:137
-#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:716
+#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:718
 msgid "Justified"
 msgstr "Tasattu"
 
@@ -11761,11 +11761,11 @@ msgstr "Tulosta asiakirja"
 msgid "Check spelling"
 msgstr "Tarkista oikeinkirjoitus"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1035
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1037
 msgid "Undo"
 msgstr "Kumoa"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1044
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1046
 msgid "Redo"
 msgstr "Kumoa kumous"
 
@@ -14686,8 +14686,8 @@ msgstr "Seuraava komento"
 msgid "Table (CSV)"
 msgstr "Taulukko"
 
-#: lib/configure.py:339 src/frontends/qt4/GuiView.cpp:832
-#: src/frontends/qt4/GuiView.cpp:833 src/mathed/MathMacroTemplate.cpp:537
+#: lib/configure.py:339 src/frontends/qt4/GuiView.cpp:836
+#: src/frontends/qt4/GuiView.cpp:837 src/mathed/MathMacroTemplate.cpp:537
 msgid "LyX"
 msgstr "LyX"
 
@@ -14809,47 +14809,47 @@ msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "Väliaikaisen hakemiston %1$s poistaminen epäonnistui"
 
-#: src/Buffer.cpp:297
+#: src/Buffer.cpp:301
 msgid "Could not remove temporary directory"
 msgstr "Väliaikaisen hakemiston poistaminen epäonnistui"
 
-#: src/Buffer.cpp:298
+#: src/Buffer.cpp:302
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Väliaikaisen hakemiston %1$s poistaminen epäonnistui"
 
-#: src/Buffer.cpp:513
+#: src/Buffer.cpp:517
 msgid "Unknown document class"
 msgstr "Tuntematon asiakirjaluokka"
 
-#: src/Buffer.cpp:514
+#: src/Buffer.cpp:518
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Käytän oletusdokumenttiluokka, koska luokka %1$s on tuntematon."
 
-#: src/Buffer.cpp:518 src/Text.cpp:241
+#: src/Buffer.cpp:522 src/Text.cpp:241
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Tuntematon merkintä: %1$s %2$s\n"
 
-#: src/Buffer.cpp:522 src/Buffer.cpp:529 src/Buffer.cpp:549
+#: src/Buffer.cpp:526 src/Buffer.cpp:533 src/Buffer.cpp:553
 msgid "Document header error"
 msgstr "Asiakirjan alkuosa virheellinen"
 
-#: src/Buffer.cpp:528
+#: src/Buffer.cpp:532
 msgid "\\begin_header is missing"
 msgstr "\\begin_header puuttuu"
 
-#: src/Buffer.cpp:548
+#: src/Buffer.cpp:552
 msgid "\\begin_document is missing"
 msgstr "\\begin_document puuttuu"
 
-#: src/Buffer.cpp:564 src/Buffer.cpp:570 src/BufferView.cpp:1154
-#: src/BufferView.cpp:1160
+#: src/Buffer.cpp:568 src/Buffer.cpp:574 src/BufferView.cpp:1156
+#: src/BufferView.cpp:1162
 msgid "Changes not shown in LaTeX output"
 msgstr "Muutokset eivät näy LaTeX-tulosteessa"
 
-#: src/Buffer.cpp:565 src/BufferView.cpp:1155
+#: src/Buffer.cpp:569 src/BufferView.cpp:1157
 #, fuzzy
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
@@ -14861,7 +14861,7 @@ msgstr ""
 "ole installoituina.\n"
 "Installoi ne tai määritä \\lyxadded ja \\lyxdeleted LyXin aloitusosassa."
 
-#: src/Buffer.cpp:571 src/BufferView.cpp:1161
+#: src/Buffer.cpp:575 src/BufferView.cpp:1163
 #, fuzzy
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
@@ -14874,20 +14874,20 @@ msgstr ""
 "Installoi molemmat tai määritä \\lyxadded ja \\lyxdeleted LyXin "
 "aloitusosassa."
 
-#: src/Buffer.cpp:720 src/Buffer.cpp:803
+#: src/Buffer.cpp:731 src/Buffer.cpp:814
 msgid "Document format failure"
 msgstr "Asiakirjan muotoilu epäonnistui"
 
-#: src/Buffer.cpp:721
+#: src/Buffer.cpp:732
 #, fuzzy, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s ei ole LyX-asiakirja."
 
-#: src/Buffer.cpp:758
+#: src/Buffer.cpp:769
 msgid "Conversion failed"
 msgstr "Muuntaminen epäonnistui"
 
-#: src/Buffer.cpp:759
+#: src/Buffer.cpp:770
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -14896,11 +14896,11 @@ msgstr ""
 "%1$s on tehty aiemmalla LyXin versiolla ja väliaikaistiedosto muuntamista "
 "varten ei voitu luoda."
 
-#: src/Buffer.cpp:768
+#: src/Buffer.cpp:779
 msgid "Conversion script not found"
 msgstr "Versionhallintalokitiedostoa ei löytynyt"
 
-#: src/Buffer.cpp:769
+#: src/Buffer.cpp:780
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -14909,11 +14909,11 @@ msgstr ""
 "Tiedosto %1$s on tehty toisella LyXin versiolla, mutta muuntamisskriptiä "
 "eilöytynyt."
 
-#: src/Buffer.cpp:788
+#: src/Buffer.cpp:799
 msgid "Conversion script failed"
 msgstr "Muunnoskriptiä ei löydy."
 
-#: src/Buffer.cpp:789
+#: src/Buffer.cpp:800
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
@@ -14922,16 +14922,16 @@ msgstr ""
 "Tiedosto %1$s on tehty aiemmalla LyXin versiolla, mutta lyx2lyx-"
 "skriptiepäonnistui muuntamaan sitä."
 
-#: src/Buffer.cpp:804
+#: src/Buffer.cpp:815
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s loppui odottamattomasti, eli se on luultavasti rikkinäinen."
 
-#: src/Buffer.cpp:837
+#: src/Buffer.cpp:848
 msgid "Backup failure"
 msgstr "Varmuuskopiointi epäonnistui"
 
-#: src/Buffer.cpp:838
+#: src/Buffer.cpp:849
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -14940,7 +14940,7 @@ msgstr ""
 "En voi luoda varmuuskopiotiedostoa %1$s.\n"
 "Tarkista, onko hakemisto olemassa ja onko lupaa kirjoittaa."
 
-#: src/Buffer.cpp:848
+#: src/Buffer.cpp:859
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -14949,47 +14949,47 @@ msgstr ""
 "Asiakirja %1$s on ulkoisesti muutettu. Oletko varma, että haluat kirjoittaa "
 "sen tiedoston päälle?"
 
-#: src/Buffer.cpp:850
+#: src/Buffer.cpp:861
 msgid "Overwrite modified file?"
 msgstr "Kirjoitetaanko muutetun tiedoston päälle?"
 
-#: src/Buffer.cpp:851 src/Exporter.cpp:49 src/LyXFunc.cpp:1005
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1513
-#: src/frontends/qt4/GuiView.cpp:1695
+#: src/Buffer.cpp:862 src/Exporter.cpp:49 src/LyXFunc.cpp:1005
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1517
+#: src/frontends/qt4/GuiView.cpp:1699
 msgid "&Overwrite"
 msgstr "Päällekirjoitus"
 
-#: src/Buffer.cpp:875
+#: src/Buffer.cpp:886
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Asiakirja %1$s tallentuu..."
 
-#: src/Buffer.cpp:888
+#: src/Buffer.cpp:899
 #, fuzzy
 msgid " could not write file!"
 msgstr "Ei voitu lukea tiedostoa"
 
-#: src/Buffer.cpp:895
+#: src/Buffer.cpp:906
 msgid " done."
 msgstr " valmis."
 
-#: src/Buffer.cpp:974
+#: src/Buffer.cpp:985
 msgid "Iconv software exception Detected"
 msgstr ""
 
-#: src/Buffer.cpp:974
+#: src/Buffer.cpp:985
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
 
-#: src/Buffer.cpp:996
+#: src/Buffer.cpp:1007
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 
-#: src/Buffer.cpp:999
+#: src/Buffer.cpp:1010
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -14999,87 +14999,87 @@ msgstr ""
 "valitussasi merkistössä.\n"
 "merkistön muuttaminen tuf8:ksi auttanee."
 
-#: src/Buffer.cpp:1006
+#: src/Buffer.cpp:1017
 #, fuzzy
 msgid "iconv conversion failed"
 msgstr "Muuntaminen epäonnistui"
 
-#: src/Buffer.cpp:1011
+#: src/Buffer.cpp:1022
 #, fuzzy
 msgid "conversion failed"
 msgstr "Muuntaminen epäonnistui"
 
-#: src/Buffer.cpp:1288
+#: src/Buffer.cpp:1299
 msgid "Running chktex..."
 msgstr "chktex on käynnissä..."
 
-#: src/Buffer.cpp:1301
+#: src/Buffer.cpp:1312
 msgid "chktex failure"
 msgstr "chktex epäonnistui"
 
-#: src/Buffer.cpp:1302
+#: src/Buffer.cpp:1313
 msgid "Could not run chktex successfully."
 msgstr "Chktex-ajo epäonnistui"
 
-#: src/Buffer.cpp:2131
+#: src/Buffer.cpp:2142
 msgid "Preview source code"
 msgstr "Lähdekoodin esikatselu"
 
-#: src/Buffer.cpp:2144
+#: src/Buffer.cpp:2155
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Kappaleen %1$s lähdekoodin esikatselu"
 
-#: src/Buffer.cpp:2148
+#: src/Buffer.cpp:2159
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Lähdekoodin esikatselu, kappaleet %1$s -- %2$s"
 
-#: src/Buffer.cpp:2255
+#: src/Buffer.cpp:2266
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$s tallentuu itsestään"
 
-#: src/Buffer.cpp:2299
+#: src/Buffer.cpp:2310
 msgid "Autosave failed!"
 msgstr "Automaattinen tallennus epäonnistui!"
 
-#: src/Buffer.cpp:2322
+#: src/Buffer.cpp:2333
 msgid "Autosaving current document..."
 msgstr "Asiakirjan automaattinen tallennus käynnissä..."
 
-#: src/Buffer.cpp:2372
+#: src/Buffer.cpp:2383
 msgid "Couldn't export file"
 msgstr "Ei voitu viedä tiedostoa"
 
-#: src/Buffer.cpp:2373
+#: src/Buffer.cpp:2384
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Ei tietoa, miten tuoda formaattia %1$s"
 
-#: src/Buffer.cpp:2410
+#: src/Buffer.cpp:2421
 msgid "File name error"
 msgstr "Tiedostonimessä virhe"
 
-#: src/Buffer.cpp:2411
+#: src/Buffer.cpp:2422
 msgid "The directory path to the document cannot contain spaces."
 msgstr "LyX-tiedoston polussa ei voi olla välilyöntejä."
 
-#: src/Buffer.cpp:2453
+#: src/Buffer.cpp:2464
 msgid "Document export cancelled."
 msgstr "Asiakirja vienti peruutettu."
 
-#: src/Buffer.cpp:2459
+#: src/Buffer.cpp:2470
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Asiakirja viety nimellä %1$s tiedostoon `%2$s'"
 
-#: src/Buffer.cpp:2465
+#: src/Buffer.cpp:2476
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Asiakirja viety nimellä %1$s"
 
-#: src/Buffer.cpp:2535
+#: src/Buffer.cpp:2546
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15089,11 +15089,11 @@ msgstr ""
 "Asiakirjan %1$s\n"
 "lukeminen epäonnistui"
 
-#: src/Buffer.cpp:2537
+#: src/Buffer.cpp:2548
 msgid "Could not read document"
 msgstr "Asiakirjan lukeminen epäonnistui"
 
-#: src/Buffer.cpp:2547
+#: src/Buffer.cpp:2558
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15103,20 +15103,20 @@ msgstr ""
 "Asiakirjasta %1$s on olemassa hätätallennusversio.\n"
 "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:2550
+#: src/Buffer.cpp:2561
 msgid "Load emergency save?"
 msgstr "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:2551
+#: src/Buffer.cpp:2562
 msgid "&Recover"
 msgstr "Pelasta"
 
-#: src/Buffer.cpp:2551
+#: src/Buffer.cpp:2562
 #, fuzzy
 msgid "&Load Original"
 msgstr "Lataa alkuperäinen"
 
-#: src/Buffer.cpp:2571
+#: src/Buffer.cpp:2582
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15127,28 +15127,28 @@ msgstr ""
 "\n"
 "Ladataanko mieluummin varmuuskopio?"
 
-#: src/Buffer.cpp:2574
+#: src/Buffer.cpp:2585
 msgid "Load backup?"
 msgstr "Ladataanko varmuuskopio?"
 
-#: src/Buffer.cpp:2575
+#: src/Buffer.cpp:2586
 msgid "&Load backup"
 msgstr "Lataa varmuuskopio"
 
-#: src/Buffer.cpp:2575
+#: src/Buffer.cpp:2586
 msgid "Load &original"
 msgstr "Lataa alkuperäinen"
 
-#: src/Buffer.cpp:2608
+#: src/Buffer.cpp:2619
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Haluatko palauttaa asiakirjan %1$s versionhallinnasta?"
 
-#: src/Buffer.cpp:2610
+#: src/Buffer.cpp:2621
 msgid "Retrieve from version control?"
 msgstr "Palautetaanko versionhallinnasta?"
 
-#: src/Buffer.cpp:2611
+#: src/Buffer.cpp:2622
 msgid "&Retrieve"
 msgstr "Palauta"
 
@@ -15279,93 +15279,93 @@ msgstr "Ei muita muistiinpanoja"
 msgid "Save bookmark"
 msgstr "Tallenna kirjanmerkki"
 
-#: src/BufferView.cpp:1038
+#: src/BufferView.cpp:1040
 msgid "No further undo information"
 msgstr "Ei enää muuta kumottavaa"
 
-#: src/BufferView.cpp:1047
+#: src/BufferView.cpp:1049
 msgid "No further redo information"
 msgstr "Ei muuta uudelleen tehtävää"
 
-#: src/BufferView.cpp:1216 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1218 src/lyxfind.cpp:295 src/lyxfind.cpp:313
 msgid "String not found!"
 msgstr "Merkkijonoa ei löydy!"
 
-#: src/BufferView.cpp:1240
+#: src/BufferView.cpp:1242
 msgid "Mark off"
 msgstr "Merkintä pois päältä"
 
-#: src/BufferView.cpp:1247
+#: src/BufferView.cpp:1249
 msgid "Mark on"
 msgstr "Merkintä päälle"
 
-#: src/BufferView.cpp:1254
+#: src/BufferView.cpp:1256
 msgid "Mark removed"
 msgstr "Merkintä poistettu"
 
-#: src/BufferView.cpp:1257
+#: src/BufferView.cpp:1259
 msgid "Mark set"
 msgstr "Merkintä asetettu"
 
-#: src/BufferView.cpp:1304
+#: src/BufferView.cpp:1306
 #, fuzzy
 msgid "Statistics for the selection:"
 msgstr "Vaihda avoimeen asiakirjaan"
 
-#: src/BufferView.cpp:1306
+#: src/BufferView.cpp:1308
 #, fuzzy
 msgid "Statistics for the document:"
 msgstr "Vaihda avoimeen asiakirjaan"
 
-#: src/BufferView.cpp:1309
+#: src/BufferView.cpp:1311
 #, fuzzy, c-format
 msgid "%1$d words"
 msgstr "%1$d sanaa tarkastettu."
 
-#: src/BufferView.cpp:1311
+#: src/BufferView.cpp:1313
 #, fuzzy
 msgid "One word"
 msgstr "Avainsana"
 
-#: src/BufferView.cpp:1314
+#: src/BufferView.cpp:1316
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1317
+#: src/BufferView.cpp:1319
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1320
+#: src/BufferView.cpp:1322
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1323
+#: src/BufferView.cpp:1325
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1325
+#: src/BufferView.cpp:1327
 #, fuzzy
 msgid "Statistics"
 msgstr "Tila"
 
-#: src/BufferView.cpp:2092
+#: src/BufferView.cpp:2094
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Lisätään asiakirja %1$s..."
 
-#: src/BufferView.cpp:2103
+#: src/BufferView.cpp:2105
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Asiakirja %1$s lisätty."
 
-#: src/BufferView.cpp:2105
+#: src/BufferView.cpp:2107
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Asiakirjaa %1$s ei voi lisätä"
 
-#: src/BufferView.cpp:2344
+#: src/BufferView.cpp:2346
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15373,26 +15373,26 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Asiakirjan %1$s avaaminen epäonnistui."
 
-#: src/BufferView.cpp:2346
+#: src/BufferView.cpp:2348
 msgid "Could not read file"
 msgstr "Ei voitu lukea tiedostoa"
 
-#: src/BufferView.cpp:2353
+#: src/BufferView.cpp:2355
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s ei voitu lukea"
 
-#: src/BufferView.cpp:2354 src/output.cpp:39
+#: src/BufferView.cpp:2356 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Ei voitu avata tiedostoa"
 
-#: src/BufferView.cpp:2361
+#: src/BufferView.cpp:2363
 msgid "Reading not UTF-8 encoded file"
 msgstr "Luen ei-UTF-8-koodattua tiedostoa"
 
-#: src/BufferView.cpp:2362
+#: src/BufferView.cpp:2364
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -16147,7 +16147,7 @@ msgstr "Oletus"
 msgid "&Exit LyX"
 msgstr "Lopeta LyX"
 
-#: src/LyX.cpp:640 src/frontends/qt4/GuiView.cpp:665
+#: src/LyX.cpp:640 src/frontends/qt4/GuiView.cpp:669
 msgid "LyX: "
 msgstr "LyX: "
 
@@ -16359,7 +16359,7 @@ msgstr ""
 "\n"
 "Haluatko tallentaa asiakirja?"
 
-#: src/LyXFunc.cpp:690 src/frontends/qt4/GuiView.cpp:1796
+#: src/LyXFunc.cpp:690 src/frontends/qt4/GuiView.cpp:1800
 msgid "Save changed document?"
 msgstr "Tallennetaanko muutunut asiakirja?"
 
@@ -17547,9 +17547,9 @@ msgstr "BibTeX-lähdeviitteet"
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiDocument.cpp:1296
 #: src/frontends/qt4/GuiExternal.cpp:670 src/frontends/qt4/GuiGraphics.cpp:847
-#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1258
-#: src/frontends/qt4/GuiView.cpp:1316 src/frontends/qt4/GuiView.cpp:1463
-#: src/frontends/qt4/GuiView.cpp:1586 src/frontends/qt4/GuiView.cpp:1665
+#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1262
+#: src/frontends/qt4/GuiView.cpp:1320 src/frontends/qt4/GuiView.cpp:1467
+#: src/frontends/qt4/GuiView.cpp:1590 src/frontends/qt4/GuiView.cpp:1669
 msgid "Documents|#o#O"
 msgstr "Asiakirjat|#A#a"
 
@@ -17769,10 +17769,10 @@ msgstr "%1$s ja %2$s"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Valitse tiedostonimi, joksi asiakirja tallennetaan:"
 
-#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1335
-#: src/frontends/qt4/GuiView.cpp:1483 src/frontends/qt4/GuiView.cpp:1499
-#: src/frontends/qt4/GuiView.cpp:1516 src/frontends/qt4/GuiView.cpp:1603
-#: src/frontends/qt4/GuiView.cpp:1641
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1339
+#: src/frontends/qt4/GuiView.cpp:1487 src/frontends/qt4/GuiView.cpp:1503
+#: src/frontends/qt4/GuiView.cpp:1520 src/frontends/qt4/GuiView.cpp:1607
+#: src/frontends/qt4/GuiView.cpp:1645
 msgid "Canceled."
 msgstr "Peruttu."
 
@@ -18896,15 +18896,15 @@ msgstr "PostScript-tiedostot (*.ps)"
 msgid "Cross-reference"
 msgstr "Viittaus"
 
-#: src/frontends/qt4/GuiRef.cpp:279
+#: src/frontends/qt4/GuiRef.cpp:283
 msgid "&Go Back"
 msgstr "&Palaa"
 
-#: src/frontends/qt4/GuiRef.cpp:281
+#: src/frontends/qt4/GuiRef.cpp:285
 msgid "Jump back"
 msgstr "Palaa"
 
-#: src/frontends/qt4/GuiRef.cpp:289
+#: src/frontends/qt4/GuiRef.cpp:293
 msgid "Jump to label"
 msgstr "Siirry nimikkeeseen"
 
@@ -19375,7 +19375,7 @@ msgstr ""
 msgid "Symbols"
 msgstr "Symboli"
 
-#: src/frontends/qt4/GuiTabular.cpp:41
+#: src/frontends/qt4/GuiTabular.cpp:43
 msgid "Table Settings"
 msgstr "Taulukkoasetukset"
 
@@ -19443,65 +19443,65 @@ msgstr "Tavalliset ikoonit"
 msgid "Big-sized icons"
 msgstr "Isot ikoonit"
 
-#: src/frontends/qt4/GuiView.cpp:406
+#: src/frontends/qt4/GuiView.cpp:410
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Tuntematon työkalupalkki \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1257
+#: src/frontends/qt4/GuiView.cpp:1261
 msgid "Select template file"
 msgstr "Valitse mallitiedosto"
 
-#: src/frontends/qt4/GuiView.cpp:1259 src/frontends/qt4/GuiView.cpp:1666
+#: src/frontends/qt4/GuiView.cpp:1263 src/frontends/qt4/GuiView.cpp:1670
 msgid "Templates|#T#t"
 msgstr "Mallipohjat|#o#O"
 
-#: src/frontends/qt4/GuiView.cpp:1262 src/frontends/qt4/GuiView.cpp:1320
-#: src/frontends/qt4/GuiView.cpp:1592 src/frontends/qt4/GuiView.cpp:1673
+#: src/frontends/qt4/GuiView.cpp:1266 src/frontends/qt4/GuiView.cpp:1324
+#: src/frontends/qt4/GuiView.cpp:1596 src/frontends/qt4/GuiView.cpp:1677
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-asiakirjat (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1279
+#: src/frontends/qt4/GuiView.cpp:1283
 #, fuzzy
 msgid "Document not loaded."
 msgstr "Asiakirjan tallentaminen epäonnistui!"
 
-#: src/frontends/qt4/GuiView.cpp:1315
+#: src/frontends/qt4/GuiView.cpp:1319
 msgid "Select document to open"
 msgstr "Valitse avattava asiakirja"
 
-#: src/frontends/qt4/GuiView.cpp:1317 src/frontends/qt4/GuiView.cpp:1464
-#: src/frontends/qt4/GuiView.cpp:1587
+#: src/frontends/qt4/GuiView.cpp:1321 src/frontends/qt4/GuiView.cpp:1468
+#: src/frontends/qt4/GuiView.cpp:1591
 msgid "Examples|#E#e"
 msgstr "Esimerkit|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:1321
+#: src/frontends/qt4/GuiView.cpp:1325
 #, fuzzy
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "LyX-asiakirjat (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1322
+#: src/frontends/qt4/GuiView.cpp:1326
 #, fuzzy
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "LyX-asiakirjat (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1323
+#: src/frontends/qt4/GuiView.cpp:1327
 #, fuzzy
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "LyX-asiakirjat (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1324
+#: src/frontends/qt4/GuiView.cpp:1328
 #, fuzzy
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "LyX-asiakirjat (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1349 src/frontends/qt4/Validator.cpp:174
+#: src/frontends/qt4/GuiView.cpp:1353 src/frontends/qt4/Validator.cpp:174
 #: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
-#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:466
+#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:467
 msgid "Invalid filename"
 msgstr "Epäkelpo tiedostonnimi"
 
-#: src/frontends/qt4/GuiView.cpp:1350
+#: src/frontends/qt4/GuiView.cpp:1354
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -19509,41 +19509,41 @@ msgid ""
 "does not exists."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1364
+#: src/frontends/qt4/GuiView.cpp:1368
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Asiakirja %1$s avautuu..."
 
-#: src/frontends/qt4/GuiView.cpp:1373
+#: src/frontends/qt4/GuiView.cpp:1377
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Asiakirja %1$s avautui."
 
-#: src/frontends/qt4/GuiView.cpp:1376
+#: src/frontends/qt4/GuiView.cpp:1380
 #, fuzzy
 msgid "Version control detected."
 msgstr "Versiohallinta"
 
-#: src/frontends/qt4/GuiView.cpp:1378
+#: src/frontends/qt4/GuiView.cpp:1382
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Asiakirjan %1$s avaaminen epäonnistui"
 
-#: src/frontends/qt4/GuiView.cpp:1407
+#: src/frontends/qt4/GuiView.cpp:1411
 msgid "Couldn't import file"
 msgstr "Ei voi tuoda tiedostoa"
 
-#: src/frontends/qt4/GuiView.cpp:1408
+#: src/frontends/qt4/GuiView.cpp:1412
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Ei tietoa, miten tuoda muodosta %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1459
+#: src/frontends/qt4/GuiView.cpp:1463
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Valitse tuotava %1$s-tiedosto"
 
-#: src/frontends/qt4/GuiView.cpp:1510 src/frontends/qt4/GuiView.cpp:1690
+#: src/frontends/qt4/GuiView.cpp:1514 src/frontends/qt4/GuiView.cpp:1694
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -19553,46 +19553,46 @@ msgstr ""
 "Tiedosto %1$s on jo olemassa.\n"
 "Haluatko kirjoittaa sen päälle?"
 
-#: src/frontends/qt4/GuiView.cpp:1512 src/frontends/qt4/GuiView.cpp:1694
+#: src/frontends/qt4/GuiView.cpp:1516 src/frontends/qt4/GuiView.cpp:1698
 msgid "Overwrite document?"
 msgstr "Kirjoitetaanko asiakirjan päälle?"
 
-#: src/frontends/qt4/GuiView.cpp:1521
+#: src/frontends/qt4/GuiView.cpp:1525
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Tuo: %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1524
+#: src/frontends/qt4/GuiView.cpp:1528
 msgid "imported."
 msgstr "tuotu."
 
-#: src/frontends/qt4/GuiView.cpp:1526
+#: src/frontends/qt4/GuiView.cpp:1530
 #, fuzzy
 msgid "file not imported!"
 msgstr "Tiedostoa ei löydy"
 
-#: src/frontends/qt4/GuiView.cpp:1585
+#: src/frontends/qt4/GuiView.cpp:1589
 msgid "Select LyX document to insert"
 msgstr "Valitse lisättävä LyX-asiakirja"
 
-#: src/frontends/qt4/GuiView.cpp:1626
+#: src/frontends/qt4/GuiView.cpp:1630
 msgid "Select file to insert"
 msgstr "Valitse lisättävä tiedosto"
 
-#: src/frontends/qt4/GuiView.cpp:1630
+#: src/frontends/qt4/GuiView.cpp:1634
 #, fuzzy
 msgid "All Files (*)"
 msgstr "Kaikki tiedostot (*)"
 
-#: src/frontends/qt4/GuiView.cpp:1663
+#: src/frontends/qt4/GuiView.cpp:1667
 msgid "Choose a filename to save document as"
 msgstr "Valitse tiedostonimi, joksi asiakirja tallennetaan:"
 
-#: src/frontends/qt4/GuiView.cpp:1695 src/frontends/qt4/GuiView.cpp:1740
+#: src/frontends/qt4/GuiView.cpp:1699 src/frontends/qt4/GuiView.cpp:1744
 msgid "&Rename"
 msgstr "Muuta nimeä"
 
-#: src/frontends/qt4/GuiView.cpp:1736
+#: src/frontends/qt4/GuiView.cpp:1740
 #, fuzzy, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -19603,16 +19603,16 @@ msgstr ""
 "\n"
 "Haluatko tallentaa asiakirja?"
 
-#: src/frontends/qt4/GuiView.cpp:1739
+#: src/frontends/qt4/GuiView.cpp:1743
 msgid "Rename and save?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1740
+#: src/frontends/qt4/GuiView.cpp:1744
 #, fuzzy
 msgid "&Retry"
 msgstr "Pala&uta"
 
-#: src/frontends/qt4/GuiView.cpp:1794
+#: src/frontends/qt4/GuiView.cpp:1798
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -19622,19 +19622,19 @@ msgstr ""
 "Asiakirjassa %1$s on tallennettomia muutoksia.\n"
 "Haluatko tallentaa asiakirja vai heittää muutokset pois?"
 
-#: src/frontends/qt4/GuiView.cpp:1797
+#: src/frontends/qt4/GuiView.cpp:1801
 msgid "&Discard"
 msgstr "Heitä pois"
 
-#: src/frontends/qt4/GuiView.cpp:1901
+#: src/frontends/qt4/GuiView.cpp:1905
 msgid "Saving all documents..."
 msgstr "Talennan kaikki asiakirjat..."
 
-#: src/frontends/qt4/GuiView.cpp:1911
+#: src/frontends/qt4/GuiView.cpp:1915
 msgid "All documents saved."
 msgstr "Kaikki asiakirjat tallennettu"
 
-#: src/frontends/qt4/GuiView.cpp:2139
+#: src/frontends/qt4/GuiView.cpp:2143
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
@@ -19839,7 +19839,7 @@ msgid "List of Changes"
 msgstr "Taulukoiden luettelo"
 
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:287
-#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:467
+#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:468
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -20082,7 +20082,7 @@ msgstr "Alaviiteupote avattiin"
 msgid "footnote"
 msgstr "alaviite"
 
-#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:544
+#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:545
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -20104,24 +20104,24 @@ msgstr "%1$s:n muuntamista ei tarvittukaan"
 msgid "Graphics file: %1$s"
 msgstr "Kuvatiedosto: %1$s"
 
-#: src/insets/InsetInclude.cpp:330
+#: src/insets/InsetInclude.cpp:331
 msgid "Verbatim Input"
 msgstr "Sinänsä"
 
-#: src/insets/InsetInclude.cpp:333
+#: src/insets/InsetInclude.cpp:334
 msgid "Verbatim Input*"
 msgstr "Sinänsä*"
 
-#: src/insets/InsetInclude.cpp:433 src/insets/InsetInclude.cpp:632
+#: src/insets/InsetInclude.cpp:434 src/insets/InsetInclude.cpp:633
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:434 src/insets/InsetInclude.cpp:633
+#: src/insets/InsetInclude.cpp:435 src/insets/InsetInclude.cpp:634
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:489
+#: src/insets/InsetInclude.cpp:490
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -20129,12 +20129,12 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:495
+#: src/insets/InsetInclude.cpp:496
 #, fuzzy
 msgid "Different textclasses"
 msgstr "Aiheluokka"
 
-#: src/insets/InsetInclude.cpp:510
+#: src/insets/InsetInclude.cpp:511
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -20142,7 +20142,7 @@ msgid ""
 "which is not used in parent file."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:514
+#: src/insets/InsetInclude.cpp:515
 #, fuzzy
 msgid "Module not found"
 msgstr "Tiedostoa ei löydy"
@@ -20222,12 +20222,12 @@ msgid ""
 "must investigate!"
 msgstr ""
 
-#: src/insets/InsetListings.cpp:268
+#: src/insets/InsetListings.cpp:267
 #, fuzzy
 msgid "Uncodable characters in listings inset"
 msgstr "erikoismerkki"
 
-#: src/insets/InsetListings.cpp:269
+#: src/insets/InsetListings.cpp:268
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
@@ -20585,11 +20585,11 @@ msgstr "Kova välilyönti|K"
 msgid "Unknown TOC type"
 msgstr "Tuntematon sisällysluettelotyyppi"
 
-#: src/insets/InsetTabular.cpp:3182
+#: src/insets/InsetTabular.cpp:3210
 msgid "Opened table"
 msgstr "Avaa taulukko"
 
-#: src/insets/InsetTabular.cpp:3940
+#: src/insets/InsetTabular.cpp:4000
 #, fuzzy
 msgid "You cannot paste into a multicell selection."
 msgstr "Monisarake ei toimi pystysuuntaan."
