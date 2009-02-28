@@ -5,6 +5,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author André Pönitz
+ * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -460,6 +461,62 @@ void InsetMathTFrac::mathmlize(MathStream & os) const
 
 
 void InsetMathTFrac::validate(LaTeXFeatures & features) const
+{
+	features.require("amsmath");
+	InsetMathNest::validate(features);
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// InsetMathCFrac
+//
+/////////////////////////////////////////////////////////////////////
+
+
+Inset * InsetMathCFrac::clone() const
+{
+	return new InsetMathCFrac(*this);
+}
+
+
+void InsetMathCFrac::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	Dimension dim0, dim1;
+	cell(0).metrics(mi, dim0);
+	cell(1).metrics(mi, dim1);
+	dim.wid = max(dim0.wid, dim1.wid) + 2;
+	dim.asc = dim0.height() + 2 + 5;
+	dim.des = dim1.height() + 2 - 5;
+}
+
+
+void InsetMathCFrac::draw(PainterInfo & pi, int x, int y) const
+{
+	Dimension const dim = dimension(*pi.base.bv);
+	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
+	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
+	int m = x + dim.wid / 2;
+	cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
+	cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc  + 2 - 5);
+	pi.pain.line(x + 1, y - 5, x + dim.wid - 2, y - 5, Color_math);
+	setPosCache(pi, x, y);
+}
+
+
+docstring InsetMathCFrac::name() const
+{
+	return from_ascii("cfrac");
+}
+
+
+void InsetMathCFrac::mathmlize(MathStream & os) const
+{
+	os << MTag("mcfrac") << cell(0) << cell(1) << ETag("mcfrac");
+}
+
+
+void InsetMathCFrac::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
 	InsetMathNest::validate(features);

@@ -128,6 +128,26 @@ private:
 };
 
 
+/// \cfrac support
+class InsetMathCFrac : public InsetMathFrac {
+public:
+	///
+	InsetMathCFrac() {}
+	///
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	void draw(PainterInfo &, int x, int y) const;
+	///
+	docstring name() const;
+	///
+	void mathmlize(MathStream &) const;
+	///
+	void validate(LaTeXFeatures & features) const;
+private:
+	Inset * clone() const;
+};
+
+
 /// Binom like objects
 class InsetMathBinom : public InsetMathFracBase {
 public:

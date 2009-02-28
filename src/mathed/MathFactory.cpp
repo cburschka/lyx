@@ -447,6 +447,8 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathColor(true));
 	if (s == "textcolor")
 		return MathAtom(new InsetMathColor(false));
+	if (s == "cfrac")
+		return MathAtom(new InsetMathCFrac);
 	if (s == "dfrac")
 		return MathAtom(new InsetMathDFrac);
 	if (s == "tfrac")
