@@ -1498,6 +1498,10 @@ void TabWorkArea::closeCurrentBuffer()
 {
 	if (clicked_tab_ != -1)
 		setCurrentIndex(clicked_tab_);
+	else
+		// Before dispatching the LFUN we should be sure this
+		// is the current workarea.
+		currentWorkAreaChanged(currentWorkArea());
 
 	lyx::dispatch(FuncRequest(LFUN_BUFFER_CLOSE));
 }
