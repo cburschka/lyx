@@ -281,29 +281,6 @@ Comme la plupart des applications, LyX a l'habituelle barre de menus en
  boutons.
  Il y a, bien sûr, une barre de défilement vertical et une surface de travail
  principale pour éditer des documents.
- Près du bas de la fenêtre on trouve une petite fenêtre contenant une seule
- ligne de texte.
- C'est le 
-\emph on
-minibuffer
-\emph default
- (un terme que nous avons chipé à GNU Emacs), qui signifie en réalité 
-\begin_inset Quotes fld
-\end_inset
-
-ligne de commande
-\begin_inset Quotes frd
-\end_inset
-
-.
- Non seulement il affiche de l'information, mais il accepte aussi des entrées.
- Faites 
-\begin_inset Info
-type  "shortcut"
-arg   "command-execute"
-\end_inset
-
- quand vous devez taper une commande dans le minibuffer.
 \end_layout
 
 \begin_layout Standard
@@ -13573,27 +13550,14 @@ device independent (DVI)
 
 , car il est complètement portable ; vous pouvez les recopier d'une machine
  à l'autre sans avoir à faire de conversion.
- À l'époque où ce format a été développé, c'était loin d'être évident.
  Les fichiers DVI sont utilisés pour une visualisation rapide et comme une
  étape préliminaire avant la conversion vers un autre format comme le PostScript.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note :
-\series default
- Les fichiers DVI ne contiennent pas d'images, elles sont seulement liées
+Les fichiers DVI ne contiennent pas d'images, elles sont seulement liées
  au fichier.
  N'oubliez donc pas de fournir vos images en même temps que vos DVI.
-\end_layout
-
-\end_inset
-
  Cette caractéristique peut aussi ralentir votre ordinateur quand vous visualise
 z le DVI puisque le programme de visualisation doit convertir les images
  en tâche de fond pour les rendre visibles quand vous faites défiler votre
@@ -13640,9 +13604,9 @@ Ce type de fichiers a l'extension
 
 .
  PostScript a été développé par la société 
-\series bold
+\family typewriter
 Adobe
-\series default
+\family default
  comme un langage pour les imprimantes.
  De ce fait le fichier contient toutes les commandes utilisées par l'imprimante
  pour imprimer le document.
@@ -13701,8 +13665,15 @@ PostScript Encapsulé
 ).
  Comme LyX vous permet n'importe quel format d'image connu dans votre document,
  il doit les convertir en interne en EPS.
- Si vous avez par exemple 50 images dans votre document, LyX doit faire
- 50 conversions à chaque fois que vous visualisez ou que vous exportez votre
+ Si vous avez par exemple 50
+\begin_inset space \thinspace{}
+\end_inset
+
+images dans votre document, LyX doit faire 50
+\begin_inset space \thinspace{}
+\end_inset
+
+conversions à chaque fois que vous visualisez ou que vous exportez votre
  document.
  Cela risque de ralentir de façon importante votre rythme de travail.
  En conclusion, si vous prévoyez d'utiliser PostScript, vous pouvez insérer
@@ -13769,9 +13740,9 @@ format de document portable
 \end_inset
 
  (portable document format ou PDF) est développé par 
-\series bold
+\family typewriter
 Adobe
-\series default
+\family default
  comme une évolution de PostScript.
  Il est plus comprimé et utilise moins de commandes que PostScript.
  Comme son nom l'indique, il est 
@@ -13840,14 +13811,14 @@ PDF
 \end_inset
 
 (ps2pdf) Ceci utilise le programme 
-\series bold
+\family typewriter
 ps2pdf
-\series default
+\family default
  qui créé un PDF à partir de la version PostScript de votre fichier.
  Cette dernière est produite par le programme 
-\series bold
+\family typewriter
 dvips
-\series default
+\family default
  qui utilise une version DVI comme étape intermédiaire.
  Cette variante consiste donc en trois conversions.
 \end_layout
@@ -13858,9 +13829,9 @@ PDF
 \end_inset
 
 (dvipdfm) Ceci utilise le programme 
-\series bold
+\family typewriter
 dvipdfm
-\series default
+\family default
  qui convertit votre fichier en DVI avant de le convertir en PDF.
 \end_layout
 
@@ -13870,9 +13841,9 @@ PDF
 \end_inset
 
 (pdflatex) Ceci utilise le programme 
-\series bold
+\family typewriter
 pdftex
-\series default
+\family default
  qui convertit directement votre fichier en PDF.
 \end_layout
 
@@ -13886,15 +13857,15 @@ PDF
 (pdflatex)
 \family default
  car 
-\series bold
+\family typewriter
 pdftex
-\series default
+\family default
  accepte toutes les fonctionnalités des versions actuelles de PDF.
  Il est en plus rapide et stable.
  Le programme 
-\series bold
+\family typewriter
 dvipdfm
-\series default
+\family default
  n'est plus développé est est donc un peu dépassé.
 \end_layout
 

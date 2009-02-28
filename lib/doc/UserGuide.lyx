@@ -283,28 +283,6 @@ Like most applications, LyX has the familiar menu bar across the top of
  Below it is a toolbar with a pulldown box and various buttons.
  There is, of course, a vertical scrollbar and a main work area for editing
  documents.
- Near the bottom of the window is a small window containing a single line
- of text.
- This is the 
-\emph on
-minibuffer
-\emph default
-, which really means 
-\begin_inset Quotes eld
-\end_inset
-
-command buffer
-\begin_inset Quotes erd
-\end_inset
-
-.
- Type 
-\begin_inset Info
-type  "shortcut"
-arg   "command-execute"
-\end_inset
-
- when you need to type a command in the minibuffer.
 \end_layout
 
 \begin_layout Standard
@@ -4227,7 +4205,7 @@ thanks
 \begin_inset Quotes erd
 \end_inset
 
- or contact informations.
+ or contact information.
 \end_layout
 
 \begin_layout Subsection
@@ -5341,7 +5319,7 @@ Each item has a numeral as its label.
 
 \begin_deeper
 \begin_layout Enumerate
-The type of numeral depends on the nesting depth.
+The label type depends on the nesting depth.
 \end_layout
 
 \end_deeper
@@ -6325,7 +6303,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename clipart/Abstract.pdf
-	lyxscale 25
 
 \end_inset
 
@@ -6593,7 +6570,7 @@ There are a few quirks with this environment:
 \end_layout
 
 \begin_layout Itemize
-You cannot use 
+You can't use 
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -6783,7 +6760,7 @@ Introduction
 \begin_layout Standard
 LyX treats text as a unified block with a particular context and specific
  properties.
- This allows you to create blocks that inherits some of the properties of
+ This allows you to create blocks that inherit some of the properties of
  another block.
  For example you have three main points in an outline, but point #2 also
  has two subpoints.
@@ -6822,7 +6799,7 @@ three
 \end_layout
 
 \begin_layout Standard
-You put a list inside of a list by nesting one list inside the other.
+You put a list inside a list by nesting one list inside the other.
  Nesting an environment is quite simple: Select 
 \family sans
 Increase
@@ -6925,8 +6902,8 @@ Completely unnestable
 \end_layout
 
 \begin_layout Itemize
-Fully nestable, you can nest them inside of things and you can also nest
- other things inside of them.
+Fully nestable, you can nest them inside things and you can also nest other
+ things inside them.
 \end_layout
 
 \begin_layout Itemize
@@ -7036,7 +7013,7 @@ LyX-Code
 
 \end_deeper
 \begin_layout Description
-Nestable-Inside You can nest them inside of other things.
+Nestable-Inside You can nest them inside other things.
  You can't nest anything into them.
 \end_layout
 
@@ -7165,9 +7142,9 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-lists, it is highly recommended not to do this.
- Because the aim is to create well structured documents following usual
- guidelines of typesetting, but nested section headings violates them.
+lists, it is highly recommended not to do this because the aim is to create
+ well structured documents following typesetting guidelines whereas nested
+ section headings violate this.
 \end_layout
 
 \end_inset
@@ -7237,7 +7214,7 @@ reference "sec:Floats"
 
 \end_inset
 
- for more informations about 
+ for more information about 
 \family sans
 Floats
 \family default
@@ -7698,7 +7675,7 @@ level #6
 \end_inset
 
  is the innermost possible depth.
- Here's an example to display what we mean:
+ Here's an example to illustrate what we mean:
 \end_layout
 
 \begin_layout Enumerate
@@ -7752,7 +7729,7 @@ Itemize
 \family sans
 Enumerate
 \family default
- list inside of item 
+ list inside item 
 \begin_inset Quotes eld
 \end_inset
 
@@ -7760,7 +7737,7 @@ A.
 \begin_inset Quotes erd
 \end_inset
 
-, we'd get errors.
+, we would get errors.
 \end_layout
 
 \begin_layout Subsection
@@ -7925,7 +7902,7 @@ arg   "break-paragraph inverse"
 List
 \family default
 .
- Remember - we can't nest anything inside of a 
+ Remember - we can't nest anything inside a 
 \family sans
 Standard
 \family default
@@ -7934,7 +7911,7 @@ Standard
 \emph on
 can
 \emph default
- keep nesting things inside of 
+ keep nesting things inside 
 \begin_inset Quotes eld
 \end_inset
 
@@ -8110,7 +8087,7 @@ Return
 \family sans
 Standard
 \family default
- and resetting the nesting depth by using 
+ and reset the nesting depth by using 
 \begin_inset Info
 type  "shortcut"
 arg   "depth-decrement"
@@ -8822,7 +8799,7 @@ Spacing
 \end_layout
 
 \begin_layout Standard
-What is a space? While you might be used to press the space key anytime
+What is a space? While you might be used to pressing the space key anytime
  you want to separate two words in ordinary word processors, LyX offers
  you more spaces: Spaces of different width and spaces which can or cannot
  be broken at the end of a line.
@@ -9973,7 +9950,7 @@ MedSkip
 \family sans
 BigSkip
 \family default
- are LaTeX sizes which depends on the font size of the document.
+ are LaTeX sizes which depend on the font size of the document.
  
 \family sans
 DefSkip
@@ -10198,7 +10175,7 @@ name "sub:Forced-Page-Breaks"
 If you don't like the way LaTeX does the pagebreaks in your document, you
  can force a page break where you want one.
  Normally this will not be necessary, because LaTeX is good at page breaking.
- Only if you use many 
+ Only if you use a lot of 
 \family sans
 Floats
 \family default
@@ -10206,7 +10183,7 @@ Floats
 \end_layout
 
 \begin_layout Standard
-We recommend not to use forced pagebreaks until the text is finished, and
+We recommend not to use forced pagebreaks until the text is finished and
  until you have checked in the preview to see if you 
 \emph on
 really
@@ -10287,11 +10264,11 @@ Page breaks ! Clear
 \end_layout
 
 \begin_layout Standard
-Differently to forced pagebreaks where the content behind the break is directly
- placed at the next page, pages can also be cleared while breaking them.
- That means that the current paragraph is terminated and all, perhaps not
- yet processed floats from previous document parts are placed behind it,
- if necessary by adding pages.
+Rather than forced pagebreaks where the content behind the break is placed
+ directly on the next page, you can also clear pages while breaking them.
+ That means that the current paragraph is terminated and everything, including
+ unprocessed floats, from the earlier part of the document are placed behind
+ it, if necessary by adding pages.
 \end_layout
 
 \begin_layout Standard
@@ -10502,7 +10479,7 @@ reference "sub:Keyboard-mapping"
 
 \end_inset
 
- for informations how this is done.
+ for information on how this is done.
 \end_layout
 
 \begin_layout Standard
@@ -10594,15 +10571,14 @@ g.
  This mathematical definition is interpreted by the font renderer and the
  curve is filled out with pixels according to the size and glyph.
  This means that outline fonts will look pretty good in all sizes.
- Only at very small sizes it might be hard to provide a good rendering at
- very small sizes, where each pixel has to be very carefully computed to
- provide a good image.
+ Only at very small sizes where each pixel has to be very carefully computed
+ to provide a good image, it might be hard to provide a good rendering.
 \begin_inset Newline newline
 \end_inset
 
-One could mean that one only needs to define one font size and scale them.
+That could mean that one only needs to define one font size and scale them.
  But to achieve a better quality, many fonts define several font sizes.
- That improves the appearance, because you need more details at large font
+ That improves the appearance because you need more details at large font
  sizes than at small ones.
 \begin_inset Newline newline
 \end_inset
@@ -10621,7 +10597,7 @@ Type
 \begin_inset space ~
 \end_inset
 
-1 PostScript
+1
 \family default
  are vector fonts.
 \end_layout
@@ -10653,7 +10629,7 @@ Fonts ! Bitmap-
  The advantage of bitmap fonts is that no complicated computations are necessary
  to display each glyph, so bitmap fonts are thus faster displayed than scalable
  fonts.
- The disadvantage is that sizes that don't exists as fixed versions have
+ The disadvantage is that sizes that don't exist as fixed versions have
  to be scaled by doubling pixels, and thus look bad.
 \begin_inset Newline newline
 \end_inset
@@ -10672,7 +10648,7 @@ Type
 \begin_layout Standard
 The result of all this, is that bitmap fonts are best for the size they
  are designed for, while scalable fonts are good for nearly all sizes.
- So one need less font size definitions for scalable fonts.
+ So one need fewer font size definitions for scalable fonts.
  That's the reason why nearly all text rendering and typesetting programs
  use scalable fonts.
 \end_layout
@@ -11060,7 +11036,7 @@ The font
 Times Roman
 \family default
  was originally designed for newspapers.
- That means its glyphs are smaller than the one from other fonts to fit
+ That means its glyphs are smaller than the ones from other fonts to fit
  into the small newspaper columns.
  Therefore 
 \family typewriter
@@ -11079,7 +11055,7 @@ Latin Modern
 lm
 \family default
 ) fonts.
- These fonts were developed in order of the LaTeX community to replace 
+ These fonts were developed for the LaTeX community to replace 
 \family typewriter
 cm
 \family default
@@ -12087,7 +12063,7 @@ arg   "font-underline"
 
 
 \family default
-Avoid using underbar if you can! It's a holdover from the typewriter days,
+Avoid using underbar if you can! It's a hangover from the typewriter days,
  when you couldn't change fonts.
  We no longer need to emphasize text by underscoring characters.
  It's only included in LyX because some people 
@@ -12395,7 +12371,7 @@ appendices
 \begin_inset Quotes erd
 \end_inset
 
- at all ends of of the streaks that form the character.
+ at the ends of the strokes that form the character.
  The following example will show the difference:
 \begin_inset Newline newline
 \end_inset
@@ -12444,11 +12420,11 @@ Overview
 \end_layout
 
 \begin_layout Standard
-Now that we've covered some of the basic features of document preparation
+Now that we have covered some of the basic features of document preparation
  using LyX, you probably want to know how to print out your masterpiece.
  Before we tell you that, we want to give you a quick explanation of what
  goes on behind-the-scenes.
- We cover these informations in much greater detail in the 
+ We cover this information in much greater detail in the 
 \emph on
 Extended
 \begin_inset space ~
@@ -12658,30 +12634,16 @@ device-independent
 
  (DVI), because it is completely portable; you can move them from one machine
  to another without needing to do any sort of conversion.
- At the time when this file-format was developed, this was no matter of
- course.
  DVIs are used for quick previews and as pre-stage for other output formats,
  like PostScript.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- The DVI file doesn't contain images, they will only be a linked.
+DVI files doen't contain images, they only link them.
  So don't forget to deliver the images together with your DVIs.
-\end_layout
-
-\end_inset
-
-This property can also slow down your computer when you view the DVI.
  Because the DVI-viewer has to convert the image in the background to make
- it visible when you scroll in the DVI.
+ it visible when you scroll the DVI, this can slow down your computer when
+ you view the DVI.
  So we recommend to use PDF for files with many images.
 \end_layout
 
@@ -12727,10 +12689,10 @@ This file type has the extension
 \family typewriter
 Adobe
 \family default
- as printer language.
+ as a printer language.
  The file contains therefore commands that the printer uses to print the
  file.
- PostScript can be seen as 
+ PostScript can be seen as a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -12743,8 +12705,8 @@ programming language
 status collapsed
 
 \begin_layout Plain Layout
-If you are interested to learn more about this, have a look at the LaTeX-package
- 
+When you are interested to learn more about this, have a look at the LaTeX-packa
+ge 
 \series bold
 pstricks
 \series default
@@ -12790,8 +12752,15 @@ Encapsulated PostScript
 ).
  As LyX allows you to use any known image format in your document, it has
  to convert them in the background to EPS.
- If you have e.g 50 images in your document, LyX has to do 50 conversions
- whenever you view or export your document.
+ If you have e.g 50
+\begin_inset space \thinspace{}
+\end_inset
+
+images in your document, LyX has to do 50
+\begin_inset space \thinspace{}
+\end_inset
+
+conversions whenever you view or export your document.
  This will slow down your workflow with LyX drastically.
  So if you plan to use PostScript, you can insert your images directly as
  EPS to avoid this problem.
@@ -12853,12 +12822,12 @@ Portable Document Format
 \begin_inset Quotes erd
 \end_inset
 
- (PDF) is developed by 
+ (PDF) developed by 
 \family typewriter
 Adobe
 \family default
- as derivative from PostScript.
- It is more compressed and it uses much less commands than PostScript.
+ was derived from PostScript.
+ It is more compressed and it uses fewer commands than PostScript.
  As the name 
 \begin_inset Quotes eld
 \end_inset
@@ -12993,13 +12962,13 @@ PDF
 \family typewriter
 pdftex
 \family default
- supports all features of actual PDF-versions, is quick and works stable
- without problems.
+ supports all the features of actual PDF-versions, is quick, stable, and
+ works without problems.
  The program 
 \family typewriter
 dvipdfm
 \family default
- is no more under development and therefore a bit outdated.
+ is no longer under development and therefore a bit outdated.
 \end_layout
 
 \begin_layout Subsection
@@ -25336,7 +25305,7 @@ The style file is a text file with the file extension
 status collapsed
 
 \begin_layout Plain Layout
-For informations how this is done, have a look at
+For information how this is done, have a look at
 \begin_inset Newline newline
 \end_inset
 
@@ -27570,12 +27539,12 @@ Bookmarks
 \end_layout
 
 \begin_layout Standard
-The header informations in the dialog tab 
+The header information in the dialog tab 
 \family sans
 General
 \family default
  are saved together with the PDF as file properties.
- Many programs are able to extract these informations to e.
+ Many programs are able to extract this information to e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -27589,7 +27558,7 @@ automatically recognize who is the author and what is the PDF about.
 \family sans
 Automatic fill header
 \family default
- is set, LyX tries to extract the header informations from your document
+ is set, LyX tries to extract the header information from your document
  title and author settings.
 \end_layout
 
@@ -29074,7 +29043,7 @@ Note
 \begin_layout Standard
 The review toolbar helps you to accept, reject, or merge changes – highlight
  the change and press one of the desired toolbar buttons.
- When you merge changes, a window pops up showing you informations about
+ When you merge changes, a window pops up showing you information about
  the next change behind the current cursor position.
  So you don't need to highlight a certain change.
  Within the merge window you can decide to accept or reject changes and
@@ -34457,7 +34426,7 @@ With this menu you can print your document to a file in PostScript format
 dvips
 \family default
 .
- For more informations have a look at section
+ For more information have a look at section
 \begin_inset space ~
 \end_inset
 
@@ -35202,7 +35171,7 @@ LaTeX-packages ! tipa
 \begin_inset Newline newline
 \end_inset
 
-For more informations about this feature we refer to the documentation of
+For more information about this feature we refer to the documentation of
  
 \series bold
 tipa, 
@@ -36515,7 +36484,7 @@ LaTeX
 
 Configuration
 \family default
- shows a LyX-document with informations about the LaTeX-packages and classes
+ shows a LyX-document with information about the LaTeX-packages and classes
  found by LyX (see also section
 \begin_inset space ~
 \end_inset

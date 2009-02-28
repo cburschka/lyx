@@ -241,17 +241,6 @@ Como la mayoría de aplicaciones, LyX tiene en la parte superior de la ventana
  botones.
  Hay, por supuesto, una barra de deslizamiento vertical y un área principal
  para editar los documentos.
- En la parte inferior de la ventana se pueden hacer visibles otras barras
- de herramientas o un campo de texto llamado 
-\emph on
-minibuffer
-\emph default
-, que en realidad es una especie de «línea de comandos».
- Teclea 
-\family sans
-Alt+X
-\family default
- cuando necesites escribir ahí un comando.
 \end_layout
 
 \begin_layout Standard
@@ -6486,13 +6475,12 @@ Resumen.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename clipart/Resumen.pdf
-	lyxscale 25
 	clip
 
 \end_inset
@@ -10817,7 +10805,7 @@ Type
 \begin_inset space ~
 \end_inset
 
-1 PostScript
+1
 \family default
  son fuentes vectoriales.
 \end_layout
@@ -12963,28 +12951,14 @@ device-independent
 
 , DVI), porque es completamente portable; puedes moverlo de una máquina
  a otra sin necesidad de hacer ninguna conversión.
- En los tiempos en que se desarrolló este formato, esto no era un asunto
- baladí.
  DVIs se usan para rápidas vistas preliminares y como preparación para otros
  formatos de salida, como PostScript.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-Nota:
-\series default
- Los archivos DVI no contienen imágenes, sino enlaces a ellas.
+Los archivos DVI no contienen imágenes, sino enlaces a ellas.
  Por tanto no debes olvidar adjuntar las imágenes a los archivos DVI.
-\end_layout
-
-\end_inset
-
-Esta característica también puede retardar la visualización del archivo,
+ Esta característica también puede retardar la visualización del archivo,
  porque el visor DVI tiene que convertir la imagen en segundo plano para
  hacerla visible al deslizar el visor.
  Así pues recomendamos usar PDF para archivos con muchas imágenes.
@@ -13097,8 +13071,15 @@ Encapsulated PostScript
 ).
  Como LyX permite usar cualquier formato de imagen conocido, tiene que trabajar
  en segundo plano para convertir las imágenes a EPS.
- Si por ejemplo, el documento tiene 50 imágenes, LyX ha de hacer 50 conversiones
- cada vez que veas o exportes el documento.
+ Si por ejemplo, el documento tiene 50
+\begin_inset space \thinspace{}
+\end_inset
+
+imágenes, LyX ha de hacer 50
+\begin_inset space \thinspace{}
+\end_inset
+
+conversiones cada vez que veas o exportes el documento.
  Esto ralentizará mucho el trabajo, así que si piensas usar PostScript,
  puedes evitar el problema insertando las imágenes directamente en EPS.
 \end_layout
