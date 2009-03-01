@@ -12992,7 +12992,7 @@ To get a look at the final version of your document, with all of the pagebreaks
 View
 \family default
  and choose a file type.
- A viewing program will popup showing the output.
+ A viewing program will pop up showing the output.
  For 
 \family sans
 View\SpecialChar \menuseparator
@@ -13073,7 +13073,7 @@ name "sub:Printing-the-File"
 \end_layout
 
 \begin_layout Standard
-Instead of exporting your file and then printing them, you can also print
+Instead of exporting your file and then printing it, you can also print
  it directly from within LyX.
  To print a file, select the menu 
 \family sans
@@ -13211,7 +13211,7 @@ In LyX, the
 -
 \family default
 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
  character comes in four lengths: the 
@@ -13235,11 +13235,40 @@ em dash
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="3">
+<lyxtabular version="3" rows="5" columns="3">
 <features>
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+output
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+inserted with
+\end_layout
+
+\end_inset
+</cell>
+</row>
 <row interlinespace="3mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -13263,7 +13292,6 @@ hyphen
 \begin_inset Text
 
 \begin_layout Plain Layout
-a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13272,10 +13300,10 @@ a
 -
 \family default
 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
-
+ in text
 \end_layout
 
 \end_inset
@@ -13304,7 +13332,7 @@ en dash
 \begin_inset Text
 
 \begin_layout Plain Layout
-inserted via 
+
 \family sans
 Insert\SpecialChar \menuseparator
 Special
@@ -13341,7 +13369,7 @@ em dash
 \begin_inset Text
 
 \begin_layout Plain Layout
-inserted via 
+
 \family sans
 Insert\SpecialChar \menuseparator
 Special
@@ -13381,7 +13409,6 @@ minus sign
 \begin_inset Text
 
 \begin_layout Plain Layout
-a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13390,7 +13417,7 @@ a
 -
 \family default
 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
  in math mode
@@ -13420,7 +13447,7 @@ You can alternatively generate the en and em dash by inserting the
 -
 \family default
 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
  character multiple times in a row.
@@ -13599,12 +13626,12 @@ Settings
 \end_layout
 
 \begin_layout Standard
-LaTeX hyphenates nearly perfectly, it has only problems with text in the
- font 
+LaTeX hyphenates almost perfectly, it only has problems with text in the
+ 
 \family sans
 typewriter
 \family default
- and with unusual constructs, like 
+ font and with unusual constructs, like 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13631,8 +13658,8 @@ Point
 
 \begin_layout Standard
 Sometimes you want to prevent words or constructs to be hyphenated.
- The keybindings/shortcuts in this document consists of three letters with
- a hyphen and a space in the form 
+ Imagine that you are describing keybindings/shortcuts in your document
+ in the form 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13641,7 +13668,7 @@ A-b c
 \end_inset
 
 .
- LaTeX finds there the hyphen 
+ LaTeX would then see the hyphen 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13651,8 +13678,8 @@ A-b c
 
  as hyphenation possibility.
  Hyphenating at this point would look ugly.
- To prevent the shortcut from being hyphenated, we can put it in the argument
- of the LaTeX-box-command 
+ To prevent the shortcut from being hyphenated, you can put it into the
+ argument of the LaTeX-box-command 
 \series bold
 
 \backslash
@@ -13665,7 +13692,7 @@ mbox
 \backslash
 mbox
 \series default
-, we have to use TeX Code.
+, you have to use TeX Code.
  The result looks in LyX like:
 \end_layout
 
@@ -13736,8 +13763,8 @@ appropriate amount of space
 \end_layout
 
 \begin_layout Standard
-Unfortunately, the algorithm for figuring out what's an abbreviation works
- not for all cases.
+Unfortunately, the algorithm for figuring out what's an abbreviation does
+ not work in all cases.
  If a 
 \begin_inset Quotes eld
 \end_inset
@@ -13923,8 +13950,8 @@ This is I\SpecialChar \@.
 
 \begin_layout Standard
 Some languages don't use extra spacing between sentences.
- If your language is such a language, you don't need to worry, because the
- LaTeX will care about this.
+ If your language is such a language, you don't need to worry, because LaTeX
+ will take care of this.
 \end_layout
 
 \begin_layout Standard
@@ -14239,7 +14266,7 @@ this
 \end_layout
 
 \begin_layout Standard
-These settings affects what character the 
+These settings affect what character the 
 \family sans
 "
 \family default
@@ -14432,17 +14459,10 @@ name "sub:LyX's-Proper-Names"
 \end_layout
 
 \begin_layout Standard
-You have surely noticed, that the word 
-\begin_inset Quotes eld
-\end_inset
-
-LaTeX
-\begin_inset Quotes erd
-\end_inset
-
- appears always with characters in different size and height.
+You will certainly have noticed that the word “LaTeX” always appears with
+ characters in different sizes and heights.
  LaTeX is the name of the program used by LyX and is therefore recognized
- as proper name when you type it in LyX as 
+ as a proper name when you type it in LyX as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -19076,12 +19096,12 @@ Margin
 Notes
 \family default
  are also floats, because they can float to the next page when there are
- too much notes at the page.
+ too many notes on the page.
 \end_layout
 
 \begin_layout Standard
-Floats makes it possible to get a high quality layout.
- Images and tables can evenly be spread to the pages to avoid whitespace
+Floats make it possible to get a high quality layout.
+ Images and tables can be spread evenly over the pages to avoid whitespace
  and pages without text.
  As the floating often destroys the context between the text and the image/table
 , every float can be referenced in the text.
@@ -19130,7 +19150,7 @@ Figure
  (# is the actual number) will be inserted into your document.
  The label will automatically be translated to the document language in
  the output.
- Behind the label you can insert the caption text.
+ After the label you can insert the caption text.
 \begin_inset Index
 status collapsed
 
@@ -19322,7 +19342,7 @@ M.C.
 \end_layout
 
 \begin_layout Standard
-This figure float show also how to set a label and create a cross-reference
+This figure float also shows how to set a label and create a cross-reference
  to it.
  As described in section
 \begin_inset space ~
@@ -19368,7 +19388,7 @@ above
 \end_layout
 
 \begin_layout Standard
-Normally only one image is inserted to a figure float, but sometimes you
+Normally only one image is inserted in a figure float, but sometimes you
  might want to use two images with separate subcaptions.
  This can be done by inserting image floats into existing image floats.
  Note that only the main caption of the float is added to the List of Figures.
@@ -19572,7 +19592,7 @@ Float\SpecialChar \menuseparator
 Table
 \family default
 .
- They have the same properties as figure floats except of the different
+ They have the same properties as figure floats except for the different
  label.
  Table
 \begin_inset space ~

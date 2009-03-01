@@ -13584,11 +13584,40 @@ menos
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="3">
+<lyxtabular version="3" rows="5" columns="3">
 <features>
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nombre
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+output
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+inserta con
+\end_layout
+
+\end_inset
+</cell>
+</row>
 <row interlinespace="3mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -13612,7 +13641,7 @@ guión
 \begin_inset Text
 
 \begin_layout Plain Layout
-un «
+«
 \family typewriter
 -
 \family default
@@ -13645,7 +13674,7 @@ semirraya
 \begin_inset Text
 
 \begin_layout Plain Layout
-se inserta con 
+
 \family sans
 Insertar\SpecialChar \menuseparator
 Carácter especial\SpecialChar \menuseparator
@@ -13678,7 +13707,7 @@ raya
 \begin_inset Text
 
 \begin_layout Plain Layout
-se inserta con 
+
 \family sans
 Insertar\SpecialChar \menuseparator
 Carácter especial\SpecialChar \menuseparator
@@ -13714,7 +13743,7 @@ signo menos
 \begin_inset Text
 
 \begin_layout Plain Layout
-un «
+«
 \family typewriter
 -
 \family default
@@ -13930,8 +13959,11 @@ guionado
 
 \begin_layout Standard
 A veces interesará evitar que ciertas palabras o estructuras se partan.
- Las asociaciones/atajos de teclado se representan con tres letras, un guión
- y un espacio en la forma 
+ 
+\lang english
+Imagine that you are describing keybindings/shortcuts in your document
+\lang spanish
+ en la forma 
 \begin_inset Quotes fld
 \end_inset
 

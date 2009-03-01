@@ -14199,11 +14199,40 @@ dash
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="3">
+<lyxtabular version="3" rows="5" columns="3">
 <features>
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nom
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+output
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+inseré par
+\end_layout
+
+\end_inset
+</cell>
+</row>
 <row interlinespace="3mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -14231,7 +14260,6 @@ d'union
 \begin_inset Text
 
 \begin_layout Plain Layout
-un 
 \begin_inset Quotes eld
 \end_inset
 
@@ -14272,7 +14300,7 @@ en
 \begin_inset Text
 
 \begin_layout Plain Layout
-inseré par 
+
 \family sans
 Insérer\SpecialChar \menuseparator
 Charactère
@@ -14313,7 +14341,7 @@ em
 \begin_inset Text
 
 \begin_layout Plain Layout
-inseré par 
+
 \family sans
 Insérer\SpecialChar \menuseparator
 Charactère
@@ -14353,7 +14381,6 @@ signe moins
 \begin_inset Text
 
 \begin_layout Plain Layout
-un 
 \begin_inset Quotes eld
 \end_inset
 
@@ -14612,20 +14639,22 @@ césure
 
 \begin_layout Standard
 Parfois vous voulez empêcher qu'un mot ou une construction ne soit coupé.
- Par exemple certains raccourcis claviers sont représentés dans ce document
- comme trois lettres séparées par un tiret et une espace de comme ceci :
  
+\lang english
+Imagine that you are describing keybindings/shortcuts in your document in
+\lang french
+ de comme ceci : 
 \begin_inset Quotes eld
 \end_inset
 
-A-b
+A-b c
 \begin_inset Quotes erd
 \end_inset
 
- c.
+.
  LaTeX considère le tiret comme une possibilité de césure, or une césure
  à cet endroit serait peu judicieuse.
- Pour empêcher le raccourci d'être coupe en deux, nous pouvons le mettre
+ Pour empêcher le raccourci d'être coupe en deux, vous pouvez le mettre
  comme argument de la commande LaTeX 
 \series bold
 
@@ -14639,7 +14668,7 @@ mbox
 \backslash
 mbox
 \series default
- nous devons utiliser du code TeX.
+ vous devez utiliser du code TeX.
  Le résultat, dans LyX, ressemble à ceci :
 \end_layout
 
