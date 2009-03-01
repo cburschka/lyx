@@ -283,28 +283,6 @@ Like most applications, LyX has the familiar menu bar across the top of
  Below it is a toolbar with a pulldown box and various buttons.
  There is, of course, a vertical scrollbar and a main work area for editing
  documents.
- Near the bottom of the window is a small window containing a single line
- of text.
- This is the 
-\emph on
-minibuffer
-\emph default
-, which really means 
-\begin_inset Quotes eld
-\end_inset
-
-command buffer
-\begin_inset Quotes erd
-\end_inset
-
-.
- Type 
-\begin_inset Info
-type  "shortcut"
-arg   "command-execute"
-\end_inset
-
- when you need to type a command in the minibuffer.
 \end_layout
 
 \begin_layout Standard
@@ -4227,7 +4205,7 @@ thanks
 \begin_inset Quotes erd
 \end_inset
 
- or contact informations.
+ or contact information.
 \end_layout
 
 \begin_layout Subsection
@@ -5341,7 +5319,7 @@ Each item has a numeral as its label.
 
 \begin_deeper
 \begin_layout Enumerate
-The type of numeral depends on the nesting depth.
+The label type depends on the nesting depth.
 \end_layout
 
 \end_deeper
@@ -6325,7 +6303,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename clipart/Abstract.pdf
-	lyxscale 25
 
 \end_inset
 
@@ -6593,7 +6570,7 @@ There are a few quirks with this environment:
 \end_layout
 
 \begin_layout Itemize
-You cannot use 
+You can't use 
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -6783,7 +6760,7 @@ Introduction
 \begin_layout Standard
 LyX treats text as a unified block with a particular context and specific
  properties.
- This allows you to create blocks that inherits some of the properties of
+ This allows you to create blocks that inherit some of the properties of
  another block.
  For example you have three main points in an outline, but point #2 also
  has two subpoints.
@@ -6822,7 +6799,7 @@ three
 \end_layout
 
 \begin_layout Standard
-You put a list inside of a list by nesting one list inside the other.
+You put a list inside a list by nesting one list inside the other.
  Nesting an environment is quite simple: Select 
 \family sans
 Increase
@@ -6925,8 +6902,8 @@ Completely unnestable
 \end_layout
 
 \begin_layout Itemize
-Fully nestable, you can nest them inside of things and you can also nest
- other things inside of them.
+Fully nestable, you can nest them inside things and you can also nest other
+ things inside them.
 \end_layout
 
 \begin_layout Itemize
@@ -7036,7 +7013,7 @@ LyX-Code
 
 \end_deeper
 \begin_layout Description
-Nestable-Inside You can nest them inside of other things.
+Nestable-Inside You can nest them inside other things.
  You can't nest anything into them.
 \end_layout
 
@@ -7165,9 +7142,9 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-lists, it is highly recommended not to do this.
- Because the aim is to create well structured documents following usual
- guidelines of typesetting, but nested section headings violates them.
+lists, it is highly recommended not to do this because the aim is to create
+ well structured documents following typesetting guidelines whereas nested
+ section headings violate this.
 \end_layout
 
 \end_inset
@@ -7237,7 +7214,7 @@ reference "sec:Floats"
 
 \end_inset
 
- for more informations about 
+ for more information about 
 \family sans
 Floats
 \family default
@@ -7698,7 +7675,7 @@ level #6
 \end_inset
 
  is the innermost possible depth.
- Here's an example to display what we mean:
+ Here's an example to illustrate what we mean:
 \end_layout
 
 \begin_layout Enumerate
@@ -7752,7 +7729,7 @@ Itemize
 \family sans
 Enumerate
 \family default
- list inside of item 
+ list inside item 
 \begin_inset Quotes eld
 \end_inset
 
@@ -7760,7 +7737,7 @@ A.
 \begin_inset Quotes erd
 \end_inset
 
-, we'd get errors.
+, we would get errors.
 \end_layout
 
 \begin_layout Subsection
@@ -7925,7 +7902,7 @@ arg   "break-paragraph inverse"
 List
 \family default
 .
- Remember - we can't nest anything inside of a 
+ Remember - we can't nest anything inside a 
 \family sans
 Standard
 \family default
@@ -7934,7 +7911,7 @@ Standard
 \emph on
 can
 \emph default
- keep nesting things inside of 
+ keep nesting things inside 
 \begin_inset Quotes eld
 \end_inset
 
@@ -8110,7 +8087,7 @@ Return
 \family sans
 Standard
 \family default
- and resetting the nesting depth by using 
+ and reset the nesting depth by using 
 \begin_inset Info
 type  "shortcut"
 arg   "depth-decrement"
@@ -8822,7 +8799,7 @@ Spacing
 \end_layout
 
 \begin_layout Standard
-What is a space? While you might be used to press the space key anytime
+What is a space? While you might be used to pressing the space key anytime
  you want to separate two words in ordinary word processors, LyX offers
  you more spaces: Spaces of different width and spaces which can or cannot
  be broken at the end of a line.
@@ -9973,7 +9950,7 @@ MedSkip
 \family sans
 BigSkip
 \family default
- are LaTeX sizes which depends on the font size of the document.
+ are LaTeX sizes which depend on the font size of the document.
  
 \family sans
 DefSkip
@@ -10198,7 +10175,7 @@ name "sub:Forced-Page-Breaks"
 If you don't like the way LaTeX does the pagebreaks in your document, you
  can force a page break where you want one.
  Normally this will not be necessary, because LaTeX is good at page breaking.
- Only if you use many 
+ Only if you use a lot of 
 \family sans
 Floats
 \family default
@@ -10206,7 +10183,7 @@ Floats
 \end_layout
 
 \begin_layout Standard
-We recommend not to use forced pagebreaks until the text is finished, and
+We recommend not to use forced pagebreaks until the text is finished and
  until you have checked in the preview to see if you 
 \emph on
 really
@@ -10287,11 +10264,11 @@ Page breaks ! Clear
 \end_layout
 
 \begin_layout Standard
-Differently to forced pagebreaks where the content behind the break is directly
- placed at the next page, pages can also be cleared while breaking them.
- That means that the current paragraph is terminated and all, perhaps not
- yet processed floats from previous document parts are placed behind it,
- if necessary by adding pages.
+Rather than forced pagebreaks where the content behind the break is placed
+ directly on the next page, you can also clear pages while breaking them.
+ That means that the current paragraph is terminated and everything, including
+ unprocessed floats, from the earlier part of the document are placed behind
+ it, if necessary by adding pages.
 \end_layout
 
 \begin_layout Standard
@@ -10502,7 +10479,7 @@ reference "sub:Keyboard-mapping"
 
 \end_inset
 
- for informations how this is done.
+ for information on how this is done.
 \end_layout
 
 \begin_layout Standard
@@ -10594,15 +10571,14 @@ g.
  This mathematical definition is interpreted by the font renderer and the
  curve is filled out with pixels according to the size and glyph.
  This means that outline fonts will look pretty good in all sizes.
- Only at very small sizes it might be hard to provide a good rendering at
- very small sizes, where each pixel has to be very carefully computed to
- provide a good image.
+ Only at very small sizes where each pixel has to be very carefully computed
+ to provide a good image, it might be hard to provide a good rendering.
 \begin_inset Newline newline
 \end_inset
 
-One could mean that one only needs to define one font size and scale them.
+That could mean that one only needs to define one font size and scale them.
  But to achieve a better quality, many fonts define several font sizes.
- That improves the appearance, because you need more details at large font
+ That improves the appearance because you need more details at large font
  sizes than at small ones.
 \begin_inset Newline newline
 \end_inset
@@ -10621,7 +10597,7 @@ Type
 \begin_inset space ~
 \end_inset
 
-1 PostScript
+1
 \family default
  are vector fonts.
 \end_layout
@@ -10653,7 +10629,7 @@ Fonts ! Bitmap-
  The advantage of bitmap fonts is that no complicated computations are necessary
  to display each glyph, so bitmap fonts are thus faster displayed than scalable
  fonts.
- The disadvantage is that sizes that don't exists as fixed versions have
+ The disadvantage is that sizes that don't exist as fixed versions have
  to be scaled by doubling pixels, and thus look bad.
 \begin_inset Newline newline
 \end_inset
@@ -10672,7 +10648,7 @@ Type
 \begin_layout Standard
 The result of all this, is that bitmap fonts are best for the size they
  are designed for, while scalable fonts are good for nearly all sizes.
- So one need less font size definitions for scalable fonts.
+ So one need fewer font size definitions for scalable fonts.
  That's the reason why nearly all text rendering and typesetting programs
  use scalable fonts.
 \end_layout
@@ -11060,7 +11036,7 @@ The font
 Times Roman
 \family default
  was originally designed for newspapers.
- That means its glyphs are smaller than the one from other fonts to fit
+ That means its glyphs are smaller than the ones from other fonts to fit
  into the small newspaper columns.
  Therefore 
 \family typewriter
@@ -11079,7 +11055,7 @@ Latin Modern
 lm
 \family default
 ) fonts.
- These fonts were developed in order of the LaTeX community to replace 
+ These fonts were developed for the LaTeX community to replace 
 \family typewriter
 cm
 \family default
@@ -12087,7 +12063,7 @@ arg   "font-underline"
 
 
 \family default
-Avoid using underbar if you can! It's a holdover from the typewriter days,
+Avoid using underbar if you can! It's a hangover from the typewriter days,
  when you couldn't change fonts.
  We no longer need to emphasize text by underscoring characters.
  It's only included in LyX because some people 
@@ -12395,7 +12371,7 @@ appendices
 \begin_inset Quotes erd
 \end_inset
 
- at all ends of of the streaks that form the character.
+ at the ends of the strokes that form the character.
  The following example will show the difference:
 \begin_inset Newline newline
 \end_inset
@@ -12444,11 +12420,11 @@ Overview
 \end_layout
 
 \begin_layout Standard
-Now that we've covered some of the basic features of document preparation
+Now that we have covered some of the basic features of document preparation
  using LyX, you probably want to know how to print out your masterpiece.
  Before we tell you that, we want to give you a quick explanation of what
  goes on behind-the-scenes.
- We cover these informations in much greater detail in the 
+ We cover this information in much greater detail in the 
 \emph on
 Extended
 \begin_inset space ~
@@ -12658,30 +12634,16 @@ device-independent
 
  (DVI), because it is completely portable; you can move them from one machine
  to another without needing to do any sort of conversion.
- At the time when this file-format was developed, this was no matter of
- course.
  DVIs are used for quick previews and as pre-stage for other output formats,
  like PostScript.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- The DVI file doesn't contain images, they will only be a linked.
+DVI files doen't contain images, they only link them.
  So don't forget to deliver the images together with your DVIs.
-\end_layout
-
-\end_inset
-
-This property can also slow down your computer when you view the DVI.
  Because the DVI-viewer has to convert the image in the background to make
- it visible when you scroll in the DVI.
+ it visible when you scroll the DVI, this can slow down your computer when
+ you view the DVI.
  So we recommend to use PDF for files with many images.
 \end_layout
 
@@ -12727,10 +12689,10 @@ This file type has the extension
 \family typewriter
 Adobe
 \family default
- as printer language.
+ as a printer language.
  The file contains therefore commands that the printer uses to print the
  file.
- PostScript can be seen as 
+ PostScript can be seen as a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -12743,8 +12705,8 @@ programming language
 status collapsed
 
 \begin_layout Plain Layout
-If you are interested to learn more about this, have a look at the LaTeX-package
- 
+When you are interested to learn more about this, have a look at the LaTeX-packa
+ge 
 \series bold
 pstricks
 \series default
@@ -12790,8 +12752,15 @@ Encapsulated PostScript
 ).
  As LyX allows you to use any known image format in your document, it has
  to convert them in the background to EPS.
- If you have e.g 50 images in your document, LyX has to do 50 conversions
- whenever you view or export your document.
+ If you have e.g 50
+\begin_inset space \thinspace{}
+\end_inset
+
+images in your document, LyX has to do 50
+\begin_inset space \thinspace{}
+\end_inset
+
+conversions whenever you view or export your document.
  This will slow down your workflow with LyX drastically.
  So if you plan to use PostScript, you can insert your images directly as
  EPS to avoid this problem.
@@ -12853,12 +12822,12 @@ Portable Document Format
 \begin_inset Quotes erd
 \end_inset
 
- (PDF) is developed by 
+ (PDF) developed by 
 \family typewriter
 Adobe
 \family default
- as derivative from PostScript.
- It is more compressed and it uses much less commands than PostScript.
+ was derived from PostScript.
+ It is more compressed and it uses fewer commands than PostScript.
  As the name 
 \begin_inset Quotes eld
 \end_inset
@@ -12993,13 +12962,13 @@ PDF
 \family typewriter
 pdftex
 \family default
- supports all features of actual PDF-versions, is quick and works stable
- without problems.
+ supports all the features of actual PDF-versions, is quick, stable, and
+ works without problems.
  The program 
 \family typewriter
 dvipdfm
 \family default
- is no more under development and therefore a bit outdated.
+ is no longer under development and therefore a bit outdated.
 \end_layout
 
 \begin_layout Subsection
@@ -13023,7 +12992,7 @@ To get a look at the final version of your document, with all of the pagebreaks
 View
 \family default
  and choose a file type.
- A viewing program will popup showing the output.
+ A viewing program will pop up showing the output.
  For 
 \family sans
 View\SpecialChar \menuseparator
@@ -13104,7 +13073,7 @@ name "sub:Printing-the-File"
 \end_layout
 
 \begin_layout Standard
-Instead of exporting your file and then printing them, you can also print
+Instead of exporting your file and then printing it, you can also print
  it directly from within LyX.
  To print a file, select the menu 
 \family sans
@@ -13242,7 +13211,7 @@ In LyX, the
 -
 \family default
 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
  character comes in four lengths: the 
@@ -13266,11 +13235,40 @@ em dash
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="3">
+<lyxtabular version="3" rows="5" columns="3">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+output
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+inserted with
+\end_layout
+
+\end_inset
+</cell>
+</row>
 <row interlinespace="3mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -13294,7 +13292,6 @@ hyphen
 \begin_inset Text
 
 \begin_layout Plain Layout
-a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13303,10 +13300,10 @@ a
 -
 \family default
 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
-
+ in text
 \end_layout
 
 \end_inset
@@ -13335,7 +13332,7 @@ en dash
 \begin_inset Text
 
 \begin_layout Plain Layout
-inserted via 
+
 \family sans
 Insert\SpecialChar \menuseparator
 Special
@@ -13372,7 +13369,7 @@ em dash
 \begin_inset Text
 
 \begin_layout Plain Layout
-inserted via 
+
 \family sans
 Insert\SpecialChar \menuseparator
 Special
@@ -13412,7 +13409,6 @@ minus sign
 \begin_inset Text
 
 \begin_layout Plain Layout
-a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13421,7 +13417,7 @@ a
 -
 \family default
 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
  in math mode
@@ -13451,7 +13447,7 @@ You can alternatively generate the en and em dash by inserting the
 -
 \family default
 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
  character multiple times in a row.
@@ -13630,12 +13626,12 @@ Settings
 \end_layout
 
 \begin_layout Standard
-LaTeX hyphenates nearly perfectly, it has only problems with text in the
- font 
+LaTeX hyphenates almost perfectly, it only has problems with text in the
+ 
 \family sans
 typewriter
 \family default
- and with unusual constructs, like 
+ font and with unusual constructs, like 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13662,8 +13658,8 @@ Point
 
 \begin_layout Standard
 Sometimes you want to prevent words or constructs to be hyphenated.
- The keybindings/shortcuts in this document consists of three letters with
- a hyphen and a space in the form 
+ Imagine that you are describing keybindings/shortcuts in your document
+ in the form 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13672,7 +13668,7 @@ A-b c
 \end_inset
 
 .
- LaTeX finds there the hyphen 
+ LaTeX would then see the hyphen 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13682,8 +13678,8 @@ A-b c
 
  as hyphenation possibility.
  Hyphenating at this point would look ugly.
- To prevent the shortcut from being hyphenated, we can put it in the argument
- of the LaTeX-box-command 
+ To prevent the shortcut from being hyphenated, you can put it into the
+ argument of the LaTeX-box-command 
 \series bold
 
 \backslash
@@ -13696,7 +13692,7 @@ mbox
 \backslash
 mbox
 \series default
-, we have to use TeX Code.
+, you have to use TeX Code.
  The result looks in LyX like:
 \end_layout
 
@@ -13767,8 +13763,8 @@ appropriate amount of space
 \end_layout
 
 \begin_layout Standard
-Unfortunately, the algorithm for figuring out what's an abbreviation works
- not for all cases.
+Unfortunately, the algorithm for figuring out what's an abbreviation does
+ not work in all cases.
  If a 
 \begin_inset Quotes eld
 \end_inset
@@ -13954,8 +13950,8 @@ This is I\SpecialChar \@.
 
 \begin_layout Standard
 Some languages don't use extra spacing between sentences.
- If your language is such a language, you don't need to worry, because the
- LaTeX will care about this.
+ If your language is such a language, you don't need to worry, because LaTeX
+ will take care of this.
 \end_layout
 
 \begin_layout Standard
@@ -14270,7 +14266,7 @@ this
 \end_layout
 
 \begin_layout Standard
-These settings affects what character the 
+These settings affect what character the 
 \family sans
 "
 \family default
@@ -14463,17 +14459,10 @@ name "sub:LyX's-Proper-Names"
 \end_layout
 
 \begin_layout Standard
-You have surely noticed, that the word 
-\begin_inset Quotes eld
-\end_inset
-
-LaTeX
-\begin_inset Quotes erd
-\end_inset
-
- appears always with characters in different size and height.
+You will certainly have noticed that the word “LaTeX” always appears with
+ characters in different sizes and heights.
  LaTeX is the name of the program used by LyX and is therefore recognized
- as proper name when you type it in LyX as 
+ as a proper name when you type it in LyX as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -19107,12 +19096,12 @@ Margin
 Notes
 \family default
  are also floats, because they can float to the next page when there are
- too much notes at the page.
+ too many notes on the page.
 \end_layout
 
 \begin_layout Standard
-Floats makes it possible to get a high quality layout.
- Images and tables can evenly be spread to the pages to avoid whitespace
+Floats make it possible to get a high quality layout.
+ Images and tables can be spread evenly over the pages to avoid whitespace
  and pages without text.
  As the floating often destroys the context between the text and the image/table
 , every float can be referenced in the text.
@@ -19161,7 +19150,7 @@ Figure
  (# is the actual number) will be inserted into your document.
  The label will automatically be translated to the document language in
  the output.
- Behind the label you can insert the caption text.
+ After the label you can insert the caption text.
 \begin_inset Index
 status collapsed
 
@@ -19353,7 +19342,7 @@ M.C.
 \end_layout
 
 \begin_layout Standard
-This figure float show also how to set a label and create a cross-reference
+This figure float also shows how to set a label and create a cross-reference
  to it.
  As described in section
 \begin_inset space ~
@@ -19399,7 +19388,7 @@ above
 \end_layout
 
 \begin_layout Standard
-Normally only one image is inserted to a figure float, but sometimes you
+Normally only one image is inserted in a figure float, but sometimes you
  might want to use two images with separate subcaptions.
  This can be done by inserting image floats into existing image floats.
  Note that only the main caption of the float is added to the List of Figures.
@@ -19603,7 +19592,7 @@ Float\SpecialChar \menuseparator
 Table
 \family default
 .
- They have the same properties as figure floats except of the different
+ They have the same properties as figure floats except for the different
  label.
  Table
 \begin_inset space ~
@@ -20111,9 +20100,9 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-having a figure too close to the bottom of the page can mess things up in
- the way that the float doesn't appear in the output or that it is placed
- over some other text.
+having a figure too close to the bottom of the page can mess things up so
+ that the float doesn't appear in the output or that it is placed over some
+ other text.
 \end_layout
 
 \end_inset
@@ -20123,18 +20112,18 @@ having a figure too close to the bottom of the page can mess things up in
 
 \begin_layout Itemize
 Wrap floats should not be placed in paragraphs that run over a page break.
- That means that wrap floats should better be inserted to the exact place
- when the document is nearly ready and you are able to estimate where page
- breaks will appear.
+ That means that wrap floats should preferably be inserted in the exact
+ place when the document is nearly ready and you are able to estimate where
+ page breaks will appear.
 \end_layout
 
 \begin_layout Itemize
-Wrap floats should either be placed in an own paragraph before the paragraph
- where they should wrap into or within a paragraph.
+Wrap floats should either be placed in their own paragraph before the paragraph
+ where they should wrap into, or within a paragraph.
 \end_layout
 
 \begin_layout Itemize
-Wrap floats in consecutive paragraphs may cause troubles, so assure that
+Wrap floats in consecutive paragraphs may cause trouble, so make sure that
  there is a text paragraph between them as separator.
 \end_layout
 
@@ -20178,7 +20167,7 @@ sideways
 \end_layout
 
 \begin_layout Standard
-Rotated floats are always placed on its own page (or column, in case you
+Rotated floats are always placed on their own pages (or columns, when you
  have a multi-column document).
  You can let them span several columns using the float settings option 
 \family sans
@@ -20198,7 +20187,7 @@ Embedded Objects
 \end_layout
 
 \begin_layout Standard
-Referencing rotated floats is the same like for normal floats, the caption
+Referencing rotated floats is the same like for normal floats; the caption
  format is also the same: Table
 \begin_inset space ~
 \end_inset
@@ -20359,8 +20348,7 @@ Span
 columns
 \family default
  is only useful for two-column documents: If you select it, the float will
- span across both columns on the page instead of being confined to just
- one.
+ span both columns on the page instead of being confined to just one.
 \begin_inset Newline newline
 \end_inset
 
@@ -20412,7 +20400,7 @@ if
 \begin_inset space ~
 \end_inset
 
-possible: try to place the float on the position where it is inserted
+possible: try to place the float at the position where it is inserted
 \end_layout
 
 \begin_layout Description
@@ -20424,7 +20412,7 @@ of
 \begin_inset space ~
 \end_inset
 
-page: try to place the float on the top of the current page
+page: try to place the float at the top of the current page
 \end_layout
 
 \begin_layout Description
@@ -20436,7 +20424,7 @@ of
 \begin_inset space ~
 \end_inset
 
-page: try to place the float on the bottom of the current page
+page: try to place the float at the bottom of the current page
 \end_layout
 
 \begin_layout Description
@@ -20448,7 +20436,7 @@ of
 \begin_inset space ~
 \end_inset
 
-floats: try to place the float on an own page 
+floats: try to place the float at an own page 
 \end_layout
 
 \begin_layout Standard
@@ -20490,7 +20478,7 @@ page
 \end_layout
 
 \begin_layout Standard
-By default, each options has its own rules:
+By default, each option has its own rules:
 \end_layout
 
 \begin_layout Standard
@@ -20593,7 +20581,7 @@ float
 \begin_inset Quotes erd
 \end_inset
 
- when you change your document and this will often destroy the page layout.
+ when you change your document, this will often destroy the page layout.
 \end_layout
 
 \begin_layout Standard
@@ -20906,8 +20894,8 @@ This is a line with an inline formula
 \end_layout
 
 \begin_layout Standard
-Displayed formulas appear outside the text like as they were in an own paragraph
-, like this one:
+Displayed formulas appear outside the text like as if they were in an own
+ paragraph, like this one:
 \begin_inset Formula \[
 A=B\]
 
@@ -21656,7 +21644,7 @@ Math ! Spaces
 \end_layout
 
 \begin_layout Standard
-You may want to create spaces that differs from the standard spacing that
+You may want to create spaces that differ from the standard spacing that
  LaTeX provides.
  To do this, type 
 \begin_inset Info
@@ -21680,7 +21668,7 @@ Panel
 
 .
  This generates a small space, and shows a small marker on the screen.
- Here a example for the sequence 
+ For example, the sequence 
 \series bold
 a Ctrl+Space b
 \series default
@@ -21688,19 +21676,19 @@ a Ctrl+Space b
 \begin_inset Formula $a\, b$
 \end_inset
 
- (appears in LyX as 
+ appears in LyX as 
 \begin_inset Graphics
 	filename clipart/SpaceMarker.png
 
 \end_inset
 
-).
+.
  You can change the space to different sizes when you set the cursor behind
  the space marker and hit space again several times.
  With every space hit the size will be changed.
- Some markers for the space size appear red in LyX, because they are a negative
+ Some markers for the space size appear red in LyX, because they are negative
  spaces.
- Here two examples:
+ Here are two examples:
 \end_layout
 
 \begin_layout Standard
@@ -21771,7 +21759,7 @@ Panel
 
 \end_inset
 
- a number of functions, such as 
+ a number of function macros, such as 
 \begin_inset Formula $\sin$
 \end_inset
 
@@ -21817,8 +21805,8 @@ Using the function macros will also produce correct spacing around the function:
 \end_layout
 
 \begin_layout Standard
-For some mathematical objects, like the limes, the macro changes the way
- that subscripts are placed, like described in section
+For some mathematical objects, like the limes, the macro changes where subscript
+s are placed, as described in section
 \begin_inset space ~
 \end_inset
 
@@ -22568,15 +22556,8 @@ There are several brackets available through LyX.
 \family default
  should suffice.
  But if you want to surround a large structure, like a matrix or a fraction,
- or if you have several layers of brackets, is better using 
-\family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Panel
-\family default
-'s delimiter icon 
+ or if you have several layers of brackets, it is better to use the math
+ toolbar delimiter icon 
 \begin_inset Graphics
 	filename ../images/math/delim.png
 
@@ -22633,75 +22614,6 @@ Insert
 \family default
 .
  The parentheses will be drawn around the selected structure.
-\end_layout
-
-\begin_layout Standard
-The next section explains how to insert a LaTeX 
-\begin_inset Quotes eld
-\end_inset
-
-{
-\begin_inset Quotes erd
-\end_inset
-
- for grouping.
-\end_layout
-
-\begin_layout Section
-Grouping
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Math ! Grouping
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-You may need to group a set of symbols.
- In LaTeX, for example, the typesetting of 
-\family typewriter
-{x^y}^z
-\family default
- is different from 
-\family typewriter
-x^{y^z}
-\family default
-:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula \[
-{x^{y}}^{z}\quad\mathrm{differs\; from}\quad x^{y^{z}}\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-To create this grouping, you need to use the key sequence 
-\begin_inset Quotes eld
-\end_inset
-
-
-\series bold
-
-\backslash
-{
-\series default
-
-\begin_inset Quotes erd
-\end_inset
-
- then type space.
- Inside LyX, you will see red braces indicating the grouping.
- Within this braces you insert the grouped structure.
- The grouping braces won't appear in the output in contrary to normal braces.
 \end_layout
 
 \begin_layout Section
@@ -22872,7 +22784,7 @@ arg   "newline-insert newline"
 Edit\SpecialChar \menuseparator
 Math
 \family default
-.
+ or the math toolbar.
 \end_layout
 
 \begin_layout Standard
@@ -22894,7 +22806,7 @@ Environment
 cases
 \series default
 .
- Here an example: 
+ Here is an example: 
 \begin_inset Formula \[
 f(x)=\begin{cases}
 -1 & x<0\\
@@ -23058,7 +22970,7 @@ arg   "math-number-toggle"
 
  within parentheses.
  The 
-\begin_inset Quotes erd
+\begin_inset Quotes eld
 \end_inset
 
 #
@@ -23111,7 +23023,7 @@ type  "shortcut"
 arg   "math-number-line-toggle"
 \end_inset
 
- will only toggle the numbering of the line where the cursor is in:
+ will only toggle the numbering of the line where the cursor is:
 \begin_inset Formula \begin{eqnarray}
 1 & = & 3-2\\
 2 & = & 4-2\nonumber \\
@@ -23191,7 +23103,7 @@ Reference
 \family default
 .
  A dialog appears to choose a label you want refer to.
- The reference appears in LyX as grey cross reference box and in the output
+ The reference appears in LyX as a grey cross reference box and in the output
  as the formula number:
 \end_layout
 
@@ -23253,8 +23165,8 @@ Math ! Macros
 \end_layout
 
 \begin_layout Standard
-LyX allows you to define macros for formulas what is very useful when you
- have in a document several times the same form of equations.
+LyX allows you to define macros for formulas which is very useful when you
+ have equations of the same form in a document several times.
  Math macros are explained in section 
 \emph on
 Math
@@ -23625,7 +23537,7 @@ status open
 \series bold
 Note:
 \series default
- that you can only print capital letters in the typefaces 
+ You can only print capital letters in the typefaces 
 \family sans
 Blackboard
 \family default
@@ -23650,7 +23562,7 @@ Space
 \family default
  within the box, will set the cursor outside, so that you have to use a
  protected space when you need a space in the box.
- Here an example where a 
+ Here an example where 
 \begin_inset Quotes eld
 \end_inset
 
@@ -23697,7 +23609,7 @@ Typewriter
 \begin_inset Newline newline
 \end_inset
 
-So better don't use this feature.
+So it is better not to use this feature.
 \end_layout
 
 \begin_layout Standard
@@ -23861,7 +23773,8 @@ displaystyle
 \family default
 .
  Except for some operators, which resize themselves to accommodate various
- situations, all text will be set in the styles as LaTeX thinks is appropriate.
+ situations, all text will be set in the styles that LaTeX thinks are appropriat
+e.
  These choices can be overridden by using the math panel button 
 \begin_inset Graphics
 	filename ../images/math/style.png
@@ -23923,7 +23836,7 @@ Style
 , all sizes in the formula will be adjusted relative to this size.
  Similarly, if the base font size of the document is changed, all fonts
  will be adjusted to correspond.
- As example a formula in the font size 
+ As an example here is a formula in the font size 
 \begin_inset Quotes eld
 \end_inset
 
@@ -25336,7 +25249,7 @@ The style file is a text file with the file extension
 status collapsed
 
 \begin_layout Plain Layout
-For informations how this is done, have a look at
+For information how this is done, have a look at
 \begin_inset Newline newline
 \end_inset
 
@@ -27570,12 +27483,12 @@ Bookmarks
 \end_layout
 
 \begin_layout Standard
-The header informations in the dialog tab 
+The header information in the dialog tab 
 \family sans
 General
 \family default
  are saved together with the PDF as file properties.
- Many programs are able to extract these informations to e.
+ Many programs are able to extract this information to e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -27589,7 +27502,7 @@ automatically recognize who is the author and what is the PDF about.
 \family sans
 Automatic fill header
 \family default
- is set, LyX tries to extract the header informations from your document
+ is set, LyX tries to extract the header information from your document
  title and author settings.
 \end_layout
 
@@ -28552,28 +28465,11 @@ th_en_EN_v2.dat
 \begin_layout Standard
 If you have OpenOffice installed including its thesaurus, these files should
  be already on your system.
- If not, you can get dictionaries either from the site
+ If not, you can get dictionaries from the site
 \begin_inset Newline newline
 \end_inset
 
 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://www.openthesaurus.org"
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-FIXME: Link is dead
-\end_layout
-
-\end_inset
-
- or from 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://extensions.services.openoffice.org"
@@ -29257,7 +29153,7 @@ Note
 \begin_layout Standard
 The review toolbar helps you to accept, reject, or merge changes – highlight
  the change and press one of the desired toolbar buttons.
- When you merge changes, a window pops up showing you informations about
+ When you merge changes, a window pops up showing you information about
  the next change behind the current cursor position.
  So you don't need to highlight a certain change.
  Within the merge window you can decide to accept or reject changes and
@@ -34640,7 +34536,7 @@ With this menu you can print your document to a file in PostScript format
 dvips
 \family default
 .
- For more informations have a look at section
+ For more information have a look at section
 \begin_inset space ~
 \end_inset
 
@@ -35385,7 +35281,7 @@ LaTeX-packages ! tipa
 \begin_inset Newline newline
 \end_inset
 
-For more informations about this feature we refer to the documentation of
+For more information about this feature we refer to the documentation of
  
 \series bold
 tipa, 
@@ -36698,7 +36594,7 @@ LaTeX
 
 Configuration
 \family default
- shows a LyX-document with informations about the LaTeX-packages and classes
+ shows a LyX-document with information about the LaTeX-packages and classes
  found by LyX (see also section
 \begin_inset space ~
 \end_inset
@@ -39141,7 +39037,7 @@ Chinese
 \end_inset
 
 (GBK) for simplified Chinese, is the same as the Windows code page CP 936
- except of the Euro currency sign, since 2001 this encoding is officially
+ except for the Euro currency sign, since 2001 this encoding is officially
  replaced by the encoding GB18030, as GB18030 is not available for LaTeX
  you should try to use the encoding Unicode
 \begin_inset space ~

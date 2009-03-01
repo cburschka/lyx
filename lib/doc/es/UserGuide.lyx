@@ -241,17 +241,6 @@ Como la mayoría de aplicaciones, LyX tiene en la parte superior de la ventana
  botones.
  Hay, por supuesto, una barra de deslizamiento vertical y un área principal
  para editar los documentos.
- En la parte inferior de la ventana se pueden hacer visibles otras barras
- de herramientas o un campo de texto llamado 
-\emph on
-minibuffer
-\emph default
-, que en realidad es una especie de «línea de comandos».
- Teclea 
-\family sans
-Alt+X
-\family default
- cuando necesites escribir ahí un comando.
 \end_layout
 
 \begin_layout Standard
@@ -6486,13 +6475,12 @@ Resumen.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename clipart/Resumen.pdf
-	lyxscale 25
 	clip
 
 \end_inset
@@ -10817,7 +10805,7 @@ Type
 \begin_inset space ~
 \end_inset
 
-1 PostScript
+1
 \family default
  son fuentes vectoriales.
 \end_layout
@@ -12963,28 +12951,14 @@ device-independent
 
 , DVI), porque es completamente portable; puedes moverlo de una máquina
  a otra sin necesidad de hacer ninguna conversión.
- En los tiempos en que se desarrolló este formato, esto no era un asunto
- baladí.
  DVIs se usan para rápidas vistas preliminares y como preparación para otros
  formatos de salida, como PostScript.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-Nota:
-\series default
- Los archivos DVI no contienen imágenes, sino enlaces a ellas.
+Los archivos DVI no contienen imágenes, sino enlaces a ellas.
  Por tanto no debes olvidar adjuntar las imágenes a los archivos DVI.
-\end_layout
-
-\end_inset
-
-Esta característica también puede retardar la visualización del archivo,
+ Esta característica también puede retardar la visualización del archivo,
  porque el visor DVI tiene que convertir la imagen en segundo plano para
  hacerla visible al deslizar el visor.
  Así pues recomendamos usar PDF para archivos con muchas imágenes.
@@ -13097,8 +13071,15 @@ Encapsulated PostScript
 ).
  Como LyX permite usar cualquier formato de imagen conocido, tiene que trabajar
  en segundo plano para convertir las imágenes a EPS.
- Si por ejemplo, el documento tiene 50 imágenes, LyX ha de hacer 50 conversiones
- cada vez que veas o exportes el documento.
+ Si por ejemplo, el documento tiene 50
+\begin_inset space \thinspace{}
+\end_inset
+
+imágenes, LyX ha de hacer 50
+\begin_inset space \thinspace{}
+\end_inset
+
+conversiones cada vez que veas o exportes el documento.
  Esto ralentizará mucho el trabajo, así que si piensas usar PostScript,
  puedes evitar el problema insertando las imágenes directamente en EPS.
 \end_layout
@@ -13603,11 +13584,40 @@ menos
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="3">
+<lyxtabular version="3" rows="5" columns="3">
 <features>
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nombre
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+output
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+inserta con
+\end_layout
+
+\end_inset
+</cell>
+</row>
 <row interlinespace="3mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -13631,7 +13641,7 @@ guión
 \begin_inset Text
 
 \begin_layout Plain Layout
-un «
+«
 \family typewriter
 -
 \family default
@@ -13664,7 +13674,7 @@ semirraya
 \begin_inset Text
 
 \begin_layout Plain Layout
-se inserta con 
+
 \family sans
 Insertar\SpecialChar \menuseparator
 Carácter especial\SpecialChar \menuseparator
@@ -13697,7 +13707,7 @@ raya
 \begin_inset Text
 
 \begin_layout Plain Layout
-se inserta con 
+
 \family sans
 Insertar\SpecialChar \menuseparator
 Carácter especial\SpecialChar \menuseparator
@@ -13733,7 +13743,7 @@ signo menos
 \begin_inset Text
 
 \begin_layout Plain Layout
-un «
+«
 \family typewriter
 -
 \family default
@@ -13949,8 +13959,11 @@ guionado
 
 \begin_layout Standard
 A veces interesará evitar que ciertas palabras o estructuras se partan.
- Las asociaciones/atajos de teclado se representan con tres letras, un guión
- y un espacio en la forma 
+ 
+\lang english
+Imagine that you are describing keybindings/shortcuts in your document
+\lang spanish
+ en la forma 
 \begin_inset Quotes fld
 \end_inset
 
@@ -21721,11 +21734,6 @@ spce
 
 \series default
 .
- 
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Subsection
@@ -22211,7 +22219,7 @@ de
 
 funciones
 \family default
-, que contiene diversas funciones como 
+, que contiene diversas funciones macros como 
 \begin_inset Formula $\sin$
 \end_inset
 
@@ -22399,7 +22407,7 @@ reference "cap:Acentos-y-comandos"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -23079,18 +23087,10 @@ Hay varios tipos de delimitadores disponibles en LyX.
 \end_inset
 
  de la 
-\family sans
-Barra
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-matemáticas.
-
-\family default
+\lang english
+math toolbar
+\lang spanish
+.
  Por ejemplo, para poner corchetes alrededor de una matriz estándar: 
 \begin_inset Formula \[
 \left[\begin{array}{cc}
@@ -23142,79 +23142,6 @@ Si quieres poner delimitadores alrededor de estructuras matemáticas, como
 Insert
 \family default
 ar, con esto se dibujarán alrededor de la estructura resaltada.
-\end_layout
-
-\begin_layout Standard
-La sección siguiente explica cómo insertar 
-\begin_inset Quotes fld
-\end_inset
-
-
-\series bold
-{
-\series default
-
-\begin_inset Quotes frd
-\end_inset
-
- en LaTeX para hacer agrupamientos.
-\end_layout
-
-\begin_layout Section
-Agrupamientos
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Matemáticas ! Agrupamientos
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-A veces es necesario agrupar un conjunto de símbolos.
- En LaTeX, por ejemplo, las secuencias 
-\family typewriter
-{x^y}^z
-\family default
- y 
-\family typewriter
-x^{y^z}
-\family default
- son distintas:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula \[
-{x^{y}\lyxlock }{}^{z}\lyxlock \quad\mathrm{es\; diferente\; de}\lyxlock\quad x^{y^{z}\lyxlock }\lyxlock \]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Para crear este agrupamiento tienes que usar la secuencia de teclas 
-\begin_inset Quotes fld
-\end_inset
-
-
-\series bold
-
-\backslash
-{
-\series default
-
-\begin_inset Quotes frd
-\end_inset
-
- y después teclea espacio.
- En LyX, verás llaves en rojo señalando el agrupamiento.
- Dentro de ellas insertas la estructura agrupada.
- Estas llaves de agrupamiento no salen impresas, a diferencia de las normales.
 \end_layout
 
 \begin_layout Section
@@ -23856,7 +23783,7 @@ reference "cap:Estilos-del-texto-y"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -23878,10 +23805,6 @@ Estilos del texto y comandos correspondientes.
 
 \begin_layout Plain Layout
 \align center
-\begin_inset VSpace defskip
-\end_inset
-
-
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
 <features>
@@ -24147,15 +24070,16 @@ mathsf
 \end_inset
 
 
-\begin_inset VSpace defskip
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -24171,11 +24095,6 @@ Blackboard
 Caligráfica
 \family default
  sólo tienen mayúsculas.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
