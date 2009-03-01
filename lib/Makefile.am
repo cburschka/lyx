@@ -91,6 +91,7 @@ dist_deexamples_DATA = \
 	examples/de/Dezimal.lyx \
 	examples/de/ItemizeBullets.lyx \
 	examples/de/Lebenslauf.lyx \
+	examples/de/linguistics.lyx \
 	examples/de/multicol.lyx \
 	examples/de/serienbrief1.lyx \
 	examples/de/serienbrief2.lyx \
