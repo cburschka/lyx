@@ -21734,11 +21734,6 @@ spce
 
 \series default
 .
- 
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Subsection
@@ -22224,7 +22219,7 @@ de
 
 funciones
 \family default
-, que contiene diversas funciones como 
+, que contiene diversas funciones macros como 
 \begin_inset Formula $\sin$
 \end_inset
 
@@ -22412,7 +22407,7 @@ reference "cap:Acentos-y-comandos"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -23092,18 +23087,10 @@ Hay varios tipos de delimitadores disponibles en LyX.
 \end_inset
 
  de la 
-\family sans
-Barra
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-matemáticas.
-
-\family default
+\lang english
+math toolbar
+\lang spanish
+.
  Por ejemplo, para poner corchetes alrededor de una matriz estándar: 
 \begin_inset Formula \[
 \left[\begin{array}{cc}
@@ -23155,79 +23142,6 @@ Si quieres poner delimitadores alrededor de estructuras matemáticas, como
 Insert
 \family default
 ar, con esto se dibujarán alrededor de la estructura resaltada.
-\end_layout
-
-\begin_layout Standard
-La sección siguiente explica cómo insertar 
-\begin_inset Quotes fld
-\end_inset
-
-
-\series bold
-{
-\series default
-
-\begin_inset Quotes frd
-\end_inset
-
- en LaTeX para hacer agrupamientos.
-\end_layout
-
-\begin_layout Section
-Agrupamientos
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Matemáticas ! Agrupamientos
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-A veces es necesario agrupar un conjunto de símbolos.
- En LaTeX, por ejemplo, las secuencias 
-\family typewriter
-{x^y}^z
-\family default
- y 
-\family typewriter
-x^{y^z}
-\family default
- son distintas:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula \[
-{x^{y}\lyxlock }{}^{z}\lyxlock \quad\mathrm{es\; diferente\; de}\lyxlock\quad x^{y^{z}\lyxlock }\lyxlock \]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Para crear este agrupamiento tienes que usar la secuencia de teclas 
-\begin_inset Quotes fld
-\end_inset
-
-
-\series bold
-
-\backslash
-{
-\series default
-
-\begin_inset Quotes frd
-\end_inset
-
- y después teclea espacio.
- En LyX, verás llaves en rojo señalando el agrupamiento.
- Dentro de ellas insertas la estructura agrupada.
- Estas llaves de agrupamiento no salen impresas, a diferencia de las normales.
 \end_layout
 
 \begin_layout Section
@@ -23869,7 +23783,7 @@ reference "cap:Estilos-del-texto-y"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -23891,10 +23805,6 @@ Estilos del texto y comandos correspondientes.
 
 \begin_layout Plain Layout
 \align center
-\begin_inset VSpace defskip
-\end_inset
-
-
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
 <features>
@@ -24160,15 +24070,16 @@ mathsf
 \end_inset
 
 
-\begin_inset VSpace defskip
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -24184,11 +24095,6 @@ Blackboard
 Caligráfica
 \family default
  sólo tienen mayúsculas.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset

@@ -22055,11 +22055,11 @@ LyX accepte aussi de nombreuses commandes mathématiques LaTeX.
 \end_inset
 
 
-\family typewriter
+\series bold
 
 \backslash
 alpha
-\family default
+\series default
 
 \begin_inset Quotes erd
 \end_inset
@@ -22180,14 +22180,10 @@ spce
 \end_inset
 
 , tapez 
-\family typewriter
+\series bold
 
 \backslash
 sqrt
-\family default
- puis 
-\series bold
-
 \begin_inset ERT
 status collapsed
 
@@ -22200,20 +22196,13 @@ spce
 
 \end_inset
 
-
-\series default
-, puis 
-\family typewriter
 2x+1
-\family default
+\series default
 , et pas 
-\family typewriter
+\series bold
 
 \backslash
 sqrt
-\family default
-\series bold
-
 \begin_inset ERT
 status collapsed
 
@@ -22226,13 +22215,7 @@ spce
 
 \end_inset
 
-
-\family typewriter
-\series default
 2x
-\family default
-\series bold
-
 \begin_inset ERT
 status collapsed
 
@@ -22245,13 +22228,7 @@ spce
 
 \end_inset
 
-
-\family typewriter
-\series default
 +
-\family default
-\series bold
-
 \begin_inset ERT
 status collapsed
 
@@ -22264,11 +22241,8 @@ spce
 
 \end_inset
 
-
-\family typewriter
-\series default
 1
-\family default
+\series default
 , puisque dans le dernier cas seul le 
 \family typewriter
 
@@ -22357,12 +22331,8 @@ Vous pouvez utiliser la palette mathématique pour mettre des indices et
 \end_inset
 
 , tapez (dans une formule) 
-\family typewriter
-x^2
-\family default
- puis 
 \series bold
-
+x^2
 \begin_inset ERT
 status collapsed
 
@@ -22385,9 +22355,9 @@ Espace
  finale remet le curseur en bas, sur la ligne de l'expression, le faisant
  sortir de l'exposant.
  Si vous tapez 
-\family typewriter
+\series bold
 x^2y
-\family default
+\series default
 , vous aurez 
 \begin_inset Formula $x^{2y}$
 \end_inset
@@ -22397,12 +22367,8 @@ x^2y
 \end_inset
 
 , tapez 
-\family typewriter
-x^2
-\family default
- puis 
 \series bold
-
+x^2
 \begin_inset ERT
 status collapsed
 
@@ -22415,28 +22381,64 @@ spce
 
 \end_inset
 
-
+y
 \series default
- puis
-\family typewriter
-
-\begin_inset space ~
+.
+ 
+\lang english
+If you use characters in the superscript, that could be accented with the
+ hat 
+\begin_inset Quotes eld
 \end_inset
 
-y
+^
+\begin_inset Quotes erd
+\end_inset
+
+, you have to use an extra 
+\family sans
+Space
 \family default
+ to separate the hat and the character.
+ E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+if you want 
+\begin_inset Formula $x^{a}$
+\end_inset
+
+, type 
+\series bold
+x^
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+a
+\series default
 .
+
+\lang french
  Les indices marchent pareil, pour avoir 
 \begin_inset Formula $a_{1}$
 \end_inset
 
 , faites (dans une formule) 
-\family typewriter
-a_1
-\family default
- puis 
 \series bold
-
+a_1
 \begin_inset ERT
 status collapsed
 
@@ -22470,11 +22472,11 @@ Math ! Fractions
 
 \begin_layout Standard
 Créez une fraction soit avec 
-\family typewriter
+\series bold
 
 \backslash
 frac
-\family default
+\series default
  soit en utilisant l'icône de fraction 
 \begin_inset Graphics
 	filename ../../images/math/frac.png
@@ -22549,31 +22551,31 @@ Palette
 mathématique
 \family default
  ou tapant les commandes 
-\family typewriter
+\series bold
 
 \backslash
 sqrt
-\family default
+\series default
  ou 
-\family typewriter
+\series bold
 
 \backslash
 root
-\family default
+\series default
 .
  Avec la commande 
-\family typewriter
+\series bold
 
 \backslash
 root
-\family default
+\series default
  vous pouvez créer des racines cubiques ou d'ordre plus élevé, alors que
  
-\family typewriter
+\series bold
 
 \backslash
 sqrt
-\family default
+\series default
  ne produit que des racines carrées.
  Vous pouvez aussi utiliser les raccourcis 
 \family sans
@@ -22972,11 +22974,11 @@ fonctions
 
 , etc.
  (vous pouvez les entrer dans une formule en tapant 
-\family typewriter
+\series bold
 
 \backslash
 sin
-\family default
+\series default
 , etc.) La pratique courante en mathématiques veut que les fonctions qui
  sont des noms, comme 
 \begin_inset Formula $\sin$
@@ -23055,17 +23057,10 @@ Vous insérez des caractères accentués dans une formule de la même façon
 \end_inset
 
  même sans l'avoir sur votre clavier, en tapant 
-\family typewriter
-
-\begin_inset Quotes fld
-\end_inset
-
+\series bold
 
 \backslash
 check
-\family default
-\series bold
-
 \begin_inset ERT
 status collapsed
 
@@ -23078,16 +23073,9 @@ spce
 
 \end_inset
 
-
-\family typewriter
+a 
 \series default
-a
-\begin_inset Quotes frd
-\end_inset
-
-
-\family default
- dans la formule.
+dans la formule.
  Le tableau
 \begin_inset space ~
 \end_inset
@@ -23179,7 +23167,6 @@ circonflexe
 
 \begin_layout Plain Layout
 
-\family typewriter
 \series bold
 
 \backslash
@@ -23216,7 +23203,6 @@ grave
 
 \begin_layout Plain Layout
 
-\family typewriter
 \series bold
 
 \backslash
@@ -23253,7 +23239,6 @@ aigu
 
 \begin_layout Plain Layout
 
-\family typewriter
 \series bold
 
 \backslash
@@ -23290,7 +23275,6 @@ umlaut
 
 \begin_layout Plain Layout
 
-\family typewriter
 \series bold
 
 \backslash
@@ -23327,7 +23311,6 @@ tilde
 
 \begin_layout Plain Layout
 
-\family typewriter
 \series bold
 
 \backslash
@@ -23364,7 +23347,6 @@ point
 
 \begin_layout Plain Layout
 
-\family typewriter
 \series bold
 
 \backslash
@@ -23401,7 +23383,6 @@ brève
 
 \begin_layout Plain Layout
 
-\family typewriter
 \series bold
 
 \backslash
@@ -23438,7 +23419,6 @@ caron
 
 \begin_layout Plain Layout
 
-\family typewriter
 \series bold
 
 \backslash
@@ -23475,7 +23455,6 @@ macron
 
 \begin_layout Plain Layout
 
-\family typewriter
 \series bold
 
 \backslash
@@ -23512,7 +23491,6 @@ vecteur
 
 \begin_layout Plain Layout
 
-\family typewriter
 \series bold
 
 \backslash
@@ -23599,25 +23577,17 @@ Il y a plusieurs délimiteurs disponibles avec LyX.
 \backslash
 <>
 \family default
- devraient suffire, mais l'effet est meilleur avec la fenêtre 
-\family sans
-Délimiteurs
-\family default
- de la 
-\family sans
-Palette
-\begin_inset space ~
-\end_inset
-
-mathématique
-\family default
- (son icône est 
+ devraient suffire, mais l'effet est meilleur avec l'icône 
 \begin_inset Graphics
 	filename ../../images/math/delim.png
 
 \end_inset
 
-), surtout si vous voulez encadrer une grande structure, comme une matrice
+ de la 
+\lang english
+math toolbar
+\lang french
+, surtout si vous voulez encadrer une grande structure, comme une matrice
  ou une fraction, ou si vous avez plusieurs profondeurs de parenthésage.
  Par exemple, voici comment vous placeriez les crochets autour d'une matrice
  standard :
@@ -23703,90 +23673,6 @@ Insérer
 \family default
 .
  Les parenthèses seront placées autour de la structure sélectionnée.
-\end_layout
-
-\begin_layout Standard
-Si vous essayez d'entrer une accolade 
-\family typewriter
-{
-\family default
- LaTeX pour regrouper des parties de formule, vous devez lire la Section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Regroupement"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Section
-Regroupement
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Regroupement"
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Math ! Regroupement
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Vous pouvez avoir besoin de regrouper un ensemble de symboles.
- En LaTeX, par exemple, 
-\family typewriter
-{x^y}^z
-\family default
- est rendu différemment de 
-\family typewriter
-x^{y^z}
-\family default
- :
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula \[
-{x^{y}}^{z}\quad\mathrm{est\; diff\acute{e}rent\; de}\quad x^{y^{z}}\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Cependant, essayer de taper 
-\family typewriter
-{
-\family default
- dans LyX vous donne une accolade ouvrante dans le rendu.
- Pour créer un groupe, vous devez utiliser la séquence de touches 
-\family typewriter
-
-\backslash
-{
-\family default
- puis taper 
-\family sans
-Espace
-\family default
-.
- Dans LyX, vous verrez les accolades rouges indiquant le regroupement, mais
- elles n'apparaissent pas dans la sortie finale, contrairement aux accolades
- normales.
 \end_layout
 
 \begin_layout Section
@@ -23980,11 +23866,11 @@ ou les boutons de la palette.
 \begin_layout Standard
 Il y a de nombreux autres tableaux utilisés par le mode mathématique de
  LaTeX, surtout si l'on inclut les paquetages AMS-LaTeX, comme 
-\family typewriter
+\series bold
 
 \backslash
 cases
-\family default
+\series default
  et les diagrammes commutatifs.
  Ils ne sont pas encore tous utilisables dans LyX.
  L'environnement cas peut être inséré directement avec le menu 
@@ -23998,11 +23884,11 @@ Environment
 Cas,
 \family default
  ou en utilisant le bouton de la palette ou bien en tapant la commande 
-\family typewriter
+\series bold
 
 \backslash
 cases
-\family default
+\series default
 .
  Voici un exemple :
 \lang english
@@ -24553,7 +24439,7 @@ Commande LaTeX
 
 \begin_layout Plain Layout
 
-\family typewriter
+\series bold
 
 \backslash
 mathrm
@@ -24580,7 +24466,7 @@ mathrm
 
 \begin_layout Plain Layout
 
-\family typewriter
+\series bold
 
 \backslash
 mathbf
@@ -24607,7 +24493,7 @@ mathbf
 
 \begin_layout Plain Layout
 
-\family typewriter
+\series bold
 
 \backslash
 mathit
@@ -24634,7 +24520,7 @@ mathit
 
 \begin_layout Plain Layout
 
-\family typewriter
+\series bold
 
 \backslash
 mathtt
@@ -24661,7 +24547,7 @@ mathtt
 
 \begin_layout Plain Layout
 
-\family typewriter
+\series bold
 
 \backslash
 mathbb
@@ -24688,7 +24574,7 @@ mathbb
 
 \begin_layout Plain Layout
 
-\family typewriter
+\series bold
 
 \backslash
 mathfrak
@@ -24717,7 +24603,7 @@ mathfrak
 
 \begin_layout Plain Layout
 
-\family typewriter
+\series bold
 
 \backslash
 mathcal
@@ -24744,7 +24630,7 @@ mathcal
 
 \begin_layout Plain Layout
 
-\family typewriter
+\series bold
 
 \backslash
 mathsf

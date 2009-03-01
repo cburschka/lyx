@@ -20100,9 +20100,9 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-having a figure too close to the bottom of the page can mess things up in
- the way that the float doesn't appear in the output or that it is placed
- over some other text.
+having a figure too close to the bottom of the page can mess things up so
+ that the float doesn't appear in the output or that it is placed over some
+ other text.
 \end_layout
 
 \end_inset
@@ -20112,18 +20112,18 @@ having a figure too close to the bottom of the page can mess things up in
 
 \begin_layout Itemize
 Wrap floats should not be placed in paragraphs that run over a page break.
- That means that wrap floats should better be inserted to the exact place
- when the document is nearly ready and you are able to estimate where page
- breaks will appear.
+ That means that wrap floats should preferably be inserted in the exact
+ place when the document is nearly ready and you are able to estimate where
+ page breaks will appear.
 \end_layout
 
 \begin_layout Itemize
-Wrap floats should either be placed in an own paragraph before the paragraph
- where they should wrap into or within a paragraph.
+Wrap floats should either be placed in their own paragraph before the paragraph
+ where they should wrap into, or within a paragraph.
 \end_layout
 
 \begin_layout Itemize
-Wrap floats in consecutive paragraphs may cause troubles, so assure that
+Wrap floats in consecutive paragraphs may cause trouble, so make sure that
  there is a text paragraph between them as separator.
 \end_layout
 
@@ -20167,7 +20167,7 @@ sideways
 \end_layout
 
 \begin_layout Standard
-Rotated floats are always placed on its own page (or column, in case you
+Rotated floats are always placed on their own pages (or columns, when you
  have a multi-column document).
  You can let them span several columns using the float settings option 
 \family sans
@@ -20187,7 +20187,7 @@ Embedded Objects
 \end_layout
 
 \begin_layout Standard
-Referencing rotated floats is the same like for normal floats, the caption
+Referencing rotated floats is the same like for normal floats; the caption
  format is also the same: Table
 \begin_inset space ~
 \end_inset
@@ -20348,8 +20348,7 @@ Span
 columns
 \family default
  is only useful for two-column documents: If you select it, the float will
- span across both columns on the page instead of being confined to just
- one.
+ span both columns on the page instead of being confined to just one.
 \begin_inset Newline newline
 \end_inset
 
@@ -20401,7 +20400,7 @@ if
 \begin_inset space ~
 \end_inset
 
-possible: try to place the float on the position where it is inserted
+possible: try to place the float at the position where it is inserted
 \end_layout
 
 \begin_layout Description
@@ -20413,7 +20412,7 @@ of
 \begin_inset space ~
 \end_inset
 
-page: try to place the float on the top of the current page
+page: try to place the float at the top of the current page
 \end_layout
 
 \begin_layout Description
@@ -20425,7 +20424,7 @@ of
 \begin_inset space ~
 \end_inset
 
-page: try to place the float on the bottom of the current page
+page: try to place the float at the bottom of the current page
 \end_layout
 
 \begin_layout Description
@@ -20437,7 +20436,7 @@ of
 \begin_inset space ~
 \end_inset
 
-floats: try to place the float on an own page 
+floats: try to place the float at an own page 
 \end_layout
 
 \begin_layout Standard
@@ -20479,7 +20478,7 @@ page
 \end_layout
 
 \begin_layout Standard
-By default, each options has its own rules:
+By default, each option has its own rules:
 \end_layout
 
 \begin_layout Standard
@@ -20582,7 +20581,7 @@ float
 \begin_inset Quotes erd
 \end_inset
 
- when you change your document and this will often destroy the page layout.
+ when you change your document, this will often destroy the page layout.
 \end_layout
 
 \begin_layout Standard
@@ -20895,8 +20894,8 @@ This is a line with an inline formula
 \end_layout
 
 \begin_layout Standard
-Displayed formulas appear outside the text like as they were in an own paragraph
-, like this one:
+Displayed formulas appear outside the text like as if they were in an own
+ paragraph, like this one:
 \begin_inset Formula \[
 A=B\]
 
@@ -21645,7 +21644,7 @@ Math ! Spaces
 \end_layout
 
 \begin_layout Standard
-You may want to create spaces that differs from the standard spacing that
+You may want to create spaces that differ from the standard spacing that
  LaTeX provides.
  To do this, type 
 \begin_inset Info
@@ -21669,7 +21668,7 @@ Panel
 
 .
  This generates a small space, and shows a small marker on the screen.
- Here a example for the sequence 
+ For example, the sequence 
 \series bold
 a Ctrl+Space b
 \series default
@@ -21677,19 +21676,19 @@ a Ctrl+Space b
 \begin_inset Formula $a\, b$
 \end_inset
 
- (appears in LyX as 
+ appears in LyX as 
 \begin_inset Graphics
 	filename clipart/SpaceMarker.png
 
 \end_inset
 
-).
+.
  You can change the space to different sizes when you set the cursor behind
  the space marker and hit space again several times.
  With every space hit the size will be changed.
- Some markers for the space size appear red in LyX, because they are a negative
+ Some markers for the space size appear red in LyX, because they are negative
  spaces.
- Here two examples:
+ Here are two examples:
 \end_layout
 
 \begin_layout Standard
@@ -21760,7 +21759,7 @@ Panel
 
 \end_inset
 
- a number of functions, such as 
+ a number of function macros, such as 
 \begin_inset Formula $\sin$
 \end_inset
 
@@ -21806,8 +21805,8 @@ Using the function macros will also produce correct spacing around the function:
 \end_layout
 
 \begin_layout Standard
-For some mathematical objects, like the limes, the macro changes the way
- that subscripts are placed, like described in section
+For some mathematical objects, like the limes, the macro changes where subscript
+s are placed, as described in section
 \begin_inset space ~
 \end_inset
 
@@ -22557,15 +22556,8 @@ There are several brackets available through LyX.
 \family default
  should suffice.
  But if you want to surround a large structure, like a matrix or a fraction,
- or if you have several layers of brackets, is better using 
-\family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Panel
-\family default
-'s delimiter icon 
+ or if you have several layers of brackets, it is better to use the math
+ toolbar delimiter icon 
 \begin_inset Graphics
 	filename ../images/math/delim.png
 
@@ -22622,75 +22614,6 @@ Insert
 \family default
 .
  The parentheses will be drawn around the selected structure.
-\end_layout
-
-\begin_layout Standard
-The next section explains how to insert a LaTeX 
-\begin_inset Quotes eld
-\end_inset
-
-{
-\begin_inset Quotes erd
-\end_inset
-
- for grouping.
-\end_layout
-
-\begin_layout Section
-Grouping
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Math ! Grouping
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-You may need to group a set of symbols.
- In LaTeX, for example, the typesetting of 
-\family typewriter
-{x^y}^z
-\family default
- is different from 
-\family typewriter
-x^{y^z}
-\family default
-:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula \[
-{x^{y}}^{z}\quad\mathrm{differs\; from}\quad x^{y^{z}}\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-To create this grouping, you need to use the key sequence 
-\begin_inset Quotes eld
-\end_inset
-
-
-\series bold
-
-\backslash
-{
-\series default
-
-\begin_inset Quotes erd
-\end_inset
-
- then type space.
- Inside LyX, you will see red braces indicating the grouping.
- Within this braces you insert the grouped structure.
- The grouping braces won't appear in the output in contrary to normal braces.
 \end_layout
 
 \begin_layout Section
@@ -22861,7 +22784,7 @@ arg   "newline-insert newline"
 Edit\SpecialChar \menuseparator
 Math
 \family default
-.
+ or the math toolbar.
 \end_layout
 
 \begin_layout Standard
@@ -22883,7 +22806,7 @@ Environment
 cases
 \series default
 .
- Here an example: 
+ Here is an example: 
 \begin_inset Formula \[
 f(x)=\begin{cases}
 -1 & x<0\\
@@ -23047,7 +22970,7 @@ arg   "math-number-toggle"
 
  within parentheses.
  The 
-\begin_inset Quotes erd
+\begin_inset Quotes eld
 \end_inset
 
 #
@@ -23100,7 +23023,7 @@ type  "shortcut"
 arg   "math-number-line-toggle"
 \end_inset
 
- will only toggle the numbering of the line where the cursor is in:
+ will only toggle the numbering of the line where the cursor is:
 \begin_inset Formula \begin{eqnarray}
 1 & = & 3-2\\
 2 & = & 4-2\nonumber \\
@@ -23180,7 +23103,7 @@ Reference
 \family default
 .
  A dialog appears to choose a label you want refer to.
- The reference appears in LyX as grey cross reference box and in the output
+ The reference appears in LyX as a grey cross reference box and in the output
  as the formula number:
 \end_layout
 
@@ -23242,8 +23165,8 @@ Math ! Macros
 \end_layout
 
 \begin_layout Standard
-LyX allows you to define macros for formulas what is very useful when you
- have in a document several times the same form of equations.
+LyX allows you to define macros for formulas which is very useful when you
+ have equations of the same form in a document several times.
  Math macros are explained in section 
 \emph on
 Math
@@ -23614,7 +23537,7 @@ status open
 \series bold
 Note:
 \series default
- that you can only print capital letters in the typefaces 
+ You can only print capital letters in the typefaces 
 \family sans
 Blackboard
 \family default
@@ -23639,7 +23562,7 @@ Space
 \family default
  within the box, will set the cursor outside, so that you have to use a
  protected space when you need a space in the box.
- Here an example where a 
+ Here an example where 
 \begin_inset Quotes eld
 \end_inset
 
@@ -23686,7 +23609,7 @@ Typewriter
 \begin_inset Newline newline
 \end_inset
 
-So better don't use this feature.
+So it is better not to use this feature.
 \end_layout
 
 \begin_layout Standard
@@ -23850,7 +23773,8 @@ displaystyle
 \family default
 .
  Except for some operators, which resize themselves to accommodate various
- situations, all text will be set in the styles as LaTeX thinks is appropriate.
+ situations, all text will be set in the styles that LaTeX thinks are appropriat
+e.
  These choices can be overridden by using the math panel button 
 \begin_inset Graphics
 	filename ../images/math/style.png
@@ -23912,7 +23836,7 @@ Style
 , all sizes in the formula will be adjusted relative to this size.
  Similarly, if the base font size of the document is changed, all fonts
  will be adjusted to correspond.
- As example a formula in the font size 
+ As an example here is a formula in the font size 
 \begin_inset Quotes eld
 \end_inset
 
@@ -38947,7 +38871,7 @@ Chinese
 \end_inset
 
 (GBK) for simplified Chinese, is the same as the Windows code page CP 936
- except of the Euro currency sign, since 2001 this encoding is officially
+ except for the Euro currency sign, since 2001 this encoding is officially
  replaced by the encoding GB18030, as GB18030 is not available for LaTeX
  you should try to use the encoding Unicode
 \begin_inset space ~
