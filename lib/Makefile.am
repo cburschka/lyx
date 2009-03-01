@@ -146,6 +146,10 @@ dist_huexamples_DATA = \
 	examples/hu/example_raw.lyx \
 	examples/hu/splash.lyx
 
+idexamplesdir = $(pkgdatadir)/examples/id
+dist_idexamples_DATA = \
+	examples/id/splash.lyx
+
 itexamplesdir = $(pkgdatadir)/examples/it
 dist_itexamples_DATA = \
 	examples/it/ItemizeBullets.lyx \

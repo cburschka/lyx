@@ -2475,6 +2475,11 @@ lib_examples_hu_files = Split('''
 ''')
 
 
+lib_examples_id_files = Split('''
+    splash.lyx
+''')
+
+
 lib_examples_it_files = Split('''
     ItemizeBullets.lyx
     splash.lyx
