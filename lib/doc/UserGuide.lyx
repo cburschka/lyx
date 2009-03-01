@@ -24042,7 +24042,7 @@ One of LyX's strengths are cross-references.
  the document.
  To reference a document part, you have to insert a label into it.
  The label is used as anchor and name for the reference.
- We want for example refer to the the second item of the following list:
+ We want for example to refer to the second item of the following list:
 \end_layout
 
 \begin_layout Enumerate
@@ -24069,7 +24069,7 @@ First we insert a label into the second item with the menu
 Insert\SpecialChar \menuseparator
 Label
 \family default
- or the by pressing the toolbar button 
+ or by pressing the toolbar button 
 \begin_inset Graphics
 	filename ../images/label-insert.png
 	scale 85
@@ -24128,7 +24128,7 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-if you insert a label to a section heading, the prefix will be 
+if you insert a label into a section heading, the prefix will be 
 \begin_inset Quotes eld
 \end_inset
 
@@ -24164,8 +24164,8 @@ Cross-Reference
 
 \end_inset
 
- is inserted and the cross-reference window appear showing all labels of
- the document.
+ is inserted and the cross-reference window appears showing all the labels
+ in the document.
  We can now sort the labels alphabetically and then choose the entry 
 \begin_inset Quotes eld
 \end_inset
@@ -24405,7 +24405,7 @@ on this page
 \end_layout
 
 \begin_layout Standard
-The number and current page of the referred document part in the output,
+The number and current page of the referenced document part in the output,
  is automatically calculated by LaTeX.
  The varieties are adjusted in the field 
 \family sans
@@ -24458,7 +24458,8 @@ to
 
 Label
 \family default
- in the cross-reference window sets the the cursor before the referred label.
+ in the cross-reference window sets the the cursor before the referenced
+ label.
  The button text changes then to 
 \family sans
 Go
@@ -24480,7 +24481,7 @@ You can change labels at any time by clicking on the label box.
 \end_layout
 
 \begin_layout Standard
-If a cross-reference refers to a non-existing label, you'll see two question
+If a cross-reference refers to a non-existent label, you'll see two question
  marks in the output instead of the reference.
 \end_layout
 
@@ -24884,7 +24885,7 @@ Here
 \family default
 .
  This menu sets the document from the current cursor position to the end
- as appendix region.
+ as the appendix region.
  The region is marked with a red borderline.
 \end_layout
 
@@ -25045,14 +25046,14 @@ Citation
 \end_layout
 
 \begin_layout Standard
-Citation references appear in the output as number of the bibliography entry
- with surrounding brackets.
+Citation references appear in the output as the number of the bibliography
+ entry with surrounding brackets.
  If you set a 
 \family sans
 Label
 \family default
  for the entry, the label will appear instead of the number.
- Here two examples; the first without a label, the second with the label
+ Here are two examples; the first without a label, the second with the label
  
 \begin_inset Quotes eld
 \end_inset
@@ -25161,7 +25162,14 @@ The database is a text file with the file extension
 \end_inset
 
 , containing the bibliography in a special format.
- The format is explained in LaTeX books (
+ The format is explained in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BibTeX-2"
+
+\end_inset
+
+ and in LaTeX books (
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Mittelbach,Kopka,Lamport"
@@ -25228,7 +25236,7 @@ Content
 
 \begin_layout Standard
 The style file is a text file with the file extension 
-\begin_inset Quotes erd
+\begin_inset Quotes eld
 \end_inset
 
 
@@ -25337,7 +25345,7 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
  dialog, it is possible to have multiple and sectioned bibliographies.
- This and more specials are explained in detail in section 
+ This and other options are explained in detail in section 
 \emph on
 Customizing Bibliographies
 \emph default
@@ -25492,7 +25500,7 @@ Idx
 
  is inserted containing the text that appears in the index.
  The word where the cursor is in or the currently highlighted text is proposed
- by LyX as index entry.
+ by LyX as the index entry.
 \end_layout
 
 \begin_layout Standard
@@ -25513,7 +25521,7 @@ You can change index entries by clicking on the index box.
 \end_layout
 
 \begin_layout Standard
-The index list is inserted to the document with the menu 
+The index list is inserted in the document with the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 List
@@ -25748,7 +25756,7 @@ The commands
 \begin_inset Quotes erd
 \end_inset
 
- respectively starts and ends the index range.
+ respectively start and end the index range.
  You can also add the same index entry at different places in the document.
  They appear in the output under one entry with a comma separated list of
  the pages of the indexed document parts.
@@ -25816,7 +25824,7 @@ GIF|see{Image formats}
 \end_layout
 
 \begin_layout Standard
-Where the braces have to be inserted as TeX Code.
+where the braces have to be inserted as TeX Code.
  The text within the braces is the referenced entry.
  The reference will appear in the output without a page number.
 \end_layout
@@ -25861,7 +25869,7 @@ reference "sub:Index-Program"
 \end_inset
 
  doesn't know how to sort accents in different languages.
- We created as example the three dummy index entries 
+ We have created as an example the three dummy index entries 
 \begin_inset Quotes eld
 \end_inset
 
@@ -26081,7 +26089,7 @@ reference "sub:Index-Program"
 \family sans
 xindy
 \family default
-, however, this won't work for anything else than bold or italic text.
+, however, this won't work for anything other than bold or italic text.
  This is because xindy requires to define semantic elements before they
  can be used, see 
 \begin_inset CommandInset citation
@@ -26106,7 +26114,7 @@ In general, we encourage you to not format page numbers directly as shown
  Consider why you want some page numbers to be bold.
  Maybe you want all page references italic that refer to a definition of
  the indexed term, so that users can easily find definitions.
- If so, put the following in preamble
+ If so, put the following in the preamble
 \end_layout
 
 \begin_layout Standard
@@ -26132,7 +26140,7 @@ my entry|IndexDef
 \end_layout
 
 \begin_layout Standard
-into the index entry.
+in the index entry.
 \begin_inset Index
 status open
 
@@ -26143,7 +26151,7 @@ Dummy entries ! my entry|IndexDef
 \end_inset
 
  The advantage is that, if you change your mind later or if your publisher
- request that definitions must not be italic but bold, you just need to
+ insists that definitions must not be italic but bold, you just need to
  change the macro in the preamble, not every single index entry.
 \end_layout
 
@@ -26159,7 +26167,7 @@ g.
 
 we marked the index list box of this document as bold to get a bold font
  for all index entries.
- For more advanced task you have to set up a so-called 
+ For more advanced tasks you have to set up a so-called 
 \emph on
 Index Style File
 \emph default
@@ -26207,12 +26215,12 @@ When the index entry program
 \family sans
 xindy
 \family default
- is installed, that is only available for Linux, LyX uses it for the index
- generation, otherwise the program 
+, which is only available for Linux, is installed, LyX uses it for index
+ generation; otherwise the program 
 \family sans
 makeindex
 \family default
- is used, that is part of every LaTeX distribution.
+, that is part of every LaTeX distribution, is used.
  Both programs can be controlled by options that can be set in LyX's preferences
  dialog, see section
 \begin_inset space ~
@@ -26242,11 +26250,9 @@ key "makeindex,xindy"
 \family sans
 makeindex
 \family default
- is very old, not further developed and has many pitfalls.
- Most notably, it has been defined with nothing more than the English language
- in mind.
- So it fails at sorting correctly for anything else than an monolingual
- English text.
+ is very old, no longer under development and has many pitfalls, notably
+ that it was developed with only the English language in mind.
+ So it fails to sort anything other than a monolingual English text correctly.
  We have shown above how to fix this sorting.
  However, if you are writing in another language and using Linux, consider
  to use 
@@ -26421,7 +26427,7 @@ When you have symbols in formulas, you have to define them in the
 \family sans
 Symbol
 \family default
- field as LaTeX-formula.
+ field as LaTeX-formulas.
  For example to get 
 \begin_inset Quotes eld
 \end_inset
@@ -26456,7 +26462,7 @@ $
 \begin_inset Quotes erd
 \end_inset
 
- character hereby starts/ends the formula.
+ character starts/ends the formula.
  The LaTeX-command for the Greek letter is the name of the letter beginning
  with a backslash 
 \begin_inset Quotes eld
@@ -26679,11 +26685,11 @@ as
  field of the nomenclature dialog.
  Then the nomenclature entry will be sorted by this entry and not the symbol
  definition.
- For the given example, you can insert 
+ For the example given, you can insert 
 \family typewriter
 sigma
 \family default
- to this field for the 
+ in this field for the 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -27031,7 +27037,7 @@ nomlabelwidth}{width}
 \begin_layout Standard
 
 \family roman
-Where the width is a value with one of the units listed in Appendix
+where the width is a value with one of the units listed in Appendix
 \begin_inset space ~
 \end_inset
 
@@ -27076,8 +27082,8 @@ LyX uses the program
 \family sans
 makeindex
 \family default
- to generate the nomenclature, that is part of every LaTeX distribution.
- LyX's preferences dialog allows to specify another program or to control
+, that is part of every LaTeX distribution, to generate the nomenclature.
+ LyX's preferences dialog allows you to specify another program or to control
  
 \family sans
 makeindex
@@ -27143,7 +27149,7 @@ Sometimes it is useful to hide some document parts in the output.
 \end_layout
 
 \begin_layout Standard
-For these cases LyX offers to put text into branches.
+For these cases LyX allows you to put text into branches.
  The text will then only appear in the output when its branch is activated.
  To create a branch, go in the 
 \family sans
@@ -27418,7 +27424,7 @@ The
 \family sans
 Document Settings
 \family default
- dialog provides under 
+ dialog allows you in the 
 \family sans
 PDF Properties
 \family default
@@ -27496,7 +27502,7 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-automatically recognize who is the author and what is the PDF about.
+automatically recognize who the author is and what the PDF is about.
  This is very useful to sort, classify, or use PDFs for bibliography issues.
  When the option 
 \family sans
@@ -27522,7 +27528,7 @@ PDF properties are also used in this document.
 hyperref
 \series default
  options are used.
- For an explanation of them we refer to the hyperref manual 
+ For an explanation of them we refer you to the hyperref manual 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
@@ -27568,7 +27574,7 @@ name "sub:TeX-Code-Boxes"
 As LyX uses LaTeX in the background, it supports many LaTeX commands and
  constructs, but not all.
  LaTeX contains of hundreds of packages which provide different commands.
- Every time packages are updated and new ones added.
+ All the time packages are being updated and new ones added.
  This has the advantage that you can typeset nearly everything as there
  is for every problem a LaTeX-package.
  But LyX can of course not be up to date and support all packages and their
@@ -27578,7 +27584,7 @@ As LyX uses LaTeX in the background, it supports many LaTeX commands and
 \begin_layout Standard
 But don't worry, you can use any LaTeX-command directly in LyX inside the
  TeX Code box.
- An TeX Code box is created by the menu 
+ A TeX Code box is created by the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 TeX
@@ -27601,8 +27607,8 @@ Code
 \begin_layout Standard
 You can insert complete or incomplete commands as TeX Code.
  Incomplete means that the command argument can be Standard LyX text.
- For example you want to draw a frame around a word and uses therefore the
- LaTeX-command 
+ For example, if you want to draw a frame around a word are therefore using
+ the LaTeX-command 
 \series bold
 
 \backslash
@@ -27727,7 +27733,7 @@ program
 
  your text.
  This has the advantage that the layout of the document can be changed at
- every time if you know the right commands.
+ any time if you know the right commands.
  E.
 \begin_inset space \thinspace{}
 \end_inset
@@ -27736,18 +27742,19 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-imagine you have to write a manual for a product and the deadline is at
- the end of the day.
+imagine you have to write a manual for a product and the deadline is the
+ end of the day.
  Your boss just has complimented you for your good work but wants to have
  all caption labels bold.
  But you have over hundred figure and table captions with non-bold labels
  in your manual.
- Of course it's impossible to change all caption labels by hand in one day.
+ Of course it's impossible to change all caption labels manually in one
+ day.
 \end_layout
 
 \begin_layout Standard
 Now LaTeX comes into play.
- As written above, for every problem exists a LaTeX-package.
+ As mentioned above, for every problem there exists a LaTeX-package.
  First you have to find out which and therefore look in the LaTeX package
  database, 
 \begin_inset CommandInset citation
@@ -27879,12 +27886,12 @@ in the preamble and the problem is solved.
 \backslash
 setkomafont
 \series default
- is an example for a command with more than one argument.)
+ is an example of a command with more than one argument.)
 \end_layout
 
 \begin_layout Standard
-Commands in the preamble affects the whole document, while commands in the
- text affects only the text after the command or only the text used as command
+Commands in the preamble affect the whole document, while commands in the
+ text affect only the text after the command or only the text used as command
  argument.
  To insert a LaTeX-command in text, use the TeX Code box as described in
  the previous section.
@@ -28033,7 +28040,7 @@ preview-latex
 preview
 \series default
 ) installed.
- In case it is not already installed, you find it in the TeX Catalogue,
+ If it is not already installed, you will find it in the TeX Catalogue,
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -28128,7 +28135,7 @@ pspell
 \family typewriter
 aspell
 \family default
- can be seen as successor of 
+ can be seen as the successor to 
 \family typewriter
 ispell
 \family default
@@ -28188,7 +28195,7 @@ Replace
 \end_layout
 
 \begin_layout Standard
-By default, the used dictionary file is determined by the document language
+By default, the dictionary file used is determined by the document language
  that is set in the 
 \family sans
 Document\SpecialChar \menuseparator
@@ -28206,7 +28213,7 @@ Alternative language
 \end_layout
 
 \begin_layout Standard
-After a spell check you'll informed about the number of checked words.
+After a spell check you will be informed about the number of checked words.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -28267,7 +28274,7 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-German umlauts although you spell check English document.
+German umlauts although you are spell checking an English document.
  This should not normally be needed.
 \end_layout
 
@@ -28276,8 +28283,8 @@ Personal
 \begin_inset space ~
 \end_inset
 
-dictionary to use a different file than the spell checker's default choice
- as your personal dictionary
+dictionary to use a different file as your personal dictionary instead of
+ the spell checker's default choice 
 \end_layout
 
 \begin_layout Description
@@ -28390,14 +28397,14 @@ Thesaurus
 \end_inset
 
 .
- A dialog pops up showing you probably related words that you can use as
+ A dialog pops up showing you prossibly related words that you can use as
  replacement.
 \end_layout
 
 \begin_layout Standard
-The shown related words are in many cases not really related to the word
- you are currently checking, scrolling in the shown list might help in some
- cases to find related words.
+The related words shown may not really be related to the word you are currently
+ checking; scrolling in the poposal list might help in some cases to find
+ related words.
 \end_layout
 
 \begin_layout Standard
@@ -28471,9 +28478,9 @@ name "sec:Change-Tracking"
 \end_layout
 
 \begin_layout Standard
-When you work on a document together with many people it is extremely useful
- to see changes others made highlighted in the document.
- You can then decide if you accept a change or not.
+When you work on a document collaboratively it is extremely useful to be
+ able to see changes that others have made highlighted in the document.
+ You can then decide if you want to accept a change or not.
  This can be achieved by turning on change tracking in the menu 
 \family sans
 Document\SpecialChar \menuseparator
@@ -28992,7 +28999,7 @@ The review toolbar helps you to accept, reject, or merge changes – highlight
  So you don't need to highlight a certain change.
  Within the merge window you can decide to accept or reject changes and
  step to the next change.
- This way you can jump through all changes of the document.
+ This way you can jump through all the changes in the document.
 \end_layout
 
 \begin_layout Standard
@@ -29016,7 +29023,7 @@ LaTeX-packages ! dvipost
 \end_inset
 
  installed.
- You find it in the TeX Catalogue, 
+ You will find it in the TeX Catalogue, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeXCatalogue"
@@ -29164,8 +29171,8 @@ name "sub:Keyboard-mapping"
 \end_layout
 
 \begin_layout Standard
-If you have for example a U.S.-style keyboard and want to write in a different
- language than English, you can use an alternate keymap.
+If you have for example a U.S.-style keyboard and want to write in a language
+ other than English, you can use an alternate keymap.
  For example, if you have a U.S.-style keyboard but want to write in Italian,
  you can configure LyX to use an Italian keymap.
  The preferences dialog allows you to choose up to two keyboard mappings,
@@ -29192,7 +29199,7 @@ Finally, you may just want to change a few key mappings or create an entirely
  keyboard but want to include an occasional quotation in German.
  In such a case, you can write your own keyboard mapping or modify an existing
  one to support the characters you want.
- This and much more customizations are explained in the 
+ This and many other customizations are explained in the 
 \emph on
 Customization
 \emph default
@@ -42730,6 +42737,43 @@ status collapsed
 \begin_layout Plain Layout
 
 http://www.ctan.org/get/biblio/bibtex/contrib/doc/btxdoc.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "BibTeX-2"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf"
+
+\end_inset
+
+ how to use the program 
+\family sans
+BibTeX
+\family default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf
 \end_layout
 
 \end_inset
