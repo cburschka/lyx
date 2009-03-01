@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
+\use_default_options false
 \language english
 \inputencoding default
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -50,8 +51,7 @@ Top N things to know when using LyX
 \end_layout
 
 \begin_layout Enumerate
-LyX comes with excellent documentation --- please use it! Start with the
- 
+LyX comes with excellent documentation — please use it! Start with the 
 \family sans
 Help\SpecialChar \menuseparator
 Introduction
@@ -74,10 +74,10 @@ document processor.
 \begin_inset Quotes erd
 \end_inset
 
- By design, it is different from regular word processors --- in a way that
+ By design, it is different from regular word processors — in a way that
  makes writing documents easier.
  But only a little different, so don't be scared.
- The documentation will make it all clear
+ The documentation will make it all clear.
 \begin_inset Foot
 status collapsed
 
@@ -87,7 +87,7 @@ Have we mentioned yet that you ought to read the documentation?
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Enumerate

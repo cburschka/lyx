@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
+\use_default_options false
 \language galician
 \inputencoding default
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -50,29 +51,16 @@ O primeiro que debe saber para empregar o LyX
 \end_layout
 
 \begin_layout Enumerate
-LyX ven con unha excelente documentación ---use-a, por favor! Comece con
- 
+LyX ven con unha excelente documentación —use-a, por favor! Comece con 
 \family sans
-\bar under
-A
-\bar default
-xuda->
-\bar under
-I
-\bar default
-ntrodución
+Axuda\SpecialChar \menuseparator
+Introdución
 \family default
 , onde se apresenta a filosofia que guia o LyX, e a sua documentación.
  A seguir é o momento de ler o tutorial, 
 \family sans
-\bar under
-A
-\bar default
-xuda->
-\bar under
-T
-\bar default
-utorial
+Axuda\SpecialChar \menuseparator
+Tutorial
 \family default
 , para aprender as cuestións mais básicas.
 \end_layout
@@ -100,24 +88,18 @@ Mencionamos xa que debe ler a documentación?
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Enumerate
 O resultado ao imprimir os documentos no LyX é excelente! Seleccione 
 \family sans
-\bar under
-A
-\bar default
-rquivo->Ver
+Arquivo\SpecialChar \menuseparator
+Ver
 \begin_inset space ~
 \end_inset
 
-Pos
-\bar under
-t
-\bar default
-cript
+Postcript
 \family default
  para comproba-lo por si mesmo.
 \end_layout
@@ -152,14 +134,8 @@ lyxrc
 ).
  Vexa 
 \family sans
-\bar under
-A
-\bar default
-xuda->
-\bar under
-P
-\bar default
-ersonalización
+Axuda\SpecialChar \menuseparator
+Personalización
 \family default
  para máis detalles.
 \end_layout

@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
+\use_default_options false
 \language romanian
 \inputencoding latin2
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -50,30 +51,16 @@ Primele N lucruri de ştiut când folosiţi LyX
 \end_layout
 
 \begin_layout Enumerate
-LyX vine cu o documentaţie excelentă --- utilizaţi-o! Începeţi cu 
+LyX vine cu o documentaţie excelentă — utilizaţi-o! Începeţi cu 
 \family sans
-\bar under
-H
-\bar default
-elp\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-ntroduction
+Help\SpecialChar \menuseparator
+Introduction
 \family default
 , care vă va face o scurtă introducere la documentaţie.
  Apoi învăţaţi să utilizaţi LyX cu 
 \family sans
-\bar under
-H
-\bar default
-elp\SpecialChar \menuseparator
-
-\bar under
-T
-\bar default
-utorial
+Help\SpecialChar \menuseparator
+Tutorial
 \family default
 .
 \end_layout
@@ -88,10 +75,10 @@ procesor de document
 \end_inset
 
 .
- Prin design, este diferit de procesoarele de texte obişnuite --- într-un
+ Prin design, este diferit de procesoarele de texte obişnuite — într-un
  mod care face scrierea documentelor mai uşoară.
  Diferenţa este însă minoră, aşa încât nu vă îngrijoraţi.
- Documentaţia va clarifica pe deplin lucrurile
+ Documentaţia va clarifica pe deplin lucrurile.
 \begin_inset Foot
 status collapsed
 
@@ -101,21 +88,14 @@ V-am spus oare deja că ar trebui să citiţi documentaţia ?
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Enumerate
 Rezultatul produs de LyX arată splendid! Selectaţi acum 
 \family sans
-\bar under
-V
-\bar default
-iew\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+View\SpecialChar \menuseparator
+DVI
 \family default
  ca să vă convingeţi.
 \end_layout
@@ -153,15 +133,8 @@ lyxrc
 ).
  Consultaţi 
 \family sans
-\bar under
-H
-\bar default
-elp\SpecialChar \menuseparator
-
-\bar under
-C
-\bar default
-ustomization
+Help\SpecialChar \menuseparator
+Customization
 \family default
  pentru detalii.
 \end_layout

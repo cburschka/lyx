@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
+\use_default_options false
 \language slovene
 \inputencoding latin2
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -51,30 +52,16 @@ Najpomembnejše, kar morate vedeti, ko uporabljate LyX
 
 \begin_layout Enumerate
 LyXu je priložena izvrstna dokumentacija (v angleščini, deloma tudi v slovenščin
-i) -- prosimo, uporabljajte jo! Začnite s 
+i) – prosimo, uporabljajte jo! Začnite s 
 \family sans
-\bar under
-P
-\bar default
-omoč\SpecialChar \menuseparator
-
-\bar under
-U
-\bar default
-vod
+Pomoč\SpecialChar \menuseparator
+Uvod
 \family default
 , ki vam ponuja zelo kratek uvod v dokumentacijo.
  Potem se učite uporabljati LyX s postavko 
 \family sans
-\bar under
-P
-\bar default
-omoč\SpecialChar \menuseparator
-Uč
-\bar under
-b
-\bar default
-enik
+Pomoč\SpecialChar \menuseparator
+Učbenik
 \family default
 .
 \end_layout
@@ -89,10 +76,10 @@ stavnik spisov
 \end_inset
 
 .
- Po zasnovi se razlikuje od navadnih urejevalnikov besedil -- tako, da olajša
+ Po zasnovi se razlikuje od navadnih urejevalnikov besedil – tako, da olajša
  pisanje spisov.
  Vendar se od njih razlikuje le malce, zato se nikar ne prestrašite.
- V dokumentaciji je vse pojasnjeno
+ V dokumentaciji je vse pojasnjeno.
 \begin_inset Foot
 status collapsed
 
@@ -102,21 +89,14 @@ Saj smo omenili, da bi morali prebrati dokumentacijo, kajne?
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Enumerate
 Izhod LyXa je videti čudovit! Izberite 
 \family sans
-\bar under
-O
-\bar default
-gled\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+Ogled\SpecialChar \menuseparator
+DVI
 \family default
  in se o tem prepričajte sami.
 \end_layout
@@ -152,15 +132,8 @@ lyxrc
 ).
  Podrobnosti najdete v 
 \family sans
-\bar under
-P
-\bar default
-omoč\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-rilagoditev
+Pomoč\SpecialChar \menuseparator
+Prilagoditev
 \family default
 .
 \end_layout

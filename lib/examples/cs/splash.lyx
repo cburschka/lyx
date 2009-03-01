@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
+\use_default_options false
 \language czech
 \inputencoding auto
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -58,12 +59,17 @@ LyX přichází s
 \size default
 \noun default
 \color inherit
-výbornou dokumentací---prosíme používejte ji! Český úvod můžete najít v
- menu Nápověda -> Průvodce
+výbornou dokumentací—prosíme používejte ji! Český úvod můžete najít v menu
+ 
+\family sans
+Nápověda\SpecialChar \menuseparator
+Průvodce
 \begin_inset space ~
 \end_inset
 
-LyXem.
+LyXem
+\family default
+.
  
 \end_layout
 
@@ -76,10 +82,10 @@ editorem dokumentů.
 \begin_inset Quotes erd
 \end_inset
 
- Svým návrhem je odlišný od klasického textového editoru---způsobem, který
+ Svým návrhem je odlišný od klasického textového editoru—způsobem, který
  činí psaní dokumentů mnohem jednodušší.
  Ale nelekejte se, je odlišný jenom trochu.
- Průvodce vám v tom udělá jasno
+ Průvodce vám v tom udělá jasno.
 \begin_inset Foot
 status collapsed
 
@@ -89,12 +95,16 @@ Už jsme se zmínili o tom, že byste si mohli přečíst dokumnetaci?
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Enumerate
-Výstup z LyXu vypadá skvěle! Zkuste vybrat v menu Prohlížet -> DVI, ať se
- přesvědčíte na vlastní oči.
+Výstup z LyXu vypadá skvěle! Zkuste vybrat v menu 
+\family sans
+Prohlížet\SpecialChar \menuseparator
+DVI
+\family default
+, ať se přesvědčíte na vlastní oči.
 \end_layout
 
 \begin_layout Enumerate
@@ -122,7 +132,12 @@ LyX nabízí mnoho možností lidem, kteří čtou a píší jiným jazykem, ne�
  je angličtina.
  Navíc jsou klávesové zkratky, nástrojová lišta a i další vlasnosti dobře
  konfigurovatelné.
- Viz Nápověda -> Přizpůsobení LyXu.
+ Viz 
+\family sans
+Nápověda\SpecialChar \menuseparator
+Přizpůsobení
+\family default
+ LyXu.
 \end_layout
 
 \begin_layout Enumerate

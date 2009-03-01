@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
+\use_default_options false
 \language dutch
 \inputencoding default
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -50,33 +51,19 @@ De Belangrijkste Dingen die je moet weten als je LyX gebruikt
 \end_layout
 
 \begin_layout Enumerate
-LyX komt met zeer goede documentatie---gebruik die! De documentatie is momenteel
+LyX komt met zeer goede documentatie—gebruik die! De documentatie is momenteel
  nog niet volledig in het Nederlands vertaald maar wordt tevens in het Engels
  meegeleverd.
  Begin met 
 \family sans
-\bar under
-H
-\bar default
-elp\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-ntroduction
+Help\SpecialChar \menuseparator
+Introduction
 \family default
 , wat je een korte inleiding tot de documentatie zal geven.
  Leer daarna LyX te gebruiken met 
 \family sans
-\bar under
-H
-\bar default
-elp\SpecialChar \menuseparator
-
-\bar under
-T
-\bar default
-utorial
+Help\SpecialChar \menuseparator
+Tutorial
 \family default
 .
 \end_layout
@@ -90,10 +77,10 @@ document verwerker.
 \begin_inset Quotes erd
 \end_inset
 
- LyX is bewust anders ontworpen dan normale tekstverwerkers---met LyX wordt
+ LyX is bewust anders ontworpen dan normale tekstverwerkers—met LyX wordt
  het schrijven van teksten makkelijker.
  Een beetje anders maar geen reden om bang te zijn.
- De documentatie zal het allemaal duidelijk maken
+ De documentatie zal het allemaal duidelijk maken.
 \begin_inset Foot
 status collapsed
 
@@ -103,7 +90,7 @@ Hebben we al verteld dat je de documentatie moet lezen?
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Enumerate
@@ -113,15 +100,8 @@ nu
 \family default
  
 \family sans
-\bar under
-V
-\bar default
-iew\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+View\SpecialChar \menuseparator
+DVI
 \family default
  om het zelf te zien.
 \end_layout
@@ -158,15 +138,8 @@ lyxrc
  bestand te bewerken).
  Zie 
 \family sans
-\bar under
-H
-\bar default
-elp\SpecialChar \menuseparator
-
-\bar under
-C
-\bar default
-ustomization
+Help\SpecialChar \menuseparator
+Customization
 \family default
  voor de details.
 \end_layout

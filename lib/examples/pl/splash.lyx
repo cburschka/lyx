@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
+\use_default_options false
 \language polish
 \inputencoding latin2
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -50,29 +51,17 @@ Kilka uwag zanim rozpoczniesz pracę z LyXem
 \end_layout
 
 \begin_layout Enumerate
-Pakiet LyXa zawiera wspaniałą (angielskojęzyczną) dokumentację---używaj
- jej! Rozpocznij w 
+Pakiet LyXa zawiera wspaniałą (angielskojęzyczną) dokumentację—używaj jej!
+ Rozpocznij w 
 \family sans
-\bar under
-P
-\bar default
-omoc->
-\bar under
-W
-\bar default
-prowadzenie
+Pomoc\SpecialChar \menuseparator
+Wprowadzenie
 \family default
 , da Ci to krótkie wprowadzenie do dokumentacji.
  Potem poczytaj o LyXie w 
 \family sans
-\bar under
-P
-\bar default
-omoc->
-\bar under
-S
-\bar default
-amouczek
+Pomoc\SpecialChar \menuseparator
+Samouczek
 \family default
 .
 \end_layout
@@ -87,8 +76,8 @@ procesorem tekstu
 \end_inset
 
 .
- Z założenia LyX różni się od innych procesorów tekstu---pozwala bowiem
- łatwiej tworzyć dokumenty.
+ Z założenia LyX różni się od innych procesorów tekstu—pozwala bowiem łatwiej
+ tworzyć dokumenty.
  Różni się jednak bardzo niewiele, więc nie ma obawy.
  W razie problemów zajrzyj do dokumentacji.
 \begin_inset Foot
@@ -100,16 +89,14 @@ Czy wspomnieliśmy już, że powinieneś przeczytać dokumentację?
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Enumerate
 Wynik pracy wygląda naprawdę wspaniale! Wybierz teraz 
 \family sans
-\bar under
-P
-\bar default
-lik->Podgląd
+Plik\SpecialChar \menuseparator
+Podgląd
 \begin_inset space ~
 \end_inset
 
@@ -121,10 +108,8 @@ dvi
 \begin_layout Enumerate
 Pakiet zawiera wiele szablonów (
 \family sans
-\bar under
-P
-\bar default
-lik->Nowy
+Plik\SpecialChar \menuseparator
+Nowy
 \begin_inset space ~
 \end_inset
 
@@ -136,16 +121,10 @@ szablonu
 \family default
 ) i przykładów (
 \family sans
-\bar under
-P
-\bar default
-lik->
-\bar under
-O
-\bar default
-twó
+Plik\SpecialChar \menuseparator
+Otwórz
 \family default
-rz).
+).
 \end_layout
 
 \begin_layout Enumerate
@@ -171,14 +150,8 @@ LyX potrafi także pracować dla tych z Was, którzy mówią w innym niż angiel
  języku.
  Zobacz w 
 \family sans
-\bar under
-P
-\bar default
-omoc->
-\bar under
-K
-\bar default
-onfiguracja
+Pomoc\SpecialChar \menuseparator
+Konfiguracja
 \family default
  .
 \end_layout
