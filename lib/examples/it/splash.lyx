@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
+\use_default_options false
 \language italian
 \inputencoding default
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -50,29 +51,17 @@ Le prime n cose che dovete sapere quando usate LyX
 \end_layout
 
 \begin_layout Enumerate
-LyX è accompagnato da una eccellente documentazione---per favore, consultatela!
+LyX è accompagnato da una eccellente documentazione—per favore, consultatela!
  Iniziate da 
 \family sans
-\bar under
-A
-\bar default
-iuto->
-\bar under
-I
-\bar default
-ntroduzione
+Aiuto\SpecialChar \menuseparator
+Introduzione
 \family default
 , il quale vi fornirà una breve introduzione alla documentazione.
  Quindi imparate ad usare LyX mediante il documento 
 \family sans
-\bar under
-A
-\bar default
-iuto->
-\bar under
-T
-\bar default
-utorial
+Aiuto\SpecialChar \menuseparator
+Tutorial
 \family default
 .
 \end_layout
@@ -87,10 +76,9 @@ processore di documenti.
 \end_inset
 
  Per come è stato pensato, esso si differenzia dai comuni programmi di videoscri
-ttura---secondo una prospettiva che rende più semplice la scrittura dei
- documenti.
+ttura—secondo una prospettiva che rende più semplice la scrittura dei documenti.
  In realtà si tratta di piccole differenze, quindi non vi spaventate.
- La documentazione vi renderà tutto più chiaro
+ La documentazione vi renderà tutto più chiaro.
 \begin_inset Foot
 status collapsed
 
@@ -100,21 +88,15 @@ Abbiamo già ribadito il fatto che dovreste leggere la documentazione?
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Enumerate
 I documenti scritti con LyX sono, in termini visivi, davvero notevoli! Provate
  adesso ad invocare 
 \family sans
-\bar under
-V
-\bar default
-iew->
-\bar under
-D
-\bar default
-VI
+View\SpecialChar \menuseparator
+DVI
 \family default
  per constatrlo con i vostri occhi.
 \end_layout
@@ -148,14 +130,8 @@ lyxrc
 ).
  Leggete 
 \family sans
-\bar under
-A
-\bar default
-iuto->
-\bar under
-P
-\bar default
-ersonalizzazione
+Aiuto\SpecialChar \menuseparator
+Personalizzazione
 \family default
  per ulteriori dettagli.
 \end_layout
@@ -178,7 +154,7 @@ http://www.lyx.org
 \family default
 .
  Consultatela per informazioni su LyX, per iscrivervi alle mailing list(s)
- sul LyX , per effettuare il Tour Grafico di LyX e per altro ancora.
+ sul LyX, per effettuare il Tour Grafico di LyX e per altro ancora.
 \end_layout
 
 \end_body

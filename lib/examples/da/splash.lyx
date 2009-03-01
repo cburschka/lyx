@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
+\use_default_options false
 \language danish
 \inputencoding default
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -50,31 +51,17 @@ Velkommen til LyX!
 \end_layout
 
 \begin_layout Enumerate
-LyX indeholder grundig dokumentation --- brug den! Start med 
+LyX indeholder grundig dokumentation — brug den! Start med 
 \family sans
-\bar under
-H
-\bar default
-jælp\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-ntroduktion
+Hjælp\SpecialChar \menuseparator
+Introduktion
 \family default
 , som vil give dig et meget kort overblik over dokumentationen\SpecialChar \@.
  Lær derefter
  om LyX med 
 \family sans
-\bar under
-H
-\bar default
-jælp\SpecialChar \menuseparator
-
-\bar under
-G
-\bar default
-ennemgang\SpecialChar \@.
+Hjælp\SpecialChar \menuseparator
+Gennemgang\SpecialChar \@.
 
 \end_layout
 
@@ -88,11 +75,11 @@ dokumentbehandler
 \end_inset
 
 \SpecialChar \@.
- Den er grundlæggende forskellig fra almindelige tekstbehandlere --- på
- en måde letter det skrivning af dokumenter\SpecialChar \@.
- Men bare rolig, den er kun en
- smule anderledes\SpecialChar \@.
- Dokumentationen vil gøre dette tydeligt for dig
+ Den er grundlæggende forskellig fra almindelige tekstbehandlere — på en
+ måde letter det skrivning af dokumenter\SpecialChar \@.
+ Men bare rolig, den er kun en smule
+ anderledes\SpecialChar \@.
+ Dokumentationen vil gøre dette tydeligt for dig.
 \begin_inset Foot
 status collapsed
 
@@ -102,21 +89,14 @@ Fik vi nævnt, at du bør læse dokumentationen?
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Enumerate
 Resultaterne fra LyX ser fantastiske ud! Vælg 
 \family sans
-\bar under
-V
-\bar default
-is\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+Vis\SpecialChar \menuseparator
+DVI
 \family default
  nu, så kan du selv se.
 \end_layout
@@ -154,15 +134,8 @@ lyxrc
 -filen).
  Se 
 \family sans
-\bar under
-H
-\bar default
-jælp\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-ersonliggørelse
+Hjælp\SpecialChar \menuseparator
+Personliggørelse
 \family default
  for detaljer\SpecialChar \@.
 

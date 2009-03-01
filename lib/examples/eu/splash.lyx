@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
+\use_default_options false
 \language english
 \inputencoding default
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -53,28 +54,14 @@ LyX erabiltzean lehendabizi jakin beharreko gauzak
 LyX-ek laguntza eskuliburu bikain bat dauka (erabil ezazu).
  
 \family sans
-\bar under
-L
-\bar default
-aguntza
-\bar under
-\SpecialChar \menuseparator
-S
-\bar default
-arrera
+Laguntza\SpecialChar \menuseparator
+Sarrera
 \family default
  zerrenda aukerarekin hasi (eskuliburuei buruzko sarreratxo bat da).
  Ondoren, 
 \family sans
-\bar under
-L
-\bar default
-aguntza
-\bar under
-\SpecialChar \menuseparator
-T
-\bar default
-utoretza-n
+Laguntza\SpecialChar \menuseparator
+Tutoretza-n
 \family default
  laguntzaz LyX erabiltzen ikasi
 \family sans
@@ -94,7 +81,7 @@ idazki prozesatzailea
  Bere egituragatik ohizko idazki prozesatzaileen aldean ezberdina da, idazkiak
  idazteko lana errazago eginez.
  Apur bat ezberdina soilik, ez zaitez beldurtu.
- Eskuliburu laguntzaileek gauza denak argituko dizkizute
+ Eskuliburu laguntzaileek gauza denak argituko dizkizute.
 \begin_inset Foot
 status collapsed
 
@@ -104,17 +91,14 @@ Laguntzako eskuliburuak irakurtzea komeni zaizkizula esan al dizugu?
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Enumerate
 LyX-en irteera emaitzak (output) itxura hobezina dauka.
  Begiztatzeko 
 \family sans
-\bar under
-F
-\bar default
-itxategia\SpecialChar \menuseparator
+Fitxategia\SpecialChar \menuseparator
 Dvi
 \begin_inset space ~
 \end_inset
@@ -129,10 +113,7 @@ Bai,.
  LyX-ek LaTeX-en betebeharreko ia dena errepika (edo landu) dezake.
  Eta bai, LyX-ek LaTeX-eko fitxategiak beregana (
 \family sans
-\bar under
-F
-\bar default
-itxategia\SpecialChar \menuseparator
+Fitxategia\SpecialChar \menuseparator
 Barneratu
 \family default
 ) ditzake.
@@ -165,15 +146,8 @@ lyxrc
  fitxategia landuz).
  
 \family sans
-\bar under
-L
-\bar default
-aguntza\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-gokitua
+Laguntza\SpecialChar \menuseparator
+Egokitua
 \family default
  ikus ezazu.
 \end_layout

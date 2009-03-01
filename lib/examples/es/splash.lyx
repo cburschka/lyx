@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
+\use_default_options false
 \language spanish
 \inputencoding latin1
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,8 +36,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -53,28 +54,14 @@ Las n primeras cosas que debe saber al usar LyX
 LyX viene con una excelente documentación (por favor, ¡úsela!).
  Comience en el menú con 
 \family sans
-\bar under
-A
-\bar default
-yuda\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-ntroducción
+Ayuda\SpecialChar \menuseparator
+Introducción
 \family default
 , que le hará una introducción muy breve a los manuales.
  Después aprenda a usar LyX con 
 \family sans
-\bar under
-A
-\bar default
-yuda\SpecialChar \menuseparator
-
-\bar under
-T
-\bar default
-utorial
+Ayuda\SpecialChar \menuseparator
+Tutorial
 \family default
 .
 \end_layout
@@ -92,7 +79,7 @@ procesador de documentos
  Por su diseño, es distinto a los procesadores de texto convencionales,
  haciendo que resulte más sencilla la tarea de escribir documentos.
  Pero sólo un poco distinto, no se asuste.
- La documentación le dejará todo claro
+ La documentación le dejará todo claro.
 \begin_inset Foot
 status collapsed
 
@@ -102,26 +89,19 @@ status collapsed
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Enumerate
 La salida de LyX tiene un aspecto impecable.
  Ejecute en el menú 
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar \menuseparator
+Archivo\SpecialChar \menuseparator
 Ver
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-d
-\bar default
-vi
+dvi
 \family default
  para comprobarlo.
 \end_layout
@@ -153,15 +133,8 @@ LyX tiene montones de ventajas para aquellos que leen o escriben en un idioma
  características son altamente configurables.
  Mire en 
 \family sans
-\bar under
-A
-\bar default
-yuda\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-ersonalización
+Ayuda\SpecialChar \menuseparator
+Personalización
 \family default
  para más detalles.
 \end_layout
