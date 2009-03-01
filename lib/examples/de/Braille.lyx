@@ -60,6 +60,7 @@ braille
 \output_changes false
 \author "" 
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -85,16 +86,13 @@ type "mailto:"
 \end_layout
 
 \begin_layout Standard
-Zuerst etwas Allgemeines: Die Braille die man mit LyX schreiben kann, ist
+Zuerst etwas Allgemeines: Die Braille, die man mit LyX schreiben kann, ist
  nicht komplett! Braille kann 6 oder 8
-\begin_inset space \thinspace{}
+\begin_inset space \space{}
 \end_inset
 
-Punkte haben, während LaTeX (und damit LyX) nur 6
-\begin_inset space \thinspace{}
-\end_inset
-
-Punkt Braille ohne akzentuierte Zeichen unterstützt.
+Punkte haben, während LaTeX (und damit LyX) nur 6-Punkt-Braille ohne akzentuiert
+e Zeichen unterstützt.
 \end_layout
 
 \begin_layout Standard
@@ -123,8 +121,8 @@ Braille
 
 (Textgröße)
 \family default
- in LyXs Umgebungs-Auswahlbox und schreiben Ihren Text.
- Die anderen Braille Umgebungen schalten nur bestimmte Eigenschaften an/aus,
+ in LyX' Umgebungs-Auswahlbox und schreiben Ihren Text.
+ Die anderen Braille-Umgebungen schalten nur bestimmte Eigenschaften an/aus,
  die nachfolgend beschrieben werden.
  Lassen Sie diese leer!
 \end_layout
@@ -140,11 +138,11 @@ mit lateinischen Buchstaben:
 \begin_inset Newline newline
 \end_inset
 
-Dies ist ein Beispielsatz geschrieben in Braille.
+Dies ist ein Beispielsatz, geschrieben in Braille.
 \end_layout
 
 \begin_layout Standard
-mit Braille Zeichen:
+mit Braille-Zeichen:
 \end_layout
 
 \begin_layout Braille (default)
@@ -176,28 +174,27 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Beachte:
 \series default
- Nur Lateinische Buchstaben, Nummern, Interpunktionen und Klammern können
+ Nur lateinische Buchstaben, Nummern, Interpunktionen und Klammern können
  in Braille gedruckt werden.
  Spezielle Zeichen wie 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 @
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  oder 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 $
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
-, akzentuierte Zeichen wie Umlaute, sowie Zeilenumbrüche werden nicht unterstütz
-t.
+, akzentuierte Zeichen wie Umlaute sowie Zeilenumbrüche werden nicht unterstützt.
 \end_layout
 
 \end_inset
@@ -216,14 +213,14 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Beachte:
 \series default
- LyXs und LaTeXs Eigennamen 
+ LyX' und LaTeXs Eigennamen 
 \begin_inset Quotes gld
 \end_inset
 
 LaTeX
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 , 
@@ -231,7 +228,7 @@ LaTeX
 \end_inset
 
 LaTeX2e
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 , 
@@ -247,7 +244,7 @@ TeX
 \end_inset
 
 LyX
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  müssen, wie im folgenden Beispiel, als TeX-Code eingefügt werden:
@@ -304,16 +301,16 @@ LyX
 \end_layout
 
 \begin_layout Standard
-Hier ist ein Überblick über die verschiedenen Braille Umgebungen am Beispiel
+Hier ist ein Überblick über die verschiedenen Braille-Umgebungen am Beispiel
  des Satzes 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
-Dies ist Braille.
-\begin_inset Quotes erd
+Dies ist Braille
+\begin_inset Quotes grd
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -344,7 +341,7 @@ Braille
 
 (Textgröße)
 \family default
- - die Zeichengröße entspricht ungefähr der Dokumenttextgröße:
+ -- die Zeichengröße entspricht ungefähr der Dokumenttextgröße:
 \end_layout
 
 \begin_layout Braille (textsize)
@@ -363,7 +360,7 @@ Braille
 
 (Punkte an)
 \family default
- - kleine Punkte können an die Stelle von leeren Positionen gesetzt werden:
+ -- kleine Punkte können an die Stelle von leeren Positionen gesetzt werden:
 \end_layout
 
 \begin_layout Braille (dots on)
@@ -426,9 +423,9 @@ Dies ist Braille.
 \begin_inset VSpace bigskip
 \end_inset
 
-Braille Zeichen können alternativ erzeugt werden, indem eine Nummer in eine
- Braille Box schreibt.
- Eine Braille Box wird mit dem Menü
+Braille-Zeichen können alternativ erzeugt werden, indem man eine Nummer
+ in eine Braille-Box schreibt.
+ Eine Braille-Box wird mit dem Menü
 \family sans
  Einfügen\SpecialChar \menuseparator
 Benutzerdefinierte
@@ -438,7 +435,7 @@ Benutzerdefinierte
 Einfügungen
 \family default
  eingefügt.
- Jede Nummer in der Box druckt den entsprechenden Braille Punkt.
+ Jede Nummer in der Box druckt den entsprechenden Braillepunkt.
  Zum Beispiel führt die Nummer 
 \series bold
 6145
@@ -464,24 +461,24 @@ status open
 \begin_inset VSpace bigskip
 \end_inset
 
-Computer Braille, die 8
-\begin_inset space \thinspace{}
+Computer-Braille, die 8
+\begin_inset space ~
 \end_inset
 
-Punktes benutzt, kann mit dem Befehl 
+Punkte benutzt, kann mit dem Befehl 
 \series bold
 
 \backslash
 brailleeightdotstrue
 \series default
  aktiviert werden.
- Allerdings werden die zwei Extrapunkte nur gedruckt wenn eine Braille Box
+ Allerdings werden die zwei Extrapunkte nur gedruckt, wenn eine Braille-Box
  verwendet wird.
  Zum Beispiel führt die Nummer
 \series bold
  8175
 \series default
- in einer Braille Box zu:
+ in einer Braille-Box zu:
 \begin_inset Newline newline
 \end_inset
 
@@ -528,7 +525,7 @@ brailleeightdotsfalse
 \begin_inset VSpace bigskip
 \end_inset
 
-Die Größe der standard Braille Schrift kann mit der Länge 
+Die Größe der Standard-Brailleschrift kann mit der Länge 
 \series bold
 
 \backslash
@@ -640,7 +637,7 @@ braille{#1}}
 \begin_inset VSpace bigskip
 \end_inset
 
-Für mehr Dimensionen über die Braille Zellendimensionen, sei auf
+Für mehr Informationen über die Braille-Zellendimensionen sei auf
 \begin_inset Newline newline
 \end_inset
 
