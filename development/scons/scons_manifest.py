@@ -2411,6 +2411,7 @@ lib_examples_de_files = Split('''
     Dezimal.lyx
     ItemizeBullets.lyx
     Lebenslauf.lyx
+    linguistics.lyx
     multicol.lyx
     serienbrief1.lyx
     serienbrief2.lyx
