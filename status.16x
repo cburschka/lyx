@@ -24,10 +24,11 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
-- New German and Spanish translation of the specific manual how to write
-  Braille.
+- New German and Spanish translation of the specific manual "How to write
+  Braille with LyX".
 
-- New German translation of the specific manual on features for Linguists.
+- New German translation of the specific manual "Writing linguistic papers
+  with LyX".
 
 - Update localization of the user interface for Czech, French, German,
   Italian, Norwegian, Polish, Spanish, Turkish, and Ukrainian.
@@ -35,12 +36,12 @@ What's new
 - Updated English and Spanish Customization manual.
 
 - Updated English, French, German, and Spanish Embedded Objects, Math,
-  XY-pic and Tutorial manual.
+  XY-pic and Tutorial manuals.
 
 - Updated English, French, German, Japanese, and Spanish User's guide
   manual.
 
-- Updated English specific manual how to write Braille.
+- Updated English specific manual "How to write Braille with LyX".
 
 - Updated German specific multicolumn manual.
 
@@ -95,18 +96,18 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix crash when reading document with specific types of numbered equation
-  produced with tex2lyx (bug 5688).
+- Fix a crash when reading a document containing specific numbered
+  equations produced with tex2lyx (bug 5688).
 
-- Fix crash when reading files created by tex2lyx in the presence of an
+- Fix a crash when reading files created by tex2lyx in the presence of an
   empty child document (bug 4859).
 
-- Fix assertion when an inset is hidden at the right of the edit
+- Fix an assertion when an inset is hidden at the right of the edit
   window, for example in Description or Right Address layout (bug
   5666 and 5068).
 
-- Fix conversion of documents that have index insets following an index
-  list inset to LyX 1.6's format (bug 5713).
+- Fix the conversion of documents from previous LyX versions that have
+  index insets following an index list inset (bug 5713).
   Affected files that have already been mis-converted can be repaired by
   manually setting back the file format to 288 in a text editor before 
   re-opening the document with LyX 1.6.x.
@@ -135,8 +136,7 @@ What's new
   
 - Fix bug when coloring section headings in RevTeX4 documents (bug 4625).
 
-- Fix bug that telephone number and location didn't appear in the output
-  of letters (bug 5684).
+- Fix the output of telephone number and location in letters (bug 5684).
 
 - Fix a LaTeX export error that prevents the inclusion of two program
   listings that differ only by file extension (bug 5681).
@@ -319,8 +319,8 @@ What's new
 
 * BUILD/INSTALLATION
 
-- lyx.spec: remove "Icon" tag that triggered a build error; 
-  general update (bug 5795).
+- lyx.spec: remove "Icon" tag that triggered a build error (bug 5795); 
+  general update.
 
 - Fix compilation on OpenBSD (bug 5650).
 
