@@ -1750,9 +1750,6 @@ Tabular::idx_type Tabular::setLTCaption(row_type row, bool what)
 		setBottomLine(i, false);
 		setLeftLine(i, false);
 		setRightLine(i, false);
-		// When a row is set as caption, then also insert a caption. Otherwise
-		// the LaTeX output is broken, when the user don't add a caption.
-		dispatch(FuncRequest(LFUN_CAPTION_INSERT));
 	} else {
 		unsetMultiColumn(i);
 		// FIXME: when unsetting a caption row, also all existing captions
@@ -4769,12 +4766,18 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		tabular.setLTNewPage(row, !tabular.getLTNewPage(row));
 		break;
 
-	case Tabular::TOGGLE_LTCAPTION:
-		cur.idx() = tabular.setLTCaption(row, !tabular.ltCaption(row));
+	case Tabular::TOGGLE_LTCAPTION: {
+		bool set = !tabular.ltCaption(row);
+		cur.idx() = tabular.setLTCaption(row, set);
 		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.setSelection(false);
+		// When a row is set as caption, then also insert a caption. Otherwise
+		// the LaTeX output is broken, when the user doesn't add a caption.
+		if (set)
+			lyx::dispatch(FuncRequest(LFUN_CAPTION_INSERT));
 		break;
+	}
 
 	case Tabular::SET_BOOKTABS:
 		tabular.use_booktabs = true;
