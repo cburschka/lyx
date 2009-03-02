@@ -17312,7 +17312,17 @@ svn:needs-lock
 
 \end_inset
 
- file svn property.
+ file svn property
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html
+\end_layout
+
+\end_inset
+
+.
  In a case this property is detected for a given document LyX starts to
  use SVN locks for document editing automatically and the whole check-in/out
  mechanism switches to the same regimen as for RCS.
