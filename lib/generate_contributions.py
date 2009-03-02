@@ -1520,6 +1520,13 @@ contributers = [
                  "4 Nov 2008",
                  u"Turkish translation"),
 
+     contributer(u"Waluyo Adi Siswanto",
+                 "was.uthm () gmail ! com",
+                 "GPL",
+                 "Licence contributions",
+                 "m=123595530114385",
+                 "Mar 2 2009",
+                 u"Indonesian translation"),
 
      contributer(u"Xiaokun Zhu",
                  "xiaokun () aero ! gla ! ac ! uk",
