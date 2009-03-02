@@ -143,7 +143,7 @@ type "mailto:"
 \begin_inset Newline newline
 \end_inset
 
-Version 1.6.1
+Version 1.6.x
 \begin_inset Note Note
 status open
 
@@ -23703,13 +23703,11 @@ Panel
 \end_inset
 
  (shortcut 
-\family sans
-Alt+M
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "font-default"
 \end_inset
 
-M
-\family default
 ).
  Math text appears in LyX in black instead of blue.
  You can use spaces and accents in math text like in normal text.
