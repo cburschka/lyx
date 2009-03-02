@@ -160,13 +160,14 @@ Function InstDirChange
    StrCpy $INSTDIR_OLD $INSTDIR
    StrCpy $INSTDIR $INSTDIR_NEW
    
-   # set new PATH_PREFIX in the file lyxrc.dist
-   FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" a
-   FileRead $R1 $PathPrefix # the whole file content is now in $PathPrefix
-   ${WordReplace} $PathPrefix "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $PathPrefix
-   FileSeek $R1 0 # set file pointer to the beginning
-   FileWrite $R1 '$PathPrefix' # overwrite the existing path with the actual one
-   FileClose $R1
+   # set new path_prefix in the file lyxrc.dist
+   StrCpy $OldString "${PRODUCT_VERSION_OLD}"
+   StrCpy $NewString "LyX ${PRODUCT_VERSION}"
+   # following macro from TextFunc.nsh # calls Function ReplaceLineContent from LyXUtils.nsh
+   ${LineFind} "$INSTDIR\Resources\lyxrc.dist" "" "1:-1" "ReplaceLineContent"
+   # this is only needed for this installer version 4.18 (delete it afterwards!)
+    StrCpy $OldString "LyX 1.6.0"
+    ${LineFind} "$INSTDIR\Resources\lyxrc.dist" "" "1:-1" "ReplaceLineContent"
    
    # set the new path to the preferences file for all users
    StrCpy $FileName "preferences"
@@ -201,27 +202,57 @@ Function RefreshRegUninst
 
   # Aspell
   ReadRegStr $0 SHCTX "Software\Aspell" "OnlyWithLyX" # special entry to test if it was installed with LyX
-  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT_OLD}"
+  # this is only needed for this installer version 4.18 (delete it afterwards!)
+   ${orif} $0 == "Yes160"
    WriteRegStr HKLM "SOFTWARE\Aspell" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
+  ${endif}
+  
+  # Metafile2eps
+  Var /GLOBAL RegLocation
+  StrCpy $RegLocation "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Metafile to EPS Converter"
+  ReadRegStr $0 SHCTX "$RegLocation" "OnlyWithLyX"
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT_OLD}"
+  # this is only needed for this installer version 4.18 (delete it afterwards!)
+  ${orif} $0 == "Yes160"
+   WriteRegStr HKLM "$RegLocation" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
+   # set the new path
+   ReadRegStr $0 HKLM "SOFTWARE\InkNote Selector" ""
+   ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0 # macro from WordFunc.nsh
+   WriteRegStr HKLM "SOFTWARE\InkNote Selector" "" "$0"
+   ReadRegStr $0 HKLM "$RegLocation" "InstallLocation"
+   ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
+   WriteRegStr HKLM "$RegLocation" "InstallLocation" "$0"
+   # this is only needed for this installer version 4.18 (delete it afterwards!)
+    ReadRegStr $0 HKLM "SOFTWARE\InkNote Selector" ""
+    ${WordReplace} $0 "LyX 1.6.0" "LyX ${PRODUCT_VERSION}" "+" $0
+    WriteRegStr HKLM "SOFTWARE\InkNote Selector" "" "$0"
+    ReadRegStr $0 HKLM "$RegLocation" "InstallLocation"
+    ${WordReplace} $0 "LyX 1.6.0" "LyX ${PRODUCT_VERSION}" "+" $0
+    WriteRegStr HKLM "$RegLocation" "InstallLocation" "$0"
   ${endif}
   
   # MiKTeX
   ReadRegStr $0 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
-  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT_OLD}"
+  # this is only needed for this installer version 4.18 (delete it afterwards!)
+  ${orif} $0 == "Yes160"
    WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
   ${endif}
   
   # JabRef
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
-  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT}"
+  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT_OLD}"
+  # this is only needed for this installer version 4.18 (delete it afterwards!)
+  ${orif} $0 == "Yes160"
    WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
   ${endif}
   
-  # Aiksaurus
-  ReadRegStr $0 SHCTX "Software\Aiksaurus" "OnlyWithLyX" # special entry to test if it was installed with LyX
-  ${if} $0 == "Yes${PRODUCT_VERSION_SHORT_OLD}"
-   WriteRegStr HKLM "SOFTWARE\Aiksaurus" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
-  ${endif}
+  # Aiksaurus currently not needed
+  #ReadRegStr $0 SHCTX "Software\Aiksaurus" "OnlyWithLyX"
+  #${if} $0 == "Yes${PRODUCT_VERSION_SHORT_OLD}"
+  # WriteRegStr HKLM "SOFTWARE\Aiksaurus" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
+  #${endif}
   
   # ImageMagick
   ReadRegStr $0 SHCTX "Software\ImageMagick" "OnlyWithLyX"

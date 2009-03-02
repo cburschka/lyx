@@ -20,7 +20,6 @@ Var LatexPath
 Var MiKTeXInstalled
 Var NewString
 Var OldString
-Var PathPrefix
 Var Pointer
 Var PrinterConf
 Var ProductRootKey
