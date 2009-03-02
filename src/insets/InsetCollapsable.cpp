@@ -623,8 +623,7 @@ bool InsetCollapsable::allowMultiPar() const
 
 void InsetCollapsable::resetParagraphsFont()
 {
-	Font font;
-	font.fontInfo() = inherit_font;
+	Font font(inherit_font, buffer().params().language);
 	if (layout_->isForceLtr())
 		font.setLanguage(latex_language);
 	if (layout_->isPassThru()) {
