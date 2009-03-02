@@ -1544,6 +1544,14 @@ contributers = [
                  "Feb 19 2009",
                  u"reference dialog tweaks"),
 
+     contributer(u"Waluyo Adi Siswanto",
+                 "was.uthm () gmail ! com",
+                 "GPL",
+                 "Licence contributions",
+                 "m=123595530114385",
+                 "Mar 2 2009",
+                 u"Indonesian translation"),
+
      contributer(u"Xiaokun Zhu",
                  "xiaokun () aero ! gla ! ac ! uk",
                  "",
