@@ -338,8 +338,10 @@ Tri-Glosse
 \emph default
  besteht aus drei Zeilen und einer Zeile für die Paraphrase, erlaubt also
  die Verwendung einer dritten Sprache in der Glosse.
+ Die einzelnen Zeilen können länger sein als die Textbreite, sie werden
+ dann einfach automatisch und korrekt umbrochen.
  Bitte beachten Sie, dass die Zeile für die Paraphrase notwendig ist.
- Wenn sie fehlt, wird die entsprechende Glossen einen Fehler generieren.
+ Wenn sie fehlt, wird die entsprechende Glosse einen Fehler generieren.
  Die Paraphrase muss derzeit noch manuell durch den Befehl 
 \family typewriter
 
@@ -386,8 +388,12 @@ Dies ist ein einfaches Beispiel
 \end_layout
 
 \begin_layout Standard
+\noindent
 Beachten Sie, dass die geschweiften Klammern Mehrwortelemente zusammenhalten.
- Eine Tri-Glosse wird analog erzeugt:
+\end_layout
+
+\begin_layout Standard
+Eine Tri-Glosse wird analog erzeugt:
 \end_layout
 
 \begin_layout Standard
@@ -426,8 +432,13 @@ Dies ist ein einfaches Beispiel
 \end_layout
 
 \begin_layout Standard
+\noindent
 Wenn Sie nummerierte Glossen benötigen, fügen Sie die Glosse einfach in
- ein nummeriertes Beispiel ein, so wie hier:
+ einen Absatz mit dem Format 
+\emph on
+Nummeriertes Beispiel
+\emph default
+ ein, so wie hier:
 \end_layout
 
 \begin_layout Numbered Examples (consecutive)
@@ -463,6 +474,67 @@ Do you have matches?
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Bitte beachten Sie auch, dass Schriftänderungen in den Glossen nicht möglich
+ sind.
+ Der Textstil-Dialog ist daher auch deaktiviert.
+ Da Wörter in Glossen niemals getrennt werden, ist eine explizite Bestimmung
+ der Sprache in der LaTeX-Ausgabe nicht nötig (und sie würde auch zu Fehlern
+ führen, da das 
+\emph on
+covington
+\emph default
+-Paket dies nicht unterstützt).
+ Dennoch mögen Sie vielleicht die Sprache in den Glossen festlegen wollen,
+ damit die Rechtschreibprüfung in LyX richtig funktioniert.
+ Um das zu tun, müssen Sie folgendermaßen vorgehen: Markieren Sie den Text
+ und führen Sie dann 
+\family sans
+
+\begin_inset Info
+type  "shortcut"
+arg   "command-execute"
+\end_inset
+
+ language <lang> 
+\family default
+aus (
+\family sans
+
+\begin_inset Info
+type  "shortcut"
+arg   "command-execute"
+\end_inset
+
+
+\family default
+ öffnet den 
+\begin_inset Quotes gls
+\end_inset
+
+Minibuffer
+\begin_inset Quotes grs
+\end_inset
+
+), wobei Sie 
+\family sans
+<lang>
+\family default
+ durch die gewünschte Sprache ersetzen, also etwa 
+\family sans
+ngerman
+\family default
+, 
+\family sans
+english
+\family default
+ oder 
+\family sans
+french
+\family default
+.
 \end_layout
 
 \begin_layout Section

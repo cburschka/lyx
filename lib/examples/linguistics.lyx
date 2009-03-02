@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -22,6 +22,7 @@ linguistics
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -52,8 +53,8 @@ linguistics
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -225,7 +226,7 @@ Numbered examples
 \end_layout
 
 \begin_layout Standard
-Numbered examples are inserted via the layout dropdown box in the toolbar.
+Numbered examples are inserted via the layout drop-down box in the toolbar.
  There are three variants:
 \end_layout
 
@@ -281,7 +282,7 @@ And another one
 
 \begin_layout Standard
 References to examples are produced as usual: insert a label to the example
- and a crossreference via 
+ and a cross-reference via 
 \family sans
 Insert\SpecialChar \menuseparator
 Cross references
@@ -324,6 +325,11 @@ Custom:Glosse
 Custom:Tri-Glosse
 \emph default
  insets consists of three lines and a translation.
+ Each translation line might span multiple lines in the output, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., the paragraphs are automatically broken if they exceed the text width.
  Note that the translation line is mandatory and must be preceded by the
  command 
 \family typewriter
@@ -331,7 +337,7 @@ Custom:Tri-Glosse
 \backslash
 glt
 \family default
- which should be inserted verbatim in the Glosse inset (ERT is not needed,
+ which must be inserted verbatim in the glosse inset (TeX mode is not needed,
  and in fact not even possible).
 \end_layout
 
@@ -371,8 +377,12 @@ This is a simple example
 \end_layout
 
 \begin_layout Standard
-Note that the braces hold together multi-word expressions.
- In the same vein, we can make a three-line glosse:
+\noindent
+Note how the braces hold together multi-word expressions.
+\end_layout
+
+\begin_layout Standard
+In the same vein, we can make a three-line glosse:
 \end_layout
 
 \begin_layout Standard
@@ -411,7 +421,8 @@ This is a simple example
 \end_layout
 
 \begin_layout Standard
-If you want to have numbered glosses, you can simply insert the Glosse inset
+\noindent
+If you want to have numbered glosses, you can simply insert the glosse inset
  to a numbered examples paragraph, as follows:
 \end_layout
 
@@ -448,6 +459,53 @@ Do you have matches?
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Note that font changes are not allowed in glosses.
+ Hence, the 
+\family sans
+Character Style
+\family default
+ dialog is disabled.
+ Since glosses are not hyphenated, an explicit language setting in the LaTeX
+ output is not required (in fact, it would break the output, since covington
+ does not support it).
+ However, you still might want to set the language for proper spell checking.
+ Currently, you have to do this as follows: select the text, and then issue
+ 
+\begin_inset Info
+type  "shortcut"
+arg   "command-execute"
+\end_inset
+
+ 
+\family sans
+language <lang>
+\family default
+, where 
+\family sans
+<lang>
+\family default
+ should be replaced by the respective language, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ 
+\family sans
+english
+\family default
+, 
+\family sans
+french
+\family default
+ or 
+\family sans
+ngerman
+\family default
+.
+ In the LaTeX output, this setting will be supressed.
 \end_layout
 
 \begin_layout Section
