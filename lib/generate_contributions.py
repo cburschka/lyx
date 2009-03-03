@@ -494,7 +494,7 @@ contributers = [
                  "Permission grant",
                  "m=121681339315810",
                  "23 July 2008",
-                 u"Ukranian translation"),
+                 u"Ukrainian translation"),
 
      contributer(u"Matthias Kalle Dalheimer",
                  "kalle () kdab ! net",
