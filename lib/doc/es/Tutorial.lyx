@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -290,11 +290,7 @@ Innecesario.
  Si quieres aprender algunos de los trucos que se pueden hacer con LaTeX
  en LyX, puedes echar un vistazo al manual 
 \emph on
-Embedded
-\begin_inset space ~
-\end_inset
-
-Objects
+Objetos insertados
 \emph default
 .
 \end_layout
@@ -338,7 +334,7 @@ Guía del usuario
 Ayuda
 \family default
 .
- También puedes cargar el 
+ También puedes abrir el 
 \emph on
 Tutorial
 \emph default
@@ -425,15 +421,7 @@ examples/
 \family default
 , que puedes conseguir seleccionando 
 \family sans
-Archivo
-\begin_inset space ~
-\end_inset
-
-\SpecialChar \menuseparator
-
-\begin_inset space ~
-\end_inset
-
+Archivo\SpecialChar \menuseparator
 Abrir
 \family default
  y pulsando el botón 
@@ -481,7 +469,7 @@ Tutorial
 \end_layout
 
 \begin_layout Subsection
-Escribiendo, viendo e imprimiendo
+Escribir, ver y exportar
 \end_layout
 
 \begin_layout Itemize
@@ -544,8 +532,8 @@ DVI
 
 \end_inset
 
-y simplemente pulsar sobre la ventana del visor (o restaurarla) cuando LaTeX
- termine de ejecutarse.
+ y simplemente pulsar sobre la ventana del visor (o restaurarla) cuando
+ LaTeX termine de ejecutarse.
 \end_layout
 
 \end_inset
@@ -871,7 +859,7 @@ Tabulador
  no tiene función gramatical alguna, así que LyX no los usa.
  Con LyX emplearás más tiempo en el contenido del documento, y menos en
  la forma.
- Véase la 
+ Véase el manual 
 \emph on
 Introducción
 \emph default
@@ -1013,7 +1001,7 @@ Sección
 \begin_inset Quotes frd
 \end_inset
 
- y escribe el encabezado (título ) en un tipo de letra mayor.
+ y escribe el encabezado (título) en tipos más grandes.
  Ahora pulsa 
 \family sans
 Retorno.
@@ -1180,7 +1168,7 @@ Entorno
 \begin_inset Quotes frd
 \end_inset
 
-, y la escribe con un tamaño de letra mayor que el de texto regular pero
+, y la escribe con un tamaño de letra mayor que el del texto regular pero
  menor que el de un título de sección.
  Cambia también el entorno de la cuarta línea a 
 \family sans
@@ -1323,12 +1311,12 @@ Tabulador
 \end_layout
 
 \begin_layout Itemize
-Una exposición de diapositivas podría usar las listas simples (etiquetadas
- con bolos) del entorno 
+Una exposición de diapositivas podría usar la lista no numerada del entorno
+ 
 \family sans
 Enumeración*
 \family default
- para describir los diferentes puntos.
+ para describir los diferentes puntos con distintas marcas.
 \end_layout
 
 \begin_layout Itemize
@@ -1392,8 +1380,8 @@ Enumeración*
 Entorno
 \family default
 s.
- LyX pondrá un bolo en la línea.
- Introduce tus razones:
+ LyX pondrá una marca en la línea.
+ Escribe tus razones:
 \end_layout
 
 \begin_layout LyX-Code
@@ -1451,7 +1439,7 @@ S
 \end_layout
 
 \begin_layout Standard
-Has conseguido una bonita lista simple.
+Has conseguido una bonita lista no numerada.
  Puedes ejecutar LaTeX para ver cómo aparece en la salida impresa.
  Pero, ¿y si querías numerar las razones? Bien, simplemente selecciona toda
  la lista
@@ -1499,11 +1487,7 @@ Retorno
 \family sans
 Descripción
 \family default
-) o separado por un 
-\family sans
-Tabulador
-\family default
-
+) o separado del resto del párrafo por un tabulador
 \begin_inset Foot
 status collapsed
 
@@ -1522,7 +1506,7 @@ Tabulador
 \family sans
 Lista
 \family default
-) del resto del párrafo.
+).
  Si quieres más de una palabra en la definición, separa las palabras con
  
 \family sans
@@ -1548,8 +1532,8 @@ ejemplo_sin_lyx.lyx
 \begin_layout Standard
 Puedes anidar listas unas dentro de otras en toda clase de formas interesantes.
  Un ejemplo sería escribir esquemas.
- Las listas simples y numeradas tendrán diferentes tipos de bolos y diferente
- numeración en las sublistas.
+ Las listas sin numerar y numeradas tendrán diferentes tipos de marcas y
+ diferente numeración en las sublistas.
  Véase la 
 \emph on
 Guía del usuario
@@ -1559,7 +1543,7 @@ Guía del usuario
 \end_layout
 
 \begin_layout Subsection
-Más entornos: estrofas, citas y otros
+Otros entornos: estrofas, citas y demás
 \end_layout
 
 \begin_layout Standard
@@ -1658,20 +1642,20 @@ name "sec:Clases-de-documento"
 \begin_layout Standard
 Diferentes tipos de documentos deben componerse de forma diferente.
  Por ejemplo, normalmente los libros se imprimen a doble cara, mientras
- que los artículos se imprimen a simple.
+ que los artículos se imprimen a una cara.
  Además, muchos documentos contienen entornos especiales: las cartas tienen
- entornos (como la dirección del remitente o la firma) que no tienen sentido
+ entornos —como la dirección del remitente o la firma— que no tienen sentido
  en un libro o un artículo.
  Las 
 \emph on
-clases de texto
+clases de documento
 \emph default
  de LyX
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Para usuarios de LaTeX: equivalente a las clases de documento de LaTeX (
+Para usuarios de LaTeX: equivalen a las clases de documento de LaTeX (
 \emph on
 documentclass
 \emph default
@@ -1680,7 +1664,7 @@ documentclass
 
 \end_inset
 
- se encargan de estas grandes diferencias entre cada tipo de documento.
+ se encargan de estas grandes diferencias entre los distintos tipos de documento.
  Este Tutorial, por ejemplo, se ha escrito con la clase de texto 
 \family sans
 Book
@@ -1739,10 +1723,11 @@ Entorno.
 
 \begin_layout Standard
 El tamaño de letra, la impresión a una o dos columnas, o los encabezados
- de página son sólo algunas de las cosas en las que difiere el formato de
- composición de los distintos periódicos.
- Conforme la Era Digital ha ido madurando, éstos han empezado a aceptar
- presentaciones electrónicas, creando 
+ de página son sólo algunas de las cosas que diferencian los diseños de
+ distintas publicaciones.
+ Conforme la Era Digital ha ido madurando, se ha ido generalizando la admisión
+ por parte de los editores de escritos en soporte electrónico, para lo que
+ se crean 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1752,9 +1737,12 @@ archivos de estilo
 
  LaTeX para que los autores puedan enviar sus artículos correctamente maquetados.
  LyX también está preparado para esto.
- Así por ejemplo, ofrece soporte para composición (y entornos adicionales)
- para los periódicos de la Sociedad Americana de Matemáticas mediante la
- clase de texto 
+ Así por ejemplo, ofrece soporte para la composición (y entornos adicionales)
+ de artículos para las publicaciones de la 
+\emph on
+American Mathematics Society
+\emph default
+ mediante la clase de documento 
 \family sans
 Article
 \begin_inset space ~
@@ -1765,14 +1753,14 @@ Article
 
 \begin_layout Standard
 A continuación te damos una breve referencia rápida de algunas clases de
- texto.
+ documento.
  Véase la sección 
 \emph on
 Clases especiales de documentos
 \emph default
  en el manual 
 \emph on
-Características extendidas
+Características adicionales
 \emph default
  para más detalles.
 \end_layout
@@ -1933,7 +1921,7 @@ muchos entornos extras para dirección, firma\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Section
-Modelos: escribir una carta
+Plantillas: escribir una carta
 \end_layout
 
 \begin_layout Standard
@@ -1955,14 +1943,15 @@ Documento\SpecialChar \menuseparator
 Configuración
 \family default
 .
- Aunque esta es la manera más obvia de hacerlo, supone trabajo de más.
+ Aunque esta es la manera más obvia de hacerlo, supone más trabajo de lo
+ necesario.
  Cada vez que escribes una carta de negocios pones tu dirección, la del
  destinatario, el cuerpo, la firma, etc.
- Por tanto, LyX ofrece un 
+ Por tanto, LyX ofrece una 
 \emph on
-modelo
+plantilla
 \emph default
- para cartas, que contiene un ejemplo de carta; una vez que tienes el modelo,
+ para cartas, que contiene un modelo de carta; una vez que tienes el modelo,
  sólo tienes que sustituir un par de cosas cada vez que quieras escribir
  una nueva carta.
 \end_layout
@@ -1999,11 +1988,8 @@ plantilla
 \end_layout
 
 \begin_layout Standard
-Si te fijas en el menú 
-\family sans
-Entorno
-\family default
-, verás algunos entornos, como 
+Si te fijas en el cuadro desplegable de entornos verás algunos de ellos,
+ como 
 \family sans
 Mi
 \begin_inset space ~
@@ -2020,44 +2006,48 @@ Enumeración
 \family sans
 Descripción
 \family default
-, son ya conocidos.
+, ya son conocidos.
  Puedes jugar con ellos para ver cómo funcionan.
- Comprobarás, por ejemplo, que en el entorno 
+ Por ejemplo, verás que en el entorno 
 \family sans
 Firma
 \family default
- la palabra 
+ se muestra la palabra 
 \begin_inset Quotes fld
 \end_inset
 
-Signature:
+
+\emph on
+Firma:
+\emph default
+
 \begin_inset Quotes frd
 \end_inset
 
- en rojo antecede al texto de la firma.
+ en rojo delante del texto de la misma.
  Esta palabra no se muestra en la verdadera carta, como podrás ver si ves/imprim
 es el archivo.
  Sólo está ahí para que sepas dónde va la firma.
  Ten en cuenta también que no importa dónde esté situada la línea 
 \family sans
-Signature.
+Firma.
 
 \family default
  Recuerda que LyX es WYSIWYM, así que puedes poner el entorno 
 \family sans
 Firma
 \family default
- en el lugar que quieras, él sabe que en la salida impresa la firma debe
- ir al final.
+ en el lugar que quieras, porque LyX sabe que en la salida impresa la firma
+ debe ir al final.
 \end_layout
 
 \begin_layout Standard
-Un modelo es simplemente un archivo de LyX.
+Una plantilla es simplemente un archivo de LyX.
  Esto quiere decir que puedes completarlo con tu dirección y tu firma y
- guardarlo como un nuevo modelo.
+ guardarlo como una plantilla nueva.
  A partir de ahora, siempre que quieras escribir una carta ahorrarás tiempo
  usando tu nueva plantilla.
- Probablemente no necesitamos sugerirte que hagas un verdadero 
+ No necesitamos sugerirte aquí un verdadero 
 \begin_inset Quotes fld
 \end_inset
 
@@ -2065,12 +2055,12 @@ ejercicio
 \begin_inset Quotes frd
 \end_inset
 
-, ¡escribe una carta a alguien!
+, ¡sólo escribe una carta a alguien!
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Una advertencia si estás escribiendo a partir de un modelo.
+Una advertencia si estás escribiendo a partir de una plantilla.
  Si borras todo el texto de un entorno —por ejemplo, si borras todo el campo
  
 \family sans
@@ -2082,9 +2072,8 @@ Dirección
 \family default
  para poder poner tu propia dirección— y entonces mueves el cursor sin escribir
  nada, el entorno podría desaparecer.
- Esto se debe a que muchos entornos no pueden existir sin contener texto
- alguno.
- Para restituirlo, solamente tienes que volver a seleccionarlo en el menú
+ Esto se debe a que muchos entornos no pueden existir sin contener texto.
+ Para restituirlo, solamente tienes que volver a seleccionarlo en el cuadro
  
 \family sans
 Entorno
@@ -2098,8 +2087,8 @@ Entorno
 \end_layout
 
 \begin_layout Standard
-Los modelos pueden ahorrar muchísimo tiempo, así que te instamos a que los
- uses siempre que puedas.
+Las plantillas pueden ahorrar muchísimo tiempo, así que te instamos a que
+ las uses siempre que puedas.
  Además, te pueden ayudar a usar algunas de las clases de texto más elaboradas
  y complejas.
  Finalmente, pueden ser útiles para alguien que quiera configurar LyX para
@@ -2159,8 +2148,12 @@ Resumen.
 
 \family default
  Ahora mira cómo queda una vez impreso.
- Si cambias la clase de documento a Book, obtendrás el título en una página
- separada, como la primera página de este tutorial.
+ Si cambias la clase de documento a 
+\family sans
+Book
+\family default
+, obtendrás el título en una página separada, como la primera página de
+ este tutorial.
 \end_layout
 
 \begin_layout Standard
@@ -2184,13 +2177,13 @@ Puedes etiquetar encabezados de sección, ítems de una lista, ecuaciones,
 status collapsed
 
 \begin_layout Plain Layout
-Los flotantes se explican en la 
+Los flotantes se explican en los manuales 
 \emph on
 Guía del usuario 
 \emph default
-y en el manual 
+y 
 \emph on
-Embedded Objects
+Objetos insertados
 \emph default
 .
 \end_layout
@@ -2225,7 +2218,8 @@ Acerca de este documento
 \end_inset
 
 .
- Pincha al final de la línea del título, y selecciona en el menú 
+ Coloca el cursor al final de la línea del título, y selecciona el menú
+ 
 \family sans
 Insertar\SpecialChar \menuseparator
 Etiqueta
@@ -2253,19 +2247,15 @@ Aceptar
 \begin_layout Standard
 Por cierto, también puedes colocar la etiqueta en cualquier lugar de la
  sección; las referencias a sección se referirán a la última cuyo encabezado
- vaya antes que la etiqueta.
+ vaya antes de la etiqueta.
  Sin embargo, ponerla en la misma línea que el título (o bien en la primera
  línea de texto) asegura que las referencias a páginas se refieran al comienzo
  de la sección.
 \end_layout
 
 \begin_layout Standard
-Hasta ahora no hemos hecho nada (el archivo 
-\family typewriter
-dvi
-\family default
- tiene el mismo aspecto, ya que las etiquetas no se muestran en el documento
- impreso).
+Hasta ahora no hemos hecho nada (la salida DVI tiene el mismo aspecto, ya
+ que las etiquetas no se muestran en el documento impreso).
  Sin embargo, ahora que has añadido una etiqueta, puedes hacer referencia
  a ella mediante una referencia cruzada.
  Esto es lo que haremos a continuación.
@@ -3055,7 +3045,7 @@ El índice no se imprime en la versión en pantalla del documento porque no
  en el recuadro del índice o bien mediante 
 \family sans
 Documento\SpecialChar \menuseparator
-Outline
+Navegador de contorno
 \family default
  o con el botón 
 \begin_inset Graphics
@@ -3108,8 +3098,9 @@ LaTeX es utilizado por muchos científicos porque ofrece una gran calidad
  Sin embargo, muchos de estos científicos se sienten frustrados porque escribir
  ecuaciones con LaTeX se parece más a programar que a escribir.
  Afortunadamente, LyX tiene soporte WYSIWYM para las ecuaciones.
- Si estás acostumbrado a LaTeX, verás que sus instrucciones matemáticas
- usuales se pueden introducir normalmente, aunque se muestran de forma WYSIWYM.
+ Si estás acostumbrado a LaTeX, verás que sus comandos habituales para estructur
+as matemáticas se pueden escribir normalmente, pero se mostrarán de forma
+ WYSIWYM.
  Por el contrario, si nunca has usado LaTeX, el 
 \family sans
 Panel
@@ -3120,7 +3111,7 @@ de
 \begin_inset space ~
 \end_inset
 
-Fórmulas
+Ecuaciones
 \family default
  te permitirá escribir matemáticas de apariencia profesional de una forma
  rápida y fácil.
@@ -3153,14 +3144,14 @@ Ahora la ecuación no tiene muy buen aspecto en LyX ni en la salida; no hay
  como un verdadero exponente.
  Esta composición tan mala se debe a que no le hemos dicho a LyX que estamos
  escribiendo una expresión matemática, así que la compone como texto normal.
+\begin_inset Formula $ $
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-Las expresiones matemáticas se escriben en modo matemático o de fórmulas.
+Las expresiones matemáticas se escriben en modo matemático o de ecuaciones.
  Para entrar en dicho modo, sólo tienes que pinchar el botón de la barra
  de herramientas 
 \begin_inset Graphics
@@ -3377,7 +3368,7 @@ Flecha
 
 abajo
 \family default
- devolverás el curso al nivel normal.
+ devolverás el cursor al nivel normal.
  Si pulsas 
 \family sans
 Espacio 
@@ -3476,7 +3467,7 @@ Esc
 \end_layout
 
 \begin_layout Standard
-Escribir un subíndice es igual de fácil: para comenzar uno pulsa la tecla
+Escribir un subíndice es igual de fácil: para comenzar se pulsa la tecla
  de subrayado, 
 \begin_inset Quotes fld
 \end_inset
@@ -3598,7 +3589,7 @@ herramientas
 \begin_inset Quotes fld
 \end_inset
 
-Math
+Ecuaciones
 \begin_inset Quotes frd
 \end_inset
 
@@ -3608,7 +3599,7 @@ Math
 \begin_inset Quotes fld
 \end_inset
 
-Math
+Ecuaciones
 \begin_inset Quotes frd
 \end_inset
 
@@ -3645,7 +3636,7 @@ matemáticas
 \begin_inset Quotes fld
 \end_inset
 
-Math
+Ecuaciones
 \begin_inset Quotes frd
 \end_inset
 
@@ -3653,7 +3644,7 @@ Math
 \begin_inset Quotes fld
 \end_inset
 
-Math
+Ecuaciones
 \begin_inset space ~
 \end_inset
 
@@ -3787,7 +3778,7 @@ iguales
  Por omisión es un par de paréntesis, pero con este método de selección
  puedes elegir un par de llaves, una llave y un paréntesis, o incluso elegir
  el delimitador vacío para obtener algo así: 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -3795,7 +3786,7 @@ iguales
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  (el delimitador vacío se muestra como una línea negra discontinua en LyX,
@@ -3803,29 +3794,20 @@ iguales
 \end_layout
 
 \begin_layout Standard
-Una vez que has elegido tus delimitadores, pulsa 
-\family sans
-Insertar
-\family default
- para que aparezcan en la expresión (o pulsa 
-\family sans
-Cerrar
-\family default
- si quieres cerrar la ventana).
- Si eres un poco vago, puedes escribir los paréntesis normales desde el
- teclado en modo matemático, en vez de usar la ventana 
+Si eres un poco vago, puedes escribir los paréntesis normales desde el teclado
+ en modo matemático, en vez de usar la ventana 
 \family sans
 Delimitadores
 \family default
 .
  Sin embargo, estos paréntesis tendrán el mismo tamaño que el texto normal,
  lo cual quedará bastante mal si encierran una fracción o una matriz grande.
- Usar la ventana 
-\family sans
-Delimitadores
-\family default
- te garantiza que los delimitadores se ajusten de forma precisa a aquello
- que encierren.
+ En estos casos es mejor usar uno de los tres botones para insertar directamente
+ los delimitadores, por ejemplo un par de 
+\begin_inset Formula $\left(\right)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -3864,7 +3846,7 @@ Fracciones
 \end_layout
 
 \begin_layout Standard
-Para crear una fracción pincha el botón 
+Para crear una fracción pica el botón 
 \begin_inset Graphics
 	filename ../../images/math/frac.png
 	lyxscale 75
@@ -3893,7 +3875,7 @@ matemáticas
  LyX coloca dos puntos de inserción.
  Como cabría esperar, puedes usar los cursores o el ratón para moverte a
  través de la fracción.
- Pincha en el cuadro de arriba y escribe 
+ Coloca el cursor en el cuadro de arriba y escribe 
 \begin_inset Quotes fld
 \end_inset
 
@@ -4074,10 +4056,14 @@ x
 \end_inset
 
 , que aparecerá en cursiva azul, como es habitual en una ecuación.
- En la salida, la expresión se imprimirá correctamente.
+ En
+\begin_inset Formula $ $
+\end_inset
+
+ la salida, la expresión se imprimirá correctamente.
  Inténtalo.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -4088,9 +4074,9 @@ N.
 
 del t.
 \emph default
-: El archivo 
+: El estilo 
 \family sans
-spanish.ldf
+spanish
 \family default
  del paquete 
 \series bold
@@ -4323,12 +4309,12 @@ El modo presentación
 
 \begin_layout Standard
 Todas las expresiones que hemos escrito hasta ahora estaban en la misma
- línea que el texto que las rodeaba.
- Reciben pues el nombre de expresiones en línea.
- Están bien para expresiones cortas y sencillas, pero si las quieres escribir
- más extensas, o si quieres que queden separadas del texto, tienes que escribirl
-as en modo presentación.
- Además, sólo las expresiones en este modo pueden ser etiquetadas o numeradas
+ línea que el texto precedente y siguiente, por lo que se denominan expresiones
+ en línea.
+ Esto está bien para expresiones cortas y sencillas, pero si las quieres
+ escribir más extensas, o si quieres que queden separadas del texto, tienes
+ que escribirlas en modo presentación.
+ Además, sólo las expresiones en este modo pueden ser etiquetadas y numeradas
  (véase la 
 \emph on
 Guía del usuario
@@ -4405,10 +4391,9 @@ Aparte de estas diferencias, las expresiones en línea y en modo demostración
 Un último apunte acerca del modo en que se componen las ecuaciones en este
  modo: presta atención a si lo que quieres es poner una ecuación en un nuevo
  párrafo o no.
- Si ésta se encuentra en mitad de de una frase o de un párrafo, no pulses
- 
+ Si ésta se encuentra en mitad de una frase o de un párrafo, no pulses 
 \family sans
-Intro
+Retorno
 \family default
 .
  De lo contrario harás que el texto tras la ecuación comience en un nuevo
@@ -4489,11 +4474,11 @@ Ecuaciones con varias líneas
 \end_layout
 
 \begin_layout Itemize
-Cambiar el tipo de letra, 
-\emph on
-i.e.
-\emph default
-, escribir texto en negrita dentro de una expresión.
+Cambiar el tipo de letra, p.
+\begin_inset space \thinspace{}
+\end_inset
+
+ej., escribir texto en negrita dentro de una expresión.
 \end_layout
 
 \begin_layout Itemize
@@ -4518,7 +4503,7 @@ Tutorial
 \end_layout
 
 \begin_layout Chapter
-Misceláneo
+Miscelánea
 \end_layout
 
 \begin_layout Section
@@ -4534,7 +4519,7 @@ Guía del usuario
 \emph default
  y 
 \emph on
-Embedded Objects
+Objetos insertados
 \emph default
  para más información.
  Sólo mencionaremos un par más de cosas importantes que LyX puede hacer\SpecialChar \ldots{}
@@ -4591,7 +4576,7 @@ Imagen
  Después pincha en la figura para elegir el archivo que quieres incluir,
  rotarla, escalarla, etc.
  Tanto las tablas como las figuras pueden tener etiqueta, y LyX genera automátic
-amente listas de figuras y/o de tablas.
+amente listas de figuras y de tablas.
 \end_layout
 
 \begin_layout Itemize
@@ -4720,7 +4705,7 @@ Características extendidas
 \emph default
  y 
 \emph on
-Embedded Objects
+Objetos insertados
 \emph default
  poseen una gran cantidad de información sobre las diferencias entre LyX
  y LaTeX, y de cómo hacer varios trucos de LaTeX en LyX.
@@ -4771,9 +4756,8 @@ En el modo matemático, el modo TeX se maneja de forma ligeramente diferente.
 \end_inset
 
 .
- Ésta no saldrá en pantalla, pero todo lo que escribas de ahí en adelante
- aparecerá en rojo.
- Para salir pulsa 
+ Todo lo que escribas de ahí en adelante aparecerá en rojo.
+ Para salir del modo TeX pulsa 
 \family sans
 Espacio
 \family default
@@ -4791,7 +4775,7 @@ gamma
 \family sans
 Espacio
 \family default
-, LyX convertirá el texto en rojo en una 
+ LyX convertirá el texto en rojo en una 
 \begin_inset Quotes fld
 \end_inset
 
@@ -4806,9 +4790,9 @@ Espacio
  de color azul.
  Esto funcionará para casi todas las macros matemáticas que no sean muy
  complejas.
- Este sistema puede ser más rápido que usar las 
+ Este sistema puede ser más rápido que usar la 
 \family sans
-Barras
+Barra
 \begin_inset space ~
 \end_inset
 
@@ -4816,11 +4800,11 @@ de
 \begin_inset space ~
 \end_inset
 
-herramientas
+herramienta
 \begin_inset space ~
 \end_inset
 
-matemáticas
+matemática
 \family default
 , especialmente para usuarios experimentados de LaTeX.
 \end_layout
@@ -4840,11 +4824,11 @@ fuera
 \begin_layout Standard
 LyX no puede hacer absolutamente todo lo que hace LaTeX.
  Algunas funciones muy elaboradas no están soportadas, mientras que algunas
- funcionan pero no son WYSIWYG.
+ funcionan pero no son WYSIWYM.
  El modo TeX permite a los usuarios disponer de la completa flexibilidad
  de LaTeX, a la vez que gozan de las útiles características de LyX, como
- las matemáticas WYSIWYG, las tablas y la edición de texto.
- LyX no podría abarcar nunca todos los paquetes de LaTeX.
+ las matemáticas WYSIWYM, las tablas y la edición de texto.
+ LyX no podrá abarcar nunca todos los paquetes de LaTeX.
  Sin embargo, escribiendo 
 \family typewriter
 
@@ -4862,7 +4846,7 @@ reference "sec:Preámbulo"
 
 \end_inset
 
-), puedes utilizar el paquete que quieras (aunque no tendrás soporte WYSIWYG
+), puedes utilizar el paquete que quieras (aunque no tendrás soporte WYSIWYM
  para las características de ese paquete).
 \end_layout
 
@@ -4895,7 +4879,7 @@ tex2lyx
 \family default
 , que creará un archivo 
 \family typewriter
- foo.lyx
+foo.lyx
 \family default
  a partir del archivo 
 \family typewriter

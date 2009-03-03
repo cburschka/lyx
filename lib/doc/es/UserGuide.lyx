@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -13603,7 +13603,7 @@ nombre
 \begin_inset Text
 
 \begin_layout Plain Layout
-output
+salida
 \end_layout
 
 \end_inset
@@ -13612,7 +13612,7 @@ output
 \begin_inset Text
 
 \begin_layout Plain Layout
-inserta con
+se inserta con
 \end_layout
 
 \end_inset
@@ -13641,7 +13641,7 @@ guión
 \begin_inset Text
 
 \begin_layout Plain Layout
-«
+tecla «
 \family typewriter
 -
 \family default
@@ -13722,7 +13722,7 @@ Símbolos
 \begin_inset Text
 
 \begin_layout Plain Layout
-signo menos
+menos
 \end_layout
 
 \end_inset
@@ -13853,7 +13853,7 @@ raya
 
 (
 \emph on
-signo menos
+menos
 \emph default
 )
 \end_layout
@@ -13958,12 +13958,9 @@ guionado
 \end_layout
 
 \begin_layout Standard
-A veces interesará evitar que ciertas palabras o estructuras se partan.
+A veces interesará evitar que ciertas palabras o estructuras se partan.Supongamos
+ que en el documento se describe una combinación de teclas  en la forma
  
-\lang english
-Imagine that you are describing keybindings/shortcuts in your document
-\lang spanish
- en la forma 
 \begin_inset Quotes fld
 \end_inset
 
@@ -22219,7 +22216,7 @@ de
 
 funciones
 \family default
-, que contiene diversas funciones macros como 
+, que contiene diversas macros de funciones como 
 \begin_inset Formula $\sin$
 \end_inset
 
@@ -23086,11 +23083,7 @@ Hay varios tipos de delimitadores disponibles en LyX.
 
 \end_inset
 
- de la 
-\lang english
-math toolbar
-\lang spanish
-.
+ de la barra de herramientas de ecuaciones.
  Por ejemplo, para poner corchetes alrededor de una matriz estándar: 
 \begin_inset Formula \[
 \left[\begin{array}{cc}
@@ -24242,11 +24235,11 @@ Panel de ecuaciones
 \family default
  (o bien el atajo 
 \family sans
-Alt+M
+Alt+C
 \begin_inset space ~
 \end_inset
 
-M
+Espacio
 \family default
 ).
  En LyX, el texto normal dentro de una ecuación aparece en negro, no en
