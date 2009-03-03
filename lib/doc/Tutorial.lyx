@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1439,7 +1439,7 @@ Break
 \family default
 , which you get by typing 
 \family sans
-C-Return
+Ctrl+Return
 \family default
 .
  In order to get out of the list, you need to reselect the 
@@ -1448,11 +1448,11 @@ Standard
 \family default
  environment (or just use the keybinding, 
 \family sans
-M-p
+Alt+P
 \begin_inset space ~
 \end_inset
 
-s
+S
 \family default
 ).
 \end_layout
@@ -1620,7 +1620,7 @@ Return
 \family default
  to separate stanzas, and 
 \family sans
-C-Return
+Ctrl+Return
 \family default
  to separate lines within a stanza.
  See the 
@@ -2376,7 +2376,11 @@ Copy as Reference
 Edit\SpecialChar \menuseparator
 Paste
 \family default
- (shortcut Ctrl+V).
+ (shortcut 
+\family sans
+Ctrl+V
+\family default
+).
 \end_layout
 
 \begin_layout Standard
@@ -4331,13 +4335,14 @@ Open
 \family default
  by pressing 
 \family sans
-M-F
+Alt+F
 \family default
  followed by 
 \family sans
 O
 \family default
- or by using the binding which is shown next to it in the menu (C-O by default).
+ or by using the binding which is shown next to it in the menu (Ctrl+O by
+ default).
  Keybindings are also configurable.
  For information on this, check out 
 \family sans
