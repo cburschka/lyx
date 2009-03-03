@@ -31790,8 +31790,6 @@ Macro
 
 \begin_inset Graphics
 	filename clipart/macrobox.png
-	lyxscale 90
-	scale 90
 
 \end_inset
 
@@ -31805,7 +31803,7 @@ Macro
 
 
 \begin_inset FormulaMacro
-\newcommand{\qG}[4][1,\,2]{#2_{#1}=-\frac{#3}{2}\pm\sqrt{\frac{#3^{2}}{4}-#4}}
+\renewcommand{\qG}[4][1,\,2]{#2_{#1}=-\frac{#3}{2}\pm\sqrt{\frac{#3^{2}}{4}-#4}}
 \end_inset
 
 
@@ -31942,8 +31940,6 @@ qG
 
 \begin_inset Graphics
 	filename clipart/macrouse.png
-	lyxscale 75
-	scale 75
 
 \end_inset
 
@@ -32144,7 +32140,7 @@ Macro
 \end_inset
 
 Definition\SpecialChar \menuseparator
-Remove Argument
+Remove Last Argument
 \end_layout
 
 \end_inset
@@ -32180,7 +32176,7 @@ Macro
 \end_inset
 
 Definition\SpecialChar \menuseparator
-Append Last Argument
+Append Argument
 \end_layout
 
 \end_inset
