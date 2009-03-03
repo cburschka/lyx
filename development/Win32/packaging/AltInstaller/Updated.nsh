@@ -29,6 +29,7 @@ Function UpdateModifiedFiles
  File /r "${PRODUCT_SOURCEDIR}\Resources\examples\pt"
  File /r "${PRODUCT_SOURCEDIR}\Resources\examples\ro"
  File /r "${PRODUCT_SOURCEDIR}\Resources\examples\ru"
+ File /r "${PRODUCT_SOURCEDIR}\Resources\examples\uk"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\biblioExample.bib"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\Braille.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\linguistics.lyx"

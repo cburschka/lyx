@@ -1,0 +1,150 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage[russian,ukrainian]{babel}
+\selectlanguage{ukrainian}
+\end_preamble
+\use_default_options false
+\language ukrainian
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Ласкаво просимо до LyX!
+\end_layout
+
+\begin_layout Section*
+Ось декілька речей, про які ви маєте знати, користуючись LyX
+\end_layout
+
+\begin_layout Enumerate
+LyX постачається з відмінною документацією — будь ласка, користуйтеся нею!
+ Почніть з пункту меню 
+\family sans
+Довідка\SpecialChar \menuseparator
+Вступ
+\family default
+, — програма покаже дуже короткий вступ до документації.
+ Продовжіть вивчення LyX за допомогою пункту меню 
+\family sans
+Довідка\SpecialChar \menuseparator
+Підручник
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+LyX — це те, що ми називаємо «процесором документів».
+ За своєю структурою програма відрізняється від звичайних текстових процесорів
+ — вона спрощує написання документів.
+ Але відмінності не такі значні, отже, не лякайтеся.
+ Всі пояснення можна знайти у документації.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Have we mentioned yet that you ought to read the documentation?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Документи, створені у LyX виглядають чудово! Скористайтеся пунктом меню
+ 
+\family sans
+Перегляд\SpecialChar \menuseparator
+DVI
+\family default
+, щоб переконатися у цьому на власні очі.
+\end_layout
+
+\begin_layout Enumerate
+Так, у LyX можна користуватися (майже) всіма функціональними можливостями
+ LaTeX.
+ І так, LyX може імпортувати файли LaTeX.
+ Досвідчені користувачі LaTeX можуть не читати решти 
+\emph on
+Підручника
+\emph default
+, і одразу перейти до читання глави «LyX для користувачів LaTeX».
+ (Всім іншим: не переймайтеся, вам не потрібно знати LaTeX, щоб користуватися
+ LyX.) 
+\end_layout
+
+\begin_layout Enumerate
+У LyX передбачено багато можливостей для користувачів, які читають або пишуть
+ мовою, відмінною від англійської.
+ Крім того, у програмі можна налаштувати майже всі клавіатурні скорочення,
+ панелі інструментів та багато інших характеристик.
+ Докладніше про це можна дізнатися з розділу 
+\family sans
+Довідка\SpecialChar \menuseparator
+Підручник з налаштування
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Домашню сторінку LyX розташовано за адресою 
+\family typewriter
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
+
+\end_inset
+
+
+\family default
+.
+ Там ви можете отримати відомості про LyX, підписатися на списки листування
+ LyX, здійснити візуальну подорож LyX, а також знайти багато іншої корисної
+ інформації.
+\end_layout
+
+\end_body
+\end_document

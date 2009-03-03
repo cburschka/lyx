@@ -2514,6 +2514,11 @@ lib_examples_sl_files = Split('''
 ''')
 
 
+lib_examples_uk_files = Split('''
+    splash.lyx
+''')
+
+
 lib_lyx2lyx_files = Split('''
     LyX.py
     generate_encoding_info.py
