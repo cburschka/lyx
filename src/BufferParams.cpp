@@ -1900,7 +1900,7 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 		}
 		if (package == Encoding::CJK || features.mustProvide("CJK")) {
 			if (language->encoding()->name() == "utf8-cjk"
-			    && features.isAvailable("CJKutf8"))
+			    && LaTeXFeatures::isAvailable("CJKutf8"))
 				os << "\\usepackage{CJKutf8}\n";
 			else
 				os << "\\usepackage{CJK}\n";
@@ -1921,7 +1921,7 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 			break;
 		case Encoding::CJK:
 			if (encoding().name() == "utf8-cjk"
-			    && features.isAvailable("CJKutf8"))
+			    && LaTeXFeatures::isAvailable("CJKutf8"))
 				os << "\\usepackage{CJKutf8}\n";
 			else
 				os << "\\usepackage{CJK}\n";
