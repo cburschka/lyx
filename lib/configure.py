@@ -8,26 +8,21 @@
 # \author Bo Peng
 # Full author contact details are available in file CREDITS.
 
-import sys, os, re, shutil, glob
+import sys, os, re, shutil, glob, logging
 
-
-class Tee:
-    ''' Writing to a Tee object will write to all file objects it keeps.
-        That is to say, writing to Tee(sys.stdout, open(logfile, 'w')) will
-        write to sys.stdout as well as a log file.
-    '''
-    def __init__(self, *args):
-        self.files = args
-
-    def write(self, data):
-        for f in self.files:
-            result = f.write(data)
-        return result
-
-    def writelines(self, seq):
-        for i in seq:
-            self.write(i)
-
+# set up logging
+logging.basicConfig(level = logging.DEBUG,
+    format = '%(levelname)s: %(message)s', # ignore application name
+    filename = 'configure.log',
+    filemode = 'w')
+#
+# Add a handler to log to console
+console = logging.StreamHandler()
+console.setLevel(logging.INFO) # the console only print out general information
+formatter = logging.Formatter('%(message)s') # only print out the message itself
+console.setFormatter(formatter)
+logger = logging.getLogger('LyX')
+logger.addHandler(console)
 
 def writeToFile(filename, lines, append = False):
     " utility function: write or append lines to filename "
@@ -45,6 +40,7 @@ def addToRC(lines):
     '''
     if lines.strip() != '':
         writeToFile(outfile, lines + '\n', append = True)
+        logger.debug('Add to RC:\n' + lines + '\n\n')
 
 
 def removeFiles(filenames):
@@ -54,7 +50,9 @@ def removeFiles(filenames):
     for file in filenames:
         try:
             os.remove(file)
+            logger.debug('Removing file %s' % file)
         except:
+            logger.debug('Failed to remove file %s' % file)
             pass
 
 
@@ -89,8 +87,9 @@ def createDirectories():
         if not os.path.isdir( dir ):
             try:
                 os.mkdir( dir)
+                logger.debug('Create directory %s.' % dir)
             except:
-                print "Failed to create directory ", dir
+                logger.error('Failed to create directory %s.' % dir)
                 sys.exit(1)
 
 
@@ -110,10 +109,10 @@ def checkTeXPaths():
         os.close(fd)
         latex_out = cmdOutput(r'latex "\nonstopmode\input{%s}"' % inpname)
         if 'Error' in latex_out:
-            print "configure: TeX engine needs posix-style paths in latex files"
+            logger.warning("configure: TeX engine needs posix-style paths in latex files")
             windows_style_tex_paths = 'false'
         else:
-            print "configure: TeX engine needs windows-style paths in latex files"
+            logger.info("configure: TeX engine needs windows-style paths in latex files")
             windows_style_tex_paths = 'true'
         removeFiles([tmpfname, logname, 'texput.log'])
     return windows_style_tex_paths
@@ -148,15 +147,15 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
     '''
     # one rc entry for each progs plus not_found entry
     if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
-        print "rc entry should have one item or item for each prog and not_found."
+        logger.error("rc entry should have one item or item for each prog and not_found.")
         sys.exit(2)
-    print 'checking for ' + description + '...'
+    logger.info('checking for ' + description + '...')
     ## print '(' + ','.join(progs) + ')',
     for idx in range(len(progs)):
         # ac_prog may have options, ac_word is the command name
         ac_prog = progs[idx]
         ac_word = ac_prog.split(' ')[0]
-        print '+checking for "' + ac_word + '"... ',
+        msg = '+checking for "' + ac_word + '"... '
         path = os.environ["PATH"].split(os.pathsep) + path
         extlist = ['']
         if os.environ.has_key("PATHEXT"):
@@ -164,7 +163,7 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
         for ac_dir in path:
             for ext in extlist:
                 if os.path.isfile( os.path.join(ac_dir, ac_word + ext) ):
-                    print ' yes'
+                    logger.info(msg + ' yes')
                     # write rc entries for this command
                     if len(rc_entry) == 1:
                         addToRC(rc_entry[0].replace('%%', ac_prog))
@@ -172,7 +171,7 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
                         addToRC(rc_entry[idx].replace('%%', ac_prog))
                     return [ac_dir, ac_word]
         # if not successful
-        print ' no'
+        logger.info(msg + ' no')
     # write rc entries for 'not found'
     if len(rc_entry) > 0:  # the last one.
         addToRC(rc_entry[-1].replace('%%', not_found))
@@ -241,7 +240,7 @@ def checkLatex(dtl_tools):
             # valid latex2e
             return LATEX
         else:
-            print "Latex not usable (not LaTeX2e) "
+            logger.warning("Latex not usable (not LaTeX2e) ")
         # remove temporary files
         removeFiles(['chklatex.ltx', 'chklatex.log'])
     return ''
@@ -525,11 +524,11 @@ def checkConverterEntries():
 \converter lilypond   png        "lilypond -b eps --png $$i"	""''')
                 if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 9):
                     addToRC(r'\converter lilypond   pdf        "lilypond -b eps --pdf $$i"	""')
-                print '+  found LilyPond version %s.' % version_number
+                logger.info('+  found LilyPond version %s.' % version_number)
             else:
-                print '+  found LilyPond, but version %s is too old.' % version_number
+                logger.info('+  found LilyPond, but version %s is too old.' % version_number)
         else:
-            print '+  found LilyPond, but could not extract version number.'
+            logger.info('+  found LilyPond, but could not extract version number.')
     #
     checkProg('a Noteedit -> LilyPond converter', ['noteedit --export-lilypond $$i'],
         rc_entry = [ r'\converter noteedit   lilypond   "%%"	""', ''])
@@ -633,7 +632,7 @@ def processLayoutFile(file, bool_docbook):
             if opt == None:
                 opt = classname
             return '"%s" "%s" "%s" "%s"\n' % (classname, opt, desc, avai)
-    print "Layout file " + file + " has no \DeclareXXClass line. "
+    logger.warning("Layout file " + file + " has no \DeclareXXClass line. ")
     return ""
 
 
@@ -641,7 +640,7 @@ def checkLatexConfig(check_config, bool_docbook):
     ''' Explore the LaTeX configuration 
         Return None (will be passed to sys.exit()) for success.
     '''
-    print 'checking LaTeX configuration... ',
+    msg = 'checking LaTeX configuration... '
     # if --without-latex-config is forced, or if there is no previous 
     # version of textclass.lst, re-generate a default file.
     if not os.path.isfile('textclass.lst') or not check_config:
@@ -650,8 +649,8 @@ def checkLatexConfig(check_config, bool_docbook):
         #
         # Then, generate a default textclass.lst. In case configure.py
         # fails, we still have something to start lyx.
-        print ' default values'
-        print '+checking list of textclasses... '
+        logger.info(msg + ' default values')
+        logger.info('+checking list of textclasses... ')
         tx = open('textclass.lst', 'w')
         tx.write('''
 # This file declares layouts and their associated definition files
@@ -680,12 +679,12 @@ def checkLatexConfig(check_config, bool_docbook):
                 if retval != "":
                     tx.write(retval)
         tx.close()
-        print '\tdone'
+        logger.info('\tdone')
     if not check_config:
         return None
     # the following will generate textclass.lst.tmp, and packages.lst.tmp
     else:
-        print '\tauto'
+        logger.info(msg + '\tauto')
         removeFiles(['wrap_chkconfig.ltx', 'chkconfig.vars', \
             'chkconfig.classes', 'chklayouts.tex'])
         rmcopy = False
@@ -707,7 +706,7 @@ def checkLatexConfig(check_config, bool_docbook):
                 if p1.search(line) == None:
                     continue
                 if line[0] != '#':
-                    print "Wrong input layout file with line '" + line
+                    logger.error("Wrong input layout file with line '" + line)
                     sys.exit(3)
                 testclasses.append("\\TestDocClass{%s}{%s}" % (classname, line[1:].strip()))
                 break
@@ -724,7 +723,7 @@ def checkLatexConfig(check_config, bool_docbook):
             if not line:
                 break;
             if re.match('^\+', line):
-                print line,
+                logger.info(line.strip())
         # if the command succeeds, None will be returned
         ret = fout.close()
         #
@@ -754,7 +753,7 @@ def checkLatexConfig(check_config, bool_docbook):
 def checkModulesConfig():
   removeFiles(['lyxmodules.lst'])
 
-  print '+checking list of modules... '
+  logger.info('+checking list of modules... ')
   tx = open('lyxmodules.lst', 'w')
   tx.write('''## This file declares modules and their associated definition files.
 ## It has been automatically generated by configure
@@ -766,14 +765,14 @@ def checkModulesConfig():
   for file in glob.glob( os.path.join('layouts', '*.module') ) + \
       glob.glob( os.path.join(srcdir, 'layouts', '*.module' ) ) :
       # valid file?
-      print file
+      logger.info(file)
       if not os.path.isfile(file): 
           continue
       retval = processModuleFile(file, bool_docbook)
       if retval != "":
           tx.write(retval)
   tx.close()
-  print '\tdone'
+  logger.info('\tdone')
 
 
 def processModuleFile(file, bool_docbook):
@@ -838,7 +837,7 @@ def processModuleFile(file, bool_docbook):
         continue
     if modname != "":
         return '"%s" "%s" "%s" "%s" "%s" "%s"\n' % (modname, filename, desc, pkgs, req, excl)
-    print "Module file without \DeclareLyXModule line. "
+    logger.warning("Module file without \DeclareLyXModule line. ")
     return ""
 
 
@@ -846,17 +845,17 @@ def checkTeXAllowSpaces():
     ''' Let's check whether spaces are allowed in TeX file names '''
     tex_allows_spaces = 'false'
     if lyx_check_config:
-        print "Checking whether TeX allows spaces in file names... ",
+        msg = "Checking whether TeX allows spaces in file names... "
         writeToFile('a b.tex', r'\message{working^^J}' )
         if os.name == 'nt':
             latex_out = cmdOutput(LATEX + r""" "\nonstopmode\input{\"a b\"}" """)
         else:
             latex_out = cmdOutput(LATEX + r""" '\nonstopmode\input{"a b"}' """)
         if 'working' in latex_out:
-            print 'yes'
+            logger.info(msg + 'yes')
             tex_allows_spaces = 'true'
         else:
-            print 'no'
+            logger.info(msg + 'no')
             tex_allows_spaces = 'false'
         addToRC(r'\tex_allows_spaces ' + tex_allows_spaces)
         removeFiles( [ 'a b.tex', 'a b.log', 'texput.log' ])
@@ -877,7 +876,6 @@ if __name__ == '__main__':
     rc_entries = ''
     lyx_keep_temps = False
     version_suffix = ''
-    logfile = 'configure.log'
     ## Parse the command line
     for op in sys.argv[1:]:   # default shell/for list is $*, the options
         if op in [ '-help', '--help', '-h' ]:
@@ -899,16 +897,12 @@ Options:
             print "Unknown option", op
             sys.exit(1)
     #
-    # set up log file for stdout and stderr
-    log = open(logfile, 'w')
-    sys.stdout = Tee(sys.stdout, log)
-    sys.stderr = Tee(sys.stderr, log)
     # check if we run from the right directory
     srcdir = os.path.dirname(sys.argv[0])
     if srcdir == '':
         srcdir = '.'
     if not os.path.isfile( os.path.join(srcdir, 'chkconfig.ltx') ):
-        print "configure: error: cannot find chkconfig.ltx script"
+        logger.error("configure: error: cannot find chkconfig.ltx script")
         sys.exit(1)
     setEnviron()
     createDirectories()
