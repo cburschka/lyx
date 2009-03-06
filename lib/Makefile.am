@@ -104,6 +104,7 @@ dist_esexamples_DATA = \
 	examples/es/ejemplo_con_lyx.lyx \
 	examples/es/ejemplo_sin_lyx.lyx \
 	examples/es/ItemizeBullets.lyx \
+	examples/es/linguistics.lyx \
 	examples/es/multicol.lyx \
 	examples/es/splash.lyx
 
