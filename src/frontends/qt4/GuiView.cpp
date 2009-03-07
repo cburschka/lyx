@@ -533,15 +533,29 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	while (GuiWorkArea * wa = currentMainWorkArea()) {
 		Buffer * b = &wa->bufferView().buffer();
 		if (b->parent()) {
-			// This is a child document, just close the tab after saving
-			// but keep the file loaded.
-			if (!saveBuffer(*b)) {
+			// This is a child document, just close the tab
+			// after saving but keep the file loaded.
+			if (!closeBuffer(*b, false)) {
 				closing_ = false;
 				close_event->ignore();
 				return;
 			}
-		removeWorkArea(wa);
 			continue;
+		}
+
+		vector<Buffer *> clist = b->getChildren();
+		for (vector<Buffer *>::const_iterator it = clist.begin();
+		     it != clist.end(); ++it) {
+			if ((*it)->isClean())
+				continue;
+			Buffer * c = *it;
+			// If a child is dirty, do not close
+			// without user intervention
+			if (!closeBuffer(*c, false)) {
+				closing_ = false;
+				close_event->ignore();
+				return;
+			}
 		}
 
 		QList<int> const ids = guiApp->viewIds();

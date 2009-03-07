@@ -1765,6 +1765,25 @@ DocIterator Buffer::firstChildPosition(Buffer const * child)
 }
 
 
+std::vector<Buffer *> Buffer::getChildren() const
+{
+	std::vector<Buffer *> clist;
+	// loop over children
+	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
+	Impl::BufferPositionMap::iterator end = d->children_positions.end();
+	for (; it != end; ++it) {
+		Buffer * child = const_cast<Buffer *>(it->first);
+		clist.push_back(child);
+		// there might be grandchildren
+		std::vector<Buffer *> glist = child->getChildren();
+		for (vector<Buffer *>::const_iterator git = glist.begin();
+		     git != glist.end(); ++git)
+			clist.push_back(*git);
+	}
+	return clist;
+}
+
+
 template<typename M>
 typename M::iterator greatest_below(M & m, typename M::key_type const & x)
 {
