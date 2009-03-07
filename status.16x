@@ -24,26 +24,26 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
-- New German and Spanish translation of the specific manual "How to write
+- New German and Spanish translations of the specific manual "How to write
   Braille with LyX".
 
-- New German and Spanish translation of the specific manual "Writing linguistic
-  papers with LyX".
+- New German and Spanish translations of the specific manual "Writing
+  linguistic papers with LyX".
   
-- New Indonesian and Ukrainian translation of the Splash document.
+- New Indonesian and Ukrainian translations of the Splash document.
 
 - Update localization of the user interface for Czech, French, German,
   Italian, Norwegian, Polish, Spanish, Turkish, and Ukrainian.
 
-- Updated English and Spanish Customization manual.
+- Updated English and Spanish Customization manuals.
 
-- Updated English and Spanish LyX Tutorial.
+- Updated English and Spanish LyX Tutorials.
 
 - Updated English, French, German, and Spanish Embedded Objects, Math,
   XY-pic and Tutorial manuals.
 
 - Updated English, French, German, Japanese, and Spanish User's guide
-  manual.
+  manuals.
 
 - Updated English specific manual "How to write Braille with LyX".
 
@@ -166,6 +166,9 @@ What's new
 
 - Fix a crash when pasting a branch in a child document. This crash could
   destroy the emergency backup (bug 5813).
+
+- Fix a bug where changes in child documents were dropped or saved without
+  asking when closing LyX (bug 5833).
 
 - Fix a crash when no file is open and the creation of a new document
   fails.
