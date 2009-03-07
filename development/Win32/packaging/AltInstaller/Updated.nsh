@@ -6,6 +6,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\python26.dll"
  File "${PRODUCT_SOURCEDIR}\bin\python.exe"
+ File "${PRODUCT_SOURCEDIR}\bin\QtCore4.dll"
+ File "${PRODUCT_SOURCEDIR}\bin\QtGui4.dll"
  File /r "${PRODUCT_SOURCEDIR}\bin\DLLs"
  SetOutPath "$INSTDIR\bin\Lib"
  File "${PRODUCT_SOURCEDIR}\bin\Lib\optparse.py"
