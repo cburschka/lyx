@@ -221,12 +221,6 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 
 	InsetIterator const i_end = inset_iterator_end(in);
 	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
-		// Insets store buffer references so need updating.
-		// FIXME This code can probably be deleted. The insets will get copied
-		// when they are pasted, at which point their buffer_ members will get 
-		// set back to zero.
-		it->setBuffer(const_cast<Buffer &>(buffer));
-
 		switch (it->lyxCode()) {
  
 		case LABEL_CODE: {

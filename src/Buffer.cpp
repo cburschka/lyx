@@ -2763,7 +2763,6 @@ void Buffer::updateLabels(bool childonly) const
 
 	// update all caches
 	clearReferenceCache();
-	inset().setBuffer(const_cast<Buffer &>(*this));
 	updateMacros();
 
 	Buffer & cbuf = const_cast<Buffer &>(*this);
