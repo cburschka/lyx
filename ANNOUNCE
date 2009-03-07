@@ -86,3 +86,310 @@ What's new in version 1.6.2?
 ** Updates:
 ***********
 
+* DOCUMENTATION AND LOCALIZATION
+
+- New German and Spanish translations of the specific manual "How to write
+  Braille with LyX".
+
+- New German and Spanish translations of the specific manual "Writing
+  linguistic papers with LyX".
+  
+- New Indonesian and Ukrainian translations of the Splash document.
+
+- Update localization of the user interface for Czech, French, German,
+  Italian, Norwegian, Polish, Spanish, Turkish, and Ukrainian.
+
+- Updated English and Spanish Customization manuals.
+
+- Updated English and Spanish LyX Tutorials.
+
+- Updated English, French, German, and Spanish Embedded Objects, Math,
+  XY-pic and Tutorial manuals.
+
+- Updated English, French, German, Japanese, and Spanish User's guide
+  manuals.
+
+- Updated English specific manual "How to write Braille with LyX".
+
+- Updated English specific manual "Writing linguistic papers with LyX".
+
+- Updated German specific multicolumn manual.
+
+- Updated Extended and LyX functions manual.
+
+- Add a check for the japanese babel option in the LaTeX configuration
+  manual (bug 5677).
+
+
+* DOCUMENT INPUT/OUTPUT
+
+- New external material template for Dia.
+
+- New layout file for submissions to ACM SIGGRAPH conferences and
+  publications.
+
+- New layout file to typeset recipes.
+
+- The menu separator special symbol is now direction aware, i.e., it
+  points to the left in RTL-text (LaTeX output only) (bug 3560).
+
+
+* USER INTERFACE
+
+- Support for customized horizontal space in math/formulas (bug 2558).
+
+- Improved the display of BibTeX information in the citation dialog.
+  LaTeX constructs such as: \"u, should now be displayed as unicode,
+  and we should now see "(Doe, 1998)" instead of "(John Doe, 1998)"
+  even when the name in the BibTeX file is "John Doe" rather than 
+  "Doe, John".
+
+- Added LFUN_VC_COMMAND to support customizable user commands
+  for version control.
+  
+- Improved the user interface of the graphics group feature.
+
+- Added "Copy as Reference" to the context menu of labels to
+  ease the insertion of references.
+
+
+** Bug fixes:
+*************
+
+* DOCUMENT INPUT/OUTPUT
+
+- Fix a crash when reading a document containing specific numbered
+  equations produced with tex2lyx (bug 5688).
+
+- Fix a crash when reading files created by tex2lyx in the presence of an
+  empty child document (bug 4859).
+
+- Fix an assertion when an inset is hidden at the right of the edit
+  window, for example in Description or Right Address layout (bug
+  5666 and 5068).
+
+- Fix the conversion of documents from previous LyX versions that have
+  index insets following an index list inset (bug 5713).
+  Affected files that have already been mis-converted can be repaired by
+  manually setting back the file format to 288 in a text editor before 
+  re-opening the document with LyX 1.6.x.
+
+- Fix the LaTeX export of subfigures via the command line (bug 5562).
+
+- Fix the LaTeX import of preamble code (bug 5788).
+
+- Fix the reversion of floating wrap floats to LyX 1.5.x (bug 5618).
+
+- Make the PDF output of change tracking markup more robust by using the
+  ulem package for struck out text instead of the package soul
+  (fixes bug 5480, 5647 and the remainders of bug 5091).
+
+- Fix hanging module.
+
+- Pass graphics driver to the geometry package (bug 5613).
+
+- Fix LaTeX error with custom margins and the revtex4 class (bug 3838).
+
+- siamltex class: do not load amsthm package, since the SIAM class 
+  provides its own theorem-like environments.
+
+- Fix LaTeX export when using unicode symbols in math only in child
+  documents (bug 5665).
+  
+- Fix bug when coloring section headings in RevTeX4 documents (bug 4625).
+
+- Fix the output of telephone number and location in letters (bug 5684).
+
+- Fix a LaTeX export error that prevents the inclusion of two program
+  listings that differ only by file extension (bug 5681).
+
+- Fix hyphenation and punctuation rules for Mexican Spanish (bug 4736).
+
+- For CJK documents using utf8 encoding, load the CJKutf8 package, if
+  available (part of bug 5386).
+
+- Fix bugs when entering hyperlink paths containing special characters
+  (bug 5686).
+  
+- Fix the output of some Greek characters (rest of bug 5239).
+
+- Fix the address numbering in the elsarticle template file.
+
+- Fix update of single-char math macro names after their editing (bug 5541).
+
+
+* USER INTERFACE
+
+- Fix a crash when pasting a branch in a child document. This crash could
+  destroy the emergency backup (bug 5813).
+
+- Fix a bug where changes in child documents were dropped or saved without
+  asking when closing LyX (bug 5833).
+
+- Fix a crash when no file is open and the creation of a new document
+  fails.
+
+- Fix a crash when using a math related function in an ERT inset
+  (bug 5703).
+
+- Fix a crash when copying a matrix column (bug 5731).
+
+- Fix a crash when pressing the Home or End key while the cursor is not in
+  the current view (bug 5736).
+  
+- Fix a crash when quitting with the Tabular dialog opened.
+
+- Fix a crash when deleting columns in a table with multicolumns
+  (bug 5766).
+  
+- Fix a crash when setting a multicolumn row as the caption of a longtable
+  (bug 5753).
+  
+- Fix a crash when using the outliner in a child document, the master of
+  which is not opened (bug 5699).
+  
+- Fix a crash on exit when the child documents are already unloaded.
+
+- Fix a crash when pressing the Update button of the Citation dialog
+  for read-only documents (bug 5785).
+  
+- Fix a crash when removing the label of an included Program Listing. 
+
+- Fix a few crashes that could occur with a 'visual' cursor (bugs 5762 
+  and 5765).
+
+- Fix a crash when an unfinished macro is edited and deleted in math 
+  mode (bug 5744).
+
+- Ignore the master_buffer setting in Document>Settings if the current
+  document is no real child. This fixes a crash when using the outliner
+  in such files (bug 5653).
+  
+- Set a proper file filter in the file dialog for inserting plain text.
+  This fixes a crash when attempting to insert plain text (bug 5671).
+  
+- Fix the synchronisation of insets when they are shown in two different
+  views. This could also have lead to an assertion (bug 4346).
+  
+- Fix an assertion when the status of a command in the context menu of
+  an InsetCollapsable is requested which is not handled by the inset.
+  This might happen when the user modifies the ui or when the right
+  mouse button is dragged (bug 5797).
+  
+- Speed up editing with Outliner open with Qt >= 4.3. This should 
+  especially pay off on the Mac, if the Outliner shows as a drawer
+  (part of bug 4443).
+
+- Speed up editing when the document contains paragraphs with many (>1000)
+  insets (part of bug 4443).
+
+- Fix the output of longtables if they have a caption (bug 5772).
+
+- Fix the longtable dialog: Now only only one attribute can be set per
+  table row (bug 5752).
+
+- Set buffer status to changed and record UNDO after modifying insets such
+  as pagebreaks or citations via context menu.
+  
+- Fix on-screen layout of wrap floats.
+
+- Improve debug output when tracing what actions are triggered.
+
+- A re-declaration of an InsetLayout will now update the existing 
+  declaration rather than completely over-writing it---agreeing with the
+  behavior of our normal Style declarations.
+
+- Reflect external material template using Instant Preview in the dialog
+  for scaling property (bug 5628).
+  
+- Enable "dissolve" item in context menus of collapsable insets (bug 4985).
+
+- Fix unbinding/binding behaviour of shortcuts (bug 4544).
+
+- Fix instant preview of external material for the first insert in the
+  document (bug 5626).
+
+- Allow pasting of text from applications that set the clipboard mimetype
+  to both graphics and text (bug 5560).
+
+- Disable pasting with middle mouse button when the document is read-only
+  (bug 4741).
+
+- Fix setting shortcuts with a Return key in the shortcuts dialog 
+  (bug 5648).
+
+- Fix layout of the View Source window when using Qt 4.2.
+
+- Fix numbering symbol direction in Hebrew and Arabic documents.
+
+- Remove the non-functional unit "mu" from the unit comboboxes (bug 5682).
+
+- Remove the bogus unit "None" from the Box dialog's unit comboboxes.
+
+- Fix enabling of height widgets in the Box dialog.
+
+- Fix a locale debug message.
+
+- Fix reloading bug for RCS revision control introduced in 1.6.1, backport
+  trunk fix for bug 5389 (bug 5697)
+
+- Fix RCS check-in when more windows are opened, wrong file could be saved
+  before commit.
+
+- Fix handling of $$p variable in converters configuration. Introduce $$r
+  variable for the original input file.
+ 
+- Enable view-source widget for read-only documents.
+
+- Fix painting problems after load of instant preview image (bug 5627).
+
+- Limit workaround for Qt bug (bug 4513) that was fixed in Qt 4.3.4 to
+  older Qt versions. The workaround resulted in unwanted display of hidden
+  directories on UNIX.
+  
+- Add the LyX 1.6 file format (*.lyx16) to the file filter of the file
+  open dialog.
+  
+- Fix the navigation to large floats from within the outline pane
+  (bug 5573).
+
+- Enable Keep and Sort buttons in ToC when in readonly mode (bug 5767).
+
+- Fix the incorrect painting so that a table could hide other parts of
+  the document after changing the width of a table column (bug 5604).
+  
+- Enable the cursor to enter an inset at the very beginning of a document
+  with visual cursor movement (bug 5764).
+  
+- Fix the painting of tables when a multicolumn is created of which the
+  the first column was a fixed width column (bug 5750).
+
+- Fix some problems of panel(s) initialization (bug 5082).
+
+- Enable the Add button in the Citation dialog for citations whose key
+  is equal to part of an already selected key (bug 5711).
+
+- The table dialog no longer allows to set the multicolumn property of
+  longtable caption rows (bug 5573).
+
+- It is no longer possible to accidentally insert a caption to a table
+  that is not a longtable (part of bug 5777).
+
+- It is now possible to include spaces in the name of a branch (bug 5806).
+
+
+* DOCUMENTATION AND LOCALIZATION
+
+- Fix compilation of the modernCV example file.
+
+- Localize the release date information in Help>About LyX.
+
+
+* BUILD/INSTALLATION
+
+- lyx.spec: remove "Icon" tag that triggered a build error (bug 5795); 
+  general update.
+
+- Fix compilation on OpenBSD (bug 5650).
+
+- Fix make check.
