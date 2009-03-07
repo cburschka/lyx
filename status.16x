@@ -164,6 +164,9 @@ What's new
 
 * USER INTERFACE
 
+- Fix a crash when pasting a branch in a child document. This crash could
+  destroy the emergency backup (bug 5813).
+
 - Fix a crash when no file is open and the creation of a new document
   fails.
 
