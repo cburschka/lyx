@@ -290,7 +290,7 @@ Buffer::~Buffer()
 		Buffer * child = const_cast<Buffer *>(it->first);
 		// The child buffer might have been closed already.
 		if (theBufferList().isLoaded(child))
-			theBufferList().releaseChild(this, child);	
+			theBufferList().releaseChild(this, child);
 	}
 
 	// clear references to children in macro tables
@@ -1716,6 +1716,25 @@ Buffer const * Buffer::masterBuffer() const
 bool Buffer::isChild(Buffer * child) const
 {
 	return d->children_positions.find(child) != d->children_positions.end();
+}
+
+
+std::vector<Buffer *> Buffer::getChildren() const
+{
+	std::vector<Buffer *> clist;
+	// loop over children
+	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
+	Impl::BufferPositionMap::iterator end = d->children_positions.end();
+	for (; it != end; ++it) {
+		Buffer * child = const_cast<Buffer *>(it->first);
+		clist.push_back(child);
+		// there might be grandchildren
+		std::vector<Buffer *> glist = child->getChildren();
+		for (vector<Buffer *>::const_iterator git = glist.begin();
+		     git != glist.end(); ++git)
+			clist.push_back(*git);
+	}
+	return clist;
 }
 
 
