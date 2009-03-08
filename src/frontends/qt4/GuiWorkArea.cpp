@@ -1320,7 +1320,7 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 	QObject::connect(this, SIGNAL(currentChanged(int)),
 		this, SLOT(on_currentTabChanged(int)));
 
-	QToolButton * closeBufferButton = new QToolButton(this);
+	closeBufferButton = new QToolButton(this);
 	closeBufferButton->setPalette(pal);
 	// FIXME: rename the icon to closebuffer.png
 	closeBufferButton->setIcon(QIcon(":/images/closetab.png"));
@@ -1365,6 +1365,7 @@ void TabWorkArea::showBar(bool show)
 {
 	tabBar()->setEnabled(show);
 	tabBar()->setVisible(show);
+	closeBufferButton->setVisible(show);	
 }
 
 

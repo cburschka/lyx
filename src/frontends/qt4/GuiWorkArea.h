@@ -35,6 +35,7 @@ class QDropEvent;
 class QKeyEvent;
 class QWheelEvent;
 class QPaintEvent;
+class QToolButton;
 class QWidget;
 
 #ifdef CursorShape
@@ -328,7 +329,10 @@ private Q_SLOTS:
 	void moveTab(int fromIndex, int toIndex);
 
 private:
+	///
 	int clicked_tab_;
+	///
+	QToolButton * closeBufferButton;
 }; // TabWorkArea
 
 
