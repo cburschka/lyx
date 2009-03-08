@@ -832,7 +832,7 @@ void BufferView::showCursor(DocIterator const & dit)
 		if (ypos - row_dim.ascent() < 0)
 			scrolled = scrollUp(- ypos + row_dim.ascent());
 		else if (ypos + row_dim.descent() > height_)
-			scrolled = scrollDown(ypos - defaultRowHeight());
+			scrolled = scrollDown(ypos - height_ + defaultRowHeight() ); 
 
 		// else, nothing to do, the cursor is already visible so we just return.
 		if (scrolled != 0) {
