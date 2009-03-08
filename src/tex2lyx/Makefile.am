@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = $(TEST_FILES) pch.h
+EXTRA_DIST = tex2lyx.1 $(TEST_FILES) pch.h
 
 #noinst_LTLIBRARIES = libtexparser.la
 #
