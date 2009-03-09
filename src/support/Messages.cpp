@@ -133,11 +133,13 @@ docstring const Messages::get(string const & m) const
 
 	// The string was not found, use gettext to generate it
 	static string oldLC_ALL;
+	static string oldLANGUAGE;
 	if (!lang_.empty()) {
 		oldLC_ALL = getEnv("LC_ALL");
 		// This GNU extension overrides any language locale
 		// wrt gettext.
 		LYXERR(Debug::LOCALE, "Setting LANGUAGE to " << lang_);
+		oldLANGUAGE = getEnv("LANGUAGE");
 		if (!setEnv("LANGUAGE", lang_))
 			LYXERR(Debug::LOCALE, "\t... failed!");
 		// However, setting LANGUAGE does nothing when the
@@ -173,9 +175,10 @@ docstring const Messages::get(string const & m) const
 	// Reset environment variables as they were.
 	if (!lang_.empty()) {
 		// Reset everything as it was.
-		LYXERR(Debug::LOCALE, "restoring LANGUAGE from " << getEnv("LANGUAGE")
-			<< " to " << main_lang_);
-		if (!setEnv("LANGUAGE", main_lang_))
+		LYXERR(Debug::LOCALE, "restoring LANGUAGE from " 
+		       << getEnv("LANGUAGE")
+		       << " to " << oldLANGUAGE);
+		if (!setEnv("LANGUAGE", oldLANGUAGE))
 			LYXERR(Debug::LOCALE, "\t... failed!");
 		LYXERR(Debug::LOCALE, "restoring LC_ALL from " << getEnv("LC_ALL")
 			<< " to " << oldLC_ALL);
