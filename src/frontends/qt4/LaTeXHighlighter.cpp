@@ -89,7 +89,7 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 		if (startIndex == -1)
 			break;
 	}
-	LASSERT(startIndex >= 0, return);
+	LASSERT(startIndex == -1, return);
 
 	// \whatever
 	static const QRegExp exprKeyword("\\\\[A-Za-z]+");
@@ -101,7 +101,7 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 		if (index == -1)
 			break;
 	}
-	LASSERT(index >= 0, return);
+	LASSERT(index == -1, return);
 
 	// %comment
 	// Treat a line as a comment starting at a percent sign
@@ -121,7 +121,7 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 		if (index == -1)
 			break;
 	}
-	LASSERT(index >= 0, return);
+	LASSERT(index == -1, return);
 
 	// <LyX Warning: ...>
 	QString lyxwarn = qt_("LyX Warning: ");
@@ -134,7 +134,7 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 		if (index == -1)
 			break;
 	}
-	LASSERT(index >= 0, return);
+	LASSERT(index == -1, return);
 }
 
 } // namespace frontend
