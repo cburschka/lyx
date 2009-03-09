@@ -260,7 +260,7 @@ protected:
 		else if (encoding_ == "EUC-JP")
 			return 3;
 		else if (encoding_ == "ISO-2022-JP")
-			return 5;
+			return 8;
 		else if (encoding_ == "BIG5" ||
 			 encoding_ == "EUC-KR" ||
 			 encoding_ == "EUC-CN" ||
