@@ -68,27 +68,27 @@ void LogHighlighter::highlightBlock(QString const & text)
 {
 	// Info
 	QRegExp exprInfo("^(Document Class:|LaTeX Font Info:|File:|Package:|Language:|Underfull|Overfull|\\(|\\\\).*$");
-	int index = text.indexOf(exprInfo);
+	int index = exprInfo.indexIn(text);
 	while (index >= 0) {
 		int length = exprInfo.matchedLength();
 		setFormat(index, length, infoFormat);
-		index = text.indexOf(exprInfo, index + length);
+		index = exprInfo.indexIn(text, index + length);
 	}
 	// LaTeX Warning:
 	QRegExp exprWarning("^LaTeX Warning.*$");
-	index = text.indexOf(exprWarning);
+	index = exprWarning.indexIn(text);
 	while (index >= 0) {
 		int length = exprWarning.matchedLength();
 		setFormat(index, length, warningFormat);
-		index = text.indexOf(exprWarning, index + length);
+		index = exprWarning.indexIn(text, index + length);
 	}
 	// ! error
 	QRegExp exprError("^!.*$");
-	index = text.indexOf(exprError);
+	index = exprError.indexIn(text);
 	while (index >= 0) {
 		int length = exprError.matchedLength();
 		setFormat(index, length, errorFormat);
-		index = text.indexOf(exprError, index + length);
+		index = exprError.indexIn(text, index + length);
 	}
 }
 

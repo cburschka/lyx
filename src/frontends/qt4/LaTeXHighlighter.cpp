@@ -35,11 +35,11 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 {
 	// $ $
 	static const QRegExp exprMath("\\$[^\\$]*\\$");
-	int index = text.indexOf(exprMath);
+	int index = exprMath.indexIn(text);
 	while (index >= 0) {
 		int length = exprMath.matchedLength();
 		setFormat(index, length, mathFormat);
-		index = text.indexOf(exprMath, index + length);
+		index = exprMath.indexIn(text, index + length);
 	}
 	// [ ]
 	static const QRegExp exprStartDispMath("(\\\\\\[|"
@@ -67,9 +67,9 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 	// start search from 0 (for end disp math)
 	// otherwise, start search from 'begin disp math'
 	if (previousBlockState() != 1)
-		startIndex = text.indexOf(exprStartDispMath);
+		startIndex = exprStartDispMath.indexIn(text);
 	while (startIndex >= 0) {
-		int endIndex = text.indexOf(exprEndDispMath, startIndex);
+		int endIndex = exprEndDispMath.indexIn(text, startIndex);
 		int length;
 		if (endIndex == -1) {
 			setCurrentBlockState(1);
@@ -78,15 +78,15 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 			length = endIndex - startIndex + exprEndDispMath.matchedLength();
 		}
 		setFormat(startIndex, length, mathFormat);
-		startIndex = text.indexOf(exprStartDispMath, startIndex + length);
+		startIndex = exprStartDispMath.indexIn(text, startIndex + length);
 	}
 	// \whatever
 	static const QRegExp exprKeyword("\\\\[A-Za-z]+");
-	index = text.indexOf(exprKeyword);
+	index = exprKeyword.indexIn(text);
 	while (index >= 0) {
 		int length = exprKeyword.matchedLength();
 		setFormat(index, length, keywordFormat);
-		index = text.indexOf(exprKeyword, index + length);
+		index = exprKeyword.indexIn(text, index + length);
 	}
 	// %comment
 	// Treat a line as a comment starting at a percent sign
@@ -95,23 +95,23 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 	// ** an even number of backslashes
 	// ** any character other than a backslash
 	QRegExp exprComment("(?:^|[^\\\\])(?:\\\\\\\\)*(%).*$"); 
-	text.indexOf(exprComment);
+	exprComment.indexIn(text);
 	index = exprComment.pos(1);
 	while (index >= 0) {
 		int const length = exprComment.matchedLength() 
 				 - (index - exprComment.pos(0));
 		setFormat(index, length, commentFormat);
-		text.indexOf(exprComment, index + length);
+		exprComment.indexIn(text, index + length);
 		index = exprComment.pos(1);
 	}
 	// <LyX Warning: ...>
 	QString lyxwarn = qt_("LyX Warning: ");
 	QRegExp exprWarning("<" + lyxwarn + "[^<]*>");
-	index = text.indexOf(exprWarning);
+	index = exprWarning.indexIn(text);
 	while (index >= 0) {
 		int length = exprWarning.matchedLength();
 		setFormat(index, length, warningFormat);
-		index = text.indexOf(exprWarning, index + length);
+		index = exprWarning.indexIn(text, index + length);
 	}
 }
 
