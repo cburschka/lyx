@@ -6,12 +6,9 @@ man_MANS = lyxclient.1
 
 bin_PROGRAMS = lyxclient
 
-EXTRA_DIST = lyxclient.man
+EXTRA_DIST = lyxclient.1in
 
 AM_CPPFLAGS += -I$(srcdir)/.. $(BOOST_INCLUDES)
-
-lyxclient.1:
-	cp -p $(srcdir)/lyxclient.man lyxclient.1
 
 lyxclient_LDADD = \
 	$(top_builddir)/src/support/liblyxsupport.a \

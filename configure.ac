@@ -469,6 +469,7 @@ AC_CONFIG_FILES([Makefile \
       sourcedoc/Doxyfile \
       sourcedoc/Makefile \
       src/client/Makefile \
+      src/client/lyxclient.1:src/client/lyxclient.1in \
       src/Makefile \
       src/tex2lyx/Makefile \
       src/support/Makefile \
