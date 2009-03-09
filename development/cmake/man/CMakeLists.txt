@@ -8,6 +8,7 @@
 project(man)
 
 SET(_manuals)
+set(program_suffix ${PROGRAM_SUFFIX})
 macro(add_manual _mansrc)
   get_filename_component(_mandest ${_mansrc} NAME_WE)
   SET(_created_manual "${CMAKE_CURRENT_BINARY_DIR}/${_mandest}${PROGRAM_SUFFIX}.1")
