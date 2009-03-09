@@ -43,7 +43,7 @@
 #include "graphics/GraphicsImage.h"
 #include "graphics/GraphicsLoader.h"
 
-#include "support/debug.h"
+  #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/FileName.h"
 
