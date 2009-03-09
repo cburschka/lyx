@@ -202,11 +202,9 @@ static string const textcyr_def =
 	"\\AtBeginDocument{\\DeclareFontEncoding{T2A}{}{}}\n";
 
 static string const lyxmathsym_def =
-	"\\DeclareRobustCommand{\\lyxmathsym}[1]{\\ifmmode\\begingroup\\def\\b@ld{bold}\n"
-	"  \\def\\rmorbf##1{\\ifx\\math@version\\b@ld\\textbf{##1}\\else\\textrm{##1}\\fi}\n"
-	"  \\mathchoice{\\hbox{\\rmorbf{#1}}}{\\hbox{\\rmorbf{#1}}}\n"
-	"  {\\hbox{\\smaller[2]\\rmorbf{#1}}}{\\hbox{\\smaller[3]\\rmorbf{#1}}}\n"
-	"  \\endgroup\\else#1\\fi}\n";
+	"\\newcommand{\\lyxmathsym}{\\@ifstar{\\lyxm@thsym\\textit}{\\lyxm@thsym\\textrm}}\n"
+	"\\newcommand{\\lyxm@thsym}[2]{\\ifmmode\\begingroup\\def\\b@ld{bold}\n"
+	"  #1{\\ifx\\math@version\\b@ld\\bfseries\\fi#2}\\endgroup\\else#2\\fi}\n";
 
 static string const papersizedvi_def =
 	"\\special{papersize=\\the\\paperwidth,\\the\\paperheight}\n";
@@ -514,7 +512,6 @@ char const * simplefeatures[] = {
 	// listings is handled in BufferParams.cpp
 	"bm",
 	"pdfpages",
-	"relsize",
 	"amscd",
 	"slashed"
 };
@@ -586,9 +583,12 @@ string const LaTeXFeatures::getPackages() const
 	        && params_.use_esint == BufferParams::package_off
 	        && params_.use_amsmath != BufferParams::package_off)) {
 		packages << "\\usepackage{amsmath}\n";
-	} else if (mustProvide("amsbsy")) {
-		// amsbsy is already provided by amsmath
-		packages << "\\usepackage{amsbsy}\n";
+	} else {
+		// amsbsy and amstext are already provided by amsmath
+		if (mustProvide("amsbsy"))
+			packages << "\\usepackage{amsbsy}\n";
+		if (mustProvide("amstext"))
+			packages << "\\usepackage{amstext}\n";
 	}
 	
 	// wasysym is a simple feature, but it must be after amsmath if both

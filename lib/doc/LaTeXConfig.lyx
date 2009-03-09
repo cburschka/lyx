@@ -3537,14 +3537,14 @@ longtable
 \end_layout
 
 \begin_layout Subsection
-relsize
+amstext
 \end_layout
 
 \begin_layout Description
 Found: 
 \begin_inset Info
 type  "package"
-arg   "relsize"
+arg   "amstext"
 \end_inset
 
 
@@ -3553,13 +3553,13 @@ arg   "relsize"
 \begin_layout Description
 CTAN: 
 \family typewriter
-macros/latex/contrib/misc/
+macros/latex/required/amslatex/math/
 \end_layout
 
 \begin_layout Description
 Notes: The package 
 \family sans
-relsize
+amstext
 \family default
  is needed by LyX to correctly size unicode symbols used as super or subscripts
  in math.

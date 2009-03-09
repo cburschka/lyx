@@ -1639,6 +1639,9 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		else if (t.cs() == "lyxmathsym") {
 			skipSpaces();
+			if (nextToken().character() == '*')
+				getToken();
+			skipSpaces();
 			if (getToken().cat() != catBegin) {
 				error("'{' expected in \\" + t.cs());
 				return success_;
@@ -1659,17 +1662,18 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				return success_;
 			}
 			docstring rem;
-			cmd = Encodings::fromLaTeXCommand(cmd, rem);
-			for (size_t i = 0; i < cmd.size(); ++i)
-				cell->push_back(MathAtom(new InsetMathChar(cmd[i])));
-			if (rem.size()) {
-				MathAtom at = createInsetMath(t.cs());
-				cell->push_back(at);
-				MathData ar;
-				if (!mathed_parse_cell(ar, '{' + rem + '}', mode_))
-					success_ = false;;
-				cell->append(ar);
-			}
+			do {
+				cmd = Encodings::fromLaTeXCommand(cmd, rem);
+				for (size_t i = 0; i < cmd.size(); ++i)
+					cell->push_back(MathAtom(new InsetMathChar(cmd[i])));
+				if (rem.size()) {
+					char_type c = rem[0];
+					cell->push_back(MathAtom(new InsetMathChar(c)));
+					cmd = rem.substr(1);
+					rem.clear();
+				} else
+					cmd.clear();
+			} while (cmd.size());
 		}
 
 		else if (t.cs().size()) {

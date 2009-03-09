@@ -190,7 +190,7 @@ public:
 	/**
 	 * Do we have to display in italics this character when in mathmode?
 	 * This is true if the "mathalpha" flag is set. We use this for
-	 * accented characters that are output as math commands.
+	 * letters and accented characters that are output as math commands.
 	 */
 	static bool isMathAlpha(char_type c);
 	/**

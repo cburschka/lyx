@@ -114,6 +114,9 @@ void InsetMathString::write(WriteStream & os) const
 	// We may already be inside an \ensuremath command.
 	bool in_forced_mode = os.pendingBrace();
 
+	// Track italic shape inside \lyxmathsym
+	bool mathalpha = false;
+
 	// We will take care of matching braces.
 	os.pendingBrace(false);
 
@@ -147,10 +150,22 @@ void InsetMathString::write(WriteStream & os) const
 						os << '}';
 						in_forced_mode = false;
 					} else {
-						os << "\\lyxmathsym{";
+						mathalpha = Encodings::isMathAlpha(c);
+						if (mathalpha)
+							os << "\\lyxmathsym*{";
+						else
+							os << "\\lyxmathsym{";
 						in_forced_mode = true;
 					}
 					os.textMode(true);
+			} else if (in_forced_mode && mathalpha != Encodings::isMathAlpha(c)) {
+				// we are already inside \lyxmathsym but
+				// have to change the output shape
+				mathalpha = !mathalpha;
+				if (mathalpha)
+					os << "}\\lyxmathsym*{";
+				else
+					os << "}\\lyxmathsym{";
 			}
 			os << command;
 			// We may need a space if the command contains a macro
