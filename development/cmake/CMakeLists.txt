@@ -81,7 +81,7 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     # don't use the default "/usr/local"
     # but respect the user-choice on the command-line
     SET(CMAKE_INSTALL_PREFIX
-      "/usr/local/share/lyx${LYX_INSTALL_SUFFIX}" CACHE PATH "LyX install prefix" FORCE)
+      "/usr/local/lyx${LYX_INSTALL_SUFFIX}" CACHE PATH "LyX install prefix" FORCE)
   endif()
   if(WIN32)
     SET(CMAKE_INSTALL_PREFIX
