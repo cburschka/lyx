@@ -271,7 +271,7 @@ src_client_files = Split('''
 
 src_client_extra_files = Split('''
     Makefile.am
-    lyxclient.man
+    lyxclient.1in
     pch.h
 ''')
 
