@@ -3148,7 +3148,7 @@ void LyXAction::init()
  */
 		{ LFUN_BRANCH_ACTIVATE, "branch-activate", Argument, Buffer },
 /*!
- * \var lyx::FuncCode lyx::LFUN_BRANCH_ACTIVATE
+ * \var lyx::FuncCode lyx::LFUN_BRANCH_DEACTIVATE
  * \li Action: De-activate the branch
  * \li Syntax: branch-deactivate <BRANCH>
  * \li Params: <BRANCH>: The branch to deactivate
