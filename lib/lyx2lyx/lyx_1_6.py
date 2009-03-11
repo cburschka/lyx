@@ -1078,9 +1078,9 @@ def convert_latexcommand_index(document):
         if document.body[i + 1] != "LatexCommand index": # Might also be index_print
             i += 1
             continue
-        j = find_end_of_inset(document.body, i + 2)
+        j = find_end_of_inset(document.body, i + 1)
         if j == -1:
-            document.warning("Unable to find end of index inset at line " + i + "!")
+            document.warning("Unable to find end of index inset at line " + str(i) + "!")
             i += 2
             continue
         m = r1.match(document.body[i + 2])
