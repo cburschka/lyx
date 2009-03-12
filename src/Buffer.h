@@ -476,6 +476,11 @@ public:
 	void setInsetLabel(docstring const & label, InsetLabel const * il);
 	InsetLabel const * insetLabel(docstring const & label) const;
 
+	/// sets the buffer_ member for every inset in this buffer.
+	// FIXME This really shouldn't be needed, but at the moment it's not
+	// clear how to do it just for the individual pieces we need.
+	void setBuffersForInsets() const;
+	///
 	enum UpdateScope {
 		UpdateMaster,
 		UpdateChildOnly

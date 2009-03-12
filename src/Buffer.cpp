@@ -2729,6 +2729,12 @@ void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
 }
 
 
+void Buffer::setBuffersForInsets() const
+{
+	inset().setBuffer(const_cast<Buffer &>(*this)); 
+}
+
+
 void Buffer::updateLabels(UpdateScope scope) const
 {
 	// Use the master text class also for child documents

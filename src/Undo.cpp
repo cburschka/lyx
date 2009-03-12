@@ -427,6 +427,7 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 		doTextUndoOrRedo(cur, stack, otherstack);
 
 	// Adapt the new material to current buffer.
+	buffer_.setBuffersForInsets(); // FIXME This shouldn't be here.
 	buffer_.updateLabels();
 	return true;
 }
