@@ -44,7 +44,7 @@ public:
 	/**
 	 *  If no file conversion is needed, then tryDisplayFormat() calls
 	 *  loadImage() directly.
-	 * \return true if a conversion is necessary.
+	 * \return true if a conversion is necessary and no error occurred. 
 	 */
 	bool tryDisplayFormat(FileName & filename, string & from);
 
@@ -143,9 +143,8 @@ bool CacheItem::tryDisplayFormat() const
 {
 	if (pimpl_->status_ != WaitingToLoad)
 		pimpl_->reset();
-	FileName filename;
-	string from;
-	bool const success = pimpl_->tryDisplayFormat(filename, from);
+	bool const conversion_needed = pimpl_->tryDisplayFormat(FileName(), string());
+	bool const success = status() == Loaded && !conversion_needed;
 	if (!success)
 		pimpl_->reset();
 	return success;
@@ -353,7 +352,7 @@ bool CacheItem::Impl::tryDisplayFormat(FileName & filename, string & from)
 			status_ = ErrorNoFile;
 			LYXERR(Debug::GRAPHICS, "\tThe file is not readable");
 		}
-		return true;
+		return false;
 	}
 
 	zipped_ = filename_.isZippedFile();
@@ -363,7 +362,7 @@ bool CacheItem::Impl::tryDisplayFormat(FileName & filename, string & from)
 		if (unzipped_filename_.empty()) {
 			status_ = ErrorConverting;
 			LYXERR(Debug::GRAPHICS, "\tCould not create temporary file.");
-			return true;
+			return false;
 		}
 		filename = unzipFile(filename_, unzipped_filename_.toFilesystemEncoding());
 	} else {
@@ -388,16 +387,16 @@ bool CacheItem::Impl::tryDisplayFormat(FileName & filename, string & from)
 		LYXERR(Debug::GRAPHICS, "\tNo conversion needed (from == to)!");
 		file_to_load_ = filename;
 		status_ = loadImage() ? Loaded : ErrorLoading;
-		return true;
+		return false;
 	}
 
 	if (ConverterCache::get().inCache(filename, to_)) {
 		LYXERR(Debug::GRAPHICS, "\tNo conversion needed (file in file cache)!");
 		file_to_load_ = ConverterCache::get().cacheName(filename, to_);
 		status_ = loadImage() ? Loaded : ErrorLoading;
-		return true;
+		return false;
 	}
-	return false;
+	return true;
 }
 
 
@@ -408,7 +407,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 	// Make a local copy in case we unzip it
 	FileName filename;
 	string from;
-	if (tryDisplayFormat(filename, from)) {
+	if (!tryDisplayFormat(filename, from)) {
 		// The image status has changed, tell it to the outside world.
 		statusChanged();
 		return;
