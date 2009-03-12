@@ -143,7 +143,9 @@ bool CacheItem::tryDisplayFormat() const
 {
 	if (pimpl_->status_ != WaitingToLoad)
 		pimpl_->reset();
-	bool const conversion_needed = pimpl_->tryDisplayFormat(FileName(), string());
+	FileName filename;
+	string from;
+	bool const conversion_needed = pimpl_->tryDisplayFormat(filename, from);
 	bool const success = status() == Loaded && !conversion_needed;
 	if (!success)
 		pimpl_->reset();
