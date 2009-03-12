@@ -301,11 +301,11 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	pit = last_paste;
 	pos = pars[last_paste].size();
 
+	// FIXME Should we do it here, or should we let updateLabels() do it?
 	// Set paragraph buffers. It's important to do this right away
 	// before something calls Inset::buffer() and causes a crash.
 	for (pit_type p = startpit; p <= pit; ++p)
 		pars[p].setBuffer(const_cast<Buffer &>(buffer));
-
 
 	// Join (conditionally) last pasted paragraph with next one, i.e.,
 	// the tail of the spliced document paragraph

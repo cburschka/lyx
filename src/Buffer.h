@@ -476,9 +476,12 @@ public:
 	void setInsetLabel(docstring const & label, InsetLabel const * il);
 	InsetLabel const * insetLabel(docstring const & label) const;
 
-	// FIXME: buf should should be const because updateLabels() modifies
-	// the contents of the paragraphs.
-	void updateLabels(bool childonly = false) const;
+	enum UpdateScope {
+		UpdateMaster,
+		UpdateChildOnly
+	};
+	///
+	void updateLabels(UpdateScope = UpdateMaster) const;
 	///
 	void updateLabels(ParIterator & parit) const;
 

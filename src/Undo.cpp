@@ -426,7 +426,7 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 	while (!stack.empty() && stack.top().group_id == gid)
 		doTextUndoOrRedo(cur, stack, otherstack);
 
-	// Addapt the new material to current buffer.
+	// Adapt the new material to current buffer.
 	buffer_.updateLabels();
 	return true;
 }

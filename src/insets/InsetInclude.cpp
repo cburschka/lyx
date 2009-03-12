@@ -952,7 +952,7 @@ void InsetInclude::updateLabels(ParIterator const & it)
 {
 	Buffer const * const childbuffer = getChildBuffer(buffer());
 	if (childbuffer) {
-		childbuffer->updateLabels(true);
+		childbuffer->updateLabels(Buffer::UpdateChildOnly);
 		return;
 	}
 	if (!isListings(params()))

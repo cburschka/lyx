@@ -2729,7 +2729,7 @@ void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
 }
 
 
-void Buffer::updateLabels(bool childonly) const
+void Buffer::updateLabels(UpdateScope scope) const
 {
 	// Use the master text class also for child documents
 	Buffer const * const master = masterBuffer();
@@ -2739,11 +2739,11 @@ void Buffer::updateLabels(bool childonly) const
 	// master comes back we can see which of them were actually seen (i.e.
 	// via an InsetInclude). The remaining ones in the set need still be updated.
 	static std::set<Buffer const *> bufToUpdate;
-	if (!childonly) {
+	if (scope == UpdateMaster) {
 		// If this is a child document start with the master
 		if (master != this) {
 			bufToUpdate.insert(this);
-			master->updateLabels(false);
+			master->updateLabels();
 			// Do this here in case the master has no gui associated with it. Then, 
 			// the TocModel is not updated and TocModel::toc_ is invalid (bug 5699).
 			if (!master->gui_)
@@ -2778,7 +2778,7 @@ void Buffer::updateLabels(bool childonly) const
 		return;
 
 	cbuf.tocBackend().update();
-	if (!childonly)
+	if (scope == UpdateMaster)
 		cbuf.structureChanged();
 }
 
