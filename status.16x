@@ -69,7 +69,6 @@ What's new
 - The menu separator special symbol is now direction aware, i.e., it
   points to the left in RTL-text (LaTeX output only) (bug 3560).
 
-- Fixed import of older files with empty index insets.
 
 * USER INTERFACE
 
@@ -83,7 +82,7 @@ What's new
 
 - Added LFUN_VC_COMMAND to support customizable user commands
   for version control.
-  
+
 - Improved the user interface of the graphics group feature.
 
 - Added "Copy as Reference" to the context menu of labels to
@@ -162,13 +161,15 @@ What's new
 
 - Fix update of single-char math macro names after their editing (bug 5541).
 
+- Fixed import of older files with empty index insets.
+
 
 * USER INTERFACE
 
 - Fix a crash when pasting a branch in a child document. This crash could
   destroy the emergency backup (bug 5813).
 
-- Fix a crash when restoring a resolved branch in a child document via UNDO.
+- Fix a crash when restoring a dissolved branch in a child document via UNDO.
   This crash could destroy the emergency backup.
 
 - Fix a bug where changes in child documents were dropped or saved without
