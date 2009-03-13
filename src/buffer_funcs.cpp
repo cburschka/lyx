@@ -479,6 +479,8 @@ void updateLabels(Buffer const & buf, ParIterator & parit)
 // the contents of the paragraphs.
 void updateLabels(Buffer const & buf, bool childonly)
 {
+	// Do this immediately, before something causes a crash.
+	buf.inset().setBuffer(const_cast<Buffer &>(buf));
 	// Use the master text class also for child documents
 	Buffer const * const master = buf.masterBuffer();
 	DocumentClass const & textclass = master->params().documentClass();
@@ -512,7 +514,6 @@ void updateLabels(Buffer const & buf, bool childonly)
 
 	// update all caches
 	buf.clearReferenceCache();
-	buf.inset().setBuffer(const_cast<Buffer &>(buf));
 	buf.updateMacros();
 
 	Buffer & cbuf = const_cast<Buffer &>(buf);
