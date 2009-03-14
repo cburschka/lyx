@@ -267,6 +267,8 @@ What's new in version 1.6.2?
 - Fix a crash when an unfinished macro is edited and deleted in math 
   mode (bug 5744).
 
+- Fix the use of regular expressions to avoid crashes with Qt4.5.
+
 - Ignore the master_buffer setting in Document>Settings if the current
   document is no real child. This fixes a crash when using the outliner
   in such files (bug 5653).
