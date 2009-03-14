@@ -2641,7 +2641,9 @@ bool GuiPreferences::initialiseParams(string const &)
 	update_screen_font_ = false;
 	
 	updateRc(rc_);
-	bc().restore();
+	// Make sure that the bc is in the INITIAL state  
+	if (bc().policy().buttonStatus(ButtonPolicy::RESTORE))  
+		bc().restore();  
 
 	return true;
 }
