@@ -3411,18 +3411,43 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				finish_lfun = LFUN_FINISHED_LEFT;
 		}
 
-		// if we don't have a multicell selection...
-		if (!cur.selIsMultiCell() ||
-		  // ...or we're not doing some LFUN_*_SELECT thing, anyway...
-		    (cmd.action != LFUN_CHAR_FORWARD_SELECT &&
-		     cmd.action != LFUN_CHAR_BACKWARD_SELECT &&
-		     cmd.action != LFUN_CHAR_RIGHT_SELECT &&
-		     cmd.action != LFUN_CHAR_LEFT_SELECT)) {
+		bool const select = cmd.action == LFUN_CHAR_FORWARD_SELECT ||
+		    cmd.action == LFUN_CHAR_BACKWARD_SELECT ||
+		    cmd.action == LFUN_CHAR_RIGHT_SELECT ||
+		    cmd.action == LFUN_CHAR_LEFT_SELECT;
+
+		// If we have a multicell selection or we're 
+		// not doing some LFUN_*_SELECT thing anyway...
+		if (!cur.selIsMultiCell() || !select) {
+			col_type const c = tabular.cellColumn(cur.idx());
+			row_type const r = tabular.cellRow(cur.idx());
+			// Are we trying to select the whole cell and is the whole cell 
+			// not yet selected?
+			bool const select_whole = select && !isCellSelected(cur, r, c) &&
+				((next_cell && cur.pit() == cur.lastpit() 
+				&& cur.pos() == cur.lastpos())
+				|| (!next_cell && cur.pit() == 0 && cur.pos() == 0));
+
 			// ...try to dispatch to the cell's inset.
 			cell(cur.idx())->dispatch(cur, cmd);
-			if (cur.result().dispatched()) 
+
+			bool const empty_cell = cur.lastpos() == 0 && cur.lastpit() == 0;
+			
+			// When we already have a selection we want to select the whole cell
+			// before going to the next cell.
+			if (select_whole && !empty_cell){
+				getText(cur.idx())->selectAll(cur);
+				cur.dispatched();
+				break;
+			}
+
+			// FIXME: When we support the selection of an empty cell, remove 
+			// the !empty_cell from this condition. For now we jump to the next
+			// cell if the current cell is empty.
+			if (cur.result().dispatched() && !empty_cell)
 				break;
 		}
+
 		// move to next/prev cell, as appropriate
 		// note that we will always do this if we're selecting and we have
 		// a multicell selection
