@@ -239,12 +239,18 @@
        <property name="default" >
         <bool>true</bool>
        </property>
+       <property name="autoDefault" >
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="closePB" >
        <property name="text" >
         <string>&amp;Close</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
        </property>
       </widget>
      </item>
