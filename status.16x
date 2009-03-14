@@ -57,6 +57,8 @@ What's new
 
 - Improve the selection of table cells with the keyboard (bug 1802).
 
+- Correct cursor movement in cases where the cursor jumped to a different
+  paragraph while leaving a double space or an empty paragraph (bug 5088).
 
 
 * DOCUMENTATION AND LOCALIZATION

@@ -802,10 +802,18 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 	// delete the LineSeparator.
 	// MISSING
 
-	bool const same_inset = &old.inset() == &cur.inset();
-	bool const same_par = same_inset && old.pit() == cur.pit();
-	bool const same_par_pos = same_par && old.pos() == cur.pos();
+	// Find a common inset and the corresponding depth.
+	size_t depth = 0;
+	for (; depth < cur.depth(); ++depth)
+		if (&old.inset() == &cur[depth].inset())
+			break;
 
+	// Whether a common inset is found and whether the cursor is still in 
+	// the same paragraph (possibly nested).
+	bool same_par = depth < cur.depth() && old.pit() == cur[depth].pit();
+	bool const same_par_pos = depth == cur.depth() - 1 && same_par 
+		&& old.pos() == cur[depth].pos();
+	
 	// If the chars around the old cursor were spaces, delete one of them.
 	if (!same_par_pos) {
 		// Only if the cursor has really moved.
@@ -822,7 +830,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 // automated way in CursorSlice code. (JMarc 26/09/2001)
 			// correct all cursor parts
 			if (same_par) {
-				fixCursorAfterDelete(cur.top(), old.top());
+				fixCursorAfterDelete(cur[depth], old.top());
 				need_anchor_change = true;
 			}
 			return true;
