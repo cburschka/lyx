@@ -944,7 +944,10 @@ bool operator==(FileName const & l, FileName const & r)
 	
 	if (!lhs.d->fi.isSymLink() && !rhs.d->fi.isSymLink()) {
 		// Qt already checks if the filesystem is case sensitive or not.
-		return lhs.d->fi == rhs.d->fi;
+		return lhs.d->fi == rhs.d->fi 
+			// This is needed as in Qt4.5, QFileInfo::operator== compares
+			// the location of the two files and not the files themselves.
+			&& lhs.d->fi.fileName() == rhs.d->fi.fileName();
 	}
 
 	// FIXME: When/if QFileInfo support symlink comparison, remove this code.
@@ -954,7 +957,9 @@ bool operator==(FileName const & l, FileName const & r)
 	QFileInfo fi2(rhs.d->fi);
 	if (fi2.isSymLink())
 		fi2 = QFileInfo(fi2.symLinkTarget());
-	return fi1 == fi2;
+	// This is needed as in Qt4.5, QFileInfo::operator== compares
+	// the location of the two files and not the files themselves.
+	return fi1 == fi2 && fi1.fileName() == fi2.fileName();
 }
 
 

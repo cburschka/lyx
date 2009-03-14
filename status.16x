@@ -213,6 +213,8 @@ What's new
   
 - Fix the use of regular expressions to avoid crashes with Qt4.5.
 
+- Fix an infinite loop when creating multiple unnamed files with Qt4.5.
+
 - Ignore the master_buffer setting in Document>Settings if the current
   document is no real child. This fixes a crash when using the outliner
   in such files (bug 5653).
