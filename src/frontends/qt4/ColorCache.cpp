@@ -28,14 +28,24 @@ void ColorCache::init()
 
 
 /// get the given color
-QColor ColorCache::get(ColorCode color) const
+QColor ColorCache::get(Color color) const
 {
 	if (!initialized_)
 		const_cast<ColorCache *>(this)->init();
-	if (color <= Color_ignore)
-		return lcolors_[color];
+	if (color <= Color_ignore && color.mergeColor == Color_ignore)
+		return lcolors_[color.baseColor];
+	if (color.mergeColor != Color_ignore) {
+		// FIXME: This would ideally be done in the Color class, but
+		// that means that we'd have to use the Qt code in the core.
+		QColor base_color = get(color.baseColor).toRgb();
+		QColor merge_color = get(color.mergeColor).toRgb();
+		return QColor(
+			(base_color.red() + merge_color.red())/2,
+			(base_color.green() + merge_color.green())/2,
+			(base_color.blue() + merge_color.blue())/2);
+	}
 	// used by branches
-	return QColor(lcolor.getX11Name(color).c_str()); 
+	return QColor(lcolor.getX11Name(color.baseColor).c_str()); 
 }
 
 

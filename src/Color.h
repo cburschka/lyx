@@ -29,6 +29,41 @@
 namespace lyx {
 
 /**
+ * \class Color
+ *
+ * A class holding a definition of a certain color.
+ *
+ * A color can be one of the following kinds:
+ *
+ * - a single color, then mergeColor = Color_ignore
+ * - a merged color, i.e. the average of the base and merge colors.
+ */
+
+class Color
+{
+public:
+	///
+	Color(ColorCode base_color = Color_none);
+	
+	/// comparison operators.
+	//@{
+	bool operator==(Color const & color) const;
+	bool operator!=(Color const & color) const;
+	bool operator<(Color const & color) const;
+	bool operator<=(Color const & color) const;
+	//@}
+
+	/// the base color
+	ColorCode baseColor;
+	/// The color that is merged with the base color. Set
+	/// mergeColor to Color_ignore if no merging is wanted.
+	ColorCode mergeColor;
+};
+
+std::ostream & operator<<(std::ostream & os, Color color);
+
+
+/**
  * \class ColorSet
  *
  * A class holding color definitions and associated names for
