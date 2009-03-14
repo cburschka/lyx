@@ -55,6 +55,9 @@ What's new
 
 * USER INTERFACE
 
+- Adjust the color of deletions slightly when using change tracking. It
+  is now easier to distinguish between added and deleted text (bug 5629).
+
 - Fix the loss of clipboard contents on exit (bug 5769).
 
 - Improve the selection of table cells with the keyboard (bug 1802).
