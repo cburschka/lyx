@@ -69,6 +69,9 @@ What's new
 
 - Prevent warning when opening the document settings or preferences
   dialogs (bug 5799).
+
+- Do not close the math delimiters dialog when selecting a delimiter 
+  without "match" being chosen (bug 5789).
  
 
 * DOCUMENTATION AND LOCALIZATION
