@@ -79,6 +79,9 @@ What's new
  
 - Ensure that in various dialogs the OK button is the default when both
   the OK and Cancel buttons are enabled (bug 5695).
+
+- Do not create a new document when cancel is pressed in the "new from 
+  template" dialog (bug 5819).
  
 
 * DOCUMENTATION AND LOCALIZATION
