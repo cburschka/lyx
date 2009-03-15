@@ -172,7 +172,7 @@ void GuiCommandBuffer::complete()
 {
 	string const input = fromqstr(edit_->text());
 	string new_input;
-	vector<string> comp = completions(input, new_input);
+	vector<string> const & comp = completions(input, new_input);
 
 	if (comp.empty()) {
 		if (new_input != input)
@@ -194,15 +194,14 @@ void GuiCommandBuffer::showList(vector<string> const & list,
 	// than the number of actual items...
 	vector<string>::const_iterator cit = list.begin();
 	vector<string>::const_iterator end = list.end();
-	if (!reversed) {
-		for (; cit != end; ++cit)
-			listBox ->addItem(toqstr(*cit));
-	} else {
-		for (--end; end != cit; --end)
-			listBox ->addItem(toqstr(*end));
+	for (; cit != end; ++cit) {
+		if (reversed)
+			listBox->insertItem(0, toqstr(*cit));
+		else
+			listBox->addItem(toqstr(*cit));
 	}
 
-	listBox->resize(listBox ->sizeHint());
+	listBox->resize(listBox->sizeHint());
 
 	int const y = max(0, pos.y() - listBox->height());
 	listBox->move(pos.x(), y);
