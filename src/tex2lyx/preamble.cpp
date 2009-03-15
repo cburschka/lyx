@@ -292,7 +292,7 @@ void handle_package(string const & name, string const & opts,
 		h_font_osf = "true";
 
 	else if (name == "amsmath" || name == "amssymb")
-		h_use_amsmath = "1";
+		h_use_amsmath = "2";
 
 	else if (name == "babel" && !opts.empty()) {
 		// check if more than one option was used - used later for inputenc
