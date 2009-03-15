@@ -1193,6 +1193,7 @@ po_extra_files = Split('''
     he.po
     hu.po
     insert-header.sin
+    id.po
     it.po
     ja.po
     ko.po
