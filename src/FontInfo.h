@@ -125,10 +125,6 @@ public:
 
 private:
 	friend bool operator==(FontInfo const & lhs, FontInfo const & rhs);
-
-	/// The color used for painting
-	Color paint_color_;
-
 	///
 	FontFamily family_;
 	///
@@ -141,6 +137,8 @@ private:
 	ColorCode color_;
 	///
 	ColorCode background_;
+	/// The color used for painting
+	Color paint_color_;
 	///
 	FontState emph_;
 	///
