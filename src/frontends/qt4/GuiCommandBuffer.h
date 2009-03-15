@@ -16,6 +16,7 @@
 
 #include "support/docstring.h"
 
+#include <QPushButton>
 #include <QWidget>
 
 #include <vector>
@@ -42,8 +43,10 @@ public Q_SLOTS:
 	void dispatch();
 	/// tab-complete
 	void complete();
-	/// select-complete
-	void complete_selected(QListWidgetItem *);
+	/// show history
+	void listHistoryUp();
+	/// called when an item in a list is selected
+	void item_selected(QListWidgetItem *);
 	/// up
 	void up();
 	/// down
@@ -67,6 +70,11 @@ private:
 	/// hide the command buffer.
 	void hide() const;
 
+	/// open a listbox and show the contents of the list. When reversed
+	/// is true, the contents of the list is filled bottom-up.
+	void showList(std::vector<std::string> const & list, 
+		QPoint const & pos, bool reversed = false) const;
+
 	/// return the possible completions
 	std::vector<std::string> const completions(std::string const & prefix,
 					      std::string & new_prefix);
@@ -82,6 +90,12 @@ private:
 
 	/// current position in command history
 	std::vector<std::string>::const_iterator history_pos_;
+
+	/// the button up
+	QPushButton * upPB;
+
+	/// the button down
+	QPushButton * downPB;
 };
 
 } // namespace frontend
