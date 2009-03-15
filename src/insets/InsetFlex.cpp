@@ -61,30 +61,6 @@ void InsetFlex::write(ostream & os) const
 }
 
 
-void InsetFlex::read(Lexer & lex)
-{
-	string token;
-	while (lex.isOK()) {
-		lex >> token;
-		if (token == "Flex") {
-			lex.next();
-			name_ = lex.getString();
-		} else if (token == "status") {
-			// This is handled in Collapsable
-			lex.pushToken(token);
-			break;
-		}
-	}
-	InsetCollapsable::read(lex);
-}
-
-
-int InsetFlex::plaintext(odocstream & os, OutputParams const & runparams) const
-{
-	return InsetText::plaintext(os, runparams);
-}
-
-
 int InsetFlex::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	ParagraphList::const_iterator beg = paragraphs().begin();
