@@ -77,6 +77,9 @@ What's new
 - Do not close the math delimiters dialog when selecting a delimiter 
   without "match" being chosen (bug 5789).
  
+- Ensure that in various dialogs the OK button is the default when both
+  the OK and Cancel buttons are enabled (bug 5695).
+ 
 
 * DOCUMENTATION AND LOCALIZATION
 

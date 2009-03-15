@@ -46,6 +46,8 @@ GuiHyperlink::GuiHyperlink(GuiView & lv)
 
 	setFocusProxy(targetED);
 
+	bc().setPolicy(ButtonPolicy::OkCancelReadOnlyPolicy);
+
 	bc().setOK(okPB);
 	bc().setCancel(closePB);
 	bc().addReadOnly(targetED);
