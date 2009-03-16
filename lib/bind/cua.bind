@@ -128,6 +128,8 @@
 \bind "C-Down"			"paragraph-down"
 \bind "C-Home"			"buffer-begin"
 \bind "C-End"			"buffer-end"
+\bind "M-C-Home"		"inset-begin"
+\bind "M-C-End"			"inset-end"
 
 \bind "C-~S-greater"		"label-goto"
 \bind "C-~S-less" 		"bookmark-goto 0"
@@ -151,6 +153,8 @@
 \bind "S-Next"			"screen-down-select"
 \bind "S-C-Home"		"buffer-begin-select"
 \bind "S-C-End"			"buffer-end-select"
+\bind "S-M-C-Home"		"inset-begin-select"
+\bind "S-M-C-End"		"inset-end-select"
 \bind "C-Insert"		"copy"
 \bind "S-Insert"		"paste"
 \bind "S-Delete"		"cut"

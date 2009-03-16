@@ -418,6 +418,12 @@ enum FuncCode
 	LFUN_VC_COMMAND,
 	LFUN_MATH_FONT_STYLE,
 	LFUN_PHANTOM_INSERT,            // uwestoehr, 20090130
+	LFUN_INSET_BEGIN,               // JMarc, 20090316
+	// 325
+	LFUN_INSET_END,                 // JMarc, 20090316
+	LFUN_INSET_BEGIN_SELECT,        // JMarc, 20090316
+	LFUN_INSET_END_SELECT,          // JMarc, 20090316
+
 
 	LFUN_LASTACTION                 // end of the table
 };

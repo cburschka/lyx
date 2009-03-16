@@ -1010,6 +1010,49 @@ void LyXAction::init()
 		{ LFUN_BUFFER_END_SELECT, "buffer-end-select", ReadOnly, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_INSET_BEGIN
+ * \li Action: Move the cursor to the beginning of the current inset 
+               if it is not already there, or at the beginning of the 
+               enclosing inset otherwise
+ * \li Syntax: inset-begin
+ * \li Origin: JMarc, 2009/03/16
+ * \endvar
+ */
+		{ LFUN_INSET_BEGIN, "inset-begin", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_INSET_BEGIN_SELECT
+ * \li Action: Move the cursor to the beginning of the current inset 
+               if it is not already there, or at the beginning of the 
+               enclosing inset otherwise (adding the
+               traversed text to the selection).
+ * \li Syntax: inset-begin-select
+ * \li Origin: JMarc, 2009/03/16
+ * \endvar
+ */
+		{ LFUN_INSET_BEGIN_SELECT, "inset-begin-select", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_INSET_END
+ * \li Action: Move the cursor to the end of the current inset 
+               if it is not already there, or at the end of the 
+               enclosing inset otherwise
+ * \li Syntax: inset-end
+ * \li Origin: JMarc, 2009/03/16
+ * \endvar
+ */
+		{ LFUN_INSET_END, "inset-end", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_INSET_END_SELECT
+ * \li Action: Move the cursor to the end of the current inset 
+               if it is not already there, or at the end of the 
+               enclosing inset otherwise (adding the
+               traversed text to the selection).
+ * \li Syntax: inset-end-select
+ * \li Origin: JMarc, 2009/03/16
+ * \endvar
+ */
+		{ LFUN_INSET_END_SELECT, "inset-end-select", ReadOnly, Edit },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_LINE_BEGIN
  * \li Action: Move the cursor to the begining of the (screen) line.
  * \li Syntax: line-begin
