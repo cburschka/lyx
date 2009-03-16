@@ -1166,7 +1166,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		pos_type pos = cur.pos();
 		BufferParams const & bufparams = bv->buffer().params();
 		Layout const & style = par.layout();
-		if (!style.pass_thru
+		InsetLayout const & ilayout = cur.inset().getLayout(bufparams);
+		if (!style.pass_thru && !ilayout.isPassThru()
 		    && par.getFontSettings(bufparams, pos).language()->lang() != "hebrew") {
 			// this avoids a double undo
 			// FIXME: should not be needed, ideally
