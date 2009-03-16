@@ -88,7 +88,7 @@ Menuset
 #
 	Menu "context-label"
 		Item "Next Cross-Reference|N" "reference-next"
-		Item "Go back to Reference|G" "bookmark-goto 0"
+		Item "Go back|G" "bookmark-goto 0"
 		Separator
 		Item "Copy as Reference|C" "copy-label-as-reference"
 		Separator
@@ -264,7 +264,7 @@ Menuset
 		Item "Paste" "paste"
 		Submenu "Paste Recent|e" "edit_pasterecent"
 		Separator
-		Item "Jump to Saved Bookmark|B" "bookmark-goto 0"
+		Item "Jump Back to Saved Bookmark|B" "bookmark-goto 0"
 		Separator
 		Item "Move Paragraph Up|o" "paragraph-move-up"
 		Item "Move Paragraph Down|v" "paragraph-move-down"

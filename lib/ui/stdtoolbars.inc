@@ -67,6 +67,7 @@ ToolbarSet
 		Item "Copy" "copy"
 		Item "Paste" "paste"
 		Item "Find and replace" "dialog-show findreplace"
+		Item "Navigate back" "bookmark-goto 0"
 		Separator
 		Item "Toggle emphasis" "font-emph"
 		Item "Toggle noun" "font-noun"

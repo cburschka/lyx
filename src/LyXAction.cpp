@@ -2237,7 +2237,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_LABEL_GOTO
  * \li Action: Goto a label.
  * \li Syntax: label-goto [<LABEL>]
- * \li Params: <LABEL>: Requested label. If no label is given and refernce
+ * \li Params: <LABEL>: Requested label. If no label is given and reference
 			is on cursor position, Bookmark 0 is saved and
 			cursor moves to the position of referenced label.
  * \li Origin: Ale, 6 Aug 1997
@@ -2264,10 +2264,15 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_BOOKMARK_GOTO
- * \li Action: Goto a bookmark.
- * \li Notion: Moves the cursor to the numbered bookmark, opening the file
+ * \li Action: Moves the cursor to the numbered bookmark, opening the file
                if necessary. Note that bookmarsk are saved per-session, not
                per file.
+ * \li Notion: Bookmark 0 has a special purpose. It is automatically set \n
+               1. to the paragraph you are currently editing \n
+	       2. to the paragraph from where you are jumping to the last-edited
+	          position (jump-back feature) \n
+	       3. when jumping from crossreference to the requested label by
+	          #LFUN_LABEL_GOTO.
  * \li Syntax: bookmark-goto <NUMBER>
  * \li Params: <NUMBER>: the number of the bookmark to restore.
  * \li Origin: Dekel, 27 January 2001

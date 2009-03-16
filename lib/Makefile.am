@@ -270,6 +270,7 @@ dist_images_DATA = \
 	images/amssymb.png \
 	images/banner.png \
 	images/bookmark-goto.png \
+	images/bookmark-goto_0.png \
 	images/bookmark-save.png \
 	images/box-insert.png \
 	images/break-line.png \

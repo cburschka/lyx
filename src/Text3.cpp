@@ -1362,6 +1362,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		cur.resetAnchor();
 		moveCursor(cur, false);
+		bv->bookmarkEditPosition();
 		break;
 	}
 
