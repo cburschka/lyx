@@ -2161,7 +2161,8 @@ void LyXAction::init()
  * \li Params: <ARG>: <open|close|toggle|assign>. \n
                open/close/toggle are for collapsable insets. close can be currently used
                by #LFUN_NEXT_INSET_TOGGLE. toggle is used when no argument is given.\n
-               assign is for branch inset.
+               assign synchronize the branch-inset with activation status of the branch.
+	       Used for global toggling when changed activation.
  * \li Origin: lasgouttes, 19 Jul 2001
  * \endvar
  */
