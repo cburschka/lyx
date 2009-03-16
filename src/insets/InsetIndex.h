@@ -40,10 +40,6 @@ private:
 	int latex(odocstream &, OutputParams const &) const;
 	/// should paragraph indendation be omitted in any case?
 	bool neverIndent() const { return true; }
-	/// should paragraphs be forced to use the empty layout?
-	virtual bool forcePlainLayout(idx_type = 0) const { return true; }
-	/// should the user be allowed to customize alignment, etc.?
-	virtual bool allowParagraphCustomization(idx_type = 0) const { return false; }
 	///
 	void addToToc(DocIterator const &);
 	///

@@ -60,10 +60,6 @@ private:
 	void validate(LaTeXFeatures &) const {}
 	///
 	bool showInsetDialog(BufferView *) const;
-	///
-	virtual bool forcePlainLayout(idx_type = 0) const { return true; }
-	///
-	virtual bool allowParagraphCustomization(idx_type = 0) const { return false; }
 	/// should paragraph indendation be omitted in any case?
 	bool neverIndent() const { return true; }
 	///

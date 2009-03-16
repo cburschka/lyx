@@ -39,19 +39,14 @@ private:
 	docstring name() const { return from_ascii("OptArg"); }
 	/// return an message upon editing
 	docstring editMessage() const;
-
 	/// Standard LaTeX output -- short-circuited
 	int latex(odocstream &, OutputParams const &) const;
 	/// Standard plain text output -- short-circuited
 	int plaintext(odocstream &, OutputParams const &) const;
 	/// Standard DocBook output -- short-circuited
 	int docbook(odocstream &, OutputParams const &) const;
-	///
-	virtual bool forcePlainLayout(idx_type = 0) const { return true; }
-
 	/// Write out to the .lyx file
 	void write(std::ostream & os) const;
-
 	/// should paragraph indendation be ommitted in any case?
 	bool neverIndent() const { return true; }
 	///

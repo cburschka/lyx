@@ -206,8 +206,8 @@ InsetLayout Index
 	  Size                Small
 	EndFont
 	MultiPar              false
-#	CustomPars            false
-#	ForcePlain            true
+	CustomPars            false
+	ForcePlain            true
 	NeedProtect           true
 End
 
@@ -270,7 +270,7 @@ InsetLayout OptArg
 	  Color               collapsable
 	  Size                Small
 	EndFont
-#	MultiPar              false
+	MultiPar              false
 End
 
 InsetLayout Info
