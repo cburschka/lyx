@@ -51,8 +51,11 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix LaTeX export of an isolated Japanese character when using ISO-2022-JP
-  encoding (bug 5802).
+- Fix LaTeX export of an isolated Japanese character when using
+  ISO-2022-JP encoding (bug 5802).
+  
+- Fix conversion of the lilypond external inset with lilypond >= 2.11.x
+  (bug 5834).
 
 - Fix LaTeX import when the AMS math package is used (bug 5846).
 

@@ -520,7 +520,12 @@ def checkConverterEntries():
         if match:
             version_number = match.groups()[0]
             version = version_number.split('.')
-            if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 6):
+            if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 11):
+                addToRC(r'''\converter lilypond   eps        "lilypond -dbackend=eps --ps $$i"	""
+\converter lilypond   png        "lilypond -dbackend=eps --png $$i"	""''')
+                addToRC(r'\converter lilypond   pdf        "lilypond -dbackend=eps --pdf $$i"	""')
+                print '+  found LilyPond version %s.' % version_number
+            elif int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 6):
                 addToRC(r'''\converter lilypond   eps        "lilypond -b eps --ps $$i"	""
 \converter lilypond   png        "lilypond -b eps --png $$i"	""''')
                 if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 9):
