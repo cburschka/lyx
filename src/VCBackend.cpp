@@ -45,9 +45,13 @@ int VCS::doVCCommandCall(string const & cmd, FileName const & path){
 
 int VCS::doVCCommand(string const & cmd, FileName const & path)
 {
-	owner_->setBusy(true);
+	if (owner_)
+		owner_->setBusy(true);
+
 	int const ret = doVCCommandCall(cmd, path);
-	owner_->setBusy(false);
+
+	if (owner_)
+		owner_->setBusy(false);
 	if (ret)
 		frontend::Alert::error(_("Revision control error."),
 			bformat(_("Some problem occured while running the command:\n"
@@ -415,8 +419,10 @@ bool CVS::toggleReadOnlyEnabled()
 
 SVN::SVN(FileName const & m, FileName const & f)
 {
+	owner_ = 0;
 	master_ = m;
 	file_ = f;
+	locked_mode_ = 0;
 	scanMaster();
 }
 
@@ -449,10 +455,57 @@ FileName const SVN::findFile(FileName const & file)
 
 void SVN::scanMaster()
 {
-	// if we want some locking under svn
-	// we need different infrastructure around
-	locker_ = "Unlocked";
-	vcstatus = UNLOCKED;
+	locker_.clear();
+	vcstatus = NOLOCKING;
+	if (checkLockMode()) {
+		if (isLocked()) {
+			locker_ = "Locked";
+			vcstatus = LOCKED;
+		} else {
+			locker_ = "Unlocked";
+			vcstatus = LOCKED;
+		}
+	}
+}
+
+
+bool SVN::checkLockMode()
+{
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()){
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return N_("Error: Could not generate logfile.");
+	}
+
+	LYXERR(Debug::LYXVC, "Detecting locking mode...");
+	if (doVCCommandCall("svn proplist " + quoteName(file_.onlyFileName())
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
+		    file_.onlyPath()))
+		return false;
+
+	ifstream ifs(tmpf.toFilesystemEncoding().c_str());
+	string line;
+	bool ret = false;
+
+	while (ifs) {
+		getline(ifs, line);
+		LYXERR(Debug::LYXVC, line);
+		if (contains(line, "svn:needs-lock"))
+			ret = true;
+	}
+	LYXERR(Debug::LYXVC, "Locking enabled: " << ret);
+	ifs.close();
+	locked_mode_ = ret;
+	return ret;
+
+}
+
+
+bool SVN::isLocked() const
+{
+	//refresh file info
+	FileName file(file_.absFilename());
+	return !file.isReadOnly();
 }
 
 
@@ -483,6 +536,9 @@ string SVN::checkIn(string const & msg)
 				_("Error when commiting to repository.\n"
 				"You have to manually resolve the problem.\n"
 				"After pressing OK, LyX will reopen the document."));
+	else
+		fileLock(false, tmpf, log);
+
 	tmpf.erase();
 	return "SVN: " + log;
 }
@@ -490,8 +546,12 @@ string SVN::checkIn(string const & msg)
 
 bool SVN::checkInEnabled()
 {
-	return true;
+	if (locked_mode_)
+		return isLocked();
+	else
+		return true;
 }
+
 
 // FIXME Correctly return code should be checked instead of this.
 // This would need another solution than just plain startscript.
@@ -515,6 +575,36 @@ string SVN::scanLogFile(FileName const & f, string & status)
 }
 
 
+void SVN::fileLock(bool lock, FileName const & tmpf, string &status)
+{
+	if (!locked_mode_ || (isLocked() == lock))
+		return;
+
+	string arg = lock ? "lock " : "unlock ";
+	doVCCommand("svn "+ arg + quoteName(onlyFilename(owner_->absFileName()))
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
+		    FileName(owner_->filePath()));
+
+	ifstream ifs(tmpf.toFilesystemEncoding().c_str());
+	string line;
+	while (ifs) {
+		getline(ifs, line);
+		if (!line.empty()) status += line + "; ";
+	}
+	ifs.close();
+
+	if (!isLocked() && lock)
+		frontend::Alert::error(_("Revision control error."),
+			_("Error when acquiring write lock.\n"
+			"Most probably some other user edit the current document now!\n"
+			"Check also the access to the repository."));
+	if (isLocked() && !lock)
+		frontend::Alert::error(_("Revision control error."),
+			_("Error when releasing write lock.\n"
+			"Check the access to the repository."));
+}
+
+
 string SVN::checkOut()
 {
 	FileName tmpf = FileName::tempName("lyxvcout");
@@ -535,6 +625,9 @@ string SVN::checkOut()
 				"You have to manually resolve the conflicts NOW!\n'%1$s'.\n\n"
 				"After pressing OK, LyX will try to reopen resolved document."),
 			from_local8bit(res)));
+
+	fileLock(true, tmpf, log);
+
 	tmpf.erase();
 	return "SVN: " + log;
 }
@@ -542,7 +635,10 @@ string SVN::checkOut()
 
 bool SVN::checkOutEnabled()
 {
-	return true;
+	if (locked_mode_)
+		return !isLocked();
+	else
+		return true;
 }
 
 

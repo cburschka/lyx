@@ -1129,8 +1129,12 @@ void GuiWorkArea::updateWindowTitle()
 	if (!fileName.empty()) {
 		maximize_title = fileName.displayName(30);
 		minimize_title = from_utf8(fileName.onlyFileName());
-		if (buf.lyxvc().inUse())
-			maximize_title +=  _(" (version control)");
+		if (buf.lyxvc().inUse()) {
+			if (buf.lyxvc().locker().empty())
+				maximize_title +=  _(" (version control)");
+			else
+				maximize_title +=  _(" (version control, locking)");
+		}
 		if (!buf.isClean()) {
 			maximize_title += _(" (changed)");
 			minimize_title += char_type('*');

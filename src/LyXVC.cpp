@@ -205,6 +205,8 @@ void LyXVC::toggleReadOnly()
 		LYXERR(Debug::LYXVC, "LyXVC: toggle to unlocked");
 		checkIn();
 		break;
+	case VCS::NOLOCKING:
+		break;
 	}
 }
 
