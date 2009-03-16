@@ -109,12 +109,6 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 	Layout const layout = bp.documentClass().plainLayout();
 	//lyxerr << "\nInsetERT::doDispatch (begin): cmd: " << cmd << endl;
 	switch (cmd.action) {
-	case LFUN_QUOTE_INSERT: {
-		// We need to bypass the fancy quotes in Text
-		FuncRequest f(LFUN_SELF_INSERT, "\"");
-		dispatch(cur, f);
-		break;
-	}
 	case LFUN_INSET_MODIFY: {
 		setStatus(cur, string2params(to_utf8(cmd.argument())));
 		break;
