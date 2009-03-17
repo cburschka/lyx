@@ -640,6 +640,12 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				LYXERR(Debug::LATEX, "We should rerun.");
 				retval |= RERUN;
 			}
+		} else if (prefixIs(token, "LETTRE WARNING:")) {
+			if (contains(token, "veuillez recompiler")) {
+				// lettre.cls
+				LYXERR(Debug::LATEX, "We should rerun.");
+				retval |= RERUN;
+			}
 		} else if (token[0] == '(') {
 			if (contains(token, "Rerun LaTeX") ||
 			    contains(token, "Rerun to get")) {
