@@ -47,6 +47,9 @@
 // fcntl()
 #include <fcntl.h>
 
+// strerror()
+#include <string.h>
+
 #include <cerrno>
 #include <cstdio>
 #include <cstdlib>
