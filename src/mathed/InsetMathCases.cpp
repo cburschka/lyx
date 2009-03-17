@@ -103,8 +103,8 @@ bool InsetMathCases::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (s == "append-column" || s == "delete-column") {
 			flag.setEnabled(false);
 			flag.message(bformat(
-				from_utf8(N_("Changing number of columns not allowed in\
-							 'cases': feature %1$s")),
+				from_utf8(N_("Changing number of columns not allowed in "
+					     "'cases': feature %1$s")),
 				s));
 			return true;
 		}
