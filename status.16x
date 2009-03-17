@@ -60,6 +60,8 @@ What's new
 - Fix LaTeX export of an isolated Japanese character when using
   ISO-2022-JP encoding (bug 5802).
 
+- Fix encoding failure after Listing insets in utf-8 documents (bug 5783).
+
 - Fix conversion of the lilypond external inset with lilypond >= 2.11.x
   (bug 5834).
 
