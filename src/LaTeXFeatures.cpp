@@ -16,8 +16,8 @@
 
 #include "LaTeXFeatures.h"
 
-#include "Color.h"
 #include "BufferParams.h"
+#include "ColorSet.h"
 #include "Encoding.h"
 #include "Floating.h"
 #include "FloatList.h"

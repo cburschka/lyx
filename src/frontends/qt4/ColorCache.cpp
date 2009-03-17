@@ -11,11 +11,7 @@
 #include <config.h>
 
 #include "ColorCache.h"
-
-#include "Color.h"
-
-#include <string>
-
+#include "ColorSet.h"
 
 namespace lyx {
 
@@ -40,9 +36,9 @@ QColor ColorCache::get(Color color) const
 		QColor base_color = get(color.baseColor).toRgb();
 		QColor merge_color = get(color.mergeColor).toRgb();
 		return QColor(
-			(base_color.red() + merge_color.red())/2,
-			(base_color.green() + merge_color.green())/2,
-			(base_color.blue() + merge_color.blue())/2);
+			(base_color.red() + merge_color.red()) / 2,
+			(base_color.green() + merge_color.green()) / 2,
+			(base_color.blue() + merge_color.blue()) / 2);
 	}
 	// used by branches
 	return QColor(lcolor.getX11Name(color.baseColor).c_str()); 

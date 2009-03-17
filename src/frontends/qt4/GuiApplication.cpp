@@ -15,6 +15,7 @@
 #include "GuiApplication.h"
 
 #include "ColorCache.h"
+#include "ColorSet.h"
 #include "GuiClipboard.h"
 #include "GuiImage.h"
 #include "GuiKeySymbol.h"

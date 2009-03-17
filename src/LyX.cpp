@@ -21,7 +21,7 @@
 #include "Buffer.h"
 #include "BufferList.h"
 #include "CmdDef.h"
-#include "Color.h"
+#include "ColorSet.h"
 #include "ConverterCache.h"
 #include "Converter.h"
 #include "CutAndPaste.h"

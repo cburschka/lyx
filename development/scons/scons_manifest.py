@@ -44,6 +44,7 @@ src_header_files = Split('''
     Citation.h
     CmdDef.h
     Color.h
+    ColorSet.h
     ColorCode.h
     CompletionList.h
     Converter.h

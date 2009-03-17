@@ -42,8 +42,8 @@ public:
 		FontState emph,
 		FontState underbar,
 		FontState noun,
-		FontState number
-		): family_(family), series_(series), shape_(shape), size_(size), 
+		FontState number)
+		: family_(family), series_(series), shape_(shape), size_(size), 
 		color_(color), background_(background), paint_color_(), emph_(emph),
 		underbar_(underbar), noun_(noun), number_(number)
 	{}

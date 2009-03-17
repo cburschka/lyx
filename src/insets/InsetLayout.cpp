@@ -14,7 +14,7 @@
 
 #include "InsetLayout.h"
 
-#include "Color.h"
+#include "ColorSet.h"
 #include "Font.h"
 #include "Lexer.h"
 #include "TextClass.h"
@@ -67,7 +67,7 @@ InsetLayout::InsetLaTeXType translateLaTeXType(std::string const & str)
 	return InsetLayout::ILT_ERROR;
 }
 
-}
+} // namespace anon
 
 
 bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
