@@ -238,7 +238,6 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 		OutputParams rp = runparams;
 		rp.moving_arg = true;
 		docstring const caption = getCaption(rp);
-		runparams.encoding = rp.encoding;
 		if (param_string.empty() && caption.empty())
 			os << "\n\\begin{lstlisting}\n";
 		else {
