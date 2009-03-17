@@ -442,11 +442,8 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 			// With CJK, only add switch if we have CJK content at the beginning
 			// of the paragraph
 			if (encoding->package() != Encoding::CJK || i == 0) {
-				OutputParams tmp_rp = runparams;
-				runparams.moving_arg = false;
 				pair<bool, int> enc_switch = switchEncoding(os, bparams, runparams,
 					*encoding);
-				runparams = tmp_rp;
 				// the following is necessary after a CJK environment in a multilingual
 				// context (nesting issue).
 				if (par_language->encoding()->package() == Encoding::CJK &&
