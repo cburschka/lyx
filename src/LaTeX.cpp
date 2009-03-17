@@ -647,6 +647,12 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				LYXERR(Debug::LATEX, "We should rerun.");
 				retval |= RERUN;
 			}
+		} else if (prefixIs(token, "LETTRE WARNING:")) {
+			if (contains(token, "veuillez recompiler")) {
+				// lettre.cls
+				LYXERR(Debug::LATEX, "We should rerun.");
+				retval |= RERUN;
+			}
 		} else if (prefixIs(token, "! ") ||
 			   fle_style && regex_match(token, sub, file_line_error)) {
 			   // Ok, we have something that looks like a TeX Error
