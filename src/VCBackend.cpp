@@ -80,7 +80,7 @@ FileName const RCS::findFile(FileName const & file)
 	FileName tmp(file.absFilename() + ",v");
 	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under rcs: " << tmp);
 	if (tmp.isReadableFile()) {
-		LYXERR(Debug::LYXVC, "Yes " << file << " is under rcs.");
+		LYXERR(Debug::LYXVC, "Yes, " << file << " is under rcs.");
 		return tmp;
 	}
 
@@ -88,7 +88,7 @@ FileName const RCS::findFile(FileName const & file)
 	tmp = FileName(addName(addPath(onlyPath(file.absFilename()), "RCS"), file.absFilename()) + ",v");
 	LYXERR(Debug::LYXVC, "LyXVC: Checking if file is under rcs: " << tmp);
 	if (tmp.isReadableFile()) {
-		LYXERR(Debug::LYXVC, "Yes " << file << " it is under rcs.");
+		LYXERR(Debug::LYXVC, "Yes, " << file << " is under rcs.");
 		return tmp;
 	}
 
@@ -356,7 +356,7 @@ string CVS::checkOut()
 	// cvs update or perhaps for cvs this should be a noop
 	// we need to detect conflict (eg "C" in output)
 	// before we can do this.
-	lyxerr << "Sorry not implemented." << endl;
+	lyxerr << "Sorry, not implemented." << endl;
 	return string();
 }
 
@@ -389,7 +389,7 @@ void CVS::undoLast()
 	// merge the current with the previous version
 	// in a reverse patch kind of way, so that the
 	// result is to revert the last changes.
-	lyxerr << "Sorry not implemented." << endl;
+	lyxerr << "Sorry, not implemented." << endl;
 }
 
 
@@ -533,7 +533,7 @@ string SVN::checkIn(string const & msg)
 	string res = scanLogFile(tmpf, log);
 	if (!res.empty())
 		frontend::Alert::error(_("Revision control error."),
-				_("Error when commiting to repository.\n"
+				_("Error when committing to repository.\n"
 				"You have to manually resolve the problem.\n"
 				"After pressing OK, LyX will reopen the document."));
 	else
@@ -596,8 +596,9 @@ void SVN::fileLock(bool lock, FileName const & tmpf, string &status)
 	if (!isLocked() && lock)
 		frontend::Alert::error(_("Revision control error."),
 			_("Error when acquiring write lock.\n"
-			"Most probably some other user edit the current document now!\n"
-			"Check also the access to the repository."));
+			"Most probably another user is editing\n"
+			"the current document now!\n"
+			"Also check the access to the repository."));
 	if (isLocked() && !lock)
 		frontend::Alert::error(_("Revision control error."),
 			_("Error when releasing write lock.\n"
@@ -659,7 +660,7 @@ void SVN::undoLast()
 	// merge the current with the previous version
 	// in a reverse patch kind of way, so that the
 	// result is to revert the last changes.
-	lyxerr << "Sorry not implemented." << endl;
+	lyxerr << "Sorry, not implemented." << endl;
 }
 
 
