@@ -168,10 +168,11 @@ public:
 		//   2. Description (lexicographic)
 		LayoutFile const & tc1 = LayoutFileList::get()[lhs];
 		LayoutFile const & tc2 = LayoutFileList::get()[rhs];
+		int const rel = compare_no_case(
+			translateIfPossible(from_utf8(tc1.description())),
+			translateIfPossible(from_utf8(tc2.description())));
 		return (tc1.isTeXClassAvailable() && !tc2.isTeXClassAvailable()) ||
-			(tc1.isTeXClassAvailable() == tc2.isTeXClassAvailable() &&
-			 translateIfPossible(from_utf8(tc1.description()))
-			 < translateIfPossible(from_utf8(tc2.description())));
+			(tc1.isTeXClassAvailable() == tc2.isTeXClassAvailable() && rel < 0);
 	}
 };
 
