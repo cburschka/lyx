@@ -33,6 +33,11 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Tex2lyx is now able to read files in all latex supported encodings and
+  transform them into the proper unicode-based format introduced in 1.5.0.
+  This paves the way for many other improvements in LaTeX->LyX translation
+  (bugs 3035, 4379, 4917).
+
 - Quotes in InsetListings are now normal quotes, rather than InsetQuote
   entries (bug 5782).
 

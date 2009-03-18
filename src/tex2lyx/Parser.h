@@ -12,10 +12,11 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#include <vector>
 #include <string>
 #include <utility>
+#include <vector>
 
+#include "support/docstream.h"
 
 namespace lyx {
 
@@ -46,9 +47,6 @@ enum CatCode {
 };
 
 
-CatCode catcode(unsigned char c);
-
-
 enum {
 	FLAG_BRACE_LAST = 1 << 1,  //  last closing brace ends the parsing
 	FLAG_RIGHT      = 1 << 2,  //  next \\right ends the parsing process
@@ -75,18 +73,16 @@ enum {
 class Token {
 public:
 	///
-	Token() : cs_(), char_(0), cat_(catIgnore) {}
+	Token() : cs_(), cat_(catIgnore) {}
 	///
-	Token(char c, CatCode cat) : cs_(), char_(c), cat_(cat) {}
-	///
-	Token(std::string const & cs, CatCode cat) : cs_(cs), char_(0), cat_(cat) {}
+	Token(docstring const & cs, CatCode cat) : cs_(to_utf8(cs)), cat_(cat) {}
 
 	///
 	std::string const & cs() const { return cs_; }
 	/// Returns the catcode of the token
 	CatCode cat() const { return cat_; }
 	///
-	char character() const { return char_; }
+	char character() const { return cs_.empty() ? 0 : cs_[0]; }
 	/// Returns the token as string
 	std::string asString() const;
 	/// Returns the token verbatim
@@ -95,8 +91,6 @@ public:
 private:
 	///
 	std::string cs_;
-	///
-	char char_;
 	///
 	CatCode cat_;
 };
@@ -119,9 +113,16 @@ class Parser {
 
 public:
 	///
-	Parser(std::istream & is);
+	Parser(idocstream & is);
 	///
 	Parser(std::string const & s);
+	///
+	~Parser();
+
+	/// change the latex encoding of the input stream
+	void setEncoding(std::string const & encoding);
+	/// get the current latex encoding of the input stream
+	std::string getEncoding() const { return encoding_latex_; }
 
 	///
 	int lineno() const { return lineno_; }
@@ -174,8 +175,8 @@ public:
 	char getChar();
 	///
 	void error(std::string const & msg);
-	/// Parses \p is into tokens
-	void tokenize(std::istream & is);
+	/// Parses one token from \p is 
+	void tokenize_one();
 	///
 	void push_back(Token const & t);
 	/// The previous token.
@@ -183,11 +184,11 @@ public:
 	/// The current token.
 	Token const & curr_token() const;
 	/// The next token.
-	Token const & next_token() const;
+	Token const & next_token();
 	/// Make the next token current and return that.
 	Token const & get_token();
 	/// \return whether the current token starts a new paragraph
-	bool isParagraph() const;
+	bool isParagraph();
 	/// skips spaces (and comments if \p skip_comments is true)
 	void skip_spaces(bool skip_comments = false);
 	/// puts back spaces (and comments if \p skip_comments is true)
@@ -195,7 +196,7 @@ public:
 	///
 	void lex(std::string const & s);
 	///
-	bool good() const;
+	bool good();
 	///
 	std::string verbatim_item();
 	///
@@ -214,6 +215,12 @@ private:
 	std::vector<Token> tokens_;
 	///
 	unsigned pos_;
+	///
+	idocstringstream * iss_;
+	///
+	idocstream & is_;
+	/// latex name of the current encoding
+	std::string encoding_latex_;
 };
 
 
