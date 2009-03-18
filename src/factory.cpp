@@ -518,7 +518,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		} else if (tmptok == "Box") {
 			inset.reset(new InsetBox(buf, tmptok));
 		} else if (tmptok == "Flex") {
-			lex.next();
+			lex.eatLine();
 			string s = lex.getString();
 			inset.reset(new InsetFlex(buf, s));
 		} else if (tmptok == "Branch") {
