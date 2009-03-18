@@ -94,10 +94,12 @@ static QString disclaimer()
 
 static QString version()
 {
-	QLocale loc;
-	QString loc_release_date =
-		loc.toString(release_date(), QLocale::LongFormat);
-	if (loc_release_date.isEmpty()) {
+	QString loc_release_date;
+	QDate date = release_date();
+	if (date.isValid()) {
+		QLocale loc;
+		loc_release_date = loc.toString(date, QLocale::LongFormat);
+	} else {
 		if (QString(lyx_release_date) == "not released yet")
 			loc_release_date = qt_("not released yet");
 		else
