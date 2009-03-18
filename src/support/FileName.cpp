@@ -921,6 +921,12 @@ docstring const FileName::relPath(string const & path) const
 }
 
 
+// Note: According to Qt, QFileInfo::operator== is undefined when
+// both files do not exist (Qt4.5 gives true for all non-existent
+// files, while Qt4.4 compares the filenames).
+// see:
+// http://www.qtsoftware.com/developer/task-tracker/
+//   index_html?id=248471&method=entry.
 bool operator==(FileName const & l, FileName const & r)
 {
 	// FIXME: In future use Qt.
@@ -944,9 +950,8 @@ bool operator==(FileName const & l, FileName const & r)
 	
 	if (!lhs.d->fi.isSymLink() && !rhs.d->fi.isSymLink()) {
 		// Qt already checks if the filesystem is case sensitive or not.
-		return lhs.d->fi == rhs.d->fi 
-			// This is needed as in Qt4.5, QFileInfo::operator== compares
-			// the location of the two files and not the files themselves.
+		// see note above why the extra check with fileName is needed.
+		return lhs.d->fi == rhs.d->fi
 			&& lhs.d->fi.fileName() == rhs.d->fi.fileName();
 	}
 
@@ -957,8 +962,7 @@ bool operator==(FileName const & l, FileName const & r)
 	QFileInfo fi2(rhs.d->fi);
 	if (fi2.isSymLink())
 		fi2 = QFileInfo(fi2.symLinkTarget());
-	// This is needed as in Qt4.5, QFileInfo::operator== compares
-	// the location of the two files and not the files themselves.
+	// see note above why the extra check with fileName is needed.
 	return fi1 == fi2 && fi1.fileName() == fi2.fileName();
 }
 
