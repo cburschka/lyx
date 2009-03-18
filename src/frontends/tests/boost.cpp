@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include <cstdlib>
 #include <iostream>
 #include <boost/assert.hpp>
 
