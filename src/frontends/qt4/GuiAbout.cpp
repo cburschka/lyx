@@ -98,7 +98,7 @@ static QString version()
 	QString loc_release_date =
 		loc.toString(release_date(), QLocale::LongFormat);
 	if (loc_release_date.isEmpty()) {
-		if (lyx_release_date == "not released yet")
+		if (QString(lyx_release_date) == "not released yet")
 			loc_release_date = qt_("not released yet");
 		else
 			loc_release_date = toqstr(lyx_release_date);
