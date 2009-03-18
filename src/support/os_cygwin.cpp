@@ -25,6 +25,7 @@
 #include <windef.h>
 #include <shellapi.h>
 #include <shlwapi.h>
+#include <limits.h>
 
 #include <sys/cygwin.h>
 
@@ -122,7 +123,7 @@ string convert_path_list(string const & p, PathStyle const & target)
 
 } // namespace anon
 
-void os::init(int, char *[])
+void init(int, char *[])
 {
 	// Make sure that the TEMP variable is set
 	// and sync the Windows environment.

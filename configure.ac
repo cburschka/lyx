@@ -352,6 +352,7 @@ char * strerror(int n);
 #define BOOST_NO_WSTRING 1
 
 #ifdef __CYGWIN__
+#  define NOMINMAX
 #  define BOOST_POSIX 1
 #  define BOOST_POSIX_API 1
 #  define BOOST_POSIX_PATH 1
