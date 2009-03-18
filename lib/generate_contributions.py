@@ -481,7 +481,7 @@ contributers = [
                  u"Bug fixes"),
 
      contributer(u"Jean-Pierre Chrétien",
-                 "chretien () cert ! fr",
+                 "jeanpierre.chretien () free ! fr",
                  "GPL",
                  "Re: The LyX licence",
                  "m=111842518713710",
