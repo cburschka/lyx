@@ -175,11 +175,8 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_INSET_TOGGLE:
-		if (cmd.argument() == "open")
-			flag.setEnabled(status_ != Open);
-		else if (cmd.argument() == "close")
-			flag.setEnabled(status_ == Open);
-		else if (cmd.argument() == "toggle")
+		if (cmd.argument() == "open" || cmd.argument() == "close" ||
+		    cmd.argument() == "toggle")
 			flag.setEnabled(true);
 		else if (cmd.argument() == "assign" || cmd.argument().empty()) {
 			if (isBranchSelected())
