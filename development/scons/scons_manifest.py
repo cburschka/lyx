@@ -588,12 +588,12 @@ src_tex2lyx_header_files = Split('''
 
 
 src_tex2lyx_files = Split('''
+    boost.cpp
     Context.cpp
     Font.cpp
-    Parser.cpp
-    boost.cpp
     gettext.cpp
     math.cpp
+    Parser.cpp
     preamble.cpp
     table.cpp
     tex2lyx.cpp
@@ -609,13 +609,14 @@ src_tex2lyx_copied_header_files = Split('''
 src_tex2lyx_copied_files = Split('''
     Color.cpp
     Counters.cpp
+    Encoding.cpp
     FloatList.cpp
     Floating.cpp
     Layout.cpp
+    lengthcommon.cpp
     Lexer.cpp
     TextClass.cpp
     insets/InsetLayout.cpp
-    lengthcommon.cpp
 ''')
 
 
@@ -637,6 +638,7 @@ src_tex2lyx_extra_files = Split('''
 
 
 src_frontends_header_files = Split('''
+    alert.h
     Application.h
     Clipboard.h
     FontLoader.h
@@ -644,12 +646,11 @@ src_frontends_header_files = Split('''
     KeyModifier.h
     KeySymbol.h
     LyXView.h
+    mouse_state.h
     Painter.h
     Selection.h
     WorkArea.h
     WorkAreaManager.h
-    alert.h
-    mouse_state.h
 ''')
 
 
