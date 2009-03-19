@@ -1,256 +1,85 @@
-.rn '' }`
-''' $RCSfile: tex2lyx.man,v $$Revision: 1.1 $$Date: 2005/07/16 15:18:14 $
-'''
-''' $Log: tex2lyx.man,v $
-''' Revision 1.1  2005/07/16 15:18:14  larsbj
-''' drop reLyX like it is hot, and setup to use tex2lyx instead (and remerged po files + no.po small update)
-'''
-'''
-.de Sh
-.br
-.if t .Sp
-.ne 5
+.\" Man page for tex2lyx.
+.\" Use the following command to view man page:
+.\"
+.\"  tbl tex2lyx.1 | nroff -man | less
+.\"
+.TH TEX2LYX 1 "@LYX_DATE@" "Version @VERSION@" "tex2lyx @VERSION@"
+.SH NAME
+tex2lyx@version_suffix@ \- translate well-behaved LaTeX into LyX
+.\"
+.\" setup
+.de Cr
+.ie n (c)
+.el \(co
+..
+.SH SYNOPSIS
+The simplest way to use \fBtex2lyx\fR is via the File->Import->LaTeX
+(plain) menu item in LyX. That runs \fBtex2lyx\fR on the given file
+and loads the resulting file into LyX. You should try that first, and
+call it from the command line only if you need to use more complicated
+options.
 .PP
-\fB\\$1\fR
-.PP
-..
-.de Sp
-.if t .sp .5v
-.if n .sp
-..
-.de Ip
-.br
-.ie \\n(.$>=3 .ne \\$3
-.el .ne 3
-.IP "\\$1" \\$2
-..
-.de Vb
-.ft CW
-.nf
-.ne \\$1
-..
-.de Ve
-.ft R
-
-.fi
-..
-'''
-'''
-'''     Set up \*(-- to give an unbreakable dash;
-'''     string Tr holds user defined translation string.
-'''     Bell System Logo is used as a dummy character.
-'''
-.tr \(*W-|\(bv\*(Tr
-.ie n \{\
-.ds -- \(*W-
-.ds PI pi
-.if (\n(.H=4u)&(1m=24u) .ds -- \(*W\h'-12u'\(*W\h'-12u'-\" diablo 10 pitch
-.if (\n(.H=4u)&(1m=20u) .ds -- \(*W\h'-12u'\(*W\h'-8u'-\" diablo 12 pitch
-.ds L" ""
-.ds R" ""
-'''   \*(M", \*(S", \*(N" and \*(T" are the equivalent of
-'''   \*(L" and \*(R", except that they are used on ".xx" lines,
-'''   such as .IP and .SH, which do another additional levels of
-'''   double-quote interpretation
-.ds M" """
-.ds S" """
-.ds N" """""
-.ds T" """""
-.ds L' '
-.ds R' '
-.ds M' '
-.ds S' '
-.ds N' '
-.ds T' '
-'br\}
-.el\{\
-.ds -- \(em\|
-.tr \*(Tr
-.ds L" ``
-.ds R" ''
-.ds M" ``
-.ds S" ''
-.ds N" ``
-.ds T" ''
-.ds L' `
-.ds R' '
-.ds M' `
-.ds S' '
-.ds N' `
-.ds T' '
-.ds PI \(*p
-'br\}
-.\"	If the F register is turned on, we'll generate
-.\"	index entries out stderr for the following things:
-.\"		TH	Title
-.\"		SH	Header
-.\"		Sh	Subsection
-.\"		Ip	Item
-.\"		X<>	Xref  (embedded
-.\"	Of course, you have to process the output yourself
-.\"	in some meaninful fashion.
-.if \nF \{
-.de IX
-.tm Index:\\$1\t\\n%\t"\\$2"
-..
-.nr % 0
-.rr F
-.\}
-.TH TEX2LYX 1 "Version 2.9.2.2 2.9.2.2" "16/Jul/2005" ""
-.UC
-.if n .hy 0
-.if n .na
-.ds C+ C\v'-.1v'\h'-1p'\s-2+\h'-1p'+\s0\v'.1v'\h'-1p'
-.de CQ          \" put $1 in typewriter font
-.ft CW
-'if n "\c
-'if t \\&\\$1\c
-'if n \\&\\$1\c
-'if n \&"
-\\&\\$2 \\$3 \\$4 \\$5 \\$6 \\$7
-'.ft R
-..
-.\" @(#)ms.acc 1.5 88/02/08 SMI; from UCB 4.2
-.	\" AM - accent mark definitions
-.bd B 3
-.	\" fudge factors for nroff and troff
-.if n \{\
-.	ds #H 0
-.	ds #V .8m
-.	ds #F .3m
-.	ds #[ \f1
-.	ds #] \fP
-.\}
-.if t \{\
-.	ds #H ((1u-(\\\\n(.fu%2u))*.13m)
-.	ds #V .6m
-.	ds #F 0
-.	ds #[ \&
-.	ds #] \&
-.\}
-.	\" simple accents for nroff and troff
-.if n \{\
-.	ds ' \&
-.	ds ` \&
-.	ds ^ \&
-.	ds , \&
-.	ds ~ ~
-.	ds ? ?
-.	ds ! !
-.	ds /
-.	ds q
-.\}
-.if t \{\
-.	ds ' \\k:\h'-(\\n(.wu*8/10-\*(#H)'\'\h"|\\n:u"
-.	ds ` \\k:\h'-(\\n(.wu*8/10-\*(#H)'\`\h'|\\n:u'
-.	ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'^\h'|\\n:u'
-.	ds , \\k:\h'-(\\n(.wu*8/10)',\h'|\\n:u'
-.	ds ~ \\k:\h'-(\\n(.wu-\*(#H-.1m)'~\h'|\\n:u'
-.	ds ? \s-2c\h'-\w'c'u*7/10'\u\h'\*(#H'\zi\d\s+2\h'\w'c'u*8/10'
-.	ds ! \s-2\(or\s+2\h'-\w'\(or'u'\v'-.8m'.\v'.8m'
-.	ds / \\k:\h'-(\\n(.wu*8/10-\*(#H)'\z\(sl\h'|\\n:u'
-.	ds q o\h'-\w'o'u*8/10'\s-4\v'.4m'\z\(*i\v'-.4m'\s+4\h'\w'o'u*8/10'
-.\}
-.	\" troff and (daisy-wheel) nroff accents
-.ds : \\k:\h'-(\\n(.wu*8/10-\*(#H+.1m+\*(#F)'\v'-\*(#V'\z.\h'.2m+\*(#F'.\h'|\\n:u'\v'\*(#V'
-.ds 8 \h'\*(#H'\(*b\h'-\*(#H'
-.ds v \\k:\h'-(\\n(.wu*9/10-\*(#H)'\v'-\*(#V'\*(#[\s-4v\s0\v'\*(#V'\h'|\\n:u'\*(#]
-.ds _ \\k:\h'-(\\n(.wu*9/10-\*(#H+(\*(#F*2/3))'\v'-.4m'\z\(hy\v'.4m'\h'|\\n:u'
-.ds . \\k:\h'-(\\n(.wu*8/10)'\v'\*(#V*4/10'\z.\v'-\*(#V*4/10'\h'|\\n:u'
-.ds 3 \*(#[\v'.2m'\s-2\&3\s0\v'-.2m'\*(#]
-.ds o \\k:\h'-(\\n(.wu+\w'\(de'u-\*(#H)/2u'\v'-.3n'\*(#[\z\(de\v'.3n'\h'|\\n:u'\*(#]
-.ds d- \h'\*(#H'\(pd\h'-\w'~'u'\v'-.25m'\f2\(hy\fP\v'.25m'\h'-\*(#H'
-.ds D- D\\k:\h'-\w'D'u'\v'-.11m'\z\(hy\v'.11m'\h'|\\n:u'
-.ds th \*(#[\v'.3m'\s+1I\s-1\v'-.3m'\h'-(\w'I'u*2/3)'\s-1o\s+1\*(#]
-.ds Th \*(#[\s+2I\s-2\h'-\w'I'u*3/5'\v'-.3m'o\v'.3m'\*(#]
-.ds ae a\h'-(\w'a'u*4/10)'e
-.ds Ae A\h'-(\w'A'u*4/10)'E
-.ds oe o\h'-(\w'o'u*4/10)'e
-.ds Oe O\h'-(\w'O'u*4/10)'E
-.	\" corrections for vroff
-.if v .ds ~ \\k:\h'-(\\n(.wu*9/10-\*(#H)'\s-2\u~\d\s+2\h'|\\n:u'
-.if v .ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'\v'-.4m'^\v'.4m'\h'|\\n:u'
-.	\" for low resolution devices (crt and lpr)
-.if \n(.H>23 .if \n(.V>19 \
-\{\
-.	ds : e
-.	ds 8 ss
-.	ds v \h'-1'\o'\(aa\(ga'
-.	ds _ \h'-1'^
-.	ds . \h'-1'.
-.	ds 3 3
-.	ds o a
-.	ds d- d\h'-1'\(ga
-.	ds D- D\h'-1'\(hy
-.	ds th \o'bp'
-.	ds Th \o'LP'
-.	ds ae ae
-.	ds Ae AE
-.	ds oe oe
-.	ds Oe OE
-.\}
-.rm #[ #] #H #V #F C
-.SH "NAME"
-\fBtex2lyx\fR \- translate well-behaved LaTeX into LyX
-.SH "SYNOPSIS"
-The simplest way to use \fBtex2lyx\fR is via the File->Import->LaTeX (plain) menu item
-in LyX. That runs \fBtex2lyx\fR on the given file and loads the
-resulting file into LyX. You should try that first, and call it from
-the command line only if you need to use more complicated options.
-.PP
-\fBtex2lyx\fR [ \fB\-df\fR ] [ \fB\-userdir\fR \fIuserdir\fR ] [ \fB\-systemdir\fR \fIsystemdir\fR ]
+\fBtex2lyx\fR [ \fB\-userdir\fR \fIuserdir\fR ] [ \fB\-systemdir\fR \fIsystemdir\fR ]
 [\fB\-n\fR] [\ \fB\-r\fR\ \fIrenv1\fR[,\fIrenv2\fR...]] [\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]]
 \fIinputfile\fR  [ \fB\-c\fR \fItextclass\fR ] 
 .PP
-\fBtex2lyx\fR [ \fB\-df\fR ] [ \fB\-userdir\fR \fIuserdir\fR ] [ \fB\-systemdir\fR \fIsystemdir\fR ]
+\fBtex2lyx\fR [ \fB\-userdir\fR \fIuserdir\fR ] [ \fB\-systemdir\fR \fIsystemdir\fR ]
 [\ \fB\-r\fR\ \fIrenv1\fR[,\fIrenv2\fR...]] [\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]]
 \fIinputfiles\fR \fB\-p\fR \fB\-c\fR \fItextclass\fR
 .PP
 \fBtex2lyx\fR \fB\-help\fR
 .SH "OPTIONS"
-.Ip "\fB\-c\fR" 4
+.TP
+.BI \-c
 Class. By default, when \fBtex2lyx\fR sees a \f(CW\edocumentclass{foo}\fR command, it
 creates a file of textclass \*(L"foo\*(R" and reads the LyX layout file for that class
 (something like /usr/local/share/lyx/layouts/foo.layout \s-1OR\s0
 \fB\s-1HOME\s0\fR/.lyx/layouts/foo.layout).  Use \fB\-c\fR to declare a different textclass
 (and read a different layout file).
-.Ip "\fB\-d\fR" 4
-Debug. By default, \fBtex2lyx\fR gives sparse output and deletes the temporary files
-which were created during translation. Using the \fB\-d\fR flag will create much
-more output (both to stdout and stderr) and leave the temporary files around.
-.Ip "\fB\-f\fR" 4
+.TP
+.BI \-f
 Force. \fBtex2lyx\fR will not run if the .lyx file it would generate already exists.
 Use the \fB\-f\fR option (carefully) to clobber any existing files.
-.Ip "\fB\-help\fR" 4
+.TP
+.BI \-help
 Help. Print out usage information and quit.
-.Ip "\fB\-n\fR" 4
+.TP
+.BI \-n
 Noweb. Translate a noweb (aka literate programming) file. This should be
 (almost?) equivalent to running \*(L"noweb2lyx foo.tex foo.lyx\*(R". This option
 requires the \fB\-c\fR option.
-.Ip "\fB\-p\fR" 4
+.TP
+.BI \-p
 Partial file. The input files are LaTeX fragments, with no preamble matter or
 \f(CW\ebegin{document}\fR commands. This option requires the \fB\-c\fR option, since there
 are no \f(CW\edocumentclass\fR commands in the files \fBtex2lyx\fR is translating. When
 using this option, you can translate more than one file, as long as all files
 are the same class. The LyX file created by \fBtex2lyx\fR can be included in an
-existing LyX file using the \*(L"Include LyX File\*(R" command from LyX's Insert menu.
-.Ip "\fB\-r\fR" 4
+existing LyX file using the \*(L"Include LyX File\*(R" command from
+LyX's Insert menu. (\fBNOTE\fR: this feature of the older \fBreLyX\fR script has
+not yet been implemented in \fBtex2lyx\fR).
+.TP
+.BI \-r
 Regular environments (see the section on \fISyntax Files\fR).  If you give more than one
 environment, separate them with commas (not spaces). You'll probably need to
 quote the environment list, especially if it has asterisk environments (foo*)
 in it. If you use this command often, considering creating a personal syntax
-file.
-.Ip "\fB\-s\fR" 4
+file. (\fBNOTE\fR: this feature of the older \fBreLyX\fR script has
+not yet been implemented in \fBtex2lyx\fR).
+.TP
+.BI \-s
 Syntax files. Input (one or more quoted, comma-separated) syntax files to read
 in addition to the default. (see the section on \fISyntax Files\fR for details).
-.Ip "\fB\-sysdir\fR" 4
+.TP
+.BI \-sysdir
 Specify a system directory. Normally, you shouldn't need this. Your LyX system directory is
 chosen. Cf. the section \f(CWFILES\fR for details.
-.Ip "\fB\-userdir\fR" 4
+.TP
+.BI \-userdir
 Specify a user directory. Normally, you shouldn't need this. Your LyX user directory is
 chosen. Cf. the section \f(CWFILES\fR for details.
 .SH "DESCRIPTION"
-.Sh "Introduction"
+.SS "Introduction"
 \fBtex2lyx\fR will create a LyX file \fIdir/foo.lyx\fR from the LaTeX file
 \fIdir/foo.tex\fR.
 .PP
@@ -264,96 +93,96 @@ standard LaTeX commands---it may choke. LaTeX209 will often be translated
 correctly, but it's not guaranteed.
 .PP
 \fBtex2lyx\fR lacks a few features. However, its main goals are:
-.Ip "\(bu" 4
+.IP "\(bu" 4
 Get through a well-behaved LaTeX2e file without crashing
-.Ip "\(bu" 4
+.IP "\(bu" 4
 Translate a lot of that file.
-.Ip "\(bu" 4
+.IP "\(bu" 4
 Localize the parts that can't be translated and copy them in TeX mode
 .PP
 It achieves these main goals pretty well on most files.
-.Sh "Usage"
+.SS "Usage"
 Here's a more lengthy description of what you should do to translate a LaTeX
 document into LyX.
-.Ip "\(bu" 4
+.IP "\(bu" 4
 Run \fBtex2lyx\fR.
-.Sp
+.IP ""
 \fBtex2lyx\fR will inform you of its progress and give any warnings to stderr, so if
 you don't want any output at all, try (in csh) \*(L'tex2lyx foo.tex >& /dev/null\*(R'.
 You should \s-1NOT\s0 redirect standard output to \fIfoo.lyx\fR.
-.Ip "\(bu" 4
+.IP "\(bu" 4
 Run LyX (version 1.4 or later) on the resulting .lyx file.
-.Sp
+.IP ""
 In theory, most of the file will have been translated, and anything that's
 untranslatable will be transferred to TeX code (ERT in LyX-speak). In theory, LyX will be
 able to read in the file, and to create printed documents from it, because all
 that untranslated ERT stuff will be passed directly back to LaTeX, which LyX
 uses as a backend. Unfortunately, reality doesn't always reflect theory. If
 \fBtex2lyx\fR crashes, or LyX cannot read the generated LyX file, see the \f(CWBUGS\fR section below.
-.Ip "\(bu" 4
+.IP "\(bu" 4
 Transform things have been inserted as TeX code manually to LyX features, if possible.
-.Sp
+.IP ""
 As mentioned above, you should be able to print out the LyX file even without
 doing this. However, changing a command in TeX code to the corresponding LyX
 object will allow you to take advantage of LyX's \s-1WYSIWYM\s0 editing.
-.Sp
+.IP ""
 \fBtex2lyx\fR is not guaranteed to create a LyX file which generates exactly the same
 output as the LaTeX file, although its goal is to achieve this. \fBtex2lyx\fR will generally err
 on the side of translating less to ensure that the resulting output files are accurate,
 even though this leads to more TeX code and less \s-1WYSIWYM\s0.
-.Ip "\(bu" 4
+.IP "\(bu" 4
 \s-1PROOFREAD\s0 \s-1THE\s0 \s-1DOCUMENT\s0!!
-.Sp
+.IP ""
 I'm sure you were planning on doing this anyway, but it's particularly
 important after translating a LaTeX document. \fBtex2lyx\fR is better
 at \*(L"macro-translating\*(R" (translating the whole document) than
 \*(L"micro-translating\*(R" (translating every little detail). For example, you may see
 extra spaces or deleted spaces. Space handling has improved, but it's
 not perfect.
-.Sh "What tex2lyx Can Handle"
+.SS "What tex2lyx Can Handle"
 \fBtex2lyx\fR understands many LaTeX commands. It will translate:
-.Ip "\(bu" 4
+.IP "\(bu" 4
 regular text, including mini-commands like ~, \*(L'\*(R', \f(CW\e@\fR, \f(CW\eTeX\fR, as well as
 accented characters like \f(CW\e'{a}\fR, and the special cases ?` and !`
-.Ip "\(bu" 4
+.IP "\(bu" 4
 title commands like \f(CW\eauthor\fR, \f(CW\edate\fR, \f(CW\etitle\fR, \f(CW\ethanks\fR and the
 abstract environment
-.Ip "\(bu" 4
+.IP "\(bu" 4
 heading commands like \f(CW\esection\fR including starred commands (\f(CW\esection*\fR)
-.Ip "\(bu" 4
+.IP "\(bu" 4
 Environments: quote, quotation, and verse; center, flushright, and flushleft
-.Ip "\(bu" 4
+.IP "\(bu" 4
 itemize, enumerate, and description environments, and their \f(CW\eitem\fR commands.
 Also, well-behaved nested lists
-.Ip "\(bu" 4
+.IP "\(bu" 4
 cross-referencing commands: \f(CW\eref\fR, \f(CW\epageref\fR, \f(CW\elabel\fR, and \f(CW\ecite\fR
-.Ip "\(bu" 4
+.IP "\(bu" 4
 \f(CW\efootnote\fR and \f(CW\emargin\fR
-.Ip "\(bu" 4
+.IP "\(bu" 4
 font-changing commands including \f(CW\eem\fR, \f(CW\eemph\fR, \f(CW\etextit\fR, and
 corresponding commands to change family, size, series, and shape
-.Ip "\(bu " 4
+.IP "\(bu " 4
 \f(CW\einput{foo}\fR (or \f(CW\einput{foo.blah}\fR) and \f(CW\einclude{foo}\fR. Plain TeX
 \f(CW\einput\fR command \*(L"\f(CW\einput foo.tex\fR\*(R" is also supported.
-.Ip "\(bu" 4
+.IP "\(bu" 4
 tabular environment, and commands that go inside it like \f(CW\ehline\fR, \f(CW\ecline\fR,
 and \f(CW\emulticolumn\fR (but see below)
-.Ip "\(bu" 4
+.IP "\(bu" 4
 float environments table and table*, as well as \f(CW\ecaption\fR commands within
 them
-.Ip "\(bu" 4
+.IP "\(bu" 4
 float environments figure and figure*, as well as graphics inclusion commands
 \eepsf, \eepsffile, \eepsfbox, \eepsfxsize, \eepsfig, \epsfig, and \eincludegraphics.
 Both the graphics and graphicx forms of \eincludegraphics are supported.
-.Ip "\(bu" 4
+.IP "\(bu" 4
 thebibliography environment and \f(CW\ebibitem\fR command, as well as BibTeX's
 \f(CW\ebibliography\fR and \f(CW\ebibliographystyle\fR commands
-.Ip "\(bu" 4
+.IP "\(bu" 4
 miscellaneous commands: \f(CW\ehfill\fR, \f(CW\e\fR\f(CW\e\fR, \f(CW\enoindent\fR, \f(CW\eldots\fR...
-.Ip "\(bu" 4
+.IP "\(bu" 4
 documentclass-specific environments (and some commands) which can be
 translated to LyX layouts
-.Ip "\(bu" 4
+.IP "\(bu" 4
 arguments to certain untranslatable commands (e.g. \f(CW\embox\fR)
 .PP
 Some of this support may not be 100% yet. See below for details
@@ -366,17 +195,17 @@ fine.
 \f(CW\ebegin{document}\fR) verbatim. Fancy stuff you've got in your preamble
 should thus be conserved in printed documents, although it will not of
 course show up in the LyX window. Check Document->Settings->LaTeX Preamble to see the result.
-.Sh "What tex2lyx Can't Handle --- But it's \s-1OK\s0"
-.Ip "\(bu" 4
+.SS "What tex2lyx Can't Handle --- But it's \s-1OK\s0"
+.IP "\(bu" 4
 tabular* tables
-.Ip "\(bu" 4
+.IP "\(bu" 4
 some spacing commands (\f(CW\ehspace\fR, \f(CW\epagebreak\fR and \f(CW\elinebreak\fR)
-.Ip "\(bu" 4
+.IP "\(bu" 4
 \f(CW\ecentering\fR, \f(CW\eraggedleft\fR, \f(CW\eraggedright\fR
-.Ip "\(bu" 4
+.IP "\(bu" 4
 \f(CW\everb\fR and verbatim environment. \fBtex2lyx\fR is careful to copy \fIexactly\fR in
 this case, including comments and whitespace.
-.Ip "\(bu" 4
+.IP "\(bu" 4
 unknown (e.g., user-defined) environments and commands
 .PP
 \fBtex2lyx\fR copies unknown commands, along with their arguments, verbatim into the
@@ -386,20 +215,19 @@ you use the \fB\-r\fR option). Most of these unknown commands
 won't cause \fBtex2lyx\fR to break; they'll merely require you to do some editing
 once you've loaded the file up in LyX.  That should be less painful than
 editing either the .tex or the .lyx file using a text editor.
-.Sh "What tex2lyx Handles Badly --- aka \s-1BUGS\s0"
+.SS "What tex2lyx Handles Badly --- aka \s-1BUGS\s0"
 Since \fBtex2lyx\fR is relatively new, it's got a number of problems.  As it
 matures, these bugs will be squished.
-.PP
-.Ip "\(bu" 4
+.IP "\(bu" 4
 \*(L"Exact\*(R" copying of unknown environments and commands isn't quite exact.
 This will yield ugly LyX, but in almost all cases the output will be the same. 
 However, most parts of the file will be copied perfectly, including whitespace 
 and comments. This includes: the LaTeX preamble, verbatim environments as well as
 \f(CW\everb\fR commands, and skip blocks.
-.Ip "\(bu" 4
+.IP "\(bu" 4
 \fBtex2lyx\fR translates only a subset of the document class options to native features.
 Other options are placed in the \*(L"options\*(R" field in the Document->Settings popup.
-.Sp
+.IP ""
 More importantly, \fBtex2lyx\fR doesn't translate \f(CW\enewcommands\fR, unknown
 \f(CW\eusepackage\fR commands and other unknown code in the preamble. It
 simply copies that into the LaTeX preamble. If you use special commands, e.g. to
@@ -408,13 +236,7 @@ recognize it. Note that these settings will be overwritten if you modify the tex
 layout in LyX's document settings. Better remove these special options from the LaTeX 
 preamble (Document->Settings->LaTeX Preamble) and use the corresponding LyX document 
 settings, if possible.
-.Ip "\(bu" 4
-\fBtex2lyx\fR doesn't handle unicode yet. So if you have an utf8-encoded tex file, some
-characters might not be (well) supported. Also, the output format of \fBtex2lyx\fR
-remains that of LyX 1.4 until unicode support is implemented. This disallows us from
-supporting newer features natively, which is in fact the most severe issue in current 
-\fBtex2lyx\fR.
-.Ip "\(bu" 4
+.IP "\(bu" 4
 The foil document class has a couple of bugs. \fBtex2lyx\fR may do weird things with optional
 arguments to \f(CW\efoilhead\fR commands. Also, it may handle \f(CW\ebegin{dinglist}\fR
 incorrectly (although the stuff in the environment should translate normally).
@@ -426,38 +248,32 @@ your file perfectly, but the result should be usable and it shouldn't crash. If 
 problems---and the problem is not one of those mentioned above or on 
 \fI\s-1http://bugzilla.lyx.org\s0\fR---please report the issue as described in the section 
 on \fIBug Reports\fR.
-.Sh "What LyX Can't Handle"
+.SS "What LyX Can't Handle"
 LyX itself is missing a couple of features, such that even if \fBtex2lyx\fR translates
 things perfectly, LyX may still have trouble reading it. If you really need
 these features, you can export your final document as LaTeX, and put them
 back in. See \fI\s-1BUGS\s0\fR for more details on these bugs.
-.Ip "\(bu" 4
+.IP "\(bu" 4
 For a number of commands (such as \f(CW\e\e\fR), LyX does not support the optional argument.
 \fBtex2lyx\fR will automatically discard the optional arguments with a warning to
 stdout.  LyX also ignores the width argument for the thebibliography
 environment.
-.Ip "\(bu" 4
+.IP "\(bu" 4
 LyX support for tables isn't perfect. For complicated tables, use a \*(L"skip\*(R"
 block, so that they will be copied in TeX mode.
-.Ip "\(bu" 4
+.IP "\(bu" 4
 LyX allows figures to have sizes in the units known to TeX, such as in, cm, etc. It also 
 translates percentages of \etextwidth, \etextheight, \ecolumnwidth, but no other lengths 
 (e.g. if you wanted to scale a figure to size \etopmargin for some reason). \fBtex2lyx\fR 
 will copy figures with untranslatable sizes in TeX mode. Again, you might be able to fix 
 that within LyX.
-.Sp
-.Sh "The Future of tex2lyx"
-\fBtex2lyx\fR is actively maintained. Commands and environments will be added in the future.
-Bugs will be eradicated. The most important task will be to make \fBtex2lyx\fR unicode
-compliant.
 .SH "EXAMPLES"
-tex2lyx \fB\-df\fR \fB\-r\fR \*(L"myenv\*(R" foo.tex > foo.debug
+tex2lyx \fB\-f\fR \fB\-r\fR \*(L"myenv\*(R" foo.tex
 .PP
 The above will create a file foo.lyx from foo.tex, overwriting if
 necessary.  When it finds a \f(CW\ebegin{myenv} ... \eend{myenv}\fR block, it will
 translate the stuff within the block, but copy the \f(CW\ebegin\fR and \f(CW\eend\fR
-commands in TeX mode.  Finally, it's going to keep the temporary files around
-and output lots of debugging information into the file foo.debug.
+commands in TeX mode.
 .PP
 tex2lyx \fB\-n\fR \fB\-c\fR \*(L"literate-article\*(R" foo.tex
 .PP
@@ -465,22 +281,15 @@ The above will change a noweb document into a LyX literate-article
 document. A user would do this if the noweb document had documentclass
 article.
 .SH "NOTES"
-.Sh "Bug Reports"
-If \fBtex2lyx\fR is crashing or otherwise acting strangely---in ways
-other than those described in the section on \fI\s-1BUGS\s0\fR or on 
-\fI\s-1http://bugzilla.lyx.org\s0\fR---then please run
-\fBtex2lyx \-d\fR.  That will allow you to figure out where in the tex2lyxing process
-it crashed. That, in turn, will allow you to write a better bug report, which
-will allow the developers to fix it more quickly and easily.
-.PP
+.SS "Bug Reports"
 Bugs should be reported to the LyX bug tracker at http://bugzilla.lyx.org. Additionally,
 you can post a message to the LyX developers\*(R' mailing list. Its address is currently
 lyx-devel@lists.lyx.org. If your message bounces, you can check the LyX home page, 
-http://www.lyx.org. If you are running \fBtex2lyx\fR on a huge file, please do not send all of the output in 
+http://www.lyx.org/. If you are running \fBtex2lyx\fR on a huge file, please do not send all of the output in 
 your bug report. Just include the last ten or twenty lines of output, along with 
 the piece of the LaTeX file it crashed on.  Or, even better, attach a small but 
 complete file which causes the same problem as your original file.
-.Sh "Layout Files"
+.SS "Layout Files"
 \fBtex2lyx\fR reads a LyX layout file to know how to handle LaTeX environments and
 commands which get translated to LyX layouts. This file will include all
 \*(L"normal\*(R" non-math environments (i.e., including quote and itemize, but not
@@ -492,7 +301,7 @@ to know how to display and process its files. Check the LyX documentation for
 help with this task (which can be hard or easy, depending on the class you
 want to create a layout file for.) If your class is quite similar to a class
 that has a layout file, then consider using the \fB\-c\fR option.
-.Sh "Syntax Files"
+.SS "Syntax Files"
 \fBtex2lyx\fR always reads at least one syntax file, called the default syntax file.
 \fBtex2lyx\fR will read your personal syntax file if it exists; otherwise it will
 read the system-wide file. \fBtex2lyx\fR will read additional syntax files if you
@@ -556,211 +365,48 @@ could lead to overwriting the original LaTeX file.
 If you import foo.tex to create foo.lyx, then edit foo.lyx and want to
 re-export it, note that it will overwrite the original foo.tex. (LyX will ask
 you if you want to overwrite it.)
+.SH ENVIRONMENT
+.TP 6
+.B @LYX_DIR_VER@
+can be used to specify which system directory to use.
 .PP
-If you have the \euse_tempdir variable set to false in your lyxrc (or did not
-have defined a temporary directory path in LyX's preferences, respectively),
-LyX will create its temporary files in your current directory, which means your
-LaTeX original may be overwritten (without a warning from LyX) when you view
-or export the LyX document.
+The system directory is determined by searching for the file
+"chkconfig.ltx". Directories are searched in this order:
+.br
+1) \-sysdir command line parameter
+.br
+2) @LYX_DIR_VER@ environment variable
+.br
+3) Maybe <path of binary>/TOP_SRCDIR/lib
+.br
+4) <path of binary>/../share/<name of binary>/
+.br
+5) hardcoded lyx_dir (at build time: @real_pkgdatadir@)
+.TP
+.B @LYX_USERDIR_VER@
+can be used to specify which user directory to use.
+.PP
+The user directory is, in order of precedence:
+.br
+1) \-userdir command line parameter
+.br
+2) @LYX_USERDIR_VER@ environment variable
+.br
+3) $HOME/.<name of binary> if no explicit setting is made
 .SH "FILES"
-.Ip "\fI\s-1MY_LYXDIR\s0\fR/layouts/*.layout" 4
-User's personal layout files for document classes
-.Ip "\fI\s-1MY_LYXDIR\s0\fR/syntax.default" 4
-User's personal syntax file
-.Ip "\fI\s-1LIBDIR\s0\fR/layouts/*.layout" 4
-System-wide layout files for document classes
-.Ip "\fI\s-1LIBDIR\s0\fR/lib/syntax.default" 4
-System-wide LaTeX syntax file
 .PP
-\fI\s-1LIBDIR\s0\fR is the system-wide LyX directory, usually something like
-/usr/local/share/lyx/. \fI\s-1MY_LYXDIR\s0\fR is your personal LyX directory, something
-like .lyx/ in your home directory.
+If \fI\s-1LIBDIR\s0\fR is the system-wide LyX directory and
+\fI\s-1MY_LYXDIR\s0\fR 
+is your personal LyX directory, then the following files are read by tex2lyx:
+.IP "\fI\s-1MY_LYXDIR\s0\fR/layouts/*.layout" 4
+User's personal layout files for document classes
+.IP "\fI\s-1MY_LYXDIR\s0\fR/syntax.default" 4
+User's personal syntax file
+.IP "\fI\s-1LIBDIR\s0\fR/layouts/*.layout" 4
+System-wide layout files for document classes
+.IP "\fI\s-1LIBDIR\s0\fR/lib/syntax.default" 4
+System-wide LaTeX syntax file
 .SH "SEE ALSO"
-\fIlyx\fR\|(1), \fIlatex\fR\|(1)
+\fIlyx@version_suffix@\fR\|(1), \fIlatex\fR\|(1)
 .SH "AUTHORS"
 tex2lyx is Copyright (c) 2003ff. by the LyX Team (lyx-devel@lists.lyx.org)
-.PP
-.rn }` ''
-.IX Title "TEX2LYX 1"
-.IX Name "B<tex2lyx> - translate well-behaved LaTeX into LyX"
-
-.IX Header "NAME"
-
-.IX Header "SYNOPSIS"
-
-.IX Header "OPTIONS"
-
-.IX Item "\fB\-c\fR"
-
-.IX Item "\fB\-d\fR"
-
-.IX Item "\fB\-f\fR"
-
-.IX Item "\fB\-help\fR"
-
-.IX Item "\fB\-n\fR"
-
-.IX Item "\fB\-o\fR"
-
-.IX Item "\fB\-p\fR"
-
-.IX Item "\fB\-r\fR"
-
-.IX Item "\fB\-s\fR"
-
-.IX Header "DESCRIPTION"
-
-.IX Subsection "Introduction"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Subsection "Usage"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Subsection "What tex2lyx Can Handle"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu "
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Subsection "What tex2lyx Can't Handle --- But it's \s-1OK\s0"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Subsection "What tex2lyx Handles Badly --- aka \s-1BUGS\s0"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Subsection "What LyX Can't Handle"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Subsection "The Future of tex2lyx"
-
-.IX Header "EXAMPLES"
-
-.IX Header "NOTES"
-
-.IX Subsection "Bug Reports"
-
-.IX Subsection "Implementation Details:"
-
-.IX Item "Pass 0"
-
-.IX Item "Pass 1a"
-
-.IX Item "Pass 1b"
-
-.IX Item "Pass 2"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "Pass 3"
-
-.IX Item "Pass 4"
-
-.IX Subsection "Layout Files"
-
-.IX Subsection "Syntax Files"
-
-.IX Subsection "Miscellaneous"
-
-.IX Header "DIAGNOSTICS"
-
-.IX Header "WARNINGS"
-
-.IX Header "FILES"
-
-.IX Item "\fI\s-1MY_LYXDIR\s0\fR/layouts/*.layout"
-
-.IX Item "\fI\s-1MY_LYXDIR\s0\fR/syntax.default"
-
-.IX Item "\fI\s-1LIBDIR\s0\fR/layouts/*.layout"
-
-.IX Item "\fI\s-1LIBDIR\s0\fR/lib/syntax.default"
-
-.IX Header "SEE ALSO"
-
-.IX Header "AUTHORS"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-
-.IX Item "\(bu"
-

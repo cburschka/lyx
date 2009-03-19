@@ -473,6 +473,7 @@ AC_CONFIG_FILES([Makefile \
       src/client/lyxclient.1:src/client/lyxclient.1in \
       src/Makefile \
       src/tex2lyx/Makefile \
+      src/tex2lyx/tex2lyx.1:src/tex2lyx/tex2lyx.1in \
       src/support/Makefile \
       src/frontends/Makefile \
       src/frontends/qt4/Makefile
