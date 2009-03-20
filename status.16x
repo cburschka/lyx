@@ -26,7 +26,7 @@ What's new
 
 - New Indonesian localization of the user interface.
 
-- Updated German localization of the user interface.
+- Updated German and Italian localization of the user interface.
 
 - Updated English Extended manual.
 
@@ -38,7 +38,7 @@ What's new
   This paves the way for many other improvements in LaTeX->LyX translation
   (bugs 3035, 4379, 4917).
 
-- Quotes in InsetListings are now normal quotes, rather than InsetQuote
+- Quotes in InsetListings are now plain quotes, rather than InsetQuote
   entries (bug 5782).
 
 
@@ -53,6 +53,7 @@ What's new
 - Add Jump-back navigation button to the standard toolbar (bug 898).
 
 - Add Open/Close items to context menu of collapsable insets.
+
 
 * WINDOWS INSTALLER
 
@@ -115,6 +116,8 @@ What's new
 
 - Close the correct document when the close tab button is pressed while
   the cursor is in another tabgroup (with split-screen) (bug 5819).
+
+- Correctly restore documents that are assigned to a master.
 
 - Accidentally adding more than two rows for cases environments in
   formulas is no longer possible (bug 4141).

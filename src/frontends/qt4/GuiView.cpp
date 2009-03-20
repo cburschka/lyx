@@ -527,7 +527,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 		if (b->parent()) {
 			// This is a child document, just close the tab
 			// after saving but keep the file loaded.
-			if (!closeBuffer(*b, false)) {
+			if (!closeBuffer(*b, true)) {
 				closing_ = false;
 				close_event->ignore();
 				return;
@@ -1791,7 +1791,10 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 		theLyXFunc().gotoBookmark(i+1, false, false);
 
 	if (buf.isClean() || buf.paragraphs().empty()) {
-		if (buf.masterBuffer() == &buf && tolastopened)
+		// save in sessions if requested
+		// do not save childs if their master
+		// is opened as well
+		if (tolastopened)
 			theSession().lastOpened().add(buf.fileName());
 		if (buf.parent())
 			// Don't close child documents.
@@ -1835,9 +1838,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 	}
 
 	// save file names to .lyx/session
-	// if master/slave are both open, do not save slave since it
-	// will be automatically loaded when the master is loaded
-	if (buf.masterBuffer() == &buf && tolastopened)
+	if (tolastopened)
 		theSession().lastOpened().add(buf.fileName());
 
 	if (buf.parent())
