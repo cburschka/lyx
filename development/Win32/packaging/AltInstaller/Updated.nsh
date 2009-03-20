@@ -23,6 +23,12 @@ Function UpdateModifiedFiles
  #SetOutPath "$INSTDIR\Resources\examples"
  SetOutPath "$INSTDIR\Resources\images"
  File "${PRODUCT_SOURCEDIR}\Resources\images\bookmark-goto_0.png"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-feature_m-align-center.png"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-feature_m-align-left.png"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-feature_m-align-right.png"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-feature_m-valign-bottom.png"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-feature_m-valign-middle.png"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-feature_m-valign-top.png"
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\stdinsets.inc"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
