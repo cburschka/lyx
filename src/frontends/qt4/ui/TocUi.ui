@@ -19,7 +19,9 @@
    <item row="0" column="0" colspan="2" >
     <widget class="QComboBox" name="typeCO" >
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Ignored" >
+      <sizepolicy>
+       <hsizetype>13</hsizetype>
+       <vsizetype>0</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -85,7 +87,9 @@
      <item>
       <widget class="QCheckBox" name="sortCB" >
        <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+        <sizepolicy>
+         <hsizetype>0</hsizetype>
+         <vsizetype>0</vsizetype>
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -104,7 +108,9 @@
      <item>
       <widget class="QCheckBox" name="persistentCB" >
        <property name="sizePolicy" >
-        <sizepolicy vsizetype="Minimum" hsizetype="Fixed" >
+        <sizepolicy>
+         <hsizetype>0</hsizetype>
+         <vsizetype>1</vsizetype>
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>

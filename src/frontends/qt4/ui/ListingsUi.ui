@@ -158,7 +158,9 @@
           <item row="2" column="1" >
            <widget class="QComboBox" name="numberFontSizeCO" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -202,7 +204,9 @@
           <item row="0" column="1" >
            <widget class="QComboBox" name="fontsizeCO" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -237,7 +241,9 @@
           <item row="1" column="1" >
            <widget class="QComboBox" name="fontstyleCO" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -441,7 +447,9 @@
        <item row="0" column="0" >
         <widget class="QGroupBox" name="listingsGB" >
          <property name="sizePolicy" >
-          <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+          <sizepolicy>
+           <hsizetype>0</hsizetype>
+           <vsizetype>0</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -480,7 +488,9 @@
             </widget>
             <widget class="QTextEdit" name="listingsED" >
              <property name="sizePolicy" >
-              <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+              <sizepolicy>
+               <hsizetype>0</hsizetype>
+               <vsizetype>0</vsizetype>
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>

@@ -120,7 +120,9 @@
           <item row="0" column="0" >
            <widget class="QComboBox" name="externalCO" >
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="MinimumExpanding" >
+             <sizepolicy>
+              <hsizetype>3</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -234,7 +236,9 @@ p, li { white-space: pre-wrap; }
              <bool>true</bool>
             </property>
             <property name="sizePolicy" >
-             <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+             <sizepolicy>
+              <hsizetype>5</hsizetype>
+              <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -336,7 +340,9 @@ p, li { white-space: pre-wrap; }
             <item row="0" column="1" >
              <widget class="QLineEdit" name="angleED" >
               <property name="sizePolicy" >
-               <sizepolicy vsizetype="Fixed" hsizetype="MinimumExpanding" >
+               <sizepolicy>
+                <hsizetype>3</hsizetype>
+                <vsizetype>0</vsizetype>
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
