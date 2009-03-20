@@ -406,7 +406,9 @@
          <item row="0" column="0" >
           <widget class="QLineEdit" name="optionsLE" >
            <property name="sizePolicy" >
-            <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+            <sizepolicy>
+             <hsizetype>7</hsizetype>
+             <vsizetype>0</vsizetype>
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>

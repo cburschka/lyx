@@ -10,7 +10,9 @@
    </rect>
   </property>
   <property name="sizePolicy" >
-   <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+   <sizepolicy>
+    <hsizetype>5</hsizetype>
+    <vsizetype>5</vsizetype>
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -53,7 +55,9 @@
        <item>
         <widget class="QListWidget" name="leftLW" >
          <property name="sizePolicy" >
-          <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+          <sizepolicy>
+           <hsizetype>5</hsizetype>
+           <vsizetype>5</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -90,7 +94,9 @@
        <item>
         <widget class="QListWidget" name="rightLW" >
          <property name="sizePolicy" >
-          <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+          <sizepolicy>
+           <hsizetype>5</hsizetype>
+           <vsizetype>5</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -126,7 +132,9 @@
      <item row="1" column="0" >
       <widget class="QLabel" name="texCodeL" >
        <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="MinimumExpanding" >
+        <sizepolicy>
+         <hsizetype>3</hsizetype>
+         <vsizetype>0</vsizetype>
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -148,7 +156,9 @@
      <item row="2" column="0" >
       <widget class="QCheckBox" name="matchCB" >
        <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="MinimumExpanding" >
+        <sizepolicy>
+         <hsizetype>3</hsizetype>
+         <vsizetype>0</vsizetype>
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -175,7 +185,9 @@
        <item>
         <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
-          <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+          <sizepolicy>
+           <hsizetype>5</hsizetype>
+           <vsizetype>0</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -194,7 +206,9 @@
        <item>
         <widget class="QComboBox" name="sizeCO" >
          <property name="sizePolicy" >
-          <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+          <sizepolicy>
+           <hsizetype>5</hsizetype>
+           <vsizetype>0</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -243,7 +257,9 @@
        <item>
         <widget class="QPushButton" name="insertPB" >
          <property name="sizePolicy" >
-          <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+          <sizepolicy>
+           <hsizetype>5</hsizetype>
+           <vsizetype>0</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -259,7 +275,9 @@
        <item>
         <widget class="QPushButton" name="closePB" >
          <property name="sizePolicy" >
-          <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+          <sizepolicy>
+           <hsizetype>5</hsizetype>
+           <vsizetype>0</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>

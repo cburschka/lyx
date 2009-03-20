@@ -22,7 +22,9 @@
    <item row="1" column="0" >
     <widget class="QTextBrowser" name="infoML" >
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Maximum" hsizetype="Expanding" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>4</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>

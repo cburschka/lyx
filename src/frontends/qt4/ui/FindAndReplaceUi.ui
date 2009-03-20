@@ -10,7 +10,9 @@
    </rect>
   </property>
   <property name="sizePolicy" >
-   <sizepolicy vsizetype="Expanding" hsizetype="MinimumExpanding" >
+   <sizepolicy>
+    <hsizetype>3</hsizetype>
+    <vsizetype>7</vsizetype>
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -43,7 +45,9 @@
     </rect>
    </property>
    <property name="sizePolicy" >
-    <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+    <sizepolicy>
+     <hsizetype>7</hsizetype>
+     <vsizetype>7</vsizetype>
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
@@ -53,7 +57,9 @@
    </property>
    <widget class="QWidget" name="tab_3" >
     <property name="sizePolicy" >
-     <sizepolicy vsizetype="Expanding" hsizetype="Preferred" >
+     <sizepolicy>
+      <hsizetype>5</hsizetype>
+      <vsizetype>7</vsizetype>
       <horstretch>0</horstretch>
       <verstretch>0</verstretch>
      </sizepolicy>
@@ -219,7 +225,9 @@
          <bool>true</bool>
         </property>
         <property name="sizePolicy" >
-         <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
+         <sizepolicy>
+          <hsizetype>1</hsizetype>
+          <vsizetype>0</vsizetype>
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -256,7 +264,9 @@
    </widget>
    <widget class="QWidget" name="tab_4" >
     <property name="sizePolicy" >
-     <sizepolicy vsizetype="Expanding" hsizetype="Preferred" >
+     <sizepolicy>
+      <hsizetype>5</hsizetype>
+      <vsizetype>7</vsizetype>
       <horstretch>0</horstretch>
       <verstretch>0</verstretch>
      </sizepolicy>
@@ -280,7 +290,9 @@
          <bool>false</bool>
         </property>
         <property name="sizePolicy" >
-         <sizepolicy vsizetype="Minimum" hsizetype="Preferred" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>1</vsizetype>
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
