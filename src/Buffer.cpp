@@ -1948,8 +1948,7 @@ void Buffer::updateMacros(DocIterator & it, DocIterator & scope) const
 			// is it a nested text inset?
 			if (iit->inset->asInsetText()) {
 				// Inset needs its own scope?
-				InsetText const * itext
-				= iit->inset->asInsetText();
+				InsetText const * itext = iit->inset->asInsetText();
 				bool newScope = itext->isMacroScope();
 
 				// scope which ends just behind the inset
@@ -1966,8 +1965,8 @@ void Buffer::updateMacros(DocIterator & it, DocIterator & scope) const
 			// is it an external file?
 			if (iit->inset->lyxCode() == INCLUDE_CODE) {
 				// get buffer of external file
-				InsetInclude const & inset
-					= static_cast<InsetInclude const &>(*iit->inset);
+				InsetInclude const & inset =
+					static_cast<InsetInclude const &>(*iit->inset);
 				d->macro_lock = true;
 				Buffer * child = inset.loadIfNeeded(*this);
 				d->macro_lock = false;
@@ -1976,9 +1975,9 @@ void Buffer::updateMacros(DocIterator & it, DocIterator & scope) const
 
 				// register its position, but only when it is
 				// included first in the buffer
-				if (d->children_positions.find(child)
-					== d->children_positions.end())
-					d->children_positions[child] = it;
+				if (d->children_positions.find(child) ==
+					d->children_positions.end())
+						d->children_positions[child] = it;
 
 				// register child with its scope
 				d->position_to_children[it] = Impl::ScopeBuffer(scope, child);
@@ -1989,8 +1988,8 @@ void Buffer::updateMacros(DocIterator & it, DocIterator & scope) const
 				continue;
 
 			// get macro data
-			MathMacroTemplate & macroTemplate
-			= static_cast<MathMacroTemplate &>(*iit->inset);
+			MathMacroTemplate & macroTemplate =
+				static_cast<MathMacroTemplate &>(*iit->inset);
 			MacroContext mc(*this, it);
 			macroTemplate.updateToContext(mc);
 
