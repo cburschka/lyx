@@ -34,7 +34,7 @@ else()
    if(ZLIB_FIND_REQUIRED)
       message(STATUS "Looked for Z libraries named ${POTENTIAL_Z_LIBS}.")
       message(STATUS "Found no acceptable Z library. This is fatal.")
-      message(FATAL_ERROR "Could NOT find z library")
+      message(FATAL_ERROR "Could NOT find z library, set GNUWIN32_DIR to dir containing /include and /bin folders: -DGNUWIN32_DIR=...")
    endif()
 endif()
 

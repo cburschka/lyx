@@ -35,6 +35,7 @@
 #cmakedefine HAVE_OPEN 1
 #cmakedefine HAVE_CHMOD 1
 #cmakedefine HAVE_CLOSE 1
+#cmakedefine HAVE_DCGETTEXT 1
 #cmakedefine HAVE_POPEN 1
 #cmakedefine HAVE_PCLOSE 1
 #cmakedefine HAVE__OPEN 1
@@ -43,6 +44,7 @@
 #cmakedefine HAVE__PCLOSE 1
 #cmakedefine HAVE_GETPID 1
 #cmakedefine HAVE__GETPID 1
+#cmakedefine HAVE_GETTEXT 1
 #cmakedefine HAVE_MKDIR 1
 #cmakedefine HAVE__MKDIR 1
 #cmakedefine HAVE_PUTENV 1
@@ -96,12 +98,13 @@
 #  endif
 #endif
 
+#cmakedefine GETTEXT_FOUND 1
+
 #cmakedefine HAVE_ALLOCA 1
 #cmakedefine HAVE_SYMBOL_ALLOCA 1
 #if defined(HAVE_SYMBOL_ALLOCA) && !defined(HAVE_ALLOCA)
 #define HAVE_ALLOCA
 #endif
-
 
 #cmakedefine HAVE_ICONV_CONST 1
 #ifdef HAVE_ICONV_CONST
