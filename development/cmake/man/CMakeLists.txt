@@ -18,7 +18,7 @@ macro(add_manual _mansrc)
 endmacro(add_manual)
 
 set(real_pkgdatadir ${LYX_ABS_INSTALLED_DATADIR})
-foreach(_mn lyx.1in src/client/lyxclient.1in src/tex2lyx/tex2lyx.1)
+foreach(_mn lyx.1in src/client/lyxclient.1in src/tex2lyx/tex2lyx.1in)
   add_manual(${_mn})
 endforeach(_mn)
 
