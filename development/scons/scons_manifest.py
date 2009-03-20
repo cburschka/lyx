@@ -1451,9 +1451,9 @@ lib_images_files = Split('''
     split-view_horizontal.png
     split-view_vertical.png
     standard.png
-    tabular-feature_align-center.png
-    tabular-feature_align-left.png
-    tabular-feature_align-right.png
+    tabular-feature_m-align-center.png
+    tabular-feature_m-align-left.png
+    tabular-feature_m-align-right.png
     tabular-feature_append-column.png
     tabular-feature_append-row.png
     tabular-feature_delete-column.png
@@ -1471,9 +1471,9 @@ lib_images_files = Split('''
     tabular-feature_toggle-rotate-cell.png
     tabular-feature_toggle-rotate-tabular.png
     tabular-feature_unset-all-lines.png
-    tabular-feature_valign-bottom.png
-    tabular-feature_valign-middle.png
-    tabular-feature_valign-top.png
+    tabular-feature_m-valign-bottom.png
+    tabular-feature_m-valign-middle.png
+    tabular-feature_m-valign-top.png
     tabular-insert.png
     thesaurus-entry.png
     toolbar-toggle_math.png
