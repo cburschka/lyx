@@ -129,7 +129,7 @@ TextMetrics::TextMetrics(BufferView * bv, Text * text)
 	dim_.wid = max_width_;
 	dim_.asc = 10;
 	dim_.des = 10;
-	parMetrics(0, true);
+
 	//text_->updateLabels(bv->buffer());
 }
 
