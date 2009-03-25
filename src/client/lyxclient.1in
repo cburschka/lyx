@@ -3,9 +3,9 @@
 .\"
 .\"  tbl lyxclient.1 | nroff -man | less
 .\"
-.TH LYXCLIENT 1 "Oct 2003" "Version 1.4" "lyxclient 1.4"
+.TH LYXCLIENT 1 "@LYX_DATE@" "Version @VERSION@" "lyxclient @VERSION@"
 .SH NAME
-lyxclient \- send commands to a running LyX editor
+lyxclient@program_suffix@ \- send commands to a running LyX editor
 .\"
 .\" setup
 .de Cr
@@ -13,7 +13,7 @@ lyxclient \- send commands to a running LyX editor
 .el \(co
 ..
 .SH SYNOPSIS
-\fBlyxclient\fR [ \fIoptions\fR ]
+\fBlyxclient@program_suffix@\fR [ \fIoptions\fR ]
 .br
 .SH DESCRIPTION
 When LyX starts, it creates a unique, per-process local socket in the
@@ -50,7 +50,7 @@ and from standard input.
 LyX commands documentation can be found in LyX Help menu.
 .TP 6
 .BI \-c " command"
-send a single \fIcommand\fR, print LyX information to standard output and exit.
+send a single \fIcommand\fR, print LyX information to standard output and exit. LYXCMD prefix is needed in the given command.
 .TP
 .BI \-g " file line"
 this is simply a wrapper for the command 'server\-goto\-file\-row \fIfile\fR \fIline\fR'. It is used by the DVI previewer to elicit inverse DVI search.
@@ -77,7 +77,7 @@ can be used to specify the socket special file that must be used.
 LyX sets this variable.
 It is overridden by the \fB\-a\fR option.
 .SH SEE ALSO
-lyx(1), xdvi(1), LFUNs.lyx.
+lyx@program_suffix@(1), xdvi(1), LFUNs.lyx.
 .SH AUTHORS
 Jo\[~a]o Luis M. Assirati <assirati@fma.if.usp.br> is the principal author
 of lyxclient.
