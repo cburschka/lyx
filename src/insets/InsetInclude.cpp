@@ -162,7 +162,7 @@ InsetLabel * createLabel(docstring const & label_str)
 InsetInclude::InsetInclude(InsetCommandParams const & p)
 	: InsetCommand(p, "include"), include_label(uniqueID()),
 	  preview_(new RenderMonitoredPreview(this)), failedtoload_(false),
-	  set_label_(false), label_(0)
+	  set_label_(false), label_(0), child_buffer_(0)
 {
 	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
 
@@ -176,7 +176,7 @@ InsetInclude::InsetInclude(InsetCommandParams const & p)
 InsetInclude::InsetInclude(InsetInclude const & other)
 	: InsetCommand(other), include_label(other.include_label),
 	  preview_(new RenderMonitoredPreview(this)), failedtoload_(false),
-	  set_label_(false), label_(0)
+	  set_label_(false), label_(0), child_buffer_(0)
 {
 	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
 
@@ -230,6 +230,9 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSET_MODIFY: {
+		// It should be OK just to invalidate the cache is setParams()
+		// If not....
+		// child_buffer_ = 0;
 		InsetCommandParams p(INCLUDE_CODE);
 		if (cmd.getArg(0) == "changetype") {
 			InsetCommand::doDispatch(cur, cmd);
@@ -311,6 +314,9 @@ bool InsetInclude::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetInclude::setParams(InsetCommandParams const & p)
 {
+	// invalidate the cache
+	child_buffer_ = 0;
+
 	InsetCommand::setParams(p);
 	set_label_ = false;
 
@@ -378,16 +384,25 @@ Buffer * InsetInclude::getChildBuffer(Buffer const & buffer) const
 
 Buffer * InsetInclude::loadIfNeeded(Buffer const & parent) const
 {
-	InsetCommandParams const & p = params();
+	// Don't try to load it again if we failed before.
 	if (failedtoload_)
 		return 0;
 
+	// Use cached Buffer if possible.
+	if (child_buffer_ != 0) {
+		if (theBufferList().isLoaded(child_buffer_))
+			return child_buffer_;
+		// Buffer vanished, so invalidate cache and try to reload.
+		child_buffer_ = 0;
+	}
+
+	InsetCommandParams const & p = params();
 	if (isVerbatim(p) || isListings(p))
 		return 0;
 
 	string const parent_filename = parent.absFileName();
-	FileName const included_file = makeAbsPath(to_utf8(p["filename"]),
-			   onlyPath(parent_filename));
+	FileName const included_file = 
+		makeAbsPath(to_utf8(p["filename"]), onlyPath(parent_filename));
 
 	if (!isLyXFilename(included_file.absFilename()))
 		return 0;
@@ -415,6 +430,8 @@ Buffer * InsetInclude::loadIfNeeded(Buffer const & parent) const
 		}
 	}
 	child->setParent(&parent);
+	// Cache the child buffer.
+	child_buffer_ = child;
 	return child;
 }
 

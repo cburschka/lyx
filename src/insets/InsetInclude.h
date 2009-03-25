@@ -134,6 +134,7 @@ private:
 	mutable RenderButton button_;
 	mutable docstring listings_label_;
 	InsetLabel * label_;
+	mutable Buffer * child_buffer_;
 };
 
 
