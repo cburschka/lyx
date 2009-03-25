@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -940,30 +940,8 @@ Negrita
 \end_layout
 
 \begin_layout Standard
-Respecto a las teclas de menú y atajos de teclado, probablemente serás remitido
- a la sección 
-\emph on
-Combinaciones de teclas
-\emph default
- del 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-Manual de Características Extendidas
-\emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- (archivo 
-\family typewriter
-Extended.lyx
-\family default
-).
- Cuando necesitemos hacer referencia a asociaciones de teclas, usaremos
- la siguiente convención:
+Cuando necesitemos hacer referencia a asociaciones de teclas, usaremos la
+ siguiente convención:
 \end_layout
 
 \begin_layout Itemize
@@ -972,7 +950,7 @@ Extended.lyx
 
 
 \family sans
-C-
+Ctrl-
 \family default
 
 \begin_inset Quotes eld
@@ -991,7 +969,7 @@ Control
 
 
 \family sans
-S-
+Shift-
 \family default
 
 \begin_inset Quotes eld
@@ -1010,17 +988,13 @@ Mayúsculas (Shift)
 
 
 \family sans
-M-
+Alt-
 \family default
 
 \begin_inset Quotes eld
 \end_inset
 
  indica la tecla 
-\family sans
-Meta
-\family default
-, que en la mayoría de los teclados será la tecla 
 \family sans
 Alt
 \family default
@@ -1285,47 +1259,17 @@ Intro
 \end_layout
 
 \begin_layout Standard
-También verás de vez en cuando algo como 
-\begin_inset Quotes eld
-\end_inset
 
-(Véase 
-\emph on
-Características extendidas
-\emph default
-)
-\begin_inset Quotes erd
-\end_inset
-
+\lang english
+The list with the currently set shortcuts can be found in the 
+\family sans
+Help
+\family default
+ menu under 
+\family sans
+Shortcuts
+\family default
 .
- Hemos listado las posibles asociaciones de teclas predeterminadas para
- cada función en su correspondiente entrada en el manual 
-\emph on
-Características extendidas
-\emph default
-, así que mira también allí.
- Observa que hay dos mapas de teclado diferentes de uso habitual en la comunidad
- LyX: el estilo 
-\begin_inset Quotes eld
-\end_inset
-
-CUA
-\begin_inset Quotes erd
-\end_inset
-
- es el predeterminado y conocido por los usuarios de PC, y el estilo 
-\begin_inset Quotes eld
-\end_inset
-
-emacs
-\begin_inset Quotes erd
-\end_inset
-
-, que es común para los que usan el editor Emacs en sistemas Unix.
- Si no se especifica, las combinaciones de teclas en la documentación correspond
-en al mapa predeterminado CUA.
- Si te gusta Emacs, deberías ser bastante espabilado para leer la documentación
- e imaginar tus propias combinaciones.
 \end_layout
 
 \begin_layout Subsection

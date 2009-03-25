@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -142,8 +142,8 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 17.
- Januar 2009
+letzte Änderung: 24.
+ März 2009
 \end_layout
 
 \begin_layout Standard
@@ -1045,42 +1045,24 @@ inline
  Zunächst ist der Titel einfach am Anfang des Dokuments, und nicht schön
  zentriert auf einer eigenen Seite.
  Es sind zunächst auch weder Inhaltsverzeichnis noch Fußnoten sichtbar.
- Eine Fußnote sieht so
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Hallo! Zum Schließen dieser Fußnote klicken Sie bitte auf das grau unterlegte
- Feld mit dem Wort 
-\emph on
-Fußnote
-\emph default
-.
-\end_layout
+ Eine Fußnote sieht so aus: 
+\begin_inset Graphics
+	filename clipart/FussnoteQt4.png
+	scale 75
 
 \end_inset
 
- aus.
  Um sie zu öffnen, klicken Sie mit dem linken Mausknopf darauf.
  Um das Inhaltsverzeichnis zu betrachten, wählen Sie das Menü 
 \family sans
 Navigieren
 \family default
 , dort wird der Inhalt ebenfalls automatisch angezeigt – Versuchen Sie es
- einmal! Wenn Sie auf den Werkzezugleistenknopf
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
+ einmal! Wenn Sie auf den Werkzezugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/dialog-toggle_toc.png
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 24bp 24bp
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
@@ -1178,7 +1160,7 @@ Hervorgehoben
 \family typewriter
 Schreibmaschine
 \family default
- kennzeichnet Programmtext und Dateinamen, LaTeX- und LyX-Code und Funktionen.
+ kennzeichnet Programmtext und Dateinamen, LyX-Code und Funktionen.
 \end_layout
 
 \begin_layout Itemize
@@ -1197,17 +1179,16 @@ Kapitälchen
  werden für Eigennamen verwendet.
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+Fett
+\series default
+ kennzeichnet LaTeX-Code.
+\end_layout
+
 \begin_layout Standard
-Tasten und Tastaturbelegungen werden im Abschnitt 
-\emph on
-Grundlegende Tastaturfunktionen
-\emph default
- des 
-\emph on
-Benutzerhandbuches
-\emph default
- behandelt.
- Wenn Tasten bezeichnet werden sollen, gelten folgende Regeln:
+Wenn Tasten bezeichnet werden sollen, gelten folgende Regeln:
 \end_layout
 
 \begin_layout Itemize
@@ -1224,14 +1205,6 @@ Umschalt
 Alt
 \family default
  werden in den Menüs für Tastenkürzel benutzt.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Meta
-\family default
-: manche Tastaturen haben diese Taste
 \end_layout
 
 \begin_layout Itemize
@@ -1356,45 +1329,15 @@ Enter
 \end_layout
 
 \begin_layout Standard
-Ab und zu werden Sie auch Hinweise wie 
-\begin_inset Quotes gld
-\end_inset
-
-siehe 
-\emph on
-Tutorium
-\emph default
-
-\begin_inset Quotes grd
-\end_inset
-
- sehen.
- Dort sind für jede Funktion auch alle möglichen Tastaturbelegungen aufgezählt,
- Sie können also auch dort nachschlagen.
- Beachten Sie dabei bitte auch, dass unter den LyX-Benutzern zwei unterschiedlic
-he Tastaturbelegungen verbreitet sind: Der standardmäßig voreingestellte
- 
-\begin_inset Quotes gld
-\end_inset
-
-CUA
-\begin_inset Quotes grd
-\end_inset
-
--Stil (Nutzern aus der PC-Welt vertraut) und der 
-\begin_inset Quotes gld
-\end_inset
-
-Emacs
-\begin_inset Quotes grd
-\end_inset
-
--Stil, der mehr von denen verwendet wird, die im Unix-Umfeld groß geworden
- sind und dort diesen Editor verwenden.
- Falls nicht anders angegeben, beziehen sich alle Tastaturbelegungen auf
- die Standardeinstellung CUA.
- Falls Sie Emacs verwenden, sind Sie sicher auch clever genug, die Dokumentation
- zu lesen und die entsprechenden Tastaturkürzel selbst herauszusuchen.
+Die Liste mit den aktuell definierten Tastenkürzeln befindet sich im 
+\family sans
+Hilfe
+\family default
+ Menü unter 
+\family sans
+Tastenkürzel
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -1713,8 +1656,6 @@ lesen!
 \begin_layout Standard
 Sie ersparen sich dadurch sicherlich einiges an Frustration und werden die
  Vorzüge von LyX sicher schnell zu schätzen wissen.
- Denn LyX kann alles, was Sie von anderen Textverarbeitungen her kennen,
- wenn es auch einen anderen Ansatz verwendet.
 \end_layout
 
 \begin_layout Section

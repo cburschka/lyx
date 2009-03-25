@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -843,7 +843,7 @@ dvi
 \family typewriter
 dvi
 \family default
-, ou le convertir vers d'autres formats comme PostScript®, PDF, etc\SpecialChar \ldots{}
+, ou le convertir vers d'autres formats comme PostScript, PDF, etc\SpecialChar \ldots{}
 
 \end_layout
 
@@ -1080,26 +1080,10 @@ Si certains d'entre vous ont imprimé les manuels, d'autres les lisent en
  versions papier, mais simplement au tout début du document.
  Les notes de bas de page et la table des matières ne sont pas visibles
  dans le corps du document.
- Les notes de bas de page, qui ont l'aspect suivant
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Veuillez agréer nos hommages les plus respectueux ! 
-\end_layout
-
-\begin_layout Plain Layout
-Pour refermer cette note, cliquez sur la boîte grise en haut à gauche, celle
- qui contient le mot 
-\begin_inset Quotes fld
-\end_inset
-
-bas
-\begin_inset Quotes frd
-\end_inset
-
-.
-\end_layout
+ Les notes de bas de page, qui ont l'aspect suivant: 
+\begin_inset Graphics
+	filename clipart/footnoteQt4.png
+	scale 75
 
 \end_inset
 
@@ -1189,7 +1173,7 @@ la police à
 \family typewriter
 Chasse fixe
 \family default
- sert pour les sources de programmes et les noms de fichiers, le code LaTeX,
+ sert pour les sources de programmes et les noms de fichiers, le code LyX,
  ainsi que les codes et fonctions LyX;
 \end_layout
 
@@ -1219,25 +1203,7 @@ Gras
 \end_layout
 
 \begin_layout Standard
-Pour les accélérateurs de menus et d'autres raccourcis clavier plus obscurs,
- consultez la section 
-\emph on
-Raccourcis Clavier
-\emph default
- du manuel d'
-\emph on
-Options
-\begin_inset space ~
-\end_inset
-
-Avancées
-\emph default
- (le fichier 
-\family typewriter
-Extended.lyx
-\family default
-).
- Voici les conventions utilisées pour décrire les séquences de touches :
+Voici les conventions utilisées pour décrire les séquences de touches :
 \end_layout
 
 \begin_layout Itemize
@@ -1246,7 +1212,7 @@ Extended.lyx
 
 
 \family sans
-C-
+Ctrl-
 \family default
 
 \begin_inset Quotes frd
@@ -1254,11 +1220,7 @@ C-
 
  pour la touche 
 \family sans
-Control-
-\family default
- ou 
-\family sans
-Ctrl- ;
+Control ;
 \end_layout
 
 \begin_layout Itemize
@@ -1267,27 +1229,15 @@ Ctrl- ;
 
 
 \family sans
-S-
+Shift-
 \family default
 
-\begin_inset Quotes frd
-\end_inset
-
- comme 
-\begin_inset Quotes fld
-\end_inset
-
- 
-\family sans
-Shift
-\family default
- 
 \begin_inset Quotes frd
 \end_inset
 
  pour la touche 
 \family sans
-Majuscule- ;
+Majuscule ;
 \end_layout
 
 \begin_layout Itemize
@@ -1295,22 +1245,18 @@ Majuscule- ;
 \end_inset
 
 
-\family sans
-M-
-\family default
-
-\begin_inset Quotes frd
-\end_inset
-
- pour la touche 
-\family sans
-Meta-
-\family default
-, ou 
 \family sans
 Alt-
 \family default
- sur certains claviers ;
+
+\begin_inset Quotes frd
+\end_inset
+
+ pour la touche 
+\family sans
+Alt
+\family default
+ ;
 \end_layout
 
 \begin_layout Itemize
@@ -1644,56 +1590,23 @@ Entrée
 \end_layout
 
 \begin_layout Standard
-Vous pourrez rencontrer des phrases du genre 
-\begin_inset Quotes fld
-\end_inset
 
-(Voir le manuel d'
-\emph on
-Options
-\begin_inset space ~
-\end_inset
-
-Avancées
-\emph default
-)
-\begin_inset Quotes frd
-\end_inset
-
-.
- Dans le manuel d'
-\emph on
-Options
-\begin_inset space ~
-\end_inset
-
-Avancée
-\emph default
-s, nous décrivons en effet le rôle de chaque fonction en faisant la liste
- de ses raccourcis clavier, il peut donc être utile de le consulter.
- À noter qu'il existe deux familles de raccourcis clavier en usage dans
- la communauté LyX : le style 
-\begin_inset Quotes fld
-\end_inset
-
-CUA
-\begin_inset Quotes frd
-\end_inset
-
- utilisé par défaut et familier à ceux provenant du monde du PC, et le style
+\lang english
+The list with the currently set shortcuts can be found in
+\lang french
+ le menu 
+\family sans
+Aide
+\family default
  
-\begin_inset Quotes fld
-\end_inset
-
-Emacs
-\begin_inset Quotes frd
-\end_inset
-
- pour ceux qui ont grandi sur des machines Unix et utilisé l'éditeur Emacs.
- Dans la documentation, les raccourcis clavier font partie de la famille
- CUA, sauf s'il en est spécifié autrement.
- Si vous aimez Emacs, vous devriez être capable de parcourir la documentation
- pour découvrir les raccourcis par vous-même.
+\lang english
+under
+\lang french
+ 
+\family sans
+Raccourcis
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -2374,6 +2287,26 @@ de L'Utilisateur
 \end_layout
 
 \begin_layout Description
+Math
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Extension du 
+\emph on
+Guide
+\begin_inset space ~
+\end_inset
+
+de L'Utilisateur
+\emph default
+, il explique en détail 
+\lang english
+how to typeset any kind of formulas.
+\end_layout
+
+\end_deeper
+\begin_layout Description
 Options
 \begin_inset space ~
 \end_inset
@@ -2419,6 +2352,20 @@ Manuel
 d'Apprentissage
 \emph default
 .
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Raccourcis
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+Tables with the currently defined LyX
+\lang french
+ raccourcis.
 \end_layout
 
 \end_deeper
@@ -2499,18 +2446,17 @@ d'Apprentissage
 
 \begin_layout Standard
 Sinon, vous vous poserez des problèmes inutilement.
- LyX sait faire tout ce vous attendez d'un traitement de texte, mais avec
- une approche différente.
 \end_layout
 
 \begin_layout Section
+Contribuer au projet LyX
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Contrib"
 
 \end_inset
 
-Contribuer au projet LyX
+
 \end_layout
 
 \begin_layout Subsection
@@ -2671,8 +2617,6 @@ Récupérez le code source de LyX le plus récent
 \end_inset
 
 
-\lang english
-
 \begin_inset Flex URL
 status collapsed
 
@@ -2683,8 +2627,6 @@ http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc
 
 \end_inset
 
-
-\lang french
 
 \begin_inset Newline newline
 \end_inset
