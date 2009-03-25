@@ -273,7 +273,7 @@ src_client_files = Split('''
 
 src_client_extra_files = Split('''
     Makefile.am
-    lyxclient.man
+    lyxclient.1in
     pch.h
 ''')
 
@@ -626,7 +626,7 @@ src_tex2lyx_extra_files = Split('''
     test-insets.tex
     test-structure.tex
     test.ltx
-    tex2lyx.1
+    tex2lyx.1in
     test/box-color-size-space-align.tex
     test/DummyDocument.tex
     test/foo.eps
