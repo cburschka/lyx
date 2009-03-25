@@ -79,7 +79,16 @@ ADD_CUSTOM_COMMAND(
     DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" ${_potfiles_dep}
     )
 
-file(GLOB LYX_PO_FILES ${TOP_SRC_DIR}/po/*.po)
+#
+# We have to copy the po-files first,
+# otherwise they would be modified (inside the macro GETTEXT_CREATE_TRANSLATIONS())
+# This makes the "svn up" on po-files work again
+file(GLOB LYX_BASE_PO_FILES RELATIVE ${TOP_SRC_DIR}/po ${TOP_SRC_DIR}/po/*.po)
+set(LYX_PO_FILES)
+foreach(_pofile ${LYX_BASE_PO_FILES})
+  configure_file(${TOP_SRC_DIR}/po/${_pofile} ${CMAKE_CURRENT_BINARY_DIR}/${_pofile} COPYONLY)
+  list(APPEND LYX_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile})
+endforeach(_pofile)
 
 GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot ALL ${LYX_PO_FILES})
 
