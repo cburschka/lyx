@@ -1,4 +1,4 @@
-#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -251,8 +251,7 @@ Observa que no hay barra de desplazamiento horizontal.
  El texto fluye a las nuevas páginas en vertical, de ahí que sólo haga falta
  una barra de deslizamiento vertical.
  Hay tres casos en que podrías necesitar una barra de desplazamiento horizontal.
- El primero es el caso de tener grandes figuras mostradas en modo WYSIWYG\SpecialChar \@.
-
+ El primero es el caso de tener grandes figuras mostradas en modo WYSIWYG.
  Esto, sin embargo, se debe a un fallo en la rutina encargada de dibujar
  los gráficos en LyX en modo WYSIWYG; los gráficos deberían escalarse para
  rellenar la ventana, de igual manera que reescalas un gráfico para ajustarlo
@@ -735,8 +734,7 @@ Si piensas hacer esto, tienes más información en el manual
 \emph on
 Características adicionales
 \emph default
-\SpecialChar \@.
-
+.
 \end_layout
 
 \end_inset
@@ -13844,7 +13842,7 @@ raya
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $x^{2}\lyxlock -y^{2}\lyxlock =z^{2}\lyxlock $
+\begin_inset Formula $x^{2}-y^{2}=z^{2}$
 \end_inset
 
 
@@ -13958,9 +13956,9 @@ guionado
 \end_layout
 
 \begin_layout Standard
-A veces interesará evitar que ciertas palabras o estructuras se partan.Supongamos
- que en el documento se describe una combinación de teclas  en la forma
- 
+A veces interesará evitar que ciertas palabras o estructuras se partan.
+ Supongamos que en el documento se describe una combinación de teclas en
+ la forma 
 \begin_inset Quotes fld
 \end_inset
 
@@ -19621,7 +19619,7 @@ reference "sec:Gráficos"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Platypus"
+reference "cap:Ornitorrinco"
 
 \end_inset
 
@@ -19670,11 +19668,11 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Platypus"
+name "cap:Ornitorrinco"
 
 \end_inset
 
-Un platypus muy distorsionado en un flotante.
+Un ornitorrinco muy distorsionado en un flotante.
 \end_layout
 
 \end_inset
@@ -19862,11 +19860,11 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Platypus"
+name "fig:Ornitorrinco"
 
 \end_inset
 
-Platypus
+Ornitorrinco
 \end_layout
 
 \end_inset
@@ -20144,7 +20142,7 @@ Teo
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\int x^{2}\lyxlock dx$
+\begin_inset Formula $\int x^{2}dx$
 \end_inset
 
 
@@ -21527,9 +21525,9 @@ Puedes omitir partes de una ecuación, como se ve en la siguiente matriz
  con huecos:
 \begin_inset Formula \[
 \left(\begin{array}{ccc}
-\lambda_{1}\lyxlock \\
+\lambda_{1}\\
  & \ddots\\
- &  & \lambda_{n}\lyxlock \end{array}\right)\]
+ &  & \lambda_{n}\end{array}\right)\]
 
 \end_inset
 
@@ -21584,7 +21582,7 @@ Matemáticas ! Subíndices
 Con el panel de ecuaciones se pueden poner exponentes y subíndices, pero
  la forma más sencilla es usar comandos.
  Para escribir 
-\begin_inset Formula $x^{2}\lyxlock $
+\begin_inset Formula $x^{2}$
 \end_inset
 
 , teclea en una ecuación 
@@ -21616,11 +21614,11 @@ Espacio
 x^2y
 \series default
 , obtendrás 
-\begin_inset Formula $x^{2y}\lyxlock $
+\begin_inset Formula $x^{2y}$
 \end_inset
 
 ; para obtener 
-\begin_inset Formula $x^{2}\lyxlock y$
+\begin_inset Formula $x^{2}y$
 \end_inset
 
 , teclea 
@@ -21710,7 +21708,7 @@ _
 \end_inset
 
 : Para 
-\begin_inset Formula $a_{1}\lyxlock $
+\begin_inset Formula $a_{1}$
 \end_inset
 
 , teclea 
@@ -21793,7 +21791,7 @@ Arriba
 \begin_inset Formula \[
 \left[\frac{1}{\left(\begin{array}{cc}
 2 & 3\\
-4 & 5\end{array}\right)}\lyxlock\right]\]
+4 & 5\end{array}\right)}\right]\]
 
 \end_inset
 
@@ -21911,12 +21909,12 @@ Los operadores suma (
  El operador suma coloca automáticamente sus «límites» al lado en fórmulas
  en línea, sobre y bajo el símbolo en fórmulas en modo presentación.
  Tal como en 
-\begin_inset Formula $\sum_{n=0}^{\infty}\lyxlock \frac{1}{n!}\lyxlock=e$
+\begin_inset Formula $\sum_{n=0}^{\infty}\frac{1}{n!}=e$
 \end_inset
 
 , y en
 \begin_inset Formula \[
-\sum_{n=0}^{\infty}\lyxlock \frac{1}{n!}\lyxlock=e\]
+\sum_{n=0}^{\infty}\frac{1}{n!}=e\]
 
 \end_inset
 
@@ -21970,7 +21968,7 @@ Matemáticas ! Límites
 
 
 \begin_inset Formula \[
-\lim_{x\rightarrow\infty}\lyxlock f(x),\]
+\lim_{x\rightarrow\infty}f(x),\]
 
 \end_inset
 
@@ -21988,7 +21986,7 @@ lím
 
  en estilo presentación.
  En fórmulas en línea se ve así: 
-\begin_inset Formula $\lim_{x\rightarrow\infty}\lyxlock f(x)$
+\begin_inset Formula $\lim_{x\rightarrow\infty}f(x)$
 \end_inset
 
 .
@@ -23094,7 +23092,7 @@ Hay varios tipos de delimitadores disponibles en LyX.
 
 o para colocar diversos paréntesis como en la fracción: 
 \begin_inset Formula \[
-\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\lyxlock\right)}\lyxlock\right)\right)}\lyxlock\]
+\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\]
 
 \end_inset
 
@@ -23411,7 +23409,7 @@ Ctrl+Tab.
  relación, y que las estructuras en esa columna se imprimirán en un tamaño
  menor:
 \begin_inset Formula \begin{eqnarray*}
-\frac{A}{B}\lyxlock & \frac{A}{B}\lyxlock & \frac{A}{B}\lyxlock\end{eqnarray*}
+\frac{A}{B} & \frac{A}{B} & \frac{A}{B}\end{eqnarray*}
 
 \end_inset
 
@@ -23623,8 +23621,8 @@ eq:tanhExp
 
  en la segunda línea:
 \begin_inset Formula \begin{eqnarray}
-\tanh(x) & = & \frac{\senh(x)}{\cosh(x)}\lyxlock\nonumber \\
- & = & \frac{\mathrm{e}\lyxlock^{2x}\lyxlock -1}{\mathrm{e}\lyxlock^{2x}\lyxlock +1}\lyxlock\label{eq:tanhExp}\end{eqnarray}
+\tanh(x) & = & \frac{\senh(x)}{\cosh(x)}\nonumber \\
+ & = & \frac{\mathrm{e}^{2x}-1}{\mathrm{e}^{2x}+1}\label{eq:tanhExp}\end{eqnarray}
 
 \end_inset
 
@@ -23834,7 +23832,7 @@ Comando
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\mathrm{Roman}\lyxlock$
+\begin_inset Formula $\mathrm{Roman}$
 \end_inset
 
 
@@ -23861,7 +23859,7 @@ mathrm
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathbf{\mathbf{Negrita}\lyxlock}\lyxlock$
+\begin_inset Formula $\mathbf{\mathbf{Negrita}}$
 \end_inset
 
 
@@ -23888,7 +23886,7 @@ mathbf
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathit{Cursiva}\lyxlock$
+\begin_inset Formula $\mathit{Cursiva}$
 \end_inset
 
 
@@ -23921,7 +23919,7 @@ mathit
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\mathtt{Typewriter}\lyxlock$
+\begin_inset Formula $\mathtt{Typewriter}$
 \end_inset
 
 
@@ -23948,7 +23946,7 @@ mathtt
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathbf{\mathbb{BLACKBOARD}\lyxlock}\lyxlock$
+\begin_inset Formula $\mathbf{\mathbb{BLACKBOARD}}$
 \end_inset
 
 
@@ -23975,7 +23973,7 @@ mathbb
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathfrak{Fraktur}\lyxlock$
+\begin_inset Formula $\mathfrak{Fraktur}$
 \end_inset
 
 
@@ -24009,7 +24007,7 @@ mathfrak
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\mathcal{CALIGRAFICA}\lyxlock$
+\begin_inset Formula $\mathcal{CALIGRAFICA}$
 \end_inset
 
 
@@ -24036,7 +24034,7 @@ mathcal
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathsf{SansSerif}\lyxlock$
+\begin_inset Formula $\mathsf{SansSerif}$
 \end_inset
 
 
@@ -24118,7 +24116,7 @@ Blackboard
 \family default
  representa el conjunto de los números naturales:
 \begin_inset Formula \[
-f(x)=\sqrt{x}\:;\: x\in\mathbb{N}\lyxlock\]
+f(x)=\sqrt{x}\:;\: x\in\mathbb{N}\]
 
 \end_inset
 
@@ -24140,7 +24138,7 @@ Fraktur
 Typewriter
 \family default
 : 
-\begin_inset Formula $\mathtt{abc\mathfrak{d}\lyxlock e}\lyxlock$
+\begin_inset Formula $\mathtt{abc\mathfrak{d}e}$
 \end_inset
 
  
@@ -24152,7 +24150,7 @@ Por tanto es mejor no usar esta característica.
 
 \begin_layout Standard
 Los estilos de texto no tienen efecto sobre las letras griegas: 
-\begin_inset Formula $\mathfrak{abc\delta e}\lyxlock$
+\begin_inset Formula $\mathfrak{abc\delta e}$
 \end_inset
 
 
@@ -24248,8 +24246,8 @@ Espacio
  Por ejemplo:
 \begin_inset Formula \[
 f(x)=\begin{cases}
-x & \textrm{en este caso }\lyxlock\\
--x & \textrm{en algún otro}\lyxlock\end{cases}\]
+x & \textrm{en este caso }\\
+-x & \textrm{en algún otro}\end{cases}\]
 
 \end_inset
 
@@ -24344,7 +24342,7 @@ Panel de ecuaciones
  Aparece un rectángulo de tamaño adecuado al estilo elegido en el que puedes
  insertar la estructura matemática.
  Por ejemplo, puedes poner 
-\begin_inset Formula $\frac{1}{2}\lyxlock$
+\begin_inset Formula $\frac{1}{2}$
 \end_inset
 
 , que está normalmente en 
@@ -24360,7 +24358,7 @@ texto,
 presentación
 \family default
 : 
-\begin_inset Formula ${\displaystyle \frac{1}{2}\lyxlock}$
+\begin_inset Formula ${\displaystyle \frac{1}{2}}$
 \end_inset
 
 .
@@ -24420,7 +24418,7 @@ grandísima
 
 \family roman
 \size largest
-\begin_inset Formula $\mathrm{e}\lyxlock=\sum_{n=0}^{\infty}\lyxlock \frac{1}{n!}\lyxlock$
+\begin_inset Formula $\mathrm{e}=\sum_{n=0}^{\infty}\frac{1}{n!}$
 \end_inset
 
 

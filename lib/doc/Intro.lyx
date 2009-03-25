@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -935,30 +935,7 @@ Bold
 \end_layout
 
 \begin_layout Standard
-For menu accelerator keys and keybindings, you'll probably get referred
- to the 
-\emph on
-Key Bindings
-\emph default
- section of the 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-Additional Features Manual
-\emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- (the file 
-\family typewriter
-Extended.lyx
-\family default
-).
- When we do need to reference keys, we'll use the following prefixing convention
-:
+When we do need to reference keys, we'll use the following prefixing convention:
 \end_layout
 
 \begin_layout Itemize
@@ -967,7 +944,7 @@ Extended.lyx
 
 
 \family sans
-C-
+Ctrl-
 \family default
 
 \begin_inset Quotes erd
@@ -975,7 +952,7 @@ C-
 
  indicates the 
 \family sans
-Control-
+Control
 \family default
  key.
 \end_layout
@@ -985,17 +962,17 @@ Control-
 \end_inset
 
 
-\family sans
-S-
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- indicates the 
 \family sans
 Shift-
 \family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ indicates the 
+\family sans
+Shift
+\family default
  key.
 \end_layout
 
@@ -1005,7 +982,7 @@ Shift-
 
 
 \family sans
-M-
+Alt-
 \family default
 
 \begin_inset Quotes erd
@@ -1013,13 +990,13 @@ M-
 
  indicates the 
 \family sans
-Meta-
+Alt
 \family default
- key, which on some keyboards will be the 
+ (
 \family sans
-Alt-
+Meta
 \family default
- key.
+) key.
 \end_layout
 
 \begin_layout Itemize
@@ -1283,72 +1260,15 @@ Enter
 \end_layout
 
 \begin_layout Standard
-You'll also see something like 
-\begin_inset Quotes eld
-\end_inset
-
-(See 
-\emph on
-
-\begin_inset Quotes els
-\end_inset
-
-Extended
-\emph default
-
-\begin_inset Quotes ers
-\end_inset
-
-)
-\begin_inset Quotes erd
-\end_inset
-
- from time to time.
- We've listed the possible default keybindings for a function in its entry
- in the 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-Additional Features Manual
-\emph default
-,
-\begin_inset Quotes erd
-\end_inset
-
- so check there, too.
- Note that there are two different key binding maps in common use in the
- LyX community: the 
-\begin_inset Quotes eld
-\end_inset
-
-CUA
-\begin_inset Quotes erd
-\end_inset
-
- style which is the default and familiar to those coming from the PC world,
- and the 
-\begin_inset Quotes eld
-\end_inset
-
-emacs
-\begin_inset Quotes erd
-\end_inset
-
- style, which is common with those who 
-\begin_inset Quotes eld
-\end_inset
-
-grew up
-\begin_inset Quotes erd
-\end_inset
-
- on Unix systems and use the Emacs editor.
- Unless specifically noted, the keybindings in the documentation are from
- the default CUA map.
- If you like Emacs, you should be smart enough to read the documentation
- and figure out the bindings on your own.
+The list with the currently set shortcuts can be found in the 
+\family sans
+Help
+\family default
+ menu under 
+\family sans
+Shortcuts
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -1894,8 +1814,12 @@ The Manuals
 \end_layout
 
 \begin_layout Standard
-The following list describes the contents of each of the files in the documentat
-ion:
+The following list describes the contents of the basic documentation files
+ that you find in the 
+\family sans
+Help
+\family default
+ menu:
 \end_layout
 
 \begin_layout Description
@@ -1948,12 +1872,22 @@ Objects Extension of the
 User's Guide
 \emph default
 .
- Documents in detail how to use tables, graphics, floats, notes, and boxes.
+ Documents in detail how to use tables, graphics, floats, notes, program
+ listings, and boxes.
  It also includes many tricks of the LaTeX masters.
 \end_layout
 
 \begin_layout Description
-Extended
+Math Extension of the 
+\emph on
+User's Guide
+\emph default
+.
+ Documents in detail how to typeset any kind of formulas.
+\end_layout
+
+\begin_layout Description
+Additional
 \begin_inset space ~
 \end_inset
 
@@ -1971,6 +1905,10 @@ Customization A description of advanced LyX features, including how to customize
  the overall behavior of LyX\SpecialChar \@.
  This includes such things as keybindings, internati
 onalization, and configuration files.
+\end_layout
+
+\begin_layout Description
+Shortcuts Tables with the currently defined LyX shortcuts.
 \end_layout
 
 \begin_layout Description
@@ -2032,8 +1970,6 @@ Tutorial
 
 \begin_layout Standard
 Otherwise, you could needlessly frustrate yourself.
- LyX does all that you need a word processor to do, but using a different
- approach.
 \end_layout
 
 \begin_layout Section
