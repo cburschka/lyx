@@ -205,7 +205,9 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			lex.printError("Unknown layout tag `$$Token'");
 			error = true;
 			continue;
-		default: break;
+
+		default: 
+			break;
 		}
 		switch (static_cast<LayoutTags>(le)) {
 		case LT_END:		// end of structure
