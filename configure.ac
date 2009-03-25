@@ -19,7 +19,7 @@ LYX_USE_PACKAGING
 # AM_INIT_AUTOMAKE above because we alter $PACKAGE in LYX_USE_PACKAGING.
 AC_DEFINE_UNQUOTED(PACKAGE, "$PACKAGE", [Name of package])
 
-dnl default maintainer mode to true for development versions
+dnl Default maintainer mode to true for development versions
 if test "${enable_maintainer_mode+set}" != set; then
   enable_maintainer_mode=$lyx_devel_version
 fi
