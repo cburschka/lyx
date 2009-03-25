@@ -295,6 +295,12 @@ private:
 	bool saveBuffer(Buffer & b);
 	///
 	bool closeBuffer(Buffer & buf, bool tolastopened = false);
+	enum NextOrPrevious {
+		NEXTBUFFER,
+		PREVBUFFER
+	};
+	///
+	void gotoNextOrPreviousBuffer(NextOrPrevious np);
 
 	///
 	Inset * getOpenInset(std::string const & name) const;
