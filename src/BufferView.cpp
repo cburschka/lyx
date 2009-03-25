@@ -1448,12 +1448,16 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			p = Point(0, 0);
 		if (cmd.action == LFUN_SCREEN_DOWN && scrolled < height_)
 			p = Point(width_, height_);
+		Cursor old = cur;
 		cur.reset(buffer_.inset());
 		updateMetrics();
 		buffer_.changed();
 		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_);
 		//FIXME: what to do with cur.x_target()?
+		bool const update = cur.bv().checkDepm(cur, old);
 		cur.finishUndo();
+		if (update)
+			processUpdateFlags(Update::Force | Update::FitCursor);
 		break;
 	}
 
