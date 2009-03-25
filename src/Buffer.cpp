@@ -779,7 +779,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 				     bformat(_("%1$s is from a different"
 					      " version of LyX, but a temporary"
 					      " file for converting it could"
-							    " not be created."),
+					      " not be created."),
 					      from_utf8(filename.absFilename())));
 			return failure;
 		}
@@ -789,7 +789,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 				     bformat(_("%1$s is from a different"
 					       " version of LyX, but the"
 					       " conversion script lyx2lyx"
-							    " could not be found."),
+					       " could not be found."),
 					       from_utf8(filename.absFilename())));
 			return failure;
 		}
@@ -808,7 +808,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 			Alert::error(_("Conversion script failed"),
 				     bformat(_("%1$s is from a different version"
 					      " of LyX, but the lyx2lyx script"
-							    " failed to convert it."),
+					      " failed to convert it."),
 					      from_utf8(filename.absFilename())));
 			return failure;
 		} else {
