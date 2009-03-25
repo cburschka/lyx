@@ -40,6 +40,8 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
+	docstring toolTip(BufferView const & bv, int x, int y) const;
+	///
 	InsetCode lyxCode() const { return CITE_CODE; }
 	///
 	int latex(odocstream &, OutputParams const &) const;
