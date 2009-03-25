@@ -622,7 +622,7 @@ src_tex2lyx_copied_files = Split('''
 src_tex2lyx_extra_files = Split('''
     Makefile.am
     pch.h
-    tex2lyx.1
+    tex2lyx.1in
     test/box-color-size-space-align.tex
     test/DummyDocument.tex
     test/foo.eps
