@@ -680,6 +680,14 @@ void LyXAction::init()
 		{ LFUN_SCREEN_RECENTER, "screen-recenter", ReadOnly, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_SCREEN_SHOW_CURSOR
+ * \li Action: Repositions the screen such that the cursor is visible.
+ * \li Syntax: screen-show-cursor
+ * \endvar
+ */
+		{ LFUN_SCREEN_SHOW_CURSOR, "screen-show-cursor", ReadOnly, Edit },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_CHAR_BACKWARD
  * \li Action: Moves the cursor one position logically backwards.
  * \li Notion: This is not the action which should be bound to the arrow keys,

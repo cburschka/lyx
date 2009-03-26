@@ -146,15 +146,18 @@ public:
 
 	/// set cursor to the given inset. Return true if found.
 	bool setCursorFromInset(Inset const *);
-
+	/// Recenters the BufferView such that the passed cursor
+	/// is in the center.
+	void recenter();
 	/// Ensure that the BufferView cursor is visible.
 	/// This method will automatically scroll and update the BufferView
 	/// if needed.
-	void showCursor();
+	void showCursor(); 
 	/// Ensure the passed cursor \p dit is visible.
 	/// This method will automatically scroll and update the BufferView
 	/// if needed.
-	void showCursor(DocIterator const & dit);
+	/// \param recenter Whether the cursor should be centered on screen
+	void showCursor(DocIterator const & dit, bool recenter = false);
 	/// LFUN_SCROLL Helper.
 	void lfunScroll(FuncRequest const & cmd);
 	/// scroll down document by the given number of pixels.

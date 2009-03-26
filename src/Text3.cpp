@@ -448,7 +448,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	BufferView * bv = &cur.bv();
 	TextMetrics & tm = bv->textMetrics(this);
 	if (!tm.contains(cur.pit())) {
-		lyx::dispatch(FuncRequest(LFUN_SCREEN_RECENTER));
+		lyx::dispatch(FuncRequest(LFUN_SCREEN_SHOW_CURSOR));
 		tm = bv->textMetrics(this);
 	}
 

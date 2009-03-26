@@ -787,13 +787,19 @@ int BufferView::workWidth() const
 }
 
 
-void BufferView::showCursor()
+void BufferView::recenter()
 {
-	showCursor(d->cursor_);
+	showCursor(d->cursor_, true);
 }
 
 
-void BufferView::showCursor(DocIterator const & dit)
+void BufferView::showCursor()
+{
+	showCursor(d->cursor_, false);
+}
+
+
+void BufferView::showCursor(DocIterator const & dit, bool recenter)
 {
 	// We are not properly started yet, delay until resizing is
 	// done.
@@ -829,7 +835,9 @@ void BufferView::showCursor(DocIterator const & dit)
 		Dimension const & row_dim =
 			pm.getRow(cs.pos(), dit.boundary()).dimension();
 		int scrolled = 0;
-		if (ypos - row_dim.ascent() < 0)
+		if (recenter)
+			scrolled = scroll(ypos - height_/2);
+		else if (ypos - row_dim.ascent() < 0)
 			scrolled = scrollUp(- ypos + row_dim.ascent());
 		else if (ypos + row_dim.descent() > height_)
 			scrolled = scrollDown(ypos - height_ + defaultRowHeight() ); 
@@ -855,7 +863,9 @@ void BufferView::showCursor(DocIterator const & dit)
 	Dimension const & row_dim =
 		pm.getRow(cs.pos(), dit.boundary()).dimension();
 
-	if (d->anchor_pit_ == 0)
+	if (recenter)
+		d->anchor_ypos_ = height_/2;
+	else if (d->anchor_pit_ == 0)
 		d->anchor_ypos_ = offset + pm.ascent();
 	else if (d->anchor_pit_ == max_pit)
 		d->anchor_ypos_ = height_ - offset - row_dim.descent();
@@ -904,6 +914,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_MARK_ON:
 	case LFUN_MARK_TOGGLE:
 	case LFUN_SCREEN_RECENTER:
+	case LFUN_SCREEN_SHOW_CURSOR:
 	case LFUN_BIBTEX_DATABASE_ADD:
 	case LFUN_BIBTEX_DATABASE_DEL:
 	case LFUN_NOTES_MUTATE:
@@ -1295,8 +1306,12 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		cur.resetAnchor();
 		break;
 
-	case LFUN_SCREEN_RECENTER:
+	case LFUN_SCREEN_SHOW_CURSOR:
 		showCursor();
+		break;
+	
+	case LFUN_SCREEN_RECENTER:
+		recenter();
 		break;
 
 	case LFUN_BIBTEX_DATABASE_ADD: {
