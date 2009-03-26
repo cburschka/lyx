@@ -60,6 +60,10 @@ What's new
 
 - Add Open/Close items to context menu of collapsable insets.
 
+- LFUN_NEXT_BUFFER (Ctrl-PgUp) and LFUN_PREV_BUFFER (Ctrl-PgDn) now skip
+  documents that are loaded but not displayed in a window. Such documents 
+  are also shown in a sub-menu of the Document menu. (Bug 5872)
+
 
 * WINDOWS INSTALLER
 
