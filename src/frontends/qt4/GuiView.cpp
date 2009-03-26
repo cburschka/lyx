@@ -1851,6 +1851,28 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 }
 
 
+void GuiView::gotoNextOrPreviousBuffer(NextOrPrevious np)
+{
+	Buffer * const curbuf = buffer();
+	Buffer * nextbuf = curbuf;
+	while (true) {
+		if (np == NEXTBUFFER)
+			nextbuf = theBufferList().next(nextbuf);
+		else
+			nextbuf = theBufferList().previous(nextbuf);
+		if (nextbuf == curbuf)
+			break;
+		if (nextbuf == 0) {
+			nextbuf = curbuf;
+			break;
+		}
+		if (workArea(*nextbuf))
+			break;
+	}
+	setBuffer(nextbuf);
+}
+
+
 bool GuiView::dispatch(FuncRequest const & cmd)
 {
 	BufferView * bv = view();
@@ -1869,11 +1891,11 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_BUFFER_NEXT:
-			setBuffer(theBufferList().next(buffer()));
+			gotoNextOrPreviousBuffer(NEXTBUFFER);
 			break;
 
 		case LFUN_BUFFER_PREVIOUS:
-			setBuffer(theBufferList().previous(buffer()));
+			gotoNextOrPreviousBuffer(PREVBUFFER);
 			break;
 
 		case LFUN_COMMAND_EXECUTE: {
