@@ -683,6 +683,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_SCREEN_SHOW_CURSOR
  * \li Action: Repositions the screen such that the cursor is visible.
  * \li Syntax: screen-show-cursor
+ * \li Origin: vfr, 25 Mar 2009
  * \endvar
  */
 		{ LFUN_SCREEN_SHOW_CURSOR, "screen-show-cursor", ReadOnly, Edit },
