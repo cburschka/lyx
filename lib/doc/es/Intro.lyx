@@ -100,7 +100,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \noindent
-Si tienes comentarios o correcciones de errores envíalos, por favor, ala
+Si tienes comentarios o correcciones de errores envíalos, por favor, a la
  lista de correo de Documentación de LyX: 
 \begin_inset CommandInset href
 LatexCommand href
@@ -390,7 +390,7 @@ lo que ves es lo que quieres decir
 sí
 \emph default
  quieres especificar exactamente dónde va cada cosa porque no hay unidades
- funcionales como párrafos, secciones, etc—.
+ funcionales como párrafos, secciones, etc.—.
  Esto no significa que LyX ha perdido funcionalidad, significa simplemente
  que no es la herramienta adecuada para esas tareas —para clavar un clavo
  no usas un destornillador—.
@@ -516,8 +516,8 @@ Características extendidas
 \end_layout
 
 \begin_layout Standard
-Por último, hay ciertas áreas en las que LyX (y LaTeX) superan a muchos
- procesadores de texto:
+Por último, hay ciertas áreas en las que creemos que LyX (y LaTeX) supera
+ a muchos procesadores de texto:
 \end_layout
 
 \begin_layout Itemize
@@ -705,12 +705,12 @@ LaTeX: Paquete de macros construido sobre TeX\SpecialChar \@.
 \end_layout
 
 \begin_layout Description
-clases: Descripciones de un tipo de documento, usando LaTeX\SpecialChar \@.
+Clases: Descripciones de un tipo de documento, usando LaTeX\SpecialChar \@.
 
 \end_layout
 
 \begin_layout Description
-estilos: Alteran algún aspecto del comportamiento normal de LaTeX.
+Estilos: Alteran algún aspecto del comportamiento normal de LaTeX.
 \end_layout
 
 \begin_layout Description
@@ -969,7 +969,7 @@ Control
 
 
 \family sans
-Shift-
+Mayúsculas-
 \family default
 
 \begin_inset Quotes eld
@@ -1259,15 +1259,14 @@ Intro
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The list with the currently set shortcuts can be found in the 
+La lista con el conjunto actual de combinaciones de teclas se puede encontrar
+ en el documento 
 \family sans
-Help
+Atajos de teclado
 \family default
- menu under 
+ bajo el menú 
 \family sans
-Shortcuts
+Ayuda
 \family default
 .
 \end_layout
@@ -1815,7 +1814,7 @@ Los manuales
 \end_layout
 
 \begin_layout Standard
-La siguiente lista describe los contenidos de cada uno de los archivos de
+La siguiente lista describe el contenido de cada uno de los archivos de
  la documentación:
 \end_layout
 
@@ -1860,8 +1859,8 @@ del
 
 \emph default
 usuario La documentación principal.
- Intentaremos cubrir aquí la mayor parte de las opciones y características
- básicas de LyX.
+ Describimos aquí la mayor parte de las opciones y características básicas
+ de LyX.
  El manual principal supone que ya has leído el 
 \emph on
 Tutorial
@@ -1870,11 +1869,11 @@ Tutorial
 \end_layout
 
 \begin_layout Description
-Embedded
+Objetos
 \begin_inset space ~
 \end_inset
 
-Objects Ampliación de la 
+insertados Ampliación de la 
 \emph on
 Guía del usuario
 \emph default
@@ -1884,11 +1883,20 @@ Guía del usuario
 \end_layout
 
 \begin_layout Description
+Ecuaciones Ampliación de la 
+\emph on
+Guía del usuario
+\emph default
+.
+ Explica en detalle como escribir todo tipo de ecuaciones.
+\end_layout
+
+\begin_layout Description
 Características
 \begin_inset space ~
 \end_inset
 
-extendidas Ampliación de la 
+adicionales Ampliación de la 
 \emph on
 Guía del usuario
 \emph default
@@ -1901,6 +1909,19 @@ s específicas de edición.
 Personalización Una descripción de características avanzadas de LyX, incluyendo
  cómo personalizar el comportamiento global del programa: cosas como asociacione
 s de teclas, internacionalización y ficheros de configuración.
+\end_layout
+
+\begin_layout Description
+Atajos
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+teclado Contiene tablas con las combinaciones de teclas definidas actualmente
+ en LyX.
 \end_layout
 
 \begin_layout Description
