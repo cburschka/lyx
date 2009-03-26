@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -39,8 +40,8 @@
 \paperpagestyle empty
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -67,7 +68,7 @@ arg   "bind_file"
 \family default
 .
  Puedes cambiar los atajos seleccionando otro archivo bind en el panel correspon
-diente de 
+diente, que está disponible bajo 
 \family sans
 Edición
 \family default
@@ -82,10 +83,151 @@ arg   "dialog-show prefs"
 
 \family default
 ).
- 
 \end_layout
 
-\begin_layout Title
+\begin_layout Standard
+Las combinaciones de teclas en este documento se actualizan automáticamente
+ cuando se cambian en las preferencias.
+ Por eso no es posible por ahora traducir en LyX la notación de las teclas.
+ Teclas equivalentes en español:
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="4">
+<features booktabs="true">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Tab
+\family default
+:
+\family sans
+ Tabulador
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+PgUp
+\family default
+:
+\family sans
+ AvPág
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Shift
+\family default
+: 
+\family sans
+Mayúsculas
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Space
+\family default
+:
+\family sans
+ Espacio
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Return
+\family default
+:
+\family sans
+ Retorno
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Right
+\family default
+:
+\family sans
+ Derecha
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Left
+\family default
+:
+\family sans
+ Izquierda
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
 
 \end_layout
 
@@ -3527,7 +3669,7 @@ arg   "math-insert \\superseteq"
 \end_layout
 
 \begin_layout Section*
-Suprimitadores
+Delimitadores
 \end_layout
 
 \begin_layout Standard
