@@ -26,6 +26,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Intro.lyx"
  SetOutPath "$INSTDIR\Resources\doc\es"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\Intro.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\es\Shortcuts.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\fr"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Intro.lyx"
