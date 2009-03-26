@@ -1368,10 +1368,10 @@ void Buffer::getLabelList(vector<docstring> & list) const
 }
 
 
-void Buffer::updateBibfilesCache() const
+void Buffer::updateBibfilesCache(UpdateScope scope) const
 {
 	// If this is a child document, use the parent's cache instead.
-	if (d->parent_buffer) {
+	if (d->parent_buffer && scope != UpdateChildOnly) {
 		d->parent_buffer->updateBibfilesCache();
 		return;
 	}
@@ -1390,7 +1390,7 @@ void Buffer::updateBibfilesCache() const
 				static_cast<InsetInclude &>(*it);
 			inset.updateBibfilesCache();
 			support::FileNameList const & bibfiles =
-					inset.getBibfilesCache(*this);
+					inset.getBibfilesCache();
 			d->bibfilesCache_.insert(d->bibfilesCache_.end(),
 				bibfiles.begin(),
 				bibfiles.end());
@@ -1407,15 +1407,15 @@ void Buffer::invalidateBibinfoCache()
 }
 
 
-support::FileNameList const & Buffer::getBibfilesCache() const
+support::FileNameList const & Buffer::getBibfilesCache(UpdateScope scope) const
 {
 	// If this is a child document, use the parent's cache instead.
-	if (d->parent_buffer)
+	if (d->parent_buffer && scope != UpdateChildOnly)
 		return d->parent_buffer->getBibfilesCache();
 
 	// We update the cache when first used instead of at loading time.
 	if (d->bibfilesCache_.empty())
-		const_cast<Buffer *>(this)->updateBibfilesCache();
+		const_cast<Buffer *>(this)->updateBibfilesCache(scope);
 
 	return d->bibfilesCache_;
 }
@@ -1968,7 +1968,7 @@ void Buffer::updateMacros(DocIterator & it, DocIterator & scope) const
 				InsetInclude const & inset =
 					static_cast<InsetInclude const &>(*iit->inset);
 				d->macro_lock = true;
-				Buffer * child = inset.loadIfNeeded(*this);
+				Buffer * child = inset.getChildBuffer();
 				d->macro_lock = false;
 				if (!child)
 					continue;

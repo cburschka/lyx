@@ -365,24 +365,16 @@ docstring InsetInclude::screenLabel() const
 }
 
 
-Buffer * InsetInclude::getChildBuffer(Buffer const & buffer) const
+Buffer * InsetInclude::getChildBuffer() const
 {
-	InsetCommandParams const & p = params();
-	if (isVerbatim(p) || isListings(p))
-		return 0;
-
-	string const included_file = includedFilename(buffer, p).absFilename();
-	if (!isLyXFilename(included_file))
-		return 0;
-
-	Buffer * childBuffer = loadIfNeeded(buffer); 
+	Buffer * childBuffer = loadIfNeeded(); 
 
 	// FIXME: recursive includes
-	return (childBuffer == &buffer) ? 0 : childBuffer;
+	return (childBuffer == &buffer()) ? 0 : childBuffer;
 }
 
 
-Buffer * InsetInclude::loadIfNeeded(Buffer const & parent) const
+Buffer * InsetInclude::loadIfNeeded() const
 {
 	// Don't try to load it again if we failed before.
 	if (failedtoload_)
@@ -400,7 +392,7 @@ Buffer * InsetInclude::loadIfNeeded(Buffer const & parent) const
 	if (isVerbatim(p) || isListings(p))
 		return 0;
 
-	string const parent_filename = parent.absFileName();
+	string const parent_filename = buffer().absFileName();
 	FileName const included_file = 
 		makeAbsPath(to_utf8(p["filename"]), onlyPath(parent_filename));
 
@@ -429,7 +421,7 @@ Buffer * InsetInclude::loadIfNeeded(Buffer const & parent) const
 			// FIXME: Do something.
 		}
 	}
-	child->setParent(&parent);
+	child->setParent(&buffer());
 	// Cache the child buffer.
 	child_buffer_ = child;
 	return child;
@@ -503,7 +495,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		 isLyXFilename(included_file.absFilename())) {
 		//if it's a LyX file and we're inputting or including,
 		//try to load it so we can write the associated latex
-		if (!loadIfNeeded(buffer()))
+		if (!loadIfNeeded())
 			return false;
 
 		Buffer * tmp = theBufferList().getBuffer(included_file);
@@ -663,7 +655,7 @@ int InsetInclude::docbook(odocstream & os, OutputParams const & runparams) const
 	string const exportfile = changeExtension(incfile, ".sgml");
 	DocFileName writefile(changeExtension(included_file, ".sgml"));
 
-	if (loadIfNeeded(buffer())) {
+	if (loadIfNeeded()) {
 		Buffer * tmp = theBufferList().getBuffer(FileName(included_file));
 
 		string const mangled = writefile.mangledFilename();
@@ -726,7 +718,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	// Here we must do the fun stuff...
 	// Load the file in the include if it needs
 	// to be loaded:
-	if (loadIfNeeded(buffer())) {
+	if (loadIfNeeded()) {
 		// a file got loaded
 		Buffer * const tmp = theBufferList().getBuffer(FileName(included_file));
 		// make sure the buffer isn't us
@@ -748,7 +740,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 void InsetInclude::fillWithBibKeys(BiblioInfo & keys,
 	InsetIterator const & /*di*/) const
 {
-	if (loadIfNeeded(buffer())) {
+	if (loadIfNeeded()) {
 		string const included_file = includedFilename(buffer(), params()).absFilename();
 		Buffer * tmp = theBufferList().getBuffer(FileName(included_file));
 		BiblioInfo const & newkeys = tmp->localBibInfo();
@@ -759,25 +751,19 @@ void InsetInclude::fillWithBibKeys(BiblioInfo & keys,
 
 void InsetInclude::updateBibfilesCache()
 {
-	Buffer * const tmp = getChildBuffer(buffer());
-	if (tmp) {
-		tmp->setParent(0);
-		tmp->updateBibfilesCache();
-		tmp->setParent(&buffer());
-	}
+	Buffer const * const child = getChildBuffer();
+	if (child)
+		child->updateBibfilesCache(Buffer::UpdateChildOnly);
 }
 
 
 support::FileNameList const &
-	InsetInclude::getBibfilesCache(Buffer const & buffer) const
+	InsetInclude::getBibfilesCache() const
 {
-	Buffer * const tmp = getChildBuffer(buffer);
-	if (tmp) {
-		tmp->setParent(0);
-		support::FileNameList const & cache = tmp->getBibfilesCache();
-		tmp->setParent(&buffer);
-		return cache;
-	}
+	Buffer const * const child = getChildBuffer();
+	if (child)
+		return child->getBibfilesCache(Buffer::UpdateChildOnly);
+
 	static support::FileNameList const empty;
 	return empty;
 }
@@ -925,7 +911,7 @@ void InsetInclude::addToToc(DocIterator const & cpit)
 		toc.push_back(TocItem(pit, 0, str));
 		return;
 	}
-	Buffer const * const childbuffer = getChildBuffer(buffer());
+	Buffer const * const childbuffer = getChildBuffer();
 	if (!childbuffer)
 		return;
 
@@ -967,7 +953,7 @@ void InsetInclude::updateCommand()
 
 void InsetInclude::updateLabels(ParIterator const & it)
 {
-	Buffer const * const childbuffer = getChildBuffer(buffer());
+	Buffer const * const childbuffer = getChildBuffer();
 	if (childbuffer) {
 		childbuffer->updateLabels(Buffer::UpdateChildOnly);
 		return;

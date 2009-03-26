@@ -110,6 +110,12 @@ public:
 		timestamp_method, ///< Use timestamp, and checksum if timestamp has changed
 	};
 
+	///
+	enum UpdateScope {
+		UpdateMaster,
+		UpdateChildOnly
+	};
+
 	/// Constructor
 	explicit Buffer(std::string const & file, bool b = false);
 
@@ -312,12 +318,13 @@ public:
 
 	/// Update the cache with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
-	void updateBibfilesCache() const;
+	void updateBibfilesCache(UpdateScope scope = UpdateMaster) const;
 	///
 	void invalidateBibinfoCache();
 	/// Return the cache with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
-	support::FileNameList const & getBibfilesCache() const;
+	support::FileNameList const & 
+		getBibfilesCache(UpdateScope scope = UpdateMaster) const;
 	/// \return the bibliography information for this buffer's master,
 	/// or just for it, if it isn't a child.
 	BiblioInfo const & masterBibInfo() const;
@@ -480,11 +487,6 @@ public:
 	// FIXME This really shouldn't be needed, but at the moment it's not
 	// clear how to do it just for the individual pieces we need.
 	void setBuffersForInsets() const;
-	///
-	enum UpdateScope {
-		UpdateMaster,
-		UpdateChildOnly
-	};
 	///
 	void updateLabels(UpdateScope = UpdateMaster) const;
 	///

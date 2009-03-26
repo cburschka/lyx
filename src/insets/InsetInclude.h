@@ -70,7 +70,7 @@ public:
 	 *  \param buffer the Buffer containing this inset.
 	 */
 	support::FileNameList const &
-		getBibfilesCache(Buffer const & buffer) const;
+		getBibfilesCache() const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -97,10 +97,8 @@ public:
 	static bool isCompatibleCommand(std::string const & s);
 	///
 	docstring contextMenu(BufferView const & bv, int x, int y) const;
-	/// \return the child buffer if the file is a LyX doc and is loaded
-	Buffer * getChildBuffer(Buffer const & buffer) const;
-	/// \return loaded Buffer or zero if the file loading did not proceed.
-	Buffer * loadIfNeeded(Buffer const & parent) const;
+	/// \return the child buffer if the file is a LyX doc and could be loaded
+	Buffer * getChildBuffer() const;
 protected:
 	InsetInclude(InsetInclude const &);
 	///
@@ -115,6 +113,8 @@ private:
 	 */
 	void fileChanged() const;
 
+	/// \return loaded Buffer or zero if the file loading did not proceed.
+	Buffer * loadIfNeeded() const;
 	/// launch external application
 	void editIncluded(std::string const & file);
 	/// set the parameters
