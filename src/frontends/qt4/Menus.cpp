@@ -681,24 +681,37 @@ void MenuDefinition::expandLastfiles()
 
 void MenuDefinition::expandDocuments()
 {
+	MenuItem item(MenuItem::Submenu, qt_("Invisible"));
+	item.setSubmenu(MenuDefinition(qt_("Invisible")));
+
 	Buffer * first = theBufferList().first();
 	if (first) {
 		Buffer * b = first;
-		int ii = 1;
+		int vis = 1;
+		int invis = 1;
 		
 		// We cannot use a for loop as the buffer list cycles.
 		do {
 			QString label = toqstr(b->fileName().displayName(20));
 			if (!b->isClean())
 				label += "*";
+			bool const shown = guiApp->currentView()->workArea(*b);
+			int ii = shown ? vis : invis;
 			if (ii < 10)
 				label = QString::number(ii) + ". " + label + '|' + QString::number(ii);
-			add(MenuItem(MenuItem::Command, label,
-				FuncRequest(LFUN_BUFFER_SWITCH, b->absFileName())));
-			
+			if (shown) {
+				add(MenuItem(MenuItem::Command, label,
+					FuncRequest(LFUN_BUFFER_SWITCH, b->absFileName())));
+				++vis;
+			} else {
+				item.submenu().add(MenuItem(MenuItem::Command, label,
+					FuncRequest(LFUN_BUFFER_SWITCH, b->absFileName())));
+				++invis;
+			}
 			b = theBufferList().next(b);
-			++ii;
 		} while (b != first); 
+		if (!item.submenu().empty())
+			add(item);
 	} else
 		add(MenuItem(MenuItem::Info, qt_("<No documents open>")));
 }
