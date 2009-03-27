@@ -400,10 +400,10 @@ docstring InsetCitation:: toolTip(BufferView const & bv, int, int) const
 		return _("No citations selected!");
 
 	vector<docstring> keys = getVectorFromString(key);
-	vector<docstring>::const_iterator it  = keys.begin();
+	vector<docstring>::const_iterator it = keys.begin();
 	vector<docstring>::const_iterator en = keys.end();
 	docstring tip;
-	for (; it	!= en; ++it) {
+	for (; it != en; ++it) {
 		docstring key_info = bi.getInfo(*it);
 		if (key_info.empty())
 			continue;
@@ -416,7 +416,8 @@ docstring InsetCitation:: toolTip(BufferView const & bv, int, int) const
 			for (; i >= 0; --i)
 				if (key_info[i] == ' ')
 					break;
-			if (i < 0) { // no space found?
+			if (i < 0) { 
+				// no space found
 				key_info = key_info.substr(0, maxwdth - 3) + "...";
 				break;
 			}
@@ -424,7 +425,6 @@ docstring InsetCitation:: toolTip(BufferView const & bv, int, int) const
 				newkey += "\n";
 			newkey += key_info.substr(0, i);
 			key_info = "  " + key_info.substr(i);
-			//key_info = key_info.substr(0, maxtip - 3) + "...";
 		}
 		if (!newkey.empty())
 			newkey += "\n";
