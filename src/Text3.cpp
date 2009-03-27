@@ -68,6 +68,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/lyxtime.h"
+#include "support/os.h"
 
 #include "mathed/InsetMathHull.h"
 #include "mathed/MathMacroTemplate.h"
@@ -2318,6 +2319,13 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		enable = cur.inset().insetAllowed(MATH_CODE);
 		break;
 
+	case LFUN_DATE_INSERT: {
+		string const format = cmd.argument().empty()
+			? lyxrc.date_insert_format : to_utf8(cmd.argument());
+		enable = support::os::is_valid_strftime(format);
+		break;
+	}
+
 	case LFUN_WORD_DELETE_FORWARD:
 	case LFUN_WORD_DELETE_BACKWARD:
 	case LFUN_LINE_DELETE:
@@ -2363,7 +2371,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_SERVER_SET_XY:
 	case LFUN_SERVER_GET_LAYOUT:
 	case LFUN_LAYOUT:
-	case LFUN_DATE_INSERT:
 	case LFUN_SELF_INSERT:
 	case LFUN_LINE_INSERT:
 	case LFUN_MATH_DISPLAY:

@@ -177,6 +177,9 @@ public:
 
 	virtual void apply(LyXRC & rc) const;
 	virtual void update(LyXRC const & rc);
+
+private Q_SLOTS:
+	void on_DateED_textChanged(const QString &);
 };
 
 

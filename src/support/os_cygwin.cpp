@@ -206,6 +206,23 @@ string latex_path(string const & p)
 }
 
 
+bool is_valid_strftime(string const & p)
+{
+	string::size_type pos = p.find_first_of('%');
+	while (pos != string::npos) {
+		if (pos + 1 == string::npos)
+			break;
+		if (!containsOnly(p.substr(pos + 1, 1),
+			"aAbBcCdDeEFgGhHIjklmMnOpPrRsStTuUVwWxXyYzZ%+"))
+			return false;
+		if (pos + 2 == string::npos)
+		      break;
+		pos = p.find_first_of('%', pos + 2);
+	}
+	return true;
+}
+
+
 // returns a string suitable to be passed to popen when
 // reading a pipe
 char const * popen_read_mode()

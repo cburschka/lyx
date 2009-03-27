@@ -353,6 +353,35 @@ void PrefPlaintext::update(LyXRC const & rc)
 
 /////////////////////////////////////////////////////////////////////
 //
+// StrftimeValidator
+//
+/////////////////////////////////////////////////////////////////////
+
+class StrftimeValidator : public QValidator
+{
+public:
+	StrftimeValidator(QWidget *);
+	QValidator::State validate(QString & input, int & pos) const;
+};
+
+
+StrftimeValidator::StrftimeValidator(QWidget * parent)
+	: QValidator(parent)
+{
+}
+
+
+QValidator::State StrftimeValidator::validate(QString & input, int & /*pos*/) const
+{
+	if (is_valid_strftime(fromqstr(input)))
+		return QValidator::Acceptable;
+	else
+		return QValidator::Intermediate;
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
 // PrefDate
 //
 /////////////////////////////////////////////////////////////////////
@@ -361,8 +390,19 @@ PrefDate::PrefDate(GuiPreferences * form)
 	: PrefModule(qt_(catOutput), qt_("Date format"), form)
 {
 	setupUi(this);
+	DateED->setValidator(new StrftimeValidator(DateED));
 	connect(DateED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+}
+
+
+void PrefDate::on_DateED_textChanged(const QString &)
+{
+	QString t = DateED->text();
+	int p = 0;
+	bool valid = DateED->validator()->validate(t, p)
+		     == QValidator::Acceptable;
+	setValid(DateLA, valid);
 }
 
 
@@ -2525,7 +2565,8 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	addModule(new PrefSpellchecker(this));
 
 	addModule(new PrefPrinter(this));
-	addModule(new PrefDate(this));
+	PrefDate * dateFormat = new PrefDate(this);
+	addModule(dateFormat);
 	addModule(new PrefPlaintext(this));
 	addModule(new PrefLatex(this));
 
@@ -2548,6 +2589,9 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	bc().setApply(applyPB);
 	bc().setCancel(closePB);
 	bc().setRestore(restorePB);
+
+	// initialize the strftime validator
+	bc().addCheckedLineEdit(dateFormat->DateED);
 }
 
 
