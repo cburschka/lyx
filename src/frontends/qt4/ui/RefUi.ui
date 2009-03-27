@@ -76,6 +76,9 @@
        <property name="text" >
         <string>&amp;OK</string>
        </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
        <property name="default" >
         <bool>true</bool>
        </property>
@@ -86,8 +89,11 @@
        <property name="text" >
         <string>&amp;Apply</string>
        </property>
-       <property name="default" >
-        <bool>true</bool>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -95,6 +101,9 @@
       <widget class="QPushButton" name="closePB" >
        <property name="text" >
         <string>&amp;Close</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
