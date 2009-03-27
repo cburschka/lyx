@@ -100,6 +100,10 @@ What's new
 
 * USER INTERFACE
 
+- Validate the input of Preferences>Output>Date Format and the argument
+  of the date-insert function. This fixes a crash on Windows with invalid/
+  unsupported date specifiers (bug 5827).
+
 - Adjust the color of deletions slightly when using change tracking. It
   is now easier to distinguish between added and deleted text (bug 5629).
 

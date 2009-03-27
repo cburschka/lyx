@@ -74,6 +74,9 @@ std::string internal_path_list(std::string const & p);
  */
 std::string latex_path(std::string const & p);
 
+/// Checks if the format string is suitable on the OS
+bool is_valid_strftime(std::string const & p);
+
 /** Returns a string suitable to be passed to popen when
  *  reading a file.
  */
