@@ -16,6 +16,7 @@
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferParams.h"
+#include "BufferView.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
@@ -380,6 +381,59 @@ bool InsetCitation::isCompatibleCommand(string const & cmd)
 	vector<string>::const_iterator const end = possibles.end();
 	return find(possibles.begin(), end, cmd) != end;
 }
+
+
+docstring InsetCitation:: toolTip(BufferView const & bv, int, int) const
+{
+	static unsigned int maxwdth = 80;
+	Buffer const & buf = bv.buffer();
+	// Only after the buffer is loaded from file...
+	if (!buf.isFullyLoaded())
+		return docstring();
+
+	BiblioInfo const & bi = buf.masterBibInfo();
+	if (bi.empty())
+		return _("No bibliography defined!");
+
+	docstring const & key = getParam("key");
+	if (key.empty())
+		return _("No citations selected!");
+
+	vector<docstring> keys = getVectorFromString(key);
+	vector<docstring>::const_iterator it  = keys.begin();
+	vector<docstring>::const_iterator en = keys.end();
+	docstring tip;
+	for (; it	!= en; ++it) {
+		docstring key_info = bi.getInfo(*it);
+		if (key_info.empty())
+			continue;
+		if (!tip.empty())
+			tip += "\n";
+		docstring newkey;
+		while (key_info.size() > maxwdth) {
+			int i = maxwdth - 1;
+			// find the last space
+			for (; i >= 0; --i)
+				if (key_info[i] == ' ')
+					break;
+			if (i < 0) { // no space found?
+				key_info = key_info.substr(0, maxwdth - 3) + "...";
+				break;
+			}
+			if (!newkey.empty())
+				newkey += "\n";
+			newkey += key_info.substr(0, i);
+			key_info = "  " + key_info.substr(i);
+			//key_info = key_info.substr(0, maxtip - 3) + "...";
+		}
+		if (!newkey.empty())
+			newkey += "\n";
+		newkey += key_info;
+		tip += newkey;
+	}
+	return tip;
+}
+
 
 
 docstring InsetCitation::generateLabel() const
