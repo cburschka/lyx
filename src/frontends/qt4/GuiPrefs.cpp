@@ -1970,6 +1970,8 @@ PrefEdit::PrefEdit(GuiPreferences * form)
 
 	connect(cursorFollowsCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
+	connect(scrollBelowCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 	connect(sortEnvironmentsCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(groupEnvironmentsCB, SIGNAL(clicked()),
@@ -1992,6 +1994,7 @@ PrefEdit::PrefEdit(GuiPreferences * form)
 void PrefEdit::apply(LyXRC & rc) const
 {
 	rc.cursor_follows_scrollbar = cursorFollowsCB->isChecked();
+	rc.scroll_below_document = scrollBelowCB->isChecked();
 	rc.sort_layouts = sortEnvironmentsCB->isChecked();
 	rc.group_layouts = groupEnvironmentsCB->isChecked();
 	switch (macroEditStyleCO->currentIndex()) {
@@ -2010,6 +2013,7 @@ void PrefEdit::apply(LyXRC & rc) const
 void PrefEdit::update(LyXRC const & rc)
 {
 	cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar);
+	scrollBelowCB->setChecked(rc.scroll_below_document);
 	sortEnvironmentsCB->setChecked(rc.sort_layouts);
 	groupEnvironmentsCB->setChecked(rc.group_layouts);
 	macroEditStyleCO->setCurrentIndex(rc.macro_edit_style);

@@ -311,6 +311,10 @@ private:
 	/// \return true if no further update is needed.
 	bool singleParUpdate();
 
+	/// The minimal size of the document that is visible. Used
+	/// when it is allowed to scroll below the document.
+	int minVisiblePart();
+
 	/// Search recursively for the the innermost inset that covers (x, y) position.
 	/// \retval 0 if no inset is found.
 	Inset const * getCoveringInset(

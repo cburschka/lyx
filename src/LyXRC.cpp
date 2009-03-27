@@ -157,6 +157,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\screen_font_typewriter", LyXRC::RC_SCREEN_FONT_TYPEWRITER },
 	{ "\\screen_font_typewriter_foundry", LyXRC::RC_SCREEN_FONT_TYPEWRITER_FOUNDRY },
 	{ "\\screen_zoom", LyXRC::RC_SCREEN_ZOOM },
+	{ "\\scroll_below_document", LyXRC::RC_SCROLL_BELOW_DOCUMENT },
 	{ "\\serverpipe", LyXRC::RC_SERVERPIPE },
 	{ "\\set_color", LyXRC::RC_SET_COLOR },
 	{ "\\show_banner", LyXRC::RC_SHOW_BANNER },
@@ -288,6 +289,7 @@ void LyXRC::setDefaults()
 	tex_allows_spaces = false;
 	date_insert_format = "%x";
 	cursor_follows_scrollbar = false;
+	scroll_below_document = false;
 	mac_like_word_movement = false;
 	macro_edit_style = MACRO_EDIT_INLINE_BOX;
 	dialogs_iconify_with_main = false;
@@ -819,6 +821,10 @@ int LyXRC::read(Lexer & lexrc)
 
 		case RC_CURSOR_FOLLOWS_SCROLLBAR:
 			lexrc >> cursor_follows_scrollbar;
+			break;
+
+		case RC_SCROLL_BELOW_DOCUMENT:
+			lexrc >> scroll_below_document;
 			break;
 
 		case RC_MAC_LIKE_WORD_MOVEMENT:
@@ -1515,6 +1521,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    != system_lyxrc.cursor_follows_scrollbar) {
 			os << "\\cursor_follows_scrollbar "
 			   << convert<string>(cursor_follows_scrollbar) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_SCROLL_BELOW_DOCUMENT:
+		if (ignore_system_lyxrc ||
+		    scroll_below_document
+		    != system_lyxrc.scroll_below_document) {
+			os << "\\scroll_below_document "
+			   << convert<string>(scroll_below_document) << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2495,6 +2510,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_CURSOR_FOLLOWS_SCROLLBAR:
 		str = _("LyX normally doesn't update the cursor position if you move the scrollbar. Set to true if you'd prefer to always have the cursor on screen.");
+		break;
+
+	case RC_SCROLL_BELOW_DOCUMENT:
+		str = _("LyX normally doesn't allow the user to scroll further than the bottom of the document. Set to true if you prefer to scroll the bottom of the document to the top of the screen");
 		break;
 
 	case RC_MAC_LIKE_WORD_MOVEMENT:

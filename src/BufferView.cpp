@@ -517,7 +517,10 @@ void BufferView::updateScrollbar()
 
 	d->scrollbarParameters_.position = 0;
 	// The reference is the top position so we remove one page.
-	d->scrollbarParameters_.max -= d->scrollbarParameters_.page_step;
+	if (lyxrc.scroll_below_document)
+		d->scrollbarParameters_.max -= minVisiblePart();
+	else
+		d->scrollbarParameters_.max -= d->scrollbarParameters_.page_step;
 }
 
 
@@ -1772,6 +1775,12 @@ void BufferView::lfunScroll(FuncRequest const & cmd)
 }
 
 
+int BufferView::minVisiblePart()
+{
+	return 2 * defaultRowHeight();
+}
+
+
 int BufferView::scroll(int y)
 {
 	if (y > 0)
@@ -1786,10 +1795,12 @@ int BufferView::scrollDown(int offset)
 {
 	Text * text = &buffer_.text();
 	TextMetrics & tm = d->text_metrics_[text];
-	int ymax = height_ + offset;
+	int const ymax = height_ + offset;
 	while (true) {
 		pair<pit_type, ParagraphMetrics const *> last = tm.last();
 		int bottom_pos = last.second->position() + last.second->descent();
+		if (lyxrc.scroll_below_document)
+			bottom_pos += height_ - minVisiblePart();
 		if (last.first + 1 == int(text->paragraphs().size())) {
 			if (bottom_pos <= height_)
 				return 0;

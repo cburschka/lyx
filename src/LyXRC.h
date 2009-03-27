@@ -140,6 +140,7 @@ public:
 		RC_SCREEN_FONT_TYPEWRITER,
 		RC_SCREEN_FONT_TYPEWRITER_FOUNDRY,
 		RC_SCREEN_ZOOM,
+		RC_SCROLL_BELOW_DOCUMENT,
 		RC_SERVERPIPE,
 		RC_SET_COLOR,
 		RC_SHOW_BANNER,
@@ -370,6 +371,8 @@ public:
 	bool mac_like_word_movement;
 	///
 	bool cursor_follows_scrollbar;
+	///
+	bool scroll_below_document;
 	///
 	enum MacroEditStyle {
 		MACRO_EDIT_INLINE_BOX = 0,
