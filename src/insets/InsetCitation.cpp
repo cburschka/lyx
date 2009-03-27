@@ -383,7 +383,7 @@ bool InsetCitation::isCompatibleCommand(string const & cmd)
 }
 
 
-docstring InsetCitation:: toolTip(BufferView const & bv, int, int) const
+docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 {
 	static unsigned int maxwdth = 80;
 	Buffer const & buf = bv.buffer();
@@ -400,10 +400,10 @@ docstring InsetCitation:: toolTip(BufferView const & bv, int, int) const
 		return _("No citations selected!");
 
 	vector<docstring> keys = getVectorFromString(key);
-	vector<docstring>::const_iterator it  = keys.begin();
+	vector<docstring>::const_iterator it = keys.begin();
 	vector<docstring>::const_iterator en = keys.end();
 	docstring tip;
-	for (; it	!= en; ++it) {
+	for (; it != en; ++it) {
 		docstring key_info = bi.getInfo(*it);
 		if (key_info.empty())
 			continue;
@@ -416,7 +416,8 @@ docstring InsetCitation:: toolTip(BufferView const & bv, int, int) const
 			for (; i >= 0; --i)
 				if (key_info[i] == ' ')
 					break;
-			if (i < 0) { // no space found?
+			// no space found?
+			if (i < 0) {
 				key_info = key_info.substr(0, maxwdth - 3) + "...";
 				break;
 			}
