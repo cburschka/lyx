@@ -518,6 +518,7 @@ void GuiWorkArea::resizeBufferView()
 	// We are already inside a paint event.
 	lyx_view_->setBusy(true);
 	buffer_view_->resize(viewport()->width(), viewport()->height());
+	buffer_view_->scrollToCursor();
 	updateScreen();
 
 	// Update scrollbars which might have changed due different

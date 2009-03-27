@@ -801,10 +801,23 @@ void BufferView::showCursor()
 
 void BufferView::showCursor(DocIterator const & dit, bool recenter)
 {
+	if (scrollToCursor(dit, recenter))
+		buffer_.changed();
+}
+
+
+void BufferView::scrollToCursor()
+{
+	scrollToCursor(d->cursor_, false);
+}
+
+
+bool BufferView::scrollToCursor(DocIterator const & dit, bool recenter)
+{
 	// We are not properly started yet, delay until resizing is
 	// done.
 	if (height_ == 0)
-		return;
+		return false;
 
 	LYXERR(Debug::SCROLLING, "recentering!");
 
@@ -845,9 +858,9 @@ void BufferView::showCursor(DocIterator const & dit, bool recenter)
 		// else, nothing to do, the cursor is already visible so we just return.
 		if (scrolled != 0) {
 			updateMetrics();
-			buffer_.changed();
+			return true;
 		}
-		return;
+		return false;
 	}
 
 	// fix inline completion position
@@ -875,7 +888,7 @@ void BufferView::showCursor(DocIterator const & dit, bool recenter)
 		d->anchor_ypos_ = defaultRowHeight() * 2;
 
 	updateMetrics();
-	buffer_.changed();
+	return true;
 }
 
 
