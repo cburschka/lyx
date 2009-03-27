@@ -124,8 +124,8 @@ What's new
 - Do not close the math delimiters dialog when selecting a delimiter 
   without "match" being chosen (bug 5789).
 
-- Ensure that in various dialogs the OK button is the default when both
-  the OK and Cancel buttons are enabled (bug 5695).
+- Ensure that in various dialogs the OK button is the default when the
+  Cancel and/or the Apply buttons are enabled too (bugs 4441, 5695).
 
 - Do not create a new document when cancel is pressed in the "new from 
   template" dialog (bug 5848).
