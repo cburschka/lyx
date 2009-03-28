@@ -95,6 +95,10 @@ What's new
 
 - Correct the LaTeX output of the GREEK ANO TELEIA symbol (part of 
   bug 5239).
+
+- Disable page size, orientation and margin settings with beamer and
+  powerdot, since those values are hardcoded by the class. Thus, a 
+  geometry option clash is avoided (bug 5863).
   
 - Perform extra LaTeX run when requested by the French lettre class
   (bug 5818),

@@ -1129,7 +1129,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		os << "}\n";
 		texrow.newline();
 	}
-	if (use_geometry || nonstandard_papersize) {
+	if (!tclass.provides("geometry")
+	    && (use_geometry || nonstandard_papersize)) {
 		odocstringstream ods;
 		if (!getGraphicsDriver("geometry").empty())
 			ods << getGraphicsDriver("geometry");

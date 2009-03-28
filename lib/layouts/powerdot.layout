@@ -1,8 +1,8 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass[powerdot,enumitem.sty,pstricks.sty,xkeyval.sty]{presentation (powerdot)}
 # PowerDot textclass definition file.
-# Created: 29-Aug-05 by Mael HillÃ©reau
-# Last modified: 20-May-06 by Uwe StÃ¶hr
+# Created: 29-Aug-05 by Mael Hilléreau
+# Last modified: 20-May-06 by Uwe Stöhr
 
 
 ###
@@ -13,6 +13,7 @@ Columns             1
 Sides               1
 Provides url        1
 Provides hyperref   1
+Provides geometry   1
 DefaultStyle        Standard
 
 DefaultFont
