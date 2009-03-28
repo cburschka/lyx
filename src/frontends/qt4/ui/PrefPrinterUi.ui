@@ -98,7 +98,7 @@
          <string>Option used to print to non-default printer.</string>
         </property>
         <property name="text" >
-         <string>Set p&amp;rinter:</string>
+         <string>Set &amp;printer:</string>
         </property>
         <property name="buddy" >
          <cstring>printerToPrinterED</cstring>
@@ -114,7 +114,7 @@
          <string>Option used with spool command to set printer.</string>
         </property>
         <property name="text" >
-         <string>Spool pr&amp;inter:</string>
+         <string>Spool &amp;printer:</string>
         </property>
         <property name="buddy" >
          <cstring>printerSpoolPrefixED</cstring>
@@ -133,7 +133,7 @@
          <string/>
         </property>
         <property name="text" >
-         <string>Spool &amp;command:</string>
+         <string>Spool co&amp;mmand:</string>
         </property>
         <property name="buddy" >
          <cstring>printerSpoolCommandED</cstring>
@@ -179,7 +179,7 @@
       <item row="2" column="0" >
        <widget class="QLabel" name="printerCopiesLA" >
         <property name="text" >
-         <string>Number of Co&amp;pies:</string>
+         <string>&amp;Number of copies:</string>
         </property>
         <property name="buddy" >
          <cstring>printerCopiesED</cstring>
@@ -301,7 +301,7 @@
       <string>Normally, this needs to be checked only if you are using dvips as your printer command and you have config.&lt;printer> files installed for all your printers.</string>
      </property>
      <property name="text" >
-      <string>Adapt output to printer</string>
+      <string>Adapt &amp;output to printer</string>
      </property>
     </widget>
    </item>

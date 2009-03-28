@@ -22,7 +22,7 @@
    <item row="0" column="0" colspan="2" >
     <widget class="QLabel" name="uiLanguageLA" >
      <property name="text" >
-      <string>&amp;User interface language:</string>
+      <string>User &amp;interface language:</string>
      </property>
      <property name="buddy" >
       <cstring>uiLanguageCO</cstring>
@@ -96,7 +96,7 @@
       <string>Use the babel package for multilingual support</string>
      </property>
      <property name="text" >
-      <string>Use b&amp;abel</string>
+      <string>&amp;Use babel</string>
      </property>
     </widget>
    </item>
@@ -183,7 +183,7 @@
          <string>Select to enable support of right-to-left languages (e.g. Hebrew, Arabic).</string>
         </property>
         <property name="text" >
-         <string>Enable &amp;RTL support</string>
+         <string>Enable RTL su&amp;pport</string>
         </property>
        </widget>
       </item>

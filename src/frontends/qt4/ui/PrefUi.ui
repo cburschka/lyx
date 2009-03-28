@@ -47,32 +47,32 @@
         <property name="enabled" >
          <bool>true</bool>
         </property>
-        <property name="toolTip" >
-         <string>Restore to cursor position when the file was last closed</string>
-        </property>
         <property name="text" >
-         <string>Allow saving/restoring of window layouts and geometries</string>
+         <string>Restore window layouts and &amp;geometries</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0" >
        <widget class="QCheckBox" name="restoreCursorCB" >
+        <property name="toolTip" >
+         <string>Restore to the cursor position when the file was last closed</string>
+        </property>
         <property name="text" >
-         <string>Restore cursor positions</string>
+         <string>Restore cursor &amp;positions</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0" >
        <widget class="QCheckBox" name="loadSessionCB" >
         <property name="text" >
-         <string>Load opened files from last session</string>
+         <string>&amp;Load opened files from last session</string>
         </property>
        </widget>
       </item>
       <item row="3" column="0" >
        <widget class="QPushButton" name="clearSessionPB" >
         <property name="text" >
-         <string>Clear All Session Information</string>
+         <string>Clear all session &amp;information</string>
         </property>
        </widget>
       </item>
@@ -167,14 +167,14 @@
       <item row="0" column="0" >
        <widget class="QCheckBox" name="autoSaveCB" >
         <property name="text" >
-         <string>B&amp;ackup documents, every</string>
+         <string>&amp;Backup documents, every</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0" colspan="4" >
        <widget class="QCheckBox" name="openDocumentsInTabsCB" >
         <property name="text" >
-         <string>Open documents in &amp;tabs</string>
+         <string>&amp;Open documents in tabs</string>
         </property>
        </widget>
       </item>
@@ -218,7 +218,7 @@
          <string>Checking this allow the automatic display of helpful comments for insets in the main work area of an edited document</string>
         </property>
         <property name="text" >
-         <string>Enable &amp;tool tips in main work area</string>
+         <string>&amp;Enable tool tips in main work area</string>
         </property>
        </widget>
       </item>

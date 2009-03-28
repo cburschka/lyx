@@ -35,7 +35,7 @@
    <item row="0" column="3" >
     <widget class="QPushButton" name="formatRemovePB" >
      <property name="text" >
-      <string>&amp;Remove</string>
+      <string>Re&amp;move</string>
      </property>
     </widget>
    </item>
@@ -82,7 +82,7 @@
    <item row="2" column="1" colspan="3" >
     <widget class="QCheckBox" name="vectorCB" >
      <property name="text" >
-      <string>Vector graphi&amp;cs format</string>
+      <string>Vector &amp;graphics format</string>
      </property>
     </widget>
    </item>
@@ -129,7 +129,7 @@
    <item row="5" column="0" >
     <widget class="QLabel" name="shortcutLA" >
      <property name="text" >
-      <string>S&amp;hortcut:</string>
+      <string>Shortc&amp;ut:</string>
      </property>
      <property name="buddy" >
       <cstring>shortcutED</cstring>

@@ -48,7 +48,7 @@
       <item>
        <widget class="QCheckBox" name="cursorFollowsCB" >
         <property name="text" >
-         <string>Cursor follows &amp;scrollbar</string>
+         <string>Cursor &amp;follows scrollbar</string>
         </property>
        </widget>
       </item>
@@ -147,7 +147,7 @@
          <item row="0" column="0" >
           <widget class="QLabel" name="label_2" >
            <property name="text" >
-            <string>Screen us&amp;ed (pixels):</string>
+            <string>Screen used (&amp;pixels):</string>
            </property>
            <property name="buddy" >
             <cstring>fullscreenWidthSB</cstring>
@@ -173,7 +173,7 @@
       <item row="2" column="0" >
        <widget class="QCheckBox" name="toggleTabbarCB" >
         <property name="text" >
-         <string>Hide tabba&amp;r</string>
+         <string>Hide &amp;tabbar</string>
         </property>
        </widget>
       </item>
