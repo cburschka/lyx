@@ -1887,7 +1887,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_TABULAR_FEATURE
  * \li Action: Sets various features to the table/cell on the current cursor position.
  * \li Notion: Various math-environment features are handled here as well, e.g.
-               add-vline-left/right for Grid/Cases environment
+               add-vline-left/right for the Grid/Array environment
  * \li Syntax: tabular-feature <FEATURE> [<ARG>]
  * \li Params: <FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|copy-column|
                        toggle-line-top|toggle-line-bottom|toggle-line-left|toggle-line-right|
