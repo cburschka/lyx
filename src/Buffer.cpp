@@ -3039,4 +3039,45 @@ void Buffer::updateLabels(ParIterator & parit) const
 	}
 }
 
+
+bool Buffer::nextWord(DocIterator & from, DocIterator & to,
+	docstring & word) const
+{
+	bool inword = false;
+	bool ignoreword = false;
+	string lang_code;
+	to = from;
+
+	while (to.depth()) {
+		if (isLetter(to)) {
+			if (!inword) {
+				inword = true;
+				ignoreword = false;
+				from = to;
+				word.clear();
+				lang_code = to.paragraph().getFontSettings(params(),
+					to.pos()).language()->code();
+			}
+			// Insets like optional hyphens and ligature
+			// break are part of a word.
+			if (!to.paragraph().isInset(to.pos())) {
+				char_type const c = to.paragraph().getChar(to.pos());
+				word += c;
+				if (isDigit(c))
+					ignoreword = true;
+			}
+		} else { // !isLetter(cur)
+			if (inword)
+				if (!word.empty() && !ignoreword) {
+					return true;
+				}
+				inword = false;
+		}
+
+		to.forwardPos();
+	}
+
+	return false;
+}
+
 } // namespace lyx

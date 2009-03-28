@@ -17,6 +17,7 @@
 #include "Buffer.h"
 #include "InsetList.h"
 #include "Paragraph.h"
+#include "LyXRC.h"
 #include "Text.h"
 
 #include "mathed/MathData.h"
@@ -27,10 +28,12 @@
 
 #include "support/debug.h"
 #include "support/lassert.h"
+#include "support/lstrings.h"
 
 #include <ostream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -606,5 +609,17 @@ bool operator==(StableDocIterator const & dit1, StableDocIterator const & dit2)
 	return dit1.data_ == dit2.data_;
 }
 
+
+bool isLetter(DocIterator const & dit)
+{
+	return dit.inTexted()
+		&& dit.inset().allowSpellCheck()
+		&& dit.pos() != dit.lastpos()
+		&& (dit.paragraph().isLetter(dit.pos())
+		    // We want to pass the ' and escape chars to ispell
+		    || contains(from_utf8(lyxrc.spellchecker_esc_chars + '\''),
+				dit.paragraph().getChar(dit.pos())))
+		&& !dit.paragraph().isDeleted(dit.pos());
+}
 
 } // namespace lyx

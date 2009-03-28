@@ -241,59 +241,23 @@ void GuiSpellchecker::clearParams()
 }
 
 
-static bool isLetter(DocIterator const & dit)
-{
-	return dit.inTexted()
-		&& dit.inset().allowSpellCheck()
-		&& dit.pos() != dit.lastpos()
-		&& (dit.paragraph().isLetter(dit.pos())
-		    // We want to pass the ' and escape chars to ispell
-		    || contains(from_utf8(lyxrc.spellchecker_esc_chars + '\''),
-				dit.paragraph().getChar(dit.pos())))
-		&& !dit.paragraph().isDeleted(dit.pos());
-}
-
-
 static WordLangTuple nextWord(Cursor & cur, ptrdiff_t & progress)
 {
-	BufferParams const & bp = cur.bv().buffer().params();
-	bool inword = false;
-	bool ignoreword = false;
+	Buffer const & buf = cur.bv().buffer();
 	cur.resetAnchor();
 	docstring word;
-	string lang_code;
+	DocIterator from = cur;
+	DocIterator to;
+	if (!buf.nextWord(from, to, word))
+		return WordLangTuple(docstring(), string());
 
-	while (cur.depth()) {
-		if (isLetter(cur)) {
-			if (!inword) {
-				inword = true;
-				ignoreword = false;
-				cur.resetAnchor();
-				word.clear();
-				lang_code = cur.paragraph().getFontSettings(bp, cur.pos()).language()->code();
-			}
-			// Insets like optional hyphens and ligature
-			// break are part of a word.
-			if (!cur.paragraph().isInset(cur.pos())) {
-				char_type const c = cur.paragraph().getChar(cur.pos());
-				word += c;
-				if (isDigit(c))
-					ignoreword = true;
-			}
-		} else { // !isLetter(cur)
-			if (inword)
-				if (!word.empty() && !ignoreword) {
-					cur.setSelection();
-					return WordLangTuple(word, lang_code);
-				}
-				inword = false;
-		}
-
-		cur.forwardPos();
-		++progress;
-	}
-
-	return WordLangTuple(docstring(), string());
+	cur.setCursor(from);
+	cur.resetAnchor();
+	cur.setCursor(to);
+	cur.setSelection();
+	string lang_code = from.paragraph().getFontSettings(buf.params(), cur.pos()).language()->code();
+	++progress;
+	return WordLangTuple(word, lang_code);
 }
 
 

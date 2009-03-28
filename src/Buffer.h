@@ -492,6 +492,15 @@ public:
 	///
 	void updateLabels(ParIterator & parit) const;
 
+	/// Find next word starting from \p from.
+	/// \p from initial position to search, will then points to the next
+	///    word.
+	/// \p to will points to the end of the next word.
+	/// \p word will contain the found word if any.
+	/// \return true if a new word was found.
+	bool nextWord(DocIterator & from, DocIterator & to,
+		docstring & word) const;
+
 private:
 	/// search for macro in local (buffer) table or in children
 	MacroData const * getBufferMacro(docstring const & name,
