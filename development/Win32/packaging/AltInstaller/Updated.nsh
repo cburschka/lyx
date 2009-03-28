@@ -40,6 +40,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-feature_m-valign-middle.png"
  File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-feature_m-valign-top.png"
  SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\beamer.layout"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\powerdot.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\stdinsets.inc"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
