@@ -383,7 +383,7 @@ bool InsetCitation::isCompatibleCommand(string const & cmd)
 }
 
 
-docstring InsetCitation:: toolTip(BufferView const & bv, int, int) const
+docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 {
 	static unsigned int maxwdth = 80;
 	Buffer const & buf = bv.buffer();
