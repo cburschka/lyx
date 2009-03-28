@@ -3067,13 +3067,10 @@ bool Buffer::nextWord(DocIterator & from, DocIterator & to,
 					ignoreword = true;
 			}
 		} else { // !isLetter(cur)
-			if (inword)
-				if (!word.empty() && !ignoreword) {
-					return true;
-				}
-				inword = false;
+			if (inword && !word.empty() && !ignoreword)
+				return true;
+			inword = false;
 		}
-
 		to.forwardPos();
 	}
 
