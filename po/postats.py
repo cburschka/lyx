@@ -140,5 +140,4 @@ $branch_tag = "%s";
 
 // The data itself
 $podata = array (%s
-)?>
-""" % (sys.argv[1], branch_tag, ",".join([run_msgfmt(po) for po in sys.argv[2:] if po not in ommitted]))
+)?>""" % (sys.argv[1], branch_tag, ",".join([run_msgfmt(po) for po in sys.argv[2:] if po not in ommitted]))
