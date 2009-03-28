@@ -151,7 +151,8 @@ public:
 		Color const & max) = 0;
 	/// leave monochrome painting mode
 	virtual void leaveMonochromeMode() = 0;
-
+	/// draws a wavy line that can be used for underlining.
+	virtual void wavyHorizontalLine(int x, int y, int width, ColorCode col) = 0;
 private:
 	///
 	bool drawing_enabled_;
