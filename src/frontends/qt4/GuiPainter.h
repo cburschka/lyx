@@ -119,6 +119,8 @@ public:
 	virtual int preeditText(int x, int y,
 		char_type c, FontInfo const & f, preedit_style style);
 
+	void wavyHorizontalLine(int x, int y, int width, ColorCode col);
+
 private:
 	/// check the font, and if set, draw an underline
 	void underline(FontInfo const & f,
