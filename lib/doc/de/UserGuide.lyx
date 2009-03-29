@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -167,8 +167,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 3.
- Februar 2009
+letzte Änderung: 29.
+ März 2009
 \end_layout
 
 \begin_layout Standard
@@ -8335,8 +8335,44 @@ Adresse!rechte
 \end_layout
 
 \begin_layout Standard
-Obwohl LyX Dokumentklassen für Briefe hat, haben wir zwei Absatzumgebungen
+LyX (LaTeX) hat Dokumentklassen für Briefe, die Sie unter 
+\family sans
+Dokument
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Einstellungen
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Dokumentklasse
+\family default
+ auswählen können.
+ Wie diese Klassen zu benutzen sind, sehen Sie zum einen in den Beispielen,
+ die Sie unter 
+\family sans
+Strg+O
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Beispiele
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+de
+\family default
+ finden, oder in der Dokumentation der jeweiligen Klasse.
+ Das Wichtigste dabei ist meistens, die angebotenen Absatzumgebungen in
+ der richtigen Reihenfolge zu benutzen, damit LaTeX damit klarkommt.
  
+\end_layout
+
+\begin_layout Standard
+Außerdem wurden speziell für LyX zwei Absatzumgebungen 
 \family sans
 Adresse
 \family default
@@ -8345,11 +8381,11 @@ Adresse
 Adress
 \family default
 e
-\begin_inset space ~
+\family sans
+
+\begin_inset space \space{}
 \end_inset
 
-
-\family sans
 rechts
 \family default
  geschaffen.
@@ -8369,14 +8405,7 @@ Matthias
 
 \end_inset
 
- Um die 
-\family sans
-letter
-\family default
--Klasse benutzen zu können, müssen Sie spezielle Absatzumgebungen in einer
- festgelegten Reihenfolge benutzen, sonst wird LaTeX sich an dem Dokument
- übergeben.
- Dagegen können Sie die 
+ Sie können die 
 \family sans
 Adresse
 \family default
@@ -20131,7 +20160,7 @@ Horizontale Ausrichtung
 \family sans
 
 \begin_inset Graphics
-	filename ../../images/tabular-feature_align-left.png
+	filename ../../images/tabular-feature_m-align-left.png
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
@@ -20145,7 +20174,7 @@ Horizontale Ausrichtung
 \family sans
 
 \begin_inset Graphics
-	filename ../../images/tabular-feature_align-center.png
+	filename ../../images/tabular-feature_m-align-center.png
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
@@ -20159,7 +20188,7 @@ Horizontale Ausrichtung
 \family sans
 
 \begin_inset Graphics
-	filename ../../images/tabular-feature_align-right.png
+	filename ../../images/tabular-feature_m-align-right.png
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
@@ -20195,7 +20224,7 @@ Ausrichtung
 \family sans
 
 \begin_inset Graphics
-	filename ../../images/tabular-feature_valign-top.png
+	filename ../../images/tabular-feature_m-valign-top.png
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
@@ -20209,7 +20238,7 @@ Ausrichtung
 \family sans
 
 \begin_inset Graphics
-	filename ../../images/tabular-feature_valign-middle.png
+	filename ../../images/tabular-feature_m-valign-middle.png
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
@@ -20223,7 +20252,7 @@ Ausrichtung
 \family sans
 
 \begin_inset Graphics
-	filename ../../images/tabular-feature_valign-bottom.png
+	filename ../../images/tabular-feature_m-valign-bottom.png
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
