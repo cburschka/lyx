@@ -108,7 +108,7 @@ src_header_files = Split('''
     ServerSocket.h
     Session.h
     Spacing.h
-    SpellBase.h
+    SpellChecker.h
     TexRow.h
     Text.h
     TextClass.h
@@ -236,7 +236,6 @@ src_post_files = Split('''
     Dimension.cpp
     ModuleList.cpp
     PrinterParams.cpp
-    SpellBase.cpp
     Thesaurus.cpp
     boost.cpp
 ''')

@@ -23,7 +23,7 @@ class QListWidgetItem;
 
 namespace lyx {
 
-class SpellBase;
+class SpellChecker;
 
 namespace frontend {
 
@@ -104,7 +104,7 @@ private:
 	/// word count
 	int count_;
 	/// The actual spellchecker object
-	SpellBase * speller_;
+	SpellChecker * speller_;
 };
 
 } // namespace frontend

@@ -58,7 +58,7 @@ endif
 # and in fact libtools seems not able to do that.
 lyx_SOURCES = \
 	main.cpp \
-	$(ASPELL) SpellBase.cpp \
+	$(ASPELL) \
 	BiblioInfo.h \
 	BiblioInfo.cpp \
 	Box.cpp \
@@ -252,7 +252,7 @@ HEADERFILESCORE = \
 	Session.h \
 	sgml.h \
 	Spacing.h \
-	SpellBase.h \
+	SpellChecker.h \
 	TexRow.h \
 	TexStream.h \
 	Text.h \

@@ -13,7 +13,7 @@
 #ifndef LYX_ASPELL_H
 #define LYX_ASPELL_H
 
-#include "SpellBase.h"
+#include "SpellChecker.h"
 
 #include <map>
 #include <string>
@@ -28,7 +28,7 @@ namespace lyx {
 class BufferParams;
 
 
-class ASpell : public SpellBase {
+class ASpell : public SpellChecker {
 public:
 	/**
 	 * Initialise the spellchecker with the given buffer params and language.
@@ -36,12 +36,6 @@ public:
 	ASpell(BufferParams const & params, std::string const & lang);
 
 	virtual ~ASpell();
-
-	/**
-	 * return true if the spellchecker instance still exists
-	 * Always true for aspell, since there is no separate process
-	 */
-	virtual bool alive() { return true; }
 
 	/// check the given word and return the result
 	virtual enum Result check(WordLangTuple const &);

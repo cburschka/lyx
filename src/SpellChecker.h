@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file SpellBase.h
+ * \file SpellChecker.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -25,7 +25,7 @@ class WordLangTuple;
  * Base class of all spellchecker implementations.
  * The class can be instantiated but will have no functionality.
  */
-class SpellBase {
+class SpellChecker {
 public:
 
 	/// the result from checking a single word
@@ -44,25 +44,23 @@ public:
 		IGNORED_WORD
 	};
 
-	virtual ~SpellBase() {}
-
-	/// return true if the spellchecker instance still exists
-	virtual bool alive();
+	virtual ~SpellChecker() {}
 
 	/// check the given word of the given lang code and return the result
-	virtual enum Result check(WordLangTuple const &);
+	virtual enum Result check(WordLangTuple const &) = 0;
+
 
 	/// insert the given word into the personal dictionary
-	virtual void insert(WordLangTuple const &);
+	virtual void insert(WordLangTuple const &) = 0;
 
 	/// accept the given word temporarily
-	virtual void accept(WordLangTuple const &);
+	virtual void accept(WordLangTuple const &) = 0;
 
 	/// return the next near miss after a SUGGESTED_WORDS result
-	virtual docstring const nextMiss();
+	virtual docstring const nextMiss() = 0;
 
 	/// give an error message on messy exit
-	virtual docstring const error();
+	virtual docstring const error() = 0;
 };
 
 

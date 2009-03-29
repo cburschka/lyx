@@ -36,7 +36,7 @@
 # include "ASpell_local.h"
 #endif
 
-#include "SpellBase.h"
+#include "SpellChecker.h"
 
 #include "frontends/alert.h"
 
@@ -193,7 +193,7 @@ void GuiSpellchecker::partialUpdate(int state)
 }
 
 
-static SpellBase * createSpeller(BufferParams const & bp)
+static SpellChecker * createSpeller(BufferParams const & bp)
 {
 	string lang = lyxrc.spellchecker_use_alt_lang
 		      ? lyxrc.spellchecker_alt_lang
@@ -202,7 +202,7 @@ static SpellBase * createSpeller(BufferParams const & bp)
 #if defined(USE_ASPELL)
 	return new ASpell(bp, lang);
 #endif
-	return new SpellBase;
+	return 0;
 }
 
 
@@ -265,7 +265,7 @@ void GuiSpellchecker::check()
 {
 	LYXERR(Debug::GUI, "Check the spelling of a word");
 
-	SpellBase::Result res = SpellBase::OK;
+	SpellChecker::Result res = SpellChecker::OK;
 
 	Cursor cur = bufferview()->cursor();
 	while (cur && cur.pos() && isLetter(cur))
@@ -282,7 +282,7 @@ void GuiSpellchecker::check()
 
 	exitEarly_ = false;
 
-	while (res == SpellBase::OK || res == SpellBase::IGNORED_WORD) {
+	while (res == SpellChecker::OK || res == SpellChecker::IGNORED_WORD) {
 		word_ = nextWord(cur, start);
 
 		// end of document
@@ -327,7 +327,7 @@ void GuiSpellchecker::check()
 	bv->processUpdateFlags(Update::Force | Update::FitCursor);
 
 	// set suggestions
-	if (res != SpellBase::OK && res != SpellBase::IGNORED_WORD) {
+	if (res != SpellChecker::OK && res != SpellChecker::IGNORED_WORD) {
 		LYXERR(Debug::GUI, "Found a word needing checking.");
 		partialUpdate(SPELL_FOUND_WORD);
 	}
@@ -336,7 +336,7 @@ void GuiSpellchecker::check()
 
 bool GuiSpellchecker::checkAlive()
 {
-	if (speller_->alive() && speller_->error().empty())
+	if (speller_->error().empty())
 		return true;
 
 	docstring message;
