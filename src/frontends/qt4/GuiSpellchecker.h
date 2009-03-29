@@ -33,7 +33,6 @@ class GuiSpellchecker : public GuiDialog, public Ui::SpellcheckerUi
 
 public:
 	GuiSpellchecker(GuiView & lv);
-	~GuiSpellchecker();
 
 public Q_SLOTS:
 	void suggestionChanged(QListWidgetItem *);
@@ -81,16 +80,6 @@ private:
 	/// check text until next misspelled/unknown word
 	/// returns true when finished
 	void check();
-	/// get suggestion
-	docstring getSuggestion() const;
-	/// get word
-	docstring getWord() const;
-	/// returns progress value
-	int getProgress() const { return oldval_; }
-	/// returns word count
-	int getCount() const { return count_; }
-	/// give error message is spellchecker dies
-	bool checkAlive();
 	/// show count of checked words at normal exit
 	void showSummary();
 
@@ -99,8 +88,8 @@ private:
 	/// current word being checked and lang code
 	WordLangTuple word_;
 	/// values for progress
-	int oldval_;
-	int newvalue_;
+	int oldprogress_;
+	int newprogress_;
 	/// word count
 	int count_;
 	/// The actual spellchecker object

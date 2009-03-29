@@ -50,7 +50,7 @@ namespace frontend {
 
 GuiSpellchecker::GuiSpellchecker(GuiView & lv)
 	: GuiDialog(lv, "spellchecker", qt_("Spellchecker")), exitEarly_(false),
-	  oldval_(0), newvalue_(0), count_(0), speller_(0)
+	  oldprogress_(0), newprogress_(0), count_(0), speller_(0)
 {
 	setupUi(this);
 
@@ -71,11 +71,6 @@ GuiSpellchecker::GuiSpellchecker(GuiView & lv)
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	bc().setCancel(closePB);
-}
-
-
-GuiSpellchecker::~GuiSpellchecker()
-{
 }
 
 
@@ -170,15 +165,15 @@ void GuiSpellchecker::partialUpdate(int state)
 {
 	switch (state) {
 		case SPELL_PROGRESSED:
-			spellcheckPR->setValue(getProgress());
+			spellcheckPR->setValue(oldprogress_);
 			break;
 
 		case SPELL_FOUND_WORD: {
-			wordED->setText(toqstr(getWord()));
+			wordED->setText(toqstr(word_.word()));
 			suggestionsLW->clear();
 
 			docstring w;
-			while (!(w = getSuggestion()).empty())
+			while (!(w = speller_->nextMiss()).empty())
 				suggestionsLW->addItem(toqstr(w));
 
 			if (suggestionsLW->count() == 0)
@@ -202,8 +197,8 @@ bool GuiSpellchecker::initialiseParams(string const &)
 		return false;
 
 	// reset values to initial
-	oldval_ = 0;
-	newvalue_ = 0;
+	oldprogress_ = 0;
+	newprogress_ = 0;
 	count_ = 0;
 
 	bool const success = speller_->error().empty();
@@ -273,7 +268,7 @@ void GuiSpellchecker::check()
 		word_ = nextWord(cur, start);
 
 		// end of document
-		if (getWord().empty()) {
+		if (word_.word().empty()) {
 			showSummary();
 			exitEarly_ = true;
 			return;
@@ -283,10 +278,10 @@ void GuiSpellchecker::check()
 
 		// Update slider if and only if value has changed
 		float progress = total ? float(start)/total : 1;
-		newvalue_ = int(100.0 * progress);
-		if (newvalue_!= oldval_) {
+		newprogress_ = int(100.0 * progress);
+		if (newprogress_!= oldprogress_) {
 			LYXERR(Debug::GUI, "Updating spell progress.");
-			oldval_ = newvalue_;
+			oldprogress_ = newprogress_;
 			// set progress bar
 			partialUpdate(SPELL_PROGRESSED);
 		}
@@ -302,7 +297,7 @@ void GuiSpellchecker::check()
 		}	
 	}
 
-	LYXERR(Debug::GUI, "Found word \"" << to_utf8(getWord()) << "\"");
+	LYXERR(Debug::GUI, "Found word \"" << to_utf8(word_.word()) << "\"");
 
 	int const size = cur.selEnd().pos() - cur.selBegin().pos();
 	cur.pos() -= size;
@@ -365,18 +360,6 @@ void GuiSpellchecker::insert()
 {
 	speller_->insert(word_);
 	check();
-}
-
-
-docstring GuiSpellchecker::getSuggestion() const
-{
-	return speller_->nextMiss();
-}
-
-
-docstring GuiSpellchecker::getWord() const
-{
-	return word_.word();
 }
 
 
